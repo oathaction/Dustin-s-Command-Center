@@ -1158,3 +1158,26 @@ The studio asked three questions before round 0: whether the drawings board shou
 | D2-502 | The research lead writes a meaning sheet first: for each of the six redraw subjects, Testify and Contact an official, the V7 name and ID, V7's meaning in one sentence and what a reader must recognize. The icon designers draw from it | DR-146 asks each drawing to depict its subject clearly, so the drawing starts from what the subject means |
 | D2-503 | The four dome drawings' options come as three matched sets. Each set draws one Congress sign once and reuses it in CL-025, R-13 and R-42, and CL-014 takes the same chamber without its Congress-only feature. Set A stays within DR-135 | The research lead's meaning sheet: one institution should keep one sign, so Dustin picks a Congress sign once and it holds across the set |
 | D2-504 | Round 1's makers start as their inputs land: the Civic Line designer and the identity designer once the meaning sheet is written, and the utility designer once the audit's action list is written. Each runs the engineer's checks when the scripts exist | The final brief's order follows what each round needs; the drawings need the meaning sheet and the action list, and the checks verify the drawings afterward |
+
+## Stage B round 0, November 9, 2026
+
+### Accessibility lead (`20261109_Stage-B-Accessibility-Audit.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-505 | The utility set is 17 actions in 18 drawings, ranked in section 1.1 | DR-134 asks for about eighteen, limited to what the guide, the atlas and the reports need |
+| D2-506 | Every utility glyph sits beside a word. The only exceptions are the clear control in a search field, the sort mark in a column heading, the outside-link mark after link text and the chevron beside a row's words, and each of those sits beside other words that carry the meaning | Chapter 11's instruction line asks for a glyph and a word that read without color |
+| D2-507 | Previous, Next and the sort order share one arrow with a shaft, and only the chevron opens and closes rows | One form keeps one meaning |
+| D2-508 | Filter is drawn as a funnel | Sliders are CL-012, CL-071 and R-37 |
+| D2-509 | The error mark is a circle holding an exclamation mark, never a cross | A cross is Close, and R-35 wears a cross in a filled circle for Rejected |
+| D2-510 | The warning mark is drawn in ink, never red, and stays in the set only if chapter 11's specimens carry a notice that needs it; the systems designer decides | It must not compete with the error or take-part red, and must never stand for an evidence grade or an Illustrative label |
+| D2-511 | Copy's glyph never turns into a check; the status line carries the result | The success mark keeps one meaning |
+| D2-512 | No phone, envelope, chain, share, information, zoom, print, home, loading, layers, settings or bell glyph | Section 1.3 gives each reason; most match a Civic Line drawing or an atlas polarity sign |
+| D2-513 | Links to other sites open in the same tab and carry the hidden words "(another site)" | A reader knows before pressing that the link leaves, and a new tab never surprises a screen reader or magnifier user |
+| D2-514 | Utility glyphs render at 24 px beside a control's word, and at 16 px only inline in text or in a table heading | The drawings board shows both sizes, and these are the two places the 16 px master serves |
+| D2-515 | A topic or atlas drawing never stands for an interface action, and chapter 11 says so as a semantic rule, with CL-024 used as a refresh button as its failure case | Master Brief section 11 asks for rules that keep the classes from standing in for each other |
+| D2-516 | Chapter 11's five interactive specimens are built as live components, not as `role="img"` pictures | Section 2's name, keyboard, focus and forced-color tests can then run inside them |
+| D2-517 | Every use of an icon on a page carries `data-icon` and `data-icon-family` | Section 2's checks find icons by these attributes |
+| D2-518 | The guide's plate labels keep their text marks (the check, the cross and the arrow) | They label a specimen, sit hidden beside their words and are not status messages |
+| D2-519 | The three marks also run the look-alike check against the badge corner of the fourteen Civic Line drawings that carry a check, a cross or an alert | A whole-drawing figure can miss a badge that matches a mark (UX-2) |
+| D2-520 | System 1's pressed-state cue goes to the atlas finishing pass, not this stage | DR-36 settles System 1, and the finishing pass owns its fixes (UX-4) |

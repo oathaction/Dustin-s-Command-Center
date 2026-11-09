@@ -22,7 +22,7 @@
 // Pairs the check reports apart and never fails:
 //   - a drawing and its own original, when the file name carries the master's ID (CL-025, R-13): a redraw should stay
 //     close to the drawing it replaces;
-//   - options of one subject: files whose names match once the option (Option-A, Opt-2), the size (16px, 24px) and
+//   - options of one subject: files whose names match once the option (Option-A, Opt-2, Fit-1), the size (16px) and
 //     the edition (Red-Black, Black, Newsprint, Red-Newsprint, One-Color, Two-Color) are set aside.
 // Editions of one drawing (the same name apart from the edition) are compared once, with the black edition preferred.
 'use strict';
@@ -78,13 +78,14 @@ function collect(inputs, recursive) {
 
 // ---------- names ----------
 const EDITION = /[-_ ](red[-_ ]black|red[-_ ]newsprint|black|newsprint|one[-_ ]colou?r|two[-_ ]colou?r|mono)$/i;
-const OPTION = /[-_ ](option|opt)[-_ ]?[a-z0-9]+$/i;
-const SIZE = /[-_ ]\d{1,3}[-_ ]?px$/i;
+const OPTION = /[-_ ](option|opt|fit|variant)[-_ ]?[a-z0-9]+$/i;
+const SIZE = /[-_ ]\d{1,3}[-_ ]?px(?=$|[-_ ])/ig;
 function stems(name) {
   let s = name.replace(/\.svg$/i, '').replace(/^\d{8}_/, '');
   const strip = (re) => { let prev; do { prev = s; s = s.replace(re, ''); } while (s !== prev); };
   strip(EDITION); const drawing = s;            // the same drawing in another edition
-  for (let n = 0; n < 3; n++) { strip(SIZE); strip(OPTION); strip(EDITION); }
+  s = s.replace(SIZE, '');
+  for (let n = 0; n < 3; n++) { strip(OPTION); strip(EDITION); }
   return { drawing: drawing.toLowerCase(), subject: s.toLowerCase() };
 }
 const masterIds = new Set(INV.icons.map((i) => i.id));
@@ -131,7 +132,7 @@ async function inkMaps(drawings) {
     const page = await browser.newPage();
     await page.setContent('<!doctype html><html><body></body></html>');
     return await page.evaluate(async ({ list, PX, SIGMA }) => {
-      const NP = [220, 217, 210], CH = [18, 18, 18];
+      const NP = [220, 217, 210], CH = [18, 18, 18];  // Newsprint #DCD9D2 and Charcoal #121212
       const lin = (v) => { v /= 255; return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
       const lum = (r, g, b) => 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
       const Lbg = lum(...NP), Lch = lum(...CH);
@@ -146,20 +147,25 @@ async function inkMaps(drawings) {
       for (const it of list) {
         const img = new Image(); img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(it.text); await img.decode();
         const c = document.createElement('canvas'); c.width = c.height = PX; const g = c.getContext('2d');
-        g.clearRect(0, 0, PX, PX); g.drawImage(img, 0, 0, PX, PX);
+        g.fillStyle = '#DCD9D2'; g.fillRect(0, 0, PX, PX);
+        if (it.direct) g.drawImage(img, 0, 0, PX, PX);    // a black master, drawn exactly as Board 6 drew it
+        else {                                              // any other drawing: its coverage, in Charcoal
+          const t = document.createElement('canvas'); t.width = t.height = PX; const h = t.getContext('2d');
+          h.drawImage(img, 0, 0, PX, PX); h.globalCompositeOperation = 'source-in'; h.fillStyle = '#121212'; h.fillRect(0, 0, PX, PX);
+          g.drawImage(t, 0, 0);
+        }
         const d = g.getImageData(0, 0, PX, PX).data;
-        // Charcoal at the drawn coverage over Newsprint, then Board 6's ink: (L_newsprint - L) / (L_newsprint - L_charcoal).
+        // Board 6's ink: (L_newsprint - L) / (L_newsprint - L_charcoal), clamped to 0 to 1.
         const m = new Float64Array(PX * PX); let x0 = PX, y0 = PX, x1 = -1, y1 = -1;
         for (let i = 0; i < PX * PX; i++) {
-          const a = d[4 * i + 3] / 255;
-          const L = lum(...NP.map((v, j) => Math.round(CH[j] * a + v * (1 - a))));
+          const L = lum(d[4 * i], d[4 * i + 1], d[4 * i + 2]);
           m[i] = Math.max(0, Math.min(1, (Lbg - L) / (Lbg - Lch)));
           if (m[i] > 0.5) { const x = i % PX, y = (i - x) / PX; x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
         }
         out.push({ map: Array.from(blur(m, PX, SIGMA)), extent: x1 < 0 ? 0 : Math.max(x1 - x0 + 1, y1 - y0 + 1) / PX });
       }
       return { maps: out, ua: navigator.userAgent };
-    }, { list: drawings.map((d) => ({ text: sized(d.text, PX).text })), PX, SIGMA });
+    }, { list: drawings.map((d) => (d.direct ? { text: d.text, direct: true } : { text: sized(d.text, PX).text })), PX, SIGMA });
   } finally { await browser.close(); }
 }
 function corr(A, B, px, sh) {
@@ -179,7 +185,7 @@ function pct(sorted, v) { let lo = 0, hi = sorted.length; while (lo < hi) { cons
 const atPct = (sorted, p) => sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * p / 100))];
 
 function loadMasters() {
-  return INV.icons.map((i) => ({ id: i.id, label: i.label, name: i.exports.svg_black, text: fs.readFileSync(path.join(CL, 'black', i.exports.svg_black), 'utf8') }));
+  return INV.icons.map((i) => ({ id: i.id, label: i.label, name: i.exports.svg_black, direct: true, text: fs.readFileSync(path.join(CL, 'black', i.exports.svg_black), 'utf8') }));
 }
 
 // ---------- the check ----------
@@ -228,17 +234,18 @@ async function check(items, opts) {
 
 function print(r) {
   const L = [];
-  const ord = (p) => { const v = Math.round(p * 10) / 10; return `${v}th`; };
+
   L.push(`Look-alike check at ${PX} px: ${r.compared} new drawings${r.editions_skipped.length ? ` (${r.editions_skipped.length} more files are other editions of these)` : ''} against the ${INV.icons.length} Civic Line masters and each other.`);
   L.push(`Masters: ${r.distribution.pairs} pairs; median likeness ${r.distribution.p50}, 95th percentile ${r.distribution.p95}, 99th ${r.distribution.p99}.`);
   L.push(`Flag at ${r.thresholds.flag.likeness} (${r.thresholds.flag.percentile}th percentile); watch from ${r.thresholds.watch.likeness} (${r.thresholds.watch.percentile}th).`);
+  L.push('Columns: likeness, then its percentile among the master pairs.');
   const block = (title, list, fmt) => { L.push(`\n${title}: ${list.length ? '' : 'none'}`); for (const x of list) L.push('  ' + fmt(x)); };
-  const pair = (x) => `${x.likeness.toFixed(3)}  ${ord(x.percentile).padStart(6)}  ${x.a}  ~  ${x.b}`;
+  const pair = (x) => `${x.likeness.toFixed(3)}  ${x.percentile.toFixed(1).padStart(5)}  ${x.a}  ~  ${x.b}`;
   block('Look-alikes (flagged)', r.flagged, pair);
   block('Worth a look (watch)', r.watch, pair);
   block('Own originals, reported apart', r.own, pair);
   block('Options of one subject, reported apart', r.options, pair);
-  block('Closest master for each new drawing', r.closest, (x) => `${x.likeness.toFixed(3)}  ${ord(x.percentile).padStart(6)}  ${x.a}  ~  ${x.b}   (ink spans ${Math.round(x.extent * 100)}% of the box)`);
+  block('Closest master for each new drawing', r.closest, (x) => `${x.likeness.toFixed(3)}  ${x.percentile.toFixed(1).padStart(5)}  ${x.a}  ~  ${x.b}   (ink spans ${Math.round(x.extent * 100)}% of the box)`);
   return L.join('\n');
 }
 
@@ -253,9 +260,9 @@ function selfFixtures() {
     { name: 'Utility-Reload-Option-B.svg', text: at24('CL-024'), expect: { flagged: 'CL-024' }, why: 'the same drawing on a 24-unit grid' },
     { name: 'Utility-Plus-Option-A.svg', text: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>', expect: { quiet: true }, why: 'a plus sign, not like any master' },
     { name: 'CL-025-Congress-Redraw-Option-A-Black.svg', text: by['CL-025'].text, expect: { own: 'CL-025' }, why: 'a redraw named for its original' },
-    { name: 'Pillar-Explain-24px-Fit-1-Red-Black.svg', text: red, expect: { edition: true }, why: 'a red-black edition beside its black edition' },
-    { name: 'Pillar-Explain-24px-Fit-1-Black.svg', text: by['CL-019'].text, expect: { own: null }, why: 'the black edition, compared once' },
-    { name: 'Pillar-Explain-16px-Fit-2-Black.svg', text: at24('CL-019'), expect: { option: true }, why: 'another size of one subject' },
+    { name: 'CL-019-Explain-24px-Fit-1-Red-Black.svg', text: red, expect: { edition: true }, why: 'a red-black edition beside its black edition' },
+    { name: 'CL-019-Explain-24px-Fit-1-Black.svg', text: by['CL-019'].text, expect: { own: 'CL-019' }, why: 'a pixel fit named for its master' },
+    { name: 'CL-019-Explain-16px-Fit-2-Black.svg', text: at24('CL-019'), expect: { option: true }, why: 'another size and fit of one subject' },
   ];
 }
 async function selfTest() {
@@ -277,7 +284,7 @@ async function selfTest() {
     const e = f.expect;
     if (e.flagged) say(flaggedWith(f.name, e.flagged), `${f.name}: ${f.why}, flagged against ${e.flagged}`);
     if (e.quiet) say(!r.flagged.some((x) => x.a === f.name || x.b === f.name), `${f.name}: ${f.why}, not flagged (closest ${r.closest.find((x) => x.a === f.name).b}, ${r.closest.find((x) => x.a === f.name).percentile}th)`);
-    if (e.own) say(r.own.some((x) => x.a === f.name && x.b.startsWith(e.own + ' ')) && !flaggedWith(f.name, e.own), `${f.name}: ${f.why}, reported apart and not flagged`);
+    if (e.own) say(r.own.some((x) => x.a === f.name && x.b.startsWith(e.own + ' ')) && !flaggedWith(f.name, e.own), `${f.name}: ${f.why}, its pair with ${e.own} reported apart and not flagged`);
     if (e.edition) say(r.editions_skipped.some((x) => x.name === f.name), `${f.name}: ${f.why}, compared once`);
     if (e.option) say(r.options.some((x) => x.a === f.name || x.b === f.name) && !r.flagged.some((x) => x.against === 'new' && (x.a === f.name || x.b === f.name)), `${f.name}: ${f.why}, reported apart`);
   }
