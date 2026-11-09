@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/stage-b/drawings/20261109_Stage-B-Drawings-Board.html",
- "checked": "2026-11-09T22:53:20.372Z",
+ "checked": "2026-11-09T23:02:05.279Z",
  "views": [
   "overview"
  ],
@@ -9,7 +9,7 @@
    "width": 1440,
    "view": "overview",
    "rootVisible": true,
-   "texts": 2913,
+   "texts": 2990,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -52,7 +52,7 @@
    "width": 390,
    "view": "overview",
    "rootVisible": true,
-   "texts": 2926,
+   "texts": 3003,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -95,7 +95,7 @@
    "width": 360,
    "view": "overview",
    "rootVisible": true,
-   "texts": 2926,
+   "texts": 3003,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],

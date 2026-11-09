@@ -1,0 +1,15 @@
+{
+  "board": "Stage B drawings board",
+  "published": [
+    {
+      "url": "https://claude.ai/artifact/WdVDNfjE8cMGw1WAY68hmM",
+      "version": "1794265439-67e3",
+      "date": "2026-11-09",
+      "source": "work/boards/phase-2/stage-b/drawings/20261109_Stage-B-Drawings-Board.html",
+      "publish_copy": "rebuilt by work/build/scripts/phase-2/stage_b_drawings_board_build.py --strict into the session scratchpad's publish-drawings-board/ folder",
+      "files": 117,
+      "size_mb": 0.92,
+      "visibility": "private to Dustin until he shares it"
+    }
+  ]
+}

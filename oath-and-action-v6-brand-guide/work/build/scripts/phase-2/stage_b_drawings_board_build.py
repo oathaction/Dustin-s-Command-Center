@@ -393,6 +393,17 @@ def pf_words(size, r):
     return f'fails at {size} px: ' + '; '.join(parts)
 
 
+def pf_sentence(r24, r16):
+    """The pixel-fit results at 24 and 16 px as one sentence when both pass, or one sentence for each size."""
+    if r24 and r16 and r24['pass'] and r16['pass']:
+        return 'Passes at 24 px and at 16 px.'
+    out = []
+    for size, r in ((24, r24), (16, r16)):
+        t = pf_words(size, r)
+        out.append(t[:1].upper() + t[1:] + '.')
+    return ' '.join(out)
+
+
 def pf_summary(pf, fname, size):
     r = pf.get((fname, size))
     if not r:
@@ -724,8 +735,13 @@ def img(p, w, h, alt, cls='', eager=False, srcset2x=None):
 
 
 # ------------------------------------------------------------------------------------------------ page parts
+def nx(h):
+    """Keep "1x" and "2x" lowercase where a label sets its words in capitals."""
+    return re.sub(r'\b([123])x\b', r'<span class="nc">\1x</span>', h)
+
+
 def chip(t, cls=''):
-    return f'<span class="chip{" " + cls if cls else ""}">{esc(t)}</span>'
+    return f'<span class="chip{" " + cls if cls else ""}">{nx(esc(t))}</span>'
 
 
 def fmt_like(v):
@@ -777,7 +793,7 @@ def naming_lines(o, size):
 
 
 def dl(rows, cls='figs'):
-    return f'<dl class="{cls}">' + ''.join(f'<div><dt>{esc(k)}</dt><dd>{v}</dd></div>' for k, v in rows) + '</dl>'
+    return f'<dl class="{cls}">' + ''.join(f'<div><dt>{nx(esc(k))}</dt><dd>{v}</dd></div>' for k, v in rows) + '</dl>'
 
 
 def choice_note(o):
@@ -914,7 +930,7 @@ def cl_option_col(o, sub, rec, size_naming=48, today=None):
         rows.append(('What it shows' if o.within is None else 'What changed', esc(o.change)))
     rows += naming_lines(o, size_naming)
     rows += like_lines(o.like, own_label=f'today’s {sub["id"]}')
-    name = sub['name'] or sub['id'].replace('-', ' ')
+    name = sub['name'] or display_id(sub['id'])
     return (f'<div class="col{" col--rec" if o.letter == rec else ""}"><p class="col-h">Option {esc(o.letter)}</p><p class="chips">{tags}</p>'
             f'<div class="stage">{sizes_row(o.red, CL_SIZES, f"{name}, option {o.letter}")}</div>'
             f'{dl(rows)}{choice_note(o)}</div>')
@@ -1122,9 +1138,7 @@ def utility_col(opts, subs, rec, word):
             rows.append((f'{pre}{k}', v))
         for k, v in like_lines(o.like, show_own=False):
             rows.append((f'{pre}{k}', v))
-        pfw = [pf_words(24, o.pf24), pf_words(16, o.pf16)]
-        txt = ('; ' if any(';' in x or ':' in x for x in pfw) else ', ').join(pfw)
-        rows.append((f'{pre}Pixel-fit check, 1x and 2x', esc(txt[:1].upper() + txt[1:]) + '.'))
+        rows.append((f'{pre}Pixel-fit check, 1x and 2x', esc(pf_sentence(o.pf24, o.pf16))))
     notes = ''.join(dict.fromkeys(choice_note(o) for o in opts))
     return (f'<div class="col{" col--rec" if o0.letter == rec else ""}"><p class="col-h">Option {esc(o0.letter)}</p><p class="chips">{tags}</p>'
             f'<div class="tiles">{tiles}</div><p class="caption tcap">True size: 24 and 16 px, on Newsprint and on Charcoal</p>'
@@ -1215,7 +1229,7 @@ def family_card(card, model, C):
     for key, items in (('bare', bare), ('ringed', ringed)):
         body += (f'<h4 class="sub4">{esc(W["rows"][key])}</h4>' +
                  f'<div class="fams">{row(items, "np")}{row(items, "ch")}</div>')
-    body += '<p class="caption pnote">Each glyph at true size, 24 px then 16 px, on Newsprint and on Charcoal.</p>'
+    body += '<p class="caption pnote">Each icon at true size, 24 px then 16 px, on Newsprint and on Charcoal.</p>'
     scored = [(W['short'], sc)]
     # without a scored card, the creative director's answer to the family question is the recommendation (D2-621)
     fq = next((q for q in model['S'].get('family_questions', []) if re.search(r'\bbare\b', q.get('question', ''), flags=re.I)), None)
@@ -1277,11 +1291,11 @@ def pillars_card(card, model, C):
                    'Pixel-fit check: ' + ('; '.join(sum(((r or {}).get('fails', []) for r in (f['pf_black'], f['pf_red'])), [])) or 'not run'))
             own = f['like'].get('own') or {}
             cells += (f'<div class="pg-c"><div class="stage pg-st">'
-                      f'<figure class="sz">{img(red, s, s, f"{p["name"]}, {s} px Fit {f["fit"]}, red-black")}<figcaption>Red-black</figcaption></figure>'
-                      f'<figure class="sz">{img(black, s, s, f"{p["name"]}, {s} px Fit {f["fit"]}, black")}<figcaption>Black</figcaption></figure>'
-                      f'<figure class="sz">{img(black, s * 4, s * 4, f"{p["name"]}, {s} px Fit {f["fit"]}, black, four times larger", cls="px")}<figcaption>Four times</figcaption></figure></div>'
+                      f'<figure class="sz">{img(red, s, s, f"{p["name"]}, {s} px fit {f["fit"]}, red-black")}<figcaption>Red-black</figcaption></figure>'
+                      f'<figure class="sz">{img(black, s, s, f"{p["name"]}, {s} px fit {f["fit"]}, black")}<figcaption>Black</figcaption></figure>'
+                      f'<figure class="sz">{img(black, s * 4, s * 4, f"{p["name"]}, {s} px fit {f["fit"]}, black, four times larger", cls="px")}<figcaption>Four times</figcaption></figure></div>'
                       f'<p class="inword">{img(black, s, s, "", cls="iw")}<span>{esc(p["name"])}</span></p>'
-                      f'<p class="caption">{esc(pft)}.{" Against its master " + fmt_like(own["likeness"]) + "." if own else ""}</p></div>')
+                      f'<p class="caption">{esc(pft)}.{" Look-alike figure against its master: " + fmt_like(own["likeness"]) + "." if own else ""}</p></div>')
         rows += f'<div class="pg-row">{cells}</div>'
     grid = f'<div class="pg" style="--cols:{len(fit_keys)}"><div class="pg-row pg-row--h">{head}</div>{rows}</div>'
     body = frame(grid, 'The pillar fits') + x2_grid(ps, W) + '<p class="caption pnote">The black edition is the one the guide sets under 48 px. The third view in each fit draws the black edition four times larger to show its pixels. Beside the word, each fit sits at true size next to 15 px Inter.</p>'
@@ -1338,7 +1352,7 @@ def x2_grid(ps, W):
                 continue
             w, h = png_size(f)
             mag = round(w / (s * 2))
-            cells += f'<div class="x2-c">{img(f, w, h, f"{p["name"]}, {s} px, {k.replace("-", " ").lower()}, as a 2x screen draws it, {mag} times larger", cls="px")}</div>'
+            cells += f'<div class="x2-c">{img(f, w, h, f"{p["name"]}, {s} px, {"the master" if k == "Master" else "fit " + k[-1]}, as a 2x screen draws it, {num_words(mag)} times larger", cls="px")}</div>'
         rows += f'<div class="x2-row">{cells}</div>'
     grid = f'<div class="x2" style="--x2cols:{len(cols)}"><div class="x2-row x2-row--h">{head}</div>{rows}</div>'
     return (f'<h4 class="sub4">{esc(W["x2_title"])}</h4><p class="pnote">{esc(W["two_x"])}</p>'
@@ -1403,7 +1417,7 @@ def end_mark_card(card, model, C):
                 w, h = png_size(p)
                 cap = (f'As a 1x screen draws it, {num_words(END_MAG["1x"])} times larger' if sc_ == '1x'
                        else f'As a 2x screen draws it, {num_words(END_MAG["2x"])} times larger')
-                cells += f'<figure class="enl">{img(p, w, h, f"{lab} at {s} px, {cap.lower()}", cls="px")}<figcaption class="caption">{esc(cap)}</figcaption></figure>'
+                cells += f'<figure class="enl">{img(p, w, h, f"{"Today’s end mark" if lab == "Today" else lab} at {s} px, {cap[:1].lower() + cap[1:]}", cls="px")}<figcaption class="caption">{esc(cap)}</figcaption></figure>'
             enl += f'<div class="enl-row"><p class="col-h">{esc(lab)}, B at {s} px in {text_px} px text</p><div class="enl-cells">{cells}</div></div>'
         enl += '</div>'
     body = blocks + '<h4 class="sub4">Enlarged, beside a capital H of the same text</h4>' + frame(f'<div class="enls enls--em">{enl}</div>', 'The end mark enlarged')
@@ -1483,7 +1497,7 @@ def lockmark_card(card, model, C):
             if p.exists():
                 w, h = png_size(p)
                 mag = round(w / s)
-                cells += f'<figure class="enl">{img(p, w, h, f"{lab} lockmark at {s} px, as a 1x screen draws it, {mag} times larger", cls="px")}<figcaption class="caption">{s} px, {num_words(mag)} times</figcaption></figure>'
+                cells += f'<figure class="enl">{img(p, w, h, f"{"Today’s lockmark" if lab == "Today" or s == min(LOCK_SIZES) else "The rebuilt lockmark"} at {s} px{", kept as it is" if lab != "Today" and s == min(LOCK_SIZES) else ""}, as a 1x screen draws it, {num_words(mag)} times larger", cls="px")}<figcaption class="caption">{s} px, {num_words(mag)} times</figcaption></figure>'
         enl += f'<div class="enl-row"><p class="col-h">{esc(lab)}, as a 1x screen draws it</p><div class="enl-cells">{cells}</div></div>'
     cells = ''
     for lab, stem in (('Today’s 48 px master', 'Today-48px'), ('Rebuilt 48 px master', 'Rebuilt-48px'), ('The display master, for comparison', 'Display-48px')):
@@ -1491,7 +1505,7 @@ def lockmark_card(card, model, C):
         if p.exists():
             w, h = png_size(p)
             mag = round(w / 96)
-            cells += f'<figure class="enl">{img(p, w, h, f"{lab} at 48 px as a 2x screen draws it, {mag} times larger", cls="px")}<figcaption class="caption">{esc(lab)}, {num_words(mag)} times</figcaption></figure>'
+            cells += f'<figure class="enl">{img(p, w, h, f"{lab.split(",")[0]} at 48 px, as a 2x screen draws it, {num_words(mag)} times larger", cls="px")}<figcaption class="caption">{esc(lab)}, {num_words(mag)} times</figcaption></figure>'
     enl += f'<div class="enl-row"><p class="col-h">At 48 px, as a 2x screen draws it</p><div class="enl-cells">{cells}</div></div>'
     body += '<h4 class="sub4">Enlarged</h4>' + frame(f'<div class="enls">{enl}</div>', 'The lockmark enlarged')
     fd = figs.get('feed') or {}
@@ -1526,7 +1540,7 @@ def l6_card(card, model, C):
         need(p1.exists(), f'L6: {p1.name} missing')
         w, h = png_size(p1)
         strips += (f'<figure class="l6"><figcaption class="col-h">{esc(lab)}</figcaption>'
-                   f'{img(p1, w, h, f"L6, {lab.lower()}, at {w} px", srcset2x=p2 if p2.exists() else None)}</figure>')
+                   f'{img(p1, w, h, f"L6, {lab[:1].lower() + lab[1:]}, at {w} px", srcset2x=p2 if p2.exists() else None)}</figure>')
     body = frame(f'<div class="l6s">{strips}</div>', 'L6, today and centered')
     body += (f'<p class="pnote">Both strips at {w} px, L6’s smallest width on screen, on Prussian in White. '
              f'Centered, the wordmark and tagline move down {l6["shift_down_units"]:g} units of L6’s 1,400 by 300 layout, '
@@ -1616,7 +1630,7 @@ def reply_section(model, C):
         gs = ''
         for g in c['groups']:
             opts = ''.join(f'<label class="pill"><input type="radio" name="p{c["n"]}-{g["name"]}" value="{attr(v)}" data-card="{c["n"]}" '
-                           f'data-group="{g["name"]}" aria-label="Card {c["n"]}, {attr(copy(lab))}"><span>{esc(short_label(lab))}'
+                           f'data-group="{g["name"]}" aria-label="Card {c["n"]}, {attr(copy(g["label"] + ", " if g.get("label") else ""))}{attr(copy(lab))}"><span>{esc(short_label(lab))}'
                            f'{"<span class=star aria-hidden=true> ✓</span>" if False else ""}</span></label>' for v, lab, _ in g['options'])
             gl = f'<span class="pg-l">{esc(g["label"])}</span>' if g.get('label') else ''
             rl = next((short_label(lab) for v, lab, _ in g['options'] if v == g['rec']), None)
@@ -1670,6 +1684,7 @@ code{font:500 .875rem/1.4 var(--mono);overflow-wrap:anywhere}
 .intro{font:var(--oa-type-intro);max-width:var(--oa-layout-measure-intro-max)}
 .n{color:var(--ink-2);font-variant-numeric:tabular-nums}
 .num{font-variant-numeric:tabular-nums}
+.nc{text-transform:none}
 /* cover */
 .mast{max-width:none;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:var(--oa-space-100) var(--oa-space-300);
   padding:var(--oa-space-300) 0 var(--oa-space-200);border-bottom:var(--oa-border-width-rule) solid var(--strong)}
@@ -2059,6 +2074,8 @@ def main():
     built = datetime.datetime.now(datetime.timezone.utc)
     FILL.update({'built_date': words_date(built), 'built_time': words_time(built)})
     page = build_page(model, C, S, built)
+    page = re.sub(r'(<(p|span|legend|th)\b[^>]*?(?:class="[^"]*\b(?:label|vw-h)\b[^"]*"|scope="col")[^>]*>|<legend>)(.*?)(</(?:p|span|legend|th)>)',
+                  lambda m: m.group(1) + (m.group(3) if 'class="nc"' in m.group(3) else nx(m.group(3))) + m.group(4), page, flags=re.S)
     for o in OVERRIDES:
         if not o[2]:
             warn(f'editor override matches nothing in the makers\' files, the scores or the audit: "{o[0][:70]}"')

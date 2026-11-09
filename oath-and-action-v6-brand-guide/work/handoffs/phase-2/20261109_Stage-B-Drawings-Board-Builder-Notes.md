@@ -2,7 +2,7 @@
 
 Oath & Action Edition 06, Phase 2, November 9, 2026. Written by the board builder, working as the engineer (`.claude/agents/oa-engineer.md`) with the design director's layout judgment (`.claude/agents/oa-design-director.md`), for the main session. I published nothing, committed nothing and pushed nothing. Paths are relative to `oath-and-action-v6-brand-guide/`.
 
-The board was built twice: once while the makers were still in their fix round, and again, as it stands now, on the final files of both fix rounds and the creative director's rescore (`20261109_CD-Scores.json` with its `rescore` block). Every figure, reading, pick and score on the board is from that second run.
+The board was built three times: once while the makers were still in their fix round; again on the final files of both fix rounds and the creative director's rescore (`20261109_CD-Scores.json` with its `rescore` block); and last after the editor's copy edit (`20261109_Stage-B-Drawings-Board-Editor-Notes.md`), with the editor's six items for the script fixed. Every figure, reading, pick and score on the board is from that last run.
 
 **To open:** `work/boards/phase-2/stage-b/drawings/20261109_Stage-B-Drawings-Board.html`.
 
@@ -14,7 +14,7 @@ The board was built twice: once while the makers were still in their fix round, 
 - **27 cards, numbered 1 to 27 with no letter prefix.**
   - 1 Congress. Sets A, B and C for CL-025, R-13 and R-42, each set's row under today's drawings, with D2-620's line that no set names Congress without its label and the label names it. CL-014 Entrenched Power has its own pick lower on the card, since the creative director recommends C for it and B for the set. Last come CL-025's chamber options at 128 and 48 px beside R-46 and R-03 as drawn (DR-152).
   - 2 CL-059, 3 R-48, 4 Testify (three options, B the written testimony of D2-632, with no claim about how many committees take it, D2-636), 5 Contact an official.
-  - 6 The utility family (D2-621): each action's recommended option bare, then the designer's ringed set, at 24 and 16 px on Newsprint and Charcoal.
+  - 6 The utility family (D2-621): each action's recommended option bare, then the designer's ringed set, at 24 and 16 px on Newsprint and Charcoal, with the creative director's six scores and pick from the scores file's `U-family` card.
   - 7 to 23 The utility icons, Play and Pause on one card (D2-557). Reset and Selected check carry the accessibility lead's fix round note and pick beside the creative director's. Success shows the solid partners Error and Warning would take with its solid disc (D2-640).
   - 24 The pillar icons. The fits beside their masters at 96, 48, 24 and 16 px, and then each master and fit as a 2x screen draws it. The card says the recommendation in full: Fit B on 1x screens, the master at 24 px on 2x screens, the 16 px fit on both (D2-634).
   - 25 The end mark, today, Fit A and Fit B stacked at true size before the enlarged views. 26 The lockmark masters at 16, 24, 34, 40 and 48 px. 27 L6 centered.
@@ -48,7 +48,7 @@ The build reads `20261109_Stage-B-Drawings-Board-Content.json` (the board's own 
 - D2-xxx | Testify and Contact an official sit beside the settled drawings their plate card shows (CL-005 and CL-027; CL-026 and CL-061) | They have no original, and the maker chose those as the drawings they must not be read as
 - D2-xxx | Each Civic Line stage says "24 px: reference size only" under its sizes | The creative director's Should fix, carried into the rescore, and DR-136's 48 px floor
 - D2-xxx | Play and Pause share one card; Success and Selected check keep their own | The manifest labels Play and Pause "one button with" each other (D2-557); Success and Selected check share the audit's rank 14 but differ in meaning and in the pick
-- D2-xxx | The family card takes its recommendation and reason from the creative director's answer to the family question, and says the card has no scores of its own | The scores file holds no family card; the answer ("Yes", keep every action bare) is the creative director's recommendation for it, and the rescore names "bare actions with shaped status marks"
+- D2-xxx | The family card takes its scores and pick from the scores file's `U-family` card, and falls back to the creative director's answer to the family question, saying so, only if that card is missing | The creative director added the card after the rescore; the fallback keeps the board honest if it goes
 - D2-xxx | The solid partners for Error and Warning show on the Success card, under the option that draws a solid disc | D2-640
 - D2-xxx | The accessibility lead's fix round note shows on the Reset and Selected check cards in the lead's words, with the lead's pick, in a block apart from the creative director's | The main session's instruction; the note and pick are read from the audit's section 9
 - D2-xxx | The pillar card shows the Civic Line designer's 2x screen renders and adds a reply choice for what 2x screens draw at 24 px | The rescore's recommendation names the master on 2x screens (D2-634), so Dustin answers it with the fit
@@ -58,6 +58,10 @@ The build reads `20261109_Stage-B-Drawings-Board-Content.json` (the board's own 
 - D2-xxx | The lockmark is drawn live from today's and the rebuilt files at the five sizes, each from the master the identity figures name for it | DR-145
 - D2-xxx | L6's strips use the identity designer's 1x and 2x renders through `srcset` at 884 px | Each screen then draws its own render at true size
 - D2-xxx | The editor's override map applies to strings from other owners' files, never to file paths or matching keys, and warns when an entry matches nothing | The main session's instruction; the editor copy-edits the board without editing another owner's file
+- D2-xxx | A pixel-fit line that does not pass at both sizes gives one sentence for each size | The editor's item 1: two results run together in one sentence
+- D2-xxx | Enlargements state their real factor in words, from the file and the size it shows: the pillar fits four times, the 2x views three times the 2x render, the end mark eight times at 1x and four times the 2x render, the lockmark six times at 1x and four times the 2x render | The editor's item 4; the factors match the makers' scripts (`stage_b_identity_drawings.py` enlarges by 8, 4 and 6; the Civic Line notes say three)
+- D2-xxx | A reply panel button's accessible name carries its group's label, so CL-014's buttons read "Card 1, CL-014, Option A" and the set's "Card 1, Congress sign, Set A" | The editor's item 5
+- D2-xxx | "1x", "2x" and "3x" inside a label, a legend or a table head sit in a span that keeps them lowercase | The editor's item 6: the labels' capitals turned them into "1X AND 2X"
 - D2-xxx | Marks key to a hash of the cards and their options | A rebuild with changed options starts clean (D2-316)
 - D2-xxx | The board check runs once with captures on a scratchpad copy with absolute file links, then with `--no-captures` on the board | Captures stay outside the repository; the 390 px page is about 114,000 px tall, past the 65,535 px a JPEG can hold, so that capture comes out empty
 - D2-xxx | Every image loads at once | Lazy images left blanks in full-page captures; the 117 files come to 0.33 MB
@@ -65,25 +69,26 @@ The build reads `20261109_Stage-B-Drawings-Board-Content.json` (the board's own 
 
 ## Tested
 
-- `python3 -I work/build/scripts/phase-2/stage_b_drawings_board_build.py --strict` on the final files: exit 0 with no warning. 27 cards; the page and its 117 files come to 0.91 MB (0.58 MB of HTML, 0.33 MB of files). No em dash, en dash or flagged word on the board. Every card has scores except the family card (see above), every option has the creative director's reading, and every card under three options prints the maker's reason.
+- `python3 -I work/build/scripts/phase-2/stage_b_drawings_board_build.py --strict` after the editor's edit and my fixes: exit 0 with no warning, so all 51 of the editor's overrides match. 27 cards; the page and its 117 files come to 0.92 MB (0.59 MB of HTML, 0.33 MB of files). No em dash, en dash or flagged word on the board. Every card, the family card included, shows the creative director's six scores; every option has the creative director's reading; every card under three options prints the maker's reason.
+- The editor's items 1 to 6, by script in Chromium: Success A's pixel-fit line reads as two sentences; the pillar captions read "Look-alike figure against its master: 0.682."; the family caption says "Each icon"; no alt reads "Contact An Official", "fit a", "3 times" or "(dr-129)", and every enlargement's alt states its factor in words; card 1's panel buttons read "Card 1, Congress sign, Set A" and "Card 1, CL-014, Option A"; no element set in capitals shows "1X" or "2X".
 - `node work/build/scripts/phase-2/dataviz_check.js <board> --board`: PASS, 0 failures at 1,440, 390 and 360 px, run with captures on the scratchpad copy and with `--no-captures` on the board. At every width: no sideways scroll, smallest text 13 px, no contrast failure, axe-core 4.10.2 with no violations, 36 red marks all under `data-red` (the lockmark levers) with no working-red job, fonts Inter, Inter Tight and Lora loaded; 40 focus stops at 1,440 px, each with a visible ring.
 - Plates by script: at 1,440 px no plate or frame scrolls sideways; at 390 px seven labeled frames scroll at true size (the House strip, the pillar grid and its 2x views, the end mark enlarged, the lockmark's two blocks, L6) and every Civic Line and utility column stacks; at 360 px nothing runs past the window.
 - The reply, by script in Chromium: the sample shows until a mark; a mark on a card shows on its panel line and the reverse. Marks gave "Card 1, Congress set: set B, CL-014 option C, as recommended.", "Card 2, CL-059 Credit Allocation: option C. Try a teller window.", "Card 24, Pillar icons: 24 px Fit B, the master on 2x screens, as recommended. Approved by name.", "Card 25, End mark: Fit B at 14 px, Fit A at 12 px." and "Card 27, L6 centered: centered, as recommended." The marks survive a reload, and with storage blocked the page works and composes with no error.
 - The accessibility lead's notes: the build reads Reset B and Selected check A as the lead's picks from section 9, and both cards print the lead's words.
 - The publish copy in Chromium: 233 images, none broken, `lang="en"`; `files.json` maps 117 files.
-- Looked at by me, from my own renders. At 1,440 px, after the final build: Congress whole, the family card, Reset, Success, Play and Pause, the pillar card with its 2x views, the end mark, the lockmark, L6 and the reply panel; the other cards in the earlier pass. At 390 px: Congress, the pillar card and the reply panel. These looks led to fixes: cards wider than the column, the Congress grid too wide, 24 px captions that pushed stages past their column, family rows that ran off the card, blank lazy images, Success and Selected check merged by rank, a stray colon in the creative director's notes, the 16 px lockmark's soft circle edge read as stripes, chips past 360 px, the end mark's enlarged views in one long column, "Contact an Official" in a label, and the pixel-fit wording for Success A.
+- Looked at by me after the last build: at 1,440 px the cover, the family card and Success; at 390 px the cover and Success, with "1x and 2x" lowercase in their labels. Before it, from my own renders: at 1,440 px, after the rescore build: Congress whole, the family card, Reset, Success, Play and Pause, the pillar card with its 2x views, the end mark, the lockmark, L6 and the reply panel; the other cards in the earlier pass. At 390 px: Congress, the pillar card and the reply panel. These looks led to fixes: cards wider than the column, the Congress grid too wide, 24 px captions that pushed stages past their column, family rows that ran off the card, blank lazy images, Success and Selected check merged by rank, a stray colon in the creative director's notes, the 16 px lockmark's soft circle edge read as stripes, chips past 360 px, the end mark's enlarged views in one long column, "Contact an Official" in a label, and the pixel-fit wording for Success A.
 
 ## Not tested
 
 - Safari, Firefox, a real phone, a real 2x screen, a screen reader by ear, 200 percent text, forced colors and print.
 - The board at 360 px by eye; the check covered it by script.
-- The editor's override map with real entries; it is empty, and I tested only that an empty map changes nothing.
+- Each of the editor's 51 overrides by eye; the build confirms each matches at least once, and the editor read the result.
 - Whether my words pass every pattern chapter 02 lists. The editor copy-edits after this.
 - The makers' readings, the accessibility lead's note and the creative director's scores themselves; the board prints them as their owners wrote them. The pillar card's naming test is the creative director's round 1 reading, which the rescore did not change.
 
 ## Change log
 
-Created:
+Created (and, after the editor's copy edit, the script modified for the editor's items 1 to 6 and the HTML, figures and check results rebuilt):
 - `work/build/scripts/phase-2/stage_b_drawings_board_build.py`
 - `work/boards/phase-2/stage-b/drawings/20261109_Stage-B-Drawings-Board-Content.json`
 - `work/boards/phase-2/stage-b/drawings/20261109_Stage-B-Drawings-Board.html`
@@ -92,4 +97,4 @@ Created:
 - `work/handoffs/phase-2/20261109_Stage-B-Drawings-Board-Builder-Notes.md` (this file)
 - Outside the repository: the check results, check copy, renders and publish copy in my scratchpad
 
-Modified: none of anyone else's. I left `source/`, `work/ledger/`, the makers' files, every master, the scores file, the audit and every existing board as I found them.
+The editor modified the content file (its words and 51 overrides); I left those edits as they are. Modified: none of anyone else's. I left `source/`, `work/ledger/`, the makers' files, every master, the scores file, the audit and every existing board as I found them.
