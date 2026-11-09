@@ -1336,3 +1336,14 @@ The studio put six questions to Dustin from round 0: the research lead's four (`
 | D2-617 | The plate page draws each option as an image of its own file at true size | Three inline copies of one SVG would repeat its ids |
 | D2-618 | Check results sit beside the plate page in `checks/`; the pixel pictures stay in my scratch folder | The engineer asks for the pictures outside `work/build` |
 | D2-619 | The plate numbers its cards 1 to 8; the board builder sets the board's numbers | The utility set sits between mine on the board |
+
+## Creative director's look at the drawings, November 9, 2026
+
+The creative director scored the makers' plates before the board (D2-567): 6 of 30 cards ready, 24 to the one fix round (`work/handoffs/phase-2/20261109_CD-Review-Of-Drawings.md`, `work/boards/phase-2/stage-b/drawings/20261109_CD-Scores.json`).
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-620 | Congress keeps three sets on the board: A within DR-135, B reworked as the chamber in session (members seen from behind on the front bench, solid benches, a three-tier rostrum with red on the top tier), and C redrawn or replaced. The board says that no set names Congress without its label, and that the label names it | The creative director found no set names Congress at 48 px; DR-146 asks for clarity, and the honest claim is that the drawing makes the label land at once |
+| D2-621 | Utility actions are drawn bare, and Error, Success and Warning keep their shapes. Rings and frames leave the per-icon options and go to one family card, placed before the utility cards with its own reply line | Ringed actions measure as near twins (Close B and Pause B 0.973), and picking a ring for one icon and not another would break the family |
+| D2-622 | Each action card shows three options where three real, clear choices exist, and at least two where a second is a real choice. A card that shows fewer than three prints the maker's one-line reason | Dustin asked for "2 or 3 options, 3 options for each" (DR-146), and a look-alike option gives him no real choice |
+| D2-623 | Pediments stay out of new options, as part of the classical front Rule 01.6 keeps out. The "Within DR-135" options keep theirs as the record of what DR-135 approved | The Civic Line designer's question 7, with the creative director's agreement |
