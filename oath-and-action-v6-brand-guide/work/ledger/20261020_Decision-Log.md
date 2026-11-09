@@ -1114,3 +1114,24 @@ The creative director signed the pass off at 4 or more on every criterion for ch
 | # | Decision | Reason |
 |---|---|---|
 | D2-490 | The main session ran the final checks after the pass (`guide_build.py --strict`: 9 chapter files, 100 rules, 233 specimens, 0 warnings; `guide_check.js` at 1440, 1024, 390 and 360 px: 0 failures, 761 same-page links; token tests: all pass), looked at eight changed plates at 1,440 px and three at 390 px, scanned the page's text and alt text, and republished the chapters page to https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF as version 3 (1794161090-92f5). The live version 2 matched the committed build plus the host's wrapper, so nothing published was lost | A check is reported only once the main session has run it, and every file is seen before it is published |
+
+## Stage B answers, November 9, 2026
+
+Dustin, replying to the seven questions at the end of `work/handoffs/phase-2/20261108_Stage-B-Brief_DRAFT.md`: "So I agree with all of your recommendations. I approve them all." On question 6 (Q-16): "The Civic icons you made, those are all final and approved, but the initial inspiration for the Civic line sheets, I used ChatGPT and I just went through several different iterations of explaining what I wanted and the look. And then it finally got a set of icons that looked pretty good. And those are the ones I fed to you. So they weren't based on anyone else's work, just a conversation with ChatGPT." He closed: "I approve everything." The studio records each recommendation below. Questions 3, 4 and 7 approve drawing; each drawing still comes back on the drawings board for approval by name before it enters the guide (D2-463).
+
+| # | Decision | Source |
+|---|---|---|
+| DR-139 | A drawings board comes first. Every new or redrawn drawing shows beside its master or original at true size, for approval by name, before chapters 09 to 11 are built around it | Dustin, November 9, as recommended (stage B question 1) |
+| DR-140 | Status marks cover records requests and agency rules, beside the bill tracker. Court cases and ballot measures wait for a later stage | Dustin, November 9, as recommended (question 2) |
+| DR-141 | The icon designer draws Testify and Contact an official now, for the drawings board | Dustin, November 9, as recommended (question 3), approved |
+| DR-142 | Stage B draws a pixel-fit end mark at 12 and 14 px, shown on the drawings board beside today's end mark | Dustin, November 9, as recommended (question 4), approved |
+| DR-143 | The live reader check's link is not sent. Board B carries one combined check, sent once to readers who have never seen the brand. It keeps round one's questions that still apply and adds DR-114's question on reading Pillar Red for party, the six steps, the pillar icons, the end mark and the 24 px lockmark (D2-323). The first check's page stays published until Dustin asks to delete it | Dustin, November 9, as recommended (question 5) |
+| DR-144 | Q-16 is answered. Dustin made the Civic Line sheets in his own conversation with ChatGPT, over several rounds of describing what he wanted and the look, with no one else's work as a source. The vector masters the studio traced from them (DR-02) are final and approved | Dustin, November 9 (question 6) |
+| DR-145 | The identity designer rebuilds the 16, 24 and 48 px lockmark masters with each node and the lever as one outline, the same pixels at each master's own size, and shows them beside today's files at 16, 24, 34, 40 and 48 px on the drawings board before Dustin approves the files | Dustin, November 9, as recommended (question 7), approved |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-491 | D2-464's reading stands: DR-135 is a named exception to "the Civic Line icons are settled" for the six drawings' domes and columns alone | Dustin approved every recommendation and raised no objection to the reading the plan stated |
+| D2-492 | The pixel-fit end mark (DR-142) and the lockmark rebuild (DR-145) go to the identity designer, and Testify and Contact an official (DR-141) to the icon designer | Ampersand B and the lockmark are identity masters; the icon designer owns every new icon so the set keeps one hand |
+| D2-493 | The editor writes the combined reader check's questions, and the engineer builds it as a new dated page from the first check's tooling, leaving `work/boards/phase-2/reader-check/` as it is | DR-143; the first page is the record of what was published |
+| D2-494 | The final brief is `work/handoffs/phase-2/20261109_Stage-B-Brief.md`, and the draft stays as the record | The ninth handoff asks for the final brief before stage B starts |
