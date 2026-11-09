@@ -132,7 +132,85 @@ Rule 01.6 keeps a capitol dome, columns and a flag out of icons. Rule 01.7 keeps
 
 ## 2. Civic Line labels against Atlas V7 names and IDs
 
-In progress.
+### How I checked
+
+I compared every label in `work/build/assets/civic-line/20261029_Civic-Line-Inventory.csv` (122 symbols: CL-001 to CL-072 and R-01 to R-50) by script against three records of V7:
+
+- **V7 titles and IDs** from the atlas editorial data (51 variables, 50 reforms).
+- **V7's register rows** from the reconciliation data (`register_vars`, 51 rows, and `register_reforms`, 86 rows over 49 reforms; R-35, the rejected option, has no register row). All 51 variable titles there match the editorial data word for word.
+- **V7's short names.** V7 gives a variable a short name only inside its loops' `chain_labels`. The icon map's `v7_label` field holds them. I confirmed all 25 that sit on a loop against the loops' `chain_labels` in the editorial data, with no difference. The other 26 (A3, X1 to X5, EC1 to EC12, TC1 to TC8) sit on no loop, so V7 has no short name for them and the icon map repeats the title. I could not confirm those 26 short names, because there are none to confirm.
+
+Note for the editor: the editorial data's `label` field ("Congress's capacity", "Wealth at the top") holds the plain names from the concept boards and Dustin's newest atlas (DR-35). It is not V7's short name. V7's short names are the chain labels ("Congressional capacity", "Wealth concentration").
+
+### What holds
+
+- Every V7 variable has exactly one Civic Line drawing, and no drawing serves two variables (51 of 51).
+- Every R symbol carries the ID of the V7 reform it draws, and each label names that reform's subject (50 of 50).
+- No symbol carries a V7 ID that does not exist.
+
+### Mismatches that need a call
+
+| Symbol | Label on the symbol | V7 name and ID | The problem |
+|---|---|---|---|
+| CL-025 | Congress | D1, "Congressional capacity" (title "Congress's ability to write and check policy") | The label names the institution; V7's element is Congress's capacity. Section 1 treats the drawing as Congress itself. |
+| R-13 | Congressional Capacity | R-13, "Rebuild Congress's own staff and experts" | The reform's symbol carries D1's V7 name word for word. A reader who meets "Congressional capacity" in the atlas would look for this symbol and find the reform. |
+| CL-056 and R-36 | Public Investment (both) | EC2, "Public investment in research and infrastructure"; R-36, "Lasting public investment in research and infrastructure" | Two different drawings carry the same word. Chapter 10 cannot set both with their word as labeled. |
+
+For these three, chapter 10 should print V7's name beside each drawing: CL-025 with "Congressional capacity" where it stands for D1 and "Congress" only where it is used as a topic; R-13 with "Rebuild Congress's own staff and experts" or a short form the editor writes from it, such as "Congress's own experts"; R-36 with "Lasting public investment", which keeps it apart from EC2.
+
+### Labels narrower than V7's name
+
+Each of these drops a part of what V7 names, so the word on a guide page should come from V7:
+
+- **CL-012** "Election Rules", for C4 "Incumbent control of election rules". The label drops who controls the rules, which is the point of the variable.
+- **CL-013** "Incumbent Defeat", for C5 "Sanction applied" (title "Incumbents defeated or pushed into retirement"). It drops retirement.
+- **CL-036** "Cross-Border Capital", for X3 "Trade and the movement of capital". It drops trade.
+- **R-01** "All-Party Primaries". V7's reform adds "with ranked general elections".
+- **R-07** "Small-Donor Matching". V7 adds vouchers.
+- **R-11** "Election Enforcement". V7 names one agency: "A Federal Election Commission able to act".
+- **R-18** "Emergency-Power Limits". V7 adds "and enforced spending law".
+- **R-37** "Feed Choice". V7 adds "and data access for researchers".
+- **R-47** "Fusion Voting". V7 adds "and public funding for parties".
+
+### Labels that differ in wording only
+
+Same subject, different words; V7's name goes on the page. CL-006 Civic Ties (B3), CL-008 Political Hostility (B4, "Affective polarization"), CL-010 Decisive Primaries (C2, "Primary decisiveness"), CL-014 Entrenched Power (D7, "Entrenched majority control"), CL-015 Political Money (B1, "Money in politics"), CL-017 Policy Favoritism (E1, "Policy tilt to insiders"), CL-018 Earned Trust (E2, "Warranted trust"), CL-026 Executive Power (D2, "Executive unilateralism"), CL-027 Court Alignment (D3, "Doctrine favoring the appointing coalition"), CL-028 Watchdogs (D4, "Oversight and enforcement"), CL-029 Public Services (D5), CL-030 Reform Tests (D6, "State and local experimentation"), CL-032 Local Reporting (B2, "Local news supply"), CL-033 Hostile Content (B6), CL-034 New Technology (X1, "What new technology can do"), CL-035 Residential Sorting (X2), CL-038 External Shocks (X5), CL-039 to CL-046 (TC1 to TC8), CL-050 Worker Bargaining (A2), CL-051 Market Power (A3, "Market concentration"), CL-054 Home Equity (A6), CL-055 Productivity (EC1), CL-057 Labor Share (EC3), CL-058 Stock Ownership (EC4), CL-059 Credit Allocation (EC5), CL-060 to CL-066 (EC6 to EC12), and every R label not listed above against its V7 title. CL-007, CL-009, CL-011, CL-037, CL-049, CL-052, CL-053 and CL-061 match V7's short name exactly.
+
+### Symbols with no V7 element
+
+V7 has no variable, reform, loop or issue for these 22, so each has no V7 ID. The nearest V7 term, where one exists, is given so the editor can choose a word:
+
+| Symbol | Label | Nearest V7 term (none has its own ID) |
+|---|---|---|
+| CL-001 | Voting | pathway PW15 "Voting and public influence"; domain D02 "Elections and representation" |
+| CL-002 | Representation | issue subsystem "Representation"; domain D02 |
+| CL-003 | Registration | reform R-05 "Automatic voter registration" (the reform has its own symbol) |
+| CL-004 | Petition | none found |
+| CL-005 | Public Meeting | issue I047 names "hearings, public comments and meetings"; subsystem "Participation" |
+| CL-016 | Lobbying | issue subsystem "Lobbying"; domain D03 "Money, lobbying and influence" |
+| CL-019 to CL-022 | Explain, Track, Connect, Act | none; the four pillars are Oath & Action's own, not the atlas's |
+| CL-023 | Evidence | glossary terms "Problem evidence" and "Remedy evidence" |
+| CL-024 | Feedback Loop | glossary term "Feedback loop" |
+| CL-031 | Local Government | issue subsystem "State and local government"; hub "Public services where you live" |
+| CL-047 | Data Rights | none found |
+| CL-048 | Public Records | domain D01 "News, records and public information" |
+| CL-067 | Healthcare | issue subsystem "Healthcare"; pathway PW05 "Health coverage and access" |
+| CL-068 | Education | issue subsystem "Education"; pathway PW14 "Public schools" |
+| CL-069 | Childcare | pathway PW07 "Childcare and family care"; subsystem "Care" |
+| CL-070 | Environment | issue subsystem "Environment" |
+| CL-071 | Policy | area E's plain name "Policy" (DR-35) |
+| CL-072 | Reform | glossary term "Reform profile" |
+
+### Smaller points
+
+- **R-35** reads "Term Limits · Rejected". V7's title is "Rejected option: term limits for legislators" and V7 marks it `rejected: true`. The middle dot is a typographic device that chapter 10's label style should settle; the word "Rejected" must stay with it wherever it appears.
+- **CL-061 Household Income** draws a person, an arrow and an envelope, which reads as sending mail more than as income. It is outside this check and a settled drawing, so I note it only because it constrains Contact an official (section 1).
+
+### What I could not check
+
+- V7 itself. The model JSON and the V7 HTML are not in this checkout (`work/extract/` does not exist), so every comparison runs against the three studio records built from V7 on October 20, October 30 and November 5. If V7 changed after the October 15 snapshot, these records would not show it.
+- The 26 variables with no loop, whose V7 short name, if V7 holds one outside `chain_labels`, I could not see.
+- V7's own display labels in its renderer, which may shorten titles differently.
 
 ## 3. Loop R4a's 2025 and 2026 redraws by party (BE-02, D2-433)
 
@@ -156,7 +234,13 @@ In progress.
 
 ## 8. Atlas issue I155's correction for the V7.1 list (D2-413)
 
-In progress.
+The V7.1 list (`work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md`) ends at item 37. I have not edited it. The proposed next line, in the list's own four columns:
+
+| # | Issue | Where | Proposed fix |
+|---|---|---|---|
+| 38 | Issue I155's summary says a review by conservative lawyers "found no supporting evidence in any of 64 cases", and its evidence note says Lost, Not Stolen "found no evidence of outcome-changing fraud in any of 64 court cases". The review counts 64 cases and records that "Only in one Pennsylvania case involving far too few votes to overturn the results did Trump and his supporters prevail" (printed page 3), so both lines drop a finding the source states. The problem example also stops the Third Circuit's sentence mid-clause at "never alleges that any ballot was fraudulent" | `issues.I155.summary`, `issues.I155.evidence_note`, `issues.I155.problem_example.text` | Take the review's own words in both lines, for example: "Lost, Not Stolen (July 2022), a review by eight conservatives, counted 64 cases that Donald Trump and his supporters brought in six battleground states and found that they 'failed to produce substantive evidence to make their case'; it records one Pennsylvania case they won, on far too few votes to change the result." In the problem example, quote the court's whole clause: "never alleges that any ballot was fraudulent or cast by an illegal voter" (opinion, page 21). Found by the research lead, November 7, 2026, with both sources read in full (`work/handoffs/phase-2/20261107_Apply-Pass-Research.md`); D2-413 |
+
+The wording of I155's summary and evidence note above is quoted from the atlas editorial data (V7 snapshot of 2026-10-15). The review's words are quoted from the November 7 research, which read the review's PDF in full; I did not reopen it today.
 
 ## Routine calls
 
