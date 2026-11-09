@@ -1,0 +1,3535 @@
+{
+ "built": "2026-11-09T22:19:27.919997+00:00",
+ "thresholds": {
+  "flag": 0.9127,
+  "watch": 0.8708
+ },
+ "likeness_run": "2026-11-09T22:15:43.863Z",
+ "cards": [
+  {
+   "n": 1,
+   "kind": "congress",
+   "title": "Congress: one sign for four drawings",
+   "groups": [
+    {
+     "name": "set",
+     "label": null,
+     "rec": "B",
+     "options": [
+      [
+       "A",
+       "Set A",
+       "set A"
+      ],
+      [
+       "B",
+       "Set B",
+       "set B"
+      ],
+      [
+       "C",
+       "Set C",
+       "set C"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [
+    "CL-025 Congress, clarity 3",
+    "CL-014 Entrenched Power, craft 3",
+    "CL-014 Entrenched Power, clarity 3",
+    "R-13 Congressional Capacity, clarity 3",
+    "R-42 Congressional Tariff Votes, clarity 3"
+   ],
+   "subjects": [
+    {
+     "id": "CL-025",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_CL-025-Congress-Option-A-Black.svg",
+        "closest": {
+         "name": "CL-005 Public Meeting",
+         "likeness": 0.9196,
+         "percentile": 99.3,
+         "status": "flag"
+        },
+        "own": {
+         "name": "CL-025 Congress",
+         "likeness": 0.8644
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.9146,
+         "status": "flag"
+        },
+        "twin": {
+         "name": "CL-014 A",
+         "likeness": 0.9261,
+         "status": "flag"
+        }
+       },
+       "change": "Dome, cupola and finial become a flat attic; the columns become walls, windows and a center door, which takes the red.",
+       "within": true,
+       "red": "work/build/assets/civic-line-redraws/svg/20261109_CL-025-Congress-Option-A-Red-Black.svg",
+       "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-025-Congress-Option-A-Black.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "A city hall or a museum; with the label, a Capitol without its dome",
+        "creative_director_verdict": "Recognized with the label, weakly",
+        "maker_verdict": "Recognized with the label"
+       },
+       "naming_maker": "A large public building, most likely a city hall or a museum. Recognized with the label"
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_CL-025-Congress-Option-B-Black.svg",
+        "closest": {
+         "name": "CL-014 Entrenched Power",
+         "likeness": 0.8961,
+         "percentile": 98.1,
+         "status": "watch"
+        },
+        "own": {
+         "name": "CL-025 Congress",
+         "likeness": 0.867
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.9146,
+         "status": "flag"
+        }
+       },
+       "change": "The chamber in session from the gallery: five members on the near bench seen from behind, a far bench in five sections, and the three-tier rostrum with its top tier red.",
+       "within": false,
+       "red": "work/build/assets/civic-line-redraws/svg/20261109_CL-025-Congress-Option-B-Red-Black.svg",
+       "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-025-Congress-Option-B-Black.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "A theater or arena seen from the seats; the dashed rows also read as a signal",
+        "creative_director_verdict": "Recognized with the label",
+        "maker_verdict": "Recognized with the label"
+       },
+       "naming_maker": "An assembly: members on a curved bench facing a stepped rostrum; with the label, the House in session. Names it nearly"
+      },
+      {
+       "option": "C",
+       "like": {
+        "file": "20261109_CL-025-Congress-Option-C-Black.svg",
+        "closest": {
+         "name": "R-50 Popular-Vote Options",
+         "likeness": 0.8756,
+         "percentile": 95.8,
+         "status": "watch"
+        },
+        "own": {
+         "name": "CL-025 Congress",
+         "likeness": 0.5795
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.6303,
+         "status": ""
+        }
+       },
+       "change": "The chamber from the rostrum: members face the reader from two curved benches, and the presiding desk stands red in the foreground.",
+       "within": false,
+       "red": "work/build/assets/civic-line-redraws/svg/20261109_CL-025-Congress-Option-C-Red-Black.svg",
+       "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-025-Congress-Option-C-Black.svg",
+       "naming_cd": {
+        "option": "C",
+        "creative_director_reading": "Two signals or two bowls",
+        "creative_director_verdict": "Fails, even with the label",
+        "maker_verdict": "Recognized with the label"
+       },
+       "naming_maker": "Members in two tiers facing a presiding desk: an assembly, or an audience. Recognized with the label"
+      }
+     ]
+    },
+    {
+     "id": "CL-014",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+        "closest": {
+         "name": "R-31 Childcare Supply",
+         "likeness": 0.9333,
+         "percentile": 99.7,
+         "status": "flag"
+        },
+        "own": {
+         "name": "CL-014 Entrenched Power",
+         "likeness": 0.9589
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.9396,
+         "status": "flag"
+        },
+        "twin": {
+         "name": "CL-025 A",
+         "likeness": 0.9261,
+         "status": "flag"
+        }
+       },
+       "change": "Spire, cupola and dome become set A's flat attic; the six columns become two walls. Fence and red door kept.",
+       "within": true,
+       "red": "work/build/assets/civic-line-redraws/svg/20261109_CL-014-Entrenched-Power-Option-A-Red-Black.svg",
+       "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "A government building behind a fence, or a compound",
+        "creative_director_verdict": "Names it nearly",
+        "maker_verdict": "Names it nearly"
+       },
+       "naming_maker": "A government building fenced in. Names it nearly"
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+        "closest": {
+         "name": "R-33 Citizen Assemblies",
+         "likeness": 0.9193,
+         "percentile": 99.3,
+         "status": "flag"
+        },
+        "own": {
+         "name": "CL-014 Entrenched Power",
+         "likeness": 0.9415
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.9396,
+         "status": "flag"
+        }
+       },
+       "change": "Set B's chamber in session without the Speaker's tier, inside a fence opened for 48 px; the red moves from the door to the rostrum's top tier.",
+       "within": false,
+       "red": "work/build/assets/civic-line-redraws/svg/20261109_CL-014-Entrenched-Power-Option-B-Red-Black.svg",
+       "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "A fenced arena or a circus ring",
+        "creative_director_verdict": "Recognized with the label",
+        "maker_verdict": "Recognized with the label"
+       },
+       "naming_maker": "A chamber of members closed in by a fence. Names it nearly"
+      },
+      {
+       "option": "C",
+       "like": {
+        "file": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+        "closest": {
+         "name": "CL-035 Residential Sorting",
+         "likeness": 0.9259,
+         "percentile": 99.6,
+         "status": "flag"
+        },
+        "own": {
+         "name": "CL-014 Entrenched Power",
+         "likeness": 0.857
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.8712,
+         "status": "watch"
+        },
+        "twin": {
+         "name": "R-13 A",
+         "likeness": 0.943,
+         "status": "flag"
+        }
+       },
+       "change": "A ballot's arrow runs at the fenced chamber and stops at the fence on a red bar: an election cannot move the body.",
+       "within": false,
+       "red": "work/build/assets/civic-line-redraws/svg/20261109_CL-014-Entrenched-Power-Option-C-Red-Black.svg",
+       "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+       "naming_cd": {
+        "option": "C",
+        "creative_director_reading": "The same fenced arena as B",
+        "creative_director_verdict": "Recognized with the label",
+        "maker_verdict": "Recognized with the label"
+       },
+       "naming_maker": "A ballot stopped at the fence round a chamber: a vote that cannot get in. Names it nearly"
+      }
+     ]
+    },
+    {
+     "id": "R-13",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
+        "closest": {
+         "name": "CL-035 Residential Sorting",
+         "likeness": 0.917,
+         "percentile": 99.2,
+         "status": "flag"
+        },
+        "own": {
+         "name": "R-13 Congressional Capacity",
+         "likeness": 0.9662
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.5386,
+         "status": ""
+        },
+        "twin": {
+         "name": "CL-014 C",
+         "likeness": 0.943,
+         "status": "flag"
+        }
+       },
+       "change": "Dome arcs and finial go, leaving the drum as a flat attic; the drum columns go and the lower columns become two windows and a door.",
+       "within": true,
+       "red": "work/build/assets/civic-line-redraws/svg/20261109_R-13-Congressional-Capacity-Option-A-Red-Black.svg",
+       "black": "work/build/assets/civic-line-redraws/svg/20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "Two people, a building and an open book: a library",
+        "creative_director_verdict": "Misleads without the label (kept by DR-135)",
+        "maker_verdict": "Misleads without the label"
+       },
+       "naming_maker": "Two people, a building and an open book; the book pulls toward reading or a library. Misleads without the label"
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_R-13-Congressional-Capacity-Option-B-Black.svg",
+        "closest": {
+         "name": "CL-047 Data Rights",
+         "likeness": 0.8507,
+         "percentile": 91,
+         "status": ""
+        },
+        "own": {
+         "name": "R-13 Congressional Capacity",
+         "likeness": 0.5969
+        },
+        "sibling": {
+         "option": "C",
+         "likeness": 0.8532,
+         "status": ""
+        }
+       },
+       "change": "Set B's chamber in session replaces the building, above two staff and an analyst's report whose chart line takes the red.",
+       "within": false,
+       "red": "work/build/assets/civic-line-redraws/svg/20261109_R-13-Congressional-Capacity-Option-B-Red-Black.svg",
+       "black": "work/build/assets/civic-line-redraws/svg/20261109_R-13-Congressional-Capacity-Option-B-Black.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "Staff and a report under a chamber",
+        "creative_director_verdict": "Recognized with the label",
+        "maker_verdict": "Recognized with the label"
+       },
+       "naming_maker": "A legislature in session above two staff and a report: the legislature's own staff. Recognized with the label"
+      },
+      {
+       "option": "C",
+       "like": {
+        "file": "20261109_R-13-Congressional-Capacity-Option-C-Black.svg",
+        "closest": {
+         "name": "CL-047 Data Rights",
+         "likeness": 0.8051,
+         "percentile": 77.7,
+         "status": ""
+        },
+        "own": {
+         "name": "R-13 Congressional Capacity",
+         "likeness": 0.452
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.8532,
+         "status": ""
+        }
+       },
+       "change": "Set C's chamber from the rostrum replaces the building, above two staff and an analyst's report whose chart line takes the red.",
+       "within": false,
+       "red": "work/build/assets/civic-line-redraws/svg/20261109_R-13-Congressional-Capacity-Option-C-Red-Black.svg",
+       "black": "work/build/assets/civic-line-redraws/svg/20261109_R-13-Congressional-Capacity-Option-C-Black.svg",
+       "naming_cd": {
+        "option": "C",
+        "creative_director_reading": "Two signals over staff and a report",
+        "creative_director_verdict": "Recognized with the label, weakly",
+        "maker_verdict": "Recognized with the label"
+       },
+       "naming_maker": "An assembly above two staff and a report. Recognized with the label"
+      }
+     ]
+    },
+    {
+     "id": "R-42",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+        "closest": {
+         "name": "R-06 On-Cycle Elections",
+         "likeness": 0.9292,
+         "percentile": 99.7,
+         "status": "flag"
+        },
+        "own": {
+         "name": "R-42 Congressional Tariff Votes",
+         "likeness": 0.9834
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.3691,
+         "status": ""
+        },
+        "twin": {
+         "name": "Contact-An-Official B",
+         "likeness": 0.9202,
+         "status": "flag"
+        }
+       },
+       "change": "Finial, lantern and dome go, leaving the drum as a flat attic; the columns become a band and windows. Ballot box, chart and red kept.",
+       "within": true,
+       "red": "work/build/assets/civic-line-redraws/svg/20261109_R-42-Congressional-Tariff-Votes-Option-A-Red-Black.svg",
+       "black": "work/build/assets/civic-line-redraws/svg/20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "A building, a ballot box and a container: voting on shipping",
+        "creative_director_verdict": "Misleads without the label (kept by DR-135)",
+        "maker_verdict": "Misleads without the label"
+       },
+       "naming_maker": "A building, a ballot box and a crate with an arrow; the ballot box reads as a public election. Misleads without the label"
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
+        "closest": {
+         "name": "R-43 Disaster Mitigation",
+         "likeness": 0.8849,
+         "percentile": 96.9,
+         "status": "watch"
+        },
+        "own": {
+         "name": "R-42 Congressional Tariff Votes",
+         "likeness": 0.4486
+        },
+        "sibling": {
+         "option": "C",
+         "likeness": 0.8589,
+         "status": ""
+        }
+       },
+       "change": "Set B's chamber in session, a red vote card with a yes and a no in place of the ballot box, and CL-064's parcel with a tag for imports.",
+       "within": false,
+       "red": "work/build/assets/civic-line-redraws/svg/20261109_R-42-Congressional-Tariff-Votes-Option-B-Red-Black.svg",
+       "black": "work/build/assets/civic-line-redraws/svg/20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "A chamber, a yes-and-no card and a parcel with a price tag: a vote on goods",
+        "creative_director_verdict": "Recognized with the label",
+        "maker_verdict": "Recognized with the label"
+       },
+       "naming_maker": "A legislature in session, a yes-and-no card and a parcel with a tag: a vote on goods. Recognized with the label"
+      },
+      {
+       "option": "C",
+       "like": {
+        "file": "20261109_R-42-Congressional-Tariff-Votes-Option-C-Black.svg",
+        "closest": {
+         "name": "CL-012 Election Rules",
+         "likeness": 0.8505,
+         "percentile": 90.9,
+         "status": ""
+        },
+        "own": {
+         "name": "R-42 Congressional Tariff Votes",
+         "likeness": 0.2285
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.8589,
+         "status": ""
+        }
+       },
+       "change": "Set C's chamber from the rostrum, a red vote card with a yes and a no in place of the ballot box, and CL-064's parcel with a tag for imports.",
+       "within": false,
+       "red": "work/build/assets/civic-line-redraws/svg/20261109_R-42-Congressional-Tariff-Votes-Option-C-Red-Black.svg",
+       "black": "work/build/assets/civic-line-redraws/svg/20261109_R-42-Congressional-Tariff-Votes-Option-C-Black.svg",
+       "naming_cd": {
+        "option": "C",
+        "creative_director_reading": "The same with two signals in place of the chamber",
+        "creative_director_verdict": "Recognized with the label, weakly",
+        "maker_verdict": "Recognized with the label"
+       },
+       "naming_maker": "An assembly, a yes-and-no card and a parcel with a tag: a vote on goods. Recognized with the label"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "kind": "redraw",
+   "title": "CL-059 Credit Allocation",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "B",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ],
+      [
+       "B",
+       "Option B",
+       "B"
+      ],
+      [
+       "C",
+       "Option C",
+       "C"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [],
+   "subjects": [
+    {
+     "id": "CL-059",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_CL-059-Credit-Allocation-Option-A-Black.svg",
+        "closest": {
+         "name": "CL-040 Platform Power",
+         "likeness": 0.7688,
+         "percentile": 66.1,
+         "status": ""
+        },
+        "own": {
+         "name": "CL-059 Credit Allocation",
+         "likeness": 0.9918
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.989,
+         "status": "flag"
+        }
+       },
+       "change": "The four columns become one wall holding a round vault door. Pediment, base, home, factory and red branches kept.",
+       "within": true,
+       "red": "work/build/assets/civic-line-redraws/svg/20261109_CL-059-Credit-Allocation-Option-A-Red-Black.svg",
+       "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-059-Credit-Allocation-Option-A-Black.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "A bank sending money to a home and a factory",
+        "creative_director_verdict": "Names the subject (through its temple front)",
+        "maker_verdict": "Names the subject"
+       },
+       "naming_maker": "A bank, or a temple, sending money to a home and a factory. Names the subject"
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_CL-059-Credit-Allocation-Option-B-Black.svg",
+        "closest": {
+         "name": "CL-022 Act",
+         "likeness": 0.7591,
+         "percentile": 62.9,
+         "status": ""
+        },
+        "own": {
+         "name": "CL-059 Credit Allocation",
+         "likeness": 0.9746
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.989,
+         "status": "flag"
+        }
+       },
+       "change": "The pediment goes too: a flat-roofed bank with a round vault door on its face, its wheel's handles standing past the rim.",
+       "within": false,
+       "red": "work/build/assets/civic-line-redraws/svg/20261109_CL-059-Credit-Allocation-Option-B-Red-Black.svg",
+       "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-059-Credit-Allocation-Option-B-Black.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "A vault paying out to a home and a factory",
+        "creative_director_verdict": "Names it nearly",
+        "maker_verdict": "Names the subject"
+       },
+       "naming_maker": "A bank vault with its wheel, paying out to a home and a factory. Names the subject"
+      },
+      {
+       "option": "C",
+       "like": {
+        "file": "20261109_CL-059-Credit-Allocation-Option-C-Black.svg",
+        "closest": {
+         "name": "CL-040 Platform Power",
+         "likeness": 0.752,
+         "percentile": 60.3,
+         "status": ""
+        },
+        "own": {
+         "name": "CL-059 Credit Allocation",
+         "likeness": 0.9553
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.963,
+         "status": "flag"
+        }
+       },
+       "change": "The lender and the loan: a small flat-roofed building beside a loan paper marked with a percent sign; the red branches carry the money out.",
+       "within": false,
+       "red": "work/build/assets/civic-line-redraws/svg/20261109_CL-059-Credit-Allocation-Option-C-Red-Black.svg",
+       "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-059-Credit-Allocation-Option-C-Black.svg",
+       "naming_cd": {
+        "option": "C",
+        "creative_director_reading": "A safe paying out to a home and a factory",
+        "creative_director_verdict": "Names it nearly",
+        "maker_verdict": "Names the subject"
+       },
+       "naming_maker": "A lender's office and a loan paper with a percent sign, paying out to a home and a factory. Names the subject"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "kind": "redraw",
+   "title": "R-48 Agency Independence",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "C",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ],
+      [
+       "B",
+       "Option B",
+       "B"
+      ],
+      [
+       "C",
+       "Option C",
+       "C"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [
+    "R-48 Agency Independence, clarity 3"
+   ],
+   "subjects": [
+    {
+     "id": "R-48",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
+        "closest": {
+         "name": "R-41 Grid Cost Allocation",
+         "likeness": 0.8968,
+         "percentile": 98.1,
+         "status": "watch"
+        },
+        "own": {
+         "name": "R-48 Agency Independence",
+         "likeness": 0.9967
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.9498,
+         "status": "flag"
+        }
+       },
+       "change": "The four bays of columns become one wall with a door and two windows. Pediment, band, base, brace and official kept.",
+       "within": true,
+       "red": "work/build/assets/civic-line-redraws/svg/20261109_R-48-Agency-Independence-Option-A-Red-Black.svg",
+       "black": "work/build/assets/civic-line-redraws/svg/20261109_R-48-Agency-Independence-Option-A-Black.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "A house or a school beside a speaker at a lectern",
+        "creative_director_verdict": "Recognized with the label",
+        "maker_verdict": "Recognized with the label"
+       },
+       "naming_maker": "A house or a school and a speaker at a lectern, set apart by a bracket; the pediment over a door reads as a house. Recognized with the label"
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
+        "closest": {
+         "name": "R-44 Digital Competition",
+         "likeness": 0.8749,
+         "percentile": 95.7,
+         "status": "watch"
+        },
+        "own": {
+         "name": "R-48 Agency Independence",
+         "likeness": 0.9496
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.9498,
+         "status": "flag"
+        }
+       },
+       "change": "A flat-roofed office building with no columns or pediment, the red brace, and the official at a desk whose arrow stops at it.",
+       "within": false,
+       "red": "work/build/assets/civic-line-redraws/svg/20261109_R-48-Agency-Independence-Option-B-Red-Black.svg",
+       "black": "work/build/assets/civic-line-redraws/svg/20261109_R-48-Agency-Independence-Option-B-Black.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "A panel and a speaker kept apart: a debate",
+        "creative_director_verdict": "Recognized with the label",
+        "maker_verdict": "Recognized with the label"
+       },
+       "naming_maker": "An office building kept apart from a person at a desk, whose arrow stops at the bracket. Names it nearly"
+      },
+      {
+       "option": "C",
+       "like": {
+        "file": "20261109_R-48-Agency-Independence-Option-C-Black.svg",
+        "closest": {
+         "name": "CL-035 Residential Sorting",
+         "likeness": 0.8528,
+         "percentile": 91.5,
+         "status": ""
+        },
+        "own": {
+         "name": "R-48 Agency Independence",
+         "likeness": 0.8322
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.899,
+         "status": "watch"
+        }
+       },
+       "change": "The commission at its table, and the official moves to a desk; a longer arrow from the desk stops at the red brace.",
+       "within": false,
+       "red": "work/build/assets/civic-line-redraws/svg/20261109_R-48-Agency-Independence-Option-C-Red-Black.svg",
+       "black": "work/build/assets/civic-line-redraws/svg/20261109_R-48-Agency-Independence-Option-C-Black.svg",
+       "naming_cd": {
+        "option": "C",
+        "creative_director_reading": "A panel kept apart from a person at a desk who points at it",
+        "creative_director_verdict": "Names it nearly",
+        "maker_verdict": "Names it nearly"
+       },
+       "naming_maker": "A panel of three kept apart from a person at a desk, whose arrow stops at the bracket. Names it nearly"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "kind": "testify",
+   "title": "Testify",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "A",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ],
+      [
+       "B",
+       "Option B",
+       "B"
+      ],
+      [
+       "C",
+       "Option C",
+       "C"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [],
+   "subjects": [
+    {
+     "id": "Testify",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Testify-Option-A-Black.svg",
+        "closest": {
+         "name": "CL-042 AI Concentration",
+         "likeness": 0.4487,
+         "percentile": 3.6,
+         "status": ""
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.8511,
+         "status": ""
+        }
+       },
+       "change": "A raised, curved dais with three officials above the witness, who sits at a table with a front panel and a red microphone.",
+       "within": null,
+       "red": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-A-Red-Black.svg",
+       "black": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-A-Black.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "A hearing: a person at a microphone facing a raised panel (the nearest wrong reading is a talent-show panel)",
+        "creative_director_verdict": "Names the subject",
+        "maker_verdict": "Names the subject"
+       },
+       "naming_maker": "A hearing: a witness seated at a table with a microphone, facing a raised panel. Names the subject"
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_Testify-Option-B-Black.svg",
+        "closest": {
+         "name": "CL-042 AI Concentration",
+         "likeness": 0.6636,
+         "percentile": 32.4,
+         "status": ""
+        },
+        "sibling": {
+         "option": "C",
+         "likeness": 0.8835,
+         "status": "watch"
+        }
+       },
+       "change": "Written testimony: a signed sheet of testimony handed up from the person to the committee's raised, curved dais; red on the signature.",
+       "within": null,
+       "red": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-B-Red-Black.svg",
+       "black": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-B-Black.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "The same scene as A, smaller and on a diagonal",
+        "creative_director_verdict": "Names it nearly",
+        "maker_verdict": "Names the subject"
+       },
+       "naming_maker": "A person handing a signed paper up to a panel: written testimony, or to some a petition. Names it nearly"
+      },
+      {
+       "option": "C",
+       "like": {
+        "file": "20261109_Testify-Option-C-Black.svg",
+        "closest": {
+         "name": "CL-042 AI Concentration",
+         "likeness": 0.7171,
+         "percentile": 48.5,
+         "status": ""
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.8835,
+         "status": "watch"
+        }
+       },
+       "change": "The raised, curved dais with three officials, and the red microphone on the witness table; the reader is the witness.",
+       "within": null,
+       "red": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-C-Red-Black.svg",
+       "black": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-C-Black.svg",
+       "naming_cd": {
+        "option": "C",
+        "creative_director_reading": "A panel with a microphone: a hearing or a panel talk",
+        "creative_director_verdict": "Recognized with the label",
+        "maker_verdict": "Names it nearly"
+       },
+       "naming_maker": "A panel and a microphone: a hearing, or a panel discussion. Names it nearly"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "kind": "contact",
+   "title": "Contact an official",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "A",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ],
+      [
+       "B",
+       "Option B",
+       "B"
+      ],
+      [
+       "C",
+       "Option C",
+       "C"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [],
+   "subjects": [
+    {
+     "id": "Contact-An-Official",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Contact-An-Official-Option-A-Black.svg",
+        "closest": {
+         "name": "R-36 Public Investment",
+         "likeness": 0.8962,
+         "percentile": 98.1,
+         "status": "watch"
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.9102,
+         "status": "watch"
+        }
+       },
+       "change": "A person and an official at a desk, joined by one line that carries a red speech mark.",
+       "within": null,
+       "red": "work/build/assets/civic-line-new-topics/svg/20261109_Contact-An-Official-Option-A-Red-Black.svg",
+       "black": "work/build/assets/civic-line-new-topics/svg/20261109_Contact-An-Official-Option-A-Black.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "A person sending a message to someone at a desk",
+        "creative_director_verdict": "Names it nearly",
+        "maker_verdict": "Names the subject"
+       },
+       "naming_maker": "A person sending a message to someone at a desk. Names the subject"
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_Contact-An-Official-Option-B-Black.svg",
+        "closest": {
+         "name": "R-06 On-Cycle Elections",
+         "likeness": 0.9084,
+         "percentile": 98.8,
+         "status": "watch"
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.9102,
+         "status": "watch"
+        },
+        "twin": {
+         "name": "R-42 A",
+         "likeness": 0.9202,
+         "status": "flag"
+        }
+       },
+       "change": "A very simple phone, a step larger, whose red cord runs to an official at a desk.",
+       "within": null,
+       "red": "work/build/assets/civic-line-new-topics/svg/20261109_Contact-An-Official-Option-B-Red-Black.svg",
+       "black": "work/build/assets/civic-line-new-topics/svg/20261109_Contact-An-Official-Option-B-Black.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "A desk phone wired to someone at a desk: calling an office",
+        "creative_director_verdict": "Names it nearly",
+        "maker_verdict": "Names the subject"
+       },
+       "naming_maker": "A desk phone wired to someone at a desk: calling an office. Names the subject"
+      },
+      {
+       "option": "C",
+       "like": {
+        "file": "20261109_Contact-An-Official-Option-C-Black.svg",
+        "closest": {
+         "name": "CL-069 Childcare",
+         "likeness": 0.8637,
+         "percentile": 93.7,
+         "status": ""
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.7176,
+         "status": ""
+        }
+       },
+       "change": "In person: the person stands at the official's desk and one red speech mark rises between them.",
+       "within": null,
+       "red": "work/build/assets/civic-line-new-topics/svg/20261109_Contact-An-Official-Option-C-Red-Black.svg",
+       "black": "work/build/assets/civic-line-new-topics/svg/20261109_Contact-An-Official-Option-C-Black.svg",
+       "naming_cd": {
+        "option": "C",
+        "creative_director_reading": "A person speaking to someone at a desk: a visit, or a help desk",
+        "creative_director_verdict": "Names it nearly",
+        "maker_verdict": "Names it nearly"
+       },
+       "naming_maker": "A person talking to someone at a desk: a visit, or a help desk. Names it nearly"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "kind": "utility-family",
+   "title": "The utility family: bare actions or ringed",
+   "groups": [
+    {
+     "name": "family",
+     "label": null,
+     "rec": null,
+     "options": [
+      [
+       "bare",
+       "Bare actions, with Error, Success and Warning in their shapes",
+       "bare"
+      ],
+      [
+       "ringed",
+       "Every action inside a ring",
+       "ringed"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": []
+  },
+  {
+   "n": 7,
+   "kind": "utility",
+   "title": "Close",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "A",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [],
+   "subjects": [
+    {
+     "id": "close",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Utility-Close-Option-A-24px.svg",
+        "closest": {
+         "name": "CL-022 Act",
+         "likeness": 0.8335,
+         "percentile": 86.5,
+         "status": ""
+        }
+       },
+       "shows": "A bare cross",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "0 of 0",
+        "soft": 79
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "0 of 0",
+        "soft": 69
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Close-Option-A-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Close-Option-A-16px.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "Close",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Close."
+      }
+     ]
+    }
+   ],
+   "fewer_reason": "Readers know one sign for Close, the bare cross. The ring is a choice for the whole set, on the family card."
+  },
+  {
+   "n": 8,
+   "kind": "utility",
+   "title": "Menu",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "A",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ],
+      [
+       "B",
+       "Option B",
+       "B"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [
+    "Menu, clarity 3"
+   ],
+   "subjects": [
+    {
+     "id": "menu",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Utility-Menu-Option-A-24px.svg",
+        "closest": {
+         "name": "CL-012 Election Rules",
+         "likeness": 0.7369,
+         "percentile": 55.4,
+         "status": ""
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.2275,
+         "status": ""
+        }
+       },
+       "shows": "Three even bars",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "3 of 3",
+        "soft": 11
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "3 of 3",
+        "soft": 62
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Menu-Option-A-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Menu-Option-A-16px.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "Menu",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Menu."
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_Utility-Menu-Option-B-24px.svg",
+        "closest": {
+         "name": "R-14 Automatic Funding",
+         "likeness": 0.8371,
+         "percentile": 87.5,
+         "status": ""
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.2275,
+         "status": ""
+        }
+       },
+       "shows": "Two even bars",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "2 of 2",
+        "soft": 11
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "2 of 2",
+        "soft": 62
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Menu-Option-B-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Menu-Option-B-16px.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "Menu",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Partly: Alone, an equals sign or a drag handle; beside its word, Menu at once."
+      }
+     ]
+    }
+   ],
+   "fewer_reason": "Three dots say More and a grid says apps, so no third form names Menu."
+  },
+  {
+   "n": 9,
+   "kind": "utility",
+   "title": "Arrow (Next, Previous and the sort order)",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "A",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ],
+      [
+       "B",
+       "Option B",
+       "B"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [],
+   "subjects": [
+    {
+     "id": "arrow",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Utility-Arrow-Option-A-24px.svg",
+        "closest": {
+         "name": "CL-002 Representation",
+         "likeness": 0.774,
+         "percentile": 68,
+         "status": ""
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.8672,
+         "status": ""
+        }
+       },
+       "shows": "An arrow with a shaft and an open head",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "1 of 1",
+        "soft": 58
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "1 of 1",
+        "soft": 63
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Arrow-Option-A-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Arrow-Option-A-16px.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "Next, or go forward",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Next, or go forward."
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_Utility-Arrow-Option-B-24px.svg",
+        "closest": {
+         "name": "CL-026 Executive Power",
+         "likeness": 0.8146,
+         "percentile": 80.7,
+         "status": ""
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.8672,
+         "status": ""
+        }
+       },
+       "shows": "An arrow with a shaft and a closed triangle head",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "3 of 3",
+        "soft": 38
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "2 of 2",
+        "soft": 62
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Arrow-Option-B-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Arrow-Option-B-16px.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "Next, as a button",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Next, or go."
+      }
+     ]
+    }
+   ],
+   "fewer_reason": "A longer shaft repeated A, and the ring is a choice for the whole set, on the family card."
+  },
+  {
+   "n": 10,
+   "kind": "utility",
+   "title": "Chevron (expand and collapse)",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "A",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ],
+      [
+       "B",
+       "Option B",
+       "B"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [],
+   "subjects": [
+    {
+     "id": "chevron",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Utility-Chevron-Option-A-24px.svg",
+        "closest": {
+         "name": "CL-064 Trade Costs",
+         "likeness": 0.7284,
+         "percentile": 52.6,
+         "status": ""
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.8338,
+         "status": ""
+        }
+       },
+       "shows": "A chevron",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "0 of 0",
+        "soft": 81
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "0 of 0",
+        "soft": 71
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Chevron-Option-A-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Chevron-Option-A-16px.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "Show more, or open the list",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Show more, or open the list."
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_Utility-Chevron-Option-B-24px.svg",
+        "closest": {
+         "name": "CL-022 Act",
+         "likeness": 0.8085,
+         "percentile": 78.9,
+         "status": ""
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.8338,
+         "status": ""
+        }
+       },
+       "shows": "A disclosure triangle, drawn in line",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "1 of 1",
+        "soft": 48
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "1 of 1",
+        "soft": 65
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Chevron-Option-B-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Chevron-Option-B-16px.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "Show more, or scroll down",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Open the list: the dropdown sign."
+      }
+     ]
+    }
+   ],
+   "fewer_reason": "A smaller chevron repeated A, and plus and minus are the atlas's polarity signs."
+  },
+  {
+   "n": 11,
+   "kind": "utility",
+   "title": "Download",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "A",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ],
+      [
+       "B",
+       "Option B",
+       "B"
+      ],
+      [
+       "C",
+       "Option C",
+       "C"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [],
+   "subjects": [
+    {
+     "id": "download",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Utility-Download-Option-A-24px.svg",
+        "closest": {
+         "name": "CL-001 Voting",
+         "likeness": 0.7926,
+         "percentile": 73.9,
+         "status": ""
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.8515,
+         "status": ""
+        }
+       },
+       "shows": "An arrow down into an open tray",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "4 of 4",
+        "soft": 40
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "4 of 4",
+        "soft": 66
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Download-Option-A-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Download-Option-A-16px.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "Download",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Download."
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_Utility-Download-Option-B-24px.svg",
+        "closest": {
+         "name": "CL-025 Congress",
+         "likeness": 0.7741,
+         "percentile": 68,
+         "status": ""
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.8515,
+         "status": ""
+        }
+       },
+       "shows": "An arrow down onto a line",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "2 of 2",
+        "soft": 42
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "2 of 2",
+        "soft": 67
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Download-Option-B-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Download-Option-B-16px.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "Download, or save",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Download, or save."
+      },
+      {
+       "option": "C",
+       "like": {
+        "file": "20261109_Utility-Download-Option-C-24px.svg",
+        "closest": {
+         "name": "CL-012 Election Rules",
+         "likeness": 0.5162,
+         "percentile": 7.7,
+         "status": ""
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.4478,
+         "status": ""
+        }
+       },
+       "shows": "An arrow down on a page with a folded corner",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "7 of 7",
+        "soft": 26
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "5 of 5",
+        "soft": 62
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Download-Option-C-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Download-Option-C-16px.svg",
+       "naming_cd": {
+        "option": "C",
+        "creative_director_reading": "Download, or move down",
+        "creative_director_verdict": "Names it nearly",
+        "maker_verdict": "Partly"
+       },
+       "naming_maker": "Names it: Download the file."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "kind": "utility",
+   "title": "Go to another site",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "A",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ],
+      [
+       "B",
+       "Option B",
+       "B"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [
+    "Go to another site, clarity 3"
+   ],
+   "subjects": [
+    {
+     "id": "another-site",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Utility-Another-Site-Option-A-24px.svg",
+        "closest": {
+         "name": "CL-057 Labor Share",
+         "likeness": 0.5354,
+         "percentile": 9.4,
+         "status": ""
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.4644,
+         "status": ""
+        }
+       },
+       "shows": "An arrow leaving a box by its top right corner",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "6 of 6",
+        "soft": 34
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "6 of 6",
+        "soft": 59
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Another-Site-Option-A-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Another-Site-Option-A-16px.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "Open somewhere else, or open in a new tab",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Open somewhere else, or open in a new tab."
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_Utility-Another-Site-Option-B-24px.svg",
+        "closest": {
+         "name": "CL-057 Labor Share",
+         "likeness": 0.7677,
+         "percentile": 65.7,
+         "status": ""
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.4644,
+         "status": ""
+        }
+       },
+       "shows": "A bare arrow up and to the right",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "2 of 2",
+        "soft": 47
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "2 of 2",
+        "soft": 61
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Another-Site-Option-B-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Another-Site-Option-B-16px.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "Up and to the right, or trending up",
+        "creative_director_verdict": "Names it nearly",
+        "maker_verdict": "Partly"
+       },
+       "naming_maker": "Partly: Up and to the right; may read as trending up."
+      }
+     ]
+    }
+   ],
+   "fewer_reason": "A window would say the link opens a new window, and these links open in the same tab (audit 1.2)."
+  },
+  {
+   "n": 13,
+   "kind": "utility",
+   "title": "Search",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "A",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [],
+   "subjects": [
+    {
+     "id": "search",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Utility-Search-Option-A-24px.svg",
+        "closest": {
+         "name": "CL-024 Feedback Loop",
+         "likeness": 0.6511,
+         "percentile": 29.2,
+         "status": ""
+        }
+       },
+       "shows": "A magnifier: round lens, handle to the lower right",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "0 of 0",
+        "soft": 67
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "0 of 0",
+        "soft": 74
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Search-Option-A-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Search-Option-A-16px.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "Search",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Search."
+      }
+     ]
+    }
+   ],
+   "fewer_reason": "Readers know one sign for Search. A glint or a larger lens repeated it, and the ring is on the family card."
+  },
+  {
+   "n": 14,
+   "kind": "utility",
+   "title": "Filter",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "A",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ],
+      [
+       "B",
+       "Option B",
+       "B"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [],
+   "subjects": [
+    {
+     "id": "filter",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Utility-Filter-Option-A-24px.svg",
+        "closest": {
+         "name": "CL-012 Election Rules",
+         "likeness": 0.668,
+         "percentile": 33.3,
+         "status": ""
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.6725,
+         "status": ""
+        }
+       },
+       "shows": "A funnel with a slanted spout",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "3 of 3",
+        "soft": 41
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "3 of 3",
+        "soft": 67
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Filter-Option-A-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Filter-Option-A-16px.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "Filter",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Filter."
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_Utility-Filter-Option-B-24px.svg",
+        "closest": {
+         "name": "R-50 Popular-Vote Options",
+         "likeness": 0.8042,
+         "percentile": 77.6,
+         "status": ""
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.6725,
+         "status": ""
+        }
+       },
+       "shows": "Three lines narrowing downward, the list filter",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "3 of 3",
+        "soft": 17
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "3 of 3",
+        "soft": 64
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Filter-Option-B-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Filter-Option-B-16px.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "Filter",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Partly: Filter, or sort: the list-filter sign."
+      }
+     ]
+    }
+   ],
+   "fewer_reason": "A square spout and a wider funnel repeated A (0.997 and 0.938)."
+  },
+  {
+   "n": 15,
+   "kind": "utility",
+   "title": "Copy",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "A",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ],
+      [
+       "B",
+       "Option B",
+       "B"
+      ],
+      [
+       "C",
+       "Option C",
+       "C"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [],
+   "subjects": [
+    {
+     "id": "copy",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Utility-Copy-Option-A-24px.svg",
+        "closest": {
+         "name": "CL-039 Feed Ranking",
+         "likeness": 0.5485,
+         "percentile": 10.7,
+         "status": ""
+        },
+        "sibling": {
+         "option": "C",
+         "likeness": 0.8552,
+         "status": ""
+        }
+       },
+       "shows": "Two square sheets, the back one up and to the left",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "6 of 6",
+        "soft": 17
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "6 of 6",
+        "soft": 62
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Copy-Option-A-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Copy-Option-A-16px.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "Copy, or duplicate",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Copy, or duplicate."
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_Utility-Copy-Option-B-24px.svg",
+        "closest": {
+         "name": "CL-039 Feed Ranking",
+         "likeness": 0.623,
+         "percentile": 22.6,
+         "status": ""
+        },
+        "sibling": {
+         "option": "C",
+         "likeness": 0.4327,
+         "status": ""
+        }
+       },
+       "shows": "Two tall sheets, the back one shown as a corner below and to the left",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "6 of 6",
+        "soft": 14
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "6 of 6",
+        "soft": 58
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Copy-Option-B-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Copy-Option-B-16px.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "Copy, or pages",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Copy, or pages."
+      },
+      {
+       "option": "C",
+       "like": {
+        "file": "20261109_Utility-Copy-Option-C-24px.svg",
+        "closest": {
+         "name": "CL-067 Healthcare",
+         "likeness": 0.7021,
+         "percentile": 43.5,
+         "status": ""
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.8552,
+         "status": ""
+        }
+       },
+       "shows": "Two sheets, the front one with text",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "8 of 8",
+        "soft": 20
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "7 of 7",
+        "soft": 60
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Copy-Option-C-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Copy-Option-C-16px.svg",
+       "naming_cd": {
+        "option": "C",
+        "creative_director_reading": "Copy text, or documents",
+        "creative_director_verdict": "Names it nearly",
+        "maker_verdict": "Partly"
+       },
+       "naming_maker": "Partly: Copy text, or documents."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "kind": "utility",
+   "title": "Play and Pause",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "A",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [],
+   "subjects": [
+    {
+     "id": "play",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Utility-Play-Option-A-24px.svg",
+        "closest": {
+         "name": "CL-004 Petition",
+         "likeness": 0.7956,
+         "percentile": 74.9,
+         "status": ""
+        }
+       },
+       "shows": "A triangle pointing right",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "1 of 1",
+        "soft": 54
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "1 of 1",
+        "soft": 71
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Play-Option-A-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Play-Option-A-16px.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "Play",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Play."
+      }
+     ]
+    },
+    {
+     "id": "pause",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Utility-Pause-Option-A-24px.svg",
+        "closest": {
+         "name": "CL-012 Election Rules",
+         "likeness": 0.8968,
+         "percentile": 98.1,
+         "status": "watch"
+        }
+       },
+       "shows": "Two upright bars",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "8 of 8",
+        "soft": 15
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "4 of 4",
+        "soft": 62
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Pause-Option-A-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Pause-Option-A-16px.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "Pause",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Pause."
+      }
+     ]
+    }
+   ],
+   "fewer_reason": "Readers know one sign for Play. The ring is on the family card, and a screen narrows Play to video. Readers know one sign for Pause. The ring is on the family card, and a screen narrows Pause to video."
+  },
+  {
+   "n": 17,
+   "kind": "utility",
+   "title": "Reset",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "B",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ],
+      [
+       "B",
+       "Option B",
+       "B"
+      ],
+      [
+       "C",
+       "Option C",
+       "C"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [
+    "Reset, clarity 3"
+   ],
+   "subjects": [
+    {
+     "id": "reset",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Utility-Reset-Option-A-24px.svg",
+        "closest": {
+         "name": "R-16 Court Terms & Ethics",
+         "likeness": 0.743,
+         "percentile": 57.3,
+         "status": ""
+        },
+        "sibling": {
+         "option": "C",
+         "likeness": 0.6824,
+         "status": ""
+        }
+       },
+       "shows": "The undo arc: half a circle over the top, an upright corner head at the left",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "2 of 2",
+        "soft": 52
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "2 of 2",
+        "soft": 74
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Reset-Option-A-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Reset-Option-A-16px.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "Refresh, or reload",
+        "creative_director_verdict": "Fails",
+        "maker_verdict": "Fails"
+       },
+       "naming_maker": "Partly: Undo, a near subject."
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_Utility-Reset-Option-B-24px.svg",
+        "closest": {
+         "name": "CL-057 Labor Share",
+         "likeness": 0.4812,
+         "percentile": 5.4,
+         "status": ""
+        },
+        "sibling": {
+         "option": "C",
+         "likeness": 0.6867,
+         "status": ""
+        }
+       },
+       "shows": "Three quarters of a circle, an upright corner head at the upper left",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "2 of 2",
+        "soft": 60
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "2 of 2",
+        "soft": 82
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Reset-Option-B-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Reset-Option-B-16px.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "Undo, or reset",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Undo, or reset."
+      },
+      {
+       "option": "C",
+       "like": {
+        "file": "20261109_Utility-Reset-Option-C-24px.svg",
+        "closest": {
+         "name": "CL-057 Labor Share",
+         "likeness": 0.5113,
+         "percentile": 7.4,
+         "status": ""
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.6867,
+         "status": ""
+        }
+       },
+       "shows": "Three quarters of a circle, the head at the left pointing down",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "0 of 0",
+        "soft": 64
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "0 of 0",
+        "soft": 83
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Reset-Option-C-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Reset-Option-C-16px.svg",
+       "naming_cd": {
+        "option": "C",
+        "creative_director_reading": "Undo, or turn left",
+        "creative_director_verdict": "Names it nearly",
+        "maker_verdict": "Partly"
+       },
+       "naming_maker": "Partly: Undo, or turn left."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "kind": "utility",
+   "title": "Error mark",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "A",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ],
+      [
+       "B",
+       "Option B",
+       "B"
+      ],
+      [
+       "C",
+       "Option C",
+       "C"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [],
+   "subjects": [
+    {
+     "id": "error",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Utility-Error-Option-A-24px.svg",
+        "closest": {
+         "name": "CL-068 Education",
+         "likeness": 0.5676,
+         "percentile": 13.1,
+         "status": ""
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.8885,
+         "status": "watch"
+        }
+       },
+       "shows": "An exclamation mark in a circle",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "1 of 1",
+        "soft": 64
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "1 of 1",
+        "soft": 81
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Error-Option-A-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Error-Option-A-16px.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "Error, or alert",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Error, or alert."
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_Utility-Error-Option-B-24px.svg",
+        "closest": {
+         "name": "CL-068 Education",
+         "likeness": 0.68,
+         "percentile": 36.9,
+         "status": ""
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.8885,
+         "status": "watch"
+        }
+       },
+       "shows": "An exclamation mark in an octagon, the stop sign",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "5 of 5",
+        "soft": 38
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "5 of 5",
+        "soft": 64
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Error-Option-B-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Error-Option-B-16px.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "Stop, or error",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Stop, or error."
+      },
+      {
+       "option": "C",
+       "like": {
+        "file": "20261109_Utility-Error-Option-C-24px.svg",
+        "closest": {
+         "name": "CL-068 Education",
+         "likeness": 0.4926,
+         "percentile": 6,
+         "status": ""
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.8306,
+         "status": ""
+        }
+       },
+       "shows": "An exclamation mark in a square",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "5 of 5",
+        "soft": 17
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "5 of 5",
+        "soft": 59
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Error-Option-C-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Error-Option-C-16px.svg",
+       "naming_cd": {
+        "option": "C",
+        "creative_director_reading": "Notice, or important",
+        "creative_director_verdict": "Names it nearly",
+        "maker_verdict": "Partly"
+       },
+       "naming_maker": "Partly: Notice, or important."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "kind": "utility",
+   "title": "Success mark and Selected check",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "B",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ],
+      [
+       "B",
+       "Option B",
+       "B"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [
+    "Success mark, clarity 3"
+   ],
+   "subjects": [
+    {
+     "id": "success",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Utility-Success-Option-A-24px.svg",
+        "closest": {
+         "name": "CL-012 Election Rules",
+         "likeness": 0.8325,
+         "percentile": 86.3,
+         "status": ""
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.5321,
+         "status": ""
+        }
+       },
+       "shows": "A check cut out of a solid disc",
+       "pf24": {
+        "pass": false,
+        "fails": [
+         "1x: weight",
+         "2x: weight"
+        ],
+        "straight": "0 of 0",
+        "soft": 28
+       },
+       "pf16": {
+        "pass": false,
+        "fails": [
+         "1x: weight",
+         "2x: weight"
+        ],
+        "straight": "0 of 0",
+        "soft": 44
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Success-Option-A-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Success-Option-A-16px.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "Done, or success",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Done, or success."
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_Utility-Success-Option-B-24px.svg",
+        "closest": {
+         "name": "CL-068 Education",
+         "likeness": 0.5131,
+         "percentile": 7.5,
+         "status": ""
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.5321,
+         "status": ""
+        }
+       },
+       "shows": "A check leaving an open circle",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "0 of 0",
+        "soft": 68
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "0 of 0",
+        "soft": 84
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Success-Option-B-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Success-Option-B-16px.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "Done, or success",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Done, or success."
+      }
+     ]
+    },
+    {
+     "id": "check",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Utility-Selected-Check-Option-A-24px.svg",
+        "closest": {
+         "name": "CL-049 Wealth Concentration",
+         "likeness": 0.6879,
+         "percentile": 39.3,
+         "status": ""
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.3306,
+         "status": ""
+        }
+       },
+       "shows": "A check",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "0 of 0",
+        "soft": 54
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "0 of 0",
+        "soft": 69
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Selected-Check-Option-A-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Selected-Check-Option-A-16px.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "Check, or done",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Check, or done."
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_Utility-Selected-Check-Option-B-24px.svg",
+        "closest": {
+         "name": "CL-039 Feed Ranking",
+         "likeness": 0.5074,
+         "percentile": 7.1,
+         "status": ""
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.3306,
+         "status": ""
+        }
+       },
+       "shows": "A check in a square, the ticked box",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "4 of 4",
+        "soft": 25
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "4 of 4",
+        "soft": 59
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Selected-Check-Option-B-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Selected-Check-Option-B-16px.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "Check, or tick",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: A ticked box: selected."
+      }
+     ]
+    }
+   ],
+   "fewer_reason": "The closed circle repeated B, and the ticked box says selected, so it moves to the Selected check card. A steeper tick and a compact check repeated A, and the compact one read as the chevron at 16 px."
+  },
+  {
+   "n": 20,
+   "kind": "utility",
+   "title": "View full size",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "A",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ],
+      [
+       "B",
+       "Option B",
+       "B"
+      ],
+      [
+       "C",
+       "Option C",
+       "C"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [],
+   "subjects": [
+    {
+     "id": "full-size",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Utility-View-Full-Size-Option-A-24px.svg",
+        "closest": {
+         "name": "CL-033 Hostile Content",
+         "likeness": 0.142,
+         "percentile": 0,
+         "status": ""
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.7198,
+         "status": ""
+        }
+       },
+       "shows": "Four corners",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "8 of 8",
+        "soft": 29
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "8 of 8",
+        "soft": 72
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-View-Full-Size-Option-A-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-View-Full-Size-Option-A-16px.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "Full screen, or expand",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Full screen, or expand."
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_Utility-View-Full-Size-Option-B-24px.svg",
+        "closest": {
+         "name": "CL-033 Hostile Content",
+         "likeness": 0.52,
+         "percentile": 8.1,
+         "status": ""
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.7198,
+         "status": ""
+        }
+       },
+       "shows": "Four arrows from the middle out to the corners",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "8 of 8",
+        "soft": 49
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "8 of 8",
+        "soft": 59
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-View-Full-Size-Option-B-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-View-Full-Size-Option-B-16px.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "Expand",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Expand."
+      },
+      {
+       "option": "C",
+       "like": {
+        "file": "20261109_Utility-View-Full-Size-Option-C-24px.svg",
+        "closest": {
+         "name": "CL-057 Labor Share",
+         "likeness": 0.4064,
+         "percentile": 1.9,
+         "status": ""
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.5322,
+         "status": ""
+        }
+       },
+       "shows": "Two arrows out to opposite corners",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "4 of 4",
+        "soft": 45
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "4 of 4",
+        "soft": 57
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-View-Full-Size-Option-C-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-View-Full-Size-Option-C-16px.svg",
+       "naming_cd": {
+        "option": "C",
+        "creative_director_reading": "Expand, or resize",
+        "creative_director_verdict": "Names it nearly",
+        "maker_verdict": "Partly"
+       },
+       "naming_maker": "Partly: Expand, or resize; near the outside-link arrow."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 21,
+   "kind": "utility",
+   "title": "Sort a column",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "A",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ],
+      [
+       "B",
+       "Option B",
+       "B"
+      ],
+      [
+       "C",
+       "Option C",
+       "C"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [
+    "Sort a column, clarity 3"
+   ],
+   "subjects": [
+    {
+     "id": "sort",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Utility-Sort-Option-A-24px.svg",
+        "closest": {
+         "name": "CL-047 Data Rights",
+         "likeness": 0.7368,
+         "percentile": 55.3,
+         "status": ""
+        },
+        "sibling": {
+         "option": "C",
+         "likeness": 0.7018,
+         "status": ""
+        }
+       },
+       "shows": "An up arrow and a down arrow side by side",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "2 of 2",
+        "soft": 44
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "2 of 2",
+        "soft": 68
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Sort-Option-A-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Sort-Option-A-16px.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "Sort, or swap",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Sort, or swap."
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_Utility-Sort-Option-B-24px.svg",
+        "closest": {
+         "name": "CL-034 New Technology",
+         "likeness": 0.6832,
+         "percentile": 37.9,
+         "status": ""
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.5842,
+         "status": ""
+        }
+       },
+       "shows": "Two chevrons, one up and one down",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "0 of 0",
+        "soft": 81
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "0 of 0",
+        "soft": 72
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Sort-Option-B-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Sort-Option-B-16px.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "Sort, or choose from a list",
+        "creative_director_verdict": "Names it nearly",
+        "maker_verdict": "Partly"
+       },
+       "naming_maker": "Partly: Sort, or choose from a list."
+      },
+      {
+       "option": "C",
+       "like": {
+        "file": "20261109_Utility-Sort-Option-C-24px.svg",
+        "closest": {
+         "name": "CL-033 Hostile Content",
+         "likeness": 0.7095,
+         "percentile": 46,
+         "status": ""
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.7018,
+         "status": ""
+        }
+       },
+       "shows": "Bars of falling length beside a down arrow, the sort-lines sign",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "4 of 4",
+        "soft": 33
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "4 of 4",
+        "soft": 67
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Sort-Option-C-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Sort-Option-C-16px.svg",
+       "naming_cd": {
+        "option": "C",
+        "creative_director_reading": "Move up and down, or resize",
+        "creative_director_verdict": "Fails",
+        "maker_verdict": "Fails"
+       },
+       "naming_maker": "Partly: Sort; reads as sorted downward, an order in use."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 22,
+   "kind": "utility",
+   "title": "Warning mark",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "A",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ],
+      [
+       "B",
+       "Option B",
+       "B"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [],
+   "subjects": [
+    {
+     "id": "warning",
+     "options": [
+      {
+       "option": "A",
+       "like": {
+        "file": "20261109_Utility-Warning-Option-A-24px.svg",
+        "closest": {
+         "name": "CL-059 Credit Allocation",
+         "likeness": 0.7821,
+         "percentile": 70.6,
+         "status": ""
+        },
+        "sibling": {
+         "option": "B",
+         "likeness": 0.4768,
+         "status": ""
+        }
+       },
+       "shows": "An exclamation mark in a triangle",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "2 of 2",
+        "soft": 54
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "2 of 2",
+        "soft": 75
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Warning-Option-A-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Warning-Option-A-16px.svg",
+       "naming_cd": {
+        "option": "A",
+        "creative_director_reading": "Warning, or caution",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Warning, or caution."
+      },
+      {
+       "option": "B",
+       "like": {
+        "file": "20261109_Utility-Warning-Option-B-24px.svg",
+        "closest": {
+         "name": "CL-068 Education",
+         "likeness": 0.7163,
+         "percentile": 48.2,
+         "status": ""
+        },
+        "sibling": {
+         "option": "A",
+         "likeness": 0.4768,
+         "status": ""
+        }
+       },
+       "shows": "An exclamation mark in a diamond, the road sign",
+       "pf24": {
+        "pass": true,
+        "fails": [],
+        "straight": "1 of 1",
+        "soft": 77
+       },
+       "pf16": {
+        "pass": true,
+        "fails": [],
+        "straight": "1 of 1",
+        "soft": 75
+       },
+       "f24": "work/build/assets/utility-icons/svg-24/20261109_Utility-Warning-Option-B-24px.svg",
+       "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Warning-Option-B-16px.svg",
+       "naming_cd": {
+        "option": "B",
+        "creative_director_reading": "Warning: the road sign",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
+       },
+       "naming_maker": "Names it: Warning: the road sign."
+      }
+     ]
+    }
+   ],
+   "fewer_reason": "Readers know two warning shapes, the triangle and the diamond. A narrower triangle repeated A."
+  },
+  {
+   "n": 23,
+   "kind": "pillars",
+   "title": "The pillar icons at 24 and 16 px",
+   "groups": [
+    {
+     "name": "s24",
+     "label": "24 px",
+     "rec": "B",
+     "options": [
+      [
+       "A",
+       "Fit A, 2 px line",
+       "24 px Fit A"
+      ],
+      [
+       "B",
+       "Fit B, 1 px line",
+       "24 px Fit B"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [
+    "Pillar icons, craft 3"
+   ],
+   "fits": [
+    {
+     "id": "CL-019",
+     "fit": "A",
+     "size_px": 24,
+     "line_px": 2,
+     "like": {
+      "file": "20261109_CL-019-Explain-24px-Fit-A-Black.svg",
+      "closest": {
+       "name": "CL-068 Education",
+       "likeness": 0.7291,
+       "percentile": 52.8,
+       "status": ""
+      },
+      "own": {
+       "name": "CL-019 Explain",
+       "likeness": 0.6818
+      }
+     },
+     "pixel_fit_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "31 of 31",
+      "soft": 0
+     },
+     "pixel_fit_red_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "31 of 31",
+      "soft": 0
+     }
+    },
+    {
+     "id": "CL-019",
+     "fit": "B",
+     "size_px": 24,
+     "line_px": 1,
+     "like": {
+      "file": "20261109_CL-019-Explain-24px-Fit-B-Black.svg",
+      "closest": {
+       "name": "CL-068 Education",
+       "likeness": 0.766,
+       "percentile": 65.3,
+       "status": ""
+      },
+      "own": {
+       "name": "CL-019 Explain",
+       "likeness": 0.7216
+      }
+     },
+     "pixel_fit_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "24 of 24",
+      "soft": 0
+     },
+     "pixel_fit_red_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "24 of 24",
+      "soft": 0
+     }
+    },
+    {
+     "id": "CL-019",
+     "fit": "A",
+     "size_px": 16,
+     "line_px": 1,
+     "like": {
+      "file": "20261109_CL-019-Explain-16px-Fit-A-Black.svg",
+      "closest": {
+       "name": "CL-068 Education",
+       "likeness": 0.7487,
+       "percentile": 59.4,
+       "status": ""
+      },
+      "own": {
+       "name": "CL-019 Explain",
+       "likeness": 0.6688
+      }
+     },
+     "pixel_fit_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "18 of 18",
+      "soft": 0
+     },
+     "pixel_fit_red_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "18 of 18",
+      "soft": 0
+     }
+    },
+    {
+     "id": "CL-020",
+     "fit": "A",
+     "size_px": 24,
+     "line_px": 2,
+     "like": {
+      "file": "20261109_CL-020-Track-24px-Fit-A-Black.svg",
+      "closest": {
+       "name": "CL-065 Climate & Insurance",
+       "likeness": 0.5066,
+       "percentile": 7,
+       "status": ""
+      },
+      "own": {
+       "name": "CL-020 Track",
+       "likeness": 0.5476
+      }
+     },
+     "pixel_fit_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "18 of 18",
+      "soft": 0
+     },
+     "pixel_fit_red_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "18 of 18",
+      "soft": 0
+     }
+    },
+    {
+     "id": "CL-020",
+     "fit": "B",
+     "size_px": 24,
+     "line_px": 1,
+     "like": {
+      "file": "20261109_CL-020-Track-24px-Fit-B-Black.svg",
+      "closest": {
+       "name": "CL-051 Market Power",
+       "likeness": 0.7358,
+       "percentile": 55.1,
+       "status": ""
+      },
+      "own": {
+       "name": "CL-020 Track",
+       "likeness": 0.7204
+      }
+     },
+     "pixel_fit_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "15 of 15",
+      "soft": 0
+     },
+     "pixel_fit_red_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "15 of 15",
+      "soft": 0
+     }
+    },
+    {
+     "id": "CL-020",
+     "fit": "A",
+     "size_px": 16,
+     "line_px": 1,
+     "like": {
+      "file": "20261109_CL-020-Track-16px-Fit-A-Black.svg",
+      "closest": {
+       "name": "CL-051 Market Power",
+       "likeness": 0.5738,
+       "percentile": 13.9,
+       "status": ""
+      },
+      "own": {
+       "name": "CL-020 Track",
+       "likeness": 0.5893
+      }
+     },
+     "pixel_fit_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "12 of 12",
+      "soft": 0
+     },
+     "pixel_fit_red_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "12 of 12",
+      "soft": 0
+     }
+    },
+    {
+     "id": "CL-021",
+     "fit": "A",
+     "size_px": 24,
+     "line_px": 2,
+     "like": {
+      "file": "20261109_CL-021-Connect-24px-Fit-A-Black.svg",
+      "closest": {
+       "name": "CL-009 Safe Seats",
+       "likeness": 0.711,
+       "percentile": 46.7,
+       "status": ""
+      },
+      "own": {
+       "name": "CL-021 Connect",
+       "likeness": 0.9413
+      }
+     },
+     "pixel_fit_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "20 of 20",
+      "soft": 0
+     },
+     "pixel_fit_red_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "20 of 20",
+      "soft": 0
+     }
+    },
+    {
+     "id": "CL-021",
+     "fit": "B",
+     "size_px": 24,
+     "line_px": 1,
+     "like": {
+      "file": "20261109_CL-021-Connect-24px-Fit-B-Black.svg",
+      "closest": {
+       "name": "CL-019 Explain",
+       "likeness": 0.7758,
+       "percentile": 68.5,
+       "status": ""
+      },
+      "own": {
+       "name": "CL-021 Connect",
+       "likeness": 0.9933
+      }
+     },
+     "pixel_fit_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "20 of 20",
+      "soft": 0
+     },
+     "pixel_fit_red_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "20 of 20",
+      "soft": 0
+     }
+    },
+    {
+     "id": "CL-021",
+     "fit": "A",
+     "size_px": 16,
+     "line_px": 1,
+     "like": {
+      "file": "20261109_CL-021-Connect-16px-Fit-A-Black.svg",
+      "closest": {
+       "name": "CL-009 Safe Seats",
+       "likeness": 0.8325,
+       "percentile": 86.3,
+       "status": ""
+      },
+      "own": {
+       "name": "CL-021 Connect",
+       "likeness": 0.9067
+      }
+     },
+     "pixel_fit_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "8 of 8",
+      "soft": 0
+     },
+     "pixel_fit_red_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "8 of 8",
+      "soft": 0
+     }
+    },
+    {
+     "id": "CL-022",
+     "fit": "A",
+     "size_px": 24,
+     "line_px": 2,
+     "like": {
+      "file": "20261109_CL-022-Act-24px-Fit-A-Black.svg",
+      "closest": {
+       "name": "CL-023 Evidence",
+       "likeness": 0.4909,
+       "percentile": 5.9,
+       "status": ""
+      },
+      "own": {
+       "name": "CL-022 Act",
+       "likeness": 0.5059
+      }
+     },
+     "pixel_fit_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "29 of 29",
+      "soft": 0
+     },
+     "pixel_fit_red_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "29 of 29",
+      "soft": 0
+     }
+    },
+    {
+     "id": "CL-022",
+     "fit": "B",
+     "size_px": 24,
+     "line_px": 1,
+     "like": {
+      "file": "20261109_CL-022-Act-24px-Fit-B-Black.svg",
+      "closest": {
+       "name": "CL-023 Evidence",
+       "likeness": 0.6053,
+       "percentile": 19,
+       "status": ""
+      },
+      "own": {
+       "name": "CL-022 Act",
+       "likeness": 0.5021
+      }
+     },
+     "pixel_fit_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "19 of 19",
+      "soft": 0
+     },
+     "pixel_fit_red_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "19 of 19",
+      "soft": 0
+     }
+    },
+    {
+     "id": "CL-022",
+     "fit": "A",
+     "size_px": 16,
+     "line_px": 1,
+     "like": {
+      "file": "20261109_CL-022-Act-16px-Fit-A-Black.svg",
+      "closest": {
+       "name": "R-02 Ranked-Choice Voting",
+       "likeness": 0.4556,
+       "percentile": 4,
+       "status": ""
+      },
+      "own": {
+       "name": "CL-022 Act",
+       "likeness": 0.3114
+      }
+     },
+     "pixel_fit_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "16 of 16",
+      "soft": 0
+     },
+     "pixel_fit_red_black": {
+      "pass": true,
+      "fails": [],
+      "straight": "16 of 16",
+      "soft": 0
+     }
+    }
+   ]
+  },
+  {
+   "n": 24,
+   "kind": "end-mark",
+   "title": "The end mark on whole pixels at 14 and 12 px",
+   "groups": [
+    {
+     "name": "s14",
+     "label": "B at 14 px",
+     "rec": "B",
+     "options": [
+      [
+       "A",
+       "Fit A",
+       "Fit A at 14 px"
+      ],
+      [
+       "B",
+       "Fit B",
+       "Fit B at 14 px"
+      ]
+     ]
+    },
+    {
+     "name": "s12",
+     "label": "B at 12 px",
+     "rec": "B",
+     "options": [
+      [
+       "A",
+       "Fit A",
+       "Fit A at 12 px"
+      ],
+      [
+       "B",
+       "Fit B",
+       "Fit B at 12 px"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": []
+  },
+  {
+   "n": 25,
+   "kind": "lockmark",
+   "title": "The lockmark's small masters rebuilt",
+   "groups": [
+    {
+     "name": "lock",
+     "label": null,
+     "rec": "approve",
+     "options": [
+      [
+       "approve",
+       "The rebuilt 24 and 48 px files",
+       "the rebuilt files"
+      ],
+      [
+       "keep",
+       "Today's files",
+       "keep today\u2019s files"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": []
+  },
+  {
+   "n": 26,
+   "kind": "l6",
+   "title": "L6 with its wordmark and tagline centered",
+   "groups": [
+    {
+     "name": "l6",
+     "label": null,
+     "rec": "approve",
+     "options": [
+      [
+       "approve",
+       "Centered",
+       "centered"
+      ],
+      [
+       "keep",
+       "L6 as drawn today",
+       "keep L6 as drawn today"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": []
+  }
+ ]
+}
