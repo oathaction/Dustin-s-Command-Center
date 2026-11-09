@@ -1306,3 +1306,33 @@ The studio put six questions to Dustin from round 0: the research lead's four (`
 | # | Decision | Reason |
 |---|---|---|
 | D2-594 | The main session ran the round 0 checks itself: `guide_build.py --strict` (9 chapter files, 100 rules, 233 specimens, 6.24 MB, 0 warnings, 3 notes on chapter 01 plates that inline pillar drawings the sprite holds, which round 2 redraws with `<use>`), `guide_check.js` at 1440, 1024, 390 and 360 px (0 failures, 761 same-page links, 25 listed exemptions, each a labeled failure plate or a print piece) and the token tests (all pass) | A check is reported only once the main session has run it |
+
+### Icon designer, Civic Line hand (`20261109_Stage-B-Civic-Line-Icons-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-595 | New drawings are authored in Civic Line's source space with the set's 5.5 px line and baked by the family's own parser, emitter and DR-08 capped fit | One hand: the same line, caps, joins, colors and file layout as the 122 masters |
+| D2-596 | Kept parts of every "Within DR-135" option keep their master's source coordinates | Each kept part can be checked against its original |
+| D2-597 | In set A, a dome becomes a flat attic and columns become walls, windows or a door | Taking them out alone left free-standing strokes that still read as columns |
+| D2-598 | Each set's Congress-only feature: set A the two wings, set B the rostrum's upper tier, set C the second chamber; CL-014 drops it |  |
+| D2-599 | Seat rows split into an odd number of sections, never with a center aisle | A center aisle splits a chamber into two sides, which reads as party (Rule 01.1) |
+| D2-600 | Set C staggers its two chambers, the Senate behind the House | Side by side the pair ran four times wider than tall and shrank past naming at 48 px |
+| D2-601 | In R-13 and R-42, sets B and C put the Congress sign on a top tier at three quarters of CL-025's size | In the originals' strip layout its rows closed up; the tier layout also brings the composites to the cap line weight |
+| D2-602 | R-13 B and C trade the open book for an analyst's report with a red chart line | The book is CL-019 Explain's sign (meaning sheet) |
+| D2-603 | R-42 B and C trade the ballot box for a red yes-and-no card and draw imports with CL-064's parcel and a tag | A ballot box means a public election, and the set keeps one sign for imports |
+| D2-604 | CL-059's vault wheel has four diagonal spokes on a hub ring | Spokes in a plus read as a first-aid cross, and three spokes as a fan |
+| D2-605 | CL-059 A and R-48 A keep the pediment | DR-135 names only the columns in these two; the meaning sheet's caution on pediments goes to Dustin as question 7 |
+| D2-606 | R-48 C drops the brace's dot, and the arrow stops where the dot was | The arrow would otherwise touch it; the bracket and its nub carry the separation |
+| D2-607 | Testify and Contact an official carry no ID in their file names or files | Neither has one yet, and a made-up code would read as an ID |
+| D2-608 | The microphone is the common upright microphone: capsule, holder, stem and base | A ball on a stem read as a lollipop |
+| D2-609 | The phone's red is its cord | Rays over the phone read as an alarm bell, and a red handset is the sign for hanging up |
+| D2-610 | Contact C draws the visit with the person in it | A speech mark alone over the official read as the official speaking |
+| D2-611 | The pillar fits are drawn pixel by pixel | Strokes set on the grid left the 16 px curves as grey smudges |
+| D2-612 | One fit at 16 px, with a 1 px line | A 2 px line at 16 px closes Connect's lens, Track's pin and lens, the book's doubled edge and Act's finger, so no second fit keeps every feature (DR-133) |
+| D2-613 | The fits fill up to 22 of 24 px, and Act's hand is about a quarter wider than its master's | Each knuckle, the thumb and the ring keep a clear pixel |
+| D2-614 | In Connect's 2 px fit, pixels where the two rings overlap stay black | The master's black arcs cover both crossings |
+| D2-615 | The naming test reads each option at 48 px, with me standing in for a first-time reader | The brief's size; the creative director repeats it |
+| D2-616 | The look-alike flags are read against a baseline of the six originals | A redraw is judged against the drawing it replaces |
+| D2-617 | The plate page draws each option as an image of its own file at true size | Three inline copies of one SVG would repeat its ids |
+| D2-618 | Check results sit beside the plate page in `checks/`; the pixel pictures stay in my scratch folder | The engineer asks for the pictures outside `work/build` |
+| D2-619 | The plate numbers its cards 1 to 8; the board builder sets the board's numbers | The utility set sits between mine on the board |
