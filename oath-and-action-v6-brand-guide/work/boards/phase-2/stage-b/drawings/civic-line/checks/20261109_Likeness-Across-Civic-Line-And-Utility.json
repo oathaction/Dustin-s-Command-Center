@@ -1,0 +1,2940 @@
+{
+ "tool": "work/build/scripts/phase-2/icon_likeness_check.js",
+ "run": "2026-11-09T21:24:29.086Z",
+ "method": "Ink maps at 24 px from coverage in Charcoal over Newsprint, Gaussian blur sigma 1.2 px, Pearson correlation best over shifts up to 1 px, percentile among the 7381 pairs of the 122 Civic Line masters (Board 6).",
+ "renderer": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+ "files": 126,
+ "compared": 90,
+ "editions_skipped": [
+  {
+   "name": "20261109_CL-014-Entrenched-Power-Option-A-Red-Black.svg",
+   "as": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg"
+  },
+  {
+   "name": "20261109_CL-014-Entrenched-Power-Option-B-Red-Black.svg",
+   "as": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg"
+  },
+  {
+   "name": "20261109_CL-014-Entrenched-Power-Option-C-Red-Black.svg",
+   "as": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg"
+  },
+  {
+   "name": "20261109_CL-019-Explain-16px-Fit-A-Red-Black.svg",
+   "as": "20261109_CL-019-Explain-16px-Fit-A-Black.svg"
+  },
+  {
+   "name": "20261109_CL-019-Explain-24px-Fit-A-Red-Black.svg",
+   "as": "20261109_CL-019-Explain-24px-Fit-A-Black.svg"
+  },
+  {
+   "name": "20261109_CL-019-Explain-24px-Fit-B-Red-Black.svg",
+   "as": "20261109_CL-019-Explain-24px-Fit-B-Black.svg"
+  },
+  {
+   "name": "20261109_CL-020-Track-16px-Fit-A-Red-Black.svg",
+   "as": "20261109_CL-020-Track-16px-Fit-A-Black.svg"
+  },
+  {
+   "name": "20261109_CL-020-Track-24px-Fit-A-Red-Black.svg",
+   "as": "20261109_CL-020-Track-24px-Fit-A-Black.svg"
+  },
+  {
+   "name": "20261109_CL-020-Track-24px-Fit-B-Red-Black.svg",
+   "as": "20261109_CL-020-Track-24px-Fit-B-Black.svg"
+  },
+  {
+   "name": "20261109_CL-021-Connect-16px-Fit-A-Red-Black.svg",
+   "as": "20261109_CL-021-Connect-16px-Fit-A-Black.svg"
+  },
+  {
+   "name": "20261109_CL-021-Connect-24px-Fit-A-Red-Black.svg",
+   "as": "20261109_CL-021-Connect-24px-Fit-A-Black.svg"
+  },
+  {
+   "name": "20261109_CL-021-Connect-24px-Fit-B-Red-Black.svg",
+   "as": "20261109_CL-021-Connect-24px-Fit-B-Black.svg"
+  },
+  {
+   "name": "20261109_CL-022-Act-16px-Fit-A-Red-Black.svg",
+   "as": "20261109_CL-022-Act-16px-Fit-A-Black.svg"
+  },
+  {
+   "name": "20261109_CL-022-Act-24px-Fit-A-Red-Black.svg",
+   "as": "20261109_CL-022-Act-24px-Fit-A-Black.svg"
+  },
+  {
+   "name": "20261109_CL-022-Act-24px-Fit-B-Red-Black.svg",
+   "as": "20261109_CL-022-Act-24px-Fit-B-Black.svg"
+  },
+  {
+   "name": "20261109_CL-025-Congress-Option-A-Red-Black.svg",
+   "as": "20261109_CL-025-Congress-Option-A-Black.svg"
+  },
+  {
+   "name": "20261109_CL-025-Congress-Option-B-Red-Black.svg",
+   "as": "20261109_CL-025-Congress-Option-B-Black.svg"
+  },
+  {
+   "name": "20261109_CL-025-Congress-Option-C-Red-Black.svg",
+   "as": "20261109_CL-025-Congress-Option-C-Black.svg"
+  },
+  {
+   "name": "20261109_CL-059-Credit-Allocation-Option-A-Red-Black.svg",
+   "as": "20261109_CL-059-Credit-Allocation-Option-A-Black.svg"
+  },
+  {
+   "name": "20261109_CL-059-Credit-Allocation-Option-B-Red-Black.svg",
+   "as": "20261109_CL-059-Credit-Allocation-Option-B-Black.svg"
+  },
+  {
+   "name": "20261109_CL-059-Credit-Allocation-Option-C-Red-Black.svg",
+   "as": "20261109_CL-059-Credit-Allocation-Option-C-Black.svg"
+  },
+  {
+   "name": "20261109_Contact-An-Official-Option-A-Red-Black.svg",
+   "as": "20261109_Contact-An-Official-Option-A-Black.svg"
+  },
+  {
+   "name": "20261109_Contact-An-Official-Option-B-Red-Black.svg",
+   "as": "20261109_Contact-An-Official-Option-B-Black.svg"
+  },
+  {
+   "name": "20261109_Contact-An-Official-Option-C-Red-Black.svg",
+   "as": "20261109_Contact-An-Official-Option-C-Black.svg"
+  },
+  {
+   "name": "20261109_R-13-Congressional-Capacity-Option-A-Red-Black.svg",
+   "as": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg"
+  },
+  {
+   "name": "20261109_R-13-Congressional-Capacity-Option-B-Red-Black.svg",
+   "as": "20261109_R-13-Congressional-Capacity-Option-B-Black.svg"
+  },
+  {
+   "name": "20261109_R-13-Congressional-Capacity-Option-C-Red-Black.svg",
+   "as": "20261109_R-13-Congressional-Capacity-Option-C-Black.svg"
+  },
+  {
+   "name": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Red-Black.svg",
+   "as": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg"
+  },
+  {
+   "name": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Red-Black.svg",
+   "as": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg"
+  },
+  {
+   "name": "20261109_R-42-Congressional-Tariff-Votes-Option-C-Red-Black.svg",
+   "as": "20261109_R-42-Congressional-Tariff-Votes-Option-C-Black.svg"
+  },
+  {
+   "name": "20261109_R-48-Agency-Independence-Option-A-Red-Black.svg",
+   "as": "20261109_R-48-Agency-Independence-Option-A-Black.svg"
+  },
+  {
+   "name": "20261109_R-48-Agency-Independence-Option-B-Red-Black.svg",
+   "as": "20261109_R-48-Agency-Independence-Option-B-Black.svg"
+  },
+  {
+   "name": "20261109_R-48-Agency-Independence-Option-C-Red-Black.svg",
+   "as": "20261109_R-48-Agency-Independence-Option-C-Black.svg"
+  },
+  {
+   "name": "20261109_Testify-Option-A-Red-Black.svg",
+   "as": "20261109_Testify-Option-A-Black.svg"
+  },
+  {
+   "name": "20261109_Testify-Option-B-Red-Black.svg",
+   "as": "20261109_Testify-Option-B-Black.svg"
+  },
+  {
+   "name": "20261109_Testify-Option-C-Red-Black.svg",
+   "as": "20261109_Testify-Option-C-Black.svg"
+  }
+ ],
+ "distribution": {
+  "pairs": 7381,
+  "p50": 0.721,
+  "p90": 0.8472,
+  "p95": 0.8708,
+  "p99": 0.9127,
+  "p999": 0.9479,
+  "max": 0.9644
+ },
+ "thresholds": {
+  "flag": {
+   "percentile": 99,
+   "likeness": 0.9127
+  },
+  "watch": {
+   "percentile": 95,
+   "likeness": 0.8708
+  }
+ },
+ "masters_closest_pairs": [
+  {
+   "pair": "R-06 and R-44",
+   "likeness": 0.9644
+  },
+  {
+   "pair": "CL-028 and R-27",
+   "likeness": 0.958
+  },
+  {
+   "pair": "R-05 and R-14",
+   "likeness": 0.9567
+  },
+  {
+   "pair": "CL-003 and R-05",
+   "likeness": 0.956
+  },
+  {
+   "pair": "R-18 and R-27",
+   "likeness": 0.9559
+  },
+  {
+   "pair": "R-24 and R-25",
+   "likeness": 0.952
+  },
+  {
+   "pair": "CL-032 and R-23",
+   "likeness": 0.9484
+  },
+  {
+   "pair": "R-08 and R-18",
+   "likeness": 0.9479
+  },
+  {
+   "pair": "CL-003 and R-23",
+   "likeness": 0.9462
+  },
+  {
+   "pair": "R-08 and R-27",
+   "likeness": 0.9453
+  },
+  {
+   "pair": "CL-003 and R-14",
+   "likeness": 0.9426
+  },
+  {
+   "pair": "CL-028 and R-08",
+   "likeness": 0.9419
+  }
+ ],
+ "flagged": [
+  {
+   "a": "20261109_Utility-Close-Option-B-24px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.9727,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-C-24px.svg",
+   "b": "20261109_Utility-Play-Option-C-24px.svg",
+   "likeness": 0.9662,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-B-24px.svg",
+   "b": "20261109_Utility-Play-Option-B-24px.svg",
+   "likeness": 0.9583,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-24px.svg",
+   "b": "20261109_Utility-Play-Option-B-24px.svg",
+   "likeness": 0.9523,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-46 Expand the House",
+   "likeness": 0.95,
+   "percentile": 99.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "b": "20261109_Utility-Play-Option-B-24px.svg",
+   "likeness": 0.9487,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "b": "20261109_Utility-Success-Option-A-24px.svg",
+   "likeness": 0.9471,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-C-24px.svg",
+   "b": "20261109_Utility-Play-Option-B-24px.svg",
+   "likeness": 0.9447,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-20 Merger Enforcement",
+   "likeness": 0.9404,
+   "percentile": 99.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "20261109_CL-025-Congress-Option-B-Black.svg",
+   "likeness": 0.9401,
+   "percentile": 99.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.9368,
+   "percentile": 99.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "R-31 Childcare Supply",
+   "likeness": 0.9333,
+   "percentile": 99.7,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-33 Citizen Assemblies",
+   "likeness": 0.9332,
+   "percentile": 99.7,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "b": "20261109_Utility-Success-Option-B-24px.svg",
+   "likeness": 0.9332,
+   "percentile": 99.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "b": "20261109_Utility-Download-Option-C-24px.svg",
+   "likeness": 0.9325,
+   "percentile": 99.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "R-46 Expand the House",
+   "likeness": 0.9317,
+   "percentile": 99.7,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "R-06 On-Cycle Elections",
+   "likeness": 0.9292,
+   "percentile": 99.7,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-46 Expand the House",
+   "likeness": 0.928,
+   "percentile": 99.6,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-20 Merger Enforcement",
+   "likeness": 0.9272,
+   "percentile": 99.6,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "likeness": 0.9261,
+   "percentile": 99.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-A-24px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-C-24px.svg",
+   "likeness": 0.924,
+   "percentile": 99.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "CL-031 Local Government",
+   "likeness": 0.9235,
+   "percentile": 99.5,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "R-25 Child Tax Credit",
+   "likeness": 0.9231,
+   "percentile": 99.5,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "CL-035 Residential Sorting",
+   "likeness": 0.9226,
+   "percentile": 99.5,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.9226,
+   "percentile": 99.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "CL-035 Residential Sorting",
+   "likeness": 0.9199,
+   "percentile": 99.4,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "b": "CL-005 Public Meeting",
+   "likeness": 0.9196,
+   "percentile": 99.3,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "CL-043 Digital Government",
+   "likeness": 0.9186,
+   "percentile": 99.3,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "R-34 Participatory Budgeting",
+   "likeness": 0.9185,
+   "percentile": 99.3,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "b": "CL-014 Entrenched Power",
+   "likeness": 0.9182,
+   "percentile": 99.3,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
+   "b": "CL-035 Residential Sorting",
+   "likeness": 0.9177,
+   "percentile": 99.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
+   "b": "CL-035 Residential Sorting",
+   "likeness": 0.917,
+   "percentile": 99.2,
+   "against": "master"
+  }
+ ],
+ "watch": [
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "R-44 Digital Competition",
+   "likeness": 0.912,
+   "percentile": 99,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-33 Citizen Assemblies",
+   "likeness": 0.9115,
+   "percentile": 98.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "R-20 Merger Enforcement",
+   "likeness": 0.9109,
+   "percentile": 98.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "b": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "likeness": 0.9108,
+   "percentile": 98.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-49 Cross-Party Civic Work",
+   "likeness": 0.9106,
+   "percentile": 98.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-05 Automatic Registration",
+   "likeness": 0.9105,
+   "percentile": 98.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "b": "20261109_Utility-Close-Option-B-24px.svg",
+   "likeness": 0.9104,
+   "percentile": 98.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-B-Black.svg",
+   "b": "R-31 Childcare Supply",
+   "likeness": 0.91,
+   "percentile": 98.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "CL-046 AI Infrastructure",
+   "likeness": 0.9098,
+   "percentile": 98.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "R-14 Automatic Funding",
+   "likeness": 0.9091,
+   "percentile": 98.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-32 Local-News Funding",
+   "likeness": 0.9091,
+   "percentile": 98.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-14 Automatic Funding",
+   "likeness": 0.9086,
+   "percentile": 98.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "b": "20261109_Utility-Play-Option-B-24px.svg",
+   "likeness": 0.9085,
+   "percentile": 98.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
+   "b": "CL-047 Data Rights",
+   "likeness": 0.9082,
+   "percentile": 98.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "R-47 Fusion Voting",
+   "likeness": 0.9081,
+   "percentile": 98.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-C-24px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.9076,
+   "percentile": 98.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "CL-035 Residential Sorting",
+   "likeness": 0.907,
+   "percentile": 98.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "R-32 Local-News Funding",
+   "likeness": 0.9069,
+   "percentile": 98.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "b": "20261109_Utility-Close-Option-B-24px.svg",
+   "likeness": 0.9069,
+   "percentile": 98.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "b": "CL-026 Executive Power",
+   "likeness": 0.9068,
+   "percentile": 98.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-B-24px.svg",
+   "b": "20261109_Utility-Success-Option-A-24px.svg",
+   "likeness": 0.9055,
+   "percentile": 98.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
+   "b": "R-49 Cross-Party Civic Work",
+   "likeness": 0.9047,
+   "percentile": 98.7,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "CL-046 AI Infrastructure",
+   "likeness": 0.9044,
+   "percentile": 98.7,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "b": "R-34 Participatory Budgeting",
+   "likeness": 0.9042,
+   "percentile": 98.6,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-32 Local-News Funding",
+   "likeness": 0.9036,
+   "percentile": 98.6,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.9027,
+   "percentile": 98.6,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-24px.svg",
+   "b": "20261109_Utility-Download-Option-C-24px.svg",
+   "likeness": 0.9027,
+   "percentile": 98.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "b": "20261109_Utility-Download-Option-C-24px.svg",
+   "likeness": 0.9022,
+   "percentile": 98.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-39 Digital Service Teams",
+   "likeness": 0.9017,
+   "percentile": 98.4,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "R-33 Citizen Assemblies",
+   "likeness": 0.9011,
+   "percentile": 98.4,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "R-05 Automatic Registration",
+   "likeness": 0.9009,
+   "percentile": 98.4,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "b": "CL-018 Earned Trust",
+   "likeness": 0.9004,
+   "percentile": 98.4,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-A-Black.svg",
+   "b": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
+   "likeness": 0.9,
+   "percentile": 98.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-21 Labor-Law Remedies",
+   "likeness": 0.899,
+   "percentile": 98.3,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-C-24px.svg",
+   "b": "20261109_Utility-Success-Option-C-24px.svg",
+   "likeness": 0.899,
+   "percentile": 98.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
+   "b": "R-39 Digital Service Teams",
+   "likeness": 0.8988,
+   "percentile": 98.3,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
+   "b": "CL-071 Policy",
+   "likeness": 0.8988,
+   "percentile": 98.3,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "b": "R-18 Emergency-Power Limits",
+   "likeness": 0.8986,
+   "percentile": 98.3,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
+   "b": "R-43 Disaster Mitigation",
+   "likeness": 0.8986,
+   "percentile": 98.3,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "CL-005 Public Meeting",
+   "likeness": 0.8985,
+   "percentile": 98.3,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
+   "b": "R-49 Cross-Party Civic Work",
+   "likeness": 0.8984,
+   "percentile": 98.3,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-30 By-Right Housing",
+   "likeness": 0.8981,
+   "percentile": 98.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
+   "likeness": 0.8979,
+   "percentile": 98.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-40 Worker Voice on AI",
+   "likeness": 0.8977,
+   "percentile": 98.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "CL-043 Digital Government",
+   "likeness": 0.8977,
+   "percentile": 98.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-44 Digital Competition",
+   "likeness": 0.8975,
+   "percentile": 98.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-37 Feed Choice",
+   "likeness": 0.8972,
+   "percentile": 98.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-34 Participatory Budgeting",
+   "likeness": 0.897,
+   "percentile": 98.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
+   "likeness": 0.897,
+   "percentile": 98.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
+   "b": "R-41 Grid Cost Allocation",
+   "likeness": 0.8968,
+   "percentile": 98.1,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-A-24px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.8968,
+   "percentile": 98.1,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "b": "R-05 Automatic Registration",
+   "likeness": 0.8966,
+   "percentile": 98.1,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
+   "b": "CL-036 Cross-Border Capital",
+   "likeness": 0.8966,
+   "percentile": 98.1,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-A-Black.svg",
+   "b": "R-36 Public Investment",
+   "likeness": 0.8962,
+   "percentile": 98.1,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-14 Automatic Funding",
+   "likeness": 0.8948,
+   "percentile": 98,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "CL-007 Turnout Equality",
+   "likeness": 0.8941,
+   "percentile": 98,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "b": "R-13 Congressional Capacity",
+   "likeness": 0.8936,
+   "percentile": 97.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-B-Black.svg",
+   "b": "CL-031 Local Government",
+   "likeness": 0.893,
+   "percentile": 97.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-31 Childcare Supply",
+   "likeness": 0.8928,
+   "percentile": 97.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "R-38 Pricing-Data Limits",
+   "likeness": 0.8925,
+   "percentile": 97.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "R-17 Civil Service",
+   "likeness": 0.8917,
+   "percentile": 97.7,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-25 Child Tax Credit",
+   "likeness": 0.8908,
+   "percentile": 97.6,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "b": "R-03 Proportional Elections",
+   "likeness": 0.8905,
+   "percentile": 97.5,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
+   "b": "R-06 On-Cycle Elections",
+   "likeness": 0.8904,
+   "percentile": 97.5,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "R-41 Grid Cost Allocation",
+   "likeness": 0.8902,
+   "percentile": 97.5,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
+   "b": "CL-028 Watchdogs",
+   "likeness": 0.8901,
+   "percentile": 97.5,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-49 Cross-Party Civic Work",
+   "likeness": 0.89,
+   "percentile": 97.5,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "CL-035 Residential Sorting",
+   "likeness": 0.8899,
+   "percentile": 97.5,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-25 Child Tax Credit",
+   "likeness": 0.8898,
+   "percentile": 97.5,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "R-37 Feed Choice",
+   "likeness": 0.8895,
+   "percentile": 97.4,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-30 By-Right Housing",
+   "likeness": 0.8895,
+   "percentile": 97.4,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-44 Digital Competition",
+   "likeness": 0.8892,
+   "percentile": 97.4,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-B-Black.svg",
+   "b": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
+   "likeness": 0.8888,
+   "percentile": 97.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "CL-036 Cross-Border Capital",
+   "likeness": 0.8887,
+   "percentile": 97.3,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-13-Congressional-Capacity-Option-B-Black.svg",
+   "b": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
+   "likeness": 0.8885,
+   "percentile": 97.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "CL-043 Digital Government",
+   "likeness": 0.8883,
+   "percentile": 97.3,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
+   "b": "R-33 Citizen Assemblies",
+   "likeness": 0.8878,
+   "percentile": 97.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "CL-027 Court Alignment",
+   "likeness": 0.8875,
+   "percentile": 97.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "CL-050 Worker Bargaining",
+   "likeness": 0.8873,
+   "percentile": 97.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "CL-007 Turnout Equality",
+   "likeness": 0.8869,
+   "percentile": 97.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "CL-027 Court Alignment",
+   "likeness": 0.8869,
+   "percentile": 97.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
+   "b": "R-44 Digital Competition",
+   "likeness": 0.8869,
+   "percentile": 97.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "b": "R-33 Citizen Assemblies",
+   "likeness": 0.8862,
+   "percentile": 97.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "CL-003 Registration",
+   "likeness": 0.886,
+   "percentile": 97.1,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-39 Digital Service Teams",
+   "likeness": 0.886,
+   "percentile": 97.1,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "R-48 Agency Independence",
+   "likeness": 0.8856,
+   "percentile": 97,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "R-39 Digital Service Teams",
+   "likeness": 0.8855,
+   "percentile": 97,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-24px.svg",
+   "b": "20261109_Utility-Success-Option-A-24px.svg",
+   "likeness": 0.8855,
+   "percentile": 97,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "CL-062 Assets & Debt",
+   "likeness": 0.8852,
+   "percentile": 97,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-B-Black.svg",
+   "b": "CL-005 Public Meeting",
+   "likeness": 0.8852,
+   "percentile": 97,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-B-Black.svg",
+   "b": "CL-014 Entrenched Power",
+   "likeness": 0.8852,
+   "percentile": 97,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-C-Black.svg",
+   "b": "CL-035 Residential Sorting",
+   "likeness": 0.8851,
+   "percentile": 96.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "CL-032 Local Reporting",
+   "likeness": 0.8849,
+   "percentile": 96.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-15 Watchdog Remedies",
+   "likeness": 0.8849,
+   "percentile": 96.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "CL-018 Earned Trust",
+   "likeness": 0.8847,
+   "percentile": 96.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "CL-062 Assets & Debt",
+   "likeness": 0.8844,
+   "percentile": 96.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
+   "b": "CL-026 Executive Power",
+   "likeness": 0.8844,
+   "percentile": 96.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-A-Black.svg",
+   "b": "R-49 Cross-Party Civic Work",
+   "likeness": 0.8843,
+   "percentile": 96.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "R-49 Cross-Party Civic Work",
+   "likeness": 0.8838,
+   "percentile": 96.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
+   "b": "CL-046 AI Infrastructure",
+   "likeness": 0.8832,
+   "percentile": 96.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "CL-036 Cross-Border Capital",
+   "likeness": 0.8831,
+   "percentile": 96.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
+   "b": "R-44 Digital Competition",
+   "likeness": 0.8826,
+   "percentile": 96.7,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "CL-050 Worker Bargaining",
+   "likeness": 0.8824,
+   "percentile": 96.7,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-A-24px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.8822,
+   "percentile": 96.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "CL-036 Cross-Border Capital",
+   "likeness": 0.882,
+   "percentile": 96.6,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
+   "b": "R-42 Congressional Tariff Votes",
+   "likeness": 0.8818,
+   "percentile": 96.6,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "R-30 By-Right Housing",
+   "likeness": 0.8813,
+   "percentile": 96.5,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "CL-002 Representation",
+   "likeness": 0.8806,
+   "percentile": 96.5,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "R-39 Digital Service Teams",
+   "likeness": 0.8806,
+   "percentile": 96.5,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-40 Worker Voice on AI",
+   "likeness": 0.8805,
+   "percentile": 96.5,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-B-Black.svg",
+   "b": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "likeness": 0.8802,
+   "percentile": 96.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "CL-027 Court Alignment",
+   "likeness": 0.8786,
+   "percentile": 96.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "CL-011 Electoral Pressure",
+   "likeness": 0.8786,
+   "percentile": 96.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "R-21 Labor-Law Remedies",
+   "likeness": 0.8785,
+   "percentile": 96.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "CL-003 Registration",
+   "likeness": 0.8783,
+   "percentile": 96.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "b": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
+   "likeness": 0.8777,
+   "percentile": 96.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-C-Black.svg",
+   "b": "CL-011 Electoral Pressure",
+   "likeness": 0.8774,
+   "percentile": 96.1,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-06 On-Cycle Elections",
+   "likeness": 0.8773,
+   "percentile": 96.1,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-05 Automatic Registration",
+   "likeness": 0.8771,
+   "percentile": 96,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-A-Black.svg",
+   "b": "R-38 Pricing-Data Limits",
+   "likeness": 0.8771,
+   "percentile": 96,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-C-24px.svg",
+   "b": "20261109_Utility-Success-Option-A-24px.svg",
+   "likeness": 0.8767,
+   "percentile": 96,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "CL-062 Assets & Debt",
+   "likeness": 0.8766,
+   "percentile": 95.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
+   "likeness": 0.8764,
+   "percentile": 95.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "b": "R-08 Donor Disclosure",
+   "likeness": 0.876,
+   "percentile": 95.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "b": "CL-029 Public Services",
+   "likeness": 0.8756,
+   "percentile": 95.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "R-36 Public Investment",
+   "likeness": 0.8755,
+   "percentile": 95.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-A-Black.svg",
+   "b": "20261109_Utility-Arrow-Option-C-24px.svg",
+   "likeness": 0.8755,
+   "percentile": 95.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-06 On-Cycle Elections",
+   "likeness": 0.8752,
+   "percentile": 95.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-17 Civil Service",
+   "likeness": 0.8752,
+   "percentile": 95.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "b": "R-25 Child Tax Credit",
+   "likeness": 0.8752,
+   "percentile": 95.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "CL-036 Cross-Border Capital",
+   "likeness": 0.8741,
+   "percentile": 95.7,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
+   "b": "R-47 Fusion Voting",
+   "likeness": 0.874,
+   "percentile": 95.7,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
+   "b": "CL-023 Evidence",
+   "likeness": 0.8729,
+   "percentile": 95.4,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
+   "b": "CL-025 Congress",
+   "likeness": 0.8728,
+   "percentile": 95.4,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
+   "b": "CL-036 Cross-Border Capital",
+   "likeness": 0.8726,
+   "percentile": 95.4,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "CL-011 Electoral Pressure",
+   "likeness": 0.8725,
+   "percentile": 95.3,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "R-16 Court Terms & Ethics",
+   "likeness": 0.8723,
+   "percentile": 95.3,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-31 Childcare Supply",
+   "likeness": 0.8723,
+   "percentile": 95.3,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-A-Black.svg",
+   "b": "CL-035 Residential Sorting",
+   "likeness": 0.8722,
+   "percentile": 95.3,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "likeness": 0.8721,
+   "percentile": 95.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-B-Black.svg",
+   "b": "R-06 On-Cycle Elections",
+   "likeness": 0.8719,
+   "percentile": 95.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-B-24px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.8718,
+   "percentile": 95.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-34 Participatory Budgeting",
+   "likeness": 0.8717,
+   "percentile": 95.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
+   "b": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
+   "likeness": 0.8715,
+   "percentile": 95.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "R-49 Cross-Party Civic Work",
+   "likeness": 0.8711,
+   "percentile": 95.1,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "CL-064 Trade Costs",
+   "likeness": 0.871,
+   "percentile": 95,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-16 Court Terms & Ethics",
+   "likeness": 0.871,
+   "percentile": 95,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "b": "R-31 Childcare Supply",
+   "likeness": 0.871,
+   "percentile": 95,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "b": "20261109_Utility-Success-Option-A-24px.svg",
+   "likeness": 0.8708,
+   "percentile": 95,
+   "against": "new"
+  }
+ ],
+ "own": [
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
+   "b": "R-48 Agency Independence",
+   "likeness": 0.9967,
+   "percentile": 100
+  },
+  {
+   "a": "20261109_CL-021-Connect-24px-Fit-B-Black.svg",
+   "b": "CL-021 Connect",
+   "likeness": 0.9933,
+   "percentile": 100
+  },
+  {
+   "a": "20261109_CL-059-Credit-Allocation-Option-A-Black.svg",
+   "b": "CL-059 Credit Allocation",
+   "likeness": 0.9918,
+   "percentile": 100
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "R-42 Congressional Tariff Votes",
+   "likeness": 0.9834,
+   "percentile": 100
+  },
+  {
+   "a": "20261109_CL-059-Credit-Allocation-Option-C-Black.svg",
+   "b": "CL-059 Credit Allocation",
+   "likeness": 0.9812,
+   "percentile": 100
+  },
+  {
+   "a": "20261109_CL-059-Credit-Allocation-Option-B-Black.svg",
+   "b": "CL-059 Credit Allocation",
+   "likeness": 0.9748,
+   "percentile": 100
+  },
+  {
+   "a": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
+   "b": "R-13 Congressional Capacity",
+   "likeness": 0.9662,
+   "percentile": 100
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "CL-014 Entrenched Power",
+   "likeness": 0.9589,
+   "percentile": 100
+  },
+  {
+   "a": "20261109_CL-021-Connect-24px-Fit-A-Black.svg",
+   "b": "CL-021 Connect",
+   "likeness": 0.9413,
+   "percentile": 99.8
+  },
+  {
+   "a": "20261109_CL-021-Connect-16px-Fit-A-Black.svg",
+   "b": "CL-021 Connect",
+   "likeness": 0.9067,
+   "percentile": 98.8
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "CL-014 Entrenched Power",
+   "likeness": 0.9066,
+   "percentile": 98.8
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "CL-014 Entrenched Power",
+   "likeness": 0.8958,
+   "percentile": 98.1
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "b": "CL-025 Congress",
+   "likeness": 0.8644,
+   "percentile": 93.9
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
+   "b": "R-48 Agency Independence",
+   "likeness": 0.8475,
+   "percentile": 90.1
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-C-Black.svg",
+   "b": "R-48 Agency Independence",
+   "likeness": 0.844,
+   "percentile": 89.4
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-B-Black.svg",
+   "b": "CL-025 Congress",
+   "likeness": 0.7572,
+   "percentile": 62.3
+  },
+  {
+   "a": "20261109_CL-019-Explain-24px-Fit-B-Black.svg",
+   "b": "CL-019 Explain",
+   "likeness": 0.7216,
+   "percentile": 50.2
+  },
+  {
+   "a": "20261109_CL-020-Track-24px-Fit-B-Black.svg",
+   "b": "CL-020 Track",
+   "likeness": 0.7204,
+   "percentile": 49.8
+  },
+  {
+   "a": "20261109_CL-019-Explain-24px-Fit-A-Black.svg",
+   "b": "CL-019 Explain",
+   "likeness": 0.6818,
+   "percentile": 37.5
+  },
+  {
+   "a": "20261109_CL-019-Explain-16px-Fit-A-Black.svg",
+   "b": "CL-019 Explain",
+   "likeness": 0.6688,
+   "percentile": 33.6
+  },
+  {
+   "a": "20261109_CL-020-Track-16px-Fit-A-Black.svg",
+   "b": "CL-020 Track",
+   "likeness": 0.6647,
+   "percentile": 32.5
+  },
+  {
+   "a": "20261109_R-13-Congressional-Capacity-Option-C-Black.svg",
+   "b": "R-13 Congressional Capacity",
+   "likeness": 0.6364,
+   "percentile": 25.6
+  },
+  {
+   "a": "20261109_R-13-Congressional-Capacity-Option-B-Black.svg",
+   "b": "R-13 Congressional Capacity",
+   "likeness": 0.6201,
+   "percentile": 22
+  },
+  {
+   "a": "20261109_CL-020-Track-24px-Fit-A-Black.svg",
+   "b": "CL-020 Track",
+   "likeness": 0.596,
+   "percentile": 17.3
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-C-Black.svg",
+   "b": "CL-025 Congress",
+   "likeness": 0.5062,
+   "percentile": 6.9
+  },
+  {
+   "a": "20261109_CL-022-Act-24px-Fit-A-Black.svg",
+   "b": "CL-022 Act",
+   "likeness": 0.5059,
+   "percentile": 6.9
+  },
+  {
+   "a": "20261109_CL-022-Act-24px-Fit-B-Black.svg",
+   "b": "CL-022 Act",
+   "likeness": 0.5021,
+   "percentile": 6.7
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-C-Black.svg",
+   "b": "R-42 Congressional Tariff Votes",
+   "likeness": 0.4999,
+   "percentile": 6.5
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
+   "b": "R-42 Congressional Tariff Votes",
+   "likeness": 0.4881,
+   "percentile": 5.7
+  },
+  {
+   "a": "20261109_CL-022-Act-16px-Fit-A-Black.svg",
+   "b": "CL-022 Act",
+   "likeness": 0.3114,
+   "percentile": 0.4
+  }
+ ],
+ "options": [
+  {
+   "a": "20261109_Utility-Filter-Option-A-24px.svg",
+   "b": "20261109_Utility-Filter-Option-B-24px.svg",
+   "likeness": 0.9965,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-059-Credit-Allocation-Option-A-Black.svg",
+   "b": "20261109_CL-059-Credit-Allocation-Option-B-Black.svg",
+   "likeness": 0.9892,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "likeness": 0.975,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-059-Credit-Allocation-Option-A-Black.svg",
+   "b": "20261109_CL-059-Credit-Allocation-Option-C-Black.svg",
+   "likeness": 0.975,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
+   "b": "20261109_R-48-Agency-Independence-Option-C-Black.svg",
+   "likeness": 0.9688,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-A-24px.svg",
+   "b": "20261109_Utility-Success-Option-B-24px.svg",
+   "likeness": 0.9647,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-059-Credit-Allocation-Option-B-Black.svg",
+   "b": "20261109_CL-059-Credit-Allocation-Option-C-Black.svg",
+   "likeness": 0.9638,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "likeness": 0.9538,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "likeness": 0.95,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-A-24px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-B-24px.svg",
+   "likeness": 0.94,
+   "percentile": 99.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-A-24px.svg",
+   "b": "20261109_Utility-Filter-Option-C-24px.svg",
+   "likeness": 0.9382,
+   "percentile": 99.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-A-24px.svg",
+   "b": "20261109_Utility-Warning-Option-C-24px.svg",
+   "likeness": 0.9288,
+   "percentile": 99.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-021-Connect-24px-Fit-A-Black.svg",
+   "b": "20261109_CL-021-Connect-24px-Fit-B-Black.svg",
+   "likeness": 0.9282,
+   "percentile": 99.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "b": "20261109_CL-025-Congress-Option-B-Black.svg",
+   "likeness": 0.9279,
+   "percentile": 99.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-B-24px.svg",
+   "b": "20261109_Utility-Filter-Option-C-24px.svg",
+   "likeness": 0.926,
+   "percentile": 99.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-022-Act-24px-Fit-A-Black.svg",
+   "b": "20261109_CL-022-Act-24px-Fit-B-Black.svg",
+   "likeness": 0.9212,
+   "percentile": 99.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Search-Option-A-24px.svg",
+   "b": "20261109_Utility-Search-Option-B-24px.svg",
+   "likeness": 0.9174,
+   "percentile": 99.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Testify-Option-A-Black.svg",
+   "b": "20261109_Testify-Option-C-Black.svg",
+   "likeness": 0.9064,
+   "percentile": 98.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-021-Connect-16px-Fit-A-Black.svg",
+   "b": "20261109_CL-021-Connect-24px-Fit-B-Black.svg",
+   "likeness": 0.9028,
+   "percentile": 98.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-A-24px.svg",
+   "b": "20261109_Utility-Chevron-Option-C-24px.svg",
+   "likeness": 0.9021,
+   "percentile": 98.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-A-24px.svg",
+   "b": "20261109_Utility-Menu-Option-C-24px.svg",
+   "likeness": 0.8995,
+   "percentile": 98.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-A-Black.svg",
+   "b": "20261109_Contact-An-Official-Option-B-Black.svg",
+   "likeness": 0.8897,
+   "percentile": 97.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-A-24px.svg",
+   "b": "20261109_Utility-Error-Option-B-24px.svg",
+   "likeness": 0.8885,
+   "percentile": 97.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-A-24px.svg",
+   "b": "20261109_Utility-Another-Site-Option-C-24px.svg",
+   "likeness": 0.8857,
+   "percentile": 97,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-B-24px.svg",
+   "b": "20261109_Utility-Sort-Option-C-24px.svg",
+   "likeness": 0.8822,
+   "percentile": 96.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
+   "b": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
+   "likeness": 0.8666,
+   "percentile": 94.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
+   "b": "20261109_R-42-Congressional-Tariff-Votes-Option-C-Black.svg",
+   "likeness": 0.8654,
+   "percentile": 94.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-019-Explain-16px-Fit-A-Black.svg",
+   "b": "20261109_CL-019-Explain-24px-Fit-B-Black.svg",
+   "likeness": 0.8613,
+   "percentile": 93.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-019-Explain-24px-Fit-A-Black.svg",
+   "b": "20261109_CL-019-Explain-24px-Fit-B-Black.svg",
+   "likeness": 0.8578,
+   "percentile": 92.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
+   "b": "20261109_R-48-Agency-Independence-Option-C-Black.svg",
+   "likeness": 0.8557,
+   "percentile": 92.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-A-24px.svg",
+   "b": "20261109_Utility-Copy-Option-C-24px.svg",
+   "likeness": 0.8552,
+   "percentile": 92,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-A-24px.svg",
+   "b": "20261109_Utility-Download-Option-B-24px.svg",
+   "likeness": 0.8515,
+   "percentile": 91.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-020-Track-16px-Fit-A-Black.svg",
+   "b": "20261109_CL-020-Track-24px-Fit-A-Black.svg",
+   "likeness": 0.8497,
+   "percentile": 90.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_R-13-Congressional-Capacity-Option-B-Black.svg",
+   "b": "20261109_R-13-Congressional-Capacity-Option-C-Black.svg",
+   "likeness": 0.8461,
+   "percentile": 89.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-021-Connect-16px-Fit-A-Black.svg",
+   "b": "20261109_CL-021-Connect-24px-Fit-A-Black.svg",
+   "likeness": 0.8453,
+   "percentile": 89.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-B-24px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-C-24px.svg",
+   "likeness": 0.8441,
+   "percentile": 89.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-A-24px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-C-24px.svg",
+   "likeness": 0.8433,
+   "percentile": 89.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-A-24px.svg",
+   "b": "20261109_Utility-Arrow-Option-C-24px.svg",
+   "likeness": 0.8404,
+   "percentile": 88.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-24px.svg",
+   "b": "20261109_Utility-Close-Option-C-24px.svg",
+   "likeness": 0.8365,
+   "percentile": 87.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-A-24px.svg",
+   "b": "20261109_Utility-Success-Option-C-24px.svg",
+   "likeness": 0.8345,
+   "percentile": 86.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-020-Track-16px-Fit-A-Black.svg",
+   "b": "20261109_CL-020-Track-24px-Fit-B-Black.svg",
+   "likeness": 0.8342,
+   "percentile": 86.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-A-24px.svg",
+   "b": "20261109_Utility-Error-Option-C-24px.svg",
+   "likeness": 0.8306,
+   "percentile": 85.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-B-24px.svg",
+   "b": "20261109_Utility-Success-Option-C-24px.svg",
+   "likeness": 0.8192,
+   "percentile": 82.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Search-Option-A-24px.svg",
+   "b": "20261109_Utility-Search-Option-C-24px.svg",
+   "likeness": 0.8147,
+   "percentile": 80.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-020-Track-24px-Fit-A-Black.svg",
+   "b": "20261109_CL-020-Track-24px-Fit-B-Black.svg",
+   "likeness": 0.7976,
+   "percentile": 75.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-A-24px.svg",
+   "b": "20261109_Utility-Menu-Option-B-24px.svg",
+   "likeness": 0.7818,
+   "percentile": 70.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-B-24px.svg",
+   "b": "20261109_Utility-Menu-Option-C-24px.svg",
+   "likeness": 0.7391,
+   "percentile": 56.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-B-24px.svg",
+   "b": "20261109_Utility-Error-Option-C-24px.svg",
+   "likeness": 0.7353,
+   "percentile": 54.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-B-Black.svg",
+   "b": "20261109_Contact-An-Official-Option-C-Black.svg",
+   "likeness": 0.7274,
+   "percentile": 52.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-A-24px.svg",
+   "b": "20261109_Utility-View-Full-Size-Option-B-24px.svg",
+   "likeness": 0.7198,
+   "percentile": 49.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-B-24px.svg",
+   "b": "20261109_Utility-Play-Option-C-24px.svg",
+   "likeness": 0.7183,
+   "percentile": 49,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Search-Option-B-24px.svg",
+   "b": "20261109_Utility-Search-Option-C-24px.svg",
+   "likeness": 0.7148,
+   "percentile": 47.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-019-Explain-16px-Fit-A-Black.svg",
+   "b": "20261109_CL-019-Explain-24px-Fit-A-Black.svg",
+   "likeness": 0.7109,
+   "percentile": 46.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-A-Black.svg",
+   "b": "20261109_Contact-An-Official-Option-C-Black.svg",
+   "likeness": 0.6981,
+   "percentile": 42.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-B-24px.svg",
+   "b": "20261109_Utility-Pause-Option-C-24px.svg",
+   "likeness": 0.6921,
+   "percentile": 40.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-B-24px.svg",
+   "b": "20261109_Utility-Reset-Option-C-24px.svg",
+   "likeness": 0.6867,
+   "percentile": 39,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-022-Act-16px-Fit-A-Black.svg",
+   "b": "20261109_CL-022-Act-24px-Fit-B-Black.svg",
+   "likeness": 0.6427,
+   "percentile": 27.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-A-24px.svg",
+   "b": "20261109_Utility-Sort-Option-B-24px.svg",
+   "likeness": 0.5842,
+   "percentile": 15.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-A-24px.svg",
+   "b": "20261109_Utility-Reset-Option-B-24px.svg",
+   "likeness": 0.5703,
+   "percentile": 13.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-B-Black.svg",
+   "b": "20261109_CL-025-Congress-Option-C-Black.svg",
+   "likeness": 0.5657,
+   "percentile": 12.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
+   "b": "20261109_R-13-Congressional-Capacity-Option-B-Black.svg",
+   "likeness": 0.5449,
+   "percentile": 10.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "b": "20261109_CL-025-Congress-Option-C-Black.svg",
+   "likeness": 0.5429,
+   "percentile": 10.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-A-24px.svg",
+   "b": "20261109_Utility-Download-Option-C-24px.svg",
+   "likeness": 0.5372,
+   "percentile": 9.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-B-24px.svg",
+   "b": "20261109_Utility-View-Full-Size-Option-C-24px.svg",
+   "likeness": 0.5322,
+   "percentile": 9.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
+   "b": "20261109_R-13-Congressional-Capacity-Option-C-Black.svg",
+   "likeness": 0.5219,
+   "percentile": 8.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-A-24px.svg",
+   "b": "20261109_Utility-Reset-Option-C-24px.svg",
+   "likeness": 0.5216,
+   "percentile": 8.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-B-24px.svg",
+   "b": "20261109_Utility-Download-Option-C-24px.svg",
+   "likeness": 0.5126,
+   "percentile": 7.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-A-24px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.5006,
+   "percentile": 6.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-A-24px.svg",
+   "b": "20261109_Utility-Sort-Option-C-24px.svg",
+   "likeness": 0.4957,
+   "percentile": 6.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-022-Act-16px-Fit-A-Black.svg",
+   "b": "20261109_CL-022-Act-24px-Fit-A-Black.svg",
+   "likeness": 0.49,
+   "percentile": 5.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-A-24px.svg",
+   "b": "20261109_Utility-Warning-Option-B-24px.svg",
+   "likeness": 0.4768,
+   "percentile": 5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-A-24px.svg",
+   "b": "20261109_Utility-Another-Site-Option-B-24px.svg",
+   "likeness": 0.4644,
+   "percentile": 4.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-A-24px.svg",
+   "b": "20261109_Utility-Close-Option-B-24px.svg",
+   "likeness": 0.4484,
+   "percentile": 3.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-B-24px.svg",
+   "b": "20261109_Utility-Another-Site-Option-C-24px.svg",
+   "likeness": 0.4363,
+   "percentile": 3.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-B-24px.svg",
+   "b": "20261109_Utility-Copy-Option-C-24px.svg",
+   "likeness": 0.4327,
+   "percentile": 2.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
+   "likeness": 0.4095,
+   "percentile": 1.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-B-24px.svg",
+   "b": "20261109_Utility-Warning-Option-C-24px.svg",
+   "likeness": 0.406,
+   "percentile": 1.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-A-24px.svg",
+   "b": "20261109_Utility-View-Full-Size-Option-C-24px.svg",
+   "likeness": 0.4008,
+   "percentile": 1.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-A-24px.svg",
+   "b": "20261109_Utility-Copy-Option-B-24px.svg",
+   "likeness": 0.3836,
+   "percentile": 1.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "b": "20261109_Utility-Arrow-Option-C-24px.svg",
+   "likeness": 0.3745,
+   "percentile": 1.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-A-24px.svg",
+   "b": "20261109_Utility-Pause-Option-C-24px.svg",
+   "likeness": 0.3551,
+   "percentile": 0.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "20261109_R-42-Congressional-Tariff-Votes-Option-C-Black.svg",
+   "likeness": 0.3525,
+   "percentile": 0.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-A-24px.svg",
+   "b": "20261109_Utility-Close-Option-C-24px.svg",
+   "likeness": 0.3482,
+   "percentile": 0.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-A-24px.svg",
+   "b": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "likeness": 0.3287,
+   "percentile": 0.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "b": "20261109_Utility-Chevron-Option-C-24px.svg",
+   "likeness": 0.2996,
+   "percentile": 0.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-A-24px.svg",
+   "b": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "likeness": 0.2953,
+   "percentile": 0.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Testify-Option-B-Black.svg",
+   "b": "20261109_Testify-Option-C-Black.svg",
+   "likeness": 0.2564,
+   "percentile": 0.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-A-24px.svg",
+   "b": "20261109_Utility-Play-Option-B-24px.svg",
+   "likeness": 0.236,
+   "percentile": 0.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Testify-Option-A-Black.svg",
+   "b": "20261109_Testify-Option-B-Black.svg",
+   "likeness": 0.2145,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-A-24px.svg",
+   "b": "20261109_Utility-Play-Option-C-24px.svg",
+   "likeness": 0.1147,
+   "percentile": 0,
+   "against": "new"
+  }
+ ],
+ "closest": [
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "R-31 Childcare Supply",
+   "likeness": 0.9333,
+   "percentile": 99.7,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-46 Expand the House",
+   "likeness": 0.95,
+   "percentile": 99.9,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-20 Merger Enforcement",
+   "likeness": 0.9404,
+   "percentile": 99.8,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_CL-019-Explain-16px-Fit-A-Black.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.7487,
+   "percentile": 59.4,
+   "extent": 0.88
+  },
+  {
+   "a": "20261109_CL-019-Explain-24px-Fit-A-Black.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.7291,
+   "percentile": 52.8,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_CL-019-Explain-24px-Fit-B-Black.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.766,
+   "percentile": 65.3,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_CL-020-Track-16px-Fit-A-Black.svg",
+   "b": "CL-051 Market Power",
+   "likeness": 0.6475,
+   "percentile": 28.4,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_CL-020-Track-24px-Fit-A-Black.svg",
+   "b": "R-13 Congressional Capacity",
+   "likeness": 0.5615,
+   "percentile": 12.3,
+   "extent": 0.96
+  },
+  {
+   "a": "20261109_CL-020-Track-24px-Fit-B-Black.svg",
+   "b": "CL-051 Market Power",
+   "likeness": 0.7358,
+   "percentile": 55.1,
+   "extent": 0.88
+  },
+  {
+   "a": "20261109_CL-021-Connect-16px-Fit-A-Black.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.8325,
+   "percentile": 86.3,
+   "extent": 0.79
+  },
+  {
+   "a": "20261109_CL-021-Connect-24px-Fit-A-Black.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.711,
+   "percentile": 46.7,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_CL-021-Connect-24px-Fit-B-Black.svg",
+   "b": "CL-019 Explain",
+   "likeness": 0.7758,
+   "percentile": 68.5,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_CL-022-Act-16px-Fit-A-Black.svg",
+   "b": "R-02 Ranked-Choice Voting",
+   "likeness": 0.4556,
+   "percentile": 4,
+   "extent": 1
+  },
+  {
+   "a": "20261109_CL-022-Act-24px-Fit-A-Black.svg",
+   "b": "CL-023 Evidence",
+   "likeness": 0.4909,
+   "percentile": 5.9,
+   "extent": 0.96
+  },
+  {
+   "a": "20261109_CL-022-Act-24px-Fit-B-Black.svg",
+   "b": "CL-023 Evidence",
+   "likeness": 0.6053,
+   "percentile": 19,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-A-Black.svg",
+   "b": "CL-005 Public Meeting",
+   "likeness": 0.9196,
+   "percentile": 99.3,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-B-Black.svg",
+   "b": "R-31 Childcare Supply",
+   "likeness": 0.91,
+   "percentile": 98.9,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-C-Black.svg",
+   "b": "R-28 Capital-Income Tax",
+   "likeness": 0.7731,
+   "percentile": 67.6,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_CL-059-Credit-Allocation-Option-A-Black.svg",
+   "b": "CL-040 Platform Power",
+   "likeness": 0.7688,
+   "percentile": 66.1,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_CL-059-Credit-Allocation-Option-B-Black.svg",
+   "b": "CL-022 Act",
+   "likeness": 0.7618,
+   "percentile": 64,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_CL-059-Credit-Allocation-Option-C-Black.svg",
+   "b": "CL-040 Platform Power",
+   "likeness": 0.7141,
+   "percentile": 47.7,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-A-Black.svg",
+   "b": "R-36 Public Investment",
+   "likeness": 0.8962,
+   "percentile": 98.1,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-B-Black.svg",
+   "b": "R-06 On-Cycle Elections",
+   "likeness": 0.8719,
+   "percentile": 95.2,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-C-Black.svg",
+   "b": "CL-069 Childcare",
+   "likeness": 0.8637,
+   "percentile": 93.7,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
+   "b": "CL-035 Residential Sorting",
+   "likeness": 0.917,
+   "percentile": 99.2,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_R-13-Congressional-Capacity-Option-B-Black.svg",
+   "b": "CL-047 Data Rights",
+   "likeness": 0.8584,
+   "percentile": 92.7,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_R-13-Congressional-Capacity-Option-C-Black.svg",
+   "b": "CL-038 External Shocks",
+   "likeness": 0.7856,
+   "percentile": 71.7,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "R-06 On-Cycle Elections",
+   "likeness": 0.9292,
+   "percentile": 99.7,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
+   "b": "CL-047 Data Rights",
+   "likeness": 0.9082,
+   "percentile": 98.8,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-C-Black.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.8102,
+   "percentile": 79.4,
+   "extent": 0.71
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
+   "b": "R-41 Grid Cost Allocation",
+   "likeness": 0.8968,
+   "percentile": 98.1,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
+   "b": "CL-035 Residential Sorting",
+   "likeness": 0.9177,
+   "percentile": 99.2,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-C-Black.svg",
+   "b": "CL-035 Residential Sorting",
+   "likeness": 0.8851,
+   "percentile": 96.9,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Testify-Option-A-Black.svg",
+   "b": "CL-042 AI Concentration",
+   "likeness": 0.6121,
+   "percentile": 20.3,
+   "extent": 0.79
+  },
+  {
+   "a": "20261109_Testify-Option-B-Black.svg",
+   "b": "CL-062 Assets & Debt",
+   "likeness": 0.7002,
+   "percentile": 42.9,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Testify-Option-C-Black.svg",
+   "b": "CL-042 AI Concentration",
+   "likeness": 0.7171,
+   "percentile": 48.5,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-A-24px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.5354,
+   "percentile": 9.4,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-B-24px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.7677,
+   "percentile": 65.7,
+   "extent": 0.58
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-C-24px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.5012,
+   "percentile": 6.6,
+   "extent": 0.79
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-A-24px.svg",
+   "b": "CL-002 Representation",
+   "likeness": 0.774,
+   "percentile": 68,
+   "extent": 0.67
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.6538,
+   "percentile": 29.8,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-C-24px.svg",
+   "b": "R-07 Small-Donor Matching",
+   "likeness": 0.8298,
+   "percentile": 85.4,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-A-24px.svg",
+   "b": "CL-064 Trade Costs",
+   "likeness": 0.7284,
+   "percentile": 52.6,
+   "extent": 0.58
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.5377,
+   "percentile": 9.6,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-C-24px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.6999,
+   "percentile": 42.9,
+   "extent": 0.42
+  },
+  {
+   "a": "20261109_Utility-Close-Option-A-24px.svg",
+   "b": "CL-022 Act",
+   "likeness": 0.8335,
+   "percentile": 86.5,
+   "extent": 0.58
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-24px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.6484,
+   "percentile": 28.6,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Close-Option-C-24px.svg",
+   "b": "CL-039 Feed Ranking",
+   "likeness": 0.5729,
+   "percentile": 13.8,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-A-24px.svg",
+   "b": "CL-039 Feed Ranking",
+   "likeness": 0.5485,
+   "percentile": 10.7,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-B-24px.svg",
+   "b": "CL-039 Feed Ranking",
+   "likeness": 0.623,
+   "percentile": 22.6,
+   "extent": 0.79
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-C-24px.svg",
+   "b": "CL-067 Healthcare",
+   "likeness": 0.7021,
+   "percentile": 43.5,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Download-Option-A-24px.svg",
+   "b": "CL-001 Voting",
+   "likeness": 0.7926,
+   "percentile": 73.9,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Download-Option-B-24px.svg",
+   "b": "CL-025 Congress",
+   "likeness": 0.7741,
+   "percentile": 68,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Download-Option-C-24px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.6628,
+   "percentile": 32.1,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Error-Option-A-24px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.5676,
+   "percentile": 13.1,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Error-Option-B-24px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.68,
+   "percentile": 36.9,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Error-Option-C-24px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.4926,
+   "percentile": 6,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-A-24px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.668,
+   "percentile": 33.3,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-B-24px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.6568,
+   "percentile": 30.6,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-C-24px.svg",
+   "b": "CL-030 Reform Tests",
+   "likeness": 0.7529,
+   "percentile": 60.7,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-A-24px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.7369,
+   "percentile": 55.4,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-B-24px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.8718,
+   "percentile": 95.2,
+   "extent": 0.58
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-C-24px.svg",
+   "b": "CL-039 Feed Ranking",
+   "likeness": 0.7078,
+   "percentile": 45.5,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-A-24px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.8968,
+   "percentile": 98.1,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-B-24px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.5585,
+   "percentile": 11.9,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-C-24px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.5929,
+   "percentile": 16.9,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Play-Option-A-24px.svg",
+   "b": "CL-004 Petition",
+   "likeness": 0.7956,
+   "percentile": 74.9,
+   "extent": 0.67
+  },
+  {
+   "a": "20261109_Utility-Play-Option-B-24px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.6667,
+   "percentile": 33,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Play-Option-C-24px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.6127,
+   "percentile": 20.4,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-A-24px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.5951,
+   "percentile": 17.1,
+   "extent": 0.88
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-B-24px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.4812,
+   "percentile": 5.4,
+   "extent": 0.79
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-C-24px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.5113,
+   "percentile": 7.4,
+   "extent": 0.88
+  },
+  {
+   "a": "20261109_Utility-Search-Option-A-24px.svg",
+   "b": "CL-024 Feedback Loop",
+   "likeness": 0.6511,
+   "percentile": 29.2,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Search-Option-B-24px.svg",
+   "b": "CL-023 Evidence",
+   "likeness": 0.7377,
+   "percentile": 55.6,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Search-Option-C-24px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.478,
+   "percentile": 5.1,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-A-24px.svg",
+   "b": "CL-049 Wealth Concentration",
+   "likeness": 0.6879,
+   "percentile": 39.3,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-B-24px.svg",
+   "b": "R-28 Capital-Income Tax",
+   "likeness": 0.6789,
+   "percentile": 36.5,
+   "extent": 0.67
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-C-24px.svg",
+   "b": "CL-013 Incumbent Defeat",
+   "likeness": 0.7248,
+   "percentile": 51.1,
+   "extent": 0.5
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-A-24px.svg",
+   "b": "CL-047 Data Rights",
+   "likeness": 0.7368,
+   "percentile": 55.3,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-B-24px.svg",
+   "b": "CL-034 New Technology",
+   "likeness": 0.6832,
+   "percentile": 37.9,
+   "extent": 0.67
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-C-24px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.7124,
+   "percentile": 47.2,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Success-Option-A-24px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.5094,
+   "percentile": 7.2,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Success-Option-B-24px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.5131,
+   "percentile": 7.5,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Success-Option-C-24px.svg",
+   "b": "CL-039 Feed Ranking",
+   "likeness": 0.5074,
+   "percentile": 7.1,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-A-24px.svg",
+   "b": "CL-033 Hostile Content",
+   "likeness": 0.142,
+   "percentile": 0,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-B-24px.svg",
+   "b": "CL-033 Hostile Content",
+   "likeness": 0.52,
+   "percentile": 8.1,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-C-24px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.4064,
+   "percentile": 1.9,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-A-24px.svg",
+   "b": "CL-059 Credit Allocation",
+   "likeness": 0.7821,
+   "percentile": 70.6,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-B-24px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.7163,
+   "percentile": 48.2,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-C-24px.svg",
+   "b": "CL-040 Platform Power",
+   "likeness": 0.8404,
+   "percentile": 88.4,
+   "extent": 0.75
+  }
+ ]
+}

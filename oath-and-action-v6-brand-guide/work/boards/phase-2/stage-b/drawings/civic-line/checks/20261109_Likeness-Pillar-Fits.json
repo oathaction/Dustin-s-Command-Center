@@ -1,0 +1,375 @@
+{
+ "tool": "work/build/scripts/phase-2/icon_likeness_check.js",
+ "run": "2026-11-09T21:15:48.672Z",
+ "method": "Ink maps at 24 px from coverage in Charcoal over Newsprint, Gaussian blur sigma 1.2 px, Pearson correlation best over shifts up to 1 px, percentile among the 7381 pairs of the 122 Civic Line masters (Board 6).",
+ "renderer": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+ "files": 24,
+ "compared": 12,
+ "editions_skipped": [
+  {
+   "name": "20261109_CL-019-Explain-16px-Fit-A-Red-Black.svg",
+   "as": "20261109_CL-019-Explain-16px-Fit-A-Black.svg"
+  },
+  {
+   "name": "20261109_CL-019-Explain-24px-Fit-A-Red-Black.svg",
+   "as": "20261109_CL-019-Explain-24px-Fit-A-Black.svg"
+  },
+  {
+   "name": "20261109_CL-019-Explain-24px-Fit-B-Red-Black.svg",
+   "as": "20261109_CL-019-Explain-24px-Fit-B-Black.svg"
+  },
+  {
+   "name": "20261109_CL-020-Track-16px-Fit-A-Red-Black.svg",
+   "as": "20261109_CL-020-Track-16px-Fit-A-Black.svg"
+  },
+  {
+   "name": "20261109_CL-020-Track-24px-Fit-A-Red-Black.svg",
+   "as": "20261109_CL-020-Track-24px-Fit-A-Black.svg"
+  },
+  {
+   "name": "20261109_CL-020-Track-24px-Fit-B-Red-Black.svg",
+   "as": "20261109_CL-020-Track-24px-Fit-B-Black.svg"
+  },
+  {
+   "name": "20261109_CL-021-Connect-16px-Fit-A-Red-Black.svg",
+   "as": "20261109_CL-021-Connect-16px-Fit-A-Black.svg"
+  },
+  {
+   "name": "20261109_CL-021-Connect-24px-Fit-A-Red-Black.svg",
+   "as": "20261109_CL-021-Connect-24px-Fit-A-Black.svg"
+  },
+  {
+   "name": "20261109_CL-021-Connect-24px-Fit-B-Red-Black.svg",
+   "as": "20261109_CL-021-Connect-24px-Fit-B-Black.svg"
+  },
+  {
+   "name": "20261109_CL-022-Act-16px-Fit-A-Red-Black.svg",
+   "as": "20261109_CL-022-Act-16px-Fit-A-Black.svg"
+  },
+  {
+   "name": "20261109_CL-022-Act-24px-Fit-A-Red-Black.svg",
+   "as": "20261109_CL-022-Act-24px-Fit-A-Black.svg"
+  },
+  {
+   "name": "20261109_CL-022-Act-24px-Fit-B-Red-Black.svg",
+   "as": "20261109_CL-022-Act-24px-Fit-B-Black.svg"
+  }
+ ],
+ "distribution": {
+  "pairs": 7381,
+  "p50": 0.721,
+  "p90": 0.8472,
+  "p95": 0.8708,
+  "p99": 0.9127,
+  "p999": 0.9479,
+  "max": 0.9644
+ },
+ "thresholds": {
+  "flag": {
+   "percentile": 99,
+   "likeness": 0.9127
+  },
+  "watch": {
+   "percentile": 95,
+   "likeness": 0.8708
+  }
+ },
+ "masters_closest_pairs": [
+  {
+   "pair": "R-06 and R-44",
+   "likeness": 0.9644
+  },
+  {
+   "pair": "CL-028 and R-27",
+   "likeness": 0.958
+  },
+  {
+   "pair": "R-05 and R-14",
+   "likeness": 0.9567
+  },
+  {
+   "pair": "CL-003 and R-05",
+   "likeness": 0.956
+  },
+  {
+   "pair": "R-18 and R-27",
+   "likeness": 0.9559
+  },
+  {
+   "pair": "R-24 and R-25",
+   "likeness": 0.952
+  },
+  {
+   "pair": "CL-032 and R-23",
+   "likeness": 0.9484
+  },
+  {
+   "pair": "R-08 and R-18",
+   "likeness": 0.9479
+  },
+  {
+   "pair": "CL-003 and R-23",
+   "likeness": 0.9462
+  },
+  {
+   "pair": "R-08 and R-27",
+   "likeness": 0.9453
+  },
+  {
+   "pair": "CL-003 and R-14",
+   "likeness": 0.9426
+  },
+  {
+   "pair": "CL-028 and R-08",
+   "likeness": 0.9419
+  }
+ ],
+ "flagged": [],
+ "watch": [],
+ "own": [
+  {
+   "a": "20261109_CL-021-Connect-24px-Fit-B-Black.svg",
+   "b": "CL-021 Connect",
+   "likeness": 0.9933,
+   "percentile": 100
+  },
+  {
+   "a": "20261109_CL-021-Connect-24px-Fit-A-Black.svg",
+   "b": "CL-021 Connect",
+   "likeness": 0.9413,
+   "percentile": 99.8
+  },
+  {
+   "a": "20261109_CL-021-Connect-16px-Fit-A-Black.svg",
+   "b": "CL-021 Connect",
+   "likeness": 0.9067,
+   "percentile": 98.8
+  },
+  {
+   "a": "20261109_CL-019-Explain-24px-Fit-B-Black.svg",
+   "b": "CL-019 Explain",
+   "likeness": 0.7216,
+   "percentile": 50.2
+  },
+  {
+   "a": "20261109_CL-020-Track-24px-Fit-B-Black.svg",
+   "b": "CL-020 Track",
+   "likeness": 0.7204,
+   "percentile": 49.8
+  },
+  {
+   "a": "20261109_CL-019-Explain-24px-Fit-A-Black.svg",
+   "b": "CL-019 Explain",
+   "likeness": 0.6818,
+   "percentile": 37.5
+  },
+  {
+   "a": "20261109_CL-019-Explain-16px-Fit-A-Black.svg",
+   "b": "CL-019 Explain",
+   "likeness": 0.6688,
+   "percentile": 33.6
+  },
+  {
+   "a": "20261109_CL-020-Track-16px-Fit-A-Black.svg",
+   "b": "CL-020 Track",
+   "likeness": 0.6647,
+   "percentile": 32.5
+  },
+  {
+   "a": "20261109_CL-020-Track-24px-Fit-A-Black.svg",
+   "b": "CL-020 Track",
+   "likeness": 0.596,
+   "percentile": 17.3
+  },
+  {
+   "a": "20261109_CL-022-Act-24px-Fit-A-Black.svg",
+   "b": "CL-022 Act",
+   "likeness": 0.5059,
+   "percentile": 6.9
+  },
+  {
+   "a": "20261109_CL-022-Act-24px-Fit-B-Black.svg",
+   "b": "CL-022 Act",
+   "likeness": 0.5021,
+   "percentile": 6.7
+  },
+  {
+   "a": "20261109_CL-022-Act-16px-Fit-A-Black.svg",
+   "b": "CL-022 Act",
+   "likeness": 0.3114,
+   "percentile": 0.4
+  }
+ ],
+ "options": [
+  {
+   "a": "20261109_CL-021-Connect-24px-Fit-A-Black.svg",
+   "b": "20261109_CL-021-Connect-24px-Fit-B-Black.svg",
+   "likeness": 0.9282,
+   "percentile": 99.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-022-Act-24px-Fit-A-Black.svg",
+   "b": "20261109_CL-022-Act-24px-Fit-B-Black.svg",
+   "likeness": 0.9212,
+   "percentile": 99.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-021-Connect-16px-Fit-A-Black.svg",
+   "b": "20261109_CL-021-Connect-24px-Fit-B-Black.svg",
+   "likeness": 0.9028,
+   "percentile": 98.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-019-Explain-16px-Fit-A-Black.svg",
+   "b": "20261109_CL-019-Explain-24px-Fit-B-Black.svg",
+   "likeness": 0.8613,
+   "percentile": 93.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-019-Explain-24px-Fit-A-Black.svg",
+   "b": "20261109_CL-019-Explain-24px-Fit-B-Black.svg",
+   "likeness": 0.8578,
+   "percentile": 92.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-020-Track-16px-Fit-A-Black.svg",
+   "b": "20261109_CL-020-Track-24px-Fit-A-Black.svg",
+   "likeness": 0.8497,
+   "percentile": 90.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-021-Connect-16px-Fit-A-Black.svg",
+   "b": "20261109_CL-021-Connect-24px-Fit-A-Black.svg",
+   "likeness": 0.8453,
+   "percentile": 89.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-020-Track-16px-Fit-A-Black.svg",
+   "b": "20261109_CL-020-Track-24px-Fit-B-Black.svg",
+   "likeness": 0.8342,
+   "percentile": 86.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-020-Track-24px-Fit-A-Black.svg",
+   "b": "20261109_CL-020-Track-24px-Fit-B-Black.svg",
+   "likeness": 0.7976,
+   "percentile": 75.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-019-Explain-16px-Fit-A-Black.svg",
+   "b": "20261109_CL-019-Explain-24px-Fit-A-Black.svg",
+   "likeness": 0.7109,
+   "percentile": 46.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-022-Act-16px-Fit-A-Black.svg",
+   "b": "20261109_CL-022-Act-24px-Fit-B-Black.svg",
+   "likeness": 0.6427,
+   "percentile": 27.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-022-Act-16px-Fit-A-Black.svg",
+   "b": "20261109_CL-022-Act-24px-Fit-A-Black.svg",
+   "likeness": 0.49,
+   "percentile": 5.9,
+   "against": "new"
+  }
+ ],
+ "closest": [
+  {
+   "a": "20261109_CL-019-Explain-16px-Fit-A-Black.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.7487,
+   "percentile": 59.4,
+   "extent": 0.88
+  },
+  {
+   "a": "20261109_CL-019-Explain-24px-Fit-A-Black.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.7291,
+   "percentile": 52.8,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_CL-019-Explain-24px-Fit-B-Black.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.766,
+   "percentile": 65.3,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_CL-020-Track-16px-Fit-A-Black.svg",
+   "b": "CL-051 Market Power",
+   "likeness": 0.6475,
+   "percentile": 28.4,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_CL-020-Track-24px-Fit-A-Black.svg",
+   "b": "R-13 Congressional Capacity",
+   "likeness": 0.5615,
+   "percentile": 12.3,
+   "extent": 0.96
+  },
+  {
+   "a": "20261109_CL-020-Track-24px-Fit-B-Black.svg",
+   "b": "CL-051 Market Power",
+   "likeness": 0.7358,
+   "percentile": 55.1,
+   "extent": 0.88
+  },
+  {
+   "a": "20261109_CL-021-Connect-16px-Fit-A-Black.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.8325,
+   "percentile": 86.3,
+   "extent": 0.79
+  },
+  {
+   "a": "20261109_CL-021-Connect-24px-Fit-A-Black.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.711,
+   "percentile": 46.7,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_CL-021-Connect-24px-Fit-B-Black.svg",
+   "b": "CL-019 Explain",
+   "likeness": 0.7758,
+   "percentile": 68.5,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_CL-022-Act-16px-Fit-A-Black.svg",
+   "b": "R-02 Ranked-Choice Voting",
+   "likeness": 0.4556,
+   "percentile": 4,
+   "extent": 1
+  },
+  {
+   "a": "20261109_CL-022-Act-24px-Fit-A-Black.svg",
+   "b": "CL-023 Evidence",
+   "likeness": 0.4909,
+   "percentile": 5.9,
+   "extent": 0.96
+  },
+  {
+   "a": "20261109_CL-022-Act-24px-Fit-B-Black.svg",
+   "b": "CL-023 Evidence",
+   "likeness": 0.6053,
+   "percentile": 19,
+   "extent": 0.92
+  }
+ ]
+}

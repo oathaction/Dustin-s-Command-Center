@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-contact-an-official-option-c-black" data-id="Contact-An-Official" width="128" height="128" viewBox="0 0 128 128">
   <title>Contact An Official, option C</title>
-  <desc>Oath &amp; Action Civic Line Contact An Official, new topic drawing (DR-141, DR-147), option C. An official at a desk with a nameplate, and one red speech mark arriving from the reader's side. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
+  <desc>Oath &amp; Action Civic Line Contact An Official, new topic drawing (DR-141, DR-147), option C. In person: the person stands at the official's desk and one red speech mark rises between them. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
   <g id="oa-civic-line-contact-an-official-option-c-black-base" data-part="base">
-    <circle cx="80.7542" cy="50.4711" r="5.2919" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M69.4893 72.5294 L69.4893 68.2068 A8.252203 8.252203 0 0 1 77.7415 59.9546 L83.7669 59.9546 A8.252203 8.252203 0 0 1 92.0191 68.2068 L92.0191 72.5294" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="53.3382" y1="74.3571" x2="108.1702" y2="74.3571" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="56.3845,74.3571 56.3845,92.6345 105.124,92.6345 105.124,74.3571" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="72.834,74.3571 74.6618,69.4832 86.8466,69.4832 88.6744,74.3571" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="28.2069" cy="66.0714" r="6.1534" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15.1082 93.2437 L15.1082 86.6943 A9.595595 9.595595 0 0 1 24.7038 77.0987 L31.7101 77.0987 A9.595595 9.595595 0 0 1 41.3057 86.6943 L41.3057 93.2437" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="89.1313" cy="53.3248" r="5.0458" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M78.3903 74.3571 L78.3903 70.2356 A7.868392 7.868392 0 0 1 86.2587 62.3672 L92.0039 62.3672 A7.868392 7.868392 0 0 1 99.8723 70.2356 L99.8723 74.3571" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="65.3708" y1="76.1849" x2="112.8918" y2="76.1849" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="68.417,76.1849 68.417,94.4622 109.8456,94.4622 109.8456,76.1849" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="81.2111,76.1849 83.0389,71.3109 95.2237,71.3109 97.0515,76.1849" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="oa-civic-line-contact-an-official-option-c-black-accent" data-part="accent">
-    <path d="M23.4853 35.3655 L42.9811 35.3655 A3.655481 3.655481 0 0 1 46.6366 39.021 L46.6366 51.2059 A3.655456 3.655456 0 0 1 42.9811 54.8613 L28.3592 54.8613 L21.6576 60.3445 L23.4853 54.8613 A3.655456 3.655456 0 0 1 19.8298 51.2059 L19.8298 39.021 A3.655481 3.655481 0 0 1 23.4853 35.3655 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M48.312 33.5378 L64.1523 33.5378 A3.655481 3.655481 0 0 1 67.8078 37.1933 L67.8078 46.9412 A3.655456 3.655456 0 0 1 64.1523 50.5966 L53.1859 50.5966 L46.4842 56.0798 L48.312 50.5966 A3.655456 3.655456 0 0 1 44.6565 46.9412 L44.6565 37.1933 A3.655481 3.655481 0 0 1 48.312 33.5378 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

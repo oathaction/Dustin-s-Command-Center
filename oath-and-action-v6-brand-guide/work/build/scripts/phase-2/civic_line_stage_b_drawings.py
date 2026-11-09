@@ -72,11 +72,13 @@ def chamber_unit(pen, senate=False):
 
 
 def chambers_c(pen, k=1.0):
-    """Set C's Congress sign: the House (left, larger) and the Senate (right,
-    smaller) side by side, both seen from the gallery. Origin between them
-    on the rostrums' line. Returns (rows, rostrums)."""
-    h_rows, h_ros = chamber_unit(pen.sub(-60 * k, 0, 0.86 * k))
-    s_rows, s_ros = chamber_unit(pen.sub(70 * k, 4 * k, 0.64 * k), senate=True)
+    """Set C's Congress sign: the House in front and the smaller Senate set
+    behind it to the right, both seen from the gallery. Staggered, the pair
+    is about as tall as it is wide, so the capped fit draws it large; side by
+    side it ran four times wider than tall and shrank past naming at 48 px.
+    Origin near the pair's center. Returns (rows, rostrums)."""
+    h_rows, h_ros = chamber_unit(pen.sub(-30 * k, 10 * k, 0.9 * k))
+    s_rows, s_ros = chamber_unit(pen.sub(48 * k, -46 * k, 0.66 * k), senate=True)
     return h_rows + s_rows, h_ros + s_ros
 
 
@@ -146,7 +148,7 @@ def cl025_c():
     """Outside DR-135. The two chambers, the House larger and the Senate
     smaller, each seen from the gallery, red on both rostrums: one job, the
     place each chamber is led from."""
-    rows, ros = chambers_c(P(140, 60))
+    rows, ros = chambers_c(P(130, 80))
     return [("base", rows), ("accent", ros)]
 
 
@@ -282,7 +284,7 @@ def r13_new(sign):
     if sign == "b":
         rows, ros = chamber_b(p.sub(100, 46, 0.74))
     else:
-        rows, ros = chambers_c(p.sub(100, 50, 0.68))
+        rows, ros = chambers_c(p.sub(100, 56, 0.66))
     staff = C.person(p, 38, 150, k=0.7) + C.person(p, 76, 150, k=0.7)
     page, chart = report(p.sub(130, 150, 1.05))
     return [("base", rows + ros + staff + page), ("accent", chart)]
@@ -359,7 +361,7 @@ def r42_new(sign):
     if sign == "b":
         rows, ros = chamber_b(p.sub(100, 46, 0.74))
     else:
-        rows, ros = chambers_c(p.sub(100, 50, 0.68))
+        rows, ros = chambers_c(p.sub(100, 54, 0.66))
     card, marks = vote_card(p.sub(42, 154))
     q = p.sub(98, 154, 0.66)
     goods = parcel(q)

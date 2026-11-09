@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-13-option-c-black" data-id="R-13" width="128" height="128" viewBox="0 0 128 128">
   <title>Congressional Capacity, option C</title>
-  <desc>Oath &amp; Action Civic Line R-13 Congressional Capacity, stage B redraw, option C, outside DR-135. Set C's two chambers replace the building; an analyst's report with a red chart line replaces the open book. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
+  <desc>Oath &amp; Action Civic Line R-13 Congressional Capacity, stage B redraw, option C, outside DR-135. Set C's two chambers replace the building, above two staff and an analyst's report whose chart line takes the red. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
   <g id="oa-civic-line-r-13-option-c-black-base" data-part="base">
-    <path d="M55.6844 36.8554 A15.676456 13.538619 0 0 1 49.0595 46.766" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M46.6926 47.9461 A15.676444 13.538609 0 0 1 33.4428 47.9461" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M31.0759 46.766 A15.676467 13.538628 0 0 1 24.4509 36.8554" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M63.4931 37.4769 A23.514974 20.664323 0 0 1 60.2239 46.3188" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M57.8143 49.2328 A23.514983 20.664331 0 0 1 49.2557 54.6972" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M45.3571 55.8102 A23.51498 20.664329 0 0 1 34.7782 55.8102" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M30.8797 54.6972 A23.514992 20.664339 0 0 1 22.321 49.2328" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M19.9115 46.3188 A23.514974 20.664323 0 0 1 16.6423 37.4769" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M105.5468 38.3932 A11.666408 10.075673 0 0 1 100.6162 45.7681" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M98.8554 46.6466 A11.666404 10.075669 0 0 1 88.9942 46.6466" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M87.2335 45.7681 A11.666408 10.075673 0 0 1 82.3029 38.3932" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M111.3577 38.8556 A17.49931 15.378532 0 0 1 103.9621 50.112" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M101.3204 51.4523 A17.499304 15.378527 0 0 1 86.5292 51.4523" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M83.8875 50.112 A17.49931 15.378532 0 0 1 76.4919 38.8556" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="29.3791,36.3882 29.3791,30.6875 50.7563,30.6875 50.7563,36.3882" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="85.9705,38.0453 85.9705,33.8031 101.8791,33.8031 101.8791,38.0453" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="27.1517" cy="78.2919" r="4.3074" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M17.9826 97.3125 L17.9826 92.728 A6.716906 6.716906 0 0 1 24.6995 86.0111 L29.6039 86.0111 A6.716906 6.716906 0 0 1 36.3208 92.728 L36.3208 97.3125" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="50.303" cy="78.2919" r="4.3074" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M41.1339 97.3125 L41.1339 92.728 A6.716906 6.716906 0 0 1 47.8508 86.0111 L52.7552 86.0111 A6.716906 6.716906 0 0 1 59.4721 92.728 L59.4721 97.3125" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <polygon points="83.2021,97.3125 83.2021,65.3272 108.7904,65.3272 108.7904,97.3125" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="88.3198" y1="71.7243" x2="103.6727" y2="71.7243" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="88.3198" y1="77.4817" x2="99.8345" y2="77.4817" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M69.3382 51.2327 A15.923187 13.751843 0 0 1 62.6085 61.2992" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M60.205 62.4976 A15.923192 13.751848 0 0 1 46.7456 62.4976" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M44.3421 61.2992 A15.923187 13.751843 0 0 1 37.6124 51.2327" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M77.2693 51.8639 A23.884785 20.98966 0 0 1 73.9483 60.8447" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M71.5016 63.805 A23.884798 20.989671 0 0 1 62.8077 69.3553" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M58.8482 70.486 A23.884787 20.989661 0 0 1 48.1024 70.486" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M44.1429 69.3553 A23.884798 20.989671 0 0 1 35.449 63.805" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M33.0023 60.8447 A23.884785 20.98966 0 0 1 29.6813 51.8639" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M96.4715 28.5883 A11.676767 10.084813 0 0 1 91.5366 35.9705" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M89.7741 36.8497 A11.676777 10.084822 0 0 1 79.9043 36.8497" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M78.1418 35.9705 A11.676767 10.084813 0 0 1 73.2069 28.5883" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M102.2879 29.0513 A17.515766 15.392551 0 0 1 94.8856 40.3187" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M92.2415 41.6596 A17.515753 15.392539 0 0 1 77.4369 41.6596" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M74.7928 40.3187 A17.515777 15.39256 0 0 1 67.3904 29.0513" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="42.6186,50.7581 42.6186,44.9678 64.332,44.9678 64.332,50.7581" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="76.8776,28.2404 76.8776,23.994 92.8008,23.994 92.8008,28.2404" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="27.7652" cy="84.9854" r="4.3074" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M18.5961 104.006 L18.5961 99.4214 A6.716906 6.716906 0 0 1 25.313 92.7045 L30.2174 92.7045 A6.716906 6.716906 0 0 1 36.9343 99.4214 L36.9343 104.006" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="50.9165" cy="84.9854" r="4.3074" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M41.7474 104.006 L41.7474 99.4214 A6.716906 6.716906 0 0 1 48.4643 92.7045 L53.3687 92.7045 A6.716906 6.716906 0 0 1 60.0856 99.4214 L60.0856 104.006" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="83.8157,104.006 83.8157,72.0207 109.4039,72.0207 109.4039,104.006" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="88.9333" y1="78.4178" x2="104.2862" y2="78.4178" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="88.9333" y1="84.1751" x2="100.448" y2="84.1751" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="oa-civic-line-r-13-option-c-black-accent" data-part="accent">
-    <polyline points="88.3198,91.5552 93.4374,85.7978 97.9154,88.9964 103.6727,80.6802" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="88.9333,98.2486 94.0509,92.4913 98.5289,95.6898 104.2862,87.3736" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

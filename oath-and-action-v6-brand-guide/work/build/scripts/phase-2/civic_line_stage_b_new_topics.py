@@ -95,19 +95,16 @@ def testify_a():
 
 
 def testify_b():
-    """The hearing from the side: the witness at a low table with the red
-    microphone, facing a tall bench where three officials sit above. The
-    officials' bench stands on a step, so it is higher than the witness."""
+    """The hearing on a diagonal: the witness at a table with the red
+    microphone at lower left, facing up to the raised, curved dais and its
+    three officials at upper right. A first try set the officials behind a
+    tall box, which read as a jury box, a courtroom sign."""
     p = P()
-    w = C.person(p, 40, 120, k=0.9, h=26)
-    table = [p.line(14, 120, 92, 120), p.line(84, 120, 84, 150)]
-    mic = microphone(p, 72, 120, s=0.8)
-    officials = []
-    for x in (128, 164, 200):
-        officials += C.person(p, x, 76, k=0.62, h=22)
-    benchf = [p.line(106, 76, 222, 76), p.poly([(112, 76), (112, 136), (216, 136), (216, 76)]),
-              p.line(104, 150, 224, 150), p.poly([(104, 150), (104, 136), (224, 136), (224, 150)])]
-    return [("base", w + table + officials + benchf), ("accent", mic)]
+    w = C.person(p, 38, 150, k=0.9, h=26)
+    table = [p.line(10, 150, 86, 150)]
+    mic = microphone(p, 70, 150, s=0.85)
+    top = bench(p.sub(150, 56, 0.9), k=0.62)
+    return [("base", w + table + top), ("accent", mic)]
 
 
 def testify_c():
@@ -147,20 +144,23 @@ def contact_b():
 
 
 def contact_c():
-    """The message alone: an official at a desk with a nameplate, and one red
-    speech mark arriving from the reader's side, its tail pointing back out
-    of the picture to whoever speaks."""
+    """In person: the person stands at the official's desk, close, and one red
+    speech mark rises between them. Option A keeps the two apart, joined by a
+    line, as a call or a letter does; this one is the visit. A speech mark
+    alone over the official read as the official speaking, so the person is
+    drawn."""
     p = P()
-    off = official_at_desk(p, 130, 104, k=0.86, half=40, plate=True)
-    mark = [speech_mark(p, 52, 56, w=44, h=32, tail="left")]
-    return [("base", off), ("accent", mark)]
+    person = C.person(p, 40, 128, k=1.0)
+    off = official_at_desk(p, 140, 100, k=0.82, plate=True)
+    mark = [speech_mark(p, 86, 44, w=38, h=28, tail="left")]
+    return [("base", person + off), ("accent", mark)]
 
 
 REGISTRY = [
     ("Testify", "Testify", "A", "new", testify_a, None,
      "A raised, curved dais with three officials above the witness, who sits at a table with a red microphone."),
     ("Testify", "Testify", "B", "new", testify_b, None,
-     "Seen from the side: the witness at a low table with a red microphone, facing three officials at a tall bench on a step."),
+     "On a diagonal: the witness at a table with a red microphone at lower left, facing the raised, curved dais at upper right."),
     ("Testify", "Testify", "C", "new", testify_c, None,
      "The raised, curved dais with three officials, and the red microphone on the witness table; the reader is the witness."),
     ("Contact-An-Official", "Contact-An-Official", "A", "new", contact_a, None,
@@ -168,5 +168,5 @@ REGISTRY = [
     ("Contact-An-Official", "Contact-An-Official", "B", "new", contact_b, None,
      "A very simple phone whose red cord runs to an official at a desk."),
     ("Contact-An-Official", "Contact-An-Official", "C", "new", contact_c, None,
-     "An official at a desk with a nameplate, and one red speech mark arriving from the reader's side."),
+     "In person: the person stands at the official's desk and one red speech mark rises between them."),
 ]

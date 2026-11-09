@@ -1,0 +1,759 @@
+{
+ "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
+ "run": "2026-11-09T21:16:29.923Z",
+ "rules": {
+  "minStroke": 1,
+  "minThinArea": 0.25,
+  "maxSoftShare": 0.95,
+  "inkAlpha": 8,
+  "fullAlpha": 247,
+  "edgeTolerance": 0.1,
+  "minStraight": 1.5,
+  "straightness": 0.01,
+  "minGap": 1,
+  "minCounterArea": 0.5,
+  "weightTolerance": 0.15
+ },
+ "results": [
+  {
+   "file": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-019-Explain-24px-Fit-B-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       11.5,
+       1.1
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 107,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 19,
+      "lone_edges": 5,
+      "fit": 24,
+      "total": 24,
+      "off": []
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 2,
+      "near_px": [
+       9,
+       4
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       23,
+       2.3
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 428,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 19,
+      "lone_edges": 5,
+      "fit": 24,
+      "total": 24,
+      "off": []
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 4,
+      "near_px": [
+       17.9,
+       8
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-020-Track-24px-Fit-B-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       5.4,
+       2
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 68,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 3,
+      "fit": 15,
+      "total": 15,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 2.25,
+      "near_px": [
+       8,
+       11
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       10.8,
+       4.1
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 272,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 3,
+      "fit": 15,
+      "total": 15,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 4.5,
+      "near_px": [
+       16,
+       22
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-021-Connect-24px-Fit-B-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       11,
+       6
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 64,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 20,
+      "lone_edges": 0,
+      "fit": 20,
+      "total": 20,
+      "off": []
+     },
+     "gap": {
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       22,
+       12
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 256,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 20,
+      "lone_edges": 0,
+      "fit": 20,
+      "total": 20,
+      "off": []
+     },
+     "gap": {
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-022-Act-24px-Fit-B-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       8.1,
+       1
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 85,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 17,
+      "lone_edges": 2,
+      "fit": 19,
+      "total": 19,
+      "off": []
+     },
+     "gap": {
+      "parts": 5,
+      "smallest_px": 1,
+      "near_px": [
+       6,
+       9
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 0
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       16.2,
+       2.1
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 340,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 17,
+      "lone_edges": 2,
+      "fit": 19,
+      "total": 19,
+      "off": []
+     },
+     "gap": {
+      "parts": 5,
+      "smallest_px": 2,
+      "near_px": [
+       12,
+       18
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 0
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-019-Explain-24px-Fit-B-Red-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       11.5,
+       1.1
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 107,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 19,
+      "lone_edges": 5,
+      "fit": 24,
+      "total": 24,
+      "off": []
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 2,
+      "near_px": [
+       9,
+       4
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       23,
+       2.3
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 428,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 19,
+      "lone_edges": 5,
+      "fit": 24,
+      "total": 24,
+      "off": []
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 4,
+      "near_px": [
+       17.9,
+       8
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-020-Track-24px-Fit-B-Red-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       5.4,
+       2
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 68,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 3,
+      "fit": 15,
+      "total": 15,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 2.25,
+      "near_px": [
+       8,
+       11
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       10.8,
+       4.1
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 272,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 3,
+      "fit": 15,
+      "total": 15,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 4.5,
+      "near_px": [
+       16,
+       22
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-021-Connect-24px-Fit-B-Red-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       11,
+       6
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 64,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 20,
+      "lone_edges": 0,
+      "fit": 20,
+      "total": 20,
+      "off": []
+     },
+     "gap": {
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       22,
+       12
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 256,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 20,
+      "lone_edges": 0,
+      "fit": 20,
+      "total": 20,
+      "off": []
+     },
+     "gap": {
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-022-Act-24px-Fit-B-Red-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       8.1,
+       1
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 85,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 17,
+      "lone_edges": 2,
+      "fit": 19,
+      "total": 19,
+      "off": []
+     },
+     "gap": {
+      "parts": 5,
+      "smallest_px": 1,
+      "near_px": [
+       6,
+       9
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 0
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       16.2,
+       2.1
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 340,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 17,
+      "lone_edges": 2,
+      "fit": 19,
+      "total": 19,
+      "off": []
+     },
+     "gap": {
+      "parts": 5,
+      "smallest_px": 2,
+      "near_px": [
+       12,
+       18
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 0
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  }
+ ]
+}

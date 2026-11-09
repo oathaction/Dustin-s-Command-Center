@@ -45,19 +45,19 @@
    "name": "Congress",
    "option": "C",
    "within_dr135": false,
-   "change": "The two chambers, the House and the smaller Senate, each seen from the gallery, red on the rostrums.",
+   "change": "The two chambers, the House in front and the smaller Senate set behind it, each seen from the gallery, red on both rostrums.",
    "stem": "20261109_CL-025-Congress-Option-C",
    "folder": "work/build/assets/civic-line-redraws",
    "svg_red_black": "work/build/assets/civic-line-redraws/svg/20261109_CL-025-Congress-Option-C-Red-Black.svg",
    "svg_black": "work/build/assets/civic-line-redraws/svg/20261109_CL-025-Congress-Option-C-Black.svg",
-   "scale": 0.495466,
-   "stroke_units": 2.7251,
-   "extent_units": 116.0,
+   "scale": 0.609244,
+   "stroke_units": 3.3508,
+   "extent_units": 113.36,
    "ink_px": [
-    234.1,
-    67.4
+    186.1,
+    122.5
    ],
-   "at_cap": false
+   "at_cap": true
   },
   {
    "id": "CL-014",
@@ -140,7 +140,7 @@
    "name": "Congressional Capacity",
    "option": "B",
    "within_dr135": false,
-   "change": "Set B's chamber replaces the building; an analyst's report with a red chart line replaces the open book.",
+   "change": "Set B's chamber replaces the building, above two staff and an analyst's report whose chart line takes the red.",
    "stem": "20261109_R-13-Congressional-Capacity-Option-B",
    "folder": "work/build/assets/civic-line-redraws",
    "svg_red_black": "work/build/assets/civic-line-redraws/svg/20261109_R-13-Congressional-Capacity-Option-B-Red-Black.svg",
@@ -159,17 +159,17 @@
    "name": "Congressional Capacity",
    "option": "C",
    "within_dr135": false,
-   "change": "Set C's two chambers replace the building; an analyst's report with a red chart line replaces the open book.",
+   "change": "Set C's two chambers replace the building, above two staff and an analyst's report whose chart line takes the red.",
    "stem": "20261109_R-13-Congressional-Capacity-Option-C",
    "folder": "work/build/assets/civic-line-redraws",
    "svg_red_black": "work/build/assets/civic-line-redraws/svg/20261109_R-13-Congressional-Capacity-Option-C-Red-Black.svg",
    "svg_black": "work/build/assets/civic-line-redraws/svg/20261109_R-13-Congressional-Capacity-Option-C-Black.svg",
    "scale": 0.609244,
    "stroke_units": 3.3508,
-   "extent_units": 98.07,
+   "extent_units": 94.16,
    "ink_px": [
-    161.0,
-    114.9
+    154.6,
+    136.8
    ],
    "at_cap": true
   },
@@ -223,10 +223,10 @@
    "svg_black": "work/build/assets/civic-line-redraws/svg/20261109_R-42-Congressional-Tariff-Votes-Option-C-Black.svg",
    "scale": 0.609244,
    "stroke_units": 3.3508,
-   "extent_units": 98.15,
+   "extent_units": 87.02,
    "ink_px": [
-    161.1,
-    118.9
+    140.7,
+    142.8
    ],
    "at_cap": true
   },
