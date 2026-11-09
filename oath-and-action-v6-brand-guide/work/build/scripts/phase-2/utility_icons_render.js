@@ -24,36 +24,52 @@ function svgOf(rel) {
   return fs.readFileSync(path.join(DIR, rel), 'utf8').replace(/<!--[\s\S]*?-->/g, '');
 }
 
+// Every SVG the manifest names: the cards' options, the ringed set for the family card and the solid partners.
+function allFiles(manifest) {
+  const out = [];
+  for (const a of manifest.cards) for (const o of a.options) for (const sz of ['24', '16']) out.push(o.files[sz]);
+  for (const group of ['family_ringed', 'solid_partners']) {
+    for (const k of Object.keys(manifest[group] || {})) for (const sz of ['24', '16']) out.push(manifest[group][k][sz]);
+  }
+  return out;
+}
+
 async function previews(browser, manifest) {
-  const outDir = path.join(DIR, 'png');
-  fs.mkdirSync(outDir, { recursive: true });
   let n = 0;
+  const keep = new Set();
+  const files = allFiles(manifest);
   for (const scale of [1, 2]) {
     const ctx = await browser.newContext({ deviceScaleFactor: scale, viewport: { width: 200, height: 200 } });
     const page = await ctx.newPage();
-    for (const a of manifest) {
-      for (const o of a.options) {
-        for (const size of ['24', '16']) {
-          const rel = o.files[size];
-          await page.setContent(`<!doctype html><html><head><style>html,body{margin:0;background:transparent}
-            #b{position:absolute;left:0;top:0;width:${size}px;height:${size}px;color:${INK}}
-            #b svg{display:block}</style></head><body><div id="b">${svgOf(rel)}</div></body></html>`);
-          const base = path.basename(rel, '.svg');
-          const file = path.join(outDir, base + (scale === 2 ? '-2x' : '') + '.png');
-          await page.locator('#b').screenshot({ path: file, omitBackground: true });
-          n++;
-        }
-      }
+    for (const rel of files) {
+      const size = /-16px\.svg$/.test(rel) ? 16 : 24;
+      const outDir = path.join(DIR, path.dirname(path.dirname(rel)), 'png');
+      fs.mkdirSync(outDir, { recursive: true });
+      await page.setContent(`<!doctype html><html><head><style>html,body{margin:0;background:transparent}
+        #b{position:absolute;left:0;top:0;width:${size}px;height:${size}px;color:${INK}}
+        #b svg{display:block}</style></head><body><div id="b">${svgOf(rel)}</div></body></html>`);
+      const file = path.join(outDir, path.basename(rel, '.svg') + (scale === 2 ? '-2x' : '') + '.png');
+      await page.locator('#b').screenshot({ path: file, omitBackground: true });
+      keep.add(file);
+      n++;
     }
     await ctx.close();
   }
-  console.log(`wrote ${n} PNG previews to ${outDir}`);
+  // Remove previews of options that left the cards.
+  let removed = 0;
+  for (const dir of new Set([...keep].map((f) => path.dirname(f)))) {
+    for (const fn of fs.readdirSync(dir)) {
+      const f = path.join(dir, fn);
+      if (fn.startsWith('20261109_Utility-') && fn.endsWith('.png') && !keep.has(f)) { fs.unlinkSync(f); removed++; }
+    }
+  }
+  console.log(`wrote ${n} PNG previews; removed ${removed} stale previews`);
 }
 
 async function review(browser, manifest, out) {
   const ctx = await browser.newContext({ deviceScaleFactor: 1, viewport: { width: 900, height: 400 } });
   const page = await ctx.newPage();
-  const rows = manifest.map((a) => {
+  const rows = manifest.cards.map((a) => {
     const cells = a.options.map((o) => `
       <div class="opt"><div class="lab">${o.option}</div>
         <div class="sw np"><span class="i24">${svgOf(o.files['24'])}</span><span class="i16">${svgOf(o.files['16'])}</span></div>

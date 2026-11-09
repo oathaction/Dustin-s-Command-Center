@@ -1,0 +1,110 @@
+{
+ "about": "The drawings board's own words, read by work/build/scripts/phase-2/stage_b_drawings_board_build.py. Every option, file, figure, score and reading on the board comes from the makers' manifests and notes, the creative director's scores and the engineer's checks; this file holds only the board's words. Braces such as {n_cards} are filled in by the build. The editor copy-edits this file (D2-500).",
+ "title": "The stage B drawings, for your approval",
+ "kicker": "Brand Guide, Edition 06 · Drawings board",
+ "deck": "Every new or redrawn drawing from stage B sits on this board at true size, beside the drawing it replaces or the settled drawings it must stay apart from. Each new drawing comes in options so you can choose, as you asked on November 9 (DR-146). None of them enters the guide until you answer this board (DR-139).",
+ "facts": [
+  "The board holds {n_cards} cards. Cards 1 to {n_civic} are the Civic Line drawings, card {family_n} decides how the whole utility set is drawn, cards {first_action} to {last_action} are the utility icons, card {pillars_n} is the pillar icons and cards {first_identity} to {n_cards} are the identity drawings.",
+  "Drawings show at true size on Newsprint. Where the board draws something larger so you can see its pixels, a label says how many times larger.",
+  "The figures beside each option come from the engineer's two checks, which the board's build runs on today's files, and from the creative director's scores. The build last ran on {built_date} at {built_time} UTC."
+ ],
+ "ask": [
+  "Look at each card's options at true size. The creative director's pick carries a Recommended mark and a one-line reason.",
+  "Choose one option on each card, or write your own answer in its note box. Every drawing here needs your approval by name (DR-139), so tick the card's \"I approve by name\" box when you agree.",
+  "Answer card {family_n} before the utility cards after it. It decides once, for the whole set, whether a utility icon stands bare or sits inside a ring.",
+  "Your marks collect in the reply panel at the end, one line per card, ready to paste into our chat."
+ ],
+ "sample_reply": "All as recommended, and I approve every card by name.",
+ "legend_title": "How to read a card",
+ "legend": [
+  {"term": "Naming test", "text": "The creative director looked at each option with no label, at 48 px for a Civic Line drawing and 24 px for a utility icon, and wrote down what a first-time reader would most likely call it. The creative director knew the labels, so the reading stands in for a reader's. Real readers see the drawings in the combined reader check after you answer (DR-143)."},
+  {"term": "Look-alike figure", "text": "How alike two drawings look at 24 px, from 0 to 1, by the engineer's check. Among the 7,381 pairs of settled Civic Line drawings, one pair in 20 measures {watch} or more and one in 100 measures {flag} or more. The board flags a figure of {flag} or more and marks one from {watch} to watch."},
+  {"term": "Within DR-135", "text": "On November 8 you approved redrawing the domes and columns in six icons while keeping every other part and its red (DR-135). An option marked Within DR-135 does that. An option marked Outside DR-135 changes more, and its card says what."},
+  {"term": "Scores", "text": "The creative director scores each card from 1 to 5 on six criteria: craft, clarity, brand fidelity, usefulness, evidence honesty and accessibility. The guide ships at 4 on every criterion, so a score under 4 carries a flag (D2-499)."}
+ ],
+ "groups": {
+  "civic": {"title": "Civic Line drawings", "intro": ["Six drawings lose a dome or columns (DR-135), and two new topic symbols join the set (DR-141). Each shows at 128, 48 and 24 px. Topic symbols are used from 48 px up, so the 24 px view is a reference size only (DR-136)."]},
+  "utility": {"title": "The utility set", "intro": ["Utility icons mark actions on a page, such as Close, Download and Search. They are one family on a 24-unit grid with a 2 px line, drawn in one color with no red, and each has its own 16 px drawing (DR-134). Each shows at 24 and 16 px on Newsprint and on Charcoal, the two sizes the guide uses."]},
+  "pillars": {"title": "The pillar icons on whole pixels", "intro": ["The four pillar icons, redrawn pixel by pixel for 24 and 16 px so their lines land on whole pixels (DR-133)."]},
+  "identity": {"title": "Identity drawings", "intro": ["The end mark, the lockmark's small masters and L6. Each changes identity geometry, so each needs your approval by name (gate rule 4)."]}
+ },
+ "cards": {
+  "congress": {
+   "short": "Congress set",
+   "title": "Congress: one sign for four drawings",
+   "lede": ["CL-025 Congress, CL-014 Entrenched Power, R-13 Congressional Capacity and R-42 Congressional Tariff Votes each lose their dome (DR-135). The four share one Congress sign, so you choose a set once and it holds across all four (D2-503). Each set's row sits under today's four drawings."],
+   "honest": "No set names Congress without its label. Most readers know Congress by the Capitol dome, which Rule 01.6 keeps out of icons, so the label names it, and the drawing's job is to make the label land at once (D2-620).",
+   "set_label": "Set {letter}",
+   "today_label": "Today, kept as the record",
+   "neighbors_title": "Beside the House drawings the guide keeps",
+   "neighbors_text": "{names} stay as drawn (DR-152). They sit here beside the chamber options so you can see the House drawings together.",
+   "approve": "One set, A, B or C, for CL-025, CL-014, R-13 and R-42 together."
+  },
+  "redraw": {
+   "lede": ["{title} loses its {lost} (DR-135)."],
+   "pediment": "Option A keeps its pediment as the record of what DR-135 approved. New options leave the pediment out with the rest of the classical front (D2-623).",
+   "today_label": "Today, kept as the record",
+   "approve": "One option for {title}."
+  },
+  "testify": {
+   "short": "Testify",
+   "lede": ["A new topic symbol for testifying: a member of the public speaks for the record at a public hearing, before a body such as a legislative committee, a city council or a regulatory board (DR-141, research meaning sheet)."],
+   "neighbors_label": "Settled drawings it must not be read as",
+   "approve": "One option for Testify, as a new topic symbol."
+  },
+  "contact": {
+   "short": "Contact an official",
+   "lede": ["A new topic symbol for contacting an official: a reader calls, emails, writes to or visits the office of an official who represents them (DR-141, research meaning sheet). Your phone is option B, with a desk and an official at the cord's end so it reads as reaching an official (DR-147, DR-155)."],
+   "neighbors_label": "Settled drawings it must not be read as",
+   "approve": "One option for Contact an official, as a new topic symbol."
+  },
+  "utility-family": {
+   "short": "Utility family",
+   "title": "The utility family: bare actions or ringed",
+   "lede": ["Ringed actions measure as near twins of one another, so a row of them loses the outlines a reader tells apart, and each control already has its own outline. Error, Success and Warning keep their shapes, since a bare check means selected and a bare exclamation mark is punctuation (D2-621). You decide the treatment once here, for every utility card after this one."],
+   "options": {"bare": "Bare actions, with Error, Success and Warning in their shapes", "ringed": "Every action inside a ring"},
+   "approve": "One treatment for the whole utility set.",
+   "rows": {"bare": "Bare: each action's recommended option, with the three marks in their shapes", "ringed": "Ringed: every action inside a ring"}
+  },
+  "utility": {
+   "approve": "One option for {title}.",
+   "pair_approve": "One pair for Play and Pause, picked together since one button swaps them (D2-557).",
+   "word_label": "Beside its word"
+  },
+  "pillars": {
+   "short": "Pillar icons",
+   "title": "The pillar icons at 24 and 16 px",
+   "lede": ["CL-019 Explain, CL-020 Track, CL-021 Connect and CL-022 Act, drawn pixel by pixel for 24 and 16 px. Every fit keeps every feature and every red placement of its master, with the red as its own shape (DR-133, D2-497). The black edition is the one in use under 48 px. At 24 px you choose between two line weights; at 16 px one fit keeps every feature, so it stands alone (D2-612)."],
+   "approve": "One 24 px fit for all four pillar icons, and the 16 px fit.",
+   "word_label": "Beside the pillar's word",
+   "enlarged_label": "Four times, to see the pixels"
+  },
+  "end-mark": {
+   "short": "End mark",
+   "title": "The end mark on whole pixels at 14 and 12 px",
+   "lede": ["Ampersand B closes the last paragraph of an article as its end mark, at the text's cap height (DR-130). These fits draw B on whole pixels for 17 px text (a 14 px B) and for 15 px text (a 12 px B), so its edges stay crisp (DR-142). Fit A keeps today's one-pixel dip under the line; Fit B sits B on the baseline."],
+   "stack_label": "Today, Fit A and Fit B, one above the other at true size",
+   "approve": "One fit at 14 px and one at 12 px.",
+   "illustrative": "The paragraph is invented, to set the end mark in a line."
+  },
+  "lockmark": {
+   "short": "Lockmark masters",
+   "title": "The lockmark's small masters rebuilt",
+   "lede": ["The 24 and 48 px lockmark masters, rebuilt with each node and the lever as one outline (DR-145). At their own sizes they draw today's pixels exactly. Between those sizes, today's nodes part into light stripes and the rebuilt nodes stay whole. The 16 px master already draws each node as one circle, so it stays as it is (D2-542)."],
+   "options": {"approve": "The rebuilt 24 and 48 px files", "keep": "Today's files"},
+   "approve": "The rebuilt 24 and 48 px lockmark files."
+  },
+  "l6": {
+   "short": "L6 centered",
+   "title": "L6 with its wordmark and tagline centered",
+   "lede": ["L6 as drawn today without its dots (DR-129), above L6 with the wordmark and tagline moved down so they sit on the strip's middle, as the lockmark does. This changes L6's proportion, so it needs your approval by name."],
+   "options": {"approve": "Centered", "keep": "L6 as drawn today"},
+   "approve": "L6 with its wordmark and tagline centered."
+  }
+ },
+ "reply": {
+  "title": "Ready to paste",
+  "text": ["Each line below is one card. Choose an option and tick \"I approve by name\" here or on the card itself; the two stay in step. Your answers collect in the box, ready to paste into our chat. Until you mark a card, the box holds the sample reply."],
+  "storage": "Your marks stay in this browser only."
+ }
+}

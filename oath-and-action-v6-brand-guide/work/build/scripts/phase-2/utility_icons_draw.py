@@ -155,18 +155,6 @@ def excl16(top, bottom, dot_y, x=7.75):
     return [path('M%s %sV%s' % (f(x), f(top), f(bottom))), dot(x, dot_y, DOT16)]
 
 
-def reset_A(s):
-    # One open circle, about three quarters round, travelling anticlockwise from 9 o'clock under and over to 12,
-    # the head at the top pointing left into the gap.
-    if s == 24:
-        cx, cy, r, arm = 12, 12.5, 8, 3.5
-    else:
-        cx, cy, r, arm = 8, 8.25, 5.25, 2.5
-    d = arc_d(cx, cy, r, 270, 360, clockwise=False)
-    tip = clock(cx, cy, r, 0)
-    return [path(d), lines(head(tip, (-1, 0), arm))]
-
-
 def reset_B(s):
     # The arc runs anticlockwise from 7:30 to about 10:40, then a short straight run to the tip; the head is an
     # upright L, so its two arms sit on whole pixels. The gap faces left.
@@ -201,53 +189,66 @@ def success_B(s):
     return [path(d), lines([(4.75, 7.5), (7.25, 10), (13.75, 3.5)])]
 
 
+def reset_undo(s):
+    # Fix round: the undo arc. Half a circle and a little more, travelling anticlockwise from the lower right over
+    # the top, then a short run to an upright corner head at the left: the undo sign of word processors, inside the
+    # audit's "open circle with one arrowhead".
+    if s == 24:
+        cx, cy, r, t0, t1, tip, arm = 12.5, 15, 8, 110, 300, (4, 13), 5
+    else:
+        cx, cy, r, t0, t1, tip, arm = 8.25, 9.75, 5.25, 110, 300, (2.75, 8.75), 3.25
+    d = arc_d(cx, cy, r, t0, t1, clockwise=False) + ' L' + pt(tip)
+    return [path(d), lines([(tip[0], tip[1] - arm), tip, (tip[0] + arm, tip[1])])]
+
+
+def cut(key, size, shape, holes, w):
+    """A solid shape in currentColor with line-width holes cut by a mask (one color, no second ink)."""
+    mid = 'U-%s-%d-cut' % (key, size)
+    return ['<defs><mask id="%s" maskUnits="userSpaceOnUse" x="0" y="0" width="%d" height="%d">'
+            '<rect width="%d" height="%d" fill="#fff" stroke="none"/>'
+            '<g fill="none" stroke="#000" stroke-width="%s" stroke-linecap="round" stroke-linejoin="round">%s</g>'
+            '</mask></defs>' % (mid, size, size, size, size, w, ''.join(holes)),
+            shape.replace('/>', ' fill="currentColor" stroke="none" mask="url(#%s)"/>' % mid, 1)]
+
+
+def solid_disc_check(s):
+    if s == 24:
+        return cut('success-A', 24, circle(12, 12, 10), [lines([(7.5, 12), (10.5, 15), (16.5, 9)])], '2')
+    return cut('success-A', 16, circle(8, 8, 6.75), [lines([(5, 8), (7, 10), (11, 6)])], '2')
+
+
 ICONS = [
-    # (key, file word, action label, audit rank, the drawing the audit asks for, options)
+    # (key, file word, action label, audit rank, the drawing the audit asks for, options, reason when fewer than three)
     ('close', 'Close', 'Close', '1', 'A cross', {
         'A': ('A bare cross', {
             24: [lines([(6, 6), (18, 18)], [(18, 6), (6, 18)])],
             16: [lines([(4, 4), (12, 12)], [(12, 4), (4, 12)])]}),
-        'B': ('The cross in a circle', {
-            24: [circle(12, 12, 9), lines([(9, 9), (15, 15)], [(15, 9), (9, 15)])],
-            16: [circle(8, 8, 6.25), lines([(6, 6), (10, 10)], [(10, 6), (6, 10)])]}),
-        'C': ('The cross in a square, the window sign', {
-            24: [rrect(4, 4, 20, 20, R24), lines([(9, 9), (15, 15)], [(15, 9), (9, 15)])],
-            16: [rrect(1.75, 1.75, 14.25, 14.25, R16), lines([(6, 6), (10, 10)], [(10, 6), (6, 10)])]}),
-    }),
+    }, 'Readers know one sign for Close, the bare cross. The ring is a choice for the whole set, on the family card.'),
     ('menu', 'Menu', 'Open the menu', '2', 'Three bars', {
-        'A': ('Three even bars, wide', {
+        'A': ('Three even bars', {
             24: [path('M4 6H20 M4 12H20 M4 18H20')],
             16: [path('M2.5 3.75H13.5 M2.5 7.75H13.5 M2.5 11.75H13.5')]}),
-        'B': ('Three even bars, narrow and closer', {
-            24: [path('M6 7H18 M6 12H18 M6 17H18')],
-            16: [path('M4 4.25H12 M4 7.75H12 M4 11.25H12')]}),
-        'C': ('Three bars, the last one short', {
-            24: [path('M4 6H20 M4 12H20 M4 18H13')],
-            16: [path('M2.5 3.75H13.5 M2.5 7.75H13.5 M2.5 11.75H8.5')]}),
-    }),
+        'B': ('Two even bars', {
+            24: [path('M4 9H20 M4 15H20')],
+            16: [path('M2.5 5.75H13.5 M2.5 9.75H13.5')]}),
+    }, 'Three dots say More and a grid says apps, so no third form names Menu.'),
     ('arrow', 'Arrow', 'Next and Previous (mirrored), and the sort order in use (turned)', '3, 4, 16',
      'An arrow with a shaft, pointing right', {
-        'A': ('An arrow with a shaft and a square-cut head', {
+        'A': ('An arrow with a shaft and an open head', {
             24: [lines([(5, 12), (19, 12)], [(12, 5), (19, 12), (12, 19)])],
             16: [lines([(3, 7.75), (13, 7.75)], [(8.5, 3.25), (13, 7.75), (8.5, 12.25)])]}),
-        'B': ('The arrow in a circle', {
-            24: [circle(12, 12, 9), lines([(8, 12), (16, 12)], [(12, 8), (16, 12), (12, 16)])],
-            16: [circle(8, 7.75, 6.25), lines([(5.25, 7.75), (10.75, 7.75)], [(8, 5), (10.75, 7.75), (8, 10.5)])]}),
-        'C': ('A long shaft with a small head', {
-            24: [lines([(3, 12), (21, 12)], [(16, 7), (21, 12), (16, 17)])],
-            16: [lines([(1.75, 7.75), (14.25, 7.75)], [(11, 4.5), (14.25, 7.75), (11, 11)])]}),
-    }),
+        'B': ('An arrow with a shaft and a closed triangle head', {
+            24: [lines([(4, 12), (14, 12)]), rpoly([(14, 7), (20, 12), (14, 17)], R24)],
+            16: [lines([(2.75, 7.75), (9.25, 7.75)]), rpoly([(9.25, 4.25), (13.75, 7.75), (9.25, 11.25)], R16)]}),
+    }, 'A longer shaft repeated A, and the ring is a choice for the whole set, on the family card.'),
     ('chevron', 'Chevron', 'Expand and collapse (down when closed, up when open)', '5', 'A chevron', {
-        'A': ('A chevron, 12 units wide', {
+        'A': ('A chevron', {
             24: [lines([(6, 9), (12, 15), (18, 9)])],
             16: [lines([(4, 6), (8, 10), (12, 6)])]}),
-        'B': ('The chevron in a circle', {
-            24: [circle(12, 12, 9), lines([(8, 10.5), (12, 14.5), (16, 10.5)])],
-            16: [circle(8, 8, 6.25), lines([(5.5, 7), (8, 9.5), (10.5, 7)])]}),
-        'C': ('A small chevron, 8 units wide', {
-            24: [lines([(8, 10), (12, 14), (16, 10)])],
-            16: [lines([(5.25, 6.5), (8, 9.25), (10.75, 6.5)])]}),
-    }),
+        'B': ('A disclosure triangle, drawn in line', {
+            24: [rpoly([(7, 9), (17, 9), (12, 15)], R24)],
+            16: [rpoly([(4.25, 5.75), (11.75, 5.75), (8, 10.25)], R16)]}),
+    }, 'A smaller chevron repeated A, and plus and minus are the atlas\'s polarity signs.'),
     ('download', 'Download', 'Download', '6', 'Its own drawing', {
         'A': ('An arrow down into an open tray', {
             24: [lines([(12, 4), (12, 15)], [(7, 10), (12, 15), (17, 10)]),
@@ -258,10 +259,12 @@ ICONS = [
             24: [lines([(12, 4), (12, 16)], [(7, 11), (12, 16), (17, 11)], [(5, 20), (19, 20)])],
             16: [lines([(7.75, 2.25), (7.75, 10.25)], [(4.5, 7), (7.75, 10.25), (11, 7)],
                        [(3.25, 13.75), (12.25, 13.75)])]}),
-        'C': ('An arrow down in a circle', {
-            24: [circle(12, 12, 9), lines([(12, 7), (12, 16)], [(8, 12), (12, 16), (16, 12)])],
-            16: [circle(7.75, 8, 6.25), lines([(7.75, 4.75), (7.75, 10.75)], [(5.25, 8.25), (7.75, 10.75), (10.25, 8.25)])]}),
-    }),
+        'C': ('An arrow down on a page with a folded corner', {
+            24: [rpoly([(5, 3), (14, 3), (19, 8), (19, 21), (5, 21)], R24), lines([(14, 3), (14, 8), (19, 8)]),
+                 lines([(12, 11), (12, 17)], [(9, 14), (12, 17), (15, 14)])],
+            16: [rpoly([(2.75, 1.75), (9.75, 1.75), (13.25, 5.25), (13.25, 14.25), (2.75, 14.25)], R16),
+                 lines([(7.75, 6.75), (7.75, 11.25)], [(5.75, 9.25), (7.75, 11.25), (9.75, 9.25)])]}),
+    }, None),
     ('another-site', 'Another-Site', 'Go to another site', '7', 'Its own drawing', {
         'A': ('An arrow leaving a box by its top right corner', {
             24: [rpoly([(11, 7), (4, 7), (4, 20), (17, 20), (17, 13)], R24, closed=False),
@@ -271,34 +274,20 @@ ICONS = [
         'B': ('A bare arrow up and to the right', {
             24: [lines([(7, 6), (18, 6), (18, 17)], [(6, 18), (18, 6)])],
             16: [lines([(4.75, 4.25), (11.75, 4.25), (11.75, 11.25)], [(4.25, 11.75), (11.75, 4.25)])]}),
-        'C': ('An arrow leaving a ring by its upper right', {
-            24: [path(arc_d(11, 13, 8, 100, 355, clockwise=True)),
-                 lines([(14, 4), (20, 4), (20, 10)], [(11, 13), (20, 4)])],
-            16: [path(arc_d(6.75, 9.25, 5, 100, 355, clockwise=True)),
-                 lines([(9.75, 2.25), (13.75, 2.25), (13.75, 6.25)], [(6.75, 9.25), (13.75, 2.25)])]}),
-    }),
+    }, 'A window would say the link opens a new window, and these links open in the same tab (audit 1.2).'),
     ('search', 'Search', 'Search', '8', 'Its own drawing', {
         'A': ('A magnifier: round lens, handle to the lower right', {
             24: [circle(10.5, 10.5, 7), lines([(15.5, 15.5), (20.5, 20.5)])],
             16: [circle(7, 7, 4.75), lines([(10.5, 10.5), (13.75, 13.75)])]}),
-        'B': ('The magnifier with a glint in the lens', {
-            24: [circle(10.5, 10.5, 7), lines([(15.5, 15.5), (20.5, 20.5)]), path('M7 10.5 A3.5 3.5 0 0 1 10.5 7')],
-            16: [circle(7, 7, 4.75), lines([(10.5, 10.5), (13.75, 13.75)]), path('M5 7 A2 2 0 0 1 7 5')]}),
-        'C': ('A larger lens on a short handle', {
-            24: [circle(11, 11, 8), lines([(16.66, 16.66), (20.5, 20.5)])],
-            16: [circle(7.25, 7.25, 5.5), lines([(11.15, 11.15), (13.75, 13.75)])]}),
-    }),
+    }, 'Readers know one sign for Search. A glint or a larger lens repeated it, and the ring is on the family card.'),
     ('filter', 'Filter', 'Filter', '9', 'A funnel, not sliders', {
         'A': ('A funnel with a slanted spout', {
             24: [rpoly([(4, 4), (20, 4), (14, 11.5), (14, 18.5), (10, 20.5), (10, 11.5)], R24)],
             16: [rpoly([(2.75, 2.75), (13.25, 2.75), (9.25, 7.75), (9.25, 12.25), (6.75, 13.5), (6.75, 7.75)], R16)]}),
-        'B': ('A funnel with a square spout', {
-            24: [rpoly([(4, 4), (20, 4), (14, 11.5), (14, 20), (10, 20), (10, 11.5)], R24)],
-            16: [rpoly([(2.75, 2.75), (13.25, 2.75), (9.25, 7.75), (9.25, 13.25), (6.75, 13.25), (6.75, 7.75)], R16)]}),
-        'C': ('A wide funnel with a short spout', {
-            24: [rpoly([(3, 5), (21, 5), (14, 13), (14, 19), (10, 19), (10, 13)], R24)],
-            16: [rpoly([(1.75, 3.25), (14.25, 3.25), (9.25, 8.75), (9.25, 12.75), (6.75, 12.75), (6.75, 8.75)], R16)]}),
-    }),
+        'B': ('Three lines narrowing downward, the list filter', {
+            24: [path('M4 7H20 M7 12H17 M10 17H14')],
+            16: [path('M2.5 3.75H13.5 M4.75 7.75H11.25 M7 11.75H9')]}),
+    }, 'A square spout and a wider funnel repeated A (0.997 and 0.938).'),
     ('copy', 'Copy', 'Copy', '10', 'Two sheets', {
         'A': ('Two square sheets, the back one up and to the left', {
             24: [rrect(9, 9, 20, 20, R24), rpoly([(5, 15), (4, 15), (4, 4), (15, 4), (15, 5)], R24, closed=False)],
@@ -307,71 +296,52 @@ ICONS = [
         'B': ('Two tall sheets, the back one shown as a corner below and to the left', {
             24: [rrect(9, 3, 19, 16, R24), rpoly([(5, 8), (5, 20), (15, 20)], R24, closed=False)],
             16: [rrect(5.75, 1.75, 12.75, 10.75, R16), rpoly([(3.25, 5.25), (3.25, 13.25), (9.75, 13.25)], R16, closed=False)]}),
-        'C': ('Two sheets, the front one with two lines of text', {
+        'C': ('Two sheets, the front one with text', {
             24: [rrect(9, 9, 20, 20, R24), rpoly([(5, 15), (4, 15), (4, 4), (15, 4), (15, 5)], R24, closed=False),
                  path('M12 13H17 M12 16H15')],
-            16: [rrect(5.75, 5.75, 14.25, 14.25, R16),
-                 rpoly([(3.25, 10.25), (1.75, 10.25), (1.75, 1.75), (10.25, 1.75), (10.25, 3.25)], R16, closed=False),
-                 path('M8.5 9.25H11.5')]}),
-    }),
+            16: [rrect(5.25, 5.25, 14.25, 14.25, R16),
+                 rpoly([(2.5, 9.75), (1.75, 9.75), (1.75, 1.75), (9.75, 1.75), (9.75, 2.5)], R16, closed=False),
+                 path('M8.25 8.75H11.25')]}),
+    }, None),
     ('play', 'Play', 'Play (one button with Pause)', '11', 'A triangle', {
         'A': ('A triangle pointing right', {
             24: [rpoly([(7, 4), (19.5, 12), (7, 20)], R24)],
             16: [rpoly([(4.75, 2.75), (13, 8), (4.75, 13.25)], R16)]}),
-        'B': ('The triangle in a circle', {
-            24: [circle(12, 12, 9), rpoly([(10, 8), (16.5, 12), (10, 16)], R24)],
-            16: [circle(8, 8, 6.25), rpoly([(6.75, 5.25), (11, 8), (6.75, 10.75)], R16)]}),
-        'C': ('The triangle on a screen', {
-            24: [rrect(3, 5, 21, 19, R24), rpoly([(10, 8.5), (15.5, 12), (10, 15.5)], R24)],
-            16: [rrect(1.75, 2.75, 14.25, 13.25, R16), rpoly([(6.25, 5.25), (11, 8), (6.25, 10.75)], R16)]}),
-    }),
+    }, 'Readers know one sign for Play. The ring is on the family card, and a screen narrows Play to video.'),
     ('pause', 'Pause', 'Pause (one button with Play)', '11', 'Two bars', {
         'A': ('Two upright bars', {
             24: [rrect(6, 4, 10, 20, R24), rrect(14, 4, 18, 20, R24)],
             16: [rrect(3.75, 2.75, 6.25, 13.25, R16), rrect(9.75, 2.75, 12.25, 13.25, R16)]}),
-        'B': ('Two bars in a circle', {
-            24: [circle(12, 12, 9), path('M10 9V15 M14 9V15')],
-            16: [circle(8, 8, 6.25), path('M6.25 5.75V10.25 M9.75 5.75V10.25')]}),
-        'C': ('Two bars on a screen', {
-            24: [rrect(3, 5, 21, 19, R24), path('M10 9.5V14.5 M14 9.5V14.5')],
-            16: [rrect(1.75, 2.75, 14.25, 13.25, R16), path('M6.25 6.25V9.75 M9.75 6.25V9.75')]}),
-    }),
+    }, 'Readers know one sign for Pause. The ring is on the family card, and a screen narrows Pause to video.'),
     ('reset', 'Reset', 'Reset, start over', '12', 'One open circle with one arrowhead, anticlockwise, no nodes', {
-        'A': ('Three quarters of a circle, the head at the top pointing left', {24: reset_A(24), 16: reset_A(16)}),
+        'A': ('The undo arc: half a circle over the top, an upright corner head at the left', {24: reset_undo(24), 16: reset_undo(16)}),
         'B': ('Three quarters of a circle, an upright corner head at the upper left', {24: reset_B(24), 16: reset_B(16)}),
         'C': ('Three quarters of a circle, the head at the left pointing down', {24: reset_C(24), 16: reset_C(16)}),
-    }),
+    }, None),
     ('error', 'Error', 'Error mark', '13', 'A circle holding an exclamation mark, never a cross', {
         'A': ('An exclamation mark in a circle', {
             24: [circle(12, 12, 9)] + excl24(7, 13, 17),
             16: [circle(7.75, 7.75, 6.25)] + excl16(4.5, 8.5, 11.25)}),
         'B': ('An exclamation mark in an octagon, the stop sign', {
             24: [rpoly(octagon(12, 12, 8), R24)] + excl24(7, 13, 17),
-            16: [rpoly(octagon(7.75, 7.75, 6), R16)] + excl16(4.5, 8.5, 11.25)}),
+            16: [rpoly([(5.25, 1.75), (10.25, 1.75), (13.75, 5.25), (13.75, 10.25), (10.25, 13.75), (5.25, 13.75),
+                        (1.75, 10.25), (1.75, 5.25)], R16)] + excl16(4.5, 8.5, 11.25)}),
         'C': ('An exclamation mark in a square', {
             24: [rrect(4, 4, 20, 20, R24)] + excl24(7.5, 12.5, 16.5),
             16: [rrect(1.75, 1.75, 13.75, 13.75, R16)] + excl16(4.5, 8.5, 11.25)}),
-    }),
+    }, None),
     ('success', 'Success', 'Success mark', '14', 'The check in its enclosure', {
-        'A': ('A check in a circle', {
-            24: [circle(12, 12, 9), lines([(7.5, 12), (10.5, 15), (16.5, 9)])],
-            16: [circle(8, 8, 6.25), lines([(5, 8), (7, 10), (11, 6)])]}),
+        'A': ('A check cut out of a solid disc', {24: solid_disc_check(24), 16: solid_disc_check(16)}),
         'B': ('A check leaving an open circle', {24: success_B(24), 16: success_B(16)}),
-        'C': ('A check in a square', {
-            24: [rrect(4, 4, 20, 20, R24), lines([(8, 12), (11, 15), (16, 9)])],
-            16: [rrect(1.75, 1.75, 14.25, 14.25, R16), lines([(5, 8), (7, 10), (11, 6)])]}),
-    }),
+    }, 'The closed circle repeated B, and the ticked box says selected, so it moves to the Selected check card.'),
     ('check', 'Selected-Check', 'Selected check (a chip or list choice that is on)', '14', 'The bare check', {
-        'A': ('A check, long arm at 45 degrees', {
+        'A': ('A check', {
             24: [lines([(4, 12.5), (9, 17.5), (20, 6.5)])],
             16: [lines([(3.5, 8.5), (6.5, 11.5), (13.5, 4.5)])]}),
-        'B': ('A tick, the long arm steeper', {
-            24: [lines([(5, 13.5), (9.5, 18), (19, 5.5)])],
-            16: [lines([(3.25, 9), (6.25, 12), (12.75, 3.75)])]}),
-        'C': ('A compact check', {
-            24: [lines([(7, 12.5), (10.5, 16), (17, 9.5)])],
-            16: [lines([(4.5, 8.25), (7, 10.75), (11.5, 6.25)])]}),
-    }),
+        'B': ('A check in a square, the ticked box', {
+            24: [rrect(4, 4, 20, 20, R24), lines([(8, 12), (11, 15), (16, 9)])],
+            16: [rrect(1.75, 1.75, 14.25, 14.25, R16), lines([(5, 8), (7, 10), (11, 6)])]}),
+    }, 'A steeper tick and a compact check repeated A, and the compact one read as the chevron at 16 px.'),
     ('full-size', 'View-Full-Size', 'View full size', '15', 'Four corners pointing out', {
         'A': ('Four corners', {
             24: [rpoly([(4, 9), (4, 4), (9, 4)], R24, closed=False), rpoly([(15, 4), (20, 4), (20, 9)], R24, closed=False),
@@ -384,15 +354,15 @@ ICONS = [
             24: [lines([(4, 9), (4, 4), (9, 4)], [(15, 4), (20, 4), (20, 9)], [(20, 15), (20, 20), (15, 20)],
                        [(9, 20), (4, 20), (4, 15)],
                        [(4, 4), (10, 10)], [(20, 4), (14, 10)], [(20, 20), (14, 14)], [(4, 20), (10, 14)])],
-            16: [lines([(1.75, 5.25), (1.75, 1.75), (5.25, 1.75)], [(10.75, 1.75), (14.25, 1.75), (14.25, 5.25)],
-                       [(14.25, 10.75), (14.25, 14.25), (10.75, 14.25)], [(5.25, 14.25), (1.75, 14.25), (1.75, 10.75)],
-                       [(1.75, 1.75), (6.25, 6.25)], [(14.25, 1.75), (9.75, 6.25)],
-                       [(14.25, 14.25), (9.75, 9.75)], [(1.75, 14.25), (6.25, 9.75)])]}),
+            16: [lines([(1.75, 4.25), (1.75, 1.75), (4.25, 1.75)], [(11.75, 1.75), (14.25, 1.75), (14.25, 4.25)],
+                       [(14.25, 11.75), (14.25, 14.25), (11.75, 14.25)], [(4.25, 14.25), (1.75, 14.25), (1.75, 11.75)],
+                       [(1.75, 1.75), (5.75, 5.75)], [(14.25, 1.75), (10.25, 5.75)],
+                       [(14.25, 14.25), (10.25, 10.25)], [(1.75, 14.25), (5.75, 10.25)])]}),
         'C': ('Two arrows out to opposite corners', {
             24: [lines([(14, 4), (20, 4), (20, 10)], [(20, 4), (14, 10)], [(10, 20), (4, 20), (4, 14)], [(4, 20), (10, 14)])],
             16: [lines([(10.25, 1.75), (14.25, 1.75), (14.25, 5.75)], [(14.25, 1.75), (9.75, 6.25)],
                        [(5.75, 14.25), (1.75, 14.25), (1.75, 10.25)], [(1.75, 14.25), (6.25, 9.75)])]}),
-    }),
+    }, None),
     ('sort', 'Sort', 'Sort a column (can sort)', '16', 'Two small arrows, up and down', {
         'A': ('An up arrow and a down arrow side by side', {
             24: [lines([(8, 20), (8, 4)], [(4, 8), (8, 4), (12, 8)], [(16, 4), (16, 20)], [(12, 16), (16, 20), (20, 16)])],
@@ -401,22 +371,89 @@ ICONS = [
         'B': ('Two chevrons, one up and one down', {
             24: [lines([(8, 9), (12, 5), (16, 9)], [(8, 15), (12, 19), (16, 15)])],
             16: [lines([(5, 6.25), (8, 3.25), (11, 6.25)], [(5, 9.75), (8, 12.75), (11, 9.75)])]}),
-        'C': ('One upright arrow with a head at each end', {
-            24: [lines([(12, 4), (12, 20)], [(8, 8), (12, 4), (16, 8)], [(8, 16), (12, 20), (16, 16)])],
-            16: [lines([(7.75, 2.75), (7.75, 13.25)], [(5, 5.5), (7.75, 2.75), (10.5, 5.5)],
-                       [(5, 10.5), (7.75, 13.25), (10.5, 10.5)])]}),
-    }),
+        'C': ('Bars of falling length beside a down arrow, the sort-lines sign', {
+            24: [path('M3 6H12 M3 12H10 M3 18H8'), lines([(17, 5), (17, 19)], [(14, 16), (17, 19), (20, 16)])],
+            16: [path('M1.75 3.75H8.25 M1.75 7.75H6.75 M1.75 11.75H5.25'),
+                 lines([(11.75, 2.75), (11.75, 13.25)], [(9.5, 11), (11.75, 13.25), (14, 11)])]}),
+    }, None),
     ('warning', 'Warning', 'Warning mark', '17', 'A triangle holding an exclamation mark', {
-        'A': ('An exclamation mark in a wide triangle', {
+        'A': ('An exclamation mark in a triangle', {
             24: [rpoly([(12, 2.5), (22, 20), (2, 20)], R24)] + excl24(9.5, 13.5, 17),
             16: [rpoly([(7.75, 0.75), (15.25, 14.25), (0.25, 14.25)], R16)] + excl16(6.25, 8.5, 11.25)}),
         'B': ('An exclamation mark in a diamond, the road sign', {
             24: [rpoly([(12, 2), (22, 12), (12, 22), (2, 12)], R24)] + excl24(7.5, 13, 16.5),
             16: [rpoly([(7.75, 1), (14.5, 7.75), (7.75, 14.5), (1, 7.75)], R16)] + excl16(4.75, 7.75, 10.25)}),
-        'C': ('An exclamation mark in a narrower triangle', {
-            24: [rpoly([(12, 3.5), (21, 20), (3, 20)], R24)] + excl24(10, 13.5, 17),
-            16: [rpoly([(7.75, 1.5), (14.25, 14.25), (1.25, 14.25)], R16)] + excl16(7.5, 9, 11.75)}),
-    }),
+    }, 'Readers know two warning shapes, the triangle and the diamond. A narrower triangle repeated A.'),
+]
+
+
+# ---------- the family card (D2-621): the same actions, each set in a ring ----------
+# Each action's recommended picture, smaller, inside the ring the old B options used (r 9 at 24 px, 6.25 at 16 px).
+def ring(s):
+    return circle(12, 12, 9) if s == 24 else circle(8, 8, 6.25)
+
+
+def reset_ringed(s):
+    if s == 24:
+        cx, cy, r, tip, arm = 12, 12, 4.5, (8, 11), 3
+        d = arc_d(cx, cy, r, 225, 320, clockwise=False) + ' L' + pt(tip)
+        return [path(d), lines([(tip[0], tip[1] - arm), tip, (tip[0] + arm, tip[1])])]
+    # 16 px: the ring leaves no room for the upright corner head, so the head runs along the arc's tangent.
+    cx, cy, r = 8, 8, 3.5
+    d = arc_d(cx, cy, r, 225, 320, clockwise=False)
+    tip = clock(cx, cy, r, 320)
+    t = math.radians(320)
+    return [path(d), lines(head(tip, (-math.cos(t), -math.sin(t)), 2))]
+
+
+RINGED = [
+    ('close', 'Close', {24: [lines([(9, 9), (15, 15)], [(15, 9), (9, 15)])],
+                        16: [lines([(6, 6), (10, 10)], [(10, 6), (6, 10)])]}),
+    ('menu', 'Menu', {24: [path('M8 9H16 M8 12H16 M8 15H16')],
+                      16: [path('M5.75 5.25H10.25 M5.75 7.75H10.25 M5.75 10.25H10.25')]}),
+    ('arrow', 'Arrow', {24: [lines([(8, 12), (16, 12)], [(12, 8), (16, 12), (12, 16)])],
+                        16: [lines([(5.25, 7.75), (10.75, 7.75)], [(8, 5), (10.75, 7.75), (8, 10.5)])]}),
+    ('chevron', 'Chevron', {24: [lines([(8, 10.5), (12, 14.5), (16, 10.5)])],
+                            16: [lines([(5.5, 7), (8, 9.5), (10.5, 7)])]}),
+    ('download', 'Download', {24: [lines([(12, 7), (12, 14)], [(9, 11), (12, 14), (15, 11)], [(9, 17), (15, 17)])],
+                              16: [lines([(7.75, 4.5), (7.75, 8.25)], [(6.25, 6.75), (7.75, 8.25), (9.25, 6.75)],
+                                         [(6.5, 11.25), (9, 11.25)])]}),
+    ('another-site', 'Another-Site', {24: [rpoly([(10, 9), (8, 9), (8, 16), (15, 16), (15, 14)], R24, closed=False),
+                                           lines([(13, 8), (16, 8), (16, 11)], [(11.5, 12.5), (16, 8)])],
+                                      16: [rpoly([(5.25, 7.5), (5.25, 10.75), (8.5, 10.75)], R16, closed=False),
+                                           lines([(8.75, 5.75), (10.25, 5.75), (10.25, 7.25)], [(7.75, 8.25), (10.25, 5.75)])]}),
+    ('search', 'Search', {24: [circle(11, 11, 3.5), lines([(13.5, 13.5), (16, 16)])],
+                          16: [circle(7.5, 7.5, 2.25), lines([(9.25, 9.25), (10.5, 10.5)])]}),
+    ('filter', 'Filter', {24: [rpoly([(8, 8), (16, 8), (13, 12), (13, 16), (11, 17), (11, 12)], R24)],
+                          16: [rpoly([(5.25, 5.25), (10.75, 5.25), (9.25, 7.75), (9.25, 10.75), (6.75, 11.25), (6.75, 7.75)], R16)]}),
+    ('copy', 'Copy', {24: [rrect(11, 11, 16, 16, R24), rpoly([(9, 13), (8, 13), (8, 8), (13, 8), (13, 9)], R24, closed=False)],
+                      16: [rrect(7.25, 7.25, 10.75, 10.75, R16),
+                           rpoly([(5.75, 8.75), (5.25, 8.75), (5.25, 5.25), (8.75, 5.25), (8.75, 5.75)], R16, closed=False)]}),
+    ('play', 'Play', {24: [rpoly([(10, 8), (16.5, 12), (10, 16)], R24)],
+                      16: [rpoly([(6.75, 5.25), (11, 8), (6.75, 10.75)], R16)]}),
+    ('pause', 'Pause', {24: [path('M10 9V15 M14 9V15')],
+                        16: [path('M6.25 5.75V10.25 M9.75 5.75V10.25')]}),
+    ('reset', 'Reset', {24: reset_ringed(24), 16: reset_ringed(16)}),
+    ('check', 'Selected-Check', {24: [lines([(8.5, 12.5), (11, 15), (15.5, 9.5)])],
+                                 16: [lines([(5.5, 8.25), (7.25, 10), (10.5, 6.25)])]}),
+    ('full-size', 'View-Full-Size', {24: [rpoly([(8, 10.5), (8, 8), (10.5, 8)], R24, closed=False),
+                                          rpoly([(13.5, 8), (16, 8), (16, 10.5)], R24, closed=False),
+                                          rpoly([(16, 13.5), (16, 16), (13.5, 16)], R24, closed=False),
+                                          rpoly([(10.5, 16), (8, 16), (8, 13.5)], R24, closed=False)],
+                                     16: [path('M5.75 7.25V5.75H7.25 M8.75 5.75H10.25V7.25 M10.25 8.75V10.25H8.75 M7.25 10.25H5.75V8.75')]}),
+    ('sort', 'Sort', {24: [lines([(10, 16), (10, 8)], [(8, 10), (10, 8), (12, 10)], [(14, 8), (14, 16)], [(12, 14), (14, 16), (16, 14)])],
+                      16: [lines([(5.75, 10.25), (5.75, 5.75)], [(4.5, 7), (5.75, 5.75), (7, 7)],
+                                 [(10.25, 5.75), (10.25, 10.25)], [(9, 9), (10.25, 10.25), (11.5, 9)])]}),
+]
+
+# Solid partners for Success A, so the three marks could stay one kind if Dustin picks the solid disc.
+SOLID = [
+    ('error', 'Error', 'An exclamation mark cut out of a solid disc', {
+        24: cut('error-solid', 24, circle(12, 12, 10), [path('M12 7V13'), path('M12 17h0')], '2'),
+        16: cut('error-solid', 16, circle(8, 8, 6.75), [path('M8 4.5V8.5'), path('M8 11.5h0')], '2')}),
+    ('warning', 'Warning', 'An exclamation mark cut out of a solid triangle', {
+        24: cut('warning-solid', 24, rpoly([(12, 1.5), (23, 21), (1, 21)], 1.5), [path('M12 9.5V13.5'), path('M12 17h0')], '2'),
+        16: cut('warning-solid', 16, rpoly([(8, 0.5), (15.5, 15), (0.5, 15)], 1), [path('M8 6.75V9.25'), path('M8 12.5h0')], '2')}),
 ]
 
 
@@ -433,6 +470,32 @@ def svg_text(key, word, opt, desc, size, elems):
                                   size, w, body)
 
 
+def write_set(out, sub, items, tag):
+    """Write one SVG per item and size under out/sub; return {size: [relative paths]}. items: (key, word, desc, sizes)."""
+    files = {}
+    for size in (24, 16):
+        os.makedirs(os.path.join(out, sub, 'svg-%d' % size), exist_ok=True)
+    for key, word, desc, sizes in items:
+        files[key] = {}
+        for size in (24, 16):
+            name = '%s_Utility-%s-%s-%dpx.svg' % (DATE, word, tag, size)
+            rel = os.path.join(sub, 'svg-%d' % size, name) if sub else os.path.join('svg-%d' % size, name)
+            with open(os.path.join(out, rel), 'w') as fh:
+                fh.write(svg_text(key, word, tag, desc, size, sizes[size]))
+            files[key][str(size)] = rel
+    return files
+
+
+def prune(folder, keep):
+    """Remove this script's own SVG files that the current set no longer holds (options that left a card)."""
+    removed = []
+    for fn in sorted(os.listdir(folder)):
+        if fn.startswith(DATE + '_Utility-') and fn.endswith('.svg') and fn not in keep:
+            os.remove(os.path.join(folder, fn))
+            removed.append(fn)
+    return removed
+
+
 def main():
     out = OUT
     if '--out' in sys.argv:
@@ -440,9 +503,11 @@ def main():
     for sub in ('svg-24', 'svg-16'):
         os.makedirs(os.path.join(out, sub), exist_ok=True)
     manifest = []
-    for key, word, label, rank, asked, options in ICONS:
-        entry = {'key': key, 'word': word, 'label': label, 'rank': rank, 'asked': asked, 'options': []}
-        for opt in ('A', 'B', 'C'):
+    keep = {24: set(), 16: set()}
+    for key, word, label, rank, asked, options, reason in ICONS:
+        entry = {'key': key, 'word': word, 'label': label, 'rank': rank, 'asked': asked, 'options': [],
+                 'fewer_reason': reason if len(options) < 3 else None}
+        for opt in sorted(options):
             desc, sizes = options[opt]
             files = {}
             for size in (24, 16):
@@ -451,12 +516,22 @@ def main():
                 with open(os.path.join(out, rel), 'w') as fh:
                     fh.write(svg_text(key, word, opt, desc, size, sizes[size]))
                 files[str(size)] = rel
+                keep[size].add(name)
             entry['options'].append({'option': opt, 'shows': desc, 'files': files})
         manifest.append(entry)
+    removed = prune(os.path.join(out, 'svg-24'), keep[24]) + prune(os.path.join(out, 'svg-16'), keep[16])
+    ringed = write_set(out, 'family-ringed', [(k, w, 'The recommended picture set in a ring, for the family card',
+                                               {24: [ring(24)] + d[24], 16: [ring(16)] + d[16]})
+                                              for k, w, d in RINGED], 'Ringed')
+    solid = write_set(out, 'solid-partners', [(k, w, desc, d) for k, w, desc, d in SOLID], 'Solid-Partner')
+    doc = {'cards': manifest, 'family_ringed': ringed, 'solid_partners': solid}
     with open(os.path.join(out, '%s_Utility-Icons-Manifest.json' % DATE), 'w') as fh:
-        json.dump(manifest, fh, indent=1)
+        json.dump(doc, fh, indent=1)
     n = sum(len(e['options']) for e in manifest)
-    print('wrote %d drawings, %d options, %d SVG files to %s' % (len(manifest), n, n * 2, out))
+    print('wrote %d drawings, %d options, %d option SVGs, %d ringed and %d solid-partner SVGs; removed %d stale files'
+          % (len(manifest), n, n * 2, len(ringed) * 2, len(solid) * 2, len(removed)))
+    for r in removed:
+        print('  removed', r)
 
 
 if __name__ == '__main__':

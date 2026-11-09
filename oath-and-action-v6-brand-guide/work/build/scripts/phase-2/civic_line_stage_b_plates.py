@@ -41,33 +41,39 @@ def master(icon_id, ed="red-black"):
 # designer, an agent standing in; the creative director repeats it.
 NAMING = {
     ("CL-025", "A"): ("A large public building, most likely a city hall or a museum.", "label"),
-    ("CL-025", "B"): ("A chamber or an auditorium with a stage; a reader who knows the House may say Congress.", "label"),
-    ("CL-025", "C"): ("Two seating chambers, one larger than the other; with the label, the House and the Senate.", "label"),
+    ("CL-025", "B"): ("An assembly: members on a curved bench facing a stepped rostrum; with the label, the House in session.", "near"),
+    ("CL-025", "C"): ("Members in two tiers facing a presiding desk: an assembly, or an audience.", "label"),
     ("CL-014", "A"): ("A government building fenced in.", "near"),
-    ("CL-014", "B"): ("A chamber or an arena behind a fence.", "label"),
-    ("CL-014", "C"): ("A chamber or an arena behind a fence.", "label"),
+    ("CL-014", "B"): ("A chamber of members closed in by a fence.", "near"),
+    ("CL-014", "C"): ("A ballot stopped at the fence round a chamber: a vote that cannot get in.", "near"),
     ("R-13", "A"): ("Two people, a building and an open book; the book pulls toward reading or a library.", "weak"),
-    ("R-13", "B"): ("A chamber with two staff and a report: staff working for a legislature.", "label"),
-    ("R-13", "C"): ("Two chambers with two staff and a report.", "label"),
+    ("R-13", "B"): ("A legislature in session above two staff and a report: the legislature's own staff.", "label"),
+    ("R-13", "C"): ("An assembly above two staff and a report.", "label"),
     ("R-42", "A"): ("A building, a ballot box and a crate with an arrow; the ballot box reads as a public election.", "weak"),
-    ("R-42", "B"): ("A chamber, a yes-and-no card and a parcel with a tag: a vote on goods.", "label"),
-    ("R-42", "C"): ("Two chambers, a yes-and-no card and a parcel with a tag: a vote on goods.", "label"),
+    ("R-42", "B"): ("A legislature in session, a yes-and-no card and a parcel with a tag: a vote on goods.", "label"),
+    ("R-42", "C"): ("An assembly, a yes-and-no card and a parcel with a tag: a vote on goods.", "label"),
     ("CL-059", "A"): ("A bank, or a temple, sending money to a home and a factory.", "names"),
-    ("CL-059", "B"): ("A bank vault sending money to a home and a factory.", "names"),
-    ("CL-059", "C"): ("A safe paying out to a home and a factory.", "names"),
+    ("CL-059", "B"): ("A bank vault with its wheel, paying out to a home and a factory.", "names"),
+    ("CL-059", "C"): ("A lender's office and a loan paper with a percent sign, paying out to a home and a factory.", "names"),
     ("R-48", "A"): ("A house or a school and a speaker at a lectern, set apart by a bracket; the pediment over a door reads as a house.", "label"),
-    ("R-48", "B"): ("A panel of three and a speaker at a lectern, set apart by a bracket; some may say a debate.", "label"),
+    ("R-48", "B"): ("An office building kept apart from a person at a desk, whose arrow stops at the bracket.", "near"),
     ("R-48", "C"): ("A panel of three kept apart from a person at a desk, whose arrow stops at the bracket.", "near"),
-    ("Testify", "A"): ("A hearing: a person at a microphone facing a panel.", "names"),
-    ("Testify", "B"): ("A person at a microphone speaking up to a raised panel.", "names"),
+    ("Testify", "A"): ("A hearing: a witness seated at a table with a microphone, facing a raised panel.", "names"),
     ("Testify", "C"): ("A panel and a microphone: a hearing, or a panel discussion.", "near"),
     ("Contact-An-Official", "A"): ("A person sending a message to someone at a desk.", "names"),
-    ("Contact-An-Official", "B"): ("A phone line to someone at a desk: calling an office.", "names"),
+    ("Contact-An-Official", "B"): ("A desk phone wired to someone at a desk: calling an office.", "names"),
     ("Contact-An-Official", "C"): ("A person talking to someone at a desk: a visit, or a help desk.", "near"),
 }
 VERDICT = {"names": "Names the subject", "near": "Names it nearly; the label settles it",
            "label": "Recognized with the label", "weak": "Misleads without the label (kept by DR-135)"}
 
+RISK = {("CL-025", "A"): "Risk: its flat-roofed hall with a red door sits close to CL-031 Local Government's gabled hall with a red door; A must keep its parts (DR-135), so the card names the risk."}
+CARD_NOTE = {
+    "CL-014": "Option B follows the Congress set picked on card 1; option C draws a second idea, a ballot stopped at the fence.",
+    "R-13": "Options B and C follow the Congress set picked on card 1: Dustin picks the sign once.",
+    "R-42": "Options B and C follow the Congress set picked on card 1: Dustin picks the sign once.",
+    "Testify": "Two options (D2-622): option B, the same hearing on a diagonal, was withdrawn as a near-duplicate of A; a standing microphone reads as a singer before judges, and the view from behind the witness repeats C.",
+}
 NEAREST = {"Testify": ["CL-005", "CL-027"], "Contact-An-Official": ["CL-026", "CL-061"]}
 # Settled drawings shown after the options, to compare (DR-152 asks for R-46 beside the Congress options).
 NEIGHBORS = {"CL-025": [("R-46", "Draws the House from above; stays as drawn (DR-152)."),
@@ -94,9 +100,10 @@ def likeness_for(data, stem):
     return out
 
 
-def sizes_cell(src, sizes, label, sub="", alt=""):
+def sizes_cell(src, sizes, label, sub="", alt="", ref24=False):
+    cap = lambda s: f"{s}*" if (ref24 and s == 24) else f"{s}"
     imgs = "".join(f'<figure class="sz"><img src="{html.escape(rel(src))}" width="{s}" height="{s}" alt="{html.escape(alt)} at {s} px">'
-                   f'<figcaption>{s}</figcaption></figure>' for s in sizes)
+                   f'<figcaption>{cap(s)}</figcaption></figure>' for s in sizes)
     return (f'<div class="opt"><div class="opt-h">{label}</div><div class="sizes">{imgs}</div>{sub}</div>')
 
 
@@ -110,12 +117,13 @@ def option_cell(o, lk):
     if "closest" in lk:
         b, l, pc = lk["closest"]
         fig += f'<p class="fig">Closest drawing: {html.escape(b)}, {l:.3f}, percentile {pc:g}'
-        fig += ", flagged" if l >= 0.9127 else (", watch" if l >= 0.8708 else "") + "</p>"
+        fig += (", flagged" if l >= 0.9127 else (", watch" if l >= 0.8708 else "")) + "</p>"
     if "own" in lk:
         fig += f'<p class="fig">Own original: {lk["own"][1]:.3f}</p>'
-    sub = (f'{dr}<p class="chg">{html.escape(o["change"])}</p>'
+    risk = RISK.get(key)
+    sub = (f'{dr}<p class="chg">{html.escape(o["change"])}</p>' + (f'<p class="risk">{html.escape(risk)}</p>' if risk else '') +
            f'<p class="nm"><span>At 48 px:</span> {html.escape(nm)}</p><p class="vd v-{v}">{VERDICT[v]}</p>{fig}')
-    return sizes_cell(o["svg_red_black"], (128, 48, 24), f'Option {o["option"]}', sub, f'{o["name"]} option {o["option"]}')
+    return sizes_cell(o["svg_red_black"], (128, 48, 24), f'Option {o["option"]}', sub, f'{o["name"]} option {o["option"]}', ref24=True)
 
 
 def pillar_rows(fits, pxres):
@@ -146,8 +154,15 @@ def pillar_rows(fits, pxres):
                     f'<figure class="sz enl"><img class="px" src="{html.escape(rel(enl_b))}" width="{s * 4}" height="{s * 4}" alt="{name} {s} px fit {f["fit"]}, black, enlarged four times"><figcaption>4x, black</figcaption></figure>'
                     f'</div><p class="chg">{f["line_px"]} px line, {f["red_px"]} red and {f["black_px"]} black pixels.</p>{figs}')
             cells.append(f'<div class="opt wide"><div class="opt-h">{s} px, fit {f["fit"]}</div>{body}</div>')
+        s2 = "".join(
+            f'<figure class="sz"><img src="{html.escape(rel(f"work/boards/phase-2/stage-b/drawings/civic-line/screen-2x/20261109_{pid}-{name}-{css}px-{kind}-On-2x-Screen-Enlarged.png"))}" '
+            f'width="{css * 2 * 3}" height="{css * 2 * 3}" alt="{name}, {css} px {lab} on a 2x screen, its device pixels shown three times larger">'
+            f'<figcaption>{css} px, {lab}</figcaption></figure>'
+            for css, kind, lab in ((24, "Master", "master"), (24, "Fit-A", "fit A"), (24, "Fit-B", "fit B"), (16, "Master", "master"), (16, "Fit-A", "fit")))
         out.append(f'<section class="card" id="pillar-{pid.lower()}"><h3>Pillar fit: {pid} {name}</h3>'
-                   f'<div class="row">{"".join(cells)}</div></section>')
+                   f'<div class="row">{"".join(cells)}</div>'
+                   f'<p class="opt-h" style="margin-top:20px">On a 2x screen</p><p class="chg">What a 2x screen draws at 24 and 16 px, black edition, each device pixel shown three times larger.</p>'
+                   f'<div class="s2x">{s2}</div></section>')
     return "".join(out)
 
 
@@ -168,7 +183,7 @@ def main():
         cells = []
         if subj in BY:
             cells.append(sizes_cell(master(subj), (128, 48, 24), "Original master",
-                                    '<p class="chg">October 29 master, kept as the record.</p>', f"{subj} original"))
+                                    '<p class="chg">October 29 master, kept as the record.</p>', f"{subj} original", ref24=True))
         else:
             for nid in NEAREST[subj]:
                 cells.append(sizes_cell(master(nid), (128, 48, 24), f"Nearest: {nid} {BY[nid]['label']}",
@@ -178,7 +193,8 @@ def main():
         for nid, why in NEIGHBORS.get(subj, []):
             cells.append(sizes_cell(master(nid), (128, 48, 24), f"Neighbor: {nid} {BY[nid]['label']}",
                                     f'<p class="chg">{html.escape(why)}</p>', f"{nid} {BY[nid]['label']}"))
-        cards.append(f'<section class="card" id="card-{CARD_NO[subj]}"><h3><span class="no">{CARD_NO[subj]}</span> {html.escape(TITLES[subj])}</h3>'
+        note = f'<p class="cardnote">{html.escape(CARD_NOTE[subj])}</p>' if subj in CARD_NOTE else ""
+        cards.append(f'<section class="card" id="card-{CARD_NO[subj]}"><h3><span class="no">{CARD_NO[subj]}</span> {html.escape(TITLES[subj])}</h3>{note}'
                      f'<div class="row">{"".join(cells)}</div></section>')
     page = f"""<!doctype html>
 <html lang="en">
@@ -217,6 +233,10 @@ h3 {{ font-size: 17px; margin-bottom: 12px; }}
 .vd {{ font-weight: 600; }}
 .v-weak {{ text-decoration: underline; text-decoration-thickness: 2px; }}
 .fig {{ color: var(--deep-stone); font-variant-numeric: tabular-nums; }}
+.risk {{ margin: 6px 0 0; font-size: 13px; border-left: 2px solid var(--charcoal); padding-left: 8px; }}
+.cardnote {{ margin: -4px 0 12px; font-size: 13px; max-width: 80ch; }}
+.s2x {{ display: flex; flex-wrap: wrap; gap: 16px 20px; align-items: flex-end; margin-top: 16px; }}
+.s2x img {{ image-rendering: pixelated; display: block; }}
 @media (max-width: 640px) {{ body {{ padding: 24px 16px 48px; }} .opt {{ width: 100%; }} }}
 </style>
 </head>
@@ -226,11 +246,14 @@ h3 {{ font-size: 17px; margin-bottom: 12px; }}
 <p class="lede">Every drawing is shown at true size on Newsprint, beside its original master or the topic drawing it must not be read as. Redraws and new topics show at 128, 48 and 24 px; their floor is 48 px (DR-136), and 24 px is shown only to compare. The pillar fits show at their own size beside the masters at 96, 48, 24 and 16 px, with a four-times enlargement for inspection only. The four dome drawings come as three matched sets (D2-503): set A keeps every other part of each drawing (DR-135), set B draws the House chamber from the gallery, and set C draws the two chambers.</p>
 <p class="meta">Icon designer, Civic Line hand, November 9, 2026. Naming test: each option read at 48 px with no label by the icon designer, an agent standing in for a first-time reader; the creative director repeats it. Look-alike figures: the engineer's check at 24 px; flag at 0.913 (99th percentile of master pairs), watch from 0.871. Card numbers 1 to 8 follow the brief's order for these drawings; the board builder sets the board's own numbers. Notes: work/handoffs/phase-2/20261109_Stage-B-Civic-Line-Icons-Notes.md.</p>
 <h2>The six redraws</h2>
+<p class="lede">* 24 px is a reference size only. Topic and atlas drawings start at 48 px (DR-136), and none of these six is among the 41 that read at 24 px.</p>
 {"".join(cards[:6])}
 <h2>Testify and Contact an official</h2>
+<p class="lede">* 24 px is a reference size only; topic drawings start at 48 px (DR-136).</p>
 {"".join(cards[6:])}
 <h2>Pixel-fit pillar icons</h2>
 <p class="lede">Each fit is drawn pixel by pixel and keeps every feature and red placement of its master, with the red as its own shape. Under 48 px the black edition is the one in use (D2-497). At 24 px, fit A has a 2 px line and fit B a 1 px line. At 16 px there is one fit: a 2 px line there closes Connect's lens, Track's pin and lens, the book's doubled edge and Act's finger.</p>
+<p class="lede"><strong>What 2x screens get.</strong> On a 2x screen a fit's pixels double into hard steps, while the master at 24 px draws 48 device pixels with a 1.26 device-pixel line that passes the pixel-fit check's width and gap tests. At 16 px the master's line falls to 0.84 device pixels and fails the width test, and Act's parts close to 0.7 px apart. Recommendation: on 2x screens, 24 px icons draw the master and 16 px icons keep the pixel fit; 1x screens draw the fit at both sizes. The engineer builds the switch by screen resolution, as for the identity designer's end mark.</p>
 {pillar_rows(fits, pxres)}
 </main>
 </body>

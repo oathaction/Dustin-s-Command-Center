@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-sort" data-icon-family="utility" data-option="C" data-size="16">
-  <!-- Oath & Action utility icon: Sort, option C, 16 px master. One upright arrow with a head at each end. 16-unit grid, 1.5 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
-  <path d="M7.75 2.75 L7.75 13.25 M5 5.5 L7.75 2.75 L10.5 5.5 M5 10.5 L7.75 13.25 L10.5 10.5"/>
+  <!-- Oath & Action utility icon: Sort, option C, 16 px master. Bars of falling length beside a down arrow, the sort-lines sign. 16-unit grid, 1.5 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
+  <path d="M1.75 3.75H8.25 M1.75 7.75H6.75 M1.75 11.75H5.25"/>
+  <path d="M11.75 2.75 L11.75 13.25 M9.5 11 L11.75 13.25 L14 11"/>
 </svg>

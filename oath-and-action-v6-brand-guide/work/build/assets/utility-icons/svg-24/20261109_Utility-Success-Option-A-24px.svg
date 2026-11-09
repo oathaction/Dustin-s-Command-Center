@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-success" data-icon-family="utility" data-option="A" data-size="24">
-  <!-- Oath & Action utility icon: Success, option A, 24 px master. A check in a circle. 24-unit grid, 2 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
-  <circle cx="12" cy="12" r="9"/>
-  <path d="M7.5 12 L10.5 15 L16.5 9"/>
+  <!-- Oath & Action utility icon: Success, option A, 24 px master. A check cut out of a solid disc. 24-unit grid, 2 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
+  <defs><mask id="U-success-A-24-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect width="24" height="24" fill="#fff" stroke="none"/><g fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 12 L10.5 15 L16.5 9"/></g></mask></defs>
+  <circle cx="12" cy="12" r="10" fill="currentColor" stroke="none" mask="url(#U-success-A-24-cut)"/>
 </svg>

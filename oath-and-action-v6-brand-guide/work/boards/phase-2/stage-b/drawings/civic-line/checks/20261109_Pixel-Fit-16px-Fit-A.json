@@ -1,6 +1,6 @@
 {
  "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
- "run": "2026-11-09T21:16:24.012Z",
+ "run": "2026-11-09T22:05:32.611Z",
  "rules": {
   "minStroke": 1,
   "minThinArea": 0.25,
@@ -135,7 +135,7 @@
       "median": 0.99
      },
      "soft_edges": {
-      "ink_px": 44,
+      "ink_px": 43,
       "partial_px": 0,
       "share": 0
      },
@@ -150,8 +150,8 @@
       "parts": 3,
       "smallest_px": 1,
       "near_px": [
-       10,
-       9
+       5,
+       7
       ]
      },
      "counters": {
@@ -174,7 +174,7 @@
       "median": 1.98
      },
      "soft_edges": {
-      "ink_px": 176,
+      "ink_px": 172,
       "partial_px": 0,
       "share": 0
      },
@@ -189,8 +189,8 @@
       "parts": 3,
       "smallest_px": 2,
       "near_px": [
-       20,
-       18
+       10,
+       14
       ]
      },
      "counters": {
@@ -505,7 +505,7 @@
       "median": 0.99
      },
      "soft_edges": {
-      "ink_px": 44,
+      "ink_px": 43,
       "partial_px": 0,
       "share": 0
      },
@@ -520,8 +520,8 @@
       "parts": 3,
       "smallest_px": 1,
       "near_px": [
-       10,
-       9
+       5,
+       7
       ]
      },
      "counters": {
@@ -544,7 +544,7 @@
       "median": 1.98
      },
      "soft_edges": {
-      "ink_px": 176,
+      "ink_px": 172,
       "partial_px": 0,
       "share": 0
      },
@@ -559,8 +559,8 @@
       "parts": 3,
       "smallest_px": 2,
       "near_px": [
-       20,
-       18
+       10,
+       14
       ]
      },
      "counters": {

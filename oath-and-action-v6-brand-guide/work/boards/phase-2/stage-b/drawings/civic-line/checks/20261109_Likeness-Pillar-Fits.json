@@ -1,6 +1,6 @@
 {
  "tool": "work/build/scripts/phase-2/icon_likeness_check.js",
- "run": "2026-11-09T21:15:48.672Z",
+ "run": "2026-11-09T22:05:29.948Z",
  "method": "Ink maps at 24 px from coverage in Charcoal over Newsprint, Gaussian blur sigma 1.2 px, Pearson correlation best over shifts up to 1 px, percentile among the 7381 pairs of the 122 Civic Line masters (Board 6).",
  "renderer": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
  "files": 24,
@@ -172,14 +172,14 @@
   {
    "a": "20261109_CL-020-Track-16px-Fit-A-Black.svg",
    "b": "CL-020 Track",
-   "likeness": 0.6647,
-   "percentile": 32.5
+   "likeness": 0.5893,
+   "percentile": 16.3
   },
   {
    "a": "20261109_CL-020-Track-24px-Fit-A-Black.svg",
    "b": "CL-020 Track",
-   "likeness": 0.596,
-   "percentile": 17.3
+   "likeness": 0.5476,
+   "percentile": 10.6
   },
   {
    "a": "20261109_CL-022-Act-24px-Fit-A-Black.svg",
@@ -237,13 +237,6 @@
    "against": "new"
   },
   {
-   "a": "20261109_CL-020-Track-16px-Fit-A-Black.svg",
-   "b": "20261109_CL-020-Track-24px-Fit-A-Black.svg",
-   "likeness": 0.8497,
-   "percentile": 90.7,
-   "against": "new"
-  },
-  {
    "a": "20261109_CL-021-Connect-16px-Fit-A-Black.svg",
    "b": "20261109_CL-021-Connect-24px-Fit-A-Black.svg",
    "likeness": 0.8453,
@@ -252,16 +245,23 @@
   },
   {
    "a": "20261109_CL-020-Track-16px-Fit-A-Black.svg",
+   "b": "20261109_CL-020-Track-24px-Fit-A-Black.svg",
+   "likeness": 0.8258,
+   "percentile": 84.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-020-Track-16px-Fit-A-Black.svg",
    "b": "20261109_CL-020-Track-24px-Fit-B-Black.svg",
-   "likeness": 0.8342,
-   "percentile": 86.6,
+   "likeness": 0.7873,
+   "percentile": 72.2,
    "against": "new"
   },
   {
    "a": "20261109_CL-020-Track-24px-Fit-A-Black.svg",
    "b": "20261109_CL-020-Track-24px-Fit-B-Black.svg",
-   "likeness": 0.7976,
-   "percentile": 75.6,
+   "likeness": 0.7663,
+   "percentile": 65.3,
    "against": "new"
   },
   {
@@ -311,15 +311,15 @@
   {
    "a": "20261109_CL-020-Track-16px-Fit-A-Black.svg",
    "b": "CL-051 Market Power",
-   "likeness": 0.6475,
-   "percentile": 28.4,
+   "likeness": 0.5738,
+   "percentile": 13.9,
    "extent": 0.92
   },
   {
    "a": "20261109_CL-020-Track-24px-Fit-A-Black.svg",
-   "b": "R-13 Congressional Capacity",
-   "likeness": 0.5615,
-   "percentile": 12.3,
+   "b": "CL-065 Climate & Insurance",
+   "likeness": 0.5066,
+   "percentile": 7,
    "extent": 0.96
   },
   {

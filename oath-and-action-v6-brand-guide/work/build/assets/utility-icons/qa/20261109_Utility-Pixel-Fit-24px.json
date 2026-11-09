@@ -1,6 +1,6 @@
 {
  "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
- "run": "2026-11-09T21:02:06.137Z",
+ "run": "2026-11-09T22:10:35.887Z",
  "rules": {
   "minStroke": 1,
   "minThinArea": 0.25,
@@ -206,104 +206,6 @@
    "pass": true
   },
   {
-   "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Another-Site-Option-C-24px.svg",
-   "size": 24,
-   "viewBox": [
-    0,
-    0,
-    24,
-    24
-   ],
-   "units_per_px": 1,
-   "supersample": 27,
-   "weight": 2,
-   "scales": {
-    "1x": {
-     "device_px": 24,
-     "stroke_px": {
-      "declared": [
-       2
-      ],
-      "thinnest": 1.98,
-      "thinnest_near_px": [
-       9,
-       8.8
-      ],
-      "main": 2,
-      "median": 2
-     },
-     "soft_edges": {
-      "ink_px": 180,
-      "partial_px": 114,
-      "share": 0.633
-     },
-     "straight": {
-      "strokes": 2,
-      "lone_edges": 0,
-      "fit": 2,
-      "total": 2,
-      "off": []
-     },
-     "gap": {
-      "parts": 2,
-      "smallest_px": 1.83,
-      "near_px": [
-       11.2,
-       4.7
-      ]
-     },
-     "counters": {
-      "drawn": 0,
-      "open": 0
-     },
-     "fails": [],
-     "pass": true
-    },
-    "2x": {
-     "device_px": 48,
-     "stroke_px": {
-      "declared": [
-       4
-      ],
-      "thinnest": 3.95,
-      "thinnest_near_px": [
-       18,
-       17.5
-      ],
-      "main": 4,
-      "median": 4.01
-     },
-     "soft_edges": {
-      "ink_px": 607,
-      "partial_px": 203,
-      "share": 0.334
-     },
-     "straight": {
-      "strokes": 2,
-      "lone_edges": 0,
-      "fit": 2,
-      "total": 2,
-      "off": []
-     },
-     "gap": {
-      "parts": 2,
-      "smallest_px": 3.65,
-      "near_px": [
-       22.4,
-       9.4
-      ]
-     },
-     "counters": {
-      "drawn": 0,
-      "open": 0
-     },
-     "fails": [],
-     "pass": true
-    }
-   },
-   "pass": true
-  },
-  {
    "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Arrow-Option-A-24px.svg",
    "size": 24,
    "viewBox": [
@@ -414,122 +316,24 @@
       "declared": [
        2
       ],
-      "thinnest": 1.97,
-      "thinnest_near_px": [
-       12.4,
-       9.3
-      ],
-      "main": 2,
-      "median": 2
-     },
-     "soft_edges": {
-      "ink_px": 217,
-      "partial_px": 141,
-      "share": 0.65
-     },
-     "straight": {
-      "strokes": 1,
-      "lone_edges": 0,
-      "fit": 1,
-      "total": 1,
-      "off": []
-     },
-     "gap": {
-      "parts": 2,
-      "smallest_px": 2.97,
-      "near_px": [
-       11.8,
-       17
-      ]
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
-     },
-     "fails": [],
-     "pass": true
-    },
-    "2x": {
-     "device_px": 48,
-     "stroke_px": {
-      "declared": [
-       4
-      ],
-      "thinnest": 3.94,
-      "thinnest_near_px": [
-       24.7,
-       18.5
-      ],
-      "main": 4,
-      "median": 3.99
-     },
-     "soft_edges": {
-      "ink_px": 751,
-      "partial_px": 264,
-      "share": 0.352
-     },
-     "straight": {
-      "strokes": 1,
-      "lone_edges": 0,
-      "fit": 1,
-      "total": 1,
-      "off": []
-     },
-     "gap": {
-      "parts": 2,
-      "smallest_px": 5.94,
-      "near_px": [
-       23.6,
-       33.9
-      ]
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
-     },
-     "fails": [],
-     "pass": true
-    }
-   },
-   "pass": true
-  },
-  {
-   "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Arrow-Option-C-24px.svg",
-   "size": 24,
-   "viewBox": [
-    0,
-    0,
-    24,
-    24
-   ],
-   "units_per_px": 1,
-   "supersample": 27,
-   "weight": 2,
-   "scales": {
-    "1x": {
-     "device_px": 24,
-     "stroke_px": {
-      "declared": [
-       2
-      ],
       "thinnest": 1.98,
       "thinnest_near_px": [
-       6.2,
-       11
+       13.9,
+       9.7
       ],
       "main": 2,
-      "median": 2.02
+      "median": 1.98
      },
      "soft_edges": {
-      "ink_px": 84,
-      "partial_px": 40,
-      "share": 0.476
+      "ink_px": 74,
+      "partial_px": 28,
+      "share": 0.378
      },
      "straight": {
-      "strokes": 1,
-      "lone_edges": 0,
-      "fit": 1,
-      "total": 1,
+      "strokes": 2,
+      "lone_edges": 1,
+      "fit": 3,
+      "total": 3,
       "off": []
      },
      "gap": {
@@ -538,8 +342,8 @@
       "near_px": null
      },
      "counters": {
-      "drawn": 0,
-      "open": 0
+      "drawn": 1,
+      "open": 1
      },
      "fails": [],
      "pass": true
@@ -552,22 +356,22 @@
       ],
       "thinnest": 3.96,
       "thinnest_near_px": [
-       12.4,
-       22
+       27.7,
+       19.4
       ],
       "main": 4,
-      "median": 4.05
+      "median": 3.97
      },
      "soft_edges": {
-      "ink_px": 288,
-      "partial_px": 52,
-      "share": 0.181
+      "ink_px": 275,
+      "partial_px": 67,
+      "share": 0.244
      },
      "straight": {
-      "strokes": 1,
-      "lone_edges": 0,
-      "fit": 1,
-      "total": 1,
+      "strokes": 2,
+      "lone_edges": 1,
+      "fit": 3,
+      "total": 3,
       "off": []
      },
      "gap": {
@@ -576,8 +380,8 @@
       "near_px": null
      },
      "counters": {
-      "drawn": 0,
-      "open": 0
+      "drawn": 1,
+      "open": 1
      },
      "fails": [],
      "pass": true
@@ -696,33 +500,30 @@
       "declared": [
        2
       ],
-      "thinnest": 1.97,
+      "thinnest": 1.98,
       "thinnest_near_px": [
-       11.9,
-       6.7
+       11.7,
+       8
       ],
       "main": 2,
       "median": 2
      },
      "soft_edges": {
-      "ink_px": 201,
-      "partial_px": 131,
-      "share": 0.652
+      "ink_px": 54,
+      "partial_px": 26,
+      "share": 0.481
      },
      "straight": {
-      "strokes": 0,
+      "strokes": 1,
       "lone_edges": 0,
-      "fit": 0,
-      "total": 0,
+      "fit": 1,
+      "total": 1,
       "off": []
      },
      "gap": {
-      "parts": 2,
-      "smallest_px": 2.7,
-      "near_px": [
-       16.9,
-       10.1
-      ]
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
      },
      "counters": {
       "drawn": 1,
@@ -737,129 +538,34 @@
       "declared": [
        4
       ],
-      "thinnest": 3.94,
+      "thinnest": 3.96,
       "thinnest_near_px": [
-       23.9,
-       13.4
+       23.3,
+       16
       ],
       "main": 4,
       "median": 3.99
      },
      "soft_edges": {
-      "ink_px": 697,
-      "partial_px": 262,
-      "share": 0.376
+      "ink_px": 196,
+      "partial_px": 62,
+      "share": 0.316
      },
      "straight": {
-      "strokes": 0,
+      "strokes": 1,
       "lone_edges": 0,
-      "fit": 0,
-      "total": 0,
+      "fit": 1,
+      "total": 1,
       "off": []
      },
      "gap": {
-      "parts": 2,
-      "smallest_px": 5.39,
-      "near_px": [
-       33.8,
-       20.1
-      ]
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
      },
      "counters": {
       "drawn": 1,
       "open": 1
-     },
-     "fails": [],
-     "pass": true
-    }
-   },
-   "pass": true
-  },
-  {
-   "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Chevron-Option-C-24px.svg",
-   "size": 24,
-   "viewBox": [
-    0,
-    0,
-    24,
-    24
-   ],
-   "units_per_px": 1,
-   "supersample": 27,
-   "weight": 2,
-   "scales": {
-    "1x": {
-     "device_px": 24,
-     "stroke_px": {
-      "declared": [
-       2
-      ],
-      "thinnest": 2.02,
-      "thinnest_near_px": [
-       11.3,
-       9.1
-      ],
-      "main": 2,
-      "median": 2.02
-     },
-     "soft_edges": {
-      "ink_px": 42,
-      "partial_px": 34,
-      "share": 0.81
-     },
-     "straight": {
-      "strokes": 0,
-      "lone_edges": 0,
-      "fit": 0,
-      "total": 0,
-      "off": []
-     },
-     "gap": {
-      "parts": 1,
-      "smallest_px": null,
-      "near_px": null
-     },
-     "counters": {
-      "drawn": 0,
-      "open": 0
-     },
-     "fails": [],
-     "pass": true
-    },
-    "2x": {
-     "device_px": 48,
-     "stroke_px": {
-      "declared": [
-       4
-      ],
-      "thinnest": 4.05,
-      "thinnest_near_px": [
-       22.7,
-       18.2
-      ],
-      "main": 4,
-      "median": 4.05
-     },
-     "soft_edges": {
-      "ink_px": 126,
-      "partial_px": 42,
-      "share": 0.333
-     },
-     "straight": {
-      "strokes": 0,
-      "lone_edges": 0,
-      "fit": 0,
-      "total": 0,
-      "off": []
-     },
-     "gap": {
-      "parts": 1,
-      "smallest_px": null,
-      "near_px": null
-     },
-     "counters": {
-      "drawn": 0,
-      "open": 0
      },
      "fails": [],
      "pass": true
@@ -952,202 +658,6 @@
      "counters": {
       "drawn": 0,
       "open": 0
-     },
-     "fails": [],
-     "pass": true
-    }
-   },
-   "pass": true
-  },
-  {
-   "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Close-Option-B-24px.svg",
-   "size": 24,
-   "viewBox": [
-    0,
-    0,
-    24,
-    24
-   ],
-   "units_per_px": 1,
-   "supersample": 27,
-   "weight": 2,
-   "scales": {
-    "1x": {
-     "device_px": 24,
-     "stroke_px": {
-      "declared": [
-       2
-      ],
-      "thinnest": 1.97,
-      "thinnest_near_px": [
-       12.4,
-       9.3
-      ],
-      "main": 2,
-      "median": 2
-     },
-     "soft_edges": {
-      "ink_px": 217,
-      "partial_px": 151,
-      "share": 0.696
-     },
-     "straight": {
-      "strokes": 0,
-      "lone_edges": 0,
-      "fit": 0,
-      "total": 0,
-      "off": []
-     },
-     "gap": {
-      "parts": 2,
-      "smallest_px": 2.74,
-      "near_px": [
-       8.3,
-       8.3
-      ]
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
-     },
-     "fails": [],
-     "pass": true
-    },
-    "2x": {
-     "device_px": 48,
-     "stroke_px": {
-      "declared": [
-       4
-      ],
-      "thinnest": 3.94,
-      "thinnest_near_px": [
-       24.7,
-       18.5
-      ],
-      "main": 4,
-      "median": 3.99
-     },
-     "soft_edges": {
-      "ink_px": 747,
-      "partial_px": 278,
-      "share": 0.372
-     },
-     "straight": {
-      "strokes": 0,
-      "lone_edges": 0,
-      "fit": 0,
-      "total": 0,
-      "off": []
-     },
-     "gap": {
-      "parts": 2,
-      "smallest_px": 5.48,
-      "near_px": [
-       16.5,
-       16.6
-      ]
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
-     },
-     "fails": [],
-     "pass": true
-    }
-   },
-   "pass": true
-  },
-  {
-   "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Close-Option-C-24px.svg",
-   "size": 24,
-   "viewBox": [
-    0,
-    0,
-    24,
-    24
-   ],
-   "units_per_px": 1,
-   "supersample": 27,
-   "weight": 2,
-   "scales": {
-    "1x": {
-     "device_px": 24,
-     "stroke_px": {
-      "declared": [
-       2
-      ],
-      "thinnest": 1.98,
-      "thinnest_near_px": [
-       8.4,
-       3
-      ],
-      "main": 2,
-      "median": 1.98
-     },
-     "soft_edges": {
-      "ink_px": 182,
-      "partial_px": 54,
-      "share": 0.297
-     },
-     "straight": {
-      "strokes": 4,
-      "lone_edges": 0,
-      "fit": 4,
-      "total": 4,
-      "off": []
-     },
-     "gap": {
-      "parts": 2,
-      "smallest_px": 3,
-      "near_px": [
-       8.8,
-       8
-      ]
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
-     },
-     "fails": [],
-     "pass": true
-    },
-    "2x": {
-     "device_px": 48,
-     "stroke_px": {
-      "declared": [
-       4
-      ],
-      "thinnest": 3.96,
-      "thinnest_near_px": [
-       16.7,
-       6
-      ],
-      "main": 4,
-      "median": 3.96
-     },
-     "soft_edges": {
-      "ink_px": 684,
-      "partial_px": 82,
-      "share": 0.12
-     },
-     "straight": {
-      "strokes": 4,
-      "lone_edges": 0,
-      "fit": 4,
-      "total": 4,
-      "off": []
-     },
-     "gap": {
-      "parts": 2,
-      "smallest_px": 6,
-      "near_px": [
-       17.6,
-       16
-      ]
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
      },
      "fails": [],
      "pass": true
@@ -1664,37 +1174,37 @@
       "declared": [
        2
       ],
-      "thinnest": 1.97,
+      "thinnest": 1.98,
       "thinnest_near_px": [
-       12.4,
-       9.3
+       9.4,
+       2
       ],
       "main": 2,
-      "median": 2
+      "median": 1.98
      },
      "soft_edges": {
-      "ink_px": 219,
-      "partial_px": 141,
-      "share": 0.644
+      "ink_px": 183,
+      "partial_px": 48,
+      "share": 0.262
      },
      "straight": {
-      "strokes": 1,
+      "strokes": 7,
       "lone_edges": 0,
-      "fit": 1,
-      "total": 1,
+      "fit": 7,
+      "total": 7,
       "off": []
      },
      "gap": {
       "parts": 2,
-      "smallest_px": 1.98,
+      "smallest_px": 1.59,
       "near_px": [
-       11.8,
-       6
+       12.5,
+       10.1
       ]
      },
      "counters": {
-      "drawn": 1,
-      "open": 1
+      "drawn": 2,
+      "open": 2
      },
      "fails": [],
      "pass": true
@@ -1705,37 +1215,37 @@
       "declared": [
        4
       ],
-      "thinnest": 3.94,
+      "thinnest": 3.96,
       "thinnest_near_px": [
-       24.7,
-       18.5
+       18.7,
+       4
       ],
       "main": 4,
-      "median": 3.99
+      "median": 3.96
      },
      "soft_edges": {
-      "ink_px": 759,
-      "partial_px": 264,
-      "share": 0.348
+      "ink_px": 687,
+      "partial_px": 73,
+      "share": 0.106
      },
      "straight": {
-      "strokes": 1,
+      "strokes": 7,
       "lone_edges": 0,
-      "fit": 1,
-      "total": 1,
+      "fit": 7,
+      "total": 7,
       "off": []
      },
      "gap": {
       "parts": 2,
-      "smallest_px": 3.97,
+      "smallest_px": 3.17,
       "near_px": [
-       23.6,
-       12
+       25,
+       20.3
       ]
      },
      "counters": {
-      "drawn": 1,
-      "open": 1
+      "drawn": 2,
+      "open": 2
      },
      "fails": [],
      "pass": true
@@ -2150,32 +1660,35 @@
       ],
       "thinnest": 1.98,
       "thinnest_near_px": [
-       9.4,
-       3.5
+       7.2,
+       6
       ],
       "main": 2,
       "median": 1.98
      },
      "soft_edges": {
-      "ink_px": 123,
-      "partial_px": 46,
-      "share": 0.374
+      "ink_px": 72,
+      "partial_px": 12,
+      "share": 0.167
      },
      "straight": {
-      "strokes": 4,
+      "strokes": 3,
       "lone_edges": 0,
-      "fit": 4,
-      "total": 4,
+      "fit": 3,
+      "total": 3,
       "off": []
      },
      "gap": {
-      "parts": 1,
-      "smallest_px": null,
-      "near_px": null
+      "parts": 3,
+      "smallest_px": 3,
+      "near_px": [
+       6.8,
+       11
+      ]
      },
      "counters": {
-      "drawn": 1,
-      "open": 1
+      "drawn": 0,
+      "open": 0
      },
      "fails": [],
      "pass": true
@@ -2188,124 +1701,35 @@
       ],
       "thinnest": 3.96,
       "thinnest_near_px": [
-       18.9,
-       6.9
+       14.4,
+       12
       ],
       "main": 4,
-      "median": 3.97
+      "median": 3.96
      },
      "soft_edges": {
-      "ink_px": 452,
-      "partial_px": 89,
-      "share": 0.197
+      "ink_px": 288,
+      "partial_px": 36,
+      "share": 0.125
      },
      "straight": {
-      "strokes": 4,
+      "strokes": 3,
       "lone_edges": 0,
-      "fit": 4,
-      "total": 4,
+      "fit": 3,
+      "total": 3,
       "off": []
      },
      "gap": {
-      "parts": 1,
-      "smallest_px": null,
-      "near_px": null
+      "parts": 3,
+      "smallest_px": 6,
+      "near_px": [
+       13.6,
+       22
+      ]
      },
      "counters": {
-      "drawn": 1,
-      "open": 1
-     },
-     "fails": [],
-     "pass": true
-    }
-   },
-   "pass": true
-  },
-  {
-   "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Filter-Option-C-24px.svg",
-   "size": 24,
-   "viewBox": [
-    0,
-    0,
-    24,
-    24
-   ],
-   "units_per_px": 1,
-   "supersample": 27,
-   "weight": 2,
-   "scales": {
-    "1x": {
-     "device_px": 24,
-     "stroke_px": {
-      "declared": [
-       2
-      ],
-      "thinnest": 1.98,
-      "thinnest_near_px": [
-       8.6,
-       4.1
-      ],
-      "main": 2,
-      "median": 1.98
-     },
-     "soft_edges": {
-      "ink_px": 124,
-      "partial_px": 50,
-      "share": 0.403
-     },
-     "straight": {
-      "strokes": 4,
-      "lone_edges": 0,
-      "fit": 4,
-      "total": 4,
-      "off": []
-     },
-     "gap": {
-      "parts": 1,
-      "smallest_px": null,
-      "near_px": null
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
-     },
-     "fails": [],
-     "pass": true
-    },
-    "2x": {
-     "device_px": 48,
-     "stroke_px": {
-      "declared": [
-       4
-      ],
-      "thinnest": 3.96,
-      "thinnest_near_px": [
-       17.2,
-       8.1
-      ],
-      "main": 4,
-      "median": 3.97
-     },
-     "soft_edges": {
-      "ink_px": 451,
-      "partial_px": 102,
-      "share": 0.226
-     },
-     "straight": {
-      "strokes": 4,
-      "lone_edges": 0,
-      "fit": 4,
-      "total": 4,
-      "off": []
-     },
-     "gap": {
-      "parts": 1,
-      "smallest_px": null,
-      "near_px": null
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
+      "drawn": 0,
+      "open": 0
      },
      "fails": [],
      "pass": true
@@ -2432,128 +1856,30 @@
       ],
       "thinnest": 1.98,
       "thinnest_near_px": [
-       9.2,
-       6
-      ],
-      "main": 2,
-      "median": 1.98
-     },
-     "soft_edges": {
-      "ink_px": 84,
-      "partial_px": 12,
-      "share": 0.143
-     },
-     "straight": {
-      "strokes": 3,
-      "lone_edges": 0,
-      "fit": 3,
-      "total": 3,
-      "off": []
-     },
-     "gap": {
-      "parts": 3,
-      "smallest_px": 3,
-      "near_px": [
-       5.8,
-       11
-      ]
-     },
-     "counters": {
-      "drawn": 0,
-      "open": 0
-     },
-     "fails": [],
-     "pass": true
-    },
-    "2x": {
-     "device_px": 48,
-     "stroke_px": {
-      "declared": [
-       4
-      ],
-      "thinnest": 3.96,
-      "thinnest_near_px": [
-       18.4,
-       12
-      ],
-      "main": 4,
-      "median": 3.96
-     },
-     "soft_edges": {
-      "ink_px": 336,
-      "partial_px": 36,
-      "share": 0.107
-     },
-     "straight": {
-      "strokes": 3,
-      "lone_edges": 0,
-      "fit": 3,
-      "total": 3,
-      "off": []
-     },
-     "gap": {
-      "parts": 3,
-      "smallest_px": 6,
-      "near_px": [
-       11.6,
-       22
-      ]
-     },
-     "counters": {
-      "drawn": 0,
-      "open": 0
-     },
-     "fails": [],
-     "pass": true
-    }
-   },
-   "pass": true
-  },
-  {
-   "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Menu-Option-C-24px.svg",
-   "size": 24,
-   "viewBox": [
-    0,
-    0,
-    24,
-    24
-   ],
-   "units_per_px": 1,
-   "supersample": 27,
-   "weight": 2,
-   "scales": {
-    "1x": {
-     "device_px": 24,
-     "stroke_px": {
-      "declared": [
-       2
-      ],
-      "thinnest": 1.98,
-      "thinnest_near_px": [
        7.2,
-       5
+       8
       ],
       "main": 2,
       "median": 1.98
      },
      "soft_edges": {
-      "ink_px": 94,
-      "partial_px": 12,
-      "share": 0.128
+      "ink_px": 72,
+      "partial_px": 8,
+      "share": 0.111
      },
      "straight": {
-      "strokes": 3,
+      "strokes": 2,
       "lone_edges": 0,
-      "fit": 3,
-      "total": 3,
+      "fit": 2,
+      "total": 2,
       "off": []
      },
      "gap": {
-      "parts": 3,
+      "parts": 2,
       "smallest_px": 4,
       "near_px": [
        3.8,
-       11
+       14
       ]
      },
      "counters": {
@@ -2572,29 +1898,29 @@
       "thinnest": 3.96,
       "thinnest_near_px": [
        14.4,
-       10
+       16
       ],
       "main": 4,
       "median": 3.96
      },
      "soft_edges": {
-      "ink_px": 376,
-      "partial_px": 36,
-      "share": 0.096
+      "ink_px": 288,
+      "partial_px": 24,
+      "share": 0.083
      },
      "straight": {
-      "strokes": 3,
+      "strokes": 2,
       "lone_edges": 0,
-      "fit": 3,
-      "total": 3,
+      "fit": 2,
+      "total": 2,
       "off": []
      },
      "gap": {
-      "parts": 3,
+      "parts": 2,
       "smallest_px": 8,
       "near_px": [
        7.6,
-       22
+       28
       ]
      },
      "counters": {
@@ -2706,202 +2032,6 @@
    "pass": true
   },
   {
-   "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Pause-Option-B-24px.svg",
-   "size": 24,
-   "viewBox": [
-    0,
-    0,
-    24,
-    24
-   ],
-   "units_per_px": 1,
-   "supersample": 27,
-   "weight": 2,
-   "scales": {
-    "1x": {
-     "device_px": 24,
-     "stroke_px": {
-      "declared": [
-       2
-      ],
-      "thinnest": 1.97,
-      "thinnest_near_px": [
-       12.4,
-       9.3
-      ],
-      "main": 2,
-      "median": 2
-     },
-     "soft_edges": {
-      "ink_px": 195,
-      "partial_px": 117,
-      "share": 0.6
-     },
-     "straight": {
-      "strokes": 2,
-      "lone_edges": 0,
-      "fit": 2,
-      "total": 2,
-      "off": []
-     },
-     "gap": {
-      "parts": 3,
-      "smallest_px": 2,
-      "near_px": [
-       13,
-       8.8
-      ]
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
-     },
-     "fails": [],
-     "pass": true
-    },
-    "2x": {
-     "device_px": 48,
-     "stroke_px": {
-      "declared": [
-       4
-      ],
-      "thinnest": 3.94,
-      "thinnest_near_px": [
-       24.7,
-       18.5
-      ],
-      "main": 4,
-      "median": 3.99
-     },
-     "soft_edges": {
-      "ink_px": 699,
-      "partial_px": 244,
-      "share": 0.349
-     },
-     "straight": {
-      "strokes": 2,
-      "lone_edges": 0,
-      "fit": 2,
-      "total": 2,
-      "off": []
-     },
-     "gap": {
-      "parts": 3,
-      "smallest_px": 4,
-      "near_px": [
-       26,
-       17.6
-      ]
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
-     },
-     "fails": [],
-     "pass": true
-    }
-   },
-   "pass": true
-  },
-  {
-   "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Pause-Option-C-24px.svg",
-   "size": 24,
-   "viewBox": [
-    0,
-    0,
-    24,
-    24
-   ],
-   "units_per_px": 1,
-   "supersample": 27,
-   "weight": 2,
-   "scales": {
-    "1x": {
-     "device_px": 24,
-     "stroke_px": {
-      "declared": [
-       2
-      ],
-      "thinnest": 1.98,
-      "thinnest_near_px": [
-       7.4,
-       4
-      ],
-      "main": 2,
-      "median": 1.98
-     },
-     "soft_edges": {
-      "ink_px": 160,
-      "partial_px": 27,
-      "share": 0.169
-     },
-     "straight": {
-      "strokes": 6,
-      "lone_edges": 0,
-      "fit": 6,
-      "total": 6,
-      "off": []
-     },
-     "gap": {
-      "parts": 3,
-      "smallest_px": 2,
-      "near_px": [
-       13,
-       9.3
-      ]
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
-     },
-     "fails": [],
-     "pass": true
-    },
-    "2x": {
-     "device_px": 48,
-     "stroke_px": {
-      "declared": [
-       4
-      ],
-      "thinnest": 3.96,
-      "thinnest_near_px": [
-       14.7,
-       8
-      ],
-      "main": 4,
-      "median": 3.96
-     },
-     "soft_edges": {
-      "ink_px": 620,
-      "partial_px": 48,
-      "share": 0.077
-     },
-     "straight": {
-      "strokes": 6,
-      "lone_edges": 0,
-      "fit": 6,
-      "total": 6,
-      "off": []
-     },
-     "gap": {
-      "parts": 3,
-      "smallest_px": 4,
-      "near_px": [
-       26,
-       18.7
-      ]
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
-     },
-     "fails": [],
-     "pass": true
-    }
-   },
-   "pass": true
-  },
-  {
    "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Play-Option-A-24px.svg",
    "size": 24,
    "viewBox": [
@@ -2994,105 +2124,7 @@
    "pass": true
   },
   {
-   "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Play-Option-B-24px.svg",
-   "size": 24,
-   "viewBox": [
-    0,
-    0,
-    24,
-    24
-   ],
-   "units_per_px": 1,
-   "supersample": 27,
-   "weight": 2,
-   "scales": {
-    "1x": {
-     "device_px": 24,
-     "stroke_px": {
-      "declared": [
-       2
-      ],
-      "thinnest": 1.97,
-      "thinnest_near_px": [
-       12.4,
-       9.3
-      ],
-      "main": 2,
-      "median": 2
-     },
-     "soft_edges": {
-      "ink_px": 217,
-      "partial_px": 138,
-      "share": 0.636
-     },
-     "straight": {
-      "strokes": 1,
-      "lone_edges": 0,
-      "fit": 1,
-      "total": 1,
-      "off": []
-     },
-     "gap": {
-      "parts": 2,
-      "smallest_px": 3.38,
-      "near_px": [
-       16.6,
-       11.7
-      ]
-     },
-     "counters": {
-      "drawn": 2,
-      "open": 2
-     },
-     "fails": [],
-     "pass": true
-    },
-    "2x": {
-     "device_px": 48,
-     "stroke_px": {
-      "declared": [
-       4
-      ],
-      "thinnest": 3.94,
-      "thinnest_near_px": [
-       24.7,
-       18.5
-      ],
-      "main": 4,
-      "median": 3.99
-     },
-     "soft_edges": {
-      "ink_px": 756,
-      "partial_px": 279,
-      "share": 0.369
-     },
-     "straight": {
-      "strokes": 1,
-      "lone_edges": 0,
-      "fit": 1,
-      "total": 1,
-      "off": []
-     },
-     "gap": {
-      "parts": 2,
-      "smallest_px": 6.76,
-      "near_px": [
-       33.1,
-       23.5
-      ]
-     },
-     "counters": {
-      "drawn": 2,
-      "open": 2
-     },
-     "fails": [],
-     "pass": true
-    }
-   },
-   "pass": true
-  },
-  {
-   "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Play-Option-C-24px.svg",
+   "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Reset-Option-A-24px.svg",
    "size": 24,
    "viewBox": [
     0,
@@ -3112,120 +2144,22 @@
       ],
       "thinnest": 1.98,
       "thinnest_near_px": [
-       7.5,
-       4.5
-      ],
-      "main": 2,
-      "median": 1.98
-     },
-     "soft_edges": {
-      "ink_px": 172,
-      "partial_px": 38,
-      "share": 0.221
-     },
-     "straight": {
-      "strokes": 5,
-      "lone_edges": 0,
-      "fit": 5,
-      "total": 5,
-      "off": []
-     },
-     "gap": {
-      "parts": 2,
-      "smallest_px": 2.33,
-      "near_px": [
-       10.7,
-       8.3
-      ]
-     },
-     "counters": {
-      "drawn": 2,
-      "open": 2
-     },
-     "fails": [],
-     "pass": true
-    },
-    "2x": {
-     "device_px": 48,
-     "stroke_px": {
-      "declared": [
-       4
-      ],
-      "thinnest": 3.96,
-      "thinnest_near_px": [
-       15.1,
-       9
-      ],
-      "main": 4,
-      "median": 3.96
-     },
-     "soft_edges": {
-      "ink_px": 664,
-      "partial_px": 80,
-      "share": 0.12
-     },
-     "straight": {
-      "strokes": 5,
-      "lone_edges": 0,
-      "fit": 5,
-      "total": 5,
-      "off": []
-     },
-     "gap": {
-      "parts": 2,
-      "smallest_px": 4.67,
-      "near_px": [
-       21.4,
-       16.7
-      ]
-     },
-     "counters": {
-      "drawn": 2,
-      "open": 2
-     },
-     "fails": [],
-     "pass": true
-    }
-   },
-   "pass": true
-  },
-  {
-   "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Reset-Option-A-24px.svg",
-   "size": 24,
-   "viewBox": [
-    0,
-    0,
-    24,
-    24
-   ],
-   "units_per_px": 1,
-   "supersample": 27,
-   "weight": 2,
-   "scales": {
-    "1x": {
-     "device_px": 24,
-     "stroke_px": {
-      "declared": [
-       2
-      ],
-      "thinnest": 1.97,
-      "thinnest_near_px": [
-       14.6,
-       1.5
+       18,
+       15.3
       ],
       "main": 2,
       "median": 2
      },
      "soft_edges": {
-      "ink_px": 127,
-      "partial_px": 83,
-      "share": 0.654
+      "ink_px": 96,
+      "partial_px": 50,
+      "share": 0.521
      },
      "straight": {
-      "strokes": 0,
+      "strokes": 2,
       "lone_edges": 0,
-      "fit": 0,
-      "total": 0,
+      "fit": 2,
+      "total": 2,
       "off": []
      },
      "gap": {
@@ -3246,24 +2180,24 @@
       "declared": [
        4
       ],
-      "thinnest": 3.94,
+      "thinnest": 3.95,
       "thinnest_near_px": [
-       29.2,
-       3
+       36,
+       30.5
       ],
       "main": 4,
       "median": 3.99
      },
      "soft_edges": {
-      "ink_px": 440,
-      "partial_px": 165,
-      "share": 0.375
+      "ink_px": 345,
+      "partial_px": 112,
+      "share": 0.325
      },
      "straight": {
-      "strokes": 0,
+      "strokes": 2,
       "lone_edges": 0,
-      "fit": 0,
-      "total": 0,
+      "fit": 2,
+      "total": 2,
       "off": []
      },
      "gap": {
@@ -3558,196 +2492,6 @@
    "pass": true
   },
   {
-   "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Search-Option-B-24px.svg",
-   "size": 24,
-   "viewBox": [
-    0,
-    0,
-    24,
-    24
-   ],
-   "units_per_px": 1,
-   "supersample": 27,
-   "weight": 2,
-   "scales": {
-    "1x": {
-     "device_px": 24,
-     "stroke_px": {
-      "declared": [
-       2
-      ],
-      "thinnest": 1.98,
-      "thinnest_near_px": [
-       8.6,
-       4.1
-      ],
-      "main": 2,
-      "median": 2
-     },
-     "soft_edges": {
-      "ink_px": 175,
-      "partial_px": 121,
-      "share": 0.691
-     },
-     "straight": {
-      "strokes": 0,
-      "lone_edges": 0,
-      "fit": 0,
-      "total": 0,
-      "off": []
-     },
-     "gap": {
-      "parts": 2,
-      "smallest_px": 1.46,
-      "near_px": [
-       7,
-       7.6
-      ]
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
-     },
-     "fails": [],
-     "pass": true
-    },
-    "2x": {
-     "device_px": 48,
-     "stroke_px": {
-      "declared": [
-       4
-      ],
-      "thinnest": 3.95,
-      "thinnest_near_px": [
-       17.2,
-       8.2
-      ],
-      "main": 4,
-      "median": 3.99
-     },
-     "soft_edges": {
-      "ink_px": 568,
-      "partial_px": 226,
-      "share": 0.398
-     },
-     "straight": {
-      "strokes": 0,
-      "lone_edges": 0,
-      "fit": 0,
-      "total": 0,
-      "off": []
-     },
-     "gap": {
-      "parts": 2,
-      "smallest_px": 2.92,
-      "near_px": [
-       14,
-       15.3
-      ]
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
-     },
-     "fails": [],
-     "pass": true
-    }
-   },
-   "pass": true
-  },
-  {
-   "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Search-Option-C-24px.svg",
-   "size": 24,
-   "viewBox": [
-    0,
-    0,
-    24,
-    24
-   ],
-   "units_per_px": 1,
-   "supersample": 27,
-   "weight": 2,
-   "scales": {
-    "1x": {
-     "device_px": 24,
-     "stroke_px": {
-      "declared": [
-       2
-      ],
-      "thinnest": 1.97,
-      "thinnest_near_px": [
-       9.5,
-       9
-      ],
-      "main": 2,
-      "median": 2
-     },
-     "soft_edges": {
-      "ink_px": 165,
-      "partial_px": 115,
-      "share": 0.697
-     },
-     "straight": {
-      "strokes": 0,
-      "lone_edges": 0,
-      "fit": 0,
-      "total": 0,
-      "off": []
-     },
-     "gap": {
-      "parts": 1,
-      "smallest_px": null,
-      "near_px": null
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
-     },
-     "fails": [],
-     "pass": true
-    },
-    "2x": {
-     "device_px": 48,
-     "stroke_px": {
-      "declared": [
-       4
-      ],
-      "thinnest": 3.95,
-      "thinnest_near_px": [
-       19,
-       18.1
-      ],
-      "main": 4,
-      "median": 3.99
-     },
-     "soft_edges": {
-      "ink_px": 548,
-      "partial_px": 204,
-      "share": 0.372
-     },
-     "straight": {
-      "strokes": 0,
-      "lone_edges": 0,
-      "fit": 0,
-      "total": 0,
-      "off": []
-     },
-     "gap": {
-      "parts": 1,
-      "smallest_px": null,
-      "near_px": null
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
-     },
-     "fails": [],
-     "pass": true
-    }
-   },
-   "pass": true
-  },
-  {
    "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Selected-Check-Option-A-24px.svg",
    "size": 24,
    "viewBox": [
@@ -3858,34 +2602,37 @@
       "declared": [
        2
       ],
-      "thinnest": 1.97,
+      "thinnest": 1.98,
       "thinnest_near_px": [
-       5,
-       12.7
+       8.4,
+       3
       ],
       "main": 2,
       "median": 1.98
      },
      "soft_edges": {
-      "ink_px": 69,
-      "partial_px": 46,
-      "share": 0.667
+      "ink_px": 169,
+      "partial_px": 42,
+      "share": 0.249
      },
      "straight": {
-      "strokes": 0,
+      "strokes": 4,
       "lone_edges": 0,
-      "fit": 0,
-      "total": 0,
+      "fit": 4,
+      "total": 4,
       "off": []
      },
      "gap": {
-      "parts": 1,
-      "smallest_px": null,
-      "near_px": null
+      "parts": 2,
+      "smallest_px": 2,
+      "near_px": [
+       17,
+       8.9
+      ]
      },
      "counters": {
-      "drawn": 0,
-      "open": 0
+      "drawn": 1,
+      "open": 1
      },
      "fails": [],
      "pass": true
@@ -3896,126 +2643,37 @@
       "declared": [
        4
       ],
-      "thinnest": 3.94,
+      "thinnest": 3.96,
       "thinnest_near_px": [
-       10,
-       25.3
+       16.7,
+       6
       ],
       "main": 4,
-      "median": 3.97
+      "median": 3.96
      },
      "soft_edges": {
-      "ink_px": 237,
-      "partial_px": 93,
-      "share": 0.392
+      "ink_px": 641,
+      "partial_px": 79,
+      "share": 0.123
      },
      "straight": {
-      "strokes": 0,
+      "strokes": 4,
       "lone_edges": 0,
-      "fit": 0,
-      "total": 0,
+      "fit": 4,
+      "total": 4,
       "off": []
      },
      "gap": {
-      "parts": 1,
-      "smallest_px": null,
-      "near_px": null
+      "parts": 2,
+      "smallest_px": 4,
+      "near_px": [
+       33.9,
+       17.7
+      ]
      },
      "counters": {
-      "drawn": 0,
-      "open": 0
-     },
-     "fails": [],
-     "pass": true
-    }
-   },
-   "pass": true
-  },
-  {
-   "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Selected-Check-Option-C-24px.svg",
-   "size": 24,
-   "viewBox": [
-    0,
-    0,
-    24,
-    24
-   ],
-   "units_per_px": 1,
-   "supersample": 27,
-   "weight": 2,
-   "scales": {
-    "1x": {
-     "device_px": 24,
-     "stroke_px": {
-      "declared": [
-       2
-      ],
-      "thinnest": 1.97,
-      "thinnest_near_px": [
-       17,
-       8.7
-      ],
-      "main": 1.95,
-      "median": 1.97
-     },
-     "soft_edges": {
-      "ink_px": 45,
-      "partial_px": 25,
-      "share": 0.556
-     },
-     "straight": {
-      "strokes": 0,
-      "lone_edges": 0,
-      "fit": 0,
-      "total": 0,
-      "off": []
-     },
-     "gap": {
-      "parts": 1,
-      "smallest_px": null,
-      "near_px": null
-     },
-     "counters": {
-      "drawn": 0,
-      "open": 0
-     },
-     "fails": [],
-     "pass": true
-    },
-    "2x": {
-     "device_px": 48,
-     "stroke_px": {
-      "declared": [
-       4
-      ],
-      "thinnest": 3.94,
-      "thinnest_near_px": [
-       34,
-       17.3
-      ],
-      "main": 3.9,
-      "median": 3.94
-     },
-     "soft_edges": {
-      "ink_px": 154,
-      "partial_px": 50,
-      "share": 0.325
-     },
-     "straight": {
-      "strokes": 0,
-      "lone_edges": 0,
-      "fit": 0,
-      "total": 0,
-      "off": []
-     },
-     "gap": {
-      "parts": 1,
-      "smallest_px": null,
-      "near_px": null
-     },
-     "counters": {
-      "drawn": 0,
-      "open": 0
+      "drawn": 1,
+      "open": 1
      },
      "fails": [],
      "pass": true
@@ -4240,28 +2898,31 @@
       ],
       "thinnest": 1.98,
       "thinnest_near_px": [
-       12,
-       6.7
+       17,
+       4.2
       ],
       "main": 2,
-      "median": 2.02
+      "median": 1.98
      },
      "soft_edges": {
-      "ink_px": 104,
-      "partial_px": 58,
-      "share": 0.558
+      "ink_px": 110,
+      "partial_px": 36,
+      "share": 0.327
      },
      "straight": {
-      "strokes": 1,
+      "strokes": 4,
       "lone_edges": 0,
-      "fit": 1,
-      "total": 1,
+      "fit": 4,
+      "total": 4,
       "off": []
      },
      "gap": {
-      "parts": 1,
-      "smallest_px": null,
-      "near_px": null
+      "parts": 4,
+      "smallest_px": 3,
+      "near_px": [
+       13,
+       5.8
+      ]
      },
      "counters": {
       "drawn": 0,
@@ -4278,28 +2939,31 @@
       ],
       "thinnest": 3.96,
       "thinnest_near_px": [
-       24,
-       13.4
+       33.9,
+       8.3
       ],
       "main": 4,
-      "median": 4.05
+      "median": 3.96
      },
      "soft_edges": {
-      "ink_px": 344,
-      "partial_px": 74,
-      "share": 0.215
+      "ink_px": 416,
+      "partial_px": 72,
+      "share": 0.173
      },
      "straight": {
-      "strokes": 1,
+      "strokes": 4,
       "lone_edges": 0,
-      "fit": 1,
-      "total": 1,
+      "fit": 4,
+      "total": 4,
       "off": []
      },
      "gap": {
-      "parts": 1,
-      "smallest_px": null,
-      "near_px": null
+      "parts": 4,
+      "smallest_px": 6,
+      "near_px": [
+       25.9,
+       11.6
+      ]
      },
      "counters": {
       "drawn": 0,
@@ -4330,18 +2994,18 @@
       "declared": [
        2
       ],
-      "thinnest": 1.97,
+      "thinnest": 3.6,
       "thinnest_near_px": [
-       13.6,
-       6.2
+       19.7,
+       6.4
       ],
-      "main": 2,
-      "median": 2
+      "main": 9.45,
+      "median": 7.89
      },
      "soft_edges": {
-      "ink_px": 204,
-      "partial_px": 132,
-      "share": 0.647
+      "ink_px": 316,
+      "partial_px": 87,
+      "share": 0.275
      },
      "straight": {
       "strokes": 0,
@@ -4351,19 +3015,18 @@
       "off": []
      },
      "gap": {
-      "parts": 2,
-      "smallest_px": 1.57,
-      "near_px": [
-       17.3,
-       8.4
-      ]
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
      },
      "counters": {
       "drawn": 1,
       "open": 1
      },
-     "fails": [],
-     "pass": true
+     "fails": [
+      "weight"
+     ],
+     "pass": false
     },
     "2x": {
      "device_px": 48,
@@ -4371,18 +3034,18 @@
       "declared": [
        4
       ],
-      "thinnest": 3.94,
+      "thinnest": 7.2,
       "thinnest_near_px": [
-       27.2,
-       12.5
+       39.4,
+       12.7
       ],
-      "main": 4,
-      "median": 3.99
+      "main": 18.9,
+      "median": 15.78
      },
      "soft_edges": {
-      "ink_px": 711,
-      "partial_px": 266,
-      "share": 0.374
+      "ink_px": 1216,
+      "partial_px": 168,
+      "share": 0.138
      },
      "straight": {
       "strokes": 0,
@@ -4392,22 +3055,21 @@
       "off": []
      },
      "gap": {
-      "parts": 2,
-      "smallest_px": 3.14,
-      "near_px": [
-       34.5,
-       16.7
-      ]
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
      },
      "counters": {
       "drawn": 1,
       "open": 1
      },
-     "fails": [],
-     "pass": true
+     "fails": [
+      "weight"
+     ],
+     "pass": false
     }
    },
-   "pass": true
+   "pass": false
   },
   {
    "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Success-Option-B-24px.svg",
@@ -4500,104 +3162,6 @@
      "counters": {
       "drawn": 0,
       "open": 0
-     },
-     "fails": [],
-     "pass": true
-    }
-   },
-   "pass": true
-  },
-  {
-   "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Success-Option-C-24px.svg",
-   "size": 24,
-   "viewBox": [
-    0,
-    0,
-    24,
-    24
-   ],
-   "units_per_px": 1,
-   "supersample": 27,
-   "weight": 2,
-   "scales": {
-    "1x": {
-     "device_px": 24,
-     "stroke_px": {
-      "declared": [
-       2
-      ],
-      "thinnest": 1.98,
-      "thinnest_near_px": [
-       8.4,
-       3
-      ],
-      "main": 2,
-      "median": 1.98
-     },
-     "soft_edges": {
-      "ink_px": 169,
-      "partial_px": 42,
-      "share": 0.249
-     },
-     "straight": {
-      "strokes": 4,
-      "lone_edges": 0,
-      "fit": 4,
-      "total": 4,
-      "off": []
-     },
-     "gap": {
-      "parts": 2,
-      "smallest_px": 2,
-      "near_px": [
-       17,
-       8.9
-      ]
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
-     },
-     "fails": [],
-     "pass": true
-    },
-    "2x": {
-     "device_px": 48,
-     "stroke_px": {
-      "declared": [
-       4
-      ],
-      "thinnest": 3.96,
-      "thinnest_near_px": [
-       16.7,
-       6
-      ],
-      "main": 4,
-      "median": 3.96
-     },
-     "soft_edges": {
-      "ink_px": 641,
-      "partial_px": 79,
-      "share": 0.123
-     },
-     "straight": {
-      "strokes": 4,
-      "lone_edges": 0,
-      "fit": 4,
-      "total": 4,
-      "off": []
-     },
-     "gap": {
-      "parts": 2,
-      "smallest_px": 4,
-      "near_px": [
-       33.9,
-       17.7
-      ]
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
      },
      "fails": [],
      "pass": true
@@ -5083,104 +3647,6 @@
       "near_px": [
        23.6,
        31
-      ]
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
-     },
-     "fails": [],
-     "pass": true
-    }
-   },
-   "pass": true
-  },
-  {
-   "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Warning-Option-C-24px.svg",
-   "size": 24,
-   "viewBox": [
-    0,
-    0,
-    24,
-    24
-   ],
-   "units_per_px": 1,
-   "supersample": 27,
-   "weight": 2,
-   "scales": {
-    "1x": {
-     "device_px": 24,
-     "stroke_px": {
-      "declared": [
-       2
-      ],
-      "thinnest": 1.93,
-      "thinnest_near_px": [
-       12,
-       16.2
-      ],
-      "main": 2,
-      "median": 2
-     },
-     "soft_edges": {
-      "ink_px": 156,
-      "partial_px": 86,
-      "share": 0.551
-     },
-     "straight": {
-      "strokes": 2,
-      "lone_edges": 0,
-      "fit": 2,
-      "total": 2,
-      "off": []
-     },
-     "gap": {
-      "parts": 3,
-      "smallest_px": 1,
-      "near_px": [
-       11.8,
-       18
-      ]
-     },
-     "counters": {
-      "drawn": 1,
-      "open": 1
-     },
-     "fails": [],
-     "pass": true
-    },
-    "2x": {
-     "device_px": 48,
-     "stroke_px": {
-      "declared": [
-       4
-      ],
-      "thinnest": 3.85,
-      "thinnest_near_px": [
-       23.9,
-       32.3
-      ],
-      "main": 4,
-      "median": 3.99
-     },
-     "soft_edges": {
-      "ink_px": 547,
-      "partial_px": 171,
-      "share": 0.313
-     },
-     "straight": {
-      "strokes": 2,
-      "lone_edges": 0,
-      "fit": 2,
-      "total": 2,
-      "off": []
-     },
-     "gap": {
-      "parts": 3,
-      "smallest_px": 2,
-      "near_px": [
-       23.6,
-       35.9
       ]
      },
      "counters": {

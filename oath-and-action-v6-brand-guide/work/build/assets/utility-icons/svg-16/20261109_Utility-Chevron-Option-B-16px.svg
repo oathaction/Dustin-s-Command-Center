@@ -1,5 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-chevron" data-icon-family="utility" data-option="B" data-size="16">
-  <!-- Oath & Action utility icon: Chevron, option B, 16 px master. The chevron in a circle. 16-unit grid, 1.5 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
-  <circle cx="8" cy="8" r="6.25"/>
-  <path d="M5.5 7 L8 9.5 L10.5 7"/>
+  <!-- Oath & Action utility icon: Chevron, option B, 16 px master. A disclosure triangle, drawn in line. 16-unit grid, 1.5 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
+  <path d="M5.851 5.75 L10.149 5.75 A0.75 0.75 0 0 1 10.725 6.98 L8.576 9.559 A0.75 0.75 0 0 1 7.424 9.559 L5.275 6.98 A0.75 0.75 0 0 1 5.851 5.75 Z"/>
 </svg>

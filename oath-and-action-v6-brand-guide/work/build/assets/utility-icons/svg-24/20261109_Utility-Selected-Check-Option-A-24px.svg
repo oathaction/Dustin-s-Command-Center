@@ -1,4 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-check" data-icon-family="utility" data-option="A" data-size="24">
-  <!-- Oath & Action utility icon: Selected Check, option A, 24 px master. A check, long arm at 45 degrees. 24-unit grid, 2 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
+  <!-- Oath & Action utility icon: Selected Check, option A, 24 px master. A check. 24-unit grid, 2 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
   <path d="M4 12.5 L9 17.5 L20 6.5"/>
 </svg>

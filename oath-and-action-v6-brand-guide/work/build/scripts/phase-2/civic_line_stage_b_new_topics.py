@@ -83,28 +83,22 @@ def bench(pen, n=3, half=74, rise=12, k=0.62):
 # ------------------------------------------------------------------ Testify
 
 def testify_a():
-    """DR-147's option: the hearing from behind the witness. A raised,
-    curved dais with three officials above; below, the witness at the table
-    with a microphone, red, leaning in."""
+    """DR-147's option: a raised, curved dais with three officials above;
+    below, the witness seated at a table, drawn as a top over a front panel
+    so it reads as a witness table (the review's S3), with the red
+    microphone on it."""
     p = P(120, 40)
     top = bench(p)
     w = C.person(p, -10, 128, k=0.9, h=26)
-    table = [p.line(-58, 128, 58, 128)]
+    table = [p.line(-60, 128, 60, 128), p.poly([(-52, 128), (-52, 148), (52, 148), (52, 128)])]
     mic = microphone(p, 30, 128, s=0.85)
     return [("base", top + w + table), ("accent", mic)]
 
 
-def testify_b():
-    """The hearing on a diagonal: the witness at a table with the red
-    microphone at lower left, facing up to the raised, curved dais and its
-    three officials at upper right. A first try set the officials behind a
-    tall box, which read as a jury box, a courtroom sign."""
-    p = P()
-    w = C.person(p, 38, 150, k=0.9, h=26)
-    table = [p.line(10, 150, 86, 150)]
-    mic = microphone(p, 70, 150, s=0.85)
-    top = bench(p.sub(150, 56, 0.9), k=0.62)
-    return [("base", w + table + top), ("accent", mic)]
+# Testify B, the same hearing on a diagonal, was withdrawn in the fix round
+# (the review's M10, D2-622) as a near-duplicate of A. A standing microphone
+# reads as a singer before judges, and the view from behind the witness
+# repeats C, so the card keeps two options.
 
 
 def testify_c():
@@ -137,8 +131,8 @@ def contact_b():
     one line that carries the call; rays over the phone read as an alarm bell
     and a red handset as hanging up, so neither is used."""
     p = P()
-    phone = desk_phone(p, 46, 124)
-    cord = [p.path([("M", 72, 118), ("Q", 96, 134, 112, 116), ("Q", 126, 100, 150, 108)])]
+    phone = desk_phone(p, 58, 124, s=1.25)
+    cord = [p.path([("M", 90, 118), ("Q", 108, 134, 120, 116), ("Q", 132, 100, 152, 108)])]
     off = official_at_desk(p, 190, 96, k=0.8, plate=True)
     return [("base", phone + off), ("accent", cord)]
 
@@ -158,15 +152,13 @@ def contact_c():
 
 REGISTRY = [
     ("Testify", "Testify", "A", "new", testify_a, None,
-     "A raised, curved dais with three officials above the witness, who sits at a table with a red microphone."),
-    ("Testify", "Testify", "B", "new", testify_b, None,
-     "On a diagonal: the witness at a table with a red microphone at lower left, facing the raised, curved dais at upper right."),
+     "A raised, curved dais with three officials above the witness, who sits at a table with a front panel and a red microphone."),
     ("Testify", "Testify", "C", "new", testify_c, None,
      "The raised, curved dais with three officials, and the red microphone on the witness table; the reader is the witness."),
     ("Contact-An-Official", "Contact-An-Official", "A", "new", contact_a, None,
      "A person and an official at a desk, joined by one line that carries a red speech mark."),
     ("Contact-An-Official", "Contact-An-Official", "B", "new", contact_b, None,
-     "A very simple phone whose red cord runs to an official at a desk."),
+     "A very simple phone, a step larger, whose red cord runs to an official at a desk."),
     ("Contact-An-Official", "Contact-An-Official", "C", "new", contact_c, None,
      "In person: the person stands at the official's desk and one red speech mark rises between them."),
 ]

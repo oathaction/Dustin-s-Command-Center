@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-warning" data-icon-family="utility" data-option="C" data-size="16">
-  <!-- Oath & Action utility icon: Warning, option C, 16 px master. An exclamation mark in a narrower triangle. 16-unit grid, 1.5 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
-  <path d="M8.418 2.811 L13.694 13.159 A0.75 0.75 0 0 1 13.026 14.25 L2.474 14.25 A0.75 0.75 0 0 1 1.806 13.159 L7.082 2.811 A0.75 0.75 0 0 1 8.418 2.811 Z"/>
-  <path d="M7.75 7.5V9"/>
-  <circle cx="7.75" cy="11.75" r="0.75" fill="currentColor" stroke="none"/>
-</svg>

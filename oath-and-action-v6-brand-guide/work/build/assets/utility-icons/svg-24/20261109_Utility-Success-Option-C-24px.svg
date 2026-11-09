@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-success" data-icon-family="utility" data-option="C" data-size="24">
-  <!-- Oath & Action utility icon: Success, option C, 24 px master. A check in a square. 24-unit grid, 2 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
-  <path d="M5 4 L19 4 A1 1 0 0 1 20 5 L20 19 A1 1 0 0 1 19 20 L5 20 A1 1 0 0 1 4 19 L4 5 A1 1 0 0 1 5 4 Z"/>
-  <path d="M8 12 L11 15 L16 9"/>
-</svg>

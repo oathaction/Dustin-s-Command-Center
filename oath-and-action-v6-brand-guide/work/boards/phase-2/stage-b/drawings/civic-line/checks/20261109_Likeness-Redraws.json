@@ -1,6 +1,6 @@
 {
  "tool": "work/build/scripts/phase-2/icon_likeness_check.js",
- "run": "2026-11-09T21:18:47.152Z",
+ "run": "2026-11-09T22:05:27.325Z",
  "method": "Ink maps at 24 px from coverage in Charcoal over Newsprint, Gaussian blur sigma 1.2 px, Pearson correlation best over shifts up to 1 px, percentile among the 7381 pairs of the 122 Civic Line masters (Board 6).",
  "renderer": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
  "files": 36,
@@ -150,37 +150,16 @@
  ],
  "flagged": [
   {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-46 Expand the House",
-   "likeness": 0.95,
-   "percentile": 99.9,
-   "against": "master"
-  },
-  {
    "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "R-20 Merger Enforcement",
-   "likeness": 0.9404,
-   "percentile": 99.8,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
-   "b": "20261109_CL-025-Congress-Option-B-Black.svg",
-   "likeness": 0.9401,
-   "percentile": 99.8,
+   "b": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
+   "likeness": 0.943,
+   "percentile": 99.9,
    "against": "new"
   },
   {
    "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
    "b": "R-31 Childcare Supply",
    "likeness": 0.9333,
-   "percentile": 99.7,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-33 Citizen Assemblies",
-   "likeness": 0.9332,
    "percentile": 99.7,
    "against": "master"
   },
@@ -199,25 +178,18 @@
    "against": "master"
   },
   {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "R-46 Expand the House",
-   "likeness": 0.928,
-   "percentile": 99.6,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-20 Merger Enforcement",
-   "likeness": 0.9272,
-   "percentile": 99.6,
-   "against": "master"
-  },
-  {
    "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
    "b": "20261109_CL-025-Congress-Option-A-Black.svg",
    "likeness": 0.9261,
    "percentile": 99.6,
    "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "CL-035 Residential Sorting",
+   "likeness": 0.9259,
+   "percentile": 99.6,
+   "against": "master"
   },
   {
    "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
@@ -234,23 +206,16 @@
    "against": "master"
   },
   {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "CL-035 Residential Sorting",
-   "likeness": 0.9226,
-   "percentile": 99.5,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "CL-035 Residential Sorting",
-   "likeness": 0.9199,
-   "percentile": 99.4,
-   "against": "master"
-  },
-  {
    "a": "20261109_CL-025-Congress-Option-A-Black.svg",
    "b": "CL-005 Public Meeting",
    "likeness": 0.9196,
+   "percentile": 99.3,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-33 Citizen Assemblies",
+   "likeness": 0.9193,
    "percentile": 99.3,
    "against": "master"
   },
@@ -276,8 +241,8 @@
    "against": "master"
   },
   {
-   "a": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
-   "b": "CL-035 Residential Sorting",
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-46 Expand the House",
    "likeness": 0.9177,
    "percentile": 99.2,
    "against": "master"
@@ -300,7 +265,7 @@
   },
   {
    "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "R-33 Citizen Assemblies",
+   "b": "R-30 By-Right Housing",
    "likeness": 0.9115,
    "percentile": 98.9,
    "against": "master"
@@ -313,30 +278,9 @@
    "against": "master"
   },
   {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "R-49 Cross-Party Civic Work",
-   "likeness": 0.9106,
-   "percentile": 98.9,
-   "against": "master"
-  },
-  {
    "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-05 Automatic Registration",
+   "b": "R-32 Local-News Funding",
    "likeness": 0.9105,
-   "percentile": 98.9,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-025-Congress-Option-B-Black.svg",
-   "b": "R-31 Childcare Supply",
-   "likeness": 0.91,
-   "percentile": 98.9,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "CL-046 AI Infrastructure",
-   "likeness": 0.9098,
    "percentile": 98.9,
    "against": "master"
   },
@@ -348,32 +292,18 @@
    "against": "master"
   },
   {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-32 Local-News Funding",
-   "likeness": 0.9091,
-   "percentile": 98.9,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-14 Automatic Funding",
-   "likeness": 0.9086,
-   "percentile": 98.8,
-   "against": "master"
-  },
-  {
-   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
-   "b": "CL-047 Data Rights",
-   "likeness": 0.9082,
-   "percentile": 98.8,
-   "against": "master"
-  },
-  {
    "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
    "b": "R-47 Fusion Voting",
    "likeness": 0.9081,
    "percentile": 98.8,
    "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "20261109_CL-025-Congress-Option-B-Black.svg",
+   "likeness": 0.9081,
+   "percentile": 98.8,
+   "against": "new"
   },
   {
    "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
@@ -397,6 +327,13 @@
    "against": "master"
   },
   {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-13 Congressional Capacity",
+   "likeness": 0.9048,
+   "percentile": 98.7,
+   "against": "master"
+  },
+  {
    "a": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
    "b": "R-49 Cross-Party Civic Work",
    "likeness": 0.9047,
@@ -405,8 +342,8 @@
   },
   {
    "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "CL-046 AI Infrastructure",
-   "likeness": 0.9044,
+   "b": "R-20 Merger Enforcement",
+   "likeness": 0.9045,
    "percentile": 98.7,
    "against": "master"
   },
@@ -418,23 +355,9 @@
    "against": "master"
   },
   {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "R-32 Local-News Funding",
-   "likeness": 0.9036,
-   "percentile": 98.6,
-   "against": "master"
-  },
-  {
-   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
-   "b": "CL-012 Election Rules",
-   "likeness": 0.9027,
-   "percentile": 98.6,
-   "against": "master"
-  },
-  {
    "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-39 Digital Service Teams",
-   "likeness": 0.9017,
+   "b": "CL-035 Residential Sorting",
+   "likeness": 0.9018,
    "percentile": 98.4,
    "against": "master"
   },
@@ -460,22 +383,8 @@
    "against": "master"
   },
   {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-21 Labor-Law Remedies",
-   "likeness": 0.899,
-   "percentile": 98.3,
-   "against": "master"
-  },
-  {
    "a": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
    "b": "R-39 Digital Service Teams",
-   "likeness": 0.8988,
-   "percentile": 98.3,
-   "against": "master"
-  },
-  {
-   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
-   "b": "CL-071 Policy",
    "likeness": 0.8988,
    "percentile": 98.3,
    "against": "master"
@@ -488,13 +397,6 @@
    "against": "master"
   },
   {
-   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
-   "b": "R-43 Disaster Mitigation",
-   "likeness": 0.8986,
-   "percentile": 98.3,
-   "against": "master"
-  },
-  {
    "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
    "b": "CL-005 Public Meeting",
    "likeness": 0.8985,
@@ -502,65 +404,9 @@
    "against": "master"
   },
   {
-   "a": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
-   "b": "R-49 Cross-Party Civic Work",
-   "likeness": 0.8984,
-   "percentile": 98.3,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-30 By-Right Housing",
-   "likeness": 0.8981,
-   "percentile": 98.2,
-   "against": "master"
-  },
-  {
    "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
    "b": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
    "likeness": 0.8979,
-   "percentile": 98.2,
-   "against": "new"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-40 Worker Voice on AI",
-   "likeness": 0.8977,
-   "percentile": 98.2,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "CL-043 Digital Government",
-   "likeness": 0.8977,
-   "percentile": 98.2,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-44 Digital Competition",
-   "likeness": 0.8975,
-   "percentile": 98.2,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-37 Feed Choice",
-   "likeness": 0.8972,
-   "percentile": 98.2,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-34 Participatory Budgeting",
-   "likeness": 0.897,
-   "percentile": 98.2,
-   "against": "master"
-  },
-  {
-   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
-   "b": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
-   "likeness": 0.897,
    "percentile": 98.2,
    "against": "new"
   },
@@ -586,17 +432,24 @@
    "against": "master"
   },
   {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "R-14 Automatic Funding",
-   "likeness": 0.8948,
-   "percentile": 98,
+   "a": "20261109_CL-025-Congress-Option-B-Black.svg",
+   "b": "CL-014 Entrenched Power",
+   "likeness": 0.8961,
+   "percentile": 98.1,
    "against": "master"
   },
   {
    "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "CL-007 Turnout Equality",
-   "likeness": 0.8941,
-   "percentile": 98,
+   "b": "R-31 Childcare Supply",
+   "likeness": 0.8956,
+   "percentile": 98.1,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-25 Child Tax Credit",
+   "likeness": 0.8951,
+   "percentile": 98.1,
    "against": "master"
   },
   {
@@ -607,23 +460,16 @@
    "against": "master"
   },
   {
-   "a": "20261109_CL-025-Congress-Option-B-Black.svg",
-   "b": "CL-031 Local Government",
-   "likeness": 0.893,
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "R-38 Pricing-Data Limits",
+   "likeness": 0.8925,
    "percentile": 97.8,
    "against": "master"
   },
   {
    "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "R-31 Childcare Supply",
-   "likeness": 0.8928,
-   "percentile": 97.8,
-   "against": "master"
-  },
-  {
-   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
-   "b": "R-38 Pricing-Data Limits",
-   "likeness": 0.8925,
+   "b": "CL-026 Executive Power",
+   "likeness": 0.8924,
    "percentile": 97.8,
    "against": "master"
   },
@@ -636,9 +482,9 @@
   },
   {
    "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-25 Child Tax Credit",
-   "likeness": 0.8908,
-   "percentile": 97.6,
+   "b": "CL-043 Digital Government",
+   "likeness": 0.8915,
+   "percentile": 97.7,
    "against": "master"
   },
   {
@@ -663,30 +509,9 @@
    "against": "master"
   },
   {
-   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
-   "b": "CL-028 Watchdogs",
-   "likeness": 0.8901,
-   "percentile": 97.5,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-49 Cross-Party Civic Work",
-   "likeness": 0.89,
-   "percentile": 97.5,
-   "against": "master"
-  },
-  {
    "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
    "b": "CL-035 Residential Sorting",
    "likeness": 0.8899,
-   "percentile": 97.5,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "R-25 Child Tax Credit",
-   "likeness": 0.8898,
    "percentile": 97.5,
    "against": "master"
   },
@@ -698,37 +523,9 @@
    "against": "master"
   },
   {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "R-30 By-Right Housing",
-   "likeness": 0.8895,
-   "percentile": 97.4,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "R-44 Digital Competition",
-   "likeness": 0.8892,
-   "percentile": 97.4,
-   "against": "master"
-  },
-  {
    "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
    "b": "CL-036 Cross-Border Capital",
    "likeness": 0.8887,
-   "percentile": 97.3,
-   "against": "master"
-  },
-  {
-   "a": "20261109_R-13-Congressional-Capacity-Option-B-Black.svg",
-   "b": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
-   "likeness": 0.8885,
-   "percentile": 97.3,
-   "against": "new"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "CL-043 Digital Government",
-   "likeness": 0.8883,
    "percentile": 97.3,
    "against": "master"
   },
@@ -747,25 +544,11 @@
    "against": "master"
   },
   {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "CL-050 Worker Bargaining",
-   "likeness": 0.8873,
+   "a": "20261109_R-13-Congressional-Capacity-Option-C-Black.svg",
+   "b": "20261109_R-42-Congressional-Tariff-Votes-Option-C-Black.svg",
+   "likeness": 0.8871,
    "percentile": 97.2,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "CL-007 Turnout Equality",
-   "likeness": 0.8869,
-   "percentile": 97.2,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "CL-027 Court Alignment",
-   "likeness": 0.8869,
-   "percentile": 97.2,
-   "against": "master"
+   "against": "new"
   },
   {
    "a": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
@@ -775,6 +558,13 @@
    "against": "master"
   },
   {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "20261109_R-48-Agency-Independence-Option-C-Black.svg",
+   "likeness": 0.8867,
+   "percentile": 97.2,
+   "against": "new"
+  },
+  {
    "a": "20261109_CL-025-Congress-Option-A-Black.svg",
    "b": "R-33 Citizen Assemblies",
    "likeness": 0.8862,
@@ -782,18 +572,11 @@
    "against": "master"
   },
   {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "CL-003 Registration",
-   "likeness": 0.886,
-   "percentile": 97.1,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "R-39 Digital Service Teams",
-   "likeness": 0.886,
-   "percentile": 97.1,
-   "against": "master"
+   "a": "20261109_R-13-Congressional-Capacity-Option-B-Black.svg",
+   "b": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
+   "likeness": 0.8859,
+   "percentile": 97,
+   "against": "new"
   },
   {
    "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
@@ -817,27 +600,6 @@
    "against": "master"
   },
   {
-   "a": "20261109_CL-025-Congress-Option-B-Black.svg",
-   "b": "CL-005 Public Meeting",
-   "likeness": 0.8852,
-   "percentile": 97,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-025-Congress-Option-B-Black.svg",
-   "b": "CL-014 Entrenched Power",
-   "likeness": 0.8852,
-   "percentile": 97,
-   "against": "master"
-  },
-  {
-   "a": "20261109_R-48-Agency-Independence-Option-C-Black.svg",
-   "b": "CL-035 Residential Sorting",
-   "likeness": 0.8851,
-   "percentile": 96.9,
-   "against": "master"
-  },
-  {
    "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
    "b": "CL-032 Local Reporting",
    "likeness": 0.8849,
@@ -845,8 +607,8 @@
    "against": "master"
   },
   {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-15 Watchdog Remedies",
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
+   "b": "R-43 Disaster Mitigation",
    "likeness": 0.8849,
    "percentile": 96.9,
    "against": "master"
@@ -860,7 +622,7 @@
   },
   {
    "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "CL-062 Assets & Debt",
+   "b": "R-34 Participatory Budgeting",
    "likeness": 0.8844,
    "percentile": 96.9,
    "against": "master"
@@ -880,6 +642,13 @@
    "against": "master"
   },
   {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-49 Cross-Party Civic Work",
+   "likeness": 0.8838,
+   "percentile": 96.8,
+   "against": "master"
+  },
+  {
    "a": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
    "b": "CL-046 AI Infrastructure",
    "likeness": 0.8832,
@@ -887,30 +656,23 @@
    "against": "master"
   },
   {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "CL-036 Cross-Border Capital",
-   "likeness": 0.8831,
-   "percentile": 96.8,
-   "against": "master"
-  },
-  {
-   "a": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
-   "b": "R-44 Digital Competition",
-   "likeness": 0.8826,
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
+   "b": "CL-047 Data Rights",
+   "likeness": 0.8821,
    "percentile": 96.7,
    "against": "master"
   },
   {
    "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "CL-050 Worker Bargaining",
-   "likeness": 0.8824,
-   "percentile": 96.7,
+   "b": "R-13 Congressional Capacity",
+   "likeness": 0.8819,
+   "percentile": 96.6,
    "against": "master"
   },
   {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "CL-036 Cross-Border Capital",
-   "likeness": 0.882,
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.8818,
    "percentile": 96.6,
    "against": "master"
   },
@@ -919,6 +681,13 @@
    "b": "R-42 Congressional Tariff Votes",
    "likeness": 0.8818,
    "percentile": 96.6,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-14 Automatic Funding",
+   "likeness": 0.8814,
+   "percentile": 96.5,
    "against": "master"
   },
   {
@@ -943,27 +712,6 @@
    "against": "master"
   },
   {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "R-40 Worker Voice on AI",
-   "likeness": 0.8805,
-   "percentile": 96.5,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "CL-027 Court Alignment",
-   "likeness": 0.8786,
-   "percentile": 96.2,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "CL-011 Electoral Pressure",
-   "likeness": 0.8786,
-   "percentile": 96.2,
-   "against": "master"
-  },
-  {
    "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
    "b": "R-21 Labor-Law Remedies",
    "likeness": 0.8785,
@@ -978,45 +726,17 @@
    "against": "master"
   },
   {
+   "a": "20261109_CL-025-Congress-Option-B-Black.svg",
+   "b": "CL-005 Public Meeting",
+   "likeness": 0.878,
+   "percentile": 96.2,
+   "against": "master"
+  },
+  {
    "a": "20261109_CL-025-Congress-Option-A-Black.svg",
    "b": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
    "likeness": 0.8777,
    "percentile": 96.1,
-   "against": "new"
-  },
-  {
-   "a": "20261109_R-48-Agency-Independence-Option-C-Black.svg",
-   "b": "CL-011 Electoral Pressure",
-   "likeness": 0.8774,
-   "percentile": 96.1,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "R-06 On-Cycle Elections",
-   "likeness": 0.8773,
-   "percentile": 96.1,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "R-05 Automatic Registration",
-   "likeness": 0.8771,
-   "percentile": 96,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "CL-062 Assets & Debt",
-   "likeness": 0.8766,
-   "percentile": 95.9,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
-   "likeness": 0.8764,
-   "percentile": 95.9,
    "against": "new"
   },
   {
@@ -1034,23 +754,16 @@
    "against": "master"
   },
   {
+   "a": "20261109_CL-025-Congress-Option-C-Black.svg",
+   "b": "R-50 Popular-Vote Options",
+   "likeness": 0.8756,
+   "percentile": 95.8,
+   "against": "master"
+  },
+  {
    "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
    "b": "R-36 Public Investment",
    "likeness": 0.8755,
-   "percentile": 95.8,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-06 On-Cycle Elections",
-   "likeness": 0.8752,
-   "percentile": 95.8,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-17 Civil Service",
-   "likeness": 0.8752,
    "percentile": 95.8,
    "against": "master"
   },
@@ -1059,6 +772,27 @@
    "b": "R-25 Child Tax Credit",
    "likeness": 0.8752,
    "percentile": 95.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "R-33 Citizen Assemblies",
+   "likeness": 0.875,
+   "percentile": 95.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
+   "b": "R-44 Digital Competition",
+   "likeness": 0.8749,
+   "percentile": 95.7,
+   "against": "master"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-B-Black.svg",
+   "b": "CL-006 Civic Ties",
+   "likeness": 0.8742,
+   "percentile": 95.7,
    "against": "master"
   },
   {
@@ -1076,24 +810,31 @@
    "against": "master"
   },
   {
-   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
-   "b": "CL-023 Evidence",
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
+   "b": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
+   "likeness": 0.8733,
+   "percentile": 95.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
+   "b": "CL-036 Cross-Border Capital",
    "likeness": 0.8729,
    "percentile": 95.4,
    "against": "master"
   },
   {
-   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
-   "b": "CL-025 Congress",
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-30 By-Right Housing",
    "likeness": 0.8728,
    "percentile": 95.4,
    "against": "master"
   },
   {
-   "a": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
-   "b": "CL-036 Cross-Border Capital",
-   "likeness": 0.8726,
-   "percentile": 95.4,
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "R-22 Wage Boards",
+   "likeness": 0.8725,
+   "percentile": 95.3,
    "against": "master"
   },
   {
@@ -1111,52 +852,10 @@
    "against": "master"
   },
   {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-31 Childcare Supply",
-   "likeness": 0.8723,
-   "percentile": 95.3,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "20261109_CL-025-Congress-Option-A-Black.svg",
-   "likeness": 0.8721,
-   "percentile": 95.3,
-   "against": "new"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "R-34 Participatory Budgeting",
-   "likeness": 0.8717,
-   "percentile": 95.2,
-   "against": "master"
-  },
-  {
-   "a": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
-   "b": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
-   "likeness": 0.8715,
-   "percentile": 95.2,
-   "against": "new"
-  },
-  {
    "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
    "b": "R-49 Cross-Party Civic Work",
    "likeness": 0.8711,
    "percentile": 95.1,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "CL-064 Trade Costs",
-   "likeness": 0.871,
-   "percentile": 95,
-   "against": "master"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "R-16 Court Terms & Ethics",
-   "likeness": 0.871,
-   "percentile": 95,
    "against": "master"
   },
   {
@@ -1187,15 +886,9 @@
    "percentile": 100
   },
   {
-   "a": "20261109_CL-059-Credit-Allocation-Option-C-Black.svg",
-   "b": "CL-059 Credit Allocation",
-   "likeness": 0.9812,
-   "percentile": 100
-  },
-  {
    "a": "20261109_CL-059-Credit-Allocation-Option-B-Black.svg",
    "b": "CL-059 Credit Allocation",
-   "likeness": 0.9748,
+   "likeness": 0.9746,
    "percentile": 100
   },
   {
@@ -1211,16 +904,28 @@
    "percentile": 100
   },
   {
-   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "CL-014 Entrenched Power",
-   "likeness": 0.9066,
-   "percentile": 98.8
+   "a": "20261109_CL-059-Credit-Allocation-Option-C-Black.svg",
+   "b": "CL-059 Credit Allocation",
+   "likeness": 0.9553,
+   "percentile": 99.9
+  },
+  {
+   "a": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
+   "b": "R-48 Agency Independence",
+   "likeness": 0.9496,
+   "percentile": 99.9
   },
   {
    "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
    "b": "CL-014 Entrenched Power",
-   "likeness": 0.8958,
-   "percentile": 98.1
+   "likeness": 0.9415,
+   "percentile": 99.8
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-B-Black.svg",
+   "b": "CL-025 Congress",
+   "likeness": 0.867,
+   "percentile": 94.4
   },
   {
    "a": "20261109_CL-025-Congress-Option-A-Black.svg",
@@ -1229,179 +934,173 @@
    "percentile": 93.9
   },
   {
-   "a": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
-   "b": "R-48 Agency Independence",
-   "likeness": 0.8475,
-   "percentile": 90.1
+   "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "b": "CL-014 Entrenched Power",
+   "likeness": 0.857,
+   "percentile": 92.3
   },
   {
    "a": "20261109_R-48-Agency-Independence-Option-C-Black.svg",
    "b": "R-48 Agency Independence",
-   "likeness": 0.844,
-   "percentile": 89.4
-  },
-  {
-   "a": "20261109_CL-025-Congress-Option-B-Black.svg",
-   "b": "CL-025 Congress",
-   "likeness": 0.7572,
-   "percentile": 62.3
-  },
-  {
-   "a": "20261109_R-13-Congressional-Capacity-Option-C-Black.svg",
-   "b": "R-13 Congressional Capacity",
-   "likeness": 0.6364,
-   "percentile": 25.6
+   "likeness": 0.8322,
+   "percentile": 86.2
   },
   {
    "a": "20261109_R-13-Congressional-Capacity-Option-B-Black.svg",
    "b": "R-13 Congressional Capacity",
-   "likeness": 0.6201,
-   "percentile": 22
+   "likeness": 0.5969,
+   "percentile": 17.4
   },
   {
    "a": "20261109_CL-025-Congress-Option-C-Black.svg",
    "b": "CL-025 Congress",
-   "likeness": 0.5062,
-   "percentile": 6.9
+   "likeness": 0.5795,
+   "percentile": 14.9
   },
   {
-   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-C-Black.svg",
-   "b": "R-42 Congressional Tariff Votes",
-   "likeness": 0.4999,
-   "percentile": 6.5
+   "a": "20261109_R-13-Congressional-Capacity-Option-C-Black.svg",
+   "b": "R-13 Congressional Capacity",
+   "likeness": 0.452,
+   "percentile": 3.7
   },
   {
    "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
    "b": "R-42 Congressional Tariff Votes",
-   "likeness": 0.4881,
-   "percentile": 5.7
+   "likeness": 0.4486,
+   "percentile": 3.6
+  },
+  {
+   "a": "20261109_R-42-Congressional-Tariff-Votes-Option-C-Black.svg",
+   "b": "R-42 Congressional Tariff Votes",
+   "likeness": 0.2285,
+   "percentile": 0
   }
  ],
  "options": [
   {
    "a": "20261109_CL-059-Credit-Allocation-Option-A-Black.svg",
    "b": "20261109_CL-059-Credit-Allocation-Option-B-Black.svg",
-   "likeness": 0.9892,
-   "percentile": 100,
-   "against": "new"
-  },
-  {
-   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "likeness": 0.975,
+   "likeness": 0.989,
    "percentile": 100,
    "against": "new"
   },
   {
    "a": "20261109_CL-059-Credit-Allocation-Option-A-Black.svg",
    "b": "20261109_CL-059-Credit-Allocation-Option-C-Black.svg",
-   "likeness": 0.975,
-   "percentile": 100,
-   "against": "new"
-  },
-  {
-   "a": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
-   "b": "20261109_R-48-Agency-Independence-Option-C-Black.svg",
-   "likeness": 0.9688,
+   "likeness": 0.963,
    "percentile": 100,
    "against": "new"
   },
   {
    "a": "20261109_CL-059-Credit-Allocation-Option-B-Black.svg",
    "b": "20261109_CL-059-Credit-Allocation-Option-C-Black.svg",
-   "likeness": 0.9638,
+   "likeness": 0.9595,
    "percentile": 100,
    "against": "new"
   },
   {
-   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
-   "b": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "likeness": 0.9538,
+   "a": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
+   "b": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
+   "likeness": 0.9498,
    "percentile": 99.9,
    "against": "new"
   },
   {
    "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
    "b": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "likeness": 0.95,
-   "percentile": 99.9,
+   "likeness": 0.9396,
+   "percentile": 99.8,
    "against": "new"
   },
   {
    "a": "20261109_CL-025-Congress-Option-A-Black.svg",
    "b": "20261109_CL-025-Congress-Option-B-Black.svg",
-   "likeness": 0.9279,
-   "percentile": 99.6,
+   "likeness": 0.9146,
+   "percentile": 99.1,
    "against": "new"
   },
   {
-   "a": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
-   "b": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
-   "likeness": 0.8666,
-   "percentile": 94.4,
+   "a": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
+   "b": "20261109_R-48-Agency-Independence-Option-C-Black.svg",
+   "likeness": 0.899,
+   "percentile": 98.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
+   "b": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "likeness": 0.8712,
+   "percentile": 95.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
+   "b": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
+   "likeness": 0.8638,
+   "percentile": 93.8,
    "against": "new"
   },
   {
    "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
    "b": "20261109_R-42-Congressional-Tariff-Votes-Option-C-Black.svg",
-   "likeness": 0.8654,
-   "percentile": 94.1,
-   "against": "new"
-  },
-  {
-   "a": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
-   "b": "20261109_R-48-Agency-Independence-Option-C-Black.svg",
-   "likeness": 0.8557,
-   "percentile": 92.1,
+   "likeness": 0.8589,
+   "percentile": 92.8,
    "against": "new"
   },
   {
    "a": "20261109_R-13-Congressional-Capacity-Option-B-Black.svg",
    "b": "20261109_R-13-Congressional-Capacity-Option-C-Black.svg",
-   "likeness": 0.8461,
-   "percentile": 89.8,
+   "likeness": 0.8532,
+   "percentile": 91.5,
    "against": "new"
   },
   {
-   "a": "20261109_CL-025-Congress-Option-B-Black.svg",
-   "b": "20261109_CL-025-Congress-Option-C-Black.svg",
-   "likeness": 0.5657,
-   "percentile": 12.9,
-   "against": "new"
-  },
-  {
-   "a": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
-   "b": "20261109_R-13-Congressional-Capacity-Option-B-Black.svg",
-   "likeness": 0.5449,
-   "percentile": 10.3,
+   "a": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
+   "b": "20261109_R-48-Agency-Independence-Option-C-Black.svg",
+   "likeness": 0.8423,
+   "percentile": 88.9,
    "against": "new"
   },
   {
    "a": "20261109_CL-025-Congress-Option-A-Black.svg",
    "b": "20261109_CL-025-Congress-Option-C-Black.svg",
-   "likeness": 0.5429,
-   "percentile": 10.1,
+   "likeness": 0.6303,
+   "percentile": 24.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_CL-025-Congress-Option-B-Black.svg",
+   "b": "20261109_CL-025-Congress-Option-C-Black.svg",
+   "likeness": 0.6194,
+   "percentile": 21.8,
    "against": "new"
   },
   {
    "a": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
-   "b": "20261109_R-13-Congressional-Capacity-Option-C-Black.svg",
-   "likeness": 0.5219,
-   "percentile": 8.2,
+   "b": "20261109_R-13-Congressional-Capacity-Option-B-Black.svg",
+   "likeness": 0.5386,
+   "percentile": 9.7,
    "against": "new"
   },
   {
    "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
    "b": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
-   "likeness": 0.4095,
-   "percentile": 1.9,
+   "likeness": 0.3691,
+   "percentile": 1.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
+   "b": "20261109_R-13-Congressional-Capacity-Option-C-Black.svg",
+   "likeness": 0.3273,
+   "percentile": 0.5,
    "against": "new"
   },
   {
    "a": "20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
    "b": "20261109_R-42-Congressional-Tariff-Votes-Option-C-Black.svg",
-   "likeness": 0.3525,
-   "percentile": 0.8,
+   "likeness": 0.0952,
+   "percentile": 0,
    "against": "new"
   }
  ],
@@ -1415,16 +1114,16 @@
   },
   {
    "a": "20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
-   "b": "R-46 Expand the House",
-   "likeness": 0.95,
-   "percentile": 99.9,
+   "b": "R-33 Citizen Assemblies",
+   "likeness": 0.9193,
+   "percentile": 99.3,
    "extent": 0.92
   },
   {
    "a": "20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "b": "R-20 Merger Enforcement",
-   "likeness": 0.9404,
-   "percentile": 99.8,
+   "b": "CL-035 Residential Sorting",
+   "likeness": 0.9259,
+   "percentile": 99.6,
    "extent": 0.92
   },
   {
@@ -1436,17 +1135,17 @@
   },
   {
    "a": "20261109_CL-025-Congress-Option-B-Black.svg",
-   "b": "R-31 Childcare Supply",
-   "likeness": 0.91,
-   "percentile": 98.9,
-   "extent": 0.92
+   "b": "CL-014 Entrenched Power",
+   "likeness": 0.8961,
+   "percentile": 98.1,
+   "extent": 0.83
   },
   {
    "a": "20261109_CL-025-Congress-Option-C-Black.svg",
-   "b": "R-28 Capital-Income Tax",
-   "likeness": 0.7731,
-   "percentile": 67.6,
-   "extent": 0.92
+   "b": "R-50 Popular-Vote Options",
+   "likeness": 0.8756,
+   "percentile": 95.8,
+   "extent": 0.83
   },
   {
    "a": "20261109_CL-059-Credit-Allocation-Option-A-Black.svg",
@@ -1458,15 +1157,15 @@
   {
    "a": "20261109_CL-059-Credit-Allocation-Option-B-Black.svg",
    "b": "CL-022 Act",
-   "likeness": 0.7618,
-   "percentile": 64,
+   "likeness": 0.7591,
+   "percentile": 62.9,
    "extent": 0.83
   },
   {
    "a": "20261109_CL-059-Credit-Allocation-Option-C-Black.svg",
    "b": "CL-040 Platform Power",
-   "likeness": 0.7141,
-   "percentile": 47.7,
+   "likeness": 0.752,
+   "percentile": 60.3,
    "extent": 0.83
   },
   {
@@ -1479,15 +1178,15 @@
   {
    "a": "20261109_R-13-Congressional-Capacity-Option-B-Black.svg",
    "b": "CL-047 Data Rights",
-   "likeness": 0.8584,
-   "percentile": 92.7,
+   "likeness": 0.8507,
+   "percentile": 91,
    "extent": 0.75
   },
   {
    "a": "20261109_R-13-Congressional-Capacity-Option-C-Black.svg",
-   "b": "CL-038 External Shocks",
-   "likeness": 0.7856,
-   "percentile": 71.7,
+   "b": "CL-047 Data Rights",
+   "likeness": 0.8051,
+   "percentile": 77.7,
    "extent": 0.75
   },
   {
@@ -1499,17 +1198,17 @@
   },
   {
    "a": "20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
-   "b": "CL-047 Data Rights",
-   "likeness": 0.9082,
-   "percentile": 98.8,
+   "b": "R-43 Disaster Mitigation",
+   "likeness": 0.8849,
+   "percentile": 96.9,
    "extent": 0.75
   },
   {
    "a": "20261109_R-42-Congressional-Tariff-Votes-Option-C-Black.svg",
    "b": "CL-012 Election Rules",
-   "likeness": 0.8102,
-   "percentile": 79.4,
-   "extent": 0.71
+   "likeness": 0.8505,
+   "percentile": 90.9,
+   "extent": 0.75
   },
   {
    "a": "20261109_R-48-Agency-Independence-Option-A-Black.svg",
@@ -1520,16 +1219,16 @@
   },
   {
    "a": "20261109_R-48-Agency-Independence-Option-B-Black.svg",
-   "b": "CL-035 Residential Sorting",
-   "likeness": 0.9177,
-   "percentile": 99.2,
+   "b": "R-44 Digital Competition",
+   "likeness": 0.8749,
+   "percentile": 95.7,
    "extent": 0.92
   },
   {
    "a": "20261109_R-48-Agency-Independence-Option-C-Black.svg",
    "b": "CL-035 Residential Sorting",
-   "likeness": 0.8851,
-   "percentile": 96.9,
+   "likeness": 0.8528,
+   "percentile": 91.5,
    "extent": 0.92
   }
  ]

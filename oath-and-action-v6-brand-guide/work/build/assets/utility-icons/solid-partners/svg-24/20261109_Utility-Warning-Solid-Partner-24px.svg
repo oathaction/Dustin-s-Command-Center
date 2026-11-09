@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-warning" data-icon-family="utility" data-option="Solid-Partner" data-size="24">
+  <!-- Oath & Action utility icon: Warning, option Solid-Partner, 24 px master. An exclamation mark cut out of a solid triangle. 24-unit grid, 2 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
+  <defs><mask id="U-warning-solid-24-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect width="24" height="24" fill="#fff" stroke="none"/><g fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9.5V13.5"/><path d="M12 17h0"/></g></mask></defs>
+  <path d="M13.306 3.816 L21.738 18.763 A1.5 1.5 0 0 1 20.432 21 L3.568 21 A1.5 1.5 0 0 1 2.262 18.763 L10.694 3.816 A1.5 1.5 0 0 1 13.306 3.816 Z" fill="currentColor" stroke="none" mask="url(#U-warning-solid-24-cut)"/>
+</svg>

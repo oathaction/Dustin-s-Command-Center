@@ -168,16 +168,20 @@ TRACK_16 = """
 .r...r..........
 ..r.r...........
 ...r............
-.....###........
-........#..###..
-........#.#...#.
-..######..#...#.
+.....##.........
+.......#...###..
+.......#..#...#.
+..#####...#...#.
 .#........#...#.
 .#.........###..
-..#######.....r.
+..########....r.
 ...............r
 ................
 """
+# Fix round (the review's S5): the route's upper run ends one pixel shorter
+# and its turn moves one pixel left, leaving two clear pixels before the lens,
+# and the lower run reaches on toward the lens as the master's long lower run
+# does, so the route and lens stop reading as the characters 2Q.
 
 
 def track(size, w):
@@ -198,10 +202,10 @@ def track(size, w):
               [(3, y) for y in (3, 4, 5)] + [(7, y) for y in (3, 4, 5)] + [(8, y) for y in (3, 4, 5)] + \
               [(x, 6) for x in range(3, 8)] + [(4, 7), (5, 7), (6, 7), (5, 8)]
         put(g, pin, "r")
-        route = [(x, 10) for x in range(8, 12)] + [(x, 11) for x in range(8, 14)] + \
-                [(x, y) for x in (12, 13) for y in (12, 13, 14)] + [(x, 15) for x in range(3, 14)] + \
-                [(x, 16) for x in range(2, 13)] + [(x, y) for x in (1, 2) for y in (17, 18, 19)] + \
-                [(x, 20) for x in range(2, 13)] + [(x, 21) for x in range(3, 13)]
+        route = [(x, 10) for x in range(8, 11)] + [(x, 11) for x in range(8, 13)] + \
+                [(x, y) for x in (11, 12) for y in (12, 13, 14)] + [(x, 15) for x in range(3, 13)] + \
+                [(x, 16) for x in range(2, 12)] + [(x, y) for x in (1, 2) for y in (17, 18, 19)] + \
+                [(x, 20) for x in range(2, 15)] + [(x, 21) for x in range(3, 15)]
         put(g, route, "#")
         put(g, ring(19.0, 15.0, 3.5, 2.0), "#")
         put(g, [(21, 19), (22, 19), (22, 20), (23, 20), (22, 21), (23, 21)], "r")

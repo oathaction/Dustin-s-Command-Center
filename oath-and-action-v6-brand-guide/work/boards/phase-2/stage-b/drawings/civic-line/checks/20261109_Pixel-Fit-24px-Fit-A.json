@@ -1,6 +1,6 @@
 {
  "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
- "run": "2026-11-09T21:16:27.122Z",
+ "run": "2026-11-09T22:05:35.740Z",
  "rules": {
   "minStroke": 1,
   "minThinArea": 0.25,
@@ -148,10 +148,10 @@
      },
      "gap": {
       "parts": 3,
-      "smallest_px": 1,
+      "smallest_px": 1.43,
       "near_px": [
-       15,
-       12
+       16,
+       19
       ]
      },
      "counters": {
@@ -187,10 +187,10 @@
      },
      "gap": {
       "parts": 3,
-      "smallest_px": 2,
+      "smallest_px": 2.86,
       "near_px": [
-       30,
-       24
+       32,
+       37.9
       ]
      },
      "counters": {
@@ -518,10 +518,10 @@
      },
      "gap": {
       "parts": 3,
-      "smallest_px": 1,
+      "smallest_px": 1.43,
       "near_px": [
-       15,
-       12
+       16,
+       19
       ]
      },
      "counters": {
@@ -557,10 +557,10 @@
      },
      "gap": {
       "parts": 3,
-      "smallest_px": 2,
+      "smallest_px": 2.86,
       "near_px": [
-       30,
-       24
+       32,
+       37.9
       ]
      },
      "counters": {

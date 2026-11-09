@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-arrow" data-icon-family="utility" data-option="B" data-size="24">
-  <!-- Oath & Action utility icon: Arrow, option B, 24 px master. The arrow in a circle. 24-unit grid, 2 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
-  <circle cx="12" cy="12" r="9"/>
-  <path d="M8 12 L16 12 M12 8 L16 12 L12 16"/>
+  <!-- Oath & Action utility icon: Arrow, option B, 24 px master. An arrow with a shaft and a closed triangle head. 24-unit grid, 2 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
+  <path d="M4 12 L14 12"/>
+  <path d="M15.64 8.367 L19.078 11.232 A1 1 0 0 1 19.078 12.768 L15.64 15.633 A1 1 0 0 1 14 14.865 L14 9.135 A1 1 0 0 1 15.64 8.367 Z"/>
 </svg>

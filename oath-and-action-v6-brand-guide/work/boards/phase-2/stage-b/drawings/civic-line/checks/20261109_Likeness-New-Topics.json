@@ -1,10 +1,10 @@
 {
  "tool": "work/build/scripts/phase-2/icon_likeness_check.js",
- "run": "2026-11-09T21:18:48.375Z",
+ "run": "2026-11-09T22:05:28.675Z",
  "method": "Ink maps at 24 px from coverage in Charcoal over Newsprint, Gaussian blur sigma 1.2 px, Pearson correlation best over shifts up to 1 px, percentile among the 7381 pairs of the 122 Civic Line masters (Board 6).",
  "renderer": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
- "files": 12,
- "compared": 6,
+ "files": 10,
+ "compared": 5,
  "editions_skipped": [
   {
    "name": "20261109_Contact-An-Official-Option-A-Red-Black.svg",
@@ -21,10 +21,6 @@
   {
    "name": "20261109_Testify-Option-A-Red-Black.svg",
    "as": "20261109_Testify-Option-A-Black.svg"
-  },
-  {
-   "name": "20261109_Testify-Option-B-Red-Black.svg",
-   "as": "20261109_Testify-Option-B-Black.svg"
   },
   {
    "name": "20261109_Testify-Option-C-Red-Black.svg",
@@ -103,6 +99,20 @@
  "flagged": [],
  "watch": [
   {
+   "a": "20261109_Contact-An-Official-Option-B-Black.svg",
+   "b": "R-06 On-Cycle Elections",
+   "likeness": 0.9084,
+   "percentile": 98.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-B-Black.svg",
+   "b": "R-44 Digital Competition",
+   "likeness": 0.8973,
+   "percentile": 98.2,
+   "against": "master"
+  },
+  {
    "a": "20261109_Contact-An-Official-Option-A-Black.svg",
    "b": "R-36 Public Investment",
    "likeness": 0.8962,
@@ -110,10 +120,45 @@
    "against": "master"
   },
   {
+   "a": "20261109_Contact-An-Official-Option-B-Black.svg",
+   "b": "R-48 Agency Independence",
+   "likeness": 0.8918,
+   "percentile": 97.7,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-B-Black.svg",
+   "b": "R-36 Public Investment",
+   "likeness": 0.8852,
+   "percentile": 97,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-B-Black.svg",
+   "b": "R-49 Cross-Party Civic Work",
+   "likeness": 0.8848,
+   "percentile": 96.9,
+   "against": "master"
+  },
+  {
    "a": "20261109_Contact-An-Official-Option-A-Black.svg",
    "b": "R-49 Cross-Party Civic Work",
    "likeness": 0.8843,
    "percentile": 96.9,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-B-Black.svg",
+   "b": "R-42 Congressional Tariff Votes",
+   "likeness": 0.8809,
+   "percentile": 96.5,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Contact-An-Official-Option-B-Black.svg",
+   "b": "CL-035 Residential Sorting",
+   "likeness": 0.8776,
+   "percentile": 96.1,
    "against": "master"
   },
   {
@@ -129,36 +174,29 @@
    "likeness": 0.8722,
    "percentile": 95.3,
    "against": "master"
-  },
-  {
-   "a": "20261109_Contact-An-Official-Option-B-Black.svg",
-   "b": "R-06 On-Cycle Elections",
-   "likeness": 0.8719,
-   "percentile": 95.2,
-   "against": "master"
   }
  ],
  "own": [],
  "options": [
   {
-   "a": "20261109_Testify-Option-A-Black.svg",
-   "b": "20261109_Testify-Option-C-Black.svg",
-   "likeness": 0.9064,
-   "percentile": 98.8,
+   "a": "20261109_Contact-An-Official-Option-A-Black.svg",
+   "b": "20261109_Contact-An-Official-Option-B-Black.svg",
+   "likeness": 0.9102,
+   "percentile": 98.9,
    "against": "new"
   },
   {
-   "a": "20261109_Contact-An-Official-Option-A-Black.svg",
-   "b": "20261109_Contact-An-Official-Option-B-Black.svg",
-   "likeness": 0.8897,
-   "percentile": 97.5,
+   "a": "20261109_Testify-Option-A-Black.svg",
+   "b": "20261109_Testify-Option-C-Black.svg",
+   "likeness": 0.8399,
+   "percentile": 88.2,
    "against": "new"
   },
   {
    "a": "20261109_Contact-An-Official-Option-B-Black.svg",
    "b": "20261109_Contact-An-Official-Option-C-Black.svg",
-   "likeness": 0.7274,
-   "percentile": 52.2,
+   "likeness": 0.7176,
+   "percentile": 48.7,
    "against": "new"
   },
   {
@@ -166,20 +204,6 @@
    "b": "20261109_Contact-An-Official-Option-C-Black.svg",
    "likeness": 0.6981,
    "percentile": 42.3,
-   "against": "new"
-  },
-  {
-   "a": "20261109_Testify-Option-B-Black.svg",
-   "b": "20261109_Testify-Option-C-Black.svg",
-   "likeness": 0.2564,
-   "percentile": 0.1,
-   "against": "new"
-  },
-  {
-   "a": "20261109_Testify-Option-A-Black.svg",
-   "b": "20261109_Testify-Option-B-Black.svg",
-   "likeness": 0.2145,
-   "percentile": 0,
    "against": "new"
   }
  ],
@@ -194,8 +218,8 @@
   {
    "a": "20261109_Contact-An-Official-Option-B-Black.svg",
    "b": "R-06 On-Cycle Elections",
-   "likeness": 0.8719,
-   "percentile": 95.2,
+   "likeness": 0.9084,
+   "percentile": 98.8,
    "extent": 0.92
   },
   {
@@ -208,15 +232,8 @@
   {
    "a": "20261109_Testify-Option-A-Black.svg",
    "b": "CL-042 AI Concentration",
-   "likeness": 0.6121,
-   "percentile": 20.3,
-   "extent": 0.79
-  },
-  {
-   "a": "20261109_Testify-Option-B-Black.svg",
-   "b": "CL-062 Assets & Debt",
-   "likeness": 0.7002,
-   "percentile": 42.9,
+   "likeness": 0.4487,
+   "percentile": 3.6,
    "extent": 0.92
   },
   {

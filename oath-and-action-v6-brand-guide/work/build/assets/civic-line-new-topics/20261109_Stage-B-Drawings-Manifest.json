@@ -7,38 +7,19 @@
    "name": "Testify",
    "option": "A",
    "within_dr135": null,
-   "change": "A raised, curved dais with three officials above the witness, who sits at a table with a red microphone.",
+   "change": "A raised, curved dais with three officials above the witness, who sits at a table with a front panel and a red microphone.",
    "stem": "20261109_Testify-Option-A",
    "folder": "work/build/assets/civic-line-new-topics",
    "svg_red_black": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-A-Red-Black.svg",
    "svg_black": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-A-Black.svg",
    "scale": 0.609244,
    "stroke_units": 3.3508,
-   "extent_units": 101.51,
+   "extent_units": 113.7,
    "ink_px": [
     153.5,
-    166.6
+    186.6
    ],
    "at_cap": true
-  },
-  {
-   "id": "Testify",
-   "name": "Testify",
-   "option": "B",
-   "within_dr135": null,
-   "change": "On a diagonal: the witness at a table with a red microphone at lower left, facing the raised, curved dais at upper right.",
-   "stem": "20261109_Testify-Option-B",
-   "folder": "work/build/assets/civic-line-new-topics",
-   "svg_red_black": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-B-Red-Black.svg",
-   "svg_black": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-B-Black.svg",
-   "scale": 0.546912,
-   "stroke_units": 3.008,
-   "extent_units": 116.0,
-   "ink_px": [
-    212.1,
-    129.3
-   ],
-   "at_cap": false
   },
   {
    "id": "Testify",
@@ -83,16 +64,16 @@
    "name": "Contact An Official",
    "option": "B",
    "within_dr135": null,
-   "change": "A very simple phone whose red cord runs to an official at a desk.",
+   "change": "A very simple phone, a step larger, whose red cord runs to an official at a desk.",
    "stem": "20261109_Contact-An-Official-Option-B",
    "folder": "work/build/assets/civic-line-new-topics",
    "svg_red_black": "work/build/assets/civic-line-new-topics/svg/20261109_Contact-An-Official-Option-B-Red-Black.svg",
    "svg_black": "work/build/assets/civic-line-new-topics/svg/20261109_Contact-An-Official-Option-B-Black.svg",
-   "scale": 0.505447,
-   "stroke_units": 2.78,
+   "scale": 0.50933,
+   "stroke_units": 2.8013,
    "extent_units": 116.0,
    "ink_px": [
-    229.5,
+    227.8,
     80.3
    ],
    "at_cap": false

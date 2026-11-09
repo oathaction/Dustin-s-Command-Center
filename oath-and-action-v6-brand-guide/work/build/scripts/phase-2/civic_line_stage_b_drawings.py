@@ -40,46 +40,53 @@ def seat_rows(pen, cy, rxs, rys, nseg, gap=9.0):
     return els
 
 
-def rostrum(pen, tiers=((34, 14), (22, 14))):
-    """The rostrum from the gallery: desk fronts stacked in tiers, each open
-    at its foot. Returns (elements, top y)."""
+# ------------------------------------------------------------------ fix round signs (D2-620)
+
+def rostrum_tiers(pen, halves=(32, 22, 12), th=12):
+    """The House rostrum from the gallery: desk fronts stacked in tiers, each
+    open at its foot. Returns (black lower tiers, red top tier)."""
     els, y = [], 0.0
-    for half, h in tiers:
-        els.append(pen.poly([(-half, y), (-half, y - h), (half, y - h), (half, y)]))
-        y -= h
-    return els, y
+    for h in halves:
+        els.append(pen.poly([(-h, y), (-h, y - th), (h, y - th), (h, y)]))
+        y -= th
+    return els[:-1], els[-1:]
 
 
-HOUSE_ROWS = dict(cy=-2, rxs=[46, 68, 90], rys=[30, 46, 62], nseg=[5, 5, 5], gap=9)
+def chamber_in_session(pen, tiers=3, far=True, member_k=0.44, angles=(46, 68, 90, 112, 134), red_top=True):
+    """Set B, reworked (D2-620): the chamber in session from the gallery.
+    Five members sit on the near bench, seen from behind as Civic Line heads
+    and shoulders; a far bench in five sections curves round the rostrum
+    with no center aisle; the rostrum is about a third of the drawing's width,
+    stepped in three tiers, the top tier red. tiers=2 leaves out the
+    Speaker's tier, the Congress-only feature, for CL-014. Origin at the
+    rostrum's foot. Returns (black, red)."""
+    halves = (32, 22, 12)[:tiers]
+    low, top = rostrum_tiers(pen, halves)
+    far_bench = seat_rows(pen, 4, [50], [20], [5], gap=8) if far else []
+    near = [ellarc(pen, 0, 4, 86, 62, 0, 180)]
+    members = []
+    for t in angles:
+        a = math.radians(t)
+        members += C.person(pen, 86 * math.cos(a), 4 + 62 * math.sin(a), k=member_k, h=24)
+    if not red_top:
+        return far_bench + near + members + low + top, []
+    return far_bench + near + members + low, top
 
 
-def chamber_b(pen, tiers=((34, 14), (22, 14))):
-    """Set B's Congress sign: the House chamber from the gallery, seats in
-    three rows of five sections curving around the rostrum. Origin at the
-    rostrum's foot. Returns (rows, rostrum)."""
-    rows = seat_rows(pen, **HOUSE_ROWS)
-    ros, _ = rostrum(pen, tiers)
-    return rows, ros
-
-
-def chamber_unit(pen, senate=False):
-    """One chamber of set C: two rows and a one-tier rostrum. The House has
-    three and five sections, the Senate three and three. Origin at the
-    rostrum's foot."""
-    rows = seat_rows(pen, -2, [44, 66], [38, 58], [3, 3] if senate else [3, 5], gap=10)
-    ros, _ = rostrum(pen, ((30, 16),))
-    return rows, ros
-
-
-def chambers_c(pen, k=1.0):
-    """Set C's Congress sign: the House in front and the smaller Senate set
-    behind it to the right, both seen from the gallery. Staggered, the pair
-    is about as tall as it is wide, so the capped fit draws it large; side by
-    side it ran four times wider than tall and shrank past naming at 48 px.
-    Origin near the pair's center. Returns (rows, rostrums)."""
-    h_rows, h_ros = chamber_unit(pen.sub(-30 * k, 10 * k, 0.9 * k))
-    s_rows, s_ros = chamber_unit(pen.sub(48 * k, -46 * k, 0.66 * k), senate=True)
-    return h_rows + s_rows, h_ros + s_ros
+def members_facing(pen):
+    """Set C, redrawn (D2-620): the chamber seen from the rostrum. Members
+    face the reader from two curved benches, three on the near bench and five
+    on the far one, and the presiding desk stands red in the foreground.
+    Origin at the benches' center. Returns (black, red)."""
+    def row(rx, ry, t0, t1, angles):
+        els = [ellarc(pen, 0, 10, rx, ry, t0, t1)]
+        for t in angles:
+            a = math.radians(t)
+            els += C.person(pen, rx * math.cos(a), 10 + ry * math.sin(a), k=0.46, h=24)
+        return els
+    black = row(46, 16, 200, 340, (238, 270, 302)) + row(88, 56, 195, 345, (215, 242, 270, 298, 325))
+    red = [pen.line(-44, 36, 44, 36), pen.poly([(-38, 50), (-38, 36), (38, 36), (38, 50)])]
+    return black, red
 
 
 def a_block(pen, door=True, windows=True, attic_h=14.7):
@@ -138,27 +145,30 @@ def cl025_a():
 
 
 def cl025_b():
-    """Outside DR-135. The House chamber from the gallery: three rows of
-    seats in five sections curving around the rostrum, red on the rostrum."""
-    rows, ros = chamber_b(P(100, 60))
-    return [("base", rows), ("accent", ros)]
+    """Outside DR-135. The chamber in session from the gallery (D2-620):
+    members on the near bench seen from behind, a far bench in five
+    sections, and the three-tier rostrum with its top tier red."""
+    blk, red = chamber_in_session(P(100, 60))
+    return [("base", blk), ("accent", red)]
 
 
 def cl025_c():
-    """Outside DR-135. The two chambers, the House larger and the Senate
-    smaller, each seen from the gallery, red on both rostrums: one job, the
-    place each chamber is led from."""
-    rows, ros = chambers_c(P(130, 80))
-    return [("base", rows), ("accent", ros)]
+    """Outside DR-135. The chamber from the rostrum (D2-620): members face
+    the reader from two curved benches, and the presiding desk stands red in
+    the foreground. It replaces the two staggered chambers, which read as two
+    signals at 48 px."""
+    blk, red = members_facing(P(110, 80))
+    return [("base", blk), ("accent", red)]
 
 
 # ------------------------------------------------------------------ CL-014 Entrenched Power
 
-def cl014_fence(lower_break=True, front=True):
-    """CL-014's fence at its source coordinates (axis x 100.85). front=False
-    leaves out the inner two pairs of front pickets, which would cross a low
-    chamber's rows."""
-    p = P()
+def cl014_fence(lower_break=True, front=True, pen=None, open_=False):
+    """CL-014's fence at its source coordinates (axis x 100.85), through pen
+    when given. front=False leaves out the inner two pairs of front pickets;
+    open_=True keeps only three pickets a side in front and none behind, so a
+    chamber inside reads apart from the fence at 48 px (the review's M4)."""
+    p = pen or P()
     els = [
         p.poly([(10.75, 124.93), (10.75, 85.5), (12.06, 81.66)]),
         p.poly([(190.95, 124.93), (190.95, 85.5), (189.64, 81.66)]),
@@ -170,9 +180,12 @@ def cl014_fence(lower_break=True, front=True):
                 p.path([("M", 123.71, 114.58), ("E", 85.9, 23.66, 0, 0, 0, 186.52, 93.5)])]
     else:
         els += [p.path([("M", 15.18, 93.5), ("E", 85.9, 23.66, 0, 0, 0, 186.52, 93.5)])]
-    pickets = [(27.85, 71.8, 87.56), (45.36, 65.9, 93.06), (26.17, 97.0, 134.07), (43.69, 101.94, 139.81)]
-    if front:
-        pickets += [(62.04, 106.0, 143.2), (77.99, 100.5, 143.37)]
+    if open_:
+        pickets = [(31.0, 98.6, 135.0), (51.0, 104.0, 141.0), (72.0, 107.6, 143.4)]
+    else:
+        pickets = [(27.85, 71.8, 87.56), (45.36, 65.9, 93.06), (26.17, 97.0, 134.07), (43.69, 101.94, 139.81)]
+        if front:
+            pickets += [(62.04, 106.0, 143.2), (77.99, 100.5, 143.37)]
     for x1, y1, y2 in pickets:
         x2 = 201.7 - x1
         els += [p.line(x1, y1, x1, y2), p.line(x2, y1, x2, y2)]
@@ -198,28 +211,39 @@ def cl014_a():
     return [("base", building + cl014_fence()), ("accent", door)]
 
 
-def cl014_chamber(kind):
-    """Outside DR-135. The chamber of the set, without its Congress-only
-    feature, standing inside CL-014's whole fence where the building stood;
-    red on the rostrum. The chamber sits high enough that the front pickets
-    start below its last row, and the front rail runs whole now that the
-    door is gone."""
-    if kind == "b":
-        p = P(100.85, 55, 0.62)
-        rows = seat_rows(p, **HOUSE_ROWS)
-        ros, _ = rostrum(p, ((34, 14),))
-    else:
-        p = P(100.85, 52, 0.74)
-        rows, ros = chamber_unit(p)
-    return [("base", rows + cl014_fence(lower_break=False, front=True)), ("accent", ros)]
-
-
 def cl014_b():
-    return cl014_chamber("b")
+    """Outside DR-135. Set B's chamber in session, without the Speaker's
+    tier, inside the fence; the red moves from the door to the rostrum's top
+    tier. Opened for 48 px (the review's M4): three front pickets a side and
+    none behind, and the far bench left out, so the fence and the chamber
+    read as two things."""
+    blk, red = chamber_in_session(P(100.85, 50, 0.62), tiers=2, far=False, member_k=0.66, angles=(62, 90, 118))
+    return [("base", blk + cl014_fence(lower_break=False, open_=True)), ("accent", red)]
+
+
+def ballot(pen, x, y):
+    """A ballot paper with its vote marked: a sheet and a check. (x, y) is
+    the sheet's bottom-left corner."""
+    return [pen.rect(x, y - 32, 26, 32, rx=2), pen.poly([(x + 6, y - 16), (x + 11, y - 10), (x + 20, y - 22)])]
 
 
 def cl014_c():
-    return cl014_chamber("c")
+    """Outside DR-135, replacing the near-duplicate of B (the review's M3):
+    the second idea, that an election cannot move the body. A ballot's arrow
+    runs at the fenced chamber and stops at the fence on a red bar, as R-48 C
+    stops its arrow at the brace. The rostrum stays black."""
+    k = 0.8
+    fp = P(52.0, 26.0, k)
+    blk, _ = chamber_in_session(P(52.0 + k * 100.85, 26.0 + k * 50, k * 0.62), tiers=2, far=False,
+                                member_k=0.66, angles=(62, 90, 118), red_top=False)
+    fence = cl014_fence(lower_break=False, open_=True, pen=fp)
+    p = P()
+    post_x = 52.0 + k * 10.75
+    ymid = 26.0 + k * 106
+    arrow = ballot(p, 4, ymid + 16) + [p.line(36, ymid, post_x - 12, ymid),
+                                         p.poly([(post_x - 19, ymid - 7), (post_x - 12, ymid), (post_x - 19, ymid + 7)])]
+    stop = [p.line(post_x - 6, ymid - 10, post_x - 6, ymid + 10)]
+    return [("base", blk + fence + arrow), ("accent", stop)]
 
 
 # ------------------------------------------------------------------ R-13 Congressional Capacity
@@ -282,9 +306,9 @@ def r13_new(sign):
     its chart line; the open book was CL-019 Explain's sign."""
     p = P()
     if sign == "b":
-        rows, ros = chamber_b(p.sub(100, 46, 0.74))
+        rows, ros = chamber_in_session(p.sub(100, 40, 0.74))
     else:
-        rows, ros = chambers_c(p.sub(100, 56, 0.66))
+        rows, ros = members_facing(p.sub(100, 58, 0.74))
     staff = C.person(p, 38, 150, k=0.7) + C.person(p, 76, 150, k=0.7)
     page, chart = report(p.sub(130, 150, 1.05))
     return [("base", rows + ros + staff + page), ("accent", chart)]
@@ -359,9 +383,9 @@ def r42_new(sign):
     moves from the ballot to the vote card."""
     p = P()
     if sign == "b":
-        rows, ros = chamber_b(p.sub(100, 46, 0.74))
+        rows, ros = chamber_in_session(p.sub(100, 40, 0.74))
     else:
-        rows, ros = chambers_c(p.sub(100, 54, 0.66))
+        rows, ros = members_facing(p.sub(100, 58, 0.74))
     card, marks = vote_card(p.sub(42, 154))
     q = p.sub(98, 154, 0.66)
     goods = parcel(q)
@@ -397,18 +421,19 @@ def cl059_kept():
     return base, red
 
 
-def vault_door(pen, cx, cy, r=11.5, hub=0.0, spokes=()):
-    """A bank vault's round door. With a hub, short spokes join a hub ring to
-    the rim at the given angles. Spokes in a plus read as a first-aid cross
-    and three read as a fan blade; four diagonals broken by a hub ring read as
-    the vault's wheel."""
+def vault_door(pen, cx, cy, r=11.5, hub=0.0, spokes=(), past=0.0):
+    """A bank vault's round door. With a hub, spokes join a hub ring to the
+    rim at the given angles; past > 0 runs each spoke that far beyond the rim
+    as a handle end, so the wheel reads as a vault's wheel at 48 px and not
+    as an X in a circle (the review's S2). Spokes in a plus read as a
+    first-aid cross and three read as a fan blade."""
     els = [pen.circle(cx, cy, r)]
     if hub:
         els.append(pen.circle(cx, cy, hub))
         for a in spokes:
             t = math.radians(a)
             els.append(pen.line(cx + hub * math.cos(t), cy - hub * math.sin(t),
-                                cx + r * math.cos(t), cy - r * math.sin(t)))
+                                cx + (r + past) * math.cos(t), cy - (r + past) * math.sin(t)))
     return els
 
 
@@ -433,23 +458,27 @@ def cl059_b():
     kept, red = cl059_kept()
     bank = [p.line(55.15, 22.5, 131.85, 22.5),
             p.poly([(62.2, 71.86), (62.2, 22.5), (124.8, 22.5), (124.8, 71.86)]),
-            p.line(55.15, 71.86, 131.85, 71.86)] + vault_door(p, 93.5, 47.2, r=17.0, hub=6.0, spokes=(45, 135, 225, 315))
+            p.line(55.15, 71.86, 131.85, 71.86)] + vault_door(p, 93.5, 47.2, r=15.0, hub=5.5, spokes=(45, 135, 225, 315), past=6.0)
     return [("base", bank + kept), ("accent", red)]
 
 
 def cl059_c():
-    """Outside DR-135. The bank becomes its safe: a strongbox on two feet
-    with a round dial and a handle, the common sign for a safe. Alone it
-    would say "stored money", so the two red branches below carry the new
-    money out to the home and the factory. Home, factory and branches kept."""
+    """Outside DR-135, replacing the safe, a near-duplicate of B (the
+    review's M7): the lender and the loan. A small flat-roofed building with a
+    door stands beside a loan paper marked with a percent sign for its
+    interest, and the two red branches carry the new money out to the home
+    and the factory. No columns or pediment (D2-623). Home, factory and
+    branches kept."""
     p = P()
     kept, red = cl059_kept()
-    safe = [p.rect(60.5, 14.0, 66.0, 54.0, rx=5),
-            p.circle(85.0, 41.0, 11.5),
-            p.line(85.0, 29.5, 85.0, 35.5),
-            p.line(110.0, 31.0, 110.0, 51.0),
-            p.line(70.5, 68.0, 70.5, 75.5), p.line(116.5, 68.0, 116.5, 75.5)]
-    return [("base", safe + kept), ("accent", red)]
+    lender = [p.line(56.0, 30.0, 96.0, 30.0),
+              p.poly([(60.0, 71.86), (60.0, 30.0)]), p.poly([(92.0, 30.0), (92.0, 71.86)]),
+              p.poly([(70.0, 71.86), (70.0, 52.0), (82.0, 52.0), (82.0, 71.86)])]
+    loan = [p.rect(103.0, 16.0, 28.0, 46.0, rx=2),
+            p.circle(110.5, 26.5, 3.4), p.circle(123.5, 41.5, 3.4), p.line(125.0, 24.0, 109.0, 44.0),
+            p.line(108.0, 53.5, 126.0, 53.5)]
+    base = [p.line(52.0, 71.86, 135.0, 71.86)]
+    return [("base", lender + loan + base + kept), ("accent", red)]
 
 
 # ------------------------------------------------------------------ R-48 Agency Independence
@@ -495,12 +524,31 @@ def commission(pen):
     return els
 
 
-def r48_b():
-    """Outside DR-135. The agency is a commission of three officials at one
-    table in place of the building. The red brace and the official at the
-    lectern are kept."""
+def r48_desk_official(dx=0.0):
+    """The official who could remove the agency's members, at a desk with no
+    tie, and an arrow from the desk that stops short of the brace's nub. The
+    arrow runs about 1.9 times its first length, so it reads at 48 px (the
+    review's M9), and DR-08's line floor holds."""
     p = P()
-    return [("base", commission(p.sub(58, 70)) + r48_official_lectern()), ("accent", r48_brace())]
+    off = C.person(p, 213 + dx, 64, k=0.86, h=24) + [p.line(186 + dx, 64, 237 + dx, 64), p.line(229 + dx, 64, 229 + dx, 104)]
+    arrow = [p.line(185 + dx, 40, 142, 40), p.poly([(150, 32), (142, 40), (150, 48)])]
+    return off + arrow
+
+
+def r48_b():
+    """Outside DR-135, replacing the commission at a lectern, a near-duplicate
+    of C (the review's M8): the agency as a flat-roofed office building with
+    no columns or pediment (D2-623), beside the red brace and the official at
+    a desk whose arrow stops at it."""
+    p = P()
+    bldg = [p.line(8.0, 22.0, 104.0, 22.0),
+            p.poly([(14.0, 96.0), (14.0, 22.0)]), p.poly([(98.0, 22.0), (98.0, 96.0)]),
+            p.line(8.0, 96.0, 104.0, 96.0)]
+    for y in (34.0, 56.0):
+        for x in (26.0, 50.0, 74.0):
+            bldg.append(p.rect(x, y, 12.0, 12.0))
+    bldg.append(p.poly([(49.0, 96.0), (49.0, 78.0), (63.0, 78.0), (63.0, 96.0)]))
+    return [("base", bldg + r48_desk_official()), ("accent", r48_brace()[:2])]
 
 
 def r48_c():
@@ -509,6 +557,4 @@ def r48_c():
     stops at the red brace, so the protection reads as a power that stops
     short."""
     p = P()
-    off = C.person(p, 196, 64, k=0.86, h=24) + [p.line(166, 64, 222, 64), p.line(214, 64, 214, 104)]
-    arrow = [p.line(170, 40, 147, 40), p.poly([(155, 32), (147, 40), (155, 48)])]
-    return [("base", commission(p.sub(58, 70)) + off + arrow), ("accent", r48_brace()[:2])]
+    return [("base", commission(p.sub(58, 70)) + r48_desk_official()), ("accent", r48_brace()[:2])]

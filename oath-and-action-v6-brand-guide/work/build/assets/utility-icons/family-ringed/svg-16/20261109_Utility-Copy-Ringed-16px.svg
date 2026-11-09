@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-copy" data-icon-family="utility" data-option="Ringed" data-size="16">
+  <!-- Oath & Action utility icon: Copy, option Ringed, 16 px master. The recommended picture set in a ring, for the family card. 16-unit grid, 1.5 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
+  <circle cx="8" cy="8" r="6.25"/>
+  <path d="M8 7.25 L10 7.25 A0.75 0.75 0 0 1 10.75 8 L10.75 10 A0.75 0.75 0 0 1 10 10.75 L8 10.75 A0.75 0.75 0 0 1 7.25 10 L7.25 8 A0.75 0.75 0 0 1 8 7.25 Z"/>
+  <path d="M5.75 8.75 L5.5 8.75 A0.25 0.25 0 0 1 5.25 8.5 L5.25 6 A0.75 0.75 0 0 1 6 5.25 L8.5 5.25 A0.25 0.25 0 0 1 8.75 5.5 L8.75 5.75"/>
+</svg>

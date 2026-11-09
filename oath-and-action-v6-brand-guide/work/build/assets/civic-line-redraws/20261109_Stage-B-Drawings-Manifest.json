@@ -26,17 +26,17 @@
    "name": "Congress",
    "option": "B",
    "within_dr135": false,
-   "change": "The House chamber seen from the gallery: three rows of seats curving around the rostrum, red on the rostrum.",
+   "change": "The chamber in session from the gallery: five members on the near bench seen from behind, a far bench in five sections, and the three-tier rostrum with its top tier red.",
    "stem": "20261109_CL-025-Congress-Option-B",
    "folder": "work/build/assets/civic-line-redraws",
    "svg_red_black": "work/build/assets/civic-line-redraws/svg/20261109_CL-025-Congress-Option-B-Red-Black.svg",
    "svg_black": "work/build/assets/civic-line-redraws/svg/20261109_CL-025-Congress-Option-B-Black.svg",
    "scale": 0.609244,
    "stroke_units": 3.3508,
-   "extent_units": 112.68,
+   "extent_units": 108.14,
    "ink_px": [
-    184.9,
-    93.5
+    177.5,
+    107.5
    ],
    "at_cap": true
   },
@@ -45,17 +45,17 @@
    "name": "Congress",
    "option": "C",
    "within_dr135": false,
-   "change": "The two chambers, the House in front and the smaller Senate set behind it, each seen from the gallery, red on both rostrums.",
+   "change": "The chamber from the rostrum: members face the reader from two curved benches, and the presiding desk stands red in the foreground.",
    "stem": "20261109_CL-025-Congress-Option-C",
    "folder": "work/build/assets/civic-line-redraws",
    "svg_red_black": "work/build/assets/civic-line-redraws/svg/20261109_CL-025-Congress-Option-C-Red-Black.svg",
    "svg_black": "work/build/assets/civic-line-redraws/svg/20261109_CL-025-Congress-Option-C-Black.svg",
    "scale": 0.609244,
    "stroke_units": 3.3508,
-   "extent_units": 113.36,
+   "extent_units": 106.92,
    "ink_px": [
-    186.1,
-    122.5
+    175.5,
+    125.5
    ],
    "at_cap": true
   },
@@ -83,7 +83,7 @@
    "name": "Entrenched Power",
    "option": "B",
    "within_dr135": false,
-   "change": "Set B's chamber with a one-tier rostrum inside the fence; the red moves from the door to the rostrum.",
+   "change": "Set B's chamber in session without the Speaker's tier, inside a fence opened for 48 px; the red moves from the door to the rostrum's top tier.",
    "stem": "20261109_CL-014-Entrenched-Power-Option-B",
    "folder": "work/build/assets/civic-line-redraws",
    "svg_red_black": "work/build/assets/civic-line-redraws/svg/20261109_CL-014-Entrenched-Power-Option-B-Red-Black.svg",
@@ -93,7 +93,7 @@
    "extent_units": 113.14,
    "ink_px": [
     185.7,
-    102.6
+    113.8
    ],
    "at_cap": true
   },
@@ -102,26 +102,26 @@
    "name": "Entrenched Power",
    "option": "C",
    "within_dr135": false,
-   "change": "One chamber of set C inside the fence; the red moves from the door to the rostrum.",
+   "change": "A ballot's arrow runs at the fenced chamber and stops at the fence on a red bar: an election cannot move the body.",
    "stem": "20261109_CL-014-Entrenched-Power-Option-C",
    "folder": "work/build/assets/civic-line-redraws",
    "svg_red_black": "work/build/assets/civic-line-redraws/svg/20261109_CL-014-Entrenched-Power-Option-C-Red-Black.svg",
    "svg_black": "work/build/assets/civic-line-redraws/svg/20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
-   "scale": 0.609244,
-   "stroke_units": 3.3508,
-   "extent_units": 113.14,
+   "scale": 0.562397,
+   "stroke_units": 3.0932,
+   "extent_units": 116.0,
    "ink_px": [
-    185.7,
-    108.7
+    206.3,
+    92.1
    ],
-   "at_cap": true
+   "at_cap": false
   },
   {
    "id": "R-13",
    "name": "Congressional Capacity",
    "option": "A",
    "within_dr135": true,
-   "change": "Dome arcs and finial go, leaving the drum as a flat attic; the drum columns go and the lower columns become windows.",
+   "change": "Dome arcs and finial go, leaving the drum as a flat attic; the drum columns go and the lower columns become two windows and a door.",
    "stem": "20261109_R-13-Congressional-Capacity-Option-A",
    "folder": "work/build/assets/civic-line-redraws",
    "svg_red_black": "work/build/assets/civic-line-redraws/svg/20261109_R-13-Congressional-Capacity-Option-A-Red-Black.svg",
@@ -140,7 +140,7 @@
    "name": "Congressional Capacity",
    "option": "B",
    "within_dr135": false,
-   "change": "Set B's chamber replaces the building, above two staff and an analyst's report whose chart line takes the red.",
+   "change": "Set B's chamber in session replaces the building, above two staff and an analyst's report whose chart line takes the red.",
    "stem": "20261109_R-13-Congressional-Capacity-Option-B",
    "folder": "work/build/assets/civic-line-redraws",
    "svg_red_black": "work/build/assets/civic-line-redraws/svg/20261109_R-13-Congressional-Capacity-Option-B-Red-Black.svg",
@@ -150,7 +150,7 @@
    "extent_units": 94.16,
    "ink_px": [
     154.6,
-    130.2
+    142.1
    ],
    "at_cap": true
   },
@@ -159,7 +159,7 @@
    "name": "Congressional Capacity",
    "option": "C",
    "within_dr135": false,
-   "change": "Set C's two chambers replace the building, above two staff and an analyst's report whose chart line takes the red.",
+   "change": "Set C's chamber from the rostrum replaces the building, above two staff and an analyst's report whose chart line takes the red.",
    "stem": "20261109_R-13-Congressional-Capacity-Option-C",
    "folder": "work/build/assets/civic-line-redraws",
    "svg_red_black": "work/build/assets/civic-line-redraws/svg/20261109_R-13-Congressional-Capacity-Option-C-Red-Black.svg",
@@ -169,7 +169,7 @@
    "extent_units": 94.16,
    "ink_px": [
     154.6,
-    136.8
+    149.3
    ],
    "at_cap": true
   },
@@ -197,17 +197,17 @@
    "name": "Congressional Tariff Votes",
    "option": "B",
    "within_dr135": false,
-   "change": "Set B's chamber, a red vote card with a yes and a no in place of the ballot box, and CL-064's parcel with a tag for imports.",
+   "change": "Set B's chamber in session, a red vote card with a yes and a no in place of the ballot box, and CL-064's parcel with a tag for imports.",
    "stem": "20261109_R-42-Congressional-Tariff-Votes-Option-B",
    "folder": "work/build/assets/civic-line-redraws",
    "svg_red_black": "work/build/assets/civic-line-redraws/svg/20261109_R-42-Congressional-Tariff-Votes-Option-B-Red-Black.svg",
    "svg_black": "work/build/assets/civic-line-redraws/svg/20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
    "scale": 0.609244,
    "stroke_units": 3.3508,
-   "extent_units": 90.32,
+   "extent_units": 89.03,
    "ink_px": [
-    148.2,
-    134.2
+    145.5,
+    146.1
    ],
    "at_cap": true
   },
@@ -216,17 +216,17 @@
    "name": "Congressional Tariff Votes",
    "option": "C",
    "within_dr135": false,
-   "change": "Set C's two chambers, a red vote card with a yes and a no in place of the ballot box, and CL-064's parcel with a tag for imports.",
+   "change": "Set C's chamber from the rostrum, a red vote card with a yes and a no in place of the ballot box, and CL-064's parcel with a tag for imports.",
    "stem": "20261109_R-42-Congressional-Tariff-Votes-Option-C",
    "folder": "work/build/assets/civic-line-redraws",
    "svg_red_black": "work/build/assets/civic-line-redraws/svg/20261109_R-42-Congressional-Tariff-Votes-Option-C-Red-Black.svg",
    "svg_black": "work/build/assets/civic-line-redraws/svg/20261109_R-42-Congressional-Tariff-Votes-Option-C-Black.svg",
    "scale": 0.609244,
    "stroke_units": 3.3508,
-   "extent_units": 87.02,
+   "extent_units": 93.4,
    "ink_px": [
-    140.7,
-    142.8
+    144.8,
+    153.3
    ],
    "at_cap": true
   },
@@ -254,7 +254,7 @@
    "name": "Credit Allocation",
    "option": "B",
    "within_dr135": false,
-   "change": "The pediment goes too: a flat-roofed bank with a large round vault door, hub and spokes, on its face.",
+   "change": "The pediment goes too: a flat-roofed bank with a round vault door on its face, its wheel's handles standing past the rim.",
    "stem": "20261109_CL-059-Credit-Allocation-Option-B",
    "folder": "work/build/assets/civic-line-redraws",
    "svg_red_black": "work/build/assets/civic-line-redraws/svg/20261109_CL-059-Credit-Allocation-Option-B-Red-Black.svg",
@@ -273,7 +273,7 @@
    "name": "Credit Allocation",
    "option": "C",
    "within_dr135": false,
-   "change": "The bank becomes its safe, a strongbox on feet with a dial and handle; the red branches carry the money out.",
+   "change": "The lender and the loan: a small flat-roofed building beside a loan paper marked with a percent sign; the red branches carry the money out.",
    "stem": "20261109_CL-059-Credit-Allocation-Option-C",
    "folder": "work/build/assets/civic-line-redraws",
    "svg_red_black": "work/build/assets/civic-line-redraws/svg/20261109_CL-059-Credit-Allocation-Option-C-Red-Black.svg",
@@ -283,7 +283,7 @@
    "extent_units": 107.99,
    "ink_px": [
     177.3,
-    148.8
+    146.8
    ],
    "at_cap": true
   },
@@ -311,16 +311,16 @@
    "name": "Agency Independence",
    "option": "B",
    "within_dr135": false,
-   "change": "A commission of three officials at one table replaces the building. Red brace and the official at the lectern kept.",
+   "change": "A flat-roofed office building with no columns or pediment, the red brace, and the official at a desk whose arrow stops at it.",
    "stem": "20261109_R-48-Agency-Independence-Option-B",
    "folder": "work/build/assets/civic-line-redraws",
    "svg_red_black": "work/build/assets/civic-line-redraws/svg/20261109_R-48-Agency-Independence-Option-B-Red-Black.svg",
    "svg_black": "work/build/assets/civic-line-redraws/svg/20261109_R-48-Agency-Independence-Option-B-Black.svg",
-   "scale": 0.535055,
-   "stroke_units": 2.9428,
+   "scale": 0.49467,
+   "stroke_units": 2.7207,
    "extent_units": 116.0,
    "ink_px": [
-    216.8,
+    234.5,
     99.2
    ],
    "at_cap": false
@@ -330,16 +330,16 @@
    "name": "Agency Independence",
    "option": "C",
    "within_dr135": false,
-   "change": "The commission at its table, and the official moves to a desk; an arrow from the desk stops at the red brace.",
+   "change": "The commission at its table, and the official moves to a desk; a longer arrow from the desk stops at the red brace.",
    "stem": "20261109_R-48-Agency-Independence-Option-C",
    "folder": "work/build/assets/civic-line-redraws",
    "svg_red_black": "work/build/assets/civic-line-redraws/svg/20261109_R-48-Agency-Independence-Option-C-Red-Black.svg",
    "svg_black": "work/build/assets/civic-line-redraws/svg/20261109_R-48-Agency-Independence-Option-C-Black.svg",
-   "scale": 0.523702,
-   "stroke_units": 2.8804,
+   "scale": 0.490486,
+   "stroke_units": 2.6977,
    "extent_units": 116.0,
    "ink_px": [
-    221.5,
+    236.5,
     99.2
    ],
    "at_cap": false
