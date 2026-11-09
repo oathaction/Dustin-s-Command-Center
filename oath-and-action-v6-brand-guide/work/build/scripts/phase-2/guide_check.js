@@ -616,6 +616,7 @@ async function fitAudit(page) {
 // (20261109_Stage-B-Accessibility-Audit.md, section 2), found by data-icon and data-icon-family (D2-517), plus the
 // mark tokens' parity (D2-402). A stage with role="img" is a picture and is skipped; a live specimen (D2-516) is not.
 const GLYPH_ONLY_OK = ['clear the search'];                 // A-4: the one control that may show a glyph and no word
+const REQUIRE_FAMILY = false;                              // D2-517: a glyph without data-icon-family is listed now and fails from round 2
 const READS_AT_24 = [];                                     // B-3: the 41 topic symbols that read at 24 px (DR-136), filled at round 2
 const ICON_SIZES = { utility: [16, 24], pillar: [16, 24], status: [24, 26, 28, 30] };   // B-3; topic and atlas: 48 up, or 24 for the 41
 // The mark tokens' readers, as guide-shell.css writes them, and each mark kind for the parity outside failure plates.
@@ -665,7 +666,17 @@ window.__sb = (() => {
   const CONTROLS = 'a[href], button, summary, select, textarea, input:not([type="hidden"]), [role="button"], [role="link"], [role="tab"], [role="switch"], [role="menuitem"], [role="checkbox"], [role="radio"]';
   const where = (el) => { const st = el.closest('[data-specimen]'); const sec = el.closest('section[id]'); return st ? st.getAttribute('data-specimen') : (sec ? '#' + sec.id : el.tagName.toLowerCase()); };
   const desc = (el) => ({ where: where(el), tag: el.tagName.toLowerCase(), text: (el.textContent || '').replace(/\\s+/g, ' ').trim().slice(0, 50), label: el.getAttribute('aria-label') || null });
-  return { parse, ratio, bgBehind, rendered, picture, seen, key, CONTROLS, where, desc };
+  // The best contrast a glyph part's paint (its fill, stroke or CSS background) has against the ground behind it.
+  window.__sbContrast = (el) => {
+    const svgPart = el.namespaceURI === 'http://www.w3.org/2000/svg';
+    const behind = bgBehind(svgPart ? el.closest('svg').parentElement : el.parentElement);
+    const cs = getComputedStyle(el); const paints = [];
+    if (!svgPart) paints.push(parse(cs.backgroundColor));
+    else { if (cs.stroke !== 'none' && parseFloat(cs.strokeWidth) > 0) paints.push(parse(cs.stroke)); if (cs.fill !== 'none') paints.push(parse(cs.fill)); }
+    const ok = paints.filter((c) => c && c.a > 0.5);
+    return ok.length ? Math.max(...ok.map((c) => ratio(c, behind))) : 1;
+  };
+  return { parse, ratio, bgBehind, rendered, picture, seen, key, CONTROLS, where, desc, vhidden };
 })();`;
 
 async function sbInstall(page) { await page.evaluate((src) => { if (!window.__sb) (0, eval)(src); }, SB_HELPERS); }
@@ -676,7 +687,7 @@ async function sbAudit(page) {
   await sbInstall(page);
   return page.evaluate(({ GLYPH_ONLY_OK, READS_AT_24, ICON_SIZES, MARKS }) => {
     const { parse, ratio, rendered, picture, seen, key, CONTROLS, desc } = window.__sb;
-    const out = { icons: 0, iconNames: [], iconTwice: [], iconTargets: [], iconSizes: [], labelInName: [], controlNames: [], titleOnly: [], disabled: [], stateCues: [], motion: [], marks: { readers: {}, off: [], unread: [], held: false } };
+    const out = { icons: 0, missingFamily: [], switchHeights: [], iconNames: [], iconTwice: [], iconTargets: [], iconSizes: [], labelInName: [], controlNames: [], titleOnly: [], disabled: [], stateCues: [], motion: [], marks: { readers: {}, off: [], unread: [], held: false } };
     const icons = [...document.querySelectorAll('[data-icon]')].filter((el) => !picture(el) && !el.parentElement.closest('[data-icon]'));
     out.icons = icons.length;
     const nameOf = (el) => (el.getAttribute('aria-label') || el.getAttribute('alt') || el.getAttribute('title') || (el.querySelector(':scope > title') || {}).textContent || '').trim();
@@ -694,7 +705,12 @@ async function sbAudit(page) {
         if (r.width < 43.5 || r.height < 43.5) out.iconTargets.push({ ...desc(ctl), icon: el.getAttribute('data-icon'), w: Math.round(r.width * 10) / 10, h: Math.round(r.height * 10) / 10 });
       }
       if (rendered(el)) {                                                                                  // B-3
-        const fam = el.getAttribute('data-icon-family'), id = el.getAttribute('data-icon');
+        const id = el.getAttribute('data-icon');
+        let fam = el.getAttribute('data-icon-family');
+        if (!fam) {
+          out.missingFamily.push({ ...desc(el), icon: id });
+          fam = /^U-/.test(id) ? 'utility' : /^CL-0(19|20|21|22)$/.test(id) ? 'pillar' : /^CL-/.test(id) ? 'topic' : /^R-/.test(id) ? 'atlas' : null;
+        }
         const px = Math.round(el.getBoundingClientRect().width);
         let ok;
         if (!fam) ok = false;
@@ -704,7 +720,13 @@ async function sbAudit(page) {
         if (!ok) out.iconSizes.push({ ...desc(el), icon: id, family: fam || '(none)', px });
       }
     }
-    const controls = [...document.querySelectorAll(CONTROLS)].filter((el) => !picture(el) && rendered(el));
+    // DR-153: the Fit to window switch stands 44 px tall, measured where it shows and from its minimum height where hidden.
+    out.switchHeights = [];
+    for (const el of document.querySelectorAll('.fit-switch button')) {
+      const h = rendered(el) ? el.getBoundingClientRect().height : parseFloat(getComputedStyle(el).minHeight) || 0;
+      if (h < 43.5) out.switchHeights.push({ ...desc(el), h: Math.round(h * 10) / 10, shown: rendered(el) });
+    }
+    const controls = [...document.querySelectorAll(CONTROLS)].filter((el) => !picture(el) && rendered(el) && !window.__sb.vhidden(el));
     for (const el of controls) {
       const vis = seen(el);
       const lb = el.getAttribute('aria-labelledby');
@@ -795,6 +817,8 @@ async function sbForced(page) {
       const cs = getComputedStyle(el); const c = window.__sb.parse(cs.backgroundColor);
       if ((c && c.a > 0) || cs.backgroundImage !== 'none' || cs.boxShadow !== 'none') tag(el, 'css');
     }
+    // how far each part stands out from its ground with the page's own colors
+    for (const el of document.querySelectorAll('[data-sb-glyph]')) el.setAttribute('data-sb-normal', String(window.__sbContrast(el)));
     return n;
   });
   const out = { glyphParts: mark, erased: [] };
@@ -802,29 +826,18 @@ async function sbForced(page) {
     await page.emulateMedia({ forcedColors: 'active', colorScheme: scheme });
     await page.waitForTimeout(50);
     const r = await page.evaluate((scheme) => {
-      const { parse, ratio, bgBehind, desc } = window.__sb;
+      const { desc } = window.__sb;
       const bad = [];
       for (const el of document.querySelectorAll('[data-sb-glyph]')) {
-        const kind = el.getAttribute('data-sb-glyph').split(':')[0];
-        const host = el.namespaceURI === 'http://www.w3.org/2000/svg' ? el.closest('svg').parentElement : el.parentElement;
-        const behind = bgBehind(host);
-        const cs = getComputedStyle(el);
-        let paints = [];
-        if (kind === 'css') { const c = parse(cs.backgroundColor); if (c && c.a > 0.5) paints.push(c); }
-        else {
-          const sw = parseFloat(cs.strokeWidth);
-          if (cs.stroke !== 'none' && sw > 0) paints.push(parse(cs.stroke));
-          if (cs.fill !== 'none') paints.push(parse(cs.fill));
-          paints = paints.filter(Boolean).filter((c) => c.a > 0.5);
-        }
-        if (!paints.some((c) => ratio(c, behind) >= 3)) bad.push({ ...desc(el.closest('[data-icon]') || el), scheme, drawnBy: kind === 'css' ? 'CSS background' : 'SVG fill or stroke' });
+        const before = parseFloat(el.getAttribute('data-sb-normal')), now = window.__sbContrast(el);
+        if (before >= 1.5 && now < 1.5) bad.push({ ...desc(el.closest('[data-icon]') || el), scheme, drawnBy: el.getAttribute('data-sb-glyph').startsWith('css') ? 'CSS background' : 'SVG fill or stroke', contrast: Math.round(before * 100) / 100 + ' to ' + Math.round(now * 100) / 100 });
       }
       return bad;
     }, scheme);
     out.erased.push(...r);
   }
   await page.emulateMedia({ forcedColors: 'none', colorScheme: 'light' });
-  await page.evaluate(() => document.querySelectorAll('[data-sb-glyph]').forEach((el) => el.removeAttribute('data-sb-glyph')));
+  await page.evaluate(() => document.querySelectorAll('[data-sb-glyph]').forEach((el) => { el.removeAttribute('data-sb-glyph'); el.removeAttribute('data-sb-normal'); }));
   return out;
 }
 
@@ -928,7 +941,9 @@ function sbFailures(b, width) {
   const a = b.audit;
   if (a.iconNames.length) add('iconNames', `${a.iconNames.length} glyph(s) beside their word but not hidden (A-1), first: ${first(a.iconNames)}`);
   if (a.iconTwice.length) add('iconNames', `${a.iconTwice.length} glyph(s) whose name repeats the words beside them (A-2), first: ${first(a.iconTwice)}`);
+  if (a.switchHeights.length) add('iconTargets', `${a.switchHeights.length} Fit to window button(s) under 44 px tall (DR-153), first: ${first(a.switchHeights)}`);
   if (a.iconTargets.length) add('iconTargets', `${a.iconTargets.length} control(s) holding a glyph under 44 by 44 px (B-1), first: ${first(a.iconTargets)}`);
+  if (REQUIRE_FAMILY && a.missingFamily.length) add('iconSizes', `${a.missingFamily.length} glyph(s) without data-icon-family (D2-517), first: ${first(a.missingFamily)}`);
   if (a.iconSizes.length) add('iconSizes', `${a.iconSizes.length} glyph(s) at a size their family does not use (B-3), first: ${first(a.iconSizes)}`);
   if (a.labelInName.length) add('labelInName', `${a.labelInName.length} control(s) whose name does not start with their visible words (A-3), first: ${first(a.labelInName)}`);
   if (a.controlNames.length) add('controlNames', `${a.controlNames.length} control(s) with a glyph and no visible word, off the allowed list (A-4), first: ${first(a.controlNames)}`);
@@ -970,8 +985,10 @@ async function focusAudit(page, stops) {
       const cs = getComputedStyle(el);
       const { parse, ratio, bgBehind } = window.__sb;
       const oc = parse(cs.outlineColor);
-      const behind = parseFloat(cs.outlineOffset) < 0 ? bgBehind(el) : bgBehind(el.parentElement || el);
-      const contrast = oc ? Math.round(ratio(oc, behind) * 100) / 100 : 0;
+      // the ring reads against the ground beside it: outside the box, or the box's own fill where the box is opaque
+      const own = parse(cs.backgroundColor);
+      const grounds = [parseFloat(cs.outlineOffset) < 0 ? bgBehind(el) : bgBehind(el.parentElement || el)].concat(own && own.a > 0.5 ? [own] : []);
+      const contrast = oc ? Math.round(Math.max(...grounds.map((g) => ratio(oc, g))) * 100) / 100 : 0;
       const ring = cs.outlineStyle !== 'none' && parseFloat(cs.outlineWidth) >= 2 && contrast >= 3;
       const r = el.getBoundingClientRect(); const head = document.querySelector('.masthead');
       const hb = head ? head.getBoundingClientRect().bottom : 0;
@@ -1012,7 +1029,7 @@ async function checkPage(browser, file, widths, opts = {}) {
       sb.menu = await sbMenu(page);
     }
     fails.push(...sbFailures(sb, width));
-    a.stageB = { icons: sb.audit.icons, markReaders: sb.audit.marks.readers, glyphParts: sb.forced ? sb.forced.glyphParts : null,
+    a.stageB = { icons: sb.audit.icons, missingFamily: sb.audit.missingFamily, markReaders: sb.audit.marks.readers, glyphParts: sb.forced ? sb.forced.glyphParts : null,
       menu: sb.menu ? (sb.menu.problems.length ? sb.menu.problems : 'opens, holds focus, closes by Escape and Close, returns focus') : 'not shown at this width' };
     if (a.fit.under.length) fails.push({ key: 'fitFloor', msg: `${width}: ${a.fit.under.length} plate(s) whose Fit to window sets text under 13 px: ${a.fit.under.slice(0, 8).map((x) => `${x.specimen} (${x.smallest} px at ${Math.round(x.scale * 100)}%, "${x.sample}")`).join('; ')}` });
     let axe = null;
@@ -1147,6 +1164,55 @@ const PLANTS = [
       && !r.failures.some((f) => f.key === 'scrollHint') },
   { key: 'frameFit', fault: 'a fitting 640 px plate pushed off center by a 120 px left side', js: () => {
     document.querySelector('[data-specimen="s-demo-sheet"]').closest('.plate-scroll').style.paddingLeft = '120px'; } },
+  // Stage B, November 9, 2026: the accessibility audit's checks that run today (section 2), DR-153 and the mark tokens (D2-402)
+  { key: 'forcedGlyphs', fault: 'a menu glyph drawn as three CSS-background bars in a button, which forced colors erases (UX-1, D-1)', js: () => {
+    const bar = '<i style="display:block;height:2px;background:currentColor"></i>';
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', `<button type="button" style="min-height:44px;display:inline-flex;align-items:center;gap:8px"><span aria-hidden="true" style="display:inline-grid;width:18px;height:12px;align-content:space-between">${bar}${bar}${bar}</span>Menu</button>`); } },
+  { key: 'forcedGlyphs', fault: 'the same glyph drawn as an SVG stroke in currentColor (allowed: must not be flagged)', expect: false, js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<button type="button" style="min-height:44px;display:inline-flex;align-items:center;gap:8px"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="U-menu" data-icon-family="utility" style="fill:none;stroke:currentColor;stroke-width:2"><path d="M3 7h18M3 12h18M3 17h18"/></svg>Menu</button>'); } },
+  { key: 'focus', fault: 'a button whose focus ring is a box-shadow, which forced colors removes (UX-5, G-1)', focus: true, js: () => {
+    const st = document.createElement('style'); st.textContent = '.sb-ring:focus-visible{outline:none;box-shadow:0 0 0 2px #2E7D6B}'; document.head.append(st);
+    document.querySelector('.mh-bar .home').insertAdjacentHTML('afterend', '<button type="button" class="sb-ring">Shadow ring</button>'); } },
+  { key: 'focus', fault: 'the same button with the shell\'s 2 px outline (allowed: must not be flagged)', expect: false, focus: true, js: () => {
+    document.querySelector('.mh-bar .home').insertAdjacentHTML('afterend', '<button type="button">Outline ring</button>'); } },
+  { key: 'menuDialog', fault: 'the phone menu closes by Escape but sends focus to the home link, not back to Menu (G-3)', widths: [390], js: () => {
+    document.getElementById('menu').addEventListener('close', () => setTimeout(() => document.querySelector('.mh-bar .home').focus(), 0)); } },
+  { key: 'motion', fault: 'a glyph that spins forever (E-1)', js: () => {
+    const st = document.createElement('style'); st.textContent = '@keyframes sb-spin{to{transform:rotate(360deg)}}'; document.head.append(st);
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p>Loading <span data-icon="U-loading" data-icon-family="utility" aria-hidden="true" style="display:inline-block;width:24px;height:24px;border-top:2px solid;animation:sb-spin 1s linear infinite"></span></p>'); } },
+  { key: 'motion', fault: 'an SMIL animation in an SVG (E-1)', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="5" fill="currentColor"><animate attributeName="r" values="5;8;5" dur="1s" repeatCount="indefinite"/></circle></svg>'); } },
+  { key: 'reducedMotion', fault: 'a 300 ms transition that stays on under reduced motion (E-2)', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p style="transition:opacity 300ms !important">Fades in</p>'); } },
+  { key: 'labelInName', fault: 'a button that shows "Done" and is named "Close the dialog" (A-3)', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<button type="button" aria-label="Close the dialog">Done</button>'); } },
+  { key: 'controlNames', fault: 'a glyph-only button named "Settings" (A-4)', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<button type="button" aria-label="Settings" style="min-width:44px;min-height:44px"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="6" fill="currentColor"/></svg></button>'); } },
+  { key: 'controlNames', fault: 'the glyph-only clear control in a search field, named "Clear the search" (allowed: must not be flagged)', expect: false, js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<button type="button" aria-label="Clear the search" style="min-width:44px;min-height:44px"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2"/></svg></button>'); } },
+  { key: 'titleOnly', fault: 'a button named only by its title, "Download" (A-8)', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<button type="button" title="Download" style="min-width:44px;min-height:44px"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24"><path d="M12 4v12" stroke="currentColor" stroke-width="2"/></svg></button>'); } },
+  { key: 'iconNames', fault: 'a named glyph beside its own word, read twice (A-1, A-2)', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<ul><li>Download <svg data-icon="U-download" data-icon-family="utility" role="img" aria-label="Download" viewBox="0 0 24 24" width="24" height="24"><path d="M12 4v12" stroke="currentColor" stroke-width="2"/></svg></li></ul>'); } },
+  { key: 'iconTargets', fault: 'a link with a utility glyph standing 30 px tall (B-1)', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><a href="#top" style="display:inline-flex;align-items:center;height:30px;gap:8px"><svg data-icon="U-arrow-up" data-icon-family="utility" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24"><path d="M12 19V5" stroke="currentColor" stroke-width="2"/></svg>Top</a></p>'); } },
+  { key: 'iconTargets', fault: 'the Fit to window switch back at 36 px (DR-153)', js: () => {
+    const st = document.createElement('style'); st.textContent = '.fit-btn{min-height:36px !important}'; document.head.append(st); } },
+  { key: 'iconSizes', fault: 'a topic symbol at 16 px (DR-136, B-3)', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg data-icon="CL-001" data-icon-family="topic" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="8" fill="currentColor"/></svg> Voting</p>'); } },
+  { key: 'disabledControls', fault: 'a disabled attribute on a toolbar button (G-4)', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div role="toolbar" aria-label="Report tools"><button type="button" disabled>Print</button></div>'); } },
+  { key: 'stateCues', fault: 'a pressed button told from its peer by fill and color alone (C-5)', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div><button type="button" class="sb-seg" aria-pressed="true" style="background:#121212;color:#DCD9D2">On</button><button type="button" class="sb-seg" aria-pressed="false">Off</button></div>'); } },
+  { key: 'stateCues', fault: 'the same pressed button, underlined as well (allowed: must not be flagged)', expect: false, js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div><button type="button" class="sb-seg" aria-pressed="true" style="background:#121212;color:#DCD9D2;text-decoration:underline">On</button><button type="button" class="sb-seg" aria-pressed="false">Off</button></div>'); } },
+  { key: 'textSpacing', fault: 'a link held to 20 px by 80 px with its overflow hidden, which clips with text spacing (F-1)', widths: [390], js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><a href="#top" style="display:inline-block;height:20px;width:80px;overflow:hidden">Back to the top</a></p>'); } },
+  { key: 'markTokens', fault: 'a tracker\'s now ring drawn at 2.5 px in a correct plate, off its 3 px token (D2-402)', js: () => {
+    document.querySelector('.plate--correct [data-specimen]').insertAdjacentHTML('beforeend', '<svg class="sx-mk" width="30" height="30" viewBox="0 0 30 30" aria-hidden="true" focusable="false"><circle cx="15" cy="15" r="13.75" class="sx-fb sx-si" stroke-width="2.5" fill="none" stroke="#121212"/></svg>'); } },
+  { key: 'markTokens', fault: 'the same ring drawn at 3 px, which the shell sets from its token (allowed: must not be flagged)', expect: false, js: () => {
+    document.querySelector('.plate--correct [data-specimen]').insertAdjacentHTML('beforeend', '<svg class="sx-mk" width="30" height="30" viewBox="0 0 30 30" aria-hidden="true" focusable="false"><circle cx="15" cy="15" r="13.5" class="sx-fb sx-si" stroke-width="3" fill="none" stroke="#121212"/></svg>'); },
+    verify: (r) => r.runs[0].stageB.markReaders['ring-now'] >= 1 },
 ];
 
 async function selfTest() {

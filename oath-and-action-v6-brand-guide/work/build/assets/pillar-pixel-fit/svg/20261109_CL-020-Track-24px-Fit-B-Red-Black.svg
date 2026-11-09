@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-pillar-fit-cl-020-24px-fit-b-red-black" data-id="CL-020" width="24" height="24" viewBox="0 0 24 24">
+  <title>Track, 24 px fit B</title>
+  <desc>Oath &amp; Action Civic Line CL-020 Track, pixel-fit master for 24 px, fit B: a 1 px line on the pixel grid, every feature and red placement of the master kept, the red its own shapes in the accent group (DR-133, stage B). Use at 24 px only; the black edition is the one in use under 48 px.</desc>
+  <g id="oa-pillar-fit-cl-020-24px-fit-b-red-black-accent" data-part="accent" stroke="#E63946" fill="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4.5 7.5 L2.9 5.1 A2 2 0 1 1 6.1 5.1 Z"/>
+    <line x1="19.8" y1="16.8" x2="21.5" y2="18.5"/>
+  </g>
+  <g id="oa-pillar-fit-cl-020-24px-fit-b-red-black-base" data-part="base" stroke="#121212" fill="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M7.5 9.5 H11 A2 2 0 0 1 11 13.5 H5 A2 2 0 0 0 5 17.5 H13.5"/>
+    <circle cx="17.5" cy="14.5" r="3"/>
+  </g>
+</svg>

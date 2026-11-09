@@ -19,7 +19,7 @@
    "height_px": 13,
    "text_px": 17,
    "vertical_align_px": 0,
-   "ink_px": 84,
+   "ink_px": 83,
    "subpaths": 3
   },
   "12A": {
@@ -29,7 +29,7 @@
    "height_px": 12,
    "text_px": 15,
    "vertical_align_px": -1,
-   "ink_px": 68,
+   "ink_px": 66,
    "subpaths": 3
   },
   "12B": {
@@ -39,7 +39,7 @@
    "height_px": 11,
    "text_px": 15,
    "vertical_align_px": 0,
-   "ink_px": 61,
+   "ink_px": 60,
    "subpaths": 2
   }
  },
@@ -1378,7 +1378,7 @@
     "passes": true
    }
   },
-  "same_pixels_in_card": false
+  "same_pixels_in_sign_off": true
  },
  "pixel_fit_check": {
   "ampersand/20261109_Amp-B-14px-End-Mark-Fit-A.svg": {
@@ -1386,7 +1386,7 @@
    "exit": 0,
    "result": {
     "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
-    "run": "2026-11-09T20:54:12.858Z",
+    "run": "2026-11-09T21:04:15.450Z",
     "rules": {
      "minStroke": 1,
      "minThinArea": 0.25,
@@ -1402,7 +1402,7 @@
     },
     "results": [
      {
-      "file": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/443076db-a457-52c0-9ab2-d454e53bc53a/scratchpad/idb/run1/20261109_Amp-B-14px-End-Mark-Fit-A-Square.svg",
+      "file": "/tmp/oai-b-vt6bq3c0/20261109_Amp-B-14px-End-Mark-Fit-A-Square.svg",
       "size": 14,
       "viewBox": [
        0,
@@ -1497,7 +1497,7 @@
    "exit": 0,
    "result": {
     "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
-    "run": "2026-11-09T20:54:13.858Z",
+    "run": "2026-11-09T21:04:16.494Z",
     "rules": {
      "minStroke": 1,
      "minThinArea": 0.25,
@@ -1513,7 +1513,7 @@
     },
     "results": [
      {
-      "file": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/443076db-a457-52c0-9ab2-d454e53bc53a/scratchpad/idb/run1/20261109_Amp-B-14px-End-Mark-Fit-B-Square.svg",
+      "file": "/tmp/oai-b-vt6bq3c0/20261109_Amp-B-14px-End-Mark-Fit-B-Square.svg",
       "size": 13,
       "viewBox": [
        0,
@@ -1538,15 +1538,15 @@
          "median": 1.99
         },
         "soft_edges": {
-         "ink_px": 84,
+         "ink_px": 83,
          "partial_px": 0,
          "share": 0
         },
         "straight": {
-         "strokes": 4,
-         "lone_edges": 5,
-         "fit": 9,
-         "total": 9,
+         "strokes": 5,
+         "lone_edges": 6,
+         "fit": 11,
+         "total": 11,
          "off": []
         },
         "gap": {
@@ -1555,8 +1555,8 @@
          "near_px": null
         },
         "counters": {
-         "drawn": 3,
-         "open": 3
+         "drawn": 2,
+         "open": 2
         },
         "fails": [],
         "pass": true
@@ -1574,15 +1574,15 @@
          "median": 3.98
         },
         "soft_edges": {
-         "ink_px": 336,
+         "ink_px": 332,
          "partial_px": 0,
          "share": 0
         },
         "straight": {
-         "strokes": 4,
-         "lone_edges": 5,
-         "fit": 9,
-         "total": 9,
+         "strokes": 5,
+         "lone_edges": 6,
+         "fit": 11,
+         "total": 11,
          "off": []
         },
         "gap": {
@@ -1591,8 +1591,8 @@
          "near_px": null
         },
         "counters": {
-         "drawn": 3,
-         "open": 3
+         "drawn": 2,
+         "open": 2
         },
         "fails": [],
         "pass": true
@@ -1608,7 +1608,7 @@
    "exit": 0,
    "result": {
     "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
-    "run": "2026-11-09T20:54:14.805Z",
+    "run": "2026-11-09T21:04:17.480Z",
     "rules": {
      "minStroke": 1,
      "minThinArea": 0.25,
@@ -1624,7 +1624,7 @@
     },
     "results": [
      {
-      "file": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/443076db-a457-52c0-9ab2-d454e53bc53a/scratchpad/idb/run1/20261109_Amp-B-12px-End-Mark-Fit-A-Square.svg",
+      "file": "/tmp/oai-b-vt6bq3c0/20261109_Amp-B-12px-End-Mark-Fit-A-Square.svg",
       "size": 12,
       "viewBox": [
        0,
@@ -1642,22 +1642,22 @@
          "declared": [],
          "thinnest": 0.99,
          "thinnest_near_px": [
-          7.6,
-          3.1
+          7.4,
+          5.1
          ],
          "main": 2,
          "median": 1.99
         },
         "soft_edges": {
-         "ink_px": 68,
+         "ink_px": 66,
          "partial_px": 0,
          "share": 0
         },
         "straight": {
-         "strokes": 2,
-         "lone_edges": 6,
-         "fit": 8,
-         "total": 8,
+         "strokes": 4,
+         "lone_edges": 7,
+         "fit": 11,
+         "total": 11,
          "off": []
         },
         "gap": {
@@ -1666,8 +1666,8 @@
          "near_px": null
         },
         "counters": {
-         "drawn": 4,
-         "open": 4
+         "drawn": 2,
+         "open": 2
         },
         "fails": [],
         "pass": true
@@ -1678,22 +1678,22 @@
          "declared": [],
          "thinnest": 1.98,
          "thinnest_near_px": [
-          15.1,
-          6.3
+          14.8,
+          10.3
          ],
          "main": 4,
          "median": 3.98
         },
         "soft_edges": {
-         "ink_px": 272,
+         "ink_px": 264,
          "partial_px": 0,
          "share": 0
         },
         "straight": {
-         "strokes": 2,
-         "lone_edges": 6,
-         "fit": 8,
-         "total": 8,
+         "strokes": 4,
+         "lone_edges": 7,
+         "fit": 11,
+         "total": 11,
          "off": []
         },
         "gap": {
@@ -1702,8 +1702,8 @@
          "near_px": null
         },
         "counters": {
-         "drawn": 4,
-         "open": 4
+         "drawn": 2,
+         "open": 2
         },
         "fails": [],
         "pass": true
@@ -1719,7 +1719,7 @@
    "exit": 0,
    "result": {
     "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
-    "run": "2026-11-09T20:54:15.795Z",
+    "run": "2026-11-09T21:04:18.598Z",
     "rules": {
      "minStroke": 1,
      "minThinArea": 0.25,
@@ -1735,7 +1735,7 @@
     },
     "results": [
      {
-      "file": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/443076db-a457-52c0-9ab2-d454e53bc53a/scratchpad/idb/run1/20261109_Amp-B-12px-End-Mark-Fit-B-Square.svg",
+      "file": "/tmp/oai-b-vt6bq3c0/20261109_Amp-B-12px-End-Mark-Fit-B-Square.svg",
       "size": 11,
       "viewBox": [
        0,
@@ -1753,22 +1753,22 @@
          "declared": [],
          "thinnest": 1.01,
          "thinnest_near_px": [
-          7.6,
-          3.1
+          2.6,
+          6.1
          ],
-         "main": 2,
+         "main": 1.15,
          "median": 1.99
         },
         "soft_edges": {
-         "ink_px": 61,
+         "ink_px": 60,
          "partial_px": 0,
          "share": 0
         },
         "straight": {
-         "strokes": 2,
+         "strokes": 4,
          "lone_edges": 6,
-         "fit": 8,
-         "total": 8,
+         "fit": 10,
+         "total": 10,
          "off": []
         },
         "gap": {
@@ -1777,8 +1777,8 @@
          "near_px": null
         },
         "counters": {
-         "drawn": 3,
-         "open": 3
+         "drawn": 2,
+         "open": 2
         },
         "fails": [],
         "pass": true
@@ -1789,22 +1789,22 @@
          "declared": [],
          "thinnest": 2.02,
          "thinnest_near_px": [
-          15.1,
-          6.3
+          5.2,
+          12.2
          ],
-         "main": 4,
+         "main": 2.3,
          "median": 3.98
         },
         "soft_edges": {
-         "ink_px": 244,
+         "ink_px": 240,
          "partial_px": 0,
          "share": 0
         },
         "straight": {
-         "strokes": 2,
+         "strokes": 4,
          "lone_edges": 6,
-         "fit": 8,
-         "total": 8,
+         "fit": 10,
+         "total": 10,
          "off": []
         },
         "gap": {
@@ -1813,8 +1813,8 @@
          "near_px": null
         },
         "counters": {
-         "drawn": 3,
-         "open": 3
+         "drawn": 2,
+         "open": 2
         },
         "fails": [],
         "pass": true
@@ -1830,7 +1830,7 @@
    "exit": 0,
    "result": {
     "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
-    "run": "2026-11-09T20:54:16.756Z",
+    "run": "2026-11-09T21:04:19.704Z",
     "rules": {
      "minStroke": 1,
      "minThinArea": 0.25,
@@ -1941,7 +1941,7 @@
    "exit": 0,
    "result": {
     "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
-    "run": "2026-11-09T20:54:17.678Z",
+    "run": "2026-11-09T21:04:20.806Z",
     "rules": {
      "minStroke": 1,
      "minThinArea": 0.25,
@@ -2052,7 +2052,7 @@
    "exit": 0,
    "result": {
     "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
-    "run": "2026-11-09T20:54:18.617Z",
+    "run": "2026-11-09T21:04:21.828Z",
     "rules": {
      "minStroke": 1,
      "minThinArea": 0.25,
@@ -2163,7 +2163,7 @@
    "exit": 0,
    "result": {
     "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
-    "run": "2026-11-09T20:54:19.534Z",
+    "run": "2026-11-09T21:04:22.806Z",
     "rules": {
      "minStroke": 1,
      "minThinArea": 0.25,
@@ -2274,7 +2274,7 @@
    "exit": 0,
    "result": {
     "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
-    "run": "2026-11-09T20:54:20.462Z",
+    "run": "2026-11-09T21:04:23.799Z",
     "rules": {
      "minStroke": 1,
      "minThinArea": 0.25,

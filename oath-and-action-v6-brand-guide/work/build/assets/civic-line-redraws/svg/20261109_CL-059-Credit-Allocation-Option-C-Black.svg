@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-059-option-c-black" data-id="CL-059" width="128" height="128" viewBox="0 0 128 128">
+  <title>Credit Allocation, option C</title>
+  <desc>Oath &amp; Action Civic Line CL-059 Credit Allocation, stage B option C (outside DR-135 where it applies). The bank becomes its safe, a strongbox on feet with a dial and handle; the red branches carry the money out. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
+  <g id="oa-civic-line-cl-059-option-c-black-base" data-part="base">
+    <rect x="41.6468" y="20.3538" width="40.2101" height="32.8992" rx="3.0462" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="56.5733" cy="36.8034" r="7.0063" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="56.5733" y1="29.7971" x2="56.5733" y2="33.4525" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="71.8044" y1="30.7109" x2="71.8044" y2="42.8958" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="47.7393" y1="53.2529" x2="47.7393" y2="57.8223" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="75.7645" y1="53.2529" x2="75.7645" y2="57.8223" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="11.6781,107.171 11.6781,92.6405 26.7082,80.1815 41.7382,92.6405 41.7382,107.171" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="23.1685,107.171 23.1685,98.5807 30.2479,98.5807 30.2479,107.171" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="73.2788,93.524 82.192,87.3097 82.192,94.0113 93.0548,87.3097 93.0548,94.0113 103.9116,87.3097 103.9116,94.0113 105.3128,94.0113 109.0901,80.145 116.3219,80.145 116.3219,107.6462 73.2788,107.6462" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="oa-civic-line-cl-059-option-c-black-accent" data-part="accent">
+    <path d="M58.0294 62.3916 L58.0294 67.2229 A1.523105 1.523105 0 0 1 56.5063 68.746 L30.8389 68.746 A1.523105 1.523105 0 0 0 29.3158 70.2691 L29.3158 75.6731" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M65.4744 62.3916 L65.4744 67.2229 A1.523105 1.523105 0 0 0 66.9975 68.746 L92.6649 68.746 A1.523105 1.523105 0 0 1 94.188 70.2691 L94.188 80.212" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

@@ -6,8 +6,10 @@ I read, in order: `.claude/agents/oa-design-director.md`, `CLAUDE.md`, the Maste
 
 ## Where the work stands
 
-- Notes started. Drawing next.
+- Notes started.
 - Congress signs chosen after prototypes (scratch renders at 128, 48 and 24 px):
   - Set A, the building without its dome, inside DR-135. The dome becomes a flat attic, the columns become windows and walls, and the red moves to a new center door. The two wings carry "two chambers".
   - Set B, the House chamber seen from the gallery: five seat sections in each of three rows, curving around a two-tier rostrum in red. Plain even arcs read as sound waves, member heads and chair backs turned to texture at 48 px, and a figure on the rostrum read as a cake topper, so all three were dropped.
   - Set C, the two chambers: a larger House and a smaller Senate, each a gallery-view chamber of two rows. A front-view hemicycle read clearest of all, but it is the half ring R-03 and R-46 already draw, so it was dropped. A section view and two cutaways failed at 48 px.
+- All 18 redraw options drawn and exported (scripts `civic_line_stage_b_drawings.py` and `civic_line_stage_b_build.py` in `work/build/scripts/phase-2/`; rebuild with `python3 -I work/build/scripts/phase-2/civic_line_stage_b_build.py`). Fixes made after looking at the renders: CL-014 B and C first read as a cage, then as a trampoline, so the chamber was lifted inside the whole fence; R-13 and R-42 B and C first set the chamber so small its rows closed up, so the chamber moved to a top tier at three quarters size; CL-059 B's plus-shaped vault wheel read as a first-aid cross and three spokes as a fan, so it has four diagonal spokes on a hub ring; CL-059 C's open vault read as a film camera, so it became a safe on feet.
+- Next: Testify and Contact an official, then the pillar fits, then the checks, the plate page and the naming test.

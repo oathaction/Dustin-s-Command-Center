@@ -357,9 +357,12 @@ a.toc-part-k:hover { text-decoration: underline }
 .plate--extra, .plate--proof { margin-top: var(--oa-space-800) }
 /* The True size / Fit to window switch (D2-251) */
 .fit-switch { display: inline-flex; border: var(--oa-border-width-hairline) solid var(--rule-strong) }
-.fit-btn { min-height: 2.25rem; padding: 0 var(--oa-space-150); border: 0; background: transparent; color: var(--ink); font: var(--oa-type-ui); cursor: pointer }
+.fit-btn { min-height: var(--oa-size-target-touch); padding: 0 var(--oa-space-150); border: 0; background: transparent; color: var(--ink); font: var(--oa-type-ui); cursor: pointer }
 .fit-btn + .fit-btn { border-left: var(--oa-border-width-hairline) solid var(--rule-strong) }
-.fit-btn[aria-pressed="true"] { background: var(--oa-color-action-primary-fill-on-newsprint); color: var(--oa-color-action-primary-label-on-newsprint) }
+/* DR-153: the switch stands 44 px tall, as Rule 11.7 sets for controls. C-5: the pressed option is underlined as well
+   as filled, so it reads without color, as the current item does in the part links. */
+.fit-btn[aria-pressed="true"] { background: var(--oa-color-action-primary-fill-on-newsprint); color: var(--oa-color-action-primary-label-on-newsprint);
+  text-decoration: underline; text-decoration-thickness: var(--oa-border-width-rule); text-underline-offset: .3em }
 .fit-btn:hover { text-decoration: underline }
 
 /* Rule foot (C-S5): the specifications run across the whole text column; Related chapters and For builders share

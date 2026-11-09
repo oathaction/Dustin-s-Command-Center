@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-nt-02-option-c-red-black" data-id="NT-02" width="128" height="128" viewBox="0 0 128 128">
+  <title>Contact An Official, option C</title>
+  <desc>Oath &amp; Action Civic Line NT-02 Contact An Official, stage B option C (outside DR-135 where it applies). An official at a desk with a nameplate, and one red speech mark arriving from the reader's side. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
+  <g id="oa-civic-line-nt-02-option-c-red-black-base" data-part="base">
+    <circle cx="80.7542" cy="50.4711" r="5.2919" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M69.4893 72.5294 L69.4893 68.2068 A8.252203 8.252203 0 0 1 77.7415 59.9546 L83.7669 59.9546 A8.252203 8.252203 0 0 1 92.0191 68.2068 L92.0191 72.5294" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="53.3382" y1="74.3571" x2="108.1702" y2="74.3571" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="56.3845,74.3571 56.3845,92.6345 105.124,92.6345 105.124,74.3571" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="72.834,74.3571 74.6618,69.4832 86.8466,69.4832 88.6744,74.3571" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="oa-civic-line-nt-02-option-c-red-black-accent" data-part="accent">
+    <path d="M23.4853 35.3655 L42.9811 35.3655 A3.655481 3.655481 0 0 1 46.6366 39.021 L46.6366 51.2059 A3.655456 3.655456 0 0 1 42.9811 54.8613 L28.3592 54.8613 L21.6576 60.3445 L23.4853 54.8613 A3.655456 3.655456 0 0 1 19.8298 51.2059 L19.8298 39.021 A3.655481 3.655481 0 0 1 23.4853 35.3655 Z" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

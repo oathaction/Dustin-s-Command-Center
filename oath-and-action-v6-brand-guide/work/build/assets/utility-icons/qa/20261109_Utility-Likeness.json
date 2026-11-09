@@ -1,0 +1,3244 @@
+{
+ "tool": "work/build/scripts/phase-2/icon_likeness_check.js",
+ "run": "2026-11-09T20:59:41.720Z",
+ "method": "Ink maps at 24 px from coverage in Charcoal over Newsprint, Gaussian blur sigma 1.2 px, Pearson correlation best over shifts up to 1 px, percentile among the 7381 pairs of the 122 Civic Line masters (Board 6).",
+ "renderer": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+ "files": 108,
+ "compared": 108,
+ "editions_skipped": [],
+ "distribution": {
+  "pairs": 7381,
+  "p50": 0.721,
+  "p90": 0.8472,
+  "p95": 0.8708,
+  "p99": 0.9127,
+  "p999": 0.9479,
+  "max": 0.9644
+ },
+ "thresholds": {
+  "flag": {
+   "percentile": 99,
+   "likeness": 0.9127
+  },
+  "watch": {
+   "percentile": 95,
+   "likeness": 0.8708
+  }
+ },
+ "masters_closest_pairs": [
+  {
+   "pair": "R-06 and R-44",
+   "likeness": 0.9644
+  },
+  {
+   "pair": "CL-028 and R-27",
+   "likeness": 0.958
+  },
+  {
+   "pair": "R-05 and R-14",
+   "likeness": 0.9567
+  },
+  {
+   "pair": "CL-003 and R-05",
+   "likeness": 0.956
+  },
+  {
+   "pair": "R-18 and R-27",
+   "likeness": 0.9559
+  },
+  {
+   "pair": "R-24 and R-25",
+   "likeness": 0.952
+  },
+  {
+   "pair": "CL-032 and R-23",
+   "likeness": 0.9484
+  },
+  {
+   "pair": "R-08 and R-18",
+   "likeness": 0.9479
+  },
+  {
+   "pair": "CL-003 and R-23",
+   "likeness": 0.9462
+  },
+  {
+   "pair": "R-08 and R-27",
+   "likeness": 0.9453
+  },
+  {
+   "pair": "CL-003 and R-14",
+   "likeness": 0.9426
+  },
+  {
+   "pair": "CL-028 and R-08",
+   "likeness": 0.9419
+  }
+ ],
+ "flagged": [
+  {
+   "a": "20261109_Utility-Close-Option-B-24px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.9727,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-C-24px.svg",
+   "b": "20261109_Utility-Play-Option-C-24px.svg",
+   "likeness": 0.9662,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-B-24px.svg",
+   "b": "20261109_Utility-Play-Option-B-24px.svg",
+   "likeness": 0.9583,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-16px.svg",
+   "b": "20261109_Utility-Play-Option-B-16px.svg",
+   "likeness": 0.9549,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-24px.svg",
+   "b": "20261109_Utility-Play-Option-B-24px.svg",
+   "likeness": 0.9523,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-16px.svg",
+   "b": "20261109_Utility-Pause-Option-B-16px.svg",
+   "likeness": 0.9507,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "b": "20261109_Utility-Play-Option-B-24px.svg",
+   "likeness": 0.9487,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "b": "20261109_Utility-Success-Option-A-24px.svg",
+   "likeness": 0.9471,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-16px.svg",
+   "b": "20261109_Utility-Success-Option-A-16px.svg",
+   "likeness": 0.9465,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-C-24px.svg",
+   "b": "20261109_Utility-Play-Option-B-24px.svg",
+   "likeness": 0.9447,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-16px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.9424,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-C-16px.svg",
+   "b": "20261109_Utility-Play-Option-C-16px.svg",
+   "likeness": 0.9412,
+   "percentile": 99.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.9368,
+   "percentile": 99.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-16px.svg",
+   "b": "20261109_Utility-Play-Option-B-16px.svg",
+   "likeness": 0.9361,
+   "percentile": 99.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "b": "20261109_Utility-Success-Option-B-24px.svg",
+   "likeness": 0.9332,
+   "percentile": 99.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "b": "20261109_Utility-Download-Option-C-24px.svg",
+   "likeness": 0.9325,
+   "percentile": 99.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-C-16px.svg",
+   "b": "20261109_Utility-Chevron-Option-A-24px.svg",
+   "likeness": 0.9312,
+   "percentile": 99.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-A-16px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-C-16px.svg",
+   "likeness": 0.931,
+   "percentile": 99.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-C-16px.svg",
+   "b": "20261109_Utility-Play-Option-B-16px.svg",
+   "likeness": 0.9272,
+   "percentile": 99.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-B-16px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.9246,
+   "percentile": 99.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-A-24px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-C-24px.svg",
+   "likeness": 0.924,
+   "percentile": 99.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-B-16px.svg",
+   "b": "20261109_Utility-Play-Option-B-16px.svg",
+   "likeness": 0.9231,
+   "percentile": 99.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-A-16px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-C-24px.svg",
+   "likeness": 0.9226,
+   "percentile": 99.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.9226,
+   "percentile": 99.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-16px.svg",
+   "b": "20261109_Utility-Success-Option-B-16px.svg",
+   "likeness": 0.9216,
+   "percentile": 99.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-16px.svg",
+   "b": "20261109_Utility-Close-Option-B-16px.svg",
+   "likeness": 0.9213,
+   "percentile": 99.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-B-16px.svg",
+   "b": "20261109_Utility-Close-Option-B-24px.svg",
+   "likeness": 0.9184,
+   "percentile": 99.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-16px.svg",
+   "b": "20261109_Utility-Pause-Option-B-16px.svg",
+   "likeness": 0.9158,
+   "percentile": 99.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-B-16px.svg",
+   "b": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "likeness": 0.9153,
+   "percentile": 99.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-A-16px.svg",
+   "b": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "likeness": 0.9131,
+   "percentile": 99,
+   "against": "new"
+  }
+ ],
+ "watch": [
+  {
+   "a": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "b": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "likeness": 0.9108,
+   "percentile": 98.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "b": "20261109_Utility-Close-Option-B-24px.svg",
+   "likeness": 0.9104,
+   "percentile": 98.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-16px.svg",
+   "b": "20261109_Utility-Play-Option-B-24px.svg",
+   "likeness": 0.9098,
+   "percentile": 98.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-B-16px.svg",
+   "b": "20261109_Utility-Close-Option-B-24px.svg",
+   "likeness": 0.9085,
+   "percentile": 98.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "b": "20261109_Utility-Play-Option-B-24px.svg",
+   "likeness": 0.9085,
+   "percentile": 98.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-16px.svg",
+   "b": "20261109_Utility-Play-Option-B-16px.svg",
+   "likeness": 0.9084,
+   "percentile": 98.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-16px.svg",
+   "b": "20261109_Utility-Play-Option-B-24px.svg",
+   "likeness": 0.908,
+   "percentile": 98.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-C-24px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.9076,
+   "percentile": 98.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "b": "20261109_Utility-Close-Option-B-24px.svg",
+   "likeness": 0.9069,
+   "percentile": 98.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-B-24px.svg",
+   "b": "20261109_Utility-Success-Option-A-24px.svg",
+   "likeness": 0.9055,
+   "percentile": 98.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-24px.svg",
+   "b": "20261109_Utility-Download-Option-C-24px.svg",
+   "likeness": 0.9027,
+   "percentile": 98.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-B-16px.svg",
+   "b": "20261109_Utility-Download-Option-C-24px.svg",
+   "likeness": 0.9024,
+   "percentile": 98.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-16px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.9022,
+   "percentile": 98.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "b": "20261109_Utility-Download-Option-C-24px.svg",
+   "likeness": 0.9022,
+   "percentile": 98.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-C-16px.svg",
+   "b": "20261109_Utility-Play-Option-B-24px.svg",
+   "likeness": 0.9011,
+   "percentile": 98.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-C-24px.svg",
+   "b": "20261109_Utility-Success-Option-C-24px.svg",
+   "likeness": 0.899,
+   "percentile": 98.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-B-16px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.8979,
+   "percentile": 98.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-A-24px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.8968,
+   "percentile": 98.1,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-16px.svg",
+   "b": "20261109_Utility-Success-Option-A-24px.svg",
+   "likeness": 0.8958,
+   "percentile": 98.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-B-16px.svg",
+   "b": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "likeness": 0.8935,
+   "percentile": 97.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-B-16px.svg",
+   "b": "CL-047 Data Rights",
+   "likeness": 0.8932,
+   "percentile": 97.8,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-B-16px.svg",
+   "b": "20261109_Utility-Success-Option-A-16px.svg",
+   "likeness": 0.8928,
+   "percentile": 97.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-B-16px.svg",
+   "b": "20261109_Utility-Play-Option-B-24px.svg",
+   "likeness": 0.8916,
+   "percentile": 97.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-16px.svg",
+   "b": "20261109_Utility-Success-Option-B-24px.svg",
+   "likeness": 0.8898,
+   "percentile": 97.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-16px.svg",
+   "b": "20261109_Utility-Success-Option-A-16px.svg",
+   "likeness": 0.8897,
+   "percentile": 97.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-16px.svg",
+   "b": "20261109_Utility-Close-Option-B-16px.svg",
+   "likeness": 0.8887,
+   "percentile": 97.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-16px.svg",
+   "b": "20261109_Utility-Download-Option-C-16px.svg",
+   "likeness": 0.8884,
+   "percentile": 97.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-24px.svg",
+   "b": "20261109_Utility-Success-Option-A-24px.svg",
+   "likeness": 0.8855,
+   "percentile": 97,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-B-16px.svg",
+   "b": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "likeness": 0.8837,
+   "percentile": 96.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-A-24px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.8822,
+   "percentile": 96.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-16px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.8795,
+   "percentile": 96.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-C-16px.svg",
+   "b": "20261109_Utility-Success-Option-C-16px.svg",
+   "likeness": 0.8795,
+   "percentile": 96.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-16px.svg",
+   "b": "20261109_Utility-Chevron-Option-B-16px.svg",
+   "likeness": 0.8786,
+   "percentile": 96.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-C-16px.svg",
+   "b": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "likeness": 0.8785,
+   "percentile": 96.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-16px.svg",
+   "b": "20261109_Utility-Download-Option-C-24px.svg",
+   "likeness": 0.8774,
+   "percentile": 96.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-16px.svg",
+   "b": "20261109_Utility-Pause-Option-B-16px.svg",
+   "likeness": 0.8769,
+   "percentile": 96,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-B-16px.svg",
+   "b": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "likeness": 0.8769,
+   "percentile": 96,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-C-24px.svg",
+   "b": "20261109_Utility-Success-Option-A-24px.svg",
+   "likeness": 0.8767,
+   "percentile": 96,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-16px.svg",
+   "b": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "likeness": 0.8765,
+   "percentile": 95.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-16px.svg",
+   "b": "20261109_Utility-Download-Option-C-16px.svg",
+   "likeness": 0.8753,
+   "percentile": 95.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-A-16px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.872,
+   "percentile": 95.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-B-24px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.8718,
+   "percentile": 95.2,
+   "against": "master"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "b": "20261109_Utility-Success-Option-A-24px.svg",
+   "likeness": 0.8708,
+   "percentile": 95,
+   "against": "new"
+  }
+ ],
+ "own": [],
+ "options": [
+  {
+   "a": "20261109_Utility-Chevron-Option-A-16px.svg",
+   "b": "20261109_Utility-Chevron-Option-A-24px.svg",
+   "likeness": 0.9997,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-A-16px.svg",
+   "b": "20261109_Utility-Close-Option-A-24px.svg",
+   "likeness": 0.9997,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-B-16px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-B-24px.svg",
+   "likeness": 0.9981,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-A-16px.svg",
+   "b": "20261109_Utility-Filter-Option-B-16px.svg",
+   "likeness": 0.9976,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-A-16px.svg",
+   "b": "20261109_Utility-Reset-Option-A-24px.svg",
+   "likeness": 0.9966,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Search-Option-A-16px.svg",
+   "b": "20261109_Utility-Search-Option-A-24px.svg",
+   "likeness": 0.9966,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-A-24px.svg",
+   "b": "20261109_Utility-Filter-Option-B-24px.svg",
+   "likeness": 0.9965,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-C-16px.svg",
+   "b": "20261109_Utility-Chevron-Option-C-24px.svg",
+   "likeness": 0.9959,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-C-16px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-C-24px.svg",
+   "likeness": 0.9959,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-A-16px.svg",
+   "b": "20261109_Utility-Error-Option-B-16px.svg",
+   "likeness": 0.9952,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-B-16px.svg",
+   "b": "20261109_Utility-Reset-Option-B-24px.svg",
+   "likeness": 0.9944,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-A-16px.svg",
+   "b": "20261109_Utility-Play-Option-A-24px.svg",
+   "likeness": 0.9929,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-C-16px.svg",
+   "b": "20261109_Utility-Reset-Option-C-24px.svg",
+   "likeness": 0.9928,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Search-Option-B-16px.svg",
+   "b": "20261109_Utility-Search-Option-B-24px.svg",
+   "likeness": 0.991,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-A-16px.svg",
+   "b": "20261109_Utility-Sort-Option-A-24px.svg",
+   "likeness": 0.991,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-C-16px.svg",
+   "b": "20261109_Utility-Filter-Option-C-24px.svg",
+   "likeness": 0.9904,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-B-16px.svg",
+   "b": "20261109_Utility-Filter-Option-A-24px.svg",
+   "likeness": 0.9893,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-A-16px.svg",
+   "b": "20261109_Utility-Filter-Option-A-24px.svg",
+   "likeness": 0.9883,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-B-16px.svg",
+   "b": "20261109_Utility-Filter-Option-B-24px.svg",
+   "likeness": 0.9878,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-A-16px.svg",
+   "b": "20261109_Utility-Another-Site-Option-A-24px.svg",
+   "likeness": 0.9852,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-A-16px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-A-24px.svg",
+   "likeness": 0.9851,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-B-16px.svg",
+   "b": "20261109_Utility-Sort-Option-B-24px.svg",
+   "likeness": 0.9843,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-C-16px.svg",
+   "b": "20261109_Utility-Sort-Option-C-24px.svg",
+   "likeness": 0.9838,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-A-16px.svg",
+   "b": "20261109_Utility-Filter-Option-B-24px.svg",
+   "likeness": 0.9817,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-B-16px.svg",
+   "b": "20261109_Utility-Another-Site-Option-B-24px.svg",
+   "likeness": 0.9811,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Search-Option-C-16px.svg",
+   "b": "20261109_Utility-Search-Option-C-24px.svg",
+   "likeness": 0.9774,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-C-16px.svg",
+   "b": "20261109_Utility-Arrow-Option-C-24px.svg",
+   "likeness": 0.9746,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-B-16px.svg",
+   "b": "20261109_Utility-Copy-Option-B-24px.svg",
+   "likeness": 0.9726,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-A-16px.svg",
+   "b": "20261109_Utility-Arrow-Option-A-24px.svg",
+   "likeness": 0.9696,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-B-16px.svg",
+   "b": "20261109_Utility-Menu-Option-B-24px.svg",
+   "likeness": 0.9665,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-A-16px.svg",
+   "b": "20261109_Utility-Success-Option-B-16px.svg",
+   "likeness": 0.9661,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-A-24px.svg",
+   "b": "20261109_Utility-Success-Option-B-24px.svg",
+   "likeness": 0.9647,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-B-16px.svg",
+   "b": "20261109_Utility-Success-Option-B-24px.svg",
+   "likeness": 0.9644,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-B-16px.svg",
+   "b": "20261109_Utility-Warning-Option-B-24px.svg",
+   "likeness": 0.9644,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-A-16px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-B-16px.svg",
+   "likeness": 0.9618,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-B-16px.svg",
+   "b": "20261109_Utility-Play-Option-B-24px.svg",
+   "likeness": 0.9601,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-A-16px.svg",
+   "b": "20261109_Utility-Success-Option-A-24px.svg",
+   "likeness": 0.9593,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-16px.svg",
+   "b": "20261109_Utility-Close-Option-B-24px.svg",
+   "likeness": 0.9585,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-C-16px.svg",
+   "b": "20261109_Utility-Menu-Option-C-24px.svg",
+   "likeness": 0.9579,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-A-16px.svg",
+   "b": "20261109_Utility-Download-Option-A-24px.svg",
+   "likeness": 0.9565,
+   "percentile": 100,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-A-16px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-B-24px.svg",
+   "likeness": 0.9544,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-A-16px.svg",
+   "b": "20261109_Utility-Menu-Option-A-24px.svg",
+   "likeness": 0.9543,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-16px.svg",
+   "b": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "likeness": 0.9539,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-16px.svg",
+   "b": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "likeness": 0.9528,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-B-16px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-A-24px.svg",
+   "likeness": 0.952,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-C-16px.svg",
+   "b": "20261109_Utility-Warning-Option-A-24px.svg",
+   "likeness": 0.9496,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-A-16px.svg",
+   "b": "20261109_Utility-Pause-Option-A-24px.svg",
+   "likeness": 0.946,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-C-16px.svg",
+   "b": "20261109_Utility-Download-Option-C-24px.svg",
+   "likeness": 0.9435,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-B-16px.svg",
+   "b": "20261109_Utility-Download-Option-B-24px.svg",
+   "likeness": 0.9427,
+   "percentile": 99.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-A-24px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-B-24px.svg",
+   "likeness": 0.94,
+   "percentile": 99.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-A-24px.svg",
+   "b": "20261109_Utility-Filter-Option-C-24px.svg",
+   "likeness": 0.9382,
+   "percentile": 99.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-B-16px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.937,
+   "percentile": 99.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-A-16px.svg",
+   "b": "20261109_Utility-Success-Option-B-24px.svg",
+   "likeness": 0.9358,
+   "percentile": 99.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-A-16px.svg",
+   "b": "20261109_Utility-Filter-Option-C-24px.svg",
+   "likeness": 0.9335,
+   "percentile": 99.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-A-16px.svg",
+   "b": "20261109_Utility-Error-Option-A-24px.svg",
+   "likeness": 0.9314,
+   "percentile": 99.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-A-24px.svg",
+   "b": "20261109_Utility-Warning-Option-C-24px.svg",
+   "likeness": 0.9288,
+   "percentile": 99.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-B-16px.svg",
+   "b": "20261109_Utility-Error-Option-A-24px.svg",
+   "likeness": 0.9277,
+   "percentile": 99.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-B-16px.svg",
+   "b": "20261109_Utility-Success-Option-A-24px.svg",
+   "likeness": 0.9265,
+   "percentile": 99.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-B-24px.svg",
+   "b": "20261109_Utility-Filter-Option-C-24px.svg",
+   "likeness": 0.926,
+   "percentile": 99.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-A-16px.svg",
+   "b": "20261109_Utility-Filter-Option-C-16px.svg",
+   "likeness": 0.9256,
+   "percentile": 99.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-C-16px.svg",
+   "b": "20261109_Utility-Filter-Option-A-24px.svg",
+   "likeness": 0.9256,
+   "percentile": 99.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-C-16px.svg",
+   "b": "20261109_Utility-Chevron-Option-A-24px.svg",
+   "likeness": 0.9249,
+   "percentile": 99.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-A-16px.svg",
+   "b": "20261109_Utility-Copy-Option-C-16px.svg",
+   "likeness": 0.9236,
+   "percentile": 99.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-B-16px.svg",
+   "b": "20261109_Utility-Filter-Option-C-24px.svg",
+   "likeness": 0.9213,
+   "percentile": 99.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-A-16px.svg",
+   "b": "20261109_Utility-Chevron-Option-C-16px.svg",
+   "likeness": 0.9196,
+   "percentile": 99.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Search-Option-B-16px.svg",
+   "b": "20261109_Utility-Search-Option-A-24px.svg",
+   "likeness": 0.9176,
+   "percentile": 99.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Search-Option-A-24px.svg",
+   "b": "20261109_Utility-Search-Option-B-24px.svg",
+   "likeness": 0.9174,
+   "percentile": 99.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Search-Option-A-16px.svg",
+   "b": "20261109_Utility-Search-Option-B-16px.svg",
+   "likeness": 0.9153,
+   "percentile": 99.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-B-16px.svg",
+   "b": "20261109_Utility-Filter-Option-C-16px.svg",
+   "likeness": 0.9138,
+   "percentile": 99.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-C-16px.svg",
+   "b": "20261109_Utility-Filter-Option-B-24px.svg",
+   "likeness": 0.9131,
+   "percentile": 99,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Search-Option-A-16px.svg",
+   "b": "20261109_Utility-Search-Option-B-24px.svg",
+   "likeness": 0.908,
+   "percentile": 98.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-A-24px.svg",
+   "b": "20261109_Utility-Chevron-Option-C-24px.svg",
+   "likeness": 0.9021,
+   "percentile": 98.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-A-24px.svg",
+   "b": "20261109_Utility-Menu-Option-C-24px.svg",
+   "likeness": 0.8995,
+   "percentile": 98.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-C-16px.svg",
+   "b": "20261109_Utility-Another-Site-Option-C-24px.svg",
+   "likeness": 0.8991,
+   "percentile": 98.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-A-16px.svg",
+   "b": "20261109_Utility-Chevron-Option-C-24px.svg",
+   "likeness": 0.8962,
+   "percentile": 98.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-A-16px.svg",
+   "b": "20261109_Utility-Arrow-Option-C-24px.svg",
+   "likeness": 0.8945,
+   "percentile": 98,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-A-16px.svg",
+   "b": "20261109_Utility-Download-Option-B-16px.svg",
+   "likeness": 0.8905,
+   "percentile": 97.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-A-24px.svg",
+   "b": "20261109_Utility-Error-Option-B-24px.svg",
+   "likeness": 0.8885,
+   "percentile": 97.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-C-16px.svg",
+   "b": "20261109_Utility-Play-Option-C-24px.svg",
+   "likeness": 0.8868,
+   "percentile": 97.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-A-24px.svg",
+   "b": "20261109_Utility-Another-Site-Option-C-24px.svg",
+   "likeness": 0.8857,
+   "percentile": 97,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-A-16px.svg",
+   "b": "20261109_Utility-Menu-Option-C-16px.svg",
+   "likeness": 0.885,
+   "percentile": 96.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-B-24px.svg",
+   "b": "20261109_Utility-Sort-Option-C-24px.svg",
+   "likeness": 0.8822,
+   "percentile": 96.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-C-16px.svg",
+   "b": "20261109_Utility-Sort-Option-B-24px.svg",
+   "likeness": 0.8813,
+   "percentile": 96.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-A-16px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-C-16px.svg",
+   "likeness": 0.8812,
+   "percentile": 96.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-C-16px.svg",
+   "b": "20261109_Utility-Another-Site-Option-A-24px.svg",
+   "likeness": 0.8783,
+   "percentile": 96.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-A-16px.svg",
+   "b": "20261109_Utility-Arrow-Option-C-16px.svg",
+   "likeness": 0.8721,
+   "percentile": 95.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-C-16px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-A-24px.svg",
+   "likeness": 0.8671,
+   "percentile": 94.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-C-16px.svg",
+   "b": "20261109_Utility-Warning-Option-C-24px.svg",
+   "likeness": 0.8654,
+   "percentile": 94.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-C-16px.svg",
+   "b": "20261109_Utility-Pause-Option-C-24px.svg",
+   "likeness": 0.8645,
+   "percentile": 93.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-A-16px.svg",
+   "b": "20261109_Utility-Warning-Option-C-16px.svg",
+   "likeness": 0.864,
+   "percentile": 93.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-A-16px.svg",
+   "b": "20261109_Utility-Download-Option-B-24px.svg",
+   "likeness": 0.8638,
+   "percentile": 93.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-A-16px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-C-24px.svg",
+   "likeness": 0.8615,
+   "percentile": 93.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-A-16px.svg",
+   "b": "20261109_Utility-Another-Site-Option-C-24px.svg",
+   "likeness": 0.8614,
+   "percentile": 93.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-C-16px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-B-24px.svg",
+   "likeness": 0.8605,
+   "percentile": 93.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-A-16px.svg",
+   "b": "20261109_Utility-Menu-Option-C-24px.svg",
+   "likeness": 0.8597,
+   "percentile": 93,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-B-16px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-C-16px.svg",
+   "likeness": 0.8597,
+   "percentile": 93,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-A-24px.svg",
+   "b": "20261109_Utility-Copy-Option-C-24px.svg",
+   "likeness": 0.8552,
+   "percentile": 92,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-B-16px.svg",
+   "b": "20261109_Utility-Sort-Option-C-16px.svg",
+   "likeness": 0.8546,
+   "percentile": 91.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-A-24px.svg",
+   "b": "20261109_Utility-Download-Option-B-24px.svg",
+   "likeness": 0.8515,
+   "percentile": 91.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-B-16px.svg",
+   "b": "20261109_Utility-Sort-Option-C-24px.svg",
+   "likeness": 0.8478,
+   "percentile": 90.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-A-16px.svg",
+   "b": "20261109_Utility-Another-Site-Option-C-16px.svg",
+   "likeness": 0.8454,
+   "percentile": 89.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Search-Option-A-16px.svg",
+   "b": "20261109_Utility-Search-Option-C-24px.svg",
+   "likeness": 0.8441,
+   "percentile": 89.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-B-24px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-C-24px.svg",
+   "likeness": 0.8441,
+   "percentile": 89.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-C-16px.svg",
+   "b": "20261109_Utility-Menu-Option-A-24px.svg",
+   "likeness": 0.844,
+   "percentile": 89.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-A-24px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-C-24px.svg",
+   "likeness": 0.8433,
+   "percentile": 89.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-B-16px.svg",
+   "b": "20261109_Utility-Selected-Check-Option-C-24px.svg",
+   "likeness": 0.8415,
+   "percentile": 88.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-A-24px.svg",
+   "b": "20261109_Utility-Arrow-Option-C-24px.svg",
+   "likeness": 0.8404,
+   "percentile": 88.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-B-16px.svg",
+   "b": "20261109_Utility-Download-Option-A-24px.svg",
+   "likeness": 0.8393,
+   "percentile": 88.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-24px.svg",
+   "b": "20261109_Utility-Close-Option-C-24px.svg",
+   "likeness": 0.8365,
+   "percentile": 87.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-A-24px.svg",
+   "b": "20261109_Utility-Success-Option-C-24px.svg",
+   "likeness": 0.8345,
+   "percentile": 86.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-A-24px.svg",
+   "b": "20261109_Utility-Error-Option-C-24px.svg",
+   "likeness": 0.8306,
+   "percentile": 85.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-B-24px.svg",
+   "b": "20261109_Utility-Success-Option-C-24px.svg",
+   "likeness": 0.8192,
+   "percentile": 82.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-A-16px.svg",
+   "b": "20261109_Utility-Menu-Option-B-16px.svg",
+   "likeness": 0.8171,
+   "percentile": 81.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Search-Option-A-24px.svg",
+   "b": "20261109_Utility-Search-Option-C-24px.svg",
+   "likeness": 0.8147,
+   "percentile": 80.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-A-16px.svg",
+   "b": "20261109_Utility-Success-Option-C-24px.svg",
+   "likeness": 0.8098,
+   "percentile": 79.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-16px.svg",
+   "b": "20261109_Utility-Close-Option-C-24px.svg",
+   "likeness": 0.8055,
+   "percentile": 77.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-C-16px.svg",
+   "b": "20261109_Utility-View-Full-Size-Option-C-24px.svg",
+   "likeness": 0.7947,
+   "percentile": 74.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-B-16px.svg",
+   "b": "20261109_Utility-Menu-Option-A-24px.svg",
+   "likeness": 0.7929,
+   "percentile": 74,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-A-16px.svg",
+   "b": "20261109_Utility-Error-Option-C-24px.svg",
+   "likeness": 0.7858,
+   "percentile": 71.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-A-16px.svg",
+   "b": "20261109_Utility-Warning-Option-A-24px.svg",
+   "likeness": 0.7853,
+   "percentile": 71.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-A-24px.svg",
+   "b": "20261109_Utility-Menu-Option-B-24px.svg",
+   "likeness": 0.7818,
+   "percentile": 70.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-C-16px.svg",
+   "b": "20261109_Utility-Arrow-Option-A-24px.svg",
+   "likeness": 0.7801,
+   "percentile": 69.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-B-16px.svg",
+   "b": "20261109_Utility-Success-Option-C-24px.svg",
+   "likeness": 0.7751,
+   "percentile": 68.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-B-16px.svg",
+   "b": "20261109_Utility-Menu-Option-C-16px.svg",
+   "likeness": 0.7704,
+   "percentile": 66.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-B-16px.svg",
+   "b": "20261109_Utility-Error-Option-C-24px.svg",
+   "likeness": 0.7685,
+   "percentile": 66,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-B-16px.svg",
+   "b": "20261109_Utility-Menu-Option-C-24px.svg",
+   "likeness": 0.7682,
+   "percentile": 65.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Search-Option-A-16px.svg",
+   "b": "20261109_Utility-Search-Option-C-16px.svg",
+   "likeness": 0.7657,
+   "percentile": 65.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-A-16px.svg",
+   "b": "20261109_Utility-Menu-Option-B-24px.svg",
+   "likeness": 0.7604,
+   "percentile": 63.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Search-Option-B-16px.svg",
+   "b": "20261109_Utility-Search-Option-C-24px.svg",
+   "likeness": 0.7464,
+   "percentile": 58.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-B-16px.svg",
+   "b": "20261109_Utility-Error-Option-B-24px.svg",
+   "likeness": 0.7432,
+   "percentile": 57.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-B-24px.svg",
+   "b": "20261109_Utility-Menu-Option-C-24px.svg",
+   "likeness": 0.7391,
+   "percentile": 56.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-A-16px.svg",
+   "b": "20261109_Utility-Error-Option-B-24px.svg",
+   "likeness": 0.7359,
+   "percentile": 55.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-B-24px.svg",
+   "b": "20261109_Utility-Error-Option-C-24px.svg",
+   "likeness": 0.7353,
+   "percentile": 54.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Search-Option-C-16px.svg",
+   "b": "20261109_Utility-Search-Option-A-24px.svg",
+   "likeness": 0.727,
+   "percentile": 51.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-A-24px.svg",
+   "b": "20261109_Utility-View-Full-Size-Option-B-24px.svg",
+   "likeness": 0.7198,
+   "percentile": 49.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-B-24px.svg",
+   "b": "20261109_Utility-Play-Option-C-24px.svg",
+   "likeness": 0.7183,
+   "percentile": 49,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Search-Option-B-24px.svg",
+   "b": "20261109_Utility-Search-Option-C-24px.svg",
+   "likeness": 0.7148,
+   "percentile": 47.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-A-16px.svg",
+   "b": "20261109_Utility-View-Full-Size-Option-B-16px.svg",
+   "likeness": 0.7139,
+   "percentile": 47.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-C-16px.svg",
+   "b": "20261109_Utility-Menu-Option-B-24px.svg",
+   "likeness": 0.7087,
+   "percentile": 45.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-C-16px.svg",
+   "b": "20261109_Utility-Reset-Option-B-24px.svg",
+   "likeness": 0.7049,
+   "percentile": 44.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-B-16px.svg",
+   "b": "20261109_Utility-Play-Option-C-24px.svg",
+   "likeness": 0.7032,
+   "percentile": 43.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-B-16px.svg",
+   "b": "20261109_Utility-Reset-Option-C-16px.svg",
+   "likeness": 0.6945,
+   "percentile": 41.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-B-24px.svg",
+   "b": "20261109_Utility-Pause-Option-C-24px.svg",
+   "likeness": 0.6921,
+   "percentile": 40.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-B-16px.svg",
+   "b": "20261109_Utility-View-Full-Size-Option-B-24px.svg",
+   "likeness": 0.6903,
+   "percentile": 39.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-B-24px.svg",
+   "b": "20261109_Utility-Reset-Option-C-24px.svg",
+   "likeness": 0.6867,
+   "percentile": 39,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-B-16px.svg",
+   "b": "20261109_Utility-Reset-Option-C-24px.svg",
+   "likeness": 0.6839,
+   "percentile": 38.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-B-16px.svg",
+   "b": "20261109_Utility-Play-Option-C-16px.svg",
+   "likeness": 0.6788,
+   "percentile": 36.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-C-16px.svg",
+   "b": "20261109_Utility-Error-Option-C-24px.svg",
+   "likeness": 0.6724,
+   "percentile": 34.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-A-16px.svg",
+   "b": "20261109_Utility-Error-Option-C-16px.svg",
+   "likeness": 0.6598,
+   "percentile": 31.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Search-Option-B-16px.svg",
+   "b": "20261109_Utility-Search-Option-C-16px.svg",
+   "likeness": 0.6524,
+   "percentile": 29.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-B-16px.svg",
+   "b": "20261109_Utility-Error-Option-C-16px.svg",
+   "likeness": 0.6505,
+   "percentile": 29.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-B-16px.svg",
+   "b": "20261109_Utility-Pause-Option-C-24px.svg",
+   "likeness": 0.6501,
+   "percentile": 29,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-A-16px.svg",
+   "b": "20261109_Utility-Copy-Option-A-24px.svg",
+   "likeness": 0.6454,
+   "percentile": 27.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-B-16px.svg",
+   "b": "20261109_Utility-Pause-Option-C-16px.svg",
+   "likeness": 0.6452,
+   "percentile": 27.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-C-16px.svg",
+   "b": "20261109_Utility-Play-Option-B-24px.svg",
+   "likeness": 0.6382,
+   "percentile": 26.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-B-16px.svg",
+   "b": "20261109_Utility-Sort-Option-A-24px.svg",
+   "likeness": 0.6346,
+   "percentile": 25.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-A-16px.svg",
+   "b": "20261109_Utility-Sort-Option-B-16px.svg",
+   "likeness": 0.6195,
+   "percentile": 21.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Search-Option-C-16px.svg",
+   "b": "20261109_Utility-Search-Option-B-24px.svg",
+   "likeness": 0.6097,
+   "percentile": 19.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-C-16px.svg",
+   "b": "20261109_Utility-Copy-Option-A-24px.svg",
+   "likeness": 0.6074,
+   "percentile": 19.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-A-16px.svg",
+   "b": "20261109_Utility-Warning-Option-C-24px.svg",
+   "likeness": 0.6027,
+   "percentile": 18.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-B-16px.svg",
+   "b": "20261109_Utility-View-Full-Size-Option-A-24px.svg",
+   "likeness": 0.5992,
+   "percentile": 17.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-C-16px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.589,
+   "percentile": 16.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-A-24px.svg",
+   "b": "20261109_Utility-Sort-Option-B-24px.svg",
+   "likeness": 0.5842,
+   "percentile": 15.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-B-16px.svg",
+   "b": "20261109_Utility-Reset-Option-A-24px.svg",
+   "likeness": 0.5714,
+   "percentile": 13.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-A-24px.svg",
+   "b": "20261109_Utility-Reset-Option-B-24px.svg",
+   "likeness": 0.5703,
+   "percentile": 13.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-C-16px.svg",
+   "b": "20261109_Utility-Copy-Option-C-24px.svg",
+   "likeness": 0.5698,
+   "percentile": 13.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-A-16px.svg",
+   "b": "20261109_Utility-Reset-Option-B-16px.svg",
+   "likeness": 0.5697,
+   "percentile": 13.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-A-16px.svg",
+   "b": "20261109_Utility-Reset-Option-B-24px.svg",
+   "likeness": 0.5659,
+   "percentile": 12.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-A-16px.svg",
+   "b": "20261109_Utility-Sort-Option-B-24px.svg",
+   "likeness": 0.5541,
+   "percentile": 11.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-A-24px.svg",
+   "b": "20261109_Utility-Download-Option-C-24px.svg",
+   "likeness": 0.5372,
+   "percentile": 9.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-A-16px.svg",
+   "b": "20261109_Utility-Reset-Option-C-16px.svg",
+   "likeness": 0.5339,
+   "percentile": 9.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-A-16px.svg",
+   "b": "20261109_Utility-View-Full-Size-Option-A-24px.svg",
+   "likeness": 0.5327,
+   "percentile": 9.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-B-24px.svg",
+   "b": "20261109_Utility-View-Full-Size-Option-C-24px.svg",
+   "likeness": 0.5322,
+   "percentile": 9.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-C-16px.svg",
+   "b": "20261109_Utility-Reset-Option-A-24px.svg",
+   "likeness": 0.5318,
+   "percentile": 9.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-A-16px.svg",
+   "b": "20261109_Utility-Download-Option-C-24px.svg",
+   "likeness": 0.5285,
+   "percentile": 8.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-A-16px.svg",
+   "b": "20261109_Utility-Download-Option-C-16px.svg",
+   "likeness": 0.5234,
+   "percentile": 8.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-C-16px.svg",
+   "b": "20261109_Utility-Sort-Option-A-24px.svg",
+   "likeness": 0.5221,
+   "percentile": 8.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-A-24px.svg",
+   "b": "20261109_Utility-Reset-Option-C-24px.svg",
+   "likeness": 0.5216,
+   "percentile": 8.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-A-16px.svg",
+   "b": "20261109_Utility-Reset-Option-C-24px.svg",
+   "likeness": 0.5206,
+   "percentile": 8.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-C-16px.svg",
+   "b": "20261109_Utility-Error-Option-A-24px.svg",
+   "likeness": 0.5142,
+   "percentile": 7.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-B-24px.svg",
+   "b": "20261109_Utility-Download-Option-C-24px.svg",
+   "likeness": 0.5126,
+   "percentile": 7.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-C-16px.svg",
+   "b": "20261109_Utility-Download-Option-A-24px.svg",
+   "likeness": 0.5051,
+   "percentile": 6.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-A-16px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.5033,
+   "percentile": 6.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-A-24px.svg",
+   "b": "20261109_Utility-Pause-Option-B-24px.svg",
+   "likeness": 0.5006,
+   "percentile": 6.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-A-16px.svg",
+   "b": "20261109_Utility-Another-Site-Option-B-24px.svg",
+   "likeness": 0.4978,
+   "percentile": 6.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-A-16px.svg",
+   "b": "20261109_Utility-Another-Site-Option-B-16px.svg",
+   "likeness": 0.4957,
+   "percentile": 6.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-A-24px.svg",
+   "b": "20261109_Utility-Sort-Option-C-24px.svg",
+   "likeness": 0.4957,
+   "percentile": 6.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-B-16px.svg",
+   "b": "20261109_Utility-View-Full-Size-Option-C-16px.svg",
+   "likeness": 0.4865,
+   "percentile": 5.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-A-16px.svg",
+   "b": "20261109_Utility-Sort-Option-C-16px.svg",
+   "likeness": 0.485,
+   "percentile": 5.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-A-16px.svg",
+   "b": "20261109_Utility-Pause-Option-B-16px.svg",
+   "likeness": 0.4801,
+   "percentile": 5.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-C-16px.svg",
+   "b": "20261109_Utility-Download-Option-B-24px.svg",
+   "likeness": 0.48,
+   "percentile": 5.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-A-24px.svg",
+   "b": "20261109_Utility-Warning-Option-B-24px.svg",
+   "likeness": 0.4768,
+   "percentile": 5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-A-24px.svg",
+   "b": "20261109_Utility-Another-Site-Option-B-24px.svg",
+   "likeness": 0.4644,
+   "percentile": 4.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-B-16px.svg",
+   "b": "20261109_Utility-Download-Option-C-24px.svg",
+   "likeness": 0.4628,
+   "percentile": 4.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Download-Option-B-16px.svg",
+   "b": "20261109_Utility-Download-Option-C-16px.svg",
+   "likeness": 0.4606,
+   "percentile": 4.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-B-16px.svg",
+   "b": "20261109_Utility-Another-Site-Option-A-24px.svg",
+   "likeness": 0.4599,
+   "percentile": 4.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-A-16px.svg",
+   "b": "20261109_Utility-Close-Option-B-24px.svg",
+   "likeness": 0.4518,
+   "percentile": 3.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-A-16px.svg",
+   "b": "20261109_Utility-Sort-Option-C-24px.svg",
+   "likeness": 0.451,
+   "percentile": 3.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-A-24px.svg",
+   "b": "20261109_Utility-Close-Option-B-24px.svg",
+   "likeness": 0.4484,
+   "percentile": 3.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-A-16px.svg",
+   "b": "20261109_Utility-Success-Option-C-16px.svg",
+   "likeness": 0.4479,
+   "percentile": 3.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-B-16px.svg",
+   "b": "20261109_Utility-Success-Option-C-16px.svg",
+   "likeness": 0.447,
+   "percentile": 3.5,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-B-16px.svg",
+   "b": "20261109_Utility-Pause-Option-A-24px.svg",
+   "likeness": 0.4397,
+   "percentile": 3.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-B-24px.svg",
+   "b": "20261109_Utility-Another-Site-Option-C-24px.svg",
+   "likeness": 0.4363,
+   "percentile": 3.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-B-24px.svg",
+   "b": "20261109_Utility-Copy-Option-C-24px.svg",
+   "likeness": 0.4327,
+   "percentile": 2.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-A-16px.svg",
+   "b": "20261109_Utility-Copy-Option-C-24px.svg",
+   "likeness": 0.4287,
+   "percentile": 2.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-16px.svg",
+   "b": "20261109_Utility-Close-Option-C-16px.svg",
+   "likeness": 0.427,
+   "percentile": 2.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-B-16px.svg",
+   "b": "20261109_Utility-Copy-Option-A-24px.svg",
+   "likeness": 0.4147,
+   "percentile": 2.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-C-16px.svg",
+   "b": "20261109_Utility-Success-Option-C-24px.svg",
+   "likeness": 0.4131,
+   "percentile": 2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-B-16px.svg",
+   "b": "20261109_Utility-Warning-Option-A-24px.svg",
+   "likeness": 0.4079,
+   "percentile": 1.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-B-24px.svg",
+   "b": "20261109_Utility-Warning-Option-C-24px.svg",
+   "likeness": 0.406,
+   "percentile": 1.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-B-16px.svg",
+   "b": "20261109_Utility-Copy-Option-C-24px.svg",
+   "likeness": 0.4059,
+   "percentile": 1.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-A-24px.svg",
+   "b": "20261109_Utility-View-Full-Size-Option-C-24px.svg",
+   "likeness": 0.4008,
+   "percentile": 1.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-B-16px.svg",
+   "b": "20261109_Utility-Another-Site-Option-C-24px.svg",
+   "likeness": 0.4004,
+   "percentile": 1.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-C-16px.svg",
+   "b": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "likeness": 0.3948,
+   "percentile": 1.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-C-16px.svg",
+   "b": "20261109_Utility-Close-Option-C-24px.svg",
+   "likeness": 0.3847,
+   "percentile": 1.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-A-24px.svg",
+   "b": "20261109_Utility-Copy-Option-B-24px.svg",
+   "likeness": 0.3836,
+   "percentile": 1.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-A-16px.svg",
+   "b": "20261109_Utility-Pause-Option-C-24px.svg",
+   "likeness": 0.3774,
+   "percentile": 1.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-A-16px.svg",
+   "b": "20261109_Utility-Warning-Option-B-24px.svg",
+   "likeness": 0.3753,
+   "percentile": 1.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "b": "20261109_Utility-Arrow-Option-C-24px.svg",
+   "likeness": 0.3745,
+   "percentile": 1.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-A-16px.svg",
+   "b": "20261109_Utility-View-Full-Size-Option-C-16px.svg",
+   "likeness": 0.3641,
+   "percentile": 1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-16px.svg",
+   "b": "20261109_Utility-Arrow-Option-C-16px.svg",
+   "likeness": 0.3611,
+   "percentile": 1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-A-16px.svg",
+   "b": "20261109_Utility-Close-Option-B-16px.svg",
+   "likeness": 0.3578,
+   "percentile": 0.9,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-A-24px.svg",
+   "b": "20261109_Utility-Pause-Option-C-24px.svg",
+   "likeness": 0.3551,
+   "percentile": 0.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-A-16px.svg",
+   "b": "20261109_Utility-Close-Option-C-24px.svg",
+   "likeness": 0.3544,
+   "percentile": 0.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-16px.svg",
+   "b": "20261109_Utility-Close-Option-A-24px.svg",
+   "likeness": 0.3536,
+   "percentile": 0.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-B-16px.svg",
+   "b": "20261109_Utility-Warning-Option-C-24px.svg",
+   "likeness": 0.3507,
+   "percentile": 0.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-A-24px.svg",
+   "b": "20261109_Utility-Close-Option-C-24px.svg",
+   "likeness": 0.3482,
+   "percentile": 0.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-C-16px.svg",
+   "b": "20261109_Utility-View-Full-Size-Option-B-24px.svg",
+   "likeness": 0.3406,
+   "percentile": 0.7,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-C-16px.svg",
+   "b": "20261109_Utility-Warning-Option-B-24px.svg",
+   "likeness": 0.3361,
+   "percentile": 0.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-A-16px.svg",
+   "b": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "likeness": 0.3302,
+   "percentile": 0.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-A-24px.svg",
+   "b": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "likeness": 0.3287,
+   "percentile": 0.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-B-16px.svg",
+   "b": "20261109_Utility-View-Full-Size-Option-C-24px.svg",
+   "likeness": 0.3277,
+   "percentile": 0.6,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-C-16px.svg",
+   "b": "20261109_Utility-Another-Site-Option-B-24px.svg",
+   "likeness": 0.3225,
+   "percentile": 0.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-C-16px.svg",
+   "b": "20261109_Utility-View-Full-Size-Option-A-24px.svg",
+   "likeness": 0.3192,
+   "percentile": 0.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-A-16px.svg",
+   "b": "20261109_Utility-Warning-Option-B-16px.svg",
+   "likeness": 0.3161,
+   "percentile": 0.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-16px.svg",
+   "b": "20261109_Utility-Arrow-Option-C-24px.svg",
+   "likeness": 0.3157,
+   "percentile": 0.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-C-16px.svg",
+   "b": "20261109_Utility-Success-Option-B-24px.svg",
+   "likeness": 0.3096,
+   "percentile": 0.4,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-B-16px.svg",
+   "b": "20261109_Utility-Another-Site-Option-C-16px.svg",
+   "likeness": 0.3005,
+   "percentile": 0.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "b": "20261109_Utility-Chevron-Option-C-24px.svg",
+   "likeness": 0.2996,
+   "percentile": 0.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-A-16px.svg",
+   "b": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "likeness": 0.2955,
+   "percentile": 0.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-A-24px.svg",
+   "b": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "likeness": 0.2953,
+   "percentile": 0.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Success-Option-C-16px.svg",
+   "b": "20261109_Utility-Success-Option-A-24px.svg",
+   "likeness": 0.2928,
+   "percentile": 0.3,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-C-16px.svg",
+   "b": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "likeness": 0.2858,
+   "percentile": 0.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-A-16px.svg",
+   "b": "20261109_Utility-Arrow-Option-B-16px.svg",
+   "likeness": 0.2831,
+   "percentile": 0.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-16px.svg",
+   "b": "20261109_Utility-Arrow-Option-A-24px.svg",
+   "likeness": 0.2818,
+   "percentile": 0.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-C-16px.svg",
+   "b": "20261109_Utility-Close-Option-B-24px.svg",
+   "likeness": 0.2719,
+   "percentile": 0.2,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-B-16px.svg",
+   "b": "20261109_Utility-Warning-Option-C-16px.svg",
+   "likeness": 0.2589,
+   "percentile": 0.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Error-Option-C-16px.svg",
+   "b": "20261109_Utility-Error-Option-B-24px.svg",
+   "likeness": 0.2425,
+   "percentile": 0.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-A-24px.svg",
+   "b": "20261109_Utility-Play-Option-B-24px.svg",
+   "likeness": 0.236,
+   "percentile": 0.1,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-16px.svg",
+   "b": "20261109_Utility-Chevron-Option-C-24px.svg",
+   "likeness": 0.2304,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-A-16px.svg",
+   "b": "20261109_Utility-Play-Option-B-24px.svg",
+   "likeness": 0.2207,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-16px.svg",
+   "b": "20261109_Utility-Chevron-Option-C-16px.svg",
+   "likeness": 0.2147,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-16px.svg",
+   "b": "20261109_Utility-Chevron-Option-A-24px.svg",
+   "likeness": 0.1995,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-A-16px.svg",
+   "b": "20261109_Utility-Chevron-Option-B-16px.svg",
+   "likeness": 0.1994,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-A-16px.svg",
+   "b": "20261109_Utility-Pause-Option-C-16px.svg",
+   "likeness": 0.1809,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-C-16px.svg",
+   "b": "20261109_Utility-Pause-Option-A-24px.svg",
+   "likeness": 0.1724,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-A-16px.svg",
+   "b": "20261109_Utility-View-Full-Size-Option-B-24px.svg",
+   "likeness": 0.137,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-B-16px.svg",
+   "b": "20261109_Utility-Play-Option-A-24px.svg",
+   "likeness": 0.1217,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-A-24px.svg",
+   "b": "20261109_Utility-Play-Option-C-24px.svg",
+   "likeness": 0.1147,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-A-16px.svg",
+   "b": "20261109_Utility-Play-Option-C-24px.svg",
+   "likeness": 0.1076,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-C-16px.svg",
+   "b": "20261109_Utility-Copy-Option-B-24px.svg",
+   "likeness": 0.1039,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-A-16px.svg",
+   "b": "20261109_Utility-Play-Option-B-16px.svg",
+   "likeness": 0.0978,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-A-16px.svg",
+   "b": "20261109_Utility-Copy-Option-B-16px.svg",
+   "likeness": 0.0965,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-B-16px.svg",
+   "b": "20261109_Utility-Copy-Option-C-16px.svg",
+   "likeness": 0.0909,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-A-16px.svg",
+   "b": "20261109_Utility-Copy-Option-B-24px.svg",
+   "likeness": 0.0688,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-A-16px.svg",
+   "b": "20261109_Utility-View-Full-Size-Option-C-24px.svg",
+   "likeness": 0.0427,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-C-16px.svg",
+   "b": "20261109_Utility-Play-Option-A-24px.svg",
+   "likeness": 0.0074,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Play-Option-A-16px.svg",
+   "b": "20261109_Utility-Play-Option-C-16px.svg",
+   "likeness": 0.0034,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-C-16px.svg",
+   "b": "20261109_Utility-Close-Option-A-24px.svg",
+   "likeness": -0.1149,
+   "percentile": 0,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Utility-Close-Option-A-16px.svg",
+   "b": "20261109_Utility-Close-Option-C-16px.svg",
+   "likeness": -0.1224,
+   "percentile": 0,
+   "against": "new"
+  }
+ ],
+ "closest": [
+  {
+   "a": "20261109_Utility-Another-Site-Option-A-16px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.6001,
+   "percentile": 18,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-B-16px.svg",
+   "b": "CL-022 Act",
+   "likeness": 0.8157,
+   "percentile": 81.2,
+   "extent": 0.58
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-C-16px.svg",
+   "b": "CL-055 Productivity",
+   "likeness": 0.4398,
+   "percentile": 3.2,
+   "extent": 0.88
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-A-16px.svg",
+   "b": "CL-002 Representation",
+   "likeness": 0.794,
+   "percentile": 74.3,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-16px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.5707,
+   "percentile": 13.5,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-C-16px.svg",
+   "b": "R-40 Worker Voice on AI",
+   "likeness": 0.847,
+   "percentile": 89.9,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-A-16px.svg",
+   "b": "CL-064 Trade Costs",
+   "likeness": 0.7338,
+   "percentile": 54.4,
+   "extent": 0.58
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-16px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.4256,
+   "percentile": 2.6,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-C-16px.svg",
+   "b": "CL-022 Act",
+   "likeness": 0.7129,
+   "percentile": 47.4,
+   "extent": 0.42
+  },
+  {
+   "a": "20261109_Utility-Close-Option-A-16px.svg",
+   "b": "CL-022 Act",
+   "likeness": 0.8313,
+   "percentile": 86,
+   "extent": 0.58
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-16px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.5023,
+   "percentile": 6.7,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-Close-Option-C-16px.svg",
+   "b": "CL-008 Political Hostility",
+   "likeness": 0.1245,
+   "percentile": 0,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-A-16px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.2322,
+   "percentile": 0,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-B-16px.svg",
+   "b": "CL-039 Feed Ranking",
+   "likeness": 0.6228,
+   "percentile": 22.6,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-C-16px.svg",
+   "b": "CL-008 Political Hostility",
+   "likeness": 0.3541,
+   "percentile": 0.8,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-Download-Option-A-16px.svg",
+   "b": "CL-025 Congress",
+   "likeness": 0.7766,
+   "percentile": 68.7,
+   "extent": 0.79
+  },
+  {
+   "a": "20261109_Utility-Download-Option-B-16px.svg",
+   "b": "CL-025 Congress",
+   "likeness": 0.6626,
+   "percentile": 32.1,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Download-Option-C-16px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.5522,
+   "percentile": 11.2,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-Error-Option-A-16px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.4786,
+   "percentile": 5.2,
+   "extent": 0.88
+  },
+  {
+   "a": "20261109_Utility-Error-Option-B-16px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.4698,
+   "percentile": 4.6,
+   "extent": 0.88
+  },
+  {
+   "a": "20261109_Utility-Error-Option-C-16px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.2599,
+   "percentile": 0.1,
+   "extent": 0.88
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-A-16px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.7183,
+   "percentile": 49,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-B-16px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.7054,
+   "percentile": 44.7,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-C-16px.svg",
+   "b": "CL-042 AI Concentration",
+   "likeness": 0.7551,
+   "percentile": 61.7,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-A-16px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.7523,
+   "percentile": 60.4,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-B-16px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.8979,
+   "percentile": 98.2,
+   "extent": 0.58
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-C-16px.svg",
+   "b": "CL-039 Feed Ranking",
+   "likeness": 0.7456,
+   "percentile": 58.3,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-A-16px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.8628,
+   "percentile": 93.5,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-B-16px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.4568,
+   "percentile": 4,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-C-16px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.4127,
+   "percentile": 2,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-Play-Option-A-16px.svg",
+   "b": "CL-004 Petition",
+   "likeness": 0.8253,
+   "percentile": 84.2,
+   "extent": 0.67
+  },
+  {
+   "a": "20261109_Utility-Play-Option-B-16px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.5488,
+   "percentile": 10.8,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-Play-Option-C-16px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.4732,
+   "percentile": 4.8,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-A-16px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.6209,
+   "percentile": 22.2,
+   "extent": 0.88
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-B-16px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.5031,
+   "percentile": 6.8,
+   "extent": 0.79
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-C-16px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.5347,
+   "percentile": 9.3,
+   "extent": 0.88
+  },
+  {
+   "a": "20261109_Utility-Search-Option-A-16px.svg",
+   "b": "CL-024 Feedback Loop",
+   "likeness": 0.6319,
+   "percentile": 24.6,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Search-Option-B-16px.svg",
+   "b": "CL-023 Evidence",
+   "likeness": 0.7312,
+   "percentile": 53.7,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Search-Option-C-16px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.4369,
+   "percentile": 3.1,
+   "extent": 0.88
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-A-16px.svg",
+   "b": "R-28 Capital-Income Tax",
+   "likeness": 0.7033,
+   "percentile": 44,
+   "extent": 0.71
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-B-16px.svg",
+   "b": "R-28 Capital-Income Tax",
+   "likeness": 0.6851,
+   "percentile": 38.6,
+   "extent": 0.67
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-C-16px.svg",
+   "b": "CL-013 Incumbent Defeat",
+   "likeness": 0.7416,
+   "percentile": 57,
+   "extent": 0.58
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-A-16px.svg",
+   "b": "CL-047 Data Rights",
+   "likeness": 0.7524,
+   "percentile": 60.4,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-B-16px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.7167,
+   "percentile": 48.4,
+   "extent": 0.67
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-C-16px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.7567,
+   "percentile": 62.3,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Success-Option-A-16px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.4068,
+   "percentile": 1.9,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-Success-Option-B-16px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.4383,
+   "percentile": 3.2,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-Success-Option-C-16px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.0721,
+   "percentile": 0,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-A-16px.svg",
+   "b": "CL-059 Credit Allocation",
+   "likeness": -0.1843,
+   "percentile": 0,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-B-16px.svg",
+   "b": "CL-059 Credit Allocation",
+   "likeness": 0.1304,
+   "percentile": 0,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-C-16px.svg",
+   "b": "CL-055 Productivity",
+   "likeness": 0.1829,
+   "percentile": 0,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-A-16px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.559,
+   "percentile": 12,
+   "extent": 0.96
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-B-16px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.6697,
+   "percentile": 33.8,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-C-16px.svg",
+   "b": "CL-059 Credit Allocation",
+   "likeness": 0.6944,
+   "percentile": 41.3,
+   "extent": 0.88
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-A-24px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.5354,
+   "percentile": 9.4,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-B-24px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.7677,
+   "percentile": 65.7,
+   "extent": 0.58
+  },
+  {
+   "a": "20261109_Utility-Another-Site-Option-C-24px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.5012,
+   "percentile": 6.6,
+   "extent": 0.79
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-A-24px.svg",
+   "b": "CL-002 Representation",
+   "likeness": 0.774,
+   "percentile": 68,
+   "extent": 0.67
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-B-24px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.6538,
+   "percentile": 29.8,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Arrow-Option-C-24px.svg",
+   "b": "R-07 Small-Donor Matching",
+   "likeness": 0.8298,
+   "percentile": 85.4,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-A-24px.svg",
+   "b": "CL-064 Trade Costs",
+   "likeness": 0.7284,
+   "percentile": 52.6,
+   "extent": 0.58
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-B-24px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.5377,
+   "percentile": 9.6,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Chevron-Option-C-24px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.6999,
+   "percentile": 42.9,
+   "extent": 0.42
+  },
+  {
+   "a": "20261109_Utility-Close-Option-A-24px.svg",
+   "b": "CL-022 Act",
+   "likeness": 0.8335,
+   "percentile": 86.5,
+   "extent": 0.58
+  },
+  {
+   "a": "20261109_Utility-Close-Option-B-24px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.6484,
+   "percentile": 28.6,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Close-Option-C-24px.svg",
+   "b": "CL-039 Feed Ranking",
+   "likeness": 0.5729,
+   "percentile": 13.8,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-A-24px.svg",
+   "b": "CL-039 Feed Ranking",
+   "likeness": 0.5485,
+   "percentile": 10.7,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-B-24px.svg",
+   "b": "CL-039 Feed Ranking",
+   "likeness": 0.623,
+   "percentile": 22.6,
+   "extent": 0.79
+  },
+  {
+   "a": "20261109_Utility-Copy-Option-C-24px.svg",
+   "b": "CL-067 Healthcare",
+   "likeness": 0.7021,
+   "percentile": 43.5,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Download-Option-A-24px.svg",
+   "b": "CL-001 Voting",
+   "likeness": 0.7926,
+   "percentile": 73.9,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Download-Option-B-24px.svg",
+   "b": "CL-025 Congress",
+   "likeness": 0.7741,
+   "percentile": 68,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Download-Option-C-24px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.6628,
+   "percentile": 32.1,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Error-Option-A-24px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.5676,
+   "percentile": 13.1,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Error-Option-B-24px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.68,
+   "percentile": 36.9,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Error-Option-C-24px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.4926,
+   "percentile": 6,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-A-24px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.668,
+   "percentile": 33.3,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-B-24px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.6568,
+   "percentile": 30.6,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Filter-Option-C-24px.svg",
+   "b": "CL-030 Reform Tests",
+   "likeness": 0.7529,
+   "percentile": 60.7,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-A-24px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.7369,
+   "percentile": 55.4,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-B-24px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.8718,
+   "percentile": 95.2,
+   "extent": 0.58
+  },
+  {
+   "a": "20261109_Utility-Menu-Option-C-24px.svg",
+   "b": "CL-039 Feed Ranking",
+   "likeness": 0.7078,
+   "percentile": 45.5,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-A-24px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.8968,
+   "percentile": 98.1,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-B-24px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.5585,
+   "percentile": 11.9,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Pause-Option-C-24px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.5929,
+   "percentile": 16.9,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Play-Option-A-24px.svg",
+   "b": "CL-004 Petition",
+   "likeness": 0.7956,
+   "percentile": 74.9,
+   "extent": 0.67
+  },
+  {
+   "a": "20261109_Utility-Play-Option-B-24px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.6667,
+   "percentile": 33,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Play-Option-C-24px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.6127,
+   "percentile": 20.4,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-A-24px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.5951,
+   "percentile": 17.1,
+   "extent": 0.88
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-B-24px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.4812,
+   "percentile": 5.4,
+   "extent": 0.79
+  },
+  {
+   "a": "20261109_Utility-Reset-Option-C-24px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.5113,
+   "percentile": 7.4,
+   "extent": 0.88
+  },
+  {
+   "a": "20261109_Utility-Search-Option-A-24px.svg",
+   "b": "CL-024 Feedback Loop",
+   "likeness": 0.6511,
+   "percentile": 29.2,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Search-Option-B-24px.svg",
+   "b": "CL-023 Evidence",
+   "likeness": 0.7377,
+   "percentile": 55.6,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Search-Option-C-24px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.478,
+   "percentile": 5.1,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-A-24px.svg",
+   "b": "CL-049 Wealth Concentration",
+   "likeness": 0.6879,
+   "percentile": 39.3,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-B-24px.svg",
+   "b": "R-28 Capital-Income Tax",
+   "likeness": 0.6789,
+   "percentile": 36.5,
+   "extent": 0.67
+  },
+  {
+   "a": "20261109_Utility-Selected-Check-Option-C-24px.svg",
+   "b": "CL-013 Incumbent Defeat",
+   "likeness": 0.7248,
+   "percentile": 51.1,
+   "extent": 0.5
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-A-24px.svg",
+   "b": "CL-047 Data Rights",
+   "likeness": 0.7368,
+   "percentile": 55.3,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-B-24px.svg",
+   "b": "CL-034 New Technology",
+   "likeness": 0.6832,
+   "percentile": 37.9,
+   "extent": 0.67
+  },
+  {
+   "a": "20261109_Utility-Sort-Option-C-24px.svg",
+   "b": "CL-012 Election Rules",
+   "likeness": 0.7124,
+   "percentile": 47.2,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Success-Option-A-24px.svg",
+   "b": "CL-009 Safe Seats",
+   "likeness": 0.5094,
+   "percentile": 7.2,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Success-Option-B-24px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.5131,
+   "percentile": 7.5,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Success-Option-C-24px.svg",
+   "b": "CL-039 Feed Ranking",
+   "likeness": 0.5074,
+   "percentile": 7.1,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-A-24px.svg",
+   "b": "CL-033 Hostile Content",
+   "likeness": 0.142,
+   "percentile": 0,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-B-24px.svg",
+   "b": "CL-033 Hostile Content",
+   "likeness": 0.52,
+   "percentile": 8.1,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-View-Full-Size-Option-C-24px.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.4064,
+   "percentile": 1.9,
+   "extent": 0.75
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-A-24px.svg",
+   "b": "CL-059 Credit Allocation",
+   "likeness": 0.7821,
+   "percentile": 70.6,
+   "extent": 0.83
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-B-24px.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.7163,
+   "percentile": 48.2,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Utility-Warning-Option-C-24px.svg",
+   "b": "CL-040 Platform Power",
+   "likeness": 0.8404,
+   "percentile": 88.4,
+   "extent": 0.75
+  }
+ ]
+}

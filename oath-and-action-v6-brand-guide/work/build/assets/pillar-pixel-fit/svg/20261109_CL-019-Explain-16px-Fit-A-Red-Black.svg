@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-pillar-fit-cl-019-16px-fit-a-red-black" data-id="CL-019" width="16" height="16" viewBox="0 0 16 16">
+  <title>Explain, 16 px fit A</title>
+  <desc>Oath &amp; Action Civic Line CL-019 Explain, pixel-fit master for 16 px, fit A: a 1 px line on the pixel grid, every feature and red placement of the master kept, the red its own shapes in the accent group (DR-133, stage B). Use at 16 px only; the black edition is the one in use under 48 px.</desc>
+  <g id="oa-pillar-fit-cl-019-16px-fit-a-red-black-accent" data-part="accent" stroke="#E63946" fill="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="7.5" y1="1.5" x2="7.5" y2="3.5"/>
+    <line x1="3.5" y1="2.5" x2="4.5" y2="3.5"/>
+    <line x1="11.5" y1="2.5" x2="10.5" y2="3.5"/>
+  </g>
+  <g id="oa-pillar-fit-cl-019-16px-fit-a-red-black-base" data-part="base" stroke="#121212" fill="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M7.5 6.5 C6 5.5 4.5 5.5 2.5 5.5 V11.5 C4.5 11.5 6 12 7.5 12.5"/>
+    <path d="M7.5 6.5 C9 5.5 10.5 5.5 12.5 5.5 V11.5 C10.5 11.5 9 12 7.5 12.5"/>
+    <path d="M2.5 7.5 H0.5 V13.5 C3.5 13.5 5.5 13.8 7.5 14.5"/>
+    <path d="M12.5 7.5 H14.5 V13.5 C11.5 13.5 9.5 13.8 7.5 14.5"/>
+    <line x1="7.5" y1="6.5" x2="7.5" y2="14.5"/>
+  </g>
+</svg>

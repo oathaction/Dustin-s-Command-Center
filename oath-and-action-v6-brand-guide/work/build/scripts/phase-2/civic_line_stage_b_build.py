@@ -54,6 +54,18 @@ REGISTRY = [
      "Set B's chamber, a red vote card with a yes and a no in place of the ballot box, and CL-064's parcel with a tag for imports."),
     ("R-42", "Congressional-Tariff-Votes", "C", "redraw", D.r42_c, False,
      "Set C's two chambers, a red vote card with a yes and a no in place of the ballot box, and CL-064's parcel with a tag for imports."),
+    ("CL-059", "Credit-Allocation", "A", "redraw", D.cl059_a, True,
+     "The four columns become one wall holding a round vault door. Pediment, base, home, factory and red branches kept."),
+    ("CL-059", "Credit-Allocation", "B", "redraw", D.cl059_b, False,
+     "The pediment goes too: a flat-roofed bank with a large round vault door, hub and spokes, on its face."),
+    ("CL-059", "Credit-Allocation", "C", "redraw", D.cl059_c, False,
+     "The bank becomes its safe, a strongbox on feet with a dial and handle; the red branches carry the money out."),
+    ("R-48", "Agency-Independence", "A", "redraw", D.r48_a, True,
+     "The four bays of columns become one wall with a door and two windows. Pediment, band, base, brace and official kept."),
+    ("R-48", "Agency-Independence", "B", "redraw", D.r48_b, False,
+     "A commission of three officials at one table replaces the building. Red brace and the official at the lectern kept."),
+    ("R-48", "Agency-Independence", "C", "redraw", D.r48_c, False,
+     "The commission at its table, and the official moves to a desk; an arrow from the desk stops at the red brace."),
 ]
 
 

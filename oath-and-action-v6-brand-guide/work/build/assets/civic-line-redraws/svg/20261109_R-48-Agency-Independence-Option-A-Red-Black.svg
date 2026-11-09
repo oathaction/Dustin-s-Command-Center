@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-48-option-a-red-black" data-id="R-48" width="128" height="128" viewBox="0 0 128 128">
+  <title>Agency Independence, option A</title>
+  <desc>Oath &amp; Action Civic Line R-48 Agency Independence, stage B option A (within DR-135 where it applies). The four bays of columns become one wall with a door and two windows. Pediment, band, base, brace and official kept. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
+  <g id="oa-civic-line-r-48-option-a-red-black-base" data-part="base">
+    <polyline points="12.5779,53.6528 32.3934,38.7229 52.2089,53.6528" fill="none" stroke="#121212" stroke-width="3.0024" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="7.8833" y="53.6528" width="49.0202" height="6.4796" rx="1.6376" fill="none" stroke="#121212" stroke-width="3.0024" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="12.5233,81.9295 12.5233,60.1324 52.2635,60.1324 52.2635,81.9295" fill="none" stroke="#121212" stroke-width="3.0024" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="28.2993,81.9295 28.2993,70.193 36.4875,70.193 36.4875,81.9295" fill="none" stroke="#121212" stroke-width="3.0024" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="16.3445" y="65.826" width="6.0047" height="7.6424" fill="none" stroke="#121212" stroke-width="3.0024" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="42.4376" y="65.826" width="6.0047" height="7.6424" fill="none" stroke="#121212" stroke-width="3.0024" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="9.6301,81.9295 55.2113,81.9295 57.4494,85.2048 57.4494,88.7203 7.5012,88.7203 7.5012,85.2048" fill="none" stroke="#121212" stroke-width="3.0024" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="104.7228" cy="47.7955" r="5.2186" fill="none" stroke="#121212" stroke-width="3.0024" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M95.088 63.6697 L95.088 58.6094 A2.183515 2.183515 0 0 1 97.2715 56.4259 L112.1741 56.4259 A2.183515 2.183515 0 0 1 114.3576 58.6094 L114.3576 63.6697" fill="none" stroke="#121212" stroke-width="3.0024" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="88.9468,63.6697 120.4988,63.6697 119.1341,69.9801 90.3115,69.9801" fill="none" stroke="#121212" stroke-width="3.0024" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="92.1675" y1="69.9801" x2="92.1675" y2="88.6166" fill="none" stroke="#121212" stroke-width="3.0024" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="117.2781" y1="69.9801" x2="117.2781" y2="88.6166" fill="none" stroke="#121212" stroke-width="3.0024" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="oa-civic-line-r-48-option-a-red-black-accent" data-part="accent">
+    <polyline points="68.5308,38.4281 74.1534,38.4281 74.1534,89.5719 68.5308,89.5719" fill="none" stroke="#E63946" stroke-width="3.0024" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="74.1534" y1="64.4067" x2="75.5454" y2="64.4067" fill="none" stroke="#E63946" stroke-width="3.0024" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="80.7859" cy="64.3794" r="1.856" fill="#E63946"/>
+  </g>
+</svg>

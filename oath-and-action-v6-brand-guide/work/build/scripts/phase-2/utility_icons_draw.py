@@ -272,9 +272,9 @@ ICONS = [
             24: [lines([(7, 6), (18, 6), (18, 17)], [(6, 18), (18, 6)])],
             16: [lines([(4.75, 4.25), (11.75, 4.25), (11.75, 11.25)], [(4.25, 11.75), (11.75, 4.25)])]}),
         'C': ('An arrow leaving a ring by its upper right', {
-            24: [path(arc_d(11, 13, 8, 82, 8, clockwise=True)),
+            24: [path(arc_d(11, 13, 8, 100, 355, clockwise=True)),
                  lines([(14, 4), (20, 4), (20, 10)], [(11, 13), (20, 4)])],
-            16: [path(arc_d(6.75, 9.25, 5, 88, 2, clockwise=True)),
+            16: [path(arc_d(6.75, 9.25, 5, 100, 355, clockwise=True)),
                  lines([(9.75, 2.25), (13.75, 2.25), (13.75, 6.25)], [(6.75, 9.25), (13.75, 2.25)])]}),
     }),
     ('search', 'Search', 'Search', '8', 'Its own drawing', {
@@ -344,13 +344,13 @@ ICONS = [
     ('error', 'Error', 'Error mark', '13', 'A circle holding an exclamation mark, never a cross', {
         'A': ('An exclamation mark in a circle', {
             24: [circle(12, 12, 9)] + excl24(7, 13, 17),
-            16: [circle(7.75, 7.75, 6.25)] + excl16(4.5, 8.5, 11)}),
+            16: [circle(7.75, 7.75, 6.25)] + excl16(4.5, 8.5, 11.25)}),
         'B': ('An exclamation mark in an octagon, the stop sign', {
             24: [rpoly(octagon(12, 12, 8), R24)] + excl24(7, 13, 17),
-            16: [rpoly(octagon(7.75, 7.75, 6), R16)] + excl16(4.5, 8.5, 11)}),
+            16: [rpoly(octagon(7.75, 7.75, 6), R16)] + excl16(4.5, 8.5, 11.25)}),
         'C': ('An exclamation mark in a square', {
             24: [rrect(4, 4, 20, 20, R24)] + excl24(7.5, 12.5, 16.5),
-            16: [rrect(1.75, 1.75, 13.75, 13.75, R16)] + excl16(4.5, 8.5, 11)}),
+            16: [rrect(1.75, 1.75, 13.75, 13.75, R16)] + excl16(4.5, 8.5, 11.25)}),
     }),
     ('success', 'Success', 'Success mark', '14', 'The check in its enclosure', {
         'A': ('A check in a circle', {
@@ -409,13 +409,13 @@ ICONS = [
     ('warning', 'Warning', 'Warning mark', '17', 'A triangle holding an exclamation mark', {
         'A': ('An exclamation mark in a wide triangle', {
             24: [rpoly([(12, 2.5), (22, 20), (2, 20)], R24)] + excl24(9.5, 13.5, 17),
-            16: [rpoly([(7.75, 1), (14.75, 13.75), (0.75, 13.75)], R16)] + excl16(6, 8, 11)}),
+            16: [rpoly([(7.75, 0.75), (15.25, 14.25), (0.25, 14.25)], R16)] + excl16(6.25, 8.5, 11.25)}),
         'B': ('An exclamation mark in a diamond, the road sign', {
             24: [rpoly([(12, 2), (22, 12), (12, 22), (2, 12)], R24)] + excl24(7.5, 13, 16.5),
-            16: [rpoly([(7.75, 1), (14.5, 7.75), (7.75, 14.5), (1, 7.75)], R16)] + excl16(4.75, 8.25, 10.75)}),
+            16: [rpoly([(7.75, 1), (14.5, 7.75), (7.75, 14.5), (1, 7.75)], R16)] + excl16(4.75, 7.75, 10.25)}),
         'C': ('An exclamation mark in a narrower triangle', {
             24: [rpoly([(12, 3.5), (21, 20), (3, 20)], R24)] + excl24(10, 13.5, 17),
-            16: [rpoly([(7.75, 2), (14.25, 13.75), (1.25, 13.75)], R16)] + excl16(7, 8.5, 11)}),
+            16: [rpoly([(7.75, 1.5), (14.25, 14.25), (1.25, 14.25)], R16)] + excl16(7.5, 9, 11.75)}),
     }),
 ]
 

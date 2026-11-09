@@ -4,6 +4,7 @@
 // Usage:
 //   node work/build/scripts/phase-2/utility_icons_render.js previews            # png/ beside the SVGs, 1x and 2x
 //   node work/build/scripts/phase-2/utility_icons_render.js review <out.png>    # true-size sheet, 1x pixels
+//   node work/build/scripts/phase-2/utility_icons_render.js plate [out.png]     # plate glyphs on whole pixels, capture
 //
 // Previews: each SVG drawn by Chromium at its own size, Charcoal ink (#121212) on a clear ground, at device scale 1
 // and 2, as the Civic Line PNG previews are. The review sheet sets every option at 16 and 24 px on Newsprint and
@@ -78,6 +79,34 @@ async function review(browser, manifest, out) {
   console.log('wrote', out);
 }
 
+// Plate check: every glyph on the plate page sits on whole CSS pixels at its drawn size, then a full-page capture.
+async function plate(browser, out) {
+  const file = path.join(ROOT, 'work', 'boards', 'phase-2', 'stage-b', 'drawings', 'utility', '20261109_Utility-Icons-Plates.html');
+  const ctx = await browser.newContext({ deviceScaleFactor: 1, viewport: { width: 1176, height: 900 } });
+  const page = await ctx.newPage();
+  await page.goto('file://' + file);
+  await page.evaluate(() => document.fonts.ready);
+  await page.waitForFunction(() => document.documentElement.dataset.snapped === '1');
+  const res = await page.evaluate(() => {
+    const off = [];
+    let n = 0;
+    for (const s of document.querySelectorAll('svg.g')) {
+      const st = getComputedStyle(s).transform;
+      const r = s.getBoundingClientRect();
+      n++;
+      const bad = [r.left + window.scrollX, r.top + window.scrollY, r.width, r.height].some((v) => Math.abs(v - Math.round(v)) > 0.01);
+      if (bad) off.push({ use: s.querySelector('use').getAttribute('href'), x: r.left, y: r.top + window.scrollY, w: r.width, transform: st });
+    }
+    const wide = document.documentElement.scrollWidth;
+    return { n, off, wide };
+  });
+  console.log(`plate: ${res.n} glyphs, ${res.off.length} off whole pixels, page ${res.wide} px wide`);
+  for (const o of res.off.slice(0, 20)) console.log('  off:', JSON.stringify(o));
+  if (out) { await page.screenshot({ path: out, fullPage: true }); console.log('wrote', out); }
+  await ctx.close();
+  if (res.off.length) process.exitCode = 1;
+}
+
 (async () => {
   const mode = process.argv[2];
   const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'));
@@ -85,6 +114,7 @@ async function review(browser, manifest, out) {
   try {
     if (mode === 'previews') await previews(browser, manifest);
     else if (mode === 'review') await review(browser, manifest, process.argv[3]);
-    else { console.error('usage: utility_icons_render.js previews | review out.png'); process.exitCode = 2; }
+    else if (mode === 'plate') await plate(browser, process.argv[3]);
+    else { console.error('usage: utility_icons_render.js previews | review out.png | plate [out.png]'); process.exitCode = 2; }
   } finally { await browser.close(); }
 })();

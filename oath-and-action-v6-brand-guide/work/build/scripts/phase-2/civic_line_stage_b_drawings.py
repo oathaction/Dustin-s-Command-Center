@@ -248,7 +248,7 @@ def r13_a():
     walls, the base, and the open book with its red page edge. Redrawn: the
     dome arcs and finial go, so the drum's top line becomes a flat attic (set
     A's sign); the three drum columns go; the three lower columns become
-    windows."""
+    windows and the middle one a door, as in set A's CL-025."""
     p = P()
     building = [
         p.line(92.25, 43.92, 137.25, 43.92),
@@ -257,7 +257,8 @@ def r13_a():
         p.line(77.44, 69.58, 152.06, 69.58),
         p.line(81.65, 69.58, 81.65, 103.1), p.line(147.85, 69.58, 147.85, 103.1),
         p.line(81.31, 115.05, 148.19, 115.05),
-    ] + [p.rect(x - 5.25, 84.5, 10.5, 14) for x in (97.75, 114.75, 131.75)]
+    ] + [p.rect(x - 5.25, 84.5, 10.5, 14) for x in (97.75, 131.75)] + [
+        p.poly([(108.25, 115.05), (108.25, 92.5), (121.25, 92.5), (121.25, 115.05)])]
     book, edge = r13_book_orig()
     return [("base", r13_staff_orig() + building + book), ("accent", edge)]
 
@@ -273,17 +274,18 @@ def report(pen):
 
 
 def r13_new(sign):
-    """Outside DR-135: the set's Congress sign in place of the domed
-    building, between two staff figures and an analyst's report, which
-    takes the red on its chart line (the book was CL-019 Explain's sign)."""
+    """Outside DR-135: the set's Congress sign above, at three quarters of
+    CL-025's size so its rows stay open at 48 px, with two staff figures and
+    an analyst's report standing in front of it. The report takes the red on
+    its chart line; the open book was CL-019 Explain's sign."""
     p = P()
-    staff = C.person(p, 20, 120, k=0.58) + C.person(p, 50, 120, k=0.66)
     if sign == "b":
-        rows, ros = chamber_b(p.sub(130, 86, 0.56))
+        rows, ros = chamber_b(p.sub(100, 46, 0.74))
     else:
-        rows, ros = chambers_c(p.sub(137, 92, 0.5))
-    page, chart = report(p.sub(194, 120))
-    return [("base", staff + rows + ros + page), ("accent", chart)]
+        rows, ros = chambers_c(p.sub(100, 50, 0.68))
+    staff = C.person(p, 38, 150, k=0.7) + C.person(p, 76, 150, k=0.7)
+    page, chart = report(p.sub(130, 150, 1.05))
+    return [("base", rows + ros + staff + page), ("accent", chart)]
 
 
 def r13_b():
@@ -348,20 +350,23 @@ def vote_card(pen):
 
 
 def r42_new(sign):
-    """Outside DR-135: the set's Congress sign, a card holding a recorded
-    yes and no in place of the ballot box (a ballot box means a public
-    election), and CL-064's parcel for imports with a tag for the tax. The
-    red moves from the ballot to the vote card."""
+    """Outside DR-135: the set's Congress sign above, at three quarters of
+    CL-025's size; below it a card holding a recorded yes and no in place of
+    the ballot box (a ballot box means a public election), and CL-064's
+    parcel for imports with a tag hung from its corner for the tax. The red
+    moves from the ballot to the vote card."""
     p = P()
     if sign == "b":
-        rows, ros = chamber_b(p.sub(60, 74, 0.56))
+        rows, ros = chamber_b(p.sub(100, 46, 0.74))
     else:
-        rows, ros = chambers_c(p.sub(66, 82, 0.5))
-    card, marks = vote_card(p.sub(122, 112))
-    q = p.sub(172, 112, 0.62)
+        rows, ros = chambers_c(p.sub(100, 50, 0.68))
+    card, marks = vote_card(p.sub(42, 154))
+    q = p.sub(98, 154, 0.66)
     goods = parcel(q)
-    tag = [q.path([("M", 73.26, -50), ("L", 84, -50), ("L", 92, -42), ("L", 84, -34), ("L", 73.26, -34)]),
-           q.circle(83.5, -42, 1.2)]
+    t = p.sub(98 + 0.66 * 73.26, 154 - 0.66 * 68.13)
+    tag = [t.line(0, 0, 9, 9),
+           t.path([("M", 9, 9), ("L", 22, 9), ("L", 30, 17), ("L", 30, 34), ("L", 14, 34), ("L", 9, 26), ("Z",)]),
+           t.circle(19.5, 18, 1.2)]
     return [("base", rows + ros + marks + goods + tag), ("accent", card)]
 
 
@@ -371,3 +376,137 @@ def r42_b():
 
 def r42_c():
     return r42_new("c")
+
+
+# ------------------------------------------------------------------ CL-059 Credit Allocation
+
+def cl059_kept():
+    """CL-059's home, factory and red branches at their source coordinates."""
+    p = P()
+    base = [p.poly([(11.31, 156.5), (11.31, 132.65), (35.98, 112.2), (60.65, 132.65), (60.65, 156.5)]),
+            p.poly([(30.17, 156.5), (30.17, 142.4), (41.79, 142.4), (41.79, 156.5)]),
+            p.poly([(112.42, 134.1), (127.05, 123.9), (127.05, 134.9), (144.88, 123.9), (144.88, 134.9), (162.7, 123.9),
+                    (162.7, 134.9), (165.0, 134.9), (171.2, 112.14), (183.07, 112.14), (183.07, 157.28), (112.42, 157.28)],
+                   closed=True)]
+    red = [p.path([("M", 87.39, 83.0), ("L", 87.39, 90.93), ("A", 2.5, 0, 1, 84.89, 93.43), ("L", 42.76, 93.43),
+                   ("A", 2.5, 0, 0, 40.26, 95.93), ("L", 40.26, 104.8)]),
+           p.path([("M", 99.61, 83.0), ("L", 99.61, 90.93), ("A", 2.5, 0, 0, 102.11, 93.43), ("L", 144.24, 93.43),
+                   ("A", 2.5, 0, 1, 146.74, 95.93), ("L", 146.74, 112.25)])]
+    return base, red
+
+
+def vault_door(pen, cx, cy, r=11.5, hub=0.0, spokes=()):
+    """A bank vault's round door. With a hub, short spokes join a hub ring to
+    the rim at the given angles. Spokes in a plus read as a first-aid cross
+    and three read as a fan blade; four diagonals broken by a hub ring read as
+    the vault's wheel."""
+    els = [pen.circle(cx, cy, r)]
+    if hub:
+        els.append(pen.circle(cx, cy, hub))
+        for a in spokes:
+            t = math.radians(a)
+            els.append(pen.line(cx + hub * math.cos(t), cy - hub * math.sin(t),
+                                cx + r * math.cos(t), cy - r * math.sin(t)))
+    return els
+
+
+def cl059_a():
+    """Within DR-135. Kept at their source coordinates: the pediment, the
+    bank's base, the home, the factory and the two red branches. Redrawn: the
+    four columns become one wall, its sides at the outer columns, holding a
+    round vault door."""
+    p = P()
+    kept, red = cl059_kept()
+    bank = [p.poly([(55.8, 34.67), (93.5, 10.3), (131.2, 34.67)], closed=True),
+            p.poly([(64.2, 71.86), (64.2, 45.25), (122.8, 45.25), (122.8, 71.86)]),
+            p.line(55.15, 71.86, 131.85, 71.86)] + vault_door(p, 93.5, 58.55, r=8.6)
+    return [("base", bank + kept), ("accent", red)]
+
+
+def cl059_b():
+    """Outside DR-135. The pediment goes too: the bank is a flat-roofed block
+    with a cornice, a large round vault door on its face and a stepped base.
+    Home, factory and red branches kept."""
+    p = P()
+    kept, red = cl059_kept()
+    bank = [p.line(55.15, 22.5, 131.85, 22.5),
+            p.poly([(62.2, 71.86), (62.2, 22.5), (124.8, 22.5), (124.8, 71.86)]),
+            p.line(55.15, 71.86, 131.85, 71.86)] + vault_door(p, 93.5, 47.2, r=17.0, hub=6.0, spokes=(45, 135, 225, 315))
+    return [("base", bank + kept), ("accent", red)]
+
+
+def cl059_c():
+    """Outside DR-135. The bank becomes its safe: a strongbox on two feet
+    with a round dial and a handle, the common sign for a safe. Alone it
+    would say "stored money", so the two red branches below carry the new
+    money out to the home and the factory. Home, factory and branches kept."""
+    p = P()
+    kept, red = cl059_kept()
+    safe = [p.rect(60.5, 14.0, 66.0, 54.0, rx=5),
+            p.circle(85.0, 41.0, 11.5),
+            p.line(85.0, 29.5, 85.0, 35.5),
+            p.line(110.0, 31.0, 110.0, 51.0),
+            p.line(70.5, 68.0, 70.5, 75.5), p.line(116.5, 68.0, 116.5, 75.5)]
+    return [("base", safe + kept), ("accent", red)]
+
+
+# ------------------------------------------------------------------ R-48 Agency Independence
+
+def r48_official_lectern():
+    p = P()
+    return [p.circle(188.4, 27.47, 9.56),
+            p.path([("M", 170.75, 56.55), ("L", 170.75, 47.28), ("A", 4, 0, 1, 174.75, 43.28), ("L", 202.05, 43.28),
+                    ("A", 4, 0, 1, 206.05, 47.28), ("L", 206.05, 56.55)]),
+            p.poly([(159.5, 56.55), (217.3, 56.55), (214.8, 68.11), (162, 68.11)], closed=True),
+            p.line(165.4, 68.11, 165.4, 102.25), p.line(211.4, 68.11, 211.4, 102.25)]
+
+
+def r48_brace():
+    p = P()
+    return [p.poly([(122.1, 10.31), (132.4, 10.31), (132.4, 104), (122.1, 104)]),
+            p.line(132.4, 57.9, 134.95, 57.9),
+            p.circle(144.55, 57.85, 3.4, cls="fill")]
+
+
+def r48_a():
+    """Within DR-135. Kept at their source coordinates: the pediment, the
+    entablature band, the stepped base, the red brace with its nub and dot,
+    and the official at the lectern. Redrawn: the four bays of columns become
+    one wall with a center door and two windows."""
+    p = P()
+    bldg = [p.poly([(19.6, 38.2), (55.9, 10.85), (92.2, 38.2)]),
+            p.rect(11, 38.2, 89.8, 11.87, rx=3),
+            p.poly([(19.5, 90), (19.5, 50.07), (92.3, 50.07), (92.3, 90)]),
+            p.poly([(48.4, 90), (48.4, 68.5), (63.4, 68.5), (63.4, 90)]),
+            p.rect(26.5, 60.5, 11, 14), p.rect(74.3, 60.5, 11, 14),
+            p.poly([(14.2, 90), (97.7, 90), (101.8, 96), (101.8, 102.44), (10.3, 102.44), (10.3, 96)], closed=True)]
+    return [("base", bldg + r48_official_lectern()), ("accent", r48_brace())]
+
+
+def commission(pen):
+    """A commission: three officials seated side by side at one long table.
+    Origin at the table's top center."""
+    els = []
+    for x in (-34, 0, 34):
+        els += C.person(pen, x, -1.0, k=0.66, h=24)
+    els += [pen.line(-52, 0, 52, 0), pen.line(-44, 0, -44, 34), pen.line(44, 0, 44, 34)]
+    return els
+
+
+def r48_b():
+    """Outside DR-135. The agency is a commission of three officials at one
+    table in place of the building. The red brace and the official at the
+    lectern are kept."""
+    p = P()
+    return [("base", commission(p.sub(58, 70)) + r48_official_lectern()), ("accent", r48_brace())]
+
+
+def r48_c():
+    """Outside DR-135. The commission at its table; the official who could
+    remove them sits at a desk, not a lectern, and an arrow from that desk
+    stops at the red brace, so the protection reads as a power that stops
+    short."""
+    p = P()
+    off = C.person(p, 196, 64, k=0.86, h=24) + [p.line(166, 64, 222, 64), p.line(214, 64, 214, 104)]
+    arrow = [p.line(170, 40, 147, 40), p.poly([(155, 32), (147, 40), (155, 48)])]
+    return [("base", commission(p.sub(58, 70)) + off + arrow), ("accent", r48_brace()[:2])]

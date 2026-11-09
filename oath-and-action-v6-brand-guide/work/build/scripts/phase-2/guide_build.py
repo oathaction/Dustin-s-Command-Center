@@ -33,6 +33,7 @@ import argparse
 import base64
 import datetime
 import html
+import io
 import json
 import re
 import sys
@@ -82,8 +83,9 @@ CHAPTERS = [
     ("07", "layout", "Layout and spacing", "foundations", "Build each page on the column grid and spacing scale, readable at every width."),
     # D2-325, D2-326: chapter 08 is The lockmark, anchor "lockmark"; its instruction line is the identity designer's.
     ("08", "lockmark", "The lockmark", "foundations", "Draw the lockmark from its master, and place it only in its four fixed places."),
-    # D2-415: chapter 09 is "Pillar icons", Dustin's term in DR-105 and DR-111. Its anchor stays as the map set it.
-    ("09", "pillar-marks", "Pillar icons", "symbols", "Mark which pillar a piece serves, always in the order Explain, Track, Connect, Act."),
+    # D2-415: chapter 09 is "Pillar icons", Dustin's term in DR-105 and DR-111. D2-446: its anchor becomes pillar-icons at
+    # stage B, with no alias for pillar-marks, since no link to it reached a reader. 10 and 12 keep the map's anchors.
+    ("09", "pillar-icons", "Pillar icons", "symbols", "Mark which pillar a piece serves, always in the order Explain, Track, Connect, Act."),
     ("10", "symbols", "Topic and atlas symbols", "symbols", "Find the symbol for a subject or an atlas element and set it with its label."),
     ("11", "icons", "Status and utility icons", "symbols", "Give each record state or interface action a glyph and a word that read without color."),
     ("12", "graphic-devices", "Graphic devices and patterns", "symbols", "Add dividers, frames, markers and watermarks only where they help someone read."),
@@ -610,6 +612,22 @@ def inline_assets(s, sid, where):
         return svg
 
     s = re.sub(r"<img\b[^>]*\sdata-inline\b[^>]*>", img_inline, s)
+
+    # Stage B: <img data-oa-sheet="600" src="work/...png"> is a contact sheet shown 600 px wide, embedded as an image
+    def sheet(m):
+        tag = m.group(0)
+        w = re.search(r'\sdata-oa-sheet="([\d.]+)"', tag)
+        src = re.search(r'\ssrc="((?:work|source|deliverables)/[^"]+\.png)"', tag)
+        if not (w and src):
+            R.warn(where, f"{sid}: a contact sheet needs data-oa-sheet with its shown width in px and a repository PNG in src")
+            return tag
+        p = (ROOT / src.group(1)).resolve()
+        if not p.exists() or ROOT not in p.parents:
+            R.warn(where, f"{sid}: asset {src.group(1)} not found")
+            return tag
+        return tag.replace(src.group(0), f' src="{sheet_uri(p, float(w.group(1)), where, sid)}"')
+
+    s = re.sub(r'<img\b[^>]*\sdata-oa-sheet="[^"]*"[^>]*>', sheet, s)
 
     def to_uri(m):
         attr, path = m.group(1), m.group(2)
@@ -1465,11 +1483,173 @@ def load_chapters(chap_dir):
     return found
 
 
+# ---------------------------------------------------------------------------------------------------------------
+# Page weight (stage B, November 9, 2026): one sprite per icon family, contact sheets as images, a budget per chapter
+# ---------------------------------------------------------------------------------------------------------------
+# A family's folder holds its final, approved masters only; a family joins when Dustin approves its drawings by name.
+# A specimen draws a master as <svg viewBox="0 0 128 128" ...><use href="#oa-sym-cl-019"/></svg>, and the build puts
+# the symbols the page references into one hidden sprite per family, once. Two-color use: set --oa-icon-accent on the
+# <svg> (signature red); otherwise the accent draws in the ink, currentColor.
+SPRITE_FAMILIES = {
+    "civic-line": {"name": "Civic Line", "dir": ASSETS / "civic-line/black", "glob": "*-Black.svg", "ink": "#121212"},
+}
+SPRITE_FROM_CHAPTER = "09"     # from this chapter on, a specimen that inlines a drawing a sprite holds is a warning
+SHEET_COLORS = 16              # a contact sheet image is line art: a 16-color palette PNG at twice its shown width
+MB = 1_000_000
+WEIGHT_LIMIT = 16 * MB         # the artifact's limit
+WEIGHT_PAGE = 15.5 * MB        # the page's budget: half a megabyte under the limit
+# Budgets per chapter in MB. They sum, with the shell, sprites and appendix, to the page budget across all 26 chapters:
+# 01 to 08 and 11 at their stage A and B weight plus room to grow, 10 with its 122 drawings and contact sheets, and
+# every later chapter at the default. The main session can move weight between chapters as long as the sum holds.
+WEIGHT_BUDGET = {"01": 2.7, "02": 0.85, "03": 0.65, "04": 0.45, "05": 0.45, "06": 0.35, "07": 0.3, "08": 0.3,
+                 "09": 0.4, "10": 1.0, "11": 0.55, "12": 0.5}
+WEIGHT_DEFAULT = 0.45          # chapters 13 to 26
+WEIGHT_FIXED = {"head and shell": 0.2, "sprites": 0.35, "appendix": 0.2, "front matter and part openers": 0.1}
+
+
+class Sprites:
+    """The masters a page may reference by <use>, read once from each family's folder."""
+
+    def __init__(self):
+        self.symbols = {}      # symbol id -> (family, path, master id)
+        self.prints = {}       # master id -> (family, set of path data), to find a drawing a specimen inlines
+        for fam, cfg in SPRITE_FAMILIES.items():
+            if not cfg["dir"].exists():
+                R.note(f"sprite family {fam}: {cfg['dir'].relative_to(ROOT)} does not exist yet")
+                continue
+            for p in sorted(cfg["dir"].glob(cfg["glob"])):
+                t = p.read_text()
+                m = re.search(r'\sdata-id="([^"]+)"', t)
+                if not m:
+                    continue
+                self.symbols["oa-sym-" + m.group(1).lower()] = (fam, p, m.group(1))
+                ds = set(re.findall(r'\sd="([^"]{20,})"', t))
+                if ds:
+                    self.prints[m.group(1)] = (fam, ds)
+
+    def inlined(self, text):
+        """Master ids whose drawing a fragment carries inline: half or more of its path data, character for character."""
+        return sorted(mid for mid, (fam, ds) in self.prints.items() if sum(1 for d in ds if d in text) * 2 >= len(ds))
+
+    @staticmethod
+    def symbol(path, sid, ink):
+        t = path.read_text()
+        root = re.search(r"<svg\b[^>]*>", t)
+        vb = re.search(r'viewBox="([^"]+)"', root.group(0)).group(1)
+        inner = t[root.end():t.rindex("</svg>")]
+        inner = re.sub(r"<title>.*?</title>|<desc>.*?</desc>", "", inner, flags=re.S)
+        inner = re.sub(r'\sdata-id="[^"]*"', "", inner)
+        # ids nothing points at go; the rest (the masks) take the symbol's id as a prefix, so they stay unique beside a
+        # specimen's own copy
+        wanted = set(re.findall(r"url\(#([^)]+)\)", inner)) | set(re.findall(r'href="#([^"]+)"', inner))
+        inner = re.sub(r'\sid="([^"]+)"', lambda m: m.group(0) if m.group(1) in wanted else "", inner)
+        ids = set(re.findall(r'\sid="([^"]+)"', inner))
+        inner = re.sub(r'(\sid=")([^"]+)"', lambda m: f'{m.group(1)}{sid}--{m.group(2)}"', inner)
+        inner = re.sub(r"url\(#([^)]+)\)", lambda m: f"url(#{sid}--{m.group(1)})" if m.group(1) in ids else m.group(0), inner)
+        inner = re.sub(r'href="#([^"]+)"', lambda m: f'href="#{sid}--{m.group(1)}"' if m.group(1) in ids else m.group(0), inner)
+        # each accent part draws in --oa-icon-accent, and in the ink where a use sets none. The color goes on the part's
+        # own fill or stroke, never on its group, so a filled part gains no stroke (a drawing may hold several accents)
+        acc = "var(--oa-icon-accent,currentColor)"
+
+        def paint(m):
+            tag, attrs = m.group(1), m.group(2)
+            props = [f"{k}:{acc}" for k in ("stroke", "fill") if f' {k}="{ink}"' in attrs]
+            if not props:
+                return m.group(0)
+            attrs = re.sub(rf'\s(stroke|fill)="{re.escape(ink)}"', "", attrs)
+            return f'<{tag}{attrs} style="{";".join(props)}"' + ("/>" if m.group(3) else ">")
+
+        out, i = [], 0
+        for a in re.finditer(r'<g\b[^>]*data-part="accent"[^>]*>', inner):
+            if a.start() < i:
+                continue
+            depth, j = 1, a.end()
+            while depth and j < len(inner):
+                nxt = re.search(r"<g\b|</g>", inner[j:])
+                if not nxt:
+                    break
+                depth += 1 if nxt.group(0) == "<g" else -1
+                j += nxt.end()
+            body = re.sub(r"<([a-zA-Z]+)\b([^>]*?)(/?)>", paint, inner[a.end():j])
+            out.append(inner[i:a.end()] + body)
+            i = j
+        inner = "".join(out) + inner[i:]
+        inner = inner.replace(f'"{ink}"', '"currentColor"')
+        inner = re.sub(r">\s+<", "><", inner).strip()
+        return f'<symbol id="{sid}" viewBox="{vb}">{inner}</symbol>'
+
+    def inject(self, page):
+        """One hidden sprite per family, after <body>, holding the symbols the page references; and the bytes it adds."""
+        used = sorted(set(re.findall(r'href="#(oa-sym-[a-z0-9-]+)"', page)))
+        unknown = [u for u in used if u not in self.symbols]
+        if unknown:
+            R.warn("sprites", f"{len(unknown)} <use> reference(s) to no symbol: {', '.join(unknown[:6])}")
+        fams = {}
+        for u in used:
+            if u in self.symbols:
+                fam, path, _ = self.symbols[u]
+                fams.setdefault(fam, []).append(self.symbol(path, u, SPRITE_FAMILIES[fam]["ink"]))
+        if not fams:
+            return page, 0, {}
+        sprite = "".join(f'<svg class="oa-sprite" data-sprite="{fam}" aria-hidden="true" focusable="false" width="0" height="0" '
+                         f'style="position:absolute;width:0;height:0;overflow:hidden">{"".join(syms)}</svg>' for fam, syms in fams.items())
+        page = re.sub(r"(<body\b[^>]*>)", lambda m: m.group(1) + "\n" + sprite, page, count=1)
+        return page, len(sprite.encode()), {fam: len(syms) for fam, syms in fams.items()}
+
+
+def sheet_uri(path, shown_px, where, sid):
+    """A contact sheet as an image: resampled to twice the width it is shown at and kept to a small palette."""
+    try:
+        from PIL import Image
+    except ImportError:
+        R.warn(where, f"{sid}: Pillow is missing, so {path.name} is embedded as it is")
+        return data_uri(path)
+    im = Image.open(path).convert("RGB")
+    w = int(round(2 * shown_px))
+    if im.width > w:
+        im = im.resize((w, max(1, round(im.height * w / im.width))), Image.LANCZOS)
+    buf = io.BytesIO()
+    im.quantize(colors=SHEET_COLORS, method=Image.Quantize.MEDIANCUT).save(buf, "PNG", optimize=True)
+    return "data:image/png;base64," + base64.b64encode(buf.getvalue()).decode()
+
+
+def weigh(page, sprite_bytes):
+    """Bytes by part of the page: head and shell, sprites, each chapter, the appendix and the rest, against the budgets."""
+    size = lambda x: len(x.encode())
+    parts = {"head and shell": size(page[:page.find("<body")]) + size(page[page.rfind("<script>"):]), "sprites": sprite_bytes}
+    marks = [(m.start(), m.group(1), m.group(2)) for m in re.finditer(r'<section class="(chapter|part|contents|appendix|cover)[^"]*" id="([^"]+)"', page)]
+    end = page.find("</main>")
+    anchors = {a: n for n, a, *_ in CHAPTERS}
+    chapters = {}
+    for (start, kind, anchor), nxt in zip(marks, [m[0] for m in marks[1:]] + [end]):
+        b = size(page[start:nxt])
+        if kind == "chapter" and anchor in anchors:
+            chapters[anchors[anchor]] = b
+        elif kind == "appendix":
+            parts["appendix"] = parts.get("appendix", 0) + b
+        else:
+            parts["front matter and part openers"] = parts.get("front matter and part openers", 0) + b
+    total = size(page)
+    for n, b in sorted(chapters.items()):
+        budget = WEIGHT_BUDGET.get(n, WEIGHT_DEFAULT) * MB
+        if b > budget:
+            R.warn(f"chapter {n}", f"weighs {b / MB:.2f} MB, over its budget of {budget / MB:.2f} MB; draw symbols from the sprite, show "
+                                   f"contact sheets as images and keep photographs at the size shown")
+    for k, b in parts.items():
+        if b > WEIGHT_FIXED.get(k, 0) * MB:
+            R.warn("page weight", f"{k} weighs {b / MB:.2f} MB, over its budget of {WEIGHT_FIXED.get(k, 0):.2f} MB")
+    if total > WEIGHT_PAGE:
+        R.warn("page weight", f"the page weighs {total / MB:.2f} MB, over its budget of {WEIGHT_PAGE / MB:.1f} MB (the limit is {WEIGHT_LIMIT / MB:.0f} MB)")
+    return {"bytes": total, "budget_page": WEIGHT_PAGE, "limit": WEIGHT_LIMIT, "parts": parts,
+            "chapters": {n: {"bytes": b, "budget": WEIGHT_BUDGET.get(n, WEIGHT_DEFAULT) * MB} for n, b in sorted(chapters.items())}}
+
+
 def build(args):
     chap_dir = Path(args.chapters).resolve() if args.chapters else GUIDE / "chapters"
     spec_dir = Path(args.specimens).resolve() if args.specimens else GUIDE / "specimens"
     out_path = Path(args.out).resolve() if args.out else DEFAULT_OUT
     tokens = Tokens()
+    sprites = Sprites()
     specs = Specimens(spec_dir)
     chapters = load_chapters(chap_dir)
     demo_num, demo_data = None, None
@@ -1531,6 +1711,21 @@ def build(args):
         if sid not in specs.used and not sid.startswith("s-proofs-") and not sid.startswith("s-demo-"):
             R.warn(specs.origin.get(sid, "manifest"), f"specimen {sid} is listed but no chapter places it")
     check_cross_refs(chapters, pconf if isinstance(pconf, dict) else None, specs)
+    # Stage B page weight: a drawing a sprite holds is drawn by <use>. From chapter 09 on, a specimen that inlines one is a
+    # warning; earlier chapters' specimens are listed for their owners.
+    for sid in sorted(specs.used):
+        if sid not in specs.files:
+            continue
+        mids = sprites.inlined(specs.files[sid].read_text())
+        if not mids:
+            continue
+        ch = re.match(r"s-(\d\d)-", sid)
+        msg = (f"{sid} inlines {len(mids)} drawing(s) the sprite holds ({', '.join(mids[:6])}); draw each as "
+               f'<svg viewBox="0 0 128 128"><use href="#oa-sym-{mids[0].lower()}"/></svg>')
+        if ch and ch.group(1) >= SPRITE_FROM_CHAPTER:
+            R.warn(specs.used[sid], msg)
+        else:
+            R.note(msg)
 
     css = (SHELL / "guide-shell.css").read_text()
     js = (SHELL / "guide-shell.js").read_text()
@@ -1655,6 +1850,9 @@ def build(args):
 </body>
 </html>
 """
+    page, sprite_bytes, sprite_counts = sprites.inject(page)
+    weights = weigh(page, sprite_bytes)
+    weights["sprites"] = sprite_counts
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(page)
     report = {
@@ -1662,7 +1860,7 @@ def build(args):
         "built": datetime.datetime.now().isoformat(timespec="seconds"),
         "chapters": sorted(chapters), "placeholders": sorted(set(STAGE_A) - set(chapters)),
         "rules": n_rules, "specimens_placed": n_specs, "tokens": "tokens.css" if tokens.final else "provisional from the schema draft",
-        "demo": bool(args.demo), "bytes": len(page.encode()),
+        "demo": bool(args.demo), "bytes": len(page.encode()), "weight": weights,
         "warnings": R.warnings, "notes": R.notes,
     }
     rep_path = out_path.with_name(out_path.stem + "-Build-Report.json")
@@ -1719,6 +1917,21 @@ def self_test():
     lab08 = chapter("08", "lockmark", "The lockmark", [rule("08.1", {"correct": {"specimen": "s-lab-own", "caption": "A fixture."}, "failure": {"specimen": "s-lab-none", "caption": "A fixture."}}),
                                                        rule("08.2", {"correct": {"specimen": "s-lab-flow", "caption": "A fixture."}})])
 
+    # stage B page weight fixtures (November 9, 2026)
+    cl24 = next((ASSETS / "civic-line/black").glob("*CL-024-*-Black.svg")).read_text()
+    sheet = next((ASSETS / "civic-line/contact-sheets").glob("*-01-*-Black-2x.png")).relative_to(ROOT)
+    use = lambda i, extra="": f'<svg viewBox="0 0 128 128" width="48" height="48" aria-hidden="true" focusable="false"{extra}><use href="#oa-sym-{i}"/></svg>'
+    wt_specs = {"s-10-use.html": f"<p>{use('cl-019')} Explain</p><p>{use('cl-025', ' style=\"--oa-icon-accent:var(--oa-color-identity-signature-on-newsprint)\"')} Congress</p>",
+                "s-10-inline.html": f"<p>{cl24} Feedback loop</p>",
+                "s-10-sheet.html": f'<img data-oa-sheet="600" src="{sheet}" alt="Civic Line sheet 01, a fixture." width="600">',
+                "s-10-badref.html": f"<p>{use('cl-999')} No such symbol</p>",
+                "s-09-big.html": "<p>" + "Weight. " * 56000 + "</p>"}
+    wt_manifest = {k[:-5]: {"chapter": k[2:4], "rule": f"{k[2:4]}.1", "alt": f"A page weight fixture, {k[:-5]}.", "notes": "fixture"} for k in wt_specs}
+    wt10 = chapter("10", "symbols", "Topic and atlas symbols", [rule("10.1", {"correct": {"specimen": "s-10-use", "caption": "A fixture."}, "failure": {"specimen": "s-10-inline", "caption": "A fixture."}}),
+                                                                rule("10.2", {"correct": {"specimen": "s-10-sheet", "caption": "A fixture."}, "failure": {"specimen": "s-10-badref", "caption": "A fixture."}})])
+    wt09 = chapter("09", "pillar-icons", "Pillar icons", [rule("09.1", {"correct": {"specimen": "s-09-big", "caption": "A fixture."}})])
+    wt_manifest = {k: dict(v, rule={"s-10-use": "10.1", "s-10-inline": "10.1", "s-10-sheet": "10.2", "s-10-badref": "10.2", "s-09-big": "09.1"}[k]) for k, v in wt_manifest.items()}
+
     def figure_of(pg, sid):
         m = re.search(r'<figure[^>]*id="fig-' + re.escape(sid) + r'".*?</figure>', pg, re.S)
         return m.group(0) if m else ""
@@ -1767,7 +1980,17 @@ def self_test():
                     ("\"fit_switch\": false leaves it out", lambda pg: "fit-switch" not in figure_of(pg, "s-lab-none")),
                     ("the hint names the column", lambda pg: "Wider than this column." in figure_of(pg, "s-lab-own"))]}),
         ("appendix title: anything but Identity proofs is a warning", {"proofs.json": {"title": "Wordmark width proofs", "items": []}}, {},
-         {"warn": ["D2-328 names it \"Identity proofs\""], "html": ['After chapter 08</p>', 'Foundations, chapters 01 to 08']}),
+         {"warn": ["D2-328 names it \"Identity proofs\""], "html": ['After chapter 08</p>', 'Foundations, chapters 01 to 08']}),        ("stage B page weight: one sprite of the symbols referenced, a contact sheet as an image, inlined drawings and budgets",
+         {"09-pillar-icons.json": wt09, "10-symbols.json": wt10}, {"specimens": wt_specs, "manifest": wt_manifest},
+         {"warn": ["s-10-inline inlines 1 drawing(s) the sprite holds (CL-024)", "<use> reference(s) to no symbol: oa-sym-cl-999",
+                   "over its budget of 0.40 MB"],
+          "absent": ["s-10-use inlines", "s-10-sheet inlines", "chapter 10] weighs"],
+          "html": ['<section class="chapter" id="pillar-icons"', 'data-sprite="civic-line"', '<symbol id="oa-sym-cl-019" viewBox="0 0 128 128">',
+                   'var(--oa-icon-accent,currentColor)', 'href="#oa-sym-cl-025"'],
+          "tests": [("the sprite holds the two symbols referenced, and only those", lambda pg: pg.count("<symbol ") == 2 and 'id="oa-sym-cl-024"' not in pg),
+                    ("one sprite for the family, placed once", lambda pg: pg.count('class="oa-sprite"') == 1),
+                    ("the sprite draws in currentColor, never the master's ink", lambda pg: "#121212" not in re.search(r'<svg class="oa-sprite".*?</svg>', pg, re.S).group(0)),
+                    ("the contact sheet is an image under 150 KB", lambda pg: 0 < len((re.search(r'data:image/png;base64,([A-Za-z0-9+/=]+)', pg) or [None, ""])[1]) * 3 / 4 < 150_000)]}),
     ]
     results, ok_all = [], True
     with tempfile.TemporaryDirectory(prefix="oa-guide-build-") as tmp:

@@ -1215,3 +1215,28 @@ The studio put six questions to Dustin from round 0: the research lead's four (`
 | # | Decision | Reason |
 |---|---|---|
 | D2-532 | The renumbered state bills (DR-151) and Nebraska's step 5 (DR-150) land in round 2, by the owners of chapters 08 and 11 | Both change chapter plates, and round 2 builds the chapters after the drawings board |
+
+## Stage B round 1, November 9, 2026
+
+### Identity designer (`20261109_Stage-B-Identity-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-533 | The end mark's pixel fits draw every pixel full or empty, as one path | DR-142 asks for crisp edges at 1x, and a curve would put soft pixels back; the pixel-fit check finds no soft pixel in any fit |
+| D2-534 | The 14 px master serves 17 px text and the 12 px master 15 px text | Today's end mark is 14.1 px tall at 17 px and 12.5 px at 15 px (Q1 to Q4 figures) |
+| D2-535 | The two fits at each size differ in where B's bottom falls and draw the same strokes: walls 2 px, with the bowl's left side 3 px at 14 px | D2-496 names the band's row as the real choice. The display master's walls reduce to 2.4 to 3.0 px at 14 px and 2.1 to 2.5 px at 12 px, and the 16 px master draws 2 and 3 px at 16 px; the next whole width down is 1 px, so weight gives no real choice at these sizes |
+| D2-536 | In both fits B's top row sits on the capitals' top row | It keeps DR-130's band on the capitals: at 17 px text that row is the capitals' faint top row, and at 15 px their full top row |
+| D2-537 | Fit B takes one row out of the diagonal at 14 px and out of the crossing at 12 px, and keeps the bottom two rows deep | Dropping only the overshoot row would leave B's bottom stroke one row thin |
+| D2-538 | B is 13 px wide at 14 px and 11 px wide at 12 px | The masters' proportions give 12.3 to 12.7 and 10.5 to 10.9; the wider fit keeps the tail standing one pixel past the arm, as both masters draw it |
+| D2-539 | Each end mark fit gets a Prussian White file in `prussian/` | B's other masters have one there (treatment D) |
+| D2-540 | The script asserts that each B fit keeps exactly two counters | A first draft of Fit B at 14 px and Fit A at 12 px left a one-pixel hole under the arm's serif; both are redrawn |
+| D2-541 | The rebuilt lockmarks keep the link rects byte for byte and trace only the nodes and the lever | DR-145 names the nodes and the lever; the links never parted, since they are single rects |
+| D2-542 | No new 16 px lockmark file | Its nodes and lever are already one circle each, and it never parted into stripes (cores whole from 17 to 23 px) |
+| D2-543 | No second fit for the 16 px lockmark | I drew square and plus-shaped nodes on whole pixels and looked at them: the squares read as a grid of squares and the plus shapes as crosses, where today's circles read as dots, and both change approved pixels |
+| D2-544 | One proposal for the rebuilt lockmark, with no crisp-edged circle fit | Chromium draws crisp-edged circles lopsided, so they fail DR-145's same pixels at 1x |
+| D2-545 | The feed test runs on the proofs' card drawn standalone, with today's master and the rebuilt one in turn | No master changes until Dustin answers, so the guide page still draws today's master; the standalone card reproduces the page's figures (11 and 5) |
+| D2-546 | L6 centers the span from the wordmark's cap line to the tagline's baseline | Descenders hang below a line in type; counting them would move the group 12.6 units in place of 14.7, 1.4 px less at 884 px, so it gives no real choice |
+| D2-547 | L6 centered moves only the wordmark and the tagline | DR-129 keeps L6's own proportion for the strip and the lockmark |
+| D2-548 | The engineer's pixel-fit check runs on square copies of B's masters, padded on the right, in a scratch folder | The check sets every box square and would place B's 13 by 14 box half a pixel off |
+| D2-549 | The end mark is measured with the line at four positions between pixels (0, 0.25, 0.5 and 0.75 px) | CD-N10 found today's B moves a pixel with the line's position, so a fit has to hold at each one |
+| D2-550 | Enlarged views on the plates show 1x renders at eight times and 2x renders at four times, the same physical size; the lockmark's 1x views are at six times so five sizes fit one row | Each view says its magnification |

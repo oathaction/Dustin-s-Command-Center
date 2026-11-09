@@ -1,0 +1,135 @@
+{
+ "date": "20261109",
+ "fits": [
+  {
+   "id": "CL-019",
+   "name": "Explain",
+   "size_px": 24,
+   "line_px": 2,
+   "fit": "A",
+   "stem": "20261109_CL-019-Explain-24px-Fit-A",
+   "svg_red_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-019-Explain-24px-Fit-A-Red-Black.svg",
+   "svg_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-019-Explain-24px-Fit-A-Black.svg"
+  },
+  {
+   "id": "CL-019",
+   "name": "Explain",
+   "size_px": 24,
+   "line_px": 1,
+   "fit": "B",
+   "stem": "20261109_CL-019-Explain-24px-Fit-B",
+   "svg_red_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-019-Explain-24px-Fit-B-Red-Black.svg",
+   "svg_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-019-Explain-24px-Fit-B-Black.svg"
+  },
+  {
+   "id": "CL-019",
+   "name": "Explain",
+   "size_px": 16,
+   "line_px": 1,
+   "fit": "A",
+   "stem": "20261109_CL-019-Explain-16px-Fit-A",
+   "svg_red_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-019-Explain-16px-Fit-A-Red-Black.svg",
+   "svg_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-019-Explain-16px-Fit-A-Black.svg"
+  },
+  {
+   "id": "CL-020",
+   "name": "Track",
+   "size_px": 24,
+   "line_px": 2,
+   "fit": "A",
+   "stem": "20261109_CL-020-Track-24px-Fit-A",
+   "svg_red_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-020-Track-24px-Fit-A-Red-Black.svg",
+   "svg_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-020-Track-24px-Fit-A-Black.svg"
+  },
+  {
+   "id": "CL-020",
+   "name": "Track",
+   "size_px": 24,
+   "line_px": 1,
+   "fit": "B",
+   "stem": "20261109_CL-020-Track-24px-Fit-B",
+   "svg_red_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-020-Track-24px-Fit-B-Red-Black.svg",
+   "svg_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-020-Track-24px-Fit-B-Black.svg"
+  },
+  {
+   "id": "CL-020",
+   "name": "Track",
+   "size_px": 16,
+   "line_px": 1,
+   "fit": "A",
+   "stem": "20261109_CL-020-Track-16px-Fit-A",
+   "svg_red_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-020-Track-16px-Fit-A-Red-Black.svg",
+   "svg_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-020-Track-16px-Fit-A-Black.svg"
+  },
+  {
+   "id": "CL-021",
+   "name": "Connect",
+   "size_px": 24,
+   "line_px": 2,
+   "fit": "A",
+   "stem": "20261109_CL-021-Connect-24px-Fit-A",
+   "svg_red_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-021-Connect-24px-Fit-A-Red-Black.svg",
+   "svg_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-021-Connect-24px-Fit-A-Black.svg"
+  },
+  {
+   "id": "CL-021",
+   "name": "Connect",
+   "size_px": 24,
+   "line_px": 1,
+   "fit": "B",
+   "stem": "20261109_CL-021-Connect-24px-Fit-B",
+   "svg_red_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-021-Connect-24px-Fit-B-Red-Black.svg",
+   "svg_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-021-Connect-24px-Fit-B-Black.svg"
+  },
+  {
+   "id": "CL-021",
+   "name": "Connect",
+   "size_px": 16,
+   "line_px": 1,
+   "fit": "A",
+   "stem": "20261109_CL-021-Connect-16px-Fit-A",
+   "svg_red_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-021-Connect-16px-Fit-A-Red-Black.svg",
+   "svg_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-021-Connect-16px-Fit-A-Black.svg"
+  },
+  {
+   "id": "CL-021",
+   "name": "Connect",
+   "size_px": 16,
+   "line_px": 2,
+   "fit": "B",
+   "stem": "20261109_CL-021-Connect-16px-Fit-B",
+   "svg_red_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-021-Connect-16px-Fit-B-Red-Black.svg",
+   "svg_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-021-Connect-16px-Fit-B-Black.svg"
+  },
+  {
+   "id": "CL-022",
+   "name": "Act",
+   "size_px": 24,
+   "line_px": 2,
+   "fit": "A",
+   "stem": "20261109_CL-022-Act-24px-Fit-A",
+   "svg_red_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-022-Act-24px-Fit-A-Red-Black.svg",
+   "svg_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-022-Act-24px-Fit-A-Black.svg"
+  },
+  {
+   "id": "CL-022",
+   "name": "Act",
+   "size_px": 24,
+   "line_px": 1,
+   "fit": "B",
+   "stem": "20261109_CL-022-Act-24px-Fit-B",
+   "svg_red_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-022-Act-24px-Fit-B-Red-Black.svg",
+   "svg_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-022-Act-24px-Fit-B-Black.svg"
+  },
+  {
+   "id": "CL-022",
+   "name": "Act",
+   "size_px": 16,
+   "line_px": 1,
+   "fit": "A",
+   "stem": "20261109_CL-022-Act-16px-Fit-A",
+   "svg_red_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-022-Act-16px-Fit-A-Red-Black.svg",
+   "svg_black": "work/build/assets/pillar-pixel-fit/svg/20261109_CL-022-Act-16px-Fit-A-Black.svg"
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-nt-02-option-a-red-black" data-id="NT-02" width="128" height="128" viewBox="0 0 128 128">
+  <title>Contact An Official, option A</title>
+  <desc>Oath &amp; Action Civic Line NT-02 Contact An Official, stage B option A (outside DR-135 where it applies). A person and an official at a desk, joined by one line that carries a red speech mark. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
+  <g id="oa-civic-line-nt-02-option-a-red-black-base" data-part="base">
+    <circle cx="18.7864" cy="59.1385" r="5.3255" fill="none" stroke="#121212" stroke-width="2.9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.45 82.6549 L7.45 76.9867 A8.304523 8.304523 0 0 1 15.7545 68.6822 L21.8182 68.6822 A8.304523 8.304523 0 0 1 30.1227 76.9867 L30.1227 82.6549" fill="none" stroke="#121212" stroke-width="2.9" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="99.9864" cy="48.5509" r="4.2604" fill="none" stroke="#121212" stroke-width="2.9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M90.9173 66.3095 L90.9173 62.8295 A6.643643 6.643643 0 0 1 97.5609 56.1858 L102.4118 56.1858 A6.643668 6.643668 0 0 1 109.0555 62.8295 L109.0555 66.3095" fill="none" stroke="#121212" stroke-width="2.9" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="79.4227" y1="67.8913" x2="120.55" y2="67.8913" fill="none" stroke="#121212" stroke-width="2.9" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="82.0591,67.8913 82.0591,83.7095 117.9136,83.7095 117.9136,67.8913" fill="none" stroke="#121212" stroke-width="2.9" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="93.1318,67.8913 94.7136,63.6731 105.2591,63.6731 106.8409,67.8913" fill="none" stroke="#121212" stroke-width="2.9" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="34.6045" y1="67.8913" x2="49.3682" y2="67.8913" fill="none" stroke="#121212" stroke-width="2.9" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="68.35" y1="67.8913" x2="78.8955" y2="67.8913" fill="none" stroke="#121212" stroke-width="2.9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="oa-civic-line-nt-02-option-a-red-black-accent" data-part="accent">
+    <path d="M53.0591 59.4549 L64.6591 59.4549 A3.163618 3.163618 0 0 1 67.8227 62.6185 L67.8227 68.9458 A3.163643 3.163643 0 0 1 64.6591 72.1095 L57.2773 72.1095 L51.4773 76.8549 L53.0591 72.1095 A3.163643 3.163643 0 0 1 49.8955 68.9458 L49.8955 62.6185 A3.163618 3.163618 0 0 1 53.0591 59.4549 Z" fill="none" stroke="#E63946" stroke-width="2.9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

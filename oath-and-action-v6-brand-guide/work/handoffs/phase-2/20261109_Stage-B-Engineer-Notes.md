@@ -73,4 +73,9 @@ The flag sits at the 99th percentile because the master pairs above it are drawi
 
 **Self-test:** the masters reproduce Board 6's distribution (p50, p90, p95) and all 18 of its set pairs with a largest difference of 0.0000. CL-024 under a utility name, and the same drawing scaled onto a 24-unit grid, are both flagged against CL-024. A plus sign is not flagged (its closest master is CL-005 at the 73rd percentile). A redraw named `CL-025-...` and a fit named `CL-019-...` have their pairs with their originals reported apart. A red-black edition beside its black edition is compared once, and a second size and fit of one subject is reported as an option.
 
-The work below this line is in progress.
+## Progress (written as it landed)
+
+- Tokens at 6.0.0-gate2.4: the mark family and the 24 px utility line, each read on the page; token tests pass.
+- Shell: chapter 09's anchor is `pillar-icons`; the menu glyph is an SVG stroked in `currentColor` (UX-1); the Fit to window switch stands 44 px (DR-153).
+- `guide_check.js`: the audit's runnable requirements, the mark-token parity and DR-153's height test; the full page passes at four widths, and the self-test catches 72 of 72 planted faults.
+- Next: the sprite, contact sheets as images and the weight budget in `guide_build.py`.

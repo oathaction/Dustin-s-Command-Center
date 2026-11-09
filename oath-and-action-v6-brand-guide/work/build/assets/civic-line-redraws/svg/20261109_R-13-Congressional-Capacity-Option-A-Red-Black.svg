@@ -15,8 +15,8 @@
     <line x1="77.5118" y1="57.1277" x2="77.5118" y2="74.2803" fill="none" stroke="#121212" stroke-width="2.8144" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="43.4624" y1="80.3953" x2="77.6857" y2="80.3953" fill="none" stroke="#121212" stroke-width="2.8144" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="49.1885" y="64.7625" width="5.373" height="7.164" fill="none" stroke="#121212" stroke-width="2.8144" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="57.8876" y="64.7625" width="5.373" height="7.164" fill="none" stroke="#121212" stroke-width="2.8144" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="66.5867" y="64.7625" width="5.373" height="7.164" fill="none" stroke="#121212" stroke-width="2.8144" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="57.248,80.3953 57.248,68.8561 63.9002,68.8561 63.9002,80.3953" fill="none" stroke="#121212" stroke-width="2.8144" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M85.9908 75.7131 L85.9908 57.1124 L88.8462 57.1124 Q94.6029 57.1124 101.2552 61.4363 Q107.9075 57.1124 113.6642 57.1124 L116.5196 57.1124 L116.5196 75.7131" fill="none" stroke="#121212" stroke-width="2.8144" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="101.2552" y1="61.4363" x2="101.2552" y2="74.5362" fill="none" stroke="#121212" stroke-width="2.8144" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M81.9176 62.3318 L81.9176 80.3697 L90.893 80.3697 Q95.3193 80.3697 101.2552 84.0028 Q107.1911 80.3697 111.6174 80.3697 L120.5928 80.3697 L120.5928 62.3318" fill="none" stroke="#121212" stroke-width="2.8144" stroke-linecap="round" stroke-linejoin="round"/>

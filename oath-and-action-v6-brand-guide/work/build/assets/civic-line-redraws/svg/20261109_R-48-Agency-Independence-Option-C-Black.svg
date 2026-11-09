@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-48-option-c-black" data-id="R-48" width="128" height="128" viewBox="0 0 128 128">
+  <title>Agency Independence, option C</title>
+  <desc>Oath &amp; Action Civic Line R-48 Agency Independence, stage B option C (outside DR-135 where it applies). The commission at its table, and the official moves to a desk; an arrow from the desk stops at the red brace. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
+  <g id="oa-civic-line-r-48-option-c-black-base" data-part="base">
+    <circle cx="16.8668" cy="55.6517" r="3.491" fill="none" stroke="#121212" stroke-width="2.8804" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9.4355 70.2033 L9.4355 67.3517 A5.443891 5.443891 0 0 1 14.8794 61.9078 L18.8543 61.9078 A5.443866 5.443866 0 0 1 24.2981 67.3517 L24.2981 70.2033" fill="none" stroke="#121212" stroke-width="2.8804" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="34.6727" cy="55.6517" r="3.491" fill="none" stroke="#121212" stroke-width="2.8804" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M27.2414 70.2033 L27.2414 67.3517 A5.443866 5.443866 0 0 1 32.6852 61.9078 L36.6601 61.9078 A5.443891 5.443891 0 0 1 42.104 67.3517 L42.104 70.2033" fill="none" stroke="#121212" stroke-width="2.8804" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="52.4786" cy="55.6517" r="3.491" fill="none" stroke="#121212" stroke-width="2.8804" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M45.0472 70.2033 L45.0472 67.3517 A5.443891 5.443891 0 0 1 50.4911 61.9078 L54.466 61.9078 A5.443891 5.443891 0 0 1 59.9099 67.3517 L59.9099 70.2033" fill="none" stroke="#121212" stroke-width="2.8804" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="7.4402" y1="70.727" x2="61.9052" y2="70.727" fill="none" stroke="#121212" stroke-width="2.8804" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="11.6298" y1="70.727" x2="11.6298" y2="88.5328" fill="none" stroke="#121212" stroke-width="2.8804" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="57.7156" y1="70.727" x2="57.7156" y2="88.5328" fill="none" stroke="#121212" stroke-width="2.8804" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="106.9436" cy="48.6236" r="4.5489" fill="none" stroke="#121212" stroke-width="2.8804" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M97.2603 67.5847 L97.2603 63.8691 A7.093572 7.093572 0 0 1 104.3539 56.7755 L109.5333 56.7755 A7.093547 7.093547 0 0 1 116.6268 63.8691 L116.6268 67.5847" fill="none" stroke="#121212" stroke-width="2.8804" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="91.2325" y1="67.5847" x2="120.5598" y2="67.5847" fill="none" stroke="#121212" stroke-width="2.8804" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="116.3702" y1="67.5847" x2="116.3702" y2="88.5328" fill="none" stroke="#121212" stroke-width="2.8804" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="93.3273" y1="55.0159" x2="81.2822" y2="55.0159" fill="none" stroke="#121212" stroke-width="2.8804" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="85.4718,50.8263 81.2822,55.0159 85.4718,59.2055" fill="none" stroke="#121212" stroke-width="2.8804" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="oa-civic-line-r-48-option-c-black-accent" data-part="accent">
+    <polyline points="68.242,39.4672 73.6361,39.4672 73.6361,88.5328 68.242,88.5328" fill="none" stroke="#121212" stroke-width="2.8804" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="73.6361" y1="64.3902" x2="74.9716" y2="64.3902" fill="none" stroke="#121212" stroke-width="2.8804" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

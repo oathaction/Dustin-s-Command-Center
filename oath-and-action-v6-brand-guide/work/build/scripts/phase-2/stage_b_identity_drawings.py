@@ -139,7 +139,8 @@ def raster(d, w, h):
 # ============================================================================================ 1. the end mark
 # Drawn by hand on the pixel grid from the 16 px master as it renders at 16 px and from the display master reduced to
 # each size: the same loop with its counter tapering to the crossing, the diagonal, the bowl, the arm with its serif
-# and the tail. '#' is a full pixel. Fit B is Fit A with one row less in the lower half, the bottom kept two rows deep.
+# and the tail. '#' is a full pixel. Fit B is Fit A with one row of the lower half taken out (the diagonal's), the
+# bottom kept two rows deep.
 B14_A = [
     "...####......",
     "..######.....",
@@ -156,7 +157,7 @@ B14_A = [
     ".############",
     "..#####...###",
 ]
-B14_B = B14_A[:7] + B14_A[8:]
+B14_B = B14_A[:10] + B14_A[11:]
 B12_A = [
     "...####....",
     "..##..##...",
@@ -164,7 +165,7 @@ B12_A = [
     "..##.##....",
     "...###.....",
     "...###.###.",
-    "..#####.##.",
+    "..####..##.",
     ".##.######.",
     "##....###..",
     "##.....###.",
@@ -190,15 +191,37 @@ END_FITS = {
 }
 
 
+def counters(rows):
+    """Enclosed spaces in a drawing: the background regions that do not reach the edge (4-connected)."""
+    w, h = len(rows[0]), len(rows)
+    bg = {(x, y) for y in range(h) for x in range(w) if rows[y][x] != "#"}
+    n = 0
+    while bg:
+        stack = [bg.pop()]
+        comp, edge = set(stack), False
+        while stack:
+            x, y = stack.pop()
+            if x in (0, w - 1) or y in (0, h - 1):
+                edge = True
+            for q in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                if q in bg:
+                    bg.remove(q)
+                    comp.add(q)
+                    stack.append(q)
+        n += not edge
+    return n
+
+
 def end_files():
     out = {}
     for k, (rows, text_px, va, stem, desc) in END_FITS.items():
         w, h = len(rows[0]), len(rows)
         assert all(len(r) == w for r in rows), k
+        assert counters(rows) == 2, f"{k}: B must keep exactly its two counters, the loop's and the bowl's"
         d = path_d(trace(pixels_of(rows)))
         assert raster(d, w, h) == pixels_of(rows), f"{k}: the outline does not draw its pixels"
         title = (f"Ampersand B, pixel-fit end mark for {text_px} px text, fit {k[-1]}: {desc}. Set it with "
-                 f"vertical-align {va} px, half an em after the period. Drawn on the pixel grid, one outline (DR-142, stage B)")
+                 f"vertical-align {va} px, half an em after the period. Drawn on the pixel grid as one path, its outline and its two counters (DR-142, stage B)")
         color = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}"><title>{E(title)}</title>'
                  f'<path fill="currentColor" d="{d}"/></svg>\n')
         white = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}"><title>{E(title)}. Treatment D for Prussian: one color, White</title>'
@@ -580,12 +603,19 @@ def figure_line(m):
 
     def span(key):
         lo, hi = min(q[key] for q in r), max(q[key] for q in r)
-        return f"{lo:.0f}" if lo == hi else f"{lo:.0f} to {hi:.0f}"
-    rows_word = lambda key: "rows" if span(key) != "1" else "row"   # noqa: E731
-    return (f'Capitals {m["capitals_px"]:.1f} px; B {m["b_px"]:.1f} px tall, its top {m["top_over_cap_line_px"]:.1f} px over the cap line '
-            f'and its tail {m["tail_under_baseline_px"]:.1f} px under the baseline. At 1x, with the line at four positions between pixels, '
-            f'B covers {span("b_rows")} rows, its top {span("top_rows_over_h")} {rows_word("top_rows_over_h")} over the capital H\'s and its tail '
-            f'{span("tail_rows_under_h")} {rows_word("tail_rows_under_h")} under it; {m["b_full_ink_share_at_1x"] * 100:.0f} percent of its ink pixels are full Charcoal.')
+        return (lo, hi)
+    top, tail, rows = span("top_rows_over_h"), span("tail_rows_under_h"), span("b_rows")
+    word = {0: "no rows", 1: "one row", 2: "two rows"}
+    t_top = "its top row on the capital H\'s top row" if top == (0, 0) else (
+        f"its top {word[top[0]]} over H\'s" if top[0] == top[1] else f"its top {top[0]:.0f} to {top[1]:.0f} rows over H\'s")
+    t_tail = "its last row on H\'s last row" if tail == (0, 0) else (
+        f"its last row {word[tail[0]]} under H\'s" if tail[0] == tail[1] else f"its last row {tail[0]:.0f} to {tail[1]:.0f} rows under H\'s, by where the line falls")
+    t_rows = f"{rows[0]:.0f} rows" if rows[0] == rows[1] else f"{rows[0]:.0f} to {rows[1]:.0f} rows"
+    under = ("its bowl and tail on the baseline" if m["tail_under_baseline_px"] == 0
+             else f'its tail {m["tail_under_baseline_px"]:.1f} px under the baseline')
+    return (f'Capitals {m["capitals_px"]:.1f} px; B {m["b_px"]:.1f} px tall, its top {m["top_over_cap_line_px"]:.1f} px over the cap line and {under}. '
+            f'At 1x, with the line at four positions between pixels, B covers {t_rows}, {t_top} and {t_tail}; '
+            f'{m["b_full_ink_share_at_1x"] * 100:.0f} percent of its ink pixels are full Charcoal.')
 
 
 def plates(figs, imgs):
@@ -668,11 +698,10 @@ def plates(figs, imgs):
                   f'<h3>At 1x, six times</h3><div class="grid" style="grid-template-columns:96px repeat(5,max-content);align-items:start">'
                   f'<p class="opt">Today</p>{enl_t}<p class="opt">Rebuilt</p>{enl_n}</div>'
                   f'<h3>The 48 px master on a 2x screen</h3>{two_x}'
-                  f'<p class="fig" style="margin:0">The rebuilt master draws the same stepped nodes as today\'s on a 2x screen: each 7 px node doubles into a 14 px shape with 2 px steps. '
-                  f'The rebuild cures the stripes, not the steps.</p>'
+                  f'<p class="fig" style="margin:0">On a 2x screen the rebuilt master draws the same stepped nodes as today\'s: each 7 px node doubles into a 14 px shape with 2 px steps.</p>'
                   f'<h3>On Charcoal and Prussian</h3><div class="row" style="gap:24px">{surf}</div>'
                   f'<h3>The sign-off when a feed shrinks the card, eight times (D2-468)</h3><div class="row" style="gap:40px">{feed_rows}</div>'
-                  f'<p class="fig" style="margin:0">The rebuilt master draws the same 1200 px card pixel for pixel, so a feed that shrinks the card gets the same result: '
+                  f'<p class="fig" style="margin:0">The rebuilt master draws the sign-off on the 1200 px card pixel for pixel as today\'s does, so a feed that shrinks the card gets the same result: '
                   f'{fd["new"]["at_360"]["lever_red_px"]} red pixels at 360 px against a floor of {fd["min_red_px"]}.</p></section>')
 
     # ---- L6 centered

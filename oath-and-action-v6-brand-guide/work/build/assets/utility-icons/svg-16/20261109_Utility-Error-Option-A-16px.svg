@@ -2,5 +2,5 @@
   <!-- Oath & Action utility icon: Error, option A, 16 px master. An exclamation mark in a circle. 16-unit grid, 1.5 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
   <circle cx="7.75" cy="7.75" r="6.25"/>
   <path d="M7.75 4.5V8.5"/>
-  <circle cx="7.75" cy="11" r="0.75" fill="currentColor" stroke="none"/>
+  <circle cx="7.75" cy="11.25" r="0.75" fill="currentColor" stroke="none"/>
 </svg>
