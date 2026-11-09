@@ -192,8 +192,47 @@ None. Every item above is a routine call inside the approved stage, or one Dusti
 - **Chapter 01's owner.** Add `data-icon-family="pillar"` to the twelve icons in `s-01-pillars`, and at round 2 draw `s-01-pillars`, `s-01-21-correct` and `s-01-21-failure` from the sprite with `<use>`.
 - **Icon designers.** Run the pixel-fit check with `--weight 1.5` at 16 px and `--weight 2` at 24 px on utility drawings; name each file with its master's ID where it has one; send finals for the sprite to one folder per family once approved.
 - **Main session.** The stage A board page still holds the build from before my changes; the next default build rewrites it.
+- **Icon designers and creative director, from a first run on today's files.** The look-alike check finds no utility drawing near a Civic Line master. It flags 30 pairs of utility drawings against each other, 21 of them between Option B drawings, which share a frame that dominates the silhouette at 24 px (Close B and Pause B at 0.973, Pause C and Play C at 0.966). Results: run the command above; nothing of it is written into the repository.
 
 ## Left for round 2 in `guide_check.js`
 
 These need specimens or lists that do not exist yet: A-5 (a state word on every step), A-6 (one `aria-current` per pillar row, on the underlined item), A-7 (a kicker's icon beside its own word), A-9 (status lines after a press), B-4 (glyph and word in one control in the library and filter bar), C-1 to C-4 (state marks by shape, ink at 3 to 1 on rendered pixels, red never alone, the yielding red), C-6 (grayscale captures of chapters 09 to 11), D-2 (a red accent under forced colors), D-3 (states and focus in forced colors), D-4 (shell controls in system colors), F-2 (no truncated label, 320 px), G-3 for Close and View full size inside live specimens, G-5 (a grid of symbols as one Tab stop or links in reading order), B-3's list of 41, and `REQUIRE_FAMILY` turned on. UX-2's second pass, the three marks against the badge corners of the fourteen Civic Line drawings that carry one, needs a cropped comparison the look-alike check does not do yet.
 
+## Tested
+
+- `node work/build/scripts/phase-2/icon_pixel_fit_check.js --self-test`: 9 of 9 cases right, 7 planted faults caught and 2 allowances quiet. Also run through `python3 -I ... icon_pixel_fit_check.py --self-test`.
+- The pixel-fit check on the five lockmark masters and CL-019 and CL-024 at 16, 24 and 48 px (the table above); on the shell's menu glyph at 24 px with `--weight 2` (pass); and, read only, on the eight 16 px pillar fits in `pillar-pixel-fit/svg` (8 of 8 pass).
+- `node work/build/scripts/phase-2/icon_likeness_check.js --self-test`: the 122 masters reproduce Board 6's p50, p90 and p95 and its 18 set pairs with a largest difference of 0.0000, and every plant behaves. Run read only on `utility-icons/` (108 files, figures above).
+- `python3 -I work/build/tests/tokens/run_token_tests.py`: all six steps pass. Build check 495 tokens; parity 495 tokens, 615 `:root` properties, 0 failures; rules 0 failures; self-test 35 of 35 plants; Style Dictionary 5.8.0 reads 495 and all agree; Chromium resolves 464 token values with 0 failures.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide.html`: exit 0, no warnings, 6,241,072 bytes, 9 chapter files, 100 rules, 233 specimens, three notes (the chapter 01 specimens that inline masters).
+- `python3 -I work/build/scripts/phase-2/guide_build.py --self-test`: 9 of 9 scenarios, 61 of 61 expectations, the new page weight scenario included.
+- `node work/build/scripts/phase-2/guide_check.js <scratch>/guide.html` at 1440, 1024, 390 and 360 px: PASS, 0 failures; axe-core 4.10.2 with no violations at any width; 60 focus stops with a ring at 1440 and at 390 px; the phone menu round trip at 390 and 360 px; every mark token read (60 to 124 elements each). 16 section captures written to the scratch folder.
+- `guide_check.js --self-test --results <scratch>`: PASS; the clean demo passes at 1440 and 390 px, 72 of 72 planted faults are caught (17 new) and 9 of 9 allowances stay quiet (5 new).
+- The sprite: all 122 symbols drawn through `<use>` beside their masters in Chromium, black and red-black, figures above.
+- Looked at: the masthead's menu button at 390 px in normal mode and in forced colors, dark and light; the Fit to window switch at 390 px in both states; chapter 01's pillar row in forced colors (it keeps its colors, so D-1 had to measure the change, not the contrast).
+- Measured: today's page weight by chapter; the contact sheets' size at full width and at 600 px.
+
+## Not tested
+
+- The sprite on the real page: no specimen references a symbol yet, so it carries none. The build self-test and the 122-symbol comparison cover it.
+- `forcedGlyphs` does not see inside a `<use>` shadow tree; a symbol's parts take `currentColor` from the `<svg>` that holds them.
+- Forced colors on Windows itself, Firefox, Safari, real phones and a screen reader by ear. Forced colors and reduced motion are Chromium's emulation.
+- The pixel-fit check at 12 and 14 px, the end mark's sizes; it takes any size from 4 to 512 px, and I ran it at 16, 24 and 48.
+- Text spacing and 200 percent text inside picture stages, which the checks skip, and print.
+- The default build into `work/boards/phase-2/stage-a/`, which I did not run, so the board page and its results there are as they were.
+
+## Change log
+
+Created:
+- `work/build/scripts/phase-2/icon_pixel_fit_check.js`
+- `work/build/scripts/phase-2/icon_pixel_fit_check.py`
+- `work/build/scripts/phase-2/icon_likeness_check.js`
+- `work/handoffs/phase-2/20261109_Stage-B-Engineer-Notes.md` (this file)
+
+Modified:
+- `work/build/tokens/src/oa-tokens.src.mjs`: version 6.0.0-gate2.4, the mark family, the 24 px utility line, the icon size descriptions; regenerated by `tokens_build.mjs`: `work/build/tokens/tokens.json`, `work/build/tokens/tokens.css`; regenerated by the tests: `work/build/tests/tokens/20261106_Token-Test-Results.json`
+- `work/build/guide/shell/guide-shell.css`: the menu glyph as an SVG stroke and its forced colors line, the mark token rules, the Fit to window switch at 44 px with its pressed underline
+- `work/build/scripts/phase-2/guide_build.py`: chapter 09's anchor, the menu glyph markup, the reader check for the mark and utility tokens, the sprite, contact sheets as images, inlined-drawing warnings, the weight budget and report, a new self-test scenario
+- `work/build/scripts/phase-2/guide_check.js`: the stage B checks, G-1's focus test at 1440 and 390 px, DR-153's height test, 22 new plants, per-plant widths and focus, `--results`
+
+Unchanged: `guide-shell.js`, the fixtures, every chapter file and specimen, every asset master and every board. Nothing in `source/` or `work/ledger/`. Nothing committed or pushed.

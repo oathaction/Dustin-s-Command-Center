@@ -1267,3 +1267,36 @@ The studio put six questions to Dustin from round 0: the research lead's four (`
 | # | Decision | Reason |
 |---|---|---|
 | D2-567 | The creative director scores the makers' plate pages before the board is built, marks a recommended option on each card and names any option that is a near-duplicate of another or fails to name its subject; the makers fix in one round; the board builder then builds the board with the scores after the fix | One fix round before the board, so the board is built once and shows Dustin three real choices per icon (DR-146) |
+
+## Stage B round 0, engineer, November 9, 2026
+
+### Engineer (`20261109_Stage-B-Engineer-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-568 | The pixel-fit check is a Node script that renders in Chromium, and the drawings brief's `.py` path runs it through a thin wrapper | No SVG renderer exists for Python here, and Chromium draws icons as the guide does |
+| D2-569 | The pixel-fit check rasterizes by screenshotting the SVG inline in a page at device scale 1, 2 and a supersample | A canvas keeps a non-scaling stroke at one canvas pixel at any zoom, which misstates the fifth edition's lockmark masters |
+| D2-570 | Pixel-fit thresholds: thinnest stroke 1.0 device px, soft edges 95 percent, straight edges within 0.1 px of a pixel edge, gaps 1.0 device px, the same counters as drawn, and with `--weight` the main width within 0.15 px | Under one device pixel a line never reaches full ink; the soft share cannot tell a fit round drawing from an unfit one, so it fails only an all-fringe drawing |
+| D2-571 | A stroke of fractional width passes with one edge on a pixel edge, a whole-pixel stroke needs both | A 1.5 px line at 16 px cannot hold both edges on whole pixels |
+| D2-572 | A drawing passes a size only when it passes at 1x and at 2x | Both densities are in use |
+| D2-573 | The look-alike check flags at the 99th percentile of the masters' pairs (0.913) and lists from the 95th (0.871) | The master pairs above the 99th are drawings that share a base; a utility icon that close would read as part of the topic set |
+| D2-574 | The look-alike check draws masters exactly as Board 6 did, and new drawings as their coverage in Charcoal | The port then reproduces Board 6 exactly, and red, grey and `currentColor` parts count as ink |
+| D2-575 | A pair with the master whose ID a file name carries is reported apart; options (Option, Opt, Fit, Variant), sizes and editions are read from file names | DR-135's redraws and the pixel fits are meant to stay close to their originals |
+| D2-576 | Mark tokens are literal dimensions with no tier, as chart sizes are; the two lines and the keyline alias the border widths | The tier rule asks a component token to alias a semantic one, and no semantic dimension exists for these jobs |
+| D2-577 | The circle sizes by place and the 16 px utility line wait for a reader | D2-402: a token with no reader escapes the parity test |
+| D2-578 | The shell sets each mark's width from its token by the mark's classes and drawn width, until the plates write `var()` themselves | The plates belong to the systems designer; a failure plate's deliberate fault keeps its own width |
+| D2-579 | The build warns on a mark or utility icon token with no `var()` reader, and `markTokens` measures the drawn marks | The guide and the token file cannot then drift apart unseen |
+| D2-580 | The icon size tokens' descriptions follow DR-136 and D2-497 | They described every 16 px icon as a Civic Line icon |
+| D2-581 | Chapter 09's anchor is `pillar-icons`, with no alias for `pillar-marks` | D2-446; no link to it reached a reader |
+| D2-582 | The menu glyph is drawn as an SVG stroke on today's geometry, tagged `U-menu` in the utility family | UX-1, with no visible change until the utility set's Menu drawing replaces it |
+| D2-583 | The Fit to window switch's pressed option is underlined at 2 px as well as filled | C-5; the guide underlines the current item elsewhere |
+| D2-584 | `forcedGlyphs` fails a part that stands out at 1.5 to 1 or more normally and under 1.5 to 1 in forced colors | A red accent on Newsprint (2.96 to 1) and a tracker's surface-colored cut are drawn that way on purpose; an erased part is what UX-1 found |
+| D2-585 | `focus` counts an outline only, 2 px or more, at 3 to 1 against the better of the ground outside and the control's own fill, and runs at 390 px too | UX-5; the skip link's Newsprint ring reads against its own Charcoal box |
+| D2-586 | A glyph without `data-icon-family` is listed and its family inferred from its ID; it fails from round 2 (`REQUIRE_FAMILY`) | Chapter 01's pillar row carries `data-icon` alone today, and its owner adds the family |
+| D2-587 | B-3's list of the 41 topic symbols that read at 24 px is empty until round 2, so any topic symbol at 24 px fails until it is listed | The list exists only as a count in the scoping notes (DR-136) |
+| D2-588 | A control hidden until it takes focus (the skip links) is left out of A-3 and A-4 | Its words show when it is used |
+| D2-589 | One sprite per family holds only the symbols the page references, after `<body>`, with ids `oa-sym-` and the master's ID | The page carries each drawing once, and contact sheets cover the rest as images |
+| D2-590 | A specimen from chapter 09 on that inlines a master is a warning; the three earlier ones are notes | The plan serves the new chapters, and the strict build stays clean while their owner moves them |
+| D2-591 | A contact sheet embeds at twice its shown width as a 16-color palette PNG | Line art keeps its look at a quarter of the weight or less |
+| D2-592 | Chapter budgets sum to 15.5 MB across all 26 chapters, with a page warning at 15.5 MB | Half a megabyte stays under the 16 MB limit, and later stages inherit room |
+| D2-593 | All my builds and check outputs went to a scratch folder, and the stage A board page was not rebuilt | The task keeps outputs out of `work/build` and boards untouched |

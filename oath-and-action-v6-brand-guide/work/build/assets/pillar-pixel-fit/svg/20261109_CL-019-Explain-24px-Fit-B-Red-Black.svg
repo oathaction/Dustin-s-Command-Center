@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-pillar-fit-cl-019-24px-fit-b-red-black" data-id="CL-019" width="24" height="24" viewBox="0 0 24 24">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-pillar-fit-cl-019-24px-fit-b-red-black" data-id="CL-019" width="24" height="24" viewBox="0 0 24 24" shape-rendering="crispEdges">
   <title>Explain, 24 px fit B</title>
-  <desc>Oath &amp; Action Civic Line CL-019 Explain, pixel-fit master for 24 px, fit B: a 1 px line on the pixel grid, every feature and red placement of the master kept, the red its own shapes in the accent group (DR-133, stage B). Use at 24 px only; the black edition is the one in use under 48 px.</desc>
-  <g id="oa-pillar-fit-cl-019-24px-fit-b-red-black-accent" data-part="accent" stroke="#E63946" fill="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-    <line x1="11.5" y1="2.5" x2="11.5" y2="5.5"/>
-    <line x1="6.5" y1="3.5" x2="8.5" y2="5.5"/>
-    <line x1="16.5" y1="3.5" x2="14.5" y2="5.5"/>
-  </g>
-  <g id="oa-pillar-fit-cl-019-24px-fit-b-red-black-base" data-part="base" stroke="#121212" fill="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M11.5 9.5 C9 7.5 6.5 7.5 4.5 7.5 V17.5 C7.5 17.5 9.5 18 11.5 19.5"/>
-    <path d="M11.5 9.5 C14 7.5 16.5 7.5 18.5 7.5 V17.5 C15.5 17.5 13.5 18 11.5 19.5"/>
-    <path d="M4.5 10.5 H1.5 V19.5 C5.5 19.5 8.5 20 11.5 21.5"/>
-    <path d="M18.5 10.5 H21.5 V19.5 C17.5 19.5 14.5 20 11.5 21.5"/>
-    <line x1="11.5" y1="9.5" x2="11.5" y2="21.5"/>
-  </g>
+  <desc>Oath &amp; Action Civic Line CL-019 Explain, pixel-fit master for 24 px, fit B: a 1 px line drawn pixel by pixel on the 24 px grid, every feature and red placement of the master kept, the red its own shape in the accent group (DR-133, stage B). Use at 24 px only; the black edition is the one in use under 48 px.</desc>
+  <path id="oa-pillar-fit-cl-019-24px-fit-b-red-black-accent" data-part="accent" fill="#E63946" d="M11 1h1v1h-1zM6 2h1v1h-1zM11 2h1v1h-1zM16 2h1v1h-1zM7 3h1v1h-1zM11 3h1v1h-1zM15 3h1v1h-1zM8 4h1v1h-1zM11 4h1v1h-1zM14 4h1v1h-1z"/>
+  <path id="oa-pillar-fit-cl-019-24px-fit-b-red-black-base" data-part="base" fill="#121212" d="M4 7h4v1h-4zM15 7h4v1h-4zM4 8h1v1h-1zM8 8h2v1h-2zM13 8h2v1h-2zM18 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM12 9h1v1h-1zM18 9h1v1h-1zM4 10h1v1h-1zM11 10h1v1h-1zM18 10h1v1h-1zM2 11h3v1h-3zM11 11h1v1h-1zM18 11h3v1h-3zM2 12h1v1h-1zM4 12h1v1h-1zM11 12h1v1h-1zM18 12h1v1h-1zM20 12h1v1h-1zM2 13h1v1h-1zM4 13h1v1h-1zM11 13h1v1h-1zM18 13h1v1h-1zM20 13h1v1h-1zM2 14h1v1h-1zM4 14h1v1h-1zM11 14h1v1h-1zM18 14h1v1h-1zM20 14h1v1h-1zM2 15h1v1h-1zM4 15h1v1h-1zM11 15h1v1h-1zM18 15h1v1h-1zM20 15h1v1h-1zM2 16h1v1h-1zM4 16h1v1h-1zM11 16h1v1h-1zM18 16h1v1h-1zM20 16h1v1h-1zM2 17h1v1h-1zM4 17h4v1h-4zM11 17h1v1h-1zM15 17h4v1h-4zM20 17h1v1h-1zM2 18h1v1h-1zM8 18h2v1h-2zM11 18h1v1h-1zM13 18h2v1h-2zM20 18h1v1h-1zM2 19h1v1h-1zM10 19h3v1h-3zM20 19h1v1h-1zM2 20h5v1h-5zM11 20h1v1h-1zM16 20h5v1h-5zM7 21h3v1h-3zM11 21h1v1h-1zM13 21h3v1h-3zM10 22h3v1h-3z"/>
 </svg>

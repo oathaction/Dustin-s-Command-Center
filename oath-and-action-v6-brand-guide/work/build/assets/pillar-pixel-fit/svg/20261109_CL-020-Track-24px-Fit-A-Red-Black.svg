@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-pillar-fit-cl-020-24px-fit-a-red-black" data-id="CL-020" width="24" height="24" viewBox="0 0 24 24">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-pillar-fit-cl-020-24px-fit-a-red-black" data-id="CL-020" width="24" height="24" viewBox="0 0 24 24" shape-rendering="crispEdges">
   <title>Track, 24 px fit A</title>
-  <desc>Oath &amp; Action Civic Line CL-020 Track, pixel-fit master for 24 px, fit A: a 2 px line on the pixel grid, every feature and red placement of the master kept, the red its own shapes in the accent group (DR-133, stage B). Use at 24 px only; the black edition is the one in use under 48 px.</desc>
-  <g id="oa-pillar-fit-cl-020-24px-fit-a-red-black-accent" data-part="accent" stroke="#E63946" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M5 7 L3.3 4.6 A2 2 0 1 1 6.7 4.6 Z"/>
-    <line x1="19.5" y1="16.5" x2="21.5" y2="18.5"/>
-  </g>
-  <g id="oa-pillar-fit-cl-020-24px-fit-a-red-black-base" data-part="base" stroke="#121212" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M8 9 H11 A2 2 0 0 1 11 13 H5 A2 2 0 0 0 5 17 H13"/>
-    <circle cx="17" cy="14" r="3"/>
-  </g>
+  <desc>Oath &amp; Action Civic Line CL-020 Track, pixel-fit master for 24 px, fit A: a 2 px line drawn pixel by pixel on the 24 px grid, every feature and red placement of the master kept, the red its own shape in the accent group (DR-133, stage B). Use at 24 px only; the black edition is the one in use under 48 px.</desc>
+  <path id="oa-pillar-fit-cl-020-24px-fit-a-red-black-accent" data-part="accent" fill="#E63946" d="M4 1h2v1h-2zM2 2h6v1h-6zM2 3h2v1h-2zM6 3h2v1h-2zM1 4h2v1h-2zM7 4h2v1h-2zM1 5h2v1h-2zM7 5h2v1h-2zM2 6h2v1h-2zM6 6h2v1h-2zM2 7h6v1h-6zM3 8h4v1h-4zM4 9h2v1h-2zM21 19h2v1h-2zM21 20h2v1h-2zM22 21h2v1h-2z"/>
+  <path id="oa-pillar-fit-cl-020-24px-fit-a-red-black-base" data-part="base" fill="#121212" d="M7 10h5v1h-5zM7 11h7v1h-7zM15 11h6v1h-6zM12 12h10v1h-10zM12 13h4v1h-4zM20 13h2v1h-2zM12 14h4v1h-4zM20 14h2v1h-2zM3 15h10v1h-10zM14 15h2v1h-2zM20 15h2v1h-2zM2 16h10v1h-10zM14 16h2v1h-2zM20 16h2v1h-2zM1 17h2v1h-2zM14 17h8v1h-8zM1 18h2v1h-2zM15 18h6v1h-6zM1 19h2v1h-2zM2 20h11v1h-11zM3 21h10v1h-10z"/>
 </svg>

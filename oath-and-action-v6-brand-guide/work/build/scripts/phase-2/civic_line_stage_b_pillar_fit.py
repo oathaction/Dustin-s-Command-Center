@@ -3,18 +3,18 @@ Track, CL-021 Connect and CL-022 Act at 16 and 24 px.
 
     python3 -I work/build/scripts/phase-2/civic_line_stage_b_pillar_fit.py [--proof DIR]
 
-Each fit is drawn on its own pixel grid in Civic Line's hand: one line, round
-caps and joins, every feature of the master and every red placement, the red
-as its own shapes in the accent group. A 1 px line runs on half-pixel
-centers and a 2 px line on whole-pixel centers, so every straight run fills
-whole pixels; rings take centers and radii that put their four extremes on
-whole pixels too. Curves and diagonals still shade at their edges, as any
-curve on a pixel grid must.
+Each fit is drawn pixel by pixel on its own grid, as the identity designer's
+end-mark fits are: every pixel is Charcoal, Pillar Red or empty, so the whole
+drawing sits on whole pixels. Every feature of the master and every red
+placement is kept, and the red is its own shape in the accent path. Round
+caps and joins cannot show at one or two pixels; the fits keep the masters'
+curves as pixel curves.
 
 Fits: at 24 px, A has a 2 px line (the utility set's weight at 24 px) and B a
-1 px line (closer to the masters' light line). At 16 px, A has a 1 px line
-and B a 2 px line where every feature still holds apart; where it cannot,
-the fit is not drawn and the notes say why.
+1 px line (nearer the masters' light line). At 16 px there is one fit, a
+1 px line: a 2 px line at 16 px closes Connect's lens, Track's pin and lens,
+the book's doubled lower edge and Act's finger, so no second fit keeps every
+feature (DR-133).
 
 Writes work/build/assets/pillar-pixel-fit/svg/ and png/ (1x and 2x) and a
 manifest. The black edition, the one in use under 48 px (D2-497, DR-67's
@@ -33,158 +33,373 @@ import civic_line_stage_b_common as C  # noqa: E402
 OUT = os.path.join(C.ROOT, "work", "build", "assets", "pillar-pixel-fit")
 
 
-def n(v):
-    s = f"{v:.2f}".rstrip("0").rstrip(".")
-    return "0" if s in ("-0", "") else s
+# ------------------------------------------------------------------ pixel maps
+# '.' empty, '#' Charcoal, 'r' Pillar Red. Every map is drawn by hand; rings
+# come from ring() below and then are checked by eye. A map is a list of rows.
+
+def blank(size):
+    return [["."] * size for _ in range(size)]
 
 
-def mx(ax, x):
-    return 2 * ax - x
+def put(g, pts, c):
+    for x, y in pts:
+        if 0 <= y < len(g) and 0 <= x < len(g):
+            g[y][x] = c
 
 
-# Each fit returns (base, accent): lists of SVG element strings in grid units.
-# L: line, PL: polyline, PA: path, CI: circle.
-def L(x1, y1, x2, y2):
-    return f'<line x1="{n(x1)}" y1="{n(y1)}" x2="{n(x2)}" y2="{n(y2)}"/>'
+def ring(cx, cy, r, w=1.0, gap=None):
+    """Pixels whose centers lie within the band r - w/2 .. r + w/2 of
+    (cx, cy). gap=(a0, a1) leaves out angles a0..a1 (degrees, 0 = right,
+    90 = down)."""
+    import math
+    out = []
+    for y in range(int(cy - r - w) - 1, int(cy + r + w) + 2):
+        for x in range(int(cx - r - w) - 1, int(cx + r + w) + 2):
+            d = math.hypot(x + 0.5 - cx, y + 0.5 - cy)
+            if r - w / 2 <= d <= r + w / 2:
+                a = math.degrees(math.atan2(y + 0.5 - cy, x + 0.5 - cx)) % 360
+                if gap and gap[0] <= a <= gap[1]:
+                    continue
+                out.append((x, y))
+    return out
 
 
-def PL(pts):
-    return '<polyline points="' + " ".join(f"{n(x)},{n(y)}" for x, y in pts) + '"/>'
+def text_map(rows):
+    return [list(r) for r in rows.strip("\n").split("\n")]
 
 
-def PA(d):
-    return f'<path d="{d}"/>'
-
-
-def CI(cx, cy, r):
-    return f'<circle cx="{n(cx)}" cy="{n(cy)}" r="{n(r)}"/>'
+def grid_rows(g):
+    return ["".join(r) for r in g]
 
 
 # ------------------------------------------------------------------ Explain
 
+EXPLAIN_16 = """
+................
+.......r........
+...r...r...r....
+....r..r..r.....
+................
+...###...###....
+...#..#.#..#....
+.###...#...###..
+.#.#...#...#.#..
+.#.#...#...#.#..
+.#.#...#...#.#..
+.#.###.#.###.#..
+.#....###....#..
+.####..#..####..
+.....#####......
+................
+"""
+
+EXPLAIN_24_1 = """
+........................
+...........r............
+......r....r....r.......
+.......r...r...r........
+........r..r..r.........
+........................
+........................
+....####.......####.....
+....#...##...##...#.....
+....#.....#.#.....#.....
+....#......#......#.....
+..###......#......###...
+..#.#......#......#.#...
+..#.#......#......#.#...
+..#.#......#......#.#...
+..#.#......#......#.#...
+..#.#......#......#.#...
+..#.####...#...####.#...
+..#.....##.#.##.....#...
+..#.......###.......#...
+..#####....#....#####...
+.......###.#.###........
+..........###...........
+........................
+"""
+
+EXPLAIN_24_2 = """
+........................
+...........rr...........
+......rr...rr...rr......
+.......rr..rr..rr.......
+........rr.rr.rr........
+........................
+....####........####....
+....######....######....
+....##..###..###..##....
+....##....####....##....
+.#####.....##.....#####.
+.#####.....##.....#####.
+.##.##.....##.....##.##.
+.##.##.....##.....##.##.
+.##.##.....##.....##.##.
+.##.##.....##.....##.##.
+.##.####...##...####.##.
+.##.######.##.######.##.
+.##.....########.....##.
+.##.......####.......##.
+.######....##....######.
+.########..##..########.
+.........######.........
+........................
+"""
+
+
 def explain(size, w):
-    """Open book: two page blocks bowing down to the spine, an outer cover a
-    step lower with its doubled lower edge, the spine, and three red rays."""
+    if size == 16 and w == 1:
+        return text_map(EXPLAIN_16)
+    if size == 24 and w == 1:
+        return text_map(EXPLAIN_24_1)
     if size == 24 and w == 2:
-        ax = 12
-        pages = lambda s: PA(f"M{ax} 9 C{n(ax + s * 2)} 7 {n(ax + s * 4)} 7 {n(ax + s * 7)} 7 V17 "
-                             f"C{n(ax + s * 4)} 17 {n(ax + s * 2)} 17.5 {ax} 19")
-        cover = lambda s: PA(f"M{n(ax + s * 7)} 10 H{n(ax + s * 10)} V20 C{n(ax + s * 6)} 20 {n(ax + s * 3)} 20.5 {ax} 22")
-        base = [pages(-1), pages(1), cover(-1), cover(1), L(ax, 9, ax, 22)]
-        acc = [L(ax, 2, ax, 5), L(7, 3, 8.5, 5), L(17, 3, 15.5, 5)]
-    elif size == 24 and w == 1:
-        ax = 11.5
-        pages = lambda s: PA(f"M{ax} 9.5 C{n(ax + s * 2.5)} 7.5 {n(ax + s * 5)} 7.5 {n(ax + s * 7)} 7.5 V17.5 "
-                             f"C{n(ax + s * 4)} 17.5 {n(ax + s * 2)} 18 {ax} 19.5")
-        cover = lambda s: PA(f"M{n(ax + s * 7)} 10.5 H{n(ax + s * 10)} V19.5 C{n(ax + s * 6)} 19.5 {n(ax + s * 3)} 20 {ax} 21.5")
-        base = [pages(-1), pages(1), cover(-1), cover(1), L(ax, 9.5, ax, 21.5)]
-        acc = [L(ax, 2.5, ax, 5.5), L(6.5, 3.5, 8.5, 5.5), L(16.5, 3.5, 14.5, 5.5)]
-    elif size == 16 and w == 1:
-        ax = 7.5
-        pages = lambda s: PA(f"M{ax} 6.5 C{n(ax + s * 1.5)} 5.5 {n(ax + s * 3)} 5.5 {n(ax + s * 5)} 5.5 V11.5 "
-                             f"C{n(ax + s * 3)} 11.5 {n(ax + s * 1.5)} 12 {ax} 12.5")
-        cover = lambda s: PA(f"M{n(ax + s * 5)} 7.5 H{n(ax + s * 7)} V13.5 C{n(ax + s * 4)} 13.5 {n(ax + s * 2)} 13.8 {ax} 14.5")
-        base = [pages(-1), pages(1), cover(-1), cover(1), L(ax, 6.5, ax, 14.5)]
-        acc = [L(ax, 1.5, ax, 3.5), L(3.5, 2.5, 4.5, 3.5), L(11.5, 2.5, 10.5, 3.5)]
-    else:
-        return None
-    return base, acc
+        return text_map(EXPLAIN_24_2)
+    return None
 
 
 # ------------------------------------------------------------------ Track
 
+TRACK_16 = """
+................
+................
+..rrr...........
+.r...r..........
+.r...r..........
+..r.r...........
+...r............
+.....###........
+........#..###..
+........#.#...#.
+..######..#...#.
+.#........#...#.
+.#.........###..
+..#######.....r.
+...............r
+................
+"""
+
+
 def track(size, w):
-    """Route in an S with rounded turns, a hollow red pin over its start, and
-    a lens whose red handle runs down to the right."""
-    if size == 24 and w == 2:
-        base = [PA("M8 9 H11 A2 2 0 0 1 11 13 H5 A2 2 0 0 0 5 17 H13"), CI(17, 14, 3)]
-        acc = [PA("M5 7 L3.3 4.6 A2 2 0 1 1 6.7 4.6 Z"), L(19.5, 16.5, 21.5, 18.5)]
-    elif size == 24 and w == 1:
-        base = [PA("M7.5 9.5 H11 A2 2 0 0 1 11 13.5 H5 A2 2 0 0 0 5 17.5 H13.5"), CI(17.5, 14.5, 3)]
-        acc = [PA("M4.5 7.5 L2.9 5.1 A2 2 0 1 1 6.1 5.1 Z"), L(19.8, 16.8, 21.5, 18.5)]
-    elif size == 16 and w == 1:
-        base = [PA("M5.5 6.5 H7.5 A1.5 1.5 0 0 1 7.5 9.5 H3.5 A1.5 1.5 0 0 0 3.5 12.5 H8.5"), CI(11.5, 10.5, 2)]
-        acc = [PA("M3 5 L2 3.4 A1.25 1.25 0 1 1 4 3.4 Z"), L(13, 12, 14.5, 13.5)]
+    if size == 16 and w == 1:
+        return text_map(TRACK_16)
+    g = blank(24)
+    if w == 1:
+        # pin: a hollow ring over a point; route rows 4 apart; lens ring; handle
+        put(g, ring(5.5, 5.0, 2.6, 1.0), "r")
+        put(g, [(4, 7), (6, 7), (4, 8), (6, 8), (5, 9)], "r")
+        route = [(x, 11) for x in range(8, 13)] + [(13, 12), (13, 13), (13, 14)] + [(x, 15) for x in range(3, 13)] + \
+                [(2, 16), (2, 17), (2, 18)] + [(x, 19) for x in range(3, 14)]
+        put(g, route, "#")
+        put(g, ring(17.5, 15.5, 3.0, 1.0), "#")
+        put(g, [(20, 18), (21, 19), (22, 20)], "r")
     else:
-        return None
-    return base, acc
+        pin = [(4, 1), (5, 1), (6, 1)] + [(x, 2) for x in range(3, 8)] + [(2, y) for y in (3, 4, 5)] + \
+              [(3, y) for y in (3, 4, 5)] + [(7, y) for y in (3, 4, 5)] + [(8, y) for y in (3, 4, 5)] + \
+              [(x, 6) for x in range(3, 8)] + [(4, 7), (5, 7), (6, 7), (5, 8)]
+        put(g, pin, "r")
+        route = [(x, 10) for x in range(8, 12)] + [(x, 11) for x in range(8, 14)] + \
+                [(x, y) for x in (12, 13) for y in (12, 13, 14)] + [(x, 15) for x in range(3, 14)] + \
+                [(x, 16) for x in range(2, 13)] + [(x, y) for x in (1, 2) for y in (17, 18, 19)] + \
+                [(x, 20) for x in range(2, 13)] + [(x, 21) for x in range(3, 13)]
+        put(g, route, "#")
+        put(g, ring(19.0, 15.0, 3.5, 2.0), "#")
+        put(g, [(21, 19), (22, 19), (22, 20), (23, 20), (22, 21), (23, 21)], "r")
+    return g
 
 
 # ------------------------------------------------------------------ Connect
 
+CONNECT_16 = """
+................
+................
+................
+................
+...####.####....
+..#....r....#...
+.#....r.r....#..
+.#....r.r....#..
+.#....r.r....#..
+.#....r.r....#..
+..#....r....#...
+...####.####....
+................
+................
+................
+................
+"""
+
+CONNECT_24_1 = """
+........................
+........................
+........................
+........................
+........................
+........................
+......####....####......
+....##....####....##....
+...#.......rr.......#...
+...#.......rr.......#...
+..#.......r..r.......#..
+..#.......r..r.......#..
+..#.......r..r.......#..
+..#.......r..r.......#..
+...#.......rr.......#...
+...#.......rr.......#...
+....##....####....##....
+......####....####......
+........................
+........................
+........................
+........................
+........................
+........................
+"""
+
+
 def connect(size, w):
-    """Two equal rings; their shared lens is red and the outer arcs black,
-    meeting at the two crossings."""
+    if size == 16 and w == 1:
+        return text_map(CONNECT_16)
+    if size == 24 and w == 1:
+        return text_map(CONNECT_24_1)
     if size == 24 and w == 2:
-        cl, cr, cy, r = 8, 16, 12, 6
-    elif size == 24 and w == 1:
-        cl, cr, cy, r = 7.5, 16.5, 12.5, 6
-    elif size == 16 and w == 1:
-        cl, cr, cy, r = 5.5, 10.5, 8.5, 4
-    elif size == 16 and w == 2:
-        cl, cr, cy, r = 6, 10, 8, 4
-    else:
-        return None
-    xm = (cl + cr) / 2
-    h = (r * r - ((cr - cl) / 2) ** 2) ** 0.5
-    top, bot = cy - h, cy + h
-    base = [PA(f"M{n(xm)} {n(top)} A{r} {r} 0 1 0 {n(xm)} {n(bot)}"),
-            PA(f"M{n(xm)} {n(top)} A{r} {r} 0 1 1 {n(xm)} {n(bot)}")]
-    acc = [PA(f"M{n(xm)} {n(top)} A{r} {r} 0 0 1 {n(xm)} {n(bot)}"),
-           PA(f"M{n(xm)} {n(top)} A{r} {r} 0 0 0 {n(xm)} {n(bot)}")]
-    return base, acc
+        # Rings of radius 6 on centers 8 apart: the only 2 px fit at 24 px
+        # that leaves the lens an open middle. Where the two bands overlap at
+        # the crossings the pixels stay black, as the master's black arcs
+        # cover both crossings.
+        import math
+        g = blank(24)
+        L = set(ring(8.0, 12.0, 6.0, 2.0))
+        R = set(ring(16.0, 12.0, 6.0, 2.0))
+        for (x, y) in L | R:
+            dl = math.hypot(x + 0.5 - 8.0, y + 0.5 - 12.0)
+            dr = math.hypot(x + 0.5 - 16.0, y + 0.5 - 12.0)
+            lens = ((x, y) in L and x + 0.5 > 12 and dr < 7) or ((x, y) in R and x + 0.5 < 12 and dl < 7)
+            g[y][x] = "r" if lens and not ((x, y) in L and (x, y) in R) else "#"
+        return g
+    return None
 
 
 # ------------------------------------------------------------------ Act
 
+ACT_16 = """
+....rrrr........
+..rr....rr...r..
+.r........r.r...
+.r...##...r.....
+.r..#..#..r.rrr.
+.r..#..#..r.....
+.r..#..#..r.r...
+..r.#..#.r...r..
+....#..#........
+....#..###......
+....#.....##....
+..###.......##..
+.#..#.........#.
+.#............#.
+..#..........#..
+...#.........#..
+"""
+
+ACT_24_1 = """
+........................
+......rrrrr.............
+....rr.....rr......r....
+...r.........r....r.....
+..r....###....r.........
+..r...#...#...r..rrrr...
+..r...#...#...r.........
+..r...#...#...r.........
+...r..#...#..r....r.....
+....r.#...#.r......r....
+......#...#.............
+......#...#.............
+......#...####..........
+......#...#...###.......
+......#.......#..###....
+...####.........#...#...
+..#...#.............#...
+.#....#.............#...
+.#..................#...
+..#................#....
+...#...............#....
+....#.............#.....
+.....#............#.....
+........................
+"""
+
+ACT_24_2 = """
+.....rrrrrr.............
+...rrrrrrrrrr......rr...
+..rrr......rrr....rr....
+.rr....##....rr.........
+.rr...####...rr..rrrr...
+.rr...##.##..rr..rrrr...
+.rr...##.##..rr.........
+..rr..##.##.rr....rr....
+...r..##.##.r......rr...
+......##.##.............
+......##.#####..........
+......##.##.#####.......
+......##.##.##.#####....
+......##.......##.###...
+...#####..........###...
+..######...........##...
+.##...##...........##...
+.##................##...
+.##................##...
+..##..............##....
+...##.............##....
+....##...........##.....
+.....##..........##.....
+........................
+"""
+
+
 def act(size, w):
-    """Hand with a raised index finger, three knuckles stepping down, the
-    hooked thumb and the open wrist; the red ring around the fingertip, open
-    where the finger enters, and three red rays."""
+    if size == 16 and w == 1:
+        return text_map(ACT_16)
+    if size == 24 and w == 1:
+        return text_map(ACT_24_1)
     if size == 24 and w == 2:
-        base = [PA("M9 21 V7.5 A1.5 1.5 0 0 1 12 7.5 V13"),
-                PA("M12 12 A1.5 1.5 0 0 1 15 12 V14"),
-                PA("M15 13 A1.5 1.5 0 0 1 18 13 V14.5"),
-                PA("M18 14 A1.5 1.5 0 0 1 21 14 V18 L19 22"),
-                PA("M9 17 L7.5 15.3 A1.4 1.4 0 0 0 5.2 16.8 L8 22")]
-        acc = [PA("M13.6 11.2 A5 5 0 1 0 6.9 11.2"), L(16.5, 4.5, 18, 3.5), L(17, 7.5, 19.5, 7.5), L(16.5, 10.5, 18, 11.5)]
-    elif size == 24 and w == 1:
-        base = [PA("M8.5 21.5 V7.5 A1.75 1.75 0 0 1 12 7.5 V13"),
-                PA("M12 12 A1.5 1.5 0 0 1 15 12 V14"),
-                PA("M15 13 A1.5 1.5 0 0 1 18 13 V14.5"),
-                PA("M18 14 A1.5 1.5 0 0 1 21 14 V18 L19 22"),
-                PA("M8.5 17 L7 15.3 A1.4 1.4 0 0 0 4.7 16.8 L7.5 22")]
-        acc = [PA("M13.9 11.4 A5.4 5.4 0 1 0 6.4 11.4"), L(16.5, 4, 18, 3), L(17.5, 7.5, 19.5, 7.5), L(16.5, 11, 18, 12)]
-    elif size == 16 and w == 1:
-        base = [PA("M5.5 14.5 V5.5 A1.25 1.25 0 0 1 8 5.5 V9"),
-                PA("M8 8.5 A1 1 0 0 1 10 8.5 V9.5"),
-                PA("M10 9 A1 1 0 0 1 12 9 V10"),
-                PA("M12 9.5 A1 1 0 0 1 14 9.5 V12 L12.5 15"),
-                PA("M5.5 11.5 L4.5 10.5 A1 1 0 0 0 3 11.5 L4.8 15")]
-        acc = [PA("M9.2 8 A3.6 3.6 0 1 0 4.3 8"), L(11, 2.5, 12, 2), L(11.5, 5, 13, 5), L(11, 7.5, 12, 8)]
-    else:
-        return None
-    return base, acc
+        return text_map(ACT_24_2)
+    return None
 
 
 ICONS = [("CL-019", "Explain", explain), ("CL-020", "Track", track), ("CL-021", "Connect", connect), ("CL-022", "Act", act)]
-FITS = [(24, 2, "A"), (24, 1, "B"), (16, 1, "A"), (16, 2, "B")]
+FITS = [(24, 2, "A"), (24, 1, "B"), (16, 1, "A")]
 
 
-def svg(icon_id, name, size, w, fit, base, acc, black=False):
+def runs(g, c):
+    """The pixels of one color as one path of whole-pixel rectangles, one
+    rectangle per horizontal run."""
+    d = []
+    for y, row in enumerate(g):
+        x = 0
+        while x < len(row):
+            if row[x] == c:
+                x0 = x
+                while x < len(row) and row[x] == c:
+                    x += 1
+                d.append(f"M{x0} {y}h{x - x0}v1h-{x - x0}z")
+            else:
+                x += 1
+    return "".join(d)
+
+
+def svg(icon_id, name, size, w, fit, g, black=False):
     red = C.CHARCOAL if black else C.RED
     ed = "black" if black else "red-black"
     rid = f"oa-pillar-fit-{icon_id.lower()}-{size}px-fit-{fit.lower()}-{ed}"
-    attrs = f'fill="none" stroke-width="{w}" stroke-linecap="round" stroke-linejoin="round"'
     return (f'<?xml version="1.0" encoding="UTF-8"?>\n'
             f'<svg xmlns="http://www.w3.org/2000/svg" id="{rid}" data-id="{icon_id}" width="{size}" height="{size}" '
-            f'viewBox="0 0 {size} {size}">\n'
+            f'viewBox="0 0 {size} {size}" shape-rendering="crispEdges">\n'
             f'  <title>{name}, {size} px fit {fit}</title>\n'
-            f'  <desc>Oath &amp; Action Civic Line {icon_id} {name}, pixel-fit master for {size} px, fit {fit}: a {w} px line on '
-            f'the pixel grid, every feature and red placement of the master kept, the red its own shapes in the accent group '
-            f'(DR-133, stage B). Use at {size} px only; the black edition is the one in use under 48 px.</desc>\n'
-            f'  <g id="{rid}-accent" data-part="accent" stroke="{red}" {attrs}>\n    ' + "\n    ".join(acc) + "\n  </g>\n"
-            f'  <g id="{rid}-base" data-part="base" stroke="{C.CHARCOAL}" {attrs}>\n    ' + "\n    ".join(base) + "\n  </g>\n"
+            f'  <desc>Oath &amp; Action Civic Line {icon_id} {name}, pixel-fit master for {size} px, fit {fit}: a {w} px line drawn '
+            f'pixel by pixel on the {size} px grid, every feature and red placement of the master kept, the red its own shape in '
+            f'the accent group (DR-133, stage B). Use at {size} px only; the black edition is the one in use under 48 px.</desc>\n'
+            f'  <path id="{rid}-accent" data-part="accent" fill="{red}" d="{runs(g, "r")}"/>\n'
+            f'  <path id="{rid}-base" data-part="base" fill="{C.CHARCOAL}" d="{runs(g, "#")}"/>\n'
             "</svg>\n")
 
 
@@ -197,14 +412,14 @@ def main():
     jobs, recs = [], []
     for icon_id, name, fn in ICONS:
         for size, w, fit in FITS:
-            r = fn(size, w)
-            if r is None:
+            g = fn(size, w)
+            if g is None:
                 continue
-            base, acc = r
+            assert len(g) == size and all(len(row) == size for row in g), (icon_id, size, w)
             stem = f"{C.DATE}_{icon_id}-{name}-{size}px-Fit-{fit}"
             files = {}
             for ed, black in (("Red-Black", False), ("Black", True)):
-                t = svg(icon_id, name, size, w, fit, base, acc, black)
+                t = svg(icon_id, name, size, w, fit, g, black)
                 p = os.path.join(OUT, "svg", f"{stem}-{ed}.svg")
                 with open(p, "w", encoding="utf-8") as fh:
                     fh.write(t)
@@ -220,7 +435,8 @@ def main():
                                      "w": size * z, "h": size * z, "bg": C.NEWSPRINT,
                                      "out": os.path.join(a.proof, f"{stem}-{ed}-x{z}.png")})
             recs.append({"id": icon_id, "name": name, "size_px": size, "line_px": w, "fit": fit, "stem": stem,
-                         "svg_red_black": files["Red-Black"], "svg_black": files["Black"]})
+                         "svg_red_black": files["Red-Black"], "svg_black": files["Black"], "map": grid_rows(g),
+                         "red_px": sum(row.count("r") for row in g), "black_px": sum(row.count("#") for row in g)})
     C.render(jobs, os.path.join(a.proof or "/tmp/cl-pillar-fit", "tmp"))
     with open(os.path.join(OUT, f"{C.DATE}_Pillar-Pixel-Fit-Manifest.json"), "w", encoding="utf-8") as fh:
         json.dump({"date": C.DATE, "fits": recs}, fh, indent=1)
