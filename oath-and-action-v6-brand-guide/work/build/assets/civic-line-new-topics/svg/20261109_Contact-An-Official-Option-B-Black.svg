@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-nt-02-option-b-red-black" data-id="NT-02" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-contact-an-official-option-b-black" data-id="Contact-An-Official" width="128" height="128" viewBox="0 0 128 128">
   <title>Contact An Official, option B</title>
-  <desc>Oath &amp; Action Civic Line NT-02 Contact An Official, stage B option B (outside DR-135 where it applies). A very simple phone whose red cord runs to an official at a desk. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
-  <g id="oa-civic-line-nt-02-option-b-red-black-base" data-part="base">
+  <desc>Oath &amp; Action Civic Line Contact An Official, new topic drawing (DR-141, DR-147), option B. A very simple phone whose red cord runs to an official at a desk. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
+  <g id="oa-civic-line-contact-an-official-option-b-black-base" data-part="base">
     <path d="M14.9717 81.8827 L18.5098 70.7629 L37.7168 70.7629 L41.2549 81.8827 Z" fill="none" stroke="#121212" stroke-width="2.78" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="28.1133" cy="76.8282" r="2.5272" fill="none" stroke="#121212" stroke-width="2.78" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M10.9281 68.2356 L10.9281 65.203 Q10.9281 60.1485 16.9935 60.1485 L39.2331 60.1485 Q45.2985 60.1485 45.2985 65.203 L45.2985 68.2356" fill="none" stroke="#121212" stroke-width="2.78" stroke-linecap="round" stroke-linejoin="round"/>
@@ -14,7 +14,7 @@
     <polyline points="83.7124,67.7302 83.7124,82.8936 118.0828,82.8936 118.0828,67.7302" fill="none" stroke="#121212" stroke-width="2.78" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="94.3268,67.7302 95.8431,63.6866 105.9521,63.6866 107.4684,67.7302" fill="none" stroke="#121212" stroke-width="2.78" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="oa-civic-line-nt-02-option-b-red-black-accent" data-part="accent">
-    <path d="M41.2549 78.85 Q53.3856 86.9372 61.4728 77.8391 Q68.549 69.752 80.6797 73.7956" fill="none" stroke="#E63946" stroke-width="2.78" stroke-linecap="round" stroke-linejoin="round"/>
+  <g id="oa-civic-line-contact-an-official-option-b-black-accent" data-part="accent">
+    <path d="M41.2549 78.85 Q53.3856 86.9372 61.4728 77.8391 Q68.549 69.752 80.6797 73.7956" fill="none" stroke="#121212" stroke-width="2.78" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

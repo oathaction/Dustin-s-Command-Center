@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-nt-01-option-a-black" data-id="NT-01" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-testify-option-a-black" data-id="Testify" width="128" height="128" viewBox="0 0 128 128">
   <title>Testify, option A</title>
-  <desc>Oath &amp; Action Civic Line NT-01 Testify, stage B option A (outside DR-135 where it applies). A raised, curved dais with three officials above the witness, who sits at a table with a red microphone. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
-  <g id="oa-civic-line-nt-01-option-a-black-base" data-part="base">
+  <desc>Oath &amp; Action Civic Line Testify, new topic drawing (DR-141, DR-147), option A. A raised, curved dais with three officials above the witness, who sits at a table with a red microphone. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
+  <g id="oa-civic-line-testify-option-a-black-base" data-part="base">
     <circle cx="34.7563" cy="21.8093" r="3.8151" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M26.6351 36.9563 L26.6351 34.5955 A5.949258 5.949258 0 0 1 32.5843 28.6462 L36.9283 28.6462 A5.949258 5.949258 0 0 1 42.8775 34.5955 L42.8775 36.9563" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="64" cy="18.7332" r="3.8151" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -17,7 +17,7 @@
     <path d="M46.1187 113.0819 L46.1187 107.4616 A8.636015 8.636015 0 0 1 54.7547 98.8256 L61.0604 98.8256 A8.636015 8.636015 0 0 1 69.6964 107.4616 L69.6964 113.0819" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="28.6639" y1="113.0819" x2="99.3361" y2="113.0819" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="oa-civic-line-nt-01-option-a-black-accent" data-part="accent">
+  <g id="oa-civic-line-testify-option-a-black-accent" data-part="accent">
     <rect x="78.9112" y="89.2605" width="6.7321" height="12.4286" rx="3.3661" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M76.063 96.5105 L76.063 98.064 A6.2143 6.2143 0 0 0 88.4916 98.064 L88.4916 96.5105" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="82.2773" y1="104.2783" x2="82.2773" y2="113.0819" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-nt-01-option-b-red-black" data-id="NT-01" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-testify-option-b-black" data-id="Testify" width="128" height="128" viewBox="0 0 128 128">
   <title>Testify, option B</title>
-  <desc>Oath &amp; Action Civic Line NT-01 Testify, stage B option B (outside DR-135 where it applies). Seen from the side: the witness at a low table with a red microphone, facing three officials at a tall bench on a step. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
-  <g id="oa-civic-line-nt-01-option-b-red-black-base" data-part="base">
+  <desc>Oath &amp; Action Civic Line Testify, new topic drawing (DR-141, DR-147), option B. Seen from the side: the witness at a low table with a red microphone, facing three officials at a tall bench on a step. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
+  <g id="oa-civic-line-testify-option-b-black-base" data-part="base">
     <circle cx="21.4756" cy="54.7803" r="4.893" fill="none" stroke="#121212" stroke-width="2.9606" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M11.0599 76.1447 L11.0599 71.1791 A7.630156 7.630156 0 0 1 18.69 63.5489 L24.2613 63.5489 A7.630156 7.630156 0 0 1 31.8914 71.1791 L31.8914 76.1447" fill="none" stroke="#121212" stroke-width="2.9606" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="7.4803" y1="76.1447" x2="49.4664" y2="76.1447" fill="none" stroke="#121212" stroke-width="2.9606" stroke-linecap="round" stroke-linejoin="round"/>
@@ -18,10 +18,10 @@
     <line x1="55.9258" y1="92.2932" x2="120.5197" y2="92.2932" fill="none" stroke="#121212" stroke-width="2.9606" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="55.9258,92.2932 55.9258,84.7573 120.5197,84.7573 120.5197,92.2932" fill="none" stroke="#121212" stroke-width="2.9606" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="oa-civic-line-nt-01-option-b-red-black-accent" data-part="accent">
-    <rect x="35.9016" y="56.3359" width="5.5981" height="10.335" rx="2.7991" fill="none" stroke="#E63946" stroke-width="2.9606" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M33.5332 62.3647 L33.5332 63.6566 A5.1675 5.1675 0 0 0 43.8682 63.6566 L43.8682 62.3647" fill="none" stroke="#E63946" stroke-width="2.9606" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="38.7007" y1="68.8241" x2="38.7007" y2="76.1447" fill="none" stroke="#E63946" stroke-width="2.9606" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="34.3944" y1="76.1447" x2="43.007" y2="76.1447" fill="none" stroke="#E63946" stroke-width="2.9606" stroke-linecap="round" stroke-linejoin="round"/>
+  <g id="oa-civic-line-testify-option-b-black-accent" data-part="accent">
+    <rect x="35.9016" y="56.3359" width="5.5981" height="10.335" rx="2.7991" fill="none" stroke="#121212" stroke-width="2.9606" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M33.5332 62.3647 L33.5332 63.6566 A5.1675 5.1675 0 0 0 43.8682 63.6566 L43.8682 62.3647" fill="none" stroke="#121212" stroke-width="2.9606" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="38.7007" y1="68.8241" x2="38.7007" y2="76.1447" fill="none" stroke="#121212" stroke-width="2.9606" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="34.3944" y1="76.1447" x2="43.007" y2="76.1447" fill="none" stroke="#121212" stroke-width="2.9606" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

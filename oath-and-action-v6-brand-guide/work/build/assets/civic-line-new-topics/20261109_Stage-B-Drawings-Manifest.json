@@ -1,0 +1,120 @@
+{
+ "date": "20261109",
+ "rule": "s = min(116 / extent, 1.25 x 0.487395), line 5.5 source px (DR-08)",
+ "options": [
+  {
+   "id": "Testify",
+   "name": "Testify",
+   "option": "A",
+   "within_dr135": null,
+   "change": "A raised, curved dais with three officials above the witness, who sits at a table with a red microphone.",
+   "stem": "20261109_Testify-Option-A",
+   "folder": "work/build/assets/civic-line-new-topics",
+   "svg_red_black": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-A-Red-Black.svg",
+   "svg_black": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-A-Black.svg",
+   "scale": 0.609244,
+   "stroke_units": 3.3508,
+   "extent_units": 101.51,
+   "ink_px": [
+    153.5,
+    166.6
+   ],
+   "at_cap": true
+  },
+  {
+   "id": "Testify",
+   "name": "Testify",
+   "option": "B",
+   "within_dr135": null,
+   "change": "Seen from the side: the witness at a low table with a red microphone, facing three officials at a tall bench on a step.",
+   "stem": "20261109_Testify-Option-B",
+   "folder": "work/build/assets/civic-line-new-topics",
+   "svg_red_black": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-B-Red-Black.svg",
+   "svg_black": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-B-Black.svg",
+   "scale": 0.538283,
+   "stroke_units": 2.9606,
+   "extent_units": 116.0,
+   "ink_px": [
+    215.5,
+    110.6
+   ],
+   "at_cap": false
+  },
+  {
+   "id": "Testify",
+   "name": "Testify",
+   "option": "C",
+   "within_dr135": null,
+   "change": "The raised, curved dais with three officials, and the red microphone on the witness table; the reader is the witness.",
+   "stem": "20261109_Testify-Option-C",
+   "folder": "work/build/assets/civic-line-new-topics",
+   "svg_red_black": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-C-Red-Black.svg",
+   "svg_black": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-C-Black.svg",
+   "scale": 0.609244,
+   "stroke_units": 3.3508,
+   "extent_units": 103.95,
+   "ink_px": [
+    153.5,
+    170.6
+   ],
+   "at_cap": true
+  },
+  {
+   "id": "Contact-An-Official",
+   "name": "Contact An Official",
+   "option": "A",
+   "within_dr135": null,
+   "change": "A person and an official at a desk, joined by one line that carries a red speech mark.",
+   "stem": "20261109_Contact-An-Official-Option-A",
+   "folder": "work/build/assets/civic-line-new-topics",
+   "svg_red_black": "work/build/assets/civic-line-new-topics/svg/20261109_Contact-An-Official-Option-A-Red-Black.svg",
+   "svg_black": "work/build/assets/civic-line-new-topics/svg/20261109_Contact-An-Official-Option-A-Black.svg",
+   "scale": 0.527273,
+   "stroke_units": 2.9,
+   "extent_units": 116.0,
+   "ink_px": [
+    220.0,
+    80.3
+   ],
+   "at_cap": false
+  },
+  {
+   "id": "Contact-An-Official",
+   "name": "Contact An Official",
+   "option": "B",
+   "within_dr135": null,
+   "change": "A very simple phone whose red cord runs to an official at a desk.",
+   "stem": "20261109_Contact-An-Official-Option-B",
+   "folder": "work/build/assets/civic-line-new-topics",
+   "svg_red_black": "work/build/assets/civic-line-new-topics/svg/20261109_Contact-An-Official-Option-B-Red-Black.svg",
+   "svg_black": "work/build/assets/civic-line-new-topics/svg/20261109_Contact-An-Official-Option-B-Black.svg",
+   "scale": 0.505447,
+   "stroke_units": 2.78,
+   "extent_units": 116.0,
+   "ink_px": [
+    229.5,
+    80.3
+   ],
+   "at_cap": false
+  },
+  {
+   "id": "Contact-An-Official",
+   "name": "Contact An Official",
+   "option": "C",
+   "within_dr135": null,
+   "change": "An official at a desk with a nameplate, and one red speech mark arriving from the reader's side.",
+   "stem": "20261109_Contact-An-Official-Option-C",
+   "folder": "work/build/assets/civic-line-new-topics",
+   "svg_red_black": "work/build/assets/civic-line-new-topics/svg/20261109_Contact-An-Official-Option-C-Red-Black.svg",
+   "svg_black": "work/build/assets/civic-line-new-topics/svg/20261109_Contact-An-Official-Option-C-Black.svg",
+   "scale": 0.609244,
+   "stroke_units": 3.3508,
+   "extent_units": 91.69,
+   "ink_px": [
+    150.5,
+    99.5
+   ],
+   "at_cap": true
+  }
+ ]
+}

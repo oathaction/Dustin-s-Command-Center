@@ -1300,3 +1300,9 @@ The studio put six questions to Dustin from round 0: the research lead's four (`
 | D2-591 | A contact sheet embeds at twice its shown width as a 16-color palette PNG | Line art keeps its look at a quarter of the weight or less |
 | D2-592 | Chapter budgets sum to 15.5 MB across all 26 chapters, with a page warning at 15.5 MB | Half a megabyte stays under the 16 MB limit, and later stages inherit room |
 | D2-593 | All my builds and check outputs went to a scratch folder, and the stage A board page was not rebuilt | The task keeps outputs out of `work/build` and boards untouched |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-594 | The main session ran the round 0 checks itself: `guide_build.py --strict` (9 chapter files, 100 rules, 233 specimens, 6.24 MB, 0 warnings, 3 notes on chapter 01 plates that inline pillar drawings the sprite holds, which round 2 redraws with `<use>`), `guide_check.js` at 1440, 1024, 390 and 360 px (0 failures, 761 same-page links, 25 listed exemptions, each a labeled failure plate or a print piece) and the token tests (all pass) | A check is reported only once the main session has run it |

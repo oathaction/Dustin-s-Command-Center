@@ -70,8 +70,9 @@ REGISTRY = [
 
 
 def name_of(row):
-    i, n, o = row[0], row[1], row[2]
-    return f"{C.DATE}_{i}-{n}-Option-{o}"
+    """Redraws carry their master's ID; the new topics have none yet."""
+    i, n, o, folder = row[0], row[1], row[2], row[3]
+    return f"{C.DATE}_{n}-Option-{o}" if folder == "new" else f"{C.DATE}_{i}-{n}-Option-{o}"
 
 
 def build_one(row, proof_jobs=None, scratch=None):
@@ -89,11 +90,12 @@ def build_one(row, proof_jobs=None, scratch=None):
     src = C.parse(icon_id, text)
     m = C.bake(src)
     title = f"{name.replace('-', ' ')}, option {opt}"
-    desc = (f"Oath & Action Civic Line {icon_id} {name.replace('-', ' ')}, stage B option {opt} "
-            f"({'within' if within else 'outside'} DR-135 where it applies). {change} Drawn in Civic Line's hand: "
+    what = (f"{icon_id} {name.replace('-', ' ')}, stage B redraw, option {opt}, {'within' if within else 'outside'} DR-135."
+            if folder == "redraw" else f"{name.replace('-', ' ')}, new topic drawing (DR-141, DR-147), option {opt}.")
+    desc = (f"Oath & Action Civic Line {what} {change} Drawn in Civic Line's hand: "
             f"one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part "
             f"'accent' holds the red parts.")
-    root = f"oa-civic-line-{icon_id.lower()}-option-{opt.lower()}"
+    root = f"oa-civic-line-{(name if folder == 'new' else icon_id).lower()}-option-{opt.lower()}"
     rb, bk = C.export(src, m, root, title, desc)
     for sub in ("src", "svg", "png"):
         os.makedirs(os.path.join(base, sub), exist_ok=True)

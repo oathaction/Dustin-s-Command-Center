@@ -157,16 +157,16 @@ def contact_c():
 
 
 REGISTRY = [
-    ("NT-01", "Testify", "A", "new", testify_a, None,
+    ("Testify", "Testify", "A", "new", testify_a, None,
      "A raised, curved dais with three officials above the witness, who sits at a table with a red microphone."),
-    ("NT-01", "Testify", "B", "new", testify_b, None,
+    ("Testify", "Testify", "B", "new", testify_b, None,
      "Seen from the side: the witness at a low table with a red microphone, facing three officials at a tall bench on a step."),
-    ("NT-01", "Testify", "C", "new", testify_c, None,
+    ("Testify", "Testify", "C", "new", testify_c, None,
      "The raised, curved dais with three officials, and the red microphone on the witness table; the reader is the witness."),
-    ("NT-02", "Contact-An-Official", "A", "new", contact_a, None,
+    ("Contact-An-Official", "Contact-An-Official", "A", "new", contact_a, None,
      "A person and an official at a desk, joined by one line that carries a red speech mark."),
-    ("NT-02", "Contact-An-Official", "B", "new", contact_b, None,
+    ("Contact-An-Official", "Contact-An-Official", "B", "new", contact_b, None,
      "A very simple phone whose red cord runs to an official at a desk."),
-    ("NT-02", "Contact-An-Official", "C", "new", contact_c, None,
+    ("Contact-An-Official", "Contact-An-Official", "C", "new", contact_c, None,
      "An official at a desk with a nameplate, and one red speech mark arriving from the reader's side."),
 ]
