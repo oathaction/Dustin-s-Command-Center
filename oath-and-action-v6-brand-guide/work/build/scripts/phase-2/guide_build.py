@@ -1490,6 +1490,7 @@ def load_chapters(chap_dir):
 # A specimen draws a master as <svg viewBox="0 0 128 128" ...><use href="#oa-sym-cl-019"/></svg>, and the build puts
 # the symbols the page references into one hidden sprite per family, once. Two-color use: set --oa-icon-accent on the
 # <svg> (signature red); otherwise the accent draws in the ink, currentColor.
+# DR-154: share, zoom, print and information stay words, so no family holds a glyph for them.
 SPRITE_FAMILIES = {
     "civic-line": {"name": "Civic Line", "dir": ASSETS / "civic-line/black", "glob": "*-Black.svg", "ink": "#121212"},
 }
