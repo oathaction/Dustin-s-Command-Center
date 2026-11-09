@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-025-option-b-red-black" data-id="CL-025" width="128" height="128" viewBox="0 0 128 128">
+  <title>Congress, option B</title>
+  <desc>Oath &amp; Action Civic Line CL-025 Congress, stage B option B (outside DR-135 where it applies). The House chamber seen from the gallery: three rows of seats curving around the rostrum, red on the rostrum. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
+  <g id="oa-civic-line-cl-025-option-b-red-black-base" data-part="base">
+    <path d="M91.9387 54.4678 A28.025208 18.27731 0 0 1 87.8951 62.5835" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M85.3107 64.9035 A28.02521 18.277311 0 0 1 74.7245 69.9194" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M70.5421 70.8058 A28.025222 18.277319 0 0 1 57.4579 70.8058" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M53.2755 69.9194 A28.02521 18.277311 0 0 1 42.6893 64.9035" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M40.1049 62.5835 A28.025208 18.27731 0 0 1 36.0613 54.4678" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M105.3006 55.2324 A41.42857 28.025209 0 0 1 99.324 67.6768" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M95.5028 71.2348 A41.428573 28.025211 0 0 1 79.8537 78.9252" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M73.6711 80.2845 A41.428567 28.025207 0 0 1 54.3289 80.2845" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M48.1463 78.9252 A41.428573 28.025211 0 0 1 32.4972 71.2348" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M28.676 67.6768 A41.42857 28.025209 0 0 1 22.6994 55.2324" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M118.6632 55.997 A54.831926 37.773105 0 0 1 110.7521 72.77" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M105.6948 77.5654 A54.831935 37.773111 0 0 1 84.9836 87.9317" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M76.8002 89.7631 A54.831935 37.773111 0 0 1 51.1998 89.7631" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M43.0164 87.9317 A54.831935 37.773111 0 0 1 22.3052 77.5654" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M17.2479 72.77 A54.831926 37.773105 0 0 1 9.3368 55.997" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="oa-civic-line-cl-025-option-b-red-black-accent" data-part="accent">
+    <polyline points="43.2857,54.2521 43.2857,45.7227 84.7143,45.7227 84.7143,54.2521" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="50.5966,45.7227 50.5966,37.1933 77.4034,37.1933 77.4034,45.7227" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

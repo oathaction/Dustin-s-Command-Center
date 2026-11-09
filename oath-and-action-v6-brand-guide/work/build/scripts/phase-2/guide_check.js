@@ -4,7 +4,8 @@
 //
 // Usage:
 //   node work/build/scripts/phase-2/guide_check.js <page.html> [--quick] [--no-captures]
-//   node work/build/scripts/phase-2/guide_check.js --self-test      plants each fault in a demo build and proves the test catches it
+//   node work/build/scripts/phase-2/guide_check.js --self-test [--results out.json]   plants each fault in a demo build and proves
+//                                                                the test catches it (results default to the stage A board folder)
 //
 // Widths: 1440, 1024, 390 and 360 px (--quick: 1440 and 390). At every width it checks:
 //   structure  exactly one h1; no skipped heading level; no heading inside a specimen; every h3 in a chapter is a rule
@@ -610,6 +611,340 @@ async function fitAudit(page) {
   });
 }
 
+// ------------------------------------------------------------------------------------------------ stage B
+// Stage B (November 9, 2026): the accessibility audit's requirements that run on today's page
+// (20261109_Stage-B-Accessibility-Audit.md, section 2), found by data-icon and data-icon-family (D2-517), plus the
+// mark tokens' parity (D2-402). A stage with role="img" is a picture and is skipped; a live specimen (D2-516) is not.
+const GLYPH_ONLY_OK = ['clear the search'];                 // A-4: the one control that may show a glyph and no word
+const READS_AT_24 = [];                                     // B-3: the 41 topic symbols that read at 24 px (DR-136), filled at round 2
+const ICON_SIZES = { utility: [16, 24], pillar: [16, 24], status: [24, 26, 28, 30] };   // B-3; topic and atlas: 48 up, or 24 for the 41
+// The mark tokens' readers, as guide-shell.css writes them, and each mark kind for the parity outside failure plates.
+const MARKS = [
+  { token: 'ring-now', prop: 'stroke-width', expr: 'var(--oa-component-mark-ring-now)', reader: 'circle:is(.fb.si, .sx-fb.sx-si)[stroke-width="3"]', kind: 'circle:is(.fb.si, .sx-fb.sx-si)' },
+  { token: 'ring-ahead', prop: 'stroke-width', expr: 'var(--oa-component-mark-ring-ahead)', reader: 'circle:is(.fb.ss, .sx-fb.sx-ss)[stroke-width="1.5"]', kind: 'circle:is(.fb.ss, .sx-fb.sx-ss)' },
+  { token: 'slash', prop: 'stroke-width', expr: 'var(--oa-component-mark-slash)', reader: 'line:is(.si, .sx-si)[stroke-width="2"]', kind: 'line:is(.si, .sx-si)' },
+  { token: 'halo', prop: 'stroke-width', expr: 'var(--oa-component-mark-halo)', reader: 'text:is(.halo, .sx-halo)', kind: 'text:is(.halo, .sx-halo)' },
+  { token: 'line-reached', prop: 'height', expr: 'var(--oa-component-mark-line-reached)', reader: 'rect:is(.fi, .fr, .sx-fi, .sx-fr)[height="2"]' },
+  { token: 'line-ahead', prop: 'height', expr: 'var(--oa-component-mark-line-ahead)', reader: 'rect:is(.fs, .sx-fs)[height="1"]', kind: 'rect:is(.fs, .sx-fs)' },
+  { token: 'take-part-disc', prop: 'r', expr: 'calc(var(--oa-component-mark-take-part-disc) / 2)', reader: 'circle:is(.fr, .sx-fr)[r="5.5"]', kind: 'circle:is(.fr, .sx-fr)' },
+  { token: 'take-part-keyline', prop: 'stroke-width', expr: 'var(--oa-component-mark-take-part-keyline)', reader: 'circle:is(.sk.nf, .sx-sk.sx-nf)[stroke-width="1"]', kind: 'circle:is(.sk.nf, .sx-sk.sx-nf)' },
+  { token: 'take-part-cut', prop: 'r', expr: 'calc(var(--oa-component-mark-take-part-disc) / 2 + var(--oa-component-mark-take-part-cut))', reader: 'circle:is(.fb, .sx-fb):not(.si, .ss, .sx-si, .sx-ss)[r="7"]', kind: 'circle:is(.fb, .sx-fb):not(.si, .ss, .sx-si, .sx-ss)' },
+];
+
+// Helpers shared by the stage B page functions, installed once per page.
+const SB_HELPERS = `
+window.__sb = (() => {
+  const parse = (c) => { const m = c && c.match(/rgba?\\(([^)]+)\\)/); if (!m) return null; const p = m[1].split(/[\\s,\\/]+/).filter(Boolean).map(parseFloat); return { r: p[0], g: p[1], b: p[2], a: p.length > 3 ? p[3] : 1 }; };
+  const lin = (v) => { v /= 255; return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
+  const lum = (c) => 0.2126 * lin(c.r) + 0.7152 * lin(c.g) + 0.0722 * lin(c.b);
+  const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
+  const bgBehind = (el) => {
+    for (let e = el; e && e.nodeType === 1; e = e.parentElement) { const c = parse(getComputedStyle(e).backgroundColor); if (c && c.a > 0.5) return c; }
+    return parse(getComputedStyle(document.documentElement).backgroundColor) || { r: 255, g: 255, b: 255, a: 1 };
+  };
+  const rendered = (el) => {
+    const r = el.getBoundingClientRect(); if (r.width === 0 && r.height === 0) return false;
+    if (el.closest('dialog:not([open])')) return false;
+    for (let e = el; e && e.nodeType === 1; e = e.parentElement) { const cs = getComputedStyle(e); if (cs.display === 'none' || cs.visibility === 'hidden') return false; }
+    return true;
+  };
+  const picture = (el) => !!el.closest('[data-specimen][role="img"]');
+  const vhidden = (e) => { const r = e.getBoundingClientRect(); const cs = getComputedStyle(e); return (r.width <= 1 && r.height <= 1) || /inset\\(50%\\)/.test(cs.clipPath) || cs.display === 'none' || cs.visibility === 'hidden'; };
+  // The words a sighted reader sees in an element: text not under aria-hidden, a data-icon or a visually hidden box.
+  const seen = (root) => {
+    let out = ''; const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    for (let n = w.nextNode(); n; n = w.nextNode()) {
+      const p = n.parentElement; if (!p || !n.textContent.trim()) continue;
+      let skip = false;
+      for (let e = p; e && e !== root.parentElement; e = e.parentElement) { if (e.getAttribute('aria-hidden') === 'true' || e.hasAttribute('data-icon') || vhidden(e)) { skip = true; break; } }
+      if (!skip) out += ' ' + n.textContent;
+    }
+    return out.replace(/\\s+/g, ' ').trim();
+  };
+  const key = (s) => (s || '').toLowerCase().replace(/[\\u2018\\u2019]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\\s+/g, ' ').trim();
+  const CONTROLS = 'a[href], button, summary, select, textarea, input:not([type="hidden"]), [role="button"], [role="link"], [role="tab"], [role="switch"], [role="menuitem"], [role="checkbox"], [role="radio"]';
+  const where = (el) => { const st = el.closest('[data-specimen]'); const sec = el.closest('section[id]'); return st ? st.getAttribute('data-specimen') : (sec ? '#' + sec.id : el.tagName.toLowerCase()); };
+  const desc = (el) => ({ where: where(el), tag: el.tagName.toLowerCase(), text: (el.textContent || '').replace(/\\s+/g, ' ').trim().slice(0, 50), label: el.getAttribute('aria-label') || null });
+  return { parse, ratio, bgBehind, rendered, picture, seen, key, CONTROLS, where, desc };
+})();`;
+
+async function sbInstall(page) { await page.evaluate((src) => { if (!window.__sb) (0, eval)(src); }, SB_HELPERS); }
+
+// Normal mode: names, targets, sizes, label in name, glyph-only controls, titles, disabled controls, state cues, motion
+// with motion allowed, and the mark tokens.
+async function sbAudit(page) {
+  await sbInstall(page);
+  return page.evaluate(({ GLYPH_ONLY_OK, READS_AT_24, ICON_SIZES, MARKS }) => {
+    const { parse, ratio, rendered, picture, seen, key, CONTROLS, desc } = window.__sb;
+    const out = { icons: 0, iconNames: [], iconTwice: [], iconTargets: [], iconSizes: [], labelInName: [], controlNames: [], titleOnly: [], disabled: [], stateCues: [], motion: [], marks: { readers: {}, off: [], unread: [], held: false } };
+    const icons = [...document.querySelectorAll('[data-icon]')].filter((el) => !picture(el) && !el.parentElement.closest('[data-icon]'));
+    out.icons = icons.length;
+    const nameOf = (el) => (el.getAttribute('aria-label') || el.getAttribute('alt') || el.getAttribute('title') || (el.querySelector(':scope > title') || {}).textContent || '').trim();
+    for (const el of icons) {
+      const box = el.closest(CONTROLS + ', li, label, figcaption, dt, dd, td, th, p, h1, h2, h3, h4, h5, h6, legend') || el.parentElement;
+      const words = seen(box);
+      const hidden = el.closest('[aria-hidden="true"]') && (el.tagName.toLowerCase() !== 'svg' || el.getAttribute('focusable') === 'false')
+        || (el.tagName.toLowerCase() === 'img' && el.getAttribute('alt') === '');
+      if (words && !hidden) out.iconNames.push({ ...desc(el), icon: el.getAttribute('data-icon'), words: words.slice(0, 40) });   // A-1
+      const nm = nameOf(el);
+      if (nm && words && key(words).includes(key(nm))) out.iconTwice.push({ ...desc(el), icon: el.getAttribute('data-icon'), name: nm });   // A-2
+      const ctl = el.closest(CONTROLS);
+      if (ctl && rendered(ctl)) {                                                                          // B-1
+        const r = ctl.getBoundingClientRect();
+        if (r.width < 43.5 || r.height < 43.5) out.iconTargets.push({ ...desc(ctl), icon: el.getAttribute('data-icon'), w: Math.round(r.width * 10) / 10, h: Math.round(r.height * 10) / 10 });
+      }
+      if (rendered(el)) {                                                                                  // B-3
+        const fam = el.getAttribute('data-icon-family'), id = el.getAttribute('data-icon');
+        const px = Math.round(el.getBoundingClientRect().width);
+        let ok;
+        if (!fam) ok = false;
+        else if (ICON_SIZES[fam]) ok = ICON_SIZES[fam].includes(px) || (fam === 'pillar' && px >= 48);
+        else if (fam === 'topic' || fam === 'atlas') ok = px >= 48 || (px === 24 && READS_AT_24.includes(id));
+        else ok = true;   // encoding glyphs follow System 1's own constants
+        if (!ok) out.iconSizes.push({ ...desc(el), icon: id, family: fam || '(none)', px });
+      }
+    }
+    const controls = [...document.querySelectorAll(CONTROLS)].filter((el) => !picture(el) && rendered(el));
+    for (const el of controls) {
+      const vis = seen(el);
+      const lb = el.getAttribute('aria-labelledby');
+      const name = lb ? lb.split(/\s+/).map((id) => (document.getElementById(id) || {}).textContent || '').join(' ') : el.getAttribute('aria-label');
+      if (name !== null && vis && !key(name).startsWith(key(vis))) out.labelInName.push({ ...desc(el), visible: vis.slice(0, 50), name: name.slice(0, 80) });   // A-3
+      const namedImage = el.querySelector('img:not([alt=""]), svg[aria-label], svg[aria-labelledby], [role="img"][aria-label]');
+      if (!vis && !namedImage && !['input', 'select', 'textarea'].includes(el.tagName.toLowerCase())) {          // A-4
+        const nm = key(name || el.getAttribute('title') || '');
+        if (!GLYPH_ONLY_OK.includes(nm)) out.controlNames.push({ ...desc(el), name: nm || '(none)' });
+      }
+    }
+    for (const el of document.querySelectorAll('[title]')) {                                                  // A-8
+      if (picture(el) || el.namespaceURI === 'http://www.w3.org/2000/svg' && el.tagName.toLowerCase() === 'title') continue;
+      const t = el.getAttribute('title').trim(); if (!t) continue;
+      const other = el.getAttribute('aria-label') || el.getAttribute('aria-labelledby') || el.getAttribute('alt') || seen(el) || (el.querySelector(':scope > title') || {}).textContent;
+      const isNamed = el.matches(CONTROLS + ', img, [role="img"], svg');
+      if (isNamed && !other) out.titleOnly.push({ ...desc(el), title: t.slice(0, 60), why: 'its only name is its title' });
+      else if (!key(document.body.innerText).includes(key(t)) && !key(other || '').includes(key(t))) out.titleOnly.push({ ...desc(el), title: t.slice(0, 60), why: 'its title holds words found nowhere else' });
+    }
+    for (const el of document.querySelectorAll('[role="toolbar"] [disabled]')) if (!picture(el)) out.disabled.push({ ...desc(el), why: 'disabled attribute in a toolbar' });   // G-4
+    for (const el of document.querySelectorAll('[aria-disabled="true"]')) {
+      if (picture(el)) continue;
+      const ids = (el.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean);
+      const why = ids.map((id) => document.getElementById(id)).filter((d) => d && seen(d));
+      if (!why.length) out.disabled.push({ ...desc(el), why: 'no visible reason through aria-describedby' });
+    }
+    // C-5: an on item differs from an off peer by more than color, background and shadow.
+    const STATE = '[aria-pressed="true"], [aria-selected="true"], [aria-checked="true"], [aria-current]:not([aria-current="false"])';
+    const PROPS = ['fontWeight', 'fontStyle', 'textDecorationLine', 'textDecorationStyle', 'textDecorationThickness', 'borderTopStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderRightStyle', 'borderTopWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderRightWidth', 'outlineStyle', 'textTransform', 'fontSize'];
+    const offState = (e) => !e.matches(STATE);
+    for (const el of document.querySelectorAll(STATE)) {
+      if (picture(el) || !el.matches(CONTROLS)) continue;
+      const group = el.parentElement && el.parentElement.matches('li') ? el.parentElement.parentElement : el.parentElement;
+      if (!group) continue;
+      const peer = [...group.querySelectorAll(el.tagName)].find((e) => e !== el && e.className === el.className && offState(e) && e.closest(el.parentElement.matches('li') ? 'li' : '*').parentElement === (el.parentElement.matches('li') ? group : el.parentElement));
+      if (!peer) continue;
+      const a = getComputedStyle(el), b = getComputedStyle(peer);
+      const diff = PROPS.filter((k) => a[k] !== b[k]);
+      const glyph = el.querySelector('[data-icon]') && !peer.querySelector('[data-icon]');
+      const pa = getComputedStyle(el, '::before').content + getComputedStyle(el, '::after').content, pb = getComputedStyle(peer, '::before').content + getComputedStyle(peer, '::after').content;
+      if (!diff.length && !glyph && pa === pb) out.stateCues.push({ ...desc(el), state: ['aria-pressed', 'aria-selected', 'aria-checked', 'aria-current'].find((x) => el.hasAttribute(x) && el.getAttribute(x) !== 'false'), peer: (peer.textContent || '').trim().slice(0, 30) });
+    }
+    // E-1 and E-3: nothing moves on its own; a glyph's transition lasts 200 ms or less.
+    const secs = (v) => Math.max(0, ...v.split(',').map((x) => (x.trim().endsWith('ms') ? parseFloat(x) / 1000 : parseFloat(x)) || 0));
+    for (const el of document.querySelectorAll('animate, animateTransform, animateMotion, set')) out.motion.push({ ...desc(el), why: 'SMIL animation' });
+    for (const el of document.querySelectorAll('video[autoplay], audio[autoplay]')) out.motion.push({ ...desc(el), why: 'autoplay' });
+    for (const el of document.querySelectorAll('body *')) {
+      const cs = getComputedStyle(el);
+      if (cs.animationName !== 'none' && /infinite/.test(cs.animationIterationCount)) out.motion.push({ ...desc(el), why: 'an animation that repeats forever' });
+      if ((el.matches('[data-icon], [data-icon] *') || el.querySelector(':scope > [data-icon]')) && secs(cs.transitionDuration) > 0.2) out.motion.push({ ...desc(el), why: `a glyph transition of ${cs.transitionDuration}` });
+    }
+    // D2-402: every mark drawn from its token; every mark token read where chapter 11 is in the page.
+    const probe = document.createElement('div'); probe.style.position = 'absolute'; probe.style.visibility = 'hidden'; document.body.append(probe);
+    const val = (expr) => { probe.style.width = expr; return parseFloat(getComputedStyle(probe).width); };
+    const got = (el, prop) => parseFloat(getComputedStyle(el).getPropertyValue(prop));
+    out.marks.held = !!document.getElementById('icons');
+    for (const m of MARKS) {
+      const want = val(m.expr);
+      const readers = [...document.querySelectorAll(`:is(svg.mk, svg.sx-mk) ${m.reader}`)];
+      out.marks.readers[m.token] = readers.length;
+      if (out.marks.held && !readers.length) out.marks.unread.push(m.token);
+      const kinds = m.kind ? [...document.querySelectorAll(`:is(svg.mk, svg.sx-mk) ${m.kind}`)].filter((el) => !el.closest('.plate--failure')) : [];
+      for (const el of new Set([...readers, ...kinds])) {
+        if (el.closest('.plate--failure') && !readers.includes(el)) continue;
+        const v = got(el, m.prop);
+        if (!(Math.abs(v - want) < 0.01)) out.marks.off.push({ token: m.token, where: window.__sb.where(el), prop: m.prop, drawn: v, token_px: want });
+      }
+    }
+    probe.remove();
+    return out;
+  }, { GLYPH_ONLY_OK, READS_AT_24, ICON_SIZES, MARKS });
+}
+
+// D-1 (UX-1): with forced colors on, in dark and light, every glyph part still differs from what lies behind it. A glyph
+// part is any [data-icon] or a wordless element inside a control. One drawn by a CSS background, shadow or image that
+// forced colors erases fails, and so does an SVG part whose fill and stroke both match the ground.
+async function sbForced(page) {
+  await sbInstall(page);
+  const mark = await page.evaluate(() => {
+    const { rendered, picture, CONTROLS } = window.__sb;
+    let n = 0;
+    const tag = (el, kind) => { el.setAttribute('data-sb-glyph', kind + ':' + (n++)); };
+    for (const el of document.querySelectorAll(`[data-icon], [data-icon] *, :is(${CONTROLS}) *`)) {
+      if (picture(el) || !rendered(el)) continue;
+      const t = el.tagName.toLowerCase();
+      if (el.namespaceURI === 'http://www.w3.org/2000/svg') { if (['path', 'line', 'circle', 'rect', 'polyline', 'polygon', 'ellipse'].includes(t)) tag(el, 'svg'); continue; }
+      if ((el.textContent || '').trim() || el.querySelector('svg, img')) continue;
+      const cs = getComputedStyle(el); const c = window.__sb.parse(cs.backgroundColor);
+      if ((c && c.a > 0) || cs.backgroundImage !== 'none' || cs.boxShadow !== 'none') tag(el, 'css');
+    }
+    return n;
+  });
+  const out = { glyphParts: mark, erased: [] };
+  for (const scheme of ['dark', 'light']) {
+    await page.emulateMedia({ forcedColors: 'active', colorScheme: scheme });
+    await page.waitForTimeout(50);
+    const r = await page.evaluate((scheme) => {
+      const { parse, ratio, bgBehind, desc } = window.__sb;
+      const bad = [];
+      for (const el of document.querySelectorAll('[data-sb-glyph]')) {
+        const kind = el.getAttribute('data-sb-glyph').split(':')[0];
+        const host = el.namespaceURI === 'http://www.w3.org/2000/svg' ? el.closest('svg').parentElement : el.parentElement;
+        const behind = bgBehind(host);
+        const cs = getComputedStyle(el);
+        let paints = [];
+        if (kind === 'css') { const c = parse(cs.backgroundColor); if (c && c.a > 0.5) paints.push(c); }
+        else {
+          const sw = parseFloat(cs.strokeWidth);
+          if (cs.stroke !== 'none' && sw > 0) paints.push(parse(cs.stroke));
+          if (cs.fill !== 'none') paints.push(parse(cs.fill));
+          paints = paints.filter(Boolean).filter((c) => c.a > 0.5);
+        }
+        if (!paints.some((c) => ratio(c, behind) >= 3)) bad.push({ ...desc(el.closest('[data-icon]') || el), scheme, drawnBy: kind === 'css' ? 'CSS background' : 'SVG fill or stroke' });
+      }
+      return bad;
+    }, scheme);
+    out.erased.push(...r);
+  }
+  await page.emulateMedia({ forcedColors: 'none', colorScheme: 'light' });
+  await page.evaluate(() => document.querySelectorAll('[data-sb-glyph]').forEach((el) => el.removeAttribute('data-sb-glyph')));
+  return out;
+}
+
+// E-2: under prefers-reduced-motion every animation and transition resolves to none or 0 s.
+async function sbReduced(page) {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.waitForTimeout(50);
+  await sbInstall(page);
+  const r = await page.evaluate(() => {
+    const secs = (v) => Math.max(0, ...v.split(',').map((x) => (x.trim().endsWith('ms') ? parseFloat(x) / 1000 : parseFloat(x)) || 0));
+    const bad = [];
+    for (const el of document.querySelectorAll('body *')) {
+      const cs = getComputedStyle(el);
+      if (cs.animationName !== 'none' && secs(cs.animationDuration) > 0) bad.push({ ...window.__sb.desc(el), why: `animation ${cs.animationName} ${cs.animationDuration}` });
+      else if (secs(cs.transitionDuration) > 0 && cs.transitionProperty !== 'none') bad.push({ ...window.__sb.desc(el), why: `transition ${cs.transitionProperty} ${cs.transitionDuration}` });
+    }
+    return bad;
+  });
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  return r;
+}
+
+// F-1 and F-3: with SC 1.4.12's text spacing, and then with text at 200 percent, no control clips its words, no glyph
+// overlaps its word, and (with the spacing) the page does not scroll sideways.
+async function sbSpacing(page) {
+  await sbInstall(page);
+  const pass = async (mode) => {
+    await page.evaluate((mode) => {
+      const st = document.createElement('style'); st.id = 'sb-spacing';
+      st.textContent = mode === 'spacing'
+        ? '* { line-height: 1.5 !important; letter-spacing: 0.12em !important; word-spacing: 0.16em !important } p { margin-bottom: 2em !important }'
+        : 'html { font-size: 200% !important }';
+      document.head.append(st);
+    }, mode);
+    await page.waitForTimeout(150);
+    const r = await page.evaluate((mode) => {
+      const { rendered, picture, CONTROLS, desc } = window.__sb;
+      const bad = [];
+      for (const el of document.querySelectorAll(CONTROLS)) {
+        if (picture(el) || !rendered(el) || el.matches('.skip') || el.closest('[aria-hidden="true"]')) continue;
+        const cs = getComputedStyle(el);
+        const clipsX = /hidden|clip/.test(cs.overflowX) && el.scrollWidth > el.clientWidth + 1;
+        const clipsY = /hidden|clip/.test(cs.overflowY) && el.scrollHeight > el.clientHeight + 1;
+        if (clipsX || clipsY) bad.push({ ...desc(el), mode, why: 'clips its words' });
+        const g = el.querySelector('[data-icon]');
+        if (g && rendered(g)) {
+          const gb = g.getBoundingClientRect(); const range = document.createRange();
+          for (const n of el.childNodes) if (n.nodeType === 3 && n.textContent.trim()) {
+            range.selectNodeContents(n);
+            for (const t of range.getClientRects()) if (t.left < gb.right - 0.5 && t.right > gb.left + 0.5 && t.top < gb.bottom - 0.5 && t.bottom > gb.top + 0.5) { bad.push({ ...desc(el), mode, why: 'its glyph overlaps its word' }); break; }
+          }
+        }
+      }
+      if (mode === 'spacing' && document.documentElement.scrollWidth > window.innerWidth + 1) bad.push({ where: 'page', mode, why: `scrolls sideways (${document.documentElement.scrollWidth} px)` });
+      document.getElementById('sb-spacing').remove();
+      return bad;
+    }, mode);
+    await page.waitForTimeout(150);
+    return r;
+  };
+  return [...(await pass('spacing')), ...(await pass('zoom'))];
+}
+
+// G-3 and G-2 for the phone menu: Menu opens the dialog with focus inside it; Tab stays inside and in view; Escape and
+// Close each shut it and return focus to Menu.
+async function sbMenu(page) {
+  const has = await page.evaluate(() => { const b = document.getElementById('menubtn'); return !!(b && b.getBoundingClientRect().width && getComputedStyle(b).display !== 'none'); });
+  if (!has) return null;
+  const out = { problems: [] };
+  const state = () => page.evaluate(() => {
+    const m = document.getElementById('menu'), b = document.getElementById('menubtn'), a = document.activeElement;
+    const inside = !!(a && a.closest && a.closest('#menu'));
+    let inView = true;
+    if (inside && a !== m) { const r = a.getBoundingClientRect(), d = m.getBoundingClientRect(); inView = r.top >= d.top - 1 && r.bottom <= d.bottom + 1 && r.height > 0; }
+    return { open: !!m.open, expanded: b.getAttribute('aria-expanded'), inside, onMenu: a === b, outside: a && a !== document.body && !inside ? (a.textContent || a.tagName).trim().slice(0, 30) : null, inView, at: a ? (a.textContent || a.tagName).trim().slice(0, 30) : null };
+  });
+  for (const via of ['Escape', 'Close']) {
+    await page.evaluate(() => { window.scrollTo(0, 0); document.getElementById('menubtn').focus(); });
+    await page.keyboard.press('Enter'); await page.waitForTimeout(150);
+    let s = await state();
+    if (!s.open || s.expanded !== 'true' || !s.inside) out.problems.push(`Menu did not open with focus inside (${JSON.stringify(s)})`);
+    for (let i = 0; i < 40 && s.open; i++) {
+      await page.keyboard.press('Tab'); s = await state();
+      if (s.outside) { out.problems.push(`Tab left the open menu for "${s.outside}"`); break; }
+      if (!s.inView) { out.problems.push(`focus sat out of view in the menu on "${s.at}"`); break; }
+    }
+    if (via === 'Escape') await page.keyboard.press('Escape');
+    else { await page.evaluate(() => document.querySelector('#menu .menu-close').focus()); await page.keyboard.press('Enter'); }
+    await page.waitForTimeout(150);
+    s = await state();
+    if (s.open || s.expanded !== 'false') out.problems.push(`${via} did not close the menu (${JSON.stringify(s)})`);
+    else if (!s.onMenu) out.problems.push(`${via} closed the menu but focus went to "${s.at}", not Menu`);
+  }
+  await page.evaluate(() => { const m = document.getElementById('menu'); if (m.open) m.close(); document.activeElement && document.activeElement.blur && document.activeElement.blur(); window.scrollTo(0, 0); });
+  return out;
+}
+
+function sbFailures(b, width) {
+  const f = []; const add = (key, msg) => f.push({ key, msg: `${width}: ${msg}` });
+  const first = (xs) => JSON.stringify(xs[0]);
+  const a = b.audit;
+  if (a.iconNames.length) add('iconNames', `${a.iconNames.length} glyph(s) beside their word but not hidden (A-1), first: ${first(a.iconNames)}`);
+  if (a.iconTwice.length) add('iconNames', `${a.iconTwice.length} glyph(s) whose name repeats the words beside them (A-2), first: ${first(a.iconTwice)}`);
+  if (a.iconTargets.length) add('iconTargets', `${a.iconTargets.length} control(s) holding a glyph under 44 by 44 px (B-1), first: ${first(a.iconTargets)}`);
+  if (a.iconSizes.length) add('iconSizes', `${a.iconSizes.length} glyph(s) at a size their family does not use (B-3), first: ${first(a.iconSizes)}`);
+  if (a.labelInName.length) add('labelInName', `${a.labelInName.length} control(s) whose name does not start with their visible words (A-3), first: ${first(a.labelInName)}`);
+  if (a.controlNames.length) add('controlNames', `${a.controlNames.length} control(s) with a glyph and no visible word, off the allowed list (A-4), first: ${first(a.controlNames)}`);
+  if (a.titleOnly.length) add('titleOnly', `${a.titleOnly.length} title attribute(s) carrying a meaning nothing else carries (A-8), first: ${first(a.titleOnly)}`);
+  if (a.disabled.length) add('disabledControls', `${a.disabled.length} unavailable control(s) without a focusable state and a visible reason (G-4), first: ${first(a.disabled)}`);
+  if (a.stateCues.length) add('stateCues', `${a.stateCues.length} on state(s) told from off by color alone (C-5), first: ${first(a.stateCues)}`);
+  if (a.motion.length) add('motion', `${a.motion.length} moving or slow glyph element(s) (E-1, E-3), first: ${first(a.motion)}`);
+  if (a.marks.off.length) add('markTokens', `${a.marks.off.length} mark(s) drawn off their token (D2-402), first: ${first(a.marks.off)}`);
+  if (a.marks.unread.length) add('markTokens', `mark token(s) with no reader on the page: ${a.marks.unread.join(', ')}`);
+  if (b.forced && b.forced.erased.length) add('forcedGlyphs', `${b.forced.erased.length} glyph part(s) that forced colors erases (D-1, UX-1), first: ${first(b.forced.erased)}`);
+  if (b.reduced && b.reduced.length) add('reducedMotion', `${b.reduced.length} element(s) still moving under reduced motion (E-2), first: ${first(b.reduced)}`);
+  if (b.spacing && b.spacing.length) add('textSpacing', `${b.spacing.length} clip, overlap or sideways scroll with text spacing or 200 percent text (F-1, F-3), first: ${first(b.spacing)}`);
+  if (b.menu && b.menu.problems.length) add('menuDialog', `the phone menu (G-2, G-3): ${b.menu.problems.join('; ')}`);
+  return f;
+}
+
 async function runAxe(page) {
   if (!AXE) return null;
   await page.addScriptTag({ path: AXE });
@@ -622,19 +957,26 @@ async function runAxe(page) {
   });
 }
 
+// G-1 (stage B, UX-5): a ring is an outline of 2 px or more at 3 to 1 against what lies behind it. A box-shadow does not
+// count, since forced colors removes it.
 async function focusAudit(page, stops) {
   const results = [];
+  await sbInstall(page);
   await page.evaluate(() => { document.activeElement && document.activeElement.blur && document.activeElement.blur(); window.scrollTo(0, 0); });
   for (let i = 0; i < stops; i++) {
     await page.keyboard.press('Tab');
     const r = await page.evaluate(() => {
       const el = document.activeElement; if (!el || el === document.body) return null;
       const cs = getComputedStyle(el);
-      const ring = (cs.outlineStyle !== 'none' && parseFloat(cs.outlineWidth) > 0) || (cs.boxShadow && cs.boxShadow !== 'none');
+      const { parse, ratio, bgBehind } = window.__sb;
+      const oc = parse(cs.outlineColor);
+      const behind = parseFloat(cs.outlineOffset) < 0 ? bgBehind(el) : bgBehind(el.parentElement || el);
+      const contrast = oc ? Math.round(ratio(oc, behind) * 100) / 100 : 0;
+      const ring = cs.outlineStyle !== 'none' && parseFloat(cs.outlineWidth) >= 2 && contrast >= 3;
       const r = el.getBoundingClientRect(); const head = document.querySelector('.masthead');
       const hb = head ? head.getBoundingClientRect().bottom : 0;
       const obscured = !el.closest('.masthead') && !el.closest('dialog') && getComputedStyle(el).position !== 'fixed' && r.bottom <= hb + 1;
-      return { tag: el.tagName, label: (el.getAttribute('aria-label') || el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 40), ring, obscured };
+      return { tag: el.tagName, label: (el.getAttribute('aria-label') || el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 40), ring, outline: `${cs.outlineStyle} ${cs.outlineWidth}`, contrast, shadowOnly: cs.outlineStyle === 'none' && cs.boxShadow !== 'none', obscured };
     });
     if (!r) break;
     results.push(r);
@@ -662,6 +1004,16 @@ async function checkPage(browser, file, widths, opts = {}) {
     a.frames = await frameAudit(page);
     a.fit = await fitAudit(page);
     const fails = failuresFrom(a, width);
+    const sb = { audit: await sbAudit(page) };
+    if (!opts.skipStageB) {
+      sb.forced = await sbForced(page);
+      if (width === 1440 || opts.plant) sb.reduced = await sbReduced(page);
+      if (width <= 390) sb.spacing = await sbSpacing(page);
+      sb.menu = await sbMenu(page);
+    }
+    fails.push(...sbFailures(sb, width));
+    a.stageB = { icons: sb.audit.icons, markReaders: sb.audit.marks.readers, glyphParts: sb.forced ? sb.forced.glyphParts : null,
+      menu: sb.menu ? (sb.menu.problems.length ? sb.menu.problems : 'opens, holds focus, closes by Escape and Close, returns focus') : 'not shown at this width' };
     if (a.fit.under.length) fails.push({ key: 'fitFloor', msg: `${width}: ${a.fit.under.length} plate(s) whose Fit to window sets text under 13 px: ${a.fit.under.slice(0, 8).map((x) => `${x.specimen} (${x.smallest} px at ${Math.round(x.scale * 100)}%, "${x.sample}")`).join('; ')}` });
     let axe = null;
     if (!opts.skipAxe) {
@@ -670,10 +1022,10 @@ async function checkPage(browser, file, widths, opts = {}) {
       if (!axe) fails.push({ key: 'axe', msg: `${width}: axe-core not found (set AXE_PATH; see the shell notes, section 6)` });
     }
     let focus = null;
-    if (width === 1440 && !opts.skipFocus) {
+    if ((width === 1440 || width === 390) && !opts.skipFocus) {
       focus = await focusAudit(page, 60);
       const noRing = focus.filter((x) => !x.ring); const hidden = focus.filter((x) => x.obscured);
-      if (noRing.length) fails.push({ key: 'focus', msg: `${width}: ${noRing.length} focus stop(s) without a visible ring, first: ${JSON.stringify(noRing[0])}` });
+      if (noRing.length) fails.push({ key: 'focus', msg: `${width}: ${noRing.length} focus stop(s) without a 2 px outline at 3 to 1 (G-1), first: ${JSON.stringify(noRing[0])}` });
       if (hidden.length) fails.push({ key: 'focus', msg: `${width}: ${hidden.length} focus stop(s) hidden under the masthead, first: ${JSON.stringify(hidden[0])}` });
     }
     if (outside.size) fails.push({ key: 'requests', msg: `${width}: outside requests to ${[...outside].join(', ')}` });
@@ -808,7 +1160,7 @@ async function selfTest() {
   const clean = await checkPage(browser, page, [1440, 390], { skipFocus: false });
   result.clean = { pass: clean.pass, failures: clean.failures.map((f) => f.msg), exemptions: clean.runs[0].specimens.exemptions, skippedTexts: clean.runs[0].text.skipped };
   for (const p of PLANTS) {
-    const r = await checkPage(browser, page, [1440], { mutate: p.js, skipAxe: true, skipFocus: true });
+    const r = await checkPage(browser, page, p.widths || [1440], { mutate: p.js, skipAxe: true, skipFocus: !p.focus, plant: true });
     const caught = r.failures.filter((f) => f.key === p.key);
     const others = r.failures.filter((f) => f.key !== p.key).map((f) => f.key);
     // a plant with expect: false proves an allowance: the test must stay quiet. verify, where given, reads the run
@@ -820,7 +1172,8 @@ async function selfTest() {
   }
   await browser.close();
   result.pass = result.clean.pass && result.plants.every((p) => p.ok);
-  const outPath = path.join(ROOT, 'work/boards/phase-2/stage-a/20261106_Guide-Check-Plant-Results.json');
+  const ri = process.argv.indexOf('--results');
+  const outPath = ri > 0 && process.argv[ri + 1] ? path.resolve(process.argv[ri + 1]) : path.join(ROOT, 'work/boards/phase-2/stage-a/20261106_Guide-Check-Plant-Results.json');
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, JSON.stringify(result, null, 1));
   const faults = result.plants.filter((p) => p.expect === 'caught'), allow = result.plants.filter((p) => p.expect !== 'caught');
@@ -828,7 +1181,7 @@ async function selfTest() {
     + (allow.length ? `; ${allow.filter((p) => p.ok).length} of ${allow.length} allowed cases left alone` : ''));
   if (!result.clean.pass) result.clean.failures.forEach((f) => console.log('  clean: ' + f));
   for (const p of result.plants) console.log(`  ${p.ok ? (p.expect === 'caught' ? 'caught' : 'quiet ') : (p.expect === 'caught' ? 'MISSED' : 'FLAGGED')}  ${p.test.padEnd(17)} ${p.fault}${p.alsoFlagged.length ? '  (also: ' + p.alsoFlagged.join(', ') + ')' : ''}`);
-  console.log('  results: ' + path.relative(ROOT, outPath));
+  console.log('  results: ' + outPath);
   fs.rmSync(outDir, { recursive: true, force: true });
   process.exit(result.pass ? 0 : 1);
 }
@@ -836,7 +1189,7 @@ async function selfTest() {
 // ------------------------------------------------------------------------------------------------ main
 (async () => {
   if (process.argv.includes('--self-test')) return selfTest();
-  const arg = process.argv.slice(2).find((x) => !x.startsWith('--'));
+  const arg = process.argv.slice(2).find((x, i, all) => !x.startsWith('--') && all[i - 1] !== '--results');
   const file = arg ? path.resolve(arg) : '';
   if (!file || !fs.existsSync(file)) { console.error('usage: node guide_check.js <page.html> [--quick] [--no-captures] | --self-test'); process.exit(2); }
   const widths = process.argv.includes('--quick') ? [1440, 390] : [1440, 1024, 390, 360];

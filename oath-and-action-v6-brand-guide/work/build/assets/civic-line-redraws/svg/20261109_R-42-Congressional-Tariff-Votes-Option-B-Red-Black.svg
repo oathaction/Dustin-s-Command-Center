@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-42-option-b-red-black" data-id="R-42" width="128" height="128" viewBox="0 0 128 128">
+  <title>Congressional Tariff Votes, option B</title>
+  <desc>Oath &amp; Action Civic Line R-42 Congressional Tariff Votes, stage B option B (outside DR-135 where it applies). Set B's chamber, a red vote card with a yes and a no in place of the ballot box, and CL-064's parcel with a tag for imports. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
+  <g id="oa-civic-line-r-42-option-b-red-black-base" data-part="base">
+    <path d="M46.6006 58.3431 A13.293408 8.669614 0 0 1 44.6825 62.1928" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M43.4564 63.2935 A13.29342 8.669622 0 0 1 38.4352 65.6725" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M36.4515 66.0931 A13.29341 8.669615 0 0 1 30.2445 66.0931" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M28.2608 65.6725 A13.29342 8.669622 0 0 1 23.2396 63.2935" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M22.0135 62.1928 A13.293408 8.669614 0 0 1 20.0954 58.3431" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M52.9388 58.7059 A19.651121 13.293405 0 0 1 50.1036 64.6089" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M48.2907 66.2964 A19.651136 13.293416 0 0 1 40.8684 69.9444" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M37.9357 70.5889 A19.65114 13.293418 0 0 1 28.7603 70.5889" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.8276 69.9444 A19.651136 13.293416 0 0 1 18.4053 66.2964" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.5924 64.6089 A19.651121 13.293405 0 0 1 13.7572 58.7059" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M59.2769 59.0686 A26.008865 17.917218 0 0 1 55.5242 67.0246" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M53.125 69.2993 A26.00885 17.917208 0 0 1 43.301 74.2162" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M39.4198 75.0852 A26.008846 17.917205 0 0 1 27.2762 75.0852" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M23.395 74.2162 A26.00885 17.917208 0 0 1 13.571 69.2993" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M11.1718 67.0246 A26.008865 17.917218 0 0 1 7.4191 59.0686" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="23.5224,58.2409 23.5224,54.1951 43.1736,54.1951 43.1736,58.2409" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="26.9903,54.1951 26.9903,50.1493 39.7057,50.1493 39.7057,54.1951" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="69.9875,58.2409 73.0837,61.3372 79.2763,55.1446" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="71.0196" y1="67.5298" x2="78.2442" y2="74.7545" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="78.2442" y1="67.5298" x2="71.0196" y2="74.7545" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="91.1455" y="60.8516" width="18.3553" height="16.9992" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="91.1455,60.8516 96.2296,56.0523 114.5849,56.0523 109.5008,60.8516" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="114.5849,56.0523 114.5849,73.0515 109.5008,77.8507" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="105.4534,56.0523 100.3698,60.8516 100.3698,66.5947" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M114.5849 61.8532 L118.0213 61.8532 L120.5809 64.4128 L118.0213 66.9724 L114.5849 66.9724" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="117.8613" cy="64.4128" r="0.3839" fill="none" stroke="#121212" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="oa-civic-line-r-42-option-b-red-black-accent" data-part="accent">
+    <rect x="65.343" y="51.0162" width="18.5778" height="26.8345" rx="1.5481" fill="none" stroke="#E63946" stroke-width="2.8383" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

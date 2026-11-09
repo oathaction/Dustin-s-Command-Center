@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-search" data-icon-family="utility" data-option="B" data-size="24">
+  <!-- Oath & Action utility icon: Search, option B, 24 px master. The magnifier with a glint in the lens. 24-unit grid, 2 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
+  <circle cx="10.5" cy="10.5" r="7"/>
+  <path d="M15.5 15.5 L20.5 20.5"/>
+  <path d="M7 10.5 A3.5 3.5 0 0 1 10.5 7"/>
+</svg>

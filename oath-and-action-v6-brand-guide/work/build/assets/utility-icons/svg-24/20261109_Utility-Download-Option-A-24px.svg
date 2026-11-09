@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-download" data-icon-family="utility" data-option="A" data-size="24">
+  <!-- Oath & Action utility icon: Download, option A, 24 px master. An arrow down into an open tray. 24-unit grid, 2 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
+  <path d="M12 4 L12 15 M7 10 L12 15 L17 10"/>
+  <path d="M4 15 L4 19 A1 1 0 0 0 5 20 L19 20 A1 1 0 0 0 20 19 L20 15"/>
+</svg>

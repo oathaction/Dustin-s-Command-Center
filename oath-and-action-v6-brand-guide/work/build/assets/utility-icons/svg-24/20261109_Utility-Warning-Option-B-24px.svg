@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-warning" data-icon-family="utility" data-option="B" data-size="24">
+  <!-- Oath & Action utility icon: Warning, option B, 24 px master. An exclamation mark in a diamond, the road sign. 24-unit grid, 2 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
+  <path d="M12.707 2.707 L21.293 11.293 A1 1 0 0 1 21.293 12.707 L12.707 21.293 A1 1 0 0 1 11.293 21.293 L2.707 12.707 A1 1 0 0 1 2.707 11.293 L11.293 2.707 A1 1 0 0 1 12.707 2.707 Z"/>
+  <path d="M12 7.5V13"/>
+  <circle cx="12" cy="16.5" r="1" fill="currentColor" stroke="none"/>
+</svg>

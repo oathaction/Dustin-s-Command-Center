@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-error" data-icon-family="utility" data-option="A" data-size="24">
+  <!-- Oath & Action utility icon: Error, option A, 24 px master. An exclamation mark in a circle. 24-unit grid, 2 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
+  <circle cx="12" cy="12" r="9"/>
+  <path d="M12 7V13"/>
+  <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/>
+</svg>

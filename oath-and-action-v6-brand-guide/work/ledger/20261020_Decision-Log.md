@@ -1197,3 +1197,21 @@ The studio asked three questions before round 0: whether the drawings board shou
 | D2-529 | A withdrawn records request reads "Withdrawn by the requester", although the Justice Department counts it among full denials for reasons other than exemptions | The government's category would tell a reader the agency refused |
 | D2-530 | The state hearing claim cites five legislatures' own pages and prints no count | NCSL refuses this session, and "many" with five named examples claims no more than the pages show |
 | D2-531 | I155's correction is proposed as item 38 of the V7.1 list, in the list's four columns, and the list file is left unedited | D2-413, and the task's instruction not to edit the file |
+
+## Answers on the round 0 questions, November 9, 2026
+
+The studio put six questions to Dustin from round 0: the research lead's four (`20261109_Stage-B-Research-Notes.md`, "Questions for Dustin") and the accessibility lead's questions 2 and 3 (`20261109_Stage-B-Accessibility-Audit.md`, section 5). Dustin: "Yeah, I agree with all of your recommendations. Please proceed." The studio reads this as every recommendation in its last two reports, since the accessibility questions had not yet been answered. The audit's question 1 (the phone's part that names the official) was the studio's own recommendation in DR-147's exchange and is recorded here too.
+
+| # | Decision | Source |
+|---|---|---|
+| DR-149 | Rule 01.11's plate prints the 2025 and 2026 congressional map redraws as the record stands: seven new maps from Republican-led legislatures or commissions and one from a Democratic-led legislature (California), with Virginia's struck-down attempt named, and Ohio's commission vote and Missouri's suspension explained in the source line | Dustin, November 9, as recommended (research question 1) |
+| DR-150 | Every state keeps the six tracker steps. Nebraska's step 5 takes DR-108's slash, and every Nebraska card prints "Nebraska has one chamber" beside it | Dustin, November 9, as recommended (research question 2) |
+| DR-151 | Invented state bills stay invented and labeled Illustrative, renumbered from H.99001 and S.99002 up, as BE-09 set for federal bills | Dustin, November 9, as recommended (research question 3) |
+| DR-152 | R-46 Expand the House stays as drawn. The drawings board shows it beside the Congress options, and the combined reader check's question on reading Pillar Red for party (DR-143) tests whether readers take its red seats as a party's | Dustin, November 9, as recommended (research question 4) |
+| DR-153 | Rule 11.7's 44 px covers trackers and every control that carries a utility icon. The guide's Fit to window switch rises to 44 px, and the contents and rule lists stay as they are, clearing WCAG's 24 px rule through spacing | Dustin, November 9, as recommended (accessibility question 2, option a) |
+| DR-154 | Share, zoom, print and information stay words. A later product that needs one as a glyph brings it back to a board with its look-alike figure | Dustin, November 9, as recommended (accessibility question 3) |
+| DR-155 | If Dustin picks the simple phone for Contact an official, it carries one small part that names the official, such as a desk or an office, so it reads as reaching an official and not as a call button | Dustin, November 9, as recommended (accessibility question 1) |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-532 | The renumbered state bills (DR-151) and Nebraska's step 5 (DR-150) land in round 2, by the owners of chapters 08 and 11 | Both change chapter plates, and round 2 builds the chapters after the drawings board |

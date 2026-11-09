@@ -48,7 +48,7 @@ const chartNum = (value, unit, description, source, ext = {}) => tok('number', v
 // ------------------------------------------------------------------------------------------ metadata
 export const meta = {
   title: 'Oath & Action design tokens, Edition 06',
-  version: '6.0.0-gate2.3',   // apply pass, November 7, 2026: DR-120's measure description
+  version: '6.0.0-gate2.4',   // stage B, November 9, 2026: mark tokens (D2-402), the 24 px utility line, icon sizes after DR-136
   status: 'pre-release',
   statusNote:
     'Built for Gate 2. Version 6.0.0 ships when Dustin approves the token files at Gate 2; until then every value may still change.',
@@ -372,10 +372,12 @@ const space = {
 };
 
 const size = {
+  // Stage B (November 9, 2026): which family sets an icon at each size follows DR-136 and D2-497. No topic or atlas
+  // symbol is set at 16 px, and only the 41 that read there are set at 24 px.
   icon: {
-    small: tok('dimension', px(16), 'Civic Line icon at 16 px. At this size an icon is one color, with no red (R10, DR-67).', { oneColor: true }),
-    medium: tok('dimension', px(24), 'Civic Line icon at 24 px, the smallest size that may carry a red accent.'),
-    large: tok('dimension', px(48), 'Civic Line icon at 48 px. A pillar mark under this size sits with its word (R9, DR-67).'),
+    small: tok('dimension', px(16), 'Icon at 16 px: a utility icon inline in text or a table heading, or a pixel-fit pillar icon. One color, with no red (R10, DR-67). No topic or atlas symbol is set at this size (DR-136).', { oneColor: true }),
+    medium: tok('dimension', px(24), 'Icon at 24 px: a utility icon beside a control\'s word, a pixel-fit pillar icon, or one of the 41 topic symbols that read at this size (DR-136). The smallest size that may carry a red accent.'),
+    large: tok('dimension', px(48), 'Icon at 48 px: the smallest size for a topic or atlas symbol (DR-136). A pillar icon under this size sits with its word (R9, DR-67).'),
   },
   target: {
     minimum: tok('dimension', px(24), 'Smallest pointer target, WCAG 2.2 success criterion 2.5.8.'),
@@ -689,6 +691,34 @@ const componentTokens = {
     accent: component('Red accent of a standalone icon, or of the current icon in a row or menu, at 24 px and up: signature red, bare on Newsprint (R11, DR-66). White on Prussian.',
       Object.fromEntries(SURF4.map((s) => [s, `{oa.color.identity.signature.${SURFACE_KEY[s]}}`])),
       Object.fromEntries(SURF4.map((s) => [s, { minSize: '{oa.size.icon.medium}' }]))),
+    // The utility set (DR-134): a 24-unit grid, round caps and joins, one color through currentColor, no red. The
+    // 16 px line (1.5 px) enters with the first 16 px utility icon on a page, so that it has a reader.
+    utility: {
+      line: {
+        medium: tok('dimension', px(2), 'Line of a utility icon at 24 px (oa.size.icon.medium): drawn on a 24-unit grid with round caps and joins, in currentColor, with no red.', { grid: 24, linecap: 'round', linejoin: 'round' }),
+      },
+    },
+  },
+  // The marks on the tracker's shapes (D2-402, Rule 11.7): the bill tracker, and the status marks for records requests
+  // and agency rules (DR-140). Chapter 11's plates read each one through CSS (guide-shell.css, "Mark tokens"), and
+  // guide_check.js measures the drawn marks against them. The circle sizes by place (24, 26, 28 and 30 px) enter when
+  // the plates read them.
+  mark: {
+    ring: {
+      now: tok('dimension', px(3), 'The heavy ring around the step a record is at now.', { rule: 'Rule 11.7' }),
+      ahead: tok('dimension', px(1.5), 'The fine ring around a step not yet reached, and around a step that never happened, under its slash.', { rule: 'Rule 11.7' }),
+    },
+    slash: tok('dimension', px(2), 'The slash across the ring of a step that never happened.', { rule: 'Rule 11.7' }),
+    halo: tok('dimension', px(4), 'The band of surface color drawn around a step number so the number reads across its slash.', { rule: 'Rule 11.7' }),
+    line: {
+      reached: tok('dimension', '{oa.border.width.rule}', 'The line between steps already reached.', { rule: 'Rule 11.7' }),
+      ahead: tok('dimension', '{oa.border.width.hairline}', 'The line on toward steps not yet reached.', { rule: 'Rule 11.7' }),
+    },
+    takePart: {
+      disc: tok('dimension', px(11), 'Width of the take-part disc: working red, on the ring of the step a reader can act on now (Rule 05.3).', { rule: 'Rule 11.7' }),
+      keyline: tok('dimension', '{oa.border.width.hairline}', 'The Charcoal keyline inside the take-part disc\'s edge, which gives Pillar Red its boundary on Newsprint (Rule 05.5).', { rule: 'Rule 11.7' }),
+      cut: tok('dimension', px(1.5), 'The band of surface color between the take-part disc and the step\'s ring, so the two read apart.', { rule: 'Rule 11.7' }),
+    },
   },
   appIcon: {
     tile: tok('color', '{oa.color.surface.charcoal}', 'App icon tile: Charcoal by default (R13, DR-67).', { tier: 'component' }),

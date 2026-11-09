@@ -1,5 +1,5 @@
 /* Oath & Action design tokens, Edition 06
- * Version 6.0.0-gate2.3 (pre-release). Built for Gate 2. Version 6.0.0 ships when Dustin approves the token files at Gate 2; until then every value may still change.
+ * Version 6.0.0-gate2.4 (pre-release). Built for Gate 2. Version 6.0.0 ships when Dustin approves the token files at Gate 2; until then every value may still change.
  * DTCG Format Module 2025.10. Generated from work/build/tokens/src/oa-tokens.src.mjs
  * by work/build/scripts/phase-2/tokens_build.mjs. Do not edit by hand: the token tests fail when this
  * file and tokens.json disagree.
@@ -715,6 +715,18 @@
   --oa-component-icon-accent-on-white: var(--oa-color-identity-signature-on-white);
   --oa-component-icon-accent-on-charcoal: var(--oa-color-identity-signature-on-charcoal);
   --oa-component-icon-accent-on-prussian: var(--oa-color-identity-signature-on-prussian);
+  --oa-component-icon-utility-line-medium: 2px;
+
+  /* oa.component.mark */
+  --oa-component-mark-ring-now: 3px;
+  --oa-component-mark-ring-ahead: 1.5px;
+  --oa-component-mark-slash: 2px;
+  --oa-component-mark-halo: 4px;
+  --oa-component-mark-line-reached: var(--oa-border-width-rule);
+  --oa-component-mark-line-ahead: var(--oa-border-width-hairline);
+  --oa-component-mark-take-part-disc: 11px;
+  --oa-component-mark-take-part-keyline: var(--oa-border-width-hairline);
+  --oa-component-mark-take-part-cut: 1.5px;
 
   /* oa.component.appIcon */
   --oa-component-app-icon-tile: var(--oa-color-surface-charcoal);

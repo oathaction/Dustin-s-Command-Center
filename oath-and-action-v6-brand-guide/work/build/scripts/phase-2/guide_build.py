@@ -44,6 +44,8 @@ SHELL = GUIDE / "shell"
 TOKENS_CSS = ROOT / "work/build/tokens/tokens.css"
 TOKENS_JSON = ROOT / "work/build/tokens/tokens.json"
 TOKENS_DRAFT = ROOT / "work/build/tokens/20261021_Token-Schema-Draft.json"
+# Token families that must each have a reader in the page (D2-402): the marks on the tracker's shapes and the utility icons
+READ_FAMILIES = ("--oa-component-mark-", "--oa-component-icon-utility-")
 ASSETS = ROOT / "work/build/assets"
 WORDMARK_24 = ASSETS / "identity/wordmark/20261028_Wordmark-24px-Master.svg"
 WORDMARK_16 = ASSETS / "identity/wordmark/20261028_Wordmark-16px-Master.svg"
@@ -1538,6 +1540,14 @@ def build(args):
     missing = sorted(used_vars - defined)
     if missing:
         R.warn("shell", f"the shell uses {len(missing)} custom properties the token stylesheet does not define: {', '.join(missing[:8])}")
+    # D2-402, stage B: every token in the mark family and the utility icon family has a reader in the page, a var() in
+    # the shell's or a placed specimen's CSS, so the guide and tokens.css cannot drift apart unseen. guide_check.js
+    # then measures the drawn marks against the token values (markTokens).
+    if tokens.final:
+        readers = css + "".join(specs.files[s].read_text() for s in specs.used if s in specs.files)
+        unread = sorted(n for n in defined if n.startswith(READ_FAMILIES) and f"var({n}" not in readers)
+        if unread:
+            R.warn("tokens", f"{len(unread)} token(s) in the mark or utility icon family have no reader in the page: {', '.join(unread[:6])}")
 
     wm24 = svg_inline(WORDMARK_24, label="Oath & Action", cls="wm wm-24")
     wm16 = svg_inline(WORDMARK_16, label="Oath & Action", cls="wm wm-16")
@@ -1595,7 +1605,7 @@ def build(args):
       {"".join(f'<li><a href="#part-{s}" data-part-link="{s}">{e(n)}</a></li>' for s, n, _ in PARTS if any(CHAPTER[x][3] == s for x in order))}
       {'<li><a href="#proofs" data-part-link="appendix">Appendix</a></li>' if has_proofs else ''}
     </ul></nav>
-    <button class="menubtn" id="menubtn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="menu"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>Menu</button>
+    <button class="menubtn" id="menubtn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="menu"><svg class="bars" viewBox="0 0 24 24" aria-hidden="true" focusable="false" data-icon="U-menu" data-icon-family="utility"><path d="M3 7h18M3 12h18M3 17h18"/></svg>Menu</button>
   </div>
   <p class="where" id="where" aria-hidden="true">Cover</p>
 </header>

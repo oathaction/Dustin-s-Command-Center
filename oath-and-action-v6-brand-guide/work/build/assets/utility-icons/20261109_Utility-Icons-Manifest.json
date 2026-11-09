@@ -1,0 +1,596 @@
+[
+ {
+  "key": "close",
+  "word": "Close",
+  "label": "Close",
+  "rank": "1",
+  "asked": "A cross",
+  "options": [
+   {
+    "option": "A",
+    "shows": "A bare cross",
+    "files": {
+     "24": "svg-24/20261109_Utility-Close-Option-A-24px.svg",
+     "16": "svg-16/20261109_Utility-Close-Option-A-16px.svg"
+    }
+   },
+   {
+    "option": "B",
+    "shows": "The cross in a circle",
+    "files": {
+     "24": "svg-24/20261109_Utility-Close-Option-B-24px.svg",
+     "16": "svg-16/20261109_Utility-Close-Option-B-16px.svg"
+    }
+   },
+   {
+    "option": "C",
+    "shows": "The cross in a square, the window sign",
+    "files": {
+     "24": "svg-24/20261109_Utility-Close-Option-C-24px.svg",
+     "16": "svg-16/20261109_Utility-Close-Option-C-16px.svg"
+    }
+   }
+  ]
+ },
+ {
+  "key": "menu",
+  "word": "Menu",
+  "label": "Open the menu",
+  "rank": "2",
+  "asked": "Three bars",
+  "options": [
+   {
+    "option": "A",
+    "shows": "Three even bars, wide",
+    "files": {
+     "24": "svg-24/20261109_Utility-Menu-Option-A-24px.svg",
+     "16": "svg-16/20261109_Utility-Menu-Option-A-16px.svg"
+    }
+   },
+   {
+    "option": "B",
+    "shows": "Three even bars, narrow and closer",
+    "files": {
+     "24": "svg-24/20261109_Utility-Menu-Option-B-24px.svg",
+     "16": "svg-16/20261109_Utility-Menu-Option-B-16px.svg"
+    }
+   },
+   {
+    "option": "C",
+    "shows": "Three bars, the last one short",
+    "files": {
+     "24": "svg-24/20261109_Utility-Menu-Option-C-24px.svg",
+     "16": "svg-16/20261109_Utility-Menu-Option-C-16px.svg"
+    }
+   }
+  ]
+ },
+ {
+  "key": "arrow",
+  "word": "Arrow",
+  "label": "Next and Previous (mirrored), and the sort order in use (turned)",
+  "rank": "3, 4, 16",
+  "asked": "An arrow with a shaft, pointing right",
+  "options": [
+   {
+    "option": "A",
+    "shows": "An arrow with a shaft and a square-cut head",
+    "files": {
+     "24": "svg-24/20261109_Utility-Arrow-Option-A-24px.svg",
+     "16": "svg-16/20261109_Utility-Arrow-Option-A-16px.svg"
+    }
+   },
+   {
+    "option": "B",
+    "shows": "The arrow in a circle",
+    "files": {
+     "24": "svg-24/20261109_Utility-Arrow-Option-B-24px.svg",
+     "16": "svg-16/20261109_Utility-Arrow-Option-B-16px.svg"
+    }
+   },
+   {
+    "option": "C",
+    "shows": "A long shaft with a small head",
+    "files": {
+     "24": "svg-24/20261109_Utility-Arrow-Option-C-24px.svg",
+     "16": "svg-16/20261109_Utility-Arrow-Option-C-16px.svg"
+    }
+   }
+  ]
+ },
+ {
+  "key": "chevron",
+  "word": "Chevron",
+  "label": "Expand and collapse (down when closed, up when open)",
+  "rank": "5",
+  "asked": "A chevron",
+  "options": [
+   {
+    "option": "A",
+    "shows": "A chevron, 12 units wide",
+    "files": {
+     "24": "svg-24/20261109_Utility-Chevron-Option-A-24px.svg",
+     "16": "svg-16/20261109_Utility-Chevron-Option-A-16px.svg"
+    }
+   },
+   {
+    "option": "B",
+    "shows": "The chevron in a circle",
+    "files": {
+     "24": "svg-24/20261109_Utility-Chevron-Option-B-24px.svg",
+     "16": "svg-16/20261109_Utility-Chevron-Option-B-16px.svg"
+    }
+   },
+   {
+    "option": "C",
+    "shows": "A small chevron, 8 units wide",
+    "files": {
+     "24": "svg-24/20261109_Utility-Chevron-Option-C-24px.svg",
+     "16": "svg-16/20261109_Utility-Chevron-Option-C-16px.svg"
+    }
+   }
+  ]
+ },
+ {
+  "key": "download",
+  "word": "Download",
+  "label": "Download",
+  "rank": "6",
+  "asked": "Its own drawing",
+  "options": [
+   {
+    "option": "A",
+    "shows": "An arrow down into an open tray",
+    "files": {
+     "24": "svg-24/20261109_Utility-Download-Option-A-24px.svg",
+     "16": "svg-16/20261109_Utility-Download-Option-A-16px.svg"
+    }
+   },
+   {
+    "option": "B",
+    "shows": "An arrow down onto a line",
+    "files": {
+     "24": "svg-24/20261109_Utility-Download-Option-B-24px.svg",
+     "16": "svg-16/20261109_Utility-Download-Option-B-16px.svg"
+    }
+   },
+   {
+    "option": "C",
+    "shows": "An arrow down in a circle",
+    "files": {
+     "24": "svg-24/20261109_Utility-Download-Option-C-24px.svg",
+     "16": "svg-16/20261109_Utility-Download-Option-C-16px.svg"
+    }
+   }
+  ]
+ },
+ {
+  "key": "another-site",
+  "word": "Another-Site",
+  "label": "Go to another site",
+  "rank": "7",
+  "asked": "Its own drawing",
+  "options": [
+   {
+    "option": "A",
+    "shows": "An arrow leaving a box by its top right corner",
+    "files": {
+     "24": "svg-24/20261109_Utility-Another-Site-Option-A-24px.svg",
+     "16": "svg-16/20261109_Utility-Another-Site-Option-A-16px.svg"
+    }
+   },
+   {
+    "option": "B",
+    "shows": "A bare arrow up and to the right",
+    "files": {
+     "24": "svg-24/20261109_Utility-Another-Site-Option-B-24px.svg",
+     "16": "svg-16/20261109_Utility-Another-Site-Option-B-16px.svg"
+    }
+   },
+   {
+    "option": "C",
+    "shows": "An arrow leaving a ring by its upper right",
+    "files": {
+     "24": "svg-24/20261109_Utility-Another-Site-Option-C-24px.svg",
+     "16": "svg-16/20261109_Utility-Another-Site-Option-C-16px.svg"
+    }
+   }
+  ]
+ },
+ {
+  "key": "search",
+  "word": "Search",
+  "label": "Search",
+  "rank": "8",
+  "asked": "Its own drawing",
+  "options": [
+   {
+    "option": "A",
+    "shows": "A magnifier: round lens, handle to the lower right",
+    "files": {
+     "24": "svg-24/20261109_Utility-Search-Option-A-24px.svg",
+     "16": "svg-16/20261109_Utility-Search-Option-A-16px.svg"
+    }
+   },
+   {
+    "option": "B",
+    "shows": "The magnifier with a glint in the lens",
+    "files": {
+     "24": "svg-24/20261109_Utility-Search-Option-B-24px.svg",
+     "16": "svg-16/20261109_Utility-Search-Option-B-16px.svg"
+    }
+   },
+   {
+    "option": "C",
+    "shows": "A larger lens on a short handle",
+    "files": {
+     "24": "svg-24/20261109_Utility-Search-Option-C-24px.svg",
+     "16": "svg-16/20261109_Utility-Search-Option-C-16px.svg"
+    }
+   }
+  ]
+ },
+ {
+  "key": "filter",
+  "word": "Filter",
+  "label": "Filter",
+  "rank": "9",
+  "asked": "A funnel, not sliders",
+  "options": [
+   {
+    "option": "A",
+    "shows": "A funnel with a slanted spout",
+    "files": {
+     "24": "svg-24/20261109_Utility-Filter-Option-A-24px.svg",
+     "16": "svg-16/20261109_Utility-Filter-Option-A-16px.svg"
+    }
+   },
+   {
+    "option": "B",
+    "shows": "A funnel with a square spout",
+    "files": {
+     "24": "svg-24/20261109_Utility-Filter-Option-B-24px.svg",
+     "16": "svg-16/20261109_Utility-Filter-Option-B-16px.svg"
+    }
+   },
+   {
+    "option": "C",
+    "shows": "A wide funnel with a short spout",
+    "files": {
+     "24": "svg-24/20261109_Utility-Filter-Option-C-24px.svg",
+     "16": "svg-16/20261109_Utility-Filter-Option-C-16px.svg"
+    }
+   }
+  ]
+ },
+ {
+  "key": "copy",
+  "word": "Copy",
+  "label": "Copy",
+  "rank": "10",
+  "asked": "Two sheets",
+  "options": [
+   {
+    "option": "A",
+    "shows": "Two square sheets, the back one up and to the left",
+    "files": {
+     "24": "svg-24/20261109_Utility-Copy-Option-A-24px.svg",
+     "16": "svg-16/20261109_Utility-Copy-Option-A-16px.svg"
+    }
+   },
+   {
+    "option": "B",
+    "shows": "Two tall sheets, the back one shown as a corner below and to the left",
+    "files": {
+     "24": "svg-24/20261109_Utility-Copy-Option-B-24px.svg",
+     "16": "svg-16/20261109_Utility-Copy-Option-B-16px.svg"
+    }
+   },
+   {
+    "option": "C",
+    "shows": "Two sheets, the front one with two lines of text",
+    "files": {
+     "24": "svg-24/20261109_Utility-Copy-Option-C-24px.svg",
+     "16": "svg-16/20261109_Utility-Copy-Option-C-16px.svg"
+    }
+   }
+  ]
+ },
+ {
+  "key": "play",
+  "word": "Play",
+  "label": "Play (one button with Pause)",
+  "rank": "11",
+  "asked": "A triangle",
+  "options": [
+   {
+    "option": "A",
+    "shows": "A triangle pointing right",
+    "files": {
+     "24": "svg-24/20261109_Utility-Play-Option-A-24px.svg",
+     "16": "svg-16/20261109_Utility-Play-Option-A-16px.svg"
+    }
+   },
+   {
+    "option": "B",
+    "shows": "The triangle in a circle",
+    "files": {
+     "24": "svg-24/20261109_Utility-Play-Option-B-24px.svg",
+     "16": "svg-16/20261109_Utility-Play-Option-B-16px.svg"
+    }
+   },
+   {
+    "option": "C",
+    "shows": "The triangle on a screen",
+    "files": {
+     "24": "svg-24/20261109_Utility-Play-Option-C-24px.svg",
+     "16": "svg-16/20261109_Utility-Play-Option-C-16px.svg"
+    }
+   }
+  ]
+ },
+ {
+  "key": "pause",
+  "word": "Pause",
+  "label": "Pause (one button with Play)",
+  "rank": "11",
+  "asked": "Two bars",
+  "options": [
+   {
+    "option": "A",
+    "shows": "Two upright bars",
+    "files": {
+     "24": "svg-24/20261109_Utility-Pause-Option-A-24px.svg",
+     "16": "svg-16/20261109_Utility-Pause-Option-A-16px.svg"
+    }
+   },
+   {
+    "option": "B",
+    "shows": "Two bars in a circle",
+    "files": {
+     "24": "svg-24/20261109_Utility-Pause-Option-B-24px.svg",
+     "16": "svg-16/20261109_Utility-Pause-Option-B-16px.svg"
+    }
+   },
+   {
+    "option": "C",
+    "shows": "Two bars on a screen",
+    "files": {
+     "24": "svg-24/20261109_Utility-Pause-Option-C-24px.svg",
+     "16": "svg-16/20261109_Utility-Pause-Option-C-16px.svg"
+    }
+   }
+  ]
+ },
+ {
+  "key": "reset",
+  "word": "Reset",
+  "label": "Reset, start over",
+  "rank": "12",
+  "asked": "One open circle with one arrowhead, anticlockwise, no nodes",
+  "options": [
+   {
+    "option": "A",
+    "shows": "Three quarters of a circle, the head at the top pointing left",
+    "files": {
+     "24": "svg-24/20261109_Utility-Reset-Option-A-24px.svg",
+     "16": "svg-16/20261109_Utility-Reset-Option-A-16px.svg"
+    }
+   },
+   {
+    "option": "B",
+    "shows": "Three quarters of a circle, an upright corner head at the upper left",
+    "files": {
+     "24": "svg-24/20261109_Utility-Reset-Option-B-24px.svg",
+     "16": "svg-16/20261109_Utility-Reset-Option-B-16px.svg"
+    }
+   },
+   {
+    "option": "C",
+    "shows": "Three quarters of a circle, the head at the left pointing down",
+    "files": {
+     "24": "svg-24/20261109_Utility-Reset-Option-C-24px.svg",
+     "16": "svg-16/20261109_Utility-Reset-Option-C-16px.svg"
+    }
+   }
+  ]
+ },
+ {
+  "key": "error",
+  "word": "Error",
+  "label": "Error mark",
+  "rank": "13",
+  "asked": "A circle holding an exclamation mark, never a cross",
+  "options": [
+   {
+    "option": "A",
+    "shows": "An exclamation mark in a circle",
+    "files": {
+     "24": "svg-24/20261109_Utility-Error-Option-A-24px.svg",
+     "16": "svg-16/20261109_Utility-Error-Option-A-16px.svg"
+    }
+   },
+   {
+    "option": "B",
+    "shows": "An exclamation mark in an octagon, the stop sign",
+    "files": {
+     "24": "svg-24/20261109_Utility-Error-Option-B-24px.svg",
+     "16": "svg-16/20261109_Utility-Error-Option-B-16px.svg"
+    }
+   },
+   {
+    "option": "C",
+    "shows": "An exclamation mark in a square",
+    "files": {
+     "24": "svg-24/20261109_Utility-Error-Option-C-24px.svg",
+     "16": "svg-16/20261109_Utility-Error-Option-C-16px.svg"
+    }
+   }
+  ]
+ },
+ {
+  "key": "success",
+  "word": "Success",
+  "label": "Success mark",
+  "rank": "14",
+  "asked": "The check in its enclosure",
+  "options": [
+   {
+    "option": "A",
+    "shows": "A check in a circle",
+    "files": {
+     "24": "svg-24/20261109_Utility-Success-Option-A-24px.svg",
+     "16": "svg-16/20261109_Utility-Success-Option-A-16px.svg"
+    }
+   },
+   {
+    "option": "B",
+    "shows": "A check leaving an open circle",
+    "files": {
+     "24": "svg-24/20261109_Utility-Success-Option-B-24px.svg",
+     "16": "svg-16/20261109_Utility-Success-Option-B-16px.svg"
+    }
+   },
+   {
+    "option": "C",
+    "shows": "A check in a square",
+    "files": {
+     "24": "svg-24/20261109_Utility-Success-Option-C-24px.svg",
+     "16": "svg-16/20261109_Utility-Success-Option-C-16px.svg"
+    }
+   }
+  ]
+ },
+ {
+  "key": "check",
+  "word": "Selected-Check",
+  "label": "Selected check (a chip or list choice that is on)",
+  "rank": "14",
+  "asked": "The bare check",
+  "options": [
+   {
+    "option": "A",
+    "shows": "A check, long arm at 45 degrees",
+    "files": {
+     "24": "svg-24/20261109_Utility-Selected-Check-Option-A-24px.svg",
+     "16": "svg-16/20261109_Utility-Selected-Check-Option-A-16px.svg"
+    }
+   },
+   {
+    "option": "B",
+    "shows": "A tick, the long arm steeper",
+    "files": {
+     "24": "svg-24/20261109_Utility-Selected-Check-Option-B-24px.svg",
+     "16": "svg-16/20261109_Utility-Selected-Check-Option-B-16px.svg"
+    }
+   },
+   {
+    "option": "C",
+    "shows": "A compact check",
+    "files": {
+     "24": "svg-24/20261109_Utility-Selected-Check-Option-C-24px.svg",
+     "16": "svg-16/20261109_Utility-Selected-Check-Option-C-16px.svg"
+    }
+   }
+  ]
+ },
+ {
+  "key": "full-size",
+  "word": "View-Full-Size",
+  "label": "View full size",
+  "rank": "15",
+  "asked": "Four corners pointing out",
+  "options": [
+   {
+    "option": "A",
+    "shows": "Four corners",
+    "files": {
+     "24": "svg-24/20261109_Utility-View-Full-Size-Option-A-24px.svg",
+     "16": "svg-16/20261109_Utility-View-Full-Size-Option-A-16px.svg"
+    }
+   },
+   {
+    "option": "B",
+    "shows": "Four arrows from the middle out to the corners",
+    "files": {
+     "24": "svg-24/20261109_Utility-View-Full-Size-Option-B-24px.svg",
+     "16": "svg-16/20261109_Utility-View-Full-Size-Option-B-16px.svg"
+    }
+   },
+   {
+    "option": "C",
+    "shows": "Two arrows out to opposite corners",
+    "files": {
+     "24": "svg-24/20261109_Utility-View-Full-Size-Option-C-24px.svg",
+     "16": "svg-16/20261109_Utility-View-Full-Size-Option-C-16px.svg"
+    }
+   }
+  ]
+ },
+ {
+  "key": "sort",
+  "word": "Sort",
+  "label": "Sort a column (can sort)",
+  "rank": "16",
+  "asked": "Two small arrows, up and down",
+  "options": [
+   {
+    "option": "A",
+    "shows": "An up arrow and a down arrow side by side",
+    "files": {
+     "24": "svg-24/20261109_Utility-Sort-Option-A-24px.svg",
+     "16": "svg-16/20261109_Utility-Sort-Option-A-16px.svg"
+    }
+   },
+   {
+    "option": "B",
+    "shows": "Two chevrons, one up and one down",
+    "files": {
+     "24": "svg-24/20261109_Utility-Sort-Option-B-24px.svg",
+     "16": "svg-16/20261109_Utility-Sort-Option-B-16px.svg"
+    }
+   },
+   {
+    "option": "C",
+    "shows": "One upright arrow with a head at each end",
+    "files": {
+     "24": "svg-24/20261109_Utility-Sort-Option-C-24px.svg",
+     "16": "svg-16/20261109_Utility-Sort-Option-C-16px.svg"
+    }
+   }
+  ]
+ },
+ {
+  "key": "warning",
+  "word": "Warning",
+  "label": "Warning mark",
+  "rank": "17",
+  "asked": "A triangle holding an exclamation mark",
+  "options": [
+   {
+    "option": "A",
+    "shows": "An exclamation mark in a wide triangle",
+    "files": {
+     "24": "svg-24/20261109_Utility-Warning-Option-A-24px.svg",
+     "16": "svg-16/20261109_Utility-Warning-Option-A-16px.svg"
+    }
+   },
+   {
+    "option": "B",
+    "shows": "An exclamation mark in a diamond, the road sign",
+    "files": {
+     "24": "svg-24/20261109_Utility-Warning-Option-B-24px.svg",
+     "16": "svg-16/20261109_Utility-Warning-Option-B-16px.svg"
+    }
+   },
+   {
+    "option": "C",
+    "shows": "An exclamation mark in a narrower triangle",
+    "files": {
+     "24": "svg-24/20261109_Utility-Warning-Option-C-24px.svg",
+     "16": "svg-16/20261109_Utility-Warning-Option-C-16px.svg"
+    }
+   }
+  ]
+ }
+]

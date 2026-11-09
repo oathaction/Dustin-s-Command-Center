@@ -1,0 +1,2396 @@
+{
+ "date": "2026-11-09",
+ "method": "Chromium render on Newsprint; ink = channel distance from Newsprint over 45; near black = every channel under 70; red = R over 170, G and B under 120; crisp = an ink pixel within a channel distance of 40 of Charcoal, Stone or Pillar Red",
+ "end_files": {
+  "14A": {
+   "file": "work/build/assets/identity/ampersand/20261109_Amp-B-14px-End-Mark-Fit-A.svg",
+   "prussian": "work/build/assets/identity/prussian/20261109_Amp-B-14px-End-Mark-Fit-A-Prussian-White.svg",
+   "width_px": 13,
+   "height_px": 14,
+   "text_px": 17,
+   "vertical_align_px": -1,
+   "ink_px": 90,
+   "subpaths": 3
+  },
+  "14B": {
+   "file": "work/build/assets/identity/ampersand/20261109_Amp-B-14px-End-Mark-Fit-B.svg",
+   "prussian": "work/build/assets/identity/prussian/20261109_Amp-B-14px-End-Mark-Fit-B-Prussian-White.svg",
+   "width_px": 13,
+   "height_px": 13,
+   "text_px": 17,
+   "vertical_align_px": 0,
+   "ink_px": 84,
+   "subpaths": 3
+  },
+  "12A": {
+   "file": "work/build/assets/identity/ampersand/20261109_Amp-B-12px-End-Mark-Fit-A.svg",
+   "prussian": "work/build/assets/identity/prussian/20261109_Amp-B-12px-End-Mark-Fit-A-Prussian-White.svg",
+   "width_px": 11,
+   "height_px": 12,
+   "text_px": 15,
+   "vertical_align_px": -1,
+   "ink_px": 68,
+   "subpaths": 3
+  },
+  "12B": {
+   "file": "work/build/assets/identity/ampersand/20261109_Amp-B-12px-End-Mark-Fit-B.svg",
+   "prussian": "work/build/assets/identity/prussian/20261109_Amp-B-12px-End-Mark-Fit-B-Prussian-White.svg",
+   "width_px": 11,
+   "height_px": 11,
+   "text_px": 15,
+   "vertical_align_px": 0,
+   "ink_px": 61,
+   "subpaths": 2
+  }
+ },
+ "lockmark_files": {
+  "24": {
+   "file": "work/build/assets/identity/lockmark/20261109_Lockmark-24px-Master-Outline.svg",
+   "prussian": "work/build/assets/identity/prussian/20261109_Lockmark-24px-Master-Outline-Prussian-White.svg",
+   "today": "lockmark/20261028_Lockmark-24px-Master.svg",
+   "links_unchanged": true,
+   "node_outlines": 8,
+   "lever_outlines": 1,
+   "rects_today": 53,
+   "rects_rebuilt": 6,
+   "paths_rebuilt": 9
+  },
+  "48": {
+   "file": "work/build/assets/identity/lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+   "prussian": "work/build/assets/identity/prussian/20261109_Lockmark-48px-Master-Outline-Prussian-White.svg",
+   "today": "lockmark/20261108_Lockmark-48px-Master.svg",
+   "links_unchanged": true,
+   "node_outlines": 8,
+   "lever_outlines": 1,
+   "rects_today": 71,
+   "rects_rebuilt": 6,
+   "paths_rebuilt": 9
+  }
+ },
+ "l6": {
+  "units": "L6's 1400 by 300 units; 884 px wide is 0.6314 px per unit",
+  "wordmark_cap_line": 84.38,
+  "tagline_baseline": 186.18,
+  "tagline_descender_bottom": 190.46,
+  "group_middle_today": 135.28,
+  "strip_middle": 150.0,
+  "lockmark_ink_top": 84.43,
+  "lockmark_ink_bottom": 214.51,
+  "lockmark_ink_middle": 149.47,
+  "shift_down_units": 14.72,
+  "shift_down_px_at_884": 9.3,
+  "middle_with_descenders_today": 137.42,
+  "shift_if_descenders_counted_units": 12.58,
+  "centered_cap_line": 99.1,
+  "centered_baseline": 200.9
+ },
+ "measure": {
+  "fonts_loaded": [
+   "Inter 400"
+  ],
+  "lockmark": {
+   "at_1x": {
+    "today-16-at-16": {
+     "field_px": 256,
+     "ink_share": 0.465,
+     "near_black_share": 0.156,
+     "red_px": 21,
+     "crisp_share_of_ink": 0.697,
+     "node_core_full": 0.6,
+     "lever_core_full": 1.0
+    },
+    "today-16-at-17": {
+     "field_px": 289,
+     "ink_share": 0.536,
+     "near_black_share": 0.163,
+     "red_px": 21,
+     "crisp_share_of_ink": 0.406,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "today-16-at-18": {
+     "field_px": 324,
+     "ink_share": 0.531,
+     "near_black_share": 0.148,
+     "red_px": 24,
+     "crisp_share_of_ink": 0.413,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "today-16-at-20": {
+     "field_px": 400,
+     "ink_share": 0.532,
+     "near_black_share": 0.172,
+     "red_px": 29,
+     "crisp_share_of_ink": 0.479,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "today-16-at-23": {
+     "field_px": 529,
+     "ink_share": 0.514,
+     "near_black_share": 0.181,
+     "red_px": 38,
+     "crisp_share_of_ink": 0.5,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "today-24-at-24": {
+     "field_px": 576,
+     "ink_share": 0.415,
+     "near_black_share": 0.292,
+     "red_px": 37,
+     "crisp_share_of_ink": 1.0,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "today-24-at-34": {
+     "field_px": 1156,
+     "ink_share": 0.528,
+     "near_black_share": 0.252,
+     "red_px": 65,
+     "crisp_share_of_ink": 0.366,
+     "node_core_full": 0.5,
+     "lever_core_full": 0.538
+    },
+    "today-24-at-40": {
+     "field_px": 1600,
+     "ink_share": 0.499,
+     "near_black_share": 0.244,
+     "red_px": 97,
+     "crisp_share_of_ink": 0.464,
+     "node_core_full": 0.571,
+     "lever_core_full": 0.673
+    },
+    "today-24-at-47": {
+     "field_px": 2209,
+     "ink_share": 0.496,
+     "near_black_share": 0.265,
+     "red_px": 145,
+     "crisp_share_of_ink": 0.461,
+     "node_core_full": 0.486,
+     "lever_core_full": 0.507
+    },
+    "today-48-at-48": {
+     "field_px": 2304,
+     "ink_share": 0.22,
+     "near_black_share": 0.128,
+     "red_px": 69,
+     "crisp_share_of_ink": 1.0,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "today-48-at-49": {
+     "field_px": 2401,
+     "ink_share": 0.293,
+     "near_black_share": 0.107,
+     "red_px": 69,
+     "crisp_share_of_ink": 0.418,
+     "node_core_full": 0.571,
+     "lever_core_full": 0.697
+    },
+    "today-48-at-56": {
+     "field_px": 3136,
+     "ink_share": 0.302,
+     "near_black_share": 0.103,
+     "red_px": 90,
+     "crisp_share_of_ink": 0.316,
+     "node_core_full": 0.321,
+     "lever_core_full": 0.349
+    },
+    "today-48-at-72": {
+     "field_px": 5184,
+     "ink_share": 0.258,
+     "near_black_share": 0.115,
+     "red_px": 142,
+     "crisp_share_of_ink": 0.56,
+     "node_core_full": 0.683,
+     "lever_core_full": 0.667
+    },
+    "today-48-at-96": {
+     "field_px": 9216,
+     "ink_share": 0.22,
+     "near_black_share": 0.128,
+     "red_px": 276,
+     "crisp_share_of_ink": 1.0,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "new-24-at-24": {
+     "field_px": 576,
+     "ink_share": 0.415,
+     "near_black_share": 0.292,
+     "red_px": 37,
+     "crisp_share_of_ink": 1.0,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "new-24-at-34": {
+     "field_px": 1156,
+     "ink_share": 0.526,
+     "near_black_share": 0.256,
+     "red_px": 65,
+     "crisp_share_of_ink": 0.599,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "new-24-at-40": {
+     "field_px": 1600,
+     "ink_share": 0.499,
+     "near_black_share": 0.268,
+     "red_px": 97,
+     "crisp_share_of_ink": 0.66,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "new-24-at-47": {
+     "field_px": 2209,
+     "ink_share": 0.491,
+     "near_black_share": 0.274,
+     "red_px": 145,
+     "crisp_share_of_ink": 0.668,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "new-48-at-48": {
+     "field_px": 2304,
+     "ink_share": 0.22,
+     "near_black_share": 0.128,
+     "red_px": 69,
+     "crisp_share_of_ink": 1.0,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "new-48-at-49": {
+     "field_px": 2401,
+     "ink_share": 0.293,
+     "near_black_share": 0.113,
+     "red_px": 69,
+     "crisp_share_of_ink": 0.632,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "new-48-at-56": {
+     "field_px": 3136,
+     "ink_share": 0.304,
+     "near_black_share": 0.113,
+     "red_px": 96,
+     "crisp_share_of_ink": 0.517,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "new-48-at-72": {
+     "field_px": 5184,
+     "ink_share": 0.258,
+     "near_black_share": 0.118,
+     "red_px": 144,
+     "crisp_share_of_ink": 0.706,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "new-48-at-96": {
+     "field_px": 9216,
+     "ink_share": 0.22,
+     "near_black_share": 0.128,
+     "red_px": 276,
+     "crisp_share_of_ink": 1.0,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    }
+   },
+   "at_2x": {
+    "today-16-at-16": {
+     "field_px": 1024,
+     "ink_share": 0.453,
+     "near_black_share": 0.188,
+     "red_px": 74,
+     "crisp_share_of_ink": 0.797,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "today-16-at-17": {
+     "field_px": 1156,
+     "ink_share": 0.473,
+     "near_black_share": 0.202,
+     "red_px": 89,
+     "crisp_share_of_ink": 0.629,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "today-16-at-18": {
+     "field_px": 1296,
+     "ink_share": 0.474,
+     "near_black_share": 0.206,
+     "red_px": 90,
+     "crisp_share_of_ink": 0.663,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "today-16-at-20": {
+     "field_px": 1600,
+     "ink_share": 0.458,
+     "near_black_share": 0.211,
+     "red_px": 116,
+     "crisp_share_of_ink": 0.703,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "today-16-at-23": {
+     "field_px": 2116,
+     "ink_share": 0.441,
+     "near_black_share": 0.206,
+     "red_px": 156,
+     "crisp_share_of_ink": 0.698,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "today-24-at-24": {
+     "field_px": 2304,
+     "ink_share": 0.415,
+     "near_black_share": 0.292,
+     "red_px": 148,
+     "crisp_share_of_ink": 1.0,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "today-24-at-34": {
+     "field_px": 4624,
+     "ink_share": 0.476,
+     "near_black_share": 0.272,
+     "red_px": 292,
+     "crisp_share_of_ink": 0.614,
+     "node_core_full": 0.646,
+     "lever_core_full": 0.757
+    },
+    "today-24-at-40": {
+     "field_px": 6400,
+     "ink_share": 0.456,
+     "near_black_share": 0.266,
+     "red_px": 414,
+     "crisp_share_of_ink": 0.694,
+     "node_core_full": 0.779,
+     "lever_core_full": 0.846
+    },
+    "today-24-at-47": {
+     "field_px": 8836,
+     "ink_share": 0.461,
+     "near_black_share": 0.283,
+     "red_px": 537,
+     "crisp_share_of_ink": 0.7,
+     "node_core_full": 0.736,
+     "lever_core_full": 0.765
+    },
+    "today-48-at-48": {
+     "field_px": 9216,
+     "ink_share": 0.22,
+     "near_black_share": 0.128,
+     "red_px": 276,
+     "crisp_share_of_ink": 1.0,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "today-48-at-49": {
+     "field_px": 9604,
+     "ink_share": 0.259,
+     "near_black_share": 0.123,
+     "red_px": 276,
+     "crisp_share_of_ink": 0.552,
+     "node_core_full": 0.506,
+     "lever_core_full": 0.504
+    },
+    "today-48-at-56": {
+     "field_px": 12544,
+     "ink_share": 0.253,
+     "near_black_share": 0.116,
+     "red_px": 370,
+     "crisp_share_of_ink": 0.599,
+     "node_core_full": 0.782,
+     "lever_core_full": 0.706
+    },
+    "today-48-at-72": {
+     "field_px": 20736,
+     "ink_share": 0.22,
+     "near_black_share": 0.128,
+     "red_px": 621,
+     "crisp_share_of_ink": 1.0,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "today-48-at-96": {
+     "field_px": 36864,
+     "ink_share": 0.22,
+     "near_black_share": 0.128,
+     "red_px": 1104,
+     "crisp_share_of_ink": 1.0,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "new-24-at-24": {
+     "field_px": 2304,
+     "ink_share": 0.415,
+     "near_black_share": 0.292,
+     "red_px": 148,
+     "crisp_share_of_ink": 1.0,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "new-24-at-34": {
+     "field_px": 4624,
+     "ink_share": 0.476,
+     "near_black_share": 0.28,
+     "red_px": 292,
+     "crisp_share_of_ink": 0.742,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "new-24-at-40": {
+     "field_px": 6400,
+     "ink_share": 0.456,
+     "near_black_share": 0.28,
+     "red_px": 416,
+     "crisp_share_of_ink": 0.807,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "new-24-at-47": {
+     "field_px": 8836,
+     "ink_share": 0.457,
+     "near_black_share": 0.285,
+     "red_px": 539,
+     "crisp_share_of_ink": 0.814,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "new-48-at-48": {
+     "field_px": 9216,
+     "ink_share": 0.22,
+     "near_black_share": 0.128,
+     "red_px": 276,
+     "crisp_share_of_ink": 1.0,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "new-48-at-49": {
+     "field_px": 9604,
+     "ink_share": 0.256,
+     "near_black_share": 0.123,
+     "red_px": 277,
+     "crisp_share_of_ink": 0.72,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "new-48-at-56": {
+     "field_px": 12544,
+     "ink_share": 0.253,
+     "near_black_share": 0.123,
+     "red_px": 374,
+     "crisp_share_of_ink": 0.734,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "new-48-at-72": {
+     "field_px": 20736,
+     "ink_share": 0.22,
+     "near_black_share": 0.128,
+     "red_px": 621,
+     "crisp_share_of_ink": 1.0,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    },
+    "new-48-at-96": {
+     "field_px": 36864,
+     "ink_share": 0.22,
+     "near_black_share": 0.128,
+     "red_px": 1104,
+     "crisp_share_of_ink": 1.0,
+     "node_core_full": 1.0,
+     "lever_core_full": 1.0
+    }
+   }
+  },
+  "identical_at_own_size": {
+   "24px-newsprint-1x": true,
+   "24px-charcoal-1x": true,
+   "24px-prussian-1x": true,
+   "24px-newsprint-2x": true,
+   "24px-charcoal-2x": true,
+   "24px-prussian-2x": true,
+   "48px-newsprint-1x": true,
+   "48px-charcoal-1x": true,
+   "48px-prussian-1x": true,
+   "48px-newsprint-2x": true,
+   "48px-charcoal-2x": true,
+   "48px-prussian-2x": true
+  },
+  "end_mark": {
+   "T17-newsprint": {
+    "text_px": 17,
+    "capitals_px": 12.38,
+    "b_px": 14.12,
+    "top_over_cap_line_px": 0.62,
+    "tail_under_baseline_px": 1.12,
+    "rows_at_1x": [
+     {
+      "offset_px": 0,
+      "b_rows": 15.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 0.45
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 15.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 0.45
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 15.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 0.45
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 15.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 0.45
+     }
+    ],
+    "rows_at_2x": [
+     {
+      "offset_px": 0,
+      "b_rows": 29.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 3.0,
+      "b_full_ink_share": 0.67
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 29.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 3.0,
+      "b_full_ink_share": 0.67
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 29.0,
+      "top_rows_over_h": 3.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 0.67
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 29.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 3.0,
+      "b_full_ink_share": 0.67
+     }
+    ],
+    "b_full_ink_share_at_1x": 0.45
+   },
+   "T17-charcoal": {
+    "text_px": 17,
+    "capitals_px": 12.38,
+    "b_px": 14.12,
+    "top_over_cap_line_px": 0.62,
+    "tail_under_baseline_px": 1.12,
+    "rows_at_1x": [
+     {
+      "offset_px": 0,
+      "b_rows": 15.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 0.435
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 15.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 0.435
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 15.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 0.435
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 15.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 0.435
+     }
+    ],
+    "rows_at_2x": [
+     {
+      "offset_px": 0,
+      "b_rows": 29.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 3.0,
+      "b_full_ink_share": 0.671
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 29.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 3.0,
+      "b_full_ink_share": 0.672
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 29.0,
+      "top_rows_over_h": 3.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 0.671
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 29.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 3.0,
+      "b_full_ink_share": 0.671
+     }
+    ],
+    "b_full_ink_share_at_1x": 0.435
+   },
+   "14A-newsprint": {
+    "text_px": 17,
+    "capitals_px": 12.38,
+    "b_px": 14.0,
+    "top_over_cap_line_px": 0.62,
+    "tail_under_baseline_px": 1.0,
+    "rows_at_1x": [
+     {
+      "offset_px": 0,
+      "b_rows": 14.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 14.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 14.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 14.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 1.0
+     }
+    ],
+    "rows_at_2x": [
+     {
+      "offset_px": 0,
+      "b_rows": 28.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 28.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 28.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 28.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 1.0
+     }
+    ],
+    "b_full_ink_share_at_1x": 1.0
+   },
+   "14A-charcoal": {
+    "text_px": 17,
+    "capitals_px": 12.38,
+    "b_px": 14.0,
+    "top_over_cap_line_px": 0.62,
+    "tail_under_baseline_px": 1.0,
+    "rows_at_1x": [
+     {
+      "offset_px": 0,
+      "b_rows": 14.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 14.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 14.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 14.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 1.0
+     }
+    ],
+    "rows_at_2x": [
+     {
+      "offset_px": 0,
+      "b_rows": 28.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 28.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 28.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 28.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 1.0
+     }
+    ],
+    "b_full_ink_share_at_1x": 1.0
+   },
+   "14B-newsprint": {
+    "text_px": 17,
+    "capitals_px": 12.38,
+    "b_px": 13.0,
+    "top_over_cap_line_px": 0.62,
+    "tail_under_baseline_px": 0.0,
+    "rows_at_1x": [
+     {
+      "offset_px": 0,
+      "b_rows": 13.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 13.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 13.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 13.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     }
+    ],
+    "rows_at_2x": [
+     {
+      "offset_px": 0,
+      "b_rows": 26.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 26.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 26.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 26.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     }
+    ],
+    "b_full_ink_share_at_1x": 1.0
+   },
+   "14B-charcoal": {
+    "text_px": 17,
+    "capitals_px": 12.38,
+    "b_px": 13.0,
+    "top_over_cap_line_px": 0.62,
+    "tail_under_baseline_px": 0.0,
+    "rows_at_1x": [
+     {
+      "offset_px": 0,
+      "b_rows": 13.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 13.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 13.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 13.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     }
+    ],
+    "rows_at_2x": [
+     {
+      "offset_px": 0,
+      "b_rows": 26.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 26.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 26.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 26.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     }
+    ],
+    "b_full_ink_share_at_1x": 1.0
+   },
+   "T15-newsprint": {
+    "text_px": 15,
+    "capitals_px": 10.88,
+    "b_px": 12.5,
+    "top_over_cap_line_px": 1.12,
+    "tail_under_baseline_px": 0.5,
+    "rows_at_1x": [
+     {
+      "offset_px": 0,
+      "b_rows": 13.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 0.38
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 13.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 0.38
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 13.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 0.38
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 13.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 0.38
+     }
+    ],
+    "rows_at_2x": [
+     {
+      "offset_px": 0,
+      "b_rows": 25.0,
+      "top_rows_over_h": 2.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 0.645
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 25.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 3.0,
+      "b_full_ink_share": 0.645
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 25.0,
+      "top_rows_over_h": 2.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 0.645
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 25.0,
+      "top_rows_over_h": 2.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 0.645
+     }
+    ],
+    "b_full_ink_share_at_1x": 0.38
+   },
+   "T15-charcoal": {
+    "text_px": 15,
+    "capitals_px": 10.88,
+    "b_px": 12.5,
+    "top_over_cap_line_px": 1.12,
+    "tail_under_baseline_px": 0.5,
+    "rows_at_1x": [
+     {
+      "offset_px": 0,
+      "b_rows": 13.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 0.37
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 13.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 0.37
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 13.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 0.37
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 13.0,
+      "top_rows_over_h": 1.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 0.37
+     }
+    ],
+    "rows_at_2x": [
+     {
+      "offset_px": 0,
+      "b_rows": 25.0,
+      "top_rows_over_h": 2.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 0.642
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 25.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 3.0,
+      "b_full_ink_share": 0.642
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 25.0,
+      "top_rows_over_h": 2.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 0.642
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 25.0,
+      "top_rows_over_h": 2.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 0.642
+     }
+    ],
+    "b_full_ink_share_at_1x": 0.37
+   },
+   "12A-newsprint": {
+    "text_px": 15,
+    "capitals_px": 10.88,
+    "b_px": 12.0,
+    "top_over_cap_line_px": 0.12,
+    "tail_under_baseline_px": 1.0,
+    "rows_at_1x": [
+     {
+      "offset_px": 0,
+      "b_rows": 12.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 12.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 12.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 12.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 1.0
+     }
+    ],
+    "rows_at_2x": [
+     {
+      "offset_px": 0,
+      "b_rows": 24.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 24.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 24.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 24.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 1.0
+     }
+    ],
+    "b_full_ink_share_at_1x": 1.0
+   },
+   "12A-charcoal": {
+    "text_px": 15,
+    "capitals_px": 10.88,
+    "b_px": 12.0,
+    "top_over_cap_line_px": 0.12,
+    "tail_under_baseline_px": 1.0,
+    "rows_at_1x": [
+     {
+      "offset_px": 0,
+      "b_rows": 12.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 12.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 12.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 12.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 1.0,
+      "b_full_ink_share": 1.0
+     }
+    ],
+    "rows_at_2x": [
+     {
+      "offset_px": 0,
+      "b_rows": 24.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 24.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 24.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 24.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 2.0,
+      "b_full_ink_share": 1.0
+     }
+    ],
+    "b_full_ink_share_at_1x": 1.0
+   },
+   "12B-newsprint": {
+    "text_px": 15,
+    "capitals_px": 10.88,
+    "b_px": 11.0,
+    "top_over_cap_line_px": 0.12,
+    "tail_under_baseline_px": 0.0,
+    "rows_at_1x": [
+     {
+      "offset_px": 0,
+      "b_rows": 11.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 11.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 11.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 11.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     }
+    ],
+    "rows_at_2x": [
+     {
+      "offset_px": 0,
+      "b_rows": 22.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 22.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 22.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 22.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     }
+    ],
+    "b_full_ink_share_at_1x": 1.0
+   },
+   "12B-charcoal": {
+    "text_px": 15,
+    "capitals_px": 10.88,
+    "b_px": 11.0,
+    "top_over_cap_line_px": 0.12,
+    "tail_under_baseline_px": 0.0,
+    "rows_at_1x": [
+     {
+      "offset_px": 0,
+      "b_rows": 11.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 11.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 11.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 11.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     }
+    ],
+    "rows_at_2x": [
+     {
+      "offset_px": 0,
+      "b_rows": 22.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.25,
+      "b_rows": 22.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.5,
+      "b_rows": 22.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     },
+     {
+      "offset_px": 0.75,
+      "b_rows": 22.0,
+      "top_rows_over_h": 0.0,
+      "tail_rows_under_h": 0.0,
+      "b_full_ink_share": 1.0
+     }
+    ],
+    "b_full_ink_share_at_1x": 1.0
+   }
+  }
+ },
+ "feed": {
+  "card_px": [
+   1200,
+   630
+  ],
+  "lockmark_box_in_card": [
+   1079,
+   509,
+   48,
+   48
+  ],
+  "min_red_px": 4,
+  "filter": "Lanczos",
+  "today": {
+   "at_500": {
+    "dark_nodes_kept": 8,
+    "lever_red_px": 11,
+    "passes": true
+   },
+   "at_360": {
+    "dark_nodes_kept": 8,
+    "lever_red_px": 5,
+    "passes": true
+   }
+  },
+  "new": {
+   "at_500": {
+    "dark_nodes_kept": 8,
+    "lever_red_px": 11,
+    "passes": true
+   },
+   "at_360": {
+    "dark_nodes_kept": 8,
+    "lever_red_px": 5,
+    "passes": true
+   }
+  },
+  "same_pixels_in_card": false
+ },
+ "pixel_fit_check": {
+  "ampersand/20261109_Amp-B-14px-End-Mark-Fit-A.svg": {
+   "size": 14,
+   "exit": 0,
+   "result": {
+    "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
+    "run": "2026-11-09T20:54:12.858Z",
+    "rules": {
+     "minStroke": 1,
+     "minThinArea": 0.25,
+     "maxSoftShare": 0.95,
+     "inkAlpha": 8,
+     "fullAlpha": 247,
+     "edgeTolerance": 0.1,
+     "minStraight": 1.5,
+     "straightness": 0.01,
+     "minGap": 1,
+     "minCounterArea": 0.5,
+     "weightTolerance": 0.15
+    },
+    "results": [
+     {
+      "file": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/443076db-a457-52c0-9ab2-d454e53bc53a/scratchpad/idb/run1/20261109_Amp-B-14px-End-Mark-Fit-A-Square.svg",
+      "size": 14,
+      "viewBox": [
+       0,
+       0,
+       14,
+       14
+      ],
+      "units_per_px": 1,
+      "supersample": 46,
+      "weight": null,
+      "scales": {
+       "1x": {
+        "device_px": 14,
+        "stroke_px": {
+         "declared": [],
+         "thinnest": 0.99,
+         "thinnest_near_px": [
+          9.4,
+          6.1
+         ],
+         "main": 2,
+         "median": 1.99
+        },
+        "soft_edges": {
+         "ink_px": 90,
+         "partial_px": 0,
+         "share": 0
+        },
+        "straight": {
+         "strokes": 5,
+         "lone_edges": 6,
+         "fit": 11,
+         "total": 11,
+         "off": []
+        },
+        "gap": {
+         "parts": 1,
+         "smallest_px": null,
+         "near_px": null
+        },
+        "counters": {
+         "drawn": 2,
+         "open": 2
+        },
+        "fails": [],
+        "pass": true
+       },
+       "2x": {
+        "device_px": 28,
+        "stroke_px": {
+         "declared": [],
+         "thinnest": 1.98,
+         "thinnest_near_px": [
+          18.8,
+          12.3
+         ],
+         "main": 4,
+         "median": 3.98
+        },
+        "soft_edges": {
+         "ink_px": 360,
+         "partial_px": 0,
+         "share": 0
+        },
+        "straight": {
+         "strokes": 5,
+         "lone_edges": 6,
+         "fit": 11,
+         "total": 11,
+         "off": []
+        },
+        "gap": {
+         "parts": 1,
+         "smallest_px": null,
+         "near_px": null
+        },
+        "counters": {
+         "drawn": 2,
+         "open": 2
+        },
+        "fails": [],
+        "pass": true
+       }
+      },
+      "pass": true
+     }
+    ]
+   }
+  },
+  "ampersand/20261109_Amp-B-14px-End-Mark-Fit-B.svg": {
+   "size": 13,
+   "exit": 0,
+   "result": {
+    "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
+    "run": "2026-11-09T20:54:13.858Z",
+    "rules": {
+     "minStroke": 1,
+     "minThinArea": 0.25,
+     "maxSoftShare": 0.95,
+     "inkAlpha": 8,
+     "fullAlpha": 247,
+     "edgeTolerance": 0.1,
+     "minStraight": 1.5,
+     "straightness": 0.01,
+     "minGap": 1,
+     "minCounterArea": 0.5,
+     "weightTolerance": 0.15
+    },
+    "results": [
+     {
+      "file": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/443076db-a457-52c0-9ab2-d454e53bc53a/scratchpad/idb/run1/20261109_Amp-B-14px-End-Mark-Fit-B-Square.svg",
+      "size": 13,
+      "viewBox": [
+       0,
+       0,
+       13,
+       13
+      ],
+      "units_per_px": 1,
+      "supersample": 50,
+      "weight": null,
+      "scales": {
+       "1x": {
+        "device_px": 13,
+        "stroke_px": {
+         "declared": [],
+         "thinnest": 0.99,
+         "thinnest_near_px": [
+          9.4,
+          6.1
+         ],
+         "main": 2,
+         "median": 1.99
+        },
+        "soft_edges": {
+         "ink_px": 84,
+         "partial_px": 0,
+         "share": 0
+        },
+        "straight": {
+         "strokes": 4,
+         "lone_edges": 5,
+         "fit": 9,
+         "total": 9,
+         "off": []
+        },
+        "gap": {
+         "parts": 1,
+         "smallest_px": null,
+         "near_px": null
+        },
+        "counters": {
+         "drawn": 3,
+         "open": 3
+        },
+        "fails": [],
+        "pass": true
+       },
+       "2x": {
+        "device_px": 26,
+        "stroke_px": {
+         "declared": [],
+         "thinnest": 1.98,
+         "thinnest_near_px": [
+          18.8,
+          12.3
+         ],
+         "main": 4,
+         "median": 3.98
+        },
+        "soft_edges": {
+         "ink_px": 336,
+         "partial_px": 0,
+         "share": 0
+        },
+        "straight": {
+         "strokes": 4,
+         "lone_edges": 5,
+         "fit": 9,
+         "total": 9,
+         "off": []
+        },
+        "gap": {
+         "parts": 1,
+         "smallest_px": null,
+         "near_px": null
+        },
+        "counters": {
+         "drawn": 3,
+         "open": 3
+        },
+        "fails": [],
+        "pass": true
+       }
+      },
+      "pass": true
+     }
+    ]
+   }
+  },
+  "ampersand/20261109_Amp-B-12px-End-Mark-Fit-A.svg": {
+   "size": 12,
+   "exit": 0,
+   "result": {
+    "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
+    "run": "2026-11-09T20:54:14.805Z",
+    "rules": {
+     "minStroke": 1,
+     "minThinArea": 0.25,
+     "maxSoftShare": 0.95,
+     "inkAlpha": 8,
+     "fullAlpha": 247,
+     "edgeTolerance": 0.1,
+     "minStraight": 1.5,
+     "straightness": 0.01,
+     "minGap": 1,
+     "minCounterArea": 0.5,
+     "weightTolerance": 0.15
+    },
+    "results": [
+     {
+      "file": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/443076db-a457-52c0-9ab2-d454e53bc53a/scratchpad/idb/run1/20261109_Amp-B-12px-End-Mark-Fit-A-Square.svg",
+      "size": 12,
+      "viewBox": [
+       0,
+       0,
+       12,
+       12
+      ],
+      "units_per_px": 1,
+      "supersample": 54,
+      "weight": null,
+      "scales": {
+       "1x": {
+        "device_px": 12,
+        "stroke_px": {
+         "declared": [],
+         "thinnest": 0.99,
+         "thinnest_near_px": [
+          7.6,
+          3.1
+         ],
+         "main": 2,
+         "median": 1.99
+        },
+        "soft_edges": {
+         "ink_px": 68,
+         "partial_px": 0,
+         "share": 0
+        },
+        "straight": {
+         "strokes": 2,
+         "lone_edges": 6,
+         "fit": 8,
+         "total": 8,
+         "off": []
+        },
+        "gap": {
+         "parts": 1,
+         "smallest_px": null,
+         "near_px": null
+        },
+        "counters": {
+         "drawn": 4,
+         "open": 4
+        },
+        "fails": [],
+        "pass": true
+       },
+       "2x": {
+        "device_px": 24,
+        "stroke_px": {
+         "declared": [],
+         "thinnest": 1.98,
+         "thinnest_near_px": [
+          15.1,
+          6.3
+         ],
+         "main": 4,
+         "median": 3.98
+        },
+        "soft_edges": {
+         "ink_px": 272,
+         "partial_px": 0,
+         "share": 0
+        },
+        "straight": {
+         "strokes": 2,
+         "lone_edges": 6,
+         "fit": 8,
+         "total": 8,
+         "off": []
+        },
+        "gap": {
+         "parts": 1,
+         "smallest_px": null,
+         "near_px": null
+        },
+        "counters": {
+         "drawn": 4,
+         "open": 4
+        },
+        "fails": [],
+        "pass": true
+       }
+      },
+      "pass": true
+     }
+    ]
+   }
+  },
+  "ampersand/20261109_Amp-B-12px-End-Mark-Fit-B.svg": {
+   "size": 11,
+   "exit": 0,
+   "result": {
+    "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
+    "run": "2026-11-09T20:54:15.795Z",
+    "rules": {
+     "minStroke": 1,
+     "minThinArea": 0.25,
+     "maxSoftShare": 0.95,
+     "inkAlpha": 8,
+     "fullAlpha": 247,
+     "edgeTolerance": 0.1,
+     "minStraight": 1.5,
+     "straightness": 0.01,
+     "minGap": 1,
+     "minCounterArea": 0.5,
+     "weightTolerance": 0.15
+    },
+    "results": [
+     {
+      "file": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/443076db-a457-52c0-9ab2-d454e53bc53a/scratchpad/idb/run1/20261109_Amp-B-12px-End-Mark-Fit-B-Square.svg",
+      "size": 11,
+      "viewBox": [
+       0,
+       0,
+       11,
+       11
+      ],
+      "units_per_px": 1,
+      "supersample": 59,
+      "weight": null,
+      "scales": {
+       "1x": {
+        "device_px": 11,
+        "stroke_px": {
+         "declared": [],
+         "thinnest": 1.01,
+         "thinnest_near_px": [
+          7.6,
+          3.1
+         ],
+         "main": 2,
+         "median": 1.99
+        },
+        "soft_edges": {
+         "ink_px": 61,
+         "partial_px": 0,
+         "share": 0
+        },
+        "straight": {
+         "strokes": 2,
+         "lone_edges": 6,
+         "fit": 8,
+         "total": 8,
+         "off": []
+        },
+        "gap": {
+         "parts": 1,
+         "smallest_px": null,
+         "near_px": null
+        },
+        "counters": {
+         "drawn": 3,
+         "open": 3
+        },
+        "fails": [],
+        "pass": true
+       },
+       "2x": {
+        "device_px": 22,
+        "stroke_px": {
+         "declared": [],
+         "thinnest": 2.02,
+         "thinnest_near_px": [
+          15.1,
+          6.3
+         ],
+         "main": 4,
+         "median": 3.98
+        },
+        "soft_edges": {
+         "ink_px": 244,
+         "partial_px": 0,
+         "share": 0
+        },
+        "straight": {
+         "strokes": 2,
+         "lone_edges": 6,
+         "fit": 8,
+         "total": 8,
+         "off": []
+        },
+        "gap": {
+         "parts": 1,
+         "smallest_px": null,
+         "near_px": null
+        },
+        "counters": {
+         "drawn": 3,
+         "open": 3
+        },
+        "fails": [],
+        "pass": true
+       }
+      },
+      "pass": true
+     }
+    ]
+   }
+  },
+  "lockmark/20261109_Lockmark-24px-Master-Outline.svg": {
+   "size": 24,
+   "exit": 0,
+   "result": {
+    "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
+    "run": "2026-11-09T20:54:16.756Z",
+    "rules": {
+     "minStroke": 1,
+     "minThinArea": 0.25,
+     "maxSoftShare": 0.95,
+     "inkAlpha": 8,
+     "fullAlpha": 247,
+     "edgeTolerance": 0.1,
+     "minStraight": 1.5,
+     "straightness": 0.01,
+     "minGap": 1,
+     "minCounterArea": 0.5,
+     "weightTolerance": 0.15
+    },
+    "results": [
+     {
+      "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/identity/lockmark/20261109_Lockmark-24px-Master-Outline.svg",
+      "size": 24,
+      "viewBox": [
+       0,
+       0,
+       24,
+       24
+      ],
+      "units_per_px": 1,
+      "supersample": 27,
+      "weight": null,
+      "scales": {
+       "1x": {
+        "device_px": 24,
+        "stroke_px": {
+         "declared": [],
+         "thinnest": 1.02,
+         "thinnest_near_px": [
+          11.2,
+          2.8
+         ],
+         "main": 4.3,
+         "median": 4.28
+        },
+        "soft_edges": {
+         "ink_px": 239,
+         "partial_px": 0,
+         "share": 0
+        },
+        "straight": {
+         "strokes": 18,
+         "lone_edges": 0,
+         "fit": 18,
+         "total": 18,
+         "off": []
+        },
+        "gap": {
+         "parts": 1,
+         "smallest_px": null,
+         "near_px": null
+        },
+        "counters": {
+         "drawn": 4,
+         "open": 4
+        },
+        "fails": [],
+        "pass": true
+       },
+       "2x": {
+        "device_px": 48,
+        "stroke_px": {
+         "declared": [],
+         "thinnest": 2.04,
+         "thinnest_near_px": [
+          22.4,
+          5.7
+         ],
+         "main": 8.6,
+         "median": 8.55
+        },
+        "soft_edges": {
+         "ink_px": 956,
+         "partial_px": 0,
+         "share": 0
+        },
+        "straight": {
+         "strokes": 18,
+         "lone_edges": 0,
+         "fit": 18,
+         "total": 18,
+         "off": []
+        },
+        "gap": {
+         "parts": 1,
+         "smallest_px": null,
+         "near_px": null
+        },
+        "counters": {
+         "drawn": 4,
+         "open": 4
+        },
+        "fails": [],
+        "pass": true
+       }
+      },
+      "pass": true
+     }
+    ]
+   }
+  },
+  "lockmark/20261028_Lockmark-24px-Master.svg (today, for comparison)": {
+   "size": 24,
+   "exit": 0,
+   "result": {
+    "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
+    "run": "2026-11-09T20:54:17.678Z",
+    "rules": {
+     "minStroke": 1,
+     "minThinArea": 0.25,
+     "maxSoftShare": 0.95,
+     "inkAlpha": 8,
+     "fullAlpha": 247,
+     "edgeTolerance": 0.1,
+     "minStraight": 1.5,
+     "straightness": 0.01,
+     "minGap": 1,
+     "minCounterArea": 0.5,
+     "weightTolerance": 0.15
+    },
+    "results": [
+     {
+      "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/identity/lockmark/20261028_Lockmark-24px-Master.svg",
+      "size": 24,
+      "viewBox": [
+       0,
+       0,
+       24,
+       24
+      ],
+      "units_per_px": 1,
+      "supersample": 27,
+      "weight": null,
+      "scales": {
+       "1x": {
+        "device_px": 24,
+        "stroke_px": {
+         "declared": [],
+         "thinnest": 1.02,
+         "thinnest_near_px": [
+          11.2,
+          2.8
+         ],
+         "main": 4.3,
+         "median": 4.28
+        },
+        "soft_edges": {
+         "ink_px": 239,
+         "partial_px": 0,
+         "share": 0
+        },
+        "straight": {
+         "strokes": 18,
+         "lone_edges": 0,
+         "fit": 18,
+         "total": 18,
+         "off": []
+        },
+        "gap": {
+         "parts": 1,
+         "smallest_px": null,
+         "near_px": null
+        },
+        "counters": {
+         "drawn": 4,
+         "open": 4
+        },
+        "fails": [],
+        "pass": true
+       },
+       "2x": {
+        "device_px": 48,
+        "stroke_px": {
+         "declared": [],
+         "thinnest": 2.04,
+         "thinnest_near_px": [
+          22.4,
+          5.7
+         ],
+         "main": 8.6,
+         "median": 8.55
+        },
+        "soft_edges": {
+         "ink_px": 956,
+         "partial_px": 0,
+         "share": 0
+        },
+        "straight": {
+         "strokes": 18,
+         "lone_edges": 0,
+         "fit": 18,
+         "total": 18,
+         "off": []
+        },
+        "gap": {
+         "parts": 1,
+         "smallest_px": null,
+         "near_px": null
+        },
+        "counters": {
+         "drawn": 4,
+         "open": 4
+        },
+        "fails": [],
+        "pass": true
+       }
+      },
+      "pass": true
+     }
+    ]
+   }
+  },
+  "lockmark/20261109_Lockmark-48px-Master-Outline.svg": {
+   "size": 48,
+   "exit": 0,
+   "result": {
+    "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
+    "run": "2026-11-09T20:54:18.617Z",
+    "rules": {
+     "minStroke": 1,
+     "minThinArea": 0.25,
+     "maxSoftShare": 0.95,
+     "inkAlpha": 8,
+     "fullAlpha": 247,
+     "edgeTolerance": 0.1,
+     "minStraight": 1.5,
+     "straightness": 0.01,
+     "minGap": 1,
+     "minCounterArea": 0.5,
+     "weightTolerance": 0.15
+    },
+    "results": [
+     {
+      "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/identity/lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+      "size": 48,
+      "viewBox": [
+       0,
+       0,
+       48,
+       48
+      ],
+      "units_per_px": 1,
+      "supersample": 14,
+      "weight": null,
+      "scales": {
+       "1x": {
+        "device_px": 48,
+        "stroke_px": {
+         "declared": [],
+         "thinnest": 0.96,
+         "thinnest_near_px": [
+          21.6,
+          3.7
+         ],
+         "main": 5.8,
+         "median": 5.8
+        },
+        "soft_edges": {
+         "ink_px": 507,
+         "partial_px": 0,
+         "share": 0
+        },
+        "straight": {
+         "strokes": 18,
+         "lone_edges": 4,
+         "fit": 22,
+         "total": 22,
+         "off": []
+        },
+        "gap": {
+         "parts": 1,
+         "smallest_px": null,
+         "near_px": null
+        },
+        "counters": {
+         "drawn": 4,
+         "open": 4
+        },
+        "fails": [],
+        "pass": true
+       },
+       "2x": {
+        "device_px": 96,
+        "stroke_px": {
+         "declared": [],
+         "thinnest": 1.93,
+         "thinnest_near_px": [
+          43.3,
+          7.4
+         ],
+         "main": 11.6,
+         "median": 11.59
+        },
+        "soft_edges": {
+         "ink_px": 2028,
+         "partial_px": 0,
+         "share": 0
+        },
+        "straight": {
+         "strokes": 18,
+         "lone_edges": 4,
+         "fit": 22,
+         "total": 22,
+         "off": []
+        },
+        "gap": {
+         "parts": 1,
+         "smallest_px": null,
+         "near_px": null
+        },
+        "counters": {
+         "drawn": 4,
+         "open": 4
+        },
+        "fails": [],
+        "pass": true
+       }
+      },
+      "pass": true
+     }
+    ]
+   }
+  },
+  "lockmark/20261108_Lockmark-48px-Master.svg (today, for comparison)": {
+   "size": 48,
+   "exit": 0,
+   "result": {
+    "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
+    "run": "2026-11-09T20:54:19.534Z",
+    "rules": {
+     "minStroke": 1,
+     "minThinArea": 0.25,
+     "maxSoftShare": 0.95,
+     "inkAlpha": 8,
+     "fullAlpha": 247,
+     "edgeTolerance": 0.1,
+     "minStraight": 1.5,
+     "straightness": 0.01,
+     "minGap": 1,
+     "minCounterArea": 0.5,
+     "weightTolerance": 0.15
+    },
+    "results": [
+     {
+      "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/identity/lockmark/20261108_Lockmark-48px-Master.svg",
+      "size": 48,
+      "viewBox": [
+       0,
+       0,
+       48,
+       48
+      ],
+      "units_per_px": 1,
+      "supersample": 14,
+      "weight": null,
+      "scales": {
+       "1x": {
+        "device_px": 48,
+        "stroke_px": {
+         "declared": [],
+         "thinnest": 0.96,
+         "thinnest_near_px": [
+          21.6,
+          3.7
+         ],
+         "main": 5.8,
+         "median": 5.8
+        },
+        "soft_edges": {
+         "ink_px": 507,
+         "partial_px": 0,
+         "share": 0
+        },
+        "straight": {
+         "strokes": 18,
+         "lone_edges": 4,
+         "fit": 22,
+         "total": 22,
+         "off": []
+        },
+        "gap": {
+         "parts": 1,
+         "smallest_px": null,
+         "near_px": null
+        },
+        "counters": {
+         "drawn": 4,
+         "open": 4
+        },
+        "fails": [],
+        "pass": true
+       },
+       "2x": {
+        "device_px": 96,
+        "stroke_px": {
+         "declared": [],
+         "thinnest": 1.93,
+         "thinnest_near_px": [
+          43.3,
+          7.4
+         ],
+         "main": 11.6,
+         "median": 11.59
+        },
+        "soft_edges": {
+         "ink_px": 2028,
+         "partial_px": 0,
+         "share": 0
+        },
+        "straight": {
+         "strokes": 18,
+         "lone_edges": 4,
+         "fit": 22,
+         "total": 22,
+         "off": []
+        },
+        "gap": {
+         "parts": 1,
+         "smallest_px": null,
+         "near_px": null
+        },
+        "counters": {
+         "drawn": 4,
+         "open": 4
+        },
+        "fails": [],
+        "pass": true
+       }
+      },
+      "pass": true
+     }
+    ]
+   }
+  },
+  "lockmark/20261028_Lockmark-16px-Master.svg (today, unchanged)": {
+   "size": 16,
+   "exit": 0,
+   "result": {
+    "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
+    "run": "2026-11-09T20:54:20.462Z",
+    "rules": {
+     "minStroke": 1,
+     "minThinArea": 0.25,
+     "maxSoftShare": 0.95,
+     "inkAlpha": 8,
+     "fullAlpha": 247,
+     "edgeTolerance": 0.1,
+     "minStraight": 1.5,
+     "straightness": 0.01,
+     "minGap": 1,
+     "minCounterArea": 0.5,
+     "weightTolerance": 0.15
+    },
+    "results": [
+     {
+      "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/identity/lockmark/20261028_Lockmark-16px-Master.svg",
+      "size": 16,
+      "viewBox": [
+       0,
+       0,
+       16,
+       16
+      ],
+      "units_per_px": 1,
+      "supersample": 40,
+      "weight": null,
+      "scales": {
+       "1x": {
+        "device_px": 16,
+        "stroke_px": {
+         "declared": [],
+         "thinnest": 0.99,
+         "thinnest_near_px": [
+          7.1,
+          2
+         ],
+         "main": 2.95,
+         "median": 2.96
+        },
+        "soft_edges": {
+         "ink_px": 119,
+         "partial_px": 55,
+         "share": 0.462
+        },
+        "straight": {
+         "strokes": 10,
+         "lone_edges": 0,
+         "fit": 10,
+         "total": 10,
+         "off": []
+        },
+        "gap": {
+         "parts": 1,
+         "smallest_px": null,
+         "near_px": null
+        },
+        "counters": {
+         "drawn": 4,
+         "open": 4
+        },
+        "fails": [],
+        "pass": true
+       },
+       "2x": {
+        "device_px": 32,
+        "stroke_px": {
+         "declared": [],
+         "thinnest": 1.98,
+         "thinnest_near_px": [
+          14.2,
+          4.1
+         ],
+         "main": 5.9,
+         "median": 5.91
+        },
+        "soft_edges": {
+         "ink_px": 464,
+         "partial_px": 140,
+         "share": 0.302
+        },
+        "straight": {
+         "strokes": 10,
+         "lone_edges": 0,
+         "fit": 10,
+         "total": 10,
+         "off": []
+        },
+        "gap": {
+         "parts": 1,
+         "smallest_px": null,
+         "near_px": null
+        },
+        "counters": {
+         "drawn": 4,
+         "open": 4
+        },
+        "fails": [],
+        "pass": true
+       }
+      },
+      "pass": true
+     }
+    ]
+   }
+  }
+ },
+ "plate_fonts_1x": [
+  "Inter 400",
+  "Inter 600",
+  "Inter 700",
+  "Inter Tight 800"
+ ],
+ "plate_fonts_2x": [
+  "Inter 400",
+  "Inter 600",
+  "Inter 700",
+  "Inter Tight 800"
+ ]
+}

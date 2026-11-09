@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-014-option-b-black" data-id="CL-014" width="128" height="128" viewBox="0 0 128 128">
+  <title>Entrenched Power, option B</title>
+  <desc>Oath &amp; Action Civic Line CL-014 Entrenched Power, stage B option B (outside DR-135 where it applies). Set B's chamber with a one-tier rostrum inside the fence; the red moves from the door to the rostrum. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
+  <g id="oa-civic-line-cl-014-option-b-black-base" data-part="base">
+    <path d="M81.322 39.8581 A17.37564 11.331939 0 0 1 78.815 44.8899" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M77.2127 46.3289 A17.375635 11.331936 0 0 1 70.6493 49.4385" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M68.0563 49.988 A17.375621 11.331927 0 0 1 59.9437 49.988" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M57.3507 49.4385 A17.375635 11.331936 0 0 1 50.7873 46.3289" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M49.185 44.8899 A17.37564 11.331939 0 0 1 46.678 39.8581" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M89.6065 40.3327 A25.685722 17.375635 0 0 1 85.9005 48.0482" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M83.5317 50.2536 A25.685721 17.375635 0 0 1 73.8295 55.0222" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M69.9962 55.8648 A25.685722 17.375635 0 0 1 58.0038 55.8648" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M54.1705 55.0222 A25.685721 17.375635 0 0 1 44.4683 50.2536" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M42.0995 48.0482 A25.685722 17.375635 0 0 1 38.3935 40.3327" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M97.891 40.8067 A33.995803 23.419331 0 0 1 92.986 51.2059" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M89.8508 54.179 A33.995797 23.419327 0 0 1 77.0098 60.6059" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M71.936 61.7415 A33.995799 23.419328 0 0 1 56.064 61.7415" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M50.9902 60.6059 A33.995797 23.419327 0 0 1 38.1492 54.179" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M35.014 51.2059 A33.995803 23.419331 0 0 1 30.109 40.8067" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="9.1071,82.3291 9.1071,58.3066 9.9052,55.9671" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="118.8929,82.3291 118.8929,58.3066 118.0948,55.9671" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M10.1916 60.0734 A53.808353 12.8794 0 0 1 35.9078 49.0888" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M92.0922 49.0888 A53.808353 12.8794 0 0 1 117.8084 60.0734" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M11.8061 63.1806 A52.334026 14.414704 0 0 0 116.1939 63.1806" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="19.5252" y1="49.96" x2="19.5252" y2="59.5617" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="108.4748" y1="49.96" x2="108.4748" y2="59.5617" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="30.1931" y1="46.3654" x2="30.1931" y2="62.9125" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="97.8069" y1="46.3654" x2="97.8069" y2="62.9125" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="18.5017" y1="65.3129" x2="18.5017" y2="87.8976" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="109.4983" y1="65.3129" x2="109.4983" y2="87.8976" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="29.1756" y1="68.3226" x2="29.1756" y2="91.3946" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="98.8244" y1="68.3226" x2="98.8244" y2="91.3946" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="40.3553" y1="70.7961" x2="40.3553" y2="93.46" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="87.6447" y1="70.7961" x2="87.6447" y2="93.46" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="50.0727" y1="67.4453" x2="50.0727" y2="93.5636" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="77.9273" y1="67.4453" x2="77.9273" y2="93.5636" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="oa-civic-line-cl-014-option-b-black-accent" data-part="accent">
+    <polyline points="51.1571,39.7247 51.1571,34.4364 76.8429,34.4364 76.8429,39.7247" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

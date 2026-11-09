@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-025-option-a-black" data-id="CL-025" width="128" height="128" viewBox="0 0 128 128">
+  <title>Congress, option A</title>
+  <desc>Oath &amp; Action Civic Line CL-025 Congress, stage B option A (within DR-135 where it applies). Dome, cupola and finial become a flat attic; the columns become walls, windows and a center door, which takes the red. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
+  <g id="oa-civic-line-cl-025-option-a-black-base" data-part="base">
+    <polyline points="46.1735,47.8063 46.1735,38.8504 81.8265,38.8504 81.8265,47.8063" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="40.6964" y1="47.8063" x2="87.3036" y2="47.8063" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="43.4746" y1="47.8063" x2="43.4746" y2="60.1739" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="84.5254" y1="47.8063" x2="84.5254" y2="60.1739" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="37.2847,89.1496 37.2847,60.1739 90.7153,60.1739 90.7153,89.1496" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="34.7989" y1="89.1496" x2="93.2011" y2="89.1496" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="45.15" y="70.263" width="6.7017" height="9.1387" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="76.1483" y="70.263" width="6.7017" height="9.1387" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="15.1813" y1="66.9061" x2="37.2847" y2="66.9061" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="90.7153" y1="66.9061" x2="112.8187" y2="66.9061" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="18.1971" y1="66.9061" x2="18.1971" y2="88.8693" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="109.8029" y1="66.9061" x2="109.8029" y2="88.8693" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="24.3809" y="73.5773" width="6.7017" height="9.1387" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="96.9174" y="73.5773" width="6.7017" height="9.1387" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="oa-civic-line-cl-025-option-a-black-accent" data-part="accent">
+    <polyline points="58.8214,89.1496 58.8214,74.2231 69.1786,74.2231 69.1786,89.1496" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

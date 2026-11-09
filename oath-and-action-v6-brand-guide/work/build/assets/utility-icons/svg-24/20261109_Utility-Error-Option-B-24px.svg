@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-error" data-icon-family="utility" data-option="B" data-size="24">
+  <!-- Oath & Action utility icon: Error, option B, 24 px master. An exclamation mark in an octagon, the stop sign. 24-unit grid, 2 px line, round caps and joins, currentColor, no red. Stage B drawings, November 9, 2026 (DR-134, DR-146). -->
+  <path d="M9.101 4 L14.899 4 A1 1 0 0 1 15.607 4.293 L19.707 8.393 A1 1 0 0 1 20 9.101 L20 14.899 A1 1 0 0 1 19.707 15.607 L15.607 19.707 A1 1 0 0 1 14.899 20 L9.101 20 A1 1 0 0 1 8.393 19.707 L4.293 15.607 A1 1 0 0 1 4 14.899 L4 9.101 A1 1 0 0 1 4.293 8.393 L8.393 4.293 A1 1 0 0 1 9.101 4 Z"/>
+  <path d="M12 7V13"/>
+  <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/>
+</svg>
