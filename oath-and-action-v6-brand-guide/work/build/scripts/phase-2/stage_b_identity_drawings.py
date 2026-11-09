@@ -575,9 +575,17 @@ def pixel_fit_check(scratch):
 
 # ============================================================================================ the plate page
 def figure_line(m):
+    """Measured at eight times, then at 1x with the line set at four positions between pixels."""
+    r = m["rows_at_1x"]
+
+    def span(key):
+        lo, hi = min(q[key] for q in r), max(q[key] for q in r)
+        return f"{lo:.0f}" if lo == hi else f"{lo:.0f} to {hi:.0f}"
+    rows_word = lambda key: "rows" if span(key) != "1" else "row"   # noqa: E731
     return (f'Capitals {m["capitals_px"]:.1f} px; B {m["b_px"]:.1f} px tall, its top {m["top_over_cap_line_px"]:.1f} px over the cap line '
-            f'and its tail {m["tail_under_baseline_px"]:.1f} px under the baseline. At 1x, {m["b_full_ink_share_at_1x"] * 100:.0f} percent '
-            f'of its ink pixels are full Charcoal.')
+            f'and its tail {m["tail_under_baseline_px"]:.1f} px under the baseline. At 1x, with the line at four positions between pixels, '
+            f'B covers {span("b_rows")} rows, its top {span("top_rows_over_h")} {rows_word("top_rows_over_h")} over the capital H\'s and its tail '
+            f'{span("tail_rows_under_h")} {rows_word("tail_rows_under_h")} under it; {m["b_full_ink_share_at_1x"] * 100:.0f} percent of its ink pixels are full Charcoal.')
 
 
 def plates(figs, imgs):
