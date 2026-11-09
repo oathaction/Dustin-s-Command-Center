@@ -1402,3 +1402,65 @@ The creative director scored the makers' plates before the board (D2-567): 6 of 
 | D2-661 | The 16 px line is 1.5 px, from the engineer's notes; `tokens.css` has no 16 px utility line token yet | The token source adds it with the first 16 px utility icon on a page |
 | D2-662 | The plate moves each glyph by under one pixel onto whole CSS pixels with a small script | Text before a glyph can leave it on a fraction of a pixel, which would misstate the masters in the capture |
 | D2-663 | The 2 px line stays heavier than Civic Line's line at 48 px | The token sets 2 px; the shared finish ties the two families, and the subjects keep them apart |
+
+## Drawings board, November 9, 2026
+
+
+### Board builder
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-664 | The build runs the engineer's look-alike and pixel-fit checks on today's files and prints those figures, not the makers' tables | The fix round changed drawings after the notes were written; a fresh run of the same check keeps each figure true to the drawing shown |
+| D2-665 | Civic Line drawings show as images of their own SVG files; utility glyphs, end marks and lockmarks are drawn inline | Civic Line files carry ids that would repeat inline (D2-617); the others draw in currentColor, which only an inline SVG takes from its stage |
+| D2-666 | Each inline copy of an SVG gets its own ids | Success A's solid disc cuts its check with a mask (D2-639), and its id would otherwise repeat on the page |
+| D2-667 | A small script moves each drawing by under one pixel onto whole CSS pixels | As D2-565, so a 1x screen draws each master as it is drawn |
+| D2-668 | Drawings sit on Newsprint and Charcoal stages inside White cards that hold the words | The drawings are drawn for those surfaces, and the changes board keeps its words on White |
+| D2-669 | On card 1, a drawing whose recommended letter differs from CL-025's gets its own pick inside the card; the rest follow the set | The rescore recommends set B and CL-014 C, which uses set B's chamber; the rule reads that from the scores, so the card needs no hand-set list |
+| D2-670 | Card 1's reply line names both picks, as in "set B, CL-014 option C, as recommended" | The main session's instruction, and one reply line per card |
+| D2-671 | The House strip sets CL-025's options outside DR-135 at 128 and 48 px beside R-46 and R-03, the neighbours the Civic Line plate names | DR-152 |
+| D2-672 | Testify and Contact an official sit beside the settled drawings their plate card shows (CL-005 and CL-027; CL-026 and CL-061) | They have no original, and the maker chose those as the drawings they must not be read as |
+| D2-673 | Each Civic Line stage says "24 px: reference size only" under its sizes | The creative director's Should fix, carried into the rescore, and DR-136's 48 px floor |
+| D2-674 | Play and Pause share one card; Success and Selected check keep their own | The manifest labels Play and Pause "one button with" each other (D2-557); Success and Selected check share the audit's rank 14 but differ in meaning and in the pick |
+| D2-675 | The family card takes its recommendation and reason from the creative director's answer to the family question, and says the card has no scores of its own | The scores file holds no family card; the answer ("Yes", keep every action bare) is the creative director's recommendation for it, and the rescore names "bare actions with shaped status marks" |
+| D2-676 | The solid partners for Error and Warning show on the Success card, under the option that draws a solid disc |  |
+| D2-677 | The accessibility lead's fix round note shows on the Reset and Selected check cards in the lead's words, with the lead's pick, in a block apart from the creative director's | The main session's instruction; the note and pick are read from the audit's section 9 |
+| D2-678 | The pillar card shows the Civic Line designer's 2x screen renders and adds a reply choice for what 2x screens draw at 24 px | The rescore's recommendation names the master on 2x screens (D2-634), so Dustin answers it with the fit |
+| D2-679 | A pixel-fit result that fails on line weight alone reads "passes every test but line weight" | Success A's solid disc has no line to weigh, and the creative director found it passes without the weight test |
+| D2-680 | Each option shows the creative director's reading and verdict and the maker's verdict; an option the creative director has not read would show the maker's reading, labeled | The brief asks for each option's naming test; after the rescore every option has the creative director's reading |
+| D2-681 | The end mark card lifts its lines of text from the identity plate, and carries the identity designer's 2x screen recommendation as text | The lines are the identity designer's own; the identity notes name the two fits as what Dustin approves by name |
+| D2-682 | The lockmark is drawn live from today's and the rebuilt files at the five sizes, each from the master the identity figures name for it | DR-145 |
+| D2-683 | L6's strips use the identity designer's 1x and 2x renders through `srcset` at 884 px | Each screen then draws its own render at true size |
+| D2-684 | The editor's override map applies to strings from other owners' files, never to file paths or matching keys, and warns when an entry matches nothing | The main session's instruction; the editor copy-edits the board without editing another owner's file |
+| D2-685 | Marks key to a hash of the cards and their options | A rebuild with changed options starts clean (D2-316) |
+| D2-686 | The board check runs once with captures on a scratchpad copy with absolute file links, then with `--no-captures` on the board | Captures stay outside the repository; the 390 px page is about 114,000 px tall, past the 65,535 px a JPEG can hold, so that capture comes out empty |
+| D2-687 | Every image loads at once | Lazy images left blanks in full-page captures; the 117 files come to 0.33 MB |
+| D2-688 | No captures folder | Every drawing is drawn from its own file or the makers' own renders, so the board needs no capture |
+
+### Editor
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-689 | The board's own words are edited in the content file, and other owners' words only through 51 `editor_overrides`, each matching at least once | The task's instruction; no owner's file is edited |
+| D2-690 | Score reasons that name options the fix round dropped now name only the options the board shows (Play, Pause, Search, Selected check, Go to another site, Warning) | The board must not describe a drawing it does not show; the creative director confirms when scoring (D2-500) |
+| D2-691 | The family card's score reasons on the stepper row and the rows' look-alike figures are pointed at the designer's plate page or trimmed to what the card shows | The board's card shows neither |
+| D2-692 | The look-alike legend says what a flag asks for, with the engineer's 74 pairs and the one pair the creative director looked at, and claims no look at every flagged pair | The main session's instruction; several recommended options carry a Flagged chip |
+| D2-693 | The legend gains Pixel fit and 1x and 2x screens and defines the naming test's verdicts; the cover defines settled drawings, true size and DR- and D2- numbers | H02 and H11; the task names these terms |
+| D2-694 | "Real readers see the drawings" becomes "some of these drawings, among them the pillar icons and the end mark" | DR-143 names those and no new Civic Line drawing |
+| D2-695 | "Utility icon" is the board's one name for a utility drawing; "glyph" stays only where the builder's script writes it | H02 keeps one term after its first use |
+| D2-696 | The family card's answer labels follow the creative director's "Bare actions, shaped marks" and "Every action in a ring" | The recommendation sits in an `option` key the overrides never touch, so the board's own labels move to match it |
+| D2-697 | "on every phone" and "the oldest media sign" are sized to their evidence | W20; no research stands behind either |
+| D2-698 | Fragments in the makers' change lines become sentences, and "attic", "drum" and "bays" are replaced or explained | The scope line lets only labels, captions and keys be phrases; H02 |
+| D2-699 | "Pediment" is defined in CL-059 A's change line, its first use on the board | H02 |
+| D2-700 | The audit's "a funnel, not sliders" and "never a cross" give their reasons from D2-508 and D2-509 | W09, corrective negation |
+| D2-701 | Play's and Pause's reasons are overridden to one shared sentence, which the build prints once | The two matching sentences read as a parallel run |
+| D2-702 | The accessibility lead's quotes keep every word, and only their inner quotation marks change | A quote stays in its owner's words |
+| D2-703 | The Testify recommendation reads "state legislatures' own guides" | The meaning sheet's sources are Nebraska, Minnesota and Washington |
+| D2-704 | The verdicts "Names it" and "Names the subject" stay as written, and the legend explains both | An override on "Names it" would also change "Names it nearly" |
+| D2-705 | Utility ledes read "Used for:" in place of "Where it serves:" | "Where it serves: Close." names no place |
+| D2-706 | After the edits I rebuilt the board and ran the board check with `--no-captures`, which rewrote the check results file | The builder's rebuild steps |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-707 | The editor's items 7 to 9 (stale reasons in the scores file, the family answer's old figure, and two creative director judgments to mark as design judgments under W20) go to the creative director at round 3. The board's overrides already correct what Dustin reads | The board prints the corrected words now, and the source files belong to their owner |

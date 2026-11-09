@@ -1,14 +1,67 @@
 {
  "about": "The drawings board's own words, read by work/build/scripts/phase-2/stage_b_drawings_board_build.py. Every option, file, figure, score and reading on the board comes from the makers' manifests and notes, the creative director's scores and the engineer's checks; this file holds only the board's words. Braces such as {n_cards} are filled in by the build. The editor copy-edits this file (D2-500).",
- "editor_overrides": [],
+ "editor_overrides": [
+  {"old": "All three read as Play; C says video.", "new": "The plain triangle reads as Play."},
+  {"old": "All three read as Pause.", "new": "The two plain bars read as Pause."},
+  {"old": "Lens and handle sit cleanly at 24 px; B's glint crowds the lens at 16 px.", "new": "Lens and handle sit cleanly at 24 px."},
+  {"old": "All three read as Search; C also reads as zoom.", "new": "The plain magnifier reads as Search."},
+  {"old": "Clean at both sizes, though C at 16 px draws nearly as the chevron.", "new": "Clean at both sizes."},
+  {"old": "All three read as a check.", "new": "Both options read as a check."},
+  {"old": "The box, arrow and ring land on the grid at both sizes.", "new": "The box and the arrow land on the grid at both sizes."},
+  {"old": "A and C read as warning; B reads as the road sign.", "new": "A reads as warning, and B as the road sign."},
+  {"old": "round ends and currentColor, no red,", "new": "round ends and the text's own color, no red,"},
+  {"old": "carries data-icon and data-icon-family, and has PNG previews and a manifest entry.", "new": "carries the tags the guide's checks use to find icons, and has preview images and a manifest entry."},
+  {"old": "is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components.", "new": "is hidden from screen readers and draws in the text's own color, so a reader's high-contrast setting recolors it with the text; live tests of that setting wait until the components are built."},
+  {"old": "each card now prints its option-to-option figures.", "new": "each card now prints the look-alike figures between its options."},
+  {"old": "moves the sit by one row", "new": "moves where B sits by one row"},
+  {"old": "the vertical-align value to set", "new": "the setting that places it on the line"},
+  {"old": "let the mark read on low-density screens", "new": "let the mark read on 1x screens"},
+  {"old": "the 1400 by 300 layout", "new": "the 1,400 by 300 layout"},
+  {"old": "Three even bars are the menu sign on every phone", "new": "Three even bars are the common menu sign on phones"},
+  {"old": "The plain triangle is the oldest media sign", "new": "The plain triangle is the long-standing play sign"},
+  {"old": "Both rows keep the utility hand, currentColor and no red", "new": "Both rows keep the utility designer's hand, the text's own color and no red"},
+  {"old": "The ringed drawings are files in family-ringed/ at 24 and 16 px, so either answer can be built from the plate.", "new": "The ringed drawings exist as files at 24 and 16 px, so either answer can be built from the designer's plate page."},
+  {"old": "It prints the look-alike figures for both rows: no flagged pair in the bare set, and 29 in the ringed set, the closest Close and Pause at 0.973.", "new": "The designer's plate page prints the look-alike figures for both rows, with no flagged pair in the bare set and 29 in the ringed set, where ringed Close and Pause come closest at 0.973."},
+  {"old": "shows both answers as whole rows and in the atlas stepper, so", "new": "shows both answers as whole rows, so"},
+  {"old": "Each glyph sits beside", "new": "Each icon sits beside"},
+  {"old": "bare glyphs keep", "new": "bare icons keep"},
+  {"old": "one more ringed glyph", "new": "one more ringed icon"},
+  {"old": ", from 0.975)", "new": ", down from 0.975 before the redraw)"},
+  {"old": ", from 0.969)", "new": ", down from 0.969 before the redraw)"},
+  {"old": "the legislatures' own guides describe:", "new": "state legislatures' own guides describe,"},
+  {"old": "so the pillar icons stay apart from the heavier interface glyphs", "new": "so the pillar icons stay apart from the heavier utility icons"},
+  {"old": "Dome arcs and finial go, leaving the drum as", "new": "The dome's arcs and its finial go, leaving the drum, the round wall the dome sat on, as"},
+  {"old": "set A's flat attic", "new": "set A's flat top"},
+  {"old": "a flat attic", "new": "a flat top"},
+  {"old": "inside a fence opened for 48 px", "new": "inside a fence opened up so it reads at 48 px"},
+  {"old": "stops at the fence on a red bar: an election cannot move the body.", "new": "stops on a red bar at the fence, to show that an election cannot move the body."},
+  {"old": "Pediment, base, home, factory and red branches kept.", "new": "The pediment, the triangle above the columns, stays, and so do the base, the home, the factory and the red branches."},
+  {"old": "Pediment, band, base, brace and official kept.", "new": "The pediment, band, base, brace and official stay."},
+  {"old": "The four bays of columns", "new": "The four groups of columns"},
+  {"old": "Fence and red door kept.", "new": "The fence and the red door stay."},
+  {"old": "Ballot box, chart and red kept.", "new": "The ballot box, the chart and the red stay."},
+  {"old": "; red on the signature.", "new": ", with the red on the signature."},
+  {"old": "A very simple phone, a step larger, whose", "new": "A simple phone whose"},
+  {"old": "anticlockwise, no nodes", "new": "anticlockwise, with no dots on the circle"},
+  {"old": "A funnel, not sliders", "new": "A funnel, since three Civic Line drawings use sliders"},
+  {"old": "A circle holding an exclamation mark, never a cross", "new": "A circle holding an exclamation mark, since a cross means Close"},
+  {"old": "Readers know one sign for Play. The ring is on the family card, and a screen narrows Play to video.", "new": "Readers know one sign each for Play and Pause. A frame drawn as a screen would tie them to video, and the ring is a choice for the whole set, on the family card."},
+  {"old": "Readers know one sign for Pause. The ring is on the family card, and a screen narrows Pause to video.", "new": "Readers know one sign each for Play and Pause. A frame drawn as a screen would tie them to video, and the ring is a choice for the whole set, on the family card."},
+  {"old": "repeated A", "new": "copied A too closely"},
+  {"old": "repeated B", "new": "copied B too closely"},
+  {"old": "repeated it", "new": "copied it too closely"},
+  {"old": "\"Previous step\"", "new": "'Previous step'"},
+  {"old": "\"selected\"", "new": "'selected'"}
+ ],
  "editor_overrides_about": "Exact-text replacements the build applies to every string it takes from the makers' manifests and notes, the creative director's scores and the accessibility audit, so the editor can copy-edit those words on the board without editing another owner's file. Each entry is {\"old\": \"exact text\", \"new\": \"replacement\"}. The build warns for any \"old\" that matches nothing. The board's own words are edited in this file directly.",
  "title": "The stage B drawings, for your approval",
  "kicker": "Brand Guide, Edition 06 · Drawings board",
- "deck": "Every new or redrawn drawing from stage B sits on this board at true size, beside the drawing it replaces or the settled drawings it must stay apart from. Each new drawing comes in options so you can choose, as you asked on November 9 (DR-146). None of them enters the guide until you answer this board (DR-139).",
+ "deck": "Every new or redrawn drawing from stage B sits on this board at true size, beside the drawing it replaces or the settled drawings, ones you have already approved, that it must stay apart from. Each new drawing comes in options so you can choose, as you asked on November 9 (DR-146). None of them enters the guide until you answer this board (DR-139).",
  "facts": [
-  "The board holds {n_cards} cards. Cards 1 to {n_civic} are the Civic Line drawings, card {family_n} decides how the whole utility set is drawn, cards {first_action} to {last_action} are the utility icons, card {pillars_n} is the pillar icons and cards {first_identity} to {n_cards} are the identity drawings.",
-  "Drawings show at true size on Newsprint. Where the board draws something larger so you can see its pixels, a label says how many times larger.",
-  "The figures beside each option come from the engineer's two checks, which the board's build runs on today's files, and from the creative director's scores. The build last ran on {built_date} at {built_time} UTC."
+  "The board holds {n_cards} cards: the Civic Line drawings on cards 1 to {n_civic}, one choice for the whole utility set on card {family_n}, the utility icons on cards {first_action} to {last_action}, the pillar icons on card {pillars_n} and the identity drawings on cards {first_identity} to {n_cards}.",
+  "Each drawing shows at true size, the size a reader's screen will draw it, on Newsprint and in places on Charcoal too. Where the board draws one larger so you can see its pixels, a label says how many times larger.",
+  "The figures beside each option come from the creative director's scores and from the engineer's look-alike and pixel-fit checks, which run on the current files each time the board is built. It was last built on {built_date} at {built_time} UTC.",
+  "A number such as DR-146 points to one of your decisions in the decision log, and one such as D2-620 to a routine call the studio logged there."
  ],
  "ask": [
   "Look at each card's options at true size. The creative director's pick carries a Recommended mark and a one-line reason.",
@@ -21,11 +74,19 @@
  "legend": [
   {
    "term": "Naming test",
-   "text": "The creative director looked at each option with no label, at 48 px for a Civic Line drawing and 24 px for a utility icon, and wrote down what a first-time reader would most likely call it. The creative director knew the labels, so the reading stands in for a reader's. Real readers see the drawings in the combined reader check after you answer (DR-143)."
+   "text": "The creative director looked at each option with no label, at 48 px for a Civic Line drawing and 24 px for a utility icon, and wrote down what a first-time reader would most likely call it. Since the creative director knew the labels, the reading stands in for a first-time reader's. Real readers see some of these drawings, among them the pillar icons and the end mark, in the combined reader check after you answer (DR-143). A Civic Line verdict runs from Names the subject through Names it nearly, where the label settles it, and Recognized with the label to Misleads without the label. A utility icon's verdict is Names it, Names it nearly or Partly, where a reader names a near subject. The maker's verdict is the designer's own reading."
   },
   {
    "term": "Look-alike figure",
-   "text": "How alike two drawings look at 24 px, from 0 to 1, by the engineer's check. Among the 7,381 pairs of settled Civic Line drawings, one pair in 20 measures {watch} or more and one in 100 measures {flag} or more. The board flags a figure of {flag} or more and marks one from {watch} to watch."
+   "text": "A look-alike figure says how alike two drawings look at 24 px on the engineer's check, on a scale from 0 to 1, where 1 means the same drawing. Among the 7,381 pairs of settled Civic Line drawings, one in 20 measures {watch} or more, and 74 pairs, one in 100, measure {flag} or more, most of them drawings built on a shared base, such as a page or a document with a different mark on it. The board flags a figure of {flag} or more, which asks for a look by eye, and marks one from {watch} up as one to watch. Before CL-014 B was redrawn, it measured 0.950 against R-46 Expand the House, and the creative director set the two side by side and found a reader will not take one for the other."
+  },
+  {
+   "term": "Pixel fit",
+   "text": "A pixel fit is a drawing redrawn for one small size so its lines land on whole pixels and its edges stay crisp. The engineer's pixel-fit check draws each file at 1x and at 2x. Its tests include lines at least one device pixel wide, straight edges on pixel edges, parts at least a pixel apart, no hole filling in and, where a drawing has a set line weight, a main line that matches it."
+  },
+  {
+   "term": "1x and 2x screens",
+   "text": "A device pixel is one dot of the screen. A 1x screen, such as many desktop monitors, gives each pixel of a drawing one device pixel. A 2x screen, the sharper kind on phones and many laptops, gives it two across and two down, so edges look smoother and a fit's pixels show as larger steps."
   },
   {
    "term": "Within DR-135",
@@ -33,7 +94,7 @@
   },
   {
    "term": "Scores",
-   "text": "The creative director scores each card from 1 to 5 on six criteria: craft, clarity, brand fidelity, usefulness, evidence honesty and accessibility. The guide ships at 4 on every criterion, so a score under 4 carries a flag (D2-499)."
+   "text": "The creative director scores each card from 1 to 5 on six criteria: craft, clarity, brand fidelity, usefulness, evidence honesty and accessibility. The score tables shorten brand fidelity to Brand and evidence honesty to Evidence. The guide's bar for shipping is 4 or more on every criterion, so the board boxes and names any score under 4 (D2-499)."
   }
  ],
  "groups": {
@@ -46,19 +107,19 @@
   "utility": {
    "title": "The utility set",
    "intro": [
-    "Utility icons mark actions on a page, such as Close, Download and Search. They are one family on a 24-unit grid with a 2 px line, drawn in one color with no red, and each has its own 16 px drawing (DR-134). Each shows at 24 and 16 px on Newsprint and on Charcoal, the two sizes the guide uses."
+    "Utility icons mark actions on a page, such as Close, Download and Search. They are one family on a 24-unit grid with a 2 px line, drawn in one color with no red, and each has its own 16 px drawing (DR-134). Each shows at 24 and 16 px, the two sizes the guide uses, on Newsprint and on Charcoal."
    ]
   },
   "pillars": {
    "title": "The pillar icons on whole pixels",
    "intro": [
-    "The four pillar icons, redrawn pixel by pixel for 24 and 16 px so their lines land on whole pixels (DR-133)."
+    "The pillar icons appear at 24 and 16 px, where on a 1x screen their master drawings' thin lines fall under one device pixel and blur. So each size gets a fit drawn on whole pixels (DR-133)."
    ]
   },
   "identity": {
    "title": "Identity drawings",
    "intro": [
-    "The end mark, the lockmark's small masters and L6. Each changes identity geometry, so each needs your approval by name (gate rule 4)."
+    "The last three cards hold the end mark, the lockmark's small masters and L6. All three change identity geometry, which gate rule 4 says needs your approval by name."
    ]
   }
  },
@@ -67,7 +128,7 @@
    "short": "Congress set",
    "title": "Congress: one sign for four drawings",
    "lede": [
-    "CL-025 Congress, CL-014 Entrenched Power, R-13 Congressional Capacity and R-42 Congressional Tariff Votes each lose their dome (DR-135). They share one Congress sign (D2-503), so you choose a set once for {set_ids}, and each set's row sits under today's drawings.{own_line}"
+    "CL-025 Congress, CL-014 Entrenched Power, R-13 Congressional Capacity and R-42 Congressional Tariff Votes each lose their dome (DR-135). They share one Congress sign (D2-503). Each set draws that sign into {set_ids}, so you choose a set once, and each set's row sits under today's drawings.{own_line}"
    ],
    "honest": "No set names Congress without its label. Most readers know Congress by the Capitol dome, which Rule 01.6 keeps out of icons, so the label names it, and the drawing's job is to make the label land at once (D2-620).",
    "set_label": "Set {letter}",
@@ -93,7 +154,7 @@
   "testify": {
    "short": "Testify",
    "lede": [
-    "A new topic symbol for testifying: a member of the public speaks for the record at a public hearing, before a body such as a legislative committee, a city council or a regulatory board (DR-141, research meaning sheet)."
+    "Testify is a new topic symbol for a member of the public speaking for the record at a public hearing, before a body such as a state legislative committee, a city council or a regulatory board (DR-141, the research lead's meaning sheet)."
    ],
    "neighbors_label": "Settled drawings it must not be read as",
    "approve": "One option for Testify, as a new topic symbol."
@@ -101,7 +162,7 @@
   "contact": {
    "short": "Contact an official",
    "lede": [
-    "A new topic symbol for contacting an official: a reader calls, emails, writes to or visits the office of an official who represents them (DR-141, research meaning sheet). Your phone is option B, with a desk and an official at the cord's end so it reads as reaching an official (DR-147, DR-155)."
+    "Contact an official is a new topic symbol for a reader who calls, emails, writes to or visits the office of an official who represents them (DR-141, the research lead's meaning sheet). Option B is the simple phone you asked for, with an official at a desk at the cord's end so it reads as a call to an official's office (DR-147, DR-155)."
    ],
    "neighbors_label": "Settled drawings it must not be read as",
    "approve": "One option for Contact an official, as a new topic symbol."
@@ -110,16 +171,16 @@
    "short": "Utility family",
    "title": "The utility family: bare actions or ringed",
    "lede": [
-    "Ringed actions measure as near twins of one another, so a row of them loses the outlines a reader tells apart, and each control already has its own outline. Error, Success and Warning keep their shapes, since a bare check means selected and a bare exclamation mark is punctuation (D2-621). You decide the treatment once here, for every utility card after this one."
+    "On the look-alike check, actions drawn inside a ring measure as near twins of one another, so a row of them loses the outlines a reader tells apart. Each control on a page already has an outline of its own, so a ring repeats it. Error, Success and Warning keep a shape around them in both rows, since a bare check means selected and a bare exclamation mark is punctuation (D2-621). You decide the treatment once here, for every utility card after this one."
    ],
    "options": {
-    "bare": "Bare actions, with Error, Success and Warning in their shapes",
-    "ringed": "Every action inside a ring"
+    "bare": "Bare actions, shaped marks",
+    "ringed": "Every action in a ring"
    },
    "approve": "One treatment for the whole utility set.",
    "rows": {
-    "bare": "Bare: each action's recommended option, with the three marks in their shapes",
-    "ringed": "Ringed: every action inside a ring"
+    "bare": "Bare: each action's recommended option, with Error, Success and Warning in their shapes",
+    "ringed": "Ringed: every action in a ring, with the three marks still in their shapes"
    },
    "unscored": "The creative director answered this card as a family question and gave it no scores of its own. Each utility card's scores sit on that card."
   },
@@ -127,26 +188,26 @@
    "approve": "One option for {title}.",
    "pair_approve": "One pair for Play and Pause, picked together since one button swaps them (D2-557).",
    "word_label": "Beside its word",
-   "lede": "Where it serves: {label}. The accessibility audit asks for {asked}.",
+   "lede": "Used for: {label}. The accessibility audit asks for {asked}.",
    "pair_lede": "{names} share one button, so you pick them as a pair (D2-557). The accessibility audit asks for {asked}.",
    "partners_title": "If you pick the solid disc",
    "partners_text": "With option {letter}, the check cut out of a solid disc, Error and Warning would take these solid partners, so the three marks stay one kind.",
-   "own_asked": "a drawing of its own",
+   "own_asked": "a drawing of its own and leaves the shape to the designer",
    "a11y_label": "The accessibility lead recommends",
-   "a11y_source": "From the accessibility lead's fix round check (accessibility audit, section 9), in the lead's words."
+   "a11y_source": "From the accessibility lead's check of the redrawn options (accessibility audit, section 9), in the lead's words."
   },
   "pillars": {
    "short": "Pillar icons",
    "title": "The pillar icons at 24 and 16 px",
    "lede": [
-    "CL-019 Explain, CL-020 Track, CL-021 Connect and CL-022 Act, drawn pixel by pixel for 24 and 16 px. Every fit keeps every feature and every red placement of its master, with the red as its own shape (DR-133, D2-497). The black edition is the one in use under 48 px. At 24 px you choose between two line weights; at 16 px one fit keeps every feature, so it stands alone (D2-612)."
+    "The Civic Line designer drew CL-019 Explain, CL-020 Track, CL-021 Connect and CL-022 Act pixel by pixel for 24 and 16 px. Every fit keeps every feature and every red placement of its master, with the red as its own shape (DR-133, D2-497). The black edition is the one in use under 48 px. At 24 px you choose between two line weights, and at 16 px one fit stands alone, since no second fit keeps every feature (D2-612)."
    ],
    "approve": "One 24 px fit for all four pillar icons, what 2x screens draw at 24 px, and the 16 px fit.",
    "word_label": "Beside the pillar's word",
    "enlarged_label": "Four times, to see the pixels",
-   "two_x": "On a 2x screen a fit's pixels double into hard steps, while the master at 24 px draws smooth with a line over one device pixel. So a 24 px icon can draw the fit on 1x screens and the master on 2x screens, switched by screen resolution, which the engineer builds (D2-634). At 16 px the master's line falls under one device pixel, so the fit stays on both.",
+   "two_x": "On a 2x screen a fit's pixels double into hard steps, and the master at 24 px draws smoothly with a line wider than one device pixel. A 24 px icon can therefore draw the fit on 1x screens and the master on 2x screens, and the engineer would build the switch by screen resolution (D2-634). At 16 px the master's line falls under one device pixel, so the fit serves both kinds of screen.",
    "x2_title": "As a 2x screen draws them",
-   "x2_caption": "Each view is a 2x screen's render, shown {mag} times larger to see its pixels.",
+   "x2_caption": "Each view is a 2x screen's render, shown {mag} times larger so you can see its pixels.",
    "x2_label": "On 2x screens at 24 px",
    "x2_options": {
     "master": [
@@ -163,18 +224,18 @@
    "short": "End mark",
    "title": "The end mark on whole pixels at 14 and 12 px",
    "lede": [
-    "Ampersand B closes the last paragraph of an article as its end mark, at the text's cap height (DR-130). These fits draw B on whole pixels for 17 px text (a 14 px B) and for 15 px text (a 12 px B), so its edges stay crisp (DR-142). Fit A keeps today's one-pixel dip under the line; Fit B sits B on the baseline."
+    "Ampersand B closes the last paragraph of an article as its end mark, at the height of the text's capitals (DR-130). These fits draw B on whole pixels for 17 px text (a 14 px B) and for 15 px text (a 12 px B), so its edges stay crisp on a 1x screen (DR-142). Fit A dips one pixel under the baseline, as today's end mark dips one or two, and Fit B sits on the baseline."
    ],
    "stack_label": "Today, Fit A and Fit B, one above the other at true size",
    "approve": "One fit at 14 px and one at 12 px.",
    "illustrative": "The paragraph is invented, to set the end mark in a line.",
-   "two_x": "On a 2x screen the fits double into 2 px steps, where today's end mark draws smoothly. The identity designer recommends serving the fit to 1x screens and today's end mark to 2x screens, switched by screen resolution; the engineer would build the switch (identity notes, question 2). Write in your note if you want it otherwise."
+   "two_x": "On a 2x screen the fits double into 2 px steps, and today's end mark draws smoothly. The identity designer recommends the fit for 1x screens and today's end mark for 2x screens, and the engineer would build the switch by screen resolution (identity notes, question 2). Say so in the card's note if you want it otherwise."
   },
   "lockmark": {
    "short": "Lockmark masters",
    "title": "The lockmark's small masters rebuilt",
    "lede": [
-    "The 24 and 48 px lockmark masters, rebuilt with each node and the lever as one outline (DR-145). At their own sizes they draw today's pixels exactly. Between those sizes, today's nodes part into light stripes and the rebuilt nodes stay whole. The 16 px master already draws each node as one circle, so it stays as it is (D2-542)."
+    "The identity designer rebuilt the 24 and 48 px lockmark masters with each node and the lever as one outline (DR-145). At their own sizes they draw today's pixels exactly. Between those sizes, where today's nodes part into light stripes, the rebuilt nodes stay whole. The 16 px master already draws each node as one circle, so it stays as it is (D2-542)."
    ],
    "options": {
     "approve": "The rebuilt 24 and 48 px files",
@@ -186,7 +247,7 @@
    "short": "L6 centered",
    "title": "L6 with its wordmark and tagline centered",
    "lede": [
-    "L6 as drawn today without its dots (DR-129), above L6 with the wordmark and tagline moved down so they sit on the strip's middle, as the lockmark does. This changes L6's proportion, so it needs your approval by name."
+    "L6, the strip that closes a report or a long page, shows here as drawn today without its dots (DR-129). Below it, the wordmark and tagline move down to sit on the strip's middle, as the lockmark does. That changes L6's proportion, so it needs your approval by name."
    ],
    "options": {
     "approve": "Centered",

@@ -1,10 +1,10 @@
 {
- "built": "2026-11-09T22:34:21.774971+00:00",
+ "built": "2026-11-09T22:53:19.867148+00:00",
  "thresholds": {
   "flag": 0.9127,
   "watch": 0.8708
  },
- "likeness_run": "2026-11-09T22:33:54.591Z",
+ "likeness_run": "2026-11-09T22:52:53.284Z",
  "cards": [
   {
    "n": 1,
@@ -86,7 +86,7 @@
          "status": "flag"
         }
        },
-       "change": "Dome, cupola and finial become a flat attic; the columns become walls, windows and a center door, which takes the red.",
+       "change": "Dome, cupola and finial become a flat top; the columns become walls, windows and a center door, which takes the red.",
        "within": true,
        "red": "work/build/assets/civic-line-redraws/svg/20261109_CL-025-Congress-Option-A-Red-Black.svg",
        "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-025-Congress-Option-A-Black.svg",
@@ -192,7 +192,7 @@
          "status": "flag"
         }
        },
-       "change": "Spire, cupola and dome become set A's flat attic; the six columns become two walls. Fence and red door kept.",
+       "change": "Spire, cupola and dome become set A's flat top; the six columns become two walls. The fence and the red door stay.",
        "within": true,
        "red": "work/build/assets/civic-line-redraws/svg/20261109_CL-014-Entrenched-Power-Option-A-Red-Black.svg",
        "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-014-Entrenched-Power-Option-A-Black.svg",
@@ -224,7 +224,7 @@
          "status": "flag"
         }
        },
-       "change": "Set B's chamber in session without the Speaker's tier, inside a fence opened for 48 px; the red moves from the door to the rostrum's top tier.",
+       "change": "Set B's chamber in session without the Speaker's tier, inside a fence opened up so it reads at 48 px; the red moves from the door to the rostrum's top tier.",
        "within": false,
        "red": "work/build/assets/civic-line-redraws/svg/20261109_CL-014-Entrenched-Power-Option-B-Red-Black.svg",
        "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
@@ -261,7 +261,7 @@
          "status": "flag"
         }
        },
-       "change": "A ballot's arrow runs at the fenced chamber and stops at the fence on a red bar: an election cannot move the body.",
+       "change": "A ballot's arrow runs at the fenced chamber and stops on a red bar at the fence, to show that an election cannot move the body.",
        "within": false,
        "red": "work/build/assets/civic-line-redraws/svg/20261109_CL-014-Entrenched-Power-Option-C-Red-Black.svg",
        "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
@@ -303,7 +303,7 @@
          "status": "flag"
         }
        },
-       "change": "Dome arcs and finial go, leaving the drum as a flat attic; the drum columns go and the lower columns become two windows and a door.",
+       "change": "The dome's arcs and its finial go, leaving the drum, the round wall the dome sat on, as a flat top; the drum columns go and the lower columns become two windows and a door.",
        "within": true,
        "red": "work/build/assets/civic-line-redraws/svg/20261109_R-13-Congressional-Capacity-Option-A-Red-Black.svg",
        "black": "work/build/assets/civic-line-redraws/svg/20261109_R-13-Congressional-Capacity-Option-A-Black.svg",
@@ -409,7 +409,7 @@
          "status": "flag"
         }
        },
-       "change": "Finial, lantern and dome go, leaving the drum as a flat attic; the columns become a band and windows. Ballot box, chart and red kept.",
+       "change": "Finial, lantern and dome go, leaving the drum as a flat top; the columns become a band and windows. The ballot box, the chart and the red stay.",
        "within": true,
        "red": "work/build/assets/civic-line-redraws/svg/20261109_R-42-Congressional-Tariff-Votes-Option-A-Red-Black.svg",
        "black": "work/build/assets/civic-line-redraws/svg/20261109_R-42-Congressional-Tariff-Votes-Option-A-Black.svg",
@@ -542,7 +542,7 @@
          "status": "flag"
         }
        },
-       "change": "The four columns become one wall holding a round vault door. Pediment, base, home, factory and red branches kept.",
+       "change": "The four columns become one wall holding a round vault door. The pediment, the triangle above the columns, stays, and so do the base, the home, the factory and the red branches.",
        "within": true,
        "red": "work/build/assets/civic-line-redraws/svg/20261109_CL-059-Credit-Allocation-Option-A-Red-Black.svg",
        "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-059-Credit-Allocation-Option-A-Black.svg",
@@ -675,7 +675,7 @@
          "status": "flag"
         }
        },
-       "change": "The four bays of columns become one wall with a door and two windows. Pediment, band, base, brace and official kept.",
+       "change": "The four groups of columns become one wall with a door and two windows. The pediment, band, base, brace and official stay.",
        "within": true,
        "red": "work/build/assets/civic-line-redraws/svg/20261109_R-48-Agency-Independence-Option-A-Red-Black.svg",
        "black": "work/build/assets/civic-line-redraws/svg/20261109_R-48-Agency-Independence-Option-A-Black.svg",
@@ -832,7 +832,7 @@
          "status": "watch"
         }
        },
-       "change": "Written testimony: a signed sheet of testimony handed up from the person to the committee's raised, curved dais; red on the signature.",
+       "change": "Written testimony: a signed sheet of testimony handed up from the person to the committee's raised, curved dais, with the red on the signature.",
        "within": null,
        "red": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-B-Red-Black.svg",
        "black": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-B-Black.svg",
@@ -958,7 +958,7 @@
          "status": "flag"
         }
        },
-       "change": "A very simple phone, a step larger, whose red cord runs to an official at a desk.",
+       "change": "A simple phone whose red cord runs to an official at a desk.",
        "within": null,
        "red": "work/build/assets/civic-line-new-topics/svg/20261109_Contact-An-Official-Option-B-Red-Black.svg",
        "black": "work/build/assets/civic-line-new-topics/svg/20261109_Contact-An-Official-Option-B-Black.svg",
@@ -1014,12 +1014,12 @@
      "options": [
       [
        "bare",
-       "Bare actions, with Error, Success and Warning in their shapes",
+       "Bare actions, shaped marks",
        "bare"
       ],
       [
        "ringed",
-       "Every action inside a ring",
+       "Every action in a ring",
        "ringed"
       ]
      ]
@@ -1309,7 +1309,7 @@
      ]
     }
    ],
-   "fewer_reason": "A longer shaft repeated A, and the ring is a choice for the whole set, on the family card."
+   "fewer_reason": "A longer shaft copied A too closely, and the ring is a choice for the whole set, on the family card."
   },
   {
    "n": 10,
@@ -1420,7 +1420,7 @@
      ]
     }
    ],
-   "fewer_reason": "A smaller chevron repeated A, and plus and minus are the atlas's polarity signs."
+   "fewer_reason": "A smaller chevron copied A too closely, and plus and minus are the atlas's polarity signs."
   },
   {
    "n": 11,
@@ -1747,7 +1747,7 @@
      ]
     }
    ],
-   "fewer_reason": "Readers know one sign for Search. A glint or a larger lens repeated it, and the ring is on the family card."
+   "fewer_reason": "Readers know one sign for Search. A glint or a larger lens copied it too closely, and the ring is on the family card."
   },
   {
    "n": 14,
@@ -1858,7 +1858,7 @@
      ]
     }
    ],
-   "fewer_reason": "A square spout and a wider funnel repeated A (0.997 and 0.938)."
+   "fewer_reason": "A square spout and a wider funnel copied A too closely (0.997 and 0.938)."
   },
   {
    "n": 15,
@@ -2113,7 +2113,7 @@
      ]
     }
    ],
-   "fewer_reason": "Readers know one sign for Play. The ring is on the family card, and a screen narrows Play to video. Readers know one sign for Pause. The ring is on the family card, and a screen narrows Pause to video."
+   "fewer_reason": "Readers know one sign each for Play and Pause. A frame drawn as a screen would tie them to video, and the ring is a choice for the whole set, on the family card."
   },
   {
    "n": 17,
@@ -2538,7 +2538,7 @@
      ]
     }
    ],
-   "fewer_reason": "The closed circle repeated B, and the ticked box says selected, so it moves to the Selected check card."
+   "fewer_reason": "The closed circle copied B too closely, and the ticked box says selected, so it moves to the Selected check card."
   },
   {
    "n": 20,
@@ -2649,7 +2649,7 @@
      ]
     }
    ],
-   "fewer_reason": "A steeper tick and a compact check repeated A, and the compact one read as the chevron at 16 px."
+   "fewer_reason": "A steeper tick and a compact check copied A too closely, and the compact one read as the chevron at 16 px."
   },
   {
    "n": 21,
@@ -3068,7 +3068,7 @@
      ]
     }
    ],
-   "fewer_reason": "Readers know two warning shapes, the triangle and the diamond. A narrower triangle repeated A."
+   "fewer_reason": "Readers know two warning shapes, the triangle and the diamond. A narrower triangle copied A too closely."
   },
   {
    "n": 24,
