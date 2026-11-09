@@ -1,5 +1,7 @@
 {
  "about": "The drawings board's own words, read by work/build/scripts/phase-2/stage_b_drawings_board_build.py. Every option, file, figure, score and reading on the board comes from the makers' manifests and notes, the creative director's scores and the engineer's checks; this file holds only the board's words. Braces such as {n_cards} are filled in by the build. The editor copy-edits this file (D2-500).",
+ "editor_overrides": [],
+ "editor_overrides_about": "Exact-text replacements the build applies to every string it takes from the makers' manifests and notes, the creative director's scores and the accessibility audit, so the editor can copy-edit those words on the board without editing another owner's file. Each entry is {\"old\": \"exact text\", \"new\": \"replacement\"}. The build warns for any \"old\" that matches nothing. The board's own words are edited in this file directly.",
  "title": "The stage B drawings, for your approval",
  "kicker": "Brand Guide, Edition 06 · Drawings board",
  "deck": "Every new or redrawn drawing from stage B sits on this board at true size, beside the drawing it replaces or the settled drawings it must stay apart from. Each new drawing comes in options so you can choose, as you asked on November 9 (DR-146). None of them enters the guide until you answer this board (DR-139).",
@@ -65,14 +67,20 @@
    "short": "Congress set",
    "title": "Congress: one sign for four drawings",
    "lede": [
-    "CL-025 Congress, CL-014 Entrenched Power, R-13 Congressional Capacity and R-42 Congressional Tariff Votes each lose their dome (DR-135). The four share one Congress sign, so you choose a set once and it holds across all four (D2-503). Each set's row sits under today's four drawings."
+    "CL-025 Congress, CL-014 Entrenched Power, R-13 Congressional Capacity and R-42 Congressional Tariff Votes each lose their dome (DR-135). They share one Congress sign (D2-503), so you choose a set once for {set_ids}, and each set's row sits under today's drawings.{own_line}"
    ],
    "honest": "No set names Congress without its label. Most readers know Congress by the Capitol dome, which Rule 01.6 keeps out of icons, so the label names it, and the drawing's job is to make the label land at once (D2-620).",
    "set_label": "Set {letter}",
    "today_label": "Today, kept as the record",
    "neighbors_title": "Beside the House drawings the guide keeps",
    "neighbors_text": "{names} stay as drawn (DR-152). They sit here beside the chamber options so you can see the House drawings together.",
-   "approve": "One set, A, B or C, for CL-025, CL-014, R-13 and R-42 together."
+   "approve": "One set, A, B or C, for {sets} together.",
+   "own_line": " {own} takes its own pick lower on this card, since the creative director recommends a different letter for it.",
+   "follows": "{ids} take the set you pick for {lead}.",
+   "own_title": "{id} {name}, its own pick",
+   "own_text": "Choose one option for {id} here. The creative director's pick for it sits beside the set's pick in the recommendation below.",
+   "set_group": "Congress sign",
+   "approve_own": "One set, A, B or C, for {sets} together, and one option for {own}."
   },
   "redraw": {
    "lede": [
@@ -112,7 +120,8 @@
    "rows": {
     "bare": "Bare: each action's recommended option, with the three marks in their shapes",
     "ringed": "Ringed: every action inside a ring"
-   }
+   },
+   "unscored": "The creative director answered this card as a family question and gave it no scores of its own. Each utility card's scores sit on that card."
   },
   "utility": {
    "approve": "One option for {title}.",
@@ -122,7 +131,9 @@
    "pair_lede": "{names} share one button, so you pick them as a pair (D2-557). The accessibility audit asks for {asked}.",
    "partners_title": "If you pick the solid disc",
    "partners_text": "With option {letter}, the check cut out of a solid disc, Error and Warning would take these solid partners, so the three marks stay one kind.",
-   "own_asked": "a drawing of its own"
+   "own_asked": "a drawing of its own",
+   "a11y_label": "The accessibility lead recommends",
+   "a11y_source": "From the accessibility lead's fix round check (accessibility audit, section 9), in the lead's words."
   },
   "pillars": {
    "short": "Pillar icons",
@@ -130,9 +141,23 @@
    "lede": [
     "CL-019 Explain, CL-020 Track, CL-021 Connect and CL-022 Act, drawn pixel by pixel for 24 and 16 px. Every fit keeps every feature and every red placement of its master, with the red as its own shape (DR-133, D2-497). The black edition is the one in use under 48 px. At 24 px you choose between two line weights; at 16 px one fit keeps every feature, so it stands alone (D2-612)."
    ],
-   "approve": "One 24 px fit for all four pillar icons, and the 16 px fit.",
+   "approve": "One 24 px fit for all four pillar icons, what 2x screens draw at 24 px, and the 16 px fit.",
    "word_label": "Beside the pillar's word",
-   "enlarged_label": "Four times, to see the pixels"
+   "enlarged_label": "Four times, to see the pixels",
+   "two_x": "On a 2x screen a fit's pixels double into hard steps, while the master at 24 px draws smooth with a line over one device pixel. So a 24 px icon can draw the fit on 1x screens and the master on 2x screens, switched by screen resolution, which the engineer builds (D2-634). At 16 px the master's line falls under one device pixel, so the fit stays on both.",
+   "x2_title": "As a 2x screen draws them",
+   "x2_caption": "Each view is a 2x screen's render, shown {mag} times larger to see its pixels.",
+   "x2_label": "On 2x screens at 24 px",
+   "x2_options": {
+    "master": [
+     "The master",
+     "the master on 2x screens"
+    ],
+    "fit": [
+     "The 24 px fit",
+     "the fit on 2x screens"
+    ]
+   }
   },
   "end-mark": {
    "short": "End mark",

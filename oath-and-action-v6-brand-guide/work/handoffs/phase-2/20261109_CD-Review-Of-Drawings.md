@@ -12,7 +12,7 @@ I read the "Fix round" sections of both makers' notes, the decision log's D2-620
 
 ### Verdict
 
-All 30 cards are ready for the board. Every card scores 4 or more on every criterion and has no Must fix, so none goes to Dustin flagged under D2-499.
+All 31 cards are ready for the board, counting the utility family card. Every card scores 4 or more on every criterion and has no Must fix, so none goes to Dustin flagged under D2-499.
 
 The six cards ready in round 1 still hold. The identity files have not changed since round 1. The fix round made Contact an official's phone larger and opened Copy C and View full size B at 16 px, each a Should fix I asked for, and nothing else changed on those three cards.
 
@@ -41,6 +41,10 @@ Each changed score's reason, the naming test on every new option and each card's
 - **R-48, Clarity 4.** C's arrow now runs about 1.9 times its first length and reads at 48 px. The new B, a flat-roofed office building, is a real choice against C (0.899, down from 0.969).
 - **Pillar fits, Craft 4.** I checked the designer's advice for 2x screens by drawing each master and fit at 24 and 16 px on a 2x screen. At 24 px the master draws smooth with a 1.26 device-pixel line and reads, so the advice holds: 1x screens draw Fit B, 2x screens draw the master. At 16 px the master's line falls under one device pixel, so the fit stays on both screens. The engineer builds the switch (D2-634).
 - **The five utility cards at Clarity 4.** No option on the plate now names something else. Menu B reads as Menu beside its word, which always shows. Another site keeps A and B. Reset A, the undo arc, says undo, near reset. Success A, a check cut out of a solid disc, names done. Sort C reads as sorted downward.
+
+The utility family card, "Utility family: bare or ringed", now has its own entry in the JSON, placed before the utility cards. It scores 4 on all six criteria with no Must fix or Should fix, so it is ready. The ringed drawings pass the pixel-fit check, 15 of 15 at 24 px and 15 of 15 at 16 px, on my rerun.
+
+Its recommended treatment is bare actions with shaped marks. Every control already has its own outline, and bare glyphs keep the shapes a reader tells apart, where ringed ones measure as near twins (Close and Pause at 0.973).
 
 ### The short utility cards
 

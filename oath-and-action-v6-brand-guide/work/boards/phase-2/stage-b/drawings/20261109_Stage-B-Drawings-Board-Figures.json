@@ -1,10 +1,10 @@
 {
- "built": "2026-11-09T22:28:10.118489+00:00",
+ "built": "2026-11-09T22:34:21.774971+00:00",
  "thresholds": {
   "flag": 0.9127,
   "watch": 0.8708
  },
- "likeness_run": "2026-11-09T22:24:39.158Z",
+ "likeness_run": "2026-11-09T22:33:54.591Z",
  "cards": [
   {
    "n": 1,
@@ -13,7 +13,7 @@
    "groups": [
     {
      "name": "set",
-     "label": null,
+     "label": "Congress sign",
      "rec": "B",
      "options": [
       [
@@ -30,6 +30,28 @@
        "C",
        "Set C",
        "set C"
+      ]
+     ]
+    },
+    {
+     "name": "own-cl-014",
+     "label": "CL-014",
+     "rec": "C",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "CL-014 option A"
+      ],
+      [
+       "B",
+       "Option B",
+       "CL-014 option B"
+      ],
+      [
+       "C",
+       "Option C",
+       "CL-014 option C"
       ]
      ]
     }
@@ -382,7 +404,7 @@
          "status": ""
         },
         "twin": {
-         "name": "Contact an Official B",
+         "name": "Contact an official B",
          "likeness": 0.9202,
          "status": "flag"
         }
@@ -988,7 +1010,7 @@
     {
      "name": "family",
      "label": null,
-     "rec": null,
+     "rec": "bare",
      "options": [
       [
        "bare",
@@ -3067,6 +3089,23 @@
        "B",
        "Fit B, 1 px line",
        "24 px Fit B"
+      ]
+     ]
+    },
+    {
+     "name": "x2",
+     "label": "On 2x screens at 24 px",
+     "rec": "master",
+     "options": [
+      [
+       "master",
+       "The master",
+       "the master on 2x screens"
+      ],
+      [
+       "fit",
+       "The 24 px fit",
+       "the fit on 2x screens"
       ]
      ]
     }

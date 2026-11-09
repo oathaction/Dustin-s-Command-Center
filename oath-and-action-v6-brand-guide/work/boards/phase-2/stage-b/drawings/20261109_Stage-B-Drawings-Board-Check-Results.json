@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/stage-b/drawings/20261109_Stage-B-Drawings-Board.html",
- "checked": "2026-11-09T22:25:34.245Z",
+ "checked": "2026-11-09T22:35:02.395Z",
  "views": [
   "overview"
  ],
@@ -9,7 +9,7 @@
    "width": 1440,
    "view": "overview",
    "rootVisible": true,
-   "texts": 2923,
+   "texts": 2894,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -43,7 +43,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 56277,
+   "height": 57264,
    "axe": [],
    "focusStops": 40,
    "focusWithoutRing": []
@@ -52,7 +52,7 @@
    "width": 390,
    "view": "overview",
    "rootVisible": true,
-   "texts": 2937,
+   "texts": 2907,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -86,7 +86,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 113307,
+   "height": 114315,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -95,7 +95,7 @@
    "width": 360,
    "view": "overview",
    "rootVisible": true,
-   "texts": 2937,
+   "texts": 2907,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -129,7 +129,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 115547,
+   "height": 116749,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null

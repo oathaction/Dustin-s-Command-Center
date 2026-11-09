@@ -67,6 +67,8 @@ SRC = {
     'cl_notes': HANDOFFS / f'{DATE}_Stage-B-Civic-Line-Icons-Notes.md',
     'ut_notes': HANDOFFS / f'{DATE}_Stage-B-Utility-Icons-Notes.md',
     'id_notes': HANDOFFS / f'{DATE}_Stage-B-Identity-Notes.md',
+    'audit': HANDOFFS / f'{DATE}_Stage-B-Accessibility-Audit.md',
+    'screen2x': BOARD_DIR / 'civic-line/screen-2x',
 }
 TOKENS = ROOT / 'work/build/tokens/tokens.css'
 LIKENESS_JS = SCRIPTS / 'icon_likeness_check.js'
@@ -95,6 +97,32 @@ FLAGGED = ['genuinely', 'really', 'truly', 'actually', 'simply', 'just', 'levera
            'underscores', 'reflect', 'reflects', 'reflected', 'stunning', 'robust', 'seamless', 'perhaps', 'somewhat']
 LIMIT = 16_000_000
 WARN = []
+OVERRIDES = []      # the editor's exact-text replacements: [old, new, times used]
+# keys whose strings are file paths or the identifiers the build matches on; an override never touches them
+ID_KEYS = {'files', 'svg_red_black', 'svg_black', 'stem', 'folder', 'file', 'prussian', 'today', 'map', 'paths', 'exports',
+           '24', '16', 'id', 'key', 'word', 'option', 'rank', 'sheet_black', 'sheet_red', 'slug'}
+
+
+def ov(s):
+    """The editor's overrides applied to one string taken from another owner's file."""
+    if not isinstance(s, str) or not OVERRIDES:
+        return s
+    for o in OVERRIDES:
+        if o[0] in s:
+            o[2] += s.count(o[0])
+            s = s.replace(o[0], o[1])
+    return s
+
+
+def ov_deep(obj, key=None):
+    if isinstance(obj, str):
+        return obj if key in ID_KEYS or re.fullmatch(r'[\w./-]+\.(svg|png|json|html|md|csv)', obj) else ov(obj)
+    if isinstance(obj, dict):
+        return {k: (v if k in ID_KEYS and not isinstance(v, (dict, list)) else ov_deep(v, k)) if k not in ('files', 'exports', 'paths') else v
+                for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [ov_deep(v, key) for v in obj]
+    return obj
 
 
 class BoardError(Exception):
@@ -258,7 +286,10 @@ def strip_md(s):
 
 
 def display_id(i):
-    return i if re.match(r'(CL|R)-\d', i) else i.replace('-An-', ' an ').replace('-', ' ')
+    if re.match(r'(CL|R)-\d', i):
+        return i
+    t = i.replace('-', ' ')
+    return t[:1] + t[1:].lower()
 
 
 def letter_of(s):
@@ -356,6 +387,8 @@ def pf_words(size, r):
         sc, _, codes = item.partition(': ')
         for c in codes.split('; '):
             by.setdefault(c, []).append(sc)
+    if set(by) == {'weight'}:
+        return f'passes every test at {size} px but line weight, at {join_words(by["weight"])}'
     parts = [f'{PF_WORDS.get(c, c)} at {join_words(scs)}' for c, scs in by.items()]
     return f'fails at {size} px: ' + '; '.join(parts)
 
@@ -408,15 +441,33 @@ def cd_option(sc, letter):
     return None
 
 
+def accessibility_checks(text):
+    """The accessibility lead's fix round check (the audit's "Fix round check" section): one bullet per drawing, its
+    words and the option the lead recommends, keyed by the drawing's name."""
+    out = {}
+    sec = section_text(text, r'fix round check')
+    for m in re.finditer(r'^- \*\*(.+?)\*\*\s*(.*)$', sec, flags=re.M):
+        head, body = m.group(1).strip(), m.group(2).strip()
+        nm = re.match(r'([A-Za-z][A-Za-z ]*?) ([A-C])\b', head)
+        if not nm:
+            continue
+        txt = strip_md(f'{head} {body}')
+        pk = re.search(r"\b([A-C])(?:['’]s [^.,]*?)?,? (?:remains my recommendation|stays my pick)", txt)
+        out[nm.group(1).strip().lower()] = {'option': nm.group(2), 'text': txt, 'pick': pk.group(1) if pk else None}
+    return out
+
+
 def build_model(C, S, scratch, reuse):
-    inv = load_json(SRC['inventory'], 'the Civic Line inventory')
+    inv = ov_deep(load_json(SRC['inventory'], 'the Civic Line inventory'))
     masters = {r['id']: r for r in inv['icons']}
-    m_red, _ = manifest(SRC['redraws'])
-    m_top, _ = manifest(SRC['topics'])
-    m_pil, _ = manifest(SRC['pillars'])
+    m_red = ov_deep(manifest(SRC['redraws'])[0])
+    m_top = ov_deep(manifest(SRC['topics'])[0])
+    m_pil = ov_deep(manifest(SRC['pillars'])[0])
     m_ut, ut_path = manifest(SRC['utility'])
+    m_ut = ov_deep(m_ut)
     figs = load_json(SRC['id_figs'], 'the identity figures')
-    notes = {k: SRC[k].read_text() if SRC[k].exists() else '' for k in ('cl_notes', 'ut_notes', 'id_notes')}
+    notes = {k: ov(SRC[k].read_text()) if SRC[k].exists() else '' for k in ('cl_notes', 'ut_notes', 'id_notes')}
+    a11y = accessibility_checks(ov(SRC['audit'].read_text()) if SRC['audit'].exists() else '')
     for k, t in notes.items():
         if not t:
             warn(f'{k}: notes file missing')
@@ -627,7 +678,7 @@ def build_model(C, S, scratch, reuse):
             warn(f'no scores for {kind}')
         cards.append({'kind': kind, 'group': 'identity', 'scores': sc, 'figs': figs})
 
-    model = {'cards': cards, 'like': LK, 'masters': masters, 'master_svg': master_svg, 'notes': notes,
+    model = {'cards': cards, 'like': LK, 'masters': masters, 'master_svg': master_svg, 'notes': notes, 'a11y': a11y, 'S': S,
              'checks': {'likeness': lk_path, 'pixel_fit': pf_paths, 'likeness_run': LK.run}}
     return model
 
@@ -922,18 +973,31 @@ def find_fewer_reason(notes_text, names):
     return None
 
 
+def congress_split(card):
+    """The drawings that follow the set picked for CL-025, and those whose recommended letter differs, which get a pick
+    of their own inside the card (CL-014 in the rescore)."""
+    subs = card['subjects']
+    rec = rec_letter(subs[0]['scores'])
+    sets = [s for s in subs if s is subs[0] or rec_letter(s['scores']) in (rec, None)]
+    return sets, [s for s in subs if s not in sets]
+
+
 def congress_card(card, model, C):
     subs = card['subjects']
     W = C['cards']['congress']
     lead = subs[0]
     rec = rec_letter(lead['scores'])
+    # A drawing whose recommended option differs from the set's letter gets its own pick inside the card (CL-014 in
+    # the rescore); the others follow the set picked for CL-025.
+    sets, own = congress_split(card)
+    card['set_subjects'], card['own_subjects'] = sets, own
     letters = [o.letter for o in lead['options']]
-    for s in subs[1:]:
+    for s in sets[1:]:
         if [o.letter for o in s['options']] != letters:
             warn(f'Congress set: {s["id"]} has options {[o.letter for o in s["options"]]}, CL-025 has {letters}')
-    head = ''.join(f'<p class="cg-colh">{esc(s["id"])} {esc(s["name"])}</p>' for s in subs)
+    head = ''.join(f'<p class="cg-colh">{esc(s["id"])} {esc(s["name"])}</p>' for s in sets)
     rows = f'<div class="cg-row cg-row--today"><div class="cg-rowh"><p class="col-h">{esc(W["today_label"])}</p></div>'
-    for s in subs:
+    for s in sets:
         rows += (f'<div class="cg-cell"><div class="stage">{sizes_row(model["master_svg"](s["id"]), CL_SIZES, f"{s["id"]} {s["name"]}, today")}</div>'
                  f'<p class="caption">{esc(s["id"])} {esc(s["name"])}, the October 29 master.</p></div>')
     rows += '</div>'
@@ -943,7 +1007,7 @@ def congress_card(card, model, C):
             chip('Within DR-135', 'chip--in') if lo.within is True else chip('Outside DR-135', 'chip--out') if lo.within is False else '')
         rows += (f'<div class="cg-row{" cg-row--rec" if L == rec else ""}"><div class="cg-rowh"><p class="col-h">{esc(W["set_label"].format(letter=L))}</p>'
                  f'<p class="chips">{tags}</p><p class="cg-sign">{esc(lo.change)}</p></div>')
-        for s in subs:
+        for s in sets:
             o = next((x for x in s['options'] if x.letter == L), None)
             if not o:
                 rows += '<div class="cg-cell"><p class="caption">No option in this set.</p></div>'
@@ -956,7 +1020,16 @@ def congress_card(card, model, C):
             rows += (f'<div class="cg-cell"><p class="cg-cellh">{esc(s["id"])} {esc(s["name"])}, set {esc(L)}</p>'
                      f'<div class="stage">{sizes_row(o.red, CL_SIZES, f"{s["id"]} {s["name"]}, set {L}")}</div>{dl(fr)}{choice_note(o)}</div>')
         rows += '</div>'
-    grid = f'<div class="cg"><div class="cg-head">{head}</div>{rows}</div>'
+    followers = [f'{s["id"]}' for s in sets[1:]]
+    follow = f'<p class="caption pnote">{esc(W["follows"].format(ids=join_words(followers), lead=lead["id"]))}</p>' if followers else ''
+    grid = f'<div class="cg" style="--cgcols:{len(sets)}"><div class="cg-head">{head}</div>{rows}</div>'
+    # a drawing with its own pick: today's drawing and its options, in the card's columns
+    own_html = ''
+    for s in own:
+        orec = rec_letter(s['scores'])
+        cols = cl_today_col(model, s['id'], W['today_label']) + ''.join(cl_option_col(o, s, orec) for o in s['options'])
+        own_html += (f'<h4 class="sub4">{esc(W["own_title"].format(id=s["id"], name=s["name"]))}</h4>'
+                     f'<p class="pnote">{esc(W["own_text"].format(id=s["id"]))}</p><div class="cols cols--cl">{cols}</div>')
     # the House drawings beside the chamber options (DR-152)
     nb = []
     for s in subs:
@@ -977,15 +1050,22 @@ def congress_card(card, model, C):
         names = join_words(f'{i} {model["masters"][i]["label"]}' for i in nb)
         strip = (f'<h4 class="sub4">{esc(W["neighbors_title"])}</h4><p>{esc(W["neighbors_text"].format(names=names))}</p>'
                  + frame(f'<div class="nbs">{cells}</div>', W['neighbors_title']))
-    body = (f'<p class="honest">{esc(W["honest"])}</p>' + frame(grid, 'The Congress sets') + strip)
+    body = (f'<p class="honest">{esc(W["honest"])}</p>' + frame(grid, 'The Congress sets') + follow + own_html + strip)
     scored = [(f'{s["id"]} {s["name"]}', s['scores']) for s in subs]
     sh, lows = scores_block(scored)
     card['lows'] = lows
     card['not_ready'] = any(s['scores'] and not s['scores'].get('ready_for_board', True) for s in subs)
-    card['groups'] = [{'name': 'set', 'label': None, 'rec': rec,
+    card['groups'] = [{'name': 'set', 'label': W['set_group'] if own else None, 'rec': rec,
                        'options': [(L, f'Set {L}', f'set {L}') for L in letters]}]
+    for s in own:
+        card['groups'].append({'name': 'own-' + s['id'].lower(), 'label': s['id'], 'rec': rec_letter(s['scores']),
+                               'options': [(o.letter, f'Option {o.letter}', f'{s["id"]} option {o.letter}') for o in s['options']]})
     rb = rec_block(lead['scores'], lambda x: f'Set {letter_of(x)}' + (x[1:] if letter_of(x) else ''))
-    return card_shell(card, body, W['approve'], sh + open_items(scored), rb)
+    for s in own:
+        rb += rec_block(s['scores'], lambda x, i=s['id']: f'{i}: option {letter_of(x)}' + (x[1:] if letter_of(x) else ''))
+    ids = lambda xs: join_words(x['id'] for x in xs)
+    approve = W['approve_own'].format(sets=ids(sets), own=ids(own)) if own else W['approve'].format(sets=ids(sets))
+    return card_shell(card, body, approve, sh + open_items(scored), rb)
 
 
 def single_cl_card(card, model, C):
@@ -1090,7 +1170,16 @@ def utility_card(card, model, C):
     card['not_ready'] = any(s['scores'] and not s['scores'].get('ready_for_board', True) for s in subs)
     card['groups'] = [{'name': 'option', 'label': None, 'rec': rec, 'options': [(L, f'Option {L}', f'option {L}') for L in letters]}]
     approve = W['pair_approve'] if len(subs) > 1 else W['approve'].format(title=card['title'])
-    return card_shell(card, body, approve, sh + open_items(scored), rec_block(lead['scores']))
+    rb = rec_block(lead['scores'])
+    for x in subs:
+        names = {x['title'].split(' (')[0].lower(), str(x['word']).replace('-', ' ').lower(), x['label'].lower()}
+        hit = next((v for k, v in model['a11y'].items() if k in names), None)
+        if hit:
+            card['a11y'] = hit
+            pick = f'<p class="rec-o">Option {esc(hit["pick"])}</p>' if hit['pick'] else ''
+            rb += (f'<div class="rec rec--a11y"><p class="label">{esc(W["a11y_label"])}</p>{pick}'
+                   f'<p>“{esc(hit["text"])}”</p><p class="caption">{esc(W["a11y_source"])}</p></div>')
+    return card_shell(card, body, approve, sh + open_items(scored), rb)
 
 
 def family_card(card, model, C):
@@ -1128,14 +1217,28 @@ def family_card(card, model, C):
                  f'<div class="fams">{row(items, "np")}{row(items, "ch")}</div>')
     body += '<p class="caption pnote">Each glyph at true size, 24 px then 16 px, on Newsprint and on Charcoal.</p>'
     scored = [(W['short'], sc)]
-    sh, lows = scores_block(scored)
+    # without a scored card, the creative director's answer to the family question is the recommendation (D2-621)
+    fq = next((q for q in model['S'].get('family_questions', []) if re.search(r'\bbare\b', q.get('question', ''), flags=re.I)), None)
+    if sc:
+        sh, lows = scores_block(scored)
+        rec_txt = ((sc.get('recommended') or {}).get('option', ''))
+        rb = rec_block(sc)
+    elif fq:
+        sh, lows = f'<div class="scores"><p class="label">The creative director’s scores</p><p class="pnote">{esc(W["unscored"])}</p></div>', []
+        ans = str(fq.get('answer', ''))
+        rec_txt = 'bare' if re.match(r'\s*yes\b', ans, flags=re.I) else 'ringed'
+        reason = re.split(r'(?<=[.])\s+', re.sub(r'^\s*(yes|no)\.\s*', '', ans, flags=re.I))[0]
+        rb = (f'<div class="rec"><p class="label">The creative director recommends</p><p class="rec-o">{esc(W["options"][rec_txt])}</p>'
+              f'<p>{esc(reason)}</p></div>')
+    else:
+        sh, lows = scores_block(scored)
+        rec_txt, rb = '', rec_block(sc)
     card['lows'] = lows
-    card['not_ready'] = bool(sc and not sc.get('ready_for_board', True)) or not sc
-    rec_txt = ((sc or {}).get('recommended') or {}).get('option', '')
-    rec = 'ringed' if re.search(r'\bring', rec_txt, flags=re.I) and not re.search(r'bare', rec_txt, flags=re.I) else 'bare' if sc else None
+    card['not_ready'] = bool(sc and not sc.get('ready_for_board', True)) or not (sc or fq)
+    rec = 'ringed' if re.search(r'\bring', rec_txt, flags=re.I) and not re.search(r'bare', rec_txt, flags=re.I) else 'bare' if rec_txt else None
     card['groups'] = [{'name': 'family', 'label': None, 'rec': rec,
                        'options': [(k, W['options'][k], k) for k in ('bare', 'ringed')]}]
-    return card_shell(card, body, W['approve'], sh + open_items(scored), rec_block(sc))
+    return card_shell(card, body, W['approve'], sh + (open_items(scored) if sc else ''), rb)
 
 
 # ---- pillar fits
@@ -1181,7 +1284,7 @@ def pillars_card(card, model, C):
                       f'<p class="caption">{esc(pft)}.{" Against its master " + fmt_like(own["likeness"]) + "." if own else ""}</p></div>')
         rows += f'<div class="pg-row">{cells}</div>'
     grid = f'<div class="pg" style="--cols:{len(fit_keys)}"><div class="pg-row pg-row--h">{head}</div>{rows}</div>'
-    body = frame(grid, 'The pillar fits') + '<p class="caption pnote">The black edition is the one the guide sets under 48 px. The third view in each fit draws the black edition four times larger to show its pixels. Beside the word, each fit sits at true size next to 15 px Inter.</p>'
+    body = frame(grid, 'The pillar fits') + x2_grid(ps, W) + '<p class="caption pnote">The black edition is the one the guide sets under 48 px. The third view in each fit draws the black edition four times larger to show its pixels. Beside the word, each fit sits at true size next to 15 px Inter.</p>'
     naming = ''
     if sc and sc.get('naming_test'):
         li = ''.join(f'<li><b>{esc(n.get("option"))}</b>: “{esc(str(n.get("creative_director_reading", "")).rstrip("."))}.” {esc(n.get("creative_director_verdict", ""))}.</li>' for n in sc['naming_test'])
@@ -1200,8 +1303,46 @@ def pillars_card(card, model, C):
         m = re.search(rf'{size} px Fit ([A-Z])', rec_txt) or re.search(r'Fit ([A-Z])', rec_txt)
         groups.append({'name': f's{size}', 'label': f'{size} px', 'rec': m.group(1) if m else None,
                        'options': [(L, f'Fit {L}, {lines[(size, L)]} px line', f'{size} px Fit {L}') for L in ls]})
+    if re.search(r'\b2x\b', rec_txt):
+        x2 = 'master' if re.search(r'master on 2x', rec_txt) else 'fit'
+        groups.append({'name': 'x2', 'label': W['x2_label'], 'rec': x2,
+                       'options': [(k, W['x2_options'][k][0], W['x2_options'][k][1]) for k in ('master', 'fit')]})
     card['groups'] = groups
     return card_shell(card, body, W['approve'], sh + open_items(scored), rec_block(sc))
+
+
+def x2_grid(ps, W):
+    """The Civic Line designer's renders of each master and fit as a 2x screen draws them, enlarged (fix round, M11)."""
+    d = SRC['screen2x']
+    if not d.exists():
+        warn('the pillar fits have no 2x screen renders')
+        return ''
+    found = {}
+    for f in sorted(d.glob('*-On-2x-Screen-Enlarged.png')):
+        m = re.search(r'_((?:CL|R)-\d+)-[\w-]+?-(\d+)px-(Master|Fit-[A-Z])-On-2x-Screen-Enlarged\.png$', f.name)
+        if m:
+            found[(m.group(1), int(m.group(2)), m.group(3))] = f
+    cols = sorted({(k[1], k[2]) for k in found}, key=lambda c: (-c[0], c[1] != 'Master', c[1]))
+    if not cols:
+        return ''
+    n_fit = {sz: sum(1 for x, k in cols if x == sz and k != 'Master') for sz, _ in cols}
+    head = '<p class="pg-h"></p>' + ''.join(
+        f'<p class="pg-h">{s} px, {"the master" if k == "Master" else ("Fit " + k[-1]) if n_fit[s] > 1 else "the fit"}</p>' for s, k in cols)
+    rows, mag = '', None
+    for p in ps:
+        cells = f'<div class="x2-c"><p class="pg-name">{esc(p["id"])} {esc(p["name"])}</p></div>'
+        for s, k in cols:
+            f = found.get((p['id'], s, k))
+            if not f:
+                cells += '<div class="x2-c"></div>'
+                continue
+            w, h = png_size(f)
+            mag = round(w / (s * 2))
+            cells += f'<div class="x2-c">{img(f, w, h, f"{p["name"]}, {s} px, {k.replace("-", " ").lower()}, as a 2x screen draws it, {mag} times larger", cls="px")}</div>'
+        rows += f'<div class="x2-row">{cells}</div>'
+    grid = f'<div class="x2" style="--x2cols:{len(cols)}"><div class="x2-row x2-row--h">{head}</div>{rows}</div>'
+    return (f'<h4 class="sub4">{esc(W["x2_title"])}</h4><p class="pnote">{esc(W["two_x"])}</p>'
+            + frame(grid, W['x2_title']) + f'<p class="caption pnote">{esc(W["x2_caption"].format(mag=num_words(mag or 3)))}</p>')
 
 
 # ---- identity
@@ -1216,6 +1357,7 @@ def identity_lines(plate):
         t = p.group(0)
         t = re.sub(r'<title>.*?</title>', '', t, flags=re.S)
         t = re.sub(r'width:\d+px;', 'max-width:520px;', t, count=1)
+        t = ov(t)
         t = t.replace('class="oai-svg ', 'class="snap ')
         out[key] = t
     return out
@@ -1437,7 +1579,10 @@ def number_cards(model, C):
 def lede(card, C):
     k = card['kind']
     if k == 'congress':
-        return paras(C['cards']['congress']['lede'], 'card-lede')
+        W = C['cards']['congress']
+        sets, own = congress_split(card)
+        own_line = W['own_line'].format(own=join_words(f'{x["id"]} {x["name"]}' for x in own)) if own else ''
+        return ''.join(f'<p class="card-lede">{md(p.format(set_ids=join_words(x["id"] for x in sets), own_line=own_line))}</p>' for p in W['lede'])
     if k == 'redraw':
         s = card['subjects'][0]
         lost = 'columns' if any('column' in o.change.lower() for o in s['options']) else 'dome'
@@ -1607,7 +1752,7 @@ dl.figs .chip{padding:0 4px;margin-left:.2em}
 .hint{margin:var(--oa-space-100) 0 0}
 /* Congress */
 .cg{display:grid;gap:0}
-.cg-head,.cg-row{display:grid;grid-template-columns:repeat(4,16.5rem);gap:var(--oa-space-200) var(--oa-space-300)}
+.cg-head,.cg-row{display:grid;grid-template-columns:repeat(var(--cgcols,4),16.5rem);gap:var(--oa-space-200) var(--oa-space-300)}
 .cg-rowh{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--oa-space-100) var(--oa-space-300)}
 .cg-rowh .col-h,.cg-rowh .chips{margin:0}
 .cg-head{padding-bottom:var(--oa-space-100)}
@@ -1647,6 +1792,10 @@ dl.figs .chip{padding:0 4px;margin-left:.2em}
 .pg-name{font:var(--oa-type-ui);font-weight:700;margin:0 0 var(--oa-space-100)}
 .pg-st{display:flex;align-items:flex-end;gap:var(--oa-space-200)}
 .inword{display:flex;align-items:center;gap:6px;font:var(--oa-type-ui);margin:var(--oa-space-150) 0 var(--oa-space-100);background:var(--np);padding:var(--oa-space-100) var(--oa-space-150);width:max-content}
+.x2{display:grid;gap:0}
+.x2-row{display:grid;grid-template-columns:9rem repeat(var(--x2cols),max-content);gap:var(--oa-space-300);align-items:end;padding:var(--oa-space-150) 0;border-top:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-white)}
+.x2-row--h{border-top:0;align-items:end}
+.x2-c{min-width:0}
 .naming ul{margin:var(--oa-space-100) 0 0;padding-left:1.1em;font:var(--oa-type-body-small)}.naming{margin-top:var(--oa-space-300)}
 /* identity */
 .vw-h{max-width:none;margin:var(--oa-space-300) 0 var(--oa-space-150)}
@@ -1680,6 +1829,8 @@ table.sc-t{min-width:40rem}table.fig-t{min-width:36rem}
 .card-foot{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--oa-space-400) var(--oa-space-600);margin-top:var(--oa-space-500);border-top:var(--oa-border-width-rule) solid var(--oa-color-border-strong-on-white);padding-top:var(--oa-space-300)}
 @media (min-width:64em){.card-foot{grid-template-columns:minmax(0,1fr) minmax(17rem,22rem)}}
 .rec .label,.approve .label{display:block;margin-bottom:2px}
+.rec + .rec{margin-top:var(--oa-space-300)}
+.rec--a11y{border-left:var(--oa-border-width-bar) solid var(--oa-color-border-strong-on-white);padding-left:var(--oa-space-200)}
 .rec-o{font:var(--oa-type-h4);letter-spacing:var(--oa-type-h4-letter-spacing);margin:0 0 var(--oa-space-100)}
 .approve{margin-top:var(--oa-space-200)}
 .scores{margin-top:var(--oa-space-300)}
@@ -1896,7 +2047,11 @@ def main():
     ap.add_argument('--reuse-checks', action='store_true', help='reuse the last check results (layout work only)')
     a = ap.parse_args()
     C = load_json(a.content, 'the content file')
-    S = load_json(a.scores, 'the scores file')
+    eo = C.get('editor_overrides') or []
+    need(isinstance(eo, list) and all(isinstance(x, dict) and isinstance(x.get('old'), str) and x['old'] and isinstance(x.get('new'), str)
+                                      for x in eo), 'content.editor_overrides: a list of {"old": "exact text", "new": "replacement"}')
+    OVERRIDES[:] = [[x['old'], x['new'], 0] for x in eo]
+    S = ov_deep(load_json(a.scores, 'the scores file'))
     need(isinstance(S.get('cards'), list), 'scores: no cards')
     need('—' not in json.dumps(C, ensure_ascii=False), 'content: an em dash (W21)')
     model = build_model(C, S, a.scratch, a.reuse_checks)
@@ -1904,6 +2059,9 @@ def main():
     built = datetime.datetime.now(datetime.timezone.utc)
     FILL.update({'built_date': words_date(built), 'built_time': words_time(built)})
     page = build_page(model, C, S, built)
+    for o in OVERRIDES:
+        if not o[2]:
+            warn(f'editor override matches nothing in the makers\' files, the scores or the audit: "{o[0][:70]}"')
     # words on the board: no em dash, en dashes and flagged words warn, the tagline exact
     text = html.unescape(re.sub(r'<[^>]+>', ' ', re.sub(r'<(script|style)\b.*?</\1>', '', page, flags=re.S)))
     need('—' not in text, 'em dash on the board: ' + text[max(0, text.find('—') - 60):text.find('—') + 20])
