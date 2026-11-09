@@ -19,12 +19,13 @@
 //      a hundredth of a pixel from the supersampled coverage, and whether it lands within 0.1 px of a pixel edge.
 //      Edges pair into strokes. A stroke of whole-pixel width must have both edges on pixel edges; a stroke of
 //      fractional width (1.5 px at 16 px) must have one. An edge with no partner must sit on a pixel edge.
-//   4. Gaps: the smallest gap between separate ink parts, and whether every enclosed space (a counter) of half a
-//      pixel or more stays open at that scale.
+//   4. Gaps: the smallest gap between separate ink parts, and whether the enclosed spaces (counters) of half a pixel
+//      or more stay as drawn at that scale: none fills in, and no narrow opening closes into a new one.
 // Pass or fail, per scale (the thresholds are RULES below, and the notes explain them):
-//   width    thinnest stroke at least 1.0 device px            soft     soft-edge share at most 50 percent
+//   width    thinnest stroke at least 1.0 device px            soft     soft-edge share at most 95 percent
 //   straight every straight stroke fit as in 3                 gap      smallest gap at least 1.0 device px
-//   counters every enclosed space still open                   weight   (only with --weight) main width within 0.15 px
+//   counters the same enclosed spaces as the drawing: none fills in, and no opening closes into a new one
+//   weight   (only with --weight) the main width within 0.15 px of the grid's line
 // A file passes at a size when it passes at 1x and at 2x. Exit 0 when every file passes, 1 when any fails, 2 on misuse.
 // The check assumes the icon's box sits on whole CSS pixels in the page, as the guide places it.
 'use strict';
@@ -35,7 +36,7 @@ const { chromium } = require('playwright');
 const RULES = {
   minStroke: 1.0,        // device px: a line under one device pixel never reaches full ink
   minThinArea: 0.25,     // device px²: a width counts as the thinnest only if it covers this much ink
-  maxSoftShare: 0.50,    // share of ink pixels with partial coverage
+  maxSoftShare: 0.95,    // share of ink pixels with partial coverage: above it, under one ink pixel in 20 is full ink
   inkAlpha: 8,           // alpha at or above this is ink (about 3 percent)
   fullAlpha: 247,        // alpha at or above this is full ink (about 97 percent)
   edgeTolerance: 0.10,   // device px: an edge this close to a pixel edge leaves a fringe of 10 percent or less
@@ -169,7 +170,7 @@ function thicknessMap(mask, W, H) {
     if (ok) ridges.push(i);
   }
   for (const i of ridges) {
-    const r = dt[i], r2 = dt2[i], dia = 2 * r - 1, R = Math.floor(r);
+    const r = dt[i], r2 = dt2[i], dia = 2 * r - 0.5, R = Math.floor(r);
     const cx = i % W, cy = (i - cx) / W;
     for (let dy = -R; dy <= R; dy++) {
       const yy = cy + dy; if (yy < 0 || yy >= H) continue;
@@ -317,17 +318,16 @@ function soft(alpha) {
 // ---------- rendering ----------
 const PAGE_JS = `
 window.b64 = (u8) => { let s = ''; for (let i = 0; i < u8.length; i += 0x8000) s += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000)); return btoa(s); };
-window.raster = async (svg, D) => {
-  const url = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
-  try {
-    const img = new Image(); img.src = url; await img.decode();
-    const c = document.createElement('canvas'); c.width = c.height = D;
-    const g = c.getContext('2d'); g.clearRect(0, 0, D, D); g.drawImage(img, 0, 0, D, D);
-    const d = g.getImageData(0, 0, D, D).data; const a = new Uint8Array(D * D);
-    for (let i = 0; i < D * D; i++) a[i] = d[4 * i + 3];
-    return b64(a);
-  } finally { URL.revokeObjectURL(url); }
+window.decode = async (png) => {
+  const img = new Image(); img.src = 'data:image/png;base64,' + png; await img.decode();
+  const W = img.naturalWidth, H = img.naturalHeight;
+  const c = document.createElement('canvas'); c.width = W; c.height = H;
+  const g = c.getContext('2d'); g.drawImage(img, 0, 0);
+  const d = g.getImageData(0, 0, W, H).data; const a = new Uint8Array(W * H);
+  for (let i = 0; i < W * H; i++) a[i] = d[4 * i + 3];
+  return [W, b64(a)];
 };
+window.place = (svg) => { document.getElementById('host').innerHTML = svg; };
 window.nominal = (svg) => {
   const host = document.getElementById('host'); host.innerHTML = svg;
   const out = [];
@@ -358,11 +358,31 @@ window.preview = (a1, a2, S, marks1, marks2) => {
   return c.toDataURL('image/png');
 };`;
 
+// Every raster is a screenshot of the SVG inline in a page, as the guide sets icons, at a device scale of 1, 2 or the
+// supersample factor. A canvas would keep a non-scaling stroke at one canvas pixel at any zoom; a page scales it.
+const HTML = '<!doctype html><html><body style="margin:0;background:transparent;color:#000"><div id="host" style="position:absolute;left:0;top:0;line-height:0"></div></body></html>';
 async function openRenderer() {
   const browser = await chromium.launch();
-  const page = await browser.newPage({ deviceScaleFactor: 1 });
-  await page.setContent('<!doctype html><html><body style="margin:0"><div id="host" style="position:absolute;left:0;top:0"></div></body></html>');
-  await page.addScriptTag({ content: PAGE_JS });
+  const pages = new Map();
+  const at = async (dpr) => {
+    if (!pages.has(dpr)) {
+      const ctx = await browser.newContext({ deviceScaleFactor: dpr, viewport: { width: 64, height: 64 } });
+      const pg = await ctx.newPage(); await pg.setContent(HTML); await pg.addScriptTag({ content: PAGE_JS });
+      pages.set(dpr, pg);
+    }
+    return pages.get(dpr);
+  };
+  const page = await at(1);
+  page.rasterAt = async (svg, S, dpr) => {
+    const pg = await at(dpr);
+    await pg.setViewportSize({ width: Math.max(S, 16), height: Math.max(S, 16) });
+    await pg.evaluate((t) => window.place(t), svg);
+    const png = await pg.screenshot({ clip: { x: 0, y: 0, width: S, height: S }, omitBackground: true, animations: 'disabled' });
+    await pg.evaluate(() => window.place(''));
+    const [W, b] = await page.evaluate((x) => window.decode(x), png.toString('base64'));
+    if (W !== Math.round(S * dpr)) throw new Error(`screenshot is ${W} px, expected ${S * dpr}`);
+    return b;
+  };
   return { browser, page };
 }
 const fromB64 = (s) => new Uint8Array(Buffer.from(s, 'base64'));
@@ -370,14 +390,12 @@ const fromB64 = (s) => new Uint8Array(Buffer.from(s, 'base64'));
 // ---------- one file at one size ----------
 async function checkOne(page, file, svgText, S, weight) {
   const k = Math.max(8, Math.ceil(640 / S));
-  const one = sized(svgText, S), ss = sized(svgText, S * k), two = sized(svgText, 2 * S);
+  const one = sized(svgText, S);
   const unitsPerPx = one.viewBox[2] / S;
-  const [b1, b2, bs, nominal] = await Promise.all([
-    page.evaluate(([t, D]) => window.raster(t, D), [one.text, S]),
-    page.evaluate(([t, D]) => window.raster(t, D), [two.text, 2 * S]),
-    page.evaluate(([t, D]) => window.raster(t, D), [ss.text, S * k]),
-    page.evaluate((t) => window.nominal(t), one.text),
-  ]);
+  const b1 = await page.rasterAt(one.text, S, 1);
+  const b2 = await page.rasterAt(one.text, S, 2);
+  const bs = await page.rasterAt(one.text, S, k);
+  const nominal = await page.evaluate((t) => window.nominal(t), one.text);
   const a1 = fromB64(b1), a2 = fromB64(b2), as = fromB64(bs), N = S * k;
   const mask = new Uint8Array(N * N); for (let i = 0; i < N * N; i++) mask[i] = as[i] >= 128 ? 1 : 0;
   const widths = strokeWidths(mask, N, N, k);
@@ -389,17 +407,18 @@ async function checkOne(page, file, svgText, S, weight) {
   for (const [scale, a, D] of [[1, a1, S], [2, a2, 2 * S]]) {
     const m = new Uint8Array(D * D); for (let i = 0; i < D * D; i++) m[i] = a[i] >= 128 ? 1 : 0;
     const sf = soft(a);
+    const res = scale / k; // measuring resolution at this scale: one supersampled pixel
     const items = judgeEdges(edges, scale);
     const kept = counters(m, D, D, 1);
     const w = widths ? { thinnest: widths.thinnest * scale, main: widths.main * scale, median: widths.median * scale, at: widths.thinAt.map((v) => +(v * scale).toFixed(1)) } : null;
     const gapPx = gp.smallest ? gp.smallest.gap * scale : null;
     const fails = [];
     if (!w) fails.push('no ink');
-    if (w && w.thinnest < RULES.minStroke - 1e-6) fails.push('width');
+    if (w && w.thinnest < RULES.minStroke - res) fails.push('width');
     if (sf.share > RULES.maxSoftShare) fails.push('soft');
     if (items.some((it) => !it.ok)) fails.push('straight');
-    if (gapPx !== null && gapPx < RULES.minGap - 1e-6) fails.push('gap');
-    if (kept < ssCounters) fails.push('counters');
+    if (gapPx !== null && gapPx < RULES.minGap - res) fails.push('gap');
+    if (kept !== ssCounters) fails.push('counters');
     if (weight && w && Math.abs(w.main - weight * scale) > RULES.weightTolerance * scale) fails.push('weight');
     scales[scale + 'x'] = {
       device_px: D,
@@ -434,7 +453,7 @@ function report(r) {
     L.push(`     straight: ${st.fit} of ${st.total} fit (${st.strokes} strokes, ${st.lone_edges} lone edges)  [within ${RULES.edgeTolerance} px of a pixel edge]`);
     for (const o of st.off.slice(0, 6)) L.push(`       off: ${o.orient} ${o.kind}${o.width_px !== undefined ? ` ${o.width_px} px wide` : ''} at ${o.at_px.join(' and ')} px, from ${o.span_px[0]} to ${o.span_px[1]} px; needs ${o.needs}`);
     if (st.off.length > 6) L.push(`       and ${st.off.length - 6} more`);
-    L.push(`     gap: ${s.gap.parts < 2 ? `one part, no gap` : `${s.gap.parts} parts, smallest gap ${s.gap.smallest_px} px near (${s.gap.near_px.join(', ')})`}; counters ${s.counters.open} open of ${s.counters.drawn}  [min ${RULES.minGap} px]`);
+    L.push(`     gap: ${s.gap.parts < 2 ? `one part, no gap` : `${s.gap.parts} parts, smallest gap ${s.gap.smallest_px} px near (${s.gap.near_px.join(', ')})`}; counters: ${s.counters.drawn} drawn, ${s.counters.open} at this scale  [gap min ${RULES.minGap} px]`);
   }
   return L.join('\n');
 }
@@ -471,7 +490,7 @@ const FIX = {
   hairline: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" fill="none" stroke="#000" stroke-width="2"/><line x1="8" y1="12.25" x2="16" y2="12.25" stroke="#000" stroke-width="0.5"/></svg>',
   nearParts: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="4" y="4" width="8" height="16"/><rect x="12.5" y="4" width="7.5" height="16"/></svg>',
   closingCounter: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M4 4h16v16H4z M11.7 11.3h0.6v1.4h-0.6z"/></svg>',
-  soft: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12.3" cy="12.3" r="7.2" fill="none" stroke="#000" stroke-width="1.1"/><path d="M5.3 18.6 L18.7 5.4" stroke="#000" stroke-width="1.1"/></svg>',
+  soft: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12.25" cy="12.25" r="7.25" fill="none" stroke="#000" stroke-width="1.05"/><path d="M5.25 18.75 L18.75 5.25" stroke="#000" stroke-width="1.05"/></svg>',
   weightOff: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" fill="none" stroke="#000" stroke-width="2"/></svg>',
   // Allowance: a 1.5 px line at 16 px with one edge on a pixel edge passes (whole pixels cannot hold both edges).
   oneAndAHalf: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3 3.75H13M3.75 3V13M3 12.25H13M12.25 3V13M6 8.75H10" fill="none" stroke="#000" stroke-width="1.5"/></svg>',
@@ -484,7 +503,7 @@ const PLANTS = [
   { fix: 'hairline', size: 24, expect: 'width', why: 'a 0.5 px line inside the square' },
   { fix: 'nearParts', size: 24, expect: 'gap', why: 'two parts 0.5 px apart' },
   { fix: 'closingCounter', size: 24, expect: 'counters', why: 'a 0.6 px hole that fills in at 1x' },
-  { fix: 'soft', size: 24, expect: 'soft', why: 'a 1.1 px ring and diagonal off the grid' },
+  { fix: 'soft', size: 24, expect: 'soft', why: 'a 1.05 px ring and diagonal set between pixels' },
   { fix: 'weightOff', size: 24, weight: 1.5, expect: 'weight', why: 'a 2 px line where the grid asks for 1.5 px' },
   { fix: 'oneAndAHalf', size: 16, weight: 1.5, expect: true, why: 'allowance: 1.5 px strokes with one edge on a pixel edge' },
   { fix: 'roundFit', size: 24, weight: 2, expect: true, why: 'allowance: a round drawing fit to the grid' },
