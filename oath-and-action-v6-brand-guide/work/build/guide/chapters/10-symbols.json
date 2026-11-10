@@ -25,7 +25,7 @@
       "before_rule": "10.4",
       "number": 3,
       "title": "Size and surface",
-      "line": "A drawing reads from 48 px, a short list reads at 24 px, and each surface takes its own edition."
+      "line": "A drawing reads from 48 px, a short list reads at 24 px, and each surface takes its own edition."
     },
     {
       "before_rule": "10.6",
@@ -37,7 +37,7 @@
       "before_rule": "10.9",
       "number": 5,
       "title": "Before you set it",
-      "line": "Check a drawing beside its look-alikes, and copy the atlas’s own marks exactly."
+      "line": "Check a drawing beside its neighbors, and copy the atlas’s own marks exactly."
     }
   ],
   "rules": [
@@ -104,7 +104,7 @@
       "id": "10.2",
       "title": "Build every drawing on one box, with one line, round ends and one red part.",
       "rule": [
-        "Every Civic Line drawing sits in a square box 128 units on a side. Its line is one weight, from 2.68 to 3.35 units, with round ends and round corners. One part of the drawing carries the red accent: the detail a reader should see first, such as the door of the hall in Local government. The rest is ink.",
+        "Every Civic Line drawing sits in a square box 128 units on a side. Its line is one weight, from 2.68 to 3.35 units, with round ends and round corners. One part of the drawing carries the red accent: the detail a reader should see first, such as the door of the hall in Local government. The rest is ink.",
         "A subject with no drawing, such as Bill or State house, takes its word alone until a drawing made this way is approved by our founder and editor."
       ],
       "tokens": [
@@ -120,7 +120,7 @@
       },
       "correct": {
         "specimen": "s-10-2-correct",
-        "caption": "Local government on its box at three times its master, with the keylines that place it, then at 128, 64 and 48 px. The door carries the red."
+        "caption": "Local government on its box at three times its master, with the keylines that place it, then at 128, 64 and 48 px. The door carries the red."
       },
       "failure": {
         "specimen": "s-10-2-failure",
@@ -129,11 +129,11 @@
       "specs": [
         {
           "label": "Box",
-          "value": "128 by 128 units, viewBox 0 0 128 128, transparent"
+          "value": "128 by 128 units, viewBox 0 0 128 128, transparent"
         },
         {
           "label": "Line",
-          "value": "2.68 to 3.35 units, one width in each drawing; 1.01 to 1.26 px at 48 px"
+          "value": "2.68 to 3.35 units, one width in each drawing; 1.01 to 1.26 px at 48 px"
         },
         {
           "label": "Ends and corners",
@@ -166,7 +166,7 @@
       "id": "10.3",
       "title": "Keep each drawing in its whole box, at the size its file gives it.",
       "rule": [
-        "Each file has already placed its drawing in the box. A drawing grows toward 116 of the 128 units, but never past 1.25 times the scale the whole set shares, so a compact drawing keeps room around it and a wide one fills the box across. Set the box at the size you need, and leave the drawing where the file put it.",
+        "Each file has already placed its drawing in the box. A drawing grows toward 116 of the 128 units, but never past 1.25 times the scale the whole set shares, so a compact drawing keeps room around it and a wide one fills the box across. Set the box at the size you need, and leave the drawing where the file put it.",
         "Give every symbol in a row, a list or a menu the same box size."
       ],
       "tokens": [
@@ -180,24 +180,24 @@
       },
       "correct": {
         "specimen": "s-10-3-correct",
-        "caption": "Three drawings in 96 px boxes, each box outlined. Healthcare and Local government stop at the cap with a 3.35-unit line, and Competition remedies for search and ad markets fills its box across with a 2.68-unit line, so their lines measure 2.51 and 2.01 px here."
+        "caption": "Three drawings in 96 px boxes, each box outlined. Healthcare and Local government stop at the cap with a 3.35-unit line, and Competition remedies for search and ad markets fills its box across with a 2.68-unit line, so their lines measure 2.51 and 2.01 px here."
       },
       "failure": {
         "specimen": "s-10-3-failure",
-        "caption": "<strong>Fails Rule 10.3.</strong> The same three with each box trimmed to its ink and set at 96 px. Healthcare grows the most, its line thickens to 3.83 px, and the row stops reading as one set."
+        "caption": "<strong>Fails Rule 10.3.</strong> The same three with each box trimmed to its ink and set at 96 px. Healthcare grows the most, its line thickens to 3.83 px, and the row stops reading as one set."
       },
       "specs": [
         {
           "label": "Fill",
-          "value": "Up to 116 of 128 units, at most 1.25 times the shared scale"
+          "value": "Up to 116 of 128 units, at most 1.25 times the shared scale"
         },
         {
           "label": "At the cap",
-          "value": "92 drawings, line 3.35 units"
+          "value": "92 drawings, line 3.35 units"
         },
         {
-          "label": "Filling 116 units",
-          "value": "32 drawings, line 2.68 to 3.35 units"
+          "label": "Filling 116 units",
+          "value": "32 drawings, line 2.68 to 3.35 units"
         },
         {
           "label": "Center",
@@ -216,10 +216,10 @@
     },
     {
       "id": "10.4",
-      "title": "Set topic and atlas symbols at 48 px or larger, and at 24 px only from the list of 41.",
+      "title": "Set topic and atlas symbols at 48 px or larger, and at 24 px only from the list of 41.",
       "rule": [
-        "A topic or atlas symbol starts at 48 px, where every line is at least one pixel wide. Forty-one drawings still read at 24 px, and only those may be set there, in one color. Four of the 41 are the pillar icons, which take chapter 09’s own drawings at that size, so 37 topic and atlas symbols remain for 24 px. No topic or atlas symbol is set at 16 px.",
-        "A kicker, the short line above a headline, may hold one topic icon from those 37, at 24 px, 8 px before the topic’s own word (Rule 01.21)."
+        "A topic or atlas symbol starts at 48 px, where every line is at least one pixel wide. Forty-one drawings still read at 24 px, and only those may be set there, in one color. Four of the 41 are the pillar icons, which take chapter 09’s own drawings at that size, so 37 topic and atlas symbols remain for 24 px. No topic or atlas symbol is set at 16 px.",
+        "A kicker, the short line above a headline, may hold one topic icon from those 37, at 24 px, 8 px before the topic’s own word (Rule 01.21)."
       ],
       "tokens": [
         "oa.size.icon.large",
@@ -228,41 +228,41 @@
       ],
       "why": {
         "text": [
-          "Each drawing is one thin line on a 128-unit box, so at 24 px its line measures half a pixel and turns gray. A reviewer set every drawing at 128, 64, 32 and 24 px on Newsprint and named the 41 whose subject still reads at 24 px. The rest need 48 px before a reader can name them."
+          "Each drawing is one thin line on a 128-unit box, so at 24 px its line measures half a pixel and turns gray. A reviewer set every drawing at 128, 64, 32 and 24 px on Newsprint and named the 41 whose subject still reads at 24 px. The rest need 48 px before a reader can name them."
         ],
         "basis": "Design judgment, approved by our founder and editor in November 2026"
       },
       "correct": {
         "specimen": "s-10-4-correct",
-        "caption": "Public records, on the list, from 128 down to 24 px, and Congress, off the list, down to 48 px. Below, the 24 px icon in a kicker, one color, 8 px before its word."
+        "caption": "Public records, on the list, from 128 down to 24 px, and Congress, off the list, down to 48 px. Below, the 24 px icon in a kicker, one color, 8 px before its word."
       },
       "failure": {
         "specimen": "s-10-4-failure",
-        "caption": "<strong>Fails Rule 10.4.</strong> A topics menu with each drawing at 16 px. At this size the line is under half a pixel, and the six drawings become gray marks a reader cannot tell apart."
+        "caption": "<strong>Fails Rule 10.4.</strong> A topics menu with each drawing at 16 px. At this size the line is under half a pixel, and the six drawings become gray marks a reader cannot tell apart."
       },
       "specs": [
         {
           "label": "Floor",
-          "value": "48 px for any of the 124",
+          "value": "48 px for any of the 124",
           "token": "oa.size.icon.large"
         },
         {
-          "label": "24 px",
+          "label": "24 px",
           "value": "Only the 41: CL-001, CL-004, CL-006, CL-010, CL-013, CL-019, CL-020, CL-021, CL-022, CL-023, CL-024, CL-028, CL-031, CL-032, CL-039, CL-040, CL-047, CL-048, CL-050, CL-051, CL-054, CL-057, CL-060, CL-061, CL-067, CL-068, CL-070, CL-071, CL-072, R-05, R-06, R-08, R-09, R-14, R-15, R-17, R-19, R-23, R-27, R-37, R-45",
           "token": "oa.size.icon.medium"
         },
         {
-          "label": "16 px",
+          "label": "16 px",
           "value": "Never for a topic or atlas symbol",
           "token": "oa.size.icon.small"
         },
         {
           "label": "Line",
-          "value": "0.50 to 0.63 px at 24 px; 1.01 to 1.26 px at 48 px"
+          "value": "0.50 to 0.63 px at 24 px; 1.01 to 1.26 px at 48 px"
         },
         {
           "label": "Kicker icon",
-          "value": "24 px, one color, 8 px before its word"
+          "value": "24 px, one color, 8 px before its word"
         }
       ],
       "files": [
@@ -274,7 +274,7 @@
         "06"
       ],
       "builders": [
-        "Check the ID against the list before you set a symbol under 48 px. A drawing that is not on it goes to 48 px, or gives way to its word."
+        "Check the ID against the list before you set a symbol under 48 px. A drawing that is not on it goes to 48 px, or gives way to its word."
       ]
     },
     {
@@ -282,7 +282,7 @@
       "title": "Match the edition to the surface, and use only the six tiles.",
       "rule": [
         "Each drawing comes in four editions that share every coordinate. Red-Black and Black serve Newsprint and White. Red-Newsprint and Newsprint serve Charcoal. Newsprint alone serves Prussian, where red never sits.",
-        "On a tile, a drawing takes one of six: a square, a rounded square or a circle, in Charcoal or in Newsprint. Charcoal is the default tile for the app icon and avatars. A two-color tile starts at 72 px square, 76 px rounded and 80 px round."
+        "On a tile, a drawing takes one of six: a square, a rounded square or a circle, in Charcoal or in Newsprint. Charcoal is the default tile for the app icon and avatars. A two-color tile starts at 72 px square, 76 px rounded and 80 px round."
       ],
       "tokens": [
         "oa.component.icon.ink.onNewsprint",
@@ -297,7 +297,7 @@
       },
       "correct": {
         "specimen": "s-10-5-correct",
-        "caption": "Local government in its four editions, each on its own surface, then the six tiles at 80 px with their smallest two-color sizes."
+        "caption": "Local government in its four editions, each on its own surface, then the six tiles at 80 px with their smallest two-color sizes."
       },
       "failure": {
         "specimen": "s-10-5-failure",
@@ -325,11 +325,11 @@
         },
         {
           "label": "Two-color tile",
-          "value": "From 72 px square, 76 px rounded, 80 px round"
+          "value": "From 72 px square, 76 px rounded, 80 px round"
         },
         {
           "label": "One-color tile",
-          "value": "From 48, 52 and 52 px; 72, 76 and 80 px for the 30 drawings that need 48 px on their own"
+          "value": "From 48, 52 and 52 px; 72, 76 and 80 px for the 30 drawings that need 48 px on their own"
         },
         {
           "label": "Never",
@@ -404,7 +404,7 @@
       "id": "10.7",
       "title": "Give a symbol its red only where it stands alone or marks the current item.",
       "rule": [
-        "A drawing that stands alone at 48 px or larger keeps its red accent, bare on Newsprint, as signature red. In a row or a menu every drawing goes one color, and only the current one keeps its red. Under 48 px every drawing is one color.",
+        "A drawing that stands alone at 48 px or larger keeps its red accent, bare on Newsprint, as signature red. In a row or a menu every drawing goes one color, and only the current one keeps its red. Under 48 px every drawing is one color.",
         "Signature red does not count against a view’s one working red (Rule 05.3)."
       ],
       "tokens": [
@@ -419,7 +419,7 @@
       },
       "correct": {
         "specimen": "s-10-7-correct",
-        "caption": "A menu in one color with Testify current, then the same drawing standing alone at 128 px with its red."
+        "caption": "A menu in one color with Testify current, then the same drawing standing alone at 128 px with its red."
       },
       "failure": {
         "specimen": "s-10-7-failure",
@@ -428,15 +428,15 @@
       "specs": [
         {
           "label": "Accent",
-          "value": "Signature red, from 48 px",
+          "value": "Signature red, from 48 px",
           "token": "oa.component.icon.accent.onNewsprint"
         },
         {
           "label": "Current item",
-          "value": "Its red, its word in bold and a 2 px underline"
+          "value": "Its red, its word in bold and a 2 px underline"
         },
         {
-          "label": "Under 48 px",
+          "label": "Under 48 px",
           "value": "One color, the ink token",
           "token": "oa.component.icon.ink.onNewsprint"
         }
@@ -492,28 +492,29 @@
     },
     {
       "id": "10.9",
-      "title": "Check a symbol beside its look-alikes before you set it.",
+      "title": "Check a symbol beside its neighbors before you set it.",
       "rule": [
-        "Some drawings share parts: a house, a page, a person at a desk. Before you set one, look at it beside the drawings it could be taken for, at the size you will use, and pick the one whose word names your subject. The groups in this rule are the ones to check first."
+        "Drawings for close subjects share parts: a house, a page, a chamber, a person at a desk. Before you set one, look at it beside the drawings for nearby subjects, at the size you will use, and pick the one whose word names your subject. The groups in this rule are the ones to check first.",
+        "Bill and State house have no drawing. Set those words alone."
       ],
       "why": {
         "text": [
-          "At a glance a reader sees outlines, so two drawings with a similar outline read as one subject until the word arrives. A likeness test compares the drawings at 24 px, where only the outline is left, and scores each pair from 0 to 1. Among the 7,381 pairs in the set, one pair in a hundred scores 0.91 or more. Housing scarcity and Owner home equity score 0.70."
+          "A likeness test compares two drawings at 24 px, where only their outlines are left, and scores the pair from −1 to 1. Among the 7,626 pairs in the set, one pair in a hundred scores 0.91 or more. Most groups here score well under that, so the trouble lies in the subject: Testify and Public meeting score −0.09, yet a builder looking for a hearing can still reach for the meeting. Doctrine favoring the appointing coalition and Local government come closest, at 0.84, closer than 88 pairs in a hundred."
         ],
         "basis": "Design judgment, measured with the likeness test"
       },
       "correct": {
         "specimen": "s-10-9-correct",
-        "caption": "Six groups to check, each with what tells its drawings apart and their likeness at 24 px."
+        "caption": "Six groups to check, each with what tells its drawings apart and their outline likeness at 24 px."
       },
       "failure": {
         "specimen": "s-10-9-failure",
-        "caption": "<strong>Fails Rule 10.9.</strong> A card that asks readers to testify carries Public meeting, its look-alike: a speaker at a lectern facing a room. Testify draws the witness below the officials who hear the testimony."
+        "caption": "<strong>Fails Rule 10.9.</strong> A card that asks readers to testify carries Public meeting, its neighbor: a speaker at a lectern in front of residents. Testify draws the witness below the officials who hear the testimony."
       },
       "specs": [
         {
           "label": "Likeness test",
-          "value": "Drawings compared at 24 px; 0.91 or more is as alike as the closest one pair in a hundred"
+          "value": "Outlines compared at 24 px; 0.91 or more is as alike as the closest one pair in a hundred"
         },
         {
           "label": "No drawing",
@@ -554,15 +555,15 @@
       "specs": [
         {
           "label": "Arrowhead",
-          "value": "10 by 8 px on a 2 px line, 13 by 11 on 3 px, 22 by 18 on 6 px"
+          "value": "10 by 8 px on a 2 px line, 13 by 11 on 3 px, 22 by 18 on 6 px"
         },
         {
           "label": "Sign tag",
-          "value": "14 px body and 6 px point, 16 px tall, with an 8 by 2 px sign, on a 2 px line"
+          "value": "14 px body and 6 px point, 16 px tall, with an 8 by 2 px sign, on a 2 px line"
         },
         {
           "label": "Authority",
-          "value": "An open diamond 14 by 11 px"
+          "value": "An open diamond 14 by 11 px"
         },
         {
           "label": "Evidence",
@@ -570,7 +571,7 @@
         },
         {
           "label": "Delay",
-          "value": "One, two or three ticks, 5 px apart, the first 12 px from the tail"
+          "value": "One, two or three ticks, 5 px apart, the first 12 px from the tail"
         }
       ],
       "files": [
@@ -590,37 +591,37 @@
       "after_rule": "10.1",
       "specimen": "s-10-lib-01",
       "label": "The library: Participation",
-      "caption": "26 drawings at 64 px in one color, each with its word and ID. Open the list under the sheet for each drawing’s meaning and smallest size."
+      "caption": "26 drawings at 64 px in one color, each with its word and ID. Open the list under the sheet for each drawing’s meaning and smallest size."
     },
     {
       "after_rule": "10.1",
       "specimen": "s-10-lib-02",
       "label": "The library: Government and technology",
-      "caption": "24 drawings at 64 px in one color, each with its word and ID. Open the list under the sheet for each drawing’s meaning and smallest size."
+      "caption": "24 drawings at 64 px in one color, each with its word and ID. Open the list under the sheet for each drawing’s meaning and smallest size."
     },
     {
       "after_rule": "10.1",
       "specimen": "s-10-lib-03",
       "label": "The library: Economy and issues",
-      "caption": "24 drawings at 64 px in one color, each with its word and ID. Open the list under the sheet for each drawing’s meaning and smallest size."
+      "caption": "24 drawings at 64 px in one color, each with its word and ID. Open the list under the sheet for each drawing’s meaning and smallest size."
     },
     {
       "after_rule": "10.1",
       "specimen": "s-10-lib-04",
       "label": "The library: Reforms R-01 to R-25",
-      "caption": "25 drawings at 64 px in one color, each with its word and ID. Open the list under the sheet for each drawing’s meaning and smallest size."
+      "caption": "25 drawings at 64 px in one color, each with its word and ID. Open the list under the sheet for each drawing’s meaning and smallest size."
     },
     {
       "after_rule": "10.1",
       "specimen": "s-10-lib-05",
       "label": "The library: Reforms R-26 to R-50",
-      "caption": "25 drawings at 64 px in one color, each with its word and ID. Open the list under the sheet for each drawing’s meaning and smallest size."
+      "caption": "25 drawings at 64 px in one color, each with its word and ID. Open the list under the sheet for each drawing’s meaning and smallest size."
     },
     {
       "after_rule": "10.4",
       "specimen": "s-10-list-41",
-      "label": "The 41 that read at 24 px",
-      "caption": "The 37 topic and atlas drawings that may be set at 24 px, shown at 24 px in one color. The four pillar icons complete the list."
+      "label": "The 41 that read at 24 px",
+      "caption": "The 37 topic and atlas drawings that may be set at 24 px, shown at 24 px in one color. The four pillar icons complete the list."
     }
   ],
   "related_chapters": [

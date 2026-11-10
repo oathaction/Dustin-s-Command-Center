@@ -464,8 +464,8 @@
  "s-10-1-correct": {
   "chapter": "10",
   "rule": "10.1",
-  "width_px": 600,
-  "alt": "The six kinds of symbol, one to a row, each with an example at the size it is used. Pillar icon: Track at 48 px, which marks which of our four pillars a piece serves; chapter 09. Topic symbol: Local government at 48 px, which names the subject of a piece; chapter 10. Atlas symbol: Entrenched majority control, Variable D7, at 48 px, which names a variable or a reform in our systems atlas; chapter 10. Status mark: a step ring with the number 2, for Step 2 of 6: Hearing, which says where a bill or a record stands; chapter 11. Utility icon: the search magnifier at 24 px beside the word Search; chapter 11. Encoding glyph: a line with a tag holding a plus sign, read as raises; shown here and taught in chapter 15.",
+  "width_px": null,
+  "alt": "The six kinds of symbol, one to a row, each with an example at the size it is used. Pillar icon: Track at 48 px, which marks which of our four pillars a piece serves; chapter 09. Topic symbol: Local government at 48 px, which names the subject of a piece; chapter 10. Atlas symbol: Entrenched majority control, Variable D7, at 48 px, which names a variable or a reform in our systems atlas; chapter 10. Status mark: a step ring with the number 2, for Step 2 of 6: Hearing, which says where a bill or a record stands; chapter 11. Utility icon: the search magnifier at 24 px beside the word Search; chapter 11. Encoding glyph: a line with a tag holding a plus sign, read as raises; shown in Rule 10.10 and taught in chapter 15.",
   "illustrative": false,
   "notes": "D2-515; readable list (D2-255). Status ring drawn at the tracker's 24 px size with the ring.now token; encoding tag drawn by System 1's wire_marks (DR-36).",
   "readable": true
@@ -474,14 +474,14 @@
   "chapter": "10",
   "rule": "10.1",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. A Brand files page at 360 px whose Downloads button carries the Public records drawing, an open drawer of files, at 24 px in place of the download icon.",
+  "alt": "Labeled Failure case: do not publish. A Brand files page at 360 px whose Downloads button carries the Public records drawing, a page rising out of an open folder, at 24 px in place of the download icon.",
   "illustrative": false,
   "notes": "Topic drawing standing for an interface action (D2-515). CL-048 is on the list of 41, so the size is allowed; the class is the fault."
  },
  "s-10-10-correct": {
   "chapter": "10",
   "rule": "10.10",
-  "width_px": 600,
+  "width_px": null,
   "alt": "The atlas’s encoding glyphs on White, each drawn on a short line with its words. Sign: a tag with a plus sign, raises, the two move the same way; a tag with a minus sign, lowers. Authority: an open diamond at the tip, decides, with no sign. Evidence: Documented and Well supported as solid lines, Plausible dashed, Contested dash and dot, Hypothesis dotted. Delay: one tick for under 2 years, two for 2 to 10 years, three for over 10 years. Where a reform acts: the line and its arrowhead in Pillar Red at a heavier weight. A note says loops carry their type in their ID and in words.",
   "illustrative": false,
   "notes": "Drawn with System 1's own wire_marks, ARROW, TAG, BEND and textures (DR-36), on White as System 1 is; red on White measures 4.17 to 1 and takes no keyline there.",
@@ -504,32 +504,32 @@
   "chapter": "10",
   "rule": "10.2",
   "width_px": 600,
-  "alt": "Local government drawn at three times its 128 px master on its 128-unit box, with a grid every 16 units. A dashed square marks the 116 units a drawing may fill, and a small cross marks the center at 64, 64. Notes point to the box, to the dashed square, to the left wall, whose line is 3.35 units wide with round ends and corners, and to the door, the one red part. Below, the same drawing at true size: 128 px with a 3.35 px line, 64 px with a 1.68 px line and 48 px with a 1.26 px line.",
+  "alt": "Local government drawn at three times its 128 px master on its 128-unit box, with a grid every 16 units. A dashed square marks the 116 units a drawing may fill. Notes point to the box, to the dashed square, to the right wall of the central block, whose line is 3.35 units wide with round ends and corners, and to the door, the one red part. Below, the same drawing at true size: 128 px with a 3.35 px line, 64 px with a 1.68 px line and 48 px with a 1.26 px line.",
   "illustrative": false,
   "notes": "The drawing is CL-031 from the sprite (D2-590); keylines from the construction file.",
-  "height_px": 624
+  "height_px": 636
  },
  "s-10-2-failure": {
   "chapter": "10",
   "rule": "10.2",
-  "width_px": 480,
-  "alt": "Labeled Failure case: do not publish. A row of four symbols at 64 px with their words: Public records, Policy, Bill and Petition. Bill is a filled stock document icon with square corners, solid black among three Civic Line line drawings.",
+  "width_px": 360,
+  "alt": "Labeled Failure case: do not publish. A row of four symbols at 64 px with their words: Public records, Policy, Bill and Petition. Bill is a filled stock document icon with square corners, solid black among three Civic Line line drawings.",
   "illustrative": false,
   "notes": "The stock glyph is drawn for this failure only, on a 24-unit grid; Bill has no Civic Line drawing (DR-137)."
  },
  "s-10-3-correct": {
   "chapter": "10",
   "rule": "10.3",
-  "width_px": 600,
-  "alt": "Three drawings in 96 px boxes, each box outlined with a dashed line: Healthcare, compact, with room around it and a 2.51 px line; Local government, with a 2.51 px line; and Competition remedies for search and ad markets, which fills the box across with a 2.01 px line. The lines look alike.",
+  "width_px": 360,
+  "alt": "Three drawings in 96 px boxes, each box outlined with a dashed line: Healthcare, compact, with room around it and a 2.51 px line; Local government, with a 2.51 px line; and Competition remedies for search and ad markets, which fills its box across with a 2.01 px line. The three lines look alike.",
   "illustrative": false,
   "notes": "Each box is the file's own 128-unit box (DR-08). Line widths from the inventory in use, stroke_units times 96/128."
  },
  "s-10-3-failure": {
   "chapter": "10",
   "rule": "10.3",
-  "width_px": 600,
-  "alt": "Labeled Failure case: do not publish. The same three drawings, each with its box trimmed to its ink and set at 96 px. Healthcare grows to fill its box and its line thickens to 3.83 px; Local government to 2.89 px; Competition remedies for search and ad markets to 2.22 px. The three no longer match.",
+  "width_px": 360,
+  "alt": "Labeled Failure case: do not publish. The same three drawings, each with its box trimmed to its ink and set at 96 px. Healthcare grows to fill its box and its line thickens to 3.83 px; Local government to 2.89 px; Competition remedies for search and ad markets to 2.22 px. The three no longer match.",
   "illustrative": false,
   "notes": "The trim is a viewBox cut to each drawing's ink extent from the inventory in use (extent_units, centered on 64, 64)."
  },
@@ -537,7 +537,7 @@
   "chapter": "10",
   "rule": "10.4",
   "width_px": 600,
-  "alt": "Two size ladders and a kicker at true size. Public records, which is on the list of 41, at 128, 96, 64, 48 and 24 px, with lines of 3.35, 2.51, 1.68, 1.26 and 0.63 px. Congress, which is not on the list, at 128, 96, 64 and 48 px, and an empty dashed square where 24 px would be. Below, a story card whose kicker reads Explainer, then the Public records drawing at 24 px directly before the words Public records, over the headline How to ask your town for its meeting minutes.",
+  "alt": "Two size ladders and a kicker at true size. Public records, which is on the list of 41, at 128, 96, 64, 48 and 24 px, with lines of 3.35, 2.51, 1.68, 1.26, 0.63 px. Congress, which is not on the list, at 128, 96, 64 and 48 px, and an empty dashed square where 24 px would be, marked not allowed. Below, a story card whose kicker reads Explainer, then the Public records drawing at 24 px directly before the words Public records, over the headline How to ask your town for its meeting minutes.",
   "illustrative": false,
   "notes": "Ladder sizes on whole pixels; CL-048 is on the list of 41 (construction file, section 10). The headline is a service line, not an invented fact."
  },
@@ -545,15 +545,15 @@
   "chapter": "10",
   "rule": "10.4",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. A topics menu at 360 px with a Civic Line drawing at 16 px before each word: Voting, Public meeting, Local government, Healthcare, Education, Childcare. At 16 px each drawing is a gray smudge, and no two can be told apart.",
+  "alt": "Labeled Failure case: do not publish. A topics menu at 360 px with a Civic Line drawing at 16 px before each word: Voting, Public meeting, Local government, Healthcare, Education, Childcare. At 16 px each drawing is a gray smudge, and no two can be told apart.",
   "illustrative": false,
   "notes": "Topic symbols at 16 px, which no topic or atlas symbol takes (DR-136)."
  },
  "s-10-5-correct": {
   "chapter": "10",
   "rule": "10.5",
-  "width_px": 600,
-  "alt": "Local government in its four editions at 96 px, each on its own surface: Red-Black on Newsprint, with the door in red; Black on White; Red-Newsprint on Charcoal, with Newsprint lines and a red door; Newsprint alone on Prussian, with no red. Below, the six tiles at 80 px, all two-color: square, rounded square and circle on Charcoal with Newsprint lines, then the same three on Newsprint with Charcoal lines, each with its two-color minimum of 72, 76 or 80 px. A note says Charcoal is the default tile for the app icon and avatars.",
+  "width_px": null,
+  "alt": "Local government in its four editions at 96 px, each on its own surface: Red-Black on Newsprint, with the door in red; Black on White; Red-Newsprint on Charcoal, with Newsprint lines and a red door; Newsprint alone on Prussian, with no red. Below, the six tiles at 80 px, all two-color: square, rounded square and circle in Charcoal with Newsprint lines, then the same three in Newsprint with Charcoal lines, set on a Charcoal band so their edges show. Each carries its two-color minimum of 72, 76 or 80 px. A note says Charcoal is the default tile for the app icon and avatars.",
   "illustrative": false,
   "notes": "Tile factors 0.68, 0.66 and 0.62 (D2-40); CL-031 takes optical scale 1.0 and no offset (inventory in use). The rounded outline is read from the October tile file (D2-41)."
  },
@@ -561,7 +561,7 @@
   "chapter": "10",
   "rule": "10.5",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. Local government in its Red-Newsprint edition on a Prussian panel at 96 px, with Newsprint lines and a Pillar Red door.",
+  "alt": "Labeled Failure case: do not publish. Local government in its Red-Newsprint edition on a Prussian panel at 96 px, with Newsprint lines and a Pillar Red door.",
   "illustrative": false,
   "notes": "Labeled failure: red on Prussian, which Rule 05.3 never allows.",
   "check_exempt": [
@@ -571,8 +571,8 @@
  "s-10-6-correct": {
   "chapter": "10",
   "rule": "10.6",
-  "width_px": 600,
-  "alt": "Six symbols at 64 px, each with its word and, for an atlas element, its typed chip. Congress: As a topic, in a story’s subject line. Congressional capacity, Variable D1: In the atlas, where it stands for the variable. Congress’s own experts, Reform R-13: A reform, in its short form. Public investment in research and infrastructure, Variable EC2: An atlas variable, under the atlas’s full name. Lasting public investment, Reform R-36: A reform with a similar subject, kept apart by its own name. Rejected option: term limits for legislators, Reform R-35: The rejected option keeps the word Rejected.",
+  "width_px": null,
+  "alt": "Six symbols at 64 px, each with its word and, for an atlas element, its typed chip. Congress: As a topic, in a story’s subject line. Congressional capacity, Variable D1: In the atlas, where it stands for the variable. Congress’s own experts, Reform R-13: A reform, under its short name. Public investment in research and infrastructure, Variable EC2: An atlas variable, under the atlas’s full name. Lasting public investment, Reform R-36: A reform on a close subject, kept apart by its own name. Rejected option: term limits for legislators, Reform R-35: The rejected option keeps the word Rejected.",
   "illustrative": false,
   "notes": "Every word from the editor's label table (DR-185).",
   "readable": true
@@ -581,31 +581,31 @@
   "chapter": "10",
   "rule": "10.6",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. Four Civic Line drawings at 64 px in a row with no words: three houses with different marks and a person sending an envelope along an arrow.",
+  "alt": "Labeled Failure case: do not publish. Four Civic Line drawings at 64 px in a row with no words: three houses, one with a missing neighbor drawn in dashes, one with a rising chart and one with a grocery bag and a price tag, and a person joined by an arrow to an envelope.",
   "illustrative": false,
   "notes": "The drawings are CL-053, CL-054, CL-063, CL-061."
  },
  "s-10-7-correct": {
   "chapter": "10",
   "rule": "10.7",
-  "width_px": 600,
-  "alt": "A menu of five symbols at 48 px with their words: Voting, Petition, Public meeting, Testify, Contact an official. All are one color except Testify, the current item, whose microphone is red and whose word is bold and underlined. Below, Testify alone at 128 px with its red microphone, bare on Newsprint, beside its word.",
+  "width_px": 360,
+  "alt": "A menu of five symbols at 48 px with their words: Voting, Petition, Public meeting, Testify, Contact an official. All are one color except Testify, the current item, whose microphone is red and whose word is bold and underlined. Below, Testify alone at 128 px with its red microphone, bare on Newsprint, beside its word.",
   "illustrative": false,
   "notes": "Rule 05.3 as DR-66 words it; R11."
  },
  "s-10-7-failure": {
   "chapter": "10",
   "rule": "10.7",
-  "width_px": 600,
-  "alt": "Labeled Failure case: do not publish. The same menu with every drawing keeping its red part: the ballot, the pen, the speaker, the microphone and the speech mark all in red, so the current item, Testify, no longer stands out.",
+  "width_px": 360,
+  "alt": "Labeled Failure case: do not publish. The same menu with every drawing keeping its red part: the ballot’s edge, the pen, the speaker’s head, the microphone and the speech mark, so the current item, Testify, no longer stands out.",
   "illustrative": false,
   "notes": "Labeled failure: five red accents in one row."
  },
  "s-10-8-correct": {
   "chapter": "10",
   "rule": "10.8",
-  "width_px": 600,
-  "alt": "An atlas list for Domain D02, Elections and representation, shown as a typed chip and its name in words, with no drawing. Under it, the domain’s variables, each with its drawing at 48 px, its chip and its name: Variable B5, Turnout equality; Variable C1, Safe seats; Variable C2, Primary decisiveness; Variable C3, Electoral pressure; Variable C4, Incumbent control of election rules; Variable C5, Sanction applied. Then the reforms that act on them: Reform R-01, All-party primaries with ranked general elections; Reform R-02, Ranked-choice voting for single-winner races.",
+  "width_px": null,
+  "alt": "An atlas list for Domain D02, Elections and representation, shown as a typed chip and its name in words, with no drawing. Under it, the domain’s variables, each with its drawing at 48 px, its chip and its name: Variable B5, Turnout equality; Variable C1, Safe seats; Variable C2, Primary decisiveness; Variable C3, Electoral pressure; Variable C4, Incumbent control of election rules; Variable C5, Sanction applied. Then the reforms that act on them: Reform R-01, All-party primaries with ranked general elections; Reform R-02, Ranked-choice voting for single-winner races.",
   "illustrative": false,
   "notes": "Domain membership and reform targets read from the atlas model (work/extract/atlas-v7-data.json).",
   "readable": true
@@ -614,32 +614,32 @@
   "chapter": "10",
   "rule": "10.8",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. A list of three atlas domains, each given a borrowed topic drawing at 48 px: Domain D02, Elections and representation, with the Voting drawing; Domain D03, Money, lobbying and influence, with the Money in politics drawing; Domain D04, Congress, agencies and public services, with the Congress drawing.",
+  "alt": "Labeled Failure case: do not publish. A list of three atlas domains, each given a borrowed topic drawing at 48 px: Domain D02, Elections and representation, with the Voting drawing; Domain D03, Money, lobbying and influence, with the Money in politics drawing; Domain D04, Congress, agencies and public services, with the Congress drawing.",
   "illustrative": false,
   "notes": "Domains stay words and typed chips (round 2 brief)."
  },
  "s-10-9-correct": {
   "chapter": "10",
   "rule": "10.9",
-  "width_px": 600,
-  "alt": "Six groups of look-alike symbols, each at 64 px with its word and ID, then what tells them apart and their likeness at 24 px. Testify and Public meeting: Testify seats three officials on a raised dais above one witness at a microphone. Public meeting stands one speaker at a lectern, facing the people in the room. Contact an official and Household income: Contact an official joins a person to an official at a desk, with a speech mark on the line. Household income sends an envelope from a person along an arrow. Congress and Entrenched majority control: Congress shows the chamber in session under its three-tier rostrum. Entrenched majority control fences the chamber, and a ballot’s arrow stops at the fence. Housing scarcity and Owner home equity and Cost of essentials: All three hold a house. Housing scarcity counts too few homes, Owner home equity adds a rising chart, and Cost of essentials sets the house among other bills. Doctrine favoring the appointing coalition and Local government: Both stand on a building’s front. Court alignment holds the scales, and Local government is a hall with a door. Public records and Evidence: Both hold a page. Public records files it in an open drawer, and Evidence checks it under a magnifier.",
+  "width_px": null,
+  "alt": "Six groups of drawings for close subjects, each at 64 px with its word and ID, then what tells them apart and their outline likeness at 24 px. Testify and Public meeting: Testify seats one witness at a table below three officials on a raised dais. Public meeting puts a speaker at a lectern in front of residents. Contact an official and Household income: Contact an official runs a line with a speech mark from a person to an official at a desk. Household income runs an arrow from a person to an envelope. Congress and Entrenched majority control: Congress shows the chamber in session under its three-tier rostrum. Entrenched majority control fences the chamber, and a ballot’s arrow stops at the fence. Housing scarcity and Owner home equity and Cost of essentials: All three hold a house. Housing scarcity draws the missing home in dashes between two houses, Owner home equity sets a rising chart against the house, and Cost of essentials puts a grocery bag and a price tag in front of it. Doctrine favoring the appointing coalition and Local government: Doctrine favoring the appointing coalition sets a balance scale before a sealed ruling. Local government is a low town hall with a tall doorway. Public records and Evidence: Both hold a page. Public records lifts it out of an open folder, and Evidence rests a magnifier with a check on it.",
   "illustrative": false,
-  "notes": "Likeness from the engineer's icon_likeness_check.js, run on the civic-line-v6 Black files as new drawings (flag 0.9092, watch 0.8678).",
+  "notes": "Likeness from the engineer's icon_likeness_check.js functions on the 124 drawings in use (flag 0.9092, watch 0.8678).",
   "readable": true
  },
  "s-10-9-failure": {
   "chapter": "10",
   "rule": "10.9",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. An Illustrative Act card at 360 px headed Testify on the library budget at the March 10 hearing, with the Public meeting drawing at 64 px and its word: one speaker at a lectern facing an audience. The card asks readers to sign up to speak to the council’s budget committee.",
+  "alt": "Labeled Failure case: do not publish. An Illustrative Act card at 360 px headed Testify on the library budget at the March 10 hearing, with the Public meeting drawing at 64 px and its word: one speaker at a lectern in front of residents. The card asks readers to sign up to speak to the council’s budget committee.",
   "illustrative": true,
   "notes": "Illustrative: the hearing, its date and its committee are invented."
  },
  "s-10-lib-01": {
   "chapter": "10",
   "rule": null,
-  "width_px": 600,
-  "alt": "Contact sheet: Participation, 26 Civic Line drawings in one color at 64 px, each with its word and ID: CL-001 Voting, CL-002 Representation, CL-003 Registration, CL-004 Petition, CL-005 Public meeting, CL-006 Cross-cutting civic ties, CL-007 Turnout equality, CL-008 Affective polarization, CL-009 Safe seats, CL-010 Primary decisiveness, CL-011 Electoral pressure, CL-012 Incumbent control of election rules, CL-013 Sanction applied, CL-014 Entrenched majority control, CL-015 Money in politics, CL-016 Lobbying, CL-017 Policy tilt to insiders, CL-018 Warranted trust, CL-019 Explain, CL-020 Track, CL-021 Connect, CL-022 Act, CL-023 Evidence, CL-024 Feedback loop, CL-073 Testify, CL-074 Contact an official. A closed list below the sheet gives each drawing’s meaning and smallest size.",
+  "width_px": null,
+  "alt": "Contact sheet: Participation, 26 Civic Line drawings in one color at 64 px, each with its word and ID: Voting, CL-001; Representation, CL-002; Registration, CL-003; Petition, CL-004; Public meeting, CL-005; Cross-cutting civic ties, CL-006; Turnout equality, CL-007; Affective polarization, CL-008; Safe seats, CL-009; Primary decisiveness, CL-010; Electoral pressure, CL-011; Incumbent control of election rules, CL-012; Sanction applied, CL-013; Entrenched majority control, CL-014; Money in politics, CL-015; Lobbying, CL-016; Policy tilt to insiders, CL-017; Warranted trust, CL-018; Explain, CL-019; Track, CL-020; Connect, CL-021; Act, CL-022; Evidence, CL-023; Feedback loop, CL-024; Testify, CL-073; Contact an official, CL-074. A list below the sheet, closed at first, gives each drawing’s meaning and smallest size.",
   "illustrative": false,
   "notes": "D2-591, D2-717: one contact sheet image, work/build/guide/specimens/img/20261110_Ch10-Library-01-Participation.png, 1024 by 512 px, 16 colors, drawn from civic-line-v6/black at 128 px a drawing and shown at 64 px. Each cell draws its square with <use> of the one <image>. Words and meanings from the editor's label table (DR-185).",
   "interactive": true
@@ -647,8 +647,8 @@
  "s-10-lib-02": {
   "chapter": "10",
   "rule": null,
-  "width_px": 600,
-  "alt": "Contact sheet: Government and technology, 24 Civic Line drawings in one color at 64 px, each with its word and ID: CL-025 Congress, CL-026 Executive unilateralism, CL-027 Doctrine favoring the appointing coalition, CL-028 Oversight and enforcement, CL-029 Public service quality, CL-030 State and local experimentation, CL-031 Local government, CL-032 Local news supply, CL-033 Hostile-content exposure, CL-034 What new technology can do, CL-035 Population patterns and residential sorting, CL-036 Trade and the movement of capital, CL-037 Foreign interference, CL-038 Major external shocks, CL-039 How platforms rank feeds and seek attention, CL-040 Concentration of platforms and digital advertising, CL-041 Use of AI at work, CL-042 Concentration of AI funding and computing power, CL-043 Government’s ability to build and run digital services, CL-044 Data centers’ demand on the electricity grid, CL-045 Use of pricing algorithms, CL-046 Computing capacity built for AI, CL-047 Data rights, CL-048 Public records. A closed list below the sheet gives each drawing’s meaning and smallest size.",
+  "width_px": null,
+  "alt": "Contact sheet: Government and technology, 24 Civic Line drawings in one color at 64 px, each with its word and ID: Congress, CL-025; Executive unilateralism, CL-026; Doctrine favoring the appointing coalition, CL-027; Oversight and enforcement, CL-028; Public service quality, CL-029; State and local experimentation, CL-030; Local government, CL-031; Local news supply, CL-032; Hostile-content exposure, CL-033; What new technology can do, CL-034; Population patterns and residential sorting, CL-035; Trade and the movement of capital, CL-036; Foreign interference, CL-037; Major external shocks, CL-038; How platforms rank feeds and seek attention, CL-039; Concentration of platforms and digital advertising, CL-040; Use of AI at work, CL-041; Concentration of AI funding and computing power, CL-042; Government’s ability to build and run digital services, CL-043; Data centers’ demand on the electricity grid, CL-044; Use of pricing algorithms, CL-045; Computing capacity built for AI, CL-046; Data rights, CL-047; Public records, CL-048. A list below the sheet, closed at first, gives each drawing’s meaning and smallest size.",
   "illustrative": false,
   "notes": "D2-591, D2-717: one contact sheet image, work/build/guide/specimens/img/20261110_Ch10-Library-02-Government-Tech.png, 1024 by 384 px, 16 colors, drawn from civic-line-v6/black at 128 px a drawing and shown at 64 px. Each cell draws its square with <use> of the one <image>. Words and meanings from the editor's label table (DR-185).",
   "interactive": true
@@ -656,8 +656,8 @@
  "s-10-lib-03": {
   "chapter": "10",
   "rule": null,
-  "width_px": 600,
-  "alt": "Contact sheet: Economy and issues, 24 Civic Line drawings in one color at 64 px, each with its word and ID: CL-049 Wealth concentration, CL-050 Worker bargaining power, CL-051 Market concentration, CL-052 Household security, CL-053 Housing scarcity, CL-054 Owner home equity, CL-055 Output produced per hour of work, CL-056 Public investment in research and infrastructure, CL-057 Workers’ share of income, CL-058 Concentration of stock ownership, CL-059 Where newly created credit goes, CL-060 Net support from taxes and public benefits, CL-061 Household income, CL-062 Household assets and debts, CL-063 Cost of essentials, CL-064 Costs of tariffs and trade rules, CL-065 Climate hazards and insurance costs, CL-066 Energy demand and emissions, CL-067 Healthcare, CL-068 Education, CL-069 Childcare, CL-070 Environment, CL-071 Policy, CL-072 Reform. A closed list below the sheet gives each drawing’s meaning and smallest size.",
+  "width_px": null,
+  "alt": "Contact sheet: Economy and issues, 24 Civic Line drawings in one color at 64 px, each with its word and ID: Wealth concentration, CL-049; Worker bargaining power, CL-050; Market concentration, CL-051; Household security, CL-052; Housing scarcity, CL-053; Owner home equity, CL-054; Output produced per hour of work, CL-055; Public investment in research and infrastructure, CL-056; Workers’ share of income, CL-057; Concentration of stock ownership, CL-058; Where newly created credit goes, CL-059; Net support from taxes and public benefits, CL-060; Household income, CL-061; Household assets and debts, CL-062; Cost of essentials, CL-063; Costs of tariffs and trade rules, CL-064; Climate hazards and insurance costs, CL-065; Energy demand and emissions, CL-066; Healthcare, CL-067; Education, CL-068; Childcare, CL-069; Environment, CL-070; Policy, CL-071; Reform, CL-072. A list below the sheet, closed at first, gives each drawing’s meaning and smallest size.",
   "illustrative": false,
   "notes": "D2-591, D2-717: one contact sheet image, work/build/guide/specimens/img/20261110_Ch10-Library-03-Economy-Issues.png, 1024 by 384 px, 16 colors, drawn from civic-line-v6/black at 128 px a drawing and shown at 64 px. Each cell draws its square with <use> of the one <image>. Words and meanings from the editor's label table (DR-185).",
   "interactive": true
@@ -665,8 +665,8 @@
  "s-10-lib-04": {
   "chapter": "10",
   "rule": null,
-  "width_px": 600,
-  "alt": "Contact sheet: Reforms R-01 to R-25, 25 Civic Line drawings in one color at 64 px, each with its word and ID: R-01 All-party primaries with ranked general elections, R-02 Ranked-choice voting for single-winner races, R-03 Proportional elections in multi-seat House districts, R-04 Independent citizen commissions draw election maps, R-05 Automatic voter registration, R-06 Hold local elections alongside November races, R-07 Public matching for small donations and vouchers, R-08 Disclose the original funders of political spending, R-09 Ban stock trading by members of Congress, R-10 Limits on lobbying and the revolving door, R-11 A Federal Election Commission able to act, R-12 Senate filibuster reform, R-13 Congress’s own experts, R-14 Automatic funding to prevent government shutdowns, R-15 Inspectors general with remedies that work, R-16 Supreme Court 18-year terms and enforceable ethics, R-17 Protect the career civil service, R-18 Expiring emergency powers and enforced spending law, R-19 Rules for drug-pricing middlemen (PBMs), R-20 Merger enforcement for consumers and workers, R-21 Faster labor-law remedies and first-contract arbitration, R-22 Industry-wide wage boards and sector bargaining, R-23 Minimum wage that rises with an index, R-24 Paid family and medical leave insurance, R-25 Full child tax credit for low-earning families. A closed list below the sheet gives each drawing’s meaning and smallest size.",
+  "width_px": null,
+  "alt": "Contact sheet: Reforms R-01 to R-25, 25 Civic Line drawings in one color at 64 px, each with its word and ID: All-party primaries with ranked general elections, R-01; Ranked-choice voting for single-winner races, R-02; Proportional elections in multi-seat House districts, R-03; Independent citizen commissions draw election maps, R-04; Automatic voter registration, R-05; Hold local elections alongside November races, R-06; Public matching for small donations and vouchers, R-07; Disclose the original funders of political spending, R-08; Ban stock trading by members of Congress, R-09; Limits on lobbying and the revolving door, R-10; A Federal Election Commission able to act, R-11; Senate filibuster reform, R-12; Congress’s own experts, R-13; Automatic funding to prevent government shutdowns, R-14; Inspectors general with remedies that work, R-15; Supreme Court 18-year terms and enforceable ethics, R-16; Protect the career civil service, R-17; Expiring emergency powers and enforced spending law, R-18; Rules for drug-pricing middlemen (PBMs), R-19; Merger enforcement for consumers and workers, R-20; Faster labor-law remedies and first-contract arbitration, R-21; Industry-wide wage boards and sector bargaining, R-22; Minimum wage that rises with an index, R-23; Paid family and medical leave insurance, R-24; Full child tax credit for low-earning families, R-25. A list below the sheet, closed at first, gives each drawing’s meaning and smallest size.",
   "illustrative": false,
   "notes": "D2-591, D2-717: one contact sheet image, work/build/guide/specimens/img/20261110_Ch10-Library-04-Reforms-01-25.png, 1024 by 512 px, 16 colors, drawn from civic-line-v6/black at 128 px a drawing and shown at 64 px. Each cell draws its square with <use> of the one <image>. Words and meanings from the editor's label table (DR-185).",
   "interactive": true
@@ -674,8 +674,8 @@
  "s-10-lib-05": {
   "chapter": "10",
   "rule": null,
-  "width_px": 600,
-  "alt": "Contact sheet: Reforms R-26 to R-50, 25 Civic Line drawings in one color at 64 px, each with its word and ID: R-26 Recession aid that starts automatically, R-27 IRS enforcement of taxes already owed, R-28 Taxing inherited gains and capital income, R-29 Baby bonds: publicly funded child accounts, R-30 More homes allowed by right near jobs, R-31 Childcare supply and pay for care workers, R-32 Public and philanthropic funding for local news, R-33 Citizen assemblies that officials must answer, R-34 Participatory budgeting: residents decide spending, R-35 Rejected option: term limits for legislators, R-36 Lasting public investment, R-37 Feed choice and data access for researchers, R-38 Limits on pricing software using rivals’ data, R-39 Government teams that build digital services, R-40 Notice and a voice for workers on AI, R-41 Large power users pay their grid costs, R-42 Congress votes on lasting tariffs, R-43 Building codes and mitigation against disaster losses, R-44 Competition remedies for search and ad markets, R-45 Verifiable elections with paper records and audits, R-46 Expand the House of Representatives, R-47 Fusion voting and public funding for parties, R-48 Agency independence after the Slaughter ruling, R-49 Civic work that crosses party lines, R-50 Popular-vote compact and constitutional amendment options. A closed list below the sheet gives each drawing’s meaning and smallest size.",
+  "width_px": null,
+  "alt": "Contact sheet: Reforms R-26 to R-50, 25 Civic Line drawings in one color at 64 px, each with its word and ID: Recession aid that starts automatically, R-26; IRS enforcement of taxes already owed, R-27; Taxing inherited gains and capital income, R-28; Baby bonds: publicly funded child accounts, R-29; More homes allowed by right near jobs, R-30; Childcare supply and pay for care workers, R-31; Public and philanthropic funding for local news, R-32; Citizen assemblies that officials must answer, R-33; Participatory budgeting: residents decide spending, R-34; Rejected option: term limits for legislators, R-35; Lasting public investment, R-36; Feed choice and data access for researchers, R-37; Limits on pricing software using rivals’ data, R-38; Government teams that build digital services, R-39; Notice and a voice for workers on AI, R-40; Large power users pay their grid costs, R-41; Congress votes on lasting tariffs, R-42; Building codes and mitigation against disaster losses, R-43; Competition remedies for search and ad markets, R-44; Verifiable elections with paper records and audits, R-45; Expand the House of Representatives, R-46; Fusion voting and public funding for parties, R-47; Agency independence after the Slaughter ruling, R-48; Civic work that crosses party lines, R-49; Popular-vote compact and constitutional amendment options, R-50. A list below the sheet, closed at first, gives each drawing’s meaning and smallest size.",
   "illustrative": false,
   "notes": "D2-591, D2-717: one contact sheet image, work/build/guide/specimens/img/20261110_Ch10-Library-05-Reforms-26-50.png, 1024 by 512 px, 16 colors, drawn from civic-line-v6/black at 128 px a drawing and shown at 64 px. Each cell draws its square with <use> of the one <image>. Words and meanings from the editor's label table (DR-185).",
   "interactive": true
@@ -683,8 +683,8 @@
  "s-10-list-41": {
   "chapter": "10",
   "rule": null,
-  "width_px": 600,
-  "alt": "The 37 topic and atlas drawings that may be set at 24 px, each at 24 px in one color with its word and ID: Voting, CL-001; Petition, CL-004; Cross-cutting civic ties, CL-006; Primary decisiveness, CL-010; Sanction applied, CL-013; Evidence, CL-023; Feedback loop, CL-024; Oversight and enforcement, CL-028; Local government, CL-031; Local news supply, CL-032; How platforms rank feeds and seek attention, CL-039; Concentration of platforms and digital advertising, CL-040; Data rights, CL-047; Public records, CL-048; Worker bargaining power, CL-050; Market concentration, CL-051; Owner home equity, CL-054; Workers’ share of income, CL-057; Net support from taxes and public benefits, CL-060; Household income, CL-061; Healthcare, CL-067; Education, CL-068; Environment, CL-070; Policy, CL-071; Reform, CL-072; Automatic voter registration, R-05; Hold local elections alongside November races, R-06; Disclose the original funders of political spending, R-08; Ban stock trading by members of Congress, R-09; Automatic funding to prevent government shutdowns, R-14; Inspectors general with remedies that work, R-15; Protect the career civil service, R-17; Rules for drug-pricing middlemen (PBMs), R-19; Minimum wage that rises with an index, R-23; IRS enforcement of taxes already owed, R-27; Feed choice and data access for researchers, R-37; Verifiable elections with paper records and audits, R-45. The other four on the list are the pillar icons, CL-019 Explain, CL-020 Track, CL-021 Connect, CL-022 Act, which take chapter 09’s own drawings at 24 px.",
+  "width_px": null,
+  "alt": "The 37 topic and atlas drawings that may be set at 24 px, each at 24 px in one color with its word and ID: Voting, CL-001; Petition, CL-004; Cross-cutting civic ties, CL-006; Primary decisiveness, CL-010; Sanction applied, CL-013; Evidence, CL-023; Feedback loop, CL-024; Oversight and enforcement, CL-028; Local government, CL-031; Local news supply, CL-032; How platforms rank feeds and seek attention, CL-039; Concentration of platforms and digital advertising, CL-040; Data rights, CL-047; Public records, CL-048; Worker bargaining power, CL-050; Market concentration, CL-051; Owner home equity, CL-054; Workers’ share of income, CL-057; Net support from taxes and public benefits, CL-060; Household income, CL-061; Healthcare, CL-067; Education, CL-068; Environment, CL-070; Policy, CL-071; Reform, CL-072; Automatic voter registration, R-05; Hold local elections alongside November races, R-06; Disclose the original funders of political spending, R-08; Ban stock trading by members of Congress, R-09; Automatic funding to prevent government shutdowns, R-14; Inspectors general with remedies that work, R-15; Protect the career civil service, R-17; Rules for drug-pricing middlemen (PBMs), R-19; Minimum wage that rises with an index, R-23; IRS enforcement of taxes already owed, R-27; Feed choice and data access for researchers, R-37; Verifiable elections with paper records and audits, R-45. The other four on the list are the pillar icons, CL-019 Explain, CL-020 Track, CL-021 Connect, CL-022 Act, which take chapter 09’s own drawings at 24 px.",
   "illustrative": false,
   "notes": "The list of 41 from the construction file, section 10 (DR-136, D2-587).",
   "readable": true

@@ -28,7 +28,10 @@ Steps, each run alone:
               engineer's pixel-fit check on the finals; captures every changed plate at 1440 and 390 px; and writes
               work/handoffs/phase-2/20261110_Promotion-Identity-Figures.json.
 
-Run: python3 -I work/build/scripts/phase-2/promotion_identity.py masters | specimens | checks <scratch dir>
+  density DIR The end mark's two drawings, each forced, beside a capital H at 1, 1.25, 1.5, 1.75 and 2 device pixels per
+              CSS pixel, at four positions of the line, for the threshold of its switch; adds key endmark_density.
+
+Run: python3 -I work/build/scripts/phase-2/promotion_identity.py masters | specimens | checks <scratch dir> | density <scratch dir>
 Then specimens again, so the chapters print the figures checks wrote, and checks again on the final page.
 """
 import hashlib
@@ -141,6 +144,161 @@ def specimens():
             LIB.INLINE_ALL[0] = False
     SP.write_letterhead = no_letterhead
     B.build()
+
+
+
+# ============================================================================================ density
+DENSITY_JS = r"""
+const fs = require('fs');
+const path = require('path');
+const { chromium } = require('playwright');
+const [html, out, scalesArg] = process.argv.slice(2);
+const scales = scalesArg.split(',').map(Number);
+(async () => {
+  const b = await chromium.launch();
+  const ids = JSON.parse(fs.readFileSync(html + '.ids.json', 'utf8'));
+  let fonts = [];
+  for (const scale of scales) {
+    const p = await b.newPage({ viewport: { width: 1400, height: 1200 }, deviceScaleFactor: scale });
+    await p.goto('file://' + html, { waitUntil: 'networkidle' });
+    await p.evaluate(() => document.fonts.ready);
+    fonts = await p.evaluate(() => [...document.fonts].filter((f) => f.status === 'loaded').map((f) => f.family + ' ' + f.weight));
+    for (const id of ids) await p.locator('#' + id).screenshot({ path: path.join(out, `${id}@${scale}x.png`) });
+    await p.close();
+  }
+  console.log(JSON.stringify({ fonts: [...new Set(fonts)] }));
+  await b.close();
+})();
+"""
+DENSITY_SCALES = (1, 1.25, 1.5, 1.75, 2)
+OFFSETS = (0, 0.25, 0.5, 0.75)
+
+
+def _b_shape(img, ground, b_cols, thresh=0.5):
+    """B's enclosed counters (background regions inside B's box that reach no edge, 4-connected, with ink at half
+    coverage or more) and the share of B's ink pixels that are soft (coverage between 5 and 95 percent)."""
+    im = img.convert("RGB")
+    px = im.load()
+    W, H = im.size
+    inkc = (0x12, 0x12, 0x12)
+    span = max(abs(a - b) for a, b in zip(ground, inkc))
+    x0, x1 = b_cols
+    cov = {(x, y): max(abs(a - b) for a, b in zip(px[x, y], ground)) / span for x in range(x0, x1 + 1) for y in range(H)}
+    ys = [y for y in range(H) if any(cov[(x, y)] > 0.18 for x in range(x0, x1 + 1))]
+    y0, y1 = ys[0], ys[-1]
+    bg = {(x, y) for x in range(x0, x1 + 1) for y in range(y0, y1 + 1) if cov[(x, y)] < thresh}
+    n = 0
+    while bg:
+        stack = [bg.pop()]
+        edge = False
+        while stack:
+            x, y = stack.pop()
+            if x in (x0, x1) or y in (y0, y1):
+                edge = True
+            for q in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                if q in bg:
+                    bg.remove(q)
+                    stack.append(q)
+        n += not edge
+    inked = [v for v in cov.values() if v > 0.05]
+    soft = sum(1 for v in inked if v < 0.95)
+    return n, round(soft / len(inked), 3)
+
+
+def density(scratch):
+    """The end mark at 1, 1.25, 1.5, 1.75 and 2 device pixels per CSS pixel, each drawing forced: the pixel master
+    (fit B) and the smooth drawing (the 16 px master at the cap height), beside a capital H of the same text, at 17 and
+    15 px, on Newsprint, with the line at four positions between pixels (D2-549). Per cell: B's device rows against
+    H's, the share of B's ink at full color, the share that is soft, and B's enclosed counters at half coverage."""
+    import stage_a_identity_s04 as S04
+    from PIL import Image
+    scratch = Path(scratch).resolve()
+    d = scratch / "density"
+    d.mkdir(parents=True, exist_ok=True)
+    tokens = (ROOT / "work/build/tokens/tokens.css").read_text()
+    cells, ids = [], []
+    LIB.INLINE_ALL[0] = True
+    try:
+        for text_px in (17, 15):
+            f, w, h = AMP_END[text_px]
+            draw = {"fit": LIB.svg_file(ID_DIR / f, h=h, decorative=True,
+                                        style="color:var(--oa-color-text-primary-on-newsprint);display:inline-block;vertical-align:0;margin-left:6px"),
+                    "smooth": S04.end_b(text_px).replace("margin-left:0.5em", "margin-left:6px")}
+            for kind, m in draw.items():
+                for o in OFFSETS:
+                    i = f"d-{kind}-{text_px}-{int(o * 100)}"
+                    ids.append(i)
+                    cells.append(f'<div id="{i}" style="width:max-content;height:44px;padding:{8 + o}px 8px 0;margin:0 0 8px 8px;'
+                                 f'background:var(--oa-color-surface-newsprint);{LIB.ty("body", size=text_px)};line-height:28px;'
+                                 f'color:var(--oa-color-text-primary-on-newsprint)">H{m}</div>')
+    finally:
+        LIB.INLINE_ALL[0] = False
+    html = scratch / "density.html"
+    html.write_text('<!doctype html><html><head><meta charset="utf-8">'
+                    '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Inter+Tight:wght@800&display=swap" rel="stylesheet">'
+                    f'<style>{tokens}</style><style>{LIB.CSS}body{{margin:0}}</style></head><body><div class="oai">{"".join(cells)}</div></body></html>')
+    Path(str(html) + ".ids.json").write_text(json.dumps(ids))
+    js = scratch / "density.js"
+    js.write_text(DENSITY_JS)
+    r = subprocess.run(["node", str(js), str(html), str(d), ",".join(f"{s:g}" for s in DENSITY_SCALES)], check=True,
+                       capture_output=True, text=True, cwd=str(ROOT / "work/build"))
+    out = {"fonts_loaded": json.loads(r.stdout.strip().splitlines()[-1])["fonts"], "offsets_px": list(OFFSETS),
+           "method": "Chromium at each device scale; rows and full color as in the stage B measure (ink over 18 percent "
+                     "coverage; full at 95 percent); soft = ink pixels between 5 and 95 percent; counters = enclosed "
+                     "background regions inside B's box at 50 percent coverage, 4-connected", "cells": {}}
+    ground = (0xDC, 0xD9, 0xD2)
+    for text_px in (17, 15):
+        for kind in ("fit", "smooth"):
+            for sc in DENSITY_SCALES:
+                per = []
+                for o in OFFSETS:
+                    img = Image.open(d / f"d-{kind}-{text_px}-{int(o * 100)}@{sc:g}x.png")
+                    t = max(1, round(2 * sc))
+                    img = img.crop((t, t, img.width - t, img.height - t))
+                    rr = rows_of(img, ground)
+                    # B's columns: everything after H's run
+                    im = img.convert("RGB")
+                    pxl = im.load()
+                    cols = [x for x in range(im.width) if any(max(abs(a - b) for a, b in zip(pxl[x, y], ground)) / 202 > 0.18 for y in range(im.height))]
+                    runs, start, prev = [], cols[0], cols[0]
+                    for x in cols[1:]:
+                        if x != prev + 1:
+                            runs.append((start, prev))
+                            start = x
+                        prev = x
+                    runs.append((start, prev))
+                    counters, soft = _b_shape(img, ground, (runs[1][0], runs[-1][1]))
+                    per.append({"offset_px": o, "b_device_rows": rr["b_rows"][1] - rr["b_rows"][0] + 1,
+                                "h_device_rows": rr["h_rows"][1] - rr["h_rows"][0] + 1,
+                                "top_rows_over_h": rr["h_rows"][0] - rr["b_rows"][0], "last_rows_under_h": rr["b_rows"][1] - rr["h_rows"][1],
+                                "full_share": rr["b_full_share"], "soft_share": soft, "counters": counters})
+                rng = lambda k: [min(q[k] for q in per), max(q[k] for q in per)]   # noqa: E731
+                out["cells"][f"{kind}-{text_px}-{sc:g}x"] = {
+                    "b_device_rows": rng("b_device_rows"), "top_rows_over_h": rng("top_rows_over_h"),
+                    "last_rows_under_h": rng("last_rows_under_h"), "full_share": rng("full_share"), "soft_share": rng("soft_share"),
+                    "counters": rng("counters"), "per_offset": per}
+    # enlarged views for a look: each drawing at offset 0, every scale, eight CSS pixels to a view pixel's eight
+    for text_px in (17, 15):
+        row = []
+        for kind in ("fit", "smooth"):
+            for sc in DENSITY_SCALES:
+                im = Image.open(d / f"d-{kind}-{text_px}-0@{sc:g}x.png").convert("RGB")
+                k = max(1, round(8 / sc))
+                row.append(im.resize((im.width * k, im.height * k), Image.NEAREST))
+        W = sum(i.width for i in row[:5]) + 60
+        H = max(i.height for i in row) * 2 + 30
+        sheet = Image.new("RGB", (W, H), (255, 255, 255))
+        x = 10
+        for j, im in enumerate(row):
+            if j == 5:
+                x = 10
+            sheet.paste(im, (x, 10 if j < 5 else 20 + max(i.height for i in row)))
+            x += im.width + 10
+        sheet.save(scratch / f"density-{text_px}-fit-top-smooth-bottom.png")
+    figs = json.loads(FIGS.read_text()) if FIGS.exists() else {}
+    figs["endmark_density"] = out
+    FIGS.write_text(json.dumps(figs, indent=1, ensure_ascii=False) + "\n")
+    return out
 
 
 # ============================================================================================ checks
@@ -531,6 +689,10 @@ def checks(scratch):
     figs["pixel_fit_check"] = pixel_fit(scratch)
     figs["hashes"] = hashes()
     figs["plates"] = shots["plates"]
+    if FIGS.exists():                       # the density step's figures, written on their own, stay
+        old = json.loads(FIGS.read_text())
+        if "endmark_density" in old:
+            figs["endmark_density"] = old["endmark_density"]
     FIGS.write_text(json.dumps(figs, indent=1, ensure_ascii=False) + "\n")
     print("wrote", FIGS.relative_to(ROOT))
     return figs
@@ -542,6 +704,10 @@ if __name__ == "__main__":
         masters()
     elif what == "specimens":
         specimens()
+    elif what == "density" and len(sys.argv) > 2:
+        f = density(sys.argv[2])
+        for k, v in f["cells"].items():
+            print(k, {q: v[q] for q in ("b_device_rows", "top_rows_over_h", "last_rows_under_h", "full_share", "soft_share", "counters")})
     elif what == "checks" and len(sys.argv) > 2:
         f = checks(sys.argv[2])
         print(json.dumps({k: f[k] for k in ("pages", "masters_alone", "endmark_in_page", "l6")}, indent=1))

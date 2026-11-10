@@ -1656,3 +1656,31 @@ The studio asked three questions before promoting the approved drawings, and lis
 | D2-791 | The self-test reads fixture families made from the October set and the approved option files in a temporary folder | It must run before, during and after the makers' work, and those files stay as the record (D2-718) |
 | D2-792 | The look-alike check's masters are the set in use, `civic-line-v6/`, by default, and `--masters october` keeps the October set | D2-748; Board 6 measured the October masters, so the self-test still proves the port on them before it checks the set in use |
 | D2-793 | All my builds, captures and check outputs went to the scratch folder; I did not rebuild any board page | The brief keeps scratch outputs out of `work/build` and boards untouched |
+
+## Promotion of the approved drawings, continued, November 10, 2026
+
+### Identity designer, promotion (`20261110_Promotion-Identity-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-794 | The end mark shows its pixel master only at exactly 1 device pixel per CSS pixel (`resolution: 1dppx`, or `-webkit-device-pixel-ratio: 1`), and the smooth drawing on every other screen | The density figures above: between 1x and 2x the pixel master softens or steps unevenly, and the smooth drawing keeps its counters and its shape |
+| D2-795 | The switch lives in the specimen's own style (`END_CSS` in `stage_a_identity_s04.py`), and a browser that reads neither query keeps the smooth drawing | The shell's CSS is the engineer's, and the smooth drawing is acceptable on every screen |
+| D2-796 | `end_b` stays today's smooth drawing and the new `end_mark` pairs it with the pixel master | The stage B board script and the Q1 to Q4 measurement call `end_b` for today's end mark, so a rerun keeps their records |
+| D2-797 | Rule 04.6's plate adds a third paragraph, in 15 px text on Newsprint | The 12 px master serves 15 px text, and no plate drew it |
+| D2-798 | The end mark's fit figures in chapters 03 and 04 come from the stage B measurement Dustin approved the fits on, copied into the promotion figures with its source named; the built page confirms the rows at 1x | They are the approved figures, measured at four positions of the line, which the built page cannot vary |
+| D2-799 | `stage_a_identity_lib.LOCK` names the rebuilt 24 and 48 px files, and `LOCK_RECT` keeps the earlier two for the scripts that drew earlier boards | The stage B script traces from the earlier files and compares with them, and the fix-pass board shows them |
+| D2-800 | `stage_a_identity_s1.py` writes the November 8 48 px master and L3 under their own names (`LOCK_RECT[48]`, `L3["masthead_rect"]`) | Otherwise a rerun would write the November 8 drawing over the rebuilt file in use |
+| D2-801 | L3's new masthead master is the November 8 file with only the nested lockmark's contents and the title changed, asserted by the script | The brief: a master that embeds a changed drawing gets a new dated file beside it, and nothing else in it moves |
+| D2-802 | The October L3 master gets no new file | It draws the lockmark as circles from the display drawing, so no rebuilt path is in it |
+| D2-803 | The masthead failure (`s-03-6-failure`) draws the masthead master in use, and its alt, note and Rule 03.6's caption now name the capitals under 14 px and L3 under its 196 px minimum | A producer squeezes the file in use, and with the rebuilt master the lockmark's nodes no longer run together |
+| D2-804 | `stage_a_identity_s03.l6` centers by default without the dots; the fix-pass and stage B board scripts ask for `centered=False` | The guide takes the final, and the boards keep the L6 they showed |
+| D2-805 | The feed figures the chapters print now come from `20261110_Promotion-Identity-Figures.json`, read before the Q1 to Q4 file for the keys `feed` and `endmark_fit` | The feed test ran again with the rebuilt master, and the Q1 to Q4 file stays the record of November 8 |
+| D2-806 | The pixel comparison runs on a control page built from the same chapters and specimens with the earlier files swapped back | Two pages that differ only in the drawings put each pair at the same place; Chromium shades a curve's edge a few levels differently at different places (up to 6 levels on 98 pixels of the wordmark, none in the lockmark) |
+| D2-807 | The letterhead's print proof is not printed again | It sits in `work/boards/phase-2/stage-a/proofs/`, and the brief keeps boards closed to me; the specimen's note says the proof carries the earlier 24 px file |
+
+### Main session, on the identity designer's questions
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-808 | Two density rules stand: the end mark draws its fit on 1x screens only and today's drawing above 1x; the pillar icons draw their fits below 2x and the masters from 2x. Chapters 03 and 09 each state their own rule with its reason | Measured: the end mark's fit is softer than the smooth drawing at 1.25x and steps unevenly at 1.5x, while the pillar master's line falls to 0.95 px and its counters fill below 2x (D2-786 to D2-793 and the identity notes) |
+| D2-809 | The identity designer may write a new dated letterhead proof, `20261110_Letterhead-Proof.pdf` with its HTML, beside the earlier ones in `work/boards/phase-2/stage-a/proofs/`, and point the letterhead specimen at it; nothing else in that folder changes | The proof should show the lockmark file in use (DR-181), and a new dated file beside the old ones keeps board A's record whole |

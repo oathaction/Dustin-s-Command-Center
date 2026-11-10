@@ -1,0 +1,822 @@
+<title>Reader Check</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="A short phone test of draft designs for a civic publication.">
+<meta name="chart-views" content="welcome">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@700&display=swap" rel="stylesheet">
+<style>
+/* Layout: one calm reading column, one question per screen. Stimuli sit inside the 16 px gutter at the phone size
+   they were drawn for, never scaled up. A single light look on purpose: every reader sees the stimuli on the same
+   Newsprint ground, whatever their phone's theme. */
+:root {
+  --newsprint: #DCD9D2;   /* page ground (locked palette) */
+  --ink: #121212;         /* Charcoal: text, selected answers, primary buttons; 13.29:1 on Newsprint */
+  --ink-2: #4E535B;       /* Deep Stone: secondary text, 5.49:1 on Newsprint */
+  --rule: #5D636D;        /* Stone: control borders and hairlines, 4.29:1 on Newsprint */
+  --track: #C4C1BB;       /* progress track: Newsprint 12% toward Charcoal in sRGB, decorative */
+  --ink-hover: #252525;   /* primary button hover: Charcoal 8% toward White in sRGB */
+  --press: #D0CDC6;       /* hover and press: Newsprint 6% toward Charcoal in sRGB */
+  --field: #FFFFFF;       /* White: text fields */
+  --on-ink-2: #A3A19C;    /* Dim Newsprint: secondary text on Charcoal, 7.26:1 */
+  --font-text: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-head: "Inter Tight", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --col: 34rem;
+  --tap: 48px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { margin: 0; background: var(--newsprint); color: var(--ink); font: 400 17px/1.5 var(--font-text); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--newsprint); }
+.gut { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.col { max-width: var(--col); margin: 0 auto; }
+
+/* header: what this is, where you are, and during a look, the time left */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--newsprint); border-bottom: 1px solid var(--rule); }
+.bar-in { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-block: 12px 9px; }
+.bar-title, .bar-step { font-size: 13px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; }
+.bar-step { color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bar-step.timing { color: var(--ink); }
+.rail { display: flex; gap: 3px; height: 3px; margin-bottom: 10px; }
+.rail span { flex: 1; background: var(--track); }
+.rail span.done { background: var(--ink); }
+.clock { height: 3px; margin-bottom: 10px; background: var(--track); }
+.clock-fill { height: 100%; width: 100%; background: var(--ink); }
+
+main { display: block; padding-block: 28px 64px; outline: none; }
+.screen { display: flex; flex-direction: column; gap: 18px; }
+.screen > * { margin: 0; }
+h1, h2 { font-family: var(--font-head); font-weight: 700; letter-spacing: -0.012em; text-wrap: balance; margin: 0; outline: none; }
+h1 { font-size: 32px; line-height: 1.1; }
+h2 { font-size: 25px; line-height: 1.2; }
+.eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-2); font-family: var(--font-text); font-variant-numeric: tabular-nums; }
+h2.eyebrow { letter-spacing: .07em; }
+p { margin: 0; max-width: 62ch; }
+.hint { font-size: 15px; color: var(--ink-2); margin-top: -8px; }
+.hint.tight { margin-top: -12px; }
+.note { font-size: 15px; font-weight: 600; padding: 10px 12px; border: 1px solid var(--rule); background: var(--press); }
+.mode { font-size: 15px; font-weight: 500; }
+.mode::before { content: ""; display: inline-block; width: 9px; height: 9px; margin-right: 8px; border: 2px solid var(--ink); border-radius: 50%; vertical-align: 1px; }
+.mode.saved::before { background: var(--ink); }
+.sr { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* controls */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: var(--tap); padding: 0 20px; border-radius: 3px; font: 600 17px/1.2 var(--font-text); cursor: pointer; text-align: center; -webkit-tap-highlight-color: transparent; }
+.btn.primary { background: var(--ink); color: var(--newsprint); border: 1px solid var(--ink); }
+.btn.primary:hover { background: var(--ink-hover); }
+.btn.line { background: transparent; color: var(--ink); border: 1px solid var(--ink); min-height: 44px; font-size: 15px; padding: 0 16px; }
+.btn.line:hover { background: var(--press); }
+.btn.text { background: transparent; color: var(--ink-2); border: 0; min-height: 44px; padding: 0 4px; font-size: 15px; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+.btn.text:hover { color: var(--ink); }
+.btn:focus-visible, input:focus-visible, textarea:focus-visible, .choice:has(input:focus-visible), .seg label:has(input:focus-visible) { outline: 3px solid var(--ink); outline-offset: 2px; }
+.btn.again { align-self: flex-start; }
+.actions { display: flex; flex-direction: column; align-items: stretch; gap: 6px; margin-top: 6px; }
+.actions .btn.text { align-self: center; }
+@media (min-width: 600px) {
+  .actions { flex-direction: row; align-items: center; gap: 20px; }
+  .actions .btn.primary { min-width: 12rem; }
+}
+label.field { font-weight: 600; font-size: 15px; display: block; margin-bottom: 6px; }
+input[type="text"], textarea { width: 100%; font: 400 17px/1.4 var(--font-text); color: var(--ink); background: var(--field); border: 1px solid var(--rule); border-radius: 3px; padding: 12px; }
+textarea { min-height: 7.5em; resize: vertical; }
+.msg { font-size: 15px; font-weight: 600; padding-left: 10px; border-left: 3px solid var(--ink); }
+.msg:empty { height: 0; padding: 0; border: 0; margin-top: -14px; }
+form { display: flex; flex-direction: column; gap: 14px; margin: 0; }
+fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+
+/* answer choices: the selected one fills with ink and its ring takes a check, so the state shows by shape too */
+.choices { display: flex; flex-direction: column; gap: 8px; }
+.choice { position: relative; display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 11px 14px; border: 1px solid var(--rule); border-radius: 3px; cursor: pointer; background: transparent; -webkit-tap-highlight-color: transparent; }
+.choice:hover { background: var(--press); }
+.choice input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.dot { flex: none; width: 22px; height: 22px; border: 2px solid var(--ink); border-radius: 50%; display: grid; place-items: center; }
+.dot svg { width: 14px; height: 14px; opacity: 0; }
+.ct { display: flex; flex-direction: column; min-width: 0; }
+.cl { font-weight: 500; }
+.cs { font-size: 15px; color: var(--ink-2); line-height: 1.35; }
+.choice.on, .choice:has(input:checked) { background: var(--ink); color: var(--newsprint); border-color: var(--ink); }
+.choice.on .dot, .choice:has(input:checked) .dot { border-color: var(--newsprint); background: var(--newsprint); }
+.choice.on .dot svg, .choice:has(input:checked) .dot svg { opacity: 1; }
+.choice.on .cs, .choice:has(input:checked) .cs { color: var(--on-ink-2); }
+.arrow { padding: 0 .3em; }
+
+/* the stimuli */
+.stage { display: flex; justify-content: center; }
+.stage img { display: block; max-width: 100%; height: auto; }
+.stage-chart { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding-block: 14px; }
+.stage-icon { min-height: 280px; align-items: center; }
+.stage-icon img { width: 48px; height: 48px; }
+.sheet { display: flex; flex-direction: column; gap: 30px; padding-block: 30px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.sheet-row { display: flex; flex-wrap: wrap; gap: 30px 36px; }
+.sheet-cell { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.sheet-cell img, .rate-mark img { max-width: none; }
+.sheet-n { font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; line-height: 1; }
+.masts { display: flex; flex-direction: column; gap: 22px; width: 100%; }
+.mast { display: flex; flex-direction: column; gap: 8px; }
+.mast-label { font: 700 20px/1 var(--font-head); }
+.mast-band { display: flex; align-items: center; min-height: 72px; padding: 14px 16px; border-top: 1px solid var(--rule); border-bottom: 2px solid var(--ink); }
+.mast-band img { max-width: 100%; height: auto; }
+.loading { min-height: 200px; display: grid; place-items: center; font-size: 15px; color: var(--ink-2); }
+
+/* sentence pairs */
+.pair { display: flex; flex-direction: column; border-top: 1px solid var(--rule); }
+.pair-item { display: grid; grid-template-columns: 2rem 1fr; gap: 4px 10px; padding-block: 16px; border-bottom: 1px solid var(--rule); }
+.pair-k { font: 700 22px/1.2 var(--font-head); }
+.pair-s { font-size: 19px; line-height: 1.45; }
+
+/* the 16 px rating rows */
+.rates { display: flex; flex-direction: column; border-top: 1px solid var(--rule); }
+.rate { display: grid; gap: 10px; padding-block: 14px; border-bottom: 1px solid var(--rule); }
+.rate legend { float: left; width: 100%; padding: 0; font-size: 13px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-2); }
+.rate legend + * { clear: both; }
+.rate-mark { min-height: 16px; display: flex; align-items: center; }
+.seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.seg label { position: relative; display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 0 6px; border: 1px solid var(--rule); border-radius: 3px; font-size: 15px; font-weight: 500; text-align: center; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.seg label:hover { background: var(--press); }
+.seg input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.seg svg { width: 13px; height: 13px; display: none; flex: none; }
+.seg label.on, .seg label:has(input:checked) { background: var(--ink); color: var(--newsprint); border-color: var(--ink); }
+.seg label.on svg, .seg label:has(input:checked) svg { display: block; }
+
+/* the end */
+.copy textarea { min-height: 14em; font-size: 15px; line-height: 1.45; }
+.status { font-size: 15px; font-weight: 600; }
+.status:empty { height: 0; margin-top: -18px; }
+
+@media (min-width: 600px) {
+  main { padding-block: 44px 80px; }
+  h1 { font-size: 38px; }
+  h2 { font-size: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .clock { display: none; }
+}
+/* forced colors: the system palette drops backgrounds, so the rail and clock draw in its text color, and a chosen
+   answer takes a heavier border beside its check */
+@media (forced-colors: active) {
+  .rail span.done, .clock-fill { forced-color-adjust: none; background: CanvasText; }
+  .rail span, .clock { forced-color-adjust: none; background: GrayText; }
+  .choice.on, .choice:has(input:checked), .seg label.on, .seg label:has(input:checked) { border-width: 3px; }
+}
+</style>
+
+<header class="bar" id="bar">
+  <div class="gut"><div class="col">
+    <div class="bar-in"><span class="bar-title">Draft design test</span><span class="bar-step" id="bar-step">Step 1 of 8</span></div>
+    <div class="rail" id="rail" aria-hidden="true"></div>
+    <div class="clock" id="clock" aria-hidden="true" hidden><div class="clock-fill" id="clock-fill"></div></div>
+  </div></div>
+</header>
+<main id="app" class="gut" tabindex="-1">
+  <div class="col">
+    <section class="screen" data-view-root="welcome">
+      <h1>A short test of a draft design</h1>
+      <p>This test needs JavaScript. If nothing changes in a moment, open the link in your phone's browser.</p>
+    </section>
+  </div>
+</main>
+
+<script>
+(() => {
+'use strict';
+document.documentElement.lang = 'en';
+const CONFIG = /*CONFIG*/{};
+const TEST = (window.__RC_TEST__ && typeof window.__RC_TEST__ === 'object') ? window.__RC_TEST__ : {};
+const SCALE = typeof TEST.timeScale === 'number' && TEST.timeScale > 0 ? TEST.timeScale : 1;
+const SNAP_KEY = 'reader-check:' + CONFIG.version;
+const STEPS = 8;
+
+// ------------------------------------------------------------------ small helpers
+const $ = (s, r = document) => r.querySelector(s);
+function h(tag, attrs, ...kids) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v === null || v === undefined || v === false) continue;
+    if (k === 'class') el.className = v;
+    else if (k === 'text') el.textContent = v;
+    else if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
+    else el.setAttribute(k, v === true ? '' : v);
+  }
+  for (const kid of kids.flat()) if (kid !== null && kid !== undefined && kid !== false) el.append(kid.nodeType ? kid : document.createTextNode(String(kid)));
+  return el;
+}
+const NS = 'http://www.w3.org/2000/svg';
+function check() {
+  const s = document.createElementNS(NS, 'svg'); s.setAttribute('viewBox', '0 0 14 14'); s.setAttribute('aria-hidden', 'true');
+  const p = document.createElementNS(NS, 'path'); p.setAttribute('d', 'M2.5 7.4 5.6 10.4 11.6 3.8'); p.setAttribute('fill', 'none');
+  p.setAttribute('stroke', 'currentColor'); p.setAttribute('stroke-width', '2.2'); p.setAttribute('stroke-linecap', 'round'); p.setAttribute('stroke-linejoin', 'round');
+  s.append(p); return s;
+}
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+function within(p, ms) {
+  return new Promise((res, rej) => { const t = setTimeout(() => rej({ code: 'timeout' }), ms); Promise.resolve(p).then((v) => { clearTimeout(t); res(v); }, (e) => { clearTimeout(t); rej(e); }); });
+}
+function rand(n) { const a = new Uint32Array(1); (window.crypto || {}).getRandomValues ? crypto.getRandomValues(a) : (a[0] = Math.floor(Math.random() * 4294967296)); return a[0] % n; }
+function shuffle(xs) { const a = xs.slice(); for (let i = a.length - 1; i > 0; i--) { const j = rand(i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function newId() { let s = 'run-'; for (let i = 0; i < 12; i++) s += 'abcdefghijkmnpqrstuvwxyz23456789'[rand(32)]; return s; }
+const now = () => new Date().toISOString();
+const listWords = (xs) => xs.length < 2 ? xs.join('') : xs.slice(0, -1).join(', ') + ' and ' + xs[xs.length - 1];
+const reduced = () => window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+function readSnap() { try { const s = JSON.parse(localStorage.getItem(SNAP_KEY) || 'null'); return s && s.run && s.version === CONFIG.version ? s : null; } catch (e) { return null; } }
+function writeSnap() { try { localStorage.setItem(SNAP_KEY, JSON.stringify({ version: CONFIG.version, runId: S.runId, run: S.run, pos: S.pos, savedOk: Store.finalOk })); } catch (e) { /* storage blocked: the test still runs */ } }
+function clearSnap() { try { localStorage.removeItem(SNAP_KEY); } catch (e) { /* nothing to clear */ } }
+
+// A clock that counts only while the page is visible and not paused.
+function stopwatch() {
+  let total = 0, since = null, paused = false;
+  const live = () => !paused && document.visibilityState !== 'hidden';
+  const sync = () => { const t = performance.now(); if (since !== null) total += t - since; since = live() ? t : null; };
+  sync();
+  const onVis = () => sync();
+  document.addEventListener('visibilitychange', onVis);
+  return {
+    ms() { sync(); return total; },
+    pause() { sync(); paused = true; sync(); },
+    resume() { paused = false; sync(); },
+    stop() { sync(); document.removeEventListener('visibilitychange', onVis); return total; },
+  };
+}
+
+// ------------------------------------------------------------------ saving: the db when this view has it, else copy
+const Store = {
+  mode: 'checking', note: '', db: null, ref: null, exists: null, inflight: null, dirty: false, everOk: false, finalOk: false,
+  ready: null,
+  init() { this.ready = this._init().catch(() => this.setMode('copy', 'error during setup')); return this.ready; },
+  async _init() {
+    const c = window.claude;
+    if (!c || typeof c.use !== 'function') return this.setMode('copy', 'no viewer');
+    const use = (name) => within(c.use(name), 11000).catch(() => null);
+    const [db, user] = await Promise.all([use('db'), use('user')]);
+    if (!db) return this.setMode('copy', 'db unavailable');
+    if (!user) return this.setMode('copy', 'user unavailable');
+    const uid = await within(user.id(), 10000).catch(() => null);
+    if (!uid) return this.setMode('copy', 'no viewer id');
+    const can = await within(user.can('data.write'), 10000).catch(() => null);
+    if (can === false) return this.setMode('copy', 'view-only access');
+    try { this.ref = db.doc('responses/' + uid); } catch (e) { return this.setMode('copy', 'bad path'); }
+    this.db = db;
+    try { const snap = await within(this.ref.get(), 10000); this.exists = !!snap.exists; } catch (e) { this.exists = null; }
+    this.setMode('saved', '');
+  },
+  setMode(mode, note) {
+    const was = this.mode;
+    this.mode = mode; this.note = note || '';
+    if (S.run && (S.run.mode !== mode)) { S.run.mode = mode; S.run.mode_note = this.note; }
+    if (was === 'saved' && mode === 'copy') S.notice = 'This page can’t save your answers here, so at the end it will show them for you to copy and send.';
+    if (was === 'checking' && mode === 'copy' && S.run) S.notice = 'This page can’t save answers for you here, so at the end it will show them for you to copy and send.';
+    UI.modeChanged();
+  },
+  payload() { return { schema: 'reader-check/1', latest_run: S.runId, updated_at: now(), runs: { [S.runId]: S.run } }; },
+  // One write at a time to the reader's document; a change during a write waits and goes next.
+  save() {
+    if (this.mode !== 'saved' || !S.run) return Promise.resolve();
+    if (this.inflight) { this.dirty = true; return this.inflight; }
+    this.dirty = false;
+    this.inflight = (async () => {
+      try { await this.writeOnce(this.payload()); this.everOk = true; }
+      catch (e) { this.failed(e); }
+      this.inflight = null;
+      if (this.dirty && this.mode === 'saved') return this.save();
+    })();
+    return this.inflight;
+  },
+  async writeOnce(body) {
+    const limit = this.everOk ? 20000 : 10000;
+    if (this.exists === false) { await within(this.ref.set(body), limit); this.exists = true; return; }
+    try { await within(this.ref.update(body), limit); this.exists = true; }
+    catch (e) {
+      const code = e && e.code;
+      if (code === 'invalid_argument' && this.exists !== true) { await within(this.ref.set(body), limit); this.exists = true; return; }
+      if (code === 'unavailable') { await sleep(700 + rand(1300)); await within(this.ref.update(body), limit); this.exists = true; return; }
+      throw e;
+    }
+  },
+  failed(e) {
+    const code = (e && e.code) || 'unknown';
+    if (code === 'resource_exhausted') { this.dirty = true; return; }   // try again with the next answer
+    this.setMode('copy', 'write failed: ' + code);
+  },
+};
+
+// ------------------------------------------------------------------ the run and its screens
+const S = { runId: null, run: null, screens: [], pos: 0, notice: '', drafts: {}, watch: null, timer: null };
+const EXP = CONFIG.exposure;
+const LOOP_Q = {
+  comes_back: { title: 'Do the arrows come back to where they started?', choices: [['yes', 'Yes'], ['no', 'No'], ['unsure', 'Not sure']] },
+  feeds_or_pushes: { title: 'Does it feed itself or push back?', choices: [['feeds', 'It feeds itself', 'Each change builds on the one before.'], ['pushes', 'It pushes back', 'Each change works against the one before.'], ['unsure', 'Not sure']] },
+};
+
+function newRun(initials) {
+  const loops = shuffle(CONFIG.loops.map((l) => l.code));
+  const pairs = {};
+  for (const p of CONFIG.pairs) pairs[p.code] = rand(2) ? ['before', 'after'] : ['after', 'before'];
+  return {
+    initials, mode: Store.mode === 'saved' ? 'saved' : Store.mode, mode_note: Store.note,
+    started_at: now(), finished_at: null, viewport_width: window.innerWidth, resumed: 0, position: 'start',
+    orders: { loops, icons: shuffle(CONFIG.icons.map((i) => i.code)), charts: shuffle(CONFIG.charts.map((c) => c.code)), pairs, mastheads: shuffle(CONFIG.mastheads.map((m) => m.code)) },
+    items: {},
+  };
+}
+function item(key) {
+  const it = S.run.items[key] || (S.run.items[key] = { show_again: 0, shown_seconds: [], again_seconds: [], interrupted: 0, load_failed: 0, questions: {} });
+  return it;
+}
+
+function buildScreens(o) {
+  const L = [];
+  const q = (step, it, qk, spec) => L.push({ kind: 'question', step, item: it, q: qk, ...spec });
+  L.push({ key: 'welcome', kind: 'welcome', step: 1 });
+  // Step 2, drawings
+  L.push({ key: 'drawings:ready', kind: 'ready', step: 2, title: 'Three drawings', body: ['Each drawing shows for 10 seconds and then hides. A few short questions follow.', 'The first one is a page, so scroll down it if you like. Whenever you want another look at a drawing, tap Show it again.'], button: 'Show the first drawing' });
+  const ovx = L.length;
+  L.push({ key: 'overview:look', kind: 'expose', step: 2, item: 'overview', stim: { type: 'picture', img: CONFIG.overview.img, alt: 'Drawing 1 of 3, a page with a diagram of boxes and arrows' }, seconds: EXP.drawing, caption: 'Drawing 1 of 3' });
+  q(2, 'overview', 'purpose', { key: 'overview:purpose', look: ovx, eyebrow: 'Drawing 1 of 3 · Question 1 of 2', title: 'What do you think this page is for?', hint: 'A few words is plenty.', type: 'text', rows: 3 });
+  q(2, 'overview', 'open_first', { key: 'overview:open_first', look: ovx, eyebrow: 'Drawing 1 of 3 · Question 2 of 2', title: 'Which part would you open first?', type: 'choice', choices: [...CONFIG.overview.parts.map((p) => [p, p]), ['none', 'None of them'], ['unsure', 'Not sure']] });
+  o.loops.forEach((code, i) => {
+    const loop = CONFIG.loops.find((l) => l.code === code);
+    const n = i + 2, key = 'loop_' + code;
+    L.push({ key: key + ':ready', kind: 'ready', step: 2, title: i === 0 ? 'The next drawing' : 'One more drawing', body: [i === 0 ? 'This drawing shows for 10 seconds. Four short questions about it follow.' : 'This one also shows for 10 seconds, and the same four questions follow.'], button: 'Show the drawing' });
+    const lx = L.length;
+    L.push({ key: key + ':look', kind: 'expose', step: 2, item: key, stim: { type: 'picture', img: loop.img, alt: `Drawing ${n} of 3, a diagram of labeled boxes joined by arrows` }, seconds: EXP.drawing, caption: `Drawing ${n} of 3` });
+    const eb = (k) => `Drawing ${n} of 3 · Question ${k} of 4`;
+    q(2, key, 'comes_back', { key: key + ':comes_back', look: lx, eyebrow: eb(1), title: LOOP_Q.comes_back.title, type: 'choice', choices: LOOP_Q.comes_back.choices });
+    q(2, key, 'feeds_or_pushes', { key: key + ':feeds_or_pushes', look: lx, eyebrow: eb(2), title: LOOP_Q.feeds_or_pushes.title, type: 'choice', choices: LOOP_Q.feeds_or_pushes.choices });
+    q(2, key, 'least_certain', { key: key + ':least_certain', look: lx, eyebrow: eb(3), title: 'Which step is the least certain?', hint: 'Each arrow is a step.', type: 'choice', choices: [...loop.steps.map((s) => [s.value, s.label, { from: s.from, to: s.to }]), ['same', 'They look about the same'], ['unsure', 'Not sure']] });
+    q(2, key, 'reform_acts', { key: key + ':reform_acts', look: lx, eyebrow: eb(4), title: 'Where does a reform act?', hint: 'A reform is a proposed change to the rules.', type: 'choice', choices: [...loop.boxes.map((b) => [b, b]), ['none', 'No reform is shown'], ['unsure', 'Not sure']] });
+  });
+  // Step 3, symbols
+  L.push({ key: 'icons:ready', kind: 'ready', step: 3, title: 'Eight symbols', body: ['Each symbol shows on its own for 10 seconds. Then tell us what you think it stands for. A guess is fine.'], button: 'Show the first symbol' });
+  o.icons.forEach((code, i) => {
+    const ic = CONFIG.icons.find((x) => x.code === code);
+    const ix = L.length, last = i === o.icons.length - 1;
+    L.push({ key: `icon_${code}:look`, kind: 'expose', step: 3, item: 'icon_' + code, stim: { type: 'icon', src: ic.src, alt: `Symbol ${i + 1} of 8` }, seconds: EXP.icon, caption: `Symbol ${i + 1} of 8` });
+    q(3, 'icon_' + code, 'stands_for', { key: `icon_${code}:stands_for`, look: ix, eyebrow: `Symbol ${i + 1} of 8`, title: 'What do you think this symbol stands for?', hint: 'A word or a few. A guess is fine.', type: 'line', next: last ? 'Next' : 'Next symbol' });
+  });
+  // Step 4, small marks
+  L.push({ key: 'marks:ready', kind: 'ready', step: 4, title: 'Nine small marks', body: ['Next is a sheet of nine marks at the small size you might see in a browser tab. It shows for 10 seconds. Then you’ll say how clear each one looked.'], button: 'Show the marks' });
+  const mx = L.length;
+  L.push({ key: 'marks:look', kind: 'expose', step: 4, item: 'marks', stim: { type: 'marks' }, seconds: EXP.marks, caption: 'Nine marks at their real size' });
+  L.push({ key: 'marks:rate', kind: 'marks', step: 4, item: 'marks', look: mx, eyebrow: 'Small marks', title: 'How clear was each mark?', hint: 'Each one appears again below at the same size. Clear means you can make out its shape.' });
+  // Step 5, charts
+  L.push({ key: 'charts:ready', kind: 'ready', step: 5, title: 'Three charts', body: ['Each chart shows for 15 seconds, a little longer because charts take more reading. Two questions follow each one.', 'Some charts run long, so scroll if you like.'], button: 'Show the first chart' });
+  o.charts.forEach((code, i) => {
+    const c = CONFIG.charts.find((x) => x.code === code);
+    const cx = L.length, key = 'chart_' + code, last = i === o.charts.length - 1;
+    L.push({ key: key + ':look', kind: 'expose', step: 5, item: key, stim: { type: 'picture', img: c.img, chart: true, alt: `Chart ${i + 1} of 3` }, seconds: EXP.chart, caption: `Chart ${i + 1} of 3` });
+    q(5, key, 'telling', { key: key + ':telling', look: cx, eyebrow: `Chart ${i + 1} of 3 · Question 1 of 2`, title: 'What is this chart telling you, in one sentence?', type: 'text', rows: 3 });
+    q(5, key, 'favors', { key: key + ':favors', look: cx, eyebrow: `Chart ${i + 1} of 3 · Question 2 of 2`, title: 'Does it seem to favor a party or side?', type: 'choice', choices: [['no', 'No'], ['left', 'Yes, the left'], ['right', 'Yes, the right'], ['unsure', 'Not sure']], next: last ? 'Next' : 'Next chart' });
+  });
+  // Step 6, sentences
+  CONFIG.pairs.forEach((p, i) => {
+    L.push({ key: `pair_${p.code}:easier`, kind: 'pair', step: 6, item: 'pair_' + p.code, q: 'easier', pair: p, eyebrow: `Pair ${i + 1} of 3`, title: 'Which is easier to follow?', next: i === CONFIG.pairs.length - 1 ? 'Next' : 'Next pair' });
+  });
+  // Step 7, mastheads
+  L.push({ key: 'masthead:ready', kind: 'ready', step: 7, title: 'Two mastheads', body: ['A masthead is the name across the top of a website. You’ll see two versions together for 10 seconds.'], button: 'Show the mastheads' });
+  const hx = L.length;
+  L.push({ key: 'masthead:look', kind: 'expose', step: 7, item: 'masthead', stim: { type: 'mastheads' }, seconds: EXP.masthead, caption: 'Mastheads A and B' });
+  L.push({ key: 'masthead:faster', kind: 'masthead', step: 7, item: 'masthead', q: 'faster', look: hx, eyebrow: 'Mastheads', title: 'Which reads faster at a glance?', next: 'Finish' });
+  L.push({ key: 'end', kind: 'end', step: 8 });
+  return L;
+}
+
+// ------------------------------------------------------------------ UI shell
+const UI = {
+  stepEl: null, rail: null, clock: null, fill: null,
+  setup() {
+    this.stepEl = $('#bar-step'); this.rail = $('#rail'); this.clock = $('#clock'); this.fill = $('#clock-fill');
+    for (let i = 0; i < STEPS; i++) this.rail.append(h('span'));
+  },
+  step(n) {
+    this.stepEl.textContent = `Step ${n} of ${STEPS}`; this.stepEl.classList.remove('timing');
+    [...this.rail.children].forEach((s, i) => s.classList.toggle('done', i < n));
+    this.rail.hidden = false; this.clock.hidden = true;
+  },
+  timing(secondsLeft, frac) {
+    this.stepEl.textContent = secondsLeft === 1 ? '1 second left' : `${secondsLeft} seconds left`;
+    this.stepEl.classList.add('timing');
+    this.rail.hidden = true; this.clock.hidden = false; this.fill.style.width = (Math.max(0, frac) * 100).toFixed(2) + '%';
+  },
+  modeChanged() {
+    const el = $('#mode-line'); if (!el) return;
+    el.className = 'mode ' + Store.mode;
+    el.textContent = Store.mode === 'saved' ? 'This page saves your answers as you go.'
+      : Store.mode === 'copy' ? 'This page can’t save answers for you here, so at the end it will show your answers for you to copy and send to the person who shared the link.'
+      : 'Checking whether this page can save your answers as you go.';
+  },
+  mount(screenEl, focusEl) {
+    const app = $('#app');
+    const col = h('div', { class: 'col' }, screenEl);
+    app.replaceChildren(col);
+    window.scrollTo(0, 0);
+    const f = focusEl || screenEl.querySelector('h1, h2');
+    if (f) { f.setAttribute('tabindex', '-1'); f.focus({ preventScroll: true }); }
+  },
+};
+
+// ------------------------------------------------------------------ navigation
+function go(i) {
+  if (S.timer) { S.timer.cancel(); S.timer = null; }
+  if (S.watch) { S.watch.stop(); S.watch = null; }
+  S.pos = i;
+  const sc = S.screens[i];
+  if (S.run) { S.run.position = sc.key; writeSnap(); }
+  UI.step(sc.step);
+  ({ welcome: renderWelcome, ready: renderReady, expose: (s) => renderExpose(s, false), question: renderQuestion, marks: renderMarks, pair: renderPair, masthead: renderMasthead, end: renderEnd })[sc.kind](sc);
+}
+const next = () => go(S.pos + 1);
+function takeNotice() { const n = S.notice; S.notice = ''; return n ? h('p', { class: 'note', role: 'status', text: n }) : null; }
+
+// ------------------------------------------------------------------ welcome
+function renderWelcome() {
+  const snap = readSnap();
+  const sec = h('section', { class: 'screen', 'data-view-root': 'welcome' });
+  sec.append(
+    h('h1', { text: 'A short test of a draft design' }),
+    h('p', { text: 'We’re trying out a draft design for a civic publication, and we’d like your first impressions. You’ll look at some drawings, symbols, charts and sentences and answer quick questions about each. It takes about 10 minutes. We record your answers, how long you take, how often you look again, your screen width and the first name or initials you type below, and nothing else. You can skip any question and stop at any time.' }),
+    h('p', { id: 'mode-line', class: 'mode' }),
+  );
+  if (snap && !snap.run.finished_at && snap.pos > 0) {
+    const sc = buildScreens(snap.run.orders)[snap.pos] || { step: 2 };
+    const box = h('div', { class: 'screen' },
+      h('p', {}, h('strong', { text: 'Welcome back. ' }), `You stopped partway through step ${sc.step} of ${STEPS}.`),
+      h('div', { class: 'actions' },
+        h('button', { type: 'button', class: 'btn primary', onclick: () => resume(snap) }, 'Pick up where I left off'),
+        h('button', { type: 'button', class: 'btn text', onclick: () => { clearSnap(); renderWelcome(); } }, 'Start again')));
+    sec.append(box);
+  } else {
+    const input = h('input', { id: 'initials', name: 'initials', type: 'text', autocomplete: 'off', autocapitalize: 'words', spellcheck: 'false', maxlength: '40', enterkeyhint: 'go', 'aria-describedby': 'initials-msg' });
+    const msg = h('p', { class: 'msg', id: 'initials-msg', role: 'alert' });
+    const form = h('form', { novalidate: true },
+      h('div', {}, h('label', { class: 'field', for: 'initials', text: 'Your first name or initials' }), input),
+      msg,
+      h('div', { class: 'actions' }, h('button', { type: 'submit', class: 'btn primary' }, 'Start')));
+    form.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      const v = input.value.trim().slice(0, 40);
+      if (!v) { msg.textContent = 'Type a first name or initials to start.'; input.setAttribute('aria-invalid', 'true'); input.focus(); return; }
+      start(v);
+    });
+    sec.append(form);
+  }
+  UI.mount(sec, sec.querySelector('h1'));
+  UI.modeChanged();
+}
+function start(initials) {
+  S.runId = newId(); S.run = newRun(initials); S.screens = buildScreens(S.run.orders); S.drafts = {};
+  Store.ready.then(() => { if (S.run) { S.run.mode = Store.mode; S.run.mode_note = Store.note; Store.save(); } });
+  preload();
+  go(1);
+}
+function resume(snap) {
+  S.runId = snap.runId; S.run = snap.run; S.screens = buildScreens(S.run.orders); S.drafts = {};
+  S.run.resumed = (S.run.resumed || 0) + 1;
+  let p = Math.min(snap.pos, S.screens.length - 1);
+  const sc = S.screens[p];
+  if (sc.kind === 'expose') item(sc.item).interrupted++;
+  Store.ready.then(() => { if (S.run) { S.run.mode = Store.mode; S.run.mode_note = Store.note; Store.save(); } });
+  preload();
+  go(p);
+}
+
+// ------------------------------------------------------------------ a step's opening screen
+const STEP_NAMES = { 2: 'Drawings', 3: 'Symbols', 4: 'Small marks', 5: 'Charts', 6: 'Sentences', 7: 'Mastheads' };
+function renderReady(sc) {
+  const sec = h('section', { class: 'screen' });
+  const notice = takeNotice(); if (notice) sec.append(notice);
+  sec.append(
+    h('p', { class: 'eyebrow', text: STEP_NAMES[sc.step] }),
+    h('h2', { text: sc.title }),
+    ...sc.body.map((t) => h('p', { text: t })),
+    h('div', { class: 'actions' }, h('button', { type: 'button', class: 'btn primary', onclick: () => next() }, sc.button)));
+  UI.mount(sec);
+}
+
+// ------------------------------------------------------------------ images
+function pickImg(img) { return window.matchMedia('(min-width: 390px)').matches ? img.lg : img.sm; }
+function preload() {
+  const srcs = [pickImg(CONFIG.overview.img).src, ...CONFIG.loops.map((l) => pickImg(l.img).src), ...CONFIG.charts.map((c) => pickImg(c.img).src), ...CONFIG.icons.map((i) => i.src), ...CONFIG.marks.map((m) => m.src), ...CONFIG.mastheads.map((m) => m.src)];
+  for (const s of srcs) { const im = new Image(); im.decoding = 'async'; im.src = s; }
+}
+function pictureEl(img, alt) {
+  return h('picture', {},
+    h('source', { media: '(min-width: 390px)', srcset: img.lg.src + ' 2x', width: img.lg.w, height: img.lg.h }),
+    h('img', { src: img.sm.src, srcset: img.sm.src + ' 2x', width: img.sm.w, height: img.sm.h, alt }));
+}
+function ready(img) {
+  return new Promise((res, rej) => {
+    const done = () => (img.decode ? img.decode().catch(() => null) : Promise.resolve()).then(() => (img.naturalWidth ? res() : rej()));
+    if (img.complete) done();
+    else { img.addEventListener('load', done, { once: true }); img.addEventListener('error', () => rej(), { once: true }); }
+  });
+}
+function stimulus(st) {
+  if (st.type === 'picture') return h('div', { class: 'stage' + (st.chart ? ' stage-chart' : '') }, pictureEl(st.img, st.alt));
+  if (st.type === 'icon') return h('div', { class: 'stage stage-icon' }, h('img', { src: st.src, width: 48, height: 48, alt: st.alt }));
+  if (st.type === 'marks') {
+    const rows = {};
+    CONFIG.marks.forEach((m, i) => { (rows[m.row] = rows[m.row] || []).push(h('div', { class: 'sheet-cell' }, h('img', { src: m.src, width: m.w, height: m.h, alt: `Mark ${i + 1}` }), h('span', { class: 'sheet-n', 'aria-hidden': 'true', text: String(i + 1) }))); });
+    return h('div', { class: 'sheet' }, Object.keys(rows).sort().map((r) => h('div', { class: 'sheet-row' }, rows[r])));
+  }
+  if (st.type === 'mastheads') {
+    return h('div', { class: 'masts' }, S.run.orders.mastheads.map((code, i) => {
+      const m = CONFIG.mastheads.find((x) => x.code === code);
+      const k = 'AB'[i];
+      return h('div', { class: 'mast' }, h('span', { class: 'mast-label', 'aria-hidden': 'true', text: k }), h('div', { class: 'mast-band' }, h('img', { src: m.src, width: m.w, height: m.h, alt: `Masthead ${k}` })));
+    }));
+  }
+  return h('div');
+}
+
+// ------------------------------------------------------------------ a timed look
+// The clock starts only once every image in the look has loaded and decoded, and it counts only while the page is
+// visible. A reader who leaves mid-look picks up the rest of it on return.
+function renderExpose(sc, again, back) {
+  const it = item(sc.item);
+  const cap = h('h2', { class: 'eyebrow', text: sc.caption });
+  const secs = sc.seconds;
+  const live = h('p', { class: 'sr', 'aria-live': 'polite' });
+  const sec = h('section', { class: 'screen expose' }, cap, h('p', { class: 'hint tight', text: again ? `Another look, for ${secs} seconds.` : `Shows for ${secs} seconds.` }));
+  const notice = takeNotice(); if (notice) sec.prepend(notice);
+  const stage = stimulus(sc.stim);
+  const loading = h('p', { class: 'loading', role: 'status', text: 'Loading…' });
+  sec.append(loading);
+  if (again) sec.append(h('div', { class: 'actions' }, h('button', { type: 'button', class: 'btn line', onclick: () => finish(true) }, 'Back to the question')));
+  sec.append(live);
+  stage.hidden = true; sec.insertBefore(stage, loading);
+  UI.mount(sec, cap);
+  if (again) it.show_again++;
+  let watch = null, tick = null, ended = false;
+  const total = secs * 1000 * SCALE;
+  function finish(early) {
+    if (ended) return; ended = true;
+    clearInterval(tick);
+    const shown = watch ? Math.round(watch.stop() / SCALE / 100) / 10 : 0;
+    if (watch) (again ? it.again_seconds : it.shown_seconds).push(shown);
+    S.timer = null;
+    writeSnap();   // the next answer carries this look's record to the store
+    if (again) back(); else next();
+  }
+  S.timer = { cancel() { ended = true; clearInterval(tick); if (watch) watch.stop(); } };
+  const imgs = [...stage.querySelectorAll('img')];
+  const fail = () => {
+    if (ended) return;
+    it.load_failed++;
+    loading.replaceWith(h('div', { class: 'screen' },
+      h('p', { role: 'alert', class: 'msg', text: 'This image didn’t load.' }),
+      h('div', { class: 'actions' },
+        h('button', { type: 'button', class: 'btn primary', onclick: () => { ended = true; again ? renderExpose(sc, true, back) : renderExpose(sc, false); } }, 'Try again'),
+        h('button', { type: 'button', class: 'btn text', onclick: () => { ended = true; S.timer = null; again ? back() : next(); } }, again ? 'Back to the question' : 'Skip it'))));
+  };
+  within(Promise.all(imgs.map(ready)), 20000).then(() => {
+    if (ended) return;
+    loading.remove(); stage.hidden = false;
+    live.textContent = `Showing now for ${secs} seconds.`;
+    watch = stopwatch();
+    const paint = () => {
+      const left = Math.max(0, total - watch.ms());
+      UI.timing(Math.max(1, Math.ceil(left / 1000 / SCALE)), left / total);
+      if (left <= 0) finish(false);
+    };
+    paint();
+    tick = setInterval(paint, 100);
+  }, fail);
+}
+
+// ------------------------------------------------------------------ questions
+function againButton(sc, restore) {
+  if (sc.look === undefined) return null;
+  return h('button', { type: 'button', class: 'btn line again', onclick: () => {
+    if (S.watch) S.watch.pause();
+    restore && restore();
+    const look = S.screens[sc.look];
+    renderExpose(look, true, () => { UI.step(sc.step); rerender(sc); });
+  } }, 'Show it again');
+}
+function rerender(sc) {
+  const resumeWatch = S.watch;
+  ({ question: renderQuestion, marks: renderMarks, masthead: renderMasthead })[sc.kind](sc, true);
+  if (resumeWatch) { S.watch = resumeWatch; S.watch.resume(); }
+}
+function choiceList(name, choices, selected, onPick) {
+  const wrap = h('div', { class: 'choices' });
+  for (const [value, label, sub] of choices) {
+    const input = h('input', { type: 'radio', name, value, checked: selected === value });
+    const ct = h('span', { class: 'ct' }, h('span', { class: 'cl', text: label }));
+    if (typeof sub === 'string') ct.append(h('span', { class: 'cs', text: sub }));
+    else if (sub && sub.from) ct.append(h('span', { class: 'cs' }, sub.from, h('span', { class: 'arrow', 'aria-hidden': 'true', text: '→' }), h('span', { class: 'sr', text: ' to ' }), sub.to));
+    const lab = h('label', { class: 'choice' + (selected === value ? ' on' : '') }, input, h('span', { class: 'dot', 'aria-hidden': 'true' }, check()), ct);
+    input.addEventListener('change', () => { wrap.querySelectorAll('.choice').forEach((c) => c.classList.toggle('on', c.contains(input) && input.checked)); onPick(value); });
+    wrap.append(lab);
+  }
+  return wrap;
+}
+function questionShell(sc, keepWatch) {
+  const sec = h('section', { class: 'screen' });
+  const notice = takeNotice(); if (notice) sec.append(notice);
+  if (sc.eyebrow) sec.append(h('p', { class: 'eyebrow', text: sc.eyebrow }));
+  const head = h('h2', { id: 'q-h', text: sc.title });
+  sec.append(head);
+  if (sc.hint) sec.append(h('p', { class: 'hint', id: 'q-hint', text: sc.hint }));
+  if (!keepWatch) { if (S.watch) S.watch.stop(); S.watch = stopwatch(); }
+  return { sec, head };
+}
+function record(sc, qkey, value, extra) {
+  const it = item(sc.item);
+  const secs = S.watch ? Math.round(S.watch.ms() / 100) / 10 : null;
+  it.questions[qkey] = { answer: value === undefined ? null : value, seconds: secs, skipped: value === undefined || value === null || value === '', ...(extra || {}) };
+}
+function actions(form, sc, nextLabel) {
+  return h('div', { class: 'actions' },
+    h('button', { type: 'submit', class: 'btn primary' }, nextLabel || sc.next || 'Next'),
+    h('button', { type: 'button', class: 'btn text', onclick: () => form.dispatchEvent(new CustomEvent('skip')) }, 'Skip this question'));
+}
+function advance() { writeSnap(); Store.save(); next(); }
+
+function renderQuestion(sc, keepWatch) {
+  const { sec } = questionShell(sc, keepWatch);
+  const dk = sc.key;
+  const msg = h('p', { class: 'msg', role: 'alert', id: 'q-msg' });
+  const form = h('form', { novalidate: true });
+  let field;
+  const ag = againButton(sc, () => { if (field && sc.type !== 'choice') S.drafts[dk] = field.value; });
+  if (ag) sec.append(ag);
+  if (sc.type === 'choice') {
+    field = h('fieldset', { 'aria-labelledby': 'q-h', 'aria-describedby': sc.hint ? 'q-hint' : null }, choiceList('c', sc.choices, S.drafts[dk], (v) => { S.drafts[dk] = v; msg.textContent = ''; }));
+  } else {
+    const attrs = { id: 'answer', name: 'answer', 'aria-labelledby': 'q-h', 'aria-describedby': (sc.hint ? 'q-hint ' : '') + 'q-msg', autocomplete: 'off', spellcheck: 'true' };
+    field = sc.type === 'line' ? h('input', { ...attrs, type: 'text', maxlength: '200', enterkeyhint: 'next', autocapitalize: 'sentences' }) : h('textarea', { ...attrs, rows: sc.rows || 3, maxlength: '1000', autocapitalize: 'sentences' });
+    field.value = S.drafts[dk] || '';
+    field.addEventListener('input', () => { S.drafts[dk] = field.value; if (field.value.trim()) msg.textContent = ''; });
+  }
+  form.append(field, msg, actions(form, sc));
+  form.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    const v = sc.type === 'choice' ? S.drafts[dk] : (field.value || '').trim();
+    if (!v) { msg.textContent = sc.type === 'choice' ? 'Pick an answer, or tap Skip this question.' : 'Type an answer, or tap Skip this question.'; return; }
+    record(sc, sc.q, v); advance();
+  });
+  form.addEventListener('skip', () => { record(sc, sc.q, null); advance(); });
+  sec.append(form);
+  UI.mount(sec);
+}
+
+function renderMarks(sc, keepWatch) {
+  const { sec } = questionShell(sc, keepWatch);
+  const dk = sc.key;
+  const picks = S.drafts[dk] || (S.drafts[dk] = {});
+  const times = S.drafts[dk + ':t'] || (S.drafts[dk + ':t'] = {});
+  const ag = againButton(sc); if (ag) sec.append(ag);
+  const msg = h('p', { class: 'msg', role: 'alert' });
+  const form = h('form', { novalidate: true });
+  const rates = h('div', { class: 'rates' });
+  CONFIG.marks.forEach((m, i) => {
+    const seg = h('div', { class: 'seg' });
+    for (const [v, label] of [['clear', 'Clear'], ['blurry', 'Blurry'], ['cannot_tell', 'Can’t tell']]) {
+      const input = h('input', { type: 'radio', name: m.code, value: v, checked: picks[m.code] === v });
+      const lab = h('label', { class: picks[m.code] === v ? 'on' : null }, input, check(), h('span', { text: label }));
+      input.addEventListener('change', () => { picks[m.code] = v; times[m.code] = S.watch ? Math.round(S.watch.ms() / 100) / 10 : null; seg.querySelectorAll('label').forEach((l) => l.classList.toggle('on', l.contains(input))); msg.textContent = ''; });
+      seg.append(lab);
+    }
+    rates.append(h('fieldset', { class: 'rate' }, h('legend', { text: `Mark ${i + 1}` }), h('div', { class: 'rate-mark' }, h('img', { src: m.src, width: m.w, height: m.h, alt: `Mark ${i + 1}, at its real size` })), seg));
+  });
+  const save = () => { const it = item(sc.item); CONFIG.marks.forEach((m) => { it.questions[m.code] = { answer: picks[m.code] || null, seconds: times[m.code] ?? null, skipped: !picks[m.code] }; }); };
+  form.append(rates, msg, actions(form, sc));
+  form.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    const missing = CONFIG.marks.map((m, i) => (picks[m.code] ? null : i + 1)).filter(Boolean);
+    if (missing.length === CONFIG.marks.length) { msg.textContent = 'Rate the marks, or tap Skip this question.'; return; }
+    if (missing.length && !form.dataset.warned) { form.dataset.warned = '1'; msg.textContent = `${missing.length === 1 ? 'Mark' : 'Marks'} ${listWords(missing.map(String))} ${missing.length === 1 ? 'has' : 'have'} no answer yet. Answer ${missing.length === 1 ? 'it' : 'them'}, or tap Next again to leave ${missing.length === 1 ? 'it' : 'them'} blank.`; return; }
+    save(); advance();
+  });
+  form.addEventListener('skip', () => { save(); advance(); });
+  sec.append(form);
+  UI.mount(sec);
+}
+
+function renderPair(sc) {
+  const { sec } = questionShell(sc, false);
+  sec.append(h('p', { text: 'Each pair says the same thing in two ways.' }));
+  const order = S.run.orders.pairs[sc.pair.code];
+  sec.append(h('div', { class: 'pair' }, order.map((which, i) => h('div', { class: 'pair-item' }, h('span', { class: 'pair-k', 'aria-hidden': 'true', text: 'AB'[i] }), h('p', { class: 'pair-s' }, h('span', { class: 'sr', text: `Sentence ${'AB'[i]}: ` }), sc.pair[which])))));
+  const dk = sc.key;
+  const msg = h('p', { class: 'msg', role: 'alert' });
+  const form = h('form', { novalidate: true });
+  form.append(h('fieldset', { 'aria-labelledby': 'q-h' }, choiceList('c', [['A', 'A'], ['B', 'B'], ['same', 'About the same']], S.drafts[dk], (v) => { S.drafts[dk] = v; msg.textContent = ''; })), msg, actions(form, sc));
+  const picked = (v) => (v === 'A' ? order[0] : v === 'B' ? order[1] : 'same');
+  form.addEventListener('submit', (ev) => { ev.preventDefault(); const v = S.drafts[dk]; if (!v) { msg.textContent = 'Pick an answer, or tap Skip this question.'; return; } record(sc, 'easier', v, { picked: picked(v) }); advance(); });
+  form.addEventListener('skip', () => { record(sc, 'easier', null); advance(); });
+  sec.append(form);
+  UI.mount(sec);
+}
+
+function renderMasthead(sc, keepWatch) {
+  const { sec } = questionShell(sc, keepWatch);
+  const dk = sc.key;
+  const why = h('textarea', { id: 'why', name: 'why', rows: 3, maxlength: '1000', autocomplete: 'off', autocapitalize: 'sentences' });
+  why.value = S.drafts[dk + ':why'] || '';
+  why.addEventListener('input', () => { S.drafts[dk + ':why'] = why.value; });
+  const ag = againButton(sc); if (ag) sec.append(ag);
+  const msg = h('p', { class: 'msg', role: 'alert' });
+  const form = h('form', { novalidate: true });
+  const order = S.run.orders.mastheads;
+  form.append(
+    h('fieldset', { 'aria-labelledby': 'q-h' }, choiceList('c', [['A', 'A'], ['B', 'B'], ['same', 'About the same']], S.drafts[dk], (v) => { S.drafts[dk] = v; msg.textContent = ''; })),
+    h('div', {}, h('label', { class: 'field', for: 'why', text: 'Why? (optional)' }), why),
+    msg, actions(form, sc));
+  const picked = (v) => (v === 'A' ? order[0] : v === 'B' ? order[1] : 'same');
+  const saveWhy = () => { const t = why.value.trim(); item(sc.item).questions.why = { answer: t || null, skipped: !t }; };
+  form.addEventListener('submit', (ev) => { ev.preventDefault(); const v = S.drafts[dk]; if (!v) { msg.textContent = 'Pick an answer, or tap Skip this question.'; return; } record(sc, 'faster', v, { picked: picked(v) }); saveWhy(); advance(); });
+  form.addEventListener('skip', () => { record(sc, 'faster', null); saveWhy(); advance(); });
+  sec.append(form);
+  UI.mount(sec);
+}
+
+// ------------------------------------------------------------------ the end
+function answersText() {
+  const r = S.run, it = r.items, lines = [];
+  const a = (x) => (x && x.answer !== null && x.answer !== undefined ? (typeof x.answer === 'string' && x.answer.includes(' ') ? `“${x.answer}”` : x.answer) : '(skipped)');
+  const q = (key, qk) => (it[key] && it[key].questions[qk]) || null;
+  const looks = (key) => (it[key] && it[key].show_again ? `, looked again ${it[key].show_again}×` : '');
+  lines.push('Draft design test: my answers', `Name or initials: ${r.initials}`, `Started: ${r.started_at}`, `Finished: ${r.finished_at || '(not finished)'}`, `Screen width: ${r.viewport_width} px`, '');
+  lines.push('Drawings', `Drawing 1, the page${looks('overview')}. For: ${a(q('overview', 'purpose'))}. Open first: ${a(q('overview', 'open_first'))}.`);
+  r.orders.loops.forEach((c, i) => { const k = 'loop_' + c; lines.push(`Drawing ${i + 2} (${c})${looks(k)}. Comes back: ${a(q(k, 'comes_back'))}. Feeds or pushes: ${a(q(k, 'feeds_or_pushes'))}. Least certain: ${a(q(k, 'least_certain'))}. Reform acts: ${a(q(k, 'reform_acts'))}.`); });
+  lines.push('', 'Symbols');
+  r.orders.icons.forEach((c, i) => lines.push(`Symbol ${i + 1} (${c})${looks('icon_' + c)}: ${a(q('icon_' + c, 'stands_for'))}`));
+  lines.push('', 'Small marks' + looks('marks'), CONFIG.marks.map((m, i) => `${i + 1} ${a(q('marks', m.code))}`).join(', '));
+  lines.push('', 'Charts');
+  r.orders.charts.forEach((c, i) => { const k = 'chart_' + c; lines.push(`Chart ${i + 1} (${c})${looks(k)}: ${a(q(k, 'telling'))}. Favors a side: ${a(q(k, 'favors'))}.`); });
+  lines.push('', 'Sentences');
+  CONFIG.pairs.forEach((p, i) => { const x = q('pair_' + p.code, 'easier'); lines.push(`Pair ${i + 1} (${p.code}): ${a(x)}${x && x.picked ? ' (' + x.picked + ')' : ''}`); });
+  const mf = q('masthead', 'faster');
+  lines.push('', 'Mastheads' + looks('masthead'), `Faster: ${a(mf)}${mf && mf.picked ? ' (' + mf.picked + ')' : ''}. Why: ${a(q('masthead', 'why'))}`);
+  lines.push('', 'For the design team, please keep this line:', JSON.stringify({ schema: 'reader-check/1', run_id: S.runId, run: r }));
+  return lines.join('\n');
+}
+function renderEnd() {
+  const sec = h('section', { class: 'screen' }, h('h2', { text: 'Thank you' }));
+  const body = h('div', { class: 'screen' });
+  const next = h('p', { text: 'A small design team will read your answers alongside other readers’ and use what they learn to fix the drafts before they’re final.' });
+  sec.append(body);
+  UI.mount(sec);
+  if (!S.run.finished_at) { S.run.finished_at = now(); S.run.position = 'end'; }
+  writeSnap();
+  const showCopy = (why) => {
+    const ta = h('textarea', { id: 'copy-text', readonly: true, 'aria-labelledby': 'copy-h', rows: 12 });
+    ta.value = answersText();
+    const status = h('p', { class: 'status', role: 'status' });
+    const btn = h('button', { type: 'button', class: 'btn primary', onclick: async () => {
+      let ok = false;
+      try { if (navigator.clipboard && navigator.clipboard.writeText) { await navigator.clipboard.writeText(ta.value); ok = true; } } catch (e) { ok = false; }
+      if (!ok) { try { ta.focus(); ta.select(); ta.setSelectionRange(0, ta.value.length); ok = document.execCommand && document.execCommand('copy'); } catch (e) { ok = false; } }
+      status.textContent = ok ? 'Copied. Paste it into a message to the person who shared the link.' : 'This page couldn’t copy for you. The text is selected, so use your phone’s Copy, then paste it into a message.';
+      if (!ok) { ta.focus(); ta.select(); }
+    } }, 'Copy my answers');
+    body.replaceChildren(
+      h('p', { text: why }),
+      h('div', { class: 'copy' }, h('label', { class: 'field', id: 'copy-h', for: 'copy-text', text: 'Your answers' }), ta),
+      h('div', { class: 'actions' }, btn), status, next, restartBtn());
+  };
+  // Starting over clears this phone's copy of the answers, so it takes a second tap.
+  const restartBtn = () => {
+    const b = h('button', { type: 'button', class: 'btn text', onclick: () => {
+      if (!b.dataset.armed) { b.dataset.armed = '1'; b.textContent = 'Tap again to clear these answers and start over'; return; }
+      clearSnap(); S.run = null; S.runId = null; go(0);
+    } }, 'Start a new test on this device');
+    return h('div', { class: 'actions' }, b);
+  };
+  const copyWhy = 'This page couldn’t save your answers, so please copy them and send them to the person who shared the link with you.';
+  if (Store.finalOk) { body.replaceChildren(h('p', { role: 'status', text: 'Your answers are saved.' }), next, restartBtn()); return; }
+  if (Store.mode === 'saved' || Store.mode === 'checking') {
+    body.replaceChildren(h('p', { role: 'status', text: 'Saving your last answers…' }));
+    Promise.resolve(Store.ready).then(() => Store.save()).then(() => Store.inflight).then(() => {
+      if (Store.mode === 'saved' && Store.everOk && !Store.dirty) {
+        Store.finalOk = true; writeSnap();
+        body.replaceChildren(h('p', { role: 'status', text: 'Your answers are saved.' }), next, restartBtn());
+      } else showCopy(copyWhy);
+    });
+  } else showCopy(copyWhy);
+}
+
+// ------------------------------------------------------------------ boot
+function boot(hot) {
+  UI.setup();
+  Store.init();
+  const snap = (hot && hot.run && hot.runId) ? hot : readSnap();
+  if (snap && snap.run && snap.run.finished_at) {
+    S.runId = snap.runId; S.run = snap.run; S.screens = buildScreens(S.run.orders);
+    if (snap.savedOk) Store.finalOk = true;
+    go(S.screens.length - 1);
+    return;
+  }
+  if (hot && hot.run && hot.runId) { resume(hot); return; }
+  S.screens = [{ key: 'welcome', kind: 'welcome', step: 1 }];
+  go(0);
+}
+try { window.claude && window.claude.hot && window.claude.hot.snapshot && window.claude.hot.snapshot(() => (S.run ? { version: CONFIG.version, runId: S.runId, run: S.run, pos: S.pos, savedOk: Store.finalOk } : {})); } catch (e) { /* no live reload hook here */ }
+const hot = window.claude && window.claude.hot;
+if (hot && typeof hot.ready === 'function') { try { hot.ready((d) => boot(d && d.version === CONFIG.version ? d : {})); } catch (e) { boot({}); } }
+else boot({});
+window.__RC__ = { S, Store };
+})();
+</script>

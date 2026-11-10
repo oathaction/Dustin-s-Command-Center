@@ -910,6 +910,121 @@ def s_11_7(ctx):
          notes='Labeled failure: numbers at 9 px and a link at 11 px, off the scale on purpose and under the 13 px floor.')
 
 
+# ------------------------------------------------------------------------------------------------ records requests and agency rules
+REQ_KEY = ('done', 'now', 'notyet', 'skipped', 'stopped')
+RULE_KEY = ('done', 'take', 'notyet', 'skipped', 'stopped')
+
+
+def alt_rows(items, nm):
+    """One sentence per record for an alt: its number, title, status words, line, wait and check, and each step's state."""
+    out = []
+    for b in items:
+        st = '; '.join(f'{i + 1} {nm[i]} {STATE_WORD[s].lower()}' for i, s in enumerate(b['states']))
+        tp = f' You can take part now: {b["take"]}' if 'take' in b['states'] else ''
+        wt = f' {b["wait"]}' if b.get('wait') else ''
+        ck = f' Beside the warning mark: {b["checked"]}' if b.get('checked') else ''
+        out.append(f'{b.get("noun", "Bill")} {b["id"]}, {b["title"]}: {status_words(b, nm)} {b["line"]}{wt} Steps: {st}.{tp}{ck}')
+    return ' '.join(out)
+
+
+def records_piece(ctx, title, items, nm, show, band=''):
+    css = piece_css(ctx, 'n', 's') + records_css(ctx)
+    fcss = ''
+    if band:
+        fcss, band = ctx.fail_band(flush=True)
+    rows = ''.join(row(b, 's', nm) for b in items)
+    return (f'<style>{css}{fcss}</style>{band}<div class="pc"><p>{ILLUS}</p><p class="hd">{title}</p>'
+            f'<ul class="rows">{rows}</ul>{key(nm, show)}</div>')
+
+
+def s_11_8(ctx):
+    nm = names('request')
+    html = records_piece(ctx, 'Where three records requests stand', REQUESTS, nm, REQ_KEY)
+    alt = ('Three Illustrative records requests at 360 px on Newsprint, each drawn as six numbered steps with the bill '
+           'tracker’s marks, and a key of the six steps, Requested, Acknowledged, Searching, Reviewing, Answered and '
+           'Appeal, and of the marks. ' + alt_rows(REQUESTS, nm))
+    spec(ctx, 's-11-8-correct', html, '11.8', alt, width=360, illustrative=True)
+    bad = dict(REQUESTS[2], end='Full denial for reasons other than exemptions.',
+               line='The agency closed the request on April 9.')
+    html2 = records_piece(ctx, 'Where the park ranger records request stands', [bad], nm, ('done', 'stopped'), band=True)
+    alt2 = ('Labeled Failure case: do not publish. An Illustrative records request, 99005, Park ranger staffing records, at '
+            '360 px: steps 1 and 2 filled and a square at step 3, Searching, where the line ends. The words read “Full '
+            'denial for reasons other than exemptions. The agency closed the request on April 9.” The requester withdrew '
+            'it, and nothing on the card says so.')
+    spec(ctx, 's-11-8-failure', html2, '11.8', alt2, width=360, illustrative=True)
+
+
+def s_11_9(ctx):
+    nm = names('rule')
+    html = records_piece(ctx, 'Where three agency rules stand', RULES, nm, RULE_KEY)
+    alt = ('Three Illustrative federal agency rules at 360 px on Newsprint, each drawn as six numbered steps with the bill '
+           'tracker’s marks, and a key of the six steps, Early notice, Proposed, Comments open, Comments closed, Final '
+           'rule and In effect, and of the marks. ' + alt_rows(RULES, nm))
+    spec(ctx, 's-11-9-correct', html, '11.9', alt, width=360, illustrative=True)
+    bad = dict(RULES[1], states=['skipped', 'done', 'done', 'done', 'done', 'done'],
+               line='The agency published the final rule on August 1.')
+    html2 = records_piece(ctx, 'Where the grain dust rule stands', [bad], nm, ('done', 'skipped'), band=True)
+    alt2 = ('Labeled Failure case: do not publish. An Illustrative agency rule, 99004, Grain dust limits, at 360 px: step '
+            '1 under a slash and steps 2 to 6 filled, so Proposed, Comments open and Comments closed all read as done. The '
+            'words read “In effect since August 1. The agency published the final rule on August 1.” The agency issued it '
+            'without asking for comment first, and nothing on the card says so.')
+    spec(ctx, 's-11-9-failure', html2, '11.9', alt2, width=360, illustrative=True)
+
+
+def s_11_10(ctx):
+    nm = names('request')
+    later = dict(id='99009', noun='Request', kind='request', title='Jail inspection reports', states=['done'] * 6,
+                 end='Upheld on appeal on July 8.',
+                 line='The appeal office kept the agency’s answer. The requester took the request to federal court on '
+                      'August 3.')
+    items = [WAIT_REQUEST, later]
+    html = records_piece(ctx, 'Two records requests, one paused and one past the agency', items, nm, ('done', 'now', 'notyet'))
+    alt = ('Two Illustrative records requests at 360 px on Newsprint, with a key of the six steps and the marks. '
+           + alt_rows(items, nm))
+    spec(ctx, 's-11-10-correct', html, '11.10', alt, width=360, illustrative=True)
+    nm7 = nm[:3] + ['Fee estimate'] + nm[3:]
+    bad = dict(WAIT_REQUEST, states=['done', 'done', 'done', 'now', 'notyet', 'notyet', 'notyet'],
+               line='The agency sent a fee estimate on April 2.', wait=None, checked=None)
+    css = piece_css(ctx, 'n', 's') + records_css(ctx)
+    fcss, band = ctx.fail_band(flush=True)
+    html2 = (f'<style>{css}{fcss}</style>{band}<div class="pc"><p>{ILLUS}</p><p class="hd">Where the snowplow records request '
+             f'stands</p><ul class="rows">{row(bad, "s", nm7)}</ul>{key(nm7, ("done", "now", "notyet"))}</div>')
+    alt2 = ('Labeled Failure case: do not publish. An Illustrative records request, 99007, Snowplow contract records, at 360 '
+            'px, drawn as seven numbered steps: the fee estimate has become step 4, between Searching and Reviewing. The '
+            'words read “Step 4 of 7: Fee estimate. The agency sent a fee estimate on April 2.”, and the key lists seven '
+            'steps.')
+    spec(ctx, 's-11-10-failure', html2, '11.10', alt2, width=360, illustrative=True)
+
+
+def s_records_steps(ctx):
+    """The twelve steps of a records request and an agency rule, as a readable table (D2-255)."""
+    T = ctx.ty
+    css = (f'.tb{{margin:0 0 24px}}.tb:last-child{{margin-bottom:0}}'
+           f'.cp{{margin:0 0 8px;{T("label")};color:{ctx.v("oa.color.text.secondary.onNewsprint")}}}'
+           f'table{{width:100%;border-collapse:collapse;{T("bodySmall")}}}'
+           f'th,td{{text-align:left;vertical-align:top;padding:10px 16px 10px 0;border-bottom:1px solid '
+           f'{ctx.v("oa.color.border.hairline.onNewsprint")}}}'
+           f'thead th{{{T("label")};color:{ctx.v("oa.color.text.secondary.onNewsprint")};border-bottom:2px solid '
+           f'{ctx.v("oa.color.border.strong.onNewsprint")}}}'
+           f'tbody th{{{T("ui")};width:13rem}}th .n{{display:inline-block;min-width:1.4em;{T("h4")};'
+           f'font-variant-numeric:tabular-nums}}td{{max-width:34rem}}'
+           f'@container (max-width:30rem){{tbody th{{width:7.5rem;padding-right:12px}}th .n{{display:block}}}}.wr{{container-type:inline-size}}')
+
+    def table(caption, steps):
+        rows = ''.join(f'<tr><th scope="row"><span class="n">{i + 1}</span> {n}</th><td>{m}</td></tr>'
+                       for i, (n, m) in enumerate(steps))
+        return (f'<div class="tb"><table><caption class="cp">{caption}</caption><thead><tr><th scope="col">Step</th>'
+                f'<th scope="col">What happens</th></tr></thead><tbody>{rows}</tbody></table></div>')
+    html = (f'<style>{css}</style><div class="wr">{table("A federal records request", REQUEST_STEPS)}'
+            f'{table("A federal agency rule", RULE_STEPS)}</div>')
+    alt = ('The six steps of a federal records request and of a federal agency rule, with what happens at each. A records '
+           'request: ' + ' '.join(f'{i + 1}, {n}: {m}' for i, (n, m) in enumerate(REQUEST_STEPS))
+           + ' An agency rule: ' + ' '.join(f'{i + 1}, {n}: {m}' for i, (n, m) in enumerate(RULE_STEPS)))
+    return spec(ctx, 's-11-records-steps', html, None, alt, readable=True,
+                notes='Two readable tables (D2-255), from the research lead’s section 7 (5 U.S.C. 552 and FOIA.gov; '
+                      '5 U.S.C. 553 and 801, RegInfo.gov).')
+
+
 # ------------------------------------------------------------------------------------------------ chapter
 def build(ctx):
     s_steps(ctx)
