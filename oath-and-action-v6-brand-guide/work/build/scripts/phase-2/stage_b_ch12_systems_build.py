@@ -466,8 +466,8 @@ def chapter(ctx, figs, existing):
         'id': '12.5', 'title': 'Mark where a reform acts with the atlas’s red target, and with nothing else in red.',
         'rule': [
             'Where a figure shows a reform at work, the marks it acts on turn Pillar Red at a heavier weight: each '
-            'connection it changes, the arrow from one variable to another, with its arrowhead, and the outline of each '
-            'variable it targets. On Newsprint '
+            'connection it changes, with its arrowhead, and the outline of each variable it targets. A connection is '
+            'the atlas’s arrow from one variable to another (Rule 10.10). On Newsprint '
             'a red connection carries a 1 px Charcoal edge. A note beside the figure names the reform and says that it '
             'acts where the marks turn red.',
             'The marker is the view’s one working red. When an error or a step the reader can take now shares the view, '
@@ -521,7 +521,7 @@ def chapter(ctx, figs, existing):
             'basis': 'Design judgment, from the chart system'},
         'correct': {'specimen': 's-12-key-correct',
                     'caption': 'A key above a phone chart, in the order the segments run, each swatch drawn as its mark. '
-                               'The title says only what the counts show: 28 of the 39 claims are documented or well '
+                               'Its title says only what the counts show, that 28 of the 39 claims are documented or well '
                                'supported.'},
         'failure': {'specimen': 's-12-key-failure',
                     'caption': '<strong>Fails Rule 12.6.</strong> A boxed legend under the plot, in reverse order, with '

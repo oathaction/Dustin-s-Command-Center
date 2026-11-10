@@ -1115,9 +1115,9 @@ def chapter(rows, reads24, like, sheets, figs):
             'its own size, so a two-color tile starts at 72 px square, 76 px rounded and 80 px round, where the drawing '
             'stands at 49 or 50 px and may keep its red.',
             'A one-color tile may go smaller, from 48 px square and 52 px rounded or round, which holds its drawing at '
-            '32 to 34 px. This is the one place a drawing off the list of 41 goes under Rule 10.4’s 48 px floor, and '
-            'only the 94 that reviewers could still name at 32 px may. The other 30 take one-color tiles from 72, 76 and '
-            '80 px, which hold them at 48 px or more.'],
+            '32 to 34 px. This is the one place a drawing off the list of 41 goes under Rule 10.4’s 48 px floor, and it '
+            'is open only to the 94 drawings that reviewers could still name at 32 px. The other 30 take one-color tiles '
+            'from 72, 76 and 80 px, which hold them at 48 px or more.'],
         'tokens': ['oa.component.icon.ink.onNewsprint', 'oa.component.icon.ink.onCharcoal', 'oa.component.icon.ink.onPrussian'],
         'why': {'text': ['Each edition keeps the ink at 13.29 to 1 or more against its own ground, and 9.42 to 1 on Prussian, so '
                          'the drawing reads on every surface we print. A fixed set of tiles keeps a symbol from turning '
@@ -1174,10 +1174,10 @@ def chapter(rows, reads24, like, sheets, figs):
         'specs': [
             {'label': 'Word', 'value': 'Beside or under the drawing, in the UI or caption style', 'token': 'oa.type.ui'},
             {'label': 'Typed chip', 'value': 'The kind, Variable, Reform or Domain, then the atlas ID, as in Reform R-13, in '
-                                             'the label style; set after the name, never before it',
+                                             'the label style, set after the name',
              'token': 'oa.type.label'},
-            {'label': 'Chip outline', 'value': '1 px on all four sides in the strong border color, with 3 px of space above '
-                                               'and below the words and 6 px at each side; the words never wrap',
+            {'label': 'Chip outline', 'value': 'A 1 px outline in the strong border color, with 3 px of space above and '
+                                               'below the words and 6 px at each side; the words stay on one line',
              'token': 'oa.color.border.strong.onNewsprint'},
             {'label': 'Markup', 'value': '<code>aria-hidden="true"</code> and <code>focusable="false"</code> on the svg; '
                                          '<code>data-icon</code> and <code>data-icon-family</code> on every use'},
@@ -1296,8 +1296,8 @@ def chapter(rows, reads24, like, sheets, figs):
         'id': '10.10', 'title': 'Copy the atlas’s encoding glyphs exactly, each with its words.',
         'rule': [
             'The atlas draws each connection, a claimed relationship between two variables, as an arrow, and marks it '
-            'with a small set of glyphs. A tag with a plus or a minus gives its sign: plus when the two tend to move the '
-            'same way, minus when they tend to move opposite ways. An open diamond marks authority, where one body holds '
+            'with a small set of glyphs. A tag with a plus or a minus gives its sign, which says whether the two '
+            'variables tend to move the same way or in opposite directions. An open diamond marks authority, where one body holds '
             'legal power over something. Line textures give the evidence grade, one to three ticks the delay, and red '
             'shows where a reform acts. Draw each one from the atlas’s own measurements, and print its words beside it in '
             'every key.',

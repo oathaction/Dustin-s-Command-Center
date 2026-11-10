@@ -169,7 +169,8 @@ ROW_CSS = (
 
 
 def box(tag, inner):
-    return f'<div class="p9-box"><span class="oai-tag">{E(tag)}</span>{inner}</div>'
+    """A row with its tag; a size keeps its unit on its line ("24 px" never splits at a phone's width)."""
+    return f'<div class="p9-box"><span class="oai-tag">{E(tag).replace(" px", "\u00a0px")}</span>{inner}</div>'
 
 
 # ============================================================================================ 09.1
