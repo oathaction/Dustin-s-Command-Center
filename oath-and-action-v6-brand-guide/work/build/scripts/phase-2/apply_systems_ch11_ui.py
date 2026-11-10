@@ -51,7 +51,7 @@ def tpl(html):
     return f'<template data-tpl>{html}</template>'
 
 
-def ui_css(ctx):
+def ui_css(ctx, live=True):
     """The controls every live specimen shares: a 44 px button with its icon before its word, the unavailable state with
     its reason, the focus ring and the visually hidden text. Colors from the Newsprint surface's tokens."""
     T, v = ctx.ty, ctx.v
@@ -60,7 +60,7 @@ def ui_css(ctx):
             f'--ring:{v("oa.color.focus.ring.onNewsprint")};--ground:{v("oa.color.surface.newsprint")};'
             f'--paper:{v("oa.color.surface.white")};--dis:{v("oa.component.button.disabled.label.onNewsprint")};'
             f'--disedge:{v("oa.component.button.disabled.edge.onNewsprint")};--touch:{v("oa.size.target.touch")}}}'
-            f'.ui{{forced-color-adjust:auto;background:var(--ground);color:var(--ink);padding:20px 16px 24px;{T("body")}}}'
+            f'.ui{{{"forced-color-adjust:auto;" if live else ""}background:var(--ground);color:var(--ink);padding:20px 16px 24px;{T("body")}}}'
             f'.ui p{{margin:0}}'
             f'.b{{display:inline-flex;align-items:center;gap:8px;min-height:var(--touch);min-width:var(--touch);margin:0;'
             f'padding:0 14px 0 10px;border:1px solid var(--edge);border-radius:0;background:var(--ground);color:var(--ink);'
@@ -143,7 +143,7 @@ def s_reader_fail(ctx, m):
     info = ('<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" '
             'r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 11v6M12 7.5v.5" fill="none" '
             'stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>')
-    css = ui_css(ctx) + fcss + (
+    css = ui_css(ctx, live=False) + fcss + (
         f'.bar{{display:flex;gap:6px;align-items:center;margin-top:44px}}'
         f'.g{{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--edge)}}'
         f'.pn{{margin:0 6px;{T("ui")}}}.tw{{position:relative}}'
@@ -238,7 +238,7 @@ def s_library(ctx, m):
             f'{chip("t", "Topic")}{chip("a", "Atlas", True)}{chip("p", "Pillar")}</ul>'
             f'<p class="gl" id="lb-s">Size</p><ul class="cs" aria-labelledby="lb-s">{chip("24", "Reads at 24 px")}</ul></div>'
             f'<p class="rs" role="status" data-out="res">{n_atlas} of 124 symbols</p><ul class="hs" data-out="hits"></ul>'
-            + tpl(u('selected-check'))
+            + tpl(u('selected-check')) + f'<script type="application/json" data-rows>{data}</script>'
             + script('''
 var L=S.querySelector('[data-ui="library"]'),D=JSON.parse(L.querySelector('[data-rows]').textContent),
 Q=L.querySelector('[data-q]'),C=L.querySelector('[data-act="clear"]'),F=L.querySelector('[data-act="sheet"]'),
@@ -261,7 +261,7 @@ F.addEventListener('click',function(){var o=F.getAttribute('aria-expanded')!=='t
 H.hidden=!o;F.querySelector('[data-icon="U-chevron"] use').setAttribute('transform',o?'rotate(180 12 12)':'');});
 B.forEach(function(b){b.addEventListener('click',function(){mark(b,!on(b));run();});});
 Z.addEventListener('click',function(){B.forEach(function(b){mark(b,false);});run();F.focus();});
-run();''') + f'<script type="application/json" data-rows>{data}</script></div>')
+run();''') + '</div>')
     alt = ('The symbol library’s search and filter bar, live at 360 px. A field labeled Search the symbols holds the '
            'magnifier before the text; once you type, a cross at its end clears the search, named “Clear the search”. '
            'Under it, the Filters button carries the funnel, the words “Filters, 1 on” and a chevron pointing up, since '
@@ -277,7 +277,7 @@ run();''') + f'<script type="application/json" data-rows>{data}</script></div>')
 def s_library_fail(ctx, m):
     T, u = ctx.ty, m.uicon
     fcss, band = ctx.fail_band(flush=True)
-    css = ui_css(ctx) + fcss + (
+    css = ui_css(ctx, live=False) + fcss + (
         f'.bar{{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}}'
         f'.pn{{{T("ui")};margin-right:auto}}'
         f'.src{{display:flex;align-items:center;justify-content:space-between;min-height:var(--touch);margin-top:16px;'
@@ -383,7 +383,7 @@ def s_links(ctx, m):
 def s_links_fail(ctx, m):
     T, u = ctx.ty, m.uicon
     fcss, band = ctx.fail_band(flush=True)
-    css = ui_css(ctx) + fcss + (
+    css = ui_css(ctx, live=False) + fcss + (
         f'.tx{{width:250px;{T("body")}}}.tx .a{{text-decoration:underline;text-underline-offset:3px}}'
         f'.tx svg{{display:block;margin-top:2px}}.n{{margin-top:12px;{T("caption")};color:var(--sec)}}')
     html = (f'<style>{css}</style>{band}<div class="ui"><p><span class="illus">Illustrative</span></p>'
@@ -427,7 +427,7 @@ def stepper(ctx, m, live=True):
     start = f'Start at {first.lower()}, and suppose they rise. Press Play, or Next step to follow one link at a time.'
     data = json.dumps(steps, ensure_ascii=False, separators=(',', ':'))
     head = (f'<p class="k">From our systems atlas, loop {LOOP_ID}</p><p class="t">{title}</p>'
-            f'<div class="st" aria-live="polite" data-out="step"><p class="sn">Ready</p><p class="sx">{start}</p></div>')
+            f'<div class="st" aria-live="polite"><p class="sn" data-out="sn">Ready</p><p class="sx" data-out="sx">{start}</p></div>')
     if live:
         ctl = (f'<div class="cl" role="group" aria-label="Steps of the loop">'
                f'<button type="button" class="b" data-act="play">{u("play")}{u("pause").replace("<svg ", "<svg hidden ", 1)}'
@@ -438,26 +438,24 @@ def stepper(ctx, m, live=True):
                f'{u("arrow", transform=MIRROR[24])}Previous step</button>'
                f'<button type="button" class="b nx" data-act="next">Next step{u("arrow")}</button></div>'
                f'<p class="why" id="lp-why" data-out="why">At the start, so Previous step and Reset wait until you move on.</p>')
-        js = script('''
+        js = f'<script type="application/json" data-steps>{data}</script>' + script('''
 var L=S.querySelector('[data-ui="loop"]'),D=JSON.parse(L.querySelector('[data-steps]').textContent),i=0,t=null,
 Y=L.querySelector('[data-act="play"]'),R=L.querySelector('[data-act="reset"]'),P=L.querySelector('[data-act="prev"]'),
-X=L.querySelector('[data-act="next"]'),W=L.querySelector('[data-out="why"]'),Q=L.querySelector('[data-out="step"]'),
-I=Y.querySelectorAll('svg'),V=Y.querySelector('[data-out="pw"]'),Z=Q.innerHTML;
+X=L.querySelector('[data-act="next"]'),W=L.querySelector('[data-out="why"]'),A=L.querySelector('[data-out="sn"]'),
+B=L.querySelector('[data-out="sx"]'),I=Y.querySelectorAll('svg'),V=Y.querySelector('[data-out="pw"]'),A0=A.textContent,B0=B.textContent;
 function off(b,y){if(y){b.setAttribute('aria-disabled','true');b.setAttribute('aria-describedby',W.id);}
 else{b.removeAttribute('aria-disabled');b.removeAttribute('aria-describedby');}}
-function show(){if(!i){Q.innerHTML=Z;}else{Q.innerHTML='';var a=document.createElement('p'),b=document.createElement('p');
-a.className=Q.firstElementChild?'':'';a.setAttribute('data-n','');a.textContent='Step '+i+' of '+D.length+': '+D[i-1][0];
-b.textContent=D[i-1][1];a.style.fontWeight='700';Q.appendChild(a);Q.appendChild(b);}
+function show(){A.textContent=i?'Step '+i+' of '+D.length+': '+D[i-1][0]:A0;B.textContent=i?D[i-1][1]:B0;
 off(P,!i);off(R,!i);off(X,i===D.length);
 W.textContent=!i?'At the start, so Previous step and Reset wait until you move on.':(i===D.length?'At the last step. Reset the loop to start again.':'');
-var p=!!t;I[0].hidden=p;I[1].hidden=!p;V.textContent=p?'Pause':(i===D.length?'Play again':'Play');}
+var p=!!t;I[0].toggleAttribute('hidden',p);I[1].toggleAttribute('hidden',!p);V.textContent=p?'Pause':(i===D.length?'Play again':'Play');}
 function stop(){if(t){clearInterval(t);t=null;}}
 function go(){if(i<D.length){i++;}if(i===D.length){stop();}show();}
 Y.addEventListener('click',function(){if(t){stop();show();return;}if(i===D.length){i=0;}t=setInterval(go,2400);go();});
 X.addEventListener('click',function(){if(i<D.length){stop();i++;show();}});
 P.addEventListener('click',function(){if(i>0){stop();i--;show();}});
 R.addEventListener('click',function(){if(i>0){stop();i=0;show();}});
-show();''') + f'<script type="application/json" data-steps>{data}</script>'
+show();''')
         return css, f'<div class="ui" data-ui="loop">{head}{ctl}{js}</div>', title, steps
     return css, head, title, steps
 
@@ -531,7 +529,7 @@ def s_form(ctx, m):
         desc = f' aria-describedby="{hid}"' if hint else ''
         return (f'<div class="f" data-field="{key}"><label class="l" for="fm-{key}">{label}</label>{h}'
                 f'<input class="in" id="fm-{key}" {attrs}{desc} data-in="{key}">'
-                f'<div class="er" id="fm-{key}-er" hidden data-err="{key}">{u("error")}<span data-msg><b>Error:</b> </span></div></div>')
+                f'<div class="er" id="fm-{key}-er" hidden data-err="{key}">{u("error")}<span><b>Error:</b> <span data-msg></span></span></div></div>')
     html = (f'<style>{css}</style><div class="ui" data-ui="form"><p><span class="illus">Illustrative</span></p>'
             f'<p class="t">Get a reminder before the March 3 hearing</p>'
             f'<p class="d">We email you two days before the hearing on H.99001, with how to send testimony.</p>'
@@ -539,24 +537,24 @@ def s_form(ctx, m):
             + field('email', 'Email', '', 'type="email" autocomplete="email" spellcheck="false"')
             + field('zip', 'ZIP code', 'Five digits', 'type="text" inputmode="numeric" autocomplete="postal-code"')
             + f'<button type="submit" class="ask" data-red="working" data-red-job="take part now" data-ask>Remind me</button></form>'
-            f'<div class="ok" role="status" data-out="ok" hidden>{u("success")}<span data-msg></span></div>'
+            f'<div role="status" data-out="ok"></div>'
+            + tpl(f'<div class="ok">{u("success")}<span><b>You’re signed up.</b> We’ll email you on March 1, two '
+                  f'days before the hearing.</span></div>')
             + script('''
 var F=S.querySelector('[data-ui="form"]'),A=F.querySelector('[data-ask]'),K=F.querySelector('[data-out="ok"]'),
 M={email:'Enter an email address with an @, such as name@example.com.',zip:'Enter a ZIP code with five digits.'},
 V={email:function(x){return/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(x);},zip:function(x){return/^[0-9]{5}$/.test(x);}};
 function mark(k,bad){var i=F.querySelector('[data-in="'+k+'"]'),e=F.querySelector('[data-err="'+k+'"]'),
 d=(i.getAttribute('aria-describedby')||'').split(' ').filter(function(x){return x&&x!==e.id;}),f=i.closest('[data-field]');
-if(bad){i.setAttribute('aria-invalid','true');d.push(e.id);e.querySelector('[data-msg]').lastChild.textContent=M[k];e.hidden=false;
+if(bad){i.setAttribute('aria-invalid','true');d.push(e.id);e.querySelector('[data-msg]').textContent=M[k];e.hidden=false;
 f.setAttribute('data-red','working');f.setAttribute('data-red-job','error');}
 else{i.removeAttribute('aria-invalid');e.hidden=true;f.removeAttribute('data-red');f.removeAttribute('data-red-job');}
 if(d.length){i.setAttribute('aria-describedby',d.join(' '));}else{i.removeAttribute('aria-describedby');}return bad?i:null;}
 F.querySelector('[data-form]').addEventListener('submit',function(ev){ev.preventDefault();var first=null;
 ['email','zip'].forEach(function(k){var i=F.querySelector('[data-in="'+k+'"]'),b=mark(k,!V[k](i.value.trim()));first=first||b;});
-if(first){A.setAttribute('data-yield','');A.removeAttribute('data-red');A.removeAttribute('data-red-job');K.hidden=true;first.focus();return;}
+if(first){A.setAttribute('data-yield','');A.removeAttribute('data-red');A.removeAttribute('data-red-job');K.textContent='';first.focus();return;}
 A.removeAttribute('data-yield');A.setAttribute('data-red','working');A.setAttribute('data-red-job','take part now');
-K.querySelector('[data-msg]').innerHTML='';var b=document.createElement('b');b.textContent='You’re signed up.';
-K.querySelector('[data-msg]').appendChild(b);K.querySelector('[data-msg]').appendChild(document.createTextNode(' We’ll email you on March 1, two days before the hearing.'));
-K.hidden=false;});''') + '</div>')
+K.textContent='';K.appendChild(F.querySelector('template[data-tpl]').content.firstElementChild.cloneNode(true));});''') + '</div>')
     alt = ('A live sign-up form at 360 px, Illustrative: “Get a reminder before the March 3 hearing”, with an Email field, a '
            'ZIP code field with the hint “Five digits” and the red button Remind me, the view’s one working red. Sent '
            'with a field wrong, each wrong field takes a red bar at its left edge and a message under it on the pale '
@@ -573,7 +571,7 @@ K.hidden=false;});''') + '</div>')
 def s_form_fail(ctx, m):
     T, u, v = ctx.ty, m.uicon, ctx.v
     fcss, band = ctx.fail_band(flush=True)
-    css = ui_css(ctx) + fcss + (
+    css = ui_css(ctx, live=False) + fcss + (
         f'.l{{display:block;margin-top:12px;{T("ui")};font-weight:600}}'
         f'.in{{display:flex;align-items:center;min-height:48px;margin-top:6px;padding:0 12px;border:1px solid var(--edge);'
         f'background:var(--paper);{T("body")}}}'
