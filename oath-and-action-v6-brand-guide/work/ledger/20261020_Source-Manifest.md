@@ -56,3 +56,12 @@ Supplied by Dustin in the session. The HTML, the QA report and the coverage mani
 | `20261015_Atlas-V7-Editorial-And-QA-Report.md` (repeat) | 20,688 | `5ea7927a116e89bb8b067d7e47a5ff8c74ee063b3390ad4787bc2e6e2fc00446` | `work/research/atlas-v7-docs/` |
 | `20261015_Atlas-V7-Content-Coverage-Manifest.csv` (repeat) | 31,051 | `19ae92d033816e6716f74918357d6b9622e888a6dc86cb83e8b4dbf23ef4eea7` | `work/research/atlas-v7-docs/` |
 | `v7-public-atlas-rebuild.zip` (111 files: V7, its maintenance data, research, build, verification, and an archive of V4 and V6) | 6,070,943 | `2f6d573ee5556a2a35a4d91323032a5006405cca0b413049866fff6ef8f6518e` | `work/extract/supplied-20261106/` |
+
+## Added November 10, 2026
+
+Dustin uploaded Atlas V7 again for Phase 3 (Q-17). The HTML matches the October 20 checksum byte for byte and stays out of git. Its model, the JSON inside `<script type="application/json" id="atlas-data">`, is committed byte for byte as it sits in the page, so every session can query it (DR-183).
+
+| File | Bytes | SHA-256 | Where it sits |
+|---|---|---|---|
+| `20261015_Who-Do-They-Answer-To-Systems-Atlas_V7.html` | 3,109,589 | `05e26c6b2dc6031a915847fd3c941772cde50d3eda056fb0a4bc869b80c97649` | `source/`, while a session holds it (ignored by git) |
+| `20261015_Atlas-V7-Model.json`, the HTML's `atlas-data` block, trimmed of the whitespace around it | 2,538,030 | `ef1028ac87e402e30af9e3cda234fed63794b5570d0a165b9dab39073e08c7f2` | `work/research/atlas-v7-docs/` (committed) |

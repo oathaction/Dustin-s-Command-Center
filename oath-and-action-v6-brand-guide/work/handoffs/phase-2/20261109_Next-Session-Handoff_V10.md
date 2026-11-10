@@ -1,6 +1,6 @@
 # Handoff for the next session: Oath & Action Edition 06 (tenth handoff, November 9)
 
-Written November 9, 2026, after the stage B drawings board was published, and updated November 10 with Dustin's answers to it. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `20261108_Next-Session-Handoff_V9.md`. V5's sections 3 to 5 (rules in force, working notes, preferences), V8's section 3 and V9's section 3 still hold, with the additions below. Decision log entries for this chat end at DR-182 and D2-710. The change ledger ends at C-049. The open questions add Q-17 (the Atlas V7 file for Phase 3).
+Written November 9, 2026, after the stage B drawings board was published, and updated November 10 with Dustin's answers to it. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `20261108_Next-Session-Handoff_V9.md`. V5's sections 3 to 5 (rules in force, working notes, preferences), V8's section 3 and V9's section 3 still hold, with the additions below. Decision log entries for this chat end at DR-183 and D2-713. The change ledger ends at C-050. Q-17 (the Atlas V7 file) is answered: the model is committed as `work/research/atlas-v7-docs/20261015_Atlas-V7-Model.json` (DR-183).
 
 ## 1. Where things stand
 
@@ -56,7 +56,7 @@ Each maker moves its approved options into the package as finals, one folder per
 - the utility hand: the picked option for each of the 18 drawings, at 24 and 16 px
 - the identity designer: the end mark fits, the rebuilt lockmark masters, and L6 centered in its specimen and minimum-size records
 
-The originals stay as the record (DR-135, D2-464). Log each change in the change ledger from C-050. Then the engineer builds the sprites from the finals.
+The originals stay as the record (DR-135, D2-464). Log each change in the change ledger from C-051. Then the engineer builds the sprites from the finals.
 
 ### C. Round 2, the chapters
 Follow the final brief's order: chapter 10 first, then 09 and 11 together, then 12. Carry these in:
@@ -90,6 +90,7 @@ Round 3 is the copy edit, two red teams, the creative director's review, one fix
   - To republish from a new chat, pass `url` and follow V9's republishing steps.
 - **Stop hook.** The session's stop hook asks for a commit whenever agents have written files. Commit snapshots as they come.
 - **Agents.** Agents finished in about 15 to 55 minutes each. Resuming a finished agent with SendMessage kept its context for fix rounds.
+- **Atlas V7.** The full model is committed (DR-183). In a fresh container, run `cp work/research/atlas-v7-docs/20261015_Atlas-V7-Model.json work/extract/atlas-v7-data.json` from the project folder before any script that reads the extract path (D2-713). The HTML is not in the repository.
 - **Network.** The 403s from ncsl.org, congress.gov and regulations.gov are the sites' own bot challenges, not the environment's proxy, so no environment change helps.
 
 ## 4. Starting prompt for the new chat

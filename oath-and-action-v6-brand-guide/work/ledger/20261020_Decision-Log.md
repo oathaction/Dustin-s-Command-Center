@@ -1511,3 +1511,11 @@ Dustin, replying to the stage B drawings board (https://claude.ai/artifact/WdVDN
 |---|---|---|
 | D2-711 | Dustin's upload of Atlas V7 sits in `source/20261015_Who-Do-They-Answer-To-Systems-Atlas_V7.html` and its model in `work/extract/atlas-v7-data.json`, in this container only; both paths stay out of git as `.gitignore` sets them | The file matches the Phase 0 manifest byte for byte, and the repository keeps large supplied originals on Dustin's machine; how future sessions get the model is Dustin's question |
 | D2-712 | The main session checked the redraw subjects against the full model: R-13 "Rebuild Congress's own staff and experts", R-42 "Congress votes on lasting tariffs", R-48 "Agency independence after the Slaughter ruling", D1 "Congress's ability to write and check policy", D7 "Entrenched control of rule-setting institutions" and EC5 "Where newly created credit goes" match the meaning sheet, and all 50 Civic Line reform drawings have their IDs among the model's 50 reforms | Round 0 could check only against the Phase 0 extracts (research notes, section 8) |
+
+| # | Decision | Source |
+|---|---|---|
+| DR-183 | The Atlas V7 model is committed as `work/research/atlas-v7-docs/20261015_Atlas-V7-Model.json`, the page's `atlas-data` block byte for byte; the HTML stays on Dustin's machine as `.gitignore` sets it | Dustin, November 10, as recommended (option 1) |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-713 | A fresh session rebuilds `work/extract/atlas-v7-data.json` from the committed model with `cp work/research/atlas-v7-docs/20261015_Atlas-V7-Model.json work/extract/atlas-v7-data.json`, so the Phase 3 prompt's input path still works | CLAUDE.md and the Phase 3 prompt name `work/extract/atlas-v7-data.json`; copying keeps both true without editing either |
