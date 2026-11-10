@@ -1,5 +1,5 @@
 {
- "built": "2026-11-10T16:22:43.733344+00:00",
+ "built": "2026-11-10T16:24:05.301109+00:00",
  "board": "work/boards/phase-2/stage-b/board-b/20261110_Board-B.html",
  "chapters_page": {
   "url": "https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF",
@@ -230,7 +230,7 @@
   "b_np": "2.96",
   "message": "Enter an email address with an @, such as name@example.com.",
   "built_date": "November 10, 2026",
-  "built_time": "4:22 p.m.",
+  "built_time": "4:24 p.m.",
   "chapters_version": 5,
   "enlarge_words": "four",
   "enlarged_px": 96,
@@ -434,5 +434,5 @@
   "the scores file has no rescore block yet; the board says the rescore is coming. Rerun when it lands."
  ],
  "warnings": [],
- "visible_text_sha1": "062262baede2e3450a62cf3d7462b82be2d6d980"
+ "visible_text_sha1": "f791d614dd7fec6b93969accad95f01ba86d3dcb"
 }

@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/stage-b/board-b/20261110_Board-B.html",
- "checked": "2026-11-10T16:21:40.566Z",
+ "checked": "2026-11-10T16:24:14.076Z",
  "views": [
   "overview"
  ],
@@ -90,7 +90,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 16126,
+   "height": 15879,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -135,7 +135,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 16736,
+   "height": 16510,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
