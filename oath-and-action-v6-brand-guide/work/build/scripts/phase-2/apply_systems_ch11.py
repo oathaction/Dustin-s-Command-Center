@@ -1565,18 +1565,18 @@ def build(ctx):
             {'chapter': '10', 'reason': 'Topic and atlas symbols, which name subjects and never stand for an action.'},
         ],
         'sources': [
-            'Nebraska Legislature, “Lawmaking in Nebraska”, nebraskalegislature.gov/about/lawmaking.php, retrieved '
-            'November 9, 2026. Nebraska’s one-chamber route and its steps, behind Rule 11.1.',
-            'Freedom of Information Act, 5 U.S.C. 552, via the Legal Information Institute, Cornell Law School; and FOIA.gov, '
-            '“Frequently Asked Questions”, run by the Justice Department’s Office of Information Policy, both retrieved '
-            'November 9, 2026. The steps, the 20 working days and the pauses in them, behind Rules 11.8 and 11.10.',
-            'Office of Information Policy, Justice Department, “Fiscal Year 2024 Annual Freedom of Information Act '
+            'Source: Nebraska Legislature, “Lawmaking in Nebraska”, via nebraskalegislature.gov, retrieved November 9, '
+            '2026. Nebraska’s one-chamber route and its steps, behind Rule 11.1.',
+            'Sources: the Freedom of Information Act, 5 U.S.C. 552, via the Legal Information Institute, Cornell Law '
+            'School; and FOIA.gov, “Frequently Asked Questions”, run by the Justice Department’s Office of Information '
+            'Policy; both retrieved November 9, 2026. The steps, the 20 working days and the pauses in them, behind Rules '
+            '11.8 and 11.10.',
+            'Source: Office of Information Policy, Justice Department, “Fiscal Year 2024 Annual Freedom of Information Act '
             'Report”, March 6, 2025, section III. The categories behind the end words in Rule 11.8.',
-            'Rulemaking, 5 U.S.C. 553, and Congressional review, 5 U.S.C. 801, via the Legal Information Institute; and '
-            'RegInfo.gov, “Frequently Asked Questions”, the Office of Information and Regulatory Affairs, all retrieved '
-            'November 9, 2026. The steps of a federal rule, its comment period and when it takes effect, behind Rule 11.9.',
-            'Judicial review, 5 U.S.C. 706, via the Legal Information Institute, retrieved November 9, 2026. A court that '
-            'sets a rule aside, in Rule 11.9.',
+            'Sources: rulemaking, 5 U.S.C. 553, Congressional review, 5 U.S.C. 801, and judicial review, 5 U.S.C. 706, via '
+            'the Legal Information Institute; and RegInfo.gov, “Frequently Asked Questions”, the Office of Information and '
+            'Regulatory Affairs; all retrieved November 9, 2026. The steps of a federal rule, its comment period, when it '
+            'takes effect and how it can end, behind Rule 11.9.',
         ],
     }
     return ch
