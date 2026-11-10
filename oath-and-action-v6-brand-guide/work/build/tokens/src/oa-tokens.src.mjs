@@ -48,7 +48,7 @@ const chartNum = (value, unit, description, source, ext = {}) => tok('number', v
 // ------------------------------------------------------------------------------------------ metadata
 export const meta = {
   title: 'Oath & Action design tokens, Edition 06',
-  version: '6.0.0-gate2.4',   // stage B, November 9, 2026: mark tokens (D2-402), the 24 px utility line, icon sizes after DR-136
+  version: '6.0.0-gate2.5',   // stage B round 2, November 10, 2026: the icon accent from 48 px, the 16 px utility line (gate2.4: mark tokens, D2-402, the 24 px utility line, icon sizes after DR-136)
   status: 'pre-release',
   statusNote:
     'Built for Gate 2. Version 6.0.0 ships when Dustin approves the token files at Gate 2; until then every value may still change.',
@@ -376,8 +376,8 @@ const size = {
   // symbol is set at 16 px, and only the 41 that read there are set at 24 px.
   icon: {
     small: tok('dimension', px(16), 'Icon at 16 px: a utility icon inline in text or a table heading, or a pixel-fit pillar icon. One color, with no red (R10, DR-67). No topic or atlas symbol is set at this size (DR-136).', { oneColor: true }),
-    medium: tok('dimension', px(24), 'Icon at 24 px: a utility icon beside a control\'s word, a pixel-fit pillar icon, or one of the 41 topic symbols that read at this size (DR-136). The smallest size that may carry a red accent.'),
-    large: tok('dimension', px(48), 'Icon at 48 px: the smallest size for a topic or atlas symbol (DR-136). A pillar icon under this size sits with its word (R9, DR-67).'),
+    medium: tok('dimension', px(24), 'Icon at 24 px: a utility icon beside a control\'s word, a pixel-fit pillar icon, or one of the 41 topic symbols that read at this size (DR-136). One color, with no red (D2-373, D2-497).'),
+    large: tok('dimension', px(48), 'Icon at 48 px: the smallest size for a topic or atlas symbol (DR-136), and the smallest that may carry a red accent. A pillar icon under this size sits with its word (R9, DR-67).'),
   },
   target: {
     minimum: tok('dimension', px(24), 'Smallest pointer target, WCAG 2.2 success criterion 2.5.8.'),
@@ -688,14 +688,18 @@ const componentTokens = {
   },
   icon: {
     ink: component('Civic Line icon ink. At 16 px the whole icon takes this one color (R10).', Object.fromEntries(SURF4.map((s) => [s, `{oa.color.graphic.essential.${SURFACE_KEY[s]}}`]))),
-    accent: component('Red accent of a standalone icon, or of the current icon in a row or menu, at 24 px and up: signature red, bare on Newsprint (R11, DR-66). White on Prussian.',
+    // Round 2 (November 10, 2026): every Civic Line drawing is one color under 48 px (D2-373, D2-497), and the light
+    // editions on Prussian keep their own rule (DR-09), so the accent starts at 48 px and names no Prussian treatment.
+    accent: component('Red accent of a standalone icon, or of the current icon in a row or menu, at 48 px and up: signature red, bare on Newsprint (R11, DR-66).',
       Object.fromEntries(SURF4.map((s) => [s, `{oa.color.identity.signature.${SURFACE_KEY[s]}}`])),
-      Object.fromEntries(SURF4.map((s) => [s, { minSize: '{oa.size.icon.medium}' }]))),
-    // The utility set (DR-134): a 24-unit grid, round caps and joins, one color through currentColor, no red. The
-    // 16 px line (1.5 px) enters with the first 16 px utility icon on a page, so that it has a reader.
+      Object.fromEntries(SURF4.map((s) => [s, { minSize: '{oa.size.icon.large}' }]))),
+    // The utility set (DR-134, DR-161 to DR-178): round caps and joins, one color through currentColor, no red. Each
+    // line is read by the guide build, which compares every utility icon on the page with its size's line (D2-402).
+    // The 16 px line joined in round 2, November 10, 2026, with the first 16 px utility icons on a page (D2-577).
     utility: {
       line: {
         medium: tok('dimension', px(2), 'Line of a utility icon at 24 px (oa.size.icon.medium): drawn on a 24-unit grid with round caps and joins, in currentColor, with no red.', { grid: 24, linecap: 'round', linejoin: 'round' }),
+        small: tok('dimension', px(1.5), 'Line of a utility icon at 16 px (oa.size.icon.small): drawn on a 16-unit grid with round caps and joins, in currentColor, with no red.', { grid: 16, linecap: 'round', linejoin: 'round' }),
       },
     },
   },

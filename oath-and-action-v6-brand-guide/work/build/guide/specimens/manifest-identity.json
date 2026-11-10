@@ -400,7 +400,6 @@
  "s-09-2-failure": {
   "chapter": "09",
   "rule": "09.2",
-  "width_px": 600,
   "alt": "Failure case: do not publish. The 48 pixel pillar row on Newsprint with Track’s icon in red and no word underlined, so only the red says which pillar is current.",
   "illustrative": false,
   "notes": "Color alone marks the current pillar (WCAG 2.2 SC 1.4.1). Failure band per D2-308."

@@ -2,7 +2,7 @@
 
 Oath & Action Edition 06, Phase 2, stage B, round 2. Research lead, November 10, 2026. Written for the editor and the main session, in answer to the editor's request in `work/handoffs/phase-2/20261110_Stage-B-Round-2-Editor-Notes.md` (section 2 and "Requests to other owners") and D2-777 and D2-778. Paths are relative to `oath-and-action-v6-brand-guide/`. I edited no plate or chapter file; every change below is for the editor to apply.
 
-Status: in progress.
+Status: complete. In short: Missouri's voters rejected the 2025 map on November 3, 2026 (unofficial returns, about 62 percent no; certification pending), so it never takes effect and the 2022 districts stay. Ohio's commission, five Republicans and two Democrats, adopted its map 7 to 0 on October 31, 2025, the constitution's deadline. Every body in the count was Republican-led or Democratic-led as the plate says. The count stays seven to one; the plate needs four small text changes (section 5), which I tested on scratch copies: every old string matches once, and the JSON still parses.
 
 ## 1. Missouri: the November 3, 2026 vote on the 2025 map
 
@@ -67,20 +67,107 @@ For each body I read the legislature's own member list for the term in which the
 
 None of these counts changes a word on the plate. Every party the plate names is now on a primary source, except Virginia's 2025 House of Delegates.
 
-## 4. Other facts in the plate that rested on search results
+## 4. Other facts in the plate that rested on search results or on the atlas's news sources
+
+The count's figures come from the atlas, and several atlas rows cite news pages. I read the official record for each map the plate counts or names.
+
+| Fact on the plate | Atlas row and its own source | Official record read November 10, 2026 | Holds? |
+|---|---|---|---|
+| Florida's map passed (one of the seven) | RL53, flsenate.gov | Florida Senate, "House Bill 1D (2026D)", https://www.flsenate.gov/Session/Bill/2026D/1D: House "Passed; YEAS 83, NAYS 28" and Senate "Passed; YEAS 21 NAYS 17" on 4/29/2026; "Approved by Governor" 5/4/2026; "Chapter No. 2026-229" | Yes |
+| Tennessee's map passed | RL54, sos.tn.gov | Tennessee General Assembly, HB 7003 (114th General Assembly), https://wapp.capitol.tn.gov/apps/BillInfo/Default.aspx?BillNumber=HB7003&GA=114: "Passed H., as am., Ayes 64, Nays 25, PNV 3" and "Passed Senate, Ayes 25, Nays 5" on 05/07/2026; "Signed by Governor." 05/07/2026; "Pub. Ch. 3" | Yes |
+| Louisiana's map passed | RL56, Redistricting Online (a news site) | Louisiana State Legislature, SB 121, 2026 Regular Session, https://legis.la.gov/legis/BillInfo.aspx?s=26RS&b=SB121: House "roll called on final passage, yeas 66, nays 36" on 05/28; Senate concurred "by a vote of 28 yeas and 10 nays" on 05/29; "Signed by the Governor. Becomes Act No. 2." on 05/29 | Yes |
+| Missouri's map passed | RL40, Ballotpedia News | Missouri House, HB 1 bill actions (section 1) | Yes |
+| North Carolina's map passed | L56, R-04, I022 | Session Law 2025-95 on ncleg.gov, read November 9 | Yes |
+| Ohio's map passed | L56, R-04, I022 | The commission's minutes and transcript (section 2) | Yes |
+| Virginia: "the state's supreme court struck the amendment down after voters approved it" | RL50, Ballotpedia; RL55, Cardinal News | Virginia Department of Elections, "Supreme Court of Virginia Voids April 21 Redistricting Referendum", May 8, 2026, https://www.elections.virginia.gov/news-releases/supreme-court-of-virginia-voids-april-21-redistricting-referendum-1.html: the court "issued a ruling on Friday, May 8, 2026, that voids the April 21, 2026, Redistricting Referendum Special Election", "the State Board of Elections will take no further action in relation to the election", and "no changes will be made to the congressional district boundaries". The vote count rests on the department's results site through a search snippet only (Yes 51.69 percent, 1,604,276 to 1,499,393, marked unofficial) | Mostly. The court voided the vote, in the department's words, which is more exact than "struck the amendment down". Small change in section 5 |
+| Utah: "A court adopted Utah's map" | RL45, Utah News Dispatch | Utah Legislature, Office of Legislative Research and General Counsel, "Analysis of Special Session Legislation", December 8, 2025 (PDF, SHA-256 `f56f878b...e557082344`), https://le.utah.gov/session/2025S2/2025SS2BillAnalysis.pdf: "The judge found that the Legislature's Map C failed to conform to the requirements of Proposition 4, struck down S.B. 1011, and approved one of the Plaintiff's maps as the map the Lieutenant Governor must use to administer congressional elections." Utah Judiciary statement of November 17, 2025 names "Judge Dianna Gibson's ruling" | Yes. The ruling's date (November 10, 2025 in the atlas) is not on either page; the plate does not print it |
+| Texas and California cases and the first source line | Primary records read November 6 (Texas Legislature Online, California Secretary of State, Supreme Court filings) | Not reopened today; party now confirmed in section 3 | Yes |
 
 ## 5. Changes for the editor
 
+Three files carry the count, and the same words change in each. Every old string below is copied from the file as it stands today. Curly apostrophes (’) are as in the files; the HTML writes "Oath &amp; Action" and the JSON writes "Oath & Action".
+
+### Change 1. The count paragraph: Missouri's vote and Virginia's verb
+
+- **File and field:** `work/build/guide/specimens/s-01-11-correct.html`, the `<p class="scope">` paragraph; and the same sentences inside `work/build/guide/specimens/manifest-editor.json`, `s-01-11-correct.alt`.
+- **Old:** `Republican-led legislatures or commissions passed seven, and California’s Democratic-led legislature passed one, which voters approved. Virginia’s Democratic-led legislature sought a ninth through a constitutional amendment, and the state’s supreme court struck the amendment down after voters approved it.`
+- **New:** `Republican-led legislatures or commissions passed seven, and California’s Democratic-led legislature passed one, which voters approved. Missouri’s voters rejected their state’s map, one of the seven, on November 3, 2026. Virginia’s Democratic-led legislature sought a ninth through a constitutional amendment, and the state’s supreme court voided the April 21, 2026 vote that approved it.`
+- **Why:** sections 1 and 4. California's voter step sits in the body, so Missouri's goes there too, in the same place and form. The count stays seven, because the plate counts maps passed.
+
+### Change 2. The count's source line: Ohio's vote, Missouri's result and its legal effect
+
+- **File and field:** `work/build/guide/specimens/s-01-11-correct.html`, the second `<p class="src">`; `work/build/guide/chapters/01-purpose.json`, `sources[5]`; and the same sentences inside `manifest-editor.json`, `s-01-11-correct.alt`.
+- **Old:** `Each map is counted by the party that led the legislature or commission when it passed. Ohio’s map came from the state’s redistricting commission under a deadline in the state constitution. The Missouri Supreme Court suspended the state’s map for 2026 ahead of a referendum on it held November 3, 2026, after the snapshot. A court adopted Utah’s map, so the count leaves it out.`
+- **New:** `Each map is counted by the party that led the legislature or commission when it passed, read from each body’s own member lists and minutes. Ohio’s redistricting commission, five Republicans and two Democrats, adopted its map 7 to 0 on October 31, 2025, the deadline the state constitution set, and the constitution required at least two votes from each party’s members. Missouri’s vote came after the snapshot: unofficial statewide returns for Proposition A, November 3, 2026, show 1,273,815 no and 785,969 yes (St. Charles County, Missouri, November 4, 2026), and the state certifies the count after counties file by November 17, 2026. A law sent to Missouri’s voters takes effect only if they approve it, so the state keeps its 2022 districts. A court adopted Utah’s map, so the count leaves it out.`
+- **Why:** sections 1 and 2. DR-149 asks for Ohio's vote in this line, and DR-93 rules out dropping it. Missouri's figures are unofficial and are labeled so.
+- **Follow-up before Phase 5:** once the board of state canvassers issues its statement (RSMo 116.330.1, within two weeks of receiving every abstract), replace the parenthesis and the clause after it with the certified figures and "Missouri Secretary of State, certified results, [date]". I will read it when it is posted, if asked.
+
+### Change 3. The correct caption
+
+- **File and field:** `work/build/guide/chapters/01-purpose.json`, `rules[10].correct.caption` (Rule 01.11).
+- **Old:** `Under the cases, the plate counts the maps in the atlas’s record by the party that led each, seven to one, and names Virginia’s attempt, which a court struck down. Its source line says how Ohio’s and Missouri’s maps differ from the rest.`
+- **New:** `Under the cases, the plate counts the maps in the atlas’s record by the party that led each, seven to one. It names the two maps that voters decided, California’s and Missouri’s, and Virginia’s attempt, which a court voided. Its source line gives Ohio’s 7 to 0 commission vote and the status of Missouri’s count.`
+
+### Change 4. Housekeeping lines
+
+- `s-01-11-correct.html`, header comment. **Old:** `count added November 10, 2026 (DR-149). -->` **New:** `count added November 10, 2026 (DR-149); Missouri’s result and Ohio’s vote added November 10, 2026 (D2-777, D2-778). -->`
+- `manifest-editor.json`, `s-01-11-correct.notes`. **Old:** `with Missouri’s referendum described as held after the snapshot.` **New:** `with Missouri’s November 3, 2026 result, Ohio’s 7 to 0 commission vote and Virginia’s voided vote from the research lead’s round 2 notes (D2-777, D2-778).`
+
+No other file carries the count: a search of `work/` and `brief/` for "eight new congressional maps", "seven to one" and "struck the amendment down" finds only these three and two handoff notes. The failure plate, its caption and Rule 01.11's own text hold as written.
+
+### For the atlas's V7.1 list (proposed lines, not edits)
+
+- **RL63 and RL40:** record Proposition A's result once certified (unofficial: 1,273,815 no, 785,969 yes) and that H.B. 1 never takes effect (Article III, Section 52(b)).
+- **RL60:** the court held that H.B. 1 "did not go into effect and will not go into effect unless and until approved by the voters" (Revisor's annotation of Glahn v. Hoskins). "Suspended" understates it.
+- **RL40's date:** the atlas gives September 28, 2025; the Missouri House records "Approved by Governor (G)" on September 29, 2025.
+- **RL38's Senate vote:** the atlas gives "Senate 18-8"; the November 6 research read 18 to 11 on Texas Legislature Online. One of them is wrong; not reread today.
+- **L56 and R-04:** Ohio's map needed and got both Democratic commissioners' votes under Article XIX, Section 1(E), which adds to the November 9 point that "unified state governments" misdescribes Ohio's route.
+
 ## Routine calls
 
+- D2-xxx | Missouri stays among the seven maps passed, and the plate's body says its voters rejected it, beside California's voter approval | The plate counts maps passed (its own source line), DR-149 and D2-525 count Missouri's as passed, and one standard puts both voter steps in the same place (DR-93)
+- D2-xxx | Missouri's result goes on the plate from unofficial returns, labeled unofficial, with the certification step named | The certified statement is not out; the margin is about 488,000 votes; the editor swaps in the certified figures before Phase 5
+- D2-xxx | The statewide Missouri figures are cited to St. Charles County's November 4 page | It is the only official page I could read that prints them; enr.sos.mo.gov answered 403 and sos.mo.gov returned a bot check, and I did not work around either
+- D2-xxx | Ohio's source line names the 7 to 0 vote, the five-to-two makeup and the constitution's rule of two votes from each party | DR-149 asks for Ohio's vote in the source line, and leaving it out drops a finding (DR-93)
+- D2-xxx | Party control is read from each legislature's own list for the term in which its map passed, counting dated changes where the list gives them | Florida's and Tennessee's default lists already show members elected November 3, 2026
+- D2-xxx | Virginia's sentence says the court voided the April 21, 2026 vote | The Department of Elections' release uses "voids" and names the election; the amendment never took effect either way
+- D2-xxx | The Texas and California cases, their source line, the failure plate and the rule text stay as written | Each holds on primary records read November 6, November 9 or today
+
 ## Questions for Dustin
+
+1. **Missouri's map on Rule 01.11's plate.** Missouri's voters turned down the 2025 map on November 3, about 62 percent to 38 by unofficial returns, so it never takes effect. The editor's notes had suggested counting six maps if that happened. **Recommendation:** keep seven, as you approved in DR-149, because the plate counts maps passed and Missouri's legislature passed this one; say in the body that voters rejected it, the way the body already says voters approved California's. Nothing is needed from you unless you would rather count maps that took effect, which would make it six, with Missouri named beside Virginia.
 
 ## Tested and Not tested
 
 ### Tested
 
+- Read my role file, `CLAUDE.md`, Master Brief sections 2, 5, 13 to 16 and 18, my November 9 notes (section 3, routine calls, Tested and Not tested), decision log entries DR-93, DR-149, D2-524, D2-525, D2-777 and D2-778, and the editor's round 2 notes (section 2, the questions and the requests).
+- Read the plate `s-01-11-correct.html`, Rule 01.11 and `sources` in `01-purpose.json`, and the plate's entry in `manifest-editor.json`; searched `work/` and `brief/` for every copy of the count.
+- Pulled atlas repair log rows RL38 to RL63 for the maps by script from `work/extract/atlas-v7-data.json`.
+- Missouri: read the Secretary of State's results page (before the site began returning a bot check); the Revisor's pages for Article III, Sections 52(a) and 52(b), RSMo 115.507, 115.511, 116.320, 116.330 and 128.348 with its note and annotation; St. Charles County's November 4 page; the Kansas City Board of Election Commissioners' unofficial PDF; the House's HB 1 bill content and actions; the House roster and 33 senators' pages, counted by script; checked the yes and no shares by script.
+- Ohio: read Article XIX, Section 1 in full; the commission's convening notice, its October 30 and October 31 minutes and its October 31 transcript, and its 2025 member data; four member pages through the fetch tool; the Supreme Court of Ohio's 2022-Ohio-65, paragraph 10.
+- Counted party labels by script on the member lists for Texas (Legislative Reference Library), North Carolina, Florida's Senate (2024-2026), Tennessee (114th General Assembly archive), Louisiana, California and Virginia, using the lists' own join and leave dates for North Carolina and Florida's Senate; read Florida's House list for 2024-2026 through the fetch tool.
+- Read the official bill pages for Florida's HB 1-D, Tennessee's HB 7003 and SB 7004, and Louisiana's SB 121; the Virginia Department of Elections' May 8, 2026 release; the Utah Legislature's December 8, 2025 analysis and the Utah Judiciary's November 17, 2025 statement.
+- Read two news reports (St. Louis Public Radio, KCUR) through the fetch tool, for comparison only.
+- Applied section 5's changes to scratch copies of the three files by script: each old string matched exactly once where named, both JSON files still parse, and no dash entered. The real files were not changed.
+- Read this file for em dashes by script.
+
 ### Not tested
+
+- Missouri's statewide results on the Secretary of State's own site (enr.sos.mo.gov answered 403 to the plain request and the fetch tool), the Secretary's 2026 ballot measures page and the official ballot language (bot check), and any certified figure (none issued yet). The November 8 state figures exist (a search snippet titled "Unofficial Results as of 11/8/2026 6:50:17 PM") and may differ a little from the county's November 4 copy.
+- The Supreme Court of Missouri's opinion in Glahn v. Hoskins itself: courts.mo.gov bars automated access, so I relied on the Revisor's annotation.
+- Amendment 6's text, result and effect, and the use of the 2025 map in the August 4, 2026 primary (county page and news only).
+- The exact party counts in Missouri on September 9 and 12, 2025, in California in August 2025, in Louisiana on May 28 and 29, 2026, and in Tennessee on May 7, 2026: those lists carry no dates. The majorities are far larger than any vacancy.
+- Florida's House list, which I read only through the fetch tool's summary, and the four Ohio legislators' pages, likewise.
+- The Ohio Secretary of State's site (security block), so DeWine's, LaRose's and Faber's party rests on the 2022 court opinion.
+- Virginia's 2025 House of Delegates, which gave the amendment's first passage; the Supreme Court of Virginia's opinion; the April 21 vote totals on the state's results site, which loads by script.
+- The Utah ruling's own text and its date.
+- North Carolina's governor's party and the constitutional rule that its redistricting bills skip the governor (still search results only; neither is on the plate).
+- Whether the atlas's record of 2025 and 2026 maps is complete. I did not search for maps or attempts in states the atlas does not list; the plate claims only what the atlas records.
+- Texas's Senate vote on H.B. 4 (atlas 18 to 8, November 6 research 18 to 11), not reread today.
 
 ## Change log
 
-- Created `work/handoffs/phase-2/20261110_Stage-B-Round-2-Research-Notes.md` (this file).
+- Created `work/handoffs/phase-2/20261110_Stage-B-Round-2-Research-Notes.md` (this file), written early and added to section by section.
+- Modified: none. I did not touch the plate, the chapter JSON, the manifest, `source/`, `work/ledger/`, `deliverables/`, any board or the atlas. Nothing was committed or pushed.
+- Scratch only, in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/ea3fc969-1fa2-5617-a502-a9fe32bb03e8/scratchpad/r2research/`: downloads in their own folders (`dl/`, `dl-ohio/`, `dl-leg/`, `dl-bills/`) and the two counting scripts (`txt.py`, `nc_count.py`) one level up.

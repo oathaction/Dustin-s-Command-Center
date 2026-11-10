@@ -616,8 +616,15 @@ async function fitAudit(page) {
 // (20261109_Stage-B-Accessibility-Audit.md, section 2), found by data-icon and data-icon-family (D2-517), plus the
 // mark tokens' parity (D2-402). A stage with role="img" is a picture and is skipped; a live specimen (D2-516) is not.
 const GLYPH_ONLY_OK = ['clear the search'];                 // A-4: the one control that may show a glyph and no word
-const REQUIRE_FAMILY = false;                              // D2-517: a glyph without data-icon-family is listed now and fails from round 2
-const READS_AT_24 = [];                                     // B-3: the 41 topic symbols that read at 24 px (DR-136), filled at round 2
+// D2-517: a glyph without data-icon-family fails in the chapters listed here (by anchor), and is listed elsewhere.
+// Round 2 (November 10, 2026): chapter 10 carries the family on every use; the rest join as their owners finish, and
+// true makes it fail everywhere.
+const REQUIRE_FAMILY = ['symbols'];
+// B-3: the 41 drawings that read at 24 px (DR-136), from 20261110_Stage-B-Ch10-Construction.md, section 10: 37 topic
+// and atlas drawings and the four pillar icons.
+const READS_AT_24 = ['CL-001', 'CL-004', 'CL-006', 'CL-010', 'CL-013', 'CL-019', 'CL-020', 'CL-021', 'CL-022', 'CL-023', 'CL-024', 'CL-028', 'CL-031', 'CL-032',
+  'CL-039', 'CL-040', 'CL-047', 'CL-048', 'CL-050', 'CL-051', 'CL-054', 'CL-057', 'CL-060', 'CL-061', 'CL-067', 'CL-068', 'CL-070', 'CL-071', 'CL-072',
+  'R-05', 'R-06', 'R-08', 'R-09', 'R-14', 'R-15', 'R-17', 'R-19', 'R-23', 'R-27', 'R-37', 'R-45'];
 const ICON_SIZES = { utility: [16, 24], pillar: [16, 24], status: [24, 26, 28, 30] };   // B-3; topic and atlas: 48 up, or 24 for the 41
 // The mark tokens' readers, as guide-shell.css writes them, and each mark kind for the parity outside failure plates.
 const MARKS = [
@@ -750,7 +757,7 @@ async function sbAudit(page) {
         const id = el.getAttribute('data-icon');
         let fam = el.getAttribute('data-icon-family');
         if (!fam) {
-          out.missingFamily.push({ ...desc(el), icon: id });
+          out.missingFamily.push({ ...desc(el), icon: id, chapter: (el.closest('section.chapter[id]') || {}).id || null });
           fam = /^U-/.test(id) ? 'utility' : /^CL-0(19|20|21|22)$/.test(id) ? 'pillar' : /^CL-/.test(id) ? 'topic' : /^R-/.test(id) ? 'atlas' : null;
         }
         const px = Math.round(el.getBoundingClientRect().width);
@@ -985,7 +992,8 @@ function sbFailures(b, width) {
   if (a.iconTwice.length) add('iconNames', `${a.iconTwice.length} glyph(s) whose name repeats the words beside them (A-2), first: ${first(a.iconTwice)}`);
   if (a.switchHeights.length) add('iconTargets', `${a.switchHeights.length} Fit to window button(s) under 44 px tall (DR-153), first: ${first(a.switchHeights)}`);
   if (a.iconTargets.length) add('iconTargets', `${a.iconTargets.length} control(s) holding a glyph under 44 by 44 px (B-1), first: ${first(a.iconTargets)}`);
-  if (REQUIRE_FAMILY && a.missingFamily.length) add('iconSizes', `${a.missingFamily.length} glyph(s) without data-icon-family (D2-517), first: ${first(a.missingFamily)}`);
+  const noFamily = a.missingFamily.filter((m) => REQUIRE_FAMILY === true || (Array.isArray(REQUIRE_FAMILY) && REQUIRE_FAMILY.includes(m.chapter)));
+  if (noFamily.length) add('iconSizes', `${noFamily.length} glyph(s) without data-icon-family (D2-517) in ${[...new Set(noFamily.map((m) => '#' + m.chapter))].join(', ')}, first: ${first(noFamily)}`);
   if (a.iconSizes.length) add('iconSizes', `${a.iconSizes.length} glyph(s) at a size their family does not use (B-3), first: ${first(a.iconSizes)}`);
   if (a.labelInName.length) add('labelInName', `${a.labelInName.length} control(s) whose name does not start with their visible words (A-3), first: ${first(a.labelInName)}`);
   if (a.controlNames.length) add('controlNames', `${a.controlNames.length} control(s) with a glyph and no visible word, off the allowed list (A-4), first: ${first(a.controlNames)}`);
@@ -1250,6 +1258,16 @@ const PLANTS = [
     const st = document.createElement('style'); st.textContent = '.fit-btn{min-height:36px !important}'; document.head.append(st); } },
   { key: 'iconSizes', fault: 'a topic symbol at 16 px (DR-136, B-3)', js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg data-icon="CL-001" data-icon-family="topic" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="8" fill="currentColor"/></svg> Voting</p>'); } },
+  // round 2, November 10, 2026: the list of 41 and the family required in chapter 10
+  { key: 'iconSizes', fault: 'a topic symbol on the list of 41 at 24 px (allowed: must not be flagged)', expect: false, js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg data-icon="CL-032" data-icon-family="atlas" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="8" fill="currentColor"/></svg> Local news supply</p>'); } },
+  { key: 'iconSizes', fault: 'a topic symbol not on the list of 41 at 24 px (DR-136, B-3)', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg data-icon="CL-055" data-icon-family="topic" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="8" fill="currentColor"/></svg> Productivity</p>'); } },
+  { key: 'iconSizes', fault: 'a glyph without data-icon-family in chapter 10, where the family is required (D2-517)', js: () => {
+    document.querySelector('main').insertAdjacentHTML('beforeend', '<section class="chapter" id="symbols"><p><svg data-icon="CL-001" aria-hidden="true" focusable="false" viewBox="0 0 48 48" width="48" height="48"><circle cx="24" cy="24" r="16" fill="currentColor"/></svg> Voting</p></section>'); } },
+  { key: 'iconSizes', fault: 'the same glyph without its family in a chapter not yet required: listed, not failed (allowed: must not be flagged)', expect: false, js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg data-icon="CL-001" aria-hidden="true" focusable="false" viewBox="0 0 48 48" width="48" height="48"><circle cx="24" cy="24" r="16" fill="currentColor"/></svg> Voting</p>'); },
+    verify: (r) => r.runs[0].stageB.missingFamily.length >= 1 },
   { key: 'disabledControls', fault: 'a disabled attribute on a toolbar button (G-4)', js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div role="toolbar" aria-label="Report tools"><button type="button" disabled>Print</button></div>'); } },
   { key: 'stateCues', fault: 'a pressed button told from its peer by fill and color alone (C-5)', js: () => {

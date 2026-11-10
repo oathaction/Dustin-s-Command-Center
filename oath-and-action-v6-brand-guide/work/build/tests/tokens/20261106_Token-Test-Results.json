@@ -1,24 +1,24 @@
 {
  "run": "2026-11-10",
  "command": "python3 -I work/build/tests/tokens/run_token_tests.py",
- "tokenSetVersion": "6.0.0-gate2.4",
+ "tokenSetVersion": "6.0.0-gate2.5",
  "status": "pre-release",
  "passed": true,
  "steps": [
   {
    "step": "build check",
    "result": "pass",
-   "detail": "tokens_build --check: tokens.json and tokens.css match the source (495 tokens)."
+   "detail": "tokens_build --check: tokens.json and tokens.css match the source (496 tokens)."
   },
   {
    "step": "parity",
    "result": "pass",
-   "detail": "495 tokens, 615 :root properties, 90 short names in each of 4 surface classes, 0 failures"
+   "detail": "496 tokens, 616 :root properties, 90 short names in each of 4 surface classes, 0 failures"
   },
   {
    "step": "rules",
    "result": "pass",
-   "detail": "495 tokens, 30 derived colors and tints, 201 semantic color cells measured, 0 failures"
+   "detail": "496 tokens, 30 derived colors and tints, 201 semantic color cells measured, 0 failures"
   },
   {
    "step": "self-test",
@@ -28,12 +28,12 @@
   {
    "step": "cross-check",
    "result": "pass",
-   "detail": "sd-crosscheck: Style Dictionary 5.8.0 read 495 tokens (298 color, 5 fontFamily, 5 fontWeight, 15 typography, 141 dimension, 22 number, 6 duration, 3 cubicBezier); 495 agree with tokens.css; 120 typography part properties are tokens.css's own; 0 disagreements; planted Stone change reported"
+   "detail": "sd-crosscheck: Style Dictionary 5.8.0 read 496 tokens (298 color, 5 fontFamily, 5 fontWeight, 15 typography, 142 dimension, 22 number, 6 duration, 3 cubicBezier); 496 agree with tokens.css; 120 typography part properties are tokens.css's own; 0 disagreements; planted Stone change reported"
   },
   {
    "step": "rendered",
    "result": "pass",
-   "detail": "render: Chromium 153.0.8010.12 resolved 464 token values, 30 color-mix() derivations (largest channel difference 0), 360 surface short names nested in another surface, 14 type styles at 390 and 1440 px and 6 durations under reduced motion; 0 failures; planted red leak onto Prussian reported"
+   "detail": "render: Chromium 153.0.8010.12 resolved 465 token values, 30 color-mix() derivations (largest channel difference 0), 360 surface short names nested in another surface, 14 type styles at 390 and 1440 px and 6 durations under reduced motion; 0 failures; planted red leak onto Prussian reported"
   }
  ],
  "counts": {
@@ -88,7 +88,7 @@
   },
   "component": {
    "component": 44,
-   "untiered": 10
+   "untiered": 11
   }
  },
  "plants": [
@@ -423,7 +423,7 @@
    "plant": "A stylesheet edited by hand, so it no longer matches the source",
    "test": "build",
    "caught": true,
-   "failure": "tokens_build --check: tokens.css in ../../../../tmp/oa-token-plants-8wuuoxrr differ from what the source builds. Run the build.",
+   "failure": "tokens_build --check: tokens.css in ../../../../tmp/oa-token-plants-3jnj8iti differ from what the source builds. Run the build.",
    "alsoCaughtBy": [
     "parity"
    ]

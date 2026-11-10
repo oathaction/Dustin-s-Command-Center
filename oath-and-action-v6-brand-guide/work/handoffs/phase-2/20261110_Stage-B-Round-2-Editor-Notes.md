@@ -202,7 +202,7 @@ The JSON governs; this is the same text. V7 is the atlas ID where the drawing st
 | CL-022 | Act |  | A finger pressing a round control marks Act, the pillar that gives a reader a useful next step. |
 | CL-023 | Evidence |  | Evidence, the record a claim stands on, appears as a magnifier with a check in its lens resting on a page. |
 | CL-024 | Feedback loop |  | Two arrows carry a change from one box to another and back again, for a feedback loop, a chain of causes that returns to where it started. |
-| CL-025 | Congress (as D1: Congressional capacity) | D1 | A chamber in session, seen from the gallery, with members on a curved bench below a three-tier rostrum, stands for Congress. Where it stands for the atlas element, the same chamber means congressional capacity, the staff and expertise Congress needs to investigate problems, write laws and oversee agencies. |
+| CL-025 | Congress (as D1: Congressional capacity) | D1 | A chamber in session, seen from the gallery, with members on a curved bench below a three-tier rostrum, stands for Congress. Where it stands for D1: The same chamber stands for the staff and expertise Congress needs to investigate problems, write laws and oversee agencies. |
 | CL-026 | Executive unilateralism | D2 | An official at a desk sits beside a signed order, for executive unilateralism, a president setting policy through orders or emergency powers without a new law. |
 | CL-027 | Doctrine favoring the appointing coalition | D3 | A balance scale stands before a sealed ruling, for a pattern the atlas proposes in which courts rule for the coalition that appointed the judges. |
 | CL-028 | Oversight and enforcement | D4 | A magnifier with an empty lens over part of a record stands for the power watchdogs have to obtain records, investigate wrongdoing and get a response. |
@@ -241,7 +241,7 @@ The JSON governs; this is the same text. V7 is the atlas ID where the drawing st
 | CL-061 | Household income | EC7 | Household income, the money a household receives over a period from pay and other sources, appears as an arrow joining a person and an envelope. |
 | CL-062 | Household assets and debts | EC8 | Two coin stacks in front of a page with a minus sign show what households own and what they owe. |
 | CL-063 | Cost of essentials | EC9 | A grocery bag and a price tag sit in front of a house, for what households pay for necessities such as housing, groceries and insurance. |
-| CL-064 | Costs of tariffs and trade rules | EC10 | A parcel meets a gate with two bars across it, for import taxes and trade rules that can raise what U.S. buyers pay. |
+| CL-064 | Costs of tariffs and trade rules | EC10 | A parcel meets a checkpoint with two bars across it, for import taxes and trade rules that can raise what U.S. buyers pay. |
 | CL-065 | Climate hazards and insurance costs | EC11 | Rain falls on a house beside an insurance page with an umbrella on it, for the risk of climate damage and the cost of insuring against it. |
 | CL-066 | Energy demand and emissions | EC12 | A plug’s cable curling into a cloud of emissions stands for the energy the economy uses and the greenhouse gases it releases. |
 | CL-067 | Healthcare |  | A heartbeat line through a medical cross stands for health care, from coverage to getting treatment. |

@@ -63,7 +63,7 @@ def ui_css(ctx, live=True):
             f'--paper:{v("oa.color.surface.white")};--dis:{v("oa.component.button.disabled.label.onNewsprint")};'
             f'--disedge:{v("oa.component.button.disabled.edge.onNewsprint")};--touch:{v("oa.size.target.touch")}}}'
             f'.ui{{{"forced-color-adjust:auto;" if live else ""}background:var(--ground);color:var(--ink);padding:20px 16px 24px;{T("body")}}}'
-            f'.ui p{{margin:0}}'
+            f':where(.ui p){{margin:0}}'
             f'.ui .b{{display:inline-flex;align-items:center;gap:8px;min-height:var(--touch);min-width:var(--touch);margin:0;'
             f'padding:0 14px 0 10px;border:1px solid var(--edge);border-radius:0;background:var(--ground);color:var(--ink);'
             f'{T("ui")};text-align:left;cursor:pointer}}'
@@ -93,7 +93,8 @@ def s_reader(ctx, m):
         f'.pr{{{T("label")};color:var(--sec)}}.pt{{margin-top:8px;{T("h4", "floor")}}}'
         f'.ln{{display:block;height:8px;margin-top:10px;background:var(--hair)}}.ln.s{{width:62%}}'
         f'.pn{{margin:0 0 10px;{T("ui")};font-variant-numeric:tabular-nums}}'
-        f'.bar{{display:flex;flex-wrap:wrap;gap:8px}}.ui .bar .b{{flex:1 1 9rem}}.ui .bar .nx{{justify-content:flex-end}}'
+        f'.bar{{display:grid;grid-template-columns:1fr 1fr;gap:8px}}.ui .bar .b{{padding:0 10px;white-space:nowrap}}'
+        f'.ui .bar .nx{{justify-content:flex-end}}'
         f'.zm{{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}}'
         f'.ui .zm .b[aria-pressed="true"]{{font-weight:700;text-decoration:underline;text-decoration-thickness:2px;'
         f'text-underline-offset:4px;box-shadow:inset 0 0 0 1px var(--edge)}}')
@@ -301,7 +302,7 @@ def s_menu(ctx, m, rule_titles):
     open with the chevron. Links lead to this chapter's own groups and rules, so every link lands."""
     T, u = ctx.ty, m.uicon
     css = ui_css(ctx) + (
-        f'.ui{{padding:0;position:relative;min-height:540px}}'
+        f'.ui{{padding:0;position:relative;min-height:440px}}'
         f'.mh{{display:flex;align-items:center;gap:12px;min-height:60px;padding:0 16px;border-bottom:1px solid var(--hair)}}'
         f'.lc{{flex:1 1 auto;{T("ui")};font-weight:700}}'
         f'.bd{{padding:20px 16px}}.bd p + p{{margin-top:12px}}.k{{{T("label")};color:var(--sec)}}'
@@ -432,7 +433,8 @@ def stepper(ctx, m, live=True):
         f'.k{{{T("label")};color:var(--sec)}}.t{{margin-top:6px;{T("h4", "floor")};text-wrap:balance}}'
         f'.st{{margin:16px 0;padding:14px;border:1px solid var(--hair);background:var(--paper);min-height:9.5rem}}'
         f'.sn{{{T("ui")};font-weight:700;font-variant-numeric:tabular-nums}}.sx{{margin-top:6px;{T("bodySmall")};text-wrap:pretty}}'
-        f'.cl{{display:grid;grid-template-columns:1fr 1fr;gap:8px}}.ui .cl .nx{{justify-content:flex-end}}'
+        f'.cl{{display:grid;grid-template-columns:1fr 1fr;gap:8px}}.ui .cl .b{{padding:0 10px;white-space:nowrap}}'
+        f'.ui .cl .nx{{justify-content:flex-end}}'
         f'.cl svg[hidden]{{display:none}}')
     start = f'Start at {first.lower()}, and suppose they rise. Press Play, or Next step to follow one link at a time.'
     data = json.dumps(steps, ensure_ascii=False, separators=(',', ':'))

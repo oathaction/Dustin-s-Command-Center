@@ -45,7 +45,7 @@
     },
     {
      "label": "Spacing",
-     "value": "Measured from each icon’s ink, so Act’s narrow hand sits as close to its word as Explain’s book"
+     "value": "Measured from each icon’s ink, so Act’s narrow hand sits as close to its word as Explain’s book; in a stacked column, from each icon’s whole box, so the four words share one left edge"
     },
     {
      "label": "Color",

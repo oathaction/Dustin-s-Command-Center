@@ -1715,3 +1715,15 @@ The studio asked three questions before promoting the approved drawings, and lis
 |---|---|---|
 | D2-829 | Chapter 12's identity rules take 12.1 to 12.4 (dividers, watermarks, patterns) and its systems rules start at 12.5; chapter 12's specimens are named by device (`s-12-divider-correct`), not by rule number, and the editor closes any gap in the numbers at the copy edit | Two makers write one chapter at the same time; device names keep each specimen's id stable if the numbers move |
 | D2-830 | Chapter 10's systems designer starts chapter 12's systems devices now and creates `12-graphic-devices.json` if it does not exist; the identity designer adds its rules to the same file | Chapter 10 is built, and waiting for chapter 09 would idle a maker for an hour; the brief's order puts 12 last so it can cite 09 and 11, which the systems devices need least |
+
+### Research lead (`20261110_Stage-B-Round-2-Research-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-831 | Missouri stays among the seven maps passed, and the plate's body says its voters rejected it, beside California's voter approval | The plate counts maps passed (its own source line), DR-149 and D2-525 count Missouri's as passed, and one standard puts both voter steps in the same place (DR-93) |
+| D2-832 | Missouri's result goes on the plate from unofficial returns, labeled unofficial, with the certification step named | The certified statement is not out; the margin is about 488,000 votes; the editor swaps in the certified figures before Phase 5 |
+| D2-833 | The statewide Missouri figures are cited to St. Charles County's November 4 page | It is the only official page I could read that prints them; enr.sos.mo.gov answered 403 and sos.mo.gov returned a bot check, and I did not work around either |
+| D2-834 | Ohio's source line names the 7 to 0 vote, the five-to-two makeup and the constitution's rule of two votes from each party | DR-149 asks for Ohio's vote in the source line, and leaving it out drops a finding (DR-93) |
+| D2-835 | Party control is read from each legislature's own list for the term in which its map passed, counting dated changes where the list gives them | Florida's and Tennessee's default lists already show members elected November 3, 2026 |
+| D2-836 | Virginia's sentence says the court voided the April 21, 2026 vote | The Department of Elections' release uses "voids" and names the election; the amendment never took effect either way |
+| D2-837 | The Texas and California cases, their source line, the failure plate and the rule text stay as written | Each holds on primary records read November 6, November 9 or today |
