@@ -119,3 +119,24 @@ Created: `work/handoffs/phase-2/20261110_Stage-B-Round-3-Systems-Fix-Notes.md` (
 Scratch only: builds, checks and captures in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/c9dc3e94-c343-5611-8fc3-849f48a2fa49/scratchpad/round-3/fix/systems/`. The `s-06-*` fragments did not change; only one chapter 06 alt in the manifest did.
 
 Nothing in `source/`, `work/ledger/`, `deliverables/`, any asset folder, any board or another owner's script. Nothing committed or pushed.
+
+## Second pass (D2-963, DR-191)
+
+The editor's read after the pass (`20261110_Stage-B-Round-3-Editor-Fix-Notes.md`, section 8) lists five faults in my strings: rows 6, 7, 8, 9 and 13. Each is applied word for word in my generators.
+
+| Row | Where | Now reads |
+|---|---|---|
+| 6 | Rule 10.6, `rule[1]`, second sentence (`stage_b_ch10_build.py`) | “An atlas drawing appears only beside the atlas’s own name for it.” |
+| 7 | Rule 10.4, spec "Floor" | “48 px for any of the 124, except inside a one-color tile (Rule 10.5)”, so Rule 10.4's floor names Rule 10.5's tile exception |
+| 8 | Rule 10.9, `why.text[1]` | “…and four of their 10 pairs score 0.91 or more…”, the figure read from the likeness record, as the paragraph before prints it |
+| 9 | `s-10-9-correct`, the new group's head, and its alt | “At 24 px, never two in one view” |
+| 13 | Rule 12.7, `correct.caption` (`stage_b_ch12_systems_build.py`) | “…each in ink, small enough that the headline beside it keeps at least 200 px on a phone.” |
+
+- D2-xxx | Sources keep U+2011 in IDs | The engineer's build pass writes IDs with an ASCII hyphen in a no-wrap span (D2-975), as the main session's message says
+- I reran `stage_b_ch10_build.py --no-draw`, then `stage_b_ch12_systems_build.py`. My chapter 12 build changes only Rules 12.5 to 12.9 and my intro sentence, so the identity designer's rules stand as their last run wrote them. Their script runs through `promotion_identity.py specimens`, which writes their own files, so I left that run to them and the main session.
+
+Tested and Not tested for this pass: see the lines added under "Tested" below this section.
+
+### Second pass: Tested
+
+- Each of the five new strings found by script in its output: `10-symbols.json` (rows 6, 7, 8), `s-10-9-correct.html` and its manifest alt (row 9, with the no-break space in “24 px”), `12-graphic-devices.json` (row 13); “At 24 px only” no longer appears.

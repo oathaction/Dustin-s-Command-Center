@@ -15,6 +15,7 @@ This file was written early and grows as the work lands. Other owners edited cha
 | CA-S16 | The masthead wordmark in one system color under forced colors | done |
 | CA-S17 | The part navigation wraps at 200 percent text | done, with the spec rows that also pushed the page |
 | Reader check | The editor's two changes; PP-S14, PP-S15, CA-S18's copy text and step 7's grid; step 4's card after D2-973 | done, rebuilt with fresh captures |
+| D2-975 | IDs whole at line ends with an ASCII hyphen, in Inter | done, in the build, the shell and the check |
 | CD-S16 | An opener figure for chapters 09 and 10 | waits for stage C (D2-965) |
 
 ## 1. The tokens.css download (DR-192, D2-964)
@@ -71,12 +72,24 @@ The editor's notes say the questions file is done. In `reader_check_2_template.h
 - **PP-S13.** Step 7's footer question reads "Look at the small square mark beside the line of text. What did you see in it?"
 - **PP-S14 and CA-S18, the copy text.** The readable lines now print each answer in the words the reader saw: a choice by its own words, a loop's step by its place ("the first step"), a pair as A, B or "About the same", a look again as "once" or "twice". Times read as a date in words in the reader's own clock, such as "November 10, 2026, at 3:07 p.m." The codes (r10, i4, S02, W02), the before and after labels and the ISO times are gone from those lines; the record line under them keeps every code, unchanged.
 - **PP-S15.** The copy-mode and saved-mode lines open with their words; the 9 px ring is gone.
-- **CA-S18, step 7's grid.** The twelve marks stand in a grid of four columns, three rows of four, in their order (1 to 7 at 16 px, then 8 to 12 at 24 px), at every width. The answer key's note says so.
+- **CA-S18, step 7's grid.** The twelve marks stand in a grid of four columns, three rows of four, in their order (1 to 7 at 16 px, then 8 to 12 at 24 px), at every width down to 320 px, where the gaps narrow so the grid fits. The answer key's note says so.
 - `test_reader_check_2.js` now checks each of these: no ring on the mode line; three rows of four in four columns; and in every copy-mode walk, no code, no `step1`, no ISO time, no before or after label and no "×" in the readable lines, and a start time in words.
 
 **D2-973, step 4's card.** The identity designer's notes record the card's kicker in the H3 style at 32 px. I rebuilt the page with fresh captures from a guide built from the tree as it stood (`build_reader_check_2.js`, no flag). Of the 51 files in `img/`, only `card.png` changed: the kicker "Explainer · Zoning" now stands at 32 px on the 1200 by 630 card, so about 9.5 px at the 358 px a 390 px phone shows. The drawings, charts, bill rows and symbols came out byte for byte the same, and the build's own checks (loop words, bill names, the article's lines, the leak list) all passed.
 
+## 6. D2-975: IDs whole at line ends, in the page's own font
+
+The coordinator's item, added mid-pass. The systems designer and the chapter 11 hand wrote IDs with U+2011, the non-breaking hyphen (D2-950). The Inter files the page loads do not draw it, so the browser borrowed it from another font, and a producer who copied "CL‑001" or searched for "CL-001" got a character no file name holds.
+
+- **The shell.** A utility class, `.nw { white-space: nowrap }`.
+- **The build.** `guide_build.py` runs one pass over the finished page (`keep_ids_whole`). In text, each ID (CL-001 to CL-074, a CL ID with a size such as CL-019-24px, R-01 to R-50, the 18 utility IDs, the six status marks and the E- family, with either hyphen) goes in `<span class="nw">` with an ASCII hyphen, and so does any other word a maker wrote with U+2011 ("take‑part" in Rule 11.16's title). In a tag's attributes (alt, aria-label, title, data-*), in SVG text, and in raw text (scripts, styles, the title, a textarea), U+2011 becomes an ASCII hyphen and nothing is added. The makers' sources keep their U+2011. On today's page: 411 U+2011 before, 0 after; 594 runs held whole; the build report counts them as `ids_held_whole`.
+- **The check.** `guide_check.js` fails `nbHyphen`: any U+2011 in the page's text (SVG text and script-written text included) or in an alt, title, aria-label or other name.
+- **At 390 and 360 px** (Chromium, the page built before and after): all 594 runs sit on one line, none split; in chapters 10 and 11, every held ID draws in Inter (2,370 glyphs) except seven inside code, which take the code font by design; no font request failed. Copy buttons copy the same text as before, since a span adds no characters.
+- **What moved.** Inter's hyphen is 1 to 3 px wider than the borrowed one, so a few rows now take one more line at phone width. At 390 px: the name line in `s-10-lib-01` (CL-013), `s-10-lib-03` (CL-053) and `s-10-lib-05` (R-49), and "Oversight and enforcement" (CL-028) in `s-10-list-41`. At 360 px: `s-10-lib-04` (R-17) and, in `s-10-list-41`, "Cross-cutting civic ties" (CL-006) and "Net support from taxes and public benefits" (CL-060). In chapter 11's builders text, "S-done", "S-stopped", "S-never-happened" and "S-take-part" in code now move whole to the next line where they used to split. No plate overflowed (the guide check's frame tests).
+
 ## For the other owners and the main session
+
+- **Systems designer, D2-975.** The list of 41 and the library sheets now print IDs in Inter's own hyphen, a little wider than the one the browser borrowed, and the seven rows above take one more line at 360 or 390 px. The IDs never split. Whether to give those rows a few pixels is yours.
 
 - **Identity designer, CA-S13.** The breakout needs nothing from you: the shell measures `s-03-l6` and breaks it out from 1280 px. Its caption still reads true ("wider than this column, so it scrolls on smaller screens"); whether to say it shows whole on wide screens is yours.
 - **Chapter 11 hand, CA-M2.** The check now types into `s-11-12-correct`'s field and fails "Clear the search" until it measures 44 by 44 px.
@@ -107,3 +120,8 @@ At 390 and 360 px with the root text at 200 percent, the page still scrolls side
 - D2-xxx | The 200 percent sideways test runs at 1024 px | The craft team's width, where the desktop layout meets large text; phone widths are listed below as a finding, not a failure, until their owners decide
 - D2-xxx | The copy text prints times in the reader's own clock, with the record line keeping UTC | The reader reads the line; the team reads the record
 - D2-xxx | The twelve marks sit in one grid of four columns in their order, with no row break between the 16 and 24 px marks | Three rows of four leave no mark alone at any width, and the numbers keep the order
+- D2-xxx | The sheet's column gap is 28 px from a 372 px screen and narrows to 15 px at 320 px | Four columns with the 152 px wordmark in the first need 324 px at 28 px gaps, wider than a 320 px screen's 288 px column (the test's reflow walk found it)
+- D2-xxx | The build holds IDs whole in one pass over the finished page, with `<span class="nw">` and an ASCII hyphen in text and an ASCII hyphen alone in attributes, SVG text and raw text | D2-975; one pass covers every maker's specimen without touching their sources
+- D2-xxx | Any word a maker wrote with U+2011, ID or not, is held whole the same way | The maker chose to keep it whole; the guide check now fails any U+2011 left in text
+- D2-xxx | In scripts, U+2011 becomes an ASCII hyphen, so a script-written line ("two-lane" in the report reader's page) may break at that hyphen | A script writes plain text, where the build cannot add markup; a break after a compound's hyphen is ordinary setting
+- D2-xxx | The ID families are listed by name (the 18 utility IDs, the six status marks) or by form (CL with three digits, R with two, E- with words) | A loose pattern would hold whole prose such as a word that starts "U-"

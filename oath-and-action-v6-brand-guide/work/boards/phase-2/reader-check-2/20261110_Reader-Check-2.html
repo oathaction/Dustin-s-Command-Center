@@ -113,7 +113,7 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .stage-bleed { margin-inline: -16px; }
 @media (min-width: 600px) { .stage-bleed { margin-inline: 0; } }
 .cap { font-size: 15px; font-weight: 600; }
-.sheet { display: grid; grid-template-columns: repeat(4, max-content); justify-content: start; align-items: end; gap: 30px 28px; padding-block: 30px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.sheet { display: grid; grid-template-columns: repeat(4, max-content); justify-content: start; align-items: end; gap: 30px clamp(12px, calc((100vw - 260px) / 4), 28px); padding-block: 30px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 .sheet-cell { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
 .sheet-cell img, .rate-mark img, .rowx img, .foot img, .ending img { max-width: none; }
 .sheet-n { font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; line-height: 1; }

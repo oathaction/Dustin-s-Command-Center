@@ -39,6 +39,17 @@ Numbers follow the brief's list for the chapter 11 hand.
     - CA-S3: the menu panel's bar, with Close the menu, stays at its top while the list scrolls.
     - CA-S4: every hyphen between two letters or figures in a fixed chapter 11 plate is a non-breaking hyphen (U+2011), in the markup and in the text the reader and the library write by script. Alts and the library's search data keep the plain hyphen.
 
+## Second pass (D2-963, DR-191)
+
+The editor's read (section 8 of `20261110_Stage-B-Round-3-Editor-Fix-Notes.md`) gave me three rows, 10 to 12, applied as written in my generators:
+- Row 10, Rule 11.14's caption: "A stepper for Loop R1 from our systems atlas, “Wealth and political influence reinforce each other”, live at 360 px." The title comes from the model through `loop_steps()`, so it follows `LOOP_ID`.
+- Row 11, the "Drawing the marks" caption: "Read <surface> as “newsprint” or “charcoal”, the ground the tracker sits on."
+- Row 12, the library's count line spells one to nine (H06): "The first three are listed here, and two more match." Counts of 10 and up stay figures.
+
+Left as they are: the alts and the plate's kicker still write "loop R1" in lower case, beside the loop's title; the row named only the caption.
+
+Tested: `apply_systems_ch11.py` reruns clean (16 rules, 38 specimens); `guide_build.py --strict` exits 0 with 0 warnings, chapter 11 at 472,429 bytes; the library driven by keyboard at 390 px reads "two more match" for "vot" and "22 more match" with Reads at 24 px, no page errors; `guide_check.js` at four widths: PASS2_RESULT
+
 ## Routine calls
 
 - D2-xxx | The stepper runs loop R1 from one parameter, `LOOP_ID` in `apply_systems_ch11_ui.py`, and every word, alt, caption and spec about the loop reads from it | DR-195 and D2-974; the brief asked for one switch
