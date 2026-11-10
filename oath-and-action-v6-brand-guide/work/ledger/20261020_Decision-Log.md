@@ -2189,3 +2189,24 @@ Virginia, Tangipa v. Newsom and Ohio each hold as printed, so Rule 01.11's plate
 | D2-1126 | Ohio's note stays as printed | The minutes, transcript and Article XIX, Section 1(E) support each fact |
 | D2-1127 | Ohio's party split keeps its two sources: the 2022 Supreme Court of Ohio opinion for the three statewide officers and the legislatures' directories for the four legislators | The commission's own member data gives titles and no party; I did not retry ohiosos.gov, which blocked the round 2 attempt |
 | D2-1128 | Missouri stays as printed | The Secretary of State posts only "View Unofficial Results" for November 3, 2026; certification follows the November 17 county deadline (D2-838) |
+
+## Answers on the stage C plan, November 10, 2026
+
+The studio asked four questions with the stage C draft brief. Dustin: "yes to all recs".
+
+| # | Decision | Source |
+|---|---|---|
+| DR-203 | Every chapter 18 component ships as code a builder can copy: plain HTML and CSS that read only `tokens.css`, with a short script only where the component needs one. Chapter 26's examples do the same, and the production test builds from this code | Dustin, November 10, as recommended (question 1) |
+| DR-204 | One dark mode for every screen product, drawn from Night Edition on Charcoal (DR-36). It follows the reader's device setting and has a visible switch that remembers the reader's choice. Chapter 18 shows each component on Newsprint and on Charcoal; the guide itself stays on Newsprint | Dustin, November 10, as recommended (question 2) |
+| DR-205 | The 24 px pixel fits for the 37 topic and atlas drawings are drawn at stage C, on an early drawings board with the Housing drawing (DR-196) and the 16 px Pause and Filter redraws (DR-197), each for approval by name. This settles DR-198's "stage C or Phase 3" | Dustin, November 10, as recommended (question 3) |
+| DR-206 | Both unsent reader check pages are deleted; their files stay in the repository as the record (D2-1113) | Dustin, November 10, as recommended (question 4), his yes to each delete |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1129 | The main session deleted https://claude.ai/artifact/16SD4uFJTiHKJC5p9CaFpP and https://claude.ai/artifact/H3APDgNH1wGb5HHvf33f6X, and each page's record in its published pages file now says when and why | DR-206 |
+| D2-1130 | The stage C brief is `work/handoffs/phase-2/20261110_Stage-C-Brief.md`; the draft stays as the record | The approved plan with the four answers and round 0's tasks |
+| D2-1131 | Round 0 runs five agents in parallel: the research lead (resumed from its carried checks, keeping its context), the accessibility lead, the engineer, the icon designer and the identity designer | Their inputs exist now, and none waits on another |
+| D2-1132 | The 24 px fits are drawn in one color, the black edition, with no red record edition | Rule 10.4 sets a drawing at 24 px in one color; the pillar fits kept a red-black edition because a pillar icon keeps red from 48 px, which no 24 px topic drawing does |
+| D2-1133 | The guide's own page forces light under DR-204's dark mode, and the guide check tests it with the device set to dark | The guide shows specimens at their true color on Newsprint, and its plates show both surfaces where a rule needs them |
+| D2-1134 | A chapter names an opener figure with an `"opener"` key holding a specimen id; chapters 01 to 08 keep words alone | D2-965 and the creative director's S16; one contract the shell, the identity designer and the systems designer share |
+| D2-1135 | Chapter 10's opener figure moves to the systems designer in round 1 | That designer owns chapter 10 and starts in round 1; round 0 needs no extra agent for it |
