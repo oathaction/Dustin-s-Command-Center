@@ -10,7 +10,7 @@ This is the one combined check DR-143 asks for. Five to eight people who have ne
 |---|---|---|
 | Step 1, welcome and consent | Kept, with the new time and one new recorded field | DR-87 still holds |
 | Step 2, the overview, R10 and B4 | Kept as written | System 1 is settled (DR-36), and nobody has answered these yet: the first link was never sent (DR-143) |
-| Step 3, eight symbols named | Four topic symbols kept; the four pillar icons leave this step | Since November 7 a pillar icon always sits with its word (DR-111), so step 5 tests them as they are used |
+| Step 3, eight symbols named | Four symbols: R-02 kept, and Congress, Testify and Contact an Official, approved November 10, in place of the other three; the four pillar icons leave this step | Dustin's answer (DR-189) puts the new drawings in front of first-time readers; since November 7 a pillar icon always sits with its word (DR-111), so step 5 tests them as they are used |
 | Step 4, nine small marks | Rebuilt with today's small marks | The condensed wordmark left the proofs (DR-115), the hinge-circle badge keeps sizes from 48 px (DR-118), and the pillar icons now have pixel fits (DR-179); the rebuilt 24 px lockmark joins (DR-181) |
 | Step 5, three charts | Kept as written | The chart system is settled (DR-52 to DR-61) |
 | Step 6, three sentence pairs | Kept as written | Chapter 02 is settled (DR-73 to DR-83) |
@@ -70,22 +70,29 @@ The first check's screens, words and choices, unchanged: the overview's first tw
 
 What counts as a pass, and why each is asked, stand as the first answer key gives them (`work/boards/phase-2/reader-check/20261106_Reader-Check-Answer-Key.json`, `overview` and `loops`). If System 1's finishing pass (DR-121) has redrawn the overview, R10 or B4 by the time the page is built, capture today's drawings and check that the step and box words in the choices still match what the drawing prints.
 
-## Step 3, Symbols (kept, four of eight)
+## Step 3, Symbols (four symbols, three of them new, DR-189)
 
 Ready screen: title "Four symbols"; body "Each symbol shows on its own for 10 seconds. Then tell us what you think it stands for. A guess is fine."; button "Show the first symbol".
 
-What the reader sees: one symbol at a time at 48 px, the Black edition on Newsprint, in random order, for 10 seconds.
+What the reader sees: one symbol at a time at 48 px, the Black edition on Newsprint, in random order, for 10 seconds. Draw each from `work/build/assets/civic-line-v6/black/`, the set in use, so Congress is the chamber Dustin approved on the drawings board (DR-156) and Testify and Contact an Official are CL-073 and CL-074 (DR-159, DR-160).
 
 Question, for each: "What do you think this symbol stands for?" Hint: "A word or a few. A guess is fine." A one-line answer.
 
 | Code | Symbol | What counts as a pass | Partly |
 |---|---|---|---|
-| i1 | CL-032, Local news supply | Names local news, a local paper or reporters | Names news or a newspaper in general |
-| i2 | CL-063, Cost of essentials | Names what everyday needs cost a household, such as groceries or bills | Names shopping, prices or groceries alone |
-| i3 | R-02, Ranked-choice voting | Names ranking candidates or ranked or numbered choices on a ballot | Names voting or a ballot alone |
-| i4 | CL-015, Money in politics | Names money going into politics or elections, such as campaign money or donations | Names money or voting alone |
+| i1 | CL-025, Congress | Names Congress, the House or the Senate | Names a legislature, a parliament, lawmakers or a chamber in session, such as "a legislature voting" |
+| i2 | CL-073, Testify | Names testifying or giving testimony, speaking at a hearing, or a witness before a committee or a panel | Names a hearing, a committee or a panel, or someone speaking at a microphone, without the person who testifies |
+| i3 | CL-074, Contact an Official | Names contacting, calling, writing to or visiting an official, a representative or their office | Names sending a message, giving feedback or making a complaint, with no official named |
+| i4 | R-02, Ranked-choice voting | Names ranking candidates or ranked or numbered choices on a ballot | Names voting or a ballot alone |
 
-Why it is asked: DR-146 asks every symbol to depict its subject clearly, and chapter 10 says a topic symbol sits beside its word. A reader who names the subject from the drawing alone shows the word and the drawing agree. The meanings follow the editor's table for chapter 10 (`20261110_Stage-B-Ch10-Labels.json`).
+Answers to report to Dustin in the readers' own words, whatever the count, because the drawings were drawn to rule them out (research notes of November 9, section 1):
+- Congress: a court, a stadium or a theater audience, or any answer that names one party.
+- Testify: a court or a trial, a judge, or a debate between candidates.
+- Contact an Official: a job interview, a customer service or front desk, or a bank teller.
+
+What to expect: the creative director found that no Congress drawing names Congress without its label, and that the label makes it land (D2-620). Congress will likely draw more partial answers than full ones, and a partial answer still shows the drawing points the reader at the right word.
+
+Why it is asked: Dustin asked that every symbol clearly depict its institution, act or reform (DR-146), and on November 10 he approved Congress, Testify and Contact an Official by name after three options each. Only studio readers have named them so far. R-02 stays from the first check as a drawing already settled, for comparison. Chapter 10 always sets a symbol beside its word, so a reader who names the subject from the drawing alone shows the drawing and the word agree. The meanings follow the editor's table for chapter 10 (`20261110_Stage-B-Ch10-Labels.json`).
 
 ## Step 4, Red (new)
 

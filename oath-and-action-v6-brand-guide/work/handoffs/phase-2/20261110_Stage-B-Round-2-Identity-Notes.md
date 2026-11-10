@@ -44,7 +44,7 @@ Rule 09.3 states the density rule with its reason (D2-808): "A 24 px icon keeps 
 ## Check figures
 
 - **Strict build** (`guide_build.py --strict`, 11 chapters, 123 rules, 285 specimens): 0 warnings. The notes that chapter 01's three specimens inline sprite drawings are gone; the notes left are the engineer's own, on the 16 px utility line token.
-- **Guide check** (`guide_check.js`, 1440, 1024, 390 and 360 px): CHECK_LINE
+- **Guide check** (`guide_check.js`, 1440, 1024, 390 and 360 px): 4 failures, all one: the studio word "gate" in chapter 10's `s-10-lib-03`, at each width, which belongs to chapter 10's maker. Chapters 01, 03, 04, 08 and 09 and the proofs pass every check, among them icon sizes, pillar order, red, text size and contrast, type scale, codes and axe-core.
 - **The 1x and 2x pattern, looked at:** in the built page the 24 px rows draw the crisp fits at 1x and the smooth masters at 2x (Rule 09.1's plate, enlarged).
 - **Looks:** every chapter 09 plate, chapter 01's three plates and `s-08-3-*` at 1440 and 390 px, with the masthead hidden, and three at 2x. Four looks led to changes: the stacked column's words started at ragged points; the ladder's words sat low beside the 96 px icons; the failure's two enlarged views stacked under long tags; and the opener's icon stood about 10 px inside the text's edge while the card's job line left one word on its last line.
 

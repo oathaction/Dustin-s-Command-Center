@@ -64,28 +64,39 @@
   {
    "code": "i1",
    "file": "img/icon-1.svg",
-   "id": "CL-032",
-   "chapter_10_label": "Local news supply",
-   "civic_line_word": "Local Reporting",
-   "meaning": "A folded newspaper with a story block in its corner shows the reporters and newsrooms that cover local decisions.",
-   "source": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-032-Local-Reporting-Black.svg",
-   "pass": "Names local news, a local paper or reporters",
-   "partly": "Names news or a newspaper in general"
+   "id": "CL-025",
+   "chapter_10_label": "Congress",
+   "civic_line_word": "Congress",
+   "meaning": "A chamber in session, seen from the gallery, with members on a curved bench below a three-tier rostrum, stands for Congress.",
+   "source": "work/build/assets/civic-line-v6/black/20261110_Oath-And-Action-Civic-Line-CL-025-Congress-Black.svg",
+   "pass": "The editor's row is still to come (DR-189). Until it lands, read the answer against the meaning sentence above.",
+   "partly": "The editor's row is still to come (DR-189)."
   },
   {
    "code": "i2",
    "file": "img/icon-2.svg",
-   "id": "CL-063",
-   "chapter_10_label": "Cost of essentials",
-   "civic_line_word": "Essential Costs",
-   "meaning": "A grocery bag and a price tag sit in front of a house, for what households pay for necessities such as housing, groceries and insurance.",
-   "source": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-063-Essential-Costs-Black.svg",
-   "pass": "Names what everyday needs cost a household, such as groceries or bills",
-   "partly": "Names shopping, prices or groceries alone"
+   "id": "CL-073",
+   "chapter_10_label": "Testify",
+   "civic_line_word": "Testify",
+   "meaning": "A witness at a table speaks into a microphone below three officials on a raised, curved dais, for testifying at a public hearing.",
+   "source": "work/build/assets/civic-line-v6/black/20261110_Oath-And-Action-Civic-Line-CL-073-Testify-Black.svg",
+   "pass": "The editor's row is still to come (DR-189). Until it lands, read the answer against the meaning sentence above.",
+   "partly": "The editor's row is still to come (DR-189)."
   },
   {
    "code": "i3",
    "file": "img/icon-3.svg",
+   "id": "CL-074",
+   "chapter_10_label": "Contact an official",
+   "civic_line_word": "Contact an Official",
+   "meaning": "One line carries a speech mark from a person to an official at a desk, for calling, writing to or visiting the office of someone who represents you.",
+   "source": "work/build/assets/civic-line-v6/black/20261110_Oath-And-Action-Civic-Line-CL-074-Contact-An-Official-Black.svg",
+   "pass": "The editor's row is still to come (DR-189). Until it lands, read the answer against the meaning sentence above.",
+   "partly": "The editor's row is still to come (DR-189)."
+  },
+  {
+   "code": "i4",
+   "file": "img/icon-4.svg",
    "id": "R-02",
    "chapter_10_label": "Ranked-choice voting for single-winner races",
    "civic_line_word": "Ranked-Choice Voting",
@@ -93,24 +104,13 @@
    "source": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-02-Ranked-Choice-Voting-Black.svg",
    "pass": "Names ranking candidates or ranked or numbered choices on a ballot",
    "partly": "Names voting or a ballot alone"
-  },
-  {
-   "code": "i4",
-   "file": "img/icon-4.svg",
-   "id": "CL-015",
-   "chapter_10_label": "Money in politics",
-   "civic_line_word": "Political Money",
-   "meaning": "A path carries money from a dollar coin into a ballot box, for campaign gifts, outside spending and paid lobbying used to sway public decisions.",
-   "source": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-015-Political-Money-Black.svg",
-   "pass": "Names money going into politics or elections, such as campaign money or donations",
-   "partly": "Names money or voting alone"
   }
  ],
  "symbols_in_use": [
-  "CL-032",
-  "CL-063",
-  "R-02",
-  "CL-015"
+  "CL-025",
+  "CL-073",
+  "CL-074",
+  "R-02"
  ],
  "red_card": {
   "stimulus": "img/card.png, the link card face from the guide's proofs (s-proofs-social), 1200 by 630, shown 358 px wide on a 390 px phone and 328 px on a 360 px phone, Newsprint",

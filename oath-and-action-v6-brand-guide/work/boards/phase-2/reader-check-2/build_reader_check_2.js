@@ -47,12 +47,12 @@ const WIDTHS = [390, 360];   // phone widths: 390 px and up gets the 390 capture
 const DPR = 2;
 
 // ------------------------------------------------------------------------------------------------ step 3, symbols
-// The four symbols the step tests. Dustin is choosing between the editor's four and a second set; change this one
-// line to switch, and the codes, files, key and leak check follow:
-//   the editor's four:  ['CL-032', 'CL-063', 'R-02', 'CL-015']
-//   the second set:     ['CL-025', 'CL-073', 'CL-074', 'R-02']
-const SYMBOLS = ['CL-032', 'CL-063', 'R-02', 'CL-015'];
-// What counts as a pass, from the editor's table. A symbol with no row here builds, and the key says the editor owes it.
+// The four symbols the step tests. Change this one line to switch, and the codes, files, key and leak check follow.
+//   Dustin's answer (DR-189, November 10, 2026): CL-025 Congress, CL-073 Testify, CL-074 Contact an Official, R-02
+//   the editor's first four, built and tested before his answer: ['CL-032', 'CL-063', 'R-02', 'CL-015']
+const SYMBOLS = ['CL-025', 'CL-073', 'CL-074', 'R-02'];
+// What counts as a pass, from the editor's table. A symbol with no row here builds, and its key entry says the
+// editor's row is still to come and reads the answer against the meaning sentence meanwhile (DR-189).
 const SYMBOL_PASS = {
   'CL-032': { pass: 'Names local news, a local paper or reporters', partly: 'Names news or a newspaper in general' },
   'CL-063': { pass: 'Names what everyday needs cost a household, such as groceries or bills', partly: 'Names shopping, prices or groceries alone' },
@@ -354,7 +354,7 @@ function build() {
     overview: FIRST_KEY.overview,
     loops: { r10: FIRST_KEY.loops.r10, b4: FIRST_KEY.loops.b4, choice_values: FIRST_KEY.loops.choice_values, words_check: 'The box words the choices quote were read from today\'s drawings when the page was built, and all match.' },
     icons: v.icons.map((ic) => ({ code: ic.code, file: ic.src, id: ic.id, chapter_10_label: ic.label, civic_line_word: ic.word, meaning: ic.meaning, source: ic.source,
-      pass: (SYMBOL_PASS[ic.id] || {}).pass || 'Owed by the editor: no pass line for this symbol yet', partly: (SYMBOL_PASS[ic.id] || {}).partly || 'Owed by the editor' })),
+      pass: (SYMBOL_PASS[ic.id] || {}).pass || 'The editor\'s row is still to come (DR-189). Until it lands, read the answer against the meaning sentence above.', partly: (SYMBOL_PASS[ic.id] || {}).partly || 'The editor\'s row is still to come (DR-189).' })),
     symbols_in_use: SYMBOLS,
     red_card: { stimulus: 'img/card.png, the link card face from the guide\'s proofs (s-proofs-social), 1200 by 630, shown 358 px wide on a 390 px phone and 328 px on a 360 px phone, Newsprint', look_seconds: 10,
       questions: { favors: { ...favors, partial: [], why: 'Pillar Red stays the lead color (DR-114), and red is the color many readers link to one party. The card is the brand at its most common size in a reader\'s day, with red in two places and nothing about party in its words.' },
