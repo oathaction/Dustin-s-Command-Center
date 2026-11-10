@@ -1,0 +1,263 @@
+{
+ "number": "09",
+ "anchor": "pillar-icons",
+ "title": "Pillar icons",
+ "part": "Symbols and graphics",
+ "instruction": "Mark which pillar a piece serves, always in the order Explain, Track, Connect, Act.",
+ "intro": [
+  "Our four pillars name the jobs our work does: Explain, Track, Connect and Act, in that order (chapter 01). Each pillar has an icon from the Civic Line, the symbol set in chapter 10, and each icon stands beside its word.",
+  "This chapter sets the row the four stand in, how a page marks the pillar it serves, the file to draw at each size, and the few places a pillar icon may appear."
+ ],
+ "rules": [
+  {
+   "id": "09.1",
+   "title": "Set the four pillar icons in order, each beside its word.",
+   "rule": "Set the pillars in one row in the order Explain, Track, Connect and Act, with an arrow between each pair. Each icon stands beside its word at every size, so the word names the pillar and the icon shows it a second way. A row takes one icon size throughout, 48 px with the words in the intro style or 24 px with the words in body text. Every icon in it is one color, unless the row marks a current pillar (Rule 09.2).",
+   "tokens": [
+    "oa.component.icon.ink.onNewsprint",
+    "oa.size.icon.large",
+    "oa.size.icon.medium"
+   ],
+   "why": {
+    "text": "The order follows the work, from understanding a decision to taking part in it, so it never changes. A reader learns four drawings faster with their words beside them, and the word settles a drawing that could pass for another pillar: Track’s magnifier can read as looking into a question, which is Explain’s job.",
+    "basis": "Design judgment, approved by our founder and editor in November 2026"
+   },
+   "correct": {
+    "specimen": "s-09-1-correct",
+    "caption": "The pillar row at true size on Newsprint and on Charcoal, at 48 and 24 px: each icon beside its word, in order, one color, with an arrow between each pair."
+   },
+   "failure": {
+    "specimen": "s-09-1-failure",
+    "caption": "The four icons in a row with no words. A reader has to decode each drawing, and nothing tells Track’s magnifier from a search button."
+   },
+   "specs": [
+    {
+     "label": "Order",
+     "value": "Explain, Track, Connect, Act, with an arrow between each pair; the arrows are hidden from screen readers, since the list’s order carries the sequence"
+    },
+    {
+     "label": "48 px row",
+     "value": "Words in the intro style, bold, 19 px on a phone and 22 px from 48em; 12 px from each icon’s ink to its word"
+    },
+    {
+     "label": "24 px row",
+     "value": "Words in body text, 17 px; 8 px from each icon’s ink to its word"
+    },
+    {
+     "label": "Spacing",
+     "value": "Measured from each icon’s ink, so Act’s narrow hand sits as close to its word as Explain’s book"
+    },
+    {
+     "label": "Color",
+     "value": "One color in the surface’s icon ink: Charcoal on Newsprint and White, Newsprint on Charcoal and Prussian",
+     "token": "oa.component.icon.ink.onNewsprint"
+    },
+    {
+     "label": "Under 48em",
+     "value": "The 48 px row stacks in one column with downward arrows; the 24 px row wraps after an arrow"
+    }
+   ],
+   "files": [
+    "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-019-Explain-Black.svg",
+    "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-020-Track-Black.svg",
+    "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-021-Connect-Black.svg",
+    "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-022-Act-Black.svg"
+   ],
+   "related": [
+    "01",
+    "10"
+   ],
+   "builders": "Build the row as an ordered list whose text is the four words, and draw each icon from the sprite beside its word, hidden from screen readers with <code>aria-hidden=\"true\"</code>. Draw the arrows in CSS as content a screen reader skips, <code>content: \"→\" / \"\"</code>. Pull each icon’s box in to its ink with negative margins, whole pixels at 16 and 24 px."
+  },
+  {
+   "id": "09.2",
+   "title": "Underline the current pillar’s word, and add its red only from 48 px.",
+   "rule": "On a page or a section that serves one pillar, underline that pillar’s word in the row, at every size, and set the word bold under 48 px. From 48 px the current icon also keeps its red, as a second sign, and the red counts as signature red (Rule 05.3). Under 48 px every icon stays one color, the current one included. On Prussian no icon takes red, so the underline marks the current pillar alone.",
+   "tokens": [
+    "oa.component.icon.accent.onNewsprint",
+    "oa.component.icon.accent.onCharcoal"
+   ],
+   "why": {
+    "text": "An underline marks the current pillar in any color and in gray print, so the row never relies on red alone. Red works as a second sign once the icon’s line reaches a full pixel at 48 px. Under 48 px the line is a pixel or thinner, and a red line that thin stops reading as Pillar Red.",
+    "basis": "WCAG 2.2 SC 1.4.1; design judgment, approved by our founder and editor in November 2026"
+   },
+   "correct": {
+    "specimen": "s-09-2-correct",
+    "caption": "A section that serves Track: the 48 px row with Track’s word underlined and its icon in red, on Newsprint and on Charcoal, and the 24 px row with the word Track bold and underlined and every icon one color."
+   },
+   "failure": {
+    "specimen": "s-09-2-failure",
+    "caption": "Track marked by its red icon alone, with no underline. A reader who cannot tell red from Charcoal, or who reads the page in gray print, sees no current pillar."
+   },
+   "specs": [
+    {
+     "label": "Underline",
+     "value": "2 px, solid, 5 px under the baseline, at every size"
+    },
+    {
+     "label": "Bold",
+     "value": "The current word, under 48 px"
+    },
+    {
+     "label": "Red",
+     "value": "From 48 px, the current icon’s accent, as signature red; never on Prussian",
+     "token": "oa.component.icon.accent.onNewsprint"
+    },
+    {
+     "label": "Screen readers",
+     "value": "The current item carries aria-current, so the reader hears which pillar the page serves"
+    }
+   ],
+   "files": [],
+   "related": [
+    "05",
+    "19"
+   ],
+   "builders": "Mark the current item with <code>aria-current=\"true\"</code> and style its word from that attribute, so the underline and the announcement come from one source. Set <code>--oa-icon-accent</code> on the current icon’s svg only, and only at 48 px and up."
+  },
+  {
+   "id": "09.3",
+   "title": "Draw a pillar icon from the file made for its size.",
+   "rule": "Each size has its own drawing. At 16 px, draw the 16 px pixel fit on every screen. At 24 px, draw the 24 px pixel fit on screens under 2x, which give each CSS pixel fewer than two device pixels, and the master on 2x screens and denser, with both in one svg that the guide’s stylesheet switches. From 48 px, draw the master. Never scale a master to 16 px, and never draw a fit at any size but its own.",
+   "tokens": [
+    "oa.size.icon.small",
+    "oa.size.icon.medium",
+    "oa.size.icon.large"
+   ],
+   "why": {
+    "text": "The masters are drawn on a 128-unit box with a line about 3 units wide, so at 24 px the line falls to half a pixel, and at 16 px small gaps fill in. Each pixel fit redraws its icon on whole pixels with a 1 px line and keeps every feature. A 24 px icon keeps its fit up to 2x, since below 2x the master’s line falls under one device pixel and its counters fill, and the fit keeps every counter and gap. From 2x the master’s line clears a device pixel and draws smoother than the fit’s steps.",
+    "basis": "Our measurements, November 2026; the pixel fits approved by our founder and editor in November 2026"
+   },
+   "correct": {
+    "specimen": "s-09-3-correct",
+    "caption": "Each pillar at 16, 24, 48 and 96 px at true size, one color, each from the file made for its size; below, Track’s 16 and 24 px fits as a standard screen draws them, enlarged four times."
+   },
+   "failure": {
+    "specimen": "s-09-3-failure",
+    "caption": "Track’s master scaled to 16 px beside its 16 px fit, at true size and enlarged four times. The master’s lines fall under a pixel and draw gray, and its magnifier blurs."
+   },
+   "specs": [
+    {
+     "label": "16 px",
+     "value": "The 16 px pixel fit, on every screen",
+     "token": "oa.size.icon.small"
+    },
+    {
+     "label": "24 px",
+     "value": "The 24 px pixel fit on screens under 2x; the master from 2x",
+     "token": "oa.size.icon.medium"
+    },
+    {
+     "label": "48 px and up",
+     "value": "The master, at whole pixel sizes",
+     "token": "oa.size.icon.large"
+    },
+    {
+     "label": "Line",
+     "value": "1 px in each fit; about 3 units of 128 in each master"
+    },
+    {
+     "label": "Color",
+     "value": "One color under 48 px (Rule 09.2)"
+    },
+    {
+     "label": "Never",
+     "value": "A master under 48 px, except as a 24 px icon on a 2x screen; a fit at any size but its own"
+    }
+   ],
+   "files": [
+    "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-019-Explain-24px-Black.svg",
+    "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-019-Explain-16px-Black.svg",
+    "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-020-Track-24px-Black.svg",
+    "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-020-Track-16px-Black.svg",
+    "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-021-Connect-24px-Black.svg",
+    "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-021-Connect-16px-Black.svg",
+    "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-022-Act-24px-Black.svg",
+    "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-022-Act-16px-Black.svg",
+    "work/build/assets/pillar-icons/20261110_Pillar-Icons-Manifest.json"
+   ],
+   "related": [
+    "10",
+    "19"
+   ],
+   "builders": "Write a 24 px icon as one svg holding two uses: the fit with the class <code>oa-at-1x</code> and the master with <code>oa-at-2x</code>, as in <code>&lt;use class=\"oa-at-1x\" href=\"#oa-sym-cl-020-24px\"/&gt;&lt;use class=\"oa-at-2x\" href=\"#oa-sym-cl-020\"/&gt;</code>. The guide’s stylesheet shows the master from 2 device pixels per CSS pixel. A 16 px icon is one use of its fit. Give the svg whole-pixel coordinates, and set no accent under 48 px."
+  },
+  {
+   "id": "09.4",
+   "title": "Put pillar icons only in the pillar row, on section openers and on tiles.",
+   "rule": "A pillar icon appears in three places: the pillar row; the opener of a section that serves one pillar, where it stands at 128 px; and a tile that leads to a pillar’s section, from 76 px. It never enters a kicker, which may carry a topic icon only (Rule 01.21), and it never sits on a part opener.",
+   "tokens": [
+    "oa.component.icon.ink.onCharcoal",
+    "oa.component.icon.accent.onCharcoal"
+   ],
+   "why": {
+    "text": "Four icons that turn up only where a pillar is named stay easy to learn. In a kicker, a pillar icon would sit beside a label such as Report or Guide, which names no pillar, and leave the reader to decode the drawing.",
+    "basis": "Design judgment, approved by our founder and editor in November 2026"
+   },
+   "correct": {
+    "specimen": "s-09-4-correct",
+    "caption": "Track’s section opener at true size, a Charcoal panel with the icon at 128 px in Newsprint and red above the section’s line, and a card that leads to Track’s section, with the icon on the rounded Charcoal tile at 76 px."
+   },
+   "failure": {
+    "specimen": "s-09-4-failure",
+    "caption": "A report’s kicker with Track’s icon before its label. The label says Report, the icon says Track, and no word beside the icon names the pillar."
+   },
+   "specs": [
+    {
+     "label": "Pillar row",
+     "value": "48 or 24 px (Rules 09.1 and 09.2)"
+    },
+    {
+     "label": "Section opener",
+     "value": "128 px on a Charcoal panel, in Newsprint with its red, with the pillar’s word"
+    },
+    {
+     "label": "Tile",
+     "value": "The rounded two-color tile on Charcoal, from 76 px (Rule 10.5); in a row of tiles, the one-color tiles, with only the current one in two colors"
+    },
+    {
+     "label": "Never",
+     "value": "A kicker, a part opener, a button or a bullet"
+    }
+   ],
+   "files": [
+    "work/build/assets/civic-line/tiles/rounded-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-019-Explain-Tile-Rounded-Charcoal-Two-Color.svg",
+    "work/build/assets/civic-line/tiles/rounded-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-020-Track-Tile-Rounded-Charcoal-Two-Color.svg",
+    "work/build/assets/civic-line/tiles/rounded-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-021-Connect-Tile-Rounded-Charcoal-Two-Color.svg",
+    "work/build/assets/civic-line/tiles/rounded-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-022-Act-Tile-Rounded-Charcoal-Two-Color.svg"
+   ],
+   "related": [
+    "01",
+    "10"
+   ],
+   "builders": "Take a pillar’s tile from the Civic Line package’s rounded Charcoal tiles. A standalone icon on an opener keeps its red as signature red; give it the word of its pillar nearby."
+  }
+ ],
+ "extras": [
+  {
+   "after_rule": "09.1",
+   "specimen": "s-09-phone",
+   "label": "The row on a phone",
+   "caption": "On a phone the 48 px row stands in one column with downward arrows, and the 24 px row wraps after an arrow."
+  }
+ ],
+ "related_chapters": [
+  {
+   "chapter": "01",
+   "reason": "The four pillars, their jobs and their products."
+  },
+  {
+   "chapter": "10",
+   "reason": "The Civic Line's construction, editions, tiles and sizes."
+  },
+  {
+   "chapter": "05",
+   "reason": "Rule 05.3, the red rule the current pillar's icon follows."
+  },
+  {
+   "chapter": "11",
+   "reason": "Status and utility icons, which name states and actions."
+  }
+ ],
+ "sources": []
+}

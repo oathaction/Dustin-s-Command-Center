@@ -13,7 +13,7 @@ stage_a_identity_q_measure.py. The letterhead draws neither place, so it is unch
 
 Promotion, November 10, 2026 (DR-181): the masthead's L3, the sign-off and the letterhead's footer draw the rebuilt 24
 and 48 px masters, the same pixels; the feed figures come from promotion_identity.py's rerun with the rebuilt master.
-The letterhead's print proof is not printed again (the proofs folder sits with the boards).
+The letterhead's print proof is printed again as 20261110_Letterhead-Proof.pdf with its HTML, beside the earlier ones (D2-809).
 
 Earlier rulings that still bind: each width-free proof is one specimen at actual size; kickers follow Rule 01.21
 (D2-250); the social card breaks at the hinge and carries its specifications; the letterhead's town is invented
@@ -30,7 +30,10 @@ from stage_a_identity_s04 import headline
 
 S = []
 PROOF_DIR = ROOT / "work/boards/phase-2/stage-a/proofs"
-PDF = PROOF_DIR / "20261107_Letterhead-Proof.pdf"
+# The print proof in use, printed November 10, 2026 with the rebuilt 24 px lockmark (DR-181, D2-809). The November 6 and 7
+# proofs stay beside it as the record.
+PROOF_DATE = "20261110"
+PDF = PROOF_DIR / f"{PROOF_DATE}_Letterhead-Proof.pdf"
 TAGLINE = "A country that answers to its people."
 
 
@@ -232,10 +235,9 @@ def s_proofs_letterhead():
                notes="A print piece set in points (D2-205): 11 pt body, 10 pt address, slug and footer, so check_exempt scale. "
                      "96 CSS px to the inch, so the sheet is 816 by 1056 px. Display master at 26 px tall, as a print piece places it. "
                      "Footer: the lockmark at 24 px, 12 px, then the tagline, at the footer's left edge, the footer place as Rule 08.2 now draws it (CA-S10). interactive: the stage holds the PDF link. "
-                     "On screen the footer draws the rebuilt 24 px master in use since November 10, 2026, each node and the lever one "
-                     "outline (DR-181). The print proof the link downloads, work/boards/phase-2/stage-a/proofs/20261107_Letterhead-Proof.pdf, "
-                     "was printed on November 7 with the earlier 24 px file, which draws the same pixels at 24 px; it is not printed again "
-                     "in the promotion, since the proofs folder sits with the boards.")
+                     "The footer draws the rebuilt 24 px master in use since November 10, 2026, each node and the lever one outline "
+                     "(DR-181), on screen and in the print proof the link downloads, work/boards/phase-2/stage-a/proofs/20261110_Letterhead-Proof.pdf, "
+                     "printed November 10 (D2-809). The November 6 and 7 proofs stay beside it as the record.")
 
 
 def write_letterhead(pdf=False):
@@ -256,7 +258,7 @@ def write_letterhead(pdf=False):
             '.illus{display:inline-block;padding:0 .4em;border:1px solid currentColor;font:700 10pt/1.5 var(--oa-font-family-reading);'
             'letter-spacing:.06em;text-transform:uppercase}</style></head>'
             f'<body class="oai">{pages}</body></html>')
-    html_path = PROOF_DIR / "20261107_Letterhead-Proof.html"
+    html_path = PROOF_DIR / f"{PROOF_DATE}_Letterhead-Proof.html"
     html_path.write_text(page)
     if pdf:
         subprocess.run(["node", str(HERE / "p2_print_pdf.js"), str(html_path.resolve()), str(PDF.resolve())], check=True)

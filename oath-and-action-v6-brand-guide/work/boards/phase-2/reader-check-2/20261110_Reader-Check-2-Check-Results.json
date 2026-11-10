@@ -1,0 +1,138 @@
+{
+ "file": "../../../../tmp/claude-0/-home-user-Dustin-s-Command-Center/ea3fc969-1fa2-5617-a502-a9fe32bb03e8/scratchpad/round-2/engineer/boardcheck/20261110_Reader-Check-2.html",
+ "checked": "2026-11-10T04:18:54.599Z",
+ "views": [
+  "welcome"
+ ],
+ "runs": [
+  {
+   "width": 1440,
+   "view": "welcome",
+   "rootVisible": true,
+   "texts": 7,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 0,
+    "labels": 0,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 0,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 900,
+   "axe": [],
+   "focusStops": 2,
+   "focusWithoutRing": []
+  },
+  {
+   "width": 390,
+   "view": "welcome",
+   "rootVisible": true,
+   "texts": 7,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 0,
+    "labels": 0,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 0,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 844,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "welcome",
+   "rootVisible": true,
+   "texts": 7,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 0,
+    "labels": 0,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 0,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 839,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  }
+ ],
+ "navigation": null,
+ "failures": [],
+ "pass": true
+}

@@ -55,9 +55,11 @@ def ui_css(ctx, live=True):
     """The controls every live specimen shares: a 44 px button with its icon before its word, the unavailable state with
     its reason, the focus ring and the visually hidden text. Colors from the Newsprint surface's tokens."""
     T, v = ctx.ty, ctx.v
-    return (f':scope{{--ink:{v("oa.color.text.primary.onNewsprint")};--sec:{v("oa.color.text.secondary.onNewsprint")};'
-            f'--edge:{v("oa.color.border.strong.onNewsprint")};--hair:{v("oa.color.border.hairline.onNewsprint")};'
-            f'--ring:{v("oa.color.focus.ring.onNewsprint")};--ground:{v("oa.color.surface.newsprint")};'
+    for k in ('text.primary', 'text.secondary', 'border.strong', 'border.hairline', 'focus.ring'):
+        v(f'oa.color.{k}.onNewsprint')        # recorded; the short names below point at these on a Newsprint stage
+    return (f':scope{{--ink:{v("oa.color.text.primary")};--sec:{v("oa.color.text.secondary")};'
+            f'--edge:{v("oa.color.border.strong")};--hair:{v("oa.color.border.hairline")};'
+            f'--ring:{v("oa.color.focus.ring")};--ground:{v("oa.color.surface.newsprint")};'
             f'--paper:{v("oa.color.surface.white")};--dis:{v("oa.component.button.disabled.label.onNewsprint")};'
             f'--disedge:{v("oa.component.button.disabled.edge.onNewsprint")};--touch:{v("oa.size.target.touch")}}}'
             f'.ui{{{"forced-color-adjust:auto;" if live else ""}background:var(--ground);color:var(--ink);padding:20px 16px 24px;{T("body")}}}'
@@ -411,8 +413,16 @@ def loop_steps(m):
         plural = a.endswith('seats')
         verb = ('raise' if plural else 'raises') if signs[i] == '+' else ('lower' if plural else 'lowers')
         b_low = b[0].lower() + b[1:]
-        steps.append([f'{a} {verb} {b_low}.', links[lid]['plain']])
-    return lp['title'], labels[0], steps
+        steps.append([curly(f'{a} {verb} {b_low}.'), curly(links[lid]['plain'])])
+    return curly(lp['title']), labels[0], steps
+
+
+def curly(t):
+    """The atlas's text with typographic apostrophes and quotes, as the guide sets every word."""
+    t = re.sub(r"(?<=\w)'(?=\w)", '’', t)
+    t = re.sub(r"(?<=\w)'", '’', t)
+    t = re.sub(r'"(?=\w)', '“', t)
+    return t.replace('"', '”')
 
 
 def stepper(ctx, m, live=True):
@@ -467,8 +477,8 @@ def s_stepper(ctx, m):
            'and its sentence, and starts at “Ready”. Four buttons sit under it, each 44 px tall with its icon beside its '
            'word: Play, which turns to Pause while the steps run and to Play again at the end; Reset the loop, with an open '
            'circle and one arrowhead; Previous step, with the arrow mirrored; and Next step, with the arrow after its word. '
-           'At the start, Previous step and Reset are unavailable, and a line says why. The four steps: '
-           + ' '.join(f'{k + 1}. {a} {b}' for k, (a, b) in enumerate(steps)))
+           'At the start, Previous step and Reset are unavailable, and a line says why. Each step names the link and '
+           'gives the atlas’s sentence for it, starting with “' + steps[0][0] + '”')
     return m.spec(ctx, 's-11-14-correct', html, '11.14', alt, width=360, interactive=True,
                   notes='Live (D2-516). Steps from Atlas V7’s loop R10 (chain labels, signs and each link’s plain '
                         'sentence). Playback starts only on a press (E-3); unavailable controls keep focus with their '

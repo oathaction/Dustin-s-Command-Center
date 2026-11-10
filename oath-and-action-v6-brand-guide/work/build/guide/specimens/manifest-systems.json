@@ -504,7 +504,7 @@
   "chapter": "10",
   "rule": "10.2",
   "width_px": 600,
-  "alt": "Local government drawn at three times its 128 px master on its 128-unit box, with a grid every 16 units. A dashed square marks the 116 units a drawing may fill. Notes point to the box, to the dashed square, to the right wall of the central block, whose line is 3.35 units wide with round ends and corners, and to the door, the one red part. Below, the same drawing at true size: 128 px with a 3.35 px line, 64 px with a 1.68 px line and 48 px with a 1.26 px line.",
+  "alt": "Local government drawn at three times its 128 px master on its 128-unit box, with a grid every 16 units. A dashed square marks the 116 units a drawing may fill. Notes point to the box, to the dashed square, to the outer wall of the right wing, whose line is 3.35 units wide with round ends and corners, and to the door, the one red part. Below, the same drawing at true size: 128 px with a 3.35 px line, 64 px with a 1.68 px line and 48 px with a 1.26 px line.",
   "illustrative": false,
   "notes": "The drawing is CL-031 from the sprite (D2-590); keylines from the construction file.",
   "height_px": 636
@@ -695,7 +695,8 @@
   "width_px": 360,
   "alt": "Three Illustrative bills at 360 px on Newsprint, one above the other, each drawn as six numbered steps with its own key. A state bill, H.99003, Library hours, has passed steps 1 to 5 and stands at step 6: “Step 6 of 6: Governor. Both chambers passed it, and it waits for the governor to sign or veto it.” Its key reads 1 Filed, 2 Hearing, 3 Committee vote, 4 First chamber, 5 Second chamber, 6 Governor. A federal bill, H.R. 99012, Passport wait times, stands at the same place: “Step 6 of 6: President. Both chambers passed it, and it waits for the President to sign or veto it.” Its key ends 6 President. A Nebraska bill, LB 99008, Rural clinic grants, has steps 1 to 4 filled, step 5 as a fine ring under a slash and step 6 as the heavy ring: “Step 6 of 6: Governor. Nebraska has one chamber. The Legislature passed the bill on Final Reading on April 14, and it waits for the governor to sign or veto it.” Its key adds the mark for a step that never happened.",
   "illustrative": true,
-  "notes": ""
+  "notes": "",
+  "fit_switch": false
  },
  "s-11-1-failure": {
   "chapter": "11",
@@ -703,13 +704,151 @@
   "width_px": 360,
   "alt": "Labeled Failure case: do not publish. An Illustrative tracker for bill H.99003, Library hours, at 360 px, whose key gives the six steps the clerk’s names: Introduced, Referred, Reported, Engrossed, Enrolled and Presented. It reads “Step 6 of 6: Presented. The enrolled bill went to the executive on February 12.”",
   "illustrative": true,
-  "notes": ""
+  "notes": "",
+  "fit_switch": false
+ },
+ "s-11-10-correct": {
+  "chapter": "11",
+  "rule": "11.10",
+  "width_px": 360,
+  "alt": "Two Illustrative records requests at 360 px on Newsprint, with a key of the six steps and the marks. Request 99007, Snowplow contract records: Step 3 of 6: Searching. The agency is looking for the records. Waiting on you: on April 2 the agency asked which winters you need. Its 20 working days stop until you answer. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching now; 4 Reviewing not yet; 5 Answered not yet; 6 Appeal not yet. Beside the warning mark: Checked April 20. The agency may have acted since. Request 99009, Jail inspection reports: Upheld on appeal on July 8. The appeal office kept the agency’s answer. The requester took the request to federal court on August 3. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching done; 4 Reviewing done; 5 Answered done; 6 Appeal done.",
+  "illustrative": true,
+  "notes": "",
+  "fit_switch": false
+ },
+ "s-11-10-failure": {
+  "chapter": "11",
+  "rule": "11.10",
+  "width_px": 360,
+  "alt": "Labeled Failure case: do not publish. An Illustrative records request, 99007, Snowplow contract records, at 360 px, drawn as seven numbered steps: the fee estimate has become step 4, between Searching and Reviewing. The words read “Step 4 of 7: Fee estimate. The agency sent a fee estimate on April 2.”, and the key lists seven steps.",
+  "illustrative": true,
+  "notes": "",
+  "fit_switch": false
+ },
+ "s-11-11-correct": {
+  "chapter": "11",
+  "rule": "11.11",
+  "width_px": 360,
+  "alt": "A live report reader at 360 px, Illustrative. A page of the report How a county pays for its roads sits in a frame, with “Page 1 of 12” under it. Two buttons follow, Previous page with the arrow mirrored before its word and Next page with the arrow after it, each 44 px tall. On the first page, Previous page is unavailable: its outline is dashed, and the line under it says “This is the first page.” Two word buttons, Fit width and Full size, change the size of the page; Fit width is pressed, bold and underlined.",
+  "illustrative": true,
+  "notes": "Live (D2-516). Previous page keeps focus while unavailable, with aria-disabled and its reason through aria-describedby (G-4); the page count is a polite status line (A-9); zoom stays words (DR-154).",
+  "interactive": true,
+  "fit_switch": false
+ },
+ "s-11-11-failure": {
+  "chapter": "11",
+  "rule": "11.11",
+  "width_px": 360,
+  "alt": "Labeled Failure case: do not publish. An Illustrative report toolbar at 360 px with four buttons that show icons and no words: a left arrow, “1 / 12”, a right arrow, an information mark and four corners. Each button is 32 px square. A pointer hovers over the information mark, and a dark box above it reads “About this report”, the only place the button’s name appears.",
+  "illustrative": true,
+  "notes": "Picture of a fault: glyph-only buttons, 32 px targets, a name shown only on hover (SC 1.4.13, 2.5.3). The information mark is drawn here as the fault and is no icon of the set (DR-154).",
+  "fit_switch": false
+ },
+ "s-11-12-correct": {
+  "chapter": "11",
+  "rule": "11.12",
+  "width_px": 360,
+  "alt": "The symbol library’s search and filter bar, live at 360 px. A field labeled Search the symbols holds the magnifier before the text; once you type, a cross at its end clears the search, named “Clear the search”. Under it, the Filters button carries the funnel, the words “Filters, 1 on” and a chevron pointing up, since the filters are open, and a word button, Clear filters. The open filters show Kind: Topic, Atlas and Pillar, and Size: Reads at 24 px. Atlas is on, so it carries a check and a heavier outline, and the status line reads “101 of 124 symbols”, with the first three listed by ID and name.",
+  "illustrative": false,
+  "notes": "Live (D2-516). Labels and kinds read from the editor’s label table for chapter 10; the 41 from chapter 10’s construction text, section 10. Chips carry aria-pressed and the Selected check (C-5); the count is a polite status line (A-9); Clear the search is the one glyph-only control (A-4).",
+  "interactive": true,
+  "fit_switch": false
+ },
+ "s-11-12-failure": {
+  "chapter": "11",
+  "rule": "11.12",
+  "width_px": 360,
+  "alt": "Labeled Failure case: do not publish. An Illustrative report reader at 360 px. Its Previous and Next buttons carry chevrons turned left and right, and below them the row Sources for this page carries the same chevron pointing down, where it opens the row. One drawing turns the page in one place and opens a row in another.",
+  "illustrative": true,
+  "notes": "Picture of a fault: the chevron does two jobs in one view (D2-507).",
+  "fit_switch": false
+ },
+ "s-11-13-correct": {
+  "chapter": "11",
+  "rule": "11.13",
+  "width_px": 360,
+  "alt": "A live list of three sources at 360 px, each a link to another site that opens in the same tab: Nebraska Legislature, “Lawmaking in Nebraska”; FOIA.gov, “Frequently Asked Questions”; and 5 U.S.C. 553, rulemaking, at the Legal Information Institute. After each link’s last word sits the 16 px mark for another site, an arrow leaving a box, kept on the line with that word. Each link stands 44 px tall, and a screen reader hears “(another site)” at the end of its name.",
+  "illustrative": false,
+  "notes": "Live links to the research lead’s sources (section 5 and 7), same tab (D2-513); the 16 px mark is the first 16 px utility icon on a page (D2-577).",
+  "interactive": true,
+  "fit_switch": false
+ },
+ "s-11-13-failure": {
+  "chapter": "11",
+  "rule": "11.13",
+  "width_px": 360,
+  "alt": "Labeled Failure case: do not publish. An Illustrative sentence at 360 px ends with the link “the agency’s rulemaking page”. Its mark for another site, drawn at 24 px inside the sentence, has wrapped onto a line of its own under the words. A note says the link opens a new tab with nothing said about it.",
+  "illustrative": true,
+  "notes": "Picture of a fault: a 24 px mark inside running text, broken from its word, and a new tab with no warning (D2-513).",
+  "fit_switch": false
+ },
+ "s-11-14-correct": {
+  "chapter": "11",
+  "rule": "11.14",
+  "width_px": 360,
+  "alt": "A live loop stepper at 360 px for loop R10 from our systems atlas, “Safe seats shift accountability to small primary electorates”. A box shows the step and its sentence, and starts at “Ready”. Four buttons sit under it, each 44 px tall with its icon beside its word: Play, which turns to Pause while the steps run and to Play again at the end; Reset the loop, with an open circle and one arrowhead; Previous step, with the arrow mirrored; and Next step, with the arrow after its word. At the start, Previous step and Reset are unavailable, and a line says why. Each step names the link and gives the atlas’s sentence for it, starting with “Safe seats raise primary decisiveness.”",
+  "illustrative": false,
+  "notes": "Live (D2-516). Steps from Atlas V7’s loop R10 (chain labels, signs and each link’s plain sentence). Playback starts only on a press (E-3); unavailable controls keep focus with their reason (G-4); the step box is a polite live region (A-9).",
+  "interactive": true,
+  "fit_switch": false
+ },
+ "s-11-14-failure": {
+  "chapter": "11",
+  "rule": "11.14",
+  "width_px": 360,
+  "alt": "Labeled Failure case: do not publish. The same loop stepper for loop R10, “Safe seats shift accountability to small primary electorates”, at 360 px. Its Start over button carries CL-024, the feedback loop drawing, two arrows that carry a change between two boxes and back, in place of the Reset icon.",
+  "illustrative": false,
+  "notes": "Picture of a fault: a topic drawing standing for an interface action (D2-515), from the sprite (CL-024 is among the 41 that read at 24 px, one color).",
+  "fit_switch": false
+ },
+ "s-11-15-correct": {
+  "chapter": "11",
+  "rule": "11.15",
+  "width_px": 360,
+  "alt": "A live sign-up form at 360 px, Illustrative: “Get a reminder before the March 3 hearing”, with an Email field, a ZIP code field with the hint “Five digits” and the red button Remind me, the view’s one working red. Sent with a field wrong, each wrong field takes a red bar at its left edge and a message under it on the pale Error Band, with a red bar, the error mark in ink and the words “Error:” and the fix, such as “Enter a ZIP code with five digits.” The error then holds the red, so Remind me turns Charcoal until the fields are right, and focus moves to the first wrong field. Sent right, the success mark and “You’re signed up. We’ll email you on March 1, two days before the hearing.” appear in a status line.",
+  "illustrative": true,
+  "notes": "Live (D2-516). Fields carry aria-invalid and aria-describedby to their message (SC 3.3.1, 3.3.3); the ask yields to Charcoal primary while an error shows (Rule 05.3); success goes to a status line (A-9). The error mark draws in ink and the error’s red is the 4 px bar (see notes, D2-xxx).",
+  "interactive": true,
+  "fit_switch": false
+ },
+ "s-11-15-failure": {
+  "chapter": "11",
+  "rule": "11.15",
+  "width_px": 360,
+  "alt": "Labeled Failure case: do not publish. An Illustrative ZIP code field at 360 px holding four digits, 0217. Under it, red text reads “Invalid” beside a red cross, the Close icon. Nothing says “Error”, which rule the entry broke or how to fix it, and the red text measures 2.96 to 1 on Newsprint.",
+  "illustrative": true,
+  "notes": "Labeled failure: red text at 2.96 to 1 on Newsprint on purpose, and the cross, which means Close, standing for an error (D2-509).",
+  "check_exempt": [
+   "contrast"
+  ],
+  "fit_switch": false
+ },
+ "s-11-16-correct": {
+  "chapter": "11",
+  "rule": "11.16",
+  "width_px": 360,
+  "alt": "One Illustrative view at 360 px on Newsprint where three marks could claim red. A story card for bill H.99009, All-party primaries, shows six numbered steps with the take-part mark on step 2, its small disc drawn in Charcoal, and the words “You can take part now. Send written testimony by March 3.” Under it, a small figure from our systems atlas draws three linked ovals, Safe seats, Primary decisiveness and Electoral pressure, with Primary decisiveness outlined heavier in Charcoal and the words “Reform R-01 acts here.” Last, an email field holds an error: a red bar at its left and a message on the pale Error Band, “Error: Enter an email address with an @, such as name@example.com.” The error is the only red in the view, and the Remind me button is Charcoal.",
+  "illustrative": true,
+  "notes": "Rule 05.3’s order: an error first, then the step a reader can take, then where a reform acts. The take-part disc and the marker yield to ink with their shapes and words (C-4). The marker follows System 1’s target: the variable’s outline at 3 px.",
+  "fit_switch": false
+ },
+ "s-11-16-failure": {
+  "chapter": "11",
+  "rule": "11.16",
+  "width_px": 360,
+  "alt": "Labeled Failure case: do not publish. The same Illustrative view, with red in three jobs: the take-part disc on step 2 and the Remind me button, the outline of Primary decisiveness where reform R-01 acts, and the error bar on the email field. The eye has three reds to choose from, and the error that blocks the reader looks no more urgent than the rest.",
+  "illustrative": true,
+  "notes": "Labeled failure: three working-red jobs in one view on purpose (Rule 05.3).",
+  "check_exempt": [
+   "red"
+  ],
+  "fit_switch": false
  },
  "s-11-2-correct": {
   "chapter": "11",
   "rule": "11.2",
   "width_px": null,
-  "alt": "The six states of a step, each drawn on step 4 at true size and at twice size, with its name and meaning. Done: The step happened. Now: The bill is at this step, and the words beside the tracker name it. You can take part now: The bill is at this step, and the public can act before a date. The red disc, its place on the ring and the words carry it together. Not yet: The bill has not reached this step. Never happened: The bill moved past this step without it, as when a committee votes without holding a hearing. It keeps its number, so the count still runs to six. Stopped: The bill ended here, as when a committee votes it down or a veto stands. The line ends at this step. Done is a filled circle; Now is a heavy ring; You can take part now is the heavy ring with a small red disc at its upper right; Not yet is a fine ring; Never happened is the fine ring under a slash; Stopped is a filled square.",
+  "alt": "The six states of a step, each drawn on step 4 at true size in a 26 px circle, with its name and meaning. Done: The step happened. Now: The bill is at this step, and the words beside the tracker name it. You can take part now: The bill is at this step, and the public can act before a date. The red disc, its place on the ring and the words carry it together. Not yet: The bill has not reached this step. Never happened: The bill moved past this step without it, as when a committee votes without holding a hearing. It keeps its number, so the count still runs to six. Stopped: The bill ended here, as when a committee votes it down or a veto stands. The line ends at this step. Done is a filled circle; Now is a heavy ring; You can take part now is the heavy ring with a small red disc at its upper right; Not yet is a fine ring; Never happened is the fine ring under a slash; Stopped is a filled square.",
   "illustrative": false,
   "notes": "A readable list (D2-255); the marks are hidden from assistive technology and every state is in words.",
   "readable": true
@@ -720,7 +859,8 @@
   "width_px": 360,
   "alt": "Labeled Failure case: do not publish. An Illustrative row of six identical numbered circles that tell their states by hue alone: Verdigris for the three done steps, Prussian for step 4, where the bill is now, and Stone for steps 5 and 6 ahead, with no word for any state. Below it, the same row in grayscale, where the Verdigris and Stone circles print as grays 1.25 to 1 apart.",
   "illustrative": true,
-  "notes": "Verdigris against Stone 1.28 to 1 in color; grays #717171 and #626262 measure 1.25 to 1."
+  "notes": "Verdigris against Stone 1.28 to 1 in color; grays #717171 and #626262 measure 1.25 to 1.",
+  "fit_switch": false
  },
  "s-11-3-correct": {
   "chapter": "11",
@@ -728,7 +868,8 @@
   "width_px": 360,
   "alt": "Three Illustrative bills at 360 px on Newsprint. Bill H.99003, Library hours: all six numbered steps are filled, and the words say “Became law on April 2. It takes effect July 1.” Bill S.99006, Snow route parking: all six steps are filled, and the words say “Became law on March 18, over the governor’s veto. It takes effect June 1.” Bill S.99005, Parking meter fees: steps 1 to 5 are filled, and step 6 is a filled square where the line ends. The words say “Stopped at step 6 of 6: Governor. The governor vetoed it on February 9, and the Senate’s vote to override fell short on February 23.” A key gives the six step names and the Done and Stopped marks.",
   "illustrative": true,
-  "notes": ""
+  "notes": "",
+  "fit_switch": false
  },
  "s-11-3-failure": {
   "chapter": "11",
@@ -736,7 +877,8 @@
   "width_px": 360,
   "alt": "Labeled Failure case: do not publish. An Illustrative tracker for bill H.99003, Library hours, whose sixth step is named Law. Steps 1 to 5 are filled and step 6 carries the heavy ring, so the words read “Step 6 of 6: Law. Both chambers passed it, and it waits for the governor to sign or veto it.”",
   "illustrative": true,
-  "notes": ""
+  "notes": "",
+  "fit_switch": false
  },
  "s-11-4-correct": {
   "chapter": "11",
@@ -744,7 +886,8 @@
   "width_px": 360,
   "alt": "An Illustrative story card at 360 px on Newsprint with the kicker Tracker, State bills, the headline “The House hears the town audit bill on March 10”, and a line on what the bill would do. Under it, bill S.99007, Town audit deadlines, as six numbered steps: steps 1 to 4 filled, step 5 a heavy ring with a small red disc at its upper right, step 6 a fine ring. The words say “Step 5 of 6: Second chamber. The Senate passed it on February 24, and a House committee holds its hearing on March 10.” Beside the same red disc, “You can take part now. Send written testimony or sign up to speak by March 10.”, then the link How to send testimony.",
   "illustrative": true,
-  "notes": ""
+  "notes": "",
+  "fit_switch": false
  },
  "s-11-4-failure": {
   "chapter": "11",
@@ -756,7 +899,8 @@
   "check_exempt": [
    "red",
    "contrast"
-  ]
+  ],
+  "fit_switch": false
  },
  "s-11-5-correct": {
   "chapter": "11",
@@ -765,7 +909,8 @@
   "alt": "An Illustrative list of five state bills at 360 px on Newsprint, each drawn as six numbered steps on a line, with the step names in a key after the list. Bill H.99001, Public meeting notice: Step 2 of 6: Hearing. Testimony is open until March 3. Steps: 1 Filed done; 2 Hearing you can take part now; 3 Committee vote not yet; 4 First chamber not yet; 5 Second chamber not yet; 6 Governor not yet. You can take part now: Send written testimony or sign up to speak by March 3. Bill S.99002, School bus contracts: Step 4 of 6: First chamber. The committee sent it on, and the Senate votes next. Steps: 1 Filed done; 2 Hearing done; 3 Committee vote done; 4 First chamber now; 5 Second chamber not yet; 6 Governor not yet. Bill H.99003, Library hours: Step 6 of 6: Governor. Both chambers passed it, and it waits for the governor to sign or veto it. Steps: 1 Filed done; 2 Hearing done; 3 Committee vote done; 4 First chamber done; 5 Second chamber done; 6 Governor now. Bill H.99004, Records request fees: Step 4 of 6: First chamber. Step 2 never happened, because the committee voted without holding a hearing. The House votes next. Steps: 1 Filed done; 2 Hearing never happened; 3 Committee vote done; 4 First chamber now; 5 Second chamber not yet; 6 Governor not yet. Bill S.99005, Parking meter fees: Stopped at step 6 of 6: Governor. The governor vetoed it on February 9, and the Senate’s vote to override fell short on February 23. Steps: 1 Filed done; 2 Hearing done; 3 Committee vote done; 4 First chamber done; 5 Second chamber done; 6 Governor stopped.",
   "illustrative": true,
   "notes": "",
-  "surface": "newsprint"
+  "surface": "newsprint",
+  "fit_switch": false
  },
  "s-11-5-failure": {
   "chapter": "11",
@@ -773,7 +918,8 @@
   "width_px": 360,
   "alt": "Labeled Failure case: do not publish. Two Illustrative bills at 360 px on Newsprint, each drawn as six small dots on a line with no numbers or names. H.99001’s second dot is a ring with a red center, and S.99002’s fourth dot is a ring, so a reader counts dots to find the step. The status words sit under each line.",
   "illustrative": true,
-  "notes": ""
+  "notes": "",
+  "fit_switch": false
  },
  "s-11-6-correct": {
   "chapter": "11",
@@ -782,7 +928,8 @@
   "alt": "An Illustrative page for one bill at 360 px on Newsprint: the kicker Tracker, State bills, the ID Bill H.99001, the title Public meeting notice and a line on what the bill would do, then “Step 2 of 6: Hearing. Testimony is open until March 3.” The six numbered steps run down the page on a line, each with its name, its state in words and a note: 1 Filed, done, filed January 16 and sent to the Committee on Local Government; 2 Hearing, now, you can take part, with a red disc on its ring and a box holding “You can take part now. Send written testimony or sign up to speak by March 3.” and a red Send testimony button; 3 Committee vote, 4 First chamber, 5 Second chamber and 6 Governor, each not yet, with a note on what happens there. Step 5’s note says the Senate’s committee often holds a hearing of its own.",
   "illustrative": true,
   "notes": "",
-  "surface": "newsprint"
+  "surface": "newsprint",
+  "fit_switch": false
  },
  "s-11-6-failure": {
   "chapter": "11",
@@ -790,7 +937,8 @@
   "width_px": 360,
   "alt": "Labeled Failure case: do not publish. The same Illustrative page for bill H.99001, Public meeting notice, with a stock stepper in place of the numbered steps: a filled box with a check for step 1, a box with a dot for step 2 and empty boxes for steps 3 to 6, with no numbers, no state in words and no way to take part.",
   "illustrative": true,
-  "notes": ""
+  "notes": "",
+  "fit_switch": false
  },
  "s-11-7-correct": {
   "chapter": "11",
@@ -811,52 +959,82 @@
   "check_exempt": [
    "size",
    "scale"
-  ]
+  ],
+  "fit_switch": false
  },
- "s-11-list-360-charcoal": {
+ "s-11-8-correct": {
   "chapter": "11",
-  "rule": null,
+  "rule": "11.8",
   "width_px": 360,
-  "alt": "An Illustrative list of five state bills at 360 px on Charcoal, each drawn as six numbered steps on a line, with the step names in a key after the list. Bill H.99001, Public meeting notice: Step 2 of 6: Hearing. Testimony is open until March 3. Steps: 1 Filed done; 2 Hearing you can take part now; 3 Committee vote not yet; 4 First chamber not yet; 5 Second chamber not yet; 6 Governor not yet. You can take part now: Send written testimony or sign up to speak by March 3. Bill S.99002, School bus contracts: Step 4 of 6: First chamber. The committee sent it on, and the Senate votes next. Steps: 1 Filed done; 2 Hearing done; 3 Committee vote done; 4 First chamber now; 5 Second chamber not yet; 6 Governor not yet. Bill H.99003, Library hours: Step 6 of 6: Governor. Both chambers passed it, and it waits for the governor to sign or veto it. Steps: 1 Filed done; 2 Hearing done; 3 Committee vote done; 4 First chamber done; 5 Second chamber done; 6 Governor now. Bill H.99004, Records request fees: Step 4 of 6: First chamber. Step 2 never happened, because the committee voted without holding a hearing. The House votes next. Steps: 1 Filed done; 2 Hearing never happened; 3 Committee vote done; 4 First chamber now; 5 Second chamber not yet; 6 Governor not yet. Bill S.99005, Parking meter fees: Stopped at step 6 of 6: Governor. The governor vetoed it on February 9, and the Senate’s vote to override fell short on February 23. Steps: 1 Filed done; 2 Hearing done; 3 Committee vote done; 4 First chamber done; 5 Second chamber done; 6 Governor stopped.",
+  "alt": "Three Illustrative records requests at 360 px on Newsprint, each drawn as six numbered steps with the bill tracker’s marks, and a key of the six steps, Requested, Acknowledged, Searching, Reviewing, Answered and Appeal, and of the marks. Request 99001, Bridge inspection reports: Step 4 of 6: Reviewing. The agency is deciding what it can release. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching done; 4 Reviewing now; 5 Answered not yet; 6 Appeal not yet. Request 99003, School lunch inspection records: Partly granted on March 3. The agency released 212 of 340 pages and withheld the rest under two exemptions. No appeal was filed by the June 1 deadline. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching done; 4 Reviewing done; 5 Answered done; 6 Appeal never happened. Request 99005, Park ranger staffing records: Withdrawn by the requester on April 9. The requester stopped the request while the agency searched. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching stopped; 4 Reviewing not yet; 5 Answered not yet; 6 Appeal not yet.",
   "illustrative": true,
   "notes": "",
-  "surface": "charcoal"
+  "fit_switch": false
+ },
+ "s-11-8-failure": {
+  "chapter": "11",
+  "rule": "11.8",
+  "width_px": 360,
+  "alt": "Labeled Failure case: do not publish. An Illustrative records request, 99005, Park ranger staffing records, at 360 px: steps 1 and 2 filled and a square at step 3, Searching, where the line ends. The words read “Full denial for reasons other than exemptions. The agency closed the request on April 9.” The requester withdrew it, and nothing on the card says so.",
+  "illustrative": true,
+  "notes": "",
+  "fit_switch": false
+ },
+ "s-11-9-correct": {
+  "chapter": "11",
+  "rule": "11.9",
+  "width_px": 360,
+  "alt": "Three Illustrative federal agency rules at 360 px on Newsprint, each drawn as six numbered steps with the bill tracker’s marks, and a key of the six steps, Early notice, Proposed, Comments open, Comments closed, Final rule and In effect, and of the marks. Rule 99002, Rail crossing signals: Step 3 of 6: Comments open. The agency proposed the rule on April 11 with no early notice, and comments are open until May 12. Steps: 1 Early notice never happened; 2 Proposed done; 3 Comments open you can take part now; 4 Comments closed not yet; 5 Final rule not yet; 6 In effect not yet. You can take part now: Send the agency a written comment by May 12. Rule 99004, Grain dust limits: In effect since August 1. Issued without advance comment. The agency takes comments until September 30 and may change the rule after it reads them. Steps: 1 Early notice never happened; 2 Proposed never happened; 3 Comments open never happened; 4 Comments closed never happened; 5 Final rule done; 6 In effect done. Rule 99006, Ferry life vest checks: Withdrawn by the agency on February 20. The agency published a notice withdrawing its proposed rule after comments closed. Steps: 1 Early notice done; 2 Proposed done; 3 Comments open done; 4 Comments closed stopped; 5 Final rule not yet; 6 In effect not yet.",
+  "illustrative": true,
+  "notes": "",
+  "fit_switch": false
+ },
+ "s-11-9-failure": {
+  "chapter": "11",
+  "rule": "11.9",
+  "width_px": 360,
+  "alt": "Labeled Failure case: do not publish. An Illustrative agency rule, 99004, Grain dust limits, at 360 px: step 1 under a slash and steps 2 to 6 filled, so Proposed, Comments open and Comments closed all read as done. The words read “In effect since August 1. The agency published the final rule on August 1.” The agency issued it without asking for comment first, and nothing on the card says so.",
+  "illustrative": true,
+  "notes": "",
+  "fit_switch": false
+ },
+ "s-11-icons": {
+  "chapter": "11",
+  "rule": null,
+  "width_px": null,
+  "alt": "The 18 utility icons, each drawn at 24 px and then at 16 px from its own 16 px drawing, with its name and the word that goes beside it. Close: Close, or Close the menu where two things could close. Menu: Menu. Arrow: Next page; mirrored, Previous page; turned up or down, the order a column is sorted in. Chevron: The row’s own words; down while closed, up while open. Download: Download, then the file, its type and its size. Another site: After a link’s last word, with the hidden words “(another site)”. Search: The field’s label, such as Search the symbols. Filter: Filters, and how many are on. Copy: Copy, and what it copies. Play: Play, or Play again once the run has ended. Pause: Pause, on the same button while it plays. Reset: Reset or Start over, with its object, such as Reset the loop. Error: Error, then the fix, such as Enter a ZIP code with five digits. Success: What happened, such as You’re signed up. Selected check: A chip’s own word, while the chip is on. View full size: View the map full size. Sort: Beside a column heading’s word. Warning: The notice, such as Checked April 20.",
+  "illustrative": false,
+  "notes": "A readable list (D2-255) of the 18 finals in the audit’s order, drawn from the sprite: oa-sym-u-<name>-24px and -16px (DR-161 to DR-178).",
+  "readable": true
  },
  "s-11-list-600-charcoal": {
   "chapter": "11",
   "rule": null,
   "width_px": 600,
-  "alt": "An Illustrative list of five state bills at 600 px on Charcoal, each drawn as six numbered steps on a line, with each step’s name under its circle and the bill’s name above its steps. Bill H.99001, Public meeting notice: Step 2 of 6: Hearing. Testimony is open until March 3. Steps: 1 Filed done; 2 Hearing you can take part now; 3 Committee vote not yet; 4 First chamber not yet; 5 Second chamber not yet; 6 Governor not yet. You can take part now: Send written testimony or sign up to speak by March 3. Bill S.99002, School bus contracts: Step 4 of 6: First chamber. The committee sent it on, and the Senate votes next. Steps: 1 Filed done; 2 Hearing done; 3 Committee vote done; 4 First chamber now; 5 Second chamber not yet; 6 Governor not yet. Bill H.99003, Library hours: Step 6 of 6: Governor. Both chambers passed it, and it waits for the governor to sign or veto it. Steps: 1 Filed done; 2 Hearing done; 3 Committee vote done; 4 First chamber done; 5 Second chamber done; 6 Governor now. Bill H.99004, Records request fees: Step 4 of 6: First chamber. Step 2 never happened, because the committee voted without holding a hearing. The House votes next. Steps: 1 Filed done; 2 Hearing never happened; 3 Committee vote done; 4 First chamber now; 5 Second chamber not yet; 6 Governor not yet. Bill S.99005, Parking meter fees: Stopped at step 6 of 6: Governor. The governor vetoed it on February 9, and the Senate’s vote to override fell short on February 23. Steps: 1 Filed done; 2 Hearing done; 3 Committee vote done; 4 First chamber done; 5 Second chamber done; 6 Governor stopped.",
+  "alt": "An Illustrative list of two state bills at 600 px on Charcoal, each drawn as six numbered steps on a line, with each step’s name under its circle and the bill’s name above its steps. Bill H.99001, Public meeting notice: Step 2 of 6: Hearing. Testimony is open until March 3. Steps: 1 Filed done; 2 Hearing you can take part now; 3 Committee vote not yet; 4 First chamber not yet; 5 Second chamber not yet; 6 Governor not yet. You can take part now: Send written testimony or sign up to speak by March 3. Bill S.99005, Parking meter fees: Stopped at step 6 of 6: Governor. The governor vetoed it on February 9, and the Senate’s vote to override fell short on February 23. Steps: 1 Filed done; 2 Hearing done; 3 Committee vote done; 4 First chamber done; 5 Second chamber done; 6 Governor stopped.",
   "illustrative": true,
   "notes": "",
-  "surface": "charcoal"
+  "surface": "charcoal",
+  "fit_switch": false
  },
- "s-11-list-600-newsprint": {
+ "s-11-marks": {
   "chapter": "11",
   "rule": null,
-  "width_px": 600,
-  "alt": "An Illustrative list of five state bills at 600 px on Newsprint, each drawn as six numbered steps on a line, with each step’s name under its circle and the bill’s name above its steps. Bill H.99001, Public meeting notice: Step 2 of 6: Hearing. Testimony is open until March 3. Steps: 1 Filed done; 2 Hearing you can take part now; 3 Committee vote not yet; 4 First chamber not yet; 5 Second chamber not yet; 6 Governor not yet. You can take part now: Send written testimony or sign up to speak by March 3. Bill S.99002, School bus contracts: Step 4 of 6: First chamber. The committee sent it on, and the Senate votes next. Steps: 1 Filed done; 2 Hearing done; 3 Committee vote done; 4 First chamber now; 5 Second chamber not yet; 6 Governor not yet. Bill H.99003, Library hours: Step 6 of 6: Governor. Both chambers passed it, and it waits for the governor to sign or veto it. Steps: 1 Filed done; 2 Hearing done; 3 Committee vote done; 4 First chamber done; 5 Second chamber done; 6 Governor now. Bill H.99004, Records request fees: Step 4 of 6: First chamber. Step 2 never happened, because the committee voted without holding a hearing. The House votes next. Steps: 1 Filed done; 2 Hearing never happened; 3 Committee vote done; 4 First chamber now; 5 Second chamber not yet; 6 Governor not yet. Bill S.99005, Parking meter fees: Stopped at step 6 of 6: Governor. The governor vetoed it on February 9, and the Senate’s vote to override fell short on February 23. Steps: 1 Filed done; 2 Hearing done; 3 Committee vote done; 4 First chamber done; 5 Second chamber done; 6 Governor stopped.",
+  "width_px": null,
+  "alt": "The three marks at true size, each in its message. Error: a circle holding an exclamation mark, in ink, on the pale Error Band with a 4 px red bar at its left, beside “Error: Enter a ZIP code with five digits.” Success: a check leaving an open circle, in Verdigris, beside “You’re signed up. We’ll email you on March 1.” Warning: a triangle holding an exclamation mark, in ink, with a 4 px Charcoal bar, beside “Checked April 20. The agency may have acted since.”",
   "illustrative": true,
-  "notes": "",
-  "surface": "newsprint"
+  "notes": "A readable list (D2-255). The error’s red is the bar; the mark draws in ink (see notes).",
+  "readable": true
  },
- "s-11-page-360-charcoal": {
+ "s-11-menu": {
   "chapter": "11",
   "rule": null,
   "width_px": 360,
-  "alt": "An Illustrative page for one bill at 360 px on Charcoal: the kicker Tracker, State bills, the ID Bill H.99001, the title Public meeting notice and a line on what the bill would do, then “Step 2 of 6: Hearing. Testimony is open until March 3.” The six numbered steps run down the page on a line, each with its name, its state in words and a note: 1 Filed, done, filed January 16 and sent to the Committee on Local Government; 2 Hearing, now, you can take part, with a red disc on its ring and a box holding “You can take part now. Send written testimony or sign up to speak by March 3.” and a red Send testimony button; 3 Committee vote, 4 First chamber, 5 Second chamber and 6 Governor, each not yet, with a note on what happens there. Step 5’s note says the Senate’s committee often holds a hearing of its own.",
-  "illustrative": true,
-  "notes": "",
-  "surface": "charcoal"
- },
- "s-11-page-600-newsprint": {
-  "chapter": "11",
-  "rule": null,
-  "width_px": 600,
-  "alt": "An Illustrative page for one bill at 600 px on Newsprint: the kicker Tracker, State bills, the ID Bill H.99001, the title Public meeting notice and a line on what the bill would do, then “Step 2 of 6: Hearing. Testimony is open until March 3.” The six numbered steps run down the page on a line, each with its name, its state in words and a note: 1 Filed, done, filed January 16 and sent to the Committee on Local Government; 2 Hearing, now, you can take part, with a red disc on its ring and a box holding “You can take part now. Send written testimony or sign up to speak by March 3.” and a red Send testimony button; 3 Committee vote, 4 First chamber, 5 Second chamber and 6 Governor, each not yet, with a note on what happens there. Step 5’s note says the Senate’s committee often holds a hearing of its own. After the steps, a key says what each of the six steps means.",
-  "illustrative": true,
-  "notes": "",
-  "surface": "newsprint"
+  "alt": "A live phone menu at 360 px. The bar names the chapter, 11 Status and utility icons, and holds a Menu button with three bars before the word. Menu opens a panel over the page, In this chapter, which holds focus until Close the menu, with its cross, or the Escape key shuts it; focus then returns to Menu. The panel lists the chapter’s four groups as rows, each with a chevron that points down while the row is closed and up while it is open, and each opens to links to its rules.",
+  "illustrative": false,
+  "notes": "Live (D2-516): the dialog holds focus, Escape and Close return focus to Menu (G-3); the page behind it is inert while it is open.",
+  "interactive": true,
+  "fit_switch": false
  },
  "s-11-steps": {
   "chapter": "11",

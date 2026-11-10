@@ -1,5 +1,6 @@
-// Walk the reader check page end to end with a stubbed window.claude (November 6, 2026).
-// Run from the project root:  node work/boards/phase-2/reader-check/test_reader_check.js [--quick]
+// Walk the combined reader check page end to end with a stubbed window.claude (November 10, 2026), from the first
+// check's test (work/boards/phase-2/reader-check/test_reader_check.js).
+// Run from the project root:  node work/boards/phase-2/reader-check-2/test_reader_check_2.js [--quick]
 //
 // The page is content only (the publish step wraps it), so each run wraps it in the publish skeleton with a <base>
 // pointing at this folder, and puts a stub window.claude in the head, before the page's script, as the viewer does:
@@ -12,18 +13,25 @@
 // Every screen is checked at its rendered state: axe-core 4.10.2 (WCAG 2.x A and AA tags), no sideways scroll, no
 // visible text under 13 px, text contrast from rendered colors, targets at least 44 px tall, focus on the screen's
 // heading after each change. Timed looks run at a twentieth of real time except in the real-time run.
-// Writes 20261106_Reader-Check-Test-Results.json and the 390 px captures in captures/.
+// New in this check: the follow-up questions show only after the answers that call for them (a walk that answers No
+// and All clear never sees them); every shuffled question keeps "Not sure" last and records its order; the record holds
+// the screen's device pixel ratio; at 1x the rows and marks draw their pixel fits and the article its pixel mark, and
+// at 2x the masters and the smooth mark.
+// Writes 20261110_Reader-Check-2-Test-Results.json and the 390 px captures in captures/.
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
 
 const HERE = __dirname;
 const ROOT = path.resolve(HERE, '../../../..');
-const PAGE = path.join(HERE, '20261106_Reader-Check.html');
+const PAGE = path.join(HERE, '20261110_Reader-Check-2.html');
 const AXE = fs.readFileSync(path.join(ROOT, 'work/build/node_modules/axe-core/axe.min.js'), 'utf8');
 const CAPS = path.join(HERE, 'captures');
-const TMP = process.env.RC_TMP || path.join(require('os').tmpdir(), 'reader-check-test');
+const TMP = process.env.RC_TMP || path.join(require('os').tmpdir(), 'reader-check-2-test');
 const QUICK = process.argv.includes('--quick');
+// Words the copy text must never print: what step 3's symbols and the other stimuli mean, from the answer key.
+const KEYJ = JSON.parse(fs.readFileSync(path.join(HERE, '20261110_Reader-Check-2-Answer-Key.json'), 'utf8'));
+const LEAK = [...new Set([...KEYJ.icons.flatMap((i) => [i.chapter_10_label, i.civic_line_word]), 'lockmark', 'pillar', 'Expand the House', 'end mark'].filter(Boolean))];
 fs.mkdirSync(CAPS, { recursive: true });
 fs.mkdirSync(TMP, { recursive: true });
 
@@ -67,7 +75,7 @@ function wrap(mode, scale) {
   const page = fs.readFileSync(PAGE, 'utf8');
   const head = `<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><base href="file://${HERE}/"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>`
     + `<script>window.__RC_TEST__ = { timeScale: ${scale} };${STUB}(${JSON.stringify(mode)});</script></head><body>`;
-  const out = path.join(TMP, `reader-check-${mode}.html`);
+  const out = path.join(TMP, `reader-check-2-${mode}.html`);
   fs.writeFileSync(out, head + page + '</body></html>');
   return out;
 }
@@ -110,7 +118,7 @@ async function waitPos(page, from, ms) {
 }
 
 // ------------------------------------------------------------------ one walk through the whole test
-async function walk(browser, { mode, width, scale, captures, reduce, label }) {
+async function walk(browser, { mode, width, scale, captures, reduce, label, first }) {
   const height = width === 1440 ? 900 : width === 390 ? 844 : 780;
   const ctx = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: captures ? 2 : 1, reducedMotion: reduce ? 'reduce' : 'no-preference' });
   await ctx.grantPermissions(['clipboard-read', 'clipboard-write']).catch(() => {});
@@ -128,7 +136,7 @@ async function walk(browser, { mode, width, scale, captures, reduce, label }) {
   async function snap(name) {
     if (!captures || capNames.has(name)) return;
     capNames.add(name); capN++;
-    await page.screenshot({ path: path.join(CAPS, `20261106_Reader-Check-${String(capN).padStart(2, '0')}-${name}-${width}${mode === 'saved' ? '' : '-' + mode}.png`), fullPage: true });
+    await page.screenshot({ path: path.join(CAPS, `20261110_Reader-Check-2-${String(capN).padStart(2, '0')}-${name}-${width}${mode === 'saved' ? '' : '-' + mode}.png`), fullPage: true });
   }
   async function check(tag) {
     const a = await audit(page); res.screens++;
@@ -191,10 +199,17 @@ async function walk(browser, { mode, width, scale, captures, reduce, label }) {
       const clock = await page.evaluate(() => ({ text: document.querySelector('#bar-step').textContent, bar: getComputedStyle(document.querySelector('#clock')).display }));
       if (!/seconds? left/.test(clock.text)) fail(`${s.key}: no time-left text (${clock.text})`);
       if (reduce && clock.bar !== 'none') fail(`${s.key}: clock bar shows under reduced motion`);
-      if (s.key === 'overview:look' || s.key.startsWith('icon_') && !capNames.has('Symbol-Look') || s.key === 'marks:look' || s.key.startsWith('chart_') && !capNames.has('Chart-Look') || s.key === 'masthead:look' || s.key.startsWith('loop_') && !capNames.has('Loop-Look')) {
-        const a = await check(s.key);
-        const nm = s.key === 'overview:look' ? 'Overview-Look' : s.key.startsWith('icon_') ? 'Symbol-Look' : s.key === 'marks:look' ? 'Marks-Look' : s.key.startsWith('chart_') ? 'Chart-Look' : s.key.startsWith('loop_') ? 'Loop-Look' : 'Masthead-Look';
-        await snap(nm);
+      const LOOKS = { 'overview:look': 'Overview-Look', 'red_card:look': 'Card-Look', 'house:look': 'Drawing-Look', 'row_24:look': 'Row-24-Look', 'row_48:look': 'Row-48-Look', 'marks:look': 'Marks-Look', 'foot_24:look': 'Page-Bottom-Look' };
+      const nm = LOOKS[s.key] || (s.key.startsWith('icon_') ? 'Symbol-Look' : s.key.startsWith('chart_') ? 'Chart-Look' : s.key.startsWith('loop_') ? 'Loop-Look' : null);
+      if (nm && !capNames.has(nm)) { await check(s.key); await snap(nm); }
+      // the guide's switch: pixel fits under 2 device pixels per CSS pixel, the masters from 2 (DR-179)
+      const dpr = captures ? 2 : 1;
+      if (s.key === 'row_24:look' || s.key === 'marks:look') {
+        const srcs = await page.evaluate((k) => [...document.querySelectorAll(k === 'row_24:look' ? 'main .rowx img' : 'main .sheet img')].map((i) => i.currentSrc.split('/').pop()), s.key);
+        const fits = s.key === 'row_24:look' ? srcs : srcs.slice(8);
+        const want = (f) => (dpr === 2 ? /^(g\d\.svg|mark-\d+-b\.svg)$/ : /^(g\d-24\.svg|mark-\d+\.svg)$/).test(f);
+        if (!fits.length || !fits.every(want)) fail(`${s.key}: at ${dpr}x the drawings are ${fits.join(' ')}`);
+        res.dprChecks = (res.dprChecks || 0) + 1;
       }
       await waitPos(page, s.pos, 30000 * Math.max(scale, 0.1) + 15000);
       const it = await page.evaluate((k) => window.__RC__.S.run.items[k], (await page.evaluate((p) => window.__RC__.S.screens[p].item, s.pos)));
@@ -205,9 +220,20 @@ async function walk(browser, { mode, width, scale, captures, reduce, label }) {
     await check(s.key);
     if (s.kind === 'question') {
       const isChoice = await page.$('main .choice');
-      if (s.key === 'overview:purpose' || s.key.endsWith(':least_certain') && !capNames.has('Loop-Question') || s.key.endsWith(':stands_for') && !capNames.has('Symbol-Question') || s.key.endsWith(':favors') && !capNames.has('Chart-Question')) {
-        await snap(s.key === 'overview:purpose' ? 'Overview-Question' : s.key.endsWith(':least_certain') ? 'Loop-Question' : s.key.endsWith(':stands_for') ? 'Symbol-Question' : 'Chart-Question');
+      const QS = { 'overview:purpose': 'Overview-Question', 'red_card:favors': 'Card-Question', 'red_card:why': 'Follow-Up', 'house:red': 'Drawing-Question', 'row_24:current': 'Row-Question', 'row_48:red': 'Row-Red-Question',
+        'steps_slash:meaning': 'Bills-Row-Question', 'steps_list:take_part': 'Bills-List-Question', 'steps_names:which': 'Bills-Follow-Up', 'foot_24:seen': 'Page-Bottom-Question', 'end_17:meaning': 'Article-17', 'end_15:clear': 'Article-15' };
+      const qn = QS[s.key] || (s.key.endsWith(':least_certain') ? 'Loop-Question' : s.key.endsWith(':stands_for') ? 'Symbol-Question' : s.key.startsWith('chart_') && s.key.endsWith(':favors') ? 'Chart-Question' : null);
+      if (qn && !capNames.has(qn)) await snap(qn);
+      if (s.key === 'end_17:meaning' || s.key === 'end_15:clear') {
+        const shown = await page.evaluate(() => [...document.querySelectorAll('main .ending img')].filter((i) => getComputedStyle(i).display !== 'none').map((i) => i.className));
+        const dpr = captures ? 2 : 1;
+        if (shown.length !== 1 || shown[0] !== (dpr === 1 ? 'tf' : 'ts')) fail(`${s.key}: at ${dpr}x the article shows ${JSON.stringify(shown)}`);
+        res.dprChecks = (res.dprChecks || 0) + 1;
       }
+      // a shuffled question keeps "Not sure" last
+      const labels = await page.$$eval('main .choice .cl', (els) => els.map((e) => e.textContent));
+      if (/^(house:red|row_48:red|steps_(slash|square|dot):meaning|foot_24:seen|end_1[57]:(meaning|sits))$/.test(s.key) && labels[labels.length - 1] !== 'Not sure') fail(`${s.key}: "Not sure" is not last (${labels.join(' | ')})`);
+      res.keys = (res.keys || []).concat(s.key);
       // validation once, show-again on the first question of three looks, one skip
       if (!validated && s.key === 'overview:purpose') {
         validated++;
@@ -232,7 +258,8 @@ async function walk(browser, { mode, width, scale, captures, reduce, label }) {
         await page.click('text=Skip this question');
       } else if (isChoice) {
         const n = await page.$$eval('main .choice', (els) => els.length);
-        await page.click(`main .choice >> nth=${Math.min(1, n - 1)}`);
+        const pick = first && first.includes(s.key) ? 0 : Math.min(1, n - 1);
+        await page.click(`main .choice >> nth=${pick}`);
         await page.click('main button[type=submit]');
       } else {
         await page.fill('#answer', `answer for ${s.key} at ${width}`);
@@ -244,16 +271,11 @@ async function walk(browser, { mode, width, scale, captures, reduce, label }) {
       for (let i = 0; i < rows.length - 1; i++) await rows[i].$eval(`label:nth-child(${(i % 3) + 1})`, (l) => l.click());
       await page.click('main button[type=submit]');
       const m = await page.evaluate(() => document.querySelector('main .msg').textContent);
-      if (!/Mark 9 has no answer yet/.test(m)) fail(`marks: partial rating not caught (${m})`);
+      if (!/Mark 12 has no answer yet/.test(m)) fail(`marks: partial rating not caught (${m})`);
       await page.click('main button[type=submit]');
     } else if (s.kind === 'pair') {
       await snap('Pair');
       await page.click('main .choice >> nth=0');
-      await page.click('main button[type=submit]');
-    } else if (s.kind === 'masthead') {
-      await snap('Masthead-Question');
-      await page.click('main .choice >> nth=1');
-      await page.fill('#why', 'It is shorter.');
       await page.click('main button[type=submit]');
     }
     await waitPos(page, s.pos, 10000);
@@ -265,10 +287,17 @@ async function walk(browser, { mode, width, scale, captures, reduce, label }) {
   const run = rec.run;
   const items = run.items;
   const qcount = Object.values(items).reduce((a, it) => a + Object.keys(it.questions).length, 0);
-  res.record = { questions: qcount, items: Object.keys(items).length, orders: run.orders, finished: !!run.finished_at, initials: run.initials, viewport_width: run.viewport_width, mode: run.mode, mode_note: run.mode_note,
+  res.record = { questions: qcount, items: Object.keys(items).length, orders: run.orders, finished: !!run.finished_at, initials: run.initials, viewport_width: run.viewport_width, device_pixel_ratio: run.device_pixel_ratio, mode: run.mode, mode_note: run.mode_note,
     showAgain: Object.fromEntries(Object.entries(items).filter(([, v]) => v.show_again).map(([k, v]) => [k, v.show_again])),
     skipped: Object.entries(items).flatMap(([k, v]) => Object.entries(v.questions).filter(([, q]) => q.skipped).map(([q]) => k + '.' + q)) };
-  if (qcount !== 2 + 8 + 8 + 9 + 6 + 3 + 2) fail(`record: ${qcount} answers, expected 38`);
+  const expected = first ? 52 : 54;   // 10 + 4 + 4 + 3 + 6 + 13 + 5 + 6 + 3, less the two follow-ups when they are not asked
+  if (qcount !== expected) fail(`record: ${qcount} answers, expected ${expected}`);
+  const asked = (res.keys || []);
+  if (first && (asked.includes('red_card:why') || asked.includes('steps_names:which'))) fail('a follow-up showed after No or All clear');
+  if (!first && !(asked.includes('red_card:why') && asked.includes('steps_names:which'))) fail('a follow-up did not show after its answer');
+  if (run.device_pixel_ratio !== (captures ? 2 : 1)) fail(`record: device_pixel_ratio ${run.device_pixel_ratio}`);
+  const ch = run.orders.choices || {};
+  if (Object.keys(ch).length !== 9 || Object.values(ch).some((x) => !Array.isArray(x) || x.length < 3)) fail('record: the shuffled orders are missing: ' + JSON.stringify(ch));
   if (!run.finished_at) fail('record: no finished time');
   const secs = Object.values(items).flatMap((it) => Object.values(it.questions).map((q) => q.seconds)).filter((x) => x !== undefined);
   if (secs.some((x) => x === null && false)) fail('record: missing seconds');
@@ -284,7 +313,7 @@ async function walk(browser, { mode, width, scale, captures, reduce, label }) {
     if (!/saved/.test(res.end.text)) fail('end: saved mode did not confirm the save');
     res.db = { writes: rec.db.writes.length, maxInflight: rec.db.maxInflight, calls: rec.db.calls.reduce((a, c) => (a[c] = (a[c] || 0) + 1, a), {}) };
   } else {
-    if (!res.end.copy || !res.end.copy.includes('"schema":"reader-check/1"')) fail('end: copy mode shows no copy text');
+    if (!res.end.copy || !res.end.copy.includes('"schema":"reader-check-2/1"')) fail('end: copy mode shows no copy text');
     const line = res.end.copy.split('\n').pop();
     const parsed = JSON.parse(line);
     if (JSON.stringify(parsed.run) !== JSON.stringify(run)) fail('copy: the copied JSON differs from the page state');
@@ -293,7 +322,8 @@ async function walk(browser, { mode, width, scale, captures, reduce, label }) {
   if (errors.length) fail('page errors: ' + errors.join(' | '));
   if (outside.size) fail('outside requests: ' + [...outside].join(', '));
   // the copy text must not name what a symbol means
-  if (res.end.copy) for (const w of ['Explain', 'Track', 'Connect', 'Act', 'Political', 'Reporting', 'Essential', 'Ranked']) if (new RegExp('\\b' + w + '\\b').test(res.end.copy)) fail('copy text names ' + w);
+  // (the four words of the rows are the reader's own answers here, so they may appear)
+  if (res.end.copy) for (const w of LEAK) if (new RegExp('\\b' + w + '\\b', 'i').test(res.end.copy)) fail('copy text names ' + w);
   await ctx.close();
   return res;
 }
@@ -379,6 +409,7 @@ async function reflowTest(browser) {
     { mode: 'viewonly', width: 390, scale: 0.05, label: 'copy (view-only), 390' },
     { mode: 'reject', width: 390, scale: 0.05, label: 'saved then copy (every write rejected), 390' },
     { mode: 'saved', width: 390, scale: 0.05, reduce: true, label: 'saved, 390, reduced motion' },
+    { mode: 'null', width: 390, scale: 0.05, first: ['red_card:favors', 'steps_names:clear'], label: 'copy, 390, answering No and All clear (no follow-ups)' },
   ];
   for (const p of plan) {
     const t = Date.now();
@@ -398,7 +429,7 @@ async function reflowTest(browser) {
   }
   await browser.close();
   const out = { page: path.relative(ROOT, PAGE), run_at: new Date().toISOString(), pass: runs.every((r) => r.pass), runs };
-  if (!QUICK) fs.writeFileSync(path.join(HERE, '20261106_Reader-Check-Test-Results.json'), JSON.stringify(out, null, 1));
+  if (!QUICK) fs.writeFileSync(path.join(HERE, '20261110_Reader-Check-2-Test-Results.json'), JSON.stringify(out, null, 1));
   console.log(out.pass ? 'ALL PASS' : 'SOME FAILED');
   process.exit(out.pass ? 0 : 1);
 })();

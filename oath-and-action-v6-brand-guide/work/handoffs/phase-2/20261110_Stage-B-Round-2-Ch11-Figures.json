@@ -3,6 +3,27 @@
  "built": "2026-11-07",
  "token_set_version": "6.0.0-gate2.4",
  "figures": {
+  "contrast Charcoal on the Error Band": {
+   "value": "11.89",
+   "fg": "#121212",
+   "bg": "#E1C9C1",
+   "exact": 11.888,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Pillar Red on the Error Band": {
+   "value": "2.64",
+   "fg": "#E63946",
+   "bg": "#E1C9C1",
+   "exact": 2.645,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.focus.ring.onNewsprint on oa.color.surface.newsprint": {
+   "value": "3.37",
+   "fg": "#4A7C74",
+   "bg": "#DCD9D2",
+   "exact": 3.3659,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
   "contrast oa.color.graphic.essential.onCharcoal on oa.color.surface.charcoal": {
    "value": "13.29",
    "fg": "#DCD9D2",
@@ -43,6 +64,13 @@
    "fg": "#E63946",
    "bg": "#DCD9D2",
    "exact": 2.9571,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.success.mark.onNewsprint on oa.color.surface.newsprint": {
+   "value": "3.37",
+   "fg": "#4A7C74",
+   "bg": "#DCD9D2",
+   "exact": 3.3659,
    "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
   },
   "contrast oa.color.text.secondary.onCharcoal on oa.color.surface.charcoal": {
@@ -87,6 +115,10 @@
    "exact": 1.2498,
    "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
   },
+  "focus ring on Newsprint": {
+   "value": "3.37",
+   "method": "oa.color.focus.ring.onNewsprint against oa.color.surface.newsprint"
+  },
   "grayscale of Verdigris, Stone and Prussian": {
    "value": "#717171, #626262, #2D2D2D",
    "method": "CSS grayscale(1): 0.2126 R + 0.7152 G + 0.0722 B on the encoded token values"
@@ -97,12 +129,18 @@
   }
  },
  "tokens_cited": [
+  "oa.color.border.hairline",
   "oa.color.border.hairline.onCharcoal",
   "oa.color.border.hairline.onNewsprint",
+  "oa.color.border.strong",
   "oa.color.border.strong.onCharcoal",
   "oa.color.border.strong.onNewsprint",
+  "oa.color.focus.ring",
+  "oa.color.focus.ring.onNewsprint",
+  "oa.color.graphic.essential",
   "oa.color.graphic.essential.onCharcoal",
   "oa.color.graphic.essential.onNewsprint",
+  "oa.color.graphic.subtle",
   "oa.color.graphic.subtle.onCharcoal",
   "oa.color.graphic.subtle.onNewsprint",
   "oa.color.palette.pillarRed",
@@ -110,17 +148,28 @@
   "oa.color.palette.stone",
   "oa.color.palette.verdigris",
   "oa.color.palette.white",
+  "oa.color.state.error.band.onNewsprint",
+  "oa.color.state.error.mark.onNewsprint",
+  "oa.color.state.error.text.onNewsprint",
+  "oa.color.state.success.mark.onNewsprint",
+  "oa.color.state.warning.mark.onNewsprint",
   "oa.color.surface.charcoal",
   "oa.color.surface.newsprint",
+  "oa.color.surface.white",
+  "oa.color.text.primary",
   "oa.color.text.primary.onCharcoal",
   "oa.color.text.primary.onNewsprint",
+  "oa.color.text.secondary",
   "oa.color.text.secondary.onCharcoal",
   "oa.color.text.secondary.onNewsprint",
-  "oa.component.button.ask.fill.onCharcoal",
   "oa.component.button.ask.fill.onNewsprint",
   "oa.component.button.ask.keyline.onNewsprint",
-  "oa.component.button.ask.label.onCharcoal",
   "oa.component.button.ask.label.onNewsprint",
+  "oa.component.button.disabled.edge.onNewsprint",
+  "oa.component.button.disabled.label.onNewsprint",
+  "oa.component.button.primary.fill.onNewsprint",
+  "oa.component.button.primary.label.onNewsprint",
+  "oa.component.icon.ink.onNewsprint",
   "oa.size.target.touch",
   "oa.type.ask",
   "oa.type.body",

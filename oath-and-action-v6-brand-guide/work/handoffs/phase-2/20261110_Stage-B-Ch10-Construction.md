@@ -9,17 +9,17 @@ Every figure here comes from the files or the records named beside it. Where the
 | Rule | Title (draft; the editor may tighten the words) | Sections here |
 |---|---|---|
 | 10.1 | Give each kind of symbol its own job. | 1 |
-| 10.2 | Draw every symbol on the 128-unit box with one line, round ends and one red accent. | 2 to 5 |
+| 10.2 | Build every drawing on one box, with one line, round ends and one red part. | 2 to 5 |
 | 10.3 | Keep each drawing in its whole box, at the size its file gives it. | 6 |
 | 10.4 | Set topic and atlas symbols at 48 px or larger, and at 24 px only from the list of 41. | 9, 10 |
-| 10.5 | Match the edition to the surface, and put a symbol on a tile only in one of the six tiles. | 7, 8 |
+| 10.5 | Match the edition to the surface, and use only the six tiles. | 7, 8 |
 | 10.6 | Set every symbol beside its own word. | 1, 11 |
 | 10.7 | Give a symbol its red only where it stands alone or marks the current item. | 5 |
-| 10.8 | Draw atlas variables and reforms; name domains, hubs, layers and routes in words. | 1 |
-| 10.9 | Check a symbol beside its look-alikes before you set it. | 12 |
+| 10.8 | Draw the atlas’s variables and reforms, and name its other parts in words. | 1 |
+| 10.9 | Check a symbol beside its neighbors before you set it. | 12 |
 | 10.10 | Copy the atlas's encoding glyphs exactly, each with its words. | 1 |
 
-Chapter 10's anchor is `#symbols`; rules land at `#rule-10-1` to `#rule-10-10`. The shell links "Rule 10.4" wherever it appears in another chapter.
+Chapter 10's anchor is `#symbols`; rules land at `#rule-10-1` to `#rule-10-10`. The shell links "Rule 10.4" wherever it appears in another chapter. The titles above are the ones the built chapter prints (`work/build/guide/chapters/10-symbols.json`); the editor may still tighten them, and the numbers stay.
 
 ## 1. The classes, and which chapter governs each
 
@@ -215,9 +215,11 @@ The words on a reader page come from the editor's label table (DR-185, `20261110
 - A topic symbol prints its Civic Line word; an atlas symbol prints the atlas's name for the element (DR-185). CL-025 reads "Congress" as a topic and "Congressional capacity" where it stands for D1; R-13 reads "Congress's own experts"; R-36 reads "Lasting public investment"; R-35 keeps "Rejected" with it wherever it appears. The editor's table governs every word.
 - Every use carries `data-icon="<ID>"` and `data-icon-family`: `pillar`, `topic`, `atlas` or `encoding` here; `status` and `utility` in chapter 11 (D2-517).
 
-## 12. Look-alikes chapter 10 sets side by side
+## 12. Neighbors chapter 10 sets side by side
 
-CL-073 Testify and CL-005 Public Meeting; CL-074 Contact an Official and CL-061 Household Income; CL-025 Congress and CL-014 Entrenched Power; CL-053 Housing Scarcity, CL-054 Home Equity and CL-063 Essential Costs; CL-027 Court Alignment and CL-031 Local Government; CL-048 Public Records and CL-023 Evidence. Each pair carries the engineer's look-alike figure (`icon_likeness_check.js`, flag at 0.913, watch at 0.871), run on the set in use.
+CL-073 Testify and CL-005 Public Meeting; CL-074 Contact an Official and CL-061 Household Income; CL-025 Congress and CL-014 Entrenched Power; CL-053 Housing Scarcity, CL-054 Home Equity and CL-063 Essential Costs; CL-027 Court Alignment and CL-031 Local Government; CL-048 Public Records and CL-023 Evidence.
+
+Each pair carries the engineer's likeness figure, computed with `icon_likeness_check.js`'s own functions on the 124 drawings in use (7,626 pairs; flag 0.9092 at the 99th percentile, watch 0.8678 at the 95th; `20261110_Stage-B-Ch10-Figures.json`). The figures: CL-005 and CL-073 −0.09; CL-061 and CL-074 0.79; CL-014 and CL-025 0.75; CL-053 and CL-054 0.70; CL-053 and CL-063 0.60; CL-054 and CL-063 0.71; CL-027 and CL-031 0.84; CL-023 and CL-048 0.69. None reaches the flag. These are neighbors by subject more than by outline: Testify and Public meeting have nearly unrelated outlines, and Court alignment and Local government come closest. Rule 10.9 says so and calls the groups neighbors.
 
 ## 13. Notes for other owners
 

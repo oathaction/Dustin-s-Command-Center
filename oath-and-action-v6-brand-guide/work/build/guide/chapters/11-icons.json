@@ -6,7 +6,7 @@
   "instruction": "Give each record state or interface action a glyph and a word that read without color.",
   "intro": [
     "A glyph here is a small drawn mark, and each one carries its meaning twice, in its shape and in the word beside it. A reader who sees no color, or prints the page in gray, gets the same meaning as everyone else.",
-    "It opens with trackers, which show how far a bill has come in six numbered steps. Status marks for other records, such as a records request or an agency rule, join the chapter as rule groups of their own once we draw them, and so do utility icons for actions such as copy, filter and share."
+    "Trackers come first: they show how far a bill has come in six numbered steps, and the same marks then follow a records request or an agency rule. After them come the utility icons, which sit beside the word for an action on a page, and the three marks that give an error, a success or a warning its shape."
   ],
   "groups": [
     {
@@ -14,6 +14,24 @@
       "number": 1,
       "title": "Trackers",
       "line": "A tracker shows where a bill stands in six numbered steps, with each step’s state drawn as a shape and said in words."
+    },
+    {
+      "before_rule": "11.8",
+      "number": 2,
+      "title": "Records requests and agency rules",
+      "line": "A request for public records and a federal agency’s rule each move through six steps of their own, drawn with the tracker’s marks."
+    },
+    {
+      "before_rule": "11.11",
+      "number": 3,
+      "title": "Utility icons",
+      "line": "A utility icon names an action on a page, such as Close, Download or Filter, and sits beside its word."
+    },
+    {
+      "before_rule": "11.15",
+      "number": 4,
+      "title": "Error, success and warning",
+      "line": "Three marks give a message its shape, and the words beside them say what happened and what to do."
     }
   ],
   "rules": [
@@ -22,7 +40,7 @@
       "title": "Follow every bill through six numbered steps with plain names.",
       "rule": [
         "A tracker follows a bill through six steps, numbered 1 to 6: Filed, Hearing, Committee vote, First chamber, Second chamber, and a sixth named for whoever signs the bill, Governor on a state bill and President on a federal one. A chamber is one house of a legislature, such as the House or the Senate, and the first chamber is the one where the bill was filed. Every tracker prints the number and the name together, as in “Step 2 of 6: Hearing”, for the step the bill is at now.",
-        "Six steps fold some procedure together, such as a second reading or a conference committee, where members of both chambers settle one text. A bill’s own page gives those dates in the note under the step they belong to."
+        "Six steps fold some procedure together, such as a second reading or a conference committee, where members of both chambers settle one text. A bill’s own page gives those dates in the note under the step they belong to. Every state keeps all six steps. Nebraska’s Legislature has one chamber, so a Nebraska bill keeps step 5 under a slash, and its card says “Nebraska has one chamber” beside the marks."
       ],
       "tokens": [
         "oa.type.dataLabel",
@@ -36,7 +54,7 @@
       },
       "correct": {
         "specimen": "s-11-1-correct",
-        "caption": "Two bills at 360 px, both at step 6, each with its own key. The state bill’s sixth step is Governor, and the federal bill’s is President; the other five names stay the same."
+        "caption": "Three bills at 360 px, each at step 6 with its own key. The state bill’s sixth step is Governor and the federal bill’s is President. The Nebraska bill keeps all six steps, with step 5 under a slash and the reason beside it."
       },
       "failure": {
         "specimen": "s-11-1-failure",
@@ -50,6 +68,10 @@
         {
           "label": "Step 6",
           "value": "Governor on a state bill; President on a federal bill"
+        },
+        {
+          "label": "Nebraska",
+          "value": "Six steps; step 5 under a slash, with “Nebraska has one chamber” beside the marks"
         },
         {
           "label": "Status words",
@@ -68,7 +90,7 @@
       ],
       "builders": [
         "Write the status words from the data, never from the drawing: the step number, its name for this bill’s route and one sentence on what happens next. Store step 6 as the signer, so a state bill prints Governor and a federal bill prints President.",
-        "Number an invented federal bill from H.R. 99001 up, far past any number a Congress has used, and label it Illustrative. A cropped plate then cannot put our status words on a real bill."
+        "Number an invented bill far past any number a legislature has used: a federal bill from H.R. 99001 up, a state bill from H.99001 and S.99002 up, and a Nebraska bill with Nebraska’s LB, for Legislative Bill, from LB 99008 up. Label each one Illustrative. A cropped plate then cannot put our status words on a real bill."
       ]
     },
     {
@@ -92,7 +114,7 @@
       },
       "correct": {
         "specimen": "s-11-2-correct",
-        "caption": "The six states, each drawn on step 4 at true size and twice size. Each one changes the shape, so the set reads in grayscale."
+        "caption": "The six states, each drawn on step 4 at true size. Each one changes the shape, so the set reads in grayscale."
       },
       "failure": {
         "specimen": "s-11-2-failure",
@@ -105,15 +127,18 @@
         },
         {
           "label": "Now",
-          "value": "A ring with a 3 px line, its number in bold"
+          "value": "A ring with a 3 px line, its number in bold",
+          "token": "oa.component.mark.ring.now"
         },
         {
           "label": "Not yet",
-          "value": "A ring with a 1.5 px line, its number in Inter 600 in the secondary text color"
+          "value": "A ring with a 1.5 px line, its number in Inter 600 in the secondary text color",
+          "token": "oa.component.mark.ring.ahead"
         },
         {
           "label": "Never happened",
-          "value": "The Not yet ring under a 2 px slash, its number kept clear by a 2 px halo in the surface color"
+          "value": "The Not yet ring under a 2 px slash, its number kept clear by a 2 px halo in the surface color",
+          "token": "oa.component.mark.slash"
         },
         {
           "label": "Stopped",
@@ -141,6 +166,7 @@
       ],
       "builders": [
         "Draw each tracker as one SVG with <code>aria-hidden=\"true\"</code>, and give screen readers an ordered list of the six steps beside it, each with its state in words, such as “Step 2, Hearing: never happened.” Hide that list visually and keep it in the reading order.",
+        "Tag each mark <code>data-icon=\"S-now\"</code> (or <code>S-done</code>, <code>S-take-part</code>, <code>S-not-yet</code>, <code>S-never-happened</code>, <code>S-stopped</code>) with <code>data-icon-family=\"status\"</code>, so the shared checks find it.",
         "A hearing on the bill’s subject held before the bill was filed does not fill step 2; the step’s note names it."
       ]
     },
@@ -207,7 +233,9 @@
       ],
       "tokens": [
         "oa.color.palette.pillarRed",
-        "oa.component.button.ask.keyline.onNewsprint"
+        "oa.component.button.ask.keyline.onNewsprint",
+        "oa.component.mark.takePart.keyline",
+        "oa.component.mark.takePart.cut"
       ],
       "why": {
         "text": [
@@ -227,7 +255,7 @@
         {
           "label": "Take-part mark",
           "value": "An 11 px Pillar Red disc at the upper right of the Now ring, a 1 px Charcoal keyline inside its edge, 1.5 px of the surface around it",
-          "token": "oa.color.palette.pillarRed"
+          "token": "oa.component.mark.takePart.disc"
         },
         {
           "label": "Contrast",
@@ -249,7 +277,7 @@
         },
         {
           "label": "Red jobs in a view",
-          "value": "One: take part now. Every take-part mark and the ask button share it"
+          "value": "One: take part now. Every take-part mark and the ask button share it. An error in the same view takes the red first (Rule 11.16)"
         }
       ],
       "related": [
@@ -267,8 +295,8 @@
         "In a list of bills and on a story card, the tracker runs across the page: six numbered circles on one line, solid as far as the bill has come and fine after it. The bill’s number and name lead each row, and its status words follow the marks. In a column narrower than 552 px, as on a phone, the first circle starts on the text edge and the step names move into a key after the list. In a wider column, each step takes a sixth of the row and its name sits under its circle."
       ],
       "tokens": [
-        "oa.border.width.rule",
-        "oa.border.width.hairline",
+        "oa.component.mark.line.reached",
+        "oa.component.mark.line.ahead",
         "oa.type.dataLabel"
       ],
       "why": {
@@ -293,7 +321,7 @@
         {
           "label": "Line",
           "value": "2 px in the surface’s ink as far as the bill has come, 1 px after it",
-          "token": "oa.border.width.rule"
+          "token": "oa.component.mark.line.reached"
         },
         {
           "label": "Spacing",
@@ -377,7 +405,8 @@
       "id": "11.7",
       "title": "Size the marks for reading, and the targets for a thumb.",
       "rule": [
-        "Draw the circles at 24 px on a story card, 26 px in a phone list, 28 px on a bill’s page and 30 px in a wide list. Numbers sit at 13 px in circles under 28 px and at 14 px from 28 px. Every link and button a reader can press stands at least 44 px tall, and the ask button 48 px."
+        "Draw the circles at 24 px on a story card, 26 px in a phone list, 28 px on a bill’s page and 30 px in a wide list. Numbers sit at 13 px in circles under 28 px and at 14 px from 28 px.",
+        "Every link and button in a tracker, and every control that carries a utility icon, stands at least 44 px tall, and the ask button 48 px. A plain list of text links, such as a list of contents, may stand shorter, as long as each link keeps the 24 px that WCAG asks for through its spacing."
       ],
       "tokens": [
         "oa.size.target.touch",
@@ -407,13 +436,13 @@
           "value": "Inter 700 at 13 px, or 14 px in circles of 28 px and up; tabular figures"
         },
         {
-          "label": "Links and buttons",
+          "label": "Links and buttons in a tracker, and controls with a utility icon",
           "value": "At least 44 px tall",
           "token": "oa.size.target.touch"
         },
         {
-          "label": "Smallest target anywhere",
-          "value": "24 by 24 px",
+          "label": "A plain list of text links",
+          "value": "24 by 24 px, through spacing",
           "token": "oa.size.target.minimum"
         },
         {
@@ -428,6 +457,520 @@
       "builders": [
         "Set <code>min-height: var(--oa-size-target-touch)</code> on every link in a tracker, and give a link that sits inline at least 24 px of space around it."
       ]
+    },
+    {
+      "id": "11.8",
+      "title": "Follow a records request through six steps, and end it in plain words.",
+      "rule": [
+        "A records request asks a government agency to release documents it holds. Its tracker uses the bill tracker’s marks for six steps of its own: Requested, Acknowledged, Searching, Reviewing, Answered and Appeal. Step 6 counts only when the requester appeals, so a request that was never appealed keeps step 6 under a slash once the time to appeal has passed.",
+        "The words say how the agency answered, with the date: Granted, Partly granted, Denied, or Closed with no records released. A request the requester stopped reads “Withdrawn by the requester”, and its line ends on a square at the step where it stopped. An appeal ends in words too: Upheld, Partly reversed, or Reversed and sent back."
+      ],
+      "why": {
+        "text": [
+          "A requester can wait weeks for an answer, and the steps tell them where the request sits. The marks are the bill tracker’s, so a reader learns them once. The end words follow the Justice Department’s own categories in plain words, with one change: the department counts a withdrawn request among its denials, and a reader who saw “denied” would think the agency had refused."
+        ],
+        "basis": "5 U.S.C. 552 and FOIA.gov; design judgment"
+      },
+      "correct": {
+        "specimen": "s-11-8-correct",
+        "caption": "Three requests at 360 px. One is under review, one was partly granted and never appealed, so step 6 keeps its slash, and one was withdrawn at step 3."
+      },
+      "failure": {
+        "specimen": "s-11-8-failure",
+        "caption": "<strong>Fails Rule 11.8.</strong> The tracker prints the government’s category for a request the requester withdrew, so “Full denial” tells a reader the agency refused."
+      },
+      "specs": [
+        {
+          "label": "Steps",
+          "value": "1 Requested, 2 Acknowledged, 3 Searching, 4 Reviewing, 5 Answered, 6 Appeal"
+        },
+        {
+          "label": "Step 6",
+          "value": "A fine ring while an appeal can still be filed; under a slash once the time has passed with none",
+          "token": "oa.component.mark.slash"
+        },
+        {
+          "label": "The answer, in words",
+          "value": "Granted; Partly granted; Denied; Closed, no records released; Withdrawn by the requester"
+        },
+        {
+          "label": "An appeal, in words",
+          "value": "Upheld; Partly reversed; Reversed and sent back; Closed for other reasons"
+        },
+        {
+          "label": "Marks and sizes",
+          "value": "The bill tracker’s, from Rules 11.2 and 11.7"
+        }
+      ],
+      "related": [
+        "13",
+        "18"
+      ],
+      "builders": [
+        "Store each request’s step and its end words as data, and print the end words with their date: “Partly granted on March 3.” A state’s records law sets its own deadlines, so check that state’s statute before you print one. Number an invented request from 99001 up, name no agency, and label it Illustrative."
+      ]
+    },
+    {
+      "id": "11.9",
+      "title": "Follow an agency rule through six steps, and mark the open comment period as the way to take part.",
+      "rule": [
+        "A federal agency writes a rule in six steps: Early notice, Proposed, Comments open, Comments closed, Final rule and In effect. Step 1 is optional, so a rule that had no early notice keeps step 1 under a slash. While comments are open, step 3 takes the take-part mark from Rule 11.4, with the deadline and how to send a comment.",
+        "A rule the agency issued without asking for comment first, such as an interim final rule, keeps steps 2 to 4 under slashes, and its words say so: “Issued without advance comment.” A rule that ends early says how in words, with the date: Withdrawn by the agency, Struck by Congress, or Set aside by a court. Once a rule takes effect, all six steps fill, as a bill’s do once it becomes law."
+      ],
+      "tokens": [
+        "oa.component.mark.takePart.disc"
+      ],
+      "why": {
+        "text": [
+          "Sending a comment is the public’s main way to take part in a federal rule, so the open comment period carries the view’s working red, as a hearing does on a bill. The slashes keep a rule that skipped comment from reading as one the public had a say in before it took effect."
+        ],
+        "basis": "5 U.S.C. 553 and RegInfo.gov; Rule 11.4"
+      },
+      "correct": {
+        "specimen": "s-11-9-correct",
+        "caption": "Three agency rules at 360 px. Comments are open on one, so step 3 takes the take-part mark; one took effect without advance comment, with slashes on steps 1 to 4; and one was withdrawn after comments closed."
+      },
+      "failure": {
+        "specimen": "s-11-9-failure",
+        "caption": "<strong>Fails Rule 11.9.</strong> Steps 2 to 4 are filled for a rule issued without advance comment, so the tracker tells a reader the public had its say before the rule took effect."
+      },
+      "specs": [
+        {
+          "label": "Steps",
+          "value": "1 Early notice, 2 Proposed, 3 Comments open, 4 Comments closed, 5 Final rule, 6 In effect"
+        },
+        {
+          "label": "Step 1",
+          "value": "Optional; under a slash when the agency gave no early notice"
+        },
+        {
+          "label": "Take part",
+          "value": "On step 3 while comments are open: the take-part mark, the deadline and “How to send a comment”",
+          "token": "oa.component.mark.takePart.disc"
+        },
+        {
+          "label": "Without advance comment",
+          "value": "Steps 2 to 4 under slashes, and “Issued without advance comment.”"
+        },
+        {
+          "label": "The end, in words",
+          "value": "In effect since; Withdrawn by the agency; Struck by Congress; Set aside by a court, with the part it set aside"
+        },
+        {
+          "label": "Takes effect",
+          "value": "Usually 30 days or more after the final rule is published, and 60 days or more for a major rule"
+        }
+      ],
+      "related": [
+        "13",
+        "18"
+      ],
+      "builders": [
+        "Store the comment deadline with the rule, and take the take-part mark off the day comments close. Number an invented rule from 99001 up, name no agency, and label it Illustrative."
+      ]
+    },
+    {
+      "id": "11.10",
+      "title": "Say a wait or a later step in words, and keep the count at six.",
+      "rule": [
+        "A pause inside a step, such as an agency’s question to the requester, a fee estimate or a ten-day extension, shows as words under the step it falls in. It never adds a mark, so every request still counts to six. A step outside the agency, such as mediation by the National Archives or a lawsuit, follows the end words as a sentence with its date.",
+        "A status we read from the record, and not from a live feed of it, carries the warning mark and the date we checked it: “Checked April 20. The agency may have acted since.”"
+      ],
+      "tokens": [
+        "oa.color.state.warning.mark.onNewsprint"
+      ],
+      "why": {
+        "text": [
+          "The law treats these waits as pauses in the agency’s 20 working days, so they belong inside a step. A count that changed from one request to the next would stop readers from comparing them. The check date tells a reader how old the status is before they rely on it."
+        ],
+        "basis": "5 U.S.C. 552(a)(6); design judgment"
+      },
+      "correct": {
+        "specimen": "s-11-10-correct",
+        "caption": "Two requests at 360 px. One waits on the requester at step 3, in words, with the date we last checked it beside the warning mark. The other was upheld on appeal and then taken to court, said in a sentence after its end words."
+      },
+      "failure": {
+        "specimen": "s-11-10-failure",
+        "caption": "<strong>Fails Rule 11.10.</strong> The fee estimate becomes a seventh step, so this request reads “Step 4 of 7” while every other request counts to six."
+      },
+      "specs": [
+        {
+          "label": "Waits, in words",
+          "value": "“Waiting on you”, a fee estimate or an extension, under the step it falls in, with its date"
+        },
+        {
+          "label": "After the agency",
+          "value": "Mediation or a lawsuit, in a sentence after the end words"
+        },
+        {
+          "label": "Check date",
+          "value": "The warning mark at 24 px, in ink, then “Checked” and the date",
+          "token": "oa.color.state.warning.mark.onNewsprint"
+        },
+        {
+          "label": "Marks",
+          "value": "Six, always"
+        }
+      ],
+      "related": [
+        "13",
+        "17"
+      ],
+      "builders": [
+        "Keep a wait as a field on its step, with the dates it began and ended, so the words can say how long the clock stopped."
+      ]
+    },
+    {
+      "id": "11.11",
+      "title": "Set each utility icon beside its word, at 24 px by a control and 16 px only inside a line of text.",
+      "rule": [
+        "A utility icon names an action on a page, such as Close, Download or Filter. It sits beside its word: 24 px wide beside the word of a button or link, and 16 px wide only inside a line of text or a table heading, where it comes from its own 16 px drawing. Three icons sit beside other words that carry their meaning: the sort mark beside a column’s heading, the mark after a link to another site and the chevron beside a row’s words. The clear control inside a search field is the one icon with no word; its field’s label gives the context, and its name is “Clear the search”.",
+        "Share, zoom, print and information stay words. Their usual signs repeat drawings we already use, such as the two rings of the Connect pillar icon and the atlas’s plus and minus, and an information mark invites help that shows only on hover."
+      ],
+      "tokens": [
+        "oa.component.icon.utility.line.medium",
+        "oa.size.icon.medium",
+        "oa.size.icon.small",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "A reader who meets an icon beside its word learns the sign once and reads it faster after that, and the word carries the meaning for anyone who does not know the sign. With the word showing, the icon stays hidden from screen readers, so nobody hears the action twice, and a control’s name starts with the words a reader sees, which voice control needs. A name that shows only on hover never reaches a phone, a keyboard or a magnified screen."
+        ],
+        "basis": "WCAG 2.2 SC 2.5.3 and 1.4.13"
+      },
+      "correct": {
+        "specimen": "s-11-11-correct",
+        "caption": "A report reader’s toolbar, live at 360 px. Each icon sits beside its word, every control stands 44 px tall, Previous page says why it is unavailable on the first page, and the page’s size stays two words."
+      },
+      "failure": {
+        "specimen": "s-11-11-failure",
+        "caption": "<strong>Fails Rule 11.11.</strong> The toolbar shows icons with no words, each 32 px square, and its information mark gives its name only in a box that appears on hover."
+      },
+      "specs": [
+        {
+          "label": "Beside a control’s word",
+          "value": "The 24 px drawing, 2 px line, 8 px from the word",
+          "token": "oa.component.icon.utility.line.medium"
+        },
+        {
+          "label": "Inside a line of text or a table heading",
+          "value": "The 16 px drawing, 1.5 px line, on the line with its word",
+          "token": "oa.size.icon.small"
+        },
+        {
+          "label": "Control",
+          "value": "At least 44 px tall; 44 by 44 px where the icon stands with no word",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Color",
+          "value": "The word’s ink, through currentColor; never red",
+          "token": "oa.component.icon.ink.onNewsprint"
+        },
+        {
+          "label": "Name",
+          "value": "Starts with the visible word; the icon carries aria-hidden"
+        },
+        {
+          "label": "No icon for",
+          "value": "Share, copy link, zoom, print, information, home, settings, layers, loading, a phone call, email or alerts"
+        }
+      ],
+      "files": [
+        "work/build/assets/utility/svg-24/",
+        "work/build/assets/utility/svg-16/",
+        "work/build/assets/utility/20261110_Utility-Icons-Manifest.json"
+      ],
+      "related": [
+        "17",
+        "18"
+      ],
+      "builders": [
+        "Draw the icon from the sprite inside the control, beside its word: <code>&lt;svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" aria-hidden=\"true\" focusable=\"false\" data-icon=\"U-download\" data-icon-family=\"utility\"&gt;&lt;use href=\"#oa-sym-u-download-24px\"/&gt;&lt;/svg&gt;</code>. Take a 16 px icon from <code>svg-16/</code>, and never scale the 24 px drawing down. An unavailable control keeps its focus, takes <code>aria-disabled=\"true\"</code> and points with <code>aria-describedby</code> to words that say why."
+      ]
+    },
+    {
+      "id": "11.12",
+      "title": "Give each drawing one meaning.",
+      "rule": [
+        "The arrow means Next. Mirrored, it means Previous, and turned up or down it shows the order a column is sorted in. The chevron opens and closes a row: it points down while the row is closed and up while it is open. The cross closes, and an error is a circle holding an exclamation mark. Copy’s two sheets never turn into a check; the result goes to a status line in words, with the success or the error mark.",
+        "Menu’s three bars stay bars while the menu is open, and the open menu carries its own Close."
+      ],
+      "tokens": [
+        "oa.motion.duration.standard"
+      ],
+      "why": {
+        "text": [
+          "A reader learns a sign once and trusts it after that. If the chevron also turned pages, a reader could not tell a row that opens from a page that turns, and a Copy icon that turned into a check would look like a choice someone had made."
+        ],
+        "basis": "WCAG 2.2 SC 3.2.4; design judgment"
+      },
+      "correct": {
+        "specimen": "s-11-12-correct",
+        "caption": "The symbol library’s search and filter bar, live at 360 px. The funnel opens the filters, the chevron shows they are open, a check marks the filter that is on, and the cross clears the search."
+      },
+      "failure": {
+        "specimen": "s-11-12-failure",
+        "caption": "<strong>Fails Rule 11.12.</strong> The chevron turns the page in the toolbar and opens the sources below it, so one drawing does two jobs in one view."
+      },
+      "specs": [
+        {
+          "label": "Arrow",
+          "value": "Next as drawn; Previous mirrored; the sort order in use turned up or down"
+        },
+        {
+          "label": "Chevron",
+          "value": "Down while closed, up while open; the turn takes 200 ms or less, and none when a reader asks for less motion",
+          "token": "oa.motion.duration.standard"
+        },
+        {
+          "label": "Cross",
+          "value": "Close, and the clear control in a search field"
+        },
+        {
+          "label": "Selected check",
+          "value": "Inside a chip that is on, before its word, with a heavier outline"
+        },
+        {
+          "label": "Copy",
+          "value": "The two sheets stay; the result goes to a status line"
+        },
+        {
+          "label": "Menu",
+          "value": "Three bars, open or closed; the open menu holds Close and the Escape key, and focus returns to Menu"
+        }
+      ],
+      "files": [
+        "work/build/assets/utility/20261110_Utility-Icons-Manifest.json"
+      ],
+      "related": [
+        "17",
+        "18"
+      ],
+      "builders": [
+        "Turn and mirror the arrow and the chevron with the transforms in the utility manifest, on the <code>&lt;use&gt;</code>, so every line stays on the pixel grid. At 16 px the down arrow is a mirror across the diagonal, <code>matrix(0 1 1 0 0 0)</code>, which keeps its shaft on the up arrow’s pixel column."
+      ]
+    },
+    {
+      "id": "11.13",
+      "title": "Mark a link to another site, and open it in the same tab.",
+      "rule": [
+        "A link that leaves our site opens in the same tab. Its mark, an arrow leaving a box, follows the link’s last word at 16 px and stays on the line with that word, and the words “(another site)” end the link’s name for screen readers. A link that must open a new tab says so instead: “(opens in a new tab)”."
+      ],
+      "tokens": [
+        "oa.size.icon.small",
+        "oa.size.target.minimum"
+      ],
+      "why": {
+        "text": [
+          "A reader knows before pressing that the link leaves Oath & Action. A new tab that opens unannounced takes away the Back button and can strand a screen reader or magnifier user on a page they did not choose."
+        ],
+        "basis": "WCAG 2.2 SC 3.2.5; design judgment"
+      },
+      "correct": {
+        "specimen": "s-11-13-correct",
+        "caption": "Three sources, live at 360 px. Each link opens in the same tab, its mark follows its last word, and each stands 44 px tall in the list."
+      },
+      "failure": {
+        "specimen": "s-11-13-failure",
+        "caption": "<strong>Fails Rule 11.13.</strong> The link opens a new tab and says nothing about it, and its 24 px mark has broken from its word onto a line of its own."
+      },
+      "specs": [
+        {
+          "label": "Mark",
+          "value": "Another site, 16 px, after the last word, in a span that does not wrap",
+          "token": "oa.size.icon.small"
+        },
+        {
+          "label": "Hidden words",
+          "value": "“(another site)”, or “(opens in a new tab)” where it does"
+        },
+        {
+          "label": "Target",
+          "value": "In running text, the line, at least 24 px tall; in a list of sources, 44 px tall",
+          "token": "oa.size.target.minimum"
+        }
+      ],
+      "files": [
+        "work/build/assets/utility/svg-16/20261110_Utility-Another-Site-16px.svg"
+      ],
+      "related": [
+        "13",
+        "24"
+      ],
+      "builders": [
+        "Wrap the last word and the mark in <code>&lt;span style=\"white-space: nowrap\"&gt;</code>, then the hidden words in a visually hidden span inside the link, so its name reads “... (another site)”. Leave out <code>target=\"_blank\"</code>."
+      ]
+    },
+    {
+      "id": "11.14",
+      "title": "Draw interface actions with utility icons, never with topic or atlas symbols.",
+      "rule": [
+        "A topic or atlas symbol names a subject: a feedback loop, public records, a vote. It never stands for an action on a page. Reset is the utility icon’s open circle with one arrowhead, Download is the arrow into a tray, and each sits beside its word."
+      ],
+      "why": {
+        "text": [
+          "A symbol that works as a button in one place and names a subject in another teaches the reader two meanings for one drawing. CL-024, Feedback loop, comes nearest to the refresh sign a builder reaches for, and a loop stepper is the place a builder would reach for it."
+        ],
+        "basis": "Design judgment; Rule 10.1"
+      },
+      "correct": {
+        "specimen": "s-11-14-correct",
+        "caption": "A loop stepper from our systems atlas, live at 360 px. Play, Reset the loop, Previous step and Next step each carry a utility icon beside the word, and the unavailable ones say why."
+      },
+      "failure": {
+        "specimen": "s-11-14-failure",
+        "caption": "<strong>Fails Rule 11.14.</strong> CL-024, the feedback loop drawing, stands in for Reset. A reader learns it as a button here and meets it next as the subject of a story about feedback loops."
+      },
+      "specs": [
+        {
+          "label": "Reset",
+          "value": "Three quarters of a circle with one arrowhead; “Reset” or “Start over” and its object"
+        },
+        {
+          "label": "Play and Pause",
+          "value": "One button: its icon and word change together; playback starts only on a press"
+        },
+        {
+          "label": "Topic and atlas symbols",
+          "value": "Beside their own word, never inside a button that does something (Rule 10.1)"
+        }
+      ],
+      "related": [
+        "10",
+        "15"
+      ],
+      "builders": [
+        "When a control needs an icon the utility set lacks, use the word alone and ask the editor; do not borrow a drawing from chapter 10."
+      ]
+    },
+    {
+      "id": "11.15",
+      "title": "Give each error, success and warning its mark and its words.",
+      "rule": [
+        "An error, a success and a warning each take their mark before their words. The error mark is a circle holding an exclamation mark, in the text’s ink, on the pale Error Band with a 4 px red bar, and its words start “Error:” and say how to fix it. The success mark is a check leaving an open circle, in Verdigris, beside what happened. The warning mark is a triangle holding an exclamation mark, in ink, beside the notice, such as the date a record was last checked.",
+        "A field with an error carries the red bar at its left edge and points to its message, and focus moves to the first field to fix. Copy, Search, Filter and Sort write their results to a status line in words."
+      ],
+      "tokens": [
+        "oa.color.state.error.mark.onNewsprint",
+        "oa.color.state.error.band.onNewsprint",
+        "oa.color.state.error.text.onNewsprint",
+        "oa.color.state.success.mark.onNewsprint",
+        "oa.color.state.warning.mark.onNewsprint"
+      ],
+      "why": {
+        "text": [
+          "Each state has a shape and a word, so none rests on color. The error mark draws in ink because Pillar Red measures 2.64 to 1 on the Error Band and 2.96 on Newsprint, under the 3 to 1 a mark needs; in ink it measures 11.89 to 1, and the red bar carries the error’s claim on the view’s red. Verdigris measures 3.37 to 1 on Newsprint."
+        ],
+        "basis": "WCAG 2.2 SC 1.4.1, 1.4.11, 3.3.1 and 4.1.3"
+      },
+      "correct": {
+        "specimen": "s-11-15-correct",
+        "caption": "A sign-up form, live at 360 px. Send it with a field wrong to see the error mark, its words and the red bar, and the red button step down to Charcoal; send it right to see the success mark."
+      },
+      "failure": {
+        "specimen": "s-11-15-failure",
+        "caption": "<strong>Fails Rule 11.15 and WCAG 2.2 SC 1.4.1.</strong> The message is red text beside a cross. The cross means Close, the red text measures 2.96 to 1, and nothing says “Error” or how to fix the entry."
+      },
+      "specs": [
+        {
+          "label": "Error",
+          "value": "The mark in ink on the Error Band, a 4 px Pillar Red bar at the left, “Error:” and the fix",
+          "token": "oa.color.state.error.band.onNewsprint"
+        },
+        {
+          "label": "Field with an error",
+          "value": "A 4 px red bar at its left edge, aria-invalid and aria-describedby to its message",
+          "token": "oa.color.state.error.mark.onNewsprint"
+        },
+        {
+          "label": "Success",
+          "value": "The mark in Verdigris, 3.37 to 1, beside what happened",
+          "token": "oa.color.state.success.mark.onNewsprint"
+        },
+        {
+          "label": "Warning",
+          "value": "The mark in ink, never red, with a 4 px bar in ink; never for an evidence grade or an Illustrative label",
+          "token": "oa.color.state.warning.mark.onNewsprint"
+        },
+        {
+          "label": "Size",
+          "value": "24 px beside a message; 16 px inside a line of text"
+        }
+      ],
+      "files": [
+        "work/build/assets/utility/svg-24/20261110_Utility-Error-24px.svg",
+        "work/build/assets/utility/svg-24/20261110_Utility-Success-24px.svg",
+        "work/build/assets/utility/svg-24/20261110_Utility-Warning-24px.svg"
+      ],
+      "related": [
+        "05",
+        "17"
+      ],
+      "builders": [
+        "Put an error message in <code>role=\"alert\"</code> or in a status line the field points to, and a success or a result in <code>role=\"status\"</code>. Draw the bar as a left border, which stays visible when the system forces its own colors."
+      ]
+    },
+    {
+      "id": "11.16",
+      "title": "When an error, the take-part mark and an intervention marker meet, give the error the red.",
+      "rule": [
+        "Rule 05.3 gives each view one working red, in this order: an error the reader must fix, then the step a reader can take now, then the one point the headline names, which in a systems figure is where a reform acts. So when the three meet in one view, the error keeps the red. The take-part mark yields: its disc draws in the surface’s ink, keeps its place on the ring, and “You can take part now” stays beside it, while the ask button steps down to Charcoal. The intervention marker yields too: its outline stays heavier, in ink, with its words.",
+        "Once the reader fixes the error, the red goes back to the take-part mark and the ask. The intervention marker takes the red only in a view with no error and no step to take."
+      ],
+      "tokens": [
+        "oa.color.state.error.mark.onNewsprint",
+        "oa.component.button.primary.fill.onNewsprint",
+        "oa.component.mark.takePart.disc"
+      ],
+      "why": {
+        "text": [
+          "A reader has to fix an error before taking any step, and a step a reader can take matters more than a point we want to make. Each mark keeps its shape and its words when it yields, so nothing it says is lost; only the color moves."
+        ],
+        "basis": "Rule 05.3; WCAG 2.2 SC 1.4.1"
+      },
+      "correct": {
+        "specimen": "s-11-16-correct",
+        "caption": "One view at 360 px. The email field’s error holds the red. The take-part disc on step 2 and the heavier outline where reform R-01 acts stay in Charcoal with their words, and Remind me is Charcoal until the error is fixed."
+      },
+      "failure": {
+        "specimen": "s-11-16-failure",
+        "caption": "<strong>Fails Rules 11.16 and 05.3.</strong> The error, the take-part mark and the intervention marker all take red, so the error that blocks the reader looks no more urgent than the rest."
+      },
+      "specs": [
+        {
+          "label": "First claim",
+          "value": "An error the reader must fix",
+          "token": "oa.color.state.error.mark.onNewsprint"
+        },
+        {
+          "label": "Second claim",
+          "value": "The step a reader can take now: the take-part mark and the ask",
+          "token": "oa.component.mark.takePart.disc"
+        },
+        {
+          "label": "Third claim",
+          "value": "Where a reform acts: the intervention marker"
+        },
+        {
+          "label": "A mark that yields",
+          "value": "Keeps its shape, its place and its words, in the surface’s ink"
+        },
+        {
+          "label": "The ask while an error shows",
+          "value": "Charcoal primary button",
+          "token": "oa.component.button.primary.fill.onNewsprint"
+        }
+      ],
+      "related": [
+        "05",
+        "12",
+        "15"
+      ],
+      "builders": [
+        "Mark each red with <code>data-red=\"working\"</code> and its <code>data-red-job</code>. When an error appears, move the red: draw the take-part disc and the marker in ink, swap the ask to <code>--oa-component-button-primary-fill-on-newsprint</code>, and swap them back once the error is gone."
+      ]
     }
   ],
   "extras": [
@@ -439,33 +982,27 @@
     },
     {
       "after_rule": "11.5",
-      "specimen": "s-11-list-360-charcoal",
-      "label": "Numbered steps at 360 px on Charcoal",
-      "caption": "The same five bills on Charcoal. The marks turn to Newsprint and Dim Newsprint, and the take-part disc keeps its red."
-    },
-    {
-      "after_rule": "11.5",
-      "specimen": "s-11-list-600-newsprint",
-      "label": "Numbered steps in a 600 px column on Newsprint",
-      "caption": "The wide form, as on a tablet or in a desktop article column. Each step’s name sits under its circle, and the current step’s name is bold."
-    },
-    {
-      "after_rule": "11.5",
       "specimen": "s-11-list-600-charcoal",
       "label": "Numbered steps in a 600 px column on Charcoal",
-      "caption": "The same wide list on Charcoal."
+      "caption": "The wide form, as on a tablet or in a desktop article column, on Charcoal, with two of the bills. Each step’s name sits under its circle, the current step’s name is bold, and the marks turn to Newsprint and Dim Newsprint while the take-part disc keeps its red."
     },
     {
-      "after_rule": "11.6",
-      "specimen": "s-11-page-600-newsprint",
-      "label": "A bill’s page in a 600 px column on Newsprint",
-      "caption": "The steps run the width of the column, and a key after them says what each step means."
+      "after_rule": "11.11",
+      "specimen": "s-11-icons",
+      "label": "The 18 utility icons",
+      "caption": "Every utility icon at its two sizes, with the word that goes beside it."
     },
     {
-      "after_rule": "11.6",
-      "specimen": "s-11-page-360-charcoal",
-      "label": "A bill’s page at 360 px on Charcoal",
-      "caption": "The same page on Charcoal. The ask button keeps its red, which measures 4.49 to 1 on Charcoal and needs no keyline there."
+      "after_rule": "11.12",
+      "specimen": "s-11-menu",
+      "label": "A phone menu, live at 360 px",
+      "caption": "Menu opens the chapter’s contents over the page and holds focus until Close or the Escape key shuts it, and focus then returns to Menu. Each row’s chevron opens its list of rules."
+    },
+    {
+      "after_rule": "11.15",
+      "specimen": "s-11-marks",
+      "label": "The three marks in their messages",
+      "caption": "Error, success and warning at true size, each with its words."
     }
   ],
   "related_chapters": [
@@ -492,6 +1029,17 @@
     {
       "chapter": "19",
       "reason": "Checking a tracker against WCAG 2.2 AA."
+    },
+    {
+      "chapter": "10",
+      "reason": "Topic and atlas symbols, which name subjects and never stand for an action."
     }
+  ],
+  "sources": [
+    "Nebraska Legislature, “Lawmaking in Nebraska”, nebraskalegislature.gov/about/lawmaking.php, retrieved November 9, 2026. Nebraska’s one-chamber route and its steps, behind Rule 11.1.",
+    "Freedom of Information Act, 5 U.S.C. 552, via the Legal Information Institute, Cornell Law School; and FOIA.gov, “Frequently Asked Questions”, run by the Justice Department’s Office of Information Policy, both retrieved November 9, 2026. The steps, the 20 working days and the pauses in them, behind Rules 11.8 and 11.10.",
+    "Office of Information Policy, Justice Department, “Fiscal Year 2024 Annual Freedom of Information Act Report”, March 6, 2025, section III. The categories behind the end words in Rule 11.8.",
+    "Rulemaking, 5 U.S.C. 553, and Congressional review, 5 U.S.C. 801, via the Legal Information Institute; and RegInfo.gov, “Frequently Asked Questions”, the Office of Information and Regulatory Affairs, all retrieved November 9, 2026. The steps of a federal rule, its comment period and when it takes effect, behind Rule 11.9.",
+    "Judicial review, 5 U.S.C. 706, via the Legal Information Institute, retrieved November 9, 2026. A court that sets a rule aside, in Rule 11.9."
   ]
 }

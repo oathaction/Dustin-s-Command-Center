@@ -355,17 +355,87 @@
   "chapter": "08",
   "rule": "08.3",
   "width_px": 358,
-  "alt": "A bill in a tracker list at true size on a 358 pixel phone column: Bill S.0876, School bus contracts, with six numbered steps on a line. Steps 1 to 3 are filled circles, step 4 is a heavy ring marking the step the bill is at, and steps 5 and 6 are fine rings ahead. Under them: Step 4 of 6: First chamber. The committee sent it on, and the Senate votes next. No lockmark sits in the row. Illustrative.",
+  "alt": "A bill in a tracker list at true size on a 358 pixel phone column: Bill S.99002, School bus contracts, with six numbered steps on a line. Steps 1 to 3 are filled circles, step 4 is a heavy ring marking the step the bill is at, and steps 5 and 6 are fine rings ahead. Under them: Step 4 of 6: First chamber. The committee sent it on, and the Senate votes next. No lockmark sits in the row. Illustrative.",
   "illustrative": true,
-  "notes": "Chapter 11 owns these marks (DR-108, DR-109, D2-324); checked against s-11-list-360-charcoal, same geometry. Drawn with the geometry of Board 6's Option B at its 360 px list size (324 px wide, 26 px circles, Inter 13 px numbers), from board6_tracker_build.py's b_node and mk_steps, colored with tokens. S.0876 and its states are Board 6's, invented (DR-97). If chapter 11 changes the marks, this plate follows them."
+  "notes": "Chapter 11 owns these marks (DR-108, DR-109, D2-324). Drawn as chapter 11's 360 px list draws S.99002 in s-11-5-correct: 328 px wide, 26 px circles 60 px apart from edge to edge, Inter 13 px numbers, each mark in a group with its status id and data-icon-family status (D2-517), colored with tokens. The bill is invented and labeled Illustrative, numbered from S.99002 up (DR-151); it was Board 6's S.0876. If chapter 11 changes the marks again, this plate follows them."
  },
  "s-08-3-failure": {
   "chapter": "08",
   "rule": "08.3",
   "width_px": 358,
-  "alt": "Failure case: do not publish. The same bill, S.0876, School bus contracts, drawn on the lockmark’s nine nodes at 40 pixels with four nodes filled to show progress, beside the same words, Step 4 of 6: First chamber. Nine nodes cannot count six steps, and the mark that signs our pages changes from bill to bill. Illustrative.",
+  "alt": "Failure case: do not publish. The same bill, S.99002, School bus contracts, drawn on the lockmark’s nine nodes at 40 pixels with four nodes filled to show progress, beside the same words, Step 4 of 6: First chamber. Nine nodes cannot count six steps, and the mark that signs our pages changes from bill to bill. Illustrative.",
   "illustrative": true,
   "notes": "One retired use (DR-110): tracker progress on the grid, drawn as the stage A Rule 08.5 drew it (40 px lattice on whole pixels, filled 7 px discs for done, 3 px Stone nodes ahead), under the Charcoal failure band (D2-308)."
+ },
+ "s-09-1-correct": {
+  "chapter": "09",
+  "rule": "09.1",
+  "alt": "The pillar row at true size, four times. On Newsprint at 48 pixels, then at 24 pixels; on Charcoal at 48 pixels, then at 24 pixels. Each row reads Explain, Track, Connect, Act, each icon beside its word, joined by arrows, every icon in one color: Explain, three short rays rising from an open book; Track, a route from a map pin to a magnifier; Connect, two overlapping rings; Act, a finger pressing a round control.",
+  "illustrative": false,
+  "notes": "DR-111, R9, D2-439. Each icon from the sprite with data-icon-family pillar: the master at 48 px, and at 24 px the pixel fit under 2x with the master from 2x (DR-179, D2-783). One color, in the surface's icon ink token, since no pillar is current. Words in the intro style, bold, 19 px and 22 px from 48em, beside the 48 px icons, as chapter 01's row sets them, and in body text beside the 24 px icons. Spaced from each icon's ink. A sheet that flows: at 390 px the 48 px rows stack in one column (D2-376)."
+ },
+ "s-09-1-failure": {
+  "chapter": "09",
+  "rule": "09.1",
+  "width_px": 400,
+  "alt": "Failure case: do not publish. The four pillar icons at 24 pixels in a row with no words and no arrows: an open book with rays, a route to a magnifier, two overlapping rings and a finger pressing a round control.",
+  "illustrative": false,
+  "notes": "R9: under 48 px a pillar icon sits with its word. The row without its words, as a toolbar would set it. Failure band per D2-308, since a bare row could pass for our work."
+ },
+ "s-09-phone": {
+  "chapter": "09",
+  "rule": "09.1",
+  "width_px": 406,
+  "alt": "A phone column 358 pixels wide on Newsprint. The 48 pixel pillar row stands in one column, Explain, Track, Connect and Act one under another, each icon beside its word and a downward arrow after each word but the last. Under it, the 24 pixel row runs across two lines, breaking after an arrow.",
+  "illustrative": false,
+  "notes": "D2-376: under 48em the 48 px row stacks in one column with downward arrows, after the creative director's Board 6 review found the phone row dropping its arrow. Drawn at a phone's 358 px text column, so the plate shows the column at every screen width; the rows in Rule 09.1's sheet take the same form at 390 px."
+ },
+ "s-09-2-correct": {
+  "chapter": "09",
+  "rule": "09.2",
+  "alt": "The pillar row with Track as the current pillar, three times at true size. On Newsprint at 48 pixels, the word Track is underlined and Track’s icon keeps its red parts, the map pin and the magnifier’s handle; the other icons are one color. At 24 pixels every icon is one color, and the word Track is bold and underlined. On Charcoal at 48 pixels, the word Track is underlined and its icon keeps its red.",
+  "illustrative": false,
+  "notes": "DR-111, DR-66, R10, D2-497, WCAG 2.2 SC 1.4.1. The underline marks the current pillar at every size; from 48 px the current icon also sets --oa-icon-accent to the surface's icon accent token, signature red (Rule 05.3), and carries data-red signature. The 24 px row sets no accent (D2-785). aria-current on the current item."
+ },
+ "s-09-2-failure": {
+  "chapter": "09",
+  "rule": "09.2",
+  "width_px": 600,
+  "alt": "Failure case: do not publish. The 48 pixel pillar row on Newsprint with Track’s icon in red and no word underlined, so only the red says which pillar is current.",
+  "illustrative": false,
+  "notes": "Color alone marks the current pillar (WCAG 2.2 SC 1.4.1). Failure band per D2-308."
+ },
+ "s-09-3-correct": {
+  "chapter": "09",
+  "rule": "09.3",
+  "width_px": 600,
+  "alt": "The four pillar icons at true size at 16, 24, 48 and 96 pixels, one row per pillar with its word first: Explain, Track, Connect and Act, every icon in one color. At 16 and 24 pixels each is a pixel fit, a 1 pixel line drawn on whole pixels. Below, Track’s 16 and 24 pixel fits as a standard screen draws them, enlarged four times, every pixel full or empty.",
+  "illustrative": false,
+  "notes": "DR-133, DR-179, D2-634, D2-808. From the sprite: the 16 px fit, the 24 px pattern (the fit under 2x, the master from 2x) and the master at 48 and 96 px, one color. The enlarged views are PNG renders at 1x of the fit files in pillar-icons/svg/, scaled four times in square pixels; each plate's word sits in the first column, so every icon under 48 px keeps its word beside it (R9). Marks at true size are graphics, so the 13 px floor applies to the words only."
+ },
+ "s-09-3-failure": {
+  "chapter": "09",
+  "rule": "09.3",
+  "width_px": 400,
+  "alt": "Failure case: Track’s master scaled to 16 pixels beside the word Track, next to the 16 pixel fit beside the same word, at true size and enlarged four times. Scaled down, the master’s lines fall under a pixel and draw gray, and the magnifier’s lens and the route’s turns blur together; the fit draws each line as one full pixel.",
+  "illustrative": false,
+  "notes": "The master (civic-line-v6/black) at 16 px from the sprite, as a producer would drag it into a menu, beside the fit. The enlarged views are PNG renders at 1x, scaled four times in square pixels."
+ },
+ "s-09-4-correct": {
+  "chapter": "09",
+  "rule": "09.4",
+  "width_px": 600,
+  "alt": "Two pieces at true size, both Illustrative. First, Track’s section opener: a Charcoal panel with Track’s icon at 128 pixels in Newsprint lines with its red map pin and magnifier handle, then the word Track, the line Watch the vote. in large heavy type, and Track’s job: Follow the decision and keep its record within reach. Second, a card that leads to Track’s section: Track’s icon on a rounded Charcoal tile at 76 pixels, in Newsprint and red, beside the word Track and the same job line.",
+  "illustrative": true,
+  "notes": "DR-112, DR-138, R11, R13, D2-42. The opener follows Board 6's: a Charcoal panel, as the guide's part openers are, with the master at 128 px from the sprite in the Newsprint ink and its accent token, standalone, so signature red. Watch the vote. is the line our fifth edition set on its pillar plate. The tile is the Civic Line package's rounded two-color Charcoal tile (civic-line/tiles/rounded-charcoal/svg, the file the set in use points to, D2-716) at its 76 px minimum (D2-42), placed as an image. The job line is chapter 01's, word for word."
+ },
+ "s-09-4-failure": {
+  "chapter": "09",
+  "rule": "09.4",
+  "width_px": 406,
+  "alt": "Failure case: do not publish. An Illustrative report card whose kicker opens with Track’s pillar icon at 24 pixels, then the label Report and the topic State legislatures, over the headline How state committees record their votes.",
+  "illustrative": true,
+  "notes": "DR-112: a kicker keeps its content label and words, and a pillar icon never enters it (Rule 01.21). The icon is drawn as a 24 px pillar icon should be, so the only fault is where it stands. The headline is chapter 01's invented Report example. Failure band per D2-308."
  },
  "s-proofs-masthead": {
   "chapter": "proofs",
@@ -399,7 +469,7 @@
   "width_px": 864,
   "alt": "A US Letter letterhead at true size on screen, 8.5 by 11 inches: a line in the top margin saying the address, recipient and letter are invented; the wordmark at top left; a return address at top right; a records request to the town clerk of Wrenfield signed by Dustin Cathcart, Founder and Editor; and a footer with the lockmark at 24 pixels followed by the tagline. A link downloads the one-page print proof.",
   "illustrative": true,
-  "notes": "A print piece set in points (D2-205): 11 pt body, 10 pt address, slug and footer, so check_exempt scale. 96 CSS px to the inch, so the sheet is 816 by 1056 px. Display master at 26 px tall, as a print piece places it. Footer: the lockmark at 24 px, 12 px, then the tagline, at the footer's left edge, the footer place as Rule 08.2 now draws it (CA-S10). interactive: the stage holds the PDF link. On screen the footer draws the rebuilt 24 px master in use since November 10, 2026, each node and the lever one outline (DR-181). The print proof the link downloads, work/boards/phase-2/stage-a/proofs/20261107_Letterhead-Proof.pdf, was printed on November 7 with the earlier 24 px file, which draws the same pixels at 24 px; it is not printed again in the promotion, since the proofs folder sits with the boards.",
+  "notes": "A print piece set in points (D2-205): 11 pt body, 10 pt address, slug and footer, so check_exempt scale. 96 CSS px to the inch, so the sheet is 816 by 1056 px. Display master at 26 px tall, as a print piece places it. Footer: the lockmark at 24 px, 12 px, then the tagline, at the footer's left edge, the footer place as Rule 08.2 now draws it (CA-S10). interactive: the stage holds the PDF link. The footer draws the rebuilt 24 px master in use since November 10, 2026, each node and the lever one outline (DR-181), on screen and in the print proof the link downloads, work/boards/phase-2/stage-a/proofs/20261110_Letterhead-Proof.pdf, printed November 10 (D2-809). The November 6 and 7 proofs stay beside it as the record.",
   "interactive": true,
   "fit_switch": true,
   "check_exempt": [

@@ -192,36 +192,39 @@ def s_08_2_failure():
 
 
 # ------------------------------------------------------------------------------------------- 08.3
-BILL = ("Bill S.0876", "School bus contracts")
-BILL_STATES = ["done", "done", "done", "now", "notyet", "notyet"]          # Board 6's S.0876, at step 4 of 6
+# Round 2 (DR-151): invented state bills renumbered from H.99001 and S.99002 up and labeled Illustrative. Board 6's S.0876
+# is chapter 11's S.99002, School bus contracts, at step 4 of 6 (apply_systems_ch11.py, LIST_BILLS).
+BILL = ("Bill S.99002", "School bus contracts")
+BILL_STATES = ["done", "done", "done", "now", "notyet", "notyet"]
 BILL_WORDS = ("Step 4 of 6: First chamber.", "The committee sent it on, and the Senate votes next.")
 
 
 def _bill_card(mark_html, gap=12):
-    return (f'<div class="oai-s-newsprint" style="width:{PHONE}px;padding:16px 16px 18px;border:1px solid {hair("newsprint")}">'
+    return (f'<div class="oai-s-newsprint" style="width:{PHONE}px;padding:16px 15px 18px;border:1px solid {hair("newsprint")}">'
             f'{head_label()}<p style="{ty("body")};margin:0 0 {gap}px"><b>{E(BILL[0])}</b>, {E(BILL[1])}</p>{mark_html}'
             f'<p style="{ty("body-small")};margin-top:10px"><b>{E(BILL_WORDS[0])}</b> {E(BILL_WORDS[1])}</p></div>')
 
 
 @spec
 def s_08_3_correct():
-    body = f'<div>{_bill_card(steps(BILL_STATES, 324, 26))}</div>'
-    alt = ("A bill in a tracker list at true size on a 358 pixel phone column: Bill S.0876, School bus contracts, with six "
+    body = f'<div>{_bill_card(steps(BILL_STATES, 328, 26, flush=True, tag=True))}</div>'
+    alt = ("A bill in a tracker list at true size on a 358 pixel phone column: Bill S.99002, School bus contracts, with six "
            "numbered steps on a line. Steps 1 to 3 are filled circles, step 4 is a heavy ring marking the step the bill is at, "
            "and steps 5 and 6 are fine rings ahead. Under them: Step 4 of 6: First chamber. The committee sent it on, and the "
            "Senate votes next. No lockmark sits in the row. Illustrative.")
     return rec("s-08-3-correct", "08.3", PHONE, alt, body, illustrative=True,
-               notes="Chapter 11 owns these marks (DR-108, DR-109, D2-324); checked against s-11-list-360-charcoal, same geometry. Drawn with the geometry of Board 6's Option B at its 360 px "
-                     "list size (324 px wide, 26 px circles, Inter 13 px numbers), from board6_tracker_build.py's b_node and mk_steps, "
-                     "colored with tokens. S.0876 and its states are Board 6's, invented (DR-97). If chapter 11 changes the marks, this "
-                     "plate follows them.")
+               notes="Chapter 11 owns these marks (DR-108, DR-109, D2-324). Drawn as chapter 11's 360 px list draws S.99002 in "
+                     "s-11-5-correct: 328 px wide, 26 px circles 60 px apart from edge to edge, Inter 13 px numbers, each mark in a "
+                     "group with its status id and data-icon-family status (D2-517), colored with tokens. The bill is invented and "
+                     "labeled Illustrative, numbered from S.99002 up (DR-151); it was Board 6's S.0876. If chapter 11 changes the "
+                     "marks again, this plate follows them.")
 
 
 @spec
 def s_08_3_failure():
     g = sgrid(40, nodes=progress(4), decorative=True)
     body = f'<div style="width:{PHONE}px">{dnp()}{_bill_card(g)}</div>'
-    alt = ("Failure case: do not publish. The same bill, S.0876, School bus contracts, drawn on the lockmark's nine nodes at 40 "
+    alt = ("Failure case: do not publish. The same bill, S.99002, School bus contracts, drawn on the lockmark's nine nodes at 40 "
            "pixels with four nodes filled to show progress, beside the same words, Step 4 of 6: First chamber. Nine nodes cannot "
            "count six steps, and the mark that signs our pages changes from bill to bill. Illustrative.")
     return rec("s-08-3-failure", "08.3", PHONE, alt, body, illustrative=True,

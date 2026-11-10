@@ -462,14 +462,17 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
     notes = [  # (text lines, target in units, label baseline)
         (['128-unit box'], (128, 0), 30),
         (['116 units: the most', 'a drawing fills'], (122, 24), 110),
-        (['Line 3.35 units, with', 'round ends and corners'], (82.39, 64), 226),
-        (['One red part: the door'], (70.74, 90), 330),
+        (['Line 3.35 units, with', 'round ends and corners'], (111.48, 80), 266),
+        (['One red part: the door'], (63.54, 92), 330),
     ]
     lead, labels = [], []
     for lines, (ux, uy), ly in notes:
         tx, ty = X0 + ux * S3, Y0 + uy * S3
-        lead.append(f'<path class="ld" d="M{AX - 6} {ly - 5}H{AX - 14}L{tx + 3:.1f} {ty:.1f}"/>'
-                    f'<circle class="dt" cx="{tx:.1f}" cy="{ty:.1f}" r="2.5"/>')
+        if ux < 100:   # the door: run under the ground line, then up into the door, clear of the walls
+            d = f'M{AX - 6} {ly - 5}H{tx:.1f}V{ty:.1f}'
+        else:
+            d = f'M{AX - 6} {ly - 5}H{AX - 14}L{tx + 3:.1f} {ty:.1f}'
+        lead.append(f'<path class="ld" d="{d}"/><circle class="dt" cx="{tx:.1f}" cy="{ty:.1f}" r="2.5"/>')
         labels.append(''.join(f'<text class="nt" x="{AX}" y="{ly + 18 * n}">{esc(s)}</text>' for n, s in enumerate(lines)))
     row_y = Y0 + big + 40
     xx, row = X0, []
@@ -486,14 +489,14 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
     css = (k.vars() + '.con{display:block}'
            '.bx{fill:none;stroke:var(--strong);stroke-width:1}.gl{stroke:var(--hair);stroke-width:1}'
            '.fz{fill:none;stroke:var(--strong);stroke-width:1;stroke-dasharray:4 4}'
-           '.ld{fill:none;stroke:var(--t1);stroke-width:1}.dt{fill:var(--t1)}'
+           '.ld{fill:none;stroke:var(--t1);stroke-width:1}.dt{fill:var(--t1);stroke:var(--oa-color-surface-newsprint);stroke-width:1}'
            '.nt{fill:var(--t1);font-family:var(--oa-font-family-reading);font-size:0.8125rem;font-weight:600}'
            '.nt2{fill:var(--t2);font-family:var(--oa-font-family-reading);font-size:0.8125rem;font-weight:400}')
     figs['construction line px'] = {s: round(line_px(u_cap, s), 2) for s in (24, 48, 64, 96, 128)}
     ctx.spec('s-10-2-correct', f'<style>{css}</style>{svg}', CH, '10.2',
              f'{word(rows["CL-031"])} drawn at three times its 128 px master on its 128-unit box, with a grid every 16 '
              'units. A dashed square marks the 116 units a drawing may fill. Notes point to the box, to the dashed square, '
-             'to the right wall of the central block, whose line is 3.35 units wide with round ends and corners, and to the '
+             'to the outer wall of the right wing, whose line is 3.35 units wide with round ends and corners, and to the '
              'door, the one red part. Below, the same drawing at true size: 128 px with a 3.35 px line, 64 px with a '
              '1.68 px line and 48 px with a 1.26 px line.',
              width=600, height=H, notes='The drawing is CL-031 from the sprite (D2-590); keylines from the construction file.')

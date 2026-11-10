@@ -518,11 +518,16 @@ def _step_node(cx, cy, d, st, num, surface):
     raise ValueError(st)
 
 
-def steps(states, W=324, d=26, surface="newsprint"):
+STEP_ICON = {"done": "S-done", "now": "S-now", "notyet": "S-not-yet"}      # chapter 11's status ids (D2-517)
+
+
+def steps(states, W=324, d=26, surface="newsprint", flush=False, tag=False):
     """Six numbered steps on a line: solid 2 px where the bill has come, a fine line ahead. Hidden from assistive
-    technology; the words beside it carry the step."""
+    technology; the words beside it carry the step. flush sets the first and last circles at the edges, as chapter 11's
+    lists draw them (360 px list: W 328, circles 60 px apart); tag wraps each mark in a group with its status id and
+    data-icon-family, as chapter 11 does (round 2)."""
     c = W // 6
-    xs = [c * i + c // 2 for i in range(6)]
+    xs = [d / 2 + i * (W - d) / 5 for i in range(6)] if flush else [c * i + c // 2 for i in range(6)]
     R = d / 2
     cy = 6 + R
     H = int(cy + R + 2)
@@ -532,7 +537,10 @@ def steps(states, W=324, d=26, surface="newsprint"):
             body.append(f'<rect x="{xs[i]:g}" y="{cy - 1:g}" width="{xs[i + 1] - xs[i]:g}" height="2" fill="{g_ess(surface)}"/>')
         else:
             body.append(f'<rect x="{xs[i]:g}" y="{cy - 1:g}" width="{xs[i + 1] - xs[i]:g}" height="1" fill="{g_sub(surface)}"/>')
-    body += [_step_node(x, cy, d, s, i + 1, surface) for i, (x, s) in enumerate(zip(xs, states))]
+    nodes = [_step_node(x, cy, d, s, i + 1, surface) for i, (x, s) in enumerate(zip(xs, states))]
+    if tag:
+        nodes = [f'<g data-icon="{STEP_ICON[s]}" data-icon-family="status">{n}</g>' for n, s in zip(nodes, states)]
+    body += nodes
     return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" class="oai-svg" '
             f'aria-hidden="true" focusable="false">{"".join(body)}</svg>')
 

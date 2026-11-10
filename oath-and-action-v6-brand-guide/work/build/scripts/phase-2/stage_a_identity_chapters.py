@@ -164,7 +164,7 @@ CH03 = {
                  S("L3", "196 px wide; 1.55 in"),
                  S("L8", "48 px wide; 0.50 in; never a favicon"),
                  S("Ampersand B and the lockmark", "16 px; 0.25 in"),
-                 S("End mark", f"Ampersand B at the text's cap height, under 16 px in body text. On a 1x screen it is drawn on whole pixels, {_F17[0]} px tall in 17 px text and {_F15[0]} px in 15 px text (Rule 04.6)"),
+                 S("End mark", f"Ampersand B at the text's cap height, under 16 px in body text. On a 1x screen it is drawn on whole pixels, {_F17[0]} px tall in 17 px text and {_F15[0]} px in 15 px text. Every denser screen, 1.25x and 1.5x included, takes the 16 px master, since there the pixel master's edges fall between device pixels and soften (Rule 04.6)"),
                  S("Hinge-circle badge", "48 px; 0.50 in (Rule 04.6)"),
                  S("L4 to L7", "Their minimums are in Rule 03.2's specifications"),
                  S("Favicon", "Ampersand B's 16 px master at 16 px")],

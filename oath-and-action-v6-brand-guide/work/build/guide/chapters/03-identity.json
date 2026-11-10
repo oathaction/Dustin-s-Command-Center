@@ -232,7 +232,7 @@
     },
     {
      "label": "End mark",
-     "value": "Ampersand B at the text’s cap height, under 16 px in body text. On a 1x screen it is drawn on whole pixels, 13 px tall in 17 px text and 11 px in 15 px text (Rule 04.6)"
+     "value": "Ampersand B at the text’s cap height, under 16 px in body text. On a 1x screen it is drawn on whole pixels, 13 px tall in 17 px text and 11 px in 15 px text. Every denser screen, 1.25x and 1.5x included, takes the 16 px master, since there the pixel master’s edges fall between device pixels and soften (Rule 04.6)"
     },
     {
      "label": "Hinge-circle badge",

@@ -158,8 +158,10 @@ async function capture() {
       const box = await page.evaluate((sel) => { const r = document.querySelector(sel).getBoundingClientRect(); return { x: r.left - 2, y: r.top + scrollY - 12, width: r.width + 4, height: r.height + 24 }; }, d.selector);
       await page.screenshot({ path: path.join(IMG, `drawing-${k.toLowerCase()}-${W}.png`), clip: box, fullPage: true });
       // the words printed on the drawing must still match the choices (System 1's finishing pass, DR-121)
-      const words = await page.evaluate((sel) => document.querySelector(sel).textContent.replace(/\s+/g, ' '), d.selector);
-      for (const b of LOOP_WORDS[k].boxes) if (!words.includes(b)) throw new Error(`${k}: the drawing no longer prints "${b}"`);
+      // the drawing breaks box names over lines, so the words are compared with their spaces taken out
+      const words = await page.evaluate((sel) => document.querySelector(sel).textContent.replace(/\s+/g, ''), d.selector);
+      for (const b of LOOP_WORDS[k].boxes) if (!words.includes(b.replace(/\s+/g, ''))) throw new Error(`${k}: the drawing no longer prints "${b}"`);
+      for (const s of LOOP_WORDS[k].steps) if (!words.includes(s.label.replace(/^(Top|Right|Left) arrow, /, '').replace(/\s+/g, ''))) throw new Error(`${k}: the drawing no longer prints "${s.label}"`);
       log.push([k, W, box.width]);
     }
     // the charts, as in the first check; each title is read so the key can say whether it changed since November 6
@@ -322,7 +324,7 @@ function build() {
   // names; and "party" outside the questions and choices that ask about party.
   const banned = [...v.icons.flatMap((ic) => [ic.label, ic.word, ic.id]), 'Expand the House', 'R-46', 'end mark', 'lockmark', 'pillar', 'Pillar Red', 'Ranked', 'Local news', 'Local Reporting', 'Political Money', 'Essential Costs', 'Cost of essentials'].filter(Boolean);
   for (const w of banned) if (html.toLowerCase().includes(w.toLowerCase())) throw new Error(`the page names "${w}"`);
-  const partyOk = ['Does it seem to favor a party or side?', 'Does this card seem to favor a party or side?', 'Does this drawing seem to favor a party or side?', 'Seats one party holds', 'It shows a party or side', 'It marks one party'];
+  const partyOk = ['Does it seem to favor a party or side?', 'Does this card seem to favor a party or side?', 'Does this drawing seem to favor a party or side?', 'Seats one party holds', 'It shows a party or side', 'It marks one party', "['party', "];   // the last is the choices' code, which the editor names for the record
   let rest = html; for (const ok of partyOk) rest = rest.split(ok).join('');
   if (/part(y|ies)\b/i.test(rest)) throw new Error('the page says "party" outside the questions that ask about it: ' + rest.match(/.{40}part(y|ies)\b.{20}/i)[0]);
   if (/Oath\s*(&|&amp;|and)\s*Action/i.test(html)) throw new Error('page text names the brand');
@@ -371,7 +373,7 @@ function build() {
     steps_names: { stimulus: 'the same list', question: 'clear', right: ['all', 'most'], follow_up: { which: { shown_after: ['most', 'few', 'unsure'], pass: 'none (optional)' } }, why: 'DR-108 gave the tracker six plain step names in place of nine stages. This is the first time a reader outside the studio judges them.' },
     marks: v.marks.map((m) => ({ code: m.code, file: m.src, file_2x: m.src2x || null, mark: m.name, size_px: `${m.w} by ${m.h}`, source: m.source, source_2x: m.source2x || null, pass: 'clear' })),
     marks_note: 'One color, Charcoal #121212 on Newsprint, at true CSS size, in two rows, 16 px then 24 px. m9 to m12 draw fit B on screens under 2 device pixels per CSS pixel and the master from 2, as the guide does; the record\'s device_pixel_ratio says which drawing each reader saw. A mark half the readers call blurry or can\'t tell goes to the identity designer with each reader\'s screen sharpness.',
-    lockmark_24: { stimulus: v.foot.src + ', the rebuilt 24 px master with its red lever and Stone links, beside the footer line "' + FOOT_TEXT + '" at phone width on Newsprint', source: v.foot.source, look_seconds: 10, question: 'seen', right: 'dots', partial: [], shuffled: 'the first three', why: 'DR-145 rebuilt the 24 px master so each node and the lever draw as one outline, because the old file could part into stripes. This asks whether readers see the grid of nodes it is meant to show.' },
+    foot_24: { editor_code: 'lockmark_24 (the page records it as foot_24, since the page may not print the word lockmark)', stimulus: v.foot.src + ', the rebuilt 24 px master with its red lever and Stone links, beside the footer line "' + FOOT_TEXT + '" at phone width on Newsprint', source: v.foot.source, look_seconds: 10, question: 'seen', right: 'dots', partial: [], shuffled: 'the first three', why: 'DR-145 rebuilt the 24 px master so each node and the lever draw as one outline, because the old file could part into stripes. This asks whether readers see the grid of nodes it is meant to show.' },
     end_17: { stimulus: 'The two lines below in 17 px Inter on Newsprint at the phone column\'s width, with ampersand B half an em after the final period in the text\'s ink, at the text\'s cap height: fit B at 14 px (13 by 13) at exactly 1 device pixel per CSS pixel, the 16 px master at 12.37 by 14.13 elsewhere (s-04-6-correct, Rule 04.6, DR-180)', text: ARTICLE, text_source: 'Atlas V7, pathway PW03, short answer, sentences 2 and 3, word for word (checked at build)', sources: v.ends[0],
       questions: { meaning: { right: 'ends', partial: ['sign'], shuffled: 'the first four' }, clear: { right: ['clear', 'barely'] }, sits: { right: 'fits', partial: [], shuffled: 'the first three' } },
       why: 'DR-130 set the end mark at the text\'s cap height because B at 16 px read louder than the line it ends, and DR-142 and DR-180 drew it on whole pixels at 14 and 12 px so its edges stay crisp. These questions ask whether readers see it, whether it sits quietly, and whether they read it as the end.' },
@@ -384,7 +386,7 @@ function build() {
       path: FIRST_KEY.record_fields.path.replace('reader-check', 'reader-check-2'),
       run: 'initials, mode ("saved" or "copy"), mode_note, started_at, finished_at (ISO, UTC), viewport_width, device_pixel_ratio (window.devicePixelRatio at the start), resumed, position, orders, items',
       orders: 'loops, icons (i codes in order), charts, pairs (per pair: which of A and B was the before), choices (for each question that shuffles its choices, the codes in the order shown)',
-      items: 'overview, loop_r10, loop_b4, icon_i1 to icon_i4, red_card (favors, why), house (red, favors), row_24 (current), row_48 (current, red), steps_slash (meaning), steps_square (meaning), steps_dot (meaning), steps_list (take_part), steps_names (clear, which), marks (m1 to m12), lockmark_24 (seen), end_17 (meaning, clear, sits), end_15 (clear, sits), chart_S02, chart_S11, chart_S14, pair_W02, pair_W10, pair_W11. Each: show_again, shown_seconds, again_seconds, interrupted, load_failed, questions: { <q>: { answer, seconds, skipped } }. A follow-up that was not asked is absent.',
+      items: 'overview, loop_r10, loop_b4, icon_i1 to icon_i4, red_card (favors, why), house (red, favors), row_24 (current), row_48 (current, red), steps_slash (meaning), steps_square (meaning), steps_dot (meaning), steps_list (take_part), steps_names (clear, which), marks (m1 to m12), foot_24 (seen; the editor\'s lockmark_24), end_17 (meaning, clear, sits), end_15 (clear, sits), chart_S02, chart_S11, chart_S14, pair_W02, pair_W10, pair_W11. Each: show_again, shown_seconds, again_seconds, interrupted, load_failed, questions: { <q>: { answer, seconds, skipped } }. A follow-up that was not asked is absent.',
     },
   };
   fs.writeFileSync(KEY, JSON.stringify(key, null, 1) + '\n');

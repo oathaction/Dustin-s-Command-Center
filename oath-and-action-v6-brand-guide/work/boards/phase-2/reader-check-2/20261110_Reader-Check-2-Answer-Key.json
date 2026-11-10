@@ -1,0 +1,558 @@
+{
+ "title": "Combined reader check answer key",
+ "date": "November 10, 2026",
+ "page": "work/boards/phase-2/reader-check-2/20261110_Reader-Check-2.html",
+ "questions": "work/handoffs/phase-2/20261110_Reader-Check-2-Questions.md (the editor)",
+ "private": "Never publish this file with the page. The page carries neutral codes only (i1 to i4, m1 to m12).",
+ "group_reading": "For each question: how many readers chose each answer, and what they typed. A question needs a look when fewer than half the readers who answered it pass. Any reader who reads a party into a drawing or a page goes to Dustin with their own words, whatever the count.",
+ "overview": {
+  "image": "img/drawing-overview-390.png and -360.png: System 1 overview kicker, headline \"Who do they answer to?\", deck and whole-system phone drawing",
+  "purpose_pass": "Names who officials answer to, or how economic and public life connect (civic education memo, section 7, Q1). A party or a single issue fails.",
+  "open_first": "No right answer. The choices are the eight parts as the drawing prints them, in its order."
+ },
+ "loops": {
+  "r10": {
+   "loop": "R10, Safe-seat loop (V7), reinforcing, \"feeds itself\"",
+   "drawing": "System 1 phone drawing from the R10 loop close-up, with reform R-01's targets in the working red",
+   "image": "img/drawing-r10-390.png and img/drawing-r10-360.png",
+   "comes_back": {
+    "answer": "yes",
+    "why": "Four steps run C1 to C2 to C3 to C4 and step 4 (L42) returns to Safe seats."
+   },
+   "feeds_or_pushes": {
+    "answer": "feeds",
+    "why": "Two plus and two minus signs: an even number of minus signs makes the loop reinforcing."
+   },
+   "least_certain": {
+    "answer": "step3",
+    "why": "Step 3, L53 \"Officials safe from defeat write rules for themselves\", graded plausible and drawn dashed; the drawing prints \"weakest step\" under it. Steps 1 and 4 are documented, step 2 well supported."
+   },
+   "reform_acts": {
+    "answer": "Seats settled in the primary",
+    "partial": [
+     "Safe seats",
+     "Risk of losing office"
+    ],
+    "why": "R-01 (all-party primaries) targets L08, L25 and C2; the red marks are arrow 1, arrow 2 and the box \"Seats settled in the primary\". Safe seats and Risk of losing office each touch one red arrow. The drawing shows no key, so this question tests whether red reads as \"where a reform acts\" without one; the loop page sets the key line above the drawing."
+   }
+  },
+  "b4": {
+   "loop": "B4, Accountability loop (V7), balancing, \"pushes back\"",
+   "drawing": "System 1 phone drawing from the \"All loops\" catalog card; the catalog draws no reform marks",
+   "image": "img/drawing-b4-390.png and img/drawing-b4-360.png",
+   "comes_back": {
+    "answer": "yes",
+    "why": "Three steps: L23 runs from Quality of public services to Risk of losing office, L24 to Incumbents defeated, and L54 returns to Quality of public services."
+   },
+   "feeds_or_pushes": {
+    "answer": "pushes",
+    "why": "One minus sign (L23, \"lowers\") and two plus signs: an odd number of minus signs makes the loop balancing. A reader who answers \"feeds itself\" here is guessing or reading the plus signs alone."
+   },
+   "least_certain": {
+    "answer": "same",
+    "why": "All three steps, L23, L24 and L54, are graded well supported and drawn with the same solid line; no weakest step is marked."
+   },
+   "reform_acts": {
+    "answer": "none",
+    "why": "Four reforms aim at B4 (R-01, R-02, R-06 and R-07), but the catalog drawing shows no reform marks. A reader who names a box is reading in a reform the drawing does not show."
+   }
+  },
+  "choice_values": "least_certain: step1 to step4 (R10), or top, right and left (B4), \"same\" for \"They look about the same\", \"unsure\" for \"Not sure\". reform_acts: the box name as printed, \"none\" for \"No reform is shown\", \"unsure\".",
+  "words_check": "The box words the choices quote were read from today's drawings when the page was built, and all match."
+ },
+ "icons": [
+  {
+   "code": "i1",
+   "file": "img/icon-1.svg",
+   "id": "CL-032",
+   "chapter_10_label": "Local news supply",
+   "civic_line_word": "Local Reporting",
+   "meaning": "A folded newspaper with a story block in its corner shows the reporters and newsrooms that cover local decisions.",
+   "source": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-032-Local-Reporting-Black.svg",
+   "pass": "Names local news, a local paper or reporters",
+   "partly": "Names news or a newspaper in general"
+  },
+  {
+   "code": "i2",
+   "file": "img/icon-2.svg",
+   "id": "CL-063",
+   "chapter_10_label": "Cost of essentials",
+   "civic_line_word": "Essential Costs",
+   "meaning": "A grocery bag and a price tag sit in front of a house, for what households pay for necessities such as housing, groceries and insurance.",
+   "source": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-063-Essential-Costs-Black.svg",
+   "pass": "Names what everyday needs cost a household, such as groceries or bills",
+   "partly": "Names shopping, prices or groceries alone"
+  },
+  {
+   "code": "i3",
+   "file": "img/icon-3.svg",
+   "id": "R-02",
+   "chapter_10_label": "Ranked-choice voting for single-winner races",
+   "civic_line_word": "Ranked-Choice Voting",
+   "meaning": "A ballot that ranks three candidates in order stands for voters ranking candidates by preference in a race with one winner.",
+   "source": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-02-Ranked-Choice-Voting-Black.svg",
+   "pass": "Names ranking candidates or ranked or numbered choices on a ballot",
+   "partly": "Names voting or a ballot alone"
+  },
+  {
+   "code": "i4",
+   "file": "img/icon-4.svg",
+   "id": "CL-015",
+   "chapter_10_label": "Money in politics",
+   "civic_line_word": "Political Money",
+   "meaning": "A path carries money from a dollar coin into a ballot box, for campaign gifts, outside spending and paid lobbying used to sway public decisions.",
+   "source": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-015-Political-Money-Black.svg",
+   "pass": "Names money going into politics or elections, such as campaign money or donations",
+   "partly": "Names money or voting alone"
+  }
+ ],
+ "symbols_in_use": [
+  "CL-032",
+  "CL-063",
+  "R-02",
+  "CL-015"
+ ],
+ "red_card": {
+  "stimulus": "img/card.png, the link card face from the guide's proofs (s-proofs-social), 1200 by 630, shown 358 px wide on a 390 px phone and 328 px on a 360 px phone, Newsprint",
+  "look_seconds": 10,
+  "questions": {
+   "favors": {
+    "right": "no",
+    "to_dustin": [
+     "left",
+     "right"
+    ],
+    "partial": [],
+    "why": "Pillar Red stays the lead color (DR-114), and red is the color many readers link to one party. The card is the brand at its most common size in a reader's day, with red in two places and nothing about party in its words."
+   },
+   "why": {
+    "shown_after": [
+     "left",
+     "right",
+     "unsure"
+    ],
+    "pass": "none (optional)",
+    "finding": "A Yes or Not sure whose follow-up names the red, the color or the ampersand is the finding DR-114 asks for."
+   }
+  }
+ },
+ "house": {
+  "stimulus": "img/drawing-5.svg, R-46 Expand the House of Representatives, Red Black edition, 96 px, Newsprint, no label",
+  "source": "work/build/assets/civic-line-v6/red-black/20261029_Oath-And-Action-Civic-Line-R-46-Expand-The-House-Red-Black.svg",
+  "look_seconds": 10,
+  "questions": {
+   "red": {
+    "right": "added",
+    "partial": [],
+    "to_dustin": [
+     "party"
+    ],
+    "shuffled": "the first four",
+    "why": "DR-152 keeps R-46 as drawn and asks this check whether readers take its red seats, at one side of a chamber, as a party's. Chapter 10 always sets R-46 beside its label, \"Expand the House of Representatives\", so showing it bare is the hard case: a pass here holds for the page."
+   },
+   "favors": {
+    "right": "no",
+    "to_dustin": [
+     "left",
+     "right"
+    ],
+    "why": "As red_card:favors, for a drawing with red on one side."
+   }
+  }
+ },
+ "row_24": {
+  "stimulus": "The compact row under 48 px at phone width: the four icons at 24 px, one color, each with its word, Explain, Track, Connect, Act joined by arrows; Connect bold and underlined; no red. Fit B under 2 device pixels per CSS pixel, the master from 2 (DR-179, the guide's switch)",
+  "sources": [
+   {
+    "fit24": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-019-Explain-24px-Black.svg",
+    "master": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-019-Explain-Black.svg",
+    "two": null
+   },
+   {
+    "fit24": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-020-Track-24px-Black.svg",
+    "master": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-020-Track-Black.svg",
+    "two": "work/build/assets/civic-line-v6/red-black/20261029_Oath-And-Action-Civic-Line-CL-020-Track-Red-Black.svg"
+   },
+   {
+    "fit24": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-021-Connect-24px-Black.svg",
+    "master": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-021-Connect-Black.svg",
+    "two": null
+   },
+   {
+    "fit24": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-022-Act-24px-Black.svg",
+    "master": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-022-Act-Black.svg",
+    "two": null
+   }
+  ],
+  "look_seconds": 10,
+  "questions": {
+   "current": {
+    "right": "Connect",
+    "partial": [],
+    "why": "Chapter 09 marks the current pillar by underlining its word at every size, with no red under 48 px (DR-111, R10). This asks whether the underline alone tells a reader where they are."
+   }
+  }
+ },
+ "row_48": {
+  "stimulus": "The section opener at 48 px, stacked in one column, Track underlined and Track's icon in its Red Black edition (the pin and the magnifier's handle); the others one color",
+  "look_seconds": 10,
+  "questions": {
+   "current": {
+    "right": "Track",
+    "partial": []
+   },
+   "red": {
+    "right": "current",
+    "partial": [],
+    "to_dustin": [
+     "party"
+    ],
+    "shuffled": "the first four",
+    "why": "From 48 px, red on the current icon is a second sign beside the underline (DR-111, DR-133). This asks whether readers take that red to mean \"you are here\"."
+   }
+  }
+ },
+ "steps_slash": {
+  "stimulus": "img/bills-row-1.png: the row for Records request fees (H.99004) from s-11-5-correct, alone: 1 done, 2 never happened (slash), 3 done, 4 now, 5 and 6 not yet",
+  "question": "meaning",
+  "right": "skipped",
+  "partial": [],
+  "shuffled": "the first four",
+  "why": "A step that never happened keeps its number with a slash (DR-108), and chapter 11 draws each state as a shape so the set reads without color (Rule 11.2). The list prints the reason in words beside the row; this asks what the shape says before the words do."
+ },
+ "steps_square": {
+  "stimulus": "img/bills-row-2.png: the row for Parking meter fees (S.99005), alone: 1 to 5 done, 6 a filled square",
+  "question": "meaning",
+  "right": "stopped",
+  "partial": [],
+  "shuffled": "the first four",
+  "why": "A bill that stops ends its line on a square, and a signed bill reads as law in words (DR-108, Rule 11.3). A reader who takes the square for law reads the opposite of the record."
+ },
+ "steps_dot": {
+  "stimulus": "img/bills-row-3.png: the row for Public meeting notice (H.99001), alone: 1 done, 2 now with the small red take-part disc, 3 to 6 not yet",
+  "question": "meaning",
+  "right": "take_part",
+  "partial": [
+   "unsure"
+  ],
+  "to_dustin": [
+   "party"
+  ],
+  "watch": [
+   "error"
+  ],
+  "shuffled": "the first four",
+  "why": "The take-part mark is one of the three things that may claim a view's working red (Rule 05.3), and chapter 11 decides which yields when an error mark sits beside it. A reader who sees an error or a party here shows where the words must carry the meaning."
+ },
+ "steps_list": {
+  "stimulus": "img/bills-list.png: chapter 11's whole list of five bills at 360 px with every status line, the key and the Illustrative label",
+  "question": "take_part",
+  "right": "Public meeting notice",
+  "partial": [],
+  "why": "The tracker's job is to show a reader where a decision stands and when they can act. This asks whether a newcomer finds the one bill open to them in a list of five."
+ },
+ "steps_names": {
+  "stimulus": "the same list",
+  "question": "clear",
+  "right": [
+   "all",
+   "most"
+  ],
+  "follow_up": {
+   "which": {
+    "shown_after": [
+     "most",
+     "few",
+     "unsure"
+    ],
+    "pass": "none (optional)"
+   }
+  },
+  "why": "DR-108 gave the tracker six plain step names in place of nine stages. This is the first time a reader outside the studio judges them."
+ },
+ "marks": [
+  {
+   "code": "m1",
+   "file": "img/mark-1.svg",
+   "file_2x": null,
+   "mark": "Wordmark, today's width, 16 px master",
+   "size_px": "152 by 16",
+   "source": "work/build/assets/identity/wordmark/20261028_Wordmark-16px-Master.svg",
+   "source_2x": null,
+   "pass": "clear"
+  },
+  {
+   "code": "m2",
+   "file": "img/mark-2.svg",
+   "file_2x": null,
+   "mark": "Ampersand B, 16 px master",
+   "size_px": "14 by 16",
+   "source": "work/build/assets/identity/ampersand/20261028_Amp-B-16px-Master.svg",
+   "source_2x": null,
+   "pass": "clear"
+  },
+  {
+   "code": "m3",
+   "file": "img/mark-3.svg",
+   "file_2x": null,
+   "mark": "Lockmark, 16 px master, in use (DR-181)",
+   "size_px": "16 by 16",
+   "source": "work/build/assets/identity/lockmark/20261028_Lockmark-16px-Master.svg",
+   "source_2x": null,
+   "pass": "clear"
+  },
+  {
+   "code": "m4",
+   "file": "img/mark-4.svg",
+   "file_2x": null,
+   "mark": "Explain (CL-019), the 16 px pixel fit (DR-179)",
+   "size_px": "16 by 16",
+   "source": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-019-Explain-16px-Black.svg",
+   "source_2x": null,
+   "pass": "clear"
+  },
+  {
+   "code": "m5",
+   "file": "img/mark-5.svg",
+   "file_2x": null,
+   "mark": "Track (CL-020), the 16 px pixel fit (DR-179)",
+   "size_px": "16 by 16",
+   "source": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-020-Track-16px-Black.svg",
+   "source_2x": null,
+   "pass": "clear"
+  },
+  {
+   "code": "m6",
+   "file": "img/mark-6.svg",
+   "file_2x": null,
+   "mark": "Connect (CL-021), the 16 px pixel fit (DR-179)",
+   "size_px": "16 by 16",
+   "source": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-021-Connect-16px-Black.svg",
+   "source_2x": null,
+   "pass": "clear"
+  },
+  {
+   "code": "m7",
+   "file": "img/mark-7.svg",
+   "file_2x": null,
+   "mark": "Act (CL-022), the 16 px pixel fit (DR-179)",
+   "size_px": "16 by 16",
+   "source": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-022-Act-16px-Black.svg",
+   "source_2x": null,
+   "pass": "clear"
+  },
+  {
+   "code": "m8",
+   "file": "img/mark-8.svg",
+   "file_2x": null,
+   "mark": "Lockmark, the rebuilt 24 px master (DR-181)",
+   "size_px": "24 by 24",
+   "source": "work/build/assets/identity/lockmark/20261109_Lockmark-24px-Master-Outline.svg",
+   "source_2x": null,
+   "pass": "clear"
+  },
+  {
+   "code": "m9",
+   "file": "img/mark-9.svg",
+   "file_2x": "img/mark-9-b.svg",
+   "mark": "Explain (CL-019) at 24 px: fit B on a 1x screen, the master on a 2x screen (DR-179)",
+   "size_px": "24 by 24",
+   "source": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-019-Explain-24px-Black.svg",
+   "source_2x": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-019-Explain-Black.svg",
+   "pass": "clear"
+  },
+  {
+   "code": "m10",
+   "file": "img/mark-10.svg",
+   "file_2x": "img/mark-10-b.svg",
+   "mark": "Track (CL-020) at 24 px: fit B on a 1x screen, the master on a 2x screen (DR-179)",
+   "size_px": "24 by 24",
+   "source": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-020-Track-24px-Black.svg",
+   "source_2x": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-020-Track-Black.svg",
+   "pass": "clear"
+  },
+  {
+   "code": "m11",
+   "file": "img/mark-11.svg",
+   "file_2x": "img/mark-11-b.svg",
+   "mark": "Connect (CL-021) at 24 px: fit B on a 1x screen, the master on a 2x screen (DR-179)",
+   "size_px": "24 by 24",
+   "source": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-021-Connect-24px-Black.svg",
+   "source_2x": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-021-Connect-Black.svg",
+   "pass": "clear"
+  },
+  {
+   "code": "m12",
+   "file": "img/mark-12.svg",
+   "file_2x": "img/mark-12-b.svg",
+   "mark": "Act (CL-022) at 24 px: fit B on a 1x screen, the master on a 2x screen (DR-179)",
+   "size_px": "24 by 24",
+   "source": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-022-Act-24px-Black.svg",
+   "source_2x": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-022-Act-Black.svg",
+   "pass": "clear"
+  }
+ ],
+ "marks_note": "One color, Charcoal #121212 on Newsprint, at true CSS size, in two rows, 16 px then 24 px. m9 to m12 draw fit B on screens under 2 device pixels per CSS pixel and the master from 2, as the guide does; the record's device_pixel_ratio says which drawing each reader saw. A mark half the readers call blurry or can't tell goes to the identity designer with each reader's screen sharpness.",
+ "foot_24": {
+  "editor_code": "lockmark_24 (the page records it as foot_24, since the page may not print the word lockmark)",
+  "stimulus": "img/foot.svg, the rebuilt 24 px master with its red lever and Stone links, beside the footer line \"A country that answers to its people.\" at phone width on Newsprint",
+  "source": "work/build/assets/identity/lockmark/20261109_Lockmark-24px-Master-Outline.svg",
+  "look_seconds": 10,
+  "question": "seen",
+  "right": "dots",
+  "partial": [],
+  "shuffled": "the first three",
+  "why": "DR-145 rebuilt the 24 px master so each node and the lever draw as one outline, because the old file could part into stripes. This asks whether readers see the grid of nodes it is meant to show."
+ },
+ "end_17": {
+  "stimulus": "The two lines below in 17 px Inter on Newsprint at the phone column's width, with ampersand B half an em after the final period in the text's ink, at the text's cap height: fit B at 14 px (13 by 13) at exactly 1 device pixel per CSS pixel, the 16 px master at 12.37 by 14.13 elsewhere (s-04-6-correct, Rule 04.6, DR-180)",
+  "text": "For an investor-owned utility, the state public utility commission sets rates in a rate case; for public power and cooperatives, a city council, utility board or co-op board does. Rates recover the cost of power plants, fuel, transmission lines and local wires, and investor-owned utilities also earn a regulated return on what they invest.",
+  "text_source": "Atlas V7, pathway PW03, short answer, sentences 2 and 3, word for word (checked at build)",
+  "sources": {
+   "px": 17,
+   "fit": {
+    "src": "img/t-14.svg",
+    "w": 13,
+    "h": 13,
+    "va": "0",
+    "source": "work/build/assets/identity/ampersand/20261109_Amp-B-14px-End-Mark-Fit-B.svg"
+   },
+   "smooth": {
+    "src": "img/t-16.svg",
+    "w": 12.37,
+    "h": 14.13,
+    "va": "-0.883px",
+    "source": "work/build/assets/identity/ampersand/20261028_Amp-B-16px-Master.svg"
+   }
+  },
+  "questions": {
+   "meaning": {
+    "right": "ends",
+    "partial": [
+     "sign"
+    ],
+    "shuffled": "the first four"
+   },
+   "clear": {
+    "right": [
+     "clear",
+     "barely"
+    ]
+   },
+   "sits": {
+    "right": "fits",
+    "partial": [],
+    "shuffled": "the first three"
+   }
+  },
+  "why": "DR-130 set the end mark at the text's cap height because B at 16 px read louder than the line it ends, and DR-142 and DR-180 drew it on whole pixels at 14 and 12 px so its edges stay crisp. These questions ask whether readers see it, whether it sits quietly, and whether they read it as the end."
+ },
+ "end_15": {
+  "stimulus": "The same lines in 15 px text, with fit B at 12 px (11 by 11) at 1x and the 16 px master at 10.91 by 12.47 elsewhere",
+  "sources": {
+   "px": 15,
+   "fit": {
+    "src": "img/t-12.svg",
+    "w": 11,
+    "h": 11,
+    "va": "0",
+    "source": "work/build/assets/identity/ampersand/20261109_Amp-B-12px-End-Mark-Fit-B.svg"
+   },
+   "smooth": {
+    "src": "img/t-16.svg",
+    "w": 10.91,
+    "h": 12.47,
+    "va": "-0.779px",
+    "source": "work/build/assets/identity/ampersand/20261028_Amp-B-16px-Master.svg"
+   }
+  },
+  "questions": {
+   "clear": {
+    "right": [
+     "clear",
+     "barely"
+    ]
+   },
+   "sits": {
+    "right": "fits",
+    "partial": [],
+    "shuffled": "the first three"
+   }
+  }
+ },
+ "charts": [
+  {
+   "code": "S02",
+   "board": "Data viz board 3, Explainer, Newsprint view",
+   "file": "work/boards/phase-2/data-viz/01-explainer/20261106_Data-Viz-01-Explainer.html",
+   "section": "#newsprint-s02",
+   "image": "img/chart-s02-390.png and -360.png",
+   "title": "Child poverty fell to 5.1 percent in 2021, the lowest since the series began in 2009, and more than doubled the next year.",
+   "finding": "Child poverty under the Supplemental Poverty Measure fell to its series low of 5.1 percent in 2021 and rose to 12.0 percent in 2022; in 2025 both measures stood at 13.4 percent.",
+   "evidence": "Finding, official statistic (Census Bureau)",
+   "favors_intended": "no",
+   "telling_pass": "The sentence carries the finding's direction and subject (what moved, which way, over what period). Numbers are a bonus.",
+   "title_check": "The title printed today matches the first check's, word for word."
+  },
+  {
+   "code": "S11",
+   "board": "Data viz stretch test, Newsprint view",
+   "file": "work/boards/phase-2/data-viz/stretch/20261106_Data-Viz-Stretch.html",
+   "section": "#newsprint-s11",
+   "image": "img/chart-s11-390.png and -360.png",
+   "title": "The margin in every state and DC moved toward the Republican nominee from 2020 to 2024, by 1.0 point in Washington to 10.5 points in New York.",
+   "finding": "Every state and DC shifted toward the Republican nominee between 2020 and 2024, from 1.0 point (Washington) to 10.5 points (New York); the phone drawing ranks the shifts as arrows from zero.",
+   "evidence": "Finding, documented official results (FEC)",
+   "favors_intended": "no",
+   "telling_pass": "The sentence carries the finding's direction and subject (what moved, which way, over what period). Numbers are a bonus.",
+   "title_check": "The title printed today matches the first check's, word for word."
+  },
+  {
+   "code": "S14",
+   "board": "Data viz stretch test, Newsprint view",
+   "file": "work/boards/phase-2/data-viz/stretch/20261106_Data-Viz-Stretch.html",
+   "section": "#newsprint-s14",
+   "image": "img/chart-s14-390.png and -360.png",
+   "title": "The three-month average of monthly job change stood at 51,000 in September 2026, a preliminary figure, and payrolls shrank in seven of the 57 months charted.",
+   "finding": "Monthly payroll change from January 2022 to September 2026 with its three-month average, 51,000 in September 2026 (preliminary); seven of the 57 months show a loss.",
+   "evidence": "Finding, official statistic (BLS via FRED)",
+   "favors_intended": "no",
+   "telling_pass": "The sentence carries the finding's direction and subject (what moved, which way, over what period). Numbers are a bonus.",
+   "title_check": "The title printed today matches the first check's, word for word."
+  }
+ ],
+ "charts_note": "Every chart title printed today matches the first check's, so the titles and findings stand.",
+ "pairs": [
+  {
+   "code": "W02",
+   "rule": "Name who acts",
+   "before": "Your rate is approved by a regulator or a board.",
+   "after": "A regulator or a board approves your rate.",
+   "before_source": "Our systems atlas, Who Do They Answer To?, the everyday answer to “Why is my electric bill going up?”",
+   "expected": "after"
+  },
+  {
+   "code": "W10",
+   "rule": "Drop the matched pair",
+   "before": "Written testimony counts. Spoken testimony counts more.",
+   "after": "Written testimony counts, and speaking at the hearing carries more weight.",
+   "before_source": "Our brand guide, fifth edition, chapter 13 In use",
+   "expected": "after"
+  },
+  {
+   "code": "W11",
+   "rule": "Skip the run of negatives",
+   "before": "No crest, no shield, no founding date, no ring of words",
+   "after": "Leave crests, shields, founding dates and rings of words off the seal, because they suggest an authority we do not claim.",
+   "before_source": "Our brand guide, fifth edition, chapter 04, the seal; the reason in the rewrite is the guide’s own, “Seals imply an authority we do not claim.”",
+   "expected": "after"
+  }
+ ],
+ "favors_questions": "red_card:favors, house:favors and each chart's favors pass on \"no\"; \"left\" and \"right\" go to Dustin with the reader's own words, whatever the count.",
+ "record_fields": {
+  "path": "responses/<viewer id>: { schema, latest_run, updated_at, runs: { <run id>: run } }. Copy mode sends the same run as text.",
+  "run": "initials, mode (\"saved\" or \"copy\"), mode_note, started_at, finished_at (ISO, UTC), viewport_width, device_pixel_ratio (window.devicePixelRatio at the start), resumed, position, orders, items",
+  "orders": "loops, icons (i codes in order), charts, pairs (per pair: which of A and B was the before), choices (for each question that shuffles its choices, the codes in the order shown)",
+  "items": "overview, loop_r10, loop_b4, icon_i1 to icon_i4, red_card (favors, why), house (red, favors), row_24 (current), row_48 (current, red), steps_slash (meaning), steps_square (meaning), steps_dot (meaning), steps_list (take_part), steps_names (clear, which), marks (m1 to m12), foot_24 (seen; the editor's lockmark_24), end_17 (meaning, clear, sits), end_15 (clear, sits), chart_S02, chart_S11, chart_S14, pair_W02, pair_W10, pair_W11. Each: show_again, shown_seconds, again_seconds, interrupted, load_failed, questions: { <q>: { answer, seconds, skipped } }. A follow-up that was not asked is absent."
+ }
+}

@@ -22,10 +22,16 @@ import stage_a_identity_s04 as S04  # noqa: E402
 import stage_a_identity_s08 as S08  # noqa: E402
 import stage_a_identity_proofs as SP  # noqa: E402
 import stage_a_identity_chapters as CH  # noqa: E402
+import stage_b_identity_ch09 as S09  # noqa: E402  (stage B round 2: chapter 09, Pillar icons)
 
 
-MINE = ("s-03-", "s-04-", "s-08-", "s-proofs-")      # specimen ids this maker owns
+MINE = ("s-03-", "s-04-", "s-08-", "s-09-", "s-proofs-")      # specimen ids this maker owns
 RETIRED_CHAPTER_FILES = ("08-signal-grid.json",)     # this maker's chapter files that no longer exist under that name
+
+
+def CHAPTERS():
+    """Chapters 03, 04 and 08, then chapter 09 from stage B round 2, its prose set by the same quote rules."""
+    return CH.CHAPTERS + [CH._smarten(S09.chapter())]
 
 
 def build(preview_dir=None, pdf=False):
@@ -33,7 +39,7 @@ def build(preview_dir=None, pdf=False):
     L.CHAP_DIR.mkdir(parents=True, exist_ok=True)
     SP.write_letterhead(pdf=pdf)          # first, so the letterhead specimen can carry the PDF
     records = []
-    for mod in (S03, S04, S08, SP):
+    for mod in (S03, S04, S08, S09, SP):
         for fn in mod.S:
             records.append(fn())
     ids = [r["id"] for r in records]
@@ -57,7 +63,7 @@ def build(preview_dir=None, pdf=False):
         if (L.CHAP_DIR / old).exists():
             (L.CHAP_DIR / old).unlink()
             print(f"  removed {old}")
-    for ch in CH.CHAPTERS:
+    for ch in CHAPTERS():
         f = L.CHAP_DIR / f'{ch["number"]}-{ch["anchor"]}.json'
         f.write_text(json.dumps(ch, indent=1, ensure_ascii=False) + "\n")
         used = CH.specimens_used(ch)
@@ -66,8 +72,8 @@ def build(preview_dir=None, pdf=False):
     SP.write_proofs_json()
     if preview_dir:
         write_preview(Path(preview_dir), records)
-    print(f"{len(records)} specimens, {len(CH.CHAPTERS)} chapters")
-    for ch in CH.CHAPTERS:
+    print(f"{len(records)} specimens, {len(CHAPTERS())} chapters")
+    for ch in CHAPTERS():
         print(f'  {ch["number"]} {ch["title"]}: {len(ch["rules"])} rules, {len(ch.get("extras", []))} extras')
     return records
 
