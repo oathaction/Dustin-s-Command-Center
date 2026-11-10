@@ -36,6 +36,10 @@ from stage_a_identity_lib import (E, ROOT, ID_DIR, LOCK, AMP, WM, svg_file, mark
                                   tv, ty, curl_html, illus)
 import stage_a_identity_q_measure as QM  # noqa: E402  (count, seam_free, feed_counts: read only)
 
+# Since the promotion (November 10, 2026, DR-181) the library's LOCK names the rebuilt files. This board compares them
+# with the files that stood before, and traces its outlines from those, so "today" here keeps the earlier files.
+LOCK = {**LOCK, **LIB.LOCK_RECT}
+
 DATE = "20261109"
 OUT = ROOT / "work/boards/phase-2/stage-b/drawings/identity"
 SHOTS = HERE / "stage_a_identity_shots.js"
@@ -792,7 +796,7 @@ def main(scratch, keep):
     imgs = images(scratch, figs, crops)
     global L6_TODAY, L6_CENTERED
     from stage_a_identity_s03 import l6
-    L6_TODAY = l6(884, dots=False)
+    L6_TODAY = l6(884, dots=False, centered=False)
     L6_CENTERED = l6_centered(884, figs["l6"]["shift_down_units"])
     html_path = OUT / f"{DATE}_Identity-Plates.html"
     html_path.write_text(page("Identity drawings: plates", plates(figs, imgs)))

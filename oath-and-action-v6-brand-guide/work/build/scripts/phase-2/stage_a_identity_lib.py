@@ -246,8 +246,18 @@ AMP = {"display": "ampersand/20261028_Amp-B-Display-Master.svg", 24: "ampersand/
        16: "ampersand/20261028_Amp-B-16px-Master.svg"}
 AMPN = {"display": "ampersand/20261028_Amp-B-Narrow-Display-Master.svg", 24: "ampersand/20261028_Amp-B-Narrow-24px-Master.svg",
         16: "ampersand/20261028_Amp-B-Narrow-16px-Master.svg"}
-LOCK = {"display": "lockmark/20261107_Lockmark-Display-Master.svg", 48: "lockmark/20261108_Lockmark-48px-Master.svg",
-        24: "lockmark/20261028_Lockmark-24px-Master.svg", 16: "lockmark/20261028_Lockmark-16px-Master.svg"}
+LOCK = {"display": "lockmark/20261107_Lockmark-Display-Master.svg", 48: "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+        24: "lockmark/20261109_Lockmark-24px-Master-Outline.svg", 16: "lockmark/20261028_Lockmark-16px-Master.svg"}
+# Promotion, November 10, 2026 (DR-181): the rebuilt 24 and 48 px masters, each node and the lever one outline, are the
+# files in use. They draw the same pixels as the earlier files at 24 and 48 px (DR-145), and between those sizes their
+# nodes stay whole. The earlier files, one rect per pixel row, stay in lockmark/ as the record; the scripts that drew
+# earlier boards read them from LOCK_RECT, so a rerun keeps its record. The 16 px master stays as it is (D2-542).
+LOCK_RECT = {48: "lockmark/20261108_Lockmark-48px-Master.svg", 24: "lockmark/20261028_Lockmark-24px-Master.svg"}
+# The end mark on a 1x screen (DR-180): ampersand B drawn on whole pixels, fit B, sitting on the baseline. Keyed by the
+# text size each serves: (file, width px, height px). On other screens and at other text sizes, the 16 px master at the
+# text's cap height (stage_a_identity_s04.end_b).
+AMP_END = {17: ("ampersand/20261109_Amp-B-14px-End-Mark-Fit-B.svg", 13, 13),
+           15: ("ampersand/20261109_Amp-B-12px-End-Mark-Fit-B.svg", 11, 11)}
 # The lockmark's four masters and the heights each covers (Q1 to Q4 pass, November 8, 2026; DR-131): the 16 px master
 # from 16 to 23 px, the 24 px master from 24 to 47 px, the 48 px master at 48 px, and the display master from 49 px.
 # stage_a_identity_q_measure.py's range test chose the switch: built from one rect per pixel row, the 48 px master
@@ -258,9 +268,11 @@ BADGE = {"display": "badge/20261028_Hinge-Badge-Display-Master.svg", 24: "badge/
          16: "badge/20261028_Hinge-Badge-16px-Master.svg"}
 L2 = {"today": "lockups/20261028_L2-Stacked-Master.svg", "condensed": "lockups/20261028_L2-Stacked-Condensed-Master.svg"}
 L3 = {"today": "lockups/20261028_L3-Horizontal-Master.svg", "condensed": "lockups/20261028_L3-Horizontal-Condensed-Master.svg",
-      "masthead": "lockups/20261108_L3-Horizontal-Master.svg"}
+      "masthead": "lockups/20261110_L3-Horizontal-Master.svg", "masthead_rect": "lockups/20261108_L3-Horizontal-Master.svg"}
 # L3 at the masthead since November 8, 2026 (DR-131): the 24 px wordmark master, 13 px of space and the lockmark's 48 px
-# master, on the pixel grid, 282 by 48 px. Written by stage_a_identity_s1.py; the October file stays as the record.
+# master, on the pixel grid, 282 by 48 px. Since November 10, 2026 (DR-181) the masthead master is the file that carries
+# the rebuilt 48 px lockmark, written by promotion_identity.py; the November 8 file (stage_a_identity_s1.py) and the
+# October file stay as the record.
 L8 = {"today": "lockups/20261028_L8-Monogram-Master.svg", "condensed": "lockups/20261028_L8-Monogram-Condensed-Master.svg"}
 HINGE = {"display": "hinge/20261028_Hinge-Diagram-V2-Display-Master.svg", "compact": "hinge/20261028_Hinge-Diagram-V2-Compact-Master.svg"}
 # S1, the stacked lockup that replaced L2 (DR-113), written by stage_a_identity_s1.py from Board 6's files.
@@ -295,16 +307,22 @@ def amp(height, *, narrow=False, surface="newsprint", mode="color", label="Amper
 
 
 FIGURES = ROOT / "work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json"
+# Promotion, November 10, 2026: figures measured with the finals in use (the feed test with the rebuilt 48 px master, the
+# end mark's pixel masters), written by promotion_identity.py. A key found there wins over the Q1 to Q4 file's.
+FIGURES_PROMOTION = ROOT / "work/handoffs/phase-2/20261110_Promotion-Identity-Figures.json"
 
 
 def figures(key):
     """Measured figures the chapters print (Q1 to Q4 pass): 'endmark', 'feed' or 'range', written by
-    stage_a_identity_q_measure.py. None, with a warning, when the test has not run; the page then prints a marker that
-    the build's own text scan would show, and the maker reruns the test and the build."""
+    stage_a_identity_q_measure.py, and from the promotion 'feed' again and 'endmark_fit', written by
+    promotion_identity.py. None, with a warning, when the test has not run; the page then prints a marker that the
+    build's own text scan would show, and the maker reruns the test and the build."""
     import json as _json
     d = _json.loads(FIGURES.read_text()) if FIGURES.exists() else {}
+    if FIGURES_PROMOTION.exists():
+        d.update({k: v for k, v in _json.loads(FIGURES_PROMOTION.read_text()).items() if k in ("feed", "endmark_fit")})
     if key not in d:
-        print(f"  WARNING: no '{key}' figures in {FIGURES.name}; run stage_a_identity_q_measure.py {key}, then build again")
+        print(f"  WARNING: no '{key}' figures in {FIGURES.name} or {FIGURES_PROMOTION.name}; run the test that writes it, then build again")
         return None
     if key == "feed" and LOCK[48] not in str(d[key].get("lockmark_master", "")):
         print(f"  WARNING: the feed figures were measured on {d[key].get('lockmark_master')}, not {LOCK[48]}; run the feed test again")

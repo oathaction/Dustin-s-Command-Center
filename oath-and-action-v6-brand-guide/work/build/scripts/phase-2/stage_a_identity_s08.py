@@ -64,7 +64,11 @@ def s_08_1_correct():
            "in Newsprint with its red lever, and on Prussian, all in White.")
     return rec("s-08-1-correct", "08.1", 700, alt, body, fit_switch=True,
                notes="Construction from the display master at 240 px. The four masters each at their own size (DR-131): the display "
-                     "master at 96 px, then the 48, 24 and 16 px masters on whole pixels. On Prussian, the 48 px master's White file.")
+                     "master at 96 px, then the 48, 24 and 16 px masters on whole pixels. The 48 and 24 px masters are the rebuilt "
+                     "files in use since November 10, 2026, each node and the lever one outline (DR-181): "
+                     "lockmark/20261109_Lockmark-48px-Master-Outline.svg and lockmark/20261109_Lockmark-24px-Master-Outline.svg, the "
+                     "same pixels as the earlier files at these sizes (DR-145). The 16 px master is unchanged. On Prussian, the rebuilt "
+                     "48 px master's White file.")
 
 
 @spec
@@ -164,7 +168,10 @@ def s_08_2_correct():
                      "24 px master on whole pixels. Chart footer: the 16 px master beside chapter 02's jobs chart source line, word "
                      "for word. Sign-off: the 48 px master at 48 px, 72 px from the card's right and bottom edges (D2-295's card "
                      "margin). The places and their labels stand 16 px in from the frame (CD-N9), so the plate is 802 px wide. Type "
-                     "takes sizes common to both columns of the scale (13 to 17 px).")
+                     "takes sizes common to both columns of the scale (13 to 17 px). Since November 10, 2026 the 48 and 24 px masters "
+                     "are the rebuilt files, each node and the lever one outline, and L3's masthead master is "
+                     "lockups/20261110_L3-Horizontal-Master.svg, which carries the rebuilt 48 px master; each draws the same pixels "
+                     "as before (DR-145, DR-181). The 16 px master is unchanged.")
 
 
 @spec

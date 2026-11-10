@@ -666,12 +666,54 @@ window.__sb = (() => {
   const CONTROLS = 'a[href], button, summary, select, textarea, input:not([type="hidden"]), [role="button"], [role="link"], [role="tab"], [role="switch"], [role="menuitem"], [role="checkbox"], [role="radio"]';
   const where = (el) => { const st = el.closest('[data-specimen]'); const sec = el.closest('section[id]'); return st ? st.getAttribute('data-specimen') : (sec ? '#' + sec.id : el.tagName.toLowerCase()); };
   const desc = (el) => ({ where: where(el), tag: el.tagName.toLowerCase(), text: (el.textContent || '').replace(/\\s+/g, ' ').trim().slice(0, 50), label: el.getAttribute('aria-label') || null });
+  // The paints a <use> draws (promotion, November 10, 2026). Its symbol's shapes sit in a closed shadow tree, so each
+  // shape's fill and stroke is read from the symbol's own markup, nearest declaration first, and resolved as the use
+  // would draw it: currentColor and var(--oa-icon-accent, currentColor) against the use's computed style, a literal
+  // color through a probe beside the use (Chromium keeps a literal SVG paint in forced colors), and a paint the symbol
+  // leaves unset from the use itself.
+  const usePaints = (u) => {
+    const ref = (u.getAttribute('href') || u.getAttribute('xlink:href') || '').replace(/^#/, '');
+    const sym = ref && document.getElementById(ref);
+    if (!sym) return [];
+    const cs = getComputedStyle(u);
+    const own = (el, prop) => {
+      for (let e = el; e && e.nodeType === 1; e = e.parentNode) {
+        const v = (e.style && e.style.getPropertyValue(prop)) || e.getAttribute(prop);
+        if (v) return v.trim();
+        if (e === sym) break;
+      }
+      return null;
+    };
+    const literal = (v) => {
+      const probe = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      probe.setAttribute('fill', v); u.parentNode.appendChild(probe);
+      const c = getComputedStyle(probe).fill; probe.remove(); return parse(c);
+    };
+    const resolve = (v, depth = 0) => {
+      if (!v || v === 'none' || depth > 4) return null;
+      if (/^currentcolor$/i.test(v)) return parse(cs.color);
+      const m = v.match(/^var\\(\\s*(--[\\w-]+)\\s*(?:,\\s*(.+))?\\)$/);
+      if (m) { const set = cs.getPropertyValue(m[1]).trim(); return resolve(set || (m[2] || '').trim(), depth + 1); }
+      return literal(v);
+    };
+    const out = [];
+    for (const el of sym.querySelectorAll('path, line, circle, rect, polyline, polygon, ellipse, text')) {
+      if (el.closest('mask, clipPath, defs, pattern, marker')) continue;
+      for (const prop of ['fill', 'stroke']) {
+        const v = own(el, prop);
+        const c = v === null ? parse(cs.getPropertyValue(prop)) : resolve(v);
+        if (c) out.push(c);
+      }
+    }
+    return out;
+  };
   // The best contrast a glyph part's paint (its fill, stroke or CSS background) has against the ground behind it.
   window.__sbContrast = (el) => {
     const svgPart = el.namespaceURI === 'http://www.w3.org/2000/svg';
     const behind = bgBehind(svgPart ? el.closest('svg').parentElement : el.parentElement);
     const cs = getComputedStyle(el); const paints = [];
     if (!svgPart) paints.push(parse(cs.backgroundColor));
+    else if (el.tagName.toLowerCase() === 'use') paints.push(...usePaints(el));
     else { if (cs.stroke !== 'none' && parseFloat(cs.strokeWidth) > 0) paints.push(parse(cs.stroke)); if (cs.fill !== 'none') paints.push(parse(cs.fill)); }
     const ok = paints.filter((c) => c && c.a > 0.5);
     return ok.length ? Math.max(...ok.map((c) => ratio(c, behind))) : 1;
@@ -801,7 +843,7 @@ async function sbAudit(page) {
 }
 
 // D-1 (UX-1): with forced colors on, in dark and light, every glyph part still differs from what lies behind it. A glyph
-// part is any [data-icon] or a wordless element inside a control. One drawn by a CSS background, shadow or image that
+// part is any [data-icon] or a wordless element inside a control; a <use> counts as one part, with its symbol's paints. One drawn by a CSS background, shadow or image that
 // forced colors erases fails, and so does an SVG part whose fill and stroke both match the ground.
 async function sbForced(page) {
   await sbInstall(page);
@@ -812,16 +854,16 @@ async function sbForced(page) {
     for (const el of document.querySelectorAll(`[data-icon], [data-icon] *, :is(${CONTROLS}) *`)) {
       if (picture(el) || !rendered(el)) continue;
       const t = el.tagName.toLowerCase();
-      if (el.namespaceURI === 'http://www.w3.org/2000/svg') { if (['path', 'line', 'circle', 'rect', 'polyline', 'polygon', 'ellipse'].includes(t)) tag(el, 'svg'); continue; }
+      if (el.namespaceURI === 'http://www.w3.org/2000/svg') { if (['path', 'line', 'circle', 'rect', 'polyline', 'polygon', 'ellipse', 'use'].includes(t)) tag(el, 'svg'); continue; }
       if ((el.textContent || '').trim() || el.querySelector('svg, img')) continue;
       const cs = getComputedStyle(el); const c = window.__sb.parse(cs.backgroundColor);
       if ((c && c.a > 0) || cs.backgroundImage !== 'none' || cs.boxShadow !== 'none') tag(el, 'css');
     }
     // how far each part stands out from its ground with the page's own colors
     for (const el of document.querySelectorAll('[data-sb-glyph]')) el.setAttribute('data-sb-normal', String(window.__sbContrast(el)));
-    return n;
+    return { n, uses: document.querySelectorAll('use[data-sb-glyph]').length };
   });
-  const out = { glyphParts: mark, erased: [] };
+  const out = { glyphParts: mark.n, useParts: mark.uses, erased: [] };
   for (const scheme of ['dark', 'light']) {
     await page.emulateMedia({ forcedColors: 'active', colorScheme: scheme });
     await page.waitForTimeout(50);
@@ -1029,7 +1071,7 @@ async function checkPage(browser, file, widths, opts = {}) {
       sb.menu = await sbMenu(page);
     }
     fails.push(...sbFailures(sb, width));
-    a.stageB = { icons: sb.audit.icons, missingFamily: sb.audit.missingFamily, markReaders: sb.audit.marks.readers, glyphParts: sb.forced ? sb.forced.glyphParts : null,
+    a.stageB = { icons: sb.audit.icons, missingFamily: sb.audit.missingFamily, markReaders: sb.audit.marks.readers, glyphParts: sb.forced ? sb.forced.glyphParts : null, useParts: sb.forced ? sb.forced.useParts : null,
       menu: sb.menu ? (sb.menu.problems.length ? sb.menu.problems : 'opens, holds focus, closes by Escape and Close, returns focus') : 'not shown at this width' };
     if (a.fit.under.length) fails.push({ key: 'fitFloor', msg: `${width}: ${a.fit.under.length} plate(s) whose Fit to window sets text under 13 px: ${a.fit.under.slice(0, 8).map((x) => `${x.specimen} (${x.smallest} px at ${Math.round(x.scale * 100)}%, "${x.sample}")`).join('; ')}` });
     let axe = null;
@@ -1170,6 +1212,14 @@ const PLANTS = [
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', `<button type="button" style="min-height:44px;display:inline-flex;align-items:center;gap:8px"><span aria-hidden="true" style="display:inline-grid;width:18px;height:12px;align-content:space-between">${bar}${bar}${bar}</span>Menu</button>`); } },
   { key: 'forcedGlyphs', fault: 'the same glyph drawn as an SVG stroke in currentColor (allowed: must not be flagged)', expect: false, js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<button type="button" style="min-height:44px;display:inline-flex;align-items:center;gap:8px"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="U-menu" data-icon-family="utility" style="fill:none;stroke:currentColor;stroke-width:2"><path d="M3 7h18M3 12h18M3 17h18"/></svg>Menu</button>'); } },
+  // promotion, November 10, 2026: a glyph drawn from a sprite symbol through <use>, as the masthead's menu glyph is now
+  { key: 'forcedGlyphs', fault: 'a menu glyph drawn through <use> from a symbol that keeps the file\'s literal ink, which forced colors on a dark ground erases (UX-1, D-1)', js: () => {
+    document.body.insertAdjacentHTML('afterbegin', '<svg class="oa-sprite" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="sb-sym-ink" viewBox="0 0 24 24"><g fill="none" stroke="#121212" stroke-width="2" stroke-linecap="round"><path d="M4 6H20 M4 12H20 M4 18H20"/></g></symbol></svg>');
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<button type="button" style="min-height:44px;display:inline-flex;align-items:center;gap:8px"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="U-menu" data-icon-family="utility"><use href="#sb-sym-ink"/></svg>Menu</button>'); } },
+  { key: 'forcedGlyphs', fault: 'the same glyph through <use> from a symbol in currentColor, as the sprite writes it (allowed: must not be flagged)', expect: false, js: () => {
+    document.body.insertAdjacentHTML('afterbegin', '<svg class="oa-sprite" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="sb-sym-cur" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6H20 M4 12H20 M4 18H20"/></g></symbol></svg>');
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<button type="button" style="min-height:44px;display:inline-flex;align-items:center;gap:8px"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="U-menu" data-icon-family="utility"><use href="#sb-sym-cur"/></svg>Menu</button>'); },
+    verify: (r) => r.runs[0].stageB.useParts >= 1 },
   { key: 'focus', fault: 'a button whose focus ring is a box-shadow, which forced colors removes (UX-5, G-1)', focus: true, js: () => {
     const st = document.createElement('style'); st.textContent = '.sb-ring:focus-visible{outline:none;box-shadow:0 0 0 2px #2E7D6B}'; document.head.append(st);
     document.querySelector('.mh-bar .home').insertAdjacentHTML('afterend', '<button type="button" class="sb-ring">Shadow ring</button>'); } },

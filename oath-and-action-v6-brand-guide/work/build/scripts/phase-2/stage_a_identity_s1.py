@@ -26,6 +26,12 @@ grid, and its Prussian White file; the October L3 files stay as the record. The 
 range. The minimum sizes table gains the lockmark's four masters and their ranges, the end mark's exception on B's row
 (DR-130), L3's masthead form and L6's replacement under 884 px (DR-129).
 
+Promotion, November 10, 2026 (DR-180 to DR-182): the minimum sizes table names the files in use, the end mark's pixel
+masters, the rebuilt 24 and 48 px lockmark files and L3's masthead master that carries the rebuilt 48 px file, and L6
+centered. promotion_identity.py calls update_minimums() alone. The 48 px master and L3 writers above keep writing the
+November 8 files under their own names (LOCK_RECT[48], L3["masthead_rect"]), so a rerun keeps the record and never
+touches the files in use.
+
 Run: python3 -I work/build/scripts/phase-2/stage_a_identity_s1.py      (prints the contour check)
 """
 import json
@@ -36,7 +42,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import board6_stacked_geom as G  # noqa: E402  (path reader and glyph split, read only)
-from stage_a_identity_lib import LOCK, LOCK_DISPLAY_FROM, L3, WM  # noqa: E402  (file names and the lockmark's ranges)
+from stage_a_identity_lib import LOCK, LOCK_RECT, LOCK_DISPLAY_FROM, L3, WM, AMP_END  # noqa: E402  (file names and ranges)
 
 ROOT = HERE.parents[3]
 ID = ROOT / "work/build/assets/identity"
@@ -170,22 +176,30 @@ def update_minimums():
         if r["lockup"] == "Lockmark":
             r["screen"] = (f"16 px master from 16 to 23 px; 24 px master from 24 to 47 px; 48 px master {M48_RANGE}; "
                            f"display master from {LOCK_DISPLAY_FROM} px")
-            r["files"] = ["lockmark/20261028_Lockmark-16px-Master.svg", "lockmark/20261028_Lockmark-24px-Master.svg",
-                          LOCK[48], "lockmark/20261107_Lockmark-Display-Master.svg"]
+            r["files"] = [LOCK[16], LOCK[24], LOCK[48], LOCK["display"]]
+            r["record_files"] = [LOCK_RECT[24], LOCK_RECT[48]]
             r["below"] = "Nothing smaller; the lever stays one size up at 16, 24 and 48 px"
             r["print"] = "0.25 in; the sign-off at 0.50 in from the display master"
             r["places"] = ("Masthead (inside L3) and sign-off: the 48 px master at 48 px. Page header and footer: the 24 px master "
                            "at 24 px. A chart's footer: the 16 px master at 16 px. In print, the sign-off at 0.50 in takes the "
                            "display master, since the 48 px master is drawn for a screen's pixel grid (Rule 08.2)")
-            r["status_note"] = ("The 48 px master joined on November 8, 2026 (DR-131). A test set its range: drawn from "
-                                "one rect per pixel row, it parts into stripes at any size between whole multiples of its grid, "
-                                "so builders place it at 48 px only (work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json, key range)")
+            r["status_note"] = ("The 48 px master joined on November 8, 2026 (DR-131). Since November 10, 2026 the 24 and 48 px "
+                                "files in use draw each node and the lever as one outline, the same pixels as the earlier files at "
+                                "24 and 48 px, so their nodes stay whole between those sizes (DR-145, DR-181). The earlier files, one "
+                                "rect per pixel row, stay in lockmark/ for the record (record_files). The 48 px master still serves "
+                                "48 px only, the size its pixel grid was drawn for: between whole multiples of its grid its edges "
+                                "fall between pixels (work/handoffs/phase-2/20261109_Stage-B-Identity-Notes.md, section 2)")
         if r["lockup"] == "Ampersand B, freestanding":
             r["below"] = ("Nothing smaller, except the end mark, which stands at the text's cap height (Rule 04.6). "
                           "Favicon: the 16 px master at 16 px")
             r["end_mark"] = ("Only the end mark, ampersand B at the close of an article, may stand under 16 px, at the text's cap height, because it follows a word and "
-                             "names nothing on its own (DR-130, Rules 03.4 and 04.6). It stands 16/14 of the text's cap height tall, "
-                             "from the 16 px master")
+                             "names nothing on its own (DR-130, Rules 03.4 and 04.6). On a 1x screen it is drawn on whole pixels and sits on "
+                             f"the baseline: the 14 px end mark master, {AMP_END[17][1]} by {AMP_END[17][2]} px, in 17 px text and the 12 px "
+                             f"end mark master, {AMP_END[15][1]} by {AMP_END[15][2]} px, in 15 px text (DR-180). On every other screen and at "
+                             "other text sizes it stands 16/14 of the text's cap height tall, from the 16 px master")
+            r["end_mark_files"] = [AMP_END[17][0], AMP_END[15][0],
+                                   "prussian/" + Path(AMP_END[17][0]).stem + "-Prussian-White.svg",
+                                   "prussian/" + Path(AMP_END[15][0]).stem + "-Prussian-White.svg"]
         if r["lockup"] == "L3 horizontal with lockmark":
             r["screen"] = ("196 px wide (condensed 164 px): wordmark 16 px master, lockmark 34 px from its 24 px master. "
                            "In the masthead, 282 px wide from its masthead master: the wordmark's 24 px master, 13 px of space and the lockmark at 48 px from its 48 px master")
@@ -193,19 +207,26 @@ def update_minimums():
             r["print"] = "1.55 in wide (condensed 1.30 in), from the earlier L3 master (Rule 03.2)"
             r["print_note"] = ("The masthead master serves the 282 px masthead. Print and other widths take the October master, "
                                "lockups/20261028_L3-Horizontal-Master.svg, until a print L3 at the masthead's proportion is drawn (CD-S10)")
-            r["status_note"] = ("The masthead master has set the lockmark at 48 px since November 8, 2026 (DR-131). The October "
-                                "master, with the lockmark at 2.4 cap heights, stays in lockups/ for the record")
+            r["status_note"] = ("The masthead master has set the lockmark at 48 px since November 8, 2026 (DR-131). Since "
+                                "November 10, 2026 it carries the rebuilt 48 px lockmark master and draws the same pixels as the "
+                                f"November 8 file, {L3['masthead_rect']}, which stays in lockups/ for the record (DR-181). The October "
+                                "master, with the lockmark at 2.4 cap heights, stays in lockups/ for print and the record")
         if r["lockup"] == "L6 editorial signature":
             r["below"] = "Close the page with the footer place: the lockmark at 24 px, then the tagline (Rule 08.2)"
-            r["status_note"] = "Drawn without its four pillar dots since November 8, 2026 (DR-129)"
+            r["status_note"] = ("Drawn without its four pillar dots since November 8, 2026 (DR-129). Since November 10, 2026 "
+                                "the wordmark and tagline sit centered on the strip, moved down 14.72 units of L6's 300, 9.3 px at "
+                                "884 px, so the span from the wordmark's cap line to the tagline's baseline has its middle on the "
+                                "strip's middle; the strip, the lockmark and every size stay as they were (DR-182)")
         if r["lockup"] == "L8 monogram":
             r["screen"] = r["screen"].replace("Never a favicon", "Never an avatar or a favicon")
             r["status_note"] = ("For squares where the name must show, such as a tile in a partner's directory. Social avatars "
                                 "and the app icon show ampersand B alone on the Charcoal tile (DR-116)")
     d["condensed"] = CONDENSED_NOTE
-    d["updated"] = ("November 8, 2026, Q1 to Q4 pass: the lockmark's 48 px master and ranges, the end mark's exception, "
-                    "L3's masthead master and L6 without its dots. November 7, 2026, apply pass: S1 added, L2 retired, the "
-                    "badge from 48 px, condensed figures kept for the record")
+    d["updated"] = ("November 10, 2026, promotion: the end mark's pixel masters on a 1x screen (DR-180), the rebuilt 24 and "
+                    "48 px lockmark files and L3's masthead master that carries the rebuilt 48 px file (DR-181), and L6 "
+                    "centered (DR-182). November 8, 2026, Q1 to Q4 pass: the lockmark's 48 px master and ranges, the end mark's "
+                    "exception, L3's masthead master and L6 without its dots. November 7, 2026, apply pass: S1 added, L2 "
+                    "retired, the badge from 48 px, condensed figures kept for the record")
     MIN_FILE.write_text(json.dumps(d, indent=1, ensure_ascii=False) + "\n")
     return d
 
@@ -241,7 +262,7 @@ def lockmark_48():
     dst = re.sub(r"<title>.*?</title>", f"<title>{esc(M48_TITLE)}</title>", src, count=1, flags=re.S)
     assert no_title(dst) == no_title(src), "the 48 px master's drawing differs from the approved proposal"
     assert "proposal" not in dst.lower() and "board" not in dst.lower() and "approval" not in dst.lower()
-    master = ID / LOCK[48]
+    master = ID / LOCK_RECT[48]           # the November 8 file; the rebuilt file is in use since DR-181
     master.write_text(dst)
     pw = ID / "prussian" / (master.stem + "-Prussian-White.svg")
     pw.write_text(prussian_hooks(dst))
@@ -265,7 +286,7 @@ def _inner(svg):
 def l3_masthead():
     """L3 as Rule 03.6 now sets it in the masthead, built from two masters with their drawings unchanged."""
     wm = (ID / WM[24]).read_text()
-    lk = (ID / LOCK[48]).read_text()
+    lk = (ID / LOCK_RECT[48]).read_text()    # the November 8 masthead master, kept as the record since DR-181
     wvb = [float(v) for v in re.search(r'viewBox="([^"]+)"', wm).group(1).split()]
     assert wvb == [0, 0, 221, 24], wvb
     x, top = int(wvb[2]) + L3_GAP, int(wvb[3] / 2 - L3_LOCK / 2)
@@ -273,7 +294,7 @@ def l3_masthead():
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 {top} {W} {L3_LOCK}"><title>{esc(L3_TITLE)}</title>{_inner(wm)}'
            f'<svg x="{x}" y="{top}" width="{L3_LOCK}" height="{L3_LOCK}" viewBox="0 0 48 48">{_inner(lk)}</svg></svg>')
     assert _inner(wm) in svg and _inner(lk) in svg and (x, top, W) == (234, -12, 282)
-    master = ID / L3["masthead"]
+    master = ID / L3["masthead_rect"]
     master.write_text(svg)
     pw = ID / "prussian" / (master.stem + "-Prussian-White.svg")
     pw.write_text(prussian_hooks(svg))

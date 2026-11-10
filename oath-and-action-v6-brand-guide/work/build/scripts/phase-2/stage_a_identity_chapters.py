@@ -9,14 +9,19 @@ Q1 to Q4 pass, November 8, 2026: L6 without its pillar dots (DR-129); the end ma
 L3's masthead master and Rule 08.2's feed test (DR-131, CA-S1, CA-S2). Measured figures come from
 work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json, written by stage_a_identity_q_measure.py.
 
+Promotion, November 10, 2026: the end mark's pixel masters on a 1x screen in 17 and 15 px text (DR-180), the rebuilt 24
+and 48 px lockmark masters (DR-181) and L6 centered (DR-182). The end mark's fit figures and the feed test's figures
+with the rebuilt master come from work/handoffs/phase-2/20261110_Promotion-Identity-Figures.json (promotion_identity.py).
+
 Every word follows chapter 02's writing section (DR-73). Typographic quotes and apostrophes are set by smart() on the
 prose fields, so the source stays easy to edit."""
 import re
 
-from stage_a_identity_lib import figures, LOCK, L3
+from stage_a_identity_lib import figures, LOCK, L3, AMP_END
 
 _END = (figures("endmark") or {}).get("measured_at_8x", {})
 _FEED = figures("feed") or {}
+_FIT = figures("endmark_fit") or {}      # the end mark's pixel masters (DR-180), promotion_identity.py
 
 
 def _end(text_px):
@@ -36,6 +41,17 @@ def _feed():
 
 
 _B17 = _END.get("17", {})
+
+
+def _fit(text_px):
+    """The pixel master's height and width in px at a text size, as the promotion's figures give them."""
+    m = _FIT.get(str(text_px))
+    if not m:
+        return None
+    return round(m["b_px"]), round(m["b_width_px"])
+
+
+_F17, _F15 = _fit(17) or (0, 0), _fit(15) or (0, 0)
 
 A = "work/build/assets/identity/"
 
@@ -116,13 +132,13 @@ CH03 = {
                  S("L3 Horizontal with the lockmark", "The site and email masthead, where it is 282 px wide with the lockmark at 48 px. Minimum 196 px wide; 1.55 in"),
                  S("L4 Monogram and tagline", "Document footers and small print. Minimum 304 px wide; 2.30 in"),
                  S("L5 Wordmark and tagline", "Covers, banners and partner placements where the tagline travels with the mark. Minimum 388 px wide; 2.90 in"),
-                 S("L6 Editorial signature", "The strip that closes a report or a long page, with the tagline and the lockmark. Minimum 884 px wide; 6.60 in. A narrower page closes with the footer place (Rule 08.2)"),
+                 S("L6 Editorial signature", "The strip that closes a report or a long page: the wordmark over the tagline, centered on the strip's height, and the lockmark at right. Minimum 884 px wide; 6.60 in. A narrower page closes with the footer place (Rule 08.2)"),
                  S("L7 Section masthead", "Names the pillar a piece serves. Minimum 250 px wide with the longest pillar word; 1.90 in"),
                  S("L8 Monogram", "Small squares where the name must show, such as a tile in a partner's directory; never an avatar or a favicon. Minimum 48 px wide; 0.50 in")],
           files=[A + "lockups/20261107_S1-Stacked-Master.svg", A + "lockups/20261107_S1-Stacked-Master-24px.svg", A + "lockups/20261107_S1-Stacked-Master-16px.svg",
                  A + L3["masthead"], A + L3["today"], A + "lockups/20261028_L8-Monogram-Master.svg"],
           related=["04", "07", "27"],
-          builders="Check the lockup's minimum before you place it. When the space falls under that minimum, switch to the lockup Rule 03.4's table names. S1 replaced the earlier stacked lockup, L2, in November 2026, so retire L2 from your templates; S1's files come in a Charcoal edition with its colors written in, for light grounds, and a White edition in <code>prussian/</code>. L4 to L7 have no master files of their own yet: build them from the wordmark, monogram and tagline masters on the layouts from our brand guide's fifth edition, as the sheet shows, or ask the editor for a file. Leave out the four dots that edition drew under L6's tagline. L3's masthead master serves the 282 px masthead. For print and any other width, place the earlier L3 master, with its lockmark at 2.4 cap heights, until we draw a print L3 at the masthead's proportion."),
+          builders="Check the lockup's minimum before you place it. When the space falls under that minimum, switch to the lockup Rule 03.4's table names. S1 replaced the earlier stacked lockup, L2, in November 2026, so retire L2 from your templates; S1's files come in a Charcoal edition with its colors written in, for light grounds, and a White edition in <code>prussian/</code>. L4 to L7 have no master files of their own yet: build them from the wordmark, monogram and tagline masters on the layouts from our brand guide's fifth edition, as the sheet shows, or ask the editor for a file. Leave out the four dots that edition drew under L6's tagline, and move the wordmark and tagline down 14.7 units of L6's 300 unit height, 9.3 px at 884 px, so the span from the wordmark's cap line to the tagline's baseline sits centered on the strip, as the lockmark does. L3's masthead master serves the 282 px masthead. For print and any other width, place the earlier L3 master, with its lockmark at 2.4 cap heights, until we draw a print L3 at the masthead's proportion."),
         R("03.3", "Keep one cap height of clear space on every side.",
           "Leave 1.0x of open space around the lockup's outer edge, with its tagline and lockmark inside that edge. Text, rules, image edges and other logos all stay outside it. In a partnership lockup the hairline and the partner's logo belong to the lockup, so the clear space runs around all three (Rule 03.8). Over a photograph, set the lockup on a solid Newsprint or Charcoal panel with the same space inside the panel.",
           "Open space lets the eye find the name before it reads anything else, and it keeps a headline or a partner's logo from reading as part of our mark. A measure of one cap height grows with the mark, so the rule holds at every size.",
@@ -148,7 +164,7 @@ CH03 = {
                  S("L3", "196 px wide; 1.55 in"),
                  S("L8", "48 px wide; 0.50 in; never a favicon"),
                  S("Ampersand B and the lockmark", "16 px; 0.25 in"),
-                 S("End mark", f"Ampersand B at the text's cap height, under 16 px in body text: {_B17.get('b_px', 0):.1f} px tall in 17 px text (Rule 04.6)"),
+                 S("End mark", f"Ampersand B at the text's cap height, under 16 px in body text. On a 1x screen it is drawn on whole pixels, {_F17[0]} px tall in 17 px text and {_F15[0]} px in 15 px text (Rule 04.6)"),
                  S("Hinge-circle badge", "48 px; 0.50 in (Rule 04.6)"),
                  S("L4 to L7", "Their minimums are in Rule 03.2's specifications"),
                  S("Favicon", "Ampersand B's 16 px master at 16 px")],
@@ -215,7 +231,7 @@ CH03 = {
     ],
     "extras": [
         {"after_rule": "03.2", "specimen": "s-03-lockups", "label": "The eight lockups", "caption": "Seven of the eight lockups at true size, each with its job and its minimum on screen and in print; L6 follows in its own plate. L1, S1, L3 and L8 are masters; L4, L5 and L7 are built from the approved masters on our fifth edition's layouts."},
-        {"after_rule": "03.2", "specimen": "s-03-l6", "label": "L6 at its minimum", "caption": "L6 at its 884 px minimum, wider than this column, so it scrolls on smaller screens. A page narrower than 884 px closes with the footer place (Rule 08.2). L6 leaves out a web address until ours is settled."},
+        {"after_rule": "03.2", "specimen": "s-03-l6", "label": "L6 at its minimum", "caption": "L6 at its 884 px minimum, wider than this column, so it scrolls on smaller screens. The wordmark and tagline sit centered on the strip, as the lockmark does. A page narrower than 884 px closes with the footer place (Rule 08.2). L6 leaves out a web address until ours is settled."},
         {"after_rule": "03.4", "specimen": "s-03-minimums", "label": "Minimum sizes", "caption": "The smallest size for every mark on screen and in print, and the mark to use below it."},
         {"after_rule": "03.8", "specimen": "s-03-misuse", "label": "Three more failures", "caption": "Three more failures that slide and design apps make easy: a stretched mark, a drop shadow and a recolored ampersand."},
     ],
@@ -295,24 +311,26 @@ CH04 = {
           related=["15", "05", "17"],
           builders="The diagram's lines read <code>--line</code>; leave it at Stone on light grounds and Newsprint on Charcoal. On Prussian, place the White file."),
         R("04.6", "End an article with B alone, and keep the badge for back covers and events.",
-          "An article ends with ampersand B alone, half an em after its last word, in the text's ink. B stands at the text's cap height at every size, so only the curves at its top and foot run past the capitals. In 17 px body text it is " + f"{_B17.get('b_px', 0):.1f} px tall beside capitals {_B17.get('capitals_px', 0):.1f} px tall" + ". The end mark is the one use of B that may stand under its 16 px minimum (Rule 03.4). The hinge-circle badge, B inside the hinge diagram's ring, keeps sizes from 48 px, on back covers and event materials. Keep the badge off anything about a candidate or a ballot measure, where a seal-like mark could read as an endorsement, and add no words or dates to it.",
-          "At 16 px after a period, the badge's ring closes in on B and the mark reads as the registered trademark sign, which tells a reader something false about our mark. B alone stays legible at text size and spends no red, and it keeps the hinge at the end of every piece. Set at the capitals' height, it sits within the line it closes. From 48 px the ring reads as a ring, and with no words on it the badge claims nothing more. Our fifth edition gave the reason: \"Seals imply an authority we do not claim.\"",
-          "Design judgment, approved by our founder and editor in November 2026",
-          "The last lines of an article at true size, body text at 17 px, on Newsprint and on Charcoal: each paragraph ends on B at the text's cap height, in the text's ink, half an em after the period. Below, the badge at 96 px on the back of a 4 by 6 in event card.",
+          "An article ends with ampersand B alone, half an em after its last word, in the text's ink. B stands at the text's cap height. On a 1x screen, which gives each CSS pixel one device pixel, B comes from a master drawn on whole pixels for its text size and sits on the baseline: in 17 px body text it is " + f"{_F17[0]} px tall" + ", with its top on the capitals' top row. On other screens, such as the 2x screens of phones and many laptops, and at other text sizes, B comes from its 16 px master, and only the curves at its top and foot run past the capitals: in 17 px text it is " + f"{_B17.get('b_px', 0):.1f} px tall beside capitals {_B17.get('capitals_px', 0):.1f} px tall" + ". The end mark is the one use of B that may stand under its 16 px minimum (Rule 03.4). The hinge-circle badge, B inside the hinge diagram's ring, keeps sizes from 48 px, on back covers and event materials. Keep the badge off anything about a candidate or a ballot measure, where a seal-like mark could read as an endorsement, and add no words or dates to it.",
+          "At 16 px after a period, the badge's ring closes in on B and the mark reads as the registered trademark sign, which tells a reader something false about our mark. B alone stays legible at text size and spends no red, and it keeps the hinge at the end of every piece. Set at the capitals' height, it sits within the line it closes. On a 1x screen the smooth drawing blurred, with at most 45 percent of its ink pixels at full color, and it moved a row up or down with the line's position. The pixel masters draw every ink pixel at full color and keep B on the capitals' rows wherever the line falls. From 48 px the ring reads as a ring, and with no words on it the badge claims nothing more. Our fifth edition gave the reason: \"Seals imply an authority we do not claim.\"",
+          "Design judgment and our measurements, approved by our founder and editor in November 2026",
+          "The last lines of an article at true size, body text at 17 px on Newsprint and on Charcoal, then 15 px text on Newsprint: each paragraph ends on B at the text's cap height, in the text's ink, half an em after the period. Below, the badge at 96 px on the back of a 4 by 6 in event card.",
           "The badge at 16 px after an article's last word. Beside the registered trademark sign at the same size, its ring reads as the same mark.",
           tokens=["oa.color.text.primary.onNewsprint", "oa.color.identity.signature.onCharcoal"],
           specs=[S("End mark", "Ampersand B alone, half an em after the last word, held to it so B never starts a line"),
                  S("Ink", "The text's ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian; never red", "oa.color.text.primary.onNewsprint"),
-                 S("Size", "B's band, its height less the overshoot above and below, on the text's capitals at every text size, so B stands 16/14 of the cap height tall, from the 16 px master until B reaches 24 px. In body text that puts B under its 16 px minimum, the end mark's exception (Rule 03.4)"),
-                 S("At 17 px text", "The body size: " + _end(17) + ", measured in Chromium. A screen may move B 1 px up or down as it rounds to whole pixels; its height stays the same"),
+                 S("Size", "B at the text's cap height. On a 1x screen in 17 or 15 px text, B's end mark master for that size, set on the baseline. On other screens and at other text sizes, B's band, its height less the overshoot above and below, on the text's capitals, so B stands 16/14 of the cap height tall, from the 16 px master until B reaches 24 px. In body text that puts B under its 16 px minimum, the end mark's exception (Rule 03.4)"),
+                 S("At 17 px text", f"The body size. On a 1x screen, the 14 px end mark master, {_F17[1]} by {_F17[0]} px: its top on the capitals' top row and its last row on theirs. On other screens: " + _end(17) + ", measured in Chromium"),
+                 S("At 15 px text", f"On a 1x screen, the 12 px end mark master, {_F15[1]} by {_F15[0]} px, on exactly the capitals' rows. On other screens: " + _end(15) + ", measured in Chromium"),
                  S("At 19 px text", _end(19)[:1].upper() + _end(19)[1:] + ", measured in Chromium. A screen may move B 1 px up or down as it rounds to whole pixels; its height stays the same"),
                  S("Badge", "From 48 px, its display master; 0.50 in in print. Back covers and event materials"),
                  S("Badge color", "Signature red, ring and B alike; White on Prussian", "oa.color.identity.signature.onCharcoal"),
                  S("Badge, never", "On an avatar or a favicon, or in a view with the wordmark or the hinge diagram"),
                  S("Print finishes", "A blind emboss on uncoated stock, matte red foil on Charcoal, or one color; chapter 25 sets the details")],
-          files=[A + "ampersand/20261028_Amp-B-16px-Master.svg", A + "ampersand/20261028_Amp-B-24px-Master.svg", A + "badge/20261028_Hinge-Badge-Display-Master.svg"],
+          files=[A + AMP_END[17][0], A + AMP_END[15][0], A + "ampersand/20261028_Amp-B-16px-Master.svg", A + "ampersand/20261028_Amp-B-24px-Master.svg",
+                 A + "badge/20261028_Hinge-Badge-Display-Master.svg"],
           related=["12", "24", "25"],
-          builders="Wrap the last word and B in one span that does not break, with <code>margin-left: 0.5em</code> on B, so B never starts a line alone. Draw B from its 16 px master at 16/14 of the text's cap height, with the master's lowest row under the baseline, and in <code>currentColor</code>, so it takes the paragraph's ink. In Inter that is <code>height: 0.831em</code> and <code>vertical-align: -0.052em</code>, and those values hold for text up to 27 px. Place the badge from its display master only."),
+          builders="Wrap the last word and B in one span that does not break, with <code>margin-left: 0.5em</code> on B, so B never starts a line alone. In 17 and 15 px text, put two drawings of B in that span and let a media query show one: the end mark master for the text size, at its own size with <code>vertical-align: 0</code>, under <code>@media (resolution: 1dppx)</code>, and the 16 px master on every other screen. At other text sizes, draw the 16 px master alone. Draw the 16 px master at 16/14 of the text's cap height, with the master's lowest row under the baseline. In Inter that is <code>height: 0.831em</code> and <code>vertical-align: -0.052em</code>, and those values hold for text up to 27 px. Both drawings use <code>currentColor</code>, so B takes the paragraph's ink. Place the badge from its display master only."),
         R("04.7", "Put B on a Charcoal tile for avatars and the app icon.",
           "Social avatars and the app icon show B alone on a Charcoal tile, a circle for avatars and a square for the app icon. The platform prints the account name beside an avatar, so the mark can be the ampersand alone. L8, the monogram, serves squares where the name must show, such as a tile in a partner's directory (Rule 03.7). Favicons use B's 16 px master with no tile.",
           "A feed often draws an avatar at 32 to 48 px. B's 24 px master still reads there, where any lettered mark would set its capitals under the 14 px floor. Charcoal is the default tile because it holds Pillar Red at 4.49 to 1, the strongest red of any approved surface, and stays visible on light and dark app themes.",
@@ -358,8 +376,8 @@ CH08 = {
     "rules": [
         R("08.1", "Draw the lockmark from its master for its size, and keep its drawing fixed.",
           "The lockmark is a three by three grid of nodes joined around its edge and through its center, with the lever in signature red at bottom right. It has four masters. Place the 16 px master from 16 to 23 px, the 24 px master from 24 to 47 px, the 48 px master at 48 px in the masthead and the sign-off, and the display master, drawn for our brand guide's fifth edition, from 49 px. Each master keeps the nine nodes in the same order, their links and the lever at bottom right. The 16, 24 and 48 px masters sit on the pixel grid and draw the nodes and the lever heavier than the display master, so the drawing holds at the sizes each one serves.",
-          "At small sizes our fifth edition's single master lost its shape: at 24 px only 5 percent of its ink was solid, and at 16 px the lever became one pink pixel. The small masters set every node and link on whole pixels and draw the lever one size up, so it still reads as the place where one change moves the rest. At 48 px the display master covers 15 percent of its field with ink, against 42 percent for the 24 px master at 24 px, so the masthead and the sign-off take a 48 px master drawn the same way, which covers 22 percent. Its file draws each node one pixel row at a time, and at any size between whole multiples of 48 px the rows part into stripes, so it serves 48 px alone.",
-          "Our measurements, October and November 2026; the 48 px master approved by our founder and editor in November 2026",
+          "At small sizes our fifth edition's single master lost its shape: at 24 px only 5 percent of its ink was solid, and at 16 px the lever became one pink pixel. The small masters set every node and link on whole pixels and draw the lever one size up, so it still reads as the place where one change moves the rest. At 48 px the display master covers 15 percent of its field with ink, against 42 percent for the 24 px master at 24 px, so the masthead and the sign-off take a 48 px master drawn the same way, which covers 22 percent. In the 24 and 48 px masters each node and the lever is one outline on the pixel grid, so between their sizes the nodes stay whole. The 48 px master serves 48 px alone, since at other sizes its edges fall between pixels and soften.",
+          "Our measurements, October and November 2026; the 48 px master and the rebuilt 24 and 48 px files approved by our founder and editor in November 2026",
           "The lockmark's construction at 240 px, then its four masters at true size: the display master at 96 px and the 48, 24 and 16 px masters. Last, the 48 px master on Charcoal and on Prussian.",
           "Our fifth edition's master scaled to 16 px beside the 16 px master. Its nodes shrink to the width of a link and the lever turns into a single pink pixel.",
           tokens=["oa.color.identity.signature.onNewsprint", "oa.color.palette.stone"],
@@ -370,9 +388,9 @@ CH08 = {
                  S("24 px master", "Centers at 3.5, 11.5 and 19.5 px; 5 px nodes; 7 px lever"),
                  S("48 px master", "Centers at 4.5, 23.5 and 42.5 px; 7 px nodes; 9 px lever; at 48 px only"),
                  S("Display master", "The field and node sizes above, from 49 px; its links stay 1 px wide at every size"), S("Print", "0.25 in at the smallest")],
-          files=[A + "lockmark/20261107_Lockmark-Display-Master.svg", A + LOCK[48], A + "lockmark/20261028_Lockmark-24px-Master.svg", A + "lockmark/20261028_Lockmark-16px-Master.svg"],
+          files=[A + LOCK["display"], A + LOCK[48], A + LOCK[24], A + LOCK[16]],
           related=["03", "05"],
-          builders="The lockmark files read <code>--link</code> for the links and <code>--lever</code> for the lever. Leave the lever on the signature token; on Prussian, place the White file from <code>prussian/</code>. Place the 48 px master at exactly 48 px on whole pixels, since at any other size its rows part into stripes. The display master keeps our fifth edition's drawing, with its links held at 1 px at every size."),
+          builders="The lockmark files read <code>--link</code> for the links and <code>--lever</code> for the lever. Leave the lever on the signature token; on Prussian, place the White file from <code>prussian/</code>. Place the 48 px master at exactly 48 px on whole pixels, the size its pixel grid was drawn for. The 24 and 48 px files this rule lists draw each node and the lever as one outline; the earlier files, one rect per pixel row, stay in the folder only as the record. The display master keeps our fifth edition's drawing, with its links held at 1 px at every size."),
         R("08.2", "Place the lockmark only in its four places, once in a view.",
           "The lockmark signs four places, at the size each one sets: the masthead, where L3 sets it at 48 px beside the wordmark (Rule 03.6); the page header of a report or slide page, 24 px beside the section label; the footer, 24 px beside the tagline or 16 px beside a chart's source line; and the sign-off, 48 px at the bottom right of a social card, cover or poster. Each place draws the master made for its size. A view shows the lockmark once, so when a masthead and a footer share a view, the footer keeps it.",
           "A signature works by turning up in the same place at the same size, so a reader finds it without looking. Because each place draws a master on whole pixels at the size it was made for, the four places read as one mark at the size each one sets. The 48 px master also keeps the sign-off visible when a feed shrinks a social card to 500 px wide or less, as the feed test in the specifications measures. Used as a bullet or scattered as decoration, the lockmark stops signing the page.",
@@ -388,8 +406,7 @@ CH08 = {
                  S("Feed test, our card", _feed()),
                  S("Once in a view", "When a masthead and a footer share one view, the footer keeps the lockmark and the masthead sets the wordmark alone"),
                  S("Favicon", "Never the lockmark: favicons use ampersand B's 16 px master (Rule 03.4)")],
-          files=[A + L3["masthead"], A + LOCK[48], A + "lockmark/20261028_Lockmark-24px-Master.svg", A + "lockmark/20261028_Lockmark-16px-Master.svg",
-                 A + "lockmark/20261107_Lockmark-Display-Master.svg"],
+          files=[A + L3["masthead"], A + LOCK[48], A + LOCK[24], A + LOCK[16], A + LOCK["display"]],
           related=["03", "07", "14", "23"],
           builders="Pick the master by the size the place sets: the 48 px master for the sign-off, and L3's masthead master, which holds it already, for the masthead; the 24 px master in page headers and footers; and the 16 px master in a chart's footer. Set each on whole pixels. Run the feed test on every new template for a social card before it ships."),
         R("08.3", "Let the lockmark code nothing.",

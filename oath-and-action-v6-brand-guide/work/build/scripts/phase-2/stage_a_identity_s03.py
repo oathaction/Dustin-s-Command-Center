@@ -107,12 +107,24 @@ def l5(width_px, surface="newsprint"):
             f'<span style="position:absolute;left:0;top:{142.86 * k:.1f}px">{t1}</span></span>')
 
 
-def l6(width_px, dots=False):
+# L6 centered (DR-182, November 10, 2026): the wordmark and the tagline move down 14.72 units of L6's 300, 9.3 px at 884 px,
+# so the span from the wordmark's cap line (84.38 units) to the tagline's baseline (186.18) has its middle on the strip's
+# middle (150), where the lockmark's middle already sits (149.47). The figure the identity designer's stage B proposal
+# drew it with (work/boards/phase-2/stage-b/drawings/identity/20261109_Identity-Figures.json, key l6). Nothing else moves.
+L6_SHIFT = 14.72
+
+
+def l6(width_px, dots=False, centered=None):
     """L6, the editorial signature strip, on the fifth edition's layout (1400 by 300 units), on Prussian in White.
     The web address waits until it is settled. L6 draws without the four pillar dots since November 8, 2026 (DR-129);
     dots=True draws them only for the changes board's record (stage_a_identity_fix_boards.py). The lockmark keeps L6's
-    own proportion, 148 units, from the master whose range holds that height: the display master at 884 px."""
+    own proportion, 148 units, from the master whose range holds that height: the display master at 884 px.
+    centered (the default without dots, DR-182) moves the wordmark and the tagline down L6_SHIFT units; centered=False
+    draws L6 as it stood before, for the boards that keep that record."""
+    if centered is None:
+        centered = not dots
     k = width_px / 1400
+    dy = L6_SHIFT if centered else 0
     wh = pal("white")
     wm = mark(WM["display"], h=50.8 * k, surface="prussian", decorative=True)
     t1 = svg_file(ID_DIR / TL1, w=363.34 * k, style=f"color:{wh}", decorative=True)
@@ -122,8 +134,8 @@ def l6(width_px, dots=False):
     what = "the wordmark, the tagline, four pillar dots and the lockmark" if dots else "the wordmark, the tagline and the lockmark"
     return (f'<span role="img" aria-label="Oath &amp; Action, L6 editorial signature on Prussian, all in White: {what}." '
             f'style="position:relative;display:block;width:{width_px:.1f}px;height:{300 * k:.1f}px;background:{tv("color-surface-prussian")}">'
-            f'<span style="position:absolute;left:{80 * k:.1f}px;top:{82.5 * k:.1f}px">{wm}</span>'
-            f'<span style="position:absolute;left:{80 * k:.1f}px;top:{170.46 * k:.1f}px">{t1}</span>{dots}'
+            f'<span style="position:absolute;left:{80 * k:.1f}px;top:{(82.5 + dy) * k:.1f}px">{wm}</span>'
+            f'<span style="position:absolute;left:{80 * k:.1f}px;top:{(170.46 + dy) * k:.1f}px">{t1}</span>{dots}'
             f'<span style="position:absolute;left:{1170.5 * k:.1f}px;top:{74.9 * k:.1f}px">{lk}</span></span>')
 
 
@@ -284,7 +296,9 @@ def s_03_lockups():
     return rec("s-03-lockups", "03.2", 712, alt, body, css=LOCK_CSS,
                notes="Two columns at 712 px (C-S7), with L1, S1 and L3 in the left column, so a phone shows them first in the scrolling frame (CD-S7); every mark sits on the bottom of an 88 px box, so each row's names share one line (CA-S11). L1, S1, L3 and L8 are masters; S1 at 40 px capitals from its display master (DR-113). L4, L5 and L7 are assembled from the approved "
                      "masters and re-exported taglines on V5's layouts (I8 note). L6 has its own plate, s-03-l6, since its 884 px "
-                     "minimum is wider than the column. L7's pillar word is live text at 17 px, a size on the scale, which sets L7 at 294 px.")
+                     "minimum is wider than the column. L7's pillar word is live text at 17 px, a size on the scale, which sets L7 at 294 px. "
+                     "L3 from its masthead master in use since November 10, 2026, lockups/20261110_L3-Horizontal-Master.svg, which "
+                     "carries the rebuilt 48 px lockmark master and draws the same pixels as the November 8 file (DR-181).")
 
 
 @spec
@@ -292,11 +306,14 @@ def s_03_l6():
     body = (f'<div class="oai-pad">{l6(884)}<p class="oai-tag" style="margin-top:12px">L6 Editorial signature, at its minimum: 884 px wide on '
             f'screen, 6.60 in in print. The strip that closes a report or a long page, shown on Prussian, where every part is White.</p></div>')
     alt = ("L6, the editorial signature, at its 884 pixel minimum on a Prussian strip, all in White: the wordmark and the "
-           "tagline at left and the lockmark at right. Its print minimum is 6.60 inches.")
+           "tagline at left, centered on the strip's height, and the lockmark at right. Its print minimum is 6.60 inches.")
     return rec("s-03-l6", "03.2", 932, alt, body, fit_switch=True,
                notes="L6 on V5's layout, measured from the Gate 0 capture: 1400 by 300 units, without the four pillar dots V5 drew "
-                     "under the tagline (DR-129). The lockmark keeps L6's proportion, 93.5 px at 884 px, from the display master. "
-                     "No web address until it is settled (DR-55).")
+                     "under the tagline (DR-129). In use since November 10, 2026: the wordmark and tagline centered on the strip "
+                     "(DR-182), moved down 14.72 units, 9.3 px at 884 px, so the span from the wordmark's cap line to the tagline's "
+                     "baseline has its middle on the strip's middle, as the identity designer's stage B proposal drew it. The strip, "
+                     "the lockmark and every size stay as they were: the lockmark keeps L6's proportion, 93.5 px at 884 px, from the "
+                     "display master. No web address until it is settled (DR-55).")
 
 
 # ------------------------------------------------------------------------------------------- 03.3
@@ -361,7 +378,10 @@ def s_03_4_correct():
            "diagram at 533.")
     return rec("s-03-4-correct", "03.4", 712, alt, body, css=MARKROW_CSS,
                notes="Marks at true size are graphics (Stage A brief: the 13 px floor exempts a mark shown at its minimum, and the note says so). "
-                     "L3's lockmark hangs above and below the wordmark's box, so every row aligns on the marks' bottoms (C-S13).")
+                     "L3's lockmark hangs above and below the wordmark's box, so every row aligns on the marks' bottoms (C-S13). L3 at "
+                     "196 px draws its lockmark at 34 px from the rebuilt 24 px master in use since November 10, 2026, each node and "
+                     "the lever one outline, so its nodes stay whole at 34 px (DR-145, DR-181). The lockmark at 16 px is the 16 px "
+                     "master, unchanged.")
 
 
 @spec
@@ -459,7 +479,9 @@ def s_03_6_correct():
            "at right; a 390 pixel phone bar with the wordmark and a menu button; and a 600 pixel white email header with the "
            "wordmark and lockmark.")
     return rec("s-03-6-correct", "03.6", 1440, alt, body, fit_switch=True,
-               notes="Navigation words are placeholders for chapter 20, drawn as div elements (AX-S8). The email header is drawn live here; in email it ships as a PNG.")
+               notes="Navigation words are placeholders for chapter 20, drawn as div elements (AX-S8). The email header is drawn live here; in email it ships as a PNG. "
+                     "Both L3s from the masthead master in use since November 10, 2026, lockups/20261110_L3-Horizontal-Master.svg, "
+                     "which carries the rebuilt 48 px lockmark master and draws the same pixels as the November 8 file (DR-181).")
 
 
 @spec

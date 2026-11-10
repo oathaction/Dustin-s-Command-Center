@@ -11,7 +11,7 @@ fixed sizes (BE-M6, CP-M4, C-M7, D2-254); the Act card reads "The route plan & y
 "Act · How to take part" (D2-250); cards are drawn at a phone column's 358 px, so they fit a phone at true size (C-S7);
 B's sizes share one baseline and the 16 px master shows as pixels at four times (C-S13); the divider centers B on a line
 as wide as the text it divides (DR-96, C-M2); "reports the bill out" is glossed (CP-M9)."""
-from stage_a_identity_lib import (E, ID_DIR, AMP, BADGE, HINGE, LORA, WM, fragment, mark, wordmark, amp, illus, head_label,
+from stage_a_identity_lib import (E, ID_DIR, AMP, AMP_END, BADGE, HINGE, LORA, WM, fragment, mark, wordmark, amp, illus, head_label,
                                   tag, svg_file, ink, ink2, hair, pal, tv, sig, strong, ground, ty, raster_png, inline_master, dnp,
                                   figures)
 from stage_a_identity_s03 import rec as _rec, markrow, MARKROW_CSS
@@ -293,12 +293,15 @@ CAP_EM = 0.7275          # Inter's cap height in em
 REG_PATH = ("M1477 707Q1477 514 1380.5 345.5Q1284 177 1115.5 80.5Q947 -16 754 -16Q557 -16 387.5 84.5Q218 185 124.5 351.5Q31 518 31 707Q31 900 128.0 1068.0Q225 1236 393.0 1333.0Q561 1430 754 1430Q948 1430 1116.5 1332.5Q1285 1235 1381.0 1068.0Q1477 901 1477 707ZM1385 707Q1385 876 1301.0 1020.5Q1217 1165 1070.5 1250.0Q924 1335 754 1335Q586 1335 440.0 1250.5Q294 1166 210.0 1020.0Q126 874 126 707Q126 538 210.5 392.0Q295 246 440.0 162.0Q585 78 754 78Q923 78 1070.0 162.0Q1217 246 1301.0 392.0Q1385 538 1385 707ZM955 289 756 625H595V289H468V1120H775Q917 1120 992.5 1057.0Q1068 994 1068 883Q1068 781 1016.0 719.5Q964 658 879 639L1100 289ZM941 881Q941 950 893.5 986.0Q846 1022 765 1022H595V721H777Q857 721 899.0 763.5Q941 806 941 881Z")
 
 
-def end_b(font_px=17, surface="newsprint"):
+def end_b(font_px=17, surface="newsprint", cls=""):
     """B alone as an article's end mark at the text's cap height (DR-130): B's band, its master's capitals (the 16 px
     master's y 1 to 15), on the text's capitals at every size, with the master's lowest row under the baseline as the
     master draws it. B comes from the master whose range holds its height (Rule 04.1), and from the 16 px master under
     16 px, the end mark's one exception to B's minimum (Rule 03.4). In Inter that is 0.831 em tall with vertical-align
-    -0.052 em. Half an em before it, inside the last word's no-wrap span (CA-S4)."""
+    -0.052 em. Half an em before it, inside the last word's no-wrap span (CA-S4).
+
+    Since the promotion (DR-180) this is the drawing for screens other than 1x and for text sizes without a pixel master;
+    end_mark() pairs it with the pixel master. With cls, the display comes from that class, so a media query can hide it."""
     cap = font_px * CAP_EM
     if cap * 16 / 14 < 24:
         f, h, below = AMP[16], cap * 16 / 14, cap / 14
@@ -306,8 +309,28 @@ def end_b(font_px=17, surface="newsprint"):
         f, h, below = AMP[24], cap * 24 / 22, cap / 22
     else:
         f, h, below = AMP["display"], cap * 1.0269, cap * 0.0135
-    return svg_file(ID_DIR / f, h=h, decorative=True,
-                    style=f"color:{ink(surface)};display:inline-block;vertical-align:{-below:.3f}px;margin-left:0.5em")
+    disp = "" if cls else "display:inline-block;"
+    return svg_file(ID_DIR / f, h=h, decorative=True, cls=cls,
+                    style=f"color:{ink(surface)};{disp}vertical-align:{-below:.3f}px;margin-left:0.5em")
+
+
+# The end mark's switch by screen resolution (DR-180 and the identity notes' question 2, approved with every
+# recommendation): the pixel master where one CSS pixel is one device pixel, the 16 px master everywhere else, so a 2x
+# screen, a 1.5x screen and a zoomed page keep the smooth drawing. A browser that reads neither query keeps the smooth one.
+END_CSS = (".oai .oai-end-fit{display:none}.oai .oai-end-smooth{display:inline-block}"
+           "@media (resolution:1dppx),(-webkit-device-pixel-ratio:1){.oai .oai-end-fit{display:inline-block}.oai .oai-end-smooth{display:none}}")
+
+
+def end_mark(font_px=17, surface="newsprint"):
+    """The end mark as the guide sets it (DR-180): in 17 and 15 px text, B's pixel master, fit B, on the baseline for a
+    1x screen and the 16 px master at the text's cap height for every other screen, one shown by END_CSS; at any other
+    text size, the 16 px master alone."""
+    if font_px not in AMP_END:
+        return end_b(font_px, surface)
+    f, w, h = AMP_END[font_px]
+    fit = svg_file(ID_DIR / f, h=h, decorative=True, cls="oai-end-fit",
+                   style=f"color:{ink(surface)};vertical-align:0;margin-left:0.5em")
+    return fit + end_b(font_px, surface, cls="oai-end-smooth")
 
 
 def end_figures(text_px):
@@ -336,9 +359,15 @@ def _ending(mark_html, surface="newsprint", gap=True):
     return f'<p>{E(head)} <span style="white-space:nowrap">{E(last)}{sep}{mark_html}</span></p>'
 
 
-def _article(mark_html, surface="newsprint", gap=True, label=True):
-    return (f'<div class="oai-s-{surface}" style="width:100%;padding:24px 28px;border:1px solid {hair(surface)};{ty("body")}">'
+def _article(mark_html, surface="newsprint", gap=True, label=True, style="body"):
+    return (f'<div class="oai-s-{surface}" style="width:100%;padding:24px 28px;border:1px solid {hair(surface)};{ty(style)}">'
             f'{head_label() if label else ""}{_ending(mark_html, surface, gap)}</div>')
+
+
+def end_fit_figures(text_px):
+    """The pixel master's figures at a text size (promotion_identity.py, key endmark_fit)."""
+    f = figures("endmark_fit")
+    return (f or {}).get(str(text_px))
 
 
 @spec
@@ -346,25 +375,37 @@ def s_04_6_correct():
     card = (f'<div class="oai-s-charcoal" style="width:384px;height:576px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px">'
             f'{mark(BADGE["display"], h=96, surface="charcoal", label="Hinge-circle badge, 96 px, on the back of an event card")}</div>')
     body = (f'<div class="oai-pad"><div class="oai-stack" style="gap:32px">'
-            f'<div class="oai-stack" style="gap:12px">{_article(end_b())}{_article(end_b(surface="charcoal"), "charcoal", label=False)}'
-            f'<span class="oai-tag">The end mark: B alone at the text\'s cap height, in the text\'s ink, half an em after the period</span></div>'
+            f'<div class="oai-stack" style="gap:12px">{_article(end_mark())}{_article(end_mark(surface="charcoal"), "charcoal", label=False)}'
+            f'{_article(end_mark(15), label=False, style="body-small")}'
+            f'<span class="oai-tag">The end mark in 17 px body text, then in 15 px text: B alone at the text\'s cap height, in the text\'s ink, half an em after the period</span></div>'
             f'<div class="oai-cell">{card}<span class="oai-tag">The badge at 96 px on the back of a 4 by 6 in event card, true size</span></div></div></div>')
     m = end_figures(17) or {"capitals_px": 0, "b_px": 0, "top_over_cap_line_px": 0, "tail_under_baseline_px": 0}
-    alt = ("At true size, the last lines of an article in 17 pixel body text, on Newsprint and again on Charcoal, each ending "
-           "with ampersand B alone in the text's ink, half an em after the final period. B stands at the text's cap height: "
-           f"{m['b_px']:.1f} pixels tall beside capitals {m['capitals_px']:.1f} pixels tall, its curves running "
+    f17 = end_fit_figures(17) or {"b_px": 0, "capitals_px": 0}
+    f15 = end_fit_figures(15) or {"b_px": 0, "capitals_px": 0}
+    alt = ("At true size, the last lines of an article in 17 pixel body text, on Newsprint and again on Charcoal, then in 15 pixel "
+           "text on Newsprint, each ending with ampersand B alone in the text's ink, half an em after the final period. B stands at "
+           "the text's cap height. On a 1x screen it is drawn on whole pixels and sits on the baseline: "
+           f"{f17['b_px']:.0f} pixels tall in 17 pixel text and {f15['b_px']:.0f} in 15 pixel text, its top on the capitals' top row. "
+           f"On other screens it is drawn smooth, {m['b_px']:.1f} pixels tall in 17 pixel text, its curves running "
            f"{m['top_over_cap_line_px']:.1f} pixels over the cap line and {m['tail_under_baseline_px']:.1f} under the baseline. "
            "Below, the hinge-circle badge, a red ampersand B inside a thin red ring, at 96 pixels centered on the Charcoal back "
            "of a 4 by 6 inch event card. The article text is Illustrative.")
-    return rec("s-04-6-correct", "04.6", 560, alt, body, illustrative=True, fit_switch=True,
-               notes="DR-130, CD-N8 and CA-S4. B at the text's cap height, as plate (a) on the changes board: its band, the 16 px "
-                     "master's y 1 to 15, on the capitals, so B is 16/14 of the cap height tall with vertical-align at minus 1/14 of "
-                     "the cap height, in the text's ink. Under B's 16 px minimum by the end mark's exception (Rule 03.4). Measured in "
-                     f"Chromium at eight times beside a capital H of 17 px Inter: capitals {m['capitals_px']:.1f} px, B {m['b_px']:.1f} px, "
-                     f"its top {m['top_over_cap_line_px']:.1f} px over the cap line, its tail {m['tail_under_baseline_px']:.1f} px under the "
-                     "baseline (work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json). Half an em of margin before B, inside a "
-                     "no-wrap span with the last word. The plate is padded 24 px, so its tags and the event card stand clear of the "
-                     "frame (CD-S4, CA-S5).")
+    return rec("s-04-6-correct", "04.6", 560, alt, body, illustrative=True, fit_switch=True, css=END_CSS,
+               notes="DR-130, DR-180, CD-N8 and CA-S4. B at the text's cap height. In use since November 10, 2026 (DR-180): on a 1x "
+                     "screen, B's pixel masters, fit B, on the baseline: ampersand/20261109_Amp-B-14px-End-Mark-Fit-B.svg, 13 by 13 px, "
+                     "in 17 px text and ampersand/20261109_Amp-B-12px-End-Mark-Fit-B.svg, 11 by 11 px, in 15 px text, each with "
+                     "vertical-align 0. On every other screen, as the identity notes' question 2 recommended and Dustin approved with "
+                     "every recommendation (D2-709), the 16 px master at 16/14 of the cap height with vertical-align at minus 1/14 of "
+                     "the cap height. Both sit in the last word's no-wrap span, half an em after it, and a media query in this "
+                     "fragment's style shows one: (resolution: 1dppx), or (-webkit-device-pixel-ratio: 1), for the pixel master. "
+                     "Measured beside a capital H of the same text in Chromium (stage B identity figures, end_mark): at 1x the pixel "
+                     f"master is {f17['b_px']:.1f} px tall beside capitals {f17['capitals_px']:.1f} px in 17 px text and {f15['b_px']:.1f} px "
+                     f"beside {f15['capitals_px']:.1f} px in 15 px text, its top on the capitals' top row and its last row on theirs at four "
+                     "positions of the line between pixels. The smooth drawing at eight times beside 17 px Inter: capitals "
+                     f"{m['capitals_px']:.1f} px, B {m['b_px']:.1f} px, its top {m['top_over_cap_line_px']:.1f} px over the cap line, its "
+                     f"tail {m['tail_under_baseline_px']:.1f} px under the baseline (work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json). "
+                     "Under B's 16 px minimum by the end mark's exception (Rule 03.4). The plate is padded 24 px, so its tags and the "
+                     "event card stand clear of the frame (CD-S4, CA-S5).")
 
 
 @spec

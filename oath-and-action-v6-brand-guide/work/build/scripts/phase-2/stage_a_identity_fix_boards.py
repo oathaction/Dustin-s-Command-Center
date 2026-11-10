@@ -173,7 +173,7 @@ def l6_board():
     out = BOARD / "l6"
     out.mkdir(parents=True, exist_ok=True)
     cells = (f'<div class="cell">{l6(884, dots=True)}<p class="fig">L6 as the guide draws it: the wordmark, the tagline, four pillar dots and the lockmark.</p></div>'
-             f'<div class="cell">{l6(884, dots=False)}<p class="fig">L6 without the four pillar dots. Nothing else moves.</p></div>')
+             f'<div class="cell">{l6(884, dots=False, centered=False)}<p class="fig">L6 without the four pillar dots. Nothing else moves.</p></div>')
     body = ('<header><h1>L6 with and without its four pillar dots</h1><p class="lede">L6, the editorial signature that closes a report, at its '
             '884 px minimum, side by side at true size. The dots stand for the four pillars with no words beside them; the pillars now take '
             'their icons with their words.</p></header>'
@@ -213,8 +213,9 @@ def lk(kind, size, surface="newsprint", label=None):
     if kind == "today":
         if size >= 48:    # the masters as they stood on November 7, 2026, before the 48 px master (DR-131), so a rerun keeps the record
             return mark(LOCK["display"], h=size, surface=surface, label=label or f"Lockmark at {size} px")
-        return lockmark(size, surface=surface, label=label or f"Lockmark at {size} px")
-    path = BOARD / "lockmark" / "20261107_Lockmark-48px-Proposal.svg" if kind == "p48" else ID_DIR / LOCK[24]
+        # the 16 and 24 px masters as they stood then; the rebuilt 24 px file is in use since DR-181 (LIB.LOCK_RECT)
+        return mark(LOCK[16] if size < 24 else LIB.LOCK_RECT[24], h=size, surface=surface, label=label or f"Lockmark at {size} px")
+    path = BOARD / "lockmark" / "20261107_Lockmark-48px-Proposal.svg" if kind == "p48" else ID_DIR / LIB.LOCK_RECT[24]
     return svg_file(path, h=size, label=label or f"Lockmark at {size} px", style=LIB.mark_style(surface), by_ref=False)
 
 

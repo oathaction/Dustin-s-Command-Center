@@ -84,7 +84,9 @@ def s_proofs_masthead():
     return rec("s-proofs-masthead", "proofs", 1488, alt, body, css=PROOF_CSS, fit_switch=True,
                notes="Today's width (DR-115). L3 from its masthead master: the 24 px wordmark master (221 px), 13 px and the lockmark "
                      "at 48 px from its 48 px master (DR-131); phone bar with the 24 px master (Rule 03.6). The width pair it replaces "
-                     "stays on board A as the record.")
+                     "stays on board A as the record. Since November 10, 2026 the masthead master is "
+                     "lockups/20261110_L3-Horizontal-Master.svg, which carries the rebuilt 48 px lockmark master, each node and the "
+                     "lever one outline, and draws the same pixels as the November 8 file (DR-181).")
 
 
 # ------------------------------------------------------------------------------------------- avatar
@@ -170,9 +172,11 @@ def s_proofs_social():
            "specifications. The headline and kicker are invented.")
     return rec("s-proofs-social", "proofs", 1248, alt, body, css=css, illustrative=True, fit_switch=True,
                notes="1200 by 630, the link-preview size, type at the desktop ceiling (D2-254). The headline is chapter 02's hinge example. "
-                     "Sign-off from the lockmark's 48 px master at 48 px (DR-131), and the feed test's figures measured on this card "
-                     "in the built page (work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json, key feed). No web address "
-                     "until the site is settled (DR-55).")
+                     "Sign-off from the lockmark's 48 px master at 48 px (DR-131): since November 10, 2026 the rebuilt file, "
+                     "lockmark/20261109_Lockmark-48px-Master-Outline.svg, each node and the lever one outline (DR-181). The feed test "
+                     "(D2-468) ran again on this card in the built page with that master, and its figures are the ones printed here "
+                     "(work/handoffs/phase-2/20261110_Promotion-Identity-Figures.json, key feed). No web address until the site is "
+                     "settled (DR-55).")
 
 
 # ------------------------------------------------------------------------------------------- letterhead
@@ -223,7 +227,11 @@ def s_proofs_letterhead():
                check_exempt=["scale"],
                notes="A print piece set in points (D2-205): 11 pt body, 10 pt address, slug and footer, so check_exempt scale. "
                      "96 CSS px to the inch, so the sheet is 816 by 1056 px. Display master at 26 px tall, as a print piece places it. "
-                     "Footer: the lockmark at 24 px, 12 px, then the tagline, at the footer's left edge, the footer place as Rule 08.2 now draws it (CA-S10). interactive: the stage holds the PDF link.")
+                     "Footer: the lockmark at 24 px, 12 px, then the tagline, at the footer's left edge, the footer place as Rule 08.2 now draws it (CA-S10). interactive: the stage holds the PDF link. "
+                     "On screen the footer draws the rebuilt 24 px master in use since November 10, 2026, each node and the lever one "
+                     "outline (DR-181). The print proof the link downloads, work/boards/phase-2/stage-a/proofs/20261107_Letterhead-Proof.pdf, "
+                     "was printed on November 7 with the earlier 24 px file, which draws the same pixels at 24 px; it is not printed again "
+                     "in the promotion, since the proofs folder sits with the boards.")
 
 
 def write_letterhead(pdf=False):
