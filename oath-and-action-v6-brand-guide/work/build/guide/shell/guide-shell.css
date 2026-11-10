@@ -522,7 +522,9 @@ a.toc-part-k:hover { text-decoration: underline }
   .rail a, .menu a { border-left-color: Canvas }
   .rail a[aria-current], .menu a[aria-current] { border-left-color: Highlight; text-decoration: underline }
   .hinge-line { border-top-color: CanvasText }
-  .plate-scroll { border: 1px solid CanvasText }
+  /* the frame as an outline inside its box, so it takes no width: a border made 360 px stages 2 px too wide at
+     390 px and showed their scroll hints (round 2, November 10, 2026) */
+  .plate-scroll:not(:focus-visible) { outline: 1px solid CanvasText; outline-offset: -1px }
   .btn, .fit-btn { border: 1px solid ButtonText }
   .fit-btn[aria-pressed="true"] { forced-color-adjust: none; background: Highlight; color: HighlightText }
   .bars { color: ButtonText }

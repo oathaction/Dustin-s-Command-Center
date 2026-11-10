@@ -300,6 +300,17 @@
     rt = setTimeout(function () { sizeFrames(); $$('.plate--fit[data-fit="fit"]').forEach(applyFit); offerFit(); frames(); railCover(); }, 120);
   });
 
+  // A chapter's "Download tokens.css" links to the page's one download in the colophon, and a click starts that
+  // download where the reader is, so the file sits in the page once (round 2, November 10, 2026).
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[data-oa-download]');
+    if (!a) return;
+    var target = document.getElementById(a.getAttribute('data-oa-download'));
+    if (!target) return;
+    e.preventDefault();
+    target.click();
+  });
+
   // Copy buttons write their result to the status line beside them (a polite live region).
   document.addEventListener('click', function (e) {
     var b = e.target.closest && e.target.closest('button.copy');
