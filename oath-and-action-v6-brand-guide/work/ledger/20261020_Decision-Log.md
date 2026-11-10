@@ -1465,3 +1465,42 @@ The creative director scored the makers' plates before the board (D2-567): 6 of 
 |---|---|---|
 | D2-707 | The editor's items 7 to 9 (stale reasons in the scores file, the family answer's old figure, and two creative director judgments to mark as design judgments under W20) go to the creative director at round 3. The board's overrides already correct what Dustin reads | The board prints the corrected words now, and the source files belong to their owner |
 | D2-708 | The main session ran the board's final checks itself (`stage_b_drawings_board_build.py --strict`: exit 0, 27 cards, 117 files, 0.92 MB, all 51 editor overrides matching; `dataviz_check.js --board --no-captures`: 0 failures at 1,440, 390 and 360 px), scanned the publish copy's text, alt text, script and links (fonts from Google Fonts only, no network calls, no dashes, no private paths or addresses, storage used only for the viewer's own marks), read its script in full, checked the 68 SVGs for scripts and outside links (none) and looked at a contact sheet of the 49 PNGs, then published the board privately to https://claude.ai/artifact/WdVDNfjE8cMGw1WAY68hmM (version 1794265439-67e3) | Every file is seen before it is published, and a check is reported only once the main session has run it |
+
+## Drawings board answers, November 10, 2026
+
+Dustin, replying to the stage B drawings board (https://claude.ai/artifact/WdVDNfjE8cMGw1WAY68hmM): "i approve all recommendations". The studio reads this as the board's sample reply, "All as recommended, and I approve every card by name": each card's recommended option, approved by name under gate rule 4 (D2-709). Each drawing below enters the guide's package as a final; the original masters stay as the record (DR-135, D2-464).
+
+| # | Decision | Source |
+|---|---|---|
+| DR-156 | Card 1, Congress: set B for CL-025, R-13 and R-42, the chamber in session seen from the gallery (five members on the near bench seen from behind, a far bench in five sections, a three-tier rostrum with its top tier red). R-13 sets that chamber above two staff and an analyst's report whose chart line takes the red; R-42 sets it beside a red vote card with a yes and a no and CL-064's parcel with a tag for imports. CL-014 takes option C: a ballot's arrow runs at the fenced chamber and stops at the fence on a red bar. All four are outside DR-135 and approved here by name | Dustin, November 10, as recommended, approved by name |
+| DR-157 | Card 2, CL-059 Credit Allocation: option B, a flat-roofed bank with a round vault door on its face, above the red branching path to homes and businesses | Dustin, November 10, as recommended, approved by name |
+| DR-158 | Card 3, R-48 Agency Independence: option C, the commission at its table and the official at a desk, whose arrow stops at the red brace | Dustin, November 10, as recommended, approved by name |
+| DR-159 | Card 4, Testify (new topic drawing): option A, a raised, curved dais with three officials above the witness, who sits at a table with a red microphone | Dustin, November 10, as recommended, approved by name |
+| DR-160 | Card 5, Contact an official (new topic drawing): option A, a person and an official at a desk, joined by one line that carries a red speech mark | Dustin, November 10, as recommended, approved by name |
+| DR-161 | Card 6, the utility family: every action drawn bare, with Error, Success and Warning in their own shapes; no rings or frames on actions | Dustin, November 10, as recommended, approved by name |
+| DR-162 | Card 7, Close: A, a bare cross | Dustin, November 10, as recommended, approved by name |
+| DR-163 | Card 8, Menu: A, three even bars | Dustin, November 10, as recommended, approved by name |
+| DR-164 | Card 9, Arrow (Next, Previous and the sort order): A, an arrow with a shaft and an open head | Dustin, November 10, as recommended, approved by name |
+| DR-165 | Card 10, Chevron (expand and collapse): A, a chevron | Dustin, November 10, as recommended, approved by name |
+| DR-166 | Card 11, Download: A, an arrow down into an open tray | Dustin, November 10, as recommended, approved by name |
+| DR-167 | Card 12, Go to another site: A, an arrow leaving a box by its top right corner | Dustin, November 10, as recommended, approved by name |
+| DR-168 | Card 13, Search: A, a magnifier with its handle to the lower right | Dustin, November 10, as recommended, approved by name |
+| DR-169 | Card 14, Filter: A, a funnel with a slanted spout | Dustin, November 10, as recommended, approved by name |
+| DR-170 | Card 15, Copy: A, two square sheets, the back one up and to the left | Dustin, November 10, as recommended, approved by name |
+| DR-171 | Card 16, Play and Pause: A, a triangle pointing right and two upright bars | Dustin, November 10, as recommended, approved by name |
+| DR-172 | Card 17, Reset: B, three quarters of a circle with an upright corner head at the upper left | Dustin, November 10, as recommended, approved by name |
+| DR-173 | Card 18, Error mark: A, an exclamation mark in a circle | Dustin, November 10, as recommended, approved by name |
+| DR-174 | Card 19, Success mark: B, a check leaving an open circle | Dustin, November 10, as recommended, approved by name |
+| DR-175 | Card 20, Selected check: A, a check | Dustin, November 10, as recommended, approved by name |
+| DR-176 | Card 21, View full size: A, four corners | Dustin, November 10, as recommended, approved by name |
+| DR-177 | Card 22, Sort a column: A, an up arrow and a down arrow side by side | Dustin, November 10, as recommended, approved by name |
+| DR-178 | Card 23, Warning mark: A, an exclamation mark in a triangle, in ink | Dustin, November 10, as recommended, approved by name |
+| DR-179 | Card 24, pillar icons: the 24 px pixel fit B and the 16 px pixel fit on 1x screens; the masters at 24 px on 2x screens | Dustin, November 10, as recommended, approved by name |
+| DR-180 | Card 25, the end mark: fit B at 14 px for 17 px text and at 12 px for 15 px text, B's bowl and tail on the baseline | Dustin, November 10, as recommended, approved by name |
+| DR-181 | Card 26, the lockmark masters: the rebuilt 24 and 48 px files, each node and the lever one outline, replace today's files in use; the 16 px master stays as it is | Dustin, November 10, as recommended, approved by name |
+| DR-182 | Card 27, L6: the wordmark and tagline centered on the strip (moved down 9.3 px at 884 px) | Dustin, November 10, as recommended, approved by name |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-709 | "i approve all recommendations" is read as the board's sample reply: every card's recommended option, approved by name | The reply names approval in Dustin's own words and covers every card; the board's cover gave that sentence as the short reply |
+| D2-710 | The approved drawings are promoted to finals in the next chat, which opens with the promotion and its change ledger lines (from C-050), then round 2 | This chat stands at its handoff point, and promotion touches every maker's folder and the engineer's sprite |

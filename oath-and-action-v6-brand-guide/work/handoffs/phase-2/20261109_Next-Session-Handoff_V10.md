@@ -1,12 +1,12 @@
 # Handoff for the next session: Oath & Action Edition 06 (tenth handoff, November 9)
 
-Written November 9, 2026, after the stage B drawings board was published. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `20261108_Next-Session-Handoff_V9.md`. V5's sections 3 to 5 (rules in force, working notes, preferences), V8's section 3 and V9's section 3 still hold, with the additions below. Decision log entries for this chat end at DR-155 and D2-708. The change ledger ends at C-049.
+Written November 9, 2026, after the stage B drawings board was published, and updated November 10 with Dustin's answers to it. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `20261108_Next-Session-Handoff_V9.md`. V5's sections 3 to 5 (rules in force, working notes, preferences), V8's section 3 and V9's section 3 still hold, with the additions below. Decision log entries for this chat end at DR-182 and D2-710. The change ledger ends at C-049. The open questions add Q-17 (the Atlas V7 file for Phase 3).
 
 ## 1. Where things stand
 
 | Page | Address | Status |
 |---|---|---|
-| Stage B drawings board | https://claude.ai/artifact/WdVDNfjE8cMGw1WAY68hmM | Published November 9 (version 1794265439-67e3), private to Dustin. Waiting for his answers |
+| Stage B drawings board | https://claude.ai/artifact/WdVDNfjE8cMGw1WAY68hmM | Published November 9 (version 1794265439-67e3), private to Dustin. Answered November 10: every card as recommended, approved by name (DR-156 to DR-182) |
 | Chapters page (01 to 08, identity proofs, chapter 11's trackers) | https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF | Version 3, unchanged this chat. The engineer's round 0 shell and token changes are committed but not yet published |
 | Reader check, first page | https://claude.ai/artifact/16SD4uFJTiHKJC5p9CaFpP | Not sent (DR-143). Stays published until Dustin asks to delete it |
 
@@ -32,10 +32,8 @@ Written November 9, 2026, after the stage B drawings board was published. A new 
 
 ## 2. Next, in order
 
-### A. Log the drawings board answers
-Dustin's reply comes from the board's reply panel, one line per card, or as "All as recommended, and I approve every card by name." Log each as a DR line from DR-156, with the option picked and whether it was approved by name. Any card he does not approve goes back to its maker.
-
-The creative director's recommendations, for reference:
+### A. The drawings board answers (done)
+Dustin answered on November 10: "i approve all recommendations". The studio logged each card as DR-156 to DR-182, every one as recommended and approved by name (D2-709). The picks:
 
 | Card | Recommended |
 |---|---|
@@ -52,8 +50,13 @@ The creative director's recommendations, for reference:
 | Lockmark masters | Approve the rebuilt 24 and 48 px files |
 | L6 | Approve centered |
 
-### B. Promote the approved drawings
-Each maker moves its approved options into the package as finals, one folder per family for the engineer's sprite. The originals stay as the record (DR-135, D2-464). Log each change in the change ledger from C-050.
+### B. Promote the approved drawings (the next chat's first job, D2-710)
+Each maker moves its approved options into the package as finals, one folder per family for the engineer's sprite:
+- the Civic Line hand: the six redraws, Testify and Contact an official (with newsprint editions and tiles like the rest of the set), and the pillar pixel fits
+- the utility hand: the picked option for each of the 18 drawings, at 24 and 16 px
+- the identity designer: the end mark fits, the rebuilt lockmark masters, and L6 centered in its specimen and minimum-size records
+
+The originals stay as the record (DR-135, D2-464). Log each change in the change ledger from C-050. Then the engineer builds the sprites from the finals.
 
 ### C. Round 2, the chapters
 Follow the final brief's order: chapter 10 first, then 09 and 11 together, then 12. Carry these in:
@@ -100,12 +103,9 @@ Before you do anything else, read these in order:
 
 Nonpartisan means one standard of evidence for everyone, with findings reported as the record shows them, even when they fall more on one side (DR-93). Never manufacture balance.
 
-Settled and not to be changed: the Civic Line icons, which are final and approved (DR-144), except the drawings I pick on the drawings board; the atlas visual system (System 1, DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and Phase 3 build order (DR-62, DR-63); the chart rules of DR-64; chapter 02's writing rules (DR-73 to DR-83); my fix pass answers (DR-95 to DR-103); my November 7 direction (DR-104 to DR-107); my Board 6 answers (DR-108 to DR-114, DR-128); my board A answers (DR-115 to DR-127); my changes board answers (DR-129 to DR-138); my stage B answers (DR-139 to DR-145); and my November 9 answers (DR-146 to DR-155).
+Settled and not to be changed: the Civic Line icons, which are final and approved (DR-144), with the redraws and new drawings I approved on the drawings board; the atlas visual system (System 1, DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and Phase 3 build order (DR-62, DR-63); the chart rules of DR-64; chapter 02's writing rules (DR-73 to DR-83); my fix pass answers (DR-95 to DR-103); my November 7 direction (DR-104 to DR-107); my Board 6 answers (DR-108 to DR-114, DR-128); my board A answers (DR-115 to DR-127); my changes board answers (DR-129 to DR-138); my stage B answers (DR-139 to DR-145); my November 9 answers (DR-146 to DR-155); and my drawings board answers (DR-156 to DR-182).
 
-My drawings board answers (https://claude.ai/artifact/WdVDNfjE8cMGw1WAY68hmM):
-[paste the reply from the board's reply panel here]
-
-Log my answers, promote the approved drawings, then build stage B's round 2 (the chapters) as the final brief and the tenth handoff order.
+My drawings board answers are logged (DR-156 to DR-182): every card as recommended, approved by name. Promote the approved drawings first, then build stage B's round 2 (the chapters) as the final brief and the tenth handoff order.
 
 The bar for everything: a finished product that looks like it was made by the best branding and design firm in the world. Use specialized agents, red team reviews and the creative director's scoring, as the handoffs describe.
 
