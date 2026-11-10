@@ -20,6 +20,7 @@ Oath & Action Edition 06, Phase 2, stage B, November 10, 2026. Written by the ma
 - **Your own new sentences** follow chapter 02's rules. The editor reads every changed string after this pass (D2-963), and wording faults go to a short second pass (DR-191).
 - **Check as you go.** `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <your scratch>/guide.html` must exit 0, and `node work/build/scripts/phase-2/guide_check.js <your scratch>/guide.html` must show 0 failures. Look at your changed plates at 1440 and 390 px, at 1x and 2x where pixels matter.
 - **Shared chapter 12.** Rules 12.1 to 12.4 and the identity intro sentence are the identity designer's (`stage_b_identity_ch12.py`); Rules 12.5 to 12.9 and the rest of the intro are the systems designer's (`stage_b_ch12_systems_build.py`). Each script rewrites only its own rules, as in round 2. Run the systems script first, then the identity script.
+- **Shared manifests.** `manifest-systems.json` is written by the systems designer's scripts and the chapter 11 hand's; each merges only its own entries. Write it only through your scripts. When every owner is done, the main session reruns every generator in order and rebuilds, which heals any write that crossed another.
 - **Chapter 01.** The editor runs `guide_editor_ch01.py`, then the identity designer runs `stage_b_identity_ch01.py` (D2-912). The chapter 11 hand's `s-01-pieces` change goes through the editor's build: send the editor the class names, or edit the mark markup in the place the editor's notes name.
 
 ## Rulings by the main session
@@ -93,7 +94,7 @@ Chapter 01's words (`guide_editor_ch01.py`), the reader check's questions file, 
 5. CD-S14: Rule 01.11's count source keeps H04's order, and a short note headed "How we counted" holds the method, Ohio, Missouri and Utah, every fact kept as DR-187 sets it.
 6. CD-S15: `s-01-pillars`'s label reads "On a page that serves Track, at 48 px".
 7. BE-S8 for chapter 01's source lines, if any lacks a period.
-8. When the other owners finish: read every changed string in chapters 01 and 05 and 09 to 12 and their alts against chapter 02's rules, and list any fault as a table for the short second pass (D2-963). Edit no other owner's file.
+8. Do items 1 to 7 now and write your notes. Then stop: the main session sends you a message when the other owners finish, and you read every changed string in chapters 01 and 05 and 09 to 12 and their alts against chapter 02's rules, and list any fault as a table for the short second pass (D2-963). Edit no other owner's file.
 
 ## The engineer
 
@@ -106,7 +107,35 @@ The shell, `guide_build.py`, `guide_check.js`, tokens and the reader check page.
 
 ## Craft and accessibility items
 
-(Added when the craft and accessibility report lands.)
+Rulings first:
+- **D2-971. Five drawings that look alike at 24 px (CA Q1).** The 41 stay as DR-136 set them. Rule 10.9 gains one line: at 24 px, never set two of CL-023, CL-028, R-08, R-27 and R-45 in one view; `s-10-9-correct` shows the five as a 24 px look-alike group. The line narrows use and changes no approved list, so it is routine; board B shows it.
+- **D2-972. The stepper's pace (CA-M1).** Play holds each step for about 250 ms a word and never under 6 seconds, under reduced motion too, and Rule 11.14's spec states the pace. This replaces D2-868's 2.4 seconds.
+- **D2-973. The social card in the reader check (CA-S18, first point).** The identity designer judges whether the proofs' social card kicker should read at feed size (358 px wide, Rule 08.2's feed test) and either enlarges it in `s-proofs-social` or logs why not. The engineer recaptures the card after.
+
+Overlaps, applied once: CA-S4 with CD-S5 (moot if BE-M2 removes "all-party"); CA-S6 with CD-S1; CA-S10 with CD-S10; CA-S15 with CD-S14; CA-S18's copy text with PP-S14; CA-S1 with CD-M1.
+
+| Item | Owner | What |
+|---|---|---|
+| CA-M1 | Chapter 11 hand | The stepper's pace, D2-972 |
+| CA-M2 | Chapter 11 hand; engineer | "Clear the search" at 44 by 44 px; the guide check types into the field before it measures |
+| CA-S1 | Chapter 11 hand | The reader's page title reaches screen readers (with CD-M1's real text lines, the whole page can be readable) and the status line names the page's title |
+| CA-S2 | Chapter 11 hand | The filter's results say how many more there are |
+| CA-S3 | Chapter 11 hand | The phone menu's header bar stays put while its list scrolls |
+| CA-S4 | Chapter 11 hand | Hyphenated compounds never split at a line end in a fixed plate |
+| CA-S5 | Identity designer | Chapter 09's four 400 to 406 px plates fit at 390 and 360 px (build at 358 or 360 px, as chapter 11 does) |
+| CA-S6 | Identity designer | With CD-S1 |
+| CA-S7 | Systems designer; editor for words | Rule 10.2: one red accent for one idea, which may be one shape or a few, pointing to Track |
+| CA-S8 | Systems designer | "Contact an official" breaks as "Contact / an official" or takes the width it needs |
+| CA-S9 | Systems designer (`s-10-4-correct`); editor (`s-01-21-correct`) | The Illustrative label at the head of a wholly invented piece; beside the item, in one place, where real and invented mix |
+| CA-S10 | Identity designer | With CD-S10 |
+| CA-S11 | Identity designer | Rule 12.4's patterns: the rules drawn from the hinge or dropped, and the two covers set without a third of the frame empty (design judgment, logged) |
+| CA-S12 | Systems designer | The locator's state headline gets at least 200 px |
+| CA-S13 | Engineer; identity designer | `s-03-l6` breaks out of the text column at 1280 px and up, so L6 shows whole |
+| CA-S14 | Identity designer | `s-08-1-correct`'s six masters in two rows of three or one row of six |
+| CA-S15 | Editor | With CD-S14: one source per line, the method its own paragraph |
+| CA-S16 | Engineer | The masthead wordmark takes one system color in forced colors |
+| CA-S17 | Engineer | The part navigation wraps at 200 percent text |
+| CA-S18 | Identity designer (card, D2-973); engineer (copy text, step 7's grid of four columns) | The reader check's three faults |
 
 ## Notes and limits
 
