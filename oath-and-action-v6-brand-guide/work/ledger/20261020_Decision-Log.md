@@ -1755,3 +1755,47 @@ Dustin, replying to three questions (the plate's count after Missouri's vote, th
 | D2-845 | The layer diagram draws the three layers and their parts from the atlas model, with the core outlined heavier | The brief allows an exploded view here alone; reading the model keeps the diagram true when the atlas changes |
 | D2-846 | The "Who owns the next step?" frame uses a federal records request, with the clocks from 5 U.S.C. 552 and the routes after an appeal from the research notes, section 7A | Its owners and clocks are set by statute and sourced; chapter 11 draws the same process as status steps, so the frame shows the other side, who acts |
 | D2-847 | Every chapter 12 specimen of mine is named by device and listed in `manifest-systems.json`; my build removes only those device names | D2-829, and two makers share the chapter |
+
+### Systems designer, chapter 11 (`20261110_Stage-B-Round-2-Systems-Ch11-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-848 | Chapter 11's invented state bills share one counter, H.99001, S.99002, H.99003 and on, in the order the chapter first shows them; S.0876 becomes S.99002 so chapter 08's plate keeps the same bill | DR-151 names the first two numbers; one counter keeps every number unique across both chambers and both chapters |
+| D2-849 | The Nebraska bill is LB 99008, with Nebraska's own prefix for a Legislative Bill | Nebraska has no House or Senate prefix; the number follows DR-151's range |
+| D2-850 | The Nebraska bill joins Rule 11.1's correct plate, and its status line opens "Nebraska has one chamber." directly under the marks | DR-150 puts the words beside step 5 on every Nebraska card; Rule 11.1 is the rule that says every state keeps six steps |
+| D2-851 | Each mark sits in a group tagged `data-icon="S-<state>"` and `data-icon-family="status"`, with a clear square of the circle's own size first, and the take-part disc after the group | Chromium measures a group by its shapes without their strokes, so the square makes guide check B-3 read 24, 26, 28 or 30 px; the disc reaches past the circle and would read 29 px |
+| D2-852 | The clear square is dropped from marks inside a picture plate | B-3 reads marks only outside pictures; the squares would cost about 20 KB of the chapter's budget for nothing |
+| D2-853 | `MARK_CSS` sets each mark width from its token by class (`rn`, `ra`, `sl`, `lr`, `la`, `td`, `tk`, `tc`, and `halo`), and the markup keeps its width attributes | The engineer's request, with the attributes left as the fallback and as `markTokens`' hooks; a failure plate's deliberate fault carries no token class, so it keeps its own width |
+| D2-854 | A records request and an agency rule print their end words, bold, in place of "Step n of 6", with the date | DR-108 says a signed bill reads as law in words; the end state is what a reader needs first |
+| D2-855 | A rule issued without advance comment slashes step 1 as well as steps 2 to 4 | The agency gave no early notice either, and D2-527 slashes step 1 when it is skipped |
+| D2-856 | "In effect" fills all six steps, as "Became law" does | The research lead left the question to the systems designer; both mean the process finished and the text binds |
+| D2-857 | A proposed rule that sits says "No action since" and the date under its step, with no mark of its own | The research lead's second question; D2-528 keeps waits in words |
+| D2-858 | The warning mark stays in the set, for a status we read from the record ourselves, with "Checked" and the date | D2-510 leaves the call to me; a dated check is the notice the audit names, and Rule 11.10 needs it |
+| D2-859 | The error mark draws in the text's ink; the error's red is a 4 px bar at the left of the field and of the message, drawn as a border | Pillar Red measures 2.64 to 1 on the Error Band and 2.96 on Newsprint, under 3 to 1 for a mark; Charcoal measures 11.89 on the band; a border survives forced colors where a box-shadow does not (question 1) |
+| D2-860 | The success mark draws in Verdigris, 3.37 to 1 on Newsprint, and the warning mark in ink | The state tokens as they stand |
+| D2-861 | Rule 11.16 draws the intervention marker as System 1 draws a reform's target: the variable's outline at 3 px, red only when it holds the view's red | The Times Explainer's own rule (`.node.ak-target .pl{stroke-width:3px}`); chapter 12 owns the final marker, and I match it when it lands |
+| D2-862 | A live specimen sets `forced-color-adjust: auto` on its component and gives it an opaque ground | Its controls then take the system's colors as a product's would, while the stage around it keeps the guide's (AX-S6, D-4); the opaque ground turns to Canvas, so text never lands on a kept Newsprint |
+| D2-863 | Every control rule in a live specimen names `.ui` first | The shell sets `font: inherit` on every button and input in a stage at (0,1,1), which outranked my class rules and set the red ask in 17 px regular, under 4.5 to 1 as small text |
+| D2-864 | The reader's page size stays two word buttons, Fit width and Full size, pressed one bold and underlined at 2 px | DR-154 keeps zoom as words; C-5 asks for a cue besides color |
+| D2-865 | The library demo reads the editor's label table for chapter 10 and chapter 10's list of 41, and counts by kind: topic, atlas, pillar | One source for the words; the counts are true to the set in use, 124 drawings, 101 atlas, 41 at 24 px |
+| D2-866 | The phone menu is a modal dialog inside the phone frame: the rest of the frame goes inert, Tab stays inside, Escape and Close return focus to Menu, and its links lead to chapter 11's own rules | G-3, and every link lands on an id in the page whatever other chapters it holds |
+| D2-867 | The loop stepper uses Atlas V7's loop R10, with each step's verb read from the chain's sign and the link's own plain sentence, and its text set with typographic apostrophes | Real atlas content; the atlas data writes straight apostrophes, which chapter 02 rules out |
+| D2-868 | Play advances every 2.4 seconds only after a press, and Pause stops it | E-3; reader-controlled playback |
+| D2-869 | The form validates on submit, moves focus to the first field to fix, and sends success to a status line from a template | SC 3.3.1 and 4.1.3; a status region that exists from the start is announced reliably |
+| D2-870 | The links in Rule 11.13's correct plate are real sources from the research lead's sections 5 and 7, in the same tab | D2-513; a live link to a real page shows the rule as a reader meets it |
+| D2-871 | Rule 11.14's failure draws CL-024 from the sprite at 24 px, one color, tagged `topic` | CL-024 is among the 41, so B-3 holds; the fault is semantic (D2-515) |
+| D2-872 | Fault drawings that belong to no family (Rule 11.5's dots, Rule 11.6's generic stepper, the information mark, the pointer and the small figure's arrows) carry no `data-icon` | Tagging them would add made-up members to a family |
+| D2-873 | Each specimen keeps only the CSS rules whose classes its markup carries, and drops a type style's own `font-variant-numeric: normal` after `font:`, and `letter-spacing: 0em` and `text-transform: none` for the reading styles | The pieces share one style source; the stage already inherits those values, and no piece sets a reading style inside a label; this saved about 100 KB |
+| D2-874 | Fixed-width plates in chapter 11 set `fit_switch: false` | Every one sets 13 px step names or numbers, so D2-442 can never offer a fit, and the switch's markup cost about 10 KB |
+| D2-875 | The wide list on Charcoal, the bill page on Charcoal and the wide bill page leave the chapter, and one extra now shows the wide form on Charcoal with two bills | Chapter 11's 0.55 MB budget; one plate still shows both the wide form and the Charcoal marks, and the wide page's key of meanings is the six-steps table after Rule 11.1 |
+| D2-876 | Rule 11.2's states show at true size only, and a table of the request and rule steps is not shipped | The same budget; each step's name and meaning sit in Rules 11.8 to 11.10 and the sources list |
+| D2-877 | 13 px step numbers take their size from the marks' CSS (0.8125rem), and only 14 px numbers write a size | 13 is the common size; about 5 KB |
+| D2-878 | The marks and live specimens read the surface's short role names (`--oa-color-graphic-essential` and the rest) | The stage's surface class points them at its own values (shell notes, section 5), so one declaration serves Newsprint and Charcoal |
+| D2-879 | Source lines name a site without its long path | A long path does not wrap and pushed the page 10 px sideways at 360 px |
+
+### Main session, on chapter 11
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-880 | Chapter 11 is built with the error mark in the text's ink and a 4 px Pillar Red bar at the left of the field and the message, as its maker recommends; board B's decisions panel puts it to Dustin by name, beside the mark drawn in red | A red line glyph measures 2.64 to 1 on the Error Band and 2.96 on Newsprint, under Rule 05.5's 3 to 1 for a mark; DR-173 approved the drawing, and its color touches a token Gate 2 confirms |
+| D2-881 | `s-05-3-corrective` draws the error as a white cross in a red disc; round 3's fix pass redraws it with `U-error` | DR-173 and D2-509 make the error mark a circle holding an exclamation mark, and a cross means Close |

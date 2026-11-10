@@ -61,10 +61,15 @@ Both draw 1 px in the hairline token. Ink coverage, measured on a 240 px swatch 
 
 ## Check figures
 
-- **Strict build** (`guide_build.py --strict`, 11 chapters, 123 rules, 285 specimens): 0 warnings. The notes that chapter 01's three specimens inline sprite drawings are gone; the notes left are the engineer's own, on the 16 px utility line token.
-- **Guide check** (`guide_check.js`, 1440, 1024, 390 and 360 px): 4 failures, all one: the studio word "gate" in chapter 10's `s-10-lib-03`, at each width, which belongs to chapter 10's maker. Chapters 01, 03, 04, 08 and 09 and the proofs pass every check, among them icon sizes, pillar order, red, text size and contrast, type scale, codes and axe-core.
+- **Strict build, final** (`guide_build.py --strict`, 12 chapters, 132 rules, 304 specimens): 0 warnings. The notes that chapter 01's three specimens inline sprite drawings are gone; the notes left are the engineer's own, on the 16 px utility line token.
+- **Guide check, final** (`guide_check.js` at 1440, 1024, 390 and 360 px, on the page with chapters 09 and 12): PASS, 0 failures, 1,074 same-page links. Among its checks: icon sizes, pillar order, red, text size and contrast, type scale, studio codes and axe-core. An earlier run, before chapter 12 and before chapter 10's maker fixed it, failed only on the word "gate" in `s-10-lib-03`.
 - **The 1x and 2x pattern, looked at:** in the built page the 24 px rows draw the crisp fits at 1x and the smooth masters at 2x (Rule 09.1's plate, enlarged).
-- **Looks:** every chapter 09 plate, chapter 01's three plates and `s-08-3-*` at 1440 and 390 px, with the masthead hidden, and three at 2x. Four looks led to changes: the stacked column's words started at ragged points; the ladder's words sat low beside the 96 px icons; the failure's two enlarged views stacked under long tags; and the opener's icon stood about 10 px inside the text's edge while the card's job line left one word on its last line.
+- **Pattern coverage:** hinge arcs 5.5 percent, hinge rules 8.3 percent, on 1x renders of a 240 px swatch.
+- **Chapter 12's shared file:** nine rules in order, 12.1 to 12.9; the systems designer's five rules match the file as it stood before my merge; their `check_chapter` passes on it.
+- **Looks:** every chapter 09 and chapter 12 plate, chapter 01's three plates and `s-08-3-*` at 1440 and 390 px with the masthead hidden, three chapter 09 plates at 2x.
+- **Fixes the looks led to:**
+  - Chapter 09: the stacked column's words started at ragged points, the ladder's words sat low beside the 96 px icons, the failure's enlarged views stacked under long tags, the opener's icon stood about 10 px inside the text's edge, and the card's job line left one word alone.
+  - Chapter 12: the arcs spilled out of their area behind the title, because the library's SVG rule lets drawings overflow, and their area began 6 px under the words. The divider's surface swatches collapsed to slivers, and "Rule 04.4" broke across two lines in the index.
 
 ## Routine calls
 
@@ -118,12 +123,16 @@ None this round so far.
 - `stage_b_identity_ch01.py` run twice: the second run changed nothing.
 - The strict build, and the guide check at four widths (figures above).
 - The chapter 09, chapter 01 and `s-08-3` plates looked at in the built page at 1440 and 390 px, three at 2x.
+- Chapter 12: the merged file's rule order, the systems designer's rules unchanged, their copy check on the whole file; every Rule 12.1 to 12.4 plate at 1440 and 390 px; pattern coverage on 1x renders.
 
 ## Not tested
 
 - Real 1.25x and 1.5x screens, Firefox and Safari; the pattern's switch was looked at in Chromium at 1x and 2x only.
 - The editor's copy edit and the creative director's look at chapter 09.
 - The tile on a White page or a phone home screen; the opener at widths other than its 552 px panel.
+- The watermark and the patterns in print; the watermark on White and Prussian, and a pattern on Charcoal, which the rules allow and no plate draws.
+- The compact signature in a real video, under compression and over moving footage.
+- The systems designer's script run after my merge; I read its merge code and ran its copy check, and did not run its build.
 
 ## Change log
 

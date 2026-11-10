@@ -115,7 +115,6 @@ The links list (`s-11-13-correct`) is live too. Each finds its elements by data 
   - For A-5: my trackers carry their state words in the alt and status line, and carry no `data-step`.
 - **Chapter 05's owner.** `s-05-3-corrective` draws the error as a white cross in a red disc. DR-173 and D2-509 make the error mark a circle holding an exclamation mark, and the cross means Close. The approved drawing is `U-error`.
 - **Chapter 10's maker.**
-  - `s-10-lib-03`'s meaning sentence ("A parcel meets a gate with two bars across it") fails `codes` on the word "gate", the page's only remaining failure.
   - Please confirm the intervention marker for chapter 12, or send me its final drawing for Rule 11.16 to match.
 - **Editor.**
   - Every word in chapter 11 is yours to change through your table.
@@ -126,11 +125,10 @@ The links list (`s-11-13-correct`) is live too. Each finds its elements by data 
 
 - `python3 -I work/build/scripts/phase-2/apply_systems_ch11.py`: 16 rules, 37 specimens, 19 figures. Every specimen passes the systems checks: no heading, landmark, dash, literal color or px font size; curly quotes in every alt.
 - `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide.html`: exit 0, no warnings, 12 chapter files, 128 rules, 295 specimens. Chapter 11 weighs 548,024 bytes against 550,000.
-- `node work/build/scripts/phase-2/guide_check.js <scratch>/guide.html` at 1440, 1024, 390 and 360 px.
-  - Chapter 11 has no failure.
-  - The page's only failure is `s-10-lib-03`'s "gate" (chapter 10).
+- `node work/build/scripts/phase-2/guide_check.js` on a frozen copy of the final build (`<scratch>/guide-final.html`, 132 rules, 304 specimens, after the editor's changes) at 1440, 1024, 390 and 360 px: **PASS, 0 failures**, 1,074 same-page links.
   - Stage B checks at 390 px found 304 icons outside pictures, none without a family. They read 359 glyph parts (263 through `<use>`), and every mark token has readers (ring now 52, ahead 90, slash 18, halo 18, lines 123 and 45, disc 24, keyline 26, cut 26).
   - axe-core 4.10.2 passes, and so do `focus`, `menuDialog` and `textSpacing`.
+  - The run before it failed only on chapter 10's `s-10-lib-03` ("gate"), which its maker has since fixed.
 - An earlier run caught three of my faults, now fixed: the red ask at 17 px (font inherited), and a source path that pushed the page to 370 px at 360.
 - By script in Chromium at 390 px, every live specimen.
   - **Reader:** page 1 to 2 to 12; Previous and Next unavailable at each end with their reason; Full size pressed.
