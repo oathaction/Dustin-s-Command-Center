@@ -1,0 +1,1139 @@
+{
+ "title": "Creative director's scores for the stage C drawings",
+ "date": "2026-11-10",
+ "author": "Creative director (oa-creative-director), subagent of the main session",
+ "basis": "20261110_Drawings-Board-C-Brief.md and DR-205; Master Brief section 6 rubric; the review is 20261110_CD-Review-Of-Stage-C-Drawings.md",
+ "criteria": [
+  {
+   "key": "craft",
+   "name": "Craft"
+  },
+  {
+   "key": "clarity",
+   "name": "Clarity"
+  },
+  {
+   "key": "brand_fidelity",
+   "name": "Brand fidelity"
+  },
+  {
+   "key": "usefulness",
+   "name": "Usefulness"
+  },
+  {
+   "key": "evidence_honesty",
+   "name": "Evidence honesty"
+  },
+  {
+   "key": "accessibility",
+   "name": "Accessibility"
+  }
+ ],
+ "sign_off_rule": "A card is ready for the board when every option it shows scores 4 or more on every criterion and nothing is owed to a maker. lowest_score is the lowest score of any option on the card.",
+ "naming_test": "The creative director's own reading at 48 px for Housing and 16 px for the utility redraws, with no label shown, standing in for a first-time reader while knowing what each drawing was meant to show. The 37 fits are judged against their masters, part by part.",
+ "cards_ready": [
+  "Utility-16-Pause-Filter",
+  "Civic-Line-24-Fits",
+  "Print-L3",
+  "Social-Sign-Off-96"
+ ],
+ "cards_waiting": [
+  {
+   "card": "Housing",
+   "waits_on": "Option B redrawn or withdrawn by the icon designer, then rescored here"
+  }
+ ],
+ "family_questions": [
+  {
+   "question": "Should Housing be added to the 24 px list now?",
+   "raised_by": "Icon designer (question 5)",
+   "answer": "No. Housing stays at 48 px and up until Dustin picks an option and adds it to the list of 41; its 24 px fit is drawn then."
+  },
+  {
+   "question": "Should R-06's fit change, given its flags against R-41 and R-44?",
+   "raised_by": "Icon designer (question 6)",
+   "answer": "No change to the fit. The flags are inherited and lower than the masters'; R-06, R-41 and R-44 join the groups that never share a view at small sizes under Rule 10.9."
+  }
+ ],
+ "general_must_fix": [],
+ "general_should_fix": [],
+ "cards": [
+  {
+   "order": 1,
+   "id": "Housing",
+   "title": "Housing (new topic symbol, DR-196)",
+   "family": "Civic Line new topic",
+   "judged_at": "48 px with no label, with 128 px and 2x for craft and 24 px as a reference size, on Newsprint and Charcoal, beside CL-051, CL-054, CL-053, R-30, CL-063, CL-052, CL-065, R-26, R-43, CL-035, CL-031, CL-029, CL-033, CL-022, CL-047 and R-37",
+   "scores": {
+    "craft": {
+     "score": 4,
+     "reason": "Sits at the capped fit with the set's line, round caps and joins, and holds at 128 px and 2x; its six windows stay open at 48 px and close up at 24 px."
+    },
+    "clarity": {
+     "score": 4,
+     "reason": "Reads as an apartment block beside a house: homes of more than one kind, the subject as the atlas holds it (A5, A6 and EC9 in D09); the label lands at once."
+    },
+    "brand_fidelity": {
+     "score": 4,
+     "reason": "One red accent, one window of the block, about 4 percent of its ink, near the set's lowest (R-39, 3.5 percent; my approximate measure); no lone house, row of houses or equal sign."
+    },
+    "usefulness": {
+     "score": 4,
+     "reason": "Four editions, 12 tiles at the 48 px bare floor, PNGs at 128 and 256 px, previews beside the neighbors and a manifest; every tile keeps at least 21 units to its edge."
+    },
+    "evidence_honesty": {
+     "score": 4,
+     "reason": "The meaning note comes from the atlas model by script and names its one outside source with a read date; the naming test is labeled as one reader; the likeness figures match my rerun."
+    },
+    "accessibility": {
+     "score": 4,
+     "reason": "The shapes carry the subject in the black edition without red, and the label carries the name, as the system allows for red on Newsprint."
+    }
+   },
+   "scores_note": "Led by the recommended option, A, as on the stage B board. Each option's six scores are in option_scores.",
+   "option_scores": {
+    "A": {
+     "craft": {
+      "score": 4,
+      "reason": "Sits at the capped fit with the set's line, round caps and joins, and holds at 128 px and 2x; its six windows stay open at 48 px and close up at 24 px."
+     },
+     "clarity": {
+      "score": 4,
+      "reason": "Reads as an apartment block beside a house: homes of more than one kind, the subject as the atlas holds it (A5, A6 and EC9 in D09); the label lands at once."
+     },
+     "brand_fidelity": {
+      "score": 4,
+      "reason": "One red accent, one window of the block, about 4 percent of its ink, near the set's lowest (R-39, 3.5 percent; my approximate measure); no lone house, row of houses or equal sign."
+     },
+     "usefulness": {
+      "score": 4,
+      "reason": "Four editions, 12 tiles at the 48 px bare floor, PNGs at 128 and 256 px, previews beside the neighbors and a manifest; every tile keeps at least 21 units to its edge."
+     },
+     "evidence_honesty": {
+      "score": 4,
+      "reason": "The meaning note comes from the atlas model by script and names its one outside source with a read date; the naming test is labeled as one reader; the likeness figures match my rerun."
+     },
+     "accessibility": {
+      "score": 4,
+      "reason": "The shapes carry the subject in the black edition without red, and the label carries the name, as the system allows for red on Newsprint."
+     }
+    },
+    "B": {
+     "craft": {
+      "score": 4,
+      "reason": "The cleanest symmetric drawing of the three, at the capped fit, holding at 128 px and 2x."
+     },
+     "clarity": {
+      "score": 3,
+      "reason": "Reads first as one large house, the collision the meaning note sets out to avoid, and then as a school or town hall: its red arched door is the sign CL-031 Local Government and R-31 Childcare Supply use for a public building."
+     },
+     "brand_fidelity": {
+      "score": 4,
+      "reason": "One red accent, the door, about 10 percent of its ink; in the set's hand."
+     },
+     "usefulness": {
+      "score": 4,
+      "reason": "Four editions, 12 tiles at the 48 px bare floor, PNGs at 128 and 256 px, previews beside the neighbors and a manifest; every tile keeps at least 21 units to its edge."
+     },
+     "evidence_honesty": {
+      "score": 4,
+      "reason": "The meaning note comes from the atlas model by script and names its one outside source with a read date; the naming test is labeled as one reader; the likeness figures match my rerun."
+     },
+     "accessibility": {
+      "score": 4,
+      "reason": "The shapes carry the subject in the black edition without red, and the label carries the name, as the system allows for red on Newsprint."
+     }
+    },
+    "C": {
+     "craft": {
+      "score": 4,
+      "reason": "The clearest silhouette at every size; its teeth are small at 48 px."
+     },
+     "clarity": {
+      "score": 4,
+      "reason": "Reads as a house key: getting into a home, close to housing's 'who can stay in it'; it leans to home and ownership."
+     },
+     "brand_fidelity": {
+      "score": 4,
+      "reason": "One red accent, the house-shaped bow, about half its ink, level with the set's highest (CL-057, 48 percent; my approximate measure); it reuses the set's key, which CL-047 Data Rights draws in red and R-37 Feed Choice in black."
+     },
+     "usefulness": {
+      "score": 4,
+      "reason": "Four editions, 12 tiles at the 48 px bare floor, PNGs at 128 and 256 px, previews beside the neighbors and a manifest; every tile keeps at least 21 units to its edge."
+     },
+     "evidence_honesty": {
+      "score": 4,
+      "reason": "The meaning note comes from the atlas model by script and names its one outside source with a read date; the naming test is labeled as one reader; the likeness figures match my rerun."
+     },
+     "accessibility": {
+      "score": 4,
+      "reason": "The shapes carry the subject in the black edition without red, and the label carries the name, as the system allows for red on Newsprint."
+     }
+    }
+   },
+   "lowest_score": 3,
+   "lowest_score_note": "Option B's clarity. The card waits until B is redrawn or withdrawn.",
+   "recommended": {
+    "option": "A",
+    "reason": "A names housing for renters and owners alike, homes of more than one kind, and keeps furthest from the drawings where a house means one household (0.501 against CL-054, 0.251 against CL-053, 0.290 against R-30). The lit red window is a precise use of the accent."
+   },
+   "options": [
+    {
+     "option": "A",
+     "real_choice": true,
+     "note": "Homes of more than one kind: an apartment block and a house on one ground line, red on one window."
+    },
+    {
+     "option": "B",
+     "real_choice": true,
+     "note": "One apartment house; it reads as one house or a public building and goes back to the icon designer."
+    },
+    {
+     "option": "C",
+     "real_choice": true,
+     "note": "A house key; the clearest small shape, leaning to home."
+    }
+   ],
+   "closest_settled": [
+    {
+     "option": "A",
+     "closest": "CL-051 Market Power",
+     "likeness": 0.69,
+     "percentile": 42.4,
+     "against_CL_054_Home_Equity": 0.501
+    },
+    {
+     "option": "B",
+     "closest": "CL-033 Hostile Content",
+     "likeness": 0.659,
+     "percentile": 33.9,
+     "against_CL_054_Home_Equity": 0.482
+    },
+    {
+     "option": "C",
+     "closest": "CL-022 Act",
+     "likeness": 0.656,
+     "percentile": 33.3,
+     "against_CL_054_Home_Equity": 0.27
+    }
+   ],
+   "between_options": {
+    "A and B": 0.452,
+    "A and C": 0.431,
+    "B and C": 0.165
+   },
+   "naming_test": [
+    {
+     "option": "A",
+     "creative_director_reading": "An apartment block beside a pitched-roof house on one ground line: homes, or a neighborhood; the red window reads as one lit home",
+     "creative_director_verdict": "Names it nearly",
+     "maker_verdict": "\"Housing\" or \"homes\"; at worst \"neighborhood\""
+    },
+    {
+     "option": "B",
+     "creative_director_reading": "A large house with an arched door; after that, a school or a town hall",
+     "creative_director_verdict": "Names something else",
+     "maker_verdict": "\"Apartment building\"; at worst \"house\" or \"school\""
+    },
+    {
+     "option": "C",
+     "creative_director_reading": "A house key: a home, or owning one; at 24 px a house on a post, like a birdhouse",
+     "creative_director_verdict": "Names it nearly",
+     "maker_verdict": "\"House key\", which a reader may call \"home\" or \"real estate\""
+    }
+   ],
+   "must_fix": [
+    "Icon designer, option B (clarity 3). Redraw B so it reads as homes for more than one household and stops reading as one house or a public building. Keep the pitched roof, the ground line and the three floors. Replace the single red arched door with two plain square-headed doors side by side at the ground line, red on one, with a column of two windows over each, so the front reads as two homes under one roof. Keep it clear of CL-031's and R-31's arched red doorway and of CL-054's single house, and keep the line, the cap and 21 units to every tile edge. Rerun the likeness check against the set and against A and C, and give your naming reading at 48 px. If the redraw still reads first as one house at 48 px, withdraw B and let the card show A and C with the reason printed, as the stage B short cards did."
+   ],
+   "should_fix": [
+    "Board builder. Print each option's naming reading, closest settled drawing with its figure and six scores. If B is withdrawn, print the reason in one sentence."
+   ],
+   "notes": "The naming test is my reading at 48 px with no label; I had read the designer's notes, so I knew what each option was meant to show. Housing has no 24 px fit and stays at 48 px and up until Dustin adds it to the list of 41 (the designer's question 5, which I agree with). Red shares are my approximate measure at 256 px, not one of the studio's checks.",
+   "risks": [
+    "A shares a composition with CL-051 Market Power, a tall windowed block beside lower buildings on one ground line (0.690, the median of the set); in the black edition a reader who knows CL-051 may see a big building beside a small home.",
+    "C leans to \"home\", and the set already uses a key for control over your data (CL-047 in red, R-37); picking C puts two meanings on one sign.",
+    "Housing cannot sit in a kicker until Dustin adds it to the list of 41 and its 24 px fit is drawn."
+   ],
+   "ready_for_board": false
+  },
+  {
+   "order": 2,
+   "id": "Utility-16-Pause-Filter",
+   "title": "The 16 px Pause and Filter redraws (DR-197)",
+   "family": "Utility 16 px redraw",
+   "judged_at": "16 px at true size on 1x and 2x screens, enlarged ten times with a grid, on Newsprint and Charcoal, beside Play, Search, Copy, Close and Reset and beside 14 px Inter words",
+   "scores": {
+    "craft": {
+     "score": 4,
+     "reason": "Outer edges stay on whole pixels and each bar opens one clean pixel on every row; the glyph grows from 10 to 12 px wide beside Play's 9."
+    },
+    "clarity": {
+     "score": 4,
+     "reason": "Names Pause beside Play and its word, and now matches the 24 px Pause's hollow bars."
+    },
+    "brand_fidelity": {
+     "score": 4,
+     "reason": "The utility family as approved: 1.5 px line, round caps and joins, currentColor, no red; the generators rebuild the approved paths byte for byte, so only the widths DR-197 names move."
+    },
+    "usefulness": {
+     "score": 4,
+     "reason": "SVG with data-icon and the family attribute, PNGs at 16 and 32 px, previews with the 10x grid and a manifest."
+    },
+    "evidence_honesty": {
+     "score": 4,
+     "reason": "The open-pixel figures and the pixel fit check reproduce on my rerun; the check passes the approved files too, so the open-pixel count is the figure that answers DR-197, and the notes report it."
+    },
+    "accessibility": {
+     "score": 4,
+     "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors."
+    }
+   },
+   "scores_note": "Led by the Pause redraw, which has one option. Each file's six scores are in option_scores.",
+   "option_scores": {
+    "Pause redraw": {
+     "craft": {
+      "score": 4,
+      "reason": "Outer edges stay on whole pixels and each bar opens one clean pixel on every row; the glyph grows from 10 to 12 px wide beside Play's 9."
+     },
+     "clarity": {
+      "score": 4,
+      "reason": "Names Pause beside Play and its word, and now matches the 24 px Pause's hollow bars."
+     },
+     "brand_fidelity": {
+      "score": 4,
+      "reason": "The utility family as approved: 1.5 px line, round caps and joins, currentColor, no red; the generators rebuild the approved paths byte for byte, so only the widths DR-197 names move."
+     },
+     "usefulness": {
+      "score": 4,
+      "reason": "SVG with data-icon and the family attribute, PNGs at 16 and 32 px, previews with the 10x grid and a manifest."
+     },
+     "evidence_honesty": {
+      "score": 4,
+      "reason": "The open-pixel figures and the pixel fit check reproduce on my rerun; the check passes the approved files too, so the open-pixel count is the figure that answers DR-197, and the notes report it."
+     },
+     "accessibility": {
+      "score": 4,
+      "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors."
+     }
+    },
+    "Filter A": {
+     "craft": {
+      "score": 4,
+      "reason": "Both outer edges stay on whole pixels, as every closed 16 px glyph in the family keeps them (Copy, Pause); the spout sits half a pixel right of the funnel's axis and its right shoulder meets the cone a row higher, visible only enlarged."
+     },
+     "clarity": {
+      "score": 4,
+      "reason": "Names Filter; the slanted foot keeps it from reading as a glass."
+     },
+     "brand_fidelity": {
+      "score": 4,
+      "reason": "The utility family as approved: 1.5 px line, round caps and joins, currentColor, no red; the generators rebuild the approved paths byte for byte, so only the widths DR-197 names move."
+     },
+     "usefulness": {
+      "score": 4,
+      "reason": "SVG with data-icon and the family attribute, PNGs at 16 and 32 px, previews with the 10x grid and a manifest."
+     },
+     "evidence_honesty": {
+      "score": 4,
+      "reason": "The open-pixel figures and the pixel fit check reproduce on my rerun; the check passes the approved files too, so the open-pixel count is the figure that answers DR-197, and the notes report it."
+     },
+     "accessibility": {
+      "score": 4,
+      "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors."
+     }
+    },
+    "Filter B": {
+     "craft": {
+      "score": 4,
+      "reason": "Symmetric and open on every spout row; its spout's outer edges draw half gray (128) on four rows, so the outline softens where the family keeps outlines crisp."
+     },
+     "clarity": {
+      "score": 4,
+      "reason": "Names Filter; the slanted foot keeps it from reading as a glass."
+     },
+     "brand_fidelity": {
+      "score": 4,
+      "reason": "The utility family as approved: 1.5 px line, round caps and joins, currentColor, no red; the generators rebuild the approved paths byte for byte, so only the widths DR-197 names move."
+     },
+     "usefulness": {
+      "score": 4,
+      "reason": "SVG with data-icon and the family attribute, PNGs at 16 and 32 px, previews with the 10x grid and a manifest."
+     },
+     "evidence_honesty": {
+      "score": 4,
+      "reason": "The open-pixel figures and the pixel fit check reproduce on my rerun; the check passes the approved files too, so the open-pixel count is the figure that answers DR-197, and the notes report it."
+     },
+     "accessibility": {
+      "score": 4,
+      "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors."
+     }
+    }
+   },
+   "lowest_score": 4,
+   "recommended": {
+    "option": "Approve the Pause redraw; Filter A",
+    "reason": "Each opens one whole pixel inside where the approved file opens none. Filter A keeps the family's outer edges on whole pixels and matches the Pause redraw's pixel logic; B is a real choice for symmetry and a wider opening over a crisp outline."
+   },
+   "options": [
+    {
+     "option": "Pause redraw",
+     "real_choice": true,
+     "note": "One redraw, exactly as DR-197 sets it."
+    },
+    {
+     "option": "Filter A",
+     "real_choice": true,
+     "note": "Spout widened to the right; outer edges on whole pixels."
+    },
+    {
+     "option": "Filter B",
+     "real_choice": true,
+     "note": "Spout widened half a pixel each side; symmetric, outer edges half gray."
+    }
+   ],
+   "open_pixels": [
+    {
+     "file": "Approved Pause (DR-171)",
+     "inside": "No clear pixel: each bar's inside draws 127 and 128",
+     "row_8": "127, 128"
+    },
+    {
+     "file": "Pause redraw",
+     "inside": "One clear pixel on each of rows 4 to 11, in both bars",
+     "row_8": "128, 0, 128"
+    },
+    {
+     "file": "Approved Filter (DR-169)",
+     "inside": "No clear pixel in the spout",
+     "row_8": "127, 128"
+    },
+    {
+     "file": "Filter A",
+     "inside": "One clear pixel on spout rows 8 to 10; row 11, where the slanted foot begins, draws 72",
+     "row_8": "128, 0, 128"
+    },
+    {
+     "file": "Filter B",
+     "inside": "Two clear pixels on rows 6 to 10 and one on row 11",
+     "row_8": "0, 0, with the spout's outer edges at 128"
+    }
+   ],
+   "open_pixels_method": "My count from 1x renders in Chromium as alpha maps; 0 is clear and 255 is full ink.",
+   "naming_test": [
+    {
+     "option": "Pause redraw",
+     "creative_director_reading": "Pause",
+     "creative_director_verdict": "Names it",
+     "maker_verdict": "Not run by the designer"
+    },
+    {
+     "option": "Filter A",
+     "creative_director_reading": "Filter, a funnel",
+     "creative_director_verdict": "Names it",
+     "maker_verdict": "Not run by the designer"
+    },
+    {
+     "option": "Filter B",
+     "creative_director_reading": "Filter, a funnel with a wider spout",
+     "creative_director_verdict": "Names it",
+     "maker_verdict": "Not run by the designer"
+    }
+   ],
+   "must_fix": [],
+   "should_fix": [
+    "Board builder. Print the row 8 figures for each file beside its open-pixel count."
+   ],
+   "notes": "The 16 px Pause now stands 12 by 12 px, squarer than the 24 px Pause (bars a third of their height there), beside a Play that stays 9 px wide. Neither 16 px file is placed on a page yet (D2-730).",
+   "risks": [
+    "The Play and Pause toggle changes width by 3 px at 16 px where it changed by 1.",
+    "Filter A's half-pixel offset; Filter B's soft outline."
+   ],
+   "ready_for_board": true
+  },
+  {
+   "order": 3,
+   "id": "Civic-Line-24-Fits",
+   "title": "The 24 px pixel fits for the 37 topic and atlas drawings (DR-198, DR-205)",
+   "family": "Civic Line pixel fit",
+   "judged_at": "Each fit beside its master at 24 px as a 1x screen draws it, on Newsprint and Charcoal, enlarged five and eight times with a grid and three times without; six as kickers beside 15 px Inter; the masters at 24 px on a 2x screen",
+   "scores": {
+    "craft": {
+     "score": 4,
+     "reason": "All 37 pass the pixel fit check at 1x and 2x on my rerun and every ink pixel reaches full ink; rings are clean and corners drop one pixel where the master rounds them. The weakest spots are small: R-06's 3-pixel chevron, CL-057's person, CL-001's ballot corner meeting the lid on a diagonal."
+    },
+    "clarity": {
+     "score": 4,
+     "reason": "Each fit keeps every part its manifest names and reads at least as well as its master at 24 px on 1x, where the master draws a gray line. None loses meaning, and the five look-alikes all moved apart."
+    },
+    "brand_fidelity": {
+     "score": 4,
+     "reason": "The one-pixel line matches 15 px Inter's stems in a kicker and stays near Civic Line's light hand; each accent is kept as a shape in ink, one color as Rule 10.4 sets. Each fit grows 1.01 to 1.39 times its master, so a drawing stands larger on a 1x screen than on a 2x screen, as the pillar fits do (D2-613)."
+    },
+    "usefulness": {
+     "score": 4,
+     "reason": "37 SVG files, PNGs at 24 and 48 px, pair previews at 1x and 2x on both grounds, four sheets and a manifest with every map, the parts kept and the figures. Charcoal files only, as the pillar fits; on Charcoal the sprite sets the ink, which dark mode (DR-204) now needs on every screen product."
+    },
+    "evidence_honesty": {
+     "score": 5,
+     "reason": "Every figure I reran matches the notes exactly: full ink on all 37 masters and every fit, the pixel fit check, the likeness check's two inherited flags and 16 watched pairs, and all ten look-alike pairs. The notes correct my own earlier count of 2 of 18 with a stated method and show each flag beside its masters' own figure."
+    },
+    "accessibility": {
+     "score": 4,
+     "reason": "At 1x the lines go from gray to full Charcoal, and each drawing still sits beside its word as Rule 10.4 requires; real screens and forced colors are untested."
+    }
+   },
+   "lowest_score": 4,
+   "recommended": {
+    "option": "Approve all 37, with the switch: the fit on 1x screens and the master from 2x",
+    "reason": "None loses meaning; every fit keeps the parts its master needs and draws them in full ink where the master draws a gray line, and the five look-alikes all moved apart."
+   },
+   "options": [
+    {
+     "option": "One fit for each of the 37",
+     "real_choice": true,
+     "note": "No drawing offered two real ways to keep its parts at 24 px (the designer's D2 call, which I agree with)."
+    }
+   ],
+   "naming_test": [],
+   "naming_test_note": "Not run as a naming test: each fit is judged against its own master, part by part, with its label known. A fit keeps its meaning when every part its manifest names shows at 24 px on 1x and it reads at least as well as its master there.",
+   "drawings": [
+    {
+     "id": "CL-001",
+     "word": "Voting",
+     "atlas_id": "",
+     "full_ink_master": "0.0% (0 of 135)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps box, lid, slot and the rising ballot; the ballot's top comes to a point, as in its master at this size."
+    },
+    {
+     "id": "CL-004",
+     "word": "Petition",
+     "atlas_id": "",
+     "full_ink_master": "0.0% (0 of 157)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps page, four rules and the pen with its bands and point."
+    },
+    {
+     "id": "CL-006",
+     "word": "Civic Ties",
+     "atlas_id": "B3",
+     "full_ink_master": "0.0% (0 of 117)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps three people and the linking arcs; heads and shoulders read where the master's blur."
+    },
+    {
+     "id": "CL-010",
+     "word": "Decisive Primaries",
+     "atlas_id": "C2",
+     "full_ink_master": "0.0% (0 of 113)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps the three rings as small diamonds, the merge, the short middle branch, the arrow and the end ring."
+    },
+    {
+     "id": "CL-013",
+     "word": "Incumbent Defeat",
+     "atlas_id": "C5",
+     "full_ink_master": "0.0% (0 of 117)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps chair, base and the arrow leaving it."
+    },
+    {
+     "id": "CL-023",
+     "word": "Evidence",
+     "atlas_id": "",
+     "full_ink_master": "0.0% (0 of 211)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps page, five rules and the lens with its check; on the watch line with CL-028 (0.897), down from its master's 0.927."
+    },
+    {
+     "id": "CL-024",
+     "word": "Feedback Loop",
+     "atlas_id": "",
+     "full_ink_master": "0.0% (0 of 118)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps both squares and both arcs with their arrowheads, still clockwise."
+    },
+    {
+     "id": "CL-028",
+     "word": "Watchdogs",
+     "atlas_id": "D4",
+     "full_ink_master": "0.0% (0 of 156)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps the narrower page and the empty lens; much further from R-27 than its master."
+    },
+    {
+     "id": "CL-031",
+     "word": "Local Government",
+     "atlas_id": "",
+     "full_ink_master": "3.2% (6 of 188)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps pediment with its open peak, wings, paired windows and the filled door."
+    },
+    {
+     "id": "CL-032",
+     "word": "Local Reporting",
+     "atlas_id": "B2",
+     "full_ink_master": "5.0% (12 of 240)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps front page, fold, rules and photo block."
+    },
+    {
+     "id": "CL-039",
+     "word": "Feed Ranking",
+     "atlas_id": "TC1",
+     "full_ink_master": "0.0% (0 of 269)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps three cards and the slider; it grew 1.23 times, so it measures far from its master (0.489), and every part is there."
+    },
+    {
+     "id": "CL-040",
+     "word": "Platform Power",
+     "atlas_id": "TC2",
+     "full_ink_master": "0.0% (0 of 143)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps hub, branches and three people; the stem sits half a pixel off center, visible only enlarged."
+    },
+    {
+     "id": "CL-047",
+     "word": "Data Rights",
+     "atlas_id": "",
+     "full_ink_master": "0.0% (0 of 156)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps page, rules and the key with ring, shaft and two teeth; the ring is small."
+    },
+    {
+     "id": "CL-048",
+     "word": "Public Records",
+     "atlas_id": "",
+     "full_ink_master": "0.0% (0 of 171)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps folder, both tabs and the standing page with its rules."
+    },
+    {
+     "id": "CL-050",
+     "word": "Worker Bargaining",
+     "atlas_id": "A2",
+     "full_ink_master": "0.0% (0 of 177)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps two people, their arms on the table, the double arrow and four legs; against CL-007 it falls from its master's 0.928 to 0.902."
+    },
+    {
+     "id": "CL-051",
+     "word": "Market Power",
+     "atlas_id": "A3",
+     "full_ink_master": "2.1% (4 of 187)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps the tall building with rooftop block, six windows and door, and the two shorter buildings."
+    },
+    {
+     "id": "CL-054",
+     "word": "Home Equity",
+     "atlas_id": "A6",
+     "full_ink_master": "0.0% (0 of 173)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps house, chimney, door, three bars and the jagged arrow; on the watch line with CL-052 (0.898), down from its master's 0.927 over the flag line."
+    },
+    {
+     "id": "CL-057",
+     "word": "Labor Share",
+     "atlas_id": "EC3",
+     "full_ink_master": "8.3% (11 of 133)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps ring, radii and the pulled-out quarter; the person is a 2 px head and a shoulder notch, faint at true size and fainter in the master."
+    },
+    {
+     "id": "CL-060",
+     "word": "Taxes & Benefits",
+     "atlas_id": "EC6",
+     "full_ink_master": "0.0% (0 of 194)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps page, rules and both arrows through the open edge."
+    },
+    {
+     "id": "CL-061",
+     "word": "Household Income",
+     "atlas_id": "EC7",
+     "full_ink_master": "0.0% (0 of 107)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps person, arrow and the envelope with its flap."
+    },
+    {
+     "id": "CL-067",
+     "word": "Healthcare",
+     "atlas_id": "",
+     "full_ink_master": "0.0% (0 of 139)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps the cross and the pulse's dip, peak and valley."
+    },
+    {
+     "id": "CL-068",
+     "word": "Education",
+     "atlas_id": "",
+     "full_ink_master": "0.0% (0 of 212)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps book, gutter, pages and the bulb with its rays."
+    },
+    {
+     "id": "CL-070",
+     "word": "Environment",
+     "atlas_id": "",
+     "full_ink_master": "0.0% (0 of 124)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps leaf, vein, sharp tip and the drop."
+    },
+    {
+     "id": "CL-071",
+     "word": "Policy",
+     "atlas_id": "",
+     "full_ink_master": "0.0% (0 of 174)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps page, rules, knob and the rail running past the page."
+    },
+    {
+     "id": "CL-072",
+     "word": "Reform",
+     "atlas_id": "",
+     "full_ink_master": "0.0% (0 of 88)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps both routes, the ring and the rising arrow."
+    },
+    {
+     "id": "R-05",
+     "word": "Automatic Registration",
+     "atlas_id": "R-05",
+     "full_ink_master": "0.0% (0 of 187)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps card, person, rules, the check badge and the dash."
+    },
+    {
+     "id": "R-06",
+     "word": "On-Cycle Elections",
+     "atlas_id": "R-06",
+     "full_ink_master": "1.1% (2 of 190)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps both calendars with rings, header and date columns; the arrow becomes a 3-pixel chevron, the thinnest part in the set, and still points. Flagged against R-41 and R-44, as its master is."
+    },
+    {
+     "id": "R-08",
+     "word": "Donor Disclosure",
+     "atlas_id": "R-08",
+     "full_ink_master": "0.0% (0 of 134)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps page, dollar, rules and the empty lens; further from R-27 and CL-028."
+    },
+    {
+     "id": "R-09",
+     "word": "Stock-Trading Ban",
+     "atlas_id": "R-09",
+     "full_ink_master": "0.0% (0 of 183)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps notched frame, chart line and the slash."
+    },
+    {
+     "id": "R-14",
+     "word": "Automatic Funding",
+     "atlas_id": "R-14",
+     "full_ink_master": "0.0% (0 of 195)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps bill, dollar, rules and the arrow leaving the open edge."
+    },
+    {
+     "id": "R-15",
+     "word": "Watchdog Remedies",
+     "atlas_id": "R-15",
+     "full_ink_master": "0.0% (0 of 163)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps lens with check, handle and the page behind."
+    },
+    {
+     "id": "R-17",
+     "word": "Civil Service",
+     "atlas_id": "R-17",
+     "full_ink_master": "0.0% (0 of 190)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps badge, clip, person, rules and the brace."
+    },
+    {
+     "id": "R-19",
+     "word": "Drug-Pricing Rules",
+     "atlas_id": "R-19",
+     "full_ink_master": "0.0% (0 of 116)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps pill, divider, string and the tag with its dollar; the dropped string hole carried no meaning."
+    },
+    {
+     "id": "R-23",
+     "word": "Indexed Minimum Wage",
+     "atlas_id": "R-23",
+     "full_ink_master": "0.0% (0 of 160)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps frame, dollar, rules, four rising bars and the arrow; the busiest fit, and it holds."
+    },
+    {
+     "id": "R-27",
+     "word": "Tax Enforcement",
+     "atlas_id": "R-27",
+     "full_ink_master": "0.0% (0 of 157)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps page, rules and the arch inside the lens, which now sets it apart from CL-028."
+    },
+    {
+     "id": "R-37",
+     "word": "Feed Choice",
+     "atlas_id": "R-37",
+     "full_ink_master": "0.0% (0 of 198)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps window, dots, rules, knob and the outlined key, which reads close to an 8 at true size, as in its master."
+    },
+    {
+     "id": "R-45",
+     "word": "Paper Ballots & Audits",
+     "atlas_id": "R-45",
+     "full_ink_master": "0.0% (0 of 200)",
+     "full_ink_fit": "100.0%",
+     "keeps_meaning": true,
+     "creative_director_verdict": "Keeps the three sheets, rules and the lens with its check."
+    }
+   ],
+   "look_alikes": {
+    "method": "My rerun of the likeness check on the five as masters and as fits under neutral names, every pair listed",
+    "pairs": [
+     {
+      "pair": "CL-028 and R-27",
+      "masters": 0.958,
+      "fits": 0.861
+     },
+     {
+      "pair": "R-08 and R-27",
+      "masters": 0.945,
+      "fits": 0.77
+     },
+     {
+      "pair": "CL-028 and R-08",
+      "masters": 0.942,
+      "fits": 0.842
+     },
+     {
+      "pair": "CL-023 and CL-028",
+      "masters": 0.927,
+      "fits": 0.897
+     },
+     {
+      "pair": "CL-023 and R-08",
+      "masters": 0.892,
+      "fits": 0.855
+     },
+     {
+      "pair": "CL-023 and R-27",
+      "masters": 0.885,
+      "fits": 0.809
+     },
+     {
+      "pair": "R-08 and R-45",
+      "masters": 0.876,
+      "fits": 0.865
+     },
+     {
+      "pair": "CL-023 and R-45",
+      "masters": 0.85,
+      "fits": 0.764
+     },
+     {
+      "pair": "CL-028 and R-45",
+      "masters": 0.817,
+      "fits": 0.702
+     },
+     {
+      "pair": "R-27 and R-45",
+      "masters": 0.802,
+      "fits": 0.717
+     }
+    ],
+    "verdict": "Every pair moved apart and none sits above the flag line (0.909). At true size the five now read apart by what sits in the lens. CL-023 and CL-028 stay on the watch line, so D2-971's rule still keeps them out of one view at 24 px."
+   },
+   "must_fix": [],
+   "should_fix": [],
+   "notes": "I agree with the designer's questions 5 and 6: Housing stays at 48 px and up for now, and R-06, R-41 and R-44 join the groups that never share a view at small sizes. The switch is the engineer's to build.",
+   "risks": [
+    "A kicker icon on a 1x screen stands up to 39 percent larger than on a 2x screen, and its proportions shift a little, as the pillar icons' do.",
+    "R-06 is flagged against R-41 (0.917) and R-44 (0.915), as its master is (0.937 and 0.964).",
+    "The fits have not been seen on real screens or in forced colors."
+   ],
+   "ready_for_board": true
+  },
+  {
+   "order": 4,
+   "id": "Print-L3",
+   "title": "A print L3 at the masthead's proportion (D2-482, gate rule 4)",
+   "family": "Identity proposal",
+   "judged_at": "The plates at actual size (282 px; 16, 24, 48 and 96 px capitals; the 100 px overlay; the four surfaces; 1x and 2x captures) and the print proof rasterized at 300 dpi",
+   "scores": {
+    "craft": {
+     "score": 4,
+     "reason": "Centered on the capitals as before, with the 0.60 cap height of space kept; at display size the smaller lockmark sits closer to the capitals' mass."
+    },
+    "clarity": {
+     "score": 4,
+     "reason": "The original and the proposal stand side by side at actual size, and the overlay states the 9.1 percent."
+    },
+    "brand_fidelity": {
+     "score": 4,
+     "reason": "Wordmark, ampersand, links and colors exact; a geometry change that needs Dustin's named approval, and the masthead's heavier pixel lockmark stays as it is."
+    },
+    "usefulness": {
+     "score": 4,
+     "reason": "Both editions are drawn, both minimums hold (field 0.269 in over 0.25 in; capitals 3.13 mm over 3 mm at L3's 1.55 in), and the notes list the one pass that follows approval."
+    },
+    "evidence_honesty": {
+     "score": 4,
+     "reason": "The proof's widths reproduce on my raster (1.533, 2.473, 3.957 and 3.960 in); the plate's 'one proportion' is right for proportion and says nothing about the masthead's heavier nodes."
+    },
+    "accessibility": {
+     "score": 4,
+     "reason": "No change to contrast, and every minimum still holds."
+    }
+   },
+   "lowest_score": 4,
+   "recommended": {
+    "option": "Approve the print L3",
+    "reason": "One proportion for L3 in every medium and a one-line rule for builders, for a lockmark 9 percent smaller in print that stays over its floor. Nothing is printed yet, so the change costs no reprint."
+   },
+   "options": [
+    {
+     "option": "Proposal: the October master with its lockmark at 2.18 cap heights",
+     "real_choice": true,
+     "note": "For print and every width but the 282 px masthead."
+    },
+    {
+     "option": "Keep the October master at 2.4 cap heights",
+     "real_choice": true,
+     "note": "Print and screen keep two proportions."
+    }
+   ],
+   "measured": {
+    "same_apart_from_placement": "Both proposal files match the October files with the nested lockmark's placement, the outer view box and the title set aside, in the Charcoal and Prussian White editions (my comparison).",
+    "lockmark_units": {
+     "october": 240,
+     "proposal": 218.18,
+     "smaller_by_percent": 9.1
+    },
+    "at_print_minimum_1_55_in": {
+     "lockmark_field_in": {
+      "october": 0.291,
+      "proposal": 0.269,
+      "floor": 0.25
+     },
+     "capitals_mm": {
+      "october": 3.08,
+      "proposal": 3.13,
+      "floor": 3.0
+     },
+     "node_diameter_mm_my_calculation": {
+      "october": 0.45,
+      "proposal": 0.42
+     }
+    },
+    "print_proof_ink_width_in_at_300_dpi": {
+     "1.55 in box": [
+      1.533,
+      1.533
+     ],
+     "2.5 in box": [
+      2.473,
+      2.473
+     ],
+     "4 in box": [
+      3.957,
+      3.96
+     ]
+    }
+   },
+   "naming_test": [],
+   "must_fix": [],
+   "should_fix": [
+    "Board builder. Say in one sentence that the masthead keeps its heavier 48 px pixel lockmark, so the proposal matches the masthead's proportion and leaves its weight as it is."
+   ],
+   "notes": "Gate rule 4 makes this Dustin's call; I recommend.",
+   "risks": [
+    "The print L3 matches the masthead in proportion only; the masthead's pixel lockmark stays heavier at its 282 px.",
+    "Measured as a PDF raster, not printed on paper."
+   ],
+   "ready_for_board": true
+  },
+  {
+   "order": 5,
+   "id": "Social-Sign-Off-96",
+   "title": "The social card's sign-off at 96 px (D2-715's 5 red pixels, gate rule 4)",
+   "family": "Identity proposal",
+   "judged_at": "Both cards at actual size (1200 by 630 px) on Newsprint and Charcoal, the feed views at 500 and 360 px, the 8x enlargements and the thumbnail JPEG; the lever's red pixels recounted on the eight feed captures",
+   "scores": {
+    "craft": {
+     "score": 4,
+     "reason": "Every node, link and the lever land on whole pixels at 96 px with no new drawing; the 2 px steps at full size are the masthead's own look on a 2x screen."
+    },
+    "clarity": {
+     "score": 4,
+     "reason": "Today's card and the proposal at actual size and in each feed view, enlarged and after the JPEG, with the cost stated on the plate."
+    },
+    "brand_fidelity": {
+     "score": 4,
+     "reason": "The corners take L3's proportion (2.36 cap heights against 1.18 today), the lockmark clears its 16 px floor in a 360 px feed, and red stays a small dot on a 1200 px card; the corner is heavier."
+    },
+    "usefulness": {
+     "score": 4,
+     "reason": "One rule and no new file: social cards sign off with the 48 px master drawn at exactly 96 px, every other place at 48 px."
+    },
+    "evidence_honesty": {
+     "score": 5,
+     "reason": "Every red count reproduces on my recount, and the plate says on its face that no real feed was tested."
+    },
+    "accessibility": {
+     "score": 4,
+     "reason": "The mark is not text, and its grid carries it without the red; at 28.8 px in a phone feed it reads as a shape where today's does not."
+    }
+   },
+   "lowest_score": 4,
+   "recommended": {
+    "option": "Approve the 96 px sign-off on social cards",
+    "reason": "It keeps the lever's red at every width from 300 to 600 px and through the thumbnail path, lifts the lockmark over its own floor in a 360 px feed (28.8 px against 14.4 px today), and gives the card's corners L3's proportion, for a stepped look at full size the masthead already shows on 2x screens."
+   },
+   "options": [
+    {
+     "option": "Proposal: the 48 px master at exactly 96 px, social cards only",
+     "real_choice": true,
+     "note": "Covers, posters and the masthead stay at 48 px."
+    },
+    {
+     "option": "Keep 48 px",
+     "real_choice": true,
+     "note": "Passes the rule's test with 5 red pixels against 4; the thumbnail path leaves none, and the lockmark draws under its floor at 360 px."
+    }
+   ],
+   "measured": {
+    "method": "My recount on the designer's eight feed captures: red where R > 170, G < 120 and B < 120 in the card's lower-right quadrant, then after a Pillow JPEG at quality 75 with chroma at half size",
+    "red_pixels": [
+     {
+      "card": "Newsprint, 48 px today",
+      "at_500": 11,
+      "at_360": 5,
+      "at_360_then_jpeg": 0
+     },
+     {
+      "card": "Newsprint, 96 px proposal",
+      "at_500": 52,
+      "at_360": 22,
+      "at_360_then_jpeg": 17
+     },
+     {
+      "card": "Charcoal, 48 px today",
+      "at_500": 11,
+      "at_360": 5,
+      "at_360_then_jpeg": 0
+     },
+     {
+      "card": "Charcoal, 96 px proposal",
+      "at_500": 48,
+      "at_360": 20,
+      "at_360_then_jpeg": 16
+     }
+    ],
+    "lockmark_px_in_feed": {
+     "today": {
+      "500": 20.0,
+      "360": 14.4
+     },
+     "proposal": {
+      "500": 40.0,
+      "360": 28.8
+     },
+     "floor": 16
+    },
+    "lockmark_over_wordmark_capitals": {
+     "today": 1.18,
+     "proposal": 2.36
+    }
+   },
+   "naming_test": [],
+   "must_fix": [],
+   "should_fix": [
+    "Board builder. State the 14.4 px against the 16 px floor beside the red counts, and the cost as the brief sets it."
+   ],
+   "notes": "Gate rule 4 makes this Dustin's call; I recommend. If he dislikes the steps at full size, the alternative to weigh is a smooth 96 px drawing at the 48 px master's proportions, round nodes and lever of the same sizes, which keeps the gain and is a new identity drawing needing its own approval.",
+   "risks": [
+    "2 px steps show when anyone opens the card at full size, and the corner weighs more against the headline.",
+    "No real feed or thumbnail service was tested; the counts come from Chromium and Pillow.",
+    "Not tested on White or Prussian cards."
+   ],
+   "ready_for_board": true
+  }
+ ],
+ "back_to_maker": [
+  {
+   "owner": "Icon designer",
+   "card": "Housing",
+   "drawing": "Option B",
+   "criterion": "clarity",
+   "score": 3,
+   "instruction": "Icon designer, option B (clarity 3). Redraw B so it reads as homes for more than one household and stops reading as one house or a public building. Keep the pitched roof, the ground line and the three floors. Replace the single red arched door with two plain square-headed doors side by side at the ground line, red on one, with a column of two windows over each, so the front reads as two homes under one roof. Keep it clear of CL-031's and R-31's arched red doorway and of CL-054's single house, and keep the line, the cap and 21 units to every tile edge. Rerun the likeness check against the set and against A and C, and give your naming reading at 48 px. If the redraw still reads first as one house at 48 px, withdraw B and let the card show A and C with the reason printed, as the stage B short cards did."
+  }
+ ],
+ "routine_calls": [
+  "D2-xxx | Housing is scored per option, and the card's recommendation leads with A | The board shows each option's six scores, and A is the one I recommend",
+  "D2-xxx | Housing B goes back with a redraw instruction and a withdrawal fallback; card 1 waits | B scores 3 on clarity, and the brief sends any drawing under 4 back before the board is published",
+  "D2-xxx | The naming test for Housing is my reading at 48 px with no label, after reading the designer's notes | The stage B method; the review says plainly that I knew what each option was meant to show",
+  "D2-xxx | A fit keeps its meaning when every part its manifest names shows at 24 px on 1x and it reads at least as well as its master does there | One test for all 37, set against what a 1x screen draws today",
+  "D2-xxx | The 37 are scored as one set with a verdict on each drawing | The board brief's form for card 3",
+  "D2-xxx | All 37 fits are recommended | None loses meaning; R-06's chevron and CL-057's person are the weakest parts and both still read beside their labels",
+  "D2-xxx | I agree with the icon designer's questions 5 and 6 | The masters' figures already warrant the R-06 grouping, and Housing needs Dustin's pick first",
+  "D2-xxx | Filter A over B | A keeps the family's outer edges on whole pixels and matches the Pause redraw",
+  "D2-xxx | Cards 4 and 5 are recommended for approval and left to Dustin | Gate rule 4 makes both his call",
+  "D2-xxx | Red share of ink is my approximate measure at 256 px on white | Enough to place each Housing option within the set's range; it is not one of the studio's checks",
+  "D2-xxx | Evidence honesty scores 5 on cards 3 and 5 | Every figure I reran matches exactly, and each maker states what was not tested"
+ ],
+ "rescore": null,
+ "change_log": {
+  "created": [
+   "work/handoffs/phase-2/20261110_CD-Review-Of-Stage-C-Drawings.md",
+   "work/boards/phase-2/stage-c/drawings/20261110_CD-Scores.json"
+  ],
+  "modified": [],
+  "scratch": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/cd/",
+  "committed_or_pushed": false
+ }
+}

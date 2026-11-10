@@ -1,0 +1,243 @@
+{
+ "about": "The words of drawings board C, read by work/build/scripts/phase-2/stage_c_drawings_board_build.py on every run. A name in braces, such as {flag}, is filled by the build from this run's checks or from the identity figures file, so no figure is written here. Words the board takes from other owners' files (the scores, the manifests) are copy-edited through editor_overrides, a list of {\"old\": \"exact text\", \"new\": \"replacement\"}.",
+ "editor_overrides": [],
+ "kicker": "Brand Guide, Edition 06 · Drawings board C",
+ "title": "The stage C drawings, for your approval",
+ "deck": "This board holds the new Housing drawing, the 16 px Pause and Filter redraws, the 24 px fits for the {n_fits} topic and atlas drawings, and two proposals for the identity: a print L3 at the masthead's proportion and a larger sign-off on social cards. Each waits for your approval by name, and none of it enters the guide until you answer.",
+ "facts": [
+  "Cards 1 to 3 hold the icon designer's drawings. Cards 4 and 5 hold the identity designer's proposals, and since they change identity geometry, each shows today's drawing and the proposal side by side at actual size.",
+  "Each drawing shows at true size, the size a reader's screen draws it. Where a card shows what a 1x screen draws, it shows a picture made at that screen's resolution, set so a sharper screen enlarges its pixels and changes none. Where the board draws something larger so you can see its pixels, a label says how many times larger.",
+  "Every figure on the board comes from the engineer's checks, run on today's files each time the board is built, or from the identity designer's figures file. The board was last built on {built_date} at {built_time} UTC."
+ ],
+ "ask": [
+  "Look at each card's drawings at true size. Each card names what you approve by name, and the recommended answer carries a mark.",
+  "Choose an answer on each card, or write your own in its note box, and tick the card's \"I approve by name\" box when you agree.",
+  "On card 3, one answer approves all {n_fits} fits. To hold any back, tick \"Hold back\" on its row, and the reply names it.",
+  "Your marks collect in the reply panel at the end, one line per card, ready to paste into our chat."
+ ],
+ "sample_reply": "All as recommended, and I approve every card by name.",
+ "legend_title": "How to read a card",
+ "legend": [
+  {
+   "term": "1x and 2x screens",
+   "text": "A device pixel is one dot of the screen. A 1x screen, such as many desktop monitors, gives each pixel of a drawing one device pixel. A 2x screen, the sharper kind on phones and many laptops, gives it two across and two down, so a thin line that a 1x screen draws gray can draw solid."
+  },
+  {
+   "term": "As a 1x screen draws it",
+   "text": "A picture of the drawing made at one device pixel per pixel, then set at its own size with its pixels kept square, so a 2x screen shows each pixel as a block of four and changes none. A picture of what a 2x screen draws is set the same way, so it shows at twice the drawing's size."
+  },
+  {
+   "term": "The switch",
+   "text": "Below 48 px the pillar icons draw a fit on 1x screens and their master from 2x screens up, where the master's line is wider than one device pixel. Card 3 asks for the same switch for the {n_fits} fits."
+  },
+  {
+   "term": "Full ink",
+   "text": "The share of a drawing's inked pixels that reach full ink when a 1x screen draws it at 24 px. A pixel counts as inked from 3 percent coverage and as full ink from 97 percent, the pixel-fit check's own measure. A line under one device pixel wide never reaches full ink, so it draws gray."
+  },
+  {
+   "term": "Pixel-fit check",
+   "text": "The engineer's check draws each file at its size at 1x and at 2x. It passes a drawing whose lines are at least one device pixel wide, whose straight edges sit on whole pixels, whose parts stay at least a pixel apart and whose enclosed spaces stay open, and, where the set has a line weight, whose main line matches it."
+  },
+  {
+   "term": "Look-alike figure",
+   "text": "How alike two drawings look at 24 px on the engineer's check, from 0 to 1, where 1 means the same drawing. Among the {pairs} pairs of the {n_masters} Civic Line drawings in use, one in 20 measures {watch} or more and one in 100 measures {flag} or more. The board flags a figure of {flag} or more, which asks for a look by eye, and marks one from {watch} up as one to watch."
+  },
+  {
+   "term": "Open pixel",
+   "text": "A pixel inside an opening that a 1x screen leaves clear, with under 3 percent ink. Where the inside of a bar or a spout is narrower than two pixels, a 1x screen fills it with half-gray pixels and the opening closes."
+  },
+  {
+   "term": "Naming test and scores",
+   "text": "The creative director looks at each Housing option at 48 px with no label and writes down what a first-time reader would most likely call it; the reading stands in for a reader's, since the creative director knows the labels. The creative director also scores each card from 1 to 5 on six criteria: craft, clarity, brand fidelity, usefulness, evidence honesty and accessibility. The guide ships at 4 or more on every criterion, so the board boxes and names any score under 4."
+  }
+ ],
+ "groups": {
+  "drawings": {
+   "title": "Drawings",
+   "intro": [
+    "A new topic drawing, two utility icons redrawn at 16 px, and pixel fits for the topic and atlas drawings that may be set at 24 px. The icon designer drew all of them."
+   ]
+  },
+  "identity": {
+   "title": "Identity proposals",
+   "intro": [
+    "Both proposals change identity geometry, which needs your approval by name. Each card shows today's drawing and the proposal side by side at actual size, with what the change gains and what it costs."
+   ]
+  }
+ },
+ "cards": {
+  "housing": {
+   "short": "Housing",
+   "title": "Housing, a new topic drawing",
+   "lede": [
+    "The guide has no drawing for housing yet. In the Civic Line a lone house already means one household: it is the base of CL-054 Home Equity and the other household drawings, and rows of narrow houses carry Housing Scarcity. So a Housing drawing has to name homes for many households, renters as well as owners, and stay apart from those. The icon designer drew three options in Civic Line's construction.",
+    "Each option shows at 128, 48 and 24 px, the red edition and the black, on Newsprint and on Charcoal. Topic drawings are used from 48 px up, so the 24 px view is a reference size only."
+   ],
+   "neighbors_title": "Its nearest settled drawings",
+   "neighbors_text": "The drawings the icon designer set Housing beside, as they are in the guide today. Under each, the look-alike figure of each option against it.",
+   "approve": "One Housing option as a new topic drawing, used at 48 px and up.",
+   "designer_rec": {
+    "option": "A",
+    "text": "Option A, homes of more than one kind. It names housing as the atlas covers it, renters and owners alike, and keeps furthest from the drawings where a house means one household: {A_CL053} against CL-053, {A_R30} against R-30 and {A_CL054} against CL-054. If you would rather have the clearest small shape, C, the house key, is the one, though a reader may call it home."
+   },
+   "h24_title": "Housing at 24 px",
+   "h24_text": [
+    "Housing is not on the list of drawings that may be set at 24 px, and adding it changes what you approved for small sizes. Below, each option as a 1x screen draws it at 24 px, beside what a 2x screen draws.",
+    "The icon designer recommends keeping Housing at 48 px and up for now. If you want it in kickers, the icon designer draws its 24 px fit once you pick an option, and it joins the list when you approve that fit."
+   ],
+   "h24_label": "At 24 px",
+   "h24_options": {
+    "keep": [
+     "48 px and up for now",
+     "Housing at 48 px and up for now"
+    ],
+    "add": [
+     "Draw it a 24 px fit",
+     "a 24 px fit for Housing, to join the list"
+    ]
+   }
+  },
+  "utility": {
+   "short": "Pause and Filter at 16 px",
+   "title": "The 16 px Pause and Filter",
+   "lede": [
+    "On a 1x screen the approved 16 px Pause and Filter close up: the inside of each Pause bar and of the Filter spout is narrower than two pixels, so the screen fills it with half-gray pixels. You approved redrawing them with 5 px bars and a 5 px spout so each opening keeps a whole open pixel. Every other line stays as approved, and so do their 24 px files.",
+    "Pause has one redraw. Filter has two options, since a 5 px spout cannot sit centered on the funnel with both its outer edges on whole pixels. Option A moves the spout's right side one pixel and keeps both edges sharp. Option B widens it half a pixel each side and keeps the funnel symmetric, so its outer edges draw half gray."
+   ],
+   "approve": "The Pause redraw and one Filter redraw, A or B, at 16 px.",
+   "designer_rec": {
+    "pause": "approve",
+    "filter": "A",
+    "text": "Approve the Pause redraw, which opens a whole pixel on {pause_rows} of the rows inside each bar where the approved file opens {pause_rows_today}. For Filter, option A: it keeps the approved file's construction with both outer edges on whole pixels, matches the Pause redraw, and opens a whole pixel on {filter_A_rows} of the spout's rows. B opens {filter_B_rows} and keeps the funnel symmetric, but its outer edges draw half gray."
+   },
+   "pause_label": "Pause",
+   "filter_label": "Filter",
+   "pause_options": {
+    "approve": [
+     "The redraw",
+     "the Pause redraw"
+    ],
+    "keep": [
+     "Keep the approved file",
+     "keep the approved Pause"
+    ]
+   },
+   "filter_options": {
+    "A": [
+     "Option A",
+     "Filter option A"
+    ],
+    "B": [
+     "Option B",
+     "Filter option B"
+    ],
+    "keep": [
+     "Keep the approved file",
+     "keep the approved Filter"
+    ]
+   },
+   "grid_caption": "Each enlargement is the 1x picture shown {mag} times larger with a line between pixels, so an open pixel shows as a clear square inside the drawing.",
+   "open_rule": "The rows counted are those where the opening runs at its narrowest, between straight sides: inside each Pause bar, and down the Filter spout."
+  },
+  "fits": {
+   "short": "The 24 px fits for the {n_fits}",
+   "title": "24 px fits for the {n_fits} topic and atlas drawings",
+   "lede": [
+    "These {n_fits} topic and atlas drawings may be set at 24 px. There a 1x screen draws a master's line under one device pixel wide, so it draws gray, and no master line reaches full ink. The icon designer drew each one again pixel by pixel on the 24 px grid with a one-pixel line, in the black edition only, as the pillar fits were drawn.",
+    "With the switch, a 1x screen draws the fit and a 2x screen draws the master. Each row shows the master and the fit as a 1x screen draws them, then what a 2x screen draws, then the share of full-ink pixels in master and fit. Rows go in the order of chapter 10's list."
+   ],
+   "approve": "The {n_fits} fits with the switch: the fit on 1x screens, the master from 2x. Hold back any you do not approve.",
+   "designer_rec": {
+    "option": "all",
+    "text": "All {n_fits}. Every fit passes the pixel-fit check, every fit's pixels reach full ink where no master line does, and all ten pairs among the five look-alikes moved apart."
+   },
+   "summary": "This run: {pf_fits_pass} of {n_fits} fits pass the pixel-fit check at 1x and 2x, and {pf_masters_pass} of {n_fits} masters pass at 24 px. Every fit has {fits_full_min} or more of its pixels at full ink; the masters run from {masters_full_min} to {masters_full_max}. Against the {n_masters} drawings in use and each other, the look-alike check flags {n_flagged} and marks {n_watched} to watch.",
+   "five_title": "The five look-alikes",
+   "five_text": "At 24 px the masters of CL-023, CL-028, R-08, R-27 and R-45 draw as one page-and-magnifier shape, and two of them never share a view at small sizes. Here are their ten pairs as masters and as fits, from this run. Their rows carry a Look-alike mark.",
+   "flag_note": "The fit is flagged against {pairs}; its master already measured {masters} against the same drawings. The studio settled this apart from the board: these drawings never share a view at small sizes.",
+   "cols": [
+    "Drawing",
+    "Master 1x, fit 1x, master 2x",
+    "Full ink, master to fit",
+    "Pixel fit",
+    "The creative director",
+    "Hold back"
+   ],
+   "options": {
+    "all": [
+     "All {n_fits}, with the switch",
+     "all {n_fits} fits with the switch"
+    ],
+    "some": [
+     "All but those I hold back",
+     "the fits with the switch"
+    ]
+   },
+   "hold_label": "Hold back"
+  },
+  "print_l3": {
+   "short": "A print L3",
+   "title": "A print L3 at the masthead's proportion",
+   "lede": [
+    "Since November 8 the masthead sets L3's lockmark at 48 px beside 22 px capitals, {masthead_ratio} cap heights. Print and every other width still take the October master, whose lockmark stands {october_ratio} cap heights. So L3 prints at one proportion and shows on screen at another.",
+    "The identity designer drew a print L3: the October master with its lockmark at {proposal_ratio} cap heights, centered on the capitals as before. The wordmark, the space before the lockmark and the lockmark's own drawing stay. It would serve print and every width but the 282 px masthead, which keeps its own master."
+   ],
+   "gain": "L3 has one proportion everywhere, the masthead's. Nothing changes but the lockmark's size and its place on the capitals, and the file is the October master with those two values changed.",
+   "cost": "The printed lockmark gets {smaller_pct} percent smaller. At L3's 1.55 in print minimum it measures {prop_lock_in} in, where the October master gives {oct_lock_in} in; both stay over the lockmark's 0.25 in print minimum. The capitals grow a little, from {oct_caps_mm} to {prop_caps_mm} mm.",
+   "row282": "At the masthead's width, 282 px",
+   "row282_text": "The masthead master is drawn on the pixel grid for this one width. At the same width the October master sets a larger lockmark and smaller capitals; the proposal matches the masthead.",
+   "row48": "At 48 px capitals, where the display drawings serve",
+   "overlay": "Over each other at 48 px capitals",
+   "overlay_text": "The October master in Stone, the proposal over it in Charcoal and red. They share the wordmark, the space before the lockmark and the lockmark's vertical center.",
+   "prussian": "On Prussian, in White, at 48 px capitals",
+   "approve": "The print L3 master and its White file, for print and every width but the 282 px masthead.",
+   "options": {
+    "approve": [
+     "Approve the print L3",
+     "the print L3 for print and every width but the masthead"
+    ],
+    "keep": [
+     "Keep the October master",
+     "keep the October master for print"
+    ]
+   },
+   "links_text": "Print proof: both drawings at 1.55, 2.5 and 4 in wide on US Letter, to print at 100 percent. The identity designer's full plate, with the four surfaces and one color, as captured at 1x."
+  },
+  "social": {
+   "short": "The social sign-off",
+   "title": "The social card's sign-off at 96 px",
+   "lede": [
+    "A social card signs off with the lockmark at 48 px in its corner. When a feed shows the card 360 px wide, the lockmark draws at {lock_360_today} px, under its own 16 px floor. The feed test still passes there, with {red_360_today} red pixels on Newsprint. But an image service that saves the shrunk card as a JPEG leaves the lever {red_360_jpeg_today} red pixels.",
+    "The proposal draws the same 48 px master at exactly twice its size, 96 px, on social cards only. Covers, posters and the masthead keep 48 px. No new drawing is made, and every node and the lever still land on whole pixels."
+   ],
+   "gain": "The card passes the feed test at every width from 300 to 600 px: on Newsprint {fail_96_np} of {n_widths} widths fail where {fail_48_np} fail today, and on Charcoal {fail_96_ch} where {fail_48_ch} fail today. A thumbnail saved as a JPEG after shrinking keeps {red_360_jpeg_96} red pixels at 360 px on Newsprint, where today's keeps {red_360_jpeg_today}. At 360 px the lockmark draws at {lock_360_96} px, over its 16 px floor.",
+   "cost": "At full size the corner mark doubles in weight against the wordmark, from {ratio48} to {ratio96} times the card's capitals. Drawn at twice its size, each pixel step of the 48 px master shows as a 2 px step.",
+   "full_title": "The card at actual size, 1,200 by 630 px",
+   "feed_title": "As a feed draws it",
+   "feed_text": "Each card reduced to 500 and 360 px wide, as a 1x screen draws it, then the corner enlarged four times at each width and after the shrunk card is saved as a JPEG at quality 75 with its color kept at half size.",
+   "mark_title": "The mark alone",
+   "mark_text": "The 48 px master at 48 px and at exactly twice that, drawn from the file.",
+   "feed_test": "The feed test shrinks the card and asks that each of its eight nodes keep a dark pixel and the lever keep at least four red pixels.",
+   "approve": "The sign-off at 96 px on social cards only, drawn from the 48 px master at exactly twice its size.",
+   "options": {
+    "approve": [
+     "Approve 96 px",
+     "the 96 px sign-off on social cards"
+    ],
+    "keep": [
+     "Keep 48 px",
+     "keep the 48 px sign-off"
+    ]
+   },
+   "links_text": "The identity designer's full plate, as captured at 1x."
+  }
+ },
+ "reply": {
+  "title": "Ready to paste",
+  "text": [
+   "Each line below is one card. Choose an answer and tick \"I approve by name\" here or on the card itself; the two stay in step. Your answers collect in the box, ready to paste into our chat. Until you mark a card, the box holds the sample reply."
+  ],
+  "storage": "Your marks stay in this browser only."
+ },
+ "footer": "Decisions this board answers: DR-196, Housing; DR-197, Pause and Filter; DR-198 and DR-205, the 24 px fits; D2-482, the print L3; D2-715, the sign-off at 360 px. Settled by the studio and not asked here: D2-1237, R-06 at small sizes. Nothing here enters the guide until you approve it by name (DR-139)."
+}

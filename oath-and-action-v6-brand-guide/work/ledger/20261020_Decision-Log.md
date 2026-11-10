@@ -2366,3 +2366,27 @@ The studio asked four questions with the stage C draft brief. Dustin: "yes to al
 | D2-1237 | R-06, R-41 and R-44 join Rule 10.9's groups that never share a view at small sizes, in round 1 by chapter 10's owner; R-06's fit stays as drawn | The icon designer's question 6; the master was already closer to both, and D2-971 set the same answer for the five look-alikes, a studio call inside DR-136 |
 | D2-1238 | Drawings board C carries the icon designer's five other questions on its cards: the 37 fits, Pause, Filter A or B, Housing's option, and Housing at 24 px (recommended: 48 px and up for now, with a 24 px fit drawn only if Dustin asks) | Each is a named approval or changes DR-136's list |
 | D2-1239 | The creative director scores the five cards and the board builder writes its script at the same time; the builder reruns once the scores land | D2-567's practice and V10's note: the board is built once on final scores |
+
+### Creative director, drawings board C (`20261110_CD-Review-Of-Stage-C-Drawings.md`)
+
+Recommends Housing A, the Pause redraw, Filter A, all 37 fits, the print L3 and the 96 px sign-off. Housing option B (Clarity 3) goes back to the icon designer; nothing else does.
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1240 | Housing is scored per option, and the card's recommendation leads with A | The board shows each option's six scores, and A is the one I recommend |
+| D2-1241 | Housing B goes back with a redraw instruction and a withdrawal fallback; card 1 waits | B scores 3 on clarity, and the brief sends any drawing under 4 back before the board is published |
+| D2-1242 | The naming test for Housing is my reading at 48 px with no label, in the red edition on Newsprint and the Newsprint edition on Charcoal, after reading the designer's notes | The stage B method; I say plainly that I knew what each option was meant to show |
+| D2-1243 | A fit keeps its meaning when every part its manifest names shows at 24 px on 1x and it reads at least as well as its master does there | One test for all 37, set against what a 1x screen draws today |
+| D2-1244 | The 37 are scored as one set with a verdict on each drawing | The board brief's form for card 3 |
+| D2-1245 | All 37 fits are recommended | None loses meaning; R-06's chevron and CL-057's person are the weakest parts and both still read beside their labels |
+| D2-1246 | I agree with the icon designer's questions 5 and 6 | Housing stays at 48 px and up until Dustin adds it; R-06, R-41 and R-44 join the never-share-a-view groups as their masters' figures already warrant |
+| D2-1247 | Filter A over B | A keeps the family's outer edges on whole pixels and matches the Pause redraw |
+| D2-1248 | Cards 4 and 5 are recommended for approval and left to Dustin | Gate rule 4 makes both his call |
+| D2-1249 | Red share of ink is my approximate measure at 256 px on white, red counted where the red channel exceeds green by 60 | Enough to place each Housing option within the set's range; it is not one of the studio's checks |
+| D2-1250 | Evidence honesty scores 5 on cards 3 and 5 | Every figure I reran matches exactly, and each maker states what was not tested on the plate or in the notes |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1251 | Housing option B goes back to the icon designer with the creative director's instruction (two homes under one roof), or is withdrawn with its reason if it still reads as one house at 48 px; the creative director rescores B before the board is built on final scores | DR-191's short second pass for a craft item under 4; D2-622 |

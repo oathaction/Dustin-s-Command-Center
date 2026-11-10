@@ -1,0 +1,2638 @@
+{
+ "built": "2026-11-10T19:38:19.861417+00:00",
+ "scores_file": null,
+ "thresholds": {
+  "flag": 0.9092,
+  "watch": 0.8678,
+  "pairs": 7626,
+  "masters": 124
+ },
+ "checks": {
+  "commands": {
+   "likeness_fits": "node work/build/scripts/phase-2/icon_likeness_check.js work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-001-Voting-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-004-Petition-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-006-Civic-Ties-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-010-Decisive-Primaries-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-013-Incumbent-Defeat-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-023-Evidence-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-024-Feedback-Loop-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-028-Watchdogs-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-031-Local-Government-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-032-Local-Reporting-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-039-Feed-Ranking-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-040-Platform-Power-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-047-Data-Rights-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-048-Public-Records-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-050-Worker-Bargaining-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-051-Market-Power-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-054-Home-Equity-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-057-Labor-Share-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-060-Taxes-And-Benefits-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-061-Household-Income-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-067-Healthcare-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-068-Education-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-070-Environment-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-071-Policy-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-072-Reform-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-05-Automatic-Registration-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-08-Donor-Disclosure-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-09-Stock-Trading-Ban-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-15-Watchdog-Remedies-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-17-Civil-Service-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-19-Drug-Pricing-Rules-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-23-Indexed-Minimum-Wage-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-27-Tax-Enforcement-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-37-Feed-Choice-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-45-Paper-Ballots-And-Audits-Black.svg --watch 0.01 --json /tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/likeness-fits.json --quiet",
+   "likeness_housing": "node work/build/scripts/phase-2/icon_likeness_check.js work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-A-Black.svg work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-B-Black.svg work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-C-Black.svg --watch 0.01 --json /tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/likeness-housing.json --quiet",
+   "pixel_fit_fits": "node work/build/scripts/phase-2/icon_pixel_fit_check.js --size 24 --weight 1 --quiet --json /tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/pixel-fit-fits.json work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-001-Voting-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-004-Petition-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-006-Civic-Ties-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-010-Decisive-Primaries-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-013-Incumbent-Defeat-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-023-Evidence-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-024-Feedback-Loop-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-028-Watchdogs-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-031-Local-Government-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-032-Local-Reporting-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-039-Feed-Ranking-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-040-Platform-Power-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-047-Data-Rights-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-048-Public-Records-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-050-Worker-Bargaining-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-051-Market-Power-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-054-Home-Equity-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-057-Labor-Share-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-060-Taxes-And-Benefits-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-061-Household-Income-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-067-Healthcare-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-068-Education-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-070-Environment-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-071-Policy-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-072-Reform-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-05-Automatic-Registration-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-08-Donor-Disclosure-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-09-Stock-Trading-Ban-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-15-Watchdog-Remedies-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-17-Civil-Service-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-19-Drug-Pricing-Rules-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-23-Indexed-Minimum-Wage-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-27-Tax-Enforcement-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-37-Feed-Choice-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-45-Paper-Ballots-And-Audits-Black.svg",
+   "pixel_fit_masters": "node work/build/scripts/phase-2/icon_pixel_fit_check.js --size 24 --quiet --json /tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/pixel-fit-masters.json work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-001-Voting-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-004-Petition-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-006-Civic-Ties-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-010-Decisive-Primaries-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-013-Incumbent-Defeat-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-023-Evidence-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-024-Feedback-Loop-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-028-Watchdogs-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-031-Local-Government-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-032-Local-Reporting-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-039-Feed-Ranking-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-040-Platform-Power-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-047-Data-Rights-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-048-Public-Records-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-050-Worker-Bargaining-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-051-Market-Power-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-054-Home-Equity-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-057-Labor-Share-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-060-Taxes-And-Benefits-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-061-Household-Income-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-067-Healthcare-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-068-Education-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-070-Environment-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-071-Policy-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-072-Reform-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-05-Automatic-Registration-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-06-On-Cycle-Elections-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-08-Donor-Disclosure-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-09-Stock-Trading-Ban-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-14-Automatic-Funding-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-15-Watchdog-Remedies-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-17-Civil-Service-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-19-Drug-Pricing-Rules-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-23-Indexed-Minimum-Wage-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-27-Tax-Enforcement-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-37-Feed-Choice-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-45-Paper-Ballots-And-Audits-Black.svg",
+   "pixel_fit_utility": "node work/build/scripts/phase-2/icon_pixel_fit_check.js --size 16 --weight 1.5 --quiet --json /tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/pixel-fit-utility.json work/build/assets/utility/svg-16/20261110_Utility-Pause-16px.svg work/build/assets/utility-16-redraw/svg/20261110_Utility-Pause-16px-Redraw.svg work/build/assets/utility/svg-16/20261110_Utility-Filter-16px.svg work/build/assets/utility-16-redraw/svg/20261110_Utility-Filter-16px-Redraw-A.svg work/build/assets/utility-16-redraw/svg/20261110_Utility-Filter-16px-Redraw-B.svg",
+   "likeness_neutral_masters": "node work/build/scripts/phase-2/icon_likeness_check.js <8 masters copied under neutral names> --watch 0.01"
+  },
+  "exit_codes": {
+   "likeness_fits": 1,
+   "likeness_housing": 0,
+   "pixel_fit_fits": 0,
+   "pixel_fit_masters": 1,
+   "pixel_fit_utility": 0,
+   "likeness_neutral_masters": 1
+  },
+  "results": {
+   "likeness_fits": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/likeness-fits.json",
+   "likeness_housing": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/likeness-housing.json",
+   "pixel_fit_fits": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/pixel-fit-fits.json",
+   "pixel_fit_masters": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/pixel-fit-masters.json",
+   "pixel_fit_utility": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/pixel-fit-utility.json",
+   "likeness_neutral_masters": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/likeness-neutral-masters.json"
+  },
+  "likeness_run": "2026-11-10T19:37:20.668Z",
+  "renderer": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36"
+ },
+ "designer_recommendations": {
+  "fits": "all",
+  "pause": "approve",
+  "filter": "A",
+  "housing": "A",
+  "h24": "keep",
+  "r06_skipped": 6,
+  "print_l3": "approve",
+  "social": "approve"
+ },
+ "notices": [],
+ "warnings": [
+  "scores pending: work/boards/phase-2/stage-c/drawings/20261110_CD-Scores.json does not exist yet",
+  "check results reused from an earlier run (--reuse-checks)"
+ ],
+ "cards": [
+  {
+   "n": 1,
+   "key": "housing",
+   "title": "Housing, a new topic drawing",
+   "groups": [
+    {
+     "name": "opt",
+     "label": "Option",
+     "rec": "A",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "option A"
+      ],
+      [
+       "B",
+       "Option B",
+       "option B"
+      ],
+      [
+       "C",
+       "Option C",
+       "option C"
+      ]
+     ]
+    },
+    {
+     "name": "h24",
+     "label": "At 24 px",
+     "rec": "keep",
+     "options": [
+      [
+       "keep",
+       "48 px and up for now",
+       "Housing at 48 px and up for now"
+      ],
+      [
+       "add",
+       "Draw it a 24 px fit",
+       "a 24 px fit for Housing, to join the list"
+      ]
+     ]
+    }
+   ],
+   "scores_pending": true,
+   "scores_under_4": [],
+   "recommendations": [
+    [
+     "designer",
+     {
+      "label": "The icon designer recommends",
+      "option": "Option A",
+      "reason": "Option A, homes of more than one kind. It names housing as the atlas covers it, renters and owners alike, and keeps furthest from the drawings where a house means one household: 0.251 against CL-053, 0.290 against R-30 and 0.501 against CL-054. If you would rather have the clearest small shape, C, the house key, is the one, though a reader may call it home."
+     }
+    ]
+   ],
+   "figures": {
+    "likeness": {
+     "A": {
+      "closest": {
+       "name": "CL-051 Market Power",
+       "likeness": 0.6899,
+       "percentile": 42.4,
+       "status": ""
+      },
+      "against": {
+       "CL-051": 0.6899,
+       "CL-068": 0.6893,
+       "CL-039": 0.6873,
+       "R-42": 0.681,
+       "CL-033": 0.677,
+       "CL-023": 0.6635,
+       "CL-071": 0.6108,
+       "CL-019": 0.6082,
+       "CL-009": 0.6071,
+       "CL-012": 0.6023,
+       "CL-028": 0.5995,
+       "CL-047": 0.5937,
+       "CL-060": 0.5902,
+       "R-43": 0.5899,
+       "CL-056": 0.5831,
+       "CL-040": 0.5806,
+       "CL-052": 0.5805,
+       "R-45": 0.5795,
+       "CL-070": 0.5767,
+       "CL-044": 0.5756,
+       "R-27": 0.5747,
+       "CL-063": 0.5746,
+       "CL-031": 0.5737,
+       "CL-021": 0.5706,
+       "CL-043": 0.5648,
+       "CL-013": 0.5556,
+       "CL-059": 0.5479,
+       "CL-004": 0.5452,
+       "CL-069": 0.5394,
+       "R-17": 0.5341,
+       "CL-027": 0.5211,
+       "R-04": 0.5194,
+       "R-08": 0.5184,
+       "R-37": 0.5113,
+       "CL-045": 0.5102,
+       "CL-020": 0.5093,
+       "R-31": 0.5071,
+       "CL-067": 0.5038,
+       "R-32": 0.5012,
+       "CL-054": 0.5008,
+       "R-13": 0.5006,
+       "R-11": 0.4982,
+       "R-14": 0.4938,
+       "R-18": 0.4896,
+       "CL-005": 0.4881,
+       "CL-001": 0.4762,
+       "R-21": 0.4733,
+       "CL-065": 0.4701,
+       "CL-025": 0.468,
+       "CL-032": 0.4672,
+       "CL-007": 0.4664,
+       "CL-037": 0.4656,
+       "R-20": 0.4641,
+       "CL-029": 0.4638,
+       "CL-002": 0.4625,
+       "R-23": 0.4601,
+       "R-02": 0.4583,
+       "CL-048": 0.4559,
+       "R-05": 0.4535,
+       "R-01": 0.4534,
+       "R-12": 0.4492,
+       "CL-017": 0.4435,
+       "R-16": 0.4364,
+       "R-34": 0.4325,
+       "CL-022": 0.4295,
+       "R-09": 0.4289,
+       "CL-042": 0.4236,
+       "CL-006": 0.4189,
+       "R-22": 0.4189,
+       "CL-034": 0.4169,
+       "CL-010": 0.4152,
+       "CL-003": 0.4129,
+       "CL-038": 0.4093,
+       "CL-046": 0.3979,
+       "R-33": 0.3927,
+       "CL-058": 0.3903,
+       "R-29": 0.3895,
+       "R-28": 0.3889,
+       "CL-018": 0.3873,
+       "R-39": 0.3815,
+       "CL-064": 0.379,
+       "R-25": 0.3728,
+       "CL-066": 0.3698,
+       "R-10": 0.3655,
+       "CL-050": 0.3653,
+       "CL-026": 0.3643,
+       "CL-062": 0.3612,
+       "R-26": 0.3601,
+       "R-36": 0.3599,
+       "CL-030": 0.3595,
+       "CL-008": 0.3538,
+       "R-41": 0.3521,
+       "CL-035": 0.3392,
+       "CL-011": 0.3384,
+       "R-49": 0.3353,
+       "R-46": 0.3292,
+       "R-24": 0.3229,
+       "CL-073": 0.3216,
+       "CL-036": 0.3214,
+       "R-48": 0.3192,
+       "R-50": 0.316,
+       "R-35": 0.3128,
+       "R-03": 0.3083,
+       "CL-016": 0.3082,
+       "CL-057": 0.304,
+       "CL-049": 0.3038,
+       "R-19": 0.3007,
+       "CL-015": 0.2986,
+       "CL-041": 0.2918,
+       "R-30": 0.2902,
+       "R-15": 0.2764,
+       "CL-055": 0.2651,
+       "CL-024": 0.2641,
+       "CL-061": 0.263,
+       "R-38": 0.2589,
+       "CL-072": 0.2511,
+       "CL-053": 0.2508,
+       "CL-014": 0.2468,
+       "R-44": 0.2409,
+       "R-47": 0.2342,
+       "R-06": 0.2261,
+       "R-40": 0.1935,
+       "CL-074": 0.1872,
+       "R-07": 0.1177
+      },
+      "sibling": {
+       "option": "B",
+       "likeness": 0.452
+      },
+      "flagged": []
+     },
+     "B": {
+      "closest": {
+       "name": "CL-033 Hostile Content",
+       "likeness": 0.6588,
+       "percentile": 33.9,
+       "status": ""
+      },
+      "against": {
+       "CL-033": 0.6588,
+       "CL-024": 0.626,
+       "R-42": 0.6027,
+       "CL-065": 0.6,
+       "CL-051": 0.596,
+       "CL-032": 0.5807,
+       "CL-031": 0.5722,
+       "CL-045": 0.5677,
+       "CL-039": 0.5619,
+       "R-23": 0.5588,
+       "CL-066": 0.5535,
+       "CL-056": 0.5492,
+       "R-12": 0.5467,
+       "R-02": 0.5424,
+       "CL-049": 0.5418,
+       "CL-012": 0.5405,
+       "CL-044": 0.5381,
+       "R-29": 0.5325,
+       "CL-041": 0.5295,
+       "R-13": 0.5294,
+       "R-17": 0.5294,
+       "CL-067": 0.524,
+       "CL-060": 0.5229,
+       "CL-068": 0.5228,
+       "CL-019": 0.5204,
+       "R-04": 0.5162,
+       "CL-050": 0.511,
+       "CL-052": 0.5065,
+       "R-20": 0.5039,
+       "CL-027": 0.5031,
+       "CL-069": 0.4977,
+       "CL-004": 0.4942,
+       "CL-043": 0.4924,
+       "CL-023": 0.4919,
+       "R-28": 0.4907,
+       "CL-006": 0.4847,
+       "CL-047": 0.4823,
+       "CL-054": 0.4823,
+       "CL-007": 0.4794,
+       "R-09": 0.479,
+       "R-11": 0.4788,
+       "R-14": 0.4747,
+       "CL-001": 0.4722,
+       "R-07": 0.4711,
+       "CL-003": 0.4693,
+       "CL-016": 0.4609,
+       "CL-017": 0.4607,
+       "CL-063": 0.4607,
+       "CL-034": 0.4586,
+       "CL-020": 0.4583,
+       "R-45": 0.4572,
+       "CL-070": 0.4529,
+       "CL-071": 0.4503,
+       "CL-028": 0.4423,
+       "R-26": 0.4379,
+       "R-19": 0.4358,
+       "R-35": 0.4304,
+       "R-10": 0.4292,
+       "R-31": 0.4247,
+       "R-05": 0.4223,
+       "R-43": 0.4223,
+       "CL-011": 0.421,
+       "CL-025": 0.4192,
+       "CL-018": 0.4191,
+       "R-21": 0.418,
+       "R-36": 0.4177,
+       "R-18": 0.4137,
+       "R-30": 0.4133,
+       "CL-030": 0.4116,
+       "R-41": 0.4095,
+       "R-33": 0.4091,
+       "R-46": 0.4057,
+       "R-27": 0.4055,
+       "CL-062": 0.4023,
+       "R-08": 0.3995,
+       "CL-048": 0.3987,
+       "R-16": 0.3981,
+       "CL-053": 0.3977,
+       "CL-036": 0.3954,
+       "R-34": 0.3943,
+       "CL-002": 0.3915,
+       "R-25": 0.3894,
+       "CL-073": 0.3887,
+       "CL-058": 0.3881,
+       "R-32": 0.3846,
+       "R-06": 0.3834,
+       "CL-061": 0.3828,
+       "R-01": 0.3828,
+       "CL-038": 0.3826,
+       "CL-064": 0.3818,
+       "CL-046": 0.3813,
+       "CL-040": 0.3797,
+       "CL-015": 0.3793,
+       "CL-055": 0.3703,
+       "R-24": 0.3686,
+       "R-15": 0.3647,
+       "CL-009": 0.3604,
+       "CL-013": 0.3569,
+       "CL-035": 0.3568,
+       "CL-057": 0.3502,
+       "CL-029": 0.345,
+       "R-03": 0.3421,
+       "CL-026": 0.3347,
+       "R-49": 0.3311,
+       "R-37": 0.3261,
+       "CL-010": 0.3202,
+       "R-40": 0.3159,
+       "CL-037": 0.3152,
+       "CL-072": 0.3053,
+       "R-44": 0.3034,
+       "CL-005": 0.3032,
+       "R-47": 0.292,
+       "CL-059": 0.2916,
+       "CL-074": 0.2866,
+       "R-39": 0.2865,
+       "R-22": 0.2825,
+       "CL-014": 0.2799,
+       "R-38": 0.2589,
+       "CL-042": 0.2579,
+       "R-50": 0.1887,
+       "CL-022": 0.1882,
+       "R-48": 0.1848,
+       "CL-021": 0.1797,
+       "CL-008": 0.0785
+      },
+      "sibling": {
+       "option": "A",
+       "likeness": 0.452
+      },
+      "flagged": []
+     },
+     "C": {
+      "closest": {
+       "name": "CL-022 Act",
+       "likeness": 0.6562,
+       "percentile": 33.3,
+       "status": ""
+      },
+      "against": {
+       "CL-022": 0.6562,
+       "CL-012": 0.6384,
+       "CL-057": 0.6121,
+       "CL-067": 0.6046,
+       "CL-047": 0.5982,
+       "CL-009": 0.5961,
+       "R-42": 0.5924,
+       "CL-038": 0.5891,
+       "R-43": 0.5852,
+       "R-27": 0.5822,
+       "CL-059": 0.5769,
+       "CL-042": 0.5688,
+       "CL-004": 0.566,
+       "CL-040": 0.5627,
+       "R-18": 0.5563,
+       "CL-072": 0.5488,
+       "CL-028": 0.5363,
+       "CL-048": 0.5341,
+       "CL-039": 0.5326,
+       "CL-071": 0.5323,
+       "CL-073": 0.5299,
+       "CL-001": 0.5187,
+       "R-50": 0.5072,
+       "CL-030": 0.5039,
+       "CL-021": 0.5005,
+       "CL-002": 0.494,
+       "CL-034": 0.4915,
+       "CL-060": 0.4836,
+       "R-02": 0.4824,
+       "R-34": 0.4719,
+       "CL-023": 0.4711,
+       "CL-063": 0.4687,
+       "R-13": 0.4684,
+       "CL-005": 0.4602,
+       "CL-029": 0.4567,
+       "R-08": 0.454,
+       "CL-069": 0.447,
+       "CL-068": 0.4458,
+       "CL-013": 0.4381,
+       "R-04": 0.4371,
+       "CL-031": 0.4302,
+       "R-05": 0.4292,
+       "CL-025": 0.4286,
+       "R-21": 0.4231,
+       "CL-064": 0.3914,
+       "CL-033": 0.3843,
+       "CL-006": 0.3831,
+       "R-37": 0.3807,
+       "R-09": 0.3791,
+       "CL-032": 0.3776,
+       "R-17": 0.3767,
+       "CL-056": 0.3738,
+       "CL-044": 0.3679,
+       "CL-018": 0.3665,
+       "CL-070": 0.3645,
+       "R-14": 0.3586,
+       "R-03": 0.3579,
+       "R-25": 0.353,
+       "R-28": 0.3498,
+       "CL-003": 0.3497,
+       "R-23": 0.3469,
+       "CL-043": 0.333,
+       "CL-062": 0.3282,
+       "CL-019": 0.3268,
+       "R-11": 0.3213,
+       "R-29": 0.3191,
+       "R-12": 0.3142,
+       "CL-026": 0.3135,
+       "CL-036": 0.3076,
+       "R-33": 0.3057,
+       "R-24": 0.3054,
+       "R-15": 0.3035,
+       "R-35": 0.3029,
+       "R-31": 0.2984,
+       "CL-008": 0.2966,
+       "CL-014": 0.2819,
+       "R-32": 0.2779,
+       "CL-052": 0.2759,
+       "R-40": 0.274,
+       "R-19": 0.2726,
+       "R-45": 0.2717,
+       "CL-054": 0.2702,
+       "R-30": 0.269,
+       "CL-035": 0.2676,
+       "R-48": 0.2649,
+       "R-01": 0.2647,
+       "CL-051": 0.2639,
+       "CL-055": 0.2604,
+       "R-16": 0.26,
+       "CL-049": 0.2587,
+       "CL-017": 0.2571,
+       "R-39": 0.2564,
+       "CL-037": 0.252,
+       "R-10": 0.2477,
+       "CL-041": 0.2448,
+       "CL-027": 0.2447,
+       "R-46": 0.2446,
+       "CL-015": 0.2296,
+       "R-20": 0.2248,
+       "CL-024": 0.2238,
+       "CL-061": 0.2228,
+       "CL-011": 0.2218,
+       "CL-065": 0.2098,
+       "CL-046": 0.2048,
+       "CL-066": 0.2048,
+       "CL-007": 0.2024,
+       "CL-010": 0.1923,
+       "CL-020": 0.1848,
+       "R-44": 0.179,
+       "R-22": 0.1779,
+       "CL-045": 0.1754,
+       "CL-058": 0.1639,
+       "R-49": 0.1574,
+       "R-26": 0.1506,
+       "CL-050": 0.13,
+       "CL-074": 0.0855,
+       "R-41": 0.0844,
+       "CL-016": 0.0791,
+       "R-47": 0.0721,
+       "R-06": 0.06,
+       "CL-053": 0.0578,
+       "R-38": 0.0396,
+       "R-36": 0.0091,
+       "R-07": -0.0166
+      },
+      "sibling": {
+       "option": "A",
+       "likeness": 0.4309
+      },
+      "flagged": []
+     }
+    },
+    "neighbors": [
+     "CL-054",
+     "CL-053",
+     "CL-063",
+     "R-30",
+     "CL-051"
+    ]
+   }
+  },
+  {
+   "n": 2,
+   "key": "utility",
+   "title": "The 16 px Pause and Filter",
+   "groups": [
+    {
+     "name": "pause",
+     "label": "Pause",
+     "rec": "approve",
+     "options": [
+      [
+       "approve",
+       "The redraw",
+       "the Pause redraw"
+      ],
+      [
+       "keep",
+       "Keep the approved file",
+       "keep the approved Pause"
+      ]
+     ]
+    },
+    {
+     "name": "filter",
+     "label": "Filter",
+     "rec": "A",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "Filter option A"
+      ],
+      [
+       "B",
+       "Option B",
+       "Filter option B"
+      ],
+      [
+       "keep",
+       "Keep the approved file",
+       "keep the approved Filter"
+      ]
+     ]
+    }
+   ],
+   "scores_pending": true,
+   "scores_under_4": [],
+   "recommendations": [
+    [
+     "designer",
+     {
+      "label": "The icon designer recommends",
+      "option": "The Pause redraw, Filter option A",
+      "reason": "Approve the Pause redraw, which opens a whole pixel on 8 of 8 of the rows inside each bar where the approved file opens none. For Filter, option A: it keeps the approved file's construction with both outer edges on whole pixels, matches the Pause redraw, and opens a whole pixel on 3 of 4 of the spout's rows. B opens 4 of 4 and keeps the funnel symmetric, but its outer edges draw half gray."
+     }
+    ]
+   ],
+   "figures": {
+    "Pause-Approved": {
+     "file": "work/build/assets/utility/svg-16/20261110_Utility-Pause-16px.svg",
+     "open": [
+      {
+       "rows": [
+        4,
+        11
+       ],
+       "n_rows": 8,
+       "rows_open": 0,
+       "width_px": 1.0,
+       "mid_row": 8,
+       "mid_alpha": [
+        127,
+        128
+       ],
+       "open_per_row": [
+        0
+       ]
+      },
+      {
+       "rows": [
+        4,
+        11
+       ],
+       "n_rows": 8,
+       "rows_open": 0,
+       "width_px": 1.0,
+       "mid_row": 8,
+       "mid_alpha": [
+        127,
+        128
+       ],
+       "open_per_row": [
+        0
+       ]
+      }
+     ],
+     "pixel_fit": {
+      "pass": true,
+      "fails": {
+       "1x": [],
+       "2x": []
+      }
+     }
+    },
+    "Pause-Redraw": {
+     "file": "work/build/assets/utility-16-redraw/svg/20261110_Utility-Pause-16px-Redraw.svg",
+     "open": [
+      {
+       "rows": [
+        4,
+        11
+       ],
+       "n_rows": 8,
+       "rows_open": 8,
+       "width_px": 2.0,
+       "mid_row": 8,
+       "mid_alpha": [
+        128,
+        0,
+        128
+       ],
+       "open_per_row": [
+        1
+       ]
+      },
+      {
+       "rows": [
+        4,
+        11
+       ],
+       "n_rows": 8,
+       "rows_open": 8,
+       "width_px": 2.0,
+       "mid_row": 8,
+       "mid_alpha": [
+        128,
+        0,
+        128
+       ],
+       "open_per_row": [
+        1
+       ]
+      }
+     ],
+     "pixel_fit": {
+      "pass": true,
+      "fails": {
+       "1x": [],
+       "2x": []
+      }
+     }
+    },
+    "Filter-Approved": {
+     "file": "work/build/assets/utility/svg-16/20261110_Utility-Filter-16px.svg",
+     "open": [
+      {
+       "rows": [
+        8,
+        11
+       ],
+       "n_rows": 4,
+       "rows_open": 0,
+       "width_px": 1.0,
+       "mid_row": 10,
+       "mid_alpha": [
+        127,
+        128
+       ],
+       "open_per_row": [
+        0
+       ]
+      }
+     ],
+     "pixel_fit": {
+      "pass": true,
+      "fails": {
+       "1x": [],
+       "2x": []
+      }
+     }
+    },
+    "Filter-Redraw-A": {
+     "file": "work/build/assets/utility-16-redraw/svg/20261110_Utility-Filter-16px-Redraw-A.svg",
+     "open": [
+      {
+       "rows": [
+        8,
+        11
+       ],
+       "n_rows": 4,
+       "rows_open": 3,
+       "width_px": 2.0,
+       "mid_row": 10,
+       "mid_alpha": [
+        128,
+        0,
+        128
+       ],
+       "open_per_row": [
+        0,
+        1
+       ]
+      }
+     ],
+     "pixel_fit": {
+      "pass": true,
+      "fails": {
+       "1x": [],
+       "2x": []
+      }
+     }
+    },
+    "Filter-Redraw-B": {
+     "file": "work/build/assets/utility-16-redraw/svg/20261110_Utility-Filter-16px-Redraw-B.svg",
+     "open": [
+      {
+       "rows": [
+        8,
+        11
+       ],
+       "n_rows": 4,
+       "rows_open": 4,
+       "width_px": 2.0,
+       "mid_row": 10,
+       "mid_alpha": [
+        0,
+        0
+       ],
+       "open_per_row": [
+        1,
+        2
+       ]
+      }
+     ],
+     "pixel_fit": {
+      "pass": true,
+      "fails": {
+       "1x": [],
+       "2x": []
+      }
+     }
+    },
+    "open_pixel_figures": {
+     "pause_rows": "8 of 8",
+     "pause_rows_today": "none",
+     "filter_A_rows": "3 of 4",
+     "filter_B_rows": "4 of 4"
+    }
+   }
+  },
+  {
+   "n": 3,
+   "key": "fits",
+   "title": "24 px fits for the 37 topic and atlas drawings",
+   "groups": [
+    {
+     "name": "fits",
+     "label": null,
+     "rec": "all",
+     "options": [
+      [
+       "all",
+       "All 37, with the switch",
+       "all 37 fits with the switch"
+      ],
+      [
+       "some",
+       "All but those I hold back",
+       "the fits with the switch"
+      ]
+     ]
+    }
+   ],
+   "scores_pending": true,
+   "scores_under_4": [],
+   "recommendations": [
+    [
+     "designer",
+     {
+      "label": "The icon designer recommends",
+      "option": "All 37, with the switch",
+      "reason": "All 37. Every fit passes the pixel-fit check, every fit's pixels reach full ink where no master line does, and all ten pairs among the five look-alikes moved apart."
+     }
+    ]
+   ],
+   "figures": {
+    "summary": {
+     "n_fits": 37,
+     "pf_fits_pass": 37,
+     "pf_masters_pass": 0,
+     "fits_full_min": "100%",
+     "masters_full_min": "0%",
+     "masters_full_max": "8.3%",
+     "n_flagged": "2 pairs",
+     "n_watched": "16 more"
+    },
+    "rows": [
+     {
+      "id": "CL-001",
+      "word": "Voting",
+      "atlas": "",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 135
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 93,
+       "ink_px": 93
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.5606,
+      "closest": {
+       "name": "CL-048 Public Records",
+       "likeness": 0.7264
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-004",
+      "word": "Petition",
+      "atlas": "",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 157
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 99,
+       "ink_px": 99
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.6558,
+      "closest": {
+       "name": "CL-060 Taxes & Benefits",
+       "likeness": 0.6923
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-006",
+      "word": "Civic Ties",
+      "atlas": "B3",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 117
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 72,
+       "ink_px": 72
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.6,
+      "like_own": 0.7712,
+      "closest": {
+       "name": "CL-040 Platform Power",
+       "likeness": 0.7481
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-010",
+      "word": "Decisive Primaries",
+      "atlas": "C2",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 113
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 56,
+       "ink_px": 56
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.9267,
+      "closest": {
+       "name": "R-39 Digital Service Teams",
+       "likeness": 0.8189
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-013",
+      "word": "Incumbent Defeat",
+      "atlas": "C5",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 117
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 84,
+       "ink_px": 84
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.7118,
+      "closest": {
+       "name": "CL-039 Feed Ranking",
+       "likeness": 0.6163
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-023",
+      "word": "Evidence",
+      "atlas": "",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 211
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 111,
+       "ink_px": 111
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.8275,
+      "closest": {
+       "name": "CL-060 Taxes & Benefits",
+       "likeness": 0.7328
+      },
+      "flags": [],
+      "five": true,
+      "verdict": null
+     },
+     {
+      "id": "CL-024",
+      "word": "Feedback Loop",
+      "atlas": "",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 118
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 76,
+       "ink_px": 76
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.5941,
+      "closest": {
+       "name": "R-07 Small-Donor Matching",
+       "likeness": 0.581
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-028",
+      "word": "Watchdogs",
+      "atlas": "D4",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 156
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 98,
+       "ink_px": 98
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.6563,
+      "closest": {
+       "name": "CL-023 Evidence",
+       "likeness": 0.7815
+      },
+      "flags": [],
+      "five": true,
+      "verdict": null
+     },
+     {
+      "id": "CL-031",
+      "word": "Local Government",
+      "atlas": "",
+      "full_master": {
+       "share": 0.031914893617021274,
+       "full_px": 6,
+       "ink_px": 188
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 108,
+       "ink_px": 108
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.9819,
+      "closest": {
+       "name": "R-31 Childcare Supply",
+       "likeness": 0.8724
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-032",
+      "word": "Local Reporting",
+      "atlas": "B2",
+      "full_master": {
+       "share": 0.05,
+       "full_px": 12,
+       "ink_px": 240
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 162,
+       "ink_px": 162
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.7511,
+      "closest": {
+       "name": "CL-052 Household Security",
+       "likeness": 0.7692
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-039",
+      "word": "Feed Ranking",
+      "atlas": "TC1",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 269
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 169,
+       "ink_px": 169
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.4894,
+      "closest": {
+       "name": "CL-055 Productivity",
+       "likeness": 0.4206
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-040",
+      "word": "Platform Power",
+      "atlas": "TC2",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 143
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 86,
+       "ink_px": 86
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.6,
+      "like_own": 0.7484,
+      "closest": {
+       "name": "CL-068 Education",
+       "likeness": 0.7598
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-047",
+      "word": "Data Rights",
+      "atlas": "",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 156
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 102,
+       "ink_px": 102
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.5275,
+      "closest": {
+       "name": "CL-023 Evidence",
+       "likeness": 0.5537
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-048",
+      "word": "Public Records",
+      "atlas": "",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 171
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 106,
+       "ink_px": 106
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.8043,
+      "closest": {
+       "name": "R-21 Labor-Law Remedies",
+       "likeness": 0.6304
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-050",
+      "word": "Worker Bargaining",
+      "atlas": "A2",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 177
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 86,
+       "ink_px": 86
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.9563,
+      "closest": {
+       "name": "CL-007 Turnout Equality",
+       "likeness": 0.9022
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-051",
+      "word": "Market Power",
+      "atlas": "A3",
+      "full_master": {
+       "share": 0.0213903743315508,
+       "full_px": 4,
+       "ink_px": 187
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 119,
+       "ink_px": 119
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.9267,
+      "closest": {
+       "name": "CL-023 Evidence",
+       "likeness": 0.7728
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-054",
+      "word": "Home Equity",
+      "atlas": "A6",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 173
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 97,
+       "ink_px": 97
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.9575,
+      "closest": {
+       "name": "CL-052 Household Security",
+       "likeness": 0.8981
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-057",
+      "word": "Labor Share",
+      "atlas": "EC3",
+      "full_master": {
+       "share": 0.08270676691729323,
+       "full_px": 11,
+       "ink_px": 133
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 109,
+       "ink_px": 109
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.6,
+      "like_own": 0.5921,
+      "closest": {
+       "name": "CL-059 Credit Allocation",
+       "likeness": 0.372
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-060",
+      "word": "Taxes & Benefits",
+      "atlas": "EC6",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 194
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 111,
+       "ink_px": 111
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.6995,
+      "closest": {
+       "name": "CL-039 Feed Ranking",
+       "likeness": 0.6676
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-061",
+      "word": "Household Income",
+      "atlas": "EC7",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 107
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 69,
+       "ink_px": 69
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.9165,
+      "closest": {
+       "name": "R-06 On-Cycle Elections",
+       "likeness": 0.8116
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-067",
+      "word": "Healthcare",
+      "atlas": "",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 139
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 107,
+       "ink_px": 107
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.5055,
+      "closest": {
+       "name": "R-01 All-Party Primaries",
+       "likeness": 0.6189
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-068",
+      "word": "Education",
+      "atlas": "",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 212
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 112,
+       "ink_px": 112
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.9312,
+      "closest": {
+       "name": "CL-019 Explain",
+       "likeness": 0.8227
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-070",
+      "word": "Environment",
+      "atlas": "",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 124
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 75,
+       "ink_px": 75
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.6,
+      "like_own": 0.7456,
+      "closest": {
+       "name": "CL-029 Public Services",
+       "likeness": 0.6474
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-071",
+      "word": "Policy",
+      "atlas": "",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 174
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 105,
+       "ink_px": 105
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.6862,
+      "closest": {
+       "name": "CL-039 Feed Ranking",
+       "likeness": 0.7124
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "CL-072",
+      "word": "Reform",
+      "atlas": "",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 88
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 56,
+       "ink_px": 56
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.7974,
+      "closest": {
+       "name": "R-24 Paid Leave",
+       "likeness": 0.6127
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "R-05",
+      "word": "Automatic Registration",
+      "atlas": "R-05",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 187
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 103,
+       "ink_px": 103
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.8558,
+      "closest": {
+       "name": "CL-003 Registration",
+       "likeness": 0.8812
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "R-06",
+      "word": "On-Cycle Elections",
+      "atlas": "R-06",
+      "full_master": {
+       "share": 0.010526315789473684,
+       "full_px": 2,
+       "ink_px": 190
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 93,
+       "ink_px": 93
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.55,
+      "like_own": 0.9467,
+      "closest": {
+       "name": "R-41 Grid Cost Allocation",
+       "likeness": 0.9172
+      },
+      "flags": [
+       {
+        "with": "R-41",
+        "label": "R-41 Grid Cost Allocation",
+        "likeness": 0.9172,
+        "masters": 0.9367
+       },
+       {
+        "with": "R-44",
+        "label": "R-44 Digital Competition",
+        "likeness": 0.915,
+        "masters": 0.9645
+       }
+      ],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "R-08",
+      "word": "Donor Disclosure",
+      "atlas": "R-08",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 134
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 98,
+       "ink_px": 98
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.7916,
+      "closest": {
+       "name": "CL-023 Evidence",
+       "likeness": 0.8859
+      },
+      "flags": [],
+      "five": true,
+      "verdict": null
+     },
+     {
+      "id": "R-09",
+      "word": "Stock-Trading Ban",
+      "atlas": "R-09",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 183
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 128,
+       "ink_px": 128
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.6261,
+      "closest": {
+       "name": "CL-052 Household Security",
+       "likeness": 0.7169
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "R-14",
+      "word": "Automatic Funding",
+      "atlas": "R-14",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 195
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 102,
+       "ink_px": 102
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.911,
+      "closest": {
+       "name": "R-45 Paper Ballots & Audits",
+       "likeness": 0.8921
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "R-15",
+      "word": "Watchdog Remedies",
+      "atlas": "R-15",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 163
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 80,
+       "ink_px": 80
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.9606,
+      "closest": {
+       "name": "R-01 All-Party Primaries",
+       "likeness": 0.8675
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "R-17",
+      "word": "Civil Service",
+      "atlas": "R-17",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 190
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 104,
+       "ink_px": 104
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.9037,
+      "closest": {
+       "name": "R-23 Indexed Minimum Wage",
+       "likeness": 0.831
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "R-19",
+      "word": "Drug-Pricing Rules",
+      "atlas": "R-19",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 116
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 72,
+       "ink_px": 72
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.6,
+      "like_own": 0.9305,
+      "closest": {
+       "name": "R-24 Paid Leave",
+       "likeness": 0.8291
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "R-23",
+      "word": "Indexed Minimum Wage",
+      "atlas": "R-23",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 160
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 116,
+       "ink_px": 116
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.5741,
+      "closest": {
+       "name": "CL-023 Evidence",
+       "likeness": 0.6233
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "R-27",
+      "word": "Tax Enforcement",
+      "atlas": "R-27",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 157
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 99,
+       "ink_px": 99
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.6602,
+      "closest": {
+       "name": "CL-023 Evidence",
+       "likeness": 0.8259
+      },
+      "flags": [],
+      "five": true,
+      "verdict": null
+     },
+     {
+      "id": "R-37",
+      "word": "Feed Choice",
+      "atlas": "R-37",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 198
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 110,
+       "ink_px": 110
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.9255,
+      "closest": {
+       "name": "R-32 Local-News Funding",
+       "likeness": 0.8609
+      },
+      "flags": [],
+      "five": false,
+      "verdict": null
+     },
+     {
+      "id": "R-45",
+      "word": "Paper Ballots & Audits",
+      "atlas": "R-45",
+      "full_master": {
+       "share": 0.0,
+       "full_px": 0,
+       "ink_px": 200
+      },
+      "full_fit": {
+       "share": 1.0,
+       "full_px": 114,
+       "ink_px": 114
+      },
+      "pf_fit": {
+       "pass": true,
+       "fails": {
+        "1x": [],
+        "2x": []
+       }
+      },
+      "pf_master_pass": false,
+      "master_line_px_1x": 0.65,
+      "like_own": 0.9199,
+      "closest": {
+       "name": "CL-044 Grid Demand",
+       "likeness": 0.8498
+      },
+      "flags": [],
+      "five": true,
+      "verdict": null
+     }
+    ],
+    "five": [
+     {
+      "a": "CL-028",
+      "b": "R-27",
+      "masters": 0.9579,
+      "fits": 0.8613
+     },
+     {
+      "a": "R-08",
+      "b": "R-27",
+      "masters": 0.9452,
+      "fits": 0.77
+     },
+     {
+      "a": "CL-028",
+      "b": "R-08",
+      "masters": 0.9421,
+      "fits": 0.8423
+     },
+     {
+      "a": "CL-023",
+      "b": "CL-028",
+      "masters": 0.9272,
+      "fits": 0.897
+     },
+     {
+      "a": "CL-023",
+      "b": "R-08",
+      "masters": 0.8921,
+      "fits": 0.8548
+     },
+     {
+      "a": "CL-023",
+      "b": "R-27",
+      "masters": 0.8852,
+      "fits": 0.8093
+     },
+     {
+      "a": "R-08",
+      "b": "R-45",
+      "masters": 0.876,
+      "fits": 0.8651
+     },
+     {
+      "a": "CL-023",
+      "b": "R-45",
+      "masters": 0.8496,
+      "fits": 0.7636
+     },
+     {
+      "a": "CL-028",
+      "b": "R-45",
+      "masters": 0.8171,
+      "fits": 0.7022
+     },
+     {
+      "a": "R-27",
+      "b": "R-45",
+      "masters": 0.8021,
+      "fits": 0.7169
+     }
+    ]
+   }
+  },
+  {
+   "n": 4,
+   "key": "print_l3",
+   "title": "A print L3 at the masthead's proportion",
+   "groups": [
+    {
+     "name": "l3",
+     "label": null,
+     "rec": "approve",
+     "options": [
+      [
+       "approve",
+       "Approve the print L3",
+       "the print L3 for print and every width but the masthead"
+      ],
+      [
+       "keep",
+       "Keep the October master",
+       "keep the October master for print"
+      ]
+     ]
+    }
+   ],
+   "scores_pending": true,
+   "scores_under_4": [],
+   "recommendations": [
+    [
+     "designer",
+     {
+      "label": "The identity designer recommends",
+      "option": "Approve the print L3",
+      "reason": "L3 then has one proportion in every medium, the change touches nothing but the lockmark’s size and place, and at L3’s print minimum the lockmark stays over its own."
+     }
+    ]
+   ],
+   "figures": {
+    "from": "work/handoffs/phase-2/20261110_Stage-C-Identity-Figures.json",
+    "print_l3": {
+     "lockups/20261110_L3-Horizontal-Print-Master.svg": {
+      "lockmark_units": 218.18,
+      "lockmark_top": -55.09,
+      "width_units": 1256.49,
+      "gap_units": 60.0,
+      "lockmark_over_capitals": 2.1818,
+      "width_over_capitals": 12.5649,
+      "source": "lockups/20261028_L3-Horizontal-Master.svg"
+     },
+     "prussian/20261110_L3-Horizontal-Print-Master-Prussian-White.svg": {
+      "lockmark_units": 218.18,
+      "lockmark_top": -55.09,
+      "width_units": 1256.49,
+      "gap_units": 60.0,
+      "lockmark_over_capitals": 2.1818,
+      "width_over_capitals": 12.5649,
+      "source": "prussian/20261028_L3-Horizontal-Master-Prussian-White.svg"
+     },
+     "october_master": {
+      "lockmark_units": 240,
+      "width_units": 1278.31,
+      "gap_units": 60,
+      "lockmark_over_capitals": 2.4,
+      "width_over_capitals": 12.7831
+     },
+     "october_at_1.55_in": {
+      "capitals_mm": 3.08,
+      "lockmark_in": 0.291
+     },
+     "proposal_at_1.55_in": {
+      "capitals_mm": 3.13,
+      "lockmark_in": 0.269
+     },
+     "masthead_master": {
+      "file": "lockups/20261110_L3-Horizontal-Master.svg",
+      "capitals_px": 22,
+      "gap_px": 13,
+      "lockmark_px": 48,
+      "lockmark_over_capitals": 2.1818,
+      "gap_over_capitals": 0.5909
+     }
+    },
+    "derived": {
+     "masthead_ratio": "2.18",
+     "october_ratio": "2.4",
+     "proposal_ratio": "2.18",
+     "smaller_pct": "9.1",
+     "prop_lock_in": "0.269",
+     "oct_lock_in": "0.291",
+     "oct_caps_mm": "3.08",
+     "prop_caps_mm": "3.13"
+    }
+   }
+  },
+  {
+   "n": 5,
+   "key": "social",
+   "title": "The social card's sign-off at 96 px",
+   "groups": [
+    {
+     "name": "so",
+     "label": null,
+     "rec": "approve",
+     "options": [
+      [
+       "approve",
+       "Approve 96 px",
+       "the 96 px sign-off on social cards"
+      ],
+      [
+       "keep",
+       "Keep 48 px",
+       "keep the 48 px sign-off"
+      ]
+     ]
+    }
+   ],
+   "scores_pending": true,
+   "scores_under_4": [],
+   "recommendations": [
+    [
+     "designer",
+     {
+      "label": "The identity designer recommends",
+      "option": "Approve 96 px",
+      "reason": "At 96 px the card passes at every width from 300 to 600 px and through the shrunk JPEG, with no new drawing, and the corners keep L3’s proportion. If you keep 48 px, the risk stays as measured until a real upload in Phase 3 shows whether any feed saves a shrunk JPEG."
+     }
+    ]
+   ],
+   "figures": {
+    "from": "work/handoffs/phase-2/20261110_Stage-C-Identity-Figures.json",
+    "social_sign_off_96": {
+     "newsprint-48": {
+      "at_500": {
+       "nodes_kept": 8,
+       "lever_red_px": 11,
+       "passes": true
+      },
+      "at_500_then_jpeg_q75_420": {
+       "nodes_kept": 8,
+       "lever_red_px": 3,
+       "passes": false
+      },
+      "at_360": {
+       "nodes_kept": 8,
+       "lever_red_px": 5,
+       "passes": true
+      },
+      "at_360_then_jpeg_q75_420": {
+       "nodes_kept": 8,
+       "lever_red_px": 0,
+       "passes": false
+      },
+      "lanczos_fail_widths_300_to_600": [
+       300,
+       301,
+       302,
+       309,
+       310,
+       311,
+       316,
+       317,
+       320,
+       325,
+       331,
+       332
+      ],
+      "thumbnail_jpeg_q75_420_fail_widths_every_4th_300_to_600": {
+       "fails": 50,
+       "of": 76
+      },
+      "lockmark_px_at": {
+       "500": 20.0,
+       "360": 14.4
+      }
+     },
+     "newsprint-96": {
+      "at_500": {
+       "nodes_kept": 8,
+       "lever_red_px": 52,
+       "passes": true
+      },
+      "at_500_then_jpeg_q75_420": {
+       "nodes_kept": 8,
+       "lever_red_px": 41,
+       "passes": true
+      },
+      "at_360": {
+       "nodes_kept": 8,
+       "lever_red_px": 22,
+       "passes": true
+      },
+      "at_360_then_jpeg_q75_420": {
+       "nodes_kept": 8,
+       "lever_red_px": 17,
+       "passes": true
+      },
+      "lanczos_fail_widths_300_to_600": [],
+      "thumbnail_jpeg_q75_420_fail_widths_every_4th_300_to_600": {
+       "fails": 0,
+       "of": 76
+      },
+      "lockmark_px_at": {
+       "500": 40.0,
+       "360": 28.8
+      }
+     },
+     "charcoal-48": {
+      "at_500": {
+       "nodes_kept": 8,
+       "lever_red_px": 11,
+       "passes": true
+      },
+      "at_500_then_jpeg_q75_420": {
+       "nodes_kept": 8,
+       "lever_red_px": 3,
+       "passes": false
+      },
+      "at_360": {
+       "nodes_kept": 8,
+       "lever_red_px": 5,
+       "passes": true
+      },
+      "at_360_then_jpeg_q75_420": {
+       "nodes_kept": 8,
+       "lever_red_px": 0,
+       "passes": false
+      },
+      "lanczos_fail_widths_300_to_600": [
+       300,
+       301,
+       302,
+       303,
+       309,
+       310,
+       311,
+       314,
+       315,
+       316,
+       317,
+       325,
+       326,
+       331,
+       332,
+       346,
+       347
+      ],
+      "thumbnail_jpeg_q75_420_fail_widths_every_4th_300_to_600": {
+       "fails": 48,
+       "of": 76
+      },
+      "lockmark_px_at": {
+       "500": 20.0,
+       "360": 14.4
+      }
+     },
+     "charcoal-96": {
+      "at_500": {
+       "nodes_kept": 8,
+       "lever_red_px": 48,
+       "passes": true
+      },
+      "at_500_then_jpeg_q75_420": {
+       "nodes_kept": 8,
+       "lever_red_px": 34,
+       "passes": true
+      },
+      "at_360": {
+       "nodes_kept": 8,
+       "lever_red_px": 20,
+       "passes": true
+      },
+      "at_360_then_jpeg_q75_420": {
+       "nodes_kept": 8,
+       "lever_red_px": 16,
+       "passes": true
+      },
+      "lanczos_fail_widths_300_to_600": [],
+      "thumbnail_jpeg_q75_420_fail_widths_every_4th_300_to_600": {
+       "fails": 0,
+       "of": 76
+      },
+      "lockmark_px_at": {
+       "500": 40.0,
+       "360": 28.8
+      }
+     },
+     "card_wordmark_capitals_px": 40.74,
+     "lockmark_over_wordmark_capitals": {
+      "48": 1.178,
+      "96": 2.356
+     }
+    },
+    "derived": {
+     "lock_360_today": "14.4",
+     "lock_360_96": "28.8",
+     "red_360_today": 5,
+     "red_360_jpeg_today": 0,
+     "red_360_jpeg_96": 17,
+     "n_widths": 301,
+     "fail_96_np": 0,
+     "fail_48_np": 12,
+     "fail_96_ch": 0,
+     "fail_48_ch": 17,
+     "ratio48": "1.18",
+     "ratio96": "2.36"
+    },
+    "cards_at_actual_size": [
+     {
+      "who": "Today",
+      "stem": "Newsprint-48px",
+      "w": 1200,
+      "h": 630,
+      "fonts": [
+       "Inter 400",
+       "Inter 700",
+       "Inter 800",
+       "Inter Tight 800"
+      ]
+     },
+     {
+      "who": "Proposal",
+      "stem": "Newsprint-96px",
+      "w": 1200,
+      "h": 630,
+      "fonts": [
+       "Inter 400",
+       "Inter 700",
+       "Inter 800",
+       "Inter Tight 800"
+      ]
+     },
+     {
+      "who": "Proposal",
+      "stem": "Charcoal-96px",
+      "w": 1200,
+      "h": 630,
+      "fonts": [
+       "Inter 400",
+       "Inter 700",
+       "Inter Tight 800"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "files": [
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-001-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-001-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-001-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-004-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-004-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-004-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-006-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-006-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-006-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-010-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-010-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-010-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-013-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-013-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-013-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-023-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-023-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-023-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-024-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-024-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-024-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-028-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-028-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-028-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-031-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-031-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-031-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-032-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-032-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-032-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-039-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-039-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-039-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-040-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-040-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-040-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-047-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-047-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-047-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-048-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-048-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-048-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-050-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-050-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-050-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-051-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-051-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-051-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-054-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-054-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-054-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-057-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-057-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-057-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-060-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-060-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-060-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-061-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-061-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-061-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-067-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-067-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-067-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-068-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-068-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-068-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-070-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-070-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-070-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-071-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-071-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-071-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-072-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-072-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-CL-072-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-05-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-05-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-05-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-06-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-06-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-06-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-08-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-08-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-08-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-09-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-09-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-09-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-14-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-14-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-14-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-15-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-15-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-15-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-17-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-17-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-17-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-19-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-19-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-19-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-23-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-23-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-23-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-27-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-27-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-27-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-37-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-37-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-37-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-45-Fit-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-45-Master-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-45-Master-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Housing-Option-A-24px-Black-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Housing-Option-A-24px-Black-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Housing-Option-B-24px-Black-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Housing-Option-B-24px-Black-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Housing-Option-C-24px-Black-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Housing-Option-C-24px-Black-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Social-Card-Charcoal-96px-Actual-Size-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Social-Card-Charcoal-96px-Actual-Size-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Social-Card-Newsprint-48px-Actual-Size-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Social-Card-Newsprint-48px-Actual-Size-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Social-Card-Newsprint-96px-Actual-Size-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Social-Card-Newsprint-96px-Actual-Size-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Filter-Approved-Charcoal-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Filter-Approved-Charcoal-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Filter-Approved-Newsprint-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Filter-Approved-Newsprint-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Filter-Redraw-A-Charcoal-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Filter-Redraw-A-Charcoal-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Filter-Redraw-A-Newsprint-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Filter-Redraw-A-Newsprint-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Filter-Redraw-B-Charcoal-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Filter-Redraw-B-Charcoal-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Filter-Redraw-B-Newsprint-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Filter-Redraw-B-Newsprint-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Pause-Approved-Charcoal-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Pause-Approved-Charcoal-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Pause-Approved-Newsprint-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Pause-Approved-Newsprint-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Pause-Redraw-Charcoal-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Pause-Redraw-Charcoal-2x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Pause-Redraw-Newsprint-1x.png",
+  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Pause-Redraw-Newsprint-2x.png",
+  "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-A-Black.svg",
+  "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-A-Newsprint.svg",
+  "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-A-Red-Black.svg",
+  "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-A-Red-Newsprint.svg",
+  "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-B-Black.svg",
+  "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-B-Newsprint.svg",
+  "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-B-Red-Black.svg",
+  "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-B-Red-Newsprint.svg",
+  "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-C-Black.svg",
+  "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-C-Newsprint.svg",
+  "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-C-Red-Black.svg",
+  "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-C-Red-Newsprint.svg",
+  "work/build/assets/civic-line-v6/red-black/20261029_Oath-And-Action-Civic-Line-CL-051-Market-Power-Red-Black.svg",
+  "work/build/assets/civic-line-v6/red-black/20261029_Oath-And-Action-Civic-Line-CL-053-Housing-Scarcity-Red-Black.svg",
+  "work/build/assets/civic-line-v6/red-black/20261029_Oath-And-Action-Civic-Line-CL-054-Home-Equity-Red-Black.svg",
+  "work/build/assets/civic-line-v6/red-black/20261029_Oath-And-Action-Civic-Line-CL-063-Essential-Costs-Red-Black.svg",
+  "work/build/assets/civic-line-v6/red-black/20261029_Oath-And-Action-Civic-Line-R-30-By-Right-Housing-Red-Black.svg",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Print-L3-Comparison-1x.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Print-L3-Comparison-Print.pdf",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Sign-Off-Charcoal-48px-At-360-8x.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Sign-Off-Charcoal-48px-At-360-Thumbnail-Jpeg-8x.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Sign-Off-Charcoal-48px-At-500-8x.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Sign-Off-Charcoal-48px-At-500-Thumbnail-Jpeg-8x.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Sign-Off-Charcoal-96px-At-360-8x.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Sign-Off-Charcoal-96px-At-360-Thumbnail-Jpeg-8x.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Sign-Off-Charcoal-96px-At-500-8x.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Sign-Off-Charcoal-96px-At-500-Thumbnail-Jpeg-8x.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Sign-Off-Newsprint-48px-At-360-8x.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Sign-Off-Newsprint-48px-At-360-Thumbnail-Jpeg-8x.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Sign-Off-Newsprint-48px-At-500-8x.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Sign-Off-Newsprint-48px-At-500-Thumbnail-Jpeg-8x.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Sign-Off-Newsprint-96px-At-360-8x.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Sign-Off-Newsprint-96px-At-360-Thumbnail-Jpeg-8x.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Sign-Off-Newsprint-96px-At-500-8x.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Sign-Off-Newsprint-96px-At-500-Thumbnail-Jpeg-8x.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Social-Card-Charcoal-48px-At-360.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Social-Card-Charcoal-48px-At-500.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Social-Card-Charcoal-96px-At-360.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Social-Card-Charcoal-96px-At-500.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Social-Card-Newsprint-48px-At-360.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Social-Card-Newsprint-48px-At-500.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Social-Card-Newsprint-96px-At-360.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Social-Card-Newsprint-96px-At-500.png",
+  "work/handoffs/phase-2/stage-c-identity/20261110_Social-Sign-Off-Comparison-1x.png"
+ ],
+ "bytes": {
+  "page": 318024,
+  "files": 2257002,
+  "total": 2575026
+ }
+}
