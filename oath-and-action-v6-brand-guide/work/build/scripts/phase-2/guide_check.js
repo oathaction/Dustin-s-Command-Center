@@ -838,21 +838,35 @@ async function sbAudit(page) {
       if ((el.matches('[data-icon], [data-icon] *') || el.querySelector(':scope > [data-icon]')) && secs(cs.transitionDuration) > 0.2) out.motion.push({ ...desc(el), why: `a glyph transition of ${cs.transitionDuration}` });
     }
     // D2-402: every mark drawn from its token; every mark token read where chapter 11 is in the page.
-    // A-5 (round 2): every step mark's state in words. Trackers carry no data-step: their words are in the stage's alt
-    // text and status lines. In each stage that draws status marks, outside failure plates, each state's word appears
-    // at least as often as its marks: done, now, not yet, never happened, stopped, and "you can take part now" beside
-    // a take-part mark.
+    // A-5 (round 2): every step of a tracker says its state in words. A tracker is a drawing with three or more step
+    // marks; trackers carry no data-step, so their words are read in the stage's alt text, its status lines and the
+    // names inside it. Each state's word must appear as often as its marks (a range such as "steps 1 to 3 done" counts
+    // for each step): done, now, not yet, never happened, stopped, and "you can take part now" beside a take-part
+    // mark. A live tracker fails without them; a picture's alt describes the picture, so a shortfall there is listed
+    // for its owner (as D2-586 phased in the family attribute). Failure plates are skipped.
     const WORDS = { 'S-done': /\bdone\b/gi, 'S-now': /(?<!take part )\bnow\b/gi, 'S-take-part': /\byou can take part now\b/gi, 'S-not-yet': /\bnot yet\b/gi, 'S-never-happened': /\bnever happened\b/gi, 'S-stopped': /\bstopped\b/gi };
+    const said = (text, re) => {
+      let n = 0;
+      for (const m of text.matchAll(re)) {
+        const before = text.slice(Math.max(0, m.index - 40), m.index);
+        const r = before.match(/steps?\s+(\d+)\s+(?:to|through)\s+(\d+)\D{0,24}$/i);
+        n += r ? Math.max(1, +r[2] - +r[1] + 1) : 1;
+      }
+      return n;
+    };
+    out.statePictures = [];
     for (const st of document.querySelectorAll('[data-specimen]')) {
       if (st.closest('.plate--failure')) continue;
-      const marks = [...st.querySelectorAll('[data-icon-family="status"][data-icon]')].filter((m) => WORDS[m.getAttribute('data-icon')]);
-      if (!marks.length) continue;
+      const trackers = [...st.querySelectorAll('svg')].filter((s) => s.querySelectorAll('[data-icon-family="status"][data-icon]').length >= 3);
+      if (!trackers.length) continue;
       out.stateStages++;
+      const marks = trackers.flatMap((s) => [...s.querySelectorAll('[data-icon-family="status"][data-icon]')]).filter((m) => WORDS[m.getAttribute('data-icon')]);
       const named = [st.getAttribute('aria-label') || '', ...(st.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean).map((id) => (document.getElementById(id) || {}).textContent || '')];
       const text = (named.join(' ') + ' ' + st.innerText + ' ' + [...st.querySelectorAll('[aria-label]')].map((e) => e.getAttribute('aria-label')).join(' ')).replace(/\s+/g, ' ');
       const count = {}; for (const m of marks) { const k = m.getAttribute('data-icon'); count[k] = (count[k] || 0) + 1; }
-      const short = Object.entries(count).filter(([k, n]) => (text.match(WORDS[k]) || []).length < n).map(([k, n]) => `${k} ${(text.match(WORDS[k]) || []).length} of ${n}`);
-      if (short.length) out.stateWords.push({ where: st.getAttribute('data-specimen'), short: short.join(', ') });
+      const short = Object.entries(count).filter(([k, n]) => said(text, WORDS[k]) < n).map(([k, n]) => `${k} ${said(text, WORDS[k])} of ${n}`);
+      if (!short.length) continue;
+      (st.getAttribute('role') === 'img' ? out.statePictures : out.stateWords).push({ where: st.getAttribute('data-specimen'), short: short.join(', ') });
     }
     const probe = document.createElement('div'); probe.style.position = 'absolute'; probe.style.visibility = 'hidden'; document.body.append(probe);
     const val = (expr) => { probe.style.width = expr; return parseFloat(getComputedStyle(probe).width); };
@@ -1106,7 +1120,7 @@ async function checkPage(browser, file, widths, opts = {}) {
       sb.menu = await sbMenu(page);
     }
     fails.push(...sbFailures(sb, width));
-    a.stageB = { icons: sb.audit.icons, stateStages: sb.audit.stateStages, inlineTargets: sb.audit.inlineTargets || 0, missingFamily: sb.audit.missingFamily, markReaders: sb.audit.marks.readers, glyphParts: sb.forced ? sb.forced.glyphParts : null, useParts: sb.forced ? sb.forced.useParts : null,
+    a.stageB = { icons: sb.audit.icons, stateStages: sb.audit.stateStages, statePictures: sb.audit.statePictures, inlineTargets: sb.audit.inlineTargets || 0, missingFamily: sb.audit.missingFamily, markReaders: sb.audit.marks.readers, glyphParts: sb.forced ? sb.forced.glyphParts : null, useParts: sb.forced ? sb.forced.useParts : null,
       menu: sb.menu ? (sb.menu.problems.length ? sb.menu.problems : 'opens, holds focus, closes by Escape and Close, returns focus') : 'not shown at this width' };
     if (a.fit.under.length) fails.push({ key: 'fitFloor', msg: `${width}: ${a.fit.under.length} plate(s) whose Fit to window sets text under 13 px: ${a.fit.under.slice(0, 8).map((x) => `${x.specimen} (${x.smallest} px at ${Math.round(x.scale * 100)}%, "${x.sample}")`).join('; ')}` });
     let axe = null;
@@ -1298,13 +1312,15 @@ const PLANTS = [
     document.querySelector('main').insertAdjacentHTML('beforeend', '<section class="chapter" id="symbols"><p><svg data-icon="CL-001" aria-hidden="true" focusable="false" viewBox="0 0 48 48" width="48" height="48"><circle cx="24" cy="24" r="16" fill="currentColor"/></svg> Voting</p></section>'); } },
   { key: 'iconSizes', fault: 'a glyph without data-icon-family in any other chapter, now that the family is required everywhere (D2-517)', js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg data-icon="CL-001" aria-hidden="true" focusable="false" viewBox="0 0 48 48" width="48" height="48"><circle cx="24" cy="24" r="16" fill="currentColor"/></svg> Voting</p>'); } },
-  { key: 'stateWords', fault: 'a tracker of three steps whose alt text names no state (A-5)', js: () => {
-    const st = document.querySelector('.plate--correct [data-specimen][role="img"]'); st.setAttribute('aria-label', 'A bill at true size, on a line of three steps.');
-    st.insertAdjacentHTML('beforeend', '<svg class="sx-mk" width="96" height="30" viewBox="0 0 96 30" aria-hidden="true" focusable="false"><g data-icon="S-done" data-icon-family="status"><circle cx="13" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-now" data-icon-family="status"><circle cx="48" cy="15" r="11.5" fill="none" stroke="currentColor" stroke-width="3"/></g><g data-icon="S-not-yet" data-icon-family="status"><circle cx="83" cy="15" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/></g></svg>'); } },
-  { key: 'stateWords', fault: 'the same tracker with each step\'s name and state in its alt text (allowed: must not be flagged)', expect: false, js: () => {
-    const st = document.querySelector('.plate--correct [data-specimen][role="img"]'); st.setAttribute('aria-label', 'A bill at true size. Steps: 1 Filed done; 2 Hearing now; 3 Committee vote not yet.');
-    st.insertAdjacentHTML('beforeend', '<svg class="sx-mk" width="96" height="30" viewBox="0 0 96 30" aria-hidden="true" focusable="false"><g data-icon="S-done" data-icon-family="status"><circle cx="13" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-now" data-icon-family="status"><circle cx="48" cy="15" r="11.5" fill="none" stroke="currentColor" stroke-width="3"/></g><g data-icon="S-not-yet" data-icon-family="status"><circle cx="83" cy="15" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/></g></svg>'); },
+  { key: 'stateWords', fault: 'a live tracker of three steps whose words name no state (A-5)', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div data-specimen="s-demo-live" role="group" aria-label="A bill"><p>A bill at step 2.</p><svg class="sx-mk" width="96" height="30" viewBox="0 0 96 30" aria-hidden="true" focusable="false"><g data-icon="S-done" data-icon-family="status"><circle cx="13" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-now" data-icon-family="status"><circle cx="48" cy="15" r="11.5" fill="none" stroke="currentColor" stroke-width="3"/></g><g data-icon="S-not-yet" data-icon-family="status"><circle cx="83" cy="15" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/></g></svg></div>'); } },
+  { key: 'stateWords', fault: 'a live tracker whose words give each step its state, two of them as a range (allowed: must not be flagged)', expect: false, js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div data-specimen="s-demo-live" role="group" aria-label="A bill"><p>Step 3 of 3: Committee vote. <span class="vh">Steps 1 to 2, Filed and Hearing, done. Step 3 Committee vote now.</span></p><svg class="sx-mk" width="96" height="30" viewBox="0 0 96 30" aria-hidden="true" focusable="false"><g data-icon="S-done" data-icon-family="status"><circle cx="13" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-done" data-icon-family="status"><circle cx="48" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-now" data-icon-family="status"><circle cx="83" cy="15" r="11.5" fill="none" stroke="currentColor" stroke-width="3"/></g></svg></div>'); },
     verify: (r) => r.runs[0].stageB.stateStages >= 1 },
+  { key: 'stateWords', fault: 'a picture of a tracker whose alt describes shapes only: listed for its owner, not failed (allowed: must not be flagged)', expect: false, js: () => {
+    const st = document.querySelector('.plate--correct [data-specimen][role="img"]'); st.setAttribute('aria-label', 'A bill at true size, on a line of three steps: a filled circle, a heavy ring and a fine ring.');
+    st.insertAdjacentHTML('beforeend', '<svg class="sx-mk" width="96" height="30" viewBox="0 0 96 30" aria-hidden="true" focusable="false"><g data-icon="S-done" data-icon-family="status"><circle cx="13" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-now" data-icon-family="status"><circle cx="48" cy="15" r="11.5" fill="none" stroke="currentColor" stroke-width="3"/></g><g data-icon="S-not-yet" data-icon-family="status"><circle cx="83" cy="15" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/></g></svg>'); },
+    verify: (r) => r.runs[0].stageB.statePictures.length >= 1 },
   { key: 'disabledControls', fault: 'a disabled attribute on a toolbar button (G-4)', js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div role="toolbar" aria-label="Report tools"><button type="button" disabled>Print</button></div>'); } },
   { key: 'stateCues', fault: 'a pressed button told from its peer by fill and color alone (C-5)', js: () => {

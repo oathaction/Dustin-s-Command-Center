@@ -1857,3 +1857,35 @@ Dustin, replying to three questions (the plate's count after Missouri's vote, th
 | D2-927 | A variable is "variable" on every reader page after chapter 10 defines it | H02 |
 | D2-928 | Track's job line reads as chapter 01 prints it on every plate | One pillar keeps one line |
 | D2-929 | Every banded failure plate's alt opens "Failure case: do not publish." (recommended for round 3 and the shell's last pass) | The band's own words; the "Labeled" form came from an apply-pass call, not a decision |
+
+### Engineer, round 2 (`20261110_Stage-B-Round-2-Engineer-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-930 | Step 3's four symbols sit in one line of the build script, and the key carries the editor's pass and partly rows for them, with the answers that go to Dustin in the readers' own words and the creative director's expectation for Congress | DR-189 and the editor's rows of November 10 |
+| D2-931 | The page records the bottom-of-page question as `foot_24`, and the key maps it to the editor's `lockmark_24` | The leak list bans the word lockmark from the page, and an item's code shows in the copy text |
+| D2-932 | The leak check allows the choice code `party`, which only the record and the reader's own copy text show | The editor names it as the code that goes to Dustin |
+| D2-933 | The rows and the sheet of marks switch drawings at 2 device pixels per CSS pixel; the article's mark switches at exactly 1 | Each follows its chapter: the pillar pattern (D2-779 to D2-793, the promotion) and chapter 04's end mark |
+| D2-934 | The link card is captured once at 1200 by 630 and drawn at the phone column's width | The editor asks for the card as a feed shows it, and on a 3x phone 358 px needs 1,074 device pixels, under the capture's 1,200 |
+| D2-935 | The rows, the bottom of a page and the article are live in the page, not images | A pixel fit or a pixel end mark only shows as drawn at the reader's own pixel density, which step 7's and step 8's questions test |
+| D2-936 | The list of bills may use the phone's gutters | It is 360 px wide, two more than a 390 px phone's column, and the guide sets it at its own size |
+| D2-937 | The stimuli for steps 4 and 6 come from a fresh guide build each time the page is built | They then show the specimens as their owners left them, renumbered bills included |
+| D2-938 | Step 4's second look, step 5's second row and step 7's page bottom each get a ready screen, so the reader starts every look | The first check's rule; the questions file quotes no words for them, so I wrote them (listed below for the editor) |
+| D2-939 | `REQUIRE_FAMILY` takes `true` or a list of chapters, and is `true` | No glyph on the page with chapters 01 to 12 lacks the family |
+| D2-940 | `READS_AT_24` holds all 41 IDs, the four pillar icons included | The construction file's list; the pillar icons are judged as pillar icons, so they change nothing in B-3 |
+| D2-941 | A-5 reads a tracker's words in its stage's alt, status lines and names, counts a range for each step, fails a live tracker and lists a picture | Chapter 11's trackers carry no `data-step`; a picture's alt describes the picture, so its owners get a list first (D2-586) |
+| D2-942 | B-1 lets a link inline in running text hold a glyph at the line's height | WCAG 2.5.8's inline exception, which the audit allows (1.2, item 7) |
+| D2-943 | Lowercase "gate" counts as a studio word only where it names the studio's gate | A gate drawn in a symbol is a reader's word |
+| D2-944 | The icon accent starts at 48 px, and the 24 px size token says one color with no red | The round 2 brief, D2-373 and D2-497; the two descriptions would otherwise disagree |
+| D2-945 | The 16 px utility line enters the tokens now | Chapter 11 places 16 px utility icons, which read it (D2-577) |
+| D2-946 | The shell's mark bridge rules are removed while `s-01-pieces` still draws its marks by attribute | `MARK_CSS` reads every token; `markTokens` measures `s-01-pieces` against the tokens, so it cannot drift unseen |
+| D2-947 | The forced colors plate frame is an inner outline | A border added 2 px to every frame and showed scroll hints on plates that fit |
+| D2-948 | The page carries tokens.css as a download once, and each chapter's button starts that download | 90,703 bytes back to each chapter, with the same file and name |
+
+### Main session, end of round 2
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-949 | The main session ran the round 2 checks itself on the whole page: `guide_build.py --strict` (12 chapter files, 132 rules, 304 specimens, 6.63 MB, 0 warnings, 0 notes), `guide_check.js` at 1440, 1024, 390 and 360 px (0 failures, 1,086 same-page links, 32 listed exemptions, each a labeled failure plate or a print piece) and the token tests (all pass, 6.0.0-gate2.5). It looked at chapter 09, 10, 11 and 12 openers at 1440 px and chapter 11's agency rule tracker at 390 px on a 2x screen | A check is reported only once the main session has run it |
+| D2-950 | Round 3's fix list adds three items the main session saw: the 24 px specification row in chapter 10 breaks IDs at their hyphens ("CL-" then "028"), so IDs take non-breaking hyphens; the reader check's step 4 is titled "Red" just before it asks whether a card favors a party, so it takes a neutral title such as "A card and a drawing" (the engineer's point); and six tracker pictures name the marks' shapes in their alt text where they should name each step's state | Each is a craft or test-validity fault that round 3's fix pass can mend without a decision from Dustin |
+| D2-951 | This chat hands off after round 2. Round 3 (red teams, the creative director's review, one fix pass that also applies the editor's tables, scores) and board B run in the next chat from `20261110_Next-Session-Handoff_V11.md` | Seventeen agent runs in one chat; the handoffs hand off after each board or large round |

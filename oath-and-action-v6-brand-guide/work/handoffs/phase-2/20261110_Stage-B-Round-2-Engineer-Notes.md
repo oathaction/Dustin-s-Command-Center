@@ -39,7 +39,7 @@ As the first check's, with the editor's changes: `device_pixel_ratio` beside `vi
 
 ### Routine calls
 
-- D2-xxx | Step 3's four symbols sit in one line of the build script, and the key's pass rows for CL-025, CL-073 and CL-074 say the editor's rows are still to come and point to the meaning sentences until they land | DR-189; the editor writes those rows, and the key takes them when they land
+- D2-xxx | Step 3's four symbols sit in one line of the build script, and the key carries the editor's pass and partly rows for them, with the answers that go to Dustin in the readers' own words and the creative director's expectation for Congress | DR-189 and the editor's rows of November 10
 - D2-xxx | The page records the bottom-of-page question as `foot_24`, and the key maps it to the editor's `lockmark_24` | The leak list bans the word lockmark from the page, and an item's code shows in the copy text
 - D2-xxx | The leak check allows the choice code `party`, which only the record and the reader's own copy text show | The editor names it as the code that goes to Dustin
 - D2-xxx | The rows and the sheet of marks switch drawings at 2 device pixels per CSS pixel; the article's mark switches at exactly 1 | Each follows its chapter: the pillar pattern (D2-779 to D2-793, the promotion) and chapter 04's end mark
@@ -61,16 +61,16 @@ The questions file quotes every word a reader sees except these, which the page 
 ### For the editor and the main session
 
 1. **The step named "Red".** The questions file names step 4 "Red" on the page, and the page prints it above the step's ready screen, before the first question asks whether the card favors a party. A reader told the step is about red may look for red, and for meaning in it, before answering. *Recommendation:* name the step on the page for what the reader sees, "A card and a drawing", as its ready screen's title already does. It is a one-word change in the template's step names.
-2. **Step 3's pass rows.** The key reads CL-025, CL-073 and CL-074 against their meaning sentences until the editor's rows land; I add the rows to the key when they do.
+2. **Step 3's pass rows** have landed and are in the key: pass, partly and the answers that go to Dustin for each symbol, and the note on Congress (D2-620). The page's words did not change.
 
 ### Tested
 
-On the editor's first four, then again on Dustin's four after DR-189:
-- `node work/boards/phase-2/reader-check-2/test_reader_check_2.js`, the full plan on the editor's four: 14 of 14 pass. [The final run on Dustin's four is below.]
+The full plan ran on the editor's first four (14 of 14 pass), then on Dustin's four with the editor's rows in the key, the final page:
+- `node work/boards/phase-2/reader-check-2/test_reader_check_2.js`: **14 of 14 pass** (`20261110_Reader-Check-2-Test-Results.json`). One run between those two failed twice on my test, not the page: at a twentieth of real time the sheet of marks shows for half a second, and the new density step read the images after the full-page audit, when the look had ended. The step now reads them as soon as they load.
   - Saved mode at 390 px in real time with captures at 2x (232 s), at 360 and 1440 px; copy mode with `use()` resolving null at 390 px with captures, 360 and 1440 px; no `window.claude`; view-only; every write rejected; reduced motion; a walk that answers No and All clear; resume after a reload; a look while the page is hidden; reflow at 320 px.
   - On every screen of every walk: axe-core 4.10.2 (WCAG 2.0 to 2.2 A and AA) with no violation, no sideways scroll, no text under 13 px, text contrast from rendered colors, targets at least 44 px tall, focus on the new screen's heading, an empty Next caught, a draft kept across Show it again, no page errors, no requests beyond Google Fonts.
   - New: 54 answers recorded with both follow-ups asked and 52 with neither; the follow-ups show only after the answers that call for them; "Not sure" stays last in all nine shuffled questions and their orders are recorded; `device_pixel_ratio` is 2 in the 2x runs and 1 in the rest; at 1x the 24 px row and marks 9 to 12 draw the pixel fits and the article its pixel mark, and at 2x the masters and the smooth mark; the copy text names no symbol's meaning and none of "lockmark", "pillar", "Expand the House" or "end mark".
-- `node work/build/scripts/phase-2/dataviz_check.js <page wrapped in the skeleton> --board --no-captures`: pass, 0 failures at 1440, 390 and 360 px. It checks the welcome screen only. Results copied to `20261110_Reader-Check-2-Check-Results.json`.
+- `node work/build/scripts/phase-2/dataviz_check.js <page wrapped in the skeleton> --board --no-captures`, on the final page: pass, 0 failures at 1440, 390 and 360 px. It checks the welcome screen only. Results copied to `20261110_Reader-Check-2-Check-Results.json`.
 - The build's leak check: the page and its configuration name no symbol's label, word or ID, none of the editor's banned words, "party" only in the questions and choices that ask about it, no brand name and no em dash; no file in `img/` carries a title, id or name. The three new symbol files' path data match their finals.
 - Looked at, from the 2x captures at 390 px: the card, both rows (Connect bold and underlined at 24 px; Track underlined with its red at 48 px), the sheet of twelve, the page bottom, the three bill rows (the slash at step 2, the square at step 6, the red take-part disc on step 2), the list with its Illustrative label, and both article screens.
 
@@ -83,27 +83,60 @@ On the editor's first four, then again on Dustin's four after DR-189:
 
 ## 2. `guide_check.js`, round 2 checks
 
-Started with the systems designer's two requests; the rest waits on chapters 09 to 12.
+- **B-3's list of 41.** `READS_AT_24` holds the 41 IDs from the construction file's section 10 (37 topic and atlas drawings and the four pillar icons), read by script: 41 IDs, no repeat. Chapter 10's list plate passes B-3 at every width.
+- **`REQUIRE_FAMILY` is on everywhere.** It takes `true` or a list of chapter anchors; with chapters 01 to 12 in the page no glyph lacks `data-icon-family` at any width (304 glyphs), so it fails anywhere now.
+- **A-5, every step's state in words.** Trackers carry no `data-step`, so the check reads their words where chapter 11 puts them: the stage's alt text, its status lines and the names inside it. A tracker is a drawing with three or more step marks. Each state's word must appear as often as its marks (Done, Now, Not yet, Never happened, Stopped, and "You can take part now" beside a take-part mark), and a range such as "steps 1 to 3 done" counts for each step. A live tracker fails without them. A picture's alt describes the picture, so a shortfall there is listed for its owner and does not fail, as D2-586 phased in the family attribute. Today the page holds 11 tracker stages, none live; six pictures fall short (below).
+- **B-1's inline exception** (chapter 11's request, WCAG 2.5.8): a link set inline in a paragraph's running text, with words of the paragraph outside it, may hold a 16 px glyph at the line's height. A link set as its own block or flex box still needs 44 by 44 px.
+- **"gate".** The `codes` check read every "gate" as the studio's, and failed chapter 10's meaning sentence for R-42, "A parcel meets a gate with two bars across it". "Gate" with a capital still always counts; lowercase "gate" counts where it names the studio's gate ("the next gate", "a gate report").
+- **Self-test: PASS.** The clean demo passes, 77 of 77 planted faults are caught and 15 of 15 allowances stay quiet. New: a symbol off the list at 24 px; a glyph without its family in chapter 10 and in any other chapter; a live tracker without its state words. Allowed: a symbol on the list at 24 px; a gate drawn in a symbol; a link with its 16 px mark in running text; a live tracker whose words give each state, two steps as a range; a picture of a tracker whose alt gives shapes only, listed and not failed.
+- Left for later: A-6, A-7, A-9, B-4, C-1 to C-4, C-6, D-2 to D-4, F-2, G-3 inside live specimens and G-5. They need the round's live specimens and lists, and I take them next.
 
-- **B-3's list of 41.** `READS_AT_24` holds the 41 IDs from the construction file's section 10 (37 topic and atlas drawings and the four pillar icons), read by script: 41 IDs, no repeat.
-- **`REQUIRE_FAMILY`** is now a list of chapters by anchor where a glyph without `data-icon-family` fails, and holds `symbols` (chapter 10). Elsewhere a missing family is still listed. `true` makes it fail everywhere once every chapter carries it.
-- Self-test: PASS. The clean demo passes, 75 of 75 planted faults are caught (two new: a symbol off the list at 24 px; a glyph without its family in chapter 10) and 12 of 12 allowances stay quiet (two new: a symbol on the list at 24 px; a glyph without its family in a chapter not yet required, listed but not failed).
-- Left for when the chapters land: A-5, A-6, A-7, A-9, B-4, C-1 to C-4, C-6, D-2 to D-4, F-2, G-3 inside live specimens, G-5, and `REQUIRE_FAMILY` everywhere.
+**For the owners of the six pictures A-5 lists.** Their alt texts describe the marks' shapes ("filled", "a heavy ring", "fine rings ahead") or ranges without a state word, so a reader who hears the alt does not hear each step's state as A-5 words it. *Recommendation:* add the state words, as `s-11-5-correct` does ("1 Filed done; 2 Hearing you can take part now; 3 Committee vote not yet"). Identity designer: `s-08-3-correct` (done 0 of 3, now 0 of 1, not yet 0 of 2) and `s-12-signature-correct` (the same). Systems designer: `s-11-1-correct` (done 3 of 14), `s-11-3-correct` (done 2 of 17), `s-11-4-correct` (done 1 of 4), `s-11-16-correct` (done 0 of 1, not yet 0 of 4).
 
-## 3. Tokens and the mark bridge
+## 3. Tokens, the shell and the page's weight
 
 - **The icon accent** (chapter 10's request): `oa.component.icon.accent.*` now starts at 48 px (`minSize` `{oa.size.icon.large}`), and its description reads "at 48 px and up" with the "White on Prussian" line gone (DR-09). The 24 px size token no longer calls itself "the smallest size that may carry a red accent"; it now says one color, with no red, and the 48 px token takes that line.
-- **The 16 px utility line.** Chapter 11 now places the 16 px utility icons, so `oa.component.icon.utility.line.small` joins: 1.5 px, a 16-unit grid, round caps and joins (D2-577). The build compares every 16 px utility icon on the page with it and counts that as its reader.
+- **The 16 px utility line.** `oa.component.icon.utility.line.small` joined: 1.5 px, a 16-unit grid, round caps and joins (D2-577). The build compares every 16 px utility icon on the page with it, in `s-11-icons` and `s-11-13-correct`, and counts that as its reader; the strict build gives no note or warning on it.
+- **The error mark's description** waits for Dustin's answer on board B (D2-880), as chapter 11 asks.
 - Version 6.0.0-gate2.5. `tokens_build.mjs` wrote 496 tokens; the token tests pass all six steps (parity 616 `:root` properties, Style Dictionary agrees on 496, Chromium resolves 465 values).
-- **The mark bridge stays for now.** `MARK_CSS` reads every mark width from its token by class. One specimen outside chapter 11 still draws marks without those classes: `s-01-pieces`, the editor's (built by `guide_editor_ch01.py`), with 3 now rings, 6 rings ahead, 3 slashes and 10 lines. The shell's bridge rules are what make those read the tokens. *Request to the editor:* give the marks in `s-01-pieces` chapter 11's classes (`rn`, `ra`, `sl`, `lr`, `la`) and `MARK_CSS`, or have the systems designer's mark function draw them; then I remove the bridge and point `markTokens` at the classes.
+- **The mark bridge is gone.** Chapter 11's `MARK_CSS` sets every mark width from its token by class, and the shell's nine bridge rules are removed. One specimen outside chapter 11 draws marks without those classes, `s-01-pieces` (the editor's, built by `guide_editor_ch01.py`): its marks now draw at their width attributes, which equal the tokens today, and `markTokens` still measures them against the tokens, so a token change would fail the check rather than drift unseen. The build asks for mark token readers only where chapter 11 is in the page, as `markTokens` does. *Request to the editor:* give `s-01-pieces` chapter 11's mark classes and `MARK_CSS`, so its marks follow the tokens too.
+- **Forced colors frame.** The shell drew the plate frame under forced colors as a 1 px border, which made 360 px stages 2 px too wide at 390 px and showed their scroll hints. It is now an outline inside the box, which takes no width. Measured at 390 px: scroll hints in forced colors went from 142 to 58, the same 58 as in normal colors.
+- **One tokens.css download.** Each chapter's For builders closer embedded tokens.css as a data link. The page now carries it once, in the colophon (`#tokens-download`); each chapter's "Download tokens.css" links there, and the shell's script starts that download where the reader is (without script, the link lands on it). Clicked in Chromium from a chapter, it downloads `20261106_Oath-And-Action-Tokens.css` byte for byte equal to `tokens.css`. **Each of the 12 chapters gives back 90,703 bytes**, and the page drops from 7,715,272 to 6,626,055 bytes:
+
+| Chapter | Before | After | Budget |
+|---|---|---|---|
+| 01 | 2.53 MB | 2.44 MB | 2.70 MB |
+| 02 | 0.78 | 0.69 | 0.85 |
+| 03 | 0.59 | 0.50 | 0.65 |
+| 04 | 0.38 | 0.29 | 0.45 |
+| 05 | 0.37 | 0.28 | 0.45 |
+| 06 | 0.28 | 0.19 | 0.35 |
+| 07 | 0.23 | 0.14 | 0.30 |
+| 08 | 0.24 | 0.15 | 0.30 |
+| 09 | 0.26 | 0.17 | 0.40 |
+| 10 | 0.62 | 0.53 | 1.00 |
+| 11 | 0.55 | 0.46 | 0.55 |
+| 12 | 0.34 | 0.25 | 0.50 |
+
+## The whole page, chapters 01 to 12
+
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict`: exit 0, no warnings, no notes, 6,626,055 bytes, 12 chapter files, 132 rules, 304 specimens.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --self-test`: 12 of 12 scenarios, 108 of 108 expectations.
+- `node work/build/scripts/phase-2/guide_check.js` at 1440, 1024, 390 and 360 px: **PASS, 0 failures**, 1,086 same-page links; axe-core with no violation at any width; 60 focus stops with a ring at 1440 and 390 px; the phone menu round trip at 390 and 360 px; 304 glyphs, every one with its family; every mark at its token with the bridge gone; A-5 lists six pictures.
+- `python3 -I work/build/tests/tokens/run_token_tests.py`: all six steps pass.
 
 ## Routine calls for items 2 and 3
 
-- D2-xxx | `REQUIRE_FAMILY` takes a list of chapters, and holds chapter 10 | Chapter 10 carries the family on every use; the other chapters are still being built
+- D2-xxx | `REQUIRE_FAMILY` takes `true` or a list of chapters, and is `true` | No glyph on the page with chapters 01 to 12 lacks the family
 - D2-xxx | `READS_AT_24` holds all 41 IDs, the four pillar icons included | The construction file's list; the pillar icons are judged as pillar icons, so they change nothing in B-3
+- D2-xxx | A-5 reads a tracker's words in its stage's alt, status lines and names, counts a range for each step, fails a live tracker and lists a picture | Chapter 11's trackers carry no `data-step`; a picture's alt describes the picture, so its owners get a list first (D2-586)
+- D2-xxx | B-1 lets a link inline in running text hold a glyph at the line's height | WCAG 2.5.8's inline exception, which the audit allows (1.2, item 7)
+- D2-xxx | Lowercase "gate" counts as a studio word only where it names the studio's gate | A gate drawn in a symbol is a reader's word
 - D2-xxx | The icon accent starts at 48 px, and the 24 px size token says one color with no red | The round 2 brief, D2-373 and D2-497; the two descriptions would otherwise disagree
 - D2-xxx | The 16 px utility line enters the tokens now | Chapter 11 places 16 px utility icons, which read it (D2-577)
-- D2-xxx | The shell's mark bridge stays until `s-01-pieces` carries the token classes | Removing it now would leave that specimen's marks drawn from their attributes, not their tokens
+- D2-xxx | The shell's mark bridge rules are removed while `s-01-pieces` still draws its marks by attribute | `MARK_CSS` reads every token; `markTokens` measures `s-01-pieces` against the tokens, so it cannot drift unseen
+- D2-xxx | The forced colors plate frame is an inner outline | A border added 2 px to every frame and showed scroll hints on plates that fit
+- D2-xxx | The page carries tokens.css as a download once, and each chapter's button starts that download | 90,703 bytes back to each chapter, with the same file and name
 
 ## Change log
 
@@ -112,8 +145,10 @@ Created:
 - `work/handoffs/phase-2/20261110_Stage-B-Round-2-Engineer-Notes.md` (this file)
 
 Modified:
-- `work/build/scripts/phase-2/guide_check.js`: `READS_AT_24`, `REQUIRE_FAMILY` by chapter, four new plants
+- `work/build/scripts/phase-2/guide_check.js`: `READS_AT_24`, `REQUIRE_FAMILY` on everywhere, A-5, B-1's inline exception, the narrower "gate", nine new plants
 - `work/build/tokens/src/oa-tokens.src.mjs`: the icon accent from 48 px, the icon size descriptions, the 16 px utility line, version 6.0.0-gate2.5; regenerated `work/build/tokens/tokens.json` and `tokens.css`; the token tests rewrote `work/build/tests/tokens/20261106_Token-Test-Results.json`
-- `work/build/scripts/phase-2/guide_build.py`: the self-test expects the 16 px utility line to be read, now that it exists
+- `work/build/scripts/phase-2/guide_build.py`: one tokens.css download for the page, mark token readers asked for only with chapter 11, and the self-test's expectations for the 16 px utility line
+- `work/build/guide/shell/guide-shell.css`: the mark bridge rules removed, the forced colors plate frame as an inner outline
+- `work/build/guide/shell/guide-shell.js`: a chapter's tokens.css link starts the page's one download
 
 Unchanged: the first reader check's folder, every chapter file and specimen, every asset, every other board, `source/`, `work/ledger/`, `deliverables/`. Nothing committed or pushed. Scratch outputs went to `/tmp/claude-0/-home-user-Dustin-s-Command-Center/ea3fc969-1fa2-5617-a502-a9fe32bb03e8/scratchpad/round-2/engineer/`.
