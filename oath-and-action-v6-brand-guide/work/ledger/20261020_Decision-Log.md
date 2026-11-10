@@ -1595,3 +1595,44 @@ The studio asked three questions before promoting the approved drawings, and lis
 | D2-747 | Later briefs name `work/build/scripts/civic-line/` as the scripts that built the October set, beside the stage B `civic_line_*` scripts | The Civic Line hand found the October pipeline there; the `icons_*` scripts built the pillar concepts board |
 | D2-748 | The engineer points the look-alike check's masters at `civic-line-v6/` | New drawings should be checked against the set in use, which holds the redraws and the two new drawings |
 | D2-749 | A fresh container also needs `pip install scipy scikit-image` for the Civic Line tile code | The Civic Line hand installed both to rebuild the tiles |
+
+## Stage B round 2, November 10, 2026
+
+### Editor (`20261110_Stage-B-Round-2-Editor-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-750 | Chapter 10 prints every topic word in sentence case (Public meeting, Contact an official), keeping the inventory's words | V7 writes its names in sentence case, so one case runs across a contact sheet; file names keep the inventory's title case (D2-714) |
+| D2-751 | An atlas variable's label is V7's short name where V7 holds one (25 of 51), and V7's title where it holds none (26) | DR-185's own example for D1 is the short name, "Congressional capacity", and research section 2 confirmed the 25 against V7's loops; I confirmed them again against the full model |
+| D2-752 | A reform's label is V7's title, except R-13 and R-36, which DR-185 sets | V7 holds no short name for a reform, research section 2 puts V7's title on the page, and the atlas editorial data's `short` field holds the studio's own wording |
+| D2-753 | R-35's label is V7's title, "Rejected option: term limits for legislators" | It keeps "Rejected" with the drawing, as DR-185's brief asks, and needs no middle dot |
+| D2-754 | Meaning sentences name parts by shape, never by color | Each then holds for the one-color edition under 48 px, rows where only the current drawing keeps its red, and the Black files (R10, DR-66, DR-67) |
+| D2-755 | CL-025 carries two labels and two sentences, one for the topic and one for D1 | DR-185 |
+| D2-756 | Each atlas row carries a typed chip for its V7 ID, "Variable B3" or "Reform R-01" | H11 and the Master Brief's tension 7: no bare ID on a reader page |
+| D2-757 | Labels and sentences use typographic apostrophes, and `v7_title` keeps V7's straight ones | The guide prints typographic marks, and a matching script needs V7's own characters |
+| D2-758 | CL-027's sentence says the atlas proposes the pattern | V7 calls D3 "a proposed pattern read across decisions" (W20, H08) |
+| D2-759 | CL-061's sentence says an arrow "joins" a person and an envelope | It names what is drawn without reading a direction into income, which research section 2 found reads as sending mail |
+| D2-760 | CL-073 and CL-074 sit after CL-072 and before R-01, on sheet 01 | D2-714 |
+| D2-761 | The research notes' count of "22" symbols with no V7 element is 21: 17 topic drawings and the four pillar icons. With CL-073 and CL-074 the topic and pillar rows come to 23 | Counted by script against the icon map |
+| D2-762 | The plate's count is the research lead's draft line, with Virginia's sentence recast to name the amendment | The atlas records an amendment that voters approved and the state's supreme court voided (RL50, RL55), and no map |
+| D2-763 | The count's source line says Missouri's referendum was held November 3, 2026, after the snapshot, in place of "pending" | The vote has happened and its result is not checked; the line stays true whatever the result |
+| D2-764 | The count takes its own source line, "Source for the count:", after the cases' line, and chapter 01's source list gains the same entry | H04; the cases and the count differ in publisher and period |
+| D2-765 | The count's line reads "Retrieved November 10, 2026" | I checked every map against the full Atlas V7 model that day |
+| D2-766 | Rule 01.11's failure caption names what a Texas-only plate drops, California's case and the count | With the count printed, the old caption's "reads as a charge against one party" no longer named the fault, since the record does lean one way (DR-93) |
+| D2-767 | The four pillar icons leave the bare naming step, and step 5 tests them in rows with their words | Since November 7 every pillar icon sits with its word (DR-111); the first check was written the day before |
+| D2-768 | The small marks sheet drops the condensed wordmark and the 16 px badge, takes the 16 px pillar fits, and adds the rebuilt 24 px lockmark and the pillar icons at 24 px | DR-115, DR-118, DR-179, DR-181 |
+| D2-769 | The red step comes before the pillar rows, the tracker and the charts | The first question about party then meets the brand's red before any other question names party |
+| D2-770 | R-46 shows without its label | The bare drawing is the hard case for DR-152's question; chapter 10 always sets it with its label |
+| D2-771 | The tracker and end mark questions keep their picture on screen, with no timer | People read a tracker or an article ending at their own pace |
+| D2-772 | The tracker's mark questions hide the bill's words and the key, and the dot question also passes "Not sure" | They ask what each shape says alone; the dot's meaning is always printed beside it (Rule 11.4) |
+| D2-773 | The end mark sits under two sentences quoted word for word from Atlas V7's pathway PW03 | Real lines need no Illustrative label and hold no statistic; the same answer's first line stays out, since the sentence pairs test our rewrite of it (W02) |
+| D2-774 | The record adds `device_pixel_ratio` | Pixel fits are drawn for 1x screens, so what a reader saw depends on the screen |
+| D2-775 | Meaning choices shuffle per reader with "Not sure" last; scales, step numbers and the party choices keep one order | Position can sway a meaning answer; the party choices keep the first check's order so answers compare across steps |
+| D2-776 | The invitation says about 15 minutes | The estimate runs from 11 to 15 minutes, so the invitation promises the longer end |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-777 | The editor's third question (what Rule 01.11's plate counts if Missouri's voters turned the 2025 map down) is settled by DR-93 and DR-149, not put to Dustin: the research lead reads the certified results and the primary records before board B, and the plate prints the record as it stands | DR-93 already says findings are reported as the record shows them; the open part is a fact to read |
+| D2-778 | The research lead's round 2 task: Missouri's certified November 3, 2026 result, Ohio's constitutional deadline and the commission's October 31, 2025 vote, and the party control of each body in Rule 01.11's count, from primary sources | The editor's request; Ohio and Missouri rested on search results only (tenth handoff, section F) |

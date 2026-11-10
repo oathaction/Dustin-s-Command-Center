@@ -35,7 +35,6 @@ import io
 import json
 import pathlib
 import re
-import shutil
 import subprocess
 import sys
 import tempfile
@@ -192,33 +191,47 @@ def draw_sheets(icons, black, tmp):
     return out
 
 
+LIKE_JS = r"""
+// Loads the engineer's icon_likeness_check.js without its command line and measures the master pairs of the set in use
+// with its own functions (Board 6's method), so every figure here is the one the check computes.
+const fs = require('fs'), path = require('path');
+const file = process.argv[2], want = JSON.parse(fs.readFileSync(process.argv[3], 'utf8'));
+const src = fs.readFileSync(file, 'utf8').replace(/^#!.*\n/, '');
+const lib = new Function('require', '__dirname', 'process', src.slice(0, src.lastIndexOf('\n(async () => {')) +
+  '\nreturn { useSet, loadMasters, inkMaps, corr, PX, SHIFT, pct, atPct, r4 };')(require, path.dirname(file), process);
+(async () => {
+  lib.useSet('in-use');
+  const masters = lib.loadMasters();
+  const res = await lib.inkMaps(masters);
+  const at = Object.fromEntries(masters.map((m, i) => [m.id, i]));
+  const all = [];
+  for (let i = 0; i < masters.length; i++) for (let j = i + 1; j < masters.length; j++) all.push(lib.r4(lib.corr(res.maps[i].map, res.maps[j].map, lib.PX, lib.SHIFT)));
+  const sorted = all.slice().sort((a, b) => a - b);
+  const pairs = {};
+  for (const [a, b] of want) {
+    const v = lib.r4(lib.corr(res.maps[at[a]].map, res.maps[at[b]].map, lib.PX, lib.SHIFT));
+    pairs[[a, b].sort().join('|')] = { likeness: v, percentile: +lib.pct(sorted, v).toFixed(1) };
+  }
+  process.stdout.write(JSON.stringify({ renderer: res.ua, masters: masters.length, pairs,
+    distribution: { pairs: sorted.length, p50: lib.atPct(sorted, 50), p95: lib.atPct(sorted, 95), p99: lib.atPct(sorted, 99), max: sorted[sorted.length - 1] },
+    thresholds: { flag: { percentile: 99, likeness: lib.atPct(sorted, 99) }, watch: { percentile: 95, likeness: lib.atPct(sorted, 95) } } }));
+})().catch((e) => { console.error(e); process.exit(1); });
+"""
+
+
 def measure_likeness(black, tmp):
-    """The engineer's look-alike figure for each pair in LOOKALIKES, drawn from the set in use. Every file goes in as a
-    new drawing, so each pair is computed between the drawings in use (the check's masters are the October files)."""
-    ids = sorted({i for grp, _ in LOOKALIKES for i in grp})
-    d = tmp / 'likeness'
-    d.mkdir(exist_ok=True)
-    for i in ids:
-        shutil.copy(black[i], d / black[i].name)
-    out = tmp / 'likeness.json'
-    subprocess.run(['node', str(LIKENESS), str(d), '--watch', '1', '--flag', '99', '--json', str(out), '--quiet'],
-                   cwd=ROOT, stdout=subprocess.DEVNULL)
-    r = json.loads(out.read_text())
-    idof = lambda n: re.search(r'(?:CL|R)-\d+', n).group(0)
-    pairs = {}
-    for row in r['flagged'] + r['watch']:
-        if row.get('against') == 'new':
-            pairs[tuple(sorted((idof(row['a']), idof(row['b']))))] = {'likeness': row['likeness'], 'percentile': row['percentile']}
-    res = {}
-    for grp, _ in LOOKALIKES:
-        for a in range(len(grp)):
-            for b in range(a + 1, len(grp)):
-                k = tuple(sorted((grp[a], grp[b])))
-                if k not in pairs:
-                    raise SystemExit(f'no likeness figure for {k}')
-                res['|'.join(k)] = pairs[k]
-    return {'pairs': res, 'thresholds': r['thresholds'], 'distribution': r['distribution'], 'renderer': r['renderer'],
-            'method': r['method'], 'run': r['run']}
+    """The engineer's look-alike figure for each pair in LOOKALIKES, between the drawings in use: the check's own ink
+    maps and correlation, run on its master set (civic-line-v6, D2-748), read as master pairs."""
+    want = [[grp[a], grp[b]] for grp, _ in LOOKALIKES for a in range(len(grp)) for b in range(a + 1, len(grp))]
+    (tmp / 'want.json').write_text(json.dumps(want))
+    (tmp / 'like.js').write_text(LIKE_JS)
+    out = subprocess.run(['node', str(tmp / 'like.js'), str(LIKENESS), str(tmp / 'want.json')], cwd=ROOT, check=True,
+                         capture_output=True, text=True).stdout
+    r = json.loads(out)
+    r['method'] = ('icon_likeness_check.js\'s own functions (inkMaps, corr), loaded without its command line: ink maps '
+                   'at 24 px on Newsprint, Gaussian blur sigma 1.2 px, Pearson correlation best over shifts up to 1 px, '
+                   f'percentile among the {r["distribution"]["pairs"]} pairs of the {r["masters"]} drawings in use')
+    return r
 
 
 # ------------------------------------------------------------------------------------------------ markup helpers
@@ -499,10 +512,11 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
              f'{word(rows["R-44"])}, which fills the box across with a 2.01 px line. The lines look alike.',
              width=600, notes='Each box is the file\'s own 128-unit box (DR-08). Line widths from the inventory in use, '
                               'stroke_units times 96/128.')
+    lw3 = lambda i: px2(figs['fit'][f'{i} trimmed']['line_px_at_96'])
     ctx.spec('s-10-3-failure', f'<style>{band_css}{css3}</style>{band}<ul class="r">{cells3(True)}</ul>', CH, '10.3',
              f'Labeled Failure case: do not publish. The same three drawings, each with its box trimmed to its ink and set '
-             f'at 96 px. {word(rows["CL-067"])} grows to fill its box and its line thickens to 3.83 px; '
-             f'{word(rows["CL-031"])} to 2.89 px; {word(rows["R-44"])} to 2.22 px. The three no longer match.',
+             f'at 96 px. {word(rows["CL-067"])} grows to fill its box and its line thickens to {lw3("CL-067")} px; '
+             f'{word(rows["CL-031"])} to {lw3("CL-031")} px; {word(rows["R-44"])} to {lw3("R-44")} px. The three no longer match.',
              width=600, notes='The trim is a viewBox cut to each drawing\'s ink extent from the inventory in use '
                               '(extent_units, centered on 64, 64).')
 
@@ -827,8 +841,387 @@ S1_CSS = ('.wire{color:var(--oa-component-icon-ink-on-white)}.wire .ak-case{stro
 
 # ------------------------------------------------------------------------------------------------ the chapter
 def chapter(rows, reads24, like, sheets, figs):
-    from stage_b_ch10_copy import build_chapter
-    return build_chapter(rows, reads24, like, sheets, figs, CATEGORIES, LOOKALIKES, PILLARS)
+    """The chapter in the content contract. Every symbol's word comes from the editor's label table (DR-185)."""
+    lab = lambda i, atlas=False: word(rows[i], atlas)
+    n41 = ', '.join(reads24)
+    flag = like['thresholds']['flag']['likeness']
+    pk = lambda a, b: like['pairs']['|'.join(sorted((a, b)))]['likeness']
+    files_inv = 'work/build/assets/civic-line-v6/20261110_Civic-Line-V6-Inventory.json'
+    rules = []
+
+    rules.append({
+        'id': '10.1', 'title': 'Give each kind of symbol its own job.',
+        'rule': [
+            'We draw six kinds of symbol, and each does one job. Pillar icons mark which of our four pillars a piece '
+            'serves. Topic symbols name the subject of a piece. Atlas symbols name a variable or a reform in our systems '
+            'atlas, Who Do They Answer To?, where a variable is a condition that can rise or fall, such as safe seats. '
+            'Status marks say where a bill or a record stands, and utility icons name an action beside its word. '
+            'Encoding glyphs carry the atlas’s own marks for sign, evidence and delay.',
+            'A topic or atlas drawing never stands for an interface action, such as a download, a refresh or a menu.'],
+        'tokens': ['oa.size.icon.large', 'oa.size.icon.medium'],
+        'why': {'text': ['A reader learns one meaning for each shape. When the drawing for public records also opens a '
+                         'downloads page, the reader has to stop and work out which one it means this time. Topic and atlas '
+                         'drawings are pictures of subjects, and chapter 11’s utility icons are drawn on their own grid for '
+                         'actions, so the two families never trade places.'],
+                'basis': 'Design judgment'},
+        'correct': {'specimen': 's-10-1-correct',
+                    'caption': 'The six kinds of symbol, each with an example at the size it is used and the chapter that '
+                               'governs it.'},
+        'failure': {'specimen': 's-10-1-failure',
+                    'caption': f'<strong>Fails Rule 10.1.</strong> The {lab("CL-048")} drawing marks a Downloads button. '
+                               'A reader who knows the drawing reads public records, and one who does not sees a folder. '
+                               'The action takes chapter 11’s download icon beside its word.'},
+        'specs': [
+            {'label': 'Topic and atlas symbols', 'value': '124 Civic Line drawings: CL-001 to CL-074, and the reform '
+                                                         'drawings R-01 to R-50'},
+            {'label': 'Atlas symbols', 'value': 'The atlas’s 51 variables, one drawing each, and its 50 reforms, whose '
+                                                'drawings carry the atlas’s own IDs'},
+            {'label': 'Pillar icons', 'value': 'CL-019 to CL-022, set by chapter 09'},
+            {'label': 'Status marks and utility icons', 'value': 'Chapter 11'},
+            {'label': 'Encoding glyphs', 'value': 'Shown in Rule 10.10, taught in chapter 15'},
+        ],
+        'files': [files_inv],
+        'related': ['09', '11', '15'],
+        'builders': ['Start from the job the picture does. An action a reader takes on the page goes to chapter 11. A '
+                     'subject or an atlas element comes from the library after this rule, where every drawing carries '
+                     'its ID, the name its file and the sprite use, such as CL-031 for Local government.'],
+    })
+
+    rules.append({
+        'id': '10.2', 'title': 'Build every drawing on one box, with one line, round ends and one red part.',
+        'rule': [
+            'Every Civic Line drawing sits in a square box 128 units on a side. Its line is one weight, from 2.68 to '
+            '3.35 units, with round ends and round corners. One part of the drawing carries the red accent: the detail a '
+            'reader should see first, such as the door of the hall in Local government. The rest is ink.',
+            'A subject with no drawing, such as Bill or State house, takes its word alone until a drawing made this way '
+            'is approved by our founder and editor.'],
+        'tokens': ['oa.component.icon.ink.onNewsprint', 'oa.component.icon.accent.onNewsprint'],
+        'why': {'text': [
+            'One line and one finish let any two drawings sit side by side as a family at any size. Round ends keep a thin '
+            'line soft where it stops, and a single red part gives the eye one place to land.',
+            'Our fourth edition named four principles for its symbols, and they hold for this set: “Weight with open '
+            'space.”, “A deliberate cut.”, “People have a place.” and “Meaning earns the detail.” The drawings keep open '
+            'counters inside a steady line, leave small gaps where two lines would crowd, draw people as round heads on '
+            'open shoulders, and add a detail only where it names the subject.'],
+            'basis': 'Design judgment, with four principles from our fourth edition'},
+        'correct': {'specimen': 's-10-2-correct',
+                    'caption': f'{lab("CL-031")} on its box at three times its master, with the keylines that place it, '
+                               'then at 128, 64 and 48 px. The door carries the red.'},
+        'failure': {'specimen': 's-10-2-failure',
+                    'caption': '<strong>Fails Rule 10.2.</strong> A filled stock icon stands in for Bill, which has no '
+                               'Civic Line drawing. Its solid mass and square corners pull the eye from the three drawings '
+                               'beside it and tell the reader it came from somewhere else.'},
+        'specs': [
+            {'label': 'Box', 'value': '128 by 128 units, viewBox 0 0 128 128, transparent'},
+            {'label': 'Line', 'value': '2.68 to 3.35 units, one width in each drawing; 1.01 to 1.26 px at 48 px'},
+            {'label': 'Ends and corners', 'value': 'Round caps and round joins; a butt cap only where two colors meet'},
+            {'label': 'Red', 'value': 'One accent, in the file’s group <code>data-part="accent"</code>',
+             'token': 'oa.component.icon.accent.onNewsprint'},
+            {'label': 'Ink', 'value': 'Charcoal on Newsprint and White, Newsprint on Charcoal and Prussian',
+             'token': 'oa.component.icon.ink.onNewsprint'},
+        ],
+        'files': ['work/build/assets/civic-line-v6/red-black/', 'work/build/assets/civic-line-v6/black/'],
+        'related': ['05', '09'],
+        'builders': ['A new drawing enters the set only once our founder and editor approves it by name. Draw it with '
+                     'the family’s own scripts in <code>work/build/scripts/civic-line/</code>, which apply the line, the fit and the '
+                     'file layout, and keep its red in one group marked <code>data-part="accent"</code>.'],
+    })
+
+    rules.append({
+        'id': '10.3', 'title': 'Keep each drawing in its whole box, at the size its file gives it.',
+        'rule': [
+            'Each file has already placed its drawing in the box. A drawing grows toward 116 of the 128 units, but never '
+            'past 1.25 times the scale the whole set shares, so a compact drawing keeps room around it and a wide one '
+            'fills the box across. Set the box at the size you need, and leave the drawing where the file put it.',
+            'Give every symbol in a row, a list or a menu the same box size.'],
+        'tokens': ['oa.size.icon.large'],
+        'why': {'text': ['The cap keeps the line within a quarter of its weight across all 124 drawings. Trim a box to '
+                         'its ink and a compact drawing grows by half, its line thickens with it, and in a row that one '
+                         'subject shouts over its neighbors.'],
+                'basis': 'Design judgment, approved by our founder and editor in October 2026'},
+        'correct': {'specimen': 's-10-3-correct',
+                    'caption': f'Three drawings in 96 px boxes, each box outlined. {lab("CL-067")} and {lab("CL-031")} '
+                               f'stop at the cap with a 3.35-unit line, and {lab("R-44")} fills its box across with a '
+                               '2.68-unit line, so their lines measure 2.51 and 2.01 px here.'},
+        'failure': {'specimen': 's-10-3-failure',
+                    'caption': '<strong>Fails Rule 10.3.</strong> The same three with each box trimmed to its ink and set '
+                               f'at 96 px. {lab("CL-067")} grows the most, its line thickens to {px2(figs["fit"]["CL-067 trimmed"]["line_px_at_96"])} px, '
+                               'and the row stops reading as one set.'},
+        'specs': [
+            {'label': 'Fill', 'value': 'Up to 116 of 128 units, at most 1.25 times the shared scale'},
+            {'label': 'At the cap', 'value': '92 drawings, line 3.35 units'},
+            {'label': 'Filling 116 units', 'value': '32 drawings, line 2.68 to 3.35 units'},
+            {'label': 'Center', 'value': 'The drawing’s ink is centered on 64, 64'},
+        ],
+        'files': [files_inv],
+        'related': ['07'],
+        'builders': ['Size the svg element and never the drawing inside it: set width and height on the svg and leave '
+                     'its <code>viewBox</code> at <code>0 0 128 128</code>.'],
+    })
+
+    rules.append({
+        'id': '10.4', 'title': 'Set topic and atlas symbols at 48 px or larger, and at 24 px only from the list of 41.',
+        'rule': [
+            'A topic or atlas symbol starts at 48 px, where every line is at least one pixel wide. Forty-one drawings '
+            'still read at 24 px, and only those may be set there, in one color. Four of the 41 are the pillar icons, '
+            'which take chapter 09’s own drawings at that size, so 37 topic and atlas symbols remain for 24 px. No topic '
+            'or atlas symbol is set at 16 px.',
+            'A kicker, the short line above a headline, may hold one topic icon from those 37, at 24 px, 8 px before the '
+            'topic’s own word (Rule 01.21).'],
+        'tokens': ['oa.size.icon.large', 'oa.size.icon.medium', 'oa.size.icon.small'],
+        'why': {'text': ['Each drawing is one thin line on a 128-unit box, so at 24 px its line measures half a pixel '
+                         'and turns gray. A reviewer set every drawing at 128, 64, 32 and 24 px on Newsprint and named the '
+                         '41 whose subject still reads at 24 px. The rest need 48 px before a reader can name them.'],
+                'basis': 'Design judgment, approved by our founder and editor in November 2026'},
+        'correct': {'specimen': 's-10-4-correct',
+                    'caption': f'{lab("CL-048")}, on the list, from 128 down to 24 px, and {lab("CL-025")}, off the list, '
+                               'down to 48 px. Below, the 24 px icon in a kicker, one color, 8 px before its word.'},
+        'failure': {'specimen': 's-10-4-failure',
+                    'caption': '<strong>Fails Rule 10.4.</strong> A topics menu with each drawing at 16 px. At this size '
+                               'the line is under half a pixel, and the six drawings become gray marks a reader cannot '
+                               'tell apart.'},
+        'specs': [
+            {'label': 'Floor', 'value': '48 px for any of the 124', 'token': 'oa.size.icon.large'},
+            {'label': '24 px', 'value': f'Only the 41: {n41}', 'token': 'oa.size.icon.medium'},
+            {'label': '16 px', 'value': 'Never for a topic or atlas symbol', 'token': 'oa.size.icon.small'},
+            {'label': 'Line', 'value': '0.50 to 0.63 px at 24 px; 1.01 to 1.26 px at 48 px'},
+            {'label': 'Kicker icon', 'value': '24 px, one color, 8 px before its word'},
+        ],
+        'files': [files_inv],
+        'related': ['01', '09', '06'],
+        'builders': ['Check the ID against the list before you set a symbol under 48 px. A drawing that is not on it goes '
+                     'to 48 px, or gives way to its word.'],
+    })
+
+    rules.append({
+        'id': '10.5', 'title': 'Match the edition to the surface, and use only the six tiles.',
+        'rule': [
+            'Each drawing comes in four editions that share every coordinate. Red-Black and Black serve Newsprint and '
+            'White. Red-Newsprint and Newsprint serve Charcoal. Newsprint alone serves Prussian, where red never sits.',
+            'On a tile, a drawing takes one of six: a square, a rounded square or a circle, in Charcoal or in Newsprint. '
+            'Charcoal is the default tile for the app icon and avatars. A two-color tile starts at 72 px square, 76 px '
+            'rounded and 80 px round.'],
+        'tokens': ['oa.component.icon.ink.onNewsprint', 'oa.component.icon.ink.onCharcoal', 'oa.component.icon.ink.onPrussian'],
+        'why': {'text': ['Each edition keeps the ink at 13.29 to 1 against its own ground, and 9.42 to 1 on Prussian, so '
+                         'the drawing reads on every surface we print. A fixed set of tiles keeps a symbol from turning '
+                         'into a badge of a new shape each time a product needs one.'],
+                'basis': 'Design judgment, with contrast by WCAG 2.2 SC 1.4.11'},
+        'correct': {'specimen': 's-10-5-correct',
+                    'caption': f'{lab("CL-031")} in its four editions, each on its own surface, then the six tiles at '
+                               '80 px with their smallest two-color sizes.'},
+        'failure': {'specimen': 's-10-5-failure',
+                    'caption': '<strong>Fails Rule 10.5.</strong> The Red-Newsprint edition on Prussian. Red never sits on '
+                               'Prussian (Rule 05.3), so the Newsprint edition, one color, belongs here.'},
+        'specs': [
+            {'label': 'Newsprint and White', 'value': 'Red-Black or Black, Charcoal ink',
+             'token': 'oa.component.icon.ink.onNewsprint'},
+            {'label': 'Charcoal', 'value': 'Red-Newsprint or Newsprint, Newsprint ink',
+             'token': 'oa.component.icon.ink.onCharcoal'},
+            {'label': 'Prussian', 'value': 'Newsprint only, one color', 'token': 'oa.component.icon.ink.onPrussian'},
+            {'label': 'Drawing in a tile', 'value': '0.68 of a square, 0.66 of a rounded square, 0.62 of a circle'},
+            {'label': 'Two-color tile', 'value': 'From 72 px square, 76 px rounded, 80 px round'},
+            {'label': 'One-color tile', 'value': 'From 48, 52 and 52 px; 72, 76 and 80 px for the 30 drawings that need '
+                                                 '48 px on their own'},
+            {'label': 'Never', 'value': 'A Newsprint tile on a White page, where its edge measures 1.41 to 1; a red tile'},
+        ],
+        'files': ['work/build/assets/civic-line-v6/tiles/', 'work/build/assets/civic-line/tiles/'],
+        'related': ['05', '23'],
+        'builders': ['On a page, draw from the sprite and set its color and accent from the surface’s tokens. The files '
+                     'in each edition folder serve tools outside the page, and the inventory names each drawing’s tile '
+                     'files and smallest tile sizes.'],
+    })
+
+    rules.append({
+        'id': '10.6', 'title': 'Set every symbol beside its own word.',
+        'rule': [
+            f'Print the word beside every symbol. A topic symbol carries its own word, such as {lab("CL-025")}. An atlas '
+            f'symbol carries the atlas’s name for its element, such as {lab("CL-025", True)} for the same drawing where it '
+            'stands for that variable, with a typed chip such as Variable D1. A reform carries the reform’s name, and the '
+            'rejected option on term limits keeps the word Rejected wherever it appears.',
+            'Beside its word, the drawing is hidden from screen readers, so the word is read once.'],
+        'tokens': ['oa.type.ui', 'oa.type.label'],
+        'why': {'text': [f'Even a clear drawing can name several things: the chamber in {lab("CL-025")} could be any '
+                         'legislature. The word fixes the meaning, and the drawing helps a reader find it again on the '
+                         'next page. A screen reader user hears the word alone, once.'],
+                'basis': 'WCAG 2.2 SC 1.1.1, and design judgment'},
+        'correct': {'specimen': 's-10-6-correct',
+                    'caption': f'One drawing under two words, {lab("CL-025")} and {lab("CL-025", True)}, and the names '
+                               'that keep close subjects apart.'},
+        'failure': {'specimen': 's-10-6-failure',
+                    'caption': '<strong>Fails Rule 10.6.</strong> Four drawings with no words. Three houses and a letter '
+                               'leave the reader to guess which subject each one names.'},
+        'specs': [
+            {'label': 'Word', 'value': 'Beside or under the drawing, in the UI or caption style', 'token': 'oa.type.ui'},
+            {'label': 'Typed chip', 'value': 'Variable or Reform and the atlas ID, as in Reform R-13',
+             'token': 'oa.type.label'},
+            {'label': 'Markup', 'value': '<code>aria-hidden="true"</code> and <code>focusable="false"</code> on the svg; '
+                                         '<code>data-icon</code> and <code>data-icon-family</code> on every use'},
+        ],
+        'files': [files_inv],
+        'related': ['02', '21'],
+        'builders': ['Take each word from the library’s list, never from the file name, which keeps the drawing’s first '
+                     'working title.'],
+    })
+
+    rules.append({
+        'id': '10.7', 'title': 'Give a symbol its red only where it stands alone or marks the current item.',
+        'rule': [
+            'A drawing that stands alone at 48 px or larger keeps its red accent, bare on Newsprint, as signature red. In '
+            'a row or a menu every drawing goes one color, and only the current one keeps its red. Under 48 px every '
+            'drawing is one color.',
+            'Signature red does not count against a view’s one working red (Rule 05.3).'],
+        'tokens': ['oa.component.icon.accent.onNewsprint', 'oa.component.icon.ink.onNewsprint'],
+        'why': {'text': ['A row of red accents makes every item call out, and the current one gets lost among them. Kept '
+                         'to the item the reader is on, the red agrees with the bold, underlined word. Pillar Red measures '
+                         '2.96 to 1 on Newsprint, under the 3 to 1 a graphic needs, so the red adds emphasis while the '
+                         'drawing’s ink carries the meaning at 13.29 to 1.'],
+                'basis': 'Rule 05.3, and WCAG 2.2 SC 1.4.11'},
+        'correct': {'specimen': 's-10-7-correct',
+                    'caption': f'A menu in one color with {lab("CL-073")} current, then the same drawing standing alone at '
+                               '128 px with its red.'},
+        'failure': {'specimen': 's-10-7-failure',
+                    'caption': '<strong>Fails Rule 10.7.</strong> Every drawing in the menu keeps its red. Five accents '
+                               'compete, and the current item no longer stands out.'},
+        'specs': [
+            {'label': 'Accent', 'value': 'Signature red, from 48 px', 'token': 'oa.component.icon.accent.onNewsprint'},
+            {'label': 'Current item', 'value': 'Its red, its word in bold and a 2 px underline'},
+            {'label': 'Under 48 px', 'value': 'One color, the ink token', 'token': 'oa.component.icon.ink.onNewsprint'},
+        ],
+        'related': ['05', '09'],
+        'builders': ['Set <code>--oa-icon-accent</code> only on the current item’s svg, and leave it off every other drawing in the '
+                     'row, so each of them draws its red part in the ink.'],
+    })
+
+    rules.append({
+        'id': '10.8', 'title': 'Draw the atlas’s variables and reforms, and name its other parts in words.',
+        'rule': [
+            'The atlas has one drawing for each of its 51 variables and one for each of its 50 reforms. Its domains, hubs, '
+            'layers and routes to change appear as words, or as a typed chip that holds the ID and the name, even where a '
+            'page lists them beside drawn variables.'],
+        'why': {'text': ['A domain such as Elections and representation holds several variables. Give it a drawing and a '
+                         'reader takes it for one more variable, or reads Voting as the whole domain. Words keep the levels '
+                         'of the atlas apart.'],
+                'basis': 'Design judgment'},
+        'correct': {'specimen': 's-10-8-correct',
+                    'caption': 'A domain set as a chip and its name, with its variables and the reforms that act on them '
+                               'drawn beside their own names.'},
+        'failure': {'specimen': 's-10-8-failure',
+                    'caption': '<strong>Fails Rule 10.8.</strong> Each domain borrows a topic drawing. A reader takes '
+                               'Elections and representation for Voting, the one subject its drawing names.'},
+        'specs': [
+            {'label': 'Drawn', 'value': '51 variables and 50 reforms'},
+            {'label': 'In words and chips', 'value': 'Domains, hubs, layers and routes to change'},
+        ],
+        'files': [files_inv],
+        'related': ['15', '21'],
+        'builders': ['Find a variable’s drawing by its atlas ID in the library’s list. A domain, hub, layer or route takes '
+                     'a typed chip with no drawing.'],
+    })
+
+    rules.append({
+        'id': '10.9', 'title': 'Check a symbol beside its look-alikes before you set it.',
+        'rule': [
+            'Some drawings share parts: a house, a page, a person at a desk. Before you set one, look at it beside the '
+            'drawings it could be taken for, at the size you will use, and pick the one whose word names your subject. '
+            'The groups in this rule are the ones to check first.'],
+        'why': {'text': [
+            'At a glance a reader sees outlines, so two drawings with a similar outline read as one subject until the '
+            'word arrives. A likeness test compares the drawings at 24 px, where only the outline is left, and scores '
+            f'each pair from 0 to 1. Among the 7,381 pairs in the set, one pair in a hundred scores {flag:.2f} or more. '
+            f'{lab("CL-053")} and {lab("CL-054")} score {pk("CL-053", "CL-054"):.2f}.'],
+            'basis': 'Design judgment, measured with the likeness test'},
+        'correct': {'specimen': 's-10-9-correct',
+                    'caption': 'Six groups to check, each with what tells its drawings apart and their likeness at '
+                               '24 px.'},
+        'failure': {'specimen': 's-10-9-failure',
+                    'caption': f'<strong>Fails Rule 10.9.</strong> A card that asks readers to testify carries '
+                               f'{lab("CL-005")}, its look-alike: a speaker at a lectern facing a room. {lab("CL-073")} '
+                               'draws the witness below the officials who hear the testimony.'},
+        'specs': [
+            {'label': 'Likeness test', 'value': f'Drawings compared at 24 px; {flag:.2f} or more is as alike as the closest '
+                                                'one pair in a hundred'},
+            {'label': 'No drawing', 'value': 'Bill and State house: set the word alone'},
+        ],
+        'files': ['work/build/scripts/phase-2/icon_likeness_check.js'],
+        'related': ['11'],
+        'builders': ['Run the likeness test on any new drawing before it goes to approval, with '
+                     '<code>node work/build/scripts/phase-2/icon_likeness_check.js</code> and the folder that holds it.'],
+    })
+
+    rules.append({
+        'id': '10.10', 'title': 'Copy the atlas’s encoding glyphs exactly, each with its words.',
+        'rule': [
+            'The atlas draws a small set of marks on its connections: a tag with a plus or a minus for the sign, an open '
+            'diamond for authority, line textures for the evidence grade, one to three ticks for the delay, and red where '
+            'a reform acts. Draw each one from the atlas’s own measurements, and print its words beside it in every key.',
+            'Chapter 15 teaches how to read and combine them.'],
+        'why': {'text': ['A reader learns these marks once, in the atlas’s key, and meets them again in a report or a '
+                         'story. When a page redraws them, or swaps the minus sign for a color, the first lesson stops '
+                         'working. The words carry the meaning when color is gone, and a screen reader hears them.'],
+                'basis': 'Design judgment, from the atlas’s visual system'},
+        'correct': {'specimen': 's-10-10-correct',
+                    'caption': 'Every encoding glyph on White, as the atlas draws it, with its words. Documented and Well '
+                               'supported share the solid line, and their words tell them apart.'},
+        'failure': {'specimen': 's-10-10-failure',
+                    'caption': '<strong>Fails Rule 10.10.</strong> Green for raises and red for lowers, with no tag and no '
+                               'word. The sign lives in color alone, and red takes a meaning it never has in the atlas.'},
+        'specs': [
+            {'label': 'Arrowhead', 'value': '10 by 8 px on a 2 px line, 13 by 11 on 3 px, 22 by 18 on 6 px'},
+            {'label': 'Sign tag', 'value': '14 px body and 6 px point, 16 px tall, with an 8 by 2 px sign, on a 2 px line'},
+            {'label': 'Authority', 'value': 'An open diamond 14 by 11 px'},
+            {'label': 'Evidence', 'value': 'Solid for Documented and Well supported; dashed 4 and 2 line widths for '
+                                           'Plausible; dash and dot for Contested; round dots 2.5 line widths apart for '
+                                           'Hypothesis'},
+            {'label': 'Delay', 'value': 'One, two or three ticks, 5 px apart, the first 12 px from the tail'},
+        ],
+        'files': ['work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py'],
+        'related': ['15', '21'],
+        'builders': ['Draw the marks with the atlas build’s own function, <code>wire_marks</code>, and its constants, and never '
+                     'retype the numbers.'],
+    })
+
+    extras = []
+    for num, slug, name in CATEGORIES:
+        sh = sheets[num]
+        extras.append({'after_rule': '10.1', 'specimen': f's-10-lib-{num}', 'label': f'The library: {name}',
+                       'caption': f'{len(sh["ids"])} drawings at 64 px in one color, each with its word and ID. Open the '
+                                  'list under the sheet for each drawing’s meaning and smallest size.'})
+    extras.append({'after_rule': '10.4', 'specimen': 's-10-list-41', 'label': 'The 41 that read at 24 px',
+                   'caption': 'The 37 topic and atlas drawings that may be set at 24 px, shown at 24 px in one color. The '
+                              'four pillar icons complete the list.'})
+
+    groups = [
+        {'before_rule': '10.1', 'number': 1, 'title': 'Find the right symbol',
+         'line': 'Six kinds of symbol each do one job, and the library shows every topic and atlas drawing by category.'},
+        {'before_rule': '10.2', 'number': 2, 'title': 'How a drawing is built',
+         'line': 'Every drawing shares one box, one line weight, round ends and one red part.'},
+        {'before_rule': '10.4', 'number': 3, 'title': 'Size and surface',
+         'line': 'A drawing reads from 48 px, a short list reads at 24 px, and each surface takes its own edition.'},
+        {'before_rule': '10.6', 'number': 4, 'title': 'Words and red',
+         'line': 'Every drawing sits beside its own word, and keeps its red only where it stands alone or marks the '
+                 'current item.'},
+        {'before_rule': '10.9', 'number': 5, 'title': 'Before you set it',
+         'line': 'Check a drawing beside its look-alikes, and copy the atlas’s own marks exactly.'},
+    ]
+    return {
+        'number': CH, 'anchor': 'symbols', 'title': 'Topic and atlas symbols', 'part': 'Symbols and graphics',
+        'instruction': 'Find the symbol for a subject or an atlas element and set it with its label.',
+        'intro': [
+            'A symbol here is one of the Civic Line drawings, our family of line drawings, each on a square box. A topic '
+            'symbol names the subject of a piece, such as Voting or Public records. An atlas symbol names a variable or a '
+            'reform in our systems atlas.',
+            'The library after Rule 10.1 shows all 124 drawings by category, each with its word and ID. The rules after '
+            'it say how a drawing is built, how small it may go, which word it carries and when it keeps its red.'],
+        'groups': groups, 'rules': rules, 'extras': extras,
+        'related_chapters': [
+            {'chapter': '05', 'reason': 'One working red in each view, and the surfaces each edition serves.'},
+            {'chapter': '09', 'reason': 'The four pillar icons, their small drawings and their row.'},
+            {'chapter': '11', 'reason': 'Status marks and utility icons, the two families drawn for states and actions.'},
+            {'chapter': '12', 'reason': 'Intervention markers, chart keys and map locators built from the same grammar.'},
+            {'chapter': '15', 'reason': 'How to read and combine the encoding glyphs.'},
+            {'chapter': '27', 'reason': 'Every drawing’s files, by edition, size and tile.'},
+        ],
+    }
 
 
 def main():

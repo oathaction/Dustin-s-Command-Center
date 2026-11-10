@@ -4,7 +4,7 @@
 // Usage:
 //   node work/build/scripts/phase-2/icon_likeness_check.js work/build/assets/utility-icons/
 //   node work/build/scripts/phase-2/icon_likeness_check.js folder/ [more folders or .svg files] [--recursive]
-//        [--flag 99] [--watch 95] [--json out.json] [--quiet]
+//        [--flag 99] [--watch 95] [--masters in-use|october] [--json out.json] [--quiet]
 //   node work/build/scripts/phase-2/icon_likeness_check.js --self-test
 //
 // The method is Board 6's silhouette likeness, ported from board6_pillar_icons_build.js (November 7) without change:
@@ -14,8 +14,10 @@
 // both drawn at 24 px, so they compare as they would sit side by side. Ink is the drawing's coverage in Charcoal, so a
 // red part, a grey part or `currentColor` counts the same as black.
 //
-// It compares each new drawing against all 122 Civic Line masters (black editions) and against each other, and ranks
-// every likeness as a percentile of the 7,381 pairs of the masters themselves.
+// It compares each new drawing against the Civic Line masters (black editions) and against each other, and ranks every
+// likeness as a percentile of the pairs of the masters themselves. The masters are the set in use by default (D2-748,
+// promotion, November 10, 2026): the 124 drawings in civic-line-v6/, 7,626 pairs. --masters october reads the 122
+// October masters (7,381 pairs), which Board 6 measured; the self-test runs both, and proves the port on October's.
 //   flag  (default the 99th percentile): as alike as the closest one pair in a hundred among the masters. These are
 //         listed as look-alikes, and the check exits 1.
 //   watch (default the 95th percentile): listed for a look, without failing.
@@ -31,8 +33,18 @@ const path = require('path');
 const { chromium } = require('playwright');
 
 const ROOT = path.resolve(__dirname, '../../../..');
-const CL = path.join(ROOT, 'work/build/assets/civic-line');
-const INV = JSON.parse(fs.readFileSync(path.join(CL, '20261029_Civic-Line-Inventory.json'), 'utf8'));
+// The master sets: the folder holding black/ and red-black/, and its inventory, whose icons name their files.
+const SETS = {
+  'in-use': { name: 'the set in use (civic-line-v6)', dir: 'work/build/assets/civic-line-v6', inv: '20261110_Civic-Line-V6-Inventory.json' },
+  october: { name: 'the October set (civic-line)', dir: 'work/build/assets/civic-line', inv: '20261029_Civic-Line-Inventory.json' },
+};
+let SET, CL, INV, masterIds;
+function useSet(key) {
+  if (!SETS[key]) usage(`--masters is ${Object.keys(SETS).join(' or ')}`);
+  SET = SETS[key]; CL = path.join(ROOT, SET.dir);
+  INV = JSON.parse(fs.readFileSync(path.join(CL, SET.inv), 'utf8'));
+  masterIds = new Set(INV.icons.map((i) => i.id));
+}
 const B6 = path.join(ROOT, 'work/boards/phase-2/board-6/pillar-icons/20261107_Board-6-Pillar-Icons-Measurements.json');
 const PX = 24, SIGMA = 1.2, SHIFT = 1;
 
@@ -43,13 +55,14 @@ function usage(msg) {
   process.exit(2);
 }
 function parseArgs(argv) {
-  const o = { inputs: [], flag: 99, watch: 95, json: null, quiet: false, recursive: false, selfTest: false };
+  const o = { inputs: [], flag: 99, watch: 95, json: null, quiet: false, recursive: false, selfTest: false, masters: 'in-use' };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     const val = () => { if (i + 1 >= argv.length) usage(a + ' needs a value'); return argv[++i]; };
     if (a === '--flag') o.flag = Number(val());
     else if (a === '--watch') o.watch = Number(val());
     else if (a === '--json') o.json = val();
+    else if (a === '--masters') o.masters = val();
     else if (a === '--quiet' || a === '-q') o.quiet = true;
     else if (a === '--recursive' || a === '-r') o.recursive = true;
     else if (a === '--self-test') o.selfTest = true;
@@ -88,7 +101,6 @@ function stems(name) {
   for (let n = 0; n < 3; n++) { strip(OPTION); strip(EDITION); }
   return { drawing: drawing.toLowerCase(), subject: s.toLowerCase() };
 }
-const masterIds = new Set(INV.icons.map((i) => i.id));
 function ownIds(name) {
   const ids = new Set();
   for (const m of name.matchAll(/(?:^|[^A-Za-z0-9])((?:CL|R)-\d{1,3})(?=[^0-9]|$)/g)) {
@@ -235,7 +247,7 @@ async function check(items, opts) {
 function print(r) {
   const L = [];
 
-  L.push(`Look-alike check at ${PX} px: ${r.compared} new drawings${r.editions_skipped.length ? ` (${r.editions_skipped.length} more files are other editions of these)` : ''} against the ${INV.icons.length} Civic Line masters and each other.`);
+  L.push(`Look-alike check at ${PX} px: ${r.compared} new drawings${r.editions_skipped.length ? ` (${r.editions_skipped.length} more files are other editions of these)` : ''} against the ${INV.icons.length} Civic Line masters of ${SET.name} and each other.`);
   L.push(`Masters: ${r.distribution.pairs} pairs; median likeness ${r.distribution.p50}, 95th percentile ${r.distribution.p95}, 99th ${r.distribution.p99}.`);
   L.push(`Flag at ${r.thresholds.flag.likeness} (${r.thresholds.flag.percentile}th percentile); watch from ${r.thresholds.watch.likeness} (${r.thresholds.watch.percentile}th).`);
   L.push('Columns: likeness, then its percentile among the master pairs.');
@@ -266,18 +278,34 @@ function selfFixtures() {
   ];
 }
 async function selfTest() {
-  const fx = selfFixtures();
-  const r = await check(fx, { flag: 99, watch: 95 });
   let bad = 0;
   const say = (ok, msg) => { if (!ok) bad++; console.log(`${ok ? 'ok  ' : 'MISS'} ${msg}`); };
-  // 1. The port reproduces Board 6.
-  const b6 = JSON.parse(fs.readFileSync(B6, 'utf8'));
+  for (const key of ['october', 'in-use']) {
+    useSet(key);
+    console.log(`Masters: ${SET.name}, ${INV.icons.length} drawings`);
+    await selfTestSet(key, say);
+  }
+  console.log(bad ? `self-test: ${bad} wrong` : 'self-test: all right');
+  return bad ? 1 : 0;
+}
+async function selfTestSet(key, say) {
+  const fx = selfFixtures();
+  if (key === 'in-use') fx.push({ name: 'CL-073-Testify-Option-A-Black.svg', text: Object.fromEntries(loadMasters().map((m) => [m.id, m]))['CL-073'].text, expect: { own: 'CL-073' }, why: 'a new topic drawing named for its own ID, a master in the set in use' });
+  const r = await check(fx, { flag: 99, watch: 95 });
   const d = r.distribution;
-  const dd = ['p50', 'p90', 'p95'].map((k) => Math.abs(d[k] - b6.pair_distribution[k]));
-  say(d.pairs === 7381 && Math.max(...dd) <= 0.002, `masters: ${d.pairs} pairs; p50 ${d.p50}, p90 ${d.p90}, p95 ${d.p95} against Board 6's ${b6.pair_distribution.p50}, ${b6.pair_distribution.p90}, ${b6.pair_distribution.p95} (largest difference ${Math.max(...dd).toFixed(4)})`);
-  let worst = 0, n = 0;
-  for (const s of b6.sets) for (const p of s.pairs) { const v = r.masterPair[`${p.a}|${p.b}`] ?? r.masterPair[`${p.b}|${p.a}`]; worst = Math.max(worst, Math.abs(v - p.likeness)); n++; }
-  say(worst <= 0.002, `Board 6's ${n} set pairs reproduced within ${worst.toFixed(4)} (allowed 0.002)`);
+  if (key === 'october') {
+    // 1. The port reproduces Board 6, which measured the October masters.
+    const b6 = JSON.parse(fs.readFileSync(B6, 'utf8'));
+    const dd = ['p50', 'p90', 'p95'].map((k) => Math.abs(d[k] - b6.pair_distribution[k]));
+    say(d.pairs === 7381 && Math.max(...dd) <= 0.002, `masters: ${d.pairs} pairs; p50 ${d.p50}, p90 ${d.p90}, p95 ${d.p95} against Board 6's ${b6.pair_distribution.p50}, ${b6.pair_distribution.p90}, ${b6.pair_distribution.p95} (largest difference ${Math.max(...dd).toFixed(4)})`);
+    let worst = 0, n = 0;
+    for (const s of b6.sets) for (const p of s.pairs) { const v = r.masterPair[`${p.a}|${p.b}`] ?? r.masterPair[`${p.b}|${p.a}`]; worst = Math.max(worst, Math.abs(v - p.likeness)); n++; }
+    say(worst <= 0.002, `Board 6's ${n} set pairs reproduced within ${worst.toFixed(4)} (allowed 0.002)`);
+  } else {
+    // 1. The set in use: every drawing read, each pair once.
+    const k = INV.icons.length;
+    say(k === 124 && d.pairs === k * (k - 1) / 2, `masters: ${k} drawings, ${d.pairs} pairs; p50 ${d.p50}, p95 ${d.p95}, p99 ${d.p99}, closest ${d.max}`);
+  }
   // 2. Plants.
   const flaggedWith = (name, id) => r.flagged.some((x) => x.a === name && x.b.startsWith(id + ' '));
   for (const f of fx) {
@@ -288,13 +316,12 @@ async function selfTest() {
     if (e.edition) say(r.editions_skipped.some((x) => x.name === f.name), `${f.name}: ${f.why}, compared once`);
     if (e.option) say(r.options.some((x) => x.a === f.name || x.b === f.name) && !r.flagged.some((x) => x.against === 'new' && (x.a === f.name || x.b === f.name)), `${f.name}: ${f.why}, reported apart`);
   }
-  console.log(bad ? `self-test: ${bad} wrong` : 'self-test: all right');
-  return bad ? 1 : 0;
 }
 
 (async () => {
   const o = parseArgs(process.argv.slice(2));
   if (o.selfTest) process.exit(await selfTest());
+  useSet(o.masters);
   if (!o.inputs.length) usage('give a folder of new SVGs');
   const items = collect(o.inputs, o.recursive);
   const r = await check(items, o);
@@ -303,7 +330,7 @@ async function selfTest() {
   if (o.json) {
     const { masterPair, ...keep } = r;
     fs.mkdirSync(path.dirname(path.resolve(o.json)), { recursive: true });
-    fs.writeFileSync(o.json, JSON.stringify({ tool: 'work/build/scripts/phase-2/icon_likeness_check.js', run: new Date().toISOString(), method: `Ink maps at ${PX} px from coverage in Charcoal over Newsprint, Gaussian blur sigma ${SIGMA} px, Pearson correlation best over shifts up to ${SHIFT} px, percentile among the ${r.distribution.pairs} pairs of the ${INV.icons.length} Civic Line masters (Board 6).`, ...keep }, null, 1));
+    fs.writeFileSync(o.json, JSON.stringify({ tool: 'work/build/scripts/phase-2/icon_likeness_check.js', run: new Date().toISOString(), method: `Ink maps at ${PX} px from coverage in Charcoal over Newsprint, Gaussian blur sigma ${SIGMA} px, Pearson correlation best over shifts up to ${SHIFT} px, percentile among the ${r.distribution.pairs} pairs of the ${INV.icons.length} Civic Line masters of ${SET.name} (Board 6's method).`, masters: SET.dir, ...keep }, null, 1));
   }
   process.exit(r.flagged.length ? 1 : 0);
 })().catch((e) => { console.error(e); process.exit(2); });

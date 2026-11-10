@@ -1,0 +1,286 @@
+{
+ "about": "Every figure chapter 10 prints, with how it was measured. Contrast is WCAG 2.x relative luminance on the token values in tokens.json; line widths are each file's stroke_units in the inventory in use times the size over 128; likeness is the engineer's icon_likeness_check.js run on the Black files in use.",
+ "built": "2026-11-10",
+ "sheets": {
+  "01": {
+   "file": "work/build/guide/specimens/img/20261110_Ch10-Library-01-Participation.png",
+   "ids": [
+    "CL-001",
+    "CL-002",
+    "CL-003",
+    "CL-004",
+    "CL-005",
+    "CL-006",
+    "CL-007",
+    "CL-008",
+    "CL-009",
+    "CL-010",
+    "CL-011",
+    "CL-012",
+    "CL-013",
+    "CL-014",
+    "CL-015",
+    "CL-016",
+    "CL-017",
+    "CL-018",
+    "CL-019",
+    "CL-020",
+    "CL-021",
+    "CL-022",
+    "CL-023",
+    "CL-024",
+    "CL-073",
+    "CL-074"
+   ],
+   "cols": 8,
+   "width": 1024,
+   "height": 512,
+   "bytes": 24439
+  },
+  "02": {
+   "file": "work/build/guide/specimens/img/20261110_Ch10-Library-02-Government-Tech.png",
+   "ids": [
+    "CL-025",
+    "CL-026",
+    "CL-027",
+    "CL-028",
+    "CL-029",
+    "CL-030",
+    "CL-031",
+    "CL-032",
+    "CL-033",
+    "CL-034",
+    "CL-035",
+    "CL-036",
+    "CL-037",
+    "CL-038",
+    "CL-039",
+    "CL-040",
+    "CL-041",
+    "CL-042",
+    "CL-043",
+    "CL-044",
+    "CL-045",
+    "CL-046",
+    "CL-047",
+    "CL-048"
+   ],
+   "cols": 8,
+   "width": 1024,
+   "height": 384,
+   "bytes": 23335
+  },
+  "03": {
+   "file": "work/build/guide/specimens/img/20261110_Ch10-Library-03-Economy-Issues.png",
+   "ids": [
+    "CL-049",
+    "CL-050",
+    "CL-051",
+    "CL-052",
+    "CL-053",
+    "CL-054",
+    "CL-055",
+    "CL-056",
+    "CL-057",
+    "CL-058",
+    "CL-059",
+    "CL-060",
+    "CL-061",
+    "CL-062",
+    "CL-063",
+    "CL-064",
+    "CL-065",
+    "CL-066",
+    "CL-067",
+    "CL-068",
+    "CL-069",
+    "CL-070",
+    "CL-071",
+    "CL-072"
+   ],
+   "cols": 8,
+   "width": 1024,
+   "height": 384,
+   "bytes": 23781
+  },
+  "04": {
+   "file": "work/build/guide/specimens/img/20261110_Ch10-Library-04-Reforms-01-25.png",
+   "ids": [
+    "R-01",
+    "R-02",
+    "R-03",
+    "R-04",
+    "R-05",
+    "R-06",
+    "R-07",
+    "R-08",
+    "R-09",
+    "R-10",
+    "R-11",
+    "R-12",
+    "R-13",
+    "R-14",
+    "R-15",
+    "R-16",
+    "R-17",
+    "R-18",
+    "R-19",
+    "R-20",
+    "R-21",
+    "R-22",
+    "R-23",
+    "R-24",
+    "R-25"
+   ],
+   "cols": 8,
+   "width": 1024,
+   "height": 512,
+   "bytes": 25609
+  },
+  "05": {
+   "file": "work/build/guide/specimens/img/20261110_Ch10-Library-05-Reforms-26-50.png",
+   "ids": [
+    "R-26",
+    "R-27",
+    "R-28",
+    "R-29",
+    "R-30",
+    "R-31",
+    "R-32",
+    "R-33",
+    "R-34",
+    "R-35",
+    "R-36",
+    "R-37",
+    "R-38",
+    "R-39",
+    "R-40",
+    "R-41",
+    "R-42",
+    "R-43",
+    "R-44",
+    "R-45",
+    "R-46",
+    "R-47",
+    "R-48",
+    "R-49",
+    "R-50"
+   ],
+   "cols": 8,
+   "width": 1024,
+   "height": 512,
+   "bytes": 27686
+  }
+ },
+ "likeness": {
+  "renderer": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+  "masters": 124,
+  "pairs": {
+   "CL-005|CL-073": {
+    "likeness": -0.0932,
+    "percentile": 0.5
+   },
+   "CL-061|CL-074": {
+    "likeness": 0.7932,
+    "percentile": 75.3
+   },
+   "CL-014|CL-025": {
+    "likeness": 0.7479,
+    "percentile": 60.9
+   },
+   "CL-053|CL-054": {
+    "likeness": 0.7004,
+    "percentile": 45.4
+   },
+   "CL-053|CL-063": {
+    "likeness": 0.5953,
+    "percentile": 19.8
+   },
+   "CL-054|CL-063": {
+    "likeness": 0.7053,
+    "percentile": 46.9
+   },
+   "CL-027|CL-031": {
+    "likeness": 0.8356,
+    "percentile": 87.9
+   },
+   "CL-023|CL-048": {
+    "likeness": 0.6931,
+    "percentile": 43.4
+   }
+  },
+  "distribution": {
+   "pairs": 7626,
+   "p50": 0.7143,
+   "p95": 0.8678,
+   "p99": 0.9092,
+   "max": 0.9644
+  },
+  "thresholds": {
+   "flag": {
+    "percentile": 99,
+    "likeness": 0.9092
+   },
+   "watch": {
+    "percentile": 95,
+    "likeness": 0.8678
+   }
+  },
+  "method": "icon_likeness_check.js's own functions (inkMaps, corr), loaded without its command line: ink maps at 24 px on Newsprint, Gaussian blur sigma 1.2 px, Pearson correlation best over shifts up to 1 px, percentile among the 7626 pairs of the 124 drawings in use"
+ },
+ "figures": {
+  "construction line px": {
+   "24": 0.63,
+   "48": 1.26,
+   "64": 1.68,
+   "96": 2.51,
+   "128": 3.35
+  },
+  "fit": {
+   "CL-067 box": {
+    "extent_units": 84.076,
+    "stroke_units": 3.3508,
+    "line_px_at_96": 2.51
+   },
+   "CL-031 box": {
+    "extent_units": 111.492,
+    "stroke_units": 3.3508,
+    "line_px_at_96": 2.51
+   },
+   "R-44 box": {
+    "extent_units": 116.0,
+    "stroke_units": 2.6807,
+    "line_px_at_96": 2.01
+   },
+   "CL-067 trimmed": {
+    "extent_units": 84.076,
+    "stroke_units": 3.3508,
+    "line_px_at_96": 3.83
+   },
+   "CL-031 trimmed": {
+    "extent_units": 111.492,
+    "stroke_units": 3.3508,
+    "line_px_at_96": 2.89
+   },
+   "R-44 trimmed": {
+    "extent_units": 116.0,
+    "stroke_units": 2.6807,
+    "line_px_at_96": 2.22
+   }
+  },
+  "atlas domain D02": {
+   "variables": [
+    "B5",
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5"
+   ],
+   "reforms_acting": [
+    "R-01",
+    "R-02"
+   ]
+  }
+ }
+}
