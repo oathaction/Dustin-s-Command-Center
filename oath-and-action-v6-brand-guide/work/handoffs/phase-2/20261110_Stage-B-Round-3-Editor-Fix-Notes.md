@@ -2,7 +2,7 @@
 
 Oath & Action Edition 06, Phase 2, stage B, November 10, 2026. Written by the editor (`.claude/agents/oa-editor.md`), run as a subagent of the main session, under `20261110_Stage-B-Round-3-Fix-Brief.md` ("The editor", items 1 to 7, and the craft items routed to me: CA-S7's words, CA-S9 for `s-01-21-correct`, CA-S15). I am a new agent in this role and worked from my round 2 notes. I committed nothing and published nothing. Paths are relative to `oath-and-action-v6-brand-guide/`.
 
-Status: items 1 to 7 done, with CA-S9, CA-S15 and CA-S7's words. Item 8, the read of every changed string, waits for the main session's message (D2-963). One open fault sits outside my words: `s-01-pieces` fails the guide check's A-5 test while chapter 11's mark change is in progress (the second request below).
+Status: items 1 to 8 done. Item 8, the read after the pass (D2-963), is section 8 below: 14 faults for the short second pass, in other owners' files, and one description fixed in my own questions file. The engineer's ID pass (D2-975) was not marked done when I finished, so its strings are listed as not read. The A-5 failure on `s-01-pieces` noted below is gone: the engineer's check now counts only the row on screen (chapter 11 hand's notes, item 3).
 
 ## For the other owners, first
 
@@ -41,7 +41,7 @@ Edit those two functions in place, or send me the class names and I will. I keep
 | 7. BE-S8 | Chapter 01's source lines that name no period | done: two atlas lines |
 | CA-S9 | `s-01-21-correct`: the Illustrative label in one place | done |
 | CA-S7 | Rule 10.2's words, for the systems designer | posted above |
-| 8. D2-963 | The read of every changed string | waits for the main session's message |
+| 8. D2-963 | The read of every changed string | done; table in section 8 |
 
 ## What I did, item by item
 
@@ -104,6 +104,54 @@ The four invented headlines carried the label after the headline, and at the col
 
 Posted above for the systems designer. I edited none of their files.
 
+## 8. The read after the pass (D2-963)
+
+**What I read.** Every string and alt that differs from commit ddd3a898, the frozen review copy's source (D2-977), in `chapters/` and the three manifests, and the visible text of every changed specimen: 347 changed items in chapters 01, 03, 04, 05, 09, 10, 11 and 12 and the proofs (chapters 06 and 08 changed only in alt openings and markup). I pulled them by script (`git diff ddd3a898`, each JSON flattened to its strings, each specimen reduced to its visible text), set aside 35 whose only change was the "Labeled" opening or a non-breaking hyphen, and read the other 312 in full against chapter 02's rules and my section 4e terms. I also read the strings inside three live plates' scripts (the report reader's four pages, the filter's count lines, the stepper's steps), the reader check's template lines that changed, and the shell's two download labels.
+
+**Rule 01.21 against Rule 10.6.** The systems designer's final PP-S3 paragraph in Rule 10.6 reads "A subject that no topic symbol names, such as Housing, takes its word alone. An atlas drawing appears only beside the atlas’s own name…". Rule 01.21 says "A subject that none of the 37 stands for, such as Housing, takes its word alone", with the same verb and example, and already says an atlas symbol's word "is the atlas’s name for it". They agree, so Rule 01.21 stays as it is. It names the 37 because a kicker may hold only those (Rule 10.4).
+
+**Facts the reports set, checked:**
+- The state hearing source line (chapter 11, `sources[1]`) keeps every fact of the research lead's line (`20261109_Stage-B-Research-Notes.md`, section 4): the five legislatures, their page names and dates, "five states", retrieved November 9, 2026, and the qualification on sign-up, time limits and hearings. The recast clause, "we read these five as examples and made no national count", says what "these five are examples, not a count" said, without the "not" turn (W09). "No page date" after Nebraska, Utah and Texas follows BE-S8. It passes.
+- The Justice Department line matches BE-S1's fix (sections V.B.(1) and VI.B, the Justice Department and its components). Rule 11.10 takes BE-S2's sentence with "up to 10 working days" (D2-961), Rule 11.9 "the main way", and Rule 11.8 BE-S3's scope sentence word for word. The invented requests now have subjects a federal agency holds (weather station repairs, prison inspections, food safety).
+- H.99009's figure, against Atlas V7 by script: connection L26, from Variable B2 to C3, is graded well supported, so "more local news raises electoral pressure" takes a direct verb (H08). R-32's remedy evidence is a hypothesis, and V7 says "no evaluation has yet shown that these funds improve coverage or accountability", so the plate's sentence holds. Loop R1's step 2 is plausible and takes "can" with D2-969's sentence.
+- The chart key's title is D2-960's. Rule 10.8's plate lists all ten reforms on D02's variables, as D2-958 allows when they fit. Rule 12.5 and its caption stay on Loop R10 and Reform R-01 (DR-195).
+- The tile figures in Rule 10.5 add up: 0.68, 0.66 and 0.62 of 72, 76 and 80 px give 49 to 50 px, of 48 and 52 px give 32 to 34 px, and 94 and 30 make 124.
+
+**Terms from 4e, across the changed chapters:** "topic icon" 0; "clock" 0; "Labeled Failure case" 0, so every banded failure alt now opens "Failure case: do not publish."; "keyline" only in chapter 05's sense; "condition" only in Rule 10.1's definition of a variable; Track's job line one wording everywhere. "Plausible link" is left in chapter 04 only (row 3 below). Script scans of the 312 strings found no em or en dash, listed filler, corporate verb, hedge or studio word.
+
+**Looked at and left alone, with a reason:**
+- "Money in politics can raise policy tilt to insiders." (the chapter 11 hand asked). It keeps V7's name for Variable E1, which DR-185 prints, and the step's next sentence says what the tilt is.
+- The reader check's copy text ("once", "twice", "the first step", "About the same", times in words) uses the words the reader saw. Its section heads "Rows" and "Bills" differ from the step names "The four" and "Steps". That doesn't break a rule, so I left it.
+- The download labels, "Download tokens.css" and "Download tokens.css in a zip file", say what the reader gets.
+
+**Fixed in my own file.** `20261110_Reader-Check-2-Questions.md`, row_48: its head and description said "section opener at 48 px". Rule 09.1 and `s-01-pillars` now put the 48 px row near the top of a page, and a section opener is the 128 px panel (Rule 09.4), so they now read "the 48 px row on a page that serves Track". No word a reader sees changed, so the page needs no rebuild.
+
+### Faults for the short second pass (DR-191)
+
+| # | File (owner, generator) | Field | Old | New | Rule |
+|---|---|---|---|---|---|
+| 1 | `04-ampersand.json` (identity designer) | Rule 04.6, `why.text`, the new sentence | while B’s 16 px master keeps its shape on every screen. | while B’s 16 px master keeps its shape on every screen above 1x. | W20: the same paragraph says the smooth drawing blurred on a 1x screen, which is why B switches there |
+| 2 | `09-pillar-icons.json` (identity designer, `stage_b_identity_ch09.py`) | Rule 09.3, `why.text`, last sentence | while B’s smooth drawing keeps its shape on every screen. | while B’s smooth drawing keeps its shape on every screen above 1x. | W20, as row 1 |
+| 3 | `04-ampersand.json` (identity designer) | Rule 04.5, `why.text` | a plausible link as a dashed one | a connection graded plausible as a dashed one | 4e: the atlas's links are connections on every reader page (Rule 10.10; Rule 12.1 now says so). Not changed this pass, so the reports did not list it |
+| 4 | `04-ampersand.json` (identity designer) | Rule 04.5, `failure.caption` | In the atlas’s key a dashed line means a plausible link, | In the atlas’s key a dashed line marks a connection graded plausible, | As row 3 |
+| 5 | `manifest-identity.json` (identity designer) | `s-04-5-failure.alt` | a dashed line means a plausible link, | a dashed line marks a connection graded plausible, | As row 3 |
+| 6 | `10-symbols.json` (systems designer, `stage_b_ch10_build.py`) | Rule 10.6, `rule[1]`, second sentence | An atlas drawing appears only beside the atlas’s own name, never beside a piece’s own topic word. | An atlas drawing appears only beside the atlas’s own name for it. | W09 and W11: "never" restates "only" as a matched negative |
+| 7 | `10-symbols.json` (systems designer) | Rule 10.4, spec "Floor" | 48 px for any of the 124 | 48 px for any of the 124, except inside a one-color tile (Rule 10.5) | Rule 10.5 now sets 94 drawings at 32 to 34 px in one-color tiles and calls it the one exception to Rule 10.4's floor, while Rule 10.4 still gives the floor with no exception |
+| 8 | `10-symbols.json` (systems designer) | Rule 10.9, `why.text[1]` | and four of their 10 pairs reach the flag, | and four of their 10 pairs score 0.91 or more, | H02: "the flag" is never defined; the paragraph before gives 0.91 |
+| 9 | `s-10-9-correct` and `manifest-systems.json`, its alt (systems designer) | The new group's head | At 24 px only: never two in one view | At 24 px, never two in one view | Clarity: "At 24 px only" reads as if the five may be set only at 24 px |
+| 10 | `11-icons.json` (chapter 11 hand) | Rule 11.14, `correct.caption` | A stepper for loop R1 from our systems atlas, live at 360 px. | A stepper for Loop R1 from our systems atlas, “Wealth and political influence reinforce each other”, live at 360 px. | H11: no bare ID; chapters 01 and 12 write "Loop R4a" and "Loop R10" with a capital |
+| 11 | `11-icons.json` (chapter 11 hand) | `extras[s-11-marks-drawn].caption`, second sentence | On Charcoal, read “charcoal” for &lt;surface&gt;. | Read &lt;surface&gt; as “newsprint” or “charcoal”, the ground the tracker sits on. | The caption names one of the two grounds the table's tokens take |
+| 12 | `s-11-12-correct` (chapter 11 hand), the filter's count line in its script | `'The first three are listed here, and '+k+' more '` | "…and 4 more match." | spell 1 to 9 as words: "…and four more match." | H06; the reader check's copy text already spells them |
+| 13 | `12-graphic-devices.json` (systems designer, `stage_b_ch12_systems_build.py`) | Rule 12.7, `correct.caption` | each in ink, beside headlines that keep their width. | each in ink, small enough that the headline beside it keeps at least 200 px on a phone. | W01 and W20: "keep their width" names no width; the spec gives 200 px |
+| 14 | `12-graphic-devices.json` (identity designer, `stage_b_identity_ch12.py`) | Rule 12.4, `why.basis` | Design judgment and our measurements, October and November 2026; the 12 percent ceiling is our design judgment | Our measurements, October and November 2026, and design judgment, which sets the 12 percent ceiling | "Design judgment" twice; the second half was my 4e wording, and the identity designer flagged it |
+
+Every Old string above was found once in its file by script. In rows 1, 7 and 10 the files set a non-breaking space between the number and "px" (16 px, 48 px, 360 px), so match it that way.
+
+### Not read
+
+- The engineer's build pass that keeps IDs whole (D2-975). Its notes did not mark it done when I finished, and they do not name it yet. Any strings it changes, and any shell strings changed after my read, are unread.
+- The reader check page as rendered; I read its template's changed lines and the built page's step name.
+
 ## Routine calls
 
 - D2-xxx | Step 4's name on the page is "A card and a drawing", its ready screen's words | D2-950 asks for a neutral title; one name for one step
@@ -118,6 +166,9 @@ Posted above for the systems designer. I edited none of their files.
 - D2-xxx | The atlas's Cloture line and electric bill line end "snapshot of October 15, 2026." | BE-S8; every other atlas line in chapter 01 names the snapshot
 - D2-xxx | `s-01-pillars`'s caption says "as Track’s icon does here" in place of "as the section opener’s row draws it" | CD-S15: "section opener" means the 128 px panel in Rule 09.4
 - D2-xxx | The Illustrative label ends the kicker line of each invented headline in `s-01-21-correct`; the failure plate keeps its labels after the headlines | CA-S9; a label on a faulty kicker would read as one more part
+- D2-xxx | Rule 01.21 keeps its sentence for a subject with no drawing | It agrees with Rule 10.6's final paragraph in verb and example, and names the 37 a kicker may hold
+- D2-xxx | The read after the pass lists the three "plausible link" strings in chapter 04, unchanged this pass | 4e's call puts "connection" on every reader page
+- D2-xxx | The questions file's row_48 description says "the 48 px row on a page that serves Track" | Rule 09.1 and `s-01-pillars`; a section opener is the 128 px panel
 - D2-xxx | I left `track_css()` and `track_steps()` to the chapter 11 hand and kept the generator's current `s-01-pieces` output in the tree | The brief gives the marks in `s-01-pieces` to that owner, and the main session's rerun of every generator settles the final file
 
 ## Questions for Dustin
@@ -139,9 +190,13 @@ The four requests at the top of this file: the chapter 11 hand (`s-01-pieces`'s 
 - Script scans of the questions file, this file and my generator's changed lines: no em dash; none of the listed fillers or corporate verbs.
 - A read of every new string against chapter 02's rules.
 
+- Item 8: every changed string and alt against ddd3a898, pulled by script and read in full (312 after the 35 mechanical ones); scans of them for dashes, fillers, corporate verbs, hedges, studio words and corrective turns; 4e's terms counted across every chapter and manifest; Atlas V7 read by script for L26, T01 and R-32; the research lead's section 4 and BE-S1 to S4 compared with chapter 11's source lines and rules; the tile arithmetic in Rule 10.5; the reader check template's two changed lines and the built page's step name.
+
 ## Not tested
 
-- The reader check page, which the engineer rebuilds from the questions file; I changed only the file.
+- The reader check page as a reader uses it; I read its template and built page, and the engineer's own test covers the rest.
+- The engineer's ID pass (D2-975), not done when I read.
+- The changed plates of other owners at 1440 and 390 px; item 8 read their words, not their layout.
 - `s-01-pieces` as it will finally stand: it depends on chapter 11's marks, which are still changing.
 - How the new sentences sound read aloud to real readers, and whether a newcomer finds "How we counted" without help.
 - Missouri's certified result, which is not out; the plate still gives the unofficial figures.
@@ -151,10 +206,10 @@ The four requests at the top of this file: the chapter 11 hand (`s-01-pieces`'s 
 
 Modified:
 - `work/build/scripts/phase-2/guide_editor_ch01.py`: Rule 01.11's strings (`R4A_SCOPE`, `SRC_R4A_COUNT`, new `SRC_R4A_MO`, `R4A_HOW_HEAD` and `R4A_HOW`, the plate's markup and CSS, alt, notes, caption and the chapter's source list); Rule 01.21's rule, why, spec, builders, captions and alts, and the kickers' Illustrative place; `s-01-pillars`'s label, alt and caption; `SRC_CLOTURE` and `SRC_ELECTRIC`.
-- `work/handoffs/phase-2/20261110_Reader-Check-2-Questions.md`: step 4's name, step 7's footer question, and a note of both.
+- `work/handoffs/phase-2/20261110_Reader-Check-2-Questions.md`: step 4's name, step 7's footer question, and a note of both; in item 8, row_48's head and description.
 - By the generator and the identity step (outputs, not edited by hand): `work/build/guide/chapters/01-purpose.json`, `work/build/guide/specimens/manifest-editor.json`, and `s-01-11-correct.html`, `s-01-11-failure.html`, `s-01-13-correct.html`, `s-01-17-correct.html`, `s-01-21-correct.html`, `s-01-pieces.html`, `s-01-pillars.html` in `work/build/guide/specimens/`.
 
 Created:
 - `work/handoffs/phase-2/20261110_Stage-B-Round-3-Editor-Fix-Notes.md` (this file).
 
-Scratch only, in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/c9dc3e94-c343-5611-8fc3-849f48a2fa49/scratchpad/round-3/fix/editor/`: copies of my files before the pass (`before/`), the built guide and its check results, the isolation build, the screenshot script and the plate captures (`shots/`).
+Scratch only, in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/c9dc3e94-c343-5611-8fc3-849f48a2fa49/scratchpad/round-3/fix/editor/`: copies of my files before the pass (`before/`), the built guide and its check results, the isolation build, the screenshot script and the plate captures (`shots/`), and item 8's string extracts (`read/`).

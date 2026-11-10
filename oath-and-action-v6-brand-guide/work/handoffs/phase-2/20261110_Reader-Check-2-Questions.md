@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 2, stage B, November 10, 2026. Written by the ed
 
 This is the one combined check DR-143 asks for. Five to eight people who have never seen the brand take it once, on their phones (DR-148). It keeps the first check's questions that still apply and adds questions on reading Pillar Red for party (DR-114, with R-46 Expand the House as DR-152 asks), the six tracker steps, the pillar icons, the end mark at 14 and 12 px and the 24 px lockmark. Every word a reader sees is quoted below, so the engineer copies it as written.
 
-Round 3 fix pass, November 10, 2026: two changes for the engineer. Step 4's name on the page is now "A card and a drawing" (D2-950), and step 7's footer question reads "Look at the small square mark beside the line of text. What did you see in it?" (PP-S13). Nothing else in this file changed.
+Round 3 fix pass, November 10, 2026: two changes for the engineer. Step 4's name on the page is now "A card and a drawing" (D2-950), and step 7's footer question reads "Look at the small square mark beside the line of text. What did you see in it?" (PP-S13). The read after the pass also renamed row_48's description to match Rule 09.1 and `s-01-pillars`, where a section opener is the 128 px panel; no word a reader sees changed with it.
 
 ## What carries over, what leaves, what is new
 
@@ -142,9 +142,9 @@ What counts as a pass: "Connect".
 
 Why it is asked: chapter 09 marks the current pillar by underlining its word at every size, with no red under 48 px (DR-111, R10). This asks whether the underline alone tells a reader where they are.
 
-### row_48: the section opener at 48 px
+### row_48: the 48 px row on a page that serves Track
 
-What the reader sees: the pillar row as a section opener at 48 px, stacked in one column as phones show it, the page serving Track: "Track" underlined, and Track's icon with its red parts, the pin and the magnifier's handle (chapter 09; the 48 px row in `s-01-pillars`). 10 seconds.
+What the reader sees: the pillar row at 48 px near the top of a page that serves Track (Rule 09.1), stacked in one column as phones show it: "Track" underlined, and Track's icon with its red parts, the pin and the magnifier's handle (chapter 09; the 48 px row in `s-01-pillars`). 10 seconds.
 
 Question row_48:current: "Which of the four does this section belong to?"
 Choices: "Explain", "Track", "Connect", "Act", "Not sure".

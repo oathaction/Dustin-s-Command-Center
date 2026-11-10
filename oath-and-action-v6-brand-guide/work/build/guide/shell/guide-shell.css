@@ -47,6 +47,8 @@ a:hover { text-decoration-thickness: var(--oa-border-width-underline-hover) }
 [tabindex="-1"]:focus { outline: none }
 code, pre, kbd { font-family: var(--mono); font-size: .875rem; overflow-wrap: anywhere }
 .vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
+/* D2-975 (round 3): a run of text that never breaks at a line end, such as an ID the build writes as <span class="nw">CL-001</span> */
+.nw { white-space: nowrap }
 [hidden] { display: none !important }
 .chapter, .part { position: relative }
 .alias { position: absolute; top: calc(-1 * var(--head-h)); left: 0; width: 0; height: 0 }

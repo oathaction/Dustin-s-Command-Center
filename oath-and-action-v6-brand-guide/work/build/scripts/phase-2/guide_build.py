@@ -1843,6 +1843,70 @@ def sheet_uri(path, shown_px, where, sid):
     return "data:image/png;base64," + base64.b64encode(buf.getvalue()).decode()
 
 
+# ---------------------------------------------------------------------------------------------------------------
+# IDs at line ends (D2-975, round 3 fix pass, November 10, 2026). D2-950 keeps an ID whole at a line end; the makers wrote
+# IDs with U+2011, the non-breaking hyphen, which the Inter files this page loads do not draw (the browser borrows it
+# from another font) and which a producer who copies "CL-001" or searches for it cannot match. The built page writes
+# every ID with an ASCII hyphen and holds it whole with the shell's .nw: in text, each ID (and any other word a maker
+# wrote with U+2011) goes in <span class="nw">; inside a tag's attributes, in SVG text and in raw text (scripts, styles,
+# the title, a textarea), U+2011 turns into an ASCII hyphen and nothing is added. The makers' sources may keep U+2011.
+# ---------------------------------------------------------------------------------------------------------------
+NBH = "\u2011"
+_H = "[-\u2011]"
+_UTILITY_IDS = ("another-site", "selected-check", "view-full-size", "download", "chevron", "warning", "success", "filter",
+                "search", "arrow", "close", "error", "pause", "reset", "menu", "copy", "play", "sort")
+_STATUS_IDS = ("never-happened", "take-part", "not-yet", "stopped", "done", "now")
+ID_PATTERN = re.compile(
+    "(?<![\\w\u2011-])(?:"
+    "CL" + _H + "\\d{3}(?:" + _H + "\\d+px)?"
+    "|R" + _H + "\\d{2}"
+    "|U" + _H + "(?:" + "|".join(n.replace("-", _H) for n in _UTILITY_IDS) + ")"
+    "|S" + _H + "(?:" + "|".join(n.replace("-", _H) for n in _STATUS_IDS) + ")"
+    "|E" + _H + "[a-z]+(?:" + _H + "[A-Za-z]+)*"
+    ")(?![\\w\u2011]|-\\w)"
+    "|[\\w.]*\u2011[\\w\u2011]*")
+_TAG = re.compile(r"<!--.*?-->|<(/?)([A-Za-z][\w:-]*)((?:[^>\"']|\"[^\"]*\"|'[^']*')*)>", re.S)
+_RAW = ("script", "style", "textarea", "title")
+
+
+def keep_ids_whole(page, wrap=True, mark=""):
+    """D2-975: IDs in text in <span class="nw"> with an ASCII hyphen; U+2011 out of attributes, SVG and raw text."""
+    page = re.sub("&#(?:8209|x2011);", NBH, page, flags=re.I)
+    out, pos, svg, n_ids = [], 0, 0, 0
+
+    def text(t):
+        nonlocal n_ids
+        if svg or not wrap:
+            return t.replace(NBH, "-")
+
+        def one(m):
+            nonlocal n_ids
+            n_ids += 1
+            return f'<span class="nw"{mark}>' + m.group(0).replace(NBH, "-") + "</span>"
+        return ID_PATTERN.sub(one, t).replace(NBH, "-")
+
+    while True:
+        m = _TAG.search(page, pos)
+        if not m:
+            out.append(text(page[pos:]))
+            break
+        out.append(text(page[pos:m.start()]))
+        tok = m.group(0)
+        out.append(tok.replace(NBH, "-"))
+        pos = m.end()
+        if tok.startswith("<!--"):
+            continue
+        close, name = m.group(1), m.group(2).lower()
+        if name == "svg" and not tok.endswith("/>"):
+            svg += -1 if close else 1
+        if not close and name in _RAW:
+            end = re.compile(rf"</{name}\s*>", re.I).search(page, pos)
+            stop = end.start() if end else len(page)
+            out.append(page[pos:stop].replace(NBH, "-"))
+            pos = stop
+    return "".join(out), n_ids
+
+
 def weigh(page, sprite_bytes):
     """Bytes by part of the page: head and shell, sprites, each chapter, the appendix and the rest, against the budgets."""
     size = lambda x: len(x.encode())
@@ -2087,6 +2151,7 @@ def build(args):
 """
     sprites.check_res(page)
     page, sprite_bytes, sprite_counts = sprites.inject(page)
+    page, n_whole = keep_ids_whole(page)   # D2-975
     if tokens.final:
         unread = [n for n in unread if n not in sprites.parity(tokens)]
         if unread:
@@ -2100,7 +2165,7 @@ def build(args):
         "built": datetime.datetime.now().isoformat(timespec="seconds"),
         "chapters": sorted(chapters), "placeholders": sorted(set(STAGE_A) - set(chapters)),
         "rules": n_rules, "specimens_placed": n_specs, "tokens": "tokens.css" if tokens.final else "provisional from the schema draft",
-        "demo": bool(args.demo), "bytes": len(page.encode()), "weight": weights,
+        "demo": bool(args.demo), "bytes": len(page.encode()), "weight": weights, "ids_held_whole": n_whole,
         "warnings": R.warnings, "notes": R.notes,
     }
     rep_path = out_path.with_name(out_path.stem + "-Build-Report.json")
