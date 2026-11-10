@@ -123,11 +123,11 @@ What would read is the body in session. Draw the members, the rostrum they face 
 - solid curved benches in place of the dashed rows, which now read as a signal
 - a rostrum about a third of the drawing's width, stepped in three tiers with the red on the top tier, the House's own landmark
 
-I tested this direction with three rough sketches in my scratch folder, which are not drawings for the board. The stepped rostrum alone read as a podium or a cake. The version with members read as an assembly facing a podium, the closest of the three to a legislature. None named Congress without the label. Most readers know Congress by the Capitol dome, which Rule 01.6 keeps out, so the label will name it, and the drawing's job is to make the label land at once.
+I tested this direction with three rough sketches in my scratch folder, which are not drawings for the board. The stepped rostrum alone read as a podium or a cake. The version with members read as an assembly facing a podium, the closest of the three to a legislature. None named Congress without the label. The Capitol dome is the sign I expect most readers to know Congress by, a design judgment with no reader research behind it. Rule 01.6 keeps the dome out, so the label will name Congress, and the drawing's job is to make the label land at once.
 
 #### Keep every action bare, and draw only Error, Success and Warning in a shape?
 
-Yes. Ringed actions measure as near twins of each other (Close B and Pause B 0.973, Play B and Pause B 0.958), closer than the closest pair of Civic Line masters (0.964), so a toolbar of rings loses the outlines a reader tells apart. Each control already has its own 44 px target and outline, so a ring repeats it. The status marks need a shape, because a bare check means selected and a bare exclamation mark is punctuation.
+Yes. Ringed actions measure as near twins of each other. Ringed Close and Pause measure 0.973, closer than the closest pair of Civic Line masters (R-06 and R-44, which share a base drawing, at 0.964), and ringed Play and Pause measure 0.958, just under that pair, so a toolbar of rings loses the outlines a reader tells apart. Each control already has its own 44 px target and outline, so a ring repeats it. The status marks need a shape, because a bare check means selected and a bare exclamation mark is punctuation.
 
 For the ring and frame options, this means they stop being per-icon choices. Picking Close B and Arrow A together would break the family. The utility designer shows the enclosure once, on a family card that sets the recommended picks bare with shaped status marks beside the same set all ringed, and Dustin decides the treatment once. Each action card then offers bare pictures only. The three status marks keep shapes that differ from each other, so they read apart without color: Error a closed circle, Success an open circle, Warning a triangle.
 
@@ -577,7 +577,7 @@ Must fix:
 
 Judged at 24 px, with 16 px and 2x. Ready for the board: no.
 
-**Recommended: A.** An arrow into a tray is the download sign most readers know.
+**Recommended: A.** An arrow into a tray is the download sign I expect most readers to know, a design judgment with no reader research behind it.
 
 | Criterion | Score | Reason |
 |---|---|---|
@@ -1122,5 +1122,10 @@ Created:
 
 - `work/handoffs/phase-2/20261109_CD-Review-Of-Drawings.md` (this file)
 - `work/boards/phase-2/stage-b/drawings/20261109_CD-Scores.json`
+
+Modified on November 10, 2026, in stage B round 3 (D2-707), by the creative director:
+
+- This file: the family answer's comparison now gives ringed Close and Pause (0.973) and ringed Play and Pause (0.958) each against the closest pair of Civic Line masters (0.964), since 0.958 sits under that pair; the Capitol dome and download sign lines are marked as design judgments with no reader research behind them (W20). The round 1 record otherwise stays as written, since its option reasons were true of the round 1 cards.
+- `20261109_CD-Scores.json`: the editor's 32 overrides on it applied at the source, the same two fixes, and a `source_fixes` note for the board's owner.
 
 Modified: none. Nothing in `source/`, `work/ledger/`, any maker's files, any master or any existing board changed. Nothing was committed or pushed. My captures, sketches and scripts sit in the session scratch folder under `cd/`.

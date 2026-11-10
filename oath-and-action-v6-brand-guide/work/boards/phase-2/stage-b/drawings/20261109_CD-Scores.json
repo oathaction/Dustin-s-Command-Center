@@ -68,12 +68,12 @@
     {
       "question": "Does any Congress set read clearly as Congress, and if none does, what would?",
       "raised_by": "Civic Line icon designer",
-      "answer": "No. Without its label, no set names Congress at 48 px. Set A reads as a city hall, set B as an arena or a signal, and set C as two signals. Set B comes nearest, because it is the only one that reads as a legislative chamber, and with the label beside it a reader takes it for the House at once. What would read: the body in session. Draw the members, the rostrum they face and the benches they sit on. Members on the front bench as Civic Line heads and shoulders seen from behind turn the room into a body. Solid curved benches stop the rows reading as a signal. A rostrum about a third of the drawing's width, stepped in three tiers with the red on the top tier, gives the eye the House's own landmark. I tested this direction with three rough sketches in my scratch folder: the stepped rostrum alone read as a podium or a cake, and the version with members read as an assembly facing a podium, the closest to a legislature. None named Congress without the label. Most readers know Congress by the Capitol dome, which Rule 01.6 keeps out, so the label will name it and the drawing's job is to make the label land at once. Rescore after the fix round: the reworked set B reads as the House in session, members facing a stepped rostrum, and the label Congress lands on it at once. No set names Congress without its label, and the board says so (D2-620)."
+      "answer": "No. Without its label, no set names Congress at 48 px. Set A reads as a city hall, set B as an arena or a signal, and set C as two signals. Set B comes nearest, because it is the only one that reads as a legislative chamber, and with the label beside it a reader takes it for the House at once. What would read: the body in session. Draw the members, the rostrum they face and the benches they sit on. Members on the front bench as Civic Line heads and shoulders seen from behind turn the room into a body. Solid curved benches stop the rows reading as a signal. A rostrum about a third of the drawing's width, stepped in three tiers with the red on the top tier, gives the eye the House's own landmark. I tested this direction with three rough sketches in my scratch folder: the stepped rostrum alone read as a podium or a cake, and the version with members read as an assembly facing a podium, the closest to a legislature. None named Congress without the label. The Capitol dome is the sign I expect most readers to know Congress by, a design judgment with no reader research behind it. Rule 01.6 keeps the dome out, so the label will name Congress, and the drawing's job is to make the label land at once. Rescore after the fix round: the reworked set B reads as the House in session, members facing a stepped rostrum, and the label Congress lands on it at once. No set names Congress without its label, and the board says so (D2-620)."
     },
     {
       "question": "Keep every action bare and draw only Error, Success and Warning in a shape?",
       "raised_by": "Utility icon designer",
-      "answer": "Yes. Ringed actions measure as near twins of each other (Close B and Pause B 0.973, Play B and Pause B 0.958), above the closest pair of Civic Line masters (0.964), so a toolbar of rings loses the shapes a reader tells apart. Each control already has its own 44 px target and outline, so a ring repeats it. The status marks need a shape, because a bare check means selected and a bare exclamation mark is punctuation. For the ring and frame options this means they stop being per-icon choices: picking Close B and Arrow A together would break the family. Show the enclosure once, on one family card that sets the recommended picks bare with shaped status marks beside the same set all ringed, so Dustin decides the treatment once. Each action card then offers bare pictures only, and the three status marks keep shapes that differ from each other: Error a closed circle, Success an open circle, Warning a triangle. Rescore after the fix round: done (D2-621). The family card leads the plate and shows both rows at 24 and 16 px on both grounds, with the atlas stepper in use; the bare set has no flagged pair, and the ringed set has 29."
+      "answer": "Yes. Ringed actions measure as near twins of each other. Ringed Close and Pause measure 0.973, closer than the closest pair of Civic Line masters (R-06 and R-44, which share a base drawing, at 0.964), and ringed Play and Pause measure 0.958, just under that pair, so a toolbar of rings loses the shapes a reader tells apart. Each control already has its own 44 px target and outline, so a ring repeats it. The status marks need a shape, because a bare check means selected and a bare exclamation mark is punctuation. For the ring and frame options this means they stop being per-icon choices: picking Close B and Arrow A together would break the family. Show the enclosure once, on one family card that sets the recommended picks bare with shaped status marks beside the same set all ringed, so Dustin decides the treatment once. Each action card then offers bare pictures only, and the three status marks keep shapes that differ from each other: Error a closed circle, Success an open circle, Warning a triangle. Rescore after the fix round: done (D2-621). The family card leads the plate and shows both rows at 24 and 16 px on both grounds, with the atlas stepper in use; the bare set has no flagged pair, and the ringed set has 29."
     },
     {
       "question": "Pediments (Civic Line designer's question 7)",
@@ -220,7 +220,7 @@
         {
           "option": "C",
           "real_choice": true,
-          "note": "The vote stopped at the fence (0.871 against B, from 0.975)."
+          "note": "The vote stopped at the fence (0.871 against B, down from 0.975 before the redraw)."
         }
       ],
       "naming_test": [
@@ -545,7 +545,7 @@
         {
           "option": "B",
           "real_choice": true,
-          "note": "The agency as a column-free office building (0.899 against C, from 0.969)."
+          "note": "The agency as a column-free office building (0.899 against C, down from 0.969 before the redraw)."
         },
         {
           "option": "C",
@@ -614,7 +614,7 @@
       "lowest_score": 4,
       "recommended": {
         "option": "A",
-        "reason": "A shows the scene the legislatures' own guides describe: a member of the public at the witness table speaking up to a raised panel."
+        "reason": "A shows the scene state legislatures' own guides describe, a member of the public at the witness table speaking up to a raised panel."
       },
       "options": [
         {
@@ -752,29 +752,29 @@
         },
         "clarity": {
           "score": 4,
-          "reason": "The card asks one question and shows both answers as whole rows and in the atlas stepper, so the treatment is clear before any icon is picked."
+          "reason": "The card asks one question and shows both answers as whole rows, so the treatment is clear before any icon is picked."
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "Both rows keep the utility hand, currentColor and no red, and the bare row stays apart from the Civic Line drawings set beside it."
+          "reason": "Both rows keep the utility designer's hand, the text's own color and no red, and the bare row stays apart from the Civic Line drawings set beside it."
         },
         "usefulness": {
           "score": 4,
-          "reason": "The ringed drawings are files in family-ringed/ at 24 and 16 px, so either answer can be built from the plate."
+          "reason": "The ringed drawings exist as files at 24 and 16 px, so either answer can be built from the designer's plate page."
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "It prints the look-alike figures for both rows: no flagged pair in the bare set, and 29 in the ringed set, the closest Close and Pause at 0.973."
+          "reason": "The designer's plate page prints the look-alike figures for both rows, with no flagged pair in the bare set and 29 in the ringed set, where ringed Close and Pause come closest at 0.973."
         },
         "accessibility": {
           "score": 4,
-          "reason": "In the bare row the three status marks keep shapes that read apart without color; in the ringed row the Error mark reads as one more ringed glyph."
+          "reason": "In the bare row the three status marks keep shapes that read apart without color; in the ringed row the Error mark reads as one more ringed icon."
         }
       },
       "lowest_score": 4,
       "recommended": {
         "option": "Bare actions, shaped marks",
-        "reason": "Every control already has its own outline, and bare glyphs keep the shapes a reader tells apart, where ringed ones measure as near twins."
+        "reason": "Every control already has its own outline, and bare icons keep the shapes a reader tells apart, where ringed ones measure as near twins."
       },
       "options": [
         {
@@ -812,19 +812,19 @@
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "One family on the 24-unit grid with a 2 px line, round ends and currentColor, no red, and no subject borrowed from Civic Line."
+          "reason": "One family on the 24-unit grid with a 2 px line, round ends and the text's own color, no red, and no subject borrowed from Civic Line."
         },
         "usefulness": {
           "score": 4,
-          "reason": "Every option has a 24 px master and its own 16 px master, carries data-icon and data-icon-family, and has PNG previews and a manifest entry."
+          "reason": "Every option has a 24 px master and its own 16 px master, carries the tags the guide's checks use to find icons, and has preview images and a manifest entry."
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints the look-alike figures between its options."
         },
         "accessibility": {
           "score": 4,
-          "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
+          "reason": "Each icon sits beside a visible word, is hidden from screen readers and draws in the text's own color, so a reader's high-contrast setting recolors it with the text; live tests of that setting wait until the components are built."
         }
       },
       "lowest_score": 4,
@@ -870,25 +870,25 @@
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "One family on the 24-unit grid with a 2 px line, round ends and currentColor, no red, and no subject borrowed from Civic Line."
+          "reason": "One family on the 24-unit grid with a 2 px line, round ends and the text's own color, no red, and no subject borrowed from Civic Line."
         },
         "usefulness": {
           "score": 4,
-          "reason": "Every option has a 24 px master and its own 16 px master, carries data-icon and data-icon-family, and has PNG previews and a manifest entry."
+          "reason": "Every option has a 24 px master and its own 16 px master, carries the tags the guide's checks use to find icons, and has preview images and a manifest entry."
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints the look-alike figures between its options."
         },
         "accessibility": {
           "score": 4,
-          "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
+          "reason": "Each icon sits beside a visible word, is hidden from screen readers and draws in the text's own color, so a reader's high-contrast setting recolors it with the text; live tests of that setting wait until the components are built."
         }
       },
       "lowest_score": 4,
       "recommended": {
         "option": "A",
-        "reason": "Three even bars are the menu sign on every phone, and the guide already draws them."
+        "reason": "Three even bars are the common menu sign on phones, and the guide already draws them."
       },
       "options": [
         {
@@ -939,19 +939,19 @@
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "One family on the 24-unit grid with a 2 px line, round ends and currentColor, no red, and no subject borrowed from Civic Line."
+          "reason": "One family on the 24-unit grid with a 2 px line, round ends and the text's own color, no red, and no subject borrowed from Civic Line."
         },
         "usefulness": {
           "score": 4,
-          "reason": "Every option has a 24 px master and its own 16 px master, carries data-icon and data-icon-family, and has PNG previews and a manifest entry."
+          "reason": "Every option has a 24 px master and its own 16 px master, carries the tags the guide's checks use to find icons, and has preview images and a manifest entry."
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints the look-alike figures between its options."
         },
         "accessibility": {
           "score": 4,
-          "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
+          "reason": "Each icon sits beside a visible word, is hidden from screen readers and draws in the text's own color, so a reader's high-contrast setting recolors it with the text; live tests of that setting wait until the components are built."
         }
       },
       "lowest_score": 4,
@@ -1008,19 +1008,19 @@
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "One family on the 24-unit grid with a 2 px line, round ends and currentColor, no red, and no subject borrowed from Civic Line."
+          "reason": "One family on the 24-unit grid with a 2 px line, round ends and the text's own color, no red, and no subject borrowed from Civic Line."
         },
         "usefulness": {
           "score": 4,
-          "reason": "Every option has a 24 px master and its own 16 px master, carries data-icon and data-icon-family, and has PNG previews and a manifest entry."
+          "reason": "Every option has a 24 px master and its own 16 px master, carries the tags the guide's checks use to find icons, and has preview images and a manifest entry."
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints the look-alike figures between its options."
         },
         "accessibility": {
           "score": 4,
-          "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
+          "reason": "Each icon sits beside a visible word, is hidden from screen readers and draws in the text's own color, so a reader's high-contrast setting recolors it with the text; live tests of that setting wait until the components are built."
         }
       },
       "lowest_score": 4,
@@ -1056,7 +1056,7 @@
       ],
       "must_fix": [],
       "should_fix": [],
-      "notes": "Two options. The printed reason holds: a smaller chevron repeated A, and plus and minus are the atlas's polarity signs.",
+      "notes": "Two options. The printed reason holds: a smaller chevron copied A too closely, and plus and minus are the atlas's polarity signs.",
       "ready_for_board": true,
       "changed_in_fix_round": true
     },
@@ -1077,25 +1077,25 @@
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "One family on the 24-unit grid with a 2 px line, round ends and currentColor, no red, and no subject borrowed from Civic Line."
+          "reason": "One family on the 24-unit grid with a 2 px line, round ends and the text's own color, no red, and no subject borrowed from Civic Line."
         },
         "usefulness": {
           "score": 4,
-          "reason": "Every option has a 24 px master and its own 16 px master, carries data-icon and data-icon-family, and has PNG previews and a manifest entry."
+          "reason": "Every option has a 24 px master and its own 16 px master, carries the tags the guide's checks use to find icons, and has preview images and a manifest entry."
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints the look-alike figures between its options."
         },
         "accessibility": {
           "score": 4,
-          "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
+          "reason": "Each icon sits beside a visible word, is hidden from screen readers and draws in the text's own color, so a reader's high-contrast setting recolors it with the text; live tests of that setting wait until the components are built."
         }
       },
       "lowest_score": 4,
       "recommended": {
         "option": "A",
-        "reason": "An arrow into a tray is the download sign most readers know."
+        "reason": "An arrow into a tray is the download sign I expect most readers to know, a design judgment with no reader research behind it."
       },
       "options": [
         {
@@ -1149,7 +1149,7 @@
       "scores": {
         "craft": {
           "score": 4,
-          "reason": "The box, arrow and ring land on the grid at both sizes."
+          "reason": "The box and the arrow land on the grid at both sizes."
         },
         "clarity": {
           "score": 4,
@@ -1157,19 +1157,19 @@
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "One family on the 24-unit grid with a 2 px line, round ends and currentColor, no red, and no subject borrowed from Civic Line."
+          "reason": "One family on the 24-unit grid with a 2 px line, round ends and the text's own color, no red, and no subject borrowed from Civic Line."
         },
         "usefulness": {
           "score": 4,
-          "reason": "Every option has a 24 px master and its own 16 px master, carries data-icon and data-icon-family, and has PNG previews and a manifest entry."
+          "reason": "Every option has a 24 px master and its own 16 px master, carries the tags the guide's checks use to find icons, and has preview images and a manifest entry."
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints the look-alike figures between its options."
         },
         "accessibility": {
           "score": 4,
-          "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
+          "reason": "Each icon sits beside a visible word, is hidden from screen readers and draws in the text's own color, so a reader's high-contrast setting recolors it with the text; live tests of that setting wait until the components are built."
         }
       },
       "lowest_score": 4,
@@ -1218,27 +1218,27 @@
       "scores": {
         "craft": {
           "score": 4,
-          "reason": "Lens and handle sit cleanly at 24 px; B's glint crowds the lens at 16 px."
+          "reason": "Lens and handle sit cleanly at 24 px."
         },
         "clarity": {
           "score": 4,
-          "reason": "All three read as Search; C also reads as zoom."
+          "reason": "The plain magnifier reads as Search."
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "One family on the 24-unit grid with a 2 px line, round ends and currentColor, no red, and no subject borrowed from Civic Line."
+          "reason": "One family on the 24-unit grid with a 2 px line, round ends and the text's own color, no red, and no subject borrowed from Civic Line."
         },
         "usefulness": {
           "score": 4,
-          "reason": "Every option has a 24 px master and its own 16 px master, carries data-icon and data-icon-family, and has PNG previews and a manifest entry."
+          "reason": "Every option has a 24 px master and its own 16 px master, carries the tags the guide's checks use to find icons, and has preview images and a manifest entry."
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints the look-alike figures between its options."
         },
         "accessibility": {
           "score": 4,
-          "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
+          "reason": "Each icon sits beside a visible word, is hidden from screen readers and draws in the text's own color, so a reader's high-contrast setting recolors it with the text; live tests of that setting wait until the components are built."
         }
       },
       "lowest_score": 4,
@@ -1263,7 +1263,7 @@
       ],
       "must_fix": [],
       "should_fix": [],
-      "notes": "One option. The printed reason holds: a glint or a larger lens repeated it, and the ring sits on the family card.",
+      "notes": "One option. The printed reason holds: a glint or a larger lens copied it too closely, and the ring sits on the family card.",
       "ready_for_board": true,
       "changed_in_fix_round": true
     },
@@ -1284,19 +1284,19 @@
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "One family on the 24-unit grid with a 2 px line, round ends and currentColor, no red, and no subject borrowed from Civic Line."
+          "reason": "One family on the 24-unit grid with a 2 px line, round ends and the text's own color, no red, and no subject borrowed from Civic Line."
         },
         "usefulness": {
           "score": 4,
-          "reason": "Every option has a 24 px master and its own 16 px master, carries data-icon and data-icon-family, and has PNG previews and a manifest entry."
+          "reason": "Every option has a 24 px master and its own 16 px master, carries the tags the guide's checks use to find icons, and has preview images and a manifest entry."
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints the look-alike figures between its options."
         },
         "accessibility": {
           "score": 4,
-          "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
+          "reason": "Each icon sits beside a visible word, is hidden from screen readers and draws in the text's own color, so a reader's high-contrast setting recolors it with the text; live tests of that setting wait until the components are built."
         }
       },
       "lowest_score": 4,
@@ -1353,19 +1353,19 @@
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "One family on the 24-unit grid with a 2 px line, round ends and currentColor, no red, and no subject borrowed from Civic Line."
+          "reason": "One family on the 24-unit grid with a 2 px line, round ends and the text's own color, no red, and no subject borrowed from Civic Line."
         },
         "usefulness": {
           "score": 4,
-          "reason": "Every option has a 24 px master and its own 16 px master, carries data-icon and data-icon-family, and has PNG previews and a manifest entry."
+          "reason": "Every option has a 24 px master and its own 16 px master, carries the tags the guide's checks use to find icons, and has preview images and a manifest entry."
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints the look-alike figures between its options."
         },
         "accessibility": {
           "score": 4,
-          "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
+          "reason": "Each icon sits beside a visible word, is hidden from screen readers and draws in the text's own color, so a reader's high-contrast setting recolors it with the text; live tests of that setting wait until the components are built."
         }
       },
       "lowest_score": 4,
@@ -1429,29 +1429,29 @@
         },
         "clarity": {
           "score": 4,
-          "reason": "All three read as Play; C says video."
+          "reason": "The plain triangle reads as Play."
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "One family on the 24-unit grid with a 2 px line, round ends and currentColor, no red, and no subject borrowed from Civic Line."
+          "reason": "One family on the 24-unit grid with a 2 px line, round ends and the text's own color, no red, and no subject borrowed from Civic Line."
         },
         "usefulness": {
           "score": 4,
-          "reason": "Every option has a 24 px master and its own 16 px master, carries data-icon and data-icon-family, and has PNG previews and a manifest entry."
+          "reason": "Every option has a 24 px master and its own 16 px master, carries the tags the guide's checks use to find icons, and has preview images and a manifest entry."
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints the look-alike figures between its options."
         },
         "accessibility": {
           "score": 4,
-          "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
+          "reason": "Each icon sits beside a visible word, is hidden from screen readers and draws in the text's own color, so a reader's high-contrast setting recolors it with the text; live tests of that setting wait until the components are built."
         }
       },
       "lowest_score": 4,
       "recommended": {
         "option": "A, with Pause A",
-        "reason": "The plain triangle is the oldest media sign, and it pairs with Pause A."
+        "reason": "The plain triangle is the long-standing play sign, and it pairs with Pause A."
       },
       "options": [
         {
@@ -1487,23 +1487,23 @@
         },
         "clarity": {
           "score": 4,
-          "reason": "All three read as Pause."
+          "reason": "The two plain bars read as Pause."
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "One family on the 24-unit grid with a 2 px line, round ends and currentColor, no red, and no subject borrowed from Civic Line."
+          "reason": "One family on the 24-unit grid with a 2 px line, round ends and the text's own color, no red, and no subject borrowed from Civic Line."
         },
         "usefulness": {
           "score": 4,
-          "reason": "Every option has a 24 px master and its own 16 px master, carries data-icon and data-icon-family, and has PNG previews and a manifest entry."
+          "reason": "Every option has a 24 px master and its own 16 px master, carries the tags the guide's checks use to find icons, and has preview images and a manifest entry."
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints the look-alike figures between its options."
         },
         "accessibility": {
           "score": 4,
-          "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
+          "reason": "Each icon sits beside a visible word, is hidden from screen readers and draws in the text's own color, so a reader's high-contrast setting recolors it with the text; live tests of that setting wait until the components are built."
         }
       },
       "lowest_score": 4,
@@ -1549,19 +1549,19 @@
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "One family on the 24-unit grid with a 2 px line, round ends and currentColor, no red, and no subject borrowed from Civic Line."
+          "reason": "One family on the 24-unit grid with a 2 px line, round ends and the text's own color, no red, and no subject borrowed from Civic Line."
         },
         "usefulness": {
           "score": 4,
-          "reason": "Every option has a 24 px master and its own 16 px master, carries data-icon and data-icon-family, and has PNG previews and a manifest entry."
+          "reason": "Every option has a 24 px master and its own 16 px master, carries the tags the guide's checks use to find icons, and has preview images and a manifest entry."
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints the look-alike figures between its options."
         },
         "accessibility": {
           "score": 4,
-          "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
+          "reason": "Each icon sits beside a visible word, is hidden from screen readers and draws in the text's own color, so a reader's high-contrast setting recolors it with the text; live tests of that setting wait until the components are built."
         }
       },
       "lowest_score": 4,
@@ -1629,19 +1629,19 @@
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "One family on the 24-unit grid with a 2 px line, round ends and currentColor, no red, and no subject borrowed from Civic Line."
+          "reason": "One family on the 24-unit grid with a 2 px line, round ends and the text's own color, no red, and no subject borrowed from Civic Line."
         },
         "usefulness": {
           "score": 4,
-          "reason": "Every option has a 24 px master and its own 16 px master, carries data-icon and data-icon-family, and has PNG previews and a manifest entry."
+          "reason": "Every option has a 24 px master and its own 16 px master, carries the tags the guide's checks use to find icons, and has preview images and a manifest entry."
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints the look-alike figures between its options."
         },
         "accessibility": {
           "score": 4,
-          "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
+          "reason": "Each icon sits beside a visible word, is hidden from screen readers and draws in the text's own color, so a reader's high-contrast setting recolors it with the text; live tests of that setting wait until the components are built."
         }
       },
       "lowest_score": 4,
@@ -1709,19 +1709,19 @@
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "One family on the 24-unit grid with a 2 px line, round ends and currentColor, no red, and no subject borrowed from Civic Line."
+          "reason": "One family on the 24-unit grid with a 2 px line, round ends and the text's own color, no red, and no subject borrowed from Civic Line."
         },
         "usefulness": {
           "score": 4,
-          "reason": "Every option has a 24 px master and its own 16 px master, carries data-icon and data-icon-family, and has PNG previews and a manifest entry."
+          "reason": "Every option has a 24 px master and its own 16 px master, carries the tags the guide's checks use to find icons, and has preview images and a manifest entry."
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints the look-alike figures between its options."
         },
         "accessibility": {
           "score": 4,
-          "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
+          "reason": "Each icon sits beside a visible word, is hidden from screen readers and draws in the text's own color, so a reader's high-contrast setting recolors it with the text; live tests of that setting wait until the components are built."
         }
       },
       "lowest_score": 4,
@@ -1757,7 +1757,7 @@
       ],
       "must_fix": [],
       "should_fix": [],
-      "notes": "Two options. The printed reason holds: the closed circle repeated B, and the ticked box moved to the Selected check card.",
+      "notes": "Two options. The printed reason holds: the closed circle copied B too closely, and the ticked box moved to the Selected check card.",
       "ready_for_board": true,
       "changed_in_fix_round": true
     },
@@ -1770,27 +1770,27 @@
       "scores": {
         "craft": {
           "score": 4,
-          "reason": "Clean at both sizes, though C at 16 px draws nearly as the chevron."
+          "reason": "Clean at both sizes."
         },
         "clarity": {
           "score": 4,
-          "reason": "All three read as a check."
+          "reason": "Both options read as a check."
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "One family on the 24-unit grid with a 2 px line, round ends and currentColor, no red, and no subject borrowed from Civic Line."
+          "reason": "One family on the 24-unit grid with a 2 px line, round ends and the text's own color, no red, and no subject borrowed from Civic Line."
         },
         "usefulness": {
           "score": 4,
-          "reason": "Every option has a 24 px master and its own 16 px master, carries data-icon and data-icon-family, and has PNG previews and a manifest entry."
+          "reason": "Every option has a 24 px master and its own 16 px master, carries the tags the guide's checks use to find icons, and has preview images and a manifest entry."
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints the look-alike figures between its options."
         },
         "accessibility": {
           "score": 4,
-          "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
+          "reason": "Each icon sits beside a visible word, is hidden from screen readers and draws in the text's own color, so a reader's high-contrast setting recolors it with the text; live tests of that setting wait until the components are built."
         }
       },
       "lowest_score": 4,
@@ -1847,19 +1847,19 @@
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "One family on the 24-unit grid with a 2 px line, round ends and currentColor, no red, and no subject borrowed from Civic Line."
+          "reason": "One family on the 24-unit grid with a 2 px line, round ends and the text's own color, no red, and no subject borrowed from Civic Line."
         },
         "usefulness": {
           "score": 4,
-          "reason": "Every option has a 24 px master and its own 16 px master, carries data-icon and data-icon-family, and has PNG previews and a manifest entry."
+          "reason": "Every option has a 24 px master and its own 16 px master, carries the tags the guide's checks use to find icons, and has preview images and a manifest entry."
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints the look-alike figures between its options."
         },
         "accessibility": {
           "score": 4,
-          "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
+          "reason": "Each icon sits beside a visible word, is hidden from screen readers and draws in the text's own color, so a reader's high-contrast setting recolors it with the text; live tests of that setting wait until the components are built."
         }
       },
       "lowest_score": 4,
@@ -1927,19 +1927,19 @@
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "One family on the 24-unit grid with a 2 px line, round ends and currentColor, no red, and no subject borrowed from Civic Line."
+          "reason": "One family on the 24-unit grid with a 2 px line, round ends and the text's own color, no red, and no subject borrowed from Civic Line."
         },
         "usefulness": {
           "score": 4,
-          "reason": "Every option has a 24 px master and its own 16 px master, carries data-icon and data-icon-family, and has PNG previews and a manifest entry."
+          "reason": "Every option has a 24 px master and its own 16 px master, carries the tags the guide's checks use to find icons, and has preview images and a manifest entry."
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints the look-alike figures between its options."
         },
         "accessibility": {
           "score": 4,
-          "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
+          "reason": "Each icon sits beside a visible word, is hidden from screen readers and draws in the text's own color, so a reader's high-contrast setting recolors it with the text; live tests of that setting wait until the components are built."
         }
       },
       "lowest_score": 4,
@@ -2003,23 +2003,23 @@
         },
         "clarity": {
           "score": 4,
-          "reason": "A and C read as warning; B reads as the road sign."
+          "reason": "A reads as warning, and B as the road sign."
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "One family on the 24-unit grid with a 2 px line, round ends and currentColor, no red, and no subject borrowed from Civic Line."
+          "reason": "One family on the 24-unit grid with a 2 px line, round ends and the text's own color, no red, and no subject borrowed from Civic Line."
         },
         "usefulness": {
           "score": 4,
-          "reason": "Every option has a 24 px master and its own 16 px master, carries data-icon and data-icon-family, and has PNG previews and a manifest entry."
+          "reason": "Every option has a 24 px master and its own 16 px master, carries the tags the guide's checks use to find icons, and has preview images and a manifest entry."
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints the look-alike figures between its options."
         },
         "accessibility": {
           "score": 4,
-          "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
+          "reason": "Each icon sits beside a visible word, is hidden from screen readers and draws in the text's own color, so a reader's high-contrast setting recolors it with the text; live tests of that setting wait until the components are built."
         }
       },
       "lowest_score": 4,
@@ -2100,7 +2100,7 @@
       "lowest_score": 4,
       "recommended": {
         "option": "24 px Fit B on 1x screens and the master on 2x screens, with the 16 px fit on both",
-        "reason": "Fit B keeps Civic Line's light line on 1x screens, and on 2x screens the master itself draws smooth at 24 px, so the pillar icons stay apart from the heavier interface glyphs."
+        "reason": "Fit B keeps Civic Line's light line on 1x screens, and on 2x screens the master itself draws smooth at 24 px, so the pillar icons stay apart from the heavier utility icons."
       },
       "options": [
         {
@@ -2168,11 +2168,11 @@
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "Both fits keep B's loop, diagonal, bowl, arm and tail; Fit B moves the sit by one row, which needs Dustin's named approval as identity geometry."
+          "reason": "Both fits keep B's loop, diagonal, bowl, arm and tail; Fit B moves where B sits by one row, which needs Dustin's named approval as identity geometry."
         },
         "usefulness": {
           "score": 4,
-          "reason": "Files at 14 and 12 px with Prussian White editions, the text size each serves and the vertical-align value to set."
+          "reason": "Files at 14 and 12 px with Prussian White editions, the text size each serves and the setting that places it on the line."
         },
         "evidence_honesty": {
           "score": 5,
@@ -2241,7 +2241,7 @@
         },
         "accessibility": {
           "score": 4,
-          "reason": "Node and lever cores at full color between the masters' sizes let the mark read on low-density screens."
+          "reason": "Node and lever cores at full color between the masters' sizes let the mark read on 1x screens."
         }
       },
       "lowest_score": 4,
@@ -2284,7 +2284,7 @@
         },
         "usefulness": {
           "score": 4,
-          "reason": "The move is given as 14.72 units of the 1400 by 300 layout and 9.3 px at 884 px."
+          "reason": "The move is given as 14.72 units of the 1,400 by 300 layout and 9.3 px at 884 px."
         },
         "evidence_honesty": {
           "score": 4,
@@ -2347,5 +2347,12 @@
       "U-warning"
     ],
     "round_1_items_closed": "Civic Line: 11 Must fix and 5 Should fix. Utility: 18 Must fix, the family plate, and 3 Should fix. Board builder: the family card's place."
+  },
+  "source_fixes": {
+    "date": "2026-11-10",
+    "decision": "D2-707",
+    "by": "Creative director, stage B round 3",
+    "what": "The editor's items 7 to 9 in 20261109_Stage-B-Drawings-Board-Editor-Notes.md, fixed at the source. Item 7: the 32 editor_overrides that matched this file are applied here word for word, so the board prints the same words from this file alone. Item 8: the utility family answer no longer says ringed Play and Pause (0.958) sit above the closest pair of Civic Line masters (0.964); it gives both figures against that pair. Item 9: the Capitol dome and download sign judgments are marked as design judgments with no reader research behind them (W20).",
+    "for_the_board_owner": "Of those 32 overrides in 20261109_Stage-B-Drawings-Board-Content.json, 28 now match nothing the build reads, by my search of the makers' notes, manifests and the audit. Four still match the utility designer's files and stay: \"one more ringed glyph\", \"repeated A\", \"repeated B\" and \"repeated it\". The build warns on an override that matches nothing, and --strict exits 1 on a warning, so whoever next rebuilds the drawings board removes the 28 the build names. The words on the published board do not change."
   }
 }
