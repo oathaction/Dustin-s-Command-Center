@@ -1,5 +1,5 @@
 {
- "built": "2026-11-10T19:42:44.701683+00:00",
+ "built": "2026-11-10T19:45:03.192188+00:00",
  "scores_file": "work/boards/phase-2/stage-c/drawings/20261110_CD-Scores.json",
  "thresholds": {
   "flag": 0.9092,
@@ -10,7 +10,7 @@
  "checks": {
   "commands": {
    "likeness_fits": "node work/build/scripts/phase-2/icon_likeness_check.js work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-001-Voting-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-004-Petition-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-006-Civic-Ties-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-010-Decisive-Primaries-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-013-Incumbent-Defeat-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-023-Evidence-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-024-Feedback-Loop-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-028-Watchdogs-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-031-Local-Government-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-032-Local-Reporting-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-039-Feed-Ranking-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-040-Platform-Power-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-047-Data-Rights-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-048-Public-Records-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-050-Worker-Bargaining-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-051-Market-Power-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-054-Home-Equity-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-057-Labor-Share-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-060-Taxes-And-Benefits-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-061-Household-Income-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-067-Healthcare-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-068-Education-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-070-Environment-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-071-Policy-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-072-Reform-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-05-Automatic-Registration-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-08-Donor-Disclosure-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-09-Stock-Trading-Ban-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-15-Watchdog-Remedies-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-17-Civil-Service-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-19-Drug-Pricing-Rules-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-23-Indexed-Minimum-Wage-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-27-Tax-Enforcement-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-37-Feed-Choice-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-45-Paper-Ballots-And-Audits-Black.svg --watch 0.01 --json /tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/likeness-fits.json --quiet",
-   "likeness_housing": "node work/build/scripts/phase-2/icon_likeness_check.js work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-A-Black.svg work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-B-Black.svg work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-C-Black.svg --watch 0.01 --json /tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/likeness-housing.json --quiet",
+   "likeness_housing": "node work/build/scripts/phase-2/icon_likeness_check.js work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-A-Black.svg work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-C-Black.svg --watch 0.01 --json /tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/likeness-housing.json --quiet",
    "pixel_fit_fits": "node work/build/scripts/phase-2/icon_pixel_fit_check.js --size 24 --weight 1 --quiet --json /tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/pixel-fit-fits.json work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-001-Voting-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-004-Petition-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-006-Civic-Ties-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-010-Decisive-Primaries-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-013-Incumbent-Defeat-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-023-Evidence-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-024-Feedback-Loop-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-028-Watchdogs-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-031-Local-Government-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-032-Local-Reporting-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-039-Feed-Ranking-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-040-Platform-Power-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-047-Data-Rights-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-048-Public-Records-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-050-Worker-Bargaining-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-051-Market-Power-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-054-Home-Equity-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-057-Labor-Share-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-060-Taxes-And-Benefits-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-061-Household-Income-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-067-Healthcare-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-068-Education-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-070-Environment-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-071-Policy-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-072-Reform-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-05-Automatic-Registration-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-08-Donor-Disclosure-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-09-Stock-Trading-Ban-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-15-Watchdog-Remedies-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-17-Civil-Service-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-19-Drug-Pricing-Rules-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-23-Indexed-Minimum-Wage-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-27-Tax-Enforcement-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-37-Feed-Choice-Black.svg work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-45-Paper-Ballots-And-Audits-Black.svg",
    "pixel_fit_masters": "node work/build/scripts/phase-2/icon_pixel_fit_check.js --size 24 --quiet --json /tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/pixel-fit-masters.json work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-001-Voting-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-004-Petition-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-006-Civic-Ties-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-010-Decisive-Primaries-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-013-Incumbent-Defeat-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-023-Evidence-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-024-Feedback-Loop-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-028-Watchdogs-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-031-Local-Government-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-032-Local-Reporting-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-039-Feed-Ranking-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-040-Platform-Power-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-047-Data-Rights-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-048-Public-Records-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-050-Worker-Bargaining-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-051-Market-Power-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-054-Home-Equity-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-057-Labor-Share-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-060-Taxes-And-Benefits-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-061-Household-Income-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-067-Healthcare-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-068-Education-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-070-Environment-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-071-Policy-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-072-Reform-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-05-Automatic-Registration-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-06-On-Cycle-Elections-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-08-Donor-Disclosure-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-09-Stock-Trading-Ban-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-14-Automatic-Funding-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-15-Watchdog-Remedies-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-17-Civil-Service-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-19-Drug-Pricing-Rules-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-23-Indexed-Minimum-Wage-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-27-Tax-Enforcement-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-37-Feed-Choice-Black.svg work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-45-Paper-Ballots-And-Audits-Black.svg",
    "pixel_fit_utility": "node work/build/scripts/phase-2/icon_pixel_fit_check.js --size 16 --weight 1.5 --quiet --json /tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/pixel-fit-utility.json work/build/assets/utility/svg-16/20261110_Utility-Pause-16px.svg work/build/assets/utility-16-redraw/svg/20261110_Utility-Pause-16px-Redraw.svg work/build/assets/utility/svg-16/20261110_Utility-Filter-16px.svg work/build/assets/utility-16-redraw/svg/20261110_Utility-Filter-16px-Redraw-A.svg work/build/assets/utility-16-redraw/svg/20261110_Utility-Filter-16px-Redraw-B.svg",
@@ -32,7 +32,7 @@
    "pixel_fit_utility": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/pixel-fit-utility.json",
    "likeness_neutral_masters": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/likeness-neutral-masters.json"
   },
-  "likeness_run": "2026-11-10T19:37:20.668Z",
+  "likeness_run": "2026-11-10T19:44:43.733Z",
   "renderer": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36"
  },
  "designer_recommendations": {
@@ -46,11 +46,7 @@
   "social": "approve"
  },
  "notices": [],
- "warnings": [
-  "check results reused from an earlier run (--reuse-checks)",
-  "card 1 (Housing): scores under 4 (Housing, option B, clarity 3); the brief sends the drawing back before the board is published",
-  "card 1 (Housing): not ready for the board in the scores file"
- ],
+ "warnings": [],
  "cards": [
   {
    "n": 1,
@@ -66,11 +62,6 @@
        "A",
        "Option A",
        "option A"
-      ],
-      [
-       "B",
-       "Option B",
-       "option B"
       ],
       [
        "C",
@@ -98,9 +89,7 @@
     }
    ],
    "scores_pending": false,
-   "scores_under_4": [
-    "Housing, option B, clarity 3"
-   ],
+   "scores_under_4": [],
    "recommendations": [
     [
      "designer",
@@ -255,147 +244,8 @@
        "R-07": 0.1177
       },
       "sibling": {
-       "option": "B",
-       "likeness": 0.452
-      },
-      "flagged": []
-     },
-     "B": {
-      "closest": {
-       "name": "CL-033 Hostile Content",
-       "likeness": 0.6588,
-       "percentile": 33.9,
-       "status": ""
-      },
-      "against": {
-       "CL-033": 0.6588,
-       "CL-024": 0.626,
-       "R-42": 0.6027,
-       "CL-065": 0.6,
-       "CL-051": 0.596,
-       "CL-032": 0.5807,
-       "CL-031": 0.5722,
-       "CL-045": 0.5677,
-       "CL-039": 0.5619,
-       "R-23": 0.5588,
-       "CL-066": 0.5535,
-       "CL-056": 0.5492,
-       "R-12": 0.5467,
-       "R-02": 0.5424,
-       "CL-049": 0.5418,
-       "CL-012": 0.5405,
-       "CL-044": 0.5381,
-       "R-29": 0.5325,
-       "CL-041": 0.5295,
-       "R-13": 0.5294,
-       "R-17": 0.5294,
-       "CL-067": 0.524,
-       "CL-060": 0.5229,
-       "CL-068": 0.5228,
-       "CL-019": 0.5204,
-       "R-04": 0.5162,
-       "CL-050": 0.511,
-       "CL-052": 0.5065,
-       "R-20": 0.5039,
-       "CL-027": 0.5031,
-       "CL-069": 0.4977,
-       "CL-004": 0.4942,
-       "CL-043": 0.4924,
-       "CL-023": 0.4919,
-       "R-28": 0.4907,
-       "CL-006": 0.4847,
-       "CL-047": 0.4823,
-       "CL-054": 0.4823,
-       "CL-007": 0.4794,
-       "R-09": 0.479,
-       "R-11": 0.4788,
-       "R-14": 0.4747,
-       "CL-001": 0.4722,
-       "R-07": 0.4711,
-       "CL-003": 0.4693,
-       "CL-016": 0.4609,
-       "CL-017": 0.4607,
-       "CL-063": 0.4607,
-       "CL-034": 0.4586,
-       "CL-020": 0.4583,
-       "R-45": 0.4572,
-       "CL-070": 0.4529,
-       "CL-071": 0.4503,
-       "CL-028": 0.4423,
-       "R-26": 0.4379,
-       "R-19": 0.4358,
-       "R-35": 0.4304,
-       "R-10": 0.4292,
-       "R-31": 0.4247,
-       "R-05": 0.4223,
-       "R-43": 0.4223,
-       "CL-011": 0.421,
-       "CL-025": 0.4192,
-       "CL-018": 0.4191,
-       "R-21": 0.418,
-       "R-36": 0.4177,
-       "R-18": 0.4137,
-       "R-30": 0.4133,
-       "CL-030": 0.4116,
-       "R-41": 0.4095,
-       "R-33": 0.4091,
-       "R-46": 0.4057,
-       "R-27": 0.4055,
-       "CL-062": 0.4023,
-       "R-08": 0.3995,
-       "CL-048": 0.3987,
-       "R-16": 0.3981,
-       "CL-053": 0.3977,
-       "CL-036": 0.3954,
-       "R-34": 0.3943,
-       "CL-002": 0.3915,
-       "R-25": 0.3894,
-       "CL-073": 0.3887,
-       "CL-058": 0.3881,
-       "R-32": 0.3846,
-       "R-06": 0.3834,
-       "CL-061": 0.3828,
-       "R-01": 0.3828,
-       "CL-038": 0.3826,
-       "CL-064": 0.3818,
-       "CL-046": 0.3813,
-       "CL-040": 0.3797,
-       "CL-015": 0.3793,
-       "CL-055": 0.3703,
-       "R-24": 0.3686,
-       "R-15": 0.3647,
-       "CL-009": 0.3604,
-       "CL-013": 0.3569,
-       "CL-035": 0.3568,
-       "CL-057": 0.3502,
-       "CL-029": 0.345,
-       "R-03": 0.3421,
-       "CL-026": 0.3347,
-       "R-49": 0.3311,
-       "R-37": 0.3261,
-       "CL-010": 0.3202,
-       "R-40": 0.3159,
-       "CL-037": 0.3152,
-       "CL-072": 0.3053,
-       "R-44": 0.3034,
-       "CL-005": 0.3032,
-       "R-47": 0.292,
-       "CL-059": 0.2916,
-       "CL-074": 0.2866,
-       "R-39": 0.2865,
-       "R-22": 0.2825,
-       "CL-014": 0.2799,
-       "R-38": 0.2589,
-       "CL-042": 0.2579,
-       "R-50": 0.1887,
-       "CL-022": 0.1882,
-       "R-48": 0.1848,
-       "CL-021": 0.1797,
-       "CL-008": 0.0785
-      },
-      "sibling": {
-       "option": "A",
-       "likeness": 0.452
+       "option": "C",
+       "likeness": 0.4309
       },
       "flagged": []
      },
@@ -2599,8 +2449,6 @@
   "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Fit-Row-R-45-Master-2x.png",
   "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Housing-Option-A-24px-Black-1x.png",
   "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Housing-Option-A-24px-Black-2x.png",
-  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Housing-Option-B-24px-Black-1x.png",
-  "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Housing-Option-B-24px-Black-2x.png",
   "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Housing-Option-C-24px-Black-1x.png",
   "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Housing-Option-C-24px-Black-2x.png",
   "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Social-Card-Charcoal-96px-Actual-Size-1x.png",
@@ -2633,10 +2481,6 @@
   "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-A-Newsprint.svg",
   "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-A-Red-Black.svg",
   "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-A-Red-Newsprint.svg",
-  "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-B-Black.svg",
-  "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-B-Newsprint.svg",
-  "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-B-Red-Black.svg",
-  "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-B-Red-Newsprint.svg",
   "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-C-Black.svg",
   "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-C-Newsprint.svg",
   "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-C-Red-Black.svg",
@@ -2675,8 +2519,8 @@
   "work/handoffs/phase-2/stage-c-identity/20261110_Social-Sign-Off-Comparison-1x.png"
  ],
  "bytes": {
-  "page": 340006,
-  "files": 2256253,
-  "total": 2596259
+  "page": 334745,
+  "files": 2244947,
+  "total": 2579692
  }
 }
