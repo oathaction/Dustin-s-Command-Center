@@ -1799,3 +1799,32 @@ Dustin, replying to three questions (the plate's count after Missouri's vote, th
 |---|---|---|
 | D2-880 | Chapter 11 is built with the error mark in the text's ink and a 4 px Pillar Red bar at the left of the field and the message, as its maker recommends; board B's decisions panel puts it to Dustin by name, beside the mark drawn in red | A red line glyph measures 2.64 to 1 on the Error Band and 2.96 on Newsprint, under Rule 05.5's 3 to 1 for a mark; DR-173 approved the drawing, and its color touches a token Gate 2 confirms |
 | D2-881 | `s-05-3-corrective` draws the error as a white cross in a red disc; round 3's fix pass redraws it with `U-error` | DR-173 and D2-509 make the error mark a circle holding an exclamation mark, and a cross means Close |
+
+### Identity designer, chapters 09 and 12, chapter 01's pillar specimens (`20261110_Stage-B-Round-2-Identity-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-882 | Chapter 09 has four rules: the row and its words, the current pillar, the file for each size, and the places | The round 2 brief's points for chapter 09, one rule each, with the phone column as an extra after Rule 09.1 |
+| D2-883 | Pillar rows use the component icon tokens: `--oa-component-icon-ink-on-<surface>` for the ink and `--oa-component-icon-accent-on-<surface>` for the accent | Chapter 10's construction text, section 7; the accent token resolves to signature red |
+| D2-884 | The 48 px row's words keep chapter 01's style: the intro style, bold, 19 px and 22 px from 48em; the 24 px row's words are body text, bold when current | One row in two chapters looks the same |
+| D2-885 | A stacked column drops the ink trim, so the four words share one left edge | In a column, a shared edge reads; across a row, spacing from the ink keeps the gaps even (D2-439) |
+| D2-886 | A 24 px fit's margins come from its own pixel map, in whole pixels | The fit keeps its grid; the master's ink at 24 px would give fractional margins |
+| D2-887 | Rule 09.2's failure is the current pillar marked by red alone at 48 px | It breaks WCAG 2.2 SC 1.4.1 at the one size where red may appear, and needs no forbidden accent under 48 px |
+| D2-888 | Rule 09.3's failure is Track's master at 16 px beside its fit, with 1x renders enlarged four times | Track is the busiest drawing and the faintest at 16 px (Board 6 notes) |
+| D2-889 | The section opener is Track's, with "Watch the vote." from our fifth edition's pillar plate, at the title style's 56 px, labeled Illustrative | The brief names the line; Track's job fits it |
+| D2-890 | The tile stands alone on a card that leads to a pillar's section, at 76 px | DR-116 gives avatars and the app icon to ampersand B, so the pillar tile leads to a section; 76 px is the rounded two-color minimum (D2-42) |
+| D2-891 | Rule 09.4's failure is a Report kicker with Track's icon, on an Illustrative card under the failure band | The brief's failure; Report names no pillar, which is the creative director's Board 6 reason |
+| D2-892 | Chapter 01's drawings move to the sprite through a step of mine that rewrites the editor's generated files in place, and runs again after any rebuild of the editor's chapters | The words and the build stay the editor's; the drawings are mine this round (D2-719) |
+| D2-893 | `s-08-3` draws S.99002 with chapter 11's 360 px geometry and status groups | DR-151, and the plate's note says it follows chapter 11's marks |
+| D2-894 | Chapter 12's identity rules are the hairline (12.1, with the device index after it), the watermark (12.2), the compact signature (12.3) and the patterns (12.4) | D2-829 gives the identity designer 12.1 to 12.4 for dividers, watermarks and patterns; the compact signature is the brief's second watermark point and needs its own failure |
+| D2-895 | Rule 12.1's failure is a dashed divider | D1-21: the atlas's key gives dashed lines to plausible links; chapter 07 keeps cards as a layout unit, so "no boxes", our fifth edition's standard, would contradict it |
+| D2-896 | The watermark is ampersand B from its display master, and it counts as the view's one ampersand moment (Rule 04.2) | Our fifth edition's quiet signatures used the glyph; a B anywhere in a view is a freestanding or cropped B, which Rule 04.2 counts |
+| D2-897 | A watermark stands at least half its page's height | A smaller watermark reads as a mark set too faint, the failure Rule 12.3 shows |
+| D2-898 | The compact signature is L8, opaque, from 48 px | D2-193 retired V4.2's typed "O & A" and made L8 the one monogram; DR-116 keeps avatars and the app icon for B alone |
+| D2-899 | The video still is a bill's six steps on Charcoal with the step in words, from chapter 11's 360 px list | The guide has no photographs yet (chapter 16), and an explainer frame is real content we make |
+| D2-900 | The patterns come from the hinge devices only | Rule 08.3 keeps the lockmark whole, so Phase 1's node rhythm (from the grid) is out; the wordmark, B and the Civic Line drawings each have placement rules a repeat would break; nodes on a line would read as chapter 11's tracker |
+| D2-901 | Each pattern runs 1 px in the hairline token, with no pattern on Prussian | One color as Phase 1 proposed; on Prussian the hairline token is White, which a repeat would turn loud |
+| D2-902 | The hinge arcs end inside a quarter circle as wide as their area's shorter side | Clipped at a straight edge, the arcs leave a hard line; a quarter circle ends the way the hinge's ring does |
+| D2-903 | The pattern covers are 360 by 466 px screen covers with type at the phone floor | Two fit a 600 px plate, and the type stays on the scale (D2-254) |
+| D2-904 | Rule 12.4's single failure plate shows both patterns behind words | The brief asks a failure for each pattern; one plate shows both, side by side |
+| D2-905 | The device index sits after Rule 12.1 and names the systems devices by their rules (12.5 to 12.9) | The architecture map lists the hinge divider in chapter 12's index, and a builder looks for a device by its job |
