@@ -1,0 +1,471 @@
+{
+ "title": "Housing, a new topic drawing (DR-196): three options for drawings board C",
+ "date": "20261110",
+ "made_by": "icon designer (oa-design-director), work/build/scripts/phase-2/civic_line_stage_c_drawings.py",
+ "status": "Proposed. Dustin picks one option and approves it by name on drawings board C.",
+ "decisions": [
+  "DR-196",
+  "DR-146",
+  "D2-622",
+  "D2-502",
+  "DR-137",
+  "DR-08",
+  "DR-09",
+  "DR-10",
+  "DR-136"
+ ],
+ "rule": "s = min(116 / extent, 1.25 x 0.487395), line 5.5 source px (DR-08); editions by the October color swap (DR-09); tiles by the October tile code with the S-1 and S-2 optics rules (DR-10)",
+ "tile_floor": "Tiles take the 48 px bare floor until Dustin sets Housing's floor: no 32 px reading is approved for it.",
+ "neighbors_on_the_board": [
+  "CL-054",
+  "CL-053",
+  "CL-063",
+  "R-30",
+  "CL-051"
+ ],
+ "options": [
+  {
+   "option": "A",
+   "shows": "Homes of more than one kind: a flat-roofed apartment block and a pitched-roof house on one ground line; red on one window of the block.",
+   "construction": "an apartment block of three floors at left, two windows a floor and a door, beside a smaller pitched-roof house with its door, both on one ground line that runs past them. Windows are small rounded squares. No chimney, fence, tree, flag or sign.",
+   "red": "one window of the block, top right: one household's home among many. The block, its other windows, the house, the doors and the ground line stay black.",
+   "src": "work/build/assets/civic-line-new-topics/src/20261110_Housing-Option-A.svg",
+   "svg": {
+    "red-black": "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-A-Red-Black.svg",
+    "black": "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-A-Black.svg",
+    "red-newsprint": "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-A-Red-Newsprint.svg",
+    "newsprint": "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-A-Newsprint.svg"
+   },
+   "scale": 0.609244,
+   "stroke_units": 3.3508,
+   "extent_units": 114.23,
+   "at_cap": true,
+   "ink_source_px": [
+    187.5,
+    145.5
+   ],
+   "tile_optics": {
+    "a": 0.94,
+    "dx": 0.0,
+    "stroke_scale": 1.0,
+    "rule": {
+     "hull_size_units": 92.04,
+     "hull_centroid_offset_x_units": -5.19,
+     "s1_unrounded": 0.9007,
+     "s2_tile_units": 1.0
+    }
+   },
+   "tile_margin_min_units": 22.26,
+   "tile_margins_units": {
+    "square-charcoal-two-color": 27.49,
+    "square-charcoal-one-color": 27.49,
+    "square-newsprint-two-color": 27.49,
+    "square-newsprint-one-color": 27.49,
+    "rounded-charcoal-two-color": 28.39,
+    "rounded-charcoal-one-color": 28.39,
+    "rounded-newsprint-two-color": 28.39,
+    "rounded-newsprint-one-color": 28.39,
+    "circle-charcoal-two-color": 22.26,
+    "circle-charcoal-one-color": 22.26,
+    "circle-newsprint-two-color": 22.26,
+    "circle-newsprint-one-color": 22.26
+   },
+   "tile_min_px": {
+    "two-color": {
+     "square": 72,
+     "rounded": 76,
+     "circle": 80
+    },
+    "one-color": {
+     "square": 72,
+     "rounded": 76,
+     "circle": 80
+    }
+   },
+   "tiles": [
+    "work/build/assets/civic-line-new-topics/tiles/square-charcoal/svg/20261110_Housing-Option-A-Tile-Square-Charcoal-Two-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/square-charcoal/svg/20261110_Housing-Option-A-Tile-Square-Charcoal-One-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/square-newsprint/svg/20261110_Housing-Option-A-Tile-Square-Newsprint-Two-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/square-newsprint/svg/20261110_Housing-Option-A-Tile-Square-Newsprint-One-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/rounded-charcoal/svg/20261110_Housing-Option-A-Tile-Rounded-Charcoal-Two-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/rounded-charcoal/svg/20261110_Housing-Option-A-Tile-Rounded-Charcoal-One-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/rounded-newsprint/svg/20261110_Housing-Option-A-Tile-Rounded-Newsprint-Two-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/rounded-newsprint/svg/20261110_Housing-Option-A-Tile-Rounded-Newsprint-One-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/circle-charcoal/svg/20261110_Housing-Option-A-Tile-Circle-Charcoal-Two-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/circle-charcoal/svg/20261110_Housing-Option-A-Tile-Circle-Charcoal-One-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/circle-newsprint/svg/20261110_Housing-Option-A-Tile-Circle-Newsprint-Two-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/circle-newsprint/svg/20261110_Housing-Option-A-Tile-Circle-Newsprint-One-Color.svg"
+   ]
+  },
+  {
+   "option": "B",
+   "shows": "An apartment house: three floors under a pitched roof, two windows a floor; red on the arched door.",
+   "construction": "one building of three floors under a pitched roof, two windows a floor in two columns, and an arched door at the middle of the ground floor, on a ground line that runs past the walls. No chimney, columns or pediment.",
+   "red": "the arched door, the way into the homes. The building, its windows and the ground line stay black.",
+   "src": "work/build/assets/civic-line-new-topics/src/20261110_Housing-Option-B.svg",
+   "svg": {
+    "red-black": "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-B-Red-Black.svg",
+    "black": "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-B-Black.svg",
+    "red-newsprint": "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-B-Red-Newsprint.svg",
+    "newsprint": "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-B-Newsprint.svg"
+   },
+   "scale": 0.609244,
+   "stroke_units": 3.3508,
+   "extent_units": 104.49,
+   "at_cap": true,
+   "ink_source_px": [
+    169.5,
+    171.5
+   ],
+   "tile_optics": {
+    "a": 0.94,
+    "dx": 0.0,
+    "stroke_scale": 1.0,
+    "rule": {
+     "hull_size_units": 91.81,
+     "hull_centroid_offset_x_units": 0.0,
+     "s1_unrounded": 0.9018,
+     "s2_tile_units": 0.0
+    }
+   },
+   "tile_margin_min_units": 21.6,
+   "tile_margins_units": {
+    "square-charcoal-two-color": 30.61,
+    "square-charcoal-one-color": 30.61,
+    "square-newsprint-two-color": 30.61,
+    "square-newsprint-one-color": 30.61,
+    "rounded-charcoal-two-color": 31.18,
+    "rounded-charcoal-one-color": 31.18,
+    "rounded-newsprint-two-color": 31.18,
+    "rounded-newsprint-one-color": 31.18,
+    "circle-charcoal-two-color": 21.6,
+    "circle-charcoal-one-color": 21.6,
+    "circle-newsprint-two-color": 21.6,
+    "circle-newsprint-one-color": 21.6
+   },
+   "tile_min_px": {
+    "two-color": {
+     "square": 72,
+     "rounded": 76,
+     "circle": 80
+    },
+    "one-color": {
+     "square": 72,
+     "rounded": 76,
+     "circle": 80
+    }
+   },
+   "tiles": [
+    "work/build/assets/civic-line-new-topics/tiles/square-charcoal/svg/20261110_Housing-Option-B-Tile-Square-Charcoal-Two-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/square-charcoal/svg/20261110_Housing-Option-B-Tile-Square-Charcoal-One-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/square-newsprint/svg/20261110_Housing-Option-B-Tile-Square-Newsprint-Two-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/square-newsprint/svg/20261110_Housing-Option-B-Tile-Square-Newsprint-One-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/rounded-charcoal/svg/20261110_Housing-Option-B-Tile-Rounded-Charcoal-Two-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/rounded-charcoal/svg/20261110_Housing-Option-B-Tile-Rounded-Charcoal-One-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/rounded-newsprint/svg/20261110_Housing-Option-B-Tile-Rounded-Newsprint-Two-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/rounded-newsprint/svg/20261110_Housing-Option-B-Tile-Rounded-Newsprint-One-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/circle-charcoal/svg/20261110_Housing-Option-B-Tile-Circle-Charcoal-Two-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/circle-charcoal/svg/20261110_Housing-Option-B-Tile-Circle-Charcoal-One-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/circle-newsprint/svg/20261110_Housing-Option-B-Tile-Circle-Newsprint-Two-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/circle-newsprint/svg/20261110_Housing-Option-B-Tile-Circle-Newsprint-One-Color.svg"
+   ]
+  },
+  {
+   "option": "C",
+   "shows": "A house key: a key whose bow is a house; red on the bow.",
+   "construction": "an upright key: its bow drawn as a house (two walls, a pitched roof and a closed floor line) with a small rounded square hole, a long stem and a bit of two teeth at the stem's foot, pointing right.",
+   "red": "the house-shaped bow. The hole, the stem and the bit stay black.",
+   "src": "work/build/assets/civic-line-new-topics/src/20261110_Housing-Option-C.svg",
+   "svg": {
+    "red-black": "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-C-Red-Black.svg",
+    "black": "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-C-Black.svg",
+    "red-newsprint": "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-C-Red-Newsprint.svg",
+    "newsprint": "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-C-Newsprint.svg"
+   },
+   "scale": 0.609244,
+   "stroke_units": 3.3508,
+   "extent_units": 106.92,
+   "at_cap": true,
+   "ink_source_px": [
+    85.5,
+    175.5
+   ],
+   "tile_optics": {
+    "a": 1.1,
+    "dx": 0.0,
+    "stroke_scale": 0.90908,
+    "rule": {
+     "hull_size_units": 62.17,
+     "hull_centroid_offset_x_units": 1.29,
+     "s1_unrounded": 1.0959,
+     "s2_tile_units": 0.5
+    }
+   },
+   "tile_margin_min_units": 24.13,
+   "tile_margins_units": {
+    "square-charcoal-two-color": 24.13,
+    "square-charcoal-one-color": 24.13,
+    "square-newsprint-two-color": 24.13,
+    "square-newsprint-one-color": 24.13,
+    "rounded-charcoal-two-color": 25.3,
+    "rounded-charcoal-one-color": 25.3,
+    "rounded-newsprint-two-color": 25.3,
+    "rounded-newsprint-one-color": 25.3,
+    "circle-charcoal-two-color": 27.49,
+    "circle-charcoal-one-color": 27.49,
+    "circle-newsprint-two-color": 27.49,
+    "circle-newsprint-one-color": 27.49
+   },
+   "tile_min_px": {
+    "two-color": {
+     "square": 72,
+     "rounded": 76,
+     "circle": 80
+    },
+    "one-color": {
+     "square": 72,
+     "rounded": 76,
+     "circle": 80
+    }
+   },
+   "tiles": [
+    "work/build/assets/civic-line-new-topics/tiles/square-charcoal/svg/20261110_Housing-Option-C-Tile-Square-Charcoal-Two-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/square-charcoal/svg/20261110_Housing-Option-C-Tile-Square-Charcoal-One-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/square-newsprint/svg/20261110_Housing-Option-C-Tile-Square-Newsprint-Two-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/square-newsprint/svg/20261110_Housing-Option-C-Tile-Square-Newsprint-One-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/rounded-charcoal/svg/20261110_Housing-Option-C-Tile-Rounded-Charcoal-Two-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/rounded-charcoal/svg/20261110_Housing-Option-C-Tile-Rounded-Charcoal-One-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/rounded-newsprint/svg/20261110_Housing-Option-C-Tile-Rounded-Newsprint-Two-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/rounded-newsprint/svg/20261110_Housing-Option-C-Tile-Rounded-Newsprint-One-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/circle-charcoal/svg/20261110_Housing-Option-C-Tile-Circle-Charcoal-Two-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/circle-charcoal/svg/20261110_Housing-Option-C-Tile-Circle-Charcoal-One-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/circle-newsprint/svg/20261110_Housing-Option-C-Tile-Circle-Newsprint-Two-Color.svg",
+    "work/build/assets/civic-line-new-topics/tiles/circle-newsprint/svg/20261110_Housing-Option-C-Tile-Circle-Newsprint-One-Color.svg"
+   ]
+  }
+ ],
+ "figures": {
+  "likeness_command": "node work/build/scripts/phase-2/icon_likeness_check.js <the three black files> --json work/build/assets/civic-line-new-topics/qa/20261110_Housing-Likeness.json",
+  "likeness_exit": 0,
+  "flagged": [],
+  "watched": [],
+  "between_options": [
+   {
+    "a": "20261110_Housing-Option-A-Black.svg",
+    "b": "20261110_Housing-Option-B-Black.svg",
+    "likeness": 0.452,
+    "percentile": 5.8,
+    "against": "new"
+   },
+   {
+    "a": "20261110_Housing-Option-A-Black.svg",
+    "b": "20261110_Housing-Option-C-Black.svg",
+    "likeness": 0.4309,
+    "percentile": 4.8,
+    "against": "new"
+   },
+   {
+    "a": "20261110_Housing-Option-B-Black.svg",
+    "b": "20261110_Housing-Option-C-Black.svg",
+    "likeness": 0.1645,
+    "percentile": 1.3,
+    "against": "new"
+   }
+  ],
+  "pixel_fit_48_exit": 1,
+  "options": [
+   {
+    "option": "A",
+    "closest": "CL-051 Market Power",
+    "closest_likeness": 0.6899,
+    "closest_percentile": 42.4,
+    "top_five": [
+     [
+      "CL-051 Market Power",
+      0.6899,
+      42.4
+     ],
+     [
+      "CL-068 Education",
+      0.6893,
+      42.3
+     ],
+     [
+      "CL-039 Feed Ranking",
+      0.6873,
+      41.7
+     ],
+     [
+      "R-42 Congressional Tariff Votes",
+      0.681,
+      39.8
+     ],
+     [
+      "CL-033 Hostile Content",
+      0.677,
+      38.6
+     ]
+    ],
+    "against": {
+     "CL-054": 0.5008,
+     "CL-053": 0.2508,
+     "CL-063": 0.5746,
+     "R-30": 0.2902,
+     "CL-052": 0.5805,
+     "CL-035": 0.3392,
+     "CL-065": 0.4701,
+     "R-26": 0.3601,
+     "R-43": 0.5899,
+     "CL-031": 0.5737,
+     "CL-051": 0.6899,
+     "CL-047": 0.5937,
+     "R-37": 0.5113
+    },
+    "pixel_fit_48": {
+     "pass": false,
+     "fails": {
+      "1x": [
+       "straight"
+      ],
+      "2x": [
+       "straight"
+      ]
+     },
+     "smallest_gap_px_1x": 1.71,
+     "counters_1x": {
+      "drawn": 10,
+      "open": 10
+     }
+    }
+   },
+   {
+    "option": "B",
+    "closest": "CL-033 Hostile Content",
+    "closest_likeness": 0.6588,
+    "closest_percentile": 33.9,
+    "top_five": [
+     [
+      "CL-033 Hostile Content",
+      0.6588,
+      33.9
+     ],
+     [
+      "CL-024 Feedback Loop",
+      0.626,
+      25.9
+     ],
+     [
+      "R-42 Congressional Tariff Votes",
+      0.6027,
+      21.1
+     ],
+     [
+      "CL-065 Climate & Insurance",
+      0.6,
+      20.7
+     ],
+     [
+      "CL-051 Market Power",
+      0.596,
+      19.9
+     ]
+    ],
+    "against": {
+     "CL-054": 0.4823,
+     "CL-053": 0.3977,
+     "CL-063": 0.4607,
+     "R-30": 0.4133,
+     "CL-052": 0.5065,
+     "CL-035": 0.3568,
+     "CL-065": 0.6,
+     "R-26": 0.4379,
+     "R-43": 0.4223,
+     "CL-031": 0.5722,
+     "CL-051": 0.596,
+     "CL-047": 0.4823,
+     "R-37": 0.3261
+    },
+    "pixel_fit_48": {
+     "pass": false,
+     "fails": {
+      "1x": [
+       "straight"
+      ],
+      "2x": [
+       "straight"
+      ]
+     },
+     "smallest_gap_px_1x": 2.36,
+     "counters_1x": {
+      "drawn": 8,
+      "open": 8
+     }
+    }
+   },
+   {
+    "option": "C",
+    "closest": "CL-022 Act",
+    "closest_likeness": 0.6562,
+    "closest_percentile": 33.3,
+    "top_five": [
+     [
+      "CL-022 Act",
+      0.6562,
+      33.3
+     ],
+     [
+      "CL-012 Election Rules",
+      0.6384,
+      28.8
+     ],
+     [
+      "CL-057 Labor Share",
+      0.6121,
+      22.9
+     ],
+     [
+      "CL-067 Healthcare",
+      0.6046,
+      21.5
+     ],
+     [
+      "CL-047 Data Rights",
+      0.5982,
+      20.4
+     ]
+    ],
+    "against": {
+     "CL-054": 0.2702,
+     "CL-053": 0.0578,
+     "CL-063": 0.4687,
+     "R-30": 0.269,
+     "CL-052": 0.2759,
+     "CL-035": 0.2676,
+     "CL-065": 0.2098,
+     "R-26": 0.1506,
+     "R-43": 0.5852,
+     "CL-031": 0.4302,
+     "CL-051": 0.2639,
+     "CL-047": 0.5982,
+     "R-37": 0.3807
+    },
+    "pixel_fit_48": {
+     "pass": false,
+     "fails": {
+      "1x": [
+       "straight"
+      ],
+      "2x": [
+       "straight"
+      ]
+     },
+     "smallest_gap_px_1x": 1.93,
+     "counters_1x": {
+      "drawn": 2,
+      "open": 2
+     }
+    }
+   }
+  ]
+ }
+}

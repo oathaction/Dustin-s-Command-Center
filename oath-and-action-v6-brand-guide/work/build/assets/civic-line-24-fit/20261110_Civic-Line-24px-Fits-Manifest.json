@@ -1,0 +1,3466 @@
+{
+ "title": "Civic Line 24 px pixel fits for the 37 topic and atlas drawings, for drawings board C",
+ "date": "20261110",
+ "made_by": "icon designer (oa-design-director), work/build/scripts/phase-2/civic_line_stage_c_drawings.py",
+ "status": "Proposed. For approval by name on drawings board C (DR-205); not in use until Dustin approves.",
+ "decisions": [
+  "DR-198",
+  "DR-205",
+  "D2-1132",
+  "DR-179",
+  "D2-808",
+  "DR-136",
+  "D2-587",
+  "D2-971",
+  "D2-613"
+ ],
+ "rules": {
+  "screens": "The pillar icons' switch (DR-179, D2-808): on 1x screens a 24 px topic or atlas symbol draws its fit; from 2x it draws its Civic Line master.",
+  "edition": "One color, the black edition only (D2-1132). On Charcoal the sprite sets the ink to Newsprint, as it does for the masters.",
+  "sizes": "Use each fit at 24 px only.",
+  "line": "One pixel, as the approved pillar fit B (DR-179).",
+  "growth": "Each drawing grows toward 22 px across, by up to about 1.35 times its master's extent at 24 px, and sits centered on the box (the pillar fits' D2-613)."
+ },
+ "paths_relative_to": "the repository root",
+ "order": "20261110_Stage-B-Ch10-Construction.md, section 10",
+ "fits": [
+  {
+   "id": "CL-001",
+   "word": "Voting",
+   "atlas_id": null,
+   "inventory_label": "Voting",
+   "kept": "Box, slanted lid, slot, and the slanted ballot rising from the slot with the open gap at the right lid.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-001-Voting-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 16.34,
+   "fit_extent_px": 22,
+   "growth": 1.347,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     3,
+     20
+    ],
+    "width_px": 22,
+    "height_px": 18
+   },
+   "ink_px": 93,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-001-Voting-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-001-Voting-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-001-Voting-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "...............#........",
+    "..............#.#.......",
+    ".............#...#......",
+    "............#.....#.....",
+    "...........#.....#......",
+    ".....######.....#.#.....",
+    "....#....#.....#...#....",
+    "...#...##########...#...",
+    "..#..................#..",
+    ".######################.",
+    ".#....................#.",
+    ".#....................#.",
+    ".#....................#.",
+    ".#....................#.",
+    ".#....................#.",
+    ".#....................#.",
+    ".#....................#.",
+    ".######################.",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-004",
+   "word": "Petition",
+   "atlas_id": null,
+   "inventory_label": "Petition",
+   "kept": "Page with four rules and a part-open right edge, the pen with its cap band, nib band and point.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-004-Petition-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 14.74,
+   "fit_extent_px": 20,
+   "growth": 1.357,
+   "extent": {
+    "cols": [
+     2,
+     21
+    ],
+    "rows": [
+     3,
+     20
+    ],
+    "width_px": 20,
+    "height_px": 18
+   },
+   "ink_px": 99,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-004-Petition-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-004-Petition-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-004-Petition-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "...############.........",
+    "..#............#........",
+    "..#............#........",
+    "..#............#....#...",
+    "..#..########..#...#.#..",
+    "..#............#..#.#...",
+    "..#..............###....",
+    "..#..########....#.#....",
+    "..#.............#.#.....",
+    "..#............#.#......",
+    "..#..######...#.#.......",
+    "..#...........#.#.......",
+    "..#..........###........",
+    "..#..####...#.#.........",
+    "..#.........##..........",
+    "..#.........#..#........",
+    "..#............#........",
+    "...############.........",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-006",
+   "word": "Civic Ties",
+   "atlas_id": "B3",
+   "inventory_label": "Civic Ties",
+   "kept": "Three people, each a hollow head over open shoulders with a gap between, and the three linking arcs.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-006-Civic-Ties-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 17.82,
+   "fit_extent_px": 22,
+   "growth": 1.235,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     3,
+     20
+    ],
+    "width_px": 22,
+    "height_px": 18
+   },
+   "ink_px": 72,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-006-Civic-Ties-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-006-Civic-Ties-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-006-Civic-Ties-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "...........##...........",
+    "..........#..#..........",
+    "..........#..#..........",
+    "...........##...........",
+    ".......#........#.......",
+    "......#..######..#......",
+    ".....#..#......#..#.....",
+    "....#...#......#...#....",
+    "........#......#........",
+    "....##............##....",
+    "...#..#..........#..#...",
+    "...#..#..........#..#...",
+    "....##............##....",
+    "........................",
+    "..######........######..",
+    ".#......#.#..#.#......#.",
+    ".#......#..##..#......#.",
+    ".#......#......#......#.",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-010",
+   "word": "Decisive Primaries",
+   "atlas_id": "C2",
+   "inventory_label": "Decisive Primaries",
+   "kept": "Three small rings, the two branches that merge and the middle one that stops short, the arrow and ring.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-010-Decisive-Primaries-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 19.88,
+   "fit_extent_px": 22,
+   "growth": 1.107,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     6,
+     18
+    ],
+    "width_px": 22,
+    "height_px": 13
+   },
+   "ink_px": 56,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-010-Decisive-Primaries-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-010-Decisive-Primaries-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-010-Decisive-Primaries-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "..#.....................",
+    ".#.#####................",
+    "..#.....#...............",
+    "........#...............",
+    ".........###..#....###..",
+    "..#.........#..#..#...#.",
+    ".#.#####.....####.#...#.",
+    "..#.........#..#..#...#.",
+    ".........###..#....###..",
+    "........#...............",
+    "..#.....#...............",
+    ".#.#####................",
+    "..#.....................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-013",
+   "word": "Incumbent Defeat",
+   "atlas_id": "C5",
+   "inventory_label": "Incumbent Defeat",
+   "kept": "Chair back, arms, stem and three-footed base, and the arrow leaving it; the arrow's barbs take two steps.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-013-Incumbent-Defeat-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 16.45,
+   "fit_extent_px": 22,
+   "growth": 1.337,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     2,
+     21
+    ],
+    "width_px": 22,
+    "height_px": 20
+   },
+   "ink_px": 84,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-013-Incumbent-Defeat-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-013-Incumbent-Defeat-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-013-Incumbent-Defeat-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "....#######.............",
+    "...#.......#............",
+    "...#.......#............",
+    "...#.......#............",
+    "...#.......#............",
+    "...#.......#............",
+    "...#.......#........#...",
+    "...#.......#.........#..",
+    "..##.......##...#######.",
+    ".#.#.......#.#.......#..",
+    ".#.#.......#.#......#...",
+    ".#.#########.#..........",
+    ".#...........#..........",
+    "..###########...........",
+    ".......#................",
+    ".......#................",
+    ".......#................",
+    "....#######.............",
+    "...#...#...#............",
+    "...#...#...#............",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-023",
+   "word": "Evidence",
+   "atlas_id": null,
+   "inventory_label": "Evidence",
+   "kept": "Page with five rules, lens with the check inside, capsule handle.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-023-Evidence-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 18.39,
+   "fit_extent_px": 22,
+   "growth": 1.196,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     3,
+     20
+    ],
+    "width_px": 22,
+    "height_px": 18
+   },
+   "ink_px": 111,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-023-Evidence-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-023-Evidence-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-023-Evidence-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "..#############.........",
+    ".#.............#........",
+    ".#.............#........",
+    ".#.............#........",
+    ".#..########............",
+    ".#...........#####......",
+    ".#..######..#.....#.....",
+    ".#.........#.......#....",
+    ".#..#####..#.....#.#....",
+    ".#.........#....#..#....",
+    ".#..#####..#.#.#...#....",
+    ".#.........#..#....#....",
+    ".#..#####...#.....#.....",
+    ".#...........#####.#....",
+    ".#................#.#...",
+    "..##############...#.#..",
+    "....................#.#.",
+    ".....................##.",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-024",
+   "word": "Feedback Loop",
+   "atlas_id": null,
+   "inventory_label": "Feedback Loop",
+   "kept": "Two squares and two arcs with their corner arrowheads, turned half a turn about the center.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-024-Feedback-Loop-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 17.48,
+   "fit_extent_px": 22,
+   "growth": 1.259,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     3,
+     20
+    ],
+    "width_px": 22,
+    "height_px": 18
+   },
+   "ink_px": 76,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-024-Feedback-Loop-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-024-Feedback-Loop-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-024-Feedback-Loop-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "..........####..........",
+    "........##....##........",
+    ".......#........#..#....",
+    "......#..........#.#....",
+    ".....#..........###.....",
+    "........................",
+    ".######..........######.",
+    ".#....#..........#....#.",
+    ".#....#..........#....#.",
+    ".#....#..........#....#.",
+    ".#....#..........#....#.",
+    ".######..........######.",
+    "........................",
+    ".....###..........#.....",
+    "....#.#..........#......",
+    "....#..#........#.......",
+    "........##....##........",
+    "..........####..........",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-028",
+   "word": "Watchdogs",
+   "atlas_id": "D4",
+   "inventory_label": "Watchdogs",
+   "kept": "Narrower page with four rules, empty lens, neck and capsule handle.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-028-Watchdogs-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 15.88,
+   "fit_extent_px": 22,
+   "growth": 1.386,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     3,
+     20
+    ],
+    "width_px": 22,
+    "height_px": 18
+   },
+   "ink_px": 98,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-028-Watchdogs-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-028-Watchdogs-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-028-Watchdogs-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "..############..........",
+    ".#............#.........",
+    ".#............#.........",
+    ".#..########..#.........",
+    ".#......................",
+    ".#..........#####.......",
+    ".#..#####..#.....#......",
+    ".#........#.......#.....",
+    ".#........#.......#.....",
+    ".#..#####.#.......#.....",
+    ".#........#.......#.....",
+    ".#........#.......#.....",
+    ".#..#####..#.....#......",
+    ".#..........#####.#.....",
+    ".#.................##...",
+    "..#############....#.#..",
+    "....................#.#.",
+    ".....................##.",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-031",
+   "word": "Local Government",
+   "atlas_id": null,
+   "inventory_label": "Local Government",
+   "kept": "Pediment with its open peak, central block, two wings, paired windows and the arched door, symmetric.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-031-Local-Government-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 20.9,
+   "fit_extent_px": 22,
+   "growth": 1.052,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     5,
+     18
+    ],
+    "width_px": 22,
+    "height_px": 14
+   },
+   "ink_px": 108,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-031-Local-Government-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-031-Local-Government-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-031-Local-Government-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "...........##...........",
+    "..........#..#..........",
+    "........##....##........",
+    ".......##########.......",
+    "........#......#........",
+    "........#.#..#.#........",
+    "..#######.#..#.#######..",
+    "..#.....#......#.....#..",
+    "..#.#.#.#......#.#.#.#..",
+    "..#.#.#.#..##..#.#.#.#..",
+    "..#.....#.####.#.....#..",
+    "..#.....#.####.#.....#..",
+    "..#.....#.####.#.....#..",
+    ".######################.",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-032",
+   "word": "Local Reporting",
+   "atlas_id": "B2",
+   "inventory_label": "Local Reporting",
+   "kept": "Front page, the fold with its inner line, five rules and the photo block.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-032-Local-Reporting-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 17.25,
+   "fit_extent_px": 22,
+   "growth": 1.275,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     4,
+     19
+    ],
+    "width_px": 22,
+    "height_px": 16
+   },
+   "ink_px": 162,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-032-Local-Reporting-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-032-Local-Reporting-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-032-Local-Reporting-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "......################..",
+    ".....#................#.",
+    ".....#................#.",
+    "..####.##############.#.",
+    ".#.#.#................#.",
+    ".#.#.#.##############.#.",
+    ".#.#.#................#.",
+    ".#.#.#................#.",
+    ".#.#.#.#######..#####.#.",
+    ".#.#.#..........#####.#.",
+    ".#.#.#.#######..#####.#.",
+    ".#.#.#..........#####.#.",
+    ".#.#.#.#######..#####.#.",
+    ".#.#.#................#.",
+    ".#...#................#.",
+    "..####################..",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-039",
+   "word": "Feed Ranking",
+   "atlas_id": "TC1",
+   "inventory_label": "Feed Ranking",
+   "kept": "Three cards each with a square and two rules, the top card open below as drawn, and the slider's knob.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-039-Feed-Ranking-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 17.93,
+   "fit_extent_px": 22,
+   "growth": 1.227,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     1,
+     22
+    ],
+    "width_px": 22,
+    "height_px": 22
+   },
+   "ink_px": 169,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-039-Feed-Ranking-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-039-Feed-Ranking-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-039-Feed-Ranking-Black-2x.png",
+   "map": [
+    "........................",
+    "..##############.....#..",
+    ".#..............#....#..",
+    ".#.##..#######..#....#..",
+    ".#.##...........#....#..",
+    ".#.....####.....#....#..",
+    ".#..............#....#..",
+    "....................###.",
+    "..##############....#.#.",
+    ".#..............#...###.",
+    ".#.##..#######..#....#..",
+    ".#.##...........#....#..",
+    ".#.....####.....#....#..",
+    ".#..............#....#..",
+    "..##############.....#..",
+    ".....................#..",
+    "..##############.....#..",
+    ".#..............#....#..",
+    ".#.##..#######..#....#..",
+    ".#.##...........#....#..",
+    ".#.....####.....#.......",
+    ".#..............#.......",
+    "..##############........",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-040",
+   "word": "Platform Power",
+   "atlas_id": "TC2",
+   "inventory_label": "Platform Power",
+   "kept": "Hub ring with its dot, three branches and three people; the center stem sits half a pixel left of the axis.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-040-Platform-Power-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 18.39,
+   "fit_extent_px": 22,
+   "growth": 1.196,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     3,
+     21
+    ],
+    "width_px": 22,
+    "height_px": 19
+   },
+   "ink_px": 86,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-040-Platform-Power-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-040-Platform-Power-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-040-Platform-Power-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "..........####..........",
+    ".........#....#.........",
+    ".........#.##.#.........",
+    ".........#.##.#.........",
+    ".........#....#.........",
+    "........#.####.#........",
+    "......##...#....##......",
+    "....##.....#......##....",
+    "...#.......#........#...",
+    "...#.......#........#...",
+    "........................",
+    "...##......##......##...",
+    "..#..#....#..#....#..#..",
+    "..#..#....#..#....#..#..",
+    "...##......##......##...",
+    "........................",
+    "..####....####....####..",
+    ".#....#..#....#..#....#.",
+    ".#....#..#....#..#....#.",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-047",
+   "word": "Data Rights",
+   "atlas_id": null,
+   "inventory_label": "Data Rights",
+   "kept": "Page with four rules and the open right edge, the key with ring, shaft and two teeth.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-047-Data-Rights-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 14.74,
+   "fit_extent_px": 20,
+   "growth": 1.357,
+   "extent": {
+    "cols": [
+     2,
+     20
+    ],
+    "rows": [
+     2,
+     21
+    ],
+    "width_px": 19,
+    "height_px": 20
+   },
+   "ink_px": 102,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-047-Data-Rights-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-047-Data-Rights-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-047-Data-Rights-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "...##############.......",
+    "..#..............#......",
+    "..#..............#......",
+    "..#..............#......",
+    "..#...#########..#......",
+    "..#..............#......",
+    "..#..............#......",
+    "..#...#########.........",
+    "..#.....................",
+    "..#..............###....",
+    "..#...#######...#...#...",
+    "..#.............#...#...",
+    "..#.............#...#...",
+    "..#...#######....###....",
+    "..#...............#.....",
+    "..#...............#.....",
+    "..#...............###...",
+    "...############...#.....",
+    "..................###...",
+    "..................#.....",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-048",
+   "word": "Public Records",
+   "atlas_id": null,
+   "inventory_label": "Public Records",
+   "kept": "Folder with both tabs, the page standing in it with three rules, and the back panel's sliver at right.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-048-Public-Records-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 18.96,
+   "fit_extent_px": 22,
+   "growth": 1.16,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     4,
+     19
+    ],
+    "width_px": 22,
+    "height_px": 16
+   },
+   "ink_px": 106,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-048-Public-Records-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-048-Public-Records-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-048-Public-Records-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    ".......############.....",
+    "......#............#....",
+    "......#..########..#....",
+    "......#............#....",
+    ".....##..########..#....",
+    "....#.#............##...",
+    "..#####..#####.....#.#..",
+    ".#....#............#.#..",
+    ".#.....#...........#.#..",
+    ".#......##############..",
+    ".#....................#.",
+    ".#....................#.",
+    ".#....................#.",
+    ".#....................#.",
+    ".#....................#.",
+    "..####################..",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-050",
+   "word": "Worker Bargaining",
+   "atlas_id": "A2",
+   "inventory_label": "Worker Bargaining",
+   "kept": "Two people facing, each a hollow head over open shoulders, their arms on the table, the double arrow between them and the table's four legs.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-050-Worker-Bargaining-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 21.7,
+   "fit_extent_px": 22,
+   "growth": 1.014,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     5,
+     17
+    ],
+    "width_px": 22,
+    "height_px": 13
+   },
+   "ink_px": 86,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-050-Worker-Bargaining-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-050-Worker-Bargaining-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-050-Worker-Bargaining-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "....##............##....",
+    "...#..#..........#..#...",
+    "...#..#..........#..#...",
+    "....##............##....",
+    "..........#..#..........",
+    "...####..######..####...",
+    "..#....#..#..#..#....#..",
+    "..#....#........#....#..",
+    "..#....##########....#..",
+    "..#..................#..",
+    ".######################.",
+    "...#...#........#...#...",
+    "...#...#........#...#...",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-051",
+   "word": "Market Power",
+   "atlas_id": "A3",
+   "inventory_label": "Market Power",
+   "kept": "Tall building with rooftop block, six windows and door; the two shorter buildings and their window marks.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-051-Market-Power-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 20.68,
+   "fit_extent_px": 22,
+   "growth": 1.064,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     4,
+     19
+    ],
+    "width_px": 22,
+    "height_px": 16
+   },
+   "ink_px": 119,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-051-Market-Power-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-051-Market-Power-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-051-Market-Power-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "....####................",
+    "....#..#................",
+    "..#########.............",
+    "..#.......#.............",
+    "..#.##.##.#.............",
+    "..#.##.##.#.............",
+    "..#.......#.............",
+    "..#.##.##.#.............",
+    "..#.##.##.#.............",
+    "..#.......#.#####.......",
+    "..#.##.##.#.#...#.......",
+    "..#.##.##.#.#.#.#.#####.",
+    "..#.......#.#...#.#...#.",
+    "..#..###..#.#.#.#.#.#.#.",
+    "..#..#.#..#.#...#.#...#.",
+    ".######################.",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-054",
+   "word": "Home Equity",
+   "atlas_id": "A6",
+   "inventory_label": "Home Equity",
+   "kept": "House with roof, chimney and door, the chart panel with three bars and the jagged arrow with a solid head.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-054-Home-Equity-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 20.33,
+   "fit_extent_px": 22,
+   "growth": 1.082,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     4,
+     18
+    ],
+    "width_px": 22,
+    "height_px": 15
+   },
+   "ink_px": 97,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-054-Home-Equity-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-054-Home-Equity-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-054-Home-Equity-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "...........###..........",
+    "........#..#.#..........",
+    ".......#.#.#.#..........",
+    ".....##...##............",
+    "....#.......#.########..",
+    "..##.........#........#.",
+    ".#...........#....###.#.",
+    "...#.........#.....##.#.",
+    "...#..####...#..#.#.#.#.",
+    "...#..#..#...#.#.#....#.",
+    "...#..#..#...#.....#..#.",
+    "...#..#..#...#...#.#..#.",
+    "...#..#..#...#.#.#.#..#.",
+    "....##########........#.",
+    ".............#########..",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-057",
+   "word": "Labor Share",
+   "atlas_id": "EC3",
+   "inventory_label": "Labor Share",
+   "kept": "Three-quarter ring, both radii, and the pulled-out quarter with the person cut from it.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-057-Labor-Share-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 16.11,
+   "fit_extent_px": 21,
+   "growth": 1.304,
+   "extent": {
+    "cols": [
+     1,
+     21
+    ],
+    "rows": [
+     1,
+     21
+    ],
+    "width_px": 21,
+    "height_px": 21
+   },
+   "ink_px": 109,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-057-Labor-Share-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-057-Labor-Share-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-057-Labor-Share-Black-2x.png",
+   "map": [
+    "........................",
+    "........####.##.........",
+    "......##...#.#####......",
+    ".....#.....#.###..#.....",
+    "....#......#.###..##....",
+    "...#.......#.########...",
+    "..#........#.###..###...",
+    "..#........#.##....###..",
+    ".#.........#.#......##..",
+    ".#.........#.#......##..",
+    ".#.........#.#########..",
+    ".#.........#............",
+    ".#..........#........#..",
+    ".#...........#.......#..",
+    ".#............##.....#..",
+    "..#.............#...#...",
+    "..#..............#..#...",
+    "...#..............##....",
+    "....#.............#.....",
+    ".....#...........#......",
+    "......##.......##.......",
+    "........#######.........",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-060",
+   "word": "Taxes & Benefits",
+   "atlas_id": "EC6",
+   "inventory_label": "Taxes & Benefits",
+   "kept": "Page with five rules, the arrow out and the arrow in passing through the open right edge.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-060-Taxes-And-Benefits-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 17.93,
+   "fit_extent_px": 22,
+   "growth": 1.227,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     3,
+     20
+    ],
+    "width_px": 22,
+    "height_px": 18
+   },
+   "ink_px": 111,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-060-Taxes-And-Benefits-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-060-Taxes-And-Benefits-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-060-Taxes-And-Benefits-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "..#############.........",
+    ".#.............#........",
+    ".#.............#........",
+    ".#..########...#....#...",
+    ".#...................#..",
+    ".#............#########.",
+    ".#..########.........#..",
+    ".#..................#...",
+    ".#......................",
+    ".#..########...#........",
+    ".#............#.........",
+    ".#..#######..##########.",
+    ".#............#.........",
+    ".#.............#........",
+    ".#..######..............",
+    ".#.............#........",
+    ".#.............#........",
+    "..#############.........",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-061",
+   "word": "Household Income",
+   "atlas_id": "EC7",
+   "inventory_label": "Household Income",
+   "kept": "Person, the arrow, and the envelope with its flap; the arrow enters the envelope's open left side.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-061-Household-Income-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 19.53,
+   "fit_extent_px": 22,
+   "growth": 1.126,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     5,
+     18
+    ],
+    "width_px": 22,
+    "height_px": 14
+   },
+   "ink_px": 69,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-061-Household-Income-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-061-Household-Income-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-061-Household-Income-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "....###.................",
+    "...#...#................",
+    "...#...#................",
+    "...#...#................",
+    "....###.......#########.",
+    "............#..#.....##.",
+    "...#####.....#..#...#.#.",
+    "..#.....#..####..#.#..#.",
+    ".#.......#...#....#...#.",
+    ".#.......#..#.........#.",
+    ".#.......#....#########.",
+    ".#.......#..............",
+    ".#.......#..............",
+    ".#.......#..............",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-067",
+   "word": "Healthcare",
+   "atlas_id": null,
+   "inventory_label": "Healthcare",
+   "kept": "The cross and the pulse, with one clear column between the spike's up and down strokes.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-067-Healthcare-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 15.76,
+   "fit_extent_px": 20,
+   "growth": 1.269,
+   "extent": {
+    "cols": [
+     2,
+     21
+    ],
+    "rows": [
+     2,
+     21
+    ],
+    "width_px": 20,
+    "height_px": 20
+   },
+   "ink_px": 107,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-067-Healthcare-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-067-Healthcare-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-067-Healthcare-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    ".......##########.......",
+    ".......#........#.......",
+    ".......#........#.......",
+    ".......#........#.......",
+    ".......#........#.......",
+    "..######...#....######..",
+    "..#.......#.#........#..",
+    "..#.......#.#........#..",
+    "..#.......#.#........#..",
+    "..#.......#.#.#......#..",
+    "..#.#####.#.#.######.#..",
+    "..#......#..#.#......#..",
+    "..#.........#.#......#..",
+    "..#.........#.#......#..",
+    "..######.....#..######..",
+    ".......#........#.......",
+    ".......#........#.......",
+    ".......#........#.......",
+    ".......#........#.......",
+    ".......##########.......",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-068",
+   "word": "Education",
+   "atlas_id": null,
+   "inventory_label": "Education",
+   "kept": "Book with doubled lower edges, pages that stop short of the gutter, the fork and gutter line, the bulb with its base and five rays; drawn on column 11 so the gutter and top ray stay one pixel wide.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-068-Education-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 19.99,
+   "fit_extent_px": 21,
+   "growth": 1.05,
+   "extent": {
+    "cols": [
+     1,
+     21
+    ],
+    "rows": [
+     1,
+     21
+    ],
+    "width_px": 21,
+    "height_px": 21
+   },
+   "ink_px": 112,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-068-Education-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-068-Education-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-068-Education-Black-2x.png",
+   "map": [
+    "........................",
+    "...........#............",
+    ".......#...#...#........",
+    "........#.....#.........",
+    "..........###...........",
+    ".........#...#..........",
+    "......##.#...#.##.......",
+    "..........#.#...........",
+    "..........#.#...........",
+    "...###....###....###....",
+    "..##..##.......##..##...",
+    ".#.#....#.###.#....#.#..",
+    ".#.#...............#.#..",
+    ".#.#......#.#......#.#..",
+    ".#.#.......#.......#.#..",
+    ".#.#.......#.......#.#..",
+    ".#.#.......#.......#.#..",
+    ".#..####...#...####..#..",
+    ".#......##.#.##......#..",
+    "..#####...###...#####...",
+    ".......##.....##........",
+    ".........#####..........",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-070",
+   "word": "Environment",
+   "atlas_id": null,
+   "inventory_label": "Environment",
+   "kept": "Leaf with stem, midrib and sharp tip; the drop with its round foot.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-070-Environment-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 18.51,
+   "fit_extent_px": 22,
+   "growth": 1.189,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     3,
+     20
+    ],
+    "width_px": 22,
+    "height_px": 18
+   },
+   "ink_px": 75,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-070-Environment-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-070-Environment-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-070-Environment-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "...........####.........",
+    "........###...#.........",
+    "......##......#.........",
+    ".....#........#.........",
+    "....#.........#...#.....",
+    "...#.....#...#...#.#....",
+    "..#....##....#...#.#....",
+    "..#...#......#..#...#...",
+    ".#...#......#...#...#...",
+    ".#..#.......#..#.....#..",
+    ".#..#.....##..#.......#.",
+    ".#.#.....#....#.......#.",
+    ".#.#....#.....#.......#.",
+    "..#...##......#.......#.",
+    "..#..#.........#.....#..",
+    "..#.............#...#...",
+    "..#..............###....",
+    "..#.....................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-071",
+   "word": "Policy",
+   "atlas_id": null,
+   "inventory_label": "Policy",
+   "kept": "Page with four rules and a part-open right edge, the slider knob and the rail that runs past the page.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-071-Policy-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 17.14,
+   "fit_extent_px": 22,
+   "growth": 1.284,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     3,
+     20
+    ],
+    "width_px": 22,
+    "height_px": 18
+   },
+   "ink_px": 105,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-071-Policy-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-071-Policy-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-071-Policy-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "..################......",
+    ".#................#.....",
+    ".#................#.....",
+    ".#................#.....",
+    ".#..############..#.....",
+    ".#................#.....",
+    ".#................#.....",
+    ".#..############..#.....",
+    ".#................#.....",
+    ".#................#.....",
+    ".#..########............",
+    ".#...........###........",
+    ".#..........#...#.......",
+    ".#..#######.#...#.#####.",
+    ".#..........#...#.......",
+    ".#...........###........",
+    ".#......................",
+    "..########..............",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "CL-072",
+   "word": "Reform",
+   "atlas_id": null,
+   "inventory_label": "Reform",
+   "kept": "The two lower routes, the ring at the end of one, and the arrow rising from the fork.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-072-Reform-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 17.82,
+   "fit_extent_px": 22,
+   "growth": 1.235,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     3,
+     20
+    ],
+    "width_px": 22,
+    "height_px": 18
+   },
+   "ink_px": 56,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-072-Reform-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-072-Reform-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-CL-072-Reform-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    ".................#......",
+    "..................#.....",
+    "..............######....",
+    ".............#....#.....",
+    "............#....#......",
+    ".#####......#...........",
+    "......#....#............",
+    ".......#...#............",
+    "........#..#.......###..",
+    ".........#.#......#...#.",
+    ".........#.....####...#.",
+    ".........#....#...#...#.",
+    ".........#...#.....###..",
+    ".........#..#...........",
+    ".........#.#............",
+    ".........#.#............",
+    ".........#.#............",
+    ".........#.#............",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "R-05",
+   "word": "Automatic Registration",
+   "atlas_id": "R-05",
+   "inventory_label": "Automatic Registration",
+   "kept": "Card with person and four rules, the badge ring with its check, and the short dash below the card.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-05-Automatic-Registration-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 18.28,
+   "fit_extent_px": 22,
+   "growth": 1.204,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     6,
+     18
+    ],
+    "width_px": 22,
+    "height_px": 13
+   },
+   "ink_px": 103,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-05-Automatic-Registration-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-05-Automatic-Registration-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-05-Automatic-Registration-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "..##################....",
+    ".#..................#...",
+    ".#...#....########..#...",
+    ".#..#.#.............#...",
+    ".#...#....######........",
+    ".#...............####...",
+    ".#..###...####..#....#..",
+    ".#.#...#.......#......#.",
+    ".#.#####..###..#....#.#.",
+    ".#.............#.#.#..#.",
+    "..############.#..#...#.",
+    "................#....#..",
+    ".............##..####...",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "R-06",
+   "word": "On-Cycle Elections",
+   "atlas_id": "R-06",
+   "inventory_label": "On-Cycle Elections",
+   "kept": "Two calendars with rings, header and three columns of date dots; the arrow between them is a chevron.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-06-On-Cycle-Elections-Black.svg",
+   "master_stroke_units": 2.9674,
+   "master_line_px_at_24": 0.556,
+   "master_extent_px_at_24": 21.75,
+   "fit_extent_px": 22,
+   "growth": 1.011,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     7,
+     17
+    ],
+    "width_px": 22,
+    "height_px": 11
+   },
+   "ink_px": 93,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "...#...#........#...#...",
+    "...#...#........#...#...",
+    "..#######......#######..",
+    ".#.......#....#.......#.",
+    ".#########.#..#########.",
+    ".#.......#..#.#.......#.",
+    ".#.#.#.#.#.#..#.#.#.#.#.",
+    ".#.......#....#.......#.",
+    ".#.#.#.#.#....#.#.#.#.#.",
+    ".#.......#....#.......#.",
+    "..#######......#######..",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "R-08",
+   "word": "Donor Disclosure",
+   "atlas_id": "R-08",
+   "inventory_label": "Donor Disclosure",
+   "kept": "Page with its dollar and four rules, empty lens, neck and capsule handle.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-08-Donor-Disclosure-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 17.02,
+   "fit_extent_px": 22,
+   "growth": 1.293,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     4,
+     19
+    ],
+    "width_px": 22,
+    "height_px": 16
+   },
+   "ink_px": 98,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-08-Donor-Disclosure-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-08-Donor-Disclosure-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-08-Donor-Disclosure-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "..############..........",
+    ".#............#.........",
+    ".#...#........#.........",
+    ".#..###.......#.........",
+    ".#..#...#####...........",
+    ".#..###.......###.......",
+    ".#....#.###..#...#......",
+    ".#..###.....#.....#.....",
+    ".#..........#.....#.....",
+    ".#..#######.#.....#.....",
+    ".#...........#...#......",
+    ".#..######....###.#.....",
+    ".#.................##...",
+    "..#############....#.#..",
+    "....................#.#.",
+    ".....................##.",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "R-09",
+   "word": "Stock-Trading Ban",
+   "atlas_id": "R-09",
+   "inventory_label": "Stock-Trading Ban",
+   "kept": "The notched frame, the inner frame, the chart line on both sides of the slash, and the slash as a solid two-pixel band with a clear pixel round it.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-09-Stock-Trading-Ban-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 17.02,
+   "fit_extent_px": 22,
+   "growth": 1.293,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     4,
+     18
+    ],
+    "width_px": 22,
+    "height_px": 15
+   },
+   "ink_px": 128,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-09-Stock-Trading-Ban-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-09-Stock-Trading-Ban-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-09-Stock-Trading-Ban-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "...################.....",
+    "..#.................##..",
+    ".#...############..##...",
+    ".#................##..#.",
+    ".#.#.............##...#.",
+    ".#.#.......#....##..#.#.",
+    ".#.#....#..##..##...#.#.",
+    ".#.#...#.##...##....#.#.",
+    ".#.#...#..#..##..#..#.#.",
+    ".#.#.##.....##....#.#.#.",
+    ".#.#.......##.......#.#.",
+    ".#........##..........#.",
+    ".#...##..##..#######..#.",
+    "..#.....##...........#..",
+    "...###.##..##########...",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "R-14",
+   "word": "Automatic Funding",
+   "atlas_id": "R-14",
+   "inventory_label": "Automatic Funding",
+   "kept": "Bill with its dollar and two rules, and the arrow along its foot leaving through the open right edge.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-14-Automatic-Funding-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 19.88,
+   "fit_extent_px": 22,
+   "growth": 1.107,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     6,
+     17
+    ],
+    "width_px": 22,
+    "height_px": 12
+   },
+   "ink_px": 102,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "..#################.....",
+    ".#.................#....",
+    ".#..#..............#....",
+    ".#.###.###########.#....",
+    ".#.#...............#....",
+    ".#.###.###########.#....",
+    ".#...#..................",
+    ".#.###..............#...",
+    ".#...................#..",
+    ".#.####################.",
+    ".#...................#..",
+    "..############......#...",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "R-15",
+   "word": "Watchdog Remedies",
+   "atlas_id": "R-15",
+   "inventory_label": "Watchdog Remedies",
+   "kept": "Lens with the check, the short handle to the lower left, and the page behind with three rules.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-15-Watchdog-Remedies-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 20.79,
+   "fit_extent_px": 22,
+   "growth": 1.058,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     6,
+     18
+    ],
+    "width_px": 22,
+    "height_px": 13
+   },
+   "ink_px": 80,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-15-Watchdog-Remedies-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-15-Watchdog-Remedies-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-15-Watchdog-Remedies-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    ".......####.............",
+    ".....##....##..#######..",
+    ".....#......#.........#.",
+    "....#........#.######.#.",
+    "....#......#.#........#.",
+    "....#.#...#..#.######.#.",
+    "....#..#.#...#........#.",
+    ".....#..#...#..####...#.",
+    ".....##....##.........#.",
+    "....##.####...########..",
+    "...##...................",
+    "..##....................",
+    ".##.....................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "R-17",
+   "word": "Civil Service",
+   "atlas_id": "R-17",
+   "inventory_label": "Civil Service",
+   "kept": "Badge with its clip, person and three rules, and the brace at right.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-17-Civil-Service-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 19.42,
+   "fit_extent_px": 22,
+   "growth": 1.133,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     5,
+     18
+    ],
+    "width_px": 22,
+    "height_px": 14
+   },
+   "ink_px": 104,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-17-Civil-Service-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-17-Civil-Service-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-17-Civil-Service-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    ".........#..............",
+    "........#.#.........#...",
+    "..################...#..",
+    ".#................#..#..",
+    ".#....##..........#..#..",
+    ".#...#..#..######.#..#..",
+    ".#...#..#.........#..#..",
+    ".#....##...######.#...#.",
+    ".#................#..#..",
+    ".#...####..####...#..#..",
+    ".#..#....#........#..#..",
+    ".#..######........#..#..",
+    ".#................#..#..",
+    "..################..#...",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "R-19",
+   "word": "Drug-Pricing Rules",
+   "atlas_id": "R-19",
+   "inventory_label": "Drug-Pricing Rules",
+   "kept": "Pill with its divider, the string, and the tag with its dollar; the tag's string hole is left out.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-19-Drug-Pricing-Rules-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 19.08,
+   "fit_extent_px": 21,
+   "growth": 1.101,
+   "extent": {
+    "cols": [
+     2,
+     22
+    ],
+    "rows": [
+     5,
+     17
+    ],
+    "width_px": 21,
+    "height_px": 13
+   },
+   "ink_px": 72,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-19-Drug-Pricing-Rules-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-19-Drug-Pricing-Rules-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-19-Drug-Pricing-Rules-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "..........###...........",
+    ".........#...#..........",
+    "........#.....######....",
+    ".......#......#...#.#...",
+    "......#.......#..#...#..",
+    ".....##......#..#..#..#.",
+    "....#..#....#...#.###.#.",
+    "...#....#..#....#.#...#.",
+    "..#......##.....#.###.#.",
+    "..#......#......#...#.#.",
+    "..#.....#.......#.###.#.",
+    "...#...#........#.....#.",
+    "....###..........#####..",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "R-23",
+   "word": "Indexed Minimum Wage",
+   "atlas_id": "R-23",
+   "inventory_label": "Indexed Minimum Wage",
+   "kept": "Open frame with its dollar and four rules, the four rising bars, and the curved arrow with a solid head.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-23-Indexed-Minimum-Wage-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 16.22,
+   "fit_extent_px": 22,
+   "growth": 1.356,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     4,
+     19
+    ],
+    "width_px": 22,
+    "height_px": 16
+   },
+   "ink_px": 116,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-23-Indexed-Minimum-Wage-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-23-Indexed-Minimum-Wage-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-23-Indexed-Minimum-Wage-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "..####################..",
+    ".#....................#.",
+    ".#....................#.",
+    ".#...#................#.",
+    ".#..###..########.....#.",
+    ".#..#.................#.",
+    ".#..###..........###..#.",
+    ".#....#..######...##..#.",
+    ".#..###..........#.#..#.",
+    ".#..............#.....#.",
+    ".#..#####.....##......#.",
+    ".#.........###.....#..#.",
+    ".#..###.........#..#..#.",
+    ".#...........#..#..#..#.",
+    ".#........#..#..#..#..#.",
+    "..######..#..#..#..#..#.",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "R-27",
+   "word": "Tax Enforcement",
+   "atlas_id": "R-27",
+   "inventory_label": "Tax Enforcement",
+   "kept": "Page with four rules, the lens with the gauge arch inside, capsule handle.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-27-Tax-Enforcement-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 15.31,
+   "fit_extent_px": 20,
+   "growth": 1.307,
+   "extent": {
+    "cols": [
+     2,
+     21
+    ],
+    "rows": [
+     4,
+     19
+    ],
+    "width_px": 20,
+    "height_px": 16
+   },
+   "ink_px": 99,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-27-Tax-Enforcement-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-27-Tax-Enforcement-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-27-Tax-Enforcement-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "...############.........",
+    "..#............#........",
+    "..#..########..#........",
+    "..#.....................",
+    "..#..........#####......",
+    "..#..#####..#.....#.....",
+    "..#........#.......#....",
+    "..#........#..###..#....",
+    "..#..####..#.#...#.#....",
+    "..#........#.#.....#....",
+    "..#........#.......#....",
+    "..#..####...#.....#.....",
+    "..#..........#####.#....",
+    "..#...............#.#...",
+    "..#............#...#.#..",
+    "...############.....##..",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "R-37",
+   "word": "Feed Choice",
+   "atlas_id": "R-37",
+   "inventory_label": "Feed Choice",
+   "kept": "Window with its three dots, header, two rules and the slider knob; the key with round bow and two teeth.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-37-Feed-Choice-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 21.25,
+   "fit_extent_px": 22,
+   "growth": 1.035,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     5,
+     17
+    ],
+    "width_px": 22,
+    "height_px": 13
+   },
+   "ink_px": 110,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-37-Feed-Choice-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-37-Feed-Choice-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-37-Feed-Choice-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "..#############.........",
+    ".#.............#........",
+    ".#.#.#.#.......#........",
+    ".#.............#...###..",
+    ".###############..#...#.",
+    ".#.............#..#...#.",
+    ".#.###########.#..#...#.",
+    ".#.............#...###..",
+    ".#..........#..#...#.#..",
+    ".#.#########.#.#..#..#..",
+    ".#..........#..#...#.#..",
+    ".#.............#..#..#..",
+    "..#############....###..",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  },
+  {
+   "id": "R-45",
+   "word": "Paper Ballots & Audits",
+   "atlas_id": "R-45",
+   "inventory_label": "Paper Ballots & Audits",
+   "kept": "Three offset sheets, the front sheet's four rules, the lens with its check and the capsule handle.",
+   "master_black": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-45-Paper-Ballots-And-Audits-Black.svg",
+   "master_stroke_units": 3.3508,
+   "master_line_px_at_24": 0.628,
+   "master_extent_px_at_24": 19.99,
+   "fit_extent_px": 22,
+   "growth": 1.101,
+   "extent": {
+    "cols": [
+     1,
+     22
+    ],
+    "rows": [
+     5,
+     19
+    ],
+    "width_px": 22,
+    "height_px": 15
+   },
+   "ink_px": 114,
+   "svg": "work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-45-Paper-Ballots-And-Audits-Black.svg",
+   "png_1x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-45-Paper-Ballots-And-Audits-Black.png",
+   "png_2x": "work/build/assets/civic-line-24-fit/png/20261110_Civic-Line-24px-Fit-R-45-Paper-Ballots-And-Audits-Black-2x.png",
+   "map": [
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "........................",
+    "......########..........",
+    ".....#........#.........",
+    "...###..................",
+    "...#.#..###...#####.....",
+    ".###.#.......#.....#....",
+    ".#.#.######.#.......#...",
+    ".#.#.#......#....#..#...",
+    ".#.#.######.#.#.#...#...",
+    ".#.#.#......#..#....#...",
+    ".#.#.######.#.......#...",
+    ".#.#..##.....#.....#....",
+    ".#.#..........#####.#...",
+    ".#..#########......#.#..",
+    ".#..................#.#.",
+    "..##########.........##.",
+    "........................",
+    "........................",
+    "........................",
+    "........................"
+   ]
+  }
+ ],
+ "figures": {
+  "run": "measure step of civic_line_stage_c_drawings.py",
+  "date": "20261110",
+  "full_ink": "share of a drawing's ink pixels (alpha 8 or more) that reach full ink (alpha 247 or more) when drawn at 24 px on a 1x screen, from icon_pixel_fit_check.js's own soft-edge count",
+  "pixel_fit": {
+   "command": "node work/build/scripts/phase-2/icon_pixel_fit_check.js --size 24 --weight 1 --json work/build/assets/civic-line-24-fit/qa/20261110_Fits-Pixel-Fit-24px.json <the 37 fits>",
+   "exit": 0,
+   "passed": 37,
+   "of": 37,
+   "masters_command": "node work/build/scripts/phase-2/icon_pixel_fit_check.js --size 24 --json work/build/assets/civic-line-24-fit/qa/20261110_Masters-Pixel-Fit-24px.json <the 37 masters>",
+   "masters_exit": 1
+  },
+  "likeness": {
+   "command": "node work/build/scripts/phase-2/icon_likeness_check.js work/build/assets/civic-line-24-fit/svg --json work/build/assets/civic-line-24-fit/qa/20261110_Fits-Likeness.json",
+   "exit": 1,
+   "flag": {
+    "percentile": 99,
+    "likeness": 0.9092
+   },
+   "watch": {
+    "percentile": 95,
+    "likeness": 0.8678
+   },
+   "flagged": [
+    {
+     "a": "20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.svg",
+     "b": "R-41 Grid Cost Allocation",
+     "likeness": 0.9172,
+     "percentile": 99.3,
+     "against": "master",
+     "masters_own_figure": 0.9367,
+     "grew_closer": false
+    },
+    {
+     "a": "20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.svg",
+     "b": "R-44 Digital Competition",
+     "likeness": 0.915,
+     "percentile": 99.2,
+     "against": "master",
+     "masters_own_figure": 0.9641,
+     "grew_closer": false
+    }
+   ],
+   "watched": [
+    {
+     "a": "20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.svg",
+     "b": "CL-046 AI Infrastructure",
+     "likeness": 0.9081,
+     "percentile": 98.9,
+     "against": "master",
+     "masters_own_figure": 0.9026,
+     "grew_closer": true
+    },
+    {
+     "a": "20261110_Civic-Line-24px-Fit-CL-050-Worker-Bargaining-Black.svg",
+     "b": "CL-007 Turnout Equality",
+     "likeness": 0.9022,
+     "percentile": 98.6,
+     "against": "master",
+     "masters_own_figure": 0.9277,
+     "grew_closer": false
+    },
+    {
+     "a": "20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.svg",
+     "b": "CL-015 Political Money",
+     "likeness": 0.9,
+     "percentile": 98.5,
+     "against": "master",
+     "masters_own_figure": 0.9033,
+     "grew_closer": false
+    },
+    {
+     "a": "20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.svg",
+     "b": "CL-053 Housing Scarcity",
+     "likeness": 0.8985,
+     "percentile": 98.4,
+     "against": "master",
+     "masters_own_figure": 0.9054,
+     "grew_closer": false
+    },
+    {
+     "a": "20261110_Civic-Line-24px-Fit-CL-054-Home-Equity-Black.svg",
+     "b": "CL-052 Household Security",
+     "likeness": 0.8981,
+     "percentile": 98.4,
+     "against": "master",
+     "masters_own_figure": 0.9273,
+     "grew_closer": false
+    },
+    {
+     "a": "20261110_Civic-Line-24px-Fit-CL-023-Evidence-Black.svg",
+     "b": "20261110_Civic-Line-24px-Fit-CL-028-Watchdogs-Black.svg",
+     "likeness": 0.897,
+     "percentile": 98.3,
+     "against": "new",
+     "masters_own_figure": 0.9272,
+     "grew_closer": false
+    },
+    {
+     "a": "20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.svg",
+     "b": "R-45 Paper Ballots & Audits",
+     "likeness": 0.8921,
+     "percentile": 98,
+     "against": "master",
+     "masters_own_figure": 0.8922,
+     "grew_closer": false
+    },
+    {
+     "a": "20261110_Civic-Line-24px-Fit-R-08-Donor-Disclosure-Black.svg",
+     "b": "CL-023 Evidence",
+     "likeness": 0.8859,
+     "percentile": 97.3,
+     "against": "master",
+     "masters_own_figure": 0.8916,
+     "grew_closer": false
+    },
+    {
+     "a": "20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.svg",
+     "b": "20261110_Civic-Line-24px-Fit-R-37-Feed-Choice-Black.svg",
+     "likeness": 0.8842,
+     "percentile": 97.1,
+     "against": "new",
+     "masters_own_figure": 0.9219,
+     "grew_closer": false
+    },
+    {
+     "a": "20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.svg",
+     "b": "R-37 Feed Choice",
+     "likeness": 0.8827,
+     "percentile": 97,
+     "against": "master",
+     "masters_own_figure": 0.9219,
+     "grew_closer": false
+    },
+    {
+     "a": "20261110_Civic-Line-24px-Fit-CL-050-Worker-Bargaining-Black.svg",
+     "b": "CL-016 Lobbying",
+     "likeness": 0.8823,
+     "percentile": 97,
+     "against": "master",
+     "masters_own_figure": 0.9401,
+     "grew_closer": false
+    },
+    {
+     "a": "20261110_Civic-Line-24px-Fit-R-05-Automatic-Registration-Black.svg",
+     "b": "CL-003 Registration",
+     "likeness": 0.8812,
+     "percentile": 96.8,
+     "against": "master",
+     "masters_own_figure": 0.956,
+     "grew_closer": false
+    },
+    {
+     "a": "20261110_Civic-Line-24px-Fit-CL-031-Local-Government-Black.svg",
+     "b": "R-31 Childcare Supply",
+     "likeness": 0.8724,
+     "percentile": 95.7,
+     "against": "master",
+     "masters_own_figure": 0.9044,
+     "grew_closer": false
+    },
+    {
+     "a": "20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.svg",
+     "b": "R-17 Civil Service",
+     "likeness": 0.8715,
+     "percentile": 95.6,
+     "against": "master",
+     "masters_own_figure": 0.9139,
+     "grew_closer": false
+    },
+    {
+     "a": "20261110_Civic-Line-24px-Fit-R-05-Automatic-Registration-Black.svg",
+     "b": "20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.svg",
+     "likeness": 0.8701,
+     "percentile": 95.3,
+     "against": "new",
+     "masters_own_figure": 0.9564,
+     "grew_closer": false
+    },
+    {
+     "a": "20261110_Civic-Line-24px-Fit-R-05-Automatic-Registration-Black.svg",
+     "b": "R-14 Automatic Funding",
+     "likeness": 0.8689,
+     "percentile": 95.1,
+     "against": "master",
+     "masters_own_figure": 0.9564,
+     "grew_closer": false
+    }
+   ],
+   "baseline": "work/build/assets/civic-line-24-fit/qa/20261110_Masters-Baseline-Likeness.json: the same check on the 37 masters under neutral names, so each pair above carries its masters' own figure",
+   "grew_closer_above_watch": [
+    "R-06 ~ CL-046 AI Infrastructure: 0.9026 to 0.9081"
+   ]
+  },
+  "five_look_alikes": {
+   "ids": [
+    "CL-023",
+    "CL-028",
+    "R-08",
+    "R-27",
+    "R-45"
+   ],
+   "pairs": {
+    "CL-028|R-27": {
+     "masters": 0.9579,
+     "masters_percentile": 100,
+     "fits": 0.8613,
+     "fits_percentile": 93.9
+    },
+    "R-08|R-27": {
+     "masters": 0.9452,
+     "masters_percentile": 99.9,
+     "fits": 0.77,
+     "fits_percentile": 68.3
+    },
+    "CL-028|R-08": {
+     "masters": 0.9421,
+     "masters_percentile": 99.9,
+     "fits": 0.8423,
+     "fits_percentile": 89.7
+    },
+    "CL-023|CL-028": {
+     "masters": 0.9272,
+     "masters_percentile": 99.6,
+     "fits": 0.897,
+     "fits_percentile": 98.3
+    },
+    "CL-023|R-08": {
+     "masters": 0.8921,
+     "masters_percentile": 98,
+     "fits": 0.8548,
+     "fits_percentile": 92.6
+    },
+    "CL-023|R-27": {
+     "masters": 0.8852,
+     "masters_percentile": 97.2,
+     "fits": 0.8093,
+     "fits_percentile": 80.4
+    },
+    "R-08|R-45": {
+     "masters": 0.876,
+     "masters_percentile": 96.3,
+     "fits": 0.8651,
+     "fits_percentile": 94.5
+    },
+    "CL-023|R-45": {
+     "masters": 0.8496,
+     "masters_percentile": 91.4,
+     "fits": 0.7636,
+     "fits_percentile": 66.3
+    },
+    "CL-028|R-45": {
+     "masters": 0.8171,
+     "masters_percentile": 82.7,
+     "fits": 0.7022,
+     "fits_percentile": 45.9
+    },
+    "R-27|R-45": {
+     "masters": 0.8021,
+     "masters_percentile": 78.1,
+     "fits": 0.7169,
+     "fits_percentile": 50.6
+    }
+   },
+   "grew_closer": []
+  },
+  "per_fit": [
+   {
+    "id": "CL-001",
+    "word": "Voting",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 135,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 93,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 3,
+     "open": 3
+    },
+    "fit_smallest_gap_px_1x": null,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.5606,
+    "closest_other_master": "CL-048 Public Records",
+    "closest_likeness": 0.7264,
+    "closest_percentile": 53.8
+   },
+   {
+    "id": "CL-004",
+    "word": "Petition",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 157,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 99,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 7,
+     "open": 7
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.6558,
+    "closest_other_master": "CL-060 Taxes & Benefits",
+    "closest_likeness": 0.6923,
+    "closest_percentile": 43.2
+   },
+   {
+    "id": "CL-006",
+    "word": "Civic Ties",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 117,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 72,
+    "master_main_line_px_1x": 0.6,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 3,
+     "open": 3
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.7712,
+    "closest_other_master": "CL-040 Platform Power",
+    "closest_likeness": 0.7481,
+    "closest_percentile": 61
+   },
+   {
+    "id": "CL-010",
+    "word": "Decisive Primaries",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 113,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 56,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 4,
+     "open": 4
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.9267,
+    "closest_other_master": "R-39 Digital Service Teams",
+    "closest_likeness": 0.8189,
+    "closest_percentile": 83.3
+   },
+   {
+    "id": "CL-013",
+    "word": "Incumbent Defeat",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 117,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 84,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 2,
+     "open": 2
+    },
+    "fit_smallest_gap_px_1x": 2,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.7118,
+    "closest_other_master": "CL-039 Feed Ranking",
+    "closest_likeness": 0.6163,
+    "closest_percentile": 23.7
+   },
+   {
+    "id": "CL-023",
+    "word": "Evidence",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 211,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 111,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 5,
+     "open": 5
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.8275,
+    "closest_other_master": "CL-060 Taxes & Benefits",
+    "closest_likeness": 0.7328,
+    "closest_percentile": 56.1
+   },
+   {
+    "id": "CL-024",
+    "word": "Feedback Loop",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 118,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 76,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 2,
+     "open": 2
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.5941,
+    "closest_other_master": "R-07 Small-Donor Matching",
+    "closest_likeness": 0.581,
+    "closest_percentile": 17.9
+   },
+   {
+    "id": "CL-028",
+    "word": "Watchdogs",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 156,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 98,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 3,
+     "open": 3
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.6563,
+    "closest_other_master": "CL-023 Evidence",
+    "closest_likeness": 0.7815,
+    "closest_percentile": 71.8
+   },
+   {
+    "id": "CL-031",
+    "word": "Local Government",
+    "master_full_ink_share_1x": 0.0319,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 188,
+    "master_full_ink_px_1x": 6,
+    "fit_ink_px_1x": 108,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 4,
+     "open": 4
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.9819,
+    "closest_other_master": "R-31 Childcare Supply",
+    "closest_likeness": 0.8724,
+    "closest_percentile": 95.7
+   },
+   {
+    "id": "CL-032",
+    "word": "Local Reporting",
+    "master_full_ink_share_1x": 0.05,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 240,
+    "master_full_ink_px_1x": 12,
+    "fit_ink_px_1x": 162,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 2,
+     "open": 2
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "straight",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.7511,
+    "closest_other_master": "CL-052 Household Security",
+    "closest_likeness": 0.7692,
+    "closest_percentile": 68
+   },
+   {
+    "id": "CL-039",
+    "word": "Feed Ranking",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 269,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 169,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 3,
+     "open": 3
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.4894,
+    "closest_other_master": "CL-055 Productivity",
+    "closest_likeness": 0.4206,
+    "closest_percentile": 4.2
+   },
+   {
+    "id": "CL-040",
+    "word": "Platform Power",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 143,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 86,
+    "master_main_line_px_1x": 0.6,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 4,
+     "open": 4
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.7484,
+    "closest_other_master": "CL-068 Education",
+    "closest_likeness": 0.7598,
+    "closest_percentile": 65.1
+   },
+   {
+    "id": "CL-047",
+    "word": "Data Rights",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 156,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 102,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 1,
+     "open": 1
+    },
+    "fit_smallest_gap_px_1x": 2,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.5275,
+    "closest_other_master": "CL-023 Evidence",
+    "closest_likeness": 0.5537,
+    "closest_percentile": 13.8
+   },
+   {
+    "id": "CL-048",
+    "word": "Public Records",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 171,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 106,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 4,
+     "open": 4
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.8043,
+    "closest_other_master": "R-21 Labor-Law Remedies",
+    "closest_likeness": 0.6304,
+    "closest_percentile": 27
+   },
+   {
+    "id": "CL-050",
+    "word": "Worker Bargaining",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 177,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 86,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 3,
+     "open": 3
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.9563,
+    "closest_other_master": "CL-007 Turnout Equality",
+    "closest_likeness": 0.9022,
+    "closest_percentile": 98.6
+   },
+   {
+    "id": "CL-051",
+    "word": "Market Power",
+    "master_full_ink_share_1x": 0.0214,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 187,
+    "master_full_ink_px_1x": 4,
+    "fit_ink_px_1x": 119,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 5,
+     "open": 5
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.9267,
+    "closest_other_master": "CL-023 Evidence",
+    "closest_likeness": 0.7728,
+    "closest_percentile": 69.1
+   },
+   {
+    "id": "CL-054",
+    "word": "Home Equity",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 173,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 97,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 2,
+     "open": 2
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.9575,
+    "closest_other_master": "CL-052 Household Security",
+    "closest_likeness": 0.8981,
+    "closest_percentile": 98.4
+   },
+   {
+    "id": "CL-057",
+    "word": "Labor Share",
+    "master_full_ink_share_1x": 0.0827,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 133,
+    "master_full_ink_px_1x": 11,
+    "fit_ink_px_1x": 109,
+    "master_main_line_px_1x": 0.6,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 3,
+     "open": 3
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.5921,
+    "closest_other_master": "CL-059 Credit Allocation",
+    "closest_likeness": 0.372,
+    "closest_percentile": 3
+   },
+   {
+    "id": "CL-060",
+    "word": "Taxes & Benefits",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 194,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 111,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 0,
+     "open": 0
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap"
+    ],
+    "likeness_to_own_master": 0.6995,
+    "closest_other_master": "CL-039 Feed Ranking",
+    "closest_likeness": 0.6676,
+    "closest_percentile": 35.9
+   },
+   {
+    "id": "CL-061",
+    "word": "Household Income",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 107,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 69,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 2,
+     "open": 2
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.9165,
+    "closest_other_master": "R-06 On-Cycle Elections",
+    "closest_likeness": 0.8116,
+    "closest_percentile": 81
+   },
+   {
+    "id": "CL-067",
+    "word": "Healthcare",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 139,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 107,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 1,
+     "open": 1
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.5055,
+    "closest_other_master": "R-01 All-Party Primaries",
+    "closest_likeness": 0.6189,
+    "closest_percentile": 24.3
+   },
+   {
+    "id": "CL-068",
+    "word": "Education",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 212,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 112,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 2,
+     "open": 2
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.9312,
+    "closest_other_master": "CL-019 Explain",
+    "closest_likeness": 0.8227,
+    "closest_percentile": 84.4
+   },
+   {
+    "id": "CL-070",
+    "word": "Environment",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 124,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 75,
+    "master_main_line_px_1x": 0.6,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 1,
+     "open": 1
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.7456,
+    "closest_other_master": "CL-029 Public Services",
+    "closest_likeness": 0.6474,
+    "closest_percentile": 31.2
+   },
+   {
+    "id": "CL-071",
+    "word": "Policy",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 174,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 105,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 1,
+     "open": 1
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.6862,
+    "closest_other_master": "CL-039 Feed Ranking",
+    "closest_likeness": 0.7124,
+    "closest_percentile": 49.5
+   },
+   {
+    "id": "CL-072",
+    "word": "Reform",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 88,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 56,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 1,
+     "open": 1
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.7974,
+    "closest_other_master": "R-24 Paid Leave",
+    "closest_likeness": 0.6127,
+    "closest_percentile": 23
+   },
+   {
+    "id": "R-05",
+    "word": "Automatic Registration",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 187,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 103,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 3,
+     "open": 3
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.8558,
+    "closest_other_master": "CL-003 Registration",
+    "closest_likeness": 0.8812,
+    "closest_percentile": 96.8
+   },
+   {
+    "id": "R-06",
+    "word": "On-Cycle Elections",
+    "master_full_ink_share_1x": 0.0105,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 190,
+    "master_full_ink_px_1x": 2,
+    "fit_ink_px_1x": 93,
+    "master_main_line_px_1x": 0.55,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 4,
+     "open": 4
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.9467,
+    "closest_other_master": "R-41 Grid Cost Allocation",
+    "closest_likeness": 0.9172,
+    "closest_percentile": 99.3
+   },
+   {
+    "id": "R-08",
+    "word": "Donor Disclosure",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 134,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 98,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 3,
+     "open": 3
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.7916,
+    "closest_other_master": "CL-023 Evidence",
+    "closest_likeness": 0.8859,
+    "closest_percentile": 97.3
+   },
+   {
+    "id": "R-09",
+    "word": "Stock-Trading Ban",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 183,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 128,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 0,
+     "open": 0
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap"
+    ],
+    "likeness_to_own_master": 0.6261,
+    "closest_other_master": "CL-052 Household Security",
+    "closest_likeness": 0.7169,
+    "closest_percentile": 50.6
+   },
+   {
+    "id": "R-14",
+    "word": "Automatic Funding",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 195,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 102,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 0,
+     "open": 0
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap"
+    ],
+    "likeness_to_own_master": 0.911,
+    "closest_other_master": "R-45 Paper Ballots & Audits",
+    "closest_likeness": 0.8921,
+    "closest_percentile": 98
+   },
+   {
+    "id": "R-15",
+    "word": "Watchdog Remedies",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 163,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 80,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 1,
+     "open": 1
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.9606,
+    "closest_other_master": "R-01 All-Party Primaries",
+    "closest_likeness": 0.8675,
+    "closest_percentile": 95
+   },
+   {
+    "id": "R-17",
+    "word": "Civil Service",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 190,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 104,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 4,
+     "open": 4
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.9037,
+    "closest_other_master": "R-23 Indexed Minimum Wage",
+    "closest_likeness": 0.831,
+    "closest_percentile": 86.8
+   },
+   {
+    "id": "R-19",
+    "word": "Drug-Pricing Rules",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 116,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 72,
+    "master_main_line_px_1x": 0.6,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 3,
+     "open": 3
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.9305,
+    "closest_other_master": "R-24 Paid Leave",
+    "closest_likeness": 0.8291,
+    "closest_percentile": 86.2
+   },
+   {
+    "id": "R-23",
+    "word": "Indexed Minimum Wage",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 160,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 116,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 0,
+     "open": 0
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap"
+    ],
+    "likeness_to_own_master": 0.5741,
+    "closest_other_master": "CL-023 Evidence",
+    "closest_likeness": 0.6233,
+    "closest_percentile": 25.3
+   },
+   {
+    "id": "R-27",
+    "word": "Tax Enforcement",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 157,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 99,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 4,
+     "open": 4
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.6602,
+    "closest_other_master": "CL-023 Evidence",
+    "closest_likeness": 0.8259,
+    "closest_percentile": 85.4
+   },
+   {
+    "id": "R-37",
+    "word": "Feed Choice",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 198,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 110,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 5,
+     "open": 5
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.9255,
+    "closest_other_master": "R-32 Local-News Funding",
+    "closest_likeness": 0.8609,
+    "closest_percentile": 93.8
+   },
+   {
+    "id": "R-45",
+    "word": "Paper Ballots & Audits",
+    "master_full_ink_share_1x": 0.0,
+    "fit_full_ink_share_1x": 1.0,
+    "master_ink_px_1x": 200,
+    "master_full_ink_px_1x": 0,
+    "fit_ink_px_1x": 114,
+    "master_main_line_px_1x": 0.65,
+    "fit_pixel_fit_pass": true,
+    "fit_fails": {
+     "1x": [],
+     "2x": []
+    },
+    "fit_counters": {
+     "drawn": 4,
+     "open": 4
+    },
+    "fit_smallest_gap_px_1x": 1,
+    "master_pixel_fit_fails_1x": [
+     "width",
+     "soft",
+     "straight",
+     "gap",
+     "counters"
+    ],
+    "likeness_to_own_master": 0.9199,
+    "closest_other_master": "CL-044 Grid Demand",
+    "closest_likeness": 0.8498,
+    "closest_percentile": 91.5
+   }
+  ]
+ }
+}

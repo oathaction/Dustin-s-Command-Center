@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-housing-option-c-red-newsprint" data-id="Housing" width="128" height="128" viewBox="0 0 128 128">
+  <title>Housing, option C</title>
+  <desc>Oath &amp;amp; Action Civic Line, Housing, new topic drawing (DR-196), option C. A house key: a key whose bow is a house; red on the bow. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts. For approval by name on drawings board C.</desc>
+  <g id="oa-civic-line-housing-option-c-red-newsprint-accent" data-part="accent">
+    <polygon points="39.6302,54.8613 39.6302,31.7101 64,12.2143 88.3698,31.7101 88.3698,54.8613" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="oa-civic-line-housing-option-c-red-newsprint-base" data-part="base">
+    <rect x="57.9076" y="34.1471" width="12.1849" height="12.1849" rx="1.8277" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="64" y1="54.8613" x2="64" y2="115.7857" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="64,92.6345 78.6218,92.6345 78.6218,99.9454" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="64,107.2563 76.1849,107.2563 76.1849,114.5672" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

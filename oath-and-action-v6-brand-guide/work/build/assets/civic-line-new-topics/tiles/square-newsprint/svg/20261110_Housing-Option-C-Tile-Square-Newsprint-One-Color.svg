@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-housing-option-c-tile-square-newsprint-one-color" data-id="Housing-Option-C" width="128" height="128" viewBox="0 0 128 128">
+  <title>Housing</title>
+  <desc>Oath &amp; Action Civic Line Housing-Option-C Housing: square tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.748 about the center of the 128 box, with every stroke width multiplied by 0.9091 so its line stays at 3.3508 units or less. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-housing-option-c-tile-square-newsprint-one-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="oa-civic-line-housing-option-c-tile-square-newsprint-one-color-icon" data-part="icon" transform="matrix(0.748 0 0 0.748 16.128 16.128)">
+  <g id="oa-civic-line-housing-option-c-tile-square-newsprint-one-color-accent" data-part="accent">
+    <polygon points="39.6302,54.8613 39.6302,31.7101 64,12.2143 88.3698,31.7101 88.3698,54.8613" fill="none" stroke="#121212" stroke-width="3.0461" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="oa-civic-line-housing-option-c-tile-square-newsprint-one-color-base" data-part="base">
+    <rect x="57.9076" y="34.1471" width="12.1849" height="12.1849" rx="1.8277" fill="none" stroke="#121212" stroke-width="3.0461" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="64" y1="54.8613" x2="64" y2="115.7857" fill="none" stroke="#121212" stroke-width="3.0461" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="64,92.6345 78.6218,92.6345 78.6218,99.9454" fill="none" stroke="#121212" stroke-width="3.0461" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="64,107.2563 76.1849,107.2563 76.1849,114.5672" fill="none" stroke="#121212" stroke-width="3.0461" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

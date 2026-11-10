@@ -1290,9 +1290,17 @@ async function runAxe(page) {
 async function focusAudit(page, stops) {
   const results = [];
   await sbInstall(page);
-  await page.evaluate(() => { document.activeElement && document.activeElement.blur && document.activeElement.blur(); window.scrollTo(0, 0); });
+  // Stage C: the walk starts from the top of the page whatever ran before it. A blur alone leaves Chromium's sequential
+  // focus starting point where an earlier check left it (codeMatch's captures left it in a code stage), so a mark at the
+  // start of the body takes focus first and goes once the first Tab has left it.
+  await page.evaluate(() => {
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    const start = document.createElement('span'); start.id = 'oa-focus-start'; start.tabIndex = -1;
+    document.body.prepend(start); start.focus({ preventScroll: true }); window.scrollTo(0, 0);
+  });
   for (let i = 0; i < stops; i++) {
     await page.keyboard.press('Tab');
+    if (i === 0) await page.evaluate(() => { const s = document.getElementById('oa-focus-start'); if (s) s.remove(); });
     const r = await page.evaluate(() => {
       const el = document.activeElement; if (!el || el === document.body) return null;
       const cs = getComputedStyle(el);

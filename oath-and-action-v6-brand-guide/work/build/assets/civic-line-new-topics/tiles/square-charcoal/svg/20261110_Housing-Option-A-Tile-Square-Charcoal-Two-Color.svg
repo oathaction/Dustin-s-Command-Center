@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-housing-option-a-tile-square-charcoal-two-color" data-id="Housing-Option-A" width="128" height="128" viewBox="0 0 128 128">
+  <title>Housing</title>
+  <desc>Oath &amp; Action Civic Line Housing-Option-A Housing: square tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.6392 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-housing-option-a-tile-square-charcoal-two-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
+  <g id="oa-civic-line-housing-option-a-tile-square-charcoal-two-color-icon" data-part="icon" transform="matrix(0.6392 0 0 0.6392 23.0912 23.0912)">
+  <g id="oa-civic-line-housing-option-a-tile-square-charcoal-two-color-base" data-part="base">
+    <polyline points="13.4328,106.6471 13.4328,21.3529 63.3908,21.3529 63.3908,106.6471" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="21.3529" y="29.8823" width="8.5294" height="9.7479" rx="1.5231" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="21.3529" y="50.5966" width="8.5294" height="9.7479" rx="1.5231" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="45.7227" y="50.5966" width="8.5294" height="9.7479" rx="1.5231" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="21.3529" y="71.3109" width="8.5294" height="9.7479" rx="1.5231" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="45.7227" y="71.3109" width="8.5294" height="9.7479" rx="1.5231" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="32.9286,106.6471 32.9286,93.2437 42.6765,93.2437 42.6765,106.6471" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="69.4832,106.6471 69.4832,65.2185 92.6345,45.7227 115.7857,65.2185 115.7857,106.6471" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="87.7605,106.6471 87.7605,88.3698 97.5084,88.3698 97.5084,106.6471" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="8.5588" y1="106.6471" x2="119.4412" y2="106.6471" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="oa-civic-line-housing-option-a-tile-square-charcoal-two-color-accent" data-part="accent">
+    <rect x="45.7227" y="29.8823" width="8.5294" height="9.7479" rx="1.5231" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

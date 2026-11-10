@@ -1,0 +1,9750 @@
+{
+ "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
+ "run": "2026-11-10T19:08:51.014Z",
+ "rules": {
+  "minStroke": 1,
+  "minThinArea": 0.25,
+  "maxSoftShare": 0.95,
+  "inkAlpha": 8,
+  "fullAlpha": 247,
+  "edgeTolerance": 0.1,
+  "minStraight": 1.5,
+  "straightness": 0.01,
+  "minGap": 1,
+  "minCounterArea": 0.5,
+  "weightTolerance": 0.15
+ },
+ "results": [
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-001-Voting-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       14.4,
+       7.4
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 135,
+      "partial_px": 135,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 6,
+      "lone_edges": 0,
+      "fit": 2,
+      "total": 6,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         8.81,
+         9.44
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         7.37,
+         10.19
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         10.55,
+         11.18
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         10.07,
+         13.48
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         3.79,
+         4.42
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         12.93,
+         17.96
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         19.51,
+         20.14
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         12.93,
+         17.96
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       28.8,
+       14.8
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 313,
+      "partial_px": 234,
+      "share": 0.748
+     },
+     "straight": {
+      "strokes": 6,
+      "lone_edges": 0,
+      "fit": 3,
+      "total": 6,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         17.63,
+         18.89
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         14.74,
+         20.37
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         24.57,
+         25.83
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         9.63,
+         38.22
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         7.58,
+         8.84
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         25.85,
+         35.93
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 3
+     },
+     "fails": [
+      "straight",
+      "counters"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-004-Petition-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       16,
+       11.2
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 157,
+      "partial_px": 157,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 8,
+      "lone_edges": 0,
+      "fit": 1,
+      "total": 8,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         5.54,
+         6.17
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.74,
+         14.04
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         10.19,
+         10.82
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         7.11,
+         12.3
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         12.48,
+         13.11
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         7.15,
+         11.11
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         14.76,
+         15.39
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         7.19,
+         9.67
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         17.79,
+         18.41
+        ],
+        "width_px": 0.62,
+        "span_px": [
+         5.74,
+         14.11
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         4.61,
+         5.23
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.63,
+         17.33
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         14.56,
+         15.19
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.63,
+         9.78
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 0.46,
+      "near_px": [
+       15.6,
+       10
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       32,
+       22.4
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 365,
+      "partial_px": 303,
+      "share": 0.83
+     },
+     "straight": {
+      "strokes": 8,
+      "lone_edges": 0,
+      "fit": 3,
+      "total": 8,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         20.39,
+         21.65
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         14.22,
+         24.59
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         29.52,
+         30.78
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         14.37,
+         19.33
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         35.57,
+         36.81
+        ],
+        "width_px": 1.24,
+        "span_px": [
+         11.48,
+         28.22
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         9.21,
+         10.47
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         13.26,
+         34.67
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         29.13,
+         30.39
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         13.26,
+         19.56
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 0.92,
+      "near_px": [
+       31.2,
+       20.1
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 5
+     },
+     "fails": [
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-006-Civic-Ties-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       11.9,
+       7
+      ],
+      "main": 0.6,
+      "median": 0.62
+     },
+     "soft_edges": {
+      "ink_px": 117,
+      "partial_px": 117,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 3,
+      "lone_edges": 2,
+      "fit": 1,
+      "total": 5,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         8.55,
+         9.18
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         11.22,
+         13
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         15.19,
+         15.81
+        ],
+        "width_px": 0.62,
+        "span_px": [
+         5.15,
+         6.85
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         15.19,
+         15.81
+        ],
+        "width_px": 0.62,
+        "span_px": [
+         17.3,
+         19
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         3.17
+        ],
+        "span_px": [
+         17,
+         18.56
+        ],
+        "needs": "to sit on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 9,
+      "smallest_px": 0.26,
+      "near_px": [
+       11.9,
+       8.6
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       23.8,
+       14
+      ],
+      "main": 1.2,
+      "median": 1.24
+     },
+     "soft_edges": {
+      "ink_px": 308,
+      "partial_px": 267,
+      "share": 0.867
+     },
+     "straight": {
+      "strokes": 3,
+      "lone_edges": 2,
+      "fit": 2,
+      "total": 5,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         30.37,
+         31.61
+        ],
+        "width_px": 1.24,
+        "span_px": [
+         10.3,
+         13.7
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         30.37,
+         31.61
+        ],
+        "width_px": 1.24,
+        "span_px": [
+         34.59,
+         38
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         6.34
+        ],
+        "span_px": [
+         34,
+         37.11
+        ],
+        "needs": "to sit on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 9,
+      "smallest_px": 0.52,
+      "near_px": [
+       23.8,
+       17.1
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [
+      "straight",
+      "gap"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-010-Decisive-Primaries-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       9.5,
+       8.8
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 113,
+      "partial_px": 113,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 8,
+      "lone_edges": 0,
+      "fit": 2,
+      "total": 8,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         9.87,
+         10.5
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         9.7,
+         11.81
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         11.73,
+         12.36
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5,
+         8.3
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         11.73,
+         12.36
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         12.93,
+         16.11
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         13.59,
+         14.22
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         9.67,
+         11.85
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         8.71,
+         9.34
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         7.89,
+         9.56
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         8.71,
+         9.34
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         14.48,
+         16.15
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 3,
+      "smallest_px": 0.37,
+      "near_px": [
+       17.6,
+       12
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       19,
+       17.7
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 286,
+      "partial_px": 246,
+      "share": 0.86
+     },
+     "straight": {
+      "strokes": 8,
+      "lone_edges": 0,
+      "fit": 2,
+      "total": 8,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         23.46,
+         24.72
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         10,
+         16.59
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         23.46,
+         24.72
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         25.85,
+         32.22
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         27.19,
+         28.44
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         19.33,
+         23.7
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         32.85,
+         34.11
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         10,
+         16.74
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         17.42,
+         18.67
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         15.78,
+         19.11
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         17.42,
+         18.67
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         28.96,
+         32.3
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 3,
+      "smallest_px": 0.74,
+      "near_px": [
+       35.1,
+       24
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [
+      "straight",
+      "gap"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-013-Incumbent-Defeat-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       14.7,
+       8
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 117,
+      "partial_px": 117,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 11,
+      "lone_edges": 1,
+      "fit": 2,
+      "total": 12,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         4.83,
+         5.46
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.67,
+         10.67
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         10.8,
+         11.43
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         15.11,
+         19.07
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         12.47,
+         13.1
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.78,
+         11.59
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         14.25,
+         14.88
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         9,
+         12.59
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         14.88
+        ],
+        "span_px": [
+         4.7,
+         8.33
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         17.12,
+         17.75
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.19,
+         8.33
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         17.12,
+         17.75
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         9,
+         11.19
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         3.8,
+         4.43
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         11.37,
+         13.93
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         5.14,
+         5.77
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.33,
+         10.74
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         11.58,
+         12.21
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.26,
+         10.74
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 1.22,
+      "near_px": [
+       14.8,
+       11
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       29.3,
+       16
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 282,
+      "partial_px": 233,
+      "share": 0.826
+     },
+     "straight": {
+      "strokes": 11,
+      "lone_edges": 1,
+      "fit": 3,
+      "total": 12,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         21.59,
+         22.85
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         30.22,
+         38.15
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         28.5,
+         29.76
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         18,
+         25.19
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         29.76
+        ],
+        "span_px": [
+         9.41,
+         16.67
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         34.24,
+         35.5
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         12.37,
+         16.67
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         34.24,
+         35.5
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         18,
+         22.37
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         7.6,
+         8.86
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         22.74,
+         27.85
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         10.28,
+         11.54
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         12.67,
+         21.48
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         23.17,
+         24.42
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         12.52,
+         21.48
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         25.85,
+         27.1
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         22.67,
+         27.85
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 2.44,
+      "near_px": [
+       29.6,
+       22.1
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-023-Evidence-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       14.7,
+       10
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 211,
+      "partial_px": 211,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 9,
+      "lone_edges": 0,
+      "fit": 3,
+      "total": 9,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         4.49,
+         5.12
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         3.44,
+         14.93
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         8.89,
+         9.52
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.19,
+         10.37
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         10.83,
+         11.46
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.26,
+         9
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         12.79,
+         13.42
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.22,
+         9.04
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         14.73,
+         15.36
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.22,
+         9.04
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         2.82,
+         3.45
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.11,
+         17.33
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 8,
+      "smallest_px": 0.43,
+      "near_px": [
+       15,
+       16.5
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       29.4,
+       20
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 461,
+      "partial_px": 363,
+      "share": 0.787
+     },
+     "straight": {
+      "strokes": 9,
+      "lone_edges": 0,
+      "fit": 6,
+      "total": 9,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         13.89,
+         15.15
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         10.52,
+         24.89
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         25.57,
+         26.83
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         10.44,
+         18.07
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         29.46,
+         30.72
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         10.44,
+         18.07
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 8,
+      "smallest_px": 0.86,
+      "near_px": [
+       29.9,
+       33
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [
+      "straight",
+      "gap"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-024-Feedback-Loop-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       9.9,
+       6.9
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 118,
+      "partial_px": 118,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 8,
+      "lone_edges": 0,
+      "fit": 3,
+      "total": 8,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         9.68,
+         10.31
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         3.89,
+         7.59
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         9.68,
+         10.31
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         16.33,
+         20.04
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         3.25,
+         3.88
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         10.33,
+         14
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         7.59,
+         8.22
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         10.3,
+         14
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         15.71,
+         16.34
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         10.3,
+         14
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 0.52,
+      "near_px": [
+       17.1,
+       15.2
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       19.7,
+       13.8
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 292,
+      "partial_px": 254,
+      "share": 0.87
+     },
+     "straight": {
+      "strokes": 8,
+      "lone_edges": 0,
+      "fit": 2,
+      "total": 8,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         19.35,
+         20.61
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         7.78,
+         15.19
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         19.35,
+         20.61
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         32.67,
+         40.07
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         6.49,
+         7.75
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         20.67,
+         28
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         15.18,
+         16.43
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         20.59,
+         28
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         31.42,
+         32.68
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         20.59,
+         28
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         40.1,
+         41.36
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         20.67,
+         28
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 1.04,
+      "near_px": [
+       34.3,
+       30.4
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-028-Watchdogs-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       13.7,
+       9.8
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 156,
+      "partial_px": 156,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 8,
+      "lone_edges": 0,
+      "fit": 2,
+      "total": 8,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         5.26,
+         5.89
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         4.74,
+         13.44
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         7.56,
+         8.19
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.37,
+         11.78
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         9.69,
+         10.31
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.44,
+         9.63
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         11.82,
+         12.45
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.41,
+         9.19
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         16.81,
+         17.44
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         4.74,
+         13.44
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         4.12,
+         4.75
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.89,
+         16.81
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 0.44,
+      "near_px": [
+       13.7,
+       15.8
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       27.3,
+       19.5
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 341,
+      "partial_px": 284,
+      "share": 0.833
+     },
+     "straight": {
+      "strokes": 8,
+      "lone_edges": 0,
+      "fit": 2,
+      "total": 8,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         10.52,
+         11.78
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         9.48,
+         26.89
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         15.11,
+         16.37
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         12.74,
+         23.56
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         19.37,
+         20.63
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         12.89,
+         19.26
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         33.63,
+         34.89
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         9.48,
+         26.89
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         8.24,
+         9.49
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         11.78,
+         33.63
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         26.89,
+         28.14
+        ],
+        "width_px": 1.25,
+        "span_px": [
+         11.78,
+         15.26
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 0.89,
+      "near_px": [
+       27.4,
+       31.6
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [
+      "straight",
+      "gap"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-031-Local-Government-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.57,
+      "thinnest_near_px": [
+       2.9,
+       11.8
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 188,
+      "partial_px": 182,
+      "share": 0.968
+     },
+     "straight": {
+      "strokes": 10,
+      "lone_edges": 4,
+      "fit": 9,
+      "total": 14,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         2.61,
+         3.24
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         11.56,
+         17.96
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         10.56,
+         13.26
+        ],
+        "width_px": 2.7,
+        "span_px": [
+         15,
+         17.96
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         15.13,
+         15.76
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         9.04,
+         10.89
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         15.13,
+         15.76
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         11.56,
+         17.96
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         20.59,
+         21.22
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         11.56,
+         17.96
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 1.15,
+      "near_px": [
+       6.9,
+       13.5
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.15,
+      "thinnest_near_px": [
+       5.8,
+       23.6
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 435,
+      "partial_px": 314,
+      "share": 0.722
+     },
+     "straight": {
+      "strokes": 10,
+      "lone_edges": 4,
+      "fit": 7,
+      "total": 14,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         5.22,
+         6.48
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         23.11,
+         35.93
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         16.13,
+         17.39
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         18.07,
+         21.85
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         16.13
+        ],
+        "span_px": [
+         23.11,
+         35.93
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         21.13,
+         26.53
+        ],
+        "width_px": 5.4,
+        "span_px": [
+         30,
+         35.93
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         30.27,
+         31.53
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         18.07,
+         21.78
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         30.27,
+         31.53
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         23.11,
+         35.93
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         41.18,
+         42.43
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         23.11,
+         35.93
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 2.3,
+      "near_px": [
+       13.8,
+       27
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-032-Local-Reporting-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.62,
+      "thinnest_near_px": [
+       10.8,
+       9.6
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 240,
+      "partial_px": 228,
+      "share": 0.95
+     },
+     "straight": {
+      "strokes": 13,
+      "lone_edges": 1,
+      "fit": 8,
+      "total": 14,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         9.77,
+         10.4
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         8.56,
+         18.41
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         11.63,
+         12.26
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         8.56,
+         12.96
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         11.65,
+         16.15
+        ],
+        "width_px": 4.5,
+        "span_px": [
+         14.89,
+         18.33
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         13.49,
+         14.12
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         8.52,
+         12.96
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         4.9,
+         5.52
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         8.59,
+         16.41
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         14.54,
+         18.69
+        ],
+        "width_px": 4.15,
+        "span_px": [
+         11.96,
+         15.85
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 1.22,
+      "near_px": [
+       8.6,
+       9.8
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "straight",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.24,
+      "thinnest_near_px": [
+       21.6,
+       19.3
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 576,
+      "partial_px": 366,
+      "share": 0.635
+     },
+     "straight": {
+      "strokes": 13,
+      "lone_edges": 1,
+      "fit": 7,
+      "total": 14,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         11.89,
+         13.13
+        ],
+        "width_px": 1.24,
+        "span_px": [
+         14.3,
+         39.48
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         19.54,
+         20.8
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         17.11,
+         36.81
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         23.26,
+         24.52
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         17.11,
+         25.93
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         23.3,
+         32.3
+        ],
+        "width_px": 9,
+        "span_px": [
+         29.78,
+         36.67
+        ],
+        "needs": "both edges on pixel edges"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         34.87,
+         36.13
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         13.85,
+         39.63
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         6.87,
+         8.12
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         17.85,
+         34.07
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         12.59,
+         13.85
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         17.19,
+         32.89
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 2.44,
+      "near_px": [
+       17.2,
+       19.6
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-039-Feed-Ranking-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       17.4,
+       9.3
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 269,
+      "partial_px": 269,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 19,
+      "lone_edges": 9,
+      "fit": 14,
+      "total": 28,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         5.6,
+         6.23
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         8.22,
+         13.19
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         10.45
+        ],
+        "span_px": [
+         4.96,
+         6.48
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         10.7,
+         11.33
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         8.19,
+         13.19
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         12.78
+        ],
+        "span_px": [
+         4.89,
+         6.52
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         13.54,
+         14.17
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         3.93,
+         14.74
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         14.89,
+         15.52
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         3.89,
+         14.81
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         16.56,
+         17.19
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         8.22,
+         13.19
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         18.64
+        ],
+        "span_px": [
+         4.93,
+         6.52
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         4.56
+        ],
+        "span_px": [
+         5.74,
+         7.3
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         4.56
+        ],
+        "span_px": [
+         10.81,
+         12.41
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         4.56
+        ],
+        "span_px": [
+         16.7,
+         18.26
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         6.89
+        ],
+        "span_px": [
+         5.7,
+         7.3
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         6.89
+        ],
+        "span_px": [
+         10.81,
+         12.41
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         6.89
+        ],
+        "span_px": [
+         16.67,
+         18.26
+        ],
+        "needs": "to sit on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 13,
+      "smallest_px": 0.55,
+      "near_px": [
+       3.7,
+       9
+      ]
+     },
+     "counters": {
+      "drawn": 6,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.23,
+      "thinnest_near_px": [
+       34.7,
+       18.6
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 627,
+      "partial_px": 459,
+      "share": 0.732
+     },
+     "straight": {
+      "strokes": 19,
+      "lone_edges": 9,
+      "fit": 11,
+      "total": 28,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         7.85,
+         9.11
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         7.78,
+         29.63
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         11.2,
+         12.46
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         16.44,
+         26.37
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         21.41,
+         22.67
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         16.37,
+         26.37
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         24.13,
+         25.39
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         16.44,
+         21.56
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         25.55
+        ],
+        "span_px": [
+         9.78,
+         13.04
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         33.13,
+         34.39
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         16.44,
+         26.37
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         35.85,
+         37.11
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         16.37,
+         21.56
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         37.28
+        ],
+        "span_px": [
+         9.85,
+         13.04
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         6.16,
+         7.41
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         9.33,
+         16.52
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         6.16,
+         7.41
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         19.56,
+         26.74
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         6.16,
+         7.41
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         31.26,
+         38.52
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         9.13
+        ],
+        "span_px": [
+         11.48,
+         14.59
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         9.13
+        ],
+        "span_px": [
+         21.63,
+         24.81
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         9.13
+        ],
+        "span_px": [
+         33.41,
+         36.52
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         13.79
+        ],
+        "span_px": [
+         11.41,
+         14.59
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         13.79
+        ],
+        "span_px": [
+         21.63,
+         24.81
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         13.79
+        ],
+        "span_px": [
+         33.33,
+         36.52
+        ],
+        "needs": "to sit on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 13,
+      "smallest_px": 1.1,
+      "near_px": [
+       7.3,
+       18.1
+      ]
+     },
+     "counters": {
+      "drawn": 6,
+      "open": 6
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-040-Platform-Power-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.59,
+      "thinnest_near_px": [
+       7.6,
+       19
+      ],
+      "main": 0.6,
+      "median": 0.62
+     },
+     "soft_edges": {
+      "ink_px": 143,
+      "partial_px": 143,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 1,
+      "lone_edges": 0,
+      "fit": 0,
+      "total": 1,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         11.7,
+         12.33
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         9.93,
+         13.22
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 5,
+      "smallest_px": 0.63,
+      "near_px": [
+       5.1,
+       13.9
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 1
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.18,
+      "thinnest_near_px": [
+       15.1,
+       37.9
+      ],
+      "main": 1.2,
+      "median": 1.24
+     },
+     "soft_edges": {
+      "ink_px": 346,
+      "partial_px": 282,
+      "share": 0.815
+     },
+     "straight": {
+      "strokes": 1,
+      "lone_edges": 0,
+      "fit": 0,
+      "total": 1,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         23.39,
+         24.65
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         19.85,
+         26.44
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 5,
+      "smallest_px": 1.26,
+      "near_px": [
+       10.3,
+       27.7
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-047-Data-Rights-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       15.8,
+       12.6
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 156,
+      "partial_px": 156,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 8,
+      "lone_edges": 1,
+      "fit": 3,
+      "total": 9,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         4.69,
+         5.32
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.78,
+         15.85
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         7.16,
+         7.79
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         7.52,
+         14.22
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         9.53,
+         10.16
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         7.52,
+         14.22
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         11.89,
+         12.52
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         7.48,
+         12.41
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         14.26,
+         14.89
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         7.48,
+         12.41
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         16.32
+        ],
+        "span_px": [
+         15.07,
+         16.78
+        ],
+        "needs": "to sit on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 0.78,
+      "near_px": [
+       16.3,
+       10.4
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       31.6,
+       25.2
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 366,
+      "partial_px": 288,
+      "share": 0.787
+     },
+     "straight": {
+      "strokes": 8,
+      "lone_edges": 1,
+      "fit": 3,
+      "total": 9,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         9.39,
+         10.65
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         11.56,
+         31.7
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         14.31,
+         15.57
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         15.04,
+         28.44
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         28.52,
+         29.78
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         14.96,
+         24.81
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         9.89,
+         11.14
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         11.19,
+         34.37
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         32.17,
+         33.42
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         11.11,
+         18.67
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         32.64
+        ],
+        "span_px": [
+         30.15,
+         33.56
+        ],
+        "needs": "to sit on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 1.56,
+      "near_px": [
+       32.6,
+       20.7
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-048-Public-Records-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.62,
+      "thinnest_near_px": [
+       10.3,
+       11.2
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 171,
+      "partial_px": 171,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 1,
+      "fit": 2,
+      "total": 13,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         5.16,
+         5.78
+        ],
+        "width_px": 0.62,
+        "span_px": [
+         7.85,
+         17.67
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         9.26,
+         9.89
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         9.7,
+         15.89
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         9.49,
+         10.12
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         3.26,
+         5.22
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         10.76,
+         11.39
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         9.78,
+         13.37
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         12.54,
+         13.17
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         9.15,
+         17.74
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         2.58,
+         3.21
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         10.19,
+         18.22
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         7.15,
+         7.78
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.85,
+         8.19
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         17.74,
+         18.37
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.85,
+         9.44
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         18.37
+        ],
+        "span_px": [
+         10.07,
+         12.52
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         19.77,
+         20.4
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         10.22,
+         12.52
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         20.79,
+         21.42
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         13.26,
+         18.22
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 0.85,
+      "near_px": [
+       9.8,
+       10.7
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.24,
+      "thinnest_near_px": [
+       20.6,
+       22.4
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 397,
+      "partial_px": 359,
+      "share": 0.904
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 1,
+      "fit": 2,
+      "total": 13,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         10.31,
+         11.56
+        ],
+        "width_px": 1.24,
+        "span_px": [
+         15.7,
+         35.33
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         14.61,
+         15.87
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         19.48,
+         31.78
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         18.52,
+         19.78
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         19.41,
+         31.78
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         21.52,
+         22.78
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         19.56,
+         26.74
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         36.57,
+         37.83
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         6.52,
+         41.48
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         5.16,
+         6.42
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         20.37,
+         36.44
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         14.3,
+         15.55
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         11.7,
+         16.37
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         35.48,
+         36.74
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         11.7,
+         18.89
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         36.74
+        ],
+        "span_px": [
+         20.15,
+         25.04
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         39.55,
+         40.81
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         20.44,
+         25.04
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         41.58,
+         42.84
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         26.52,
+         36.44
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 1.7,
+      "near_px": [
+       19.6,
+       21.5
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-050-Worker-Bargaining-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       11.2,
+       9.1
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 177,
+      "partial_px": 177,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 7,
+      "lone_edges": 5,
+      "fit": 4,
+      "total": 12,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         9.9,
+         10.53
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         9.7,
+         14.3
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         14.9,
+         15.53
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         4.04,
+         7.44
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         15.53
+        ],
+        "span_px": [
+         1.41,
+         3.37
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         15.53
+        ],
+        "span_px": [
+         8.11,
+         15.85
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         15.53
+        ],
+        "span_px": [
+         16.48,
+         19.93
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         15.53
+        ],
+        "span_px": [
+         20.56,
+         22.56
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         15.86,
+         16.48
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         15.56,
+         17.96
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         18.78
+        ],
+        "span_px": [
+         11.89,
+         13.44
+        ],
+        "needs": "to sit on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 5,
+      "smallest_px": 0.26,
+      "near_px": [
+       5.3,
+       9.4
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       22.3,
+       18.3
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 443,
+      "partial_px": 328,
+      "share": 0.74
+     },
+     "straight": {
+      "strokes": 7,
+      "lone_edges": 5,
+      "fit": 9,
+      "total": 12,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         26.15,
+         27.41
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         11.63,
+         36.3
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         37.55
+        ],
+        "span_px": [
+         23.78,
+         26.89
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         39.84,
+         41.1
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         31.11,
+         35.93
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 5,
+      "smallest_px": 0.52,
+      "near_px": [
+       10.7,
+       18.8
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [
+      "straight",
+      "gap"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-051-Market-Power-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.65,
+      "thinnest_near_px": [
+       6.1,
+       5.1
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 187,
+      "partial_px": 183,
+      "share": 0.979
+     },
+     "straight": {
+      "strokes": 11,
+      "lone_edges": 8,
+      "fit": 10,
+      "total": 19,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         13.88,
+         14.51
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         17.48,
+         20.33
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         18.21,
+         18.83
+        ],
+        "width_px": 0.62,
+        "span_px": [
+         3.59,
+         6.04
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         18.21
+        ],
+        "span_px": [
+         7.85,
+         10.26
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         18.21
+        ],
+        "span_px": [
+         12.44,
+         15.37
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         18.21
+        ],
+        "span_px": [
+         17.48,
+         20.37
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         4.39
+        ],
+        "span_px": [
+         5.33,
+         6.89
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         7.84
+        ],
+        "span_px": [
+         16.56,
+         18.19
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         11.81,
+         12.44
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         12.63,
+         18.19
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         16.86,
+         17.49
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         14.52,
+         18.19
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 10,
+      "smallest_px": 0.33,
+      "near_px": [
+       14.1,
+       15.3
+      ]
+     },
+     "counters": {
+      "drawn": 5,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.3,
+      "thinnest_near_px": [
+       12.3,
+       10.2
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 477,
+      "partial_px": 354,
+      "share": 0.742
+     },
+     "straight": {
+      "strokes": 11,
+      "lone_edges": 8,
+      "fit": 8,
+      "total": 19,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         10.11,
+         11.35
+        ],
+        "width_px": 1.24,
+        "span_px": [
+         10.07,
+         14.89
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         13.83
+        ],
+        "span_px": [
+         16.22,
+         21.33
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         36.43,
+         37.67
+        ],
+        "width_px": 1.24,
+        "span_px": [
+         7.19,
+         12.07
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         36.43
+        ],
+        "span_px": [
+         15.7,
+         20.52
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         36.43
+        ],
+        "span_px": [
+         24.89,
+         30.74
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         36.43
+        ],
+        "span_px": [
+         34.96,
+         40.74
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         8.77
+        ],
+        "span_px": [
+         10.67,
+         13.78
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         15.68
+        ],
+        "span_px": [
+         33.11,
+         36.37
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         16.17
+        ],
+        "span_px": [
+         10.59,
+         13.78
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         20.56,
+         21.82
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         15.11,
+         36.37
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         23.62,
+         24.88
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         25.26,
+         36.37
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 10,
+      "smallest_px": 0.67,
+      "near_px": [
+       28.1,
+       30.6
+      ]
+     },
+     "counters": {
+      "drawn": 5,
+      "open": 5
+     },
+     "fails": [
+      "straight",
+      "gap"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-054-Home-Equity-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       8.6,
+       5.9
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 173,
+      "partial_px": 173,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 3,
+      "fit": 5,
+      "total": 15,
+      "off": [
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         5.21
+        ],
+        "span_px": [
+         11.74,
+         13.89
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         8.22,
+         8.85
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         14.04,
+         21.3
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         16.49,
+         17.11
+        ],
+        "width_px": 0.62,
+        "span_px": [
+         4.04,
+         6.78
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         16.49
+        ],
+        "span_px": [
+         7.41,
+         9.85
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         16.49
+        ],
+        "span_px": [
+         10.48,
+         13.26
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         18.16,
+         18.79
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         14.07,
+         21.3
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         6.77,
+         7.4
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         13.07,
+         16.48
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         9.86,
+         10.49
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         13.07,
+         16.48
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         13.27,
+         13.9
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         9.81,
+         16.48
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         13.5,
+         14.13
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.85,
+         7.59
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 0.33,
+      "near_px": [
+       11.3,
+       7.4
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       17.3,
+       11.9
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 445,
+      "partial_px": 367,
+      "share": 0.825
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 3,
+      "fit": 7,
+      "total": 15,
+      "off": [
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         10.43
+        ],
+        "span_px": [
+         23.48,
+         27.78
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         16.44,
+         17.7
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         28.07,
+         42.59
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         24.87,
+         26.11
+        ],
+        "width_px": 1.24,
+        "span_px": [
+         14.81,
+         19.7
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         36.31,
+         37.57
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         28.15,
+         42.59
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         6.58,
+         7.84
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         21.78,
+         32.81
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         13.54,
+         14.8
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         26.15,
+         32.96
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         26.54,
+         27.8
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         19.63,
+         32.96
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         38.63,
+         39.88
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         26.81,
+         33.7
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 0.66,
+      "near_px": [
+       22.5,
+       14.7
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [
+      "straight",
+      "gap"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-057-Labor-Share-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.35,
+      "thinnest_near_px": [
+       15.8,
+       8.1
+      ],
+      "main": 0.6,
+      "median": 0.72
+     },
+     "soft_edges": {
+      "ink_px": 133,
+      "partial_px": 122,
+      "share": 0.917
+     },
+     "straight": {
+      "strokes": 2,
+      "lone_edges": 1,
+      "fit": 2,
+      "total": 3,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         11.59,
+         12.22
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         4.7,
+         11.78
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 0.56,
+      "near_px": [
+       19.3,
+       11.7
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 1
+     },
+     "fails": [
+      "width",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 0.7,
+      "thinnest_near_px": [
+       31.7,
+       16.1
+      ],
+      "main": 1.2,
+      "median": 1.44
+     },
+     "soft_edges": {
+      "ink_px": 393,
+      "partial_px": 279,
+      "share": 0.71
+     },
+     "straight": {
+      "strokes": 2,
+      "lone_edges": 1,
+      "fit": 2,
+      "total": 3,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         23.18,
+         24.44
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         9.41,
+         23.56
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 1.11,
+      "near_px": [
+       38.7,
+       23.3
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [
+      "width",
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-060-Taxes-And-Benefits-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       19.1,
+       7.3
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 194,
+      "partial_px": 194,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 11,
+      "lone_edges": 0,
+      "fit": 5,
+      "total": 11,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         8.6,
+         9.23
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         13.74,
+         19.78
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         9.51,
+         10.14
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.56,
+         11.81
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         11.68,
+         12.31
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.56,
+         11.81
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         13.67,
+         14.3
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         13.96,
+         20.67
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         13.84,
+         14.47
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.56,
+         10.89
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         14.56,
+         15.19
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.89,
+         7.44
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 8,
+      "smallest_px": 0.71,
+      "near_px": [
+       14.7,
+       15.7
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       38.1,
+       14.7
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 389,
+      "partial_px": 296,
+      "share": 0.761
+     },
+     "straight": {
+      "strokes": 11,
+      "lone_edges": 0,
+      "fit": 4,
+      "total": 11,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         10.13,
+         11.37
+        ],
+        "width_px": 1.24,
+        "span_px": [
+         8,
+         28.67
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         17.2,
+         18.46
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         27.48,
+         39.56
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         23.35,
+         24.61
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         11.11,
+         23.63
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         27.33,
+         28.59
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         27.93,
+         41.33
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         36.63,
+         37.87
+        ],
+        "width_px": 1.24,
+        "span_px": [
+         8,
+         28.59
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         6.19,
+         7.45
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         11.78,
+         36.15
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         29.13,
+         30.38
+        ],
+        "width_px": 1.25,
+        "span_px": [
+         11.78,
+         14.89
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 8,
+      "smallest_px": 1.41,
+      "near_px": [
+       29.4,
+       31.4
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 0
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-061-Household-Income-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       9.4,
+       8.8
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 107,
+      "partial_px": 107,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 7,
+      "lone_edges": 0,
+      "fit": 1,
+      "total": 7,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         10.79,
+         11.41
+        ],
+        "width_px": 0.62,
+        "span_px": [
+         5.04,
+         7
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         12.14,
+         12.77
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         10.56,
+         13.44
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         14.86,
+         15.49
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         14.63,
+         21.11
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         2.22,
+         2.84
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         13.85,
+         17.44
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         9.2,
+         9.82
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         13.85,
+         17.44
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         21.11,
+         21.74
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         10.33,
+         14.85
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 0.3,
+      "near_px": [
+       6.1,
+       10.8
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       18.8,
+       17.6
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 282,
+      "partial_px": 250,
+      "share": 0.887
+     },
+     "straight": {
+      "strokes": 7,
+      "lone_edges": 0,
+      "fit": 1,
+      "total": 7,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         18.13,
+         19.39
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         29.63,
+         41.63
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         21.58,
+         22.82
+        ],
+        "width_px": 1.24,
+        "span_px": [
+         10.07,
+         14
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         24.28,
+         25.54
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         21.11,
+         26.89
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         4.43,
+         5.69
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         27.7,
+         34.89
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         18.39,
+         19.65
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         27.7,
+         34.89
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         42.22,
+         43.48
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         20.67,
+         29.7
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 0.59,
+      "near_px": [
+       12.1,
+       21.6
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [
+      "straight",
+      "gap"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-067-Healthcare-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       10.6,
+       10.4
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 139,
+      "partial_px": 139,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 14,
+      "lone_edges": 0,
+      "fit": 7,
+      "total": 14,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         11.83,
+         12.46
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.74,
+         9.52
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         11.83,
+         12.46
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         14.44,
+         17.26
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         15.11,
+         15.74
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         4.85,
+         8.33
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         15.11,
+         15.74
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         15.63,
+         19.15
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         19.25,
+         19.88
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         8.96,
+         15
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         4.2,
+         4.83
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         9.07,
+         15.11
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         19.14,
+         19.77
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         9.07,
+         15.11
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 1.56,
+      "near_px": [
+       17.6,
+       12.1
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.23,
+      "thinnest_near_px": [
+       21.3,
+       20.7
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 343,
+      "partial_px": 286,
+      "share": 0.834
+     },
+     "straight": {
+      "strokes": 14,
+      "lone_edges": 0,
+      "fit": 6,
+      "total": 14,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         8.59,
+         9.85
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         17.93,
+         30
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         16.87,
+         18.13
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         9.7,
+         16.67
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         16.87,
+         18.13
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         31.26,
+         38.3
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         30.22,
+         31.48
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         9.7,
+         16.67
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         30.22,
+         31.48
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         31.26,
+         38.3
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         38.5,
+         39.76
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         17.93,
+         30
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         8.4,
+         9.65
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         18.15,
+         30.22
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         38.29,
+         39.54
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         18.15,
+         30.22
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 3.11,
+      "near_px": [
+       35.1,
+       24.1
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-068-Education-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.43,
+      "thinnest_near_px": [
+       12.2,
+       12.8
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 212,
+      "partial_px": 212,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 5,
+      "lone_edges": 1,
+      "fit": 2,
+      "total": 6,
+      "off": [
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         11.11
+        ],
+        "span_px": [
+         11,
+         12.96
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         3.61,
+         4.24
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         11,
+         17.26
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         11.68,
+         12.31
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         14.07,
+         19.11
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         19.75,
+         20.38
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         11,
+         17.26
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 8,
+      "smallest_px": 0.43,
+      "near_px": [
+       11.4,
+       12.3
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 0.85,
+      "thinnest_near_px": [
+       24.4,
+       25.6
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 532,
+      "partial_px": 472,
+      "share": 0.887
+     },
+     "straight": {
+      "strokes": 5,
+      "lone_edges": 1,
+      "fit": 1,
+      "total": 6,
+      "off": [
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         22.22
+        ],
+        "span_px": [
+         22,
+         25.93
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         7.22,
+         8.48
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         22,
+         34.52
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         23.36,
+         24.62
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         28.15,
+         38.22
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         39.5,
+         40.76
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         22,
+         34.52
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         42.63,
+         43.89
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         22.59,
+         38.22
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 8,
+      "smallest_px": 0.86,
+      "near_px": [
+       22.9,
+       24.6
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 5
+     },
+     "fails": [
+      "width",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-070-Environment-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       5,
+       7.9
+      ],
+      "main": 0.6,
+      "median": 0.62
+     },
+     "soft_edges": {
+      "ink_px": 124,
+      "partial_px": 124,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 1,
+      "lone_edges": 0,
+      "fit": 1,
+      "total": 1,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 1.52,
+      "near_px": [
+       14.3,
+       12.5
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       9.9,
+       15.7
+      ],
+      "main": 1.2,
+      "median": 1.24
+     },
+     "soft_edges": {
+      "ink_px": 318,
+      "partial_px": 275,
+      "share": 0.865
+     },
+     "straight": {
+      "strokes": 1,
+      "lone_edges": 0,
+      "fit": 0,
+      "total": 1,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         8.11,
+         9.37
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         31.85,
+         38.07
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 3.04,
+      "near_px": [
+       28.7,
+       25
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-071-Policy-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       13.7,
+       15.2
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 174,
+      "partial_px": 174,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 9,
+      "lone_edges": 0,
+      "fit": 5,
+      "total": 9,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         7.47,
+         8.1
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.22,
+         14.63
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         12.59,
+         13.22
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.19,
+         11.89
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         3.51,
+         4.14
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.63,
+         18.37
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         16.61,
+         17.24
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.63,
+         13
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 0.63,
+      "near_px": [
+       11.5,
+       15.6
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.23,
+      "thinnest_near_px": [
+       27.5,
+       30.4
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 348,
+      "partial_px": 249,
+      "share": 0.716
+     },
+     "straight": {
+      "strokes": 9,
+      "lone_edges": 0,
+      "fit": 5,
+      "total": 9,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         25.19,
+         26.44
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         12.37,
+         23.78
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         30.57,
+         31.83
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         12.44,
+         22.52
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         30.57,
+         31.83
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         34,
+         40.52
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         33.21,
+         34.47
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         11.26,
+         26
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 1.26,
+      "near_px": [
+       23,
+       31.1
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-072-Reform-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       16.1,
+       4.8
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 88,
+      "partial_px": 88,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 4,
+      "lone_edges": 2,
+      "fit": 1,
+      "total": 6,
+      "off": [
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         6.8
+        ],
+        "span_px": [
+         15.33,
+         16.85
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         9.15,
+         9.78
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         3.44,
+         6.33
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         13.11
+        ],
+        "span_px": [
+         15.63,
+         17.19
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         11.51,
+         12.14
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         10,
+         12.37
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         11.64,
+         12.27
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         16.63,
+         19.19
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 3,
+      "smallest_px": 0.96,
+      "near_px": [
+       11.6,
+       16.6
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       32.2,
+       9.7
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 215,
+      "partial_px": 188,
+      "share": 0.874
+     },
+     "straight": {
+      "strokes": 4,
+      "lone_edges": 2,
+      "fit": 2,
+      "total": 6,
+      "off": [
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         13.59
+        ],
+        "span_px": [
+         30.67,
+         33.7
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         18.3,
+         19.56
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         6.89,
+         12.67
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         26.23
+        ],
+        "span_px": [
+         31.26,
+         34.37
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         23.28,
+         24.54
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         33.26,
+         38.37
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 3,
+      "smallest_px": 1.93,
+      "near_px": [
+       23.3,
+       33.3
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-05-Automatic-Registration-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       13.5,
+       11.1
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 187,
+      "partial_px": 187,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 9,
+      "lone_edges": 0,
+      "fit": 4,
+      "total": 9,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         6.68,
+         7.31
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         3.7,
+         18.11
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         8.86,
+         9.49
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         10.52,
+         16.78
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         13.63,
+         14.26
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         10.52,
+         12.59
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         13.81,
+         14.44
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.22,
+         8.67
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         2.87,
+         3.5
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         7.52,
+         15.26
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 10,
+      "smallest_px": 0.19,
+      "near_px": [
+       6.6,
+       11.2
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       26.9,
+       22.1
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 418,
+      "partial_px": 327,
+      "share": 0.782
+     },
+     "straight": {
+      "strokes": 9,
+      "lone_edges": 0,
+      "fit": 6,
+      "total": 9,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         13.35,
+         14.61
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         7.41,
+         36.22
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         27.26,
+         28.52
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         21.04,
+         25.19
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         27.63,
+         28.89
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         10.44,
+         17.33
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 10,
+      "smallest_px": 0.37,
+      "near_px": [
+       13.3,
+       22.4
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [
+      "straight",
+      "gap"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-06-On-Cycle-Elections-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.556
+      ],
+      "thinnest": 0.56,
+      "thinnest_near_px": [
+       13.2,
+       10
+      ],
+      "main": 0.55,
+      "median": 0.57
+     },
+     "soft_edges": {
+      "ink_px": 190,
+      "partial_px": 188,
+      "share": 0.989
+     },
+     "straight": {
+      "strokes": 11,
+      "lone_edges": 1,
+      "fit": 2,
+      "total": 12,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         8.62,
+         9.18
+        ],
+        "width_px": 0.56,
+        "span_px": [
+         3.56,
+         7.11
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         8.62,
+         9.18
+        ],
+        "width_px": 0.56,
+        "span_px": [
+         16.89,
+         20.44
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         10.6,
+         11.16
+        ],
+        "width_px": 0.56,
+        "span_px": [
+         1.67,
+         8.96
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         10.6,
+         11.16
+        ],
+        "width_px": 0.56,
+        "span_px": [
+         15.04,
+         22.3
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         12.15,
+         12.7
+        ],
+        "width_px": 0.56,
+        "span_px": [
+         10.56,
+         12.85
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         15.85,
+         16.41
+        ],
+        "width_px": 0.56,
+        "span_px": [
+         1.7,
+         8.93
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         15.85,
+         16.41
+        ],
+        "width_px": 0.56,
+        "span_px": [
+         15.07,
+         22.26
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         1.11,
+         1.67
+        ],
+        "width_px": 0.56,
+        "span_px": [
+         11.15,
+         15.81
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         9.54
+        ],
+        "span_px": [
+         9.11,
+         10.78
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         22.32,
+         22.88
+        ],
+        "width_px": 0.56,
+        "span_px": [
+         11.15,
+         15.81
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 15,
+      "smallest_px": 0.56,
+      "near_px": [
+       4.8,
+       13.9
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.112
+      ],
+      "thinnest": 1.12,
+      "thinnest_near_px": [
+       26.5,
+       19.9
+      ],
+      "main": 1.1,
+      "median": 1.15
+     },
+     "soft_edges": {
+      "ink_px": 452,
+      "partial_px": 402,
+      "share": 0.889
+     },
+     "straight": {
+      "strokes": 11,
+      "lone_edges": 1,
+      "fit": 3,
+      "total": 12,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         17.24,
+         18.35
+        ],
+        "width_px": 1.11,
+        "span_px": [
+         7.11,
+         14.22
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         17.24,
+         18.35
+        ],
+        "width_px": 1.11,
+        "span_px": [
+         33.78,
+         40.89
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         21.2,
+         22.31
+        ],
+        "width_px": 1.11,
+        "span_px": [
+         3.33,
+         17.93
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         21.2,
+         22.32
+        ],
+        "width_px": 1.11,
+        "span_px": [
+         30.07,
+         44.59
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         24.3,
+         25.41
+        ],
+        "width_px": 1.11,
+        "span_px": [
+         21.11,
+         25.7
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         31.7,
+         32.81
+        ],
+        "width_px": 1.11,
+        "span_px": [
+         3.41,
+         17.85
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         31.7,
+         32.81
+        ],
+        "width_px": 1.11,
+        "span_px": [
+         30.15,
+         44.52
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         2.22,
+         3.33
+        ],
+        "width_px": 1.11,
+        "span_px": [
+         22.3,
+         31.63
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         44.64,
+         45.76
+        ],
+        "width_px": 1.11,
+        "span_px": [
+         22.3,
+         31.63
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 15,
+      "smallest_px": 1.11,
+      "near_px": [
+       9.6,
+       27.9
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-08-Donor-Disclosure-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       12.9,
+       9.7
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 134,
+      "partial_px": 134,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 7,
+      "lone_edges": 1,
+      "fit": 0,
+      "total": 8,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         6.21,
+         6.84
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         4.37,
+         13.78
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         8.58,
+         9.21
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         8.81,
+         12.37
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         10.16,
+         10.79
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         8.78,
+         11.07
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         12.68,
+         13.31
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.67,
+         10.44
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         14.22,
+         14.85
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.63,
+         9.78
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         16.2,
+         16.82
+        ],
+        "width_px": 0.62,
+        "span_px": [
+         4.37,
+         13.78
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         3.51,
+         4.14
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         7.07,
+         16
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         14.59
+        ],
+        "span_px": [
+         6.93,
+         8.44
+        ],
+        "needs": "to sit on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 0.3,
+      "near_px": [
+       14.2,
+       15.3
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       25.8,
+       19.4
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 361,
+      "partial_px": 321,
+      "share": 0.889
+     },
+     "straight": {
+      "strokes": 7,
+      "lone_edges": 1,
+      "fit": 1,
+      "total": 8,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         12.43,
+         13.69
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         8.74,
+         27.56
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         17.17,
+         18.43
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         17.63,
+         24.74
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         20.31,
+         21.57
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         17.56,
+         22.15
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         25.35,
+         26.61
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         11.33,
+         20.89
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         28.45,
+         29.7
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         11.26,
+         19.56
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         32.41,
+         33.65
+        ],
+        "width_px": 1.24,
+        "span_px": [
+         8.74,
+         27.56
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "vertical",
+        "at_px": [
+         29.18
+        ],
+        "span_px": [
+         13.85,
+         16.89
+        ],
+        "needs": "to sit on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 0.59,
+      "near_px": [
+       28.4,
+       30.6
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 3
+     },
+     "fails": [
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-09-Stock-Trading-Ban-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.57,
+      "thinnest_near_px": [
+       20.2,
+       7.5
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 183,
+      "partial_px": 183,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 10,
+      "lone_edges": 0,
+      "fit": 3,
+      "total": 10,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         6.2,
+         6.83
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.07,
+         17.74
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         7.69,
+         8.32
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.3,
+         16.22
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         14.84,
+         15.47
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.26,
+         8.85
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         14.84,
+         15.47
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         12.04,
+         17.93
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         3.53,
+         4.16
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         7.74,
+         15.44
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         18.53,
+         19.16
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         8.93,
+         14.22
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         19.87,
+         20.5
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         7.52,
+         15.41
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 10,
+      "smallest_px": 0.07,
+      "near_px": [
+       10.1,
+       16.4
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.15,
+      "thinnest_near_px": [
+       40.4,
+       15
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 487,
+      "partial_px": 363,
+      "share": 0.745
+     },
+     "straight": {
+      "strokes": 10,
+      "lone_edges": 0,
+      "fit": 8,
+      "total": 10,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         12.41,
+         13.67
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         10.15,
+         35.48
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         15.39,
+         16.65
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         12.59,
+         32.44
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 10,
+      "smallest_px": 0.14,
+      "near_px": [
+       20.1,
+       32.7
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 1
+     },
+     "fails": [
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-14-Automatic-Funding-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.57,
+      "thinnest_near_px": [
+       2.4,
+       8.3
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 195,
+      "partial_px": 195,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 7,
+      "lone_edges": 0,
+      "fit": 4,
+      "total": 7,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         11.67,
+         12.29
+        ],
+        "width_px": 0.62,
+        "span_px": [
+         8.15,
+         17.07
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         14.5,
+         15.13
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         4.37,
+         20.81
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         18.57,
+         19.2
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         7.93,
+         11.89
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 5,
+      "smallest_px": 0.85,
+      "near_px": [
+       5.3,
+       8.5
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.15,
+      "thinnest_near_px": [
+       4.7,
+       16.7
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 396,
+      "partial_px": 275,
+      "share": 0.694
+     },
+     "straight": {
+      "strokes": 7,
+      "lone_edges": 0,
+      "fit": 4,
+      "total": 7,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         23.33,
+         24.57
+        ],
+        "width_px": 1.24,
+        "span_px": [
+         16.3,
+         34.15
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         4.11,
+         5.37
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         15.93,
+         32.3
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         37.13,
+         38.39
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         15.85,
+         23.78
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 5,
+      "smallest_px": 1.7,
+      "near_px": [
+       10.5,
+       17
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 0
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-15-Watchdog-Remedies-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       8.7,
+       7.6
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 163,
+      "partial_px": 163,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 6,
+      "lone_edges": 0,
+      "fit": 2,
+      "total": 6,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         7.68,
+         8.31
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         14.33,
+         21.7
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         9.68,
+         10.31
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         15,
+         20.19
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         11.51,
+         12.14
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         15,
+         20.19
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         21.74,
+         22.37
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         8.33,
+         15.33
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 0.73,
+      "near_px": [
+       11.6,
+       15.4
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       17.5,
+       15.3
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 369,
+      "partial_px": 299,
+      "share": 0.81
+     },
+     "straight": {
+      "strokes": 6,
+      "lone_edges": 0,
+      "fit": 3,
+      "total": 6,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         15.35,
+         16.61
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         28.67,
+         43.41
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         19.35,
+         20.61
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         30,
+         40.37
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         43.48,
+         44.74
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         16.67,
+         30.67
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 1.45,
+      "near_px": [
+       23.1,
+       30.8
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-17-Civil-Service-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       13.4,
+       10.3
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 190,
+      "partial_px": 190,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 10,
+      "lone_edges": 1,
+      "fit": 3,
+      "total": 11,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         7.87,
+         8.49
+        ],
+        "width_px": 0.62,
+        "span_px": [
+         3,
+         8.89
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         7.87
+        ],
+        "span_px": [
+         11.19,
+         17.07
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         10.19,
+         10.82
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         11.11,
+         15.56
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         13.61,
+         14.24
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         11.19,
+         13.96
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         15.68,
+         16.31
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.04,
+         9.3
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         17.14,
+         17.77
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         8.52,
+         17.37
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         19.82,
+         20.45
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         8.26,
+         11
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         19.82,
+         20.45
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         13.22,
+         16.07
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 0.78,
+      "near_px": [
+       18.6,
+       17.1
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       26.8,
+       20.5
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 418,
+      "partial_px": 333,
+      "share": 0.797
+     },
+     "straight": {
+      "strokes": 10,
+      "lone_edges": 1,
+      "fit": 3,
+      "total": 11,
+      "off": [
+       {
+        "kind": "edge",
+        "orient": "horizontal",
+        "at_px": [
+         15.74
+        ],
+        "span_px": [
+         22.37,
+         34.15
+        ],
+        "needs": "to sit on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         20.39,
+         21.65
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         22.22,
+         31.11
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         27.22,
+         28.48
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         22.37,
+         27.93
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         31.35,
+         32.61
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         10.07,
+         18.59
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         4.64,
+         5.89
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         17.04,
+         34.74
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         34.28,
+         35.53
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         17.04,
+         34.74
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         39.64,
+         40.9
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         16.52,
+         22
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         39.64,
+         40.9
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         26.44,
+         32.15
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 1.56,
+      "near_px": [
+       37.1,
+       34.2
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-19-Drug-Pricing-Rules-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       12.2,
+       7.9
+      ],
+      "main": 0.6,
+      "median": 0.62
+     },
+     "soft_edges": {
+      "ink_px": 116,
+      "partial_px": 116,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 4,
+      "lone_edges": 0,
+      "fit": 1,
+      "total": 4,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         16.77,
+         17.4
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         15.15,
+         20.85
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         14.49,
+         15.12
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         11.81,
+         16.74
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         20.88,
+         21.51
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         11.81,
+         16.74
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 0.63,
+      "near_px": [
+       18,
+       16.1
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       24.3,
+       15.7
+      ],
+      "main": 1.2,
+      "median": 1.24
+     },
+     "soft_edges": {
+      "ink_px": 315,
+      "partial_px": 260,
+      "share": 0.825
+     },
+     "straight": {
+      "strokes": 4,
+      "lone_edges": 0,
+      "fit": 2,
+      "total": 4,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         18.61,
+         19.87
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         34.37,
+         37.56
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         33.54,
+         34.8
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         30.3,
+         41.7
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 1.26,
+      "near_px": [
+       35.9,
+       32.2
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-23-Indexed-Minimum-Wage-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       8.1,
+       10.3
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 160,
+      "partial_px": 160,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 10,
+      "lone_edges": 0,
+      "fit": 7,
+      "total": 10,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         6.17,
+         6.8
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         4.59,
+         19.33
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         9.21,
+         9.84
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         9.96,
+         15.44
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         3.87,
+         4.5
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.85,
+         17
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 11,
+      "smallest_px": 0.78,
+      "near_px": [
+       7.1,
+       13.4
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       16.1,
+       20.6
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 396,
+      "partial_px": 313,
+      "share": 0.79
+     },
+     "straight": {
+      "strokes": 10,
+      "lone_edges": 0,
+      "fit": 5,
+      "total": 10,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         12.33,
+         13.59
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         9.19,
+         38.67
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         18.43,
+         19.68
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         19.93,
+         30.89
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         34.13,
+         35.39
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         9.11,
+         17.48
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         34.59,
+         35.85
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         28.15,
+         35.04
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         38.88,
+         40.14
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         13.7,
+         35.04
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 11,
+      "smallest_px": 1.56,
+      "near_px": [
+       14.3,
+       26.8
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 0
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-27-Tax-Enforcement-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.61,
+      "thinnest_near_px": [
+       14.9,
+       10.9
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 157,
+      "partial_px": 157,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 7,
+      "lone_edges": 0,
+      "fit": 2,
+      "total": 7,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         7.82,
+         8.45
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.56,
+         12.26
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         9.82,
+         10.44
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.59,
+         9.89
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         11.81,
+         12.43
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.56,
+         9.3
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         13.8,
+         14.43
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.63,
+         9.48
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         17.14,
+         17.76
+        ],
+        "width_px": 0.62,
+        "span_px": [
+         5.19,
+         13.85
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 0.56,
+      "near_px": [
+       14.2,
+       16.1
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.22,
+      "thinnest_near_px": [
+       29.7,
+       21.7
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 384,
+      "partial_px": 298,
+      "share": 0.776
+     },
+     "straight": {
+      "strokes": 7,
+      "lone_edges": 0,
+      "fit": 3,
+      "total": 7,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         19.63,
+         20.89
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         13.19,
+         19.78
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         23.61,
+         24.87
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         13.11,
+         18.59
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         27.59,
+         28.85
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         13.26,
+         18.96
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         34.28,
+         35.52
+        ],
+        "width_px": 1.24,
+        "span_px": [
+         10.37,
+         27.7
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 1.11,
+      "near_px": [
+       28.4,
+       32.3
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-37-Feed-Choice-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.58,
+      "thinnest_near_px": [
+       4.4,
+       8.2
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 198,
+      "partial_px": 198,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 8,
+      "lone_edges": 0,
+      "fit": 3,
+      "total": 8,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         6.76,
+         7.39
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         2.56,
+         14.26
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         13.65,
+         14.28
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         3.56,
+         9.59
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         16.48,
+         17.11
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         2.41,
+         14.37
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         14.83,
+         15.46
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         9.7,
+         16.04
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         20.5,
+         21.12
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         13.07,
+         16.63
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 8,
+      "smallest_px": 0.44,
+      "near_px": [
+       9.9,
+       13.8
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.16,
+      "thinnest_near_px": [
+       8.8,
+       16.4
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 445,
+      "partial_px": 345,
+      "share": 0.775
+     },
+     "straight": {
+      "strokes": 8,
+      "lone_edges": 0,
+      "fit": 6,
+      "total": 8,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         13.52,
+         14.78
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         5.11,
+         28.52
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         27.3,
+         28.56
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         7.11,
+         19.19
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 8,
+      "smallest_px": 0.89,
+      "near_px": [
+       19.7,
+       27.6
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [
+      "straight",
+      "gap"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-45-Paper-Ballots-And-Audits-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    128,
+    128
+   ],
+   "units_per_px": 5.3333,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       0.628
+      ],
+      "thinnest": 0.57,
+      "thinnest_near_px": [
+       3.7,
+       8.3
+      ],
+      "main": 0.65,
+      "median": 0.65
+     },
+     "soft_edges": {
+      "ink_px": 200,
+      "partial_px": 200,
+      "share": 1
+     },
+     "straight": {
+      "strokes": 11,
+      "lone_edges": 0,
+      "fit": 7,
+      "total": 11,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         5.74,
+         6.37
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         5.41,
+         12.81
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         11.74,
+         12.37
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         6.74,
+         10.44
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         16.17,
+         16.8
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         4,
+         11.22
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         4.65,
+         5.28
+        ],
+        "width_px": 0.63,
+        "span_px": [
+         7.52,
+         15
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 0.57,
+      "near_px": [
+       13.7,
+       7.9
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 0
+     },
+     "fails": [
+      "width",
+      "soft",
+      "straight",
+      "gap",
+      "counters"
+     ],
+     "pass": false
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       1.256
+      ],
+      "thinnest": 1.15,
+      "thinnest_near_px": [
+       7.4,
+       16.6
+      ],
+      "main": 1.3,
+      "median": 1.3
+     },
+     "soft_edges": {
+      "ink_px": 475,
+      "partial_px": 413,
+      "share": 0.869
+     },
+     "straight": {
+      "strokes": 11,
+      "lone_edges": 0,
+      "fit": 5,
+      "total": 11,
+      "off": [
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         11.48,
+         12.74
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         10.81,
+         25.63
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         15.89,
+         17.15
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         16.52,
+         20.37
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         20.17,
+         21.43
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         13.56,
+         20.89
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         23.48,
+         24.74
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         13.48,
+         20.89
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "horizontal",
+        "at_px": [
+         32.33,
+         33.59
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         8,
+         22.44
+        ],
+        "needs": "one edge on a pixel edge"
+       },
+       {
+        "kind": "stroke",
+        "orient": "vertical",
+        "at_px": [
+         9.31,
+         10.57
+        ],
+        "width_px": 1.26,
+        "span_px": [
+         15.04,
+         30
+        ],
+        "needs": "one edge on a pixel edge"
+       }
+      ]
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 1.15,
+      "near_px": [
+       27.5,
+       15.9
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [
+      "straight"
+     ],
+     "pass": false
+    }
+   },
+   "pass": false
+  }
+ ]
+}

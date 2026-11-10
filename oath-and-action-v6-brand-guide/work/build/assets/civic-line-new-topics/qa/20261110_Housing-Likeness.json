@@ -1,0 +1,128 @@
+{
+ "tool": "work/build/scripts/phase-2/icon_likeness_check.js",
+ "run": "2026-11-10T19:08:58.918Z",
+ "method": "Ink maps at 24 px from coverage in Charcoal over Newsprint, Gaussian blur sigma 1.2 px, Pearson correlation best over shifts up to 1 px, percentile among the 7626 pairs of the 124 Civic Line masters of the set in use (civic-line-v6) (Board 6's method).",
+ "masters": "work/build/assets/civic-line-v6",
+ "renderer": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+ "files": 3,
+ "compared": 3,
+ "editions_skipped": [],
+ "distribution": {
+  "pairs": 7626,
+  "p50": 0.7143,
+  "p90": 0.8435,
+  "p95": 0.8678,
+  "p99": 0.9092,
+  "p999": 0.9479,
+  "max": 0.9644
+ },
+ "thresholds": {
+  "flag": {
+   "percentile": 99,
+   "likeness": 0.9092
+  },
+  "watch": {
+   "percentile": 95,
+   "likeness": 0.8678
+  }
+ },
+ "masters_closest_pairs": [
+  {
+   "pair": "R-06 and R-44",
+   "likeness": 0.9644
+  },
+  {
+   "pair": "CL-028 and R-27",
+   "likeness": 0.958
+  },
+  {
+   "pair": "R-05 and R-14",
+   "likeness": 0.9567
+  },
+  {
+   "pair": "CL-003 and R-05",
+   "likeness": 0.956
+  },
+  {
+   "pair": "R-18 and R-27",
+   "likeness": 0.9559
+  },
+  {
+   "pair": "R-24 and R-25",
+   "likeness": 0.952
+  },
+  {
+   "pair": "CL-032 and R-23",
+   "likeness": 0.9484
+  },
+  {
+   "pair": "R-08 and R-18",
+   "likeness": 0.9479
+  },
+  {
+   "pair": "CL-003 and R-23",
+   "likeness": 0.9462
+  },
+  {
+   "pair": "R-08 and R-27",
+   "likeness": 0.9453
+  },
+  {
+   "pair": "CL-003 and R-14",
+   "likeness": 0.9426
+  },
+  {
+   "pair": "CL-028 and R-08",
+   "likeness": 0.9419
+  }
+ ],
+ "flagged": [],
+ "watch": [],
+ "own": [],
+ "options": [
+  {
+   "a": "20261110_Housing-Option-A-Black.svg",
+   "b": "20261110_Housing-Option-B-Black.svg",
+   "likeness": 0.452,
+   "percentile": 5.8,
+   "against": "new"
+  },
+  {
+   "a": "20261110_Housing-Option-A-Black.svg",
+   "b": "20261110_Housing-Option-C-Black.svg",
+   "likeness": 0.4309,
+   "percentile": 4.8,
+   "against": "new"
+  },
+  {
+   "a": "20261110_Housing-Option-B-Black.svg",
+   "b": "20261110_Housing-Option-C-Black.svg",
+   "likeness": 0.1645,
+   "percentile": 1.3,
+   "against": "new"
+  }
+ ],
+ "closest": [
+  {
+   "a": "20261110_Housing-Option-A-Black.svg",
+   "b": "CL-051 Market Power",
+   "likeness": 0.6899,
+   "percentile": 42.4,
+   "extent": 0.88
+  },
+  {
+   "a": "20261110_Housing-Option-B-Black.svg",
+   "b": "CL-033 Hostile Content",
+   "likeness": 0.6588,
+   "percentile": 33.9,
+   "extent": 0.83
+  },
+  {
+   "a": "20261110_Housing-Option-C-Black.svg",
+   "b": "CL-022 Act",
+   "likeness": 0.6562,
+   "percentile": 33.3,
+   "extent": 0.83
+  }
+ ]
+}

@@ -1,0 +1,695 @@
+{
+ "tool": "work/build/scripts/phase-2/icon_likeness_check.js",
+ "run": "2026-11-10T19:08:52.153Z",
+ "method": "Ink maps at 24 px from coverage in Charcoal over Newsprint, Gaussian blur sigma 1.2 px, Pearson correlation best over shifts up to 1 px, percentile among the 7626 pairs of the 124 Civic Line masters of the set in use (civic-line-v6) (Board 6's method).",
+ "masters": "work/build/assets/civic-line-v6",
+ "renderer": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+ "files": 37,
+ "compared": 37,
+ "editions_skipped": [],
+ "distribution": {
+  "pairs": 7626,
+  "p50": 0.7143,
+  "p90": 0.8435,
+  "p95": 0.8678,
+  "p99": 0.9092,
+  "p999": 0.9479,
+  "max": 0.9644
+ },
+ "thresholds": {
+  "flag": {
+   "percentile": 99,
+   "likeness": 0.9092
+  },
+  "watch": {
+   "percentile": 95,
+   "likeness": 0.8678
+  }
+ },
+ "masters_closest_pairs": [
+  {
+   "pair": "R-06 and R-44",
+   "likeness": 0.9644
+  },
+  {
+   "pair": "CL-028 and R-27",
+   "likeness": 0.958
+  },
+  {
+   "pair": "R-05 and R-14",
+   "likeness": 0.9567
+  },
+  {
+   "pair": "CL-003 and R-05",
+   "likeness": 0.956
+  },
+  {
+   "pair": "R-18 and R-27",
+   "likeness": 0.9559
+  },
+  {
+   "pair": "R-24 and R-25",
+   "likeness": 0.952
+  },
+  {
+   "pair": "CL-032 and R-23",
+   "likeness": 0.9484
+  },
+  {
+   "pair": "R-08 and R-18",
+   "likeness": 0.9479
+  },
+  {
+   "pair": "CL-003 and R-23",
+   "likeness": 0.9462
+  },
+  {
+   "pair": "R-08 and R-27",
+   "likeness": 0.9453
+  },
+  {
+   "pair": "CL-003 and R-14",
+   "likeness": 0.9426
+  },
+  {
+   "pair": "CL-028 and R-08",
+   "likeness": 0.9419
+  }
+ ],
+ "flagged": [
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.svg",
+   "b": "R-41 Grid Cost Allocation",
+   "likeness": 0.9172,
+   "percentile": 99.3,
+   "against": "master"
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.svg",
+   "b": "R-44 Digital Competition",
+   "likeness": 0.915,
+   "percentile": 99.2,
+   "against": "master"
+  }
+ ],
+ "watch": [
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.svg",
+   "b": "CL-046 AI Infrastructure",
+   "likeness": 0.9081,
+   "percentile": 98.9,
+   "against": "master"
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-050-Worker-Bargaining-Black.svg",
+   "b": "CL-007 Turnout Equality",
+   "likeness": 0.9022,
+   "percentile": 98.6,
+   "against": "master"
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.svg",
+   "b": "CL-015 Political Money",
+   "likeness": 0.9,
+   "percentile": 98.5,
+   "against": "master"
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.svg",
+   "b": "CL-053 Housing Scarcity",
+   "likeness": 0.8985,
+   "percentile": 98.4,
+   "against": "master"
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-054-Home-Equity-Black.svg",
+   "b": "CL-052 Household Security",
+   "likeness": 0.8981,
+   "percentile": 98.4,
+   "against": "master"
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-023-Evidence-Black.svg",
+   "b": "20261110_Civic-Line-24px-Fit-CL-028-Watchdogs-Black.svg",
+   "likeness": 0.897,
+   "percentile": 98.3,
+   "against": "new"
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.svg",
+   "b": "R-45 Paper Ballots & Audits",
+   "likeness": 0.8921,
+   "percentile": 98,
+   "against": "master"
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-08-Donor-Disclosure-Black.svg",
+   "b": "CL-023 Evidence",
+   "likeness": 0.8859,
+   "percentile": 97.3,
+   "against": "master"
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.svg",
+   "b": "20261110_Civic-Line-24px-Fit-R-37-Feed-Choice-Black.svg",
+   "likeness": 0.8842,
+   "percentile": 97.1,
+   "against": "new"
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.svg",
+   "b": "R-37 Feed Choice",
+   "likeness": 0.8827,
+   "percentile": 97,
+   "against": "master"
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-050-Worker-Bargaining-Black.svg",
+   "b": "CL-016 Lobbying",
+   "likeness": 0.8823,
+   "percentile": 97,
+   "against": "master"
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-05-Automatic-Registration-Black.svg",
+   "b": "CL-003 Registration",
+   "likeness": 0.8812,
+   "percentile": 96.8,
+   "against": "master"
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-031-Local-Government-Black.svg",
+   "b": "R-31 Childcare Supply",
+   "likeness": 0.8724,
+   "percentile": 95.7,
+   "against": "master"
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.svg",
+   "b": "R-17 Civil Service",
+   "likeness": 0.8715,
+   "percentile": 95.6,
+   "against": "master"
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-05-Automatic-Registration-Black.svg",
+   "b": "20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.svg",
+   "likeness": 0.8701,
+   "percentile": 95.3,
+   "against": "new"
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-05-Automatic-Registration-Black.svg",
+   "b": "R-14 Automatic Funding",
+   "likeness": 0.8689,
+   "percentile": 95.1,
+   "against": "master"
+  }
+ ],
+ "own": [
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-031-Local-Government-Black.svg",
+   "b": "CL-031 Local Government",
+   "likeness": 0.9819,
+   "percentile": 100
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-15-Watchdog-Remedies-Black.svg",
+   "b": "R-15 Watchdog Remedies",
+   "likeness": 0.9606,
+   "percentile": 100
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-054-Home-Equity-Black.svg",
+   "b": "CL-054 Home Equity",
+   "likeness": 0.9575,
+   "percentile": 100
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-050-Worker-Bargaining-Black.svg",
+   "b": "CL-050 Worker Bargaining",
+   "likeness": 0.9563,
+   "percentile": 100
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.svg",
+   "b": "R-06 On-Cycle Elections",
+   "likeness": 0.9467,
+   "percentile": 99.9
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-068-Education-Black.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.9312,
+   "percentile": 99.7
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-19-Drug-Pricing-Rules-Black.svg",
+   "b": "R-19 Drug-Pricing Rules",
+   "likeness": 0.9305,
+   "percentile": 99.7
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-010-Decisive-Primaries-Black.svg",
+   "b": "CL-010 Decisive Primaries",
+   "likeness": 0.9267,
+   "percentile": 99.6
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-051-Market-Power-Black.svg",
+   "b": "CL-051 Market Power",
+   "likeness": 0.9267,
+   "percentile": 99.6
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-37-Feed-Choice-Black.svg",
+   "b": "R-37 Feed Choice",
+   "likeness": 0.9255,
+   "percentile": 99.6
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-45-Paper-Ballots-And-Audits-Black.svg",
+   "b": "R-45 Paper Ballots & Audits",
+   "likeness": 0.9199,
+   "percentile": 99.4
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-061-Household-Income-Black.svg",
+   "b": "CL-061 Household Income",
+   "likeness": 0.9165,
+   "percentile": 99.3
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.svg",
+   "b": "R-14 Automatic Funding",
+   "likeness": 0.911,
+   "percentile": 99
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-17-Civil-Service-Black.svg",
+   "b": "R-17 Civil Service",
+   "likeness": 0.9037,
+   "percentile": 98.8
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-05-Automatic-Registration-Black.svg",
+   "b": "R-05 Automatic Registration",
+   "likeness": 0.8558,
+   "percentile": 92.9
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-023-Evidence-Black.svg",
+   "b": "CL-023 Evidence",
+   "likeness": 0.8275,
+   "percentile": 85.7
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-048-Public-Records-Black.svg",
+   "b": "CL-048 Public Records",
+   "likeness": 0.8043,
+   "percentile": 78.8
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-072-Reform-Black.svg",
+   "b": "CL-072 Reform",
+   "likeness": 0.7974,
+   "percentile": 76.8
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-08-Donor-Disclosure-Black.svg",
+   "b": "R-08 Donor Disclosure",
+   "likeness": 0.7916,
+   "percentile": 74.8
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-006-Civic-Ties-Black.svg",
+   "b": "CL-006 Civic Ties",
+   "likeness": 0.7712,
+   "percentile": 68.7
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-032-Local-Reporting-Black.svg",
+   "b": "CL-032 Local Reporting",
+   "likeness": 0.7511,
+   "percentile": 61.9
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-040-Platform-Power-Black.svg",
+   "b": "CL-040 Platform Power",
+   "likeness": 0.7484,
+   "percentile": 61.1
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-070-Environment-Black.svg",
+   "b": "CL-070 Environment",
+   "likeness": 0.7456,
+   "percentile": 60.1
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-013-Incumbent-Defeat-Black.svg",
+   "b": "CL-013 Incumbent Defeat",
+   "likeness": 0.7118,
+   "percentile": 49.4
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-060-Taxes-And-Benefits-Black.svg",
+   "b": "CL-060 Taxes & Benefits",
+   "likeness": 0.6995,
+   "percentile": 45.1
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-071-Policy-Black.svg",
+   "b": "CL-071 Policy",
+   "likeness": 0.6862,
+   "percentile": 41.5
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-27-Tax-Enforcement-Black.svg",
+   "b": "R-27 Tax Enforcement",
+   "likeness": 0.6602,
+   "percentile": 34.1
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-028-Watchdogs-Black.svg",
+   "b": "CL-028 Watchdogs",
+   "likeness": 0.6563,
+   "percentile": 33.3
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-004-Petition-Black.svg",
+   "b": "CL-004 Petition",
+   "likeness": 0.6558,
+   "percentile": 33.2
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-09-Stock-Trading-Ban-Black.svg",
+   "b": "R-09 Stock-Trading Ban",
+   "likeness": 0.6261,
+   "percentile": 25.9
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-024-Feedback-Loop-Black.svg",
+   "b": "CL-024 Feedback Loop",
+   "likeness": 0.5941,
+   "percentile": 19.6
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-057-Labor-Share-Black.svg",
+   "b": "CL-057 Labor Share",
+   "likeness": 0.5921,
+   "percentile": 19.4
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-23-Indexed-Minimum-Wage-Black.svg",
+   "b": "R-23 Indexed Minimum Wage",
+   "likeness": 0.5741,
+   "percentile": 16.5
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-001-Voting-Black.svg",
+   "b": "CL-001 Voting",
+   "likeness": 0.5606,
+   "percentile": 14.6
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-047-Data-Rights-Black.svg",
+   "b": "CL-047 Data Rights",
+   "likeness": 0.5275,
+   "percentile": 11.1
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-067-Healthcare-Black.svg",
+   "b": "CL-067 Healthcare",
+   "likeness": 0.5055,
+   "percentile": 9.2
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-039-Feed-Ranking-Black.svg",
+   "b": "CL-039 Feed Ranking",
+   "likeness": 0.4894,
+   "percentile": 8.1
+  }
+ ],
+ "options": [],
+ "closest": [
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-001-Voting-Black.svg",
+   "b": "CL-048 Public Records",
+   "likeness": 0.7264,
+   "percentile": 53.8,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-004-Petition-Black.svg",
+   "b": "CL-060 Taxes & Benefits",
+   "likeness": 0.6923,
+   "percentile": 43.2,
+   "extent": 0.83
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-006-Civic-Ties-Black.svg",
+   "b": "CL-040 Platform Power",
+   "likeness": 0.7481,
+   "percentile": 61,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-010-Decisive-Primaries-Black.svg",
+   "b": "R-39 Digital Service Teams",
+   "likeness": 0.8189,
+   "percentile": 83.3,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-013-Incumbent-Defeat-Black.svg",
+   "b": "CL-039 Feed Ranking",
+   "likeness": 0.6163,
+   "percentile": 23.7,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-023-Evidence-Black.svg",
+   "b": "CL-060 Taxes & Benefits",
+   "likeness": 0.7328,
+   "percentile": 56.1,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-024-Feedback-Loop-Black.svg",
+   "b": "R-07 Small-Donor Matching",
+   "likeness": 0.581,
+   "percentile": 17.9,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-028-Watchdogs-Black.svg",
+   "b": "CL-023 Evidence",
+   "likeness": 0.7815,
+   "percentile": 71.8,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-031-Local-Government-Black.svg",
+   "b": "R-31 Childcare Supply",
+   "likeness": 0.8724,
+   "percentile": 95.7,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-032-Local-Reporting-Black.svg",
+   "b": "CL-052 Household Security",
+   "likeness": 0.7692,
+   "percentile": 68,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-039-Feed-Ranking-Black.svg",
+   "b": "CL-055 Productivity",
+   "likeness": 0.4206,
+   "percentile": 4.2,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-040-Platform-Power-Black.svg",
+   "b": "CL-068 Education",
+   "likeness": 0.7598,
+   "percentile": 65.1,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-047-Data-Rights-Black.svg",
+   "b": "CL-023 Evidence",
+   "likeness": 0.5537,
+   "percentile": 13.8,
+   "extent": 0.83
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-048-Public-Records-Black.svg",
+   "b": "R-21 Labor-Law Remedies",
+   "likeness": 0.6304,
+   "percentile": 27,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-050-Worker-Bargaining-Black.svg",
+   "b": "CL-007 Turnout Equality",
+   "likeness": 0.9022,
+   "percentile": 98.6,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-051-Market-Power-Black.svg",
+   "b": "CL-023 Evidence",
+   "likeness": 0.7728,
+   "percentile": 69.1,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-054-Home-Equity-Black.svg",
+   "b": "CL-052 Household Security",
+   "likeness": 0.8981,
+   "percentile": 98.4,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-057-Labor-Share-Black.svg",
+   "b": "CL-059 Credit Allocation",
+   "likeness": 0.372,
+   "percentile": 3,
+   "extent": 0.88
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-060-Taxes-And-Benefits-Black.svg",
+   "b": "CL-039 Feed Ranking",
+   "likeness": 0.6676,
+   "percentile": 35.9,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-061-Household-Income-Black.svg",
+   "b": "R-06 On-Cycle Elections",
+   "likeness": 0.8116,
+   "percentile": 81,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-067-Healthcare-Black.svg",
+   "b": "R-01 All-Party Primaries",
+   "likeness": 0.6189,
+   "percentile": 24.3,
+   "extent": 0.83
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-068-Education-Black.svg",
+   "b": "CL-019 Explain",
+   "likeness": 0.8227,
+   "percentile": 84.4,
+   "extent": 0.88
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-070-Environment-Black.svg",
+   "b": "CL-029 Public Services",
+   "likeness": 0.6474,
+   "percentile": 31.2,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-071-Policy-Black.svg",
+   "b": "CL-039 Feed Ranking",
+   "likeness": 0.7124,
+   "percentile": 49.5,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-CL-072-Reform-Black.svg",
+   "b": "R-24 Paid Leave",
+   "likeness": 0.6127,
+   "percentile": 23,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-05-Automatic-Registration-Black.svg",
+   "b": "CL-003 Registration",
+   "likeness": 0.8812,
+   "percentile": 96.8,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.svg",
+   "b": "R-41 Grid Cost Allocation",
+   "likeness": 0.9172,
+   "percentile": 99.3,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-08-Donor-Disclosure-Black.svg",
+   "b": "CL-023 Evidence",
+   "likeness": 0.8859,
+   "percentile": 97.3,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-09-Stock-Trading-Ban-Black.svg",
+   "b": "CL-052 Household Security",
+   "likeness": 0.7169,
+   "percentile": 50.6,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.svg",
+   "b": "R-45 Paper Ballots & Audits",
+   "likeness": 0.8921,
+   "percentile": 98,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-15-Watchdog-Remedies-Black.svg",
+   "b": "R-01 All-Party Primaries",
+   "likeness": 0.8675,
+   "percentile": 95,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-17-Civil-Service-Black.svg",
+   "b": "R-23 Indexed Minimum Wage",
+   "likeness": 0.831,
+   "percentile": 86.8,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-19-Drug-Pricing-Rules-Black.svg",
+   "b": "R-24 Paid Leave",
+   "likeness": 0.8291,
+   "percentile": 86.2,
+   "extent": 0.88
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-23-Indexed-Minimum-Wage-Black.svg",
+   "b": "CL-023 Evidence",
+   "likeness": 0.6233,
+   "percentile": 25.3,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-27-Tax-Enforcement-Black.svg",
+   "b": "CL-023 Evidence",
+   "likeness": 0.8259,
+   "percentile": 85.4,
+   "extent": 0.83
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-37-Feed-Choice-Black.svg",
+   "b": "R-32 Local-News Funding",
+   "likeness": 0.8609,
+   "percentile": 93.8,
+   "extent": 0.92
+  },
+  {
+   "a": "20261110_Civic-Line-24px-Fit-R-45-Paper-Ballots-And-Audits-Black.svg",
+   "b": "CL-044 Grid Demand",
+   "likeness": 0.8498,
+   "percentile": 91.5,
+   "extent": 0.92
+  }
+ ]
+}

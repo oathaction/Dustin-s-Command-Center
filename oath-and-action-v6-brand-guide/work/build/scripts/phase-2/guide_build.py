@@ -1793,12 +1793,17 @@ SHEET_COLORS = 16              # a contact sheet image is line art: a 16-color p
 MB = 1_000_000
 WEIGHT_LIMIT = 16 * MB         # the artifact's limit
 WEIGHT_PAGE = 15.5 * MB        # the page's budget: half a megabyte under the limit
-# Budgets per chapter in MB. They sum, with the shell, sprites and appendix, to the page budget across all 26 chapters:
-# 01 to 08 and 11 at their stage A and B weight plus room to grow, 10 with its 122 drawings and contact sheets, and
-# every later chapter at the default. The main session can move weight between chapters as long as the sum holds.
+# Budgets per chapter in MB: 01 to 08 and 11 at their stage A and B weight plus room to grow, 10 with its 122 drawings
+# and contact sheets, and every later chapter at the default. The main session can move weight between chapters.
+# Stage C (round 0, November 10, 2026): chapters 17, 18, 19 and 26 take their own budgets for Gate 2's preview. 18 holds
+# about 24 components, each live in two themes with its code in two or three panels and its anatomy plate; 26 holds the
+# generated token table (about 0.32 MB) and four worked examples; 19 is mostly words. The page budget is the one that
+# binds: the chapter budgets are ceilings that catch one chapter's growth, and their sum (17.25 MB with the 12 chapters
+# still to come at the default) runs past it. Measured on November 10: chapters 01 to 12 weigh 6.16 MB, so those, these
+# four at their ceilings and the rest at the default come to about 14.6 MB with the shell, sprites and appendix.
 WEIGHT_BUDGET = {"01": 2.7, "02": 0.85, "03": 0.65, "04": 0.45, "05": 0.45, "06": 0.35, "07": 0.3, "08": 0.3,
-                 "09": 0.4, "10": 1.0, "11": 0.55, "12": 0.5}
-WEIGHT_DEFAULT = 0.45          # chapters 13 to 26
+                 "09": 0.4, "10": 1.0, "11": 0.55, "12": 0.5, "17": 0.5, "18": 1.1, "19": 0.3, "26": 0.6}
+WEIGHT_DEFAULT = 0.45          # chapters 13 to 16, 20 to 25, 27 and 28
 WEIGHT_FIXED = {"head and shell": 0.2, "sprites": 0.35, "appendix": 0.2, "front matter and part openers": 0.1}
 
 

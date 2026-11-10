@@ -1,0 +1,3491 @@
+{
+ "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
+ "run": "2026-11-10T19:08:40.681Z",
+ "rules": {
+  "minStroke": 1,
+  "minThinArea": 0.25,
+  "maxSoftShare": 0.95,
+  "inkAlpha": 8,
+  "fullAlpha": 247,
+  "edgeTolerance": 0.1,
+  "minStraight": 1.5,
+  "straightness": 0.01,
+  "minGap": 1,
+  "minCounterArea": 0.5,
+  "weightTolerance": 0.15
+ },
+ "results": [
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-001-Voting-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       15.5,
+       3.1
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 93,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 6,
+      "lone_edges": 1,
+      "fit": 7,
+      "total": 7,
+      "off": []
+     },
+     "gap": {
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       31,
+       6.3
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 372,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 6,
+      "lone_edges": 1,
+      "fit": 7,
+      "total": 7,
+      "off": []
+     },
+     "gap": {
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-004-Petition-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       6.4,
+       3
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 99,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 11,
+      "lone_edges": 3,
+      "fit": 14,
+      "total": 14,
+      "off": []
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 1,
+      "near_px": [
+       12,
+       19
+      ]
+     },
+     "counters": {
+      "drawn": 7,
+      "open": 7
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       12.7,
+       6
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 396,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 11,
+      "lone_edges": 3,
+      "fit": 14,
+      "total": 14,
+      "off": []
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 2,
+      "near_px": [
+       24,
+       37.9
+      ]
+     },
+     "counters": {
+      "drawn": 7,
+      "open": 7
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-006-Civic-Ties-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       11.9,
+       3.1
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 72,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 22,
+      "lone_edges": 0,
+      "fit": 22,
+      "total": 22,
+      "off": []
+     },
+     "gap": {
+      "parts": 9,
+      "smallest_px": 1,
+      "near_px": [
+       11,
+       8
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       23.9,
+       6.1
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 288,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 22,
+      "lone_edges": 0,
+      "fit": 22,
+      "total": 22,
+      "off": []
+     },
+     "gap": {
+      "parts": 9,
+      "smallest_px": 2,
+      "near_px": [
+       22,
+       16
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-010-Decisive-Primaries-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       2.5,
+       6.1
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 56,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 0,
+      "fit": 12,
+      "total": 12,
+      "off": []
+     },
+     "gap": {
+      "parts": 3,
+      "smallest_px": 1,
+      "near_px": [
+       18,
+       12
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       5,
+       12.3
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 224,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 0,
+      "fit": 12,
+      "total": 12,
+      "off": []
+     },
+     "gap": {
+      "parts": 3,
+      "smallest_px": 2,
+      "near_px": [
+       36,
+       24
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-013-Incumbent-Defeat-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       7.4,
+       2
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 84,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 14,
+      "lone_edges": 3,
+      "fit": 17,
+      "total": 17,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 2,
+      "near_px": [
+       16,
+       11
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       14.7,
+       4
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 336,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 14,
+      "lone_edges": 3,
+      "fit": 17,
+      "total": 17,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 4,
+      "near_px": [
+       32,
+       21.9
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-023-Evidence-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       5.4,
+       3
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 111,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 13,
+      "lone_edges": 2,
+      "fit": 15,
+      "total": 15,
+      "off": []
+     },
+     "gap": {
+      "parts": 8,
+      "smallest_px": 1,
+      "near_px": [
+       15,
+       8
+      ]
+     },
+     "counters": {
+      "drawn": 5,
+      "open": 5
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       10.7,
+       6
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 444,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 13,
+      "lone_edges": 2,
+      "fit": 15,
+      "total": 15,
+      "off": []
+     },
+     "gap": {
+      "parts": 8,
+      "smallest_px": 2,
+      "near_px": [
+       30,
+       16
+      ]
+     },
+     "counters": {
+      "drawn": 5,
+      "open": 5
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-024-Feedback-Loop-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       11.7,
+       3
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 76,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 16,
+      "lone_edges": 2,
+      "fit": 18,
+      "total": 18,
+      "off": []
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 1,
+      "near_px": [
+       5,
+       9
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       23.5,
+       6.1
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 304,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 16,
+      "lone_edges": 2,
+      "fit": 18,
+      "total": 18,
+      "off": []
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 2,
+      "near_px": [
+       10,
+       18
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-028-Watchdogs-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       5.4,
+       3
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 98,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 4,
+      "fit": 16,
+      "total": 16,
+      "off": []
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 1,
+      "near_px": [
+       14,
+       8
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       10.7,
+       6
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 392,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 4,
+      "fit": 16,
+      "total": 16,
+      "off": []
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 2,
+      "near_px": [
+       28,
+       16
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-031-Local-Government-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       11.9,
+       5.1
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 108,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 16,
+      "lone_edges": 6,
+      "fit": 22,
+      "total": 22,
+      "off": []
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 1,
+      "near_px": [
+       10,
+       10
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       23.9,
+       10.1
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 432,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 16,
+      "lone_edges": 6,
+      "fit": 22,
+      "total": 22,
+      "off": []
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 2,
+      "near_px": [
+       20,
+       20
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-032-Local-Reporting-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       9.4,
+       4
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 162,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 13,
+      "lone_edges": 3,
+      "fit": 16,
+      "total": 16,
+      "off": []
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 1,
+      "near_px": [
+       7,
+       7
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       18.7,
+       8
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 648,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 13,
+      "lone_edges": 3,
+      "fit": 16,
+      "total": 16,
+      "off": []
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 2,
+      "near_px": [
+       14,
+       14
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-039-Feed-Ranking-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       5.4,
+       1
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 169,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 25,
+      "lone_edges": 2,
+      "fit": 27,
+      "total": 27,
+      "off": []
+     },
+     "gap": {
+      "parts": 13,
+      "smallest_px": 1,
+      "near_px": [
+       3,
+       3
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       10.7,
+       2
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 676,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 25,
+      "lone_edges": 2,
+      "fit": 27,
+      "total": 27,
+      "off": []
+     },
+     "gap": {
+      "parts": 13,
+      "smallest_px": 2,
+      "near_px": [
+       6,
+       6
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-040-Platform-Power-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       11.7,
+       3
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 86,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 34,
+      "lone_edges": 0,
+      "fit": 34,
+      "total": 34,
+      "off": []
+     },
+     "gap": {
+      "parts": 8,
+      "smallest_px": 1,
+      "near_px": [
+       11,
+       5
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       23.5,
+       6.1
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 344,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 34,
+      "lone_edges": 0,
+      "fit": 34,
+      "total": 34,
+      "off": []
+     },
+     "gap": {
+      "parts": 8,
+      "smallest_px": 2,
+      "near_px": [
+       22,
+       10
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-047-Data-Rights-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       6.4,
+       2
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 102,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 14,
+      "lone_edges": 1,
+      "fit": 15,
+      "total": 15,
+      "off": []
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 2,
+      "near_px": [
+       15,
+       6
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       12.7,
+       4
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 408,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 14,
+      "lone_edges": 1,
+      "fit": 15,
+      "total": 15,
+      "off": []
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 4,
+      "near_px": [
+       29.9,
+       12
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-048-Public-Records-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       10.4,
+       4
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 106,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 1,
+      "fit": 13,
+      "total": 13,
+      "off": []
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 1,
+      "near_px": [
+       9,
+       6
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       20.7,
+       8
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 424,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 1,
+      "fit": 13,
+      "total": 13,
+      "off": []
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 2,
+      "near_px": [
+       18,
+       12
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-050-Worker-Bargaining-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       10.6,
+       5
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 86,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 21,
+      "lone_edges": 4,
+      "fit": 25,
+      "total": 25,
+      "off": []
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 1,
+      "near_px": [
+       4,
+       10
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       21.2,
+       10.1
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 344,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 21,
+      "lone_edges": 4,
+      "fit": 25,
+      "total": 25,
+      "off": []
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 2,
+      "near_px": [
+       8,
+       20
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-051-Market-Power-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       5.9,
+       4.1
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 119,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 23,
+      "lone_edges": 10,
+      "fit": 33,
+      "total": 33,
+      "off": []
+     },
+     "gap": {
+      "parts": 10,
+      "smallest_px": 1,
+      "near_px": [
+       4,
+       8
+      ]
+     },
+     "counters": {
+      "drawn": 5,
+      "open": 5
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       11.9,
+       8.1
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 476,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 23,
+      "lone_edges": 10,
+      "fit": 33,
+      "total": 33,
+      "off": []
+     },
+     "gap": {
+      "parts": 10,
+      "smallest_px": 2,
+      "near_px": [
+       8,
+       16
+      ]
+     },
+     "counters": {
+      "drawn": 5,
+      "open": 5
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-054-Home-Equity-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       12.5,
+       4.1
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 97,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 16,
+      "lone_edges": 4,
+      "fit": 20,
+      "total": 20,
+      "off": []
+     },
+     "gap": {
+      "parts": 5,
+      "smallest_px": 1,
+      "near_px": [
+       18,
+       10
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       25,
+       8.3
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 388,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 16,
+      "lone_edges": 4,
+      "fit": 20,
+      "total": 20,
+      "off": []
+     },
+     "gap": {
+      "parts": 5,
+      "smallest_px": 2,
+      "near_px": [
+       36,
+       20
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-057-Labor-Share-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       9.4,
+       1
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 109,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 17,
+      "lone_edges": 6,
+      "fit": 23,
+      "total": 23,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 1,
+      "near_px": [
+       13,
+       1
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       18.8,
+       2.1
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 436,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 17,
+      "lone_edges": 6,
+      "fit": 23,
+      "total": 23,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 2,
+      "near_px": [
+       26,
+       2
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-060-Taxes-And-Benefits-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       5.4,
+       3
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 111,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 0,
+      "fit": 12,
+      "total": 12,
+      "off": []
+     },
+     "gap": {
+      "parts": 8,
+      "smallest_px": 1,
+      "near_px": [
+       15,
+       8
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 0
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       10.7,
+       6
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 444,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 0,
+      "fit": 12,
+      "total": 12,
+      "off": []
+     },
+     "gap": {
+      "parts": 8,
+      "smallest_px": 2,
+      "near_px": [
+       30,
+       16
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 0
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-061-Household-Income-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       5.4,
+       5
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 69,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 11,
+      "lone_edges": 0,
+      "fit": 11,
+      "total": 11,
+      "off": []
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 1,
+      "near_px": [
+       4,
+       11
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       10.8,
+       10.1
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 276,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 11,
+      "lone_edges": 0,
+      "fit": 11,
+      "total": 11,
+      "off": []
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 2,
+      "near_px": [
+       8,
+       22
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-067-Healthcare-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       11.3,
+       2
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 107,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 17,
+      "lone_edges": 0,
+      "fit": 17,
+      "total": 17,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 1,
+      "near_px": [
+       4,
+       12
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       22.6,
+       4
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 428,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 17,
+      "lone_edges": 0,
+      "fit": 17,
+      "total": 17,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 2,
+      "near_px": [
+       8,
+       24
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-068-Education-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       11.5,
+       1.1
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 112,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 27,
+      "lone_edges": 2,
+      "fit": 29,
+      "total": 29,
+      "off": []
+     },
+     "gap": {
+      "parts": 8,
+      "smallest_px": 1,
+      "near_px": [
+       11,
+       4
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       23,
+       2.3
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 448,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 27,
+      "lone_edges": 2,
+      "fit": 29,
+      "total": 29,
+      "off": []
+     },
+     "gap": {
+      "parts": 8,
+      "smallest_px": 2,
+      "near_px": [
+       22,
+       8
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-070-Environment-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       12.4,
+       3
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 75,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 21,
+      "lone_edges": 0,
+      "fit": 21,
+      "total": 21,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 1,
+      "near_px": [
+       14,
+       13
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       24.8,
+       6.1
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 300,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 21,
+      "lone_edges": 0,
+      "fit": 21,
+      "total": 21,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 2,
+      "near_px": [
+       28,
+       26
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-071-Policy-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       5.4,
+       3
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 105,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 13,
+      "lone_edges": 0,
+      "fit": 13,
+      "total": 13,
+      "off": []
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 1,
+      "near_px": [
+       11,
+       16
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       10.7,
+       6
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 420,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 13,
+      "lone_edges": 0,
+      "fit": 13,
+      "total": 13,
+      "off": []
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 2,
+      "near_px": [
+       21.9,
+       32
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-072-Reform-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       17.5,
+       3.1
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 56,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 10,
+      "lone_edges": 1,
+      "fit": 11,
+      "total": 11,
+      "off": []
+     },
+     "gap": {
+      "parts": 3,
+      "smallest_px": 1,
+      "near_px": [
+       10,
+       12
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       35,
+       6.3
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 224,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 10,
+      "lone_edges": 1,
+      "fit": 11,
+      "total": 11,
+      "off": []
+     },
+     "gap": {
+      "parts": 3,
+      "smallest_px": 2,
+      "near_px": [
+       19.9,
+       24
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-05-Automatic-Registration-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       5.4,
+       6
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 103,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 16,
+      "lone_edges": 0,
+      "fit": 16,
+      "total": 16,
+      "off": []
+     },
+     "gap": {
+      "parts": 10,
+      "smallest_px": 1,
+      "near_px": [
+       5,
+       8
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       10.7,
+       12
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 412,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 16,
+      "lone_edges": 0,
+      "fit": 16,
+      "total": 16,
+      "off": []
+     },
+     "gap": {
+      "parts": 10,
+      "smallest_px": 2,
+      "near_px": [
+       10,
+       16
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       10.6,
+       7
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 93,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 14,
+      "lone_edges": 0,
+      "fit": 14,
+      "total": 14,
+      "off": []
+     },
+     "gap": {
+      "parts": 15,
+      "smallest_px": 1,
+      "near_px": [
+       11,
+       11
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       21.1,
+       14.1
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 372,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 14,
+      "lone_edges": 0,
+      "fit": 14,
+      "total": 14,
+      "off": []
+     },
+     "gap": {
+      "parts": 15,
+      "smallest_px": 2,
+      "near_px": [
+       22,
+       22
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-08-Donor-Disclosure-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       5.4,
+       4
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 98,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 14,
+      "lone_edges": 7,
+      "fit": 21,
+      "total": 21,
+      "off": []
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 1,
+      "near_px": [
+       5,
+       6
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       10.7,
+       8
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 392,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 14,
+      "lone_edges": 7,
+      "fit": 21,
+      "total": 21,
+      "off": []
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 2,
+      "near_px": [
+       10,
+       12
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-09-Stock-Trading-Ban-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       6.4,
+       4
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 128,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 6,
+      "fit": 18,
+      "total": 18,
+      "off": []
+     },
+     "gap": {
+      "parts": 10,
+      "smallest_px": 1,
+      "near_px": [
+       7,
+       18
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 0
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       12.7,
+       8
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 512,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 6,
+      "fit": 18,
+      "total": 18,
+      "off": []
+     },
+     "gap": {
+      "parts": 10,
+      "smallest_px": 2,
+      "near_px": [
+       14,
+       36
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 0
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       5.4,
+       6
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 102,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 9,
+      "lone_edges": 3,
+      "fit": 12,
+      "total": 12,
+      "off": []
+     },
+     "gap": {
+      "parts": 5,
+      "smallest_px": 1,
+      "near_px": [
+       4,
+       8
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 0
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       10.7,
+       12
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 408,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 9,
+      "lone_edges": 3,
+      "fit": 12,
+      "total": 12,
+      "off": []
+     },
+     "gap": {
+      "parts": 5,
+      "smallest_px": 2,
+      "near_px": [
+       8,
+       16
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 0
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-15-Watchdog-Remedies-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       8.7,
+       6
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 80,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 10,
+      "lone_edges": 8,
+      "fit": 18,
+      "total": 18,
+      "off": []
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 1,
+      "near_px": [
+       15,
+       9
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       17.5,
+       12.1
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 320,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 10,
+      "lone_edges": 8,
+      "fit": 18,
+      "total": 18,
+      "off": []
+     },
+     "gap": {
+      "parts": 6,
+      "smallest_px": 2,
+      "near_px": [
+       30,
+       18
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-17-Civil-Service-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       9.5,
+       5.1
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 104,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 16,
+      "lone_edges": 1,
+      "fit": 17,
+      "total": 17,
+      "off": []
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 1,
+      "near_px": [
+       6,
+       9
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       19,
+       10.3
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 416,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 16,
+      "lone_edges": 1,
+      "fit": 17,
+      "total": 17,
+      "off": []
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 2,
+      "near_px": [
+       12,
+       18
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-19-Drug-Pricing-Rules-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       11.4,
+       5
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 72,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 10,
+      "lone_edges": 7,
+      "fit": 17,
+      "total": 17,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 1,
+      "near_px": [
+       18,
+       11
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       22.8,
+       10.1
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 288,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 10,
+      "lone_edges": 7,
+      "fit": 17,
+      "total": 17,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 2,
+      "near_px": [
+       36,
+       22
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-23-Indexed-Minimum-Wage-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       5.4,
+       4
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 116,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 16,
+      "lone_edges": 5,
+      "fit": 21,
+      "total": 21,
+      "off": []
+     },
+     "gap": {
+      "parts": 11,
+      "smallest_px": 1,
+      "near_px": [
+       4,
+       14
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 0
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       10.7,
+       8
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 464,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 16,
+      "lone_edges": 5,
+      "fit": 21,
+      "total": 21,
+      "off": []
+     },
+     "gap": {
+      "parts": 11,
+      "smallest_px": 2,
+      "near_px": [
+       8,
+       28
+      ]
+     },
+     "counters": {
+      "drawn": 0,
+      "open": 0
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-27-Tax-Enforcement-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       6.4,
+       4
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 99,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 14,
+      "lone_edges": 2,
+      "fit": 16,
+      "total": 16,
+      "off": []
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 1,
+      "near_px": [
+       5,
+       6
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       12.7,
+       8
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 396,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 14,
+      "lone_edges": 2,
+      "fit": 16,
+      "total": 16,
+      "off": []
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 2,
+      "near_px": [
+       10,
+       12
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-37-Feed-Choice-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       5.4,
+       5
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 110,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 4,
+      "fit": 16,
+      "total": 16,
+      "off": []
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 1,
+      "near_px": [
+       3,
+       7
+      ]
+     },
+     "counters": {
+      "drawn": 5,
+      "open": 5
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       10.7,
+       10
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 440,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 12,
+      "lone_edges": 4,
+      "fit": 16,
+      "total": 16,
+      "off": []
+     },
+     "gap": {
+      "parts": 7,
+      "smallest_px": 2,
+      "near_px": [
+       6,
+       14
+      ]
+     },
+     "counters": {
+      "drawn": 5,
+      "open": 5
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-45-Paper-Ballots-And-Audits-Black.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": 1,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 1.02,
+      "thinnest_near_px": [
+       9.4,
+       5
+      ],
+      "main": 1,
+      "median": 1.02
+     },
+     "soft_edges": {
+      "ink_px": 114,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 14,
+      "lone_edges": 6,
+      "fit": 20,
+      "total": 20,
+      "off": []
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 1,
+      "near_px": [
+       8,
+       9
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [],
+      "thinnest": 2.04,
+      "thinnest_near_px": [
+       18.7,
+       10
+      ],
+      "main": 2,
+      "median": 2.04
+     },
+     "soft_edges": {
+      "ink_px": 456,
+      "partial_px": 0,
+      "share": 0
+     },
+     "straight": {
+      "strokes": 14,
+      "lone_edges": 6,
+      "fit": 20,
+      "total": 20,
+      "off": []
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 2,
+      "near_px": [
+       16,
+       17.9
+      ]
+     },
+     "counters": {
+      "drawn": 4,
+      "open": 4
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  }
+ ]
+}

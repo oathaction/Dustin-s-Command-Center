@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="Housing" viewBox="0 0 131 207">
+  <g data-role="accent">
+    <polygon points="40,96 40,58 80,26 120,58 120,96"/>
+  </g>
+  <g data-role="base">
+    <rect x="70" y="62" width="20" height="20" rx="3"/>
+    <line x1="80" y1="96" x2="80" y2="196"/>
+    <polyline points="80,158 104,158 104,170"/>
+    <polyline points="80,182 100,182 100,194"/>
+  </g>
+</svg>
