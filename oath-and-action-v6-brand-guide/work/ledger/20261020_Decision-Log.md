@@ -2288,3 +2288,46 @@ The studio asked four questions with the stage C draft brief. Dustin: "yes to al
 | # | Decision | Reason |
 |---|---|---|
 | D2-1181 | The identity designer's two proposals, the print L3 at 2.18 cap heights and the social card's sign-off at 96 px, go on drawings board C as cards 4 and 5, scored by the creative director with the drawings | Both are named approvals under gate rule 4; the early board gets Dustin's answer before round 2, so an approval lands in the page the red teams review |
+
+### Engineer (`20261110_Stage-C-Engineer-Round-0-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1182 | The 200 percent fixes live in the shell's CSS and the build's markup, never in a chapter file | The brief: a chapter's source line or folio wraps in the shell |
+| D2-1183 | The cover tagline stops growing at 20vw | One word must fit a phone's column at large text; 20vw never binds at the default size from 320 px up |
+| D2-1184 | A chapter link wraps only where its container is under 17rem | That happens only at large text sizes, so the default layout does not move |
+| D2-1185 | A plate label's words sit in one span | IDs held whole made each ID a flex item, which kept the label from wrapping and set gaps for spaces |
+| D2-1186 | The guide check's 200 percent sideways test runs at 390 and 360 px, as at 1024 | D2-1103, now that the page passes there |
+| D2-1187 | The opener sits in the chapter head, under the intro and before the rule index, on the mat with no label | CD-S16 asks for a drawing on the first screen; the mat says it is a piece at true size |
+| D2-1188 | An opener flows or is at most 328 px wide, and 01 to 08 refuse one | "Fits the chapter column at true size" (the brief) and D2-1134 |
+| D2-1189 | The theme attribute is `data-oa-theme`, with `light`, `dark` and `device`, and no attribute follows the device | The brief asks me to name it; the main session's call adds Match my device |
+| D2-1190 | The attribute on any element below the root sets that element and its contents | Chapter 18 must show each component in both themes on one page without touching the guide's root |
+| D2-1191 | The theme blocks come after the surface classes, and a surface class keeps its surface inside a theme | One element carrying both takes the theme; a block that must stay Newsprint names its surface |
+| D2-1192 | A new short name, `--oa-color-surface`, in every surface class and theme | A menu, dialog or masthead paints its own ground and must follow the theme |
+| D2-1193 | A field ground role on four surfaces, paired as the selected band pairs them, with its edge measured | G-1; no value is new, and the edge keeps 3:1 on the surface and on the field |
+| D2-1194 | Roles with no Charcoal token stay `initial` in the dark theme | As in the Charcoal class; the diverging scale waits for a measured Charcoal ramp |
+| D2-1195 | Storage key `oa-theme`, holding `light` or `dark`; Match my device removes it | The research lead's section 4 and the main session's call |
+| D2-1196 | The guide's root carries `data-oa-theme="light"`, `<meta name="color-scheme" content="only light">` and `color-scheme: only light` | D2-1133; "only light" also stops a browser's own dark mode (CSS Color Adjustment Level 1) |
+| D2-1197 | tokens.json's root holds the theme record and change notes, newest first, and a version rise without a note fails | Token architecture section 7, step 6; the package's notes file comes with the package |
+| D2-1198 | Token version 6.0.0-gate2.7 | A new role and the themes in the shipped files |
+| D2-1199 | A code set is two or three files in `work/build/guide/code/`, named `c-NN-name`, attached by a rule's `"code"` | Files keep code readable and diffable; one set, one home |
+| D2-1200 | The live stages are built from the set's own files, once in each theme | The specimen cannot drift from the copy, and DR-204 asks for both surfaces |
+| D2-1201 | The shell's element styles stop at a code stage's edge, and forced colors reaches it | The live demo must draw as the copy does in a builder's page |
+| D2-1202 | `codeMatch` compares pixels at the live stage's own place on the screen | Text drawn at another fractional offset antialiases differently; the same place gives an exact match |
+| D2-1203 | The pasted page holds the brand's fonts, tokens.css and `body { margin: 0; font: var(--oa-type-body) }` | What chapter 26 tells a builder to start from |
+| D2-1204 | Code panels stack, with one status line per code plate | Each panel stays at full width for long lines, and one line says what was copied |
+| D2-1205 | The shell's Copy writes to the `.status` line of its own plate or block | A live demo may hold its own `role="status"`, which the shell must never write |
+| D2-1206 | Status marks are 16 px utility drawings, hidden until used | Rule 11.15 sets 16 px inside a line of text |
+| D2-1207 | The token table lands as a generated specimen file with no manifest entry until chapter 26 exists | The build warns on an entry no chapter places, and the brief keeps chapter 26 for round 1 |
+| D2-1208 | The token table's rows stack under 50rem of room | Five columns need about 800 px to read |
+| D2-1209 | Download sizes in kilobytes of 1,000 bytes, rounded | F-10; the size a reader's file manager shows on most systems |
+| D2-1210 | The menu backdrop is solid Charcoal | F-13; opacity has two jobs and no others (T-10) |
+| D2-1211 | Chapter budgets 17 at 0.5 MB, 18 at 1.1, 19 at 0.3 and 26 at 0.6 | Measured weights of 01 to 12 and the parts each new chapter holds |
+| D2-1212 | The shell keeps `font: inherit` for specimen form controls at (0,1,1) through `:where()` | My first version raised it and broke the ask's large text in `s-11-15-correct` |
+| D2-1213 | The guide check's focus walk starts from a mark at the top of the body | A blur keeps the browser's starting point where an earlier check left it; the walk must not depend on what ran before |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1214 | The page-level weight warning binds, not the sum of chapter ceilings. The whole guide projects to about 14.6 MB against the 15.5 MB page budget, so the Gate 2 report carries page weight as a Phase 3 to 5 risk, with chapter 14's 127 forms the largest unknown | The engineer's finding (section 6); a ceiling is an upper bound for one chapter, and the page budget is what the 16 MB limit enforces |
