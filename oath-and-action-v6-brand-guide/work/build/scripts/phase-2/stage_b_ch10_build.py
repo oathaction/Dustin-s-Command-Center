@@ -835,7 +835,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
     figs['look-alikes at 24 px'] = {'ids': list(g24), 'likeness_min': min(v24), 'likeness_max': max(v24)}
     cells = ''.join(f'<div class="c c24"><span class="h24">{sym(i, 24, fam=family(rows[i]))}</span>'
                     f'<span class="w">{esc(word(rows[i]))}</span><span class="id">{esc(i)}</span></div>' for i in g24)
-    groups.append(f'<li class="g24"><p class="gk">At 24 px only: never two in one view</p><div class="cs">{cells}</div>'
+    groups.append(f'<li class="g24"><p class="gk">At 24 px, never two in one view</p><div class="cs">{cells}</div>'
                   f'<div class="tx"><p class="lk">{esc(look24(rows))}</p><p class="fg">Outline likeness at 24 px: '
                   f'{fmt_like(min(v24))} to {fmt_like(max(v24))} across the 10 pairs.</p></div></li>')
     css = (k.vars() + '.l{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}'
@@ -850,7 +850,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
              'Six groups of drawings for close subjects, each at 64 px with its word and ID, then what tells them apart '
              'and their outline likeness at 24 px. ' + ' '.join(
                  f'{" and ".join(word(rows[i]) for i in grp)}: {look}' for grp, look in LOOKALIKES)
-             + ' Last, a group headed At 24 px only: never two in one view, with five drawings at 24 px in one color: '
+             + ' Last, a group headed At 24 px, never two in one view, with five drawings at 24 px in one color: '
              + ', '.join(word(rows[i]) for i in LOOKALIKE_24[0]) + '. ' + look24(rows)
              + f' Their outline likeness at 24 px runs from {fmt_like(min(v24))} to {fmt_like(max(v24))}.',
              readable=True,
@@ -1092,7 +1092,8 @@ def chapter(rows, reads24, like, sheets, figs):
                                'the line is under half a pixel, and the six drawings become gray marks a reader cannot '
                                'tell apart.'},
         'specs': [
-            {'label': 'Floor', 'value': '48 px for any of the 124', 'token': 'oa.size.icon.large'},
+            {'label': 'Floor', 'value': '48 px for any of the 124, except inside a one-color tile (Rule 10.5)',
+             'token': 'oa.size.icon.large'},
             {'label': '24 px', 'value': f'Only the 41: {n41}', 'token': 'oa.size.icon.medium'},
             {'label': '16 px', 'value': 'Never for a topic or atlas symbol', 'token': 'oa.size.icon.small'},
             {'label': 'Line', 'value': '0.50 to 0.63 px at 24 px; 1.01 to 1.26 px at 48 px'},
@@ -1158,7 +1159,7 @@ def chapter(rows, reads24, like, sheets, figs):
             'reform drawing takes its reform’s name and chip. The rejected option on term limits keeps the word Rejected '
             'wherever it appears.',
             'A subject that no topic symbol names, such as Housing, takes its word alone. An atlas drawing appears only '
-            'beside the atlas’s own name, never beside a piece’s own topic word.',
+            'beside the atlas’s own name for it.',
             'Hide the drawing from screen readers when its word sits beside it, so the word is read once.'],
         'tokens': ['oa.type.ui', 'oa.type.label'],
         'why': {'text': [f'Even a clear drawing can name several things: the chamber in {lab("CL-025")} could be any '
@@ -1269,7 +1270,7 @@ def chapter(rows, reads24, like, sheets, figs):
             f'{fmt_like(far["likeness"])}. Of those, {lab("CL-027")} and {lab("CL-031")} come closest, at '
             f'{fmt_like(close["likeness"])}, closer than {close["percentile"]:.0f} pairs in a hundred.',
             f'The five page-and-magnifier drawings score from {fmt_like(min(v24))} to {fmt_like(max(v24))} among '
-            f'themselves, and {C.num(over)} of their 10 pairs reach the flag, so the test agrees with what a reader '
+            f'themselves, and {C.num(over)} of their 10 pairs score {flag:.2f} or more, so the test agrees with what a reader '
             'sees at 24 px.'],
             'basis': 'Design judgment, measured with the likeness test'},
         'correct': {'specimen': 's-10-9-correct',

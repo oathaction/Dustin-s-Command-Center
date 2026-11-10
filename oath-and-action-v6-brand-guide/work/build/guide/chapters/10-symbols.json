@@ -243,7 +243,7 @@
       "specs": [
         {
           "label": "Floor",
-          "value": "48 px for any of the 124",
+          "value": "48 px for any of the 124, except inside a one-color tile (Rule 10.5)",
           "token": "oa.size.icon.large"
         },
         {
@@ -354,7 +354,7 @@
       "title": "Set every symbol beside its own word.",
       "rule": [
         "Print the word beside every symbol. A topic symbol carries its own word, such as Congress. Where the same drawing stands for the atlas variable, it takes the atlas’s name, Congressional capacity, followed by a typed chip, a small outlined label that holds the kind of element and its atlas ID, such as Variable D1. Each reform drawing takes its reform’s name and chip. The rejected option on term limits keeps the word Rejected wherever it appears.",
-        "A subject that no topic symbol names, such as Housing, takes its word alone. An atlas drawing appears only beside the atlas’s own name, never beside a piece’s own topic word.",
+        "A subject that no topic symbol names, such as Housing, takes its word alone. An atlas drawing appears only beside the atlas’s own name for it.",
         "Hide the drawing from screen readers when its word sits beside it, so the word is read once."
       ],
       "tokens": [
@@ -512,7 +512,7 @@
       "why": {
         "text": [
           "A likeness test compares two drawings at 24 px, where only their outlines are left, and scores the pair from −1 to 1. Among the 7,626 pairs in the set, one pair in a hundred scores 0.91 or more. The six groups of neighbors all score under that, and their risk lies in the subjects, since a builder looking for a hearing can reach for Public meeting although the two drawings score −0.09. Of those, Doctrine favoring the appointing coalition and Local government come closest, at 0.84, closer than 88 pairs in a hundred.",
-          "The five page-and-magnifier drawings score from 0.80 to 0.96 among themselves, and four of their 10 pairs reach the flag, so the test agrees with what a reader sees at 24 px."
+          "The five page-and-magnifier drawings score from 0.80 to 0.96 among themselves, and four of their 10 pairs score 0.91 or more, so the test agrees with what a reader sees at 24 px."
         ],
         "basis": "Design judgment, measured with the likeness test"
       },

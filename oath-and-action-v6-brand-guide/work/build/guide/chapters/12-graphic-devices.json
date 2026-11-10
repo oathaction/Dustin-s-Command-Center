@@ -368,7 +368,7 @@
       },
       "correct": {
         "specimen": "s-12-locator-correct",
-        "caption": "The atlas locator and the state locator at true size, each in ink, beside headlines that keep their width."
+        "caption": "The atlas locator and the state locator at true size, each in ink, small enough that the headline beside it keeps at least 200 px on a phone."
       },
       "failure": {
         "specimen": "s-12-locator-failure",

@@ -2419,6 +2419,16 @@ def self_test():
                    '<use class="oa-at-1x" href="#oa-sym-cl-019-24px"/><use class="oa-at-2x" href="#oa-sym-cl-019"/></svg>'],
           "tests": [("the sprite holds the fit and the master the pattern names", lambda pg: {"oa-sym-cl-019-24px", "oa-sym-cl-019", "oa-sym-cl-020-16px"} <= {s for s, _ in symbols_of(pg)}),
                     ("the 16 px fit draws alone, on every screen", lambda pg: '<use href="#oa-sym-cl-020-16px"/>' in figure_of(pg, "s-09-good"))]}),
+        ("IDs held whole (D2-975): an ASCII hyphen inside span.nw in text, no U+2011 anywhere",
+         {"01-purpose.json": chapter("01", "purpose", "Purpose", [rule("01.1", {"rule": "Draw CL\u2011001 and R\u201102 beside the take\u2011part mark, and U-close at 24 px.",
+                                                                                "correct": {"specimen": "s-test-ids", "caption": "Reforms R\u201101 to R\u201125."}})])},
+         {"specimens": {"s-test-ids.html": '<p>CL\u2011019 <b>S\u2011not\u2011yet</b></p><svg viewBox="0 0 80 20" width="80" height="20" aria-hidden="true"><text x="0" y="14">CL\u2011020</text></svg><script>var t = "two\u2011lane";</script>'},
+          "manifest": {"s-test-ids": {"chapter": "01", "rule": "01.1", "alt": "A list of reforms, R\u201101 to R\u201125, at true size.", "width_px": 320, "notes": "fixture"}}},
+         {"html": ['<span class="nw">CL-001</span>', '<span class="nw">R-02</span>', '<span class="nw">take-part</span>', '<span class="nw">U-close</span>',
+                   '<span class="nw">CL-019</span>', '<span class="nw">S-not-yet</span>', '<text x="0" y="14">CL-020</text>', 'var t = "two-lane"',
+                   'A list of reforms, R-01 to R-25, at true size.', '.nw { white-space: nowrap }'],
+          "tests": [("no U+2011 is left anywhere in the page", lambda pg: "\u2011" not in pg),
+                    ("SVG text takes no span", lambda pg: '<text x="0" y="14"><span' not in pg)]}),
     ]
     results, ok_all = [], True
     with tempfile.TemporaryDirectory(prefix="oa-guide-build-") as tmp:

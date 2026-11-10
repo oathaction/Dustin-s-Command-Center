@@ -67,6 +67,9 @@
 //                      covers it, so no rail link sits out of sight
 //   textSpacing        also: at 1024 px, with text at 200 percent, the page does not scroll sideways (CA-S17, SC 1.4.4)
 //   forcedWordmark     with forced colors on, dark and light, the masthead wordmark draws in one color (CA-S16)
+//   nbHyphen           no U+2011 (the non-breaking hyphen) in the page's text, SVG text included, or in an alt, title,
+//                      aria-label or other name: the page's fonts do not draw it and a search for "CL-001" misses it
+//                      (D2-975); the build writes IDs with an ASCII hyphen inside <span class="nw">
 //   iconTargets        also: a control that shows only after a reader types, such as a search field's Clear, is typed
 //                      into view and held to 44 by 44 px (CA-M2). Runs last, so no other check sees the typed state
 const fs = require('fs');
@@ -1216,6 +1219,23 @@ async function checkPage(browser, file, widths, opts = {}) {
     await page.waitForTimeout(500);
     if (opts.mutate) await page.evaluate(opts.mutate);
     const a = await audit(page);
+    // D2-975: no U+2011 in the page's text or names
+    a.nbHyphen = await page.evaluate(() => {
+      const hits = []; const where = (el) => { const st = el && el.closest && el.closest('[data-specimen]'); const sec = el && el.closest && el.closest('section[id]'); return st ? st.getAttribute('data-specimen') : sec ? '#' + sec.id : (el && el.tagName || '').toLowerCase(); };
+      const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      for (let n = w.nextNode(); n; n = w.nextNode()) {
+        if (!n.textContent.includes('\u2011')) continue;
+        const el = n.parentElement; if (el && el.closest('script, style')) continue;
+        hits.push({ where: where(el), in: 'text', text: n.textContent.trim().slice(0, 50) });
+      }
+      for (const el of document.querySelectorAll('[alt], [title], [aria-label], [aria-description], [placeholder], [data-frame-name], [aria-roledescription]')) {
+        for (const k of ['alt', 'title', 'aria-label', 'aria-description', 'placeholder', 'data-frame-name', 'aria-roledescription']) {
+          const v = el.getAttribute(k); if (v && v.includes('\u2011')) hits.push({ where: where(el), in: k, text: v.slice(0, 50) });
+        }
+      }
+      if (document.title.includes('\u2011')) hits.push({ where: 'title', in: 'title', text: document.title.slice(0, 50) });
+      return hits;
+    });
     a.frames = await frameAudit(page);
     a.fit = await fitAudit(page);
     const fails = failuresFrom(a, width);
@@ -1231,6 +1251,7 @@ async function checkPage(browser, file, widths, opts = {}) {
     a.stageB = { icons: sb.audit.icons, stateStages: sb.audit.stateStages, statePictures: sb.audit.statePictures, inlineTargets: sb.audit.inlineTargets || 0, missingFamily: sb.audit.missingFamily, markReaders: sb.audit.marks.readers, glyphParts: sb.forced ? sb.forced.glyphParts : null, useParts: sb.forced ? sb.forced.useParts : null,
       menu: sb.menu ? (sb.menu.problems.length ? sb.menu.problems : 'opens, holds focus, closes by Escape and Close, returns focus') : 'not shown at this width',
       forcedWordmark: sb.forced ? (sb.forced.wordmark.length ? sb.forced.wordmark : 'one color in dark and light') : null };
+    if (a.nbHyphen.length) fails.push({ key: 'nbHyphen', msg: `${width}: ${a.nbHyphen.length} U+2011 non-breaking hyphen(s) in text or names, which the page's fonts do not draw and a search for the ID misses (D2-975); first: ${JSON.stringify(a.nbHyphen[0])}` });
     if (a.fit.under.length) fails.push({ key: 'fitFloor', msg: `${width}: ${a.fit.under.length} plate(s) whose Fit to window sets text under 13 px: ${a.fit.under.slice(0, 8).map((x) => `${x.specimen} (${x.smallest} px at ${Math.round(x.scale * 100)}%, "${x.sample}")`).join('; ')}` });
     let axe = null;
     if (!opts.skipAxe) {
@@ -1480,6 +1501,9 @@ const PLANTS = [
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div data-specimen="s-demo-live" role="group" aria-label="A search"><label for="sb-q">Search the symbols</label><span style="display:inline-flex;align-items:center"><input id="sb-q" type="text"><button type="button" id="sb-clr" aria-label="Clear the search" hidden style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center"><svg data-icon="U-close" data-icon-family="utility" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2"/></svg></button></span></div>');
     const q = document.getElementById('sb-q'), c = document.getElementById('sb-clr'); q.addEventListener('input', () => { c.hidden = !q.value; }); },
     verify: (r) => r.runs[0].typed && r.runs[0].typed.shown.some((x) => x.label === 'Clear the search' && x.w >= 44) },
+  { key: 'nbHyphen', fault: 'an ID written with U+2011 in rule text (D2-975)', js: () => { document.querySelector('.rule-text').append(' See CL\u2011001.'); } },
+  { key: 'nbHyphen', fault: 'an ID written with U+2011 in a specimen alt (D2-975)', js: () => { document.querySelector('[data-specimen][role="img"]').setAttribute('aria-label', 'A list of reforms, R\u201101 to R\u201125, at true size.'); } },
+  { key: 'nbHyphen', fault: 'an ID written by the build: an ASCII hyphen held whole in span.nw (allowed: must not be flagged)', expect: false, js: () => { document.querySelector('.rule-text').insertAdjacentHTML('beforeend', ' See <span class="nw">CL-001</span>.'); } },
 ];
 
 async function selfTest() {

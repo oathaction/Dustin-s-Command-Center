@@ -554,8 +554,8 @@ def chapter(ctx, figs, existing):
             'red that marks a reform, an error or a step to take.'],
             'basis': 'Design judgment, from the atlas’s visual system'},
         'correct': {'specimen': 's-12-locator-correct',
-                    'caption': 'The atlas locator and the state locator at true size, each in ink, beside headlines that '
-                               'keep their width.'},
+                    'caption': 'The atlas locator and the state locator at true size, each in ink, small enough that the '
+                               'headline beside it keeps at least 200 px on a phone.'},
         'failure': {'specimen': 's-12-locator-failure',
                     'caption': '<strong>Fails Rule 12.7.</strong> The current part filled red. “You are here” takes the '
                                'view’s red, and the reform marker, the error or the ask loses it.'},
