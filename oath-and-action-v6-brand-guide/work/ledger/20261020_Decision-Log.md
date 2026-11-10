@@ -1933,3 +1933,18 @@ Four reviewers reported on the frozen page (D2-955): brand, evidence and nonpart
 | D2-971 | The 41 stay as DR-136 set them; Rule 10.9 adds that two of CL-023, CL-028, R-08, R-27 and R-45 never share a view at 24 px, and `s-10-9-correct` shows the five | The craft team found the five draw as one page-and-magnifier shape at 24 px; the line narrows use and changes no approved list |
 | D2-972 | The loop stepper's Play holds each step about 250 ms a word, never under 6 seconds, and Rule 11.14's spec states it; this replaces D2-868's 2.4 seconds | Each step is 25 to 30 words; at 2.4 seconds neither a reader nor a screen reader keeps up |
 | D2-973 | The identity designer judges whether the proofs' social card kicker should read at feed size, and the engineer recaptures the reader check's card after | The kicker stands about 5 px tall at 358 px; Rule 08.2's feed test sets the sizes a feed shows |
+
+## Answers on round 3's questions, November 10, 2026
+
+The studio asked which loop chapter 11's stepper runs and listed four questions for board B. Dustin: "For the two questions, let's go with your recommendations. The two questions that the creative director raised, let's go with your recommendations." The studio reads "the two questions" as the red teams' two (the stepper's loop, Housing), and the creative director's two as D2-730 and the 24 px fits. D2-880 stays on board B, since gate rule 4's side-by-side view at actual size is what Dustin approves it on.
+
+| # | Decision | Source |
+|---|---|---|
+| DR-195 | Chapter 11's live loop stepper (Rule 11.14) runs Atlas V7's loop R1, "Wealth and political influence reinforce each other". Rule 12.5's marker and the reader check stay on loop R10 and reform R-01 | Dustin, November 10, as recommended (brand team's question) |
+| DR-196 | DR-137 stands. Chapter 10 says a subject no topic drawing names takes its word alone, and a Housing topic drawing joins the next drawings board for approval by name, as Testify and Contact an Official did | Dustin, November 10, as recommended (plain language team's question) |
+| DR-197 | The 16 px Pause and Filter files are redrawn with 5 px bars and a 5 px spout so each opening keeps a whole open pixel on 1x screens; the 24 px files and every other 16 px file stay as approved. The redraws come to Dustin side by side with the approved files at 16 px on 1x and 2x for approval by name at stage C | Dustin, November 10, as recommended (creative director's question 1, D2-730) |
+| DR-198 | The 37 drawings that may be set at 24 px get 24 px pixel fits, drawn by one hand and approved on a board as the pillar fits were, at stage C or Phase 3, with the pillar icons' switch (the fit on 1x screens, the master from 2x). Until then Rule 10.4's words stand | Dustin, November 10, as recommended (creative director's question 2) |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-974 | The chapter 11 hand moves the stepper to loop R1 in this pass, with D2-969's wording on any plausible step and D2-972's pace | DR-195 |
