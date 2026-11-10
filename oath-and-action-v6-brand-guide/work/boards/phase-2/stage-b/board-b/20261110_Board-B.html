@@ -1,0 +1,1246 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Board B Decisions</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="chart-views" content="overview">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;800&family=Inter:wght@400;500;600;700&family=Lora:ital@1&display=swap" rel="stylesheet">
+<style>:root {
+  --oa-color-palette-newsprint: #DCD9D2;
+  --oa-color-palette-charcoal: #121212;
+  --oa-color-palette-pillar-red: #E63946;
+  --oa-color-palette-prussian: #1F2D5A;
+  --oa-color-palette-stone: #5D636D;
+  --oa-color-palette-verdigris: #4A7C74;
+  --oa-color-palette-white: #FFFFFF;
+  --oa-color-derived-deep-stone: #4E535B;
+  --oa-color-derived-dim-newsprint: #A3A19C;
+  --oa-color-derived-error-band: #E1C9C1;
+  --oa-color-tint-stone-n55: #A1A2A3;
+  --oa-color-tint-stone-n70: #B4B4B3;
+  --oa-color-tint-stone-n88: #CCCAC5;
+  --oa-color-tint-stone-n90: #CECDC7;
+  --oa-color-tint-stone-n35: #878A8F;
+  --oa-color-tint-stone-n85: #C8C6C2;
+  --oa-color-tint-stone-c10: #555A63;
+  --oa-color-tint-stone-c40: #3D4046;
+  --oa-color-tint-stone-c45: #393C41;
+  --oa-color-tint-stone-c55: #323438;
+  --oa-color-tint-stone-c60: #2E3034;
+  --oa-color-tint-stone-c72: #252729;
+  --oa-color-tint-stone-c75: #232426;
+  --oa-color-tint-stone-c80: #202122;
+  --oa-color-tint-white-n55: #ECEAE6;
+  --oa-color-tint-prussian-n62: #8E94A4;
+  --oa-color-tint-verdigris-n55: #9AAEA6;
+  --oa-color-tint-verdigris-c25: #3C5F59;
+  --oa-color-tint-verdigris-n82: #C1C8C0;
+  --oa-color-tint-verdigris-n52p75: #97ACA4;
+  --oa-color-tint-verdigris-n23p5: #6D9189;
+  --oa-color-tint-verdigris-c5p75: #47756E;
+  --oa-color-tint-verdigris-c35: #36544F;
+  --oa-color-tint-verdigris-c75: #202A28;
+  --oa-color-tint-verdigris-c50: #2E4340;
+  --oa-color-tint-verdigris-c20: #3F655E;
+  --oa-color-tint-verdigris-n25: #6F938B;
+  --oa-color-surface-newsprint: var(--oa-color-palette-newsprint);
+  --oa-color-surface-white: var(--oa-color-palette-white);
+  --oa-color-surface-charcoal: var(--oa-color-palette-charcoal);
+  --oa-color-surface-prussian: var(--oa-color-palette-prussian);
+  --oa-color-text-primary-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-text-primary-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-text-primary-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-text-primary-on-prussian: var(--oa-color-palette-white);
+  --oa-color-text-secondary-on-newsprint: var(--oa-color-derived-deep-stone);
+  --oa-color-text-secondary-on-white: var(--oa-color-derived-deep-stone);
+  --oa-color-text-secondary-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-text-secondary-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-graphic-essential-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-graphic-essential-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-graphic-essential-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-graphic-essential-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-graphic-subtle-on-newsprint: var(--oa-color-palette-stone);
+  --oa-color-graphic-subtle-on-white: var(--oa-color-palette-stone);
+  --oa-color-graphic-subtle-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-graphic-subtle-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-border-strong-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-border-strong-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-border-strong-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-border-strong-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-border-hairline-on-newsprint: var(--oa-color-palette-stone);
+  --oa-color-border-hairline-on-white: var(--oa-color-palette-stone);
+  --oa-color-border-hairline-on-charcoal: var(--oa-color-palette-stone);
+  --oa-color-border-hairline-on-prussian: var(--oa-color-palette-white);
+  --oa-color-focus-ring-on-newsprint: var(--oa-color-palette-verdigris);
+  --oa-color-focus-ring-on-white: var(--oa-color-palette-verdigris);
+  --oa-color-focus-ring-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-focus-ring-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-identity-signature-on-newsprint: var(--oa-color-palette-pillar-red);
+  --oa-color-identity-signature-on-white: var(--oa-color-palette-pillar-red);
+  --oa-color-identity-signature-on-charcoal: var(--oa-color-palette-pillar-red);
+  --oa-color-identity-signature-on-prussian: var(--oa-color-palette-white);
+  --oa-color-identity-hinge-divider-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-identity-hinge-divider-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-identity-hinge-divider-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-identity-hinge-divider-on-prussian: var(--oa-color-palette-white);
+  --oa-color-action-ask-fill-on-newsprint: var(--oa-color-palette-pillar-red);
+  --oa-color-action-ask-fill-on-white: var(--oa-color-palette-pillar-red);
+  --oa-color-action-ask-fill-on-charcoal: var(--oa-color-palette-pillar-red);
+  --oa-color-action-ask-fill-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-action-ask-label-on-newsprint: var(--oa-color-palette-white);
+  --oa-color-action-ask-label-on-white: var(--oa-color-palette-white);
+  --oa-color-action-ask-label-on-charcoal: var(--oa-color-palette-white);
+  --oa-color-action-ask-label-on-prussian: var(--oa-color-palette-charcoal);
+  --oa-color-action-primary-fill-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-action-primary-fill-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-action-primary-fill-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-action-primary-fill-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-action-primary-fill-hover-on-newsprint: var(--oa-color-palette-prussian);
+  --oa-color-action-primary-fill-hover-on-white: var(--oa-color-palette-prussian);
+  --oa-color-action-primary-fill-hover-on-charcoal: var(--oa-color-palette-white);
+  --oa-color-action-primary-fill-hover-on-prussian: var(--oa-color-palette-white);
+  --oa-color-action-primary-label-on-newsprint: var(--oa-color-palette-white);
+  --oa-color-action-primary-label-on-white: var(--oa-color-palette-white);
+  --oa-color-action-primary-label-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-color-action-primary-label-on-prussian: var(--oa-color-palette-charcoal);
+  --oa-color-state-muted-text-on-newsprint: var(--oa-color-derived-deep-stone);
+  --oa-color-state-muted-text-on-white: var(--oa-color-derived-deep-stone);
+  --oa-color-state-muted-text-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-muted-text-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-muted-mark-on-newsprint: var(--oa-color-palette-stone);
+  --oa-color-state-muted-mark-on-white: var(--oa-color-palette-stone);
+  --oa-color-state-muted-mark-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-muted-mark-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-disabled-text-on-newsprint: var(--oa-color-derived-deep-stone);
+  --oa-color-state-disabled-text-on-white: var(--oa-color-derived-deep-stone);
+  --oa-color-state-disabled-text-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-disabled-text-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-disabled-edge-on-newsprint: var(--oa-color-derived-deep-stone);
+  --oa-color-state-disabled-edge-on-white: var(--oa-color-derived-deep-stone);
+  --oa-color-state-disabled-edge-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-disabled-edge-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-loading-text-on-newsprint: var(--oa-color-derived-deep-stone);
+  --oa-color-state-loading-text-on-white: var(--oa-color-derived-deep-stone);
+  --oa-color-state-loading-text-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-loading-text-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-loading-mark-on-newsprint: var(--oa-color-palette-stone);
+  --oa-color-state-loading-mark-on-white: var(--oa-color-palette-stone);
+  --oa-color-state-loading-mark-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-loading-mark-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-selected-band-on-newsprint: var(--oa-color-palette-white);
+  --oa-color-state-selected-band-on-white: var(--oa-color-palette-newsprint);
+  --oa-color-state-selected-band-on-charcoal: var(--oa-color-palette-prussian);
+  --oa-color-state-selected-band-on-prussian: var(--oa-color-palette-charcoal);
+  --oa-color-state-selected-bar-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-state-selected-bar-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-state-selected-bar-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-state-selected-bar-on-prussian: var(--oa-color-palette-white);
+  --oa-color-state-warning-mark-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-state-warning-mark-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-state-warning-mark-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-state-warning-mark-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-state-warning-text-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-state-warning-text-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-state-warning-text-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-state-warning-text-on-prussian: var(--oa-color-palette-white);
+  --oa-color-state-error-band-on-newsprint: var(--oa-color-derived-error-band);
+  --oa-color-state-error-band-on-white: var(--oa-color-derived-error-band);
+  --oa-color-state-error-mark-on-newsprint: var(--oa-color-palette-pillar-red);
+  --oa-color-state-error-mark-on-white: var(--oa-color-palette-pillar-red);
+  --oa-color-state-error-mark-on-charcoal: var(--oa-color-palette-pillar-red);
+  --oa-color-state-error-mark-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-state-error-text-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-state-error-text-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-state-error-text-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-state-error-text-on-prussian: var(--oa-color-palette-white);
+  --oa-color-state-empty-text-on-newsprint: var(--oa-color-derived-deep-stone);
+  --oa-color-state-empty-text-on-white: var(--oa-color-derived-deep-stone);
+  --oa-color-state-empty-text-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-empty-text-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-empty-edge-on-newsprint: var(--oa-color-palette-stone);
+  --oa-color-state-empty-edge-on-white: var(--oa-color-palette-stone);
+  --oa-color-state-empty-edge-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-empty-edge-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-success-mark-on-newsprint: var(--oa-color-palette-verdigris);
+  --oa-color-state-success-mark-on-white: var(--oa-color-palette-verdigris);
+  --oa-color-state-success-mark-on-charcoal: var(--oa-color-palette-verdigris);
+  --oa-color-state-success-mark-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-state-success-text-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-state-success-text-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-state-success-text-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-state-success-text-on-prussian: var(--oa-color-palette-white);
+  --oa-color-data-emphasis-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-data-emphasis-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-data-emphasis-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-data-emphasis-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-data-context-on-newsprint: var(--oa-color-palette-stone);
+  --oa-color-data-context-on-white: var(--oa-color-palette-stone);
+  --oa-color-data-context-on-charcoal: var(--oa-color-tint-stone-n35);
+  --oa-color-data-context-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-data-emphasis-red-on-newsprint: var(--oa-color-palette-pillar-red);
+  --oa-color-data-emphasis-red-on-white: var(--oa-color-palette-pillar-red);
+  --oa-color-data-emphasis-red-on-charcoal: var(--oa-color-palette-pillar-red);
+  --oa-font-family-display: "Inter Tight", "Arial", sans-serif;
+  --oa-font-family-reading: "Inter", "Arial", sans-serif;
+  --oa-font-family-quote: "Lora", "Georgia", serif;
+  --oa-font-family-email-sans: "Helvetica", "Arial", sans-serif;
+  --oa-font-family-email-quote: "Georgia", serif;
+  --oa-font-weight-regular: 400;
+  --oa-font-weight-medium: 500;
+  --oa-font-weight-semibold: 600;
+  --oa-font-weight-bold: 700;
+  --oa-font-weight-extrabold: 800;
+  --oa-type-title-font-family: var(--oa-font-family-display);
+  --oa-type-title-font-style: normal;
+  --oa-type-title-font-weight: var(--oa-font-weight-extrabold);
+  --oa-type-title-font-size: clamp(3.5rem, 2.2464rem + 5.1429vw, 6.875rem);
+  --oa-type-title-line-height: 0.95;
+  --oa-type-title-letter-spacing: -0.03em;
+  --oa-type-title-text-transform: none;
+  --oa-type-title-font-variant-numeric: normal;
+  --oa-type-title: var(--oa-type-title-font-style) var(--oa-type-title-font-weight) var(--oa-type-title-font-size)/var(--oa-type-title-line-height) var(--oa-type-title-font-family);
+  --oa-type-section-font-family: var(--oa-font-family-display);
+  --oa-type-section-font-style: normal;
+  --oa-type-section-font-weight: var(--oa-font-weight-extrabold);
+  --oa-type-section-font-size: clamp(2.75rem, 1.9143rem + 3.4286vw, 5rem);
+  --oa-type-section-line-height: 1.03;
+  --oa-type-section-letter-spacing: -0.025em;
+  --oa-type-section-text-transform: none;
+  --oa-type-section-font-variant-numeric: normal;
+  --oa-type-section: var(--oa-type-section-font-style) var(--oa-type-section-font-weight) var(--oa-type-section-font-size)/var(--oa-type-section-line-height) var(--oa-type-section-font-family);
+  --oa-type-h3-font-family: var(--oa-font-family-display);
+  --oa-type-h3-font-style: normal;
+  --oa-type-h3-font-weight: var(--oa-font-weight-extrabold);
+  --oa-type-h3-font-size: clamp(1.625rem, 1.4857rem + 0.5714vw, 2rem);
+  --oa-type-h3-line-height: 1.08;
+  --oa-type-h3-letter-spacing: -0.01em;
+  --oa-type-h3-text-transform: none;
+  --oa-type-h3-font-variant-numeric: normal;
+  --oa-type-h3: var(--oa-type-h3-font-style) var(--oa-type-h3-font-weight) var(--oa-type-h3-font-size)/var(--oa-type-h3-line-height) var(--oa-type-h3-font-family);
+  --oa-type-h4-font-family: var(--oa-font-family-display);
+  --oa-type-h4-font-style: normal;
+  --oa-type-h4-font-weight: var(--oa-font-weight-extrabold);
+  --oa-type-h4-font-size: clamp(1.25rem, 1.1571rem + 0.3810vw, 1.5rem);
+  --oa-type-h4-line-height: 1.15;
+  --oa-type-h4-letter-spacing: -0.005em;
+  --oa-type-h4-text-transform: none;
+  --oa-type-h4-font-variant-numeric: normal;
+  --oa-type-h4: var(--oa-type-h4-font-style) var(--oa-type-h4-font-weight) var(--oa-type-h4-font-size)/var(--oa-type-h4-line-height) var(--oa-type-h4-font-family);
+  --oa-type-quote-font-family: var(--oa-font-family-quote);
+  --oa-type-quote-font-style: italic;
+  --oa-type-quote-font-weight: var(--oa-font-weight-regular);
+  --oa-type-quote-font-size: clamp(1.5rem, 1.3143rem + 0.7619vw, 2rem);
+  --oa-type-quote-line-height: 1.3;
+  --oa-type-quote-letter-spacing: -0.02em;
+  --oa-type-quote-text-transform: none;
+  --oa-type-quote-font-variant-numeric: normal;
+  --oa-type-quote: var(--oa-type-quote-font-style) var(--oa-type-quote-font-weight) var(--oa-type-quote-font-size)/var(--oa-type-quote-line-height) var(--oa-type-quote-font-family);
+  --oa-type-intro-font-family: var(--oa-font-family-reading);
+  --oa-type-intro-font-style: normal;
+  --oa-type-intro-font-weight: var(--oa-font-weight-regular);
+  --oa-type-intro-font-size: clamp(1.1875rem, 1.1179rem + 0.2857vw, 1.375rem);
+  --oa-type-intro-line-height: 1.5;
+  --oa-type-intro-letter-spacing: 0em;
+  --oa-type-intro-text-transform: none;
+  --oa-type-intro-font-variant-numeric: normal;
+  --oa-type-intro: var(--oa-type-intro-font-style) var(--oa-type-intro-font-weight) var(--oa-type-intro-font-size)/var(--oa-type-intro-line-height) var(--oa-type-intro-font-family);
+  --oa-type-body-font-family: var(--oa-font-family-reading);
+  --oa-type-body-font-style: normal;
+  --oa-type-body-font-weight: var(--oa-font-weight-regular);
+  --oa-type-body-font-size: 1.0625rem;
+  --oa-type-body-line-height: 1.6;
+  --oa-type-body-letter-spacing: 0em;
+  --oa-type-body-text-transform: none;
+  --oa-type-body-font-variant-numeric: normal;
+  --oa-type-body: var(--oa-type-body-font-style) var(--oa-type-body-font-weight) var(--oa-type-body-font-size)/var(--oa-type-body-line-height) var(--oa-type-body-font-family);
+  --oa-type-body-small-font-family: var(--oa-font-family-reading);
+  --oa-type-body-small-font-style: normal;
+  --oa-type-body-small-font-weight: var(--oa-font-weight-regular);
+  --oa-type-body-small-font-size: 0.9375rem;
+  --oa-type-body-small-line-height: 1.6;
+  --oa-type-body-small-letter-spacing: 0em;
+  --oa-type-body-small-text-transform: none;
+  --oa-type-body-small-font-variant-numeric: normal;
+  --oa-type-body-small: var(--oa-type-body-small-font-style) var(--oa-type-body-small-font-weight) var(--oa-type-body-small-font-size)/var(--oa-type-body-small-line-height) var(--oa-type-body-small-font-family);
+  --oa-type-ui-font-family: var(--oa-font-family-reading);
+  --oa-type-ui-font-style: normal;
+  --oa-type-ui-font-weight: var(--oa-font-weight-semibold);
+  --oa-type-ui-font-size: 0.9375rem;
+  --oa-type-ui-line-height: 1.4;
+  --oa-type-ui-letter-spacing: 0em;
+  --oa-type-ui-text-transform: none;
+  --oa-type-ui-font-variant-numeric: normal;
+  --oa-type-ui: var(--oa-type-ui-font-style) var(--oa-type-ui-font-weight) var(--oa-type-ui-font-size)/var(--oa-type-ui-line-height) var(--oa-type-ui-font-family);
+  --oa-type-caption-font-family: var(--oa-font-family-reading);
+  --oa-type-caption-font-style: normal;
+  --oa-type-caption-font-weight: var(--oa-font-weight-regular);
+  --oa-type-caption-font-size: 0.875rem;
+  --oa-type-caption-line-height: 1.5;
+  --oa-type-caption-letter-spacing: 0em;
+  --oa-type-caption-text-transform: none;
+  --oa-type-caption-font-variant-numeric: normal;
+  --oa-type-caption: var(--oa-type-caption-font-style) var(--oa-type-caption-font-weight) var(--oa-type-caption-font-size)/var(--oa-type-caption-line-height) var(--oa-type-caption-font-family);
+  --oa-type-label-font-family: var(--oa-font-family-reading);
+  --oa-type-label-font-style: normal;
+  --oa-type-label-font-weight: var(--oa-font-weight-bold);
+  --oa-type-label-font-size: 0.8125rem;
+  --oa-type-label-line-height: 1.4;
+  --oa-type-label-letter-spacing: 0.06em;
+  --oa-type-label-text-transform: uppercase;
+  --oa-type-label-font-variant-numeric: normal;
+  --oa-type-label: var(--oa-type-label-font-style) var(--oa-type-label-font-weight) var(--oa-type-label-font-size)/var(--oa-type-label-line-height) var(--oa-type-label-font-family);
+  --oa-type-data-label-font-family: var(--oa-font-family-reading);
+  --oa-type-data-label-font-style: normal;
+  --oa-type-data-label-font-weight: var(--oa-font-weight-semibold);
+  --oa-type-data-label-font-size: 0.8125rem;
+  --oa-type-data-label-line-height: 1.3;
+  --oa-type-data-label-letter-spacing: 0em;
+  --oa-type-data-label-text-transform: none;
+  --oa-type-data-label-font-variant-numeric: tabular-nums;
+  --oa-type-data-label: var(--oa-type-data-label-font-style) var(--oa-type-data-label-font-weight) var(--oa-type-data-label-font-size)/var(--oa-type-data-label-line-height) var(--oa-type-data-label-font-family);
+  --oa-type-figure-font-family: var(--oa-font-family-display);
+  --oa-type-figure-font-style: normal;
+  --oa-type-figure-font-weight: var(--oa-font-weight-extrabold);
+  --oa-type-figure-font-size: clamp(3rem, 1.7000rem + 5.3333vw, 6.5rem);
+  --oa-type-figure-line-height: 1;
+  --oa-type-figure-letter-spacing: -0.03em;
+  --oa-type-figure-text-transform: none;
+  --oa-type-figure-font-variant-numeric: tabular-nums;
+  --oa-type-figure: var(--oa-type-figure-font-style) var(--oa-type-figure-font-weight) var(--oa-type-figure-font-size)/var(--oa-type-figure-line-height) var(--oa-type-figure-font-family);
+  --oa-type-ask-font-family: var(--oa-font-family-reading);
+  --oa-type-ask-font-style: normal;
+  --oa-type-ask-font-weight: var(--oa-font-weight-bold);
+  --oa-type-ask-font-size: 1.1875rem;
+  --oa-type-ask-line-height: 1.2;
+  --oa-type-ask-letter-spacing: 0em;
+  --oa-type-ask-text-transform: none;
+  --oa-type-ask-font-variant-numeric: normal;
+  --oa-type-ask: var(--oa-type-ask-font-style) var(--oa-type-ask-font-weight) var(--oa-type-ask-font-size)/var(--oa-type-ask-line-height) var(--oa-type-ask-font-family);
+  --oa-space-0: 0rem;
+  --oa-space-100: 0.5rem;
+  --oa-space-150: 0.75rem;
+  --oa-space-200: 1rem;
+  --oa-space-300: 1.5rem;
+  --oa-space-400: 2rem;
+  --oa-space-500: 2.5rem;
+  --oa-space-600: 3rem;
+  --oa-space-800: 4rem;
+  --oa-space-1000: 5rem;
+  --oa-space-1300: 6.5rem;
+  --oa-space-050: 0.25rem;
+  --oa-size-icon-small: 16px;
+  --oa-size-icon-medium: 24px;
+  --oa-size-icon-large: 48px;
+  --oa-size-target-minimum: 24px;
+  --oa-size-target-touch: 44px;
+  --oa-layout-breakpoint-wide: 1440px;
+  --oa-layout-breakpoint-desktop: 1024px;
+  --oa-layout-breakpoint-tablet: 768px;
+  --oa-layout-breakpoint-phone: 390px;
+  --oa-layout-breakpoint-phone-small: 360px;
+  --oa-layout-grid-wide-columns: 12;
+  --oa-layout-grid-wide-gutter: 24px;
+  --oa-layout-grid-wide-margin: 64px;
+  --oa-layout-grid-desktop-columns: 12;
+  --oa-layout-grid-desktop-gutter: 24px;
+  --oa-layout-grid-desktop-margin: 40px;
+  --oa-layout-grid-tablet-columns: 8;
+  --oa-layout-grid-tablet-gutter: 24px;
+  --oa-layout-grid-tablet-margin: 32px;
+  --oa-layout-grid-phone-columns: 4;
+  --oa-layout-grid-phone-gutter: 16px;
+  --oa-layout-grid-phone-margin: 20px;
+  --oa-layout-grid-phone-small-columns: 4;
+  --oa-layout-grid-phone-small-gutter: 16px;
+  --oa-layout-grid-phone-small-margin: 16px;
+  --oa-layout-measure-body-ideal: 33.88rem;
+  --oa-layout-measure-body-max: 37.37rem;
+  --oa-layout-measure-intro-max: 41.91rem;
+  --oa-radius-none: 0px;
+  --oa-radius-full: 50%;
+  --oa-border-width-hairline: 1px;
+  --oa-border-width-rule: 2px;
+  --oa-border-width-bar: 4px;
+  --oa-border-width-focus-ring: 2px;
+  --oa-border-width-underline: 1px;
+  --oa-border-width-underline-hover: 2px;
+  --oa-border-focus-offset: 2px;
+  --oa-opacity-watermark-on-light: 0.08;
+  --oa-opacity-watermark-on-dark: 0.1;
+  --oa-motion-duration-fast: 120ms;
+  --oa-motion-duration-standard: 200ms;
+  --oa-motion-duration-slow: 320ms;
+  --oa-motion-duration-stagger: 40ms;
+  --oa-motion-duration-hinge: 680ms;
+  --oa-motion-duration-lever: 560ms;
+  --oa-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --oa-motion-easing-enter: cubic-bezier(0, 0, 0.2, 1);
+  --oa-motion-easing-exit: cubic-bezier(0.4, 0, 1, 1);
+  --oa-z-index-base: 0;
+  --oa-z-index-raised: 10;
+  --oa-z-index-sticky: 40;
+  --oa-z-index-overlay: 90;
+  --oa-z-index-skip: 100;
+  --oa-chart-color-subject-on-newsprint: var(--oa-color-data-emphasis-on-newsprint);
+  --oa-chart-color-subject-on-charcoal: var(--oa-color-data-emphasis-on-charcoal);
+  --oa-chart-color-context-on-newsprint: var(--oa-color-data-context-on-newsprint);
+  --oa-chart-color-context-on-charcoal: var(--oa-color-data-context-on-charcoal);
+  --oa-chart-color-label-on-newsprint: var(--oa-color-text-primary-on-newsprint);
+  --oa-chart-color-label-on-charcoal: var(--oa-color-text-primary-on-charcoal);
+  --oa-chart-color-secondary-on-newsprint: var(--oa-color-text-secondary-on-newsprint);
+  --oa-chart-color-secondary-on-charcoal: var(--oa-color-text-secondary-on-charcoal);
+  --oa-chart-color-baseline-on-newsprint: var(--oa-color-data-emphasis-on-newsprint);
+  --oa-chart-color-baseline-on-charcoal: var(--oa-color-data-emphasis-on-charcoal);
+  --oa-chart-color-leader-on-newsprint: var(--oa-color-data-context-on-newsprint);
+  --oa-chart-color-leader-on-charcoal: var(--oa-color-data-context-on-charcoal);
+  --oa-chart-color-point-on-newsprint: var(--oa-color-data-emphasis-red-on-newsprint);
+  --oa-chart-color-point-on-charcoal: var(--oa-color-data-emphasis-red-on-charcoal);
+  --oa-chart-color-point-keyline-on-newsprint: var(--oa-color-border-strong-on-newsprint);
+  --oa-chart-color-party-mark-on-newsprint: var(--oa-color-data-emphasis-on-newsprint);
+  --oa-chart-color-party-mark-on-charcoal: var(--oa-color-data-emphasis-on-charcoal);
+  --oa-chart-color-label-on-subject-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-label-on-subject-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-chip-fill-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-chip-fill-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-chip-label-on-newsprint: var(--oa-color-palette-newsprint);
+  --oa-chart-color-chip-label-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-light-fill-on-newsprint: var(--oa-color-tint-stone-n55);
+  --oa-chart-color-light-fill-on-charcoal: var(--oa-color-palette-stone);
+  --oa-chart-color-track-on-newsprint: var(--oa-color-tint-stone-n88);
+  --oa-chart-color-track-on-charcoal: var(--oa-color-tint-stone-c55);
+  --oa-chart-color-gridline-on-newsprint: var(--oa-color-tint-stone-n70);
+  --oa-chart-color-gridline-on-charcoal: var(--oa-color-tint-stone-c45);
+  --oa-chart-color-band-on-newsprint: var(--oa-color-tint-white-n55);
+  --oa-chart-color-band-on-charcoal: var(--oa-color-tint-stone-c72);
+  --oa-chart-color-land-on-newsprint: var(--oa-color-tint-white-n55);
+  --oa-chart-color-land-on-charcoal: var(--oa-color-tint-stone-c80);
+  --oa-chart-color-diverging-fill-step1-on-newsprint: var(--oa-color-palette-prussian);
+  --oa-chart-color-diverging-fill-step2-on-newsprint: var(--oa-color-tint-prussian-n62);
+  --oa-chart-color-diverging-fill-step3-on-newsprint: var(--oa-color-tint-stone-n90);
+  --oa-chart-color-diverging-fill-step4-on-newsprint: var(--oa-color-tint-verdigris-n55);
+  --oa-chart-color-diverging-fill-step5-on-newsprint: var(--oa-color-tint-verdigris-c25);
+  --oa-chart-color-diverging-label-step1-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-diverging-label-step2-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-diverging-label-step3-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-diverging-label-step4-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-diverging-label-step5-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-sequential-fill-step1-on-newsprint: var(--oa-color-tint-verdigris-n82);
+  --oa-chart-color-sequential-fill-step1-on-charcoal: var(--oa-color-tint-verdigris-c75);
+  --oa-chart-color-sequential-fill-step2-on-newsprint: var(--oa-color-tint-verdigris-n52p75);
+  --oa-chart-color-sequential-fill-step2-on-charcoal: var(--oa-color-tint-verdigris-c50);
+  --oa-chart-color-sequential-fill-step3-on-newsprint: var(--oa-color-tint-verdigris-n23p5);
+  --oa-chart-color-sequential-fill-step3-on-charcoal: var(--oa-color-tint-verdigris-c20);
+  --oa-chart-color-sequential-fill-step4-on-newsprint: var(--oa-color-tint-verdigris-c5p75);
+  --oa-chart-color-sequential-fill-step4-on-charcoal: var(--oa-color-tint-verdigris-n25);
+  --oa-chart-color-sequential-fill-step5-on-newsprint: var(--oa-color-tint-verdigris-c35);
+  --oa-chart-color-sequential-fill-step5-on-charcoal: var(--oa-color-tint-verdigris-n55);
+  --oa-chart-color-sequential-label-step1-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-sequential-label-step1-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-sequential-label-step2-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-sequential-label-step2-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-sequential-label-step3-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-sequential-label-step3-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-sequential-label-step4-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-sequential-label-step4-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-sequential-label-step5-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-sequential-label-step5-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-sequential-outline-on-newsprint: var(--oa-color-tint-verdigris-c35);
+  --oa-chart-color-sequential-outline-on-charcoal: var(--oa-color-tint-verdigris-n55);
+  --oa-chart-color-magnitude-fill-step1-on-newsprint: var(--oa-color-tint-stone-n88);
+  --oa-chart-color-magnitude-fill-step1-on-charcoal: var(--oa-color-tint-stone-c75);
+  --oa-chart-color-magnitude-fill-step2-on-newsprint: var(--oa-color-tint-stone-n55);
+  --oa-chart-color-magnitude-fill-step2-on-charcoal: var(--oa-color-tint-stone-c40);
+  --oa-chart-color-magnitude-fill-step3-on-newsprint: var(--oa-color-tint-stone-c10);
+  --oa-chart-color-magnitude-fill-step3-on-charcoal: var(--oa-color-tint-stone-n55);
+  --oa-chart-color-magnitude-fill-step4-on-newsprint: var(--oa-color-tint-stone-c60);
+  --oa-chart-color-magnitude-fill-step4-on-charcoal: var(--oa-color-tint-stone-n85);
+  --oa-chart-color-magnitude-label-step1-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-magnitude-label-step1-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-magnitude-label-step2-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-magnitude-label-step2-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-magnitude-label-step3-on-newsprint: var(--oa-color-palette-newsprint);
+  --oa-chart-color-magnitude-label-step3-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-magnitude-label-step4-on-newsprint: var(--oa-color-palette-newsprint);
+  --oa-chart-color-magnitude-label-step4-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-artboard-wide: 1024px;
+  --oa-chart-artboard-reading: 720px;
+  --oa-chart-artboard-mid: 600px;
+  --oa-chart-artboard-phone: 358px;
+  --oa-chart-artboard-small-phone: 328px;
+  --oa-chart-type-label: 15px;
+  --oa-chart-type-tick: 13px;
+  --oa-chart-type-note: 14px;
+  --oa-chart-type-note-leading: 19px;
+  --oa-chart-type-phone-min: 14px;
+  --oa-chart-type-tile-code-phone: 13px;
+  --oa-chart-type-big: 116px;
+  --oa-chart-type-big-phone: 88px;
+  --oa-chart-type-eyebrow: 13px;
+  --oa-chart-type-title-size: 28px;
+  --oa-chart-type-title-leading: 32px;
+  --oa-chart-type-title-phone-size: 22px;
+  --oa-chart-type-title-phone-leading: 27px;
+  --oa-chart-type-measure-size: 17px;
+  --oa-chart-type-measure-leading: 27px;
+  --oa-chart-line-hairline: 1px;
+  --oa-chart-line-baseline: 1.5px;
+  --oa-chart-line-context: 2px;
+  --oa-chart-line-subject: 3px;
+  --oa-chart-line-selected: 6px;
+  --oa-chart-dot-subject-radius: 6.5px;
+  --oa-chart-dot-open-radius: 5.5px;
+  --oa-chart-dot-vertex-radius: 3px;
+  --oa-chart-dot-small-vertex-radius: 2.25px;
+  --oa-chart-bar-height: 24px;
+  --oa-chart-bar-pitch: 42px;
+  --oa-chart-bar-dense-height: 16px;
+  --oa-chart-bar-dense-pitch: 36px;
+  --oa-chart-bar-phone-height: 20px;
+  --oa-chart-bar-phone-pitch: 58px;
+  --oa-chart-unit-size: 14px;
+  --oa-chart-unit-gap: 3px;
+  --oa-chart-note-width: 520px;
+  --oa-chart-note-min-chars: 45;
+  --oa-chart-note-max-chars: 75;
+  --oa-chart-note-gap: 10px;
+  --oa-chart-note-leader-min: 12px;
+  --oa-chart-guard-headroom: 1.15;
+  --oa-chart-guard-line-pad: 1px;
+  --oa-chart-halo: 4px;
+  --oa-chart-hatch-pitch: 5px;
+  --oa-chart-hatch-weight: 1.5px;
+  --oa-chart-keyline: 1px;
+  --oa-chart-gap-years: 1;
+  --oa-chart-arrow-shaft: 2px;
+  --oa-chart-arrow-head-length: 8px;
+  --oa-chart-arrow-head-half-width: 4.5px;
+  --oa-chart-arrow-phone-head-length: 6px;
+  --oa-chart-arrow-phone-head-half-width: 3.5px;
+  --oa-chart-arrow-tail-radius: 2.25px;
+  --oa-chart-arrow-tip-radius: 0.5px;
+  --oa-chart-shift-axis-pitch: 20px;
+  --oa-chart-shift-axis-label: 14px;
+  --oa-chart-shift-axis-break-gap: 32px;
+  --oa-chart-shift-axis-phone-lollipop-pitch: 44px;
+  --oa-chart-tile-size-max: 80px;
+  --oa-chart-tile-gap: 6px;
+  --oa-chart-tile-mid-gap: 4px;
+  --oa-chart-tile-phone-gap: 2.5px;
+  --oa-chart-tile-phone-columns: 11;
+  --oa-chart-tile-frame: 2px;
+  --oa-chart-spark-line: 2px;
+  --oa-chart-spark-context: 1.5px;
+  --oa-chart-spark-end-radius: 3px;
+  --oa-chart-spark-gap-x: 30px;
+  --oa-chart-spark-phone-gap-x: 18px;
+  --oa-chart-columns-fill-share: 0.72;
+  --oa-chart-columns-average-line: 3px;
+  --oa-chart-columns-vertex-radius: 1.5px;
+  --oa-chart-columns-height: 360px;
+  --oa-chart-columns-phone-height: 290px;
+  --oa-chart-bubble-radius-max-wide: 50px;
+  --oa-chart-bubble-radius-max-mid: 34px;
+  --oa-chart-bubble-radius-max-phone: 23px;
+  --oa-chart-bubble-radius-max-small-phone: 21px;
+  --oa-chart-bubble-gap: 2px;
+  --oa-chart-bubble-outline: 1px;
+  --oa-chart-bubble-ring: 2px;
+  --oa-chart-bubble-key-step: 64px;
+  --oa-chart-bubble-label-pad: 3px;
+  --oa-chart-bubble-leader-clear: 3px;
+  --oa-chart-results-gap: 12px;
+  --oa-chart-results-bar: 6px;
+  --oa-chart-results-bar-gap: 4px;
+  --oa-chart-results-shift-head: 8px;
+  --oa-chart-results-shift-min: 130px;
+  --oa-chart-results-html-headroom: 1.06;
+  --oa-chart-results-two-line-min: 560px;
+  --oa-chart-tag-pad-x: 6px;
+  --oa-chart-tag-height: 18px;
+  --oa-chart-tag-ascent-em: 0.77;
+  --oa-chart-tag-descent-em: 0.23;
+  --oa-component-button-ask-fill-on-newsprint: var(--oa-color-action-ask-fill-on-newsprint);
+  --oa-component-button-ask-fill-on-white: var(--oa-color-action-ask-fill-on-white);
+  --oa-component-button-ask-fill-on-charcoal: var(--oa-color-action-ask-fill-on-charcoal);
+  --oa-component-button-ask-fill-on-prussian: var(--oa-color-action-ask-fill-on-prussian);
+  --oa-component-button-ask-label-on-newsprint: var(--oa-color-action-ask-label-on-newsprint);
+  --oa-component-button-ask-label-on-white: var(--oa-color-action-ask-label-on-white);
+  --oa-component-button-ask-label-on-charcoal: var(--oa-color-action-ask-label-on-charcoal);
+  --oa-component-button-ask-label-on-prussian: var(--oa-color-action-ask-label-on-prussian);
+  --oa-component-button-ask-keyline-on-newsprint: var(--oa-color-border-strong-on-newsprint);
+  --oa-component-button-ask-label-type-font-family: var(--oa-type-ask-font-family);
+  --oa-component-button-ask-label-type-font-style: var(--oa-type-ask-font-style);
+  --oa-component-button-ask-label-type-font-weight: var(--oa-type-ask-font-weight);
+  --oa-component-button-ask-label-type-font-size: var(--oa-type-ask-font-size);
+  --oa-component-button-ask-label-type-line-height: var(--oa-type-ask-line-height);
+  --oa-component-button-ask-label-type-letter-spacing: var(--oa-type-ask-letter-spacing);
+  --oa-component-button-ask-label-type-text-transform: var(--oa-type-ask-text-transform);
+  --oa-component-button-ask-label-type-font-variant-numeric: var(--oa-type-ask-font-variant-numeric);
+  --oa-component-button-ask-label-type: var(--oa-type-ask);
+  --oa-component-button-primary-fill-on-newsprint: var(--oa-color-action-primary-fill-on-newsprint);
+  --oa-component-button-primary-fill-on-white: var(--oa-color-action-primary-fill-on-white);
+  --oa-component-button-primary-fill-on-charcoal: var(--oa-color-action-primary-fill-on-charcoal);
+  --oa-component-button-primary-fill-on-prussian: var(--oa-color-action-primary-fill-on-prussian);
+  --oa-component-button-primary-fill-hover-on-newsprint: var(--oa-color-action-primary-fill-hover-on-newsprint);
+  --oa-component-button-primary-fill-hover-on-white: var(--oa-color-action-primary-fill-hover-on-white);
+  --oa-component-button-primary-fill-hover-on-charcoal: var(--oa-color-action-primary-fill-hover-on-charcoal);
+  --oa-component-button-primary-fill-hover-on-prussian: var(--oa-color-action-primary-fill-hover-on-prussian);
+  --oa-component-button-primary-label-on-newsprint: var(--oa-color-action-primary-label-on-newsprint);
+  --oa-component-button-primary-label-on-white: var(--oa-color-action-primary-label-on-white);
+  --oa-component-button-primary-label-on-charcoal: var(--oa-color-action-primary-label-on-charcoal);
+  --oa-component-button-primary-label-on-prussian: var(--oa-color-action-primary-label-on-prussian);
+  --oa-component-button-disabled-label-on-newsprint: var(--oa-color-state-disabled-text-on-newsprint);
+  --oa-component-button-disabled-label-on-white: var(--oa-color-state-disabled-text-on-white);
+  --oa-component-button-disabled-label-on-charcoal: var(--oa-color-state-disabled-text-on-charcoal);
+  --oa-component-button-disabled-label-on-prussian: var(--oa-color-state-disabled-text-on-prussian);
+  --oa-component-button-disabled-edge-on-newsprint: var(--oa-color-state-disabled-edge-on-newsprint);
+  --oa-component-button-disabled-edge-on-white: var(--oa-color-state-disabled-edge-on-white);
+  --oa-component-button-disabled-edge-on-charcoal: var(--oa-color-state-disabled-edge-on-charcoal);
+  --oa-component-button-disabled-edge-on-prussian: var(--oa-color-state-disabled-edge-on-prussian);
+  --oa-component-icon-ink-on-newsprint: var(--oa-color-graphic-essential-on-newsprint);
+  --oa-component-icon-ink-on-white: var(--oa-color-graphic-essential-on-white);
+  --oa-component-icon-ink-on-charcoal: var(--oa-color-graphic-essential-on-charcoal);
+  --oa-component-icon-ink-on-prussian: var(--oa-color-graphic-essential-on-prussian);
+  --oa-component-icon-accent-on-newsprint: var(--oa-color-identity-signature-on-newsprint);
+  --oa-component-icon-accent-on-white: var(--oa-color-identity-signature-on-white);
+  --oa-component-icon-accent-on-charcoal: var(--oa-color-identity-signature-on-charcoal);
+  --oa-component-icon-accent-on-prussian: var(--oa-color-identity-signature-on-prussian);
+  --oa-component-icon-utility-line-medium: 2px;
+  --oa-component-icon-utility-line-small: 1.5px;
+  --oa-component-mark-ring-now: 3px;
+  --oa-component-mark-ring-ahead: 1.5px;
+  --oa-component-mark-slash: 2px;
+  --oa-component-mark-halo: 4px;
+  --oa-component-mark-line-reached: var(--oa-border-width-rule);
+  --oa-component-mark-line-ahead: var(--oa-border-width-hairline);
+  --oa-component-mark-take-part-disc: 11px;
+  --oa-component-mark-take-part-keyline: var(--oa-border-width-hairline);
+  --oa-component-mark-take-part-cut: 1.5px;
+  --oa-component-app-icon-tile: var(--oa-color-surface-charcoal);
+  --oa-component-app-icon-mark: var(--oa-color-graphic-essential-on-charcoal);
+  --oa-component-app-icon-accent: var(--oa-color-identity-signature-on-charcoal);
+  --oa-component-avatar-tile: var(--oa-color-surface-charcoal);
+  --oa-component-avatar-mark: var(--oa-color-graphic-essential-on-charcoal);
+  --oa-component-avatar-accent: var(--oa-color-identity-signature-on-charcoal);
+}
+.oa-surface-newsprint {
+  background-color: var(--oa-color-surface-newsprint);
+  color: var(--oa-color-text-primary-on-newsprint);
+  color-scheme: light;
+  --oa-color-text-primary: var(--oa-color-text-primary-on-newsprint);
+  --oa-color-text-secondary: var(--oa-color-text-secondary-on-newsprint);
+  --oa-color-graphic-essential: var(--oa-color-graphic-essential-on-newsprint);
+  --oa-color-graphic-subtle: var(--oa-color-graphic-subtle-on-newsprint);
+  --oa-color-border-strong: var(--oa-color-border-strong-on-newsprint);
+  --oa-color-border-hairline: var(--oa-color-border-hairline-on-newsprint);
+  --oa-color-focus-ring: var(--oa-color-focus-ring-on-newsprint);
+  --oa-color-identity-signature: var(--oa-color-identity-signature-on-newsprint);
+  --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-newsprint);
+  --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-newsprint);
+  --oa-color-action-ask-label: var(--oa-color-action-ask-label-on-newsprint);
+  --oa-color-action-primary-fill: var(--oa-color-action-primary-fill-on-newsprint);
+  --oa-color-action-primary-fill-hover: var(--oa-color-action-primary-fill-hover-on-newsprint);
+  --oa-color-action-primary-label: var(--oa-color-action-primary-label-on-newsprint);
+  --oa-color-state-muted-text: var(--oa-color-state-muted-text-on-newsprint);
+  --oa-color-state-muted-mark: var(--oa-color-state-muted-mark-on-newsprint);
+  --oa-color-state-disabled-text: var(--oa-color-state-disabled-text-on-newsprint);
+  --oa-color-state-disabled-edge: var(--oa-color-state-disabled-edge-on-newsprint);
+  --oa-color-state-loading-text: var(--oa-color-state-loading-text-on-newsprint);
+  --oa-color-state-loading-mark: var(--oa-color-state-loading-mark-on-newsprint);
+  --oa-color-state-selected-band: var(--oa-color-state-selected-band-on-newsprint);
+  --oa-color-state-selected-bar: var(--oa-color-state-selected-bar-on-newsprint);
+  --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-newsprint);
+  --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-newsprint);
+  --oa-color-state-error-band: var(--oa-color-state-error-band-on-newsprint);
+  --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-newsprint);
+  --oa-color-state-error-text: var(--oa-color-state-error-text-on-newsprint);
+  --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-newsprint);
+  --oa-color-state-empty-edge: var(--oa-color-state-empty-edge-on-newsprint);
+  --oa-color-state-success-mark: var(--oa-color-state-success-mark-on-newsprint);
+  --oa-color-state-success-text: var(--oa-color-state-success-text-on-newsprint);
+  --oa-color-data-emphasis: var(--oa-color-data-emphasis-on-newsprint);
+  --oa-color-data-context: var(--oa-color-data-context-on-newsprint);
+  --oa-color-data-emphasis-red: var(--oa-color-data-emphasis-red-on-newsprint);
+  --oa-chart-color-subject: var(--oa-chart-color-subject-on-newsprint);
+  --oa-chart-color-context: var(--oa-chart-color-context-on-newsprint);
+  --oa-chart-color-label: var(--oa-chart-color-label-on-newsprint);
+  --oa-chart-color-secondary: var(--oa-chart-color-secondary-on-newsprint);
+  --oa-chart-color-baseline: var(--oa-chart-color-baseline-on-newsprint);
+  --oa-chart-color-leader: var(--oa-chart-color-leader-on-newsprint);
+  --oa-chart-color-point: var(--oa-chart-color-point-on-newsprint);
+  --oa-chart-color-point-keyline: var(--oa-chart-color-point-keyline-on-newsprint);
+  --oa-chart-color-party-mark: var(--oa-chart-color-party-mark-on-newsprint);
+  --oa-chart-color-label-on-subject: var(--oa-chart-color-label-on-subject-on-newsprint);
+  --oa-chart-color-chip-fill: var(--oa-chart-color-chip-fill-on-newsprint);
+  --oa-chart-color-chip-label: var(--oa-chart-color-chip-label-on-newsprint);
+  --oa-chart-color-light-fill: var(--oa-chart-color-light-fill-on-newsprint);
+  --oa-chart-color-track: var(--oa-chart-color-track-on-newsprint);
+  --oa-chart-color-gridline: var(--oa-chart-color-gridline-on-newsprint);
+  --oa-chart-color-band: var(--oa-chart-color-band-on-newsprint);
+  --oa-chart-color-land: var(--oa-chart-color-land-on-newsprint);
+  --oa-chart-color-diverging-fill-step1: var(--oa-chart-color-diverging-fill-step1-on-newsprint);
+  --oa-chart-color-diverging-fill-step2: var(--oa-chart-color-diverging-fill-step2-on-newsprint);
+  --oa-chart-color-diverging-fill-step3: var(--oa-chart-color-diverging-fill-step3-on-newsprint);
+  --oa-chart-color-diverging-fill-step4: var(--oa-chart-color-diverging-fill-step4-on-newsprint);
+  --oa-chart-color-diverging-fill-step5: var(--oa-chart-color-diverging-fill-step5-on-newsprint);
+  --oa-chart-color-diverging-label-step1: var(--oa-chart-color-diverging-label-step1-on-newsprint);
+  --oa-chart-color-diverging-label-step2: var(--oa-chart-color-diverging-label-step2-on-newsprint);
+  --oa-chart-color-diverging-label-step3: var(--oa-chart-color-diverging-label-step3-on-newsprint);
+  --oa-chart-color-diverging-label-step4: var(--oa-chart-color-diverging-label-step4-on-newsprint);
+  --oa-chart-color-diverging-label-step5: var(--oa-chart-color-diverging-label-step5-on-newsprint);
+  --oa-chart-color-sequential-fill-step1: var(--oa-chart-color-sequential-fill-step1-on-newsprint);
+  --oa-chart-color-sequential-fill-step2: var(--oa-chart-color-sequential-fill-step2-on-newsprint);
+  --oa-chart-color-sequential-fill-step3: var(--oa-chart-color-sequential-fill-step3-on-newsprint);
+  --oa-chart-color-sequential-fill-step4: var(--oa-chart-color-sequential-fill-step4-on-newsprint);
+  --oa-chart-color-sequential-fill-step5: var(--oa-chart-color-sequential-fill-step5-on-newsprint);
+  --oa-chart-color-sequential-label-step1: var(--oa-chart-color-sequential-label-step1-on-newsprint);
+  --oa-chart-color-sequential-label-step2: var(--oa-chart-color-sequential-label-step2-on-newsprint);
+  --oa-chart-color-sequential-label-step3: var(--oa-chart-color-sequential-label-step3-on-newsprint);
+  --oa-chart-color-sequential-label-step4: var(--oa-chart-color-sequential-label-step4-on-newsprint);
+  --oa-chart-color-sequential-label-step5: var(--oa-chart-color-sequential-label-step5-on-newsprint);
+  --oa-chart-color-sequential-outline: var(--oa-chart-color-sequential-outline-on-newsprint);
+  --oa-chart-color-magnitude-fill-step1: var(--oa-chart-color-magnitude-fill-step1-on-newsprint);
+  --oa-chart-color-magnitude-fill-step2: var(--oa-chart-color-magnitude-fill-step2-on-newsprint);
+  --oa-chart-color-magnitude-fill-step3: var(--oa-chart-color-magnitude-fill-step3-on-newsprint);
+  --oa-chart-color-magnitude-fill-step4: var(--oa-chart-color-magnitude-fill-step4-on-newsprint);
+  --oa-chart-color-magnitude-label-step1: var(--oa-chart-color-magnitude-label-step1-on-newsprint);
+  --oa-chart-color-magnitude-label-step2: var(--oa-chart-color-magnitude-label-step2-on-newsprint);
+  --oa-chart-color-magnitude-label-step3: var(--oa-chart-color-magnitude-label-step3-on-newsprint);
+  --oa-chart-color-magnitude-label-step4: var(--oa-chart-color-magnitude-label-step4-on-newsprint);
+  --oa-component-button-ask-fill: var(--oa-component-button-ask-fill-on-newsprint);
+  --oa-component-button-ask-label: var(--oa-component-button-ask-label-on-newsprint);
+  --oa-component-button-ask-keyline: var(--oa-component-button-ask-keyline-on-newsprint);
+  --oa-component-button-primary-fill: var(--oa-component-button-primary-fill-on-newsprint);
+  --oa-component-button-primary-fill-hover: var(--oa-component-button-primary-fill-hover-on-newsprint);
+  --oa-component-button-primary-label: var(--oa-component-button-primary-label-on-newsprint);
+  --oa-component-button-disabled-label: var(--oa-component-button-disabled-label-on-newsprint);
+  --oa-component-button-disabled-edge: var(--oa-component-button-disabled-edge-on-newsprint);
+  --oa-component-icon-ink: var(--oa-component-icon-ink-on-newsprint);
+  --oa-component-icon-accent: var(--oa-component-icon-accent-on-newsprint);
+}
+.oa-surface-white {
+  background-color: var(--oa-color-surface-white);
+  color: var(--oa-color-text-primary-on-white);
+  color-scheme: light;
+  --oa-color-text-primary: var(--oa-color-text-primary-on-white);
+  --oa-color-text-secondary: var(--oa-color-text-secondary-on-white);
+  --oa-color-graphic-essential: var(--oa-color-graphic-essential-on-white);
+  --oa-color-graphic-subtle: var(--oa-color-graphic-subtle-on-white);
+  --oa-color-border-strong: var(--oa-color-border-strong-on-white);
+  --oa-color-border-hairline: var(--oa-color-border-hairline-on-white);
+  --oa-color-focus-ring: var(--oa-color-focus-ring-on-white);
+  --oa-color-identity-signature: var(--oa-color-identity-signature-on-white);
+  --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-white);
+  --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-white);
+  --oa-color-action-ask-label: var(--oa-color-action-ask-label-on-white);
+  --oa-color-action-primary-fill: var(--oa-color-action-primary-fill-on-white);
+  --oa-color-action-primary-fill-hover: var(--oa-color-action-primary-fill-hover-on-white);
+  --oa-color-action-primary-label: var(--oa-color-action-primary-label-on-white);
+  --oa-color-state-muted-text: var(--oa-color-state-muted-text-on-white);
+  --oa-color-state-muted-mark: var(--oa-color-state-muted-mark-on-white);
+  --oa-color-state-disabled-text: var(--oa-color-state-disabled-text-on-white);
+  --oa-color-state-disabled-edge: var(--oa-color-state-disabled-edge-on-white);
+  --oa-color-state-loading-text: var(--oa-color-state-loading-text-on-white);
+  --oa-color-state-loading-mark: var(--oa-color-state-loading-mark-on-white);
+  --oa-color-state-selected-band: var(--oa-color-state-selected-band-on-white);
+  --oa-color-state-selected-bar: var(--oa-color-state-selected-bar-on-white);
+  --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-white);
+  --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-white);
+  --oa-color-state-error-band: var(--oa-color-state-error-band-on-white);
+  --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-white);
+  --oa-color-state-error-text: var(--oa-color-state-error-text-on-white);
+  --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-white);
+  --oa-color-state-empty-edge: var(--oa-color-state-empty-edge-on-white);
+  --oa-color-state-success-mark: var(--oa-color-state-success-mark-on-white);
+  --oa-color-state-success-text: var(--oa-color-state-success-text-on-white);
+  --oa-color-data-emphasis: var(--oa-color-data-emphasis-on-white);
+  --oa-color-data-context: var(--oa-color-data-context-on-white);
+  --oa-color-data-emphasis-red: var(--oa-color-data-emphasis-red-on-white);
+  --oa-chart-color-subject: initial;
+  --oa-chart-color-context: initial;
+  --oa-chart-color-label: initial;
+  --oa-chart-color-secondary: initial;
+  --oa-chart-color-baseline: initial;
+  --oa-chart-color-leader: initial;
+  --oa-chart-color-point: initial;
+  --oa-chart-color-point-keyline: initial;
+  --oa-chart-color-party-mark: initial;
+  --oa-chart-color-label-on-subject: initial;
+  --oa-chart-color-chip-fill: initial;
+  --oa-chart-color-chip-label: initial;
+  --oa-chart-color-light-fill: initial;
+  --oa-chart-color-track: initial;
+  --oa-chart-color-gridline: initial;
+  --oa-chart-color-band: initial;
+  --oa-chart-color-land: initial;
+  --oa-chart-color-diverging-fill-step1: initial;
+  --oa-chart-color-diverging-fill-step2: initial;
+  --oa-chart-color-diverging-fill-step3: initial;
+  --oa-chart-color-diverging-fill-step4: initial;
+  --oa-chart-color-diverging-fill-step5: initial;
+  --oa-chart-color-diverging-label-step1: initial;
+  --oa-chart-color-diverging-label-step2: initial;
+  --oa-chart-color-diverging-label-step3: initial;
+  --oa-chart-color-diverging-label-step4: initial;
+  --oa-chart-color-diverging-label-step5: initial;
+  --oa-chart-color-sequential-fill-step1: initial;
+  --oa-chart-color-sequential-fill-step2: initial;
+  --oa-chart-color-sequential-fill-step3: initial;
+  --oa-chart-color-sequential-fill-step4: initial;
+  --oa-chart-color-sequential-fill-step5: initial;
+  --oa-chart-color-sequential-label-step1: initial;
+  --oa-chart-color-sequential-label-step2: initial;
+  --oa-chart-color-sequential-label-step3: initial;
+  --oa-chart-color-sequential-label-step4: initial;
+  --oa-chart-color-sequential-label-step5: initial;
+  --oa-chart-color-sequential-outline: initial;
+  --oa-chart-color-magnitude-fill-step1: initial;
+  --oa-chart-color-magnitude-fill-step2: initial;
+  --oa-chart-color-magnitude-fill-step3: initial;
+  --oa-chart-color-magnitude-fill-step4: initial;
+  --oa-chart-color-magnitude-label-step1: initial;
+  --oa-chart-color-magnitude-label-step2: initial;
+  --oa-chart-color-magnitude-label-step3: initial;
+  --oa-chart-color-magnitude-label-step4: initial;
+  --oa-component-button-ask-fill: var(--oa-component-button-ask-fill-on-white);
+  --oa-component-button-ask-label: var(--oa-component-button-ask-label-on-white);
+  --oa-component-button-ask-keyline: initial;
+  --oa-component-button-primary-fill: var(--oa-component-button-primary-fill-on-white);
+  --oa-component-button-primary-fill-hover: var(--oa-component-button-primary-fill-hover-on-white);
+  --oa-component-button-primary-label: var(--oa-component-button-primary-label-on-white);
+  --oa-component-button-disabled-label: var(--oa-component-button-disabled-label-on-white);
+  --oa-component-button-disabled-edge: var(--oa-component-button-disabled-edge-on-white);
+  --oa-component-icon-ink: var(--oa-component-icon-ink-on-white);
+  --oa-component-icon-accent: var(--oa-component-icon-accent-on-white);
+}
+.oa-surface-charcoal {
+  background-color: var(--oa-color-surface-charcoal);
+  color: var(--oa-color-text-primary-on-charcoal);
+  color-scheme: dark;
+  --oa-color-text-primary: var(--oa-color-text-primary-on-charcoal);
+  --oa-color-text-secondary: var(--oa-color-text-secondary-on-charcoal);
+  --oa-color-graphic-essential: var(--oa-color-graphic-essential-on-charcoal);
+  --oa-color-graphic-subtle: var(--oa-color-graphic-subtle-on-charcoal);
+  --oa-color-border-strong: var(--oa-color-border-strong-on-charcoal);
+  --oa-color-border-hairline: var(--oa-color-border-hairline-on-charcoal);
+  --oa-color-focus-ring: var(--oa-color-focus-ring-on-charcoal);
+  --oa-color-identity-signature: var(--oa-color-identity-signature-on-charcoal);
+  --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-charcoal);
+  --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-charcoal);
+  --oa-color-action-ask-label: var(--oa-color-action-ask-label-on-charcoal);
+  --oa-color-action-primary-fill: var(--oa-color-action-primary-fill-on-charcoal);
+  --oa-color-action-primary-fill-hover: var(--oa-color-action-primary-fill-hover-on-charcoal);
+  --oa-color-action-primary-label: var(--oa-color-action-primary-label-on-charcoal);
+  --oa-color-state-muted-text: var(--oa-color-state-muted-text-on-charcoal);
+  --oa-color-state-muted-mark: var(--oa-color-state-muted-mark-on-charcoal);
+  --oa-color-state-disabled-text: var(--oa-color-state-disabled-text-on-charcoal);
+  --oa-color-state-disabled-edge: var(--oa-color-state-disabled-edge-on-charcoal);
+  --oa-color-state-loading-text: var(--oa-color-state-loading-text-on-charcoal);
+  --oa-color-state-loading-mark: var(--oa-color-state-loading-mark-on-charcoal);
+  --oa-color-state-selected-band: var(--oa-color-state-selected-band-on-charcoal);
+  --oa-color-state-selected-bar: var(--oa-color-state-selected-bar-on-charcoal);
+  --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-charcoal);
+  --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-charcoal);
+  --oa-color-state-error-band: initial;
+  --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-charcoal);
+  --oa-color-state-error-text: var(--oa-color-state-error-text-on-charcoal);
+  --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-charcoal);
+  --oa-color-state-empty-edge: var(--oa-color-state-empty-edge-on-charcoal);
+  --oa-color-state-success-mark: var(--oa-color-state-success-mark-on-charcoal);
+  --oa-color-state-success-text: var(--oa-color-state-success-text-on-charcoal);
+  --oa-color-data-emphasis: var(--oa-color-data-emphasis-on-charcoal);
+  --oa-color-data-context: var(--oa-color-data-context-on-charcoal);
+  --oa-color-data-emphasis-red: var(--oa-color-data-emphasis-red-on-charcoal);
+  --oa-chart-color-subject: var(--oa-chart-color-subject-on-charcoal);
+  --oa-chart-color-context: var(--oa-chart-color-context-on-charcoal);
+  --oa-chart-color-label: var(--oa-chart-color-label-on-charcoal);
+  --oa-chart-color-secondary: var(--oa-chart-color-secondary-on-charcoal);
+  --oa-chart-color-baseline: var(--oa-chart-color-baseline-on-charcoal);
+  --oa-chart-color-leader: var(--oa-chart-color-leader-on-charcoal);
+  --oa-chart-color-point: var(--oa-chart-color-point-on-charcoal);
+  --oa-chart-color-point-keyline: initial;
+  --oa-chart-color-party-mark: var(--oa-chart-color-party-mark-on-charcoal);
+  --oa-chart-color-label-on-subject: var(--oa-chart-color-label-on-subject-on-charcoal);
+  --oa-chart-color-chip-fill: var(--oa-chart-color-chip-fill-on-charcoal);
+  --oa-chart-color-chip-label: var(--oa-chart-color-chip-label-on-charcoal);
+  --oa-chart-color-light-fill: var(--oa-chart-color-light-fill-on-charcoal);
+  --oa-chart-color-track: var(--oa-chart-color-track-on-charcoal);
+  --oa-chart-color-gridline: var(--oa-chart-color-gridline-on-charcoal);
+  --oa-chart-color-band: var(--oa-chart-color-band-on-charcoal);
+  --oa-chart-color-land: var(--oa-chart-color-land-on-charcoal);
+  --oa-chart-color-diverging-fill-step1: initial;
+  --oa-chart-color-diverging-fill-step2: initial;
+  --oa-chart-color-diverging-fill-step3: initial;
+  --oa-chart-color-diverging-fill-step4: initial;
+  --oa-chart-color-diverging-fill-step5: initial;
+  --oa-chart-color-diverging-label-step1: initial;
+  --oa-chart-color-diverging-label-step2: initial;
+  --oa-chart-color-diverging-label-step3: initial;
+  --oa-chart-color-diverging-label-step4: initial;
+  --oa-chart-color-diverging-label-step5: initial;
+  --oa-chart-color-sequential-fill-step1: var(--oa-chart-color-sequential-fill-step1-on-charcoal);
+  --oa-chart-color-sequential-fill-step2: var(--oa-chart-color-sequential-fill-step2-on-charcoal);
+  --oa-chart-color-sequential-fill-step3: var(--oa-chart-color-sequential-fill-step3-on-charcoal);
+  --oa-chart-color-sequential-fill-step4: var(--oa-chart-color-sequential-fill-step4-on-charcoal);
+  --oa-chart-color-sequential-fill-step5: var(--oa-chart-color-sequential-fill-step5-on-charcoal);
+  --oa-chart-color-sequential-label-step1: var(--oa-chart-color-sequential-label-step1-on-charcoal);
+  --oa-chart-color-sequential-label-step2: var(--oa-chart-color-sequential-label-step2-on-charcoal);
+  --oa-chart-color-sequential-label-step3: var(--oa-chart-color-sequential-label-step3-on-charcoal);
+  --oa-chart-color-sequential-label-step4: var(--oa-chart-color-sequential-label-step4-on-charcoal);
+  --oa-chart-color-sequential-label-step5: var(--oa-chart-color-sequential-label-step5-on-charcoal);
+  --oa-chart-color-sequential-outline: var(--oa-chart-color-sequential-outline-on-charcoal);
+  --oa-chart-color-magnitude-fill-step1: var(--oa-chart-color-magnitude-fill-step1-on-charcoal);
+  --oa-chart-color-magnitude-fill-step2: var(--oa-chart-color-magnitude-fill-step2-on-charcoal);
+  --oa-chart-color-magnitude-fill-step3: var(--oa-chart-color-magnitude-fill-step3-on-charcoal);
+  --oa-chart-color-magnitude-fill-step4: var(--oa-chart-color-magnitude-fill-step4-on-charcoal);
+  --oa-chart-color-magnitude-label-step1: var(--oa-chart-color-magnitude-label-step1-on-charcoal);
+  --oa-chart-color-magnitude-label-step2: var(--oa-chart-color-magnitude-label-step2-on-charcoal);
+  --oa-chart-color-magnitude-label-step3: var(--oa-chart-color-magnitude-label-step3-on-charcoal);
+  --oa-chart-color-magnitude-label-step4: var(--oa-chart-color-magnitude-label-step4-on-charcoal);
+  --oa-component-button-ask-fill: var(--oa-component-button-ask-fill-on-charcoal);
+  --oa-component-button-ask-label: var(--oa-component-button-ask-label-on-charcoal);
+  --oa-component-button-ask-keyline: initial;
+  --oa-component-button-primary-fill: var(--oa-component-button-primary-fill-on-charcoal);
+  --oa-component-button-primary-fill-hover: var(--oa-component-button-primary-fill-hover-on-charcoal);
+  --oa-component-button-primary-label: var(--oa-component-button-primary-label-on-charcoal);
+  --oa-component-button-disabled-label: var(--oa-component-button-disabled-label-on-charcoal);
+  --oa-component-button-disabled-edge: var(--oa-component-button-disabled-edge-on-charcoal);
+  --oa-component-icon-ink: var(--oa-component-icon-ink-on-charcoal);
+  --oa-component-icon-accent: var(--oa-component-icon-accent-on-charcoal);
+}
+.oa-surface-prussian {
+  background-color: var(--oa-color-surface-prussian);
+  color: var(--oa-color-text-primary-on-prussian);
+  color-scheme: dark;
+  --oa-color-text-primary: var(--oa-color-text-primary-on-prussian);
+  --oa-color-text-secondary: var(--oa-color-text-secondary-on-prussian);
+  --oa-color-graphic-essential: var(--oa-color-graphic-essential-on-prussian);
+  --oa-color-graphic-subtle: var(--oa-color-graphic-subtle-on-prussian);
+  --oa-color-border-strong: var(--oa-color-border-strong-on-prussian);
+  --oa-color-border-hairline: var(--oa-color-border-hairline-on-prussian);
+  --oa-color-focus-ring: var(--oa-color-focus-ring-on-prussian);
+  --oa-color-identity-signature: var(--oa-color-identity-signature-on-prussian);
+  --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-prussian);
+  --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-prussian);
+  --oa-color-action-ask-label: var(--oa-color-action-ask-label-on-prussian);
+  --oa-color-action-primary-fill: var(--oa-color-action-primary-fill-on-prussian);
+  --oa-color-action-primary-fill-hover: var(--oa-color-action-primary-fill-hover-on-prussian);
+  --oa-color-action-primary-label: var(--oa-color-action-primary-label-on-prussian);
+  --oa-color-state-muted-text: var(--oa-color-state-muted-text-on-prussian);
+  --oa-color-state-muted-mark: var(--oa-color-state-muted-mark-on-prussian);
+  --oa-color-state-disabled-text: var(--oa-color-state-disabled-text-on-prussian);
+  --oa-color-state-disabled-edge: var(--oa-color-state-disabled-edge-on-prussian);
+  --oa-color-state-loading-text: var(--oa-color-state-loading-text-on-prussian);
+  --oa-color-state-loading-mark: var(--oa-color-state-loading-mark-on-prussian);
+  --oa-color-state-selected-band: var(--oa-color-state-selected-band-on-prussian);
+  --oa-color-state-selected-bar: var(--oa-color-state-selected-bar-on-prussian);
+  --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-prussian);
+  --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-prussian);
+  --oa-color-state-error-band: initial;
+  --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-prussian);
+  --oa-color-state-error-text: var(--oa-color-state-error-text-on-prussian);
+  --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-prussian);
+  --oa-color-state-empty-edge: var(--oa-color-state-empty-edge-on-prussian);
+  --oa-color-state-success-mark: var(--oa-color-state-success-mark-on-prussian);
+  --oa-color-state-success-text: var(--oa-color-state-success-text-on-prussian);
+  --oa-color-data-emphasis: var(--oa-color-data-emphasis-on-prussian);
+  --oa-color-data-context: var(--oa-color-data-context-on-prussian);
+  --oa-color-data-emphasis-red: initial;
+  --oa-chart-color-subject: initial;
+  --oa-chart-color-context: initial;
+  --oa-chart-color-label: initial;
+  --oa-chart-color-secondary: initial;
+  --oa-chart-color-baseline: initial;
+  --oa-chart-color-leader: initial;
+  --oa-chart-color-point: initial;
+  --oa-chart-color-point-keyline: initial;
+  --oa-chart-color-party-mark: initial;
+  --oa-chart-color-label-on-subject: initial;
+  --oa-chart-color-chip-fill: initial;
+  --oa-chart-color-chip-label: initial;
+  --oa-chart-color-light-fill: initial;
+  --oa-chart-color-track: initial;
+  --oa-chart-color-gridline: initial;
+  --oa-chart-color-band: initial;
+  --oa-chart-color-land: initial;
+  --oa-chart-color-diverging-fill-step1: initial;
+  --oa-chart-color-diverging-fill-step2: initial;
+  --oa-chart-color-diverging-fill-step3: initial;
+  --oa-chart-color-diverging-fill-step4: initial;
+  --oa-chart-color-diverging-fill-step5: initial;
+  --oa-chart-color-diverging-label-step1: initial;
+  --oa-chart-color-diverging-label-step2: initial;
+  --oa-chart-color-diverging-label-step3: initial;
+  --oa-chart-color-diverging-label-step4: initial;
+  --oa-chart-color-diverging-label-step5: initial;
+  --oa-chart-color-sequential-fill-step1: initial;
+  --oa-chart-color-sequential-fill-step2: initial;
+  --oa-chart-color-sequential-fill-step3: initial;
+  --oa-chart-color-sequential-fill-step4: initial;
+  --oa-chart-color-sequential-fill-step5: initial;
+  --oa-chart-color-sequential-label-step1: initial;
+  --oa-chart-color-sequential-label-step2: initial;
+  --oa-chart-color-sequential-label-step3: initial;
+  --oa-chart-color-sequential-label-step4: initial;
+  --oa-chart-color-sequential-label-step5: initial;
+  --oa-chart-color-sequential-outline: initial;
+  --oa-chart-color-magnitude-fill-step1: initial;
+  --oa-chart-color-magnitude-fill-step2: initial;
+  --oa-chart-color-magnitude-fill-step3: initial;
+  --oa-chart-color-magnitude-fill-step4: initial;
+  --oa-chart-color-magnitude-label-step1: initial;
+  --oa-chart-color-magnitude-label-step2: initial;
+  --oa-chart-color-magnitude-label-step3: initial;
+  --oa-chart-color-magnitude-label-step4: initial;
+  --oa-component-button-ask-fill: var(--oa-component-button-ask-fill-on-prussian);
+  --oa-component-button-ask-label: var(--oa-component-button-ask-label-on-prussian);
+  --oa-component-button-ask-keyline: initial;
+  --oa-component-button-primary-fill: var(--oa-component-button-primary-fill-on-prussian);
+  --oa-component-button-primary-fill-hover: var(--oa-component-button-primary-fill-hover-on-prussian);
+  --oa-component-button-primary-label: var(--oa-component-button-primary-label-on-prussian);
+  --oa-component-button-disabled-label: var(--oa-component-button-disabled-label-on-prussian);
+  --oa-component-button-disabled-edge: var(--oa-component-button-disabled-edge-on-prussian);
+  --oa-component-icon-ink: var(--oa-component-icon-ink-on-prussian);
+  --oa-component-icon-accent: var(--oa-component-icon-accent-on-prussian);
+}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --oa-motion-duration-fast: 0ms;
+    --oa-motion-duration-standard: 0ms;
+    --oa-motion-duration-slow: 0ms;
+    --oa-motion-duration-stagger: 0ms;
+    --oa-motion-duration-hinge: 0ms;
+    --oa-motion-duration-lever: 0ms;
+  }
+}
+:root{--m:max(var(--oa-layout-grid-phone-small-margin),env(safe-area-inset-left,0px));--mr:max(var(--oa-layout-grid-phone-small-margin),env(safe-area-inset-right,0px));--max:78rem;
+--ink:var(--oa-color-text-primary-on-newsprint);--ink-2:var(--oa-color-text-secondary-on-newsprint);
+--hair:var(--oa-color-border-hairline-on-newsprint);--strong:var(--oa-color-border-strong-on-newsprint);
+--white:var(--oa-color-surface-white);--np:var(--oa-color-surface-newsprint);--wink-2:var(--oa-color-text-secondary-on-white);
+--band:var(--oa-color-state-error-band-on-newsprint);--mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;color-scheme:light}
+@media (min-width:24.375em){:root{--m:max(var(--oa-layout-grid-phone-margin),env(safe-area-inset-left,0px));--mr:max(var(--oa-layout-grid-phone-margin),env(safe-area-inset-right,0px))}}
+@media (min-width:48em){:root{--m:var(--oa-layout-grid-tablet-margin);--mr:var(--oa-layout-grid-tablet-margin)}}
+@media (min-width:64em){:root{--m:var(--oa-layout-grid-desktop-margin);--mr:var(--oa-layout-grid-desktop-margin)}}
+@media (min-width:90em){:root{--m:var(--oa-layout-grid-wide-margin);--mr:var(--oa-layout-grid-wide-margin)}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;background:var(--np);scroll-padding-top:var(--oa-space-300)}
+body{margin:0;background:var(--np);color:var(--ink);font:var(--oa-type-body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration-thickness:var(--oa-border-width-underline);text-underline-offset:.2em}
+a:hover{text-decoration-thickness:var(--oa-border-width-underline-hover)}
+:focus-visible{outline:var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring-on-newsprint);outline-offset:var(--oa-border-focus-offset)}
+.card :focus-visible,.call :focus-visible,.ask :focus-visible,.tw:focus-visible{outline-color:var(--oa-color-focus-ring-on-white)}
+.panel :focus-visible{outline-color:var(--oa-color-focus-ring-on-prussian)}
+p{margin:0 0 var(--oa-space-200);max-width:var(--oa-layout-measure-body-max);text-wrap:pretty}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+[hidden]{display:none!important}
+.nw{white-space:nowrap}
+.board{max-width:calc(var(--max) + var(--m) + var(--mr));margin:0 auto;padding-left:var(--m);padding-right:var(--mr);padding-block:0 var(--oa-space-1300)}
+.label{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--ink-2);margin:0}
+.caption{font:var(--oa-type-caption);color:var(--ink-2)}
+.intro{font:var(--oa-type-intro);max-width:var(--oa-layout-measure-intro-max)}
+.sub4{font:var(--oa-type-h4);letter-spacing:var(--oa-type-h4-letter-spacing);margin:var(--oa-space-500) 0 var(--oa-space-200);text-wrap:balance}
+.codes{font:var(--oa-type-caption);color:var(--ink-2);margin:0;font-variant-numeric:tabular-nums}
+.card .codes,.call .codes{color:var(--wink-2)}
+.chip{display:inline-block;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;border:var(--oa-border-width-hairline) solid var(--strong);padding:0 6px;white-space:nowrap;vertical-align:.1em;font-size:.8125rem}
+.mast{max-width:none;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:var(--oa-space-100) var(--oa-space-300);
+  padding:var(--oa-space-300) 0 var(--oa-space-200);margin:0;border-bottom:var(--oa-border-width-rule) solid var(--strong)}
+.mast b{font:800 1.25rem/1 var(--oa-font-family-display);letter-spacing:-.01em;white-space:nowrap}
+.for{margin-top:var(--oa-space-800)}
+h1{font:var(--oa-type-title);letter-spacing:var(--oa-type-title-letter-spacing);margin:var(--oa-space-200) 0 var(--oa-space-500);max-width:12ch;text-wrap:balance}
+.cover-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--oa-space-500) var(--oa-space-800);align-items:start}
+@media (min-width:64em){.cover-grid{grid-template-columns:minmax(0,7fr) minmax(0,4fr)}}
+.deck .sub4{margin-top:var(--oa-space-400)}
+.pages{list-style:none;margin:0;padding:0;max-width:var(--oa-layout-measure-intro-max);border-top:var(--oa-border-width-hairline) solid var(--hair)}
+.pages li{padding:var(--oa-space-150) 0;border-bottom:var(--oa-border-width-hairline) solid var(--hair);max-width:var(--oa-layout-measure-intro-max)}
+.ask{background:var(--white);border:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-white);padding:var(--oa-space-300)}
+.ask .sub4{margin-top:0}
+.q{font:italic 400 1.25rem/1.45 var(--oa-font-family-quote);margin:0 0 var(--oa-space-200)}
+.copy-row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--oa-space-150) var(--oa-space-200)}
+.btn-copy{font:var(--oa-type-ui);min-height:var(--oa-size-target-touch);padding:0 var(--oa-space-300);border:0;border-radius:0;cursor:pointer;
+  background:var(--oa-color-action-primary-fill-on-white);color:var(--oa-color-action-primary-label-on-white)}
+.btn-copy:hover{background:var(--oa-color-action-primary-fill-hover-on-white)}
+.status{font:var(--oa-type-body-small)}
+.toc{margin:var(--oa-space-600) 0 0;border-top:var(--oa-border-width-hairline) solid var(--hair);border-bottom:var(--oa-border-width-hairline) solid var(--hair);padding:var(--oa-space-150) 0}
+.toc .label{margin-bottom:var(--oa-space-050)}
+.toc ol{margin:0;padding:0 0 0 1.4em;columns:1;column-gap:var(--oa-space-600)}
+@media (min-width:48em){.toc ol{columns:2}}@media (min-width:80em){.toc ol{columns:3}}
+.toc li{break-inside:avoid;font:var(--oa-type-body-small);font-variant-numeric:tabular-nums}
+.toc a{display:inline-flex;align-items:center;min-height:2.25rem}
+.sec{margin-top:var(--oa-space-1300);border-top:var(--oa-border-width-rule) solid var(--strong);padding-top:var(--oa-space-300)}
+.sec--minor{margin-top:var(--oa-space-1000)}
+.sec-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:var(--oa-space-100) var(--oa-space-300)}
+.sec-h{font:var(--oa-type-section);letter-spacing:var(--oa-type-section-letter-spacing);margin:var(--oa-space-150) 0 var(--oa-space-300);text-wrap:balance;max-width:16ch}
+.sec-h2{font:var(--oa-type-h3);letter-spacing:var(--oa-type-h3-letter-spacing);margin:0 0 var(--oa-space-200);text-wrap:balance}
+.sec > .intro{margin-bottom:var(--oa-space-400)}
+.card{background:var(--white);border:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-white);padding:var(--oa-space-300) var(--oa-space-200);min-width:0}
+@media (min-width:48em){.card{padding:var(--oa-space-400) var(--oa-space-500)}}
+.card .caption,.card .label{color:var(--wink-2)}
+.stage{background:var(--np);color:var(--ink);min-width:0}
+.stage .caption,.stage figcaption{color:var(--ink-2)}
+img{display:block;max-width:none}
+.cmp{display:grid;gap:0}
+.cmp-row{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--oa-space-200) var(--oa-space-400);padding:var(--oa-space-300) 0;border-top:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-white)}
+.cmp-row--h{border-top:0;padding-top:0}
+.cmp-row--h .cmp-lab{display:none}
+@media (min-width:72em){.cmp-row{grid-template-columns:15rem minmax(0,1fr) minmax(0,1fr)}.cmp-row--h .cmp-lab{display:block}.cmp-o{display:none}}
+@media (max-width:71.99em){.cmp-row--h{grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}}
+.oh{border-top:var(--oa-border-width-bar) solid var(--oa-color-palette-charcoal);padding-top:var(--oa-space-150)}
+.oh-h{font:var(--oa-type-h4);letter-spacing:var(--oa-type-h4-letter-spacing);margin:0 0 var(--oa-space-100)}
+.oh p{font:var(--oa-type-body-small);margin:0}
+.rl{font:var(--oa-type-ui);font-weight:700;margin:0 0 var(--oa-space-100)}
+.cmp-lab .caption{margin:0}
+.cmp-cell{min-width:0}
+.cmp-o{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--wink-2);margin:0 0 var(--oa-space-100)}
+.stage--phone{width:100%;max-width:360px;padding:20px 16px 24px}
+.fx{font:var(--oa-type-body)}
+.fx-l{font:var(--oa-type-ui);font-weight:600;margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--oa-space-100)}
+.fx-in{display:flex;align-items:center;min-height:48px;margin-top:6px;padding:0 12px 0 9px;border:1px solid var(--oa-color-border-strong-on-newsprint);
+  border-left:4px solid var(--oa-color-state-error-mark-on-newsprint);background:var(--white);color:var(--ink);font:var(--oa-type-body);overflow-wrap:anywhere}
+.fx-er{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;margin-top:8px;padding:10px 12px;background:var(--band);
+  color:var(--oa-color-state-error-text-on-newsprint);border-left:4px solid var(--oa-color-state-error-mark-on-newsprint);font:var(--oa-type-body-small)}
+.fx-er .mk{display:block;margin-top:-1px}
+.fx-er b{font-weight:700}
+.mk--ink{color:var(--oa-color-state-error-text-on-newsprint)}
+.mk--red{color:var(--oa-color-state-error-mark-on-newsprint)}
+.alone{display:flex;flex-wrap:wrap;gap:var(--oa-space-200) var(--oa-space-300);align-items:flex-start}
+.al{margin:0;display:grid;gap:var(--oa-space-100);justify-items:start}
+.mt{display:inline-flex;align-items:center;justify-content:center;padding:16px}
+.gr--np{background:var(--np)}.gr--band{background:var(--band)}
+.mt .mk{display:block}
+.al figcaption{font:var(--oa-type-caption);color:var(--wink-2);display:grid}
+.al-g{font-weight:600;color:var(--oa-color-text-primary-on-white)}
+.ratio{font-variant-numeric:tabular-nums;color:var(--oa-color-text-primary-on-white)}
+.ratio--under{border:var(--oa-border-width-rule) solid var(--oa-color-border-strong-on-white);padding:0 4px;font-weight:700;justify-self:start}
+.under{font-weight:600}
+.cnote{font:var(--oa-type-body-small);color:var(--wink-2);margin:var(--oa-space-200) 0 0;max-width:var(--oa-layout-measure-intro-max)}
+.decide{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--oa-space-300) var(--oa-space-600);margin-top:var(--oa-space-400);border-top:var(--oa-border-width-rule) solid var(--oa-color-border-strong-on-white);padding-top:var(--oa-space-300)}
+@media (min-width:64em){.decide{grid-template-columns:minmax(0,3fr) minmax(0,2fr)}}
+.decide .label{margin-bottom:var(--oa-space-100)}
+.rec p{max-width:var(--oa-layout-measure-intro-max)}
+.approve .q{font-size:1.375rem}
+.rq{margin:0 0 var(--oa-space-300);padding:var(--oa-space-050) 0 var(--oa-space-050) var(--oa-space-200);border-left:var(--oa-border-width-rule) solid var(--oa-color-border-strong-on-white);max-width:var(--oa-layout-measure-intro-max)}
+.rq p{margin:0 0 var(--oa-space-100)}
+.rq footer{font:var(--oa-type-caption);color:var(--wink-2)}
+.tiles-fig{display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--oa-space-200)}
+.tiles{padding:var(--oa-space-300) var(--oa-space-300) var(--oa-space-200)}
+.tset{display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--oa-space-300) var(--oa-space-400)}
+.tf{margin:0;display:grid;gap:var(--oa-space-100);justify-items:start;align-content:start;max-width:10rem}
+.tbox{display:flex;align-items:flex-end;height:var(--tb)}
+.tf figcaption{font:var(--oa-type-caption);color:var(--ink-2)}
+.tiles--other{border-left:var(--oa-border-width-rule) solid var(--strong)}
+.t-oh{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--ink-2);margin:0 0 var(--oa-space-150)}
+.fig-cap{margin:var(--oa-space-150) 0 0}
+.tw{position:relative;overflow-x:auto;background:var(--white);border:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-white);margin:var(--oa-space-300) 0 0}
+table{border-collapse:collapse;width:100%;font:var(--oa-type-body-small)}
+table.sc-t{min-width:46rem}
+caption{caption-side:top;text-align:left;padding:var(--oa-space-150) var(--oa-space-200);font:var(--oa-type-body-small);color:var(--wink-2);border-bottom:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-white)}
+th,td{text-align:left;vertical-align:top;padding:var(--oa-space-100) var(--oa-space-150);border-bottom:var(--oa-border-width-hairline) solid var(--oa-color-tint-stone-n88)}
+thead th{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--wink-2);background:var(--oa-color-tint-white-n55);vertical-align:bottom}
+tbody th{font-weight:600;min-width:12rem}
+td.sc,td.rd{text-align:center;font-variant-numeric:tabular-nums}
+td.sc .v{display:inline-block;min-width:1.9em;font-weight:600}
+td.low .v{box-shadow:inset 0 0 0 var(--oa-border-width-rule) var(--oa-color-border-strong-on-white);font-weight:800}
+td.sc .was{display:block;font:var(--oa-type-caption);color:var(--wink-2)}
+td.nr{color:var(--wink-2)}
+.lines{margin:0;padding:0 0 0 1.1em;max-width:var(--oa-layout-measure-intro-max)}
+.lines li{margin:0 0 var(--oa-space-150)}
+.waiting{margin-top:var(--oa-space-300);font:var(--oa-type-ui);font-weight:600;border-left:var(--oa-border-width-bar) solid var(--oa-color-palette-charcoal);padding:var(--oa-space-100) var(--oa-space-200);max-width:var(--oa-layout-measure-intro-max)}
+.calls{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:var(--oa-space-300)}
+@media (min-width:64em){.calls{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.call{background:var(--white);border:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-white);padding:var(--oa-space-300) var(--oa-space-200);min-width:0}
+@media (min-width:48em){.call{padding:var(--oa-space-300) var(--oa-space-400)}}
+.call-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:var(--oa-space-050) var(--oa-space-200);margin-bottom:var(--oa-space-150)}
+.call-h{font:var(--oa-type-h4);letter-spacing:var(--oa-type-h4-letter-spacing);margin:0;text-wrap:balance}
+.call p{font:var(--oa-type-body-small)}
+.call .rq p{font:var(--oa-type-body-small)}
+.call .caption{font:var(--oa-type-caption);color:var(--wink-2)}
+.la-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(7.5rem,1fr));align-items:start;gap:var(--oa-space-200) var(--oa-space-200);padding:var(--oa-space-200);margin-bottom:var(--oa-space-100)}
+.la{margin:0;display:grid;gap:var(--oa-space-100);justify-items:start;align-content:start}
+.la figcaption{font:var(--oa-type-caption);color:var(--ink-2)}
+.la .id{display:block;font-variant-numeric:tabular-nums}
+.log{list-style:none;margin:0;padding:0;border-top:var(--oa-border-width-hairline) solid var(--hair);max-width:56rem}
+.log li{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--oa-space-050) var(--oa-space-400);padding:var(--oa-space-150) 0;border-bottom:var(--oa-border-width-hairline) solid var(--hair)}
+@media (min-width:48em){.log li{grid-template-columns:minmax(0,1fr) 12rem}.log .codes{text-align:right}}
+.log p{margin:0}
+.panel{background:var(--oa-color-surface-prussian);color:var(--oa-color-text-primary-on-prussian);padding:var(--oa-space-400) var(--oa-space-200)}
+@media (min-width:48em){.panel{padding:var(--oa-space-500)}}
+.panel p{color:var(--oa-color-text-primary-on-prussian);max-width:var(--oa-layout-measure-intro-max)}
+.panel .label{color:var(--oa-color-text-secondary-on-prussian);margin:var(--oa-space-400) 0 var(--oa-space-100)}
+.addr{margin:0}.mono{font:500 1rem/1.5 var(--mono);overflow-wrap:anywhere;user-select:all}
+.pend{font:var(--oa-type-body-small);margin:var(--oa-space-100) 0 0}
+.invite{background:var(--np);color:var(--ink);padding:var(--oa-space-300);max-width:44rem;margin-bottom:var(--oa-space-200)}
+.invite p{color:var(--ink);font:italic 400 1.1875rem/1.5 var(--oa-font-family-quote);margin:0 0 var(--oa-space-200)}
+.invite p:last-child{margin:0}
+.panel .btn-copy{background:var(--oa-color-action-primary-fill-on-prussian);color:var(--oa-color-action-primary-label-on-prussian)}
+.panel .btn-copy:hover{background:var(--oa-color-action-primary-fill-hover-on-prussian)}
+.panel .status{color:var(--oa-color-text-primary-on-prussian)}
+.foot{margin-top:var(--oa-space-1000);padding-top:var(--oa-space-200);border-top:var(--oa-border-width-hairline) solid var(--hair)}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}</style></head>
+<body><main class="board" data-view-root="overview">
+<header class="cover">
+<p class="mast"><b>Oath &amp; Action</b><span class="label">Edition 06 · Stage B · Board B</span></p>
+<p class="label for">For Dustin Cathcart · November 10, 2026</p>
+<h1>Two decisions are yours</h1>
+<div class="cover-grid"><div class="deck"><p class="intro">Board B closes stage B, in which the studio built chapters 09 to 12 and fixed, in one pass, what three red teams and the creative director found in them.</p><p class="intro">This page holds the two questions you answer by name, with the creative director’s scores and the calls the studio made that you may overrule.</p>
+<h2 class="sub4">The three pages of board B</h2><ul class="pages"><li><b><a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF">The chapters page</a></b>, version 5, with chapters 01 to 12 and the identity proofs as the fix pass left them. Each rule number on this board opens it at that rule.</li><li><b>The reader check</b>, a test of about 15 minutes on a phone, for five to eight people who have never seen the brand. Its invitation waits at the end of this board, ready to paste.</li><li><b>This board</b>, your two decisions, the scores, the calls you may overrule and what stays open after board B.</li></ul></div>
+<aside class="ask" aria-labelledby="ask-h"><h2 id="ask-h" class="sub4">A reply can be this short</h2>
+<p class="q" id="sample-reply">All as recommended, and I approve option A for the error mark by name.</p>
+<div class="copy-row"><button type="button" class="btn-copy" data-copy="sample-reply" data-status="reply-status">Copy the reply</button>
+<span class="status" id="reply-status" role="status" aria-live="polite"></span></div></aside></div>
+<nav class="toc" aria-labelledby="toc-h"><h2 class="label" id="toc-h">On this board</h2><ol><li><a href="#d1">The error mark</a></li><li><a href="#d2">Tiles under the 48 px floor</a></li><li><a href="#scores">The creative director’s scores</a></li><li><a href="#calls">Calls the studio made that you may overrule</a></li><li><a href="#answered">What you answered this chat</a></li><li><a href="#carried">Carried forward</a></li><li><a href="#reader">The reader check</a></li></ol></nav>
+</header>
+<section class="sec" id="d1" aria-labelledby="d1-h"><div class="sec-top"><p class="label">Decision 1 of 2</p><p class="codes"><span class="vh">For the record: </span><span class="nw">D2-880</span> · <span class="nw">D2-859</span> · <span class="nw">DR-173</span></p></div><h2 class="sec-h" id="d1-h">The error mark</h2><p class="intro"><a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#rule-11-15">Rule 11.15</a> draws the error mark, a circle holding an exclamation mark, in the text’s ink, and gives the error’s red to a 4 px Pillar Red bar at the left of the field and of the message. You approved the drawing on November 10. Its color comes to you by name because our red token was written for the mark and its bar, and Gate 2 confirms the tokens.</p><div class="card"><div class="cmp"><div class="cmp-row cmp-row--h"><div class="cmp-lab" aria-hidden="true"></div><div class="oh"><h3 class="oh-h">Option A, as built</h3><p>The mark in the text’s ink, Charcoal, with the 4 px Pillar Red bar at the left of the field and of the message.</p></div><div class="oh"><h3 class="oh-h">Option B</h3><p>The same mark drawn in Pillar Red, with the same bar.</p></div></div><div class="cmp-row"><div class="cmp-lab"><h4 class="rl">In the form, at actual size</h4><p class="caption">A sign-up field after a wrong entry, as a phone shows it, at most 360 px wide. The mark stands at 24 px.</p></div><div class="cmp-cell"><p class="cmp-o">Option A, as built</p><div class="stage stage--np stage--phone"><div class="fx" data-red="working" data-red-job="error"><p class="fx-l">Email <span class="chip chip--ill">Illustrative</span></p><div class="fx-in">name.example.com</div><div class="fx-er"><svg class="mk snap mk--ink" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/> <path d="M12 7V13"/> <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span><b>Error:</b> Enter an email address with an @, such as name@example.com.</span></div></div></div></div><div class="cmp-cell"><p class="cmp-o">Option B</p><div class="stage stage--np stage--phone"><div class="fx" data-red="working" data-red-job="error"><p class="fx-l">Email <span class="chip chip--ill">Illustrative</span></p><div class="fx-in">name.example.com</div><div class="fx-er"><svg class="mk snap mk--red" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/> <path d="M12 7V13"/> <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span><b>Error:</b> Enter an email address with an @, such as name@example.com.</span></div></div></div></div></div><div class="cmp-row"><div class="cmp-lab"><h4 class="rl">The mark alone, 24 px, at actual size</h4></div><div class="cmp-cell"><p class="cmp-o">Option A, as built</p><div class="alone"><figure class="al"><span class="mt gr--np"><svg class="mk snap mk--ink" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/> <path d="M12 7V13"/> <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg></span><figcaption><span class="al-g">On Newsprint</span><span class="ratio">13.29 to 1</span></figcaption></figure><figure class="al"><span class="mt gr--band"><svg class="mk snap mk--ink" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/> <path d="M12 7V13"/> <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg></span><figcaption><span class="al-g">On the Error Band</span><span class="ratio">11.89 to 1</span></figcaption></figure></div></div><div class="cmp-cell"><p class="cmp-o">Option B</p><div class="alone"><figure class="al"><span class="mt gr--np" data-red="working" data-red-job="error"><svg class="mk snap mk--red" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/> <path d="M12 7V13"/> <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg></span><figcaption><span class="al-g">On Newsprint</span><span class="ratio ratio--under">2.96 to 1</span> <span class="under">under 3 to 1</span></figcaption></figure><figure class="al"><span class="mt gr--band" data-red="working" data-red-job="error"><svg class="mk snap mk--red" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/> <path d="M12 7V13"/> <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg></span><figcaption><span class="al-g">On the Error Band</span><span class="ratio ratio--under">2.64 to 1</span> <span class="under">under 3 to 1</span></figcaption></figure></div></div></div><div class="cmp-row"><div class="cmp-lab"><h4 class="rl">Enlarged four times</h4><p class="caption">The 24 px master drawn at 96 px, so its 2 px line stands 8 px wide.</p></div><div class="cmp-cell"><p class="cmp-o">Option A, as built</p><div class="alone"><figure class="al"><span class="mt gr--np"><svg class="mk snap mk--ink" viewBox="0 0 24 24" width="96" height="96" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/> <path d="M12 7V13"/> <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg></span><figcaption><span class="al-g">On Newsprint</span><span class="ratio">13.29 to 1</span></figcaption></figure><figure class="al"><span class="mt gr--band"><svg class="mk snap mk--ink" viewBox="0 0 24 24" width="96" height="96" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/> <path d="M12 7V13"/> <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg></span><figcaption><span class="al-g">On the Error Band</span><span class="ratio">11.89 to 1</span></figcaption></figure></div></div><div class="cmp-cell"><p class="cmp-o">Option B</p><div class="alone"><figure class="al"><span class="mt gr--np" data-red="working" data-red-job="error"><svg class="mk snap mk--red" viewBox="0 0 24 24" width="96" height="96" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/> <path d="M12 7V13"/> <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg></span><figcaption><span class="al-g">On Newsprint</span><span class="ratio ratio--under">2.96 to 1</span> <span class="under">under 3 to 1</span></figcaption></figure><figure class="al"><span class="mt gr--band" data-red="working" data-red-job="error"><svg class="mk snap mk--red" viewBox="0 0 24 24" width="96" height="96" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/> <path d="M12 7V13"/> <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg></span><figcaption><span class="al-g">On the Error Band</span><span class="ratio ratio--under">2.64 to 1</span> <span class="under">under 3 to 1</span></figcaption></figure></div></div></div></div><p class="cnote">A mark that carries meaning needs 3 to 1 against its ground (<a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#rule-05-5">Rule 05.5</a>, and WCAG 2.2 success criterion 1.4.11). This board’s build works out each figure from the colors in our tokens.</p><div class="decide"><div class="rec"><h3 class="label">Recommendation</h3><p>Option A. In Pillar Red the mark measures 2.64 to 1 on the Error Band and 2.96 to 1 on Newsprint, so a reader with low vision can lose it on either ground. In ink it measures 11.89 to 1 on the band, and the bar still gives the error the view’s red.</p><p>If you approve option A, the engineer rewords the red token’s description at Gate 2 so it names the bar alone. Option B changes one color in one drawing, and setting that color back undoes it.</p></div><div class="approve"><h3 class="label">What you approve by name</h3><p class="q">Option A for the error mark, as <a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#rule-11-15">Rule 11.15</a> draws it.</p></div></div></div></section>
+<section class="sec" id="d2" aria-labelledby="d2-h"><div class="sec-top"><p class="label">Decision 2 of 2</p><p class="codes"><span class="vh">For the record: </span><span class="nw">D2-976</span> · <span class="nw">DR-136</span></p></div><h2 class="sec-h" id="d2-h">Tiles under the 48 px floor</h2><p class="intro">On November 8 you set 48 px as the smallest size for a topic or atlas symbol, with 24 px allowed only for the 41 that read there. A tile, the square, rounded square or circle that holds a drawing as an app icon or an avatar, draws its symbol at about two thirds of its own size. So a one-color tile from 48 px draws its symbol at 32 to 34 px, under that floor.</p><p class="intro">The tile sizes came from the October review, which read every drawing at 32 px before the floor was set. <a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#rule-10-5">Rule 10.5</a> now names the small one-color tiles as the one exception:</p><div class="card"><blockquote class="rq"><p>A one-color tile may go smaller, from 48 px square and 52 px rounded or round, which holds its drawing at 32 to 34 px. This is the one place a drawing off the list of 41 goes under <a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#rule-10-4">Rule 10.4</a>’s 48 px floor, and it is open only to the 94 drawings that reviewers could still name at 32 px. The other 30 take one-color tiles from 72, 76 and 80 px, which hold them at 48 px or more.</p><footer><a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#rule-10-5">Rule 10.5</a>, third paragraph</footer></blockquote><div class="tiles-fig"><div class="stage stage--np tiles"><div class="tset"><figure class="tf"><span class="tbox" style="--tb:48px"><img src="img/20261029_Oath-And-Action-Civic-Line-CL-005-Public-Meeting-Tile-Square-Charcoal-One-Color.svg" width="48" height="48" alt="Public meeting on a Charcoal tile, 48 px" class="snap" decoding="sync"></span><figcaption>One-color tile, 48 px. Its drawing stands at about 33 px.</figcaption></figure><figure class="tf"><span class="tbox" style="--tb:48px"><img src="img/20261029_Oath-And-Action-Civic-Line-CL-005-Public-Meeting-Black.svg" width="48" height="48" alt="Public meeting, the drawing alone at 48 px" class="snap" decoding="sync"></span><figcaption>The drawing alone at 48 px, the floor.</figcaption></figure><figure class="tf"><span class="tbox" style="--tb:48px"><img src="img/20261029_Oath-And-Action-Civic-Line-CL-005-Public-Meeting-Black.svg" width="32" height="32" alt="Public meeting, the drawing alone at 32 px" class="snap" decoding="sync"></span><figcaption>The drawing alone at 32 px.</figcaption></figure></div></div><div class="stage stage--np tiles tiles--other"><p class="t-oh">The other answer</p><div class="tset"><figure class="tf"><span class="tbox" style="--tb:72px"><img src="img/20261029_Oath-And-Action-Civic-Line-CL-005-Public-Meeting-Tile-Square-Charcoal-One-Color.svg" width="72" height="72" alt="Public meeting on a Charcoal tile, 72 px" class="snap" decoding="sync"></span><figcaption>The smallest one-color tile at 72 px. Its drawing stands at about 49 px.</figcaption></figure></div></div></div><p class="caption fig-cap">Public meeting, a topic symbol off the list of 41, at actual size on Newsprint. The tile is Charcoal, the default for app icons and avatars.</p><div class="decide"><div class="rec"><h3 class="label">Recommendation</h3><p>Keep the exception. Avatars and small app tiles show at 32 to 48 px, and on a tile the drawing sits on a solid ground of its own.</p><p>The other answer gives all 124 drawings one-color tiles from 72, 76 and 80 px, which keeps the 48 px floor with no exception and rules out small avatars.</p></div><div class="approve"><h3 class="label">What you approve by name</h3><p class="q">Keep the one-color tile exception in <a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#rule-10-5">Rule 10.5</a>.</p></div></div></div></section>
+<section class="sec sec--minor" id="scores" aria-labelledby="scores-h"><h2 class="sec-h2" id="scores-h">The creative director’s scores</h2><p>The creative director scored chapters 09 to 12, and the parts of chapters 01, 03, 04, 05 and 08 that changed, on the six criteria of our rubric, from 1 to 5. An item is ready at 4 or more on every one.</p><div class="tw" role="region" tabindex="0" aria-labelledby="r3-cap"><table class="sc-t"><caption id="r3-cap">Round 3, November 10, 2026: the page as the red teams read it, before the fix pass. A boxed score is under 4.</caption><thead><tr><th scope="col">Chapter or part</th><th scope="col">Craft</th><th scope="col">Clarity</th><th scope="col">Brand fidelity</th><th scope="col">Usefulness</th><th scope="col">Evidence honesty</th><th scope="col">Accessibility</th><th scope="col">Ready</th></tr></thead><tbody><tr><th scope="row"><a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#pillar-icons">Chapter 09, Pillar icons</a></th><td class="sc"><span class="v">4</span></td><td class="sc"><span class="v">4</span></td><td class="sc"><span class="v">5</span></td><td class="sc"><span class="v">4</span></td><td class="sc"><span class="v">4</span></td><td class="sc"><span class="v">4</span></td><td class="rd">Yes</td></tr><tr><th scope="row"><a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#symbols">Chapter 10, Topic and atlas symbols</a></th><td class="sc"><span class="v">4</span></td><td class="sc"><span class="v">4</span></td><td class="sc"><span class="v">4</span></td><td class="sc"><span class="v">4</span></td><td class="sc"><span class="v">4</span></td><td class="sc"><span class="v">4</span></td><td class="rd">Yes</td></tr><tr><th scope="row"><a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#icons">Chapter 11, Status and utility icons</a></th><td class="sc low"><span class="v">3</span> <span class="vh">(under 4)</span></td><td class="sc"><span class="v">4</span></td><td class="sc"><span class="v">4</span></td><td class="sc"><span class="v">4</span></td><td class="sc"><span class="v">4</span></td><td class="sc"><span class="v">4</span></td><td class="rd">Not yet</td></tr><tr><th scope="row"><a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#graphic-devices">Chapter 12, Graphic devices and patterns</a></th><td class="sc"><span class="v">4</span></td><td class="sc"><span class="v">4</span></td><td class="sc"><span class="v">4</span></td><td class="sc"><span class="v">4</span></td><td class="sc low"><span class="v">3</span> <span class="vh">(under 4)</span></td><td class="sc"><span class="v">4</span></td><td class="rd">Not yet</td></tr><tr><th scope="row">Changed parts of chapters 01, 03, 04, 05 and 08</th><td class="sc"><span class="v">4</span></td><td class="sc"><span class="v">4</span></td><td class="sc low"><span class="v">3</span> <span class="vh">(under 4)</span></td><td class="sc"><span class="v">4</span></td><td class="sc"><span class="v">4</span></td><td class="sc"><span class="v">4</span></td><td class="rd">Not yet</td></tr></tbody></table></div><h3 class="sub4">What stood under 4 at round 3</h3><ul class="lines"><li><b>Chapter 11, Status and utility icons, Craft 3.</b> The trackers and the 18 utility icons are finished work, but the report reader’s page is three gray bars, one headline breaks “all-party” at its hyphen, and the three message marks carry their Illustrative label down in the caption.</li><li><b>Chapter 12, Graphic devices and patterns, Evidence honesty 3.</b> <a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#rule-12-6">Rule 12.6</a>’s correct plate titles its invented chart “Most claims in these three chapters rest on the record” over bars where 17 of 39 claims are documented, and <a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#rule-12-7">Rule 12.7</a>’s two invented headlines carry no Illustrative label.</li><li><b>Changed parts of chapters 01, 03, 04, 05 and 08, Brand fidelity 3.</b> <a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#rule-05-3">Rule 05.3</a>’s corrective plate drew the error as a white cross in a red disc, the sign for Close, where you had approved a circle holding an exclamation mark.</li></ul><p class="waiting">The creative director rescores after the fix pass, and this board is rebuilt with the rescore set apart from round 3.</p></section>
+<section class="sec sec--minor" id="calls" aria-labelledby="calls-h"><h2 class="sec-h2" id="calls-h">Calls the studio made that you may overrule</h2><p class="intro">The studio made these four calls inside the plan you approved. Each stands unless you say otherwise.</p><ul class="calls"><li class="call" id="call-row"><article aria-labelledby="call-row-h"><div class="call-top"><h3 class="call-h" id="call-row-h">Where the pillar row goes</h3><p class="codes"><span class="vh">For the record: </span><span class="nw">D2-962</span></p></div><p>No rule said where the row of four pillar icons belongs, which stopped the simulated designer in the production test. <a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#rule-09-1">Rule 09.1</a> now says:</p><blockquote class="rq"><p>The 48 px row runs near the top of a page that introduces the four pillars or gathers one pillar’s work, and the 24 px row, the compact row, runs in the header of a single piece that serves one pillar. A social card and a kicker carry no row.</p><footer><a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#rule-09-1">Rule 09.1</a></footer></blockquote><p>The social card in the identity proofs now names what it leaves out:</p><blockquote class="rq"><p><b>Left out.</b> A deck, so the headline keeps the title size; a web address until ours is settled; the pillar row and any topic or atlas symbol, since a phone’s feed shows the card at about 30 percent and would draw a 48 px icon at 14 px, under every icon’s floor</p><footer><a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#proofs-social-card">The social card, in the identity proofs</a></footer></blockquote></article></li><li class="call" id="call-five"><article aria-labelledby="call-five-h"><div class="call-top"><h3 class="call-h" id="call-five-h">Five symbols that look alike at 24 px</h3><p class="codes"><span class="vh">For the record: </span><span class="nw">D2-971</span> · <span class="nw">DR-136</span></p></div><p>At 24 px these five drawings from the list of 41 draw as one shape, a page under a magnifier. The 41 stay as you approved them, and <a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#rule-10-9">Rule 10.9</a> adds this line:</p><blockquote class="rq"><p>Never set two of them in one view at that size.</p><footer><a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#rule-10-9">Rule 10.9</a></footer></blockquote><div class="stage stage--np la-row"><figure class="la"><img src="img/20261029_Oath-And-Action-Civic-Line-CL-023-Evidence-Black.svg" width="24" height="24" alt="Evidence, at 24 px" class="snap" decoding="sync"><figcaption>Evidence <span class="nw id">CL-023</span></figcaption></figure><figure class="la"><img src="img/20261029_Oath-And-Action-Civic-Line-CL-028-Watchdogs-Black.svg" width="24" height="24" alt="Oversight and enforcement, at 24 px" class="snap" decoding="sync"><figcaption>Oversight and enforcement <span class="nw id">CL-028</span></figcaption></figure><figure class="la"><img src="img/20261029_Oath-And-Action-Civic-Line-R-08-Donor-Disclosure-Black.svg" width="24" height="24" alt="Disclose the original funders of political spending, at 24 px" class="snap" decoding="sync"><figcaption>Disclose the original funders of political spending <span class="nw id">R-08</span></figcaption></figure><figure class="la"><img src="img/20261029_Oath-And-Action-Civic-Line-R-27-Tax-Enforcement-Black.svg" width="24" height="24" alt="IRS enforcement of taxes already owed, at 24 px" class="snap" decoding="sync"><figcaption>IRS enforcement of taxes already owed <span class="nw id">R-27</span></figcaption></figure><figure class="la"><img src="img/20261029_Oath-And-Action-Civic-Line-R-45-Paper-Ballots-And-Audits-Black.svg" width="24" height="24" alt="Verifiable elections with paper records and audits, at 24 px" class="snap" decoding="sync"><figcaption>Verifiable elections with paper records and audits <span class="nw id">R-45</span></figcaption></figure></div><p class="caption">At actual size, 24 px, one color on Newsprint. They share a view here only to show the likeness.</p></article></li><li class="call" id="call-reforms"><article aria-labelledby="call-reforms-h"><div class="call-top"><h3 class="call-h" id="call-reforms-h">Examples moved off the reforms tied to your work</h3><p class="codes"><span class="vh">For the record: </span><span class="nw">D2-958</span> · <span class="nw">DR-100</span></p></div><p>Our atlas flags two reforms for your own work: all-party primaries with ranked general elections (<span class="nw">R-01</span>) and ranked-choice voting (<span class="nw">R-02</span>). The guide no longer prints a disclosure, so its examples stay off them.</p><p><a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#rule-10-8">Rule 10.8</a> now draws all ten reforms the atlas aims at the six variables of its elections domain, so no two of them stand out.</p><p><a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#rule-11-16">Rule 11.16</a>’s invented bill is now a local news grants bill, and its figure marks reform <span class="nw">R-32</span>, public and philanthropic funding for local news, which carries no flag.</p></article></li><li class="call" id="call-tokens"><article aria-labelledby="call-tokens-h"><div class="call-top"><h3 class="call-h" id="call-tokens-h">The tokens download</h3><p class="codes"><span class="vh">For the record: </span><span class="nw">D2-964</span> · <span class="nw">DR-192</span></p></div><p>On the published chapters page, the tokens.css button saves 20261106_Oath-And-Action-Tokens.zip, a zip file holding tokens.css, because the host refuses to save a file that ends in .css and accepts a zip. A saved copy of the page, with no host behind it, still saves tokens.css itself.</p><p><a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#colophon">The download in the chapters page’s colophon</a></p></article></li></ul></section>
+<section class="sec sec--minor" id="answered" aria-labelledby="answered-h"><h2 class="sec-h2" id="answered-h">What you answered this chat</h2><p class="intro">You answered these on November 10, each as the studio recommended.</p><ul class="log"><li><p>Round 3 ran three red teams side by side. One read brand, evidence and nonpartisanship, one read craft and accessibility, and one read plain language and ran a production test in which a simulated designer and developer each tried a real task with the guide.</p><p class="codes"><span class="vh">For the record: </span><span class="nw">DR-190</span></p></li><li><p>An item still under 4 after the fix pass gets a short second pass on that item alone when the fix is craft or wording, and only an item that needs your call comes to this board.</p><p class="codes"><span class="vh">For the record: </span><span class="nw">DR-191</span></p></li><li><p>The chapters page asks the host for its download permission, so its tokens.css button saves the file for anyone viewing it.</p><p class="codes"><span class="vh">For the record: </span><span class="nw">DR-192</span></p></li><li><p>Board B is three pages: the chapters page at its address as version 5, this decisions board and the reader check on its own private page.</p><p class="codes"><span class="vh">For the record: </span><span class="nw">DR-193</span></p></li><li><p>Once you have sent the new reader check link, the first reader check page is deleted after you confirm.</p><p class="codes"><span class="vh">For the record: </span><span class="nw">DR-194</span></p></li><li><p>Chapter 11’s loop stepper runs our atlas’s loop R1, in which wealth and political influence reinforce each other.</p><p class="codes"><span class="vh">For the record: </span><span class="nw">DR-195</span></p></li><li><p>A subject that no topic drawing names, such as Housing, takes its word alone, and a Housing drawing joins the next drawings board for your approval by name.</p><p class="codes"><span class="vh">For the record: </span><span class="nw">DR-196</span></p></li><li><p>The 16 px Pause and Filter files get 5 px bars and a 5 px spout, so each opening keeps a whole open pixel on 1x screens, and they come to you beside the approved files at stage C.</p><p class="codes"><span class="vh">For the record: </span><span class="nw">DR-197</span></p></li><li><p>Pixel fits for the 37 drawings that may be set at 24 px, drawn by one hand, come to a board at stage C or Phase 3. <a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#rule-10-4">Rule 10.4</a>’s words stand until then.</p><p class="codes"><span class="vh">For the record: </span><span class="nw">DR-198</span></p></li></ul></section>
+<section class="sec sec--minor" id="carried" aria-labelledby="carried-h"><h2 class="sec-h2" id="carried-h">Carried forward</h2><p class="intro">These stay open after board B.</p><ul class="log"><li><p>Missouri’s certified result. Counties file by November 17, the state board then has two weeks, and <a href="https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#rule-01-11">Rule 01.11</a>’s words follow what it certifies.</p><p class="codes"><span class="vh">For the record: </span><span class="nw">D2-838</span></p></li><li><p>Virginia’s 2025 House of Delegates party count, which still rests on our atlas until a primary source confirms it.</p></li><li><p>Tangipa v. Newsom’s January 14, 2026 order and the Ohio Redistricting Commission’s minutes, which the brand team could not open, so both stay unchecked.</p><p class="codes"><span class="vh">For the record: </span><span class="nw">D2-968</span></p></li><li><p>Stage C: the shell’s last pass, with the creative director’s chapter 08 items and an opening figure for chapters 09 and 10; the 16 px Pause and Filter redraws; the 24 px fits, at stage C or Phase 3; and the Housing drawing.</p><p class="codes"><span class="vh">For the record: </span><span class="nw">D2-715</span> · <span class="nw">D2-965</span> · <span class="nw">DR-196</span> · <span class="nw">DR-197</span> · <span class="nw">DR-198</span></p></li><li><p>The first reader check page, deleted once you have sent the new link and confirmed.</p><p class="codes"><span class="vh">For the record: </span><span class="nw">DR-194</span></p></li></ul></section>
+<section class="sec" id="reader" aria-labelledby="reader-h"><h2 class="sec-h" id="reader-h">The reader check</h2>
+<div class="panel"><p>The invitation goes to five to eight people who have never seen the brand, with a mix of ages and political leanings. Each takes the check once, on a phone, in about 15 minutes.</p><p>The editor wrote these two lines for you to paste, with the check’s address already in place.</p>
+<h3 class="label">Its address</h3><p class="addr"><span class="mono" id="reader-url">https://claude.ai/artifact/READER-CHECK-PENDING</span></p><p class="pend">The address fills in when the main session publishes the reader check.</p>
+<h3 class="label">The invitation</h3><div class="invite" id="invite"><p>Could you spare about 15 minutes on your phone for a short test of a draft design for a civic publication? You’ll look at some drawings, charts and pages and say what you see, and there are no wrong answers: https://claude.ai/artifact/READER-CHECK-PENDING</p><p>It asks only for a first name or initials, and you can stop at any time. If the last screen shows your answers with a Copy button, please paste them into a reply to me.</p></div>
+<div class="copy-row"><button type="button" class="btn-copy" data-copy="invite" data-text="Could you spare about 15 minutes on your phone for a short test of a draft design for a civic publication? You’ll look at some drawings, charts and pages and say what you see, and there are no wrong answers: https://claude.ai/artifact/READER-CHECK-PENDING
+
+It asks only for a first name or initials, and you can stop at any time. If the last screen shows your answers with a Copy button, please paste them into a reply to me." data-status="invite-status">Copy the invitation</button>
+<span class="status" id="invite-status" role="status" aria-live="polite"></span></div></div></section>
+<p class="foot caption">Built November 10, 2026 at 4:16 p.m. UTC from the chapter files, the tokens, the creative director’s scores, the editor’s reader check file and the decision log.</p>
+</main>
+<script>
+(function () {
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  // Each mark and drawing sits on whole CSS pixels, so a 1x screen draws it as its master is drawn (D2-565).
+  function snap() {
+    $$('.snap').forEach(function (el) { el.style.transform = ''; });
+    $$('.snap').forEach(function (el) {
+      var r = el.getBoundingClientRect(); if (!r.width) return;
+      var dx = Math.round(r.left) - r.left, dy = Math.round(r.top + window.scrollY) - (r.top + window.scrollY);
+      if (Math.abs(dx) > 0.001 || Math.abs(dy) > 0.001) el.style.transform = 'translate(' + dx.toFixed(3) + 'px,' + dy.toFixed(3) + 'px)';
+    });
+  }
+  var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(snap, 120); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(snap);
+  window.addEventListener('load', snap);
+  snap();
+  // Copy: the host's clipboard when it allows it, else the browser's own copy of the selected text, else a prompt to copy.
+  function selectNode(el) {
+    try { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); return true; } catch (e) { return false; }
+  }
+  $$('.btn-copy').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var src = document.getElementById(b.getAttribute('data-copy'));
+      var st = document.getElementById(b.getAttribute('data-status'));
+      var text = b.getAttribute('data-text') || (src ? src.innerText.trim() : '');
+      var done = function () { st.textContent = 'Copied.'; };
+      var fall = function () {
+        var ok = false;
+        if (src && selectNode(src)) { try { ok = document.execCommand('copy'); } catch (e) { ok = false; } }
+        st.textContent = ok ? 'Copied.' : 'The text is selected. Press Ctrl or Command and C to copy it.';
+      };
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fall);
+        else fall();
+      } catch (e) { fall(); }
+    });
+  });
+})();
+</script></body></html>

@@ -140,3 +140,10 @@ Tested and Not tested for this pass: see the lines added under "Tested" below th
 ### Second pass: Tested
 
 - Each of the five new strings found by script in its output: `10-symbols.json` (rows 6, 7, 8), `s-10-9-correct.html` and its manifest alt (row 9, with the no-break space in “24 px”), `12-graphic-devices.json` (row 13); “At 24 px only” no longer appears.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide-p2.html`: exit 0, 132 rules, 305 specimens, with the engineer's D2-975 pass in the build.
+- `node work/build/scripts/phase-2/guide_check.js` on it, at 1440, 1024, 390 and 360 px: 4 failures, one per width, all the new `nbHyphen` test (D2-975) and all in one plate, `s-11-12-correct`, chapter 11's filter: "CL‑006", "CL‑007", "CL‑008" and "Cross‑cutting civic ties". Its script adds the U+2011 as the page runs (`function h(x){return x.replace(/(\w)-(?=\w)/g,'$1‑');}`), after the build pass has run, so the build cannot replace it. That plate belongs to the chapter 11 hand, and I did not edit it. No hit in chapters 05, 06, 07, 10 or 12, and no other test failed.
+
+### Second pass: Not tested
+
+- A four-width check with 0 failures: it waits on the chapter 11 hand's fix to `s-11-12-correct`'s script. I did not rerun after it.
+- Captures of the five changed strings; rows 6 to 8 and 13 change words only, and row 9 changes a short label in the same place.

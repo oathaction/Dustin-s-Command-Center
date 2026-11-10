@@ -120,9 +120,7 @@ def s_reader(ctx, m):
         f'.ui .zm .b[aria-pressed="true"]{{font-weight:700;text-decoration:underline;text-decoration-thickness:2px;'
         f'text-underline-offset:4px;box-shadow:inset 0 0 0 1px var(--edge)}}')
     t0, x0 = REPORT_PAGES[0]
-    # CA-S4: the pages a script swaps in keep their compounds whole too
-    data = json.dumps([[re.sub(r'(?<=\w)-(?=\w)', m.NBHY, x) for x in pg] for pg in REPORT_PAGES], ensure_ascii=False,
-                      separators=(',', ':'))
+    data = json.dumps(REPORT_PAGES, ensure_ascii=False, separators=(',', ':'))
     # CA-S1: the page's header, title and text stay readable to a screen reader, and the status line names the title
     html = (f'<style>{css}</style><div class="ui" data-ui="reader"><p><span class="illus">Illustrative</span></p>'
             f'<p class="rn">{REPORT}</p>'
@@ -146,7 +144,10 @@ O=R.querySelector('[data-out="n"]'),W=R.querySelector('[data-out="why"]'),G=R.qu
 H=R.querySelector('[data-out="pt"]'),Z=R.querySelector('[data-out="px"]'),V=R.querySelector('[data-view]');
 function off(b,y){if(y){b.setAttribute('aria-disabled','true');b.setAttribute('aria-describedby',W.id);}
 else{b.removeAttribute('aria-disabled');b.removeAttribute('aria-describedby');}}
-function draw(){O.textContent='Page '+n+' of '+N+': '+T[n-1][0];G.textContent=n;H.textContent=T[n-1][0];Z.textContent=T[n-1][1];
+function put(el,x){el.textContent='';x.split(/(\\S*\\w-\\w\\S*)/).forEach(function(p,i){if(!p)return;
+if(i%2){var s=document.createElement('span');s.style.whiteSpace='nowrap';s.textContent=p;el.appendChild(s);}
+else{el.appendChild(document.createTextNode(p));}});}
+function draw(){O.textContent='Page '+n+' of '+N+': '+T[n-1][0];G.textContent=n;put(H,T[n-1][0]);put(Z,T[n-1][1]);
 off(P,n===1);off(X,n===N);W.textContent=n===1?'This is the first page.':(n===N?'This is the last page.':'');}
 P.addEventListener('click',function(){if(n>1){n--;draw();}});
 X.addEventListener('click',function(){if(n<N){n++;draw();}});
@@ -279,7 +280,9 @@ O=L.querySelector('[data-out="res"]'),U=L.querySelector('[data-out="hits"]'),M=L
 Y=L.querySelector('[data-out="more"]'),B=[].slice.call(L.querySelectorAll('[data-f]'));
 function on(b){return b.getAttribute('aria-pressed')==='true';}
 var N9=['','one','two','three','four','five','six','seven','eight','nine'];
-function h(x){return x.replace(/(\\w)-(?=\\w)/g,'$1\\u2011');}
+function put(el,x){el.textContent='';x.split(/(\\S*\\w-\\w\\S*)/).forEach(function(p,i){if(!p)return;
+if(i%2){var s=document.createElement('span');s.style.whiteSpace='nowrap';s.textContent=p;el.appendChild(s);}
+else{el.appendChild(document.createTextNode(p));}});}
 function mark(b,y){var g=b.querySelector('svg');if(y&&!g){b.insertBefore(M.content.firstElementChild.cloneNode(true),b.firstChild);}
 if(!y&&g){g.remove();}b.setAttribute('aria-pressed',y?'true':'false');}
 function run(){var q=Q.value.trim().toLowerCase(),k=B.filter(function(b){return on(b)&&b.getAttribute('data-f')!=='24';})
@@ -288,7 +291,7 @@ r=D.filter(function(d){return(!k.length||k.some(function(x){return d[2].indexOf(
 (!q||d[0].toLowerCase().indexOf(q)>=0||d[1].toLowerCase().indexOf(q)>=0);}),n=B.filter(on).length;
 K.textContent='Filters, '+n+' on';Z.hidden=!n;C.hidden=!Q.value;O.textContent=r.length+' of 124 symbols';
 U.textContent='';r.slice(0,3).forEach(function(d){var li=document.createElement('li'),b=document.createElement('b');
-b.textContent=h(d[0]);li.appendChild(b);li.appendChild(document.createTextNode(' '+h(d[1])));U.appendChild(li);});
+put(b,d[0]);li.appendChild(b);var t=document.createElement('span');put(t,' '+d[1]);li.appendChild(t);U.appendChild(li);});
 var k=r.length-3;Y.textContent=!r.length?'No symbol matches. Clear the search or the filters to see more.':
 (k>0?'The first three are listed here, and '+(k<10?N9[k]:k)+' more '+(k===1?'matches':'match')+'.':'');}
 Q.addEventListener('input',run);

@@ -1,0 +1,438 @@
+{
+ "built": "2026-11-10T16:16:43.430744+00:00",
+ "board": "work/boards/phase-2/stage-b/board-b/20261110_Board-B.html",
+ "chapters_page": {
+  "url": "https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF",
+  "version": 5
+ },
+ "reader_check": {
+  "url": "https://claude.ai/artifact/READER-CHECK-PENDING",
+  "placeholder": true,
+  "invitation_source": [
+   "Could you spare about 15 minutes on your phone for a short test of a draft design for a civic publication? You’ll look at some drawings, charts and pages and say what you see, and there are no wrong answers: [link]",
+   "It asks only for a first name or initials, and you can stop at any time. If the last screen shows your answers with a Copy button, please paste them into a reply to me."
+  ],
+  "invitation": [
+   "Could you spare about 15 minutes on your phone for a short test of a draft design for a civic publication? You’ll look at some drawings, charts and pages and say what you see, and there are no wrong answers: https://claude.ai/artifact/READER-CHECK-PENDING",
+   "It asks only for a first name or initials, and you can stop at any time. If the last screen shows your answers with a Copy button, please paste them into a reply to me."
+  ]
+ },
+ "words": {
+  "kicker": "Edition 06 · Stage B · Board B",
+  "for_line": "For Dustin Cathcart · {built_date}",
+  "title": "Two decisions are yours",
+  "deck": [
+   "Board B closes stage B, in which the studio built chapters 09 to 12 and fixed, in one pass, what three red teams and the creative director found in them.",
+   "This page holds the two questions you answer by name, with the creative director’s scores and the calls the studio made that you may overrule."
+  ],
+  "pages_h": "The three pages of board B",
+  "pages": [
+   [
+    "The chapters page",
+    "chapters",
+    "version {chapters_version}, with chapters 01 to 12 and the identity proofs as the fix pass left them. Each rule number on this board opens it at that rule."
+   ],
+   [
+    "The reader check",
+    "reader",
+    "a test of about 15 minutes on a phone, for five to eight people who have never seen the brand. Its invitation waits at the end of this board, ready to paste."
+   ],
+   [
+    "This board",
+    null,
+    "your two decisions, the scores, the calls you may overrule and what stays open after board B."
+   ]
+  ],
+  "reply_h": "A reply can be this short",
+  "sample_reply": "All as recommended, and I approve option A for the error mark by name.",
+  "copy_reply": "Copy the reply",
+  "toc_h": "On this board",
+  "d1": {
+   "label": "Decision 1 of 2",
+   "title": "The error mark",
+   "codes": "D2-880 · D2-859 · DR-173",
+   "lede": [
+    "Rule 11.15 draws the error mark, a circle holding an exclamation mark, in the text’s ink, and gives the error’s red to a 4 px Pillar Red bar at the left of the field and of the message. You approved the drawing on November 10. Its color comes to you by name because our red token was written for the mark and its bar, and Gate 2 confirms the tokens."
+   ],
+   "a_h": "Option A, as built",
+   "a_text": "The mark in the text’s ink, Charcoal, with the 4 px Pillar Red bar at the left of the field and of the message.",
+   "b_h": "Option B",
+   "b_text": "The same mark drawn in Pillar Red, with the same bar.",
+   "row_form": "In the form, at actual size",
+   "row_form_cap": "A sign-up field after a wrong entry, as a phone shows it, at most 360 px wide. The mark stands at 24 px.",
+   "row_alone": "The mark alone, 24 px, at actual size",
+   "row_enl": "Enlarged {enlarge_words} times",
+   "row_enl_cap": "The 24 px master drawn at {enlarged_px} px, so its 2 px line stands {enlarged_line} px wide.",
+   "on_np": "On Newsprint",
+   "on_band": "On the Error Band",
+   "contrast_h": "Contrast against the ground",
+   "contrast_note": "A mark that carries meaning needs 3 to 1 against its ground (Rule 05.5, and WCAG 2.2 success criterion 1.4.11). This board’s build works out each figure from the colors in our tokens.",
+   "field_label": "Email",
+   "field_value": "name.example.com",
+   "message": "Enter an email address with an @, such as name@example.com.",
+   "rec": [
+    "Option A. In Pillar Red the mark measures {b_band} to 1 on the Error Band and {b_np} to 1 on Newsprint, so a reader with low vision can lose it on either ground. In ink it measures {a_band} to 1 on the band, and the bar still gives the error the view’s red.",
+    "If you approve option A, the engineer rewords the red token’s description at Gate 2 so it names the bar alone. Option B changes one color in one drawing, and setting that color back undoes it."
+   ],
+   "approve": "Option A for the error mark, as Rule 11.15 draws it."
+  },
+  "d2": {
+   "label": "Decision 2 of 2",
+   "title": "Tiles under the 48 px floor",
+   "codes": "D2-976 · DR-136",
+   "lede": [
+    "On November 8 you set 48 px as the smallest size for a topic or atlas symbol, with 24 px allowed only for the 41 that read there. A tile, the square, rounded square or circle that holds a drawing as an app icon or an avatar, draws its symbol at about two thirds of its own size. So a one-color tile from 48 px draws its symbol at 32 to 34 px, under that floor.",
+    "The tile sizes came from the October review, which read every drawing at 32 px before the floor was set. Rule 10.5 now names the small one-color tiles as the one exception:"
+   ],
+   "fig_cap": "{subject}, a topic symbol off the list of 41, at actual size on Newsprint. The tile is Charcoal, the default for app icons and avatars.",
+   "tile_cap": "One-color tile, {px} px. Its drawing stands at about {inner} px.",
+   "alone48_cap": "The drawing alone at 48 px, the floor.",
+   "alone32_cap": "The drawing alone at 32 px.",
+   "other_h": "The other answer",
+   "other_cap": "The smallest one-color tile at {px} px. Its drawing stands at about {inner} px.",
+   "rec": [
+    "Keep the exception. Avatars and small app tiles show at 32 to 48 px, and on a tile the drawing sits on a solid ground of its own.",
+    "The other answer gives all {n_all} drawings one-color tiles from {sq}, {rd} and {ci} px, which keeps the 48 px floor with no exception and rules out small avatars."
+   ],
+   "approve": "Keep the one-color tile exception in Rule 10.5."
+  },
+  "rec_h": "Recommendation",
+  "approve_h": "What you approve by name",
+  "scores": {
+   "title": "The creative director’s scores",
+   "intro": [
+    "The creative director scored chapters 09 to 12, and the parts of chapters 01, 03, 04, 05 and 08 that changed, on the six criteria of our rubric, from 1 to 5. An item is ready at 4 or more on every one."
+   ],
+   "r3_caption": "Round 3, {r3_date}: the page as the red teams read it, before the fix pass. A boxed score is under 4.",
+   "rescore_caption": "The rescore after the fix pass{rs_date}. A boxed score is under 4, and “was” gives the round 3 score where it moved.",
+   "waiting": "The creative director rescores after the fix pass, and this board is rebuilt with the rescore set apart from round 3.",
+   "low_h": "What stood under 4 at round 3",
+   "moved_h": "What moved in the rescore",
+   "ready_h": "Ready",
+   "item_h": "Chapter or part"
+  },
+  "calls": {
+   "title": "Calls the studio made that you may overrule",
+   "intro": "The studio made these four calls inside the plan you approved. Each stands unless you say otherwise.",
+   "row": {
+    "h": "Where the pillar row goes",
+    "codes": "D2-962",
+    "text": "No rule said where the row of four pillar icons belongs, which stopped the simulated designer in the production test. Rule 09.1 now says:",
+    "social": "The social card in the identity proofs now names what it leaves out:"
+   },
+   "five": {
+    "h": "Five symbols that look alike at 24 px",
+    "codes": "D2-971 · DR-136",
+    "text": "At 24 px these five drawings from the list of 41 draw as one shape, a page under a magnifier. The 41 stay as you approved them, and Rule 10.9 adds this line:",
+    "cap": "At actual size, 24 px, one color on Newsprint. They share a view here only to show the likeness."
+   },
+   "reforms": {
+    "h": "Examples moved off the reforms tied to your work",
+    "codes": "D2-958 · DR-100",
+    "text": [
+     "Our atlas flags two reforms for your own work: all-party primaries with ranked general elections (R-01) and ranked-choice voting (R-02). The guide no longer prints a disclosure, so its examples stay off them.",
+     "Rule 10.8 now draws all ten reforms the atlas aims at the six variables of its elections domain, so no two of them stand out.",
+     "Rule 11.16’s invented bill is now a local news grants bill, and its figure marks reform R-32, public and philanthropic funding for local news, which carries no flag."
+    ]
+   },
+   "tokens": {
+    "h": "The tokens download",
+    "codes": "D2-964 · DR-192",
+    "text": "On the published chapters page, the tokens.css button saves {zip}, a zip file holding tokens.css, because the host refuses to save a file that ends in .css and accepts a zip. A saved copy of the page, with no host behind it, still saves tokens.css itself.",
+    "link": "The download in the chapters page’s colophon"
+   },
+   "open": "Open {what} in the chapters page"
+  },
+  "answered": {
+   "title": "What you answered this chat",
+   "intro": "You answered these on November 10, each as the studio recommended.",
+   "lines": [
+    [
+     "DR-190",
+     "Round 3 ran three red teams side by side. One read brand, evidence and nonpartisanship, one read craft and accessibility, and one read plain language and ran a production test in which a simulated designer and developer each tried a real task with the guide."
+    ],
+    [
+     "DR-191",
+     "An item still under 4 after the fix pass gets a short second pass on that item alone when the fix is craft or wording, and only an item that needs your call comes to this board."
+    ],
+    [
+     "DR-192",
+     "The chapters page asks the host for its download permission, so its tokens.css button saves the file for anyone viewing it."
+    ],
+    [
+     "DR-193",
+     "Board B is three pages: the chapters page at its address as version 5, this decisions board and the reader check on its own private page."
+    ],
+    [
+     "DR-194",
+     "Once you have sent the new reader check link, the first reader check page is deleted after you confirm."
+    ],
+    [
+     "DR-195",
+     "Chapter 11’s loop stepper runs our atlas’s loop R1, in which wealth and political influence reinforce each other."
+    ],
+    [
+     "DR-196",
+     "A subject that no topic drawing names, such as Housing, takes its word alone, and a Housing drawing joins the next drawings board for your approval by name."
+    ],
+    [
+     "DR-197",
+     "The 16 px Pause and Filter files get 5 px bars and a 5 px spout, so each opening keeps a whole open pixel on 1x screens, and they come to you beside the approved files at stage C."
+    ],
+    [
+     "DR-198",
+     "Pixel fits for the 37 drawings that may be set at 24 px, drawn by one hand, come to a board at stage C or Phase 3. Rule 10.4’s words stand until then."
+    ]
+   ]
+  },
+  "carried": {
+   "title": "Carried forward",
+   "intro": "These stay open after board B.",
+   "lines": [
+    [
+     "D2-838",
+     "Missouri’s certified result. Counties file by November 17, the state board then has two weeks, and Rule 01.11’s words follow what it certifies."
+    ],
+    [
+     "",
+     "Virginia’s 2025 House of Delegates party count, which still rests on our atlas until a primary source confirms it."
+    ],
+    [
+     "D2-968",
+     "Tangipa v. Newsom’s January 14, 2026 order and the Ohio Redistricting Commission’s minutes, which the brand team could not open, so both stay unchecked."
+    ],
+    [
+     "D2-715 · D2-965 · DR-196 · DR-197 · DR-198",
+     "Stage C: the shell’s last pass, with the creative director’s chapter 08 items and an opening figure for chapters 09 and 10; the 16 px Pause and Filter redraws; the 24 px fits, at stage C or Phase 3; and the Housing drawing."
+    ],
+    [
+     "DR-194",
+     "The first reader check page, deleted once you have sent the new link and confirmed."
+    ]
+   ]
+  },
+  "reader": {
+   "title": "The reader check",
+   "text": [
+    "The invitation goes to five to eight people who have never seen the brand, with a mix of ages and political leanings. Each takes the check once, on a phone, in about 15 minutes.",
+    "The editor wrote these two lines for you to paste, with the check’s address already in place."
+   ],
+   "address_h": "Its address",
+   "invite_h": "The invitation",
+   "copy": "Copy the invitation",
+   "pending": "The address fills in when the main session publishes the reader check."
+  },
+  "foot": "Built {built_date} at {built_time} UTC from the chapter files, the tokens, the creative director’s scores, the editor’s reader check file and the decision log."
+ },
+ "filled": {
+  "a_band": "11.89",
+  "a_np": "13.29",
+  "b_band": "2.64",
+  "b_np": "2.96",
+  "built_date": "November 10, 2026",
+  "built_time": "4:16 p.m.",
+  "chapters_version": 5,
+  "enlarge_words": "four",
+  "enlarged_px": 96,
+  "enlarged_line": "8",
+  "subject": "Public meeting",
+  "n_all": 124,
+  "sq": 72,
+  "rd": 76,
+  "ci": 80,
+  "r3_date": "November 10, 2026",
+  "zip": "20261106_Oath-And-Action-Tokens.zip"
+ },
+ "decision_1": {
+  "contrast": {
+   "a_band": "11.89",
+   "a_np": "13.29",
+   "b_band": "2.64",
+   "b_np": "2.96"
+  },
+  "colors": {
+   "newsprint": "#DCD9D2",
+   "band": "#E1C9C1",
+   "red": "#E63946",
+   "ink": "#121212",
+   "pillar_red": "#E63946",
+   "charcoal": "#121212"
+  },
+  "tokens": {
+   "newsprint": "--oa-color-surface-newsprint",
+   "band": "--oa-color-state-error-band-on-newsprint",
+   "red": "--oa-color-state-error-mark-on-newsprint",
+   "ink": "--oa-color-state-error-text-on-newsprint",
+   "pillar_red": "--oa-color-palette-pillar-red",
+   "charcoal": "--oa-color-palette-charcoal"
+  },
+  "enlargement": 4,
+  "rule_11_15_why": "Each state has a shape and a word, so none rests on color. The error mark draws in ink because Pillar Red measures 2.64 to 1 on the Error Band and 2.96 on Newsprint, under the 3 to 1 a mark needs; in ink it measures 11.89 to 1, and the red bar carries the error’s claim on the view’s red. Verdigris measures 3.37 to 1 on Newsprint.",
+  "mark_file": "work/build/assets/utility/svg-24/20261110_Utility-Error-24px.svg"
+ },
+ "decision_2": {
+  "subject": {
+   "id": "CL-005",
+   "name": "Public meeting"
+  },
+  "tile_scale_square": 0.68,
+  "one_color_min": {
+   "square": 48,
+   "rounded": 52,
+   "circle": 52
+  },
+  "two_color_min": {
+   "square": 72,
+   "rounded": 76,
+   "circle": 80
+  },
+  "drawing_in_48_tile_px": 32.64,
+  "drawing_in_72_tile_px": 48.96,
+  "n_one_color_from_48": 94,
+  "n_drawings": 124,
+  "rule_10_5_quote": "A one-color tile may go smaller, from 48 px square and 52 px rounded or round, which holds its drawing at 32 to 34 px. This is the one place a drawing off the list of 41 goes under Rule 10.4’s 48 px floor, and it is open only to the 94 drawings that reviewers could still name at 32 px. The other 30 take one-color tiles from 72, 76 and 80 px, which hold them at 48 px or more.",
+  "files": [
+   "work/build/assets/civic-line/tiles/square-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-005-Public-Meeting-Tile-Square-Charcoal-One-Color.svg",
+   "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-005-Public-Meeting-Black.svg"
+  ]
+ },
+ "scores": {
+  "round_3": {
+   "date": "2026-11-10",
+   "scores": {
+    "ch09": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 5,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    },
+    "ch10": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    },
+    "ch11": {
+     "craft": 3,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    },
+    "ch12": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 3,
+     "accessibility": 4
+    },
+    "group": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 3,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    }
+   },
+   "ready": {
+    "ch09": true,
+    "ch10": true,
+    "ch11": false,
+    "ch12": false,
+    "group": false
+   },
+   "under_4": [
+    {
+     "item": "Chapter 11, Status and utility icons",
+     "criterion": "Craft",
+     "score": 3,
+     "reason": "The trackers and the 18 utility icons are finished work, but the report reader's page is three gray bars, one headline breaks \"all-party\" at its hyphen, and the three message marks carry their Illustrative label down in the caption."
+    },
+    {
+     "item": "Chapter 12, Graphic devices and patterns",
+     "criterion": "Evidence honesty",
+     "score": 3,
+     "reason": "Rule 12.6's correct plate titles its invented chart \"Most claims in these three chapters rest on the record\" over bars where 17 of 39 claims are documented, and Rule 12.7's two invented headlines carry no Illustrative label."
+    },
+    {
+     "item": "Changed parts of chapters 01, 03, 04, 05 and 08",
+     "criterion": "Brand fidelity",
+     "score": 3,
+     "reason": "Rule 05.3’s corrective plate drew the error as a white cross in a red disc, the sign for Close, where you had approved a circle holding an exclamation mark."
+    }
+   ]
+  },
+  "rescore": null
+ },
+ "calls": {
+  "rule_09_1_quote": "The 48 px row runs near the top of a page that introduces the four pillars or gathers one pillar’s work, and the 24 px row, the compact row, runs in the header of a single piece that serves one pillar. A social card and a kicker carry no row.",
+  "social_left_out": "A deck, so the headline keeps the title size; a web address until ours is settled; the pillar row and any topic or atlas symbol, since a phone’s feed shows the card at about 30 percent and would draw a 48 px icon at 14 px, under every icon’s floor",
+  "rule_10_9_paragraph": "At 24 px, five drawings on the list of 41 draw as one shape, a page under a magnifier: Evidence, CL‑023; Oversight and enforcement, CL‑028; Disclose the original funders of political spending, R‑08; IRS enforcement of taxes already owed, R‑27; and Verifiable elections with paper records and audits, R‑45. Never set two of them in one view at that size.",
+  "rule_10_9_line": "Never set two of them in one view at that size.",
+  "lookalikes": [
+   {
+    "id": "CL-023",
+    "label": "Evidence"
+   },
+   {
+    "id": "CL-028",
+    "label": "Oversight and enforcement"
+   },
+   {
+    "id": "R-08",
+    "label": "Disclose the original funders of political spending"
+   },
+   {
+    "id": "R-27",
+    "label": "IRS enforcement of taxes already owed"
+   },
+   {
+    "id": "R-45",
+    "label": "Verifiable elections with paper records and audits"
+   }
+  ],
+  "zip": "20261106_Oath-And-Action-Tokens.zip"
+ },
+ "rule_anchors_linked": [
+  "colophon",
+  "graphic-devices",
+  "icons",
+  "pillar-icons",
+  "proofs-social-card",
+  "rule-01-11",
+  "rule-05-3",
+  "rule-05-5",
+  "rule-09-1",
+  "rule-10-4",
+  "rule-10-5",
+  "rule-10-8",
+  "rule-10-9",
+  "rule-11-15",
+  "rule-11-16",
+  "rule-12-6",
+  "rule-12-7",
+  "symbols"
+ ],
+ "images": {
+  "20261029_Oath-And-Action-Civic-Line-CL-005-Public-Meeting-Black.svg": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-005-Public-Meeting-Black.svg",
+  "20261029_Oath-And-Action-Civic-Line-CL-005-Public-Meeting-Tile-Square-Charcoal-One-Color.svg": "work/build/assets/civic-line/tiles/square-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-005-Public-Meeting-Tile-Square-Charcoal-One-Color.svg",
+  "20261029_Oath-And-Action-Civic-Line-CL-023-Evidence-Black.svg": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-023-Evidence-Black.svg",
+  "20261029_Oath-And-Action-Civic-Line-CL-028-Watchdogs-Black.svg": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-028-Watchdogs-Black.svg",
+  "20261029_Oath-And-Action-Civic-Line-R-08-Donor-Disclosure-Black.svg": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-08-Donor-Disclosure-Black.svg",
+  "20261029_Oath-And-Action-Civic-Line-R-27-Tax-Enforcement-Black.svg": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-27-Tax-Enforcement-Black.svg",
+  "20261029_Oath-And-Action-Civic-Line-R-45-Paper-Ballots-And-Audits-Black.svg": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-45-Paper-Ballots-And-Audits-Black.svg"
+ },
+ "notes": [
+  "the reader check address is the placeholder; the main session reruns with the real address at publish",
+  "the scores file has no rescore block yet; the board says the rescore is coming. Rerun when it lands."
+ ],
+ "warnings": [],
+ "visible_text_sha1": "4cd384baae05719886c96ae900ae6fbb77aba233"
+}
