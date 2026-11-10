@@ -45,6 +45,11 @@ TIER = {"primitive": "Primitive", "semantic": "Semantic", "component": "Componen
 e = html.escape
 
 
+def dots(path):
+    """A dotted name that may break after each dot, and nowhere else."""
+    return "<wbr>.".join(e(x) for x in path.split(".")).replace("<wbr>.", ".<wbr>")
+
+
 def css_name(path):
     return "--" + "-".join(re.sub(r"([a-z0-9])([A-Z])", r"\1-\2", seg).lower() for seg in path.split("."))
 
@@ -101,7 +106,7 @@ def value_html(p, toks):
     typ = t["$type"]
     tgt, v = resolve(p, toks)
     a = alias(t["$value"])
-    via = f'<span class="tt-via">From <code>{e(a)}</code></span>' if a else ""
+    via = f'<span class="tt-via">From <code>{dots(a)}</code></span>' if a else ""
     if typ == "color":
         return (f'<span class="tt-sw" style="background:var({css_name(p)})" aria-hidden="true"></span>'
                 f'<span class="tt-v">{e(v["hex"])}</span>{via}')
@@ -145,6 +150,8 @@ def contrast_html(p, toks):
             sem = c
             break
     x = ext(toks[sem])
+    if x.get("kind") == "surface":
+        return ""
     last = p.split(".")[-1]
     if isinstance(x.get("contrast"), (int, float)):
         kind, need = KIND.get(x.get("kind"), (x.get("kind"), None))
@@ -182,8 +189,9 @@ STYLE = """
 .tt tbody th, .tt td { text-align: left; vertical-align: top; padding: var(--oa-space-150) var(--oa-space-200) var(--oa-space-150) 0;
   border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline); font: var(--oa-type-body-small) }
 .tt .tt-g th { padding-top: var(--oa-space-400); font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); border-bottom-color: var(--oa-color-border-strong) }
-.tt-n { display: block; font-weight: var(--oa-font-weight-semibold); overflow-wrap: anywhere }
-.tt-c { display: block; margin-top: var(--oa-space-050); font-size: .875rem; overflow-wrap: anywhere; color: var(--oa-color-text-secondary) }
+.tt-n { display: block; font-weight: var(--oa-font-weight-semibold); overflow-wrap: break-word }
+.tt-c { display: block; margin-top: var(--oa-space-050); font-size: .875rem; overflow-wrap: break-word; color: var(--oa-color-text-secondary) }
+.tt tbody th[scope="row"] { width: 16rem }
 .tt-copy { box-sizing: border-box; margin-top: var(--oa-space-100); min-height: var(--oa-size-target-touch); padding: 0 var(--oa-space-200); border: 0;
   box-shadow: inset 0 0 0 var(--oa-border-width-hairline) var(--oa-color-border-strong); background: transparent; color: var(--oa-color-text-primary); font: var(--oa-type-ui); cursor: pointer }
 .tt-copy:hover { box-shadow: inset 0 0 0 var(--oa-border-width-rule) var(--oa-color-border-strong); text-decoration: underline }
@@ -191,10 +199,12 @@ STYLE = """
   box-shadow: inset 0 0 0 var(--oa-border-width-hairline) var(--oa-color-border-strong) }
 .tt-v { font-variant-numeric: tabular-nums }
 .tt-via { display: block; margin-top: var(--oa-space-050); font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
-.tt-via code { overflow-wrap: anywhere }
-.tt-none { margin: var(--oa-space-200) 0 0 }
+.tt-via code { overflow-wrap: break-word }
+.tt-st .tt-mk { width: var(--oa-size-icon-small); height: var(--oa-size-icon-small); margin-right: .4em; vertical-align: -.2em }
+.tt-st .tt-ok { color: var(--oa-color-state-success-mark) }
+.tt-st.is-error { color: var(--oa-color-state-error-text); background: var(--oa-color-state-error-band); border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-mark); padding: var(--oa-space-100) var(--oa-space-150) }
 .tt-wrap { container-type: inline-size }
-@container (max-width: 44rem) {
+@container (max-width: 50rem) {
   .tt thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%) }
   .tt tr { display: block; padding: var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
   .tt .tt-g { border-bottom-color: var(--oa-color-border-strong) }
@@ -212,18 +222,26 @@ STYLE = """
 SCRIPT = """
 // Chapter 26's token table: the search filters the rows and says how many show; each Copy copies its CSS name.
 document.querySelectorAll('.tt').forEach(function (box) {
-  var q = box.querySelector('.tt-q'), status = box.querySelector('.tt-status'), none = box.querySelector('.tt-none');
+  var q = box.querySelector('.tt-q'), status = box.querySelector('.tt-status'), words = status.querySelector('.tt-t');
   var groups = Array.prototype.slice.call(box.querySelectorAll('tbody'));
   var rows = Array.prototype.slice.call(box.querySelectorAll('tbody tr:not(.tt-g)'));
   var text = rows.map(function (r) { return r.textContent.replace(/\\s+/g, ' ').toLowerCase(); });
   var total = rows.length, timer = null;
-  var say = function (t) { status.textContent = t; };
+  // the line carries the count with its advice (F-5), and a copy's result with the success or the error mark (F-7)
+  var say = function (t, mark) {
+    words.textContent = '';
+    if (mark === 'err') { var b = document.createElement('b'); b.textContent = 'Error:'; words.appendChild(b); words.appendChild(document.createTextNode(' ' + t)); } else words.textContent = t;
+    status.querySelector('.tt-ok').toggleAttribute('hidden', mark !== 'ok');
+    status.querySelector('.tt-er').toggleAttribute('hidden', mark !== 'err');
+    status.classList.toggle('is-error', mark === 'err');
+    if (mark === 'err') { status.setAttribute('data-red', 'working'); status.setAttribute('data-red-job', 'error'); } else { status.removeAttribute('data-red'); status.removeAttribute('data-red-job'); }
+  };
   function filter() {
-    var words = q.value.toLowerCase().replace(/^--/, '').split(/\\s+/).filter(Boolean), shown = 0;
+    var words = q.value.toLowerCase().replace(/^--/, '').split(/\\s+/).filter(Boolean), shown = 0;   // the search's words
     rows.forEach(function (r, i) { var hit = words.every(function (w) { return text[i].indexOf(w) >= 0; }); r.hidden = !hit; if (hit) shown++; });
     groups.forEach(function (g) { g.hidden = !g.querySelector('tr:not(.tt-g):not([hidden])'); });
-    none.hidden = shown > 0;
-    say(words.length ? 'Showing ' + shown + ' of ' + total + ' tokens.' : 'Showing all ' + total + ' tokens.');
+    say(!words.length ? 'Showing all ' + total + ' tokens.' : shown ? 'Showing ' + shown + ' of ' + total + ' tokens.'
+      : 'Showing 0 of ' + total + ' tokens. No token matches. Try a role, such as text or focus, or a surface, such as Charcoal.');
   }
   q.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(filter, 250); });
   box.addEventListener('click', function (ev) {
@@ -233,9 +251,9 @@ document.querySelectorAll('.tt').forEach(function (box) {
     var fail = function () {
       var c = b.parentNode.querySelector('.tt-c'), r = document.createRange();
       r.selectNodeContents(c); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-      say('The browser blocked copying. ' + name + ' is selected: press Control and C, or Command and C.');
+      say('The browser blocked copying. ' + name + ' is selected: press Control and C, or Command and C.', 'err');
     };
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(name).then(function () { say('Copied ' + name + '.'); }, fail); else fail();
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(name).then(function () { say('Copied ' + name + '.', 'ok'); }, fail); else fail();
   });
 });
 """
@@ -255,7 +273,7 @@ def build(tokens_path):
             t = toks[p]
             x = ext(t)
             cn = css_name(p)
-            rows.append(f'<tr><th scope="row"><span class="tt-n">{e(p)}</span><code class="tt-c">{e(cn)}</code>'
+            rows.append(f'<tr><th scope="row"><span class="tt-n">{dots(p)}</span><code class="tt-c">{e(cn)}</code>'
                         f'<button type="button" class="tt-copy" data-copy="{e(cn)}" aria-label="Copy {e(cn)}">Copy</button></th>'
                         f'<td>{value_html(p, toks)}</td><td>{e(t.get("$description", ""))}</td><td>{e(TIER.get(x.get("tier"), "Untiered"))}</td>'
                         f'<td>{contrast_html(p, toks)}</td></tr>')
@@ -268,11 +286,13 @@ def build(tokens_path):
             f'<div class="tt" data-token-count="{n}" data-token-version="{e(version)}">'
             f'<div class="tt-find"><div><label for="tt-q">Search the tokens</label>'
             f'<input class="tt-q" id="tt-q" type="search" autocomplete="off" spellcheck="false" aria-describedby="tt-status"></div>'
-            f'<p class="tt-status" id="tt-status" role="status">Showing all {n} tokens.</p></div>'
+            f'<p class="tt-status tt-st" id="tt-status" role="status">'
+            f'<svg class="tt-mk tt-ok" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false" data-icon="U-success" data-icon-family="utility" hidden><use href="#oa-sym-u-success-16px"/></svg>'
+            f'<svg class="tt-mk tt-er" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false" data-icon="U-error" data-icon-family="utility" hidden><use href="#oa-sym-u-error-16px"/></svg>'
+            f'<span class="tt-t">Showing all {n} tokens.</span></p></div>'
             f'<div class="tt-wrap"><table><caption>Every token in tokens.json, version {e(version)}, by category: its name and CSS name, value, use, tier and the contrast it measures where it serves.</caption>'
             f'<thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Use</th><th scope="col">Tier</th><th scope="col">Contrast</th></tr></thead>'
-            f'{"".join(body)}</table></div>'
-            f'<p class="tt-none" hidden>No token matches. Try a role, such as text or focus, or a surface, such as Charcoal.</p></div>\n'
+            f'{"".join(body)}</table></div></div>\n'
             f'<script>{SCRIPT}</script>\n'), n, version
 
 

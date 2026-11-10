@@ -359,7 +359,8 @@ a.toc-part-k:hover { text-decoration: underline }
    picture of a finished piece, so it keeps its colors when the system forces its own. */
 .plate-stage { position: relative; width: var(--w, 100%); max-width: none; margin: 0 auto; font: var(--oa-type-body); text-align: left;
   box-shadow: 0 0 0 var(--oa-border-width-hairline) var(--keyline); forced-color-adjust: none }
-.plate-stage:not(.code-stage) :is(button, input, select, textarea) { font: inherit }
+/* stage C: the :where keeps this rule at the specificity it had before code stages existed (0,1,1), so no specimen moves */
+.plate-stage:where(:not(.code-stage)) :is(button, input, select, textarea) { font: inherit }
 .plate-stage[data-pending] { padding: var(--oa-space-400); max-width: 100% }
 /* B1 (creative director's review): a stage that flows with the page keeps 16 px, 24 px from 48em, between its content
    and its keyline. A stage with a fixed width_px stays at its exact true size. */
