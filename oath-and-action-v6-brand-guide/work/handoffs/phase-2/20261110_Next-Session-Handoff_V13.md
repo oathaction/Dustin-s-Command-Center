@@ -1,12 +1,12 @@
 # Handoff for the next session: Oath & Action Edition 06 (thirteenth handoff, November 10)
 
-Written November 10, 2026, after stage C's round 0 and drawings board C. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `20261110_Next-Session-Handoff_V12.md`. V5's sections 3 to 5, V8's section 3, V9's section 3, V10's section 3, V11's section 3 and V12's section 3 still hold, with the additions below. Decision log entries for this chat run from DR-203 to DR-206 and from D2-1115 to D2-1258. The change ledger ends at C-065.
+Written November 10, 2026, after stage C's round 0 and drawings board C. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `20261110_Next-Session-Handoff_V12.md`. V5's sections 3 to 5, V8's section 3, V9's section 3, V10's section 3, V11's section 3 and V12's section 3 still hold, with the additions below. Decision log entries for this chat run from DR-203 to DR-211 and from D2-1115 to D2-1259. The change ledger ends at C-065.
 
 ## 1. Where things stand
 
 | Page | Address | Status |
 |---|---|---|
-| Drawings board C | https://claude.ai/artifact/LtEuA2zNh1WUidhd4cAVsH | Version 1 (1794340326-c858), published privately (D2-1257). Waiting for Dustin's answers on five cards; `work/boards/phase-2/stage-c/drawings/20261110_Published-Pages.json` records it |
+| Drawings board C | https://claude.ai/artifact/LtEuA2zNh1WUidhd4cAVsH | Version 1 (1794340326-c858), published privately (D2-1257). Answered: all as recommended, approved by name (DR-207 to DR-211); `work/boards/phase-2/stage-c/drawings/20261110_Published-Pages.json` records it |
 | Chapters page (01 to 12, identity proofs) | https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF | Version 5, unchanged this chat. The committed build has moved on (round 0's shell pass, tokens 6.0.0-gate2.7, chapter 08's dark card test, chapter 09's opener); it is republished at board C |
 | Board B decisions board | https://claude.ai/artifact/MV5dR1EXqj6ZH4dsbqck4i | Answered (DR-199 to DR-201) |
 | Both reader check pages | Deleted | DR-206; their files stay in `work/boards/phase-2/reader-check/` and `reader-check-2/` |
@@ -16,6 +16,7 @@ Written November 10, 2026, after stage C's round 0 and drawings board C. A new s
 - DR-204: one dark mode for every screen product, from Night Edition on Charcoal, following the device with a visible switch that remembers the reader's choice; the guide stays on Newsprint. The switch has three choices, Light, Dark and Match my device (D2-1136).
 - DR-205: the 24 px pixel fits for the 37 drawn at stage C, on the early drawings board.
 - DR-206: both unsent reader check pages deleted.
+- DR-207 to DR-211, drawings board C, all as recommended and approved by name: Housing option A at 48 px and up; the 16 px Pause redraw and Filter option A; all 37 of the 24 px fits with the switch; the print L3 at 2.18 cap heights for print and every width but the masthead; the social card's sign-off at 96 px.
 
 **Carried items, closed:** Virginia's 2025 House of Delegates, Tangipa v. Newsom's order and Ohio's minutes all hold as printed (D2-1120 to D2-1128). The drawings board's 28 dead overrides are gone (D2-1116). **Still carried:** Missouri's certified count, read at the Gate 2 preview (D2-1118).
 
@@ -30,13 +31,13 @@ Written November 10, 2026, after stage C's round 0 and drawings board C. A new s
 
 ## 2. Next, in order
 
-### A. Drawings board C's answers
-Dustin answers five cards: Housing (A recommended, C the other; B withdrawn), the Pause redraw and Filter A or B, the 37 fits, the print L3 and the 96 px sign-off. Log them as DR-207 on. Housing at 24 px stays off the list of 41 unless he asks (D2-1238). Then promote what he approves, in one pass, before round 2:
-- The 37 fits into the sprite with the pillar icons' switch (fit on 1x, master from 2x), and chapter 10's Rule 10.4 words updated by its owner.
-- Pause and Filter 16 px into `work/build/assets/utility/` as new dated files, the approved October-dated files kept as the record.
-- Housing into the Civic Line set in use (`civic-line-v6/`, 125 drawings) with its inventory row, and into chapter 10's library and Rule 10.6's subject list.
-- The print L3 and the 96 px sign-off through the identity designer's generators, as its notes' "After approval" paragraphs say.
-Then the change ledger from C-066.
+### A. Promote drawings board C's approvals (start here)
+Dustin approved every card as recommended (DR-207 to DR-211). Housing at 24 px stays off the list of 41 (D2-1238). Promote, in one pass, before round 1's chapters (D2-1259):
+- The 37 fits (DR-209) into the sprite with the pillar icons' switch (fit on 1x, master from 2x), and chapter 10's Rule 10.4 words updated by its owner.
+- Pause and Filter A at 16 px (DR-208) into `work/build/assets/utility/` as new dated files, the approved October-dated files kept as the record.
+- Housing option A (DR-207) into the Civic Line set in use (`civic-line-v6/`, 125 drawings) with its inventory row, and into chapter 10's library and Rule 10.6's subject list.
+- The print L3 (DR-210) and the 96 px social sign-off (DR-211) through the identity designer's generators, as its notes' "After approval" paragraphs say.
+Then the change ledger from C-066, the generator chain, the strict build, the token tests and the guide check, as in V12's section 3.
 
 ### B. Round 1, chapters (stage C brief, "Order of work" 3)
 - 26 and 17 first. The engineer and the editor write 26 around `s-26-token-table` and the four worked examples; the systems designer writes 17, with the identity designer's hinge motion and lever landing.
@@ -66,15 +67,13 @@ I'm continuing the Oath & Action Edition 06 brand guide rebuild. All work is on 
 
 Before you do anything else, read these in order:
 1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from DR-203 on), the change ledger and the open questions.
-2. oath-and-action-v6-brand-guide/work/handoffs/phase-2/20261110_Next-Session-Handoff_V13.md, then section 3 of V5 to V12's handoffs as V13 lists them, the stage C brief 20261110_Stage-C-Brief.md, and the five round 0 notes V13 names.
+2. oath-and-action-v6-brand-guide/work/handoffs/phase-2/20261110_Next-Session-Handoff_V13.md, then section 3 of V5 to V12's handoffs as V13 lists them, the stage C brief 20261110_Stage-C-Brief.md, the five round 0 notes V13 names, and the creative director's review of the stage C drawings.
 
 Nonpartisan means one standard of evidence for everyone, with findings reported as the record shows them, even when they fall more on one side (DR-93). Never manufacture balance.
 
-Settled and not to be changed: the Civic Line icons, which are final and approved (DR-144), with the redraws and new drawings I approved on the drawings boards (DR-156 to DR-182, and my answers to drawings board C); the atlas visual system (System 1, DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and Phase 3 build order (DR-62, DR-63); the chart rules of DR-64; chapter 02's writing rules (DR-73 to DR-83); and every answer I have given from DR-95 on.
+Settled and not to be changed: the Civic Line icons, which are final and approved (DR-144), with the redraws and new drawings I approved on the drawings boards (DR-156 to DR-182, DR-207 to DR-211); the atlas visual system (System 1, DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and Phase 3 build order (DR-62, DR-63); the chart rules of DR-64; chapter 02's writing rules (DR-73 to DR-83); and every answer I have given from DR-95 on.
 
-My answers to drawings board C are below. Log them, promote what I approved, then run stage C's round 1 as the thirteenth handoff orders.
-
-[paste your answers to drawings board C here]
+I approved every card on drawings board C as recommended (DR-207 to DR-211). Promote what I approved, then run stage C's round 1 as the thirteenth handoff orders.
 
 The bar for everything: a finished product that looks like it was made by the best branding and design firm in the world. Use specialized agents, red team reviews and the creative director's scoring, as the handoffs describe.
 
@@ -99,6 +98,6 @@ Created, all under `work/`:
 - **Board:** `boards/phase-2/stage-c/drawings/` (the board, its content, figures, `renders/`, the creative director's scores and `20261110_Published-Pages.json`).
 
 Modified:
-- `ledger/20261020_Decision-Log.md` (DR-203 to DR-206, D2-1115 to D2-1258), `ledger/20261020_Change-Ledger.md` (C-065).
+- `ledger/20261020_Decision-Log.md` (DR-203 to DR-211, D2-1115 to D2-1259), `ledger/20261020_Change-Ledger.md` (C-065).
 - The tokens (6.0.0-gate2.7) and their tests; the shell; `guide_build.py` and `guide_check.js`; chapters 08 and 09 with the identity generators and manifest; the chapters page build and its reports.
 - The stage B drawings board's content file (28 dead overrides removed) and both published pages files (the deletions).

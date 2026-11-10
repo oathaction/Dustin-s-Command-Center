@@ -2407,3 +2407,19 @@ Recommends Housing A, the Pause redraw, Filter A, all 37 fits, the print L3 and 
 | D2-1256 | The board builder's routine calls stand as its notes record them (`20261110_Stage-C-Drawings-Board-Builder-Notes.md`); among them a `renders/` folder of 141 PNGs beside the board, remade on each run, and two decision numbers taken out of the creative director's score reasons so decision numbers appear only in the footer | The builder's notes; one source for the board's words |
 | D2-1257 | Drawings board C is published privately at https://claude.ai/artifact/LtEuA2zNh1WUidhd4cAVsH (version 1794340326-c858) with the page and its 181 files. Before publishing, the main session read the board's whole text and both scripts (storage inside try and catch, no network calls, links only to Google Fonts), scanned the 13 SVGs (no scripts or outside links) and the print proof PDF (one page, no scripts or links), looked at a contact sheet of all 167 PNGs, viewed the board at 1440 and 390 px, and ran `dataviz_check.js --board` on the check copy (1440, 390 and 360 px, 0 failures) | Every file is seen before it is published |
 | D2-1258 | This chat hands off after drawings board C. The thirteenth handoff is `work/handoffs/phase-2/20261110_Next-Session-Handoff_V13.md`; the next chat opens with Dustin's answers to the board | Seven agents and three resumed runs; the handoffs hand off after each board |
+
+## Drawings board C answers, November 10, 2026
+
+Dustin, replying to drawings board C (https://claude.ai/artifact/LtEuA2zNh1WUidhd4cAVsH): "i approve all recs". The studio reads this as the board's sample reply, "All as recommended, and I approve every card by name.", as D2-709 and board B's reading did: each card's recommended answer, approved by name.
+
+| # | Decision | Source |
+|---|---|---|
+| DR-207 | Housing is option A, an apartment block beside a pitched-roof house on one ground line, red on one window of the block, as a new topic drawing used at 48 px and up. It stays off the list of drawings set at 24 px for now (D2-1238) | Dustin, November 10, as recommended, approved by name (card 1; DR-196) |
+| DR-208 | The 16 px Pause redraw (5 px bars) and Filter option A (a 5 px spout with both outer edges on whole pixels) replace the approved 16 px files in use; the 24 px files and every other 16 px file stay as approved | Dustin, November 10, as recommended, approved by name (card 2; DR-197) |
+| DR-209 | All 37 of the 24 px pixel fits enter use with the pillar icons' switch: the fit on 1x screens, the master from 2x. None is held back | Dustin, November 10, as recommended, approved by name (card 3; DR-198, DR-205) |
+| DR-210 | The print L3 at the masthead's proportion (`lockups/20261110_L3-Horizontal-Print-Master.svg` and its Prussian White file), the October master with its lockmark at 2.18 cap heights, serves print and every width but the 282 px masthead. The October master stays as the record | Dustin, November 10, as recommended, approved by name (card 4; D2-482, gate rule 4) |
+| DR-211 | Social cards sign off with the 48 px lockmark master drawn at exactly twice its size, 96 px; covers, posters and the masthead keep 48 px | Dustin, November 10, as recommended, approved by name (card 5; D2-715, gate rule 4) |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1259 | The approved drawings and identity changes are promoted in the next chat, in one pass before round 1's chapters, with the change ledger from C-066; nothing in the guide changes in this chat | This chat stands at its handoff point (D2-1258), and promotion touches the sprite, the Civic Line set in use, the utility set, chapters 03, 08, 10 and 11 and the identity generators |
