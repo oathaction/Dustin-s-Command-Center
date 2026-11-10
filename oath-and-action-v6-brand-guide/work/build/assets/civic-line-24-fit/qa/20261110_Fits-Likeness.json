@@ -1,6 +1,6 @@
 {
  "tool": "work/build/scripts/phase-2/icon_likeness_check.js",
- "run": "2026-11-10T19:08:52.153Z",
+ "run": "2026-11-10T19:14:04.755Z",
  "method": "Ink maps at 24 px from coverage in Charcoal over Newsprint, Gaussian blur sigma 1.2 px, Pearson correlation best over shifts up to 1 px, percentile among the 7626 pairs of the 124 Civic Line masters of the set in use (civic-line-v6) (Board 6's method).",
  "masters": "work/build/assets/civic-line-v6",
  "renderer": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",

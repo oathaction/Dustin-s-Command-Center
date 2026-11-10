@@ -498,7 +498,7 @@ def build_housing(scratch):
         m = B.bake(src)
         stem = housing_stem(opt)
         root = f"oa-civic-line-housing-option-{opt.lower()}"
-        desc = (f"Oath &amp; Action Civic Line, Housing, new topic drawing (DR-196), option {opt}. {escape(shows)} "
+        desc = (f"Oath & Action Civic Line, Housing, new topic drawing (DR-196), option {opt}. {shows} "
                 f"Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of "
                 f"DR-08. The group with data-part 'accent' holds the red parts. For approval by name on drawings board C.")
         rb, _ = B.export(src, m, root, f"Housing, option {opt}", desc)

@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "checked": "2026-11-10T16:41:48.343Z",
+ "checked": "2026-11-10T19:11:13.902Z",
  "axe": "work/build/node_modules/axe-core/axe.min.js",
  "runs": [
   {
@@ -19,7 +19,7 @@
     "rules": 132
    },
    "anchors": {
-    "ids": 812,
+    "ids": 813,
     "duplicates": [],
     "links": 1101,
     "broken": [],
@@ -28,7 +28,7 @@
     "aliases": []
    },
    "specimens": {
-    "stages": 305,
+    "stages": 306,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -170,7 +170,7 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 295,
+    "stages": 296,
     "exempt": 10,
     "off": [],
     "fluid": [
@@ -210,7 +210,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 12794,
+    "texts": 12800,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -251,7 +251,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 493489,
+   "height": 494018,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -259,9 +259,31 @@
    ],
    "nbHyphen": [],
    "idsHeld": 593,
+   "openers": [
+    {
+     "specimen": "s-09-opener",
+     "chapter": "pillar-icons",
+     "inHead": true,
+     "scrolls": false
+    }
+   ],
+   "code": {
+    "plates": 0,
+    "stages": 0,
+    "results": [],
+    "bad": []
+   },
+   "lightOnDark": {
+    "elements": 36831,
+    "attribute": "light",
+    "scheme": "light only",
+    "deviceDark": true,
+    "changed": 0,
+    "first": []
+   },
    "frames": {
     "snugPx": 32,
-    "frames": 305,
+    "frames": 306,
     "scrolling": 2,
     "snug": [
      {
@@ -300,7 +322,7 @@
     "under": []
    },
    "stageB": {
-    "icons": 333,
+    "icons": 357,
     "stateStages": 12,
     "statePictures": [
      {
@@ -363,7 +385,7 @@
     "rules": 132
    },
    "anchors": {
-    "ids": 812,
+    "ids": 813,
     "duplicates": [],
     "links": 1101,
     "broken": [],
@@ -372,7 +394,7 @@
     "aliases": []
    },
    "specimens": {
-    "stages": 305,
+    "stages": 306,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -514,7 +536,7 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 295,
+    "stages": 296,
     "exempt": 10,
     "off": [],
     "fluid": [
@@ -555,7 +577,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 12603,
+    "texts": 12609,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -596,7 +618,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 527744,
+   "height": 528453,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -604,9 +626,31 @@
    ],
    "nbHyphen": [],
    "idsHeld": 593,
+   "openers": [
+    {
+     "specimen": "s-09-opener",
+     "chapter": "pillar-icons",
+     "inHead": true,
+     "scrolls": false
+    }
+   ],
+   "code": {
+    "plates": 0,
+    "stages": 0,
+    "results": [],
+    "bad": []
+   },
+   "lightOnDark": {
+    "elements": 36831,
+    "attribute": "light",
+    "scheme": "light only",
+    "deviceDark": true,
+    "changed": 0,
+    "first": []
+   },
    "frames": {
     "snugPx": 32,
-    "frames": 305,
+    "frames": 306,
     "scrolling": 17,
     "snug": [
      {
@@ -640,7 +684,7 @@
     "under": []
    },
    "stageB": {
-    "icons": 333,
+    "icons": 357,
     "stateStages": 12,
     "statePictures": [
      {
@@ -703,7 +747,7 @@
     "rules": 132
    },
    "anchors": {
-    "ids": 812,
+    "ids": 813,
     "duplicates": [],
     "links": 1101,
     "broken": [],
@@ -712,7 +756,7 @@
     "aliases": []
    },
    "specimens": {
-    "stages": 305,
+    "stages": 306,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -854,7 +898,7 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 295,
+    "stages": 296,
     "exempt": 10,
     "off": [],
     "fluid": [
@@ -894,7 +938,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 12584,
+    "texts": 12590,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -935,7 +979,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 643569,
+   "height": 644370,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -943,9 +987,31 @@
    ],
    "nbHyphen": [],
    "idsHeld": 593,
+   "openers": [
+    {
+     "specimen": "s-09-opener",
+     "chapter": "pillar-icons",
+     "inHead": true,
+     "scrolls": false
+    }
+   ],
+   "code": {
+    "plates": 0,
+    "stages": 0,
+    "results": [],
+    "bad": []
+   },
+   "lightOnDark": {
+    "elements": 36831,
+    "attribute": "light",
+    "scheme": "light only",
+    "deviceDark": true,
+    "changed": 0,
+    "first": []
+   },
    "frames": {
     "snugPx": 32,
-    "frames": 305,
+    "frames": 306,
     "scrolling": 52,
     "snug": [],
     "hintNoScroll": [],
@@ -981,7 +1047,7 @@
     "under": []
    },
    "stageB": {
-    "icons": 333,
+    "icons": 357,
     "stateStages": 12,
     "statePictures": [
      {
@@ -1044,7 +1110,7 @@
     "rules": 132
    },
    "anchors": {
-    "ids": 812,
+    "ids": 813,
     "duplicates": [],
     "links": 1101,
     "broken": [],
@@ -1053,7 +1119,7 @@
     "aliases": []
    },
    "specimens": {
-    "stages": 305,
+    "stages": 306,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -1195,7 +1261,7 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 295,
+    "stages": 296,
     "exempt": 10,
     "off": [],
     "fluid": [
@@ -1235,7 +1301,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 12589,
+    "texts": 12595,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -1276,7 +1342,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 675422,
+   "height": 676271,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -1284,9 +1350,31 @@
    ],
    "nbHyphen": [],
    "idsHeld": 593,
+   "openers": [
+    {
+     "specimen": "s-09-opener",
+     "chapter": "pillar-icons",
+     "inHead": true,
+     "scrolls": false
+    }
+   ],
+   "code": {
+    "plates": 0,
+    "stages": 0,
+    "results": [],
+    "bad": []
+   },
+   "lightOnDark": {
+    "elements": 36831,
+    "attribute": "light",
+    "scheme": "light only",
+    "deviceDark": true,
+    "changed": 0,
+    "first": []
+   },
    "frames": {
     "snugPx": 32,
-    "frames": 305,
+    "frames": 306,
     "scrolling": 57,
     "snug": [],
     "hintNoScroll": [],
@@ -1322,7 +1410,7 @@
     "under": []
    },
    "stageB": {
-    "icons": 333,
+    "icons": 357,
     "stateStages": 12,
     "statePictures": [
      {
