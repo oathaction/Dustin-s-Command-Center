@@ -1,6 +1,6 @@
 {
- "built": "2026-11-10T19:38:19.861417+00:00",
- "scores_file": null,
+ "built": "2026-11-10T19:42:44.701683+00:00",
+ "scores_file": "work/boards/phase-2/stage-c/drawings/20261110_CD-Scores.json",
  "thresholds": {
   "flag": 0.9092,
   "watch": 0.8678,
@@ -47,8 +47,9 @@
  },
  "notices": [],
  "warnings": [
-  "scores pending: work/boards/phase-2/stage-c/drawings/20261110_CD-Scores.json does not exist yet",
-  "check results reused from an earlier run (--reuse-checks)"
+  "check results reused from an earlier run (--reuse-checks)",
+  "card 1 (Housing): scores under 4 (Housing, option B, clarity 3); the brief sends the drawing back before the board is published",
+  "card 1 (Housing): not ready for the board in the scores file"
  ],
  "cards": [
   {
@@ -96,8 +97,10 @@
      ]
     }
    ],
-   "scores_pending": true,
-   "scores_under_4": [],
+   "scores_pending": false,
+   "scores_under_4": [
+    "Housing, option B, clarity 3"
+   ],
    "recommendations": [
     [
      "designer",
@@ -105,6 +108,14 @@
       "label": "The icon designer recommends",
       "option": "Option A",
       "reason": "Option A, homes of more than one kind. It names housing as the atlas covers it, renters and owners alike, and keeps furthest from the drawings where a house means one household: 0.251 against CL-053, 0.290 against R-30 and 0.501 against CL-054. If you would rather have the clearest small shape, C, the house key, is the one, though a reader may call it home."
+     }
+    ],
+    [
+     "cd",
+     {
+      "label": "The creative director recommends",
+      "option": "Option A",
+      "reason": "A names housing for renters and owners alike, homes of more than one kind, and keeps furthest from the drawings where a house means one household (0.501 against CL-054, 0.251 against CL-053, 0.290 against R-30). The lit red window is a precise use of the accent."
      }
     ]
    ],
@@ -582,7 +593,7 @@
      ]
     }
    ],
-   "scores_pending": true,
+   "scores_pending": false,
    "scores_under_4": [],
    "recommendations": [
     [
@@ -591,6 +602,14 @@
       "label": "The icon designer recommends",
       "option": "The Pause redraw, Filter option A",
       "reason": "Approve the Pause redraw, which opens a whole pixel on 8 of 8 of the rows inside each bar where the approved file opens none. For Filter, option A: it keeps the approved file's construction with both outer edges on whole pixels, matches the Pause redraw, and opens a whole pixel on 3 of 4 of the spout's rows. B opens 4 of 4 and keeps the funnel symmetric, but its outer edges draw half gray."
+     }
+    ],
+    [
+     "cd",
+     {
+      "label": "The creative director recommends",
+      "option": "Approve the Pause redraw; Filter A",
+      "reason": "Each opens one whole pixel inside where the approved file opens none. Filter A keeps the family's outer edges on whole pixels and matches the Pause redraw's pixel logic; B is a real choice for symmetry and a wider opening over a crisp outline."
      }
     ]
    ],
@@ -700,7 +719,7 @@
        "n_rows": 4,
        "rows_open": 0,
        "width_px": 1.0,
-       "mid_row": 10,
+       "mid_row": 8,
        "mid_alpha": [
         127,
         128
@@ -729,7 +748,7 @@
        "n_rows": 4,
        "rows_open": 3,
        "width_px": 2.0,
-       "mid_row": 10,
+       "mid_row": 8,
        "mid_alpha": [
         128,
         0,
@@ -760,7 +779,7 @@
        "n_rows": 4,
        "rows_open": 4,
        "width_px": 2.0,
-       "mid_row": 10,
+       "mid_row": 8,
        "mid_alpha": [
         0,
         0
@@ -810,7 +829,7 @@
      ]
     }
    ],
-   "scores_pending": true,
+   "scores_pending": false,
    "scores_under_4": [],
    "recommendations": [
     [
@@ -819,6 +838,14 @@
       "label": "The icon designer recommends",
       "option": "All 37, with the switch",
       "reason": "All 37. Every fit passes the pixel-fit check, every fit's pixels reach full ink where no master line does, and all ten pairs among the five look-alikes moved apart."
+     }
+    ],
+    [
+     "cd",
+     {
+      "label": "The creative director recommends",
+      "option": "Approve all 37, with the switch: the fit on 1x screens and the master from 2x",
+      "reason": "None loses meaning; every fit keeps the parts its master needs and draws them in full ink where the master draws a gray line, and the five look-alikes all moved apart."
      }
     ]
    ],
@@ -864,7 +891,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps box, lid, slot and the rising ballot; the ballot's top comes to a point, as in its master at this size."
      },
      {
       "id": "CL-004",
@@ -896,7 +923,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps page, four rules and the pen with its bands and point."
      },
      {
       "id": "CL-006",
@@ -928,7 +955,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps three people and the linking arcs; heads and shoulders read where the master's blur."
      },
      {
       "id": "CL-010",
@@ -960,7 +987,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps the three rings as small diamonds, the merge, the short middle branch, the arrow and the end ring."
      },
      {
       "id": "CL-013",
@@ -992,7 +1019,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps chair, base and the arrow leaving it."
      },
      {
       "id": "CL-023",
@@ -1024,7 +1051,7 @@
       },
       "flags": [],
       "five": true,
-      "verdict": null
+      "verdict": "Keeps page, five rules and the lens with its check; on the watch line with CL-028 (0.897), down from its master's 0.927."
      },
      {
       "id": "CL-024",
@@ -1056,7 +1083,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps both squares and both arcs with their arrowheads, still clockwise."
      },
      {
       "id": "CL-028",
@@ -1088,7 +1115,7 @@
       },
       "flags": [],
       "five": true,
-      "verdict": null
+      "verdict": "Keeps the narrower page and the empty lens; much further from R-27 than its master."
      },
      {
       "id": "CL-031",
@@ -1120,7 +1147,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps pediment with its open peak, wings, paired windows and the filled door."
      },
      {
       "id": "CL-032",
@@ -1152,7 +1179,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps front page, fold, rules and photo block."
      },
      {
       "id": "CL-039",
@@ -1184,7 +1211,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps three cards and the slider; it grew 1.23 times, so it measures far from its master (0.489), and every part is there."
      },
      {
       "id": "CL-040",
@@ -1216,7 +1243,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps hub, branches and three people; the stem sits half a pixel off center, visible only enlarged."
      },
      {
       "id": "CL-047",
@@ -1248,7 +1275,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps page, rules and the key with ring, shaft and two teeth; the ring is small."
      },
      {
       "id": "CL-048",
@@ -1280,7 +1307,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps folder, both tabs and the standing page with its rules."
      },
      {
       "id": "CL-050",
@@ -1312,7 +1339,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps two people, their arms on the table, the double arrow and four legs; against CL-007 it falls from its master's 0.928 to 0.902."
      },
      {
       "id": "CL-051",
@@ -1344,7 +1371,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps the tall building with rooftop block, six windows and door, and the two shorter buildings."
      },
      {
       "id": "CL-054",
@@ -1376,7 +1403,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps house, chimney, door, three bars and the jagged arrow; on the watch line with CL-052 (0.898), down from its master's 0.927 over the flag line."
      },
      {
       "id": "CL-057",
@@ -1408,7 +1435,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps ring, radii and the pulled-out quarter; the person is a 2 px head and a shoulder notch, faint at true size and fainter in the master."
      },
      {
       "id": "CL-060",
@@ -1440,7 +1467,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps page, rules and both arrows through the open edge."
      },
      {
       "id": "CL-061",
@@ -1472,7 +1499,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps person, arrow and the envelope with its flap."
      },
      {
       "id": "CL-067",
@@ -1504,7 +1531,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps the cross and the pulse's dip, peak and valley."
      },
      {
       "id": "CL-068",
@@ -1536,7 +1563,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps book, gutter, pages and the bulb with its rays."
      },
      {
       "id": "CL-070",
@@ -1568,7 +1595,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps leaf, vein, sharp tip and the drop."
      },
      {
       "id": "CL-071",
@@ -1600,7 +1627,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps page, rules, knob and the rail running past the page."
      },
      {
       "id": "CL-072",
@@ -1632,7 +1659,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps both routes, the ring and the rising arrow."
      },
      {
       "id": "R-05",
@@ -1664,7 +1691,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps card, person, rules, the check badge and the dash."
      },
      {
       "id": "R-06",
@@ -1709,7 +1736,7 @@
        }
       ],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps both calendars with rings, header and date columns; the arrow becomes a 3-pixel chevron, the thinnest part in the set, and still points. Flagged against R-41 and R-44, as its master is."
      },
      {
       "id": "R-08",
@@ -1741,7 +1768,7 @@
       },
       "flags": [],
       "five": true,
-      "verdict": null
+      "verdict": "Keeps page, dollar, rules and the empty lens; further from R-27 and CL-028."
      },
      {
       "id": "R-09",
@@ -1773,7 +1800,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps notched frame, chart line and the slash."
      },
      {
       "id": "R-14",
@@ -1805,7 +1832,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps bill, dollar, rules and the arrow leaving the open edge."
      },
      {
       "id": "R-15",
@@ -1837,7 +1864,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps lens with check, handle and the page behind."
      },
      {
       "id": "R-17",
@@ -1869,7 +1896,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps badge, clip, person, rules and the brace."
      },
      {
       "id": "R-19",
@@ -1901,7 +1928,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps pill, divider, string and the tag with its dollar; the dropped string hole carried no meaning."
      },
      {
       "id": "R-23",
@@ -1933,7 +1960,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps frame, dollar, rules, four rising bars and the arrow; the busiest fit, and it holds."
      },
      {
       "id": "R-27",
@@ -1965,7 +1992,7 @@
       },
       "flags": [],
       "five": true,
-      "verdict": null
+      "verdict": "Keeps page, rules and the arch inside the lens, which now sets it apart from CL-028."
      },
      {
       "id": "R-37",
@@ -1997,7 +2024,7 @@
       },
       "flags": [],
       "five": false,
-      "verdict": null
+      "verdict": "Keeps window, dots, rules, knob and the outlined key, which reads close to an 8 at true size, as in its master."
      },
      {
       "id": "R-45",
@@ -2029,7 +2056,7 @@
       },
       "flags": [],
       "five": true,
-      "verdict": null
+      "verdict": "Keeps the three sheets, rules and the lens with its check."
      }
     ],
     "five": [
@@ -2119,7 +2146,7 @@
      ]
     }
    ],
-   "scores_pending": true,
+   "scores_pending": false,
    "scores_under_4": [],
    "recommendations": [
     [
@@ -2128,6 +2155,14 @@
       "label": "The identity designer recommends",
       "option": "Approve the print L3",
       "reason": "L3 then has one proportion in every medium, the change touches nothing but the lockmark’s size and place, and at L3’s print minimum the lockmark stays over its own."
+     }
+    ],
+    [
+     "cd",
+     {
+      "label": "The creative director recommends",
+      "option": "Approve the print L3",
+      "reason": "One proportion for L3 in every medium and a one-line rule for builders, for a lockmark 9 percent smaller in print that stays over its floor. Nothing is printed yet, so the change costs no reprint."
      }
     ]
    ],
@@ -2211,7 +2246,7 @@
      ]
     }
    ],
-   "scores_pending": true,
+   "scores_pending": false,
    "scores_under_4": [],
    "recommendations": [
     [
@@ -2220,6 +2255,14 @@
       "label": "The identity designer recommends",
       "option": "Approve 96 px",
       "reason": "At 96 px the card passes at every width from 300 to 600 px and through the shrunk JPEG, with no new drawing, and the corners keep L3’s proportion. If you keep 48 px, the risk stays as measured until a real upload in Phase 3 shows whether any feed saves a shrunk JPEG."
+     }
+    ],
+    [
+     "cd",
+     {
+      "label": "The creative director recommends",
+      "option": "Approve the 96 px sign-off on social cards",
+      "reason": "It keeps the lever's red at every width from 300 to 600 px and through the thumbnail path, lifts the lockmark over its own floor in a 360 px feed (28.8 px against 14.4 px today), and gives the card's corners L3's proportion, for a stepped look at full size the masthead already shows on 2x screens."
      }
     ]
    ],
@@ -2434,6 +2477,7 @@
       "fonts": [
        "Inter 400",
        "Inter 700",
+       "Inter 800",
        "Inter Tight 800"
       ]
      }
@@ -2631,8 +2675,8 @@
   "work/handoffs/phase-2/stage-c-identity/20261110_Social-Sign-Off-Comparison-1x.png"
  ],
  "bytes": {
-  "page": 318024,
-  "files": 2257002,
-  "total": 2575026
+  "page": 340006,
+  "files": 2256253,
+  "total": 2596259
  }
 }

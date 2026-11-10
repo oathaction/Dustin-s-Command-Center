@@ -1,6 +1,15 @@
 {
  "about": "The words of drawings board C, read by work/build/scripts/phase-2/stage_c_drawings_board_build.py on every run. A name in braces, such as {flag}, is filled by the build from this run's checks or from the identity figures file, so no figure is written here. Words the board takes from other owners' files (the scores, the manifests) are copy-edited through editor_overrides, a list of {\"old\": \"exact text\", \"new\": \"replacement\"}.",
- "editor_overrides": [],
+ "editor_overrides": [
+  {
+   "old": " as the pillar fits do (D2-613).",
+   "new": " as the pillar fits do."
+  },
+  {
+   "old": "which dark mode (DR-204) now needs",
+   "new": "which dark mode now needs"
+  }
+ ],
  "kicker": "Brand Guide, Edition 06 · Drawings board C",
  "title": "The stage C drawings, for your approval",
  "deck": "This board holds the new Housing drawing, the 16 px Pause and Filter redraws, the 24 px fits for the {n_fits} topic and atlas drawings, and two proposals for the identity: a print L3 at the masthead's proportion and a larger sign-off on social cards. Each waits for your approval by name, and none of it enters the guide until you answer.",
@@ -185,7 +194,7 @@
    "gain": "L3 has one proportion everywhere, the masthead's. Nothing changes but the lockmark's size and its place on the capitals, and the file is the October master with those two values changed.",
    "cost": "The printed lockmark gets {smaller_pct} percent smaller. At L3's 1.55 in print minimum it measures {prop_lock_in} in, where the October master gives {oct_lock_in} in; both stay over the lockmark's 0.25 in print minimum. The capitals grow a little, from {oct_caps_mm} to {prop_caps_mm} mm.",
    "row282": "At the masthead's width, 282 px",
-   "row282_text": "The masthead master is drawn on the pixel grid for this one width. At the same width the October master sets a larger lockmark and smaller capitals; the proposal matches the masthead.",
+   "row282_text": "The masthead master is drawn on the pixel grid for this one width. At the same width the October master sets a larger lockmark and smaller capitals; the proposal matches the masthead. The masthead keeps its own 48 px pixel lockmark, whose nodes are heavier, so the proposal takes the masthead's proportion and leaves its weight as it is.",
    "row48": "At 48 px capitals, where the display drawings serve",
    "overlay": "Over each other at 48 px capitals",
    "overlay_text": "The October master in Stone, the proposal over it in Charcoal and red. They share the wordmark, the space before the lockmark and the lockmark's vertical center.",

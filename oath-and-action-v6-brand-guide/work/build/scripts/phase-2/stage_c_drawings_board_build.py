@@ -366,9 +366,11 @@ const { chromium } = require('playwright');
           let n = e.parentElement; let h = n.previousElementSibling;
           while (h && h.tagName !== 'H2') h = h.previousElementSibling;
           const r = e.getBoundingClientRect();
-          return { heading: h ? h.textContent : null, w: r.width, h: r.height };
+          return { heading: h ? h.textContent : null, w: r.width, h: r.height, x: r.left + window.scrollX, y: r.top + window.scrollY };
         });
-        await els[j.index].screenshot({ path: j.out, animations: 'disabled' });
+        // the element's own box on whole CSS pixels, so the picture is exactly its size at this device scale
+        await p.screenshot({ path: j.out, fullPage: true, animations: 'disabled',
+          clip: { x: Math.round(info.x), y: Math.round(info.y), width: Math.round(info.w), height: Math.round(info.h) } });
         res.push({ out: j.out, fonts, ...info });
       }
     }
@@ -566,7 +568,7 @@ def open_pixels(lo_path, hi_path, K, S):
         narrow = min(x['width_px'] for x in rows)
         band = [x for x in rows if x['width_px'] <= narrow + 0.1]
         opened = [x for x in band if any(a < 8 for a in x['alpha'])]
-        mid = band[len(band) // 2]
+        mid = min(band, key=lambda x: (abs(x['row'] - S // 2), x['row']))
         out.append({'rows': [band[0]['row'], band[-1]['row']], 'n_rows': len(band), 'rows_open': len(opened),
                     'width_px': narrow, 'mid_row': mid['row'], 'mid_alpha': mid['alpha'],
                     'open_per_row': sorted({sum(1 for a in x['alpha'] if a < 8) for x in band})})
@@ -635,6 +637,19 @@ def row_verdicts(cards, ids):
                 visit(v, depth + 1)
     for c in cards:
         visit(c)
+    return out
+
+
+def option_scores(cards):
+    """Per-option scores, from an option_scores map in a scores card, or options that carry their own scores."""
+    out = {}
+    for c in cards:
+        for k, v in (c.get('option_scores') or {}).items():
+            if isinstance(v, dict):
+                out[str(k)] = {'scores': v, 'must_fix': [], 'ready_for_board': c.get('ready_for_board')}
+        for o in c.get('options', []) or []:
+            if isinstance(o, dict) and o.get('scores') and str(o.get('option')) not in out:
+                out[str(o.get('option'))] = o
     return out
 
 
@@ -759,10 +774,13 @@ def open_items(subjects):
     items = []
     for name, sc in subjects:
         for m in (sc or {}).get('must_fix') or []:
-            items.append((name, m.get('owner', ''), m.get('fix', '')))
+            if isinstance(m, str):
+                items.append((name, '', m))
+            else:
+                items.append((name, m.get('owner', ''), m.get('fix', '')))
     if not items:
         return ''
-    li = ''.join(f'<li><b>{esc(n)}</b> ({esc(o.lower())}): {esc(f)}</li>' for n, o, f in items)
+    li = ''.join(f'<li><b>{esc(n)}</b>{" (" + esc(o.lower()) + ")" if o else ""}: {esc(f)}</li>' for n, o, f in items)
     return (f'<details class="open-d"><summary>{num_words(len(items)).capitalize()} item{"s" if len(items) != 1 else ""} the creative director '
             f'still lists as Must fix</summary><ul>{li}</ul></details>')
 
@@ -1090,15 +1108,14 @@ def housing_card(card, C, I, M, SC):
     letters = [o['option'] for o in hm['options']]
     # per-option scores: a scores card per option, or options with their own scores inside one card
     per = {}
+    for k, v in option_scores(sc_list).items():
+        if letter_of(k):
+            per[letter_of(k)] = v
     for c in sc_list:
         m = re.search(r'(?:option|housing)[\s_-]*([A-C])\b', f'{c.get("id", "")} {c.get("title", "")}', flags=re.I)
-        if m and c.get('scores'):
+        if m and c.get('scores') and m.group(1).upper() not in per:
             per[m.group(1).upper()] = c
-        for o in c.get('options', []) or []:
-            L = letter_of(o.get('option'))
-            if L and o.get('scores') and L not in per:
-                per[L] = o
-    card_level = [c for c in sc_list if c.get('scores') and c not in per.values()]
+    card_level = [c for c in sc_list if c.get('scores') and not per]
     cd_opt, cd_reason = cd_rec_text(sc_list)
     cd_letter = letter_of(cd_opt) if cd_opt else None
     rec_letter = cd_letter or card['designer']['housing']
@@ -1163,12 +1180,12 @@ def housing_card(card, C, I, M, SC):
                 f'<figure class="sz">{img(p2, FIT_PX * 2, FIT_PX * 2, f"Housing option {L} at 24 px as a 2x screen draws it, shown at twice its size", px=True)}<figcaption>2x, twice size</figcaption></figure></div></div>')
     body += (f'<h4 class="sub4">{esc(W["h24_title"])}</h4>{paras(W["h24_text"], "pnote")}<div class="h24s">{h24}</div>'
              f'<p class="caption pnote">Each picture is the black edition, the one used under 48 px, on Newsprint. The 2x picture is set at its own size, twice the drawing’s, so each of its pixels shows.</p>')
-    subjects = [(f'Housing, option {L}', per[L]) for L in letters if L in per] + [(c.get('title') or 'Housing', c) for c in card_level]
+    subjects = [(f'Housing, option {L}', per[L]) for L in letters if L in per] + [(card['short'], c) for c in card_level]
     if not subjects:
         subjects = [('Housing', None)]
     sh, lows = scores_block(subjects)
     card['lows'] = lows
-    card['foot_extra'] = sh + open_items(subjects)
+    card['foot_extra'] = sh + open_items([(card['short'], c) for c in sc_list])
     card['not_ready'] = any(c.get('ready_for_board') is False for c in sc_list)
     fill_h = {f'{L}_{nb.replace("-", "")}': fmt_like(hl[L]['against'][nb]) for L in letters for nb in hl[L]['against']}
     card['recs'] = [('designer', {'label': 'The icon designer recommends', 'option': f'Option {card["designer"]["housing"]}',
@@ -1221,9 +1238,16 @@ def utility_card(card, C, I, M, SC):
                     txt = 'None: ' + txt
                 rows.append(('Open pixels at 1x', esc(txt)))
                 o = op[0]
-                rows.append((f'Row {o["mid_row"] + 1} across the opening', f'<span class="num">{", ".join(str(a) for a in o["mid_alpha"])}</span> <span class="caption">(0 is open, 255 is full ink)</span>'))
+                rows.append((f'Across the opening, {o["mid_row"]} px down', f'<span class="num">{", ".join(str(a) for a in o["mid_alpha"])}</span> <span class="caption">(0 is open, 255 is full ink)</span>'))
             pf = u.get('pf')
             rows.append(('Pixel-fit check, 1.5 px line', esc(pf_words(pf, UT_PX) if pf else 'Not run')))
+            if u['role'] != 'approved':
+                key = f'{name} redraw' if u['role'] == 'redraw' else f'{name} {u["role"]}'
+                n = next((x for x in (sc_list[0].get('naming_test') or [] if sc_list else []) if str(x.get('option', '')).lower() == key.lower()), None)
+                if n:
+                    rows.append(('Naming test at 16 px', f'“{esc(str(n.get("creative_director_reading", "")).rstrip("."))}.” {esc(n.get("creative_director_verdict", ""))}.'))
+                os_ = {k.lower(): v for k, v in option_scores(sc_list).items()}
+                rows.append(('Scores, 1 to 5', mini_scores(os_.get(key.lower())) if os_.get(key.lower()) else 'Pending'))
             what = ''
             figs_out[st] = {'file': rel(u['path']), 'open': op, 'pixel_fit': pf}
             rec = (name.lower() == 'filter' and u['role'] == card['rec_filter']) or (name.lower() == 'pause' and u['role'] != 'approved' and card['rec_pause'] == 'approve')
@@ -1232,11 +1256,12 @@ def utility_card(card, C, I, M, SC):
                      f'{views}<div class="grids">{enl}</div>{dl(rows)}</div>')
         blocks += f'<h4 class="sub4">{esc(name)}</h4><div class="cols cols--u">{cols}</div>'
     blocks += (f'<p class="caption pnote">{esc(fill(W["grid_caption"], {"mag": num_words(GRID_MAG)}))} {esc(W["open_rule"])} '
-               'Row numbers count from the top, from 1.</p>')
-    subjects = [(c.get('title') or c.get('id'), c) for c in sc_list] or [('Pause and Filter', None)]
+               'The figures across the opening are the ink of each pixel on the row whose top edge sits 8 px below the top of the 16 px box.</p>')
+    ops = option_scores(sc_list)
+    subjects = [(k, v) for k, v in ops.items()] or [(card['short'], c) for c in sc_list] or [('Pause and Filter', None)]
     sh, lows = scores_block(subjects)
     card['lows'] = lows
-    card['foot_extra'] = sh + open_items(subjects)
+    card['foot_extra'] = sh + open_items([(card['short'], c) for c in sc_list])
     card['not_ready'] = any(c.get('ready_for_board') is False for c in sc_list)
     d = card['designer']
     pause = next(u for u in I['util_files'] if u['name'].lower() == 'pause' and u['role'] != 'approved')
@@ -1335,7 +1360,7 @@ def fits_card(card, C, I, M, SC):
     five = (f'<h4 class="sub4">{esc(W["five_title"])}</h4><p class="pnote">{esc(W["five_text"])}</p>'
             f'<div class="tw" role="region" tabindex="0" aria-label="The five look-alikes"><table class="fig-t"><thead><tr><th scope="col">Pair</th><th scope="col">Masters</th>'
             f'<th scope="col">Fits</th><th scope="col">Change</th></tr></thead><tbody>{five_rows}</tbody></table></div>')
-    subjects = [(c.get('title') or c.get('id'), c) for c in sc_list] or [(card['short'], None)]
+    subjects = [(card['short'], c) for c in sc_list] or [(card['short'], None)]
     sh, lows = scores_block(subjects, 'The creative director’s scores for the set, 1 to 5')
     card['lows'] = lows
     card['not_ready'] = any(c.get('ready_for_board') is False for c in sc_list)
@@ -1347,7 +1372,7 @@ def fits_card(card, C, I, M, SC):
     rec = d['fits']
     if cd_opt:
         card['recs'].append(('cd', {'label': 'The creative director recommends', 'option': cd_opt, 'reason': cd_reason}))
-        if re.search(r'\bbut\b|except|hold', cd_opt.lower() + ' ' + cd_reason.lower()):
+        if re.search(r'\bbut\b|except|hold', cd_opt.lower()):
             rec = 'some'
     card['holds'] = True
     card['groups'] = [{'name': 'fits', 'label': None, 'rec': rec,
@@ -1437,7 +1462,7 @@ def l3_card(card, C, I, M, SC):
             ('Width, in cap heights', f'October master <span class="num">{oct_["width_over_capitals"]:.2f}</span>; proposal <span class="num">{prop["width_over_capitals"]:.2f}</span>'),
             ('At 1.55 in wide', f'October master: capitals {o5["capitals_mm"]:.2f} mm, lockmark {o5["lockmark_in"]:.3f} in. Proposal: capitals {p5["capitals_mm"]:.2f} mm, lockmark {p5["lockmark_in"]:.3f} in')]
     body += dl(rows)
-    subjects = [(c.get('title') or c.get('id'), c) for c in sc_list] or [(card['short'], None)]
+    subjects = [(card['short'], c) for c in sc_list] or [(card['short'], None)]
     sh, lows = scores_block(subjects)
     card['lows'] = lows
     card['foot_extra'] = sh + open_items(subjects)
@@ -1494,7 +1519,8 @@ def social_card(card, C, I, M, SC):
                 w, h = png_size(pth)
                 r = f[f'at_{wpx}']
                 cells += (f'<figure class="feedc">{img(pth, w, h, f"{lab} on {ground}, the card at {wpx} px wide as a 1x screen draws it", px=True)}'
-                          f'<figcaption class="caption">At {wpx} px: {r["nodes_kept"]} of 8 nodes, {r["lever_red_px"]} red pixels; the lockmark {fmt_g(float(f["lockmark_px_at"][str(wpx)]))} px</figcaption></figure>')
+                          f'<figcaption class="caption">At {wpx} px: {r["nodes_kept"]} of 8 nodes, {r["lever_red_px"]} red pixels; the lockmark {fmt_g(float(f["lockmark_px_at"][str(wpx)]))} px, '
+                          f'{"under" if float(f["lockmark_px_at"][str(wpx)]) < 16 else "over"} its 16 px floor</figcaption></figure>')
             enl = ''
             for wpx in (500, 360):
                 for jp in (False, True):
@@ -1536,7 +1562,7 @@ def social_card(card, C, I, M, SC):
             ('Shrunk, then saved as a JPEG, every fourth width', f'Newsprint: today fails at {t48["fails"]} of {t48["of"]}, the proposal at {t96["fails"]}. Charcoal: today {tc48["fails"]} of {tc48["of"]}, the proposal {tc96["fails"]}'),
             ('Lockmark against the card’s capitals', f'Today <span class="num">{fl["ratio48"]}</span> times; proposal <span class="num">{fl["ratio96"]}</span> times')]
     body += dl(rows)
-    subjects = [(c.get('title') or c.get('id'), c) for c in sc_list] or [(card['short'], None)]
+    subjects = [(card['short'], c) for c in sc_list] or [(card['short'], None)]
     sh, lows = scores_block(subjects)
     card['lows'] = lows
     card['foot_extra'] = sh + open_items(subjects)
@@ -2031,6 +2057,10 @@ def main():
             c['lede_html'] = paras(W.get('lede'), 'card-lede')
         c['html'] = RENDER_CARD[k](c, C, I, M, SC)
     for c in cards:
+        if c.get('lows'):
+            warn(f'card {c["n"]} ({c["short"]}): scores under 4 ({join_words(c["lows"])}); the brief sends the drawing back before the board is published')
+        if c.get('not_ready'):
+            warn(f'card {c["n"]} ({c["short"]}): not ready for the board in the scores file')
         if c.get('naming_missing') and S is not None:
             warn(f'card {c["n"]}: no naming test from the creative director for one or more Housing options')
     page = build_page(cards, C, built)
@@ -2056,7 +2086,14 @@ def main():
         warn('decision numbers outside the footer, in words from other owners’ files: ' + ', '.join(stray))
     # figures the creative director's words cite that this run did not measure (reported, not warned: they are the
     # creative director's own words)
-    measured = set()
+    measured = {fmt_like(M['flag']), fmt_like(M['watch'])}
+    for key in ('likeness_fits', 'likeness_housing', 'likeness_neutral_masters'):
+        L = M['R'][key]
+        for x in L.get('flagged', []) + L.get('watch', []) + L.get('own', []) + L.get('options', []) + L.get('closest', []):
+            measured.add(fmt_like(x['likeness']))
+    for v in re.findall(r'(?<![\d.])(\d+\.\d+)', json.dumps(I['idf'])):
+        measured.add(v[:5])
+        measured.add(f'{float(v):.3f}')
     for r in M['rows']:
         for x in [r['like_own']] + [f['likeness'] for f in r['flags']] + [f['masters'] for f in r['flags']]:
             if x is not None:
@@ -2072,7 +2109,7 @@ def main():
     cd_words = json.dumps(S, ensure_ascii=False) if S else ''
     unmeasured = sorted({x for x in re.findall(r'\b0\.\d{3}\b', cd_words) if x not in measured})
     if unmeasured:
-        NOTICES.append('the creative director’s words cite likeness figures this run does not print: ' + ', '.join(unmeasured[:20]))
+        NOTICES.append('figures in the creative director’s words that neither this run nor the identity figures file holds: ' + ', '.join(unmeasured[:20]))
     # outputs
     out_dir = a.out.parent
     out_dir.mkdir(parents=True, exist_ok=True)

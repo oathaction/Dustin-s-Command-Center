@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-housing-option-b-red-black" data-id="Housing" width="128" height="128" viewBox="0 0 128 128">
   <title>Housing, option B</title>
-  <desc>Oath &amp; Action Civic Line, Housing, new topic drawing (DR-196), option B. An apartment house: three floors under a pitched roof, two windows a floor; red on the arched door. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts. For approval by name on drawings board C.</desc>
+  <desc>Oath &amp; Action Civic Line, Housing, new topic drawing (DR-196), option B. Two homes under one roof: three floors under a pitched roof, two square-headed doors side by side with a column of two windows over each; red on the left door. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts. For approval by name on drawings board C.</desc>
   <g id="oa-civic-line-housing-option-b-red-black-base" data-part="base">
     <polyline points="21.3529,114.5672 21.3529,43.895 64,13.4328 106.6471,43.895 106.6471,114.5672" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="35.3655" y="48.7689" width="10.9664" height="12.1849" rx="1.5231" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="81.6681" y="48.7689" width="10.9664" height="12.1849" rx="1.5231" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="35.3655" y="70.7017" width="10.9664" height="12.1849" rx="1.5231" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="81.6681" y="70.7017" width="10.9664" height="12.1849" rx="1.5231" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="35.3655" y="92.6345" width="10.9664" height="12.1849" rx="1.5231" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="81.6681" y="92.6345" width="10.9664" height="12.1849" rx="1.5231" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="81.0588,114.5672 81.0588,92.6345 93.2437,92.6345 93.2437,114.5672" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="14.042" y1="114.5672" x2="113.958" y2="114.5672" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="oa-civic-line-housing-option-b-red-black-accent" data-part="accent">
-    <path d="M56.6891 114.5672 L56.6891 93.8529 A7.3109 7.3109 0 0 1 71.3109 93.8529 L71.3109 114.5672" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="34.7563,114.5672 34.7563,92.6345 46.9412,92.6345 46.9412,114.5672" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

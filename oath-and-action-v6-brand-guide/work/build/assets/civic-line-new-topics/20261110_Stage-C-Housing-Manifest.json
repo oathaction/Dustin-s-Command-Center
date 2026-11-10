@@ -2,7 +2,7 @@
  "title": "Housing, a new topic drawing (DR-196): three options for drawings board C",
  "date": "20261110",
  "made_by": "icon designer (oa-design-director), work/build/scripts/phase-2/civic_line_stage_c_drawings.py",
- "status": "Proposed. Dustin picks one option and approves it by name on drawings board C.",
+ "status": "Proposed. Dustin picks one option and approves it by name on drawings board C. Option B was redrawn in the fix round and withdrawn; the card shows A and C.",
  "decisions": [
   "DR-196",
   "DR-146",
@@ -26,6 +26,8 @@
  "options": [
   {
    "option": "A",
+   "status": "on the board",
+   "withdrawn_because": null,
    "shows": "Homes of more than one kind: a flat-roofed apartment block and a pitched-roof house on one ground line; red on one window of the block.",
    "construction": "an apartment block of three floors at left, two windows a floor and a door, beside a smaller pitched-roof house with its door, both on one ground line that runs past them. Windows are small rounded squares. No chimney, fence, tree, flag or sign.",
    "red": "one window of the block, top right: one household's home among many. The block, its other windows, the house, the doors and the ground line stay black.",
@@ -99,9 +101,11 @@
   },
   {
    "option": "B",
-   "shows": "An apartment house: three floors under a pitched roof, two windows a floor; red on the arched door.",
-   "construction": "one building of three floors under a pitched roof, two windows a floor in two columns, and an arched door at the middle of the ground floor, on a ground line that runs past the walls. No chimney, columns or pediment.",
-   "red": "the arched door, the way into the homes. The building, its windows and the ground line stay black.",
+   "status": "withdrawn",
+   "withdrawn_because": "Redrawn with two doors under one roof, it still reads first as one tall house at 48 px, so the card shows A and C.",
+   "shows": "Two homes under one roof: three floors under a pitched roof, two square-headed doors side by side with a column of two windows over each; red on the left door.",
+   "construction": "one building of three floors under a pitched roof: on the ground floor two plain square-headed doors side by side, each under a column of two windows, on a ground line that runs past the walls. No arched door, chimney, columns or pediment.",
+   "red": "the left door, one of the two homes. The building, its windows, the right door and the ground line stay black.",
    "src": "work/build/assets/civic-line-new-topics/src/20261110_Housing-Option-B.svg",
    "svg": {
     "red-black": "work/build/assets/civic-line-new-topics/svg/20261110_Housing-Option-B-Red-Black.svg",
@@ -172,6 +176,8 @@
   },
   {
    "option": "C",
+   "status": "on the board",
+   "withdrawn_because": null,
    "shows": "A house key: a key whose bow is a house; red on the bow.",
    "construction": "an upright key: its bow drawn as a house (two walls, a pitched roof and a closed floor line) with a small rounded square hole, a long stem and a bit of two teeth at the stem's foot, pointing right.",
    "red": "the house-shaped bow. The hole, the stem and the bit stay black.",
@@ -252,23 +258,23 @@
   "between_options": [
    {
     "a": "20261110_Housing-Option-A-Black.svg",
-    "b": "20261110_Housing-Option-B-Black.svg",
-    "likeness": 0.452,
-    "percentile": 5.8,
-    "against": "new"
-   },
-   {
-    "a": "20261110_Housing-Option-A-Black.svg",
     "b": "20261110_Housing-Option-C-Black.svg",
     "likeness": 0.4309,
     "percentile": 4.8,
     "against": "new"
    },
    {
+    "a": "20261110_Housing-Option-A-Black.svg",
+    "b": "20261110_Housing-Option-B-Black.svg",
+    "likeness": 0.3593,
+    "percentile": 2.8,
+    "against": "new"
+   },
+   {
     "a": "20261110_Housing-Option-B-Black.svg",
     "b": "20261110_Housing-Option-C-Black.svg",
-    "likeness": 0.1645,
-    "percentile": 1.3,
+    "likeness": 0.0284,
+    "percentile": 0.9,
     "against": "new"
    }
   ],
@@ -317,6 +323,7 @@
      "R-26": 0.3601,
      "R-43": 0.5899,
      "CL-031": 0.5737,
+     "R-31": 0.5071,
      "CL-051": 0.6899,
      "CL-047": 0.5937,
      "R-37": 0.5113
@@ -340,50 +347,51 @@
    },
    {
     "option": "B",
-    "closest": "CL-033 Hostile Content",
-    "closest_likeness": 0.6588,
-    "closest_percentile": 33.9,
+    "closest": "CL-065 Climate & Insurance",
+    "closest_likeness": 0.6144,
+    "closest_percentile": 23.4,
     "top_five": [
      [
-      "CL-033 Hostile Content",
-      0.6588,
-      33.9
+      "CL-065 Climate & Insurance",
+      0.6144,
+      23.4
      ],
      [
       "CL-024 Feedback Loop",
-      0.626,
-      25.9
+      0.5881,
+      18.7
      ],
      [
-      "R-42 Congressional Tariff Votes",
-      0.6027,
-      21.1
+      "CL-033 Hostile Content",
+      0.5864,
+      18.5
      ],
      [
-      "CL-065 Climate & Insurance",
-      0.6,
-      20.7
+      "R-13 Congressional Capacity",
+      0.5345,
+      11.7
      ],
      [
-      "CL-051 Market Power",
-      0.596,
-      19.9
+      "CL-032 Local Reporting",
+      0.5273,
+      11.1
      ]
     ],
     "against": {
-     "CL-054": 0.4823,
-     "CL-053": 0.3977,
-     "CL-063": 0.4607,
-     "R-30": 0.4133,
-     "CL-052": 0.5065,
-     "CL-035": 0.3568,
-     "CL-065": 0.6,
-     "R-26": 0.4379,
-     "R-43": 0.4223,
-     "CL-031": 0.5722,
-     "CL-051": 0.596,
-     "CL-047": 0.4823,
-     "R-37": 0.3261
+     "CL-054": 0.3977,
+     "CL-053": 0.4218,
+     "CL-063": 0.4152,
+     "R-30": 0.349,
+     "CL-052": 0.4264,
+     "CL-035": 0.3147,
+     "CL-065": 0.6144,
+     "R-26": 0.3592,
+     "R-43": 0.3022,
+     "CL-031": 0.4186,
+     "R-31": 0.2856,
+     "CL-051": 0.4804,
+     "CL-047": 0.427,
+     "R-37": 0.2602
     },
     "pixel_fit_48": {
      "pass": false,
@@ -397,8 +405,8 @@
      },
      "smallest_gap_px_1x": 2.36,
      "counters_1x": {
-      "drawn": 8,
-      "open": 8
+      "drawn": 7,
+      "open": 7
      }
     }
    },
@@ -445,6 +453,7 @@
      "R-26": 0.1506,
      "R-43": 0.5852,
      "CL-031": 0.4302,
+     "R-31": 0.2984,
      "CL-051": 0.2639,
      "CL-047": 0.5982,
      "R-37": 0.3807

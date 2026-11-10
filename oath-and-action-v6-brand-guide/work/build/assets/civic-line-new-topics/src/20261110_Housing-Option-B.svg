@@ -5,11 +5,10 @@
     <rect x="129" y="78" width="18" height="20" rx="2.5"/>
     <rect x="53" y="114" width="18" height="20" rx="2.5"/>
     <rect x="129" y="114" width="18" height="20" rx="2.5"/>
-    <rect x="53" y="150" width="18" height="20" rx="2.5"/>
-    <rect x="129" y="150" width="18" height="20" rx="2.5"/>
+    <polyline points="128,186 128,150 148,150 148,186"/>
     <line x1="18" y1="186" x2="182" y2="186"/>
   </g>
   <g data-role="accent">
-    <path d="M88 186 L88 152 A12 12 0 0 1 112 152 L112 186"/>
+    <polyline points="52,186 52,150 72,150 72,186"/>
   </g>
 </svg>

@@ -2,6 +2,25 @@
 
 Oath & Action Edition 06, Phase 2, November 10, 2026. Written by the icon designer (`oa-design-director`), one hand for every new drawing in this stage, under `20261110_Stage-C-Brief.md` ("Round 0 tasks, Icon designer") and the main session's addition on Housing and options. For the creative director, the board builder of drawings board C (`20261110_Drawings-Board-C-Brief.md`) and the main session.
 
+## Fix round
+
+The creative director scored Housing option B at Clarity 3 (`20261110_CD-Review-Of-Stage-C-Drawings.md`, "Back to the maker"): it read first as one house, then as a school or town hall, since its red arched door is CL-031's and R-31's public-building sign. I redrew B exactly as instructed, through the script: the pitched roof, the ground line and the three floors kept; the arched door and the ground-floor windows gone; two plain square-headed doors side by side on the ground line, red on the left one, each under a column of two windows. The line stays at the cap (3.3508 units), and the tiles keep 21.6 units to every edge.
+
+**Figures for the redrawn B** (the likeness check against the 124 drawings in use and against A and C; every pair in `qa/20261110_Housing-Likeness-All-Pairs.json`): nothing flagged or watched, exit 0. Closest settled drawing CL-065 Climate & Insurance, 0.614 (23rd percentile). Against CL-054 Home Equity 0.398, CL-031 Local Government 0.419, R-31 Childcare Supply 0.286, CL-053 0.422, R-30 0.349. Against A 0.359, against C 0.028. The pixel fit check at 48 px fails only on straight edges, as every master does, with its smallest gap 2.36 px and all 7 counters kept.
+
+**My naming reading at 48 px, no label:** "a house", a tall one. The two doors register only on a second look, as a two-family house. It no longer reads as a school or town hall, but it still reads first as one house.
+
+**B is withdrawn.** Redrawn with two doors under one roof, it still reads first as one tall house at 48 px, so the card shows A and C. Its redrawn files replace the first draft's and stay as the record, marked "withdrawn" in `20261110_Stage-C-Housing-Manifest.json`.
+
+- D2-xxx | Housing B redrawn as the creative director instructed: two square-headed doors side by side, red on the left, a column of two windows over each, under the same roof, floors and ground line | Clarity 3 in the creative director's review; the arched red door is CL-031's and R-31's public-building sign
+- D2-xxx | The red goes on the left door | One home of the two, as A's red window marks one home among many; the left is read first
+- D2-xxx | Housing B withdrawn; the card shows A and C | It still reads first as one house at 48 px, the creative director's own test (D2-622)
+- D2-xxx | The script's previews and measuring steps can run for Housing alone (`--part housing-previews`, `--part housing-measure`) | The fix changes Housing only; the fits' and redraws' files and figures stay as they were
+
+**Tested in the fix round:** the redrawn B built through the script at the cap with all four editions and 12 tiles; tile margins with the tile code's own measure (21.6 units at the least); the likeness check against the 124 drawings and against A and C, with every pair listed; the pixel fit check at 48 px; B at 128, 48 and 24 px beside CL-031, R-31, CL-054 and R-30 on Newsprint, in a scratch render of the same geometry, at true size and enlarged, and the script's own 48 px preview beside CL-054, CL-053, CL-063, R-30 and CL-051; git shows A's and C's files unchanged by the rebuild.
+
+**Not tested in the fix round:** any reader's naming of the redrawn B beyond my own reading; the creative director's rescore, which comes next.
+
 ## Where the work stands
 
 Round 0 is done. The 37 fits, the 16 px Pause and Filter redraws, three Housing options with their editions and tiles, the previews and the checks are all built by one script and ready for the creative director's scores and the board. Nothing here is in use: every file waits for Dustin's approval by name on drawings board C.
@@ -34,7 +53,7 @@ Files in `work/build/assets/civic-line-new-topics/`: `src/20261110_Housing-Optio
 | Option | What it shows | Red | Naming test (mine) | Closest settled drawing | CL-054 Home Equity | CL-053 / R-30 / CL-063 | Tile margin |
 |---|---|---|---|---|---|---|---|
 | A | An apartment block of three floors and a pitched-roof house on one ground line | One window of the block: one household's home among many | "Housing" or "homes"; at worst "neighborhood" | CL-051 Market Power, 0.690 (42nd percentile) | 0.501 | 0.251 / 0.290 / 0.575 | 22.3 units |
-| B | One apartment house: three floors under a pitched roof, two windows a floor, an arched door | The door | "Apartment building"; at worst "house" or "school" | CL-033 Hostile Content, 0.659 (34th) | 0.482 | 0.398 / 0.413 / 0.461 | 21.6 units |
+| B (first draft; redrawn and withdrawn in the fix round) | One apartment house: three floors under a pitched roof, two windows a floor, an arched door | The door | "Apartment building"; at worst "house" or "school" | CL-033 Hostile Content, 0.659 (34th) | 0.482 | 0.398 / 0.413 / 0.461 | 21.6 units |
 | C | A house key: a key whose bow is a house, with a stem and two teeth | The house-shaped bow | "House key", which a reader may call "home" or "real estate" | CL-022 Act, 0.656 (33rd) | 0.270 | 0.058 / 0.269 / 0.469 | 24.1 units |
 
 Nothing is flagged or watched; the check exits 0. Between the options: A and B 0.452, A and C 0.431, B and C 0.165, so each is a different choice. All three sit at the cap (line 3.3508 units). The engineer's pixel fit check at 48 px, their floor: each fails only on straight edges, as every master does, keeps its smallest gap at 1.7 px or more and keeps every counter. Every tile keeps at least 21 units to its edge, the set's minimum in chapter 10, section 8.
@@ -157,7 +176,7 @@ Among the masters four of these pairs sit above the flag line; among the fits no
 1. **The 37 fits (card 3).** Approve all 37 by name, with the pillar icons' switch: the fit on 1x screens, the master from 2x. *Recommendation:* yes, all 37. Every fit passes the pixel fit check, every line reaches full ink where no master line does, and the five look-alikes all moved apart.
 2. **Pause (card 2).** *Recommendation:* approve the redraw by name. It opens one whole pixel on every row of each bar, where the approved file opens none.
 3. **Filter, A or B (card 2).** *Recommendation:* A. It keeps the approved file's construction with both outer edges on whole pixels, matches the Pause redraw, and opens a whole pixel on three of the spout's four rows. B opens every row and keeps the funnel symmetric, but its outer edges draw half gray at 16 px.
-4. **Housing, which option (card 1).** *Recommendation:* A, homes of more than one kind. It names housing as the atlas covers it, renters and owners alike, and keeps furthest from the drawings where a house means one household (0.50 against CL-054, 0.25 against CL-053, 0.29 against R-30). If you would rather have the clearest small shape, C, the house key, is the one; it may be named "home".
+4. **Housing, which option (card 1), A or C, since B is withdrawn in the fix round.** *Recommendation:* A, homes of more than one kind. It names housing as the atlas covers it, renters and owners alike, and keeps furthest from the drawings where a house means one household (0.50 against CL-054, 0.25 against CL-053, 0.29 against R-30). If you would rather have the clearest small shape, C, the house key, is the one; it may be named "home".
 5. **Housing at 24 px.** Housing is not on the list of 41, and adding it changes what DR-136 approved. *Recommendation:* keep it at 48 px and up for now. If you want it in kickers, I draw its 24 px fit once you pick an option, and it joins the list by your approval.
 6. **R-06 at 24 px.** Its fit is flagged against R-41 and R-44, as its master already was, more closely. *Recommendation:* no change to the fit; when chapter 10 sets neighbors side by side (Rule 10.9), R-06, R-41 and R-44 can join the groups that never share a view at small sizes, as the five do.
 
@@ -191,4 +210,11 @@ Created:
 - `work/build/assets/civic-line-new-topics/`, new dated files beside stage B's: `src/` (3), `svg/` (12), `png/` (24), `tiles/` (36 SVGs, 72 PNGs), `previews/` (36), `qa/` (3 JSON), `20261110_Stage-C-Housing-Manifest.json`
 - `work/handoffs/phase-2/20261110_Stage-C-Drawings-Notes.md` (this file)
 
-Modified: none. Removed: none. Scratch work stays in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/icons/`.
+Modified: none in round 0.
+
+Fix round, modified (my own files only):
+- `work/build/scripts/phase-2/civic_line_stage_c_drawings.py` (option B redrawn, its withdrawal recorded, Housing-only parts for previews and measuring, R-31 added to the named neighbors)
+- `work/build/assets/civic-line-new-topics/`: option B's `src/` file, its four `svg/` editions, its eight `png/` files, its 12 tile SVGs and 24 tile PNGs, its 12 previews, the three `qa/` JSON files and `20261110_Stage-C-Housing-Manifest.json`. A's and C's files are unchanged.
+- `work/handoffs/phase-2/20261110_Stage-C-Drawings-Notes.md` (this file: the fix round, B's table row and question 4)
+
+Removed: none. Scratch work stays in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/icons/`.

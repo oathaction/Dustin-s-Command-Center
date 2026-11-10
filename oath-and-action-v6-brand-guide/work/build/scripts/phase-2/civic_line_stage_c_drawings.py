@@ -432,16 +432,18 @@ def housing_a():
 
 
 def housing_b():
-    """An apartment house: one building of three floors under a pitched roof, two windows a floor and an arched
-    door on the ground line. Red: the door, the way into the homes."""
+    """Two homes under one roof (fix round, the creative director's instruction): one building of three floors
+    under a pitched roof, two plain square-headed doors side by side on the ground line and a column of two windows
+    over each, on a ground line that runs past the walls. Red: the left door, one of the two homes. The first draft
+    (one arched red door, three windows a column) read as one house, then as a school or town hall."""
     p = P()
     g = 186
     body_ = [p.poly([(30, g), (30, 70), (100, 20), (170, 70), (170, g)])]
     wins = [p.rect(x - 9, y - 10, 18, 20, rx=2.5) for y in (88, 124) for x in (62, 138)]
-    wins += [p.rect(62 - 9, 150, 18, 20, rx=2.5), p.rect(138 - 9, 150, 18, 20, rx=2.5)]
-    door = [p.path([("M", 88, g), ("L", 88, 152), ("A", 12, 0, 1, 112, 152), ("L", 112, g)])]
+    left = [p.poly([(52, g), (52, 150), (72, 150), (72, g)])]
+    right = [p.poly([(128, g), (128, 150), (148, 150), (148, g)])]
     ground = [p.line(18, g, 182, g)]
-    return [("base", body_ + wins + ground), ("accent", door)]
+    return [("base", body_ + wins + right + ground), ("accent", left)]
 
 
 def housing_c():
@@ -463,17 +465,22 @@ HOUSING = [
      "fence, tree, flag or sign.",
      "one window of the block, top right: one household's home among many. The block, its other windows, the house, "
      "the doors and the ground line stay black."),
-    ("B", housing_b, "An apartment house: three floors under a pitched roof, two windows a floor; red on the arched "
-                     "door.",
-     "one building of three floors under a pitched roof, two windows a floor in two columns, and an arched door at "
-     "the middle of the ground floor, on a ground line that runs past the walls. No chimney, columns or pediment.",
-     "the arched door, the way into the homes. The building, its windows and the ground line stay black."),
+    ("B", housing_b, "Two homes under one roof: three floors under a pitched roof, two square-headed doors side by "
+                     "side with a column of two windows over each; red on the left door.",
+     "one building of three floors under a pitched roof: on the ground floor two plain square-headed doors side by "
+     "side, each under a column of two windows, on a ground line that runs past the walls. No arched door, chimney, "
+     "columns or pediment.",
+     "the left door, one of the two homes. The building, its windows, the right door and the ground line stay black."),
     ("C", housing_c, "A house key: a key whose bow is a house; red on the bow.",
      "an upright key: its bow drawn as a house (two walls, a pitched roof and a closed floor line) with a small "
      "rounded square hole, a long stem and a bit of two teeth at the stem's foot, pointing right.",
      "the house-shaped bow. The hole, the stem and the bit stay black."),
 ]
 HOUSING_NEIGHBORS = ["CL-054", "CL-053", "CL-063", "R-30", "CL-051"]
+# Fix round (the creative director's review, "Back to the maker"): B redrawn as instructed, then withdrawn because it
+# still reads first as one house at 48 px. Its files stay as the record; the board shows A and C (D2-622).
+WITHDRAWN = {"B": "Redrawn with two doors under one roof, it still reads first as one tall house at 48 px, so the "
+                  "card shows A and C."}
 
 
 def housing_stem(opt):
@@ -531,7 +538,8 @@ def build_housing(scratch):
                     for px in (256, 512):
                         jobs.append({"svg": B.sized(svg, px), "w": px, "h": px, "bg": None, "tile": True,
                                      "out": os.path.join(TOPICS, "tiles", f"{sh}-{tl}", f"png-{px}", base + ".png")})
-        recs.append({"option": opt, "shows": shows, "construction": construction, "red": red,
+        recs.append({"option": opt, "status": "withdrawn" if opt in WITHDRAWN else "on the board",
+                     "withdrawn_because": WITHDRAWN.get(opt), "shows": shows, "construction": construction, "red": red,
                      "src": rel(os.path.join(TOPICS, "src", stem + ".svg")), "svg": files,
                      "scale": round(m["s"], 6), "stroke_units": round(m["stroke_units"], 4),
                      "extent_units": round(m["extent_units"], 2), "at_cap": m["at_cap"],
@@ -548,7 +556,8 @@ def build_housing(scratch):
             Image.open(j["out"]).convert("RGBA").save(j["out"], optimize=True)
     man = {"title": "Housing, a new topic drawing (DR-196): three options for drawings board C", "date": DATE,
            "made_by": "icon designer (oa-design-director), work/build/scripts/phase-2/civic_line_stage_c_drawings.py",
-           "status": "Proposed. Dustin picks one option and approves it by name on drawings board C.",
+           "status": "Proposed. Dustin picks one option and approves it by name on drawings board C. Option B was "
+                     "redrawn in the fix round and withdrawn; the card shows A and C.",
            "decisions": ["DR-196", "DR-146", "D2-622", "D2-502", "DR-137", "DR-08", "DR-09", "DR-10", "DR-136"],
            "rule": "s = min(116 / extent, 1.25 x 0.487395), line 5.5 source px (DR-08); editions by the October color "
                    "swap (DR-09); tiles by the October tile code with the S-1 and S-2 optics rules (DR-10)",
@@ -568,7 +577,7 @@ def build_housing(scratch):
 
 
 # ------------------------------------------------------------------ previews for the board
-def build_previews(scratch):
+def build_previews(scratch, only=None):
     """Pairs and sheets, each rendered at device scale 1 so a 1x PNG shows what a 1x screen draws and a 2x PNG what a
     2x screen draws. Set each at its CSS size (the 1x file's pixel size) with image-rendering: pixelated."""
     inv = inventory()
@@ -576,7 +585,7 @@ def build_previews(scratch):
     surf = {"Newsprint": (NEWSPRINT, "black", CHARCOAL), "Charcoal": (CHARCOAL, "newsprint", NEWSPRINT)}
     # 1. each fit beside its master at 24 px
     cells = []
-    for icon_id, word, atlas in FIT_ORDER:
+    for icon_id, word, atlas in (FIT_ORDER if only in (None, "fits") else []):
         row = inv[icon_id]
         stem = fit_stem(row)
         fit = open(os.path.join(FIT_DIR, "svg", stem + "-Black.svg"), encoding="utf-8").read()
@@ -591,7 +600,7 @@ def build_previews(scratch):
         cells.append((icon_id, row, stem, fit))
     cols, cw, ch = 4, 120, 40
     nrows = (len(cells) + cols - 1) // cols
-    for sname, (bg, ed, ink) in surf.items():
+    for sname, (bg, ed, ink) in (surf.items() if cells else []):
         parts = []
         for i, (icon_id, row, stem, fit) in enumerate(cells):
             x, y = (i % cols) * cw + 8, (i // cols) * ch + 8
@@ -608,7 +617,7 @@ def build_previews(scratch):
              ("Filter", f"{DATE}_Utility-Filter-16px.svg", f"{DATE}_Utility-Filter-16px-Redraw-A"),
              ("Filter", f"{DATE}_Utility-Filter-16px.svg", f"{DATE}_Utility-Filter-16px-Redraw-B")]
     grids = []
-    for name, approved, stem in pairs:
+    for name, approved, stem in (pairs if only in (None, "utility") else []):
         ap = open(os.path.join(UTIL_SRC, approved), encoding="utf-8").read()
         rd = open(os.path.join(UTIL_DIR, "svg", stem + ".svg"), encoding="utf-8").read()
         for sname, (bg, ed, ink) in surf.items():
@@ -621,7 +630,7 @@ def build_previews(scratch):
                     grids.append((out, os.path.join(UTIL_DIR, "previews", f"{stem}-Pair-{sname}-1x-Grid-10x.png")))
     # 3. Housing beside its nearest settled drawings at 128, 48 and 24 px
     nb = [inv[i] for i in HOUSING_NEIGHBORS]
-    for opt, *_ in HOUSING:
+    for opt, *_ in (HOUSING if only in (None, "housing") else []):
         stem = housing_stem(opt)
         for sname, (bg, ed, ink) in surf.items():
             two = "red-black" if sname == "Newsprint" else "red-newsprint"
@@ -672,7 +681,7 @@ def _full_share(res, scale="1x"):
     return round((s["ink_px"] - s["partial_px"]) / s["ink_px"], 4) if s["ink_px"] else None
 
 
-def measure(scratch):
+def measure(scratch, only=None):
     inv = inventory()
     pf = os.path.join(CHECKS, "icon_pixel_fit_check.js")
     lk = os.path.join(CHECKS, "icon_likeness_check.js")
@@ -681,6 +690,13 @@ def measure(scratch):
     pics = os.path.join(scratch, "pixel-pictures")
     fits = [os.path.join(FIT_DIR, "svg", fit_stem(inv[i]) + "-Black.svg") for i, _, _ in FIT_ORDER]
     masters = [master_path(inv[i]) for i, _, _ in FIT_ORDER]
+    if only in (None, "fits", "utility"):
+        measure_fits_and_utility(scratch, inv, pf, lk, qa, pics, fits, masters, only)
+    if only in (None, "housing"):
+        measure_housing(scratch, pf, lk, pics)
+
+
+def measure_fits_and_utility(scratch, inv, pf, lk, qa, pics, fits, masters, only):
     # 1. pixel fit: the fits at their own size and line, and the masters at 24 px for their full-ink share
     j1 = os.path.join(qa, f"{DATE}_Fits-Pixel-Fit-24px.json")
     rc1, _ = node([pf, "--size", "24", "--weight", "1", "--quiet", "--json", j1, "--png", os.path.join(pics, "fits"), *fits])
@@ -824,6 +840,9 @@ def measure(scratch):
     write(path, json.dumps(man, indent=1) + "\n")
     print("utility: " + "; ".join(f"{os.path.basename(u['file'])} open rows {[o['rows_with_an_open_pixel'] for o in u['openings']]} pass {u['pixel_fit_pass']}" for u in ufig))
 
+
+
+def measure_housing(scratch, pf, lk, pics):
     # 5. Housing: likeness of each option against the 124 drawings in use (every pair listed), and the pixel fit
     #    check at 48 px, its floor
     hqa = os.path.join(TOPICS, "qa")
@@ -851,7 +870,7 @@ def measure(scratch):
         r = P48[n]
         hfig.append({"option": opt, "closest": c["b"], "closest_likeness": c["likeness"], "closest_percentile": c["percentile"],
                      "top_five": [(x["b"], x["likeness"], x["percentile"]) for x in allp[:5]],
-                     "against": {i: named.get(i) for i in ["CL-054", "CL-053", "CL-063", "R-30", "CL-052", "CL-035", "CL-065", "R-26", "R-43", "CL-031", "CL-051", "CL-047", "R-37"]},
+                     "against": {i: named.get(i) for i in ["CL-054", "CL-053", "CL-063", "R-30", "CL-052", "CL-035", "CL-065", "R-26", "R-43", "CL-031", "R-31", "CL-051", "CL-047", "R-37"]},
                      "pixel_fit_48": {"pass": r["pass"], "fails": {s: r["scales"][s]["fails"] for s in ("1x", "2x")},
                                       "smallest_gap_px_1x": r["scales"]["1x"]["gap"]["smallest_px"],
                                       "counters_1x": r["scales"]["1x"]["counters"]}})
@@ -968,7 +987,8 @@ def draft_map(icon_id, growth=None):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--part", choices=["fits", "utility", "housing", "previews", "measure"])
+    ap.add_argument("--part", choices=["fits", "utility", "housing", "previews", "measure", "housing-previews",
+                                       "housing-measure"])
     ap.add_argument("--draft")
     ap.add_argument("--scratch", default=SCRATCH)
     a = ap.parse_args()
@@ -981,7 +1001,9 @@ def main():
     parts = [a.part] if a.part else ["fits", "utility", "housing", "previews", "measure"]
     for p in parts:
         {"fits": build_fits, "utility": build_utility, "housing": build_housing,
-         "previews": build_previews, "measure": measure}[p](a.scratch)
+         "previews": build_previews, "measure": measure,
+         "housing-previews": lambda s: build_previews(s, "housing"),
+         "housing-measure": lambda s: measure(s, "housing")}[p](a.scratch)
 
 
 # ------------------------------------------------------------------ the 37 fits, drawn pixel by pixel
