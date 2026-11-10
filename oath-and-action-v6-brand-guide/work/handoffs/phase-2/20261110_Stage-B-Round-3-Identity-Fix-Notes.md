@@ -27,6 +27,23 @@ Every change is in a generator. Nothing committed or pushed. No `source/`, ledge
 
 One more fix the looks led to: `s-09-4-failure`'s kicker set its topic in lowercase regular type, a second fault the plate did not name. It now follows Rule 01.21's type, capitals with the topic in the secondary ink, so the pillar icon is the plate's only fault.
 
+## Second pass (D2-963, DR-191)
+
+The editor's read (section 8 of `20261110_Stage-B-Round-3-Editor-Fix-Notes.md`) gave me six rows, rows 1 to 5 and 14. I applied each in its generator, word for word:
+
+| Row | Where | Now reads |
+|---|---|---|
+| 1 | Rule 04.6, why (`stage_a_identity_chapters.py`) | "while B's 16 px master keeps its shape on every screen above 1x." |
+| 2 | Rule 09.3, why (`stage_b_identity_ch09.py`) | "while B's smooth drawing keeps its shape on every screen above 1x." |
+| 3 | Rule 04.5, why (`stage_a_identity_chapters.py`) | "a connection graded plausible as a dashed one" |
+| 4 | Rule 04.5, failure caption (same) | "In the atlas's key a dashed line marks a connection graded plausible," |
+| 5 | `s-04-5-failure` alt (`stage_a_identity_s04.py`) | "a dashed line marks a connection graded plausible," |
+| 14 | Rule 12.4, basis (`stage_b_identity_ch12.py`) | "Our measurements, October and November 2026, and design judgment, which sets the 12 percent ceiling" |
+
+"Plausible link" now appears 0 times in chapter 04 and in `manifest-identity.json`.
+
+Rerun in order: `promotion_identity.py specimens`, then `stage_b_identity_ch01.py` (unchanged, since chapter 01's drawings did not move). `guide_build.py --strict`: exit 0, 0 warnings. `guide_check.js` at four widths: 4 failures, one per width, all in `s-11-12-correct` (four U+2011 hyphens in the live filter's text, the engineer's new D2-975 check), which is the chapter 11 hand's plate. None is in a plate of mine, and none of my files holds a U+2011.
+
 ## Routine calls
 
 - D2-xxx | Chapter 09's four phone-size plates are 360 px wide with a 16 px inner margin, and `s-09-4-failure`'s card is 328 px | CA-S5; chapter 11's 360 px plates fit 390 and 360 px screens, and 16 px is the shell's own phone gutter

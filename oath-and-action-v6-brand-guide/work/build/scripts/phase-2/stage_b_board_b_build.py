@@ -55,6 +55,7 @@ SRC = {
     'tiles_v6': ASSETS / 'civic-line-v6',
     'error_svg': ASSETS / 'utility/svg-24/20261110_Utility-Error-24px.svg',
     'social': ROOT / 'work/build/guide/specimens/s-proofs-social.html',
+    'form': ROOT / 'work/build/guide/specimens/s-11-15-correct.html',
 }
 DEF_OUT = BOARD_DIR / f'{DATE}_Board-B.html'
 DEF_PUBLISH = SCRATCH / 'publish-board-b'
@@ -123,7 +124,6 @@ W = {
         'contrast_note': 'A mark that carries meaning needs 3 to 1 against its ground (Rule 05.5, and WCAG 2.2 success criterion 1.4.11). This board’s build works out each figure from the colors in our tokens.',
         'field_label': 'Email',
         'field_value': 'name.example.com',
-        'message': 'Enter an email address with an @, such as name@example.com.',
         'rec': [
             'Option A. In Pillar Red the mark measures {b_band} to 1 on the Error Band and {b_np} to 1 on Newsprint, so a reader with low vision can lose it on either ground. In ink it measures {a_band} to 1 on the band, and the bar still gives the error the view’s red.',
             'If you approve option A, the engineer rewords the red token’s description at Gate 2 so it names the bar alone. Option B changes one color in one drawing, and setting that color back undoes it.',
@@ -561,6 +561,14 @@ def svg_file(icons, iid, kind):
     return f
 
 
+def read_form_message():
+    """The email field's error message as Rule 11.15's live form writes it, so the board shows the same words."""
+    t = SRC['form'].read_text()
+    m = re.search(r"email:'((?:[^'\\]|\\.)*)'", t)
+    need(m, 's-11-15-correct no longer holds the email field\'s message')
+    return json.loads('"' + m.group(1).replace('"', '\\"') + '"')
+
+
 def read_error_svg():
     t = SRC['error_svg'].read_text()
     t = re.sub(r'<!--.*?-->', '', t, flags=re.S)
@@ -743,7 +751,7 @@ def form_specimen(opt):
     return (f'<div class="fx" data-red="working" data-red-job="error">'
             f'<p class="fx-l">{esc(D["field_label"])} <span class="chip chip--ill">Illustrative</span></p>'
             f'<div class="fx-in">{esc(D["field_value"])}</div>'
-            f'<div class="fx-er">{err_svg(24, cls)}<span><b>Error:</b> {esc(D["message"])}</span></div></div>')
+            f'<div class="fx-er">{err_svg(24, cls)}<span><b>Error:</b> {esc(FILL["message"])}</span></div></div>')
 
 
 def mark_tile(opt, ground, size):
@@ -1108,7 +1116,7 @@ td.nr{color:var(--wink-2)}
 .addr{margin:0}.mono{font:500 1rem/1.5 var(--mono);overflow-wrap:anywhere;user-select:all}
 .pend{font:var(--oa-type-body-small);margin:var(--oa-space-100) 0 0}
 .invite{background:var(--np);color:var(--ink);padding:var(--oa-space-300);max-width:44rem;margin-bottom:var(--oa-space-200)}
-.invite p{color:var(--ink);font:italic 400 1.1875rem/1.5 var(--oa-font-family-quote);margin:0 0 var(--oa-space-200)}
+.invite p{color:var(--ink);font:italic 400 1.1875rem/1.5 var(--oa-font-family-quote);margin:0 0 var(--oa-space-200);overflow-wrap:anywhere}
 .invite p:last-child{margin:0}
 .panel .btn-copy{background:var(--oa-color-action-primary-fill-on-prussian);color:var(--oa-color-action-primary-label-on-prussian)}
 .panel .btn-copy:hover{background:var(--oa-color-action-primary-fill-hover-on-prussian)}
@@ -1220,6 +1228,7 @@ def main():
     ap.add_argument('--scratch', type=pathlib.Path, default=DEF_SCRATCH)
     ap.add_argument('--out', type=pathlib.Path, default=DEF_OUT)
     ap.add_argument('--guide', type=pathlib.Path, help='a built chapters page; every anchor the board links must be on it')
+    ap.add_argument('--scores', type=pathlib.Path, default=SRC['scores'], help='the scores file (default: the round 3 file)')
     a = ap.parse_args()
     url = a.reader_check_url.strip()
     need(re.fullmatch(r'https://claude\.ai/(?:code/)?artifact/[\w-]+', url), f'--reader-check-url {url} is not a claude.ai artifact address')
@@ -1239,7 +1248,8 @@ def main():
     check_11_15(figs)
     FILL.update(figs)
     ERR_INNER, ERR_SW = read_error_svg()
-    S = load_json(SRC['scores'], 'the creative director\'s scores')
+    FILL['message'] = read_form_message()
+    S = load_json(a.scores, 'the creative director\'s scores')
     meta, rs = read_scores(S)
     labels = read_labels()
     inv, icons = read_inventory()
