@@ -870,7 +870,7 @@ def decision_2(inv, icons, labels):
     ordinal = ['first', 'second', 'third', 'fourth', 'fifth'][rule_paras('10.5').index(p105)] if p105 else ''
     quote = f'<blockquote class="rq"><p>{md(p105)}</p><footer>{md(f"Rule 10.5, {ordinal} paragraph")}</footer></blockquote>' if p105 else ''
     stage = (f'<div class="tiles-fig"><div class="stage stage--np tiles"><div class="tset" style="--n:3">{t48}{a48}{a32}</div></div>'
-             f'<div class="stage stage--np tiles tiles--other"><p class="t-oh">{esc(D["other_h"])}</p><div class="tset" style="--n:1">{t72}</div></div></div>'
+             f'<div class="stage stage--np tiles tiles--other"><p class="t-oh">{esc(D["other_h"])}</p><div class="tset" style="--n:1;--w:11.5rem">{t72}</div></div></div>'
              f'<p class="caption fig-cap">{md(fill(D["fig_cap"]))}</p>')
     body = f'<div class="card">{quote}{stage}{rec_block(D)}</div>'
     content = {'subject': {'id': TILE_SUBJECT, 'name': name}, 'tile_scale_square': sq, 'one_color_min': one,
@@ -1072,7 +1072,7 @@ img{display:block;max-width:none}
 .tiles-fig{display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--oa-space-200)}
 .tiles{padding:var(--oa-space-200) var(--oa-space-200) var(--oa-space-150)}
 @media (min-width:48em){.tiles{padding:var(--oa-space-300) var(--oa-space-300) var(--oa-space-200)}}
-.tset{display:grid;grid-template-columns:repeat(var(--n),minmax(0,8.5rem));align-items:start;gap:var(--oa-space-200)}
+.tset{display:grid;grid-template-columns:repeat(var(--n),minmax(0,var(--w,8.5rem)));align-items:start;gap:var(--oa-space-200)}
 @media (min-width:48em){.tset{gap:var(--oa-space-300) var(--oa-space-400)}}
 .tf{margin:0;display:grid;gap:var(--oa-space-100);justify-items:start;align-content:start;min-width:0}
 .tbox{display:flex;align-items:flex-end;height:var(--tb)}
