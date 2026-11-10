@@ -1891,3 +1891,22 @@ Dustin, replying to three questions (the plate's count after Missouri's vote, th
 | D2-951 | This chat hands off after round 2. Round 3 (red teams, the creative director's review, one fix pass that also applies the editor's tables, scores) and board B run in the next chat from `20261110_Next-Session-Handoff_V11.md` | Seventeen agent runs in one chat; the handoffs hand off after each board or large round |
 | D2-952 | At Dustin's request the main session republished the chapters page with chapters 01 to 12 to https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF as version 4 (1794288563-5492), before round 3's review. It rebuilt the page with `guide_build.py --strict` (0 warnings), scanned it (no network calls, no private paths, no em dashes, external links only to Google Fonts and three official sources, six specimen scripts read in full) and diffed the live version 3 against commit d7f18391: the only difference was the host's wrapper, so nothing published was lost | Dustin asked for the HTML output to be republished; every file is seen before it is published |
 | D2-953 | The host warns that the page's tokens.css download link does nothing for viewers, since the viewer grants a page no download unless it declares the `downloads` capability. Round 3's engineer either declares `downloads` and saves through the host's call, or replaces the link with a plain path and a note | A link that does nothing on the published page fails the production test |
+
+## Answers on the round 3 and board B plan, November 10, 2026 (new chat)
+
+The studio asked five questions before round 3. Dustin: "I approve all recommendations. Please proceed."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-190 | Round 3 runs three red teams side by side: brand, evidence and nonpartisanship; craft and accessibility; and plain language with the production test, where a simulated designer and a simulated developer each try a real task with the guide | Dustin, November 10, as recommended (question 1) |
+| DR-191 | An item still under 4 after the one fix pass gets a short second pass on that item alone when the fix is craft or wording. Only an item that needs Dustin's call goes to board B flagged | Dustin, November 10, as recommended (question 2) |
+| DR-192 | The chapters page declares the host's download permission, so its tokens.css button saves the file for anyone viewing it (D2-953) | Dustin, November 10, as recommended (question 3) |
+| DR-193 | Board B is the chapters page republished at its address as version 5, a short separate private decisions board (each decision a card at actual size, D2-880 first, the creative director's scores, links into the chapters page), and the combined reader check as its own private page with the editor's invitation ready to paste | Dustin, November 10, as recommended (question 4) |
+| DR-194 | The first reader check page is deleted once Dustin has sent the new link, after he confirms the delete | Dustin, November 10, as recommended (question 5) |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-954 | This chat works on `claude/friendly-brahmagupta-tonmfa`, the branch Dustin names; it is the repository's default branch, so no pull request opens | Dustin's starting prompt; V5's working notes |
+| D2-955 | The red teams and the creative director review one frozen copy of the page, built from commit ddd3a898 and identical to the committed chapters page apart from its build time, at the scratchpad's `round-3/review/guide.html`; no one rebuilds the page until every report is in | Four readers of one page must see the same bytes, and the fix pass rebuilds it |
+| D2-956 | The creative director reviews at the same time as the red teams and does not read their reports; the main session merges the four into one fix list per owner | An unanchored read finds what the others miss, and the merge settles overlaps against the decision log |
+| D2-957 | The round 3 brief is `work/handoffs/phase-2/20261110_Stage-B-Round-3-Brief.md`; it lists the items already on the fix list so reviewers spend their time on what is not | The editor's tables, D2-881, D2-950, D2-953 and the engineer's `s-01-pieces` note are known |
