@@ -305,7 +305,7 @@ A new key file beside the new page, never published with it, holding:
 
 ## Words the page must never print
 
-The build's leak check refuses a page that names a stimulus's meaning. Add these to the first check's list: "Expand the House", "R-46", "end mark", "lockmark", "pillar" and "Pillar Red", and allow "party" only in the favors questions and in the choices of house:red, row_48:red and steps_dot. The pillar words Explain, Track, Connect and Act are allowed: step 5 prints them as the rows do.
+The build's leak check refuses a page that names a stimulus's meaning. Add these to the first check's list: "Expand the House", "R-46", "end mark", "lockmark", "pillar" and "Pillar Red", and allow "party" only in the favors questions and in the choices of house:red, row_48:red and steps_dot. The pillar words Explain, Track, Connect and Act are allowed: step 5 prints them as the rows do. The first check's label test covers step 3's new labels, Congress, Testify and Contact an Official, once the configuration carries them. Keep "testimony", "hearing", "official" and "legislature" out of the page's own words up to the end of step 3 as well, since a reader could echo them in a step 3 answer. The step 2 drawings print none of them; check again if they are recaptured.
 
 ## The invitation
 
