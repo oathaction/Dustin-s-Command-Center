@@ -14,7 +14,7 @@ This file was written early and grows as the work lands. Other owners edited cha
 | CA-S13 | `s-03-l6` breaks out of the text column at 1280 px and up | done in the shell, for every chapter plate that needs it |
 | CA-S16 | The masthead wordmark in one system color under forced colors | done |
 | CA-S17 | The part navigation wraps at 200 percent text | done, with the spec rows that also pushed the page |
-| Reader check | The editor's two changes; PP-S14, PP-S15, CA-S18's copy text and step 7's grid | done; step 4's card waits for D2-973 |
+| Reader check | The editor's two changes; PP-S14, PP-S15, CA-S18's copy text and step 7's grid; step 4's card after D2-973 | done, rebuilt with fresh captures |
 | CD-S16 | An opener figure for chapters 09 and 10 | waits for stage C (D2-965) |
 
 ## 1. The tokens.css download (DR-192, D2-964)
@@ -74,7 +74,7 @@ The editor's notes say the questions file is done. In `reader_check_2_template.h
 - **CA-S18, step 7's grid.** The twelve marks stand in a grid of four columns, three rows of four, in their order (1 to 7 at 16 px, then 8 to 12 at 24 px), at every width. The answer key's note says so.
 - `test_reader_check_2.js` now checks each of these: no ring on the mode line; three rows of four in four columns; and in every copy-mode walk, no code, no `step1`, no ISO time, no before or after label and no "×" in the readable lines, and a start time in words.
 
-Step 4's card waits for the identity designer's call on D2-973; once it lands I recapture the card with a full build.
+**D2-973, step 4's card.** The identity designer's notes record the card's kicker in the H3 style at 32 px. I rebuilt the page with fresh captures from a guide built from the tree as it stood (`build_reader_check_2.js`, no flag). Of the 51 files in `img/`, only `card.png` changed: the kicker "Explainer · Zoning" now stands at 32 px on the 1200 by 630 card, so about 9.5 px at the 358 px a 390 px phone shows. The drawings, charts, bill rows and symbols came out byte for byte the same, and the build's own checks (loop words, bill names, the article's lines, the leak list) all passed.
 
 ## For the other owners and the main session
 

@@ -15,12 +15,12 @@ Every change is in a generator. Nothing committed or pushed. No `source/`, ledge
 | PP-M2, D2-962 | Rule 09.1 names the row's places: "The 48 px row runs near the top of a page that introduces the four pillars or gathers one pillar's work, and the 24 px row, the compact row, runs in the header of a single piece that serves one pillar. A social card and a kicker carry no row." A "Places" row joins its specifications. The social card's "Left out" line says it carries no pillar row and no topic or atlas symbol, and why | Done; board B shows the sentence |
 | PP-S1 | "Pixel fit" is defined in chapter 09's intro ("a copy redrawn on whole pixels with a 1 px line, so it stays sharp on a screen that gives each CSS pixel one device pixel"). Rule 04.6 and Rule 03.4's end mark line now say "pixel fit" in place of "a master drawn on whole pixels", "end mark master" and "pixel master". Rule 04.6's why gains: "The pillar icons keep their fits on every screen under 2x instead (Rule 09.3), because a pillar master's thin line fills in there, while B's 16 px master keeps its shape on every screen." Rule 09.3's why gains: "The end mark switches at 1x instead (Rule 04.6), because its pixel fit softens or steps unevenly between 1x and 2x, while B's smooth drawing keeps its shape on every screen." | Done |
 | PP-S2 | Rule 09.3: "An exported image or a printed page has no stylesheet to switch them, so pick the 24 px file yourself: the fit in an image exported at 1x, and the master in an image exported at 2x or more and in print." A spec row says the same, and that 16 px takes the fit | Done |
-| CD-S1, CA-S6 | In the stacked 48 px column each arrow now stands centered under its icon, in the 20 px gap before the next row, so the four arrows share one x. Same in Rule 09.1 and 09.2's sheets under 48em, in `s-09-phone`, and in chapter 01's `s-01-pillars` through my chapter 01 step | Done |
+| CD-S1, CA-S6 | In the stacked 48 px column each arrow now stands centered under its icon, in the 20 px gap before the next row, so the three arrows share one x. Same in Rule 09.1 and 09.2's sheets under 48em, in `s-09-phone`, and in chapter 01's `s-01-pillars` through my chapter 01 step | Done |
 | CD-S10, CA-S10 | B moved: its top 20 px under the page's top, and the page's right edge cuts it at 50 of its 93.29 units, through the loop, the crossing stroke and the lower counter, left of the arm. No piece of B stands alone at the edge, and no curve grazes an edge (the old position also flattened the bowl's foot by 4 px at the bottom). Both pages are now 360 px tall. Rule 12.2 gains a "Crop" spec row and one builders sentence | Done |
 | CD-S11 | The Illustrative label sits inside the plate under the band in `s-12-watermark-failure` and `s-12-pattern-failure`, so the shell no longer puts it in their captions | Done |
 | CA-S5 | `s-09-phone`, `s-09-1-failure`, `s-09-3-failure` and `s-09-4-failure` are 360 px wide with a 16 px inner margin, as chapter 11's plates are; the report card in `s-09-4-failure` is a phone's 328 px column. All four fit at 390 and 360 px with no sideways scroll | Done |
 | CA-S11 | Rule 12.4 keeps one pattern, the hinge arcs. The hinge rules leave the rule, the index and the plates, and the rule's "Never" row names evenly ruled lines, "which read as a form to fill in". Each plate is one 360 px cover, with the Illustrative label at the cover's head, so no third of the frame stands empty and a phone shows it whole. Design judgment, logged below | Done |
-| CA-S13 | `s-03-l6` needs nothing from me: the engineer's shell script adds a breakout to any chapter plate whose fixed stage does not fit its column, from 80em | Engineer's; see Tested |
+| CA-S13 | `s-03-l6` needs nothing from me: the engineer's shell script adds a breakout to any chapter plate whose fixed stage does not fit its column, from 80em | Done by the engineer; looked at |
 | CA-S14 | `s-08-1-correct` sets its four masters in one row and the 48 px master on Charcoal and Prussian in a second, the two groups its caption names. The two dark tiles now stand the same height; the Charcoal one stood 6 px taller | Done |
 | CA-S18, D2-973 | The social card's kicker moves from the H4 style at 24 px to the H3 style at 32 px, its label "Explainer" in Charcoal and its topic in Deep Stone, as Rule 01.21 sets a kicker's two parts. At 358 px wide it stands 9.5 px and reads on a 2x phone screen, where 24 px gave 7.2 px. 32 px is the largest step the type scale gives a 1200 px board below the section style (D2-254). The spec's "Kicker" row says so. The engineer recaptures the card | Done |
 | Editor's request | CL-057 in Rule 01.21's kicker carries `data-icon-family="atlas"`, as chapter 10 files it (Variable EC3), through `stage_b_identity_ch01.py` | Done |
@@ -47,6 +47,8 @@ One more fix the looks led to: `s-09-4-failure`'s kicker set its topic in lowerc
 - D2-xxx | `s-08-1-correct` sets the four masters in one row and the two dark surfaces in a second, and the two dark tiles share one height | CA-S14; the caption already names those two groups, where a grid of three and three would split the ladder of sizes
 - D2-xxx | `s-09-4-failure`'s kicker follows Rule 01.21's type | The plate fails Rule 09.4 alone, as CD-S3 asks of chapter 10's failure
 - D2-xxx | CL-057 in Rule 01.21's kicker carries `data-icon-family="atlas"` | Chapter 10 files it as Variable EC3 (the editor's request)
+- D2-xxx | The watermark failure's B sits at the same height as the correct plate's, 20 px under the page's top | Its foot grazed the page's bottom edge, a second fault the plate did not name
+- D2-xxx | Chapter 09's row tags keep a size and its unit on one line | At 360 px "24 px" broke after "24"
 
 ## Questions for Dustin
 
@@ -60,9 +62,26 @@ None. Board B shows Rule 09.1's new sentence (D2-962) and Rule 12.4 with one pat
 
 ## Tested
 
-(filled in below as the checks finish)
+- **Strict build.** `guide_build.py --strict` to my scratch folder: exit 0, 12 chapters, 132 rules, 305 specimens, 0 warnings, on each of four builds (v1 to v4).
+- **Guide check.** `guide_check.js` at 1440, 1024, 390 and 360 px on the last build (v4, with every other owner's work as it stood on disk then): PASS, 0 failures, 1,100 same-page links. An earlier run (v2) failed 4 times, once per width, all in `s-01-pieces` (step marks without their state in words, A-5), the chapter 11 hand's and editor's plate, not mine; v4 no longer shows it.
+- **Phone fit (CA-S5).** In the built page, `s-09-phone`, `s-09-1-failure`, `s-09-3-failure`, `s-09-4-failure`, `s-12-pattern-correct` and `s-12-pattern-failure` each scroll 0 px sideways at 390 and 360 px, with no "Wider than this column" hint; before, the four chapter 09 plates scrolled 42 to 48 px at 390.
+- **Looks.** Every plate I changed, captured from the built page at 1440, 390 and 360 px, at 1x and 2x (15 plates, 90 captures), and looked at: the chapter 09 plates and `s-01-pillars` at all three widths, the 2x phone column, the pattern and watermark plates, `s-08-1-correct` at 1x and 2x, the social card and the device index at 1440. Looks led to three more fixes: the watermark failure's B grazed the page's foot, the 24 px tag in `s-09-2-correct` left "px" alone on a line at 360 px, and `s-08-1-correct`'s Charcoal tile stood 6 px taller than the Prussian one.
+- **Arrows.** In the stacked column the three arrows share one x, centered under the icons, at 1x and 2x, in chapter 09 and chapter 01.
+- **Watermark crop.** Ten positions rendered on both pages and compared before the one kept: the old one, cuts at 64.3, 56, 52 and 50 units, and five that keep the arm whole with B moved down and in. At the kept position no piece of B stands alone at an edge on either page, and no curve grazes one.
+- **Pattern clearance.** In the built page the outermost arc (radius 208 px) stands 41.5 px from the nearest line of text, against the rule's 24 px.
+- **Social card kicker.** The card rendered at 1200 px and reduced with Lanczos to 358 px, at 1x and at 2x (716 px), with the kicker at 24 px and at 32 px, and looked at: at 358 px the 24 px kicker stands 7.2 px and barely reads; at 32 px it stands 9.5 px and reads, most clearly at 2x. The lockmark is unchanged, so the feed test's figures stand.
+- **L6 (CA-S13).** With the engineer's shell change, `s-03-l6` shows whole at 1440 px: its stage spans 143 to 1075 px with no page scroll.
+- **Words.** My four chapter files and every alt in `manifest-identity.json` scanned by script for em and en dashes and the listed fillers and corporate verbs: none.
+- **Reruns.** The identity build run twice gives the same bytes; `stage_b_identity_ch01.py` run twice changes nothing the second time. The systems designer's `check_chapter` passes on the merged chapter 12 file, and its Rules 12.5 to 12.9 match what the file held before my writes.
 
 ## Not tested
+
+- Real phones, Firefox and Safari; 2x was Chromium's device scale factor.
+- A real feed upload of the social card and the platforms' own reduction; I reduced it with Lanczos myself.
+- The watermark and the arcs in print, and on White, Prussian or Charcoal for the arcs.
+- Screen readers; I changed no names or roles, only alts and words.
+- The editor's read of my changed strings, and the creative director's look.
+- The full rebuild in the main session's order with every owner's final files.
 
 ## Change log
 

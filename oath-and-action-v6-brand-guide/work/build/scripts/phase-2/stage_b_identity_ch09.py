@@ -212,7 +212,7 @@ def s_09_phone():
     return rec("s-09-phone", "09.1", PHONE_W, alt, body, css=ROW_CSS,
                notes="D2-376: under 48em the 48 px row stacks in one column with downward arrows, after the creative director's "
                      "Board 6 review found the phone row dropping its arrow. Each arrow stands in the icon column, centered under "
-                     "its icon in the 20 px gap before the next row, so the four arrows share one x (round 3, CD-S1, CA-S6). "
+                     "its icon in the 20 px gap before the next row, so the three arrows share one x (round 3, CD-S1, CA-S6). "
                      "Drawn at a phone's 360 px screen with the shell's 16 px gutter, so the plate shows the column whole at every "
                      "screen width, 360 px included (CA-S5); the rows in Rule 09.1's sheet take the same form under 48em.")
 
