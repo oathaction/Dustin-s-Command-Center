@@ -111,6 +111,16 @@ def _white_leak(j, c):
     return j, c[:i] + '  --oa-chart-color-subject: var(--oa-chart-color-subject-on-newsprint);' + c[i + len(old):]
 
 
+def _dark_theme_line(name, value):
+    """Point one short name in the [data-oa-theme="dark"] block at another value."""
+    def f(j, c):
+        start = c.index('[data-oa-theme="dark"] {')
+        i = c.index(f'  {name}:', start)
+        k = c.index(';', i)
+        return j, c[:i] + f'  {name}: {value}' + c[k:]
+    return f
+
+
 # Each plant: (label, function, test that must catch it, words its failure must contain)
 PLANTS = [
     # the seven the brief names
@@ -198,6 +208,19 @@ PLANTS = [
      'rules', 'Rule 05.3'),
     ('A stylesheet edited by hand, so it no longer matches the source',
      css_replace('--oa-z-index-skip: 100;', '--oa-z-index-skip: 999;'), 'build', 'differ'),
+    # stage C, round 0 (November 10, 2026): the themes (DR-204, D2-1133)
+    ('The dark theme pointing secondary text at its Newsprint token',
+     _dark_theme_line('--oa-color-text-secondary', 'var(--oa-color-text-secondary-on-newsprint)'), 'rules', 'another surface'),
+    ('A dark theme role under its contrast (Stone as secondary text on Charcoal, 3.10:1)',
+     alias('oa.color.text.secondary.onCharcoal', 'oa.color.palette.stone'), 'rules', 'dark theme'),
+    ('The device\'s dark setting overriding data-oa-theme="light" on the root',
+     css_replace('  :root:not([data-oa-theme="light"]) {', '  :root {'), 'parity', 'wins over the device'),
+    ('A short name missing from the light theme (the focus ring)',
+     css_drop_line('--oa-color-focus-ring:', within=':root:not([data-oa-theme="dark"]),'), 'parity', 'light theme'),
+    ('The dark theme moved from Charcoal to Prussian',
+     edit(lambda j: j['$extensions'][NS]['theme']['dark'].__setitem__('surface', 'prussian')), 'parity', 'DR-204'),
+    ('A version rise with no change note',
+     edit(lambda j: j['$extensions'][NS].__setitem__('tokenSetVersion', '6.0.0-gate2.8')), 'rules', 'change note'),
 ]
 
 def run_checks(jp, cp):

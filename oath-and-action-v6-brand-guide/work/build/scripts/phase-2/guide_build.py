@@ -769,7 +769,10 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
     head = []
     if lab:
         g = f'<span class="plate-glyph" aria-hidden="true">{glyph}</span>' if glyph else ""
-        head.append(f'<p class="plate-label">{g}{e(lab)}</p>')
+        # Stage C (D2-1103): the words sit in one span, so the label stays one flex item beside its glyph. Bare words
+        # broke into one flex item per ID once D2-975 held IDs whole, which set a .6em gap for a space and kept the
+        # label from wrapping at 200 percent text.
+        head.append(f'<p class="plate-label">{g}<span class="plate-label-t">{e(lab)}</span></p>')
     size_bits = []
     if width:
         size_bits.append(f"{num(width)} px wide" if isinstance(width, (int, float)) else f"{e(str(width))} wide")
@@ -1061,7 +1064,9 @@ class TokenCSS:
         lines = ["/* tokens.css is the full source of these values: download it from this page and link it before your own styles.",
                  f"   This block copies, as tokens.css holds them, the custom properties chapter {num} names, every property they",
                  "   depend on and the four surface classes, so it also works on its own. Set a page's ground with a surface",
-                 "   class, as in <body class=\"oa-surface-newsprint\">, and set type with font: var(--oa-type-body). */",
+                 "   class, as in <body class=\"oa-surface-newsprint\">, and set type with font: var(--oa-type-body).",
+                 "   tokens.css also holds the light and dark themes, which follow the reader's device and data-oa-theme on",
+                 "   the root; this block leaves them out. */",
                  ":root {"]
         lines += [f"  {n}: {self.decl[n]};" for n in order] + ["}"]
         for sel, decls in self.surfaces:
@@ -2068,8 +2073,10 @@ def build(args):
     dl_tokens = (f' <a id="tokens-download" href="{tokens.download_uri}" download="{tokens.download_name}" data-oa-zip="{tokens.zip_b64}" '
                  f'data-oa-zip-name="{tokens.zip_name}" data-oa-css-words="{DL_CSS_WORDS}" data-oa-zip-words="{DL_ZIP_WORDS}">{DL_CSS_WORDS}</a>.' if tokens.final else "")
 
+    # D2-1133 (stage C): the guide stays light whatever the device asks. tokens.css follows the device's dark setting
+    # (DR-204), and data-oa-theme="light" on the root wins over it, so a plate shows a piece at its true colors.
     page = f"""<!doctype html>
-<html lang="en">
+<html lang="en" data-oa-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

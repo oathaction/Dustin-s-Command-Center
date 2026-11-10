@@ -1,7 +1,7 @@
 {
  "run": "2026-11-10",
  "command": "python3 -I work/build/tests/tokens/run_token_tests.py",
- "tokenSetVersion": "6.0.0-gate2.6",
+ "tokenSetVersion": "6.0.0-gate2.7",
  "status": "pre-release",
  "passed": true,
  "steps": [
@@ -13,17 +13,17 @@
   {
    "step": "parity",
    "result": "pass",
-   "detail": "496 tokens, 616 :root properties, 90 short names in each of 4 surface classes, 0 failures"
+   "detail": "496 tokens, 616 :root properties, 90 short names in each of 4 surface classes and the light and dark themes, 0 failures"
   },
   {
    "step": "rules",
    "result": "pass",
-   "detail": "496 tokens, 30 derived colors and tints, 201 semantic color cells measured, 0 failures"
+   "detail": "496 tokens, 30 derived colors and tints, 201 semantic color cells measured, light theme 68 roles on newsprint, dark theme 60 roles on charcoal, 0 failures"
   },
   {
    "step": "self-test",
    "result": "pass",
-   "detail": "clean files pass; plants caught 35 of 35"
+   "detail": "clean files pass; plants caught 41 of 41"
   },
   {
    "step": "cross-check",
@@ -33,7 +33,7 @@
   {
    "step": "rendered",
    "result": "pass",
-   "detail": "render: Chromium 153.0.8010.12 resolved 465 token values, 30 color-mix() derivations (largest channel difference 0), 360 surface short names nested in another surface, 14 type styles at 390 and 1440 px and 6 durations under reduced motion; 0 failures; planted red leak onto Prussian reported"
+   "detail": "render: Chromium 153.0.8010.12 resolved 465 token values, 30 color-mix() derivations (largest channel difference 0), 360 surface short names nested in another surface, 14 type styles at 390 and 1440 px, 6 durations under reduced motion and 12 theme cases (device light and dark, the root's attribute, nested themes and surfaces); 0 failures; planted red leak onto Prussian reported; planted dark block that overrides data-oa-theme=\"light\" reported"
   }
  ],
  "counts": {
@@ -423,8 +423,66 @@
    "plant": "A stylesheet edited by hand, so it no longer matches the source",
    "test": "build",
    "caught": true,
-   "failure": "tokens_build --check: tokens.css in ../../../../tmp/oa-token-plants-oeojc5n1 differ from what the source builds. Run the build.",
+   "failure": "tokens_build --check: tokens.css in ../../../../tmp/oa-token-plants-d44eexll differ from what the source builds. Run the build.",
    "alsoCaughtBy": [
+    "parity"
+   ]
+  },
+  {
+   "plant": "The dark theme pointing secondary text at its Newsprint token",
+   "test": "rules",
+   "caught": true,
+   "failure": "dark theme: --oa-color-text-secondary points at oa.color.text.secondary.onNewsprint, a token for another surface than charcoal",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "A dark theme role under its contrast (Stone as secondary text on Charcoal, 3.10:1)",
+   "test": "rules",
+   "caught": true,
+   "failure": "dark theme: --oa-color-text-secondary (text) measures 3.10:1 on charcoal, under 4.5:1",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "The device's dark setting overriding data-oa-theme=\"light\" on the root",
+   "test": "parity",
+   "caught": true,
+   "failure": "(prefers-color-scheme: dark) block: expected a single :root:not([data-oa-theme=\"light\"]) rule, so data-oa-theme=\"light\" wins over the device; found :root",
+   "alsoCaughtBy": [
+    "build"
+   ]
+  },
+  {
+   "plant": "A short name missing from the light theme (the focus ring)",
+   "test": "parity",
+   "caught": true,
+   "failure": "light theme (:root:not([data-oa-theme=\"dark\"]), [data-oa-theme=\"light\"]): missing --oa-color-focus-ring",
+   "alsoCaughtBy": [
+    "build"
+   ]
+  },
+  {
+   "plant": "The dark theme moved from Charcoal to Prussian",
+   "test": "parity",
+   "caught": true,
+   "failure": "theme record: DR-204 sets the light theme on Newsprint and the dark theme on Charcoal",
+   "alsoCaughtBy": [
+    "build",
+    "rules"
+   ]
+  },
+  {
+   "plant": "A version rise with no change note",
+   "test": "rules",
+   "caught": true,
+   "failure": "root: version 6.0.0-gate2.8 has no change note (version, change, reason) at the head of changeNotes (section 7, step 6)",
+   "alsoCaughtBy": [
+    "build",
     "parity"
    ]
   }

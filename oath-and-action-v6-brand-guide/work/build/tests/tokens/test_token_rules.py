@@ -24,6 +24,10 @@ What it holds the files to (work/ledger/20261021_Token-Architecture.md and the d
      duration falls to 0 ms under reduced motion and the loading mark never moves (T-10).
   J. Icons and tiles: a red accent only from 24 px (R10), the app icon and avatar on Charcoal (R13).
   K. Version: SemVer from 6.0.0 (T-11).
+  L. Themes (DR-204): in the stylesheet's light and dark theme blocks, every short name resolves through its
+     var() chain to the theme surface's own token, and every role passes the contrast its kind needs on the
+     theme's ground (or on the ground its token names): text 4.5:1, large text, graphics and focus 3:1, the text
+     set on a band 4.5:1. The theme's ink passes 4.5:1 on its ground. A version rise carries a change note.
 
 The color math is this folder's own (token_test_lib.py), shared with no generator code.
 """
@@ -563,6 +567,74 @@ def check(json_path, css_path=None):
         fails.append(f'root: tokenSetVersion {ver!r} is not SemVer from 6.0.0 (T-11)')
     elif m.group(4) and meta.get('status') != 'pre-release':
         fails.append(f'root: version {ver} is a pre-release, so status must say pre-release')
+
+    # --- L. themes (DR-204)
+    theme = meta.get('theme') or {}
+    report['themes'] = {}
+    if not theme:
+        fails.append('root: no theme record; DR-204 asks for a light and a dark theme')
+    notes = meta.get('changeNotes') or []
+    if not notes or notes[0].get('version') != meta.get('tokenSetVersion') or not notes[0].get('change') or not notes[0].get('reason'):
+        fails.append(f'root: version {meta.get("tokenSetVersion")} has no change note (version, change, reason) at the head of changeNotes (section 7, step 6)')
+    if theme and css_path:
+        sheet = L.parse_css(pathlib.Path(css_path).read_text(encoding='utf-8'))
+        root = dict(next((d for sel, d in sheet['blocks'] if sel == ':root'), []) or [])
+        a = theme.get('attribute', 'data-oa-theme')
+        want_sel = {'light': f':root:not([{a}="dark"]), [{a}="light"]', 'dark': f'[{a}="dark"]'}
+        by_css = {L.css_name(q): q for q in toks}
+        norm_sel = lambda x: ', '.join(y.strip() for y in ' '.join(x.split()).split(','))
+        for which, sel_want in want_sel.items():
+            surf = (theme.get(which) or {}).get('surface')
+            block = next((d for sel, d in sheet['blocks'] if norm_sel(sel) == sel_want), None)
+            if surf not in L.LOCKED or block is None:
+                fails.append(f'{which} theme: no block {sel_want} on a known surface')
+                continue
+            ground = L.LOCKED[surf]
+            decls = dict(block)
+            measured = 0
+            ink = decls.get('color')
+            try:
+                ih = L.resolve_css(ink, root).strip().upper() if ink else None
+            except (KeyError, ValueError):
+                ih = None
+            if not ih or L.ratio(ih, ground) < 4.5:
+                fails.append(f'{which} theme: its ink {ink} does not pass 4.5:1 on {surf}')
+            for name, value in block:
+                if not name.startswith('--oa-') or value == 'initial' or name == theme.get('shortSurface'):
+                    continue
+                m = re.fullmatch(r'var\((--oa-[a-z0-9-]+)\)', value or '')
+                q = by_css.get(m.group(1)) if m else None
+                if not q:
+                    fails.append(f'{which} theme: {name} reads {value}, which names no token')
+                    continue
+                if L.surface_of(q, toks[q]) != surf:
+                    fails.append(f'{which} theme: {name} points at {q}, a token for another surface than {surf}')
+                    continue
+                # the role's kind and ground come from the first semantic token in its alias chain
+                sem = next((c for c in L.chain(q, toks) if X[c].get('tier') == 'semantic'), q)
+                e = X[sem]
+                kind = e.get('kind')
+                h = hex_of(q)
+                if not h:
+                    continue
+                if kind == 'background':
+                    for ref in e.get('textOnIt') or []:
+                        th = ref_hex(ref, sem)
+                        if th and L.ratio(th, h) < 4.5:
+                            fails.append(f'{which} theme: {name}, text {ref} on it measures {L.ratio(th, h):.2f}:1, under 4.5:1')
+                    measured += 1
+                elif kind in THRESH:
+                    g = ref_hex(e['ground'], sem) if e.get('ground') else ground
+                    c = L.ratio(h, g)
+                    if c < THRESH[kind]:
+                        kl = e.get('keyline')
+                        kc = L.ratio(ref_hex(kl, sem), ground) if kl and kind == 'graphic' else 0
+                        if kc < 3.0:
+                            fails.append(f'{which} theme: {name} ({kind}) measures {c:.2f}:1 on {surf}, under {THRESH[kind]}:1')
+                    measured += 1
+            report['themes'][which] = {'surface': surf, 'shortNamesMeasured': measured}
+    elif theme:
+        fails.append('themes: the rule test needs tokens.css to measure the theme blocks')
 
     report['tokens'] = len(toks)
     return fails, report

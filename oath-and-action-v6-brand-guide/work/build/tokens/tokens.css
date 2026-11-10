@@ -1,5 +1,5 @@
 /* Oath & Action design tokens, Edition 06
- * Version 6.0.0-gate2.6 (pre-release). Built for Gate 2. Version 6.0.0 ships when Dustin approves the token files at Gate 2; until then every value may still change.
+ * Version 6.0.0-gate2.7 (pre-release). Built for Gate 2. Version 6.0.0 ships when Dustin approves the token files at Gate 2; until then every value may still change.
  * DTCG Format Module 2025.10. Generated from work/build/tokens/src/oa-tokens.src.mjs
  * by work/build/scripts/phase-2/tokens_build.mjs. Do not edit by hand: the token tests fail when this
  * file and tokens.json disagree.
@@ -7,6 +7,9 @@
  * Naming: Prefix --oa-, path segments in kebab case, the surface last: oa.color.text.secondary.onNewsprint becomes --oa-color-text-secondary-on-newsprint.
  * Surface classes (.oa-surface-newsprint and the rest) point the short names, such as
  * --oa-color-text-secondary, at that surface's tokens.
+ * Themes: the root follows the device, light on Newsprint or dark on Charcoal (DR-204), and
+ * data-oa-theme="light" or "dark" on the root wins over the device. See the theme blocks below.
+ * Change in 6.0.0-gate2.7: A light and a dark theme in tokens.css: under (prefers-color-scheme: dark), or with data-oa-theme="dark", every short name points at its Charcoal token; data-oa-theme="light" forces Newsprint. Every surface class also sets --oa-color-surface.
  *
  * Media queries cannot read custom properties. Write breakpoints in em, which follows text size:
  *   wide        (min-width: 90em)
@@ -745,6 +748,7 @@
   background-color: var(--oa-color-surface-newsprint);
   color: var(--oa-color-text-primary-on-newsprint);
   color-scheme: light;
+  --oa-color-surface: var(--oa-color-surface-newsprint);
   --oa-color-text-primary: var(--oa-color-text-primary-on-newsprint);
   --oa-color-text-secondary: var(--oa-color-text-secondary-on-newsprint);
   --oa-color-graphic-essential: var(--oa-color-graphic-essential-on-newsprint);
@@ -842,6 +846,7 @@
   background-color: var(--oa-color-surface-white);
   color: var(--oa-color-text-primary-on-white);
   color-scheme: light;
+  --oa-color-surface: var(--oa-color-surface-white);
   --oa-color-text-primary: var(--oa-color-text-primary-on-white);
   --oa-color-text-secondary: var(--oa-color-text-secondary-on-white);
   --oa-color-graphic-essential: var(--oa-color-graphic-essential-on-white);
@@ -939,6 +944,7 @@
   background-color: var(--oa-color-surface-charcoal);
   color: var(--oa-color-text-primary-on-charcoal);
   color-scheme: dark;
+  --oa-color-surface: var(--oa-color-surface-charcoal);
   --oa-color-text-primary: var(--oa-color-text-primary-on-charcoal);
   --oa-color-text-secondary: var(--oa-color-text-secondary-on-charcoal);
   --oa-color-graphic-essential: var(--oa-color-graphic-essential-on-charcoal);
@@ -1036,6 +1042,7 @@
   background-color: var(--oa-color-surface-prussian);
   color: var(--oa-color-text-primary-on-prussian);
   color-scheme: dark;
+  --oa-color-surface: var(--oa-color-surface-prussian);
   --oa-color-text-primary: var(--oa-color-text-primary-on-prussian);
   --oa-color-text-secondary: var(--oa-color-text-secondary-on-prussian);
   --oa-color-graphic-essential: var(--oa-color-graphic-essential-on-prussian);
@@ -1126,6 +1133,310 @@
   --oa-component-button-disabled-edge: var(--oa-component-button-disabled-edge-on-prussian);
   --oa-component-icon-ink: var(--oa-component-icon-ink-on-prussian);
   --oa-component-icon-accent: var(--oa-component-icon-accent-on-prussian);
+}
+
+/* Themes (DR-204): one dark mode for every screen product, drawn from Night Edition on Charcoal (DR-36).
+ * With no data-oa-theme attribute, the root follows the device: light, or dark under (prefers-color-scheme: dark).
+ * data-oa-theme="light" or data-oa-theme="dark" on the root wins over the device; a reader's switch writes it there. On any
+ * other element it sets that element and everything inside it. A surface class keeps its own surface in either
+ * theme, so a product that follows the theme puts no surface class on its body. A page that must stay light,
+ * such as the brand guide, sets data-oa-theme="light" on its root. */
+
+/* Light (Newsprint): the default, and wherever data-oa-theme="light" stands. */
+:root:not([data-oa-theme="dark"]),
+[data-oa-theme="light"] {
+  background-color: var(--oa-color-surface-newsprint);
+  color: var(--oa-color-text-primary-on-newsprint);
+  color-scheme: light;
+  --oa-color-surface: var(--oa-color-surface-newsprint);
+  --oa-color-text-primary: var(--oa-color-text-primary-on-newsprint);
+  --oa-color-text-secondary: var(--oa-color-text-secondary-on-newsprint);
+  --oa-color-graphic-essential: var(--oa-color-graphic-essential-on-newsprint);
+  --oa-color-graphic-subtle: var(--oa-color-graphic-subtle-on-newsprint);
+  --oa-color-border-strong: var(--oa-color-border-strong-on-newsprint);
+  --oa-color-border-hairline: var(--oa-color-border-hairline-on-newsprint);
+  --oa-color-focus-ring: var(--oa-color-focus-ring-on-newsprint);
+  --oa-color-identity-signature: var(--oa-color-identity-signature-on-newsprint);
+  --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-newsprint);
+  --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-newsprint);
+  --oa-color-action-ask-label: var(--oa-color-action-ask-label-on-newsprint);
+  --oa-color-action-primary-fill: var(--oa-color-action-primary-fill-on-newsprint);
+  --oa-color-action-primary-fill-hover: var(--oa-color-action-primary-fill-hover-on-newsprint);
+  --oa-color-action-primary-label: var(--oa-color-action-primary-label-on-newsprint);
+  --oa-color-state-muted-text: var(--oa-color-state-muted-text-on-newsprint);
+  --oa-color-state-muted-mark: var(--oa-color-state-muted-mark-on-newsprint);
+  --oa-color-state-disabled-text: var(--oa-color-state-disabled-text-on-newsprint);
+  --oa-color-state-disabled-edge: var(--oa-color-state-disabled-edge-on-newsprint);
+  --oa-color-state-loading-text: var(--oa-color-state-loading-text-on-newsprint);
+  --oa-color-state-loading-mark: var(--oa-color-state-loading-mark-on-newsprint);
+  --oa-color-state-selected-band: var(--oa-color-state-selected-band-on-newsprint);
+  --oa-color-state-selected-bar: var(--oa-color-state-selected-bar-on-newsprint);
+  --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-newsprint);
+  --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-newsprint);
+  --oa-color-state-error-band: var(--oa-color-state-error-band-on-newsprint);
+  --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-newsprint);
+  --oa-color-state-error-text: var(--oa-color-state-error-text-on-newsprint);
+  --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-newsprint);
+  --oa-color-state-empty-edge: var(--oa-color-state-empty-edge-on-newsprint);
+  --oa-color-state-success-mark: var(--oa-color-state-success-mark-on-newsprint);
+  --oa-color-state-success-text: var(--oa-color-state-success-text-on-newsprint);
+  --oa-color-data-emphasis: var(--oa-color-data-emphasis-on-newsprint);
+  --oa-color-data-context: var(--oa-color-data-context-on-newsprint);
+  --oa-color-data-emphasis-red: var(--oa-color-data-emphasis-red-on-newsprint);
+  --oa-chart-color-subject: var(--oa-chart-color-subject-on-newsprint);
+  --oa-chart-color-context: var(--oa-chart-color-context-on-newsprint);
+  --oa-chart-color-label: var(--oa-chart-color-label-on-newsprint);
+  --oa-chart-color-secondary: var(--oa-chart-color-secondary-on-newsprint);
+  --oa-chart-color-baseline: var(--oa-chart-color-baseline-on-newsprint);
+  --oa-chart-color-leader: var(--oa-chart-color-leader-on-newsprint);
+  --oa-chart-color-point: var(--oa-chart-color-point-on-newsprint);
+  --oa-chart-color-point-keyline: var(--oa-chart-color-point-keyline-on-newsprint);
+  --oa-chart-color-party-mark: var(--oa-chart-color-party-mark-on-newsprint);
+  --oa-chart-color-label-on-subject: var(--oa-chart-color-label-on-subject-on-newsprint);
+  --oa-chart-color-chip-fill: var(--oa-chart-color-chip-fill-on-newsprint);
+  --oa-chart-color-chip-label: var(--oa-chart-color-chip-label-on-newsprint);
+  --oa-chart-color-light-fill: var(--oa-chart-color-light-fill-on-newsprint);
+  --oa-chart-color-track: var(--oa-chart-color-track-on-newsprint);
+  --oa-chart-color-gridline: var(--oa-chart-color-gridline-on-newsprint);
+  --oa-chart-color-band: var(--oa-chart-color-band-on-newsprint);
+  --oa-chart-color-land: var(--oa-chart-color-land-on-newsprint);
+  --oa-chart-color-diverging-fill-step1: var(--oa-chart-color-diverging-fill-step1-on-newsprint);
+  --oa-chart-color-diverging-fill-step2: var(--oa-chart-color-diverging-fill-step2-on-newsprint);
+  --oa-chart-color-diverging-fill-step3: var(--oa-chart-color-diverging-fill-step3-on-newsprint);
+  --oa-chart-color-diverging-fill-step4: var(--oa-chart-color-diverging-fill-step4-on-newsprint);
+  --oa-chart-color-diverging-fill-step5: var(--oa-chart-color-diverging-fill-step5-on-newsprint);
+  --oa-chart-color-diverging-label-step1: var(--oa-chart-color-diverging-label-step1-on-newsprint);
+  --oa-chart-color-diverging-label-step2: var(--oa-chart-color-diverging-label-step2-on-newsprint);
+  --oa-chart-color-diverging-label-step3: var(--oa-chart-color-diverging-label-step3-on-newsprint);
+  --oa-chart-color-diverging-label-step4: var(--oa-chart-color-diverging-label-step4-on-newsprint);
+  --oa-chart-color-diverging-label-step5: var(--oa-chart-color-diverging-label-step5-on-newsprint);
+  --oa-chart-color-sequential-fill-step1: var(--oa-chart-color-sequential-fill-step1-on-newsprint);
+  --oa-chart-color-sequential-fill-step2: var(--oa-chart-color-sequential-fill-step2-on-newsprint);
+  --oa-chart-color-sequential-fill-step3: var(--oa-chart-color-sequential-fill-step3-on-newsprint);
+  --oa-chart-color-sequential-fill-step4: var(--oa-chart-color-sequential-fill-step4-on-newsprint);
+  --oa-chart-color-sequential-fill-step5: var(--oa-chart-color-sequential-fill-step5-on-newsprint);
+  --oa-chart-color-sequential-label-step1: var(--oa-chart-color-sequential-label-step1-on-newsprint);
+  --oa-chart-color-sequential-label-step2: var(--oa-chart-color-sequential-label-step2-on-newsprint);
+  --oa-chart-color-sequential-label-step3: var(--oa-chart-color-sequential-label-step3-on-newsprint);
+  --oa-chart-color-sequential-label-step4: var(--oa-chart-color-sequential-label-step4-on-newsprint);
+  --oa-chart-color-sequential-label-step5: var(--oa-chart-color-sequential-label-step5-on-newsprint);
+  --oa-chart-color-sequential-outline: var(--oa-chart-color-sequential-outline-on-newsprint);
+  --oa-chart-color-magnitude-fill-step1: var(--oa-chart-color-magnitude-fill-step1-on-newsprint);
+  --oa-chart-color-magnitude-fill-step2: var(--oa-chart-color-magnitude-fill-step2-on-newsprint);
+  --oa-chart-color-magnitude-fill-step3: var(--oa-chart-color-magnitude-fill-step3-on-newsprint);
+  --oa-chart-color-magnitude-fill-step4: var(--oa-chart-color-magnitude-fill-step4-on-newsprint);
+  --oa-chart-color-magnitude-label-step1: var(--oa-chart-color-magnitude-label-step1-on-newsprint);
+  --oa-chart-color-magnitude-label-step2: var(--oa-chart-color-magnitude-label-step2-on-newsprint);
+  --oa-chart-color-magnitude-label-step3: var(--oa-chart-color-magnitude-label-step3-on-newsprint);
+  --oa-chart-color-magnitude-label-step4: var(--oa-chart-color-magnitude-label-step4-on-newsprint);
+  --oa-component-button-ask-fill: var(--oa-component-button-ask-fill-on-newsprint);
+  --oa-component-button-ask-label: var(--oa-component-button-ask-label-on-newsprint);
+  --oa-component-button-ask-keyline: var(--oa-component-button-ask-keyline-on-newsprint);
+  --oa-component-button-primary-fill: var(--oa-component-button-primary-fill-on-newsprint);
+  --oa-component-button-primary-fill-hover: var(--oa-component-button-primary-fill-hover-on-newsprint);
+  --oa-component-button-primary-label: var(--oa-component-button-primary-label-on-newsprint);
+  --oa-component-button-disabled-label: var(--oa-component-button-disabled-label-on-newsprint);
+  --oa-component-button-disabled-edge: var(--oa-component-button-disabled-edge-on-newsprint);
+  --oa-component-icon-ink: var(--oa-component-icon-ink-on-newsprint);
+  --oa-component-icon-accent: var(--oa-component-icon-accent-on-newsprint);
+}
+
+/* Dark (Charcoal): when the device asks for dark and the root does not force light. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-oa-theme="light"]) {
+    background-color: var(--oa-color-surface-charcoal);
+    color: var(--oa-color-text-primary-on-charcoal);
+    color-scheme: dark;
+    --oa-color-surface: var(--oa-color-surface-charcoal);
+    --oa-color-text-primary: var(--oa-color-text-primary-on-charcoal);
+    --oa-color-text-secondary: var(--oa-color-text-secondary-on-charcoal);
+    --oa-color-graphic-essential: var(--oa-color-graphic-essential-on-charcoal);
+    --oa-color-graphic-subtle: var(--oa-color-graphic-subtle-on-charcoal);
+    --oa-color-border-strong: var(--oa-color-border-strong-on-charcoal);
+    --oa-color-border-hairline: var(--oa-color-border-hairline-on-charcoal);
+    --oa-color-focus-ring: var(--oa-color-focus-ring-on-charcoal);
+    --oa-color-identity-signature: var(--oa-color-identity-signature-on-charcoal);
+    --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-charcoal);
+    --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-charcoal);
+    --oa-color-action-ask-label: var(--oa-color-action-ask-label-on-charcoal);
+    --oa-color-action-primary-fill: var(--oa-color-action-primary-fill-on-charcoal);
+    --oa-color-action-primary-fill-hover: var(--oa-color-action-primary-fill-hover-on-charcoal);
+    --oa-color-action-primary-label: var(--oa-color-action-primary-label-on-charcoal);
+    --oa-color-state-muted-text: var(--oa-color-state-muted-text-on-charcoal);
+    --oa-color-state-muted-mark: var(--oa-color-state-muted-mark-on-charcoal);
+    --oa-color-state-disabled-text: var(--oa-color-state-disabled-text-on-charcoal);
+    --oa-color-state-disabled-edge: var(--oa-color-state-disabled-edge-on-charcoal);
+    --oa-color-state-loading-text: var(--oa-color-state-loading-text-on-charcoal);
+    --oa-color-state-loading-mark: var(--oa-color-state-loading-mark-on-charcoal);
+    --oa-color-state-selected-band: var(--oa-color-state-selected-band-on-charcoal);
+    --oa-color-state-selected-bar: var(--oa-color-state-selected-bar-on-charcoal);
+    --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-charcoal);
+    --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-charcoal);
+    --oa-color-state-error-band: initial;
+    --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-charcoal);
+    --oa-color-state-error-text: var(--oa-color-state-error-text-on-charcoal);
+    --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-charcoal);
+    --oa-color-state-empty-edge: var(--oa-color-state-empty-edge-on-charcoal);
+    --oa-color-state-success-mark: var(--oa-color-state-success-mark-on-charcoal);
+    --oa-color-state-success-text: var(--oa-color-state-success-text-on-charcoal);
+    --oa-color-data-emphasis: var(--oa-color-data-emphasis-on-charcoal);
+    --oa-color-data-context: var(--oa-color-data-context-on-charcoal);
+    --oa-color-data-emphasis-red: var(--oa-color-data-emphasis-red-on-charcoal);
+    --oa-chart-color-subject: var(--oa-chart-color-subject-on-charcoal);
+    --oa-chart-color-context: var(--oa-chart-color-context-on-charcoal);
+    --oa-chart-color-label: var(--oa-chart-color-label-on-charcoal);
+    --oa-chart-color-secondary: var(--oa-chart-color-secondary-on-charcoal);
+    --oa-chart-color-baseline: var(--oa-chart-color-baseline-on-charcoal);
+    --oa-chart-color-leader: var(--oa-chart-color-leader-on-charcoal);
+    --oa-chart-color-point: var(--oa-chart-color-point-on-charcoal);
+    --oa-chart-color-point-keyline: initial;
+    --oa-chart-color-party-mark: var(--oa-chart-color-party-mark-on-charcoal);
+    --oa-chart-color-label-on-subject: var(--oa-chart-color-label-on-subject-on-charcoal);
+    --oa-chart-color-chip-fill: var(--oa-chart-color-chip-fill-on-charcoal);
+    --oa-chart-color-chip-label: var(--oa-chart-color-chip-label-on-charcoal);
+    --oa-chart-color-light-fill: var(--oa-chart-color-light-fill-on-charcoal);
+    --oa-chart-color-track: var(--oa-chart-color-track-on-charcoal);
+    --oa-chart-color-gridline: var(--oa-chart-color-gridline-on-charcoal);
+    --oa-chart-color-band: var(--oa-chart-color-band-on-charcoal);
+    --oa-chart-color-land: var(--oa-chart-color-land-on-charcoal);
+    --oa-chart-color-diverging-fill-step1: initial;
+    --oa-chart-color-diverging-fill-step2: initial;
+    --oa-chart-color-diverging-fill-step3: initial;
+    --oa-chart-color-diverging-fill-step4: initial;
+    --oa-chart-color-diverging-fill-step5: initial;
+    --oa-chart-color-diverging-label-step1: initial;
+    --oa-chart-color-diverging-label-step2: initial;
+    --oa-chart-color-diverging-label-step3: initial;
+    --oa-chart-color-diverging-label-step4: initial;
+    --oa-chart-color-diverging-label-step5: initial;
+    --oa-chart-color-sequential-fill-step1: var(--oa-chart-color-sequential-fill-step1-on-charcoal);
+    --oa-chart-color-sequential-fill-step2: var(--oa-chart-color-sequential-fill-step2-on-charcoal);
+    --oa-chart-color-sequential-fill-step3: var(--oa-chart-color-sequential-fill-step3-on-charcoal);
+    --oa-chart-color-sequential-fill-step4: var(--oa-chart-color-sequential-fill-step4-on-charcoal);
+    --oa-chart-color-sequential-fill-step5: var(--oa-chart-color-sequential-fill-step5-on-charcoal);
+    --oa-chart-color-sequential-label-step1: var(--oa-chart-color-sequential-label-step1-on-charcoal);
+    --oa-chart-color-sequential-label-step2: var(--oa-chart-color-sequential-label-step2-on-charcoal);
+    --oa-chart-color-sequential-label-step3: var(--oa-chart-color-sequential-label-step3-on-charcoal);
+    --oa-chart-color-sequential-label-step4: var(--oa-chart-color-sequential-label-step4-on-charcoal);
+    --oa-chart-color-sequential-label-step5: var(--oa-chart-color-sequential-label-step5-on-charcoal);
+    --oa-chart-color-sequential-outline: var(--oa-chart-color-sequential-outline-on-charcoal);
+    --oa-chart-color-magnitude-fill-step1: var(--oa-chart-color-magnitude-fill-step1-on-charcoal);
+    --oa-chart-color-magnitude-fill-step2: var(--oa-chart-color-magnitude-fill-step2-on-charcoal);
+    --oa-chart-color-magnitude-fill-step3: var(--oa-chart-color-magnitude-fill-step3-on-charcoal);
+    --oa-chart-color-magnitude-fill-step4: var(--oa-chart-color-magnitude-fill-step4-on-charcoal);
+    --oa-chart-color-magnitude-label-step1: var(--oa-chart-color-magnitude-label-step1-on-charcoal);
+    --oa-chart-color-magnitude-label-step2: var(--oa-chart-color-magnitude-label-step2-on-charcoal);
+    --oa-chart-color-magnitude-label-step3: var(--oa-chart-color-magnitude-label-step3-on-charcoal);
+    --oa-chart-color-magnitude-label-step4: var(--oa-chart-color-magnitude-label-step4-on-charcoal);
+    --oa-component-button-ask-fill: var(--oa-component-button-ask-fill-on-charcoal);
+    --oa-component-button-ask-label: var(--oa-component-button-ask-label-on-charcoal);
+    --oa-component-button-ask-keyline: initial;
+    --oa-component-button-primary-fill: var(--oa-component-button-primary-fill-on-charcoal);
+    --oa-component-button-primary-fill-hover: var(--oa-component-button-primary-fill-hover-on-charcoal);
+    --oa-component-button-primary-label: var(--oa-component-button-primary-label-on-charcoal);
+    --oa-component-button-disabled-label: var(--oa-component-button-disabled-label-on-charcoal);
+    --oa-component-button-disabled-edge: var(--oa-component-button-disabled-edge-on-charcoal);
+    --oa-component-icon-ink: var(--oa-component-icon-ink-on-charcoal);
+    --oa-component-icon-accent: var(--oa-component-icon-accent-on-charcoal);
+  }
+}
+
+/* Dark (Charcoal): wherever data-oa-theme="dark" stands, whatever the device asks. */
+[data-oa-theme="dark"] {
+  background-color: var(--oa-color-surface-charcoal);
+  color: var(--oa-color-text-primary-on-charcoal);
+  color-scheme: dark;
+  --oa-color-surface: var(--oa-color-surface-charcoal);
+  --oa-color-text-primary: var(--oa-color-text-primary-on-charcoal);
+  --oa-color-text-secondary: var(--oa-color-text-secondary-on-charcoal);
+  --oa-color-graphic-essential: var(--oa-color-graphic-essential-on-charcoal);
+  --oa-color-graphic-subtle: var(--oa-color-graphic-subtle-on-charcoal);
+  --oa-color-border-strong: var(--oa-color-border-strong-on-charcoal);
+  --oa-color-border-hairline: var(--oa-color-border-hairline-on-charcoal);
+  --oa-color-focus-ring: var(--oa-color-focus-ring-on-charcoal);
+  --oa-color-identity-signature: var(--oa-color-identity-signature-on-charcoal);
+  --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-charcoal);
+  --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-charcoal);
+  --oa-color-action-ask-label: var(--oa-color-action-ask-label-on-charcoal);
+  --oa-color-action-primary-fill: var(--oa-color-action-primary-fill-on-charcoal);
+  --oa-color-action-primary-fill-hover: var(--oa-color-action-primary-fill-hover-on-charcoal);
+  --oa-color-action-primary-label: var(--oa-color-action-primary-label-on-charcoal);
+  --oa-color-state-muted-text: var(--oa-color-state-muted-text-on-charcoal);
+  --oa-color-state-muted-mark: var(--oa-color-state-muted-mark-on-charcoal);
+  --oa-color-state-disabled-text: var(--oa-color-state-disabled-text-on-charcoal);
+  --oa-color-state-disabled-edge: var(--oa-color-state-disabled-edge-on-charcoal);
+  --oa-color-state-loading-text: var(--oa-color-state-loading-text-on-charcoal);
+  --oa-color-state-loading-mark: var(--oa-color-state-loading-mark-on-charcoal);
+  --oa-color-state-selected-band: var(--oa-color-state-selected-band-on-charcoal);
+  --oa-color-state-selected-bar: var(--oa-color-state-selected-bar-on-charcoal);
+  --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-charcoal);
+  --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-charcoal);
+  --oa-color-state-error-band: initial;
+  --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-charcoal);
+  --oa-color-state-error-text: var(--oa-color-state-error-text-on-charcoal);
+  --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-charcoal);
+  --oa-color-state-empty-edge: var(--oa-color-state-empty-edge-on-charcoal);
+  --oa-color-state-success-mark: var(--oa-color-state-success-mark-on-charcoal);
+  --oa-color-state-success-text: var(--oa-color-state-success-text-on-charcoal);
+  --oa-color-data-emphasis: var(--oa-color-data-emphasis-on-charcoal);
+  --oa-color-data-context: var(--oa-color-data-context-on-charcoal);
+  --oa-color-data-emphasis-red: var(--oa-color-data-emphasis-red-on-charcoal);
+  --oa-chart-color-subject: var(--oa-chart-color-subject-on-charcoal);
+  --oa-chart-color-context: var(--oa-chart-color-context-on-charcoal);
+  --oa-chart-color-label: var(--oa-chart-color-label-on-charcoal);
+  --oa-chart-color-secondary: var(--oa-chart-color-secondary-on-charcoal);
+  --oa-chart-color-baseline: var(--oa-chart-color-baseline-on-charcoal);
+  --oa-chart-color-leader: var(--oa-chart-color-leader-on-charcoal);
+  --oa-chart-color-point: var(--oa-chart-color-point-on-charcoal);
+  --oa-chart-color-point-keyline: initial;
+  --oa-chart-color-party-mark: var(--oa-chart-color-party-mark-on-charcoal);
+  --oa-chart-color-label-on-subject: var(--oa-chart-color-label-on-subject-on-charcoal);
+  --oa-chart-color-chip-fill: var(--oa-chart-color-chip-fill-on-charcoal);
+  --oa-chart-color-chip-label: var(--oa-chart-color-chip-label-on-charcoal);
+  --oa-chart-color-light-fill: var(--oa-chart-color-light-fill-on-charcoal);
+  --oa-chart-color-track: var(--oa-chart-color-track-on-charcoal);
+  --oa-chart-color-gridline: var(--oa-chart-color-gridline-on-charcoal);
+  --oa-chart-color-band: var(--oa-chart-color-band-on-charcoal);
+  --oa-chart-color-land: var(--oa-chart-color-land-on-charcoal);
+  --oa-chart-color-diverging-fill-step1: initial;
+  --oa-chart-color-diverging-fill-step2: initial;
+  --oa-chart-color-diverging-fill-step3: initial;
+  --oa-chart-color-diverging-fill-step4: initial;
+  --oa-chart-color-diverging-fill-step5: initial;
+  --oa-chart-color-diverging-label-step1: initial;
+  --oa-chart-color-diverging-label-step2: initial;
+  --oa-chart-color-diverging-label-step3: initial;
+  --oa-chart-color-diverging-label-step4: initial;
+  --oa-chart-color-diverging-label-step5: initial;
+  --oa-chart-color-sequential-fill-step1: var(--oa-chart-color-sequential-fill-step1-on-charcoal);
+  --oa-chart-color-sequential-fill-step2: var(--oa-chart-color-sequential-fill-step2-on-charcoal);
+  --oa-chart-color-sequential-fill-step3: var(--oa-chart-color-sequential-fill-step3-on-charcoal);
+  --oa-chart-color-sequential-fill-step4: var(--oa-chart-color-sequential-fill-step4-on-charcoal);
+  --oa-chart-color-sequential-fill-step5: var(--oa-chart-color-sequential-fill-step5-on-charcoal);
+  --oa-chart-color-sequential-label-step1: var(--oa-chart-color-sequential-label-step1-on-charcoal);
+  --oa-chart-color-sequential-label-step2: var(--oa-chart-color-sequential-label-step2-on-charcoal);
+  --oa-chart-color-sequential-label-step3: var(--oa-chart-color-sequential-label-step3-on-charcoal);
+  --oa-chart-color-sequential-label-step4: var(--oa-chart-color-sequential-label-step4-on-charcoal);
+  --oa-chart-color-sequential-label-step5: var(--oa-chart-color-sequential-label-step5-on-charcoal);
+  --oa-chart-color-sequential-outline: var(--oa-chart-color-sequential-outline-on-charcoal);
+  --oa-chart-color-magnitude-fill-step1: var(--oa-chart-color-magnitude-fill-step1-on-charcoal);
+  --oa-chart-color-magnitude-fill-step2: var(--oa-chart-color-magnitude-fill-step2-on-charcoal);
+  --oa-chart-color-magnitude-fill-step3: var(--oa-chart-color-magnitude-fill-step3-on-charcoal);
+  --oa-chart-color-magnitude-fill-step4: var(--oa-chart-color-magnitude-fill-step4-on-charcoal);
+  --oa-chart-color-magnitude-label-step1: var(--oa-chart-color-magnitude-label-step1-on-charcoal);
+  --oa-chart-color-magnitude-label-step2: var(--oa-chart-color-magnitude-label-step2-on-charcoal);
+  --oa-chart-color-magnitude-label-step3: var(--oa-chart-color-magnitude-label-step3-on-charcoal);
+  --oa-chart-color-magnitude-label-step4: var(--oa-chart-color-magnitude-label-step4-on-charcoal);
+  --oa-component-button-ask-fill: var(--oa-component-button-ask-fill-on-charcoal);
+  --oa-component-button-ask-label: var(--oa-component-button-ask-label-on-charcoal);
+  --oa-component-button-ask-keyline: initial;
+  --oa-component-button-primary-fill: var(--oa-component-button-primary-fill-on-charcoal);
+  --oa-component-button-primary-fill-hover: var(--oa-component-button-primary-fill-hover-on-charcoal);
+  --oa-component-button-primary-label: var(--oa-component-button-primary-label-on-charcoal);
+  --oa-component-button-disabled-label: var(--oa-component-button-disabled-label-on-charcoal);
+  --oa-component-button-disabled-edge: var(--oa-component-button-disabled-edge-on-charcoal);
+  --oa-component-icon-ink: var(--oa-component-icon-ink-on-charcoal);
+  --oa-component-icon-accent: var(--oa-component-icon-accent-on-charcoal);
 }
 
 /* Reduced motion: every duration resolves to 0 ms and the final state shows at once. */

@@ -148,12 +148,15 @@ SOCIAL_SPECS = [
 ]
 
 
-def _social():
-    return (f'<div class="oai-s-newsprint" style="position:relative;width:1200px;height:630px;padding:72px;border:1px solid {hair("newsprint")}">'
-            f'<p style="{ty("h3", 1200)};color:{ink("newsprint")}">Explainer<span style="color:{ink2("newsprint")}"> · Zoning</span></p>'
-            f'{headline("The zoning code", "the rent.", "title", board=1200, extra_style="margin-top:24px")}'
-            f'<div style="position:absolute;left:72px;bottom:72px">{mark(WM["display"], h=44, label="Oath & Action")}</div>'
-            f'<div style="position:absolute;right:72px;bottom:72px;line-height:0">{lockmark(48, label="Lockmark")}</div></div>')
+def _social(surface="newsprint"):
+    """The link-preview card. surface draws the same card on another approved ground for the feed test on dark cards
+    (stage C, CD-N12); the guide's proof draws it on Newsprint. On Prussian, B in the headline goes White (Rule 05.3)."""
+    s = surface
+    return (f'<div class="oai-s-{s}" style="position:relative;width:1200px;height:630px;padding:72px;border:1px solid {hair(s)}">'
+            f'<p style="{ty("h3", 1200)};color:{ink(s)}">Explainer<span style="color:{ink2(s)}"> · Zoning</span></p>'
+            f'{headline("The zoning code", "the rent.", "title", board=1200, surface=s, red=s != "prussian", extra_style="margin-top:24px")}'
+            f'<div style="position:absolute;left:72px;bottom:72px">{mark(WM["display"], h=44, surface=s, label="Oath & Action")}</div>'
+            f'<div style="position:absolute;right:72px;bottom:72px;line-height:0">{lockmark(48, surface=s, label="Lockmark")}</div></div>')
 
 
 def feed_line():

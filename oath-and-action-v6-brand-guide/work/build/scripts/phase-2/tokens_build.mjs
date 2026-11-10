@@ -9,7 +9,8 @@
 //
 // Reads   work/build/tokens/src/oa-tokens.src.mjs
 // Writes  work/build/tokens/tokens.json  (DTCG Format Module 2025.10, aliases kept as {path} references)
-//         work/build/tokens/tokens.css   (custom properties --oa-..., surface classes, reduced motion)
+//         work/build/tokens/tokens.css   (custom properties --oa-..., surface classes, the light and dark themes,
+//                                         reduced motion)
 //
 // Before writing, the build writes both files to a temporary folder and runs the rule test
 // (work/build/tests/tokens/test_token_rules.py) on them. A failure stops the build and leaves the
@@ -318,13 +319,24 @@ for (const p of order) {
 }
 const SCHEME = { newsprint: 'light', white: 'light', charcoal: 'dark', prussian: 'dark' };
 const KEY = { newsprint: 'onNewsprint', white: 'onWhite', charcoal: 'onCharcoal', prussian: 'onPrussian' };
+// DR-204 (stage C): the short name for the ground itself, so a menu, a dialog or a masthead can paint the surface or
+// theme it sits on. It is CSS only, like every short name, and may not collide with a token's own name.
+const THEME = src.meta.theme || null;
+const SHORT_SURFACE = THEME ? THEME.shortSurface : null;
+for (const n of [...bases.map(cssName), ...(SHORT_SURFACE ? [SHORT_SURFACE] : [])]) {
+  if (seenNames.has(n)) { console.error(`tokens_build: the short name ${n} collides with the token ${seenNames.get(n)}`); process.exit(1); }
+}
+// Every declaration a surface (a class or a theme) makes: its ground, its ink, its color scheme, the ground's short
+// name, and each short name pointed at this surface's token, or initial where the surface has none.
+const surfaceLines = (s, indent) => [
+  `background-color: var(${cssName(`oa.color.surface.${s}`)});`,
+  `color: var(${cssName(`oa.color.text.primary.${KEY[s]}`)});`,
+  `color-scheme: ${SCHEME[s]};`,
+  ...(SHORT_SURFACE ? [`${SHORT_SURFACE}: var(${cssName(`oa.color.surface.${s}`)});`] : []),
+  ...bases.map((b) => `${cssName(b)}: ${tokens.has(`${b}.${KEY[s]}`) ? `var(${cssName(`${b}.${KEY[s]}`)})` : 'initial'};`),
+].map((l) => indent + l);
 const surfaceBlocks = src.meta.surfaces.map((s) => {
-  const lines = [
-    `  background-color: var(${cssName(`oa.color.surface.${s}`)});`,
-    `  color: var(${cssName(`oa.color.text.primary.${KEY[s]}`)});`,
-    `  color-scheme: ${SCHEME[s]};`,
-    ...bases.map((b) => `  ${cssName(b)}: ${tokens.has(`${b}.${KEY[s]}`) ? `var(${cssName(`${b}.${KEY[s]}`)})` : 'initial'};`),
-  ];
+  const lines = surfaceLines(s, '  ');
   const note = {
     newsprint: 'Newsprint: the default reading surface and the page color for charts and the atlas (DR-53).',
     white: 'White: the bright surface. Chart roles are initial here: charts sit on Newsprint or Charcoal.',
@@ -333,6 +345,44 @@ const surfaceBlocks = src.meta.surfaces.map((s) => {
   }[s];
   return `/* ${note} */\n.oa-surface-${s} {\n${lines.join('\n')}\n}`;
 });
+
+// The themes (DR-204, D2-1133). With no attribute the root follows the device; data-oa-theme on the root wins over
+// the device; on any other element it sets that element and what it holds. The blocks come after the surface classes,
+// so on one element the attribute wins; on the root the theme's selectors outrank a class.
+let themeCss = '';
+if (THEME) {
+  const A = THEME.attribute;
+  for (const k of ['light', 'dark']) {
+    if (!THEME[k] || !src.meta.surfaces.includes(THEME[k].surface)) { console.error(`tokens_build: the ${k} theme names no known surface`); process.exit(1); }
+  }
+  const L = THEME.light.surface, Dk = THEME.dark.surface;
+  themeCss = `
+/* Themes (DR-204): one dark mode for every screen product, drawn from Night Edition on Charcoal (DR-36).
+ * With no ${A} attribute, the root follows the device: light, or dark under ${THEME.followsDevice}.
+ * ${A}="light" or ${A}="dark" on the root wins over the device; a reader's switch writes it there. On any
+ * other element it sets that element and everything inside it. A surface class keeps its own surface in either
+ * theme, so a product that follows the theme puts no surface class on its body. A page that must stay light,
+ * such as the brand guide, sets ${A}="light" on its root. */
+
+/* Light (${L[0].toUpperCase() + L.slice(1)}): the default, and wherever ${A}="light" stands. */
+:root:not([${A}="dark"]),
+[${A}="light"] {
+${surfaceLines(L, '  ').join('\n')}
+}
+
+/* Dark (${Dk[0].toUpperCase() + Dk.slice(1)}): when the device asks for dark and the root does not force light. */
+@media ${THEME.followsDevice} {
+  :root:not([${A}="light"]) {
+${surfaceLines(Dk, '    ').join('\n')}
+  }
+}
+
+/* Dark (${Dk[0].toUpperCase() + Dk.slice(1)}): wherever ${A}="dark" stands, whatever the device asks. */
+[${A}="dark"] {
+${surfaceLines(Dk, '  ').join('\n')}
+}
+`;
+}
 
 const durations = order.filter((p) => tokens.get(p).token.$type === 'duration');
 const reduced = durations.map((p) => {
@@ -354,7 +404,10 @@ const css = `/* ${src.meta.title}
  *
  * Naming: ${src.meta.cssNaming}.
  * Surface classes (.oa-surface-newsprint and the rest) point the short names, such as
- * --oa-color-text-secondary, at that surface's tokens.
+ * --oa-color-text-secondary, at that surface's tokens.${THEME ? `
+ * Themes: the root follows the device, light on Newsprint or dark on Charcoal (DR-204), and
+ * ${THEME.attribute}="light" or "dark" on the root wins over the device. See the theme blocks below.` : ''}${src.meta.changeNotes ? `
+ * Change in ${src.meta.changeNotes[0].version}: ${src.meta.changeNotes[0].change}` : ''}
  *
  * Media queries cannot read custom properties. Write breakpoints in em, which follows text size:
 ${queries}
@@ -364,7 +417,7 @@ ${queries}
 }
 
 ${surfaceBlocks.join('\n\n')}
-
+${themeCss}
 /* Reduced motion: every duration resolves to 0 ms and the final state shows at once. */
 @media (prefers-reduced-motion: reduce) {
   :root {

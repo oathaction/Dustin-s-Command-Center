@@ -2210,3 +2210,25 @@ The studio asked four questions with the stage C draft brief. Dustin: "yes to al
 | D2-1133 | The guide's own page forces light under DR-204's dark mode, and the guide check tests it with the device set to dark | The guide shows specimens at their true color on Newsprint, and its plates show both surfaces where a rule needs them |
 | D2-1134 | A chapter names an opener figure with an `"opener"` key holding a specimen id; chapters 01 to 08 keep words alone | D2-965 and the creative director's S16; one contract the shell, the identity designer and the systems designer share |
 | D2-1135 | Chapter 10's opener figure moves to the systems designer in round 1 | That designer owns chapter 10 and starts in round 1; round 0 needs no extra agent for it |
+
+## Stage C round 0, November 10, 2026
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1136 | The dark mode switch offers three choices, Light, Dark and Match my device, with Match my device the default; the engineer and the accessibility lead build it so, and Dustin sees it on board C | DR-204 asks the mode to follow the device and remember a reader's choice; a two-state switch leaves no way back to the device setting (the research lead's question). A call inside DR-204, so it does not stop the round |
+
+### Research lead (`20261110_Stage-C-Research-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1137 | WCAG's words come from the Recommendation of 12 December 2024, with each Understanding page linked | The Recommendation is the normative text; the quick reference and the Understanding pages are W3C's informative companions |
+| D2-1138 | Each criterion keeps its notes, marked informative and kept apart from the quoted rule | WCAG 2.2 section 5.1 calls notes informative, and chapter 19 may still want them to explain a criterion |
+| D2-1139 | 4.1.1 Parsing is listed as removed, with no guide rule tied to it | WCAG 2.2 names it "Obsolete and removed" and gives it no level |
+| D2-1140 | Browser support comes from MDN's compatibility data package, version 8.1.8, not from MDN's rendered pages | The pages draw their tables from this data by script; the package is versioned and dated, and its hash matches the registry's |
+| D2-1141 | "First stable version" means the first version with full support, without a flag, prefix, other name or partial mark | Counting partial support, such as popover on iOS before 18.3, would overstate what a rule can rely on |
+| D2-1142 | `text-wrap: pretty` and `forced-color-adjust` count as extras, never as the only way a rule is met | MDN records no Firefox support for `pretty` and no Safari support for `forced-color-adjust` |
+| D2-1143 | The masthead menu maps to APG's disclosure navigation example, not the Menu pattern | APG's example says site navigation does not use the menu role |
+| D2-1144 | Status lines and the bill tracker's updates cite WAI-ARIA 1.2's `status` role and `aria-live="polite"` | APG has no pattern for a polite live region |
+| D2-1145 | The head script in section 4 is a sketch, labeled as not run | I did not run it in any browser |

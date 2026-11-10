@@ -48,7 +48,7 @@ const chartNum = (value, unit, description, source, ext = {}) => tok('number', v
 // ------------------------------------------------------------------------------------------ metadata
 export const meta = {
   title: 'Oath & Action design tokens, Edition 06',
-  version: '6.0.0-gate2.6',   // stage B round 3, November 10, 2026: the error mark token colors the 4 px bar (PP-M3) (gate2.5: the icon accent from 48 px, the 16 px utility line; gate2.4: mark tokens, D2-402, the 24 px utility line, icon sizes after DR-136)
+  version: '6.0.0-gate2.7',   // stage C round 0, November 10, 2026: the light and dark themes (DR-204); see changeNotes (gate2.6: the error mark token colors the 4 px bar, PP-M3; gate2.5: the icon accent from 48 px, the 16 px utility line; gate2.4: mark tokens, D2-402, the 24 px utility line, icon sizes after DR-136)
   status: 'pre-release',
   statusNote:
     'Built for Gate 2. Version 6.0.0 ships when Dustin approves the token files at Gate 2; until then every value may still change.',
@@ -65,6 +65,33 @@ export const meta = {
   chartGrounds: ['newsprint', 'charcoal'],
   chartGroundNote:
     'Charts and the atlas sit on Newsprint (DR-53); Charcoal is the dark ground (DR-50). Chart tokens exist for these two grounds only.',
+  // DR-204 (stage C, November 10, 2026): one dark mode for every screen product, drawn from Night Edition on Charcoal
+  // (DR-36). tokens.css writes a light and a dark theme that point the short names at one surface's tokens, as the
+  // surface classes do; no token is added and no value changes. A guide or board that must stay light sets
+  // data-oa-theme="light" on its root (D2-1133).
+  theme: {
+    attribute: 'data-oa-theme',
+    values: ['light', 'dark'],
+    followsDevice: '(prefers-color-scheme: dark)',
+    light: { surface: 'newsprint', colorScheme: 'light', default: true,
+      job: 'The default: the page sits on Newsprint and every short name takes its Newsprint token.' },
+    dark: { surface: 'charcoal', colorScheme: 'dark', source: 'Night Edition on Charcoal (DR-36, DR-204)',
+      job: 'When the device asks for dark and the page has not forced light, or wherever data-oa-theme="dark" stands: the page sits on Charcoal and every short name takes its Charcoal token.' },
+    shortSurface: '--oa-color-surface',
+    rules: [
+      'With no attribute, the root follows the device: light, or dark under (prefers-color-scheme: dark).',
+      'data-oa-theme="light" or "dark" on the root wins over the device setting; the reader\'s switch writes it.',
+      'The attribute on any other element sets that element and what it holds, so a specimen can show both themes on one page.',
+      'A surface class keeps its own surface inside either theme. A product that follows the theme puts no surface class on its body.',
+      'A role with no token on Charcoal, such as the diverging chart scale and the Error Band, is initial in the dark theme.',
+    ],
+  },
+  changeNotes: [
+    { version: '6.0.0-gate2.7', date: '2026-11-10', tokens: 'none added or changed; tokens.css gains the theme blocks and the --oa-color-surface short name',
+      change: 'A light and a dark theme in tokens.css: under (prefers-color-scheme: dark), or with data-oa-theme="dark", every short name points at its Charcoal token; data-oa-theme="light" forces Newsprint. Every surface class also sets --oa-color-surface.',
+      reason: 'DR-204: one dark mode for every screen product, drawn from Night Edition on Charcoal, that follows the device and a reader\'s switch', gate: 'Gate 2' },
+    { version: '6.0.0-gate2.6', date: '2026-11-10', tokens: 'oa.color.state.error.mark', change: 'Description only: the token colors the 4 px bar', reason: 'PP-M3', gate: 'Gate 2' },
+  ],
   fluidRange: { minViewportPx: 390, maxViewportPx: 1440 },
   remBasePx: 16,
   fontSizeFloorPx: 13,

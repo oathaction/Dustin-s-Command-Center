@@ -11,10 +11,15 @@ Checks, all against rules written here, not read from the generator:
   3. Values DTCG cannot hold match their JSON record: clamp() sizes hit the minimum at 390 px and the
      maximum at 1440 px, em tracking times the size gives the stored rem, 50% is the stored fraction.
   4. Each surface class sets exactly the short names the JSON's surface tokens imply, each pointing at its
-     own surface's token or set to initial where that surface has no token, plus its background, ink and
-     color scheme. No other selector exists.
+     own surface's token or set to initial where that surface has no token, plus its background, ink,
+     color scheme and the ground's own short name (--oa-color-surface, DR-204). No other selector exists.
   5. The reduced-motion block sets every duration, and only durations, to its reducedMotionValue.
   6. The stylesheet's header carries the JSON's version.
+  7. The themes (DR-204), as the JSON's root theme record names them: the light block on
+     :root:not([data-oa-theme="dark"]) and [data-oa-theme="light"], the dark block inside
+     (prefers-color-scheme: dark) on :root:not([data-oa-theme="light"]) only, so the attribute wins over the
+     device, and the dark block again on [data-oa-theme="dark"]. Each sets exactly what its surface's class
+     sets, pointing every short name at the theme surface's token.
 """
 
 import argparse
@@ -95,6 +100,53 @@ def expected_props(toks):
 def parse_clamp(s):
     m = re.fullmatch(r'clamp\(\s*([\d.]+)rem,\s*(-?[\d.]+)rem \+ ([\d.]+)vw,\s*([\d.]+)rem\s*\)', s)
     return tuple(float(x) for x in m.groups()) if m else None
+
+
+def surface_want(s, bases, toks, short_surface):
+    """What a surface class, or a theme on that surface, must declare: its ground, ink, color scheme, the
+    ground's short name and every short name, pointing at its own token or initial."""
+    key = L.KEY_OF[s]
+    want = {'background-color': f'var({L.css_name("oa.color.surface." + s)})',
+            'color': f'var({L.css_name("oa.color.text.primary." + key)})',
+            'color-scheme': SCHEME[s]}
+    if short_surface:
+        want[short_surface] = f'var({L.css_name("oa.color.surface." + s)})'
+    for b in bases:
+        want[L.css_name(b)] = f'var({L.css_name(b + "." + key)})' if f'{b}.{key}' in toks else 'initial'
+    return want
+
+
+def compare_block(label, decls, want, root, fails):
+    got = {}
+    for name, value in decls or []:
+        if name in got:
+            fails.append(f'{label} declares {name} twice')
+        got[name] = value
+    for name, value in want.items():
+        if name not in got:
+            fails.append(f'{label}: missing {name}')
+        elif ' '.join(got[name].split()) != value:
+            fails.append(f'{label}: {name} reads {got[name]}; the JSON implies {value}')
+    for name in got:
+        if name not in want:
+            fails.append(f'{label}: {name} has no token behind it')
+    for name, value in got.items():
+        if name.startswith('--') and value != 'initial':
+            try:
+                L.resolve_css(value, root)
+            except (KeyError, ValueError) as err:
+                fails.append(f'{label}: {name} does not resolve ({err})')
+
+
+def theme_selectors(theme):
+    a = theme.get('attribute', 'data-oa-theme')
+    return {'light': f':root:not([{a}="dark"]), [{a}="light"]',
+            'mediaDark': f':root:not([{a}="light"])',
+            'dark': f'[{a}="dark"]'}
+
+
+def norm_sel(sel):
+    return ', '.join(x.strip() for x in ' '.join(sel.split()).split(','))
 
 
 def check(json_path, css_path):
@@ -189,9 +241,26 @@ def check(json_path, css_path):
             if b not in bases:
                 bases.append(b)
     stats['shortNames'] = len(bases)
+    theme = meta.get('theme') or {}
+    short_surface = theme.get('shortSurface')
+    if not theme:
+        fails.append('tokens.json: no root theme record (DR-204)')
+    elif short_surface and (short_surface in root or short_surface in {L.css_name(b) for b in bases}):
+        fails.append(f'{short_surface}: the ground\'s short name collides with a token or another short name')
+    tsel = theme_selectors(theme) if theme else {}
     seen_sel = set()
+    seen_theme = []
     for sel, decls in sheet['blocks']:
         if sel == ':root':
+            continue
+        if theme and norm_sel(sel) in (tsel['light'], tsel['dark']):
+            which = 'light' if norm_sel(sel) == tsel['light'] else 'dark'
+            seen_theme.append(which)
+            s = (theme.get(which) or {}).get('surface')
+            if s not in L.SURFACES:
+                fails.append(f'theme record: the {which} theme names no known surface ({s})')
+                continue
+            compare_block(f'{which} theme ({norm_sel(sel)})', decls, surface_want(s, bases, toks, short_surface), root, fails)
             continue
         m = re.fullmatch(r'\.oa-surface-([a-z]+)', sel)
         if not m or m.group(1) not in L.SURFACES:
@@ -199,39 +268,37 @@ def check(json_path, css_path):
             continue
         s = m.group(1)
         seen_sel.add(s)
-        key = L.KEY_OF[s]
-        got = {}
-        for name, value in decls or []:
-            if name in got:
-                fails.append(f'.oa-surface-{s} declares {name} twice')
-            got[name] = value
-        want = {'background-color': f'var({L.css_name("oa.color.surface." + s)})',
-                'color': f'var({L.css_name("oa.color.text.primary." + key)})',
-                'color-scheme': SCHEME[s]}
-        for b in bases:
-            want[L.css_name(b)] = f'var({L.css_name(b + "." + key)})' if f'{b}.{key}' in toks else 'initial'
-        for name, value in want.items():
-            if name not in got:
-                fails.append(f'.oa-surface-{s}: missing {name}')
-            elif ' '.join(got[name].split()) != value:
-                fails.append(f'.oa-surface-{s}: {name} reads {got[name]}; the JSON implies {value}')
-        for name in got:
-            if name not in want:
-                fails.append(f'.oa-surface-{s}: {name} has no token behind it')
-        for name, value in got.items():
-            if name.startswith('--') and value != 'initial':
-                try:
-                    L.resolve_css(value, root)
-                except (KeyError, ValueError) as err:
-                    fails.append(f'.oa-surface-{s}: {name} does not resolve ({err})')
+        compare_block(f'.oa-surface-{s}', decls, surface_want(s, bases, toks, short_surface), root, fails)
     for s in L.SURFACES:
         if s not in seen_sel:
             fails.append(f'stylesheet: no .oa-surface-{s} class')
+    if theme:
+        for which in ('light', 'dark'):
+            if seen_theme.count(which) != 1:
+                fails.append(f'stylesheet: expected one {which} theme block ({tsel[which]}), found {seen_theme.count(which)}')
+        # the light theme is Newsprint and the dark theme Charcoal (DR-204, from Night Edition, DR-36)
+        if (theme.get('light') or {}).get('surface') != 'newsprint' or (theme.get('dark') or {}).get('surface') != 'charcoal':
+            fails.append('theme record: DR-204 sets the light theme on Newsprint and the dark theme on Charcoal')
+        stats['themes'] = sorted(set(seen_theme))
 
     # 5. reduced motion
     durations = {L.css_name(p): L.ext(t).get('reducedMotionValue') for p, t in toks.items() if t.get('$type') == 'duration'}
     rm = [(q, inner) for q, inner in sheet['media'] if q.replace(' ', '') == '(prefers-reduced-motion:reduce)']
-    others = [q for q, _ in sheet['media'] if q.replace(' ', '') != '(prefers-reduced-motion:reduce)']
+    dev = (theme.get('followsDevice') or '').replace(' ', '') if theme else ''
+    dk = [(q, inner) for q, inner in sheet['media'] if dev and q.replace(' ', '') == dev]
+    others = [q for q, _ in sheet['media'] if q.replace(' ', '') not in ('(prefers-reduced-motion:reduce)', dev)]
+    if theme:
+        # 7. the device's dark setting reaches the root only, and only where the root does not force light
+        if len(dk) != 1:
+            fails.append(f'stylesheet: expected one {theme.get("followsDevice")} block, found {len(dk)}')
+        else:
+            inner = dk[0][1]
+            if len(inner) != 1 or norm_sel(inner[0][0]) != tsel['mediaDark']:
+                fails.append(f'{theme.get("followsDevice")} block: expected a single {tsel["mediaDark"]} rule, so {theme.get("attribute")}="light" wins over the device; '
+                             f'found {", ".join(norm_sel(x[0]) for x in inner)}')
+            elif (theme.get('dark') or {}).get('surface') in L.SURFACES:
+                compare_block(f'dark theme under {theme.get("followsDevice")}', inner[0][1],
+                              surface_want(theme['dark']['surface'], bases, toks, short_surface), root, fails)
     for q in others:
         fails.append(f'stylesheet: unexpected @media {q}')
     if len(rm) != 1:
@@ -268,7 +335,7 @@ def main():
     a = ap.parse_args()
     fails, stats = check(a.json, a.css)
     print(f'parity: {stats.get("tokens")} tokens, {stats.get("rootProperties")} :root properties, '
-          f'{stats.get("shortNames")} short names per surface class, {len(fails)} failures')
+          f'{stats.get("shortNames")} short names per surface class and theme, {len(fails)} failures')
     for f in fails if not a.quiet else fails[:20]:
         print('  FAIL', f)
     sys.exit(1 if fails else 0)

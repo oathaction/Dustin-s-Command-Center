@@ -11,8 +11,10 @@ Steps, in order; the run fails if any step fails:
   5. cross-check   Style Dictionary reads tokens.json and agrees with tokens.css, and it reports a planted
                    change; skipped, and said so, when Style Dictionary is not installed in work/build
   6. rendered      Chromium (Playwright) resolves every token, paints each color-mix() derivation, nests
-                   each surface in another and sets each type style at 390 and 1440 px; it must also report
-                   a planted red leak onto Prussian; skipped, and said so, when Playwright is missing
+                   each surface in another, sets each type style at 390 and 1440 px and walks the themes with
+                   the device light and dark; it must also report a planted red leak onto Prussian and a
+                   planted dark block the root's data-oa-theme="light" cannot override (DR-204); skipped, and
+                   said so, when Playwright is missing
 
 Writes work/build/tests/tokens/20261106_Token-Test-Results.json with each step's result, the token counts
 by group and tier, every plant and the role table by surface.
@@ -81,13 +83,15 @@ def main():
 
     pf, ps = PARITY.check(JSON_PATH, CSS_PATH)
     step('parity', not pf, f'{ps.get("tokens")} tokens, {ps.get("rootProperties")} :root properties, '
-                            f'{ps.get("shortNames")} short names in each of 4 surface classes, {len(pf)} failures')
+                            f'{ps.get("shortNames")} short names in each of 4 surface classes and the light and dark themes, {len(pf)} failures')
     for f in pf[:20]:
         print('   FAIL', f)
 
     rf, rr = RULES.check(JSON_PATH, CSS_PATH)
     cells = sum(len(v) for v in rr.get('table', {}).values())
-    step('rules', not rf, f'{rr.get("tokens")} tokens, {rr.get("derived")} derived colors and tints, {cells} semantic color cells measured, {len(rf)} failures')
+    th = rr.get('themes') or {}
+    step('rules', not rf, f'{rr.get("tokens")} tokens, {rr.get("derived")} derived colors and tints, {cells} semantic color cells measured, '
+                          + ', '.join(f'{k} theme {v["shortNamesMeasured"]} roles on {v["surface"]}' for k, v in th.items()) + f', {len(rf)} failures')
     for f in rf[:20]:
         print('   FAIL', f)
 
@@ -132,6 +136,15 @@ def main():
                 pr = subprocess.run(['node', str(RENDER), '--css', str(bad)], capture_output=True, text=True)
                 planted = pr.returncode == 1 and 'oa.color.data.emphasisRed' in pr.stdout
             detail += f'; planted red leak onto Prussian {"reported" if planted else "NOT reported"}'
+            # DR-204: a dark block that ignores the root's attribute must be reported
+            with tempfile.TemporaryDirectory(prefix='oa-render-plant-') as tmp:
+                bad = pathlib.Path(tmp) / 'tokens.css'
+                text = CSS_PATH.read_text(encoding='utf-8')
+                bad.write_text(text.replace('  :root:not([data-oa-theme="light"]) {', '  :root:not([data-oa-theme="none"]) {'), encoding='utf-8')
+                pr = subprocess.run(['node', str(RENDER), '--css', str(bad)], capture_output=True, text=True)
+                planted_theme = pr.returncode == 1 and 'root data-oa-theme="light"' in pr.stdout
+            planted = planted and planted_theme
+            detail += f'; planted dark block that overrides data-oa-theme="light" {"reported" if planted_theme else "NOT reported"}'
         step('rendered', rd.returncode == 0 and planted, detail)
 
     tree = L.load_json(JSON_PATH)
