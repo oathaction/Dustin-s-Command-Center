@@ -78,7 +78,7 @@ WARN, NOTES = [], []
 # Each must match at least once, or the build warns.
 OVERRIDES = [
     ['`s-05-3-corrective` draws the error as a white cross in a red disc, the sign for Close, against DR-173 (already D2-881).',
-     'Rule 05.3’s corrective plate drew the error as a white cross in a red disc, the sign for Close, where you had approved a circle holding an exclamation mark.', 0],
+     'Rule 05.3’s corrective plate draws the error as a white cross in a red disc, the sign for Close, where you approved a circle holding an exclamation mark.', 0],
 ]
 
 # ------------------------------------------------------------------------------------------------ the board's words
@@ -107,7 +107,7 @@ W = {
         'title': 'The error mark',
         'codes': 'D2-880 · D2-859 · DR-173',
         'lede': [
-            'Rule 11.15 draws the error mark, a circle holding an exclamation mark, in the text’s ink, and gives the error’s red to a 4 px Pillar Red bar at the left of the field and of the message. You approved the drawing on November 10. Its color comes to you by name because our red token was written for the mark and its bar, and Gate 2 confirms the tokens.',
+            'Rule 11.15 draws the error mark, a circle holding an exclamation mark, in the text’s ink, and gives the error’s red to a 4 px Pillar Red bar at the left of the field and of the message. You approved the drawing on November 10. Its color comes to you by name because our red token’s description names the mark and its bar, and Gate 2 confirms the tokens.',
         ],
         'a_h': 'Option A, as built',
         'a_text': 'The mark in the text’s ink, Charcoal, with the 4 px Pillar Red bar at the left of the field and of the message.',
@@ -125,7 +125,7 @@ W = {
         'field_label': 'Email',
         'field_value': 'name.example.com',
         'rec': [
-            'Option A. In Pillar Red the mark measures {b_band} to 1 on the Error Band and {b_np} to 1 on Newsprint, so a reader with low vision can lose it on either ground. In ink it measures {a_band} to 1 on the band, and the bar still gives the error the view’s red.',
+            'Option A. In Pillar Red the mark measures {b_band} to 1 on the Error Band and {b_np} to 1 on Newsprint, so a reader with low vision can lose it on either ground, and a 2 px line leaves no room for the Charcoal keyline Rule 05.5 gives red on Newsprint. In ink it measures {a_band} to 1 on the band, and the bar still gives the error the view’s red.',
             'If you approve option A, the engineer rewords the red token’s description at Gate 2 so it names the bar alone. Option B changes one color in one drawing, and setting that color back undoes it.',
         ],
         'approve': 'Option A for the error mark, as Rule 11.15 draws it.',
@@ -136,17 +136,17 @@ W = {
         'codes': 'D2-976 · DR-136',
         'lede': [
             'On November 8 you set 48 px as the smallest size for a topic or atlas symbol, with 24 px allowed only for the 41 that read there. A tile, the square, rounded square or circle that holds a drawing as an app icon or an avatar, draws its symbol at about two thirds of its own size. So a one-color tile from 48 px draws its symbol at 32 to 34 px, under that floor.',
-            'The tile sizes came from the October review, which read every drawing at 32 px before the floor was set. Rule 10.5 now names the small one-color tiles as the one exception:',
+            'The tile sizes came from the October review, which read every drawing at 32 px before you set the floor. Rule 10.5 now names the small one-color tiles as the one exception:',
         ],
         'fig_cap': '{subject}, a topic symbol off the list of 41, at actual size on Newsprint. The tile is Charcoal, the default for app icons and avatars.',
-        'tile_cap': 'One-color tile, {px} px. Its drawing stands at about {inner} px.',
-        'alone48_cap': 'The drawing alone at 48 px, the floor.',
-        'alone32_cap': 'The drawing alone at 32 px.',
+        'tile_cap': 'One-color tile, {px} px, its drawing about {inner} px',
+        'alone48_cap': 'The drawing alone, 48 px, the floor',
+        'alone32_cap': 'The drawing alone, 32 px',
         'other_h': 'The other answer',
-        'other_cap': 'The smallest one-color tile at {px} px. Its drawing stands at about {inner} px.',
+        'other_cap': 'The smallest one-color tile, {px} px, its drawing about {inner} px',
         'rec': [
             'Keep the exception. Avatars and small app tiles show at 32 to 48 px, and on a tile the drawing sits on a solid ground of its own.',
-            'The other answer gives all {n_all} drawings one-color tiles from {sq}, {rd} and {ci} px, which keeps the 48 px floor with no exception and rules out small avatars.',
+            'The other answer gives all {n_all} drawings one-color tiles from {sq} px square, {rd} px rounded and {ci} px round, which keeps the 48 px floor with no exception and rules out small avatars.',
         ],
         'approve': 'Keep the one-color tile exception in Rule 10.5.',
     },
@@ -159,7 +159,7 @@ W = {
         ],
         'r3_caption': 'Round 3, {r3_date}: the page as the red teams read it, before the fix pass. A boxed score is under 4.',
         'rescore_caption': 'The rescore after the fix pass{rs_date}. A boxed score is under 4, and “was” gives the round 3 score where it moved.',
-        'waiting': 'The creative director rescores after the fix pass, and this board is rebuilt with the rescore set apart from round 3.',
+        'waiting': 'The creative director rescores after the fix pass, and the studio then rebuilds this board with the rescore set apart from round 3.',
         'low_h': 'What stood under 4 at round 3',
         'moved_h': 'What moved in the rescore',
         'ready_h': 'Ready',
@@ -184,9 +184,9 @@ W = {
             'h': 'Examples moved off the reforms tied to your work',
             'codes': 'D2-958 · DR-100',
             'text': [
-                'Our atlas flags two reforms for your own work: all-party primaries with ranked general elections (R-01) and ranked-choice voting (R-02). The guide no longer prints a disclosure, so its examples stay off them.',
-                'Rule 10.8 now draws all ten reforms the atlas aims at the six variables of its elections domain, so no two of them stand out.',
-                'Rule 11.16’s invented bill is now a local news grants bill, and its figure marks reform R-32, public and philanthropic funding for local news, which carries no flag.',
+                'Our atlas marks two reforms as tied to your own work: all-party primaries with ranked general elections (R-01) and ranked-choice voting (R-02). The guide no longer prints a disclosure, so its examples stay off them.',
+                'Rule 10.8 now draws all 10 reforms the atlas aims at the six variables of its elections domain, so no two of them stand out.',
+                'Rule 11.16’s invented bill, once on all-party primaries, is now a local news grants bill, and its figure marks reform R-32, public and philanthropic funding for local news, which carries no flag.',
             ],
         },
         'tokens': {
@@ -201,11 +201,11 @@ W = {
         'title': 'What you answered this chat',
         'intro': 'You answered these on November 10, each as the studio recommended.',
         'lines': [
-            ('DR-190', 'Round 3 ran three red teams side by side. One read brand, evidence and nonpartisanship, one read craft and accessibility, and one read plain language and ran a production test in which a simulated designer and developer each tried a real task with the guide.'),
+            ('DR-190', 'Round 3 ran three red teams side by side: brand, evidence and nonpartisanship; craft and accessibility; and plain language with a production test, in which a simulated designer and a simulated developer each tried a real task with the guide.'),
             ('DR-191', 'An item still under 4 after the fix pass gets a short second pass on that item alone when the fix is craft or wording, and only an item that needs your call comes to this board.'),
             ('DR-192', 'The chapters page asks the host for its download permission, so its tokens.css button saves the file for anyone viewing it.'),
             ('DR-193', 'Board B is three pages: the chapters page at its address as version 5, this decisions board and the reader check on its own private page.'),
-            ('DR-194', 'Once you have sent the new reader check link, the first reader check page is deleted after you confirm.'),
+            ('DR-194', 'The studio deletes the first reader check page once you have sent the new link and confirmed the delete.'),
             ('DR-195', 'Chapter 11’s loop stepper runs our atlas’s loop R1, in which wealth and political influence reinforce each other.'),
             ('DR-196', 'A subject that no topic drawing names, such as Housing, takes its word alone, and a Housing drawing joins the next drawings board for your approval by name.'),
             ('DR-197', 'The 16 px Pause and Filter files get 5 px bars and a 5 px spout, so each opening keeps a whole open pixel on 1x screens, and they come to you beside the approved files at stage C.'),
@@ -869,8 +869,8 @@ def decision_2(inv, icons, labels):
             f'<h2 class="sec-h" id="d2-h">{esc(D["title"])}</h2>{paras(D["lede"], "intro")}')
     ordinal = ['first', 'second', 'third', 'fourth', 'fifth'][rule_paras('10.5').index(p105)] if p105 else ''
     quote = f'<blockquote class="rq"><p>{md(p105)}</p><footer>{md(f"Rule 10.5, {ordinal} paragraph")}</footer></blockquote>' if p105 else ''
-    stage = (f'<div class="tiles-fig"><div class="stage stage--np tiles"><div class="tset">{t48}{a48}{a32}</div></div>'
-             f'<div class="stage stage--np tiles tiles--other"><p class="t-oh">{esc(D["other_h"])}</p><div class="tset">{t72}</div></div></div>'
+    stage = (f'<div class="tiles-fig"><div class="stage stage--np tiles"><div class="tset" style="--n:3">{t48}{a48}{a32}</div></div>'
+             f'<div class="stage stage--np tiles tiles--other"><p class="t-oh">{esc(D["other_h"])}</p><div class="tset" style="--n:1">{t72}</div></div></div>'
              f'<p class="caption fig-cap">{md(fill(D["fig_cap"]))}</p>')
     body = f'<div class="card">{quote}{stage}{rec_block(D)}</div>'
     content = {'subject': {'id': TILE_SUBJECT, 'name': name}, 'tile_scale_square': sq, 'one_color_min': one,
@@ -1070,9 +1070,11 @@ img{display:block;max-width:none}
 .rq p{margin:0 0 var(--oa-space-100)}
 .rq footer{font:var(--oa-type-caption);color:var(--wink-2)}
 .tiles-fig{display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--oa-space-200)}
-.tiles{padding:var(--oa-space-300) var(--oa-space-300) var(--oa-space-200)}
-.tset{display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--oa-space-300) var(--oa-space-400)}
-.tf{margin:0;display:grid;gap:var(--oa-space-100);justify-items:start;align-content:start;max-width:10rem}
+.tiles{padding:var(--oa-space-200) var(--oa-space-200) var(--oa-space-150)}
+@media (min-width:48em){.tiles{padding:var(--oa-space-300) var(--oa-space-300) var(--oa-space-200)}}
+.tset{display:grid;grid-template-columns:repeat(var(--n),minmax(0,8.5rem));align-items:start;gap:var(--oa-space-200)}
+@media (min-width:48em){.tset{gap:var(--oa-space-300) var(--oa-space-400)}}
+.tf{margin:0;display:grid;gap:var(--oa-space-100);justify-items:start;align-content:start;min-width:0}
 .tbox{display:flex;align-items:flex-end;height:var(--tb)}
 .tf figcaption{font:var(--oa-type-caption);color:var(--ink-2)}
 .tiles--other{border-left:var(--oa-border-width-rule) solid var(--strong)}

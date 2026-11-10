@@ -37,7 +37,7 @@ Numbers follow the brief's list for the chapter 11 hand.
     - CA-M2: "Clear the search" keeps 44 by 44 px (it had shrunk to 42 in the flex row). The check that types before it measures is the engineer's.
     - CA-S2: under the three rows, "The first three are listed here, and 117 more match."; an empty result says "No symbol matches. Clear the search or the filters to see more."
     - CA-S3: the menu panel's bar, with Close the menu, stays at its top while the list scrolls.
-    - CA-S4: every hyphen between two letters or figures in a fixed chapter 11 plate is a non-breaking hyphen (U+2011), in the markup and in the text the reader and the library write by script. Alts and the library's search data keep the plain hyphen.
+    - CA-S4: every hyphen between two letters or figures in a fixed chapter 11 plate is held whole: in my source as U+2011, which the build turns into a no-wrap span with an ASCII hyphen (D2-975), and in text the reader and the library write by script as a no-wrap span (second pass). Alts and the library's search data keep the plain hyphen.
 
 ## Second pass (D2-963, DR-191)
 
@@ -48,7 +48,9 @@ The editor's read (section 8 of `20261110_Stage-B-Round-3-Editor-Fix-Notes.md`) 
 
 Left as they are: the alts and the plate's kicker still write "loop R1" in lower case, beside the loop's title; the row named only the caption.
 
-Tested: `apply_systems_ch11.py` reruns clean (16 rules, 38 specimens); `guide_build.py --strict` exits 0 with 0 warnings, chapter 11 at 472,429 bytes; the library driven by keyboard at 390 px reads "two more match" for "vot" and "22 more match" with Reads at 24 px, no page errors; `guide_check.js` at four widths: PASS2_RESULT
+The coordinator's added item, D2-975: the library's script no longer turns hyphens into U+2011 as the page runs (`function h(x)` is gone), and the reader's page data holds plain hyphens. One helper in both scripts, `put()`, writes text with each hyphenated word, ID or compound, in a span set to `white-space: nowrap`, with its ASCII hyphen, so "R-02", "single-winner" and "two-lane" stay whole and copy and search as typed. My static plates keep U+2011 in my source, which the build's ID pass turns into no-wrap spans (D2-975 lets owners' sources keep it).
+
+Tested: `apply_systems_ch11.py` reruns clean (16 rules, 38 specimens); `guide_build.py --strict` exits 0 with 0 warnings, chapter 11 at 472,429 bytes; the library driven by keyboard at 390 px reads "two more match" for "vot" and "22 more match" with Reads at 24 px, no page errors; `guide_check.js` at 1440, 1024, 390 and 360 px, which now types into the filter before it measures: **PASS, 0 failures** (an earlier run on this pass failed only D2-975's new U+2011 test, 4 times, in `s-11-12-correct`). By script on the final build at 360 px, after typing "single" and turning the reader to page 2, the page's text holds no U+2011 and the hyphenated words sit in no-wrap spans; typing "vot" and clearing it still works, with no page errors.
 
 ## Routine calls
 
@@ -70,7 +72,7 @@ Tested: `apply_systems_ch11.py` reruns clean (16 rules, 38 specimens); `guide_bu
 - D2-xxx | The invented requests take federal subjects, and "20 working days" stays | BE-S3's first option keeps the rule's true federal clock in front of the reader
 - D2-xxx | Rule 11.10's "A pause inside a step" becomes "A wait inside a step" | An extension adds days and pauses nothing (BE-S2)
 - D2-xxx | The state hearing source line ends "and we read these five as examples and made no national count" where the research lead wrote "and these five are examples, not a count" | Chapter 02's W09 rules out the corrective "not" turn; the meaning is unchanged, and the editor reads it after this pass
-- D2-xxx | Every hyphen between two letters or figures in a fixed chapter 11 plate is a non-breaking hyphen, in the markup and in text a script writes; alts and search data keep the plain hyphen | CA-S4 and D2-950; a screen reader and a search read the word as typed
+- D2-xxx | Every hyphen between two letters or figures in a fixed chapter 11 plate is held whole: U+2011 in my source, which the build makes a no-wrap span (D2-975), and a no-wrap span with an ASCII hyphen in text a script writes; alts and search data keep the plain hyphen | CA-S4, D2-950 and D2-975; a screen reader, a copy and a search read the word as typed
 - D2-xxx | The email error binds "an @," with a no-break space | CD-S5
 - D2-xxx | The library's empty result says what to do: "No symbol matches. Clear the search or the filters to see more." | An empty state says why it is empty and what makes it fill (the UX lead's states list)
 - D2-xxx | The reader's page header binds "· page 1" to the report's last word and balances its two lines | At 360 px "PAGE 1" fell alone onto a second line
@@ -83,7 +85,7 @@ None. The loop question is answered (DR-195), and nothing in this pass changes a
 
 - **Editor (D2-963).** The strings I changed or wrote, for your read: Rules 11.2 (why, specs, builders), 11.5 (two specs), 11.7 (Numbers), 11.8 (scope sentence), 11.9 (rule paragraph 2, why), 11.10 (rule, why, specs, builders), 11.14 (caption, two specs), 11.15 (specs, builders), 11.16 (caption, specs, why); the five source lines; the "Drawing the marks" table and its caption; the reader's four pages; the library's two count lines; the stepper's start line and step 2; H.99009's card and figure note; and the alts of `s-11-1-correct`, `-3-correct`, `-3-failure`, `-4-correct`, `-4-failure`, `-8-failure`, `-9-failure`, `-10-correct`, `-10-failure`, `-11-correct`, `-11-failure`, `-12-correct`, `-14-correct`, `-14-failure`, `-16-correct`, `-16-failure`, `s-11-marks`, `s-11-marks-drawn` and `s-11-menu`, with every failure alt's opening. Two wordings I would like you to look at first: the hearing source line's last clause (call above) and "Money in politics can raise policy tilt to insiders", which keeps V7's chain label "Policy tilt to insiders".
 - **Editor, `s-01-pieces`.** Nothing to do: your generator already draws its marks with chapter 11's classes, and the engineer's A-5 now counts only the copy of the row on screen, so the card keeps both copies and its words (item 3).
-- **Engineer.** CA-M2's second half, the guide check typing into the search before it measures. The library's results and the reader's pages now hold U+2011 in text a script writes; nothing in `guide_check.js` reads those strings, as far as I found.
+- **Engineer.** CA-M2's second half, the guide check typing into the search before it measures (now in the check). The library's results and the reader's pages hold no U+2011 since the second pass.
 - **Main session.** Log the calls above; the counter table in my round 2 notes now names H.99009's new subject.
 
 ## Tested

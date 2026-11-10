@@ -400,6 +400,50 @@
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(value).then(done, fail); else fail();
   });
 
+  // D2-975 (round 3): the build writes every ID with an ASCII hyphen inside <span class="nw">, in place of U+2011, which
+  // the page's fonts do not draw and a search for "CL-001" misses. A live specimen's script may still write U+2011 into
+  // its text as it runs (a filtered list, a report page), so the same rule runs here on anything a script adds: in
+  // text, each word that holds U+2011 goes in <span class="nw"> with an ASCII hyphen; in SVG, in a field and in a name
+  // (aria-label, alt, title), U+2011 simply becomes an ASCII hyphen.
+  var NBH = '‑', NBH_WORD = /[\w.]*‑[\w‑]*/g, NBH_ALL = /‑/g;
+  function holdWhole(node) {
+    var t = node.nodeValue, p = node.parentNode;
+    if (!t || t.indexOf(NBH) < 0 || !p) return;
+    if (p.namespaceURI === 'http://www.w3.org/2000/svg' || /^(SCRIPT|STYLE|TEXTAREA|OPTION|TITLE)$/.test(p.nodeName)) { node.nodeValue = t.replace(NBH_ALL, '-'); return; }
+    var frag = document.createDocumentFragment(), last = 0, m;
+    NBH_WORD.lastIndex = 0;
+    while ((m = NBH_WORD.exec(t))) {
+      if (m.index > last) frag.appendChild(document.createTextNode(t.slice(last, m.index)));
+      var span = document.createElement('span'); span.className = 'nw'; span.textContent = m[0].replace(NBH_ALL, '-');
+      frag.appendChild(span); last = m.index + m[0].length;
+    }
+    if (last < t.length) frag.appendChild(document.createTextNode(t.slice(last)));
+    p.replaceChild(frag, node);
+  }
+  var NAMES = ['aria-label', 'alt', 'title'];
+  function holdNames(el) {
+    NAMES.forEach(function (k) { var v = el.getAttribute && el.getAttribute(k); if (v && v.indexOf(NBH) >= 0) el.setAttribute(k, v.replace(NBH_ALL, '-')); });
+  }
+  function sweep(root) {
+    if (root.nodeType === 3) { holdWhole(root); return; }
+    if (root.nodeType !== 1) return;
+    holdNames(root);
+    var found = [], w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+    for (var n = w.nextNode(); n; n = w.nextNode()) if (n.nodeValue.indexOf(NBH) >= 0) found.push(n);
+    found.forEach(holdWhole);
+    $$('[aria-label], [alt], [title]', root).forEach(holdNames);
+  }
+  sweep(document.body);
+  if (window.MutationObserver) {
+    new MutationObserver(function (recs) {
+      recs.forEach(function (r) {
+        if (r.type === 'characterData') holdWhole(r.target);
+        else if (r.type === 'attributes') holdNames(r.target);
+        else for (var i = 0; i < r.addedNodes.length; i++) sweep(r.addedNodes[i]);
+      });
+    }).observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: NAMES });
+  }
+
   function start() {
     sizeFrames();
     offerFit();

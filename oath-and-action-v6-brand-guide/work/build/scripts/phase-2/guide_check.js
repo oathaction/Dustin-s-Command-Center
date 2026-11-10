@@ -1236,6 +1236,7 @@ async function checkPage(browser, file, widths, opts = {}) {
       if (document.title.includes('\u2011')) hits.push({ where: 'title', in: 'title', text: document.title.slice(0, 50) });
       return hits;
     });
+    a.idsHeld = await page.evaluate(() => [...document.querySelectorAll('span.nw')].filter((x) => /^(?:CL|R|U|S|E)-\w/.test(x.textContent)).length);
     a.frames = await frameAudit(page);
     a.fit = await fitAudit(page);
     const fails = failuresFrom(a, width);
@@ -1501,8 +1502,12 @@ const PLANTS = [
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div data-specimen="s-demo-live" role="group" aria-label="A search"><label for="sb-q">Search the symbols</label><span style="display:inline-flex;align-items:center"><input id="sb-q" type="text"><button type="button" id="sb-clr" aria-label="Clear the search" hidden style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center"><svg data-icon="U-close" data-icon-family="utility" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2"/></svg></button></span></div>');
     const q = document.getElementById('sb-q'), c = document.getElementById('sb-clr'); q.addEventListener('input', () => { c.hidden = !q.value; }); },
     verify: (r) => r.runs[0].typed && r.runs[0].typed.shown.some((x) => x.label === 'Clear the search' && x.w >= 44) },
-  { key: 'nbHyphen', fault: 'an ID written with U+2011 in rule text (D2-975)', js: () => { document.querySelector('.rule-text').append(' See CL\u2011001.'); } },
-  { key: 'nbHyphen', fault: 'an ID written with U+2011 in a specimen alt (D2-975)', js: () => { document.querySelector('[data-specimen][role="img"]').setAttribute('aria-label', 'A list of reforms, R\u201101 to R\u201125, at true size.'); } },
+  { key: 'nbHyphen', fault: 'an ID written with U+2011 in the page title, which the shell does not rewrite (D2-975)', js: () => { document.title += ' CL\u2011001'; } },
+  { key: 'nbHyphen', fault: 'an ID written with U+2011 in a frame\'s name (D2-975)', js: () => { document.querySelector('.plate-scroll').setAttribute('data-frame-name', 'Reforms R\u201101 to R\u201125'); } },
+  { key: 'nbHyphen', fault: 'a script that writes an ID with U+2011 into rule text and an alt after load: the shell holds the ID whole in Inter\'s hyphen (allowed: must not be flagged)', expect: false, js: async () => {
+    document.querySelector('.rule-text').append(' See CL\u2011001.'); document.querySelector('[data-specimen][role="img"]').setAttribute('aria-label', 'A list of reforms, R\u201101 to R\u201125, at true size.');
+    await new Promise((r) => setTimeout(r, 50)); },
+    verify: (r) => r.runs[0].idsHeld >= 1 },
   { key: 'nbHyphen', fault: 'an ID written by the build: an ASCII hyphen held whole in span.nw (allowed: must not be flagged)', expect: false, js: () => { document.querySelector('.rule-text').insertAdjacentHTML('beforeend', ' See <span class="nw">CL-001</span>.'); } },
 ];
 
