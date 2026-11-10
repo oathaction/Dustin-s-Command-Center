@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-error" data-icon-family="utility" data-size="16">
+  <!-- Oath & Action utility icon: Error, 16 px master, final. An exclamation mark in a circle. 16-unit grid, 1.5 px line, round caps and joins, currentColor, no red. The final approved on the stage B drawings board: Dustin approved option A by name on November 10, 2026 (DR-173). Its drawing is the approved option file, 20261109_Utility-Error-Option-A-16px.svg, unchanged. -->
+  <circle cx="7.75" cy="7.75" r="6.25"/>
+  <path d="M7.75 4.5V8.5"/>
+  <circle cx="7.75" cy="11.25" r="0.75" fill="currentColor" stroke="none"/>
+</svg>

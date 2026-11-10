@@ -1545,3 +1545,24 @@ The studio asked three questions before promoting the approved drawings, and lis
 | D2-719 | Chapter 01's three pillar specimens (`s-01-pillars`, `s-01-21-correct`, `s-01-21-failure`) and chapter 08's `s-08-3-*` move to the identity designer for round 2; the editor keeps every word in them | They show the pillar fits and a state bill card that chapter 09's owner draws, and the engineer asked chapter 01's owner to move them to the sprite (engineer's notes, requests) |
 | D2-720 | The systems designer's round 2 work runs as two agents under the same role file: one for chapter 10 and then chapter 12's systems devices, one for chapter 11 | One hand per chapter; chapter 11 starts as soon as chapter 10's construction text exists, as the brief orders |
 | D2-721 | The round 2 brief is `work/handoffs/phase-2/20261110_Stage-B-Round-2-Brief.md`; the editor and chapter 10's maker start while the promotion runs | The editor's words and chapter 10's construction text need no finals; specimens wait for the sprite (D2-504's practice) |
+
+## Promotion of the approved drawings, November 10, 2026
+
+### Utility hand (`20261110_Promotion-Utility-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-722 | Selected Check and View Full Size carry `data-icon="U-selected-check"` and `data-icon="U-view-full-size"` in their finals, where their options carry `U-check` and `U-full-size`; the other 16 keep their option's ID | The brief builds the ID from the file's name, so file, ID and sprite symbol share one name, as the creative director's cards do; no page or script reads the two old IDs |
+| D2-723 | Each final's comment names its drawing, size and line, the option Dustin approved, its DR and the option file it came from | The brief asks the comment to name the board and the DR, and the file name lets a reader trace the bytes |
+| D2-724 | At 16 px the arrow points down by a mirror across the diagonal (`matrix(0 1 1 0 0 0)`); every other state is a turn or a mirror about the centre | A quarter turn would put the down arrow's shaft on x = 8.25, half a pixel from the up arrow's 7.75 in one column of headings. The diagonal mirror keeps both on 7.75 (D2-649), and since the arrow is symmetric about its shaft it draws the same shape |
+| D2-725 | The promotion script draws the previews with its own short Node step, the way `utility_icons_render.js` draws them | That script reads the options' manifest and clears stale files from the options' `png/`, which stays as the record; the new previews match the options' byte for byte |
+| D2-726 | Check results, review sheets and the turned copies stay in my scratch folder; the manifest holds each file's hashes, and these notes hold the figures | The brief names `svg-24/`, `svg-16/`, `png/` and the manifest for the folder the package copies |
+| D2-727 | The manifest names the board and the DRs and carries no link to the board | The board is a private page and the package will travel beyond the studio; the decision log holds the link |
+| D2-728 | The manifest lists each file's sprite symbol id under the brief's pattern | The sprite and the manifest then name each symbol the same way; the engineer owns the sprite and can drop the field |
+
+### Main session, on the utility hand's findings
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-729 | Success B stays as Dustin approved it (DR-174). D2-655 holds for the check's angles, line and ends; the check's arms in Success B run 2.71 to 1 at 24 px against Selected Check A's 2.20 to 1 | The drawing on the board is the drawing approved; the log now says what the shared check shares |
+| D2-730 | The grey insides of Pause and the Filter spout at 16 px on 1x screens go to the creative director at round 3, as the board showed them | The finals match the approved options byte for byte; a fix would be a change to an approved drawing |

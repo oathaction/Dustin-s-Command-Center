@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-search" data-icon-family="utility" data-size="24">
+  <!-- Oath & Action utility icon: Search, 24 px master, final. A magnifier with its handle to the lower right. 24-unit grid, 2 px line, round caps and joins, currentColor, no red. The final approved on the stage B drawings board: Dustin approved option A by name on November 10, 2026 (DR-168). Its drawing is the approved option file, 20261109_Utility-Search-Option-A-24px.svg, unchanged. -->
+  <circle cx="10.5" cy="10.5" r="7"/>
+  <path d="M15.5 15.5 L20.5 20.5"/>
+</svg>

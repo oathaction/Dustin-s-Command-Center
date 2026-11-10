@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-copy" data-icon-family="utility" data-size="24">
+  <!-- Oath & Action utility icon: Copy, 24 px master, final. Two square sheets, the back one up and to the left. 24-unit grid, 2 px line, round caps and joins, currentColor, no red. The final approved on the stage B drawings board: Dustin approved option A by name on November 10, 2026 (DR-170). Its drawing is the approved option file, 20261109_Utility-Copy-Option-A-24px.svg, unchanged. -->
+  <path d="M10 9 L19 9 A1 1 0 0 1 20 10 L20 19 A1 1 0 0 1 19 20 L10 20 A1 1 0 0 1 9 19 L9 10 A1 1 0 0 1 10 9 Z"/>
+  <path d="M5 15 L4.5 15 A0.5 0.5 0 0 1 4 14.5 L4 5 A1 1 0 0 1 5 4 L14.5 4 A0.5 0.5 0 0 1 15 4.5 L15 5"/>
+</svg>

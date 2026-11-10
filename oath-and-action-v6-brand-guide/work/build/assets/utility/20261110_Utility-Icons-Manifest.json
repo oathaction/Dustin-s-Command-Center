@@ -1,0 +1,977 @@
+{
+ "title": "Oath & Action utility icons: the finals in use",
+ "edition": "Edition 06",
+ "date": "2026-11-10",
+ "made_by": "The icon designer, utility hand, promoting the options Dustin approved on the stage B drawings board (DR-161 to DR-178) under 20261110_Promotion-Brief.md. Each drawing is its approved option file's, byte for byte; the options stay in work/build/assets/utility-icons/ as the record (D2-718).",
+ "family": {
+  "dr": "DR-161",
+  "rule": "Every action drawn bare, with Error, Success and Warning in their own shapes; no rings or frames on actions"
+ },
+ "construction": {
+  "grid": "24-unit grid at 24 px; its own master on a 16-unit grid at 16 px (D2-648)",
+  "lines": "At 24 px every straight centerline on a whole unit; at 16 px on a quarter, with x = 7.75 as the axis of a glyph built on one upright line (D2-649)",
+  "finish": "Round caps and joins; a frame's corner rounds by half the line on the centerline (D2-650); a dot as wide as the line (D2-651)",
+  "color": "One ink through currentColor, no red, no ids or masks",
+  "root_attributes": "aria-hidden=\"true\" focusable=\"false\" data-icon=\"U-<name>\" data-icon-family=\"utility\" data-size=\"24\" or \"16\"; no data-option"
+ },
+ "sizes": [
+  {
+   "size_px": 24,
+   "line_px": 2.0,
+   "token": "--oa-component-icon-utility-line-medium",
+   "folder": "work/build/assets/utility/svg-24/",
+   "use": "Beside a control's word (audit B-3)"
+  },
+  {
+   "size_px": 16,
+   "line_px": 1.5,
+   "token": null,
+   "token_note": "No 16 px utility line token yet; the token source adds it with the first 16 px utility icon on a page (D2-661)",
+   "folder": "work/build/assets/utility/svg-16/",
+   "use": "Inline in running text or in a table heading (audit B-3). A 16 px glyph always comes from its 16 px master (D2-648)"
+  }
+ ],
+ "previews": "png/: each SVG drawn by Chromium at its own size, Charcoal (#121212) on a clear ground, at device scale 1 (1x) and 2 (-2x), as the options' previews were (D2-658)",
+ "icons": [
+  {
+   "id": "U-close",
+   "name": "Close",
+   "drawing": "A bare cross",
+   "approved": {
+    "option": "A",
+    "dr": "DR-162",
+    "family_dr": "DR-161",
+    "board": "Stage B drawings board, card by card, approved by name",
+    "date": "2026-11-10"
+   },
+   "audit_rank": "1",
+   "action": "Close",
+   "word": "Close, extended when two things could close: \"Close the menu\", \"Close full size\", \"Close the report reader\"",
+   "word_rule": "The word always shows, except for the clear control inside a search field, which is named \"Clear the search\" and takes its context from the field label",
+   "uses": [
+    "The guide's phone menu",
+    "The atlas detail panel",
+    "The atlas full-size view (\"Close full size\")",
+    "The report reader",
+    "Every dialog",
+    "The clear control in a search field"
+   ],
+   "states": "None. Escape does the same wherever the control closes a dialog",
+   "target": "44 by 44 px",
+   "turns_and_mirrors": [],
+   "sizes": {
+    "24": {
+     "svg": "work/build/assets/utility/svg-24/20261110_Utility-Close-24px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Close-24px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Close-24px-2x.png",
+     "line_px": 2.0,
+     "sprite_symbol_id": "oa-sym-u-close-24px",
+     "source": "work/build/assets/utility-icons/svg-24/20261109_Utility-Close-Option-A-24px.svg",
+     "source_sha256": "7462f326076da9c0eeaab174f1f7de2f2a4e64dafd7f629c78b9a5f6db4e1bb0",
+     "sha256": "e998802f17265617abce702d2bbd2674bcb409c7a1be4474684b16e374ac1579",
+     "drawing_sha256": "831fbdce3d5c7040861df1b4d470dafd63e290f13c7b2ca0055a45d415479d25"
+    },
+    "16": {
+     "svg": "work/build/assets/utility/svg-16/20261110_Utility-Close-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Close-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Close-16px-2x.png",
+     "line_px": 1.5,
+     "sprite_symbol_id": "oa-sym-u-close-16px",
+     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Close-Option-A-16px.svg",
+     "source_sha256": "8e5090264407d52be0141cec8abac2b096f9fc570d8504b23743d16a68a9dc79",
+     "sha256": "88d38ad36ba7086466d023263c4d77778c7ad7d9fa2c14c0b2595c683bcc99a0",
+     "drawing_sha256": "2595651dffe6a483d61763d66e08cdaff966c3a3f635d6c9df3b37ce8e5cfe66"
+    }
+   }
+  },
+  {
+   "id": "U-menu",
+   "name": "Menu",
+   "drawing": "Three even bars",
+   "approved": {
+    "option": "A",
+    "dr": "DR-163",
+    "family_dr": "DR-161",
+    "board": "Stage B drawings board, card by card, approved by name",
+    "date": "2026-11-10"
+   },
+   "audit_rank": "2",
+   "action": "Open the menu",
+   "word": "Menu",
+   "word_rule": "The word always shows",
+   "uses": [
+    "The guide's masthead under 64em (the engineer swaps the shell's glyph for this one)",
+    "The site's phone masthead",
+    "The report reader's phone masthead"
+   ],
+   "states": "Closed and open, carried by aria-expanded. The bars stay bars when the menu opens; the open menu has its own Close",
+   "target": "44 px tall",
+   "turns_and_mirrors": [],
+   "sizes": {
+    "24": {
+     "svg": "work/build/assets/utility/svg-24/20261110_Utility-Menu-24px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Menu-24px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Menu-24px-2x.png",
+     "line_px": 2.0,
+     "sprite_symbol_id": "oa-sym-u-menu-24px",
+     "source": "work/build/assets/utility-icons/svg-24/20261109_Utility-Menu-Option-A-24px.svg",
+     "source_sha256": "f8b262f675f953b900be8f2b0cf18b3b389f4f208a75951b2aa671584e2b6c6d",
+     "sha256": "09c561681c824f04f67a13a4a5d965b6941b67cc231931521ff665c3d78af97d",
+     "drawing_sha256": "932d8e9f2e8d9b2adc79697a82ce25d9602cf8245fb6ef98d65ae4aecfc98dec"
+    },
+    "16": {
+     "svg": "work/build/assets/utility/svg-16/20261110_Utility-Menu-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Menu-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Menu-16px-2x.png",
+     "line_px": 1.5,
+     "sprite_symbol_id": "oa-sym-u-menu-16px",
+     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Menu-Option-A-16px.svg",
+     "source_sha256": "f774246490c409c74db0225244f3814c10dc64d66dd17968cbf165f9188e679b",
+     "sha256": "119bd738d20fdd7d11b6e75d528b158a2e702f2127140e5b7a8b4fdf1397e824",
+     "drawing_sha256": "187a638c18446ac7259e51a36ad8f5794620684633b5814d39701b87203b76dc"
+    }
+   }
+  },
+  {
+   "id": "U-arrow",
+   "name": "Arrow",
+   "drawing": "An arrow with a shaft and an open head, pointing right",
+   "approved": {
+    "option": "A",
+    "dr": "DR-164",
+    "family_dr": "DR-161",
+    "board": "Stage B drawings board, card by card, approved by name",
+    "date": "2026-11-10"
+   },
+   "audit_rank": "3, 4, 16",
+   "action": "Next; Previous (mirrored); the sort order in use (turned)",
+   "word": "Next or Previous with its object (\"Next page\", \"Previous step\", \"Next chapter, 02 Voice\"); in a sorted column, the heading's word",
+   "word_rule": "The word always shows",
+   "uses": [
+    "The guide's chapter foot (\"Next 02 Voice\")",
+    "The report reader's page controls",
+    "The atlas stepper (\"Previous step\", \"Next step\")",
+    "Any carousel",
+    "The column in use in a sortable table: the chapter 27 asset table, the tracker's list of bills, the atlas reform list, a table view of the symbol library"
+   ],
+   "states": "Available, and unavailable at either end: the control keeps focus with aria-disabled=\"true\", takes the subtle ink and a dashed outline, and says why in words (\"This is the first page\")",
+   "target": "44 by 44 px; in a column heading, the heading button, 44 px tall",
+   "turns_and_mirrors": [
+    {
+     "use": "Next",
+     "how": "As drawn, pointing right",
+     "transform": {
+      "24": null,
+      "16": null
+     }
+    },
+    {
+     "use": "Previous",
+     "how": "Mirrored left to right about the centre",
+     "transform": {
+      "24": "matrix(-1 0 0 1 24 0)",
+      "16": "matrix(-1 0 0 1 16 0)"
+     }
+    },
+    {
+     "use": "Sort order in use, pointing up",
+     "how": "Turned a quarter round anticlockwise",
+     "transform": {
+      "24": "rotate(-90 12 12)",
+      "16": "rotate(-90 8 8)"
+     }
+    },
+    {
+     "use": "Sort order in use, pointing down",
+     "how": "Turned a quarter round clockwise; at 16 px, mirrored across the diagonal so the shaft stays on x = 7.75",
+     "transform": {
+      "24": "rotate(90 12 12)",
+      "16": "matrix(0 1 1 0 0 0)"
+     }
+    }
+   ],
+   "sizes": {
+    "24": {
+     "svg": "work/build/assets/utility/svg-24/20261110_Utility-Arrow-24px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Arrow-24px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Arrow-24px-2x.png",
+     "line_px": 2.0,
+     "sprite_symbol_id": "oa-sym-u-arrow-24px",
+     "source": "work/build/assets/utility-icons/svg-24/20261109_Utility-Arrow-Option-A-24px.svg",
+     "source_sha256": "4cca37f916d39fbd6a5ef89e214052b7ae47d6538da04e68a6891e064cfb1d42",
+     "sha256": "df1083b89b7761903cb9d056c3446bbb72b195e7a9fc182e610682524108895e",
+     "drawing_sha256": "a51c77f474fa2c8df93f20980d3e91f083f785764e67aed5465310b3a2de677c"
+    },
+    "16": {
+     "svg": "work/build/assets/utility/svg-16/20261110_Utility-Arrow-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Arrow-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Arrow-16px-2x.png",
+     "line_px": 1.5,
+     "sprite_symbol_id": "oa-sym-u-arrow-16px",
+     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Arrow-Option-A-16px.svg",
+     "source_sha256": "c53fc8e9c66ed6ea04600b170dae311732dd2876e653eadaaab5559586567f48",
+     "sha256": "8135adc3ef1b4884a21e6b6af85f8e665ce681b867384e9c546d46067baf386b",
+     "drawing_sha256": "19b4d3bf839dde8bb3012ddc7b88a1f3c82c836afc3347bdbf90d6e5eb03079e"
+    }
+   },
+   "turn_decisions": [
+    "D2-652",
+    "D2-555"
+   ]
+  },
+  {
+   "id": "U-chevron",
+   "name": "Chevron",
+   "drawing": "A chevron pointing down",
+   "approved": {
+    "option": "A",
+    "dr": "DR-165",
+    "family_dr": "DR-161",
+    "board": "Stage B drawings board, card by card, approved by name",
+    "date": "2026-11-10"
+   },
+   "audit_rank": "5",
+   "action": "Expand and collapse",
+   "word": "The row's own words; the atlas panel keeps \"More\" and \"Less\"",
+   "word_rule": "The row's words always show. The state comes from aria-expanded or a native details element, so \"expand\" never enters the name",
+   "uses": [
+    "The atlas: 47 disclosures on one page, and the detail panel's More and Less",
+    "The symbol library's family groups",
+    "Report source notes",
+    "The phone filter sheet",
+    "Chapter 18's disclosures"
+   ],
+   "states": "Closed (pointing down, as drawn) and open (turned half round, pointing up)",
+   "target": "The whole row, 44 px tall",
+   "turns_and_mirrors": [
+    {
+     "use": "Closed",
+     "how": "As drawn, pointing down",
+     "transform": {
+      "24": null,
+      "16": null
+     }
+    },
+    {
+     "use": "Open",
+     "how": "Turned half round, pointing up. The swap is immediate under reduced motion, and otherwise a turn of no more than 200 ms (--oa-motion-duration-standard)",
+     "transform": {
+      "24": "rotate(180 12 12)",
+      "16": "rotate(180 8 8)"
+     }
+    }
+   ],
+   "sizes": {
+    "24": {
+     "svg": "work/build/assets/utility/svg-24/20261110_Utility-Chevron-24px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Chevron-24px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Chevron-24px-2x.png",
+     "line_px": 2.0,
+     "sprite_symbol_id": "oa-sym-u-chevron-24px",
+     "source": "work/build/assets/utility-icons/svg-24/20261109_Utility-Chevron-Option-A-24px.svg",
+     "source_sha256": "3c971a0b23172ce70960dc911b452344f1768cdabb0f3a23956cb32ece013d3b",
+     "sha256": "7f26c59a62d297fe5ea9e3e0e1e22439d4ff0183a23aaa42aebaf06b645cf97f",
+     "drawing_sha256": "8f47c9977f342009a2f7232700269bc35ccf0d0b98896a6bec5752307dce1830"
+    },
+    "16": {
+     "svg": "work/build/assets/utility/svg-16/20261110_Utility-Chevron-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Chevron-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Chevron-16px-2x.png",
+     "line_px": 1.5,
+     "sprite_symbol_id": "oa-sym-u-chevron-16px",
+     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Chevron-Option-A-16px.svg",
+     "source_sha256": "0dd7f53822ee0e4b2d5c83eb836a379d82964a66be7ea29618f12ca8633cdc3a",
+     "sha256": "7006ba27c7008e53b49a08574b38715e3ccf3aee73743817e4b5dc4b785ae366",
+     "drawing_sha256": "dc26aa219d01cbb84419aa10eca0994d205781a4ca1c77fa2a4ecf1056068d47"
+    }
+   },
+   "turn_decisions": [
+    "D2-653",
+    "D2-556"
+   ]
+  },
+  {
+   "id": "U-download",
+   "name": "Download",
+   "drawing": "An arrow down into an open tray",
+   "approved": {
+    "option": "A",
+    "dr": "DR-166",
+    "family_dr": "DR-161",
+    "board": "Stage B drawings board, card by card, approved by name",
+    "date": "2026-11-10"
+   },
+   "audit_rank": "6",
+   "action": "Download",
+   "word": "\"Download\", then the file, type and size, as in \"Download tokens.css, CSS, 41 KB\"; the type and size are visible text",
+   "word_rule": "The word always shows",
+   "uses": [
+    "The guide's links to tokens.css (9 today)",
+    "Chapter 27, every file by size and surface",
+    "Each color matrix cell",
+    "The report PDF",
+    "Any atlas data file"
+   ],
+   "states": "Available, and unavailable: the control keeps focus with aria-disabled=\"true\" and shows its reason",
+   "target": "44 px tall",
+   "turns_and_mirrors": [],
+   "sizes": {
+    "24": {
+     "svg": "work/build/assets/utility/svg-24/20261110_Utility-Download-24px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Download-24px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Download-24px-2x.png",
+     "line_px": 2.0,
+     "sprite_symbol_id": "oa-sym-u-download-24px",
+     "source": "work/build/assets/utility-icons/svg-24/20261109_Utility-Download-Option-A-24px.svg",
+     "source_sha256": "ef1aad99249f024d7d9ccec729e61cf78bfec8d27b4950050bfc9da416aa9a03",
+     "sha256": "5c242349c218bebedce18eb550cc8cbd011def78f17f2b0a980c1f1c427ba2e3",
+     "drawing_sha256": "9d05df704404743ad1fe0ffcdf04534456c9fd651a4292ee97292d78e415834e"
+    },
+    "16": {
+     "svg": "work/build/assets/utility/svg-16/20261110_Utility-Download-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Download-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Download-16px-2x.png",
+     "line_px": 1.5,
+     "sprite_symbol_id": "oa-sym-u-download-16px",
+     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Download-Option-A-16px.svg",
+     "source_sha256": "7da5f94cabde6aca8f8c4289eab09c404a9e5a3a11814303abb74d86d0422364",
+     "sha256": "a4a27df9f2781f51b20555722ced4dc8bc0f39bef0dc781229c6192a16a9818c",
+     "drawing_sha256": "bc368ba0b5bffdf1511394abb5532e82be1985f5c0b11aa745da6689d7fef0aa"
+    }
+   }
+  },
+  {
+   "id": "U-another-site",
+   "name": "Another-Site",
+   "drawing": "An arrow leaving a box by its top right corner",
+   "approved": {
+    "option": "A",
+    "dr": "DR-167",
+    "family_dr": "DR-161",
+    "board": "Stage B drawings board, card by card, approved by name",
+    "date": "2026-11-10"
+   },
+   "audit_rank": "7",
+   "action": "Go to another site",
+   "word": "The link's own words, with visually hidden words added to its name: \" (another site)\", or \" (opens in a new tab)\" for a link that does open a new tab",
+   "word_rule": "The glyph follows the last word and never wraps onto a line of its own. These links open in the same tab",
+   "uses": [
+    "Source links in the atlas",
+    "Report source notes",
+    "Chapters 13 and 15",
+    "The official sources behind the tracker workflows (congress.gov and the rest)"
+   ],
+   "states": "None",
+   "target": "Inside running text, the line box, at least 24 px tall (the inline exception of WCAG 2.2 SC 2.5.8); in a list of sources, 44 px tall",
+   "turns_and_mirrors": [],
+   "sizes": {
+    "24": {
+     "svg": "work/build/assets/utility/svg-24/20261110_Utility-Another-Site-24px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Another-Site-24px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Another-Site-24px-2x.png",
+     "line_px": 2.0,
+     "sprite_symbol_id": "oa-sym-u-another-site-24px",
+     "source": "work/build/assets/utility-icons/svg-24/20261109_Utility-Another-Site-Option-A-24px.svg",
+     "source_sha256": "332758a36d714d2d7e0d20f4cef1eb40748dc33b8173aa11781c7a3d2acbb08f",
+     "sha256": "67ab675bb846c99fcdc3e78f9f3f6d3f569721ce32a321fa872eefb076243d1a",
+     "drawing_sha256": "5fe86ad7bc28ccfc28227f17f1171d8c174871a3a37c7101aa5380618ebfcdc3"
+    },
+    "16": {
+     "svg": "work/build/assets/utility/svg-16/20261110_Utility-Another-Site-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Another-Site-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Another-Site-16px-2x.png",
+     "line_px": 1.5,
+     "sprite_symbol_id": "oa-sym-u-another-site-16px",
+     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Another-Site-Option-A-16px.svg",
+     "source_sha256": "5b842c5fd54b4696d2f65a3e2307abd6b933105db3881532c00611d0eb1c10f1",
+     "sha256": "769a97f36ba475e22d0ea418f92bbc5ffdd56d678f83f68847b1a293f59e0923",
+     "drawing_sha256": "88debdfe8cee894302061cd6166954bbd771054a0ba78dd4553bdfffb149a7ac"
+    }
+   }
+  },
+  {
+   "id": "U-search",
+   "name": "Search",
+   "drawing": "A magnifier with its handle to the lower right",
+   "approved": {
+    "option": "A",
+    "dr": "DR-168",
+    "family_dr": "DR-161",
+    "board": "Stage B drawings board, card by card, approved by name",
+    "date": "2026-11-10"
+   },
+   "audit_rank": "8",
+   "action": "Search",
+   "word": "The field's visible label, such as \"Search the symbols\", or \"Search\" on a masthead button. Placeholder text is never the label",
+   "word_rule": "The glyph inside the field is hidden",
+   "uses": [
+    "The chapter 10 symbol library (124 drawings)",
+    "The site",
+    "The atlas (51 variables, 50 reforms and 23 loops)",
+    "Any later search across the guide"
+   ],
+   "states": "Empty; holding text, when the clear control appears; results, announced in a polite live region (\"3 of 124 symbols\"); and no match, in words with a next step",
+   "target": "Field and button 44 px tall",
+   "turns_and_mirrors": [],
+   "sizes": {
+    "24": {
+     "svg": "work/build/assets/utility/svg-24/20261110_Utility-Search-24px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Search-24px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Search-24px-2x.png",
+     "line_px": 2.0,
+     "sprite_symbol_id": "oa-sym-u-search-24px",
+     "source": "work/build/assets/utility-icons/svg-24/20261109_Utility-Search-Option-A-24px.svg",
+     "source_sha256": "422097c0bbd54ef3deb783ad668db4ae78b460d8624f0f49c858ebeda1c054b1",
+     "sha256": "80c2f3f182ff9a0e88858b7a419654922c0a7891b9c82e19fd2326417dd57fc7",
+     "drawing_sha256": "08085323d7577ec09960bfcf2509512b3e56e41f3cd3a0e11b69cf8114484cae"
+    },
+    "16": {
+     "svg": "work/build/assets/utility/svg-16/20261110_Utility-Search-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Search-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Search-16px-2x.png",
+     "line_px": 1.5,
+     "sprite_symbol_id": "oa-sym-u-search-16px",
+     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Search-Option-A-16px.svg",
+     "source_sha256": "58e27b621e6aea3a49630b19a9151e7772c604f5c97d226ac2ccb01ed73a4087",
+     "sha256": "f84ca1078aa7d108ca9578625ec4f0a0feb6341e8a5454c60c47bf3f8ed4b788",
+     "drawing_sha256": "d0ce005692f1b701219d0061e2004c43882f9ec6334df167aa66f54a6e0d5814"
+    }
+   }
+  },
+  {
+   "id": "U-filter",
+   "name": "Filter",
+   "drawing": "A funnel with a slanted spout",
+   "approved": {
+    "option": "A",
+    "dr": "DR-169",
+    "family_dr": "DR-161",
+    "board": "Stage B drawings board, card by card, approved by name",
+    "date": "2026-11-10"
+   },
+   "audit_rank": "9",
+   "action": "Filter",
+   "word": "\"Filters\" with the count of active ones, in visible text: \"Filters, 2 on\"",
+   "word_rule": "The word always shows",
+   "uses": [
+    "The chapter 10 library filter bar (family, size, surface)",
+    "Chapter 11's filter bar specimen",
+    "The atlas lists (problems by area, reforms by route)",
+    "The tracker (bills by step and state)",
+    "The chapter 27 asset table",
+    "On a phone, the one button that opens the filter sheet"
+   ],
+   "states": "The sheet closed and open (aria-expanded); the count; each chip on or off (aria-pressed), with the Selected check shown when on",
+   "target": "44 px tall, chips included",
+   "turns_and_mirrors": [],
+   "sizes": {
+    "24": {
+     "svg": "work/build/assets/utility/svg-24/20261110_Utility-Filter-24px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Filter-24px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Filter-24px-2x.png",
+     "line_px": 2.0,
+     "sprite_symbol_id": "oa-sym-u-filter-24px",
+     "source": "work/build/assets/utility-icons/svg-24/20261109_Utility-Filter-Option-A-24px.svg",
+     "source_sha256": "e7c178deac3d22a4d7fd71661d3f6da73e8a523fe807ec5270c08d2880700d15",
+     "sha256": "b8d90cfc65fc335e91464fea3cb2b7669a440fc1b3a18cd86dd5117df114efdf",
+     "drawing_sha256": "b53f7cee8fcee0b6d34aff7b12c72b9ee346bc466d39b6cb27df0a6f06f8116c"
+    },
+    "16": {
+     "svg": "work/build/assets/utility/svg-16/20261110_Utility-Filter-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Filter-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Filter-16px-2x.png",
+     "line_px": 1.5,
+     "sprite_symbol_id": "oa-sym-u-filter-16px",
+     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Filter-Option-A-16px.svg",
+     "source_sha256": "c3aa8ac0e696c8f52d352e3cc7c2858ed538b1cc04bfc9ef5cdb7a9e35958efb",
+     "sha256": "193627516829b1a6f8b8569fa0448ec38fc84109c56d0af7c09aea76a4f6fe58",
+     "drawing_sha256": "40ef64f6d51b500824cbeaeb1da389039aab444e1a19000f5af3f6f3ceefdbbc"
+    }
+   }
+  },
+  {
+   "id": "U-copy",
+   "name": "Copy",
+   "drawing": "Two square sheets, the back one up and to the left",
+   "approved": {
+    "option": "A",
+    "dr": "DR-170",
+    "family_dr": "DR-161",
+    "board": "Stage B drawings board, card by card, approved by name",
+    "date": "2026-11-10"
+   },
+   "audit_rank": "10",
+   "action": "Copy",
+   "word": "\"Copy\" and what, as in \"Copy #121212, Charcoal\"",
+   "word_rule": "The word always shows",
+   "uses": [
+    "The guide's \"Copy this chapter's CSS\" buttons (9 today)",
+    "Hex values and token names in chapters 05 and 06",
+    "Code blocks",
+    "File paths in chapter 27",
+    "\"Copy link to this rule\", if the shell adds it"
+   ],
+   "states": "Idle. The result goes to the status line in words, with the Success mark or the Error mark. The glyph never flips to a check",
+   "target": "44 px tall",
+   "turns_and_mirrors": [],
+   "sizes": {
+    "24": {
+     "svg": "work/build/assets/utility/svg-24/20261110_Utility-Copy-24px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Copy-24px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Copy-24px-2x.png",
+     "line_px": 2.0,
+     "sprite_symbol_id": "oa-sym-u-copy-24px",
+     "source": "work/build/assets/utility-icons/svg-24/20261109_Utility-Copy-Option-A-24px.svg",
+     "source_sha256": "bd0fab702a2e77cd0bbafc2e03cfecdb57daec3b68193085aab3075297d1bf26",
+     "sha256": "d0d4c9481dc94e0c55d06341c41ee2497e92647961ea6a50cfc8a59c0d690804",
+     "drawing_sha256": "01b3aefe95b69ca775e7560aa337eaf8af5c9484e8f538c3c4f4c4281d1156bd"
+    },
+    "16": {
+     "svg": "work/build/assets/utility/svg-16/20261110_Utility-Copy-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Copy-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Copy-16px-2x.png",
+     "line_px": 1.5,
+     "sprite_symbol_id": "oa-sym-u-copy-16px",
+     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Copy-Option-A-16px.svg",
+     "source_sha256": "ef280a9e3b61595f536e1a1ee7a0c8ace1afbe1fc22d90454cf5fa9fa32009f8",
+     "sha256": "04bc84f47b41e97ee52d19413da0d8dbf9f691d37b1912b9bba833711b5b49d2",
+     "drawing_sha256": "16c2164deb870a64720e88c439f09254536ed630445e57c3c0455c37723ffaa5"
+    }
+   }
+  },
+  {
+   "id": "U-play",
+   "name": "Play",
+   "drawing": "A triangle pointing right",
+   "approved": {
+    "option": "A",
+    "dr": "DR-171",
+    "family_dr": "DR-161",
+    "board": "Stage B drawings board, card by card, approved by name",
+    "date": "2026-11-10"
+   },
+   "audit_rank": "11",
+   "action": "Play (one button with Pause)",
+   "word": "\"Play\", or \"Play again\" when the run has ended; the word changes with the glyph",
+   "word_rule": "The word always shows. The button does not also use aria-pressed, since its name changes",
+   "uses": [
+    "The atlas stepper (Play, Pause, Play again)",
+    "Chapter 17's reader-controlled motion (the hinge, the lever landing)",
+    "Video in chapters 16 and 23"
+   ],
+   "states": "Stopped, playing, ended. Playback starts only on a press, with or without reduced motion",
+   "target": "44 by 44 px",
+   "turns_and_mirrors": [],
+   "sizes": {
+    "24": {
+     "svg": "work/build/assets/utility/svg-24/20261110_Utility-Play-24px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Play-24px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Play-24px-2x.png",
+     "line_px": 2.0,
+     "sprite_symbol_id": "oa-sym-u-play-24px",
+     "source": "work/build/assets/utility-icons/svg-24/20261109_Utility-Play-Option-A-24px.svg",
+     "source_sha256": "27eb57fa6f48cae5ecce6f8c301d625a94d6ed89b968be447d3b23240dab18d2",
+     "sha256": "d6426cfd7e4f5d0d99a4a2a0f5d90c0cdd5c09e6044aba25c65bac76f43858b4",
+     "drawing_sha256": "a775b6f394875581e3c6b9059a9fe33d7247ca5fe01808af26a14d8c5618a4ec"
+    },
+    "16": {
+     "svg": "work/build/assets/utility/svg-16/20261110_Utility-Play-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Play-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Play-16px-2x.png",
+     "line_px": 1.5,
+     "sprite_symbol_id": "oa-sym-u-play-16px",
+     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Play-Option-A-16px.svg",
+     "source_sha256": "d3f4f8f04b9fbbc7459627ebc21b3782bce5874394b06cabd057c414911a12d1",
+     "sha256": "af4dc46cdcff881a2fc9e80efaea0d4d57ab3feb17773b97053ba45aa9c19b05",
+     "drawing_sha256": "2cda25efa257b3d9d9bea0d7245ede49b6ccb5ef278ef0c99fafcd178b706d4a"
+    }
+   },
+   "one_button_with": "U-pause"
+  },
+  {
+   "id": "U-pause",
+   "name": "Pause",
+   "drawing": "Two upright bars",
+   "approved": {
+    "option": "A",
+    "dr": "DR-171",
+    "family_dr": "DR-161",
+    "board": "Stage B drawings board, card by card, approved by name",
+    "date": "2026-11-10"
+   },
+   "audit_rank": "11",
+   "action": "Pause (one button with Play)",
+   "word": "\"Pause\"; the word changes with the glyph",
+   "word_rule": "The word always shows. The button does not also use aria-pressed, since its name changes",
+   "uses": [
+    "The atlas stepper (Play, Pause, Play again)",
+    "Chapter 17's reader-controlled motion (the hinge, the lever landing)",
+    "Video in chapters 16 and 23"
+   ],
+   "states": "Shown while playing; the same button shows Play when stopped or ended",
+   "target": "44 by 44 px",
+   "turns_and_mirrors": [],
+   "sizes": {
+    "24": {
+     "svg": "work/build/assets/utility/svg-24/20261110_Utility-Pause-24px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Pause-24px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Pause-24px-2x.png",
+     "line_px": 2.0,
+     "sprite_symbol_id": "oa-sym-u-pause-24px",
+     "source": "work/build/assets/utility-icons/svg-24/20261109_Utility-Pause-Option-A-24px.svg",
+     "source_sha256": "49dd85cca826ccb6426e8c73448914ba05a1e7b4a775518c6b3b36e5452ddb1d",
+     "sha256": "3fb62db09314433847cb85efb47b5c8167a8d19ca45dfd05752b7b9d127f8070",
+     "drawing_sha256": "1da3608af053cf1aaf9caf1f9f9abf663ecd917a9f422b2b96be6aa49e2c9168"
+    },
+    "16": {
+     "svg": "work/build/assets/utility/svg-16/20261110_Utility-Pause-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Pause-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Pause-16px-2x.png",
+     "line_px": 1.5,
+     "sprite_symbol_id": "oa-sym-u-pause-16px",
+     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Pause-Option-A-16px.svg",
+     "source_sha256": "cba96d8e49132589f02d41d26f7823ebaae0b9e52bddc6000acd8a53d772a082",
+     "sha256": "fd03dbac341a354d4cca321610f46d2e682798a7909e77c40ed0bc6bac315982",
+     "drawing_sha256": "eac1bbdda84fda0281ecc5bcdd7cb1ebe6944dc958b4b3c37c457ca26f1356c2"
+    }
+   },
+   "one_button_with": "U-play"
+  },
+  {
+   "id": "U-reset",
+   "name": "Reset",
+   "drawing": "Three quarters of a circle with an upright corner head at the upper left",
+   "approved": {
+    "option": "B",
+    "dr": "DR-172",
+    "family_dr": "DR-161",
+    "board": "Stage B drawings board, card by card, approved by name",
+    "date": "2026-11-10"
+   },
+   "audit_rank": "12",
+   "action": "Reset, start over",
+   "word": "\"Reset\" or \"Start over\", plus the object where needed (\"Reset the loop\", \"Reset to the default\")",
+   "word_rule": "The word always shows. Clearing filters is a different action and stays a word, \"Clear filters\"",
+   "uses": [
+    "The atlas stepper's row (Play, Previous step, Next step, Reset)",
+    "Chapter 17's motion demos",
+    "The tracker's settings (\"Reset to the default\")"
+   ],
+   "states": "Available, and unavailable at the start, with aria-disabled=\"true\" and the reason (\"Already at the start\")",
+   "target": "44 by 44 px",
+   "turns_and_mirrors": [],
+   "sizes": {
+    "24": {
+     "svg": "work/build/assets/utility/svg-24/20261110_Utility-Reset-24px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Reset-24px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Reset-24px-2x.png",
+     "line_px": 2.0,
+     "sprite_symbol_id": "oa-sym-u-reset-24px",
+     "source": "work/build/assets/utility-icons/svg-24/20261109_Utility-Reset-Option-B-24px.svg",
+     "source_sha256": "a013bb4a05307da22c5b9a80299c2907fac0cd77c3f96b5b0eb71bd6a6ecbd97",
+     "sha256": "5005e85bbae91d10ea21411022f3aef29fe3076761e42e192086316d5b2bfaf3",
+     "drawing_sha256": "1a933d16d747649b8c7218e11473288d47f2347e18cc9740bf71ce252d32ac6b"
+    },
+    "16": {
+     "svg": "work/build/assets/utility/svg-16/20261110_Utility-Reset-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Reset-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Reset-16px-2x.png",
+     "line_px": 1.5,
+     "sprite_symbol_id": "oa-sym-u-reset-16px",
+     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Reset-Option-B-16px.svg",
+     "source_sha256": "dc31833fd00b3d242e6dc4c4f8ea275e636401e6c67a25839ed24e55b659b19f",
+     "sha256": "dfcadd8c6f1dcee4b9a5931f44e708a042b20de68532503963a880eeb3f9c4f6",
+     "drawing_sha256": "8b9acff982978d2c9011662f6278a5599ea28ea84dcc5e86b63ecb1815ebbed0"
+    }
+   }
+  },
+  {
+   "id": "U-error",
+   "name": "Error",
+   "drawing": "An exclamation mark in a circle",
+   "approved": {
+    "option": "A",
+    "dr": "DR-173",
+    "family_dr": "DR-161",
+    "board": "Stage B drawings board, card by card, approved by name",
+    "date": "2026-11-10"
+   },
+   "audit_rank": "13",
+   "action": "Error mark",
+   "word": "The message beside it, which names the field and the fix (\"Enter a ZIP code with five digits.\")",
+   "word_rule": "The words always show. The mark is hidden; the field carries aria-invalid=\"true\" and aria-describedby to the message",
+   "uses": [
+    "Form errors: the newsletter sign-up, the tracker's settings, the chapter 11 and chapter 18 form specimens",
+    "The guide's copy failure line (the shell's is-error)",
+    "A page that cannot load its data"
+   ],
+   "states": "None. An error is the view's first red job under Rule 05.3; the file draws in currentColor and the page sets its ink",
+   "target": "Not a target",
+   "turns_and_mirrors": [],
+   "sizes": {
+    "24": {
+     "svg": "work/build/assets/utility/svg-24/20261110_Utility-Error-24px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Error-24px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Error-24px-2x.png",
+     "line_px": 2.0,
+     "sprite_symbol_id": "oa-sym-u-error-24px",
+     "source": "work/build/assets/utility-icons/svg-24/20261109_Utility-Error-Option-A-24px.svg",
+     "source_sha256": "b415bdfdd8494ca03cf7153b099358f114e9c26c6e0dc31e0de39735759d3fc5",
+     "sha256": "92a3618a8f78105d3cc832547a5657d16222ae3eeb40b1a4b1d907b8acf33680",
+     "drawing_sha256": "2db58d08ec317e61153f632ac02e201e2fc0b33227bfeeaa40cfa4c6d2fa94c5"
+    },
+    "16": {
+     "svg": "work/build/assets/utility/svg-16/20261110_Utility-Error-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Error-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Error-16px-2x.png",
+     "line_px": 1.5,
+     "sprite_symbol_id": "oa-sym-u-error-16px",
+     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Error-Option-A-16px.svg",
+     "source_sha256": "304aa2f7ff8a9d3d81518f0f02e90b00810097d9e9fb6bafdded7a411208d88f",
+     "sha256": "a97c774c9e5628340696fadbb58f0eda315d5da76bb930e5161937a0d145495c",
+     "drawing_sha256": "e2ecee14ca605e13e583e413ea5935c71e83019178f5759b9eb9e60719ed3669"
+    }
+   }
+  },
+  {
+   "id": "U-success",
+   "name": "Success",
+   "drawing": "A check leaving an open circle",
+   "approved": {
+    "option": "B",
+    "dr": "DR-174",
+    "family_dr": "DR-161",
+    "board": "Stage B drawings board, card by card, approved by name",
+    "date": "2026-11-10"
+   },
+   "audit_rank": "14",
+   "action": "Success mark",
+   "word": "The status text beside it, which says what happened (\"Copied 12 lines to the clipboard.\", \"You're signed up.\")",
+   "word_rule": "The words always show. The mark is hidden",
+   "uses": [
+    "The copy result line",
+    "A sent form",
+    "Saved tracker settings",
+    "A finished download, where the page reports it"
+   ],
+   "states": "None",
+   "target": "Not a target",
+   "turns_and_mirrors": [],
+   "sizes": {
+    "24": {
+     "svg": "work/build/assets/utility/svg-24/20261110_Utility-Success-24px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Success-24px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Success-24px-2x.png",
+     "line_px": 2.0,
+     "sprite_symbol_id": "oa-sym-u-success-24px",
+     "source": "work/build/assets/utility-icons/svg-24/20261109_Utility-Success-Option-B-24px.svg",
+     "source_sha256": "103723291862dd12d661eeee4a6ed6a4d24555f1146679e5401bf5b0d7a61781",
+     "sha256": "f28b81f58e2c50300cb57cbea39bda4efcbb3cb6bb77c9743815f6e3cad3c62d",
+     "drawing_sha256": "c983cbd41e7439325d3b77faf93644ca0b6386de6888505977f57ecb311aa4aa"
+    },
+    "16": {
+     "svg": "work/build/assets/utility/svg-16/20261110_Utility-Success-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Success-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Success-16px-2x.png",
+     "line_px": 1.5,
+     "sprite_symbol_id": "oa-sym-u-success-16px",
+     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Success-Option-B-16px.svg",
+     "source_sha256": "b4635c255883201a8b49eb49f56186ff00c36154b92b182bf5a18d1207a7ad7d",
+     "sha256": "dee2d5648d2f3852720d7e6583c563527db769b6ea7e050987a3c0c32d968c4b",
+     "drawing_sha256": "59262b20a2fa3ee537d8da2a85bd409dd11cc86ba4cb4e57e7dd7a72a317df2b"
+    }
+   }
+  },
+  {
+   "id": "U-selected-check",
+   "name": "Selected-Check",
+   "drawing": "A check",
+   "approved": {
+    "option": "A",
+    "dr": "DR-175",
+    "family_dr": "DR-161",
+    "board": "Stage B drawings board, card by card, approved by name",
+    "date": "2026-11-10"
+   },
+   "audit_rank": "14",
+   "action": "Selected check (a chip or list choice that is on)",
+   "word": "The chip's or the choice's own word",
+   "word_rule": "The word always shows. The check is hidden; the state comes from aria-pressed=\"true\"",
+   "uses": [
+    "A filter chip that is on",
+    "A list choice that is on"
+   ],
+   "states": "Shown when on, so the selected state does not rest on color (WCAG 2.2 SC 1.4.1)",
+   "target": "Not a target; a chip is 44 px tall",
+   "turns_and_mirrors": [],
+   "sizes": {
+    "24": {
+     "svg": "work/build/assets/utility/svg-24/20261110_Utility-Selected-Check-24px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Selected-Check-24px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Selected-Check-24px-2x.png",
+     "line_px": 2.0,
+     "sprite_symbol_id": "oa-sym-u-selected-check-24px",
+     "source": "work/build/assets/utility-icons/svg-24/20261109_Utility-Selected-Check-Option-A-24px.svg",
+     "source_sha256": "bf8f44c76a5130c522f61785a986b4b740f3480350a7faa47118157eba22e589",
+     "sha256": "f77395e8dd5d4a2d6e537114f344594b38e38f7079de53fc504f49b657fd80cf",
+     "drawing_sha256": "3d927cfadca427ab4addef7832bbb86010298e00994d3cb0cbe1997d44d16435"
+    },
+    "16": {
+     "svg": "work/build/assets/utility/svg-16/20261110_Utility-Selected-Check-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Selected-Check-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Selected-Check-16px-2x.png",
+     "line_px": 1.5,
+     "sprite_symbol_id": "oa-sym-u-selected-check-16px",
+     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Selected-Check-Option-A-16px.svg",
+     "source_sha256": "83401dfee0725572f96493e3f5b0e9834fc1b648b4e11badc89023c357f0778d",
+     "sha256": "1411698c7f7b719ce688887c1e86b6d2dd79b9bc85d42c2fd0871cc2f7956820",
+     "drawing_sha256": "1d0cce632ffd19578486a55bac9c4ce56d0d2a07c19b0c37e02c2aff4f044c80"
+    }
+   }
+  },
+  {
+   "id": "U-view-full-size",
+   "name": "View-Full-Size",
+   "drawing": "Four corners",
+   "approved": {
+    "option": "A",
+    "dr": "DR-176",
+    "family_dr": "DR-161",
+    "board": "Stage B drawings board, card by card, approved by name",
+    "date": "2026-11-10"
+   },
+   "audit_rank": "15",
+   "action": "View full size",
+   "word": "The visible words, as built: \"View the map full size\", \"View the drawing full size\", \"View the loop full size\"",
+   "word_rule": "The words always show. Leaving full size uses Close and the words \"Close full size\"",
+   "uses": [
+    "The atlas, on phones (the map, a drawing, a loop)",
+    "The report reader's full-size choice"
+   ],
+   "states": "Closed and open; open is a modal dialog that returns focus to this button",
+   "target": "44 px tall",
+   "turns_and_mirrors": [],
+   "sizes": {
+    "24": {
+     "svg": "work/build/assets/utility/svg-24/20261110_Utility-View-Full-Size-24px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-View-Full-Size-24px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-View-Full-Size-24px-2x.png",
+     "line_px": 2.0,
+     "sprite_symbol_id": "oa-sym-u-view-full-size-24px",
+     "source": "work/build/assets/utility-icons/svg-24/20261109_Utility-View-Full-Size-Option-A-24px.svg",
+     "source_sha256": "8f65ce499d42e922d281ebdc39d69f41e6645c59b35924da4d74fcf49439fb37",
+     "sha256": "13eddfa71f8d6c8dd94bec08b9951fcfa56819c18f2c4ad6c9b4f73c9483112c",
+     "drawing_sha256": "09b08bfc19fcb69eae46fd9edb82b72360b084803361dbcbe0f749a6f28d3bc2"
+    },
+    "16": {
+     "svg": "work/build/assets/utility/svg-16/20261110_Utility-View-Full-Size-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-View-Full-Size-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-View-Full-Size-16px-2x.png",
+     "line_px": 1.5,
+     "sprite_symbol_id": "oa-sym-u-view-full-size-16px",
+     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-View-Full-Size-Option-A-16px.svg",
+     "source_sha256": "8fc6f0351001c11da0ea4ded43278f4539f60041d28dd0a64c7245e8770dee05",
+     "sha256": "755c4bd00d390012710b6a033bca766eae238a858b063438b7134f999bcf23e6",
+     "drawing_sha256": "6b451270e4f4c3d4e38a894deb1db3622e1187154749c8193f79ca7b19c7ab0f"
+    }
+   }
+  },
+  {
+   "id": "U-sort",
+   "name": "Sort",
+   "drawing": "An up arrow and a down arrow side by side",
+   "approved": {
+    "option": "A",
+    "dr": "DR-177",
+    "family_dr": "DR-161",
+    "board": "Stage B drawings board, card by card, approved by name",
+    "date": "2026-11-10"
+   },
+   "audit_rank": "16",
+   "action": "Sort a column (can sort)",
+   "word": "The column heading's word, on a button inside the th",
+   "word_rule": "The heading's word always shows. The order comes from aria-sort on the th, and a polite status line says it in words (\"Sorted by date, newest first\")",
+   "uses": [
+    "The chapter 27 asset table",
+    "The tracker's list of bills",
+    "The atlas reform list",
+    "A table view of the symbol library"
+   ],
+   "states": "Can sort (this mark). The column in use shows the Arrow turned up or down instead",
+   "target": "The heading button, 44 px tall",
+   "turns_and_mirrors": [],
+   "sizes": {
+    "24": {
+     "svg": "work/build/assets/utility/svg-24/20261110_Utility-Sort-24px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Sort-24px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Sort-24px-2x.png",
+     "line_px": 2.0,
+     "sprite_symbol_id": "oa-sym-u-sort-24px",
+     "source": "work/build/assets/utility-icons/svg-24/20261109_Utility-Sort-Option-A-24px.svg",
+     "source_sha256": "e89776c5c7fd565315c206e1ebf1db069fb203b0a52605224712461d119dc807",
+     "sha256": "0ccae7bcec74d87e7d34e61d2980cf6520104c2781ea8ae7a55095dc95aa9880",
+     "drawing_sha256": "1ff11bd89f5b4cf6c572f04d19722eb93d4141dfda2dd78dda4705fa546e113e"
+    },
+    "16": {
+     "svg": "work/build/assets/utility/svg-16/20261110_Utility-Sort-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Sort-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Sort-16px-2x.png",
+     "line_px": 1.5,
+     "sprite_symbol_id": "oa-sym-u-sort-16px",
+     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Sort-Option-A-16px.svg",
+     "source_sha256": "8c502a063bc0cedb6ba31756190605c96037879ab88094c7b6589d3c3ec9fa20",
+     "sha256": "183e1ff5a1e2f1cba82d68e89b9a0a35c809b7b36b4fb1e4328d848cb45bc1a8",
+     "drawing_sha256": "d51866da3e07ad10b0c4e16734fa3cb091e0a34d5e514e8733e2d9a58c94b989"
+    }
+   }
+  },
+  {
+   "id": "U-warning",
+   "name": "Warning",
+   "drawing": "An exclamation mark in a triangle, in ink",
+   "approved": {
+    "option": "A",
+    "dr": "DR-178",
+    "family_dr": "DR-161",
+    "board": "Stage B drawings board, card by card, approved by name",
+    "date": "2026-11-10"
+   },
+   "audit_rank": "17",
+   "action": "Warning mark",
+   "word": "The notice beside it (\"This record was checked October 15, 2026. The agency may have acted since.\")",
+   "word_rule": "The words always show. The mark is hidden",
+   "uses": [
+    "A record last checked before its latest action",
+    "Data the page could not refresh",
+    "A browser feature the page needs and lacks"
+   ],
+   "states": "None. Drawn in ink, never red. It never marks an evidence grade, a contested link or an Illustrative label, which have their own encodings (chapters 13 and 15)",
+   "target": "Not a target",
+   "turns_and_mirrors": [],
+   "sizes": {
+    "24": {
+     "svg": "work/build/assets/utility/svg-24/20261110_Utility-Warning-24px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Warning-24px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Warning-24px-2x.png",
+     "line_px": 2.0,
+     "sprite_symbol_id": "oa-sym-u-warning-24px",
+     "source": "work/build/assets/utility-icons/svg-24/20261109_Utility-Warning-Option-A-24px.svg",
+     "source_sha256": "f4099026c5153e756ff020ba320cc2a592fe88c3843c68106729ec451d866549",
+     "sha256": "07693eb134f24980a581bb2768f605801ac1e7f99775e62b90808249ed6722eb",
+     "drawing_sha256": "09fcb1db763826e8ad060b893546eb47c393851895c7ded8bfa9ae5de117dc75"
+    },
+    "16": {
+     "svg": "work/build/assets/utility/svg-16/20261110_Utility-Warning-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261110_Utility-Warning-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261110_Utility-Warning-16px-2x.png",
+     "line_px": 1.5,
+     "sprite_symbol_id": "oa-sym-u-warning-16px",
+     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Warning-Option-A-16px.svg",
+     "source_sha256": "018d88f777acd49d490ee5eea0691c38e2583e02fcbff5dd69ed702772912b9e",
+     "sha256": "22681e472a0b646786840d50ef11e869bed1b323885e9558609f2ac866db433d",
+     "drawing_sha256": "e9bf8f597acd12d899c221952ae118a868c2a2e9b1d714a9022cb309edc3bf85"
+    }
+   }
+  }
+ ]
+}
