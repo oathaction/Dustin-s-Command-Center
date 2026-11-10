@@ -156,8 +156,13 @@ def copy(s):
     return re.sub(r'(?<![\w.\-/])-(?=\d)', '−', s)
 
 
+def nw(h):
+    """A drawing's ID, such as CL-054 or R-30, never breaks across two lines."""
+    return re.sub(r'(?<![\w-])((?:CL|R)-\d{1,3})(?![\w-])', r'<span class="nw">\1</span>', h)
+
+
 def esc(s):
-    return html.escape(copy(s), quote=True)
+    return nw(html.escape(copy(s), quote=True))
 
 
 def attr(s):
@@ -178,7 +183,7 @@ def md(s):
     t = html.escape(copy(t), quote=False)
     t = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', t)
     t = re.sub(r'(?<![\w#-])card (\d{1,2})\b', lambda m: f'<a href="#card-{m.group(1)}">card {m.group(1)}</a>' if int(m.group(1)) <= N_CARDS else m.group(0), t)
-    return re.sub(r'\x00(\d+)\x00', lambda m: f'<code>{html.escape(codes[int(m.group(1))])}</code>', t)
+    return nw(re.sub(r'\x00(\d+)\x00', lambda m: f'<code>{html.escape(codes[int(m.group(1))])}</code>', t))
 
 
 def fill(s, extra=None):
@@ -303,6 +308,12 @@ def strip_md(s):
 def letter_of(s):
     m = re.match(r'^\s*(?:Option\s+|Fit\s+|Redraw\s+)?([A-Z])\b', str(s))
     return m.group(1) if m else None
+
+
+def dropped(o):
+    """An option the maker took off the card, as the manifest marks it."""
+    st = str(o.get('status') or o.get('state') or '').lower()
+    return bool(o.get('dropped') or o.get('withdrawn') or st in ('dropped', 'withdrawn', 'removed', 'replaced'))
 
 
 def fits_list(text):
@@ -885,9 +896,24 @@ def build_inputs(C):
     # Housing
     hm_path = one_file(SRC['topics'], '*Housing-Manifest.json', 'the Housing manifest')
     hm = load_json(hm_path, 'the Housing manifest')
+    shown, gone = [], []
     for o in hm['options']:
+        if dropped(o):
+            gone.append(o)
+            continue
         for ed, p in o['svg'].items():
             need((ROOT / p).exists(), f'Housing {o["option"]}: {p} is missing')
+        shown.append(o)
+    need(shown, 'the Housing manifest shows no option')
+    hm = dict(hm, options=shown, withdrawn=gone)
+    notes = SRC['icon_notes'].read_text() if SRC['icon_notes'].exists() else ''
+    reasons = {}
+    for o in gone:
+        m = re.search(rf'\*\*{o["option"]} is withdrawn\.\*\*\s*([^\n]+?\.)(?:\s|$)', notes)
+        reasons[o['option']] = ov(strip_md(m.group(1))) if m else None
+        if not m:
+            warn(f'Housing {o["option"]} is withdrawn in the manifest, and the icon designer’s notes give no reason the build can find')
+    hm['withdrawn_reasons'] = reasons
     I['housing'] = hm
     I['housing_manifest'] = hm_path
     # identity
@@ -1109,7 +1135,7 @@ def housing_card(card, C, I, M, SC):
     # per-option scores: a scores card per option, or options with their own scores inside one card
     per = {}
     for k, v in option_scores(sc_list).items():
-        if letter_of(k):
+        if letter_of(k) in letters:
             per[letter_of(k)] = v
     for c in sc_list:
         m = re.search(r'(?:option|housing)[\s_-]*([A-C])\b', f'{c.get("id", "")} {c.get("title", "")}', flags=re.I)
@@ -1145,6 +1171,9 @@ def housing_card(card, C, I, M, SC):
         else:
             rows.append(('Naming test at 48 px', 'The creative director’s reading is pending.'))
             card['naming_missing'] = True
+        on = next((x for x in sc_list[0].get('options', []) or [] if letter_of(x.get('option')) == L), None) if sc_list else None
+        if on and on.get('note'):
+            rows.append(('The creative director’s note', esc(on['note'])))
         c = lk['closest']
         if c:
             st = M['status'](c['likeness'])
@@ -1160,6 +1189,10 @@ def housing_card(card, C, I, M, SC):
                  f'<div class="stage stage--ch"><p class="st-h">On Charcoal</p>{stage_ch}</div>'
                  f'<p class="ref caption">24 px: reference size only</p>{dl(rows)}</div>')
     body = f'<div class="cols cols--h">{cols}</div>'
+    for o in hm.get('withdrawn', []):
+        r = hm['withdrawn_reasons'].get(o['option'])
+        body += (f'<p class="fewer"><span class="label">Why {num_words(len(letters))} options</span> Option {esc(o["option"])} is withdrawn. '
+                 f'{esc(r) if r else "The icon designer’s reason is not in the notes yet."}</p>')
     # the settled neighbours
     nbs = ''
     for nb in hm.get('neighbors_on_the_board', []):
@@ -1649,6 +1682,7 @@ code{font:500 .875rem/1.4 var(--mono);overflow-wrap:anywhere}
 .n{color:var(--ink-2);font-variant-numeric:tabular-nums}
 .num{font-variant-numeric:tabular-nums}
 .nc{text-transform:none}
+.nw{white-space:nowrap}
 .mast{max-width:none;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:var(--oa-space-100) var(--oa-space-300);
   padding:var(--oa-space-300) 0 var(--oa-space-200);border-bottom:var(--oa-border-width-rule) solid var(--strong)}
 .mast b{font:800 1.25rem/1 var(--oa-font-family-display);letter-spacing:-.01em;white-space:nowrap}
@@ -1754,6 +1788,9 @@ dl.figs .chip{padding:0 4px;margin-left:.2em}
 .fr-ink .num{font-weight:600}.fr-to{color:var(--wink-2)}.fr-sub{display:block;font:var(--oa-type-caption);color:var(--wink-2)}
 .fr-pf,.fr-cd,.fr-ink{font:var(--oa-type-body-small);min-width:0}
 .fr-note{grid-column:1/-1;font:var(--oa-type-body-small);margin:0;max-width:none}.fr-note .label{display:inline;margin-right:.4em}
+.fewer{font:var(--oa-type-body-small);margin-top:var(--oa-space-300);border-top:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-white);padding-top:var(--oa-space-150);max-width:var(--oa-layout-measure-intro-max)}
+.fewer .label{display:block}
+.col--u > .chips{min-height:1.75rem}
 .hold{display:inline-flex;align-items:center;gap:var(--oa-space-100);min-height:var(--oa-size-target-touch);cursor:pointer;font:var(--oa-type-body-small)}
 .hold input{width:20px;height:20px;margin:0;accent-color:var(--oa-color-palette-charcoal)}
 @media (min-width:64em){
@@ -2029,7 +2066,8 @@ def main():
     make_pictures(I, M, a.scratch)
     built = datetime.datetime.now(datetime.timezone.utc)
     FILL.update({'built_date': words_date(built), 'built_time': words_time(built), 'n_fits': len(M['rows']), 'flag': fmt_like(M['flag']),
-                 'watch': fmt_like(M['watch']), 'pairs': f'{M["pairs"]:,}', 'n_masters': I['n_masters']})
+                 'watch': fmt_like(M['watch']), 'pairs': f'{M["pairs"]:,}', 'n_masters': I['n_masters'],
+                 'housing_shown': join_words(o['option'] for o in I['housing']['options'])})
     cards = []
     for n, k in enumerate(CARD_ORDER, 1):
         W = C['cards'][k]

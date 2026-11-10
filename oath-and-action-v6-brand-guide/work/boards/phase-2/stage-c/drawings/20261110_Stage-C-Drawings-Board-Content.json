@@ -79,7 +79,7 @@
    "short": "Housing",
    "title": "Housing, a new topic drawing",
    "lede": [
-    "The guide has no drawing for housing yet. In the Civic Line a lone house already means one household: it is the base of CL-054 Home Equity and the other household drawings, and rows of narrow houses carry Housing Scarcity. So a Housing drawing has to name homes for many households, renters as well as owners, and stay apart from those. The icon designer drew three options in Civic Line's construction.",
+    "The guide has no drawing for housing yet. In the Civic Line a lone house already means one household: it is the base of CL-054 Home Equity and the other household drawings, and rows of narrow houses carry Housing Scarcity. So a Housing drawing has to name homes for many households, renters as well as owners, and stay apart from those. The icon designer drew options in Civic Line's construction, and the card shows {housing_shown}.",
     "Each option shows at 128, 48 and 24 px, the red edition and the black, on Newsprint and on Charcoal. Topic drawings are used from 48 px up, so the 24 px view is a reference size only."
    ],
    "neighbors_title": "Its nearest settled drawings",

@@ -32,17 +32,13 @@
  "sign_off_rule": "A card is ready for the board when every option it shows scores 4 or more on every criterion and nothing is owed to a maker. lowest_score is the lowest score of any option on the card.",
  "naming_test": "The creative director's own reading at 48 px for Housing and 16 px for the utility redraws, with no label shown, standing in for a first-time reader while knowing what each drawing was meant to show. The 37 fits are judged against their masters, part by part.",
  "cards_ready": [
+  "Housing",
   "Utility-16-Pause-Filter",
   "Civic-Line-24-Fits",
   "Print-L3",
   "Social-Sign-Off-96"
  ],
- "cards_waiting": [
-  {
-   "card": "Housing",
-   "waits_on": "Option B redrawn or withdrawn by the icon designer, then rescored here"
-  }
- ],
+ "cards_waiting": [],
  "family_questions": [
   {
    "question": "Should Housing be added to the 24 px list now?",
@@ -118,32 +114,6 @@
       "reason": "The shapes carry the subject in the black edition without red, and the label carries the name, as the system allows for red on Newsprint."
      }
     },
-    "B": {
-     "craft": {
-      "score": 4,
-      "reason": "The cleanest symmetric drawing of the three, at the capped fit, holding at 128 px and 2x."
-     },
-     "clarity": {
-      "score": 3,
-      "reason": "Reads first as one large house, the collision the meaning note sets out to avoid, and then as a school or town hall: its red arched door is the sign CL-031 Local Government and R-31 Childcare Supply use for a public building."
-     },
-     "brand_fidelity": {
-      "score": 4,
-      "reason": "One red accent, the door, about 10 percent of its ink; in the set's hand."
-     },
-     "usefulness": {
-      "score": 4,
-      "reason": "Four editions, 12 tiles at the 48 px bare floor, PNGs at 128 and 256 px, previews beside the neighbors and a manifest; every tile keeps at least 21 units to its edge."
-     },
-     "evidence_honesty": {
-      "score": 4,
-      "reason": "The meaning note comes from the atlas model by script and names its one outside source with a read date; the naming test is labeled as one reader; the likeness figures match my rerun."
-     },
-     "accessibility": {
-      "score": 4,
-      "reason": "The shapes carry the subject in the black edition without red, and the label carries the name, as the system allows for red on Newsprint."
-     }
-    },
     "C": {
      "craft": {
       "score": 4,
@@ -171,8 +141,7 @@
      }
     }
    },
-   "lowest_score": 3,
-   "lowest_score_note": "Option B's clarity. The card waits until B is redrawn or withdrawn.",
+   "lowest_score": 4,
    "recommended": {
     "option": "A",
     "reason": "A names housing for renters and owners alike, homes of more than one kind, and keeps furthest from the drawings where a house means one household (0.501 against CL-054, 0.251 against CL-053, 0.290 against R-30). The lit red window is a precise use of the accent."
@@ -182,11 +151,6 @@
      "option": "A",
      "real_choice": true,
      "note": "Homes of more than one kind: an apartment block and a house on one ground line, red on one window."
-    },
-    {
-     "option": "B",
-     "real_choice": true,
-     "note": "One apartment house; it reads as one house or a public building and goes back to the icon designer."
     },
     {
      "option": "C",
@@ -203,13 +167,6 @@
      "against_CL_054_Home_Equity": 0.501
     },
     {
-     "option": "B",
-     "closest": "CL-033 Hostile Content",
-     "likeness": 0.659,
-     "percentile": 33.9,
-     "against_CL_054_Home_Equity": 0.482
-    },
-    {
      "option": "C",
      "closest": "CL-022 Act",
      "likeness": 0.656,
@@ -218,9 +175,7 @@
     }
    ],
    "between_options": {
-    "A and B": 0.452,
-    "A and C": 0.431,
-    "B and C": 0.165
+    "A and C": 0.431
    },
    "naming_test": [
     {
@@ -230,31 +185,45 @@
      "maker_verdict": "\"Housing\" or \"homes\"; at worst \"neighborhood\""
     },
     {
-     "option": "B",
-     "creative_director_reading": "A large house with an arched door; after that, a school or a town hall",
-     "creative_director_verdict": "Names something else",
-     "maker_verdict": "\"Apartment building\"; at worst \"house\" or \"school\""
-    },
-    {
      "option": "C",
      "creative_director_reading": "A house key: a home, or owning one; at 24 px a house on a post, like a birdhouse",
      "creative_director_verdict": "Names it nearly",
      "maker_verdict": "\"House key\", which a reader may call \"home\" or \"real estate\""
     }
    ],
-   "must_fix": [
-    "Icon designer, option B (clarity 3). Redraw B so it reads as homes for more than one household and stops reading as one house or a public building. Keep the pitched roof, the ground line and the three floors. Replace the single red arched door with two plain square-headed doors side by side at the ground line, red on one, with a column of two windows over each, so the front reads as two homes under one roof. Keep it clear of CL-031's and R-31's arched red doorway and of CL-054's single house, and keep the line, the cap and 21 units to every tile edge. Rerun the likeness check against the set and against A and C, and give your naming reading at 48 px. If the redraw still reads first as one house at 48 px, withdraw B and let the card show A and C with the reason printed, as the stage B short cards did."
-   ],
+   "must_fix": [],
    "should_fix": [
-    "Board builder. Print each option's naming reading, closest settled drawing with its figure and six scores. If B is withdrawn, print the reason in one sentence."
+    "Board builder. Print each option's naming reading, closest settled drawing with its figure and six scores, and the withdrawal line for B."
    ],
-   "notes": "The naming test is my reading at 48 px with no label; I had read the designer's notes, so I knew what each option was meant to show. Housing has no 24 px fit and stays at 48 px and up until Dustin adds it to the list of 41 (the designer's question 5, which I agree with). Red shares are my approximate measure at 256 px, not one of the studio's checks.",
+   "notes": "Fix round: B redrawn as instructed (two square-headed doors under one roof, red on the left) and withdrawn by the icon designer, since at 48 px it still reads first as one house; I looked at the redraw and agree. Two options, below DR-146's three, with the reason printed. A's and C's files are unchanged. The naming test is my reading at 48 px with no label; I had read the designer's notes, so I knew what each option was meant to show. Housing has no 24 px fit and stays at 48 px and up until Dustin adds it to the list of 41 (the designer's question 5, which I agree with). Red shares are my approximate measure at 256 px, not one of the studio's checks.",
    "risks": [
     "A shares a composition with CL-051 Market Power, a tall windowed block beside lower buildings on one ground line (0.690, the median of the set); in the black edition a reader who knows CL-051 may see a big building beside a small home.",
     "C leans to \"home\", and the set already uses a key for control over your data (CL-047 in red, R-37); picking C puts two meanings on one sign.",
     "Housing cannot sit in a kicker until Dustin adds it to the list of 41 and its 24 px fit is drawn."
    ],
-   "ready_for_board": false
+   "ready_for_board": true,
+   "withdrawn": [
+    {
+     "option": "B",
+     "withdrawn_by": "Icon designer, fix round",
+     "reason_for_the_board": "A third option, an apartment house under one roof, was withdrawn because at 48 px it still reads first as one house.",
+     "creative_director_reading_of_the_redraw": "A tall house with windows; the two doors read as a two-family house only on a second look",
+     "creative_director_verdict": "Names something else; I agree with the withdrawal",
+     "redraw_figures_from_the_notes": {
+      "closest": "CL-065 Climate & Insurance 0.614",
+      "against_CL_031": 0.419,
+      "against_R_31": 0.286,
+      "against_CL_054": 0.398,
+      "against_A": 0.359,
+      "against_C": 0.028
+     },
+     "round_0_clarity": {
+      "score": 3,
+      "reason": "Reads first as one large house, the collision the meaning note sets out to avoid, and then as a school or town hall: its red arched door is the sign CL-031 Local Government and R-31 Childcare Supply use for a public building."
+     }
+    }
+   ],
+   "changed_in_fix_round": true
   },
   {
    "order": 2,
@@ -448,7 +417,8 @@
     "The Play and Pause toggle changes width by 3 px at 16 px where it changed by 1.",
     "Filter A's half-pixel offset; Filter B's soft outline."
    ],
-   "ready_for_board": true
+   "ready_for_board": true,
+   "changed_in_fix_round": false
   },
   {
    "order": 3,
@@ -895,7 +865,8 @@
     "R-06 is flagged against R-41 (0.917) and R-44 (0.915), as its master is (0.937 and 0.964).",
     "The fits have not been seen on real screens or in forced colors."
    ],
-   "ready_for_board": true
+   "ready_for_board": true,
+   "changed_in_fix_round": false
   },
   {
    "order": 4,
@@ -994,7 +965,8 @@
     "The print L3 matches the masthead in proportion only; the masthead's pixel lockmark stays heavier at its 282 px.",
     "Measured as a PDF raster, not printed on paper."
    ],
-   "ready_for_board": true
+   "ready_for_board": true,
+   "changed_in_fix_round": false
   },
   {
    "order": 5,
@@ -1100,7 +1072,8 @@
     "No real feed or thumbnail service was tested; the counts come from Chromium and Pillow.",
     "Not tested on White or Prussian cards."
    ],
-   "ready_for_board": true
+   "ready_for_board": true,
+   "changed_in_fix_round": false
   }
  ],
  "back_to_maker": [
@@ -1110,7 +1083,8 @@
    "drawing": "Option B",
    "criterion": "clarity",
    "score": 3,
-   "instruction": "Icon designer, option B (clarity 3). Redraw B so it reads as homes for more than one household and stops reading as one house or a public building. Keep the pitched roof, the ground line and the three floors. Replace the single red arched door with two plain square-headed doors side by side at the ground line, red on one, with a column of two windows over each, so the front reads as two homes under one roof. Keep it clear of CL-031's and R-31's arched red doorway and of CL-054's single house, and keep the line, the cap and 21 units to every tile edge. Rerun the likeness check against the set and against A and C, and give your naming reading at 48 px. If the redraw still reads first as one house at 48 px, withdraw B and let the card show A and C with the reason printed, as the stage B short cards did."
+   "instruction": "Icon designer, option B (clarity 3). Redraw B so it reads as homes for more than one household and stops reading as one house or a public building. Keep the pitched roof, the ground line and the three floors. Replace the single red arched door with two plain square-headed doors side by side at the ground line, red on one, with a column of two windows over each, so the front reads as two homes under one roof. Keep it clear of CL-031's and R-31's arched red doorway and of CL-054's single house, and keep the line, the cap and 21 units to every tile edge. Rerun the likeness check against the set and against A and C, and give your naming reading at 48 px. If the redraw still reads first as one house at 48 px, withdraw B and let the card show A and C with the reason printed, as the stage B short cards did.",
+   "status": "Closed in the fix round: B redrawn as instructed, then withdrawn by the icon designer; the creative director agrees."
   }
  ],
  "routine_calls": [
@@ -1126,13 +1100,30 @@
   "D2-xxx | Red share of ink is my approximate measure at 256 px on white | Enough to place each Housing option within the set's range; it is not one of the studio's checks",
   "D2-xxx | Evidence honesty scores 5 on cards 3 and 5 | Every figure I reran matches exactly, and each maker states what was not tested"
  ],
- "rescore": null,
+ "rescore": {
+  "date": "2026-11-10",
+  "basis": "The icon designer's fix round on Housing B (20261110_Stage-C-Drawings-Notes.md, \"Fix round\"; the Housing manifest marks B withdrawn)",
+  "summary": "Every card scores 4 or more on every criterion it shows and nothing is owed to a maker, so all five are ready for the board. Card 1 shows A and C, with B withdrawn and its one-line reason printed. The recommendation stays A.",
+  "cards_rescored": [
+   "Housing"
+  ],
+  "tested": [
+   "The redrawn B at 128, 48 and 24 px on Newsprint and Charcoal at device scale 1 and 2, beside CL-031, R-31, CL-054, R-30 and CL-052, with my naming reading at 48 px"
+  ],
+  "not_tested": [
+   "The likeness and pixel fit checks on the redrawn B, which is withdrawn",
+   "Any first-time reader's naming of the redraw"
+  ]
+ },
  "change_log": {
   "created": [
    "work/handoffs/phase-2/20261110_CD-Review-Of-Stage-C-Drawings.md",
    "work/boards/phase-2/stage-c/drawings/20261110_CD-Scores.json"
   ],
-  "modified": [],
+  "modified": [
+   "work/handoffs/phase-2/20261110_CD-Review-Of-Stage-C-Drawings.md (rescore section added)",
+   "work/boards/phase-2/stage-c/drawings/20261110_CD-Scores.json (updated in place)"
+  ],
   "scratch": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/cd/",
   "committed_or_pushed": false
  }
