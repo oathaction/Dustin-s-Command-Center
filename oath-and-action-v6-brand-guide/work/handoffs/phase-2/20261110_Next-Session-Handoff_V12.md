@@ -1,6 +1,6 @@
 # Handoff for the next session: Oath & Action Edition 06 (twelfth handoff, November 10)
 
-Written November 10, 2026, after stage B's round 3 and board B. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `20261110_Next-Session-Handoff_V11.md`. V5's sections 3 to 5, V8's section 3, V9's section 3, V10's section 3 and V11's section 3 still hold, with the additions below. Decision log entries for this chat run from DR-190 to DR-201 and from D2-954 to D2-1111. The change ledger ends at C-064.
+Written November 10, 2026, after stage B's round 3 and board B. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `20261110_Next-Session-Handoff_V11.md`. V5's sections 3 to 5, V8's section 3, V9's section 3, V10's section 3 and V11's section 3 still hold, with the additions below. Decision log entries for this chat run from DR-190 to DR-202 and from D2-954 to D2-1114. The change ledger ends at C-064.
 
 ## 1. Where things stand
 
@@ -8,8 +8,8 @@ Written November 10, 2026, after stage B's round 3 and board B. A new session re
 |---|---|---|
 | Board B decisions board | https://claude.ai/artifact/MV5dR1EXqj6ZH4dsbqck4i | Version 1 (1794330406-686e). Answered: all as recommended (DR-199 to DR-201) |
 | Chapters page (01 to 12, identity proofs) | https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF | Version 5 (1794330328-df6c), after round 3, with the `downloads` capability and runtime 0.2.96 (D2-1107) |
-| Combined reader check | https://claude.ai/artifact/H3APDgNH1wGb5HHvf33f6X | Version 1 (1794330271-788f). Published; Dustin sends the invitation printed on board B |
-| Reader check, first page | https://claude.ai/artifact/16SD4uFJTiHKJC5p9CaFpP | Never sent. Deleted once Dustin has sent the new link and confirms (DR-194) |
+| Combined reader check | https://claude.ai/artifact/H3APDgNH1wGb5HHvf33f6X | Struck from the plan (DR-202). Private and unsent; deleted only if Dustin asks |
+| Reader check, first page | https://claude.ai/artifact/16SD4uFJTiHKJC5p9CaFpP | Struck from the plan (DR-202). Private and unsent; deleted only if Dustin asks |
 | Stage B drawings board | https://claude.ai/artifact/WdVDNfjE8cMGw1WAY68hmM | Answered (DR-156 to DR-182) |
 
 All three board B pages are private to Dustin until he shares them. `work/boards/phase-2/stage-b/board-b/20261110_Published-Pages.json` records each address, version and declaration.
@@ -32,15 +32,13 @@ All three board B pages are private to Dustin until he shares them. `work/boards
 ### A. Board B's answers, done
 Dustin answered "All as recommended" (DR-199 to DR-201): option A for the error mark by name, the one-color tile exception kept in Rule 10.5, and the four calls standing. Nothing needed rebuilding (D2-1110). If an answer is ever changed, the owners and generators are: the error mark in `apply_systems_ch11.py` and `stage_a_systems_ch05.py`; the tiles in `stage_b_ch10_build.py`. Republish the chapters page with V9's steps (section 3).
 
-### B. The reader check (start here)
-- Dustin pastes the invitation from board B to five to eight people who have never seen the brand.
-- Saved answers: `ArtifactData` `list` on the collection `responses` at https://claude.ai/artifact/H3APDgNH1wGb5HHvf33f6X. Readers outside Dustin's organization use copy mode and send their text to him.
-- The answer key is `work/boards/phase-2/reader-check-2/20261110_Reader-Check-2-Answer-Key.json`; it was never published.
-- Once he confirms he has sent the link, delete the first reader check page (DR-194); he confirms the delete itself.
+### B. Reader tests, struck
+Dustin will run no reader tests before launch (DR-202). The guide ships and learns from readers after. Questions once meant for readers are settled by the studio's reviews and the creative director, and reach Dustin on a board where they need his call (D2-1114). The reader check's files stay as the record (D2-1113).
 
-### C. Carried items
+### C. Carried items (start here)
 - **Missouri:** read the certified result before the guide is final (D2-838). Counties file by November 17, then the state board has two weeks.
 - **Research:** Virginia's 2025 House of Delegates party count; Tangipa v. Newsom's January 14, 2026 order and Ohio's commission minutes (D2-968).
+- **Rule 12.4's patterns:** the creative director found they read as stock arcs with the wordmark covered; judge them at stage C, keep or retire (D2-1114).
 - **Drawings board:** 28 editor overrides now match nothing; remove them at that board's next rebuild, or `--strict` stops (D2-967).
 
 ### D. Stage C, then Gate 2
@@ -55,7 +53,7 @@ Dustin answered "All as recommended" (DR-199 to DR-201): option A for the error 
 - **Scratchpad paths.** This chat's briefs name its own scratchpad. A new chat has a different one: give agents the new path.
 - **The generator chain** (D2-1100), from the project folder, each with `python3 -I work/build/scripts/phase-2/`: `apply_systems_ch11.py`, `stage_b_ch10_build.py --no-draw`, `stage_b_ch12_systems_build.py`, `promotion_identity.py specimens`, `guide_editor_build.py`, `stage_b_identity_ch01.py`. Run in that order after any owner's change; a clean `git status` afterward proves nothing crossed. `stage_a_systems_build.py` runs in two steps (`probe`, then `final`, each with `--out-dir`) and is needed only after a change to chapters 05 to 07.
 - **Tokens:** `node scripts/phase-2/tokens_build.mjs` from `work/build`, then `python3 -I work/build/tests/tokens/run_token_tests.py`.
-- **Checks:** `guide_check.js` on the built page (about 10 minutes for four widths), `sprite_check.js`, and the reader check's `test_reader_check_2.js` from its folder.
+- **Checks:** `guide_check.js` on the built page (about 10 minutes for four widths), `sprite_check.js`, and, only if the reader check page is ever changed, its `test_reader_check_2.js` from its folder.
 - **Republishing the chapters page.** V9's steps held: the first publish is refused and saves the live version; diff it against the commit it was built from (only the host's wrapper should differ); read its last ten lines with the Read tool; the second publish is refused again; the third goes through. Omit `capabilities` and `contract` on a later republish to keep `downloads` and 0.2.96.
 - **The host's downloads call** saves only gif, png, jpg, jpeg, webp, mp4, webm, mov, txt, json, md, docx, pptx, epub, csv, ttf, html, svg, pdf, xlsx, zip and fig. A `.css` is refused, hence the zip (D2-964).
 - **U+2011.** Inter as the page loads it has no glyph for the non-breaking hyphen, and a copied or searched ID with it matches no file name. The build writes IDs with an ASCII hyphen in a no-wrap span, and the guide check fails on any U+2011 left (D2-975).
@@ -73,9 +71,9 @@ Before you do anything else, read these in order:
 
 Nonpartisan means one standard of evidence for everyone, with findings reported as the record shows them, even when they fall more on one side (DR-93). Never manufacture balance.
 
-Settled and not to be changed: the Civic Line icons, which are final and approved (DR-144), with the redraws and new drawings I approved on the drawings board (DR-156 to DR-182); the atlas visual system (System 1, DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and Phase 3 build order (DR-62, DR-63); the chart rules of DR-64; chapter 02's writing rules (DR-73 to DR-83); and every answer I have given from DR-95 to DR-201.
+Settled and not to be changed: the Civic Line icons, which are final and approved (DR-144), with the redraws and new drawings I approved on the drawings board (DR-156 to DR-182); the atlas visual system (System 1, DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and Phase 3 build order (DR-62, DR-63); the chart rules of DR-64; chapter 02's writing rules (DR-73 to DR-83); and every answer I have given from DR-95 to DR-202.
 
-Board B is answered (DR-199 to DR-201). Pick up the reader check and the carried items as the twelfth handoff orders, then plan stage board C.
+Board B is answered (DR-199 to DR-201), and there will be no reader tests (DR-202). Pick up the carried items as the twelfth handoff orders, then plan stage board C.
 
 The bar for everything: a finished product that looks like it was made by the best branding and design firm in the world. Use specialized agents, red team reviews and the creative director's scoring, as the handoffs describe.
 
@@ -97,7 +95,7 @@ Created, all under `work/`:
 - **Board B:** `boards/phase-2/stage-b/board-b/` (the board, its content JSON, check results, `img/` and `20261110_Published-Pages.json`) and `build/scripts/phase-2/stage_b_board_b_build.py`.
 
 Modified:
-- `ledger/20261020_Decision-Log.md` (DR-190 to DR-201, D2-954 to D2-1111) and `ledger/20261020_Change-Ledger.md` (C-057 to C-064).
+- `ledger/20261020_Decision-Log.md` (DR-190 to DR-202, D2-954 to D2-1114), `ledger/20261020_Change-Ledger.md` (C-057 to C-064) and `ledger/20261020_Open-Questions.md` (Q-13).
 - The owners' generators and their outputs: chapters 01, 03, 04, 05, 06, 08 and 09 to 12, their specimens and the three manifests.
 - The shell (`guide-shell.css`, `guide-shell.js`), `guide_build.py`, `guide_check.js`, the token source and its build (6.0.0-gate2.6).
 - The reader check page, its template, build and test scripts and the questions file.

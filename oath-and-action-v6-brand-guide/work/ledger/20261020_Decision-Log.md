@@ -2147,3 +2147,17 @@ Dustin, replying to board B (https://claude.ai/artifact/MV5dR1EXqj6ZH4dsbqck4i):
 |---|---|---|
 | D2-1110 | Board B's answers change no file: the page as published at version 5 already draws option A and states the tile exception, so nothing is rebuilt or republished | Both decisions confirm what was built |
 | D2-1111 | The first reader check page waits for Dustin to say he has sent the new link, then for his confirmation of the delete (DR-194) | His reply answered the board's two decisions and named no send |
+
+## Dustin's direction on reader tests, November 10, 2026
+
+Dustin: "I'm not going to do any reader tests, so just strike that from this thing. I'm building this. I'm putting it out into the world, and then I'll go from there."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-202 | No reader tests before launch. The combined reader check is struck from the plan: no invitation goes out, and nothing waits on readers' answers. This retires the reader check parts of DR-68, DR-143, DR-148, DR-188, DR-189 and DR-194. The guide learns from readers after it ships | Dustin, November 10 |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1112 | No guide page or specimen mentions a reader test, so no chapter changes. The two published reader check pages (https://claude.ai/artifact/16SD4uFJTiHKJC5p9CaFpP and https://claude.ai/artifact/H3APDgNH1wGb5HHvf33f6X) stay private and unsent until Dustin asks for them to be deleted; each delete needs his confirmation | A published page is deleted only at his request |
+| D2-1113 | The reader check's files in `work/boards/phase-2/reader-check/` and `reader-check-2/` stay as the record | They hold the questions, the answer key and the tested page if Dustin ever wants a reader test after launch |
+| D2-1114 | Questions the studio meant to settle with readers are settled by the studio's own reviews and the creative director, and go to Dustin on a board where they need his call. The first is Rule 12.4's two hinge patterns (the creative director's risk note), judged at stage C | DR-202 |
