@@ -6,9 +6,234 @@
   "instruction": "Add dividers, frames, markers and watermarks only where they help someone read.",
   "intro": [
     "A graphic device is a mark that helps a reader find their way: a divider between sections, a watermark, a marker on the place a reform acts, a key, a locator, a frame around a process. Each one has a job, and the page leaves it out where that job is already done.",
-    "Rules 12.5 to 12.9 cover the devices that explain a system: the intervention marker, chart keys, locators, the layer diagram and the frame that names who owns each step."
+    "Rules 12.1 to 12.4 cover the devices that divide and sign a page: hairlines, watermarks, the compact signature and two patterns drawn from the hinge. Rules 12.5 to 12.9 cover the devices that explain a system: the intervention marker, chart keys, locators, the layer diagram and the frame that names who owns each step."
   ],
   "rules": [
+    {
+      "id": "12.1",
+      "title": "Divide sections with a Stone hairline.",
+      "rule": "Between the sections and modules of a page, draw a 1 px hairline in the surface’s hairline color: Stone on Newsprint, White and Charcoal, and White on Prussian. Run it the width of the column it divides, with 24 px above and below. Where an article turns from how a decision is made to what a reader can do, the hinge divider takes the hairline’s place (Rule 04.4). Draw every divider solid.",
+      "tokens": [
+        "oa.color.border.hairline.onNewsprint",
+        "oa.color.border.hairline.onPrussian",
+        "oa.border.width.hairline",
+        "oa.space.300"
+      ],
+      "why": {
+        "text": "A hairline separates two sections without weight, so the words carry the structure and the page stays calm. In our atlas a dashed line marks a plausible link, so a dashed divider would read as a claim about the evidence. A hairline carries no meaning, so it needs no contrast ratio (Rule 05.5).",
+        "basis": "Design judgment, carried from our fifth edition’s Stone hairlines"
+      },
+      "correct": {
+        "specimen": "s-12-divider-correct",
+        "caption": "An article on a town budget at true size: a Stone hairline between its first two sections, the hinge divider before What you can do, and below, the hairline on each of the four surfaces."
+      },
+      "failure": {
+        "specimen": "s-12-divider-failure",
+        "caption": "The same article divided by dashed lines. The breaks now read as a key’s mark for a plausible link, and the turn to the reader’s step loses its divider."
+      },
+      "specs": [
+        {
+          "label": "Line",
+          "value": "1 px, solid",
+          "token": "oa.border.width.hairline"
+        },
+        {
+          "label": "Color",
+          "value": "Stone on Newsprint, White and Charcoal; White on Prussian",
+          "token": "oa.color.border.hairline.onNewsprint"
+        },
+        {
+          "label": "Length",
+          "value": "The width of the column it divides"
+        },
+        {
+          "label": "Space",
+          "value": "24 px above and below",
+          "token": "oa.space.300"
+        },
+        {
+          "label": "The turn to a reader’s step",
+          "value": "The hinge divider (Rule 04.4)"
+        },
+        {
+          "label": "Never",
+          "value": "Dashed, dotted, doubled, red or shadowed"
+        }
+      ],
+      "files": [],
+      "related": [
+        "04",
+        "05",
+        "07"
+      ],
+      "builders": "Draw the hairline as a 1 px top border on the section that follows, in the surface’s hairline token, so it follows the column’s width with no image."
+    },
+    {
+      "id": "12.2",
+      "title": "Set a watermark in an open margin, at its token opacity.",
+      "rule": "A watermark is ampersand B, drawn large from its display master and faint: Charcoal at 8 percent on Newsprint and White, and Newsprint at 10 percent on Charcoal and Prussian. It sits in an open margin of a report page or a dark section opener, and it may run off the page’s edge. It never sits behind words, a figure or a control. It counts as the view’s one ampersand moment (Rule 04.2), so a page with a hinge headline takes no watermark.",
+      "tokens": [
+        "oa.opacity.watermarkOnLight",
+        "oa.opacity.watermarkOnDark"
+      ],
+      "why": {
+        "text": "At 8 and 10 percent the mark measures 1.17 and 1.24 to 1 against its page, too faint to carry meaning, so it signs the page and asks nothing of the reader. Kept to an open margin, it never lowers the contrast of anything a reader needs. These two opacities are the only ones a page may use (Rule 05.6).",
+        "basis": "Design judgment, carried from our fifth edition’s quiet signatures; the opacities are tokens"
+      },
+      "correct": {
+        "specimen": "s-12-watermark-correct",
+        "caption": "A report page on Newsprint and a section opener on Charcoal at true size, each with B in its open right margin, running off the edge."
+      },
+      "failure": {
+        "specimen": "s-12-watermark-failure",
+        "caption": "The report page with the watermark moved behind its heading and paragraph. Its edges cross the letters, and the words lose the clean ground they need."
+      },
+      "specs": [
+        {
+          "label": "Mark",
+          "value": "Ampersand B, from its display master"
+        },
+        {
+          "label": "On Newsprint and White",
+          "value": "Charcoal at 0.08, 1.17 to 1",
+          "token": "oa.opacity.watermarkOnLight"
+        },
+        {
+          "label": "On Charcoal and Prussian",
+          "value": "Newsprint at 0.10, 1.24 to 1",
+          "token": "oa.opacity.watermarkOnDark"
+        },
+        {
+          "label": "Size",
+          "value": "At least half the page’s height; it may run off any edge"
+        },
+        {
+          "label": "Place",
+          "value": "An open margin of a report page or a section opener"
+        },
+        {
+          "label": "Never",
+          "value": "Behind words, a figure or a control; in red; beside a hinge headline, a crop of B or a pattern"
+        }
+      ],
+      "files": [
+        "work/build/assets/identity/ampersand/20261028_Amp-B-Display-Master.svg"
+      ],
+      "related": [
+        "04",
+        "05",
+        "24"
+      ],
+      "builders": "Set the opacity on the mark from its token, and place the mark in its own layer, outside the text column and hidden from assistive technology."
+    },
+    {
+      "id": "12.3",
+      "title": "Sign a small header or a video’s corner with L8 at full strength.",
+      "rule": "Where a page or a frame has room only for a small mark, such as a report’s running head or the corner of a video, sign it with L8, the monogram, opaque, from its 48 px minimum, in its colors for the surface (Rule 03.5). In a video, set it 24 px in from the frame’s edges.",
+      "tokens": [
+        "oa.color.identity.signature.onWhite",
+        "oa.color.identity.signature.onCharcoal"
+      ],
+      "why": {
+        "text": "A watermark shrunk to a corner falls under what an eye, or a compressed video, can hold, and it stops signing anything. At full strength and at its minimum, L8 keeps every letter and the ampersand’s two counters (Rule 03.4).",
+        "basis": "Design judgment, from our fifth edition’s quiet signatures"
+      },
+      "correct": {
+        "specimen": "s-12-signature-correct",
+        "caption": "A report’s running head on White with L8 at 48 px wide, and a still from an explainer video on Charcoal with L8 in its top right corner."
+      },
+      "failure": {
+        "specimen": "s-12-signature-failure",
+        "caption": "The video still with L8 at a watermark’s 10 percent. In the corner of a moving picture the mark all but vanishes."
+      },
+      "specs": [
+        {
+          "label": "Mark",
+          "value": "L8, the monogram"
+        },
+        {
+          "label": "Size",
+          "value": "From 48 px wide (Rule 03.4)"
+        },
+        {
+          "label": "Color",
+          "value": "Rule 03.5: Charcoal with its red ampersand on Newsprint and White, Newsprint with it on Charcoal, all White on Prussian"
+        },
+        {
+          "label": "In a video",
+          "value": "24 px in from the frame’s top and side edges"
+        },
+        {
+          "label": "Never",
+          "value": "At a watermark’s opacity, or as an avatar or a favicon"
+        }
+      ],
+      "files": [
+        "work/build/assets/identity/lockups/20261028_L8-Monogram-Master.svg",
+        "work/build/assets/identity/prussian/20261028_L8-Monogram-Master-Prussian-White.svg"
+      ],
+      "related": [
+        "03",
+        "23",
+        "24"
+      ],
+      "builders": "Export the video’s signature as a PNG at twice its size from the L8 master, with its colors written in, and keep it in the same corner for the whole video."
+    },
+    {
+      "id": "12.4",
+      "title": "Use a pattern only in an open area, away from words.",
+      "rule": "Two patterns, both drawn from the hinge, may give a cover, an opener or a social background texture. The hinge arcs spread from a corner at the radii of the hinge diagram’s ring and arcs, carried on in equal steps. The hinge rules repeat the hinge divider’s line every 12 px. Each runs 1 px in the surface’s hairline color, covers no more than 12 percent of the area it fills, and stops short of any words, figure or control.",
+      "tokens": [
+        "oa.color.border.hairline.onNewsprint",
+        "oa.border.width.hairline"
+      ],
+      "why": {
+        "text": "A pattern gives an empty area texture without a picture, and drawn from the hinge it adds no new shape for a reader to learn. Behind words, even a faint pattern adds edges the eye has to sort from the letters, so it stays where nothing is read. The arcs cover 5.5 percent of their area and the rules 8.3 percent.",
+        "basis": "Design judgment and our measurements, October and November 2026; the 12 percent ceiling is a studio threshold"
+      },
+      "correct": {
+        "specimen": "s-12-pattern-correct",
+        "caption": "Two report covers at true size, the title at top left, one with the hinge arcs spreading from the bottom right corner and one with a block of hinge rules in the lower right."
+      },
+      "failure": {
+        "specimen": "s-12-pattern-failure",
+        "caption": "The same covers with each pattern behind the title and the paragraph. The lines cross the letters and the words lose their clean ground."
+      },
+      "specs": [
+        {
+          "label": "Hinge arcs",
+          "value": "Circles from a corner at 2, 3, 4 and more steps of 16 px, 1 px wide"
+        },
+        {
+          "label": "Hinge rules",
+          "value": "1 px lines every 12 px"
+        },
+        {
+          "label": "Color",
+          "value": "The surface’s hairline color: Stone on Newsprint, White and Charcoal; no pattern on Prussian",
+          "token": "oa.color.border.hairline.onNewsprint"
+        },
+        {
+          "label": "Coverage",
+          "value": "At most 12 percent of the area the pattern fills, measured on a render"
+        },
+        {
+          "label": "Clearance",
+          "value": "At least 24 px from any words, figure or control"
+        },
+        {
+          "label": "Never",
+          "value": "Behind words; in red; dotted or dashed; with a watermark or a crop of B in the same view"
+        }
+      ],
+      "files": [],
+      "related": [
+        "04",
+        "05",
+        "07"
+      ],
+      "builders": "Draw a pattern as an SVG in the hairline token, sized to the open area it fills, and keep it out of the layer that holds the words."
+    },
     {
       "id": "12.5",
       "title": "Mark where a reform acts with the atlas’s red target, and with nothing else in red.",
@@ -22,7 +247,7 @@
       ],
       "why": {
         "text": [
-          "Red means one thing across the atlas: this is where a reform acts. It never marks a problem or a bad step, so a reader of any party can follow the mechanism without being told which outcome to dislike. The heavier weight and the note carry the meaning when red is gone, in gray print or beside an error. Pillar Red measures 2.96 to 1 on Newsprint, so the Charcoal edge keeps the red line at 13.29 to 1 against the page."
+          "Red means one thing across the atlas: this is where a reform acts. It never marks a problem or a bad step, so a reader of any party can follow the mechanism without being told which outcome to dislike. The heavier weight and the note carry the meaning when red is gone, in gray print or beside an error. Pillar Red measures 2.96 to 1 on Newsprint, so a 1 px Charcoal edge, at 13.29 to 1, outlines the red line against the page."
         ],
         "basis": "Design judgment, from the atlas’s visual system"
       },
@@ -126,8 +351,8 @@
       "id": "12.7",
       "title": "Show where a view sits in the whole with a small locator in ink.",
       "rule": [
-        "A view that shows part of a larger whole carries a locator at its top right: the whole in small, with the current part filled in Charcoal and the rest in a light ground. In the atlas the locator is the atlas’s parts and links back to the overview. In a state story it is the 50-state tile grid.",
-        "The locator is always ink. It never takes red."
+        "A view that shows part of a larger whole carries a locator at its top right: the whole in small, with the current part filled in Charcoal and the rest in a light ground. In the atlas, the locator draws the atlas’s parts and links back to the overview. In a state story it is the 50-state tile grid.",
+        "The locator stays in ink and never takes red."
       ],
       "tokens": [
         "oa.color.graphic.essential.onNewsprint",
@@ -276,6 +501,14 @@
   ],
   "related_chapters": [
     {
+      "chapter": "04",
+      "reason": "The hinge divider, the hinge diagram and the large crop of B."
+    },
+    {
+      "chapter": "03",
+      "reason": "L8, the monogram, and the colors of every mark."
+    },
+    {
       "chapter": "05",
       "reason": "One working red in each view, and which red yields."
     },
@@ -296,5 +529,12 @@
       "reason": "The atlas, with its locator on every view."
     }
   ],
-  "extras": []
+  "extras": [
+    {
+      "after_rule": "12.1",
+      "specimen": "s-12-index",
+      "label": "Every graphic device and its rule",
+      "caption": "The devices this guide sets, the job of each and the rule that sets it."
+    }
+  ]
 }

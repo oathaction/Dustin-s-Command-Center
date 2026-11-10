@@ -54,6 +54,15 @@ const SYMBOLS = ['CL-025', 'CL-073', 'CL-074', 'R-02'];
 // What counts as a pass, from the editor's table. A symbol with no row here builds, and its key entry says the
 // editor's row is still to come and reads the answer against the meaning sentence meanwhile (DR-189).
 const SYMBOL_PASS = {
+  // the editor's rows for Dustin's four (DR-189), with the answers that go to Dustin in the reader's own words
+  'CL-025': { pass: 'Names Congress, the House or the Senate', partly: 'Names a legislature, a parliament, lawmakers or a chamber in session, such as "a legislature voting"',
+    to_dustin: 'A court, a stadium or a theater audience, or any answer that names one party',
+    expect: 'The creative director found that no Congress drawing names Congress without its label, and that the label makes it land (D2-620). Congress will likely draw more partial answers than full ones, and a partial answer still shows the drawing points the reader at the right word.' },
+  'CL-073': { pass: 'Names testifying or giving testimony, speaking at a hearing, or a witness before a committee or a panel', partly: 'Names a hearing, a committee or a panel, or someone speaking at a microphone, without the person who testifies',
+    to_dustin: 'A court or a trial, a judge, or a debate between candidates' },
+  'CL-074': { pass: 'Names contacting, calling, writing to or visiting an official, a representative or their office', partly: 'Names sending a message, giving feedback or making a complaint, with no official named',
+    to_dustin: 'A job interview, a customer service or front desk, or a bank teller' },
+  // the editor's first four
   'CL-032': { pass: 'Names local news, a local paper or reporters', partly: 'Names news or a newspaper in general' },
   'CL-063': { pass: 'Names what everyday needs cost a household, such as groceries or bills', partly: 'Names shopping, prices or groceries alone' },
   'R-02': { pass: 'Names ranking candidates or ranked or numbered choices on a ballot', partly: 'Names voting or a ballot alone' },
@@ -354,7 +363,9 @@ function build() {
     overview: FIRST_KEY.overview,
     loops: { r10: FIRST_KEY.loops.r10, b4: FIRST_KEY.loops.b4, choice_values: FIRST_KEY.loops.choice_values, words_check: 'The box words the choices quote were read from today\'s drawings when the page was built, and all match.' },
     icons: v.icons.map((ic) => ({ code: ic.code, file: ic.src, id: ic.id, chapter_10_label: ic.label, civic_line_word: ic.word, meaning: ic.meaning, source: ic.source,
-      pass: (SYMBOL_PASS[ic.id] || {}).pass || 'The editor\'s row is still to come (DR-189). Until it lands, read the answer against the meaning sentence above.', partly: (SYMBOL_PASS[ic.id] || {}).partly || 'The editor\'s row is still to come (DR-189).' })),
+      pass: (SYMBOL_PASS[ic.id] || {}).pass || 'The editor\'s row is still to come (DR-189). Until it lands, read the answer against the meaning sentence above.', partly: (SYMBOL_PASS[ic.id] || {}).partly || 'The editor\'s row is still to come (DR-189).',
+      to_dustin: (SYMBOL_PASS[ic.id] || {}).to_dustin || null, expect: (SYMBOL_PASS[ic.id] || {}).expect || null })),
+    icons_note: 'Answers listed under to_dustin go to Dustin in the readers\' own words, whatever the count, because the drawings were drawn to rule them out (research notes of November 9, section 1). R-02 stays from the first check as a drawing already settled, for comparison. Why it is asked: Dustin asked that every symbol clearly depict its institution, act or reform (DR-146), and approved Congress, Testify and Contact an Official by name on November 10; only studio readers have named them so far.',
     symbols_in_use: SYMBOLS,
     red_card: { stimulus: 'img/card.png, the link card face from the guide\'s proofs (s-proofs-social), 1200 by 630, shown 358 px wide on a 390 px phone and 328 px on a 360 px phone, Newsprint', look_seconds: 10,
       questions: { favors: { ...favors, partial: [], why: 'Pillar Red stays the lead color (DR-114), and red is the color many readers link to one party. The card is the brand at its most common size in a reader\'s day, with red in two places and nothing about party in its words.' },
@@ -406,6 +417,6 @@ function build() {
   const files = fs.readdirSync(IMG).filter((f) => !f.startsWith('.'));
   const bytes = files.reduce((a, f) => a + fs.statSync(path.join(IMG, f)).size, 0);
   console.log(`wrote ${rel(PAGE)} (${fs.statSync(PAGE).size} bytes), ${rel(KEY)}, ${files.length} files in img/ (${(bytes / 1048576).toFixed(2)} MB)`);
-  console.log(`symbols in step 3: ${SYMBOLS.join(', ')}${SYMBOLS.some((s) => !SYMBOL_PASS[s]) ? ' (the key marks the pass lines the editor owes)' : ''}`);
+  console.log(`symbols in step 3: ${SYMBOLS.join(', ')}${SYMBOLS.some((s) => !SYMBOL_PASS[s]) ? ' (the key waits on the editor\'s rows for some)' : ', each with the editor\'s row'}`);
   if (out.changed.length) console.log(`chart titles changed since November 6: ${out.changed.join(', ')}`);
 })().catch((e) => { console.error(e); process.exit(1); });

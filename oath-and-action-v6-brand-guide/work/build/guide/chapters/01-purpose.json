@@ -705,7 +705,7 @@
    "title": "Open every kicker with one content label.",
    "rule": [
     "Open the kicker, the short line above a headline, with one of the seven content labels in this rule’s specifications. At most one more part follows, after a middle dot: the series name if the piece belongs to a series, otherwise its topic, as in “Explainer · Local schools”. A newsletter issue carries no label in its header, and each story inside it carries its own.",
-    "Set the kicker in words. The one picture it may hold is a topic icon from the Civic Line, our set of symbols in chapter 10, placed directly before the topic’s own word. Pillar icons belong to the pillar row, section openers and tiles, and never enter a kicker."
+    "Set the kicker in words. The one picture it may hold is a topic symbol from the Civic Line, our set of symbols in chapter 10, placed directly before the topic’s own word. Pillar icons belong to the pillar row, section openers and tiles, and never enter a kicker."
    ],
    "tokens": [
     "oa.color.action.primary.fill.onNewsprint",
@@ -713,7 +713,7 @@
    ],
    "why": {
     "text": [
-     "The label tells a reader what kind of claim the piece makes before they read it, and whether we are reporting or arguing. A topic icon beside its own word shows the subject a second way. A pillar icon in a kicker would sit beside a label such as Report or Guide, which names no pillar, and leave the reader to decode the drawing."
+     "The label tells a reader what kind of claim the piece makes before they read it, and whether we are reporting or arguing. A topic symbol beside its own word shows the subject a second way. A pillar icon in a kicker would sit beside a label such as Report or Guide, which names no pillar, and leave the reader to decode the drawing."
     ],
     "basis": "Design judgment"
    },
@@ -777,7 +777,7 @@
     "10",
     "13"
    ],
-   "builders": "Pick the label from the seven in this rule. If a piece fits none of them, ask the editor before it runs. Add a topic icon only when the kicker’s second part is the word that icon names, and keep pillar icons and the lockmark out of kickers."
+   "builders": "Pick the label from the seven in this rule. If a piece fits none of them, ask the editor before it runs. Add a topic symbol only when the kicker’s second part is the word that symbol names, and keep pillar icons and the lockmark out of kickers."
   },
   {
    "id": "01.22",

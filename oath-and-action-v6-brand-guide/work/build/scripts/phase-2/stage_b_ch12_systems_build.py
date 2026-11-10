@@ -455,7 +455,8 @@ def chapter(ctx, figs, existing):
             'Red means one thing across the atlas: this is where a reform acts. It never marks a problem or a bad step, '
             'so a reader of any party can follow the mechanism without being told which outcome to dislike. The heavier '
             'weight and the note carry the meaning when red is gone, in gray print or beside an error. Pillar Red '
-            'measures 2.96 to 1 on Newsprint, so the Charcoal edge keeps the red line at 13.29 to 1 against the page.'],
+            'measures 2.96 to 1 on Newsprint, so a 1 px Charcoal edge, at 13.29 to 1, outlines the red line against the '
+            'page.'],
             'basis': 'Design judgment, from the atlas’s visual system'},
         'correct': {'specimen': 's-12-marker-correct',
                     'caption': 'Reform R-01 on one step of the safe-seat loop: in red when it holds the view’s red, then '
@@ -515,9 +516,9 @@ def chapter(ctx, figs, existing):
         'id': '12.7', 'title': 'Show where a view sits in the whole with a small locator in ink.',
         'rule': [
             'A view that shows part of a larger whole carries a locator at its top right: the whole in small, with the '
-            'current part filled in Charcoal and the rest in a light ground. In the atlas the locator is the atlas’s parts '
-            'and links back to the overview. In a state story it is the 50-state tile grid.',
-            'The locator is always ink. It never takes red.'],
+            'current part filled in Charcoal and the rest in a light ground. In the atlas, the locator draws the atlas’s '
+            'parts and links back to the overview. In a state story it is the 50-state tile grid.',
+            'The locator stays in ink and never takes red.'],
         'tokens': ['oa.color.graphic.essential.onNewsprint', 'oa.color.graphic.subtle.onNewsprint'],
         'why': {'text': [
             'A reader who arrives from a search lands in the middle of the system. A locator answers where am I before the '

@@ -436,6 +436,78 @@
   "illustrative": true,
   "notes": "DR-112: a kicker keeps its content label and words, and a pillar icon never enters it (Rule 01.21). The icon is drawn as a 24 px pillar icon should be, so the only fault is where it stands. The headline is chapter 01's invented Report example. Failure band per D2-308."
  },
+ "s-12-divider-correct": {
+  "chapter": "12",
+  "rule": "12.1",
+  "width_px": 600,
+  "alt": "An Illustrative article on a town budget at true size, in three sections: Who writes the budget, then a 1 pixel Stone hairline, Who changes it, then the hinge divider, a line broken by a small Charcoal ampersand, and What you can do. Below, the hairline on Newsprint, White and Charcoal in Stone, and on Prussian in White.",
+  "illustrative": true,
+  "notes": "The hairline is a 1 px top border in oa.color.border.hairline on each surface (Stone; White on Prussian), with 24 px (oa.space.300) above and below. The hinge divider is chapter 04's, drawn by stage_a_identity_s04.divider (Rule 04.4, DR-96). The article is invented. From our fifth edition's Stone hairline dividers and its standard Hairlines, not boxes."
+ },
+ "s-12-divider-failure": {
+  "chapter": "12",
+  "rule": "12.1",
+  "width_px": 600,
+  "alt": "Failure case: do not publish. The same Illustrative article with dashed lines between its sections, and no hinge divider before What you can do.",
+  "illustrative": true,
+  "notes": "D1-21: no brand graphic uses a dotted or dashed line, since the atlas's key gives them to evidence grades. Failure band per D2-308."
+ },
+ "s-12-index": {
+  "chapter": "12",
+  "rule": "12.1",
+  "alt": "Every graphic device in this guide, the job it does and the rule that sets it.",
+  "illustrative": false,
+  "notes": "The device index the architecture map asks for (the hinge divider is listed here and set in Rule 04.4). readable: the table and its links reach assistive technology. Rules 12.5 to 12.9 are the systems designer's (D2-829).",
+  "readable": true
+ },
+ "s-12-watermark-correct": {
+  "chapter": "12",
+  "rule": "12.2",
+  "width_px": 600,
+  "alt": "Two Illustrative pages at true size. A report page on Newsprint headed Research brief, The decision behind the service., with a paragraph at left, and a very large ampersand B in Charcoal at 8 percent in the open right margin, running off the page’s edge. A section opener on Charcoal headed Track, Follow the public record., with the same B in Newsprint at 10 percent in its right margin. Neither watermark sits behind any words.",
+  "illustrative": true,
+  "notes": "B's display master (ampersand/20261028_Amp-B-Display-Master.svg) at 320 px tall, in Charcoal with opacity oa.opacity.watermarkOnLight (0.08, 1.17 to 1) and in Newsprint with oa.opacity.watermarkOnDark (0.10, 1.24 to 1), the two opacities our fifth edition's quiet signatures used, now tokens (Rule 05.6). The headings are our fifth edition's watermark mockups' (architecture map, V5 03); the paragraphs are invented."
+ },
+ "s-12-watermark-failure": {
+  "chapter": "12",
+  "rule": "12.2",
+  "width_px": 600,
+  "alt": "Failure case: do not publish. The Illustrative report page with the large Charcoal B at 8 percent moved behind its heading and paragraph, so its edges cross the letters.",
+  "illustrative": true,
+  "notes": "Our fifth edition's rule: a watermark belongs in an open margin, never behind text. Failure band per D2-308."
+ },
+ "s-12-signature-correct": {
+  "chapter": "12",
+  "rule": "12.3",
+  "width_px": 600,
+  "alt": "Two Illustrative pieces at true size. A report’s running head on White: the L8 monogram, O & A with a red ampersand, 48 pixels wide and opaque, then Report 3, How state committees record their votes, and the page number 7. Then a still from an explainer video, 480 by 270 pixels on Charcoal: a bill’s six numbered steps with the fourth current, the words Step 4 of 6: First chamber, and L8 in Newsprint with its red ampersand, 48 pixels wide, in the top right corner.",
+  "illustrative": true,
+  "notes": "L8 (lockups/20261028_L8-Monogram-Master.svg) at its 48 px minimum (Rule 03.4), in Rule 03.5's colors: Charcoal with signature red on White, Newsprint with signature red on Charcoal. Our fifth edition's quiet signatures sent small headers and video corners to an opaque compact signature; L8 is the one monogram (D2-193). The steps are chapter 11's at 360 px (S.99002's states), on Charcoal. The report title is chapter 01's invented Report example."
+ },
+ "s-12-signature-failure": {
+  "chapter": "12",
+  "rule": "12.3",
+  "width_px": 600,
+  "alt": "Failure case: do not publish. The same Illustrative video still with L8 in the corner at 10 percent opacity, as a watermark would be, so the mark almost vanishes.",
+  "illustrative": true,
+  "notes": "A watermark shrunk to a corner: L8 at 48 px in Newsprint at oa.opacity.watermarkOnDark. Failure band per D2-308."
+ },
+ "s-12-pattern-correct": {
+  "chapter": "12",
+  "rule": "12.4",
+  "width_px": 600,
+  "alt": "Two Illustrative report covers at true size on Newsprint, each with the kicker Report 3, the title How state committees record their votes and a short paragraph at the top. On the first, Stone arcs 1 pixel wide spread from the bottom right corner across the open lower part of the cover. On the second, a block of fine Stone horizontal lines fills the open lower right. Neither pattern reaches the words.",
+  "illustrative": true,
+  "notes": "Built from the hinge devices, after icon study 07's ring rhythm and rule rhythm. Hinge arcs: circles from the corner at radii 2, 3, 4 and more times 16 px, continuing the hinge diagram's ring and arcs (radii 110 and 165 units, 2 to 3). Hinge rules: the hinge divider's 1 px line every 12 px. Both 1 px in oa.color.border.hairline (Stone). Ink coverage measured on a 240 px swatch rendered at 1x in Chromium, as Phase 1 measured its patterns: arcs 5.5 percent, rules 8.3 percent, under the 12 percent ceiling (D1-18). The covers are 360 by 466 px screen covers, a report's first screen, so two fit a column, with type at the phone floor (D2-254)."
+ },
+ "s-12-pattern-failure": {
+  "chapter": "12",
+  "rule": "12.4",
+  "width_px": 600,
+  "alt": "Failure case: do not publish. The same two Illustrative covers with each pattern spread over the whole cover, so the arcs and the fine lines run behind the title and the paragraph.",
+  "illustrative": true,
+  "notes": "Each pattern under body text, the failure the brief names for both. Failure band per D2-308."
+ },
  "s-proofs-masthead": {
   "chapter": "proofs",
   "rule": "proofs",

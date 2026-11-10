@@ -25,7 +25,7 @@
       "before_rule": "11.11",
       "number": 3,
       "title": "Utility icons",
-      "line": "A utility icon names an action on a page, such as Close, Download or Filter, and sits beside its word."
+      "line": "A utility icon names an action on a page, such as Close, Download or Filter, beside the words that say it."
     },
     {
       "before_rule": "11.15",
@@ -574,7 +574,7 @@
       "title": "Say a wait or a later step in words, and keep the count at six.",
       "rule": [
         "A pause inside a step, such as an agency’s question to the requester, a fee estimate or a ten-day extension, shows as words under the step it falls in. It never adds a mark, so every request still counts to six. A step outside the agency, such as mediation by the National Archives or a lawsuit, follows the end words as a sentence with its date.",
-        "A status we read from the record, and not from a live feed of it, carries the warning mark and the date we checked it: “Checked April 20. The agency may have acted since.”"
+        "A status we read from the record ourselves carries the warning mark and the date we checked it: “Checked April 20. The agency may have acted since.”"
       ],
       "tokens": [
         "oa.color.state.warning.mark.onNewsprint"
@@ -597,6 +597,10 @@
         {
           "label": "Waits, in words",
           "value": "“Waiting on you”, a fee estimate or an extension, under the step it falls in, with its date"
+        },
+        {
+          "label": "A proposed rule that sits",
+          "value": "“No action since” and the date, under its step"
         },
         {
           "label": "After the agency",
@@ -805,7 +809,7 @@
     },
     {
       "id": "11.14",
-      "title": "Draw interface actions with utility icons, never with topic or atlas symbols.",
+      "title": "Keep topic and atlas symbols out of buttons, and draw each action with its utility icon.",
       "rule": [
         "A topic or atlas symbol names a subject: a feedback loop, public records, a vote. It never stands for an action on a page. Reset is the utility icon’s open circle with one arrowhead, Download is the arrow into a tray, and each sits beside its word."
       ],

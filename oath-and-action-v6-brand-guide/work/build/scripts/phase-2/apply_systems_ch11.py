@@ -675,7 +675,7 @@ def s_11_2(ctx):
            f'.sk-l{{list-style:none;margin:0;padding:0;display:grid;gap:12px;'
            f'grid-template-columns:repeat(auto-fill,minmax(min(100%,13.5rem),1fr))}}'
            f'.sk-c{{border:1px solid var(--hair);padding:14px 14px 16px}}'
-           f'.sk-m{{display:flex;align-items:center;gap:16px;min-height:84px}}'
+           f'.sk-m{{display:flex;align-items:center;gap:16px;min-height:40px}}'
            f'.sk-n{{margin:8px 0 2px;{T("ui")};font-weight:700}}.sk-t{{margin:0;{T("caption")};color:var(--txt2)}}'
            f'.sk-h{{margin:0 0 12px;{T("caption")};color:var(--txt2)}}')
     cards = ''.join(f'<li class="sk-c"><div class="sk-m" aria-hidden="true">{sample(s, 26)}</div>'
@@ -1071,35 +1071,6 @@ def s_11_10(ctx):
     spec(ctx, 's-11-10-failure', html2, '11.10', alt2, width=360, illustrative=True)
 
 
-def s_records_steps(ctx):
-    """The twelve steps of a records request and an agency rule, as a readable table (D2-255)."""
-    T = ctx.ty
-    css = (f'.tb{{margin:0 0 24px}}.tb:last-child{{margin-bottom:0}}'
-           f'.cp{{margin:0 0 8px;{T("label")};color:{ctx.v("oa.color.text.secondary.onNewsprint")}}}'
-           f'table{{width:100%;border-collapse:collapse;{T("bodySmall")}}}'
-           f'th,td{{text-align:left;vertical-align:top;padding:10px 16px 10px 0;border-bottom:1px solid '
-           f'{ctx.v("oa.color.border.hairline.onNewsprint")}}}'
-           f'thead th{{{T("label")};color:{ctx.v("oa.color.text.secondary.onNewsprint")};border-bottom:2px solid '
-           f'{ctx.v("oa.color.border.strong.onNewsprint")}}}'
-           f'tbody th{{{T("ui")};width:13rem}}th .n{{display:inline-block;min-width:1.4em;{T("h4")};'
-           f'font-variant-numeric:tabular-nums}}td{{max-width:34rem}}'
-           f'@container (max-width:30rem){{tbody th{{width:7.5rem;padding-right:12px}}th .n{{display:block}}}}.wr{{container-type:inline-size}}')
-
-    def table(caption, steps):
-        rows = ''.join(f'<tr><th scope="row"><span class="n">{i + 1}</span> {n}</th><td>{m}</td></tr>'
-                       for i, (n, m) in enumerate(steps))
-        return (f'<div class="tb"><table><caption class="cp">{caption}</caption><thead><tr><th scope="col">Step</th>'
-                f'<th scope="col">What happens</th></tr></thead><tbody>{rows}</tbody></table></div>')
-    html = (f'<style>{css}</style><div class="wr">{table("A federal records request", REQUEST_STEPS)}'
-            f'{table("A federal agency rule", RULE_STEPS)}</div>')
-    alt = ('The six steps of a federal records request and of a federal agency rule, with what happens at each. A records '
-           'request: ' + ' '.join(f'{i + 1}, {n}: {m}' for i, (n, m) in enumerate(REQUEST_STEPS))
-           + ' An agency rule: ' + ' '.join(f'{i + 1}, {n}: {m}' for i, (n, m) in enumerate(RULE_STEPS)))
-    return spec(ctx, 's-11-records-steps', html, None, alt, readable=True,
-                notes='Two readable tables (D2-255), from the research lead’s section 7 (5 U.S.C. 552 and FOIA.gov; '
-                      '5 U.S.C. 553 and 801, RegInfo.gov).')
-
-
 # ------------------------------------------------------------------------------------------------ chapter
 def build(ctx):
     s_steps(ctx)
@@ -1490,8 +1461,8 @@ def build(ctx):
                      'extension, shows as words under the step it falls in. It never adds a mark, so every request still '
                      'counts to six. A step outside the agency, such as mediation by the National Archives or a lawsuit, '
                      'follows the end words as a sentence with its date.',
-                     'A status we read from the record, and not from a live feed of it, carries the warning mark and the '
-                     'date we checked it: “Checked April 20. The agency may have acted since.”'],
+                     'A status we read from the record ourselves carries the warning mark and the date we checked it: '
+                     '“Checked April 20. The agency may have acted since.”'],
             'tokens': ['oa.color.state.warning.mark.onNewsprint'],
             'why': {'text': ['The law treats these waits as pauses in the agency’s 20 working days, so they belong inside '
                              'a step. A count that changed from one request to the next would stop readers from comparing '
@@ -1507,6 +1478,7 @@ def build(ctx):
             'specs': [
                 {'label': 'Waits, in words', 'value': '“Waiting on you”, a fee estimate or an extension, under the step '
                                                       'it falls in, with its date'},
+                {'label': 'A proposed rule that sits', 'value': '“No action since” and the date, under its step'},
                 {'label': 'After the agency', 'value': 'Mediation or a lawsuit, in a sentence after the end words'},
                 {'label': 'Check date', 'value': 'The warning mark at 24 px, in ink, then “Checked” and the date',
                  'token': 'oa.color.state.warning.mark.onNewsprint'},

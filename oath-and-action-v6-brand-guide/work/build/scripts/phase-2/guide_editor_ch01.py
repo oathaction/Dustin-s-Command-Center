@@ -665,8 +665,8 @@ def build(book):
           "Then the same row as a section opener that serves Track sets it at 48 px: the word Track underlined, and Track's icon "
           "with its red parts, the pin and the magnifier's handle. Last, the compact row at 24 px on a page that serves Track: "
           "every icon in one color, and the word Track set bold and underlined.",
-      notes="DR-111: the four pillar icons are Civic Line CL-019 Explain, CL-020 Track, CL-021 Connect and CL-022 Act, inlined from the "
-            "black masters with their geometry untouched and their ink taken through currentColor; each word sits beside its icon, "
+      notes="DR-111: the four pillar icons are Civic Line CL-019 Explain, CL-020 Track, CL-021 Connect and CL-022 Act, drawn from the "
+            "sprite by the identity designer's step after this build (stage_b_identity_ch01.py, D2-719), with chapter 09's 24 px pattern (DR-179); each word sits beside its icon, "
             "and the current pillar's word is underlined at every size, bold under 48 px. Red as a second sign on the current icon "
             "starts at 48 px, so the 24 px row stays one color. The 48 px row stacks in one column under 48em, with downward arrows, "
             "after the creative director's Board 6 review found the phone row dropping its arrow. Products named as the brand's set, "
@@ -1272,23 +1272,23 @@ def build(book):
               f'<div><p class="kick"><span class="lb">Explain</span></p><p class="kt">Why is my electric bill going up?</p><p class="kw">A pillar name alone</p></div>'
               f'<div><p class="kick"><span class="lb">Must read</span><span class="dot" aria-hidden="true">·</span><span class="sx">Breaking</span></p><p class="kt">State senate committees should post every vote within two days. {ill()}</p><p class="kw">Push words, and no label to say the piece argues a position</p></div>'
               f'<div><p class="kick"><span class="lb">Field Notes</span><span class="dot" aria-hidden="true">·</span><span class="sx">Guide</span><span class="dot" aria-hidden="true">·</span><span class="sx">Street repairs</span></p><p class="kt">Who answers for the repair on your street? {ill()}</p><p class="kw">The series first, the label second, and three parts</p></div>'
-              f'<div><p class="kick">{cl_icon("CL-019", 24, cls="ki")}<span class="lb">Analysis</span><span class="dot" aria-hidden="true">·</span><span class="sx">Productivity</span></p><p class="kt">Does pay rise with productivity?</p><p class="kw">A pillar icon, Explain’s, beside a label that names no pillar</p></div>'
+              f'<div><p class="kick">{cl_icon("CL-019", 24, cls="ki")}<span class="lb">Analysis</span><span class="dot" aria-hidden="true">·</span><span class="sx">Workers’ share of income</span></p><p class="kt">Does pay rise with productivity?</p><p class="kw">A pillar icon, Explain’s, beside a label that names no pillar</p></div>'
               '</div></div>')
     rules.append({
         "id": "01.21", "title": "Open every kicker with one content label.",
         "rule": ["Open the kicker, the short line above a headline, with one of the seven content labels in this rule’s specifications. At most "
                  "one more part follows, after a middle dot: the series name if the piece belongs to a series, otherwise its topic, as in "
                  "“Explainer · Local schools”. A newsletter issue carries no label in its header, and each story inside it carries its own.",
-                 "Set the kicker in words. The one picture it may hold is a topic icon from the Civic Line, our set of symbols in chapter 10, "
+                 "Set the kicker in words. The one picture it may hold is a topic symbol from the Civic Line, our set of symbols in chapter 10, "
                  "placed directly before the topic’s own word. Pillar icons belong to the pillar row, section openers and tiles, and never enter a kicker."],
         "tokens": ["oa.color.action.primary.fill.onNewsprint", "oa.size.icon.medium"],
         "why": {"text": ["The label tells a reader what kind of claim the piece makes before they read it, and whether we are reporting or arguing. "
-                         "A topic icon beside its own word shows the subject a second way. A pillar icon in a kicker would sit beside a label such as "
+                         "A topic symbol beside its own word shows the subject a second way. A pillar icon in a kicker would sit beside a label such as "
                          "Report or Guide, which names no pillar, and leave the reader to decode the drawing."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-21-correct", kl_ok, css=(BASE, KCSS2), rule="01.21",
                                   alt="Seven kickers, one per content label, each over a headline. Explainer, utility rates: Why is my electric bill going up? "
-                                      f"Tracker, Congress: {HR7008_TRACKER}. Analysis, workers’ share of income, with its topic icon, a person in the wedge cut from a circle, directly before those words: Does pay rise with productivity? Report, state legislatures, "
+                                      f"Tracker, Congress: {HR7008_TRACKER}. Analysis, workers’ share of income, with its topic symbol, a person in the wedge cut from a circle, directly before those words: Does pay rise with productivity? Report, state legislatures, "
                                       "illustrative. Guide, Field Notes, illustrative. Act, how to take part, illustrative. Our position, committee votes, "
                                       "in a Charcoal label, illustrative. The four invented headlines carry the Illustrative label."),
                     "caption": ("Each kicker opens with its label and adds at most a series or a topic. The Analysis kicker holds the one picture a "
@@ -1298,7 +1298,7 @@ def build(book):
         "failure": {"specimen": A("s-01-21-failure", kl_bad, css=(BASE, KCSS2), rule="01.21",
                                   alt="Four kickers that break the rule. Explain, a pillar name alone. Must read and Breaking above an illustrative position headline, with no label. "
                                       "Field Notes, then Guide, then Street repairs: the series first, the label second and three parts. The same Analysis kicker "
-                                      "with the Explain pillar icon before its label, in place of the Productivity icon."),
+                                      "with the Explain pillar icon before its label, in place of the icon for workers’ share of income."),
                     "caption": ("“Explain” is a pillar and says nothing about the claim, and “Must read” and “Breaking” push the reader while hiding "
                                 "that the piece argues. The third kicker reaches its label only after the series. In the last, the Explain icon "
                                 "codes a pillar that the label Analysis never names.")},
@@ -1315,7 +1315,7 @@ def build(book):
                   {"label": "Never inside a kicker", "value": "A pillar icon, the lockmark, or an icon beside a label or a series name"}],
         "related": ["10", "13"],
         "builders": ("Pick the label from the seven in this rule. If a piece fits none of them, ask the editor before it runs. Add a topic "
-                     "icon only when the kicker’s second part is the word that icon names, and keep pillar icons and the lockmark out of kickers."),
+                     "symbol only when the kicker’s second part is the word that symbol names, and keep pillar icons and the lockmark out of kickers."),
     })
 
     rules.append({

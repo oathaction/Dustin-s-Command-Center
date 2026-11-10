@@ -23,9 +23,11 @@ import stage_a_identity_s08 as S08  # noqa: E402
 import stage_a_identity_proofs as SP  # noqa: E402
 import stage_a_identity_chapters as CH  # noqa: E402
 import stage_b_identity_ch09 as S09  # noqa: E402  (stage B round 2: chapter 09, Pillar icons)
+import stage_b_identity_ch12 as S12  # noqa: E402  (stage B round 2: chapter 12's Rules 12.1 to 12.4, in a shared file)
 
 
-MINE = ("s-03-", "s-04-", "s-08-", "s-09-", "s-proofs-")      # specimen ids this maker owns
+MINE = ("s-03-", "s-04-", "s-08-", "s-09-", "s-proofs-") + S12.PREFIXES      # specimen ids this maker owns; in chapter 12
+# only its own devices, since the systems designer writes s-12-marker-*, s-12-key-* and the rest (D2-829)
 RETIRED_CHAPTER_FILES = ("08-signal-grid.json",)     # this maker's chapter files that no longer exist under that name
 
 
@@ -39,7 +41,7 @@ def build(preview_dir=None, pdf=False):
     L.CHAP_DIR.mkdir(parents=True, exist_ok=True)
     SP.write_letterhead(pdf=pdf)          # first, so the letterhead specimen can carry the PDF
     records = []
-    for mod in (S03, S04, S08, S09, SP):
+    for mod in (S03, S04, S08, S09, S12, SP):
         for fn in mod.S:
             records.append(fn())
     ids = [r["id"] for r in records]
@@ -69,6 +71,9 @@ def build(preview_dir=None, pdf=False):
         used = CH.specimens_used(ch)
         missing = [u for u in used if u not in manifest]
         assert not missing, f"{f.name} names specimens that do not exist: {missing}"
+    S12.write_chapter()                          # merges Rules 12.1 to 12.4 into the shared file (D2-830)
+    missing = [u for u in S12.specimens_used() if u not in manifest]
+    assert not missing, f"12-graphic-devices.json names specimens that do not exist: {missing}"
     SP.write_proofs_json()
     if preview_dir:
         write_preview(Path(preview_dir), records)

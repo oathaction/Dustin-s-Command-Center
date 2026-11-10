@@ -2,7 +2,7 @@
 
 Oath & Action Edition 06, Phase 2, stage B, round 2, November 10, 2026. Written by the editor (`.claude/agents/oa-editor.md`) for the main session, chapter 10's maker, the engineer and the makers of chapters 09, 11 and 12. I committed nothing and published nothing. Paths are relative to `oath-and-action-v6-brand-guide/`.
 
-Status: items 1 to 3 are done, with Dustin's answers of November 10 applied (DR-187 to DR-189) and the research lead's round 2 findings on Rule 01.11 (section 2b). Item 4: chapter 10's words are done (section 4a), and Rule 01.21's kicker has landed. Chapters 09, 11 and 12 come next.
+Status: items 1 to 3 are done, with Dustin's answers of November 10 applied (DR-187 to DR-189) and the research lead's round 2 findings on Rule 01.11 (section 2b). Item 4: chapter 10's words are done and applied by its maker (section 4a); chapter 09's (4b) and chapter 12's Rules 12.5 to 12.9 (4c) are done; Rule 01.21's kicker has landed. Chapter 11 has a first pass on its draft (4d), and its final pass and chapter 12's Rules 12.1 to 12.4 wait for their makers.
 
 ## What I wrote
 
@@ -151,6 +151,62 @@ I read `work/build/guide/chapters/10-symbols.json`, the class table in `s-10-1-c
 
 Left as written, with a reason: the `LOOKALIKES` lines (each pair is a comparison by design, and the words are mine); the four principles quoted from the fourth edition (exact quotes, labeled as design judgment); "Bill and State house have no drawing" in both Rule 10.2 and Rule 10.9 (10.2 says how a drawing joins the set, and 10.9 sends a builder to the word, so each reader meets it where they look); the paths in the builders lines (other chapters print paths there too).
 
+### 4b. Chapter 09's words, as built
+
+I read `work/build/guide/chapters/09-pillar-icons.json` and every `s-09-*` alt in `manifest-identity.json`. The identity designer writes them from `stage_b_identity_ch09.py`'s `chapter()`, so each change goes in there at the string quoted. The pillars run in their locked order everywhere, and the figures check: the 24 px fit B and the 16 px fit both draw a 1 px line (fit manifest), and each pillar master's line is 3.35 units (inventory in use).
+
+| File | Field | Old | New | Rule |
+|---|---|---|---|---|
+| `09-pillar-icons.json` | Rule 09.1, `why[0]`, second sentence | A reader learns four drawings faster with their words beside them, and the word settles a drawing that could pass for another pillar: Track’s magnifier can read as looking into a question, which is Explain’s job. | The word beside each drawing names it at once, and it settles a drawing that could pass for another pillar, as Track’s magnifier can read as looking into a question, which is Explain’s job. | W20: no one measured "faster"; W06, the colon held the example back |
+| `09-pillar-icons.json` | Rule 09.2, `rule[0]`, second sentence | and the red counts as signature red (Rule 05.3). | and that red is signature red, which never counts against a view’s working red (Rule 05.3). | Says what "counts as" means, in chapter 10's words for the same point (Rule 10.7) |
+| `09-pillar-icons.json` | Rule 09.3, `rule[0]`, last sentence | Never scale a master to 16 px, and never draw a fit at any size but its own. | Never scale a master down to 16 px or draw a fit at any size but its own. | W11, a run of negatives under one verb |
+| `09-pillar-icons.json` | Rule 09.3, `why[0]`, first sentence | with a line about 3 units wide, so at 24 px the line falls to half a pixel, | with a line 3.35 units wide, so at 24 px the line falls to 0.63 px, | Accuracy; Rule 10.4 gives the same 0.63 px |
+| `09-pillar-icons.json` | Rule 09.3, `why[0]`, third sentence | A 24 px icon keeps its fit up to 2x, since below 2x the master’s line falls under one device pixel and its counters fill, and the fit keeps every counter and gap. | A 24 px icon keeps its fit on screens under 2x, where the master’s line falls under one device pixel and its open spaces fill in, and the fit keeps every one of them. | H02: the guide defines "counters" only for letters (Rule 03.4); "up to 2x" and "below 2x" said the same thing twice |
+| `09-pillar-icons.json` | Rule 09.3, spec "Line" | about 3 units of 128 in each master | 3.35 units of 128 in each master | Matches Rules 10.2 and 10.3 |
+| `09-pillar-icons.json` | Rule 09.4, `rule[0]`, second sentence | It never enters a kicker, which may carry a topic icon only (Rule 01.21), and it never sits on a part opener. | It stays out of kickers, which may carry a topic symbol only (Rule 01.21), and off part openers. | W11; H02, "topic symbol", the term chapters 01 and 10 now share |
+| `09-pillar-icons.json` | Rule 09.4, `builders` | give it the word of its pillar nearby. | set its pillar’s word beside or under it. | "Nearby" sets no place; under 48 px and on an opener the word sits with the icon |
+
+Left as written: "Watch the vote." on the opener, which the brief names and the plate labels Illustrative; "Four icons that turn up only where a pillar is named stay easy to learn", which the basis labels a design judgment.
+
+### 4c. Chapter 12's words, as built so far
+
+`12-graphic-devices.json` holds the opener and the systems designer's Rules 12.5 to 12.9; the identity designer's Rules 12.1 to 12.4 are not in yet. I read the chapter, the ten `s-12-*` specimens' text and their alts in `manifest-systems.json`. The records request frame's deadlines match 5 U.S.C. 552 as its source line cites it (20 working days, at least 90 days to appeal, 20 working days for the appeal), and the key chart carries its Illustrative label and "Counts invented for this example." The systems designer's build writes these strings (`stage_b_ch12_systems_build.py`).
+
+| File | Field | Old | New | Rule |
+|---|---|---|---|---|
+| `12-graphic-devices.json` | `intro[1]` | the intervention marker, chart keys, | the intervention marker, which shows where a reform acts, chart keys, | H02, first use; the sentence will also need a clause for Rules 12.1 to 12.4 when they land |
+| `12-graphic-devices.json` | Rule 12.5, `rule[0]` | turn Pillar Red at the heavier selected weight: | turn Pillar Red at a heavier weight: | "Selected" is the atlas build's word for a state the reader never sees here |
+| `12-graphic-devices.json` | Rule 12.5, `why[0]`, last sentence | Pillar Red measures 2.96 to 1 on Newsprint, so the Charcoal edge keeps the red line at 13.29 to 1 against the page. | Pillar Red measures 2.96 to 1 on Newsprint, under the 3 to 1 a graphic needs, so the Charcoal edge, at 13.29 to 1, gives the red line an outline the page holds. | Accuracy: the edge measures 13.29 to 1, and the red line itself stays at 2.96 |
+| `12-graphic-devices.json` | Rule 12.5, `correct.caption` | Reform R-01 on one step of the safe-seat loop: | Reform R-01, all-party primaries with ranked general elections, on one step of Loop R10, the safe-seat loop: | H11, name what an ID refers to, as the plate's own note does |
+| `12-graphic-devices.json` | Rule 12.7, `rule[1]` | The locator is always ink. It never takes red. | Draw the locator in ink, with no red. | W10, two short halves that say one thing |
+| `12-graphic-devices.json` | Rule 12.7, `why[0]` | A locator answers where am I before the reader asks, | A locator answers “Where am I?” before the reader asks, | A quoted question needs its marks |
+| `s-12-layers-correct` and its alt | The core plane's tiles | Economic structure, Political inputs, Electoral competition, Governing institutions, Legitimacy, Outside drivers | Wealth, Voice, Elections, Checks, Policy, Outside forces | DR-32 and DR-35: the plain names lead, and Rule 12.7's locator on the next plate already says "Elections"; "Legitimacy" for the part every other page calls Policy would send a reader looking for a part that is not there. The economy and technology planes keep the atlas's region titles, which have no plain names |
+| `12-graphic-devices.json` | Rule 12.9, `rule[0]` | name who owns the next step and the clock that runs, as the law sets it. | name who owns the next step and the deadline the law sets. | W01: the plain word |
+| `12-graphic-devices.json` | Rule 12.9, `correct.caption`; spec "Each handoff"; `s-12-owner-correct` alt; `s-12-owner-failure` alt | the clock the law sets; then the clock; with the clock that runs; and no clock | the deadline the law sets; then the deadline; with the deadline the law sets; and no deadline | One word for one thing (H02), following the rule |
+
+Check for the systems designer, not a word change: Rule 12.6 draws the grades as fills (solid, gray, light gray, a hatch, a dotted outline), while Rule 10.10 draws them on the atlas's connections as line textures. If both are right for their own system, one clause in 12.6 saying that bars and areas take fills, and connections take Rule 10.10's lines, keeps a reader from thinking the grades changed.
+
+### 4d. Chapter 11's words, first pass on the draft of 04:37 UTC
+
+Chapter 11's maker is still writing (its notes say in progress), so this pass reads `11-icons.json` as it stood at 04:37 UTC: Rules 11.1 to 11.16, the five extras and the four sources. I found no studio word, em dash or listed filler. The renumbered bills (DR-151), Nebraska's slash and words (DR-150) and Rule 11.7's 44 px (DR-153) all read as decided, and Rule 11.16's order matches Rule 05.3. I will read the specimens' alts and the final text once the maker says the chapter is done.
+
+| File | Field | Old | New | Rule |
+|---|---|---|---|---|
+| `11-icons.json` | Rule 11.1, `builders[1]`, first sentence | Number an invented bill far past any number a legislature has used: a federal bill from H.R. 99001 up, a state bill from H.99001 and S.99002 up, | Number an invented bill past the numbers legislatures assign: a federal bill from H.R. 99001 up, state bills from one count that starts at H.99001 and S.99002, | W20: no one checked every legislature; "from H.99001 and S.99002 up" read as two counts, and DR-151 sets one |
+| `11-icons.json` | Rule 11.2, `failure.caption` | <strong>Fails 1.4.1.</strong> | <strong>Fails WCAG 2.2 SC 1.4.1.</strong> | H11, and Rule 11.15's failure already names it this way |
+| `11-icons.json` | Rule 11.6, `failure.caption` | A stock stepper draws checks and boxes | A generic stepper from a component library draws checks and boxes | H02: "stock" is the atlas's word for an amount built up over time (same change as Rule 10.2) |
+| `11-icons.json` | Rule 11.8, `rule[1]`, last sentence | An appeal ends in words too: Upheld, Partly reversed, or Reversed and sent back. | An appeal ends in words too: Upheld, Partly reversed, Reversed and sent back, or Closed for other reasons. | The spec lists four appeal endings and the rule three |
+| `11-icons.json` | Rule 11.9, `rule[1]` | such as an interim final rule, | such as an interim final rule, which takes comments only after it takes effect, | H02, first use |
+| `11-icons.json` | Rule 11.9, `why[0]`, first sentence | Sending a comment is the public’s main way to take part in a federal rule, | Sending a comment is the way the law gives the public to take part in a federal rule, | W20: "main" ranks ways no one counted; 5 U.S.C. 553(c) sets the comment as the public's route |
+| `11-icons.json` | Rule 11.11, `why[0]`, first sentence | A reader who meets an icon beside its word learns the sign once and reads it faster after that, and the word carries the meaning for anyone who does not know the sign. | A reader who meets an icon beside its word learns the sign once, and the word carries the meaning for anyone who does not know the sign. | W20: "faster" was not measured (same change as Rule 09.1) |
+| `11-icons.json` | Rule 11.11, `correct.caption`, last clause | and the page’s size stays two words. | and the control for the page’s size stays in words. | Clarity: "two words" left the reader to guess which |
+| `11-icons.json` | Rule 11.14, `why[0]`, second sentence | CL-024, Feedback loop, comes nearest to the refresh sign a builder reaches for, and a loop stepper is the place a builder would reach for it. | CL-024, Feedback loop, looks most like a refresh sign, and a loop stepper is where a builder would reach for one. | The sentence said "reach for" twice |
+| `11-icons.json` | Rule 11.14, `builders` | use the word alone and ask the editor; do not borrow a drawing from chapter 10. | use the word alone and ask the editor, and leave chapter 10’s drawings to the subjects they name. | W09 |
+| `11-icons.json` | Rule 11.16, `correct.caption` | where reform R-01 acts | where reform R-01, all-party primaries with ranked general elections, acts | H11 |
+| `11-icons.json` | `sources[2]` | “Fiscal Year 2024 Annual Freedom of Information Act Report”, March 6, 2025, section III. The categories | “Fiscal Year 2024 Annual Freedom of Information Act Report”, March 6, 2025, section III, fiscal year 2024, federal agencies. Retrieved November 9, 2026. The categories | H04 asks for the period, the place and the date retrieved; the research notes of November 9, section 7, give the date it was read |
+
+**One correction to my own chapter 10 row.** Chapter 05 defines a keyline as "a 1 px Charcoal edge drawn inside the mark", and chapters 11 and 12 use it that way, so my Rule 10.2 caption brought in a second meaning. Chapter 10's maker should set Rule 10.2's `correct.caption` from "with its keylines, the guide lines that place it," to "with the guide lines that place it," (H02).
+
 ## Routine calls
 
 Numbers left for the main session to assign.
@@ -203,6 +259,16 @@ Chapter 10 (item 4):
 - D2-xxx | CL-025's second sentence drops the words the library already prints before it | The library sets the chip and "Congressional capacity" first, so the old sentence repeated both
 - D2-xxx | My label build runs the guide check's studio-word patterns | A word the page refuses never reaches chapter 10's maker again
 
+Chapters 01, 09 and 12 (item 4):
+- D2-xxx | The guide says "topic symbol" for a topic drawing everywhere, and chapter 01's three "topic icon" become "topic symbol" | H02 keeps one term; chapter 10's class name governs, and "icon" stays for pillar and utility icons
+- D2-xxx | Rule 01.21's failure kicker reads "Workers’ share of income", like the correct one | The pair then differs only in the drawing, which is the fault it teaches (identity designer's request)
+- D2-xxx | `s-01-pillars`'s manifest note says its icons come from the sprite through the identity designer's step | The identity designer's request; the note had said they were inlined
+- D2-xxx | Rule 12.8's core plane takes the plain part names | DR-32 and DR-35, and Rule 12.7's locator already uses them
+- D2-xxx | Rule 12.9 says "deadline" for the time the law sets | The plain word, used the same way in the rule, caption, spec and alts
+- D2-xxx | "Keyline" keeps chapter 05's meaning, a 1 px Charcoal edge inside a mark, and chapter 10 calls its construction lines "guide lines" | H02; chapters 11 and 12 use chapter 05's meaning
+- D2-xxx | "Stock" leaves every reader page where it means generic, in chapters 10 and 11 | H02: the atlas defines a stock as an amount built up over time
+- D2-xxx | Chapter 11's pass reads the draft of 04:37 UTC, and a final pass follows when its maker says the chapter is done | The maker was still writing, and an early table lets it apply the changes as it goes
+
 ## Questions for Dustin
 
 All three are answered: 1 and 2 by DR-188 and DR-189, 3 by DR-187.
@@ -228,6 +294,10 @@ Requests to other owners:
 - A full read of all three files against chapter 02's rules.
 - Round 2: the labels file against the guide check's studio-word patterns (CL-064 the one hit, now fixed); Rule 01.11's new strings in all three files, each old string matched once; Missouri's figures against the research notes; chapters 01 and 02 rebuilt by the generator and the identity step, then all 115 files compared with the committed copies (three differences, each explained in section 2b); `guide_build.py --strict` after the restore (12 chapter files, 128 rules, 295 specimens, 0 placeholders); the plate looked at in the built guide at 390 px.
 - Chapter 10: its JSON, the class table, the `LOOKALIKES` lines, the library's meaning lists and every `s-10-*` alt read in full; 7,626 pairs and the 1.25 line ratio checked by arithmetic; hubs, layers and the route definition read from the atlas model.
+- Chapter 09: the JSON and nine alts read in full; the fits' line widths from `20261109_Pillar-Pixel-Fit-Manifest.json` (fit B at 24 px and the 16 px fit, 1 px) and the masters' 3.35 units from the inventory in use.
+- Chapter 11: the draft JSON of 04:37 UTC read in full, and scanned by script with chapters 09, 10 and 12 for the guide check's studio words, em dashes, the listed fillers, "stock", "clock" and "keyline".
+- Chapter 12: the JSON, the ten specimens' text and alts read in full; the frame's deadlines against the statute sections its source line cites; the core layer's part names against the atlas editorial data's `parts`.
+- Chapter 01 after the terminology and failure kicker changes: generator and identity step rerun, every output compared with the copy before the run, then `guide_build.py --strict` (12 chapter files, 128 rules, 295 specimens, 0 placeholders).
 
 ## Not tested
 
@@ -256,6 +326,7 @@ Round 2, after the coordinator's messages:
 - `work/build/guide/specimens/s-01-11-correct.html`, `work/build/guide/chapters/01-purpose.json`, `work/build/guide/specimens/manifest-editor.json`: Rule 01.11 after the research lead's round 2 notes (DR-187); Rule 01.21's caption and alt
 - `work/build/scripts/phase-2/guide_editor_ch01.py`: the same Rule 01.11 and Rule 01.21 strings, so a rebuild keeps them
 - `work/build/scripts/phase-2/guide_editor_build.py`: the BE-02 count check accepts a sourced count
+- `work/build/scripts/phase-2/guide_editor_ch01.py`, then by a rebuild `01-purpose.json`, `manifest-editor.json` and `s-01-21-failure.html`: "topic symbol" for "topic icon" in Rule 01.21; the failure kicker's word; `s-01-pillars`'s note. After each rebuild I ran `stage_b_identity_ch01.py` and restored the committed `s-01-pieces.html`, and the compare showed only these changes
 
 Scratch only, in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/ea3fc969-1fa2-5617-a502-a9fe32bb03e8/scratchpad/round-2/editor/`: the label build and check scripts, contact sheets, the built guide and its plate captures, and backups of the three chapter 01 files before my edits.
 

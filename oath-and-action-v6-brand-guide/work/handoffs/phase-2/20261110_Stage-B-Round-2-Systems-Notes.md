@@ -10,6 +10,7 @@ Written by the chapter 10 maker (`oa-design-director`, checked against `oa-ux-ac
 
 - **03:44 UTC: the construction file was done.** `work/handoffs/phase-2/20261110_Stage-B-Ch10-Construction.md` holds the 128-unit box, the line, caps and joins, the red accent, the capped fit, the four editions and six tiles, the size floors and the list of 41 by ID with how it was decided. Chapters 09 and 11 can start from it. Its section 0 fixes chapter 10's rule numbers. Updated after the build: the printed rule titles, the tile counts from the inventory in use (30 drawings need 48 px on their own), the Civic Line hand's reading of the eight finals at 24 px, and the likeness figures in section 12.
 - **Chapter 10 is built and checked** (sections below), with two failures in `guide_check.js` that other owners close: the list of 41 in B-3, and one word in the editor's sentence for CL-064.
+- **The editor's word pass is applied** (`20261110_Stage-B-Round-2-Editor-Notes.md`, section 4a): all 25 rows of its table, written into `stage_b_ch10_build.py` at the strings it quotes, and chapter 10 rebuilt with `--no-draw` (the sheets do not change). The class table's utility row and its alt follow the new wording; `s-10-4-correct` now labels its invented headline Illustrative beside it, with `illustrative: true`; Rule 10.2's failure and its alt say "a generic icon library" for "stock". The editor's two label changes (CL-064's "checkpoint" and CL-025's second sentence) reach the library from the label table on the rebuild. The engineer has filled B-3's list and moved the accent token to 48 px, so both chapter 10 items are closed at their source; the guide check's result is under Tested.
 
 ### What I built
 
@@ -96,3 +97,67 @@ Modified:
 Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/ea3fc969-1fa2-5617-a502-a9fe32bb03e8/scratchpad/round-2/ch10/` (builds, captures, the scratch copy of the check).
 
 Nothing in `source/`, `work/ledger/`, `deliverables/`, any asset folder, any board, the shell or another owner's script. Nothing committed or pushed.
+
+## Chapter 12, systems devices
+
+Written by the chapter 10 maker, the same agent, under the round 2 brief's chapter 12 section, D2-829 and D2-830. The identity designer writes Rules 12.1 to 12.4 (dividers, watermarks and patterns) into the same file.
+
+### What I built
+
+- **`work/build/guide/chapters/12-graphic-devices.json`**, created with the chapter's opener (its instruction line, two intro paragraphs naming both makers' rules, and five related chapters), and Rules 12.5 to 12.9. No rule groups: the identity designer's rules come first, and a group of mine would make the build warn that the first group does not open the chapter.
+  - **12.5 The intervention marker.** System 1's red target: a reform's connections at 4 px and its conditions' outlines at 3 px in Pillar Red, the tags and arrowheads at the 6 px sizes, a 1 px Charcoal keyline on a red connection on Newsprint (the atlas kit's 6 px case), and a note naming the reform. The plate shows reform R-01 on one step of the safe-seat loop twice: in red, then yielded to ink as Rule 11.16 sets out. Failure: red on the problem, with a note that judges it.
+  - **12.6 Chart keys.** Direct labels first; a key above the plot only for what a label cannot carry, in the marks' order, each swatch the chart's own mark (the chart system's grade table and its 14 px swatch with a 7 px gap), the unit in the measure line. An Illustrative 358 px phone chart. Failure: a boxed legend under the plot, reversed, with dots and hues that merge in gray.
+  - **12.7 Locators.** The atlas locator (System 1's `locator()` geometry, on Newsprint) and a state locator on the chart system's tile grid, both in ink; never red. Failure: the current part in red.
+  - **12.8 The layer diagram.** The one exploded view: the atlas's three layers as slanted planes, one tile for each part, read from the atlas model, with every name flat beside its plane. Failure: names on the slant.
+  - **12.9 Who owns the next step.** Our fourth edition's frame, "Give every handoff an owner.", on a federal records request: each step's actor, the next owner and the clock the law sets, with its source line. Failure: five passive boxes.
+- **10 specimens**, named by device: `s-12-marker-*`, `s-12-key-*`, `s-12-locator-*`, `s-12-layers-*`, `s-12-owner-*`, with entries in `manifest-systems.json`.
+- **The build**, `work/build/scripts/phase-2/stage_b_ch12_systems_build.py`. It creates the chapter file only if it is missing; on every later run it replaces Rules 12.5 to 12.9 and their own specimens and manifest entries and keeps everything else in the file, so the identity designer's rules survive my rebuilds and mine survive theirs if they merge the same way. It writes `work/handoffs/phase-2/20261110_Stage-B-Ch12-Systems-Figures.json`.
+- **Weight.** Chapter 12 weighs 0.23 MB of its shared 0.5 MB budget with my five rules alone (230,181 bytes in the build report). My ten fragments are 47 KB; the rest is the shell's rule blocks and closers.
+
+### Routine calls
+
+- D2-xxx | The intervention marker is drawn by calling System 1's `station_block`, `wire_marks`, `tag_point` and `verb`, with the atlas kit's target weights and its Newsprint keyline | The brief asks for System 1's red target; its own code copies the constants, and DR-53 puts the atlas on Newsprint, where the kit draws a red connection with a Charcoal edge
+- D2-xxx | The marker plate shows one step, C1 to C2, of reform R-01's three targets | Two connections in a 552 px column left each line about 80 px, too short for its tick, tag and arrowhead; one step at System 1's own length shows every mark clearly, and the note says "here"
+- D2-xxx | The marker plate shows the yield of Rule 11.16 beside the red | Chapter 11 sets which red wins; a builder needs to see the yielded marker as well as the red one
+- D2-xxx | Atlas excerpts in the guide print V7's short names from the editor's label table (Safe seats, Primary decisiveness) | DR-185 names each variable that way in chapter 10, so chapters 10 and 12 agree; System 1's plain names stay the atlas's own until its finishing pass
+- D2-xxx | The chart key example is an Illustrative count of claims by evidence grade, drawn with the chart system's grade marks | A grade is the one thing in the chart system a direct label cannot carry on every segment, so the key earns its place; inventing the counts avoids a statistic with no source
+- D2-xxx | The state locator uses Nebraska and Rule 11's one-chamber line | It ties the device to a story the guide already tells (DR-150) and makes no new claim
+- D2-xxx | The layer diagram draws the three layers and their parts from the atlas model, with the core outlined heavier | The brief allows an exploded view here alone; reading the model keeps the diagram true when the atlas changes
+- D2-xxx | The "Who owns the next step?" frame uses a federal records request, with the clocks from 5 U.S.C. 552 and the routes after an appeal from the research notes, section 7A | Its owners and clocks are set by statute and sourced; chapter 11 draws the same process as status steps, so the frame shows the other side, who acts
+- D2-xxx | Every chapter 12 specimen of mine is named by device and listed in `manifest-systems.json`; my build removes only those device names | D2-829, and two makers share the chapter
+
+### Questions for Dustin
+
+None.
+
+### Requests to other owners
+
+- **Identity designer.** `12-graphic-devices.json` exists with the opener and Rules 12.5 to 12.9. Add 12.1 to 12.4 to the same file; my build keeps any rule outside 12.5 to 12.9 and any extra or group that names none of my specimens. If you add rule groups, open the first at 12.1, and I will place a group before 12.5 to match, or leave grouping to the editor.
+- **Editor.** Every string in Rules 12.5 to 12.9 and the ten alts is mine and ready for the copy edit, including the frame's step wording and its source line.
+
+### Tested
+
+- `python3 -I work/build/scripts/phase-2/stage_b_ch12_systems_build.py`: 5 rules, 10 specimens; its checks pass (no heading, landmark, dash, literal color, px font size or straight quote; every specimen used once).
+- `guide_build.py --strict` with chapter 12 in: exit 0; chapter 12 at 230,181 bytes.
+- Looked at all ten plates at 1440 and 390 px by capture, and fixed from what I saw: the marker's chain ran past its stage and its lines were too short, a layer title ran off the plate, and the frame's second step handed off to its own office.
+- The guide check's result is under Tested in the latest run below.
+
+### Not tested
+
+- A screen reader by ear, Firefox, Safari and print.
+- The chapter with the identity designer's rules in it: none had landed when I built.
+
+### Change log
+
+Created:
+- `work/build/scripts/phase-2/stage_b_ch12_systems_build.py`
+- `work/build/guide/chapters/12-graphic-devices.json`
+- `work/build/guide/specimens/s-12-marker-correct.html`, `s-12-marker-failure.html`, `s-12-key-correct.html`, `s-12-key-failure.html`, `s-12-locator-correct.html`, `s-12-locator-failure.html`, `s-12-layers-correct.html`, `s-12-layers-failure.html`, `s-12-owner-correct.html`, `s-12-owner-failure.html`
+- `work/handoffs/phase-2/20261110_Stage-B-Ch12-Systems-Figures.json`
+
+Modified:
+- `work/build/guide/specimens/manifest-systems.json`: the ten s-12-* entries added
+- `work/handoffs/phase-2/20261110_Stage-B-Round-2-Systems-Notes.md` (this file)
+- For chapter 10, the editor's pass: `work/build/scripts/phase-2/stage_b_ch10_build.py`, and from it `10-symbols.json`, the s-10-* fragments and their manifest entries
+
+Nothing committed or pushed.

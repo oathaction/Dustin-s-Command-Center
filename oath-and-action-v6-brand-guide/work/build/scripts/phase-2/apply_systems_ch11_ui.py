@@ -840,7 +840,7 @@ def build_ui(ctx, m, rule_titles):
                          'site)”. Leave out <code>target="_blank"</code>.'],
         },
         {
-            'id': '11.14', 'title': 'Draw interface actions with utility icons, never with topic or atlas symbols.',
+            'id': '11.14', 'title': 'Keep topic and atlas symbols out of buttons, and draw each action with its utility icon.',
             'rule': ['A topic or atlas symbol names a subject: a feedback loop, public records, a vote. It never stands for '
                      'an action on a page. Reset is the utility icon’s open circle with one arrowhead, Download is the '
                      'arrow into a tray, and each sits beside its word.'],
@@ -963,7 +963,7 @@ def build_ui(ctx, m, rule_titles):
     ]
     groups = [
         {'before_rule': '11.11', 'number': 3, 'title': 'Utility icons',
-         'line': 'A utility icon names an action on a page, such as Close, Download or Filter, and sits beside its word.'},
+         'line': 'A utility icon names an action on a page, such as Close, Download or Filter, beside the words that say it.'},
         {'before_rule': '11.15', 'number': 4, 'title': 'Error, success and warning',
          'line': 'Three marks give a message its shape, and the words beside them say what happened and what to do.'},
     ]

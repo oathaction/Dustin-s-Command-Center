@@ -465,7 +465,7 @@
   "chapter": "10",
   "rule": "10.1",
   "width_px": null,
-  "alt": "The six kinds of symbol, one to a row, each with an example at the size it is used. Pillar icon: Track at 48 px, which marks which of our four pillars a piece serves; chapter 09. Topic symbol: Local government at 48 px, which names the subject of a piece; chapter 10. Atlas symbol: Entrenched majority control, Variable D7, at 48 px, which names a variable or a reform in our systems atlas; chapter 10. Status mark: a step ring with the number 2, for Step 2 of 6: Hearing, which says where a bill or a record stands; chapter 11. Utility icon: the search magnifier at 24 px beside the word Search; chapter 11. Encoding glyph: a line with a tag holding a plus sign, read as raises; shown in Rule 10.10 and taught in chapter 15.",
+  "alt": "The six kinds of symbol, one to a row, each with an example at the size it is used. Pillar icon: Track at 48 px, which marks which of our four pillars a piece serves; chapter 09. Topic symbol: Local government at 48 px, which names the subject of a piece; chapter 10. Atlas symbol: Entrenched majority control, Variable D7, at 48 px, which names a variable or a reform in our systems atlas; chapter 10. Status mark: a step ring with the number 2, for Step 2 of 6: Hearing, which says where a bill or a record stands; chapter 11. Utility icon: the search magnifier at 24 px beside the word Search, naming an action beside the words that say it; chapter 11. Encoding glyph: a line with a tag holding a plus sign, read as raises; shown in Rule 10.10 and taught in chapter 15.",
   "illustrative": false,
   "notes": "D2-515; readable list (D2-255). Status ring drawn at the tracker's 24 px size with the ring.now token; encoding tag drawn by System 1's wire_marks (DR-36).",
   "readable": true
@@ -513,7 +513,7 @@
   "chapter": "10",
   "rule": "10.2",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. A row of four symbols at 64 px with their words: Public records, Policy, Bill and Petition. Bill is a filled stock document icon with square corners, solid black among three Civic Line line drawings.",
+  "alt": "Labeled Failure case: do not publish. A row of four symbols at 64 px with their words: Public records, Policy, Bill and Petition. Bill is a filled document icon from a generic icon library, with square corners, solid black among three Civic Line line drawings.",
   "illustrative": false,
   "notes": "The stock glyph is drawn for this failure only, on a 24-unit grid; Bill has no Civic Line drawing (DR-137)."
  },
@@ -537,9 +537,9 @@
   "chapter": "10",
   "rule": "10.4",
   "width_px": 600,
-  "alt": "Two size ladders and a kicker at true size. Public records, which is on the list of 41, at 128, 96, 64, 48 and 24 px, with lines of 3.35, 2.51, 1.68, 1.26, 0.63 px. Congress, which is not on the list, at 128, 96, 64 and 48 px, and an empty dashed square where 24 px would be, marked not allowed. Below, a story card whose kicker reads Explainer, then the Public records drawing at 24 px directly before the words Public records, over the headline How to ask your town for its meeting minutes.",
-  "illustrative": false,
-  "notes": "Ladder sizes on whole pixels; CL-048 is on the list of 41 (construction file, section 10). The headline is a service line, not an invented fact."
+  "alt": "Two size ladders and a kicker at true size. Public records, which is on the list of 41, at 128, 96, 64, 48 and 24 px, with lines of 3.35, 2.51, 1.68, 1.26, 0.63 px. Congress, which is not on the list, at 128, 96, 64 and 48 px, and an empty dashed square where 24 px would be, marked not allowed. Below, a story card whose kicker reads Explainer, then the Public records drawing at 24 px directly before the words Public records, over the headline How to ask your town for its meeting minutes, labeled Illustrative.",
+  "illustrative": true,
+  "notes": "Ladder sizes on whole pixels; CL-048 is on the list of 41 (construction file, section 10). The story card's headline is invented and carries the Illustrative label beside it (H03, the editor's pass)."
  },
  "s-10-4-failure": {
   "chapter": "10",

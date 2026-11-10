@@ -5,7 +5,7 @@
   "part": "Symbols and graphics",
   "instruction": "Find the symbol for a subject or an atlas element and set it with its label.",
   "intro": [
-    "A symbol here is one of the Civic Line drawings, our family of line drawings, each on a square box. A topic symbol names the subject of a piece, such as Voting or Public records. An atlas symbol names a variable or a reform in our systems atlas.",
+    "A symbol here is one of the Civic Line drawings, our family of line drawings, each drawn in a square box. A topic symbol names the subject of a piece, such as Voting or Public records, and an atlas symbol names a variable or a reform in our systems atlas.",
     "The library after Rule 10.1 shows all 124 drawings by category, each with its word and ID. The rules after it say how a drawing is built, how small it may go, which word it carries and when it keeps its red."
   ],
   "groups": [
@@ -25,7 +25,7 @@
       "before_rule": "10.4",
       "number": 3,
       "title": "Size and surface",
-      "line": "A drawing reads from 48 px, a short list reads at 24 px, and each surface takes its own edition."
+      "line": "Every drawing reads from 48 px and 41 of them at 24 px, and each surface takes its own edition."
     },
     {
       "before_rule": "10.6",
@@ -45,7 +45,7 @@
       "id": "10.1",
       "title": "Give each kind of symbol its own job.",
       "rule": [
-        "We draw six kinds of symbol, and each does one job. Pillar icons mark which of our four pillars a piece serves. Topic symbols name the subject of a piece. Atlas symbols name a variable or a reform in our systems atlas, Who Do They Answer To?, where a variable is a condition that can rise or fall, such as safe seats. Status marks say where a bill or a record stands, and utility icons name an action beside its word. Encoding glyphs carry the atlas’s own marks for sign, evidence and delay.",
+        "We draw six kinds of symbol, and each does one job. Pillar icons mark which of our four pillars a piece serves, and a topic symbol names its subject. An atlas symbol stands for a variable or a reform in our systems atlas, Who Do They Answer To?, where a variable is a condition that can rise or fall, such as safe seats. Chapter 11’s status marks say where a bill, a records request or an agency rule stands, and its utility icons name an action beside the words that say it. The atlas’s own marks for sign, authority, evidence and delay are its encoding glyphs.",
         "A topic or atlas drawing never stands for an interface action, such as a download, a refresh or a menu."
       ],
       "tokens": [
@@ -69,7 +69,7 @@
       "specs": [
         {
           "label": "Topic and atlas symbols",
-          "value": "124 Civic Line drawings: CL-001 to CL-074, and the reform drawings R-01 to R-50"
+          "value": "120 of the 124 Civic Line drawings, CL-001 to CL-074 and R-01 to R-50; the other four are the pillar icons"
         },
         {
           "label": "Atlas symbols",
@@ -97,15 +97,15 @@
         "15"
       ],
       "builders": [
-        "Start from the job the picture does. An action a reader takes on the page goes to chapter 11. A subject or an atlas element comes from the library after this rule, where every drawing carries its ID, the name its file and the sprite use, such as CL-031 for Local government."
+        "Start from the job the picture does. An action a reader takes on the page goes to chapter 11. A subject or an atlas element comes from the library after this rule, where every drawing carries its ID, which its file and the sprite use, such as CL-031 for Local government."
       ]
     },
     {
       "id": "10.2",
       "title": "Build every drawing on one box, with one line, round ends and one red part.",
       "rule": [
-        "Every Civic Line drawing sits in a square box 128 units on a side. Its line is one weight, from 2.68 to 3.35 units, with round ends and round corners. One part of the drawing carries the red accent: the detail a reader should see first, such as the door of the hall in Local government. The rest is ink.",
-        "A subject with no drawing, such as Bill or State house, takes its word alone until a drawing made this way is approved by our founder and editor."
+        "Every Civic Line drawing sits in a square box 128 units on a side. Each drawing keeps its line at one weight, set between 2.68 and 3.35 units, with round ends and round corners. One part carries the red accent, the detail a reader should see first, such as the door of the hall in Local government. The rest is ink.",
+        "A subject with no drawing, such as Bill or State house, takes its word alone until our founder and editor approves a drawing made this way."
       ],
       "tokens": [
         "oa.component.icon.ink.onNewsprint",
@@ -114,17 +114,17 @@
       "why": {
         "text": [
           "One line and one finish let any two drawings sit side by side as a family at any size. Round ends keep a thin line soft where it stops, and a single red part gives the eye one place to land.",
-          "Our fourth edition named four principles for its symbols, and they hold for this set: “Weight with open space.”, “A deliberate cut.”, “People have a place.” and “Meaning earns the detail.” The drawings keep open counters inside a steady line, leave small gaps where two lines would crowd, draw people as round heads on open shoulders, and add a detail only where it names the subject."
+          "Our fourth edition named four principles for its symbols, and they hold for this set: “Weight with open space.”, “A deliberate cut.”, “People have a place.” and “Meaning earns the detail.” The drawings keep open space inside each shape and a steady line, leave small gaps where two lines would crowd, draw people as round heads on open shoulders, and add a detail only where it names the subject."
         ],
         "basis": "Design judgment, with four principles from our fourth edition"
       },
       "correct": {
         "specimen": "s-10-2-correct",
-        "caption": "Local government on its box at three times its master, with the keylines that place it, then at 128, 64 and 48 px. The door carries the red."
+        "caption": "Local government on its box at three times its master, with its keylines, the guide lines that place it, then at 128, 64 and 48 px. The door carries the red."
       },
       "failure": {
         "specimen": "s-10-2-failure",
-        "caption": "<strong>Fails Rule 10.2.</strong> A filled stock icon stands in for Bill, which has no Civic Line drawing. Its solid mass and square corners pull the eye from the three drawings beside it and tell the reader it came from somewhere else."
+        "caption": "<strong>Fails Rule 10.2.</strong> A filled icon from a generic icon library stands in for Bill, which has no Civic Line drawing. Its solid mass and square corners pull the eye from the three drawings beside it and tell the reader it came from somewhere else."
       },
       "specs": [
         {
@@ -174,7 +174,7 @@
       ],
       "why": {
         "text": [
-          "The cap keeps the line within a quarter of its weight across all 124 drawings. Trim a box to its ink and a compact drawing grows by half, its line thickens with it, and in a row that one subject shouts over its neighbors."
+          "The cap holds every line in the set between 2.68 and 3.35 units, so the heaviest is a quarter heavier than the lightest. Trim a box to its ink and a compact drawing grows by half, its line thickens with it, and in a row that one subject shouts over its neighbors."
         ],
         "basis": "Design judgment, approved by our founder and editor in October 2026"
       },
@@ -218,8 +218,8 @@
       "id": "10.4",
       "title": "Set topic and atlas symbols at 48 px or larger, and at 24 px only from the list of 41.",
       "rule": [
-        "A topic or atlas symbol starts at 48 px, where every line is at least one pixel wide. Forty-one drawings still read at 24 px, and only those may be set there, in one color. Four of the 41 are the pillar icons, which take chapter 09’s own drawings at that size, so 37 topic and atlas symbols remain for 24 px. No topic or atlas symbol is set at 16 px.",
-        "A kicker, the short line above a headline, may hold one topic icon from those 37, at 24 px, 8 px before the topic’s own word (Rule 01.21)."
+        "A topic or atlas symbol starts at 48 px, where every line is at least one pixel wide. Forty-one drawings still read at 24 px, and only those may be set there, in one color. Four of the 41 are the pillar icons, which take chapter 09’s own drawings at that size, so 37 topic and atlas symbols remain for 24 px. Never set a topic or atlas symbol at 16 px.",
+        "A kicker, the short line above a headline, may hold one of those 37 drawings, at 24 px, 8 px before the topic’s own word (Rule 01.21)."
       ],
       "tokens": [
         "oa.size.icon.large",
@@ -228,7 +228,7 @@
       ],
       "why": {
         "text": [
-          "Each drawing is one thin line on a 128-unit box, so at 24 px its line measures half a pixel and turns gray. A reviewer set every drawing at 128, 64, 32 and 24 px on Newsprint and named the 41 whose subject still reads at 24 px. The rest need 48 px before a reader can name them."
+          "Each drawing is one thin line on a 128-unit box, so at 24 px its line measures half a pixel and turns gray. A reviewer set every drawing at 128, 64, 32 and 24 px on Newsprint and named the 41 whose subject still reads at 24 px. The rest needed 48 px before the reviewer could name them."
         ],
         "basis": "Design judgment, approved by our founder and editor in November 2026"
       },
@@ -281,7 +281,7 @@
       "id": "10.5",
       "title": "Match the edition to the surface, and use only the six tiles.",
       "rule": [
-        "Each drawing comes in four editions that share every coordinate. Red-Black and Black serve Newsprint and White. Red-Newsprint and Newsprint serve Charcoal. Newsprint alone serves Prussian, where red never sits.",
+        "Each drawing comes in four editions that share every coordinate. Red-Black and Black serve Newsprint and White, and Red-Newsprint and Newsprint serve Charcoal. Prussian, where red never sits, takes the Newsprint edition alone.",
         "On a tile, a drawing takes one of six: a square, a rounded square or a circle, in Charcoal or in Newsprint. Charcoal is the default tile for the app icon and avatars. A two-color tile starts at 72 px square, 76 px rounded and 80 px round."
       ],
       "tokens": [
@@ -291,7 +291,7 @@
       ],
       "why": {
         "text": [
-          "Each edition keeps the ink at 13.29 to 1 against its own ground, and 9.42 to 1 on Prussian, so the drawing reads on every surface we print. A fixed set of tiles keeps a symbol from turning into a badge of a new shape each time a product needs one."
+          "Each edition keeps the ink at 13.29 to 1 or more against its own ground, and 9.42 to 1 on Prussian, so the drawing reads on every surface we print. A fixed set of tiles keeps a symbol from turning into a badge of a new shape each time a product needs one."
         ],
         "basis": "Design judgment, with contrast by WCAG 2.2 SC 1.4.11"
       },
@@ -352,8 +352,8 @@
       "id": "10.6",
       "title": "Set every symbol beside its own word.",
       "rule": [
-        "Print the word beside every symbol. A topic symbol carries its own word, such as Congress. An atlas symbol carries the atlas’s name for its element, such as Congressional capacity for the same drawing where it stands for that variable, with a typed chip such as Variable D1. A reform carries the reform’s name, and the rejected option on term limits keeps the word Rejected wherever it appears.",
-        "Beside its word, the drawing is hidden from screen readers, so the word is read once."
+        "Print the word beside every symbol. A topic symbol carries its own word, such as Congress. Where the same drawing stands for the atlas variable, it takes the atlas’s name, Congressional capacity, with a typed chip such as Variable D1, and each reform drawing takes its reform’s name. The rejected option on term limits keeps the word Rejected wherever it appears.",
+        "Hide the drawing from screen readers when its word sits beside it, so the word is read once."
       ],
       "tokens": [
         "oa.type.ui",
@@ -404,7 +404,7 @@
       "id": "10.7",
       "title": "Give a symbol its red only where it stands alone or marks the current item.",
       "rule": [
-        "A drawing that stands alone at 48 px or larger keeps its red accent, bare on Newsprint, as signature red. In a row or a menu every drawing goes one color, and only the current one keeps its red. Under 48 px every drawing is one color.",
+        "A drawing that stands alone at 48 px or larger keeps its red accent, set straight on Newsprint with no tile, as signature red. In a row or a menu every drawing goes one color, and only the current one keeps its red. Under 48 px every drawing is one color.",
         "Signature red does not count against a view’s one working red (Rule 05.3)."
       ],
       "tokens": [
@@ -453,7 +453,7 @@
       "id": "10.8",
       "title": "Draw the atlas’s variables and reforms, and name its other parts in words.",
       "rule": [
-        "The atlas has one drawing for each of its 51 variables and one for each of its 50 reforms. Its domains, hubs, layers and routes to change appear as words, or as a typed chip that holds the ID and the name, even where a page lists them beside drawn variables."
+        "The atlas has one drawing for each of its 51 variables and one for each of its 50 reforms. Its other parts take words, or a typed chip that holds the ID and the name, even where a page lists them beside drawn variables. Those parts are its domains, which sort issues by subject; its hubs, which gather everyday questions such as Cost of living; its three layers; and its routes to change, the paths a reform can travel, such as a ballot measure."
       ],
       "why": {
         "text": [
@@ -499,7 +499,7 @@
       ],
       "why": {
         "text": [
-          "A likeness test compares two drawings at 24 px, where only their outlines are left, and scores the pair from −1 to 1. Among the 7,626 pairs in the set, one pair in a hundred scores 0.91 or more. Most groups here score well under that, so the trouble lies in the subject: Testify and Public meeting score −0.09, yet a builder looking for a hearing can still reach for the meeting. Doctrine favoring the appointing coalition and Local government come closest, at 0.84, closer than 88 pairs in a hundred."
+          "A likeness test compares two drawings at 24 px, where only their outlines are left, and scores the pair from −1 to 1. Among the 7,626 pairs in the set, one pair in a hundred scores 0.91 or more. Most groups here score well under that, and their risk lies in the subjects, since a builder looking for a hearing can reach for Public meeting although the two drawings score −0.09. Doctrine favoring the appointing coalition and Local government come closest, at 0.84, closer than 88 pairs in a hundred."
         ],
         "basis": "Design judgment, measured with the likeness test"
       },
@@ -514,7 +514,7 @@
       "specs": [
         {
           "label": "Likeness test",
-          "value": "Outlines compared at 24 px; 0.91 or more is as alike as the closest one pair in a hundred"
+          "value": "Outlines compared at 24 px; 0.91 or more puts a pair among the closest one in a hundred"
         },
         {
           "label": "No drawing",
@@ -535,7 +535,7 @@
       "id": "10.10",
       "title": "Copy the atlas’s encoding glyphs exactly, each with its words.",
       "rule": [
-        "The atlas draws a small set of marks on its connections: a tag with a plus or a minus for the sign, an open diamond for authority, line textures for the evidence grade, one to three ticks for the delay, and red where a reform acts. Draw each one from the atlas’s own measurements, and print its words beside it in every key.",
+        "The atlas draws a small set of marks on its connections: a tag with a plus or a minus for the sign, an open diamond for authority, where one body holds legal power over something, line textures for the evidence grade, one to three ticks for the delay, and red where a reform acts. Draw each one from the atlas’s own measurements, and print its words beside it in every key.",
         "Chapter 15 teaches how to read and combine them."
       ],
       "why": {

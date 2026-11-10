@@ -33,7 +33,7 @@
 //                      stage with no width and the chart system's own sizes; a stage with data-scale also passes at
 //                      size divided by its scale; check_exempt "scale" skips the stage (D2-254, C-M7)
 //   codes              no decision code (DR-, D1-, D2-, G1-, T-, R9, R13, I6, I8, S5, S9) and none of "Master Brief",
-//                      "Phase", "Gate" or "gate" in any case, "Board 5" or any "Board N" or "board A" to "F", "stage A" to
+//                      "Phase", "Gate", "gate" where it names the studio's gate, "Board 5" or any "Board N" or "board A" to "F", "stage A" to
 //                      "stage C", "stage board", "the studio", "V5", "V4.2", "Atlas V7" in reader text, alt text and
 //                      accessible names (D2-253; the case-free "gate" and the board and stage names from the apply pass)
 // Added in the apply pass (November 7, 2026):
@@ -96,7 +96,11 @@ const CODE_PATTERNS = [
   ['(?<![Ll]oop )\\b(?:R9|R13|I6|I8|S5|S9)\\b', 'g', 'decision code'],
   ['\\bMaster Brief\\b', 'g', 'internal document'],
   ['\\bPhase\\b', 'g', 'studio word'],
-  ['\\bgates?\\b', 'gi', 'studio word'],
+  // "Gate" with a capital always; "gate" where it names the studio's gate (the next gate, this gate, a gate report), not
+  // a gate drawn in a symbol, such as R-42's parcel at a gate (round 2, November 10, 2026)
+  ['\\bGates?\\b', 'g', 'studio word'],
+  ['\\b(?:next|last|this|that|each|every|later|final|first|second|third|phase|stage|the)\\s+gates?\\b(?!\\s+(?:with|of|in|on|across|that|which)\\b)', 'gi', 'studio word'],
+  ['\\bgates?\\s+(?:reports?|reviews?|approvals?|rules?|questions?|meetings?)\\b', 'gi', 'studio word'],
   ['\\b[Bb]oards?[\\s\\u00a0]+(?:\\d+|[A-F])\\b', 'g', 'studio word'],   // Board 6, board A; not "the board I serve on"
   ['\\b[Ss]tages?[\\s\\u00a0]+[A-C]\\b', 'g', 'studio word'],
   ['\\bstage board\\b', 'gi', 'studio word'],
@@ -616,10 +620,9 @@ async function fitAudit(page) {
 // (20261109_Stage-B-Accessibility-Audit.md, section 2), found by data-icon and data-icon-family (D2-517), plus the
 // mark tokens' parity (D2-402). A stage with role="img" is a picture and is skipped; a live specimen (D2-516) is not.
 const GLYPH_ONLY_OK = ['clear the search'];                 // A-4: the one control that may show a glyph and no word
-// D2-517: a glyph without data-icon-family fails in the chapters listed here (by anchor), and is listed elsewhere.
-// Round 2 (November 10, 2026): chapter 10 carries the family on every use; the rest join as their owners finish, and
-// true makes it fail everywhere.
-const REQUIRE_FAMILY = ['symbols'];
+// D2-517: a glyph without data-icon-family fails. true: everywhere; a list of chapter anchors: only there, listed
+// elsewhere. Round 2 (November 10, 2026): on everywhere, since every glyph on the page with chapters 01 to 11 carries it.
+const REQUIRE_FAMILY = true;
 // B-3: the 41 drawings that read at 24 px (DR-136), from 20261110_Stage-B-Ch10-Construction.md, section 10: 37 topic
 // and atlas drawings and the four pillar icons.
 const READS_AT_24 = ['CL-001', 'CL-004', 'CL-006', 'CL-010', 'CL-013', 'CL-019', 'CL-020', 'CL-021', 'CL-022', 'CL-023', 'CL-024', 'CL-028', 'CL-031', 'CL-032',
@@ -1157,6 +1160,7 @@ const PLANTS = [
   { key: 'codes', fault: '"the studio" in a caption', js: () => { document.querySelector('.plate-cap').append(' The studio drew it.'); } },
   // apply pass, November 7, 2026
   { key: 'codes', fault: 'a lowercase "gate" in rule text', js: () => { document.querySelector('.rule-text').append(' Shown to the editor at the next gate.'); } },
+  { key: 'codes', fault: 'a gate drawn in a symbol, in its meaning sentence (allowed: must not be flagged)', expect: false, js: () => { document.querySelector('.rule-text').append(' A parcel meets a gate with two bars across it.'); } },
   { key: 'codes', fault: '"Board 6" in a caption', js: () => { document.querySelector('.plate-cap').append(' As drawn on Board 6.'); } },
   { key: 'codes', fault: '"stage B" in a chapter intro', js: () => { document.querySelector('.chapter .ch-head .instr').append(' Status marks arrive in stage B.'); } },
   { key: 'retiredWords', fault: '"Signal Grid" in rule text', js: () => { document.querySelector('.rule-text').append(' The Signal Grid codes the tracker.'); } },
@@ -1265,9 +1269,8 @@ const PLANTS = [
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg data-icon="CL-055" data-icon-family="topic" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="8" fill="currentColor"/></svg> Productivity</p>'); } },
   { key: 'iconSizes', fault: 'a glyph without data-icon-family in chapter 10, where the family is required (D2-517)', js: () => {
     document.querySelector('main').insertAdjacentHTML('beforeend', '<section class="chapter" id="symbols"><p><svg data-icon="CL-001" aria-hidden="true" focusable="false" viewBox="0 0 48 48" width="48" height="48"><circle cx="24" cy="24" r="16" fill="currentColor"/></svg> Voting</p></section>'); } },
-  { key: 'iconSizes', fault: 'the same glyph without its family in a chapter not yet required: listed, not failed (allowed: must not be flagged)', expect: false, js: () => {
-    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg data-icon="CL-001" aria-hidden="true" focusable="false" viewBox="0 0 48 48" width="48" height="48"><circle cx="24" cy="24" r="16" fill="currentColor"/></svg> Voting</p>'); },
-    verify: (r) => r.runs[0].stageB.missingFamily.length >= 1 },
+  { key: 'iconSizes', fault: 'a glyph without data-icon-family in any other chapter, now that the family is required everywhere (D2-517)', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg data-icon="CL-001" aria-hidden="true" focusable="false" viewBox="0 0 48 48" width="48" height="48"><circle cx="24" cy="24" r="16" fill="currentColor"/></svg> Voting</p>'); } },
   { key: 'disabledControls', fault: 'a disabled attribute on a toolbar button (G-4)', js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div role="toolbar" aria-label="Report tools"><button type="button" disabled>Print</button></div>'); } },
   { key: 'stateCues', fault: 'a pressed button told from its peer by fill and color alone (C-5)', js: () => {
