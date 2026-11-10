@@ -1537,3 +1537,11 @@ The studio asked three questions before promoting the approved drawings, and lis
 | D2-716 | `work/build/assets/civic-line-v6/` is the set in use: the four SVG editions of all 124 drawings (116 masters copied byte for byte, the six redraws under their own IDs, CL-073 and CL-074) and an inventory in use. PNG previews and tiles are made new for the eight changed drawings only; the inventory points the other 116 at their October PNGs and tiles in `civic-line/` | One folder for the sprite and the later package, without copying about 200 MB of unchanged PNGs, tiles and QA into the repository. This narrows the plan's "PNGs and tiles" for the whole set; the SVGs, which the guide and sprite read, are all there |
 | D2-717 | The five category contact sheets are redrawn from `civic-line-v6/` by chapter 10's build in round 2, and the October sheets stay as the record | Chapter 10 shows the set as contact sheet images (D2-591), and drawing them once from the set in use avoids a second set |
 | D2-718 | Unpicked options and fits stay in the makers' folders, which the drawings board's build reads, as the record of the board | The board at its address shows them, and its build must still run |
+
+## Stage B round 2 begins, November 10, 2026
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-719 | Chapter 01's three pillar specimens (`s-01-pillars`, `s-01-21-correct`, `s-01-21-failure`) and chapter 08's `s-08-3-*` move to the identity designer for round 2; the editor keeps every word in them | They show the pillar fits and a state bill card that chapter 09's owner draws, and the engineer asked chapter 01's owner to move them to the sprite (engineer's notes, requests) |
+| D2-720 | The systems designer's round 2 work runs as two agents under the same role file: one for chapter 10 and then chapter 12's systems devices, one for chapter 11 | One hand per chapter; chapter 11 starts as soon as chapter 10's construction text exists, as the brief orders |
+| D2-721 | The round 2 brief is `work/handoffs/phase-2/20261110_Stage-B-Round-2-Brief.md`; the editor and chapter 10's maker start while the promotion runs | The editor's words and chapter 10's construction text need no finals; specimens wait for the sprite (D2-504's practice) |
