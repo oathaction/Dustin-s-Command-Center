@@ -1956,3 +1956,169 @@ The studio asked which loop chapter 11's stepper runs and listed four questions 
 | D2-975 | IDs stay whole at line ends through a build pass: the page wraps each ID in a no-wrap span written with an ASCII hyphen, attribute values lose U+2011, and the guide check fails on any U+2011 left in the page's text. The owners' sources may keep U+2011 | The Inter files have no glyph for U+2011, so it drew from Arial, and a copied or searched "CL‑001" matched no file name; one pass in the build fixes every chapter |
 | D2-976 | The systems designer's question, one-color tiles from 48 px drawing their symbol at 32 to 34 px under DR-136's 48 px floor, goes to board B's decisions board; Rule 10.5 states the exception for the 94 drawings that read at 32 px until Dustin answers | Two settled rules meet here (the October tile rule and DR-136); the recommendation keeps the exception, since avatars show at 32 to 48 px |
 | D2-977 | The editor's read after the pass compares every chapter file, manifest and specimen against commit ddd3a898, the frozen review copy's source | One base for the read; the read covers every string the fix pass changed, the engineer's words included |
+
+## Stage B round 3, fix pass and board B, November 10, 2026
+
+Each owner's routine calls, numbered by the main session's script from the "D2-xxx" lines in its notes. Calls about U+2011 in the systems designer's and chapter 11 hand's notes stand as the record; D2-975 replaced them in the build.
+
+### Identity designer, fix pass (`20261110_Stage-B-Round-3-Identity-Fix-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-978 | Chapter 09's four phone-size plates are 360 px wide with a 16 px inner margin, and `s-09-4-failure`'s card is 328 px | CA-S5; chapter 11's 360 px plates fit 390 and 360 px screens, and 16 px is the shell's own phone gutter |
+| D2-979 | In the stacked 48 px column each downward arrow stands centered under its icon, in a 20 px gap between rows, in chapter 09 and in chapter 01's row | CD-S1, CA-S6; the four masters' ink is centered at 64 of 128 units across, so one x serves all four, and the row looks the same in both chapters |
+| D2-980 | Rule 09.1 places the 48 px row near the top of a page that introduces the four pillars or gathers one pillar's work, the 24 px compact row in the header of a single piece that serves one pillar, and no row on a social card or in a kicker | D2-962, PP-M2; chapter 01's captions put both rows "on a page that serves Track", and Rule 09.4 keeps the 128 px icon for section openers |
+| D2-981 | The proofs' social card carries no pillar row and no topic or atlas symbol, and its "Left out" line says why | D2-962; a phone's feed shows the 1200 px card at about 30 percent, so a 48 px icon would draw at 14 px, under every icon's floor |
+| D2-982 | The social card's kicker takes the H3 style at 32 px, its label in Charcoal and its topic in Deep Stone | D2-973; the kicker tells a reader in the feed whether the piece reports or argues, which the platform's own lines may not; 32 px is the largest size D2-254 gives a 1200 px board short of a second headline |
+| D2-983 | "Pixel fit" names every whole-pixel drawing: defined in chapter 09's intro and used in Rules 03.4 and 04.6 | PP-S1, H02; the files keep their names |
+| D2-984 | Rules 04.6 and 09.3 each give one clause on why their switch points differ | PP-S1, D2-808 |
+| D2-985 | Rule 09.3 picks the 24 px file for exported images and print: the fit at 1x, the master at 2x or more and in print; at 16 px, the fit | PP-S2; nothing switches a PNG or a printed page, and the 16 px master never draws (D2-634) |
+| D2-986 | Rule 09.4's kicker clause reads "which may carry only a topic or atlas symbol (Rule 01.21)" | ED 4b's row, matched to Rule 01.21's new wording at the editor's request |
+| D2-987 | The watermark's top sits 20 px under the page's top and the page's right edge cuts B at 50 of its 93.29 units; both pages are 360 px tall | CD-S10, CA-S10; cutting left of the arm leaves every visible part joined to the letter, and Rule 04.8 already asks a crop for no fragment at the edge. I also tried keeping the arm whole, with B moved down and in, which brought B within 18 px of the text column |
+| D2-988 | Rule 12.2 gains a "Crop" spec row and one builders sentence | A builder who copies the plate needs the rule that fixed it |
+| D2-989 | Rule 12.4 keeps one pattern, the hinge arcs, and drops the hinge rules from its rule, the device index and its plates | CA-S11, design judgment: sixteen even lines read as lines to write on, the arcs carry the hinge diagram's geometry, the round 2 brief allowed "at most two", and the creative director's risk note doubted the patterns. Rule 12.4's title now names the arcs |
+| D2-990 | Rule 12.4's plates are each one 360 px cover, the Illustrative label at the cover's head, the failure's band the plate's width | CA-S11, CD-S11; no empty part of the frame, and both plates fit a phone. The arcs stand 41.5 px from the nearest line of text, measured in the built page |
+| D2-991 | The watermark failure carries the Illustrative label inside the plate under the band | CD-S11, as Rules 09.4 and 12.1's failures do |
+| D2-992 | Chapter 12's device index names Rule 12.3's device "L8, the monogram" and Rule 12.4's "Hinge arcs" | ED 4e; chapter 03 keeps "compact signature" for our fourth edition's retired typed "O & A" |
+| D2-993 | `s-08-1-correct` sets the four masters in one row and the two dark surfaces in a second, and the two dark tiles share one height | CA-S14; the caption already names those two groups, where a grid of three and three would split the ladder of sizes |
+| D2-994 | `s-09-4-failure`'s kicker follows Rule 01.21's type | The plate fails Rule 09.4 alone, as CD-S3 asks of chapter 10's failure |
+| D2-995 | CL-057 in Rule 01.21's kicker carries `data-icon-family="atlas"` | Chapter 10 files it as Variable EC3 (the editor's request) |
+| D2-996 | The watermark failure's B sits at the same height as the correct plate's, 20 px under the page's top | Its foot grazed the page's bottom edge, a second fault the plate did not name |
+| D2-997 | Chapter 09's row tags keep a size and its unit on one line | At 360 px "24 px" broke after "24" |
+
+### Systems designer, fix pass (`20261110_Stage-B-Round-3-Systems-Fix-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-998 | IDs in visible text take U+2011, and alt text keeps the plain hyphen | D2-950; a screen reader reads the plain hyphen as written, and an alt never wraps on screen |
+| D2-999 | U+2011 is drawn from Arial, the face after Inter in our stack | Inter as the page loads it has no glyph for U+2011, so Chromium falls back one face; I measured Arial's hyphen beside Inter's at 4x, and the ID reads the same, about 1 px narrower |
+| D2-1000 | Rule 10.8 lists all 10 reforms in the atlas's own order, and the build stops if the count changes | D2-958 prefers all ten where they fit; the atlas's order picks none, and R-01 and R-02 lead only by number |
+| D2-1001 | Name first, then the typed chip, everywhere in chapter 10; Rule 10.8 reads "names in words, each followed by a typed chip" | PP-S5 asks for one order; the class table, the library and Rule 10.6 already set the name first, so one plate changed rather than four |
+| D2-1002 | A reform's library cell shows its chip ("Reform R-05") in place of the bare ID | The drawing's ID and the atlas ID are the same, and H11 asks for no bare ID |
+| D2-1003 | The 24 px mark in the library is plain text, "Also at 24 px" | CD-S4: a box now means a typed chip and nothing else |
+| D2-1004 | Rule 10.7's menu sizes each item to its words and binds a short word to the next | CA-S8; it holds at 390 and 360 px with no overflow |
+| D2-1005 | The five look-alikes' likeness is measured with `icon_likeness_check.js`'s own functions, and only the 10 new pairs join the figures file | The distribution came out identical (7,626 pairs, flag 0.9092), so the figures already printed keep their values |
+| D2-1006 | Rule 10.5 states the one-color tiles as the one exception to Rule 10.4's floor, for the 94 drawings read at 32 px | PP-S7 asks to square the two rules; the tile minimums come from the inventory's tile rule (bare floor 32 px, 48 px for drawings that stop reading at 32 px), which I did not change (question 1) |
+| D2-1007 | The state locator draws 8 px tiles with 1 px gaps | CA-S12 asks for 200 px of headline; a locator under the headline would break Rule 12.7's "top right" |
+| D2-1008 | Rule 12.9's source line takes BE-S8's wording | D2-968; the line is mine, and chapter 11 prints the same statute |
+| D2-1009 | Rule 12.7's second sentence takes the editor's 4c wording, "Draw the locator in ink, with no red." | The editor's 4e note counted it as applied, but the generator still printed "stays in ink and never takes red" |
+| D2-1010 | My chapter 12 build normalizes spaces and hyphens in my own rules and intro sentence only | Two makers share the file, and my round 2 build rewrote every rule's spaces |
+| D2-1011 | My intro sentence is found and replaced in place, after the identity designer's sentence in the same paragraph | Their build prepends theirs; mine now owns only the text from "Rules 12.5 to 12.9 cover" to the paragraph's end |
+| D2-1012 | `s-05-3-corrective` takes chapter 11's `U-error` at 24 px, with 12 px between the bar and the mark | D2-959; Rule 11.15's band sets the same gap |
+| D2-1013 | Rule 10.4's why drops "The rest needed 48 px before the reviewer could name them." | The October review read at 128, 64, 32 and 24 px, never at 48 (construction file, section 10), and Rule 10.5 now cites its 32 px reading |
+| D2-1014 | Rule 12.5 glosses "connection" where it first appears in chapter 12 | A reader can land on Rule 12.5 without Rule 10.10 |
+| D2-1015 | Sources keep U+2011 in IDs | The engineer's build pass writes IDs with an ASCII hyphen in a no-wrap span (D2-975), as the main session's message says |
+
+### Chapter 11 hand, fix pass (`20261110_Stage-B-Round-3-Ch11-Fix-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1016 | The stepper runs loop R1 from one parameter, `LOOP_ID` in `apply_systems_ch11_ui.py`, and every word, alt, caption and spec about the loop reads from it | DR-195 and D2-974; the brief asked for one switch |
+| D2-1017 | The stepper's headlines keep round 2's form, the chain labels with a verb from the connection's sign, so step 2 reads "Money in politics can raise policy tilt to insiders." | The instruction relaying DR-195 says to read the steps as round 2 read R10; D2-969 sets "can" and the grade sentence |
+| D2-1018 | The build stops on a loop with more than one plausible step, or a grade the stepper has no words for | "the least certain in the loop" is true of one step only, and no grade may drop out (H08) |
+| D2-1019 | Play times each step from every word its live region reads, "Step 1 of 3:" included, at 250 ms a word with a 6 second floor | D2-972; a screen reader reads the step number too |
+| D2-1020 | The step box holds the longest step's height (14rem) and the report page the tallest page (14.5rem, page 1 cut to one sentence) | Controls that move as content changes misplace a pointer and a magnifier; measured steady at 360, 390 and 1440 px |
+| D2-1021 | The report reader is a four-page report | CD-M1's second option; four real pages teach the same controls as twelve at a third of the words |
+| D2-1022 | H.99009's figure draws two ovals, Local news supply as the target and Electoral pressure, through connection L26 | R-32's third target, connection LT03, starts at Variable TC2, whose only V7 name is a 51-character title that cannot fit a third oval at 360 px, and LT03 is negative, which an unsigned arrow would misstate |
+| D2-1023 | The figure's note gives R-32's own grade, a hypothesis | V7 grades R-32's remedy evidence a hypothesis; H08 and DR-93 |
+| D2-1024 | H.99009's Illustrative label sits at the end of the card's kicker line | BE-S6 and CA-S9: beside the invented item, in one place |
+| D2-1025 | The 2 px line runs into a step that never happened, the last step included, and the words say so | The record moved past that step; a 1 px line into step 6 would read as a step still to come, and one rule now covers a skipped middle step and a skipped last one |
+| D2-1026 | Rule 11.5's spacing keeps the circles 60 px apart and says six fit a 328 px row | Spreading them to the far edge would put them on fractional pixels |
+| D2-1027 | "Drawing the marks" is a readable table after Rule 11.2 (`s-11-marks-drawn`), its figures computed from the drawing code | A rule's specs hold label and value pairs, not a table; a table built from `node()` cannot drift from the marks |
+| D2-1028 | The table writes color tokens as `-on-<surface>`, and its caption says to read "charcoal" on Charcoal | One row serves both surfaces, in PP-M3's own form |
+| D2-1029 | Rule 11.15's token chips drop the error mark token, which its specs list as "The red bar" | PP-M3: in a row of mark colors the name told a developer to paint the glyph red |
+| D2-1030 | Rule 11.10 sorts a status by its source: the agency's tracking service or the Federal Register needs no mark; a status we piece together ourselves carries the warning mark and the check date | PP-S11; the plates already follow this split, and only a status we put together ourselves can be older than the record a reader would check |
+| D2-1031 | The invented requests take federal subjects, and "20 working days" stays | BE-S3's first option keeps the rule's true federal clock in front of the reader |
+| D2-1032 | Rule 11.10's "A pause inside a step" becomes "A wait inside a step" | An extension adds days and pauses nothing (BE-S2) |
+| D2-1033 | The state hearing source line ends "and we read these five as examples and made no national count" where the research lead wrote "and these five are examples, not a count" | Chapter 02's W09 rules out the corrective "not" turn; the meaning is unchanged, and the editor reads it after this pass |
+| D2-1034 | Every hyphen between two letters or figures in a fixed chapter 11 plate is held whole: U+2011 in my source, which the build makes a no-wrap span (D2-975), and a no-wrap span with an ASCII hyphen in text a script writes; alts and search data keep the plain hyphen | CA-S4, D2-950 and D2-975; a screen reader, a copy and a search read the word as typed |
+| D2-1035 | The email error binds "an @," with a no-break space | CD-S5 |
+| D2-1036 | The library's empty result says what to do: "No symbol matches. Clear the search or the filters to see more." | An empty state says why it is empty and what makes it fill (the UX lead's states list) |
+| D2-1037 | The reader's page header binds "· page 1" to the report's last word and balances its two lines | At 360 px "PAGE 1" fell alone onto a second line |
+
+### Editor, fix pass (`20261110_Stage-B-Round-3-Editor-Fix-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1038 | Step 4's name on the page is "A card and a drawing", its ready screen's words | D2-950 asks for a neutral title; one name for one step |
+| D2-1039 | Step 7's question asks in the past tense, "What did you see in it?" | The question screen hides the picture (PP-S13) |
+| D2-1040 | Rule 01.21 allows "a topic or atlas symbol from the 37 that read at 24 px (Rule 10.4)" in the rule, spec and builders line, and names Housing as a subject that takes its word alone | BE-S7, PP-S3, DR-196; the plate's CL-057 is an atlas symbol |
+| D2-1041 | Chapter 01 defines "atlas symbol" at its first use, in Rule 01.21 | H02; chapter 10 defines it in full |
+| D2-1042 | Rule 01.21's spec row "Topic icon" becomes "Kicker symbol" | The row now covers both kinds, and "topic icon" was the old term |
+| D2-1043 | Virginia's sentence takes PP-S12's words, with a comma after the year | W02; the guide sets a comma after a full date mid-sentence elsewhere |
+| D2-1044 | Missouri's county page takes its own source line, "Source for Missouri’s figures", retrieved November 10, 2026 | CA-S15 asks for one source per line; H04's order; the research lead read the page that day |
+| D2-1045 | The "How we counted" note holds the method, Ohio, Missouri and Utah, with Missouri's figures and status, and every fact the round 2 line held | CD-S14, DR-187 |
+| D2-1046 | The plate's three source lines sit in a list with no bullets, 12 px apart, and the note sits under a label 20 px below | CA-S15: each source readable as one; a screen reader hears a list of three |
+| D2-1047 | The atlas's Cloture line and electric bill line end "snapshot of October 15, 2026." | BE-S8; every other atlas line in chapter 01 names the snapshot |
+| D2-1048 | `s-01-pillars`'s caption says "as Track’s icon does here" in place of "as the section opener’s row draws it" | CD-S15: "section opener" means the 128 px panel in Rule 09.4 |
+| D2-1049 | The Illustrative label ends the kicker line of each invented headline in `s-01-21-correct`; the failure plate keeps its labels after the headlines | CA-S9; a label on a faulty kicker would read as one more part |
+| D2-1050 | Rule 01.21 keeps its sentence for a subject with no drawing | It agrees with Rule 10.6's final paragraph in verb and example, and names the 37 a kicker may hold |
+| D2-1051 | The read after the pass lists the three "plausible link" strings in chapter 04, unchanged this pass | 4e's call puts "connection" on every reader page |
+| D2-1052 | The questions file's row_48 description says "the 48 px row on a page that serves Track" | Rule 09.1 and `s-01-pillars`; a section opener is the 128 px panel |
+| D2-1053 | I left `track_css()` and `track_steps()` to the chapter 11 hand and kept the generator's current `s-01-pieces` output in the tree | The brief gives the marks in `s-01-pieces` to that owner, and the main session's rerun of every generator settles the final file |
+
+### Engineer, fix pass (`20261110_Stage-B-Round-3-Engineer-Fix-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1054 | The page carries tokens.css once as the plain link and once as a zip in a data attribute on that link, and the script hands the zip's bytes to the host | D2-964 lets the build embed the zip; 11 KB beside a 90 KB link keeps the one-copy plan of round 2 |
+| D2-1055 | The zip holds `tokens.css` alone, deflated, dated November 6, 2026 at midnight with Unix permissions 644 | The same tokens give the same bytes on every build, and the date matches the file name |
+| D2-1056 | The buttons read "Download tokens.css" with no host and "Download tokens.css in a zip file" once the host's namespace resolves | The brief asks the words to say what the reader gets on each path |
+| D2-1057 | `rate_limited` is treated as `declined`: nothing more happens | The type definitions say a prompt is already open; a fallback download would then start under that prompt |
+| D2-1058 | A save that throws before it returns falls back as `unavailable` does | Every rejection is caught, and a throw is a rejection the host never sent |
+| D2-1059 | The error mark token's description names the bar and points the glyph to the error text's ink by its CSS name | The description goes into tokens.json; a `{}` reference to a group would read as an alias |
+| D2-1060 | Token version 6.0.0-gate2.6 | A description changed in the shipped files |
+| D2-1061 | The masthead wordmark takes `CanvasText` in forced colors, ampersand included | One system color, the text's, as the wordmark's one-color edition draws in the text's ink; it stays a link by its role and its focus ring |
+| D2-1062 | The masthead bar and its part links may wrap | CA-S17; at the default size everything fits on one line, as before |
+| D2-1063 | The specification rows take their columns only where their block has room in the reader's text size (container queries inside the existing media queries) | At 200 percent text the 11rem label column alone pushed the page sideways at 1024 px; at the default size no cell moves |
+| D2-1064 | The breakout is measured by the shell for every chapter plate with a fixed width, from 80em, with no manifest key | It needs nothing from the plate's owner, and it applies the craft team's reason to `s-06-8-failure` too |
+| D2-1065 | A breakout frame reaches to the page's margin, and the stage sits centered in it | One edge for every breakout, the page's own, in place of a width that changes with each stage |
+| D2-1066 | The rail hides while a breakout frame covers it | The appendix's rule; no rail link may sit out of sight under a frame |
+| D2-1067 | The typing check runs last at each width and puts each field back | Typing changes a live specimen's state, which no other check should see |
+| D2-1068 | A-5 counts only the step marks a reader sees | A plate may draw one row per screen width and hide the other, as `s-01-pieces` now does |
+| D2-1069 | The 200 percent sideways test runs at 1024 px | The craft team's width, where the desktop layout meets large text; phone widths are listed below as a finding, not a failure, until their owners decide |
+| D2-1070 | The copy text prints times in the reader's own clock, with the record line keeping UTC | The reader reads the line; the team reads the record |
+| D2-1071 | The twelve marks sit in one grid of four columns in their order, with no row break between the 16 and 24 px marks | Three rows of four leave no mark alone at any width, and the numbers keep the order |
+| D2-1072 | The sheet's column gap is 28 px from a 372 px screen and narrows to 15 px at 320 px | Four columns with the 152 px wordmark in the first need 324 px at 28 px gaps, wider than a 320 px screen's 288 px column (the test's reflow walk found it) |
+| D2-1073 | The build holds IDs whole in one pass over the finished page, with `<span class="nw">` and an ASCII hyphen in text and an ASCII hyphen alone in attributes, SVG text and raw text | D2-975; one pass covers every maker's specimen without touching their sources |
+| D2-1074 | Any word a maker wrote with U+2011, ID or not, is held whole the same way | The maker chose to keep it whole; the guide check now fails any U+2011 left in text |
+| D2-1075 | In a script's source the build turns a literal U+2011 into an ASCII hyphen; what a script writes at run time with U+2011 the shell holds whole after the fact | The build cannot add markup to text a script writes later; the shell can, with one rule for both |
+| D2-1076 | The ID families are listed by name (the 18 utility IDs, the six status marks) or by form (CL with three digits, R with two, E- with words) | A loose pattern would hold whole prose such as a word that starts "U-" |
+
+### Board B builder (`20261110_Board-B-Builder-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1077 | The board's words live in the script's `W` block, and the content JSON records every string and figure it prints | The brief asks the script to write the content JSON; one source of words keeps a rerun clean |
+| D2-1078 | Option B keeps the 4 px red bar and changes only the mark's color | D2-880 puts the mark "drawn in red" beside A, and the token described both the mark and its bar in red |
+| D2-1079 | Both options sit in one comparison, row by row: the form, the mark alone at 24 px, the mark enlarged four times | Dustin compares like with like on one line; on phones each row stacks A over B, still row by row |
+| D2-1080 | "On Newsprint" shows the mark alone on Newsprint, and "On the Error Band" shows it on the band, since in the form the mark sits only on the band | The brief asks for both grounds, and Rule 11.15's figures name both |
+| D2-1081 | The enlargement draws the 24 px master as a vector at 96 px and names it "four times", with its 8 px line | The brief asks that the enlargement be named; a vector keeps the drawing exact |
+| D2-1082 | Contrast figures are computed by WCAG 2.2's formula from tokens.css and rounded to two places, and the build warns if Rule 11.15 prints different figures | The brief asks for figures computed by the script; 2.64, 2.96 and 11.89 match the rule, and A on Newsprint is 13.29 |
+| D2-1083 | A figure under 3 to 1 carries a box and the words "under 3 to 1" | No color carries the failure, and the board has no red of its own |
+| D2-1084 | The recommendation adds that a 2 px line has no room for Rule 05.5's Charcoal keyline | Dustin may ask why B cannot take the keyline red marks take on Newsprint; the chapter 11 notes give this reason |
+| D2-1085 | The form's message is read from `s-11-15-correct`, with its no-break space before "@" | The board shows the words the rule's own form shows, and the line breaks as the fixed specimen does |
+| D2-1086 | Every Pillar Red mark sits under `data-red="working"` with the job "error" | The board check counts one working-red job per view; every red on the board is the error's |
+| D2-1087 | Decision 2 shows Public meeting (CL-005) | A topic symbol off the list of 41 whose one-color tile starts at 48 px, and a subject Rule 10.9 already names |
+| D2-1088 | Decision 2 adds the other answer's smallest tile, 72 px, set apart in its own stage | The choice is between the two, and seeing both at actual size is what Dustin approves on |
+| D2-1089 | The tile's drawing size is printed as "about 33 px" and "about 49 px", from the inventory's 0.68 square factor | 48 × 0.68 is 32.64 and 72 × 0.68 is 48.96; the rule says 32 to 34 |
+| D2-1090 | Civic Line drawings show as images of their own SVG files in `img/`; the error mark draws inline in currentColor | Civic Line files carry ids that would repeat inline (D2-617); the error mark needs currentColor to change color |
+| D2-1091 | A small script moves each mark and drawing by under one pixel onto whole CSS pixels | As D2-565, so a 1x screen draws them as their masters are drawn |
+| D2-1092 | Rule quotes are found by content, not by position, and the footer names the paragraph's place | The editor may still move sentences; a quote that disappears warns |
+| D2-1093 | The board's section headings use the section style for the two decisions and the reader check, and the H3 style for the rest | The two decisions are what Dustin answers; the rest supports them |
+| D2-1094 | The reader check's address shows as text while it is the placeholder, and as a link once real | A placeholder link would lead nowhere |
+| D2-1095 | Copy buttons call the clipboard first, then select the text and use the browser's own copy, then ask for Ctrl or Command and C | The viewer may refuse the clipboard; the brief asks for a button that works without the host |
+| D2-1096 | Rule links open in the same tab | Rule 11.13 says our own links open in the same tab |
+| D2-1097 | One light look, on the brand's surfaces, with every color set explicitly | The board shows specimens on Newsprint and the Error Band at actual size; a dark version would change what Dustin approves |
+| D2-1098 | CSS comments are stripped from the page, the tokens' header included | It printed repository paths, which the brief keeps off the page |
+| D2-1099 | The scores table scrolls inside its own region on phones | Six criteria and an item name do not fit 360 px; the region takes keyboard focus |
+
+### Main session, end of the fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1100 | The main session reran the stage B generators in order (`apply_systems_ch11.py`, `stage_b_ch10_build.py --no-draw`, `stage_b_ch12_systems_build.py`, `promotion_identity.py specimens`, `guide_editor_build.py`, `stage_b_identity_ch01.py`): each exited 0 and no file changed. It did not rerun `stage_a_systems_build.py`, whose final step the systems designer ran after its chapter 05 and 06 edits | The proof that no shared manifest write crossed another (fix brief, "Shared manifests") |
+| D2-1101 | The main session applied the editor's row 15 itself: the error mark token's description names the bar beside a message and at the left of a field. It rebuilt the tokens (6.0.0-gate2.6, 496 tokens) and the token tests pass | A one-line change in the engineer's token source after the engineer had finished; reported here as the main session's step |
+| D2-1102 | The main session's checks on the rebuilt chapters page: `guide_build.py --strict` (132 rules, 305 specimens, 6.71 MB, 594 IDs held whole, 0 warnings); `guide_check.js` at 1440, 1024, 390 and 360 px (0 failures, 1,101 same-page links, 32 listed exemptions); `sprite_check.js` (every family at 1x and 2x, largest difference 0, the pillar switch right at 1x, 1.5x and 2x); the reader check's test (all pass, 320 px reflow included) | A check is reported only once the main session has run it |
+| D2-1103 | The page's sideways scroll at 200 percent text on phones waits for stage C's shell pass, with the engineer's causes in its notes | Reflow at 320 px passes; the fix touches the shell's part navigation and the masthead, which stage C's pass owns |
+| D2-1104 | The creative director rescores by resuming its round 3 review, with the rescore as a block in the same scores file | It keeps its own round 3 reading as the baseline, and board B's build reads that file |
