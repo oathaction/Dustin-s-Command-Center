@@ -258,6 +258,11 @@ def need(cond, msg):
         raise BoardError(msg)
 
 
+def show(p):
+    p = pathlib.Path(p).resolve()
+    return str(p.relative_to(ROOT)) if p.is_relative_to(ROOT) else str(p)
+
+
 def load_json(p, what):
     try:
         return json.loads(pathlib.Path(p).read_text())
@@ -1327,7 +1332,7 @@ def main():
     (a.publish / 'files.json').write_text(json.dumps(files, indent=1))
     # the content record: every string and figure the board prints, and where each fact came from
     content = {
-        'built': built.isoformat(), 'board': str(a.out.relative_to(ROOT)) if a.out.is_relative_to(ROOT) else str(a.out),
+        'built': built.isoformat(), 'board': show(a.out),
         'chapters_page': {'url': CHAPTERS_URL, 'version': CHAPTERS_VERSION},
         'reader_check': {'url': url, 'placeholder': pending, 'invitation_source': invite_raw, 'invitation': invite},
         'words': W, 'filled': {k: v for k, v in FILL.items()},
@@ -1340,8 +1345,8 @@ def main():
     }
     cpath = out_dir / f'{DATE}_Board-B-Content.json'
     cpath.write_text(json.dumps(content, indent=1, ensure_ascii=False, default=str))
-    print(f'wrote {a.out.relative_to(ROOT)} ({len(page.encode()) / 1e3:.0f} kB) with {len(ASSET_REFS)} files ({img_bytes / 1e3:.1f} kB)')
-    print(f'wrote {cpath.relative_to(ROOT)}')
+    print(f'wrote {show(a.out)} ({len(page.encode()) / 1e3:.0f} kB) with {len(ASSET_REFS)} files ({img_bytes / 1e3:.1f} kB)')
+    print(f'wrote {show(cpath)}')
     print(f'wrote the check copy {chk / a.out.name}')
     print(f'wrote the publish copy {pub_html} with {len(files)} files; map in {a.publish / "files.json"}')
     print(f'{len(LINKED)} chapters page anchors linked; {len(NOTES)} notes; {len(WARN)} warnings')
