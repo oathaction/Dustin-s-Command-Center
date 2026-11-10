@@ -1519,3 +1519,21 @@ Dustin, replying to the stage B drawings board (https://claude.ai/artifact/WdVDN
 | # | Decision | Reason |
 |---|---|---|
 | D2-713 | A fresh session rebuilds `work/extract/atlas-v7-data.json` from the committed model with `cp work/research/atlas-v7-docs/20261015_Atlas-V7-Model.json work/extract/atlas-v7-data.json`, so the Phase 3 prompt's input path still works | CLAUDE.md and the Phase 3 prompt name `work/extract/atlas-v7-data.json`; copying keeps both true without editing either |
+
+## Answers on the promotion and round 2 plan, November 10, 2026 (new chat)
+
+The studio asked three questions before promoting the approved drawings, and listed two calls it would make unless Dustin objected. Dustin: "ok. i just reviewed everything and agree with all recs. please proceed".
+
+| # | Decision | Source |
+|---|---|---|
+| DR-184 | The October Civic Line zips in `deliverables/` stay as they are. The approved redraws and the two new drawings reach `deliverables/` with the final asset package (Master Brief section 20) | Dustin, November 10, as recommended (question 1) |
+| DR-185 | Chapter 10 prints Atlas V7's name beside each atlas symbol and the Civic Line word beside each topic symbol. CL-025 reads "Congress" as a topic and "Congressional capacity" where it stands for D1; R-13 reads "Congress's own experts"; R-36 reads "Lasting public investment". File names and IDs stay as approved | Dustin, November 10, as recommended (question 2) |
+| DR-186 | Round 2 builds chapters 09 to 12 for one board B at the end, with no separate look at chapter 10 first | Dustin, November 10, as recommended (question 3) |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-714 | Testify is CL-073 and Contact an official is CL-074, labeled "Testify" and "Contact an Official" in the inventory's title case and filed with sheet 01, Participation | The next free numbers after the 72 topic drawings; both are acts of taking part. Listed in the plan Dustin approved |
+| D2-715 | The creative director's open chapter 08 items wait for stage C's last pass on the shell: the feed test on dark cards (CD-N12), a print L3 (D2-482) and the 5 red pixels at 360 px | Stage B stays on chapters 09 to 12; listed in the plan Dustin approved |
+| D2-716 | `work/build/assets/civic-line-v6/` is the set in use: the four SVG editions of all 124 drawings (116 masters copied byte for byte, the six redraws under their own IDs, CL-073 and CL-074) and an inventory in use. PNG previews and tiles are made new for the eight changed drawings only; the inventory points the other 116 at their October PNGs and tiles in `civic-line/` | One folder for the sprite and the later package, without copying about 200 MB of unchanged PNGs, tiles and QA into the repository. This narrows the plan's "PNGs and tiles" for the whole set; the SVGs, which the guide and sprite read, are all there |
+| D2-717 | The five category contact sheets are redrawn from `civic-line-v6/` by chapter 10's build in round 2, and the October sheets stay as the record | Chapter 10 shows the set as contact sheet images (D2-591), and drawing them once from the set in use avoids a second set |
+| D2-718 | Unpicked options and fits stay in the makers' folders, which the drawings board's build reads, as the record of the board | The board at its address shows them, and its build must still run |
