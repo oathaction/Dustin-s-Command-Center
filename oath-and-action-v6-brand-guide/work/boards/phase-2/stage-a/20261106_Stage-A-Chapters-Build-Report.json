@@ -1,6 +1,6 @@
 {
  "page": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "built": "2026-11-10T05:27:40",
+ "built": "2026-11-10T16:41:47",
  "chapters": [
   "01",
   "02",
@@ -17,23 +17,23 @@
  ],
  "placeholders": [],
  "rules": 132,
- "specimens_placed": 304,
+ "specimens_placed": 305,
  "tokens": "tokens.css",
  "demo": false,
- "bytes": 6626055,
+ "bytes": 6709050,
  "weight": {
-  "bytes": 6626055,
+  "bytes": 6709050,
   "budget_page": 15500000.0,
   "limit": 16000000,
   "parts": {
-   "head and shell": 133153,
-   "sprites": 154642,
+   "head and shell": 141758,
+   "sprites": 175026,
    "front matter and part openers": 13360,
-   "appendix": 140469
+   "appendix": 140803
   },
   "chapters": {
    "01": {
-    "bytes": 2440812,
+    "bytes": 2443965,
     "budget": 2700000.0
    },
    "02": {
@@ -41,19 +41,19 @@
     "budget": 850000.0
    },
    "03": {
-    "bytes": 499096,
+    "bytes": 499117,
     "budget": 650000.0
    },
    "04": {
-    "bytes": 292271,
+    "bytes": 292526,
     "budget": 450000.0
    },
    "05": {
-    "bytes": 276402,
+    "bytes": 276452,
     "budget": 450000.0
    },
    "06": {
-    "bytes": 186748,
+    "bytes": 186740,
     "budget": 350000.0
    },
    "07": {
@@ -61,32 +61,33 @@
     "budget": 300000.0
    },
    "08": {
-    "bytes": 145964,
+    "bytes": 146069,
     "budget": 300000.0
    },
    "09": {
-    "bytes": 174209,
+    "bytes": 177026,
     "budget": 400000.0
    },
    "10": {
-    "bytes": 527996,
+    "bytes": 553173,
     "budget": 1000000.0
    },
    "11": {
-    "bytes": 457321,
+    "bytes": 472885,
     "budget": 550000.0
    },
    "12": {
-    "bytes": 249042,
+    "bytes": 244572,
     "budget": 500000.0
    }
   },
   "sprites": {
-   "civic-line": 62,
+   "civic-line": 67,
    "pillar": 8,
    "utility": 36
   }
  },
+ "ids_held_whole": 594,
  "warnings": [],
  "notes": []
 }

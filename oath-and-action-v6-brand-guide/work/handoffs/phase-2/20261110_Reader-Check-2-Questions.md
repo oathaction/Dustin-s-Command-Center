@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 2, stage B, November 10, 2026. Written by the ed
 
 This is the one combined check DR-143 asks for. Five to eight people who have never seen the brand take it once, on their phones (DR-148). It keeps the first check's questions that still apply and adds questions on reading Pillar Red for party (DR-114, with R-46 Expand the House as DR-152 asks), the six tracker steps, the pillar icons, the end mark at 14 and 12 px and the 24 px lockmark. Every word a reader sees is quoted below, so the engineer copies it as written.
 
-Round 3 fix pass, November 10, 2026: two changes for the engineer. Step 4's name on the page is now "A card and a drawing" (D2-950), and step 7's footer question reads "Look at the small square mark beside the line of text. What did you see in it?" (PP-S13). The read after the pass also renamed row_48's description to match Rule 09.1 and `s-01-pillars`, where a section opener is the 128 px panel; no word a reader sees changed with it.
+Round 3 fix pass, November 10, 2026: two changes for the engineer. Step 4's name on the page is now "A card and a drawing" (D2-950), and step 7's footer question reads "Look at the small square mark beside the line of text. What did you see in it?" (PP-S13). The read after the pass also renamed row_48's description to match Rule 09.1 and `s-01-pillars`, where a section opener is the 128 px panel; no word a reader sees changed with it. Step 7's description now gives the engineer's grid of four columns (CA-S18).
 
 ## What carries over, what leaves, what is new
 
@@ -217,7 +217,7 @@ Why it is asked: DR-108 gave the tracker six plain step names in place of nine s
 
 Ready screen: title "Twelve small marks"; body "Next is a sheet of 12 marks at the small sizes you might see in a browser tab or a page header. It shows for 10 seconds. Then you’ll say how clear each one looked."; button "Show the marks".
 
-What the reader sees: one sheet at true size, one color, Charcoal on Newsprint, numbered 1 to 12, in two rows, 16 px then 24 px, for 10 seconds. The rating screen repeats each mark at its true size, as in the first check.
+What the reader sees: one sheet at true size, one color, Charcoal on Newsprint, numbered 1 to 12, in a grid of four columns and three rows, marks 1 to 7 at 16 px and then 8 to 12 at 24 px in that order (CA-S18), for 10 seconds. The rating screen repeats each mark at its true size, as in the first check.
 
 | Code | Mark | Size | Drawn from |
 |---|---|---|---|

@@ -152,6 +152,27 @@ Every Old string above was found once in its file by script. In rows 1, 7 and 10
 - The engineer's build pass that keeps IDs whole (D2-975). Its notes did not mark it done when I finished, and they do not name it yet. Any strings it changes, and any shell strings changed after my read, are unread.
 - The reader check page as rendered; I read its template's changed lines and the built page's step name.
 
+## 8b. The engineer's strings and the second pass
+
+Read after the engineer finished, at the coordinator's second message.
+
+**What I read.** The shell's download words in both states, from `guide_build.py` (`DL_CSS_WORDS`, `DL_ZIP_WORDS`) and `guide-shell.js`. Every string the shell and build add against ddd3a898 (no other new reader-facing text). The reader check template's changed lines: step 4's name, step 7's question, the copy text, the mode lines and the marks grid. The build script's one changed line, `marks_note`. The error mark token's new description in `oa-tokens.src.mjs`. The "Second pass" sections of the identity, systems and chapter 11 notes, with their outputs checked by script.
+
+**What passes.**
+- "Download tokens.css" and "Download tokens.css in a zip file" each say what the reader gets.
+- The copy text gives each answer in the words the reader saw. Times are in words, numbers under ten are spelled out ("once", "twice", "three times"), and no code or ISO time is left in the readable lines.
+- The mode lines keep their round 2 words, with the ring gone.
+- All 14 second-pass rows landed as the table wrote them. "Plausible link" now appears nowhere in chapter 04. The marks table caption keeps `&lt;surface&gt;` escaped, so it shows. The filter's count line spells one to nine, and the plate holds no U+2011.
+- The chapter 11 hand kept "loop R1" in lower case in the alts and the plate's kicker, beside the loop's title. That meets H11, so I left it.
+
+**Fixed in my own file.** `20261110_Reader-Check-2-Questions.md`, step 7: the description said "in two rows, 16 px then 24 px". It now gives the engineer's grid of four columns and three rows, marks 1 to 7 at 16 px and then 8 to 12 at 24 px (CA-S18). No word a reader sees changed.
+
+**One fault, for the engineer:**
+
+| # | File (owner) | Field | Old | New | Rule |
+|---|---|---|---|---|---|
+| 15 | `work/build/tokens/src/oa-tokens.src.mjs` (engineer), then `tokens_build.mjs` | `state.error.mark` description, first clause | The 4 px bar beside an error message: | The 4 px bar beside an error message and at the left of a field with an error: | Accuracy: Rule 11.15 draws the same red bar on both, and this is the only red error token, so the field's bar takes it too |
+
 ## Routine calls
 
 - D2-xxx | Step 4's name on the page is "A card and a drawing", its ready screen's words | D2-950 asks for a neutral title; one name for one step
@@ -206,7 +227,7 @@ The four requests at the top of this file: the chapter 11 hand (`s-01-pieces`'s 
 
 Modified:
 - `work/build/scripts/phase-2/guide_editor_ch01.py`: Rule 01.11's strings (`R4A_SCOPE`, `SRC_R4A_COUNT`, new `SRC_R4A_MO`, `R4A_HOW_HEAD` and `R4A_HOW`, the plate's markup and CSS, alt, notes, caption and the chapter's source list); Rule 01.21's rule, why, spec, builders, captions and alts, and the kickers' Illustrative place; `s-01-pillars`'s label, alt and caption; `SRC_CLOTURE` and `SRC_ELECTRIC`.
-- `work/handoffs/phase-2/20261110_Reader-Check-2-Questions.md`: step 4's name, step 7's footer question, and a note of both; in item 8, row_48's head and description.
+- `work/handoffs/phase-2/20261110_Reader-Check-2-Questions.md`: step 4's name, step 7's footer question, and a note of both; in item 8, row_48's head and description; in 8b, step 7's description of the grid.
 - By the generator and the identity step (outputs, not edited by hand): `work/build/guide/chapters/01-purpose.json`, `work/build/guide/specimens/manifest-editor.json`, and `s-01-11-correct.html`, `s-01-11-failure.html`, `s-01-13-correct.html`, `s-01-17-correct.html`, `s-01-21-correct.html`, `s-01-pieces.html`, `s-01-pillars.html` in `work/build/guide/specimens/`.
 
 Created:

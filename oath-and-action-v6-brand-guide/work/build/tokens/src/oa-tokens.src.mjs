@@ -287,7 +287,7 @@ const color = {
           white: { textOnIt: ['{oa.color.text.primary.onWhite}', '{oa.color.text.secondary.onWhite}'] } }),
       // PP-M3 (round 3, November 10, 2026): Rule 11.15 draws the error glyph in the text's ink, so this token colors the
       // 4 px bar alone. Its name waits for Dustin's answer at Gate 2 (D2-880).
-      mark: semantic('graphic', 'The 4 px bar beside an error message: the first claim on the view\'s working red. The error glyph takes the error text\'s ink, --oa-color-state-error-text-on-<surface>, since red on the Error Band falls under 3 to 1. Newsprint on Prussian, where red never sits.',
+      mark: semantic('graphic', 'The 4 px bar beside an error message and at the left of a field with an error: the first claim on the view\'s working red. The error glyph takes the error text\'s ink, --oa-color-state-error-text-on-<surface>, since red on the Error Band falls under 3 to 1. Newsprint on Prussian, where red never sits.',
         { newsprint: P('pillarRed'), white: P('pillarRed'), charcoal: P('pillarRed'), prussian: P('newsprint') },
         { newsprint: { redRole: 'working', precedence: 1, keyline: '{oa.color.palette.charcoal}' },
           white: { redRole: 'working', precedence: 1 }, charcoal: { redRole: 'working', precedence: 1 } }),

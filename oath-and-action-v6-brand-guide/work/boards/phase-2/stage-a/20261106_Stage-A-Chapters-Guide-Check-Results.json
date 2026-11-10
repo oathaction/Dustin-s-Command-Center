@@ -1,12 +1,12 @@
 {
  "file": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "checked": "2026-11-08T18:01:34.533Z",
+ "checked": "2026-11-10T16:41:48.343Z",
  "axe": "work/build/node_modules/axe-core/axe.min.js",
  "runs": [
   {
    "width": 1440,
    "structure": {
-    "headings": 153,
+    "headings": 197,
     "h1": [
      "Oath & Action Brand Guide, Edition 06"
     ],
@@ -16,19 +16,19 @@
     "ruleIds": [],
     "ruleAnchors": [],
     "rulesWithoutH3": [],
-    "rules": 100
+    "rules": 132
    },
    "anchors": {
-    "ids": 512,
+    "ids": 812,
     "duplicates": [],
-    "links": 761,
+    "links": 1101,
     "broken": [],
-    "relatedLinks": 131,
+    "relatedLinks": 210,
     "relatedBad": [],
     "aliases": []
    },
    "specimens": {
-    "stages": 233,
+    "stages": 305,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -123,12 +123,40 @@
       "skips": "scale"
      },
      {
+      "specimen": "s-10-5-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-10-10-failure",
+      "skips": "red"
+     },
+     {
       "specimen": "s-11-4-failure",
       "skips": "red contrast"
      },
      {
       "specimen": "s-11-7-failure",
       "skips": "size scale"
+     },
+     {
+      "specimen": "s-11-15-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-11-16-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-12-marker-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-12-key-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-12-locator-failure",
+      "skips": "red"
      },
      {
       "specimen": "s-proofs-letterhead",
@@ -142,7 +170,7 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 223,
+    "stages": 295,
     "exempt": 10,
     "off": [],
     "fluid": [
@@ -182,7 +210,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 9327,
+    "texts": 12794,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -194,7 +222,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 418,
+    "marks": 325,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -223,16 +251,18 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 362507,
+   "height": 493489,
    "fonts": [
     "Inter",
     "Inter Tight",
     "Lora"
    ],
+   "nbHyphen": [],
+   "idsHeld": 593,
    "frames": {
     "snugPx": 32,
-    "frames": 233,
-    "scrolling": 4,
+    "frames": 305,
+    "scrolling": 2,
     "snug": [
      {
       "specimen": "s-08-2-correct",
@@ -244,20 +274,83 @@
     "hintNoScroll": [],
     "scrollNoHint": [],
     "couldFit": [],
-    "offCenter": []
+    "offCenter": [],
+    "couldBreakOut": [],
+    "breakout": [
+     {
+      "specimen": "s-03-l6",
+      "left": 65,
+      "width": 1089,
+      "scrolls": false,
+      "overlaps": true,
+      "railShown": false
+     },
+     {
+      "specimen": "s-06-8-failure",
+      "left": 65,
+      "width": 1089,
+      "scrolls": false,
+      "overlaps": true,
+      "railShown": false
+     }
+    ]
    },
    "fit": {
     "offered": [],
     "under": []
    },
+   "stageB": {
+    "icons": 333,
+    "stateStages": 12,
+    "statePictures": [
+     {
+      "where": "s-08-3-correct",
+      "short": "S-done 0 of 3, S-now 0 of 1, S-not-yet 0 of 2"
+     },
+     {
+      "where": "s-12-signature-correct",
+      "short": "S-done 0 of 3, S-now 0 of 1, S-not-yet 0 of 2"
+     }
+    ],
+    "inlineTargets": 0,
+    "missingFamily": [],
+    "markReaders": {
+     "ring-now": 52,
+     "ring-ahead": 90,
+     "slash": 18,
+     "halo": 18,
+     "line-reached": 123,
+     "line-ahead": 45,
+     "take-part-disc": 24,
+     "take-part-keyline": 26,
+     "take-part-cut": 26
+    },
+    "glyphParts": 393,
+    "useParts": 275,
+    "menu": "not shown at this width",
+    "forcedWordmark": "one color in dark and light"
+   },
    "axe": [],
    "focusStops": 60,
-   "focusProblems": []
+   "focusProblems": [],
+   "typed": {
+    "fields": 2,
+    "shown": [
+     {
+      "where": "s-11-12-correct",
+      "tag": "button",
+      "text": "",
+      "label": "Clear the search",
+      "w": 44,
+      "h": 44
+     }
+    ]
+   }
   },
   {
    "width": 1024,
    "structure": {
-    "headings": 153,
+    "headings": 197,
     "h1": [
      "Oath & Action Brand Guide, Edition 06"
     ],
@@ -267,19 +360,19 @@
     "ruleIds": [],
     "ruleAnchors": [],
     "rulesWithoutH3": [],
-    "rules": 100
+    "rules": 132
    },
    "anchors": {
-    "ids": 512,
+    "ids": 812,
     "duplicates": [],
-    "links": 761,
+    "links": 1101,
     "broken": [],
-    "relatedLinks": 131,
+    "relatedLinks": 210,
     "relatedBad": [],
     "aliases": []
    },
    "specimens": {
-    "stages": 233,
+    "stages": 305,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -374,12 +467,40 @@
       "skips": "scale"
      },
      {
+      "specimen": "s-10-5-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-10-10-failure",
+      "skips": "red"
+     },
+     {
       "specimen": "s-11-4-failure",
       "skips": "red contrast"
      },
      {
       "specimen": "s-11-7-failure",
       "skips": "size scale"
+     },
+     {
+      "specimen": "s-11-15-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-11-16-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-12-marker-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-12-key-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-12-locator-failure",
+      "skips": "red"
      },
      {
       "specimen": "s-proofs-letterhead",
@@ -393,7 +514,7 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 223,
+    "stages": 295,
     "exempt": 10,
     "off": [],
     "fluid": [
@@ -434,7 +555,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 9188,
+    "texts": 12603,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -446,7 +567,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 418,
+    "marks": 325,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -475,15 +596,17 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 389077,
+   "height": 527744,
    "fonts": [
     "Inter",
     "Inter Tight",
     "Lora"
    ],
+   "nbHyphen": [],
+   "idsHeld": 593,
    "frames": {
     "snugPx": 32,
-    "frames": 233,
+    "frames": 305,
     "scrolling": 17,
     "snug": [
      {
@@ -502,7 +625,9 @@
     "hintNoScroll": [],
     "scrollNoHint": [],
     "couldFit": [],
-    "offCenter": []
+    "offCenter": [],
+    "couldBreakOut": [],
+    "breakout": []
    },
    "fit": {
     "offered": [
@@ -514,14 +639,58 @@
     ],
     "under": []
    },
+   "stageB": {
+    "icons": 333,
+    "stateStages": 12,
+    "statePictures": [
+     {
+      "where": "s-08-3-correct",
+      "short": "S-done 0 of 3, S-now 0 of 1, S-not-yet 0 of 2"
+     },
+     {
+      "where": "s-12-signature-correct",
+      "short": "S-done 0 of 3, S-now 0 of 1, S-not-yet 0 of 2"
+     }
+    ],
+    "inlineTargets": 0,
+    "missingFamily": [],
+    "markReaders": {
+     "ring-now": 52,
+     "ring-ahead": 90,
+     "slash": 18,
+     "halo": 18,
+     "line-reached": 123,
+     "line-ahead": 45,
+     "take-part-disc": 24,
+     "take-part-keyline": 26,
+     "take-part-cut": 26
+    },
+    "glyphParts": 393,
+    "useParts": 275,
+    "menu": "not shown at this width",
+    "forcedWordmark": "one color in dark and light"
+   },
    "axe": [],
    "focusStops": null,
-   "focusProblems": null
+   "focusProblems": null,
+   "typed": {
+    "fields": 2,
+    "shown": [
+     {
+      "where": "s-11-12-correct",
+      "tag": "button",
+      "text": "",
+      "label": "Clear the search",
+      "w": 44,
+      "h": 44
+     }
+    ]
+   }
   },
   {
    "width": 390,
    "structure": {
-    "headings": 153,
+    "headings": 197,
     "h1": [
      "Oath & Action Brand Guide, Edition 06"
     ],
@@ -531,19 +700,19 @@
     "ruleIds": [],
     "ruleAnchors": [],
     "rulesWithoutH3": [],
-    "rules": 100
+    "rules": 132
    },
    "anchors": {
-    "ids": 512,
+    "ids": 812,
     "duplicates": [],
-    "links": 761,
+    "links": 1101,
     "broken": [],
-    "relatedLinks": 131,
+    "relatedLinks": 210,
     "relatedBad": [],
     "aliases": []
    },
    "specimens": {
-    "stages": 233,
+    "stages": 305,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -638,12 +807,40 @@
       "skips": "scale"
      },
      {
+      "specimen": "s-10-5-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-10-10-failure",
+      "skips": "red"
+     },
+     {
       "specimen": "s-11-4-failure",
       "skips": "red contrast"
      },
      {
       "specimen": "s-11-7-failure",
       "skips": "size scale"
+     },
+     {
+      "specimen": "s-11-15-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-11-16-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-12-marker-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-12-key-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-12-locator-failure",
+      "skips": "red"
      },
      {
       "specimen": "s-proofs-letterhead",
@@ -657,7 +854,7 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 223,
+    "stages": 295,
     "exempt": 10,
     "off": [],
     "fluid": [
@@ -697,7 +894,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 9166,
+    "texts": 12584,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -709,7 +906,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 418,
+    "marks": 325,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -738,21 +935,25 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 467005,
+   "height": 643569,
    "fonts": [
     "Inter",
     "Inter Tight",
     "Lora"
    ],
+   "nbHyphen": [],
+   "idsHeld": 593,
    "frames": {
     "snugPx": 32,
-    "frames": 233,
-    "scrolling": 40,
+    "frames": 305,
+    "scrolling": 52,
     "snug": [],
     "hintNoScroll": [],
     "scrollNoHint": [],
     "couldFit": [],
-    "offCenter": []
+    "offCenter": [],
+    "couldBreakOut": [],
+    "breakout": []
    },
    "fit": {
     "offered": [
@@ -779,14 +980,58 @@
     ],
     "under": []
    },
+   "stageB": {
+    "icons": 333,
+    "stateStages": 12,
+    "statePictures": [
+     {
+      "where": "s-08-3-correct",
+      "short": "S-done 0 of 3, S-now 0 of 1, S-not-yet 0 of 2"
+     },
+     {
+      "where": "s-12-signature-correct",
+      "short": "S-done 0 of 3, S-now 0 of 1, S-not-yet 0 of 2"
+     }
+    ],
+    "inlineTargets": 0,
+    "missingFamily": [],
+    "markReaders": {
+     "ring-now": 52,
+     "ring-ahead": 90,
+     "slash": 18,
+     "halo": 18,
+     "line-reached": 123,
+     "line-ahead": 45,
+     "take-part-disc": 24,
+     "take-part-keyline": 26,
+     "take-part-cut": 26
+    },
+    "glyphParts": 394,
+    "useParts": 276,
+    "menu": "opens, holds focus, closes by Escape and Close, returns focus",
+    "forcedWordmark": "one color in dark and light"
+   },
    "axe": [],
-   "focusStops": null,
-   "focusProblems": null
+   "focusStops": 60,
+   "focusProblems": [],
+   "typed": {
+    "fields": 2,
+    "shown": [
+     {
+      "where": "s-11-12-correct",
+      "tag": "button",
+      "text": "",
+      "label": "Clear the search",
+      "w": 44,
+      "h": 44
+     }
+    ]
+   }
   },
   {
    "width": 360,
    "structure": {
-    "headings": 153,
+    "headings": 197,
     "h1": [
      "Oath & Action Brand Guide, Edition 06"
     ],
@@ -796,19 +1041,19 @@
     "ruleIds": [],
     "ruleAnchors": [],
     "rulesWithoutH3": [],
-    "rules": 100
+    "rules": 132
    },
    "anchors": {
-    "ids": 512,
+    "ids": 812,
     "duplicates": [],
-    "links": 761,
+    "links": 1101,
     "broken": [],
-    "relatedLinks": 131,
+    "relatedLinks": 210,
     "relatedBad": [],
     "aliases": []
    },
    "specimens": {
-    "stages": 233,
+    "stages": 305,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -903,12 +1148,40 @@
       "skips": "scale"
      },
      {
+      "specimen": "s-10-5-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-10-10-failure",
+      "skips": "red"
+     },
+     {
       "specimen": "s-11-4-failure",
       "skips": "red contrast"
      },
      {
       "specimen": "s-11-7-failure",
       "skips": "size scale"
+     },
+     {
+      "specimen": "s-11-15-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-11-16-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-12-marker-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-12-key-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-12-locator-failure",
+      "skips": "red"
      },
      {
       "specimen": "s-proofs-letterhead",
@@ -922,7 +1195,7 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 223,
+    "stages": 295,
     "exempt": 10,
     "off": [],
     "fluid": [
@@ -962,7 +1235,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 9171,
+    "texts": 12589,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -974,7 +1247,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 418,
+    "marks": 325,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -1003,21 +1276,25 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 483300,
+   "height": 675422,
    "fonts": [
     "Inter",
     "Inter Tight",
     "Lora"
    ],
+   "nbHyphen": [],
+   "idsHeld": 593,
    "frames": {
     "snugPx": 32,
-    "frames": 233,
-    "scrolling": 45,
+    "frames": 305,
+    "scrolling": 57,
     "snug": [],
     "hintNoScroll": [],
     "scrollNoHint": [],
     "couldFit": [],
-    "offCenter": []
+    "offCenter": [],
+    "couldBreakOut": [],
+    "breakout": []
    },
    "fit": {
     "offered": [
@@ -1044,9 +1321,53 @@
     ],
     "under": []
    },
+   "stageB": {
+    "icons": 333,
+    "stateStages": 12,
+    "statePictures": [
+     {
+      "where": "s-08-3-correct",
+      "short": "S-done 0 of 3, S-now 0 of 1, S-not-yet 0 of 2"
+     },
+     {
+      "where": "s-12-signature-correct",
+      "short": "S-done 0 of 3, S-now 0 of 1, S-not-yet 0 of 2"
+     }
+    ],
+    "inlineTargets": 0,
+    "missingFamily": [],
+    "markReaders": {
+     "ring-now": 52,
+     "ring-ahead": 90,
+     "slash": 18,
+     "halo": 18,
+     "line-reached": 123,
+     "line-ahead": 45,
+     "take-part-disc": 24,
+     "take-part-keyline": 26,
+     "take-part-cut": 26
+    },
+    "glyphParts": 394,
+    "useParts": 276,
+    "menu": "opens, holds focus, closes by Escape and Close, returns focus",
+    "forcedWordmark": "one color in dark and light"
+   },
    "axe": [],
    "focusStops": null,
-   "focusProblems": null
+   "focusProblems": null,
+   "typed": {
+    "fields": 2,
+    "shown": [
+     {
+      "where": "s-11-12-correct",
+      "tag": "button",
+      "text": "",
+      "label": "Clear the search",
+      "w": 44,
+      "h": 44
+     }
+    ]
+   }
   }
  ],
  "failures": [],
