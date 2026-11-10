@@ -19,7 +19,7 @@
   "edition": "One color, the black edition only (D2-1132). On Charcoal the sprite sets the ink to Newsprint, as it does for the masters.",
   "sizes": "Use each fit at 24 px only.",
   "line": "One pixel, as the approved pillar fit B (DR-179).",
-  "growth": "Each drawing grows toward 22 px across, by up to about 1.35 times its master's extent at 24 px, and sits centered on the box (the pillar fits' D2-613)."
+  "growth": "Each drawing grows toward 22 px across, 1.01 to 1.39 times its master's extent at 24 px, and sits centered on the box (the pillar fits' D2-613)."
  },
  "paths_relative_to": "the repository root",
  "order": "20261110_Stage-B-Ch10-Construction.md, section 10",

@@ -2331,3 +2331,38 @@ The studio asked four questions with the stage C draft brief. Dustin: "yes to al
 | # | Decision | Reason |
 |---|---|---|
 | D2-1214 | The page-level weight warning binds, not the sum of chapter ceilings. The whole guide projects to about 14.6 MB against the 15.5 MB page budget, so the Gate 2 report carries page weight as a Phase 3 to 5 risk, with chapter 14's 127 forms the largest unknown | The engineer's finding (section 6); a ceiling is an upper bound for one chapter, and the page budget is what the 16 MB limit enforces |
+
+### Icon designer (`20261110_Stage-C-Drawings-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1215 | The fits are drawn pixel by pixel with a one-pixel line, every pixel Charcoal or empty | The approved pillar fit B's construction (DR-179); one pixel is the nearest whole-pixel weight to the masters' 0.55 to 0.65 px line |
+| D2-1216 | One fit for each of the 37, no second fit | No drawing offered two real ways to keep its parts at 24 px; where a part could not keep its own form, the fit's note says how it was kept (R-06's chevron, R-19's tag hole) |
+| D2-1217 | Each fit grows toward 22 px across, 1.01 to 1.39 times its master, centered on the box | The pillar fits' D2-613; at the masters' own size, rules and heads fall closer than one pixel apart |
+| D2-1218 | A fit file holds one path, data-part base, with no accent group | One color, black edition only (D2-1132); the accent's shape stays in the drawing, in ink |
+| D2-1219 | A master's visible corner radius shows as one dropped corner pixel; corners the master draws nearly square stay square | One pixel cannot draw a curve smaller than itself |
+| D2-1220 | Rings are clean pixel rings with no doubled pixel, and CL-057's large ring is a midpoint circle | Each ring keeps its counter |
+| D2-1221 | The Civic Line person at 24 px is a 4 px ring over open shoulders with one empty row between, where the room allows (CL-006, CL-040, CL-050, R-17); a 3 px ring in R-05 and a 5 px ring in CL-061, where the master's head is smaller or larger | One person sign across the fits, and the 3 px heads drew CL-050 toward R-30 |
+| D2-1222 | One dollar sign for every fit that holds one (R-08, R-14, R-19, R-23): a top tick over a squared S, 3 by 6 pixels | At true size it reads as a dollar where a thin S read as a pound sign, and it fits each page without stretching it |
+| D2-1223 | A drawing whose center line must stay one pixel wide is drawn on column 11 (CL-068); one that cannot move keeps a one-pixel stem half a pixel off the axis (CL-040) | One pixel cannot straddle the box's center |
+| D2-1224 | R-06's arrow between the calendars becomes a chevron | Each calendar needs nine columns to keep its three columns of date dots, the middle one the master's accent, which leaves four columns between them |
+| D2-1225 | R-19's tag loses its string hole | At 24 px the hole cannot keep a clear pixel from the roof without stretching the tag; the string, the pentagon and the dollar carry the tag |
+| D2-1226 | R-37's window grows one row taller than its master's proportion | Its three dots need their own row between the top edge and the header |
+| D2-1227 | Full ink is the pixel fit check's own measure: alpha 247 or more among ink pixels of alpha 8 or more | One definition, from the check the brief names |
+| D2-1228 | A baseline run of the 37 masters under neutral names gives every flagged or watched pair its masters' figure | The stage B notes' method, so a flag reads as inherited or new |
+| D2-1229 | Previews show the master and the fit as a 1x screen and as a 2x screen draw them, on Newsprint and Charcoal; on Charcoal the master is its Newsprint edition and the fit's ink is Newsprint, as the sprite sets it | DR-179's switch and the board brief |
+| D2-1230 | The checks' pixel pictures stay in my scratch folder; their JSON results sit in each folder's qa/ | As D2-618 |
+| D2-1231 | Pause is redrawn once, exactly as DR-197 sets it; Filter has two options | DR-197 fixes Pause's bars; a 5 px spout cannot be centered with both outer edges on whole pixels, a real choice (D2-622) |
+| D2-1232 | The redraws come from generators that first rebuild the approved files byte for byte | Proof that each redraw changes only the widths DR-197 names |
+| D2-1233 | Housing has three options | Three real, clear choices: homes of more than one kind, one apartment house, a house key (DR-146, D2-622) |
+| D2-1234 | Housing draws no lone house, no row of narrow houses, no house with an object and no equal sign | Each collides with "home", with the set's household drawings or with HUD's Equal Housing Opportunity mark |
+| D2-1235 | Housing B's ground line is shortened | It kept 20.07 units to the circle tile's edge; chapter 10 states every drawing keeps at least 21 |
+| D2-1236 | Housing's tiles take the 48 px bare floor, so 72, 76 and 80 px | No 32 px reading is approved for it |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1237 | R-06, R-41 and R-44 join Rule 10.9's groups that never share a view at small sizes, in round 1 by chapter 10's owner; R-06's fit stays as drawn | The icon designer's question 6; the master was already closer to both, and D2-971 set the same answer for the five look-alikes, a studio call inside DR-136 |
+| D2-1238 | Drawings board C carries the icon designer's five other questions on its cards: the 37 fits, Pause, Filter A or B, Housing's option, and Housing at 24 px (recommended: 48 px and up for now, with a 24 px fit drawn only if Dustin asks) | Each is a named approval or changes DR-136's list |
+| D2-1239 | The creative director scores the five cards and the board builder writes its script at the same time; the builder reruns once the scores land | D2-567's practice and V10's note: the board is built once on final scores |

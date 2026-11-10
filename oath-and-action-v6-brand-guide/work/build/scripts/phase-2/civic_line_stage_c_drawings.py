@@ -31,7 +31,8 @@ How a fit is made. Each map below is drawn by hand on the 24 px grid: '#' is Cha
 draft that rasterizes the master's own centerlines (--draft, kept as the record), and every map was then redrawn
 against the master rendered sharp at 8 and 16 times with the grid over it, and judged at true size beside the master
 as a 1x screen draws it. The line is one pixel, as in the approved pillar fit B (DR-179). Each drawing grows toward
-22 px across, by up to about 1.35 times its master, as the pillar fits did (D2-613), and sits centered on the box.
+22 px across, 1.01 to 1.39 times its master's extent at 24 px, as the pillar fits did (D2-613), and sits centered on
+the box. The first drafts grew by at most 1.35 times; the hand-drawn maps settled each drawing's size.
 """
 import argparse
 import copy
@@ -267,8 +268,8 @@ def build_fits(scratch):
                                 "Newsprint, as it does for the masters.",
                      "sizes": "Use each fit at 24 px only.",
                      "line": "One pixel, as the approved pillar fit B (DR-179).",
-                     "growth": "Each drawing grows toward 22 px across, by up to about 1.35 times its master's "
-                               "extent at 24 px, and sits centered on the box (the pillar fits' D2-613)."},
+                     "growth": "Each drawing grows toward 22 px across, 1.01 to 1.39 times its master's extent "
+                               "at 24 px, and sits centered on the box (the pillar fits' D2-613)."},
            "paths_relative_to": "the repository root", "order": "20261110_Stage-B-Ch10-Construction.md, section 10",
            "fits": recs}
     old = os.path.join(FIT_DIR, f"{DATE}_Civic-Line-24px-Fits-Manifest.json")
