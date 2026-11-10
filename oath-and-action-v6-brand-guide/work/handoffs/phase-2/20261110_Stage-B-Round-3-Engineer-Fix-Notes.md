@@ -76,6 +76,17 @@ The editor's notes say the questions file is done. In `reader_check_2_template.h
 
 Step 4's card waits for the identity designer's call on D2-973; once it lands I recapture the card with a full build.
 
+## For the other owners and the main session
+
+- **Identity designer, CA-S13.** The breakout needs nothing from you: the shell measures `s-03-l6` and breaks it out from 1280 px. Its caption still reads true ("wider than this column, so it scrolls on smaller screens"); whether to say it shows whole on wide screens is yours.
+- **Chapter 11 hand, CA-M2.** The check now types into `s-11-12-correct`'s field and fails "Clear the search" until it measures 44 by 44 px.
+- **Editor and chapter 11 hand, `s-01-pieces` (the coordinator's message).** A-5 now counts only the copy of a row that is on screen, so the Track card's two rows (one for each width, the other hidden) pass when the words name each state once. One row from the chapter 11 hand needs no change in the check either. The self-test holds the doubled row as an allowance.
+- **Editor, the reader check.** Both template lines that said "Red" now take step 4's new name: `STEP_NAMES[4]` reads "A card and a drawing", and the copy text's heading for the step reads `STEP_NAMES[4]`, so the two cannot drift. Step 7's question takes your words. Please read my words in the copy text: "once", "twice", "N times", "the first step" to "the fourth step", "About the same", and times as "November 10, 2026, at 3:07 p.m.".
+
+## Finding: text at 200 percent on a phone
+
+At 390 and 360 px with the root text at 200 percent, the page still scrolls sideways (to about 553 and 549 px). The causes are shell styles outside the part navigation, so they are not CA-S17's, and I left them for a decision: source lines that hold a long web address (chapters 05, 06, 07 and 11's Nebraska line), the cover's tagline at title size (one word, "answers", is wider than the column), the cover folio's "Draft of November 7, 2026", which may not wrap, and one Related chapters link in chapter 05. *Recommendation:* let source lines and the folio wrap where a word cannot fit (`overflow-wrap: break-word`, which changes nothing at the default size) and cap the cover tagline's size by the screen's width at large text sizes; I can do both in the next shell pass. The guide check tests 200 percent text for sideways scroll at 1024 px only until then.
+
 ## Routine calls
 
 - D2-xxx | The page carries tokens.css once as the plain link and once as a zip in a data attribute on that link, and the script hands the zip's bytes to the host | D2-964 lets the build embed the zip; 11 KB beside a 90 KB link keeps the one-copy plan of round 2

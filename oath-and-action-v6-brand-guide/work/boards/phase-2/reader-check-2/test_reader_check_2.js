@@ -212,7 +212,7 @@ async function walk(browser, { mode, width, scale, captures, reduce, label, firs
       // the guide's switch: pixel fits under 2 device pixels per CSS pixel, the masters from 2 (DR-179)
       const dpr = captures ? 2 : 1;
       if (s.key === 'marks:look') {
-        const grid = await page.evaluate(() => [...document.querySelectorAll('main .sheet .sheet-cell')].map((c) => { const r = c.getBoundingClientRect(); return [Math.round(r.left), Math.round(r.top)]; }));
+        const grid = await page.evaluate(() => [...document.querySelectorAll('main .sheet .sheet-cell')].map((c) => { const r = c.getBoundingClientRect(); return [Math.round(r.left), Math.round(r.bottom)]; }));   // the cells share a row's bottom edge
         const rows = [...new Set(grid.map((g) => g[1]))], cols = [...new Set(grid.map((g) => g[0]))];
         const perRow = rows.map((t) => grid.filter((g) => g[1] === t).length);
         res.sheet = { rows: perRow, columns: cols.length };

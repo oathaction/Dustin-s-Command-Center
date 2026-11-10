@@ -9,7 +9,7 @@ Every figure here comes from the files or the records named beside it. Where the
 | Rule | Title (draft; the editor may tighten the words) | Sections here |
 |---|---|---|
 | 10.1 | Give each kind of symbol its own job. | 1 |
-| 10.2 | Build every drawing on one box, with one line, round ends and one red part. | 2 to 5 |
+| 10.2 | Build every drawing on one box, with one line, round ends and one red accent. | 2 to 5 |
 | 10.3 | Keep each drawing in its whole box, at the size its file gives it. | 6 |
 | 10.4 | Set topic and atlas symbols at 48 px or larger, and at 24 px only from the list of 41. | 9, 10 |
 | 10.5 | Match the edition to the surface, and use only the six tiles. | 7, 8 |
@@ -76,7 +76,7 @@ Under one device pixel a line never reaches full ink (engineer's pixel-fit check
 
 ## 5. The red accent
 
-- **One red accent per drawing.** The red marks one idea, the part the inventory's red note names. In the file it is the group `data-part="accent"`; the rest is `data-part="base"`. 120 October files hold one accent group, and CL-015 and R-30 split theirs into two groups for parts the sheet colored apart. Every one of the eight new and redrawn finals holds one.
+- **One red accent per drawing.** The red marks one idea, the part the inventory's red note names. The accent may take one shape or a few (Track's icon colors its map pin and its magnifier's handle); round 3 put that in Rule 10.2's words (CA-S7). In the file it is the group `data-part="accent"`; the rest is `data-part="base"`. 120 October files hold one accent group, and CL-015 and R-30 split theirs into two groups for parts the sheet colored apart. Every one of the eight new and redrawn finals holds one.
 - **Colors.** Charcoal `#121212` ink and Pillar Red `#E63946` accent in the red-black edition; nothing else outside masks.
 - **Where red may show** (Rule 05.3 as it reads, DR-66, DR-67 R10 and R11):
   - A standalone drawing at 48 px or larger keeps its red, bare on Newsprint, as signature red. Signature red does not count against a view's one working red.

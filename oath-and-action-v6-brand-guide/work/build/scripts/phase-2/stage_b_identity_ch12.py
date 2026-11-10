@@ -145,7 +145,9 @@ def watermark_b(height, surface):
 def _page(surface, eyebrow, title, text, wm, behind=False, h=PAGE_H):
     """A page at true size: the text column at left, the watermark in the open margin at right and running off the
     page's edge, or behind the text when behind=True (the failure)."""
-    pos = "left:-24px;top:40px" if behind else f"right:{-(B_W - WM_CUT) * WM_H / B_H:.1f}px;top:{WM_TOP}px"
+    # behind the text for the failure, at the same height, so its only fault is where it stands (its foot no longer
+    # grazes the page's bottom edge, round 3)
+    pos = f"left:-24px;top:{WM_TOP}px" if behind else f"right:{-(B_W - WM_CUT) * WM_H / B_H:.1f}px;top:{WM_TOP}px"
     return (f'<div class="oai-s-{surface}" style="position:relative;width:552px;height:{h}px;overflow:hidden;'
             f'border:1px solid {hair(surface)}">'
             f'<div aria-hidden="true" style="position:absolute;{pos};line-height:0">{wm}</div>'
