@@ -4,6 +4,100 @@ Oath & Action Edition 06, Phase 2, stage B round 3, November 10, 2026. Written b
 
 I read the round 3 brief, `CLAUDE.md`, my role file, Master Brief sections 3, 6, 11 and 12, the stage B and round 2 briefs, the writing rules (W20, W21 and the house rules in full, the rest by index), the decision log from the stage B answers to D2-957 with DR-93 and D2-707 to D2-730, the makers' notes where a finding turned on them, the chapter 10 construction text by its rules as printed, my two earlier reviews and the editor's drawings board notes. I read the words of chapters 09 to 12 and the changed parts of 01 from the page itself, by script, and I looked at every rule plate and extra in 09 to 12 and every changed specimen in 01, 03, 04, 05 and 08.
 
+## Rescore after the fix pass
+
+I looked at the chapters page as the fix pass left it, `work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html` (commit f5555858), after reading the fix brief, the five fix notes and the decision log from D2-958 to D2-977 with DR-195 to DR-198. The round 3 review below stays as written, as the record of what the fix pass answered. The rescore is also the `rescore` block in `20261110_Stage-B-Round-3-CD-Scores.json`, which board B prints.
+
+### Verdict
+
+Ready. Chapters 09 to 12 and the changed parts of 01, 03, 04, 05 and 08 each score 4 or more on all six criteria, and no Must fix is left. I sign off on the chapters page as rebuilt. Both Must fix items and 15 of my 16 Should fix items are closed on the page. The last, an opener figure for chapters 09 and 10 (S16), waits for stage C's shell pass by D2-965.
+
+Board B is not ready to go to Dustin yet. Its builder has four Must fix items, listed below, and none needs a decision.
+
+### My items on the page
+
+| Item | Where | Status on the rebuilt page |
+|---|---|---|
+| M1 | Rule 11.11, the report reader | Closed. Four pages, each with its own heading and real text at the page's size; the status line reads "Page 2 of 4: What a mile of road costs", and Next stops at page 4. I clicked through all four. |
+| M2 | Rule 12.6, the chart key | Closed. "Most claims in these three chapters are documented or well supported" over the same counts, 28 of 39, and the caption says so (D2-960). |
+| S1 | Chapter 09's phone column | Closed. Each down arrow stands centered under its icon, in chapter 09 and in chapter 01's row, at 1x and 2x. |
+| S2 | Rule 10.1's class table | Closed. Safe seats, Variable C1, is the atlas example. |
+| S3 | Rule 10.9's failure card | Closed. The kicker reads "Act · How to take part", so the plate fails Rule 10.9 alone. |
+| S4 | The library sheets | Closed. Only the typed chip is boxed; the size tag reads "Also at 24 px" in plain text. |
+| S5 | Rule 11.16's headline and error | Closed. The bill is now on local news grants (D2-958), so the hyphen break is gone, and "an @," holds together. |
+| S6 | The three message marks | Closed. The Illustrative chip heads the plate. |
+| S7 | Rules 11.15 and 11.16, tokens | Closed. The error mark's ink is `--oa-color-state-error-text-on-newsprint`, and `--oa-color-state-error-mark-on-newsprint` is labeled "The red bar" with "this token colors the bar only". |
+| S8 | Rule 11.1's hearing sentence | Closed. A source line names the five legislatures' pages and says they are examples, with no national count. |
+| S9 | The loop stepper | Closed. "One connection at a time" in both plates; the stepper now runs loop R1 (DR-195), and its plausible step carries D2-969's sentence. |
+| S10 | Rule 12.2's watermark | Closed. The frame's edge cuts B through its loop and crossing stroke, with no fragment, on both covers at 1x and 2x. |
+| S11 | Rules 12.2 and 12.4's failures | Closed. The Illustrative chip sits inside each plate under the band. |
+| S12 | Rule 12.5's tokens | Closed. `--oa-color-data-emphasis-red-on-newsprint` leads the tokens and the "Target weight" row. |
+| S13 | Rule 12.7's headlines | Closed. Both plates carry Illustrative at their head. |
+| S14 | Rule 01.11's count source | Closed. One source per line in H04's order, then a note headed "How we counted" with the method, Ohio, Missouri and Utah. |
+| S15 | Chapter 01's pillar row | Closed. "On a page that serves Track, at 48 px". |
+| S16 | Opener figure, chapters 09 and 10 | Open, deferred to stage C (D2-965). |
+| D2-881 | `s-05-3-corrective` | Closed. The approved error mark in the text's ink with the 4 px red bar (D2-959). |
+
+### Rescored
+
+| Item | Craft | Clarity | Brand | Usefulness | Evidence | Access | Ready |
+|---|---|---|---|---|---|---|---|
+| Chapter 09 | 4 | 4 | 5 | 4 | 4 | 4 | Yes |
+| Chapter 10 | 4 | 4 | 4 | 4 | 4 | 4 | Yes |
+| Chapter 11 | 4 (was 3) | 4 | 4 | 5 (was 4) | 4 | 4 | Yes |
+| Chapter 12 | 4 | 4 | 4 | 4 | 4 (was 3) | 4 | Yes |
+| 01, 03, 04, 05, 08 changes | 4 | 4 | 4 (was 3) | 4 | 4 | 4 | Yes |
+
+The scores that moved:
+- **Chapter 11, Craft 3 to 4.** The report reader now prints real text under four distinct headings, the bill's new subject removes the hyphen break and the "@" line is bound, and the three message marks carry their Illustrative label at the plate's head.
+- **Chapter 11, Usefulness 4 to 5.** The new "Drawing the marks" table gives every status mark's size at each circle size, its stroke, token and geometry, and Rules 11.15 and 11.16 now name the error mark's ink and the red bar's token apart.
+- **Chapter 12, Evidence honesty 3 to 4.** The chart key's title now says what its invented counts hold, and the locator's two invented headlines carry Illustrative.
+- **Changed parts, Brand fidelity 3 to 4.** `s-05-3-corrective` now draws the approved error mark in the text's ink with the 4 px Pillar Red bar, as Rule 11.15 does.
+
+Nothing scores under 4, so DR-191's second pass has no item of mine to take.
+
+### Other plates the fix pass changed
+
+I looked at every specimen the fix pass changed in chapters 09 to 12 (49 of them, `s-11-marks-drawn` new) and the changed ones in 01, 05 and 08, plus `s-proofs-social`. I found no new fault in chapters 09 to 12. Two notes for stage C, neither blocking:
+- `s-proofs-social` still puts its Illustrative chip in the caption, the pattern S6 and S11 closed in chapters 11 and 12. Owner: Identity designer.
+- In the "Drawing the marks" table, long token names break across lines at their hyphens. Copying still works, but a no-wrap token or a wider column would read better. Owner: Chapter 11 hand.
+
+### Board B
+
+I read board B (`work/boards/phase-2/stage-b/board-b/20261110_Board-B.html`, built at 4:24 p.m. UTC) at 1440 px at 1x and at 390 px at 2x, and read its words in full. The two decisions are well made. The error mark sits side by side at actual size with its contrast figures, and the tile exception shows the drawing at 48 and 32 px beside the 72 px alternative. I agree with both recommendations. It is not ready to send. Must fix, all for the main session as its builder:
+
+1. **B1, the sample reply.** "All as recommended, and I approve option A for the error mark by name." approves only decision 1 by name, while decision 2 asks the same. Make it name both: "All as recommended: I approve option A for the error mark and the one-color tile exception in Rule 10.5, both by name."
+2. **B2, "Examples moved off the reforms tied to your work".** It says the guide's examples "stay off" R-01 and R-02. Rule 12.5's marker plates and the reader check still draw R-01, as DR-195 set, and Rule 10.8 lists both among all ten. Change "so its examples stay off them" to "so the studio moved the examples it chose off them", and add: "Rule 12.5's marker and the reader check stay on reform R-01, as you set on November 10 (DR-195), and Rule 10.8 lists R-01 and R-02 among all ten reforms, so neither stands out."
+3. **B3, the reader check address.** It prints as `https://claude.ai/artifact/READER-CHECK-PENDING` in the address line and inside the invitation that "Copy the invitation" copies. Publish the reader check first, rebuild so the real address fills both places, and do not send the board while the placeholder remains.
+4. **B4, the scores.** The section still ends "The creative director rescores after the fix pass". Rebuild with the rescore block now in the scores file, so the rescore table and "What moved in the rescore" print and that line drops.
+
+### Tested in the rescore
+
+- Read the fix brief, the five fix notes and the decision log from D2-958 to D2-977 and DR-195 to DR-198; listed the 57 specimen files changed since ddd3a898 by `git diff`.
+- On a copy of the rebuilt page in my scratch folder, at 1440 px and device scale factor 1, looked at true size at every plate behind my items: `s-11-11-correct` and its failure, `s-12-key-correct`, `s-09-phone`, `s-01-pillars`, `s-10-1-correct`, `s-10-9-failure`, `s-10-lib-01`, `s-11-16-correct` and its failure, `s-11-marks`, `s-11-14-correct`, `s-12-watermark-correct` and its failure, `s-12-pattern-correct` and its failure, `s-12-locator-correct` and its failure, `s-01-11-correct`, `s-05-3-corrective`, `s-10-9-correct` and `s-11-marks-drawn`.
+- The other changed plates, library sheets 2 to 5, `s-01-pieces` and `s-proofs-social` among them, on eight composite sheets at 50 to 60 percent, read for content and labels, not pixel detail.
+- At 390 px and device scale factor 2: `s-09-phone`, `s-11-11-correct`, `s-12-key-correct`, `s-12-watermark-correct`, `s-12-locator-correct`, `s-10-9-failure` and `s-11-16-correct`. At 1440 px and device scale factor 2: the phone column's arrows and the watermark's crop, cropped and looked at.
+- Clicked through the report reader (four pages, four headings, Next disabled at page 4) and the loop stepper's three steps by Next step, reading each step's words.
+- Read by script, from the rebuilt page, Rules 11.15 and 11.16's tokens and specifications, chapter 11's sources, Rule 12.5's tokens and Rule 01.11's count note; searched chapters 10 and 11 for U+2011 (none).
+- Board B: rendered at 1440 px at 1x and 390 px at 2x and looked at its slices; read its full text; counted the placeholder address (three times in the file); checked its words for em dashes and the flagged words (none); listed its outside requests (Google Fonts only).
+- The rescore block parses and carries six scores for each of the five round 3 keys, with a reason for every score that moved, in the shape the board B build reads (`rescore.items[].scores`, `reasons`, `ready`).
+
+### Not tested in the rescore
+
+- I did not rebuild board B or run its check; B4 depends on that rebuild.
+- No keyboard, screen reader, reduced motion or forced colors pass of my own on the changed live components; the main session's guide check reports 0 failures at four widths.
+- I did not look at 1024 or 360 px, or at chapters 01 to 08 beyond the changed specimens.
+- I did not check the brand team's source corrections against their sources, or the editor's read of changed strings (D2-963).
+- The stepper's Play pace (D2-972) I read in the specification, and did not time.
+
+### Change log for the rescore
+
+- Modified `work/handoffs/phase-2/20261110_Stage-B-Round-3-CD-Scores.json`: added the `rescore` block; the round 3 scores stay as they were.
+- Modified this file: added this section.
+- Scratch captures and scripts in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/c9dc3e94-c343-5611-8fc3-849f48a2fa49/scratchpad/round-3/creative-director/rescore/`. Nothing committed or pushed.
+
+## Round 3 review (the record)
+
 ## Decision or verdict
 
 Chapters 09 and 10 are ready to ship, and so are most of 11 and 12. Two faults keep 11 and 12 under the bar, and each is an hour's work.

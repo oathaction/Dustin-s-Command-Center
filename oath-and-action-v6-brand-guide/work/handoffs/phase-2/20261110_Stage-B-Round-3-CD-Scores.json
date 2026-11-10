@@ -334,5 +334,146 @@
       "work/handoffs/phase-2/20261109_CD-Review-Of-Drawings.md"
     ],
     "note": "Items 7 to 9 fixed at the source; 28 editor_overrides in the drawings board content file now match nothing and should be removed at the next board rebuild."
+  },
+  "rescore": {
+    "date": "2026-11-10",
+    "author": "Creative director (oa-creative-director), subagent of the main session",
+    "basis": "The chapters page rebuilt after the fix pass, work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html (commit f5555858), looked at by the creative director at 1440 and 390 px, 1x and 2x",
+    "summary": "Every item now scores 4 or more on all six criteria and is ready. Both Must fix items and 15 of 16 Should fix items are closed on the page; the opener figure for chapters 09 and 10 (S16) waits for stage C by D2-965.",
+    "items": [
+      {
+        "key": "ch09",
+        "scores": {
+          "craft": 4,
+          "clarity": 4,
+          "brand_fidelity": 5,
+          "usefulness": 4,
+          "evidence_honesty": 4,
+          "accessibility": 4
+        },
+        "reasons": {},
+        "ready": true,
+        "note": "S1 closed: the phone column sets each arrow centered under its icon, in chapter 09 and in chapter 01. No score moved."
+      },
+      {
+        "key": "ch10",
+        "scores": {
+          "craft": 4,
+          "clarity": 4,
+          "brand_fidelity": 4,
+          "usefulness": 4,
+          "evidence_honesty": 4,
+          "accessibility": 4
+        },
+        "reasons": {},
+        "ready": true,
+        "note": "S2, S3 and S4 closed: Safe seats is the class table's atlas example, the failure card's kicker reads \"Act · How to take part\", and the library boxes only the typed chip. No score moved."
+      },
+      {
+        "key": "ch11",
+        "scores": {
+          "craft": 4,
+          "clarity": 4,
+          "brand_fidelity": 4,
+          "usefulness": 5,
+          "evidence_honesty": 4,
+          "accessibility": 4
+        },
+        "reasons": {
+          "craft": "The report reader now prints real text under four distinct headings, the bill's new subject removes the hyphen break and the \"@\" line is bound, and the three message marks carry their Illustrative label at the plate's head.",
+          "usefulness": "The new \"Drawing the marks\" table gives every status mark's size at each circle size, its stroke, token and geometry, and Rules 11.15 and 11.16 now name the error mark's ink and the red bar's token apart."
+        },
+        "ready": true
+      },
+      {
+        "key": "ch12",
+        "scores": {
+          "craft": 4,
+          "clarity": 4,
+          "brand_fidelity": 4,
+          "usefulness": 4,
+          "evidence_honesty": 4,
+          "accessibility": 4
+        },
+        "reasons": {
+          "evidence_honesty": "The chart key's title now says what its invented counts hold, 28 of 39 documented or well supported, and the locator's two invented headlines carry Illustrative."
+        },
+        "ready": true
+      },
+      {
+        "key": "group",
+        "scores": {
+          "craft": 4,
+          "clarity": 4,
+          "brand_fidelity": 4,
+          "usefulness": 4,
+          "evidence_honesty": 4,
+          "accessibility": 4
+        },
+        "reasons": {
+          "brand_fidelity": "s-05-3-corrective now draws the approved error mark, a circle holding an exclamation mark, in the text's ink with the 4 px Pillar Red bar, as Rule 11.15 does (D2-881, D2-959)."
+        },
+        "ready": true
+      }
+    ],
+    "must_fix": [],
+    "should_fix": [
+      {
+        "id": "S16",
+        "where": "The shell, chapters 09 and 10",
+        "what": "An opener figure on the first screen of chapters 09 and 10",
+        "status": "Deferred to stage C's shell pass (D2-965)",
+        "owner": "Engineer, with the Identity designer and the Systems designer"
+      }
+    ],
+    "closed": [
+      "M1",
+      "M2",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15"
+    ],
+    "board_b": {
+      "ready": false,
+      "must_fix": [
+        {
+          "id": "B1",
+          "what": "The sample reply approves only decision 1 by name, while decision 2 also asks to be approved by name.",
+          "fix": "Make the sample reply name both: \"All as recommended: I approve option A for the error mark and the one-color tile exception in Rule 10.5, both by name.\"",
+          "owner": "Main session (board B builder)"
+        },
+        {
+          "id": "B2",
+          "what": "\"Examples moved off the reforms tied to your work\" says the guide's examples \"stay off\" R-01 and R-02, but Rule 12.5's marker plates and the reader check still draw R-01 by DR-195, and Rule 10.8 lists R-01 and R-02 among all ten.",
+          "fix": "Change \"so its examples stay off them\" to \"so the studio moved the examples it chose off them\", and add: \"Rule 12.5's marker and the reader check stay on reform R-01, as you set on November 10 (DR-195), and Rule 10.8 lists R-01 and R-02 among all ten reforms, so neither stands out.\"",
+          "owner": "Main session (board B builder)"
+        },
+        {
+          "id": "B3",
+          "what": "The reader check address prints as https://claude.ai/artifact/READER-CHECK-PENDING in the address line and in the invitation the Copy button copies.",
+          "fix": "Publish the reader check first, rebuild so its real address fills both places, and do not send board B while the placeholder remains.",
+          "owner": "Main session (board B builder)"
+        },
+        {
+          "id": "B4",
+          "what": "The scores section still ends \"The creative director rescores after the fix pass\".",
+          "fix": "Rebuild with this rescore block so the rescore table and \"What moved in the rescore\" print and the waiting line drops.",
+          "owner": "Main session (board B builder)"
+        }
+      ]
+    },
+    "verdict": "Ready. Chapters 09 to 12 and the changed parts of 01, 03, 04, 05 and 08 each score 4 or more on all six criteria, with no Must fix left. I sign off on the chapters page as rebuilt. Board B goes to Dustin once its builder closes B1 to B4 and rebuilds."
   }
 }
