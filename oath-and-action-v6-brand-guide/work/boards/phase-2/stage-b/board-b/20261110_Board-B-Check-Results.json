@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/stage-b/board-b/20261110_Board-B.html",
- "checked": "2026-11-10T16:24:14.076Z",
+ "checked": "2026-11-10T17:04:44.603Z",
  "views": [
   "overview"
  ],
@@ -9,7 +9,7 @@
    "width": 1440,
    "view": "overview",
    "rootVisible": true,
-   "texts": 287,
+   "texts": 364,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -45,16 +45,16 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 9797,
+   "height": 10842,
    "axe": [],
-   "focusStops": 36,
+   "focusStops": 40,
    "focusWithoutRing": []
   },
   {
    "width": 390,
    "view": "overview",
    "rootVisible": true,
-   "texts": 293,
+   "texts": 370,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -90,7 +90,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 15879,
+   "height": 17610,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -99,7 +99,7 @@
    "width": 360,
    "view": "overview",
    "rootVisible": true,
-   "texts": 293,
+   "texts": 370,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -135,7 +135,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 16510,
+   "height": 18268,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null

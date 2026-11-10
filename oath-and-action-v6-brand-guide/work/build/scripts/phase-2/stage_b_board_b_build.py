@@ -79,6 +79,8 @@ WARN, NOTES = [], []
 OVERRIDES = [
     ['`s-05-3-corrective` draws the error as a white cross in a red disc, the sign for Close, against DR-173 (already D2-881).',
      'Rule 05.3’s corrective plate draws the error as a white cross in a red disc, the sign for Close, where you approved a circle holding an exclamation mark.', 0],
+    ["s-05-3-corrective now draws the approved error mark, a circle holding an exclamation mark, in the text's ink with the 4 px Pillar Red bar, as Rule 11.15 does (D2-881, D2-959).",
+     'Rule 05.3’s corrective plate now draws the approved error mark, a circle holding an exclamation mark, in the text’s ink with the 4 px Pillar Red bar, as Rule 11.15 does.', 0],
 ]
 
 # ------------------------------------------------------------------------------------------------ the board's words
@@ -99,7 +101,7 @@ W = {
         ('This board', None, 'your two decisions, the scores, the calls you may overrule and what stays open after board B.'),
     ],
     'reply_h': 'A reply can be this short',
-    'sample_reply': 'All as recommended, and I approve option A for the error mark by name.',
+    'sample_reply': 'All as recommended. I approve option A for the error mark by name, and keep the one-color tile exception in Rule 10.5.',
     'copy_reply': 'Copy the reply',
     'toc_h': 'On this board',
     'd1': {
@@ -182,11 +184,12 @@ W = {
         },
         'reforms': {
             'h': 'Examples moved off the reforms tied to your work',
-            'codes': 'D2-958 · DR-100',
+            'codes': 'D2-958 · DR-100 · DR-195',
             'text': [
-                'Our atlas marks two reforms as tied to your own work: all-party primaries with ranked general elections (R-01) and ranked-choice voting (R-02). The guide no longer prints a disclosure, so its examples stay off them.',
-                'Rule 10.8 now draws all 10 reforms the atlas aims at the six variables of its elections domain, so no two of them stand out.',
+                'Our atlas marks two reforms as tied to your own work: all-party primaries with ranked general elections (R-01) and ranked-choice voting (R-02). The guide no longer prints a disclosure, so the studio moved two examples it had chosen.',
+                'Rule 10.8 used to show only R-01 and R-02. It now draws all 10 reforms the atlas aims at the six variables of its elections domain, so no two stand out.',
                 'Rule 11.16’s invented bill, once on all-party primaries, is now a local news grants bill, and its figure marks reform R-32, public and philanthropic funding for local news, which carries no flag.',
+                'Nothing else moved off them. Rule 12.5’s marker and the reader check stay on loop R10, on safe seats, and reform R-01, as you answered on November 10. That answer moved only chapter 11’s loop stepper, Rule 11.14, to loop R1, in which wealth and political influence reinforce each other.',
             ],
         },
         'tokens': {
@@ -214,13 +217,14 @@ W = {
     },
     'carried': {
         'title': 'Carried forward',
-        'intro': 'These stay open after board B.',
+        'intro': 'These stay open after board B, apart from the last, which closes when you answer decision 2.',
         'lines': [
             ('D2-838', 'Missouri’s certified result. Counties file by November 17, the state board then has two weeks, and Rule 01.11’s words follow what it certifies.'),
             ('', 'Virginia’s 2025 House of Delegates party count, which still rests on our atlas until a primary source confirms it.'),
             ('D2-968', 'Tangipa v. Newsom’s January 14, 2026 order and the Ohio Redistricting Commission’s minutes, which the brand team could not open, so both stay unchecked.'),
             ('D2-715 · D2-965 · DR-196 · DR-197 · DR-198', 'Stage C: the shell’s last pass, with the creative director’s chapter 08 items and an opening figure for chapters 09 and 10; the 16 px Pause and Filter redraws; the 24 px fits, at stage C or Phase 3; and the Housing drawing.'),
             ('DR-194', 'The first reader check page, deleted once you have sent the new link and confirmed.'),
+            ('D2-976', 'The tile question, decision 2 on this board. Rule 10.5 states the one-color tile exception until you answer.'),
         ],
     },
     'reader': {
@@ -798,7 +802,7 @@ def cover(reader_url, pending):
 <div class="cover-grid"><div class="deck">{paras(W["deck"], "intro")}
 <h2 class="sub4">{esc(W["pages_h"])}</h2><ul class="pages">{pg}</ul></div>
 <aside class="ask" aria-labelledby="ask-h"><h2 id="ask-h" class="sub4">{esc(W["reply_h"])}</h2>
-<p class="q" id="sample-reply">{esc(W["sample_reply"])}</p>
+<p class="q" id="sample-reply">{md(W["sample_reply"])}</p>
 <div class="copy-row"><button type="button" class="btn-copy" data-copy="sample-reply" data-status="reply-status">{esc(W["copy_reply"])}</button>
 <span class="status" id="reply-status" role="status" aria-live="polite"></span></div></aside></div>
 <nav class="toc" aria-labelledby="toc-h"><h2 class="label" id="toc-h">{esc(W["toc_h"])}</h2><ol>{toc_html}</ol></nav>
@@ -974,7 +978,7 @@ a:hover{text-decoration-thickness:var(--oa-border-width-underline-hover)}
 p{margin:0 0 var(--oa-space-200);max-width:var(--oa-layout-measure-body-max);text-wrap:pretty}
 .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 [hidden]{display:none!important}
-.nw{white-space:nowrap}
+.nw,a[href*="#rule-"]{white-space:nowrap}
 .board{max-width:calc(var(--max) + var(--m) + var(--mr));margin:0 auto;padding-left:var(--m);padding-right:var(--mr);padding-block:0 var(--oa-space-1300)}
 .label{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--ink-2);margin:0}
 .caption{font:var(--oa-type-caption);color:var(--ink-2)}
