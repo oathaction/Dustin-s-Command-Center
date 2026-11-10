@@ -1,19 +1,19 @@
 {
- "built": "2026-11-10T17:05:14.660319+00:00",
+ "built": "2026-11-10T17:06:10.045736+00:00",
  "board": "work/boards/phase-2/stage-b/board-b/20261110_Board-B.html",
  "chapters_page": {
   "url": "https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF",
   "version": 5
  },
  "reader_check": {
-  "url": "https://claude.ai/artifact/READER-CHECK-PENDING",
-  "placeholder": true,
+  "url": "https://claude.ai/artifact/H3APDgNH1wGb5HHvf33f6X",
+  "placeholder": false,
   "invitation_source": [
    "Could you spare about 15 minutes on your phone for a short test of a draft design for a civic publication? You’ll look at some drawings, charts and pages and say what you see, and there are no wrong answers: [link]",
    "It asks only for a first name or initials, and you can stop at any time. If the last screen shows your answers with a Copy button, please paste them into a reply to me."
   ],
   "invitation": [
-   "Could you spare about 15 minutes on your phone for a short test of a draft design for a civic publication? You’ll look at some drawings, charts and pages and say what you see, and there are no wrong answers: https://claude.ai/artifact/READER-CHECK-PENDING",
+   "Could you spare about 15 minutes on your phone for a short test of a draft design for a civic publication? You’ll look at some drawings, charts and pages and say what you see, and there are no wrong answers: https://claude.ai/artifact/H3APDgNH1wGb5HHvf33f6X",
    "It asks only for a first name or initials, and you can stop at any time. If the last screen shows your answers with a Copy button, please paste them into a reply to me."
   ]
  },
@@ -235,7 +235,7 @@
   "b_np": "2.96",
   "message": "Enter an email address with an @, such as name@example.com.",
   "built_date": "November 10, 2026",
-  "built_time": "5:05 p.m.",
+  "built_time": "5:06 p.m.",
   "chapters_version": 5,
   "enlarge_words": "four",
   "enlarged_px": 96,
@@ -523,9 +523,7 @@
   "20261029_Oath-And-Action-Civic-Line-R-27-Tax-Enforcement-Black.svg": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-27-Tax-Enforcement-Black.svg",
   "20261029_Oath-And-Action-Civic-Line-R-45-Paper-Ballots-And-Audits-Black.svg": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-45-Paper-Ballots-And-Audits-Black.svg"
  },
- "notes": [
-  "the reader check address is the placeholder; the main session reruns with the real address at publish"
- ],
+ "notes": [],
  "warnings": [],
- "visible_text_sha1": "b5772e7db547386b4510446a10e30e84911f1e61"
+ "visible_text_sha1": "5a787c3dceeb17ff9de0d83066401229a16c4502"
 }

@@ -1,0 +1,8 @@
+{
+ "about": "Board B's three private pages, published November 10, 2026 (DR-193). Each is private to Dustin until he shares it.",
+ "pages": [
+  {"page": "Chapters page, chapters 01 to 12 and the identity proofs", "url": "https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF", "version": "1794330328-df6c", "label": "Version 5, after round 3", "source": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html", "capabilities": {"downloads": true}, "contract": "0.2.96", "log": "D2-1107"},
+  {"page": "Reader check", "url": "https://claude.ai/artifact/H3APDgNH1wGb5HHvf33f6X", "version": "1794330271-788f", "source": "work/boards/phase-2/reader-check-2/20261110_Reader-Check-2.html with img/", "capabilities": {"db": {"rules": [{"path": "responses", "read": "admin", "write": "owner"}, {"path": "responses/{self}", "read": "view", "write": "interact"}]}, "user": {}}, "contract": "0.2.96", "log": "D2-1106"},
+  {"page": "Board B decisions board", "url": "https://claude.ai/artifact/MV5dR1EXqj6ZH4dsbqck4i", "version": "1794330406-686e", "source": "publish copy of work/boards/phase-2/stage-b/board-b/20261110_Board-B.html with img/", "log": "D2-1108"}
+ ]
+}
