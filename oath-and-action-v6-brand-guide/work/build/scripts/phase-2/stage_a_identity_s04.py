@@ -10,7 +10,11 @@ Fix pass, November 6, 2026: hinge headlines come from Rule 02.27's correct list 
 fixed sizes (BE-M6, CP-M4, C-M7, D2-254); the Act card reads "The route plan & your commute." with the kicker
 "Act · How to take part" (D2-250); cards are drawn at a phone column's 358 px, so they fit a phone at true size (C-S7);
 B's sizes share one baseline and the 16 px master shows as pixels at four times (C-S13); the divider centers B on a line
-as wide as the text it divides (DR-96, C-M2); "reports the bill out" is glossed (CP-M9)."""
+as wide as the text it divides (DR-96, C-M2); "reports the bill out" is glossed (CP-M9).
+
+Promotion, November 10, 2026 (DR-180): the end mark draws B's pixel master, fit B, on a 1x screen in 17 and 15 px text,
+and the 16 px master at the cap height on every other screen, switched by screen resolution (end_mark, END_CSS); Rule
+04.6's plate adds a line of 15 px text."""
 from stage_a_identity_lib import (E, ID_DIR, AMP, AMP_END, BADGE, HINGE, LORA, WM, fragment, mark, wordmark, amp, illus, head_label,
                                   tag, svg_file, ink, ink2, hair, pal, tv, sig, strong, ground, ty, raster_png, inline_master, dnp,
                                   figures)

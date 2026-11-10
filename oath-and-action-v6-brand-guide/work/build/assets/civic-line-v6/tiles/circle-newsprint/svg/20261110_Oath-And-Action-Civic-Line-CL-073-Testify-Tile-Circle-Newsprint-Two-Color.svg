@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-073-tile-circle-newsprint-two-color" data-id="CL-073" width="128" height="128" viewBox="0 0 128 128">
+  <title>Testify</title>
+  <desc>Oath &amp; Action Civic Line CL-073 Testify: circle tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.5828 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-cl-073-tile-circle-newsprint-two-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="oa-civic-line-cl-073-tile-circle-newsprint-two-color-icon" data-part="icon" transform="matrix(0.5828 0 0 0.5828 26.7008 26.7008)">
+  <g id="oa-civic-line-cl-073-tile-circle-newsprint-two-color-base" data-part="base">
+    <circle cx="34.7563" cy="15.7168" r="3.8151" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M26.6351 30.8638 L26.6351 28.503 A5.949233 5.949233 0 0 1 32.5843 22.5538 L36.9283 22.5538 A5.949233 5.949233 0 0 1 42.8775 28.503 L42.8775 30.8638" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="64" cy="12.6408" r="3.8151" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M55.8788 27.7878 L55.8788 25.427 A5.949258 5.949258 0 0 1 61.828 19.4777 L66.172 19.4777 A5.949258 5.949258 0 0 1 72.1212 25.427 L72.1212 27.7878" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="93.2437" cy="15.7168" r="3.8151" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M85.1225 30.8638 L85.1225 28.503 A5.949233 5.949233 0 0 1 91.0717 22.5538 L95.4157 22.5538 A5.949233 5.949233 0 0 1 101.3649 28.503 L101.3649 30.8638" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M18.916 36.3172 Q64 21.6953 109.084 36.3172" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M18.916 49.7205 Q64 35.0987 109.084 49.7205" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="18.916" y1="36.3172" x2="18.916" y2="49.7205" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="109.084" y1="36.3172" x2="109.084" y2="49.7205" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="57.9076" cy="82.8086" r="5.538" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M46.1187 106.9895 L46.1187 101.3692 A8.636015 8.636015 0 0 1 54.7547 92.7332 L61.0604 92.7332 A8.636015 8.636015 0 0 1 69.6964 101.3692 L69.6964 106.9895" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="27.4454" y1="106.9895" x2="100.5546" y2="106.9895" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="32.3193,106.9895 32.3193,119.1743 95.6807,119.1743 95.6807,106.9895" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="oa-civic-line-cl-073-tile-circle-newsprint-two-color-accent" data-part="accent">
+    <rect x="78.9112" y="83.168" width="6.7321" height="12.4286" rx="3.3661" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M76.063 90.418 L76.063 91.9716 A6.2143 6.2143 0 0 0 88.4916 91.9716 L88.4916 90.418" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="82.2773" y1="98.1859" x2="82.2773" y2="106.9895" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="77.0987" y1="106.9895" x2="87.4559" y2="106.9895" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

@@ -11,7 +11,10 @@ Apply pass, November 7, 2026: S1 replaces L2 in the lockup sheet, the minimum sh
 figures (DR-115, D2-328).
 
 Q1 to Q4 pass, November 8, 2026: L3's masthead form places its new master, the lockmark at 48 px from its 48 px master
-on whole pixels (DR-131); L6 draws without its four pillar dots (DR-129)."""
+on whole pixels (DR-131); L6 draws without its four pillar dots (DR-129).
+
+Promotion, November 10, 2026: L6 draws its wordmark and tagline centered on the strip (DR-182); L3 places the masthead
+master that carries the rebuilt 48 px lockmark, and the minimum form draws the rebuilt 24 px master (DR-181)."""
 import json
 import re
 from stage_a_identity_lib import (E, ID_DIR, WM, WMC, L2, L3, L8, LOCK, AMP, BADGE, HINGE, TL1, TL2A, TL2B, fragment, mark, s1, s1_width,
@@ -490,8 +493,13 @@ def s_03_6_failure():
     phone = (f'<div class="oai-s-newsprint" style="width:390px;height:56px;display:flex;align-items:center;justify-content:space-between;'
              f'padding:0 8px 0 20px;border:1px solid {hair("newsprint")}">{l3m}{_burger()}</div>')
     body = f'<div>{phone}</div>'
-    alt = "Failure case: a 390 pixel phone bar with the L3 lockup squeezed to 150 pixels wide; its capitals are 12 pixels tall and the lockmark's nodes and links run together at 26 pixels."
-    return rec("s-03-6-failure", "03.6", 400, alt, body, notes="L3's masthead master at 150 px wide: 11.7 px capitals, a 25.5 px lockmark whose pixel rows part into stripes.")
+    alt = ("Failure case: a 390 pixel phone bar with the L3 lockup squeezed to 150 pixels wide; its capitals are 12 pixels tall, "
+           "under the 14 pixel floor, and the lockmark shrinks to 26 pixels.")
+    return rec("s-03-6-failure", "03.6", 400, alt, body,
+               notes="L3's masthead master at 150 px wide: 11.7 px capitals, a 25.5 px lockmark. Since November 10, 2026 the masthead "
+                     "master carries the rebuilt 48 px lockmark master (DR-181), so the squeezed lockmark keeps whole nodes, where the "
+                     "earlier file's pixel rows parted into stripes. The failure is the capitals under the 14 px floor and L3 under "
+                     "its 196 px minimum (Rule 03.4).")
 
 
 # ------------------------------------------------------------------------------------------- 03.7

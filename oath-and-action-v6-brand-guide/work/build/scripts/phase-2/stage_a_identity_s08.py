@@ -7,7 +7,10 @@ Apply pass, November 7, 2026 (DR-110, D2-325 to D2-327): the lockmark keeps four
 labeled failure. The old Rules 08.3 to 08.9, the codes table, the stages sheet and the composer leave the chapter.
 
 Q1 to Q4 pass, November 8, 2026 (DR-131, CD-N9): the masthead (L3's masthead master) and the sign-off draw the 48 px
-master at 48 px; Rule 08.1's plate shows the four masters; Rule 08.2's places stand 16 px in from the frame."""
+master at 48 px; Rule 08.1's plate shows the four masters; Rule 08.2's places stand 16 px in from the frame.
+
+Promotion, November 10, 2026 (DR-181): the 24 and 48 px masters are the rebuilt files, each node and the lever one
+outline, through stage_a_identity_lib.LOCK; the drawings on the plates keep the same pixels."""
 from stage_a_identity_lib import (E, LOCK, fragment, mark, lockmark, sgrid, progress, illus, head_label, dnp, steps, ink, ink2,
                                   hair, pal, ground, ty, tv)
 from stage_a_identity_s03 import rec as _rec, l3_small

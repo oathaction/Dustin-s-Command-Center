@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-pillar-icon-cl-020-16px-black" data-id="CL-020" data-size="16" width="16" height="16" viewBox="0 0 16 16" shape-rendering="crispEdges">
+  <title>Track</title>
+  <desc>Oath &amp; Action Civic Line CL-020 Track, pillar icon for 16 px on 1x screens: pixel fit A, a 1 px line drawn pixel by pixel on the 16 px grid, every feature and red placement of the master kept, the red its own shape in the accent group (DR-133). The final, approved by name on the stage B drawings board (DR-179) and promoted on November 10, 2026. On 2x screens a 16 px pillar icon keeps this fit (D2-634). This black edition is the one in use under 48 px (D2-497).</desc>
+  <path id="oa-pillar-icon-cl-020-16px-black-accent" data-part="accent" fill="#121212" d="M2 2h3v1h-3zM1 3h1v1h-1zM5 3h1v1h-1zM1 4h1v1h-1zM5 4h1v1h-1zM2 5h1v1h-1zM4 5h1v1h-1zM3 6h1v1h-1zM14 13h1v1h-1zM15 14h1v1h-1z"/>
+  <path id="oa-pillar-icon-cl-020-16px-black-base" data-part="base" fill="#121212" d="M5 7h2v1h-2zM7 8h1v1h-1zM11 8h3v1h-3zM7 9h1v1h-1zM10 9h1v1h-1zM14 9h1v1h-1zM2 10h5v1h-5zM10 10h1v1h-1zM14 10h1v1h-1zM1 11h1v1h-1zM10 11h1v1h-1zM14 11h1v1h-1zM1 12h1v1h-1zM11 12h3v1h-3zM2 13h8v1h-8z"/>
+</svg>

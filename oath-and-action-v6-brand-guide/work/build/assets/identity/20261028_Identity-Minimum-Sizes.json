@@ -41,10 +41,10 @@
    "below": "Use L1",
    "condensed": "kept for the record, not in use (D2-328)",
    "files": [
-    "lockups/20261108_L3-Horizontal-Master.svg",
+    "lockups/20261110_L3-Horizontal-Master.svg",
     "lockups/20261028_L3-Horizontal-Master.svg"
    ],
-   "status_note": "The masthead master has set the lockmark at 48 px since November 8, 2026 (DR-131). The October master, with the lockmark at 2.4 cap heights, stays in lockups/ for the record",
+   "status_note": "The masthead master has set the lockmark at 48 px since November 8, 2026 (DR-131). Since November 10, 2026 it carries the rebuilt 48 px lockmark master and draws the same pixels as the November 8 file, lockups/20261108_L3-Horizontal-Master.svg, which stays in lockups/ for the record (DR-181). The October master, with the lockmark at 2.4 cap heights, stays in lockups/ for print and the record",
    "print_note": "The masthead master serves the 282 px masthead. Print and other widths take the October master, lockups/20261028_L3-Horizontal-Master.svg, until a print L3 at the masthead's proportion is drawn (CD-S10)"
   },
   {
@@ -67,7 +67,7 @@
    "screen": "884 px wide (tagline at 13 px)",
    "print": "6.60 in (tagline at 7 pt)",
    "below": "Close the page with the footer place: the lockmark at 24 px, then the tagline (Rule 08.2)",
-   "status_note": "Drawn without its four pillar dots since November 8, 2026 (DR-129)"
+   "status_note": "Drawn without its four pillar dots since November 8, 2026 (DR-129). Since November 10, 2026 the wordmark and tagline sit centered on the strip, moved down 14.72 units of L6's 300, 9.3 px at 884 px, so the span from the wordmark's cap line to the tagline's baseline has its middle on the strip's middle; the strip, the lockmark and every size stay as they were (DR-182)"
   },
   {
    "lockup": "L7 section masthead",
@@ -91,7 +91,13 @@
    "screen": "16 px master from 16 to 23 px tall; 24 px master from 24 to 47 px; display master from 48 px",
    "print": "0.25 in tall",
    "below": "Nothing smaller, except the end mark, which stands at the text's cap height (Rule 04.6). Favicon: the 16 px master at 16 px",
-   "end_mark": "Only the end mark, ampersand B at the close of an article, may stand under 16 px, at the text's cap height, because it follows a word and names nothing on its own (DR-130, Rules 03.4 and 04.6). It stands 16/14 of the text's cap height tall, from the 16 px master"
+   "end_mark": "Only the end mark, ampersand B at the close of an article, may stand under 16 px, at the text's cap height, because it follows a word and names nothing on its own (DR-130, Rules 03.4 and 04.6). On a 1x screen it is drawn on whole pixels and sits on the baseline: the 14 px end mark master, 13 by 13 px, in 17 px text and the 12 px end mark master, 11 by 11 px, in 15 px text (DR-180). On every other screen and at other text sizes it stands 16/14 of the text's cap height tall, from the 16 px master",
+   "end_mark_files": [
+    "ampersand/20261109_Amp-B-14px-End-Mark-Fit-B.svg",
+    "ampersand/20261109_Amp-B-12px-End-Mark-Fit-B.svg",
+    "prussian/20261109_Amp-B-14px-End-Mark-Fit-B-Prussian-White.svg",
+    "prussian/20261109_Amp-B-12px-End-Mark-Fit-B-Prussian-White.svg"
+   ]
   },
   {
    "lockup": "Lockmark",
@@ -101,12 +107,16 @@
    "below": "Nothing smaller; the lever stays one size up at 16, 24 and 48 px",
    "files": [
     "lockmark/20261028_Lockmark-16px-Master.svg",
-    "lockmark/20261028_Lockmark-24px-Master.svg",
-    "lockmark/20261108_Lockmark-48px-Master.svg",
+    "lockmark/20261109_Lockmark-24px-Master-Outline.svg",
+    "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
     "lockmark/20261107_Lockmark-Display-Master.svg"
    ],
    "places": "Masthead (inside L3) and sign-off: the 48 px master at 48 px. Page header and footer: the 24 px master at 24 px. A chart's footer: the 16 px master at 16 px. In print, the sign-off at 0.50 in takes the display master, since the 48 px master is drawn for a screen's pixel grid (Rule 08.2)",
-   "status_note": "The 48 px master joined on November 8, 2026 (DR-131). A test set its range: drawn from one rect per pixel row, it parts into stripes at any size between whole multiples of its grid, so builders place it at 48 px only (work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json, key range)"
+   "status_note": "The 48 px master joined on November 8, 2026 (DR-131). Since November 10, 2026 the 24 and 48 px files in use draw each node and the lever as one outline, the same pixels as the earlier files at 24 and 48 px, so their nodes stay whole between those sizes (DR-145, DR-181). The earlier files, one rect per pixel row, stay in lockmark/ for the record (record_files). The 48 px master still serves 48 px only, the size its pixel grid was drawn for: between whole multiples of its grid its edges fall between pixels (work/handoffs/phase-2/20261109_Stage-B-Identity-Notes.md, section 2)",
+   "record_files": [
+    "lockmark/20261028_Lockmark-24px-Master.svg",
+    "lockmark/20261108_Lockmark-48px-Master.svg"
+   ]
   },
   {
    "lockup": "Hinge diagram V2",
@@ -127,5 +137,5 @@
   }
  ],
  "condensed": "Figures marked condensed belong to the condensed wordmark, kept in the files for the record and not in use: Edition 06 keeps today's width (DR-115, D2-328).",
- "updated": "November 8, 2026, Q1 to Q4 pass: the lockmark's 48 px master and ranges, the end mark's exception, L3's masthead master and L6 without its dots. November 7, 2026, apply pass: S1 added, L2 retired, the badge from 48 px, condensed figures kept for the record"
+ "updated": "November 10, 2026, promotion: the end mark's pixel masters on a 1x screen (DR-180), the rebuilt 24 and 48 px lockmark files and L3's masthead master that carries the rebuilt 48 px file (DR-181), and L6 centered (DR-182). November 8, 2026, Q1 to Q4 pass: the lockmark's 48 px master and ranges, the end mark's exception, L3's masthead master and L6 without its dots. November 7, 2026, apply pass: S1 added, L2 retired, the badge from 48 px, condensed figures kept for the record"
 }

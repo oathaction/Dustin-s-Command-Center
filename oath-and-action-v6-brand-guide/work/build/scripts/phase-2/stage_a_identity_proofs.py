@@ -11,6 +11,10 @@ Q1 to Q4 pass, November 8, 2026 (DR-131): the site masthead places L3's masthead
 48 px master, and the social card's sign-off draws the 48 px master and prints the feed test's figures from
 stage_a_identity_q_measure.py. The letterhead draws neither place, so it is unchanged.
 
+Promotion, November 10, 2026 (DR-181): the masthead's L3, the sign-off and the letterhead's footer draw the rebuilt 24
+and 48 px masters, the same pixels; the feed figures come from promotion_identity.py's rerun with the rebuilt master.
+The letterhead's print proof is not printed again (the proofs folder sits with the boards).
+
 Earlier rulings that still bind: each width-free proof is one specimen at actual size; kickers follow Rule 01.21
 (D2-250); the social card breaks at the hinge and carries its specifications; the letterhead's town is invented
 (Wrenfield) and its letter opens on the request; no decision codes or production words reach the page (D2-253)."""

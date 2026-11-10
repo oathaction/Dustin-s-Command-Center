@@ -18,8 +18,8 @@
     "oa.color.palette.stone"
    ],
    "why": {
-    "text": "At small sizes our fifth edition’s single master lost its shape: at 24 px only 5 percent of its ink was solid, and at 16 px the lever became one pink pixel. The small masters set every node and link on whole pixels and draw the lever one size up, so it still reads as the place where one change moves the rest. At 48 px the display master covers 15 percent of its field with ink, against 42 percent for the 24 px master at 24 px, so the masthead and the sign-off take a 48 px master drawn the same way, which covers 22 percent. Its file draws each node one pixel row at a time, and at any size between whole multiples of 48 px the rows part into stripes, so it serves 48 px alone.",
-    "basis": "Our measurements, October and November 2026; the 48 px master approved by our founder and editor in November 2026"
+    "text": "At small sizes our fifth edition’s single master lost its shape: at 24 px only 5 percent of its ink was solid, and at 16 px the lever became one pink pixel. The small masters set every node and link on whole pixels and draw the lever one size up, so it still reads as the place where one change moves the rest. At 48 px the display master covers 15 percent of its field with ink, against 42 percent for the 24 px master at 24 px, so the masthead and the sign-off take a 48 px master drawn the same way, which covers 22 percent. In the 24 and 48 px masters each node and the lever is one outline on the pixel grid, so between their sizes the nodes stay whole. The 48 px master serves 48 px alone, since at other sizes its edges fall between pixels and soften.",
+    "basis": "Our measurements, October and November 2026; the 48 px master and the rebuilt 24 and 48 px files approved by our founder and editor in November 2026"
    },
    "correct": {
     "specimen": "s-08-1-correct",
@@ -75,15 +75,15 @@
    ],
    "files": [
     "work/build/assets/identity/lockmark/20261107_Lockmark-Display-Master.svg",
-    "work/build/assets/identity/lockmark/20261108_Lockmark-48px-Master.svg",
-    "work/build/assets/identity/lockmark/20261028_Lockmark-24px-Master.svg",
+    "work/build/assets/identity/lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+    "work/build/assets/identity/lockmark/20261109_Lockmark-24px-Master-Outline.svg",
     "work/build/assets/identity/lockmark/20261028_Lockmark-16px-Master.svg"
    ],
    "related": [
     "03",
     "05"
    ],
-   "builders": "The lockmark files read <code>--link</code> for the links and <code>--lever</code> for the lever. Leave the lever on the signature token; on Prussian, place the White file from <code>prussian/</code>. Place the 48 px master at exactly 48 px on whole pixels, since at any other size its rows part into stripes. The display master keeps our fifth edition’s drawing, with its links held at 1 px at every size."
+   "builders": "The lockmark files read <code>--link</code> for the links and <code>--lever</code> for the lever. Leave the lever on the signature token; on Prussian, place the White file from <code>prussian/</code>. Place the 48 px master at exactly 48 px on whole pixels, the size its pixel grid was drawn for. The 24 and 48 px files this rule lists draw each node and the lever as one outline; the earlier files, one rect per pixel row, stay in the folder only as the record. The display master keeps our fifth edition’s drawing, with its links held at 1 px at every size."
   },
   {
    "id": "08.2",
@@ -139,9 +139,9 @@
     }
    ],
    "files": [
-    "work/build/assets/identity/lockups/20261108_L3-Horizontal-Master.svg",
-    "work/build/assets/identity/lockmark/20261108_Lockmark-48px-Master.svg",
-    "work/build/assets/identity/lockmark/20261028_Lockmark-24px-Master.svg",
+    "work/build/assets/identity/lockups/20261110_L3-Horizontal-Master.svg",
+    "work/build/assets/identity/lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+    "work/build/assets/identity/lockmark/20261109_Lockmark-24px-Master-Outline.svg",
     "work/build/assets/identity/lockmark/20261028_Lockmark-16px-Master.svg",
     "work/build/assets/identity/lockmark/20261107_Lockmark-Display-Master.svg"
    ],

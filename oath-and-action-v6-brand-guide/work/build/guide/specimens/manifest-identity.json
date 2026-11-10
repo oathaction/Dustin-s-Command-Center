@@ -41,15 +41,15 @@
   "width_px": 712,
   "alt": "Seven lockups at true size on Newsprint, two to a row, each with its job and its minimum on screen and in print: L1 the wordmark, 16 pixels tall or 152 wide, 1.20 inches, beside L8 the O & A monogram, 48 pixels, 0.50 inches; S1 stacked, OATH & over ACTION on two flush-left lines, 79 pixels, 0.65 inches, beside L4 the monogram, a hairline and the tagline on two lines, 304 pixels, 2.30 inches; L3 the wordmark with the lockmark at its right, 196 pixels, 1.55 inches, beside L7 the wordmark, a hairline and the word TRACK, 250 pixels, 1.90 inches; and L5 the wordmark over the tagline, 388 pixels, 2.90 inches. L6 follows in its own plate.",
   "illustrative": false,
-  "notes": "Two columns at 712 px (C-S7), with L1, S1 and L3 in the left column, so a phone shows them first in the scrolling frame (CD-S7); every mark sits on the bottom of an 88 px box, so each row's names share one line (CA-S11). L1, S1, L3 and L8 are masters; S1 at 40 px capitals from its display master (DR-113). L4, L5 and L7 are assembled from the approved masters and re-exported taglines on V5's layouts (I8 note). L6 has its own plate, s-03-l6, since its 884 px minimum is wider than the column. L7's pillar word is live text at 17 px, a size on the scale, which sets L7 at 294 px."
+  "notes": "Two columns at 712 px (C-S7), with L1, S1 and L3 in the left column, so a phone shows them first in the scrolling frame (CD-S7); every mark sits on the bottom of an 88 px box, so each row's names share one line (CA-S11). L1, S1, L3 and L8 are masters; S1 at 40 px capitals from its display master (DR-113). L4, L5 and L7 are assembled from the approved masters and re-exported taglines on V5's layouts (I8 note). L6 has its own plate, s-03-l6, since its 884 px minimum is wider than the column. L7's pillar word is live text at 17 px, a size on the scale, which sets L7 at 294 px. L3 from its masthead master in use since November 10, 2026, lockups/20261110_L3-Horizontal-Master.svg, which carries the rebuilt 48 px lockmark master and draws the same pixels as the November 8 file (DR-181)."
  },
  "s-03-l6": {
   "chapter": "03",
   "rule": "03.2",
   "width_px": 932,
-  "alt": "L6, the editorial signature, at its 884 pixel minimum on a Prussian strip, all in White: the wordmark and the tagline at left and the lockmark at right. Its print minimum is 6.60 inches.",
+  "alt": "L6, the editorial signature, at its 884 pixel minimum on a Prussian strip, all in White: the wordmark and the tagline at left, centered on the strip’s height, and the lockmark at right. Its print minimum is 6.60 inches.",
   "illustrative": false,
-  "notes": "L6 on V5's layout, measured from the Gate 0 capture: 1400 by 300 units, without the four pillar dots V5 drew under the tagline (DR-129). The lockmark keeps L6's proportion, 93.5 px at 884 px, from the display master. No web address until it is settled (DR-55).",
+  "notes": "L6 on V5's layout, measured from the Gate 0 capture: 1400 by 300 units, without the four pillar dots V5 drew under the tagline (DR-129). In use since November 10, 2026: the wordmark and tagline centered on the strip (DR-182), moved down 14.72 units, 9.3 px at 884 px, so the span from the wordmark's cap line to the tagline's baseline has its middle on the strip's middle, as the identity designer's stage B proposal drew it. The strip, the lockmark and every size stay as they were: the lockmark keeps L6's proportion, 93.5 px at 884 px, from the display master. No web address until it is settled (DR-55).",
   "fit_switch": true
  },
  "s-03-3-correct": {
@@ -74,7 +74,7 @@
   "width_px": 712,
   "alt": "Every identity mark at its screen minimum, at true size, each row on one bottom line: the wordmark 16 pixels tall, the S1 stacked lockup 79 wide, the horizontal lockup 196 wide, the monogram 48 wide; ampersand B and the lockmark at 16 pixels, the badge at 48 and the compact hinge diagram at 245; L4 at 304 and L7 at 250; L5 at 388; and the display hinge diagram at 533.",
   "illustrative": false,
-  "notes": "Marks at true size are graphics (Stage A brief: the 13 px floor exempts a mark shown at its minimum, and the note says so). L3's lockmark hangs above and below the wordmark's box, so every row aligns on the marks' bottoms (C-S13)."
+  "notes": "Marks at true size are graphics (Stage A brief: the 13 px floor exempts a mark shown at its minimum, and the note says so). L3's lockmark hangs above and below the wordmark's box, so every row aligns on the marks' bottoms (C-S13). L3 at 196 px draws its lockmark at 34 px from the rebuilt 24 px master in use since November 10, 2026, each node and the lever one outline, so its nodes stay whole at 34 px (DR-145, DR-181). The lockmark at 16 px is the 16 px master, unchanged."
  },
  "s-03-4-failure": {
   "chapter": "03",
@@ -113,16 +113,16 @@
   "width_px": 1440,
   "alt": "Three mastheads at true size: a 1440 pixel site bar with the wordmark and lockmark at left and five navigation words at right; a 390 pixel phone bar with the wordmark and a menu button; and a 600 pixel white email header with the wordmark and lockmark.",
   "illustrative": false,
-  "notes": "Navigation words are placeholders for chapter 20, drawn as div elements (AX-S8). The email header is drawn live here; in email it ships as a PNG.",
+  "notes": "Navigation words are placeholders for chapter 20, drawn as div elements (AX-S8). The email header is drawn live here; in email it ships as a PNG. Both L3s from the masthead master in use since November 10, 2026, lockups/20261110_L3-Horizontal-Master.svg, which carries the rebuilt 48 px lockmark master and draws the same pixels as the November 8 file (DR-181).",
   "fit_switch": true
  },
  "s-03-6-failure": {
   "chapter": "03",
   "rule": "03.6",
   "width_px": 400,
-  "alt": "Failure case: a 390 pixel phone bar with the L3 lockup squeezed to 150 pixels wide; its capitals are 12 pixels tall and the lockmark’s nodes and links run together at 26 pixels.",
+  "alt": "Failure case: a 390 pixel phone bar with the L3 lockup squeezed to 150 pixels wide; its capitals are 12 pixels tall, under the 14 pixel floor, and the lockmark shrinks to 26 pixels.",
   "illustrative": false,
-  "notes": "L3's masthead master at 150 px wide: 11.7 px capitals, a 25.5 px lockmark whose pixel rows part into stripes."
+  "notes": "L3's masthead master at 150 px wide: 11.7 px capitals, a 25.5 px lockmark. Since November 10, 2026 the masthead master carries the rebuilt 48 px lockmark master (DR-181), so the squeezed lockmark keeps whole nodes, where the earlier file's pixel rows parted into stripes. The failure is the capitals under the 14 px floor and L3 under its 196 px minimum (Rule 03.4)."
  },
  "s-03-7-correct": {
   "chapter": "03",
@@ -266,9 +266,9 @@
   "chapter": "04",
   "rule": "04.6",
   "width_px": 560,
-  "alt": "At true size, the last lines of an article in 17 pixel body text, on Newsprint and again on Charcoal, each ending with ampersand B alone in the text’s ink, half an em after the final period. B stands at the text’s cap height: 14.1 pixels tall beside capitals 12.4 pixels tall, its curves running 0.6 pixels over the cap line and 1.1 under the baseline. Below, the hinge-circle badge, a red ampersand B inside a thin red ring, at 96 pixels centered on the Charcoal back of a 4 by 6 inch event card. The article text is Illustrative.",
+  "alt": "At true size, the last lines of an article in 17 pixel body text, on Newsprint and again on Charcoal, then in 15 pixel text on Newsprint, each ending with ampersand B alone in the text’s ink, half an em after the final period. B stands at the text’s cap height. On a 1x screen it is drawn on whole pixels and sits on the baseline: 13 pixels tall in 17 pixel text and 11 in 15 pixel text, its top on the capitals’ top row. On other screens it is drawn smooth, 14.1 pixels tall in 17 pixel text, its curves running 0.6 pixels over the cap line and 1.1 under the baseline. Below, the hinge-circle badge, a red ampersand B inside a thin red ring, at 96 pixels centered on the Charcoal back of a 4 by 6 inch event card. The article text is Illustrative.",
   "illustrative": true,
-  "notes": "DR-130, CD-N8 and CA-S4. B at the text's cap height, as plate (a) on the changes board: its band, the 16 px master's y 1 to 15, on the capitals, so B is 16/14 of the cap height tall with vertical-align at minus 1/14 of the cap height, in the text's ink. Under B's 16 px minimum by the end mark's exception (Rule 03.4). Measured in Chromium at eight times beside a capital H of 17 px Inter: capitals 12.4 px, B 14.1 px, its top 0.6 px over the cap line, its tail 1.1 px under the baseline (work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json). Half an em of margin before B, inside a no-wrap span with the last word. The plate is padded 24 px, so its tags and the event card stand clear of the frame (CD-S4, CA-S5).",
+  "notes": "DR-130, DR-180, CD-N8 and CA-S4. B at the text's cap height. In use since November 10, 2026 (DR-180): on a 1x screen, B's pixel masters, fit B, on the baseline: ampersand/20261109_Amp-B-14px-End-Mark-Fit-B.svg, 13 by 13 px, in 17 px text and ampersand/20261109_Amp-B-12px-End-Mark-Fit-B.svg, 11 by 11 px, in 15 px text, each with vertical-align 0. On every other screen, as the identity notes' question 2 recommended and Dustin approved with every recommendation (D2-709), the 16 px master at 16/14 of the cap height with vertical-align at minus 1/14 of the cap height. Both sit in the last word's no-wrap span, half an em after it, and a media query in this fragment's style shows one: (resolution: 1dppx), or (-webkit-device-pixel-ratio: 1), for the pixel master. Measured beside a capital H of the same text in Chromium (stage B identity figures, end_mark): at 1x the pixel master is 13.0 px tall beside capitals 12.4 px in 17 px text and 11.0 px beside 10.9 px in 15 px text, its top on the capitals' top row and its last row on theirs at four positions of the line between pixels. The smooth drawing at eight times beside 17 px Inter: capitals 12.4 px, B 14.1 px, its top 0.6 px over the cap line, its tail 1.1 px under the baseline (work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json). Under B's 16 px minimum by the end mark's exception (Rule 03.4). The plate is padded 24 px, so its tags and the event card stand clear of the frame (CD-S4, CA-S5).",
   "fit_switch": true
  },
  "s-04-6-failure": {
@@ -323,7 +323,7 @@
   "width_px": 700,
   "alt": "The lockmark: nine nodes on a three by three grid joined by thin links around the edge and through the center, with a larger red node, the lever, at bottom right. Its construction at 240 pixels with the node centers and radii, then its four masters at true size: the display master at 96 pixels with fine links and small nodes, and the 48, 24 and 16 pixel masters, each heavier, with the same nine nodes, links and lever. Last, the 48 pixel master on Charcoal, in Newsprint with its red lever, and on Prussian, all in White.",
   "illustrative": false,
-  "notes": "Construction from the display master at 240 px. The four masters each at their own size (DR-131): the display master at 96 px, then the 48, 24 and 16 px masters on whole pixels. On Prussian, the 48 px master's White file.",
+  "notes": "Construction from the display master at 240 px. The four masters each at their own size (DR-131): the display master at 96 px, then the 48, 24 and 16 px masters on whole pixels. The 48 and 24 px masters are the rebuilt files in use since November 10, 2026, each node and the lever one outline (DR-181): lockmark/20261109_Lockmark-48px-Master-Outline.svg and lockmark/20261109_Lockmark-24px-Master-Outline.svg, the same pixels as the earlier files at these sizes (DR-145). The 16 px master is unchanged. On Prussian, the rebuilt 48 px master's White file.",
   "fit_switch": true
  },
  "s-08-1-failure": {
@@ -340,7 +340,7 @@
   "width_px": 802,
   "alt": "The lockmark’s four places at true size, one under another. Masthead: a 768 pixel Newsprint bar with the wordmark and the lockmark at 48 pixels at left and four navigation words at right. Page header: a white report header with the lockmark at 24 pixels beside the section label 03 Who writes the budget and the page number 7; the section title is Illustrative. Footer: a Charcoal footer with the lockmark at 24 pixels beside the tagline, A country that answers to its people., and a chart’s footer with its source line and the lockmark at 16 pixels at right. Sign-off: the bottom-right corner of a 1080 pixel social card with the lockmark at 48 pixels inside its 72 pixel margin.",
   "illustrative": false,
-  "notes": "DR-110 and DR-131. Footer place: the lockmark, 12 px, then the tagline, at the footer's left edge, as the letterhead proof draws it too (CA-S10). Masthead: L3's masthead master, the 24 px wordmark master with the lockmark at 48 px from its 48 px master, in a 768 px bar (Rule 03.6's breakpoint). Page header and footer: the 24 px master on whole pixels. Chart footer: the 16 px master beside chapter 02's jobs chart source line, word for word. Sign-off: the 48 px master at 48 px, 72 px from the card's right and bottom edges (D2-295's card margin). The places and their labels stand 16 px in from the frame (CD-N9), so the plate is 802 px wide. Type takes sizes common to both columns of the scale (13 to 17 px).",
+  "notes": "DR-110 and DR-131. Footer place: the lockmark, 12 px, then the tagline, at the footer's left edge, as the letterhead proof draws it too (CA-S10). Masthead: L3's masthead master, the 24 px wordmark master with the lockmark at 48 px from its 48 px master, in a 768 px bar (Rule 03.6's breakpoint). Page header and footer: the 24 px master on whole pixels. Chart footer: the 16 px master beside chapter 02's jobs chart source line, word for word. Sign-off: the 48 px master at 48 px, 72 px from the card's right and bottom edges (D2-295's card margin). The places and their labels stand 16 px in from the frame (CD-N9), so the plate is 802 px wide. Type takes sizes common to both columns of the scale (13 to 17 px). Since November 10, 2026 the 48 and 24 px masters are the rebuilt files, each node and the lever one outline, and L3's masthead master is lockups/20261110_L3-Horizontal-Master.svg, which carries the rebuilt 48 px master; each draws the same pixels as before (DR-145, DR-181). The 16 px master is unchanged.",
   "fit_switch": true
  },
  "s-08-2-failure": {
@@ -373,7 +373,7 @@
   "width_px": 1488,
   "alt": "The site masthead at true size: a 1440 pixel Newsprint bar with OATH & ACTION and the lockmark at left and five navigation words at right. Below it, on the same left edge, the 390 pixel phone bar with the wordmark and a menu button.",
   "illustrative": false,
-  "notes": "Today's width (DR-115). L3 from its masthead master: the 24 px wordmark master (221 px), 13 px and the lockmark at 48 px from its 48 px master (DR-131); phone bar with the 24 px master (Rule 03.6). The width pair it replaces stays on board A as the record.",
+  "notes": "Today's width (DR-115). L3 from its masthead master: the 24 px wordmark master (221 px), 13 px and the lockmark at 48 px from its 48 px master (DR-131); phone bar with the 24 px master (Rule 03.6). The width pair it replaces stays on board A as the record. Since November 10, 2026 the masthead master is lockups/20261110_L3-Horizontal-Master.svg, which carries the rebuilt 48 px lockmark master, each node and the lever one outline, and draws the same pixels as the November 8 file (DR-181).",
   "fit_switch": true
  },
  "s-proofs-avatar": {
@@ -390,7 +390,7 @@
   "width_px": 1248,
   "alt": "A social card at actual size, 1200 by 630 pixels, on Newsprint: the kicker Explainer · Zoning, the hinge headline The zoning code & the rent. broken before a red ampersand B, the wordmark 44 pixels tall at bottom left and the lockmark at 48 pixels at bottom right, inside the 72 pixel margin. No web address. Under it, the card’s specifications. The headline and kicker are invented.",
   "illustrative": true,
-  "notes": "1200 by 630, the link-preview size, type at the desktop ceiling (D2-254). The headline is chapter 02's hinge example. Sign-off from the lockmark's 48 px master at 48 px (DR-131), and the feed test's figures measured on this card in the built page (work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json, key feed). No web address until the site is settled (DR-55).",
+  "notes": "1200 by 630, the link-preview size, type at the desktop ceiling (D2-254). The headline is chapter 02's hinge example. Sign-off from the lockmark's 48 px master at 48 px (DR-131): since November 10, 2026 the rebuilt file, lockmark/20261109_Lockmark-48px-Master-Outline.svg, each node and the lever one outline (DR-181). The feed test (D2-468) ran again on this card in the built page with that master, and its figures are the ones printed here (work/handoffs/phase-2/20261110_Promotion-Identity-Figures.json, key feed). No web address until the site is settled (DR-55).",
   "fit_switch": true
  },
  "s-proofs-letterhead": {
@@ -399,7 +399,7 @@
   "width_px": 864,
   "alt": "A US Letter letterhead at true size on screen, 8.5 by 11 inches: a line in the top margin saying the address, recipient and letter are invented; the wordmark at top left; a return address at top right; a records request to the town clerk of Wrenfield signed by Dustin Cathcart, Founder and Editor; and a footer with the lockmark at 24 pixels followed by the tagline. A link downloads the one-page print proof.",
   "illustrative": true,
-  "notes": "A print piece set in points (D2-205): 11 pt body, 10 pt address, slug and footer, so check_exempt scale. 96 CSS px to the inch, so the sheet is 816 by 1056 px. Display master at 26 px tall, as a print piece places it. Footer: the lockmark at 24 px, 12 px, then the tagline, at the footer's left edge, the footer place as Rule 08.2 now draws it (CA-S10). interactive: the stage holds the PDF link.",
+  "notes": "A print piece set in points (D2-205): 11 pt body, 10 pt address, slug and footer, so check_exempt scale. 96 CSS px to the inch, so the sheet is 816 by 1056 px. Display master at 26 px tall, as a print piece places it. Footer: the lockmark at 24 px, 12 px, then the tagline, at the footer's left edge, the footer place as Rule 08.2 now draws it (CA-S10). interactive: the stage holds the PDF link. On screen the footer draws the rebuilt 24 px master in use since November 10, 2026, each node and the lever one outline (DR-181). The print proof the link downloads, work/boards/phase-2/stage-a/proofs/20261107_Letterhead-Proof.pdf, was printed on November 7 with the earlier 24 px file, which draws the same pixels at 24 px; it is not printed again in the promotion, since the proofs folder sits with the boards.",
   "interactive": true,
   "fit_switch": true,
   "check_exempt": [

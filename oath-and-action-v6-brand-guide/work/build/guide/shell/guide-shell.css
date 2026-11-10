@@ -91,10 +91,10 @@ code, pre, kbd { font-family: var(--mono); font-size: .875rem; overflow-wrap: an
    the drawing's own 2 px line, round caps and currentColor, so it takes the button's ink and forced colors keeps it
    (UX-1). The box sits on whole pixels, as the pixel-fit check assumes. */
 .bars { flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium); margin-inline: -3px }
-/* A drawing with a pixel fit (DR-179): <use class="oa-at-1x"> draws on 1x screens, <use class="oa-at-2x"> from 1.5
-   device pixels per CSS pixel up, where the fit's pixels can no longer land on whole device pixels. */
+/* A drawing with a pixel fit (DR-179): <use class="oa-at-1x"> draws the fit on screens under two device pixels per CSS
+   pixel, <use class="oa-at-2x"> the master from two up, where its line and gaps reach a full device pixel. */
 .oa-at-2x { display: none }
-@media (min-resolution: 1.5dppx) { .oa-at-1x { display: none } .oa-at-2x { display: inline } }
+@media (min-resolution: 2dppx) { .oa-at-1x { display: none } .oa-at-2x { display: inline } }
 .where { min-height: var(--where-h); margin-block: 0; padding-bottom: var(--oa-space-050); display: flex; align-items: center; font: var(--oa-type-caption);
   color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
 @media (max-width: 22.49em) { .home .wm-24 { display: none } .home .wm-16 { display: block } }

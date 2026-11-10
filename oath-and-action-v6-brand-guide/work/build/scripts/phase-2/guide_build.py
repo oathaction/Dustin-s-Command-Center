@@ -1501,8 +1501,8 @@ def load_chapters(chap_dir):
 # root's own paint and rendering attributes (a utility icon's line, caps and joins; a pillar fit's crisp edges) on a
 # group around the drawing, so a <use> draws the file whatever the page's CSS sets on the <svg> around it.
 #
-# Pixel fits on 1x and 2x screens (DR-179, D2-634): a 24 px pillar icon draws its fit on 1x screens and the master on
-# screens of 1.5 device pixels per CSS pixel and up, in one <svg> with two <use>, which the shell switches by class:
+# Pixel fits on 1x and 2x screens (DR-179, D2-634): a 24 px pillar icon draws its fit on screens under two device pixels
+# per CSS pixel and the master from two up, in one <svg> with two <use>, which the shell switches by class:
 #   <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="CL-019"
 #        data-icon-family="pillar"><use class="oa-at-1x" href="#oa-sym-cl-019-24px"/><use class="oa-at-2x"
 #        href="#oa-sym-cl-019"/></svg>
@@ -2322,7 +2322,7 @@ def self_test():
                    "[s-09-twoonly] oa-sym-cl-022 draws only on 2x screens", "[s-09-accent] a pillar icon under 48 px (oa-sym-cl-022-24px) sets --oa-icon-accent",
                    "[s-09-wrongone] oa-sym-cl-020 is marked oa-at-1x but is no pixel fit"],
           "absent": ["[s-09-good]", "[s-09-fixed]", "reference(s) to no symbol"],
-          "html": [".oa-at-2x { display: none }", "@media (min-resolution: 1.5dppx) { .oa-at-1x { display: none } .oa-at-2x { display: inline } }",
+          "html": [".oa-at-2x { display: none }", "@media (min-resolution: 2dppx) { .oa-at-1x { display: none } .oa-at-2x { display: inline } }",
                    '<use class="oa-at-1x" href="#oa-sym-cl-019-24px"/><use class="oa-at-2x" href="#oa-sym-cl-019"/></svg>'],
           "tests": [("the sprite holds the fit and the master the pattern names", lambda pg: {"oa-sym-cl-019-24px", "oa-sym-cl-019", "oa-sym-cl-020-16px"} <= {s for s, _ in symbols_of(pg)}),
                     ("the 16 px fit draws alone, on every screen", lambda pg: '<use href="#oa-sym-cl-020-16px"/>' in figure_of(pg, "s-09-good"))]}),

@@ -126,7 +126,7 @@ Files: `work/build/assets/civic-line-v6/{red-black,black,red-newsprint,newsprint
 | One-color | 48 px | 52 px | 52 px |
 | One-color, for the drawings that need 48 px on their own | 72 px | 76 px | 80 px |
 
-  The inventory in use records each drawing's minimums.
+  The inventory in use records each drawing's minimums: 94 drawings take the one-color row and 30 the row below it (`tile_min_px` in `20261110_Civic-Line-V6-Inventory.json`, read by script). The October set had 28 in the last row; the redraws and CL-074 change the count.
 - **Never:** a Newsprint tile on a White page, where its edge measures 1.41 to 1 against White; a Pillar Red tile, which breaks Rule 05.3; red on a tile set on Prussian.
 - Files: `work/build/assets/civic-line-v6/tiles/` for the eight new and redrawn drawings, and `work/build/assets/civic-line/tiles/` for the other 116, as the inventory in use points (D2-716). App platforms take the square tile and apply their own mask.
 
@@ -204,6 +204,7 @@ The words on a reader page come from the editor's label table (DR-185, `20261110
 **What is not on the list, and why.**
 - The six redraws (CL-014, CL-025, CL-059, R-13, R-42, R-48). Their October originals were not on it (CL-014, R-13 and R-42 stopped reading at 32 px; CL-025, CL-059 and R-48 at 24 px), and the drawings board showed every redraw at 24 px as "reference size only" (D2-673).
 - CL-073 Testify and CL-074 Contact an Official, for the same reason: the board showed them at 24 px as reference only.
+- The inventory in use agrees: the Civic Line hand read each of the eight finals at 24 px and recorded "does not read" for all eight (`final.reads_at_px` in `20261110_Civic-Line-V6-Inventory.json`).
 - Adding a drawing to the list changes what DR-136 approved, so it goes to Dustin first. These eight stay at 48 px and up.
 
 **For the engineer's B-3 check:** the list above as written, with the four pillar icons checked under the pillar family's rule. A topic or atlas symbol at 24 px passes only when its `data-icon` is one of the 37.
@@ -234,5 +235,5 @@ CL-073 Testify and CL-005 Public Meeting; CL-074 Contact an Official and CL-061 
 - Contrast figures computed from the hex values with the WCAG 2.x formula (`stage_a_systems_core.py`).
 
 **Not tested**
-- The set in use folder itself: `civic-line-v6/` did not exist when I wrote this. The cap counts in section 6 come from the October inventory and the eight option files; I recheck them against the inventory in use when it lands.
+- The cap counts in section 6 against the inventory in use's own `stroke_units`: rechecked once `civic-line-v6/` landed (see the notes file).
 - Whether people can name any drawing at 24 px. The list is one reviewer's reading, approved by Dustin; no reader test has covered it.

@@ -1566,3 +1566,32 @@ The studio asked three questions before promoting the approved drawings, and lis
 |---|---|---|
 | D2-729 | Success B stays as Dustin approved it (DR-174). D2-655 holds for the check's angles, line and ends; the check's arms in Success B run 2.71 to 1 at 24 px against Selected Check A's 2.20 to 1 | The drawing on the board is the drawing approved; the log now says what the shared check shares |
 | D2-730 | The grey insides of Pause and the Filter spout at 16 px on 1x screens go to the creative director at round 3, as the board showed them | The finals match the approved options byte for byte; a fix would be a change to an approved drawing |
+
+### Civic Line hand (`20261110_Promotion-Civic-Line-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-731 | A final's title is its label alone ("Congress"), and its description carries the approval, the pick, the DR and the date | October's titles are the label, and the title is the name a screen reader speaks wherever the sprite places the drawing |
+| D2-732 | A final takes October's root id pattern, `oa-civic-line-<id>-<edition>`, the ids the replaced October files used | The sprite and October's tools find a drawing by that pattern; the replaced files are out of the set in use, and the id audit over the 2,000 files in use finds no repeat |
+| D2-733 | A redraw's description says its October master stays in the October set as the record, without a folder path | The description travels with the file into the package |
+| D2-734 | The light editions of the eight come from October's swap function on the red-black final | DR-09; the same function made October's 488 editions |
+| D2-735 | The eight finals' tile optical scale and offset follow S-1 and S-2 on the build's vector hull, divided by that hull's own median over the 122 masters (74.66 units) | The review measured on renders; with a matching median the rule gives the review's table for 116 of 118 icons under S-1 and 122 of 122 under S-2 |
+| D2-736 | Bare floors: CL-025, CL-059 and CL-073 at 32 px; CL-014, R-13, R-42, R-48 and CL-074 at 48 px; none reads at 24 px | Read at 32 and 24 px as October's review read the 122; the five at 48 px combine three parts or lean on a small sign |
+| D2-737 | CL-073 and CL-074 follow CL-024 in the inventory, as sheet 01, row 5, columns 1 and 2 | D2-714 files them with sheet 01, and the next row keeps the sheet's six-column grid for the contact sheets that chapter 10 redraws (D2-717) |
+| D2-738 | Sheet fields a redrawn or new drawing does not have (sheet images, crop, registration, sheet overlap, reference crops, components, caption check, mask figures) are null in the JSON and "none" in the CSV | These drawings came from the drawings board, not from a supplied sheet, and a made-up value would read as a measurement |
+| D2-739 | The eight rows' stroke medians are October's estimators run on each drawing's own stage B source at 1x (5.52 to 5.75 px, 6.0 px on the 1x estimator) | October measured the sheet; these drawings have no sheet, and their own line is the one to measure |
+| D2-740 | The six redraws keep their October sheet, row and column, and their October labels and slugs | The redraw takes its original's place in the set; DR-185 sets the words chapter 10 prints, and file names and IDs stay as approved |
+| D2-741 | The eight rows keep the status "reviewed", and the new `source` column names the approving DR | October's states end at "reviewed"; approval is what the source column records |
+| D2-742 | The inventory adds five columns after October's 46: `source`, `source_file`, `png_256_dir`, `png_512_dir` and `tiles_dir`; the JSON adds each row's SVG hashes, its tile PNG paths and, for the eight, a `final` block with the option, the drawing it replaces, how it was measured, its reading at 32 and 24 px, its tile rule figures and its tile margins | October's columns keep their meaning, and the brief asks for the source and the paths |
+| D2-743 | Every path in the inventory is relative to the inventory's own folder, as October's were | One convention for the whole file; the 116 unchanged rows then point at `../civic-line/` for PNGs and tiles (D2-716) |
+| D2-744 | The pillar icons sit in `pillar-icons/svg/` and `pillar-icons/png/`, with root ids `oa-pillar-icon-<id>-<size>px-<edition>` and the pillar's word as title | The layout of `pillar-pixel-fit/`, which the engineer's build reads deep, picking the black files |
+| D2-745 | The pillar manifest names D2-634 beside DR-179: a 16 px pillar icon keeps its fit on 2x screens | DR-179 names 2x screens at 24 px only, and D2-634 is the rule the board recommended for 16 px |
+| D2-746 | The pillar PNG previews are drawn again from the finals and compared with the stage B previews | They match pixel for pixel, so the folder's previews are the finals' own |
+
+### Main session, on the Civic Line hand's questions
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-747 | Later briefs name `work/build/scripts/civic-line/` as the scripts that built the October set, beside the stage B `civic_line_*` scripts | The Civic Line hand found the October pipeline there; the `icons_*` scripts built the pillar concepts board |
+| D2-748 | The engineer points the look-alike check's masters at `civic-line-v6/` | New drawings should be checked against the set in use, which holds the redraws and the two new drawings |
+| D2-749 | A fresh container also needs `pip install scipy scikit-image` for the Civic Line tile code | The Civic Line hand installed both to rebuild the tiles |

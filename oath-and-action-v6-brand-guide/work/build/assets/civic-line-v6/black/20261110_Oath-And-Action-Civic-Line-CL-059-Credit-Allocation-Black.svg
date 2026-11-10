@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-059-black" data-id="CL-059" width="128" height="128" viewBox="0 0 128 128">
+  <title>Credit Allocation</title>
+  <desc>Oath &amp; Action Civic Line CL-059 Credit Allocation. A flat-roofed bank with a round vault door on its face, above the red path that branches to a home and a factory. The final drawing, approved by name on the stage B drawings board as option B (DR-157) and promoted to the set in use on November 10, 2026. It replaces the October master in the set in use, and the October master stays in the October set as the record (D2-464, D2-716). Drawn in Civic Line's hand: one line weight, round caps and joins, the capped fit of DR-08. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts, red in the two-color editions. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-cl-059-black-base" data-part="base">
+    <line x1="38.3874" y1="22.9431" x2="85.1164" y2="22.9431" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="42.6826,53.0153 42.6826,22.9431 80.8212,22.9431 80.8212,53.0153" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="38.3874" y1="53.0153" x2="85.1164" y2="53.0153" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="61.7519" cy="37.9914" r="9.1387" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="61.7519" cy="37.9914" r="3.3508" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="64.1212" y1="35.622" x2="70.7986" y2="28.9447" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="59.3825" y1="35.622" x2="52.7052" y2="28.9447" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="59.3825" y1="40.3607" x2="52.7052" y2="47.038" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="64.1212" y1="40.3607" x2="70.7986" y2="47.038" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="11.6781,104.5817 11.6781,90.0513 26.7082,77.5922 41.7382,90.0513 41.7382,104.5817" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="23.1685,104.5817 23.1685,95.9914 30.2479,95.9914 30.2479,104.5817" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="73.2788,90.9347 82.192,84.7204 82.192,91.4221 93.0548,84.7204 93.0548,91.4221 103.9116,84.7204 103.9116,91.4221 105.3128,91.4221 109.0901,77.5557 116.3219,77.5557 116.3219,105.0569 73.2788,105.0569" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="oa-civic-line-cl-059-black-accent" data-part="accent">
+    <path d="M58.0294 59.8023 L58.0294 64.6336 A1.523105 1.523105 0 0 1 56.5063 66.1567 L30.8389 66.1567 A1.523105 1.523105 0 0 0 29.3158 67.6798 L29.3158 73.0838" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M65.4744 59.8023 L65.4744 64.6336 A1.523105 1.523105 0 0 0 66.9975 66.1567 L92.6649 66.1567 A1.523105 1.523105 0 0 1 94.188 67.6798 L94.188 77.6227" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
