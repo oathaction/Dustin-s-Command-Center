@@ -2132,3 +2132,18 @@ Each owner's routine calls, numbered by the main session's script from the "D2-x
 | D2-1107 | The chapters page is republished at https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF as version 5 (1794330328-df6c), declaring `downloads` and moving its runtime from none (0.0.0) to 0.2.96, since the host's downloads call needs the runtime. The main session diffed the live version 4 against commit ddd3a898 (only the host's wrapper differed), scanned the new build (no network calls, no private paths, no dashes, no U+2011, links only to Google Fonts and four official or standards sites), and read the shell script's changes in full | DR-192; every file is seen before it is published |
 | D2-1108 | Board B's decisions board is published privately at https://claude.ai/artifact/MV5dR1EXqj6ZH4dsbqck4i (version 1794330406-686e), rebuilt with the rescore and the reader check's address (`--strict`, 0 warnings, 20 chapters page anchors linked; `dataviz_check.js --board` 0 failures at 1440, 390 and 360 px). The main session read its scripts and all its text before publishing; its links reach only claude.ai and Google Fonts | Every file is seen before it is published |
 | D2-1109 | This chat hands off after board B. The twelfth handoff is `work/handoffs/phase-2/20261110_Next-Session-Handoff_V12.md`; the next chat opens with Dustin’s answers to board B | Ten agents and nine resumed runs in this chat; the handoffs hand off after each board |
+
+## Board B answers, November 10, 2026
+
+Dustin, replying to board B (https://claude.ai/artifact/MV5dR1EXqj6ZH4dsbqck4i): "All as recommended". The studio reads this as the board's sample reply, "All as recommended. I approve option A for the error mark by name, and keep the one-color tile exception in Rule 10.5.", as D2-709 read the drawings board's reply: each decision's recommended option, approved by name, and none of the four calls overruled.
+
+| # | Decision | Source |
+|---|---|---|
+| DR-199 | The error mark is option A, as Rule 11.15 draws it: a circle holding an exclamation mark in the text's ink, with the error's red on a 4 px Pillar Red bar at the left of the field and of the message. Chapters 05 and 11 already draw it so, and the token's description already names the bar (C-062) | Dustin, November 10, as recommended, approved by name (D2-880) |
+| DR-200 | Rule 10.5 keeps its one-color tile exception: tiles from 48 px square and 52 px rounded or round hold their drawing at 32 to 34 px, open only to the 94 drawings that read at 32 px | Dustin, November 10, as recommended, approved by name (D2-976) |
+| DR-201 | The studio's four calls on board B stand: where the pillar row goes (D2-962), the five look-alikes at 24 px (D2-971), the examples moved off the reforms tied to Dustin's work (D2-958), and the tokens zip on the published page (D2-964) | Dustin, November 10, as recommended |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1110 | Board B's answers change no file: the page as published at version 5 already draws option A and states the tile exception, so nothing is rebuilt or republished | Both decisions confirm what was built |
+| D2-1111 | The first reader check page waits for Dustin to say he has sent the new link, then for his confirmation of the delete (DR-194) | His reply answered the board's two decisions and named no send |

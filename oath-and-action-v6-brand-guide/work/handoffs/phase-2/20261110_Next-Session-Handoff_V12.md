@@ -1,12 +1,12 @@
 # Handoff for the next session: Oath & Action Edition 06 (twelfth handoff, November 10)
 
-Written November 10, 2026, after stage B's round 3 and board B. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `20261110_Next-Session-Handoff_V11.md`. V5's sections 3 to 5, V8's section 3, V9's section 3, V10's section 3 and V11's section 3 still hold, with the additions below. Decision log entries for this chat run from DR-190 to DR-198 and from D2-954 to D2-1109. The change ledger ends at C-063.
+Written November 10, 2026, after stage B's round 3 and board B. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `20261110_Next-Session-Handoff_V11.md`. V5's sections 3 to 5, V8's section 3, V9's section 3, V10's section 3 and V11's section 3 still hold, with the additions below. Decision log entries for this chat run from DR-190 to DR-201 and from D2-954 to D2-1111. The change ledger ends at C-064.
 
 ## 1. Where things stand
 
 | Page | Address | Status |
 |---|---|---|
-| Board B decisions board | https://claude.ai/artifact/MV5dR1EXqj6ZH4dsbqck4i | Version 1 (1794330406-686e). Two decisions wait for Dustin by name |
+| Board B decisions board | https://claude.ai/artifact/MV5dR1EXqj6ZH4dsbqck4i | Version 1 (1794330406-686e). Answered: all as recommended (DR-199 to DR-201) |
 | Chapters page (01 to 12, identity proofs) | https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF | Version 5 (1794330328-df6c), after round 3, with the `downloads` capability and runtime 0.2.96 (D2-1107) |
 | Combined reader check | https://claude.ai/artifact/H3APDgNH1wGb5HHvf33f6X | Version 1 (1794330271-788f). Published; Dustin sends the invitation printed on board B |
 | Reader check, first page | https://claude.ai/artifact/16SD4uFJTiHKJC5p9CaFpP | Never sent. Deleted once Dustin has sent the new link and confirms (DR-194) |
@@ -29,14 +29,10 @@ All three board B pages are private to Dustin until he shares them. `work/boards
 
 ## 2. Next, in order
 
-### A. Board B's answers (start here)
-Dustin answers two decisions by name, and may overrule any of the four calls on the board:
-1. **The error mark (D2-880).** Option A, the mark in the text's ink with the 4 px Pillar Red bar, is built everywhere (chapters 05 and 11). If he picks B, the chapter 11 hand and the systems designer turn the mark's color to Pillar Red in `apply_systems_ch11.py` and `stage_a_systems_ch05.py`, and the engineer rewords the token's description.
-2. **The tile exception (D2-976).** Rule 10.5 states it as built. If he declines it, the systems designer moves every one-color tile to 72, 76 and 80 px in `stage_b_ch10_build.py`.
+### A. Board B's answers, done
+Dustin answered "All as recommended" (DR-199 to DR-201): option A for the error mark by name, the one-color tile exception kept in Rule 10.5, and the four calls standing. Nothing needed rebuilding (D2-1110). If an answer is ever changed, the owners and generators are: the error mark in `apply_systems_ch11.py` and `stage_a_systems_ch05.py`; the tiles in `stage_b_ch10_build.py`. Republish the chapters page with V9's steps (section 3).
 
-Log his answers as DR-199 on, apply any change in the owner's generator, rebuild, rerun the checks, and republish the chapters page with V9's steps (below, section 3).
-
-### B. The reader check
+### B. The reader check (start here)
 - Dustin pastes the invitation from board B to five to eight people who have never seen the brand.
 - Saved answers: `ArtifactData` `list` on the collection `responses` at https://claude.ai/artifact/H3APDgNH1wGb5HHvf33f6X. Readers outside Dustin's organization use copy mode and send their text to him.
 - The answer key is `work/boards/phase-2/reader-check-2/20261110_Reader-Check-2-Answer-Key.json`; it was never published.
@@ -77,9 +73,9 @@ Before you do anything else, read these in order:
 
 Nonpartisan means one standard of evidence for everyone, with findings reported as the record shows them, even when they fall more on one side (DR-93). Never manufacture balance.
 
-Settled and not to be changed: the Civic Line icons, which are final and approved (DR-144), with the redraws and new drawings I approved on the drawings board (DR-156 to DR-182); the atlas visual system (System 1, DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and Phase 3 build order (DR-62, DR-63); the chart rules of DR-64; chapter 02's writing rules (DR-73 to DR-83); and every answer I have given from DR-95 to DR-198.
+Settled and not to be changed: the Civic Line icons, which are final and approved (DR-144), with the redraws and new drawings I approved on the drawings board (DR-156 to DR-182); the atlas visual system (System 1, DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and Phase 3 build order (DR-62, DR-63); the chart rules of DR-64; chapter 02's writing rules (DR-73 to DR-83); and every answer I have given from DR-95 to DR-201.
 
-My answers to board B: [paste them here]. Apply them as the twelfth handoff orders, then plan stage board C.
+Board B is answered (DR-199 to DR-201). Pick up the reader check and the carried items as the twelfth handoff orders, then plan stage board C.
 
 The bar for everything: a finished product that looks like it was made by the best branding and design firm in the world. Use specialized agents, red team reviews and the creative director's scoring, as the handoffs describe.
 
@@ -101,7 +97,7 @@ Created, all under `work/`:
 - **Board B:** `boards/phase-2/stage-b/board-b/` (the board, its content JSON, check results, `img/` and `20261110_Published-Pages.json`) and `build/scripts/phase-2/stage_b_board_b_build.py`.
 
 Modified:
-- `ledger/20261020_Decision-Log.md` (DR-190 to DR-198, D2-954 to D2-1109) and `ledger/20261020_Change-Ledger.md` (C-057 to C-063).
+- `ledger/20261020_Decision-Log.md` (DR-190 to DR-201, D2-954 to D2-1111) and `ledger/20261020_Change-Ledger.md` (C-057 to C-064).
 - The owners' generators and their outputs: chapters 01, 03, 04, 05, 06, 08 and 09 to 12, their specimens and the three manifests.
 - The shell (`guide-shell.css`, `guide-shell.js`), `guide_build.py`, `guide_check.js`, the token source and its build (6.0.0-gate2.6).
 - The reader check page, its template, build and test scripts and the questions file.
