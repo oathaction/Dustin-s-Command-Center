@@ -331,7 +331,12 @@ def link_rules(t):
     return re.sub(r'\b(Rules?) ((?:\d{2}\.\d{1,2})(?:(?:, | and | to |, and )\d{2}\.\d{1,2})*)', one, t)
 
 
+ZIPS = set()
+
+
 def ids_nowrap(t):
+    for z in ZIPS:
+        t = t.replace(z, f'<span class="nw">{z}</span>')
     return re.sub(r'\b((?:CL|R|DR|D2)-\d+)\b', r'<span class="nw">\1</span>', t)
 
 
@@ -896,6 +901,7 @@ def calls_section(labels, log):
     m = re.search(r'`(\d{8}_[\w-]+\.zip)`', row)
     need(m, 'D2-964 in the decision log names no zip file')
     FILL['zip'] = m.group(1)
+    ZIPS.add(m.group(1))
     cards.append(('tokens', T['h'], T['codes'],
                   f'<p>{md(fill(T["text"]))}</p><p>{link_out(T["link"], anchor_href("colophon"))}</p>'))
     lis = ''.join(f'<li class="call" id="call-{k}"><article aria-labelledby="call-{k}-h"><div class="call-top">'
@@ -995,7 +1001,8 @@ h1{font:var(--oa-type-title);letter-spacing:var(--oa-type-title-letter-spacing);
 .sec-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:var(--oa-space-100) var(--oa-space-300)}
 .sec-h{font:var(--oa-type-section);letter-spacing:var(--oa-type-section-letter-spacing);margin:var(--oa-space-150) 0 var(--oa-space-300);text-wrap:balance;max-width:16ch}
 .sec-h2{font:var(--oa-type-h3);letter-spacing:var(--oa-type-h3-letter-spacing);margin:0 0 var(--oa-space-200);text-wrap:balance}
-.sec > .intro{margin-bottom:var(--oa-space-400)}
+.sec > .intro{margin-bottom:var(--oa-space-200)}
+.sec > .intro + .card,.sec > .intro + .calls,.sec > .intro + .log,.sec > .intro + .panel{margin-top:var(--oa-space-400)}
 .card{background:var(--white);border:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-white);padding:var(--oa-space-300) var(--oa-space-200);min-width:0}
 @media (min-width:48em){.card{padding:var(--oa-space-400) var(--oa-space-500)}}
 .card .caption,.card .label{color:var(--wink-2)}
