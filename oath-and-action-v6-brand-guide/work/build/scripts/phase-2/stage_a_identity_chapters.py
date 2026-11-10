@@ -191,7 +191,7 @@ CH03 = {
           "The masthead is the one place every reader sees the mark, so it carries the fullest lockup the width allows. The lockmark needs about 34 px to show its nine nodes and its lever, and on a phone that room goes to the menu button.",
           DJ,
           "Three mastheads at true size: the site at 1440 px, the site on a 390 px phone and a 600 px email header, each from the master drawn for its height.",
-          "L3 squeezed to 150 px across a phone bar. Its capitals fall to 12 px, under the 14 px floor, and the lockmark to 26 px, under the 34 px L3 gives it at its 196 px minimum.",
+          "L3 squeezed to 150 px across a phone bar, under its 196 px minimum. Its capitals fall to 12 px, under the 14 px floor, and the lockmark to 26 px.",
           specs=[S("Site, from 48em", "L3 from its masthead master: the 24 px wordmark master, 13 px of space and the lockmark at 48 px from its 48 px master, 282 by 48 px on whole pixels; bar 80 px tall"),
                  S("Site, under 48em", "L1 from the 24 px master, 221 px wide; bar 56 px; menu button 44 px", "oa.size.target.touch"),
                  S("Email header", "L3 at 282 px in a 600 px header, sent as a PNG at twice size"),

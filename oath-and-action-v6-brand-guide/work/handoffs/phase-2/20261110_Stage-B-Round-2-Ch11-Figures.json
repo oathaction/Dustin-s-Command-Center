@@ -1,0 +1,135 @@
+{
+ "about": "Every figure chapter 11 prints, with how it was measured. Contrast is WCAG 2.x relative luminance on the token values in tokens.json.",
+ "built": "2026-11-07",
+ "token_set_version": "6.0.0-gate2.4",
+ "figures": {
+  "contrast oa.color.graphic.essential.onCharcoal on oa.color.surface.charcoal": {
+   "value": "13.29",
+   "fg": "#DCD9D2",
+   "bg": "#121212",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.graphic.essential.onNewsprint on oa.color.surface.newsprint": {
+   "value": "13.29",
+   "fg": "#121212",
+   "bg": "#DCD9D2",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.graphic.subtle.onCharcoal on oa.color.surface.charcoal": {
+   "value": "7.26",
+   "fg": "#A3A19C",
+   "bg": "#121212",
+   "exact": 7.2573,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.graphic.subtle.onNewsprint on oa.color.surface.newsprint": {
+   "value": "4.29",
+   "fg": "#5D636D",
+   "bg": "#DCD9D2",
+   "exact": 4.2924,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.palette.pillarRed on oa.color.surface.charcoal": {
+   "value": "4.49",
+   "fg": "#E63946",
+   "bg": "#121212",
+   "exact": 4.4946,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.palette.pillarRed on oa.color.surface.newsprint": {
+   "value": "2.96",
+   "fg": "#E63946",
+   "bg": "#DCD9D2",
+   "exact": 2.9571,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.text.secondary.onCharcoal on oa.color.surface.charcoal": {
+   "value": "7.26",
+   "fg": "#A3A19C",
+   "bg": "#121212",
+   "exact": 7.2573,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.text.secondary.onNewsprint on oa.color.surface.newsprint": {
+   "value": "5.49",
+   "fg": "#4E535B",
+   "bg": "#DCD9D2",
+   "exact": 5.4931,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.component.button.ask.keyline.onNewsprint on oa.color.surface.newsprint": {
+   "value": "13.29",
+   "fg": "#121212",
+   "bg": "#DCD9D2",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.component.button.ask.label.onNewsprint on oa.component.button.ask.fill.onNewsprint": {
+   "value": "4.17",
+   "fg": "#FFFFFF",
+   "bg": "#E63946",
+   "exact": 4.1681,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast of Verdigris and Stone": {
+   "value": "1.28",
+   "fg": "#4A7C74",
+   "bg": "#5D636D",
+   "exact": 1.2753,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast of Verdigris and Stone in grayscale": {
+   "value": "1.25",
+   "fg": "#717171",
+   "bg": "#626262",
+   "exact": 1.2498,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "grayscale of Verdigris, Stone and Prussian": {
+   "value": "#717171, #626262, #2D2D2D",
+   "method": "CSS grayscale(1): 0.2126 R + 0.7152 G + 0.0722 B on the encoded token values"
+  },
+  "target sizes": {
+   "value": "44 and 24 px",
+   "method": "oa.size.target.touch and oa.size.target.minimum in tokens.json"
+  }
+ },
+ "tokens_cited": [
+  "oa.color.border.hairline.onCharcoal",
+  "oa.color.border.hairline.onNewsprint",
+  "oa.color.border.strong.onCharcoal",
+  "oa.color.border.strong.onNewsprint",
+  "oa.color.graphic.essential.onCharcoal",
+  "oa.color.graphic.essential.onNewsprint",
+  "oa.color.graphic.subtle.onCharcoal",
+  "oa.color.graphic.subtle.onNewsprint",
+  "oa.color.palette.pillarRed",
+  "oa.color.palette.prussian",
+  "oa.color.palette.stone",
+  "oa.color.palette.verdigris",
+  "oa.color.palette.white",
+  "oa.color.surface.charcoal",
+  "oa.color.surface.newsprint",
+  "oa.color.text.primary.onCharcoal",
+  "oa.color.text.primary.onNewsprint",
+  "oa.color.text.secondary.onCharcoal",
+  "oa.color.text.secondary.onNewsprint",
+  "oa.component.button.ask.fill.onCharcoal",
+  "oa.component.button.ask.fill.onNewsprint",
+  "oa.component.button.ask.keyline.onNewsprint",
+  "oa.component.button.ask.label.onCharcoal",
+  "oa.component.button.ask.label.onNewsprint",
+  "oa.size.target.touch",
+  "oa.type.ask",
+  "oa.type.body",
+  "oa.type.bodySmall",
+  "oa.type.caption",
+  "oa.type.dataLabel",
+  "oa.type.h3",
+  "oa.type.h4",
+  "oa.type.label",
+  "oa.type.ui"
+ ]
+}

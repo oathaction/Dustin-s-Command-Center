@@ -1,4 +1,6 @@
-"""Chapter 11, Status and utility icons: its first rule group, Trackers (apply pass, systems designer, November 7, 2026).
+"""Chapter 11, Status and utility icons (systems designer). Trackers from the apply pass, November 7, 2026; stage B
+round 2, November 10, 2026, adds records requests and agency rules, the utility icons, the error, success and warning
+marks and five live specimens (apply_systems_ch11_ui.py).
 
 Usage:
     python3 -I work/build/scripts/phase-2/apply_systems_ch11.py
@@ -7,7 +9,15 @@ Writes:
     work/build/guide/chapters/11-icons.json                 the chapter in the content contract (Stage A brief)
     work/build/guide/specimens/s-11-*.html                  one fragment per specimen
     work/build/guide/specimens/manifest-systems.json        the s-11-* entries, merged; the 05 to 07 entries are kept
-    work/handoffs/phase-2/20261107_Apply-Pass-Systems-Ch11-Figures.json   every figure the chapter prints, and how
+    work/handoffs/phase-2/20261110_Stage-B-Round-2-Ch11-Figures.json   every figure the chapter prints, and how. The
+                                                            apply pass's 20261107 figures file stays as its record.
+
+Round 2 (20261110_Stage-B-Round-2-Brief.md, "Chapter 11"): invented state bills renumbered from H.99001 and S.99002 up
+(DR-151); Nebraska's step 5 under the slash with "Nebraska has one chamber" (DR-150); Rule 11.7's 44 px for trackers
+and every control that carries a utility icon (DR-153); records requests and agency rules on the tracker's marks
+(DR-140, D2-526 to D2-529); every mark tagged data-icon and data-icon-family="status" (D2-517), on a group whose box is
+the circle's own size, so guide check B-3 reads 24 to 30 px; and the mark widths in MARK_CSS read the mark tokens
+(engineer's request, 20261109_Stage-B-Engineer-Notes.md).
 
 Decisions it carries: DR-108 and DR-128 (six steps, step 6 named for whoever signs), DR-109 (numbered steps in lists and
 on story cards, the same marks as a vertical timeline on a bill's own page), DR-110 (the lockmark codes nothing),
@@ -48,7 +58,7 @@ ROOT = C.ROOT
 OUT_CH = ROOT / 'work/build/guide/chapters/11-icons.json'
 OUT_SP = ROOT / 'work/build/guide/specimens'
 MANIFEST = OUT_SP / 'manifest-systems.json'
-FIG_OUT = ROOT / 'work/handoffs/phase-2/20261107_Apply-Pass-Systems-Ch11-Figures.json'
+FIG_OUT = ROOT / 'work/handoffs/phase-2/20261110_Stage-B-Round-2-Ch11-Figures.json'
 CH = '11'
 ILLUS = B.ILLUS
 RED_W = 'data-red="working" data-red-job="take part now"'
@@ -63,16 +73,46 @@ STEPS = [
     ('Committee vote', 'The committee votes on whether to send the bill to the full House or Senate.'),
     ('First chamber', 'The full House or Senate, wherever the bill was filed, votes on it.'),
     ('Second chamber', 'The other chamber takes the bill up. Its own committee can hold a hearing first, and then '
-                       'the full chamber votes and both chambers agree on one text.'),
+                       'the full chamber votes and both chambers agree on one text. Nebraska has one chamber, so a '
+                       'Nebraska bill keeps this step under a slash.'),
     ('Governor', 'The governor signs or vetoes the bill, and lawmakers can vote to override a veto.'),
 ]
-SIGNER = {'state': 'Governor', 'federal': 'President'}
+SIGNER = {'state': 'Governor', 'federal': 'President', 'nebraska': 'Governor'}
+NEBRASKA = 'Nebraska has one chamber.'          # DR-150: on every Nebraska card, beside step 5's slash
+
+# DR-140: a federal records request and a federal agency rule, each in six steps on the tracker's marks, from the research
+# lead's section 7 (5 U.S.C. 552 and FOIA.gov; 5 U.S.C. 553, 801 and RegInfo.gov). D2-526: a request's step 6, Appeal, takes
+# the slash when no appeal is filed; D2-527: a rule's step 1, Early notice, takes the slash when the agency skipped it.
+REQUEST_STEPS = [
+    ('Requested', 'The request reaches the agency’s records office in writing and describes the records. The agency’s 20 '
+                  'working days to decide start.'),
+    ('Acknowledged', 'The agency confirms it has the request and gives it a tracking number.'),
+    ('Searching', 'The agency looks for the records.'),
+    ('Reviewing', 'The agency decides what it can release, and blacks out what an exemption in the law protects.'),
+    ('Answered', 'The agency sends its decision and the records it releases.'),
+    ('Appeal', 'Only when the requester appeals. A higher office in the agency reviews the answer and decides. A request '
+               'that is never appealed keeps this step under a slash once the time to appeal has passed.'),
+]
+RULE_STEPS = [
+    ('Early notice', 'Optional. The agency asks whether or how to write a rule before it proposes one. A rule with no '
+                     'early notice keeps this step under a slash.'),
+    ('Proposed', 'The agency publishes the proposed rule in the Federal Register.'),
+    ('Comments open', 'Anyone may send the agency written comments until the date the notice sets.'),
+    ('Comments closed', 'The comment period has ended, and the agency weighs what it received.'),
+    ('Final rule', 'The agency publishes the final rule with its answer to the comments and the date it takes effect, and '
+                   'sends it to Congress.'),
+    ('In effect', 'The rule takes effect, usually 30 days or more after the final rule is published, and 60 days or '
+                  'more for a major rule.'),
+]
+ROUTE_NAMES = {'request': [n for n, _ in REQUEST_STEPS], 'rule': [n for n, _ in RULE_STEPS]}
 STEP6_BOTH = ('The governor signs a state bill and the President signs a federal one. Either can veto it, and lawmakers '
               'can vote to override a veto.')
 CLERK = ['Introduced', 'Referred', 'Reported', 'Engrossed', 'Enrolled', 'Presented']
 
 
 def names(kind='state'):
+    if kind in ROUTE_NAMES:
+        return ROUTE_NAMES[kind]
     return [n for n, _ in STEPS[:5]] + [SIGNER[kind]]
 
 
@@ -92,29 +132,70 @@ STATE_ORDER = ['done', 'now', 'take', 'notyet', 'skipped', 'stopped']
 
 # Invented state bills on the neutral topics the guide uses (Illustrative, one label at the head of each piece)
 LIST_BILLS = [
-    dict(id='H.4212', title='Public meeting notice', states=['done', 'take', 'notyet', 'notyet', 'notyet', 'notyet'],
+    dict(id='H.99001', title='Public meeting notice', states=['done', 'take', 'notyet', 'notyet', 'notyet', 'notyet'],
          line='Testimony is open until March 3.', take='Send written testimony or sign up to speak by March 3.',
          cta='How to send testimony'),
-    dict(id='S.0876', title='School bus contracts', states=['done', 'done', 'done', 'now', 'notyet', 'notyet'],
+    dict(id='S.99002', title='School bus contracts', states=['done', 'done', 'done', 'now', 'notyet', 'notyet'],
          line='The committee sent it on, and the Senate votes next.'),
-    dict(id='H.1180', title='Library hours', states=['done', 'done', 'done', 'done', 'done', 'now'],
+    dict(id='H.99003', title='Library hours', states=['done', 'done', 'done', 'done', 'done', 'now'],
          line='Both chambers passed it, and it waits for the governor to sign or veto it.'),
-    dict(id='H.3301', title='Records request fees', states=['done', 'skipped', 'done', 'now', 'notyet', 'notyet'],
+    dict(id='H.99004', title='Records request fees', states=['done', 'skipped', 'done', 'now', 'notyet', 'notyet'],
          line='Step 2 never happened, because the committee voted without holding a hearing. The House votes next.'),
-    dict(id='S.2045', title='Parking meter fees', states=['done', 'done', 'done', 'done', 'done', 'stopped'],
+    dict(id='S.99005', title='Parking meter fees', states=['done', 'done', 'done', 'done', 'done', 'stopped'],
          line='The governor vetoed it on February 9, and the Senate’s vote to override fell short on February 23.'),
 ]
-LAW_BILL = dict(id='H.1180', title='Library hours', states=['done'] * 6, law='April 2', line='It takes effect July 1.')
-OVERRIDE_BILL = dict(id='S.1517', title='Snow route parking', states=['done'] * 6, law='March 18',
+LAW_BILL = dict(id='H.99003', title='Library hours', states=['done'] * 6, law='April 2', line='It takes effect July 1.')
+OVERRIDE_BILL = dict(id='S.99006', title='Snow route parking', states=['done'] * 6, law='March 18',
                      how='over the governor’s veto', line='It takes effect June 1.')
 STOP_BILL = LIST_BILLS[4]
-CARD_BILL = dict(id='S.0412', title='Town audit deadlines', states=['done', 'done', 'done', 'done', 'take', 'notyet'],
+CARD_BILL = dict(id='S.99007', title='Town audit deadlines', states=['done', 'done', 'done', 'done', 'take', 'notyet'],
                  line='The Senate passed it on February 24, and a House committee holds its hearing on March 10.',
                  take='Send written testimony or sign up to speak by March 10.', cta='How to send testimony')
 FED_BILL = dict(id='H.R. 99012', title='Passport wait times', kind='federal',
                 states=['done', 'done', 'done', 'done', 'done', 'now'],
                 line='Both chambers passed it, and it waits for the President to sign or veto it.')
-PAGE_BILL = dict(id='H.4212', title='Public meeting notice', states=LIST_BILLS[0]['states'],
+# DR-150: Nebraska keeps all six steps; step 5 takes the slash, and the card says why beside it. LB is Nebraska's prefix
+# for a Legislative Bill; the number follows DR-151's range.
+NE_BILL = dict(id='LB 99008', title='Rural clinic grants', kind='nebraska',
+               states=['done', 'done', 'done', 'done', 'skipped', 'now'],
+               line=NEBRASKA + ' The Legislature passed the bill on Final Reading on April 14, and it waits for the '
+                               'governor to sign or veto it.')
+
+# Invented records requests and agency rules (Illustrative), numbered from 99001 up with no agency named, so a cropped
+# plate cannot put our words on a real request or a real rule.
+REQUESTS = [
+    dict(id='99001', noun='Request', kind='request', title='Bridge inspection reports',
+         states=['done', 'done', 'done', 'now', 'notyet', 'notyet'],
+         line='The agency is deciding what it can release.'),
+    dict(id='99003', noun='Request', kind='request', title='School lunch inspection records',
+         states=['done', 'done', 'done', 'done', 'done', 'skipped'], end='Partly granted on March 3.',
+         line='The agency released 212 of 340 pages and withheld the rest under two exemptions. No appeal was filed by '
+              'the June 1 deadline.'),
+    dict(id='99005', noun='Request', kind='request', title='Park ranger staffing records',
+         states=['done', 'done', 'stopped', 'notyet', 'notyet', 'notyet'], end='Withdrawn by the requester on April 9.',
+         line='The requester stopped the request while the agency searched.'),
+]
+RULES = [
+    dict(id='99002', noun='Rule', kind='rule', title='Rail crossing signals',
+         states=['skipped', 'done', 'take', 'notyet', 'notyet', 'notyet'],
+         line='The agency proposed the rule on April 11 with no early notice, and comments are open until May 12.',
+         take='Send the agency a written comment by May 12.', cta='How to send a comment'),
+    dict(id='99004', noun='Rule', kind='rule', title='Grain dust limits',
+         states=['skipped', 'skipped', 'skipped', 'skipped', 'done', 'done'], end='In effect since August 1.',
+         line='Issued without advance comment. The agency takes comments until September 30 and may change the rule '
+              'after it reads them.'),
+    dict(id='99006', noun='Rule', kind='rule', title='Ferry life vest checks',
+         states=['done', 'done', 'done', 'stopped', 'notyet', 'notyet'], end='Withdrawn by the agency on February 20.',
+         line='The agency published a notice withdrawing its proposed rule after comments closed.'),
+]
+WAIT_REQUEST = dict(id='99007', noun='Request', kind='request', title='Snowplow contract records',
+                    states=['done', 'done', 'now', 'notyet', 'notyet', 'notyet'],
+                    line='The agency is looking for the records.',
+                    wait='Waiting on you: on April 2 the agency asked which winters you need. Its 20 working days stop '
+                         'until you answer.',
+                    checked='Checked April 20. The agency may have acted since.')
+
+PAGE_BILL = dict(id='H.99001', title='Public meeting notice', states=LIST_BILLS[0]['states'],
                  dek='The bill would require towns to post notice of a public meeting online two days ahead.')
 PAGE_NOTES = [
     'Filed January 16 and sent to the Committee on Local Government.',
@@ -138,19 +219,37 @@ def nb(text):
 
 
 def status_words(b, nm=None):
+    """The bold status line: the end in words where the record has ended (a law, a request's answer, a rule's end),
+    otherwise the step it is at, counted against its own number of steps."""
     nm = nm or names(b.get('kind', 'state'))
+    n = len(b['states'])
     if b.get('law'):
         return f'Became law on {b["law"]}' + (f', {b["how"]}.' if b.get('how') else '.')
+    if b.get('end'):
+        return b['end']
     st = b['states']
     if 'stopped' in st:
         i = st.index('stopped')
-        return f'Stopped at step {i + 1} of 6: {nm[i]}.'
+        return f'Stopped at step {i + 1} of {n}: {nm[i]}.'
     i = next(k for k, s in enumerate(st) if s in ('now', 'take'))
-    return f'Step {i + 1} of 6: {nm[i]}.'
+    return f'Step {i + 1} of {n}: {nm[i]}.'
 
 
 # ------------------------------------------------------------------------------------------------ marks
-# Colors come from the surface through custom properties set once per specimen (see mark_vars()).
+# Colors come from the surface through custom properties set once per specimen (see mark_vars()). Every width a mark
+# token sets is read here from tokens.css by the mark's own class (engineer's request, D2-402, D2-578): the attribute
+# values in the markup stay as the fallback and as the check's hook (guide_check.js, markTokens). A failure plate that
+# draws a fault at another width carries none of these classes, so it keeps its own width.
+MARK_TOKENS = {
+    'rn': ('stroke-width', 'var(--oa-component-mark-ring-now)'),
+    'ra': ('stroke-width', 'var(--oa-component-mark-ring-ahead)'),
+    'sl': ('stroke-width', 'var(--oa-component-mark-slash)'),
+    'lr': ('height', 'var(--oa-component-mark-line-reached)'),
+    'la': ('height', 'var(--oa-component-mark-line-ahead)'),
+    'td': ('r', 'calc(var(--oa-component-mark-take-part-disc) / 2)'),
+    'tk': ('stroke-width', 'var(--oa-component-mark-take-part-keyline)'),
+    'tc': ('r', 'calc(var(--oa-component-mark-take-part-disc) / 2 + var(--oa-component-mark-take-part-cut))'),
+}
 MARK_CSS = ('.mk{display:block;overflow:visible;flex:none}'
             '.mk .fi{fill:var(--ink)}.mk .fs{fill:var(--sub)}.mk .fb{fill:var(--bg)}.mk .ft{fill:var(--txt2)}'
             '.mk .fr{fill:var(--red)}.mk .si{stroke:var(--ink)}.mk .ss{stroke:var(--sub)}.mk .sk{stroke:var(--key)}'
@@ -158,7 +257,13 @@ MARK_CSS = ('.mk{display:block;overflow:visible;flex:none}'
             '.mk text{font-family:var(--oa-font-family-reading);font-weight:700;font-variant-numeric:tabular-nums;'
             'text-anchor:middle}'
             '.mk text.tl{font-weight:600}'
-            '.mk text.halo{paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}')
+            '.mk text.halo{paint-order:stroke;stroke:var(--bg);stroke-width:var(--oa-component-mark-halo);'
+            'stroke-linejoin:round}'
+            + ''.join(f'.mk .{k}{{{prop}:{val}}}' for k, (prop, val) in MARK_TOKENS.items())
+            + '.mk .tk{r:calc(var(--oa-component-mark-take-part-disc) / 2 - var(--oa-component-mark-take-part-keyline) / 2)}')
+# D2-517: every mark carries data-icon and data-icon-family="status"; the id names the state
+STATE_ICON = {'done': 'S-done', 'now': 'S-now', 'take': 'S-take-part', 'notyet': 'S-not-yet', 'skipped': 'S-never-happened',
+              'stopped': 'S-stopped'}
 
 
 def mark_vars(ctx, surf):
@@ -172,46 +277,54 @@ def mark_vars(ctx, surf):
             f'--red:{v("oa.color.palette.pillarRed")};--key:{v("oa.component.button.ask.keyline.onNewsprint")}')
 
 
-def svg(w, h, body, scale=1, cls='mk'):
+def svg(w, h, body, scale=1, cls='mk', extra=''):
     return (f'<svg class="{cls}" width="{w * scale:g}" height="{h * scale:g}" viewBox="0 0 {w:g} {h:g}" '
-            f'aria-hidden="true" focusable="false">{body}</svg>')
+            f'aria-hidden="true" focusable="false"{extra}>{body}</svg>')
 
 
 def badge(cx, cy, r=5.5, red=True):
     """The take-part mark: an 11 px red disc with a 1 px Charcoal keyline inside its edge (Rule 05.5), cut from the
-    ring by 1.5 px of the surface. red=False draws the same disc in the surface ink, for a failure plate."""
-    gap = f'<circle cx="{cx:g}" cy="{cy:g}" r="{r + 1.5:g}" class="fb"/>'
+    ring by 1.5 px of the surface. red=False draws the same disc in the surface ink: a failure plate, or the yielding
+    take-part mark of Rule 11.16, which keeps its shape and its words when an error holds the view's red."""
+    tok = abs(r - 5.5) < 1e-9
+    gap = f'<circle cx="{cx:g}" cy="{cy:g}" r="{r + 1.5:g}" class="fb{" tc" if tok else ""}"/>'
     if not red:
-        return gap + f'<circle cx="{cx:g}" cy="{cy:g}" r="{r:g}" class="fi"/>'
-    return (gap + f'<g {RED_W}><circle cx="{cx:g}" cy="{cy:g}" r="{r:g}" class="fr"/>'
-            f'<circle cx="{cx:g}" cy="{cy:g}" r="{r - 0.5:g}" class="sk nf" stroke-width="1"/></g>')
+        return gap + f'<circle cx="{cx:g}" cy="{cy:g}" r="{r:g}" class="fi{" td" if tok else ""}"/>'
+    return (gap + f'<g {RED_W}><circle cx="{cx:g}" cy="{cy:g}" r="{r:g}" class="fr{" td" if tok else ""}"/>'
+            f'<circle cx="{cx:g}" cy="{cy:g}" r="{r - 0.5:g}" class="sk nf{" tk" if tok else ""}" stroke-width="1"/></g>')
 
 
-def node(cx, cy, d, st, num=None, fs=None):
+def node(cx, cy, d, st, num=None, fs=None, red=True, tag=True):
     """One numbered step (Board 6, Option B): filled when done, a heavy ring now, a fine ring ahead, the fine ring
-    under a slash when the step never happened, a filled square where the bill stopped."""
+    under a slash when the step never happened, a filled square where the record stopped.
+
+    The mark sits in a group tagged data-icon and data-icon-family="status" (D2-517), with a clear square of the circle's
+    own size first, so the group's box is the circle's: guide check B-3 reads 24, 26, 28 or 30 px. The take-part disc
+    sits outside that box, after the group. red=False draws the disc in ink (Rule 11.16); tag=False leaves a fault's
+    drawing in a failure plate untagged."""
     R = d / 2
     fs = fs or (14 if d >= 28 else 13)
     ty = cy + 0.36 * fs
     t = ''
+    after = ''
     if st == 'done':
         s = f'<circle cx="{cx:g}" cy="{cy:g}" r="{R:g}" class="fi"/>'
         if num:
             t = f'<text x="{cx:g}" y="{ty:.2f}" class="fb" font-size="{fs}">{num}</text>'
     elif st in ('now', 'take'):
-        s = f'<circle cx="{cx:g}" cy="{cy:g}" r="{R - 1.5:g}" class="fb si" stroke-width="3"/>'
+        s = f'<circle cx="{cx:g}" cy="{cy:g}" r="{R - 1.5:g}" class="fb si rn" stroke-width="3"/>'
         if num:
             t = f'<text x="{cx:g}" y="{ty:.2f}" class="fi" font-size="{fs}">{num}</text>'
         if st == 'take':
-            t += badge(cx + R * 0.72, cy - R * 0.72, 5.5 if d >= 24 else 4.5)
+            after = badge(cx + R * 0.72, cy - R * 0.72, 5.5 if d >= 24 else 4.5, red=red)
     elif st == 'notyet':
-        s = f'<circle cx="{cx:g}" cy="{cy:g}" r="{R - 0.75:g}" class="fb ss" stroke-width="1.5"/>'
+        s = f'<circle cx="{cx:g}" cy="{cy:g}" r="{R - 0.75:g}" class="fb ss ra" stroke-width="1.5"/>'
         if num:
             t = f'<text x="{cx:g}" y="{ty:.2f}" class="ft tl" font-size="{fs}">{num}</text>'
     elif st == 'skipped':
         k = (R + 2) * 0.7071
-        s = (f'<circle cx="{cx:g}" cy="{cy:g}" r="{R - 0.75:g}" class="fb ss" stroke-width="1.5"/>'
-             f'<line x1="{cx - k:.2f}" y1="{cy + k:.2f}" x2="{cx + k:.2f}" y2="{cy - k:.2f}" class="si" stroke-width="2"/>')
+        s = (f'<circle cx="{cx:g}" cy="{cy:g}" r="{R - 0.75:g}" class="fb ss ra" stroke-width="1.5"/>'
+             f'<line x1="{cx - k:.2f}" y1="{cy + k:.2f}" x2="{cx + k:.2f}" y2="{cy - k:.2f}" class="si sl" stroke-width="2"/>')
         if num:
             t = f'<text x="{cx:g}" y="{ty:.2f}" class="ft tl halo" font-size="{fs}">{num}</text>'
     elif st == 'stopped':
@@ -220,11 +333,14 @@ def node(cx, cy, d, st, num=None, fs=None):
             t = f'<text x="{cx:g}" y="{ty:.2f}" class="fb" font-size="{fs}">{num}</text>'
     else:
         raise ValueError(st)
-    return f'<g>{s}{t}</g>'
+    if not tag:
+        return f'<g>{s}{t}</g>{after}'
+    box = f'<rect x="{cx - R:g}" y="{cy - R:g}" width="{d:g}" height="{d:g}" fill="none"/>'
+    return (f'<g data-icon="{STATE_ICON[st]}" data-icon-family="status">{box}{s}{t}</g>{after}')
 
 
 def line_segments(states, xs, cy, red=False):
-    """2 px in the surface ink as far as the bill has come, 1 px Stone ahead, nothing after a stop."""
+    """2 px in the surface ink as far as the record has come, 1 px Stone ahead, nothing after a stop."""
     out = []
     stop = states.index('stopped') if 'stopped' in states else None
     for i in range(len(xs) - 1):
@@ -232,33 +348,35 @@ def line_segments(states, xs, cy, red=False):
             break
         if states[i + 1] != 'notyet':
             cls = 'fr' if red else 'fi'
-            out.append(f'<rect x="{xs[i]:g}" y="{cy - 1:g}" width="{xs[i + 1] - xs[i]:g}" height="2" class="{cls}"/>')
+            out.append(f'<rect x="{xs[i]:g}" y="{cy - 1:g}" width="{xs[i + 1] - xs[i]:g}" height="2" class="{cls} lr"/>')
         else:
-            out.append(f'<rect x="{xs[i]:g}" y="{cy - 1:g}" width="{xs[i + 1] - xs[i]:g}" height="1" class="fs"/>')
+            out.append(f'<rect x="{xs[i]:g}" y="{cy - 1:g}" width="{xs[i + 1] - xs[i]:g}" height="1" class="fs la"/>')
     return out
 
 
-def steps_svg(states, W, d, red_progress=False, fs=None, hang=False):
-    """Numbered steps across a row W px wide. Centered: one sixth of the row to each step, so names fit under the
+def steps_svg(states, W, d, red_progress=False, fs=None, hang=False, red=True, tag=True):
+    """Numbered steps across a row W px wide. Centered: an equal share of the row to each step, so names fit under the
     circles. hang=True: the first circle starts on the text edge and the last ends on the far edge, for rows whose names
-    sit in a key. red_progress draws the line and the done steps in Pillar Red, for the failure plate of Rule 11.4 only."""
+    sit in a key. red_progress draws the line and the done steps in Pillar Red, for the failure plate of Rule 11.4 only.
+    Six steps for every route; a failure plate may pass seven."""
+    n = len(states)
     if hang:
-        c = (W - d) // 5
-        xs = [d / 2 + c * i for i in range(6)]
+        c = (W - d) // (n - 1)
+        xs = [d / 2 + c * i for i in range(n)]
     else:
-        c = W // 6
-        xs = [c * i + c // 2 for i in range(6)]
+        c = W // n
+        xs = [c * i + c // 2 for i in range(n)]
     R = d / 2
     cy = 6 + R
     H = int(cy + R + 2)
     segs = line_segments(states, xs, cy, red=red_progress)
-    body = [f'<g data-red="working" data-red-job="progress">{x}</g>' if 'class="fr"' in x else x for x in segs]
+    body = [f'<g data-red="working" data-red-job="progress">{x}</g>' if 'class="fr' in x else x for x in segs]
     for i, (x, s) in enumerate(zip(xs, states)):
         if red_progress and s == 'done':
             body.append(f'<g data-red="working" data-red-job="progress"><circle cx="{x:g}" cy="{cy:g}" r="{R:g}" class="fr"/>'
                         f'<text x="{x:g}" y="{cy + 0.36 * 13:.2f}" class="fi" font-size="13">{i + 1}</text></g>')
         else:
-            body.append(node(x, cy, d, s, i + 1, fs))
+            body.append(node(x, cy, d, s, i + 1, fs, red=red, tag=tag))
     return svg(W, H, ''.join(body))
 
 
@@ -281,10 +399,21 @@ def dots_svg(states, W):
     return svg(W, 22, ''.join(body))
 
 
-def sample(st, d=26, scale=1, num=4):
-    """One step centered in a square 14 px wider than the circle, which leaves room for the badge."""
+def sample(st, d=26, scale=1, num=4, tag=True):
+    """One step centered in a square 14 px wider than the circle, which leaves room for the badge. tag=False for an
+    enlarged copy, which shows the mark for inspection and is no use of it (guide check B-3 reads the true-size one)."""
     W = d + 14
-    return svg(W, W, node(W / 2, W / 2, d, st, num), scale, cls='mk mk-s')
+    return svg(W, W, node(W / 2, W / 2, d, st, num, tag=tag), scale, cls='mk mk-s')
+
+
+def uicon(name, px=24, transform=None, cls=None):
+    """A utility icon from the sprite (D2-589; promotion, the engineer's pattern in guide_build.py): oa-sym-u-<name>-<px>px,
+    hidden beside its word (A-1) and tagged for the checks (D2-517). transform turns or mirrors it, as the utility
+    manifest gives for each state; it draws in the word's ink through currentColor and never in red (DR-161)."""
+    t = f' transform="{transform}"' if transform else ''
+    c = f' class="{cls}"' if cls else ''
+    return (f'<svg{c} viewBox="0 0 {px} {px}" width="{px}" height="{px}" aria-hidden="true" focusable="false" '
+            f'data-icon="U-{name}" data-icon-family="utility"><use href="#oa-sym-u-{name}-{px}px"{t}/></svg>')
 
 
 def labels(nm, states, W):
@@ -294,7 +423,8 @@ def labels(nm, states, W):
         cls = ' class="cur"' if s in ('now', 'take', 'stopped') else ''
         extra = '<span class="lx">never happened</span>' if s == 'skipped' else ''
         lis.append(f'<li{cls}>{nm[i]}{extra}</li>')
-    return (f'<ol class="lbls" style="width:{W}px;grid-template-columns:repeat(6,{W // 6}px)">{"".join(lis)}</ol>')
+    n = len(states)
+    return (f'<ol class="lbls" style="width:{W}px;grid-template-columns:repeat({n},{W // n}px)">{"".join(lis)}</ol>')
 
 
 # ------------------------------------------------------------------------------------------------ pieces
@@ -327,35 +457,48 @@ def piece_css(ctx, surf, size, sizing='floor'):
             + ('.mkw{justify-content:flex-start}' if size == 'l' else ''))
 
 
-def key(nm, show=('done', 'now', 'notyet', 'skipped', 'stopped', 'take'), steps=True):
+def records_css(ctx):
+    """What a records request or agency rule adds to a piece: the wait in words and the dated check under the warning
+    mark (Rule 11.10), drawn in the text's ink."""
+    T = ctx.ty
+    return (f'.wt{{margin-top:6px;{T("bodySmall")};line-height:1.5;text-wrap:pretty}}'
+            f'.wn{{display:flex;gap:8px;align-items:flex-start;margin-top:10px;padding-top:10px;border-top:1px solid var(--hair);'
+            f'{T("bodySmall")};line-height:1.5;color:var(--txt)}}.wn svg{{flex:none;display:block;margin-top:-1px}}')
+
+
+def key(nm, show=('done', 'now', 'notyet', 'skipped', 'stopped', 'take'), steps=True, red=True):
     k = ''
     if steps:
-        k = ('<p class="kh">The six steps</p><ol class="ks">'
+        k = (f'<p class="kh">The {C.num(len(nm))} steps</p><ol class="ks">'
              + ''.join(f'<li><b>{i + 1}</b> {n}</li>' for i, n in enumerate(nm)) + '</ol>')
-    lis = ''.join(f'<li>{sample(s, 24, num=4)}<span>{STATE_WORD[s]}</span></li>' for s in show)
+    lis = ''.join(f'<li>{svg(38, 38, node(19, 19, 24, s, 4, red=red), cls="mk mk-s")}<span>{STATE_WORD[s]}</span></li>'
+                  for s in show)
     return f'<div class="key">{k}<p class="kh">What the marks mean</p><ul class="km">{lis}</ul></div>'
 
 
-def take_part(b, size='s'):
+def take_part(b, size='s', red=True):
     if 'take' not in b['states']:
         return ''
     n = b['states'].index('take') + 1
-    return (f'<p class="tp">{sample("take", 24, num=n)}<span><b>You can take part now.</b> {b["take"]}</span></p>'
+    mark = svg(38, 38, node(19, 19, 24, 'take', n, red=red), cls='mk mk-s')
+    return (f'<p class="tp">{mark}<span><b>You can take part now.</b> {b["take"]}</span></p>'
             f'<p class="ctaw"><span class="cta">{b["cta"]}{ARROW}</span></p>')
 
 
-def row(b, size, nm=None, red_progress=False, step_word=None, kind_label=None):
+def row(b, size, nm=None, red_progress=False, step_word=None, kind_label=None, red=True):
     nm = nm or names(b.get('kind', 'state'))
     W, d = (328, 26) if size == 's' else (552, 30)
     if size == 'card':
         W, d = 328, 24
     head = (f'<span class="kd">{kind_label}</span> ' if kind_label else '')
-    bill = f'<p class="bill">{head}<span><b>Bill {b["id"]}</b>, {b["title"]}</span></p>'
-    marks = f'<div class="mkw">{steps_svg(b["states"], W, d, red_progress, hang=(size != "l"))}</div>'
+    bill = f'<p class="bill">{head}<span><b>{b.get("noun", "Bill")} {b["id"]}</b>, {b["title"]}</span></p>'
+    marks = f'<div class="mkw">{steps_svg(b["states"], W, d, red_progress, hang=(size != "l"), red=red)}</div>'
     lab = labels(nm, b['states'], W) if size == 'l' else ''
     sw = step_word or status_words(b, nm)
     st = f'<p class="st"><b>{sw}</b> {b["line"]}</p>'
-    core = f'{marks}{lab}{st}{take_part(b, size)}'
+    wait = f'<p class="wt">{b["wait"]}</p>' if b.get('wait') else ''
+    chk = f'<p class="wn">{uicon("warning")}<span>{b["checked"]}</span></p>' if b.get('checked') else ''
+    core = f'{marks}{lab}{st}{wait}{take_part(b, size, red=red)}{chk}'
     return f'<li class="row">{bill}{core}</li>'
 
 
@@ -418,26 +561,32 @@ def s_steps(ctx):
 
 
 def s_11_1(ctx):
-    """CA-M1: the two forms of step 6 sit one above the other in a 360 px piece, so both names show at true size in
-    every chapter column and on a phone. Each bill keeps its own key."""
+    """CA-M1: the forms of step 6 sit one above the other in a 360 px piece, so every name shows at true size in every
+    chapter column and on a phone. Each bill keeps its own key. Round 2 adds a Nebraska bill (DR-150): six steps, step 5
+    under the slash, "Nebraska has one chamber" beside the marks."""
     T = ctx.ty
     css = piece_css(ctx, 'n', 's') + (f'.kd{{display:block;margin:0 0 4px;{T("label")};color:var(--txt2)}}'
                                       f'.sig{{padding:16px 0 20px;border-bottom:1px solid var(--hair)}}'
                                       f'.sig:first-of-type{{border-top:1px solid var(--hair)}}.sig:last-of-type{{border-bottom:0;padding-bottom:0}}.sig .key{{margin-top:14px}}'
                                       f'.sig .rows{{border:0}}.sig .row{{padding:0;border:0}}')
     blocks = ''
-    for b, label in ((dict(LIST_BILLS[2], kind='state'), 'A state bill'), (FED_BILL, 'A federal bill')):
+    for b, label, show in ((dict(LIST_BILLS[2], kind='state'), 'A state bill', ('done', 'now')),
+                           (FED_BILL, 'A federal bill', ('done', 'now')),
+                           (NE_BILL, 'A Nebraska bill', ('done', 'skipped', 'now'))):
         nm = names(b.get('kind', 'state'))
         blocks += (f'<div class="sig"><p class="kd">{label}</p><ul class="rows">{row(b, "s", nm)}</ul>'
-                   f'{key(nm, ("done", "now"))}</div>')
-    html = (f'<style>{css}</style><div class="pc"><p>{ILLUS}</p><p class="hd">Two bills that wait for a signature</p>'
+                   f'{key(nm, show)}</div>')
+    html = (f'<style>{css}</style><div class="pc"><p>{ILLUS}</p><p class="hd">Three bills that wait for a signature</p>'
             f'{blocks}</div>')
-    alt = ('Two Illustrative bills at 360 px on Newsprint, one above the other, each drawn as six numbered steps with its '
-           'own key. A state bill, H.1180, Library hours, has passed steps 1 to 5 and stands at step 6: “Step 6 of 6: '
+    alt = ('Three Illustrative bills at 360 px on Newsprint, one above the other, each drawn as six numbered steps with '
+           'its own key. A state bill, H.99003, Library hours, has passed steps 1 to 5 and stands at step 6: “Step 6 of 6: '
            'Governor. Both chambers passed it, and it waits for the governor to sign or veto it.” Its key reads 1 Filed, '
            '2 Hearing, 3 Committee vote, 4 First chamber, 5 Second chamber, 6 Governor. A federal bill, H.R. 99012, '
            'Passport wait times, stands at the same place: “Step 6 of 6: President. Both chambers passed it, and it waits '
-           'for the President to sign or veto it.” Its key ends 6 President.')
+           'for the President to sign or veto it.” Its key ends 6 President. A Nebraska bill, LB 99008, Rural clinic '
+           'grants, has steps 1 to 4 filled, step 5 as a fine ring under a slash and step 6 as the heavy ring: “Step 6 of '
+           '6: Governor. Nebraska has one chamber. The Legislature passed the bill on Final Reading on April 14, and it '
+           'waits for the governor to sign or veto it.” Its key adds the mark for a step that never happened.')
     spec(ctx, 's-11-1-correct', html, '11.1', alt, width=360, illustrative=True)
     fcss, band = ctx.fail_band(flush=True)
     css2 = piece_css(ctx, 'n', 's') + fcss
@@ -447,7 +596,7 @@ def s_11_1(ctx):
                   'The enrolled bill went to the executive on February 12.')
     html2 = (f'<style>{css2}</style>{band}<div class="pc"><p>{ILLUS}</p><p class="hd">Where the library hours bill stands</p>'
              f'<ul class="rows">{r}</ul>{key(CLERK, ("done", "now"))}</div>')
-    alt2 = ('Labeled Failure case: do not publish. An Illustrative tracker for bill H.1180, Library hours, at 360 px, '
+    alt2 = ('Labeled Failure case: do not publish. An Illustrative tracker for bill H.99003, Library hours, at 360 px, '
             'whose key gives the six steps the clerk’s names: Introduced, Referred, Reported, Engrossed, Enrolled and '
             'Presented. It reads “Step 6 of 6: Presented. The enrolled bill went to the executive on February 12.”')
     spec(ctx, 's-11-1-failure', html2, '11.1', alt2, width=360, illustrative=True)
@@ -461,7 +610,7 @@ def s_11_2(ctx):
            f'.sk-m{{display:flex;align-items:center;gap:16px;min-height:84px}}'
            f'.sk-n{{margin:8px 0 2px;{T("ui")};font-weight:700}}.sk-t{{margin:0;{T("caption")};color:var(--txt2)}}'
            f'.sk-h{{margin:0 0 12px;{T("caption")};color:var(--txt2)}}')
-    cards = ''.join(f'<li class="sk-c"><div class="sk-m" aria-hidden="true">{sample(s, 26)}{sample(s, 26, 2)}</div>'
+    cards = ''.join(f'<li class="sk-c"><div class="sk-m" aria-hidden="true">{sample(s, 26)}{sample(s, 26, 2, tag=False)}</div>'
                     f'<p class="sk-n">{STATE_WORD[s]}</p><p class="sk-t">{STATE_MEANS[s]}</p></li>' for s in STATE_ORDER)
     html = (f'<style>{css}</style><p class="sk-h">Each mark is drawn on step 4, at true size and at twice size.</p>'
             f'<ul class="sk-l">{cards}</ul>')
@@ -506,10 +655,10 @@ def s_11_3(ctx):
     rows = row(LAW_BILL, 's') + row(OVERRIDE_BILL, 's') + row(STOP_BILL, 's')
     html = (f'<style>{css}</style><div class="pc"><p>{ILLUS}</p><p class="hd">How three state bills ended</p>'
             f'<ul class="rows">{rows}</ul>{key(names(), ("done", "stopped"))}</div>')
-    alt = ('Three Illustrative bills at 360 px on Newsprint. Bill H.1180, Library hours: all six numbered steps are '
-           'filled, and the words say “Became law on April 2. It takes effect July 1.” Bill S.1517, Snow route parking: '
+    alt = ('Three Illustrative bills at 360 px on Newsprint. Bill H.99003, Library hours: all six numbered steps are '
+           'filled, and the words say “Became law on April 2. It takes effect July 1.” Bill S.99006, Snow route parking: '
            'all six steps are filled, and the words say “Became law on March 18, over the governor’s veto. It takes effect '
-           'June 1.” Bill S.2045, Parking meter fees: steps 1 to 5 are filled, and step 6 is a filled square where the '
+           'June 1.” Bill S.99005, Parking meter fees: steps 1 to 5 are filled, and step 6 is a filled square where the '
            'line ends. The words say “Stopped at step 6 of 6: Governor. The governor vetoed it on February 9, and the '
            'Senate’s vote to override fell short on February 23.” A key gives the six step names and the Done and Stopped '
            'marks.')
@@ -520,7 +669,7 @@ def s_11_3(ctx):
     r = row(LIST_BILLS[2], 's', nm=nm)
     html2 = (f'<style>{css2}</style>{band}<div class="pc"><p>{ILLUS}</p><p class="hd">Where the library hours bill stands</p>'
              f'<ul class="rows">{r}</ul>{key(nm, ("done", "now", "notyet"))}</div>')
-    alt2 = ('Labeled Failure case: do not publish. An Illustrative tracker for bill H.1180, Library hours, whose sixth step '
+    alt2 = ('Labeled Failure case: do not publish. An Illustrative tracker for bill H.99003, Library hours, whose sixth step '
             'is named Law. Steps 1 to 5 are filled and step 6 carries the heavy ring, so the words read “Step 6 of 6: Law. '
             'Both chambers passed it, and it waits for the governor to sign or veto it.”')
     spec(ctx, 's-11-3-failure', html2, '11.3', alt2, width=360, illustrative=True)
@@ -545,7 +694,7 @@ def card(ctx, red_progress=False):
 def s_11_4(ctx):
     css, html = card(ctx)
     alt = ('An Illustrative story card at 360 px on Newsprint with the kicker Tracker, State bills, the headline “The '
-           'House hears the town audit bill on March 10”, and a line on what the bill would do. Under it, bill S.0412, '
+           'House hears the town audit bill on March 10”, and a line on what the bill would do. Under it, bill S.99007, '
            'Town audit deadlines, as six numbered steps: steps 1 to 4 filled, step 5 a heavy ring with a small red disc '
            'at its upper right, step 6 a fine ring. The words say “Step 5 of 6: Second chamber. The Senate passed it on '
            'February 24, and a House committee holds its hearing on March 10.” Beside the same red disc, “You can take '
@@ -588,7 +737,7 @@ def s_11_5(ctx):
     html = (f'<style>{css}</style>{band}<div class="pc"><p>{ILLUS}</p><p class="hd">Where two state bills stand this week</p>'
             f'<ul class="rows">{rows}</ul></div>')
     alt = ('Labeled Failure case: do not publish. Two Illustrative bills at 360 px on Newsprint, each drawn as six small '
-           'dots on a line with no numbers or names. H.4212’s second dot is a ring with a red center, and S.0876’s fourth '
+           'dots on a line with no numbers or names. H.99001’s second dot is a ring with a red center, and S.99002’s fourth '
            'dot is a ring, so a reader counts dots to find the step. The status words sit under each line.')
     spec(ctx, 's-11-5-failure', html, '11.5', alt, width=360, illustrative=True)
     return sids
@@ -665,7 +814,7 @@ def bill_page(ctx, surf, size, generic=False):
     b = PAGE_BILL
     tl = timeline(b, 28, PAGE_NOTES if not generic else None, surf, page=not generic, generic=generic)
     head = (f'<p>{ILLUS}</p><p class="ky"><span>Tracker · State bills</span>'
-            f'<span class="chip"><span>Bill</span><span>H.4212</span></span></p>'
+            f'<span class="chip"><span>Bill</span><span>H.99001</span></span></p>'
             f'<p class="hd">Public meeting notice</p><p class="dk">{b["dek"]}</p>'
             + ('' if generic else f'<p class="st"><b>{status_words(b)}</b> Testimony is open until March 3.</p>'))
     if size == 'l':
@@ -686,7 +835,7 @@ def s_11_6(ctx):
         sid = 's-11-6-correct' if (surf, size) == ('n', 's') else f's-11-page-{w}-{SURF_NAME[surf]}'
         aside = (' After the steps, a key says what each of the six steps means.' if size == 'l' else '')
         alt = (f'An Illustrative page for one bill at {w:,} px on {ground}: the kicker Tracker, State bills, the ID Bill '
-               f'H.4212, the title Public meeting notice and a line on what the bill would do, then “Step 2 of 6: Hearing. '
+               f'H.99001, the title Public meeting notice and a line on what the bill would do, then “Step 2 of 6: Hearing. '
                f'Testimony is open until March 3.” The six numbered steps run down the page on a line, each with its name, '
                f'its state in words and a note: 1 Filed, done, filed January 16 and sent to the Committee on Local '
                f'Government; 2 Hearing, now, you can take part, with a red disc on its ring and a box holding “You can take '
@@ -698,7 +847,7 @@ def s_11_6(ctx):
         sids[(surf, size)] = sid
     fcss, band = ctx.fail_band(flush=True)
     html = f'<style>{page_css(ctx, "n", "s")}{fcss}</style>{band}{bill_page(ctx, "n", "s", generic=True)}'
-    alt = ('Labeled Failure case: do not publish. The same Illustrative page for bill H.4212, Public meeting notice, with '
+    alt = ('Labeled Failure case: do not publish. The same Illustrative page for bill H.99001, Public meeting notice, with '
            'a stock stepper in place of the numbered steps: a filled box with a check for step 1, a box with a dot for '
            'step 2 and empty boxes for steps 3 to 6, with no numbers, no state in words and no way to take part.')
     spec(ctx, 's-11-6-failure', html, '11.6', alt, width=360, illustrative=True)
@@ -755,7 +904,7 @@ def s_11_7(ctx):
              f'<p class="bill"><b>Bill {b["id"]}</b>, {b["title"]}</p><div class="mkw">{small}</div>'
              f'<p class="st"><b>{status_words(b)}</b> {b["line"]}</p>'
              f'<p class="tp"><span class="tiny">Send testimony</span></p></li></ul></div>')
-    alt2 = ('Labeled Failure case: do not publish. An Illustrative tracker for bill H.4212 drawn with 16 px circles and '
+    alt2 = ('Labeled Failure case: do not publish. An Illustrative tracker for bill H.99001 drawn with 16 px circles and '
             'numbers 9 px tall, and a Send testimony link 20 px tall in 11 px type, marked with a dashed outline.')
     spec(ctx, 's-11-7-failure', html2, '11.7', alt2, width=360, illustrative=True, exempt=['size', 'scale'],
          notes='Labeled failure: numbers at 9 px and a link at 11 px, off the scale on purpose and under the 13 px floor.')
@@ -887,8 +1036,8 @@ def build(ctx):
                              'most readers act on.'],
                     'basis': 'Design judgment, approved by our founder and editor in November 2026'},
             'correct': {'specimen': 's-11-3-correct',
-                        'caption': 'Three ends at 360 px. H.1180 became law when it was signed, and S.1517 over a veto; '
-                                   'the words of each say how and when. S.2045 stopped at step 6 when a veto stood, and its '
+                        'caption': 'Three ends at 360 px. H.99003 became law when it was signed, and S.99006 over a veto; '
+                                   'the words of each say how and when. S.99005 stopped at step 6 when a veto stood, and its '
                                    'line ends on the square.'},
             'failure': {'specimen': 's-11-3-failure',
                         'caption': '<strong>Fails Rule 11.3.</strong> The sixth step is named Law, so a bill that still '
@@ -999,7 +1148,7 @@ def build(ctx):
                              'reader learns why the date matters.'],
                     'basis': 'Design judgment, approved by our founder and editor in November 2026'},
             'correct': {'specimen': 's-11-6-correct',
-                        'caption': 'H.4212’s page at 360 px. Step 2 holds the way to take part, and step 5’s note says the '
+                        'caption': 'H.99001’s page at 360 px. Step 2 holds the way to take part, and step 5’s note says the '
                                    'Senate’s committee often holds a hearing of its own.'},
             'failure': {'specimen': 's-11-6-failure',
                         'caption': '<strong>Fails Rule 11.6.</strong> A stock stepper draws checks and boxes with no '

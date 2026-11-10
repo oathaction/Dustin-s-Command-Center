@@ -241,7 +241,7 @@
    "same": true,
    "size": [
     282,
-    48
+    49
    ],
    "viewBox": "0 -12 282 48",
    "drawn_px": [
@@ -265,7 +265,7 @@
    "same": true,
    "size": [
     24,
-    25
+    24
    ],
    "viewBox": "0 0 24 24",
    "drawn_px": [
@@ -802,7 +802,7 @@
    "exit": 0,
    "result": {
     "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
-    "run": "2026-11-10T03:56:13.032Z",
+    "run": "2026-11-10T04:03:03.100Z",
     "rules": {
      "minStroke": 1,
      "minThinArea": 0.25,
@@ -913,7 +913,7 @@
    "exit": 0,
    "result": {
     "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
-    "run": "2026-11-10T03:56:14.117Z",
+    "run": "2026-11-10T04:03:04.232Z",
     "rules": {
      "minStroke": 1,
      "minThinArea": 0.25,
@@ -1024,7 +1024,7 @@
    "exit": 0,
    "result": {
     "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
-    "run": "2026-11-10T03:56:15.210Z",
+    "run": "2026-11-10T04:03:05.285Z",
     "rules": {
      "minStroke": 1,
      "minThinArea": 0.25,
@@ -1135,7 +1135,7 @@
    "exit": 0,
    "result": {
     "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
-    "run": "2026-11-10T03:56:16.362Z",
+    "run": "2026-11-10T04:03:06.398Z",
     "rules": {
      "minStroke": 1,
      "minThinArea": 0.25,

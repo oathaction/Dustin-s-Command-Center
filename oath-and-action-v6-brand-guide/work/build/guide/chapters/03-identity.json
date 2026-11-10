@@ -325,7 +325,7 @@
    },
    "failure": {
     "specimen": "s-03-6-failure",
-    "caption": "L3 squeezed to 150 px across a phone bar. Its capitals fall to 12 px, under the 14 px floor, and the lockmark to 26 px, under the 34 px L3 gives it at its 196 px minimum."
+    "caption": "L3 squeezed to 150 px across a phone bar, under its 196 px minimum. Its capitals fall to 12 px, under the 14 px floor, and the lockmark to 26 px."
    },
    "specs": [
     {

@@ -1636,3 +1636,23 @@ The studio asked three questions before promoting the approved drawings, and lis
 |---|---|---|
 | D2-777 | The editor's third question (what Rule 01.11's plate counts if Missouri's voters turned the 2025 map down) is settled by DR-93 and DR-149, not put to Dustin: the research lead reads the certified results and the primary records before board B, and the plate prints the record as it stands | DR-93 already says findings are reported as the record shows them; the open part is a fact to read |
 | D2-778 | The research lead's round 2 task: Missouri's certified November 3, 2026 result, Ohio's constitutional deadline and the commission's October 31, 2025 vote, and the party control of each body in Rule 01.11's count, from primary sources | The editor's request; Ohio and Missouri rested on search results only (tenth handoff, section F) |
+
+### Engineer, promotion (`20261110_Promotion-Engineer-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-779 | The sprite reads three families: Civic Line from `civic-line-v6/black/`, the pillar fits' black edition from `pillar-icons/` and below, and the utility icons from `utility/svg-24/` and `svg-16/`, with the brief's symbol ids | The promotion brief's folders and ids; the black edition is the one in use under 48 px (D2-497) |
+| D2-780 | A symbol carries its file root's paint and rendering attributes (fill, stroke, its width, caps and joins, `shape-rendering`, opacity, style) on a group around the drawing, and leaves `color` behind | A `<use>` then draws the file whatever the page's CSS sets on the `<svg>` around it, and `currentColor` still follows the page |
+| D2-781 | An accent drawn as a single shape (a pillar fit's path) takes `--oa-icon-accent` as an accent group does | The pillar fits draw their red as one path in the accent part (D2-497) |
+| D2-782 | The masthead's menu glyph is `<use href="#oa-sym-u-menu-24px"/>`, and under forced colors the shell sets its `color` to `ButtonText` | DR-163; the symbol draws in `currentColor`, so forced colors keeps it (UX-1) |
+| D2-783 | A 24 px pillar icon is one `<svg>` with `<use class="oa-at-1x">` of the fit and `<use class="oa-at-2x">` of the master; a 16 px pillar icon is one `<use>` of its fit | DR-179 and D2-634 in one pattern that keeps one glyph, one box and one name |
+| D2-784 | The shell switches the two classes at `min-resolution: 2dppx` | The pixel-fit figures: the master meets the line and gap floors only from 2x, and fit B keeps every counter and gap below it |
+| D2-785 | The build warns on a 24 px fit without its master beside it, a 16 px fit with one, a lone `oa-at-2x`, `oa-at-1x` on a non-fit and an accent on a pillar icon under 48 px; `data-oa-res="fixed"` marks a plate that shows one drawing on every screen | The pattern cannot be half written, and a chapter 09 plate can still show a fit itself |
+| D2-786 | The utility line token's reader is the build's comparison of each utility icon on the page against its size's token, since the glyph's line now comes from its file | D2-402 asks each token for a reader; the comparison fails a drawing that drifts from its token |
+| D2-787 | A 16 px utility icon on a page is a note until its line token exists | D2-577: the token enters with its first reader, and I add it then |
+| D2-788 | A missing family folder is a note; an empty folder, an unreadable file, a second file for a symbol and a reference to no symbol are warnings, the last naming the missing folder when that is why | A folder still on its way should not stop the build; a broken one should |
+| D2-789 | `forcedGlyphs` reads a `<use>` glyph's paints from its symbol's markup | A `<use>` hides its shapes in a closed shadow tree, and the masthead's glyph is now one |
+| D2-790 | `sprite_check.js` compares each `<use>` with its file drawn inline in the same cell in turn, at 1x and 2x, and passes at a channel difference of 8 or less | Chromium's raster of one drawing differs by up to 29 levels between two places on a page at 2x and 128 px; in one place the two draw identically |
+| D2-791 | The self-test reads fixture families made from the October set and the approved option files in a temporary folder | It must run before, during and after the makers' work, and those files stay as the record (D2-718) |
+| D2-792 | The look-alike check's masters are the set in use, `civic-line-v6/`, by default, and `--masters october` keeps the October set | D2-748; Board 6 measured the October masters, so the self-test still proves the port on them before it checks the set in use |
+| D2-793 | All my builds, captures and check outputs went to the scratch folder; I did not rebuild any board page | The brief keeps scratch outputs out of `work/build` and boards untouched |
