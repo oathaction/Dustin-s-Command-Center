@@ -629,7 +629,9 @@ const READS_AT_24 = ['CL-001', 'CL-004', 'CL-006', 'CL-010', 'CL-013', 'CL-019',
   'CL-039', 'CL-040', 'CL-047', 'CL-048', 'CL-050', 'CL-051', 'CL-054', 'CL-057', 'CL-060', 'CL-061', 'CL-067', 'CL-068', 'CL-070', 'CL-071', 'CL-072',
   'R-05', 'R-06', 'R-08', 'R-09', 'R-14', 'R-15', 'R-17', 'R-19', 'R-23', 'R-27', 'R-37', 'R-45'];
 const ICON_SIZES = { utility: [16, 24], pillar: [16, 24], status: [24, 26, 28, 30] };   // B-3; topic and atlas: 48 up, or 24 for the 41
-// The mark tokens' readers, as guide-shell.css writes them, and each mark kind for the parity outside failure plates.
+// The mark tokens' readers: each mark by its classes and its width attribute, which the plates keep while their own
+// CSS sets the width from the token (round 2; the shell's bridge rules went), and each mark kind for the parity
+// outside failure plates.
 const MARKS = [
   { token: 'ring-now', prop: 'stroke-width', expr: 'var(--oa-component-mark-ring-now)', reader: 'circle:is(.fb.si, .sx-fb.sx-si)[stroke-width="3"]', kind: 'circle:is(.fb.si, .sx-fb.sx-si)' },
   { token: 'ring-ahead', prop: 'stroke-width', expr: 'var(--oa-component-mark-ring-ahead)', reader: 'circle:is(.fb.ss, .sx-fb.sx-ss)[stroke-width="1.5"]', kind: 'circle:is(.fb.ss, .sx-fb.sx-ss)' },
@@ -739,7 +741,7 @@ async function sbAudit(page) {
   await sbInstall(page);
   return page.evaluate(({ GLYPH_ONLY_OK, READS_AT_24, ICON_SIZES, MARKS }) => {
     const { parse, ratio, rendered, picture, seen, key, CONTROLS, desc } = window.__sb;
-    const out = { icons: 0, missingFamily: [], switchHeights: [], iconNames: [], iconTwice: [], iconTargets: [], iconSizes: [], labelInName: [], controlNames: [], titleOnly: [], disabled: [], stateCues: [], motion: [], marks: { readers: {}, off: [], unread: [], held: false } };
+    const out = { icons: 0, missingFamily: [], switchHeights: [], iconNames: [], iconTwice: [], iconTargets: [], iconSizes: [], labelInName: [], controlNames: [], titleOnly: [], disabled: [], stateCues: [], motion: [], stateWords: [], stateStages: 0, marks: { readers: {}, off: [], unread: [], held: false } };
     const icons = [...document.querySelectorAll('[data-icon]')].filter((el) => !picture(el) && !el.parentElement.closest('[data-icon]'));
     out.icons = icons.length;
     const nameOf = (el) => (el.getAttribute('aria-label') || el.getAttribute('alt') || el.getAttribute('title') || (el.querySelector(':scope > title') || {}).textContent || '').trim();
@@ -752,7 +754,12 @@ async function sbAudit(page) {
       const nm = nameOf(el);
       if (nm && words && key(words).includes(key(nm))) out.iconTwice.push({ ...desc(el), icon: el.getAttribute('data-icon'), name: nm });   // A-2
       const ctl = el.closest(CONTROLS);
-      if (ctl && rendered(ctl)) {                                                                          // B-1
+      // B-1's inline exception (WCAG 2.5.8, round 2): a link set inline in a paragraph's running text, with words of the
+      // paragraph outside it, may stand at the line's height
+      const inText = ctl && ctl.matches('a[href]') && getComputedStyle(ctl).display === 'inline' && !!ctl.closest('p')
+        && key(seen(ctl.closest('p'))).length > key(seen(ctl)).length + 2;
+      if (inText) out.inlineTargets = (out.inlineTargets || 0) + 1;
+      if (ctl && rendered(ctl) && !inText) {                                                               // B-1
         const r = ctl.getBoundingClientRect();
         if (r.width < 43.5 || r.height < 43.5) out.iconTargets.push({ ...desc(ctl), icon: el.getAttribute('data-icon'), w: Math.round(r.width * 10) / 10, h: Math.round(r.height * 10) / 10 });
       }
@@ -831,6 +838,22 @@ async function sbAudit(page) {
       if ((el.matches('[data-icon], [data-icon] *') || el.querySelector(':scope > [data-icon]')) && secs(cs.transitionDuration) > 0.2) out.motion.push({ ...desc(el), why: `a glyph transition of ${cs.transitionDuration}` });
     }
     // D2-402: every mark drawn from its token; every mark token read where chapter 11 is in the page.
+    // A-5 (round 2): every step mark's state in words. Trackers carry no data-step: their words are in the stage's alt
+    // text and status lines. In each stage that draws status marks, outside failure plates, each state's word appears
+    // at least as often as its marks: done, now, not yet, never happened, stopped, and "you can take part now" beside
+    // a take-part mark.
+    const WORDS = { 'S-done': /\bdone\b/gi, 'S-now': /(?<!take part )\bnow\b/gi, 'S-take-part': /\byou can take part now\b/gi, 'S-not-yet': /\bnot yet\b/gi, 'S-never-happened': /\bnever happened\b/gi, 'S-stopped': /\bstopped\b/gi };
+    for (const st of document.querySelectorAll('[data-specimen]')) {
+      if (st.closest('.plate--failure')) continue;
+      const marks = [...st.querySelectorAll('[data-icon-family="status"][data-icon]')].filter((m) => WORDS[m.getAttribute('data-icon')]);
+      if (!marks.length) continue;
+      out.stateStages++;
+      const named = [st.getAttribute('aria-label') || '', ...(st.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean).map((id) => (document.getElementById(id) || {}).textContent || '')];
+      const text = (named.join(' ') + ' ' + st.innerText + ' ' + [...st.querySelectorAll('[aria-label]')].map((e) => e.getAttribute('aria-label')).join(' ')).replace(/\s+/g, ' ');
+      const count = {}; for (const m of marks) { const k = m.getAttribute('data-icon'); count[k] = (count[k] || 0) + 1; }
+      const short = Object.entries(count).filter(([k, n]) => (text.match(WORDS[k]) || []).length < n).map(([k, n]) => `${k} ${(text.match(WORDS[k]) || []).length} of ${n}`);
+      if (short.length) out.stateWords.push({ where: st.getAttribute('data-specimen'), short: short.join(', ') });
+    }
     const probe = document.createElement('div'); probe.style.position = 'absolute'; probe.style.visibility = 'hidden'; document.body.append(probe);
     const val = (expr) => { probe.style.width = expr; return parseFloat(getComputedStyle(probe).width); };
     const got = (el, prop) => parseFloat(getComputedStyle(el).getPropertyValue(prop));
@@ -1003,6 +1026,7 @@ function sbFailures(b, width) {
   if (a.titleOnly.length) add('titleOnly', `${a.titleOnly.length} title attribute(s) carrying a meaning nothing else carries (A-8), first: ${first(a.titleOnly)}`);
   if (a.disabled.length) add('disabledControls', `${a.disabled.length} unavailable control(s) without a focusable state and a visible reason (G-4), first: ${first(a.disabled)}`);
   if (a.stateCues.length) add('stateCues', `${a.stateCues.length} on state(s) told from off by color alone (C-5), first: ${first(a.stateCues)}`);
+  if (a.stateWords.length) add('stateWords', `${a.stateWords.length} stage(s) whose step marks lack their state in words (A-5), first: ${first(a.stateWords)}`);
   if (a.motion.length) add('motion', `${a.motion.length} moving or slow glyph element(s) (E-1, E-3), first: ${first(a.motion)}`);
   if (a.marks.off.length) add('markTokens', `${a.marks.off.length} mark(s) drawn off their token (D2-402), first: ${first(a.marks.off)}`);
   if (a.marks.unread.length) add('markTokens', `mark token(s) with no reader on the page: ${a.marks.unread.join(', ')}`);
@@ -1082,7 +1106,7 @@ async function checkPage(browser, file, widths, opts = {}) {
       sb.menu = await sbMenu(page);
     }
     fails.push(...sbFailures(sb, width));
-    a.stageB = { icons: sb.audit.icons, missingFamily: sb.audit.missingFamily, markReaders: sb.audit.marks.readers, glyphParts: sb.forced ? sb.forced.glyphParts : null, useParts: sb.forced ? sb.forced.useParts : null,
+    a.stageB = { icons: sb.audit.icons, stateStages: sb.audit.stateStages, inlineTargets: sb.audit.inlineTargets || 0, missingFamily: sb.audit.missingFamily, markReaders: sb.audit.marks.readers, glyphParts: sb.forced ? sb.forced.glyphParts : null, useParts: sb.forced ? sb.forced.useParts : null,
       menu: sb.menu ? (sb.menu.problems.length ? sb.menu.problems : 'opens, holds focus, closes by Escape and Close, returns focus') : 'not shown at this width' };
     if (a.fit.under.length) fails.push({ key: 'fitFloor', msg: `${width}: ${a.fit.under.length} plate(s) whose Fit to window sets text under 13 px: ${a.fit.under.slice(0, 8).map((x) => `${x.specimen} (${x.smallest} px at ${Math.round(x.scale * 100)}%, "${x.sample}")`).join('; ')}` });
     let axe = null;
@@ -1258,6 +1282,9 @@ const PLANTS = [
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<ul><li>Download <svg data-icon="U-download" data-icon-family="utility" role="img" aria-label="Download" viewBox="0 0 24 24" width="24" height="24"><path d="M12 4v12" stroke="currentColor" stroke-width="2"/></svg></li></ul>'); } },
   { key: 'iconTargets', fault: 'a link with a utility glyph standing 30 px tall (B-1)', js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><a href="#top" style="display:inline-flex;align-items:center;height:30px;gap:8px"><svg data-icon="U-arrow-up" data-icon-family="utility" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24"><path d="M12 19V5" stroke="currentColor" stroke-width="2"/></svg>Top</a></p>'); } },
+  { key: 'iconTargets', fault: 'a link with its 16 px mark inline in a paragraph\'s running text, WCAG 2.5.8\'s inline exception (allowed: must not be flagged)', expect: false, js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p>Read the <a href="#top">full record <svg data-icon="U-another-site" data-icon-family="utility" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4" stroke="currentColor" stroke-width="1.5"/></svg></a> before you write to the office.</p>'); },
+    verify: (r) => r.runs[0].stageB.inlineTargets >= 1 },
   { key: 'iconTargets', fault: 'the Fit to window switch back at 36 px (DR-153)', js: () => {
     const st = document.createElement('style'); st.textContent = '.fit-btn{min-height:36px !important}'; document.head.append(st); } },
   { key: 'iconSizes', fault: 'a topic symbol at 16 px (DR-136, B-3)', js: () => {
@@ -1271,6 +1298,13 @@ const PLANTS = [
     document.querySelector('main').insertAdjacentHTML('beforeend', '<section class="chapter" id="symbols"><p><svg data-icon="CL-001" aria-hidden="true" focusable="false" viewBox="0 0 48 48" width="48" height="48"><circle cx="24" cy="24" r="16" fill="currentColor"/></svg> Voting</p></section>'); } },
   { key: 'iconSizes', fault: 'a glyph without data-icon-family in any other chapter, now that the family is required everywhere (D2-517)', js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg data-icon="CL-001" aria-hidden="true" focusable="false" viewBox="0 0 48 48" width="48" height="48"><circle cx="24" cy="24" r="16" fill="currentColor"/></svg> Voting</p>'); } },
+  { key: 'stateWords', fault: 'a tracker of three steps whose alt text names no state (A-5)', js: () => {
+    const st = document.querySelector('.plate--correct [data-specimen][role="img"]'); st.setAttribute('aria-label', 'A bill at true size, on a line of three steps.');
+    st.insertAdjacentHTML('beforeend', '<svg class="sx-mk" width="96" height="30" viewBox="0 0 96 30" aria-hidden="true" focusable="false"><g data-icon="S-done" data-icon-family="status"><circle cx="13" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-now" data-icon-family="status"><circle cx="48" cy="15" r="11.5" fill="none" stroke="currentColor" stroke-width="3"/></g><g data-icon="S-not-yet" data-icon-family="status"><circle cx="83" cy="15" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/></g></svg>'); } },
+  { key: 'stateWords', fault: 'the same tracker with each step\'s name and state in its alt text (allowed: must not be flagged)', expect: false, js: () => {
+    const st = document.querySelector('.plate--correct [data-specimen][role="img"]'); st.setAttribute('aria-label', 'A bill at true size. Steps: 1 Filed done; 2 Hearing now; 3 Committee vote not yet.');
+    st.insertAdjacentHTML('beforeend', '<svg class="sx-mk" width="96" height="30" viewBox="0 0 96 30" aria-hidden="true" focusable="false"><g data-icon="S-done" data-icon-family="status"><circle cx="13" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-now" data-icon-family="status"><circle cx="48" cy="15" r="11.5" fill="none" stroke="currentColor" stroke-width="3"/></g><g data-icon="S-not-yet" data-icon-family="status"><circle cx="83" cy="15" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/></g></svg>'); },
+    verify: (r) => r.runs[0].stageB.stateStages >= 1 },
   { key: 'disabledControls', fault: 'a disabled attribute on a toolbar button (G-4)', js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div role="toolbar" aria-label="Report tools"><button type="button" disabled>Print</button></div>'); } },
   { key: 'stateCues', fault: 'a pressed button told from its peer by fill and color alone (C-5)', js: () => {

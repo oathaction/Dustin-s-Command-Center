@@ -2,7 +2,7 @@
 
 Oath & Action Edition 06, Phase 2, stage B, round 2, November 10, 2026. Written by the editor (`.claude/agents/oa-editor.md`) for the main session, chapter 10's maker, the engineer and the makers of chapters 09, 11 and 12. I committed nothing and published nothing. Paths are relative to `oath-and-action-v6-brand-guide/`.
 
-Status: items 1 to 3 are done, with Dustin's answers of November 10 applied (DR-187 to DR-189) and the research lead's round 2 findings on Rule 01.11 (section 2b). Item 4: chapter 10's words are done and applied by its maker (section 4a); chapter 09's (4b) and chapter 12's Rules 12.5 to 12.9 (4c) are done; Rule 01.21's kicker has landed. Chapter 11 has a first pass on its draft (4d), and its final pass and chapter 12's Rules 12.1 to 12.4 wait for their makers.
+Status: complete for round 2. Items 1 to 3 are done, with Dustin's answers of November 10 applied (DR-187 to DR-189) and the research lead's round 2 findings on Rule 01.11 (section 2b). Item 4 is done: chapters 09 to 12 have their word tables (4a to 4e), and section 4e lists what round 3's fix pass still has to apply, with the read across chapters for terms used two ways. Rule 01.21's kicker has landed.
 
 ## What I wrote
 
@@ -207,6 +207,58 @@ Chapter 11's maker is still writing (its notes say in progress), so this pass re
 
 **One correction to my own chapter 10 row.** Chapter 05 defines a keyline as "a 1 px Charcoal edge drawn inside the mark", and chapters 11 and 12 use it that way, so my Rule 10.2 caption brought in a second meaning. Chapter 10's maker should set Rule 10.2's `correct.caption` from "with its keylines, the guide lines that place it," to "with the guide lines that place it," (H02).
 
+### 4e. Final pass, after every maker finished round 2: tables for round 3's fix pass
+
+The makers have stopped, and their build scripts regenerate the chapter files, so I edited none of their files. Round 3's fix pass applies the rows below in each owner's script at the string quoted: `stage_b_identity_ch09.py` for chapter 09, `stage_b_ch10_build.py` for chapter 10, chapter 11's build (`apply_systems_ch11.py` and its round 2 additions) for chapter 11, and for chapter 12 `stage_b_ch12_systems_build.py` (Rules 12.5 to 12.9 and their specimens) and the identity designer's chapter 12 script (the opener's second sentence, Rules 12.1 to 12.4 and their specimens).
+
+**What is still open from my earlier tables.** I checked each old string against the files as they stand.
+- Chapter 10 (4a): all 25 rows are in. Only the correction below remains.
+- Chapter 09 (4b): one of eight is in (Rule 09.3's "Never scale a master down..."). The other seven remain as written in 4b.
+- Chapter 11 (4d): all 12 are in. Two of them read badly in place, and the rows below fix them.
+- Chapter 12 (4c): two of nine are in (Rule 12.5's contrast sentence and Rule 12.7's "Draw the locator in ink, with no red."). The other seven remain as written in 4c, and the "deadline" row gains one more place (below).
+
+**Chapter 10, the correction to my own row**
+
+| File | Field | Old | New | Rule |
+|---|---|---|---|---|
+| `10-symbols.json` | Rule 10.2, `correct.caption` | with its keylines, the guide lines that place it, | with the guide lines that place it, | H02: chapter 05 defines a keyline as "a 1 px Charcoal edge drawn inside the mark", and chapters 11 and 12 use it that way |
+
+**Chapter 11, final pass.** The text matches the 04:37 draft apart from my 12 rows. Every one of the 37 alts matches its plate's words, numbers and renumbered bills, and every invented plate carries its Illustrative flag.
+
+| File | Field | Old | New | Rule |
+|---|---|---|---|---|
+| `11-icons.json` | Rule 11.9, `rule[1]`, first sentence | A rule the agency issued without asking for comment first, such as an interim final rule, which takes comments only after it takes effect, keeps steps 2 to 4 under slashes, and its words say so: “Issued without advance comment.” | A rule the agency issued without asking for comment first keeps steps 2 to 4 under slashes, and its words say so: “Issued without advance comment.” An interim final rule is one such rule, and it takes comments only after it takes effect. | My first-pass row left two clauses between the subject and its verb (W01) |
+| `11-icons.json` | `sources[2]` | section III, fiscal year 2024, federal agencies. Retrieved November 9, 2026. The categories | section III, fiscal year 2024, federal agencies, retrieved November 9, 2026. The categories | The chapter's other three source lines set "retrieved" this way |
+| `11-icons.json` | Rule 11.10, `builders` | so the words can say how long the clock stopped. | so the words can say how long the count of working days stopped. | One word for one thing across chapters: chapter 12 now says "deadline", and "clock" appears nowhere else in chapter 11 |
+| `manifest-systems.json` | `s-11-14-correct.alt` | Each step names the link and gives the atlas’s sentence for it, | Each step names the connection and gives the atlas’s sentence for it, | Chapter 10 calls the atlas's links "connections" (Rule 10.10), and "link" means a web link everywhere else in chapter 11 |
+| `s-11-16-correct` and `manifest-systems.json`, its alt | The figure's note | “Reform R-01 acts here.” | “Reform R-01, all-party primaries, acts here.” | H11; Rule 11.16's caption already names it |
+
+**Chapter 12, Rules 12.1 to 12.4 and the opener.** Their figures check: a 1 px line every 12 px covers 8.3 percent, and the watermark's 1.17 and 1.24 to 1 follow from the token opacities. Every invented plate is flagged Illustrative.
+
+| File | Field | Old | New | Rule |
+|---|---|---|---|---|
+| `12-graphic-devices.json` | `intro[1]`, first sentence | hairlines, watermarks, the compact signature and two patterns drawn from the hinge. | hairlines, watermarks, the monogram as a small signature and two patterns drawn from the hinge. | H02: Rule 12.3 names it "L8, the monogram", and "compact signature" appears nowhere else |
+| `12-graphic-devices.json` | Rule 12.1, `why[0]`, second sentence | In our atlas a dashed line marks a plausible link, | In our atlas a dashed line marks a connection graded plausible, | Chapter 10 calls them connections (Rule 10.10), and this chapter's Rule 12.7 uses "links" for web links |
+| `12-graphic-devices.json` | Rule 12.1, `failure.caption` | The breaks now read as a key’s mark for a plausible link, | The breaks now read as the atlas’s mark for a plausible connection, | As above; the mark belongs to the atlas, and a key only repeats it |
+| `12-graphic-devices.json` | Rule 12.4, `rule[0]`, first sentence | may give a cover, an opener or a social background texture. | may give texture to a cover, an opener or the background of a social card. | "A social background" names nothing a reader knows |
+| `12-graphic-devices.json` | Rule 12.4, `why.basis` | the 12 percent ceiling is a studio threshold | the 12 percent ceiling is our design judgment | D2-253 keeps studio words off reader pages, and W20 labels a judgment as one |
+| `s-12-watermark-correct` and `manifest-identity.json`, its alt | The Charcoal opener's line | Track, Follow the public record. | Track, Follow the decision and keep its record within reach. | Track's job line as chapter 01's pillar row and Rule 09.4's opener print it; one pillar, one line |
+| `12-graphic-devices.json` | Rule 12.5, `rule[0]`; spec "Target weight" | the outline of each condition it targets; condition outlines 3 px | the outline of each variable it targets; variable outlines 3 px | H02: chapter 10 defines the term as "variable", a condition that can rise or fall, and keeps it |
+| `12-graphic-devices.json` | Rule 12.9, spec "Source line" | The statute or official page for every clock | The statute or official page for every deadline | Joins 4c's "deadline" row, which this spec was missing |
+
+**Terms used two ways across chapters 09 to 12.** I read the four chapters together, with their alts, for each term a reader meets in more than one. The rows above and in 4b to 4d settle these:
+- **Topic icon and topic symbol.** Chapters 01 and 10 now say "topic symbol"; chapter 09's Rule 09.4 still says "topic icon" (4b).
+- **Keyline.** Chapter 05's meaning, a thin Charcoal edge, holds in chapters 11 and 12; chapter 10's caption is the one exception (above).
+- **Link and connection.** The atlas's links are "connections" in chapter 10; chapter 11's loop stepper alt and chapter 12's Rule 12.1 said "link" (above).
+- **Condition and variable.** Chapter 10 defines "variable"; chapter 12's Rule 12.5 said "condition" (above).
+- **Clock and deadline.** Chapter 12's frame and chapter 11's builders (above and 4c).
+- **Counters.** The guide defines them for letters; chapter 09 used the word for open spaces in a drawing (4b). Rule 12.3's use, for L8's ampersand, is right.
+- **Track's job line.** Chapter 12's watermark plate printed a second wording (above).
+
+One more, which reaches past these chapters. A failure plate with the band opens its alt two ways: 36 alts start "Labeled Failure case: do not publish." (chapters 05, 06, 10 and 11, and chapter 12's Rules 12.5 to 12.9) and 28 start "Failure case: do not publish." (chapters 01 and 09, and chapter 12's Rules 12.1 to 12.4). The form came from a routine call in the apply pass, not a decision. *Recommendation:* every banded plate's alt opens "Failure case: do not publish.", the band's own words, so a screen reader hears what the plate prints. That means one change in each systems build for chapters 10 to 12 in round 3, and chapters 05 and 06 at the shell's last pass. Plates without the band keep "Failure case:" alone, as chapters 03, 04 and 08 have them.
+
+Checked and left alone: "stock" in V7's own names (Concentration of stock ownership; Ban stock trading by members of Congress), where it means shares; "glyph" (chapter 11 defines it once, and chapter 10's encoding glyphs follow); "take-part mark" and "take-part disc" (the disc is the mark's shape, and Rule 11.4 says so); "working red" and "signature red" (used as chapter 01's word list defines them).
+
 ## Routine calls
 
 Numbers left for the main session to assign.
@@ -269,6 +321,13 @@ Chapters 01, 09 and 12 (item 4):
 - D2-xxx | "Stock" leaves every reader page where it means generic, in chapters 10 and 11 | H02: the atlas defines a stock as an amount built up over time
 - D2-xxx | Chapter 11's pass reads the draft of 04:37 UTC, and a final pass follows when its maker says the chapter is done | The maker was still writing, and an early table lets it apply the changes as it goes
 
+Final pass (item 4):
+- D2-xxx | The final pass edits no maker's file and lists every change for round 3's fix pass, with what is still open from the earlier tables | The makers have stopped, and their scripts regenerate the chapter files
+- D2-xxx | The atlas's links are "connections" on every reader page, and "link" keeps its web meaning | Chapter 10 and the atlas glossary use "connection"; chapter 11 uses "link" for web links throughout
+- D2-xxx | A variable is "variable" on every reader page after chapter 10 defines it | H02
+- D2-xxx | Track's job line reads as chapter 01 prints it on every plate | One pillar keeps one line
+- D2-xxx | Every banded failure plate's alt opens "Failure case: do not publish." (recommended for round 3 and the shell's last pass) | The band's own words; the "Labeled" form came from an apply-pass call, not a decision
+
 ## Questions for Dustin
 
 All three are answered: 1 and 2 by DR-188 and DR-189, 3 by DR-187.
@@ -296,6 +355,7 @@ Requests to other owners:
 - Chapter 10: its JSON, the class table, the `LOOKALIKES` lines, the library's meaning lists and every `s-10-*` alt read in full; 7,626 pairs and the 1.25 line ratio checked by arithmetic; hubs, layers and the route definition read from the atlas model.
 - Chapter 09: the JSON and nine alts read in full; the fits' line widths from `20261109_Pillar-Pixel-Fit-Manifest.json` (fit B at 24 px and the 16 px fit, 1 px) and the masters' 3.35 units from the inventory in use.
 - Chapter 11: the draft JSON of 04:37 UTC read in full, and scanned by script with chapters 09, 10 and 12 for the guide check's studio words, em dashes, the listed fillers, "stock", "clock" and "keyline".
+- Final pass: chapter 11's final JSON compared line by line with the 04:37 draft (only my 12 rows changed) and all 37 alts read in full; chapter 12's Rules 12.1 to 12.4, the opener and their eight alts read in full; every old string in 4b, 4c and 4d checked against the current files to say which rows remain; chapters 09 to 12 and their alts scanned together for fourteen terms, each hit read; the failure alt openings counted across all three manifests (36 and 28); the 8.3 percent pattern figure checked by arithmetic.
 - Chapter 12: the JSON, the ten specimens' text and alts read in full; the frame's deadlines against the statute sections its source line cites; the core layer's part names against the atlas editorial data's `parts`.
 - Chapter 01 after the terminology and failure kicker changes: generator and identity step rerun, every output compared with the copy before the run, then `guide_build.py --strict` (12 chapter files, 128 rules, 295 specimens, 0 placeholders).
 
@@ -306,6 +366,7 @@ Requests to other owners:
 - The reader check page, which the engineer builds; the time estimate, which no reader has measured.
 - Missouri's certified result, which is not out, and Virginia's 2025 House of Delegates; the research lead read every other party on a primary source.
 - `guide_check.js` on chapters 01 and 10 after these edits; I ran the build only.
+- Chapters 09 to 12 at 1,440 and 390 px as a reader sees them; my final pass read the files and alts, not the rendered pages.
 - My notes' prose for rhetorical triplets and parallel runs, which no script can rule out; I read for them.
 
 ## Change log

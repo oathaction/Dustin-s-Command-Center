@@ -502,20 +502,8 @@ a.toc-part-k:hover { text-decoration: underline }
 .menu a.menu-partlink { margin-top: var(--oa-space-300); font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase }
 
 /* ---------------------------------------------------------------- Mark tokens (D2-402)
-   The tracker drawings in chapter 11's plates (svg.sx-mk) and chapter 01's pieces (svg.mk) write each mark's width as
-   a number. These rules set it from its token, so the drawn marks follow tokens.css. Each selector names a mark by its
-   classes and its drawn width, so a failure plate that draws a fault at another width keeps it. guide_check.js
-   measures every mark against its token (markTokens). When the plates write var() themselves, these rules go. */
-:is(svg.mk, svg.sx-mk) circle:is(.fb.si, .sx-fb.sx-si)[stroke-width="3"] { stroke-width: var(--oa-component-mark-ring-now) }
-:is(svg.mk, svg.sx-mk) circle:is(.fb.ss, .sx-fb.sx-ss)[stroke-width="1.5"] { stroke-width: var(--oa-component-mark-ring-ahead) }
-:is(svg.mk, svg.sx-mk) line:is(.si, .sx-si)[stroke-width="2"] { stroke-width: var(--oa-component-mark-slash) }
-:is(svg.mk, svg.sx-mk) rect:is(.fi, .fr, .sx-fi, .sx-fr)[height="2"] { height: var(--oa-component-mark-line-reached) }
-:is(svg.mk, svg.sx-mk) rect:is(.fs, .sx-fs)[height="1"] { height: var(--oa-component-mark-line-ahead) }
-:is(svg.mk, svg.sx-mk) circle:is(.fr, .sx-fr)[r="5.5"] { r: calc(var(--oa-component-mark-take-part-disc) / 2) }
-:is(svg.mk, svg.sx-mk) circle:is(.sk.nf, .sx-sk.sx-nf)[stroke-width="1"] { stroke-width: var(--oa-component-mark-take-part-keyline) }
-:is(svg.mk, svg.sx-mk) circle:is(.sk.nf, .sx-sk.sx-nf)[r="5"] { r: calc(var(--oa-component-mark-take-part-disc) / 2 - var(--oa-component-mark-take-part-keyline) / 2) }
-:is(svg.mk, svg.sx-mk) circle:is(.fb, .sx-fb):not(.si, .ss, .sx-si, .sx-ss)[r="7"] { r: calc(var(--oa-component-mark-take-part-disc) / 2 + var(--oa-component-mark-take-part-cut)) }
-@scope ([data-specimen]) { :is(svg.mk, svg.sx-mk) text:is(.halo, .sx-halo) { stroke-width: var(--oa-component-mark-halo) } }
+   The plates set each mark's width from its token themselves (chapter 11's MARK_CSS), so the shell's bridge rules
+   went in round 2 (November 10, 2026). guide_check.js still measures every mark against its token (markTokens). */
 
 /* ---------------------------------------------------------------- Forced colors, print */
 @media (forced-colors: active) {

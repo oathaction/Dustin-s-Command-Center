@@ -1952,6 +1952,10 @@ def build(args):
     # sprite reads its line token through the build's parity test (Sprites.parity), once the page is assembled below.
     readers = css + "".join(specs.files[s].read_text() for s in specs.used if s in specs.files)
     unread = sorted(n for n in defined if n.startswith(READ_FAMILIES) and f"var({n}" not in readers) if tokens.final else []
+    # Round 2: chapter 11's plates read the mark tokens and the shell no longer does, so a page without chapter 11 asks
+    # for no mark reader (as guide_check.js's markTokens asks only where chapter 11 is in the page)
+    if "11" not in chapters:
+        unread = [n for n in unread if not n.startswith("--oa-component-mark-")]
 
     wm24 = svg_inline(WORDMARK_24, label="Oath & Action", cls="wm wm-24")
     wm16 = svg_inline(WORDMARK_16, label="Oath & Action", cls="wm wm-16")
@@ -2289,7 +2293,7 @@ def self_test():
         ("promotion: three families, each symbol the page references once, after <body>, drawing as its file",
          {"09-pillar-icons.json": f09, "10-symbols.json": f10, "11-icons.json": f11},
          {"specimens": fam_specs, "manifest": {**m09, **m10, **m11}},
-         {"absent": ["reference(s) to no symbol", "draws the 24 px fit", "have no reader", "[sprite ", "inlines", "sets --oa-icon-accent"],
+         {"absent": ["reference(s) to no symbol", "draws the 24 px fit", "--oa-component-icon-utility-", "[sprite ", "inlines", "sets --oa-icon-accent"],
           "html": ['data-sprite="civic-line"', 'data-sprite="pillar"', 'data-sprite="utility"',
                    '<symbol id="oa-sym-cl-019-24px" viewBox="0 0 24 24"><g shape-rendering="crispEdges">',
                    '<symbol id="oa-sym-cl-019-16px" viewBox="0 0 16 16"><g shape-rendering="crispEdges">',

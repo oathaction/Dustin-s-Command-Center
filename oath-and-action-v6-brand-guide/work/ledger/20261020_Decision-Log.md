@@ -1828,3 +1828,32 @@ Dustin, replying to three questions (the plate's count after Missouri's vote, th
 | D2-903 | The pattern covers are 360 by 466 px screen covers with type at the phone floor | Two fit a 600 px plate, and the type stays on the scale (D2-254) |
 | D2-904 | Rule 12.4's single failure plate shows both patterns behind words | The brief asks a failure for each pattern; one plate shows both, side by side |
 | D2-905 | The device index sits after Rule 12.1 and names the systems devices by their rules (12.5 to 12.9) | The architecture map lists the hinge divider in chapter 12's index, and a builder looks for a device by its job |
+
+### Editor, word pass on chapters 09 to 12 (`20261110_Stage-B-Round-2-Editor-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-906 | Step 3's Congress counts "Congress, the House or the Senate" as a pass and a legislature or a chamber in session as partly | No Congress drawing names Congress without its label (D2-620), so a partial answer still shows the drawing points at the right word |
+| D2-907 | Step 3 lists, for each new drawing, the misreadings to report to Dustin in the reader's own words | Each drawing was drawn to rule them out (research notes of November 9, section 1) |
+| D2-908 | The plate's Missouri sentence says "according to unofficial returns" | The count is not certified; the coordinator asked that the plate or its line say so |
+| D2-909 | The source line names the county page in full, with its title, site and date | H04, and the coordinator's request that the official page be named |
+| D2-910 | The counting sentence is active, "We counted each map...", and the research draft's colon becomes two sentences | W02, W06 |
+| D2-911 | Every Rule 01.11 and Rule 01.21 string now lives in `guide_editor_ch01.py`, and the build's count check accepts a sourced count | A rebuild of chapter 01 would otherwise undo them, and the old check failed any plate that counts |
+| D2-912 | After every rebuild of chapter 01, run `stage_b_identity_ch01.py` | It touches only the inline masters and the kicker word and is safe to rerun, so the two owners' steps stay apart |
+| D2-913 | `s-01-pieces.html` stays as committed until chapter 11 lands | A rebuild now would carry chapter 11's mark code mid-build onto chapter 01 |
+| D2-914 | CL-064's sentence says "checkpoint" in place of "gate" | The guide check refuses "gate" on reader pages (D2-253) |
+| D2-915 | CL-025's second sentence drops the words the library already prints before it | The library sets the chip and "Congressional capacity" first, so the old sentence repeated both |
+| D2-916 | My label build runs the guide check's studio-word patterns | A word the page refuses never reaches chapter 10's maker again |
+| D2-917 | The guide says "topic symbol" for a topic drawing everywhere, and chapter 01's three "topic icon" become "topic symbol" | H02 keeps one term; chapter 10's class name governs, and "icon" stays for pillar and utility icons |
+| D2-918 | Rule 01.21's failure kicker reads "Workers’ share of income", like the correct one | The pair then differs only in the drawing, which is the fault it teaches (identity designer's request) |
+| D2-919 | `s-01-pillars`'s manifest note says its icons come from the sprite through the identity designer's step | The identity designer's request; the note had said they were inlined |
+| D2-920 | Rule 12.8's core plane takes the plain part names | DR-32 and DR-35, and Rule 12.7's locator already uses them |
+| D2-921 | Rule 12.9 says "deadline" for the time the law sets | The plain word, used the same way in the rule, caption, spec and alts |
+| D2-922 | "Keyline" keeps chapter 05's meaning, a 1 px Charcoal edge inside a mark, and chapter 10 calls its construction lines "guide lines" | H02; chapters 11 and 12 use chapter 05's meaning |
+| D2-923 | "Stock" leaves every reader page where it means generic, in chapters 10 and 11 | H02: the atlas defines a stock as an amount built up over time |
+| D2-924 | Chapter 11's pass reads the draft of 04:37 UTC, and a final pass follows when its maker says the chapter is done | The maker was still writing, and an early table lets it apply the changes as it goes |
+| D2-925 | The final pass edits no maker's file and lists every change for round 3's fix pass, with what is still open from the earlier tables | The makers have stopped, and their scripts regenerate the chapter files |
+| D2-926 | The atlas's links are "connections" on every reader page, and "link" keeps its web meaning | Chapter 10 and the atlas glossary use "connection"; chapter 11 uses "link" for web links throughout |
+| D2-927 | A variable is "variable" on every reader page after chapter 10 defines it | H02 |
+| D2-928 | Track's job line reads as chapter 01 prints it on every plate | One pillar keeps one line |
+| D2-929 | Every banded failure plate's alt opens "Failure case: do not publish." (recommended for round 3 and the shell's last pass) | The band's own words; the "Labeled" form came from an apply-pass call, not a decision |
