@@ -2173,3 +2173,19 @@ Dustin opened this chat from the twelfth handoff's starting prompt: pick up the 
 | D2-1117 | The research lead checks the three carried sources for Rule 01.11's plate (Virginia's 2025 House of Delegates, Tangipa v. Newsom's order, Ohio's commission minutes) in one run and notes Missouri's status. It edits no chapter; the main session reads its notes first | D2-968 carried them; owners apply any wording change through their generators |
 | D2-1118 | Missouri's certified count is read when the Gate 2 preview is built; until then the plate keeps "unofficial" | Counties file by November 17 and the state board certifies within two weeks after (D2-838) |
 | D2-1119 | Stage C's plan is a draft brief, `work/handoffs/phase-2/20261110_Stage-C-Brief_DRAFT.md`, with four questions for Dustin; nothing in it is built until his go | Dustin's working rule: questions and a short plan, then wait |
+
+### Research lead, carried source checks (`20261110_Carried-Source-Checks-Notes.md`)
+
+Virginia, Tangipa v. Newsom and Ohio each hold as printed, so Rule 01.11's plate keeps its words. Missouri still shows only unofficial results.
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1120 | Virginia's sentence stays: "Democratic-led legislature" holds for both passages | The 2025 House had 51 Democrats to 48 Republicans and the Senate 21 to 19; every first-passage yes vote was a Democrat's; round 2 checked the 2026 counts |
+| D2-1121 | The 2025 House's party comes from the House Clerk's history pages (DOME), session by session | The current member cards show only the 2026 House; DOME records party for each session a member served |
+| D2-1122 | LIS's published data files (HISTORY.CSV, VOTE.CSV, Members.csv) count as the LIS vote record | LIS's bill and minutes pages load by script; its Learning Center documents these files as its public data; they agree with the House's own minutes on the House vote |
+| D2-1123 | The Senate's October 2025 makeup is read member by member from the vote, not assumed from today's roster | Two senators who voted have since left; their parties come from the Department of Elections' database |
+| D2-1124 | Tangipa v. Newsom's citation stays as printed | The order's own stamp reads "Filed 01/14/26" in the Central District of California, and the Supreme Court's docket names the same court and case number |
+| D2-1125 | The supremecourt.gov copy of the order counts as a primary record | It reproduces the district court's filed document with its filing stamp on every page; PACER needs a login, and courtlistener answers 403 |
+| D2-1126 | Ohio's note stays as printed | The minutes, transcript and Article XIX, Section 1(E) support each fact |
+| D2-1127 | Ohio's party split keeps its two sources: the 2022 Supreme Court of Ohio opinion for the three statewide officers and the legislatures' directories for the four legislators | The commission's own member data gives titles and no party; I did not retry ohiosos.gov, which blocked the round 2 attempt |
+| D2-1128 | Missouri stays as printed | The Secretary of State posts only "View Unofficial Results" for November 3, 2026; certification follows the November 17 county deadline (D2-838) |
