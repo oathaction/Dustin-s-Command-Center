@@ -1948,3 +1948,11 @@ The studio asked which loop chapter 11's stepper runs and listed four questions 
 | # | Decision | Reason |
 |---|---|---|
 | D2-974 | The chapter 11 hand moves the stepper to loop R1 in this pass, with D2-969's wording on any plausible step and D2-972's pace | DR-195 |
+
+### Main session, during the fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-975 | IDs stay whole at line ends through a build pass: the page wraps each ID in a no-wrap span written with an ASCII hyphen, attribute values lose U+2011, and the guide check fails on any U+2011 left in the page's text. The owners' sources may keep U+2011 | The Inter files have no glyph for U+2011, so it drew from Arial, and a copied or searched "CL‑001" matched no file name; one pass in the build fixes every chapter |
+| D2-976 | The systems designer's question, one-color tiles from 48 px drawing their symbol at 32 to 34 px under DR-136's 48 px floor, goes to board B's decisions board; Rule 10.5 states the exception for the 94 drawings that read at 32 px until Dustin answers | Two settled rules meet here (the October tile rule and DR-136); the recommendation keeps the exception, since avatars show at 32 to 48 px |
+| D2-977 | The editor's read after the pass compares every chapter file, manifest and specimen against commit ddd3a898, the frozen review copy's source | One base for the read; the read covers every string the fix pass changed, the engineer's words included |
