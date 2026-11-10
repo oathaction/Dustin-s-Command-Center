@@ -2399,3 +2399,11 @@ Recommends Housing A, the Pause redraw, Filter A, all 37 fits, the print L3 and 
 | D2-1253 | The red goes on the left door | One home of the two, as A's red window marks one home among many; the left is read first |
 | D2-1254 | Housing B withdrawn; the card shows A and C | It still reads first as one house at 48 px, the creative director's own test (D2-622) |
 | D2-1255 | The script's previews and measuring steps can run for Housing alone (`--part housing-previews`, `--part housing-measure`) | The fix changes Housing only; the fits' and redraws' files and figures stay as they were |
+
+### Main session, drawings board C
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1256 | The board builder's routine calls stand as its notes record them (`20261110_Stage-C-Drawings-Board-Builder-Notes.md`); among them a `renders/` folder of 141 PNGs beside the board, remade on each run, and two decision numbers taken out of the creative director's score reasons so decision numbers appear only in the footer | The builder's notes; one source for the board's words |
+| D2-1257 | Drawings board C is published privately at https://claude.ai/artifact/LtEuA2zNh1WUidhd4cAVsH (version 1794340326-c858) with the page and its 181 files. Before publishing, the main session read the board's whole text and both scripts (storage inside try and catch, no network calls, links only to Google Fonts), scanned the 13 SVGs (no scripts or outside links) and the print proof PDF (one page, no scripts or links), looked at a contact sheet of all 167 PNGs, viewed the board at 1440 and 390 px, and ran `dataviz_check.js --board` on the check copy (1440, 390 and 360 px, 0 failures) | Every file is seen before it is published |
+| D2-1258 | This chat hands off after drawings board C. The thirteenth handoff is `work/handoffs/phase-2/20261110_Next-Session-Handoff_V13.md`; the next chat opens with Dustin's answers to the board | Seven agents and three resumed runs; the handoffs hand off after each board |

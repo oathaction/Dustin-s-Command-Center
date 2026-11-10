@@ -1123,6 +1123,8 @@ def fit_figures(M, I):
         'n_fits': len(rows), 'pf_fits_pass': sum(1 for r in rows if r['pf_fit']['pass']),
         'pf_masters_pass': sum(1 for r in rows if r['pf_master_pass']),
         'fits_full_min': fmt_pct(min(ff)), 'masters_full_min': fmt_pct(min(fm)), 'masters_full_max': fmt_pct(max(fm)),
+        'fits_full_line': ('Every inked pixel of every fit reaches full ink' if min(ff) >= 1 else
+                           f'Every fit has at least {fmt_pct(min(ff))} of its inked pixels at full ink'),
         'n_flagged': f'{M["n_flag"]} pair{"s" if M["n_flag"] != 1 else ""}', 'n_watched': f'{M["n_watch"]} more',
     }
 
@@ -1790,7 +1792,7 @@ dl.figs .chip{padding:0 4px;margin-left:.2em}
 .fr-note{grid-column:1/-1;font:var(--oa-type-body-small);margin:0;max-width:none}.fr-note .label{display:inline;margin-right:.4em}
 .fewer{font:var(--oa-type-body-small);margin-top:var(--oa-space-300);border-top:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-white);padding-top:var(--oa-space-150);max-width:var(--oa-layout-measure-intro-max)}
 .fewer .label{display:block}
-.col--u > .chips{min-height:1.75rem}
+.col > .chips{min-height:1.75rem}
 .hold{display:inline-flex;align-items:center;gap:var(--oa-space-100);min-height:var(--oa-size-target-touch);cursor:pointer;font:var(--oa-type-body-small)}
 .hold input{width:20px;height:20px;margin:0;accent-color:var(--oa-color-palette-charcoal)}
 @media (min-width:64em){
@@ -2067,7 +2069,9 @@ def main():
     built = datetime.datetime.now(datetime.timezone.utc)
     FILL.update({'built_date': words_date(built), 'built_time': words_time(built), 'n_fits': len(M['rows']), 'flag': fmt_like(M['flag']),
                  'watch': fmt_like(M['watch']), 'pairs': f'{M["pairs"]:,}', 'n_masters': I['n_masters'],
-                 'housing_shown': join_words(o['option'] for o in I['housing']['options'])})
+                 'housing_drawn': num_words(len(I['housing']['options']) + len(I['housing']['withdrawn'])),
+                 'housing_shown': (f' and withdrew {num_words(len(I["housing"]["withdrawn"]))}, so the card shows '
+                                   + join_words(o['option'] for o in I['housing']['options'])) if I['housing']['withdrawn'] else ''})
     cards = []
     for n, k in enumerate(CARD_ORDER, 1):
         W = C['cards'][k]

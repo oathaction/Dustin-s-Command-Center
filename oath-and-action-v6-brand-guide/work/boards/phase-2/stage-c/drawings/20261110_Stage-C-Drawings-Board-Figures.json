@@ -1,5 +1,5 @@
 {
- "built": "2026-11-10T19:45:03.192188+00:00",
+ "built": "2026-11-10T19:47:28.565603+00:00",
  "scores_file": "work/boards/phase-2/stage-c/drawings/20261110_CD-Scores.json",
  "thresholds": {
   "flag": 0.9092,
@@ -32,7 +32,7 @@
    "pixel_fit_utility": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/pixel-fit-utility.json",
    "likeness_neutral_masters": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/67af6aec-b8e0-5b79-b000-c172e734e753/scratchpad/stage-c/board/checks/likeness-neutral-masters.json"
   },
-  "likeness_run": "2026-11-10T19:44:43.733Z",
+  "likeness_run": "2026-11-10T19:47:10.101Z",
   "renderer": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36"
  },
  "designer_recommendations": {
@@ -707,6 +707,7 @@
      "fits_full_min": "100%",
      "masters_full_min": "0%",
      "masters_full_max": "8.3%",
+     "fits_full_line": "Every inked pixel of every fit reaches full ink",
      "n_flagged": "2 pairs",
      "n_watched": "16 more"
     },
@@ -2327,7 +2328,6 @@
       "fonts": [
        "Inter 400",
        "Inter 700",
-       "Inter 800",
        "Inter Tight 800"
       ]
      }
@@ -2519,8 +2519,8 @@
   "work/handoffs/phase-2/stage-c-identity/20261110_Social-Sign-Off-Comparison-1x.png"
  ],
  "bytes": {
-  "page": 334745,
+  "page": 334773,
   "files": 2244947,
-  "total": 2579692
+  "total": 2579720
  }
 }

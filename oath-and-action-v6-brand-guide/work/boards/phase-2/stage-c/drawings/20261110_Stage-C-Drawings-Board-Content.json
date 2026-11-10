@@ -79,7 +79,7 @@
    "short": "Housing",
    "title": "Housing, a new topic drawing",
    "lede": [
-    "The guide has no drawing for housing yet. In the Civic Line a lone house already means one household: it is the base of CL-054 Home Equity and the other household drawings, and rows of narrow houses carry Housing Scarcity. So a Housing drawing has to name homes for many households, renters as well as owners, and stay apart from those. The icon designer drew options in Civic Line's construction, and the card shows {housing_shown}.",
+    "The guide has no drawing for housing yet. In the Civic Line a lone house already means one household: it is the base of CL-054 Home Equity and the other household drawings, and rows of narrow houses carry Housing Scarcity. So a Housing drawing has to name homes for many households, renters as well as owners, and stay apart from those. The icon designer drew {housing_drawn} options in Civic Line's construction{housing_shown}.",
     "Each option shows at 128, 48 and 24 px, the red edition and the black, on Newsprint and on Charcoal. Topic drawings are used from 48 px up, so the 24 px view is a reference size only."
    ],
    "neighbors_title": "Its nearest settled drawings",
@@ -160,7 +160,7 @@
     "option": "all",
     "text": "All {n_fits}. Every fit passes the pixel-fit check, every fit's pixels reach full ink where no master line does, and all ten pairs among the five look-alikes moved apart."
    },
-   "summary": "This run: {pf_fits_pass} of {n_fits} fits pass the pixel-fit check at 1x and 2x, and {pf_masters_pass} of {n_fits} masters pass at 24 px. Every fit has {fits_full_min} or more of its pixels at full ink; the masters run from {masters_full_min} to {masters_full_max}. Against the {n_masters} drawings in use and each other, the look-alike check flags {n_flagged} and marks {n_watched} to watch.",
+   "summary": "This run: {pf_fits_pass} of {n_fits} fits pass the pixel-fit check at 1x and 2x, and {pf_masters_pass} of {n_fits} masters pass at 24 px. {fits_full_line}; in the masters the share runs from {masters_full_min} to {masters_full_max}. Against the {n_masters} drawings in use and each other, the look-alike check flags {n_flagged} and marks {n_watched} to watch.",
    "five_title": "The five look-alikes",
    "five_text": "At 24 px the masters of CL-023, CL-028, R-08, R-27 and R-45 draw as one page-and-magnifier shape, and two of them never share a view at small sizes. Here are their ten pairs as masters and as fits, from this run. Their rows carry a Look-alike mark.",
    "flag_note": "The fit is flagged against {pairs}; its master already measured {masters} against the same drawings. The studio settled this apart from the board: these drawings never share a view at small sizes.",

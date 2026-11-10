@@ -1,12 +1,12 @@
 # Handoff for the next session: Oath & Action Edition 06 (thirteenth handoff, November 10)
 
-Written November 10, 2026, after stage C's round 0 and drawings board C. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `20261110_Next-Session-Handoff_V12.md`. V5's sections 3 to 5, V8's section 3, V9's section 3, V10's section 3, V11's section 3 and V12's section 3 still hold, with the additions below. Decision log entries for this chat run from DR-203 to DR-206 and from D2-1115 to D2-1255. The change ledger ends at C-065.
+Written November 10, 2026, after stage C's round 0 and drawings board C. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `20261110_Next-Session-Handoff_V12.md`. V5's sections 3 to 5, V8's section 3, V9's section 3, V10's section 3, V11's section 3 and V12's section 3 still hold, with the additions below. Decision log entries for this chat run from DR-203 to DR-206 and from D2-1115 to D2-1258. The change ledger ends at C-065.
 
 ## 1. Where things stand
 
 | Page | Address | Status |
 |---|---|---|
-| Drawings board C | DRAWINGS_BOARD_C_URL | Version 1. Waiting for Dustin's answers on five cards |
+| Drawings board C | https://claude.ai/artifact/LtEuA2zNh1WUidhd4cAVsH | Version 1 (1794340326-c858), published privately (D2-1257). Waiting for Dustin's answers on five cards; `work/boards/phase-2/stage-c/drawings/20261110_Published-Pages.json` records it |
 | Chapters page (01 to 12, identity proofs) | https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF | Version 5, unchanged this chat. The committed build has moved on (round 0's shell pass, tokens 6.0.0-gate2.7, chapter 08's dark card test, chapter 09's opener); it is republished at board C |
 | Board B decisions board | https://claude.ai/artifact/MV5dR1EXqj6ZH4dsbqck4i | Answered (DR-199 to DR-201) |
 | Both reader check pages | Deleted | DR-206; their files stay in `work/boards/phase-2/reader-check/` and `reader-check-2/` |
@@ -56,7 +56,8 @@ As the stage C brief's "Order of work" 4 to 6 sets: three red teams and the crea
 - **Round 0 ran five agents in parallel** with no file crossing: each had its own notes file, owned files and limits in one brief. Messages to a running agent arrived at its next tool round and were folded in.
 - **The research lead was resumed** from its carried checks for round 0 and kept its context, which saved its setup reading.
 - **Contracts for round 1** are in the engineer's round 0 notes: `"opener"`, `"code": {"set", "name"}` with sets in `work/build/guide/code/`, `data-oa-theme` (`light`, `dark`, `device`) with storage key `oa-theme`, `--oa-color-surface` and `--oa-color-field-ground`, and the shell's `status_line()`.
-- **Context.** This chat ran nine agent runs and five resumed runs. Hand off after each board.
+- **Context.** This chat ran seven agents and three resumed runs (the research lead for round 0, the icon designer's fix round, the creative director's note on the withdrawal). Hand off after each board.
+- **Publishing a board with 181 files.** The Artifact tool took `file_path`, `root` set to the publish folder and `files` as the full list of `{"path": "img/..."}` in one call. Before it, the main session read the text and scripts, scanned SVGs and PDFs for scripts and links, and looked at a contact sheet of every PNG (D2-1257).
 
 ## 4. Starting prompt for the new chat
 
@@ -95,9 +96,9 @@ Created, all under `work/`:
 - **Drawings:** `build/assets/civic-line-24-fit/`, `build/assets/utility-16-redraw/`, the 20261110 Housing files in `build/assets/civic-line-new-topics/`, the print L3 proposal files in `build/assets/identity/`.
 - **Scripts:** `build/scripts/phase-2/civic_line_stage_c_drawings.py`, `stage_c_identity_round0.py`, `token_table_build.py`, `stage_c_drawings_board_build.py`.
 - **Specimens and code:** `build/guide/specimens/s-09-opener.html`, `s-26-token-table.html`, `build/guide/code/`.
-- **Board:** `boards/phase-2/stage-c/drawings/` (the board, its content, figures and the creative director's scores).
+- **Board:** `boards/phase-2/stage-c/drawings/` (the board, its content, figures, `renders/`, the creative director's scores and `20261110_Published-Pages.json`).
 
 Modified:
-- `ledger/20261020_Decision-Log.md` (DR-203 to DR-206, D2-1115 to D2-1255), `ledger/20261020_Change-Ledger.md` (C-065).
+- `ledger/20261020_Decision-Log.md` (DR-203 to DR-206, D2-1115 to D2-1258), `ledger/20261020_Change-Ledger.md` (C-065).
 - The tokens (6.0.0-gate2.7) and their tests; the shell; `guide_build.py` and `guide_check.js`; chapters 08 and 09 with the identity generators and manifest; the chapters page build and its reports.
 - The stage B drawings board's content file (28 dead overrides removed) and both published pages files (the deletions).
