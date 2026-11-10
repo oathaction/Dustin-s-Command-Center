@@ -199,6 +199,13 @@ async function walk(browser, { mode, width, scale, captures, reduce, label, firs
       // the clock starts only after the images decode; it then runs its seconds and moves on
       await page.waitForFunction(() => !document.querySelector('main .loading'), null, { timeout: 20000 });
       const t0 = Date.now();
+      if (s.key === 'marks:look') {   // read first: a scaled look lasts half a second
+        const grid = await page.evaluate(() => [...document.querySelectorAll('main .sheet .sheet-cell')].map((c) => { const r = c.getBoundingClientRect(); return [Math.round(r.left), Math.round(r.bottom)]; }));   // the cells share a row's bottom edge
+        const rows = [...new Set(grid.map((g) => g[1]))], cols = [...new Set(grid.map((g) => g[0]))];
+        const perRow = rows.map((t) => grid.filter((g) => g[1] === t).length);
+        res.sheet = { rows: perRow, columns: cols.length };
+        if (grid.length !== 12 || rows.length !== 3 || perRow.some((n) => n !== 4) || cols.length !== 4) fail(`marks:look: the sheet is not three rows of four in four columns (${JSON.stringify(res.sheet)})`);
+      }
       const imgs = await page.evaluate(() => [...document.querySelectorAll('main img')].map((i) => ({ ok: i.complete && i.naturalWidth > 0, w: Math.round(i.getBoundingClientRect().width), src: i.currentSrc.split('/').pop() })));
       // read which drawings show now, while the look is on screen (a scaled look lasts half a second)
       const shownSrcs = await page.evaluate((k) => [...document.querySelectorAll(k === 'row_24:look' ? 'main .rowx img' : k === 'marks:look' ? 'main .sheet img' : 'main .none')].map((i) => i.currentSrc.split('/').pop()), s.key);
@@ -211,13 +218,6 @@ async function walk(browser, { mode, width, scale, captures, reduce, label, firs
       if (nm && !capNames.has(nm)) { await check(s.key); await snap(nm); }
       // the guide's switch: pixel fits under 2 device pixels per CSS pixel, the masters from 2 (DR-179)
       const dpr = captures ? 2 : 1;
-      if (s.key === 'marks:look') {
-        const grid = await page.evaluate(() => [...document.querySelectorAll('main .sheet .sheet-cell')].map((c) => { const r = c.getBoundingClientRect(); return [Math.round(r.left), Math.round(r.bottom)]; }));   // the cells share a row's bottom edge
-        const rows = [...new Set(grid.map((g) => g[1]))], cols = [...new Set(grid.map((g) => g[0]))];
-        const perRow = rows.map((t) => grid.filter((g) => g[1] === t).length);
-        res.sheet = { rows: perRow, columns: cols.length };
-        if (grid.length !== 12 || rows.length !== 3 || perRow.some((n) => n !== 4) || cols.length !== 4) fail(`marks:look: the sheet is not three rows of four in four columns (${JSON.stringify(res.sheet)})`);
-      }
       if (s.key === 'row_24:look' || s.key === 'marks:look') {
         const fits = s.key === 'row_24:look' ? shownSrcs : shownSrcs.slice(8);
         const want = (f) => (dpr === 2 ? /^(g\d\.svg|mark-\d+-b\.svg)$/ : /^(g\d-24\.svg|mark-\d+\.svg)$/).test(f);
