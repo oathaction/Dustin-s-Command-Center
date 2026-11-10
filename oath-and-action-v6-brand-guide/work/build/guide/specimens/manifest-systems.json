@@ -935,7 +935,7 @@
   "chapter": "11",
   "rule": "11.6",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. The same Illustrative page for bill H.99001, Public meeting notice, with a stock stepper in place of the numbered steps: a filled box with a check for step 1, a box with a dot for step 2 and empty boxes for steps 3 to 6, with no numbers, no state in words and no way to take part.",
+  "alt": "Labeled Failure case: do not publish. The same Illustrative page for bill H.99001, Public meeting notice, with a generic stepper from a component library in place of the numbered steps: a filled box with a check for step 1, a box with a dot for step 2 and empty boxes for steps 3 to 6, with no numbers, no state in words and no way to take part.",
   "illustrative": true,
   "notes": "",
   "fit_switch": false

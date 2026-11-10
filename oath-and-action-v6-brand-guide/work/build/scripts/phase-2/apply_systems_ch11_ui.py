@@ -737,8 +737,8 @@ def build_ui(ctx, m, rule_titles):
                      'invites help that shows only on hover.'],
             'tokens': ['oa.component.icon.utility.line.medium', 'oa.size.icon.medium', 'oa.size.icon.small',
                        'oa.size.target.touch'],
-            'why': {'text': ['A reader who meets an icon beside its word learns the sign once and reads it faster after '
-                             'that, and the word carries the meaning for anyone who does not know the sign. With the word '
+            'why': {'text': ['A reader who meets an icon beside its word learns the sign once, and the word carries the '
+                             'meaning for anyone who does not know the sign. With the word '
                              'showing, the icon stays hidden from screen readers, so nobody hears the action twice, and a '
                              'control’s name starts with the words a reader sees, which voice control needs. A name that '
                              'shows only on hover never reaches a phone, a keyboard or a magnified screen.'],
@@ -746,7 +746,7 @@ def build_ui(ctx, m, rule_titles):
             'correct': {'specimen': 's-11-11-correct',
                         'caption': 'A report reader’s toolbar, live at 360 px. Each icon sits beside its word, every '
                                    'control stands 44 px tall, Previous page says why it is unavailable on the first page, '
-                                   'and the page’s size stays two words.'},
+                                   'and the control for the page’s size stays in words.'},
             'failure': {'specimen': 's-11-11-failure',
                         'caption': '<strong>Fails Rule 11.11.</strong> The toolbar shows icons with no words, each 32 px '
                                    'square, and its information mark gives its name only in a box that appears on hover.'},
@@ -845,8 +845,8 @@ def build_ui(ctx, m, rule_titles):
                      'an action on a page. Reset is the utility icon’s open circle with one arrowhead, Download is the '
                      'arrow into a tray, and each sits beside its word.'],
             'why': {'text': ['A symbol that works as a button in one place and names a subject in another teaches the '
-                             'reader two meanings for one drawing. CL-024, Feedback loop, comes nearest to the refresh sign '
-                             'a builder reaches for, and a loop stepper is the place a builder would reach for it.'],
+                             'reader two meanings for one drawing. CL-024, Feedback loop, looks most like a refresh sign, '
+                             'and a loop stepper is where a builder would reach for one.'],
                     'basis': 'Design judgment; Rule 10.1'},
             'correct': {'specimen': 's-11-14-correct',
                         'caption': 'A loop stepper from our systems atlas, live at 360 px. Play, Reset the loop, Previous '
@@ -864,8 +864,8 @@ def build_ui(ctx, m, rule_titles):
                                                               'something (Rule 10.1)'},
             ],
             'related': ['10', '15'],
-            'builders': ['When a control needs an icon the utility set lacks, use the word alone and ask the editor; do not '
-                         'borrow a drawing from chapter 10.'],
+            'builders': ['When a control needs an icon the utility set lacks, use the word alone and ask the editor, and '
+                         'leave chapter 10’s drawings to the subjects they name.'],
         },
         {
             'id': '11.15', 'title': 'Give each error, success and warning its mark and its words.',
@@ -930,7 +930,8 @@ def build_ui(ctx, m, rule_titles):
                     'basis': 'Rule 05.3; WCAG 2.2 SC 1.4.1'},
             'correct': {'specimen': 's-11-16-correct',
                         'caption': 'One view at 360 px. The email field’s error holds the red. The take-part disc on step '
-                                   '2 and the heavier outline where reform R-01 acts stay in Charcoal with their words, '
+                                   '2 and the heavier outline where reform R-01, all-party primaries with ranked general '
+                                   'elections, acts stay in Charcoal with their words, '
                                    'and Remind me is Charcoal until the error is fixed.'},
             'failure': {'specimen': 's-11-16-failure',
                         'caption': '<strong>Fails Rules 11.16 and 05.3.</strong> The error, the take-part mark and the '

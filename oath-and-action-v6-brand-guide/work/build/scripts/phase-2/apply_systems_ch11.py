@@ -923,7 +923,7 @@ def s_11_6(ctx):
     fcss, band = ctx.fail_band(flush=True)
     html = f'<style>{page_css(ctx, "n", "s")}{fcss}</style>{band}{bill_page(ctx, "n", "s", generic=True)}'
     alt = ('Labeled Failure case: do not publish. The same Illustrative page for bill H.99001, Public meeting notice, with '
-           'a stock stepper in place of the numbered steps: a filled box with a check for step 1, a box with a dot for '
+           'a generic stepper from a component library in place of the numbered steps: a filled box with a check for step 1, a box with a dot for '
            'step 2 and empty boxes for steps 3 to 6, with no numbers, no state in words and no way to take part.')
     spec(ctx, 's-11-6-failure', html, '11.6', alt, width=360, illustrative=True)
     return sids
@@ -1145,8 +1145,9 @@ def build(ctx):
             'builders': ['Write the status words from the data, never from the drawing: the step number, its name for '
                          'this bill’s route and one sentence on what happens next. Store step 6 as the signer, so a state '
                          'bill prints Governor and a federal bill prints President.',
-                         'Number an invented bill far past any number a legislature has used: a federal bill from H.R. '
-                         '99001 up, a state bill from H.99001 and S.99002 up, and a Nebraska bill with Nebraska’s LB, for '
+                         'Number an invented bill past the numbers legislatures assign: a federal bill from H.R. 99001 up, '
+                         'state bills from one count that starts at H.99001 and S.99002, and a Nebraska bill with '
+                         'Nebraska’s LB, for '
                          'Legislative Bill, from LB 99008 up. Label each one Illustrative. A cropped plate then cannot put '
                          'our status words on a real bill.'],
         },
@@ -1168,7 +1169,7 @@ def build(ctx):
                         'caption': 'The six states, each drawn on step 4 at true size. Each one changes the '
                                    'shape, so the set reads in grayscale.'},
             'failure': {'specimen': 's-11-2-failure',
-                        'caption': f'<strong>Fails 1.4.1.</strong> Six identical circles tell their states by hue alone. '
+                        'caption': f'<strong>Fails WCAG 2.2 SC 1.4.1.</strong> Six identical circles tell their states by hue alone. '
                                    f'In grayscale, the done steps in Verdigris and the steps ahead in Stone print as grays '
                                    f'{rr} to 1 apart, and no word says where the bill stands.'},
             'specs': [
@@ -1326,7 +1327,7 @@ def build(ctx):
                         'caption': 'H.99001’s page at 360 px. Step 2 holds the way to take part, and step 5’s note says the '
                                    'Senate’s committee often holds a hearing of its own.'},
             'failure': {'specimen': 's-11-6-failure',
-                        'caption': '<strong>Fails Rule 11.6.</strong> A stock stepper draws checks and boxes with no '
+                        'caption': '<strong>Fails Rule 11.6.</strong> A generic stepper from a component library draws checks and boxes with no '
                                    'numbers, so a reader who learned the steps in a list has to learn a second set.'},
             'specs': [
                 {'label': 'Circles', 'value': '28 px with 14 px numbers'},
@@ -1385,7 +1386,7 @@ def build(ctx):
                      'The words say how the agency answered, with the date: Granted, Partly granted, Denied, or Closed with '
                      'no records released. A request the requester stopped reads “Withdrawn by the requester”, and its line '
                      'ends on a square at the step where it stopped. An appeal ends in words too: Upheld, Partly reversed, '
-                     'or Reversed and sent back.'],
+                     'Reversed and sent back, or Closed for other reasons.'],
             'why': {'text': ['A requester can wait weeks for an answer, and the steps tell them where the request sits. '
                              'The marks are the bill tracker’s, so a reader learns them once. The end words follow the '
                              'Justice Department’s own categories in plain words, with one change: the department counts '
@@ -1420,12 +1421,13 @@ def build(ctx):
                      'Final rule and In effect. Step 1 is optional, so a rule that had no early notice keeps step 1 under a '
                      'slash. While comments are open, step 3 takes the take-part mark from Rule 11.4, with the deadline and '
                      'how to send a comment.',
-                     'A rule the agency issued without asking for comment first, such as an interim final rule, keeps steps '
-                     '2 to 4 under slashes, and its words say so: “Issued without advance comment.” A rule that ends early '
+                     'A rule the agency issued without asking for comment first, such as an interim final rule, which takes '
+                     'comments only after it takes effect, keeps steps 2 to 4 under slashes, and its words say so: “Issued without advance comment.” A rule that ends early '
                      'says how in words, with the date: Withdrawn by the agency, Struck by Congress, or Set aside by a '
                      'court. Once a rule takes effect, all six steps fill, as a bill’s do once it becomes law.'],
             'tokens': ['oa.component.mark.takePart.disc'],
-            'why': {'text': ['Sending a comment is the public’s main way to take part in a federal rule, so the open '
+            'why': {'text': ['Sending a comment is the way the law gives the public to take part in a federal rule, so '
+                             'the open '
                              'comment period carries the view’s working red, as a hearing does on a bill. The slashes keep '
                              'a rule that skipped comment from reading as one the public had a say in before it took '
                              'effect.'],
@@ -1544,7 +1546,8 @@ def build(ctx):
             'Policy; both retrieved November 9, 2026. The steps, the 20 working days and the pauses in them, behind Rules '
             '11.8 and 11.10.',
             'Source: Office of Information Policy, Justice Department, “Fiscal Year 2024 Annual Freedom of Information Act '
-            'Report”, March 6, 2025, section III. The categories behind the end words in Rule 11.8.',
+            'Report”, March 6, 2025, section III, fiscal year 2024, federal agencies. Retrieved November 9, 2026. The '
+            'categories behind the end words in Rule 11.8.',
             'Sources: rulemaking, 5 U.S.C. 553, Congressional review, 5 U.S.C. 801, and judicial review, 5 U.S.C. 706, via '
             'the Legal Information Institute; and RegInfo.gov, “Frequently Asked Questions”, the Office of Information and '
             'Regulatory Affairs; all retrieved November 9, 2026. The steps of a federal rule, its comment period, when it '

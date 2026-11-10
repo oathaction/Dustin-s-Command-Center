@@ -195,6 +195,8 @@ async function walk(browser, { mode, width, scale, captures, reduce, label, firs
       await page.waitForFunction(() => !document.querySelector('main .loading'), null, { timeout: 20000 });
       const t0 = Date.now();
       const imgs = await page.evaluate(() => [...document.querySelectorAll('main img')].map((i) => ({ ok: i.complete && i.naturalWidth > 0, w: Math.round(i.getBoundingClientRect().width), src: i.currentSrc.split('/').pop() })));
+      // read which drawings show now, while the look is on screen (a scaled look lasts half a second)
+      const shownSrcs = await page.evaluate((k) => [...document.querySelectorAll(k === 'row_24:look' ? 'main .rowx img' : k === 'marks:look' ? 'main .sheet img' : 'main .none')].map((i) => i.currentSrc.split('/').pop()), s.key);
       if (imgs.some((i) => !i.ok)) fail(`${s.key}: image not loaded ${JSON.stringify(imgs)}`);
       const clock = await page.evaluate(() => ({ text: document.querySelector('#bar-step').textContent, bar: getComputedStyle(document.querySelector('#clock')).display }));
       if (!/seconds? left/.test(clock.text)) fail(`${s.key}: no time-left text (${clock.text})`);
@@ -205,8 +207,7 @@ async function walk(browser, { mode, width, scale, captures, reduce, label, firs
       // the guide's switch: pixel fits under 2 device pixels per CSS pixel, the masters from 2 (DR-179)
       const dpr = captures ? 2 : 1;
       if (s.key === 'row_24:look' || s.key === 'marks:look') {
-        const srcs = await page.evaluate((k) => [...document.querySelectorAll(k === 'row_24:look' ? 'main .rowx img' : 'main .sheet img')].map((i) => i.currentSrc.split('/').pop()), s.key);
-        const fits = s.key === 'row_24:look' ? srcs : srcs.slice(8);
+        const fits = s.key === 'row_24:look' ? shownSrcs : shownSrcs.slice(8);
         const want = (f) => (dpr === 2 ? /^(g\d\.svg|mark-\d+-b\.svg)$/ : /^(g\d-24\.svg|mark-\d+\.svg)$/).test(f);
         if (!fits.length || !fits.every(want)) fail(`${s.key}: at ${dpr}x the drawings are ${fits.join(' ')}`);
         res.dprChecks = (res.dprChecks || 0) + 1;

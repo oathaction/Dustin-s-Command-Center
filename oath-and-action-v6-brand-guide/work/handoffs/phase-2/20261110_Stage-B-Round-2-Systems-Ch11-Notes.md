@@ -2,7 +2,7 @@
 
 Oath & Action Edition 06, Phase 2, stage B round 2, November 10, 2026. Written by chapter 11's systems designer (`oa-design-director`, checked against `oa-ux-accessibility-lead`), run as a subagent of the main session under D2-720 and `20261110_Stage-B-Round-2-Brief.md` ("Chapter 11"). Chapter 10's maker keeps `20261110_Stage-B-Round-2-Systems-Notes.md`; the main session asked for chapter 11's notes in this file. I committed nothing and published nothing. Paths are relative to `oath-and-action-v6-brand-guide/`.
 
-Status: built and checked. The editor's change table for chapter 11 had not landed when I handed back; I apply it when it does.
+Status: built and checked. The editor's first-pass table for chapter 11 (editor's notes, section 4d, 12 rows) is applied in full. The editor still means to read the specimens' alts and the final text.
 
 ## For other owners, first
 
@@ -60,7 +60,7 @@ Chapter 11 now runs in four groups and 16 rules, with 37 specimens (5 of them li
 
 The links list (`s-11-13-correct`) is live too. Each finds its elements by data attributes from `document.currentScript`, since the build prefixes every id and class.
 
-**Weight.** Chapter 11 measures 547,766 bytes in the built page, under its 550,000 budget; it measured 751,545 before the trims listed under D2 lines below.
+**Weight.** Chapter 11 measures 548,024 bytes in the built page, under its 550,000 budget by about 2 KB; it measured 751,545 before the trims listed under D2 lines below. A longer word pass could tip it over; the engineer's tokens.css link (requests) is the room.
 
 **Figures** every rule prints are in `work/handoffs/phase-2/20261110_Stage-B-Round-2-Ch11-Figures.json`. The apply pass's `20261107_Apply-Pass-Systems-Ch11-Figures.json` stays as its record.
 
@@ -90,7 +90,7 @@ The links list (`s-11-13-correct`) is live too. Each finds its elements by data 
 - D2-xxx | The form validates on submit, moves focus to the first field to fix, and sends success to a status line from a template | SC 3.3.1 and 4.1.3; a status region that exists from the start is announced reliably
 - D2-xxx | The links in Rule 11.13's correct plate are real sources from the research lead's sections 5 and 7, in the same tab | D2-513; a live link to a real page shows the rule as a reader meets it
 - D2-xxx | Rule 11.14's failure draws CL-024 from the sprite at 24 px, one color, tagged `topic` | CL-024 is among the 41, so B-3 holds; the fault is semantic (D2-515)
-- D2-xxx | Fault drawings that belong to no family (Rule 11.5's dots, Rule 11.6's stock stepper, the information mark, the pointer and the small figure's arrows) carry no `data-icon` | Tagging them would add made-up members to a family
+- D2-xxx | Fault drawings that belong to no family (Rule 11.5's dots, Rule 11.6's generic stepper, the information mark, the pointer and the small figure's arrows) carry no `data-icon` | Tagging them would add made-up members to a family
 - D2-xxx | Each specimen keeps only the CSS rules whose classes its markup carries, and drops a type style's own `font-variant-numeric: normal` after `font:`, and `letter-spacing: 0em` and `text-transform: none` for the reading styles | The pieces share one style source; the stage already inherits those values, and no piece sets a reading style inside a label; this saved about 100 KB
 - D2-xxx | Fixed-width plates in chapter 11 set `fit_switch: false` | Every one sets 13 px step names or numbers, so D2-442 can never offer a fit, and the switch's markup cost about 10 KB
 - D2-xxx | The wide list on Charcoal, the bill page on Charcoal and the wide bill page leave the chapter, and one extra now shows the wide form on Charcoal with two bills | Chapter 11's 0.55 MB budget; one plate still shows both the wide form and the Charcoal marks, and the wide page's key of meanings is the six-steps table after Rule 11.1
@@ -125,7 +125,7 @@ The links list (`s-11-13-correct`) is live too. Each finds its elements by data 
 ## Tested
 
 - `python3 -I work/build/scripts/phase-2/apply_systems_ch11.py`: 16 rules, 37 specimens, 19 figures. Every specimen passes the systems checks: no heading, landmark, dash, literal color or px font size; curly quotes in every alt.
-- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide.html`: exit 0, no warnings, 12 chapter files, 128 rules, 295 specimens. Chapter 11 weighs 547,766 bytes against 550,000.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide.html`: exit 0, no warnings, 12 chapter files, 128 rules, 295 specimens. Chapter 11 weighs 548,024 bytes against 550,000.
 - `node work/build/scripts/phase-2/guide_check.js <scratch>/guide.html` at 1440, 1024, 390 and 360 px.
   - Chapter 11 has no failure.
   - The page's only failure is `s-10-lib-03`'s "gate" (chapter 10).
@@ -160,7 +160,7 @@ Created:
 - Specimens: `s-11-8-correct`, `s-11-8-failure`, `s-11-9-correct`, `s-11-9-failure`, `s-11-10-correct`, `s-11-10-failure`, `s-11-11-correct`, `s-11-11-failure`, `s-11-icons`, `s-11-12-correct`, `s-11-12-failure`, `s-11-menu`, `s-11-13-correct`, `s-11-13-failure`, `s-11-14-correct`, `s-11-14-failure`, `s-11-15-correct`, `s-11-15-failure`, `s-11-marks`, `s-11-16-correct`, `s-11-16-failure` (all `.html` in `work/build/guide/specimens/`)
 
 Modified:
-- `work/build/scripts/phase-2/apply_systems_ch11.py`
+- `work/build/scripts/phase-2/apply_systems_ch11.py` (and the new module) with the editor's 12 changes from section 4d of `20261110_Stage-B-Round-2-Editor-Notes.md`
 - `work/build/guide/chapters/11-icons.json`
 - `work/build/guide/specimens/manifest-systems.json` (chapter 11's entries only; 05 to 07 kept)
 - Every other `s-11-*.html` specimen, rebuilt by the script

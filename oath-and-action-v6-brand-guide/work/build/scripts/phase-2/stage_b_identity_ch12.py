@@ -69,7 +69,7 @@ def article(dashed=False):
 
 @spec
 def s_12_divider_correct():
-    sw = "".join(f'<div class="oai-cell" style="flex:1 1 120px"><div class="oai-s-{s}" style="height:56px;display:flex;align-items:center;'
+    sw = "".join(f'<div class="oai-cell" style="flex:1 1 120px;align-items:stretch"><div class="oai-s-{s}" style="height:56px;display:flex;align-items:center;'
                  f'padding:0 12px"><div aria-hidden="true" style="flex:1;border-top:1px solid {hl(s)}"></div></div>'
                  f'<span class="oai-tag">{E(n)}</span></div>'
                  for s, n in (("newsprint", "Newsprint, Stone"), ("white", "White, Stone"), ("charcoal", "Charcoal, Stone"),
@@ -113,7 +113,7 @@ INDEX = [("Stone hairline", "Separates sections and modules", "12.1"),
 
 @spec
 def s_12_index():
-    rows = "".join(f'<tr><th scope="row">{E(d)}</th><td data-k="Job">{E(j)}</td><td data-k="Rule">'
+    rows = "".join(f'<tr><th scope="row">{E(d)}</th><td data-k="Job">{E(j)}</td><td data-k="Rule" style="white-space:nowrap">'
                    f'<a href="#rule-{r.replace(".", "-")}">Rule {r}</a></td></tr>' for d, j, r in INDEX)
     table = ('<table class="stack"><thead><tr><th scope="col">Device</th><th scope="col">Its job</th><th scope="col">Rule</th>'
              f'</tr></thead><tbody>{rows}</tbody></table>')
@@ -238,21 +238,23 @@ STEP = 16          # the arcs' step in px: half the hinge diagram's ring radius 
 PITCH = 12         # the rules' pitch in px: the hinge divider's 1 px line repeated on the spacing scale's 4 px grid
 
 
-def hinge_arcs(w, h, surface, corner="br"):
+def hinge_arcs(w, h, surface, corner="br", fill=False):
     """Concentric arcs from a corner, at radii 2, 3, 4 and more times STEP: the hinge diagram's ring and arcs (110 and 165
-    units, a 2 to 3 ratio) carried on in equal steps, 1 px, in the surface's hairline color."""
+    units, a 2 to 3 ratio) carried on in equal steps, 1 px, in the surface's hairline color. The arcs end inside a
+    quarter circle as wide as the area's shorter side, so none is cut off flat; fill=True runs them to the far corner
+    (a swatch, or the failure). Clipped to its box, whatever the page's CSS says about overflow."""
     cx, cy = (w, h) if corner == "br" else (w, 0)
-    rmax = (w * w + h * h) ** 0.5
-    circles = "".join(f'<circle cx="{cx}" cy="{cy}" r="{k * STEP}"/>' for k in range(2, int(rmax / STEP) + 2))
+    rmax = (w * w + h * h) ** 0.5 if fill else min(w, h) - 1
+    circles = "".join(f'<circle cx="{cx}" cy="{cy}" r="{k * STEP}"/>' for k in range(2, int(rmax / STEP) + (2 if fill else 1)))
     return (f'<svg width="{w}" height="{h}" viewBox="0 0 {w} {h}" aria-hidden="true" focusable="false" class="oai-svg" '
-            f'style="display:block" fill="none" stroke="{hl(surface)}" stroke-width="1">{circles}</svg>')
+            f'style="display:block;overflow:hidden" fill="none" stroke="{hl(surface)}" stroke-width="1">{circles}</svg>')
 
 
 def hinge_rules(w, h, surface):
     """The hinge divider's 1 px line repeated every PITCH px, in the surface's hairline color."""
     rects = "".join(f'<rect x="0" y="{y}" width="{w}" height="1"/>' for y in range(0, h, PITCH))
     return (f'<svg width="{w}" height="{h}" viewBox="0 0 {w} {h}" aria-hidden="true" focusable="false" class="oai-svg" '
-            f'style="display:block" fill="{hl(surface)}">{rects}</svg>')
+            f'style="display:block;overflow:hidden" fill="{hl(surface)}">{rects}</svg>')
 
 
 def coverage():
@@ -261,7 +263,8 @@ def coverage():
     from PIL import Image
     out = {}
     for name, fn in (("hinge_arcs", hinge_arcs), ("hinge_rules", hinge_rules)):
-        uri = raster_png(f'<div style="line-height:0">{fn(240, 240, "newsprint")}</div>', 240, 240, f"p12-{name}", scale=1)
+        swatch = hinge_arcs(240, 240, "newsprint", fill=True) if name == "hinge_arcs" else hinge_rules(240, 240, "newsprint")
+        uri = raster_png(f'<div style="line-height:0">{swatch}</div>', 240, 240, f"p12-{name}", scale=1)
         im = Image.open(io.BytesIO(base64.b64decode(uri.split(",", 1)[1]))).convert("RGB")
         g, s = (0xDC, 0xD9, 0xD2), (0x5D, 0x63, 0x6D)
         span = max(abs(a - b) for a, b in zip(g, s))
@@ -283,7 +286,9 @@ def _coverage():
 def cover(pattern, behind=False):
     """A half-letter report cover at 1:1 on screen, 360 by 466 px, on Newsprint: the title at top left, the pattern in the
     open lower right. behind=True runs the pattern under the cover's paragraph (the failure)."""
-    pat = hinge_arcs(360, 466 if behind else 260, "newsprint") if pattern == "arcs" else hinge_rules(360 if behind else 180, 466 if behind else 200, "newsprint")
+    # the open area starts at least 24 px under the paragraph, which ends about 200 px down the cover
+    pat = (hinge_arcs(360, 466, "newsprint", fill=True) if behind else hinge_arcs(360, 220, "newsprint")) if pattern == "arcs" \
+        else hinge_rules(360 if behind else 180, 466 if behind else 192, "newsprint")
     pos = ("left:0;top:0" if behind else ("left:0;bottom:0" if pattern == "arcs" else "right:0;bottom:0"))
     return (f'<div class="oai-s-newsprint" style="position:relative;width:360px;height:466px;overflow:hidden;border:1px solid {hair("newsprint")}">'
             f'<div aria-hidden="true" style="position:absolute;{pos};line-height:0">{pat}</div>'

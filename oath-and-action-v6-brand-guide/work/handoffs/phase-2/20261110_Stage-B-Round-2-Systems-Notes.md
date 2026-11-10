@@ -10,7 +10,7 @@ Written by the chapter 10 maker (`oa-design-director`, checked against `oa-ux-ac
 
 - **03:44 UTC: the construction file was done.** `work/handoffs/phase-2/20261110_Stage-B-Ch10-Construction.md` holds the 128-unit box, the line, caps and joins, the red accent, the capped fit, the four editions and six tiles, the size floors and the list of 41 by ID with how it was decided. Chapters 09 and 11 can start from it. Its section 0 fixes chapter 10's rule numbers. Updated after the build: the printed rule titles, the tile counts from the inventory in use (30 drawings need 48 px on their own), the Civic Line hand's reading of the eight finals at 24 px, and the likeness figures in section 12.
 - **Chapter 10 is built and checked** (sections below), with two failures in `guide_check.js` that other owners close: the list of 41 in B-3, and one word in the editor's sentence for CL-064.
-- **The editor's word pass is applied** (`20261110_Stage-B-Round-2-Editor-Notes.md`, section 4a): all 25 rows of its table, written into `stage_b_ch10_build.py` at the strings it quotes, and chapter 10 rebuilt with `--no-draw` (the sheets do not change). The class table's utility row and its alt follow the new wording; `s-10-4-correct` now labels its invented headline Illustrative beside it, with `illustrative: true`; Rule 10.2's failure and its alt say "a generic icon library" for "stock". The editor's two label changes (CL-064's "checkpoint" and CL-025's second sentence) reach the library from the label table on the rebuild. The engineer has filled B-3's list and moved the accent token to 48 px, so both chapter 10 items are closed at their source; the guide check's result is under Tested.
+- **The editor's word pass is applied** (`20261110_Stage-B-Round-2-Editor-Notes.md`, section 4a): all 25 rows of its table, written into `stage_b_ch10_build.py` at the strings it quotes, and chapter 10 rebuilt with `--no-draw` (the sheets do not change). The class table's utility row and its alt follow the new wording; `s-10-4-correct` now labels its invented headline Illustrative beside it, with `illustrative: true`; Rule 10.2's failure and its alt say "a generic icon library" for "stock". The editor's two label changes (CL-064's "checkpoint" and CL-025's second sentence) reach the library from the label table on the rebuild. The engineer has filled B-3's list and moved the accent token to 48 px, so both chapter 10 items are closed at their source. The full guide check now passes with 0 failures at 1440, 1024, 390 and 360 px (under Chapter 12, Tested).
 
 ### What I built
 
@@ -112,7 +112,7 @@ Written by the chapter 10 maker, the same agent, under the round 2 brief's chapt
   - **12.9 Who owns the next step.** Our fourth edition's frame, "Give every handoff an owner.", on a federal records request: each step's actor, the next owner and the clock the law sets, with its source line. Failure: five passive boxes.
 - **10 specimens**, named by device: `s-12-marker-*`, `s-12-key-*`, `s-12-locator-*`, `s-12-layers-*`, `s-12-owner-*`, with entries in `manifest-systems.json`.
 - **The build**, `work/build/scripts/phase-2/stage_b_ch12_systems_build.py`. It creates the chapter file only if it is missing; on every later run it replaces Rules 12.5 to 12.9 and their own specimens and manifest entries and keeps everything else in the file, so the identity designer's rules survive my rebuilds and mine survive theirs if they merge the same way. It writes `work/handoffs/phase-2/20261110_Stage-B-Ch12-Systems-Figures.json`.
-- **Weight.** Chapter 12 weighs 0.23 MB of its shared 0.5 MB budget with my five rules alone (230,181 bytes in the build report). My ten fragments are 47 KB; the rest is the shell's rule blocks and closers.
+- **Weight.** Chapter 12 weighed 0.23 MB with my five rules alone, and 0.34 MB once the identity designer's four landed (339,792 of 500,000 bytes). My ten fragments are 47 KB; the rest is the shell's rule blocks and closers.
 
 ### Routine calls
 
@@ -140,12 +140,15 @@ None.
 - `python3 -I work/build/scripts/phase-2/stage_b_ch12_systems_build.py`: 5 rules, 10 specimens; its checks pass (no heading, landmark, dash, literal color, px font size or straight quote; every specimen used once).
 - `guide_build.py --strict` with chapter 12 in: exit 0; chapter 12 at 230,181 bytes.
 - Looked at all ten plates at 1440 and 390 px by capture, and fixed from what I saw: the marker's chain ran past its stage and its lines were too short, a layer title ran off the plate, and the frame's second step handed off to its own office.
-- The guide check's result is under Tested in the latest run below.
+- `node work/build/scripts/phase-2/guide_check.js` on a fresh strict build (exit 0) with chapters 10 and 12 in, after the editor's chapter 10 pass, at 1440, 1024, 390 and 360 px: **PASS, 0 failures**, 128 rules, 295 specimens, 1,028 same-page links. Chapter 10's two open items (`codes`, B-3) pass. Exemptions listed for my plates, all labeled failures: `s-10-5-failure` and `s-10-10-failure` (red), `s-12-marker-failure` and `s-12-locator-failure` (red), `s-12-key-failure` (contrast).
+- After two sentence edits in Rules 12.5 and 12.7, and with the identity designer's Rules 12.1 to 12.4 in the file: strict build exit 0 and `guide_check.js --quick` (1440 and 390 px) PASS, 0 failures, 132 rules, 304 specimens.
+- My build rerun on the shared file keeps the identity designer's four rules, their `s-12-index` extra and their intro, and rewrites nothing of theirs (`git diff` on the file after the rerun: no change).
+- Chapter 12 with both makers' rules weighs 339,792 bytes of its 500,000 budget.
 
 ### Not tested
 
 - A screen reader by ear, Firefox, Safari and print.
-- The chapter with the identity designer's rules in it: none had landed when I built.
+- The full four-width check with the identity designer's rules in: I ran the quick check (1440 and 390 px) on it.
 
 ### Change log
 

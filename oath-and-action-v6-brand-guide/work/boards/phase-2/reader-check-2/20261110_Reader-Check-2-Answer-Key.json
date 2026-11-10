@@ -69,8 +69,10 @@
    "civic_line_word": "Congress",
    "meaning": "A chamber in session, seen from the gallery, with members on a curved bench below a three-tier rostrum, stands for Congress.",
    "source": "work/build/assets/civic-line-v6/black/20261110_Oath-And-Action-Civic-Line-CL-025-Congress-Black.svg",
-   "pass": "The editor's row is still to come (DR-189). Until it lands, read the answer against the meaning sentence above.",
-   "partly": "The editor's row is still to come (DR-189)."
+   "pass": "Names Congress, the House or the Senate",
+   "partly": "Names a legislature, a parliament, lawmakers or a chamber in session, such as \"a legislature voting\"",
+   "to_dustin": "A court, a stadium or a theater audience, or any answer that names one party",
+   "expect": "The creative director found that no Congress drawing names Congress without its label, and that the label makes it land (D2-620). Congress will likely draw more partial answers than full ones, and a partial answer still shows the drawing points the reader at the right word."
   },
   {
    "code": "i2",
@@ -80,8 +82,10 @@
    "civic_line_word": "Testify",
    "meaning": "A witness at a table speaks into a microphone below three officials on a raised, curved dais, for testifying at a public hearing.",
    "source": "work/build/assets/civic-line-v6/black/20261110_Oath-And-Action-Civic-Line-CL-073-Testify-Black.svg",
-   "pass": "The editor's row is still to come (DR-189). Until it lands, read the answer against the meaning sentence above.",
-   "partly": "The editor's row is still to come (DR-189)."
+   "pass": "Names testifying or giving testimony, speaking at a hearing, or a witness before a committee or a panel",
+   "partly": "Names a hearing, a committee or a panel, or someone speaking at a microphone, without the person who testifies",
+   "to_dustin": "A court or a trial, a judge, or a debate between candidates",
+   "expect": null
   },
   {
    "code": "i3",
@@ -91,8 +95,10 @@
    "civic_line_word": "Contact an Official",
    "meaning": "One line carries a speech mark from a person to an official at a desk, for calling, writing to or visiting the office of someone who represents you.",
    "source": "work/build/assets/civic-line-v6/black/20261110_Oath-And-Action-Civic-Line-CL-074-Contact-An-Official-Black.svg",
-   "pass": "The editor's row is still to come (DR-189). Until it lands, read the answer against the meaning sentence above.",
-   "partly": "The editor's row is still to come (DR-189)."
+   "pass": "Names contacting, calling, writing to or visiting an official, a representative or their office",
+   "partly": "Names sending a message, giving feedback or making a complaint, with no official named",
+   "to_dustin": "A job interview, a customer service or front desk, or a bank teller",
+   "expect": null
   },
   {
    "code": "i4",
@@ -103,9 +109,12 @@
    "meaning": "A ballot that ranks three candidates in order stands for voters ranking candidates by preference in a race with one winner.",
    "source": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-R-02-Ranked-Choice-Voting-Black.svg",
    "pass": "Names ranking candidates or ranked or numbered choices on a ballot",
-   "partly": "Names voting or a ballot alone"
+   "partly": "Names voting or a ballot alone",
+   "to_dustin": null,
+   "expect": null
   }
  ],
+ "icons_note": "Answers listed under to_dustin go to Dustin in the readers' own words, whatever the count, because the drawings were drawn to rule them out (research notes of November 9, section 1). R-02 stays from the first check as a drawing already settled, for comparison. Why it is asked: Dustin asked that every symbol clearly depict its institution, act or reform (DR-146), and approved Congress, Testify and Contact an Official by name on November 10; only studio readers have named them so far.",
  "symbols_in_use": [
   "CL-025",
   "CL-073",

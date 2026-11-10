@@ -1741,3 +1741,17 @@ Dustin, replying to three questions (the plate's count after Missouri's vote, th
 | # | Decision | Reason |
 |---|---|---|
 | D2-838 | Missouri's certified result is read again before the guide is final, and the plate's words follow it | Counties file by November 17 and the state board certifies within two weeks after (research notes, Missouri) |
+
+### Systems designer, chapter 12's systems devices (`20261110_Stage-B-Round-2-Systems-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-839 | The intervention marker is drawn by calling System 1's `station_block`, `wire_marks`, `tag_point` and `verb`, with the atlas kit's target weights and its Newsprint keyline | The brief asks for System 1's red target; its own code copies the constants, and DR-53 puts the atlas on Newsprint, where the kit draws a red connection with a Charcoal edge |
+| D2-840 | The marker plate shows one step, C1 to C2, of reform R-01's three targets | Two connections in a 552 px column left each line about 80 px, too short for its tick, tag and arrowhead; one step at System 1's own length shows every mark clearly, and the note says "here" |
+| D2-841 | The marker plate shows the yield of Rule 11.16 beside the red | Chapter 11 sets which red wins; a builder needs to see the yielded marker as well as the red one |
+| D2-842 | Atlas excerpts in the guide print V7's short names from the editor's label table (Safe seats, Primary decisiveness) | DR-185 names each variable that way in chapter 10, so chapters 10 and 12 agree; System 1's plain names stay the atlas's own until its finishing pass |
+| D2-843 | The chart key example is an Illustrative count of claims by evidence grade, drawn with the chart system's grade marks | A grade is the one thing in the chart system a direct label cannot carry on every segment, so the key earns its place; inventing the counts avoids a statistic with no source |
+| D2-844 | The state locator uses Nebraska and Rule 11's one-chamber line | It ties the device to a story the guide already tells (DR-150) and makes no new claim |
+| D2-845 | The layer diagram draws the three layers and their parts from the atlas model, with the core outlined heavier | The brief allows an exploded view here alone; reading the model keeps the diagram true when the atlas changes |
+| D2-846 | The "Who owns the next step?" frame uses a federal records request, with the clocks from 5 U.S.C. 552 and the routes after an appeal from the research notes, section 7A | Its owners and clocks are set by statute and sourced; chapter 11 draws the same process as status steps, so the frame shows the other side, who acts |
+| D2-847 | Every chapter 12 specimen of mine is named by device and listed in `manifest-systems.json`; my build removes only those device names | D2-829, and two makers share the chapter |

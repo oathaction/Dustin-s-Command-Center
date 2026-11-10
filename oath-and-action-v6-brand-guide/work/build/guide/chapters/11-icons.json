@@ -90,7 +90,7 @@
       ],
       "builders": [
         "Write the status words from the data, never from the drawing: the step number, its name for this bill’s route and one sentence on what happens next. Store step 6 as the signer, so a state bill prints Governor and a federal bill prints President.",
-        "Number an invented bill far past any number a legislature has used: a federal bill from H.R. 99001 up, a state bill from H.99001 and S.99002 up, and a Nebraska bill with Nebraska’s LB, for Legislative Bill, from LB 99008 up. Label each one Illustrative. A cropped plate then cannot put our status words on a real bill."
+        "Number an invented bill past the numbers legislatures assign: a federal bill from H.R. 99001 up, state bills from one count that starts at H.99001 and S.99002, and a Nebraska bill with Nebraska’s LB, for Legislative Bill, from LB 99008 up. Label each one Illustrative. A cropped plate then cannot put our status words on a real bill."
       ]
     },
     {
@@ -118,7 +118,7 @@
       },
       "failure": {
         "specimen": "s-11-2-failure",
-        "caption": "<strong>Fails 1.4.1.</strong> Six identical circles tell their states by hue alone. In grayscale, the done steps in Verdigris and the steps ahead in Stone print as grays 1.25 to 1 apart, and no word says where the bill stands."
+        "caption": "<strong>Fails WCAG 2.2 SC 1.4.1.</strong> Six identical circles tell their states by hue alone. In grayscale, the done steps in Verdigris and the steps ahead in Stone print as grays 1.25 to 1 apart, and no word says where the bill stands."
       },
       "specs": [
         {
@@ -368,7 +368,7 @@
       },
       "failure": {
         "specimen": "s-11-6-failure",
-        "caption": "<strong>Fails Rule 11.6.</strong> A stock stepper draws checks and boxes with no numbers, so a reader who learned the steps in a list has to learn a second set."
+        "caption": "<strong>Fails Rule 11.6.</strong> A generic stepper from a component library draws checks and boxes with no numbers, so a reader who learned the steps in a list has to learn a second set."
       },
       "specs": [
         {
@@ -463,7 +463,7 @@
       "title": "Follow a records request through six steps, and end it in plain words.",
       "rule": [
         "A records request asks a government agency to release documents it holds. Its tracker uses the bill tracker’s marks for six steps of its own: Requested, Acknowledged, Searching, Reviewing, Answered and Appeal. Step 6 counts only when the requester appeals, so a request that was never appealed keeps step 6 under a slash once the time to appeal has passed.",
-        "The words say how the agency answered, with the date: Granted, Partly granted, Denied, or Closed with no records released. A request the requester stopped reads “Withdrawn by the requester”, and its line ends on a square at the step where it stopped. An appeal ends in words too: Upheld, Partly reversed, or Reversed and sent back."
+        "The words say how the agency answered, with the date: Granted, Partly granted, Denied, or Closed with no records released. A request the requester stopped reads “Withdrawn by the requester”, and its line ends on a square at the step where it stopped. An appeal ends in words too: Upheld, Partly reversed, Reversed and sent back, or Closed for other reasons."
       ],
       "why": {
         "text": [
@@ -515,14 +515,14 @@
       "title": "Follow an agency rule through six steps, and mark the open comment period as the way to take part.",
       "rule": [
         "A federal agency writes a rule in six steps: Early notice, Proposed, Comments open, Comments closed, Final rule and In effect. Step 1 is optional, so a rule that had no early notice keeps step 1 under a slash. While comments are open, step 3 takes the take-part mark from Rule 11.4, with the deadline and how to send a comment.",
-        "A rule the agency issued without asking for comment first, such as an interim final rule, keeps steps 2 to 4 under slashes, and its words say so: “Issued without advance comment.” A rule that ends early says how in words, with the date: Withdrawn by the agency, Struck by Congress, or Set aside by a court. Once a rule takes effect, all six steps fill, as a bill’s do once it becomes law."
+        "A rule the agency issued without asking for comment first, such as an interim final rule, which takes comments only after it takes effect, keeps steps 2 to 4 under slashes, and its words say so: “Issued without advance comment.” A rule that ends early says how in words, with the date: Withdrawn by the agency, Struck by Congress, or Set aside by a court. Once a rule takes effect, all six steps fill, as a bill’s do once it becomes law."
       ],
       "tokens": [
         "oa.component.mark.takePart.disc"
       ],
       "why": {
         "text": [
-          "Sending a comment is the public’s main way to take part in a federal rule, so the open comment period carries the view’s working red, as a hearing does on a bill. The slashes keep a rule that skipped comment from reading as one the public had a say in before it took effect."
+          "Sending a comment is the way the law gives the public to take part in a federal rule, so the open comment period carries the view’s working red, as a hearing does on a bill. The slashes keep a rule that skipped comment from reading as one the public had a say in before it took effect."
         ],
         "basis": "5 U.S.C. 553 and RegInfo.gov; Rule 11.4"
       },
@@ -639,13 +639,13 @@
       ],
       "why": {
         "text": [
-          "A reader who meets an icon beside its word learns the sign once and reads it faster after that, and the word carries the meaning for anyone who does not know the sign. With the word showing, the icon stays hidden from screen readers, so nobody hears the action twice, and a control’s name starts with the words a reader sees, which voice control needs. A name that shows only on hover never reaches a phone, a keyboard or a magnified screen."
+          "A reader who meets an icon beside its word learns the sign once, and the word carries the meaning for anyone who does not know the sign. With the word showing, the icon stays hidden from screen readers, so nobody hears the action twice, and a control’s name starts with the words a reader sees, which voice control needs. A name that shows only on hover never reaches a phone, a keyboard or a magnified screen."
         ],
         "basis": "WCAG 2.2 SC 2.5.3 and 1.4.13"
       },
       "correct": {
         "specimen": "s-11-11-correct",
-        "caption": "A report reader’s toolbar, live at 360 px. Each icon sits beside its word, every control stands 44 px tall, Previous page says why it is unavailable on the first page, and the page’s size stays two words."
+        "caption": "A report reader’s toolbar, live at 360 px. Each icon sits beside its word, every control stands 44 px tall, Previous page says why it is unavailable on the first page, and the control for the page’s size stays in words."
       },
       "failure": {
         "specimen": "s-11-11-failure",
@@ -815,7 +815,7 @@
       ],
       "why": {
         "text": [
-          "A symbol that works as a button in one place and names a subject in another teaches the reader two meanings for one drawing. CL-024, Feedback loop, comes nearest to the refresh sign a builder reaches for, and a loop stepper is the place a builder would reach for it."
+          "A symbol that works as a button in one place and names a subject in another teaches the reader two meanings for one drawing. CL-024, Feedback loop, looks most like a refresh sign, and a loop stepper is where a builder would reach for one."
         ],
         "basis": "Design judgment; Rule 10.1"
       },
@@ -846,7 +846,7 @@
         "15"
       ],
       "builders": [
-        "When a control needs an icon the utility set lacks, use the word alone and ask the editor; do not borrow a drawing from chapter 10."
+        "When a control needs an icon the utility set lacks, use the word alone and ask the editor, and leave chapter 10’s drawings to the subjects they name."
       ]
     },
     {
@@ -936,7 +936,7 @@
       },
       "correct": {
         "specimen": "s-11-16-correct",
-        "caption": "One view at 360 px. The email field’s error holds the red. The take-part disc on step 2 and the heavier outline where reform R-01 acts stay in Charcoal with their words, and Remind me is Charcoal until the error is fixed."
+        "caption": "One view at 360 px. The email field’s error holds the red. The take-part disc on step 2 and the heavier outline where reform R-01, all-party primaries with ranked general elections, acts stay in Charcoal with their words, and Remind me is Charcoal until the error is fixed."
       },
       "failure": {
         "specimen": "s-11-16-failure",
@@ -1042,7 +1042,7 @@
   "sources": [
     "Source: Nebraska Legislature, “Lawmaking in Nebraska”, via nebraskalegislature.gov, retrieved November 9, 2026. Nebraska’s one-chamber route and its steps, behind Rule 11.1.",
     "Sources: the Freedom of Information Act, 5 U.S.C. 552, via the Legal Information Institute, Cornell Law School; and FOIA.gov, “Frequently Asked Questions”, run by the Justice Department’s Office of Information Policy; both retrieved November 9, 2026. The steps, the 20 working days and the pauses in them, behind Rules 11.8 and 11.10.",
-    "Source: Office of Information Policy, Justice Department, “Fiscal Year 2024 Annual Freedom of Information Act Report”, March 6, 2025, section III. The categories behind the end words in Rule 11.8.",
+    "Source: Office of Information Policy, Justice Department, “Fiscal Year 2024 Annual Freedom of Information Act Report”, March 6, 2025, section III, fiscal year 2024, federal agencies. Retrieved November 9, 2026. The categories behind the end words in Rule 11.8.",
     "Sources: rulemaking, 5 U.S.C. 553, Congressional review, 5 U.S.C. 801, and judicial review, 5 U.S.C. 706, via the Legal Information Institute; and RegInfo.gov, “Frequently Asked Questions”, the Office of Information and Regulatory Affairs; all retrieved November 9, 2026. The steps of a federal rule, its comment period, when it takes effect and how it can end, behind Rule 11.9."
   ]
 }
