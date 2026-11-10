@@ -1,11 +1,11 @@
 {
  "pages": [
   {
-   "name": "Chapters page after the Q1 to Q4 pass (chapters 01 to 08, identity proofs, chapter 11 trackers)",
+   "name": "Chapters page after stage B round 2 (chapters 01 to 12, identity proofs)",
    "file": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
    "url": "https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF",
-   "version": "1794161090-92f5",
-   "published": "2026-11-08",
+   "version": "1794288563-5492",
+   "published": "2026-11-10",
    "access": "private",
    "history": [
     {
@@ -17,6 +17,11 @@
      "version": "1794161090-92f5",
      "published": "2026-11-08",
      "note": "after the Q1 to Q4 pass, version 3"
+    },
+    {
+     "version": "1794288563-5492",
+     "published": "2026-11-10",
+     "note": "after stage B round 2, version 4, before round 3 review"
     }
    ]
   },

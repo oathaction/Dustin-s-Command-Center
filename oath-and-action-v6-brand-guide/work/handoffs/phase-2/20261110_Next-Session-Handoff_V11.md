@@ -1,12 +1,12 @@
 # Handoff for the next session: Oath & Action Edition 06 (eleventh handoff, November 10)
 
-Written November 10, 2026, after the approved drawings were promoted and stage B's round 2 built chapters 09 to 12. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `20261109_Next-Session-Handoff_V10.md`. V5's sections 3 to 5 (rules in force, working notes, preferences), V8's section 3, V9's section 3 and V10's section 3 still hold, with the additions below. Decision log entries for this chat run from DR-184 to DR-189 and from D2-714 to D2-951. The change ledger ends at C-056.
+Written November 10, 2026, after the approved drawings were promoted and stage B's round 2 built chapters 09 to 12. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `20261109_Next-Session-Handoff_V10.md`. V5's sections 3 to 5 (rules in force, working notes, preferences), V8's section 3, V9's section 3 and V10's section 3 still hold, with the additions below. Decision log entries for this chat run from DR-184 to DR-189 and from D2-714 to D2-953. The change ledger ends at C-056.
 
 ## 1. Where things stand
 
 | Page | Address | Status |
 |---|---|---|
-| Chapters page (01 to 08, identity proofs, chapter 11's trackers) | https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF | Version 3, unchanged since November 7. Everything below is committed but not yet published |
+| Chapters page (01 to 12, identity proofs) | https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF | Version 4 (1794288563-5492), republished November 10 at Dustin's request after round 2, before round 3 review (D2-952). Its tokens.css download link does nothing in the viewer (D2-953) |
 | Stage B drawings board | https://claude.ai/artifact/WdVDNfjE8cMGw1WAY68hmM | Answered (DR-156 to DR-182) |
 | Reader check, first page | https://claude.ai/artifact/16SD4uFJTiHKJC5p9CaFpP | Not sent (DR-143). Stays published until Dustin asks to delete it |
 | Combined reader check | `work/boards/phase-2/reader-check-2/20261110_Reader-Check-2.html` | Built and tested; not published. It goes out with board B (DR-143, DR-148) |
@@ -140,7 +140,7 @@ Created: this file. Also created this chat, all under `work/`:
   - `boards/phase-2/stage-a/proofs/20261110_Letterhead-Proof.pdf` with its HTML (D2-809)
 
 Modified:
-- `ledger/20261020_Decision-Log.md` (DR-184 to DR-189, D2-714 to D2-951)
+- `ledger/20261020_Decision-Log.md` (DR-184 to DR-189, D2-714 to D2-953)
 - `ledger/20261020_Change-Ledger.md` (C-051 to C-056)
 - chapters 01, 03, 04, 08 and 11 and their specimens and manifests
 - the identity minimum sizes record
