@@ -176,8 +176,10 @@ def box(tag, inner):
 # ============================================================================================ the opener
 # Stage C, round 0 (D2-965, D2-1134, the creative director's S16): the figure under the chapter's intro, named by the
 # chapter's "opener" key. The 48 px row is the one Rule 09.1 places near the top of a page that introduces the four
-# pillars, so the chapter opens on its own rule. It carries no tag, since it is the chapter's picture, not a sample.
-OPENER_CSS = ".oai .p9-opener{padding:24px}"
+# pillars, so the chapter opens on its own rule. It carries no tag, since it is the chapter's picture, not a sample, and
+# no padding of its own: the shell keeps 16 px, 24 px from 48em, between a flowing stage's content and its keyline (B1).
+# Where the column is narrower than the row's one line, 592 px, the row wraps after an arrow, as Rule 09.1's sheet does.
+OPENER_CSS = ""
 
 
 @spec

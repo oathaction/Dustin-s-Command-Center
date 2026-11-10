@@ -2264,3 +2264,27 @@ The studio asked four questions with the stage C draft brief. Dustin: "yes to al
 |---|---|---|
 | D2-1166 | The inventory's faults go to their owners: F-7, F-10, F-11, F-13 and F-16 to the engineer now, inside its round 0 shell pass; F-1 to F-5 and F-9 (live specimens that hard-code Newsprint, clipped button labels, the outside-link wrap, chapter 05's ten-states plate, the empty search's status line, the search field) to chapter 05 and 11's owners in round 1; F-12 to chapter 18's code; F-8, F-14 and F-15 to the atlas finishing pass | Each fix sits in its owner's generator; the shell faults fit the engineer's current task |
 | D2-1167 | F-4 corrects the record of DR-199 and C-064: chapter 05's ten-states plate (`s-05-4-correct`, Rule 05.4) still draws the retired red disc with a cross. Rules 05.3 and 11.15 draw the approved mark. The plate is redrawn to DR-199 in round 1, and board C says so | DR-199 said chapters 05 and 11 already draw it so; that held for `s-05-3-corrective` and chapter 11, not for the states plate |
+
+### Identity designer (`20261110_Stage-C-Identity-Round-0-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1168 | The feed test on a dark card counts light nodes, each keeping a pixel with every channel over a floor, 155 on Charcoal and 190 on Prussian; on Charcoal the lever counts red pixels as on a light ground, and on Prussian the White lever counts as a ninth node | CD-N12 asked for a light-node version with a measured floor; Rule 03.5 makes the lever White on Prussian |
+| D2-1169 | Each dark ground takes its own floor, set halfway between the links alone and the weakest node at the rule's two widths under four filters, rounded down to 5 | On a dark ground the links take the nodes' color; Charcoal separates between 146 and 165 and Prussian between 180 and 203, so no single number fits both |
+| D2-1170 | The dark test runs on the proofs' card drawn on Charcoal and Prussian by its own generator (`_social(surface)`), not on a new guide specimen | The card and its lockmark are the same pixels (asserted); a second 1200 px card in the proofs would add a plate no rule asks for |
+| D2-1171 | Rule 08.2 prints the dark figures from `20261110_Stage-C-Identity-Figures.json`, key `feed_dark`, read by `stage_a_identity_lib.figures`; the Newsprint figures stay the built page's from the promotion | D2-469 and D2-805: figures come from a file, and a stale or missing one shows a marker |
+| D2-1172 | Rule 08.2's builders text asks for the test on the file a builder will upload | A JPEG of the full card leaves the counts as they are, and the uploaded file is what a feed reduces |
+| D2-1173 | The lockmark keeps its place in the card's corner | Placement moves the 360 px count between 4 and 7, tuning to the test's two widths reshuffles the others, and it does not help the thumbnail path |
+| D2-1174 | The thumbnail risk goes to board C as a named approval, the social card's sign-off at 96 px from the 48 px master at twice its size | Only a larger lever keeps red in a shrunk JPEG; the size of an approved place (DR-131) is Dustin's to change |
+| D2-1175 | The print L3 goes to board C as a named approval, drawn as new files beside the masters; the guide keeps naming the October master for print | It changes the printed lockup's proportion from 2.4 to 2.18 cap heights (gate rule 4) |
+| D2-1176 | The print L3 is the October master with only the lockmark's size and position, the view box and the title changed, asserted by the script; the space stays 60 units | D2-477 describes the masthead's change as the lockmark alone and records its 13 px as 0.60 cap height |
+| D2-1177 | The comparison plates go to `work/handoffs/phase-2/stage-c-identity/` with captures at 1x and 2x and a print PDF, for the board builder | Boards are closed to me; the board builder makes board C |
+| D2-1178 | `s-09-opener` is Rule 09.1's 48 px row, one color, on Newsprint, with no tag, no padding of its own and no width | Rule 09.1 places that row near the top of a page that introduces the four pillars; the shell pads a flowing stage, and no width lets it fit every column |
+| D2-1179 | The opener wraps two and two after an arrow where the column is narrower than its 592 px line | Rule 09.1's own rows do the same there; its sizes and spacing stay as approved |
+| D2-1180 | `specimens_used` counts a chapter's opener | The identity build's guard then covers every specimen a chapter names |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1181 | The identity designer's two proposals, the print L3 at 2.18 cap heights and the social card's sign-off at 96 px, go on drawings board C as cards 4 and 5, scored by the creative director with the drawings | Both are named approvals under gate rule 4; the early board gets Dustin's answer before round 2, so an approval lands in the page the red teams review |

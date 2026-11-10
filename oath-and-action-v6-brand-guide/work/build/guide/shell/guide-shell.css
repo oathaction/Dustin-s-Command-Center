@@ -469,7 +469,14 @@ a.toc-part-k:hover { text-decoration: underline }
 .btn--quiet { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 var(--oa-border-width-hairline) var(--rule-strong) }
 .btn--quiet:hover { background: transparent; box-shadow: inset 0 0 0 var(--oa-border-width-rule) var(--rule-strong) }
 .status { margin: 0; font: var(--oa-type-caption); color: var(--ink-2) }
-.status.is-error { color: var(--ink); font-weight: var(--oa-font-weight-semibold) }
+/* F-7 (stage C): a result takes its mark before its words (Rules 11.12 and 11.15): the success mark in Verdigris, the
+   error mark in the text's ink on the Error Band with a 4 px red bar drawn as a border, and "Error:" first */
+.status .st-mark { width: var(--oa-size-icon-small); height: var(--oa-size-icon-small); margin-right: .4em; vertical-align: -.2em }
+.status .st-ok { color: var(--oa-color-state-success-mark) }
+.status.is-ok { color: var(--oa-color-state-success-text) }
+.status.is-error { color: var(--oa-color-state-error-text); background: var(--oa-color-state-error-band);
+  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-mark); padding: var(--oa-space-100) var(--oa-space-150) }
+.status.is-error b { font-weight: var(--oa-font-weight-bold) }
 .copy-fallback { display: block; margin-top: var(--oa-space-100); width: 100%; max-width: 30rem; font-family: var(--mono) }
 
 .chapnav { display: flex; flex-wrap: wrap; gap: 0 var(--oa-space-400); margin-top: var(--oa-space-1000); padding-top: var(--oa-space-100); border-top: var(--oa-border-width-hairline) solid var(--rule-strong) }
@@ -542,7 +549,8 @@ a.toc-part-k:hover { text-decoration: underline }
 /* ---------------------------------------------------------------- Phone menu: a modal dialog with one navigation block */
 .menu { padding: 0; border: 0; margin: 0 0 0 auto; width: min(100vw, 26rem); max-width: 100vw; height: 100vh; max-height: 100vh;
   background: var(--oa-color-surface-newsprint); color: var(--ink); border-left: var(--oa-border-width-hairline) solid var(--rule-strong) }
-.menu::backdrop { background: var(--oa-color-palette-charcoal); opacity: .6 }
+/* F-13 (stage C): a solid backdrop, since opacity has two decorative jobs and no others (T-10) */
+.menu::backdrop { background: var(--oa-color-surface-charcoal) }
 .menu-inner { display: flex; flex-direction: column; height: 100% }
 .menu-head { display: flex; align-items: center; justify-content: space-between; gap: var(--oa-space-200); padding: var(--oa-space-150) var(--m); border-bottom: var(--oa-border-width-hairline) solid var(--rule-strong) }
 .menu-title { margin: 0; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing) }

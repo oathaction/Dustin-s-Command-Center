@@ -123,11 +123,15 @@
     },
     {
      "label": "Feed test",
-     "value": "A 1200 by 630 px card on a light ground, such as Newsprint or White, reduced to 500 and 360 px wide, as a feed shows it, must keep a visible lockmark: each of its eight dark nodes keeps at least one near-black pixel (every color channel under 70), and the lever keeps at least four red pixels (red over 170, green and blue under 120). Reduce the card with Lanczos resampling, a common filter for shrinking images, and count each node’s square plus 1 px on every side. A test for a card on Charcoal or Prussian comes later"
+     "value": "A 1200 by 630 px card, reduced to 500 and 360 px wide, as a feed shows it, must keep a visible lockmark. On a light ground, such as Newsprint or White, each of its eight dark nodes keeps at least one near-black pixel (every color channel under 70), and the lever keeps at least four red pixels (red over 170, green and blue under 120). Reduce the card with Lanczos resampling, a common filter for shrinking images, and count each node’s square plus 1 px on every side"
+    },
+    {
+     "label": "Feed test, dark card",
+     "value": "On Charcoal, each of the eight light nodes keeps at least one pixel with every color channel over 155, and the lever keeps at least four red pixels, counted as on a light ground. On Prussian, where the lever is White as well, each of the nine nodes keeps a pixel with every channel over 190. On a dark ground the links take the nodes’ own color, so each floor sits halfway between the brightest pixel the links alone leave in a node’s square and the dimmest node’s brightest pixel, measured on our card at both widths"
     },
     {
      "label": "Feed test, our card",
-     "value": "The link-preview card in the identity proofs passes. At 500 px wide, its lockmark keeps 8 of 8 nodes and 11 red pixels; at 360 px, 8 of 8 nodes and 5 red pixels"
+     "value": "The link-preview card in the identity proofs passes. At 500 px wide, its lockmark keeps 8 of 8 nodes and 11 red pixels; at 360 px, 8 of 8 nodes and 5 red pixels. Drawn on Charcoal, the same card keeps 8 of 8 nodes and 11 red pixels at 500 px, and 8 of 8 nodes and 5 red pixels at 360 px. Drawn on Prussian, it keeps 9 of 9 nodes at 500 px and 9 of 9 at 360 px"
     },
     {
      "label": "Once in a view",
@@ -151,7 +155,7 @@
     "14",
     "23"
    ],
-   "builders": "Pick the master by the size the place sets: the 48 px master for the sign-off, and L3’s masthead master, which holds it already, for the masthead; the 24 px master in page headers and footers; and the 16 px master in a chart’s footer. Set each on whole pixels. Run the feed test on every new template for a social card before it ships."
+   "builders": "Pick the master by the size the place sets: the 48 px master for the sign-off, and L3’s masthead master, which holds it already, for the masthead; the 24 px master in page headers and footers; and the 16 px master in a chart’s footer. Set each on whole pixels. Run the feed test on every new template for a social card, on the file you will upload, before it ships."
   },
   {
    "id": "08.3",

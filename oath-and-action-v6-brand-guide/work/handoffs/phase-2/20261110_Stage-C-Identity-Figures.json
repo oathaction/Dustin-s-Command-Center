@@ -3197,5 +3197,725 @@
    "Inter 800",
    "Inter Tight 800"
   ]
+ },
+ "opener": {
+  "page": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
+  "method": "Chromium through Playwright, device set to dark (the guide forces light), the figure scrolled into view at each width",
+  "widths": {
+   "1440@1x": {
+    "figure": [
+     286.7,
+     382.3,
+     866.7,
+     224
+    ],
+    "stage": [
+     334.7,
+     446.3,
+     770.7,
+     96
+    ],
+    "scroll_overflows": false,
+    "scroll_w": [
+     867,
+     867
+    ],
+    "page_overflows": false,
+    "rows": 1,
+    "items": [
+     [
+      358.7,
+      470.3,
+      173.8,
+      48
+     ],
+     [
+      532.4,
+      470.3,
+      158,
+      48
+     ],
+     [
+      690.5,
+      470.3,
+      188.6,
+      48
+     ],
+     [
+      879.1,
+      470.3,
+      71.1,
+      48
+     ]
+    ],
+    "icons": [
+     {
+      "icon": "CL-019",
+      "box": [
+       353.8,
+       470.3,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     },
+     {
+      "icon": "CL-020",
+      "box": [
+       528.5,
+       470.3,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     },
+     {
+      "icon": "CL-021",
+      "box": [
+       686.6,
+       470.3,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     },
+     {
+      "icon": "CL-022",
+      "box": [
+       866.2,
+       470.3,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     }
+    ],
+    "words": [
+     {
+      "text": "Explain",
+      "size": "22px",
+      "weight": "700"
+     },
+     {
+      "text": "Track",
+      "size": "22px",
+      "weight": "700"
+     },
+     {
+      "text": "Connect",
+      "size": "22px",
+      "weight": "700"
+     },
+     {
+      "text": "Act",
+      "size": "22px",
+      "weight": "700"
+     }
+    ],
+    "stage_role": "img",
+    "stage_label": "The four pillar icons at true size, 48 pixels, in one row on Newsprint: Explain, Track, Connect and Act, each icon beside its word, joined by arrows, every icon in one color. Explain, three short rays rising from an open book; Track, a route from a map pin to a magnifier; Connect, two overlapping rings; Act, a finger pressing a round control. On a phone the row stands in one column, with a downward arrow under each icon but the last.",
+    "hint_shown": false,
+    "fit_switch": false,
+    "before": "intro",
+    "after": null,
+    "theme": "light",
+    "bg": "rgb(220, 217, 210)"
+   },
+   "1024@1x": {
+    "figure": [
+     282,
+     351.8,
+     702,
+     284
+    ],
+    "stage": [
+     330,
+     415.8,
+     606,
+     156
+    ],
+    "scroll_overflows": false,
+    "scroll_w": [
+     702,
+     702
+    ],
+    "page_overflows": false,
+    "rows": 2,
+    "items": [
+     [
+      354,
+      439.8,
+      173.8,
+      48
+     ],
+     [
+      527.8,
+      439.8,
+      158,
+      48
+     ],
+     [
+      685.8,
+      439.8,
+      188.6,
+      48
+     ],
+     [
+      354,
+      499.8,
+      71.1,
+      48
+     ]
+    ],
+    "icons": [
+     {
+      "icon": "CL-019",
+      "box": [
+       349.2,
+       439.8,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     },
+     {
+      "icon": "CL-020",
+      "box": [
+       523.9,
+       439.8,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     },
+     {
+      "icon": "CL-021",
+      "box": [
+       681.9,
+       439.8,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     },
+     {
+      "icon": "CL-022",
+      "box": [
+       341.1,
+       499.8,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     }
+    ],
+    "words": [
+     {
+      "text": "Explain",
+      "size": "22px",
+      "weight": "700"
+     },
+     {
+      "text": "Track",
+      "size": "22px",
+      "weight": "700"
+     },
+     {
+      "text": "Connect",
+      "size": "22px",
+      "weight": "700"
+     },
+     {
+      "text": "Act",
+      "size": "22px",
+      "weight": "700"
+     }
+    ],
+    "stage_role": "img",
+    "stage_label": "The four pillar icons at true size, 48 pixels, in one row on Newsprint: Explain, Track, Connect and Act, each icon beside its word, joined by arrows, every icon in one color. Explain, three short rays rising from an open book; Track, a route from a map pin to a magnifier; Connect, two overlapping rings; Act, a finger pressing a round control. On a phone the row stands in one column, with a downward arrow under each icon but the last.",
+    "hint_shown": false,
+    "fit_switch": false,
+    "before": "intro",
+    "after": null,
+    "theme": "light",
+    "bg": "rgb(220, 217, 210)"
+   },
+   "768@1x": {
+    "figure": [
+     32,
+     364.4,
+     704,
+     284
+    ],
+    "stage": [
+     80,
+     428.4,
+     608,
+     156
+    ],
+    "scroll_overflows": false,
+    "scroll_w": [
+     704,
+     704
+    ],
+    "page_overflows": false,
+    "rows": 2,
+    "items": [
+     [
+      104,
+      452.4,
+      173.8,
+      48
+     ],
+     [
+      277.8,
+      452.4,
+      158,
+      48
+     ],
+     [
+      435.8,
+      452.4,
+      188.6,
+      48
+     ],
+     [
+      104,
+      512.4,
+      71.1,
+      48
+     ]
+    ],
+    "icons": [
+     {
+      "icon": "CL-019",
+      "box": [
+       99.2,
+       452.4,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     },
+     {
+      "icon": "CL-020",
+      "box": [
+       273.9,
+       452.4,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     },
+     {
+      "icon": "CL-021",
+      "box": [
+       431.9,
+       452.4,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     },
+     {
+      "icon": "CL-022",
+      "box": [
+       91.1,
+       512.4,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     }
+    ],
+    "words": [
+     {
+      "text": "Explain",
+      "size": "22px",
+      "weight": "700"
+     },
+     {
+      "text": "Track",
+      "size": "22px",
+      "weight": "700"
+     },
+     {
+      "text": "Connect",
+      "size": "22px",
+      "weight": "700"
+     },
+     {
+      "text": "Act",
+      "size": "22px",
+      "weight": "700"
+     }
+    ],
+    "stage_role": "img",
+    "stage_label": "The four pillar icons at true size, 48 pixels, in one row on Newsprint: Explain, Track, Connect and Act, each icon beside its word, joined by arrows, every icon in one color. Explain, three short rays rising from an open book; Track, a route from a map pin to a magnifier; Connect, two overlapping rings; Act, a finger pressing a round control. On a phone the row stands in one column, with a downward arrow under each icon but the last.",
+    "hint_shown": false,
+    "fit_switch": false,
+    "before": "intro",
+    "after": null,
+    "theme": "light",
+    "bg": "rgb(220, 217, 210)"
+   },
+   "390@2x": {
+    "figure": [
+     20,
+     331.9,
+     350,
+     348
+    ],
+    "stage": [
+     16,
+     363.9,
+     358,
+     284
+    ],
+    "scroll_overflows": false,
+    "scroll_w": [
+     390,
+     390
+    ],
+    "page_overflows": false,
+    "rows": 4,
+    "items": [
+     [
+      32,
+      379.9,
+      127.7,
+      48
+     ],
+     [
+      32,
+      447.9,
+      112.3,
+      48
+     ],
+     [
+      32,
+      515.9,
+      138.8,
+      48
+     ],
+     [
+      32,
+      583.9,
+      91.9,
+      48
+     ]
+    ],
+    "icons": [
+     {
+      "icon": "CL-019",
+      "box": [
+       32,
+       379.9,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     },
+     {
+      "icon": "CL-020",
+      "box": [
+       32,
+       447.9,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     },
+     {
+      "icon": "CL-021",
+      "box": [
+       32,
+       515.9,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     },
+     {
+      "icon": "CL-022",
+      "box": [
+       32,
+       583.9,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     }
+    ],
+    "words": [
+     {
+      "text": "Explain",
+      "size": "19px",
+      "weight": "700"
+     },
+     {
+      "text": "Track",
+      "size": "19px",
+      "weight": "700"
+     },
+     {
+      "text": "Connect",
+      "size": "19px",
+      "weight": "700"
+     },
+     {
+      "text": "Act",
+      "size": "19px",
+      "weight": "700"
+     }
+    ],
+    "stage_role": "img",
+    "stage_label": "The four pillar icons at true size, 48 pixels, in one row on Newsprint: Explain, Track, Connect and Act, each icon beside its word, joined by arrows, every icon in one color. Explain, three short rays rising from an open book; Track, a route from a map pin to a magnifier; Connect, two overlapping rings; Act, a finger pressing a round control. On a phone the row stands in one column, with a downward arrow under each icon but the last.",
+    "hint_shown": false,
+    "fit_switch": false,
+    "before": "intro",
+    "after": null,
+    "theme": "light",
+    "bg": "rgb(220, 217, 210)"
+   },
+   "360@2x": {
+    "figure": [
+     16,
+     331.9,
+     328,
+     348
+    ],
+    "stage": [
+     16,
+     363.9,
+     328,
+     284
+    ],
+    "scroll_overflows": false,
+    "scroll_w": [
+     360,
+     360
+    ],
+    "page_overflows": false,
+    "rows": 4,
+    "items": [
+     [
+      32,
+      379.9,
+      127.7,
+      48
+     ],
+     [
+      32,
+      447.9,
+      112.3,
+      48
+     ],
+     [
+      32,
+      515.9,
+      138.8,
+      48
+     ],
+     [
+      32,
+      583.9,
+      91.9,
+      48
+     ]
+    ],
+    "icons": [
+     {
+      "icon": "CL-019",
+      "box": [
+       32,
+       379.9,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     },
+     {
+      "icon": "CL-020",
+      "box": [
+       32,
+       447.9,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     },
+     {
+      "icon": "CL-021",
+      "box": [
+       32,
+       515.9,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     },
+     {
+      "icon": "CL-022",
+      "box": [
+       32,
+       583.9,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     }
+    ],
+    "words": [
+     {
+      "text": "Explain",
+      "size": "19px",
+      "weight": "700"
+     },
+     {
+      "text": "Track",
+      "size": "19px",
+      "weight": "700"
+     },
+     {
+      "text": "Connect",
+      "size": "19px",
+      "weight": "700"
+     },
+     {
+      "text": "Act",
+      "size": "19px",
+      "weight": "700"
+     }
+    ],
+    "stage_role": "img",
+    "stage_label": "The four pillar icons at true size, 48 pixels, in one row on Newsprint: Explain, Track, Connect and Act, each icon beside its word, joined by arrows, every icon in one color. Explain, three short rays rising from an open book; Track, a route from a map pin to a magnifier; Connect, two overlapping rings; Act, a finger pressing a round control. On a phone the row stands in one column, with a downward arrow under each icon but the last.",
+    "hint_shown": false,
+    "fit_switch": false,
+    "before": "intro",
+    "after": null,
+    "theme": "light",
+    "bg": "rgb(220, 217, 210)"
+   },
+   "1440@2x": {
+    "figure": [
+     286.7,
+     382.2,
+     866.7,
+     224
+    ],
+    "stage": [
+     334.7,
+     446.2,
+     770.7,
+     96
+    ],
+    "scroll_overflows": false,
+    "scroll_w": [
+     867,
+     867
+    ],
+    "page_overflows": false,
+    "rows": 1,
+    "items": [
+     [
+      358.7,
+      470.2,
+      173.8,
+      48
+     ],
+     [
+      532.4,
+      470.2,
+      158,
+      48
+     ],
+     [
+      690.5,
+      470.2,
+      188.6,
+      48
+     ],
+     [
+      879.1,
+      470.2,
+      71.1,
+      48
+     ]
+    ],
+    "icons": [
+     {
+      "icon": "CL-019",
+      "box": [
+       353.8,
+       470.2,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     },
+     {
+      "icon": "CL-020",
+      "box": [
+       528.5,
+       470.2,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     },
+     {
+      "icon": "CL-021",
+      "box": [
+       686.6,
+       470.2,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     },
+     {
+      "icon": "CL-022",
+      "box": [
+       866.2,
+       470.2,
+       48,
+       48
+      ],
+      "color": "rgb(18, 18, 18)"
+     }
+    ],
+    "words": [
+     {
+      "text": "Explain",
+      "size": "22px",
+      "weight": "700"
+     },
+     {
+      "text": "Track",
+      "size": "22px",
+      "weight": "700"
+     },
+     {
+      "text": "Connect",
+      "size": "22px",
+      "weight": "700"
+     },
+     {
+      "text": "Act",
+      "size": "22px",
+      "weight": "700"
+     }
+    ],
+    "stage_role": "img",
+    "stage_label": "The four pillar icons at true size, 48 pixels, in one row on Newsprint: Explain, Track, Connect and Act, each icon beside its word, joined by arrows, every icon in one color. Explain, three short rays rising from an open book; Track, a route from a map pin to a magnifier; Connect, two overlapping rings; Act, a finger pressing a round control. On a phone the row stands in one column, with a downward arrow under each icon but the last.",
+    "hint_shown": false,
+    "fit_switch": false,
+    "before": "intro",
+    "after": null,
+    "theme": "light",
+    "bg": "rgb(220, 217, 210)"
+   }
+  }
  }
 }

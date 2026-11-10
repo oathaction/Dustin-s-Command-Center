@@ -352,6 +352,9 @@ class Tokens:
         # tokens give the same bytes on every build; the shell's script hands those bytes to the host on a click.
         self.zip_name = "20261106_Oath-And-Action-Tokens.zip"
         self.zip_b64 = base64.b64encode(self.zip_bytes()).decode() if self.css_text else ""
+        # F-10 (stage C): each download's words name the file, its type and its size, measured here
+        self.css_words = f"{DL_CSS_WORDS}, CSS, {kb_words(len(self.css_text.encode()))}" if self.css_text else DL_CSS_WORDS
+        self.zip_words = f"{DL_ZIP_WORDS}, ZIP, {kb_words(len(self.zip_bytes()))}" if self.css_text else DL_ZIP_WORDS
 
     def zip_bytes(self):
         buf = io.BytesIO()
@@ -944,7 +947,8 @@ class CodeSets:
         if re.search(r"\son[a-z]+\s*=", h, re.I):
             w("the HTML carries an event handler attribute; behavior goes in the script file")
         classes = {c2 for m in re.finditer(r'\sclass="([^"]*)"', h) for c2 in m.group(1).split()}
-        stray = sorted(x for x in classes if not x.startswith("oa-"))
+        css_sel = " ".join(css_rules(c))
+        stray = sorted(x for x in classes | set(re.findall(r"\.(-?[_a-zA-Z][\w-]*)", css_sel)) if not x.startswith("oa-"))
         if stray:
             w(f"class(es) {', '.join(stray[:5])} do not start with oa-; a set's own names start with oa- so no page's styles reach them")
         # the styles: tokens.css only
@@ -967,7 +971,14 @@ class CodeSets:
                     w(f"the selector \"{one[:50]}\" names no oa- class or data-oa- attribute, so it would reach the page around the component")
                 elif CODE_ROOTS.search(" " + one):
                     w(f"the selector \"{one[:50]}\" styles the page's root or body; tokens.css and the page own those")
-        css_classes = set(re.findall(r"\.(oa-[\w-]+)", c)) | classes
+        if re.search(r"@scope|:scope\b", c):
+            w("the CSS uses @scope or :scope; code to copy uses plain class selectors, which every browser reads alike (F-16)")
+        pinned = sorted({n for n in re.findall(r"var\(\s*(--oa-[\w-]+)", c)
+                         if re.search(r"-on-(?:newsprint|white|charcoal|prussian)$|^--oa-color-surface-(?:newsprint|white|charcoal|prussian)$|^--oa-color-(?:palette|derived|tint)-", n)})
+        if pinned:
+            w(f"the CSS reads {', '.join(pinned[:4])}, named for one surface or a palette color; read the role's short name, such as "
+              f"--oa-color-text-primary or --oa-color-surface, so a surface class and the dark theme reach it (F-1)")
+        css_classes = set(re.findall(r"\.(oa-[\w-]+)", css_sel)) | classes
         shared = sorted(x for x in css_classes if not x.startswith("oa-surface-") and re.search(r"\." + re.escape(x) + r"(?![\w-])", self.shell_css))
         if shared:
             w(f"the guide's shell also styles {', '.join(shared[:5])}, so the guide would draw it differently from a copy")
@@ -1029,7 +1040,7 @@ def code_plate(rid, block, ctx, where):
             f'<p class="plate-size" id="{nid}">{e(name)}</p></div>'
             f'<p class="vh" id="{aid}" aria-hidden="true">{e(alt)}</p><div class="code-demo">{"".join(stages)}</div>'
             f'<div class="code-panels">{"".join(panels)}</div>'
-            f'<p class="status code-status" role="status" id="code-{e(sid)}-status"></p>'
+            + status_line(f"code-{sid}-status", cls="status code-status")
             + (f'<figcaption class="plate-cap">{cap}</figcaption>' if cap else "")
             + f'{script}</figure>')
 
@@ -1196,6 +1207,19 @@ APPENDIX_LINE = "See today’s wordmark in use at actual size, and the new stack
 # The tokens.css button's words on each path (D2-964): the plain file where no host answers, the zip through the host
 DL_CSS_WORDS = "Download tokens.css"
 DL_ZIP_WORDS = "Download tokens.css in a zip file"
+
+
+def kb_words(n):
+    """A file's size as the download's words give it (F-10): kilobytes of 1,000 bytes, rounded, at least 1."""
+    return f"{max(1, round(n / 1000)):,} KB"
+
+
+def status_line(sid, initial="", cls="status"):
+    """A status line for Copy and its kin (F-7, Rules 11.12 and 11.15): the words, after the success mark or the error
+    mark, which the shell's script shows with its result. Both marks are 16 px utility drawings, hidden until used."""
+    mark = lambda k, name: (f'<svg class="st-mark st-{k}" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false" '
+                            f'data-icon="U-{name}" data-icon-family="utility" hidden><use href="#oa-sym-u-{name}-16px"/></svg>')
+    return f'<p class="{cls}" role="status" id="{sid}">{mark("ok", "success")}{mark("err", "error")}<span class="st-t">{initial}</span></p>'
 FILES_NOTE = "Download buttons arrive with the asset package. Until then, ask the editor for any file listed here."   # D2-252
 LATER = "Coming later"   # CP-S3
 
@@ -1485,7 +1509,7 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
                        f"their clamps, and the four surface classes.</p>")
             # Round 2 (November 10, 2026): the page carries tokens.css as a download once, in the colophon; each chapter's
             # button is a link to it, which the shell's script turns into the download (without script, it lands there)
-            dl = f'<a class="btn" href="#tokens-download" data-oa-download="tokens-download">{DL_CSS_WORDS}</a>'
+            dl = f'<a class="btn" href="#tokens-download" data-oa-download="tokens-download">{tokens.css_words}</a>'
         else:
             css_lines = []
             for name, d in tok_rows.items():
@@ -1496,7 +1520,7 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
             dl = ""
         closers.append(f'<div class="closer" id="{cid}-builders"><h3>For builders</h3><p class="return" hidden></p>{intro_p}'
                        f'<p class="btn-row">{dl}<button type="button" class="btn btn--quiet copy" data-copy-from="{cid}-css">Copy this chapter&#8217;s CSS</button></p>'
-                       f'<p class="status" role="status" id="{cid}-copy-status">Nothing copied yet.</p>'
+                       + status_line(f"{cid}-copy-status", "Nothing copied yet.") +
                        f'<pre class="code" id="{cid}-css" data-plate-scroll data-frame-name="CSS for chapter {num}"><code>{e(block)}</code></pre></div>')
         toc.append((f"{cid}-builders", None, "For builders"))
         after.append((f"{cid}-builders", "For builders"))
@@ -2286,7 +2310,7 @@ def build(args):
     # The colophon's link is the page's one copy of tokens.css. data-oa-zip holds the zip the shell offers through the
     # host where one answers (DR-192, D2-964), and the two data-oa-*-words say what the button gives on each path.
     dl_tokens = (f' <a id="tokens-download" href="{tokens.download_uri}" download="{tokens.download_name}" data-oa-zip="{tokens.zip_b64}" '
-                 f'data-oa-zip-name="{tokens.zip_name}" data-oa-css-words="{DL_CSS_WORDS}" data-oa-zip-words="{DL_ZIP_WORDS}">{DL_CSS_WORDS}</a>.' if tokens.final else "")
+                 f'data-oa-zip-name="{tokens.zip_name}" data-oa-css-words="{tokens.css_words}" data-oa-zip-words="{tokens.zip_words}">{tokens.css_words}</a>.' if tokens.final else "")
 
     # D2-1133 (stage C): the guide stays light whatever the device asks. tokens.css follows the device's dark setting
     # (DR-204), and data-oa-theme="light" on the root wins over it, so a plate shows a piece at its true colors.
@@ -2359,7 +2383,7 @@ def build(args):
 </footer>
 <dialog class="menu" id="menu" aria-labelledby="menu-h">
   <div class="menu-inner">
-    <div class="menu-head"><h2 id="menu-h" class="menu-title">Contents</h2><button type="button" class="menu-close" id="menuclose">Close</button></div>
+    <div class="menu-head"><h2 id="menu-h" class="menu-title">Contents</h2><button type="button" class="menu-close" id="menuclose">Close the menu</button></div>
     <p class="menu-where">You are in <strong id="menu-where-text">Cover</strong>.</p>
     <div class="menu-scroll">
       <nav aria-label="Guide contents">{nav_list("menu", present, has_proofs, menu=True, appendix_title=appendix_title)}</nav>
@@ -2653,6 +2677,62 @@ def self_test():
           "tests": [("no U+2011 is left anywhere in the page", lambda pg: "\u2011" not in pg),
                     ("SVG text takes no span", lambda pg: '<text x="0" y="14"><span' not in pg)]}),
     ]
+    # stage C, round 0 (November 10, 2026): the opener figure (D2-965, D2-1134) and code to copy (DR-203)
+    op_specs = {"s-09-op.html": "<p>An opening figure that flows with the column.</p>", "s-10-wide.html": "<p>A wide opener.</p>",
+                "s-03-op.html": "<p>An opener in chapter 03.</p>"}
+    op_manifest = {"s-09-op": {"chapter": "09", "alt": "An opening figure that flows, a fixture.", "notes": "fixture"},
+                   "s-10-wide": {"chapter": "10", "width_px": 600, "alt": "A 600 px opening figure, a fixture at true size.", "notes": "fixture"},
+                   "s-03-op": {"chapter": "03", "alt": "An opening figure for chapter 03, a fixture.", "notes": "fixture"}}
+    op09 = chapter("09", "pillar-icons", "Pillar icons", [rule("09.1")], opener="s-09-op", intro=["The intro of chapter 09."])
+    op10 = chapter("10", "symbols", "Topic and atlas symbols", [rule("10.1")], opener={"specimen": "s-10-wide", "caption": "A fixture."})
+    op03 = chapter("03", "identity", "Identity", [rule("03.1")], opener="s-03-op")
+
+    def ch09(pg):
+        m = re.search(r'<section class="chapter[^"]*" id="pillar-icons".*?</section>', pg, re.S)
+        return m.group(0) if m else ""
+
+    code_files = {
+        "c-01-good.html": '<div class="oa-good"><button type="button" class="oa-good-btn" aria-controls="panel">Show</button><p id="panel" class="oa-good-note">Shown.</p></div>\n',
+        "c-01-good.css": ".oa-good { font: var(--oa-type-body); color: var(--oa-color-text-primary); background: var(--oa-color-surface) }\n"
+                         ".oa-good-btn { font: var(--oa-type-ui); background: var(--oa-color-action-primary-fill); color: var(--oa-color-action-primary-label) }\n",
+        "c-01-good.js": "document.querySelectorAll('.oa-good').forEach(function (box) { var b = box.querySelector('.oa-good-btn');"
+                        " b.addEventListener('click', function () { document.getElementById(b.getAttribute('aria-controls')).hidden = false; }); });\n",
+        "c-01-bad.html": '<div class="oa-bad sx-card" style="color:red"><button onclick="go()">Go</button><span class="oa-at-2x">2x</span></div>\n',
+        "c-01-bad.css": ":scope { color: #E63946 } .oa-bad { color: var(--oa-color-text-primary-on-newsprint); background: white; font-size: 11px }\n"
+                        "button { padding: 0 } .oa-bad .btn { color: var(--oa-no-such-token) } body .oa-bad { margin: 0 }\n",
+        "c-01-bad.js": "import x from './x.js'; document.getElementById('panel');\n",
+    }
+    code01 = chapter("01", "purpose", "Purpose", [rule("01.1", {"code": {"set": "c-01-good", "name": "Show button", "caption": "A fixture."}}),
+                                                  rule("01.2", {"code": {"set": "c-01-bad", "name": "Bad button"}}),
+                                                  rule("01.3", {"code": "c-01-missing"}), rule("01.4", {"code": {"set": "c-01-good", "name": "Show button"}})])
+    scenarios += [
+        ("opener (D2-1134): chapter 09's figure under its intro and before its rules; 03's is refused; a 600 px opener is too wide",
+         {"03-identity.json": op03, "09-pillar-icons.json": op09, "10-symbols.json": op10}, {"specimens": op_specs, "manifest": op_manifest},
+         {"warn": ["\"opener\" names s-03-op, but chapters 01 to 08 open with words alone", "the opener s-10-wide is 600 px wide"],
+          "absent": ["s-09-op is listed but no chapter places it", "[chapter 09] the opener"],
+          "tests": [("chapter 09 holds its opener in the chapter head, after the intro and before the first rule",
+                     lambda pg: 0 < ch09(pg).find('class="intro"') < ch09(pg).find('id="fig-s-09-op"') < ch09(pg).find('<div class="rule"')
+                     and ch09(pg).find('id="fig-s-09-op"') < ch09(pg).find('<div class="ch-body">')),
+                    ("the opener carries no label and the plate--opener class",
+                     lambda pg: re.search(r'<figure class="plate plate--opener" id="fig-s-09-op"><div class="plate-head"><p class="plate-hint" hidden>', pg) is not None),
+                    ("chapter 03 shows no opener", lambda pg: 'id="fig-s-03-op"' not in pg)]}),
+        ("code to copy (DR-203): a set live in both themes with its panels; a faulty set warned on each fault; a missing set pending",
+         {"01-purpose.json": code01}, {"code": code_files},
+         {"warn": ["code set c-01-bad: the HTML carries a style attribute", "c-01-bad: the HTML carries an event handler attribute",
+                   "literal color(s)", "reads --oa-no-such-token, which tokens.css does not define",
+                   "type at 11 px", "the selector \"button\" names no oa- class", "styles the page's root or body", "uses @scope or :scope",
+                   "reads --oa-color-text-primary-on-newsprint, named for one surface", "the guide's shell also styles", "the script holds an import",
+                   "the script holds an ID written into the script", "code set c-01-missing needs work/build/guide/code/c-01-missing.html",
+                   "class(es) btn, sx-card do not start with oa-", "the guide's shell also styles oa-at-2x",
+                   "code set c-01-good is shown again", "\"name\" is empty"],
+          "absent": ["code set c-01-good: ", "Rule 01.1] code set"],
+          "html": ['<figure class="plate plate--code" id="code-c-01-good" data-code-set="c-01-good">', 'data-oa-theme="light" data-specimen="c-01-good--light"',
+                   'data-oa-theme="dark" data-specimen="c-01-good--dark"', 'id="c-01-good--light--panel"', 'aria-controls="c-01-good--dark--panel"',
+                   '>Copy the HTML</button>', '>Copy the CSS</button>', '>Copy the script</button>', '<style data-oa-code-css="c-01-good">',
+                   '<script data-oa-code-js="c-01-good">', 'Code set <code>c-01-missing</code> is not in'],
+          "tests": [("the HTML panel keeps the builder's own ids", lambda pg: 'aria-controls=&quot;panel&quot;' in pg and 'id=&quot;panel&quot;' in pg),
+                    ("the status line carries the success and the error marks, hidden", lambda pg: 'id="code-c-01-good-status"><svg class="st-mark st-ok"' in pg)]}),
+    ]
     results, ok_all = [], True
     with tempfile.TemporaryDirectory(prefix="oa-guide-build-") as tmp:
         roots = {"full": Path(tmp) / "families-full", "faulty": Path(tmp) / "families-faulty"}
@@ -2668,13 +2748,17 @@ def self_test():
                 (base / "specimens" / fn).write_text(text)
             if extra.get("manifest"):
                 (base / "specimens" / "manifest-test.json").write_text(json.dumps(extra["manifest"]))
+            if extra.get("code"):
+                (base / "code").mkdir()
+                for fn, text in extra["code"].items():
+                    (base / "code" / fn).write_text(text)
             R = Report()
             LEGACY_FILE = extra.get("legacy", kept_legacy)
             SPRITE_ROOT = roots[extra.get("sprites", "full")]
             out = base / "page.html"
             try:
                 build(argparse.Namespace(chapters=str(base / "chapters"), specimens=str(base / "specimens"), out=str(out),
-                                         demo=False, strict=False, quiet=True))
+                                         code=str(base / "code"), demo=False, strict=False, quiet=True))
             finally:
                 LEGACY_FILE, SPRITE_ROOT = kept_legacy, kept_root
             warns = [f"[{w['where']}] {w['message']}" for w in R.warnings]

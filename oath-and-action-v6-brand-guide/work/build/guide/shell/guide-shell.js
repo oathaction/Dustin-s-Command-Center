@@ -385,10 +385,21 @@
     var value = src ? src.textContent : (b.getAttribute('data-copy') || '');
     // DR-203 (stage C): a code plate has one status line for its panels, and the line names what was copied
     var scope = b.closest('.plate--code, .closer, .rule, section');
-    var st = scope ? $('[role="status"]', scope) : null;
+    var st = scope ? $('.status[role="status"]', scope) : null;   // the shell's own line, never a live demo's
     var old = scope && $('.copy-fallback', scope);
     if (old) old.remove();
-    var say = function (t, err) { if (!st) return; st.textContent = t; st.classList.toggle('is-error', !!err); };
+    // F-7 (stage C): the line shows the success or the error mark before its words, and an error starts "Error:"
+    var say = function (t, err) {
+      if (!st) return;
+      var words = $('.st-t', st) || st;
+      words.textContent = '';
+      if (err) { var bold = document.createElement('b'); bold.textContent = 'Error:'; words.appendChild(bold); words.appendChild(document.createTextNode(' ' + t)); } else words.textContent = t;
+      // an SVG has no hidden property, so the attribute itself is set
+      $$('.st-ok', st).forEach(function (m) { m.toggleAttribute('hidden', !!err); });
+      $$('.st-err', st).forEach(function (m) { m.toggleAttribute('hidden', !err); });
+      st.classList.toggle('is-error', !!err); st.classList.toggle('is-ok', !err);
+      if (err) { st.setAttribute('data-red', 'working'); st.setAttribute('data-red-job', 'error'); } else { st.removeAttribute('data-red'); st.removeAttribute('data-red-job'); }
+    };
     var what = b.getAttribute('data-copy-what');
     var lines = value.replace(/\n$/, '').split('\n').length;
     var done = function () { say(what ? 'Copied ' + what + ', ' + lines + (lines === 1 ? ' line' : ' lines') + ', to the clipboard.' : 'Copied ' + value.split('\n').length + ' lines to the clipboard.'); };

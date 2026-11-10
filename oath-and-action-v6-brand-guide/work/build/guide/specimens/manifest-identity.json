@@ -367,6 +367,13 @@
   "illustrative": true,
   "notes": "One retired use (DR-110): tracker progress on the grid, drawn as the stage A Rule 08.5 drew it (40 px lattice on whole pixels, filled 7 px discs for done, 3 px Stone nodes ahead), under the Charcoal failure band (D2-308)."
  },
+ "s-09-opener": {
+  "chapter": "09",
+  "rule": "09.1",
+  "alt": "The four pillar icons at true size, 48 pixels, in one row on Newsprint: Explain, Track, Connect and Act, each icon beside its word, joined by arrows, every icon in one color. Explain, three short rays rising from an open book; Track, a route from a map pin to a magnifier; Connect, two overlapping rings; Act, a finger pressing a round control. On a phone the row stands in one column, with a downward arrow under each icon but the last.",
+  "illustrative": false,
+  "notes": "Chapter 09's opener figure (D2-965, D2-1134, CD S16), named by the chapter's opener key and drawn under its intro. The 48 px row from Rule 09.1's sheet (s-09-1-correct), on Newsprint, one color in the surface's icon ink token, since no pillar is current, with no tag: Rule 09.1 places the 48 px row near the top of a page that introduces the four pillars. Each icon from the sprite with data-icon-family pillar (D2-590, D2-517). No width, so the shell flows it in the chapter column at true size: one line from 48em, and under 48em one column with downward arrows, as Rule 09.1 sets (D2-376)."
+ },
  "s-09-1-correct": {
   "chapter": "09",
   "rule": "09.1",

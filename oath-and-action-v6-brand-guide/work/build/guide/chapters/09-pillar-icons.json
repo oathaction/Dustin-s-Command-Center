@@ -8,6 +8,7 @@
   "Our four pillars name the jobs our work does: Explain, Track, Connect and Act, in that order (chapter 01). Each pillar has an icon from the Civic Line, the symbol set in chapter 10, and each icon stands beside its word. At 16 and 24 px each icon also has a pixel fit, a copy redrawn on whole pixels with a 1 px line, so it stays sharp on a screen that gives each CSS pixel one device pixel.",
   "This chapter sets the row the four stand in, how a page marks the pillar it serves, the file to draw at each size, and the few places a pillar icon may appear."
  ],
+ "opener": "s-09-opener",
  "rules": [
   {
    "id": "09.1",

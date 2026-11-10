@@ -90,8 +90,8 @@ export const meta = {
     ],
   },
   changeNotes: [
-    { version: '6.0.0-gate2.7', date: '2026-11-10', tokens: 'none added or changed; tokens.css gains the theme blocks and the --oa-color-surface short name',
-      change: 'A light and a dark theme in tokens.css: under (prefers-color-scheme: dark), or with data-oa-theme="dark", every short name points at its Charcoal token; data-oa-theme="light" forces Newsprint. Every surface class also sets --oa-color-surface.',
+    { version: '6.0.0-gate2.7', date: '2026-11-10', tokens: 'oa.color.field.ground on four surfaces (new semantic role, no new value); tokens.css gains the theme blocks and the --oa-color-surface short name',
+      change: 'A light and a dark theme in tokens.css: under (prefers-color-scheme: dark), or with data-oa-theme="dark", every short name points at its Charcoal token; data-oa-theme="light" forces Newsprint. Every surface class also sets --oa-color-surface. A field ground role, so an entry box follows the theme.',
       reason: 'DR-204: one dark mode for every screen product, drawn from Night Edition on Charcoal, that follows the device and a reader\'s switch', gate: 'Gate 2' },
     { version: '6.0.0-gate2.6', date: '2026-11-10', tokens: 'oa.color.state.error.mark', change: 'Description only: the token colors the 4 px bar', reason: 'PP-M3', gate: 'Gate 2' },
   ],
@@ -252,6 +252,14 @@ const color = {
   },
   focus: {
     ring: semantic('focus', 'Keyboard focus outline, 2 px with a 2 px offset, shown at once.', { newsprint: P('verdigris'), white: P('verdigris'), charcoal: P('newsprint'), prussian: P('newsprint') }),
+  },
+  // Stage C (November 10, 2026): the accessibility lead's G-1. A text field or other entry box sat on White by name, so
+  // code could not follow the dark theme (DR-204). This role names the field's ground one step from its surface, the
+  // pairing the selected band already uses; no value is new. Its strong border carries the boundary at 3:1 or more.
+  field: {
+    ground: semantic('background', 'Ground of a text field, select or other entry box: one step from the surface, as the selected band pairs them (White on Newsprint, Prussian on Charcoal). Its edge is the strong border, and the words in it take the surface\'s text roles.',
+      { newsprint: P('white'), white: P('newsprint'), charcoal: P('prussian'), prussian: P('charcoal') },
+      Object.fromEntries(SURF4.map((s) => [s, { textOnIt: [`{oa.color.text.primary.${SURFACE_KEY[s]}}`, `{oa.color.text.secondary.${SURFACE_KEY[s]}}`], edge: `{oa.color.border.strong.${SURFACE_KEY[s]}}` }]))),
   },
   identity: {
     signature: semantic('logotype',

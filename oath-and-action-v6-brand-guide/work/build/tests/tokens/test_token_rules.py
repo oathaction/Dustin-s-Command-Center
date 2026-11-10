@@ -172,7 +172,7 @@ def check(json_path, css_path=None):
 
     # every reference inside $extensions resolves
     for p, e in X.items():
-        for key in ('ground', 'keyline', 'requiresType', 'fallback', 'minSize'):
+        for key in ('ground', 'keyline', 'requiresType', 'fallback', 'minSize', 'edge'):
             if key in e and e[key] is not None:
                 a = L.alias_target(e[key])
                 if not a or a not in toks:
@@ -300,6 +300,15 @@ def check(json_path, css_path=None):
                 if not close((e.get('textContrast') or {}).get(L.alias_target(ref)), c):
                     fails.append(f'{p}: stored text contrast for {ref} is stale; measured {c:.2f}')
             cell.update(ratio=worst, threshold=4.5, measuredAgainst='text on it')
+            if e.get('edge'):
+                eh = ref_hex(e['edge'], p)
+                if eh:
+                    for label, g in (('surface', L.LOCKED[s]), ('ground', h)):
+                        ec = L.ratio(eh, g)
+                        if ec < 3.0:
+                            fails.append(f'{p}: its edge {e["edge"]} measures {ec:.2f}:1 on the {label}, under 3:1')
+                        if not close((e.get('edgeContrast') or {}).get('onSurface' if label == 'surface' else 'onGround'), ec):
+                            fails.append(f'{p}: stored edge contrast on the {label} is stale; measured {ec:.2f}')
         elif kind in THRESH:
             ground = ref_hex(e['ground'], p) if e.get('ground') else L.LOCKED[s]
             if not ground:

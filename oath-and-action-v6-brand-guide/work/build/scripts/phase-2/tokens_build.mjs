@@ -185,7 +185,7 @@ for (const p of order) {
     const target = tokens.get(aliasPath(token.$value));
     if (target && target.token.$type !== token.$type) errors.push(`${p}: ${token.$type} token aliases a ${target.token.$type} token`);
   }
-  for (const key of ['ground', 'keyline', 'requiresType', 'fallback', 'minSize']) if (ext[key]) resolveRef(ext[key], p);
+  for (const key of ['ground', 'keyline', 'requiresType', 'fallback', 'minSize', 'edge']) if (ext[key]) resolveRef(ext[key], p);
   for (const key of ['groundsAlso', 'textOnIt']) for (const ref of ext[key] || []) resolveRef(ref, p);
   if (token.$type !== 'color') continue;
   const hexv = r.value.hex;
@@ -198,6 +198,8 @@ for (const p of order) {
       ext.textOnIt = (ext.textOnIt || []);
       ext.textContrast = Object.fromEntries(ext.textOnIt.map((ref) => [aliasPath(ref), r2(contrast(hexOf(ref, p), hexv))]));
       ext.threshold = 4.5;
+      // a ground with an edge (the field ground, stage C): the edge holds 3:1 on the surface and on the ground
+      if (ext.edge) ext.edgeContrast = { onSurface: r2(contrast(hexOf(ext.edge, p), PALETTE[surface])), onGround: r2(contrast(hexOf(ext.edge, p), hexv)) };
     } else if (ground && hexv) {
       ext.contrast = r2(contrast(hexv, ground));
       ext.threshold = THRESH[ext.kind] ?? null;

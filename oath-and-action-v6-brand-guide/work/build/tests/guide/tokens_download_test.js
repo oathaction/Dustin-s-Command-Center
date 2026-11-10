@@ -17,8 +17,11 @@ const ROOT = path.resolve(__dirname, '../../../..');
 const TOKENS = fs.readFileSync(path.join(ROOT, 'work/build/tokens/tokens.css'));
 const CSS_NAME = '20261106_Oath-And-Action-Tokens.css';
 const ZIP_NAME = '20261106_Oath-And-Action-Tokens.zip';
-const CSS_WORDS = 'Download tokens.css';
-const ZIP_WORDS = 'Download tokens.css in a zip file';
+// F-10 (stage C): each download's words name the file, its type and its size, in kilobytes of 1,000 bytes, rounded.
+// The test measures both files itself: tokens.css from the repository, the zip from the page's own data-oa-zip.
+const kb = (n) => `${Math.max(1, Math.round(n / 1000)).toLocaleString('en-US')} KB`;
+const CSS_WORDS = `Download tokens.css, CSS, ${kb(TOKENS.length)}`;
+let ZIP_WORDS = 'Download tokens.css in a zip file';
 
 // The stub host. mode: 'none' (no window.claude), 'null' (use resolves null), 'never' (use never answers), 'throw'
 // (use throws), 'reject' (use rejects), or a save outcome: 'saved', 'declined', 'rate_limited', 'unavailable',
@@ -97,6 +100,8 @@ const all = (xs, w) => xs.length > 0 && xs.every((x) => x === w);
   const arg = process.argv.slice(2).find((x, i, a) => !x.startsWith('--') && a[i - 1] !== '--results');
   const file = arg ? path.resolve(arg) : '';
   if (!file || !fs.existsSync(file)) { console.error('usage: node tokens_download_test.js <page.html> [--results out.json]'); process.exit(2); }
+  const zm = fs.readFileSync(file, 'utf8').match(/data-oa-zip="([A-Za-z0-9+\/=]+)"/);
+  if (zm) ZIP_WORDS = `Download tokens.css in a zip file, ZIP, ${kb(Buffer.from(zm[1], 'base64').length)}`;
   const browser = await chromium.launch();
   const cases = [];
   const check = (name, r, tests) => {

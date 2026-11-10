@@ -20,9 +20,11 @@ work/handoffs/phase-2/20261110_Stage-C-Identity-Figures.json, one key per step, 
   proposals    Writes the drawings for board C beside the masters (new files only): the print L3 at the masthead's
                proportion, from the display masters, and its White file. No master is edited. Writes key "proposals".
   plates DIR   Renders the side-by-side comparisons for board C at actual size into work/handoffs/phase-2/stage-c-identity/.
-  opener DIR   Builds the guide page into DIR and measures s-09-opener in it at 1440, 1024, 768, 390 and 360 px.
+  opener DIR   Measures s-09-opener in the built guide page (run the chain and guide_build.py first) at 1440,
+               1024 and 768 px at 1x and 390, 360 and 1440 px at 2x, with the device set to dark. Writes key "opener".
+  floor DIR    The floor study alone, printed. feed-dark-key rewrites key "feed_dark" from a saved "feed".
 
-Run: python3 -I work/build/scripts/phase-2/stage_c_identity_round0.py feed|proposals|plates|opener <scratch dir>
+Run: python3 -I work/build/scripts/phase-2/stage_c_identity_round0.py feed DIR | proposals | plates DIR | opener DIR
 """
 import io
 import json
@@ -804,6 +806,64 @@ const pages = JSON.parse(fs.readFileSync(job, 'utf8'));
 """
 
 
+# =========================================================================================== opener
+GUIDE_PAGE = ROOT / "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html"
+OPENER_JS = r"""
+const { chromium } = require('playwright');
+const [page, out] = process.argv.slice(2);
+(async () => {
+  const b = await chromium.launch();
+  const res = {};
+  for (const [w, scale] of [[1440, 1], [1024, 1], [768, 1], [390, 2], [360, 2], [1440, 2]]) {
+    const p = await b.newPage({ viewport: { width: w, height: 900 }, deviceScaleFactor: scale, colorScheme: 'dark' });
+    await p.goto('file://' + page, { waitUntil: 'load' });
+    await p.evaluate(() => document.fonts.ready);
+    const fig = p.locator('#fig-s-09-opener');
+    await fig.scrollIntoViewIfNeeded();
+    const r = await fig.evaluate((f) => {
+      const box = (e) => { const q = e.getBoundingClientRect(); return [Math.round(q.left * 10) / 10, Math.round(q.top * 10) / 10, Math.round(q.width * 10) / 10, Math.round(q.height * 10) / 10]; };
+      const ch = f.closest('section.chapter');
+      const intro = ch.querySelector('.intro, p.intro') || null;
+      const scroll = f.querySelector('.plate-scroll');
+      const stage = f.querySelector('.plate-stage');
+      const items = [...f.querySelectorAll('.p9-pi')].map((li) => box(li));
+      const icons = [...f.querySelectorAll('svg[data-icon-family="pillar"]')].map((s) => ({ icon: s.getAttribute('data-icon'), box: box(s), color: getComputedStyle(s).color }));
+      const words = [...f.querySelectorAll('.p9-w')].map((s) => ({ text: s.textContent, size: getComputedStyle(s).fontSize, weight: getComputedStyle(s).fontWeight }));
+      const prev = f.previousElementSibling;
+      const next = f.nextElementSibling;
+      return {
+        figure: box(f), stage: box(stage), scroll_overflows: scroll.scrollWidth > scroll.clientWidth + 0.5,
+        scroll_w: [scroll.scrollWidth, scroll.clientWidth], page_overflows: document.documentElement.scrollWidth > innerWidth,
+        rows: new Set(items.map((i) => Math.round(i[1]))).size, items, icons, words,
+        stage_role: stage.getAttribute('role'), stage_label: stage.getAttribute('aria-label'),
+        hint_shown: !f.querySelector('.plate-hint').hidden, fit_switch: !!f.querySelector('.fit-switch'),
+        before: prev ? prev.className || prev.tagName : null, after: next ? next.className || next.tagName : null,
+        theme: document.documentElement.getAttribute('data-oa-theme'), bg: getComputedStyle(stage).backgroundColor,
+      };
+    });
+    await fig.screenshot({ path: `${out}/opener-${w}@${scale}x.png` });
+    res[`${w}@${scale}x`] = r;
+    await p.close();
+  }
+  console.log(JSON.stringify(res));
+  await b.close();
+})();
+"""
+
+
+def opener(scratch):
+    scratch = Path(scratch).resolve()
+    d = scratch / "opener"
+    d.mkdir(parents=True, exist_ok=True)
+    js = d / "opener.js"
+    js.write_text(OPENER_JS)
+    r = subprocess.run(["node", str(js), str(GUIDE_PAGE), str(d)], check=True, capture_output=True, text=True, cwd=str(ROOT / "work/build"))
+    res = json.loads(r.stdout.strip().splitlines()[-1])
+    save("opener", {"page": LIB.rel(GUIDE_PAGE), "method": "Chromium through Playwright, device set to dark (the guide forces light), "
+                    "the figure scrolled into view at each width", "widths": res})
+    return res
+
+
 # =========================================================================================== main
 if __name__ == "__main__":
     what = sys.argv[1] if len(sys.argv) > 1 else ""
@@ -822,6 +882,10 @@ if __name__ == "__main__":
         print(json.dumps(feed_dark_key(), indent=1))
     elif what == "proposals":
         print(json.dumps(proposals(), indent=1))
+    elif what == "opener" and len(sys.argv) > 2:
+        for k, v in opener(sys.argv[2]).items():
+            print(k, {x: v[x] for x in ("figure", "stage", "scroll_overflows", "page_overflows", "rows", "hint_shown", "before", "after", "theme", "bg")})
+            print("   words", [(w["text"], w["size"], w["weight"]) for w in v["words"]], "icons", [(i["icon"], i["box"][2]) for i in v["icons"]])
     elif what == "plates" and len(sys.argv) > 2:
         pl, sign = plates(sys.argv[2])
         print(json.dumps(pl, indent=1))

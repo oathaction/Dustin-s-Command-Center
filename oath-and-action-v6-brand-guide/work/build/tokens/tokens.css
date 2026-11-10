@@ -9,7 +9,7 @@
  * --oa-color-text-secondary, at that surface's tokens.
  * Themes: the root follows the device, light on Newsprint or dark on Charcoal (DR-204), and
  * data-oa-theme="light" or "dark" on the root wins over the device. See the theme blocks below.
- * Change in 6.0.0-gate2.7: A light and a dark theme in tokens.css: under (prefers-color-scheme: dark), or with data-oa-theme="dark", every short name points at its Charcoal token; data-oa-theme="light" forces Newsprint. Every surface class also sets --oa-color-surface.
+ * Change in 6.0.0-gate2.7: A light and a dark theme in tokens.css: under (prefers-color-scheme: dark), or with data-oa-theme="dark", every short name points at its Charcoal token; data-oa-theme="light" forces Newsprint. Every surface class also sets --oa-color-surface. A field ground role, so an entry box follows the theme.
  *
  * Media queries cannot read custom properties. Write breakpoints in em, which follows text size:
  *   wide        (min-width: 90em)
@@ -104,6 +104,12 @@
   --oa-color-focus-ring-on-white: var(--oa-color-palette-verdigris);
   --oa-color-focus-ring-on-charcoal: var(--oa-color-palette-newsprint);
   --oa-color-focus-ring-on-prussian: var(--oa-color-palette-newsprint);
+
+  /* oa.color.field */
+  --oa-color-field-ground-on-newsprint: var(--oa-color-palette-white);
+  --oa-color-field-ground-on-white: var(--oa-color-palette-newsprint);
+  --oa-color-field-ground-on-charcoal: var(--oa-color-palette-prussian);
+  --oa-color-field-ground-on-prussian: var(--oa-color-palette-charcoal);
 
   /* oa.color.identity */
   --oa-color-identity-signature-on-newsprint: var(--oa-color-palette-pillar-red);
@@ -756,6 +762,7 @@
   --oa-color-border-strong: var(--oa-color-border-strong-on-newsprint);
   --oa-color-border-hairline: var(--oa-color-border-hairline-on-newsprint);
   --oa-color-focus-ring: var(--oa-color-focus-ring-on-newsprint);
+  --oa-color-field-ground: var(--oa-color-field-ground-on-newsprint);
   --oa-color-identity-signature: var(--oa-color-identity-signature-on-newsprint);
   --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-newsprint);
   --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-newsprint);
@@ -854,6 +861,7 @@
   --oa-color-border-strong: var(--oa-color-border-strong-on-white);
   --oa-color-border-hairline: var(--oa-color-border-hairline-on-white);
   --oa-color-focus-ring: var(--oa-color-focus-ring-on-white);
+  --oa-color-field-ground: var(--oa-color-field-ground-on-white);
   --oa-color-identity-signature: var(--oa-color-identity-signature-on-white);
   --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-white);
   --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-white);
@@ -952,6 +960,7 @@
   --oa-color-border-strong: var(--oa-color-border-strong-on-charcoal);
   --oa-color-border-hairline: var(--oa-color-border-hairline-on-charcoal);
   --oa-color-focus-ring: var(--oa-color-focus-ring-on-charcoal);
+  --oa-color-field-ground: var(--oa-color-field-ground-on-charcoal);
   --oa-color-identity-signature: var(--oa-color-identity-signature-on-charcoal);
   --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-charcoal);
   --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-charcoal);
@@ -1050,6 +1059,7 @@
   --oa-color-border-strong: var(--oa-color-border-strong-on-prussian);
   --oa-color-border-hairline: var(--oa-color-border-hairline-on-prussian);
   --oa-color-focus-ring: var(--oa-color-focus-ring-on-prussian);
+  --oa-color-field-ground: var(--oa-color-field-ground-on-prussian);
   --oa-color-identity-signature: var(--oa-color-identity-signature-on-prussian);
   --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-prussian);
   --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-prussian);
@@ -1157,6 +1167,7 @@
   --oa-color-border-strong: var(--oa-color-border-strong-on-newsprint);
   --oa-color-border-hairline: var(--oa-color-border-hairline-on-newsprint);
   --oa-color-focus-ring: var(--oa-color-focus-ring-on-newsprint);
+  --oa-color-field-ground: var(--oa-color-field-ground-on-newsprint);
   --oa-color-identity-signature: var(--oa-color-identity-signature-on-newsprint);
   --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-newsprint);
   --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-newsprint);
@@ -1256,6 +1267,7 @@
     --oa-color-border-strong: var(--oa-color-border-strong-on-charcoal);
     --oa-color-border-hairline: var(--oa-color-border-hairline-on-charcoal);
     --oa-color-focus-ring: var(--oa-color-focus-ring-on-charcoal);
+    --oa-color-field-ground: var(--oa-color-field-ground-on-charcoal);
     --oa-color-identity-signature: var(--oa-color-identity-signature-on-charcoal);
     --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-charcoal);
     --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-charcoal);
@@ -1355,6 +1367,7 @@
   --oa-color-border-strong: var(--oa-color-border-strong-on-charcoal);
   --oa-color-border-hairline: var(--oa-color-border-hairline-on-charcoal);
   --oa-color-focus-ring: var(--oa-color-focus-ring-on-charcoal);
+  --oa-color-field-ground: var(--oa-color-field-ground-on-charcoal);
   --oa-color-identity-signature: var(--oa-color-identity-signature-on-charcoal);
   --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-charcoal);
   --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-charcoal);
