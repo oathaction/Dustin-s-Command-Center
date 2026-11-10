@@ -1727,3 +1727,17 @@ The studio asked three questions before promoting the approved drawings, and lis
 | D2-835 | Party control is read from each legislature's own list for the term in which its map passed, counting dated changes where the list gives them | Florida's and Tennessee's default lists already show members elected November 3, 2026 |
 | D2-836 | Virginia's sentence says the court voided the April 21, 2026 vote | The Department of Elections' release uses "voids" and names the election; the amendment never took effect either way |
 | D2-837 | The Texas and California cases, their source line, the failure plate and the rule text stay as written | Each holds on primary records read November 6, November 9 or today |
+
+## Answers on Rule 01.11 and the reader check, November 10, 2026
+
+Dustin, replying to three questions (the plate's count after Missouri's vote, the reader check's length, the symbols readers name): "agree with all recs".
+
+| # | Decision | Source |
+|---|---|---|
+| DR-187 | Rule 01.11's plate counts maps passed: seven by Republican-led legislatures or commissions and one by California's Democratic-led legislature, and says Missouri's voters rejected their state's map on November 3, 2026, so it never takes effect. Virginia's attempt stays outside the count, named, since its legislature passed no map. Missouri's figures are unofficial until certified, and the plate says so | Dustin, November 10, as recommended (amends DR-149's wording on Missouri) |
+| DR-188 | The combined reader check keeps all eleven steps, about 15 minutes, and the invitation says so | Dustin, November 10, as recommended |
+| DR-189 | The reader check's naming step shows CL-025 Congress, CL-073 Testify, CL-074 Contact an Official and R-02 Ranked-choice voting, each alone at 48 px for 10 seconds | Dustin, November 10, as recommended; the first check never went out, so no earlier answers are lost, and the new drawings are the ones DR-146 asks to be clear |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-838 | Missouri's certified result is read again before the guide is final, and the plate's words follow it | Counties file by November 17 and the state board certifies within two weeks after (research notes, Missouri) |
