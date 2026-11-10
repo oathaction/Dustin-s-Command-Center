@@ -1251,7 +1251,9 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
             intro_p = (f"<p>tokens.css is the full source for every token in this guide. Link it before your own styles, or copy "
                        f"this chapter&#8217;s block, which holds the {n_props} custom properties it needs, with the type parts and "
                        f"their clamps, and the four surface classes.</p>")
-            dl = (f'<a class="btn" href="{tokens.download_uri}" download="{tokens.download_name}">Download tokens.css</a>')
+            # Round 2 (November 10, 2026): the page carries tokens.css as a download once, in the colophon; each chapter's
+            # button is a link to it, which the shell's script turns into the download (without script, it lands there)
+            dl = '<a class="btn" href="#tokens-download" data-oa-download="tokens-download">Download tokens.css</a>'
         else:
             css_lines = []
             for name, d in tok_rows.items():
@@ -1974,7 +1976,7 @@ def build(args):
     # C-S10, RP-S10: each arrow stays with the pillar after it, so the line breaks whole
     arr = '<span class="arr" aria-hidden="true">→</span>'
     pillars = LOCKED["pillars"][0] + "".join(f' <span class="nw">{arr} {p}</span>' for p in LOCKED["pillars"][1:])
-    dl_tokens = (f' <a href="{tokens.download_uri}" download="{tokens.download_name}">Download tokens.css</a>.' if tokens.final else "")
+    dl_tokens = (f' <a id="tokens-download" href="{tokens.download_uri}" download="{tokens.download_name}">Download tokens.css</a>.' if tokens.final else "")
 
     page = f"""<!doctype html>
 <html lang="en">
