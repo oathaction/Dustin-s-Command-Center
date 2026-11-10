@@ -405,7 +405,7 @@
   // its text as it runs (a filtered list, a report page), so the same rule runs here on anything a script adds: in
   // text, each word that holds U+2011 goes in <span class="nw"> with an ASCII hyphen; in SVG, in a field and in a name
   // (aria-label, alt, title), U+2011 simply becomes an ASCII hyphen.
-  var NBH = '‑', NBH_WORD = /[\w.]*‑[\w‑]*/g, NBH_ALL = /‑/g;
+  var NBH = '\u2011', NBH_WORD = /[\w.]*\u2011[\w\u2011]*/g, NBH_ALL = /\u2011/g;
   function holdWhole(node) {
     var t = node.nodeValue, p = node.parentNode;
     if (!t || t.indexOf(NBH) < 0 || !p) return;
@@ -422,7 +422,7 @@
   }
   var NAMES = ['aria-label', 'alt', 'title'];
   function holdNames(el) {
-    NAMES.forEach(function (k) { var v = el.getAttribute && el.getAttribute(k); if (v && v.indexOf(NBH) >= 0) el.setAttribute(k, v.replace(NBH_ALL, '-')); });
+    NAMES.forEach(function (k) { var v = el.getAttribute && el.getAttribute(k), nv = v && v.replace(NBH_ALL, '-'); if (v && nv !== v) el.setAttribute(k, nv); });
   }
   function sweep(root) {
     if (root.nodeType === 3) { holdWhole(root); return; }
