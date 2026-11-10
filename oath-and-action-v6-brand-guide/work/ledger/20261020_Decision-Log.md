@@ -2161,3 +2161,15 @@ Dustin: "I'm not going to do any reader tests, so just strike that from this thi
 | D2-1112 | No guide page or specimen mentions a reader test, so no chapter changes. The two published reader check pages (https://claude.ai/artifact/16SD4uFJTiHKJC5p9CaFpP and https://claude.ai/artifact/H3APDgNH1wGb5HHvf33f6X) stay private and unsent until Dustin asks for them to be deleted; each delete needs his confirmation | A published page is deleted only at his request |
 | D2-1113 | The reader check's files in `work/boards/phase-2/reader-check/` and `reader-check-2/` stay as the record | They hold the questions, the answer key and the tested page if Dustin ever wants a reader test after launch |
 | D2-1114 | Questions the studio meant to settle with readers are settled by the studio's own reviews and the creative director, and go to Dustin on a board where they need his call. The first is Rule 12.4's two hinge patterns (the creative director's risk note), judged at stage C | DR-202 |
+
+## Carried items and the stage C plan, November 10, 2026 (new chat)
+
+Dustin opened this chat from the twelfth handoff's starting prompt: pick up the carried items, then plan stage board C.
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1115 | This chat works on `claude/friendly-brahmagupta-tonmfa`, the branch Dustin names, as D2-954 did | Dustin's starting prompt |
+| D2-1116 | The 28 editor overrides in the drawings board's content file that match nothing are removed now. A strict build of the board into a temporary folder then ran with 0 warnings; the committed board and its published version are unchanged | D2-967; the board needs no rebuild today, and the next rebuild now passes `--strict` |
+| D2-1117 | The research lead checks the three carried sources for Rule 01.11's plate (Virginia's 2025 House of Delegates, Tangipa v. Newsom's order, Ohio's commission minutes) in one run and notes Missouri's status. It edits no chapter; the main session reads its notes first | D2-968 carried them; owners apply any wording change through their generators |
+| D2-1118 | Missouri's certified count is read when the Gate 2 preview is built; until then the plate keeps "unofficial" | Counties file by November 17 and the state board certifies within two weeks after (D2-838) |
+| D2-1119 | Stage C's plan is a draft brief, `work/handoffs/phase-2/20261110_Stage-C-Brief_DRAFT.md`, with four questions for Dustin; nothing in it is built until his go | Dustin's working rule: questions and a short plan, then wait |
