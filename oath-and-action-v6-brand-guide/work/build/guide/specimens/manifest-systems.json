@@ -693,7 +693,7 @@
   "chapter": "11",
   "rule": "11.1",
   "width_px": 360,
-  "alt": "Three Illustrative bills at 360 px on Newsprint, one above the other, each drawn as six numbered steps with its own key. A state bill, H.99003, Library hours, has passed steps 1 to 5 and stands at step 6: “Step 6 of 6: Governor. Both chambers passed it, and it waits for the governor to sign or veto it.” Its key reads 1 Filed, 2 Hearing, 3 Committee vote, 4 First chamber, 5 Second chamber, 6 Governor. A federal bill, H.R. 99012, Passport wait times, stands at the same place: “Step 6 of 6: President. Both chambers passed it, and it waits for the President to sign or veto it.” Its key ends 6 President. A Nebraska bill, LB 99008, Rural clinic grants, has steps 1 to 4 done; step 5 never happened, and the bill stands now at step 6: “Step 6 of 6: Governor. Nebraska has one chamber. The Legislature passed the bill on Final Reading on April 14, and it waits for the governor to sign or veto it.” Its key adds the mark for a step that never happened.",
+  "alt": "Three Illustrative bills at 360 px on Newsprint, one above the other, each drawn as six numbered steps with its own key. A state bill, H.99003, Library hours, has steps 1 to 5 done and stands now at step 6: “Step 6 of 6: Governor. Both chambers passed it, and it waits for the governor to sign or veto it.” Its key reads 1 Filed, 2 Hearing, 3 Committee vote, 4 First chamber, 5 Second chamber, 6 Governor. A federal bill, H.R. 99012, Passport wait times, has steps 1 to 5 done and stands now at the same place: “Step 6 of 6: President. Both chambers passed it, and it waits for the President to sign or veto it.” Its key ends 6 President. A Nebraska bill, LB 99008, Rural clinic grants, has steps 1 to 4 done; step 5 never happened, and the bill stands now at step 6: “Step 6 of 6: Governor. Nebraska has one chamber. The Legislature passed the bill on Final Reading on April 14, and it waits for the governor to sign or veto it.” Its key adds the mark for a step that never happened.",
   "illustrative": true,
   "notes": "",
   "fit_switch": false
@@ -866,7 +866,7 @@
   "chapter": "11",
   "rule": "11.3",
   "width_px": 360,
-  "alt": "Three Illustrative bills at 360 px on Newsprint. Bill H.99003, Library hours: all six numbered steps are done, and the words say “Became law on April 2. It takes effect July 1.” Bill S.99006, Snow route parking: all six steps are done, and the words say “Became law on March 18, over the governor’s veto. It takes effect June 1.” Bill S.99005, Parking meter fees: steps 1 to 5 are done, and the bill stopped at step 6, where the line ends. The words say “Stopped at step 6 of 6: Governor. The governor vetoed it on February 9, and the Senate’s vote to override fell short on February 23.” A key gives the six step names and the Done and Stopped marks.",
+  "alt": "Three Illustrative bills at 360 px on Newsprint. Bill H.99003, Library hours: its six numbered steps, steps 1 to 6, are all done, and the words say “Became law on April 2. It takes effect July 1.” Bill S.99006, Snow route parking: steps 1 to 6 are done, and the words say “Became law on March 18, over the governor’s veto. It takes effect June 1.” Bill S.99005, Parking meter fees: steps 1 to 5 are done, and the bill stopped at step 6, where the line ends. The words say “Stopped at step 6 of 6: Governor. The governor vetoed it on February 9, and the Senate’s vote to override fell short on February 23.” A key gives the six step names and the Done and Stopped marks.",
   "illustrative": true,
   "notes": "",
   "fit_switch": false

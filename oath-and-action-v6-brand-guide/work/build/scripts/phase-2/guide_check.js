@@ -1033,6 +1033,11 @@ async function sbSpacing(page, modes = ['spacing', 'zoom'], zoomScroll = false) 
         }
       }
       if ((mode === 'spacing' || zoomScroll) && document.documentElement.scrollWidth > window.innerWidth + 1) bad.push({ where: 'page', mode, why: `scrolls sideways (${document.documentElement.scrollWidth} px)` });
+      // a masthead control pushed past either edge cannot be reached: past the left edge no scroll brings it back
+      if (zoomScroll) for (const el of document.querySelectorAll('.masthead a, .masthead button')) {
+        if (!rendered(el)) continue; const r = el.getBoundingClientRect();
+        if (r.left < -1 || r.right > window.innerWidth + 1) bad.push({ ...desc(el), mode, why: `a masthead control off the screen (${Math.round(r.left)} to ${Math.round(r.right)} px)` });
+      }
       document.getElementById('sb-spacing').remove();
       return bad;
     }, { mode, zoomScroll });

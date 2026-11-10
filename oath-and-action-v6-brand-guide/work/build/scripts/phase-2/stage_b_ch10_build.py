@@ -1000,9 +1000,8 @@ def chapter(rows, reads24, like, sheets, figs):
         'rule': [
             'Every Civic Line drawing sits in a square box 128 units on a side. Each drawing keeps its line at one weight, '
             'set between 2.68 and 3.35 units, with round ends and round corners. The red accent marks one idea, the '
-            'detail a reader should see first, such as the door of the hall in Local government. It may be one shape or '
-            'a few: Track’s pillar icon puts its red on the map pin and on the magnifier’s handle (Rule 09.2). The rest '
-            'is ink.',
+            'detail a reader should see first, such as the door of the hall in Local government. It may take one shape '
+            'or a few, as Track’s icon in chapter 09 colors both its map pin and its magnifier’s handle. The rest is ink.',
             'A subject with no drawing, such as Bill or State house, takes its word alone until our founder and editor '
             'approves a drawing made this way.'],
         'tokens': ['oa.component.icon.ink.onNewsprint', 'oa.component.icon.accent.onNewsprint'],
@@ -1025,7 +1024,7 @@ def chapter(rows, reads24, like, sheets, figs):
             {'label': 'Box', 'value': '128 by 128 units, viewBox 0 0 128 128, transparent'},
             {'label': 'Line', 'value': '2.68 to 3.35 units, one width in each drawing; 1.01 to 1.26 px at 48 px'},
             {'label': 'Ends and corners', 'value': 'Round caps and round joins; a butt cap only where two colors meet'},
-            {'label': 'Red', 'value': 'One accent for one idea, one shape or a few, in the file’s group '
+            {'label': 'Red', 'value': 'One accent for one idea, in one shape or several, all in the file’s group '
                                       '<code>data-part="accent"</code>',
              'token': 'oa.component.icon.accent.onNewsprint'},
             {'label': 'Ink', 'value': 'Charcoal on Newsprint and White, Newsprint on Charcoal and Prussian',
@@ -1158,8 +1157,8 @@ def chapter(rows, reads24, like, sheets, figs):
             'typed chip, a small outlined label that holds the kind of element and its atlas ID, such as Variable D1. Each '
             'reform drawing takes its reform’s name and chip. The rejected option on term limits keeps the word Rejected '
             'wherever it appears.',
-            'A subject that no topic symbol names, such as housing costs, takes its word alone. An atlas drawing appears '
-            'only beside the atlas’s own name, never beside a piece’s own topic word.',
+            'A subject that no topic symbol names, such as Housing, takes its word alone. An atlas drawing appears only '
+            'beside the atlas’s own name, never beside a piece’s own topic word.',
             'Hide the drawing from screen readers when its word sits beside it, so the word is read once.'],
         'tokens': ['oa.type.ui', 'oa.type.label'],
         'why': {'text': [f'Even a clear drawing can name several things: the chamber in {lab("CL-025")} could be any '

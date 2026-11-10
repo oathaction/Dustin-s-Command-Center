@@ -9,8 +9,8 @@ editor's. This step rewrites only the drawings, in place:
                    data-icon-family="pillar" (D2-517); the current pillar's 48 px icon keeps its red through the
                    accent token; margins pulled in to the ink (D2-439), whole pixels at 24 px
   the kicker icon  s-01-21-correct's CL-055 Productivity, which is not among the 41 that read at 24 px (DR-136, D2-373),
-                   becomes CL-057 from the sprite, data-icon-family="topic", with the word the editor gave it, "Workers'
-                   share of income" (editor's round 2 notes, section 4; DR-185)
+                   becomes CL-057 from the sprite, data-icon-family="atlas" (Variable EC3, as chapter 10 files it; round 3),
+                   with the word the editor gave it, "Workers' share of income" (editor's round 2 notes, section 4; DR-185)
   the phone column under 48em, the 48 px row keeps each icon's whole box, so its four words share one left edge, and
                    each downward arrow stands centered under its icon between rows, as chapter 09's row does (round 3,
                    CD-S1, CA-S6)
@@ -33,6 +33,9 @@ FILES = ("s-01-pillars", "s-01-21-correct", "s-01-21-failure")
 INLINE = re.compile(r'<svg\b[^>]*\sxmlns="http://www\.w3\.org/2000/svg"[^>]*\sdata-icon="(CL-\d{3})"[^>]*>.*?</svg>', re.S)
 PILLAR = {"CL-019", "CL-020", "CL-021", "CL-022"}
 KICKER_OLD, KICKER_NEW = ("CL-055", "Productivity"), ("CL-057", "Workers’ share of income")
+# Each Civic Line drawing's family where chapter 10 files it under atlas (D2-517): CL-057 is Variable EC3, an atlas
+# symbol, as Rule 01.21 and its alt now call it (round 3, the editor's BE-S7 follow-on). Any other drawing is a topic.
+FAMILY = {"CL-057": "atlas"}
 STACK_CSS = ("@media (max-width:47.99em){.ed .prow-48{row-gap:" + str(C9.STACK_GAP) + "px}.ed .prow-48 .cl{margin:0!important}"
              ".ed .prow-48 .pi{position:relative}.ed .prow-48 .pi:not(:last-child)::after{position:absolute;left:24px;"
              "top:calc(100% + " + str(C9.STACK_GAP // 2) + "px);transform:translate(-50%,-50%);margin:0;line-height:1}}")
@@ -45,8 +48,9 @@ def _attr(tag, name):
 
 
 def topic(cid, size, cls):
+    fam = FAMILY.get(cid, "topic")
     return (f'<svg viewBox="0 0 128 128" width="{size}" height="{size}" class="{cls}" aria-hidden="true" focusable="false" '
-            f'data-icon="{cid}" data-icon-family="topic" style="color:var(--oa-component-icon-ink-on-newsprint)">'
+            f'data-icon="{cid}" data-icon-family="{fam}" style="color:var(--oa-component-icon-ink-on-newsprint)">'
             f'<use href="#oa-sym-{cid.lower()}"/></svg>')
 
 
@@ -68,6 +72,11 @@ def rewrite(text, sid):
         return topic(cid, size, cls)
 
     out = INLINE.sub(swap, text)
+    for cid, fam in FAMILY.items():          # a drawing this step placed before with the topic family
+        old = f'data-icon="{cid}" data-icon-family="topic"'
+        if old in out:
+            out = out.replace(old, f'data-icon="{cid}" data-icon-family="{fam}"')
+            log.append(f"{cid} filed as {fam}")
     if sid == "s-01-21-correct":
         old = f'data-icon="{KICKER_NEW[0]}"'
         i = out.find(old)

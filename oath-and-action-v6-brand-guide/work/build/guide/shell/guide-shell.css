@@ -83,7 +83,7 @@ code, pre, kbd { font-family: var(--mono); font-size: .875rem; overflow-wrap: an
   font: var(--oa-type-ui); white-space: nowrap }
 .edition-k { color: var(--ink-2); font-weight: var(--oa-font-weight-regular); margin-right: .35em }
 .partnav { display: none; margin-left: auto; min-width: 0; max-width: 100% }
-.partnav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0 var(--oa-space-300) }
+.partnav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0 var(--oa-space-300) }
 .partnav a { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); font: var(--oa-type-ui); text-decoration: none }
 .partnav a:hover, .partnav a[aria-current] { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-rule); text-underline-offset: .45em }
 .menubtn { flex: none; margin-left: auto; display: inline-flex; align-items: center; gap: var(--oa-space-100); min-height: var(--oa-size-target-touch);
