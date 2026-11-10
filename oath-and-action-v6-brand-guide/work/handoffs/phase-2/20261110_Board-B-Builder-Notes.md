@@ -2,7 +2,7 @@
 
 Oath & Action Edition 06, Phase 2, stage B, November 10, 2026. Written by the board builder for the main session, under `20261110_Board-B-Brief.md`, with the design director's layout judgment (`.claude/agents/oa-design-director.md`) and the editor's rules (`.claude/agents/oa-editor.md`, chapter 02). I published nothing, committed nothing and pushed nothing. Paths are relative to `oath-and-action-v6-brand-guide/`.
 
-Status: built and checked on the files as they stood at 4:24 p.m. UTC, while the fix pass was still finishing. **It needs a rerun twice more:** when the creative director's `rescore` block lands in `20261110_Stage-B-Round-3-CD-Scores.json`, and at publish with the reader check's real address.
+Status: rebuilt at 5:05 p.m. UTC with the creative director's rescore and the fixes for B1 and B2 from the creative director's read of the board (`20261110_CD-Review-Of-Stage-B-Chapters.md`, "Rescore after the fix pass"). **One rerun is left:** at publish, with the reader check's real address (B3). The rescore now prints (B4).
 
 **To open:** `work/boards/phase-2/stage-b/board-b/20261110_Board-B.html`.
 
@@ -83,6 +83,16 @@ The script holds only the board's own words (the `W` block at its top). Every fa
 - Whether my words pass every pattern chapter 02 lists. I read them against the rules and changed a parallel run (DR-190), three passive lines and a few others; the editor has not read them.
 - The chapter files as the fix pass finishes them. The board reads them on each run, so a rerun after the pass picks up their final words.
 
+## Second build, after the creative director's read of board B
+
+- **B1.** The sample reply names both decisions: "All as recommended. I approve option A for the error mark by name, and keep the one-color tile exception in Rule 10.5."
+- **B2.** The examples card no longer says the guide stays off R-01 and R-02. It says Rule 10.8 used to show only R-01 and R-02 and now draws all 10; Rule 11.16's bill moved to local news grants and reform R-32; and nothing else moved. Rule 12.5's marker and the reader check stay on loop R10 and reform R-01, and the only change DR-195 made was to move chapter 11's stepper to loop R1. DR-195 joins the card's codes.
+- **B4.** The rescore table and "What moved in the rescore" print. Five moves, each with the creative director's reason; the group item's reason goes through a new copy edit that drops `s-05-3-corrective`, D2-881 and D2-959.
+- **Answered and carried.** DR-195 to DR-198 were already in "answered". "Carried" adds the tile question (D2-976) as its last line, which closes when Dustin answers decision 2.
+- Rule links keep "Rule" and the number on one line.
+- Tested: `--strict` with the placeholder address and `--guide` on my scratch guide build: exit 0, 0 warnings, 20 anchors. `dataviz_check.js --board` at 1,440, 390 and 360 px: PASS, 0 failures, on the board and on the scratch copy. The sample reply's copy button copies the new words. Looked at the scores section and the examples card at 1,440 px at 1x.
+- Not tested: the editor's read of the new sentences.
+
 ## Change log
 
 Created:
@@ -94,4 +104,4 @@ Created:
 - `work/handoffs/phase-2/20261110_Board-B-Builder-Notes.md` (this file)
 - Outside the repository, in the scratchpad: the publish copy and `files.json` in `publish-board-b/`; in `board-b/`, the check copy and its results and captures, my capture and test scripts in `tools/`, the scratch guide build, and the rescore and address tests.
 
-Modified: none of anyone else's. I left `source/`, `work/ledger/`, `deliverables/`, the guide's chapters, specimens and shell, every other board and the reader check pages as I found them.
+Modified in the second build: the script, the board, its content JSON and check results, and this file. Modified: none of anyone else's. I left `source/`, `work/ledger/`, `deliverables/`, the guide's chapters, specimens and shell, every other board and the reader check pages as I found them.
