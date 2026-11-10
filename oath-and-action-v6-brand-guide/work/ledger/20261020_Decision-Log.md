@@ -2423,3 +2423,9 @@ Dustin, replying to drawings board C (https://claude.ai/artifact/LtEuA2zNh1WUidh
 | # | Decision | Reason |
 |---|---|---|
 | D2-1259 | The approved drawings and identity changes are promoted in the next chat, in one pass before round 1's chapters, with the change ledger from C-066; nothing in the guide changes in this chat | This chat stands at its handoff point (D2-1258), and promotion touches the sprite, the Civic Line set in use, the utility set, chapters 03, 08, 10 and 11 and the identity generators |
+
+## Answer on page 14 of the references, November 10, 2026
+
+| # | Decision | Source |
+|---|---|---|
+| DR-212 | Page 14 of `pics_i_like.pdf`, the data visualization concept sheet, is Oath & Action's own design study: Dustin made it with ChatGPT, describing what he wanted, with no outside sources. It stays a reference that does not ship, and its ideas may be used as the studio's own. Q-14 is answered | Dustin, November 10: "i made that (page 14) with chatgpt describing what i wanted. no outside sources were used" |
