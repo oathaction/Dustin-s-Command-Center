@@ -11,12 +11,12 @@ Opened at Gate 0, October 20, 2026. Q-11 to Q-14 added at Gate 1, October 21, 20
 | Q-11 | Can the environment's network access be widened before Phase 3? | Research can't read pages, and Phase 3 can't download public data | Search only. Quotes stay marked as snippets, and chart specimens use Atlas V7 data | Research lead, Gate 1 |
 | Q-12 | Will a trademark attorney run clearance on OATH & ACTION, the monogram and a standalone ampersand before launch? | The drawn ampersand's value depends on it, and Braver Angels had to rename after a settlement | The guide flags the need. No filing assumed | Research lead, Gate 1 |
 | Q-14 | Who made page 14 of `pics_i_like.pdf`, the rendered data visualization study? | It is the only page whose maker the rights review couldn't trace | Study only | Research lead, Gate 1 |
-| Q-17 | Can you add the Atlas V7 HTML file to `source/` before Phase 3? | Phase 3 checks every atlas ID, sign, delay, grade and route in chapters 13 to 15 against Atlas V7's full data, and only the Phase 0 extracts are in this checkout | Phase 3 works from the Phase 0 reconciliation data and the editorial data; the full ID check waits for the file | Main session, November 10 |
 
 ## Answered
 
 | # | Question | Answer | Date |
 |---|---|---|---|
+| Q-17 | Can you add the Atlas V7 HTML file to `source/` before Phase 3? | Dustin uploaded it on November 10. It matches the Phase 0 manifest byte for byte (3,109,589 bytes, SHA-256 05e26c6b…c97649). Under `.gitignore` it stays out of the repository, so it lives in each container only while a session holds it (D2-711) | November 10, 2026 |
 | Q-16 | Which tool made the Civic Line sheets, and under what terms? | ChatGPT, in Dustin's own conversation over several rounds of describing what he wanted and the look; no one else's work was a source. The plan was not stated for these sheets (DR-144) | November 9, 2026 |
 | Q-13 | Can you show the marks to five or more real readers before Gate 2? | Yes. The studio builds a private page that records answers; Dustin sends the link (DR-68) | November 6, 2026 |
 | Q-15 | How should each Civic Line icon sit in its 128 square? | Option 3, the capped fit, as the studio recommended (DR-08) | October 29, 2026 |

@@ -1504,3 +1504,10 @@ Dustin, replying to the stage B drawings board (https://claude.ai/artifact/WdVDN
 |---|---|---|
 | D2-709 | "i approve all recommendations" is read as the board's sample reply: every card's recommended option, approved by name | The reply names approval in Dustin's own words and covers every card; the board's cover gave that sentence as the short reply |
 | D2-710 | The approved drawings are promoted to finals in the next chat, which opens with the promotion and its change ledger lines (from C-050), then round 2 | This chat stands at its handoff point, and promotion touches every maker's folder and the engineer's sprite |
+
+## Atlas V7 supplied again, November 10, 2026
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-711 | Dustin's upload of Atlas V7 sits in `source/20261015_Who-Do-They-Answer-To-Systems-Atlas_V7.html` and its model in `work/extract/atlas-v7-data.json`, in this container only; both paths stay out of git as `.gitignore` sets them | The file matches the Phase 0 manifest byte for byte, and the repository keeps large supplied originals on Dustin's machine; how future sessions get the model is Dustin's question |
+| D2-712 | The main session checked the redraw subjects against the full model: R-13 "Rebuild Congress's own staff and experts", R-42 "Congress votes on lasting tariffs", R-48 "Agency independence after the Slaughter ruling", D1 "Congress's ability to write and check policy", D7 "Entrenched control of rule-setting institutions" and EC5 "Where newly created credit goes" match the meaning sheet, and all 50 Civic Line reform drawings have their IDs among the model's 50 reforms | Round 0 could check only against the Phase 0 extracts (research notes, section 8) |
