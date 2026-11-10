@@ -71,16 +71,19 @@ export const meta = {
   // data-oa-theme="light" on its root (D2-1133).
   theme: {
     attribute: 'data-oa-theme',
-    values: ['light', 'dark'],
+    // The main session's call on DR-204: the reader chooses Light, Dark or Match my device, and Match my device is the
+    // default, so "device" (or no attribute at all) follows the device setting.
+    values: ['light', 'dark', 'device'],
     followsDevice: '(prefers-color-scheme: dark)',
+    storage: { key: 'oa-theme', values: ['light', 'dark'], note: 'A reader who picks Light or Dark is remembered under this localStorage key; Match my device removes it. Read it in a classic inline script in the head, inside try and catch, and fall back to the device setting.' },
     light: { surface: 'newsprint', colorScheme: 'light', default: true,
       job: 'The default: the page sits on Newsprint and every short name takes its Newsprint token.' },
     dark: { surface: 'charcoal', colorScheme: 'dark', source: 'Night Edition on Charcoal (DR-36, DR-204)',
       job: 'When the device asks for dark and the page has not forced light, or wherever data-oa-theme="dark" stands: the page sits on Charcoal and every short name takes its Charcoal token.' },
     shortSurface: '--oa-color-surface',
     rules: [
-      'With no attribute, the root follows the device: light, or dark under (prefers-color-scheme: dark).',
-      'data-oa-theme="light" or "dark" on the root wins over the device setting; the reader\'s switch writes it.',
+      'With no attribute, or with data-oa-theme="device", the root follows the device: light, or dark under (prefers-color-scheme: dark).',
+      'data-oa-theme="light" or "dark" on the root wins over the device setting; the reader\'s Theme choice (Light, Dark, Match my device) writes it.',
       'The attribute on any other element sets that element and what it holds, so a specimen can show both themes on one page.',
       'A surface class keeps its own surface inside either theme. A product that follows the theme puts no surface class on its body.',
       'A role with no token on Charcoal, such as the diverging chart scale and the Error Band, is initial in the dark theme.',

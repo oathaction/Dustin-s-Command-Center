@@ -310,17 +310,22 @@ FIGURES = ROOT / "work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json"
 # Promotion, November 10, 2026: figures measured with the finals in use (the feed test with the rebuilt 48 px master, the
 # end mark's pixel masters), written by promotion_identity.py. A key found there wins over the Q1 to Q4 file's.
 FIGURES_PROMOTION = ROOT / "work/handoffs/phase-2/20261110_Promotion-Identity-Figures.json"
+# Stage C round 0, November 10, 2026 (CD-N12): the feed test on dark cards, written by stage_c_identity_round0.py feed
+FIGURES_STAGE_C = ROOT / "work/handoffs/phase-2/20261110_Stage-C-Identity-Figures.json"
 
 
 def figures(key):
     """Measured figures the chapters print (Q1 to Q4 pass): 'endmark', 'feed' or 'range', written by
     stage_a_identity_q_measure.py, and from the promotion 'feed' again and 'endmark_fit', written by
-    promotion_identity.py. None, with a warning, when the test has not run; the page then prints a marker that the
+    promotion_identity.py, and from stage C 'feed_dark', written by stage_c_identity_round0.py. None, with a
+    warning, when the test has not run; the page then prints a marker that the
     build's own text scan would show, and the maker reruns the test and the build."""
     import json as _json
     d = _json.loads(FIGURES.read_text()) if FIGURES.exists() else {}
     if FIGURES_PROMOTION.exists():
         d.update({k: v for k, v in _json.loads(FIGURES_PROMOTION.read_text()).items() if k in ("feed", "endmark_fit")})
+    if FIGURES_STAGE_C.exists():
+        d.update({k: v for k, v in _json.loads(FIGURES_STAGE_C.read_text()).items() if k in ("feed_dark",)})
     if key not in d:
         print(f"  WARNING: no '{key}' figures in {FIGURES.name} or {FIGURES_PROMOTION.name}; run the test that writes it, then build again")
         return None

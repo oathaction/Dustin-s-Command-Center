@@ -91,18 +91,24 @@ const [out, html, ...ids] = process.argv.slice(2);
 
 # a feed in a browser at 1x: the card as an <img> drawn at a width, captured as the screen shows it
 IMG_JS = r"""
+const fs = require('fs');
 const { chromium } = require('playwright');
 const [out, job] = process.argv.slice(2);
-const items = JSON.parse(require('fs').readFileSync(job, 'utf8'));
+const items = JSON.parse(fs.readFileSync(job, 'utf8'));
 (async () => {
   const b = await chromium.launch();
   const p = await b.newPage({ viewport: { width: 700, height: 400 }, deviceScaleFactor: 1 });
+  const html = out + '/img-page.html';
+  let n = 0;
   for (const it of items) {
-    await p.setContent(`<html><body style="margin:0;background:#888"><img id="i" src="file://${it.src}" width="${it.w}" style="display:block"></body></html>`);
-    await p.waitForFunction(() => document.getElementById('i').complete);
+    fs.writeFileSync(html, `<!doctype html><html><body style="margin:0;background:#888"><img id="i" src="file://${it.src}" width="${it.w}" style="display:block"></body></html>`);
+    await p.goto('file://' + html, { waitUntil: 'load' });
+    const ok = await p.evaluate(() => { const i = document.getElementById('i'); return i.complete && i.naturalWidth > 0; });
+    if (!ok) throw new Error('image did not load: ' + it.src);
     await p.locator('#i').screenshot({ path: it.out });
+    n++;
   }
-  console.log(JSON.stringify({ n: items.length }));
+  console.log(JSON.stringify({ n }));
   await b.close();
 })();
 """
@@ -372,7 +378,430 @@ def feed_run(scratch):
                     "best_min_of_both_widths": both}
     res["placement"] = place
     save("feed", res)
+    feed_dark_key(res)
     return res
+
+
+def feed_dark_key(res=None):
+    """The figures chapter 08 prints (stage_a_identity_lib.figures("feed_dark")): the test at 500 and 360 px with Lanczos
+    on the card drawn on each ground, and the floors, from the full study above."""
+    if res is None:
+        res = json.loads(FIGS.read_text())["feed"]
+    out = {"source": "work/build/scripts/phase-2/stage_c_identity_round0.py feed, key feed",
+           "lockmark_master": res["lockmark_master"], "floors": res["light_floor"], "filter": "lanczos"}
+    for s, v in res["at_rule_widths"].items():
+        out[s] = {w: {k: c["lanczos"][k] for k in ("nodes_kept", "of", "lever_red_px", "passes") if k in c["lanczos"]}
+                  for w, c in v.items()}
+    save("feed_dark", out)
+    return out
+
+
+# =========================================================================================== proposals
+# The print L3 at the masthead's proportion (D2-482, D2-483, CD-S10): the October master with only its lockmark resized,
+# from 2.4 cap heights to 48 over 22, as DR-131 and D2-477 resized it in the masthead. The wordmark, the 0.60 cap height
+# of space, the lockmark's display drawing and its centering on the capitals stay. Capitals run from y 4 to 104.
+PRINT_L3 = {"src": "lockups/20261028_L3-Horizontal-Master.svg", "dst": "lockups/20261110_L3-Horizontal-Print-Master.svg",
+            "src_white": "prussian/20261028_L3-Horizontal-Master-Prussian-White.svg",
+            "dst_white": "prussian/20261110_L3-Horizontal-Print-Master-Prussian-White.svg"}
+CAP_TOP, CAP_H = 4, 100
+LOCK_CAPS = 48 / 22                  # the masthead's lockmark over its capitals (DR-131, D2-477)
+PRINT_L3_TITLE = ("L3 horizontal lockup, print master at the masthead's proportion: the wordmark's display master, 0.60 "
+                  "cap height of space and the lockmark's display master at 48/22 cap heights, as in the 282 px masthead, "
+                  "centered on the capitals. For print and for widths other than the masthead's 282 px. Proposed for "
+                  "board C; the October master stays in use until approved")
+
+
+def print_l3_svg(src_text, white=False):
+    m = re.search(r'<svg x="([\d.]+)" y="(-?[\d.]+)" width="([\d.]+)" height="([\d.]+)" viewBox="0 0 123.5 123.5"', src_text)
+    x, y, w, h = map(float, m.groups())
+    assert (y, w, h) == (-66.0, 240.0, 240.0), "the October master is not the file this step was written for"
+    size = round(CAP_H * LOCK_CAPS, 2)                       # 218.18
+    top = round(CAP_TOP + CAP_H / 2 - size / 2, 2)           # -55.09: centered on the capitals, as before
+    width = round(x + size, 2)
+    out = src_text.replace(m.group(0), f'<svg x="{m.group(1)}" y="{top:g}" width="{size:g}" height="{size:g}" viewBox="0 0 123.5 123.5"', 1)
+    out = out.replace('viewBox="0 -66 1278.31 240"', f'viewBox="0 {top:g} {width:g} {size:g}"', 1)
+    title = PRINT_L3_TITLE + (". Treatment D for Prussian: one color, White" if white else "")
+    out = re.sub(r"<title>.*?</title>", f"<title>{LIB.E(title).replace(chr(39), '&#x27;')}</title>", out, count=1)
+    # nothing else moves: undo the three changes and the file is the October master again
+    back = re.sub(r"<title>.*?</title>", re.search(r"<title>.*?</title>", src_text).group(0), out, count=1)
+    back = back.replace(f'viewBox="0 {top:g} {width:g} {size:g}"', 'viewBox="0 -66 1278.31 240"', 1)
+    back = back.replace(f'<svg x="{m.group(1)}" y="{top:g}" width="{size:g}" height="{size:g}"', m.group(0)[:m.group(0).index(' viewBox')], 1)
+    assert back == src_text, "the print L3 differs from the October master in more than the lockmark's size, the view box and the title"
+    return out, {"lockmark_units": size, "lockmark_top": top, "width_units": width, "gap_units": round(x - 978.31, 2),
+                 "lockmark_over_capitals": round(size / CAP_H, 4), "width_over_capitals": round(width / CAP_H, 4)}
+
+
+def proposals():
+    rec = {}
+    for k_src, k_dst, white in (("src", "dst", False), ("src_white", "dst_white", True)):
+        src = ID_DIR / PRINT_L3[k_src]
+        dst = ID_DIR / PRINT_L3[k_dst]
+        text, geo = print_l3_svg(src.read_text(), white)
+        if dst.exists() and dst.read_text() != text:
+            raise SystemExit(f"{dst.name} exists with other content; a proposal file is written once")
+        dst.write_text(text)
+        rec[PRINT_L3[k_dst]] = dict(geo, source=PRINT_L3[k_src])
+    october = {"lockmark_units": 240, "width_units": 1278.31, "gap_units": 60, "lockmark_over_capitals": 2.4,
+               "width_over_capitals": 12.7831}
+    rec["october_master"] = october
+    # at L3's print minimum, 1.55 in wide (Rule 03.4), the capitals and the lockmark in each drawing
+    for name, g in (("october_at_1.55_in", october), ("proposal_at_1.55_in", rec[PRINT_L3["dst"]])):
+        caps_in = 1.55 / g["width_over_capitals"]
+        rec[name] = {"capitals_mm": round(caps_in * 25.4, 2), "lockmark_in": round(caps_in * g["lockmark_over_capitals"], 3)}
+    rec["masthead_master"] = {"file": LIB.L3["masthead"], "capitals_px": 22, "gap_px": 13, "lockmark_px": 48,
+                              "lockmark_over_capitals": round(48 / 22, 4), "gap_over_capitals": round(13 / 22, 4)}
+    save("proposals", {"print_l3": rec})
+    return rec
+
+
+# =========================================================================================== plates
+# Comparison pages for board C, each at actual size (CLAUDE.md gate rule 4; Master Brief section 3, change control, and
+# section 9, step 4: original, proposal and an overlay). They are handoff files for the board builder; no board is
+# written here. Masters are inlined from their files, unchanged, with only width, height and style on the root.
+PLATE_CSS = """
+body{margin:0;background:var(--oa-color-surface-newsprint);color:var(--oa-color-text-primary-on-newsprint);
+ font-family:Inter,system-ui,sans-serif;font-size:17px;line-height:1.55}
+main{padding:40px 40px 64px;max-width:1300px}
+h1{font:800 32px/1.15 "Inter Tight",Inter,sans-serif;margin:0 0 12px;max-width:30em}
+h2{font:700 20px/1.3 Inter,sans-serif;margin:48px 0 8px;padding-top:16px;border-top:1px solid var(--oa-color-border-hairline-on-newsprint)}
+main>p,.note{margin:0 0 12px;max-width:44em}
+.tag{display:block;font-size:13px;line-height:1.4;color:var(--oa-color-text-secondary-on-newsprint);margin:8px 0 0}
+.row{display:flex;flex-wrap:wrap;gap:32px 48px;align-items:flex-start;margin:16px 0 0}
+.stack{display:flex;flex-direction:column;gap:20px;margin:16px 0 0}
+.cell{display:flex;flex-direction:column;align-items:flex-start}
+.ground{padding:24px;line-height:0}
+.s-newsprint{background:var(--oa-color-surface-newsprint)}.s-white{background:var(--oa-color-surface-white)}
+.s-charcoal{background:var(--oa-color-surface-charcoal)}.s-prussian{background:var(--oa-color-surface-prussian)}
+.s-newsprint.ground{border:1px solid var(--oa-color-border-hairline-on-newsprint)}
+.s-white.ground{border:1px solid var(--oa-color-border-hairline-on-white)}
+.s-charcoal .tag{color:var(--oa-color-text-secondary-on-charcoal)}.s-prussian .tag{color:var(--oa-color-text-secondary-on-prussian)}
+table{border-collapse:collapse;font-size:15px;margin:12px 0 0;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:6px 16px 6px 0;border-top:1px solid var(--oa-color-border-hairline-on-newsprint);vertical-align:top}
+th{font-weight:700}
+.px{image-rendering:pixelated}
+.cell>svg,.stack svg{display:block}
+"""
+
+
+def plate_page(title, body, css=""):
+    tokens = (ROOT / "work/build/tokens/tokens.css").read_text()
+    return ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+            f'<title>{LIB.E(title)}</title>'
+            '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Inter+Tight:wght@800&display=swap" rel="stylesheet">'
+            f'<style>{tokens}</style><style>:root{{color-scheme:light}}{PLATE_CSS}{css}</style></head><body><main>{body}</main></body></html>')
+
+
+def svg_at(rel, *, h=None, w=None, surface="newsprint", mode="color", label=""):
+    """A master inlined from its file at a size, its hooks set for a surface (stage_a_identity_lib.mark_style). On
+    Prussian in color, the White file beside it."""
+    path = ID_DIR / rel
+    style = LIB.mark_style(surface, mode)
+    if surface == "prussian" and mode == "color":
+        alt = ID_DIR / "prussian" / (Path(rel).stem + "-Prussian-White.svg")
+        if alt.exists():
+            path, style = alt, ""
+    text = path.read_text()
+    vb = [float(v) for v in re.search(r'viewBox="([^"]+)"', text).group(1).split()]
+    if h is None:
+        h = w * vb[3] / vb[2]
+    if w is None:
+        w = h * vb[2] / vb[3]
+    root = re.match(r"<svg\b[^>]*>", text).group(0)
+    new_root = root[:-1] + f' width="{w:.2f}" height="{h:.2f}" role="img" aria-label="{LIB.E(label or path.stem)}" style="{style}">'
+    return text.replace(root, new_root, 1), (w, h)
+
+
+def l3_pair(caps, surface="newsprint", mode="color", tags=True):
+    """The October L3 master over the proposal, at one cap height, left edges together so the wordmarks align."""
+    out = []
+    for rel, name in ((PRINT_L3["src"], "In use for print: the October L3 master, its lockmark at 2.4 cap heights"),
+                      (PRINT_L3["dst"], "Proposal: the print L3, its lockmark at 2.18 cap heights, as in the masthead")):
+        vbh = 240 if rel == PRINT_L3["src"] else CAP_H * LOCK_CAPS
+        s, (w, h) = svg_at(rel, h=caps * vbh / CAP_H, surface=surface, mode=mode, label=name)
+        tag = f'<span class="tag">{LIB.E(name)}; capitals {caps:g} px, {w:.0f} by {h:.0f} px</span>' if tags else ""
+        out.append(f'<div class="cell">{s}{tag}</div>')
+    return '<div class="stack">' + "".join(out) + "</div>"
+
+
+def overlay(caps):
+    """The two L3 drawings on one wordmark: the October master in Stone, the proposal over it in Charcoal and red."""
+    k = caps / CAP_H
+    a, (wa, ha) = svg_at(PRINT_L3["src"], h=240 * k, mode="mono", surface="newsprint", label="October L3 master")
+    a = a.replace('style="', 'style="position:absolute;left:0;top:0;opacity:1;', 1)
+    a = re.sub(r'(color:)var\(--oa-color-text-primary-on-newsprint\)', r"\1var(--oa-color-palette-stone)", a)
+    a = a.replace("--amp:var(--oa-color-text-primary-on-newsprint)", "--amp:var(--oa-color-palette-stone)")
+    a = re.sub(r"--(lever|link|line):var\(--oa-color-text-primary-on-newsprint\)", r"--\1:var(--oa-color-palette-stone)", a)
+    b, (wb, hb) = svg_at(PRINT_L3["dst"], h=CAP_H * LOCK_CAPS * k, label="Print L3 proposal")
+    top = (-55.09 - -66) * k
+    b = b.replace('style="', f'style="position:absolute;left:0;top:{top:.2f}px;', 1)
+    return (f'<div style="position:relative;width:{wa:.0f}px;height:{ha:.0f}px">{a}{b}</div>'
+            f'<span class="tag">Capitals {caps:g} px. The October master in Stone; the proposal over it, in Charcoal with its red, '
+            'shares the wordmark, the space before the lockmark and the lockmark’s vertical center, and its lockmark is 9.1 '
+            'percent smaller.</span>')
+
+
+def plates(scratch):
+    import numpy as np
+    from PIL import Image
+    import stage_a_identity_proofs as SP
+    scratch = Path(scratch).resolve()
+    d = scratch / "plates"
+    d.mkdir(parents=True, exist_ok=True)
+    PLATES.mkdir(parents=True, exist_ok=True)
+    prop = json.loads(FIGS.read_text())["proposals"]["print_l3"]
+    F = json.loads(FIGS.read_text())["feed"]
+    floors = F["light_floor"]
+    out_files = []
+
+    # -------------------------------------------------------------------------------- 1. the print L3
+    ms, _ = svg_at(LIB.L3["masthead"], h=48, label="L3 masthead master")
+    oc, (ow, oh) = svg_at(PRINT_L3["src"], w=282, label="October L3 master at 282 px")
+    pr, (pw, ph) = svg_at(PRINT_L3["dst"], w=282, label="Print L3 proposal at 282 px")
+    o155, p155 = prop["october_at_1.55_in"], prop["proposal_at_1.55_in"]
+    body = (
+        '<h1>A print L3 at the masthead’s proportion</h1>'
+        '<p>Proposed for board C, for approval by name (gate rule 4). Since November 8 the masthead sets L3’s lockmark at 48 px '
+        'beside 22 px capitals, 2.18 cap heights (DR-131). Print and every width but the 282 px masthead still take the October '
+        'master, whose lockmark stands 2.4 cap heights (D2-482), so L3 prints at one proportion and shows on screen at another. '
+        'The proposal is the October master with one change: its lockmark drawn at 2.18 cap heights, centered on the capitals as '
+        'before. The wordmark, the 0.60 cap height of space, both display drawings and the colors stay.</p>'
+        '<p>Files: <code>lockups/20261110_L3-Horizontal-Print-Master.svg</code> and its White file in <code>prussian/</code>, '
+        'new files beside the masters. The guide keeps naming the October master until Dustin approves.</p>'
+        '<h2>At the masthead’s width, 282 px</h2>'
+        '<p>The masthead master is drawn on the pixel grid and serves 282 px on screen alone. At the same width the October '
+        'master sets a larger lockmark and smaller capitals; the proposal matches the masthead’s proportion.</p>'
+        f'<div class="row"><div class="cell ground s-newsprint">{ms}<span class="tag">In use on screen: the masthead master, 282 by 48 px, capitals 22 px</span></div>'
+        f'<div class="cell ground s-newsprint">{oc}<span class="tag">October master, 282 by {oh:.1f} px, capitals {282 / 12.7831:.1f} px</span></div>'
+        f'<div class="cell ground s-newsprint">{pr}<span class="tag">Proposal, 282 by {ph:.1f} px, capitals {282 / prop[PRINT_L3["dst"]]["width_over_capitals"]:.1f} px</span></div></div>'
+        '<h2>At 16, 24, 48 and 96 px capitals</h2>'
+        '<p>Each pair shares its capitals and its left edge. Under 37 px capitals a page draws L3 from the pixel masters, which '
+        'this proposal leaves alone, so the 16 and 24 px rows compare the two drawings’ proportions only.</p>'
+        + "".join(f'<div class="ground s-newsprint" style="margin-top:16px;line-height:1.4">{l3_pair(c)}</div>' for c in (16, 24, 48, 96))
+        + '<h2>Display size, with the overlay</h2>'
+        f'<div class="ground s-newsprint" style="margin-top:16px;line-height:1.4">{overlay(100)}</div>'
+        '<h2>On the four approved surfaces, at 40 px capitals</h2>'
+        + "".join(f'<div class="ground s-{s}" style="margin-top:16px;line-height:1.4">{l3_pair(40, s)}</div>' for s in ("newsprint", "white", "charcoal", "prussian"))
+        + '<h2>In one color</h2>'
+        f'<div class="ground s-newsprint" style="margin-top:16px;line-height:1.4">{l3_pair(40, "newsprint", "mono-dark")}</div>'
+        f'<div class="ground s-charcoal" style="margin-top:16px;line-height:1.4">{l3_pair(40, "charcoal", "mono-light")}</div>'
+        '<h2>In print</h2>'
+        f'<p>L3’s print minimum is 1.55 in wide (Rule 03.4). There the October master sets {o155["capitals_mm"]} mm capitals and a '
+        f'{o155["lockmark_in"]} in lockmark; the proposal, {p155["capitals_mm"]} mm capitals and a {p155["lockmark_in"]} in lockmark, '
+        'over the 3 mm capitals and the 0.25 in lockmark that Rules 03.4 and 08.1 set as print minimums. The PDF beside this page '
+        'prints both at 1.55, 2.5 and 4 in wide.</p>'
+        + "".join(f'<div class="ground s-white" style="margin-top:16px;line-height:1.4"><div class="stack">'
+                  f'<div class="cell">{svg_at(PRINT_L3["src"], w=96 * x, surface="white")[0]}<span class="tag">October master, {x:g} in wide</span></div>'
+                  f'<div class="cell">{svg_at(PRINT_L3["dst"], w=96 * x, surface="white")[0]}<span class="tag">Proposal, {x:g} in wide</span></div></div></div>'
+                  for x in (1.55, 2.5))
+    )
+    l3_html = PLATES / "20261110_Print-L3-Comparison.html"
+    l3_html.write_text(plate_page("Print L3 comparison", body))
+    out_files.append(l3_html)
+    pbody = ('<h1 style="font-size:16pt">A print L3 at the masthead’s proportion: print proof</h1>'
+             '<p style="font-size:10pt">Each pair at true size on US Letter. Above, the October master in use for print; below, the '
+             'proposal. Proposed for board C; not in use.</p>'
+             + "".join(f'<div style="margin:18pt 0 0;line-height:1.4"><div class="stack" style="gap:10pt">'
+                       f'<div class="cell">{svg_at(PRINT_L3["src"], w=96 * x, surface="white")[0]}<span class="tag" style="font-size:9pt">October master, {x:g} in wide</span></div>'
+                       f'<div class="cell">{svg_at(PRINT_L3["dst"], w=96 * x, surface="white")[0]}<span class="tag" style="font-size:9pt">Proposal, {x:g} in wide</span></div></div></div>'
+                       for x in (1.55, 2.5, 4)))
+    l3_print = PLATES / "20261110_Print-L3-Comparison-Print.html"
+    l3_print.write_text(plate_page("Print L3 print proof", pbody, css="html,body{background:#fff!important}main{padding:0}@page{size:letter;margin:0.75in}"))
+    out_files.append(l3_print)
+
+    # -------------------------------------------------------------------------------- 2. the social sign-off at 96 px
+    LIB.INLINE_ALL[0] = True
+    try:
+        cards = {}
+        for s in ("newsprint", "charcoal"):
+            today = SP._social(s)
+            m48 = LIB.lockmark(48, surface=s, label="Lockmark")
+            assert today.count(m48) == 1, "the card's sign-off is not where the plate expects it"
+            cards[f"{s}-48"] = today
+            cards[f"{s}-96"] = today.replace(m48, LIB.mark(LOCK[48], h=96, surface=s, label="Lockmark"), 1)
+    finally:
+        LIB.INLINE_ALL[0] = False
+    cap_html = d / "cards.html"
+    cap_html.write_text(page("".join(f'<div id="c-{k}" style="width:1200px">{v}</div>' for k, v in cards.items())))
+    js = d / "shot.js"
+    js.write_text(SHOT_JS)
+    subprocess.run(["node", str(js), str(d), str(cap_html), *[f"c-{k}" for k in cards]], check=True, capture_output=True, text=True,
+                   cwd=str(ROOT / "work/build"))
+    sign = {"method": "The proofs' card drawn by stage_a_identity_proofs._social, its sign-off swapped for the 48 px master at "
+                      "96 px, captured at 1x; counted as Rule 08.2 counts, with each node's square scaled by 2"}
+    imgs_html = {}
+
+    def counts_k(arr, ox, oy, sc, ground, k):
+        h, w = arr.shape[:2]
+        kept, red = 0, 0
+        for cy in CENTERS48:
+            for cx in CENTERS48:
+                lever = (cx, cy) == (CENTERS48[2], CENTERS48[2])
+                X, Y = (ox + cx * k) * sc, (oy + cy * k) * sc
+                r = (4.5 if lever else 3.5) * k * sc + 1
+                px = [tuple(int(c) for c in arr[y, x]) for x in range(int(X - r), int(X + r) + 1)
+                      for y in range(int(Y - r), int(Y + r) + 1) if 0 <= x < w and 0 <= y < h]
+                if lever:
+                    red = sum(1 for p in px if is_red(p))
+                elif ground in LIGHT_GROUNDS:
+                    kept += min(max(p) for p in px) < DARK_MAX
+                else:
+                    kept += max(min(p) for p in px) > floors[ground]
+        return {"nodes_kept": kept, "lever_red_px": red, "passes": kept == 8 and red >= MIN_RED}
+
+    for key in cards:
+        s, size = key.split("-")
+        k = int(size) // 48
+        L = 48 * k
+        ox, oy = CARD[0] - 1 - 72 - L, CARD[1] - 1 - 72 - L
+        im = Image.open(d / f"c-{key}.png").convert("RGB")
+        assert im.size == CARD
+        row = {}
+        for w in FEED_WIDTHS:
+            sc = w / CARD[0]
+            sm = reduce(im, w, Image.LANCZOS)
+            row[f"at_{w}"] = counts_k(np.asarray(sm), ox, oy, sc, s, k)
+            th = jpeg(sm, 75, 2)
+            row[f"at_{w}_then_jpeg_q75_420"] = counts_k(np.asarray(th), ox, oy, sc, s, k)
+            box = (int(ox * sc) - 2, int(oy * sc) - 2, int((ox + L) * sc + 0.999) + 2, int((oy + L) * sc + 0.999) + 2)
+            for tag, src in (("", sm), ("-jpeg", th)):
+                f = PLATES / f"20261110_Sign-Off-{s.title()}-{size}px-At-{w}{'-Thumbnail-Jpeg' if tag else ''}-8x.png"
+                src.crop(box).resize(((box[2] - box[0]) * 8, (box[3] - box[1]) * 8), Image.NEAREST).save(f)
+                imgs_html[(key, w, tag)] = f.name
+                out_files.append(f)
+            f = PLATES / f"20261110_Social-Card-{s.title()}-{size}px-At-{w}.png"
+            sm.save(f)
+            imgs_html[(key, w, "card")] = f.name
+            out_files.append(f)
+        fails = []
+        jfails = []
+        for w in range(300, 601):
+            sc = w / CARD[0]
+            sm = reduce(im, w, Image.LANCZOS)
+            if not counts_k(np.asarray(sm), ox, oy, sc, s, k)["passes"]:
+                fails.append(w)
+            if w % 4 == 0 and not counts_k(np.asarray(jpeg(sm, 75, 2)), ox, oy, sc, s, k)["passes"]:
+                jfails.append(w)
+        row["lanczos_fail_widths_300_to_600"] = fails
+        row["thumbnail_jpeg_q75_420_fail_widths_every_4th_300_to_600"] = {"fails": len(jfails), "of": len(range(300, 601, 4))}
+        row["lockmark_px_at"] = {str(w): round(L * w / CARD[0], 1) for w in FEED_WIDTHS}
+        sign[key] = row
+    wm_caps = 44 * 100 / 108
+    sign["card_wordmark_capitals_px"] = round(wm_caps, 2)
+    sign["lockmark_over_wordmark_capitals"] = {"48": round(48 / wm_caps, 3), "96": round(96 / wm_caps, 3)}
+    d_all = json.loads(FIGS.read_text())
+    d_all["proposals"]["social_sign_off_96"] = sign
+    FIGS.write_text(json.dumps(d_all, indent=1, ensure_ascii=False) + "\n")
+
+    def fig_row(s):
+        cells = []
+        for size in ("48", "96"):
+            key = f"{s}-{size}"
+            r = sign[key]
+            cells.append(
+                f'<div class="cell"><p style="margin:0 0 8px"><b>{"Today, 48 px" if size == "48" else "Proposal, 96 px"}</b></p>'
+                + "".join(f'<img src="{imgs_html[(key, w, "card")]}" width="{w}" alt="The card reduced to {w} px wide" style="display:block;margin:0 0 6px">'
+                          f'<span class="tag" style="margin:0 0 12px">At {w} px wide, as a feed draws it: {r[f"at_{w}"]["nodes_kept"]} of 8 nodes, {r[f"at_{w}"]["lever_red_px"]} red pixels; the lockmark {r["lockmark_px_at"][str(w)]} px</span>'
+                          for w in FEED_WIDTHS)
+                + '<div class="row" style="gap:16px">'
+                + "".join(f'<div class="cell"><img class="px" src="{imgs_html[(key, w, "")]}" alt="The sign-off at {w} px, enlarged eight times">'
+                          f'<span class="tag">{w} px, enlarged 8x</span></div>' for w in FEED_WIDTHS)
+                + f'<div class="cell"><img class="px" src="{imgs_html[(key, 360, "-jpeg")]}" alt="The sign-off at 360 px saved as a JPEG, enlarged eight times">'
+                  f'<span class="tag">360 px, then a JPEG at quality 75 with chroma at half size: {r["at_360_then_jpeg_q75_420"]["lever_red_px"]} red pixels</span></div>'
+                + '</div></div>')
+        return '<div class="row">' + "".join(cells) + "</div>"
+
+    n48, n96, c48, c96 = sign["newsprint-48"], sign["newsprint-96"], sign["charcoal-48"], sign["charcoal-96"]
+    sbody = (
+        '<h1>The social card’s sign-off at 96 px</h1>'
+        '<p>Proposed for board C, for approval by name (gate rule 4). Today a social card signs off with the lockmark at 48 px from '
+        'its 48 px master (DR-131). A feed that shows the card 360 px wide draws that lockmark at 14.4 px, under its own 16 px '
+        'floor, and its lever 2.7 px across. Rule 08.2’s test still passes there, with 5 red pixels against a floor of 4. '
+        'The proposal draws the same 48 px master at exactly twice its size, 96 px, on social cards only, so every node and the '
+        'lever still land on whole pixels. Covers, posters and the masthead keep 48 px. No new drawing is made.</p>'
+        f'<p>On the card the 96 px lockmark stands {sign["lockmark_over_wordmark_capitals"]["96"]:.2f} times the wordmark’s '
+        f'{sign["card_wordmark_capitals_px"]:.1f} px capitals, between the masthead’s 2.18 and the October L3’s 2.4, so the two '
+        'corners keep L3’s own proportion.</p>'
+        '<h2>What the feed test finds</h2>'
+        '<table><tr><th>Card</th><th>500 px</th><th>360 px</th><th>360 px, then a JPEG at quality 75, chroma at half size</th>'
+        '<th>Widths 300 to 600 px that fail</th></tr>'
+        + "".join(f'<tr><td>{lab}</td><td>{r["at_500"]["nodes_kept"]} of 8 nodes, {r["at_500"]["lever_red_px"]} red</td>'
+                  f'<td>{r["at_360"]["nodes_kept"]} of 8 nodes, {r["at_360"]["lever_red_px"]} red</td>'
+                  f'<td>{r["at_360_then_jpeg_q75_420"]["lever_red_px"]} red</td><td>{len(r["lanczos_fail_widths_300_to_600"])} of 301</td></tr>'
+                  for lab, r in (("Newsprint, 48 px today", n48), ("Newsprint, 96 px proposal", n96),
+                                 ("Charcoal, 48 px today", c48), ("Charcoal, 96 px proposal", c96)))
+        + '</table>'
+        '<p class="note" style="margin-top:12px">A JPEG saved from the full 1,200 px card leaves today’s counts as they are at every quality we '
+        'tried. A JPEG saved after the card is shrunk, with its color kept at half size, as many image services store a '
+        'thumbnail, takes every red pixel from today’s lever at 360 px. We have not tested a real feed.</p>'
+        '<h2>Today’s card, actual size, 1200 by 630 px</h2>'
+        f'<div class="oai" style="margin-top:16px">{cards["newsprint-48"]}</div>'
+        '<h2>The proposal, actual size, 1200 by 630 px</h2>'
+        f'<div class="oai" style="margin-top:16px">{cards["newsprint-96"]}</div>'
+        '<h2>In a feed, on Newsprint</h2>' + fig_row("newsprint")
+        + '<h2>In a feed, on Charcoal</h2>' + fig_row("charcoal")
+        + '<h2>The proposal on Charcoal, actual size</h2>'
+        f'<div class="oai" style="margin-top:16px">{cards["charcoal-96"]}</div>'
+        '<h2>The mark alone</h2>'
+        '<div class="row">'
+        + "".join(f'<div class="cell ground s-{s}">{svg_at(LOCK[48], h=h, surface=s, label="Lockmark")[0]}'
+                  f'<span class="tag">48 px master at {h} px{", today" if h == 48 else ", proposal"}</span></div>'
+                  for s in ("newsprint", "charcoal") for h in (48, 96))
+        + f'<div class="cell ground s-newsprint">{svg_at(LOCK["display"], h=96, label="Lockmark display master")[0]}'
+          '<span class="tag">Display master at 96 px, for comparison: its lever is 7.4 px</span></div>'
+        + '</div>'
+    )
+    so_html = PLATES / "20261110_Social-Sign-Off-Comparison.html"
+    so_html.write_text(plate_page("Social sign-off comparison", sbody, css=LIB.CSS))
+    out_files.append(so_html)
+
+    # -------------------------------------------------------------------------------- captures and the print PDF
+    job = d / "pages.json"
+    job.write_text(json.dumps([str(l3_html), str(so_html), str(l3_print)]))
+    js = d / "pages.js"
+    js.write_text(PAGES_JS)
+    r = subprocess.run(["node", str(js), str(job)], check=True, capture_output=True, text=True, cwd=str(ROOT / "work/build"))
+    made = json.loads(r.stdout.strip().splitlines()[-1])
+    out_files += [Path(p) for p in made["files"]]
+    d_all = json.loads(FIGS.read_text())
+    d_all["plates"] = {"files": [LIB.rel(p) for p in out_files], "fonts": made["fonts"]}
+    FIGS.write_text(json.dumps(d_all, indent=1, ensure_ascii=False) + "\n")
+    return d_all["plates"], sign
+
+
+PAGES_JS = r"""
+const fs = require('fs');
+const { chromium } = require('playwright');
+const [job] = process.argv.slice(2);
+const pages = JSON.parse(fs.readFileSync(job, 'utf8'));
+(async () => {
+  const b = await chromium.launch();
+  const files = []; let fonts = [];
+  for (const html of pages) {
+    const isPrint = html.endsWith('-Print.html');
+    for (const scale of isPrint ? [] : [1, 2]) {
+      const p = await b.newPage({ viewport: { width: 1380, height: 1000 }, deviceScaleFactor: scale });
+      await p.goto('file://' + html, { waitUntil: 'networkidle' });
+      await p.evaluate(() => document.fonts.ready);
+      fonts = fonts.concat(await p.evaluate(() => [...document.fonts].filter((f) => f.status === 'loaded').map((f) => f.family + ' ' + f.weight)));
+      const out = html.replace(/\.html$/, `-${scale}x.png`);
+      await p.screenshot({ path: out, fullPage: true });
+      files.push(out);
+      await p.close();
+    }
+    if (isPrint) {
+      const p = await b.newPage();
+      await p.goto('file://' + html, { waitUntil: 'networkidle' });
+      await p.evaluate(() => document.fonts.ready);
+      const out = html.replace(/\.html$/, '.pdf');
+      await p.pdf({ path: out, format: 'Letter', preferCSSPageSize: true, printBackground: true });
+      files.push(out);
+      await p.close();
+    }
+  }
+  console.log(JSON.stringify({ files, fonts: [...new Set(fonts)] }));
+  await b.close();
+})();
+"""
 
 
 # =========================================================================================== main
@@ -389,6 +818,14 @@ if __name__ == "__main__":
         print("chromium", {k: (v["nodes_kept"], v.get("lever_red_px"), v.get("passes")) for k, v in r["chromium_img_downscale"].items()})
         print("widths", {s: {k: v[k] for k in ("fail_count", "lever_red_min", "lever_red_max", "nodes_min")} for s, v in r["widths"].items()})
         print("placement", json.dumps(r["placement"]))
+    elif what == "feed-dark-key":
+        print(json.dumps(feed_dark_key(), indent=1))
+    elif what == "proposals":
+        print(json.dumps(proposals(), indent=1))
+    elif what == "plates" and len(sys.argv) > 2:
+        pl, sign = plates(sys.argv[2])
+        print(json.dumps(pl, indent=1))
+        print(json.dumps({k: {x: v[x] for x in v if not x.startswith("lanczos")} if isinstance(v, dict) else v for k, v in sign.items() if k != "method"}, indent=1))
     else:
         print(__doc__)
         sys.exit(2)

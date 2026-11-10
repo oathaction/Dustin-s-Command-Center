@@ -12,7 +12,7 @@
 //   4. Each type style, set with font: var(--oa-type-...), computes to its minimum size at 390 px wide and its
 //      maximum at 1440 px, with its weight, line height and tracking.
 //   5. Under prefers-reduced-motion every duration computes to 0 s.
-//   6. The themes (DR-204): with the device light and dark, and the root's data-oa-theme absent, "light" or "dark",
+//   6. The themes (DR-204): with the device light and dark, and the root's data-oa-theme absent, "device", "light" or "dark",
 //      every short name on the root computes to the theme surface's token (Newsprint for light, Charcoal for dark),
 //      with the root's ground and color-scheme; the attribute wins over the device; an element carrying the
 //      attribute sets what it holds; a surface class inside a theme keeps its own surface.
@@ -189,6 +189,7 @@ try {
     const cases = [
       ['light', null, null, null, L, null], ['dark', null, null, null, D, null],
       ['dark', 'light', null, null, L, null], ['light', 'dark', null, null, D, null], ['dark', 'dark', null, null, D, null], ['light', 'light', null, null, L, null],
+      ['light', 'device', null, null, L, null], ['dark', 'device', null, null, D, null],
       ['light', null, 'dark', null, L, D], ['dark', null, 'light', null, D, L], ['dark', 'light', 'dark', null, L, D],
       ['dark', null, null, 'newsprint', D, 'newsprint'], ['light', 'dark', null, 'prussian', D, 'prussian'], ['dark', null, 'light', 'charcoal', D, 'charcoal'],
     ];

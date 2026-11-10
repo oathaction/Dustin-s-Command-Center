@@ -2232,3 +2232,35 @@ The studio asked four questions with the stage C draft brief. Dustin: "yes to al
 | D2-1143 | The masthead menu maps to APG's disclosure navigation example, not the Menu pattern | APG's example says site navigation does not use the menu role |
 | D2-1144 | Status lines and the bill tracker's updates cite WAI-ARIA 1.2's `status` role and `aria-live="polite"` | APG has no pattern for a polite live region |
 | D2-1145 | The head script in section 4 is a sketch, labeled as not run | I did not run it in any browser |
+
+### Accessibility lead (`20261110_Stage-C-Interaction-Inventory.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1146 | Chapter 18 holds the 24 components of section 2.1, in that order | They cover every interactive part in the guide, the atlas kit and the brief's list, and each has one canonical home |
+| D2-1147 | The dark mode switch is a radio group of three native radio inputs under the legend "Theme": Light, Dark, Match my device, with Match my device checked first, drawn as one row of segments | Native radios give arrow keys, the checked state and "2 of 3" with no script; a segmented row of buttons needs `aria-pressed` and a script to keep one pressed; a two-state switch loses the way back to the device |
+| D2-1148 | The switch's script stores Light or Dark, clears the key for Match my device, and reads and writes inside `try` and `catch`; a refused write leaves the switch working for the visit, with no message | Storage can be missing (private browsing, Safari's clearing), and following the device is DR-204's default |
+| D2-1149 | In the guide, the switch's specimen changes only its own stage and never the guide's root or storage | DR-204 and D2-1133 keep the guide on Newsprint |
+| D2-1150 | A phone menu that covers the page is a modal dialog (APG Dialog (Modal)), built on the native `dialog` with `showModal()`, with its rows as disclosures; a dropdown that leaves the page in view follows APG's disclosure navigation example | A cover that is not modal lets Tab reach links hidden under it (WCAG 2.4.11, 2.4.3); the shell already works this way and tested clean |
+| D2-1151 | Mutually exclusive choices (Theme; Fit width or Full size; True size or Fit to window) use 18-03's radio group; on and off choices that combine (filter chips) stay toggle buttons with `aria-pressed` | A pair of pressed buttons never tells a screen reader that only one can be on; chapter 11's reader and the shell's switch follow at their owners' next pass, since neither fails WCAG today |
+| D2-1152 | Every pressed, checked or current-choice control draws one look: a check glyph before the word, the word in bold and a 2 px edge; links and location lists keep their underline, band and bar | Three looks today (G-3); the check and the edge survive forced colors |
+| D2-1153 | The reader's and the stepper's rows stay plain buttons in a named group, each its own Tab stop, with no `toolbar` role | Four stops are quick; APG makes the toolbar optional; the atlas kit and both plates tested clean this way |
+| D2-1154 | The stepper runs Play, Reset, Previous step, Next step everywhere, and the atlas kit follows at its finishing pass | Chapter 11's order reads as two pairs in the phone's two-by-two grid; F-8 |
+| D2-1155 | No control label carries `white-space: nowrap`; a two-button row stacks to one column when a label would not fit | F-2, measured at 320 px, 200 percent text and raised text spacing |
+| D2-1156 | Rule 11.13's no-wrap span holds only the link's last word and the mark | F-3, and the rule's own words |
+| D2-1157 | A status line carries its count and its advice together ("0 of 124 symbols. No symbol matches. Clear the search or the filters to see more.") | F-5; WCAG 4.1.3 |
+| D2-1158 | State bars (error, warning, selected) are drawn as borders, never inset box shadows | Forced colors removes box shadows (D2-859 for the error bar; F-4) |
+| D2-1159 | Chapter 18's code reads only role names that a surface class or the dark theme remaps, never a token named for one surface, with `--oa-color-surface` for its ground; the engineer adds a field ground | F-1 and G-1 |
+| D2-1160 | On Charcoal an error message sits on the ground with its 4 px Pillar Red bar (4.49 to 1) and the mark and "Error:" in Newsprint; no Error Band on Charcoal, as 6.0.0-gate2.7 already resolves it, for chapter 17's maker to confirm | The bar passes 3 to 1 there, and a new derived ground would meet no measured need |
+| D2-1161 | Form fields are never disabled; a send that cannot run keeps focus, carries `aria-disabled` and says why beside it | A disabled field drops out of the Tab order and hides its own reason |
+| D2-1162 | On Charcoal the focus ring keeps its 2 px gap wherever it surrounds a Newsprint fill | Ring and fill measure 1.00 to 1; the gap of Charcoal ground is what separates them |
+| D2-1163 | The menu's Close is named "Close the menu" in the shell and in chapter 18 | F-11; one action, one name |
+| D2-1164 | Tooltips, the `menu` role, carousel roles, the toolbar role and the Grid pattern stay out of chapter 18 | Section 2.3 gives each reason |
+| D2-1165 | Chapter 19’s map counts 9 criteria met, 21 met in part, 21 gaps and 4 not applicable today, each gap named with the chapter that owes it | Section 4; a first map for round 1 to close |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1166 | The inventory's faults go to their owners: F-7, F-10, F-11, F-13 and F-16 to the engineer now, inside its round 0 shell pass; F-1 to F-5 and F-9 (live specimens that hard-code Newsprint, clipped button labels, the outside-link wrap, chapter 05's ten-states plate, the empty search's status line, the search field) to chapter 05 and 11's owners in round 1; F-12 to chapter 18's code; F-8, F-14 and F-15 to the atlas finishing pass | Each fix sits in its owner's generator; the shell faults fit the engineer's current task |
+| D2-1167 | F-4 corrects the record of DR-199 and C-064: chapter 05's ten-states plate (`s-05-4-correct`, Rule 05.4) still draws the retired red disc with a cross. Rules 05.3 and 11.15 draw the approved mark. The plate is redrawn to DR-199 in round 1, and board C says so | DR-199 said chapters 05 and 11 already draw it so; that held for `s-05-3-corrective` and chapter 11, not for the states plate |

@@ -15,6 +15,9 @@ Promotion, November 10, 2026 (DR-181): the masthead's L3, the sign-off and the l
 and 48 px masters, the same pixels; the feed figures come from promotion_identity.py's rerun with the rebuilt master.
 The letterhead's print proof is printed again as 20261110_Letterhead-Proof.pdf with its HTML, beside the earlier ones (D2-809).
 
+Stage C, round 0, November 10, 2026: _social takes a surface, so stage_c_identity_round0.py can run Rule 08.2's feed
+test on the same card drawn on Charcoal and Prussian (CD-N12). The guide's proof stays on Newsprint, unchanged.
+
 Earlier rulings that still bind: each width-free proof is one specimen at actual size; kickers follow Rule 01.21
 (D2-250); the social card breaks at the hinge and carries its specifications; the letterhead's town is invented
 (Wrenfield) and its letter opens on the request; no decision codes or production words reach the page (D2-253)."""

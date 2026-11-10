@@ -13,6 +13,11 @@ Promotion, November 10, 2026: the end mark's pixel masters on a 1x screen in 17 
 and 48 px lockmark masters (DR-181) and L6 centered (DR-182). The end mark's fit figures and the feed test's figures
 with the rebuilt master come from work/handoffs/phase-2/20261110_Promotion-Identity-Figures.json (promotion_identity.py).
 
+Stage C, round 0, November 10, 2026: Rule 08.2's feed test gains its version for a dark card (CD-N12, D2-715), with
+floors measured on the proofs' card drawn on Charcoal and Prussian; figures from
+work/handoffs/phase-2/20261110_Stage-C-Identity-Figures.json, key feed_dark (stage_c_identity_round0.py). Chapter
+09 names its opener figure, s-09-opener (D2-1134).
+
 Every word follows chapter 02's writing section (DR-73). Typographic quotes and apostrophes are set by smart() on the
 prose fields, so the source stays easy to edit."""
 import re
@@ -22,6 +27,7 @@ from stage_a_identity_lib import figures, LOCK, L3, AMP_END
 _END = (figures("endmark") or {}).get("measured_at_8x", {})
 _FEED = figures("feed") or {}
 _FIT = figures("endmark_fit") or {}      # the end mark's pixel masters (DR-180), promotion_identity.py
+_FEED_DARK = figures("feed_dark") or {}  # the feed test on dark cards (stage C, CD-N12), stage_c_identity_round0.py
 
 
 def _end(text_px):
@@ -38,6 +44,30 @@ def _feed():
         return "[run stage_a_identity_q_measure.py feed after the build, then build again]"
     return (f"The link-preview card in the identity proofs passes. At 500 px wide, its lockmark keeps {a['dark_nodes_kept']} of 8 "
             f"nodes and {a['lever_red_px']} red pixels; at 360 px, {b['dark_nodes_kept']} of 8 nodes and {b['lever_red_px']} red pixels")
+
+
+def _feed_dark(part):
+    """Rule 08.2's feed test on a dark card (stage C, CD-N12), from stage_c_identity_round0.py's figures: the floors
+    ("rule") or the proofs' card drawn on Charcoal and on Prussian ("card")."""
+    f = _FEED_DARK
+    try:
+        fl, c, p = f["floors"], f["charcoal"], f["prussian"]
+        ok = all(c[w]["passes"] and p[w]["passes"] for w in ("at_500", "at_360"))
+    except (KeyError, TypeError):
+        ok = False
+    if not ok:
+        return "[run stage_c_identity_round0.py feed, then build again]"
+    if part == "rule":
+        return (f"On Charcoal, each of the eight light nodes keeps at least one pixel with every color channel over "
+                f"{fl['charcoal']}, and the lever keeps at least four red pixels, counted as on a light ground. On Prussian, "
+                f"where the lever is White as well, each of the nine nodes keeps a pixel with every channel over "
+                f"{fl['prussian']}. On a dark ground the links take the nodes' own color, so each floor sits halfway between "
+                "the brightest pixel the links alone leave in a node's square and the dimmest node's brightest pixel, "
+                "measured on our card at both widths")
+    a, b = c["at_500"], c["at_360"]
+    return (f"Drawn on Charcoal, the same card keeps {a['nodes_kept']} of 8 nodes and {a['lever_red_px']} red pixels at 500 px, "
+            f"and {b['nodes_kept']} of 8 nodes and {b['lever_red_px']} red pixels at 360 px. Drawn on Prussian, it keeps "
+            f"{p['at_500']['nodes_kept']} of 9 nodes at 500 px and {p['at_360']['nodes_kept']} of 9 at 360 px")
 
 
 _B17 = _END.get("17", {})
@@ -402,13 +432,14 @@ CH08 = {
                  S("Page header", "24 px beside the section label on report and slide pages; 0.25 in in print"),
                  S("Footer", "24 px, then 12 px of space and the tagline, on one line at the footer's left edge, at the foot of a page, an email or a letter; 16 px at the right end of a chart's source line. L6, the strip that closes a report, carries it at L6's own proportion (Rule 03.2), and a page narrower than L6's 884 px closes with this footer"),
                  S("Sign-off", "48 px from the 48 px master, bottom right of social cards, covers and posters, inside the margin. In print, 0.50 in from the display master, since the 48 px master is drawn for a screen's pixel grid"),
-                 S("Feed test", "A 1200 by 630 px card on a light ground, such as Newsprint or White, reduced to 500 and 360 px wide, as a feed shows it, must keep a visible lockmark: each of its eight dark nodes keeps at least one near-black pixel (every color channel under 70), and the lever keeps at least four red pixels (red over 170, green and blue under 120). Reduce the card with Lanczos resampling, a common filter for shrinking images, and count each node's square plus 1 px on every side. A test for a card on Charcoal or Prussian comes later"),
-                 S("Feed test, our card", _feed()),
+                 S("Feed test", "A 1200 by 630 px card, reduced to 500 and 360 px wide, as a feed shows it, must keep a visible lockmark. On a light ground, such as Newsprint or White, each of its eight dark nodes keeps at least one near-black pixel (every color channel under 70), and the lever keeps at least four red pixels (red over 170, green and blue under 120). Reduce the card with Lanczos resampling, a common filter for shrinking images, and count each node's square plus 1 px on every side"),
+                 S("Feed test, dark card", _feed_dark("rule")),
+                 S("Feed test, our card", _feed() + ". " + _feed_dark("card")),
                  S("Once in a view", "When a masthead and a footer share one view, the footer keeps the lockmark and the masthead sets the wordmark alone"),
                  S("Favicon", "Never the lockmark: favicons use ampersand B's 16 px master (Rule 03.4)")],
           files=[A + L3["masthead"], A + LOCK[48], A + LOCK[24], A + LOCK[16], A + LOCK["display"]],
           related=["03", "07", "14", "23"],
-          builders="Pick the master by the size the place sets: the 48 px master for the sign-off, and L3's masthead master, which holds it already, for the masthead; the 24 px master in page headers and footers; and the 16 px master in a chart's footer. Set each on whole pixels. Run the feed test on every new template for a social card before it ships."),
+          builders="Pick the master by the size the place sets: the 48 px master for the sign-off, and L3's masthead master, which holds it already, for the masthead; the 24 px master in page headers and footers; and the 16 px master in a chart's footer. Set each on whole pixels. Run the feed test on every new template for a social card, on the file you will upload, before it ships."),
         R("08.3", "Let the lockmark code nothing.",
           "Draw the lockmark the same in every place, with no node lit, dimmed, moved or added. It never shows how far a bill has moved, which series a piece belongs to or which pillar a piece serves. Each of those jobs has its own sign: chapter 11 numbers a bill's steps, the kicker names a series in words (Rule 01.21), and a pillar takes its icon with its word beside it.",
           "One drawing with one job is easy to learn. Our fifth edition used the same nine nodes to code a bill's stage, a series, a pillar and a kind of content, and a reader could not tell which code a grid carried, or whether the mark in the masthead meant anything at all. Numbers and words do those jobs better, because a reader can say \"step 4 of 6\" out loud and words survive gray print.",
@@ -452,4 +483,6 @@ def specimens_used(ch):
             if r.get(k):
                 out.append(r[k]["specimen"])
     out += [x["specimen"] for x in ch.get("extras", [])]
+    if ch.get("opener"):                  # stage C: a chapter's opener figure (D2-1134)
+        out.append(ch["opener"])
     return out

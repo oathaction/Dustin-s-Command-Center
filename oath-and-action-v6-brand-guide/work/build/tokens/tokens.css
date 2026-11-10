@@ -1136,9 +1136,10 @@
 }
 
 /* Themes (DR-204): one dark mode for every screen product, drawn from Night Edition on Charcoal (DR-36).
- * With no data-oa-theme attribute, the root follows the device: light, or dark under (prefers-color-scheme: dark).
- * data-oa-theme="light" or data-oa-theme="dark" on the root wins over the device; a reader's switch writes it there. On any
- * other element it sets that element and everything inside it. A surface class keeps its own surface in either
+ * With no data-oa-theme attribute, or data-oa-theme="device", the root follows the device: light, or dark under
+ * (prefers-color-scheme: dark). data-oa-theme="light" or data-oa-theme="dark" on the root wins over the device; the reader's
+ * Theme choice (Light, Dark, Match my device) writes it there. On any other element it sets that element and
+ * everything inside it. A surface class keeps its own surface in either
  * theme, so a product that follows the theme puts no surface class on its body. A page that must stay light,
  * such as the brand guide, sets data-oa-theme="light" on its root. */
 

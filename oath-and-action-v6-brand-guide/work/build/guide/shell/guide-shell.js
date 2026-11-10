@@ -383,12 +383,15 @@
     if (!b) return;
     var src = document.getElementById(b.getAttribute('data-copy-from'));
     var value = src ? src.textContent : (b.getAttribute('data-copy') || '');
-    var scope = b.closest('.closer, .rule, section');
+    // DR-203 (stage C): a code plate has one status line for its panels, and the line names what was copied
+    var scope = b.closest('.plate--code, .closer, .rule, section');
     var st = scope ? $('[role="status"]', scope) : null;
     var old = scope && $('.copy-fallback', scope);
     if (old) old.remove();
     var say = function (t, err) { if (!st) return; st.textContent = t; st.classList.toggle('is-error', !!err); };
-    var done = function () { say('Copied ' + value.split('\n').length + ' lines to the clipboard.'); };
+    var what = b.getAttribute('data-copy-what');
+    var lines = value.replace(/\n$/, '').split('\n').length;
+    var done = function () { say(what ? 'Copied ' + what + ', ' + lines + (lines === 1 ? ' line' : ' lines') + ', to the clipboard.' : 'Copied ' + value.split('\n').length + ' lines to the clipboard.'); };
     var fail = function () {
       say('The browser blocked copying. The text is selected below: press Control and C, or Command and C.', true);
       var ta = document.createElement('textarea');

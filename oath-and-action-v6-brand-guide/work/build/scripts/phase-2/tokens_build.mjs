@@ -358,9 +358,10 @@ if (THEME) {
   const L = THEME.light.surface, Dk = THEME.dark.surface;
   themeCss = `
 /* Themes (DR-204): one dark mode for every screen product, drawn from Night Edition on Charcoal (DR-36).
- * With no ${A} attribute, the root follows the device: light, or dark under ${THEME.followsDevice}.
- * ${A}="light" or ${A}="dark" on the root wins over the device; a reader's switch writes it there. On any
- * other element it sets that element and everything inside it. A surface class keeps its own surface in either
+ * With no ${A} attribute, or ${A}="device", the root follows the device: light, or dark under
+ * ${THEME.followsDevice}. ${A}="light" or ${A}="dark" on the root wins over the device; the reader's
+ * Theme choice (Light, Dark, Match my device) writes it there. On any other element it sets that element and
+ * everything inside it. A surface class keeps its own surface in either
  * theme, so a product that follows the theme puts no surface class on its body. A page that must stay light,
  * such as the brand guide, sets ${A}="light" on its root. */
 

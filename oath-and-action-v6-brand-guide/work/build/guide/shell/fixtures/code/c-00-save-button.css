@@ -1,0 +1,9 @@
+/* A fixture for the shell's demo build: a toggle button with a status line. It reads only tokens.css. */
+.oa-save { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
+.oa-save-btn { box-sizing: border-box; min-height: var(--oa-size-target-touch); padding: 0 var(--oa-space-300); border: 0;
+  background: var(--oa-color-action-primary-fill); color: var(--oa-color-action-primary-label); font: var(--oa-type-ui); cursor: pointer }
+.oa-save-btn:hover { background: var(--oa-color-action-primary-fill-hover); text-decoration: underline }
+.oa-save-btn:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
+.oa-save-btn[aria-pressed="true"] { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-rule); text-underline-offset: .25em }
+.oa-save-note { margin: var(--oa-space-100) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
+@media (forced-colors: active) { .oa-save-btn { border: 1px solid ButtonText } }

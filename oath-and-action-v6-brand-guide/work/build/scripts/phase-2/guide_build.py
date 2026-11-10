@@ -2,7 +2,7 @@
 
 Usage:
   python3 -I work/build/scripts/phase-2/guide_build.py [--out PATH] [--demo] [--strict] [--quiet]
-  python3 -I work/build/scripts/phase-2/guide_build.py --chapters DIR --specimens DIR --out PATH   (fixtures and tests)
+  python3 -I work/build/scripts/phase-2/guide_build.py --chapters DIR --specimens DIR [--code DIR] --out PATH   (fixtures and tests)
   python3 -I work/build/scripts/phase-2/guide_build.py --sprite-root DIR ...   (the sprite families from fixture folders)
 
 Reads, from the repository root (found from this file's place, so the working folder does not matter):
@@ -12,6 +12,7 @@ Reads, from the repository root (found from this file's place, so the working fo
   work/build/guide/specimens/<id>.html            one self-contained fragment per specimen
   work/build/guide/specimens/manifest-*.json      { id: { chapter, rule, width_px, alt, illustrative, notes, ... } }
   work/build/guide/shell/guide-shell.css, guide-shell.js   the shell's own style and script (engineer)
+  work/build/guide/code/c-NN-name.html, .css, .js   code to copy (DR-203): a rule shows a set with "code"; stage C
   work/build/tokens/tokens.css (inlined) and tokens.json (token names and values), when they exist;
   until then a provisional block generated from work/build/tokens/20261021_Token-Schema-Draft.json
   work/build/assets/identity/...                   the wordmark masters and ampersand B for the hinge divider
@@ -161,7 +162,7 @@ OLD_08_REFS = [
     "40 px, bottom right, inside the margin (Rule 08.2)",
 ]
 XREF_SKIP_KEYS = {"specimen", "id", "after_rule", "before_rule", "token", "tokens", "files", "number", "anchor", "part",
-                  "chapter", "related", "_legacy_file", "notes"}
+                  "chapter", "related", "_legacy_file", "notes", "opener", "set"}
 
 
 def cited_rules(text):
@@ -695,7 +696,12 @@ def scope_styles(s, sid):
 
 
 PLATE_LABEL = {"correct": ("Correct application", "✓"), "failure": ("Failure case", "×"),
-               "corrective": ("Corrective example", "→"), "extra": (None, None), "proof": (None, None)}
+               "corrective": ("Corrective example", "→"), "extra": (None, None), "proof": (None, None), "opener": (None, None)}
+# D2-965, D2-1134 (stage C): a chapter from 09 on may open with one figure under its intro, named by "opener". It fits
+# the column at true size: a flowing specimen fits at every width, and a fixed one may be at most 328 px wide, the
+# column of a 360 px screen. Chapters 01 to 08 open with words alone.
+OPENER_FROM = "09"
+OPENER_MAX_PX = 328
 EXEMPT_KINDS = ("contrast", "size", "red", "locked", "scale")
 SCALE_WORDS = {0.5: "Half size", 0.25: "One quarter size", 0.2: "One fifth size", 0.125: "One eighth size", 0.1: "One tenth size",
                2: "Twice true size"}
@@ -843,6 +849,191 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
             + cap + "</figure>")
 
 
+
+# ---------------------------------------------------------------------------------------------------------------
+# Code to copy (DR-203, stage C round 0). A rule attaches a code set with "code": "c-NN-name", or
+# {"set": "c-NN-name", "name": "Primary button", "caption": "..."}. The set is two or three files in
+# work/build/guide/code/: <set>.html (the markup a builder pastes into a page's body), <set>.css (its styles, which read
+# only tokens.css) and, only where the component needs one, <set>.js (a plain script, no framework). The build shows the
+# set live, built from those same files, in the light theme and in the dark theme (DR-204), then each file in its own
+# panel with a Copy button. guide_check.js (codeMatch) pastes the panels' text into a page that holds tokens.css alone and
+# fails any pixel that draws differently from the live demo, so the guide cannot show what the copied code does not do.
+# ---------------------------------------------------------------------------------------------------------------
+CODE_DIR = GUIDE / "code"
+CODE_SET_ID = re.compile(r"^c-\d{2}-[a-z0-9]+(?:-[a-z0-9]+)*$")
+CODE_LANGS = (("html", "HTML", "the HTML"), ("css", "CSS", "the CSS"), ("js", "Script", "the script"))
+CODE_COLOR = re.compile(r"(?<![\w&-])#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})\b(?![\w-])|\b(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch|color)\(", re.I)
+CODE_NAMED = re.compile(r"\b(?:white|black|red|blue|green|gray|grey|silver|navy|maroon|purple|orange|yellow|pink|brown)\b", re.I)
+CODE_TAGS = re.compile(r"<(html|head|body|style|script|link|meta|iframe)\b", re.I)
+CODE_ROOTS = re.compile(r"(?:^|[\s>+~,(])(?::root|html|body)(?![\w-])")
+
+
+def css_rules(css):
+    """(selector list, inside @keyframes) for every style rule, at any depth of @media, @supports and @container."""
+    text = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+    out, stack, i, start = [], [], 0, 0
+    while i < len(text):
+        ch = text[i]
+        if ch == "{":
+            prelude = text[start:i].strip().split(";")[-1].strip()
+            stack.append(prelude)
+            if not prelude.startswith("@") and not any(x.startswith("@keyframes") for x in stack[:-1]):
+                out.append(prelude)
+            start = i + 1
+        elif ch == "}":
+            if stack:
+                stack.pop()
+            start = i + 1
+        elif ch == ";":
+            start = i + 1
+        i += 1
+    return out
+
+
+def split_selectors(sel):
+    parts, depth, cur = [], 0, ""
+    for ch in sel:
+        depth += {"(": 1, "[": 1, ")": -1, "]": -1}.get(ch, 0)
+        if ch == "," and depth == 0:
+            parts.append(cur.strip())
+            cur = ""
+        else:
+            cur += ch
+    return [x for x in parts + [cur.strip()] if x]
+
+
+class CodeSets:
+    """The code sets a page may show: work/build/guide/code/, plus the shell's fixture sets in a --demo build."""
+
+    def __init__(self, dirs, token_names, shell_css):
+        self.files = {}
+        for d in dirs:
+            if not d.exists():
+                continue
+            for f in sorted(d.glob("c-*.*")):
+                if f.suffix[1:] in ("html", "css", "js"):
+                    self.files.setdefault(f.stem, {}).setdefault(f.suffix[1:], f)
+        self.token_names = token_names
+        self.shell_css = shell_css
+        self.used = {}
+
+    def load(self, sid, where):
+        if sid in self.used:
+            R.warn(where, f"code set {sid} is shown again (first in {self.used[sid]}); each set shows once, and a rule that needs it again links there")
+            return None
+        self.used[sid] = where
+        if not CODE_SET_ID.match(sid or ""):
+            R.warn(where, f"code set {sid!r} is not named c-NN-name")
+        f = self.files.get(sid) or {}
+        if "html" not in f or "css" not in f:
+            R.warn(where, f"code set {sid} needs work/build/guide/code/{sid}.html and {sid}.css" + ("" if f else "; neither is there"))
+            return None
+        parts = {k: v.read_text() for k, v in f.items()}
+        self.validate(sid, parts, where)
+        return parts
+
+    def validate(self, sid, parts, where):
+        h, c, j = parts.get("html", ""), parts.get("css", ""), parts.get("js")
+        w = lambda msg: R.warn(where, f"code set {sid}: {msg}")
+        # the markup: what a builder pastes into a body, styled only by its own CSS
+        tags = sorted({m.lower() for m in CODE_TAGS.findall(h)})
+        if tags:
+            w(f"the HTML holds <{'>, <'.join(tags)}>; it is the markup for a page's body, and its styles and script are their own files")
+        if re.search(r"\sstyle\s*=", h, re.I):
+            w("the HTML carries a style attribute; every style goes in the CSS file, where tokens.css reaches it")
+        if re.search(r"\son[a-z]+\s*=", h, re.I):
+            w("the HTML carries an event handler attribute; behavior goes in the script file")
+        classes = {c2 for m in re.finditer(r'\sclass="([^"]*)"', h) for c2 in m.group(1).split()}
+        stray = sorted(x for x in classes if not x.startswith("oa-"))
+        if stray:
+            w(f"class(es) {', '.join(stray[:5])} do not start with oa-; a set's own names start with oa- so no page's styles reach them")
+        # the styles: tokens.css only
+        bare = re.sub(r"var\((?:[^()]|\([^()]*\))*\)", "", re.sub(r"/\*.*?\*/", "", c, flags=re.S))
+        lits = sorted(set(CODE_COLOR.findall(bare))) + sorted({m.group(0).lower() for m in CODE_NAMED.finditer(re.sub(r"[.#\[][^{,]*?(?=[{,])", "", bare))})
+        if lits:
+            w(f"the CSS sets {len(lits)} literal color(s) ({', '.join(lits[:4])}); read them from tokens.css with var(--oa-...)")
+        own = set(re.findall(r"(--[\w-]+)\s*:", c))
+        unknown = sorted({n for n in re.findall(r"var\(\s*(--[\w-]+)", c) if n not in self.token_names and n not in own})
+        if unknown:
+            w(f"the CSS reads {', '.join(unknown[:5])}, which tokens.css does not define")
+        for m in re.finditer(r"font(?:-size)?\s*:\s*[^;{}]*?(\d*\.?\d+)(px|rem)\b", c):
+            v = float(m.group(1)) * (16 if m.group(2) == "rem" else 1)
+            if "font-size" in m.group(0) or re.search(r"/|\b(?:Inter|serif|sans)", m.group(0)):
+                if v < 13 - 1e-9:
+                    w(f"the CSS sets type at {v:g} px ({m.group(0).strip()[:40]}); 13 px is the floor")
+        for sel in css_rules(c):
+            for one in split_selectors(sel):
+                if not re.search(r"\.oa-[\w-]|\[data-oa-[\w-]", one):
+                    w(f"the selector \"{one[:50]}\" names no oa- class or data-oa- attribute, so it would reach the page around the component")
+                elif CODE_ROOTS.search(" " + one):
+                    w(f"the selector \"{one[:50]}\" styles the page's root or body; tokens.css and the page own those")
+        css_classes = set(re.findall(r"\.(oa-[\w-]+)", c)) | classes
+        shared = sorted(x for x in css_classes if not x.startswith("oa-surface-") and re.search(r"\." + re.escape(x) + r"(?![\w-])", self.shell_css))
+        if shared:
+            w(f"the guide's shell also styles {', '.join(shared[:5])}, so the guide would draw it differently from a copy")
+        if j is not None:
+            for pat, why in ((r"\bimport\s*[\w{*('\"]", "an import"), (r"\brequire\s*\(", "require()"), (r"\beval\s*\(", "eval()"),
+                             (r"document\.write", "document.write"), (r"getElementById\(\s*['\"]", "an ID written into the script"),
+                             (r"</?script", "a script tag")):
+                if re.search(pat, j):
+                    w(f"the script holds {why}; it is a plain script that finds each copy of its component and reads IDs from attributes")
+
+
+def code_instance(html_src, sid, theme):
+    """The set's markup for one live stage: every id, and every reference to it, takes the stage's prefix, so the two
+    stages hold unique ids while the copy panel keeps the builder's own."""
+    return prefix_ids(html_src, f"{sid}--{theme}")
+
+
+def code_plate(rid, block, ctx, where):
+    codes = ctx.get("codes")
+    if isinstance(block, str):
+        block = {"set": block}
+    if not isinstance(block, dict) or not block.get("set"):
+        R.warn(where, "\"code\" names no set: write \"code\": \"c-NN-name\", or an object with \"set\"")
+        return ""
+    sid = str(block["set"])
+    parts = codes.load(sid, where) if codes else None
+    name = html.unescape(str(block.get("name") or "")).strip()
+    if not name:
+        R.warn(where, f"code set {sid}: \"name\" is empty; the panels, buttons and live stages are named for the component")
+        name = sid
+    if parts is None:
+        return (f'<figure class="plate plate--code" id="code-{e(sid)}"><div class="plate-head"><p class="plate-label"><span class="plate-label-t">Code to copy</span></p></div>'
+                f'<p class="plate-pending">Code set <code>{e(sid)}</code> is not in <code>work/build/guide/code/</code> yet.</p></figure>')
+    nid = f"code-{sid}-name"
+    files = "the HTML, CSS and script" if "js" in parts else "the HTML and CSS"
+    alt = html.unescape(str(block.get("alt") or "")).strip() or f"{name}, drawn live from {files} below, as a page that links tokens.css draws it."
+    aid = f"code-{sid}-alt"
+    stages = []
+    for theme, words in (("light", "in the light theme, on Newsprint"), ("dark", "in the dark theme, on Charcoal")):
+        stages.append(f'<div class="code-demo-item"><p class="code-demo-k">{e(words[0].upper() + words[1:])}</p>'
+                      f'<div class="plate-stage code-stage" data-oa-theme="{theme}" data-specimen="{e(sid)}--{theme}" data-code-set="{e(sid)}" data-code-theme="{theme}" '
+                      f'data-red="specimen" data-surface="{"newsprint" if theme == "light" else "charcoal"}" data-mode="interactive" role="group" aria-label="{e(name)}, live, {words}" aria-describedby="{aid}">'
+                      f'<div class="code-root">{code_instance(parts["html"], sid, theme)}</div></div></div>')
+    panels = []
+    for lang, label, what in CODE_LANGS:
+        if lang not in parts:
+            continue
+        pid = f"code-{sid}-{lang}"
+        text = parts[lang].strip("\n") + "\n"
+        panels.append(f'<div class="code-panel" data-code-lang="{lang}"><div class="code-panel-head"><p class="code-lang" id="{pid}-t">{label}</p>'
+                      f'<button type="button" class="btn btn--quiet copy" data-copy-from="{pid}" data-copy-what="{what} of the {e(name[0].lower() + name[1:])}" '
+                      f'aria-describedby="{nid}">Copy {what}</button></div>'
+                      f'<pre class="code" id="{pid}" data-plate-scroll data-frame-name="{label} of the {e(name[0].lower() + name[1:])}"><code>{e(text)}</code></pre></div>')
+    cap = inline(block.get("caption"), ctx) if block.get("caption") else ""
+    style = f'<style data-oa-code-css="{e(sid)}">\n{parts["css"]}\n</style>'
+    script = f'<script data-oa-code-js="{e(sid)}">\n{parts["js"]}\n</script>' if "js" in parts else ""
+    return (f'<figure class="plate plate--code" id="code-{e(sid)}" data-code-set="{e(sid)}">{style}'
+            f'<div class="plate-head"><p class="plate-label"><span class="plate-label-t">Code to copy</span></p>'
+            f'<p class="plate-size" id="{nid}">{e(name)}</p></div>'
+            f'<p class="vh" id="{aid}" aria-hidden="true">{e(alt)}</p><div class="code-demo">{"".join(stages)}</div>'
+            f'<div class="code-panels">{"".join(panels)}</div>'
+            f'<p class="status code-status" role="status" id="code-{e(sid)}-status"></p>'
+            + (f'<figcaption class="plate-cap">{cap}</figcaption>' if cap else "")
+            + f'{script}</figure>')
+
+
 # ---------------------------------------------------------------------------------------------------------------
 # Template blocks
 # ---------------------------------------------------------------------------------------------------------------
@@ -974,6 +1165,9 @@ def render_rule(ch_num, r, specs, tokens, ctx, amp_svg, demo=False):
         blk = r.get(kind)
         if blk:
             out.append(plate(kind, blk.get("specimen"), blk.get("caption"), specs, ctx, where, rule_id=rid))
+    # DR-203: the rule's code to copy, live in both themes, then each file with its Copy button
+    if r.get("code"):
+        out.append(code_plate(rid, r.get("code"), ctx, where))
     # C-S5: the specifications run across the whole text column as one table, and Related chapters and For builders
     # share one row under it.
     foot = []
@@ -1162,6 +1356,20 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
         if len(data.get("intro") or []) > 2:
             R.warn(where, "intro has more than two paragraphs (content contract: at most two short paragraphs)")
     cctx = dict(ctx, self_chapter=num)
+    # D2-965, D2-1134: the opener figure, under the intro and before the rule index
+    opener_html = ""
+    op = None if placeholder else (data or {}).get("opener")
+    if op is not None:
+        sid, cap = (op, None) if isinstance(op, str) else ((op.get("specimen"), op.get("caption")) if isinstance(op, dict) else (None, None))
+        if not sid:
+            R.warn(where, "\"opener\" names no specimen: write \"opener\": \"s-NN-...\"")
+        elif num < OPENER_FROM:
+            R.warn(where, f"\"opener\" names {sid}, but chapters 01 to 08 open with words alone (D2-1134)")
+        else:
+            w = specs.meta(sid).get("width_px")
+            if isinstance(w, (int, float)) and w > OPENER_MAX_PX:
+                R.warn(where, f"the opener {sid} is {w:g} px wide; an opener fits the column at true size, {OPENER_MAX_PX} px at most on a 360 px screen, or flows with it")
+            opener_html = plate("opener", sid, cap, specs, cctx, where, frame_ctx=f"opening figure of chapter {num}")
     seen = set()
     extras = (data or {}).get("extras") or []
     extras_by = {}
@@ -1314,7 +1522,7 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
         index_html = (f'<div class="rule-index"><p class="label" id="{cid}-index-t">Rules in this chapter, by group</p>'
                       f'<ol class="ri-groups" aria-labelledby="{cid}-index-t">{"".join(lis)}</ol>{tail}</div>')
     if not placeholder:
-        out.append(head + intro_html + index_html + "</div>")
+        out.append(head + intro_html + opener_html + index_html + "</div>")
     if toc:
         items = []
         for a, lbl, t in toc:
@@ -1950,6 +2158,11 @@ def build(args):
     tokens = Tokens()
     sprites = Sprites()
     specs = Specimens(spec_dir)
+    # DR-203: the code sets rules may show; a --demo build adds the shell's fixture set
+    code_dirs = [Path(args.code).resolve()] if getattr(args, "code", None) else [CODE_DIR]
+    if args.demo:
+        code_dirs.append(SHELL / "fixtures/code")
+    codes = CodeSets(code_dirs, tokens.css_names, (SHELL / "guide-shell.css").read_text())
     chapters = load_chapters(chap_dir)
     demo_num, demo_data = None, None
     missing = [n for n in STAGE_A if n not in chapters]
@@ -1977,7 +2190,7 @@ def build(args):
         for r in d.get("rules") or []:
             rule_anchors.add("rule-" + str(r.get("id", "")).replace(".", "-"))
     has_proofs_ids = any(s.startswith("s-proofs-") for s in list(specs.manifest) + list(specs.files)) or (chap_dir / "proofs.json").exists()
-    ctx = {"present": present, "rule_anchors": rule_anchors, "lines": lines, "names": names, "has_proofs": has_proofs_ids,
+    ctx = {"codes": codes, "present": present, "rule_anchors": rule_anchors, "lines": lines, "names": names, "has_proofs": has_proofs_ids,
            "appendix_title": APPENDIX_TITLE, "appendix_line": None, "order": order}
     pconf = None
     try:
@@ -2010,6 +2223,8 @@ def build(args):
         if sid not in specs.used and not sid.startswith("s-proofs-") and not sid.startswith("s-demo-"):
             R.warn(specs.origin.get(sid, "manifest"), f"specimen {sid} is listed but no chapter places it")
     check_cross_refs(chapters, pconf if isinstance(pconf, dict) else None, specs)
+    for sid in sorted(set(codes.files) - set(codes.used)):
+        R.note(f"code set {sid} is in the code folder, and no rule shows it yet")
     # Stage B page weight: a drawing a sprite holds is drawn by <use>. From chapter 09 on, a specimen that inlines one is a
     # warning; earlier chapters' specimens are listed for their owners.
     for sid in sorted(specs.used):
@@ -2080,6 +2295,7 @@ def build(args):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="only light">
 <title>Oath &amp; Action Brand Guide, Edition 06: {"Foundations draft" if only_foundations else "draft of " + e(scope[0].lower() + scope[1:])}</title>
 <meta name="description" content="Oath &amp; Action Brand Guide, Edition 06: the rules for everything Oath &amp; Action publishes. {e(scope_long)}, in draft.">
 <meta name="generator" content="work/build/scripts/phase-2/guide_build.py">
@@ -2498,6 +2714,7 @@ def main():
     ap.add_argument("--out", help="output HTML path (default: the Stage A board page)")
     ap.add_argument("--chapters", help="folder of chapter JSON (default work/build/guide/chapters)")
     ap.add_argument("--specimens", help="folder of specimens and manifests (default work/build/guide/specimens)")
+    ap.add_argument("--code", help="folder of code sets (default work/build/guide/code; --demo adds the shell's fixture set)")
     ap.add_argument("--demo", action="store_true", help="fill placeholder chapters with the shell's sample rules")
     ap.add_argument("--strict", action="store_true", help="exit 1 when there is any warning")
     ap.add_argument("--quiet", action="store_true")

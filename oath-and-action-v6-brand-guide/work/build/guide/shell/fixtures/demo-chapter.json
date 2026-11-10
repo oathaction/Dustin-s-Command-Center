@@ -1,28 +1,97 @@
 {
-  "number": "00", "anchor": "demo", "title": "Template demonstration", "part": "Foundations",
+  "number": "00",
+  "anchor": "demo",
+  "title": "Template demonstration",
+  "part": "Foundations",
   "instruction": "Shows every template block the shell renders, so a maker can see the frame before the chapter lands.",
-  "intro": ["This chapter is the shell's own sample. guide_build.py places it only with --demo, and only where a chapter file is missing."],
-  "rules": [
-    { "id": "00.1", "title": "A rule is one plain sentence.",
-      "rule": "State the rule in one to three sentences. The shell sets it large, under the h3 that starts with its Rule ID.",
-      "tokens": ["oa.color.text.primary.onNewsprint", "oa.color.text.secondary.onNewsprint"],
-      "why": { "text": "Readers scan for the rule first and read the reason second, so the rule leads.", "basis": "Design judgment" },
-      "correct": { "specimen": "s-demo-1-correct", "caption": "A short notice set at true size: body text in Charcoal on Newsprint." },
-      "failure": { "specimen": "s-demo-1-failure", "caption": "<strong>Fails.</strong> The same notice with its body in secondary gray at 12 px, under the 13 px floor." },
-      "specs": [ { "label": "Body size", "value": "17 px", "token": "oa.type.body" }, { "label": "Text color", "value": "Charcoal, 13.29 to 1", "token": "oa.color.text.primary.onNewsprint" } ],
-      "files": [ "work/build/tokens/tokens.css" ],
-      "related": ["05", "06"],
-      "builders": "Read the surface first, then the role: text primary on Newsprint is <code>--oa-color-text-primary-on-newsprint</code>." },
-    { "id": "00.2", "title": "A corrective example appears only when it teaches.",
-      "rule": "Add a corrective specimen when the repair is not obvious from the failure.",
-      "tokens": ["oa.color.border.hairline.onNewsprint"],
-      "why": { "text": "WCAG asks 3 to 1 for the edges that identify a control.", "basis": "WCAG 2.2 SC 1.4.11" },
-      "correct": { "specimen": "s-demo-2-correct", "caption": "A field with a Charcoal edge." },
-      "failure": { "specimen": "s-demo-2-failure", "caption": "<strong>Fails 1.4.11.</strong> The edge is too faint to find." },
-      "corrective": { "specimen": "s-demo-2-corrective", "caption": "The repair: the edge moves to the strong border token." },
-      "related": ["07", "18"],
-      "builders": "Use <code>--oa-color-border-strong-on-newsprint</code> for an input's edge." }
+  "intro": [
+    "This chapter is the shell's own sample. guide_build.py places it only with --demo, and only where a chapter file is missing."
   ],
-  "extras": [ { "after_rule": "00.1", "specimen": "s-demo-sheet", "caption": "An extra sits between rules: a table, a sheet or a demo." } ],
-  "sources": [ "W3C, Web Content Accessibility Guidelines (WCAG) 2.2, Recommendation, December 12, 2024." ]
+  "rules": [
+    {
+      "id": "00.1",
+      "title": "A rule is one plain sentence.",
+      "rule": "State the rule in one to three sentences. The shell sets it large, under the h3 that starts with its Rule ID.",
+      "tokens": [
+        "oa.color.text.primary.onNewsprint",
+        "oa.color.text.secondary.onNewsprint"
+      ],
+      "why": {
+        "text": "Readers scan for the rule first and read the reason second, so the rule leads.",
+        "basis": "Design judgment"
+      },
+      "correct": {
+        "specimen": "s-demo-1-correct",
+        "caption": "A short notice set at true size: body text in Charcoal on Newsprint."
+      },
+      "failure": {
+        "specimen": "s-demo-1-failure",
+        "caption": "<strong>Fails.</strong> The same notice with its body in secondary gray at 12 px, under the 13 px floor."
+      },
+      "specs": [
+        {
+          "label": "Body size",
+          "value": "17 px",
+          "token": "oa.type.body"
+        },
+        {
+          "label": "Text color",
+          "value": "Charcoal, 13.29 to 1",
+          "token": "oa.color.text.primary.onNewsprint"
+        }
+      ],
+      "files": [
+        "work/build/tokens/tokens.css"
+      ],
+      "related": [
+        "05",
+        "06"
+      ],
+      "builders": "Read the surface first, then the role: text primary on Newsprint is <code>--oa-color-text-primary-on-newsprint</code>.",
+      "code": {
+        "set": "c-00-save-button",
+        "name": "Save button",
+        "caption": "Template demonstration: the code to copy, live in both themes. Copy each file into a page that links tokens.css."
+      }
+    },
+    {
+      "id": "00.2",
+      "title": "A corrective example appears only when it teaches.",
+      "rule": "Add a corrective specimen when the repair is not obvious from the failure.",
+      "tokens": [
+        "oa.color.border.hairline.onNewsprint"
+      ],
+      "why": {
+        "text": "WCAG asks 3 to 1 for the edges that identify a control.",
+        "basis": "WCAG 2.2 SC 1.4.11"
+      },
+      "correct": {
+        "specimen": "s-demo-2-correct",
+        "caption": "A field with a Charcoal edge."
+      },
+      "failure": {
+        "specimen": "s-demo-2-failure",
+        "caption": "<strong>Fails 1.4.11.</strong> The edge is too faint to find."
+      },
+      "corrective": {
+        "specimen": "s-demo-2-corrective",
+        "caption": "The repair: the edge moves to the strong border token."
+      },
+      "related": [
+        "07",
+        "18"
+      ],
+      "builders": "Use <code>--oa-color-border-strong-on-newsprint</code> for an input's edge."
+    }
+  ],
+  "extras": [
+    {
+      "after_rule": "00.1",
+      "specimen": "s-demo-sheet",
+      "caption": "An extra sits between rules: a table, a sheet or a demo."
+    }
+  ],
+  "sources": [
+    "W3C, Web Content Accessibility Guidelines (WCAG) 2.2, Recommendation, December 12, 2024."
+  ]
 }

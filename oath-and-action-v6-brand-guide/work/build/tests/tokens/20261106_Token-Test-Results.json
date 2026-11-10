@@ -33,7 +33,7 @@
   {
    "step": "rendered",
    "result": "pass",
-   "detail": "render: Chromium 153.0.8010.12 resolved 465 token values, 30 color-mix() derivations (largest channel difference 0), 360 surface short names nested in another surface, 14 type styles at 390 and 1440 px, 6 durations under reduced motion and 12 theme cases (device light and dark, the root's attribute, nested themes and surfaces); 0 failures; planted red leak onto Prussian reported; planted dark block that overrides data-oa-theme=\"light\" reported"
+   "detail": "render: Chromium 153.0.8010.12 resolved 465 token values, 30 color-mix() derivations (largest channel difference 0), 360 surface short names nested in another surface, 14 type styles at 390 and 1440 px, 6 durations under reduced motion and 14 theme cases (device light and dark, the root's attribute, nested themes and surfaces); 0 failures; planted red leak onto Prussian reported; planted dark block that overrides data-oa-theme=\"light\" reported"
   }
  ],
  "counts": {
@@ -423,7 +423,7 @@
    "plant": "A stylesheet edited by hand, so it no longer matches the source",
    "test": "build",
    "caught": true,
-   "failure": "tokens_build --check: tokens.css in ../../../../tmp/oa-token-plants-d44eexll differ from what the source builds. Run the build.",
+   "failure": "tokens_build --check: tokens.css in ../../../../tmp/oa-token-plants-sydyxs5b differ from what the source builds. Run the build.",
    "alsoCaughtBy": [
     "parity"
    ]

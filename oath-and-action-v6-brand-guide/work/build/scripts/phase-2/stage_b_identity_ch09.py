@@ -173,6 +173,29 @@ def box(tag, inner):
     return f'<div class="p9-box"><span class="oai-tag">{E(tag).replace(" px", "\u00a0px")}</span>{inner}</div>'
 
 
+# ============================================================================================ the opener
+# Stage C, round 0 (D2-965, D2-1134, the creative director's S16): the figure under the chapter's intro, named by the
+# chapter's "opener" key. The 48 px row is the one Rule 09.1 places near the top of a page that introduces the four
+# pillars, so the chapter opens on its own rule. It carries no tag, since it is the chapter's picture, not a sample.
+OPENER_CSS = ".oai .p9-opener{padding:24px}"
+
+
+@spec
+def s_09_opener():
+    body = f'<div class="oai-s-newsprint p9-opener">{row(48)}</div>'
+    alt = ("The four pillar icons at true size, 48 pixels, in one row on Newsprint: Explain, Track, Connect and Act, each icon "
+           "beside its word, joined by arrows, every icon in one color. Explain, three short rays rising from an open book; "
+           "Track, a route from a map pin to a magnifier; Connect, two overlapping rings; Act, a finger pressing a round "
+           "control. On a phone the row stands in one column, with a downward arrow under each icon but the last.")
+    return rec("s-09-opener", "09.1", None, alt, body, css=ROW_CSS + OPENER_CSS,
+               notes="Chapter 09's opener figure (D2-965, D2-1134, CD S16), named by the chapter's opener key and drawn under "
+                     "its intro. The 48 px row from Rule 09.1's sheet (s-09-1-correct), on Newsprint, one color in the "
+                     "surface's icon ink token, since no pillar is current, with no tag: Rule 09.1 places the 48 px row near "
+                     "the top of a page that introduces the four pillars. Each icon from the sprite with data-icon-family "
+                     "pillar (D2-590, D2-517). No width, so the shell flows it in the chapter column at true size: one line "
+                     "from 48em, and under 48em one column with downward arrows, as Rule 09.1 sets (D2-376).")
+
+
 # ============================================================================================ 09.1
 @spec
 def s_09_1_correct():
@@ -394,6 +417,7 @@ def chapter():
             "This chapter sets the row the four stand in, how a page marks the pillar it serves, the file to draw at each size, "
             "and the few places a pillar icon may appear.",
         ],
+        "opener": "s-09-opener",            # the figure under the intro (D2-1134); the shell draws it
         "rules": [
             R("09.1", "Set the four pillar icons in order, each beside its word.",
               "Set the pillars in one row in the order Explain, Track, Connect and Act, with an arrow between each pair. Each icon "

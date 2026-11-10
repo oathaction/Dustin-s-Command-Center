@@ -30,6 +30,10 @@
 @media (min-width: 64em) { :root { --m: var(--oa-layout-grid-desktop-margin); --g: var(--oa-layout-grid-desktop-gutter); --mc: 9; --bar-h: 4rem; --where-h: 0rem } }
 @media (min-width: 90em) { :root { --m: var(--oa-layout-grid-wide-margin); --g: var(--oa-layout-grid-wide-gutter); --mc: 10 } }
 
+/* D2-1133 (stage C): the guide stays on Newsprint whatever the device asks. The root carries data-oa-theme="light",
+   which wins over tokens.css's dark theme (DR-204), and "only light" also keeps a browser's own dark mode from
+   recoloring a plate, so every specimen shows at its true colors. Chapter 18 shows Charcoal where a rule needs it. */
+:root[data-oa-theme="light"] { color-scheme: only light }
 *, *::before, *::after { box-sizing: border-box }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; background: var(--oa-color-surface-newsprint) }
 body {
@@ -355,7 +359,7 @@ a.toc-part-k:hover { text-decoration: underline }
    picture of a finished piece, so it keeps its colors when the system forces its own. */
 .plate-stage { position: relative; width: var(--w, 100%); max-width: none; margin: 0 auto; font: var(--oa-type-body); text-align: left;
   box-shadow: 0 0 0 var(--oa-border-width-hairline) var(--keyline); forced-color-adjust: none }
-.plate-stage :is(button, input, select, textarea) { font: inherit }
+.plate-stage:not(.code-stage) :is(button, input, select, textarea) { font: inherit }
 .plate-stage[data-pending] { padding: var(--oa-space-400); max-width: 100% }
 /* B1 (creative director's review): a stage that flows with the page keeps 16 px, 24 px from 48em, between its content
    and its keyline. A stage with a fixed width_px stays at its exact true size. */
@@ -373,6 +377,11 @@ a.toc-part-k:hover { text-decoration: underline }
   border: var(--oa-border-width-hairline) solid currentColor; font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing);
   text-transform: uppercase; line-height: 1.5; white-space: nowrap; vertical-align: baseline }
 .plate--extra, .plate--proof { margin-top: var(--oa-space-800) }
+/* D2-965, D2-1134 (stage C): a chapter's opener figure under its intro. It carries no label; its frame and mat say it
+   is a piece at true size, and its head shows only when the frame must scroll. */
+.plate--opener { margin-top: var(--oa-space-600) }
+.plate--opener > .plate-head { border-top: 0; padding: 0 }
+.plate--opener.is-wide > .plate-head { padding: var(--oa-space-100) 0 }
 /* The True size / Fit to window switch (D2-251) */
 .fit-switch { display: inline-flex; border: var(--oa-border-width-hairline) solid var(--rule-strong) }
 .fit-btn { min-height: var(--oa-size-target-touch); padding: 0 var(--oa-space-150); border: 0; background: transparent; color: var(--ink); font: var(--oa-type-ui); cursor: pointer }
@@ -471,6 +480,29 @@ a.toc-part-k:hover { text-decoration: underline }
 @container (max-width: 17rem) { .chapnav a { flex-wrap: wrap; column-gap: .4em; row-gap: 0 } }
 .chapnav-k { color: var(--ink-2) }
 .chapnav .to-contents { margin-left: auto }
+
+/* ---------------------------------------------------------------- Code to copy (DR-203, stage C)
+   A rule's code set: the component live, built from its own files, in the light theme and in the dark theme (DR-204),
+   then each file in a panel with its Copy button and one status line for the plate. The live stages are the copied code
+   as a page that holds tokens.css alone draws it: the shell's element styles stop at their edge, and forced colors
+   reaches them, as it would reach the component in a product. guide_check.js (codeMatch) holds the two to the pixel. */
+.plate--code { margin-top: var(--oa-space-800) }
+.code-demo { display: grid; gap: var(--oa-space-300); grid-template-columns: minmax(0, 1fr);
+  padding: var(--oa-space-300) var(--oa-space-200); background: var(--mat); margin-inline: calc(-1 * var(--m)) }
+@media (min-width: 48em) { .code-demo { margin-inline: 0; padding: var(--oa-space-400) } }
+.code-demo-k { margin: 0 0 var(--oa-space-100); font: var(--oa-type-caption); color: var(--ink-2) }
+.plate-stage.code-stage { forced-color-adjust: auto }
+.code-root { display: flow-root }
+.code-stage :where(a, code, pre, kbd, button, input, select, textarea) { all: revert }
+.code-stage :where(*, *::before, *::after) { box-sizing: revert }
+.code-panels { display: grid; gap: var(--oa-space-300); margin-top: var(--oa-space-300); min-width: 0 }
+.code-panel { min-width: 0 }
+.code-panel-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--oa-space-100) var(--oa-space-300);
+  padding-top: var(--oa-space-100); border-top: var(--oa-border-width-hairline) solid var(--rule-hair) }
+.code-lang { margin: 0; font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase; color: var(--ink-2) }
+.code-panel > .code { margin-top: var(--oa-space-100) }
+.code-status { margin-top: var(--oa-space-150) }
+.code-status:empty { display: none }
 
 /* ---------------------------------------------------------------- Appendix: proofs side by side (C-M6, D2-251)
    From 90em the appendix takes the whole page width, columns 1 to 12, and slides over the rail, which the script hides

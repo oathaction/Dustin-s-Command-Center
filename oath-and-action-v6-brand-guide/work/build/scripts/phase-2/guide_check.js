@@ -72,6 +72,17 @@
 //                      (D2-975); the build writes IDs with an ASCII hyphen inside <span class="nw">
 //   iconTargets        also: a control that shows only after a reader types, such as a search field's Clear, is typed
 //                      into view and held to 44 by 44 px (CA-M2). Runs last, so no other check sees the typed state
+// Added in stage C, round 0 (November 10, 2026):
+//   textSpacing        also: at 390 and 360 px, with text at 200 percent, the page does not scroll sideways and no
+//                      masthead control leaves the screen (D2-1103, SC 1.4.4 and 1.4.10)
+//   codeMatch          every code plate's panels, pasted as a builder would into a page that holds tokens.css, the brand's
+//                      fonts and body { margin: 0; font: var(--oa-type-body) } and nothing else, draw pixel for pixel
+//                      what the guide's live stage draws, in the light and the dark theme, at the stage's own width (DR-203)
+//   openerFit          a chapter's opener figure sits in the chapter head, before the first rule, whole in its frame at
+//                      true size (D2-965, D2-1134)
+//   lightOnDark        with the device set to dark, the guide stays light: the root keeps data-oa-theme="light" and
+//                      color-scheme "only light", and every element's colors, fills, strokes, borders, outlines, shadows
+//                      and color scheme compute exactly as they do with the device set to light (DR-204, D2-1133)
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -1099,6 +1110,107 @@ async function sbTyped(page) {
   return out;
 }
 
+// DR-203 (stage C): the code a builder copies draws what the guide shows. Each code plate's panels are read as Copy
+// gives them, pasted into a page that holds the brand's fonts, tokens.css (as the page's own download carries it) and
+// body { margin: 0; font: var(--oa-type-body) }, at the same place on the screen as the live stage, and both are
+// captured. The masthead and rail are hidden while the guide is captured, so nothing overlaps a stage.
+async function codeMatch(page) {
+  const plates = await page.evaluate(() => [...document.querySelectorAll('.plate--code[data-code-set]')].map((f) => {
+    const text = (lang) => { const pre = f.querySelector(`.code-panel[data-code-lang="${lang}"] pre`); return pre ? pre.textContent : null; };
+    return { set: f.getAttribute('data-code-set'), html: text('html'), css: text('css'), js: text('js'),
+      themes: [...f.querySelectorAll('.code-stage .code-root')].map((r) => r.closest('.code-stage').getAttribute('data-code-theme')) };
+  }));
+  const out = { plates: plates.length, stages: 0, results: [], bad: [] };
+  if (!plates.length) return out;
+  const env = await page.evaluate(() => {
+    const a = document.getElementById('tokens-download'); const href = a ? a.getAttribute('href') : '';
+    const b64 = href.split(',')[1] || '';
+    const tokens = b64 ? new TextDecoder().decode(Uint8Array.from(atob(b64), (c) => c.charCodeAt(0))) : '';
+    const fonts = [...document.querySelectorAll('link[rel="stylesheet"]')].map((l) => l.href).filter((h) => /fonts\.googleapis/.test(h));
+    return { tokens, fonts };
+  });
+  if (!env.tokens) { out.bad.push({ set: '*', why: 'the page carries no tokens.css download to paste beside the code' }); return out; }
+  const hide = await page.addStyleTag({ content: '.masthead, .rail { visibility: hidden !important }' });
+  await page.mouse.move(0, 0);
+  await page.evaluate(() => { if (document.activeElement && document.activeElement.blur) document.activeElement.blur(); });
+  const vp = page.viewportSize();
+  const harness = await page.context().newPage();
+  await harness.setViewportSize(vp);
+  for (const pl of plates) {
+    for (const theme of pl.themes) {
+      const sel = `.plate--code[data-code-set="${pl.set}"] .code-stage[data-code-theme="${theme}"] .code-root`;
+      const box = await page.evaluate((sel) => { const r = document.querySelector(sel); r.scrollIntoView({ block: 'center' }); const b = r.getBoundingClientRect(); return { x: b.left, y: b.top, w: b.width, h: b.height }; }, sel);
+      await page.waitForTimeout(60);
+      const a = await page.locator(sel).screenshot();
+      const js = pl.js ? `<script>${pl.js}<\/script>` : '';
+      await harness.setContent(`<!doctype html><html lang="en" data-oa-theme="${theme}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">`
+        + env.fonts.map((h) => `<link rel="stylesheet" href="${h}">`).join('') + `<style>${env.tokens}</style><style>body { margin: 0; font: var(--oa-type-body) }</style>`
+        + `<style>${pl.css || ''}</style></head><body><div id="oa-harness" style="display:flow-root;width:${box.w}px;margin:${box.y % 1}px 0 0 ${box.x}px">${pl.html || ''}</div>${js}</body></html>`, { waitUntil: 'networkidle' });
+      await harness.evaluate(() => document.fonts.ready);
+      await harness.mouse.move(0, 0);
+      const b = await harness.locator('#oa-harness').screenshot();
+      out.stages++;
+      if (Buffer.compare(a, b) === 0) { out.results.push({ set: pl.set, theme, same: true, w: Math.round(box.w), h: Math.round(box.h) }); continue; }
+      const d = await harness.evaluate(async ([x64, y64]) => {
+        const load = (s) => new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = 'data:image/png;base64,' + s; });
+        const [x, y] = await Promise.all([load(x64), load(y64)]);
+        if (x.width !== y.width || x.height !== y.height) return { size: `${x.width} by ${x.height} in the guide, ${y.width} by ${y.height} pasted` };
+        const c = document.createElement('canvas'); c.width = x.width; c.height = x.height; const g = c.getContext('2d', { willReadFrequently: true });
+        g.drawImage(x, 0, 0); const dx = g.getImageData(0, 0, c.width, c.height).data;
+        g.clearRect(0, 0, c.width, c.height); g.drawImage(y, 0, 0); const dy = g.getImageData(0, 0, c.width, c.height).data;
+        let n = 0, max = 0;
+        for (let i = 0; i < dx.length; i += 4) { const m = Math.max(Math.abs(dx[i] - dy[i]), Math.abs(dx[i + 1] - dy[i + 1]), Math.abs(dx[i + 2] - dy[i + 2])); if (m) { n++; if (m > max) max = m; } }
+        return { pixels: n, max, total: c.width * c.height };
+      }, [a.toString('base64'), b.toString('base64')]);
+      const r = { set: pl.set, theme, same: false, ...d };
+      out.results.push(r);
+      out.bad.push({ set: pl.set, theme, why: d.size ? `draws ${d.size}` : `${d.pixels} of ${d.total} pixels differ, by up to ${d.max} of 255` });
+    }
+  }
+  await harness.close();
+  await hide.evaluate((el) => el.remove());
+  return out;
+}
+
+// D2-1133 (stage C): the guide forces light under tokens.css's dark theme (DR-204). The page is read once with the
+// device set to light, then again with it set to dark; every element must compute the same. The light reading stays in
+// the page, so only the differences cross back.
+const DARK_PROPS = ['color', 'background-color', 'background-image', 'border-top-color', 'border-right-color', 'border-bottom-color',
+  'border-left-color', 'outline-color', 'text-decoration-color', 'fill', 'stroke', 'stop-color', 'box-shadow', 'color-scheme', 'caret-color', 'accent-color'];
+async function lightOnDark(page) {
+  const read = () => page.evaluate((props) => {
+    const els = [document.documentElement, ...document.querySelectorAll('body, body *')];
+    return els.map((el) => { const cs = getComputedStyle(el); return props.map((k) => cs.getPropertyValue(k)).join('|'); });
+  }, DARK_PROPS);
+  await page.emulateMedia({ colorScheme: 'light' });
+  await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => r())));
+  await page.evaluate((props) => {
+    const els = [document.documentElement, ...document.querySelectorAll('body, body *')];
+    window.__oaLight = els.map((el) => { const cs = getComputedStyle(el); return props.map((k) => cs.getPropertyValue(k)).join('|'); });
+  }, DARK_PROPS);
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => r())));
+  const r = await page.evaluate((props) => {
+    const els = [document.documentElement, ...document.querySelectorAll('body, body *')];
+    const light = window.__oaLight || [];
+    const de = document.documentElement;
+    const out = { elements: els.length, attribute: de.getAttribute('data-oa-theme'), scheme: getComputedStyle(de).colorScheme,
+      dark: matchMedia('(prefers-color-scheme: dark)').matches, changed: [] };
+    if (light.length !== els.length) { out.changed.push({ where: 'page', why: `element count ${light.length} with the device light, ${els.length} dark` }); return out; }
+    const where = (el) => { const st = el.closest && el.closest('[data-specimen]'); const sec = el.closest && el.closest('section[id]'); return st ? st.getAttribute('data-specimen') : sec ? '#' + sec.id : el.tagName.toLowerCase(); };
+    for (let i = 0; i < els.length; i++) {
+      const cs = getComputedStyle(els[i]); const now = props.map((k) => cs.getPropertyValue(k));
+      const was = light[i].split('|');
+      const k = now.findIndex((v, j) => v !== was[j]);
+      if (k >= 0) out.changed.push({ where: where(els[i]), el: els[i].tagName.toLowerCase() + (els[i].className && typeof els[i].className === 'string' ? '.' + els[i].className.split(' ')[0] : ''), prop: props[k], light: was[k].slice(0, 60), dark: now[k].slice(0, 60) });
+    }
+    delete window.__oaLight;
+    return out;
+  }, DARK_PROPS);
+  await page.emulateMedia({ colorScheme: 'light' });
+  return r;
+}
+
 // G-3 and G-2 for the phone menu: Menu opens the dialog with focus inside it; Tab stays inside and in view; Escape and
 // Close each shut it and return focus to Menu.
 async function sbMenu(page) {
@@ -1237,6 +1349,18 @@ async function checkPage(browser, file, widths, opts = {}) {
       return hits;
     });
     a.idsHeld = await page.evaluate(() => [...document.querySelectorAll('span.nw')].filter((x) => /^(?:CL|R|U|S|E)-\w/.test(x.textContent)).length);
+    // D2-965, D2-1134: an opener sits in the chapter head, before the first rule, whole in its frame
+    a.openers = await page.evaluate(() => [...document.querySelectorAll('.plate--opener')].map((f) => {
+      const box = f.querySelector('.plate-scroll'); const st = f.querySelector('.plate-stage');
+      const ch = f.closest('.chapter'); const rule = ch && ch.querySelector('.rule');
+      const inHead = !!f.closest('.ch-head') && (!rule || (f.compareDocumentPosition(rule) & Node.DOCUMENT_POSITION_FOLLOWING) > 0);
+      return { specimen: st ? st.getAttribute('data-specimen') : null, chapter: ch ? ch.id : null, inHead, scrolls: box ? box.scrollWidth > box.clientWidth + 1 : null };
+    }));
+    // DR-203: the code a builder copies draws what the guide shows
+    a.code = await codeMatch(page);
+    // D2-1133: the guide stays light with the device set to dark
+    const dk = await lightOnDark(page);
+    a.lightOnDark = { elements: dk.elements, attribute: dk.attribute, scheme: dk.scheme, deviceDark: dk.dark, changed: dk.changed.length, first: dk.changed.slice(0, 5) };
     a.frames = await frameAudit(page);
     a.fit = await fitAudit(page);
     const fails = failuresFrom(a, width);
@@ -1244,7 +1368,8 @@ async function checkPage(browser, file, widths, opts = {}) {
     if (!opts.skipStageB) {
       sb.forced = await sbForced(page);
       if (width === 1440 || opts.plant) sb.reduced = await sbReduced(page);
-      if (width <= 390) sb.spacing = await sbSpacing(page);
+      // D2-1103 (stage C): phones take the sideways test with text at 200 percent, as 1024 px has since round 3
+      if (width <= 390) sb.spacing = await sbSpacing(page, ['spacing', 'zoom'], true);
       else if (width === 1024 || opts.zoomScroll) sb.spacing = await sbSpacing(page, ['zoom'], true);
       sb.menu = await sbMenu(page);
     }
@@ -1252,6 +1377,14 @@ async function checkPage(browser, file, widths, opts = {}) {
     a.stageB = { icons: sb.audit.icons, stateStages: sb.audit.stateStages, statePictures: sb.audit.statePictures, inlineTargets: sb.audit.inlineTargets || 0, missingFamily: sb.audit.missingFamily, markReaders: sb.audit.marks.readers, glyphParts: sb.forced ? sb.forced.glyphParts : null, useParts: sb.forced ? sb.forced.useParts : null,
       menu: sb.menu ? (sb.menu.problems.length ? sb.menu.problems : 'opens, holds focus, closes by Escape and Close, returns focus') : 'not shown at this width',
       forcedWordmark: sb.forced ? (sb.forced.wordmark.length ? sb.forced.wordmark : 'one color in dark and light') : null };
+    for (const o of a.openers) {
+      if (!o.inHead) fails.push({ key: 'openerFit', msg: `${width}: the opener ${o.specimen} in #${o.chapter} sits outside the chapter head or after a rule (D2-1134)` });
+      if (o.scrolls) fails.push({ key: 'openerFit', msg: `${width}: the opener ${o.specimen} in #${o.chapter} scrolls in its frame; an opener fits the column at true size (D2-965)` });
+    }
+    if (a.code.bad.length) fails.push({ key: 'codeMatch', msg: `${width}: ${a.code.bad.length} live code stage(s) draw differently from the code a builder copies (DR-203), first: ${JSON.stringify(a.code.bad[0])}` });
+    if (!dk.dark) fails.push({ key: 'lightOnDark', msg: `${width}: the browser did not take the dark device setting, so the test could not run` });
+    if (dk.attribute !== 'light' || !/only/.test(dk.scheme) || !/light/.test(dk.scheme)) fails.push({ key: 'lightOnDark', msg: `${width}: the root reads data-oa-theme=${JSON.stringify(dk.attribute)} and color-scheme "${dk.scheme}"; the guide forces "light" and "only light" (D2-1133)` });
+    if (dk.changed.length) fails.push({ key: 'lightOnDark', msg: `${width}: ${dk.changed.length} element(s) change color with the device set to dark; the guide stays light (DR-204, D2-1133), first: ${JSON.stringify(dk.changed[0])}` });
     if (a.nbHyphen.length) fails.push({ key: 'nbHyphen', msg: `${width}: ${a.nbHyphen.length} U+2011 non-breaking hyphen(s) in text or names, which the page's fonts do not draw and a search for the ID misses (D2-975); first: ${JSON.stringify(a.nbHyphen[0])}` });
     if (a.fit.under.length) fails.push({ key: 'fitFloor', msg: `${width}: ${a.fit.under.length} plate(s) whose Fit to window sets text under 13 px: ${a.fit.under.slice(0, 8).map((x) => `${x.specimen} (${x.smallest} px at ${Math.round(x.scale * 100)}%, "${x.sample}")`).join('; ')}` });
     let axe = null;
@@ -1509,6 +1642,33 @@ const PLANTS = [
     await new Promise((r) => setTimeout(r, 50)); },
     verify: (r) => r.runs[0].idsHeld >= 1 },
   { key: 'nbHyphen', fault: 'an ID written by the build: an ASCII hyphen held whole in span.nw (allowed: must not be flagged)', expect: false, js: () => { document.querySelector('.rule-text').insertAdjacentHTML('beforeend', ' See <span class="nw">CL-001</span>.'); } },
+  // stage C, round 0 (November 10, 2026)
+  { key: 'codeMatch', fault: 'the shell reaching into a live code stage and narrowing its button, which a copy would not do (DR-203)', js: () => {
+    const css = document.createElement('style'); css.textContent = '.code-stage .oa-save-btn { padding-inline: 4px !important }'; document.head.append(css); } },
+  { key: 'codeMatch', fault: 'a CSS panel whose copy no longer matches the live stage: the button\'s side padding changed in the copy alone (DR-203)', js: () => {
+    const pre = document.querySelector('.code-panel[data-code-lang="css"] pre code'); pre.textContent = pre.textContent.replace('padding: 0 var(--oa-space-300)', 'padding: 0 var(--oa-space-100)'); } },
+  { key: 'codeMatch', fault: 'the demo\'s code set as built: the copy draws what the live stages draw in both themes (allowed: must not be flagged)', expect: false, js: () => {},
+    verify: (r) => r.runs[0].code && r.runs[0].code.stages === 2 && r.runs[0].code.results.every((x) => x.same) },
+  { key: 'openerFit', fault: 'an opener figure 900 px wide, which scrolls in its frame at 1440 px (D2-965)', js: () => {
+    const h = document.querySelector('.chapter .ch-head'); h.insertAdjacentHTML('beforeend', '<figure class="plate plate--opener"><div class="plate-head"></div><div class="plate-scroll" data-plate-scroll data-frame-name="Opener" data-width="1400" style="--w:1400px"><div class="plate-stage oa-surface-newsprint" data-specimen="s-demo-opener" data-red="specimen" role="img" aria-label="A wide opening figure, a fixture at true size." style="--w:1400px" data-width="1400"><p>Wide</p></div></div></figure>'); } },
+  { key: 'openerFit', fault: 'an opener that flows with the column, in the chapter head (allowed: must not be flagged)', expect: false, js: () => {
+    const h = document.querySelector('.chapter .ch-head'); h.insertAdjacentHTML('beforeend', '<figure class="plate plate--opener"><div class="plate-head"></div><div class="plate-scroll" data-plate-scroll data-frame-name="Opener"><div class="plate-stage oa-surface-newsprint" data-specimen="s-demo-opener" data-red="specimen" role="img" aria-label="An opening figure that flows, a fixture."><p>Flows with the column</p></div></div></figure>'); },
+    verify: (r) => r.runs[0].openers.length === 1 && r.runs[0].openers[0].inHead },
+  { key: 'textSpacing', fault: 'a cover folio held on one line at 390 px, which pushes the page sideways with text at 200 percent (D2-1103)', widths: [390], js: () => {
+    const css = document.createElement('style'); css.textContent = '.cover-folio span { white-space: nowrap !important }'; document.head.append(css);
+    document.querySelector('.cover-folio span:last-child').textContent = 'Draft of November 7, 2026, for review'; } },
+  { key: 'textSpacing', fault: 'a source line holding a long web address at 360 px, with no way to wrap it (D2-1103)', widths: [360], js: () => {
+    const css = document.createElement('style'); css.textContent = '.sb-src li { overflow-wrap: normal !important; word-break: normal !important }'; document.head.append(css);
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<ol class="src-list sb-src"><li>Source: https://www.example.org/a-very-long-path/with-no-breaks/at-all-in-it/lawmaking-in-the-state-legislature.html</li></ol>'); } },
+  { key: 'textSpacing', fault: 'the same source line in the shell\'s own list, free to wrap (allowed: must not be flagged)', expect: false, widths: [360], js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<ol class="src-list"><li>Source: https://www.example.org/a-very-long-path/with-no-breaks/at-all-in-it/lawmaking-in-the-state-legislature.html</li></ol>'); } },
+  { key: 'lightOnDark', fault: 'the root without data-oa-theme="light", so tokens.css follows the device into Charcoal (D2-1133)', js: () => {
+    document.documentElement.removeAttribute('data-oa-theme'); } },
+  { key: 'lightOnDark', fault: 'a specimen whose own style turns its text pale when the device is dark (DR-204)', js: () => {
+    const st = document.querySelector('[data-specimen]:not([data-pending])');
+    st.insertAdjacentHTML('beforeend', '<style>@media (prefers-color-scheme: dark) { .sb-dark { color: var(--oa-color-palette-newsprint) } }</style><p class="sb-dark">Pale in the dark</p>'); } },
+  { key: 'lightOnDark', fault: 'a block that shows the dark theme on purpose with data-oa-theme="dark", the same with the device light or dark (allowed: must not be flagged)', expect: false, js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div data-oa-theme="dark" style="padding:16px"><p style="color:var(--oa-color-text-secondary)">Secondary text on Charcoal, set by the theme.</p></div>'); } },
 ];
 
 async function selfTest() {
