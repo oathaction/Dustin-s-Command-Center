@@ -1,0 +1,80 @@
+{
+ "about": "Every figure chapter 12's systems rules print, and where it comes from.",
+ "built": "2026-11-10",
+ "figures": {
+  "marker": {
+   "reform": "R-01",
+   "targets": [
+    "C2",
+    "L08",
+    "L25"
+   ],
+   "shown": [
+    "C1",
+    "L08",
+    "C2"
+   ],
+   "source": "System 1 data: work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json"
+  },
+  "key": {
+   "illustrative_counts": {
+    "Wages": {
+     "Documented": 6,
+     "Well supported": 4,
+     "Plausible": 3,
+     "Contested": 1,
+     "Hypothesis": 1
+    },
+    "Housing": {
+     "Documented": 4,
+     "Well supported": 5,
+     "Plausible": 2,
+     "Contested": 2,
+     "Hypothesis": 0
+    },
+    "Elections": {
+     "Documented": 7,
+     "Well supported": 2,
+     "Plausible": 1,
+     "Contested": 0,
+     "Hypothesis": 1
+    }
+   }
+  },
+  "locator": {
+   "atlas_current": "C",
+   "state": "NE",
+   "tile_grid": "work/boards/phase-2/data-viz/shared/geo/us-state-tile-grid.json"
+  },
+  "layers": [
+   {
+    "id": "core",
+    "title": "Power and accountability",
+    "regions": [
+     "Economic structure",
+     "Political inputs",
+     "Electoral competition",
+     "Governing institutions",
+     "Legitimacy",
+     "Outside drivers"
+    ]
+   },
+   {
+    "id": "economy",
+    "title": "How the economy reaches a household",
+    "regions": [
+     "Production and income",
+     "Household budgets and wealth",
+     "Credit, trade and environment"
+    ]
+   },
+   {
+    "id": "technology",
+    "title": "Technology and its effects",
+    "regions": [
+     "Technology mechanisms"
+    ]
+   }
+  ]
+ }
+}

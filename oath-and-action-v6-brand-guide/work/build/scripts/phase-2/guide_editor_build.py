@@ -296,9 +296,10 @@ def apply_pass(chapters, book, texts, fails, notes):
     if ch01.UNEVEN and not any(x.get("after_rule") == "01.11" for x in c1["extras"]):
         fails.append("the 2020 example is set but not placed after Rule 01.11 (DR-125)")
 
-    # BE-02: Rule 01.11's correct plate either prints a sourced count by party or says it gives none
+    # BE-02, DR-149, DR-187: Rule 01.11's correct plate either prints a sourced count by party or says it gives none
     t11 = texts.get("s-01-11-correct", "")
-    if "gives no count" not in t11 and not re.search(r"\bOf the \d+ ", t11):
+    counted = bool(re.search(r"\brecords (?:\w+|\d+) new congressional maps\b", t11)) and "Source for the count:" in t11
+    if "gives no count" not in t11 and not re.search(r"\bOf the \d+ ", t11) and not counted:
         fails.append("s-01-11-correct: the plate shows two cases with neither a count nor a line saying it gives none (BE-02, DR-93)")
 
     # DR-98: H.R. 7008 named whole with both provisions at its first mention in each chapter, as the House passed it, since

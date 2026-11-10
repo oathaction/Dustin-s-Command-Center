@@ -2,7 +2,7 @@
 
 Oath & Action Edition 06, Phase 2, stage B, round 2, November 10, 2026. Written by the editor (`.claude/agents/oa-editor.md`) for the main session, chapter 10's maker, the engineer and the makers of chapters 09, 11 and 12. I committed nothing and published nothing. Paths are relative to `oath-and-action-v6-brand-guide/`.
 
-Status: items 1 to 3 are done. Item 4 waits for drafts: chapters 09 and 12 have no file yet, and chapter 11's file has not changed since stage A. One request to me has come in (Rule 01.21's kicker, below).
+Status: items 1 to 3 are done, with Dustin's answers of November 10 applied (DR-187 to DR-189) and the research lead's round 2 findings on Rule 01.11 (section 2b). Item 4: chapter 10's words are done (section 4a), and Rule 01.21's kicker has landed. Chapters 09, 11 and 12 come next.
 
 ## What I wrote
 
@@ -66,6 +66,23 @@ The same words went into chapter 01's JSON (the correct and failure captions, an
 - **Ohio.** That the state constitution set the deadline that required a new map, which the source line prints. That the commission voted unanimously with members of both parties, which the plate leaves out. That the commission has a Republican majority, on which the seven rests.
 - **Missouri.** The result of the November 3, 2026 referendum. Missouri's results site refused the research lead's request, so the line says only that the vote was held after the snapshot. Missouri's suspension rests on the atlas, and the legislature's party on its member list.
 
+### 2b. Rule 01.11 after the research lead's round 2 notes and DR-187
+
+The research lead's notes (`20261110_Stage-B-Round-2-Research-Notes.md`) found that Missouri's voters rejected the 2025 map on November 3, 2026, by unofficial returns; that Ohio's commission, five Republicans and two Democrats, adopted its map 7 to 0 on the constitution's deadline; and that every party the plate names now rests on a primary source except Virginia's 2025 House of Delegates. Dustin decided the plate counts maps passed, seven and one, with Missouri's rejection named and its figures marked unofficial (DR-187).
+
+I applied section 5's four changes to `s-01-11-correct.html`, to `01-purpose.json` (Rule 01.11's correct caption and the count's source entry) and to `manifest-editor.json` (the alt text and notes), with two changes of my own:
+- The plate's own sentence says the result is unofficial: "Missouri’s voters rejected their state’s map, one of the seven, on November 3, 2026, according to unofficial returns."
+- The source line names the official page the figures come from, in full: "Its figures are unofficial statewide returns for Proposition A, November 3, 2026, 1,273,815 no and 785,969 yes, from St. Charles County, Missouri, “Voters Turn Out for 2026 Midterm Election in St. Charles County”, sccmo.org, November 4, 2026; the state certifies the count after local election authorities file theirs by November 17, 2026." I also put the counting sentence in the active voice ("We counted each map by the party that led...") and split the research draft's colon into two sentences (W06).
+
+The number lives in one sentence of the plate (`R4A_SCOPE`'s second sentence), one of the caption ("seven to one") and the source line's last sentence, so a later change is three swaps. Before Phase 5, the Missouri figures and their page give way to the certified statement once Missouri's board of state canvassers issues it (research section 5, change 2).
+
+**The chapter 01 generator now holds these words.** Chapter 01 and 02 are written by my generator, `work/build/scripts/phase-2/guide_editor_build.py` with `guide_editor_ch01.py`, and my earlier edits went into its outputs only, so a rebuild would have undone them. I moved every Rule 01.11 string into `guide_editor_ch01.py` (`R4A_SCOPE`, a new `SRC_R4A_COUNT`, both captions, the alt, the notes and the chapter's source list), with Rule 01.21's new caption and alt, and widened the build's own count check (BE-02) so it accepts a sourced count. Then I rebuilt chapters 01 and 02 and ran the identity designer's step, `python3 -I work/build/scripts/phase-2/stage_b_identity_ch01.py`, and compared all 115 files against the committed copies. Three differences remain, each intended or held back:
+- Rule 01.21's caption and alt, the change below.
+- The header comment in `s-01-11-correct.html` is back to the generator's standard line; the manifest's notes keep the plate's history.
+- `s-01-pieces.html` came out with chapter 11's newer mark code, which is mid-build, so I restored the committed file. The next rebuild after chapter 11 lands picks the new marks up, as the generator intends.
+
+**Rebuild order, my choice of the two the identity designer offered:** after every rebuild of chapter 01, run `stage_b_identity_ch01.py`. It touches only the inline masters and the kicker word, and a second run changes nothing, so the generator stays as it is and both owners' steps stay apart.
+
 ### 3. The combined reader check's questions
 
 `work/handoffs/phase-2/20261110_Reader-Check-2-Questions.md` sets the whole check in 11 steps, about 15 minutes, with every word a reader sees, the answer choices and their codes, what counts as a pass and why each question is asked, then the record's new fields, what the answer key holds, the words the page must never print, and the two-line invitation.
@@ -74,23 +91,65 @@ The same words went into chapter 01's JSON (the correct and failure captions, an
 - **Left out:** the masthead question (DR-115, D2-323), the condensed wordmark and the 16 px badge on the small marks sheet (DR-115, DR-118), and the four pillar icons shown bare for naming (DR-111 sets each with its word).
 - **New:** a link card and R-46 for reading Pillar Red for party (DR-114, DR-152); the pillar row at 24 and 48 px (DR-111, DR-133, DR-179); five questions on the six tracker steps (DR-108); a rebuilt small marks sheet and the 24 px lockmark in a footer (DR-181); the end mark at 14 and 12 px under two real sentences from the atlas (DR-180).
 
+**Dustin's answers (DR-188, DR-189).** The check keeps all eleven steps and says about 15 minutes in the invitation. Step 3 now names CL-025 Congress, CL-073 Testify, CL-074 Contact an Official and R-02 Ranked-choice voting, drawn from `civic-line-v6/black/`. **For the engineer: step 3's pass and partly rows for Congress, Testify and Contact an Official are in the questions file**, with the misreadings to report to Dustin for each (a court, a job interview and the like), what to expect from Congress (D2-620), and four more words to keep off the page up to the end of step 3.
+
 The invitation, for Dustin to paste:
 
 > Could you spare about 15 minutes on your phone for a short test of a draft design for a civic publication? You’ll look at some drawings, charts and pages and say what you see, and there are no wrong answers: [link]
 >
 > It asks only for a first name or initials, and you can stop at any time. If the last screen shows your answers with a Copy button, please paste them into a reply to me.
 
-### 4. Words for chapters 09, 11 and 12
+### 4. Words for chapters 09, 10, 11 and 12
 
-Nothing to edit yet: `09-pillar-icons`, `10-symbols` and `12-graphic-devices` have no chapter file, and `11-icons.json` is unchanged since stage A. One request has come in from chapter 10's maker, on Rule 01.21's kicker in chapter 01, which sets CL-055 Productivity at 24 px although CL-055 is not among the 41 that read at that size. The drawing in `s-01-21-correct` is the identity designer's this round (D2-719), and the words are mine. My answer is the word change below; the identity designer swaps the drawing to CL-057, and I change the caption and alt text in the same pass so the page never shows one without the other.
+Rule 01.21's kicker in chapter 01 set CL-055 Productivity at 24 px, although CL-055 is not among the 41 that read at that size (chapter 10's maker's request). The drawing in `s-01-21-correct` is the identity designer's this round (D2-719), and the words are mine. The identity designer has swapped the drawing to CL-057 beside "Workers’ share of income", and I have applied the caption and alt below, in the generator too (section 2b).
 
 | File | Field | Old | New | Rule |
 |---|---|---|---|---|
-| `work/build/guide/specimens/s-01-21-correct.html` (identity designer applies) | The Analysis kicker's topic word, after the icon | Productivity | Workers’ share of income | DR-112, a topic icon sits beside its own word; D2-373, a kicker's icon comes from the 41; DR-185, CL-057's word is V7's title for EC3 |
-| `work/build/guide/chapters/01-purpose.json` (editor applies with the swap) | Rule 01.21, `correct.caption`, second sentence | the Productivity icon beside its own word | the icon for workers’ share of income beside its own words | Follows the swap |
-| `work/build/guide/specimens/manifest-editor.json` (editor applies with the swap) | `s-01-21-correct.alt` | Analysis, productivity, with the Productivity topic icon, a worker at a desk beside a clock, directly before the word Productivity: Does pay rise with productivity? | Analysis, workers’ share of income, with its topic icon, a person in the wedge cut from a circle, directly before those words: Does pay rise with productivity? | Follows the swap |
+| `work/build/guide/specimens/s-01-21-correct.html` (identity designer, applied) | The Analysis kicker's topic word, after the icon | Productivity | Workers’ share of income | DR-112, a topic icon sits beside its own word; D2-373, a kicker's icon comes from the 41; DR-185, CL-057's word is V7's title for EC3 |
+| `work/build/guide/chapters/01-purpose.json` (editor, applied) | Rule 01.21, `correct.caption`, second sentence | the Productivity icon beside its own word | the icon for workers’ share of income beside its own words | Follows the swap |
+| `work/build/guide/specimens/manifest-editor.json` (editor, applied) | `s-01-21-correct.alt` | Analysis, productivity, with the Productivity topic icon, a worker at a desk beside a clock, directly before the word Productivity: Does pay rise with productivity? | Analysis, workers’ share of income, with its topic icon, a person in the wedge cut from a circle, directly before those words: Does pay rise with productivity? | Follows the swap |
 
 The headline, "Does pay rise with productivity?", and its source stay: the share of income paid to workers is the measure that question turns on.
+
+### 4a. Chapter 10's words, as built
+
+I read `work/build/guide/chapters/10-symbols.json`, the class table in `s-10-1-correct`, the `LOOKALIKES` lines in `work/build/scripts/phase-2/stage_b_ch10_build.py`, the library's meaning lists and every `s-10-*` alt in `manifest-systems.json`. The chapter reads well, and its facts check: 7,626 pairs is every pair of 124, 3.35 is 1.25 times 2.68, and the library prints my labels and sentences as written. The script writes the chapter's JSON, so each change below goes into `stage_b_ch10_build.py` at the string quoted.
+
+**Two changes in my own file, for chapter 10's maker to rebuild from** (`20261110_Stage-B-Ch10-Labels.json`):
+- CL-064's sentence said "gate", which the guide check refuses on reader pages (D2-253). It now reads: "A parcel meets a checkpoint with two bars across it, for import taxes and trade rules that can raise what U.S. buyers pay." No other label or sentence matches any of the check's studio words, by script, and my build now runs those patterns.
+- CL-025's second sentence printed in the library after its chip and its name, so it repeated both. It now reads: "The same chamber stands for the staff and expertise Congress needs to investigate problems, write laws and oversee agencies."
+
+**Changes to the maker's words:**
+
+| File | Field | Old | New | Rule |
+|---|---|---|---|---|
+| `10-symbols.json` | `intro[0]` | each on a square box. A topic symbol names the subject of a piece, such as Voting or Public records. An atlas symbol names a variable or a reform in our systems atlas. | each drawn in a square box. A topic symbol names the subject of a piece, such as Voting or Public records, and an atlas symbol names a variable or a reform in our systems atlas. | W13, two sentences on one frame; "on a square box" reads as sitting on top of it |
+| `10-symbols.json` | `groups[2].line` | A drawing reads from 48 px, a short list reads at 24 px, and each surface takes its own edition. | Every drawing reads from 48 px and 41 of them at 24 px, and each surface takes its own edition. | W12, a three-beat chant; "a short list" gives no number |
+| `10-symbols.json` | Rule 10.1, `rule[0]`, from its second sentence | Pillar icons mark which of our four pillars a piece serves. Topic symbols name the subject of a piece. Atlas symbols name a variable or a reform in our systems atlas, Who Do They Answer To?, where a variable is a condition that can rise or fall, such as safe seats. Status marks say where a bill or a record stands, and utility icons name an action beside its word. Encoding glyphs carry the atlas’s own marks for sign, evidence and delay. | Pillar icons mark which of our four pillars a piece serves, and a topic symbol names its subject. An atlas symbol stands for a variable or a reform in our systems atlas, Who Do They Answer To?, where a variable is a condition that can rise or fall, such as safe seats. Chapter 11’s status marks say where a bill, a records request or an agency rule stands, and its utility icons name an action beside the words that say it. The atlas’s own marks for sign, authority, evidence and delay are its encoding glyphs. | W13, five sentences on one frame; the class table and Rule 10.10 name records requests, agency rules and authority, and the rule should match them |
+| `s-10-1-correct` (class table, in the script) | Utility icon row | Names an action a reader takes, always beside its word. | Names an action a reader takes, beside the words that say it. | W20: chapter 11's four exceptions (D2-506) sit beside other words, so "always beside its word" claims more than the rule |
+| `10-symbols.json` | Rule 10.1, spec "Topic and atlas symbols" | 124 Civic Line drawings: CL-001 to CL-074, and the reform drawings R-01 to R-50 | 120 of the 124 Civic Line drawings, CL-001 to CL-074 and R-01 to R-50; the other four are the pillar icons | Accuracy: 19 topic, 51 variable (one of them also a topic) and 50 reform drawings make 120 |
+| `10-symbols.json` | Rule 10.1, `builders` | where every drawing carries its ID, the name its file and the sprite use, such as CL-031 | where every drawing carries its ID, which its file and the sprite use, such as CL-031 | "the name" read as a second thing beside the ID |
+| `10-symbols.json` | Rule 10.2, `rule[0]` | Its line is one weight, from 2.68 to 3.35 units, with round ends and round corners. One part of the drawing carries the red accent: the detail a reader should see first, | Each drawing keeps its line at one weight, set between 2.68 and 3.35 units, with round ends and round corners. One part carries the red accent, the detail a reader should see first, | "one weight, from 2.68 to 3.35" read as a contradiction; W06, the colon held the point back |
+| `10-symbols.json` | Rule 10.2, `rule[1]` | takes its word alone until a drawing made this way is approved by our founder and editor. | takes its word alone until our founder and editor approves a drawing made this way. | W02 |
+| `10-symbols.json` | Rule 10.2, `why[1]` | The drawings keep open counters inside a steady line, | The drawings keep open space inside each shape and a steady line, | H02: the guide defines "counters" only for letters (Rule 03.4) |
+| `10-symbols.json` | Rule 10.2, `correct.caption` | with the keylines that place it, | with its keylines, the guide lines that place it, | H02 |
+| `10-symbols.json` and `manifest-systems.json` | Rule 10.2, `failure.caption`; `s-10-2-failure.alt` | A filled stock icon stands in for Bill; Bill is a filled stock document icon | A filled icon from a generic icon library stands in for Bill; Bill is a filled document icon from a generic icon library | H02: "stock" is the atlas's word for an amount built up over time, and chapter 10 sits beside the atlas's variables |
+| `10-symbols.json` | Rule 10.3, `why[0]`, first sentence | The cap keeps the line within a quarter of its weight across all 124 drawings. | The cap holds every line in the set between 2.68 and 3.35 units, so the heaviest is a quarter heavier than the lightest. | The old sentence did not say which weight the quarter is of |
+| `10-symbols.json` | Rule 10.4, `rule[0]`, last sentence | No topic or atlas symbol is set at 16 px. | Never set a topic or atlas symbol at 16 px. | W02: a rule names who acts |
+| `10-symbols.json` | Rule 10.4, `rule[1]` | may hold one topic icon from those 37, | may hold one of those 37 drawings, | H02 keeps "topic symbol" in this chapter, and some of the 37 are atlas symbols |
+| `10-symbols.json` | Rule 10.4, `why[0]`, last sentence | The rest need 48 px before a reader can name them. | The rest needed 48 px before the reviewer could name them. | W20: one reviewer's reading, sized to its evidence |
+| `s-10-4-correct` and `manifest-systems.json` | The story card's headline, "How to ask your town for its meeting minutes" | no label; `illustrative: false` | the Illustrative label beside the headline; `illustrative: true` | H03: Rule 01.21's kickers label each invented headline the same way |
+| `10-symbols.json` | Rule 10.5, `rule[0]`, from its second sentence | Red-Black and Black serve Newsprint and White. Red-Newsprint and Newsprint serve Charcoal. Newsprint alone serves Prussian, where red never sits. | Red-Black and Black serve Newsprint and White, and Red-Newsprint and Newsprint serve Charcoal. Prussian, where red never sits, takes the Newsprint edition alone. | W13 |
+| `10-symbols.json` | Rule 10.5, `why[0]` | Each edition keeps the ink at 13.29 to 1 against its own ground, | Each edition keeps the ink at 13.29 to 1 or more against its own ground, | Charcoal on White measures 18.73 to 1 (Master Brief, tension 9) |
+| `10-symbols.json` | Rule 10.6, `rule[0]`, from its second sentence | A topic symbol carries its own word, such as Congress. An atlas symbol carries the atlas’s name for its element, such as Congressional capacity for the same drawing where it stands for that variable, with a typed chip such as Variable D1. A reform carries the reform’s name, and the rejected option on term limits keeps the word Rejected wherever it appears. | A topic symbol carries its own word, such as Congress. Where the same drawing stands for the atlas variable, it takes the atlas’s name, Congressional capacity, with a typed chip such as Variable D1, and each reform drawing takes its reform’s name. The rejected option on term limits keeps the word Rejected wherever it appears. | W13 |
+| `10-symbols.json` | Rule 10.6, `rule[1]` | Beside its word, the drawing is hidden from screen readers, so the word is read once. | Hide the drawing from screen readers when its word sits beside it, so the word is read once. | W02 |
+| `10-symbols.json` | Rule 10.7, `rule[0]` | keeps its red accent, bare on Newsprint, as signature red. | keeps its red accent, set straight on Newsprint with no tile, as signature red. | "Bare" is studio shorthand |
+| `10-symbols.json` | Rule 10.8, `rule[0]`, second sentence | Its domains, hubs, layers and routes to change appear as words, or as a typed chip that holds the ID and the name, even where a page lists them beside drawn variables. | Its other parts take words, or a typed chip that holds the ID and the name, even where a page lists them beside drawn variables. Those parts are its domains, which sort issues by subject; its hubs, which gather everyday questions such as Cost of living; its three layers; and its routes to change, the paths a reform can travel, such as a ballot measure. | H02: the guide defines hubs, layers and routes nowhere before this; "route" follows the atlas glossary, and Cost of living is one of the atlas's five hubs |
+| `10-symbols.json` | Rule 10.9, `why[0]`, third sentence | Most groups here score well under that, so the trouble lies in the subject: Testify and Public meeting score −0.09, yet a builder looking for a hearing can still reach for the meeting. | Most groups here score well under that, and their risk lies in the subjects, since a builder looking for a hearing can reach for Public meeting although the two drawings score −0.09. | W06, the colon held the point back; W10, the "yet" turn |
+| `10-symbols.json` | Rule 10.9, spec "Likeness test" | 0.91 or more is as alike as the closest one pair in a hundred | 0.91 or more puts a pair among the closest one in a hundred | Clarity |
+| `10-symbols.json` | Rule 10.10, `rule[0]` | an open diamond for authority, | an open diamond for authority, where one body holds legal power over something, | H02, in the atlas glossary's words for an authority connection |
+
+Left as written, with a reason: the `LOOKALIKES` lines (each pair is a comparison by design, and the words are mine); the four principles quoted from the fourth edition (exact quotes, labeled as design judgment); "Bill and State house have no drawing" in both Rule 10.2 and Rule 10.9 (10.2 says how a drawing joins the set, and 10.9 sends a builder to the word, so each reader meets it where they look); the paths in the builders lines (other chapters print paths there too).
 
 ## Routine calls
 
@@ -128,17 +187,35 @@ The reader check (item 3):
 - D2-xxx | The record adds `device_pixel_ratio` | Pixel fits are drawn for 1x screens, so what a reader saw depends on the screen
 - D2-xxx | Meaning choices shuffle per reader with "Not sure" last; scales, step numbers and the party choices keep one order | Position can sway a meaning answer; the party choices keep the first check's order so answers compare across steps
 - D2-xxx | The invitation says about 15 minutes | The estimate runs from 11 to 15 minutes, so the invitation promises the longer end
+- D2-xxx | Step 3's Congress counts "Congress, the House or the Senate" as a pass and a legislature or a chamber in session as partly | No Congress drawing names Congress without its label (D2-620), so a partial answer still shows the drawing points at the right word
+- D2-xxx | Step 3 lists, for each new drawing, the misreadings to report to Dustin in the reader's own words | Each drawing was drawn to rule them out (research notes of November 9, section 1)
+
+Rule 01.11 after the research lead's round 2 notes (DR-187):
+- D2-xxx | The plate's Missouri sentence says "according to unofficial returns" | The count is not certified; the coordinator asked that the plate or its line say so
+- D2-xxx | The source line names the county page in full, with its title, site and date | H04, and the coordinator's request that the official page be named
+- D2-xxx | The counting sentence is active, "We counted each map...", and the research draft's colon becomes two sentences | W02, W06
+- D2-xxx | Every Rule 01.11 and Rule 01.21 string now lives in `guide_editor_ch01.py`, and the build's count check accepts a sourced count | A rebuild of chapter 01 would otherwise undo them, and the old check failed any plate that counts
+- D2-xxx | After every rebuild of chapter 01, run `stage_b_identity_ch01.py` | It touches only the inline masters and the kicker word and is safe to rerun, so the two owners' steps stay apart
+- D2-xxx | `s-01-pieces.html` stays as committed until chapter 11 lands | A rebuild now would carry chapter 11's mark code mid-build onto chapter 01
+
+Chapter 10 (item 4):
+- D2-xxx | CL-064's sentence says "checkpoint" in place of "gate" | The guide check refuses "gate" on reader pages (D2-253)
+- D2-xxx | CL-025's second sentence drops the words the library already prints before it | The library sets the chip and "Congressional capacity" first, so the old sentence repeated both
+- D2-xxx | My label build runs the guide check's studio-word patterns | A word the page refuses never reaches chapter 10's maker again
 
 ## Questions for Dustin
+
+All three are answered: 1 and 2 by DR-188 and DR-189, 3 by DR-187.
 
 1. **The check runs about 15 minutes.** The first check was estimated at 9 to 10 (DR-86), and this one adds DR-143's five topics. *Recommendation:* keep it whole and say 15 minutes in the invitation. If you want it near 12, the four-symbol naming step can go, which saves about 2 minutes.
 2. **Should the new Congress, Testify and Contact an official drawings join the symbol naming step?** DR-143 names no new Civic Line drawing, and each adds about half a minute. *Recommendation:* leave them out of this check, so it stays near 15 minutes; the creative director's naming reads on the drawings board stand for now.
 3. **If Missouri's voters rejected the 2025 map on November 3, what does the plate count?** Research D2-525 counts the map as passed, with its suspension explained. A map voters turned down would read more like Virginia's attempt. *Recommendation:* once Missouri's certified result is read, report the record as it stands (DR-93): if voters rejected the map, the plate counts six maps from Republican-led bodies and names Missouri's beside Virginia's; if they approved it, the plate stands as written.
 
 Requests to other owners:
-- **Research lead:** before board B, read Missouri's certified Proposition A result, Ohio's constitution on the 2025 deadline and the commission's October 31, 2025 vote, and the member lists for North Carolina, Tennessee, Ohio and Florida, so every party in the count rests on a primary source.
-- **Identity designer:** the kicker swap in `s-01-21-correct` above.
-- **Engineer:** build the page from `20261110_Reader-Check-2-Questions.md`; its "Answer key" section lists what the key file holds.
+- **Research lead:** done in its round 2 notes. Still open: Missouri's certified statement, to swap in before Phase 5, and Virginia's 2025 House of Delegates.
+- **Identity designer:** the kicker swap is in, and the caption and alt match it.
+- **Engineer:** build the page from `20261110_Reader-Check-2-Questions.md`; step 3's new rows are in, and its "Answer key" section lists what the key file holds.
+- **Chapter 10's maker:** rebuild from the labels file for CL-064 and CL-025, and take section 4a's table.
 
 ## Tested
 
@@ -149,13 +226,16 @@ Requests to other owners:
 - Rule 01.11: every figure in the count against V7's records (the table above); the build (`guide_build.py --strict`: 9 chapter files, 100 rules, 233 specimens, 0 placeholders); the plate looked at in the built guide at 1,440 and 390 px; the chapter JSON and the editor manifest parse and change only in the fields named.
 - The reader check file: the PW03 lines match V7's text exactly; the first check's question words and rating labels compared with its template; the answer counts (54) and fixed looking time (175 s) added up by hand; a scan for dashes, fillers and negations, each hit read.
 - A full read of all three files against chapter 02's rules.
+- Round 2: the labels file against the guide check's studio-word patterns (CL-064 the one hit, now fixed); Rule 01.11's new strings in all three files, each old string matched once; Missouri's figures against the research notes; chapters 01 and 02 rebuilt by the generator and the identity step, then all 115 files compared with the committed copies (three differences, each explained in section 2b); `guide_build.py --strict` after the restore (12 chapter files, 128 rules, 295 specimens, 0 placeholders); the plate looked at in the built guide at 390 px.
+- Chapter 10: its JSON, the class table, the `LOOKALIKES` lines, the library's meaning lists and every `s-10-*` alt read in full; 7,626 pairs and the 1.25 line ratio checked by arithmetic; hubs, layers and the route definition read from the atlas model.
 
 ## Not tested
 
 - How the labels and sentences read aloud to real readers, and how they fit chapter 10's contact sheets, which do not exist yet.
 - Whether the 24 px lockmark, the pixel fits and the end mark look as these questions assume on real phones; the questions are written from the decisions and the specimens, not from phone captures.
 - The reader check page, which the engineer builds; the time estimate, which no reader has measured.
-- The party attributions the research lead marked as not checked (North Carolina, Tennessee, Ohio, Florida), and Missouri's referendum result.
+- Missouri's certified result, which is not out, and Virginia's 2025 House of Delegates; the research lead read every other party on a primary source.
+- `guide_check.js` on chapters 01 and 10 after these edits; I ran the build only.
 - My notes' prose for rhetorical triplets and parallel runs, which no script can rule out; I read for them.
 
 ## Change log
@@ -169,6 +249,13 @@ Modified:
 - `work/build/guide/specimens/s-01-11-correct.html`: the count paragraph, its source line and the header comment
 - `work/build/guide/chapters/01-purpose.json`: Rule 01.11's correct and failure captions; the count's source in the chapter's source list
 - `work/build/guide/specimens/manifest-editor.json`: `s-01-11-correct`'s alt text and notes
+
+Round 2, after the coordinator's messages:
+- `work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json`: CL-064's sentence and CL-025's second sentence
+- `work/handoffs/phase-2/20261110_Reader-Check-2-Questions.md`: step 3's four symbols and their rows (DR-189), and the words to keep off the page
+- `work/build/guide/specimens/s-01-11-correct.html`, `work/build/guide/chapters/01-purpose.json`, `work/build/guide/specimens/manifest-editor.json`: Rule 01.11 after the research lead's round 2 notes (DR-187); Rule 01.21's caption and alt
+- `work/build/scripts/phase-2/guide_editor_ch01.py`: the same Rule 01.11 and Rule 01.21 strings, so a rebuild keeps them
+- `work/build/scripts/phase-2/guide_editor_build.py`: the BE-02 count check accepts a sourced count
 
 Scratch only, in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/ea3fc969-1fa2-5617-a502-a9fe32bb03e8/scratchpad/round-2/editor/`: the label build and check scripts, contact sheets, the built guide and its plate captures, and backups of the three chapter 01 files before my edits.
 

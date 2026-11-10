@@ -82,21 +82,21 @@ def specimens(ctx, rows, v7, figs):
     # ---------------------------------------------------------------- 12.5 the intervention marker (System 1's red target)
     reform = 'R-01'
     r01 = S1.RF[reform]
-    chain = [('C1', 'L08'), ('C2', 'L25'), ('C3', None)]
+    chain = [('C1', 'L08'), ('C2', None)]   # one connection at System 1's own length, about 240 px
     targets = set(r01['targets'])
-    figs['marker'] = {'reform': reform, 'targets': sorted(targets), 'links': ['L08', 'L25'],
+    figs['marker'] = {'reform': reform, 'targets': sorted(targets), 'shown': ['C1', 'L08', 'C2'],
                       'source': 'System 1 data: work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json'}
 
-    def chain_svg(mode, W=600):
+    def chain_svg(mode, W=552):
         """mode 'red': the reform's targets in Pillar Red at the selected weight, with the kit's Charcoal keyline on
         Newsprint; 'ink': the same marks yielded to ink (Rule 11.16); 'problem': the failure, red on the problem."""
-        pw, cy = 148, 64
-        xs = [2 + pw / 2, W / 2, W - 2 - pw / 2]
+        pw, cy = 150, 56
+        xs = [2 + pw / 2, W - 2 - pw / 2]
         out, h = [], []
         for n, (code, _) in enumerate(chain):
             svg, hh = S1.station_block(code, vname(code), xs[n], cy, pw, 'map')
             hit = code in targets and mode in ('red', 'ink')
-            red = (mode == 'red' and hit) or (mode == 'problem' and code == 'C3')
+            red = (mode == 'red' and hit) or (mode == 'problem' and code == 'C2')
             cls = 'node' + (' target' if hit or red else '') + (' red' if red else '')
             attrs = ' data-red="working" data-red-job="where a reform acts"' if mode == 'red' and hit else (
                 ' data-red="working" data-red-job="a problem"' if red else '')
@@ -131,31 +131,30 @@ def specimens(ctx, rows, v7, figs):
              # 1 px Charcoal keyline (a 6 px case under the 4 px mark, atlas-kit.css)
              '.red .ak-mark,.red .pl{stroke:var(--red)}.wire.red .hd{fill:var(--red)}'
              '.wire.red .ak-case{stroke:var(--oa-color-graphic-essential-on-newsprint);stroke-width:6px;stroke-dasharray:var(--d6,none)}')
-    note = (f'Reform {reform}, {r01["title"][0].lower() + r01["title"][1:]}, acts where the marks turn red: on both '
-            f'connections and on {vname("C2")}.')
-    note_ink = (f'Reform {reform} acts on the marks drawn heavier: both connections and {vname("C2")}. An error holds '
+    note = (f'Reform {reform}, {r01["title"][0].lower() + r01["title"][1:]}, acts where the marks turn red: here, on '
+            f'the connection and on {vname("C2")}.')
+    note_ink = (f'Reform {reform} acts on the marks drawn heavier: the connection and {vname("C2")}. An error holds '
                 'this view’s red.')
     html = (f'<p class="sec">In a view of its own: the working red</p>{chain_svg("red")}<p class="nt">{esc(note)}</p>'
             f'<p class="sec two">Beside an error or a step to take now: the same marks in ink</p>{chain_svg("ink")}'
             f'<p class="nt">{esc(note_ink)}</p>')
-    css = (k.vars() + T10.pad(600) if hasattr(T10, 'pad') else k.vars())
     css = (k.vars() + pad(24) + sec_css + '.sec.two{margin-top:28px}' + s1css +
            f'.nt{{margin:8px 0 0;{t("bodySmall")};max-width:34rem}}')
     spec('s-12-marker-correct', f'<style>{css}</style><div class="pad">{html}</div>', '12.5',
-         f'Two copies of a short chain from the atlas’s safe-seat loop, on Newsprint at 600 px. {vname("C1")} raises '
-         f'{vname("C2")}, which lowers {vname("C3")}, each connection drawn with its sign tag, its evidence line and its '
-         f'delay tick. In the first copy, reform {reform}’s marks are Pillar Red at a heavier weight: both connections, '
-         f'each with a thin Charcoal edge, and the outline of {vname("C2")}. A note under it reads: {note} In the second '
+         f'Two copies of one step from the atlas’s safe-seat loop, on Newsprint at 600 px: {vname("C1")} raises '
+         f'{vname("C2")}, the connection drawn with its sign tag, its evidence line and its delay tick. In the first '
+         f'copy, reform {reform}’s marks are Pillar Red at a heavier weight: the connection, with a thin Charcoal edge, '
+         f'and the outline of {vname("C2")}. A note under it reads: {note} In the second '
          f'copy the same marks are heavier but drawn in Charcoal, and the note says an error holds this view’s red.',
          width=600, notes='Marks, pills, tags, verbs and widths from System 1 (DR-36): targets at the selected weight '
                           '(4 px wires, 3 px pills), the lit marks at the 6 px sizes, and atlas-kit.css\'s 1 px Charcoal '
                           'keyline on a red wire on Newsprint. Names from the editor\'s label table (DR-185). The second '
                           'copy is Rule 11.16\'s yield.')
     fail_html = (f'{band}<div class="pad"><p class="sec">Where the problem is</p>{chain_svg("problem")}'
-                 f'<p class="nt">Red marks the problem: politicians who face little risk of losing office.</p></div>')
+                 f'<p class="nt">Red marks the problem: primaries that settle the seat before November.</p></div>')
     spec('s-12-marker-failure', f'<style>{band_css}{css}</style>{fail_html}', '12.5',
-         f'Labeled Failure case: do not publish. The same chain, with {vname("C3")} outlined in Pillar Red and a note that '
-         'says red marks the problem: politicians who face little risk of losing office. No reform is named.',
+         f'Labeled Failure case: do not publish. The same step, with {vname("C2")} outlined in Pillar Red and a note that '
+         'says red marks the problem: primaries that settle the seat. No reform is named.',
          width=600, exempt=['red'],
          notes='Labeled failure: red spent on a problem, which System 1 never does ("It never marks a problem or a bad '
                'step"), and a judgment in the note.')
@@ -207,9 +206,7 @@ def specimens(ctx, rows, v7, figs):
 
     key = ''.join(
         f'<li><svg class="sw" viewBox="0 0 14 14" width="14" height="14" aria-hidden="true" focusable="false">'
-        f'<defs><pattern id="kh" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">'
-        f'<rect width="5" height="5" class="pbg"/><line x1="0" y1="0" x2="0" y2="5" class="pln"/></pattern></defs>'
-        f'{mark(kind, 0, 0, 14, 14, "kh")}</svg><span><strong>{esc(word_)}</strong>, {esc(meaning)}</span></li>'
+        f'{mark(kind, 0, 0, 14, 14, "hatch")}</svg><span><strong>{esc(word_)}</strong>, {esc(meaning)}</span></li>'
         for word_, meaning, kind in GRADES)
     ccss = (k.vars() + pad(16) +
             f'.ttl{{margin:0 0 4px;font-family:var(--oa-font-family-display);font-weight:800;font-size:var(--oa-chart-type-title-phone-size);'
@@ -308,10 +305,10 @@ def specimens(ctx, rows, v7, figs):
     layers = [(k_, v) for k_, v in v7['layers'].items()]
     figs['layers'] = [{'id': k_, 'title': v['title'], 'regions': [r['title'] for r in v.get('regions', [])]} for k_, v in layers]
     W8 = 600
-    ox, dx, dy = 40, 150, 70          # an oblique plane: depth runs up and to the right
-    pw_, ph_ = 250, 1                 # plane width along x; planes stacked 120 px apart
+    ox, dx, dy = 16, 120, 60          # an oblique plane: depth runs up and to the right
+    pw_ = 200                         # plane width along x; planes stacked 130 px apart
     out, labels = [], []
-    tops = [70, 200, 330]
+    tops = [24, 154, 284]
 
     def plane(y, cls):
         p = [(ox, y + dy), (ox + pw_, y + dy), (ox + pw_ + dx, y), (ox + dx, y)]
@@ -334,9 +331,11 @@ def specimens(ctx, rows, v7, figs):
         lx = ox + pw_ + dx + 24
         title = lay['title']
         sub = ', '.join(r['title'] for r in regs)
-        labels.append(f'<text class="lt" x="{lx}" y="{f(y + 22)}">{esc(title)}</text>')
+        tl_ = S1.swrap(title, W8 - lx - 8, 'map')
+        for i_, ln in enumerate(tl_):
+            labels.append(f'<text class="lt" x="{lx}" y="{f(y + 22 + 19 * i_)}">{esc(ln)}</text>')
         for i_, ln in enumerate(S1.swrap(sub, W8 - lx - 8, 'note')):
-            labels.append(f'<text class="ls" x="{lx}" y="{f(y + 42 + 17 * i_)}">{esc(ln)}</text>')
+            labels.append(f'<text class="ls" x="{lx}" y="{f(y + 22 + 19 * len(tl_) + 4 + 17 * i_)}">{esc(ln)}</text>')
         labels.append(f'<line class="ld" x1="{f(ox + pw_ + dx + 4)}" y1="{f(y + 16)}" x2="{f(lx - 6)}" y2="{f(y + 16)}"/>')
     H8 = tops[-1] + dy + 24
     svg = (f'<svg class="lay" viewBox="0 0 {W8} {H8}" width="{W8}" height="{H8}" aria-hidden="true" focusable="false">'
@@ -377,20 +376,21 @@ def specimens(ctx, rows, v7, figs):
     # ---------------------------------------------------------------- 12.9 who owns the next step (V4.2's frame)
     steps = [
         ('You', 'Send a written request that describes the records you want to the agency’s records office.',
-         'The agency’s records office', 'Twenty working days to decide, from the day the request arrives.'),
-        ('The agency’s records office', 'Confirms the request with a tracking number, searches for the records and '
-         'reviews them, blacking out what an exemption protects.', 'The agency’s records office', None),
-        ('The agency’s records office', 'Sends a written answer with the records it can release.',
+         'The agency’s records office', 'Twenty working days to decide whether to release the records, from the day '
+         'the request arrives.'),
+        ('The agency’s records office', 'Confirms the request with a tracking number, searches for the records, reviews '
+         'them, blacking out what an exemption protects, and sends a written answer with the records it can release.',
          'You', 'At least 90 days to appeal a refusal or a partial answer.'),
         ('You', 'If you appeal, write to the agency’s appeal office.', 'The agency’s appeal office',
          'Twenty working days to decide the appeal.'),
+        ('The agency’s appeal office', 'Reviews the answer and decides whether to release more.', None, None),
     ]
     li = []
     for n, (who, what, nxt, clock) in enumerate(steps, 1):
         handoff = (f'<p class="ho"><span class="ar" aria-hidden="true">↓</span> Next step: <strong>{esc(nxt)}</strong>'
                    + (f'. {esc(clock)}' if clock else '') + '</p>') if n < len(steps) else (
-            '<p class="ho">After the appeal office answers, the next step is yours again: mediation by the National '
-            'Archives’ records ombudsman, or a lawsuit in federal court.</p>')
+            '<p class="ho"><span class="ar" aria-hidden="true">↓</span> Next step: <strong>You</strong>, again. Ask the '
+            'National Archives’ records ombudsman to mediate, or sue in federal court.</p>')
         li.append(f'<li><p class="n">{n}</p><div><p class="who">{esc(who)}</p><p class="what">{esc(what)}</p>{handoff}</div></li>')
     ocss = (k.vars() + f'.q{{margin:0 0 4px;{t("h4")}}}.qs{{margin:0 0 16px;{t("bodySmall")};color:var(--t2)}}'
             '.st{list-style:none;margin:0;padding:0;border-top:2px solid var(--strong)}'
@@ -399,7 +399,7 @@ def specimens(ctx, rows, v7, figs):
             f'.who{{margin:0;{t("ui")};font-weight:700}}.what{{margin:4px 0 0;{t("bodySmall")};max-width:34rem}}'
             f'.ho{{margin:8px 0 0;{t("caption")}}}.ar{{margin-right:4px}}'
             f'.src{{margin:14px 0 0;{t("caption")};color:var(--t2);max-width:40rem}}')
-    src = ('Source: 5 U.S.C. 552, the Freedom of Information Act, sections (a)(6)(A) and (a)(4)(B), and FOIA.gov, '
+    src = ('Source: 5 U.S.C. 552, the Freedom of Information Act, sections (a)(6)(A), (h)(3) and (a)(4)(B), and FOIA.gov, '
            '“Frequently Asked Questions”, Office of Information Policy, U.S. Department of Justice, both retrieved '
            'November 9, 2026. Federal agencies only; states set their own records laws.')
     html = (f'<p class="q">Who owns the next step?</p><p class="qs">A federal records request, from your letter to an '
@@ -409,8 +409,8 @@ def specimens(ctx, rows, v7, figs):
          'who acts, what they do, and who owns the next step, with the clock that runs. ' + ' '.join(
              f'Step {n}: {who}. {what} Next step: {nxt}.' + (f' {clock}' if clock else '')
              for n, (who, what, nxt, clock) in enumerate(steps[:-1], 1))
-         + f' Step 4: {steps[-1][0]}. {steps[-1][1]} After the appeal office answers, the next step is yours again: '
-           'mediation by the National Archives’ records ombudsman, or a lawsuit in federal court. ' + src,
+         + f' Step 4: {steps[-1][0]}. {steps[-1][1]} Next step: You, again. Ask the National Archives’ records ombudsman '
+           'to mediate, or sue in federal court. ' + src,
          readable=True, notes='V4.2\'s frame ("Give every handoff an owner."), with the clocks and routes from the '
                               'research notes, section 7A (5 U.S.C. 552(a)(6)(A), (a)(6)(A)(ii), (h)(3), (a)(4)(B)).')
     boxes = ['Request submitted', 'Request processed', 'Records reviewed', 'Response issued', 'Appeal considered']
@@ -458,7 +458,7 @@ def chapter(ctx, figs, existing):
             'measures 2.96 to 1 on Newsprint, so the Charcoal edge keeps the red line at 13.29 to 1 against the page.'],
             'basis': 'Design judgment, from the atlas’s visual system'},
         'correct': {'specimen': 's-12-marker-correct',
-                    'caption': 'Reform R-01 on a chain from the safe-seat loop: in red when it holds the view’s red, then '
+                    'caption': 'Reform R-01 on one step of the safe-seat loop: in red when it holds the view’s red, then '
                                'in ink when an error does.'},
         'failure': {'specimen': 's-12-marker-failure',
                     'caption': '<strong>Fails Rule 12.5.</strong> Red marks the problem, and the note calls it one. The '

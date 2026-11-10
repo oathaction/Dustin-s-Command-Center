@@ -117,12 +117,27 @@ SRC_R4A = ("Sources: Texas Legislature, H.B. 4, 89th Legislature, second called 
 SRC_R4A_TX = ("Sources: Texas Legislature, H.B. 4, 89th Legislature, second called session, bill history, August 2025; Texas. "
               "Oath & Action’s systems atlas, Loop R4a, case record, snapshot of October 15, 2026. Retrieved November 6, 2026. "
               "The five-seat aim is the majority’s stated goal; this line does not measure the seats the map produced.")
-# BE-02: no count of the loop's redraws by party exists in the research lead's reports, so the plate says what it shows and
-# claims no count. When the research lead counts the case record by the party of the majority that drew each map, a sourced
-# count line replaces R4A_SCOPE, in the cases' own form.
-R4A_SCOPE = ("Our systems atlas records more redraws for this loop in 2025 and 2026, among them Missouri’s 2025 map and the maps "
-             "four Southern states drew after a Supreme Court ruling of April 29, 2026. This plate shows two of them, one by each "
-             "party’s majority, and gives no count.")
+# BE-02, DR-149, DR-187: the count of the loop's 2025 and 2026 maps by the party that led each body, from the research lead's
+# stage B notes, section 3, and round 2 notes, section 5. The plate counts maps passed (DR-187). The number lives in R4A_SCOPE's
+# second sentence, the correct caption and SRC_R4A_COUNT's last sentence.
+R4A_SCOPE = ("Our systems atlas records eight new congressional maps passed between censuses in 2025 and 2026. "
+             "Republican-led legislatures or commissions passed seven, and California’s Democratic-led legislature passed "
+             "one, which voters approved. Missouri’s voters rejected their state’s map, one of the seven, on November 3, "
+             "2026, according to unofficial returns. Virginia’s Democratic-led legislature sought a ninth through a "
+             "constitutional amendment, and the state’s supreme court voided the April 21, 2026 vote that approved it.")
+# Missouri's figures are unofficial until the state certifies them; swap in the certified statement before Phase 5.
+SRC_R4A_COUNT = ("Source for the count: Oath & Action’s systems atlas, Who Do They Answer To?, its records for Loop R4a and its "
+                 "log of rule changes, snapshot of October 15, 2026; congressional maps passed between censuses, January 2025 to "
+                 "October 2026; United States. Retrieved November 10, 2026. We counted each map by the party that led the "
+                 "legislature or commission when it passed, from each body’s own member lists and minutes. Ohio’s redistricting "
+                 "commission, five Republicans and two Democrats, adopted its map 7 to 0 on October 31, 2025, the deadline the "
+                 "state constitution set, and the constitution required at least two votes from each party’s members. Missouri’s "
+                 "vote came after the snapshot. Its figures are unofficial statewide returns for Proposition A, November 3, "
+                 "2026, 1,273,815 no and 785,969 yes, from St. Charles County, Missouri, “Voters Turn Out for 2026 Midterm "
+                 "Election in St. Charles County”, sccmo.org, November 4, 2026; the state certifies the count after local "
+                 "election authorities file theirs by November 17, 2026. A law sent to Missouri’s voters takes effect only if "
+                 "they approve it, so the state keeps its 2022 districts. A court adopted Utah’s map, so the count leaves it "
+                 "out. The count measures maps passed and says nothing about the seats they moved.")
 SRC_PAY = ("Sources: Anna M. Stansbury and Lawrence H. Summers, Harvard University, “Productivity and Pay: Is the Link "
            "Broken?”, National Bureau of Economic Research Working Paper 24165, December 2017, 1973 to 2016, United States; "
            "Economic Policy Institute, “The Productivity-Pay Gap”, 1979 to 2026, United States. Retrieved November 6, 2026. "
@@ -1019,16 +1034,16 @@ def build(book):
         "why": {"text": [RULE_11_WHY],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-11-correct", f'<div class="ed">{lead11}<div class="cases"><div><p class="st">Texas</p><p>{e(tx)}</p></div>'
-                                                     f'<div><p class="st">California</p><p>{e(ca)}</p></div></div><p class="scope">{e(R4A_SCOPE)}</p><p class="src">{e(SRC_R4A)}</p></div>',
+                                                     f'<div><p class="st">California</p><p>{e(ca)}</p></div></div><p class="scope">{e(R4A_SCOPE)}</p><p class="src">{e(SRC_R4A)}</p><p class="src">{e(SRC_R4A_COUNT)}</p></div>',
                                   css=(BASE, CHART, CASES), rule="01.11",
-                                  alt=f"Loop R4a, the map-drawing loop. Two cases in the same form and at the same length. Texas: {tx} California: {ca} {R4A_SCOPE} {SRC_R4A}",
-                                  notes="BE-S1, CP-M5: both cases in one form, as the research lead's fix pass report sets them (task 3), with its source line. Both aims are each side's stated goal: Texas's stay application, and the California three-judge court's finding."),
-                    "caption": f"Each case names the month, the majority that acted and the seats its map aimed at, then the last step its state required, in {words(tx)} words. Texas’s map became law with the governor’s signature; California’s needed a constitutional amendment only voters could approve. The line under the cases keeps the plate to what it shows: two of the loop’s redraws, with no count."},
+                                  alt=f"Loop R4a, the map-drawing loop. Two cases in the same form and at the same length. Texas: {tx} California: {ca} {R4A_SCOPE} {SRC_R4A} {SRC_R4A_COUNT}",
+                                  notes="BE-S1, CP-M5: both cases in one form, as the research lead's fix pass report sets them (task 3), with its source line. Both aims are each side's stated goal: Texas's stay application, and the California three-judge court's finding. DR-149: the count and its source line follow the research lead’s stage B notes, section 3, with Missouri’s November 3, 2026 result, Ohio’s 7 to 0 commission vote and Virginia’s voided vote from the research lead’s round 2 notes (D2-777, D2-778)."),
+                    "caption": f"Each case names the month, the majority that acted and the seats its map aimed at, then the last step its state required, in {words(tx)} words. Texas’s map became law with the governor’s signature; California’s needed a constitutional amendment only voters could approve. Under the cases, the plate counts the maps in the atlas’s record by the party that led each, seven to one. It names the two maps that voters decided, California’s and Missouri’s, and Virginia’s attempt, which a court voided. Its source line gives Ohio’s 7 to 0 commission vote and the status of Missouri’s count."},
         "failure": {"specimen": A("s-01-11-failure", f'<div class="ed">{dnp()}{lead11}<div class="cases"><div><p class="st">Texas</p><p>{e(tx)}</p></div></div><p class="src">{e(SRC_R4A_TX)}</p></div>',
                                   css=(BASE, CHART, CASES), rule="01.11",
                                   alt=f"{FC}The same loop with only the Texas case: {tx} {SRC_R4A_TX}",
                                   notes="CD-N13: the Texas sources alone, as a piece that dropped California would print them, under the band D2-308 asks of a plate that could pass for our work."),
-                    "caption": "The record holds a case from each party, so a piece that shows Texas alone drops a finding, and the loop reads as a charge against one party."},
+                    "caption": "A piece that shows Texas alone drops California’s case and the count, and hides from the reader that both parties’ majorities redrew maps and how often each did."},
         "related": ["15", "13"],
         "builders": ("Before a piece runs a mechanism, count the atlas’s case records for that loop by the party of the majority, and print "
                      "the counts with their source when one party leads. Pick one case from each party that uses the mechanism, and "
@@ -1273,11 +1288,11 @@ def build(book):
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-21-correct", kl_ok, css=(BASE, KCSS2), rule="01.21",
                                   alt="Seven kickers, one per content label, each over a headline. Explainer, utility rates: Why is my electric bill going up? "
-                                      f"Tracker, Congress: {HR7008_TRACKER}. Analysis, productivity, with the Productivity topic icon, a worker at a desk beside a clock, directly before the word Productivity: Does pay rise with productivity? Report, state legislatures, "
+                                      f"Tracker, Congress: {HR7008_TRACKER}. Analysis, workers’ share of income, with its topic icon, a person in the wedge cut from a circle, directly before those words: Does pay rise with productivity? Report, state legislatures, "
                                       "illustrative. Guide, Field Notes, illustrative. Act, how to take part, illustrative. Our position, committee votes, "
                                       "in a Charcoal label, illustrative. The four invented headlines carry the Illustrative label."),
                     "caption": ("Each kicker opens with its label and adds at most a series or a topic. The Analysis kicker holds the one picture a "
-                                "kicker may carry, the Productivity icon beside its own word. Only “Our position” takes the Charcoal fill, and the "
+                                "kicker may carry, the icon for workers’ share of income beside its own words. Only “Our position” takes the Charcoal fill, and the "
                                 "first three headlines are real, so the label sits beside each invented one. “Act · How to take part” is one label, so its "
                                 "dot and both its words belong to the label.")},
         "failure": {"specimen": A("s-01-21-failure", kl_bad, css=(BASE, KCSS2), rule="01.21",
@@ -1418,7 +1433,7 @@ def build(book):
          "line": "Tell a reader what kind of piece they are reading, and name each product for what it does."},
     ]
 
-    sources = [SRC_STOCK_SURVEY, SRC_STOCK_VOTES, SRC_INITIATIVE, SRC_FEC, SRC_R4A, SRC_MINWAGE, SRC_PAY, SRC_CLOTURE, SRC_ELECTRIC,
+    sources = [SRC_STOCK_SURVEY, SRC_STOCK_VOTES, SRC_INITIATIVE, SRC_FEC, SRC_R4A, SRC_R4A_COUNT, SRC_MINWAGE, SRC_PAY, SRC_CLOTURE, SRC_ELECTRIC,
                "Our brand guide, fifth edition, chapter 13 In use: “Who wrote the rule you are angry about?”"]
 
     data = {

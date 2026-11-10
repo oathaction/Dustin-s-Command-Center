@@ -1044,5 +1044,96 @@
   "illustrative": false,
   "notes": "A readable table (D2-255). Step 6 is named for whoever signs (DR-128).",
   "readable": true
+ },
+ "s-12-key-correct": {
+  "chapter": "12",
+  "rule": "12.6",
+  "width_px": 358,
+  "alt": "An Illustrative chart on a 358 px phone. Its title reads Most claims in these three chapters rest on the record, and its measure line reads Claims in each chapter of a report, by the grade of their evidence. Above the plot, a key names the five grades in the order their segments run, each with a swatch drawn in the chart’s own mark: Documented, on the public record, solid ink; Well supported, strong research evidence, gray; Plausible, some evidence, light gray; Contested, evidence disputed, a hatch; Hypothesis, not yet tested, a dotted outline. Three stacked bars follow, each named at its left and with its total at its end: Wages 15, Housing 13, Elections 11.",
+  "illustrative": true,
+  "notes": "Grade marks from the chart system's GRADE_TABLE (01 Explainer, DR-52), colors and line weights from the chart tokens; key swatches 14 px with a 7 px gap, as the chart system's key_item draws them."
+ },
+ "s-12-key-failure": {
+  "chapter": "12",
+  "rule": "12.6",
+  "width_px": 358,
+  "alt": "Labeled Failure case: do not publish. The same Illustrative chart titled Claims by grade, with no measure line and no totals, its segments in five blues and greens. A boxed legend sits under the plot at the right, listing the grades from Hypothesis to Documented, the reverse of the bars, each beside a small colored dot.",
+  "illustrative": true,
+  "notes": "Labeled failure: a detached legend in reverse order, dots that match no mark, hue alone for the grades (Prussian and Verdigris tie in grayscale), no unit.",
+  "check_exempt": [
+   "contrast"
+  ]
+ },
+ "s-12-layers-correct": {
+  "chapter": "12",
+  "rule": "12.8",
+  "width_px": 600,
+  "alt": "An exploded view of our systems atlas at 600 px: three flat planes stacked one above another and drawn at a slant, joined by dotted ties. Each plane carries one tile for each of its parts, and each name sits flat and upright to the right of its plane, never on the slant. From the top: Power and accountability, holding Economic structure, Political inputs, Electoral competition, Governing institutions, Legitimacy, Outside drivers; How the economy reaches a household, holding Production and income, Household budgets and wealth, Credit, trade and environment; Technology and its effects, holding Technology mechanisms. The top plane, the core, has the heavier outline.",
+  "illustrative": false,
+  "notes": "Layers, titles and regions read from the atlas model; the slant is the one place an exploded view is allowed (isometric study 03).",
+  "height_px": 368
+ },
+ "s-12-layers-failure": {
+  "chapter": "12",
+  "rule": "12.8",
+  "width_px": 600,
+  "alt": "Labeled Failure case: do not publish. The same three planes with no parts and no ties, each layer’s name set inside its plane, turned and slanted to follow the plane, so every name reads at an angle.",
+  "illustrative": false,
+  "notes": "Labeled failure: labels on the oblique, which the exploded view never takes."
+ },
+ "s-12-locator-correct": {
+  "chapter": "12",
+  "rule": "12.7",
+  "width_px": 360,
+  "alt": "Two view headers on a 360 px phone, each with a small locator at its right, drawn in ink. The first, from the atlas, reads Overview, Elections, over the title How safe seats move the real choice to the primary; its locator is the atlas in small, a bar for outside forces, five boxes for its parts and two boxes below, with the third box, Elections, filled Charcoal. The second, a state story, reads Tracker, Nebraska, over the title Nebraska has one chamber, so a bill’s fifth step never comes; its locator is the 50-state tile grid with Nebraska filled Charcoal and every other state light gray.",
+  "illustrative": false,
+  "notes": "The atlas locator is System 1's locator() geometry (DR-36), redrawn on Newsprint (DR-53); the state grid is the chart system's tile grid. Nebraska's line is Rule 11's (DR-150)."
+ },
+ "s-12-locator-failure": {
+  "chapter": "12",
+  "rule": "12.7",
+  "width_px": 360,
+  "alt": "Labeled Failure case: do not publish. The atlas view header, with the locator’s current box, Elections, filled Pillar Red.",
+  "illustrative": false,
+  "notes": "Labeled failure: the locator spends the view's red on \"you are here\", which takes it from the reform target, the error or the ask (Rule 05.3, Rule 11.16).",
+  "check_exempt": [
+   "red"
+  ]
+ },
+ "s-12-marker-correct": {
+  "chapter": "12",
+  "rule": "12.5",
+  "width_px": 600,
+  "alt": "Two copies of one step from the atlas’s safe-seat loop, on Newsprint at 600 px: Safe seats raises Primary decisiveness, the connection drawn with its sign tag, its evidence line and its delay tick. In the first copy, reform R-01’s marks are Pillar Red at a heavier weight: the connection, with a thin Charcoal edge, and the outline of Primary decisiveness. A note under it reads: Reform R-01, all-party primaries with ranked general elections, acts where the marks turn red: here, on the connection and on Primary decisiveness. In the second copy the same marks are heavier but drawn in Charcoal, and the note says an error holds this view’s red.",
+  "illustrative": false,
+  "notes": "Marks, pills, tags, verbs and widths from System 1 (DR-36): targets at the selected weight (4 px wires, 3 px pills), the lit marks at the 6 px sizes, and atlas-kit.css's 1 px Charcoal keyline on a red wire on Newsprint. Names from the editor's label table (DR-185). The second copy is Rule 11.16's yield."
+ },
+ "s-12-marker-failure": {
+  "chapter": "12",
+  "rule": "12.5",
+  "width_px": 600,
+  "alt": "Labeled Failure case: do not publish. The same step, with Primary decisiveness outlined in Pillar Red and a note that says red marks the problem: primaries that settle the seat. No reform is named.",
+  "illustrative": false,
+  "notes": "Labeled failure: red spent on a problem, which System 1 never does (\"It never marks a problem or a bad step\"), and a judgment in the note.",
+  "check_exempt": [
+   "red"
+  ]
+ },
+ "s-12-owner-correct": {
+  "chapter": "12",
+  "rule": "12.9",
+  "width_px": null,
+  "alt": "A frame titled Who owns the next step?, for a federal records request, in four numbered steps. Each step names who acts, what they do, and who owns the next step, with the clock that runs. Step 1: You. Send a written request that describes the records you want to the agency’s records office. Next step: The agency’s records office. Twenty working days to decide whether to release the records, from the day the request arrives. Step 2: The agency’s records office. Confirms the request with a tracking number, searches for the records, reviews them, blacking out what an exemption protects, and sends a written answer with the records it can release. Next step: You. At least 90 days to appeal a refusal or a partial answer. Step 3: You. If you appeal, write to the agency’s appeal office. Next step: The agency’s appeal office. Twenty working days to decide the appeal. Step 4: The agency’s appeal office. Reviews the answer and decides whether to release more. Next step: You, again. Ask the National Archives’ records ombudsman to mediate, or sue in federal court. Source: 5 U.S.C. 552, the Freedom of Information Act, sections (a)(6)(A), (h)(3) and (a)(4)(B), and FOIA.gov, “Frequently Asked Questions”, Office of Information Policy, U.S. Department of Justice, both retrieved November 9, 2026. Federal agencies only; states set their own records laws.",
+  "illustrative": false,
+  "notes": "V4.2's frame (\"Give every handoff an owner.\"), with the clocks and routes from the research notes, section 7A (5 U.S.C. 552(a)(6)(A), (a)(6)(A)(ii), (h)(3), (a)(4)(B)).",
+  "readable": true
+ },
+ "s-12-owner-failure": {
+  "chapter": "12",
+  "rule": "12.9",
+  "width_px": 360,
+  "alt": "Labeled Failure case: do not publish. A flow chart titled How a records request works: five boxes joined by arrows, reading Request submitted, Request processed, Records reviewed, Response issued and Appeal considered, with no one named in any box and no clock.",
+  "illustrative": false,
+  "notes": "Labeled failure: every step in the passive voice, so no step says who acts or whom to call."
  }
 }
