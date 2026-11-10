@@ -1,1 +1,338 @@
-{"status":"in progress"}
+{
+  "title": "Creative director's scores for stage B round 3, chapters 09 to 12",
+  "date": "2026-11-10",
+  "author": "Creative director (oa-creative-director), subagent of the main session",
+  "basis": "20261110_Stage-B-Round-3-Brief.md; Master Brief section 6 rubric; the frozen chapters page from commit ddd3a898 (D2-955)",
+  "review": "work/handoffs/phase-2/20261110_CD-Review-Of-Stage-B-Chapters.md",
+  "threshold": "4 on every criterion; an item is ready when every score is 4 or more and it has no Must fix",
+  "criteria": [
+    {
+      "key": "craft",
+      "name": "Craft"
+    },
+    {
+      "key": "clarity",
+      "name": "Clarity"
+    },
+    {
+      "key": "brand_fidelity",
+      "name": "Brand fidelity"
+    },
+    {
+      "key": "usefulness",
+      "name": "Usefulness"
+    },
+    {
+      "key": "evidence_honesty",
+      "name": "Evidence honesty"
+    },
+    {
+      "key": "accessibility",
+      "name": "Accessibility"
+    }
+  ],
+  "items": [
+    {
+      "key": "ch09",
+      "name": "Chapter 09, Pillar icons",
+      "anchor": "#pillar-icons",
+      "scores": {
+        "craft": 4,
+        "clarity": 4,
+        "brand_fidelity": 5,
+        "usefulness": 4,
+        "evidence_honesty": 4,
+        "accessibility": 4
+      },
+      "reasons": {
+        "craft": "The rows, the size ladder and the enlarged fits are exact at 1x and 2x, with the 24 px fit on 1x and the master on 2x as DR-179 set; the phone column trails its down arrows after each word at three different x positions.",
+        "clarity": "Four rules in the order a builder needs them (row, current pillar, file, places); the first screen at 1440 px shows no pillar icon, so a newcomer meets the drawings only after the opener.",
+        "brand_fidelity": "The masters sit verbatim, the order never breaks, red appears only on the current icon from 48 px and never on Prussian, and the Track opener with \"Watch the vote.\" reads as Oath & Action with the wordmark covered.",
+        "usefulness": "Every size names its file, its token and the two-`<use>` markup, and the four places are listed with their sizes.",
+        "evidence_honesty": "Each basis says design judgment or our measurements, and the opener's invented line carries Illustrative.",
+        "accessibility": "The underline marks the current pillar at every size, `aria-current` carries it to screen readers, and the arrows are hidden from them; I did not run a screen reader."
+      },
+      "lowest": 4,
+      "must_fix_count": 0,
+      "should_fix_count": 1,
+      "must_fix": [],
+      "should_fix": [
+        "S1"
+      ],
+      "ready": true,
+      "to_ready": "Ready as it stands. S1 is the one Should fix."
+    },
+    {
+      "key": "ch10",
+      "name": "Chapter 10, Topic and atlas symbols",
+      "anchor": "#symbols",
+      "scores": {
+        "craft": 4,
+        "clarity": 4,
+        "brand_fidelity": 4,
+        "usefulness": 4,
+        "evidence_honesty": 4,
+        "accessibility": 4
+      },
+      "reasons": {
+        "craft": "The construction plate, the capped fit and the size ladder are exact, and the contact sheets carry 2x pixels; at 24 px on a 1x screen the 37 drawings draw a gray line (in the 18 I measured, 16 never darken past 44 to 93 on a 0 to 255 scale, where Charcoal is 18), which DR-136 settles and Question 2 raises.",
+        "clarity": "The class table and the five groups tell a builder where to look, though the class table's atlas example, Entrenched majority control, is the least legible drawing in the set at 48 px.",
+        "brand_fidelity": "Red only standing alone or current, editions matched to surfaces with none red on Prussian, and the family reads as one hand from CL-001 to R-50.",
+        "usefulness": "The list of 41 by ID, the inventory, the likeness test's command and the System 1 constants for encoding glyphs let a builder act without asking.",
+        "evidence_honesty": "Labels follow DR-185, R-35 keeps Rejected, and the likeness figures say how they were measured; Rule 10.4's \"a reviewer\" leaves the actor unnamed.",
+        "accessibility": "Every drawing sits beside its word and is hidden from screen readers, and each sheet's 124 meanings sit in one closed list, one Tab stop a category."
+      },
+      "lowest": 4,
+      "must_fix_count": 0,
+      "should_fix_count": 3,
+      "must_fix": [],
+      "should_fix": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "ready": true,
+      "to_ready": "Ready as it stands. Question 2 asks Dustin about pixel fits for the 37 symbols set at 24 px."
+    },
+    {
+      "key": "ch11",
+      "name": "Chapter 11, Status and utility icons",
+      "anchor": "#icons",
+      "scores": {
+        "craft": 3,
+        "clarity": 4,
+        "brand_fidelity": 4,
+        "usefulness": 4,
+        "evidence_honesty": 4,
+        "accessibility": 4
+      },
+      "reasons": {
+        "craft": "The trackers and the 18 utility icons are finished work, but the report reader's page is three gray bars, one headline breaks \"all-party\" at its hyphen, and the three message marks carry their Illustrative label down in the caption.",
+        "clarity": "Four groups that each teach one system, with the bill, request and rule trackers sharing one set of marks a reader learns once.",
+        "brand_fidelity": "Rule 11.16's order of red claims holds in every plate, and the take-part disc, the ask and the error never share a view's red.",
+        "usefulness": "Sizes, tokens, markup and five live components a developer can lift; Rules 11.15 and 11.16 list `--oa-color-state-error-mark-on-newsprint` as #E63946 beside a sentence that draws the mark in ink.",
+        "evidence_honesty": "Every invented bill, request and rule is numbered from 99001 and labeled, and FOIA and rulemaking carry their sources; the hearing sentence in Rule 11.1 prints no source, though the research lead found five.",
+        "accessibility": "Shape and word for every state, 44 px targets, and live components built for the guide check's keyboard, name and forced colors tests (D2-949); I ran no keyboard pass of my own."
+      },
+      "lowest": 3,
+      "must_fix_count": 1,
+      "should_fix_count": 5,
+      "must_fix": [
+        "M1"
+      ],
+      "should_fix": [
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9"
+      ],
+      "ready": false,
+      "to_ready": "Craft lifts to 4 once M1 lands (real text and twelve headings in the report reader) with S5 and S6."
+    },
+    {
+      "key": "ch12",
+      "name": "Chapter 12, Graphic devices and patterns",
+      "anchor": "#graphic-devices",
+      "scores": {
+        "craft": 4,
+        "clarity": 4,
+        "brand_fidelity": 4,
+        "usefulness": 4,
+        "evidence_honesty": 3,
+        "accessibility": 4
+      },
+      "reasons": {
+        "craft": "The owner frame, the marker and the layer diagram are well made; the watermark's crop leaves a small sliver of B's terminal at the frame's edge, and the two pattern covers stand in a column with about 200 px empty beside them.",
+        "clarity": "The device index after Rule 12.1 tells a builder where every device lives, and each rule names the reader's job the device does.",
+        "brand_fidelity": "One working red for the marker, no pattern on Prussian and no red pattern; the two hinge patterns are restrained but read as stock arcs and stripes with the wordmark covered.",
+        "usefulness": "Each device names its build function, its file and its sizes; Rule 12.5's tokens list two Charcoal values and no red, for the one rule about red.",
+        "evidence_honesty": "Rule 12.6's correct plate titles its invented chart \"Most claims in these three chapters rest on the record\" over bars where 17 of 39 claims are documented, and Rule 12.7's two invented headlines carry no Illustrative label.",
+        "accessibility": "Grades tell apart in gray by shade, hatch and dotted outline, every device carries its words, and the marker yields to ink with its note; I did not test the plates with a screen reader."
+      },
+      "lowest": 3,
+      "must_fix_count": 1,
+      "should_fix_count": 4,
+      "must_fix": [
+        "M2"
+      ],
+      "should_fix": [
+        "S10",
+        "S11",
+        "S12",
+        "S13"
+      ],
+      "ready": false,
+      "to_ready": "Evidence honesty lifts to 4 once M2 lands (a title the chart's counts hold) with S13's Illustrative labels."
+    },
+    {
+      "key": "group",
+      "name": "Changed parts of chapters 01, 03, 04, 05 and 08",
+      "scope": "Rule 01.11's plate and source lines, Rule 01.21, s-01-pillars and s-01-21-*; the end mark's fit, the rebuilt lockmark masters and L6 centered in chapters 03 and 04; s-05-3-corrective; s-08-3-* and the masthead menu glyph",
+      "scores": {
+        "craft": 4,
+        "clarity": 4,
+        "brand_fidelity": 3,
+        "usefulness": 4,
+        "evidence_honesty": 4,
+        "accessibility": 4
+      },
+      "reasons": {
+        "craft": "The end mark covers the capital's rows exactly at 1x, the rebuilt lockmarks and L6 centered match their approvals, and the pillar row in chapter 01 matches chapter 09 to the pixel.",
+        "clarity": "Rule 01.21 now shows a topic symbol from the 41 beside its own words; Rule 01.11's count source runs 17 lines of small gray text, longer than the cases it supports.",
+        "brand_fidelity": "`s-05-3-corrective` draws the error as a white cross in a red disc, the sign for Close, against DR-173 (already D2-881).",
+        "usefulness": "`s-08-3-*` draws S.99002 on chapter 11's geometry, and the masthead's Menu uses the approved glyph with its word.",
+        "evidence_honesty": "Rule 01.11 prints DR-187's count with every map's source, names Missouri's figures as unofficial and says what the count does not measure.",
+        "accessibility": "The masthead's Menu keeps a 44 px target and its word, and the kicker icon is hidden beside its words."
+      },
+      "lowest": 3,
+      "must_fix_count": 0,
+      "should_fix_count": 2,
+      "must_fix": [],
+      "should_fix": [
+        "S14",
+        "S15"
+      ],
+      "known_fix_list_items": [
+        "D2-881: s-05-3-corrective draws the error as a cross in a disc"
+      ],
+      "ready": false,
+      "to_ready": "Brand fidelity lifts to 4 once D2-881, already on the fix list, redraws s-05-3-corrective with the approved error mark."
+    }
+  ],
+  "shell_should_fix": [
+    "S16"
+  ],
+  "totals": {
+    "must_fix": 2,
+    "should_fix": 16,
+    "questions_for_dustin": 2,
+    "ready": [
+      "ch09",
+      "ch10"
+    ],
+    "not_ready": [
+      "ch11",
+      "ch12",
+      "group"
+    ]
+  },
+  "must_fix": {
+    "M1": {
+      "where": "Chapter 11, Rule 11.11, s-11-11-correct",
+      "what": "The report reader prints its page heading over three empty gray bars standing in for text, which Master Brief section 6 rules out (\"no grey boxes\"), and cycles four headings through twelve pages.",
+      "fix": "Set two or three real lines of the report text under each heading, Illustrative like the rest of the piece, and give each of the twelve pages its own heading or make the report four pages long.",
+      "owner": "Chapter 11 hand (words: Editor)"
+    },
+    "M2": {
+      "where": "Chapter 12, Rule 12.6, s-12-key-correct",
+      "what": "The title \"Most claims in these three chapters rest on the record\" sits over bars where 17 of 39 claims are Documented, so the title claims a majority its chart does not show (H08).",
+      "fix": "Retitle to \"Most claims in these three chapters are documented or well supported\" (28 of 39), or change the invented counts so Documented holds a majority; update the alt to match.",
+      "owner": "Systems designer (words: Editor)"
+    }
+  },
+  "should_fix": {
+    "S1": {
+      "where": "Chapter 09, `s-09-phone` and the phone row in `s-09-1-correct`",
+      "what_and_fix": "In the stacked 48 px column each down arrow follows its word, so the arrows sit at three x positions (\"Explain ↓\", \"Track ↓\", \"Connect ↓\") and point at nothing. Set each arrow in the icon column, centered under its icon between rows, or in one column at a fixed x after the longest word.",
+      "owner": "Identity designer"
+    },
+    "S2": {
+      "where": "Chapter 10, Rule 10.1, `s-10-1-correct`",
+      "what_and_fix": "The atlas symbol example is CL-014 Entrenched majority control, whose fence, chamber, ballot and bar crowd into noise at 48 px. Use a variable that reads at 48 px, such as CL-009 Safe seats, Variable C1, which Rule 10.8 already shows.",
+      "owner": "Systems designer"
+    },
+    "S3": {
+      "where": "Chapter 10, Rule 10.9, `s-10-9-failure`",
+      "what_and_fix": "The card's kicker reads \"ACT\" alone. Rule 01.21 lists \"A pillar name alone\" under \"Never a kicker\", and its label is \"Act · How to take part\", so the plate teaches a second fault it does not name. Set the kicker as \"Act · How to take part\" and keep the Public meeting drawing at 48 px beside its word, so the plate fails Rule 10.9 only.",
+      "owner": "Systems designer (words: Editor)"
+    },
+    "S4": {
+      "where": "Chapter 10, the five library sheets",
+      "what_and_fix": "An atlas ID prints as plain gray text (\"Variable B3\") while the \"24 px\" tag beneath it takes the boxed chip, so the size tag looks like the typed chip that Rules 10.6 and 10.8 draw for IDs. Box the atlas ID as Rules 10.6 and 10.8 do (D2-756), and set the 24 px tag as plain small text or a different form.",
+      "owner": "Systems designer"
+    },
+    "S5": {
+      "where": "Chapter 11, Rule 11.16, `s-11-16-correct` and `s-11-16-failure`",
+      "what_and_fix": "The headline breaks \"The House hears the all- / party primary bill on March 3\" at its hyphen, and the email error leaves \"@,\" to open its second line. Set \"all-party\" with a non-breaking hyphen (U+2011), as D2-950 does for IDs, and rewrap the error message.",
+      "owner": "Chapter 11 hand"
+    },
+    "S6": {
+      "where": "Chapter 11, the extra after Rule 11.15, `s-11-marks`",
+      "what_and_fix": "The Illustrative chip sits in the caption outside the plate, and the caption's second line hangs under it at the left edge. Put the chip at the head of the plate, as every other invented plate in the chapter does.",
+      "owner": "Chapter 11 hand"
+    },
+    "S7": {
+      "where": "Chapter 11, Rules 11.15 and 11.16, tokens and specifications",
+      "what_and_fix": "Both rules list `--oa-color-state-error-mark-on-newsprint` #E63946 while Rule 11.15 says the error mark draws in the text's ink and the token colors only the 4 px bar. A developer who reads the token list colors the mark red. Until Gate 2 settles the token's name (D2-880), label the line \"the red bar\" in both specifications and list `--oa-color-state-error-text-on-newsprint` as the mark's ink.",
+      "owner": "Chapter 11 hand, with the Engineer at Gate 2"
+    },
+    "S8": {
+      "where": "Chapter 11, Rule 11.1 and the six steps table",
+      "what_and_fix": "\"Many state legislatures take testimony from the public there\" prints no source. The research lead read five legislatures' own pages for this sentence (research notes of November 9, section 4, D2-423), and none appears in the chapter's sources. Add their source line after the Nebraska line.",
+      "owner": "Chapter 11 hand, with the Research lead"
+    },
+    "S9": {
+      "where": "Chapter 11, Rule 11.14, the live loop stepper, correct and failure",
+      "what_and_fix": "Its visible start text says \"Press Play, or Next step to follow one link at a time.\" The editor's table fixes \"link\" in the alt only (D2-926). Make the visible text \"one connection at a time\" in both plates too.",
+      "owner": "Editor (applied by the Chapter 11 hand)"
+    },
+    "S10": {
+      "where": "Chapter 12, Rule 12.2, `s-12-watermark-correct`",
+      "what_and_fix": "On both covers the crop leaves a sliver of B's tail terminal, about 18 by 25 px, standing alone at the right edge, where it reads as a stray rectangle. Move B so the frame cuts the terminal off whole or keeps it whole, on both surfaces.",
+      "owner": "Identity designer"
+    },
+    "S11": {
+      "where": "Chapter 12, Rules 12.2 and 12.4, `s-12-watermark-failure` and `s-12-pattern-failure`",
+      "what_and_fix": "The Illustrative chip sits in the caption, where it opens the caption's sentence, while Rule 09.4's failure and Rule 12.1's failure carry it inside the plate under the band. Put it inside the plate.",
+      "owner": "Identity designer"
+    },
+    "S12": {
+      "where": "Chapter 12, Rule 12.5",
+      "what_and_fix": "The rule about the red target lists only `--oa-color-data-emphasis-on-newsprint` and `--oa-color-graphic-essential-on-newsprint`, both #121212. Add the red's token, `--oa-color-data-emphasis-red-on-newsprint` (#E63946), to the tokens and to the \"Target weight\" specification.",
+      "owner": "Systems designer"
+    },
+    "S13": {
+      "where": "Chapter 12, Rule 12.7, `s-12-locator-correct` and its failure",
+      "what_and_fix": "\"How safe seats move the real choice to the primary\" and \"Nebraska has one chamber, so a bill's fifth step never comes\" are headlines of pieces that do not exist, and neither carries Illustrative. Rule 01.21's plate labels each invented headline, so these take the label too.",
+      "owner": "Systems designer"
+    },
+    "S14": {
+      "where": "Chapter 01, Rule 01.11, `s-01-11-correct`",
+      "what_and_fix": "\"Source for the count\" runs to 17 lines and holds the method, Ohio's vote, Missouri's figures and Utah's exclusion. Keep the source line to H04's order (publisher, title, period, geography, retrieved, the one qualification), and move \"We counted each map...\" with Ohio, Missouri and Utah into a short note headed \"How we counted\" under it, with every fact kept as DR-187 sets it.",
+      "owner": "Editor"
+    },
+    "S15": {
+      "where": "Chapter 01, `s-01-pillars`",
+      "what_and_fix": "Its label reads \"On a section opener that serves Track, at 48 px\", while Rule 09.4 puts the icon on a section opener at 128 px. Call the row \"On a page that serves Track, at 48 px\", matching chapter 09's \"A section that serves Track\".",
+      "owner": "Editor"
+    },
+    "S16": {
+      "where": "The shell, chapters 09 and 10",
+      "what_and_fix": "At 1440 px the first screen of \"Pillar icons\" and of \"Topic and atlas symbols\" shows no drawing; the first one appears after the index. At the shell's last pass, allow an opener figure under the intro, and set the pillar row in 09 and a strip of a library sheet in 10. Chapters 01 to 08 open with words alone, so this is a shell option, for stage C.",
+      "owner": "Engineer, with the Identity designer (09) and the Systems designer (10)"
+    }
+  },
+  "questions_for_dustin": [
+    {
+      "id": "Q1",
+      "decision": "D2-730",
+      "question": "Redraw the 16 px Pause and Filter (20261110_Utility-Pause-16px.svg and 20261110_Utility-Filter-16px.svg, DR-171 and DR-169)? On 1x screens the inside of each Pause bar and of the Filter spout draws gray, because each opening is one pixel wide and straddles two.",
+      "recommendation": "Yes, the 16 px files only: widen Pause bars and the Filter spout from 4 to 5 px so each opening keeps one whole open pixel, shown beside the approved files at 16 px on 1x and 2x for approval by name at stage C. The 24 px files stay. No page places either at 16 px yet."
+    },
+    {
+      "id": "Q2",
+      "decision": "DR-136",
+      "question": "Pixel fits for the 37 topic and atlas symbols that may be set at 24 px? On 1x screens their 0.63 px line renders gray; of 18 measured, only two reach full Charcoal, while the 24 px pillar fit does.",
+      "recommendation": "Commission 24 px pixel fits for the 37, by one hand, approved on a board as the pillar fits were, at stage C or Phase 3, with the pillar icons' switch (fit on 1x, master from 2x)."
+    }
+  ],
+  "d2_707": {
+    "status": "done",
+    "files": [
+      "work/boards/phase-2/stage-b/drawings/20261109_CD-Scores.json",
+      "work/handoffs/phase-2/20261109_CD-Review-Of-Drawings.md"
+    ],
+    "note": "Items 7 to 9 fixed at the source; 28 editor_overrides in the drawings board content file now match nothing and should be removed at the next board rebuild."
+  }
+}
