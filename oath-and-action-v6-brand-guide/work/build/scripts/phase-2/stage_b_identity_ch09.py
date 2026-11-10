@@ -24,6 +24,7 @@ import stage_a_identity_lib as LIB
 
 S = []
 CH = "09"
+PHONE_W = 360          # a phone's screen: the plates drawn at this width fit a 360 px screen whole (CA-S5)
 PILLARS = [("CL-019", "Explain"), ("CL-020", "Track"), ("CL-021", "Connect"), ("CL-022", "Act")]
 JOBS = {"Explain": "Make the rules and their effects understandable.",
         "Track": "Follow the decision and keep its record within reach.",
@@ -131,6 +132,18 @@ def row(size, surface="newsprint", current=None, words=True, red_only=False, sta
     return f'<ol class="{cls}" aria-label="{E(lab)}">{"".join(lis)}</ol>'
 
 
+STACK_GAP = 20          # px between stacked 48 px rows; the arrow's center sits half of it under the icon's box
+
+
+def STACK_CSS(sel):
+    """The stacked 48 px column: one left edge for the words, and every arrow in one column, centered under the icon's
+    box (the four masters' ink is centered in it, 64 of 128 units across) and in the gap before the next row."""
+    return (f"{sel}{{flex-direction:column;align-items:flex-start;row-gap:{STACK_GAP}px}}{sel} .p9-ic{{margin:0!important}}"
+            f"{sel} .p9-pi{{position:relative}}"
+            f"{sel} .p9-pi:not(:last-child)::after{{content:\"\\2193\" / \"\";position:absolute;left:24px;"
+            f"top:calc(100% + {STACK_GAP // 2}px);transform:translate(-50%,-50%);margin:0;line-height:1}}")
+
+
 ROW_CSS = (
     ".oai .p9-row{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;row-gap:12px}"
     ".oai .p9-pi{display:flex;align-items:center;gap:12px}"
@@ -144,13 +157,13 @@ ROW_CSS = (
     f".oai .p9-16 .p9-w{{{ty('body-small')}}}"
     ".oai .p9-cur .p9-w{text-decoration:underline solid 2px;text-underline-offset:5px;text-decoration-skip-ink:none}"
     ".oai .p9-24 .p9-cur .p9-w,.oai .p9-16 .p9-cur .p9-w{font-weight:700}"
-    # a stacked column keeps each icon's whole box, so the four words share one left edge
-    ".oai .p9-stack{flex-direction:column;align-items:flex-start}.oai .p9-stack .p9-ic{margin:0!important}"
-    ".oai .p9-stack .p9-pi:not(:last-child)::after{content:\"\\2193\" / \"\";margin:0 0 0 4px}"
-    "@media (max-width:47.99em){.oai .p9-48{flex-direction:column;align-items:flex-start}.oai .p9-48 .p9-ic{margin:0!important}"
-    ".oai .p9-48 .p9-pi:not(:last-child)::after{content:\"\\2193\" / \"\";margin:0 0 0 4px}}"
+    # a stacked column keeps each icon's whole box, so the four words share one left edge, and each downward arrow
+    # stands in the icon column, centered under its icon in the gap before the next row (CD-S1, CA-S6)
+    + STACK_CSS(".oai .p9-stack") +
+    "@media (max-width:47.99em){" + STACK_CSS(".oai .p9-48") + "}"
     ".oai .p9-bare{gap:16px}.oai .p9-bare .p9-pi::after{content:none!important}"
     ".oai .p9-box+.p9-box{margin-top:20px}.oai .p9-box .oai-tag{display:block;margin:0 0 10px}"
+    ".oai .p9-ph{padding:16px}"
     ".oai .oai-s-charcoal .oai-tag{color:var(--oa-color-text-secondary-on-charcoal)}"
 )
 
@@ -179,27 +192,28 @@ def s_09_1_correct():
 
 @spec
 def s_09_1_failure():
-    body = (f'<div class="oai-pad">{dnp()}<div class="oai-panel oai-s-newsprint" style="margin-top:12px">'
+    body = (f'<div class="p9-ph">{dnp()}<div class="oai-panel oai-s-newsprint" style="margin-top:12px">'
             f'{row(24, words=False, label="Four pillar icons with no words")}</div></div>')
     alt = ("Failure case: do not publish. The four pillar icons at 24 pixels in a row with no words and no arrows: an open book "
            "with rays, a route to a magnifier, two overlapping rings and a finger pressing a round control.")
-    return rec("s-09-1-failure", "09.1", 400, alt, body, css=ROW_CSS,
+    return rec("s-09-1-failure", "09.1", PHONE_W, alt, body, css=ROW_CSS,
                notes="R9: under 48 px a pillar icon sits with its word. The row without its words, as a toolbar would set it. "
                      "Failure band per D2-308, since a bare row could pass for our work.")
 
 
 @spec
 def s_09_phone():
-    phone = (f'<div class="oai-s-newsprint" style="width:358px;padding:16px;border:1px solid {hair("newsprint")}">'
-             f'{box("The 48 px row stacks in one column", row(48, stack=True))}{box("The 24 px row wraps after an arrow", row(24))}</div>')
-    body = f'<div class="oai-pad">{phone}</div>'
-    alt = ("A phone column 358 pixels wide on Newsprint. The 48 pixel pillar row stands in one column, Explain, Track, Connect "
-           "and Act one under another, each icon beside its word and a downward arrow after each word but the last. Under it, the "
-           "24 pixel row runs across two lines, breaking after an arrow.")
-    return rec("s-09-phone", "09.1", 406, alt, body, css=ROW_CSS,
+    body = (f'<div class="oai-s-newsprint p9-ph">{box("The 48 px row stacks in one column", row(48, stack=True))}'
+            f'{box("The 24 px row wraps after an arrow", row(24))}</div>')
+    alt = ("A phone screen 360 pixels wide on Newsprint. The 48 pixel pillar row stands in one column, Explain, Track, Connect "
+           "and Act one under another, each icon beside its word, with a downward arrow under each icon but the last, so the "
+           "arrows line up between the icons. Under it, the 24 pixel row runs across two lines, breaking after an arrow.")
+    return rec("s-09-phone", "09.1", PHONE_W, alt, body, css=ROW_CSS,
                notes="D2-376: under 48em the 48 px row stacks in one column with downward arrows, after the creative director's "
-                     "Board 6 review found the phone row dropping its arrow. Drawn at a phone's 358 px text column, so the plate "
-                     "shows the column at every screen width; the rows in Rule 09.1's sheet take the same form at 390 px.")
+                     "Board 6 review found the phone row dropping its arrow. Each arrow stands in the icon column, centered under "
+                     "its icon in the 20 px gap before the next row, so the four arrows share one x (round 3, CD-S1, CA-S6). "
+                     "Drawn at a phone's 360 px screen with the shell's 16 px gutter, so the plate shows the column whole at every "
+                     "screen width, 360 px included (CA-S5); the rows in Rule 09.1's sheet take the same form under 48em.")
 
 
 # ============================================================================================ 09.2
@@ -287,13 +301,13 @@ def s_09_3_failure():
     def col(icon, enlarged, tag):
         return (f'<div class="oai-cell" style="gap:12px;width:140px"><div class="oai-row mid" style="gap:6px">{icon}'
                 f'<span style="{ty("body-small")}">Track</span></div>{enlarged}<span class="oai-tag">{E(tag)}</span></div>')
-    body = (f'<div class="oai-panel oai-s-newsprint"><div class="oai-row top" style="gap:40px;flex-wrap:nowrap">'
+    body = (f'<div class="oai-panel oai-s-newsprint"><div class="oai-row top" style="gap:24px;flex-wrap:nowrap">'
             f'{col(master_at(cid, 16), em, "The master at 16 px, true size and enlarged four times")}'
             f'{col(glyph(cid, 16), ef, "The 16 px fit, true size and enlarged four times")}</div></div>')
     alt = ("Failure case: Track's master scaled to 16 pixels beside the word Track, next to the 16 pixel fit beside the same "
            "word, at true size and enlarged four times. Scaled down, the master's lines fall under a pixel and draw gray, and "
            "the magnifier's lens and the route's turns blur together; the fit draws each line as one full pixel.")
-    return rec("s-09-3-failure", "09.3", 400, alt, body, css=LADDER_CSS,
+    return rec("s-09-3-failure", "09.3", PHONE_W, alt, body, css=LADDER_CSS,
                notes="The master (civic-line-v6/black) at 16 px from the sprite, as a producer would drag it into a menu, beside "
                      "the fit. The enlarged views are PNG renders at 1x, scaled four times in square pixels.")
 
@@ -338,19 +352,21 @@ def s_09_4_correct():
 def s_09_4_failure():
     kick = (f'<p class="p9-kick">{glyph("CL-020", 24)}<span class="lb">Report</span><span class="dt" aria-hidden="true">·</span>'
             f'<span class="sx">State legislatures</span></p>')
-    card = (f'<div class="oai-s-newsprint" style="width:358px;padding:20px;border:1px solid {hair("newsprint")}">{head_label()}{kick}'
-            f'<p style="{ty("h3", size=26)};margin:8px 0 0">How state committees record their votes</p></div>')
-    body = f'<div class="oai-pad">{dnp()}<div style="margin-top:12px">{card}</div></div>'
-    css = (".oai .p9-kick{display:flex;align-items:center;gap:8px;margin:0;font:var(--oa-type-label);"
+    card = (f'<div class="oai-s-newsprint" style="width:328px;padding:20px;border:1px solid {hair("newsprint")}">{head_label()}{kick}'
+            f'<p style="{ty("h3", size=26)};margin:8px 0 0;text-wrap:balance">How state committees record their votes</p></div>')
+    body = f'<div class="p9-ph">{dnp()}<div style="margin-top:12px">{card}</div></div>'
+    # the kicker as Rule 01.21 sets it, label style capitals with the second part in the secondary ink, so the pillar
+    # icon is the plate's only fault
+    css = (".oai .p9-ph{padding:16px}.oai .p9-kick{display:flex;align-items:center;gap:8px;margin:0;font:var(--oa-type-label);"
            "letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}"
-           ".oai .p9-kick .sx{color:var(--oa-color-text-secondary-on-newsprint);text-transform:none;letter-spacing:0;font-weight:400}"
-           ".oai .p9-kick .dt{color:var(--oa-color-text-secondary-on-newsprint)}.oai .p9-ic{display:block;flex:none}")
+           ".oai .p9-kick .sx,.oai .p9-kick .dt{color:var(--oa-color-text-secondary-on-newsprint)}.oai .p9-ic{display:block;flex:none}")
     alt = ("Failure case: do not publish. An Illustrative report card whose kicker opens with Track's pillar icon at 24 pixels, "
            "then the label Report and the topic State legislatures, over the headline How state committees record their votes.")
-    return rec("s-09-4-failure", "09.4", 406, alt, body, css=css, illustrative=True,
+    return rec("s-09-4-failure", "09.4", PHONE_W, alt, body, css=css, illustrative=True,
                notes="DR-112: a kicker keeps its content label and words, and a pillar icon never enters it (Rule 01.21). The "
-                     "icon is drawn as a 24 px pillar icon should be, so the only fault is where it stands. The headline is "
-                     "chapter 01's invented Report example. Failure band per D2-308.")
+                     "icon is drawn as a 24 px pillar icon should be, and the kicker's words follow Rule 01.21's type, so the only "
+                     "fault is where the icon stands. The card is a phone's 328 px column in a 360 px plate (CA-S5). The headline "
+                     "is chapter 01's invented Report example. Failure band per D2-308.")
 
 
 # ============================================================================================ the chapter
@@ -371,7 +387,9 @@ def chapter():
         "instruction": "Mark which pillar a piece serves, always in the order Explain, Track, Connect, Act.",
         "intro": [
             "Our four pillars name the jobs our work does: Explain, Track, Connect and Act, in that order (chapter 01). Each pillar "
-            "has an icon from the Civic Line, the symbol set in chapter 10, and each icon stands beside its word.",
+            "has an icon from the Civic Line, the symbol set in chapter 10, and each icon stands beside its word. At 16 and 24 px "
+            "each icon also has a pixel fit, a copy redrawn on whole pixels with a 1 px line, so it stays sharp on a screen "
+            "that gives each CSS pixel one device pixel.",
             "This chapter sets the row the four stand in, how a page marks the pillar it serves, the file to draw at each size, "
             "and the few places a pillar icon may appear.",
         ],
@@ -380,10 +398,12 @@ def chapter():
               "Set the pillars in one row in the order Explain, Track, Connect and Act, with an arrow between each pair. Each icon "
               "stands beside its word at every size, so the word names the pillar and the icon shows it a second way. A row takes "
               "one icon size throughout, 48 px with the words in the intro style or 24 px with the words in body text. Every icon "
-              "in it is one color, unless the row marks a current pillar (Rule 09.2).",
-              "The order follows the work, from understanding a decision to taking part in it, so it never changes. A reader learns "
-              "four drawings faster with their words beside them, and the word settles a drawing that could pass for another "
-              "pillar: Track's magnifier can read as looking into a question, which is Explain's job.",
+              "in it is one color, unless the row marks a current pillar (Rule 09.2). The 48 px row runs near the top of a page "
+              "that introduces the four pillars or gathers one pillar's work, and the 24 px row, the compact row, runs in the "
+              "header of a single piece that serves one pillar. A social card and a kicker carry no row.",
+              "The order follows the work, from understanding a decision to taking part in it, so it never changes. The word beside "
+              "each drawing names it at once, and it settles a drawing that could pass for another pillar, as Track's magnifier "
+              "can read as looking into a question, which is Explain's job.",
               APPROVED,
               "The pillar row at true size on Newsprint and on Charcoal, at 48 and 24 px: each icon beside its word, in order, one "
               "color, with an arrow between each pair.",
@@ -397,17 +417,22 @@ def chapter():
                      SP_("Spacing", "Measured from each icon's ink, so Act's narrow hand sits as close to its word as Explain's book; in a stacked column, from each icon's whole box, so the four words share one left edge"),
                      SP_("Color", "One color in the surface's icon ink: Charcoal on Newsprint and White, Newsprint on Charcoal and Prussian",
                          "oa.component.icon.ink.onNewsprint"),
-                     SP_("Under 48em", "The 48 px row stacks in one column with downward arrows; the 24 px row wraps after an arrow")],
+                     SP_("Under 48em", "The 48 px row stacks in one column, with each downward arrow centered under its icon "
+                                       "between rows; the 24 px row wraps after an arrow"),
+                     SP_("Places", "48 px near the top of a page that introduces the four pillars or gathers one pillar's work; "
+                                   "24 px in the header of a single piece that serves one pillar; never on a social card or in a kicker")],
               files=[A + m.split("work/build/assets/", 1)[1] for m in masters],
               related=["01", "10"],
               builders="Build the row as an ordered list whose text is the four words, and draw each icon from the sprite beside its "
                        "word, hidden from screen readers with <code>aria-hidden=\"true\"</code>. Draw the arrows in CSS as content a "
                        "screen reader skips, <code>content: \"→\" / \"\"</code>. Pull each icon's box in to its ink with negative "
-                       "margins, whole pixels at 16 and 24 px."),
+                       "margins, whole pixels at 16 and 24 px. In the stacked column, place each arrow absolutely, centered under "
+                       "its icon's box in the gap before the next row."),
             R("09.2", "Underline the current pillar's word, and add its red only from 48 px.",
               "On a page or a section that serves one pillar, underline that pillar's word in the row, at every size, and set the "
-              "word bold under 48 px. From 48 px the current icon also keeps its red, as a second sign, and the red counts as "
-              "signature red (Rule 05.3). Under 48 px every icon stays one color, the current one included. On Prussian no icon "
+              "word bold under 48 px. From 48 px the current icon also keeps its red, as a second sign, and that red is "
+              "signature red, which never counts against a view's working red (Rule 05.3). Under 48 px every icon stays one "
+              "color, the current one included. On Prussian no icon "
               "takes red, so the underline marks the current pillar alone.",
               "An underline marks the current pillar in any color and in gray print, so the row never relies on red alone. Red "
               "works as a second sign once the icon's line reaches a full pixel at 48 px. Under 48 px the line is a pixel or "
@@ -430,13 +455,16 @@ def chapter():
             R("09.3", "Draw a pillar icon from the file made for its size.",
               "Each size has its own drawing. At 16 px, draw the 16 px pixel fit on every screen. At 24 px, draw the 24 px pixel "
               "fit on screens under 2x, which give each CSS pixel fewer than two device pixels, and the master on 2x screens and "
-              "denser, with both in one svg that the guide's stylesheet switches. From 48 px, draw the master. Never scale a master "
-              "to 16 px, and never draw a fit at any size but its own.",
-              "The masters are drawn on a 128-unit box with a line about 3 units wide, so at 24 px the line falls to half a pixel, "
-              "and at 16 px small gaps fill in. Each pixel fit redraws its icon on whole pixels with a 1 px line and keeps every "
-              "feature. A 24 px icon keeps its fit up to 2x, since below 2x the master's line falls under one device pixel and "
-              "its counters fill, and the fit keeps every counter and gap. From 2x the master's line clears a device pixel and "
-              "draws smoother than the fit's steps.",
+              "denser, with both in one svg that the guide's stylesheet switches. From 48 px, draw the master. An exported image "
+              "or a printed page has no stylesheet to switch them, so pick the 24 px file yourself: the fit in an image exported "
+              "at 1x, and the master in an image exported at 2x or more and in print. Never scale a master down to 16 px or draw "
+              "a fit at any size but its own.",
+              "The masters are drawn on a 128-unit box with a line 3.35 units wide, so at 24 px the line falls to 0.63 px, and at "
+              "16 px small gaps fill in. A 24 px icon keeps its fit on screens under 2x, where the master's line falls under one "
+              "device pixel and its open spaces fill in, and the fit keeps every one of them. From 2x the master's line clears a "
+              "device pixel and draws smoother than the fit's steps. The end mark switches at 1x instead (Rule 04.6), because "
+              "its pixel fit softens or steps unevenly between 1x and 2x, while B's smooth drawing keeps its shape on every "
+              "screen.",
               "Our measurements, November 2026; the pixel fits approved by our founder and editor in November 2026",
               "Each pillar at 16, 24, 48 and 96 px at true size, one color, each from the file made for its size; below, Track's "
               "16 and 24 px fits as a standard screen draws them, enlarged four times.",
@@ -446,7 +474,9 @@ def chapter():
               specs=[SP_("16 px", "The 16 px pixel fit, on every screen", "oa.size.icon.small"),
                      SP_("24 px", "The 24 px pixel fit on screens under 2x; the master from 2x", "oa.size.icon.medium"),
                      SP_("48 px and up", "The master, at whole pixel sizes", "oa.size.icon.large"),
-                     SP_("Line", "1 px in each fit; about 3 units of 128 in each master"),
+                     SP_("Line", "1 px in each fit; 3.35 units of 128 in each master"),
+                     SP_("Exported image and print", "At 24 px, the fit in an image exported at 1x; the master in an image "
+                                                     "exported at 2x or more and in print. At 16 px, the fit"),
                      SP_("Color", "One color under 48 px (Rule 09.2)"),
                      SP_("Never", "A master under 48 px, except as a 24 px icon on a 2x screen; a fit at any size but its own")],
               files=_fits() + [A + "pillar-icons/20261110_Pillar-Icons-Manifest.json"],
@@ -458,8 +488,8 @@ def chapter():
                        "set no accent under 48 px."),
             R("09.4", "Put pillar icons only in the pillar row, on section openers and on tiles.",
               "A pillar icon appears in three places: the pillar row; the opener of a section that serves one pillar, where it "
-              "stands at 128 px; and a tile that leads to a pillar's section, from 76 px. It never enters a kicker, which may carry "
-              "a topic icon only (Rule 01.21), and it never sits on a part opener.",
+              "stands at 128 px; and a tile that leads to a pillar's section, from 76 px. It stays out of kickers, which may carry "
+              "only a topic or atlas symbol (Rule 01.21), and off part openers.",
               "Four icons that turn up only where a pillar is named stay easy to learn. In a kicker, a pillar icon would sit "
               "beside a label such as Report or Guide, which names no pillar, and leave the reader to decode the drawing.",
               APPROVED,
@@ -476,11 +506,11 @@ def chapter():
               files=[A + t.split("work/build/assets/", 1)[1] for t in tiles],
               related=["01", "10"],
               builders="Take a pillar's tile from the Civic Line package's rounded Charcoal tiles. A standalone icon on an opener "
-                       "keeps its red as signature red; give it the word of its pillar nearby."),
+                       "keeps its red as signature red; set its pillar's word beside or under it."),
         ],
         "extras": [{"after_rule": "09.1", "specimen": "s-09-phone", "label": "The row on a phone",
-                    "caption": "On a phone the 48 px row stands in one column with downward arrows, and the 24 px row wraps after "
-                               "an arrow."}],
+                    "caption": "On a phone the 48 px row stands in one column, with a downward arrow under each icon but the "
+                               "last, and the 24 px row wraps after an arrow."}],
         "related_chapters": [{"chapter": "01", "reason": "The four pillars, their jobs and their products."},
                              {"chapter": "10", "reason": "The Civic Line's construction, editions, tiles and sizes."},
                              {"chapter": "05", "reason": "Rule 05.3, the red rule the current pillar's icon follows."},

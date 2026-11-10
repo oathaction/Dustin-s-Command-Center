@@ -61,6 +61,14 @@
 // A plate whose stage carries data-check-exempt="contrast size red locked" skips that test inside it; every exemption
 // is listed in the results. Writes <page stem>-Guide-Check-Results.json beside the page, and one capture per section at
 // 1440 and 390 px to captures/. Exit code 1 when any check fails.
+// Added in the round 3 fix pass (November 10, 2026):
+//   frameFit           also: from 80em, a chapter plate whose fixed stage scrolls though breaking out over the rail to the
+//                      page's margin would hold it whole (CA-S13); and a frame that breaks out hides the rail while it
+//                      covers it, so no rail link sits out of sight
+//   textSpacing        also: at 1024 px, with text at 200 percent, the page does not scroll sideways (CA-S17, SC 1.4.4)
+//   forcedWordmark     with forced colors on, dark and light, the masthead wordmark draws in one color (CA-S16)
+//   iconTargets        also: a control that shows only after a reader types, such as a search field's Clear, is typed
+//                      into view and held to 44 by 44 px (CA-M2). Runs last, so no other check sees the typed state
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -524,6 +532,9 @@ function failuresFrom(a, width) {
     if (fr.scrollNoHint.length) add('scrollHint', `${fr.scrollNoHint.length} frame(s) that scroll without their hint, tab stop and name: ${ids(fr.scrollNoHint)}; first: ${JSON.stringify(fr.scrollNoHint[0])}`);
     if (fr.couldFit.length) add('frameFit', `${fr.couldFit.length} frame(s) that scroll though ${fr.snugPx} px sides would hold the stage whole: ${ids(fr.couldFit)}; first: ${JSON.stringify(fr.couldFit[0])}`);
     if (fr.offCenter.length) add('frameFit', `${fr.offCenter.length} stage(s) in a frame that does not scroll, off center or not at true size: ${ids(fr.offCenter)}; first: ${JSON.stringify(fr.offCenter[0])}`);
+    if (fr.couldBreakOut && fr.couldBreakOut.length) add('frameFit', `${fr.couldBreakOut.length} chapter frame(s) that scroll though breaking out over the rail would hold the stage whole (CA-S13): ${ids(fr.couldBreakOut)}; first: ${JSON.stringify(fr.couldBreakOut[0])}`);
+    const hid = (fr.breakout || []).filter((x) => x.overlaps && x.railShown);
+    if (hid.length) add('frameFit', `${hid.length} frame(s) that break out over the rail while the rail still shows, so its links sit under the frame (CA-S13): ${ids(hid)}`);
   }
   if (a.illusTwice.length) add('illusOnce', `${a.illusTwice.length} plate(s) with the Illustrative label in both the piece and its caption: ${a.illusTwice.slice(0, 12).join(', ')}`);
   if (a.codes.count) add('codes', `${a.codes.count} decision code(s) or studio word(s) in reader text, in ${a.codes.where.slice(0, 25).join(', ')}${a.codes.where.length > 25 ? ' and more' : ''}; first: ${JSON.stringify(a.codes.hits[0])}`);
@@ -546,11 +557,15 @@ function failuresFrom(a, width) {
 // it, the shell's own threshold. The narrow side is the --oa-space-400 token (32 px at the default text size). A plate
 // set to Fit to window, or a pending one, is skipped; the page opens every plate at true size.
 async function frameAudit(page) {
-  return page.evaluate(() => {
+  return page.evaluate(async () => {
     const rootCs = getComputedStyle(document.documentElement);
     const tok = rootCs.getPropertyValue('--oa-space-400').trim();
     const snugPx = /rem$/.test(tok) ? parseFloat(tok) * parseFloat(rootCs.fontSize) : (parseFloat(tok) || 32);
-    const out = { snugPx, frames: 0, scrolling: 0, snug: [], hintNoScroll: [], scrollNoHint: [], couldFit: [], offCenter: [] };
+    const out = { snugPx, frames: 0, scrolling: 0, snug: [], hintNoScroll: [], scrollNoHint: [], couldFit: [], offCenter: [], couldBreakOut: [], breakout: [] };
+    // CA-S13 (round 3): from 80em a chapter plate may take the room to its left, over the rail, out to the page's margin
+    const wideBreak = window.matchMedia('(min-width: 80em)').matches;
+    const pageBox = document.querySelector('.frame');
+    const edge = pageBox ? pageBox.getBoundingClientRect().left + parseFloat(getComputedStyle(pageBox).paddingLeft) : 0;
     for (const fig of document.querySelectorAll('figure.plate')) {
       const box = fig.querySelector(':scope > .plate-scroll'); const st = box && box.querySelector('.plate-stage');
       if (!st || st.hasAttribute('data-pending') || fig.getAttribute('data-fit') === 'fit') continue;
@@ -569,6 +584,9 @@ async function frameAudit(page) {
         out.scrolling++;
         if (!hintOn || !tabStop || !named) out.scrollNoHint.push({ specimen: id, over: box.scrollWidth - box.clientWidth, hint: hintOn, tabStop, named });
         if (Math.max(pl, pr) > snugPx + 0.5 && need + 2 * snugPx <= box.clientWidth) out.couldFit.push({ specimen: id, need, frame: box.clientWidth, sides: [pl, pr] });
+        const reach = Math.floor(fig.getBoundingClientRect().left - edge);
+        if (wideBreak && pageBox && box.hasAttribute('data-width') && fig.closest('.chapter') && !fig.classList.contains('is-breakout') && reach >= 1
+          && need + 2 * snugPx <= box.clientWidth + reach) out.couldBreakOut.push({ specimen: id, need, frame: box.clientWidth, reach });
       } else {
         if (hintOn || tabStop || named) out.hintNoScroll.push({ specimen: id, hint: hintOn, tabStop, named });
         const s = st.getBoundingClientRect();
@@ -577,6 +595,20 @@ async function frameAudit(page) {
         if (Math.abs(gaps[0] - gaps[1]) > 1 || scaled) out.offCenter.push({ specimen: id, gaps, drawn: +s.width.toFixed(2), trueWidth: st.offsetWidth });
       }
     }
+    // a frame that breaks out hides the rail while it covers it: each one is scrolled into view and the rail read
+    const rail = document.querySelector('.rail');
+    const keep = window.scrollY;
+    for (const fig of document.querySelectorAll('figure.plate.is-breakout')) {
+      const box = fig.querySelector(':scope > .plate-scroll');
+      box.scrollIntoView({ block: 'center' });
+      await new Promise((res) => requestAnimationFrame(() => requestAnimationFrame(res)));
+      const b = box.getBoundingClientRect(), rr = rail ? rail.getBoundingClientRect() : null;
+      const overlaps = !!rr && rr.width > 0 && b.left < rr.right && b.top < rr.bottom && b.bottom > rr.top;
+      const railShown = !!rail && getComputedStyle(rail).visibility !== 'hidden' && getComputedStyle(rail).display !== 'none';
+      out.breakout.push({ specimen: fig.querySelector('.plate-stage').getAttribute('data-specimen'), left: Math.round(b.left), width: Math.round(b.width), scrolls: box.scrollWidth > box.clientWidth + 1, overlaps, railShown });
+    }
+    window.scrollTo(0, keep);
+    await new Promise((res) => requestAnimationFrame(() => requestAnimationFrame(res)));
     return out;
   });
 }
@@ -857,10 +889,13 @@ async function sbAudit(page) {
     out.statePictures = [];
     for (const st of document.querySelectorAll('[data-specimen]')) {
       if (st.closest('.plate--failure')) continue;
-      const trackers = [...st.querySelectorAll('svg')].filter((s) => s.querySelectorAll('[data-icon-family="status"][data-icon]').length >= 3);
+      // a plate may draw one row twice, one copy for each screen width, and hide the other: only the copy on screen counts,
+      // as only it reaches a reader (round 3, the editor's note on s-01-pieces)
+      const onScreen = (s) => [...s.querySelectorAll('[data-icon-family="status"][data-icon]')].filter((m) => rendered(m));
+      const trackers = [...st.querySelectorAll('svg')].filter((s) => onScreen(s).length >= 3);
       if (!trackers.length) continue;
       out.stateStages++;
-      const marks = trackers.flatMap((s) => [...s.querySelectorAll('[data-icon-family="status"][data-icon]')]).filter((m) => WORDS[m.getAttribute('data-icon')]);
+      const marks = trackers.flatMap(onScreen).filter((m) => WORDS[m.getAttribute('data-icon')]);
       const named = [st.getAttribute('aria-label') || '', ...(st.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean).map((id) => (document.getElementById(id) || {}).textContent || '')];
       const text = (named.join(' ') + ' ' + st.innerText + ' ' + [...st.querySelectorAll('[aria-label]')].map((e) => e.getAttribute('aria-label')).join(' ')).replace(/\s+/g, ' ');
       const count = {}; for (const m of marks) { const k = m.getAttribute('data-icon'); count[k] = (count[k] || 0) + 1; }
@@ -910,10 +945,25 @@ async function sbForced(page) {
     for (const el of document.querySelectorAll('[data-sb-glyph]')) el.setAttribute('data-sb-normal', String(window.__sbContrast(el)));
     return { n, uses: document.querySelectorAll('use[data-sb-glyph]').length };
   });
-  const out = { glyphParts: mark.n, useParts: mark.uses, erased: [] };
+  const out = { glyphParts: mark.n, useParts: mark.uses, erased: [], wordmark: [] };
   for (const scheme of ['dark', 'light']) {
     await page.emulateMedia({ forcedColors: 'active', colorScheme: scheme });
     await page.waitForTimeout(50);
+    // CA-S16 (round 3): the masthead wordmark draws in one color under forced colors, ampersand included
+    out.wordmark.push(...await page.evaluate((scheme) => {
+      const bad = [];
+      for (const svg of document.querySelectorAll('.masthead svg.wm')) {
+        if (!window.__sb.rendered(svg)) continue;
+        const inks = new Set();
+        for (const el of svg.querySelectorAll('path, rect, circle, polygon, use')) {
+          const cs = getComputedStyle(el);
+          if (cs.fill !== 'none') inks.add(cs.fill);
+          if (cs.stroke !== 'none' && parseFloat(cs.strokeWidth) > 0) inks.add(cs.stroke);
+        }
+        if (inks.size > 1) bad.push({ where: 'masthead', scheme, wordmark: svg.getAttribute('class'), inks: [...inks] });
+      }
+      return bad;
+    }, scheme));
     const r = await page.evaluate((scheme) => {
       const { desc } = window.__sb;
       const bad = [];
@@ -951,7 +1001,7 @@ async function sbReduced(page) {
 
 // F-1 and F-3: with SC 1.4.12's text spacing, and then with text at 200 percent, no control clips its words, no glyph
 // overlaps its word, and (with the spacing) the page does not scroll sideways.
-async function sbSpacing(page) {
+async function sbSpacing(page, modes = ['spacing', 'zoom'], zoomScroll = false) {
   await sbInstall(page);
   const pass = async (mode) => {
     await page.evaluate((mode) => {
@@ -962,7 +1012,9 @@ async function sbSpacing(page) {
       document.head.append(st);
     }, mode);
     await page.waitForTimeout(150);
-    const r = await page.evaluate((mode) => {
+    // the shell sizes its frames on resize; a reader who sets a larger text size reloads or resizes, so it runs here too
+    if (mode === 'zoom' && zoomScroll) { await page.evaluate(() => window.dispatchEvent(new Event('resize'))); await page.waitForTimeout(400); }
+    const r = await page.evaluate(({ mode, zoomScroll }) => {
       const { rendered, picture, CONTROLS, desc } = window.__sb;
       const bad = [];
       for (const el of document.querySelectorAll(CONTROLS)) {
@@ -980,14 +1032,63 @@ async function sbSpacing(page) {
           }
         }
       }
-      if (mode === 'spacing' && document.documentElement.scrollWidth > window.innerWidth + 1) bad.push({ where: 'page', mode, why: `scrolls sideways (${document.documentElement.scrollWidth} px)` });
+      if ((mode === 'spacing' || zoomScroll) && document.documentElement.scrollWidth > window.innerWidth + 1) bad.push({ where: 'page', mode, why: `scrolls sideways (${document.documentElement.scrollWidth} px)` });
       document.getElementById('sb-spacing').remove();
       return bad;
-    }, mode);
+    }, { mode, zoomScroll });
+    if (mode === 'zoom' && zoomScroll) { await page.evaluate(() => window.dispatchEvent(new Event('resize'))); await page.waitForTimeout(400); }
     await page.waitForTimeout(150);
     return r;
   };
-  return [...(await pass('spacing')), ...(await pass('zoom'))];
+  const out = [];
+  for (const m of modes) out.push(...(await pass(m)));
+  return out;
+}
+
+// CA-M2 (round 3): B-1 for a control that shows only after a reader types, such as a search field's Clear. Each text
+// field in a live specimen takes one letter from the keyboard; every control holding a glyph that came into view is
+// measured; the field then goes back to what it held. The check runs after every other one at its width.
+async function sbTyped(page) {
+  await sbInstall(page);
+  const n = await page.evaluate(() => {
+    const { picture, rendered } = window.__sb;
+    const sel = ['input:not([type])', 'input[type="text"]', 'input[type="search"]', '[role="searchbox"]'].map((x) => '[data-specimen] ' + x).join(', ');
+    const fields = [...document.querySelectorAll(sel)].filter((el) => !picture(el) && rendered(el) && !el.disabled && !el.readOnly);
+    fields.forEach((el, i) => el.setAttribute('data-sb-type', String(i)));
+    return fields.length;
+  });
+  const out = { fields: n, shown: [], small: [] };
+  for (let i = 0; i < n; i++) {
+    const was = await page.evaluate((i) => {
+      const f = document.querySelector(`[data-sb-type="${i}"]`); const st = f.closest('[data-specimen]');
+      st.querySelectorAll(window.__sb.CONTROLS).forEach((c) => c.setAttribute('data-sb-was', window.__sb.rendered(c) ? '1' : '0'));
+      return f.value;
+    }, i);
+    const loc = page.locator(`[data-sb-type="${i}"]`);
+    await loc.scrollIntoViewIfNeeded();
+    await loc.focus();
+    await page.keyboard.press('End');
+    await page.keyboard.type('a');
+    await page.waitForTimeout(150);
+    const r = await page.evaluate((i) => {
+      const { rendered, desc } = window.__sb;
+      const st = document.querySelector(`[data-sb-type="${i}"]`).closest('[data-specimen]');
+      const shown = [], small = [];
+      for (const c of st.querySelectorAll('[data-sb-was="0"]')) {
+        if (!rendered(c) || !c.querySelector('[data-icon]')) continue;
+        const b = c.getBoundingClientRect(); const w = Math.round(b.width * 10) / 10, h = Math.round(b.height * 10) / 10;
+        shown.push({ ...desc(c), w, h });
+        if (b.width < 43.5 || b.height < 43.5) small.push({ ...desc(c), icon: c.querySelector('[data-icon]').getAttribute('data-icon'), w, h, after: 'typing one letter' });
+      }
+      st.querySelectorAll('[data-sb-was]').forEach((c) => c.removeAttribute('data-sb-was'));
+      return { shown, small };
+    }, i);
+    out.shown.push(...r.shown); out.small.push(...r.small);
+    await loc.fill(was);
+    await page.waitForTimeout(100);
+  }
+  await page.evaluate(() => { document.querySelectorAll('[data-sb-type]').forEach((el) => el.removeAttribute('data-sb-type')); if (document.activeElement && document.activeElement.blur) document.activeElement.blur(); window.scrollTo(0, 0); });
+  return out;
 }
 
 // G-3 and G-2 for the phone menu: Menu opens the dialog with focus inside it; Tab stays inside and in view; Escape and
@@ -1045,6 +1146,7 @@ function sbFailures(b, width) {
   if (a.marks.off.length) add('markTokens', `${a.marks.off.length} mark(s) drawn off their token (D2-402), first: ${first(a.marks.off)}`);
   if (a.marks.unread.length) add('markTokens', `mark token(s) with no reader on the page: ${a.marks.unread.join(', ')}`);
   if (b.forced && b.forced.erased.length) add('forcedGlyphs', `${b.forced.erased.length} glyph part(s) that forced colors erases (D-1, UX-1), first: ${first(b.forced.erased)}`);
+  if (b.forced && b.forced.wordmark && b.forced.wordmark.length) add('forcedWordmark', `the masthead wordmark draws in more than one color under forced colors (CA-S16), first: ${first(b.forced.wordmark)}`);
   if (b.reduced && b.reduced.length) add('reducedMotion', `${b.reduced.length} element(s) still moving under reduced motion (E-2), first: ${first(b.reduced)}`);
   if (b.spacing && b.spacing.length) add('textSpacing', `${b.spacing.length} clip, overlap or sideways scroll with text spacing or 200 percent text (F-1, F-3), first: ${first(b.spacing)}`);
   if (b.menu && b.menu.problems.length) add('menuDialog', `the phone menu (G-2, G-3): ${b.menu.problems.join('; ')}`);
@@ -1117,11 +1219,13 @@ async function checkPage(browser, file, widths, opts = {}) {
       sb.forced = await sbForced(page);
       if (width === 1440 || opts.plant) sb.reduced = await sbReduced(page);
       if (width <= 390) sb.spacing = await sbSpacing(page);
+      else if (width === 1024 || opts.zoomScroll) sb.spacing = await sbSpacing(page, ['zoom'], true);
       sb.menu = await sbMenu(page);
     }
     fails.push(...sbFailures(sb, width));
     a.stageB = { icons: sb.audit.icons, stateStages: sb.audit.stateStages, statePictures: sb.audit.statePictures, inlineTargets: sb.audit.inlineTargets || 0, missingFamily: sb.audit.missingFamily, markReaders: sb.audit.marks.readers, glyphParts: sb.forced ? sb.forced.glyphParts : null, useParts: sb.forced ? sb.forced.useParts : null,
-      menu: sb.menu ? (sb.menu.problems.length ? sb.menu.problems : 'opens, holds focus, closes by Escape and Close, returns focus') : 'not shown at this width' };
+      menu: sb.menu ? (sb.menu.problems.length ? sb.menu.problems : 'opens, holds focus, closes by Escape and Close, returns focus') : 'not shown at this width',
+      forcedWordmark: sb.forced ? (sb.forced.wordmark.length ? sb.forced.wordmark : 'one color in dark and light') : null };
     if (a.fit.under.length) fails.push({ key: 'fitFloor', msg: `${width}: ${a.fit.under.length} plate(s) whose Fit to window sets text under 13 px: ${a.fit.under.slice(0, 8).map((x) => `${x.specimen} (${x.smallest} px at ${Math.round(x.scale * 100)}%, "${x.sample}")`).join('; ')}` });
     let axe = null;
     if (!opts.skipAxe) {
@@ -1153,6 +1257,12 @@ async function checkPage(browser, file, widths, opts = {}) {
         if (!box || box.height > 30000) continue;
         await loc.screenshot({ path: path.join(capDir, `${stem}-${width}-${id}.jpg`), type: 'jpeg', quality: width === 1440 ? 82 : 78 });
       }
+    }
+    // CA-M2: last, since it types into live specimens
+    if (!opts.skipStageB) {
+      const typed = await sbTyped(page);
+      if (typed.small.length) report.failures.push({ key: 'iconTargets', msg: `${width}: ${typed.small.length} control(s) that show after typing, holding a glyph under 44 by 44 px (B-1, CA-M2), first: ${JSON.stringify(typed.small[0])}` });
+      report.runs[report.runs.length - 1].typed = { fields: typed.fields, shown: typed.shown };
     }
     await ctx.close();
   }
@@ -1317,6 +1427,9 @@ const PLANTS = [
   { key: 'stateWords', fault: 'a live tracker whose words give each step its state, two of them as a range (allowed: must not be flagged)', expect: false, js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div data-specimen="s-demo-live" role="group" aria-label="A bill"><p>Step 3 of 3: Committee vote. <span class="vh">Steps 1 to 2, Filed and Hearing, done. Step 3 Committee vote now.</span></p><svg class="sx-mk" width="96" height="30" viewBox="0 0 96 30" aria-hidden="true" focusable="false"><g data-icon="S-done" data-icon-family="status"><circle cx="13" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-done" data-icon-family="status"><circle cx="48" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-now" data-icon-family="status"><circle cx="83" cy="15" r="11.5" fill="none" stroke="currentColor" stroke-width="3"/></g></svg></div>'); },
     verify: (r) => r.runs[0].stageB.stateStages >= 1 },
+  { key: 'stateWords', fault: 'a live tracker drawn twice, one copy for each screen width with the other hidden, its words giving each state once (allowed: must not be flagged)', expect: false, js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div data-specimen="s-demo-live" role="group" aria-label="A bill"><p>Step 3 of 3: Committee vote. <span class="vh">Steps 1 to 2, Filed and Hearing, done. Step 3 Committee vote now.</span></p><svg class="sx-mk" width="96" height="30" viewBox="0 0 96 30" aria-hidden="true" focusable="false"><g data-icon="S-done" data-icon-family="status"><circle cx="13" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-done" data-icon-family="status"><circle cx="48" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-now" data-icon-family="status"><circle cx="83" cy="15" r="11.5" fill="none" stroke="currentColor" stroke-width="3"/></g></svg><svg class="sx-mk" width="96" height="30" viewBox="0 0 96 30" aria-hidden="true" focusable="false" style="display:none"><g data-icon="S-done" data-icon-family="status"><circle cx="13" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-done" data-icon-family="status"><circle cx="48" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-now" data-icon-family="status"><circle cx="83" cy="15" r="11.5" fill="none" stroke="currentColor" stroke-width="3"/></g></svg></div>'); },
+    verify: (r) => r.runs[0].stageB.stateStages >= 1 },
   { key: 'stateWords', fault: 'a picture of a tracker whose alt describes shapes only: listed for its owner, not failed (allowed: must not be flagged)', expect: false, js: () => {
     const st = document.querySelector('.plate--correct [data-specimen][role="img"]'); st.setAttribute('aria-label', 'A bill at true size, on a line of three steps: a filled circle, a heavy ring and a fine ring.');
     st.insertAdjacentHTML('beforeend', '<svg class="sx-mk" width="96" height="30" viewBox="0 0 96 30" aria-hidden="true" focusable="false"><g data-icon="S-done" data-icon-family="status"><circle cx="13" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-now" data-icon-family="status"><circle cx="48" cy="15" r="11.5" fill="none" stroke="currentColor" stroke-width="3"/></g><g data-icon="S-not-yet" data-icon-family="status"><circle cx="83" cy="15" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/></g></svg>'); },
@@ -1334,6 +1447,34 @@ const PLANTS = [
   { key: 'markTokens', fault: 'the same ring drawn at 3 px, which the shell sets from its token (allowed: must not be flagged)', expect: false, js: () => {
     document.querySelector('.plate--correct [data-specimen]').insertAdjacentHTML('beforeend', '<svg class="sx-mk" width="30" height="30" viewBox="0 0 30 30" aria-hidden="true" focusable="false"><circle cx="15" cy="15" r="13.5" class="sx-fb sx-si" stroke-width="3" fill="none" stroke="#121212"/></svg>'); },
     verify: (r) => r.runs[0].stageB.markReaders['ring-now'] >= 1 },
+  // round 3 fix pass, November 10, 2026
+  { key: 'frameFit', fault: 'a chapter plate 60 px wider than its column at 1440 px, left scrolling though breaking out over the rail would hold it (no resize, CA-S13)', js: () => {
+    const st = document.querySelector('[data-specimen="s-demo-sheet"]'); const box = st.closest('.plate-scroll');
+    const w = (box.clientWidth + 60) + 'px'; st.style.setProperty('--w', w); box.style.setProperty('--w', w); } },
+  { key: 'frameFit', fault: 'the same plate after a resize: the shell breaks it out over the rail, whole and centered, and hides the rail while it covers it (allowed: must not be flagged)', expect: false, js: async () => {
+    const st = document.querySelector('[data-specimen="s-demo-sheet"]'); const box = st.closest('.plate-scroll');
+    const w = (box.clientWidth + 60) + 'px'; st.style.setProperty('--w', w); box.style.setProperty('--w', w);
+    window.dispatchEvent(new Event('resize')); await new Promise((r) => setTimeout(r, 400)); },
+    verify: (r) => r.runs[0].frames.breakout.some((x) => x.specimen === 's-demo-sheet' && !x.scrolls && x.overlaps && !x.railShown) },
+  { key: 'frameFit', fault: 'a frame that breaks out over the rail while the rail stays shown (CA-S13)', js: async () => {
+    const st = document.querySelector('[data-specimen="s-demo-sheet"]'); const box = st.closest('.plate-scroll');
+    const w = (box.clientWidth + 60) + 'px'; st.style.setProperty('--w', w); box.style.setProperty('--w', w);
+    window.dispatchEvent(new Event('resize')); await new Promise((r) => setTimeout(r, 400));
+    const css = document.createElement('style'); css.textContent = '.rail.is-covered { visibility: visible !important }'; document.head.append(css); } },
+  { key: 'textSpacing', fault: 'part links held on one line at 1024 px, which push the page sideways with text at 200 percent (CA-S17)', widths: [1024], js: () => {
+    const css = document.createElement('style'); css.textContent = '.mh-bar, .partnav ul { flex-wrap: nowrap !important } .partnav a { white-space: nowrap }'; document.head.append(css);
+    document.querySelector('.partnav ul').insertAdjacentHTML('beforeend', '<li><a href="#top">Symbols and graphics</a></li><li><a href="#top">Applications</a></li><li><a href="#top">Appendix</a></li>'); } },
+  { key: 'textSpacing', fault: 'the shell\'s own masthead at 1024 px with text at 200 percent, its part links free to wrap (allowed: must not be flagged)', expect: false, widths: [1024], js: () => {
+    document.querySelector('.partnav ul').insertAdjacentHTML('beforeend', '<li><a href="#top">Symbols and graphics</a></li><li><a href="#top">Applications</a></li><li><a href="#top">Appendix</a></li>'); } },
+  { key: 'forcedWordmark', fault: 'the masthead wordmark\'s ampersand kept red under forced colors while its letters take a system color (CA-S16)', js: () => {
+    const css = document.createElement('style'); css.textContent = '@media (forced-colors: active) { .home .wm { --amp: #E63946 !important } }'; document.head.append(css); } },
+  { key: 'iconTargets', fault: 'a search field whose Clear button shows only after typing, at 40 by 40 px (B-1, CA-M2)', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div data-specimen="s-demo-live" role="group" aria-label="A search"><label for="sb-q">Search the symbols</label><span style="display:inline-flex;align-items:center"><input id="sb-q" type="text"><button type="button" id="sb-clr" aria-label="Clear the search" hidden style="display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center"><svg data-icon="U-close" data-icon-family="utility" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2"/></svg></button></span></div>');
+    const q = document.getElementById('sb-q'), c = document.getElementById('sb-clr'); q.addEventListener('input', () => { c.hidden = !q.value; }); } },
+  { key: 'iconTargets', fault: 'the same field with its Clear button at 44 by 44 px (allowed: must not be flagged)', expect: false, js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div data-specimen="s-demo-live" role="group" aria-label="A search"><label for="sb-q">Search the symbols</label><span style="display:inline-flex;align-items:center"><input id="sb-q" type="text"><button type="button" id="sb-clr" aria-label="Clear the search" hidden style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center"><svg data-icon="U-close" data-icon-family="utility" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2"/></svg></button></span></div>');
+    const q = document.getElementById('sb-q'), c = document.getElementById('sb-clr'); q.addEventListener('input', () => { c.hidden = !q.value; }); },
+    verify: (r) => r.runs[0].typed && r.runs[0].typed.shown.some((x) => x.label === 'Clear the search' && x.w >= 44) },
 ];
 
 async function selfTest() {

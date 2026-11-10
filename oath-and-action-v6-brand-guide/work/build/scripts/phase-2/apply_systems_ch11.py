@@ -163,12 +163,13 @@ NE_BILL = dict(id='LB 99008', title='Rural clinic grants', kind='nebraska',
                                'governor to sign or veto it.')
 
 # Invented records requests and agency rules (Illustrative), numbered from 99001 up with no agency named, so a cropped
-# plate cannot put our words on a real request or a real rule.
+# plate cannot put our words on a real request or a real rule. Round 3 (BE-S3): every request's subject is one a federal
+# agency holds, since the steps, the 20 working days and the end words follow the federal Freedom of Information Act.
 REQUESTS = [
     dict(id='99001', noun='Request', kind='request', title='Bridge inspection reports',
          states=['done', 'done', 'done', 'now', 'notyet', 'notyet'],
          line='The agency is deciding what it can release.'),
-    dict(id='99003', noun='Request', kind='request', title='School lunch inspection records',
+    dict(id='99003', noun='Request', kind='request', title='Food safety inspection records',
          states=['done', 'done', 'done', 'done', 'done', 'skipped'], end='Partly granted on March 3.',
          line='The agency released 212 of 340 pages and withheld the rest under two exemptions. No appeal was filed by '
               'the June 1 deadline.'),
@@ -189,10 +190,10 @@ RULES = [
          states=['done', 'done', 'done', 'stopped', 'notyet', 'notyet'], end='Withdrawn by the agency on February 20.',
          line='The agency published a notice withdrawing its proposed rule after comments closed.'),
 ]
-WAIT_REQUEST = dict(id='99007', noun='Request', kind='request', title='Snowplow contract records',
+WAIT_REQUEST = dict(id='99007', noun='Request', kind='request', title='Weather station repair records',
                     states=['done', 'done', 'now', 'notyet', 'notyet', 'notyet'],
                     line='The agency is looking for the records.',
-                    wait='Waiting on you: on April 2 the agency asked which winters you need. Its 20 working days stop '
+                    wait='Waiting on you: on April 2 the agency asked which years you need. Its 20 working days stop '
                          'until you answer.',
                     checked='Checked April 20. The agency may have acted since.')
 
@@ -521,10 +522,16 @@ def bill_list(ctx, sid_surf, size, bills, title, nm=None, extra_key=None):
 SURF_NAME = {'n': 'newsprint', 'c': 'charcoal'}
 
 
-def nb_html(html):
-    """nb() on the text of a fragment, outside tags and styles."""
+NBHY = '\u2011'
+
+
+def nb_html(html, fixed=False):
+    """nb() on the text of a fragment, outside tags and styles. fixed=True also turns every hyphen between two letters
+    or figures into a non-breaking hyphen (U+2011), so a hyphenated compound or an ID never splits at a line end in a
+    plate of fixed width (CA-S4, D2-950)."""
     parts = re.split(r'(<style[^>]*>.*?</style>|<script[^>]*>.*?</script>|<[^>]+>)', html, flags=re.S)
-    return ''.join(x if x.startswith('<') else nb(x) for x in parts)
+    fix = (lambda t: re.sub(r'(?<=\w)-(?=\w)', NBHY, t)) if fixed else (lambda t: t)
+    return ''.join(x if x.startswith('<') else fix(nb(x)) for x in parts)
 
 
 def _css_rules(css):
@@ -590,7 +597,7 @@ def spec(ctx, sid, html, rule, alt, **kw):
     if not (kw.get('readable') or kw.get('interactive')):
         # a picture's marks need no measuring frame: guide check B-3 reads marks only outside pictures
         html = re.sub(r'<rect x="[^"]*" y="[^"]*" width="[^"]*" height="[^"]*" fill="none"/>', '', html)
-    out = ctx.spec(sid, nb_html(html), CH, rule, alt, **kw)
+    out = ctx.spec(sid, nb_html(html, fixed=bool(kw.get('width'))), CH, rule, alt, **kw)
     if kw.get('width'):
         # D2-442 offers Fit to window only where fitting keeps every text at 13 px or more; every fixed plate here sets
         # 13 px step names or numbers, so no fit can be offered, and the switch's markup stays out of the page
@@ -628,6 +635,80 @@ def s_steps(ctx):
                 notes='A readable table (D2-255). Step 6 is named for whoever signs (DR-128).')
 
 
+def mark_rows():
+    """PP-M1: each mark's geometry at every circle size, read from node() and line_segments() so the words and the
+    drawing cannot drift apart. Sizes are the four of Rule 11.7."""
+    ds = (24, 26, 28, 30)
+    px = lambda xs: ', '.join(f'{x:g}' for x in xs[:-1]) + f' and {xs[-1]:g} px'
+    off = px([round(0.72 * d / 2, 2) for d in ds])       # node(): the badge sits at (cx + 0.72 R, cy - 0.72 R)
+    slash = px([d + 4 for d in ds])                       # node(): k = (R + 2) cos 45, so the slash runs d + 4 long
+    square = px([d - 2 for d in ds])                      # node(): the stopped square is d - 2 wide
+    ink, sub = '--oa-color-graphic-essential-on-&lt;surface&gt;', '--oa-color-graphic-subtle-on-&lt;surface&gt;'
+    t2, bg = '--oa-color-text-secondary-on-&lt;surface&gt;', '--oa-color-surface-&lt;surface&gt;'
+    return [
+        ('Done', 'A filled circle as wide as the step, its number in the surface color.', '', f'{ink}; number {bg}'),
+        ('Now', 'A ring as wide as the step, its 3 px line drawn inside the edge, filled with the surface. Its number '
+                'in Inter 700, in ink.', '--oa-component-mark-ring-now', ink),
+        ('You can take part now', 'The Now ring with an 11 px disc. The disc’s center sits 0.72 of the circle’s radius '
+                                  f'right of and above the circle’s center, at 45 degrees: {off}. '
+                                  'A 1 px Charcoal keyline sits inside the disc’s edge, and 1.5 px of the surface is cut '
+                                  'around it.',
+         '--oa-component-mark-take-part-disc, --oa-component-mark-take-part-keyline and '
+         '--oa-component-mark-take-part-cut',
+         '--oa-color-palette-pillar-red; keyline --oa-component-button-ask-keyline-on-newsprint'),
+        ('Not yet', 'A ring as wide as the step, its 1.5 px line drawn inside the edge, filled with the surface. Its '
+                    'number in Inter 600, in the secondary text color.', '--oa-component-mark-ring-ahead',
+         f'{sub}; number {t2}'),
+        ('Never happened', 'The Not yet ring under a 2 px slash in ink at 45 degrees, from lower left to upper right '
+                           f'through the center. The slash is 4 px longer than the circle is wide, {slash}, so it runs '
+                           '2 px past the ring at each end.', '--oa-component-mark-slash', f'slash {ink}; ring {sub}'),
+        ('Halo', 'On a step that never happened, a 4 px stroke in the surface color painted under the number, which '
+                 'shows 2 px around each figure and parts it from the slash.', '--oa-component-mark-halo', bg),
+        ('Stopped', f'A filled square 2 px narrower than the circle, {square}, centered where the circle would be. Its '
+                    'number in the surface color. The line ends here.', '', ink),
+        ('Line reached', 'A 2 px bar centered on the circles, from step to step as far as the record has come. It runs '
+                         'into a step that never happened, the last step included, since the record moved past it.',
+         '--oa-component-mark-line-reached', ink),
+        ('Line ahead', 'A 1 px bar from the current step to the next one and on. After a stopped step, no line.',
+         '--oa-component-mark-line-ahead', sub),
+        ('Numbers', 'Inter at 13 px in circles of 24 and 26 px and 14 px from 28 px, tabular figures, centered, with the '
+                    'baseline 0.36 of the type size below the circle’s center.', '', ''),
+    ]
+
+
+def s_marks_table(ctx):
+    """PP-M1: one table a developer can build every mark from, after Rule 11.2."""
+    T = ctx.ty
+    def code(t):
+        """Each token name in its own code span, its "--oa-" prefix and first word held together, so a name only
+        breaks after a later hyphen."""
+        return re.sub(r'--oa-([a-z]+)-(\S+?)(?=[;,]\s|\s|$)', r'<code><span class="nw">--oa-\1-</span>\2</code>', t)
+    rows = ''.join(f'<tr><th scope="row">{m}</th><td>{how}</td><td>{code(w) if w else "No token"}</td>'
+                   f'<td>{code(c) if c else "Given in each mark’s row"}</td></tr>'
+                   for m, how, w, c in mark_rows())
+    css = (f'table{{width:100%;border-collapse:collapse;{T("bodySmall")}}}'
+           f'th,td{{text-align:left;vertical-align:top;padding:12px 16px 12px 0;border-bottom:1px solid '
+           f'{ctx.v("oa.color.border.hairline.onNewsprint")}}}'
+           f'thead th{{{T("label")};color:{ctx.v("oa.color.text.secondary.onNewsprint")};border-bottom:2px solid '
+           f'{ctx.v("oa.color.border.strong.onNewsprint")}}}'
+           f'tbody th{{{T("ui")};font-weight:700;width:8.5rem}}.nw{{white-space:nowrap}}td code{{{T("dataLabel")};letter-spacing:0;'
+           f'text-transform:none;font-variant-numeric:normal}}'
+           f'td:nth-child(3),td:nth-child(4){{width:10rem}}'
+           f'@container (max-width:40rem){{thead{{display:none}}tr{{display:block;padding:12px 0;border-bottom:1px solid '
+           f'{ctx.v("oa.color.border.hairline.onNewsprint")}}}th,td,td:nth-child(3),td:nth-child(4){{display:block;width:auto;'
+           f'padding:0 0 6px;border:0}}'
+           f'td:nth-child(3)::before{{content:"Line or size: "}}td:nth-child(4)::before{{content:"Color: "}}}}'
+           f'.wr{{container-type:inline-size}}')
+    html = (f'<style>{css}</style><div class="wr"><table><thead><tr><th scope="col">Mark</th><th scope="col">How to draw '
+            f'it at 24, 26, 28 and 30 px</th><th scope="col">Line or size token</th><th scope="col">Color token</th>'
+            f'</tr></thead><tbody>{rows}</tbody></table></div>')
+    plain = lambda t: re.sub(r'<[^>]+>', '', t).replace('&lt;', '<').replace('&gt;', '>')
+    alt = ('Drawing the marks: a table of each mark, how to draw it at the four circle sizes, its line or size token and '
+           'its color token. ' + ' '.join(f'{m}: {plain(how)}' for m, how, _, _ in mark_rows()))
+    return spec(ctx, 's-11-marks-drawn', html, None, alt, readable=True,
+                notes='A readable table (D2-255) for PP-M1. Every figure is computed from node() and line_segments().')
+
+
 def s_11_1(ctx):
     """CA-M1: the forms of step 6 sit one above the other in a 360 px piece, so every name shows at true size in every
     chapter column and on a phone. Each bill keeps its own key. Round 2 adds a Nebraska bill (DR-150): six steps, step 5
@@ -647,12 +728,12 @@ def s_11_1(ctx):
     html = (f'<style>{css}</style><div class="pc"><p>{ILLUS}</p><p class="hd">Three bills that wait for a signature</p>'
             f'{blocks}</div>')
     alt = ('Three Illustrative bills at 360 px on Newsprint, one above the other, each drawn as six numbered steps with '
-           'its own key. A state bill, H.99003, Library hours, has passed steps 1 to 5 and stands at step 6: “Step 6 of 6: '
+           'its own key. A state bill, H.99003, Library hours, has steps 1 to 5 done and stands now at step 6: “Step 6 of 6: '
            'Governor. Both chambers passed it, and it waits for the governor to sign or veto it.” Its key reads 1 Filed, '
            '2 Hearing, 3 Committee vote, 4 First chamber, 5 Second chamber, 6 Governor. A federal bill, H.R. 99012, '
-           'Passport wait times, stands at the same place: “Step 6 of 6: President. Both chambers passed it, and it waits '
+           'Passport wait times, has steps 1 to 5 done and stands now at the same place: “Step 6 of 6: President. Both chambers passed it, and it waits '
            'for the President to sign or veto it.” Its key ends 6 President. A Nebraska bill, LB 99008, Rural clinic '
-           'grants, has steps 1 to 4 filled, step 5 as a fine ring under a slash and step 6 as the heavy ring: “Step 6 of '
+           'grants, has steps 1 to 4 done; step 5 never happened, and the bill stands now at step 6: “Step 6 of '
            '6: Governor. Nebraska has one chamber. The Legislature passed the bill on Final Reading on April 14, and it '
            'waits for the governor to sign or veto it.” Its key adds the mark for a step that never happened.')
     spec(ctx, 's-11-1-correct', html, '11.1', alt, width=360, illustrative=True)
@@ -664,7 +745,7 @@ def s_11_1(ctx):
                   'The enrolled bill went to the executive on February 12.')
     html2 = (f'<style>{css2}</style>{band}<div class="pc"><p>{ILLUS}</p><p class="hd">Where the library hours bill stands</p>'
              f'<ul class="rows">{r}</ul>{key(CLERK, ("done", "now"))}</div>')
-    alt2 = ('Labeled Failure case: do not publish. An Illustrative tracker for bill H.99003, Library hours, at 360 px, '
+    alt2 = ('Failure case: do not publish. An Illustrative tracker for bill H.99003, Library hours, at 360 px, '
             'whose key gives the six steps the clerk’s names: Introduced, Referred, Reported, Engrossed, Enrolled and '
             'Presented. It reads “Step 6 of 6: Presented. The enrolled bill went to the executive on February 12.”')
     spec(ctx, 's-11-1-failure', html2, '11.1', alt2, width=360, illustrative=True)
@@ -709,7 +790,7 @@ def s_11_2(ctx):
     rh = ctx.ratio('oa.color.palette.verdigris', 'oa.color.palette.stone', 'contrast of Verdigris and Stone')
     ctx.fig('grayscale of Verdigris, Stone and Prussian', f'{gv}, {gs}, {gp}',
             'CSS grayscale(1): 0.2126 R + 0.7152 G + 0.0722 B on the encoded token values')
-    alt2 = ('Labeled Failure case: do not publish. An Illustrative row of six identical numbered circles that tell their '
+    alt2 = ('Failure case: do not publish. An Illustrative row of six identical numbered circles that tell their '
             'states by hue alone: Verdigris for the three done steps, Prussian for step 4, where the bill is now, and '
             f'Stone for steps 5 and 6 ahead, with no word for any state. Below it, the same row in grayscale, where the '
             f'Verdigris and Stone circles print as grays {rr} to 1 apart.')
@@ -723,10 +804,10 @@ def s_11_3(ctx):
     rows = row(LAW_BILL, 's') + row(OVERRIDE_BILL, 's') + row(STOP_BILL, 's')
     html = (f'<style>{css}</style><div class="pc"><p>{ILLUS}</p><p class="hd">How three state bills ended</p>'
             f'<ul class="rows">{rows}</ul>{key(names(), ("done", "stopped"))}</div>')
-    alt = ('Three Illustrative bills at 360 px on Newsprint. Bill H.99003, Library hours: all six numbered steps are '
-           'filled, and the words say “Became law on April 2. It takes effect July 1.” Bill S.99006, Snow route parking: '
-           'all six steps are filled, and the words say “Became law on March 18, over the governor’s veto. It takes effect '
-           'June 1.” Bill S.99005, Parking meter fees: steps 1 to 5 are filled, and step 6 is a filled square where the '
+    alt = ('Three Illustrative bills at 360 px on Newsprint. Bill H.99003, Library hours: its six numbered steps, '
+           'steps 1 to 6, are all done, and the words say “Became law on April 2. It takes effect July 1.” Bill S.99006, Snow route parking: '
+           'steps 1 to 6 are done, and the words say “Became law on March 18, over the governor’s veto. It takes effect '
+           'June 1.” Bill S.99005, Parking meter fees: steps 1 to 5 are done, and the bill stopped at step 6, where the '
            'line ends. The words say “Stopped at step 6 of 6: Governor. The governor vetoed it on February 9, and the '
            'Senate’s vote to override fell short on February 23.” A key gives the six step names and the Done and Stopped '
            'marks.')
@@ -737,8 +818,8 @@ def s_11_3(ctx):
     r = row(LIST_BILLS[2], 's', nm=nm)
     html2 = (f'<style>{css2}</style>{band}<div class="pc"><p>{ILLUS}</p><p class="hd">Where the library hours bill stands</p>'
              f'<ul class="rows">{r}</ul>{key(nm, ("done", "now", "notyet"))}</div>')
-    alt2 = ('Labeled Failure case: do not publish. An Illustrative tracker for bill H.99003, Library hours, whose sixth step '
-            'is named Law. Steps 1 to 5 are filled and step 6 carries the heavy ring, so the words read “Step 6 of 6: Law. '
+    alt2 = ('Failure case: do not publish. An Illustrative tracker for bill H.99003, Library hours, whose sixth step '
+            'is named Law. Steps 1 to 5 are done and the bill stands now at step 6, so the words read “Step 6 of 6: Law. '
             'Both chambers passed it, and it waits for the governor to sign or veto it.”')
     spec(ctx, 's-11-3-failure', html2, '11.3', alt2, width=360, illustrative=True)
 
@@ -763,14 +844,14 @@ def s_11_4(ctx):
     css, html = card(ctx)
     alt = ('An Illustrative story card at 360 px on Newsprint with the kicker Tracker, State bills, the headline “The '
            'House hears the town audit bill on March 10”, and a line on what the bill would do. Under it, bill S.99007, '
-           'Town audit deadlines, as six numbered steps: steps 1 to 4 filled, step 5 a heavy ring with a small red disc '
-           'at its upper right, step 6 a fine ring. The words say “Step 5 of 6: Second chamber. The Senate passed it on '
+           'Town audit deadlines, as six numbered steps: steps 1 to 4 done, step 5 where you can take part now, marked by '
+           'the small red disc on its ring, and step 6 not yet. The words say “Step 5 of 6: Second chamber. The Senate passed it on '
            'February 24, and a House committee holds its hearing on March 10.” Beside the same red disc, “You can take '
            'part now. Send written testimony or sign up to speak by March 10.”, then the link How to send testimony.')
     spec(ctx, 's-11-4-correct', f'<style>{css}</style>{html}', '11.4', alt, width=360, illustrative=True)
     fcss, band = ctx.fail_band(flush=True)
     css2, html2 = card(ctx, red_progress=True)
-    alt2 = ('Labeled Failure case: do not publish. The same Illustrative story card, with the line and the four filled '
+    alt2 = ('Failure case: do not publish. The same Illustrative story card, with the line and the four done '
             'steps drawn in Pillar Red, so red marks how far the bill has come as well as the red disc on step 5 that '
             'says you can take part now.')
     spec(ctx, 's-11-4-failure', f'<style>{css2}{fcss}</style>{band}{html2}', '11.4', alt2, width=360, illustrative=True,
@@ -809,7 +890,7 @@ def s_11_5(ctx):
                  f'<p class="st"><b>{status_words(b)}</b> {b["line"]}</p></li>')
     html = (f'<style>{css}</style>{band}<div class="pc"><p>{ILLUS}</p><p class="hd">Where two state bills stand this week</p>'
             f'<ul class="rows">{rows}</ul></div>')
-    alt = ('Labeled Failure case: do not publish. Two Illustrative bills at 360 px on Newsprint, each drawn as six small '
+    alt = ('Failure case: do not publish. Two Illustrative bills at 360 px on Newsprint, each drawn as six small '
            'dots on a line with no numbers or names. H.99001’s second dot is a ring with a red center, and S.99002’s fourth '
            'dot is a ring, so a reader counts dots to find the step. The status words sit under each line.')
     spec(ctx, 's-11-5-failure', html, '11.5', alt, width=360, illustrative=True)
@@ -922,7 +1003,7 @@ def s_11_6(ctx):
         sids[(surf, size)] = sid
     fcss, band = ctx.fail_band(flush=True)
     html = f'<style>{page_css(ctx, "n", "s")}{fcss}</style>{band}{bill_page(ctx, "n", "s", generic=True)}'
-    alt = ('Labeled Failure case: do not publish. The same Illustrative page for bill H.99001, Public meeting notice, with '
+    alt = ('Failure case: do not publish. The same Illustrative page for bill H.99001, Public meeting notice, with '
            'a generic stepper from a component library in place of the numbered steps: a filled box with a check for step 1, a box with a dot for '
            'step 2 and empty boxes for steps 3 to 6, with no numbers, no state in words and no way to take part.')
     spec(ctx, 's-11-6-failure', html, '11.6', alt, width=360, illustrative=True)
@@ -979,7 +1060,7 @@ def s_11_7(ctx):
              f'<p class="bill"><b>Bill {b["id"]}</b>, {b["title"]}</p><div class="mkw">{small}</div>'
              f'<p class="st"><b>{status_words(b)}</b> {b["line"]}</p>'
              f'<p class="tp"><span class="tiny">Send testimony</span></p></li></ul></div>')
-    alt2 = ('Labeled Failure case: do not publish. An Illustrative tracker for bill H.99001 drawn with 16 px circles and '
+    alt2 = ('Failure case: do not publish. An Illustrative tracker for bill H.99001 drawn with 16 px circles and '
             'numbers 9 px tall, and a Send testimony link 20 px tall in 11 px type, marked with a dashed outline.')
     spec(ctx, 's-11-7-failure', html2, '11.7', alt2, width=360, illustrative=True, exempt=['size', 'scale'],
          notes='Labeled failure: numbers at 9 px and a link at 11 px, off the scale on purpose and under the 13 px floor.')
@@ -1022,8 +1103,8 @@ def s_11_8(ctx):
     bad = dict(REQUESTS[2], end='Full denial for reasons other than exemptions.',
                line='The agency closed the request on April 9.')
     html2 = records_piece(ctx, 'Where the park ranger records request stands', [bad], nm, ('done', 'stopped'), band=True)
-    alt2 = ('Labeled Failure case: do not publish. An Illustrative records request, 99005, Park ranger staffing records, at '
-            '360 px: steps 1 and 2 filled and a square at step 3, Searching, where the line ends. The words read “Full '
+    alt2 = ('Failure case: do not publish. An Illustrative records request, 99005, Park ranger staffing records, at '
+            '360 px: steps 1 and 2 done, and the request stopped at step 3, Searching, where the line ends. The words read “Full '
             'denial for reasons other than exemptions. The agency closed the request on April 9.” The requester withdrew '
             'it, and nothing on the card says so.')
     spec(ctx, 's-11-8-failure', html2, '11.8', alt2, width=360, illustrative=True)
@@ -1039,8 +1120,9 @@ def s_11_9(ctx):
     bad = dict(RULES[1], states=['skipped', 'done', 'done', 'done', 'done', 'done'],
                line='The agency published the final rule on August 1.')
     html2 = records_piece(ctx, 'Where the grain dust rule stands', [bad], nm, ('done', 'skipped'), band=True)
-    alt2 = ('Labeled Failure case: do not publish. An Illustrative agency rule, 99004, Grain dust limits, at 360 px: step '
-            '1 under a slash and steps 2 to 6 filled, so Proposed, Comments open and Comments closed all read as done. The '
+    alt2 = ('Failure case: do not publish. An Illustrative agency rule, 99004, Grain dust limits, at 360 px: step '
+            '1 never happened and steps 2 to 6 are drawn as done, so Proposed, Comments open and Comments closed all '
+            'read as steps that happened. The '
             'words read “In effect since August 1. The agency published the final rule on August 1.” The agency issued it '
             'without asking for comment first, and nothing on the card says so.')
     spec(ctx, 's-11-9-failure', html2, '11.9', alt2, width=360, illustrative=True)
@@ -1048,7 +1130,7 @@ def s_11_9(ctx):
 
 def s_11_10(ctx):
     nm = names('request')
-    later = dict(id='99009', noun='Request', kind='request', title='Jail inspection reports', states=['done'] * 6,
+    later = dict(id='99009', noun='Request', kind='request', title='Prison inspection reports', states=['done'] * 6,
                  end='Upheld on appeal on July 8.',
                  line='The appeal office kept the agency’s answer. The requester took the request to federal court on '
                       'August 3.')
@@ -1062,9 +1144,9 @@ def s_11_10(ctx):
                line='The agency sent a fee estimate on April 2.', wait=None, checked=None)
     css = piece_css(ctx, 'n', 's') + records_css(ctx)
     fcss, band = ctx.fail_band(flush=True)
-    html2 = (f'<style>{css}{fcss}</style>{band}<div class="pc"><p>{ILLUS}</p><p class="hd">Where the snowplow records request '
-             f'stands</p><ul class="rows">{row(bad, "s", nm7)}</ul>{key(nm7, ("done", "now", "notyet"))}</div>')
-    alt2 = ('Labeled Failure case: do not publish. An Illustrative records request, 99007, Snowplow contract records, at 360 '
+    html2 = (f'<style>{css}{fcss}</style>{band}<div class="pc"><p>{ILLUS}</p><p class="hd">Where the weather station records '
+             f'request stands</p><ul class="rows">{row(bad, "s", nm7)}</ul>{key(nm7, ("done", "now", "notyet"))}</div>')
+    alt2 = ('Failure case: do not publish. An Illustrative records request, 99007, Weather station repair records, at 360 '
             'px, drawn as seven numbered steps: the fee estimate has become step 4, between Searching and Reviewing. The '
             'words read “Step 4 of 7: Fee estimate. The agency sent a fee estimate on April 2.”, and the key lists seven '
             'steps.')
@@ -1074,6 +1156,7 @@ def s_11_10(ctx):
 # ------------------------------------------------------------------------------------------------ chapter
 def build(ctx):
     s_steps(ctx)
+    s_marks_table(ctx)
     s_11_1(ctx)
     rr, rh = s_11_2(ctx)
     s_11_3(ctx)
@@ -1162,8 +1245,11 @@ def build(ctx):
                        'oa.color.graphic.subtle.onCharcoal'],
             'why': {'text': ['A shape holds up in gray print, in bright sun and for the many readers who cannot tell red '
                              'from green. The words carry the state to a screen reader and to anyone unsure of a mark. '
-                             'Each mark but the take-part disc draws in the surface’s ink, Charcoal on Newsprint and '
-                             'Newsprint on Charcoal, so a tracker reads the same on either ground.'],
+                             'Every mark a bill has reached draws in the surface’s ink, Charcoal on Newsprint and '
+                             'Newsprint on Charcoal, as do the slash and the line up to the current step. The rings '
+                             'ahead, the ring under a slash and the line after the current step draw lighter, in Stone '
+                             'on Newsprint and Dim Newsprint on Charcoal, so the steps still to come stand back. Only '
+                             'the take-part disc is red.'],
                     'basis': 'WCAG 2.2 SC 1.4.1 and 1.4.11; design judgment'},
             'correct': {'specimen': 's-11-2-correct',
                         'caption': 'The six states, each drawn on step 4 at true size. Each one changes the '
@@ -1175,11 +1261,13 @@ def build(ctx):
             'specs': [
                 {'label': 'Done', 'value': 'A filled circle, its number in the surface color'},
                 {'label': 'Now', 'value': 'A ring with a 3 px line, its number in bold', 'token': 'oa.component.mark.ring.now'},
-                {'label': 'Not yet', 'value': 'A ring with a 1.5 px line, its number in Inter 600 in the secondary text color',
+                {'label': 'Not yet', 'value': 'A ring with a 1.5 px line in Stone, its number in Inter 600 in the secondary text color',
                  'token': 'oa.component.mark.ring.ahead'},
-                {'label': 'Never happened', 'value': 'The Not yet ring under a 2 px slash, its number kept clear by a 2 px '
-                                                     'halo in the surface color', 'token': 'oa.component.mark.slash'},
-                {'label': 'Stopped', 'value': 'A filled square in place of the circle; the line ends there'},
+                {'label': 'Never happened', 'value': 'The Not yet ring under a 2 px slash in ink, 4 px longer than the '
+                                                     'circle is wide', 'token': 'oa.component.mark.slash'},
+                {'label': 'Halo', 'value': 'A 4 px stroke in the surface color under the number of a step that never '
+                                           'happened, which shows 2 px around it', 'token': 'oa.component.mark.halo'},
+                {'label': 'Stopped', 'value': 'A filled square 2 px narrower than the circle, in its place; the line ends there'},
                 {'label': 'Marks on Newsprint', 'value': f'Charcoal {ink_n} to 1, Stone {sub_n} to 1',
                  'token': 'oa.color.graphic.subtle.onNewsprint'},
                 {'label': 'Marks on Charcoal', 'value': f'Newsprint {ink_c} to 1, Dim Newsprint {sub_c} to 1',
@@ -1195,7 +1283,9 @@ def build(ctx):
                          '<code>S-not-yet</code>, <code>S-never-happened</code>, <code>S-stopped</code>) with '
                          '<code>data-icon-family="status"</code>, so the shared checks find it.',
                          'A hearing on the bill’s subject held before the bill was filed does not fill step 2; the step’s '
-                         'note names it.'],
+                         'note names it.',
+                         'Draw each mark from the table after this rule, Drawing the marks, which gives its size at every '
+                         'circle size, its line, its color token and where its parts sit.'],
         },
         {
             'id': '11.3', 'title': 'Say in words when a bill becomes law or stops.',
@@ -1295,11 +1385,12 @@ def build(ctx):
                                    'lockmark’s drawing.'},
             'specs': [
                 {'label': 'Circles', 'value': '26 px in a phone list, 30 px in a wide list, 24 px on a story card'},
-                {'label': 'Line', 'value': '2 px in the surface’s ink as far as the bill has come, 1 px after it',
+                {'label': 'Line', 'value': '2 px in the surface’s ink as far as the record has come, through any step that '
+                                           'never happened; 1 px in Stone after the current step',
                  'token': 'oa.component.mark.line.reached'},
-                {'label': 'Spacing', 'value': 'Phone list and card: first circle on the text edge, last on the far '
-                                              'edge, 60 px apart in a 328 px row. Wide list: one sixth of a 552 px row '
-                                              'to each step, 92 px'},
+                {'label': 'Spacing', 'value': 'Phone list and card: the first circle on the text edge and each next one '
+                                              '60 px on, center to center, so six fit a 328 px row. Wide list: one '
+                                              'sixth of a 552 px row to each step, 92 px'},
                 {'label': 'Step names', 'value': 'Under the circles in a column 552 px wide or more; in the key below '
                                                  'that',
                  'token': 'oa.type.dataLabel'},
@@ -1360,7 +1451,8 @@ def build(ctx):
                                    'and the link stands 20 px tall, under the 24 px minimum.'},
             'specs': [
                 {'label': 'Circles', 'value': '24, 26, 28 and 30 px, by place'},
-                {'label': 'Numbers', 'value': 'Inter 700 at 13 px, or 14 px in circles of 28 px and up; tabular figures'},
+                {'label': 'Numbers', 'value': 'Inter 700 at 13 px, or 14 px in circles of 28 px and up; Inter 600 on a step '
+                                              'not yet reached or never happened; tabular figures'},
                 {'label': 'Links and buttons in a tracker, and controls with a utility icon', 'value': f'At least {touch} px '
                                                                                                      f'tall',
                  'token': 'oa.size.target.touch'},
@@ -1379,7 +1471,9 @@ def build(ctx):
     rules += [
         {
             'id': '11.8', 'title': 'Follow a records request through six steps, and end it in plain words.',
-            'rule': ['A records request asks a government agency to release documents it holds. Its tracker uses the bill '
+            'rule': ['A records request asks a government agency to release documents it holds. These steps and end '
+                     'words follow the federal Freedom of Information Act and the Justice Department’s categories; a '
+                     'request to a state or local agency follows that state’s law. The tracker uses the bill '
                      'tracker’s marks for six steps of its own: Requested, Acknowledged, Searching, Reviewing, Answered and '
                      'Appeal. Step 6 counts only when the requester appeals, so a request that was never appealed keeps '
                      'step 6 under a slash once the time to appeal has passed.',
@@ -1421,13 +1515,14 @@ def build(ctx):
                      'Final rule and In effect. Step 1 is optional, so a rule that had no early notice keeps step 1 under a '
                      'slash. While comments are open, step 3 takes the take-part mark from Rule 11.4, with the deadline and '
                      'how to send a comment.',
-                     'A rule the agency issued without asking for comment first, such as an interim final rule, which takes '
-                     'comments only after it takes effect, keeps steps 2 to 4 under slashes, and its words say so: “Issued without advance comment.” A rule that ends early '
+                     'A rule the agency issued without asking for comment first keeps steps 2 to 4 under slashes, and its '
+                     'words say so: “Issued without advance comment.” An interim final rule is one such rule, and it '
+                     'takes comments only after it takes effect. A rule that ends early '
                      'says how in words, with the date: Withdrawn by the agency, Struck by Congress, or Set aside by a '
                      'court. Once a rule takes effect, all six steps fill, as a bill’s do once it becomes law.'],
             'tokens': ['oa.component.mark.takePart.disc'],
-            'why': {'text': ['Sending a comment is the way the law gives the public to take part in a federal rule, so '
-                             'the open '
+            'why': {'text': ['Sending a comment is the main way the law gives the public to take part in a federal rule, '
+                             'so the open '
                              'comment period carries the view’s working red, as a hearing does on a bill. The slashes keep '
                              'a rule that skipped comment from reading as one the public had a say in before it took '
                              'effect.'],
@@ -1459,15 +1554,18 @@ def build(ctx):
         },
         {
             'id': '11.10', 'title': 'Say a wait or a later step in words, and keep the count at six.',
-            'rule': ['A pause inside a step, such as an agency’s question to the requester, a fee estimate or a ten-day '
-                     'extension, shows as words under the step it falls in. It never adds a mark, so every request still '
+            'rule': ['A wait inside a step, such as an agency’s question to the requester, a fee estimate or an '
+                     'extension of up to 10 working days, shows as words under the step it falls in. It never adds a mark, so every request still '
                      'counts to six. A step outside the agency, such as mediation by the National Archives or a lawsuit, '
                      'follows the end words as a sentence with its date.',
-                     'A status we read from the record ourselves carries the warning mark and the date we checked it: '
-                     '“Checked April 20. The agency may have acted since.”'],
+                     'A status taken from the agency’s own tracking service, or from the Federal Register for a rule, '
+                     'needs no mark. A status we piece together ourselves, such as a wait we learn of from the '
+                     'agency’s letter, carries the warning mark and the date we checked it: “Checked April 20. The agency '
+                     'may have acted since.”'],
             'tokens': ['oa.color.state.warning.mark.onNewsprint'],
-            'why': {'text': ['The law treats these waits as pauses in the agency’s 20 working days, so they belong inside '
-                             'a step. A count that changed from one request to the next would stop readers from comparing '
+            'why': {'text': ['The law lets an agency stop its 20 working days while it waits on the requester, once for '
+                             'more information and again to settle fees, and add up to 10 working days in unusual '
+                             'circumstances, so each wait belongs inside the step it falls in. A count that changed from one request to the next would stop readers from comparing '
                              'them. The check date tells a reader how old the status is before they rely on it.'],
                     'basis': '5 U.S.C. 552(a)(6); design judgment'},
             'correct': {'specimen': 's-11-10-correct',
@@ -1482,13 +1580,15 @@ def build(ctx):
                                                       'it falls in, with its date'},
                 {'label': 'A proposed rule that sits', 'value': '“No action since” and the date, under its step'},
                 {'label': 'After the agency', 'value': 'Mediation or a lawsuit, in a sentence after the end words'},
-                {'label': 'Check date', 'value': 'The warning mark at 24 px, in ink, then “Checked” and the date',
+                {'label': 'Check date', 'value': 'For a status we piece together ourselves: the warning mark at 24 px, in '
+                                                 'ink, then “Checked” and the date',
                  'token': 'oa.color.state.warning.mark.onNewsprint'},
                 {'label': 'Marks', 'value': 'Six, always'},
             ],
             'related': ['13', '17'],
             'builders': ['Keep a wait as a field on its step, with the dates it began and ended, so the words can say how '
-                         'long the clock stopped.'],
+                         'long the count of working days stopped. Store where each status came from, so a status we '
+                         'piece together ourselves prints its check date.'],
         },
     ]
 
@@ -1524,6 +1624,9 @@ def build(ctx):
         'extras': [
             {'after_rule': '11.1', 'specimen': 's-11-steps', 'label': 'The six steps',
              'caption': 'What happens at each step. Step 6 takes the name of whoever signs the bill.'},
+            {'after_rule': '11.2', 'specimen': 's-11-marks-drawn', 'label': 'Drawing the marks',
+             'caption': 'Each mark at every circle size, with its line, its color token and where its parts sit. On '
+                        'Charcoal, read “charcoal” for &lt;surface&gt;.'},
             {'after_rule': '11.5', 'specimen': lists[('c', 'l')], 'label': 'Numbered steps in a 600 px column on Charcoal',
              'caption': 'The wide form, as on a tablet or in a desktop article column, on Charcoal, with two of the bills. '
                         'Each step’s name sits under its circle, the current step’s name is bold, and the marks turn to '
@@ -1539,19 +1642,32 @@ def build(ctx):
             {'chapter': '10', 'reason': 'Topic and atlas symbols, which name subjects and never stand for an action.'},
         ],
         'sources': [
-            'Source: Nebraska Legislature, “Lawmaking in Nebraska”, via nebraskalegislature.gov, retrieved November 9, '
-            '2026. Nebraska’s one-chamber route and its steps, behind Rule 11.1.',
+            # BE-S8: a period for every source, "as in force on" after a statute and "no page date" after an undated page
+            'Source: Nebraska Legislature, “Lawmaking in Nebraska”, via nebraskalegislature.gov, no page date, retrieved '
+            'November 9, 2026. Nebraska’s one-chamber route and its steps, behind Rule 11.1.',
+            # BE-S4, CD-S8: the research lead's line (20261109_Stage-B-Research-Notes.md, section 4), with BE-S8's page
+            # dates and its closing clause recast without the "examples, not a count" turn (chapter 02, W09)
+            'Sources: Nebraska Legislature, “Tips on Testifying at a Committee Hearing”, no page date; Washington State '
+            'Legislature, “How to Testify in Committee”, 2023; Minnesota Legislature, “May I testify at a committee '
+            'hearing?”, reviewed February 20, 2026; Utah Legislature, “How to Testify In A Committee”, no page date; '
+            'Texas Legislature Online, FAQ 27, no page date; five states, all retrieved November 9, 2026. Each '
+            'legislature sets its own rules on sign-up, time limits and which bills get a hearing, and we read these '
+            'five as examples and made no national count. Testimony from the public at a state committee hearing, '
+            'behind Rule 11.1.',
             'Sources: the Freedom of Information Act, 5 U.S.C. 552, via the Legal Information Institute, Cornell Law '
-            'School; and FOIA.gov, “Frequently Asked Questions”, run by the Justice Department’s Office of Information '
-            'Policy; both retrieved November 9, 2026. The steps, the 20 working days and the pauses in them, behind Rules '
-            '11.8 and 11.10.',
-            'Source: Office of Information Policy, Justice Department, “Fiscal Year 2024 Annual Freedom of Information Act '
-            'Report”, March 6, 2025, section III, fiscal year 2024, federal agencies. Retrieved November 9, 2026. The '
-            'categories behind the end words in Rule 11.8.',
+            'School, as in force on November 9, 2026; and FOIA.gov, “Frequently Asked Questions”, run by the Justice '
+            'Department’s Office of Information Policy, no page date; both retrieved November 9, 2026. The steps, the '
+            '20 working days and the waits in them, behind Rules 11.8 and 11.10.',
+            # BE-S1: the sections that hold the categories, and the report's own coverage; ED 4e's form for "retrieved"
+            'Source: Office of Information Policy, U.S. Department of Justice, “Fiscal Year 2024 Annual Freedom of '
+            'Information Act Report”, March 6, 2025, sections V.B.(1) and VI.B, fiscal year 2024, the Justice '
+            'Department and its components, retrieved November 9, 2026. The categories behind the end words in Rule '
+            '11.8.',
             'Sources: rulemaking, 5 U.S.C. 553, Congressional review, 5 U.S.C. 801, and judicial review, 5 U.S.C. 706, via '
-            'the Legal Information Institute; and RegInfo.gov, “Frequently Asked Questions”, the Office of Information and '
-            'Regulatory Affairs; all retrieved November 9, 2026. The steps of a federal rule, its comment period, when it '
-            'takes effect and how it can end, behind Rule 11.9.',
+            'the Legal Information Institute, Cornell Law School, as in force on November 9, 2026; and RegInfo.gov, '
+            '“Frequently Asked Questions”, the Office of Information and Regulatory Affairs, no page date; all retrieved '
+            'November 9, 2026. The steps of a federal rule, its comment period, when it takes effect and how it can '
+            'end, behind Rule 11.9.',
         ],
     }
     return ch

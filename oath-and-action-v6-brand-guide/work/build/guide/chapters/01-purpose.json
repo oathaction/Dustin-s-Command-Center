@@ -447,7 +447,7 @@
    },
    "correct": {
     "specimen": "s-01-11-correct",
-    "caption": "Each case names the month, the majority that acted and the seats its map aimed at, then the last step its state required, in 22 words. Texas’s map became law with the governor’s signature; California’s needed a constitutional amendment only voters could approve. Under the cases, the plate counts the maps in the atlas’s record by the party that led each, seven to one. It names the two maps that voters decided, California’s and Missouri’s, and Virginia’s attempt, which a court voided. Its source line gives Ohio’s 7 to 0 commission vote and the status of Missouri’s count."
+    "caption": "Each case names the month, the majority that acted and the seats its map aimed at, then the last step its state required, in 22 words. Texas’s map became law with the governor’s signature; California’s needed a constitutional amendment only voters could approve. Under the cases, the plate counts the maps in the atlas’s record by the party that led each, seven to one. It names the two maps that voters decided, California’s and Missouri’s, and Virginia’s attempt, which voters approved and a court voided. Each source stands on its own line, and a note headed “How we counted” gives the method, Ohio’s 7 to 0 commission vote, the status of Missouri’s count and why the plate leaves out Utah’s map."
    },
    "failure": {
     "specimen": "s-01-11-failure",
@@ -705,7 +705,7 @@
    "title": "Open every kicker with one content label.",
    "rule": [
     "Open the kicker, the short line above a headline, with one of the seven content labels in this rule’s specifications. At most one more part follows, after a middle dot: the series name if the piece belongs to a series, otherwise its topic, as in “Explainer · Local schools”. A newsletter issue carries no label in its header, and each story inside it carries its own.",
-    "Set the kicker in words. The one picture it may hold is a topic symbol from the Civic Line, our set of symbols in chapter 10, placed directly before the topic’s own word. Pillar icons belong to the pillar row, section openers and tiles, and never enter a kicker."
+    "Set the kicker in words. The one picture it may hold is a topic or atlas symbol from the 37 that read at 24 px (Rule 10.4), placed directly before its own word. Both come from the Civic Line, our set of symbols in chapter 10, and an atlas symbol stands for a part of our systems atlas, so its word is the atlas’s name for it. A subject that none of the 37 stands for, such as Housing, takes its word alone. Pillar icons belong to the pillar row, section openers and tiles, and never enter a kicker."
    ],
    "tokens": [
     "oa.color.action.primary.fill.onNewsprint",
@@ -713,13 +713,13 @@
    ],
    "why": {
     "text": [
-     "The label tells a reader what kind of claim the piece makes before they read it, and whether we are reporting or arguing. A topic symbol beside its own word shows the subject a second way. A pillar icon in a kicker would sit beside a label such as Report or Guide, which names no pillar, and leave the reader to decode the drawing."
+     "The label tells a reader what kind of claim the piece makes before they read it, and whether we are reporting or arguing. A symbol beside its own word shows the subject a second way. A pillar icon in a kicker would sit beside a label such as Report or Guide, which names no pillar, and leave the reader to decode the drawing."
     ],
     "basis": "Design judgment"
    },
    "correct": {
     "specimen": "s-01-21-correct",
-    "caption": "Each kicker opens with its label and adds at most a series or a topic. The Analysis kicker holds the one picture a kicker may carry, the icon for workers’ share of income beside its own words. Only “Our position” takes the Charcoal fill, and the first three headlines are real, so the label sits beside each invented one. “Act · How to take part” is one label, so its dot and both its words belong to the label."
+    "caption": "Each kicker opens with its label and adds at most a series or a topic. The Analysis kicker holds the one picture a kicker may carry, the atlas symbol for workers’ share of income beside the atlas’s name for it. Only “Our position” takes the Charcoal fill, and the first three headlines are real, so the Illustrative label ends the kicker of each invented one. “Act · How to take part” is one label, so its dot and both its words belong to the label."
    },
    "failure": {
     "specimen": "s-01-21-failure",
@@ -764,8 +764,8 @@
      "value": "The label style, Inter 700 capitals at 13 px; the second part in the secondary text ink"
     },
     {
-     "label": "Topic icon",
-     "value": "Optional: a Civic Line icon at 24 px in one color, 8 px before the topic’s own word, only when the second part is a topic",
+     "label": "Kicker symbol",
+     "value": "Optional: a topic or atlas symbol from the 37 that read at 24 px (Rule 10.4), in one color, 8 px before its own word, only when the second part is a topic",
      "token": "oa.size.icon.medium"
     },
     {
@@ -777,7 +777,7 @@
     "10",
     "13"
    ],
-   "builders": "Pick the label from the seven in this rule. If a piece fits none of them, ask the editor before it runs. Add a topic symbol only when the kicker’s second part is the word that symbol names, and keep pillar icons and the lockmark out of kickers."
+   "builders": "Pick the label from the seven in this rule. If a piece fits none of them, ask the editor before it runs. Add a topic or atlas symbol from the 37 that read at 24 px (Rule 10.4) only when the kicker’s second part is that symbol’s own word, and keep pillar icons and the lockmark out of kickers."
   },
   {
    "id": "01.22",
@@ -936,7 +936,7 @@
   {
    "specimen": "s-01-pillars",
    "label": "The four pillars, always in this order",
-   "caption": "Each pillar’s icon sits beside its word, and a page that serves one pillar underlines that word; from 48 px its icon also shows its red part as a second sign, as the section opener’s row draws it. The icons belong to the Civic Line, our set of symbols, and chapter 09 sets their sizes. Every product carries the Oath & Action name. The atlas, the trackers and the data never take a position; positions appear only in labeled Act pieces."
+   "caption": "Each pillar’s icon sits beside its word, and a page that serves one pillar underlines that word; from 48 px its icon also shows its red accent as a second sign, as Track’s icon does here. The icons belong to the Civic Line, our set of symbols, and chapter 09 sets their sizes. Every product carries the Oath & Action name. The atlas, the trackers and the data never take a position; positions appear only in labeled Act pieces."
   },
   {
    "specimen": "s-01-pieces",
@@ -962,11 +962,12 @@
   "Source: Ballotpedia, a secondary source, States with initiative or referendum, statewide citizen-initiated measures as described on November 6, 2026, 50 states and DC. Retrieved November 6, 2026. Mississippi’s process cannot be used after a May 14, 2021 state supreme court ruling. Florida’s citizens may propose only constitutional amendments, which need 60 percent of the vote. Illinois’s citizens may propose only amendments on the legislature’s structure and procedure.",
   "Source: Federal Election Commission, Official 2024 Presidential General Election Results, compiled from state election offices, November 2024, 50 states and DC. Retrieved November 6, 2026.",
   "Sources: Texas Legislature, H.B. 4, 89th Legislature, second called session, bill history, August 2025; California Secretary of State, Statement of Vote, Proposition 50, November 4, 2025; Tangipa v. Newsom, U.S. District Court for the Central District of California, order of January 14, 2026; Texas and California. Oath & Action’s systems atlas, Loop R4a, case record, snapshot of October 15, 2026. Retrieved November 6, 2026. The five-seat aims are each side’s stated goals; these lines do not measure the seats either map produced.",
-  "Source for the count: Oath & Action’s systems atlas, Who Do They Answer To?, its records for Loop R4a and its log of rule changes, snapshot of October 15, 2026; congressional maps passed between censuses, January 2025 to October 2026; United States. Retrieved November 10, 2026. We counted each map by the party that led the legislature or commission when it passed, from each body’s own member lists and minutes. Ohio’s redistricting commission, five Republicans and two Democrats, adopted its map 7 to 0 on October 31, 2025, the deadline the state constitution set, and the constitution required at least two votes from each party’s members. Missouri’s vote came after the snapshot. Its figures are unofficial statewide returns for Proposition A, November 3, 2026, 1,273,815 no and 785,969 yes, from St. Charles County, Missouri, “Voters Turn Out for 2026 Midterm Election in St. Charles County”, sccmo.org, November 4, 2026; the state certifies the count after local election authorities file theirs by November 17, 2026. A law sent to Missouri’s voters takes effect only if they approve it, so the state keeps its 2022 districts. A court adopted Utah’s map, so the count leaves it out. The count measures maps passed and says nothing about the seats they moved.",
+  "Source for the count: Oath & Action’s systems atlas, Who Do They Answer To?, its records for Loop R4a and its log of rule changes, snapshot of October 15, 2026; congressional maps passed between censuses, January 2025 to October 2026; United States. Retrieved November 10, 2026. The count measures maps passed and says nothing about the seats they moved.",
+  "Source for Missouri’s figures: St. Charles County, Missouri, “Voters Turn Out for 2026 Midterm Election in St. Charles County”, sccmo.org, November 4, 2026; unofficial statewide returns for Proposition A, November 3, 2026; Missouri. Retrieved November 10, 2026.",
   "Source: U.S. Department of Labor, Wage and Hour Division, State Minimum Wage Laws, updated July 1, 2026, Ohio and Pennsylvania, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. Ohio’s yearly rate applies to employers with annual gross receipts of $405,000 or more.",
   "Sources: Anna M. Stansbury and Lawrence H. Summers, Harvard University, “Productivity and Pay: Is the Link Broken?”, National Bureau of Economic Research Working Paper 24165, December 2017, 1973 to 2016, United States; Economic Policy Institute, “The Productivity-Pay Gap”, 1979 to 2026, United States. Retrieved November 6, 2026. The two differ in the price index they use and in how they count benefits; our systems atlas grades the connection plausible and contested.",
-  "Source: Oath & Action’s systems atlas, Who Do They Answer To?, glossary entry “Cloture”.",
-  "From Oath & Action’s systems atlas, Who Do They Answer To?, the everyday answer to “Why is my electric bill going up?”",
+  "Source: Oath & Action’s systems atlas, Who Do They Answer To?, glossary entry “Cloture”, snapshot of October 15, 2026.",
+  "From Oath & Action’s systems atlas, Who Do They Answer To?, the everyday answer to “Why is my electric bill going up?”, snapshot of October 15, 2026.",
   "Our brand guide, fifth edition, chapter 13 In use: “Who wrote the rule you are angry about?”"
  ],
  "related_chapters": [

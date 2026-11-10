@@ -207,6 +207,46 @@
    "CL-023|CL-048": {
     "likeness": 0.6931,
     "percentile": 43.4
+   },
+   "CL-023|CL-028": {
+    "likeness": 0.9277,
+    "percentile": 99.6
+   },
+   "CL-023|R-08": {
+    "likeness": 0.8918,
+    "percentile": 97.9
+   },
+   "CL-023|R-27": {
+    "likeness": 0.885,
+    "percentile": 97.2
+   },
+   "CL-023|R-45": {
+    "likeness": 0.8498,
+    "percentile": 91.5
+   },
+   "CL-028|R-08": {
+    "likeness": 0.9419,
+    "percentile": 99.8
+   },
+   "CL-028|R-27": {
+    "likeness": 0.958,
+    "percentile": 100
+   },
+   "CL-028|R-45": {
+    "likeness": 0.8171,
+    "percentile": 82.7
+   },
+   "R-08|R-27": {
+    "likeness": 0.9453,
+    "percentile": 99.9
+   },
+   "R-08|R-45": {
+    "likeness": 0.8757,
+    "percentile": 96.2
+   },
+   "R-27|R-45": {
+    "likeness": 0.8026,
+    "percentile": 78.3
    }
   },
   "distribution": {
@@ -226,7 +266,30 @@
     "likeness": 0.8678
    }
   },
-  "method": "icon_likeness_check.js's own functions (inkMaps, corr), loaded without its command line: ink maps at 24 px on Newsprint, Gaussian blur sigma 1.2 px, Pearson correlation best over shifts up to 1 px, percentile among the 7626 pairs of the 124 drawings in use"
+  "method": "icon_likeness_check.js's own functions (inkMaps, corr), loaded without its command line: ink maps at 24 px on Newsprint, Gaussian blur sigma 1.2 px, Pearson correlation best over shifts up to 1 px, percentile among the 7626 pairs of the 124 drawings in use",
+  "added": {
+   "pairs": [
+    "CL-023|CL-028",
+    "CL-023|R-08",
+    "CL-023|R-27",
+    "CL-023|R-45",
+    "CL-028|R-08",
+    "CL-028|R-27",
+    "CL-028|R-45",
+    "R-08|R-27",
+    "R-08|R-45",
+    "R-27|R-45"
+   ],
+   "renderer": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+   "distribution": {
+    "pairs": 7626,
+    "p50": 0.7143,
+    "p95": 0.8678,
+    "p99": 0.9092,
+    "max": 0.9644
+   },
+   "note": "measured in the round 3 fix pass; percentiles against that run's own distribution"
+  }
  },
  "figures": {
   "construction line px": {
@@ -279,8 +342,31 @@
    ],
    "reforms_acting": [
     "R-01",
+    "R-02",
+    "R-03",
+    "R-05",
+    "R-06",
+    "R-07",
+    "R-34",
+    "R-45",
+    "R-46",
+    "R-47"
+   ],
+   "flagged_interest_note": [
+    "R-01",
     "R-02"
    ]
+  },
+  "look-alikes at 24 px": {
+   "ids": [
+    "CL-023",
+    "CL-028",
+    "R-08",
+    "R-27",
+    "R-45"
+   ],
+   "likeness_min": 0.8026,
+   "likeness_max": 0.958
   }
  }
 }

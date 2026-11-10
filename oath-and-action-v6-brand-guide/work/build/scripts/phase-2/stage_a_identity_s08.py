@@ -51,14 +51,16 @@ def s_08_1_correct():
 
     def it(lbl, inner):
         return f'<div class="oai-cell">{inner}<span class="oai-tag">{E(lbl)}</span></div>'
+    # two rows, each one group (CA-S14): the four masters at their own sizes, then the 48 px master on the two dark surfaces
     body = ('<div class="oai-panel oai-s-newsprint"><div class="oai-stack" style="gap:24px">' + cons
-            + '<div class="oai-row">'
+            + '<div class="oai-row" style="flex-wrap:nowrap">'
             + it("Display master, 96 px", lockmark(96, label="Lockmark, display master, at 96 px"))
             + it("48 px master", lockmark(48, label="Lockmark, 48 px master"))
             + it("24 px master", lockmark(24, label="Lockmark, 24 px master"))
             + it("16 px master", lockmark(16, label="Lockmark, 16 px master"))
-            + f'<div class="oai-cell"><div class="oai-s-charcoal" style="padding:12px">{lockmark(48, surface="charcoal", label="Lockmark at 48 px on Charcoal")}</div><span class="oai-tag">On Charcoal</span></div>'
-            + f'<div class="oai-cell"><div class="oai-s-prussian" style="padding:12px">{lockmark(48, surface="prussian", label="Lockmark at 48 px on Prussian, all White")}</div><span class="oai-tag">On Prussian, all White</span></div>'
+            + '</div><div class="oai-row" style="flex-wrap:nowrap">'
+            + f'<div class="oai-cell"><div class="oai-s-charcoal" style="padding:12px;line-height:0">{lockmark(48, surface="charcoal", label="Lockmark at 48 px on Charcoal")}</div><span class="oai-tag">On Charcoal</span></div>'
+            + f'<div class="oai-cell"><div class="oai-s-prussian" style="padding:12px;line-height:0">{lockmark(48, surface="prussian", label="Lockmark at 48 px on Prussian, all White")}</div><span class="oai-tag">On Prussian, all White</span></div>'
             + '</div></div></div>')
     alt = ("The lockmark: nine nodes on a three by three grid joined by thin links around the edge and through the center, with "
            "a larger red node, the lever, at bottom right. Its construction at 240 pixels with the node centers and radii, then "

@@ -11,8 +11,9 @@ editor's. This step rewrites only the drawings, in place:
   the kicker icon  s-01-21-correct's CL-055 Productivity, which is not among the 41 that read at 24 px (DR-136, D2-373),
                    becomes CL-057 from the sprite, data-icon-family="topic", with the word the editor gave it, "Workers'
                    share of income" (editor's round 2 notes, section 4; DR-185)
-  the phone column under 48em, the 48 px row keeps each icon's whole box, so its four words share one left edge, as
-                   chapter 09's row does
+  the phone column under 48em, the 48 px row keeps each icon's whole box, so its four words share one left edge, and
+                   each downward arrow stands centered under its icon between rows, as chapter 09's row does (round 3,
+                   CD-S1, CA-S6)
 
 It touches only inline masters (an <svg> with an xmlns attribute and a Civic Line data-icon) and the one kicker word, so
 it can run again after any rebuild of the editor's chapters, and a second run changes nothing.
@@ -32,7 +33,10 @@ FILES = ("s-01-pillars", "s-01-21-correct", "s-01-21-failure")
 INLINE = re.compile(r'<svg\b[^>]*\sxmlns="http://www\.w3\.org/2000/svg"[^>]*\sdata-icon="(CL-\d{3})"[^>]*>.*?</svg>', re.S)
 PILLAR = {"CL-019", "CL-020", "CL-021", "CL-022"}
 KICKER_OLD, KICKER_NEW = ("CL-055", "Productivity"), ("CL-057", "Workers’ share of income")
-STACK_CSS = "@media (max-width:47.99em){.ed .prow-48 .cl{margin:0!important}}"
+STACK_CSS = ("@media (max-width:47.99em){.ed .prow-48{row-gap:" + str(C9.STACK_GAP) + "px}.ed .prow-48 .cl{margin:0!important}"
+             ".ed .prow-48 .pi{position:relative}.ed .prow-48 .pi:not(:last-child)::after{position:absolute;left:24px;"
+             "top:calc(100% + " + str(C9.STACK_GAP // 2) + "px);transform:translate(-50%,-50%);margin:0;line-height:1}}")
+OLD_STACK_CSS = ("@media (max-width:47.99em){.ed .prow-48 .cl{margin:0!important}}",)      # round 2's, replaced in place
 
 
 def _attr(tag, name):
@@ -72,8 +76,9 @@ def rewrite(text, sid):
             out = out[:j] + f'<span class="sx">{KICKER_NEW[1]}</span>' + out[j + len(f'<span class="sx">{KICKER_OLD[1]}</span>'):]
             log.append(f"kicker word {KICKER_OLD[1]} became {KICKER_NEW[1]}")
     if sid == "s-01-pillars" and STACK_CSS not in out:
-        out = out.replace("</style>", STACK_CSS + "</style>", 1)
-        log.append("stacked column keeps whole boxes")
+        old = next((o for o in OLD_STACK_CSS if o in out), None)
+        out = out.replace(old, STACK_CSS, 1) if old else out.replace("</style>", STACK_CSS + "</style>", 1)
+        log.append("stacked column keeps whole boxes, arrows under the icons")
     return out, log
 
 

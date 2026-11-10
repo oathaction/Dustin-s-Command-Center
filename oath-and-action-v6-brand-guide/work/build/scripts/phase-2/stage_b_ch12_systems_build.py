@@ -60,6 +60,13 @@ GRADES = [('Documented', 'on the public record', 'ink'), ('Well supported', 'str
           ('Hypothesis', 'not yet tested', 'dot')]
 
 
+# Chapter 12's intro sentence for Rules 12.5 to 12.9 (ED 4c: the marker's job at first use)
+MY_INTRO = ('Rules 12.5 to 12.9 cover the devices that explain a system: the intervention marker, which shows where a reform '
+            'acts, chart keys, locators, the layer diagram and the frame that names who owns each step.')
+# D2-960: the title states what the invented counts show, 28 of 39 claims documented or well supported (H08)
+KEY_TITLE = 'Most claims in these three chapters are documented or well supported'
+
+
 def pad(px):
     return f'.pad{{box-sizing:border-box;padding:{px}px}}'
 
@@ -153,7 +160,7 @@ def specimens(ctx, rows, v7, figs):
     fail_html = (f'{band}<div class="pad"><p class="sec">Where the problem is</p>{chain_svg("problem")}'
                  f'<p class="nt">Red marks the problem: primaries that settle the seat before November.</p></div>')
     spec('s-12-marker-failure', f'<style>{band_css}{css}</style>{fail_html}', '12.5',
-         f'Labeled Failure case: do not publish. The same step, with {vname("C2")} outlined in Pillar Red and a note that '
+         f'Failure case: do not publish. The same step, with {vname("C2")} outlined in Pillar Red and a note that '
          'says red marks the problem: primaries that settle the seat. No reform is named.',
          width=600, exempt=['red'],
          notes='Labeled failure: red spent on a problem, which System 1 never does ("It never marks a problem or a bad '
@@ -161,7 +168,12 @@ def specimens(ctx, rows, v7, figs):
 
     # ---------------------------------------------------------------- 12.6 chart keys
     data = [('Wages', [6, 4, 3, 1, 1]), ('Housing', [4, 5, 2, 2, 0]), ('Elections', [7, 2, 1, 0, 1])]
-    figs['key'] = {'illustrative_counts': {r: dict(zip([g[0] for g in GRADES], v)) for r, v in data}}
+    top2 = sum(v[0] + v[1] for _, v in data)
+    tot = sum(sum(v) for _, v in data)
+    if not top2 * 2 > tot:
+        raise SystemExit('Rule 12.6: the title says most claims are documented or well supported, and the counts disagree')
+    figs['key'] = {'illustrative_counts': {r: dict(zip([g[0] for g in GRADES], v)) for r, v in data},
+                   'title': KEY_TITLE, 'documented_or_well_supported': top2, 'claims': tot}
     W = 358
     fills = {'ink': 'var(--oa-chart-color-subject-on-newsprint)', 'ctx': 'var(--oa-chart-color-context-on-newsprint)',
              'lt': 'var(--oa-chart-color-light-fill-on-newsprint)'}
@@ -221,11 +233,11 @@ def specimens(ctx, rows, v7, figs):
             '.hb{stroke:var(--oa-chart-color-context-on-newsprint);stroke-width:1.5px}'
             '.db{fill:none;stroke:var(--oa-chart-color-subject-on-newsprint);stroke-width:1.5px;stroke-dasharray:1.5 2.5;stroke-linecap:round}'
             f'.src{{margin:14px 0 0;{t("caption")};color:var(--oa-chart-color-secondary-on-newsprint)}}')
-    head = (f'{T10.ILLUS}<p class="ttl">Most claims in these three chapters rest on the record</p>'
+    head = (f'{T10.ILLUS}<p class="ttl">{esc(KEY_TITLE)}</p>'
             f'<p class="ms">Claims in each chapter of a report, by the grade of their evidence</p>')
     spec('s-12-key-correct', f'<style>{ccss}</style><div class="pad">{head}<ul class="key">{key}</ul>{chart()}'
          f'<p class="src">Grades as our systems atlas defines them. Counts invented for this example.</p></div>', '12.6',
-         'An Illustrative chart on a 358 px phone. Its title reads Most claims in these three chapters rest on the record, '
+         f'An Illustrative chart on a 358 px phone. Its title reads {KEY_TITLE}, '
          'and its measure line reads Claims in each chapter of a report, by the grade of their evidence. Above the plot, '
          'a key names the five grades in the order their segments run, each with a swatch drawn in the chart’s own mark: '
          'Documented, on the public record, solid ink; Well supported, strong research evidence, gray; Plausible, some '
@@ -244,7 +256,7 @@ def specimens(ctx, rows, v7, figs):
             f'.lg ul{{list-style:none;margin:0;padding:8px 10px;border:1px solid var(--hair);{t("label")};text-transform:none}}'
             '.lg li{display:flex;align-items:center;gap:6px}.dt{display:inline-block;width:8px;height:8px;border-radius:50%}')
     spec('s-12-key-failure', f'<style>{fcss}</style>{fail}', '12.6',
-         'Labeled Failure case: do not publish. The same Illustrative chart titled Claims by grade, with no measure line '
+         'Failure case: do not publish. The same Illustrative chart titled Claims by grade, with no measure line '
          'and no totals, its segments in five blues and greens. A boxed legend sits under the plot at the right, listing '
          'the grades from Hypothesis to Documented, the reverse of the bars, each beside a small colored dot.',
          width=W, illustrative=True, exempt=['contrast'],
@@ -256,7 +268,7 @@ def specimens(ctx, rows, v7, figs):
     loc_atlas = loc_atlas.replace('<svg data-view="locator"', '<svg class="lca"')
     lab_parts = {p['id']: p['plain_name'] for p in S1.ED['parts']}
     state = 'NE'
-    tw_, gap = 14, 2
+    tw_, gap = 8, 1      # 107 px across, so the headline beside it keeps 205 px at 360 px (CA-S12)
     cells = []
     for tl in TILES:
         x, y = tl['col'] * (tw_ + gap), tl['row'] * (tw_ + gap)
@@ -268,14 +280,16 @@ def specimens(ctx, rows, v7, figs):
     st_name = next(tl['name'] for tl in TILES if tl['code'] == state)
     loc_state = (f'<svg class="lcs" viewBox="0 0 {gw} {gh}" width="{gw}" height="{gh}" aria-hidden="true" '
                  f'focusable="false">{"".join(cells)}</svg>')
-    figs['locator'] = {'atlas_current': 'C', 'state': state, 'tile_grid': 'work/boards/phase-2/data-viz/shared/geo/us-state-tile-grid.json'}
-    html = (f'<p class="sec">In the atlas: where this view sits among the parts</p>'
+    figs['locator'] = {'atlas_current': 'C', 'state': state, 'tile_px': tw_, 'gap_px': gap, 'columns': cols, 'rows': rws,
+                       'state_locator_px': [gw, gh], 'headline_px_at_360': 360 - 2 * 16 - gw - 16,
+                       'tile_grid': 'work/boards/phase-2/data-viz/shared/geo/us-state-tile-grid.json'}
+    html = (f'{T10.ILLUS}<p class="sec">In the atlas: where this view sits among the parts</p>'
             f'<div class="hdr"><div><p class="crumb">Overview › {esc(lab_parts["C"])}</p>'
             f'<p class="vt">How safe seats move the real choice to the primary</p></div>{loc_atlas}</div>'
             f'<p class="sec two">In a state story: where the state sits on the map</p>'
             f'<div class="hdr"><div><p class="kick">Tracker {T10.DOT} {esc(st_name)}</p>'
             f'<p class="vt">{esc(st_name)} has one chamber, so a bill’s fifth step never comes</p></div>{loc_state}</div>')
-    lcss = (k.vars() + pad(16) + sec_css + '.sec.two{margin-top:24px}'
+    lcss = (k.vars() + pad(16) + sec_css + '.sec.two{margin-top:24px}.pad > .illus{margin:0 0 12px}'
             '.hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:12px 0;border-top:1px solid var(--strong)}'
             f'.crumb{{margin:0 0 4px;{t("caption")};color:var(--t2)}}.kick{{margin:0 0 4px;{t("label")}}}'
             f'.vt{{margin:0;{t("h4")};max-width:14rem}}'
@@ -284,26 +298,33 @@ def specimens(ctx, rows, v7, figs):
             '.lca .lc.on{fill:var(--ink);stroke:var(--ink)}'
             '.lcs .off{fill:var(--oa-color-tint-stone-n70)}.lcs .on{fill:var(--ink)}')
     spec('s-12-locator-correct', f'<style>{lcss}</style><div class="pad">{html}</div>', '12.7',
-         f'Two view headers on a 360 px phone, each with a small locator at its right, drawn in ink. The first, from the '
+         f'Two Illustrative view headers on a 360 px phone, each with a small locator at its right, drawn in ink. The first, from the '
          f'atlas, reads Overview, {lab_parts["C"]}, over the title How safe seats move the real choice to the primary; '
          'its locator is the atlas in small, a bar for outside forces, five boxes for its parts and two boxes below, with '
          f'the third box, {lab_parts["C"]}, filled Charcoal. The second, a state story, reads Tracker, {st_name}, over '
          f'the title {st_name} has one chamber, so a bill’s fifth step never comes; its locator is the 50-state tile '
          f'grid with {st_name} filled Charcoal and every other state light gray.',
-         width=360, notes='The atlas locator is System 1\'s locator() geometry (DR-36), redrawn on Newsprint (DR-53); the '
-                          'state grid is the chart system\'s tile grid. Nebraska\'s line is Rule 11\'s (DR-150).')
+         width=360, illustrative=True,
+         notes='The atlas locator is System 1\'s locator() geometry (DR-36), redrawn on Newsprint (DR-53); the '
+               'state grid is the chart system\'s tile grid at 8 px a tile (CA-S12). Nebraska\'s line is Rule 11\'s '
+               '(DR-150). Both headlines are invented, so one Illustrative label heads the plate (BE-S5, CD-S13).')
     loc_red = loc_atlas.replace('class="lca"', 'class="lca" data-red="working" data-red-job="you are here"')
-    html = (f'{band}<div class="pad"><div class="hdr"><div><p class="crumb">Overview › {esc(lab_parts["C"])}</p>'
+    html = (f'{band}<div class="pad">{T10.ILLUS}<div class="hdr"><div><p class="crumb">Overview › {esc(lab_parts["C"])}</p>'
             f'<p class="vt">How safe seats move the real choice to the primary</p></div>{loc_red}</div></div>')
     spec('s-12-locator-failure', f'<style>{band_css}{lcss}.lca .lc.on{{fill:var(--red);stroke:var(--red)}}</style>{html}', '12.7',
-         f'Labeled Failure case: do not publish. The atlas view header, with the locator’s current box, {lab_parts["C"]}, '
-         'filled Pillar Red.', width=360, exempt=['red'],
+         f'Failure case: do not publish. The Illustrative atlas view header, with the locator’s current box, '
+         f'{lab_parts["C"]}, filled Pillar Red.', width=360, illustrative=True, exempt=['red'],
          notes='Labeled failure: the locator spends the view\'s red on "you are here", which takes it from the reform '
                'target, the error or the ask (Rule 05.3, Rule 11.16).')
 
     # ---------------------------------------------------------------- 12.8 the layer diagram (the one exploded view)
     layers = [(k_, v) for k_, v in v7['layers'].items()]
-    figs['layers'] = [{'id': k_, 'title': v['title'], 'regions': [r['title'] for r in v.get('regions', [])]} for k_, v in layers]
+    plain = {p_['id']: p_['plain_name'] for p_ in S1.ED['parts']}
+    # the core's parts lead with the plain names every other page uses (Wealth, Voice, Elections, Checks, Policy,
+    # Outside forces); the economy and technology planes keep the atlas's region titles, which have no plain names
+    rname = lambda k_, r: plain.get(r.get('id'), r['title']) if k_ == 'core' else r['title']
+    figs['layers'] = [{'id': k_, 'title': v['title'], 'regions': [r['title'] for r in v.get('regions', [])],
+                       'printed': [rname(k_, r) for r in v.get('regions', [])]} for k_, v in layers]
     W8 = 600
     ox, dx, dy = 16, 120, 60          # an oblique plane: depth runs up and to the right
     pw_ = 200                         # plane width along x; planes stacked 130 px apart
@@ -330,7 +351,7 @@ def specimens(ctx, rows, v7, figs):
                 out.append(f'<line class="tie" x1="{f(xx)}" y1="{f(y + dy - 0.5 * dy)}" x2="{f(xx)}" y2="{f(tops[n + 1] + dy - 0.5 * dy)}"/>')
         lx = ox + pw_ + dx + 24
         title = lay['title']
-        sub = ', '.join(r['title'] for r in regs)
+        sub = ', '.join(rname(key_, r) for r in regs)
         tl_ = S1.swrap(title, W8 - lx - 8, 'map')
         for i_, ln in enumerate(tl_):
             labels.append(f'<text class="lt" x="{lx}" y="{f(y + 22 + 19 * i_)}">{esc(ln)}</text>')
@@ -349,7 +370,7 @@ def specimens(ctx, rows, v7, figs):
             '.lay text{font-family:var(--oa-font-family-reading)}'
             '.lt{font-size:0.9375rem;font-weight:700;fill:var(--t1)}.ls{font-size:0.8125rem;fill:var(--t2)}'
             f'.cp{{margin:8px 0 0;{t("caption")};color:var(--t2)}}')
-    lay_alt = '; '.join(f'{v["title"]}, holding {", ".join(r["title"] for r in v.get("regions", []))}' for _, v in layers)
+    lay_alt = '; '.join(f'{v["title"]}, holding {", ".join(rname(k_, r) for r in v.get("regions", []))}' for k_, v in layers)
     spec('s-12-layers-correct', f'<style>{ycss}</style>{svg}', '12.8',
          'An exploded view of our systems atlas at 600 px: three flat planes stacked one above another and drawn at a '
          'slant, joined by dotted ties. Each plane carries one tile for each of its parts, and each name sits flat and '
@@ -369,7 +390,7 @@ def specimens(ctx, rows, v7, figs):
     svgf = (f'<svg class="lay" viewBox="0 0 {W8} {H8}" width="{W8}" height="{H8}" aria-hidden="true" focusable="false">'
             f'{"".join(skew)}</svg>')
     spec('s-12-layers-failure', f'<style>{band_css}{ycss}</style>{band}{svgf}', '12.8',
-         'Labeled Failure case: do not publish. The same three planes with no parts and no ties, each layer’s name set '
+         'Failure case: do not publish. The same three planes with no parts and no ties, each layer’s name set '
          'inside its plane, turned and slanted to follow the plane, so every name reads at an angle.',
          width=W8, notes='Labeled failure: labels on the oblique, which the exploded view never takes.')
 
@@ -399,19 +420,20 @@ def specimens(ctx, rows, v7, figs):
             f'.who{{margin:0;{t("ui")};font-weight:700}}.what{{margin:4px 0 0;{t("bodySmall")};max-width:34rem}}'
             f'.ho{{margin:8px 0 0;{t("caption")}}}.ar{{margin-right:4px}}'
             f'.src{{margin:14px 0 0;{t("caption")};color:var(--t2);max-width:40rem}}')
-    src = ('Source: 5 U.S.C. 552, the Freedom of Information Act, sections (a)(6)(A), (h)(3) and (a)(4)(B), and FOIA.gov, '
-           '“Frequently Asked Questions”, Office of Information Policy, U.S. Department of Justice, both retrieved '
-           'November 9, 2026. Federal agencies only; states set their own records laws.')
+    src = ('Sources: 5 U.S.C. 552, the Freedom of Information Act, sections (a)(6)(A), (h)(3) and (a)(4)(B), as in force on '
+           'November 9, 2026, via the Legal Information Institute, Cornell Law School; and FOIA.gov, “Frequently Asked '
+           'Questions”, Office of Information Policy, U.S. Department of Justice, no page date; both retrieved November 9, '
+           '2026. Federal agencies only; states set their own records laws.')
     html = (f'<p class="q">Who owns the next step?</p><p class="qs">A federal records request, from your letter to an '
             f'appeal</p><ol class="st">{"".join(li)}</ol><p class="src">{esc(src)}</p>')
     spec('s-12-owner-correct', f'<style>{ocss}</style>{html}', '12.9',
          'A frame titled Who owns the next step?, for a federal records request, in four numbered steps. Each step names '
-         'who acts, what they do, and who owns the next step, with the clock that runs. ' + ' '.join(
+         'who acts, what they do, and who owns the next step, with the deadline the law sets. ' + ' '.join(
              f'Step {n}: {who}. {what} Next step: {nxt}.' + (f' {clock}' if clock else '')
              for n, (who, what, nxt, clock) in enumerate(steps[:-1], 1))
          + f' Step 4: {steps[-1][0]}. {steps[-1][1]} Next step: You, again. Ask the National Archives’ records ombudsman '
            'to mediate, or sue in federal court. ' + src,
-         readable=True, notes='V4.2\'s frame ("Give every handoff an owner."), with the clocks and routes from the '
+         readable=True, notes='V4.2\'s frame ("Give every handoff an owner."), with the deadlines and routes from the '
                               'research notes, section 7A (5 U.S.C. 552(a)(6)(A), (a)(6)(A)(ii), (h)(3), (a)(4)(B)).')
     boxes = ['Request submitted', 'Request processed', 'Records reviewed', 'Response issued', 'Appeal considered']
     fx, fy, bw, bh = 16, 16, 300, 40
@@ -432,9 +454,9 @@ def specimens(ctx, rows, v7, figs):
             f'.q{{margin:0 0 8px;{t("h4")}}}')
     spec('s-12-owner-failure', f'<style>{fcss}</style>{band}<div class="pad"><p class="q">How a records request works</p>{svgf}</div>',
          '12.9',
-         'Labeled Failure case: do not publish. A flow chart titled How a records request works: five boxes joined by '
+         'Failure case: do not publish. A flow chart titled How a records request works: five boxes joined by '
          'arrows, reading Request submitted, Request processed, Records reviewed, Response issued and Appeal considered, '
-         'with no one named in any box and no clock.',
+         'with no one named in any box and no deadline.',
          width=360, notes='Labeled failure: every step in the passive voice, so no step says who acts or whom to call.')
 
 
@@ -443,14 +465,16 @@ def chapter(ctx, figs, existing):
     rules.append({
         'id': '12.5', 'title': 'Mark where a reform acts with the atlas’s red target, and with nothing else in red.',
         'rule': [
-            'Where a figure shows a reform at work, the marks it acts on turn Pillar Red at the heavier selected weight: '
-            'each connection it changes, with its arrowhead, and the outline of each condition it targets. On Newsprint '
+            'Where a figure shows a reform at work, the marks it acts on turn Pillar Red at a heavier weight: each '
+            'connection it changes, the arrow from one variable to another, with its arrowhead, and the outline of each '
+            'variable it targets. On Newsprint '
             'a red connection carries a 1 px Charcoal edge. A note beside the figure names the reform and says that it '
             'acts where the marks turn red.',
             'The marker is the view’s one working red. When an error or a step the reader can take now shares the view, '
             'the marker yields as Rule 11.16 sets out: its marks stay heavier, in ink, and the note still names the '
             'reform.'],
-        'tokens': ['oa.color.data.emphasis.onNewsprint', 'oa.color.graphic.essential.onNewsprint'],
+        'tokens': ['oa.color.data.emphasisRed.onNewsprint', 'oa.color.data.emphasis.onNewsprint',
+                   'oa.color.graphic.essential.onNewsprint'],
         'why': {'text': [
             'Red means one thing across the atlas: this is where a reform acts. It never marks a problem or a bad step, '
             'so a reader of any party can follow the mechanism without being told which outcome to dislike. The heavier '
@@ -459,14 +483,14 @@ def chapter(ctx, figs, existing):
             'page.'],
             'basis': 'Design judgment, from the atlas’s visual system'},
         'correct': {'specimen': 's-12-marker-correct',
-                    'caption': 'Reform R-01 on one step of the safe-seat loop: in red when it holds the view’s red, then '
-                               'in ink when an error does.'},
+                    'caption': 'Reform R-01, all-party primaries with ranked general elections, on one step of Loop R10, '
+                               'the safe-seat loop: in red when it holds the view’s red, then in ink when an error does.'},
         'failure': {'specimen': 's-12-marker-failure',
                     'caption': '<strong>Fails Rule 12.5.</strong> Red marks the problem, and the note calls it one. The '
                                'figure now takes a side on an outcome and spends the view’s red on it.'},
         'specs': [
-            {'label': 'Target weight', 'value': 'Connections 4 px, condition outlines 3 px; arrowheads and sign tags at '
-                                                'the 6 px sizes'},
+            {'label': 'Target weight', 'value': 'Pillar Red: connections 4 px, variable outlines 3 px; arrowheads and sign '
+                                                'tags at the 6 px sizes', 'token': 'oa.color.data.emphasisRed.onNewsprint'},
             {'label': 'Edge on Newsprint', 'value': '1 px Charcoal on each side of a red connection, as a 6 px case under '
                                                     'the 4 px line', 'token': 'oa.color.graphic.essential.onNewsprint'},
             {'label': 'Note', 'value': '“Reform R-01, …, acts where the marks turn red.”'},
@@ -485,7 +509,8 @@ def chapter(ctx, figs, existing):
             'Name each line, bar or point beside it where the label fits. When a chart codes something a label cannot '
             'carry on every mark, such as the evidence grade of each segment, set a key above the plot. List its items '
             'in the order the marks run, draw each swatch in the chart’s own mark, give each its word and meaning, and '
-            'name the unit in the measure line.'],
+            'name the unit in the measure line, the line under a chart’s title that says what is counted and in what '
+            'unit.'],
         'tokens': ['oa.chart.color.subject.onNewsprint', 'oa.chart.color.context.onNewsprint',
                    'oa.chart.color.lightFill.onNewsprint', 'oa.chart.hatch.pitch'],
         'why': {'text': [
@@ -495,7 +520,9 @@ def chapter(ctx, figs, existing):
             'lightness merge.'],
             'basis': 'Design judgment, from the chart system'},
         'correct': {'specimen': 's-12-key-correct',
-                    'caption': 'A key above a phone chart, in the order the segments run, each swatch drawn as its mark.'},
+                    'caption': 'A key above a phone chart, in the order the segments run, each swatch drawn as its mark. '
+                               'The title says only what the counts show: 28 of the 39 claims are documented or well '
+                               'supported.'},
         'failure': {'specimen': 's-12-key-failure',
                     'caption': '<strong>Fails Rule 12.6.</strong> A boxed legend under the plot, in reverse order, with '
                                'dots that match no mark and hues that merge in gray. The chart names no unit.'},
@@ -503,8 +530,9 @@ def chapter(ctx, figs, existing):
             {'label': 'Swatch', 'value': '14 px, the label 7 px after it; items 16 px apart, wrapping in rows',
              'token': 'oa.chart.hatch.pitch'},
             {'label': 'Order', 'value': 'The order the marks run, left to right or top to bottom'},
-            {'label': 'Grade marks', 'value': 'Documented solid ink, Well supported gray, Plausible light gray, Contested '
-                                              'a hatch, Hypothesis a dotted outline'},
+            {'label': 'Grade marks', 'value': 'In bars and areas, Documented solid ink, Well supported gray, Plausible '
+                                              'light gray, Contested a hatch, Hypothesis a dotted outline; a connection in '
+                                              'the atlas takes Rule 10.10’s line textures'},
             {'label': 'Place', 'value': 'Under the title and measure line, above the plot'},
         ],
         'files': ['work/boards/phase-2/data-viz/01-explainer/build_concept.py'],
@@ -518,21 +546,25 @@ def chapter(ctx, figs, existing):
             'A view that shows part of a larger whole carries a locator at its top right: the whole in small, with the '
             'current part filled in Charcoal and the rest in a light ground. In the atlas, the locator draws the atlas’s '
             'parts and links back to the overview. In a state story it is the 50-state tile grid.',
-            'The locator stays in ink and never takes red.'],
+            'Draw the locator in ink, with no red.'],
         'tokens': ['oa.color.graphic.essential.onNewsprint', 'oa.color.graphic.subtle.onNewsprint'],
         'why': {'text': [
-            'A reader who arrives from a search lands in the middle of the system. A locator answers where am I before the '
-            'reader asks, and the same small map on every view teaches its shape. Kept to ink, it never competes with the '
+            'A reader who arrives from a search lands in the middle of the system. A locator answers “Where am I?” before '
+            'the reader asks, and the same small map on every view teaches its shape. Kept to ink, it never competes with the '
             'red that marks a reform, an error or a step to take.'],
             'basis': 'Design judgment, from the atlas’s visual system'},
         'correct': {'specimen': 's-12-locator-correct',
-                    'caption': 'The atlas locator and the state locator at true size, each in ink.'},
+                    'caption': 'The atlas locator and the state locator at true size, each in ink, beside headlines that '
+                               'keep their width.'},
         'failure': {'specimen': 's-12-locator-failure',
                     'caption': '<strong>Fails Rule 12.7.</strong> The current part filled red. “You are here” takes the '
                                'view’s red, and the reform marker, the error or the ask loses it.'},
         'specs': [
             {'label': 'Atlas locator', 'value': '88 by 41 px, the parts as boxes, the current one filled'},
-            {'label': 'State locator', 'value': '14 px tiles with 2 px gaps, 12 columns, the state filled'},
+            {'label': 'State locator', 'value': f'{figs["locator"]["tile_px"]} px tiles with {figs["locator"]["gap_px"]} px '
+                                                f'gaps, {figs["locator"]["columns"]} columns, {figs["locator"]["state_locator_px"][0]} by '
+                                                f'{figs["locator"]["state_locator_px"][1]} px, the state filled; the headline '
+                                                'beside it keeps at least 200 px on a 360 px phone'},
             {'label': 'Place', 'value': 'Top right of the view’s header; hidden on phones in the atlas, where the '
                                         'breadcrumb carries it'},
             {'label': 'Ink', 'value': 'Charcoal for the current part', 'token': 'oa.color.graphic.essential.onNewsprint'},
@@ -572,31 +604,48 @@ def chapter(ctx, figs, existing):
         'id': '12.9', 'title': 'In a process explainer, name who owns the next step at every handoff.',
         'rule': [
             'Give every step of a process a person or an office that acts, and at each handoff name who owns the next '
-            'step and the clock that runs, as the law sets it. Write each step with its actor first. Link the steps to '
+            'step and the deadline the law sets. Write each step with its actor first. Link the steps to '
             'the official procedure in a source line.'],
         'tokens': ['oa.type.ui', 'oa.type.bodySmall'],
         'why': {'text': [
-            'Our fourth edition put it in one line: “Give every handoff an owner.” A reader who knows who holds a request '
+            'Our guide’s fourth edition put it in one line: “Give every handoff an owner.” A reader who knows who holds a request '
             'knows whom to call when it stalls. Passive steps hide that, and a process with no owner reads as one that '
             'runs by itself.'],
-            'basis': 'Design judgment, from our fourth edition'},
+            'basis': 'Design judgment, from our guide’s fourth edition'},
         'correct': {'specimen': 's-12-owner-correct',
                     'caption': 'A federal records request, with who acts at each step, who owns the next one and the '
-                               'clock the law sets.'},
+                               'deadline the law sets.'},
         'failure': {'specimen': 's-12-owner-failure',
                     'caption': '<strong>Fails Rule 12.9.</strong> Five passive boxes. The reader cannot tell who has the '
                                'request or whom to call when it stalls.'},
         'specs': [
             {'label': 'Each step', 'value': 'Actor first, then the act', 'token': 'oa.type.ui'},
-            {'label': 'Each handoff', 'value': '“Next step:” and the owner, then the clock', 'token': 'oa.type.bodySmall'},
-            {'label': 'Source line', 'value': 'The statute or official page for every clock'},
+            {'label': 'Each handoff', 'value': '“Next step:” and the owner, then the deadline', 'token': 'oa.type.bodySmall'},
+            {'label': 'Source line', 'value': 'The statute or official page for every deadline'},
         ],
         'related': ['11', '15'],
         'builders': ['Name an office by its role, as in “the agency’s records office”, so the frame holds for every '
                      'agency, and put the agency’s own name in a live page.'],
     })
+    # no-break spaces and non-breaking hyphens go into my own strings only, so the identity designer's rules in the same
+    # file stay exactly as their script writes them
+    rules = nb_tree(rules)
+    my_intro = nb_tree(MY_INTRO)
     if existing:
         ch = existing
+        # my sentence of the intro (the identity designer's sentence for Rules 12.1 to 12.4 opens the same paragraph and
+        # is theirs): replace it where it stands, or add it at the end of the second paragraph
+        intro = list(ch.get('intro', []))
+        for n_, para in enumerate(intro):
+            if 'Rules 12.5 to 12.9 cover' in para:
+                intro[n_] = re.sub(r'Rules 12\.5 to 12\.9 cover.*$', lambda m: my_intro, para, flags=re.S)
+                break
+        else:
+            if len(intro) >= 2:
+                intro[1] = intro[1].rstrip() + ' ' + my_intro
+            else:
+                intro.append(my_intro)
+        ch['intro'] = intro
         keep = [r for r in ch.get('rules', []) if r.get('id') not in MINE]
         ch['rules'] = sorted(keep + rules, key=lambda r: [int(x) for x in str(r['id']).split('.')])
         ch['extras'] = [x for x in ch.get('extras', []) if not str(x.get('specimen', '')).startswith(
@@ -609,8 +658,7 @@ def chapter(ctx, figs, existing):
             'A graphic device is a mark that helps a reader find their way: a divider between sections, a watermark, a '
             'marker on the place a reform acts, a key, a locator, a frame around a process. Each one has a job, and the '
             'page leaves it out where that job is already done.',
-            'Rules 12.5 to 12.9 cover the devices that explain a system: the intervention marker, chart keys, locators, '
-            'the layer diagram and the frame that names who owns each step.'],
+            my_intro],
         'rules': rules,
         'related_chapters': [
             {'chapter': '05', 'reason': 'One working red in each view, and which red yields.'},
@@ -631,7 +679,7 @@ def main():
     figs = {}
     specimens(ctx, rows, v7, figs)
     existing = json.loads(OUT_CH.read_text()) if OUT_CH.exists() else None
-    ch = nb_tree(chapter(ctx, figs, existing))
+    ch = chapter(ctx, figs, existing)
     B.check_chapter(ch)
     used = {r[kk]['specimen'] for r in ch['rules'] if r['id'] in MINE for kk in ('correct', 'failure', 'corrective') if r.get(kk)}
     missing, unused = used - set(ctx.specs), set(ctx.specs) - used

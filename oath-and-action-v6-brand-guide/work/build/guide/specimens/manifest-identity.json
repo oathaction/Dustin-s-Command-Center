@@ -377,7 +377,7 @@
  "s-09-1-failure": {
   "chapter": "09",
   "rule": "09.1",
-  "width_px": 400,
+  "width_px": 360,
   "alt": "Failure case: do not publish. The four pillar icons at 24 pixels in a row with no words and no arrows: an open book with rays, a route to a magnifier, two overlapping rings and a finger pressing a round control.",
   "illustrative": false,
   "notes": "R9: under 48 px a pillar icon sits with its word. The row without its words, as a toolbar would set it. Failure band per D2-308, since a bare row could pass for our work."
@@ -385,10 +385,10 @@
  "s-09-phone": {
   "chapter": "09",
   "rule": "09.1",
-  "width_px": 406,
-  "alt": "A phone column 358 pixels wide on Newsprint. The 48 pixel pillar row stands in one column, Explain, Track, Connect and Act one under another, each icon beside its word and a downward arrow after each word but the last. Under it, the 24 pixel row runs across two lines, breaking after an arrow.",
+  "width_px": 360,
+  "alt": "A phone screen 360 pixels wide on Newsprint. The 48 pixel pillar row stands in one column, Explain, Track, Connect and Act one under another, each icon beside its word, with a downward arrow under each icon but the last, so the arrows line up between the icons. Under it, the 24 pixel row runs across two lines, breaking after an arrow.",
   "illustrative": false,
-  "notes": "D2-376: under 48em the 48 px row stacks in one column with downward arrows, after the creative director's Board 6 review found the phone row dropping its arrow. Drawn at a phone's 358 px text column, so the plate shows the column at every screen width; the rows in Rule 09.1's sheet take the same form at 390 px."
+  "notes": "D2-376: under 48em the 48 px row stacks in one column with downward arrows, after the creative director's Board 6 review found the phone row dropping its arrow. Each arrow stands in the icon column, centered under its icon in the 20 px gap before the next row, so the four arrows share one x (round 3, CD-S1, CA-S6). Drawn at a phone's 360 px screen with the shell's 16 px gutter, so the plate shows the column whole at every screen width, 360 px included (CA-S5); the rows in Rule 09.1's sheet take the same form under 48em."
  },
  "s-09-2-correct": {
   "chapter": "09",
@@ -415,7 +415,7 @@
  "s-09-3-failure": {
   "chapter": "09",
   "rule": "09.3",
-  "width_px": 400,
+  "width_px": 360,
   "alt": "Failure case: Track’s master scaled to 16 pixels beside the word Track, next to the 16 pixel fit beside the same word, at true size and enlarged four times. Scaled down, the master’s lines fall under a pixel and draw gray, and the magnifier’s lens and the route’s turns blur together; the fit draws each line as one full pixel.",
   "illustrative": false,
   "notes": "The master (civic-line-v6/black) at 16 px from the sprite, as a producer would drag it into a menu, beside the fit. The enlarged views are PNG renders at 1x, scaled four times in square pixels."
@@ -431,10 +431,10 @@
  "s-09-4-failure": {
   "chapter": "09",
   "rule": "09.4",
-  "width_px": 406,
+  "width_px": 360,
   "alt": "Failure case: do not publish. An Illustrative report card whose kicker opens with Track’s pillar icon at 24 pixels, then the label Report and the topic State legislatures, over the headline How state committees record their votes.",
   "illustrative": true,
-  "notes": "DR-112: a kicker keeps its content label and words, and a pillar icon never enters it (Rule 01.21). The icon is drawn as a 24 px pillar icon should be, so the only fault is where it stands. The headline is chapter 01's invented Report example. Failure band per D2-308."
+  "notes": "DR-112: a kicker keeps its content label and words, and a pillar icon never enters it (Rule 01.21). The icon is drawn as a 24 px pillar icon should be, and the kicker's words follow Rule 01.21's type, so the only fault is where the icon stands. The card is a phone's 328 px column in a 360 px plate (CA-S5). The headline is chapter 01's invented Report example. Failure band per D2-308."
  },
  "s-12-divider-correct": {
   "chapter": "12",
@@ -464,9 +464,9 @@
   "chapter": "12",
   "rule": "12.2",
   "width_px": 600,
-  "alt": "Two Illustrative pages at true size. A report page on Newsprint headed Research brief, The decision behind the service., with a paragraph at left, and a very large ampersand B in Charcoal at 8 percent in the open right margin, running off the page’s edge. A section opener on Charcoal headed Track, Follow the public record., with the same B in Newsprint at 10 percent in its right margin. Neither watermark sits behind any words.",
+  "alt": "Two Illustrative pages at true size. A report page on Newsprint headed Research brief, The decision behind the service., with a paragraph at left, and a very large ampersand B in Charcoal at 8 percent in the open right margin, running off the page’s right edge, which cuts through its loop and its crossing stroke. A section opener on Charcoal headed Track, Follow the decision and keep its record within reach., with the same B in Newsprint at 10 percent in its right margin. Neither watermark sits behind any words.",
   "illustrative": true,
-  "notes": "B's display master (ampersand/20261028_Amp-B-Display-Master.svg) at 320 px tall, in Charcoal with opacity oa.opacity.watermarkOnLight (0.08, 1.17 to 1) and in Newsprint with oa.opacity.watermarkOnDark (0.10, 1.24 to 1), the two opacities our fifth edition's quiet signatures used, now tokens (Rule 05.6). The headings are our fifth edition's watermark mockups' (architecture map, V5 03); the paragraphs are invented."
+  "notes": "B's display master (ampersand/20261028_Amp-B-Display-Master.svg) at 320 px tall, in Charcoal with opacity oa.opacity.watermarkOnLight (0.08, 1.17 to 1) and in Newsprint with oa.opacity.watermarkOnDark (0.10, 1.24 to 1), the two opacities our fifth edition's quiet signatures used, now tokens (Rule 05.6). B's top 20 px under the page's top, and the page's right edge cutting B at 50 of its 93.29 units: through the loop, the crossing stroke and the lower counter, left of the arm, so no piece of B stands alone at the edge (round 3, CD-S10, CA-S10). The report page's heading is our fifth edition's watermark mockup's (architecture map, V5 03); the opener's line is Track's job line, as chapter 01 and Rule 09.4 print it; the paragraphs are invented."
  },
  "s-12-watermark-failure": {
   "chapter": "12",
@@ -495,18 +495,18 @@
  "s-12-pattern-correct": {
   "chapter": "12",
   "rule": "12.4",
-  "width_px": 600,
-  "alt": "Two Illustrative report covers at true size on Newsprint, each with the kicker Report 3, the title How state committees record their votes and a short paragraph at the top. On the first, Stone arcs 1 pixel wide spread from the bottom right corner across the open lower part of the cover. On the second, a block of fine Stone horizontal lines fills the open lower right. Neither pattern reaches the words.",
+  "width_px": 360,
+  "alt": "An Illustrative report cover at true size on Newsprint, 360 by 466 pixels, with the kicker Report 3, the title How state committees record their votes and a short paragraph at the top. Stone arcs 1 pixel wide spread from the bottom right corner across the open lower part of the cover, and stop well short of the words.",
   "illustrative": true,
-  "notes": "Built from the hinge devices, after icon study 07's ring rhythm and rule rhythm. Hinge arcs: circles from the corner at radii 2, 3, 4 and more times 16 px, continuing the hinge diagram's ring and arcs (radii 110 and 165 units, 2 to 3). Hinge rules: the hinge divider's 1 px line every 12 px. Both 1 px in oa.color.border.hairline (Stone). Ink coverage measured on a 240 px swatch rendered at 1x in Chromium, as Phase 1 measured its patterns: arcs 5.5 percent, rules 8.3 percent, under the 12 percent ceiling (D1-18). The covers are 360 by 466 px screen covers, a report's first screen, so two fit a column, with type at the phone floor (D2-254)."
+  "notes": "Built from the hinge devices, after icon study 07's ring rhythm. Hinge arcs: circles from the corner at radii 2, 3, 4 and more times 16 px, continuing the hinge diagram's ring and arcs (radii 110 and 165 units, 2 to 3), ending inside a quarter circle 219 px wide, 1 px in oa.color.border.hairline (Stone). Ink coverage measured on a 240 px swatch rendered at 1x in Chromium, as Phase 1 measured its patterns: 5.5 percent, under the 12 percent ceiling (D1-18). Round 3 (CA-S11): the hinge rules leave the rule, since sixteen even lines read as lines to write on, and the plate is the cover alone at 360 px, so no part of the frame stands empty and a phone shows it whole. The cover is a report's first screen, with type at the phone floor (D2-254)."
  },
  "s-12-pattern-failure": {
   "chapter": "12",
   "rule": "12.4",
-  "width_px": 600,
-  "alt": "Failure case: do not publish. The same two Illustrative covers with each pattern spread over the whole cover, so the arcs and the fine lines run behind the title and the paragraph.",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. The same Illustrative cover with the arcs spread over the whole of it, so the fine lines run behind the title and the paragraph.",
   "illustrative": true,
-  "notes": "Each pattern under body text, the failure the brief names for both. Failure band per D2-308."
+  "notes": "The arcs under body text, the failure the brief names. The band runs the plate's width, as chapter 11's 360 px plates set it, and the Illustrative label opens the cover under it (CD-S11). Failure band per D2-308."
  },
  "s-proofs-masthead": {
   "chapter": "proofs",
@@ -529,9 +529,9 @@
   "chapter": "proofs",
   "rule": "proofs",
   "width_px": 1248,
-  "alt": "A social card at actual size, 1200 by 630 pixels, on Newsprint: the kicker Explainer · Zoning, the hinge headline The zoning code & the rent. broken before a red ampersand B, the wordmark 44 pixels tall at bottom left and the lockmark at 48 pixels at bottom right, inside the 72 pixel margin. No web address. Under it, the card’s specifications. The headline and kicker are invented.",
+  "alt": "A social card at actual size, 1200 by 630 pixels, on Newsprint: the kicker Explainer · Zoning, its label in Charcoal and its topic in gray, the hinge headline The zoning code & the rent. broken before a red ampersand B, the wordmark 44 pixels tall at bottom left and the lockmark at 48 pixels at bottom right, inside the 72 pixel margin. No web address. Under it, the card’s specifications. The headline and kicker are invented.",
   "illustrative": true,
-  "notes": "1200 by 630, the link-preview size, type at the desktop ceiling (D2-254). The headline is chapter 02's hinge example. Sign-off from the lockmark's 48 px master at 48 px (DR-131): since November 10, 2026 the rebuilt file, lockmark/20261109_Lockmark-48px-Master-Outline.svg, each node and the lever one outline (DR-181). The feed test (D2-468) ran again on this card in the built page with that master, and its figures are the ones printed here (work/handoffs/phase-2/20261110_Promotion-Identity-Figures.json, key feed). No web address until the site is settled (DR-55).",
+  "notes": "1200 by 630, the link-preview size, type at the desktop ceiling (D2-254). The headline is chapter 02's hinge example. Round 3 (D2-973, CA-S18): the kicker moves from the H4 style at 24 px to the H3 style at 32 px, the largest step the type scale gives a 1200 px board below the section and title styles, so at 358 px wide in a phone's feed it stands 9.5 px, legible on a 2x screen, where 24 px gave 7.2 px; its label takes Charcoal and its topic Deep Stone, as Rule 01.21 sets a kicker's two parts. No pillar row or symbol (D2-962). Sign-off from the lockmark's 48 px master at 48 px (DR-131): since November 10, 2026 the rebuilt file, lockmark/20261109_Lockmark-48px-Master-Outline.svg, each node and the lever one outline (DR-181). The feed test (D2-468) ran again on this card in the built page with that master, and its figures are the ones printed here (work/handoffs/phase-2/20261110_Promotion-Identity-Figures.json, key feed). No web address until the site is settled (DR-55).",
   "fit_switch": true
  },
  "s-proofs-letterhead": {

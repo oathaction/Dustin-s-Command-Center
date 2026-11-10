@@ -401,7 +401,7 @@
    "pass": "clear"
   }
  ],
- "marks_note": "One color, Charcoal #121212 on Newsprint, at true CSS size, in two rows, 16 px then 24 px. m9 to m12 draw fit B on screens under 2 device pixels per CSS pixel and the master from 2, as the guide does; the record's device_pixel_ratio says which drawing each reader saw. A mark half the readers call blurry or can't tell goes to the identity designer with each reader's screen sharpness.",
+ "marks_note": "One color, Charcoal #121212 on Newsprint, at true CSS size, in a grid of four columns and three rows (round 3, CA-S18): m1 to m7 at 16 px, then m8 to m12 at 24 px, numbered in that order. m9 to m12 draw fit B on screens under 2 device pixels per CSS pixel and the master from 2, as the guide does; the record's device_pixel_ratio says which drawing each reader saw. A mark half the readers call blurry or can't tell goes to the identity designer with each reader's screen sharpness.",
  "foot_24": {
   "editor_code": "lockmark_24 (the page records it as foot_24, since the page may not print the word lockmark)",
   "stimulus": "img/foot.svg, the rebuilt 24 px master with its red lever and Stone links, beside the footer line \"A country that answers to its people.\" at phone width on Newsprint",

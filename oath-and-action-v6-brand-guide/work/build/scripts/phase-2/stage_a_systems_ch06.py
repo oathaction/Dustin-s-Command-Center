@@ -403,7 +403,7 @@ def s_06_9(ctx):
                  ('An Illustrative email header at 600 px on White, set in the system stack: the wordmark, the headline The '
                   'school board votes on the new bell schedule April 14 in Helvetica or Arial bold at 26 px, a sentence of '
                   'body text, and our editorial commitment in Georgia Italic at 24 px.') if good else
-                 ('Labeled Failure case: do not publish. The same email header with its headline set in Inter Tight and '
+                 ('Failure case: do not publish. The same email header with its headline set in Inter Tight and '
                   'no web font loaded, so it shows in the mail app’s default serif.'),
                  width=600, illustrative=True, surface='white',
                  notes='Headline and body from chapter 02, W08 (Illustrative).' + ('' if good else

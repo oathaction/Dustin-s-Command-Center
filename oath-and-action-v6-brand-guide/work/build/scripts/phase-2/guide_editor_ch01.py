@@ -119,25 +119,34 @@ SRC_R4A_TX = ("Sources: Texas Legislature, H.B. 4, 89th Legislature, second call
               "The five-seat aim is the majority’s stated goal; this line does not measure the seats the map produced.")
 # BE-02, DR-149, DR-187: the count of the loop's 2025 and 2026 maps by the party that led each body, from the research lead's
 # stage B notes, section 3, and round 2 notes, section 5. The plate counts maps passed (DR-187). The number lives in R4A_SCOPE's
-# second sentence, the correct caption and SRC_R4A_COUNT's last sentence.
+# first two sentences and the correct caption.
+# Round 3 (PP-S12): Virginia's sentence names the statewide vote by voters, as the Department of Elections' May 8, 2026
+# release names it (research round 2, section 4).
 R4A_SCOPE = ("Our systems atlas records eight new congressional maps passed between censuses in 2025 and 2026. "
              "Republican-led legislatures or commissions passed seven, and California’s Democratic-led legislature passed "
              "one, which voters approved. Missouri’s voters rejected their state’s map, one of the seven, on November 3, "
              "2026, according to unofficial returns. Virginia’s Democratic-led legislature sought a ninth through a "
-             "constitutional amendment, and the state’s supreme court voided the April 21, 2026 vote that approved it.")
-# Missouri's figures are unofficial until the state certifies them; swap in the certified statement before Phase 5.
+             "constitutional amendment, and the state’s supreme court voided the statewide vote of April 21, 2026, in which "
+             "voters approved it.")
+# Round 3 (CD-S14, CA-S15): the count's source line keeps H04's order and its one qualification, each source stands on its
+# own line, and the method, Ohio, Missouri and Utah move to a note headed "How we counted", every fact kept (DR-187).
 SRC_R4A_COUNT = ("Source for the count: Oath & Action’s systems atlas, Who Do They Answer To?, its records for Loop R4a and its "
                  "log of rule changes, snapshot of October 15, 2026; congressional maps passed between censuses, January 2025 to "
-                 "October 2026; United States. Retrieved November 10, 2026. We counted each map by the party that led the "
-                 "legislature or commission when it passed, from each body’s own member lists and minutes. Ohio’s redistricting "
-                 "commission, five Republicans and two Democrats, adopted its map 7 to 0 on October 31, 2025, the deadline the "
-                 "state constitution set, and the constitution required at least two votes from each party’s members. Missouri’s "
-                 "vote came after the snapshot. Its figures are unofficial statewide returns for Proposition A, November 3, "
-                 "2026, 1,273,815 no and 785,969 yes, from St. Charles County, Missouri, “Voters Turn Out for 2026 Midterm "
-                 "Election in St. Charles County”, sccmo.org, November 4, 2026; the state certifies the count after local "
-                 "election authorities file theirs by November 17, 2026. A law sent to Missouri’s voters takes effect only if "
-                 "they approve it, so the state keeps its 2022 districts. A court adopted Utah’s map, so the count leaves it "
-                 "out. The count measures maps passed and says nothing about the seats they moved.")
+                 "October 2026; United States. Retrieved November 10, 2026. The count measures maps passed and says nothing "
+                 "about the seats they moved.")
+# Missouri's figures are unofficial until the state certifies them; swap in the certified statement, here and in
+# R4A_HOW, before Phase 5. The research lead read the county page on November 10, 2026 (round 2 notes, section 1).
+SRC_R4A_MO = ("Source for Missouri’s figures: St. Charles County, Missouri, “Voters Turn Out for 2026 Midterm Election in "
+              "St. Charles County”, sccmo.org, November 4, 2026; unofficial statewide returns for Proposition A, November 3, "
+              "2026; Missouri. Retrieved November 10, 2026.")
+R4A_HOW_HEAD = "How we counted"
+R4A_HOW = ("We counted each map by the party that led the legislature or commission when it passed, from each body’s own "
+           "member lists and minutes. Ohio’s redistricting commission, five Republicans and two Democrats, adopted its map 7 "
+           "to 0 on October 31, 2025, the deadline the state constitution set, and the constitution required at least two "
+           "votes from each party’s members. Missouri’s vote came after the snapshot. Its returns, 1,273,815 no and 785,969 "
+           "yes, stay unofficial until the state certifies the count, after local election authorities file theirs by "
+           "November 17, 2026. A law sent to Missouri’s voters takes effect only if they approve it, so the state keeps its "
+           "2022 districts. A court adopted Utah’s map, so the count leaves it out.")
 SRC_PAY = ("Sources: Anna M. Stansbury and Lawrence H. Summers, Harvard University, “Productivity and Pay: Is the Link "
            "Broken?”, National Bureau of Economic Research Working Paper 24165, December 2017, 1973 to 2016, United States; "
            "Economic Policy Institute, “The Productivity-Pay Gap”, 1979 to 2026, United States. Retrieved November 6, 2026. "
@@ -146,7 +155,8 @@ SRC_PAY = ("Sources: Anna M. Stansbury and Lawrence H. Summers, Harvard Universi
 SRC_MINWAGE = ("Source: U.S. Department of Labor, Wage and Hour Division, State Minimum Wage Laws, updated July 1, 2026, "
                "Ohio and Pennsylvania, as recorded in " + ATLAS + ", snapshot of October 15, 2026. Ohio’s yearly rate "
                "applies to employers with annual gross receipts of $405,000 or more.")
-SRC_CLOTURE = "Source: " + ATLAS + ", glossary entry “Cloture”."
+# Round 3 (BE-S8): the two atlas lines that named no date take the snapshot's, as every other atlas line in the chapter does.
+SRC_CLOTURE = "Source: " + ATLAS + ", glossary entry “Cloture”, snapshot of October 15, 2026."
 PHOTO_PARKS = "work/build/assets/photography/20261106_Photo-Rule-01-6-Rosa-Parks-Lying-In-Honor-Capitol-Rotunda-2005.jpg"
 PHOTO_ZIANNO = "work/build/assets/photography/20261106_Photo-Rule-01-8-Corps-Of-Engineers-Public-Meeting-Lake-Isabella-2014-Zianno.jpg"
 CAP_PARKS = ("Members of the public file past the casket of Rosa Parks, the civil rights pioneer, as she lies in honor in the "
@@ -154,7 +164,7 @@ CAP_PARKS = ("Members of the public file past the casket of Rosa Parks, the civi
 CAP_ZIANNO = ("Paul Zianno, chief of civil works acquisition and management for the U.S. Army Corps of Engineers Sacramento "
               "District, explains the Isabella Lake Dam safety project’s land purchases to residents at a public meeting in "
               "Lake Isabella, California, March 27, 2014. Photograph: John Prettyman, U.S. Army.")
-SRC_ELECTRIC = "From " + ATLAS + ", the everyday answer to “Why is my electric bill going up?”"
+SRC_ELECTRIC = "From " + ATLAS + ", the everyday answer to “Why is my electric bill going up?”, snapshot of October 15, 2026."
 
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -648,7 +658,7 @@ def build(book):
             f".ed .prow-box{{border-top:1px solid var(--oa-color-border-hairline);padding-top:12px}}")
     A("s-01-pillars", f'<div class="ed"><div class="prow-box"><p class="lab">The pillar row</p>{pillar_row(48)}</div>'
                       f'<div class="pills">{cards}</div>'
-                      f'<div class="prow-box"><p class="lab">On a section opener that serves Track, at 48 px</p>'
+                      f'<div class="prow-box"><p class="lab">On a page that serves Track, at 48 px</p>'
                       f'{pillar_row(48, current="Track", label="The four pillars, in order, with Track as the current pillar")}</div>'
                       f'<div class="prow-box"><p class="lab">The compact row, on a page that serves Track</p>'
                       f'{pillar_row(24, current="Track", label="The four pillars, in order, with Track as the current pillar")}</div></div>',
@@ -662,7 +672,7 @@ def build(book):
           "The Public Record, the atlas Register. 03 Connect: help people reach the office that decides and the evidence it "
           "decides on. Guides and call scripts, the Field Notes series, the atlas's view of who can act. 04 Act: give the reader a "
           "useful next step. Act pieces in two kinds, case studies in the Proof It Works series, and the closing step on every piece. "
-          "Then the same row as a section opener that serves Track sets it at 48 px: the word Track underlined, and Track's icon "
+          "Then the same row at 48 px on a page that serves Track: the word Track underlined, and Track's icon "
           "with its red parts, the pin and the magnifier's handle. Last, the compact row at 24 px on a page that serves Track: "
           "every icon in one color, and the word Track set bold and underlined.",
       notes="DR-111: the four pillar icons are Civic Line CL-019 Explain, CL-020 Track, CL-021 Connect and CL-022 Act, drawn from the "
@@ -1019,7 +1029,10 @@ def build(book):
     CASES = (f".ed .cases{{max-width:720px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px 28px}}"
              f".ed .cases div{{border-top:2px solid var(--oa-color-border-strong);padding-top:10px}}"
              f".ed .cases .st{{{fx('h4')};margin:0 0 6px}}"
-             f".ed .scope{{{fx('body-small')};max-width:720px;margin:16px 0 0;padding-top:10px;border-top:1px solid var(--oa-color-border-hairline)}}")
+             f".ed .scope{{{fx('body-small')};max-width:720px;margin:16px 0 0;padding-top:10px;border-top:1px solid var(--oa-color-border-hairline)}}"
+             # CA-S15: one source per line, as a short list, and the method as its own paragraph under its own head
+             f".ed .srl{{list-style:none;margin:4px 0 0;padding:0}}.ed .srl li{{margin-top:12px}}"
+             f".ed .how{{max-width:34rem;margin:20px 0 0}}.ed .how .lab{{margin:0 0 4px}}.ed .how .src{{margin-top:0}}")
     tx = "In August 2025, Texas’s Republican-led legislature passed a congressional map aimed at five more Republican seats, and Governor Greg Abbott signed it."
     ca = "In August 2025, California’s Democratic-led legislature passed a congressional map aimed at five more Democratic seats, and voters approved it in November."
     if words(tx) != words(ca):
@@ -1034,11 +1047,13 @@ def build(book):
         "why": {"text": [RULE_11_WHY],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-11-correct", f'<div class="ed">{lead11}<div class="cases"><div><p class="st">Texas</p><p>{e(tx)}</p></div>'
-                                                     f'<div><p class="st">California</p><p>{e(ca)}</p></div></div><p class="scope">{e(R4A_SCOPE)}</p><p class="src">{e(SRC_R4A)}</p><p class="src">{e(SRC_R4A_COUNT)}</p></div>',
+                                                     f'<div><p class="st">California</p><p>{e(ca)}</p></div></div><p class="scope">{e(R4A_SCOPE)}</p>'
+                                                     f'<ul class="srl"><li class="src">{e(SRC_R4A)}</li><li class="src">{e(SRC_R4A_COUNT)}</li><li class="src">{e(SRC_R4A_MO)}</li></ul>'
+                                                     f'<div class="how"><p class="lab">{e(R4A_HOW_HEAD)}</p><p class="src">{e(R4A_HOW)}</p></div></div>',
                                   css=(BASE, CHART, CASES), rule="01.11",
-                                  alt=f"Loop R4a, the map-drawing loop. Two cases in the same form and at the same length. Texas: {tx} California: {ca} {R4A_SCOPE} {SRC_R4A} {SRC_R4A_COUNT}",
-                                  notes="BE-S1, CP-M5: both cases in one form, as the research lead's fix pass report sets them (task 3), with its source line. Both aims are each side's stated goal: Texas's stay application, and the California three-judge court's finding. DR-149: the count and its source line follow the research lead’s stage B notes, section 3, with Missouri’s November 3, 2026 result, Ohio’s 7 to 0 commission vote and Virginia’s voided vote from the research lead’s round 2 notes (D2-777, D2-778)."),
-                    "caption": f"Each case names the month, the majority that acted and the seats its map aimed at, then the last step its state required, in {words(tx)} words. Texas’s map became law with the governor’s signature; California’s needed a constitutional amendment only voters could approve. Under the cases, the plate counts the maps in the atlas’s record by the party that led each, seven to one. It names the two maps that voters decided, California’s and Missouri’s, and Virginia’s attempt, which a court voided. Its source line gives Ohio’s 7 to 0 commission vote and the status of Missouri’s count."},
+                                  alt=f"Loop R4a, the map-drawing loop. Two cases in the same form and at the same length. Texas: {tx} California: {ca} {R4A_SCOPE} Then three source lines, each on its own line. {SRC_R4A} {SRC_R4A_COUNT} {SRC_R4A_MO} {R4A_HOW_HEAD}: {R4A_HOW}",
+                                  notes="BE-S1, CP-M5: both cases in one form, as the research lead's fix pass report sets them (task 3), with its source line. Both aims are each side's stated goal: Texas's stay application, and the California three-judge court's finding. DR-149: the count and its source line follow the research lead’s stage B notes, section 3, with Missouri’s November 3, 2026 result, Ohio’s 7 to 0 commission vote and Virginia’s voided vote from the research lead’s round 2 notes (D2-777, D2-778). Round 3: Virginia’s sentence names the statewide vote by voters (PP-S12); the count’s source line keeps H04’s order, each source stands on its own line, Missouri’s county page takes its own source line, and the method, Ohio, Missouri and Utah sit in a note headed How we counted, every fact kept (CD-S14, CA-S15, DR-187)."),
+                    "caption": f"Each case names the month, the majority that acted and the seats its map aimed at, then the last step its state required, in {words(tx)} words. Texas’s map became law with the governor’s signature; California’s needed a constitutional amendment only voters could approve. Under the cases, the plate counts the maps in the atlas’s record by the party that led each, seven to one. It names the two maps that voters decided, California’s and Missouri’s, and Virginia’s attempt, which voters approved and a court voided. Each source stands on its own line, and a note headed “How we counted” gives the method, Ohio’s 7 to 0 commission vote, the status of Missouri’s count and why the plate leaves out Utah’s map."},
         "failure": {"specimen": A("s-01-11-failure", f'<div class="ed">{dnp()}{lead11}<div class="cases"><div><p class="st">Texas</p><p>{e(tx)}</p></div></div><p class="src">{e(SRC_R4A_TX)}</p></div>',
                                   css=(BASE, CHART, CASES), rule="01.11",
                                   alt=f"{FC}The same loop with only the Texas case: {tx} {SRC_R4A_TX}",
@@ -1267,7 +1282,7 @@ def build(book):
           ("Act · How to take part", None, "Alder County votes on backyard cottages March 9.", True, None),
           ("Our position", "Committee votes", "State senate committees should post every vote within two days.", True, None)]
     kl_ok = '<div class="ed"><div class="kl">' + "".join(
-        f'<div>{kicker(a, b, icon=ic)}<p class="kt">{e(h)}{" " + ill() if il else ""}</p></div>' for a, b, h, il, ic in kl) + "</div></div>"
+        f'<div>{kicker(a, b, illus=il, icon=ic)}<p class="kt">{e(h)}</p></div>' for a, b, h, il, ic in kl) + "</div></div>"
     kl_bad = ('<div class="ed"><div class="kl">'
               f'<div><p class="kick"><span class="lb">Explain</span></p><p class="kt">Why is my electric bill going up?</p><p class="kw">A pillar name alone</p></div>'
               f'<div><p class="kick"><span class="lb">Must read</span><span class="dot" aria-hidden="true">·</span><span class="sx">Breaking</span></p><p class="kt">State senate committees should post every vote within two days. {ill()}</p><p class="kw">Push words, and no label to say the piece argues a position</p></div>'
@@ -1279,26 +1294,29 @@ def build(book):
         "rule": ["Open the kicker, the short line above a headline, with one of the seven content labels in this rule’s specifications. At most "
                  "one more part follows, after a middle dot: the series name if the piece belongs to a series, otherwise its topic, as in "
                  "“Explainer · Local schools”. A newsletter issue carries no label in its header, and each story inside it carries its own.",
-                 "Set the kicker in words. The one picture it may hold is a topic symbol from the Civic Line, our set of symbols in chapter 10, "
-                 "placed directly before the topic’s own word. Pillar icons belong to the pillar row, section openers and tiles, and never enter a kicker."],
+                 "Set the kicker in words. The one picture it may hold is a topic or atlas symbol from the 37 that read at 24 px (Rule 10.4), "
+                 "placed directly before its own word. Both come from the Civic Line, our set of symbols in chapter 10, and an atlas symbol "
+                 "stands for a part of our systems atlas, so its word is the atlas’s name for it. A subject that none of the 37 stands for, "
+                 "such as Housing, takes its word alone. "
+                 "Pillar icons belong to the pillar row, section openers and tiles, and never enter a kicker."],
         "tokens": ["oa.color.action.primary.fill.onNewsprint", "oa.size.icon.medium"],
         "why": {"text": ["The label tells a reader what kind of claim the piece makes before they read it, and whether we are reporting or arguing. "
-                         "A topic symbol beside its own word shows the subject a second way. A pillar icon in a kicker would sit beside a label such as "
+                         "A symbol beside its own word shows the subject a second way. A pillar icon in a kicker would sit beside a label such as "
                          "Report or Guide, which names no pillar, and leave the reader to decode the drawing."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-21-correct", kl_ok, css=(BASE, KCSS2), rule="01.21",
                                   alt="Seven kickers, one per content label, each over a headline. Explainer, utility rates: Why is my electric bill going up? "
-                                      f"Tracker, Congress: {HR7008_TRACKER}. Analysis, workers’ share of income, with its topic symbol, a person in the wedge cut from a circle, directly before those words: Does pay rise with productivity? Report, state legislatures, "
+                                      f"Tracker, Congress: {HR7008_TRACKER}. Analysis, workers’ share of income, with its atlas symbol, a person in the wedge cut from a circle, directly before those words: Does pay rise with productivity? Report, state legislatures, "
                                       "illustrative. Guide, Field Notes, illustrative. Act, how to take part, illustrative. Our position, committee votes, "
-                                      "in a Charcoal label, illustrative. The four invented headlines carry the Illustrative label."),
+                                      "in a Charcoal label, illustrative. Each of the four invented headlines carries the Illustrative label at the end of its kicker."),
                     "caption": ("Each kicker opens with its label and adds at most a series or a topic. The Analysis kicker holds the one picture a "
-                                "kicker may carry, the icon for workers’ share of income beside its own words. Only “Our position” takes the Charcoal fill, and the "
-                                "first three headlines are real, so the label sits beside each invented one. “Act · How to take part” is one label, so its "
+                                "kicker may carry, the atlas symbol for workers’ share of income beside the atlas’s name for it. Only “Our position” takes the Charcoal fill, and the "
+                                "first three headlines are real, so the Illustrative label ends the kicker of each invented one. “Act · How to take part” is one label, so its "
                                 "dot and both its words belong to the label.")},
         "failure": {"specimen": A("s-01-21-failure", kl_bad, css=(BASE, KCSS2), rule="01.21",
                                   alt="Four kickers that break the rule. Explain, a pillar name alone. Must read and Breaking above an illustrative position headline, with no label. "
                                       "Field Notes, then Guide, then Street repairs: the series first, the label second and three parts. The same Analysis kicker "
-                                      "with the Explain pillar icon before its label, in place of the icon for workers’ share of income."),
+                                      "with the Explain pillar icon before its label, in place of the atlas symbol for workers’ share of income."),
                     "caption": ("“Explain” is a pillar and says nothing about the claim, and “Must read” and “Breaking” push the reader while hiding "
                                 "that the piece argues. The third kicker reaches its label only after the series. In the last, the Explain icon "
                                 "codes a pillar that the label Analysis never names.")},
@@ -1311,11 +1329,12 @@ def build(book):
                   {"label": "Our position", "value": "An argument for or against a named measure, in the Charcoal label (Rule 01.23)", "token": "oa.color.action.primary.fill.onNewsprint"},
                   {"label": "Never a kicker", "value": "A pillar name alone, and a chart’s “Finding” line, which sits above the chart’s title as its evidence line"},
                   {"label": "Type", "value": "The label style, Inter 700 capitals at 13 px; the second part in the secondary text ink"},
-                  {"label": "Topic icon", "value": "Optional: a Civic Line icon at 24 px in one color, 8 px before the topic’s own word, only when the second part is a topic", "token": "oa.size.icon.medium"},
+                  {"label": "Kicker symbol", "value": "Optional: a topic or atlas symbol from the 37 that read at 24 px (Rule 10.4), in one color, 8 px before its own word, only when the second part is a topic", "token": "oa.size.icon.medium"},
                   {"label": "Never inside a kicker", "value": "A pillar icon, the lockmark, or an icon beside a label or a series name"}],
         "related": ["10", "13"],
         "builders": ("Pick the label from the seven in this rule. If a piece fits none of them, ask the editor before it runs. Add a topic "
-                     "symbol only when the kicker’s second part is the word that symbol names, and keep pillar icons and the lockmark out of kickers."),
+                     "or atlas symbol from the 37 that read at 24 px (Rule 10.4) only when the kicker’s second part is that symbol’s own "
+                     "word, and keep pillar icons and the lockmark out of kickers."),
     })
 
     rules.append({
@@ -1411,7 +1430,7 @@ def build(book):
                "caption": "Each locked line splits at the hinge, its commitment first, set in bold, and the action after it. The pillars split the same way, between Track and Connect, where a reader stops learning about a decision and starts taking part in it."},
               {"specimen": "s-01-pillars", "label": "The four pillars, always in this order",
                "caption": ("Each pillar’s icon sits beside its word, and a page that serves one pillar underlines that word; from 48\u00a0px its "
-                           "icon also shows its red part as a second sign, as the section opener’s row draws it. The icons belong to the Civic Line, our set of symbols, and "
+                           "icon also shows its red accent as a second sign, as Track’s icon does here. The icons belong to the Civic Line, our set of symbols, and "
                            "chapter 09 sets their sizes. "
                            "Every product carries the Oath & Action name. The atlas, the trackers and the data never take a position; "
                            "positions appear only in labeled Act pieces.")},
@@ -1433,7 +1452,7 @@ def build(book):
          "line": "Tell a reader what kind of piece they are reading, and name each product for what it does."},
     ]
 
-    sources = [SRC_STOCK_SURVEY, SRC_STOCK_VOTES, SRC_INITIATIVE, SRC_FEC, SRC_R4A, SRC_R4A_COUNT, SRC_MINWAGE, SRC_PAY, SRC_CLOTURE, SRC_ELECTRIC,
+    sources = [SRC_STOCK_SURVEY, SRC_STOCK_VOTES, SRC_INITIATIVE, SRC_FEC, SRC_R4A, SRC_R4A_COUNT, SRC_R4A_MO, SRC_MINWAGE, SRC_PAY, SRC_CLOTURE, SRC_ELECTRIC,
                "Our brand guide, fifth edition, chapter 13 In use: “Who wrote the rule you are angry about?”"]
 
     data = {

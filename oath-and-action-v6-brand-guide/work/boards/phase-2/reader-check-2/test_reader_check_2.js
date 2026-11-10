@@ -17,6 +17,9 @@
 // and All clear never sees them); every shuffled question keeps "Not sure" last and records its order; the record holds
 // the screen's device pixel ratio; at 1x the rows and marks draw their pixel fits and the article its pixel mark, and
 // at 2x the masters and the smooth mark.
+// Round 3 fix pass (November 10, 2026): the copy text's readable lines carry no codes, no before or after label and no
+// machine time, and its record line keeps every code (PP-S14, CA-S18); the copy-mode line opens with no ring (PP-S15);
+// the sheet of twelve marks stands in a grid of four columns, three rows of four, at every width (CA-S18).
 // Writes 20261110_Reader-Check-2-Test-Results.json and the 390 px captures in captures/.
 const fs = require('fs');
 const path = require('path');
@@ -152,6 +155,8 @@ async function walk(browser, { mode, width, scale, captures, reduce, label, firs
   await page.waitForFunction(() => window.__RC__.Store.mode !== 'checking', null, { timeout: 15000 });
   const modeLine = await page.textContent('#mode-line');
   res.modeLine = modeLine;
+  const ring = await page.evaluate(() => { const b = getComputedStyle(document.querySelector('#mode-line'), '::before'); return { content: b.content, w: b.width, border: b.borderTopWidth }; });
+  if (ring.content !== 'none' && ring.content !== 'normal') fail('welcome: the mode line still opens with a mark ' + JSON.stringify(ring));
   await check('welcome');
   await snap('Welcome');
   await page.click('form button[type=submit]');
@@ -206,6 +211,13 @@ async function walk(browser, { mode, width, scale, captures, reduce, label, firs
       if (nm && !capNames.has(nm)) { await check(s.key); await snap(nm); }
       // the guide's switch: pixel fits under 2 device pixels per CSS pixel, the masters from 2 (DR-179)
       const dpr = captures ? 2 : 1;
+      if (s.key === 'marks:look') {
+        const grid = await page.evaluate(() => [...document.querySelectorAll('main .sheet .sheet-cell')].map((c) => { const r = c.getBoundingClientRect(); return [Math.round(r.left), Math.round(r.top)]; }));
+        const rows = [...new Set(grid.map((g) => g[1]))], cols = [...new Set(grid.map((g) => g[0]))];
+        const perRow = rows.map((t) => grid.filter((g) => g[1] === t).length);
+        res.sheet = { rows: perRow, columns: cols.length };
+        if (grid.length !== 12 || rows.length !== 3 || perRow.some((n) => n !== 4) || cols.length !== 4) fail(`marks:look: the sheet is not three rows of four in four columns (${JSON.stringify(res.sheet)})`);
+      }
       if (s.key === 'row_24:look' || s.key === 'marks:look') {
         const fits = s.key === 'row_24:look' ? shownSrcs : shownSrcs.slice(8);
         const want = (f) => (dpr === 2 ? /^(g\d\.svg|mark-\d+-b\.svg)$/ : /^(g\d-24\.svg|mark-\d+\.svg)$/).test(f);
@@ -318,6 +330,15 @@ async function walk(browser, { mode, width, scale, captures, reduce, label, firs
     const line = res.end.copy.split('\n').pop();
     const parsed = JSON.parse(line);
     if (JSON.stringify(parsed.run) !== JSON.stringify(run)) fail('copy: the copied JSON differs from the page state');
+    // PP-S14, CA-S18: the lines a reader reads name no code, no before or after, and no machine time
+    const readable = res.end.copy.split('\n').slice(0, -1).join('\n');
+    const codes = [...run.orders.loops, ...run.orders.icons, ...run.orders.charts, ...Object.keys(run.orders.pairs)];
+    const hits = [];
+    for (const c of codes) if (new RegExp('\\(' + c + '\\)|\\b' + c + '\\b').test(readable)) hits.push(c);
+    for (const re of [/\bstep\d\b/, /\d{4}-\d{2}-\d{2}T/, /\((?:before|after)\)/, /\b(?:cannot_tell|take_part|unsure)\b/, /×/]) { const m = readable.match(re); if (m) hits.push(m[0]); }
+    if (hits.length) fail('copy: the readable lines print codes or machine text: ' + hits.join(', '));
+    if (!/^Started: (January|February|March|April|May|June|July|August|September|October|November|December) \d{1,2}, \d{4}, at \d{1,2}:\d{2} [ap]\.m\.$/m.test(readable)) fail('copy: the start time is not in words');
+    res.copyHead = readable.split('\n').slice(0, 9);
     if (rec.db.writes.length) fail(`copy mode wrote ${rec.db.writes.length} documents`);
   }
   if (errors.length) fail('page errors: ' + errors.join(' | '));

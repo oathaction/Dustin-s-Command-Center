@@ -48,7 +48,7 @@ const chartNum = (value, unit, description, source, ext = {}) => tok('number', v
 // ------------------------------------------------------------------------------------------ metadata
 export const meta = {
   title: 'Oath & Action design tokens, Edition 06',
-  version: '6.0.0-gate2.5',   // stage B round 2, November 10, 2026: the icon accent from 48 px, the 16 px utility line (gate2.4: mark tokens, D2-402, the 24 px utility line, icon sizes after DR-136)
+  version: '6.0.0-gate2.6',   // stage B round 3, November 10, 2026: the error mark token colors the 4 px bar (PP-M3) (gate2.5: the icon accent from 48 px, the 16 px utility line; gate2.4: mark tokens, D2-402, the 24 px utility line, icon sizes after DR-136)
   status: 'pre-release',
   statusNote:
     'Built for Gate 2. Version 6.0.0 ships when Dustin approves the token files at Gate 2; until then every value may still change.',
@@ -285,7 +285,9 @@ const color = {
         { newsprint: D('errorBand'), white: D('errorBand') },
         { newsprint: { textOnIt: ['{oa.color.text.primary.onNewsprint}', '{oa.color.text.secondary.onNewsprint}'] },
           white: { textOnIt: ['{oa.color.text.primary.onWhite}', '{oa.color.text.secondary.onWhite}'] } }),
-      mark: semantic('graphic', 'Error glyph and state bar: the first claim on the view\'s working red. Newsprint on Prussian, where red never sits.',
+      // PP-M3 (round 3, November 10, 2026): Rule 11.15 draws the error glyph in the text's ink, so this token colors the
+      // 4 px bar alone. Its name waits for Dustin's answer at Gate 2 (D2-880).
+      mark: semantic('graphic', 'The 4 px bar beside an error message: the first claim on the view\'s working red. The error glyph takes the error text\'s ink, --oa-color-state-error-text-on-<surface>, since red on the Error Band falls under 3 to 1. Newsprint on Prussian, where red never sits.',
         { newsprint: P('pillarRed'), white: P('pillarRed'), charcoal: P('pillarRed'), prussian: P('newsprint') },
         { newsprint: { redRole: 'working', precedence: 1, keyline: '{oa.color.palette.charcoal}' },
           white: { redRole: 'working', precedence: 1 }, charcoal: { redRole: 'working', precedence: 1 } }),

@@ -108,7 +108,7 @@
       ],
       "why": {
         "text": [
-          "A shape holds up in gray print, in bright sun and for the many readers who cannot tell red from green. The words carry the state to a screen reader and to anyone unsure of a mark. Each mark but the take-part disc draws in the surface’s ink, Charcoal on Newsprint and Newsprint on Charcoal, so a tracker reads the same on either ground."
+          "A shape holds up in gray print, in bright sun and for the many readers who cannot tell red from green. The words carry the state to a screen reader and to anyone unsure of a mark. Every mark a bill has reached draws in the surface’s ink, Charcoal on Newsprint and Newsprint on Charcoal, as do the slash and the line up to the current step. The rings ahead, the ring under a slash and the line after the current step draw lighter, in Stone on Newsprint and Dim Newsprint on Charcoal, so the steps still to come stand back. Only the take-part disc is red."
         ],
         "basis": "WCAG 2.2 SC 1.4.1 and 1.4.11; design judgment"
       },
@@ -132,17 +132,22 @@
         },
         {
           "label": "Not yet",
-          "value": "A ring with a 1.5 px line, its number in Inter 600 in the secondary text color",
+          "value": "A ring with a 1.5 px line in Stone, its number in Inter 600 in the secondary text color",
           "token": "oa.component.mark.ring.ahead"
         },
         {
           "label": "Never happened",
-          "value": "The Not yet ring under a 2 px slash, its number kept clear by a 2 px halo in the surface color",
+          "value": "The Not yet ring under a 2 px slash in ink, 4 px longer than the circle is wide",
           "token": "oa.component.mark.slash"
         },
         {
+          "label": "Halo",
+          "value": "A 4 px stroke in the surface color under the number of a step that never happened, which shows 2 px around it",
+          "token": "oa.component.mark.halo"
+        },
+        {
           "label": "Stopped",
-          "value": "A filled square in place of the circle; the line ends there"
+          "value": "A filled square 2 px narrower than the circle, in its place; the line ends there"
         },
         {
           "label": "Marks on Newsprint",
@@ -167,7 +172,8 @@
       "builders": [
         "Draw each tracker as one SVG with <code>aria-hidden=\"true\"</code>, and give screen readers an ordered list of the six steps beside it, each with its state in words, such as “Step 2, Hearing: never happened.” Hide that list visually and keep it in the reading order.",
         "Tag each mark <code>data-icon=\"S-now\"</code> (or <code>S-done</code>, <code>S-take-part</code>, <code>S-not-yet</code>, <code>S-never-happened</code>, <code>S-stopped</code>) with <code>data-icon-family=\"status\"</code>, so the shared checks find it.",
-        "A hearing on the bill’s subject held before the bill was filed does not fill step 2; the step’s note names it."
+        "A hearing on the bill’s subject held before the bill was filed does not fill step 2; the step’s note names it.",
+        "Draw each mark from the table after this rule, Drawing the marks, which gives its size at every circle size, its line, its color token and where its parts sit."
       ]
     },
     {
@@ -320,12 +326,12 @@
         },
         {
           "label": "Line",
-          "value": "2 px in the surface’s ink as far as the bill has come, 1 px after it",
+          "value": "2 px in the surface’s ink as far as the record has come, through any step that never happened; 1 px in Stone after the current step",
           "token": "oa.component.mark.line.reached"
         },
         {
           "label": "Spacing",
-          "value": "Phone list and card: first circle on the text edge, last on the far edge, 60 px apart in a 328 px row. Wide list: one sixth of a 552 px row to each step, 92 px"
+          "value": "Phone list and card: the first circle on the text edge and each next one 60 px on, center to center, so six fit a 328 px row. Wide list: one sixth of a 552 px row to each step, 92 px"
         },
         {
           "label": "Step names",
@@ -433,7 +439,7 @@
         },
         {
           "label": "Numbers",
-          "value": "Inter 700 at 13 px, or 14 px in circles of 28 px and up; tabular figures"
+          "value": "Inter 700 at 13 px, or 14 px in circles of 28 px and up; Inter 600 on a step not yet reached or never happened; tabular figures"
         },
         {
           "label": "Links and buttons in a tracker, and controls with a utility icon",
@@ -462,7 +468,7 @@
       "id": "11.8",
       "title": "Follow a records request through six steps, and end it in plain words.",
       "rule": [
-        "A records request asks a government agency to release documents it holds. Its tracker uses the bill tracker’s marks for six steps of its own: Requested, Acknowledged, Searching, Reviewing, Answered and Appeal. Step 6 counts only when the requester appeals, so a request that was never appealed keeps step 6 under a slash once the time to appeal has passed.",
+        "A records request asks a government agency to release documents it holds. These steps and end words follow the federal Freedom of Information Act and the Justice Department’s categories; a request to a state or local agency follows that state’s law. The tracker uses the bill tracker’s marks for six steps of its own: Requested, Acknowledged, Searching, Reviewing, Answered and Appeal. Step 6 counts only when the requester appeals, so a request that was never appealed keeps step 6 under a slash once the time to appeal has passed.",
         "The words say how the agency answered, with the date: Granted, Partly granted, Denied, or Closed with no records released. A request the requester stopped reads “Withdrawn by the requester”, and its line ends on a square at the step where it stopped. An appeal ends in words too: Upheld, Partly reversed, Reversed and sent back, or Closed for other reasons."
       ],
       "why": {
@@ -515,14 +521,14 @@
       "title": "Follow an agency rule through six steps, and mark the open comment period as the way to take part.",
       "rule": [
         "A federal agency writes a rule in six steps: Early notice, Proposed, Comments open, Comments closed, Final rule and In effect. Step 1 is optional, so a rule that had no early notice keeps step 1 under a slash. While comments are open, step 3 takes the take-part mark from Rule 11.4, with the deadline and how to send a comment.",
-        "A rule the agency issued without asking for comment first, such as an interim final rule, which takes comments only after it takes effect, keeps steps 2 to 4 under slashes, and its words say so: “Issued without advance comment.” A rule that ends early says how in words, with the date: Withdrawn by the agency, Struck by Congress, or Set aside by a court. Once a rule takes effect, all six steps fill, as a bill’s do once it becomes law."
+        "A rule the agency issued without asking for comment first keeps steps 2 to 4 under slashes, and its words say so: “Issued without advance comment.” An interim final rule is one such rule, and it takes comments only after it takes effect. A rule that ends early says how in words, with the date: Withdrawn by the agency, Struck by Congress, or Set aside by a court. Once a rule takes effect, all six steps fill, as a bill’s do once it becomes law."
       ],
       "tokens": [
         "oa.component.mark.takePart.disc"
       ],
       "why": {
         "text": [
-          "Sending a comment is the way the law gives the public to take part in a federal rule, so the open comment period carries the view’s working red, as a hearing does on a bill. The slashes keep a rule that skipped comment from reading as one the public had a say in before it took effect."
+          "Sending a comment is the main way the law gives the public to take part in a federal rule, so the open comment period carries the view’s working red, as a hearing does on a bill. The slashes keep a rule that skipped comment from reading as one the public had a say in before it took effect."
         ],
         "basis": "5 U.S.C. 553 and RegInfo.gov; Rule 11.4"
       },
@@ -573,15 +579,15 @@
       "id": "11.10",
       "title": "Say a wait or a later step in words, and keep the count at six.",
       "rule": [
-        "A pause inside a step, such as an agency’s question to the requester, a fee estimate or a ten-day extension, shows as words under the step it falls in. It never adds a mark, so every request still counts to six. A step outside the agency, such as mediation by the National Archives or a lawsuit, follows the end words as a sentence with its date.",
-        "A status we read from the record ourselves carries the warning mark and the date we checked it: “Checked April 20. The agency may have acted since.”"
+        "A wait inside a step, such as an agency’s question to the requester, a fee estimate or an extension of up to 10 working days, shows as words under the step it falls in. It never adds a mark, so every request still counts to six. A step outside the agency, such as mediation by the National Archives or a lawsuit, follows the end words as a sentence with its date.",
+        "A status taken from the agency’s own tracking service, or from the Federal Register for a rule, needs no mark. A status we piece together ourselves, such as a wait we learn of from the agency’s letter, carries the warning mark and the date we checked it: “Checked April 20. The agency may have acted since.”"
       ],
       "tokens": [
         "oa.color.state.warning.mark.onNewsprint"
       ],
       "why": {
         "text": [
-          "The law treats these waits as pauses in the agency’s 20 working days, so they belong inside a step. A count that changed from one request to the next would stop readers from comparing them. The check date tells a reader how old the status is before they rely on it."
+          "The law lets an agency stop its 20 working days while it waits on the requester, once for more information and again to settle fees, and add up to 10 working days in unusual circumstances, so each wait belongs inside the step it falls in. A count that changed from one request to the next would stop readers from comparing them. The check date tells a reader how old the status is before they rely on it."
         ],
         "basis": "5 U.S.C. 552(a)(6); design judgment"
       },
@@ -608,7 +614,7 @@
         },
         {
           "label": "Check date",
-          "value": "The warning mark at 24 px, in ink, then “Checked” and the date",
+          "value": "For a status we piece together ourselves: the warning mark at 24 px, in ink, then “Checked” and the date",
           "token": "oa.color.state.warning.mark.onNewsprint"
         },
         {
@@ -621,7 +627,7 @@
         "17"
       ],
       "builders": [
-        "Keep a wait as a field on its step, with the dates it began and ended, so the words can say how long the clock stopped."
+        "Keep a wait as a field on its step, with the dates it began and ended, so the words can say how long the count of working days stopped. Store where each status came from, so a status we piece together ourselves prints its check date."
       ]
     },
     {
@@ -821,7 +827,7 @@
       },
       "correct": {
         "specimen": "s-11-14-correct",
-        "caption": "A loop stepper from our systems atlas, live at 360 px. Play, Reset the loop, Previous step and Next step each carry a utility icon beside the word, and the unavailable ones say why."
+        "caption": "A stepper for loop R1 from our systems atlas, live at 360 px. Play, Reset the loop, Previous step and Next step each carry a utility icon beside the word, and the unavailable ones say why. The least certain step says so in its words."
       },
       "failure": {
         "specimen": "s-11-14-failure",
@@ -835,6 +841,14 @@
         {
           "label": "Play and Pause",
           "value": "One button: its icon and word change together; playback starts only on a press"
+        },
+        {
+          "label": "Pace",
+          "value": "Play holds each step about 250 ms a word and never under 6 seconds, with reduced motion too: 9 to 12.75 seconds a step here. Pause stops it, and Next step turns one step at a time"
+        },
+        {
+          "label": "Step words",
+          "value": "The verb follows the connection’s sign; a step graded plausible takes “can” and says its grade"
         },
         {
           "label": "Topic and atlas symbols",
@@ -857,9 +871,8 @@
         "A field with an error carries the red bar at its left edge and points to its message, and focus moves to the first field to fix. Copy, Search, Filter and Sort write their results to a status line in words."
       ],
       "tokens": [
-        "oa.color.state.error.mark.onNewsprint",
-        "oa.color.state.error.band.onNewsprint",
         "oa.color.state.error.text.onNewsprint",
+        "oa.color.state.error.band.onNewsprint",
         "oa.color.state.success.mark.onNewsprint",
         "oa.color.state.warning.mark.onNewsprint"
       ],
@@ -879,14 +892,23 @@
       },
       "specs": [
         {
-          "label": "Error",
-          "value": "The mark in ink on the Error Band, a 4 px Pillar Red bar at the left, “Error:” and the fix",
+          "label": "Error mark",
+          "value": "A circle holding an exclamation mark, in the text’s ink, never red",
+          "token": "oa.color.state.error.text.onNewsprint"
+        },
+        {
+          "label": "The red bar",
+          "value": "4 px of Pillar Red at the left of the message and of a field with an error; this token colors the bar only",
+          "token": "oa.color.state.error.mark.onNewsprint"
+        },
+        {
+          "label": "Error message",
+          "value": "On the Error Band: the mark, “Error:” and the fix",
           "token": "oa.color.state.error.band.onNewsprint"
         },
         {
           "label": "Field with an error",
-          "value": "A 4 px red bar at its left edge, aria-invalid and aria-describedby to its message",
-          "token": "oa.color.state.error.mark.onNewsprint"
+          "value": "The red bar at its left edge, aria-invalid and aria-describedby to its message"
         },
         {
           "label": "Success",
@@ -913,7 +935,8 @@
         "17"
       ],
       "builders": [
-        "Put an error message in <code>role=\"alert\"</code> or in a status line the field points to, and a success or a result in <code>role=\"status\"</code>. Draw the bar as a left border, which stays visible when the system forces its own colors."
+        "Put an error message in <code>role=\"alert\"</code> or in a status line the field points to, and a success or a result in <code>role=\"status\"</code>. Draw the bar as a left border, which stays visible when the system forces its own colors.",
+        "Draw the error mark in <code>--oa-color-state-error-text-on-newsprint</code> through <code>currentColor</code>. <code>--oa-color-state-error-mark-on-newsprint</code> colors the 4 px bar only."
       ]
     },
     {
@@ -924,19 +947,19 @@
         "Once the reader fixes the error, the red goes back to the take-part mark and the ask. The intervention marker takes the red only in a view with no error and no step to take."
       ],
       "tokens": [
-        "oa.color.state.error.mark.onNewsprint",
+        "oa.color.state.error.text.onNewsprint",
         "oa.component.button.primary.fill.onNewsprint",
         "oa.component.mark.takePart.disc"
       ],
       "why": {
         "text": [
-          "A reader has to fix an error before taking any step, and a step a reader can take matters more than a point we want to make. Each mark keeps its shape and its words when it yields, so nothing it says is lost; only the color moves."
+          "A reader has to fix an error before taking any step, and a step a reader can take matters more than a point we want to make. Each mark keeps its shape and its words when it yields, so nothing it says is lost."
         ],
         "basis": "Rule 05.3; WCAG 2.2 SC 1.4.1"
       },
       "correct": {
         "specimen": "s-11-16-correct",
-        "caption": "One view at 360 px. The email field’s error holds the red. The take-part disc on step 2 and the heavier outline where reform R-01, all-party primaries with ranked general elections, acts stay in Charcoal with their words, and Remind me is Charcoal until the error is fixed."
+        "caption": "One view at 360 px. The email field’s error holds the red. The take-part disc on step 2 and the heavier outline where reform R-32, public and philanthropic funding for local news, acts stay in Charcoal with their words, and Remind me is Charcoal until the error is fixed."
       },
       "failure": {
         "specimen": "s-11-16-failure",
@@ -945,8 +968,13 @@
       "specs": [
         {
           "label": "First claim",
-          "value": "An error the reader must fix",
+          "value": "An error the reader must fix, which holds the red bar",
           "token": "oa.color.state.error.mark.onNewsprint"
+        },
+        {
+          "label": "Error mark",
+          "value": "In the text’s ink, beside the red bar",
+          "token": "oa.color.state.error.text.onNewsprint"
         },
         {
           "label": "Second claim",
@@ -983,6 +1011,12 @@
       "specimen": "s-11-steps",
       "label": "The six steps",
       "caption": "What happens at each step. Step 6 takes the name of whoever signs the bill."
+    },
+    {
+      "after_rule": "11.2",
+      "specimen": "s-11-marks-drawn",
+      "label": "Drawing the marks",
+      "caption": "Each mark at every circle size, with its line, its color token and where its parts sit. On Charcoal, read “charcoal” for &lt;surface&gt;."
     },
     {
       "after_rule": "11.5",
@@ -1040,9 +1074,10 @@
     }
   ],
   "sources": [
-    "Source: Nebraska Legislature, “Lawmaking in Nebraska”, via nebraskalegislature.gov, retrieved November 9, 2026. Nebraska’s one-chamber route and its steps, behind Rule 11.1.",
-    "Sources: the Freedom of Information Act, 5 U.S.C. 552, via the Legal Information Institute, Cornell Law School; and FOIA.gov, “Frequently Asked Questions”, run by the Justice Department’s Office of Information Policy; both retrieved November 9, 2026. The steps, the 20 working days and the pauses in them, behind Rules 11.8 and 11.10.",
-    "Source: Office of Information Policy, Justice Department, “Fiscal Year 2024 Annual Freedom of Information Act Report”, March 6, 2025, section III, fiscal year 2024, federal agencies. Retrieved November 9, 2026. The categories behind the end words in Rule 11.8.",
-    "Sources: rulemaking, 5 U.S.C. 553, Congressional review, 5 U.S.C. 801, and judicial review, 5 U.S.C. 706, via the Legal Information Institute; and RegInfo.gov, “Frequently Asked Questions”, the Office of Information and Regulatory Affairs; all retrieved November 9, 2026. The steps of a federal rule, its comment period, when it takes effect and how it can end, behind Rule 11.9."
+    "Source: Nebraska Legislature, “Lawmaking in Nebraska”, via nebraskalegislature.gov, no page date, retrieved November 9, 2026. Nebraska’s one-chamber route and its steps, behind Rule 11.1.",
+    "Sources: Nebraska Legislature, “Tips on Testifying at a Committee Hearing”, no page date; Washington State Legislature, “How to Testify in Committee”, 2023; Minnesota Legislature, “May I testify at a committee hearing?”, reviewed February 20, 2026; Utah Legislature, “How to Testify In A Committee”, no page date; Texas Legislature Online, FAQ 27, no page date; five states, all retrieved November 9, 2026. Each legislature sets its own rules on sign-up, time limits and which bills get a hearing, and we read these five as examples and made no national count. Testimony from the public at a state committee hearing, behind Rule 11.1.",
+    "Sources: the Freedom of Information Act, 5 U.S.C. 552, via the Legal Information Institute, Cornell Law School, as in force on November 9, 2026; and FOIA.gov, “Frequently Asked Questions”, run by the Justice Department’s Office of Information Policy, no page date; both retrieved November 9, 2026. The steps, the 20 working days and the waits in them, behind Rules 11.8 and 11.10.",
+    "Source: Office of Information Policy, U.S. Department of Justice, “Fiscal Year 2024 Annual Freedom of Information Act Report”, March 6, 2025, sections V.B.(1) and VI.B, fiscal year 2024, the Justice Department and its components, retrieved November 9, 2026. The categories behind the end words in Rule 11.8.",
+    "Sources: rulemaking, 5 U.S.C. 553, Congressional review, 5 U.S.C. 801, and judicial review, 5 U.S.C. 706, via the Legal Information Institute, Cornell Law School, as in force on November 9, 2026; and RegInfo.gov, “Frequently Asked Questions”, the Office of Information and Regulatory Affairs, no page date; all retrieved November 9, 2026. The steps of a federal rule, its comment period, when it takes effect and how it can end, behind Rule 11.9."
   ]
 }

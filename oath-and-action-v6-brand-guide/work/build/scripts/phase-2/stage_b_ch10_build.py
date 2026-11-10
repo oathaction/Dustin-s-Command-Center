@@ -100,6 +100,19 @@ LOOKALIKES = [   # the round 2 brief's side by side checks, with what tells each
     (('CL-048', 'CL-023'), 'Both hold a page. Public records lifts it out of an open folder, and Evidence rests a '
                            'magnifier with a check on it.'),
 ]
+# D2-971: five of the 41 that draw as one shape at 24 px (the craft and accessibility team's question 1). Rule 10.9 keeps
+# any two of them out of one view at that size; the plate shows them at 24 px, with what tells them apart from 48 px.
+LOOKALIKE_24 = (('CL-023', 'CL-028', 'R-08', 'R-27', 'R-45'),
+                'At 24 px each one draws as a page or a record under a magnifier, and the small marks that tell them apart '
+                'blur. From 48 px they part: {CL-023} rests a lens with a check on a page; {CL-028} holds an empty lens '
+                'over part of a record; {R-08} sets a dollar sign on the page; {R-27} puts a gauge in the lens over a tax '
+                'record; and {R-45} sets paper ballots under a lens with a check.')
+
+
+def look24(rows):
+    """LOOKALIKE_24's sentence with the editor's words for each drawing (DR-185)."""
+    ids, text = LOOKALIKE_24
+    return re.sub(r'\{((?:CL|R)-\d+)\}', lambda m: rows[m.group(1)]['label'], text)
 
 
 # ------------------------------------------------------------------------------------------------ inputs
@@ -220,10 +233,15 @@ const lib = new Function('require', '__dirname', 'process', src.slice(0, src.las
 """
 
 
+def wanted_pairs():
+    groups = [grp for grp, _ in LOOKALIKES] + [LOOKALIKE_24[0]]
+    return [[grp[a], grp[b]] for grp in groups for a in range(len(grp)) for b in range(a + 1, len(grp))]
+
+
 def measure_likeness(black, tmp):
     """The engineer's look-alike figure for each pair in LOOKALIKES, between the drawings in use: the check's own ink
     maps and correlation, run on its master set (civic-line-v6, D2-748), read as master pairs."""
-    want = [[grp[a], grp[b]] for grp, _ in LOOKALIKES for a in range(len(grp)) for b in range(a + 1, len(grp))]
+    want = wanted_pairs()
     (tmp / 'want.json').write_text(json.dumps(want))
     (tmp / 'like.js').write_text(LIKE_JS)
     out = subprocess.run(['node', str(tmp / 'like.js'), str(LIKENESS), str(tmp / 'want.json')], cwd=ROOT, check=True,
@@ -260,14 +278,30 @@ def nb(s):
     return re.sub(r'(\d) (px|units?)\b', '\\1' + NB + '\\2', s)
 
 
+NBH = '‑'   # non-breaking hyphen (D2-950)
+ID_RE = re.compile(r'\b(CL|R)-(\d{2,3})\b')
+
+
+def nbh(s):
+    """An ID never breaks at its hyphen: CL-028 takes a non-breaking hyphen in visible text (D2-950). Text inside
+    <code> keeps its hyphen, and alt text keeps the plain hyphen a screen reader expects. Inter, as the page loads it,
+    has no glyph for U+2011, so the browser draws that one mark from the stack's next face, Arial; its hyphen matches."""
+    parts = re.split(r'(<code>.*?</code>)', s, flags=re.S)
+    return ''.join(x if x.startswith('<code>') else ID_RE.sub(lambda m: m.group(1) + NBH + m.group(2), x) for x in parts)
+
+
+def vis(s):
+    return nbh(nb(s))
+
+
 def nb_html(html):
     parts = re.split(r'(<style\b.*?</style>|<[^>]+>)', html, flags=re.S)
-    return ''.join(x if x.startswith('<') else nb(x) for x in parts)
+    return ''.join(x if x.startswith('<') else vis(x) for x in parts)
 
 
 def nb_tree(o):
     if isinstance(o, str):
-        return nb(o)
+        return vis(o)
     if isinstance(o, list):
         return [nb_tree(x) for x in o]
     if isinstance(o, dict):
@@ -319,7 +353,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
     pad = lambda w: f'.pad{{box-sizing:border-box;padding:{24 if w >= 480 else 16}px}}'
 
     # ---------------------------------------------------------------- 10.1 classes
-    track, loc, ent = rows['CL-020'], rows['CL-031'], rows['CL-014']
+    track, loc, ent = rows['CL-020'], rows['CL-031'], rows['CL-009']
     tag_svg = ('<svg class="enc" viewBox="0 0 64 28" width="64" height="28" aria-hidden="true" focusable="false" '
                'data-icon="E-sign-same" data-icon-family="encoding"><g class="wire">'
                + S1.wire_marks([(2, 14), (62, 14)], 'documented', '+', None, 2, lit=False)[0] + '</g></svg>')
@@ -331,14 +365,14 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
          'Marks which of our four pillars a piece serves, in the order Explain, Track, Connect, Act.', 'Chapter 09'),
         ('Topic symbol', sym('CL-031', 48, fam='topic'), esc(loc['label']),
          'Names the subject of a piece.', 'Chapter 10'),
-        ('Atlas symbol', sym('CL-014', 48, fam='atlas'), f'{esc(ent["label"])}<br><span class="chip">{esc(ent["v7_chip"])}</span>',
+        ('Atlas symbol', sym('CL-009', 48, fam='atlas'), f'{esc(ent["label"])}<br><span class="chip">{esc(ent["v7_chip"])}</span>',
          'Names a variable or a reform in our systems atlas.', 'Chapter 10'),
         ('Status mark', status_svg, 'Step 2 of 6: Hearing',
          'Says where a bill, a records request or an agency rule stands.', 'Chapter 11'),
         ('Utility icon', util('search'), 'Search',
          'Names an action a reader takes, beside the words that say it.', 'Chapter 11'),
         ('Encoding glyph', tag_svg, 'raises',
-         'Carries the atlas’s marks for sign, authority, evidence and delay.', 'Shown in Rule 10.10, taught in chapter 15'),
+         'Carries the atlas’s marks on the arrows between its variables.', 'Shown in Rule 10.10, taught in chapter 15'),
     ]
     li = ''.join(
         f'<li class="row"><div class="ex">{g}<span class="w">{w}</span></div><div class="tx"><p class="cn">{esc(n)}</p>'
@@ -372,7 +406,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
            f'.btn{{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:2px solid var(--strong);{t("ui")};font-weight:600}}'
            '.sym{display:block}')
     ctx.spec('s-10-1-failure', f'<style>{css}</style>{fail}', CH, '10.1',
-             'Labeled Failure case: do not publish. A Brand files page at 360 px whose Downloads button carries the '
+             'Failure case: do not publish. A Brand files page at 360 px whose Downloads button carries the '
              f'{rows["CL-048"]["label"]} drawing, a page rising out of an open folder, at 24 px in place of the download icon.',
              width=360, notes='Topic drawing standing for an interface action (D2-515). CL-048 is on the list of 41, so '
                               'the size is allowed; the class is the fault.')
@@ -385,16 +419,17 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
             r = rows[i]
             c, rr = n % sh['cols'], n // sh['cols']
             fam = family(r)
-            sub = [i]
+            # the name, then the drawing's ID in plain gray, then the typed chip boxed for an atlas element (CD-S4,
+            # D2-756); a reform's drawing ID is its atlas ID, so its chip carries both
+            sub = [] if i.startswith('R-') else [i]
             if r['class'] == 'pillar':
                 sub.append('Pillar icon')
-            elif r.get('v7_chip') and not i.startswith('R-'):
-                sub.append(r['v7_chip'])
-            tag = ('<span class="t24">24 px</span>' if i in reads24 and r['class'] != 'pillar' else '')
+            chip_ = f'<span class="chip">{esc(r["v7_chip"])}</span>' if r.get('v7_chip') else ''
+            tag = ('<span class="t24">Also at 24 px</span>' if i in reads24 and r['class'] != 'pillar' else '')
             cells.append(f'<li class="cell"><svg class="ls" viewBox="{c * CELL} {rr * CELL} {CELL} {CELL}" width="{SHOWN}" '
                          f'height="{SHOWN}" aria-hidden="true" focusable="false" data-icon="{i}" data-icon-family="{fam}">'
                          f'<use href="#sheet"/></svg><span class="w">{esc(word(r))}</span>'
-                         + ''.join(f'<span class="id">{esc(s)}</span>' for s in sub) + f'{tag}</li>')
+                         + ''.join(f'<span class="id">{esc(s)}</span>' for s in sub) + f'{chip_}{tag}</li>')
             extra = ''
             if r.get('label_where_atlas'):
                 extra = (f'<dd class="m2"><span class="chip">{esc(r["v7_chip"])}</span> {esc(r["label_where_atlas"])}. '
@@ -409,7 +444,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
         span = (f'{nw(sh["ids"][0])} to {nw(sh["ids"][-1])}' if num != '01'
                 else f'{nw("CL-001")} to {nw("CL-024")}, {nw("CL-073")} and {nw("CL-074")}')
         n24 = sum(1 for i in sh['ids'] if i in reads24 and rows[i]['class'] != 'pillar')
-        key = (f' A 24 px tag marks the {n24} that may also be set at 24 px.' if n24 else '')
+        key = (f' The words “Also at 24 px” mark the {C.num(n24)} that may also be set at that size.' if n24 else '')
         html = (f'<p class="hd">{n_ids} drawings, {span}.{key}</p>'
                 f'<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false"><defs><image id="sheet" '
                 f'href="{sh["file"]}" width="{sh["width"]}" height="{sh["height"]}"/></defs></svg>'
@@ -426,7 +461,8 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
                '.ls{display:block;margin:0 0 8px}'
                f'.w{{{cap_css};font-weight:600;text-wrap:balance;margin-bottom:2px}}.nw{{white-space:nowrap}}'
                f'.id{{{cap_css};color:var(--t2);font-variant-numeric:tabular-nums}}'
-               f'.t24{{margin-top:4px;padding:0 6px;{cap_css};color:var(--t1);border:1px solid var(--strong);font-variant-numeric:tabular-nums}}'
+               '.cell .chip{margin-top:4px}'
+               f'.t24{{margin-top:6px;{cap_css};color:var(--t1)}}'
                '.more{margin:16px 0 0}'
                f'summary{{display:flex;align-items:center;gap:8px;min-height:44px;cursor:pointer;list-style:none;{t("ui")};font-weight:600}}'
                'summary::-webkit-details-marker{display:none}'
@@ -463,7 +499,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
         (['128-unit box'], (128, 0), 30),
         (['116 units: the most', 'a drawing fills'], (122, 24), 110),
         (['Line 3.35 units, with', 'round ends and corners'], (111.48, 80), 266),
-        (['One red part: the door'], (63.54, 92), 330),
+        (['The red accent: the door'], (63.54, 92), 330),
     ]
     lead, labels = [], []
     for lines, (ux, uy), ly in notes:
@@ -497,7 +533,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
              f'{word(rows["CL-031"])} drawn at three times its 128 px master on its 128-unit box, with a grid every 16 '
              'units. A dashed square marks the 116 units a drawing may fill. Notes point to the box, to the dashed square, '
              'to the outer wall of the right wing, whose line is 3.35 units wide with round ends and corners, and to the '
-             'door, the one red part. Below, the same drawing at true size: 128 px with a 3.35 px line, 64 px with a '
+             'door, its red accent. Below, the same drawing at true size: 128 px with a 3.35 px line, 64 px with a '
              '1.68 px line and 48 px with a 1.26 px line.',
              width=600, height=H, notes='The drawing is CL-031 from the sprite (D2-590); keylines from the construction file.')
 
@@ -511,7 +547,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
            f'.r li{{display:flex;flex-direction:column;align-items:center;gap:8px;{t("caption")};font-weight:600;text-align:center}}'
            '.sym,.stk{display:block}.stk path{fill:var(--ink)}.stk .fold{fill:none;stroke:var(--oa-color-surface-newsprint);stroke-width:1.5}')
     ctx.spec('s-10-2-failure', f'<style>{css}</style>{band}<div class="pad"><ul class="r">{ul}</ul></div>', CH, '10.2',
-             'Labeled Failure case: do not publish. A row of four symbols at 64 px with their words: Public records, Policy, '
+             'Failure case: do not publish. A row of four symbols at 64 px with their words: Public records, Policy, '
              'Bill and Petition. Bill is a filled document icon from a generic icon library, with square corners, solid '
              'black among three Civic Line line drawings.', width=360,
              notes='The stock glyph is drawn for this failure only, on a 24-unit grid; Bill has no Civic Line drawing (DR-137).')
@@ -544,7 +580,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
                               'stroke_units times 96/128.')
     html3f = f'{band}<div class="pad"><ul class="r">{cells3(True)}</ul></div>'
     ctx.spec('s-10-3-failure', f'<style>{band_css}{css3}</style>{html3f}', CH, '10.3',
-             f'Labeled Failure case: do not publish. The same three drawings, each with its box trimmed to its ink and set '
+             f'Failure case: do not publish. The same three drawings, each with its box trimmed to its ink and set '
              f'at 96 px. {word(rows["CL-067"])} grows to fill its box and its line thickens to {fx(figs, "CL-067 trimmed")} px; '
              f'{word(rows["CL-031"])} to {fx(figs, "CL-031 trimmed")} px; {word(rows["R-44"])} to {fx(figs, "R-44 trimmed")} px. '
              'The three no longer match.',
@@ -561,9 +597,9 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
             out.append('<li><span class="hold"><span class="no"></span></span><span class="m">24 px</span>'
                        '<span class="m2">not allowed</span></li>')
         return ''.join(out)
-    kick = (f'<div class="card"><p class="kick"><span>Explainer</span><span aria-hidden="true">{DOT}</span>'
+    kick = (f'<div class="card">{ILLUS}<p class="kick"><span>Explainer</span><span aria-hidden="true">{DOT}</span>'
             f'<span class="ki">{sym("CL-048", 24)}<span>{esc(rows["CL-048"]["label"])}</span></span></p>'
-            f'<p class="hl">How to ask your town for its meeting minutes {ILLUS}</p></div>')
+            f'<p class="hl">How to ask your town for its meeting minutes</p></div>')
     html = (f'<p class="sec">On the list of 41: {esc(rows["CL-048"]["label"])}</p><ul class="lad">{ladder("CL-048", (128, 96, 64, 48, 24))}</ul>'
             f'<p class="sec">Not on the list: {esc(rows["CL-025"]["label"])}</p><ul class="lad">{ladder("CL-025", (128, 96, 64, 48), True)}</ul>'
             f'<p class="sec">In a kicker: 24 px, one color, 8 px before its word</p>{kick}')
@@ -574,7 +610,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
            '.no{display:block;width:24px;height:24px;outline:1px dashed var(--strong)}'
            f'.m{{{cap_css};font-weight:600;font-variant-numeric:tabular-nums}}.m2{{{cap_css};color:var(--t2);font-variant-numeric:tabular-nums;white-space:nowrap}}'
            '.card{padding:16px;border:1px solid var(--hair);max-width:360px;box-sizing:border-box}'
-           f'.kick{{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:0 0 8px;{t("label")}}}'
+           f'.kick{{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:8px 0;{t("label")}}}'
            '.ki{display:inline-flex;align-items:center;gap:8px}'
            f'.hl{{margin:0;{t("h4")}}}')
     lad48 = ', '.join(f'{px2(round(line_px(inv["CL-048"]["stroke_units"], s), 2))}' for s in (128, 96, 64, 48, 24))
@@ -582,11 +618,12 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
              f'Two size ladders and a kicker at true size. {rows["CL-048"]["label"]}, which is on the list of 41, at 128, '
              f'96, 64, 48 and 24 px, with lines of {lad48} px. {rows["CL-025"]["label"]}, which is not on the list, at 128, '
              '96, 64 and 48 px, and an empty dashed square where 24 px would be, marked not allowed. Below, a story card '
-             f'whose kicker reads Explainer, then the {rows["CL-048"]["label"]} drawing at 24 px directly before the words '
-             f'{rows["CL-048"]["label"]}, over the headline How to ask your town for its meeting minutes, labeled Illustrative.',
+             f'labeled Illustrative at its head, whose kicker reads Explainer, then the {rows["CL-048"]["label"]} drawing at '
+             f'24 px directly before the words {rows["CL-048"]["label"]}, over the headline How to ask your town for its '
+             'meeting minutes.',
              width=600, illustrative=True,
              notes='Ladder sizes on whole pixels; CL-048 is on the list of 41 (construction file, section 10). The story '
-                   'card\'s headline is invented and carries the Illustrative label beside it (H03, the editor\'s pass).')
+                   'card is invented and carries one Illustrative label at its head (DR-97, D2-440, CA-S9).')
     menu = ['CL-001', 'CL-005', 'CL-031', 'CL-067', 'CL-068', 'CL-069']
     li = ''.join(f'<li>{sym(i, 16)}<span>{esc(rows[i]["label"])}</span></li>' for i in menu)
     css = (k.vars() + band_css + pad(360) + f'.mn{{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}}'
@@ -594,7 +631,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
            '.sym{display:block;flex:none}' + sec_css)
     ctx.spec('s-10-4-failure', f'<style>{css}</style>{band}<div class="pad"><p class="sec">Topics</p><ul class="mn">{li}</ul></div>',
              CH, '10.4',
-             'Labeled Failure case: do not publish. A topics menu at 360 px with a Civic Line drawing at 16 px before each '
+             'Failure case: do not publish. A topics menu at 360 px with a Civic Line drawing at 16 px before each '
              f'word: {", ".join(rows[i]["label"] for i in menu)}. At 16 px each drawing is a gray smudge, and no two can '
              'be told apart.', width=360, notes='Topic symbols at 16 px, which no topic or atlas symbol takes (DR-136).')
 
@@ -668,7 +705,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
     ctx.spec('s-10-5-failure', f'<style>{css}</style>{band}<div class="pn">'
              f'{sym("CL-031", 96, surface="prussian", two=True, accent="var(--oa-color-palette-pillar-red)")}'
              f'<span class="w">{esc(word(rows["CL-031"]))}</span></div>', CH, '10.5',
-             f'Labeled Failure case: do not publish. {word(rows["CL-031"])} in its Red-Newsprint edition on a Prussian '
+             f'Failure case: do not publish. {word(rows["CL-031"])} in its Red-Newsprint edition on a Prussian '
              'panel at 96 px, with Newsprint lines and a Pillar Red door.',
              width=360, exempt=['red'], notes='Labeled failure: red on Prussian, which Rule 05.3 never allows.')
 
@@ -699,7 +736,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
     css = (k.vars() + band_css + pad(360) + '.r{list-style:none;margin:0;padding:0;display:flex;justify-content:space-between}.sym{display:block}')
     ctx.spec('s-10-6-failure', f'<style>{css}</style>{band}<div class="pad"><ul class="r">'
              + ''.join(f'<li>{sym(i, 64, fam=family(rows[i]))}</li>' for i in four) + '</ul></div>', CH, '10.6',
-             'Labeled Failure case: do not publish. Four Civic Line drawings at 64 px in a row with no words: three houses, '
+             'Failure case: do not publish. Four Civic Line drawings at 64 px in a row with no words: three houses, '
              'one with a missing neighbor drawn in dashes, one with a rising chart and one with a grocery bag and a price '
              'tag, and a person joined by an arrow to an envelope.', width=360,
              notes=f'The drawings are {", ".join(four)}.')
@@ -712,10 +749,14 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
         out = []
         for i in act:
             on = i == cur
+            # a short word stays with the word after it, so a label breaks as "Contact / an official" (CA-S8)
+            w7 = re.sub(r'\b(an|a|of|to) ', '\\1' + NB, esc(rows[i]['label']))
             out.append(f'<li class="{"on" if on else "off"}">{sym(i, 48, two=(on or all_red))}'
-                       f'<span class="w">{esc(rows[i]["label"])}</span></li>')
+                       f'<span class="w">{w7}</span></li>')
         return f'<ul class="mn">{"".join(out)}</ul>'
-    css7 = (k.vars() + pad(360) + '.mn{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:4px}'
+    # each item takes the width its words need, and the free space falls between them (CA-S8)
+    css7 = (k.vars() + pad(360) + '.mn{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,auto);'
+            'justify-content:space-between;gap:4px 12px}'
             '.mn li{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:8px 0}'
             f'.w{{{cap_css};text-wrap:balance}}.on .w{{font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}}'
             '.sym{display:block}' + sec_css + '.sec.two{margin-top:28px}'
@@ -730,7 +771,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
              f'is bold and underlined. Below, {rows[cur]["label"]} alone at 128 px with its red microphone, bare on '
              'Newsprint, beside its word.', width=360, notes='Rule 05.3 as DR-66 words it; R11.')
     ctx.spec('s-10-7-failure', f'<style>{band_css}{css7}</style>{band}<div class="pad">{menu7(True)}</div>', CH, '10.7',
-             'Labeled Failure case: do not publish. The same menu with every drawing keeping its red part: the ballot’s '
+             'Failure case: do not publish. The same menu with every drawing keeping its red part: the ballot’s '
              'edge, the pen, the speaker’s head, the microphone and the speech mark, so the current item, '
              f'{rows[cur]["label"]}, no longer stands out.', width=360,
              notes='Labeled failure: five red accents in one row.')
@@ -739,34 +780,41 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
     dom = next(d for d in v7['domains'] if d['id'] == 'D02')
     dvars = [k_ for k_, v in v7['nodes'].items() if v['domain'] == 'D02']
     var_icon = {r['v7_id']: i for i, r in rows.items() if r['class'] in ('atlas variable', 'topic and atlas variable')}
-    reforms = [rid for rid, r in v7['reforms'].items() if set(r.get('targets', [])) & set(dvars)][:2]
-    item = lambda i, chip, w: (f'<li>{sym(i, 48, fam="atlas")}<div><span class="chip">{esc(chip)}</span>'
-                               f'<p class="w">{esc(w)}</p></div></li>')
+    # every reform the atlas aims at one of the domain's variables, in the atlas's own order (BE-M1, D2-958): ten, which
+    # fit the plate's width in two columns, so none is left out and none is picked
+    reforms = [rid for rid, r in v7['reforms'].items() if set(r.get('targets', [])) & set(dvars)]
+    if len(reforms) != 10:
+        raise SystemExit(f'Rule 10.8: {len(reforms)} reforms act on D02, and the words say ten')
+    item = lambda i, chip, w: (f'<li>{sym(i, 48, fam="atlas")}<div><p class="w">{esc(w)}</p>'
+                               f'<span class="chip">{esc(chip)}</span></div></li>')
     li = [item(var_icon[v], rows[var_icon[v]]['v7_chip'], word(rows[var_icon[v]], True)) for v in dvars]
     lr = [item(rid, rows[rid]['v7_chip'], rows[rid]['label']) for rid in reforms]
-    figs['atlas domain D02'] = {'variables': dvars, 'reforms_acting': reforms}
-    html = (f'<div class="dm"><span class="chip">Domain {dom["id"]}</span><p class="dn">{esc(dom["title"])}</p></div>'
+    figs['atlas domain D02'] = {'variables': dvars, 'reforms_acting': reforms,
+                                'flagged_interest_note': [r for r in reforms if v7['reforms'][r].get('interest_note')]}
+    html = (f'<div class="dm"><p class="dn">{esc(dom["title"])}</p><span class="chip">Domain {dom["id"]}</span></div>'
             f'<p class="sec">Variables in this domain</p><ul class="vl">{"".join(li)}</ul>'
-            f'<p class="sec">Reforms that act on them</p><ul class="vl">{"".join(lr)}</ul>')
+            f'<p class="sec">The {C.num(len(reforms))} reforms that act on them</p><ul class="vl">{"".join(lr)}</ul>')
     css8 = (k.vars() + chip_css + '.dm{padding:0 0 16px;margin:0 0 16px;border-bottom:2px solid var(--strong)}'
-            f'.dn{{margin:8px 0 0;{t("h4")}}}' + sec_css +
+            f'.dn{{margin:0 0 8px;{t("h4")}}}' + sec_css +
             '.vl{list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));gap:0 24px}'
             '.vl li{display:grid;grid-template-columns:48px minmax(0,1fr);gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--hair)}'
-            f'.sym{{display:block}}.w{{margin:4px 0 0;{t("bodySmall")};font-weight:600}}')
+            f'.sym{{display:block}}.w{{margin:0 0 6px;{t("bodySmall")};font-weight:600}}')
     ctx.spec('s-10-8-correct', f'<style>{css8}</style>{html}', CH, '10.8',
-             f'An atlas list for Domain {dom["id"]}, {dom["title"]}, shown as a typed chip and its name in words, with no '
-             'drawing. Under it, the domain’s variables, each with its drawing at 48 px, its chip and its name: '
-             + '; '.join(f'{rows[var_icon[v]]["v7_chip"]}, {word(rows[var_icon[v]], True)}' for v in dvars)
-             + '. Then the reforms that act on them: ' + '; '.join(f'{rows[r]["v7_chip"]}, {rows[r]["label"]}' for r in reforms) + '.',
-             readable=True, notes='Domain membership and reform targets read from the atlas model (work/extract/atlas-v7-data.json).')
+             f'An atlas list for {dom["title"]}, Domain {dom["id"]}, shown as its name in words and a typed chip, with no '
+             'drawing. Under it, the domain’s variables, each with its drawing at 48 px, its name and its chip: '
+             + '; '.join(f'{word(rows[var_icon[v]], True)}, {rows[var_icon[v]]["v7_chip"]}' for v in dvars)
+             + f'. Then the {C.num(len(reforms))} reforms that act on them, drawn the same way: '
+             + '; '.join(f'{rows[r]["label"]}, {rows[r]["v7_chip"]}' for r in reforms) + '.',
+             readable=True, notes='Domain membership and reform targets read from the atlas model (work/extract/atlas-v7-data.json): '
+                                  'every reform whose targets include one of the six variables, in the model\'s order (D2-958).')
     borrowed = [('D02', 'CL-001'), ('D03', 'CL-015'), ('D04', 'CL-025')]
     dt = {d['id']: d['title'] for d in v7['domains']}
-    li = [f'<li>{sym(i, 48, fam="topic")}<div><span class="chip">Domain {did}</span><p class="w">{esc(dt[did])}</p></div></li>'
+    li = [f'<li>{sym(i, 48, fam="topic")}<div><p class="w">{esc(dt[did])}</p><span class="chip">Domain {did}</span></div></li>'
           for did, i in borrowed]
     ctx.spec('s-10-8-failure', f'<style>{band_css}{css8}{pad(360)}</style>{band}<div class="pad"><ul class="vl">{"".join(li)}</ul></div>',
              CH, '10.8',
-             'Labeled Failure case: do not publish. A list of three atlas domains, each given a borrowed topic drawing at '
-             '48 px: ' + '; '.join(f'Domain {did}, {dt[did]}, with the {rows[i]["label"]} drawing' for did, i in borrowed) + '.',
+             'Failure case: do not publish. A list of three atlas domains, each given a borrowed topic drawing at '
+             '48 px: ' + '; '.join(f'{dt[did]}, Domain {did}, with the {rows[i]["label"]} drawing' for did, i in borrowed) + '.',
              width=360, notes='Domains stay words and typed chips (round 2 brief).')
 
     # ---------------------------------------------------------------- 10.9 neighbors
@@ -781,20 +829,35 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
                         f'<span class="id">{esc(i)}</span></div>' for i in grp)
         groups.append(f'<li><div class="cs">{cells}</div><div class="tx"><p class="lk">{esc(look)}</p>'
                       f'<p class="fg">Outline likeness at 24 px: {esc("; ".join(figs_g))}</p></div></li>')
+    # D2-971: the five that draw as one shape at 24 px, shown at that size, one color, each with its word and ID
+    g24, _ = LOOKALIKE_24
+    v24 = [like['pairs']['|'.join(sorted((g24[a], g24[b])))]['likeness'] for a in range(len(g24)) for b in range(a + 1, len(g24))]
+    figs['look-alikes at 24 px'] = {'ids': list(g24), 'likeness_min': min(v24), 'likeness_max': max(v24)}
+    cells = ''.join(f'<div class="c c24"><span class="h24">{sym(i, 24, fam=family(rows[i]))}</span>'
+                    f'<span class="w">{esc(word(rows[i]))}</span><span class="id">{esc(i)}</span></div>' for i in g24)
+    groups.append(f'<li class="g24"><p class="gk">At 24 px only: never two in one view</p><div class="cs">{cells}</div>'
+                  f'<div class="tx"><p class="lk">{esc(look24(rows))}</p><p class="fg">Outline likeness at 24 px: '
+                  f'{fmt_like(min(v24))} to {fmt_like(max(v24))} across the 10 pairs.</p></div></li>')
     css = (k.vars() + '.l{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}'
            '.l li{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;padding:16px 0;border-bottom:1px solid var(--hair)}'
            '@media (min-width:48em){.l li{grid-template-columns:auto minmax(0,1fr);gap:24px;align-items:center}}'
            '.cs{display:flex;gap:12px;flex-wrap:wrap}.c{display:flex;flex-direction:column;align-items:center;gap:2px;width:7rem;text-align:center}'
            f'.sym{{display:block;margin-bottom:6px}}.w{{{cap_css};font-weight:600;text-wrap:balance}}.id{{{cap_css};color:var(--t2)}}'
-           f'.lk{{margin:0;{t("bodySmall")}}}.fg{{margin:6px 0 0;{cap_css};color:var(--t2);font-variant-numeric:tabular-nums}}')
+           f'.lk{{margin:0;{t("bodySmall")}}}.fg{{margin:6px 0 0;{cap_css};color:var(--t2);font-variant-numeric:tabular-nums}}'
+           f'.l li.g24{{grid-template-columns:minmax(0,1fr)}}.gk{{margin:0;{t("label")};color:var(--t2)}}'
+           '.h24{display:flex;align-items:flex-end;justify-content:center;height:32px}.h24 .sym{margin-bottom:6px}')
     ctx.spec('s-10-9-correct', f'<style>{css}</style><ul class="l">{"".join(groups)}</ul>', CH, '10.9',
              'Six groups of drawings for close subjects, each at 64 px with its word and ID, then what tells them apart '
              'and their outline likeness at 24 px. ' + ' '.join(
-                 f'{" and ".join(word(rows[i]) for i in grp)}: {look}' for grp, look in LOOKALIKES),
+                 f'{" and ".join(word(rows[i]) for i in grp)}: {look}' for grp, look in LOOKALIKES)
+             + ' Last, a group headed At 24 px only: never two in one view, with five drawings at 24 px in one color: '
+             + ', '.join(word(rows[i]) for i in LOOKALIKE_24[0]) + '. ' + look24(rows)
+             + f' Their outline likeness at 24 px runs from {fmt_like(min(v24))} to {fmt_like(max(v24))}.',
              readable=True,
              notes=f'Likeness from the engineer\'s icon_likeness_check.js functions on the 124 drawings in use '
                    f'(flag {like["thresholds"]["flag"]["likeness"]}, watch {like["thresholds"]["watch"]["likeness"]}).')
-    card = (f'{band}<div class="pad"><div class="card">{ILLUS}<p class="kick">Act</p><div class="hd">{sym("CL-005", 64)}'
+    card = (f'{band}<div class="pad"><div class="card">{ILLUS}<p class="kick"><span>Act</span><span aria-hidden="true">'
+            f' {DOT} </span><span>How to take part</span></p><div class="hd">{sym("CL-005", 64)}'
             f'<span class="w">{esc(rows["CL-005"]["label"])}</span></div>'
             f'<p class="hl">Testify on the library budget at the March 10 hearing</p>'
             f'<p class="tx">Sign up at the clerk’s table by 6:30 p.m. Each speaker gets three minutes before the '
@@ -804,8 +867,9 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
            '.hd{display:flex;align-items:center;gap:12px;margin:0 0 8px}.sym{display:block}'
            f'.w{{{t("ui")};font-weight:600}}.hl{{margin:0 0 8px;{t("h4")}}}.tx{{margin:0;{t("bodySmall")}}}')
     ctx.spec('s-10-9-failure', f'<style>{css}</style>{card}', CH, '10.9',
-             'Labeled Failure case: do not publish. An Illustrative Act card at 360 px headed Testify on the library budget '
-             f'at the March 10 hearing, with the {rows["CL-005"]["label"]} drawing at 64 px and its word: one speaker at a '
+             'Failure case: do not publish. An Illustrative card at 360 px with the kicker Act, How to take part, headed '
+             f'Testify on the library budget at the March 10 hearing, with the {rows["CL-005"]["label"]} drawing at 64 px '
+             'and its word: one speaker at a '
              'lectern in front of residents. The card asks readers to sign up to speak to the council’s budget committee.',
              width=360, illustrative=True, notes='Illustrative: the hearing, its date and its committee are invented.')
 
@@ -819,7 +883,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
                 f'data-icon="{gid}" data-icon-family="encoding"><g class="{cls}"{red}>{marks}</g></svg>')
     G = S1.acc.GRADES
     rows10 = [
-        ('Sign', line(sign='+'), 'raises', 'The two conditions move the same way. A plus sign does not mean the change is good.'),
+        ('Sign', line(sign='+'), 'raises', 'The two variables move the same way. A plus sign does not mean the change is good.'),
         ('Sign', line(sign='-'), 'lowers', 'They move opposite ways.'),
         ('Authority', line(authority=True), 'decides', 'A line of authority ends in an open diamond and carries no sign.'),
     ] + [('Evidence', line(grade=g), G[g][0], f'{G[g][1][0].upper() + G[g][1][1:]}.') for g in
@@ -858,7 +922,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
            '.up{stroke:var(--oa-color-palette-verdigris);stroke-width:4}.dn{stroke:var(--red);stroke-width:4}'
            '.hu{fill:var(--oa-color-palette-verdigris)}.hdn{fill:var(--red)}')
     ctx.spec('s-10-10-failure', f'<style>{css}</style>{fail}', CH, '10.10',
-             'Labeled Failure case: do not publish. Two connections drawn on White with no tags and no words: a green line '
+             'Failure case: do not publish. Two connections drawn on White with no tags and no words: a green line '
              'for raises and a red line for lowers. The sign lives in color alone, and red means something it never means '
              'in the atlas.', width=360, surface='white', exempt=['red'],
              notes='Labeled failure: polarity by hue, with red spent on a sign.')
@@ -899,8 +963,8 @@ def chapter(rows, reads24, like, sheets, figs):
             'serves, and a topic symbol names its subject. An atlas symbol stands for a variable or a reform in our '
             'systems atlas, Who Do They Answer To?, where a variable is a condition that can rise or fall, such as safe '
             'seats. Chapter 11’s status marks say where a bill, a records request or an agency rule stands, and its '
-            'utility icons name an action beside the words that say it. The atlas’s own marks for sign, authority, '
-            'evidence and delay are its encoding glyphs.',
+            'utility icons name an action beside the words that say it. The atlas’s own marks on the arrows between its '
+            'variables are its encoding glyphs (Rule 10.10).',
             'A topic or atlas drawing never stands for an interface action, such as a download, a refresh or a menu.'],
         'tokens': ['oa.size.icon.large', 'oa.size.icon.medium'],
         'why': {'text': ['A reader learns one meaning for each shape. When the drawing for public records also opens a '
@@ -932,24 +996,26 @@ def chapter(rows, reads24, like, sheets, figs):
     })
 
     rules.append({
-        'id': '10.2', 'title': 'Build every drawing on one box, with one line, round ends and one red part.',
+        'id': '10.2', 'title': 'Build every drawing on one box, with one line, round ends and one red accent.',
         'rule': [
             'Every Civic Line drawing sits in a square box 128 units on a side. Each drawing keeps its line at one weight, '
-            'set between 2.68 and 3.35 units, with round ends and round corners. One part carries the red accent, the '
-            'detail a reader should see first, such as the door of the hall in Local government. The rest is ink.',
+            'set between 2.68 and 3.35 units, with round ends and round corners. The red accent marks one idea, the '
+            'detail a reader should see first, such as the door of the hall in Local government. It may be one shape or '
+            'a few: Track’s pillar icon puts its red on the map pin and on the magnifier’s handle (Rule 09.2). The rest '
+            'is ink.',
             'A subject with no drawing, such as Bill or State house, takes its word alone until our founder and editor '
             'approves a drawing made this way.'],
         'tokens': ['oa.component.icon.ink.onNewsprint', 'oa.component.icon.accent.onNewsprint'],
         'why': {'text': [
             'One line and one finish let any two drawings sit side by side as a family at any size. Round ends keep a thin '
-            'line soft where it stops, and a single red part gives the eye one place to land.',
-            'Our fourth edition named four principles for its symbols, and they hold for this set: “Weight with open '
+            'line soft where it stops, and a red accent for one idea gives the eye one place to land.',
+            'Our guide’s fourth edition named four principles for its symbols, and they hold for this set: “Weight with open '
             'space.”, “A deliberate cut.”, “People have a place.” and “Meaning earns the detail.” The drawings keep open '
             'space inside each shape and a steady line, leave small gaps where two lines would crowd, draw people as round heads on '
             'open shoulders, and add a detail only where it names the subject.'],
-            'basis': 'Design judgment, with four principles from our fourth edition'},
+            'basis': 'Design judgment, with four principles from our guide’s fourth edition'},
         'correct': {'specimen': 's-10-2-correct',
-                    'caption': f'{lab("CL-031")} on its box at three times its master, with its keylines, the guide lines that place it, '
+                    'caption': f'{lab("CL-031")} on its box at three times its master, with the guide lines that place it, '
                                'then at 128, 64 and 48 px. The door carries the red.'},
         'failure': {'specimen': 's-10-2-failure',
                     'caption': '<strong>Fails Rule 10.2.</strong> A filled icon from a generic icon library stands in for Bill, which has no '
@@ -959,7 +1025,8 @@ def chapter(rows, reads24, like, sheets, figs):
             {'label': 'Box', 'value': '128 by 128 units, viewBox 0 0 128 128, transparent'},
             {'label': 'Line', 'value': '2.68 to 3.35 units, one width in each drawing; 1.01 to 1.26 px at 48 px'},
             {'label': 'Ends and corners', 'value': 'Round caps and round joins; a butt cap only where two colors meet'},
-            {'label': 'Red', 'value': 'One accent, in the file’s group <code>data-part="accent"</code>',
+            {'label': 'Red', 'value': 'One accent for one idea, one shape or a few, in the file’s group '
+                                      '<code>data-part="accent"</code>',
              'token': 'oa.component.icon.accent.onNewsprint'},
             {'label': 'Ink', 'value': 'Charcoal on Newsprint and White, Newsprint on Charcoal and Prussian',
              'token': 'oa.component.icon.ink.onNewsprint'},
@@ -1015,8 +1082,8 @@ def chapter(rows, reads24, like, sheets, figs):
             'topic’s own word (Rule 01.21).'],
         'tokens': ['oa.size.icon.large', 'oa.size.icon.medium', 'oa.size.icon.small'],
         'why': {'text': ['Each drawing is one thin line on a 128-unit box, so at 24 px its line measures half a pixel '
-                         'and turns gray. A reviewer set every drawing at 128, 64, 32 and 24 px on Newsprint and named the '
-                         '41 whose subject still reads at 24 px. The rest needed 48 px before the reviewer could name them.'],
+                         'and turns gray. Reviewers set every drawing at 128, 64, 32 and 24 px on Newsprint: 41 still read '
+                         'at 24 px, and 94 of the 124 still read at 32 px, the size Rule 10.5’s smallest tiles hold.'],
                 'basis': 'Design judgment, approved by our founder and editor in November 2026'},
         'correct': {'specimen': 's-10-4-correct',
                     'caption': f'{lab("CL-048")}, on the list, from 128 down to 24 px, and {lab("CL-025")}, off the list, '
@@ -1045,8 +1112,13 @@ def chapter(rows, reads24, like, sheets, figs):
             'White, and Red-Newsprint and Newsprint serve Charcoal. Prussian, where red never sits, takes the Newsprint '
             'edition alone.',
             'On a tile, a drawing takes one of six: a square, a rounded square or a circle, in Charcoal or in Newsprint. '
-            'Charcoal is the default tile for the app icon and avatars. A two-color tile starts at 72 px square, 76 px '
-            'rounded and 80 px round.'],
+            'Charcoal is the default tile for the app icon and avatars. A tile holds its drawing at about two thirds of '
+            'its own size, so a two-color tile starts at 72 px square, 76 px rounded and 80 px round, where the drawing '
+            'stands at 49 or 50 px and may keep its red.',
+            'A one-color tile may go smaller, from 48 px square and 52 px rounded or round, which holds its drawing at '
+            '32 to 34 px. This is the one place a drawing off the list of 41 goes under Rule 10.4’s 48 px floor, and '
+            'only the 94 that reviewers could still name at 32 px may. The other 30 take one-color tiles from 72, 76 and '
+            '80 px, which hold them at 48 px or more.'],
         'tokens': ['oa.component.icon.ink.onNewsprint', 'oa.component.icon.ink.onCharcoal', 'oa.component.icon.ink.onPrussian'],
         'why': {'text': ['Each edition keeps the ink at 13.29 to 1 or more against its own ground, and 9.42 to 1 on Prussian, so '
                          'the drawing reads on every surface we print. A fixed set of tiles keeps a symbol from turning '
@@ -1065,25 +1137,29 @@ def chapter(rows, reads24, like, sheets, figs):
              'token': 'oa.component.icon.ink.onCharcoal'},
             {'label': 'Prussian', 'value': 'Newsprint only, one color', 'token': 'oa.component.icon.ink.onPrussian'},
             {'label': 'Drawing in a tile', 'value': '0.68 of a square, 0.66 of a rounded square, 0.62 of a circle'},
-            {'label': 'Two-color tile', 'value': 'From 72 px square, 76 px rounded, 80 px round'},
-            {'label': 'One-color tile', 'value': 'From 48, 52 and 52 px; 72, 76 and 80 px for the 30 drawings that need '
-                                                 '48 px on their own'},
+            {'label': 'Two-color tile', 'value': 'From 72 px square, 76 px rounded, 80 px round; the drawing stands at 49 '
+                                                 'to 50 px'},
+            {'label': 'One-color tile', 'value': 'From 48, 52 and 52 px for the 94 drawings that read at 32 px, with the '
+                                                 'drawing at 32 to 34 px; from 72, 76 and 80 px for the other 30'},
             {'label': 'Never', 'value': 'A Newsprint tile on a White page, where its edge measures 1.41 to 1; a red tile'},
         ],
         'files': ['work/build/assets/civic-line-v6/tiles/', 'work/build/assets/civic-line/tiles/'],
         'related': ['05', '23'],
         'builders': ['On a page, draw from the sprite and set its color and accent from the surface’s tokens. The files '
                      'in each edition folder serve tools outside the page, and the inventory names each drawing’s tile '
-                     'files and smallest tile sizes.'],
+                     'files and smallest tile sizes, as <code>tile_min_px</code>.'],
     })
 
     rules.append({
         'id': '10.6', 'title': 'Set every symbol beside its own word.',
         'rule': [
             f'Print the word beside every symbol. A topic symbol carries its own word, such as {lab("CL-025")}. Where the '
-            f'same drawing stands for the atlas variable, it takes the atlas’s name, {lab("CL-025", True)}, with a typed '
-            'chip such as Variable D1, and each reform drawing takes its reform’s name. The rejected option on term limits '
-            'keeps the word Rejected wherever it appears.',
+            f'same drawing stands for the atlas variable, it takes the atlas’s name, {lab("CL-025", True)}, followed by a '
+            'typed chip, a small outlined label that holds the kind of element and its atlas ID, such as Variable D1. Each '
+            'reform drawing takes its reform’s name and chip. The rejected option on term limits keeps the word Rejected '
+            'wherever it appears.',
+            'A subject that no topic symbol names, such as housing costs, takes its word alone. An atlas drawing appears '
+            'only beside the atlas’s own name, never beside a piece’s own topic word.',
             'Hide the drawing from screen readers when its word sits beside it, so the word is read once.'],
         'tokens': ['oa.type.ui', 'oa.type.label'],
         'why': {'text': [f'Even a clear drawing can name several things: the chamber in {lab("CL-025")} could be any '
@@ -1092,14 +1168,18 @@ def chapter(rows, reads24, like, sheets, figs):
                 'basis': 'WCAG 2.2 SC 1.1.1, and design judgment'},
         'correct': {'specimen': 's-10-6-correct',
                     'caption': f'One drawing under two words, {lab("CL-025")} and {lab("CL-025", True)}, and the names '
-                               'that keep close subjects apart.'},
+                               'that keep close subjects apart. Each atlas element’s chip follows its name.'},
         'failure': {'specimen': 's-10-6-failure',
                     'caption': '<strong>Fails Rule 10.6.</strong> Four drawings with no words. Three houses and a letter '
                                'leave the reader to guess which subject each one names.'},
         'specs': [
             {'label': 'Word', 'value': 'Beside or under the drawing, in the UI or caption style', 'token': 'oa.type.ui'},
-            {'label': 'Typed chip', 'value': 'Variable or Reform and the atlas ID, as in Reform R-13',
+            {'label': 'Typed chip', 'value': 'The kind, Variable, Reform or Domain, then the atlas ID, as in Reform R-13, in '
+                                             'the label style; set after the name, never before it',
              'token': 'oa.type.label'},
+            {'label': 'Chip outline', 'value': '1 px on all four sides in the strong border color, with 3 px of space above '
+                                               'and below the words and 6 px at each side; the words never wrap',
+             'token': 'oa.color.border.strong.onNewsprint'},
             {'label': 'Markup', 'value': '<code>aria-hidden="true"</code> and <code>focusable="false"</code> on the svg; '
                                          '<code>data-icon</code> and <code>data-icon-family</code> on every use'},
         ],
@@ -1113,8 +1193,9 @@ def chapter(rows, reads24, like, sheets, figs):
         'id': '10.7', 'title': 'Give a symbol its red only where it stands alone or marks the current item.',
         'rule': [
             'A drawing that stands alone at 48 px or larger keeps its red accent, set straight on Newsprint with no tile, as signature red. In '
-            'a row or a menu every drawing goes one color, and only the current one keeps its red. Under 48 px every '
-            'drawing is one color.',
+            'a row or a menu every drawing goes one color, and only the current one keeps its red. Two or more symbols '
+            'set together with no current item, such as two atlas symbols on one slide, count as a row, so each one goes '
+            'one color. Under 48 px every drawing is one color.',
             'Signature red does not count against a view’s one working red (Rule 05.3).'],
         'tokens': ['oa.component.icon.accent.onNewsprint', 'oa.component.icon.ink.onNewsprint'],
         'why': {'text': ['A row of red accents makes every item call out, and the current one gets lost among them. Kept '
@@ -1142,23 +1223,23 @@ def chapter(rows, reads24, like, sheets, figs):
         'id': '10.8', 'title': 'Draw the atlas’s variables and reforms, and name its other parts in words.',
         'rule': [
             'The atlas has one drawing for each of its 51 variables and one for each of its 50 reforms. Its other parts '
-            'take words, or a typed chip that holds the ID and the name, even where a page lists them beside drawn '
-            'variables. Those parts are its domains, which sort issues by subject; its hubs, which gather everyday '
+            'take their names in words, each followed by a typed chip with its ID, such as Domain D02, even where a page '
+            'lists them beside drawn variables. Those parts are its domains, which sort issues by subject; its hubs, which gather everyday '
             'questions such as Cost of living; its three layers; and its routes to change, the paths a reform can '
             'travel, such as a ballot measure.'],
         'why': {'text': ['A domain such as Elections and representation holds several variables. Give it a drawing and a '
-                         'reader takes it for one more variable, or reads Voting as the whole domain. Words keep the levels '
-                         'of the atlas apart.'],
+                         'reader takes it for one more variable, or reads Voting as the whole domain.'],
                 'basis': 'Design judgment'},
         'correct': {'specimen': 's-10-8-correct',
-                    'caption': 'A domain set as a chip and its name, with its variables and the reforms that act on them '
-                               'drawn beside their own names.'},
+                    'caption': 'A domain set as its name and a chip, with no drawing. Its six variables and all 10 reforms '
+                               'the atlas aims at them are drawn, each beside its own name and chip.'},
         'failure': {'specimen': 's-10-8-failure',
                     'caption': '<strong>Fails Rule 10.8.</strong> Each domain borrows a topic drawing. A reader takes '
                                'Elections and representation for Voting, the one subject its drawing names.'},
         'specs': [
             {'label': 'Drawn', 'value': '51 variables and 50 reforms'},
             {'label': 'In words and chips', 'value': 'Domains, hubs, layers and routes to change'},
+            {'label': 'Order', 'value': 'The drawing, then the name, then the typed chip (Rule 10.6)'},
         ],
         'files': [files_inv],
         'related': ['15', '21'],
@@ -1168,24 +1249,33 @@ def chapter(rows, reads24, like, sheets, figs):
 
     close = like['pairs']['CL-027|CL-031']
     far = like['pairs']['CL-005|CL-073']
+    g24 = LOOKALIKE_24[0]
+    v24 = [like['pairs']['|'.join(sorted((g24[a], g24[b])))]['likeness'] for a in range(len(g24)) for b in range(a + 1, len(g24))]
+    over = sum(1 for v in v24 if v >= flag)
     rules.append({
         'id': '10.9', 'title': 'Check a symbol beside its neighbors before you set it.',
         'rule': [
             'Drawings for close subjects share parts: a house, a page, a chamber, a person at a desk. Before you set one, '
             'look at it beside the drawings for nearby subjects, at the size you will use, and pick the one whose word '
             'names your subject. The groups in this rule are the ones to check first.',
+            f'At 24 px, five drawings on the list of 41 draw as one shape, a page under a magnifier: '
+            f'{lab("CL-023")}, CL-023; {lab("CL-028")}, CL-028; {lab("R-08")}, R-08; {lab("R-27")}, R-27; and '
+            f'{lab("R-45")}, R-45. Never set two of them in one view at that size.',
             'Bill and State house have no drawing. Set those words alone.'],
         'why': {'text': [
             'A likeness test compares two drawings at 24 px, where only their outlines are left, and scores the pair from '
             f'{C.MINUS}1 to 1. Among the {like["distribution"]["pairs"]:,} pairs in the set, one pair in a hundred scores '
-            f'{flag:.2f} or more. Most groups here score well under that, and their risk lies in the subjects, since a '
-            f'builder looking for a hearing can reach for {lab("CL-005")} although the two drawings score '
-            f'{fmt_like(far["likeness"])}. {lab("CL-027")} and {lab("CL-031")} come closest, at '
-            f'{fmt_like(close["likeness"])}, closer than {close["percentile"]:.0f} pairs in a hundred.'],
+            f'{flag:.2f} or more. The six groups of neighbors all score under that, and their risk lies in the subjects, '
+            f'since a builder looking for a hearing can reach for {lab("CL-005")} although the two drawings score '
+            f'{fmt_like(far["likeness"])}. Of those, {lab("CL-027")} and {lab("CL-031")} come closest, at '
+            f'{fmt_like(close["likeness"])}, closer than {close["percentile"]:.0f} pairs in a hundred.',
+            f'The five page-and-magnifier drawings score from {fmt_like(min(v24))} to {fmt_like(max(v24))} among '
+            f'themselves, and {C.num(over)} of their 10 pairs reach the flag, so the test agrees with what a reader '
+            'sees at 24 px.'],
             'basis': 'Design judgment, measured with the likeness test'},
         'correct': {'specimen': 's-10-9-correct',
                     'caption': 'Six groups to check, each with what tells its drawings apart and their outline likeness '
-                               'at 24 px.'},
+                               'at 24 px, then the five that draw as one shape at 24 px.'},
         'failure': {'specimen': 's-10-9-failure',
                     'caption': f'<strong>Fails Rule 10.9.</strong> A card that asks readers to testify carries '
                                f'{lab("CL-005")}, its neighbor: a speaker at a lectern in front of residents. '
@@ -1193,6 +1283,8 @@ def chapter(rows, reads24, like, sheets, figs):
         'specs': [
             {'label': 'Likeness test', 'value': f'Outlines compared at 24 px; {flag:.2f} or more puts a pair among the closest '
                                                 'one in a hundred'},
+            {'label': 'One shape at 24 px', 'value': 'CL-023, CL-028, R-08, R-27 and R-45: at most one of them in a view '
+                                                     'at 24 px'},
             {'label': 'No drawing', 'value': 'Bill and State house: set the word alone'},
         ],
         'files': ['work/build/scripts/phase-2/icon_likeness_check.js'],
@@ -1204,9 +1296,12 @@ def chapter(rows, reads24, like, sheets, figs):
     rules.append({
         'id': '10.10', 'title': 'Copy the atlas’s encoding glyphs exactly, each with its words.',
         'rule': [
-            'The atlas draws a small set of marks on its connections: a tag with a plus or a minus for the sign, an open '
-            'diamond for authority, where one body holds legal power over something, line textures for the evidence grade, one to three ticks for the delay, and red where '
-            'a reform acts. Draw each one from the atlas’s own measurements, and print its words beside it in every key.',
+            'The atlas draws each connection, a claimed relationship between two variables, as an arrow, and marks it '
+            'with a small set of glyphs. A tag with a plus or a minus gives its sign: plus when the two tend to move the '
+            'same way, minus when they tend to move opposite ways. An open diamond marks authority, where one body holds '
+            'legal power over something. Line textures give the evidence grade, one to three ticks the delay, and red '
+            'shows where a reform acts. Draw each one from the atlas’s own measurements, and print its words beside it in '
+            'every key.',
             'Chapter 15 teaches how to read and combine them.'],
         'why': {'text': ['A reader learns these marks once, in the atlas’s key, and meets them again in a report or a '
                          'story. When a page redraws them, or swaps the minus sign for a color, the first lesson stops '
@@ -1247,9 +1342,10 @@ def chapter(rows, reads24, like, sheets, figs):
         {'before_rule': '10.1', 'number': 1, 'title': 'Find the right symbol',
          'line': 'Six kinds of symbol each do one job, and the library shows every topic and atlas drawing by category.'},
         {'before_rule': '10.2', 'number': 2, 'title': 'How a drawing is built',
-         'line': 'Every drawing shares one box, one line weight, round ends and one red part.'},
+         'line': 'Every drawing shares one box, one line weight, round ends and one red accent.'},
         {'before_rule': '10.4', 'number': 3, 'title': 'Size and surface',
-         'line': 'Every drawing reads from 48 px and 41 of them at 24 px, and each surface takes its own edition.'},
+         'line': 'Every drawing reads from 48 px and 41 of them at 24 px, and each surface takes its own edition, one '
+                 'of the four color versions of every drawing.'},
         {'before_rule': '10.6', 'number': 4, 'title': 'Words and red',
          'line': 'Every drawing sits beside its own word, and keeps its red only where it stands alone or marks the '
                  'current item.'},
@@ -1288,6 +1384,17 @@ def main():
     if a.no_draw and FIG_OUT.exists():
         old = json.loads(FIG_OUT.read_text())
         sheets, like = old['sheets'], old['likeness']
+        lack = [p for p in wanted_pairs() if '|'.join(sorted(p)) not in like['pairs']]
+        if lack:
+            # a new group (D2-971): measure with the same functions and add only the missing pairs, so the figures
+            # already printed keep their values
+            with tempfile.TemporaryDirectory() as td:
+                fresh = measure_likeness(black, pathlib.Path(td))
+            for p in lack:
+                like['pairs']['|'.join(sorted(p))] = fresh['pairs']['|'.join(sorted(p))]
+            like['added'] = {'pairs': ['|'.join(sorted(p)) for p in lack], 'renderer': fresh['renderer'],
+                             'distribution': fresh['distribution'], 'note': 'measured in the round 3 fix pass; '
+                             'percentiles against that run\'s own distribution'}
     else:
         with tempfile.TemporaryDirectory() as td:
             tmp = pathlib.Path(td)

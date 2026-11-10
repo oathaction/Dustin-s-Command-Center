@@ -57,8 +57,6 @@ p { margin: 0; max-width: 62ch; }
 .hint.tight { margin-top: -12px; }
 .note { font-size: 15px; font-weight: 600; padding: 10px 12px; border: 1px solid var(--rule); background: var(--press); }
 .mode { font-size: 15px; font-weight: 500; }
-.mode::before { content: ""; display: inline-block; width: 9px; height: 9px; margin-right: 8px; border: 2px solid var(--ink); border-radius: 50%; vertical-align: 1px; }
-.mode.saved::before { background: var(--ink); }
 .sr { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 /* controls */
@@ -115,8 +113,7 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .stage-bleed { margin-inline: -16px; }
 @media (min-width: 600px) { .stage-bleed { margin-inline: 0; } }
 .cap { font-size: 15px; font-weight: 600; }
-.sheet { display: flex; flex-direction: column; gap: 30px; padding-block: 30px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-.sheet-row { display: flex; flex-wrap: wrap; gap: 30px 36px; }
+.sheet { display: grid; grid-template-columns: repeat(4, max-content); justify-content: start; align-items: end; gap: 30px 28px; padding-block: 30px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 .sheet-cell { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
 .sheet-cell img, .rate-mark img, .rowx img, .foot img, .ending img { max-width: none; }
 .sheet-n { font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; line-height: 1; }
@@ -444,7 +441,7 @@ function buildScreens(o) {
   ready('foot_24:ready', 7, 'The bottom of a page', ['Next is the bottom of a page. It shows for 10 seconds, with one question after it.'], 'Show it');
   const fx = L.length;
   L.push({ key: 'foot_24:look', kind: 'expose', step: 7, item: 'foot_24', stim: { type: 'foot' }, seconds: EXP.foot, caption: 'The bottom of a page' });
-  q(7, 'foot_24', 'seen', { key: 'foot_24:seen', look: fx, eyebrow: 'The bottom of a page', title: 'Look at the small square mark at the bottom. What do you see in it?', type: 'choice', choices: ordered(o, 'foot_24:seen') });
+  q(7, 'foot_24', 'seen', { key: 'foot_24:seen', look: fx, eyebrow: 'The bottom of a page', title: 'Look at the small square mark beside the line of text. What did you see in it?', type: 'choice', choices: ordered(o, 'foot_24:seen') });
   // Step 8, the end of an article: the text stays on screen
   ready('ending:ready', 8, 'The end of an article', ['Next are the last lines of a short article, at two text sizes. The text stays on screen.'], 'Show the text');
   const t17 = { type: 'ending', px: 17 }, t15 = { type: 'ending', px: 15 };
@@ -575,7 +572,7 @@ function resume(snap) {
 }
 
 // ------------------------------------------------------------------ a step's opening screen
-const STEP_NAMES = { 2: 'Drawings', 3: 'Symbols', 4: 'Red', 5: 'The four', 6: 'Steps', 7: 'Small marks', 8: 'The end of an article', 9: 'Charts', 10: 'Sentences' };
+const STEP_NAMES = { 2: 'Drawings', 3: 'Symbols', 4: 'A card and a drawing', 5: 'The four', 6: 'Steps', 7: 'Small marks', 8: 'The end of an article', 9: 'Charts', 10: 'Sentences' };   // step 4 names what the reader sees (D2-950)
 function renderReady(sc) {
   const sec = h('section', { class: 'screen' });
   const notice = takeNotice(); if (notice) sec.append(notice);
@@ -629,9 +626,8 @@ function stimulus(st) {
     return h('div', { class: 'stage stage-left', role: 'img', 'aria-label': `Row ${big ? 2 : 1} of 2: four small drawings, each with a word: ${listWords(R.words)}` }, h('ol', { class: 'rowx' + (big ? ' big' : '') }, items));
   }
   if (st.type === 'marks') {
-    const rows = {};
-    CONFIG.marks.forEach((m, i) => { (rows[m.row] = rows[m.row] || []).push(h('div', { class: 'sheet-cell' }, fitEl(m.src, m.src2x, m.w, m.h, `Mark ${i + 1}`), h('span', { class: 'sheet-n', 'aria-hidden': 'true', text: String(i + 1) }))); });
-    return h('div', { class: 'sheet' }, Object.keys(rows).sort().map((r) => h('div', { class: 'sheet-row' }, rows[r])));
+    // one grid of four columns, in order: the 16 px marks (1 to 7), then the 24 px marks (8 to 12)
+    return h('div', { class: 'sheet' }, CONFIG.marks.map((m, i) => h('div', { class: 'sheet-cell' }, fitEl(m.src, m.src2x, m.w, m.h, `Mark ${i + 1}`), h('span', { class: 'sheet-n', 'aria-hidden': 'true', text: String(i + 1) }))));
   }
   if (st.type === 'foot') {
     const F = CONFIG.foot;
@@ -834,25 +830,50 @@ function renderPair(sc) {
 }
 
 // ------------------------------------------------------------------ the end
+// The readable lines print each answer in the words the reader saw: a choice by its own words, a step of a loop by its
+// place, a time as a date in words. Codes stay in the record line under them (PP-S14, CA-S18).
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const NUM = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+const ORD = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth'];
+function whenWords(iso) {
+  const d = new Date(iso); if (!iso || isNaN(d)) return '(not finished)';
+  const hr = d.getHours(), mn = String(d.getMinutes()).padStart(2, '0');
+  return `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}, at ${hr % 12 || 12}:${mn} ${hr < 12 ? 'a.m.' : 'p.m.'}`;
+}
 function answersText() {
   const r = S.run, it = r.items, lines = [];
-  const a = (x) => (x && x.answer !== null && x.answer !== undefined ? (typeof x.answer === 'string' && x.answer.includes(' ') ? `“${x.answer}”` : x.answer) : x ? '(skipped)' : '(not asked)');
-  const q = (key, qk) => (it[key] && it[key].questions[qk]) || null;
-  const looks = (key) => (it[key] && it[key].show_again ? `, looked again ${it[key].show_again}×` : '');
-  lines.push('Draft design test: my answers', `Name or initials: ${r.initials}`, `Started: ${r.started_at}`, `Finished: ${r.finished_at || '(not finished)'}`, `Screen width: ${r.viewport_width} px, sharpness ${r.device_pixel_ratio}x`, '');
-  lines.push('Drawings', `Drawing 1, the page${looks('overview')}. For: ${a(q('overview', 'purpose'))}. Open first: ${a(q('overview', 'open_first'))}.`);
-  r.orders.loops.forEach((c, i) => { const k = 'loop_' + c; lines.push(`Drawing ${i + 2} (${c})${looks(k)}. Comes back: ${a(q(k, 'comes_back'))}. Feeds or pushes: ${a(q(k, 'feeds_or_pushes'))}. Least certain: ${a(q(k, 'least_certain'))}. Reform acts: ${a(q(k, 'reform_acts'))}.`); });
+  const shown = {};
+  for (const sc of buildScreens(r.orders)) if (sc.kind === 'question' && sc.choices) shown[sc.item + ':' + sc.q] = Object.fromEntries(sc.choices.map((c) => [c[0], c[1]]));
+  for (const [v, w] of [['clear', 'Clear'], ['blurry', 'Blurry'], ['cannot_tell', 'Can’t tell']]) shown['marks:' + v] = w;
+  const words = (key, qk, v) => {
+    if (qk === 'least_certain' && /^step(\d)$/.test(v)) return `the ${ORD[+v.slice(4) - 1]} step`;
+    if (key === 'marks') return shown['marks:' + v] || v;
+    if (qk === 'easier') return { same: 'About the same' }[v] || v;
+    return (shown[key + ':' + qk] || {})[v] || v;
+  };
+  const a = (key, qk) => {
+    const x = (it[key] && it[key].questions[qk]) || null;
+    if (!x) return '(not asked)';
+    if (x.answer === null || x.answer === undefined) return '(skipped)';
+    const w = words(key, qk, x.answer);
+    return typeof w === 'string' && w.includes(' ') ? `“${w}”` : w;
+  };
+  const times = (n) => (n === 1 ? 'once' : n === 2 ? 'twice' : `${n < 10 ? NUM[n] : n} times`);
+  const looks = (key) => (it[key] && it[key].show_again ? `, looked again ${times(it[key].show_again)}` : '');
+  lines.push('Draft design test: my answers', `Name or initials: ${r.initials}`, `Started: ${whenWords(r.started_at)}`, `Finished: ${whenWords(r.finished_at)}`, `Screen width: ${r.viewport_width} px, sharpness ${r.device_pixel_ratio}x`, '');
+  lines.push('Drawings', `Drawing 1, the page${looks('overview')}. For: ${a('overview', 'purpose')}. Open first: ${a('overview', 'open_first')}.`);
+  r.orders.loops.forEach((c, i) => { const k = 'loop_' + c; lines.push(`Drawing ${i + 2}${looks(k)}. Comes back: ${a(k, 'comes_back')}. Feeds or pushes: ${a(k, 'feeds_or_pushes')}. Least certain: ${a(k, 'least_certain')}. Reform acts: ${a(k, 'reform_acts')}.`); });
   lines.push('', 'Symbols');
-  r.orders.icons.forEach((c, i) => lines.push(`Symbol ${i + 1} (${c})${looks('icon_' + c)}: ${a(q('icon_' + c, 'stands_for'))}`));
-  lines.push('', 'Red', `The card${looks('red_card')}. Favors a side: ${a(q('red_card', 'favors'))}. Why: ${a(q('red_card', 'why'))}.`, `The drawing${looks('house')}. Red seats: ${a(q('house', 'red'))}. Favors a side: ${a(q('house', 'favors'))}.`);
-  lines.push('', 'Rows', `Row 1${looks('row_24')}: ${a(q('row_24', 'current'))}.`, `Row 2${looks('row_48')}: ${a(q('row_48', 'current'))}. The red: ${a(q('row_48', 'red'))}.`);
-  lines.push('', 'Bills', `Step 2's mark: ${a(q('steps_slash', 'meaning'))}. The square: ${a(q('steps_square', 'meaning'))}. The dot: ${a(q('steps_dot', 'meaning'))}. Take part in: ${a(q('steps_list', 'take_part'))}. Step names: ${a(q('steps_names', 'clear'))}. Unclear: ${a(q('steps_names', 'which'))}.`);
-  lines.push('', 'Small marks' + looks('marks'), CONFIG.marks.map((m, i) => `${i + 1} ${a(q('marks', m.code))}`).join(', '), `The bottom of a page${looks('foot_24')}: ${a(q('foot_24', 'seen'))}.`);
-  lines.push('', 'The end of an article', `Text 1. Means: ${a(q('end_17', 'meaning'))}. Shape: ${a(q('end_17', 'clear'))}. Sits: ${a(q('end_17', 'sits'))}.`, `Text 2. Shape: ${a(q('end_15', 'clear'))}. Sits: ${a(q('end_15', 'sits'))}.`);
+  r.orders.icons.forEach((c, i) => lines.push(`Symbol ${i + 1}${looks('icon_' + c)}: ${a('icon_' + c, 'stands_for')}`));
+  lines.push('', STEP_NAMES[4], `The card${looks('red_card')}. Favors a side: ${a('red_card', 'favors')}. Why: ${a('red_card', 'why')}.`, `The drawing${looks('house')}. Red seats: ${a('house', 'red')}. Favors a side: ${a('house', 'favors')}.`);
+  lines.push('', 'Rows', `Row 1${looks('row_24')}: ${a('row_24', 'current')}.`, `Row 2${looks('row_48')}: ${a('row_48', 'current')}. The red: ${a('row_48', 'red')}.`);
+  lines.push('', 'Bills', `Step 2’s mark: ${a('steps_slash', 'meaning')}. The square: ${a('steps_square', 'meaning')}. The dot: ${a('steps_dot', 'meaning')}. Take part in: ${a('steps_list', 'take_part')}. Step names: ${a('steps_names', 'clear')}. Unclear: ${a('steps_names', 'which')}.`);
+  lines.push('', 'Small marks' + looks('marks'), CONFIG.marks.map((m, i) => `${i + 1} ${a('marks', m.code)}`).join(', '), `The bottom of a page${looks('foot_24')}: ${a('foot_24', 'seen')}.`);
+  lines.push('', 'The end of an article', `Text 1. Means: ${a('end_17', 'meaning')}. Shape: ${a('end_17', 'clear')}. Sits: ${a('end_17', 'sits')}.`, `Text 2. Shape: ${a('end_15', 'clear')}. Sits: ${a('end_15', 'sits')}.`);
   lines.push('', 'Charts');
-  r.orders.charts.forEach((c, i) => { const k = 'chart_' + c; lines.push(`Chart ${i + 1} (${c})${looks(k)}: ${a(q(k, 'telling'))}. Favors a side: ${a(q(k, 'favors'))}.`); });
+  r.orders.charts.forEach((c, i) => { const k = 'chart_' + c; lines.push(`Chart ${i + 1}${looks(k)}: ${a(k, 'telling')}. Favors a side: ${a(k, 'favors')}.`); });
   lines.push('', 'Sentences');
-  CONFIG.pairs.forEach((p, i) => { const x = q('pair_' + p.code, 'easier'); lines.push(`Pair ${i + 1} (${p.code}): ${a(x)}${x && x.picked ? ' (' + x.picked + ')' : ''}`); });
+  CONFIG.pairs.forEach((p, i) => lines.push(`Pair ${i + 1}: ${a('pair_' + p.code, 'easier')}`));
   lines.push('', 'For the design team, please keep this line:', JSON.stringify({ schema: SCHEMA, run_id: S.runId, run: r }));
   return lines.join('\n');
 }

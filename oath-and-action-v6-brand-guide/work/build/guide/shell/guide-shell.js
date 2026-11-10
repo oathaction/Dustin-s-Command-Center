@@ -7,6 +7,8 @@
 // reaches it; and drives the Copy buttons with a status line. Fix pass, November 6, 2026: AX-S1, AX-S3, AX-S11, AX-S12, D2-251.
 // Apply fix pass, November 7, 2026: Fit to window is offered only where it keeps every text at 13 px or more (CA-M1, CA-N9).
 // Q1 to Q4 pass, November 8, 2026: a frame takes 32 px sides where that holds its stage whole at true size (CD-S9).
+// Round 3 fix pass, November 10, 2026: the tokens.css button saves a zip through the host where one answers (DR-192,
+// D2-964); from 80em a fixed plate wider than its column breaks out over the rail where the page holds it whole (CA-S13).
 (function () {
   'use strict';
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -62,11 +64,15 @@
   }
 
   // From 90em the appendix spans the whole page and slides over the rail; once it reaches the rail, the rail is hidden,
-  // so no link under the appendix can take focus out of sight.
+  // so no link under the appendix can take focus out of sight. A plate frame that breaks out over the rail (CA-S13)
+  // hides it the same way while the two overlap.
   function railCover() {
-    if (!rail || !appendix) return;
-    var wide = window.matchMedia('(min-width: 90em)').matches;
-    var covered = wide && appendix.getBoundingClientRect().top < rail.getBoundingClientRect().bottom;
+    if (!rail) return;
+    var rr = rail.getBoundingClientRect();
+    var covered = !!appendix && window.matchMedia('(min-width: 90em)').matches && appendix.getBoundingClientRect().top < rr.bottom;
+    if (!covered) covered = $$('.plate.is-breakout > .plate-scroll').some(function (b) {
+      var r = b.getBoundingClientRect(); return r.top < rr.bottom && r.bottom > rr.top && r.left < rr.right;
+    });
     rail.classList.toggle('is-covered', covered);
   }
 
@@ -197,10 +203,36 @@
     tries.filter(function (t) { return t.need + sides(t.box) > t.box.clientWidth; })
       .forEach(function (t) { t.box.classList.remove('is-snug'); });
   }
-  // Every frame returns to its usual sides first, so the flowing stages and the test above both measure from there.
+  // CA-S13 (round 3): from 80em, a chapter plate whose fixed stage does not fit its column at true size, even inside
+  // the narrow sides, takes the room to its left, over the rail, out to the page's own margin, where that holds the
+  // stage whole. Its frame and stage move, centered in the wider frame; its head and caption stay on the text column.
+  // The appendix spans the page already, and a stage too wide for the page keeps its frame and scrolls as before.
+  function breakout() {
+    var pageBox = $('.frame');
+    var on = !!pageBox && window.matchMedia('(min-width: 80em)').matches;
+    var edge = 0, side = 0;
+    if (on) {
+      edge = pageBox.getBoundingClientRect().left + parseFloat(getComputedStyle(pageBox).paddingLeft);
+      var rs = getComputedStyle(document.documentElement), tok = rs.getPropertyValue('--oa-space-400').trim();
+      side = /rem$/.test(tok) ? parseFloat(tok) * parseFloat(rs.fontSize) : (parseFloat(tok) || 32);
+    }
+    $$('.chapter .plate > .plate-scroll[data-width]').forEach(function (b) {
+      var fig = b.parentElement, st = $('.plate-stage', b);
+      fig.classList.toggle('is-breakout', false); fig.style.setProperty('--bo', '0px');
+      if (!on || !st) return;
+      var reach = Math.floor(fig.getBoundingClientRect().left - edge);
+      var need = Math.max(st.offsetWidth, st.scrollWidth) + 2 * side;
+      if (reach >= 1 && need > b.clientWidth + 1 && need <= b.clientWidth + reach) {
+        fig.style.setProperty('--bo', reach + 'px');
+        fig.classList.toggle('is-breakout', true);
+      }
+    });
+  }
+  // Every frame returns to its usual sides first, so the flowing stages and the tests above all measure from there.
   function sizeFrames() {
     $$('.plate-scroll.is-snug').forEach(function (b) { b.classList.remove('is-snug'); });
     hugFlowing();
+    breakout();
     snug();
   }
 
@@ -300,15 +332,49 @@
     rt = setTimeout(function () { sizeFrames(); $$('.plate--fit[data-fit="fit"]').forEach(applyFit); offerFit(); frames(); railCover(); }, 120);
   });
 
-  // A chapter's "Download tokens.css" links to the page's one download in the colophon, and a click starts that
-  // download where the reader is, so the file sits in the page once (round 2, November 10, 2026).
+  // The tokens.css download (round 2, November 10, 2026; DR-192 and D2-964 in round 3). The page carries the file once,
+  // as the colophon's link, and each chapter's "Download tokens.css" starts that download where the reader is.
+  // Published, the page sits in a host that saves a file only through its own call, which refuses a .css name. Where
+  // window.claude reaches the host's downloads capability, every one of these buttons offers the zip the build packed
+  // beside the link, holding tokens.css, and says so. The host asks the reader before it saves. Declined: nothing more.
+  // Any other refusal: the buttons go back to the plain link, which then starts. With no host, the plain link works.
+  var dlLink = document.getElementById('tokens-download');
+  var dlHost = null;   // the host's downloads namespace, once it resolves
+  function dlWords(zip) {
+    var w = zip ? (dlLink.getAttribute('data-oa-zip-words') || 'Download tokens.css in a zip file') : (dlLink.getAttribute('data-oa-css-words') || 'Download tokens.css');
+    $$('a[data-oa-download="tokens-download"]').concat([dlLink]).forEach(function (a) { a.textContent = w; });
+  }
+  if (dlLink && dlLink.getAttribute('data-oa-zip') && window.claude && typeof window.claude.use === 'function') {
+    try {
+      Promise.resolve(window.claude.use('downloads')).then(function (ns) {
+        if (ns && typeof ns.save === 'function') { dlHost = ns; dlWords(true); }
+      }, function () { /* no host save: the plain link stays */ });
+    } catch (err) { /* no host save: the plain link stays */ }
+  }
+  function zipBytes() {
+    var s = atob(dlLink.getAttribute('data-oa-zip')), u = new Uint8Array(s.length);
+    for (var i = 0; i < s.length; i++) u[i] = s.charCodeAt(i);
+    return u;
+  }
+  function hostSave() {
+    var req;
+    try { req = dlHost.save({ filename: dlLink.getAttribute('data-oa-zip-name'), data: zipBytes() }); } catch (err) { req = Promise.reject(err); }
+    Promise.resolve(req).then(function () { /* the host saved it */ }, function (err) {
+      var code = err && err.code;
+      // declined: the reader said no. rate_limited: a prompt is already open, so the reader is already deciding.
+      if (code === 'declined' || code === 'rate_limited') return;
+      dlHost = null;
+      dlWords(false);
+      dlLink.click();
+    });
+  }
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[data-oa-download]');
-    if (!a) return;
-    var target = document.getElementById(a.getAttribute('data-oa-download'));
-    if (!target) return;
+    var a = e.target.closest && e.target.closest('a[data-oa-download], #tokens-download');
+    if (!a || !dlLink) return;
+    if (dlHost) { e.preventDefault(); hostSave(); return; }
+    if (a === dlLink) return;   // the colophon's link downloads by itself
     e.preventDefault();
-    target.click();
+    dlLink.click();
   });
 
   // Copy buttons write their result to the status line beside them (a polite live region).

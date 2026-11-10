@@ -5,21 +5,21 @@
  "part": "Symbols and graphics",
  "instruction": "Mark which pillar a piece serves, always in the order Explain, Track, Connect, Act.",
  "intro": [
-  "Our four pillars name the jobs our work does: Explain, Track, Connect and Act, in that order (chapter 01). Each pillar has an icon from the Civic Line, the symbol set in chapter 10, and each icon stands beside its word.",
+  "Our four pillars name the jobs our work does: Explain, Track, Connect and Act, in that order (chapter 01). Each pillar has an icon from the Civic Line, the symbol set in chapter 10, and each icon stands beside its word. At 16 and 24 px each icon also has a pixel fit, a copy redrawn on whole pixels with a 1 px line, so it stays sharp on a screen that gives each CSS pixel one device pixel.",
   "This chapter sets the row the four stand in, how a page marks the pillar it serves, the file to draw at each size, and the few places a pillar icon may appear."
  ],
  "rules": [
   {
    "id": "09.1",
    "title": "Set the four pillar icons in order, each beside its word.",
-   "rule": "Set the pillars in one row in the order Explain, Track, Connect and Act, with an arrow between each pair. Each icon stands beside its word at every size, so the word names the pillar and the icon shows it a second way. A row takes one icon size throughout, 48 px with the words in the intro style or 24 px with the words in body text. Every icon in it is one color, unless the row marks a current pillar (Rule 09.2).",
+   "rule": "Set the pillars in one row in the order Explain, Track, Connect and Act, with an arrow between each pair. Each icon stands beside its word at every size, so the word names the pillar and the icon shows it a second way. A row takes one icon size throughout, 48 px with the words in the intro style or 24 px with the words in body text. Every icon in it is one color, unless the row marks a current pillar (Rule 09.2). The 48 px row runs near the top of a page that introduces the four pillars or gathers one pillar’s work, and the 24 px row, the compact row, runs in the header of a single piece that serves one pillar. A social card and a kicker carry no row.",
    "tokens": [
     "oa.component.icon.ink.onNewsprint",
     "oa.size.icon.large",
     "oa.size.icon.medium"
    ],
    "why": {
-    "text": "The order follows the work, from understanding a decision to taking part in it, so it never changes. A reader learns four drawings faster with their words beside them, and the word settles a drawing that could pass for another pillar: Track’s magnifier can read as looking into a question, which is Explain’s job.",
+    "text": "The order follows the work, from understanding a decision to taking part in it, so it never changes. The word beside each drawing names it at once, and it settles a drawing that could pass for another pillar, as Track’s magnifier can read as looking into a question, which is Explain’s job.",
     "basis": "Design judgment, approved by our founder and editor in November 2026"
    },
    "correct": {
@@ -54,7 +54,11 @@
     },
     {
      "label": "Under 48em",
-     "value": "The 48 px row stacks in one column with downward arrows; the 24 px row wraps after an arrow"
+     "value": "The 48 px row stacks in one column, with each downward arrow centered under its icon between rows; the 24 px row wraps after an arrow"
+    },
+    {
+     "label": "Places",
+     "value": "48 px near the top of a page that introduces the four pillars or gathers one pillar’s work; 24 px in the header of a single piece that serves one pillar; never on a social card or in a kicker"
     }
    ],
    "files": [
@@ -67,12 +71,12 @@
     "01",
     "10"
    ],
-   "builders": "Build the row as an ordered list whose text is the four words, and draw each icon from the sprite beside its word, hidden from screen readers with <code>aria-hidden=\"true\"</code>. Draw the arrows in CSS as content a screen reader skips, <code>content: \"→\" / \"\"</code>. Pull each icon’s box in to its ink with negative margins, whole pixels at 16 and 24 px."
+   "builders": "Build the row as an ordered list whose text is the four words, and draw each icon from the sprite beside its word, hidden from screen readers with <code>aria-hidden=\"true\"</code>. Draw the arrows in CSS as content a screen reader skips, <code>content: \"→\" / \"\"</code>. Pull each icon’s box in to its ink with negative margins, whole pixels at 16 and 24 px. In the stacked column, place each arrow absolutely, centered under its icon’s box in the gap before the next row."
   },
   {
    "id": "09.2",
    "title": "Underline the current pillar’s word, and add its red only from 48 px.",
-   "rule": "On a page or a section that serves one pillar, underline that pillar’s word in the row, at every size, and set the word bold under 48 px. From 48 px the current icon also keeps its red, as a second sign, and the red counts as signature red (Rule 05.3). Under 48 px every icon stays one color, the current one included. On Prussian no icon takes red, so the underline marks the current pillar alone.",
+   "rule": "On a page or a section that serves one pillar, underline that pillar’s word in the row, at every size, and set the word bold under 48 px. From 48 px the current icon also keeps its red, as a second sign, and that red is signature red, which never counts against a view’s working red (Rule 05.3). Under 48 px every icon stays one color, the current one included. On Prussian no icon takes red, so the underline marks the current pillar alone.",
    "tokens": [
     "oa.component.icon.accent.onNewsprint",
     "oa.component.icon.accent.onCharcoal"
@@ -118,14 +122,14 @@
   {
    "id": "09.3",
    "title": "Draw a pillar icon from the file made for its size.",
-   "rule": "Each size has its own drawing. At 16 px, draw the 16 px pixel fit on every screen. At 24 px, draw the 24 px pixel fit on screens under 2x, which give each CSS pixel fewer than two device pixels, and the master on 2x screens and denser, with both in one svg that the guide’s stylesheet switches. From 48 px, draw the master. Never scale a master to 16 px, and never draw a fit at any size but its own.",
+   "rule": "Each size has its own drawing. At 16 px, draw the 16 px pixel fit on every screen. At 24 px, draw the 24 px pixel fit on screens under 2x, which give each CSS pixel fewer than two device pixels, and the master on 2x screens and denser, with both in one svg that the guide’s stylesheet switches. From 48 px, draw the master. An exported image or a printed page has no stylesheet to switch them, so pick the 24 px file yourself: the fit in an image exported at 1x, and the master in an image exported at 2x or more and in print. Never scale a master down to 16 px or draw a fit at any size but its own.",
    "tokens": [
     "oa.size.icon.small",
     "oa.size.icon.medium",
     "oa.size.icon.large"
    ],
    "why": {
-    "text": "The masters are drawn on a 128-unit box with a line about 3 units wide, so at 24 px the line falls to half a pixel, and at 16 px small gaps fill in. Each pixel fit redraws its icon on whole pixels with a 1 px line and keeps every feature. A 24 px icon keeps its fit up to 2x, since below 2x the master’s line falls under one device pixel and its counters fill, and the fit keeps every counter and gap. From 2x the master’s line clears a device pixel and draws smoother than the fit’s steps.",
+    "text": "The masters are drawn on a 128-unit box with a line 3.35 units wide, so at 24 px the line falls to 0.63 px, and at 16 px small gaps fill in. A 24 px icon keeps its fit on screens under 2x, where the master’s line falls under one device pixel and its open spaces fill in, and the fit keeps every one of them. From 2x the master’s line clears a device pixel and draws smoother than the fit’s steps. The end mark switches at 1x instead (Rule 04.6), because its pixel fit softens or steps unevenly between 1x and 2x, while B’s smooth drawing keeps its shape on every screen.",
     "basis": "Our measurements, November 2026; the pixel fits approved by our founder and editor in November 2026"
    },
    "correct": {
@@ -154,7 +158,11 @@
     },
     {
      "label": "Line",
-     "value": "1 px in each fit; about 3 units of 128 in each master"
+     "value": "1 px in each fit; 3.35 units of 128 in each master"
+    },
+    {
+     "label": "Exported image and print",
+     "value": "At 24 px, the fit in an image exported at 1x; the master in an image exported at 2x or more and in print. At 16 px, the fit"
     },
     {
      "label": "Color",
@@ -185,7 +193,7 @@
   {
    "id": "09.4",
    "title": "Put pillar icons only in the pillar row, on section openers and on tiles.",
-   "rule": "A pillar icon appears in three places: the pillar row; the opener of a section that serves one pillar, where it stands at 128 px; and a tile that leads to a pillar’s section, from 76 px. It never enters a kicker, which may carry a topic icon only (Rule 01.21), and it never sits on a part opener.",
+   "rule": "A pillar icon appears in three places: the pillar row; the opener of a section that serves one pillar, where it stands at 128 px; and a tile that leads to a pillar’s section, from 76 px. It stays out of kickers, which may carry only a topic or atlas symbol (Rule 01.21), and off part openers.",
    "tokens": [
     "oa.component.icon.ink.onCharcoal",
     "oa.component.icon.accent.onCharcoal"
@@ -230,7 +238,7 @@
     "01",
     "10"
    ],
-   "builders": "Take a pillar’s tile from the Civic Line package’s rounded Charcoal tiles. A standalone icon on an opener keeps its red as signature red; give it the word of its pillar nearby."
+   "builders": "Take a pillar’s tile from the Civic Line package’s rounded Charcoal tiles. A standalone icon on an opener keeps its red as signature red; set its pillar’s word beside or under it."
   }
  ],
  "extras": [
@@ -238,7 +246,7 @@
    "after_rule": "09.1",
    "specimen": "s-09-phone",
    "label": "The row on a phone",
-   "caption": "On a phone the 48 px row stands in one column with downward arrows, and the 24 px row wraps after an arrow."
+   "caption": "On a phone the 48 px row stands in one column, with a downward arrow under each icon but the last, and the 24 px row wraps after an arrow."
   }
  ],
  "related_chapters": [

@@ -136,18 +136,21 @@ def s_proofs_avatar():
 SOCIAL_SPECS = [
     ("Size", "1200 by 630 px, the link-preview size"),
     ("Margin", "72 px on every side"),
-    ("Kicker", "The H4 style at 24 px in Deep Stone: the content label, then the topic (Rule 01.21)"),
+    ("Kicker", "The H3 style at 32 px, large enough to read in a phone's feed: the content label in Charcoal, then the "
+               "topic in Deep Stone (Rule 01.21)"),
     ("Headline", "The title style at 110 px, broken at the hinge; B from its display master in the card's working red"),
     ("Wordmark", "The display master, 44 px tall, bottom left"),
     ("Lockmark", "48 px from its 48 px master, bottom right, inside the margin (Rule 08.2)"),
     ("Feed test", None),
-    ("Left out", "A deck, so the headline keeps the title size, and a web address until ours is settled"),
+    ("Left out", "A deck, so the headline keeps the title size; a web address until ours is settled; the pillar row and "
+                 "any topic or atlas symbol, since a phone's feed shows the card at about 30 percent and would draw a 48 px "
+                 "icon at 14 px, under every icon's floor"),
 ]
 
 
 def _social():
     return (f'<div class="oai-s-newsprint" style="position:relative;width:1200px;height:630px;padding:72px;border:1px solid {hair("newsprint")}">'
-            f'<p style="{ty("h4", 1200)};color:{ink2("newsprint")}">Explainer · Zoning</p>'
+            f'<p style="{ty("h3", 1200)};color:{ink("newsprint")}">Explainer<span style="color:{ink2("newsprint")}"> · Zoning</span></p>'
             f'{headline("The zoning code", "the rent.", "title", board=1200, extra_style="margin-top:24px")}'
             f'<div style="position:absolute;left:72px;bottom:72px">{mark(WM["display"], h=44, label="Oath & Action")}</div>'
             f'<div style="position:absolute;right:72px;bottom:72px;line-height:0">{lockmark(48, label="Lockmark")}</div></div>')
@@ -173,12 +176,17 @@ def s_proofs_social():
             f'<div>{plabel("Link-preview card", "1200 by 630 px")}{_social()}</div>'
             f'<div style="width:1200px"><p class="oai-pl">Specifications</p><dl class="oai-spl">{specs}</dl></div>'
             '</div></div>')
-    alt = ("A social card at actual size, 1200 by 630 pixels, on Newsprint: the kicker Explainer · Zoning, the hinge headline "
+    alt = ("A social card at actual size, 1200 by 630 pixels, on Newsprint: the kicker Explainer · Zoning, its label in "
+           "Charcoal and its topic in gray, the hinge headline "
            "The zoning code & the rent. broken before a red ampersand B, the wordmark 44 pixels tall at bottom left and the "
            "lockmark at 48 pixels at bottom right, inside the 72 pixel margin. No web address. Under it, the card's "
            "specifications. The headline and kicker are invented.")
     return rec("s-proofs-social", "proofs", 1248, alt, body, css=css, illustrative=True, fit_switch=True,
                notes="1200 by 630, the link-preview size, type at the desktop ceiling (D2-254). The headline is chapter 02's hinge example. "
+                     "Round 3 (D2-973, CA-S18): the kicker moves from the H4 style at 24 px to the H3 style at 32 px, the largest "
+                     "step the type scale gives a 1200 px board below the section and title styles, so at 358 px wide in a "
+                     "phone's feed it stands 9.5 px, legible on a 2x screen, where 24 px gave 7.2 px; its label takes Charcoal and its "
+                     "topic Deep Stone, as Rule 01.21 sets a kicker's two parts. No pillar row or symbol (D2-962). "
                      "Sign-off from the lockmark's 48 px master at 48 px (DR-131): since November 10, 2026 the rebuilt file, "
                      "lockmark/20261109_Lockmark-48px-Master-Outline.svg, each node and the lever one outline (DR-181). The feed test "
                      "(D2-468) ran again on this card in the built page with that master, and its figures are the ones printed here "

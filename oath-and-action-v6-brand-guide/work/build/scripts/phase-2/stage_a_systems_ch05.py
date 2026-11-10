@@ -108,15 +108,16 @@ def phone(ctx, variant='plain'):
         extra += (f'.fld{{margin:0 0 16px}}.fl{{display:block;{ctx.ty("ui")}}}'
                   f'.in{{display:block;height:48px;margin-top:6px;border:1px solid {ctx.v("oa.color.border.strong.onNewsprint")};'
                   f'background:{ctx.v("oa.color.surface.white")};box-shadow:inset 4px 0 0 {er}}}'
-                  f'.er{{display:grid;grid-template-columns:20px 1fr;gap:10px;margin-top:8px;padding:12px;'
+                  f'.er{{display:grid;grid-template-columns:24px 1fr;gap:8px;margin-top:8px;padding:12px 12px 12px 16px;'
                   f'background:{ctx.v("oa.color.state.error.band.onNewsprint")};color:{ctx.v("oa.color.state.error.text.onNewsprint")};'
                   f'box-shadow:inset 4px 0 0 {er};{ctx.ty("bodySmall")}}}'
-                  f'.er svg{{display:block;margin-top:2px}}.er b{{font-weight:700}}'
+                  f'.er svg{{display:block;margin-top:-1px}}.er b{{font-weight:700}}'
                   f'.ask.pri{{background:{ctx.v("oa.component.button.primary.fill.onNewsprint")};'
                   f'color:{ctx.v("oa.component.button.primary.label.onNewsprint")};box-shadow:none}}')
-        glyph = (f'<svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">'
-                 f'<circle cx="10" cy="10" r="8.5" fill="{er}" stroke="{ctx.v("oa.color.border.strong.onNewsprint")}" stroke-width="1"/>'
-                 f'<path d="M6.5 6.5l7 7M13.5 6.5l-7 7" stroke="{ctx.v("oa.color.text.primary.onCharcoal")}" stroke-width="2" stroke-linecap="square"/></svg>')
+        # The error mark as Rule 11.15 builds it (D2-880, D2-959): chapter 11's U-error from the sprite, drawn in the
+        # message's ink (currentColor), with the working red held by the 4 px bar on the field and the message.
+        glyph = ('<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="U-error" '
+                 'data-icon-family="utility"><use href="#oa-sym-u-error-24px"/></svg>')
         ft = ('<div class="fld" data-red="working" data-red-job="error"><span class="fl">Email</span><span class="in"></span>'
               f'<div class="er">{glyph}<span><b>Error:</b> Enter an email address so the clerk can confirm your time to speak.</span></div></div>'
               '<span class="ask pri">Sign up to speak</span>')
@@ -226,7 +227,7 @@ def s_05_1(ctx):
                            'palette color; Deep Stone counts as Stone and Dim Newsprint as Newsprint.')
         else:
             sh = ctx.R.get(f'share {sid}', {}).get('shares', {})
-            alt = ('Labeled Failure case: do not publish. The same Illustrative phone page with a Charcoal masthead and '
+            alt = ('Failure case: do not publish. The same Illustrative phone page with a Charcoal masthead and '
                    'body, a Prussian panel and a Newsprint '
                    'button, so dark surfaces cover most of the screen. Below it, its measured color shares: Newsprint '
                    f'{share_txt(ctx, sid, "newsprint") if sh else ""} percent, Charcoal '
@@ -435,15 +436,17 @@ def s_05_3(ctx):
              alt_base + ', and one red button, Sign up to speak, with a Charcoal edge.', width=360, illustrative=True,
              notes='Signature red: the wordmark ampersand. Working red: the ask, precedence 2.')
     ctx.spec('s-05-3-failure', banded(ctx, phone(ctx, 'threejobs')), '05', '05.3',
-             'Labeled Failure case: do not publish. The same Illustrative phone page with three reds: the date April 14 in the headline, a red bar under the '
+             'Failure case: do not publish. The same Illustrative phone page with three reds: the date April 14 in the headline, a red bar under the '
              'headline, and the red Sign up to speak button.', width=360, illustrative=True, exempt=['contrast', 'red'],
              notes='A labeled failure case: red date text at 28 px fails 3 to 1 on purpose.')
     ctx.spec('s-05-3-corrective', phone(ctx, 'error'), '05', '05.3',
-             'The same Illustrative phone page with an email field in its error state: a red bar on the field, a message on '
-             'a pale red band that reads Error: Enter an email address so the clerk can confirm your time to speak, a red '
-             'error glyph, and below it the Sign up to speak button in Charcoal with a White label.', width=360,
+             'The same Illustrative phone page with an email field in its error state: a red bar on the field, and a message '
+             'on a pale red band with a red bar at its left that reads Error: Enter an email address so the clerk can '
+             'confirm your time to speak, beside the error mark, a circle holding an exclamation mark in the message’s '
+             'dark ink. Below it the Sign up to speak button is Charcoal with a White label.', width=360,
              illustrative=True,
-             notes='The error takes the working red (precedence 1); the ask steps down to the primary button.')
+             notes='The error takes the working red (precedence 1), held by the 4 px bar; the mark is chapter 11\'s U-error '
+                   'in the text\'s ink, as Rule 11.15 is built (D2-959). The ask steps down to the primary button.')
 
 
 def s_05_ask(ctx):
@@ -627,7 +630,7 @@ def s_05_5(ctx):
                    f'for the most. 600 px wide, so its type takes the phone floor (D2-254).')
     html2, *_ = bar_chart(ctx, keyline=False)
     ctx.spec('s-05-5-failure', banded(ctx, html2, flush=False), '05', '05.5',
-             f'Labeled Failure case: do not publish. The same bar chart with the health care bar in Pillar Red and no '
+             f'Failure case: do not publish. The same bar chart with the health care bar in Pillar Red and no '
              f'edge, so its outline blurs into the '
              f'Newsprint page.', width=600, notes='The red bar has no keyline; text in the chart still passes.')
     ctx.fig('chart rows', vals, 'payrolls-by-sector, row 2026-09-01, change_since_2022_01_thousands')
@@ -762,7 +765,7 @@ def s_05_6(ctx):
              f'<p class="hd">What the paid family leave bill would change</p>'
              f'<p class="mt">Updated November 6, 2026 · two sources</p></div>')
     ctx.spec('s-05-6-failure', banded(ctx, htmlf), '05', '05.6',
-             f'Labeled Failure case: do not publish. An Illustrative story card on Newsprint with the kicker Explainer, State bills, the headline What the paid '
+             f'Failure case: do not publish. An Illustrative story card on Newsprint with the kicker Explainer, State bills, the headline What the paid '
              f'family leave bill would change, and a metadata line in Charcoal at 40 percent opacity that measures {ro} to 1.',
              width=360, illustrative=True, exempt=['contrast'],
              notes=f'Composite {comp}; the Deep Stone token measures {rd} to 1 on the same ground.')
@@ -857,7 +860,7 @@ def s_05_7(ctx):
     htmlf = (f'<style>{cssf}</style>{band}<p class="k"><span>Change in turnout by state</span>{B.ILLUS}</p>'
              f'<ul class="sc">{"".join(fcells)}</ul>')
     ctx.spec('s-05-7-failure', htmlf, '05', '05.7',
-             'A band across the top reads Failure case: do not publish. Below it, an Illustrative five-step scale labeled '
+             'Failure case: do not publish. An Illustrative five-step scale labeled '
              'Change in turnout by state that runs from Pillar Red for Rises a lot through a pale midpoint to Prussian for '
              'Falls a lot, with no arrows.', illustrative=True, exempt=['contrast'],
              notes='The light red step is a color-mix() in the fragment, not a token, because the failure needs a red tint '
@@ -1042,12 +1045,13 @@ def build(ctx):
                                        'also fails 3 to 1 as large text.'},
                 'corrective': {'specimen': 's-05-3-corrective',
                                'caption': 'When the reader’s entry has an error, the error takes the view’s red and the ask '
-                                          'steps down to the Charcoal primary button until the reader fixes it. The message '
-                                          f'sits on the Error Band, where Charcoal text measures {eb_c} to 1.'},
+                                          'steps down to the Charcoal primary button until the reader fixes it. The red is the '
+                                          '4 px bar beside the field and the message, and the error mark draws in the text’s '
+                                          f'ink (Rule 11.15). The message sits on the Error Band, where Charcoal text measures {eb_c} to 1.'},
                 'specs': [
                     {'label': 'Signature red on Newsprint, White and Charcoal', 'value': f'Pillar Red; {red_n}, {red_w} and {red_c} to 1', 'token': 'oa.color.identity.signature.onNewsprint'},
                     {'label': 'Signature marks on Prussian', 'value': f'White, {w_p} to 1', 'token': 'oa.color.identity.signature.onPrussian'},
-                    {'label': 'Working red, first claim', 'value': 'An error the reader must fix', 'token': 'oa.color.state.error.mark.onNewsprint'},
+                    {'label': 'Working red, first claim', 'value': 'An error the reader must fix, shown by the 4 px red bar beside it', 'token': 'oa.color.state.error.mark.onNewsprint'},
                     {'label': 'Working red, second claim', 'value': 'The step a reader can take now', 'token': 'oa.color.action.ask.fill.onNewsprint'},
                     {'label': 'Working red, third claim', 'value': 'The one point the headline names', 'token': 'oa.color.data.emphasisRed.onNewsprint'},
                     {'label': 'Keyline on a red mark on Newsprint', 'value': f'Charcoal, 1 px, {ch_n} to 1', 'token': 'oa.component.button.ask.keyline.onNewsprint'},

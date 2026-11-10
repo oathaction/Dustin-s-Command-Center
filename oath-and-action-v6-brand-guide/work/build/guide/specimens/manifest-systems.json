@@ -11,7 +11,7 @@
   "chapter": "05",
   "rule": "05.1",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. The same Illustrative phone page with a Charcoal masthead and body, a Prussian panel and a Newsprint button, so dark surfaces cover most of the screen. Below it, its measured color shares: Newsprint 10 percent, Charcoal 62 and Prussian 24.",
+  "alt": "Failure case: do not publish. The same Illustrative phone page with a Charcoal masthead and body, a Prussian panel and a Newsprint button, so dark surfaces cover most of the screen. Below it, its measured color shares: Newsprint 10 percent, Charcoal 62 and Prussian 24.",
   "illustrative": true,
   "notes": "A labeled failure: the proportion fails, every text pair still passes."
  },
@@ -46,15 +46,15 @@
   "chapter": "05",
   "rule": "05.3",
   "width_px": 360,
-  "alt": "The same Illustrative phone page with an email field in its error state: a red bar on the field, a message on a pale red band that reads Error: Enter an email address so the clerk can confirm your time to speak, a red error glyph, and below it the Sign up to speak button in Charcoal with a White label.",
+  "alt": "The same Illustrative phone page with an email field in its error state: a red bar on the field, and a message on a pale red band with a red bar at its left that reads Error: Enter an email address so the clerk can confirm your time to speak, beside the error mark, a circle holding an exclamation mark in the message’s dark ink. Below it the Sign up to speak button is Charcoal with a White label.",
   "illustrative": true,
-  "notes": "The error takes the working red (precedence 1); the ask steps down to the primary button."
+  "notes": "The error takes the working red (precedence 1), held by the 4 px bar; the mark is chapter 11's U-error in the text's ink, as Rule 11.15 is built (D2-959). The ask steps down to the primary button."
  },
  "s-05-3-failure": {
   "chapter": "05",
   "rule": "05.3",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. The same Illustrative phone page with three reds: the date April 14 in the headline, a red bar under the headline, and the red Sign up to speak button.",
+  "alt": "Failure case: do not publish. The same Illustrative phone page with three reds: the date April 14 in the headline, a red bar under the headline, and the red Sign up to speak button.",
   "illustrative": true,
   "notes": "A labeled failure case: red date text at 28 px fails 3 to 1 on purpose.",
   "check_exempt": [
@@ -90,7 +90,7 @@
   "chapter": "05",
   "rule": "05.5",
   "width_px": 600,
-  "alt": "Labeled Failure case: do not publish. The same bar chart with the health care bar in Pillar Red and no edge, so its outline blurs into the Newsprint page.",
+  "alt": "Failure case: do not publish. The same bar chart with the health care bar in Pillar Red and no edge, so its outline blurs into the Newsprint page.",
   "illustrative": false,
   "notes": "The red bar has no keyline; text in the chart still passes."
  },
@@ -107,7 +107,7 @@
   "chapter": "05",
   "rule": "05.6",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. An Illustrative story card on Newsprint with the kicker Explainer, State bills, the headline What the paid family leave bill would change, and a metadata line in Charcoal at 40 percent opacity that measures 2.48 to 1.",
+  "alt": "Failure case: do not publish. An Illustrative story card on Newsprint with the kicker Explainer, State bills, the headline What the paid family leave bill would change, and a metadata line in Charcoal at 40 percent opacity that measures 2.48 to 1.",
   "illustrative": true,
   "notes": "Composite #8B8985; the Deep Stone token measures 5.49 to 1 on the same ground.",
   "check_exempt": [
@@ -126,7 +126,7 @@
   "chapter": "05",
   "rule": "05.7",
   "width_px": null,
-  "alt": "A band across the top reads Failure case: do not publish. Below it, an Illustrative five-step scale labeled Change in turnout by state that runs from Pillar Red for Rises a lot through a pale midpoint to Prussian for Falls a lot, with no arrows.",
+  "alt": "Failure case: do not publish. An Illustrative five-step scale labeled Change in turnout by state that runs from Pillar Red for Rises a lot through a pale midpoint to Prussian for Falls a lot, with no arrows.",
   "illustrative": true,
   "notes": "The light red step is a color-mix() in the fragment, not a token, because the failure needs a red tint the token set refuses. The band keeps the failure marked in any crop (BE-S4).",
   "check_exempt": [
@@ -334,7 +334,7 @@
   "chapter": "06",
   "rule": "06.9",
   "width_px": 600,
-  "alt": "Labeled Failure case: do not publish. The same email header with its headline set in Inter Tight and no web font loaded, so it shows in the mail app’s default serif.",
+  "alt": "Failure case: do not publish. The same email header with its headline set in Inter Tight and no web font loaded, so it shows in the mail app’s default serif.",
   "illustrative": true,
   "notes": "Headline and body from chapter 02, W08 (Illustrative). The failure names a face no page loads, so every browser falls to its default serif, as a mail app does.",
   "surface": "white"
@@ -465,7 +465,7 @@
   "chapter": "10",
   "rule": "10.1",
   "width_px": null,
-  "alt": "The six kinds of symbol, one to a row, each with an example at the size it is used. Pillar icon: Track at 48 px, which marks which of our four pillars a piece serves; chapter 09. Topic symbol: Local government at 48 px, which names the subject of a piece; chapter 10. Atlas symbol: Entrenched majority control, Variable D7, at 48 px, which names a variable or a reform in our systems atlas; chapter 10. Status mark: a step ring with the number 2, for Step 2 of 6: Hearing, which says where a bill or a record stands; chapter 11. Utility icon: the search magnifier at 24 px beside the word Search, naming an action beside the words that say it; chapter 11. Encoding glyph: a line with a tag holding a plus sign, read as raises; shown in Rule 10.10 and taught in chapter 15.",
+  "alt": "The six kinds of symbol, one to a row, each with an example at the size it is used. Pillar icon: Track at 48 px, which marks which of our four pillars a piece serves; chapter 09. Topic symbol: Local government at 48 px, which names the subject of a piece; chapter 10. Atlas symbol: Safe seats, Variable C1, at 48 px, which names a variable or a reform in our systems atlas; chapter 10. Status mark: a step ring with the number 2, for Step 2 of 6: Hearing, which says where a bill or a record stands; chapter 11. Utility icon: the search magnifier at 24 px beside the word Search, naming an action beside the words that say it; chapter 11. Encoding glyph: a line with a tag holding a plus sign, read as raises; shown in Rule 10.10 and taught in chapter 15.",
   "illustrative": false,
   "notes": "D2-515; readable list (D2-255). Status ring drawn at the tracker's 24 px size with the ring.now token; encoding tag drawn by System 1's wire_marks (DR-36).",
   "readable": true
@@ -474,7 +474,7 @@
   "chapter": "10",
   "rule": "10.1",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. A Brand files page at 360 px whose Downloads button carries the Public records drawing, a page rising out of an open folder, at 24 px in place of the download icon.",
+  "alt": "Failure case: do not publish. A Brand files page at 360 px whose Downloads button carries the Public records drawing, a page rising out of an open folder, at 24 px in place of the download icon.",
   "illustrative": false,
   "notes": "Topic drawing standing for an interface action (D2-515). CL-048 is on the list of 41, so the size is allowed; the class is the fault."
  },
@@ -492,7 +492,7 @@
   "chapter": "10",
   "rule": "10.10",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. Two connections drawn on White with no tags and no words: a green line for raises and a red line for lowers. The sign lives in color alone, and red means something it never means in the atlas.",
+  "alt": "Failure case: do not publish. Two connections drawn on White with no tags and no words: a green line for raises and a red line for lowers. The sign lives in color alone, and red means something it never means in the atlas.",
   "illustrative": false,
   "notes": "Labeled failure: polarity by hue, with red spent on a sign.",
   "check_exempt": [
@@ -504,7 +504,7 @@
   "chapter": "10",
   "rule": "10.2",
   "width_px": 600,
-  "alt": "Local government drawn at three times its 128 px master on its 128-unit box, with a grid every 16 units. A dashed square marks the 116 units a drawing may fill. Notes point to the box, to the dashed square, to the outer wall of the right wing, whose line is 3.35 units wide with round ends and corners, and to the door, the one red part. Below, the same drawing at true size: 128 px with a 3.35 px line, 64 px with a 1.68 px line and 48 px with a 1.26 px line.",
+  "alt": "Local government drawn at three times its 128 px master on its 128-unit box, with a grid every 16 units. A dashed square marks the 116 units a drawing may fill. Notes point to the box, to the dashed square, to the outer wall of the right wing, whose line is 3.35 units wide with round ends and corners, and to the door, its red accent. Below, the same drawing at true size: 128 px with a 3.35 px line, 64 px with a 1.68 px line and 48 px with a 1.26 px line.",
   "illustrative": false,
   "notes": "The drawing is CL-031 from the sprite (D2-590); keylines from the construction file.",
   "height_px": 636
@@ -513,7 +513,7 @@
   "chapter": "10",
   "rule": "10.2",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. A row of four symbols at 64 px with their words: Public records, Policy, Bill and Petition. Bill is a filled document icon from a generic icon library, with square corners, solid black among three Civic Line line drawings.",
+  "alt": "Failure case: do not publish. A row of four symbols at 64 px with their words: Public records, Policy, Bill and Petition. Bill is a filled document icon from a generic icon library, with square corners, solid black among three Civic Line line drawings.",
   "illustrative": false,
   "notes": "The stock glyph is drawn for this failure only, on a 24-unit grid; Bill has no Civic Line drawing (DR-137)."
  },
@@ -529,7 +529,7 @@
   "chapter": "10",
   "rule": "10.3",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. The same three drawings, each with its box trimmed to its ink and set at 96 px. Healthcare grows to fill its box and its line thickens to 3.83 px; Local government to 2.89 px; Competition remedies for search and ad markets to 2.22 px. The three no longer match.",
+  "alt": "Failure case: do not publish. The same three drawings, each with its box trimmed to its ink and set at 96 px. Healthcare grows to fill its box and its line thickens to 3.83 px; Local government to 2.89 px; Competition remedies for search and ad markets to 2.22 px. The three no longer match.",
   "illustrative": false,
   "notes": "The trim is a viewBox cut to each drawing's ink extent from the inventory in use (extent_units, centered on 64, 64)."
  },
@@ -537,15 +537,15 @@
   "chapter": "10",
   "rule": "10.4",
   "width_px": 600,
-  "alt": "Two size ladders and a kicker at true size. Public records, which is on the list of 41, at 128, 96, 64, 48 and 24 px, with lines of 3.35, 2.51, 1.68, 1.26, 0.63 px. Congress, which is not on the list, at 128, 96, 64 and 48 px, and an empty dashed square where 24 px would be, marked not allowed. Below, a story card whose kicker reads Explainer, then the Public records drawing at 24 px directly before the words Public records, over the headline How to ask your town for its meeting minutes, labeled Illustrative.",
+  "alt": "Two size ladders and a kicker at true size. Public records, which is on the list of 41, at 128, 96, 64, 48 and 24 px, with lines of 3.35, 2.51, 1.68, 1.26, 0.63 px. Congress, which is not on the list, at 128, 96, 64 and 48 px, and an empty dashed square where 24 px would be, marked not allowed. Below, a story card labeled Illustrative at its head, whose kicker reads Explainer, then the Public records drawing at 24 px directly before the words Public records, over the headline How to ask your town for its meeting minutes.",
   "illustrative": true,
-  "notes": "Ladder sizes on whole pixels; CL-048 is on the list of 41 (construction file, section 10). The story card's headline is invented and carries the Illustrative label beside it (H03, the editor's pass)."
+  "notes": "Ladder sizes on whole pixels; CL-048 is on the list of 41 (construction file, section 10). The story card is invented and carries one Illustrative label at its head (DR-97, D2-440, CA-S9)."
  },
  "s-10-4-failure": {
   "chapter": "10",
   "rule": "10.4",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. A topics menu at 360 px with a Civic Line drawing at 16 px before each word: Voting, Public meeting, Local government, Healthcare, Education, Childcare. At 16 px each drawing is a gray smudge, and no two can be told apart.",
+  "alt": "Failure case: do not publish. A topics menu at 360 px with a Civic Line drawing at 16 px before each word: Voting, Public meeting, Local government, Healthcare, Education, Childcare. At 16 px each drawing is a gray smudge, and no two can be told apart.",
   "illustrative": false,
   "notes": "Topic symbols at 16 px, which no topic or atlas symbol takes (DR-136)."
  },
@@ -561,7 +561,7 @@
   "chapter": "10",
   "rule": "10.5",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. Local government in its Red-Newsprint edition on a Prussian panel at 96 px, with Newsprint lines and a Pillar Red door.",
+  "alt": "Failure case: do not publish. Local government in its Red-Newsprint edition on a Prussian panel at 96 px, with Newsprint lines and a Pillar Red door.",
   "illustrative": false,
   "notes": "Labeled failure: red on Prussian, which Rule 05.3 never allows.",
   "check_exempt": [
@@ -581,7 +581,7 @@
   "chapter": "10",
   "rule": "10.6",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. Four Civic Line drawings at 64 px in a row with no words: three houses, one with a missing neighbor drawn in dashes, one with a rising chart and one with a grocery bag and a price tag, and a person joined by an arrow to an envelope.",
+  "alt": "Failure case: do not publish. Four Civic Line drawings at 64 px in a row with no words: three houses, one with a missing neighbor drawn in dashes, one with a rising chart and one with a grocery bag and a price tag, and a person joined by an arrow to an envelope.",
   "illustrative": false,
   "notes": "The drawings are CL-053, CL-054, CL-063, CL-061."
  },
@@ -597,7 +597,7 @@
   "chapter": "10",
   "rule": "10.7",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. The same menu with every drawing keeping its red part: the ballot’s edge, the pen, the speaker’s head, the microphone and the speech mark, so the current item, Testify, no longer stands out.",
+  "alt": "Failure case: do not publish. The same menu with every drawing keeping its red part: the ballot’s edge, the pen, the speaker’s head, the microphone and the speech mark, so the current item, Testify, no longer stands out.",
   "illustrative": false,
   "notes": "Labeled failure: five red accents in one row."
  },
@@ -605,16 +605,16 @@
   "chapter": "10",
   "rule": "10.8",
   "width_px": null,
-  "alt": "An atlas list for Domain D02, Elections and representation, shown as a typed chip and its name in words, with no drawing. Under it, the domain’s variables, each with its drawing at 48 px, its chip and its name: Variable B5, Turnout equality; Variable C1, Safe seats; Variable C2, Primary decisiveness; Variable C3, Electoral pressure; Variable C4, Incumbent control of election rules; Variable C5, Sanction applied. Then the reforms that act on them: Reform R-01, All-party primaries with ranked general elections; Reform R-02, Ranked-choice voting for single-winner races.",
+  "alt": "An atlas list for Elections and representation, Domain D02, shown as its name in words and a typed chip, with no drawing. Under it, the domain’s variables, each with its drawing at 48 px, its name and its chip: Turnout equality, Variable B5; Safe seats, Variable C1; Primary decisiveness, Variable C2; Electoral pressure, Variable C3; Incumbent control of election rules, Variable C4; Sanction applied, Variable C5. Then the 10 reforms that act on them, drawn the same way: All-party primaries with ranked general elections, Reform R-01; Ranked-choice voting for single-winner races, Reform R-02; Proportional elections in multi-seat House districts, Reform R-03; Automatic voter registration, Reform R-05; Hold local elections alongside November races, Reform R-06; Public matching for small donations and vouchers, Reform R-07; Participatory budgeting: residents decide spending, Reform R-34; Verifiable elections with paper records and audits, Reform R-45; Expand the House of Representatives, Reform R-46; Fusion voting and public funding for parties, Reform R-47.",
   "illustrative": false,
-  "notes": "Domain membership and reform targets read from the atlas model (work/extract/atlas-v7-data.json).",
+  "notes": "Domain membership and reform targets read from the atlas model (work/extract/atlas-v7-data.json): every reform whose targets include one of the six variables, in the model's order (D2-958).",
   "readable": true
  },
  "s-10-8-failure": {
   "chapter": "10",
   "rule": "10.8",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. A list of three atlas domains, each given a borrowed topic drawing at 48 px: Domain D02, Elections and representation, with the Voting drawing; Domain D03, Money, lobbying and influence, with the Money in politics drawing; Domain D04, Congress, agencies and public services, with the Congress drawing.",
+  "alt": "Failure case: do not publish. A list of three atlas domains, each given a borrowed topic drawing at 48 px: Elections and representation, Domain D02, with the Voting drawing; Money, lobbying and influence, Domain D03, with the Money in politics drawing; Congress, agencies and public services, Domain D04, with the Congress drawing.",
   "illustrative": false,
   "notes": "Domains stay words and typed chips (round 2 brief)."
  },
@@ -622,7 +622,7 @@
   "chapter": "10",
   "rule": "10.9",
   "width_px": null,
-  "alt": "Six groups of drawings for close subjects, each at 64 px with its word and ID, then what tells them apart and their outline likeness at 24 px. Testify and Public meeting: Testify seats one witness at a table below three officials on a raised dais. Public meeting puts a speaker at a lectern in front of residents. Contact an official and Household income: Contact an official runs a line with a speech mark from a person to an official at a desk. Household income runs an arrow from a person to an envelope. Congress and Entrenched majority control: Congress shows the chamber in session under its three-tier rostrum. Entrenched majority control fences the chamber, and a ballot’s arrow stops at the fence. Housing scarcity and Owner home equity and Cost of essentials: All three hold a house. Housing scarcity draws the missing home in dashes between two houses, Owner home equity sets a rising chart against the house, and Cost of essentials puts a grocery bag and a price tag in front of it. Doctrine favoring the appointing coalition and Local government: Doctrine favoring the appointing coalition sets a balance scale before a sealed ruling. Local government is a low town hall with a tall doorway. Public records and Evidence: Both hold a page. Public records lifts it out of an open folder, and Evidence rests a magnifier with a check on it.",
+  "alt": "Six groups of drawings for close subjects, each at 64 px with its word and ID, then what tells them apart and their outline likeness at 24 px. Testify and Public meeting: Testify seats one witness at a table below three officials on a raised dais. Public meeting puts a speaker at a lectern in front of residents. Contact an official and Household income: Contact an official runs a line with a speech mark from a person to an official at a desk. Household income runs an arrow from a person to an envelope. Congress and Entrenched majority control: Congress shows the chamber in session under its three-tier rostrum. Entrenched majority control fences the chamber, and a ballot’s arrow stops at the fence. Housing scarcity and Owner home equity and Cost of essentials: All three hold a house. Housing scarcity draws the missing home in dashes between two houses, Owner home equity sets a rising chart against the house, and Cost of essentials puts a grocery bag and a price tag in front of it. Doctrine favoring the appointing coalition and Local government: Doctrine favoring the appointing coalition sets a balance scale before a sealed ruling. Local government is a low town hall with a tall doorway. Public records and Evidence: Both hold a page. Public records lifts it out of an open folder, and Evidence rests a magnifier with a check on it. Last, a group headed At 24 px only: never two in one view, with five drawings at 24 px in one color: Evidence, Oversight and enforcement, Disclose the original funders of political spending, IRS enforcement of taxes already owed, Verifiable elections with paper records and audits. At 24 px each one draws as a page or a record under a magnifier, and the small marks that tell them apart blur. From 48 px they part: Evidence rests a lens with a check on a page; Oversight and enforcement holds an empty lens over part of a record; Disclose the original funders of political spending sets a dollar sign on the page; IRS enforcement of taxes already owed puts a gauge in the lens over a tax record; and Verifiable elections with paper records and audits sets paper ballots under a lens with a check. Their outline likeness at 24 px runs from 0.80 to 0.96.",
   "illustrative": false,
   "notes": "Likeness from the engineer's icon_likeness_check.js functions on the 124 drawings in use (flag 0.9092, watch 0.8678).",
   "readable": true
@@ -631,7 +631,7 @@
   "chapter": "10",
   "rule": "10.9",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. An Illustrative Act card at 360 px headed Testify on the library budget at the March 10 hearing, with the Public meeting drawing at 64 px and its word: one speaker at a lectern in front of residents. The card asks readers to sign up to speak to the council’s budget committee.",
+  "alt": "Failure case: do not publish. An Illustrative card at 360 px with the kicker Act, How to take part, headed Testify on the library budget at the March 10 hearing, with the Public meeting drawing at 64 px and its word: one speaker at a lectern in front of residents. The card asks readers to sign up to speak to the council’s budget committee.",
   "illustrative": true,
   "notes": "Illustrative: the hearing, its date and its committee are invented."
  },
@@ -693,7 +693,7 @@
   "chapter": "11",
   "rule": "11.1",
   "width_px": 360,
-  "alt": "Three Illustrative bills at 360 px on Newsprint, one above the other, each drawn as six numbered steps with its own key. A state bill, H.99003, Library hours, has passed steps 1 to 5 and stands at step 6: “Step 6 of 6: Governor. Both chambers passed it, and it waits for the governor to sign or veto it.” Its key reads 1 Filed, 2 Hearing, 3 Committee vote, 4 First chamber, 5 Second chamber, 6 Governor. A federal bill, H.R. 99012, Passport wait times, stands at the same place: “Step 6 of 6: President. Both chambers passed it, and it waits for the President to sign or veto it.” Its key ends 6 President. A Nebraska bill, LB 99008, Rural clinic grants, has steps 1 to 4 filled, step 5 as a fine ring under a slash and step 6 as the heavy ring: “Step 6 of 6: Governor. Nebraska has one chamber. The Legislature passed the bill on Final Reading on April 14, and it waits for the governor to sign or veto it.” Its key adds the mark for a step that never happened.",
+  "alt": "Three Illustrative bills at 360 px on Newsprint, one above the other, each drawn as six numbered steps with its own key. A state bill, H.99003, Library hours, has passed steps 1 to 5 and stands at step 6: “Step 6 of 6: Governor. Both chambers passed it, and it waits for the governor to sign or veto it.” Its key reads 1 Filed, 2 Hearing, 3 Committee vote, 4 First chamber, 5 Second chamber, 6 Governor. A federal bill, H.R. 99012, Passport wait times, stands at the same place: “Step 6 of 6: President. Both chambers passed it, and it waits for the President to sign or veto it.” Its key ends 6 President. A Nebraska bill, LB 99008, Rural clinic grants, has steps 1 to 4 done; step 5 never happened, and the bill stands now at step 6: “Step 6 of 6: Governor. Nebraska has one chamber. The Legislature passed the bill on Final Reading on April 14, and it waits for the governor to sign or veto it.” Its key adds the mark for a step that never happened.",
   "illustrative": true,
   "notes": "",
   "fit_switch": false
@@ -702,7 +702,7 @@
   "chapter": "11",
   "rule": "11.1",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. An Illustrative tracker for bill H.99003, Library hours, at 360 px, whose key gives the six steps the clerk’s names: Introduced, Referred, Reported, Engrossed, Enrolled and Presented. It reads “Step 6 of 6: Presented. The enrolled bill went to the executive on February 12.”",
+  "alt": "Failure case: do not publish. An Illustrative tracker for bill H.99003, Library hours, at 360 px, whose key gives the six steps the clerk’s names: Introduced, Referred, Reported, Engrossed, Enrolled and Presented. It reads “Step 6 of 6: Presented. The enrolled bill went to the executive on February 12.”",
   "illustrative": true,
   "notes": "",
   "fit_switch": false
@@ -711,7 +711,7 @@
   "chapter": "11",
   "rule": "11.10",
   "width_px": 360,
-  "alt": "Two Illustrative records requests at 360 px on Newsprint, with a key of the six steps and the marks. Request 99007, Snowplow contract records: Step 3 of 6: Searching. The agency is looking for the records. Waiting on you: on April 2 the agency asked which winters you need. Its 20 working days stop until you answer. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching now; 4 Reviewing not yet; 5 Answered not yet; 6 Appeal not yet. Beside the warning mark: Checked April 20. The agency may have acted since. Request 99009, Jail inspection reports: Upheld on appeal on July 8. The appeal office kept the agency’s answer. The requester took the request to federal court on August 3. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching done; 4 Reviewing done; 5 Answered done; 6 Appeal done.",
+  "alt": "Two Illustrative records requests at 360 px on Newsprint, with a key of the six steps and the marks. Request 99007, Weather station repair records: Step 3 of 6: Searching. The agency is looking for the records. Waiting on you: on April 2 the agency asked which years you need. Its 20 working days stop until you answer. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching now; 4 Reviewing not yet; 5 Answered not yet; 6 Appeal not yet. Beside the warning mark: Checked April 20. The agency may have acted since. Request 99009, Prison inspection reports: Upheld on appeal on July 8. The appeal office kept the agency’s answer. The requester took the request to federal court on August 3. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching done; 4 Reviewing done; 5 Answered done; 6 Appeal done.",
   "illustrative": true,
   "notes": "",
   "fit_switch": false
@@ -720,7 +720,7 @@
   "chapter": "11",
   "rule": "11.10",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. An Illustrative records request, 99007, Snowplow contract records, at 360 px, drawn as seven numbered steps: the fee estimate has become step 4, between Searching and Reviewing. The words read “Step 4 of 7: Fee estimate. The agency sent a fee estimate on April 2.”, and the key lists seven steps.",
+  "alt": "Failure case: do not publish. An Illustrative records request, 99007, Weather station repair records, at 360 px, drawn as seven numbered steps: the fee estimate has become step 4, between Searching and Reviewing. The words read “Step 4 of 7: Fee estimate. The agency sent a fee estimate on April 2.”, and the key lists seven steps.",
   "illustrative": true,
   "notes": "",
   "fit_switch": false
@@ -729,9 +729,9 @@
   "chapter": "11",
   "rule": "11.11",
   "width_px": 360,
-  "alt": "A live report reader at 360 px, Illustrative. A page of the report How a county pays for its roads sits in a frame, with “Page 1 of 12” under it. Two buttons follow, Previous page with the arrow mirrored before its word and Next page with the arrow after it, each 44 px tall. On the first page, Previous page is unavailable: its outline is dashed, and the line under it says “This is the first page.” Two word buttons, Fit width and Full size, change the size of the page; Fit width is pressed, bold and underlined.",
+  "alt": "A live report reader at 360 px, Illustrative. Page 1 of the four-page report How a county pays for its roads sits in a frame: its heading, “Where the money comes from”, and its text, “The county pays for its roads from its share of the state’s fuel tax, from property taxes and from a yearly vehicle fee.” Under it, a status line reads “Page 1 of 4: Where the money comes from”. Two buttons follow, Previous page with the arrow mirrored before its word and Next page with the arrow after it, each 44 px tall. On the first page, Previous page is unavailable: its outline is dashed, and the line under it says “This is the first page.” Two word buttons, Fit width and Full size, change the size of the page; Fit width is pressed, bold and underlined. The other pages are “What a mile of road costs”, “Repairs that wait” and “Who decides the list”.",
   "illustrative": true,
-  "notes": "Live (D2-516). Previous page keeps focus while unavailable, with aria-disabled and its reason through aria-describedby (G-4); the page count is a polite status line (A-9); zoom stays words (DR-154).",
+  "notes": "Live (D2-516). Previous page keeps focus while unavailable, with aria-disabled and its reason through aria-describedby (G-4); the page count and title are a polite status line (A-9, CA-S1); the page itself is readable text (CD-M1); zoom stays words (DR-154).",
   "interactive": true,
   "fit_switch": false
  },
@@ -739,7 +739,7 @@
   "chapter": "11",
   "rule": "11.11",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. An Illustrative report toolbar at 360 px with four buttons that show icons and no words: a left arrow, “1 / 12”, a right arrow, an information mark and four corners. Each button is 32 px square. A pointer hovers over the information mark, and a dark box above it reads “About this report”, the only place the button’s name appears.",
+  "alt": "Failure case: do not publish. An Illustrative report toolbar at 360 px with four buttons that show icons and no words: a left arrow, “1 / 4”, a right arrow, an information mark and four corners. Each button is 32 px square. A pointer hovers over the information mark, and a dark box above it reads “About this report”, the only place the button’s name appears.",
   "illustrative": true,
   "notes": "Picture of a fault: glyph-only buttons, 32 px targets, a name shown only on hover (SC 1.4.13, 2.5.3). The information mark is drawn here as the fault and is no icon of the set (DR-154).",
   "fit_switch": false
@@ -748,7 +748,7 @@
   "chapter": "11",
   "rule": "11.12",
   "width_px": 360,
-  "alt": "The symbol library’s search and filter bar, live at 360 px. A field labeled Search the symbols holds the magnifier before the text; once you type, a cross at its end clears the search, named “Clear the search”. Under it, the Filters button carries the funnel, the words “Filters, 1 on” and a chevron pointing up, since the filters are open, and a word button, Clear filters. The open filters show Kind: Topic, Atlas and Pillar, and Size: Reads at 24 px. Atlas is on, so it carries a check and a heavier outline, and the status line reads “101 of 124 symbols”, with the first three listed by ID and name.",
+  "alt": "The symbol library’s search and filter bar, live at 360 px. A field labeled Search the symbols holds the magnifier before the text; once you type, a cross at its end clears the search, named “Clear the search”. Under it, the Filters button carries the funnel, the words “Filters, 1 on” and a chevron pointing up, since the filters are open, and a word button, Clear filters. The open filters show Kind: Topic, Atlas and Pillar, and Size: Reads at 24 px. Atlas is on, so it carries a check and a heavier outline, and the status line reads “101 of 124 symbols”, with the first three listed by ID and name and a line that says how many more match: “The first three are listed here, and 98 more match.”",
   "illustrative": false,
   "notes": "Live (D2-516). Labels and kinds read from the editor’s label table for chapter 10; the 41 from chapter 10’s construction text, section 10. Chips carry aria-pressed and the Selected check (C-5); the count is a polite status line (A-9); Clear the search is the one glyph-only control (A-4).",
   "interactive": true,
@@ -758,7 +758,7 @@
   "chapter": "11",
   "rule": "11.12",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. An Illustrative report reader at 360 px. Its Previous and Next buttons carry chevrons turned left and right, and below them the row Sources for this page carries the same chevron pointing down, where it opens the row. One drawing turns the page in one place and opens a row in another.",
+  "alt": "Failure case: do not publish. An Illustrative report reader at 360 px. Its Previous and Next buttons carry chevrons turned left and right, and below them the row Sources for this page carries the same chevron pointing down, where it opens the row. One drawing turns the page in one place and opens a row in another.",
   "illustrative": true,
   "notes": "Picture of a fault: the chevron does two jobs in one view (D2-507).",
   "fit_switch": false
@@ -777,7 +777,7 @@
   "chapter": "11",
   "rule": "11.13",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. An Illustrative sentence at 360 px ends with the link “the agency’s rulemaking page”. Its mark for another site, drawn at 24 px inside the sentence, has wrapped onto a line of its own under the words. A note says the link opens a new tab with nothing said about it.",
+  "alt": "Failure case: do not publish. An Illustrative sentence at 360 px ends with the link “the agency’s rulemaking page”. Its mark for another site, drawn at 24 px inside the sentence, has wrapped onto a line of its own under the words. A note says the link opens a new tab with nothing said about it.",
   "illustrative": true,
   "notes": "Picture of a fault: a 24 px mark inside running text, broken from its word, and a new tab with no warning (D2-513).",
   "fit_switch": false
@@ -786,9 +786,9 @@
   "chapter": "11",
   "rule": "11.14",
   "width_px": 360,
-  "alt": "A live loop stepper at 360 px for loop R10 from our systems atlas, “Safe seats shift accountability to small primary electorates”. A box shows the step and its sentence, and starts at “Ready”. Four buttons sit under it, each 44 px tall with its icon beside its word: Play, which turns to Pause while the steps run and to Play again at the end; Reset the loop, with an open circle and one arrowhead; Previous step, with the arrow mirrored; and Next step, with the arrow after its word. At the start, Previous step and Reset are unavailable, and a line says why. Each step names the link and gives the atlas’s sentence for it, starting with “Safe seats raise primary decisiveness.”",
+  "alt": "A live loop stepper at 360 px for loop R1 from our systems atlas, “Wealth and political influence reinforce each other”. A box shows the step and its sentence, and starts at “Ready”. Four buttons sit under it, each 44 px tall with its icon beside its word: Play, which turns to Pause while the steps run and to Play again at the end; Reset the loop, with an open circle and one arrowhead; Previous step, with the arrow mirrored; and Next step, with the arrow after its word. At the start, Previous step and Reset are unavailable, and a line says why. Each step names the connection and gives the atlas’s sentence for it, starting with “Wealth concentration raises money in politics.” Step 2, the one our atlas grades plausible, reads “Money in politics can raise policy tilt to insiders.” and ends “Our atlas grades this step plausible, the least certain in the loop.” Play holds each step about a quarter second a word, from 9 to 12.75 seconds here.",
   "illustrative": false,
-  "notes": "Live (D2-516). Steps from Atlas V7’s loop R10 (chain labels, signs and each link’s plain sentence). Playback starts only on a press (E-3); unavailable controls keep focus with their reason (G-4); the step box is a polite live region (A-9).",
+  "notes": "Live (D2-516). Steps from Atlas V7’s loop R1 (DR-195): chain labels, signs and each connection’s plain sentence; a plausible step takes “can” and its grade (D2-969). Play holds a step 250 ms a word, never under 6 seconds (D2-972), and starts only on a press (E-3); unavailable controls keep focus with their reason (G-4); the step box is a polite live region (A-9).",
   "interactive": true,
   "fit_switch": false
  },
@@ -796,7 +796,7 @@
   "chapter": "11",
   "rule": "11.14",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. The same loop stepper for loop R10, “Safe seats shift accountability to small primary electorates”, at 360 px. Its Start over button carries CL-024, the feedback loop drawing, two arrows that carry a change between two boxes and back, in place of the Reset icon.",
+  "alt": "Failure case: do not publish. The same loop stepper for loop R1, “Wealth and political influence reinforce each other”, at 360 px. Its Start over button carries CL-024, the feedback loop drawing, two arrows that carry a change between two boxes and back, in place of the Reset icon.",
   "illustrative": false,
   "notes": "Picture of a fault: a topic drawing standing for an interface action (D2-515), from the sprite (CL-024 is among the 41 that read at 24 px, one color).",
   "fit_switch": false
@@ -815,7 +815,7 @@
   "chapter": "11",
   "rule": "11.15",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. An Illustrative ZIP code field at 360 px holding four digits, 0217. Under it, red text reads “Invalid” beside a red cross, the Close icon. Nothing says “Error”, which rule the entry broke or how to fix it, and the red text measures 2.96 to 1 on Newsprint.",
+  "alt": "Failure case: do not publish. An Illustrative ZIP code field at 360 px holding four digits, 0217. Under it, red text reads “Invalid” beside a red cross, the Close icon. Nothing says “Error”, which rule the entry broke or how to fix it, and the red text measures 2.96 to 1 on Newsprint.",
   "illustrative": true,
   "notes": "Labeled failure: red text at 2.96 to 1 on Newsprint on purpose, and the cross, which means Close, standing for an error (D2-509).",
   "check_exempt": [
@@ -827,16 +827,16 @@
   "chapter": "11",
   "rule": "11.16",
   "width_px": 360,
-  "alt": "One Illustrative view at 360 px on Newsprint where three marks could claim red. A story card for bill H.99009, All-party primaries, shows six numbered steps with the take-part mark on step 2, its small disc drawn in Charcoal, and the words “You can take part now. Send written testimony by March 3.” Under it, a small figure from our systems atlas draws three linked ovals, Safe seats, Primary decisiveness and Electoral pressure, with Primary decisiveness outlined heavier in Charcoal and the words “Reform R-01 acts here.” Last, an email field holds an error: a red bar at its left and a message on the pale Error Band, “Error: Enter an email address with an @, such as name@example.com.” The error is the only red in the view, and the Remind me button is Charcoal.",
+  "alt": "One view at 360 px on Newsprint where three marks could claim red. An Illustrative story card for bill H.99009, Local news grants, headed “The House hears the local news grants bill on March 3”, shows six numbered steps: step 1 done, step 2 where you can take part now, its small disc drawn in Charcoal, and steps 3 to 6 not yet, with the words “You can take part now. Send written testimony by March 3.” Under it, a small figure from our systems atlas draws two linked ovals, Local news supply and Electoral pressure, with Local news supply outlined heavier in Charcoal and the words “Reform R-32, public and philanthropic funding for local news, acts here. In our atlas, more local news raises electoral pressure, the risk officials face of losing office. It grades the reform’s own effect a hypothesis, since no evaluation has yet shown that such funds improve coverage.” Last, an email field holds an error: a red bar at its left and a message on the pale Error Band, “Error: Enter an email address with an @, such as name@example.com.” The error is the only red in the view, and the Remind me button is Charcoal.",
   "illustrative": true,
-  "notes": "Rule 05.3’s order: an error first, then the step a reader can take, then where a reform acts. The take-part disc and the marker yield to ink with their shapes and words (C-4). The marker follows System 1’s target: the variable’s outline at 3 px.",
+  "notes": "Rule 05.3’s order: an error first, then the step a reader can take, then where a reform acts. The take-part disc and the marker yield to ink with their shapes and words (C-4). The marker follows System 1’s target: the variable’s outline at 3 px. The bill is invented and labeled beside its card; the figure is Atlas V7’s reform R-32 on Variable B2 and connection L26 (D2-958).",
   "fit_switch": false
  },
  "s-11-16-failure": {
   "chapter": "11",
   "rule": "11.16",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. The same Illustrative view, with red in three jobs: the take-part disc on step 2 and the Remind me button, the outline of Primary decisiveness where reform R-01 acts, and the error bar on the email field. The eye has three reds to choose from, and the error that blocks the reader looks no more urgent than the rest.",
+  "alt": "Failure case: do not publish. The same view, with its Illustrative bill card, and with red in three jobs: the take-part disc on step 2 and the Remind me button, the outline of Local news supply where reform R-32 acts, and the error bar on the email field. The eye has three reds to choose from, and the error that blocks the reader looks no more urgent than the rest.",
   "illustrative": true,
   "notes": "Labeled failure: three working-red jobs in one view on purpose (Rule 05.3).",
   "check_exempt": [
@@ -857,7 +857,7 @@
   "chapter": "11",
   "rule": "11.2",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. An Illustrative row of six identical numbered circles that tell their states by hue alone: Verdigris for the three done steps, Prussian for step 4, where the bill is now, and Stone for steps 5 and 6 ahead, with no word for any state. Below it, the same row in grayscale, where the Verdigris and Stone circles print as grays 1.25 to 1 apart.",
+  "alt": "Failure case: do not publish. An Illustrative row of six identical numbered circles that tell their states by hue alone: Verdigris for the three done steps, Prussian for step 4, where the bill is now, and Stone for steps 5 and 6 ahead, with no word for any state. Below it, the same row in grayscale, where the Verdigris and Stone circles print as grays 1.25 to 1 apart.",
   "illustrative": true,
   "notes": "Verdigris against Stone 1.28 to 1 in color; grays #717171 and #626262 measure 1.25 to 1.",
   "fit_switch": false
@@ -866,7 +866,7 @@
   "chapter": "11",
   "rule": "11.3",
   "width_px": 360,
-  "alt": "Three Illustrative bills at 360 px on Newsprint. Bill H.99003, Library hours: all six numbered steps are filled, and the words say “Became law on April 2. It takes effect July 1.” Bill S.99006, Snow route parking: all six steps are filled, and the words say “Became law on March 18, over the governor’s veto. It takes effect June 1.” Bill S.99005, Parking meter fees: steps 1 to 5 are filled, and step 6 is a filled square where the line ends. The words say “Stopped at step 6 of 6: Governor. The governor vetoed it on February 9, and the Senate’s vote to override fell short on February 23.” A key gives the six step names and the Done and Stopped marks.",
+  "alt": "Three Illustrative bills at 360 px on Newsprint. Bill H.99003, Library hours: all six numbered steps are done, and the words say “Became law on April 2. It takes effect July 1.” Bill S.99006, Snow route parking: all six steps are done, and the words say “Became law on March 18, over the governor’s veto. It takes effect June 1.” Bill S.99005, Parking meter fees: steps 1 to 5 are done, and the bill stopped at step 6, where the line ends. The words say “Stopped at step 6 of 6: Governor. The governor vetoed it on February 9, and the Senate’s vote to override fell short on February 23.” A key gives the six step names and the Done and Stopped marks.",
   "illustrative": true,
   "notes": "",
   "fit_switch": false
@@ -875,7 +875,7 @@
   "chapter": "11",
   "rule": "11.3",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. An Illustrative tracker for bill H.99003, Library hours, whose sixth step is named Law. Steps 1 to 5 are filled and step 6 carries the heavy ring, so the words read “Step 6 of 6: Law. Both chambers passed it, and it waits for the governor to sign or veto it.”",
+  "alt": "Failure case: do not publish. An Illustrative tracker for bill H.99003, Library hours, whose sixth step is named Law. Steps 1 to 5 are done and the bill stands now at step 6, so the words read “Step 6 of 6: Law. Both chambers passed it, and it waits for the governor to sign or veto it.”",
   "illustrative": true,
   "notes": "",
   "fit_switch": false
@@ -884,7 +884,7 @@
   "chapter": "11",
   "rule": "11.4",
   "width_px": 360,
-  "alt": "An Illustrative story card at 360 px on Newsprint with the kicker Tracker, State bills, the headline “The House hears the town audit bill on March 10”, and a line on what the bill would do. Under it, bill S.99007, Town audit deadlines, as six numbered steps: steps 1 to 4 filled, step 5 a heavy ring with a small red disc at its upper right, step 6 a fine ring. The words say “Step 5 of 6: Second chamber. The Senate passed it on February 24, and a House committee holds its hearing on March 10.” Beside the same red disc, “You can take part now. Send written testimony or sign up to speak by March 10.”, then the link How to send testimony.",
+  "alt": "An Illustrative story card at 360 px on Newsprint with the kicker Tracker, State bills, the headline “The House hears the town audit bill on March 10”, and a line on what the bill would do. Under it, bill S.99007, Town audit deadlines, as six numbered steps: steps 1 to 4 done, step 5 where you can take part now, marked by the small red disc on its ring, and step 6 not yet. The words say “Step 5 of 6: Second chamber. The Senate passed it on February 24, and a House committee holds its hearing on March 10.” Beside the same red disc, “You can take part now. Send written testimony or sign up to speak by March 10.”, then the link How to send testimony.",
   "illustrative": true,
   "notes": "",
   "fit_switch": false
@@ -893,7 +893,7 @@
   "chapter": "11",
   "rule": "11.4",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. The same Illustrative story card, with the line and the four filled steps drawn in Pillar Red, so red marks how far the bill has come as well as the red disc on step 5 that says you can take part now.",
+  "alt": "Failure case: do not publish. The same Illustrative story card, with the line and the four done steps drawn in Pillar Red, so red marks how far the bill has come as well as the red disc on step 5 that says you can take part now.",
   "illustrative": true,
   "notes": "Labeled failure: red spent on progress as well as the take-part mark (two red jobs), and numbers on red fills that pass only as large text.",
   "check_exempt": [
@@ -916,7 +916,7 @@
   "chapter": "11",
   "rule": "11.5",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. Two Illustrative bills at 360 px on Newsprint, each drawn as six small dots on a line with no numbers or names. H.99001’s second dot is a ring with a red center, and S.99002’s fourth dot is a ring, so a reader counts dots to find the step. The status words sit under each line.",
+  "alt": "Failure case: do not publish. Two Illustrative bills at 360 px on Newsprint, each drawn as six small dots on a line with no numbers or names. H.99001’s second dot is a ring with a red center, and S.99002’s fourth dot is a ring, so a reader counts dots to find the step. The status words sit under each line.",
   "illustrative": true,
   "notes": "",
   "fit_switch": false
@@ -935,7 +935,7 @@
   "chapter": "11",
   "rule": "11.6",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. The same Illustrative page for bill H.99001, Public meeting notice, with a generic stepper from a component library in place of the numbered steps: a filled box with a check for step 1, a box with a dot for step 2 and empty boxes for steps 3 to 6, with no numbers, no state in words and no way to take part.",
+  "alt": "Failure case: do not publish. The same Illustrative page for bill H.99001, Public meeting notice, with a generic stepper from a component library in place of the numbered steps: a filled box with a check for step 1, a box with a dot for step 2 and empty boxes for steps 3 to 6, with no numbers, no state in words and no way to take part.",
   "illustrative": true,
   "notes": "",
   "fit_switch": false
@@ -953,7 +953,7 @@
   "chapter": "11",
   "rule": "11.7",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. An Illustrative tracker for bill H.99001 drawn with 16 px circles and numbers 9 px tall, and a Send testimony link 20 px tall in 11 px type, marked with a dashed outline.",
+  "alt": "Failure case: do not publish. An Illustrative tracker for bill H.99001 drawn with 16 px circles and numbers 9 px tall, and a Send testimony link 20 px tall in 11 px type, marked with a dashed outline.",
   "illustrative": true,
   "notes": "Labeled failure: numbers at 9 px and a link at 11 px, off the scale on purpose and under the 13 px floor.",
   "check_exempt": [
@@ -966,7 +966,7 @@
   "chapter": "11",
   "rule": "11.8",
   "width_px": 360,
-  "alt": "Three Illustrative records requests at 360 px on Newsprint, each drawn as six numbered steps with the bill tracker’s marks, and a key of the six steps, Requested, Acknowledged, Searching, Reviewing, Answered and Appeal, and of the marks. Request 99001, Bridge inspection reports: Step 4 of 6: Reviewing. The agency is deciding what it can release. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching done; 4 Reviewing now; 5 Answered not yet; 6 Appeal not yet. Request 99003, School lunch inspection records: Partly granted on March 3. The agency released 212 of 340 pages and withheld the rest under two exemptions. No appeal was filed by the June 1 deadline. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching done; 4 Reviewing done; 5 Answered done; 6 Appeal never happened. Request 99005, Park ranger staffing records: Withdrawn by the requester on April 9. The requester stopped the request while the agency searched. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching stopped; 4 Reviewing not yet; 5 Answered not yet; 6 Appeal not yet.",
+  "alt": "Three Illustrative records requests at 360 px on Newsprint, each drawn as six numbered steps with the bill tracker’s marks, and a key of the six steps, Requested, Acknowledged, Searching, Reviewing, Answered and Appeal, and of the marks. Request 99001, Bridge inspection reports: Step 4 of 6: Reviewing. The agency is deciding what it can release. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching done; 4 Reviewing now; 5 Answered not yet; 6 Appeal not yet. Request 99003, Food safety inspection records: Partly granted on March 3. The agency released 212 of 340 pages and withheld the rest under two exemptions. No appeal was filed by the June 1 deadline. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching done; 4 Reviewing done; 5 Answered done; 6 Appeal never happened. Request 99005, Park ranger staffing records: Withdrawn by the requester on April 9. The requester stopped the request while the agency searched. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching stopped; 4 Reviewing not yet; 5 Answered not yet; 6 Appeal not yet.",
   "illustrative": true,
   "notes": "",
   "fit_switch": false
@@ -975,7 +975,7 @@
   "chapter": "11",
   "rule": "11.8",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. An Illustrative records request, 99005, Park ranger staffing records, at 360 px: steps 1 and 2 filled and a square at step 3, Searching, where the line ends. The words read “Full denial for reasons other than exemptions. The agency closed the request on April 9.” The requester withdrew it, and nothing on the card says so.",
+  "alt": "Failure case: do not publish. An Illustrative records request, 99005, Park ranger staffing records, at 360 px: steps 1 and 2 done, and the request stopped at step 3, Searching, where the line ends. The words read “Full denial for reasons other than exemptions. The agency closed the request on April 9.” The requester withdrew it, and nothing on the card says so.",
   "illustrative": true,
   "notes": "",
   "fit_switch": false
@@ -993,7 +993,7 @@
   "chapter": "11",
   "rule": "11.9",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. An Illustrative agency rule, 99004, Grain dust limits, at 360 px: step 1 under a slash and steps 2 to 6 filled, so Proposed, Comments open and Comments closed all read as done. The words read “In effect since August 1. The agency published the final rule on August 1.” The agency issued it without asking for comment first, and nothing on the card says so.",
+  "alt": "Failure case: do not publish. An Illustrative agency rule, 99004, Grain dust limits, at 360 px: step 1 never happened and steps 2 to 6 are drawn as done, so Proposed, Comments open and Comments closed all read as steps that happened. The words read “In effect since August 1. The agency published the final rule on August 1.” The agency issued it without asking for comment first, and nothing on the card says so.",
   "illustrative": true,
   "notes": "",
   "fit_switch": false
@@ -1021,16 +1021,25 @@
   "chapter": "11",
   "rule": null,
   "width_px": null,
-  "alt": "The three marks at true size, each in its message. Error: a circle holding an exclamation mark, in ink, on the pale Error Band with a 4 px red bar at its left, beside “Error: Enter a ZIP code with five digits.” Success: a check leaving an open circle, in Verdigris, beside “You’re signed up. We’ll email you on March 1.” Warning: a triangle holding an exclamation mark, in ink, with a 4 px Charcoal bar, beside “Checked April 20. The agency may have acted since.”",
+  "alt": "The three marks at true size, each in its Illustrative message. Error: a circle holding an exclamation mark, in ink, on the pale Error Band with a 4 px red bar at its left, beside “Error: Enter a ZIP code with five digits.” Success: a check leaving an open circle, in Verdigris, beside “You’re signed up. We’ll email you on March 1.” Warning: a triangle holding an exclamation mark, in ink, with a 4 px Charcoal bar, beside “Checked April 20. The agency may have acted since.”",
   "illustrative": true,
   "notes": "A readable list (D2-255). The error’s red is the bar; the mark draws in ink (see notes).",
+  "readable": true
+ },
+ "s-11-marks-drawn": {
+  "chapter": "11",
+  "rule": null,
+  "width_px": null,
+  "alt": "Drawing the marks: a table of each mark, how to draw it at the four circle sizes, its line or size token and its color token. Done: A filled circle as wide as the step, its number in the surface color. Now: A ring as wide as the step, its 3 px line drawn inside the edge, filled with the surface. Its number in Inter 700, in ink. You can take part now: The Now ring with an 11 px disc. The disc’s center sits 0.72 of the circle’s radius right of and above the circle’s center, at 45 degrees: 8.64, 9.36, 10.08 and 10.8 px. A 1 px Charcoal keyline sits inside the disc’s edge, and 1.5 px of the surface is cut around it. Not yet: A ring as wide as the step, its 1.5 px line drawn inside the edge, filled with the surface. Its number in Inter 600, in the secondary text color. Never happened: The Not yet ring under a 2 px slash in ink at 45 degrees, from lower left to upper right through the center. The slash is 4 px longer than the circle is wide, 28, 30, 32 and 34 px, so it runs 2 px past the ring at each end. Halo: On a step that never happened, a 4 px stroke in the surface color painted under the number, which shows 2 px around each figure and parts it from the slash. Stopped: A filled square 2 px narrower than the circle, 22, 24, 26 and 28 px, centered where the circle would be. Its number in the surface color. The line ends here. Line reached: A 2 px bar centered on the circles, from step to step as far as the record has come. It runs into a step that never happened, the last step included, since the record moved past it. Line ahead: A 1 px bar from the current step to the next one and on. After a stopped step, no line. Numbers: Inter at 13 px in circles of 24 and 26 px and 14 px from 28 px, tabular figures, centered, with the baseline 0.36 of the type size below the circle’s center.",
+  "illustrative": false,
+  "notes": "A readable table (D2-255) for PP-M1. Every figure is computed from node() and line_segments().",
   "readable": true
  },
  "s-11-menu": {
   "chapter": "11",
   "rule": null,
   "width_px": 360,
-  "alt": "A live phone menu at 360 px. The bar names the chapter, 11 Status and utility icons, and holds a Menu button with three bars before the word. Menu opens a panel over the page, In this chapter, which holds focus until Close the menu, with its cross, or the Escape key shuts it; focus then returns to Menu. The panel lists the chapter’s four groups as rows, each with a chevron that points down while the row is closed and up while it is open, and each opens to links to its rules.",
+  "alt": "A live phone menu at 360 px. The bar names the chapter, 11 Status and utility icons, and holds a Menu button with three bars before the word. Menu opens a panel over the page, In this chapter, which holds focus until Close the menu, with its cross, or the Escape key shuts it; focus then returns to Menu. The panel lists the chapter’s four groups as rows, each with a chevron that points down while the row is closed and up while it is open, and each opens to links to its rules. The panel’s bar, with Close the menu, stays at its top while the list scrolls under it.",
   "illustrative": false,
   "notes": "Live (D2-516): the dialog holds focus, Escape and Close return focus to Menu (G-3); the page behind it is inert while it is open.",
   "interactive": true,
@@ -1049,7 +1058,7 @@
   "chapter": "12",
   "rule": "12.6",
   "width_px": 358,
-  "alt": "An Illustrative chart on a 358 px phone. Its title reads Most claims in these three chapters rest on the record, and its measure line reads Claims in each chapter of a report, by the grade of their evidence. Above the plot, a key names the five grades in the order their segments run, each with a swatch drawn in the chart’s own mark: Documented, on the public record, solid ink; Well supported, strong research evidence, gray; Plausible, some evidence, light gray; Contested, evidence disputed, a hatch; Hypothesis, not yet tested, a dotted outline. Three stacked bars follow, each named at its left and with its total at its end: Wages 15, Housing 13, Elections 11.",
+  "alt": "An Illustrative chart on a 358 px phone. Its title reads Most claims in these three chapters are documented or well supported, and its measure line reads Claims in each chapter of a report, by the grade of their evidence. Above the plot, a key names the five grades in the order their segments run, each with a swatch drawn in the chart’s own mark: Documented, on the public record, solid ink; Well supported, strong research evidence, gray; Plausible, some evidence, light gray; Contested, evidence disputed, a hatch; Hypothesis, not yet tested, a dotted outline. Three stacked bars follow, each named at its left and with its total at its end: Wages 15, Housing 13, Elections 11.",
   "illustrative": true,
   "notes": "Grade marks from the chart system's GRADE_TABLE (01 Explainer, DR-52), colors and line weights from the chart tokens; key swatches 14 px with a 7 px gap, as the chart system's key_item draws them."
  },
@@ -1057,7 +1066,7 @@
   "chapter": "12",
   "rule": "12.6",
   "width_px": 358,
-  "alt": "Labeled Failure case: do not publish. The same Illustrative chart titled Claims by grade, with no measure line and no totals, its segments in five blues and greens. A boxed legend sits under the plot at the right, listing the grades from Hypothesis to Documented, the reverse of the bars, each beside a small colored dot.",
+  "alt": "Failure case: do not publish. The same Illustrative chart titled Claims by grade, with no measure line and no totals, its segments in five blues and greens. A boxed legend sits under the plot at the right, listing the grades from Hypothesis to Documented, the reverse of the bars, each beside a small colored dot.",
   "illustrative": true,
   "notes": "Labeled failure: a detached legend in reverse order, dots that match no mark, hue alone for the grades (Prussian and Verdigris tie in grayscale), no unit.",
   "check_exempt": [
@@ -1068,7 +1077,7 @@
   "chapter": "12",
   "rule": "12.8",
   "width_px": 600,
-  "alt": "An exploded view of our systems atlas at 600 px: three flat planes stacked one above another and drawn at a slant, joined by dotted ties. Each plane carries one tile for each of its parts, and each name sits flat and upright to the right of its plane, never on the slant. From the top: Power and accountability, holding Economic structure, Political inputs, Electoral competition, Governing institutions, Legitimacy, Outside drivers; How the economy reaches a household, holding Production and income, Household budgets and wealth, Credit, trade and environment; Technology and its effects, holding Technology mechanisms. The top plane, the core, has the heavier outline.",
+  "alt": "An exploded view of our systems atlas at 600 px: three flat planes stacked one above another and drawn at a slant, joined by dotted ties. Each plane carries one tile for each of its parts, and each name sits flat and upright to the right of its plane, never on the slant. From the top: Power and accountability, holding Wealth, Voice, Elections, Checks, Policy, Outside forces; How the economy reaches a household, holding Production and income, Household budgets and wealth, Credit, trade and environment; Technology and its effects, holding Technology mechanisms. The top plane, the core, has the heavier outline.",
   "illustrative": false,
   "notes": "Layers, titles and regions read from the atlas model; the slant is the one place an exploded view is allowed (isometric study 03).",
   "height_px": 368
@@ -1077,7 +1086,7 @@
   "chapter": "12",
   "rule": "12.8",
   "width_px": 600,
-  "alt": "Labeled Failure case: do not publish. The same three planes with no parts and no ties, each layer’s name set inside its plane, turned and slanted to follow the plane, so every name reads at an angle.",
+  "alt": "Failure case: do not publish. The same three planes with no parts and no ties, each layer’s name set inside its plane, turned and slanted to follow the plane, so every name reads at an angle.",
   "illustrative": false,
   "notes": "Labeled failure: labels on the oblique, which the exploded view never takes."
  },
@@ -1085,16 +1094,16 @@
   "chapter": "12",
   "rule": "12.7",
   "width_px": 360,
-  "alt": "Two view headers on a 360 px phone, each with a small locator at its right, drawn in ink. The first, from the atlas, reads Overview, Elections, over the title How safe seats move the real choice to the primary; its locator is the atlas in small, a bar for outside forces, five boxes for its parts and two boxes below, with the third box, Elections, filled Charcoal. The second, a state story, reads Tracker, Nebraska, over the title Nebraska has one chamber, so a bill’s fifth step never comes; its locator is the 50-state tile grid with Nebraska filled Charcoal and every other state light gray.",
-  "illustrative": false,
-  "notes": "The atlas locator is System 1's locator() geometry (DR-36), redrawn on Newsprint (DR-53); the state grid is the chart system's tile grid. Nebraska's line is Rule 11's (DR-150)."
+  "alt": "Two Illustrative view headers on a 360 px phone, each with a small locator at its right, drawn in ink. The first, from the atlas, reads Overview, Elections, over the title How safe seats move the real choice to the primary; its locator is the atlas in small, a bar for outside forces, five boxes for its parts and two boxes below, with the third box, Elections, filled Charcoal. The second, a state story, reads Tracker, Nebraska, over the title Nebraska has one chamber, so a bill’s fifth step never comes; its locator is the 50-state tile grid with Nebraska filled Charcoal and every other state light gray.",
+  "illustrative": true,
+  "notes": "The atlas locator is System 1's locator() geometry (DR-36), redrawn on Newsprint (DR-53); the state grid is the chart system's tile grid at 8 px a tile (CA-S12). Nebraska's line is Rule 11's (DR-150). Both headlines are invented, so one Illustrative label heads the plate (BE-S5, CD-S13)."
  },
  "s-12-locator-failure": {
   "chapter": "12",
   "rule": "12.7",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. The atlas view header, with the locator’s current box, Elections, filled Pillar Red.",
-  "illustrative": false,
+  "alt": "Failure case: do not publish. The Illustrative atlas view header, with the locator’s current box, Elections, filled Pillar Red.",
+  "illustrative": true,
   "notes": "Labeled failure: the locator spends the view's red on \"you are here\", which takes it from the reform target, the error or the ask (Rule 05.3, Rule 11.16).",
   "check_exempt": [
    "red"
@@ -1112,7 +1121,7 @@
   "chapter": "12",
   "rule": "12.5",
   "width_px": 600,
-  "alt": "Labeled Failure case: do not publish. The same step, with Primary decisiveness outlined in Pillar Red and a note that says red marks the problem: primaries that settle the seat. No reform is named.",
+  "alt": "Failure case: do not publish. The same step, with Primary decisiveness outlined in Pillar Red and a note that says red marks the problem: primaries that settle the seat. No reform is named.",
   "illustrative": false,
   "notes": "Labeled failure: red spent on a problem, which System 1 never does (\"It never marks a problem or a bad step\"), and a judgment in the note.",
   "check_exempt": [
@@ -1123,16 +1132,16 @@
   "chapter": "12",
   "rule": "12.9",
   "width_px": null,
-  "alt": "A frame titled Who owns the next step?, for a federal records request, in four numbered steps. Each step names who acts, what they do, and who owns the next step, with the clock that runs. Step 1: You. Send a written request that describes the records you want to the agency’s records office. Next step: The agency’s records office. Twenty working days to decide whether to release the records, from the day the request arrives. Step 2: The agency’s records office. Confirms the request with a tracking number, searches for the records, reviews them, blacking out what an exemption protects, and sends a written answer with the records it can release. Next step: You. At least 90 days to appeal a refusal or a partial answer. Step 3: You. If you appeal, write to the agency’s appeal office. Next step: The agency’s appeal office. Twenty working days to decide the appeal. Step 4: The agency’s appeal office. Reviews the answer and decides whether to release more. Next step: You, again. Ask the National Archives’ records ombudsman to mediate, or sue in federal court. Source: 5 U.S.C. 552, the Freedom of Information Act, sections (a)(6)(A), (h)(3) and (a)(4)(B), and FOIA.gov, “Frequently Asked Questions”, Office of Information Policy, U.S. Department of Justice, both retrieved November 9, 2026. Federal agencies only; states set their own records laws.",
+  "alt": "A frame titled Who owns the next step?, for a federal records request, in four numbered steps. Each step names who acts, what they do, and who owns the next step, with the deadline the law sets. Step 1: You. Send a written request that describes the records you want to the agency’s records office. Next step: The agency’s records office. Twenty working days to decide whether to release the records, from the day the request arrives. Step 2: The agency’s records office. Confirms the request with a tracking number, searches for the records, reviews them, blacking out what an exemption protects, and sends a written answer with the records it can release. Next step: You. At least 90 days to appeal a refusal or a partial answer. Step 3: You. If you appeal, write to the agency’s appeal office. Next step: The agency’s appeal office. Twenty working days to decide the appeal. Step 4: The agency’s appeal office. Reviews the answer and decides whether to release more. Next step: You, again. Ask the National Archives’ records ombudsman to mediate, or sue in federal court. Sources: 5 U.S.C. 552, the Freedom of Information Act, sections (a)(6)(A), (h)(3) and (a)(4)(B), as in force on November 9, 2026, via the Legal Information Institute, Cornell Law School; and FOIA.gov, “Frequently Asked Questions”, Office of Information Policy, U.S. Department of Justice, no page date; both retrieved November 9, 2026. Federal agencies only; states set their own records laws.",
   "illustrative": false,
-  "notes": "V4.2's frame (\"Give every handoff an owner.\"), with the clocks and routes from the research notes, section 7A (5 U.S.C. 552(a)(6)(A), (a)(6)(A)(ii), (h)(3), (a)(4)(B)).",
+  "notes": "V4.2's frame (\"Give every handoff an owner.\"), with the deadlines and routes from the research notes, section 7A (5 U.S.C. 552(a)(6)(A), (a)(6)(A)(ii), (h)(3), (a)(4)(B)).",
   "readable": true
  },
  "s-12-owner-failure": {
   "chapter": "12",
   "rule": "12.9",
   "width_px": 360,
-  "alt": "Labeled Failure case: do not publish. A flow chart titled How a records request works: five boxes joined by arrows, reading Request submitted, Request processed, Records reviewed, Response issued and Appeal considered, with no one named in any box and no clock.",
+  "alt": "Failure case: do not publish. A flow chart titled How a records request works: five boxes joined by arrows, reading Request submitted, Request processed, Records reviewed, Response issued and Appeal considered, with no one named in any box and no deadline.",
   "illustrative": false,
   "notes": "Labeled failure: every step in the passive voice, so no step says who acts or whom to call."
  }

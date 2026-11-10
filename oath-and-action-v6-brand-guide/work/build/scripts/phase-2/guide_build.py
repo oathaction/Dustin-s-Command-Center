@@ -40,6 +40,7 @@ import io
 import json
 import re
 import sys
+import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[4]
@@ -345,6 +346,21 @@ class Tokens:
         # tokens.css as a download from the page (RP-M3), with a dated, descriptive file name
         self.download_name = "20261106_Oath-And-Action-Tokens.css"
         self.download_uri = ("data:text/css;charset=utf-8;base64," + base64.b64encode(self.css_text.encode()).decode()) if self.css_text else ""
+        # Round 3 (DR-192, D2-964): the published page saves through the host, whose save call refuses a .css name and
+        # takes a .zip. The build packs tokens.css alone in a zip, byte for byte, dated as the file name is, so the same
+        # tokens give the same bytes on every build; the shell's script hands those bytes to the host on a click.
+        self.zip_name = "20261106_Oath-And-Action-Tokens.zip"
+        self.zip_b64 = base64.b64encode(self.zip_bytes()).decode() if self.css_text else ""
+
+    def zip_bytes(self):
+        buf = io.BytesIO()
+        with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
+            info = zipfile.ZipInfo("tokens.css", date_time=(2026, 11, 6, 0, 0, 0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o644 << 16
+            info.create_system = 3
+            z.writestr(info, self.css_text.encode(), compresslevel=9)
+        return buf.getvalue()
 
     @property
     def final(self):
@@ -980,6 +996,9 @@ def render_rule(ch_num, r, specs, tokens, ctx, amp_svg, demo=False):
 # instruction line; its title must stay this one.
 APPENDIX_TITLE = "Identity proofs"
 APPENDIX_LINE = "See today’s wordmark in use at actual size, and the new stacked lockup beside the one it replaces."
+# The tokens.css button's words on each path (D2-964): the plain file where no host answers, the zip through the host
+DL_CSS_WORDS = "Download tokens.css"
+DL_ZIP_WORDS = "Download tokens.css in a zip file"
 FILES_NOTE = "Download buttons arrive with the asset package. Until then, ask the editor for any file listed here."   # D2-252
 LATER = "Coming later"   # CP-S3
 
@@ -1253,7 +1272,7 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
                        f"their clamps, and the four surface classes.</p>")
             # Round 2 (November 10, 2026): the page carries tokens.css as a download once, in the colophon; each chapter's
             # button is a link to it, which the shell's script turns into the download (without script, it lands there)
-            dl = '<a class="btn" href="#tokens-download" data-oa-download="tokens-download">Download tokens.css</a>'
+            dl = f'<a class="btn" href="#tokens-download" data-oa-download="tokens-download">{DL_CSS_WORDS}</a>'
         else:
             css_lines = []
             for name, d in tok_rows.items():
@@ -1980,7 +1999,10 @@ def build(args):
     # C-S10, RP-S10: each arrow stays with the pillar after it, so the line breaks whole
     arr = '<span class="arr" aria-hidden="true">→</span>'
     pillars = LOCKED["pillars"][0] + "".join(f' <span class="nw">{arr} {p}</span>' for p in LOCKED["pillars"][1:])
-    dl_tokens = (f' <a id="tokens-download" href="{tokens.download_uri}" download="{tokens.download_name}">Download tokens.css</a>.' if tokens.final else "")
+    # The colophon's link is the page's one copy of tokens.css. data-oa-zip holds the zip the shell offers through the
+    # host where one answers (DR-192, D2-964), and the two data-oa-*-words say what the button gives on each path.
+    dl_tokens = (f' <a id="tokens-download" href="{tokens.download_uri}" download="{tokens.download_name}" data-oa-zip="{tokens.zip_b64}" '
+                 f'data-oa-zip-name="{tokens.zip_name}" data-oa-css-words="{DL_CSS_WORDS}" data-oa-zip-words="{DL_ZIP_WORDS}">{DL_CSS_WORDS}</a>.' if tokens.final else "")
 
     page = f"""<!doctype html>
 <html lang="en">

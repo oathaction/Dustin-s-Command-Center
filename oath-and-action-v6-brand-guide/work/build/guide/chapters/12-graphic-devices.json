@@ -6,7 +6,7 @@
   "instruction": "Add dividers, frames, markers and watermarks only where they help someone read.",
   "intro": [
     "A graphic device is a mark that helps a reader find their way: a divider between sections, a watermark, a marker on the place a reform acts, a key, a locator, a frame around a process. Each one has a job, and the page leaves it out where that job is already done.",
-    "Rules 12.1 to 12.4 cover the devices that divide and sign a page: hairlines, watermarks, the compact signature and two patterns drawn from the hinge. Rules 12.5 to 12.9 cover the devices that explain a system: the intervention marker, chart keys, locators, the layer diagram and the frame that names who owns each step."
+    "Rules 12.1 to 12.4 cover the devices that divide and sign a page: hairlines, watermarks, the monogram as a small signature and a pattern drawn from the hinge. Rules 12.5 to 12.9 cover the devices that explain a system: the intervention marker, which shows where a reform acts, chart keys, locators, the layer diagram and the frame that names who owns each step."
   ],
   "rules": [
     {
@@ -20,7 +20,7 @@
         "oa.space.300"
       ],
       "why": {
-        "text": "A hairline separates two sections without weight, so the words carry the structure and the page stays calm. In our atlas a dashed line marks a plausible link, so a dashed divider would read as a claim about the evidence. A hairline carries no meaning, so it needs no contrast ratio (Rule 05.5).",
+        "text": "A hairline separates two sections without weight, so the words carry the structure and the page stays calm. In our atlas a dashed line marks a connection graded plausible, so a dashed divider would read as a claim about the evidence. A hairline carries no meaning, so it needs no contrast ratio (Rule 05.5).",
         "basis": "Design judgment, carried from our fifth edition’s Stone hairlines"
       },
       "correct": {
@@ -29,7 +29,7 @@
       },
       "failure": {
         "specimen": "s-12-divider-failure",
-        "caption": "The same article divided by dashed lines. The breaks now read as a key’s mark for a plausible link, and the turn to the reader’s step loses its divider."
+        "caption": "The same article divided by dashed lines. The breaks now read as the atlas’s mark for a plausible connection, and the turn to the reader’s step loses its divider."
       },
       "specs": [
         {
@@ -82,7 +82,7 @@
       },
       "correct": {
         "specimen": "s-12-watermark-correct",
-        "caption": "A report page on Newsprint and a section opener on Charcoal at true size, each with B in its open right margin, running off the edge."
+        "caption": "A report page on Newsprint and a section opener on Charcoal at true size, each with B in its open right margin, running off the right edge, which cuts through B’s loop and crossing stroke."
       },
       "failure": {
         "specimen": "s-12-watermark-failure",
@@ -108,6 +108,10 @@
           "value": "At least half the page’s height; it may run off any edge"
         },
         {
+          "label": "Crop",
+          "value": "Where an edge cuts B, it cuts through strokes the eye can follow, with no piece of B left alone at the edge and no curve grazing it (Rule 04.8)"
+        },
+        {
           "label": "Place",
           "value": "An open margin of a report page or a section opener"
         },
@@ -124,7 +128,7 @@
         "05",
         "24"
       ],
-      "builders": "Set the opacity on the mark from its token, and place the mark in its own layer, outside the text column and hidden from assistive technology."
+      "builders": "Set the opacity on the mark from its token, and place the mark in its own layer, outside the text column and hidden from assistive technology. Move it until every part of B inside the page joins the rest of the letter."
     },
     {
       "id": "12.3",
@@ -181,41 +185,37 @@
     },
     {
       "id": "12.4",
-      "title": "Use a pattern only in an open area, away from words.",
-      "rule": "Two patterns, both drawn from the hinge, may give a cover, an opener or a social background texture. The hinge arcs spread from a corner at the radii of the hinge diagram’s ring and arcs, carried on in equal steps. The hinge rules repeat the hinge divider’s line every 12 px. Each runs 1 px in the surface’s hairline color, covers no more than 12 percent of the area it fills, and stops short of any words, figure or control.",
+      "title": "Use the hinge arcs only in an open area, away from words.",
+      "rule": "One pattern, the hinge arcs, may give texture to a cover, an opener or the background of a social card. Its arcs spread from a corner at the radii of the hinge diagram’s ring and arcs, carried on in equal steps, and end inside a quarter circle, so none is cut off flat. They run 1 px in the surface’s hairline color, cover no more than 12 percent of the area they fill, and stop at least 24 px short of any words, figure or control.",
       "tokens": [
         "oa.color.border.hairline.onNewsprint",
         "oa.border.width.hairline"
       ],
       "why": {
-        "text": "A pattern gives an empty area texture without a picture, and drawn from the hinge it adds no new shape for a reader to learn. Behind words, even a faint pattern adds edges the eye has to sort from the letters, so it stays where nothing is read. The arcs cover 5.5 percent of their area and the rules 8.3 percent.",
-        "basis": "Design judgment and our measurements, October and November 2026; the 12 percent ceiling is a studio threshold"
+        "text": "A pattern gives an empty area texture without a picture, and drawn from the hinge it adds no new shape for a reader to learn. Behind words, even a faint pattern adds edges the eye has to sort from the letters, so it stays where nothing is read. The arcs cover 5.5 percent of the area they fill.",
+        "basis": "Design judgment and our measurements, October and November 2026; the 12 percent ceiling is our design judgment"
       },
       "correct": {
         "specimen": "s-12-pattern-correct",
-        "caption": "Two report covers at true size, the title at top left, one with the hinge arcs spreading from the bottom right corner and one with a block of hinge rules in the lower right."
+        "caption": "A report cover at true size, the title at top left and the hinge arcs spreading from the bottom right corner, clear of the words."
       },
       "failure": {
         "specimen": "s-12-pattern-failure",
-        "caption": "The same covers with each pattern behind the title and the paragraph. The lines cross the letters and the words lose their clean ground."
+        "caption": "The same cover with the arcs behind the title and the paragraph. The lines cross the letters and the words lose their clean ground."
       },
       "specs": [
         {
           "label": "Hinge arcs",
-          "value": "Circles from a corner at 2, 3, 4 and more steps of 16 px, 1 px wide"
-        },
-        {
-          "label": "Hinge rules",
-          "value": "1 px lines every 12 px"
+          "value": "Circles from a corner at 2, 3, 4 and more steps of 16 px, 1 px wide, ending inside a quarter circle as wide as the area’s shorter side"
         },
         {
           "label": "Color",
-          "value": "The surface’s hairline color: Stone on Newsprint, White and Charcoal; no pattern on Prussian",
+          "value": "The surface’s hairline color: Stone on Newsprint, White and Charcoal; never on Prussian",
           "token": "oa.color.border.hairline.onNewsprint"
         },
         {
           "label": "Coverage",
-          "value": "At most 12 percent of the area the pattern fills, measured on a render"
+          "value": "At most 12 percent of the area the arcs fill, measured on a render"
         },
         {
           "label": "Clearance",
@@ -223,7 +223,7 @@
         },
         {
           "label": "Never",
-          "value": "Behind words; in red; dotted or dashed; with a watermark or a crop of B in the same view"
+          "value": "Behind words; in red; dotted or dashed; as evenly ruled lines, which read as a form to fill in; with a watermark or a crop of B in the same view"
         }
       ],
       "files": [],
@@ -232,16 +232,17 @@
         "05",
         "07"
       ],
-      "builders": "Draw a pattern as an SVG in the hairline token, sized to the open area it fills, and keep it out of the layer that holds the words."
+      "builders": "Draw the arcs as an SVG in the hairline token, sized to the open area they fill, and keep it out of the layer that holds the words."
     },
     {
       "id": "12.5",
       "title": "Mark where a reform acts with the atlas’s red target, and with nothing else in red.",
       "rule": [
-        "Where a figure shows a reform at work, the marks it acts on turn Pillar Red at the heavier selected weight: each connection it changes, with its arrowhead, and the outline of each condition it targets. On Newsprint a red connection carries a 1 px Charcoal edge. A note beside the figure names the reform and says that it acts where the marks turn red.",
+        "Where a figure shows a reform at work, the marks it acts on turn Pillar Red at a heavier weight: each connection it changes, the arrow from one variable to another, with its arrowhead, and the outline of each variable it targets. On Newsprint a red connection carries a 1 px Charcoal edge. A note beside the figure names the reform and says that it acts where the marks turn red.",
         "The marker is the view’s one working red. When an error or a step the reader can take now shares the view, the marker yields as Rule 11.16 sets out: its marks stay heavier, in ink, and the note still names the reform."
       ],
       "tokens": [
+        "oa.color.data.emphasisRed.onNewsprint",
         "oa.color.data.emphasis.onNewsprint",
         "oa.color.graphic.essential.onNewsprint"
       ],
@@ -253,7 +254,7 @@
       },
       "correct": {
         "specimen": "s-12-marker-correct",
-        "caption": "Reform R-01 on one step of the safe-seat loop: in red when it holds the view’s red, then in ink when an error does."
+        "caption": "Reform R‑01, all-party primaries with ranked general elections, on one step of Loop R10, the safe-seat loop: in red when it holds the view’s red, then in ink when an error does."
       },
       "failure": {
         "specimen": "s-12-marker-failure",
@@ -262,7 +263,8 @@
       "specs": [
         {
           "label": "Target weight",
-          "value": "Connections 4 px, condition outlines 3 px; arrowheads and sign tags at the 6 px sizes"
+          "value": "Pillar Red: connections 4 px, variable outlines 3 px; arrowheads and sign tags at the 6 px sizes",
+          "token": "oa.color.data.emphasisRed.onNewsprint"
         },
         {
           "label": "Edge on Newsprint",
@@ -271,7 +273,7 @@
         },
         {
           "label": "Note",
-          "value": "“Reform R-01, …, acts where the marks turn red.”"
+          "value": "“Reform R‑01, …, acts where the marks turn red.”"
         },
         {
           "label": "Yielded",
@@ -295,7 +297,7 @@
       "id": "12.6",
       "title": "Label marks where they sit, and set a key above the chart only for what labels cannot carry.",
       "rule": [
-        "Name each line, bar or point beside it where the label fits. When a chart codes something a label cannot carry on every mark, such as the evidence grade of each segment, set a key above the plot. List its items in the order the marks run, draw each swatch in the chart’s own mark, give each its word and meaning, and name the unit in the measure line."
+        "Name each line, bar or point beside it where the label fits. When a chart codes something a label cannot carry on every mark, such as the evidence grade of each segment, set a key above the plot. List its items in the order the marks run, draw each swatch in the chart’s own mark, give each its word and meaning, and name the unit in the measure line, the line under a chart’s title that says what is counted and in what unit."
       ],
       "tokens": [
         "oa.chart.color.subject.onNewsprint",
@@ -311,7 +313,7 @@
       },
       "correct": {
         "specimen": "s-12-key-correct",
-        "caption": "A key above a phone chart, in the order the segments run, each swatch drawn as its mark."
+        "caption": "A key above a phone chart, in the order the segments run, each swatch drawn as its mark. The title says only what the counts show: 28 of the 39 claims are documented or well supported."
       },
       "failure": {
         "specimen": "s-12-key-failure",
@@ -329,7 +331,7 @@
         },
         {
           "label": "Grade marks",
-          "value": "Documented solid ink, Well supported gray, Plausible light gray, Contested a hatch, Hypothesis a dotted outline"
+          "value": "In bars and areas, Documented solid ink, Well supported gray, Plausible light gray, Contested a hatch, Hypothesis a dotted outline; a connection in the atlas takes Rule 10.10’s line textures"
         },
         {
           "label": "Place",
@@ -352,7 +354,7 @@
       "title": "Show where a view sits in the whole with a small locator in ink.",
       "rule": [
         "A view that shows part of a larger whole carries a locator at its top right: the whole in small, with the current part filled in Charcoal and the rest in a light ground. In the atlas, the locator draws the atlas’s parts and links back to the overview. In a state story it is the 50-state tile grid.",
-        "The locator stays in ink and never takes red."
+        "Draw the locator in ink, with no red."
       ],
       "tokens": [
         "oa.color.graphic.essential.onNewsprint",
@@ -360,13 +362,13 @@
       ],
       "why": {
         "text": [
-          "A reader who arrives from a search lands in the middle of the system. A locator answers where am I before the reader asks, and the same small map on every view teaches its shape. Kept to ink, it never competes with the red that marks a reform, an error or a step to take."
+          "A reader who arrives from a search lands in the middle of the system. A locator answers “Where am I?” before the reader asks, and the same small map on every view teaches its shape. Kept to ink, it never competes with the red that marks a reform, an error or a step to take."
         ],
         "basis": "Design judgment, from the atlas’s visual system"
       },
       "correct": {
         "specimen": "s-12-locator-correct",
-        "caption": "The atlas locator and the state locator at true size, each in ink."
+        "caption": "The atlas locator and the state locator at true size, each in ink, beside headlines that keep their width."
       },
       "failure": {
         "specimen": "s-12-locator-failure",
@@ -379,7 +381,7 @@
         },
         {
           "label": "State locator",
-          "value": "14 px tiles with 2 px gaps, 12 columns, the state filled"
+          "value": "8 px tiles with 1 px gaps, 12 columns, 107 by 71 px, the state filled; the headline beside it keeps at least 200 px on a 360 px phone"
         },
         {
           "label": "Place",
@@ -454,7 +456,7 @@
       "id": "12.9",
       "title": "In a process explainer, name who owns the next step at every handoff.",
       "rule": [
-        "Give every step of a process a person or an office that acts, and at each handoff name who owns the next step and the clock that runs, as the law sets it. Write each step with its actor first. Link the steps to the official procedure in a source line."
+        "Give every step of a process a person or an office that acts, and at each handoff name who owns the next step and the deadline the law sets. Write each step with its actor first. Link the steps to the official procedure in a source line."
       ],
       "tokens": [
         "oa.type.ui",
@@ -462,13 +464,13 @@
       ],
       "why": {
         "text": [
-          "Our fourth edition put it in one line: “Give every handoff an owner.” A reader who knows who holds a request knows whom to call when it stalls. Passive steps hide that, and a process with no owner reads as one that runs by itself."
+          "Our guide’s fourth edition put it in one line: “Give every handoff an owner.” A reader who knows who holds a request knows whom to call when it stalls. Passive steps hide that, and a process with no owner reads as one that runs by itself."
         ],
-        "basis": "Design judgment, from our fourth edition"
+        "basis": "Design judgment, from our guide’s fourth edition"
       },
       "correct": {
         "specimen": "s-12-owner-correct",
-        "caption": "A federal records request, with who acts at each step, who owns the next one and the clock the law sets."
+        "caption": "A federal records request, with who acts at each step, who owns the next one and the deadline the law sets."
       },
       "failure": {
         "specimen": "s-12-owner-failure",
@@ -482,12 +484,12 @@
         },
         {
           "label": "Each handoff",
-          "value": "“Next step:” and the owner, then the clock",
+          "value": "“Next step:” and the owner, then the deadline",
           "token": "oa.type.bodySmall"
         },
         {
           "label": "Source line",
-          "value": "The statute or official page for every clock"
+          "value": "The statute or official page for every deadline"
         }
       ],
       "related": [

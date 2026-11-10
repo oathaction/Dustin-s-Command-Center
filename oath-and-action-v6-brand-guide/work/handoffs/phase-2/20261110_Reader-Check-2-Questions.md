@@ -4,6 +4,8 @@ Oath & Action Edition 06, Phase 2, stage B, November 10, 2026. Written by the ed
 
 This is the one combined check DR-143 asks for. Five to eight people who have never seen the brand take it once, on their phones (DR-148). It keeps the first check's questions that still apply and adds questions on reading Pillar Red for party (DR-114, with R-46 Expand the House as DR-152 asks), the six tracker steps, the pillar icons, the end mark at 14 and 12 px and the 24 px lockmark. Every word a reader sees is quoted below, so the engineer copies it as written.
 
+Round 3 fix pass, November 10, 2026: two changes for the engineer. Step 4's name on the page is now "A card and a drawing" (D2-950), and step 7's footer question reads "Look at the small square mark beside the line of text. What did you see in it?" (PP-S13). Nothing else in this file changed.
+
 ## What carries over, what leaves, what is new
 
 | First check | In this check | Why |
@@ -28,7 +30,7 @@ This is the one combined check DR-143 asks for. Five to eight people who have ne
 | 1 | Welcome | Reads one paragraph, types a first name or initials, taps Start | none | 0.5 |
 | 2 | Drawings | The overview, then R10 and B4 in random order, with the first check's questions | 3 at 10 s | 2.8 |
 | 3 | Symbols | Names four symbols | 4 at 10 s | 1.9 |
-| 4 | Red | A link card and one drawing, with questions on what the red says | 2 at 10 s | 1.2 |
+| 4 | A card and a drawing | A link card and one drawing, with questions on what the red says | 2 at 10 s | 1.2 |
 | 5 | The four | Two rows of four drawings with words; which one the page belongs to | 2 at 10 s | 0.9 |
 | 6 | Steps | Three rows of step marks and one list of bills | none | 1.5 |
 | 7 | Small marks | A sheet of 12 marks, then one mark in a page footer | 2 at 10 s | 1.3 |
@@ -94,7 +96,9 @@ What to expect: the creative director found that no Congress drawing names Congr
 
 Why it is asked: Dustin asked that every symbol clearly depict its institution, act or reform (DR-146), and on November 10 he approved Congress, Testify and Contact an Official by name after three options each. Only studio readers have named them so far. R-02 stays from the first check as a drawing already settled, for comparison. Chapter 10 always sets a symbol beside its word, so a reader who names the subject from the drawing alone shows the drawing and the word agree. The meanings follow the editor's table for chapter 10 (`20261110_Stage-B-Ch10-Labels.json`).
 
-## Step 4, Red (new)
+## Step 4, A card and a drawing (new)
+
+The step's name on the page, in the progress line and anywhere else the page names its steps, is "A card and a drawing", the same words as its ready screen. The page shows the name before the first question about party, so it names what the reader will see and leaves color out (D2-950).
 
 Ready screen: title "A card and a drawing"; body "Next you’ll see a card like the ones that appear when someone shares a link, and then a drawing. Each shows for 10 seconds. A few questions follow."; button "Show the card".
 
@@ -239,7 +243,9 @@ Why it is asked: the first check's question, with the marks in use today. Pixel 
 
 What the reader sees: the foot of a page at phone width on Newsprint, as chapter 08 sets the footer place: the lockmark at 24 px from the rebuilt master, with its red lever, beside a line of footer text. 10 seconds.
 
-Question: "Look at the small square mark at the bottom. What do you see in it?"
+Question: "Look at the small square mark beside the line of text. What did you see in it?"
+
+The question screen hides the picture, so the question finds the mark by the line of text beside it and asks what the reader saw. In the picture the mark sits near the top of what the reader sees, so "at the bottom" sent readers to the wrong place (PP-S13).
 Choices, the first three in random order, then "Not sure": "Dots on a grid" (dots), "Lines or stripes" (stripes), "A blur or a smudge" (blur), "Not sure" (unsure).
 What counts as a pass: "Dots on a grid".
 

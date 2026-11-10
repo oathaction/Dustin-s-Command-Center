@@ -73,15 +73,17 @@ code, pre, kbd { font-family: var(--mono); font-size: .875rem; overflow-wrap: an
 .masthead { position: sticky; top: 0; z-index: var(--oa-z-index-sticky); padding: 0 var(--m); background: var(--oa-color-surface-newsprint);
   border-bottom: var(--oa-border-width-hairline) solid var(--rule-strong) }
 .mh-bar, .where { max-width: calc(100rem - 2 * var(--m)); margin-inline: auto }
-.mh-bar { min-height: var(--bar-h); display: flex; align-items: center; gap: var(--oa-space-150) var(--oa-space-300) }
+/* CA-S17 (round 3): with large text the part links drop to a line of their own under the wordmark and wrap there, so
+   the bar never pushes the page sideways. At the default text size everything still fits on one line. */
+.mh-bar { min-height: var(--bar-h); display: flex; flex-wrap: wrap; align-items: center; gap: var(--oa-space-150) var(--oa-space-300) }
 .home { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); color: var(--ink); flex: none }
 .home .wm { display: block }
 .home .wm-16 { display: none }
 .edition { display: none; padding-left: var(--oa-space-300); border-left: var(--oa-border-width-hairline) solid var(--rule-hair);
   font: var(--oa-type-ui); white-space: nowrap }
 .edition-k { color: var(--ink-2); font-weight: var(--oa-font-weight-regular); margin-right: .35em }
-.partnav { display: none; margin-left: auto }
-.partnav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 0 var(--oa-space-300) }
+.partnav { display: none; margin-left: auto; min-width: 0; max-width: 100% }
+.partnav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0 var(--oa-space-300) }
 .partnav a { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); font: var(--oa-type-ui); text-decoration: none }
 .partnav a:hover, .partnav a[aria-current] { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-rule); text-underline-offset: .45em }
 .menubtn { flex: none; margin-left: auto; display: inline-flex; align-items: center; gap: var(--oa-space-100); min-height: var(--oa-size-target-touch);
@@ -334,6 +336,11 @@ a.toc-part-k:hover { text-decoration: underline }
 /* CD-S9 (Q1 to Q4 pass): the script adds .is-snug only to a frame whose stage scrolls inside 48 px sides and fits whole
    inside 32 px ones, so the stage sits centered at true size with no hint and no tab stop. Phones keep their 16 px. */
 @media (min-width: 48em) { .plate-scroll.is-snug { padding-inline: var(--oa-space-400) } }
+/* CA-S13 (round 3): from 80em, the script adds .is-breakout to a chapter plate whose fixed stage does not fit its
+   column at true size but fits once the frame reaches left to the page's own margin, over the rail. --bo is that
+   reach in px. The frame and its stage move; the plate's head and caption stay on the text column. The rail hides
+   while a frame covers it, as it does for the appendix, so no link sits out of sight under the frame. */
+.plate.is-breakout > .plate-scroll { margin-left: calc(-1 * var(--bo, 0px)); z-index: 1 }
 /* AX-S4: on the mat the ring is Charcoal, 11.76 to 1, drawn inside the frame */
 .plate-scroll:focus-visible, .code:focus-visible, .table-wrap:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-palette-charcoal); outline-offset: calc(-1 * var(--oa-border-width-focus-ring)) }
 /* background and color come from the stage's surface class (.oa-surface-newsprint by default). AX-S13: a 1 px Stone
@@ -380,15 +387,19 @@ a.toc-part-k:hover { text-decoration: underline }
 .spec-list { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr) }
 .spec-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--oa-space-050) var(--oa-space-300); padding: var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--rule-hair) }
 /* CA-N10 (fix pass): the label column keeps one width in every rule, so values start on one edge down a chapter */
-@media (min-width: 30em) { .spec-row { grid-template-columns: 11rem minmax(0, 1fr) } .spec-tok { grid-column: 2 } }
-@media (min-width: 90em) {
+/* CA-S17 (round 3): each layout also asks its block for room in the reader's own text size, so with large text the
+   label column steps aside and the rows stack in place of pushing the page sideways. At the default size every
+   block that took two or three columns still takes them. */
+.foot-specs { container-type: inline-size }
+@media (min-width: 30em) { @container (min-width: 24rem) { .spec-row { grid-template-columns: 11rem minmax(0, 1fr) } .spec-tok { grid-column: 2 } } }
+@media (min-width: 90em) { @container (min-width: 36rem) {
   .spec-list { grid-template-columns: 11rem minmax(12rem, 1fr) auto; column-gap: 0 }
   .spec-row { display: contents }
   .spec-row > * { padding: var(--oa-space-100) var(--oa-space-300) var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--rule-hair) }
   .spec-row > :last-child { padding-right: 0 }
   .spec-row > dt { grid-column: 1 } .spec-row > .spec-val { grid-column: 2 } .spec-row > .spec-tok { grid-column: 3 }
   .spec-row:not(.spec-row--tok) > .spec-val { grid-column: 2 / -1 }
-}
+} }
 .spec-row dt { font: var(--oa-type-body-small); font-weight: var(--oa-font-weight-semibold) }
 .spec-row dd { margin: 0; font: var(--oa-type-body-small) }
 .spec-tok code, .file-list code, .tok-table th code { overflow-wrap: normal; word-break: normal }
@@ -516,12 +527,16 @@ a.toc-part-k:hover { text-decoration: underline }
   .btn, .fit-btn { border: 1px solid ButtonText }
   .fit-btn[aria-pressed="true"] { forced-color-adjust: none; background: Highlight; color: HighlightText }
   .bars { color: ButtonText }
+  /* CA-S16 (round 3): the masthead wordmark takes one system color, the page's text color, ampersand included, as
+     its one-color edition does; it no longer turns link blue around a red ampersand */
+  .home { color: CanvasText }
+  .home .wm { --amp: currentColor }
 }
 @media print {
   .masthead, .rail, .menu, .skip, .chapnav, .return, .btn, .btn-row, .status, .fit-switch, .plate-hint { display: none !important }
   .frame { display: block; padding: 0 }
   body, .plate-scroll { background: none }
-  .appendix { margin-left: 0 }
+  .appendix, .plate.is-breakout > .plate-scroll { margin-left: 0 }
   .chapter, .part, .contents, .appendix { break-before: page }
   .plate, .rule-h, .hinge { break-inside: avoid }
   .local-toc { position: static }

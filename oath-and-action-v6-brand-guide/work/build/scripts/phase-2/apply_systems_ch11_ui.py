@@ -4,7 +4,8 @@ chapter file; this module holds the words, the specimens and their scripts.
 
 Sources: the accessibility audit (20261109_Stage-B-Accessibility-Audit.md, sections 1 and 2), the utility finals and their
 manifest (work/build/assets/utility/, DR-161 to DR-178), the engineer's <use> pattern (20261110_Promotion-Engineer-Notes.md),
-Rule 05.3's order of precedence for the working red, and Atlas V7's loop R10 for the stepper.
+Rule 05.3's order of precedence for the working red, and Atlas V7's loop R1 for the stepper (DR-195; round 2 ran loop
+R10). LOOP_ID is the one parameter that picks the loop: every word, alt and caption about the loop reads from it.
 
 Live specimens are components, not pictures: manifest "interactive": true, so the shell names the stage as a group and
 guide_check.js runs its name, target, keyboard, focus, state and forced-color checks inside them. Each component sets
@@ -15,7 +16,11 @@ prefixes every id and every class in a specimen.
 import json
 import re
 
-LOOP_ID = 'R10'
+LOOP_ID = 'R1'       # DR-195: the loop the stepper runs; change only this to run another loop
+# D2-969: a step graded plausible takes "can" and this sentence; D2-972: Play holds a step about 250 ms a word, never
+# under 6 seconds, under reduced motion too
+PLAUSIBLE = 'Our atlas grades this step plausible, the least certain in the loop.'
+MS_PER_WORD, MS_FLOOR = 250, 6000
 CHECK_41 = ('CL-001 CL-004 CL-006 CL-010 CL-013 CL-019 CL-020 CL-021 CL-022 CL-023 CL-024 CL-028 CL-031 CL-032 CL-039 '
             'CL-040 CL-047 CL-048 CL-050 CL-051 CL-054 CL-057 CL-060 CL-061 CL-067 CL-068 CL-070 CL-071 CL-072 R-05 R-06 '
             'R-08 R-09 R-14 R-15 R-17 R-19 R-23 R-27 R-37 R-45').split()   # chapter 10's construction text, section 10
@@ -83,28 +88,48 @@ def script(js):
 
 
 # ------------------------------------------------------------------------------------------------ 11.11 the reader
+# CD-M1: a four-page report, each page with its own heading and real lines of text at the page's own type size, so no
+# page repeats another and none is a gray box. Illustrative, like the rest of the piece.
+REPORT = 'How a county pays for its roads'
+REPORT_PAGES = [
+    ('Where the money comes from', 'The county pays for its roads from its share of the state’s fuel tax, from '
+                                   'property taxes and from a yearly vehicle fee.'),
+    ('What a mile of road costs', 'Repaving a mile of two-lane road costs more each year as the price of asphalt rises, '
+                                  'so the county plans its repairs three years ahead.'),
+    ('Repairs that wait', 'A road that waits too long for a new surface wears down to its base, and the county then '
+                          'has to rebuild it from the ground up.'),
+    ('Who decides the list', 'The county engineer ranks every road by its condition, and the county board votes on the '
+                             'list each spring at a public meeting.'),
+]
+
+
 def s_reader(ctx, m):
     T, u = ctx.ty, m.uicon
+    n_pages = len(REPORT_PAGES)
     css = ui_css(ctx) + (
         f'.rn{{margin:8px 0 12px;{T("h4", "floor")}}}'
         f'.vw{{overflow-x:auto;margin:0 0 12px;border:1px solid var(--hair);background:var(--paper)}}'
-        f'.pg{{width:100%;box-sizing:border-box;padding:16px;min-height:132px}}'
-        f'[data-zoom="full"] .pg{{width:480px}}'
-        f'.pr{{{T("label")};color:var(--sec)}}.pt{{margin-top:8px;{T("h4", "floor")}}}'
-        f'.ln{{display:block;height:8px;margin-top:10px;background:var(--hair)}}.ln.s{{width:62%}}'
+        f'.pg{{width:100%;box-sizing:border-box;padding:16px;min-height:14.5rem}}'
+        f'[data-zoom="full"] .pg{{width:480px;min-height:0}}'
+        f'.pr{{{T("label")};color:var(--sec);text-wrap:balance}}.pt{{margin-top:8px;{T("h4", "floor")}}}'
+        f'.px{{margin-top:8px;{T("body")};text-wrap:pretty}}'
         f'.pn{{margin:0 0 10px;{T("ui")};font-variant-numeric:tabular-nums}}'
         f'.bar{{display:grid;grid-template-columns:1fr 1fr;gap:8px}}.ui .bar .b{{padding:0 10px;white-space:nowrap}}'
         f'.ui .bar .nx{{justify-content:flex-end}}'
         f'.zm{{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}}'
         f'.ui .zm .b[aria-pressed="true"]{{font-weight:700;text-decoration:underline;text-decoration-thickness:2px;'
         f'text-underline-offset:4px;box-shadow:inset 0 0 0 1px var(--edge)}}')
+    t0, x0 = REPORT_PAGES[0]
+    # CA-S4: the pages a script swaps in keep their compounds whole too
+    data = json.dumps([[re.sub(r'(?<=\w)-(?=\w)', m.NBHY, x) for x in pg] for pg in REPORT_PAGES], ensure_ascii=False,
+                      separators=(',', ':'))
+    # CA-S1: the page's header, title and text stay readable to a screen reader, and the status line names the title
     html = (f'<style>{css}</style><div class="ui" data-ui="reader"><p><span class="illus">Illustrative</span></p>'
-            f'<p class="rn">How a county pays for its roads</p>'
-            f'<div class="vw" role="group" aria-label="The report page" tabindex="0" data-view data-zoom="fit"><div class="pg" aria-hidden="true">'
-            f'<p class="pr">How a county pays for its roads · page <span data-out="pg">1</span></p>'
-            f'<p class="pt" data-out="pt">Where the money comes from</p><span class="ln"></span><span class="ln"></span>'
-            f'<span class="ln s"></span></div></div>'
-            f'<p class="pn" role="status" data-out="n">Page 1 of 12</p>'
+            f'<p class="rn">{REPORT}</p>'
+            f'<div class="vw" role="group" aria-label="The report page" tabindex="0" data-view data-zoom="fit"><div class="pg">'
+            f'<p class="pr">{REPORT}\u00a0·\u00a0page\u00a0<span data-out="pg">1</span></p>'
+            f'<p class="pt" data-out="pt">{t0}</p><p class="px" data-out="px">{x0}</p></div></div>'
+            f'<p class="pn" role="status" data-out="n">Page 1 of {n_pages}: {t0}</p>'
             f'<div class="bar" role="group" aria-label="Pages">'
             f'<button type="button" class="b" data-act="prev" aria-disabled="true" aria-describedby="rd-why">'
             f'{u("arrow", transform=MIRROR[24])}Previous page</button>'
@@ -113,31 +138,33 @@ def s_reader(ctx, m):
             f'<div class="zm" role="group" aria-label="Page size">'
             f'<button type="button" class="b wd" aria-pressed="true" data-zoom="fit">Fit width</button>'
             f'<button type="button" class="b wd" aria-pressed="false" data-zoom="full">Full size</button></div>'
+            f'<script type="application/json" data-pages>{data}</script>'
             + script('''
-var R=S.querySelector('[data-ui="reader"]'),n=1,N=12,
+var R=S.querySelector('[data-ui="reader"]'),T=JSON.parse(R.querySelector('[data-pages]').textContent),n=1,N=T.length,
 P=R.querySelector('[data-act="prev"]'),X=R.querySelector('[data-act="next"]'),
 O=R.querySelector('[data-out="n"]'),W=R.querySelector('[data-out="why"]'),G=R.querySelector('[data-out="pg"]'),
-H=R.querySelector('[data-out="pt"]'),V=R.querySelector('[data-view]'),
-T=['Where the money comes from','What a mile of road costs','Repairs that wait','Who decides the list'];
+H=R.querySelector('[data-out="pt"]'),Z=R.querySelector('[data-out="px"]'),V=R.querySelector('[data-view]');
 function off(b,y){if(y){b.setAttribute('aria-disabled','true');b.setAttribute('aria-describedby',W.id);}
 else{b.removeAttribute('aria-disabled');b.removeAttribute('aria-describedby');}}
-function draw(){O.textContent='Page '+n+' of '+N;G.textContent=n;H.textContent=T[(n-1)%4];off(P,n===1);off(X,n===N);
-W.textContent=n===1?'This is the first page.':(n===N?'This is the last page.':'');}
+function draw(){O.textContent='Page '+n+' of '+N+': '+T[n-1][0];G.textContent=n;H.textContent=T[n-1][0];Z.textContent=T[n-1][1];
+off(P,n===1);off(X,n===N);W.textContent=n===1?'This is the first page.':(n===N?'This is the last page.':'');}
 P.addEventListener('click',function(){if(n>1){n--;draw();}});
 X.addEventListener('click',function(){if(n<N){n++;draw();}});
 R.querySelectorAll('[data-zoom][aria-pressed]').forEach(function(b){b.addEventListener('click',function(){
 R.querySelectorAll('[data-zoom][aria-pressed]').forEach(function(c){c.setAttribute('aria-pressed',c===b?'true':'false');});
 V.setAttribute('data-zoom',b.getAttribute('data-zoom'));});});
 draw();''') + '</div>')
-    alt = ('A live report reader at 360 px, Illustrative. A page of the report How a county pays for its roads sits in a '
-           'frame, with “Page 1 of 12” under it. Two buttons follow, Previous page with the arrow mirrored before its '
-           'word and Next page with the arrow after it, each 44 px tall. On the first page, Previous page is unavailable: '
-           'its outline is dashed, and the line under it says “This is the first page.” Two word buttons, Fit width and '
-           'Full size, change the size of the page; Fit width is pressed, bold and underlined.')
+    alt = (f'A live report reader at 360 px, Illustrative. Page 1 of the {m.C.num(n_pages)}-page report {REPORT} sits in '
+           f'a frame: its heading, “{t0}”, and its text, “{x0}” Under it, a status line reads “Page 1 of {n_pages}: {t0}”. '
+           'Two buttons follow, Previous page with the arrow mirrored before its word and Next page with the arrow after '
+           'it, each 44 px tall. On the first page, Previous page is unavailable: its outline is dashed, and the line under '
+           'it says “This is the first page.” Two word buttons, Fit width and Full size, change the size of the page; Fit '
+           'width is pressed, bold and underlined. The other pages are ' + ', '.join(f'“{t}”' for t, _ in REPORT_PAGES[1:-1])
+           + f' and “{REPORT_PAGES[-1][0]}”.')
     return m.spec(ctx, 's-11-11-correct', html, '11.11', alt, width=360, interactive=True, illustrative=True,
                   notes='Live (D2-516). Previous page keeps focus while unavailable, with aria-disabled and its reason '
-                        'through aria-describedby (G-4); the page count is a polite status line (A-9); zoom stays words '
-                        '(DR-154).')
+                        'through aria-describedby (G-4); the page count and title are a polite status line (A-9, CA-S1); '
+                        'the page itself is readable text (CD-M1); zoom stays words (DR-154).')
 
 
 def s_reader_fail(ctx, m):
@@ -156,12 +183,12 @@ def s_reader_fail(ctx, m):
     cursor = ('<svg class="cur" viewBox="0 0 16 20" width="16" height="20" aria-hidden="true" focusable="false"><path '
               'd="M1 1v15l4-4 3 7 3-1.5-3-6.5h6z" style="fill:var(--ground);stroke:var(--ink)" stroke-width="1.2"/></svg>')
     html = (f'<style>{css}</style>{band}<div class="ui"><p><span class="illus">Illustrative</span></p>'
-            f'<div class="bar"><span class="g">{u("arrow", transform=MIRROR[24])}</span><span class="pn">1 / 12</span>'
+            f'<div class="bar"><span class="g">{u("arrow", transform=MIRROR[24])}</span><span class="pn">1 / 4</span>'
             f'<span class="g">{u("arrow")}</span><span class="tw ps"><span class="g">{info}</span>'
             f'<span class="tt">About this report</span>{cursor}</span>'
             f'<span class="g">{u("view-full-size")}</span></div></div>')
-    alt = ('Labeled Failure case: do not publish. An Illustrative report toolbar at 360 px with four buttons that show '
-           'icons and no words: a left arrow, “1 / 12”, a right arrow, an information mark and four corners. Each button '
+    alt = ('Failure case: do not publish. An Illustrative report toolbar at 360 px with four buttons that show '
+           'icons and no words: a left arrow, “1 / 4”, a right arrow, an information mark and four corners. Each button '
            'is 32 px square. A pointer hovers over the information mark, and a dark box above it reads “About this '
            'report”, the only place the button’s name appears.')
     return m.spec(ctx, 's-11-11-failure', html, '11.11', alt, width=360, illustrative=True,
@@ -212,8 +239,8 @@ def s_library(ctx, m):
         f'.fd > svg{{flex:none;margin:0 8px 0 10px}}'
         f'.ui .q{{flex:1 1 auto;min-width:0;align-self:stretch;margin:0;padding:0 4px;border:0;background:transparent;'
         f'color:var(--ink);{T("body")}}}'
-        f'.ui .clr{{display:inline-flex;align-items:center;justify-content:center;width:var(--touch);height:var(--touch);'
-        f'margin:-1px -1px -1px 0;padding:0;border:0;background:transparent;color:var(--ink);cursor:pointer}}'
+        f'.ui .clr{{display:inline-flex;flex:none;align-items:center;justify-content:center;width:var(--touch);'
+        f'height:var(--touch);margin:-1px -1px -1px 0;padding:0;border:0;background:transparent;color:var(--ink);cursor:pointer}}'
         f'.ui .clr[hidden]{{display:none}}'
         f'.r2{{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}}.ui .r2 .ex{{padding:0 10px}}'
         f'.sh{{margin-top:12px;padding:12px 0 4px;border-top:1px solid var(--hair)}}'
@@ -222,7 +249,8 @@ def s_library(ctx, m):
         f'.ui .ch{{padding:0 14px}}.ui .ch[aria-pressed="true"]{{font-weight:700;border-width:2px;padding:0 13px 0 9px}}'
         f'.rs{{margin-top:16px;{T("ui")};font-weight:700}}'
         f'.hs{{list-style:none;margin:6px 0 0;padding:0;{T("bodySmall")}}}.hs li{{padding:4px 0;border-top:1px solid var(--hair)}}'
-        f'.hs b{{display:inline-block;min-width:4.25em;font-variant-numeric:tabular-nums}}')
+        f'.hs b{{display:inline-block;min-width:4.25em;font-variant-numeric:tabular-nums}}'
+        f'.mr{{margin-top:6px;{T("bodySmall")};color:var(--sec)}}.mr:empty{{display:none}}')
 
     def chip(f, word, on=False):
         mark = u('selected-check') if on else ''
@@ -241,14 +269,16 @@ def s_library(ctx, m):
             f'{chip("t", "Topic")}{chip("a", "Atlas", True)}{chip("p", "Pillar")}</ul>'
             f'<p class="gl" id="lb-s">Size</p><ul class="cs" aria-labelledby="lb-s">{chip("24", "Reads at 24 px")}</ul></div>'
             f'<p class="rs" role="status" data-out="res">{n_atlas} of 124 symbols</p><ul class="hs" data-out="hits"></ul>'
+            f'<p class="mr" data-out="more"></p>'
             + tpl(u('selected-check')) + f'<script type="application/json" data-rows>{data}</script>'
             + script('''
 var L=S.querySelector('[data-ui="library"]'),D=JSON.parse(L.querySelector('[data-rows]').textContent),
 Q=L.querySelector('[data-q]'),C=L.querySelector('[data-act="clear"]'),F=L.querySelector('[data-act="sheet"]'),
 Z=L.querySelector('[data-act="none"]'),H=L.querySelector('[data-sheet]'),K=L.querySelector('[data-out="count"]'),
 O=L.querySelector('[data-out="res"]'),U=L.querySelector('[data-out="hits"]'),M=L.querySelector('template[data-tpl]'),
-B=[].slice.call(L.querySelectorAll('[data-f]'));
+Y=L.querySelector('[data-out="more"]'),B=[].slice.call(L.querySelectorAll('[data-f]'));
 function on(b){return b.getAttribute('aria-pressed')==='true';}
+function h(x){return x.replace(/(\\w)-(?=\\w)/g,'$1\\u2011');}
 function mark(b,y){var g=b.querySelector('svg');if(y&&!g){b.insertBefore(M.content.firstElementChild.cloneNode(true),b.firstChild);}
 if(!y&&g){g.remove();}b.setAttribute('aria-pressed',y?'true':'false');}
 function run(){var q=Q.value.trim().toLowerCase(),k=B.filter(function(b){return on(b)&&b.getAttribute('data-f')!=='24';})
@@ -257,7 +287,9 @@ r=D.filter(function(d){return(!k.length||k.some(function(x){return d[2].indexOf(
 (!q||d[0].toLowerCase().indexOf(q)>=0||d[1].toLowerCase().indexOf(q)>=0);}),n=B.filter(on).length;
 K.textContent='Filters, '+n+' on';Z.hidden=!n;C.hidden=!Q.value;O.textContent=r.length+' of 124 symbols';
 U.textContent='';r.slice(0,3).forEach(function(d){var li=document.createElement('li'),b=document.createElement('b');
-b.textContent=d[0];li.appendChild(b);li.appendChild(document.createTextNode(' '+d[1]));U.appendChild(li);});}
+b.textContent=h(d[0]);li.appendChild(b);li.appendChild(document.createTextNode(' '+h(d[1])));U.appendChild(li);});
+var k=r.length-3;Y.textContent=!r.length?'No symbol matches. Clear the search or the filters to see more.':
+(k>0?'The first three are listed here, and '+k+' more '+(k===1?'matches':'match')+'.':'');}
 Q.addEventListener('input',run);
 C.addEventListener('click',function(){Q.value='';run();Q.focus();});
 F.addEventListener('click',function(){var o=F.getAttribute('aria-expanded')!=='true';F.setAttribute('aria-expanded',o?'true':'false');
@@ -270,7 +302,8 @@ run();''') + '</div>')
            'Under it, the Filters button carries the funnel, the words “Filters, 1 on” and a chevron pointing up, since '
            'the filters are open, and a word button, Clear filters. The open filters show Kind: Topic, Atlas and Pillar, '
            'and Size: Reads at 24 px. Atlas is on, so it carries a check and a heavier outline, and the status line '
-           f'reads “{n_atlas} of 124 symbols”, with the first three listed by ID and name.')
+           f'reads “{n_atlas} of 124 symbols”, with the first three listed by ID and name and a line that says how many '
+           f'more match: “The first three are listed here, and {n_atlas - 3} more match.”')
     return m.spec(ctx, 's-11-12-correct', html, '11.12', alt, width=360, interactive=True,
                   notes='Live (D2-516). Labels and kinds read from the editor’s label table for chapter 10; the 41 from '
                         'chapter 10’s construction text, section 10. Chips carry aria-pressed and the Selected check (C-5); '
@@ -289,7 +322,7 @@ def s_library_fail(ctx, m):
             f'<div class="bar"><span class="pn">Page 3 of 12</span><span class="b">{u("chevron", transform="rotate(90 12 12)")}'
             f'Previous</span><span class="b nx">Next{u("chevron", transform=TURN_RIGHT[24])}</span></div>'
             f'<p class="src"><span>Sources for this page</span>{u("chevron")}</p></div>')
-    alt = ('Labeled Failure case: do not publish. An Illustrative report reader at 360 px. Its Previous and Next buttons '
+    alt = ('Failure case: do not publish. An Illustrative report reader at 360 px. Its Previous and Next buttons '
            'carry chevrons turned left and right, and below them the row Sources for this page carries the same '
            'chevron pointing down, where it opens the row. One drawing turns the page in one place and opens a row in '
            'another.')
@@ -308,7 +341,8 @@ def s_menu(ctx, m, rule_titles):
         f'.bd{{padding:20px 16px}}.bd p + p{{margin-top:12px}}.k{{{T("label")};color:var(--sec)}}'
         f'.hl{{{T("h4", "floor")}}}'
         f'.dl{{position:absolute;inset:0;overflow-y:auto;background:var(--ground)}}.dl[hidden]{{display:none}}'
-        f'.dh{{display:flex;align-items:center;gap:12px;min-height:60px;padding:0 16px;border-bottom:1px solid var(--edge)}}'
+        f'.dh{{position:sticky;top:0;z-index:1;display:flex;align-items:center;gap:12px;min-height:60px;padding:0 16px;'
+        f'background:var(--ground);border-bottom:1px solid var(--edge)}}'
         f'.dt{{flex:1 1 auto;{T("ui")};font-weight:700}}'
         f'.ps{{list-style:none;margin:0;padding:0 16px 16px}}.ps > li{{border-bottom:1px solid var(--hair)}}'
         f'.ui .rw{{display:flex;width:100%;align-items:center;gap:8px;min-height:var(--touch);padding:8px 0;border:0;'
@@ -348,7 +382,8 @@ D.querySelectorAll('a[href]').forEach(function(a){a.addEventListener('click',fun
            'with three bars before the word. Menu opens a panel over the page, In this chapter, which holds focus until '
            'Close the menu, with its cross, or the Escape key shuts it; focus then returns to Menu. The panel lists the '
            'chapter’s four groups as rows, each with a chevron that points down while the row is closed and up while it '
-           'is open, and each opens to links to its rules.')
+           'is open, and each opens to links to its rules. The panel’s bar, with Close the menu, stays at its top while the '
+           'list scrolls under it.')
     return m.spec(ctx, 's-11-menu', html, None, alt, width=360, interactive=True,
                   notes='Live (D2-516): the dialog holds focus, Escape and Close return focus to Menu (G-3); the page '
                         'behind it is inert while it is open.')
@@ -393,7 +428,7 @@ def s_links_fail(ctx, m):
             f'<p class="tx" style="margin-top:12px">The proposed rule and its comment form are on <span class="a">the agency’s '
             f'rulemaking page</span>{u("another-site")}</p>'
             f'<p class="n">Opens in a new tab, with nothing said about it.</p></div>')
-    alt = ('Labeled Failure case: do not publish. An Illustrative sentence at 360 px ends with the link “the agency’s '
+    alt = ('Failure case: do not publish. An Illustrative sentence at 360 px ends with the link “the agency’s '
            'rulemaking page”. Its mark for another site, drawn at 24 px inside the sentence, has wrapped onto a line of its '
            'own under the words. A note says the link opens a new tab with nothing said about it.')
     return m.spec(ctx, 's-11-13-failure', html, '11.13', alt, width=360, illustrative=True,
@@ -402,19 +437,42 @@ def s_links_fail(ctx, m):
 
 
 # ------------------------------------------------------------------------------------------------ 11.14 the loop stepper
+def plural(label):
+    """Whether a chain label takes a plural verb: its head noun, the last word before any preposition, ends in a
+    single s (Safe seats raise; Primary decisiveness raises; Money in politics raises)."""
+    head = re.split(r'\s(?:in|to|of|for|on|from)\s', label)[0].split()[-1].lower()
+    return head.endswith('s') and not head.endswith('ss')
+
+
 def loop_steps(m):
+    """The loop's steps from Atlas V7: each step's verb from its connection's sign, and the connection's own plain
+    sentence. A step graded plausible says "can" and names its grade (D2-969). Each step carries how long Play holds it
+    (D2-972). A grade the stepper has no wording for stops the build, so no grade is ever dropped."""
     d = json.loads((m.ROOT / 'work/extract/atlas-v7-data.json').read_text())
     lp = d['loops'][LOOP_ID]
     links = d['links'] if isinstance(d['links'], dict) else {x['id']: x for x in d['links']}
     labels = [lab for lab, _ in lp['chain_labels']]
     signs = [sg for _, sg in lp['chain']]
+    grades = [links[lid]['evidence'] for lid in lp['links']]
+    if sum(g.startswith('plausible') for g in grades) > 1 or any(
+            g not in ('documented', 'well-supported', 'plausible') for g in grades):
+        raise SystemExit(f'loop {LOOP_ID}: grades {grades}; the stepper words one plausible step, the least certain')
     steps = []
     for i, lid in enumerate(lp['links']):
         a, b = labels[i], labels[(i + 1) % len(labels)]
-        plural = a.endswith('seats')
-        verb = ('raise' if plural else 'raises') if signs[i] == '+' else ('lower' if plural else 'lowers')
-        b_low = b[0].lower() + b[1:]
-        steps.append([curly(f'{a} {verb} {b_low}.'), curly(links[lid]['plain'])])
+        if links[lid].get('polarity') not in (None, signs[i]):
+            raise SystemExit(f'loop {LOOP_ID}: {lid} carries {links[lid].get("polarity")}, the chain {signs[i]}')
+        up = signs[i] == '+'
+        if grades[i] == 'plausible':
+            verb = 'can raise' if up else 'can lower'
+        elif plural(a):
+            verb = 'raise' if up else 'lower'
+        else:
+            verb = 'raises' if up else 'lowers'
+        head = curly(f'{a} {verb} {b[0].lower() + b[1:]}.')
+        text = curly(links[lid]['plain']) + (f' {PLAUSIBLE}' if grades[i] == 'plausible' else '')
+        words = len(f'Step {i + 1} of {len(lp["links"])}: {head} {text}'.split())
+        steps.append([head, text, max(MS_FLOOR, MS_PER_WORD * words)])
     return curly(lp['title']), labels[0], steps
 
 
@@ -431,12 +489,14 @@ def stepper(ctx, m, live=True):
     title, first, steps = loop_steps(m)
     css = ui_css(ctx) + (
         f'.k{{{T("label")};color:var(--sec)}}.t{{margin-top:6px;{T("h4", "floor")};text-wrap:balance}}'
-        f'.st{{margin:16px 0;padding:14px;border:1px solid var(--hair);background:var(--paper);min-height:9.5rem}}'
+        f'.st{{margin:16px 0;padding:14px;border:1px solid var(--hair);background:var(--paper);min-height:14rem}}'
         f'.sn{{{T("ui")};font-weight:700;font-variant-numeric:tabular-nums}}.sx{{margin-top:6px;{T("bodySmall")};text-wrap:pretty}}'
         f'.cl{{display:grid;grid-template-columns:1fr 1fr;gap:8px}}.ui .cl .b{{padding:0 10px;white-space:nowrap}}'
         f'.ui .cl .nx{{justify-content:flex-end}}'
         f'.cl svg[hidden]{{display:none}}')
-    start = f'Start at {first.lower()}, and suppose they rise. Press Play, or Next step to follow one link at a time.'
+    rise = 'they rise' if plural(first) else 'it rises'
+    start = (f'Start at {first[0].lower() + first[1:]}, and suppose {rise}. Press Play, or Next step to follow one '
+             f'connection at a time.')
     data = json.dumps(steps, ensure_ascii=False, separators=(',', ':'))
     head = (f'<p class="k">From our systems atlas, loop {LOOP_ID}</p><p class="t">{title}</p>'
             f'<div class="st" aria-live="polite"><p class="sn" data-out="sn">Ready</p><p class="sx" data-out="sx">{start}</p></div>')
@@ -461,9 +521,9 @@ function show(){A.textContent=i?'Step '+i+' of '+D.length+': '+D[i-1][0]:A0;B.te
 off(P,!i);off(R,!i);off(X,i===D.length);
 W.textContent=!i?'At the start, so Previous step and Reset wait until you move on.':(i===D.length?'At the last step. Reset the loop to start again.':'');
 var p=!!t;I[0].toggleAttribute('hidden',p);I[1].toggleAttribute('hidden',!p);V.textContent=p?'Pause':(i===D.length?'Play again':'Play');}
-function stop(){if(t){clearInterval(t);t=null;}}
-function go(){if(i<D.length){i++;}if(i===D.length){stop();}show();}
-Y.addEventListener('click',function(){if(t){stop();show();return;}if(i===D.length){i=0;}t=setInterval(go,2400);go();});
+function stop(){if(t){clearTimeout(t);t=null;}}
+function go(){if(i<D.length){i++;}t=null;if(i<D.length){t=setTimeout(go,D[i-1][2]);}show();}
+Y.addEventListener('click',function(){if(t){stop();show();return;}if(i===D.length){i=0;}go();});
 X.addEventListener('click',function(){if(i<D.length){stop();i++;show();}});
 P.addEventListener('click',function(){if(i>0){stop();i--;show();}});
 R.addEventListener('click',function(){if(i>0){stop();i=0;show();}});
@@ -479,12 +539,18 @@ def s_stepper(ctx, m):
            'and its sentence, and starts at “Ready”. Four buttons sit under it, each 44 px tall with its icon beside its '
            'word: Play, which turns to Pause while the steps run and to Play again at the end; Reset the loop, with an open '
            'circle and one arrowhead; Previous step, with the arrow mirrored; and Next step, with the arrow after its word. '
-           'At the start, Previous step and Reset are unavailable, and a line says why. Each step names the link and '
-           'gives the atlas’s sentence for it, starting with “' + steps[0][0] + '”')
+           'At the start, Previous step and Reset are unavailable, and a line says why. Each step names the connection '
+           'and gives the atlas’s sentence for it, starting with “' + steps[0][0] + '”')
+    weak = [i + 1 for i, x in enumerate(steps) if PLAUSIBLE in x[1]]
+    if weak:
+        alt += (f' Step {weak[0]}, the one our atlas grades plausible, reads “{steps[weak[0] - 1][0]}” and ends “{PLAUSIBLE}”')
+    alt += (f' Play holds each step about a quarter second a word, from {min(x[2] for x in steps) / 1000:g} to '
+            f'{max(x[2] for x in steps) / 1000:g} seconds here.')
     return m.spec(ctx, 's-11-14-correct', html, '11.14', alt, width=360, interactive=True,
-                  notes='Live (D2-516). Steps from Atlas V7’s loop R10 (chain labels, signs and each link’s plain '
-                        'sentence). Playback starts only on a press (E-3); unavailable controls keep focus with their '
-                        'reason (G-4); the step box is a polite live region (A-9).')
+                  notes=f'Live (D2-516). Steps from Atlas V7’s loop {LOOP_ID} (DR-195): chain labels, signs and each '
+                        'connection’s plain sentence; a plausible step takes “can” and its grade (D2-969). Play holds a '
+                        'step 250 ms a word, never under 6 seconds (D2-972), and starts only on a press (E-3); unavailable '
+                        'controls keep focus with their reason (G-4); the step box is a polite live region (A-9).')
 
 
 def s_stepper_fail(ctx, m):
@@ -497,7 +563,7 @@ def s_stepper_fail(ctx, m):
            f'<span class="b">{u("arrow", transform=MIRROR[24])}Previous step</span>'
            f'<span class="b nx">Next step{u("arrow")}</span></div>')
     html = f'<style>{css}{fcss}</style>{band}<div class="ui">{head}{ctl}</div>'
-    alt = (f'Labeled Failure case: do not publish. The same loop stepper for loop {LOOP_ID}, “{title}”, at 360 px. Its '
+    alt = (f'Failure case: do not publish. The same loop stepper for loop {LOOP_ID}, “{title}”, at 360 px. Its '
            'Start over button carries CL-024, the feedback loop drawing, two arrows that carry a change between two boxes '
            'and back, in place of the Reset icon.')
     return m.spec(ctx, 's-11-14-failure', html, '11.14', alt, width=360,
@@ -554,7 +620,7 @@ def s_form(ctx, m):
                   f'days before the hearing.</span></div>')
             + script('''
 var F=S.querySelector('[data-ui="form"]'),A=F.querySelector('[data-ask]'),K=F.querySelector('[data-out="ok"]'),
-M={email:'Enter an email address with an @, such as name@example.com.',zip:'Enter a ZIP code with five digits.'},
+M={email:'Enter an email address with an\\u00a0@, such as name@example.com.',zip:'Enter a ZIP code with five digits.'},
 V={email:function(x){return/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(x);},zip:function(x){return/^[0-9]{5}$/.test(x);}};
 function mark(k,bad){var i=F.querySelector('[data-in="'+k+'"]'),e=F.querySelector('[data-err="'+k+'"]'),
 d=(i.getAttribute('aria-describedby')||'').split(' ').filter(function(x){return x&&x!==e.id;}),f=i.closest('[data-field]');
@@ -592,7 +658,7 @@ def s_form_fail(ctx, m):
     html = (f'<style>{css}</style>{band}<div class="ui"><p><span class="illus">Illustrative</span></p>'
             f'<span class="l">ZIP code</span><span class="in">0217</span>'
             f'<p class="bad" data-red="working" data-red-job="error">{u("close")}Invalid</p></div>')
-    alt = ('Labeled Failure case: do not publish. An Illustrative ZIP code field at 360 px holding four digits, 0217. Under '
+    alt = ('Failure case: do not publish. An Illustrative ZIP code field at 360 px holding four digits, 0217. Under '
            'it, red text reads “Invalid” beside a red cross, the Close icon. Nothing says “Error”, which rule the entry '
            'broke or how to fix it, and the red text measures 2.96 to 1 on Newsprint.')
     return m.spec(ctx, 's-11-15-failure', html, '11.15', alt, width=360, illustrative=True, exempt=['contrast'],
@@ -606,15 +672,16 @@ def s_marks(ctx, m):
     css = marks_css(ctx) + (
         f'.mk3{{list-style:none;margin:0;padding:0;display:grid;gap:16px}}'
         f'.n{{margin:0 0 6px;{T("label")};color:{ctx.v("oa.color.text.secondary.onNewsprint")}}}'
-        f'.mk3 .er,.mk3 .ok{{margin-top:0}}.mk3 .ok{{padding:10px 12px;border-left:4px solid transparent}}')
+        f'.mk3 .er,.mk3 .ok{{margin-top:0}}.mk3 .ok{{padding:10px 12px;border-left:4px solid transparent}}'
+        f'.il{{margin:0 0 12px}}')
     items = [
         ('Error', f'<div class="er">{u("error")}<span><b>Error:</b> Enter a ZIP code with five digits.</span></div>'),
         ('Success', f'<div class="ok">{u("success")}<span><b>You’re signed up.</b> We’ll email you on March 1.</span></div>'),
         ('Warning', f'<div class="wn">{u("warning")}<span><b>Checked April 20.</b> The agency may have acted since.</span></div>'),
     ]
-    html = (f'<style>{css}</style><ul class="mk3">'
+    html = (f'<style>{css}</style><p class="il"><span class="illus">Illustrative</span></p><ul class="mk3">'
             + ''.join(f'<li><p class="n">{n}</p>{b}</li>' for n, b in items) + '</ul>')
-    alt = ('The three marks at true size, each in its message. Error: a circle holding an exclamation mark, in ink, on the '
+    alt = ('The three marks at true size, each in its Illustrative message. Error: a circle holding an exclamation mark, in ink, on the '
            'pale Error Band with a 4 px red bar at its left, beside “Error: Enter a ZIP code with five digits.” Success: a '
            'check leaving an open circle, in Verdigris, beside “You’re signed up. We’ll email you on March 1.” Warning: a '
            'triangle holding an exclamation mark, in ink, with a 4 px Charcoal bar, beside “Checked April 20. The agency '
@@ -624,16 +691,30 @@ def s_marks(ctx, m):
 
 
 # ------------------------------------------------------------------------------------------------ 11.16 which red yields
+# D2-958 (BE-M2): H.99009 takes a neutral subject, and the figure draws a reform V7 does not flag, R-32 on Variable B2,
+# with the connection it targets, L26 (B2 to C3, well supported). Labels are the editor's table's (D2-751). The three
+# marks, their order and the yielding stay as built.
+YIELD_BILL = dict(id='H.99009', title='Local news grants', states=['done', 'take', 'notyet', 'notyet', 'notyet', 'notyet'],
+                  line='Testimony is open until March 3.', take='Send written testimony by March 3.',
+                  cta='How to send testimony')
+YIELD_HEAD = 'The House hears the local news grants bill on March 3'
+YIELD_REFORM = ('R-32', 'public and philanthropic funding for local news')
+YIELD_PILLS = ('Local news supply', 'Electoral pressure')      # B2 and C3, V7's loop short names
+YIELD_NOTE = ('In our atlas, more local news raises electoral pressure, the risk officials face of losing office. It '
+              'grades the reform’s own effect a hypothesis, since no evaluation has yet shown that such funds improve '
+              'coverage.')
+EMAIL_ERR = 'Enter an email address with an\u00a0@, such as name@example.com.'   # CD-S5: "an @," stays on one line
+
+
 def yield_view(ctx, m, fail=False):
     """One view at 360 px where an error, the take-part mark and an intervention marker meet. Correct: the error holds
     the red (Rule 05.3's first claim); the take-part disc and the marker keep their shapes and words in ink, and the ask
-    steps down to Charcoal. Failure: all three claim red."""
+    steps down to Charcoal. Failure: all three claim red. BE-S6: the Illustrative label sits beside the invented bill
+    card only, since the atlas figure is real."""
     T, u, v = ctx.ty, m.uicon, ctx.v
-    bill = dict(id='H.99009', title='All-party primaries', states=['done', 'take', 'notyet', 'notyet', 'notyet', 'notyet'],
-                line='Testimony is open until March 3.', take='Send written testimony by March 3.',
-                cta='How to send testimony')
     css = (m.piece_css(ctx, 'n', 's') + marks_css(ctx) + (
-        f'.ky{{margin:12px 0 0;{T("label")};color:var(--txt2)}}.ch{{margin:6px 0 12px;{T("h4", "floor")};text-wrap:balance}}'
+        f'.ky{{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin:0;{T("label")};color:var(--txt2)}}'
+        f'.ch{{margin:6px 0 12px;{T("h4", "floor")};text-wrap:balance}}'
         f'.cd .rows{{border:0}}.cd .row{{padding:0;border:0}}'
         f'.fg{{margin:16px 0 0;padding:12px 0 0;border-top:1px solid var(--hair)}}.fk{{{T("label")};color:var(--txt2)}}'
         f'.lp{{display:flex;align-items:center;gap:6px;margin-top:10px}}.lp svg{{flex:none}}'
@@ -653,46 +734,49 @@ def yield_view(ctx, m, fail=False):
     arrow = ('<svg class="mk" width="14" height="10" viewBox="0 0 14 10" aria-hidden="true" focusable="false">'
              '<path d="M0 5h11M8 1.5l4 3.5-4 3.5" class="si nf" stroke-width="1.5"/></svg>')
     tgt = (' rd" data-red="working" data-red-job="where it acts' if fail else '')
+    rid, rname = YIELD_REFORM
     fig = (f'<div class="fg"><p class="fk">Where the bill would act, in our systems atlas</p><div class="lp">'
-           f'<span class="pl">Safe seats</span>{arrow}<span class="pl tg{tgt}">Primary decisiveness</span>{arrow}'
-           f'<span class="pl">Electoral pressure</span></div>'
-           f'<p class="fn"><b>Reform R-01 acts here.</b> All-party primaries would move the choice a primary makes in a '
-           f'safe seat to every voter.</p></div>')
+           f'<span class="pl tg{tgt}">{YIELD_PILLS[0]}</span>{arrow}<span class="pl">{YIELD_PILLS[1]}</span></div>'
+           f'<p class="fn"><b>Reform {rid}, {rname}, acts here.</b> {YIELD_NOTE}</p></div>')
     err = (f'<div class="fm" data-red="working" data-red-job="error"><span class="l">Email for a reminder</span>'
-           f'<span class="in">name@example</span><div class="er">{u("error")}<span><b>Error:</b> Enter an email address '
-           f'with an @, such as name@example.com.</span></div></div>')
+           f'<span class="in">name@example</span><div class="er">{u("error")}<span><b>Error:</b> '
+           f'{EMAIL_ERR}</span></div></div>')
     ask = (f'<span class="ask r" data-red="working" data-red-job="take part now">Remind me</span>' if fail
            else '<span class="ask y">Remind me</span>')
-    row = m.row(bill, 'card', red=fail)
-    return css, (f'<div class="pc"><p>{m.ILLUS}</p><div class="cd"><p class="ky">Tracker · State bills</p>'
-                 f'<p class="ch">The House hears the all-party primary bill on March 3</p><ul class="rows">{row}</ul></div>'
+    row = m.row(YIELD_BILL, 'card', red=fail)
+    return css, (f'<div class="pc"><div class="cd"><p class="ky">Tracker · State bills {m.ILLUS}</p>'
+                 f'<p class="ch">{YIELD_HEAD}</p><ul class="rows">{row}</ul></div>'
                  f'{fig}{err}{ask}</div>')
 
 
 def s_yield(ctx, m):
     css, body = yield_view(ctx, m)
     html = f'<style>{css}</style>{body}'
-    alt = ('One Illustrative view at 360 px on Newsprint where three marks could claim red. A story card for bill H.99009, '
-           'All-party primaries, shows six numbered steps with the take-part mark on step 2, its small disc drawn in '
-           'Charcoal, and the words “You can take part now. Send written testimony by March 3.” Under it, a small figure '
-           'from our systems atlas draws three linked ovals, Safe seats, Primary decisiveness and Electoral pressure, with '
-           'Primary decisiveness outlined heavier in Charcoal and the words “Reform R-01 acts here.” Last, an email field '
-           'holds an error: a red bar at its left and a message on the pale Error Band, “Error: Enter an email address with '
-           'an @, such as name@example.com.” The error is the only red in the view, and the Remind me button is Charcoal.')
+    b, (rid, rname), (p1, p2) = YIELD_BILL, YIELD_REFORM, YIELD_PILLS
+    alt = (f'One view at 360 px on Newsprint where three marks could claim red. An Illustrative story card for bill '
+           f'{b["id"]}, {b["title"]}, headed “{YIELD_HEAD}”, shows six numbered steps: step 1 done, step 2 where you can '
+           f'take part now, its small disc drawn in Charcoal, and steps 3 to 6 not yet, with the words “You can take part '
+           f'now. {b["take"]}” Under it, a small figure from our systems atlas draws two linked ovals, {p1} and {p2}, '
+           f'with {p1} outlined heavier in Charcoal and the words “Reform {rid}, {rname}, acts here. {YIELD_NOTE}” Last, '
+           f'an email field holds an error: a red bar at its left and a message on the pale Error Band, “Error: '
+           f'{EMAIL_ERR.replace(chr(160), " ")}” The error is the only red in the view, and the Remind me button is '
+           f'Charcoal.')
     return m.spec(ctx, 's-11-16-correct', html, '11.16', alt, width=360, illustrative=True,
                   notes='Rule 05.3’s order: an error first, then the step a reader can take, then where a reform acts. The '
                         'take-part disc and the marker yield to ink with their shapes and words (C-4). The marker follows '
-                        'System 1’s target: the variable’s outline at 3 px.')
+                        'System 1’s target: the variable’s outline at 3 px. The bill is invented and labeled beside its '
+                        'card; the figure is Atlas V7’s reform R-32 on Variable B2 and connection L26 (D2-958).')
 
 
 def s_yield_fail(ctx, m):
     css, body = yield_view(ctx, m, fail=True)
     fcss, band = ctx.fail_band(flush=True)
     html = f'<style>{css}{fcss}</style>{band}{body}'
-    alt = ('Labeled Failure case: do not publish. The same Illustrative view, with red in three jobs: the take-part disc on '
-           'step 2 and the Remind me button, the outline of Primary decisiveness where reform R-01 acts, and the error bar '
-           'on the email field. The eye has three reds to choose from, and the error that blocks the reader looks no more '
-           'urgent than the rest.')
+    rid = YIELD_REFORM[0]
+    alt = (f'Failure case: do not publish. The same view, with its Illustrative bill card, and with red in three jobs: '
+           f'the take-part disc on step 2 and the Remind me button, the outline of {YIELD_PILLS[0]} where reform {rid} '
+           'acts, and the error bar on the email field. The eye has three reds to choose from, and the error that blocks '
+           'the reader looks no more urgent than the rest.')
     return m.spec(ctx, 's-11-16-failure', html, '11.16', alt, width=360, illustrative=True, exempt=['red'],
                   notes='Labeled failure: three working-red jobs in one view on purpose (Rule 05.3).')
 
@@ -721,6 +805,8 @@ def build_ui(ctx, m, rule_titles):
     ink_band = r('oa.color.state.error.text.onNewsprint', 'oa.color.derived.errorBand', 'contrast Charcoal on the Error Band')
     verd = r('oa.color.state.success.mark.onNewsprint', 'oa.color.surface.newsprint')
     ring = r('oa.color.focus.ring.onNewsprint', 'oa.color.surface.newsprint')
+    lsteps = loop_steps(m)[2]
+    pace_lo, pace_hi = min(x[2] for x in lsteps) / 1000, max(x[2] for x in lsteps) / 1000
     files = ['work/build/assets/utility/svg-24/', 'work/build/assets/utility/svg-16/',
              'work/build/assets/utility/20261110_Utility-Icons-Manifest.json']
     rules = [
@@ -849,9 +935,9 @@ def build_ui(ctx, m, rule_titles):
                              'and a loop stepper is where a builder would reach for one.'],
                     'basis': 'Design judgment; Rule 10.1'},
             'correct': {'specimen': 's-11-14-correct',
-                        'caption': 'A loop stepper from our systems atlas, live at 360 px. Play, Reset the loop, Previous '
-                                   'step and Next step each carry a utility icon beside the word, and the unavailable ones '
-                                   'say why.'},
+                        'caption': f'A stepper for loop {LOOP_ID} from our systems atlas, live at 360 px. Play, Reset the '
+                                   'loop, Previous step and Next step each carry a utility icon beside the word, and the '
+                                   'unavailable ones say why. The least certain step says so in its words.'},
             'failure': {'specimen': 's-11-14-failure',
                         'caption': '<strong>Fails Rule 11.14.</strong> CL-024, the feedback loop drawing, stands in for '
                                    'Reset. A reader learns it as a button here and meets it next as the subject of a story '
@@ -860,6 +946,12 @@ def build_ui(ctx, m, rule_titles):
                 {'label': 'Reset', 'value': 'Three quarters of a circle with one arrowhead; “Reset” or “Start over” and its object'},
                 {'label': 'Play and Pause', 'value': 'One button: its icon and word change together; playback starts only '
                                                      'on a press'},
+                {'label': 'Pace', 'value': f'Play holds each step about {MS_PER_WORD} ms a word and never under '
+                                           f'{MS_FLOOR // 1000} seconds, with reduced motion too: '
+                                           f'{pace_lo:g} to {pace_hi:g} seconds a step here. Pause stops it, and Next '
+                                           f'step turns one step at a time'},
+                {'label': 'Step words', 'value': 'The verb follows the connection’s sign; a step graded plausible '
+                                                 'takes “can” and says its grade'},
                 {'label': 'Topic and atlas symbols', 'value': 'Beside their own word, never inside a button that does '
                                                               'something (Rule 10.1)'},
             ],
@@ -877,9 +969,8 @@ def build_ui(ctx, m, rule_titles):
                      'A field with an error carries the red bar at its left edge and points to its message, and focus moves '
                      'to the first field to fix. Copy, Search, Filter and Sort write their results to a status line in '
                      'words.'],
-            'tokens': ['oa.color.state.error.mark.onNewsprint', 'oa.color.state.error.band.onNewsprint',
-                       'oa.color.state.error.text.onNewsprint', 'oa.color.state.success.mark.onNewsprint',
-                       'oa.color.state.warning.mark.onNewsprint'],
+            'tokens': ['oa.color.state.error.text.onNewsprint', 'oa.color.state.error.band.onNewsprint',
+                       'oa.color.state.success.mark.onNewsprint', 'oa.color.state.warning.mark.onNewsprint'],
             'why': {'text': [f'Each state has a shape and a word, so none rests on color. The error mark draws in ink '
                              f'because Pillar Red measures {red_band} to 1 on the Error Band and {red_n} on Newsprint, '
                              f'under the 3 to 1 a mark needs; in ink it measures {ink_band} to 1, and the red bar carries '
@@ -894,10 +985,14 @@ def build_ui(ctx, m, rule_titles):
                                    'a cross. The cross means Close, the red text measures 2.96 to 1, and nothing says '
                                    '“Error” or how to fix the entry.'},
             'specs': [
-                {'label': 'Error', 'value': 'The mark in ink on the Error Band, a 4 px Pillar Red bar at the left, “Error:” '
-                                            'and the fix', 'token': 'oa.color.state.error.band.onNewsprint'},
-                {'label': 'Field with an error', 'value': 'A 4 px red bar at its left edge, aria-invalid and '
-                                                          'aria-describedby to its message', 'token': 'oa.color.state.error.mark.onNewsprint'},
+                {'label': 'Error mark', 'value': 'A circle holding an exclamation mark, in the text’s ink, never red',
+                 'token': 'oa.color.state.error.text.onNewsprint'},
+                {'label': 'The red bar', 'value': '4 px of Pillar Red at the left of the message and of a field with an '
+                                                  'error; this token colors the bar only', 'token': 'oa.color.state.error.mark.onNewsprint'},
+                {'label': 'Error message', 'value': 'On the Error Band: the mark, “Error:” and the fix',
+                 'token': 'oa.color.state.error.band.onNewsprint'},
+                {'label': 'Field with an error', 'value': 'The red bar at its left edge, aria-invalid and aria-describedby '
+                                                          'to its message'},
                 {'label': 'Success', 'value': f'The mark in Verdigris, {verd} to 1, beside what happened',
                  'token': 'oa.color.state.success.mark.onNewsprint'},
                 {'label': 'Warning', 'value': 'The mark in ink, never red, with a 4 px bar in ink; never for an evidence '
@@ -910,7 +1005,10 @@ def build_ui(ctx, m, rule_titles):
             'related': ['05', '17'],
             'builders': ['Put an error message in <code>role="alert"</code> or in a status line the field points to, and a '
                          'success or a result in <code>role="status"</code>. Draw the bar as a left border, which stays '
-                         'visible when the system forces its own colors.'],
+                         'visible when the system forces its own colors.',
+                         'Draw the error mark in <code>--oa-color-state-error-text-on-newsprint</code> through '
+                         '<code>currentColor</code>. <code>--oa-color-state-error-mark-on-newsprint</code> colors the 4 px '
+                         'bar only.'],
         },
         {
             'id': '11.16', 'title': 'When an error, the take-part mark and an intervention marker meet, give the error the red.',
@@ -922,23 +1020,24 @@ def build_ui(ctx, m, rule_titles):
                      'yields too: its outline stays heavier, in ink, with its words.',
                      'Once the reader fixes the error, the red goes back to the take-part mark and the ask. The '
                      'intervention marker takes the red only in a view with no error and no step to take.'],
-            'tokens': ['oa.color.state.error.mark.onNewsprint', 'oa.component.button.primary.fill.onNewsprint',
+            'tokens': ['oa.color.state.error.text.onNewsprint', 'oa.component.button.primary.fill.onNewsprint',
                        'oa.component.mark.takePart.disc'],
             'why': {'text': ['A reader has to fix an error before taking any step, and a step a reader can take matters '
                              'more than a point we want to make. Each mark keeps its shape and its words when it yields, '
-                             'so nothing it says is lost; only the color moves.'],
+                             'so nothing it says is lost.'],
                     'basis': 'Rule 05.3; WCAG 2.2 SC 1.4.1'},
             'correct': {'specimen': 's-11-16-correct',
-                        'caption': 'One view at 360 px. The email field’s error holds the red. The take-part disc on step '
-                                   '2 and the heavier outline where reform R-01, all-party primaries with ranked general '
-                                   'elections, acts stay in Charcoal with their words, '
-                                   'and Remind me is Charcoal until the error is fixed.'},
+                        'caption': f'One view at 360 px. The email field’s error holds the red. The take-part disc on step '
+                                   f'2 and the heavier outline where reform {YIELD_REFORM[0]}, {YIELD_REFORM[1]}, acts '
+                                   f'stay in Charcoal with their words, and Remind me is Charcoal until the error is fixed.'},
             'failure': {'specimen': 's-11-16-failure',
                         'caption': '<strong>Fails Rules 11.16 and 05.3.</strong> The error, the take-part mark and the '
                                    'intervention marker all take red, so the error that blocks the reader looks no more '
                                    'urgent than the rest.'},
             'specs': [
-                {'label': 'First claim', 'value': 'An error the reader must fix', 'token': 'oa.color.state.error.mark.onNewsprint'},
+                {'label': 'First claim', 'value': 'An error the reader must fix, which holds the red bar',
+                 'token': 'oa.color.state.error.mark.onNewsprint'},
+                {'label': 'Error mark', 'value': 'In the text’s ink, beside the red bar', 'token': 'oa.color.state.error.text.onNewsprint'},
                 {'label': 'Second claim', 'value': 'The step a reader can take now: the take-part mark and the ask',
                  'token': 'oa.component.mark.takePart.disc'},
                 {'label': 'Third claim', 'value': 'Where a reform acts: the intervention marker'},

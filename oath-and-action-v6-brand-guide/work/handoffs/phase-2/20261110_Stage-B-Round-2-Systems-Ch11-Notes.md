@@ -18,7 +18,7 @@ Status: built and checked. The editor's first-pass table for chapter 11 (editor'
 | S.1517 | Snow route parking | S.99006 |
 | S.0412 | Town audit deadlines | S.99007 |
 | (new) | Rural clinic grants, a Nebraska bill (DR-150) | LB 99008 |
-| (new) | All-party primaries, Rule 11.16's view | H.99009 |
+| (new) | Local news grants, Rule 11.16's view (round 3, D2-958; it was All-party primaries until then) | H.99009 |
 | H.R. 99012 | Passport wait times | unchanged (D2-427) |
 
 Invented records requests and agency rules take numbers from 99001 up ("Request 99001", "Rule 99002") and name no agency.

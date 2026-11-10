@@ -3,8 +3,9 @@
 
   12.1  dividers: the Stone hairline, with the hinge divider indexed from Rule 04.4, and an index of every device
   12.2  watermarks: ampersand B from its display master at the token opacities 0.08 and 0.10, in an open margin
-  12.3  the compact signature: L8, opaque, for small headers and video corners
-  12.4  two restrained patterns built from the hinge devices, after icon study 07's ring rhythm and rule rhythm
+  12.3  L8, the monogram, as a small signature: opaque, for small headers and video corners
+  12.4  one restrained pattern built from the hinge devices, the hinge arcs, after icon study 07's ring rhythm (round 3
+        dropped the hinge rules, CA-S11)
 
 The chapter file is shared (D2-829, D2-830): the systems designer's stage_b_ch12_systems_build.py writes Rules 12.5 to
 12.9. write_chapter() replaces only Rules 12.1 to 12.4 and this maker's extras, keeps every other rule, extra and the
@@ -29,6 +30,12 @@ MINE = ("12.1", "12.2", "12.3", "12.4")
 DEVICES = ("divider", "index", "watermark", "signature", "pattern")
 PREFIXES = tuple(f"s-12-{d}" for d in DEVICES)
 W = 600                                                    # every plate fits a chapter column (D2-424)
+PHONE_W = 360                                              # a plate that is one phone-size piece fits a 360 px screen (CA-S5)
+# Where the page's right edge cuts B, in units of the display master (93.29 wide): through the upper loop, the crossing
+# stroke and the lower bowl's counter, left of the arm (64.71 to 84.14) and of the loop's outer edge (63.86), so no piece
+# of B stands alone at the edge and no curve grazes it (round 3, CD-S10, CA-S10; Rule 04.8's crop rule)
+WM_CUT, WM_TOP, WM_H, PAGE_H = 50.0, 20, 320, 360
+B_W, B_H = 93.29, 102.69
 
 
 def spec(fn):
@@ -102,8 +109,8 @@ INDEX = [("Stone hairline", "Separates sections and modules", "12.1"),
          ("Large crop of B", "Frames a cover", "04.8"),
          ("Lockmark", "Signs four fixed places", "08.2"),
          ("Watermark", "Signs an open margin", "12.2"),
-         ("Compact signature", "Signs a small header or a video corner", "12.3"),
-         ("Hinge arcs and hinge rules", "Give an open area texture", "12.4"),
+         ("L8, the monogram", "Signs a small header or a video corner", "12.3"),
+         ("Hinge arcs", "Gives an open area texture", "12.4"),
          ("Intervention marker", "Shows where a reform acts", "12.5"),
          ("Chart key", "Names what a chart's labels cannot carry", "12.6"),
          ("Locator", "Shows where a view sits in the whole", "12.7"),
@@ -135,10 +142,10 @@ def watermark_b(height, surface):
     return svg_file(ID_DIR / AMP["display"], h=height, decorative=True, style=f"color:{color};opacity:{op}")
 
 
-def _page(surface, eyebrow, title, text, wm, behind=False, h=360):
+def _page(surface, eyebrow, title, text, wm, behind=False, h=PAGE_H):
     """A page at true size: the text column at left, the watermark in the open margin at right and running off the
     page's edge, or behind the text when behind=True (the failure)."""
-    pos = "left:-24px;top:40px" if behind else "right:-72px;top:44px"
+    pos = "left:-24px;top:40px" if behind else f"right:{-(B_W - WM_CUT) * WM_H / B_H:.1f}px;top:{WM_TOP}px"
     return (f'<div class="oai-s-{surface}" style="position:relative;width:552px;height:{h}px;overflow:hidden;'
             f'border:1px solid {hair(surface)}">'
             f'<div aria-hidden="true" style="position:absolute;{pos};line-height:0">{wm}</div>'
@@ -151,7 +158,7 @@ def _page(surface, eyebrow, title, text, wm, behind=False, h=360):
 BRIEF = ("Research brief", "The decision behind the service.",
          "Every five years the town puts its trash pickup out to bid. This brief traces who wrote the last contract, who "
          "voted on it and what the record shows.")
-OPENER = ("Track", "Follow the public record.",
+OPENER = ("Track", "Follow the decision and keep its record within reach.",
           "Every vote, hearing and filing on the bills we follow, dated and linked to its source.")
 
 
@@ -160,23 +167,28 @@ def s_12_watermark_correct():
     body = (f'<div class="oai-pad">{head_label()}<div class="oai-stack" style="gap:16px">'
             f'<div class="oai-cell">{_page("newsprint", *BRIEF, watermark_b(320, "newsprint"))}'
             f'<span class="oai-tag">A report page on Newsprint: Charcoal at 8 percent</span></div>'
-            f'<div class="oai-cell">{_page("charcoal", *OPENER, watermark_b(320, "charcoal"), h=320)}'
+            f'<div class="oai-cell">{_page("charcoal", *OPENER, watermark_b(320, "charcoal"))}'
             f'<span class="oai-tag">A section opener on Charcoal: Newsprint at 10 percent</span></div></div></div>')
     alt = ("Two Illustrative pages at true size. A report page on Newsprint headed Research brief, The decision behind the "
            "service., with a paragraph at left, and a very large ampersand B in Charcoal at 8 percent in the open right "
-           "margin, running off the page's edge. A section opener on Charcoal headed Track, Follow the public record., with "
-           "the same B in Newsprint at 10 percent in its right margin. Neither watermark sits behind any words.")
+           "margin, running off the page's right edge, which cuts through its loop and its crossing stroke. A section opener "
+           "on Charcoal headed Track, Follow the decision and keep its record within reach., with the same B in Newsprint at "
+           "10 percent in its right margin. Neither watermark sits behind any words.")
     return rec("s-12-watermark-correct", "12.2", W, alt, body, illustrative=True,
                notes="B's display master (ampersand/20261028_Amp-B-Display-Master.svg) at 320 px tall, in Charcoal with "
                      "opacity oa.opacity.watermarkOnLight (0.08, 1.17 to 1) and in Newsprint with oa.opacity.watermarkOnDark "
                      "(0.10, 1.24 to 1), the two opacities our fifth edition's quiet signatures used, now tokens (Rule 05.6). "
-                     "The headings are our fifth edition's watermark mockups' (architecture map, V5 03); the paragraphs are "
-                     "invented.")
+                     "B's top 20 px under the page's top, and the page's right edge cutting B at 50 of its 93.29 units: through "
+                     "the loop, the crossing stroke and the lower counter, left of the arm, so no piece of B stands alone at the "
+                     "edge (round 3, CD-S10, CA-S10). The report page's heading is our fifth edition's watermark mockup's "
+                     "(architecture map, V5 03); the opener's line is Track's job line, as chapter 01 and Rule 09.4 print it; "
+                     "the paragraphs are invented.")
 
 
 @spec
 def s_12_watermark_failure():
-    body = f'<div class="oai-pad">{dnp()}<div style="margin-top:12px">{_page("newsprint", *BRIEF, watermark_b(320, "newsprint"), behind=True)}</div></div>'
+    body = (f'<div class="oai-pad">{dnp()}<div style="margin-top:12px">{head_label()}'
+            f'{_page("newsprint", *BRIEF, watermark_b(320, "newsprint"), behind=True)}</div></div>')
     alt = ("Failure case: do not publish. The Illustrative report page with the large Charcoal B at 8 percent moved behind "
            "its heading and paragraph, so its edges cross the letters.")
     return rec("s-12-watermark-failure", "12.2", W, alt, body, illustrative=True,
@@ -235,7 +247,7 @@ def s_12_signature_failure():
 
 # ============================================================================================ 12.4 patterns
 STEP = 16          # the arcs' step in px: half the hinge diagram's ring radius (110 units), whose arcs sit at 165, a 2 to 3 ratio
-PITCH = 12         # the rules' pitch in px: the hinge divider's 1 px line repeated on the spacing scale's 4 px grid
+ARCS_H = 220       # the open area the arcs fill on a cover, from its foot: it starts at least 24 px under the paragraph
 
 
 def hinge_arcs(w, h, surface, corner="br", fill=False):
@@ -250,27 +262,17 @@ def hinge_arcs(w, h, surface, corner="br", fill=False):
             f'style="display:block;overflow:hidden" fill="none" stroke="{hl(surface)}" stroke-width="1">{circles}</svg>')
 
 
-def hinge_rules(w, h, surface):
-    """The hinge divider's 1 px line repeated every PITCH px, in the surface's hairline color."""
-    rects = "".join(f'<rect x="0" y="{y}" width="{w}" height="1"/>' for y in range(0, h, PITCH))
-    return (f'<svg width="{w}" height="{h}" viewBox="0 0 {w} {h}" aria-hidden="true" focusable="false" class="oai-svg" '
-            f'style="display:block;overflow:hidden" fill="{hl(surface)}">{rects}</svg>')
-
-
 def coverage():
-    """Ink coverage of each pattern on a 1x Chromium render, as Phase 1 measured its swatches: the mean of each pixel's
+    """Ink coverage of the hinge arcs on a 1x Chromium render, as Phase 1 measured its swatches: the mean of each pixel's
     distance from the ground over the distance from ground to Stone, on Newsprint."""
     from PIL import Image
-    out = {}
-    for name, fn in (("hinge_arcs", hinge_arcs), ("hinge_rules", hinge_rules)):
-        swatch = hinge_arcs(240, 240, "newsprint", fill=True) if name == "hinge_arcs" else hinge_rules(240, 240, "newsprint")
-        uri = raster_png(f'<div style="line-height:0">{swatch}</div>', 240, 240, f"p12-{name}", scale=1)
-        im = Image.open(io.BytesIO(base64.b64decode(uri.split(",", 1)[1]))).convert("RGB")
-        g, s = (0xDC, 0xD9, 0xD2), (0x5D, 0x63, 0x6D)
-        span = max(abs(a - b) for a, b in zip(g, s))
-        px = list(im.getdata())
-        out[name] = round(sum(min(1, max(abs(a - b) for a, b in zip(p, g)) / span) for p in px) / len(px), 3)
-    return out
+    swatch = hinge_arcs(240, 240, "newsprint", fill=True)
+    uri = raster_png(f'<div style="line-height:0">{swatch}</div>', 240, 240, "p12-hinge_arcs", scale=1)
+    im = Image.open(io.BytesIO(base64.b64decode(uri.split(",", 1)[1]))).convert("RGB")
+    g, s = (0xDC, 0xD9, 0xD2), (0x5D, 0x63, 0x6D)
+    span = max(abs(a - b) for a, b in zip(g, s))
+    px = list(im.getdata())
+    return {"hinge_arcs": round(sum(min(1, max(abs(a - b) for a, b in zip(p, g)) / span) for p in px) / len(px), 3)}
 
 
 COVER = None
@@ -283,53 +285,46 @@ def _coverage():
     return COVER
 
 
-def cover(pattern, behind=False):
-    """A half-letter report cover at 1:1 on screen, 360 by 466 px, on Newsprint: the title at top left, the pattern in the
-    open lower right. behind=True runs the pattern under the cover's paragraph (the failure)."""
-    # the open area starts at least 24 px under the paragraph, which ends about 200 px down the cover
-    pat = (hinge_arcs(360, 466, "newsprint", fill=True) if behind else hinge_arcs(360, 220, "newsprint")) if pattern == "arcs" \
-        else hinge_rules(360 if behind else 180, 466 if behind else 192, "newsprint")
-    pos = ("left:0;top:0" if behind else ("left:0;bottom:0" if pattern == "arcs" else "right:0;bottom:0"))
-    return (f'<div class="oai-s-newsprint" style="position:relative;width:360px;height:466px;overflow:hidden;border:1px solid {hair("newsprint")}">'
+def cover(behind=False):
+    """A report's first screen at true size, 360 by 466 px, on Newsprint, the whole plate (round 3, CA-S11): the
+    Illustrative label at its head, the title at top left and the hinge arcs in the open lower right. behind=True runs
+    the arcs under the cover's title and paragraph (the failure)."""
+    pat = hinge_arcs(PHONE_W, 466, "newsprint", fill=True) if behind else hinge_arcs(PHONE_W, ARCS_H, "newsprint")
+    pos = "left:0;top:0" if behind else "left:0;bottom:0"
+    return (f'<div class="oai-s-newsprint" style="position:relative;width:{PHONE_W}px;height:466px;overflow:hidden">'
             f'<div aria-hidden="true" style="position:absolute;{pos};line-height:0">{pat}</div>'
-            f'<div style="position:relative;padding:32px 32px 0">'
+            f'<div style="position:relative;padding:32px 32px 0">{head_label()}'
             f'<p style="{ty("label")};color:{ink2("newsprint")};margin:0 0 10px">Report 3</p>'
             f'<p style="{ty("h3")};color:{ink("newsprint")};margin:0 0 12px">How state committees record their votes</p>'
-            f'<p style="{ty("body")};color:{ink("newsprint")};margin:0">We read every committee rule in the fifty states and '
-            f'checked which ones post a vote within two days.</p></div></div>')
+            f'<p class="p12-par" style="{ty("body")};color:{ink("newsprint")};margin:0">We read every committee rule in the fifty '
+            f'states and checked which ones post a vote within two days.</p></div></div>')
 
 
 @spec
 def s_12_pattern_correct():
     c = _coverage()
-    body = (f'<div class="oai-pad">{head_label()}<div class="oai-row top" style="gap:16px;flex-wrap:wrap">'
-            f'<div class="oai-cell">{cover("arcs")}<span class="oai-tag">Hinge arcs, {c["hinge_arcs"] * 100:.1f} percent ink</span></div>'
-            f'<div class="oai-cell">{cover("rules")}<span class="oai-tag">Hinge rules, {c["hinge_rules"] * 100:.1f} percent ink</span></div>'
-            '</div></div>')
-    alt = ("Two Illustrative report covers at true size on Newsprint, each with the kicker Report 3, the title How state "
-           "committees record their votes and a short paragraph at the top. On the first, Stone arcs 1 pixel wide spread from "
-           "the bottom right corner across the open lower part of the cover. On the second, a block of fine Stone horizontal "
-           "lines fills the open lower right. Neither pattern reaches the words.")
-    return rec("s-12-pattern-correct", "12.4", W, alt, body, illustrative=True,
-               notes=f"Built from the hinge devices, after icon study 07's ring rhythm and rule rhythm. Hinge arcs: circles from "
-                     f"the corner at radii 2, 3, 4 and more times {STEP} px, continuing the hinge diagram's ring and arcs "
-                     f"(radii 110 and 165 units, 2 to 3). Hinge rules: the hinge divider's 1 px line every {PITCH} px. Both "
-                     f"1 px in oa.color.border.hairline (Stone). Ink coverage measured on a 240 px swatch rendered at 1x in "
-                     f"Chromium, as Phase 1 measured its patterns: arcs {c['hinge_arcs'] * 100:.1f} percent, rules "
-                     f"{c['hinge_rules'] * 100:.1f} percent, under the 12 percent ceiling (D1-18). The covers are 360 by 466 px "
-                     f"screen covers, a report's first screen, so two fit a column, with type at the phone floor (D2-254).")
+    alt = ("An Illustrative report cover at true size on Newsprint, 360 by 466 pixels, with the kicker Report 3, the title How "
+           "state committees record their votes and a short paragraph at the top. Stone arcs 1 pixel wide spread from the "
+           "bottom right corner across the open lower part of the cover, and stop well short of the words.")
+    return rec("s-12-pattern-correct", "12.4", PHONE_W, alt, cover(), illustrative=True,
+               notes=f"Built from the hinge devices, after icon study 07's ring rhythm. Hinge arcs: circles from the corner at "
+                     f"radii 2, 3, 4 and more times {STEP} px, continuing the hinge diagram's ring and arcs (radii 110 and 165 "
+                     f"units, 2 to 3), ending inside a quarter circle {ARCS_H - 1} px wide, 1 px in oa.color.border.hairline "
+                     f"(Stone). Ink coverage measured on a 240 px swatch rendered at 1x in Chromium, as Phase 1 measured its "
+                     f"patterns: {c['hinge_arcs'] * 100:.1f} percent, under the 12 percent ceiling (D1-18). Round 3 (CA-S11): "
+                     f"the hinge rules leave the rule, since sixteen even lines read as lines to write on, and the plate is the "
+                     f"cover alone at 360 px, so no part of the frame stands empty and a phone shows it whole. The cover is a "
+                     f"report's first screen, with type at the phone floor (D2-254).")
 
 
 @spec
 def s_12_pattern_failure():
-    body = (f'<div class="oai-pad">{dnp()}<div class="oai-row top" style="gap:16px;flex-wrap:wrap;margin-top:12px">'
-            f'<div class="oai-cell">{cover("arcs", behind=True)}<span class="oai-tag">Hinge arcs behind the words</span></div>'
-            f'<div class="oai-cell">{cover("rules", behind=True)}<span class="oai-tag">Hinge rules behind the words</span></div>'
-            '</div></div>')
-    alt = ("Failure case: do not publish. The same two Illustrative covers with each pattern spread over the whole cover, so "
-           "the arcs and the fine lines run behind the title and the paragraph.")
-    return rec("s-12-pattern-failure", "12.4", W, alt, body, illustrative=True,
-               notes="Each pattern under body text, the failure the brief names for both. Failure band per D2-308.")
+    body = f'{dnp()}{cover(behind=True)}'
+    alt = ("Failure case: do not publish. The same Illustrative cover with the arcs spread over the whole of it, so the "
+           "fine lines run behind the title and the paragraph.")
+    return rec("s-12-pattern-failure", "12.4", PHONE_W, alt, body, illustrative=True,
+               notes="The arcs under body text, the failure the brief names. The band runs the plate's width, as chapter 11's "
+                     "360 px plates set it, and the Illustrative label opens the cover under it (CD-S11). Failure band per D2-308.")
 
 
 # ============================================================================================ the chapter's rules
@@ -360,13 +355,14 @@ def _rules():
           "and below. Where an article turns from how a decision is made to what a reader can do, the hinge divider takes the "
           "hairline's place (Rule 04.4). Draw every divider solid.",
           "A hairline separates two sections without weight, so the words carry the structure and the page stays calm. In "
-          "our atlas a dashed line marks a plausible link, so a dashed divider would read as a claim about the evidence. "
+          "our atlas a dashed line marks a connection graded plausible, so a dashed divider would read as a claim about the "
+          "evidence. "
           "A hairline carries no meaning, so it needs no contrast ratio (Rule 05.5).",
           DJ + ", carried from our fifth edition's Stone hairlines",
           "An article on a town budget at true size: a Stone hairline between its first two sections, the hinge divider "
           "before What you can do, and below, the hairline on each of the four surfaces.",
-          "The same article divided by dashed lines. The breaks now read as a key's mark for a plausible link, and the turn "
-          "to the reader's step loses its divider.",
+          "The same article divided by dashed lines. The breaks now read as the atlas's mark for a plausible connection, and "
+          "the turn to the reader's step loses its divider.",
           tokens=["oa.color.border.hairline.onNewsprint", "oa.color.border.hairline.onPrussian", "oa.border.width.hairline", "oa.space.300"],
           specs=[SP_("Line", "1 px, solid", "oa.border.width.hairline"),
                  SP_("Color", "Stone on Newsprint, White and Charcoal; White on Prussian", "oa.color.border.hairline.onNewsprint"),
@@ -387,7 +383,7 @@ def _rules():
           "reader needs. These two opacities are the only ones a page may use (Rule 05.6).",
           DJ + ", carried from our fifth edition's quiet signatures; the opacities are tokens",
           "A report page on Newsprint and a section opener on Charcoal at true size, each with B in its open right margin, "
-          "running off the edge.",
+          "running off the right edge, which cuts through B's loop and crossing stroke.",
           "The report page with the watermark moved behind its heading and paragraph. Its edges cross the letters, and the "
           "words lose the clean ground they need.",
           tokens=["oa.opacity.watermarkOnLight", "oa.opacity.watermarkOnDark"],
@@ -395,12 +391,15 @@ def _rules():
                  SP_("On Newsprint and White", "Charcoal at 0.08, 1.17 to 1", "oa.opacity.watermarkOnLight"),
                  SP_("On Charcoal and Prussian", "Newsprint at 0.10, 1.24 to 1", "oa.opacity.watermarkOnDark"),
                  SP_("Size", "At least half the page's height; it may run off any edge"),
+                 SP_("Crop", "Where an edge cuts B, it cuts through strokes the eye can follow, with no piece of B left alone "
+                             "at the edge and no curve grazing it (Rule 04.8)"),
                  SP_("Place", "An open margin of a report page or a section opener"),
                  SP_("Never", "Behind words, a figure or a control; in red; beside a hinge headline, a crop of B or a pattern")],
           files=[A + AMP["display"]],
           related=["04", "05", "24"],
           builders="Set the opacity on the mark from its token, and place the mark in its own layer, outside the text "
-                   "column and hidden from assistive technology."),
+                   "column and hidden from assistive technology. Move it until every part of B inside the page joins the "
+                   "rest of the letter."),
         R("12.3", "Sign a small header or a video's corner with L8 at full strength.",
           "Where a page or a frame has room only for a small mark, such as a report's running head or the corner of a video, "
           "sign it with L8, the monogram, opaque, from its 48 px minimum, in its colors for the surface (Rule 03.5). In a "
@@ -422,38 +421,41 @@ def _rules():
           related=["03", "23", "24"],
           builders="Export the video's signature as a PNG at twice its size from the L8 master, with its colors written in, "
                    "and keep it in the same corner for the whole video."),
-        R("12.4", "Use a pattern only in an open area, away from words.",
-          "Two patterns, both drawn from the hinge, may give a cover, an opener or a social background texture. The hinge arcs "
-          "spread from a corner at the radii of the hinge diagram's ring and arcs, carried on in equal steps. The hinge rules "
-          "repeat the hinge divider's line every 12 px. Each runs 1 px in the surface's hairline color, covers no more than "
-          "12 percent of the area it fills, and stops short of any words, figure or control.",
+        R("12.4", "Use the hinge arcs only in an open area, away from words.",
+          "One pattern, the hinge arcs, may give texture to a cover, an opener or the background of a social card. Its arcs "
+          "spread from a corner at the radii of the hinge diagram's ring and arcs, carried on in equal steps, and end inside "
+          "a quarter circle, so none is cut off flat. They run 1 px in the surface's hairline color, cover no more than 12 "
+          "percent of the area they fill, and stop at least 24 px short of any words, figure or control.",
           "A pattern gives an empty area texture without a picture, and drawn from the hinge it adds no new shape for a "
           "reader to learn. Behind words, even a faint pattern adds edges the eye has to sort from the letters, so it stays "
-          f"where nothing is read. The arcs cover {c['hinge_arcs'] * 100:.1f} percent of their area and the rules "
-          f"{c['hinge_rules'] * 100:.1f} percent.",
-          "Design judgment and our measurements, October and November 2026; the 12 percent ceiling is a studio threshold",
-          "Two report covers at true size, the title at top left, one with the hinge arcs spreading from the bottom right "
-          "corner and one with a block of hinge rules in the lower right.",
-          "The same covers with each pattern behind the title and the paragraph. The lines cross the letters and the words "
-          "lose their clean ground.",
+          f"where nothing is read. The arcs cover {c['hinge_arcs'] * 100:.1f} percent of the area they fill.",
+          "Design judgment and our measurements, October and November 2026; the 12 percent ceiling is our design judgment",
+          "A report cover at true size, the title at top left and the hinge arcs spreading from the bottom right corner, "
+          "clear of the words.",
+          "The same cover with the arcs behind the title and the paragraph. The lines cross the letters and the words lose "
+          "their clean ground.",
           tokens=["oa.color.border.hairline.onNewsprint", "oa.border.width.hairline"],
-          specs=[SP_("Hinge arcs", f"Circles from a corner at 2, 3, 4 and more steps of {STEP} px, 1 px wide"),
-                 SP_("Hinge rules", f"1 px lines every {PITCH} px"),
-                 SP_("Color", "The surface's hairline color: Stone on Newsprint, White and Charcoal; no pattern on Prussian",
+          specs=[SP_("Hinge arcs", f"Circles from a corner at 2, 3, 4 and more steps of {STEP} px, 1 px wide, ending inside a "
+                                   "quarter circle as wide as the area's shorter side"),
+                 SP_("Color", "The surface's hairline color: Stone on Newsprint, White and Charcoal; never on Prussian",
                      "oa.color.border.hairline.onNewsprint"),
-                 SP_("Coverage", "At most 12 percent of the area the pattern fills, measured on a render"),
+                 SP_("Coverage", "At most 12 percent of the area the arcs fill, measured on a render"),
                  SP_("Clearance", "At least 24 px from any words, figure or control"),
-                 SP_("Never", "Behind words; in red; dotted or dashed; with a watermark or a crop of B in the same view")],
+                 SP_("Never", "Behind words; in red; dotted or dashed; as evenly ruled lines, which read as a form to fill in; "
+                              "with a watermark or a crop of B in the same view")],
           related=["04", "05", "07"],
-          builders="Draw a pattern as an SVG in the hairline token, sized to the open area it fills, and keep it out of the "
+          builders="Draw the arcs as an SVG in the hairline token, sized to the open area they fill, and keep it out of the "
                    "layer that holds the words."),
     ]
 
 
 EXTRAS = [{"after_rule": "12.1", "specimen": "s-12-index", "label": "Every graphic device and its rule",
            "caption": "The devices this guide sets, the job of each and the rule that sets it."}]
-INTRO_ADD = ("Rules 12.1 to 12.4 cover the devices that divide and sign a page: hairlines, watermarks, the compact "
-             "signature and two patterns drawn from the hinge.")
+INTRO_ADD = ("Rules 12.1 to 12.4 cover the devices that divide and sign a page: hairlines, watermarks, the monogram as "
+             "a small signature and a pattern drawn from the hinge.")
+# earlier wordings of INTRO_ADD, replaced in place when the shared file still holds one (round 3, ED 4e, CA-S11)
+OLD_INTRO_ADDS = ("Rules 12.1 to 12.4 cover the devices that divide and sign a page: hairlines, watermarks, the compact "
+                  "signature and two patterns drawn from the hinge.",)
 RELATED_ADD = [{"chapter": "04", "reason": "The hinge divider, the hinge diagram and the large crop of B."},
                {"chapter": "03", "reason": "L8, the monogram, and the colors of every mark."}]
 
@@ -475,6 +477,8 @@ def write_chapter():
     ch["extras"] = [x for x in ch.get("extras", []) if not str(x.get("specimen", "")).startswith(PREFIXES)] + mine["extras"]
     intro = list(ch.get("intro", []))
     add = mine["intro"][0]
+    for old in _smarten(list(OLD_INTRO_ADDS)):
+        intro = [para.replace(old, add) for para in intro]
     if add not in " ".join(intro):
         if len(intro) >= 2:
             intro[1] = add + " " + intro[1]

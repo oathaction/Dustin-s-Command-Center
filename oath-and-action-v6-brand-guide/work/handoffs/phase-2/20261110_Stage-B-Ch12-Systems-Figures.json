@@ -39,11 +39,23 @@
      "Contested": 0,
      "Hypothesis": 1
     }
-   }
+   },
+   "title": "Most claims in these three chapters are documented or well supported",
+   "documented_or_well_supported": 28,
+   "claims": 39
   },
   "locator": {
    "atlas_current": "C",
    "state": "NE",
+   "tile_px": 8,
+   "gap_px": 1,
+   "columns": 12,
+   "rows": 8,
+   "state_locator_px": [
+    107,
+    71
+   ],
+   "headline_px_at_360": 205,
    "tile_grid": "work/boards/phase-2/data-viz/shared/geo/us-state-tile-grid.json"
   },
   "layers": [
@@ -57,6 +69,14 @@
      "Governing institutions",
      "Legitimacy",
      "Outside drivers"
+    ],
+    "printed": [
+     "Wealth",
+     "Voice",
+     "Elections",
+     "Checks",
+     "Policy",
+     "Outside forces"
     ]
    },
    {
@@ -66,12 +86,20 @@
      "Production and income",
      "Household budgets and wealth",
      "Credit, trade and environment"
+    ],
+    "printed": [
+     "Production and income",
+     "Household budgets and wealth",
+     "Credit, trade and environment"
     ]
    },
    {
     "id": "technology",
     "title": "Technology and its effects",
     "regions": [
+     "Technology mechanisms"
+    ],
+    "printed": [
      "Technology mechanisms"
     ]
    }
