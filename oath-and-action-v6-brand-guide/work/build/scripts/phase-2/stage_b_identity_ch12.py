@@ -431,7 +431,7 @@ def _rules():
           "A pattern gives an empty area texture without a picture, and drawn from the hinge it adds no new shape for a "
           "reader to learn. Behind words, even a faint pattern adds edges the eye has to sort from the letters, so it stays "
           f"where nothing is read. The arcs cover {c['hinge_arcs'] * 100:.1f} percent of the area they fill.",
-          "Design judgment and our measurements, October and November 2026; the 12 percent ceiling is our design judgment",
+          "Our measurements, October and November 2026, and design judgment, which sets the 12 percent ceiling",
           "A report cover at true size, the title at top left and the hinge arcs spreading from the bottom right corner, "
           "clear of the words.",
           "The same cover with the arcs behind the title and the paragraph. The lines cross the letters and the words lose "

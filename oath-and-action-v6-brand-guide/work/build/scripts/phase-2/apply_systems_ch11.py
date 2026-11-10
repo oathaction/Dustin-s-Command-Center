@@ -1625,8 +1625,8 @@ def build(ctx):
             {'after_rule': '11.1', 'specimen': 's-11-steps', 'label': 'The six steps',
              'caption': 'What happens at each step. Step 6 takes the name of whoever signs the bill.'},
             {'after_rule': '11.2', 'specimen': 's-11-marks-drawn', 'label': 'Drawing the marks',
-             'caption': 'Each mark at every circle size, with its line, its color token and where its parts sit. On '
-                        'Charcoal, read “charcoal” for &lt;surface&gt;.'},
+             'caption': 'Each mark at every circle size, with its line, its color token and where its parts sit. Read '
+                        '&lt;surface&gt; as “newsprint” or “charcoal”, the ground the tracker sits on.'},
             {'after_rule': '11.5', 'specimen': lists[('c', 'l')], 'label': 'Numbered steps in a 600 px column on Charcoal',
              'caption': 'The wide form, as on a tablet or in a desktop article column, on Charcoal, with two of the bills. '
                         'Each step’s name sits under its circle, the current step’s name is bold, and the marks turn to '

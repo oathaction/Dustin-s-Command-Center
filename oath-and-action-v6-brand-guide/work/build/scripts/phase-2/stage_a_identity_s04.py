@@ -281,7 +281,7 @@ def s_04_5_failure():
     d = mark(HINGE["display"], w=600, decorative=True, cls="oai-dash")
     body = f'<div class="oai-panel oai-s-newsprint">{d}</div>'
     alt = ("Failure case: the hinge diagram redrawn with dashed arcs and a dashed ring. In our systems atlas's key a dashed "
-           "line means a plausible link, so the diagram reads as a guess.")
+           "line marks a connection graded plausible, so the diagram reads as a guess.")
     return rec("s-04-5-failure", "04.5", 650, alt, body, css=css,
                notes="The master is placed unchanged; a dash pattern applied to its strokes at placement shows the failure.")
 

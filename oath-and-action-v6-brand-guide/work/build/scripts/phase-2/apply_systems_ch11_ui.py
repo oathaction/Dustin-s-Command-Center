@@ -278,6 +278,7 @@ Z=L.querySelector('[data-act="none"]'),H=L.querySelector('[data-sheet]'),K=L.que
 O=L.querySelector('[data-out="res"]'),U=L.querySelector('[data-out="hits"]'),M=L.querySelector('template[data-tpl]'),
 Y=L.querySelector('[data-out="more"]'),B=[].slice.call(L.querySelectorAll('[data-f]'));
 function on(b){return b.getAttribute('aria-pressed')==='true';}
+var N9=['','one','two','three','four','five','six','seven','eight','nine'];
 function h(x){return x.replace(/(\\w)-(?=\\w)/g,'$1\\u2011');}
 function mark(b,y){var g=b.querySelector('svg');if(y&&!g){b.insertBefore(M.content.firstElementChild.cloneNode(true),b.firstChild);}
 if(!y&&g){g.remove();}b.setAttribute('aria-pressed',y?'true':'false');}
@@ -289,7 +290,7 @@ K.textContent='Filters, '+n+' on';Z.hidden=!n;C.hidden=!Q.value;O.textContent=r.
 U.textContent='';r.slice(0,3).forEach(function(d){var li=document.createElement('li'),b=document.createElement('b');
 b.textContent=h(d[0]);li.appendChild(b);li.appendChild(document.createTextNode(' '+h(d[1])));U.appendChild(li);});
 var k=r.length-3;Y.textContent=!r.length?'No symbol matches. Clear the search or the filters to see more.':
-(k>0?'The first three are listed here, and '+k+' more '+(k===1?'matches':'match')+'.':'');}
+(k>0?'The first three are listed here, and '+(k<10?N9[k]:k)+' more '+(k===1?'matches':'match')+'.':'');}
 Q.addEventListener('input',run);
 C.addEventListener('click',function(){Q.value='';run();Q.focus();});
 F.addEventListener('click',function(){var o=F.getAttribute('aria-expanded')!=='true';F.setAttribute('aria-expanded',o?'true':'false');
@@ -805,7 +806,7 @@ def build_ui(ctx, m, rule_titles):
     ink_band = r('oa.color.state.error.text.onNewsprint', 'oa.color.derived.errorBand', 'contrast Charcoal on the Error Band')
     verd = r('oa.color.state.success.mark.onNewsprint', 'oa.color.surface.newsprint')
     ring = r('oa.color.focus.ring.onNewsprint', 'oa.color.surface.newsprint')
-    lsteps = loop_steps(m)[2]
+    loop_title, _, lsteps = loop_steps(m)
     pace_lo, pace_hi = min(x[2] for x in lsteps) / 1000, max(x[2] for x in lsteps) / 1000
     files = ['work/build/assets/utility/svg-24/', 'work/build/assets/utility/svg-16/',
              'work/build/assets/utility/20261110_Utility-Icons-Manifest.json']
@@ -935,7 +936,8 @@ def build_ui(ctx, m, rule_titles):
                              'and a loop stepper is where a builder would reach for one.'],
                     'basis': 'Design judgment; Rule 10.1'},
             'correct': {'specimen': 's-11-14-correct',
-                        'caption': f'A stepper for loop {LOOP_ID} from our systems atlas, live at 360 px. Play, Reset the '
+                        'caption': f'A stepper for Loop {LOOP_ID} from our systems atlas, “{loop_title}”, live at 360 px. '
+                                   'Play, Reset the '
                                    'loop, Previous step and Next step each carry a utility icon beside the word, and the '
                                    'unavailable ones say why. The least certain step says so in its words.'},
             'failure': {'specimen': 's-11-14-failure',

@@ -193,7 +193,7 @@
       ],
       "why": {
         "text": "A pattern gives an empty area texture without a picture, and drawn from the hinge it adds no new shape for a reader to learn. Behind words, even a faint pattern adds edges the eye has to sort from the letters, so it stays where nothing is read. The arcs cover 5.5 percent of the area they fill.",
-        "basis": "Design judgment and our measurements, October and November 2026; the 12 percent ceiling is our design judgment"
+        "basis": "Our measurements, October and November 2026, and design judgment, which sets the 12 percent ceiling"
       },
       "correct": {
         "specimen": "s-12-pattern-correct",

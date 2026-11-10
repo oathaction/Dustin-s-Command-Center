@@ -465,7 +465,7 @@ def chapter():
               "device pixel and its open spaces fill in, and the fit keeps every one of them. From 2x the master's line clears a "
               "device pixel and draws smoother than the fit's steps. The end mark switches at 1x instead (Rule 04.6), because "
               "its pixel fit softens or steps unevenly between 1x and 2x, while B's smooth drawing keeps its shape on every "
-              "screen.",
+              "screen above 1x.",
               "Our measurements, November 2026; the pixel fits approved by our founder and editor in November 2026",
               "Each pillar at 16, 24, 48 and 96 px at true size, one color, each from the file made for its size; below, Track's "
               "16 and 24 px fits as a standard screen draws them, enlarged four times.",

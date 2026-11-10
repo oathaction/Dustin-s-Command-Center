@@ -258,7 +258,7 @@
   "chapter": "04",
   "rule": "04.5",
   "width_px": 650,
-  "alt": "Failure case: the hinge diagram redrawn with dashed arcs and a dashed ring. In our systems atlas’s key a dashed line means a plausible link, so the diagram reads as a guess.",
+  "alt": "Failure case: the hinge diagram redrawn with dashed arcs and a dashed ring. In our systems atlas’s key a dashed line marks a connection graded plausible, so the diagram reads as a guess.",
   "illustrative": false,
   "notes": "The master is placed unchanged; a dash pattern applied to its strokes at placement shows the failure."
  },

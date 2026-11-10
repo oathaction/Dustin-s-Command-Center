@@ -827,7 +827,7 @@
       },
       "correct": {
         "specimen": "s-11-14-correct",
-        "caption": "A stepper for loop R1 from our systems atlas, live at 360 px. Play, Reset the loop, Previous step and Next step each carry a utility icon beside the word, and the unavailable ones say why. The least certain step says so in its words."
+        "caption": "A stepper for Loop R1 from our systems atlas, “Wealth and political influence reinforce each other”, live at 360 px. Play, Reset the loop, Previous step and Next step each carry a utility icon beside the word, and the unavailable ones say why. The least certain step says so in its words."
       },
       "failure": {
         "specimen": "s-11-14-failure",
@@ -1016,7 +1016,7 @@
       "after_rule": "11.2",
       "specimen": "s-11-marks-drawn",
       "label": "Drawing the marks",
-      "caption": "Each mark at every circle size, with its line, its color token and where its parts sit. On Charcoal, read “charcoal” for &lt;surface&gt;."
+      "caption": "Each mark at every circle size, with its line, its color token and where its parts sit. Read &lt;surface&gt; as “newsprint” or “charcoal”, the ground the tracker sits on."
     },
     {
       "after_rule": "11.5",

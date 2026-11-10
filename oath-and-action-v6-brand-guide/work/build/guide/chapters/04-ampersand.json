@@ -215,7 +215,7 @@
     "oa.color.graphic.subtle.onNewsprint"
    ],
    "why": {
-    "text": "The diagram teaches the brand’s idea in one picture: a promise becomes action, and the result shapes the next promise. Its arcs are solid because our systems atlas draws a hypothesis as a dotted line and a plausible link as a dashed one. It carries words alone, with no ID, sign, grade, delay or count, so no reader takes it for one of the atlas’s loops.",
+    "text": "The diagram teaches the brand’s idea in one picture: a promise becomes action, and the result shapes the next promise. Its arcs are solid because our systems atlas draws a hypothesis as a dotted line and a connection graded plausible as a dashed one. It carries words alone, with no ID, sign, grade, delay or count, so no reader takes it for one of the atlas’s loops.",
     "basis": "Design judgment"
    },
    "correct": {
@@ -224,7 +224,7 @@
    },
    "failure": {
     "specimen": "s-04-5-failure",
-    "caption": "The diagram with dashed arcs and a dashed ring, as an early mockup drew it. In the atlas’s key a dashed line means a plausible link, so the brand’s own idea reads as unproven."
+    "caption": "The diagram with dashed arcs and a dashed ring, as an early mockup drew it. In the atlas’s key a dashed line marks a connection graded plausible, so the brand’s own idea reads as unproven."
    },
    "specs": [
     {
@@ -268,7 +268,7 @@
     "oa.color.identity.signature.onCharcoal"
    ],
    "why": {
-    "text": "At 16 px after a period, the badge’s ring closes in on B and the mark reads as the registered trademark sign, which tells a reader something false about our mark. B alone stays legible at text size and spends no red, and it keeps the hinge at the end of every piece. Set at the capitals’ height, it sits within the line it closes. On a 1x screen the smooth drawing blurred, with at most 45 percent of its ink pixels at full color, and it moved a row up or down with the line’s position. The pixel fits draw every ink pixel at full color and keep B on the capitals’ rows wherever the line falls. The pillar icons keep their fits on every screen under 2x instead (Rule 09.3), because a pillar master’s thin line fills in there, while B’s 16 px master keeps its shape on every screen. From 48 px the ring reads as a ring, and with no words on it the badge claims nothing more. Our fifth edition gave the reason: “Seals imply an authority we do not claim.”",
+    "text": "At 16 px after a period, the badge’s ring closes in on B and the mark reads as the registered trademark sign, which tells a reader something false about our mark. B alone stays legible at text size and spends no red, and it keeps the hinge at the end of every piece. Set at the capitals’ height, it sits within the line it closes. On a 1x screen the smooth drawing blurred, with at most 45 percent of its ink pixels at full color, and it moved a row up or down with the line’s position. The pixel fits draw every ink pixel at full color and keep B on the capitals’ rows wherever the line falls. The pillar icons keep their fits on every screen under 2x instead (Rule 09.3), because a pillar master’s thin line fills in there, while B’s 16 px master keeps its shape on every screen above 1x. From 48 px the ring reads as a ring, and with no words on it the badge claims nothing more. Our fifth edition gave the reason: “Seals imply an authority we do not claim.”",
     "basis": "Design judgment and our measurements, approved by our founder and editor in November 2026"
    },
    "correct": {
