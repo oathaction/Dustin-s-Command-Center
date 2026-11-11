@@ -90,3 +90,88 @@ None between chapter 13 and chapters 01, 02, 05, 06, 10, 11, 12, 18 and 26 as bu
 - 200 percent text, 320 px reflow, print and 1024 and 360 px widths.
 - Screen readers and real devices.
 - Any reader with the chapter; no reader has seen it.
+
+## Fix pass
+
+From `work/handoffs/phase-3/20261111_Round-0-Fix-Brief-Part-1.md`: every chapter 13 item the statistics and civic education review, the brand and craft review and the creative director's review give the editor, with the main session's calls D3-83 to D3-87 and the data lead's D3-84 values (palette proposal, `line_code_source`). Every fix is in `work/build/scripts/phase-3/phase3_ch13_build.py`, which rewrote `13-evidence.json`, the 27 plates, `manifest-evidence.json` and five kit specs: `s-13-7-children`, `s-13-7-all`, `s-13-7-fail-all`, `s-13-13-correct` and `s-13-13-fail-chart` (`.chart.json`). This section supersedes the Summary's weight, its title for Rule 13.11 and its note on a static chart.
+
+### Fixed, by code
+
+| Codes | Fix |
+|---|---|
+| Statistics M1, CD M1, brand M2, D3-83 | Rule 13.1 and a spec row give a figure from outside the atlas its grade from H08: a public agency's count or survey, or a public record, prints Documented with its source after the colon. Plates print "Documented: a Census Bureau survey" (13.1, 13.7) and "Documented: a Bureau of Labor Statistics survey of employers, as copied by FRED" (13.6). A finding carries the publisher's margin of error (13.1: 0.6 points at 90 percent); an estimate prints its method (13.1's vehicle safety head). "Official statistic" is gone from every plate, spec and note. |
+| Statistics M2, CD M1 | 13.9 reads "can raise". Every atlas connection name in 13.4 and 13.11 sits in quotation marks after its chip, as in 13.2. L46 was already in my V7.1 list of direct-verb names. |
+| Statistics M3, CD M4 | 13.7's table heads its columns "Before the revision: P60-287, September 9, 2025" and "Current release: P60-290, September 15, 2026"; the alt and rule text match; the source lines carry the qualification statistics M3 wrote, now in the research lead's sidecar. The all-people chart has its own source: the pair's line names "children under 18 and all people". |
+| Statistics M4, D3-87 | 13.6's plates take a level title: "The three-month average of monthly job change stood at 51,000 in September 2026, a preliminary figure". No chapter 13 plate counts months of drops. |
+| Statistics S1, CD S5, D3-86 | 13.2's Documented row is Connection LE02, the Transportation Department's 46.6 percent spent by July 31, 2026; LE14's 28.8 million is a with-and-without calculation. 13.1's estimate prints NHTSA's method and its own figure, 613,501. Both were redrawn for accuracy, never for balance. |
+| Statistics S2 | 13.1's association line: "Well supported, as our systems atlas grades the research on employer concentration". |
+| Statistics S3 | Rule 13.11 is now "Draw documented events apart from causal claims." |
+| Statistics S4 | 13.5 and its specs define the margin of error at the publisher's stated confidence level, 90 percent for the Census Bureau and the Bureau of Labor Statistics, and say a gap between two survey figures counts only where it passes the gap's own margin of error. |
+| Statistics S5 | 13.7 quotes H09 whole. |
+| Statistics S6 | As M3: the pair's source line names both groups. |
+| Statistics S7 | 13.7 says a publisher's revision takes the new release and a dated update line; a correction note (13.13) is for our own errors. |
+| Statistics S8, CD M2, brand M3, D3-84 | Rule 13.4 states D3-84's numbers and cites the `oa.chart.grade.*` tokens by name: shortest run 20 line widths (40 px on a 2 px line), hollow line of 1 px rails one line width apart, record square 7 px, head clearance 1.5 line widths. The generator reads them from the palette proposal and `tokens.json` and stops if the two part; `tokens.json` now holds minRun 20 and headClearance 1.5. Every line in the chapter is drawn by the atlas build's `wire_marks` at 2 px, and 13.3's key draws each sample at the shortest run. |
+| Statistics S9 | 13.9's kind words add Rule change and Delivery case. |
+| Statistics S10 | 13.12 quotes U.S. Reports, 285 U.S. 262, 311 (1932), "State", through the Library of Congress scan (ledger row P7-041). |
+| Statistics S11, brand S4 | 13.5 shows each target with its own delay: Connections L39 and LE17 in Rule 12.5's red, one red per view, and Variable A5 named. |
+| Statistics S12 | Defined at first use: the Supplemental Poverty Measure (13.1), seasonally adjusted and qualification (13.6), measure line (13.1's specs); 13.10's "Rated" column is "Feasibility", and PBMs are spelled out. |
+| Statistics S19 | 13.13's why is rewritten as one argument, with no parallel run. |
+| CD M3 | Rule 13.1 says a diagram of atlas connections prints the grade word of its least certain step in the label's place. The opener, 13.4, 13.5 and 13.11 carry it, and 13.2's failure label reads Plausible, so it fails on the verb alone. |
+| Brand M1, D3-85 | 13.11 opens with the atlas's coding note; its headings read "The atlas codes these rows toward voters" and "The atlas codes these rows away from voters". All seven rows stay. |
+| Brand S1, CD S1 (in part) | Each chip holds its punctuation in one no-wrap span; six numerals mark the opener's parts and the list points to them. |
+| Brand S2, CD S2 | 13.3's line cell is a span inside its cell, so the row rules run whole; on phones the glyph and its words stack under the label. |
+| Brand S3 | The chapter's glyphs come from `wire_marks` (as D3-84). |
+| Brand S5, CD S3 | 13.7 draws its two charts through the kit's guide hook, one window and one scale, with the failure's 2017 chart; 13.13 draws its chart through the kit. |
+| Brand S6 | 13.8's spec reads "in the label style", with `oa.type.label`. |
+| Brand S7, CD S4 | 13.8's two plates and 13.13's failure are 360 px stages, centered, headed "True size, 360 px wide". |
+| Brand S8 (in part) | Rule statements average 746 characters, down from 795; 13.5 runs 841, down from 1,163. |
+| Brand S9 | Related chapters run in ascending order. |
+| CD S6 | 13.9 says source lines name IDs in words. |
+| CD S7 | 13.1 names the chip by role and cites `oa.chart.color.chip.*`. |
+| CD risk, one square with two meanings | 13.4's specs place the record square only inline before the word Documented, and an event's shape only at the head of an event row, with the figure's key (Rule 13.11). |
+| Brand Q1, D3-86 | No example was added, softened or swapped to even the score. |
+
+### Not fixed, and why
+
+- **Brand S1's lead-in.** The reviewer asks the dash pattern to start after the delay ticks on a solid lead-in. D3-84 makes `wire_marks` the one source of the line code, and it draws no lead-in, so drawing one in chapter 13 alone would state the code a second way. The request is below.
+- **Brand S8, the rest.** The average stays above chapters 01 to 12's top of 690. What remains defines terms the reviews asked for; I moved the rest to Specifications.
+- **CD M4's single date.** Table and source line name the release, P60-290 of September 15, 2026. The qualification keeps statistics M3's words, "the Bureau's August 2026 correction", which name the method change, not a second release.
+- Statistics M5, M6 and S13 to S18 and the part 2 items belong to other agents.
+
+### Routine calls
+
+D3-xxx | Every line in chapter 13 is drawn by the atlas build's `wire_marks` at 2 px; the generator reads D3-84's values from the palette proposal and `tokens.json` and stops if they part | D3-84: one source
+D3-xxx | 13.5's red targets draw at 148 px | At 88 px the ticks, sign tag and head left the red line almost hidden
+D3-xxx | The kit prints the heads of 13.7's three charts, and 13.13's chart title and measure line under the plate's own label row | A head written beside a chart-only figure left the drawing's aria-labelledby naming no element, a serious axe fault; the kit's head uses the same tokens
+D3-xxx | 13.13's article headline sets at 26 px | It stays above the 22 px chart title the kit prints in a narrow column
+D3-xxx | True-size stages keep a 16 px gutter inside their 360 px | A phone's column, with text off the edge
+D3-xxx | The hollow line's rails take the class `rl` | The page shell hides `.rail` on phones, which erased Loop B2's line
+D3-xxx | 13.7's failure keeps one chart, all people from 2017; the children's head stands without its chart | A second chart would put chapter 13 over 0.25 MB
+D3-xxx | The pair's source line is the sidecar's line with "children under 18 and all people" | Until the research lead adds a variant for both groups
+D3-xxx | 13.7's chart alts say the scale starts at 0 | The kit draws to 30 while the spec asks 25; the words stay true either way
+
+### Requests
+
+- **Engineer, the kit.** (1) `K.mount` sets `aria-labelledby` to the figure's id plus `-t` even when `spec.show` leaves out the title, so the drawing names a missing element. Please set it only when that element exists, so the `<title>` names the drawing. (2) The ranked bar's phone layout runs its zero line through the category labels: in `s-13-13-correct`, "Riverside" and "Elm Street" start on it at both widths. (3) The shell's `.rail{display:none}` on phones hides any plate element of class `rail`, the class `wire_marks` gives the hollow line's rails. I rename it in chapter 13; chapter 15 will meet the same.
+- **Research lead.** A `source_line_children_and_all_people` variant in `census-spm-child-poverty.meta.json`, so the generator stops deriving the pair's line. Optional: the payroll sidecars end "are preliminary and will be revised"; "the Bureau will revise them" is chapter 02's active voice. I print sidecar lines as they stand.
+- **Data visualization lead.** Should `wire_marks` take a solid lead-in after the delay ticks (brand S1)? If so, the atlas build and the tokens take it first, and chapter 13 follows by rerunning its generator.
+
+### Tested
+
+- `python3 -I work/build/scripts/phase-3/phase3_ch13_build.py`: exit 0 with every check from round 0, plus D3-84's values against `wire_marks` and `tokens.json` (no gap left) and the new figures: LE02, L39 and LE17 with their delays, the margins of error, the release names, and the 2025 all-people rate.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/fix7.html`: exit 0, 0 warnings, chapter 13 at 246,121 bytes of 250,000, five kit charts drawn (method `load-table`).
+- `node work/build/chart-kit/oa-chart.mjs build` on the five specs: PASS, 0 faults each.
+- Playwright at 1440 and 390 px, with the sticky bars set static: all 27 plates captured and looked at in scratch `/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/round-0-fix/editor/p6/`. That build differs from the last only in Rule 13.1's text, a spec row and notes. Fixed on sight: the crowded red targets, the hollow line gone on phones, text at the edge of true-size cards, glyph cells out of line on phones, 13.10's status line against its gloss, 13.13's headline smaller than its chart title.
+- `ch13check.js` on the last build at 1440 and 390 px: axe-core with WCAG 2.0 to 2.2 A and AA tags, 0 violations (5 serious before the head change); every font size on the allowed list; 0 text below its contrast ratio; no sideways scroll; 27 stages.
+- A probe of the five kit drawings: each `aria-labelledby` names its printed title.
+- Searches of the chapter's output: no "official statistic", no count of months, no em dash.
+- The Brandeis words against the U.S. Reports scan, page 311.
+
+### Not tested
+
+- The full `guide_check.js` run, which stopped at its time limit in round 0; red, focus order and fit-to-window rest on the build's strict checks and my focused script.
+- The forced-colors and reduced-motion captures `ch13check.js` wrote for 13.1, 13.4 and 13.11; I did not look at them in this pass.
+- The engineer's V7 check and chart check on the plates, beyond the kit's build command.
+- Grayscale and color-vision captures, 200 percent text, 320 px reflow, print, other widths, screen readers and real devices.
+- The research lead has not checked the derived source line for both groups.
+- No reader has seen the chapter.

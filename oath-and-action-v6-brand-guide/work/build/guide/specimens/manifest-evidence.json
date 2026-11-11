@@ -14,7 +14,7 @@
   "width_px": null,
   "alt": "Four chart heads, one of each kind of evidence, each with a dark label, a grade line, a title, a measure line and a source. Finding, Documented: a Census Bureau survey: Child poverty stood at 13.4 percent in 2025 under the Supplemental Poverty Measure, with a note that defines the measure and gives the margin of error. Association, Well supported: Job postings offered 17 percent lower wages where a few employers did more of the hiring, with a note that the pattern does not show cause. Estimate, Well supported: Vehicle safety technologies saved an estimated 614,000 lives from 1960 to 2012, with a note on the agency’s method and its figure, 613,501. Illustration: A ranked bar puts the town with the most library hours first, labeled Illustrative data.",
   "illustrative": true,
-  "notes": "Evidence label and grade line as the approved chart system draws them (DR-52), with D3-83's grade rule for an official statistic. Child poverty from the engineer's census-spm-child-poverty file; its source line from the sidecar. CL1507 and DL06 read from the atlas.",
+  "notes": "Evidence label and grade line as the approved chart system draws them (DR-52), with D3-83's grade rule for a public agency's survey. Child poverty from the engineer's census-spm-child-poverty file; its source line from the sidecar. CL1507 and DL06 read from the atlas.",
   "readable": true
  },
  "s-13-1-failure": {

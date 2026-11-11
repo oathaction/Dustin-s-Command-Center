@@ -785,12 +785,18 @@
       var w = K.artboard(spec, t, art.clientWidth || fig.clientWidth);
       if (w === last) return;
       last = w;
-      result = K.draw(spec, rows, { width: w, ground: ground, t: t, extra: extra, uid: (fig.id || 'oac') + '-' + w, label_id: fig.id ? fig.id + '-t' : null });
+      // the drawing takes its name from the figure's printed title; a plate that prints no title (chapter 13's) names it
+      // by its description, so the name never points at an element that is not there
+      var doc = fig.ownerDocument || root.document;
+      var has_t = fig.id && doc.getElementById(fig.id + '-t'), has_alt = fig.id && doc.getElementById(fig.id + '-alt');
+      var lid = has_t ? fig.id + '-t' : (has_alt ? fig.id + '-alt' : null);
+      result = K.draw(spec, rows, { width: w, ground: ground, t: t, extra: extra, uid: (fig.id || 'oac') + '-' + w, label_id: lid });
       var old = art.querySelector('svg.oac-svg');
       if (old) old.remove();
       art.insertAdjacentHTML('beforeend', result.svg);
       var svg = art.querySelector('svg.oac-svg');
-      if (svg && fig.id) svg.setAttribute('aria-describedby', fig.id + '-alt');
+      if (svg && has_t && has_alt) svg.setAttribute('aria-describedby', fig.id + '-alt');
+      if (svg && !lid) svg.setAttribute('aria-label', String(spec.alt || spec.title || ''));
       fig.setAttribute('data-oa-drawn', String(w));
       if (result.guard.length || result.warnings.length) fig.setAttribute('data-oa-warnings', String(result.guard.length + result.warnings.length));
     }

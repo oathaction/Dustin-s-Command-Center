@@ -237,7 +237,7 @@ def mk(n):
     return f'<span class="mk" aria-hidden="true">{n}</span>'
 
 
-GL_CENSUS = "Documented: a Census Bureau survey"          # D3-83: an official statistic takes Documented, its source after
+GL_CENSUS = "Documented: a Census Bureau survey"          # D3-83: a public agency's survey takes Documented, its source after
 GL_BLS = "Documented: a Bureau of Labor Statistics survey of employers, as copied by FRED"
 
 
@@ -550,7 +550,7 @@ def rule_13_1(book):
                   "figure, 613,501. Illustration: A ranked bar puts the town with the most library hours first, labeled "
                   "Illustrative data."),
              notes=f"Evidence label and grade line as the approved chart system draws them (DR-52), with D3-83's grade rule for "
-                   f"an official statistic. Child poverty from the engineer's census-spm-child-poverty file; its source line from "
+                   f"a public agency's survey. Child poverty from the engineer's census-spm-child-poverty file; its source line from "
                    f"the {how}. CL1507 and DL06 read from the atlas.")
     book.log("13.1 correct", "Child poverty, 2025 (Census P60-290)", "D08")
     book.log("13.1 correct", "Claim CL1507, employer concentration and posted wages", "D07")
@@ -572,7 +572,7 @@ def rule_13_1(book):
             "An association is what our systems atlas defines as “" + GLOSS["Association"].split(". ")[0] + ".” An estimate "
             "rests on a model’s assumptions, such as a projection. An illustration shows how a design works with invented values.",
             "The grade follows the label in words: the atlas’s grade for a figure from the atlas (Rule 13.2), and Documented for "
-            "an official statistic or a public record, with its source after the colon. A diagram of atlas connections prints "
+            "a public agency’s own count or survey or a public record, with its source after the colon. A diagram of atlas connections prints "
             "the grade word of its least certain step in the label’s place.",
         ],
         "tokens": ["oa.chart.color.chip.fill.onNewsprint", "oa.chart.color.chip.label.onNewsprint",
@@ -593,7 +593,7 @@ def rule_13_1(book):
         "specs": [
             {"label": "Evidence label", "value": "Finding, Association, Estimate or Illustration, in the label style on the chart chip fill, which turns with the theme",
              "token": "oa.chart.color.chip.fill.onNewsprint"},
-            {"label": "Grade line", "value": "After the label: the atlas’s grade for an atlas figure; Documented for an official statistic or a public record, then its source, as in “Documented: a Census Bureau survey”", "token": "oa.type.caption"},
+            {"label": "Grade line", "value": "After the label: the atlas’s grade for an atlas figure; Documented for a public agency’s own count or survey or a public record, then its source, as in “Documented: a Census Bureau survey”", "token": "oa.type.caption"},
             {"label": "A finding", "value": "A count or a survey tabulation, with the publisher’s margin of error where one exists, at its stated confidence"},
             {"label": "An estimate", "value": "A figure that rests on a model’s assumptions, such as a projection, a small-area model or a with-and-without calculation, with its range or method"},
             {"label": "An association", "value": "Words such as “went with” at any grade, and a note that the pattern does not show cause"},

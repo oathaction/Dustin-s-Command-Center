@@ -376,6 +376,7 @@ D3-xxx | The guide build runs a weight pass on the assembled page (CSS comments 
 D3-xxx | The photographs, their duplicate, fonts, download files, inline styles, long decimals and white space between tags stay as they are | Each would change a pixel, a file a reader keeps, a provenance record or a browser's support (Weight pass, "Not touched")
 D3-xxx | The pilot counts chapter 14's plates only | Chapter 13's chart plates joined the page and were being counted into chapter 14's average
 D3-xxx | The guide build's self-test reads CSS as written or as the weight pass writes it | Four expectations looked for CSS with its spaces
+D3-xxx | A drawing in a plate that prints no title takes its name from the figure's description, or its spec's words when there is none | The quick guide check found axe's svg-img-alt on chapter 13's five chart plates: the drawing named itself by a title the plate leaves out
 D3-xxx | The data lead's fix pass goes into 6.0.0-gate3.1 itself, and `labelBeside` takes no alias | The coordinator asked for the same pre-release, and the draft has not shipped outside this round
 D3-xxx | S01's votes draw each party's count on its own segment in the one neutral ink of its side, named on the mark, from `congress-hr7008-roll-calls` (`labels.votes[].split`) | D3-07 (both chambers' records can be read, so D2-104's condition is met); DR-48, DR-58, Rule 01.2
 
@@ -447,7 +448,8 @@ After the weight pass and the data lead's fix pass (November 11, late):
 - The two photographs' lossless progressive encodings decoded to the same pixels as the files (Pillow), in scratch only.
 - `guide_build.py --self-test`: 27 of 27 scenarios, 296 of 296 expectations.
 - Token build and `run_token_tests.py` after the fix pass: all pass; `token_table_build.py` regenerated (544 tokens).
-- `oa-chart.mjs build --all`: 16 of 16 pass; the 192 board files equal the fresh build byte for byte; `oa-chart.mjs self-test`: 25 of 25 planted faults caught, the clean pivot passes; `dataviz_check.js --kit-self-test`: every planted fault caught.
+- `guide_check.js --quick` on the weight-passed page: 2 failures, axe's svg-img-alt on chapter 13's five chart plates at 1440 and 390 px (the drawing named by a title id the plates do not print; present without the pass too, as the pixel proof's identical pages imply). Fixed in `kit.js`'s mount; the rebuilt page (9,936,915 bytes, 0 strict warnings): GCHECK2.
+- `oa-chart.mjs build --all`, run again after that fix: 16 of 16 pass; the 192 board files equal the fresh build byte for byte; `oa-chart.mjs self-test`: 25 of 25 planted faults caught, the clean pivot passes; `dataviz_check.js --kit-self-test`: every planted fault caught.
 - `v7_check.py --page` on the weight-passed page: 0 failures (chapter 13, 50 chips; 21 kit specs and the data folder); its self-test: every planted fault caught.
 - `data_round0_build.py --check` after ENG-5 to ENG-7: 61 tables, 0 faults.
 

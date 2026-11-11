@@ -38,7 +38,7 @@
    "title": "Title each chart or diagram as a finding, an association, an estimate or an illustration.",
    "rule": [
     "An evidence label, a chip in the chart chip colors, sits above every chart title and names the kind of evidence in one of four words. A finding is a measured result with a source and a period, such as a count or a survey figure. An association is what our systems atlas defines as “Two measures that move together without an established causal path.” An estimate rests on a model’s assumptions, such as a projection. An illustration shows how a design works with invented values.",
-    "The grade follows the label in words: the atlas’s grade for a figure from the atlas (Rule 13.2), and Documented for an official statistic or a public record, with its source after the colon. A diagram of atlas connections prints the grade word of its least certain step in the label’s place."
+    "The grade follows the label in words: the atlas’s grade for a figure from the atlas (Rule 13.2), and Documented for a public agency’s own count or survey or a public record, with its source after the colon. A diagram of atlas connections prints the grade word of its least certain step in the label’s place."
    ],
    "tokens": [
     "oa.chart.color.chip.fill.onNewsprint",
@@ -68,7 +68,7 @@
     },
     {
      "label": "Grade line",
-     "value": "After the label: the atlas’s grade for an atlas figure; Documented for an official statistic or a public record, then its source, as in “Documented: a Census Bureau survey”",
+     "value": "After the label: the atlas’s grade for an atlas figure; Documented for a public agency’s own count or survey or a public record, then its source, as in “Documented: a Census Bureau survey”",
      "token": "oa.type.caption"
     },
     {
