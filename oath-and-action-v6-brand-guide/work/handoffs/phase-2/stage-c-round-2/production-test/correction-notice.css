@@ -1,0 +1,37 @@
+/* Correction notice: a short notice that a published piece was corrected, on Newsprint and on Charcoal.
+   Production test, stage C round 2, November 11, 2026. Simulated designer, untested with real people.
+   Chosen from chapter 26's five steps (Rule 26.3) and its token table alone.
+
+   Step 1, surface: Newsprint in the light theme, Charcoal in the dark theme. No surface class, so the
+           notice follows the theme (learned from tokens.css, since Rule 26.6 does not say it).
+   Step 2, role: the words are text; the bar that sets the notice apart is a border. A correction is
+           not an error (the reader did nothing wrong) and not a warning (nothing is at risk), so the
+           state role does not fit.
+   Step 3, emphasis: primary for the words, secondary for the date line. The bar's emphasis, strong,
+           is not in Rule 26.3's emphasis list (primary or secondary, essential or subtle, emphasis or
+           context); found by searching the table for "border".
+   Step 4, state: none. The table's eight states hold no notice, correction or information state.
+   Step 5, component: none. The table has no notice or callout component token.
+
+   Values these resolve to (from the token table):
+     words   --oa-color-text-primary     Charcoal on Newsprint 13.29:1; Newsprint on Charcoal 13.29:1
+     date    --oa-color-text-secondary   Deep Stone on Newsprint 5.49:1; Dim Newsprint on Charcoal 7.26:1
+     bar     --oa-color-border-strong    Charcoal on Newsprint 13.29:1; Newsprint on Charcoal 13.29:1
+     width   --oa-border-width-bar       4px, described as the "State bar beside selected, error and
+                                         warning items"; borrowed here, a guess
+   The first word, "Correction:", carries the kind of notice, as "Error:" and "Warning:" do (Rule 18.18). */
+
+.oa-correction { max-width: var(--oa-layout-measure-body-max); margin: 0 0 var(--oa-space-300); padding: var(--oa-space-100) 0 var(--oa-space-100) var(--oa-space-150);
+  border-left: var(--oa-border-width-bar) solid var(--oa-color-border-strong);
+  color: var(--oa-color-text-primary); font: var(--oa-type-body-small) }
+.oa-correction-word { font-weight: var(--oa-font-weight-bold) }
+.oa-correction-date { display: block; margin-top: var(--oa-space-050); font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
+
+@media (forced-colors: active) {
+  .oa-correction { border-left-color: CanvasText }
+}
+
+/* Markup it expects:
+   <p class="oa-correction"><span class="oa-correction-word">Correction:</span> An earlier version of this
+   explainer gave the wrong hearing date. The hearing is on March 12.
+   <span class="oa-correction-date">Corrected March 3, 2027</span></p>   (Illustrative) */

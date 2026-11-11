@@ -47,10 +47,11 @@ body { margin: 0; font: var(--oa-type-body) }
 
 /* The facts: when, where, seats */
 .ev-facts { display: grid; gap: var(--oa-space-100); margin: var(--oa-space-150) 0 var(--oa-space-200) }
-.ev-fact { display: grid; grid-template-columns: 5rem minmax(0, 1fr); gap: var(--oa-space-100); align-items: baseline }
-.ev-fact dt { font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform);
+/* Label and value side by side while both fit; the value drops under its label when text is large or the card narrow */
+.ev-fact { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--oa-space-100) }
+.ev-fact dt { flex: 0 0 5rem; font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform);
   color: var(--oa-color-text-secondary) }
-.ev-fact dd { margin: 0; min-width: 0; overflow-wrap: anywhere }
+.ev-fact dd { flex: 1 1 12rem; margin: 0; min-width: 0; overflow-wrap: break-word }
 .ev-fact b { font-weight: var(--oa-font-weight-bold) }
 
 /* The form, from Rule 18.17 */

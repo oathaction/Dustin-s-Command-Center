@@ -78,3 +78,51 @@ How the developer read the page: the four chapters' visible text, taken from the
 
 - Did: removed the class from both cards. The cards now read `--oa-color-surface` and the other short names from the root's theme.
 - Saw: light on Newsprint, dark on Charcoal, with fields on White and on Prussian, in both the attribute run and the device run.
+
+### 11. Tests the reviewer ran on the second build
+
+Run with Playwright's Chromium and axe-core 4.10.2 from `work/build/node_modules/axe-core`, on the file opened from disk. Results in the report's Tested list.
+
+- Keyboard: Tab goes Theme (the checked radio), the full card's "Save my seat", Name, Email, the open card's "Save my seat", then off the page. Every stop shows the 2 px Verdigris ring at a 2 px gap on Newsprint and the Newsprint ring on Charcoal. Enter and Space on the full card's button do nothing, and focus stays on it. Sending with both fields empty moves focus to Name, which reads "Error: Enter your name..." as its description; sending with a bad email moves focus to Email. The ask steps down to the primary look while an error shows and turns red again once both are fixed. A good send shows "Sending" on the button with `aria-disabled`, then the success line, and the seat count drops from 8 to 7. Arrow keys on the theme switch change the theme at once and store it; a reload keeps it.
+- axe-core (WCAG 2.0, 2.1 and 2.2 A and AA, and best practices): 0 violations and 0 incomplete in nine runs: light, dark by attribute and dark by device, each at load, with both errors showing and after a good send.
+- Forced colors (`forcedColors: 'active'`): every edge, the dashed unavailable edge, the 4 px error bars and both marks hold; nothing relies on a fill.
+- Widths: 390, 360 and 320 px with no sideways scroll; the ask 48 px tall, fields 48 px, theme choices 44 px.
+- Text at 200 percent (root font size doubled, since every type token is in rem), at 1024 and 390 px: no sideways scroll and no clipped box. The first run broke words mid-word in the facts list at 390 px ("Marc h", "Alde r"); see step 12.
+- Every color a token: a script found no hex, rgb, hsl or named color in the CSS outside the forced-colors blocks, other than `transparent`, `fill: none` and `stroke: currentColor`, which the guide's own code uses. All 50 custom properties the CSS reads exist in tokens.css. Every color Chromium computed on a visible element is one of the ten palette and derived colors.
+
+### 12. Third build: my own faults found by the tests
+
+- The facts list used a fixed `5rem` label column with `overflow-wrap: anywhere`, copied in spirit from Rule 26.4's chart rows and the guide's code sets. With text at 200 percent on a phone it broke words in the middle. Changed to a wrapping row whose value drops under its label when there is no room, with `overflow-wrap: break-word`. This was my fault; the guide offers no label-and-value pattern, so I had borrowed one meant for short chart labels.
+- "6 p.m." could split across lines; I joined the number and "p.m." with a no-break space.
+
+### 13. What I could not settle from the page
+
+- Whether a person who has signed up should be stopped from pressing "Save my seat" again. My card lets a second press take a second seat. The guide is silent, and this one is my fault to own.
+- Both buttons are named "Save my seat". A screen reader user who lists the buttons hears the same name twice, told apart only by the card around each. Rule 18.1 says nothing about repeated buttons; I left it, and it is mine to fix (for example "Save my seat on March 18").
+- What `data-red` and `data-red-job` do. I kept them because the guide's code carries them.
+
+## Every place I looked
+
+Chapter 18: the lede and index; Rules 18.1, 18.2 (to compare the unavailable chip), 18.3 and 18.4 in full; Rules 18.17, 18.18 and 18.19 in full; the chapter's token table, Related chapters and For builders block. Chapter 26: the lede and index; Rules 26.1 to 26.8 in full; the token table, searched for surface, field, success, error, warning, button, disabled and bar; the chapter's token table and For builders block. tokens.css: the header comment, the theme blocks and comments, the Newsprint surface class, and a search for each token the code sets read.
+
+## Every guess
+
+1. The card is a plain block with a hairline edge (no card component exists).
+2. The sign-up button is the ask, in Pillar Red.
+3. `data-red` and `data-red-job` are markers to keep.
+4. The full card drops its fields and keeps the button with its reason.
+5. The card's title is an `<h2>` in the form title's type style.
+6. A name passes when it holds a letter or digit.
+7. The head script goes first in the head, before the meta tag and the stylesheets.
+8. A block that should follow the theme carries no surface class (found only in a tokens.css comment).
+
+## Two routes the developer did not take, tested afterward by the reviewer
+
+- **The chapter's own token block in place of tokens.css.** Chapter 18's For builders section offers it as an equal choice ("Link it before your own styles, or copy this chapter's block ... so it also works on its own"). The reviewer pasted that block, as the page prints it, with Rule 18.17's HTML, CSS and script, as the page prints them, into a blank page. The form drew in Times New Roman at 16 px, with no field edges, no padding and fields about 18 px tall, because the block defines none of `--oa-type-body`, `--oa-type-ui`, `--oa-space-*`, `--oa-border-width-hairline`, `--oa-font-weight-*` and 32 more properties the chapter's code reads. Linked to tokens.css, the same files drew correctly.
+- **The surface class on the body.** The chapter's For builders block says "Set a page's ground with a surface class, as in `<body class="oa-surface-newsprint">`". Step 9 shows what that does to dark mode on a block; on the body it pins the whole page to Newsprint.
+
+## Files
+
+- `event-card.html`, `event-card.css`, `event-card.js`: the third build, the one tested.
+- `correction-notice.css`: the simulated designer's notice, from chapter 26's five steps.
+- Version 1, with the surface classes, is kept outside the project at the reviewer's scratch folder as `event-card-v1.html`.
