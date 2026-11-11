@@ -198,7 +198,7 @@
   "chapter": "18",
   "rule": "18.22",
   "width_px": 360,
-  "alt": "Failure case: do not publish. A panel at 360 px for loop R1 from our systems atlas, showing “Step 1 of 3” and its sentence, “Wealth concentration raises money in politics.”, with no buttons at all. A note reads “Starts by itself on load and repeats with no way to stop it.”",
+  "alt": "Failure case: do not publish. A panel at 360 px for Loop R1 from our systems atlas, showing “Step 1 of 3” and its sentence, “Wealth concentration raises money in politics.”, with no buttons at all. A note reads “Starts by itself on load and repeats with no way to stop it.”",
   "illustrative": false,
   "notes": "Picture of a fault: motion that starts by itself with no pause (SC 2.2.2).",
   "fit_switch": false
@@ -216,7 +216,7 @@
   "chapter": "18",
   "rule": "18.24",
   "width_px": 360,
-  "alt": "Failure case: do not publish. A sentence at 360 px from our systems atlas, “R10 shifts accountability to small primary electorates, and R-01 sits on that loop.”, with “R10” in a Prussian fill and “R-01” in a Verdigris fill and no type word for either. A note reads “A bare code, with its type in color alone.”",
+  "alt": "Failure case: do not publish. A sentence at 360 px written from our systems atlas’s records, “R10 shifts accountability to small primary electorates, and R-01 sits on that loop.”, with “R10” in a Prussian fill and “R-01” in a Verdigris fill and no type word for either. A note reads “A bare code, with its type in color alone.”",
   "illustrative": false,
   "notes": "Picture of a fault: bare codes (house rule H11) typed by color.",
   "fit_switch": false

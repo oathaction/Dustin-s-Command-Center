@@ -2775,3 +2775,20 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 | D2-1475 | Rule 18.11's focus ring sits inside the scroll frame, as the rule says; the code changes to match | A ring outside a frame can be cut off by the page around it, and the rule's words are the specification (the editor's section 4) |
 | D2-1476 | Rule 17.10's one look covers pressed, checked and current choices; its words name the exception D2-1152 already set, that links and location lists keep their underline, band and bar | The code draws three current-place looks by design, and the rule must say so (the editor's section 4) |
 | D2-1477 | The editor's 67 edits to chapters 18, 19 and 26 go to their owners: the accessibility lead (18 and 19's words), the component engineer (code and visible words in the sets), the systems designer (anatomy keys), chapter 17's maker (Rule 17.10) and the engineer (26), each through its own generator | One owner per file; the editor's notes, sections 4 to 6 |
+
+### Accessibility lead, the editor's pass on chapter 18
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1478 | Every editor row under my name in sections 4a and 4b is applied as written | The editor checked each against the code, and the code is the record |
+| D2-1479 | Rule 18.11 keeps its focus ring inside the frame, and its builders line gives the offset as one figure, −4 px, the ring and its gap | D2-1475; the component engineer moves the ring to match |
+
+### Accessibility lead, the editor's pass on chapter 19
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1480 | Rule 19.1 asks every page and product to meet the criteria and reports what the guide holds today | The coordinator's call and the editor's W20 row: the chapter's own gaps and results contradict a present-tense "meets" |
+| D2-1481 | Criteria 3.3.4 and 3.3.7 name chapter 18 as the chapter that would add them | D2-1474 |
+| D2-1482 | A criterion's rules print in the page's order, "Rule" for one and "Rules" with "and" before the last | The editor's W01 rows |
+| D2-1483 | The maker pages behind Rule 19.9 print as further reading, with a line saying the steps were not checked on a device | None was read or run here; H04 and the honesty rule |
+| D2-1484 | iPhone steps 2 and 6 say "that button" | The editor's fact row on step 1 names the Home button too, so the later steps follow it |

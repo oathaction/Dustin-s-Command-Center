@@ -183,6 +183,15 @@ All on November 11, 2026, in Chromium through Playwright, with outside requests 
 - What the four other `textSpacing` items are (the results keep only the first).
 - The brand's fonts: every capture and `codeMatch` here drew in fallback fonts.
 
+## Editor's pass
+
+I applied every row of the editor's sections 4a and 4b under my name (`20261111_Stage-C-Round-1-Editor-Notes.md`), as written, through `stage_c_ch18_build.py`: 17 facts and 9 voice rows. Among them: the reason line sits under a button (18.1); the masthead's current part is bold with a 2 px underline, its hover 1 px, and its label "Parts of the site" (18.6); a breadcrumb ends on a bold link with aria-current and no underline (18.7); tabs off are 600 and the example counts 2 of 4 (18.9); a success takes no bar (18.18); the tracker lists six state words with Rules 11.2 and 11.4 (18.20); a linked chip is underlined at rest (18.24); Loop R1 in H11's form; "retrieved" in the sources. Rule 18.11 keeps its ring inside the frame (D2-1475), and its builders line now gives one figure, `outline-offset: -4px`. The rows for chapter 17's Rule 17.10, the anatomy keys and the code sets belong to their owners.
+
+Then, on the tree at the time: `stage_c_ch18_build.py --check` current; a strict build of all 16 chapters with no warnings, chapter 18 at 1,100,293 bytes (under D2-1366's 1.25 MB); and my walker on a page of chapters 17 to 19 passed all 136 walks of the 24 keys files against the component engineer's sets as they now stand.
+
+- D2-xxx | Every editor row under my name in sections 4a and 4b is applied as written | The editor checked each against the code, and the code is the record
+- D2-xxx | Rule 18.11 keeps its focus ring inside the frame, and its builders line gives the offset as one figure, −4 px, the ring and its gap | D2-1475; the component engineer moves the ring to match
+
 ## Change log
 
 Paths relative to `oath-and-action-v6-brand-guide/`. Nothing in `source/`, `work/ledger/`, `deliverables/`, any asset folder, any board, the shell, `guide_build.py`, `guide_check.js` or another owner's files changed. Nothing committed or pushed (the main session's snapshots carry my files).
@@ -196,6 +205,6 @@ Paths relative to `oath-and-action-v6-brand-guide/`. Nothing in `source/`, `work
 - `work/handoffs/phase-2/20261111_Stage-C-Round-1-Ch18-Notes.md` (this file)
 
 **Modified**
-- None outside the files above.
+- None outside the files above; the editor's pass changed only my generators' words and the files they write.
 
 **Scratch, outside the repository** (`/tmp/claude-0/-home-user-Dustin-s-Command-Center/42858b21-febe-5543-930e-ed82e286a69e/scratchpad/stage-c-r1/ch18/`): `scripts/bcd_lookup.py`, `bcd_notes.py`, `build_patched.py`, `keys_walk.js`, `audit.js`, `forced_glyphs.js`, `masthead_probe.js`, `shots.js`, `shot_rule.js`, `shot_forced.js`, `stage_width.js`; `dl-bcd/` (MDN's package); `bcd_ch18.json`; builds in `b1/` to `b3/`, `slim/`, `final/` with their results; captures in `shots/`.

@@ -77,6 +77,18 @@ All on November 11, 2026, in Chromium through Playwright, with outside requests 
 - Every "Not tested" line in the results file.
 - Print, reduced motion on chapter 19 (it has no motion), and grayscale.
 
+## Editor's pass
+
+I applied every row of the editor's sections 5a and 5b, as written, through `stage_c_ch19_build.py`; W3C's quoted words are unchanged. Rule 19.1 now asks builders to meet every criterion and says what the guide holds today, with no claim that every page meets them. Criteria 3.3.4 and 3.3.7 name chapter 18 (D2-1474). Each criterion's line reads "Rule 19.3." for one rule and lists several in the page's order with "and" before the last. Rule 19.4 allows the wordmark and its lockups as the only pictures of text. Rule 19.9's maker pages are now "Further reading", with a line that we wrote the steps from what we know of each maker's menus and did not check them on a device. "Container" became "automated test" in Rule 19.9 and "the machine these checks ran on" in the results file. W3C is spelled out at first use. The voice rows on Rules 19.3, 19.5 and 19.6 and the device script are applied, and iPhone steps 2 and 6 now say "that button", so they follow step 1's side or Home button.
+
+Then: `stage_c_ch19_build.py --check` current; a strict build of all 16 chapters with no warnings, chapter 19 at 204,360 bytes.
+
+- D2-xxx | Rule 19.1 asks every page and product to meet the criteria and reports what the guide holds today | The coordinator's call and the editor's W20 row: the chapter's own gaps and results contradict a present-tense "meets"
+- D2-xxx | Criteria 3.3.4 and 3.3.7 name chapter 18 as the chapter that would add them | D2-1474
+- D2-xxx | A criterion's rules print in the page's order, "Rule" for one and "Rules" with "and" before the last | The editor's W01 rows
+- D2-xxx | The maker pages behind Rule 19.9 print as further reading, with a line saying the steps were not checked on a device | None was read or run here; H04 and the honesty rule
+- D2-xxx | iPhone steps 2 and 6 say "that button" | The editor's fact row on step 1 names the Home button too, so the later steps follow it
+
 ## Change log
 
 Paths relative to `oath-and-action-v6-brand-guide/`. Nothing in `source/`, `work/ledger/`, any board, the shell, `guide_build.py`, `guide_check.js` or another owner's files changed. Nothing committed or pushed.

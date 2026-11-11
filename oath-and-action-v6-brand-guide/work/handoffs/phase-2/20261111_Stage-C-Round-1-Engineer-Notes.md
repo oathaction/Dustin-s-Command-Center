@@ -1,6 +1,6 @@
 # Stage C, round 1: the guide engineer's notes
 
-Oath & Action Edition 06, Phase 2, stage C, round 1, November 11, 2026. Written by the guide engineer, in the `oa-engineer` role, run as a subagent of the main session, under `20261111_Stage-C-Round-1-Brief.md` and the main session's task: first the build changes chapter 18's makers need, then chapter 26, then round 1's three checks, then the strict build, the self-tests and the guide check on the newest tree. I own `guide_build.py`, `guide_check.js` and the shell; no other maker edits them. Three messages from the main session came in while I worked: the editor's two notes for chapter 26 (D2-1343, D2-1345) with the identity designer's low-priority note (D2-1332), and chapter 17's maker's five items for me. Each is answered below.
+Oath & Action Edition 06, Phase 2, stage C, round 1, November 11, 2026. Written by the guide engineer, in the `oa-engineer` role, run as a subagent of the main session, under `20261111_Stage-C-Round-1-Brief.md` and the main session's task: first the build changes chapter 18's makers need, then chapter 26, then round 1's three checks, then the strict build, the self-tests and the guide check on the newest tree. I own `guide_build.py`, `guide_check.js` and the shell; no other maker edits them. Six messages from the main session came in while I worked: the editor's two notes for chapter 26 (D2-1343, D2-1345) with the identity designer's low-priority note (D2-1332); chapter 17's maker's five items; the accessibility lead's four items from chapter 19's notes; chapter 18's ceiling (D2-1468) and `codeMatch` (D2-1470); and the editor's section 6 on chapter 26. Each is answered below.
 
 This file is written early and grows as the work lands.
 
@@ -16,7 +16,11 @@ This file is written early and grows as the work lands.
 | 2 | Chapter 26, Tokens and how to choose them | done: 8 rules, 22 specimens and the table, 4 code sets |
 | 3 | The keyboard path, reduced motion and token table checks | done, with chapter 17's items 1 to 3 |
 | 4 | Chapter 17's item 4: links to chapter 26 that "land on no id" | found: the guide check read a half-parsed page; fixed |
-| 5 | Strict build, self-tests, guide check at four widths | below |
+| 5 | The accessibility lead's four items (chapter 19's notes) | done: the 200 percent overflow named and fixed; items 2 and 3 were mine and are fixed; `present` and `above` read |
+| 6 | D2-1468, D2-1470: chapter 18's ceiling, `codeMatch` | done: 1.25 MB; tall stages whole, a fresh page, a measured tolerance |
+| 7 | The editor's section 6 on chapter 26 | done: 12 rows through the generator; the tokens.css header left for Phase 3, as the editor marks it |
+| 8 | D2-1332: the proofs' 1200 px card off the pixel grid | done in the shell, for every fixed-width plate |
+| 9 | Strict build, self-tests, guide check at four widths | below |
 
 ## 1. What chapter 18's makers asked for
 
@@ -81,6 +85,31 @@ The guide check, not the page, was wrong. The page's ids are all there once the 
 
 **For other scripts that open the chapters page:** any that waits on `networkidle` alone can read a half-parsed page from now on. `guide_check.js`, `sprite_check.js` and `tokens_download_test.js` wait for `load`. The board and atlas capture scripts that use `networkidle` read their own smaller pages.
 
+## 6. The accessibility lead's items, D2-1468, D2-1470, D2-1332 and the editor's section 6
+
+**200 percent text on a phone (the lead's item 1).** The test now names what pushes the page wide: each element whose right edge, or whose own text, passes the screen with no box around it that scrolls or clips, innermost first. On the newest build it named a paragraph in chapter 19 holding a long web address ("Use W3C's quick reference, w3.org/WAI/WC...") at 390, 360 and 1024 px, and, at 390 px, the value labels of chapter 26's two bar-chart code sets, mine. The shell now gives reading text outside specimens `overflow-wrap: break-word`, which breaks a word only when it cannot fit its line, so no other text moves; the bars in my two sets shrink before their labels do. After both, the page holds its width at 390, 360 and 1024 px with text at 200 percent and with text spacing raised (probed on the newest build). Chapter 19's words need no change.
+
+**Items 2 and 3** were my two findings above: the check read a half-parsed page (now fixed), and the download test sized the tokens.css zip from the page's first zip, which is now tokens.json's (now read by id). DR-214's downloads are tokens.css and tokens.json, each offered as the file itself and, through a host, as a zip holding that one file; the test checks both for both files, 16 cases.
+
+**Item 4.** The walker reads `"present"` with `"attr"` (the attribute is there, whatever its value) and `"above"` and `"below"` with `"prop"` (a number past a bound), and compares `"is"` only when a state names it.
+
+**D2-1468.** Chapter 18's ceiling is 1.25 MB; it weighs 1.10 MB on the newest build.
+
+**D2-1470, `codeMatch`.**
+- It runs on a page of its own, loaded fresh, so no earlier check leaves a hover, focus or scroll behind.
+- A stage taller than the window is captured whole: the window grows to the stage's height plus 96 px, the stage's top is scrolled to a whole pixel 48 px down, and the pasted page sets the same fractional offset on both axes.
+- I tried five sub-pixel phases on the four tall stages that failed: the measured phase matched best every time, so the offset is right.
+- What remained was of three kinds. Antialiasing on curved and diagonal edges reached up to 49 of 255. A stage ending between two pixels blends its last row with what lies outside it, in up to 330 pixels. And in the tracker's dark stage at 390 px, its 2 px step line is drawn one row apart: about 900,000 px down a 9.5 MB page, Chromium's positions lose sub-pixel precision, which a short pasted page cannot reproduce.
+- The tolerance follows these figures. The capture's outer ring is left out. A pixel may differ by 64 or less where the guide's own capture has an edge (its 3 by 3 neighbourhood spans 48 or more in luminance). Up to four whole rows or columns may land one pixel apart.
+- Anything else is drift, as is any difference on a flat area or a different size. On the newest build all 56 live stages pass at both widths: at 1440 px, 33 identical and 23 within the tolerance (largest edge difference 49); at 390 px, 39 identical and 17 within it (ten with outer-ring pixels, the tracker's dark stage with two rows a pixel apart, one link pixel a row apart).
+- The search, table, report reader and tracker failures the component engineer saw were the window, not their code.
+
+**A collision of mine, found by the new `codeMatch`.** `c-26-download` and `c-18-download` both styled `.oa-download`, and every set's CSS is global in the guide, so each restyled the other's demo: both drew a different height from their copies. Chapter 26's sets now take an `oa-ex-` root, and the build warns when two code sets on one page style the same class.
+
+**D2-1332.** The text above a plate sets fractional line heights, so every fixed-width plate's top could fall between pixels, at every width (the proofs' plates sat 0.13 to 0.94 px off). The shell now reads every fixed-width stage's place and then sets the CSS `translate` property by the fraction, to the nearest device pixel; the property moves the drawing alone, never what follows it, and a plate set to Fit to window is left as it is. It runs after the fonts load, on resize and on Fit to window. Measured on the newest build: every proofs plate's top and left on a whole pixel at 1440, 1024 and 390 px.
+
+**The editor's section 6.** Applied through the generator: the warning example's step is "Step 2 of 6: Hearing", chapter 11's name for the step a hearing belongs to; the intro names the token files; Rule 26.3's roles add field; Rule 26.5 says "a screen under 2x" and "from 2x"; Rule 26.2's five conditions run in one sentence; the why of 26.3, the opening of 26.4 and the why of 26.7 take the editor's words; and each source ends with the date it was read. WCAG 2.2 and Media Queries Level 5 carry November 10, 2026, when the research lead read them (chapter 17 prints the same); the format module and Semantic Versioning carry November 11, 2026, when I read both pages for this (the format module's page confirms "Final Community Group Report 28 October 2025"). The tokens.css header's words wait for Phase 3's package, as the editor marks them.
+
 ## Routine calls
 
 - D2-xxx | In each live stage, every form control's `name` takes the stage's prefix, as ids do | Two stages of one markup otherwise share one radio group (the component engineer's item 1)
@@ -107,6 +136,16 @@ The guide check, not the page, was wrong. The page's ids are all there once the 
 - D2-xxx | The A-5 words count reads "steps N and M" as two steps | Chapter 17's item 3
 - D2-xxx | Every main page load in the guide check waits for `load`, then for the network to settle | At 9.2 MB the parser outlasts `networkidle` (chapter 17's item 4)
 - D2-xxx | The download test reads the colophon link's zip by its id | The page may now carry tokens.json's zip first
+- D2-xxx | The 200 percent test names the elements that push the page wide, innermost first, by their box or their own text | The lead's item 1: "page" alone sent no one to the fault
+- D2-xxx | Reading text outside specimens takes `overflow-wrap: break-word` in the shell | A web address in running text broke the page's width at 200 percent; break-word moves no word that fits
+- D2-xxx | A keys state's `present` and `above` and `below` are read, and `is` only when named | The lead's oa-keys/1 fields
+- D2-xxx | Chapter 18's ceiling is 1.25 MB | D2-1468
+- D2-xxx | `codeMatch` runs on a fresh page, captures a tall stage whole and pastes the copy at the stage's own sub-pixel phase | D2-1470; five phases tried, the measured one matched best every time
+- D2-xxx | `codeMatch` leaves out the capture's outer ring, allows 64 of 255 on an edge of the guide's capture and up to four rows or columns a pixel apart; any other difference fails | Measured: curve edges up to 49, a last row blended with its surroundings, a straight edge one row apart 900,000 px down the page
+- D2-xxx | Chapter 26's code sets take an `oa-ex-` root, and the build warns when two sets style one class | Two download sets restyled each other's demos
+- D2-xxx | Every fixed-width plate's stage is translated to the nearest device pixel by the shell | D2-1332: a piece at true size draws sharp at 1x; translate moves nothing after it
+- D2-xxx | Chapter 26's sources carry the dates they were read: the research lead's for WCAG 2.2 and Media Queries Level 5, mine for the format module and Semantic Versioning | The editor's H04; I list only reads that happened
+- D2-xxx | `c-26-download` carries a keys file, written by the generator | The one chapter 26 example a keyboard reaches
 
 ## Questions for Dustin
 
@@ -114,7 +153,7 @@ None. Every call above sits inside DR-203, DR-204, DR-214, the round 1 brief and
 
 ## Proposals for the main session
 
-- **The next token version, 6.0.0-gate2.8, a change of the third part (descriptions only).** Chapter 17's item 5: `oa.color.state.loading.mark` still says "The still outline lever of the loading state. It never moves", where Rule 17.7 and D2-200 draw the lines alone. In the same release, the descriptions that carry studio codes or retired names (17 with decision codes, 13 with T- codes, three with R9 and its kin, five with "Signal Grid", one each with "V5" and "the studio") can take reader words, so the table's filter becomes a guard only. I can make it in one pass with the token tests, the table and chapter 26 regenerated; it moves every page's tokens.css and its download size.
+- **The next token version, 6.0.0-gate2.8, a change of the third part (descriptions only).** Chapter 17's item 5: `oa.color.state.loading.mark` still says "The still outline lever of the loading state. It never moves", where Rule 17.7 and D2-200 draw the lines alone. In the same release, the descriptions that carry studio codes or retired names (in the table's rows: 17 with decision codes, 13 with T- codes, three with R9 or its kin, five with "Signal Grid", one each with "V5" and "the studio") can take reader words, so the table's filter becomes a guard only. I can make it in one pass with the token tests, the table and chapter 26 regenerated; it moves every page's tokens.css and its download size.
 - **The error mark's name (D2-1345).** `--oa-color-state-error-mark-on-<surface>` paints the 4 px bar while the guide's words call the glyph the error mark. A rename to `oa.color.state.error.bar` changes the first part of the version under Rule 26.8, and keeps the old CSS name as a deprecated alias for one release of the second part. I recommend doing it before 6.0.0 ships, while every reader is a studio maker and the alias costs nothing; I have not made it.
 
 ## Tested

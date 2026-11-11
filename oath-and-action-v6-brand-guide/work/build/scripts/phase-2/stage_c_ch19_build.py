@@ -372,11 +372,11 @@ DEVICES = [
     ('iPhone with VoiceOver', [
         'Open Settings, then Accessibility, then Accessibility Shortcut, and choose VoiceOver. From now on, pressing the side '
         'button three times, or the Home button on an iPhone that has one, turns VoiceOver on and off.',
-        'Open the page in Safari, then press the side button three times. VoiceOver says “VoiceOver on”.',
+        'Open the page in Safari, then press that button three times. VoiceOver says “VoiceOver on”.',
         'Swipe right with one finger to move to the next item, and left to go back. Each item is read aloud.',
         'Double-tap anywhere to press the item VoiceOver is on. To type, double-tap a field, type, then swipe right to move on.',
         'Go through the ten things to listen for below, and write Pass or Fail beside each with what you heard.',
-        'Press the side button three times to turn VoiceOver off.']),
+        'Press that button three times to turn VoiceOver off.']),
     ('Android phone with TalkBack', [
         'Open Settings, then Accessibility, then TalkBack, and turn on the TalkBack shortcut. Makers name these menus '
         'differently; the shortcut is usually holding both volume keys for three seconds.',
