@@ -19,6 +19,7 @@ neutral gray with the same relative luminance, so a chip keeps its contrast. Col
 Machado, Oliveira and Fernandes (2009) at severity 1.0, applied in linear sRGB, as the Phase 2 palette lab did; the
 captures apply the same matrices through SVG feColorMatrix filters, which work in linear RGB by default.
 """
+import ast
 import csv
 import html
 import importlib.util
@@ -168,16 +169,68 @@ CAT_MARKER = ['circle', 'square', 'triangle', 'diamond']
 CAT_PATTERN = ['solid', 'solid', 'solid', 'hatch']
 GHOST = {'newsprint': '{oa.color.tint.stoneN55}', 'charcoal': '{oa.color.tint.stoneC40}'}
 
-GRADES = [  # (key, V7 value, word, gloss, texture, pattern per 1 px of line width, cap)
-    ('documented', 'documented', 'Documented', 'on the public record', 'solid', None, 'butt'),
-    ('wellSupported', 'well-supported', 'Well supported', 'strong research evidence', 'solid', None, 'butt'),
-    ('plausible', 'plausible', 'Plausible', 'some evidence', 'dashed', [4, 2], 'butt'),
-    ('contested', 'plausible_contested', 'Contested', 'evidence disputed', 'dash-dot', [4, 1.5, 1, 1.5], 'butt'),
-    ('hypothesis', 'hypothesis', 'Hypothesis', 'untested', 'dotted', [0, 2.5], 'round'),
+ATLAS_BUILD = ROOT / 'work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py'
+ATLAS_COMMON = ROOT / 'work/build/scripts/phase-2/atlas_concepts_common.py'
+
+
+def atlas_line_code():
+    """D3-84: read the line code from the atlas build itself (wire_marks, pattern, fitted and their constants), so the
+    tokens, Rule 10.10 and Rule 13.4 state one set of numbers. Only the function `pattern` is run; everything else is read
+    from the source text, with the line it sits on."""
+    src = ATLAS_BUILD.read_text()
+    tree = ast.parse(src)
+    fn = {n.name: n for n in tree.body if isinstance(n, ast.FunctionDef)}
+    asg = {n.targets[0].id: n for n in tree.body if isinstance(n, ast.Assign) and isinstance(n.targets[0], ast.Name)}
+    ns = {}
+    exec(compile(ast.Module(body=[fn['pattern']], type_ignores=[]), str(ATLAS_BUILD), 'exec'), ns)
+    tex = {t: ns['pattern'](t, 1) for t in ('solid', 'dashed', 'dash-dot', 'dotted')}
+    wm = ast.get_source_segment(src, fn['wire_marks'])
+    off = re.search(r'off = w / 2 \+ ([\d.]+)', wm)
+    rail = re.search(r'class="rail"[^\n]*?stroke-width="([\d.]+)"', wm)
+    clear = re.search(r"if tex == 'dotted':\s*body\[-1\] = \(body\[-1\]\[0\] - ux \* ([\d.]+) \* w", wm)
+    assert off and rail and clear, 'wire_marks changed shape; read it again by hand'
+    rail_w, off_k = float(rail.group(1)), float(off.group(1))
+    key_call = re.search(r'grade_glyph\(g, (\d+)\)', ast.get_source_segment(src, fn['evidence_key']))
+    common = ast.parse(ATLAS_COMMON.read_text())
+    grades = next(ast.literal_eval(n.value) for n in common.body if isinstance(n, ast.Assign)
+                  and getattr(n.targets[0], 'id', '') == 'GRADES')
+    widths = sorted(ast.literal_eval(asg['ARROW'].value))
+    return {
+        'source': str(ATLAS_BUILD.relative_to(ROOT)),
+        'patterns_per_width': {k: (None if v[0] is None else v[0]) for k, v in tex.items()},
+        'caps': {k: v[1] for k, v in tex.items()},
+        'pattern_line': fn['pattern'].lineno, 'wire_marks_line': fn['wire_marks'].lineno,
+        'fitting': ast.get_docstring(fn['fitted']), 'fitted_line': fn['fitted'].lineno,
+        'line_widths': widths, 'line_widths_from': f'ARROW, line {asg["ARROW"].lineno}',
+        'hollow_rail_px': rail_w, 'hollow_rail_offset': f'w / 2 + {off_k:g}',
+        'hollow_gap_widths': round((2 * (0.5 * 1 + off_k) - rail_w) / 1 - 0, 3) if False else 1,
+        'dotted_head_clearance_widths': float(clear.group(1)),
+        'key_glyph_px_at_2px': {'grade_glyph default': fn['grade_glyph'].args.defaults[0].value,
+                                'evidence_key': int(key_call.group(1)) if key_call else None},
+        'grades': grades,
+        'defines_shortest_line': bool(re.search(r'min_?run|shortest', src, re.I)),
+        'defines_record_square': bool(re.search(r'record.?square', src, re.I)),
+    }
+
+
+ALC = atlas_line_code()
+# The hollow line: rails of ALC['hollow_rail_px'] centered at w/2 + 0.5 either side, so the ground between them is one line
+# width at every width (2 x (w/2 + 0.5) - 1 = w).
+assert ALC['hollow_rail_px'] == 1 and ALC['hollow_rail_offset'] == 'w / 2 + 0.5'
+# Display words and glosses: Rule 13.3's table, as Rule 12.6's key prints them (D3-84 names the hypothesis gloss).
+GLOSS = {'documented': 'on the public record', 'well-supported': 'strong research evidence', 'plausible': 'some evidence',
+         'plausible_contested': 'evidence disputed', 'hypothesis': 'not yet tested'}
+TEX_KEY = {'documented': 'documented', 'wellSupported': 'well-supported', 'plausible': 'plausible',
+           'contested': 'plausible_contested', 'hypothesis': 'hypothesis'}
+GRADES = [  # (key, V7 value, word, gloss, texture, pattern per 1 px of line width, cap), patterns read from the atlas build
+    *[(k, v, ALC['grades'][v][0], GLOSS[v], ALC['grades'][v][2], ALC['patterns_per_width'][ALC['grades'][v][2]],
+       ALC['caps'][ALC['grades'][v][2]]) for k, v in TEX_KEY.items()],
     ('conceptual', None, 'Conceptual step', 'no complete numbered chain, as in Loops B2, B3 and R9', 'hollow', None, 'butt'),
 ]
+MIN_RUN = 20            # line widths; set here, since the atlas build defines none (see the proposal's line_code_source)
+RECORD_SQUARE = 7       # px; set here from the Phase 2 atlas design frame memo, since the atlas build draws none
 V7_RENDERER = {'plausible': '9 4', 'contested': '9 3 2 3', 'hypothesis': '2 4'}
-LINE_WIDTHS = [2, 3, 6]
+LINE_WIDTHS = ALC['line_widths']
 
 PROPOSED = {}   # token path -> value reference or hex, for hex_of()
 for k, h in NEW_TINT_HEX.items():

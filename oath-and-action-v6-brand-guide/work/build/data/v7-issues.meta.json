@@ -1,7 +1,7 @@
 {
  "file": "v7-issues.json",
  "kind": "v7",
- "publisher": "Oath & Action, Who Do They Answer To? Systems Atlas V7",
+ "publisher": "Oath & Action’s systems atlas, Who Do They Answer To?",
  "url": "work/extract/atlas-v7-data.json",
  "geography": "United States",
  "date_retrieved": "2026-10-15",
@@ -68,7 +68,7 @@
  "universe_or_base": "Every issue record, 193 active and 1 retired",
  "unit": "issue records",
  "qualification": "Grade words are V7's stored values (for example well_supported and retired) and print through chapter 13's mapping table, never raw; the observed field is V7's own, and where V7 stores \"n/a\" the cell is left empty",
- "printed_source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, issue records, 194 issues across ten domains, as of October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas's own; retired records are marked.",
+ "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, issue records, 194 issues across ten domains, as of October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas's own; retired records are marked.",
  "domain": "all",
  "domain_note": "The issue register spans all ten domains",
  "states": []

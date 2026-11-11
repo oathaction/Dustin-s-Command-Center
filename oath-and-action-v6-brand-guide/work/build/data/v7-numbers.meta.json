@@ -1,7 +1,7 @@
 {
  "file": "v7-numbers.json",
  "kind": "v7",
- "publisher": "Oath & Action, Who Do They Answer To? Systems Atlas V7",
+ "publisher": "Oath & Action’s systems atlas, Who Do They Answer To?",
  "url": "work/extract/atlas-v7-data.json",
  "geography": "United States",
  "date_retrieved": "2026-10-15",
@@ -44,7 +44,7 @@
  "universe_or_base": "The atlas's headline figures",
  "unit": "figures, each in its own unit",
  "qualification": "Each figure carries its own qualification, printed with it; several describe events that may have moved since the snapshot, such as Alaska's Ballot Measure 2, decided on November 3, 2026",
- "printed_source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, headline figures, 8 numbers, checked October 15, 2026, United States. Snapshot of October 15, 2026. Each figure carries its own source and qualification.",
+ "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, headline figures, 8 numbers, checked October 15, 2026, United States. Snapshot of October 15, 2026. Each figure carries its own source and qualification.",
  "domain": "all",
  "domain_note": "The eight figures come from several domains",
  "states": []

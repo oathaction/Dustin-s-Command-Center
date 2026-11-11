@@ -1,7 +1,7 @@
 {
  "file": "v7-claims-drug-prices.json",
  "kind": "v7",
- "publisher": "Oath & Action, Who Do They Answer To? Systems Atlas V7",
+ "publisher": "Oath & Action’s systems atlas, Who Do They Answer To?",
  "url": "work/extract/atlas-v7-data.json",
  "geography": "United States",
  "date_retrieved": "2026-10-15",
@@ -52,7 +52,7 @@
  "universe_or_base": "The 11 of pathway PW06's claims whose text is about drug prices",
  "unit": "claims",
  "qualification": "Each claim carries its own population, place, period and limitation, and its grade covers that claim alone. The filter is the studio's, so the table is a selection from the pathway, which also holds claims on medical bills",
- "printed_source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, claims register, pathway PW06, 11 claims about drug prices, verified through October 15, 2026, United States. Snapshot of October 15, 2026. Each claim states its own period and limitation; grades are the atlas's own.",
+ "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, claims register, pathway PW06, 11 claims about drug prices, verified through October 15, 2026, United States. Snapshot of October 15, 2026. Each claim states its own period and limitation; grades are the atlas's own.",
  "domain": "D06",
  "domain_note": "V7's competition domain asks why prescriptions cost so much, and the claims are about drug-benefit middlemen, patents and generic competition",
  "states": []

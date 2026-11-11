@@ -1,7 +1,7 @@
 {
  "file": "v7-reform-routes.json",
  "kind": "v7",
- "publisher": "Oath & Action, Who Do They Answer To? Systems Atlas V7",
+ "publisher": "Oath & Action’s systems atlas, Who Do They Answer To?",
  "url": "work/extract/atlas-v7-data.json",
  "geography": "United States",
  "date_retrieved": "2026-10-15",
@@ -52,7 +52,7 @@
  "universe_or_base": "Every route entry in every reform profile",
  "unit": "route entries; feasibility is an ordinal category, never a number",
  "qualification": "13 of 126 route entries carry a check date (October 15, 2026); a route with no date prints as not checked. Feasibility is the atlas's own judgment on its four-step scale, and a heat table shows each cell's word, never a score or a total",
- "printed_source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, reform profiles, routes to change, 126 route entries for 50 reforms, feasibility for 2026 to 2030, United States. Snapshot of October 15, 2026. 13 routes carry a check date; the rest are not checked.",
+ "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, reform profiles, routes to change, 126 route entries for 50 reforms, feasibility for 2026 to 2030, United States. Snapshot of October 15, 2026. 13 routes carry a check date; the rest are not checked.",
  "domain": "all",
  "domain_note": "The 50 reforms span every atlas domain",
  "states": []

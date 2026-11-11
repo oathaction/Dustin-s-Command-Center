@@ -22,7 +22,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[4]
 V7P = ROOT / 'work/extract/atlas-v7-data.json'
 OUT = ROOT / 'work/build/data'
 SNAP = '2026-10-15'
-PUB = 'Oath & Action, Who Do They Answer To? Systems Atlas V7'
+PUB = 'Oath & Action’s systems atlas, Who Do They Answer To?'
 LEDGER = 'not needed: Atlas V7, read by script'
 
 V7 = json.loads(V7P.read_text(encoding='utf-8'))
