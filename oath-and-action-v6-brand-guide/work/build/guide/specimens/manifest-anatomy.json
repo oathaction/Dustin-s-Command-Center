@@ -67,7 +67,7 @@
   "chapter": "18",
   "rule": "18.9",
   "width_px": null,
-  "alt": "Anatomy of tabs, drawn from its code to copy on Newsprint, with seven numbered callouts and a key. 1, Tab list: Named Views of the bill; the Tab key enters at the selected tab, and the arrow keys move. 2, Height: Each tab 44 px tall. 3, Selected tab: A 4 px bar and bold words; its panel shows at once. 4, Focus ring: On the tab in focus. 5, Tab: A view’s name in a word or two. 6, Unavailable tab: Dashed, with the reason under the list. 7, Panel: The selected tab’s view, named by its tab.",
+  "alt": "Anatomy of tabs, drawn from its code to copy on Newsprint, with seven numbered callouts and a key. 1, Tab list: Named Views of the bill; the Tab key enters at the selected tab, and the arrow keys move. 2, Height: Each tab 44 px tall. 3, Selected tab: A 4 px bar and bold words; its panel shows at once. 4, Focus ring: Inside the tab in focus, with its 2 px gap, since the tabs stand close (Rule 18.11). 5, Tab: A view’s name in a word or two. 6, Unavailable tab: Dashed, with the reason under the list. 7, Panel: The selected tab’s view, named by its tab.",
   "illustrative": true,
   "notes": "Drawn from work/build/guide/code/c-18-tabs.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366)."
  },
@@ -155,7 +155,7 @@
   "chapter": "18",
   "rule": "18.20",
   "width_px": null,
-  "alt": "Anatomy of a live tracker, drawn from its code to copy on Newsprint, with six numbered callouts and a key. 1, Bill: Its number and title. 2, Done: A filled step with its number and state word, Filed. 3, Now: The step under way, its ring and its word; here a reader can take part. 4, Not yet: A fine ring and its word. 5, Status line: Says each change once, politely, in words. 6, Check date: The warning mark and when we last checked.",
+  "alt": "Anatomy of a live tracker, drawn from its code to copy on Newsprint, with six numbered callouts and a key. 1, Bill: Its number and title. 2, Done: A filled step with its number and state word, Filed. 3, Now: The step under way, its ring and its word; here a reader can take part. 4, Not yet: A fine ring and its word. 5, Status line: Says each change once, politely, in words. 6, Check date: The warning mark, Warning: and when we last checked, beside a 4 px bar in ink.",
   "illustrative": true,
   "notes": "Drawn from work/build/guide/code/c-18-tracker.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366)."
  },

@@ -191,6 +191,8 @@
   "oa.component.button.primary.label.onNewsprint",
   "oa.component.icon.ink.onNewsprint",
   "oa.size.target.touch",
+  "oa.space.100",
+  "oa.space.150",
   "oa.type.ask",
   "oa.type.body",
   "oa.type.bodySmall",

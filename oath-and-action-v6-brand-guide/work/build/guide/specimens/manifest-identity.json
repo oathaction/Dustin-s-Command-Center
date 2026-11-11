@@ -368,7 +368,7 @@
  "s-08-opener": {
   "chapter": "08",
   "rule": null,
-  "alt": "The lockmark in its four places at true size, each a crop. Masthead: the left end of a Newsprint bar with L3, the wordmark and the lockmark at 48 pixels. Page header: a white header with the lockmark at 24 pixels beside the section label 03 Who writes the budget and the page number 7; the section title is Illustrative. Footer: a Charcoal footer with the lockmark at 24 pixels beside the tagline, A country that answers to its people. Sign-off: the bottom-right corner of a 1080 pixel social card with the lockmark at 96 pixels, 72 pixels from its right and bottom edges.",
+  "alt": "The lockmark in its four places at true size, each a crop. Masthead: the left end of a Newsprint bar with L3, the wordmark and the lockmark at 48 pixels. Page header: a white header with the lockmark at 24 pixels beside the section label 03 Who writes the budget and the page number 7, Illustrative. Footer: a Charcoal footer with the lockmark at 24 pixels beside the tagline, A country that answers to its people. Sign-off: the bottom-right corner of a 1080 pixel social card with the lockmark at 96 pixels, 72 pixels from its right and bottom edges.",
   "illustrative": false,
   "notes": "Gate 2's fix pass, CD-S1: chapter 08's opener, a light version of Rule 08.2's plate (s-08-2-correct) from the same place functions and masters: L3's masthead master, the 24 px master in the page header and footer, and the 48 px master at exactly 96 px in the sign-off (DR-211). Each crop is 330 px wide or less, so the opener fits a phone at true size."
  },
