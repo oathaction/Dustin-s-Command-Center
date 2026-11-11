@@ -573,7 +573,9 @@ class Specimens:
 
 
 ID_REF_ATTRS = ("aria-labelledby", "aria-describedby", "aria-controls", "aria-owns", "aria-flowto", "aria-details",
-                "aria-errormessage", "aria-activedescendant", "for", "headers", "list", "form")
+                "aria-errormessage", "aria-activedescendant", "for", "headers", "list", "form",
+                # round 1: the theme switch names the element it sets (c-18-theme-switch, D2-1203's contract)
+                "data-oa-theme-for")
 
 
 def process_fragment(src, sid, where):
@@ -682,7 +684,8 @@ def prefix_ids(s, sid):
         vals = " ".join(pre + v if v in ids else v for v in m.group(2).split())
         return f'{m.group(1)}="{vals}"'
 
-    s = re.sub(r'\b(' + "|".join(re.escape(a) for a in ID_REF_ATTRS) + r')="([^"]*)"', refs, s)
+    # an attribute's whole name: "for" never matches the end of data-oa-theme-for, which is named for itself
+    s = re.sub(r'(?<![\w:-])(' + "|".join(re.escape(a) for a in ID_REF_ATTRS) + r')="([^"]*)"', refs, s)
     s = re.sub(r'\b((?:xlink:)?href)="#([^"]+)"', lambda m: f'{m.group(1)}="#{pre + m.group(2) if m.group(2) in ids else m.group(2)}"', s)
     s = re.sub(r"url\(\s*(['\"]?)#([^)'\"]+)\1\s*\)", lambda m: f"url(#{pre + m.group(2) if m.group(2) in ids else m.group(2)})", s)
 
@@ -868,7 +871,7 @@ CODE_DIR = GUIDE / "code"
 CODE_SET_ID = re.compile(r"^c-\d{2}-[a-z0-9]+(?:-[a-z0-9]+)*$")
 CODE_LANGS = (("html", "HTML", "the HTML"), ("css", "CSS", "the CSS"), ("js", "Script", "the script"))
 CODE_COLOR = re.compile(r"(?<![\w&-])#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})\b(?![\w-])|\b(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch|color)\(", re.I)
-CODE_NAMED = re.compile(r"\b(?:white|black|red|blue|green|gray|grey|silver|navy|maroon|purple|orange|yellow|pink|brown)\b", re.I)
+CODE_NAMED = re.compile(r"(?<![\w-])(?:white|black|red|blue|green|gray|grey|silver|navy|maroon|purple|orange|yellow|pink|brown)(?![\w-])", re.I)
 CODE_TAGS = re.compile(r"<(html|head|body|style|script|link|meta|iframe)\b", re.I)
 CODE_ROOTS = re.compile(r"(?:^|[\s>+~,(])(?::root|html|body)(?![\w-])")
 
@@ -992,10 +995,73 @@ class CodeSets:
                     w(f"the script holds {why}; it is a plain script that finds each copy of its component and reads IDs from attributes")
 
 
+# Round 1 (November 11, 2026): a form control's name groups it (a radio group is one name), so in each live stage every
+# name takes the stage's prefix as ids do; otherwise the light and dark stages' radios would form one group. The copy
+# panels keep the builder's own names.
+CODE_NAMED_CONTROLS = ("input", "select", "textarea", "button", "fieldset", "output")
+# AX-S8 (the accessibility lead's proposal, approved by the main session): a live stage adds no landmark to the guide's
+# own list, so in the two live stages only, each landmark element is drawn as a <div role="group"> that keeps its name,
+# class and id, with data-oa-landmark naming what it is. The panels, Copy and codeMatch's pasted page keep the real
+# elements. A section or form is a landmark only when named, and an element with a landmark role is one whatever its tag.
+CODE_LANDMARKS = ("header", "nav", "search", "footer", "aside", "main")
+CODE_NAMED_LANDMARKS = ("section", "form")
+CODE_LANDMARK_ROLES = ("banner", "navigation", "search", "contentinfo", "complementary", "main", "region", "form")
+
+
+def landmarks_of(html_src):
+    """The landmark elements a set's markup holds, as (tag or role, open tag), for the live stages' swap."""
+    out = []
+    for m in re.finditer(r"<([a-zA-Z][\w-]*)\b([^>]*)>", html_src):
+        tag, attrs = m.group(1).lower(), m.group(2)
+        role = (re.search(r'\srole="([^"]*)"', attrs) or [None, ""])[1].strip().lower()
+        named = re.search(r'\saria-label(?:ledby)?="[^"]*\S[^"]*"|\stitle="[^"]*\S', attrs)
+        if role in CODE_LANDMARK_ROLES:
+            out.append((role, m))
+        elif not role and (tag in CODE_LANDMARKS or (tag in CODE_NAMED_LANDMARKS and named)):
+            out.append((tag, m))
+    return out
+
+
+def unlandmark(html_src):
+    """Each landmark drawn as <div role="group" data-oa-landmark="..."> with its own attributes, closing tags matched by
+    nesting; the kinds swapped, in order of first appearance."""
+    swap = {m.start(): kind for kind, m in landmarks_of(html_src)}
+    if not swap:
+        return html_src, []
+    out, stack, i = [], [], 0
+    for m in re.finditer(r"<(/?)([a-zA-Z][\w-]*)\b([^>]*)>", html_src):
+        out.append(html_src[i:m.start()])
+        i = m.end()
+        close, tag, attrs = m.group(1), m.group(2).lower(), m.group(3)
+        if close:
+            k = max((j for j, (t, _) in enumerate(stack) if t == tag), default=None)
+            hit = stack[k][1] if k is not None else False
+            if k is not None:
+                del stack[k:]
+            out.append("</div>" if hit else m.group(0))
+            continue
+        hit = m.start() in swap
+        if not attrs.rstrip().endswith("/") and tag not in ("input", "img", "br", "hr", "meta", "link", "source", "wbr", "col", "area", "base", "embed", "track", "param"):
+            stack.append((tag, hit))
+        if hit:
+            a = re.sub(r'\srole="[^"]*"', "", attrs)
+            out.append(f'<div role="group" data-oa-landmark="{swap[m.start()]}"{a}>')
+        else:
+            out.append(m.group(0))
+    out.append(html_src[i:])
+    kinds = list(dict.fromkeys(swap.values()))
+    return "".join(out), kinds
+
+
 def code_instance(html_src, sid, theme):
     """The set's markup for one live stage: every id, and every reference to it, takes the stage's prefix, so the two
-    stages hold unique ids while the copy panel keeps the builder's own."""
-    return prefix_ids(html_src, f"{sid}--{theme}")
+    stages hold unique ids while the copy panel keeps the builder's own; every form control's name takes it too, so each
+    stage's radios are their own group; and each landmark is drawn as a named group (AX-S8)."""
+    pre = f"{sid}--{theme}"
+    s = prefix_ids(html_src, pre)
+    s = re.sub(r"<(?:" + "|".join(CODE_NAMED_CONTROLS) + r")\b[^>]*>",
+               lambda m: re.sub(r'(\sname=")([^"]*)(")', lambda n: f"{n.group(1)}{pre}--{n.group(2)}{n.group(3)}", m.group(0)), s, flags=re.I)
+    return unlandmark(s)[0]
 
 
 def code_plate(rid, block, ctx, where):
