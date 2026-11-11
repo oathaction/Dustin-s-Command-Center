@@ -2011,7 +2011,8 @@ WEIGHT_PAGE = 15.5 * MB        # the page's budget: half a megabyte under the li
 # still to come at the default) runs past it. Measured on November 10: chapters 01 to 12 weigh 6.16 MB, so those, these
 # four at their ceilings and the rest at the default come to about 14.6 MB with the shell, sprites and appendix.
 WEIGHT_BUDGET = {"01": 2.7, "02": 0.85, "03": 0.65, "04": 0.45, "05": 0.45, "06": 0.35, "07": 0.3, "08": 0.3,
-                 "09": 0.4, "10": 1.0, "11": 0.55, "12": 0.5, "17": 0.5, "18": 1.1, "19": 0.3, "26": 1.0}
+                 "09": 0.4, "10": 1.0, "11": 0.55, "12": 0.5, "17": 0.5, "18": 1.25, "19": 0.3, "26": 1.0}
+# Round 1 (D2-1468): chapter 18's ceiling rises from 1.1 to 1.25 MB; it stood at 1.097 MB with all 24 sets and anatomy plates.
 # Round 1: chapter 26 carries tokens.json once as its download (0.37 MB as a data URI) beside the token table (0.31 MB),
 # so its budget rises from 0.6 to 1.0 MB.
 WEIGHT_DEFAULT = 0.45          # chapters 13 to 16, 20 to 25, 27 and 28

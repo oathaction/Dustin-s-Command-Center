@@ -1197,13 +1197,22 @@ async function sbTyped(page) {
 // gives them, pasted into a page that holds the brand's fonts, tokens.css (as the page's own download carries it) and
 // body { margin: 0; font: var(--oa-type-body) }, at the same place on the screen as the live stage, and both are
 // captured. The masthead and rail are hidden while the guide is captured, so nothing overlaps a stage.
+// Round 1 (D2-1470): codeMatch runs on a fresh page, so no earlier check's hover, focus or scroll leaves a trace. A stage
+// taller than the window is captured whole: the window grows to hold it, its top is scrolled to a whole pixel, and the
+// pasted page sets the same fractional offset on both axes, so both captures fall on the same sub-pixel phase. A pixel
+// may differ only as antialiasing does: by EDGE_TOL or less of 255, on an edge of the guide's own capture (its 3 by 3
+// neighbourhood spans EDGE_SPAN or more in luminance). Any larger difference, or one on a flat area, is drift. Measured
+// on the 48 live stages of the 03:13 build, the curve edges differ by up to 44 (the component engineer's figures and
+// mine, in the round 1 notes).
+const EDGE_TOL = 48;
+const EDGE_SPAN = 48;
 async function codeMatch(page) {
   const plates = await page.evaluate(() => [...document.querySelectorAll('.plate--code[data-code-set]')].map((f) => {
     const text = (lang) => { const pre = f.querySelector(`.code-panel[data-code-lang="${lang}"] pre`); return pre ? pre.textContent : null; };
     return { set: f.getAttribute('data-code-set'), html: text('html'), css: text('css'), js: text('js'),
       themes: [...f.querySelectorAll('.code-stage .code-root')].map((r) => r.closest('.code-stage').getAttribute('data-code-theme')) };
   }));
-  const out = { plates: plates.length, stages: 0, results: [], bad: [] };
+  const out = { plates: plates.length, stages: 0, results: [], bad: [], tolerance: { edge: EDGE_TOL, span: EDGE_SPAN } };
   if (!plates.length) return out;
   const env = await page.evaluate(() => {
     const a = document.getElementById('tokens-download'); const href = a ? a.getAttribute('href') : '';
@@ -1213,46 +1222,84 @@ async function codeMatch(page) {
     return { tokens, fonts };
   });
   if (!env.tokens) { out.bad.push({ set: '*', why: 'the page carries no tokens.css download to paste beside the code' }); return out; }
-  const hide = await page.addStyleTag({ content: '.masthead, .rail { visibility: hidden !important }' });
+  const hide = await page.addStyleTag({ content: '.masthead, .rail { visibility: hidden !important } html { scroll-behavior: auto !important }' });
   await page.mouse.move(0, 0);
   await page.evaluate(() => { if (document.activeElement && document.activeElement.blur) document.activeElement.blur(); });
   const vp = page.viewportSize();
   const harness = await page.context().newPage();
-  await harness.setViewportSize(vp);
   for (const pl of plates) {
     for (const theme of pl.themes) {
       const sel = `.plate--code[data-code-set="${pl.set}"] .code-stage[data-code-theme="${theme}"] .code-root`;
-      const box = await page.evaluate((sel) => { const r = document.querySelector(sel); r.scrollIntoView({ block: 'center' }); const b = r.getBoundingClientRect(); return { x: b.left, y: b.top, w: b.width, h: b.height }; }, sel);
+      const h = await page.evaluate((sel) => Math.ceil(document.querySelector(sel).getBoundingClientRect().height), sel);
+      const tall = h + 96 > vp.height;
+      if (tall) { await page.setViewportSize({ width: vp.width, height: h + 96 }); await page.waitForTimeout(150); }
+      const box = await page.evaluate((sel) => {
+        const r = document.querySelector(sel);
+        // the stage's top 48 px under the window's top, on a whole scroll position
+        const top = r.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo(0, Math.max(0, Math.floor(top) - 48));
+        const b = r.getBoundingClientRect();
+        return { x: b.left, y: b.top, w: b.width, h: b.height };
+      }, sel);
       await page.waitForTimeout(60);
       const a = await page.locator(sel).screenshot();
+      const fx = ((box.x % 1) + 1) % 1, fy = ((box.y % 1) + 1) % 1;
+      await harness.setViewportSize(tall ? { width: vp.width, height: h + 96 } : vp);
       const js = pl.js ? `<script>${pl.js}<\/script>` : '';
       await harness.setContent(`<!doctype html><html lang="en" data-oa-theme="${theme}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">`
-        + env.fonts.map((h) => `<link rel="stylesheet" href="${h}">`).join('') + `<style>${env.tokens}</style><style>body { margin: 0; font: var(--oa-type-body) }</style>`
-        + `<style>${pl.css || ''}</style></head><body><div id="oa-harness" style="display:flow-root;width:${box.w}px;margin:${box.y % 1}px 0 0 ${box.x}px">${pl.html || ''}</div>${js}</body></html>`, { waitUntil: 'networkidle' });
+        + env.fonts.map((u) => `<link rel="stylesheet" href="${u}">`).join('') + `<style>${env.tokens}</style><style>body { margin: 0; font: var(--oa-type-body) }</style>`
+        + `<style>${pl.css || ''}</style></head><body><div id="oa-harness" style="display:flow-root;width:${box.w}px;margin:${48 + fy}px 0 0 ${Math.floor(box.x) + fx}px">${pl.html || ''}</div>${js}</body></html>`, { waitUntil: 'networkidle' });
       await harness.evaluate(() => document.fonts.ready);
       await harness.mouse.move(0, 0);
       const b = await harness.locator('#oa-harness').screenshot();
+      if (tall) { await page.setViewportSize(vp); await page.waitForTimeout(150); }
       out.stages++;
-      if (Buffer.compare(a, b) === 0) { out.results.push({ set: pl.set, theme, same: true, w: Math.round(box.w), h: Math.round(box.h) }); continue; }
-      const d = await harness.evaluate(async ([x64, y64]) => {
+      if (Buffer.compare(a, b) === 0) { out.results.push({ set: pl.set, theme, same: true, w: Math.round(box.w), h: Math.round(box.h), tall }); continue; }
+      const d = await harness.evaluate(async ([x64, y64, tol, span]) => {
         const load = (s) => new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = 'data:image/png;base64,' + s; });
         const [x, y] = await Promise.all([load(x64), load(y64)]);
         if (x.width !== y.width || x.height !== y.height) return { size: `${x.width} by ${x.height} in the guide, ${y.width} by ${y.height} pasted` };
-        const c = document.createElement('canvas'); c.width = x.width; c.height = x.height; const g = c.getContext('2d', { willReadFrequently: true });
-        g.drawImage(x, 0, 0); const dx = g.getImageData(0, 0, c.width, c.height).data;
-        g.clearRect(0, 0, c.width, c.height); g.drawImage(y, 0, 0); const dy = g.getImageData(0, 0, c.width, c.height).data;
-        let n = 0, max = 0;
-        for (let i = 0; i < dx.length; i += 4) { const m = Math.max(Math.abs(dx[i] - dy[i]), Math.abs(dx[i + 1] - dy[i + 1]), Math.abs(dx[i + 2] - dy[i + 2])); if (m) { n++; if (m > max) max = m; } }
-        return { pixels: n, max, total: c.width * c.height };
-      }, [a.toString('base64'), b.toString('base64')]);
-      const r = { set: pl.set, theme, same: false, ...d };
-      out.results.push(r);
-      out.bad.push({ set: pl.set, theme, why: d.size ? `draws ${d.size}` : `${d.pixels} of ${d.total} pixels differ, by up to ${d.max} of 255` });
+        const W = x.width, H = x.height;
+        const c = document.createElement('canvas'); c.width = W; c.height = H; const g = c.getContext('2d', { willReadFrequently: true });
+        g.drawImage(x, 0, 0); const dx = g.getImageData(0, 0, W, H).data;
+        g.clearRect(0, 0, W, H); g.drawImage(y, 0, 0); const dy = g.getImageData(0, 0, W, H).data;
+        const L = (i) => 0.2126 * dx[i] + 0.7152 * dx[i + 1] + 0.0722 * dx[i + 2];
+        let n = 0, max = 0, flat = 0, big = 0, firstOff = null;
+        for (let py = 0; py < H; py++) for (let px = 0; px < W; px++) {
+          const i = (py * W + px) * 4;
+          const m = Math.max(Math.abs(dx[i] - dy[i]), Math.abs(dx[i + 1] - dy[i + 1]), Math.abs(dx[i + 2] - dy[i + 2]));
+          if (!m) continue;
+          n++; if (m > max) max = m;
+          let lo = 255, hi = 0;
+          for (let oy = -1; oy <= 1; oy++) for (let ox = -1; ox <= 1; ox++) {
+            const qx = px + ox, qy = py + oy; if (qx < 0 || qy < 0 || qx >= W || qy >= H) continue;
+            const l = L((qy * W + qx) * 4); if (l < lo) lo = l; if (l > hi) hi = l;
+          }
+          if (m > tol) { big++; if (!firstOff) firstOff = { x: px, y: py, by: m }; }
+          else if (hi - lo < span) { flat++; if (!firstOff) firstOff = { x: px, y: py, by: m, flat: true }; }
+        }
+        return { pixels: n, max, total: W * H, flat, big, firstOff };
+      }, [a.toString('base64'), b.toString('base64'), EDGE_TOL, EDGE_SPAN]);
+      const edgesOnly = !d.size && d.big === 0 && d.flat === 0;
+      out.results.push({ set: pl.set, theme, same: false, edgesOnly, tall, ...d });
+      if (!edgesOnly) out.bad.push({ set: pl.set, theme, why: d.size ? `draws ${d.size}` : `${d.pixels} of ${d.total} pixels differ, by up to ${d.max} of 255; ${d.big} by more than ${EDGE_TOL}, ${d.flat} on a flat area; first at ${JSON.stringify(d.firstOff)}` });
     }
   }
   await harness.close();
   await hide.evaluate((el) => el.remove());
   return out;
+}
+
+// codeMatch on a page of its own, loaded fresh (D2-1470)
+async function codeMatchFresh(ctx, file) {
+  const page = await ctx.newPage();
+  await page.goto('file://' + file, { waitUntil: 'load' });
+  await page.waitForLoadState('networkidle');
+  await page.evaluate(() => document.fonts.ready);
+  await page.waitForTimeout(300);
+  const r = await codeMatch(page);
+  await page.close();
+  return r;
 }
 
 // D2-1133 (stage C): the guide forces light under tokens.css's dark theme (DR-204). The page is read once with the
@@ -1717,7 +1764,7 @@ async function checkPage(browser, file, widths, opts = {}) {
       return { specimen: st ? st.getAttribute('data-specimen') : null, chapter: ch ? ch.id : null, inHead, scrolls: box ? box.scrollWidth > box.clientWidth + 1 : null };
     }));
     // DR-203: the code a builder copies draws what the guide shows
-    a.code = await codeMatch(page);
+    a.code = opts.mutate ? await codeMatch(page) : await codeMatchFresh(ctx, file);   // a plant changes this page, so it runs here
     // D2-1133: the guide stays light with the device set to dark
     const dk = await lightOnDark(page);
     a.lightOnDark = { elements: dk.elements, attribute: dk.attribute, scheme: dk.scheme, deviceDark: dk.dark, changed: dk.changed.length, first: dk.changed.slice(0, 5) };

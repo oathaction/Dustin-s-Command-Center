@@ -413,7 +413,8 @@ def minify(css):
 # One look for every plate: the stage, the numbered callout, the target bracket and the key (D2-xxx in the notes)
 AX_CSS = minify("""
 .ax{container-type:inline-size}
-.ax-st{position:relative;padding:28px 24px 28px 44px;border:1px solid var(--oa-color-border-hairline);background:var(--oa-color-surface);color:var(--oa-color-text-primary)}
+.ax-st{position:relative;padding:28px 24px 28px 44px;border:1px solid var(--oa-color-border-hairline);background:var(--oa-color-surface);color:var(--oa-color-text-primary);overflow-wrap:anywhere}
+@container (max-width:24rem){.ax-st{padding:24px 14px 24px 40px}}
 .ax-p{position:relative}
 .ax-n{position:absolute;z-index:3;top:-10px;left:-4px;display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--oa-color-text-primary);color:var(--oa-color-surface);box-shadow:0 0 0 2px var(--oa-color-surface);font:700 .8125rem/1 var(--oa-font-family-reading);letter-spacing:0;text-transform:none;text-decoration:none}
 .ax-tr{left:auto;right:-10px}.ax-bl{top:auto;bottom:-10px}.ax-br{top:auto;bottom:-10px;left:auto;right:-10px}
@@ -769,8 +770,8 @@ def p12():
     err.up = st.up
     st.up.k.insert(st.up.k.index(st) + 1, err)
     copy = q(panel, 'oa-code-copy')
-    pin(q(panel, 'oa-code-lang'), 1)
-    bracket(copy, 2, up=True)
+    pin(q(panel, 'oa-code-lang'), 1, 'tr')
+    bracket(copy, 2)
     pin(copy, 3, 'tr')
     pin(panel, 4, 'bl')
     pin(st, 5)

@@ -2758,3 +2758,11 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 | D2-1468 | Chapter 18's weight ceiling rises from 1.1 to 1.25 MB, the limit D2-1366 set, and the engineer writes it in `guide_build.py` | Chapter 18 stands at 1.097 MB after the component engineer's trims; the editor's pass and round 2's fixes need room, and the page still projects under its 15.5 MB budget |
 | D2-1469 | In the dark theme a form field's 4 px Pillar Red error bar may touch the Prussian field ground; it stays as drawn | Pillar Red measures 3.19 to 1 on Prussian and 4.49 on Charcoal (main session, WCAG formula on the palette's hex values), over 1.4.11's 3 to 1 for a graphic; round 2's accessibility red team may look again |
 | D2-1470 | `codeMatch` gets a measured tolerance for antialiased curve edges and captures stages taller than the window whole; the guide engineer sets both and records the tolerance | The component engineer found its four flagged sets differ only by curve edges and, in the tracker, one line a pixel apart, with a 4,000 px window |
+
+### Systems designer, anatomy fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1471 | The code block's plate cuts its code at the panel's edge, with no scrolling region | A picture holds no control and no region a reader could need to reach; the real panel scrolls, and its live code plate shows that |
+| D2-1472 | Words inside every anatomy plate may break anywhere they must, and a plate under 24 rem of room takes a narrower stage margin | At 200 percent text the stage left too little room for an unbroken word, and four plates pushed the page sideways |
+| D2-1473 | The code block's panel label takes its callout at its end | At a phone's width the Copy button wraps under the label, and the bracket's callout and the label's would meet |

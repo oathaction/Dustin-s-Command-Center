@@ -81,3 +81,29 @@ Paths relative to `oath-and-action-v6-brand-guide/`. Nothing in `source/`, `work
 - `work/handoffs/phase-2/20261111_Stage-C-Round-1-Anatomy-Notes.md` (this file)
 
 **Scratch, outside the repository** (`/tmp/claude-0/-home-user-Dustin-s-Command-Center/42858b21-febe-5543-930e-ed82e286a69e/scratchpad/stage-c-r1/systems/`): builds `build-a1/` and `build-a2/`, capture scripts `plates.js` and `clip.js`, captures `shots-a1/` to `shots-a6/` and `shots-final/`, sheets in `sheets/`, and `guide-check-a2.log`.
+
+## Fix pass
+
+November 11, after the main session logged my calls as D2-1412 to D2-1425 and the accessibility lead changed its four captions to match the code.
+
+**The axe fault.** `.sx-kd.sx-ax-p > .sx-kk` was `s-18-12-anatomy`, the code block: the panel (`kd`, carrying a callout) and its code (`kk`), which keeps the code set's `overflow-x: auto` and overflowed at 390 px. The plate now cuts the code at the panel's edge (`overflow: hidden`), as the panel draws before a reader scrolls it, so the picture holds no scrolling region; its manifest notes say so. No other plate keeps a scrolling region: the masthead's and the theme switch's dialogs and the reader's page view draw with `overflow: visible`, and the scroll region's frame cuts its content.
+
+**Sideways scroll at 200 percent text.** Four plates were the source: at 200 percent root text the stage left 130 to 160 px for the component, so an unbroken word (“name@example” in the form, a button's label) pushed `s-18-17` (form), `s-18-23` (diagram controls), `s-18-22` (stepper) and `s-18-01` (buttons) wider than their frames, and the page with them (460 px at 390, 456 at 360 in my emulation). Two changes in the shared look: words in a plate break where they must (`overflow-wrap: anywhere` on the stage), and a stage under 24 rem of room keeps 14 px at its right and 40 at its left instead of 24 and 44. The code block's panel label takes its callout at its end, since its Copy button now wraps under it at a phone's width.
+
+**Routine calls**
+- D2-xxx | The code block's plate cuts its code at the panel's edge, with no scrolling region | A picture holds no control and no region a reader could need to reach; the real panel scrolls, and its live code plate shows that
+- D2-xxx | Words inside every anatomy plate may break anywhere they must, and a plate under 24 rem of room takes a narrower stage margin | At 200 percent text the stage left too little room for an unbroken word, and four plates pushed the page sideways
+- D2-xxx | The code block's panel label takes its callout at its end | At a phone's width the Copy button wraps under the label, and the bracket's callout and the label's would meet
+
+**Tested**
+- Strict build of every chapter into my scratch folder: exit 0, no warning, 9,541,790 bytes; chapter 18 at 1,099,502 bytes of its ceiling, now 1.25 MB.
+- In every anatomy plate at 390 and 360 px, by script: no element with a scrolling overflow at normal text (none left at all); at 200 percent root text, no plate's stage or frame wider than its box, and the page no wider than the window (390 and 360 px). The only parts past an edge sit inside the scroll region's frame and the code panel, which cut them on purpose.
+- Every plate captured at 1440, 390 and 360 px: every callout visible, no frame that scrolls, each bracketed target 44 px tall (48, 60 and 24 where the rules set those).
+
+**Not tested**
+- axe-core itself; I reproduced its condition (an overflowing element with `overflow: auto`) by script and found none.
+- The guide check's own 200 percent test, which may zoom differently from my doubled root size.
+
+**Change log**
+- Modified: `work/build/scripts/phase-2/stage_c_ch18_anatomy_build.py`; its outputs `work/build/guide/specimens/s-18-01-anatomy.html` to `s-18-24-anatomy.html` and `manifest-anatomy.json`; this file.
+- Scratch: `build-a4/`, `shots-fix/`, `wide.js`, `wide18.js`, `wide18n.js`, `culprit.js`, `culprit2.js`.
