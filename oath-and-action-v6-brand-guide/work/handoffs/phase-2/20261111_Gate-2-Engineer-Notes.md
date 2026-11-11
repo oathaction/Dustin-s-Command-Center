@@ -250,3 +250,4 @@ Checks:
 
 D2-xxx | The need records in tokens.json write their ratios as "to 1" too | They ship in tokens.json beside the descriptions; one form throughout the file
 D2-xxx | Token release stays 6.0.0-gate2.9 for these description fixes | The release has not shipped; its change note names them
+- Follow-up: the accessibility lead's strict build warned once in Rule 26.7, the token table behind tokens 6.0.0-gate2.9. The table had been rewritten after the description fixes; that build fell between my token rebuild and my table rebuild. Checked again: `token_table_build.py --check` matches 6.0.0-gate2.9, 504 tokens; `tokens_build.mjs --check` and `stage_c_ch26_build.py --check` current; `guide_build.py --strict` to scratch, 0 warnings, 9,443,603 bytes.
