@@ -1,0 +1,24 @@
+{
+  "title": "Where to start",
+  "instr": "Pick the route that matches why you’re here.",
+  "routes": [
+    {"id": "newcomer", "label": "New to the demonstration", "lede": "A route through the template demonstration, for the guide check’s own tests.",
+     "steps": [
+       {"text": "Read what the first chapter is for.", "href": "#purpose", "later": false},
+       {"text": "See the first sample rule at true size.", "href": "#rule-01-1", "later": false},
+       {"text": "See the second sample rule and its failure case.", "href": "#rule-01-2", "later": false},
+       {"text": "Open the contents again.", "href": "#contents", "later": false}]},
+    {"id": "designer", "label": "Designing a piece", "lede": "A route through the chapters the demonstration holds as placeholders.",
+     "steps": [
+       {"text": "Find the voice chapter’s place.", "href": "#voice", "later": false},
+       {"text": "Find the color chapter’s place.", "href": "#color", "later": false},
+       {"text": "Find the type chapter’s place.", "href": "#type", "later": false},
+       {"text": "The application chapters come later.", "href": null, "later": true}]},
+    {"id": "builder", "label": "Building with code", "lede": "A route that ends at the colophon.",
+     "steps": [
+       {"text": "Find the layout chapter’s place.", "href": "#layout", "later": false},
+       {"text": "Find the lockmark chapter’s place.", "href": "#lockmark", "later": false},
+       {"text": "Open the Foundations part.", "href": "#part-foundations", "later": false},
+       {"text": "Read the colophon.", "href": "#colophon", "later": false}]}
+  ]
+}

@@ -9,6 +9,7 @@
 // Q1 to Q4 pass, November 8, 2026: a frame takes 32 px sides where that holds its stage whole at true size (CD-S9).
 // Round 3 fix pass, November 10, 2026: the tokens.css button saves a zip through the host where one answers (DR-192,
 // D2-964); from 80em a fixed plate wider than its column breaks out over the rail where the page holds it whole (CA-S13).
+// Gate 2, November 11, 2026: a step of the "Where to start" page offers the way back to itself (D2-1698).
 (function () {
   'use strict';
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -109,11 +110,13 @@
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a.xref');
     if (!a) return;
-    var origin = a.closest('.rule[id], .closer[id], .rule-group[id], [data-track]');
+    // Gate 2 (D2-1698): a step of "Where to start" is its own origin, so the way back lands on that step
+    var origin = a.closest('.route-step[id], .rule[id], .closer[id], .rule-group[id], [data-track]');
     var sec = sectionFor(a);
     if (!origin || !sec) return;
     var what = '';
-    if (!origin.matches('[data-track]')) {
+    if (origin.hasAttribute('data-return-label')) what = origin.getAttribute('data-return-label');
+    else if (!origin.matches('[data-track]')) {
       var h = origin.querySelector('h3, .rg-head');
       what = h ? h.textContent.replace(/\s+/g, ' ').trim().replace(/[.:]$/, '') : '';
     }
@@ -139,6 +142,13 @@
     if (pendingReturn && sec && pendingReturn.id !== id) {
       // the way back sits right after the heading that took focus, so the next Tab reaches it (AX-S1)
       var own = host.matches('.rule, .closer, .rule-group, .proof-group') ? host.querySelector(':scope > .return') : null;
+      // Gate 2 (D2-1698): a target inside a specimen, such as a house rule in a plate that "Where to start" opens, gets
+      // its way back right after that plate, so the next Tabs reach it, rather than at the top of the chapter
+      var plate = !own && host.closest('.plate');
+      if (plate) {
+        own = plate.nextElementSibling && plate.nextElementSibling.matches('.return--after') ? plate.nextElementSibling : null;
+        if (!own) { own = document.createElement('p'); own.className = 'return return--after'; own.hidden = true; plate.insertAdjacentElement('afterend', own); }
+      }
       var slot = own || $('.return', sec);
       if (slot) {
         var back = document.createElement('a');

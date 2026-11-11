@@ -21,7 +21,13 @@ Reads, from the repository root (found from this file's place, so the working fo
                                                   a page draws them by <use href="#oa-sym-...">; no _archive/ is read
   work/handoffs/phase-2/20261110_Stage-B-Ch10-Construction.md, section 10   the list of 41 that read at 24 px (DR-136)
 
-Writes work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html: one page that stands alone except for Google Fonts.
+Gate 2 (November 11, 2026) also reads:
+  work/build/guide/front/where-to-start.json       the "Where to start" front page, written by the editor (D2-1698)
+  work/build/guide/front/edition.json              the edition line, the colophon's type words and the license titles
+  work/build/assets/fonts/20261111_Font-Manifest.json and its files   the three typefaces, embedded (D2-1697)
+
+Writes work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html: one page that stands alone, its fonts inside it. Version 7's
+page, work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html, stays as that version's record and is never rebuilt.
 Any chapter of 01 to 08 without a JSON file gets a placeholder that keeps its anchor and contents entry, so the page
 builds with none, some or all chapters. A later chapter joins the page, under its part opener, once its file exists
 (chapter 11 from the apply pass, D2-324); the other chapters of that part show as "Coming later". --demo fills the
@@ -59,8 +65,16 @@ WORDMARK_24 = ASSETS / "identity/wordmark/20261028_Wordmark-24px-Master.svg"
 WORDMARK_16 = ASSETS / "identity/wordmark/20261028_Wordmark-16px-Master.svg"
 WORDMARK_DISPLAY = ASSETS / "identity/wordmark/20261028_Wordmark-Display-Master.svg"
 AMP_B_24 = ASSETS / "identity/ampersand/20261028_Amp-B-24px-Master.svg"
-DEFAULT_OUT = ROOT / "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html"
-EDITION_DATE = "November 7, 2026"   # the apply pass draft
+# Gate 2 (D2-1702): the preview is the page Dustin sees from now on, republished as version 8 (DR-225). Version 7's page,
+# work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html, stays as that version's record and is never rebuilt.
+DEFAULT_OUT = ROOT / "work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html"
+EDITION_DATE = "November 7, 2026"   # the apply pass draft; a build without edition.json still prints it
+FRONT = GUIDE / "front"
+START_JSON = FRONT / "where-to-start.json"            # the editor's words (D2-1698)
+START_DEMO = SHELL / "fixtures/where-to-start-demo.json"   # a --demo build's front page, linking only anchors the demo holds
+EDITION_JSON = FRONT / "edition.json"                 # the edition line, the Type row and the license titles, in the editor's words
+FONTS_DIR = ASSETS / "fonts"
+FONT_MANIFEST = FONTS_DIR / "20261111_Font-Manifest.json"   # written by fonts_fetch.py (D2-1697)
 
 e = html.escape
 
@@ -1817,8 +1831,12 @@ def chapter_span(nums):
 
 def contents_section(present, has_proofs, ctx):
     out = ['<section class="contents" id="contents" data-track="front" data-label="Contents"><div class="ch-head">',
-           '<h2 id="contents-h" class="front-title">Contents</h2><p class="return" hidden></p>', f'<p class="instr">{e(FRONT_CONTENTS)}</p></div>',
-           '<div class="toc-parts">']
+           '<h2 id="contents-h" class="front-title">Contents</h2><p class="return" hidden></p>', f'<p class="instr">{e(FRONT_CONTENTS)}</p></div>']
+    # Gate 2 (D2-1698): the front page that follows, as the contents' first entry, with its own instruction line
+    if ctx.get("start"):
+        st = ctx["start"]
+        out.append(f'<div class="toc-start"><a href="#start"><span class="t">{no_links(inline(st["title"]))}</span></a><p>{no_links(inline(st["instr"]))}</p></div>')
+    out.append('<div class="toc-parts">')
     for slug, name, desc in PARTS:
         chs = [c for c in CHAPTERS if c[3] == slug]
         built = any(c[0] in present for c in chs)
@@ -1910,13 +1928,261 @@ def proofs_section(chap_dir, specs, ctx):
 
 
 # ---------------------------------------------------------------------------------------------------------------
+# Gate 2 (November 11, 2026): the "Where to start" front page (D2-1698), the typefaces inside the page with their
+# licenses (D2-1697), and the edition line in the editor's words (D2-1702)
+# ---------------------------------------------------------------------------------------------------------------
+class FrontStop(Exception):
+    """A fault the Gate 2 brief says stops the build: the front page's file breaks its schema, or a step's href matches
+    no id on the page. The page is not written."""
+
+
+START_ROUTES = ("newcomer", "designer", "builder")   # the schema's route ids, in the page's order
+START_KEYS, ROUTE_KEYS, STEP_KEYS = {"title", "instr", "routes"}, {"id", "label", "lede", "steps"}, {"text", "href", "later"}
+HREF = re.compile(r"#[A-Za-z][\w:.-]*")
+
+
+def load_start(path):
+    """where-to-start.json, held to the schema the Gate 2 brief fixes: {"title", "instr", "routes": [{"id", "label",
+    "lede", "steps": [{"text", "href": "#anchor" | null, "later": bool}]}]}. A break in the schema stops the build."""
+    where = Path(path).name
+    try:
+        d = json.loads(Path(path).read_text())
+    except Exception as ex:
+        raise FrontStop(f"{where} does not parse: {ex}")
+    bad = []
+    words = lambda v: isinstance(v, str) and v.strip()
+    if not isinstance(d, dict) or set(d) != START_KEYS:
+        bad.append(f"its keys are {sorted(d) if isinstance(d, dict) else type(d).__name__}; the schema has instr, routes and title")
+    else:
+        bad += [f"{k} has no words" for k in ("title", "instr") if not words(d[k])]
+        routes = d["routes"] if isinstance(d["routes"], list) else []
+        ids = [r.get("id") if isinstance(r, dict) else None for r in routes]
+        if sorted(map(str, ids)) != sorted(START_ROUTES):
+            bad.append(f"its route ids are {ids}; the schema has newcomer, designer and builder, once each")
+        for r in routes:
+            if not isinstance(r, dict) or set(r) != ROUTE_KEYS:
+                bad.append(f"a route's keys are {sorted(r) if isinstance(r, dict) else type(r).__name__}; the schema has id, label, lede and steps")
+                continue
+            bad += [f"route {r['id']}: {k} has no words" for k in ("label", "lede") if not words(r[k])]
+            if not isinstance(r["steps"], list) or not r["steps"]:
+                bad.append(f"route {r['id']}: steps is not a list of steps")
+                continue
+            for j, st in enumerate(r["steps"], 1):
+                if not isinstance(st, dict) or set(st) != STEP_KEYS:
+                    bad.append(f"route {r['id']}, step {j}: its keys are {sorted(st) if isinstance(st, dict) else type(st).__name__}; the schema has href, later and text")
+                    continue
+                if not words(st["text"]):
+                    bad.append(f"route {r['id']}, step {j}: text has no words")
+                if not isinstance(st["later"], bool):
+                    bad.append(f"route {r['id']}, step {j}: later is {st['later']!r}, not true or false")
+                if st["href"] is not None and not (isinstance(st["href"], str) and HREF.fullmatch(st["href"])):
+                    bad.append(f"route {r['id']}, step {j}: href {st['href']!r} is neither \"#anchor\" nor null")
+    if bad:
+        raise FrontStop(f"{where} breaks the schema the Gate 2 brief fixes: " + "; ".join(bad))
+    for r in d["routes"]:
+        n = len(r["steps"])
+        if not 4 <= n <= 7:
+            R.warn(where, f"route {r['id']} has {n} steps; the brief asks for four to seven")
+        for j, st in enumerate(r["steps"], 1):
+            if st["later"] and st["href"]:
+                R.note(f"{where}: route {r['id']}, step {j} is marked later, so it prints as text and its href {st['href']} is not a link")
+            if not st["later"] and not st["href"]:
+                R.warn(where, f"route {r['id']}, step {j} has no href and is not marked later, so it links nowhere")
+    return d
+
+
+def no_links(s):
+    """A step or label sits inside one link of its own, so any link its words carry is dropped to its text."""
+    return re.sub(r"</?a\b[^>]*>", "", s)
+
+
+DEST = "<!--oa-dest {}-->"
+
+
+def start_section(d, ctx):
+    """The "Where to start" front page, between the contents and the first part (D2-1698): the title and instruction
+    line in the contents' head; a line of the three routes as links, for the widths where they stack; then each route
+    with its head (name and lede) and its numbered steps. A step is one link, its words and then the place it opens,
+    which the build reads from the page once it is assembled (DEST). A step marked later is quiet text, never a link:
+    its words say it comes later. Each step's id lets the reader return to it from the page it opens (xref)."""
+    routes = sorted(d["routes"], key=lambda r: START_ROUTES.index(r["id"]))
+    out = [f'<section class="start" id="start" data-track="front" data-label="{plain(d["title"])}"><div class="ch-head">',
+           f'<h2 id="start-h" class="front-title">{no_links(inline(d["title"]))}</h2><p class="return" hidden></p>',
+           f'<p class="instr">{no_links(inline(d["instr"]))}</p>',
+           '<ul class="route-index">' + "".join(f'<li><a href="#start-{r["id"]}">{no_links(inline(r["label"]))}</a></li>' for r in routes) + "</ul>",
+           '</div><div class="routes">']
+    for r in routes:
+        rid, label = r["id"], plain(r["label"])
+        out.append(f'<div class="route" id="start-{rid}" data-route="{rid}"><div class="route-head">'
+                   f'<h3 class="route-h" id="start-{rid}-h">{no_links(inline(r["label"]))}</h3>'
+                   f'<p class="return" hidden></p><p class="route-lede">{no_links(inline(r["lede"]))}</p></div><ol class="steps">')
+        for j, st in enumerate(r["steps"], 1):
+            sid = f"start-{rid}-{j}"
+            text = no_links(inline(st["text"]))
+            if st["later"] or not st["href"]:
+                out.append(f'<li class="route-step route-step--later" id="{sid}" data-later>'
+                           f'<span class="step-n" aria-hidden="true">{j}</span><p class="step-t">{text}</p></li>')
+            else:
+                out.append(f'<li class="route-step" id="{sid}" data-return-label="step {j} of {label}">'
+                           f'<span class="step-n" aria-hidden="true">{j}</span>'
+                           f'<a class="xref step-go" href="{e(st["href"])}"><span class="step-t">{text}</span>'
+                           f'<span class="step-to">{DEST.format(st["href"])}</span></a></li>')
+        out.append("</ol></div>")
+    out.append("</div></section>")
+    return "".join(out)
+
+
+SECTION_OPEN = re.compile(r'<(?:section|footer) class="(chapter|part|contents|appendix|start|cover|colophon)[^"]*" id="([^"]+)"')
+BLOCK_OPEN = re.compile(r'<div class="(rule|closer|rule-group)[^"]*" id="([^"]+)"')
+
+
+def resolve_start(page, d, ctx):
+    """Every step's href must match an id on the assembled page, or the build stops (the Gate 2 brief). Each match
+    fills the step's line that says where it leads: a rule, a chapter, a part, the appendix or the colophon."""
+    ids = set(re.findall(r'\sid="([^"]+)"', page))
+    missing = []
+    for r in d["routes"]:
+        for j, st in enumerate(r["steps"], 1):
+            if st["later"] or not st["href"]:
+                continue
+            tid = st["href"][1:]
+            if tid not in ids:
+                missing.append(f"route {r['id']}, step {j}: {st['href']}")
+                continue
+            pos = page.find(f' id="{tid}"')
+            end = pos + len(tid) + 6   # the opening tag that carries the id may itself be the section or the rule
+            secs = [m for m in SECTION_OPEN.finditer(page, 0, end) if m.start() <= pos]
+            kind, sec_id = (secs[-1].group(1), secs[-1].group(2)) if secs else ("page", "")
+            words = None
+            if kind == "chapter":
+                num = next(c[0] for c in CHAPTER.values() if c[1] == sec_id)
+                name = e(ctx["names"].get(num, CHAPTER[num][2]))
+                blocks = [m for m in BLOCK_OPEN.finditer(page, secs[-1].start(), end) if m.start() <= pos]
+                rule = blocks[-1] if blocks and blocks[-1].group(1) == "rule" else None
+                m = rule and re.fullmatch(r"rule-(\d{2})-(\d{1,2})", rule.group(2))
+                words = (f"Rule {m.group(1)}.{m.group(2)}" if m else f"Chapter {num}", name)
+            elif kind == "appendix":
+                words = ("Appendix", e(ctx.get("appendix_title", APPENDIX_TITLE)))
+            elif kind == "part":
+                words = ("Part", e(PART_NAME.get(sec_id[5:], "")))
+            else:
+                words = ({"contents": "Contents", "colophon": "Colophon", "cover": "Cover", "start": "Where to start"}.get(kind, ""), None)
+            line = words[0] + (f' <span aria-hidden="true">·</span> {words[1]}' if words[1] else "")
+            page = page.replace(DEST.format(st["href"]), line)
+    if missing:
+        raise FrontStop("the \"Where to start\" page links to " + str(len(missing)) + " id(s) the page does not hold: " + "; ".join(missing))
+    return page
+
+
+NUM_WORDS = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine"}
+
+
+def load_edition():
+    """The edition line, the colophon's Type row and the license titles, in the editor's words (edition.json). A build
+    without the file keeps the draft wording it had before Gate 2."""
+    if not EDITION_JSON.exists():
+        return None
+    try:
+        return json.loads(EDITION_JSON.read_text())
+    except Exception as ex:
+        R.warn("edition.json", f"does not parse ({ex}); the draft wording stands")
+        return None
+
+
+class Fonts:
+    """The guide's three typefaces inside the page (D2-1697): one @font-face per file in the font manifest, each a data
+    URL of the file exactly as Google Fonts served it, with its unicode range and the weights Google declares for it.
+    Google's stylesheet gives each weight its own rule pointing at the same variable file; one rule over the declared
+    range draws every weight the page asks for the same way, and carries each file once. A file that no longer matches
+    its manifest row is a warning, and the page then links Google Fonts as before."""
+
+    def __init__(self, enabled=True):
+        self.ok, self.css, self.rows, self.families, self.texts, self.bytes = False, "", [], {}, {}, 0
+        if not enabled:   # a fixture build over test chapters keeps the link it always had
+            return
+        if not FONT_MANIFEST.exists():
+            R.warn("fonts", f"no {FONT_MANIFEST.name}; run fonts_fetch.py. The page links Google Fonts until then")
+            return
+        import hashlib
+        m = json.loads(FONT_MANIFEST.read_text())
+        rules = []
+        for row in m["files"]:
+            p = FONTS_DIR / row["file"]
+            b = p.read_bytes() if p.exists() else b""
+            if hashlib.sha256(b).hexdigest() != row["sha256"]:
+                R.warn("fonts", f"{row['file']} is missing or differs from its manifest row; the page links Google Fonts. Run fonts_fetch.py --check")
+                return
+            ws = sorted(row["weights"])
+            weight = f"{ws[0]} {ws[-1]}" if ws[0] != ws[-1] else str(ws[0])
+            rules.append(f"/* {row['family']} {row['style']}, {row['subset']}: {row['file']}, {row['bytes']:,} bytes, from {row['url']} */\n"
+                         f"@font-face {{ font-family: '{row['family']}'; font-style: {row['style']}; font-weight: {weight}; font-display: {row['display']}; "
+                         f"src: url(data:font/woff2;base64,{base64.b64encode(b).decode()}) format('woff2'); unicode-range: {row['unicode_range']}; }}")
+            self.bytes += row["bytes"]
+        for fam, f in m["families"].items():
+            self.texts[fam] = (FONTS_DIR / f["ofl"]["file"]).read_text()
+        self.rows, self.families, self.ok = m["files"], m["families"], True
+        self.css = ("/* The guide's typefaces, unmodified Google Fonts files under the SIL Open Font License 1.1; licenses in the colophon. "
+                    "Manifest: work/build/assets/fonts/20261111_Font-Manifest.json */\n" + "\n".join(rules))
+
+    def head(self):
+        if self.ok:
+            return f'<style id="oa-fonts">\n{self.css}\n</style>'
+        return ('<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
+                '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&amp;family=Inter:wght@400;500;600;700'
+                '&amp;family=Lora:ital,wght@1,400;1,500&amp;display=swap">')
+
+
+LICENSE_ORDER = ("Inter Tight", "Inter", "Lora")   # the order the Type row names them
+OFL_RULE = re.compile(r"^-{3,}$")
+
+
+def license_text(txt):
+    """An OFL.txt as the page prints it, every word in place: each paragraph of the file is a paragraph, its hard line
+    ends joined; a line of hyphens becomes a hairline; a section's capital heading line opens its paragraph in bold."""
+    out = []
+    for block in re.split(r"\n\s*\n", txt.strip()):
+        lines = [x.rstrip() for x in block.splitlines()]
+        rules = [x for x in lines if OFL_RULE.match(x.strip())]
+        lines = [x for x in lines if not OFL_RULE.match(x.strip())]
+        if rules and not lines:
+            out.append('<hr class="lic-rule">')
+            continue
+        if rules:   # the title between two hyphen lines
+            out.append(f'<p class="lic-title">{e(" ".join(lines))}</p>')
+            continue
+        head = lines[0] if lines and re.fullmatch(r"[A-Z][A-Z &]+", lines[0].strip()) else None
+        body = " ".join(x.strip() for x in (lines[1:] if head else lines))
+        out.append(f'<p>{f"<b>{e(head.strip())}</b> " if head else ""}{e(body)}</p>')
+    return "".join(out)
+
+
+def license_block(fonts, ed):
+    """The three licenses in full, each in a disclosure built on details and summary, as Rule 18.8 builds one: its
+    words name what opens, a 44 px row, and a chevron that turns."""
+    if not fonts.ok:
+        return ""
+    titles = (ed or {}).get("licenses") or {}
+    items = []
+    for fam in LICENSE_ORDER:
+        if fam not in fonts.texts:
+            continue
+        slug = re.sub(r"[^a-z]+", "-", fam.lower())
+        items.append(f'<details class="lic" id="license-{slug}"><summary class="lic-summary"><span class="lic-label">{inline(titles.get(fam) or f"The license for {fam}")}</span>'
+                     '<svg class="lic-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false" data-icon="U-chevron" data-icon-family="utility"><use href="#oa-sym-u-chevron-24px"/></svg>'
+                     f'</summary><div class="lic-body" data-license="{e(fam)}">{license_text(fonts.texts[fam])}</div></details>')
+    return f'<div class="lic-stack">{"".join(items)}</div>'
+
+
+# ---------------------------------------------------------------------------------------------------------------
 # Navigation
 # ---------------------------------------------------------------------------------------------------------------
-def nav_list(prefix, present, has_proofs, menu=False, appendix_title=None):
+def nav_list(prefix, present, has_proofs, menu=False, appendix_title=None, start_title=None):
     out = ["<ul>"]
     if menu:
         out.append('<li><a href="#top" data-loc="top">Cover</a></li>')
     out.append('<li><a href="#contents" data-loc="contents">Contents</a></li>')
+    if start_title:   # Gate 2 (D2-1698): the front page after the contents
+        out.append(f'<li><a href="#start" data-loc="start">{start_title}</a></li>')
     for slug, name, _ in PARTS:
         chs = [c for c in CHAPTERS if c[3] == slug and c[0] in present]
         if not chs:
@@ -2077,7 +2343,8 @@ WEIGHT_BUDGET = {"01": 2.7, "02": 0.85, "03": 0.65, "04": 0.45, "05": 0.45, "06"
 # Round 1: chapter 26 carries tokens.json once as its download (0.37 MB as a data URI) beside the token table (0.31 MB),
 # so its budget rises from 0.6 to 1.0 MB.
 WEIGHT_DEFAULT = 0.45          # chapters 13 to 16, 20 to 25, 27 and 28
-WEIGHT_FIXED = {"head and shell": 0.2, "sprites": 0.35, "appendix": 0.2, "front matter and part openers": 0.1}
+WEIGHT_FIXED = {"head and shell": 0.2, "sprites": 0.35, "appendix": 0.2, "front matter and part openers": 0.1,
+                "fonts": 0.5}   # Gate 2: six WOFF2 files of 329,896 bytes, 439,868 as base64 (D2-1697)
 
 
 class Sprites:
@@ -2526,7 +2793,12 @@ def weigh(page, sprite_bytes):
     """Bytes by part of the page: head and shell, sprites, each chapter, the appendix and the rest, against the budgets."""
     size = lambda x: len(x.encode())
     parts = {"head and shell": size(page[:page.find("<body")]) + size(page[page.rfind("<script>"):]), "sprites": sprite_bytes}
-    marks = [(m.start(), m.group(1), m.group(2)) for m in re.finditer(r'<section class="(chapter|part|contents|appendix|cover)[^"]*" id="([^"]+)"', page)]
+    # Gate 2 (D2-1697): the embedded fonts weigh as a part of their own, out of the head's share
+    fm = re.search(r'<style id="oa-fonts">.*?</style>', page, re.S)
+    if fm:
+        parts["fonts"] = size(fm.group(0))
+        parts["head and shell"] -= parts["fonts"]
+    marks = [(m.start(), m.group(1), m.group(2)) for m in re.finditer(r'<section class="(chapter|part|contents|appendix|cover|start)[^"]*" id="([^"]+)"', page)]
     end = page.find("</main>")
     anchors = {a: n for n, a, *_ in CHAPTERS}
     chapters = {}
@@ -2566,6 +2838,13 @@ def build(args):
         code_dirs.append(SHELL / "fixtures/code")
     codes = CodeSets(code_dirs, tokens.css_names, (SHELL / "guide-shell.css").read_text())
     chapters = load_chapters(chap_dir)
+    # Gate 2: the fonts inside the page, the edition's words and the "Where to start" page. The front page comes from
+    # --front, else from the editor's file on a run over the guide's own chapters, else (a --demo build) the shell's demo
+    fonts = Fonts(enabled=not args.chapters or args.demo)
+    ed = load_edition()
+    front = getattr(args, "front", None)
+    start_path = Path(front).resolve() if front else (START_JSON if not args.chapters and START_JSON.exists() else (START_DEMO if args.demo else None))
+    start = load_start(start_path) if start_path else None
     demo_num, demo_data = None, None
     missing = [n for n in STAGE_A if n not in chapters]
     if args.demo and missing:
@@ -2593,7 +2872,7 @@ def build(args):
             rule_anchors.add("rule-" + str(r.get("id", "")).replace(".", "-"))
     has_proofs_ids = any(s.startswith("s-proofs-") for s in list(specs.manifest) + list(specs.files)) or (chap_dir / "proofs.json").exists()
     ctx = {"once": {}, "codes": codes, "present": present, "rule_anchors": rule_anchors, "lines": lines, "names": names, "has_proofs": has_proofs_ids,
-           "appendix_title": APPENDIX_TITLE, "appendix_line": None, "order": order}
+           "appendix_title": APPENDIX_TITLE, "appendix_line": None, "order": order, "start": start}
     pconf = None
     try:
         pconf = json.loads((chap_dir / "proofs.json").read_text())
@@ -2680,9 +2959,27 @@ def build(args):
     scope = chapter_span(order)
     only_foundations = all(CHAPTER[n][3] == "foundations" for n in order)
     scope_long = f"{scope}, the Foundations part" if only_foundations and order == STAGE_A else scope
-    edition_line = (f"{scope_long}, in draft, {EDITION_DATE}"
-                    + ((", with an appendix of identity proofs." if appendix_title == APPENDIX_TITLE else f", with the appendix “{appendix_title}”.")
-                       if has_proofs else "."))
+    appendix_tail = ((", with an appendix of identity proofs." if appendix_title == APPENDIX_TITLE else f", with the appendix “{appendix_title}”.")
+                     if has_proofs else ".")
+    edition_line = f"{scope_long}, in draft, {EDITION_DATE}" + appendix_tail
+    folio_right = f"Draft of {EDITION_DATE}"
+    title_words = "Foundations draft" if only_foundations else "draft of " + scope[0].lower() + scope[1:]
+    desc_words = f"{scope_long}, in draft."
+    # Gate 2 (D2-1702): the edition line, the cover's folio and the title in the editor's words, with the build's date
+    if ed:
+        day = datetime.datetime.now().strftime("%B %-d, %Y")
+        fill = lambda t: html.unescape(t).replace("{date}", day).replace("{scope}", scope).replace("{scope_lower}", scope[0].lower() + scope[1:])
+        edition_line = fill(ed["edition"]) + appendix_tail
+        folio_right = fill(ed["cover_folio"])
+        title_words = fill(ed["title"])
+        desc_words = fill(ed["description"])
+    type_row = ("Inter Tight for display, Inter for reading and interface, Lora Italic for quoted lines. All three are published under the SIL Open "
+                "Font License 1.1 and load from Google Fonts in this draft.")
+    if ed and fonts.ok:
+        type_row = ed["type_row"]
+    elif fonts.ok:
+        R.warn("edition.json", "the page carries its fonts, and no edition.json gives the colophon's Type row new words, so it still says they load from Google Fonts")
+    start_title = no_links(inline(start["title"])) if start else None
     n_found = sum(1 for n in STAGE_A if n in chapters)
     count_line = (f"{n_real} chapters, {n_rules} rules and {n_specs} specimens." if n_found == len(STAGE_A) else
                   f"{n_found} of {len(STAGE_A)} Foundations chapters written so far, with {n_rules} rules and {n_specs} specimens in all; placeholders hold the rest.")
@@ -2703,13 +3000,11 @@ def build(args):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="only light">
-<title>Oath &amp; Action Brand Guide, Edition 06: {"Foundations draft" if only_foundations else "draft of " + e(scope[0].lower() + scope[1:])}</title>
-<meta name="description" content="Oath &amp; Action Brand Guide, Edition 06: the rules for everything Oath &amp; Action publishes. {e(scope_long)}, in draft.">
+<title>Oath &amp; Action Brand Guide, Edition 06: {e(title_words)}</title>
+<meta name="description" content="Oath &amp; Action Brand Guide, Edition 06: the rules for everything Oath &amp; Action publishes. {e(desc_words)}">
 <meta name="generator" content="work/build/scripts/phase-2/guide_build.py">
-<meta name="guide-build" content="{e(json.dumps({"chapters": sorted(chapters), "placeholders": sorted(set(STAGE_A) - set(chapters)), "tokens": "tokens.css" if tokens.final else "draft", "demo": bool(args.demo)}))}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=Lora:ital,wght@1,400;1,500&amp;display=swap">
+<meta name="guide-build" content="{e(json.dumps({"chapters": sorted(chapters), "placeholders": sorted(set(STAGE_A) - set(chapters)), "tokens": "tokens.css" if tokens.final else "draft", "demo": bool(args.demo), "fonts": "embedded" if fonts.ok else "google", "start": bool(start)}))}">
+{fonts.head()}
 <style id="oa-tokens">
 {tok_css}
 </style>
@@ -2734,18 +3029,19 @@ def build(args):
   <p class="where" id="where" aria-hidden="true">Cover</p>
 </header>
 <div class="frame">
-  <nav class="rail" aria-label="Chapters">{nav_list("rail", present, has_proofs, appendix_title=appendix_title)}<p class="rail-more" aria-hidden="true">More below</p></nav>
+  <nav class="rail" aria-label="Chapters">{nav_list("rail", present, has_proofs, appendix_title=appendix_title, start_title=start_title)}<p class="rail-more" aria-hidden="true">More below</p></nav>
   <main id="main" tabindex="-1" data-view-root="overview">
     <section class="cover" id="top" data-track="front" data-label="Cover">
-      <p class="cover-folio"><span>{e(folio)}</span> <span>Draft of {e(EDITION_DATE)}</span></p>
+      <p class="cover-folio"><span>{e(folio)}</span> <span>{e(folio_right)}</span></p>
       <div class="cover-mark" data-red="signature">{wm_display}</div>
       <h1 class="cover-h1"><span class="vh">Oath &amp; Action </span>Brand Guide, Edition 06</h1>
       <p class="tagline">{e(LOCKED["tagline"])}</p>
       <p class="pillars">{pillars}</p>
       <p class="cover-purpose">This guide holds the rules for everything Oath &amp; Action publishes, for the staff, partners, designers and developers who make it.</p>
-      <p class="cover-start"><a href="#contents">Open the contents</a></p>
+      <p class="cover-start"><a href="#contents">Open the contents</a>{f' <a href="#start">{start_title}</a>' if start else ''}</p>
     </section>
     {contents_section(present, has_proofs, ctx)}
+    {start_section(start, ctx) if start else ''}
     {"".join(body)}
     {proofs_html}
   </main>
@@ -2757,7 +3053,7 @@ def build(args):
       <div><dt>Edition</dt><dd>Oath &amp; Action Brand Guide, Edition 06. {e(edition_line)}</dd></div>
       <div><dt>Contact</dt><dd>The editor. Ask the editor for any file this guide lists. Every co-branded piece goes to Dustin Cathcart, or an editor he names, before it prints or posts. An address follows once our web address is settled.</dd></div>
       <div><dt>Approval</dt><dd>Dustin Cathcart, Founder and Editor, approves every change to these rules.</dd></div>
-      <div><dt>Type</dt><dd>Inter Tight for display, Inter for reading and interface, Lora Italic for quoted lines. All three are published under the SIL Open Font License 1.1 and load from Google Fonts in this draft.</dd></div>
+      <div><dt>Type</dt><dd><p class="colophon-p">{inline(type_row)}</p>{license_block(fonts, ed)}</dd></div>
       <div><dt>Tokens</dt><dd>{("Every color, size and space on this page comes from tokens.css, inlined when the page was built." + dl_tokens) if tokens.final else "This build carries a provisional token block, because tokens.css was not there yet."}</dd></div>
       <div><dt>Built</dt><dd>{e(built)}, from the guide&#8217;s source files: {e(count_line)}</dd></div>
     </dl>
@@ -2769,7 +3065,7 @@ def build(args):
     <div class="menu-head"><h2 id="menu-h" class="menu-title">Contents</h2><button type="button" class="menu-close" id="menuclose">Close the menu</button></div>
     <p class="menu-where">You are in <strong id="menu-where-text">Cover</strong>.</p>
     <div class="menu-scroll">
-      <nav aria-label="Guide contents">{nav_list("menu", present, has_proofs, menu=True, appendix_title=appendix_title)}</nav>
+      <nav aria-label="Guide contents">{nav_list("menu", present, has_proofs, menu=True, appendix_title=appendix_title, start_title=start_title)}</nav>
     </div>
   </div>
 </dialog>
@@ -2779,6 +3075,8 @@ def build(args):
 </body>
 </html>
 """
+    if start:
+        page = resolve_start(page, start, ctx)   # stops the build on an href that matches no id (Gate 2 brief)
     sprites.check_res(page)
     page, sprite_bytes, sprite_counts = sprites.inject(page)
     page, n_whole = keep_ids_whole(page)   # D2-975
@@ -2788,6 +3086,7 @@ def build(args):
             R.warn("tokens", f"{len(unread)} token(s) in the mark or utility icon family have no reader in the page: {', '.join(unread[:6])}")
     weights = weigh(page, sprite_bytes)
     weights["sprites"] = sprite_counts
+    weights["fonts_files"] = fonts.bytes
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(page)
     report = {
@@ -2796,6 +3095,10 @@ def build(args):
         "chapters": sorted(chapters), "placeholders": sorted(set(STAGE_A) - set(chapters)),
         "rules": n_rules, "specimens_placed": n_specs, "tokens": "tokens.css" if tokens.final else "provisional from the schema draft",
         "demo": bool(args.demo), "bytes": len(page.encode()), "weight": weights, "ids_held_whole": n_whole,
+        "fonts": {"embedded": fonts.ok, "files": len(fonts.rows), "file_bytes": fonts.bytes, "page_bytes": weights["parts"].get("fonts", 0),
+                  "manifest": str(FONT_MANIFEST.relative_to(ROOT)) if fonts.ok else None},
+        "start": {"file": str(start_path.relative_to(ROOT)) if start_path and ROOT in start_path.parents else (str(start_path) if start_path else None),
+                  "routes": [{"id": r["id"], "steps": len(r["steps"]), "later": sum(1 for x in r["steps"] if x["later"])} for r in start["routes"]] if start else None},
         "warnings": R.warnings, "notes": R.notes,
     }
     rep_path = out_path.with_name(out_path.stem + "-Build-Report.json")
@@ -3440,6 +3743,75 @@ def self_test():
             if not ok:
                 for w in warns:
                     print(f"        warning {w}")
+    # Gate 2 (November 11, 2026): the "Where to start" page and the fonts, on --demo builds in a folder of their own
+    with tempfile.TemporaryDirectory(prefix="oa-guide-build-g2-") as tmp:
+        base = Path(tmp)
+        demo = json.loads(START_DEMO.read_text())
+
+        def g2(name, front, expect_stop=None, tests=()):
+            global R
+            R = Report()
+            fp = base / f"{len(results)}-front.json"
+            fp.write_text(json.dumps(front))
+            out = base / f"{len(results)}-page.html"
+            stopped = None
+            try:
+                build(argparse.Namespace(chapters=str(base / "no-chapters"), specimens=str(base / "no-specimens"), out=str(out), code=None,
+                                         demo=True, strict=False, quiet=True, front=str(fp)))
+            except FrontStop as ex:
+                stopped = str(ex)
+            checks = []
+            if expect_stop:
+                checks.append((f"stops: {expect_stop}", bool(stopped) and expect_stop in stopped))
+                checks.append(("writes no page", not out.exists()))
+            else:
+                checks.append(("builds without a stop", stopped is None))
+                page = out.read_text() if out.exists() else ""
+                for desc, fn in tests:
+                    checks.append((desc, bool(fn(page))))
+            ok = all(c for _, c in checks)
+            results.append({"scenario": name, "pass": ok, "checks": [{"check": c, "pass": p} for c, p in checks]})
+            print(f"{'pass' if ok else 'FAIL'}  {name}")
+            for c, p in checks:
+                if not p:
+                    print(f"        missed: {c}" + (f" ({stopped})" if stopped else ""))
+            return ok
+
+        sec = lambda pg: (re.search(r'<section class="start".*?</section>', pg, re.S) or re.search("$^", "")) and re.search(r'<section class="start".*?</section>', pg, re.S).group(0)
+        order = lambda pg, *xs: all(p >= 0 for p in [pg.find(x) for x in xs]) and [pg.find(x) for x in xs] == sorted(pg.find(x) for x in xs)
+        later_bad = json.loads(json.dumps(demo))
+        later_bad["routes"][1]["steps"][3]["href"] = "#color"
+        ok_all &= g2("Gate 2: the front page between the contents and the first part, linked from the cover, the contents, the rail and the menu", demo, tests=[
+            ("page order: contents, Where to start, the Foundations part", lambda pg: order(pg, 'id="contents"', 'id="start"', 'id="part-foundations"')),
+            ("the cover links to it", lambda pg: '<a href="#start">Where to start</a>' in re.search(r'<section class="cover".*?</section>', pg, re.S).group(0)),
+            ("the contents link to it", lambda pg: 'class="toc-start"><a href="#start">' in pg),
+            ("the rail and the menu each link to it once", lambda pg: pg.count('<a href="#start" data-loc="start">') == 2),
+            ("three routes in the schema's order", lambda pg: order(sec(pg), 'id="start-newcomer"', 'id="start-designer"', 'id="start-builder"')),
+            ("every step a link but the later one", lambda pg: sec(pg).count('class="xref step-go"') == 11 and sec(pg).count("data-later") == 1),
+            ("the later step holds no link", lambda pg: "<a" not in re.search(r'<li class="route-step route-step--later".*?</li>', sec(pg), re.S).group(0)),
+            ("each step says where it leads", lambda pg: "Rule 01.1 <span aria-hidden=\"true\">·</span>" in sec(pg) and "Chapter 05 <span" in sec(pg)
+             and "Part <span aria-hidden=\"true\">·</span> Foundations" in sec(pg) and ">Colophon</span>" in sec(pg) and "oa-dest" not in pg),
+            ("each step carries its way back", lambda pg: 'id="start-newcomer-2" data-return-label="step 2 of New to the demonstration"' in sec(pg)),
+        ])
+        ok_all &= g2("Gate 2: a later step with an href prints as text, and its href is not checked", later_bad, tests=[
+            ("still eleven links", lambda pg: sec(pg).count('class="xref step-go"') == 11)])
+        bad = json.loads(json.dumps(demo))
+        bad["routes"][2]["steps"][1]["href"] = "#no-such-anchor"
+        ok_all &= g2("Gate 2: a step whose href matches no id stops the build", bad, expect_stop="route builder, step 2: #no-such-anchor")
+        bad = json.loads(json.dumps(demo))
+        bad["routes"][0]["steps"][0]["later"] = "no"
+        del bad["routes"][1]["lede"]
+        bad["routes"][2]["id"] = "reader"
+        ok_all &= g2("Gate 2: a file that breaks the schema stops the build", bad, expect_stop="breaks the schema")
+        if FONT_MANIFEST.exists():
+            man = json.loads(FONT_MANIFEST.read_text())
+            ok_all &= g2("Gate 2: the fonts embedded from the manifest, each file once, no font link, the three licenses in full", demo, tests=[
+                ("one @font-face per manifest file, each a data URL", lambda pg: len(re.findall(r"@font-face \{[^}]*url\(data:font/woff2;base64,", pg)) == len(man["files"])),
+                ("no link to Google Fonts", lambda pg: "fonts.googleapis.com/css2" not in pg.split("</head>")[0]),
+                ("the build report counts the fonts as their own part", lambda pg: json.loads((base / f"{len(results)}-page-Build-Report.json").read_text())["weight"]["parts"].get("fonts", 0) > 0),
+                ("three license disclosures, each with its copyright line", lambda pg: pg.count('<details class="lic"') == 3
+                 and all(html.escape(f["copyright"]) in pg for f in man["families"].values())),
+            ])
     n = sum(len(r["checks"]) for r in results)
     print(f"{'PASS' if ok_all else 'FAIL'} guide_build.py self-test: {sum(r['pass'] for r in results)} of {len(results)} scenarios, "
           f"{sum(c['pass'] for r in results for c in r['checks'])} of {n} expectations")
@@ -3452,6 +3824,8 @@ def main():
     ap.add_argument("--chapters", help="folder of chapter JSON (default work/build/guide/chapters)")
     ap.add_argument("--specimens", help="folder of specimens and manifests (default work/build/guide/specimens)")
     ap.add_argument("--code", help="folder of code sets (default work/build/guide/code; --demo adds the shell's fixture set)")
+    ap.add_argument("--front", help="the \"Where to start\" file (default work/build/guide/front/where-to-start.json on a run over the guide's "
+                                    "own chapters; a --demo build over fixture chapters takes the shell's demo file)")
     ap.add_argument("--demo", action="store_true", help="fill placeholder chapters with the shell's sample rules")
     ap.add_argument("--strict", action="store_true", help="exit 1 when there is any warning")
     ap.add_argument("--quiet", action="store_true")
@@ -3464,7 +3838,13 @@ def main():
         SPRITE_ROOT = Path(args.sprite_root).resolve()
     if args.sprite_sheet:
         sys.exit(sprite_sheet(args.sprite_sheet))
-    sys.exit(self_test() if args.self_test else build(args))
+    if args.self_test:
+        sys.exit(self_test())
+    try:
+        sys.exit(build(args))
+    except FrontStop as ex:   # Gate 2 brief: the build stops, and writes no page
+        print(f"STOPPED: {ex}", file=sys.stderr)
+        sys.exit(2)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,13 @@
+{
+ "about": "The preview's edition line, cover folio, page title and description, the colophon's Type row and the three license titles, in the editor's words (work/handoffs/phase-2/20261111_Gate-2-Editor-Notes.md, sections 2 and 3), placed by the guide engineer for guide_build.py. {date} is the build's date, {scope} the chapters the page holds as the build words them (\"Chapters 01 to 12, 17 to 19 and 26\"), {scope_lower} the same starting in lower case. The build adds the appendix's words after the edition line.",
+ "cover_folio": "Preview for approval, built {date}",
+ "edition": "{scope}, in a preview for approval, built {date}",
+ "title": "preview of {scope_lower}",
+ "description": "{scope}, in a preview for approval.",
+ "type_row": "Inter Tight sets display text, and Inter sets reading text and the interface. Lora Italic appears only in quoted lines. The Inter Project Authors made Inter and Inter Tight. Lora comes from The Lora Project Authors, and the authors license all three under the SIL Open Font License 1.1. We built the font files into this page unchanged, so it loads no type from elsewhere. Lora’s license reserves the name “Lora”, so a changed version would need another name. Open a license below to read it in full.",
+ "licenses": {
+  "Inter Tight": "The license for Inter Tight",
+  "Inter": "The license for Inter",
+  "Lora": "The license for Lora"
+ }
+}

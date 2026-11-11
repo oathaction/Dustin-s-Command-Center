@@ -190,14 +190,29 @@ def check_page(page_path):
         n = seen.get(r["sha256"], 0)
         if n != 1:
             bad.append(f"{r['file']}: embedded {n} time(s); each file goes in once")
-    for host in ("fonts.googleapis.com", "fonts.gstatic.com"):
-        if host in page:
-            bad.append(f"the page names {host}")
+    # The page may print a fonts link as code a builder copies; it may not load one: no <link>, no @import, no url() to
+    # a font host in markup or a stylesheet
+    for pat, what in ((r"<link\b[^>]*fonts\.(?:googleapis|gstatic)\.com", "a <link> to Google Fonts"),
+                      (r"@import[^;]*fonts\.(?:googleapis|gstatic)\.com", "an @import of Google Fonts"),
+                      (r"url\(\s*['\"]?https?://fonts\.(?:googleapis|gstatic)\.com", "a url() to Google Fonts")):
+        n = len(re.findall(pat, page))
+        if n:
+            bad.append(f"the page holds {n} {what}")
+    # Each family's OFL.txt in full, in its disclosure: the words of the file in order, lines of hyphens aside
+    import html as _html
+    words = lambda t: [w for w in re.sub(r"(?m)^-{3,}$", " ", t).split()]
     for k, f in m["families"].items():
         txt = (FONTS / f["ofl"]["file"]).read_text()
-        body = txt.split("SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007")[-1].strip().splitlines()[0]
-        if f["copyright"] not in page.replace("&quot;", '"').replace("&#x27;", "'"):
-            bad.append(f"{k}: the page does not carry the copyright line of its OFL text")
+        blk = re.search(r'<div class="lic-body" data-license="' + re.escape(k) + r'">(.*?)</div>', page, re.S)
+        if not blk:
+            bad.append(f"{k}: no license disclosure holds its OFL text")
+            continue
+        shown = _html.unescape(re.sub(r"<[^>]+>", " ", blk.group(1)))
+        if words(shown) != words(txt):
+            a, b = words(shown), words(txt)
+            i = next((j for j in range(min(len(a), len(b))) if a[j] != b[j]), min(len(a), len(b)))
+            bad.append(f"{k}: the license on the page departs from OFL.txt at word {i + 1} of {len(b)} "
+                       f"(page {' '.join(a[i:i + 5])!r}, file {' '.join(b[i:i + 5])!r})")
     for b in bad:
         print("  FAIL " + b)
     n_bytes = sum(r["bytes"] for r in m["files"])

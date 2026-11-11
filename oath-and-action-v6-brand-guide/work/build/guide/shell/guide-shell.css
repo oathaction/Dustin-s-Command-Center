@@ -159,11 +159,11 @@ main:focus { outline: none }
 .pillars .nw { white-space: nowrap }
 .pillars .arr { color: var(--ink-2); font-weight: var(--oa-font-weight-regular); margin-inline: .1em }
 .cover-purpose { margin: var(--oa-space-300) 0 0; font: var(--oa-type-intro); max-width: var(--oa-layout-measure-intro-max) }
-.cover-start { margin: auto 0 0; padding-top: var(--oa-space-800) }
+.cover-start { margin: auto 0 0; padding-top: var(--oa-space-800); display: flex; flex-wrap: wrap; gap: 0 var(--oa-space-400) }
 .cover-start a { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); font: var(--oa-type-ui) }
 
 /* ---------------------------------------------------------------- Section openers */
-.contents, .part, .chapter, .appendix { margin-top: var(--oa-space-1300) }
+.contents, .start, .part, .chapter, .appendix { margin-top: var(--oa-space-1300) }
 .ch-head { border-top: var(--oa-border-width-rule) solid var(--rule-strong); padding-top: var(--oa-space-150) }
 .loc-line { margin: 0; font: var(--oa-type-caption); color: var(--ink-2) }
 .loc-line a { color: var(--ink) }
@@ -207,6 +207,59 @@ a.toc-part-k:hover { text-decoration: underline }
 .toc-list--plain p { margin-left: 0 }   /* the appendix has no number, so its line starts under its title */
 .toc-later { padding: var(--oa-space-100) 0 !important }
 .toc-later .toc-name { font: var(--oa-type-body-small); color: var(--ink-2) }
+/* Gate 2 (D2-1698): the contents' first entry is the front page after it, set as a chapter entry is, one column wide */
+.toc-start { margin-top: var(--oa-space-800); padding: var(--oa-space-150) 0; border-top: var(--oa-border-width-hairline) solid var(--rule-strong);
+  border-bottom: var(--oa-border-width-hairline) solid var(--rule-hair) }
+@media (min-width: 48em) { .toc-start { width: calc((100% - var(--oa-space-600)) / 2) } }
+@media (min-width: 64em) { .toc-start { width: calc((100% - (var(--mc) - 1) * var(--g)) / var(--mc) * 4 + 3 * var(--g)) } }
+@media (min-width: 90em) { .toc-start { width: calc((100% - (var(--mc) - 1) * var(--g)) / var(--mc) * 5 + 4 * var(--g)) } }
+.toc-start a { display: inline-flex; align-items: baseline; min-height: var(--oa-size-target-minimum); max-width: 100%; font: var(--oa-type-h4);
+  letter-spacing: var(--oa-type-h4-letter-spacing); text-decoration: none }
+.toc-start a:hover .t { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-rule) }
+.toc-start p { margin: var(--oa-space-050) 0 0; font: var(--oa-type-body-small); color: var(--ink-2); max-width: var(--oa-layout-measure-body-ideal) }
+.toc-start + .toc-parts { margin-top: var(--oa-space-600) }
+
+/* ---------------------------------------------------------------- Where to start (Gate 2, D2-1698)
+   The first page after the contents, with the contents' head. Under it stand the three routes. From 90em they sit side
+   by side on main's columns, so a reader compares them at a glance; their heads share one row (subgrid), so the first
+   steps of all three start on one line. From 48em to 90em each route is a row: its name and lede on the first three
+   columns, its steps on the rest, as a Rule ID hangs beside its text (Rule 07.2). On phones they stack under a line of
+   the three routes as links, which goes once the three stand side by side. A step is one link: its words, underlined
+   (Rule 18.5), then the place it opens in caption type. Its number hangs in the contents' fixed 36 px box (CA-N8), on
+   the first line's baseline. A step that comes later is quiet text with no link; its words say it comes later. */
+.route-index { list-style: none; margin: var(--oa-space-400) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--oa-space-100) var(--oa-space-150) }
+.route-index a { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); padding: 0 var(--oa-space-150);
+  border: var(--oa-border-width-hairline) solid var(--rule-strong); font: var(--oa-type-ui); text-decoration: none }
+.route-index a:hover { text-decoration: underline }
+.routes { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--oa-space-1000) var(--g); margin-top: var(--oa-space-800) }
+.route { min-width: 0; padding-top: var(--oa-space-300); border-top: var(--oa-border-width-rule) solid var(--rule-strong) }
+.route-head { min-width: 0 }
+.route-h { margin: 0; font: var(--oa-type-h3); letter-spacing: var(--oa-type-h3-letter-spacing); text-wrap: balance; overflow-wrap: break-word }
+.route-lede { margin: var(--oa-space-200) 0 0; color: var(--ink-2); max-width: var(--oa-layout-measure-body-max); text-wrap: pretty }
+.steps { list-style: none; margin: var(--oa-space-500) 0 0; padding: 0; min-width: 0; border-bottom: var(--oa-border-width-hairline) solid var(--rule-hair) }
+.route-step { display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); column-gap: .75rem; align-items: baseline;
+  border-top: var(--oa-border-width-hairline) solid var(--rule-hair) }
+.step-n { padding-top: var(--oa-space-150); font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); color: var(--ink-2);
+  font-variant-numeric: tabular-nums }
+.step-go { display: block; min-width: 0; min-height: var(--oa-size-target-touch); padding: var(--oa-space-150) 0 var(--oa-space-200); color: var(--ink); text-decoration: none }
+.step-t { display: block; margin: 0; text-wrap: pretty; overflow-wrap: break-word }
+.step-go .step-t { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
+.step-go:hover .step-t { text-decoration-thickness: var(--oa-border-width-underline-hover) }
+.step-to { display: block; margin-top: var(--oa-space-050); font: var(--oa-type-caption); color: var(--ink-2) }
+.route-step--later .step-t { padding: var(--oa-space-150) 0 var(--oa-space-200); color: var(--ink-2) }
+@media (min-width: 48em) and (max-width: 89.99em) {
+  .route { display: grid; grid-template-columns: repeat(var(--mc), minmax(0, 1fr)); column-gap: var(--g); align-items: start }
+  /* the route's name stays in view beside its steps while they scroll past */
+  .route-head { grid-column: 1 / span 3; position: sticky; top: calc(var(--head-h) + var(--oa-space-300)) }
+  .steps { grid-column: 4 / -1; margin-top: 0 }
+  .steps > .route-step:first-child { border-top: 0 }
+  .steps > .route-step:first-child > .step-n, .steps > .route-step:first-child > .step-go, .steps > .route-step:first-child > .step-t { padding-top: 0 }
+}
+@media (min-width: 90em) {
+  .route-index { display: none }
+  .routes { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto }
+  .route { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 0 }
+}
 
 /* Part opener: one dark beat per part (Rule 05.1) */
 .part-inner { padding: var(--oa-space-600) var(--m) var(--oa-space-800); margin: 0 calc(-1 * var(--m)) }
@@ -571,6 +624,25 @@ a.toc-part-k:hover { text-decoration: underline }
 @media (min-width: 48em) { .colophon-list > div { grid-template-columns: 8rem minmax(0, 1fr) } }
 .colophon-list dt { font: var(--oa-type-ui); color: var(--oa-color-text-secondary) }
 .colophon-list dd { margin: 0; font: var(--oa-type-body-small) }
+.colophon-p { margin: 0; max-width: var(--oa-layout-measure-body-max) }
+/* Gate 2 (D2-1697): the three font licenses in full, each in a disclosure built on details and summary as Rule 18.8
+   builds one: a row at least 44 px tall that names what opens, its words before a chevron that points down while
+   closed and turns up while open, in the standard motion token, which tokens.css sets to 0 ms under reduced motion */
+.lic-stack { margin-top: var(--oa-space-300); max-width: var(--oa-layout-measure-body-max); border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
+.lic-summary { display: flex; align-items: center; justify-content: space-between; gap: var(--oa-space-100); min-height: var(--oa-size-target-touch);
+  padding: var(--oa-space-100) 0; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline); font: var(--oa-type-ui);
+  cursor: pointer; list-style: none; overflow-wrap: anywhere }
+.lic-summary::-webkit-details-marker { display: none }
+.lic-label { min-width: 0 }
+.lic-summary:hover .lic-label { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
+.lic-chevron { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium);
+  transition: transform var(--oa-motion-duration-standard) var(--oa-motion-easing-standard) }
+.lic[open] > .lic-summary .lic-chevron { transform: rotate(180deg) }
+.lic-body { padding: var(--oa-space-100) 0 var(--oa-space-300) }
+.lic-body p { margin: 0 0 var(--oa-space-150); font: var(--oa-type-body-small); overflow-wrap: anywhere }
+.lic-body .lic-title { font-weight: var(--oa-font-weight-semibold) }
+.lic-body b { display: block; font-weight: var(--oa-font-weight-semibold) }   /* a section's heading keeps its own line, as in OFL.txt */
+.lic-rule { height: 0; margin: var(--oa-space-200) 0; border: 0; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
 .colophon-back { margin: var(--oa-space-400) 0 0 }
 .colophon-back a { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); font: var(--oa-type-ui) }
 
@@ -601,6 +673,7 @@ a.toc-part-k:hover { text-decoration: underline }
   .rail-more { background: Canvas; color: CanvasText }
   .rail a[aria-current], .menu a[aria-current] { border-left-color: Highlight; text-decoration: underline }
   .hinge-line { border-top-color: CanvasText }
+  .lic-summary, .lic-stack, .lic-rule { border-color: CanvasText }
   /* the frame as an outline inside its box, so it takes no width: a border made 360 px stages 2 px too wide at
      390 px and showed their scroll hints (round 2, November 10, 2026) */
   .plate-scroll:not(:focus-visible) { outline: 1px solid CanvasText; outline-offset: -1px }
@@ -613,11 +686,12 @@ a.toc-part-k:hover { text-decoration: underline }
   .home .wm { --amp: currentColor }
 }
 @media print {
-  .masthead, .rail, .menu, .skip, .chapnav, .return, .btn, .btn-row, .status, .fit-switch, .plate-hint { display: none !important }
+  .masthead, .rail, .menu, .skip, .chapnav, .return, .btn, .btn-row, .status, .fit-switch, .plate-hint, .route-index { display: none !important }
   .frame { display: block; padding: 0 }
   body, .plate-scroll { background: none }
   .appendix, .plate.is-breakout > .plate-scroll { margin-left: 0 }
-  .chapter, .part, .contents, .appendix { break-before: page }
+  .chapter, .part, .contents, .start, .appendix { break-before: page }
+  .route-step { break-inside: avoid }
   .plate, .rule-h, .hinge { break-inside: avoid }
   .local-toc { position: static }
   .code { max-height: none; overflow: visible }

@@ -1,3 +1,5 @@
+PREVIEW READY work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html 9441768
+
 # Gate 2 engineer notes: the preview build
 
 Oath & Action Edition 06, Phase 2, November 11, 2026. Task 3 of `20261111_Gate-2-Brief.md`. The engineer started from commit 043ad4d8; `guide_build.py --strict` passed as committed.
@@ -6,7 +8,7 @@ Oath & Action Edition 06, Phase 2, November 11, 2026. Task 3 of `20261111_Gate-2
 
 - Fonts fetched and checked: six WOFF2 files, 329,896 bytes, with three OFL texts and the manifest, under `work/build/assets/fonts/` (`fonts_fetch.py`).
 - The editor's `where-to-start.json` and notes landed before the build work began, so no placeholder was needed on the page.
-- Now: the build's front page, embedded fonts, license disclosures and edition line; then the checks.
+- Built and strict-clean at 17:12 (`guide_build.py --strict`: 0 warnings, 16 chapters, 185 rules, 424 specimens); the build's self-test passes, 27 of 27 scenarios. Now running the long checks.
 
 ## Fonts (D2-1697)
 

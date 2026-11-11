@@ -28,6 +28,23 @@ const jobs = JSON.parse(fs.readFileSync(jobsPath, 'utf8'));
   for (const j of jobs) {
     const page = pages[j.dsf || 1];
     const w = j.w, h = j.h;
+    if (j.file) {
+      // a part of a page: open the file, wait for its fonts, photograph the index-th match of the selector
+      try {
+        await page.setViewportSize({ width: j.viewport || 1200, height: 900 });
+        await page.goto('file://' + j.file, { waitUntil: 'networkidle' });
+        await page.evaluate(() => document.fonts.ready);
+        const el = (await page.$$(j.selector))[j.index || 0];
+        if (!el) throw new Error(`no match ${j.index || 0} for ${j.selector}`);
+        fs.mkdirSync(path.dirname(j.out), { recursive: true });
+        await el.screenshot({ path: j.out });
+        console.log('ok', path.basename(j.out));
+      } catch (e) {
+        failed++;
+        console.log('failed', path.basename(j.out), String(e.message || e).slice(0, 160));
+      }
+      continue;
+    }
     try {
       await page.setViewportSize({ width: Math.max(320, Math.ceil(w) + 8), height: Math.max(200, Math.ceil(h) + 8) });
       await page.setContent(`<!doctype html><html><head><meta charset="utf-8"><style>
