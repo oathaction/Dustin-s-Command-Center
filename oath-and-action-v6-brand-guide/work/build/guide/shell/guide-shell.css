@@ -510,6 +510,8 @@ a.toc-part-k:hover { text-decoration: underline }
   padding-top: var(--oa-space-100); border-top: var(--oa-border-width-hairline) solid var(--rule-hair) }
 .code-lang { margin: 0; font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase; color: var(--ink-2) }
 .code-panel > .code { margin-top: var(--oa-space-100) }
+/* Round 1: words under the live demos (AX-S8's landmark swap) and under a head script's label */
+.code-note { margin: var(--oa-space-150) 0 0; font: var(--oa-type-caption); max-width: 32rem }
 .code-status { margin-top: var(--oa-space-150) }
 .code-status:empty { display: none }
 

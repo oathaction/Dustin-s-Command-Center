@@ -374,7 +374,7 @@ PLAYER_CSS = (
     '.ti{' + ty('h4') + ';text-wrap:balance}'
     '.stg{padding:16px 0 4px}'
     '.out{min-height:3em;' + ty('bodySmall') + '}'
-    '.cl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,9.5rem),1fr));gap:8px;max-width:22rem}'
+    '.cl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,8.5rem),1fr));gap:8px;max-width:22rem}'
     '.b{display:inline-flex;align-items:center;gap:8px;min-height:var(--oa-size-target-touch);margin:0;'
     'padding:0 14px 0 10px;border:var(--oa-border-width-hairline) solid var(--oa-color-border-strong);border-radius:0;'
     'background:var(--oa-color-surface);color:var(--oa-color-text-primary);' + ty('ui') + ';text-align:left;cursor:pointer}'
@@ -394,7 +394,7 @@ PLAYER_CSS = (
     '.fr li{display:grid;gap:8px;align-content:start}'
     '.fh{' + ty('caption') + '}.fh b{font-weight:700}'
     '.fw{' + ty('caption') + '}'
-    '.tl{margin:0;padding-left:1.25em;' + ty('caption') + '}'
+    '.tl{margin:0;padding:0;list-style:none;display:grid;gap:2px;' + ty('caption') + '}.tl b{font-weight:700}'
     '.dg{display:block;overflow:visible}'
     '.dg .nd-on{fill:var(--oa-color-graphic-essential)}'
     '.dg .nd-off{fill:var(--oa-color-surface);stroke:var(--oa-color-graphic-subtle);stroke-width:1.5}'
@@ -416,6 +416,7 @@ PLAYER_CSS = (
     'background:var(--oa-color-graphic-essential);color:var(--oa-color-surface);' + ty('label') + ';letter-spacing:0}'
     '.ax{display:flex;gap:10px;align-items:flex-start}'
     '.ax > :last-child{flex:1;min-width:0}'
+    '.row2{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.row2 .b{min-width:8.5rem}'
 )
 
 # The player's script: one copy per motion specimen. It finds every player inside its own specimen and wires each.
@@ -477,8 +478,8 @@ def player(pid, *, kicker, title, drawing, below='', words, frames, timeline, mo
     stage = f'<div class="stg">{drawing}{below}</div>'
     out = f'<p class="out"{"" if static else " role=\"status\" data-out=\"\""}>{words["start"]}</p>'
     if static:
-        ctl = (f'<div class="cl"><span class="b">{play_icons}<span>Play</span></span>'
-               f'<span class="b" aria-disabled="true">{uicon("reset")}<span>Reset</span></span></div>')
+        ctl = (f'<div class="row2">{badge(2)}<span class="b">{play_icons}<span>Play</span></span>'
+               f'{badge(3)}<span class="b" aria-disabled="true">{uicon("reset")}<span>Reset</span></span></div>')
         sl = (f'<p class="sl"><span class="cb" aria-hidden="true"></span>Slow motion, one tenth speed</p>' if slow else '')
         whyp = f'<p class="why">{why["start"]}</p>'
     else:
@@ -495,7 +496,7 @@ def player(pid, *, kicker, title, drawing, below='', words, frames, timeline, mo
         whyp = f'<p class="why" id="{wid}" data-why="">{why["start"]}</p>'
     fl = ''.join(f'<li><p class="fh"><b>{t}</b>, {tm}{NB}ms</p>{svg}{extra}<p class="fw">{w}</p></li>'
                  for t, tm, svg, w, extra in frames)
-    tl = ''.join(f'<li>{x}</li>' for x in timeline)
+    tl = ''.join('<li>' + re.sub(r'^([^:]+):', r'<b>\1:</b>', x, count=1) + '</li>' for x in timeline)
     sv = (f'<div class="sv"><p class="k">Still view</p><ol class="fr"{f" style=\"--fw:{fw}\"" if fw else ""}>{fl}</ol>'
           + (f'<ol class="tl">{tl}</ol>' if tl else '') + '</div>')
     data = ''
@@ -505,7 +506,7 @@ def player(pid, *, kicker, title, drawing, below='', words, frames, timeline, mo
                          'full': 'Your device sets no motion preference, so Play runs each motion.'})
         data = f'<script type="application/json" data-motion="">{json.dumps(m, ensure_ascii=False)}</script>'
     attrs = '' if static else ' data-oa-motion="" data-frame="start"'
-    parts = [head, row(1, stage), row(6, out), row(2, ctl) if static else ctl]
+    parts = [head, row(1, stage), row(6, out), ctl]
     if static:
         parts += [row(4, sl), row(5, whyp)]
     else:
@@ -644,7 +645,7 @@ def s17_1_correct():
 STRIP_CSS = ('.st{display:grid;gap:12px}:where(.st p){margin:0}'
              '.fs3{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,8.5rem),1fr))}'
              '.fs3 li{display:grid;gap:6px;align-content:start;padding:12px;border:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}'
-             '.tm{' + ty('label') + ';color:var(--oa-color-text-secondary)}'
+             '.tm{' + ty('caption') + ';font-weight:700}'
              '.big{' + ty('h4') + ';font-variant-numeric:tabular-nums}'
              '.nt{' + ty('caption') + '}'
              '.k{' + ty('label') + ';color:var(--oa-color-text-secondary)}'
@@ -701,8 +702,14 @@ SHEET_CSS = (':where(.ts p){margin:0}.ts{display:grid;gap:20px;max-width:44rem}'
              '.trk{position:relative;height:10px;margin-top:6px;background:var(--oa-color-surface);'
              'border-left:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}'
              '.bar{display:block;height:10px;width:calc(var(--v) / ' + str(HINGE) + ' * 100%);background:var(--oa-color-graphic-essential)}'
-             '.rl{display:flex;justify-content:space-between;' + ty('caption') + ';font-variant-numeric:tabular-nums;'
-             'border-top:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);padding-top:4px}'
+             '.rl{position:relative;height:2.5em;' + ty('caption') + ';font-variant-numeric:tabular-nums;'
+             'border-top:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}'
+             '.rl span{position:absolute;top:0;left:calc(var(--v) / ' + str(HINGE) + ' * 100%);transform:translateX(-50%);'
+             'padding-top:8px;white-space:nowrap;border-left:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}'
+             '.rl span:first-child{transform:none}'
+             '.rl span{border-left:0}.rl span::before{content:"";position:absolute;top:0;left:50%;height:5px;'
+             'border-left:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}'
+             '.rl span:first-child::before{left:0}'
              '.ez{list-style:none;margin:0;padding:0;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr))}'
              '.ez li{display:grid;gap:6px;align-content:start}'
              '.cv{display:block;overflow:visible}.cv .fr1{fill:none;stroke:var(--oa-color-border-hairline);stroke-width:1}'
@@ -731,7 +738,7 @@ def s17_2_correct():
         f'<li><p class="nm"><b>{lab}, {ms(n)}{NB}ms</b><code>{tokcss(DUR[n] if n in DUR else "--oa-motion-duration-" + n)}</code></p>'
         f'<p class="jb">{job}</p><div class="trk"><span class="bar" style="--v:{ms(n)}"></span></div></li>'
         for n, lab, job in DUR_ROWS)
-    ticks = ''.join(f'<span>{t}{NB}ms</span>' for t in (0, 200, 400, 600))
+    ticks = ''.join(f'<span style="--v:{t}">{t}{NB}ms</span>' for t in (0, 200, 400, 600))
     ez = ''.join(
         f'<li>{curve_svg(*bez(n))}<p class="nm"><b>{lab}</b></p><p class="cd">{bz(n)}</p>'
         f'<p class="cd">{tokcss(EASE[n])}</p><p class="jb">{job}</p></li>' for n, lab, job in EASE_ROWS)
@@ -761,8 +768,8 @@ def s17_2_failure():
             f'<div class="ez" style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start">{curve}'
             '<div style="flex:1;min-width:12rem;display:grid;gap:8px">'
             '<p class="cd">transition: transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1)</p>'
-            f'<p class="nt">Two numbers of its own: 250 ms is no token, and the curve goes {OVER} percent past its '
-            'place, along the dashed line, before it comes back.</p></div></div></div>')
+            f'<p class="nt">Two numbers of its own: 250 ms is no token, and the curve goes {OVER} percent past the '
+            'dashed line, where the mark should rest, before it comes back.</p></div></div></div>')
     alt = (f'Failure case: do not publish. A line of CSS, transition: transform 250ms cubic-bezier(0.34, 1.56, 0.64, '
            f'1), beside the curve it draws, which rises past the dashed line that marks the mark’s place by {OVER} '
            'percent before it falls back. A note says 250 ms is no token and the curve overshoots its place.')
@@ -918,9 +925,12 @@ def s17_5_correct():
                              drawing=f'<p class="ds">{desc}</p>' + mini_svg(kind, None, live=True), words=w,
                              frames=frames, timeline=[line], motion={'tracks': tracks}, why=WHY,
                              group=f'Play the {kind}', fw='9.375rem'))
-    css = ('.three{display:grid;gap:32px}.three > .pl + .pl{padding-top:24px;border-top:var(--oa-border-width-hairline) '
-           'solid var(--oa-color-border-hairline)}.ds{margin:0 0 12px;' + ty('bodySmall') + '}'
-           '.three .stg{padding-top:0}')
+    css = ('.three{display:grid;gap:32px;container-type:inline-size}.three > .pl + .pl{padding-top:24px;'
+           'border-top:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}.ds{margin:0 0 12px;' + ty('bodySmall') + '}'
+           '.three .stg{padding-top:0}'
+           '@container (min-width:38rem){.three .pl{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px;'
+           'max-width:none;align-content:start}.three .pl > *{grid-column:1}.three .pl > .sv{grid-column:2;grid-row:1 / span 6;'
+           'align-self:start;border-top:0;padding-top:0}}')
     body = f'<div class="three">{"".join(blocks)}</div>'
     alt = (f'Three live players, one for each behavior. Slide: a ring around the first of two small nodes moves along a '
            f'hairline to the second over {SLOW} ms with the standard easing. Draw: a line with one bend extends from a '
@@ -1058,8 +1068,8 @@ def check():
 
 def tracker_line_svg():
     """Loading: the tracker's line alone, still, where the six steps will sit (D2-200: links alone)."""
-    return ('<svg width="240" height="16" viewBox="0 0 240 16" aria-hidden="true" focusable="false">'
-            '<line x1="20" y1="8" x2="220" y2="8" class="lm"/></svg>')
+    return (f'<svg width="{TW}" height="16" viewBox="0 0 {TW} 16" aria-hidden="true" focusable="false">'
+            f'<line x1="{TXS[0]}" y1="8" x2="{TXS[-1]}" y2="8" class="lm"/></svg>')
 
 
 def state_samples():

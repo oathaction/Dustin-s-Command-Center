@@ -869,7 +869,11 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
 # ---------------------------------------------------------------------------------------------------------------
 CODE_DIR = GUIDE / "code"
 CODE_SET_ID = re.compile(r"^c-\d{2}-[a-z0-9]+(?:-[a-z0-9]+)*$")
-CODE_LANGS = (("html", "HTML", "the HTML"), ("css", "CSS", "the CSS"), ("js", "Script", "the script"))
+CODE_LANGS = (("html", "HTML", "the HTML"), ("css", "CSS", "the CSS"), ("js", "Script", "the script"), ("head", "Head script", "the head script"))
+# Round 1: a set may carry <set>.head.js, a script for the page's head (the theme switch's, which applies a stored choice
+# before the first paint). It shows as a fourth panel with its own Copy button; the live stages never run it, since it
+# sets the page's root.
+CODE_FILE = re.compile(r"(c-[a-z0-9-]+?)(\.head)?\.(html|css|js)")
 CODE_COLOR = re.compile(r"(?<![\w&-])#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})\b(?![\w-])|\b(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch|color)\(", re.I)
 CODE_NAMED = re.compile(r"(?<![\w-])(?:white|black|red|blue|green|gray|grey|silver|navy|maroon|purple|orange|yellow|pink|brown)(?![\w-])", re.I)
 CODE_TAGS = re.compile(r"<(html|head|body|style|script|link|meta|iframe)\b", re.I)
@@ -919,8 +923,9 @@ class CodeSets:
             if not d.exists():
                 continue
             for f in sorted(d.glob("c-*.*")):
-                if f.suffix[1:] in ("html", "css", "js"):
-                    self.files.setdefault(f.stem, {}).setdefault(f.suffix[1:], f)
+                m = CODE_FILE.fullmatch(f.name)
+                if m and (not m.group(2) or m.group(3) == "js"):
+                    self.files.setdefault(m.group(1), {}).setdefault("head" if m.group(2) else m.group(3), f)
         self.token_names = token_names
         self.shell_css = shell_css
         self.used = {}
@@ -943,6 +948,13 @@ class CodeSets:
     def validate(self, sid, parts, where):
         h, c, j = parts.get("html", ""), parts.get("css", ""), parts.get("js")
         w = lambda msg: R.warn(where, f"code set {sid}: {msg}")
+        # AX-S8: the live stages draw each landmark as a group, so the CSS must reach it by its oa- class, never its tag
+        tags = sorted({k for k, _ in landmarks_of(h) if k in CODE_LANDMARKS + CODE_NAMED_LANDMARKS})
+        for sel in css_rules(c) if tags else ():
+            for one in split_selectors(sel):
+                hit = [t for t in tags if re.search(r"(?<![\w.#\[:\"'-])" + t + r"(?![\w-])", re.sub(r"\[[^\]]*\]", "", one))]
+                if hit:
+                    w(f"the selector \"{one[:50]}\" names <{hit[0]}> by its tag; the live demos draw that landmark as a group (AX-S8), so reach it by its oa- class")
         # the markup: what a builder pastes into a body, styled only by its own CSS
         tags = sorted({m.lower() for m in CODE_TAGS.findall(h)})
         if tags:
@@ -987,12 +999,14 @@ class CodeSets:
         shared = sorted(x for x in css_classes if not x.startswith("oa-surface-") and re.search(r"\." + re.escape(x) + r"(?![\w-])", self.shell_css))
         if shared:
             w(f"the guide's shell also styles {', '.join(shared[:5])}, so the guide would draw it differently from a copy")
-        if j is not None:
+        for key, text in (("script", j), ("head script", parts.get("head"))):
+            if text is None:
+                continue
             for pat, why in ((r"\bimport\s*[\w{*('\"]", "an import"), (r"\brequire\s*\(", "require()"), (r"\beval\s*\(", "eval()"),
                              (r"document\.write", "document.write"), (r"getElementById\(\s*['\"]", "an ID written into the script"),
                              (r"</?script", "a script tag")):
-                if re.search(pat, j):
-                    w(f"the script holds {why}; it is a plain script that finds each copy of its component and reads IDs from attributes")
+                if re.search(pat, text):
+                    w(f"the {key} holds {why}; it is a plain script that finds each copy of its component and reads IDs from attributes")
 
 
 # Round 1 (November 11, 2026): a form control's name groups it (a radio group is one name), so in each live stage every
@@ -1096,17 +1110,29 @@ def code_plate(rid, block, ctx, where):
             continue
         pid = f"code-{sid}-{lang}"
         text = parts[lang].strip("\n") + "\n"
+        note = ('<p class="code-note">This script goes in its own script element in the page\'s head, before the stylesheets, so a '
+                'stored choice applies before the first paint. The live demos above never run it, since it sets the whole page.</p>'
+                if lang == "head" else "")
         panels.append(f'<div class="code-panel" data-code-lang="{lang}"><div class="code-panel-head"><p class="code-lang" id="{pid}-t">{label}</p>'
                       f'<button type="button" class="btn btn--quiet copy" data-copy-from="{pid}" data-copy-what="{what} of the {e(name[0].lower() + name[1:])}" '
-                      f'aria-describedby="{nid}">Copy {what}</button></div>'
+                      f'aria-describedby="{nid}">Copy {what}</button></div>{note}'
                       f'<pre class="code" id="{pid}" data-plate-scroll data-frame-name="{label} of the {e(name[0].lower() + name[1:])}"><code>{e(text)}</code></pre></div>')
     cap = inline(block.get("caption"), ctx) if block.get("caption") else ""
+    # AX-S8 in words: which landmarks the live demos draw as groups, and that the code keeps them
+    kinds = unlandmark(parts["html"])[1]
+    lm = ""
+    if kinds:
+        shown = [f"<code>&lt;{k}&gt;</code>" if k in CODE_LANDMARKS + CODE_NAMED_LANDMARKS else f"the {k} landmark" for k in kinds]
+        both = shown[0] if len(shown) == 1 else ", ".join(shown[:-1]) + " and " + shown[-1]
+        lm = (f'<p class="code-note" data-oa-landmarks="{e(" ".join(kinds))}">In the two live demos, {both} {"is" if len(kinds) == 1 else "are"} drawn as a '
+              f'plain group, so this guide\'s own list of landmarks stays its own. The code below keeps {"it" if len(kinds) == 1 else "them"}, and a copy '
+              f'draws {"it as a landmark" if len(kinds) == 1 else "them as landmarks"}.</p>')
     style = f'<style data-oa-code-css="{e(sid)}">\n{parts["css"]}\n</style>'
     script = f'<script data-oa-code-js="{e(sid)}">\n{parts["js"]}\n</script>' if "js" in parts else ""
     return (f'<figure class="plate plate--code" id="code-{e(sid)}" data-code-set="{e(sid)}">{style}'
             f'<div class="plate-head"><p class="plate-label"><span class="plate-label-t">Code to copy</span></p>'
             f'<p class="plate-size" id="{nid}">{e(name)}</p></div>'
-            f'<p class="vh" id="{aid}" aria-hidden="true">{e(alt)}</p><div class="code-demo">{"".join(stages)}</div>'
+            f'<p class="vh" id="{aid}" aria-hidden="true">{e(alt)}</p><div class="code-demo">{"".join(stages)}</div>{lm}'
             f'<div class="code-panels">{"".join(panels)}</div>'
             + status_line(f"code-{sid}-status", cls="status code-status")
             + (f'<figcaption class="plate-cap">{cap}</figcaption>' if cap else "")
@@ -2971,6 +2997,28 @@ def self_test():
           "tests": [("the HTML panel keeps the builder's own ids", lambda pg: 'aria-controls=&quot;panel&quot;' in pg and 'id=&quot;panel&quot;' in pg),
                     ("the status line carries the success and the error marks, hidden", lambda pg: 'id="code-c-01-good-status"><svg class="st-mark st-ok"' in pg)]}),
     ]
+    # round 1 (November 11, 2026): names per live stage, color words, the theme switch's target, the head script, AX-S8
+    r1_code = {
+        "c-01-r1.html": ('<nav class="oa-r1-nav" aria-label="Sections"><a class="oa-r1-link" href="#oa-r1-a">A</a></nav>\n'
+                         '<fieldset class="oa-r1-set"><legend class="oa-r1-legend">View</legend><input class="oa-r1-in" type="radio" name="oa-r1-view" value="a" checked id="oa-r1-a">'
+                         '<label class="oa-r1-l" for="oa-r1-a">A</label><select class="oa-r1-sel" name="oa-r1-pick"><option>One</option></select></fieldset>\n'
+                         '<section class="oa-r1-sec" aria-label="A named part"><p class="oa-r1-p">Named.</p></section>\n'
+                         '<section class="oa-r1-plain"><p class="oa-r1-p">Not named.</p></section>\n'
+                         '<div class="oa-r1-more" role="navigation" aria-label="More"><p class="oa-r1-p">More.</p></div>\n'
+                         '<div class="oa-r1-page" id="oa-r1-page"></div><div class="oa-r1-switch" data-oa-theme-for="oa-r1-page"></div>\n'),
+        "c-01-r1.css": ".oa-r1-p { white-space: normal; color: var(--oa-color-text-primary) }\n.oa-r1-nav, .oa-r1-sec { display: block }\n",
+        "c-01-r1.head.js": "try { var t = localStorage.getItem('oa-theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-oa-theme', t); } catch (e) {}\n",
+        "c-01-r1bad.html": '<nav class="oa-r1b" aria-label="Bad"><p class="oa-r1b-p">Bad.</p></nav>\n',
+        "c-01-r1bad.css": ".oa-r1b nav, .oa-r1b-p { color: white }\n.oa-r1b > search { display: block }\n",
+        "c-01-r1bad.head.js": "import x from './x.js';\n",
+    }
+    r1_01 = chapter("01", "purpose", "Purpose", [rule("01.1", {"code": {"set": "c-01-r1", "name": "Round 1 fixture"}}),
+                                                 rule("01.2", {"code": {"set": "c-01-r1bad", "name": "Round 1 faults"}})])
+
+    def stage_of(pg, theme):
+        m = re.search(r'data-specimen="c-01-r1--' + theme + r'".*?<div class="code-root">(.*?)</div></div></div>', pg, re.S)
+        return m.group(1) if m else ""
+
     # promotion C (November 11, 2026): the fourth family, the switch for all 41, CL-075 at 48 px and the archive folders
     sw = lambda i, fam, extra="": (f'<svg viewBox="0 0 24 24" width="24" height="24" {hide} data-icon="{i.upper()}" data-icon-family="{fam}"{extra}>'
                                    f'<use class="oa-at-1x" href="#oa-sym-{i}-24px"/><use class="oa-at-2x" href="#oa-sym-{i}"/></svg>')
@@ -3007,6 +3055,27 @@ def self_test():
     c_nolist = {"s-10-c-nolist.html": f"<p>{sw('cl-048', 'topic')} Public records</p><p>{m24('cl-001', 'topic')} Voting</p>"}
     cn, cnm = plates("10", "symbols", "Topic and atlas symbols", ["s-10-c-nolist"])
     scenarios += [
+        ("round 1, code to copy: names per stage, color words, the switch's target, the head script, and landmarks drawn as groups (AX-S8)",
+         {"01-purpose.json": r1_01}, {"code": r1_code},
+         {"warn": ["c-01-r1bad: the selector \".oa-r1b nav\" names <nav> by its tag", "c-01-r1bad: the head script holds an import",
+                   "c-01-r1bad: the CSS sets 1 literal color(s) (white)"],
+          "absent": ["code set c-01-r1:", "c-01-r1bad: the selector \".oa-r1b > search\""],
+          "html": ['name="c-01-r1--light--oa-r1-view"', 'name="c-01-r1--dark--oa-r1-view"', 'name="c-01-r1--dark--oa-r1-pick"',
+                   'data-oa-theme-for="c-01-r1--light--oa-r1-page"', 'data-oa-theme-for="c-01-r1--dark--oa-r1-page"',
+                   '<div role="group" data-oa-landmark="nav" class="oa-r1-nav" aria-label="Sections">',
+                   '<div role="group" data-oa-landmark="section" class="oa-r1-sec" aria-label="A named part">',
+                   '<div role="group" data-oa-landmark="navigation" class="oa-r1-more" aria-label="More">',
+                   'In the two live demos, <code>&lt;nav&gt;</code>, <code>&lt;section&gt;</code> and the navigation landmark are drawn as a plain group',
+                   '<div class="code-panel" data-code-lang="head">', '>Copy the head script</button>', 'name=&quot;oa-r1-view&quot;'],
+          "tests": [("no landmark element and no landmark role is left in a live stage", lambda pg: all(
+                         s and not re.search(r"<(?:nav|header|footer|aside|main|search)\b|role=\"(?:navigation|banner|search|contentinfo|complementary|main|region)\"", s)
+                         for s in (stage_of(pg, "light"), stage_of(pg, "dark")))),
+                    ("the unnamed section stays a section, and the closing tags pair up", lambda pg: '<section class="oa-r1-plain">' in stage_of(pg, "light")
+                     and stage_of(pg, "light").count("<section") == stage_of(pg, "light").count("</section>")
+                     and stage_of(pg, "light").count("<div") == stage_of(pg, "light").count("</div>") + 0),
+                    ("the copy keeps its landmarks and its own names", lambda pg: "&lt;nav class=&quot;oa-r1-nav&quot;" in pg and "&lt;section class=&quot;oa-r1-sec&quot;" in pg),
+                    ("the head script runs nowhere: it is no script element and the live stages hold none of it",
+                     lambda pg: "getItem('oa-theme')" not in pg and 'data-oa-code-js="c-01-r1"' not in pg and "localStorage" not in stage_of(pg, "light"))]}),
         ("promotion C: four families; the 37 fits as oa-sym-<id>-24px; CL-075 at 48 px; DR-208's 16 px files, never _archive/",
          {"10-symbols.json": c4, "11-icons.json": c11}, {"specimens": c_four, "manifest": {**c4m, **c11m}},
          {"absent": ["reference(s) to no symbol", "draws the 24 px fit", "draws its master on 1x", "[sprite ", "switches to", "is marked oa-at-",
