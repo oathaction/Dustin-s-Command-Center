@@ -1,0 +1,54 @@
+{
+ "id": "S16",
+ "form": "bubble-map",
+ "spec": "work/build/chart-kit/specs/s16.json",
+ "rows": 51,
+ "drawings": [
+  {
+   "ground": "newsprint",
+   "page": 1440,
+   "width": 1024,
+   "height": 790,
+   "svg_bytes": 63773
+  },
+  {
+   "ground": "newsprint",
+   "page": 390,
+   "width": 358,
+   "height": 446,
+   "svg_bytes": 64322
+  },
+  {
+   "ground": "charcoal",
+   "page": 1440,
+   "width": 1024,
+   "height": 790,
+   "svg_bytes": 63773
+  },
+  {
+   "ground": "charcoal",
+   "page": 390,
+   "width": 358,
+   "height": 446,
+   "svg_bytes": 64322
+  }
+ ],
+ "faults": [
+  "layout guard: texts overlap: \"IN\" and \"MO\" (newsprint 390)",
+  "layout guard: texts overlap: \"WV\" and \"NC\" (newsprint 390)",
+  "layout guard: text outside the artboard: \"MA\" at 355.4,272.1 (21.5 wide; artboard 358 by 446) (newsprint 390)",
+  "form: no clear place for the label DE; set labels.offsets.DE (newsprint 390)",
+  "form: no clear place for the label MO; set labels.offsets.MO (newsprint 390)",
+  "form: no clear place for the label MA; set labels.offsets.MA (newsprint 390)",
+  "form: no clear place for the label VA; set labels.offsets.VA (newsprint 390)",
+  "form: no clear place for the label NC; set labels.offsets.NC (newsprint 390)",
+  "layout guard: texts overlap: \"IN\" and \"MO\" (charcoal 390)",
+  "layout guard: texts overlap: \"WV\" and \"NC\" (charcoal 390)",
+  "layout guard: text outside the artboard: \"MA\" at 355.4,272.1 (21.5 wide; artboard 358 by 446) (charcoal 390)",
+  "form: no clear place for the label DE; set labels.offsets.DE (charcoal 390)",
+  "form: no clear place for the label MO; set labels.offsets.MO (charcoal 390)",
+  "form: no clear place for the label MA; set labels.offsets.MA (charcoal 390)",
+  "form: no clear place for the label VA; set labels.offsets.VA (charcoal 390)",
+  "form: no clear place for the label NC; set labels.offsets.NC (charcoal 390)"
+ ]
+}

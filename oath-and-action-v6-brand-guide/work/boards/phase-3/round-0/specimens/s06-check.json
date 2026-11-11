@@ -1,0 +1,37 @@
+{
+ "id": "S06",
+ "form": "scenario-directions",
+ "spec": "work/build/chart-kit/specs/s06.json",
+ "rows": 8,
+ "drawings": [
+  {
+   "ground": "newsprint",
+   "page": 1440,
+   "width": 1024,
+   "height": 595,
+   "svg_bytes": 19496
+  },
+  {
+   "ground": "newsprint",
+   "page": 390,
+   "width": 358,
+   "height": 2204,
+   "svg_bytes": 20075
+  },
+  {
+   "ground": "charcoal",
+   "page": 1440,
+   "width": 1024,
+   "height": 595,
+   "svg_bytes": 19496
+  },
+  {
+   "ground": "charcoal",
+   "page": 390,
+   "width": 358,
+   "height": 2204,
+   "svg_bytes": 20075
+  }
+ ],
+ "faults": []
+}

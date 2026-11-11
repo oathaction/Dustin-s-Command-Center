@@ -1,0 +1,37 @@
+{
+ "id": "S04",
+ "form": "dumbbell",
+ "spec": "work/build/chart-kit/specs/s04.json",
+ "rows": 8,
+ "drawings": [
+  {
+   "ground": "newsprint",
+   "page": 1440,
+   "width": 720,
+   "height": 201,
+   "svg_bytes": 5119
+  },
+  {
+   "ground": "newsprint",
+   "page": 390,
+   "width": 358,
+   "height": 273,
+   "svg_bytes": 5087
+  },
+  {
+   "ground": "charcoal",
+   "page": 1440,
+   "width": 720,
+   "height": 201,
+   "svg_bytes": 5119
+  },
+  {
+   "ground": "charcoal",
+   "page": 390,
+   "width": 358,
+   "height": 273,
+   "svg_bytes": 5087
+  }
+ ],
+ "faults": []
+}

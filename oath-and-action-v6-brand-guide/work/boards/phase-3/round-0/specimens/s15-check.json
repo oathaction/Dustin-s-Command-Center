@@ -1,0 +1,37 @@
+{
+ "id": "S15",
+ "form": "results-table",
+ "spec": "work/build/chart-kit/specs/s15.json",
+ "rows": 52,
+ "drawings": [
+  {
+   "ground": "newsprint",
+   "page": 1440,
+   "width": 1024,
+   "height": 1940,
+   "svg_bytes": 67583
+  },
+  {
+   "ground": "newsprint",
+   "page": 390,
+   "width": 358,
+   "height": 3284,
+   "svg_bytes": 48609
+  },
+  {
+   "ground": "charcoal",
+   "page": 1440,
+   "width": 1024,
+   "height": 1940,
+   "svg_bytes": 67583
+  },
+  {
+   "ground": "charcoal",
+   "page": 390,
+   "width": 358,
+   "height": 3284,
+   "svg_bytes": 48609
+  }
+ ],
+ "faults": []
+}

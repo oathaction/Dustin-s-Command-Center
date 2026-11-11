@@ -1,0 +1,17 @@
+id,title,question,hub,hub_title,documented,well_supported,plausible,contested,total,documented_share
+PW12,Clean drinking water,Who makes sure my tap water is safe?,community-services,Public services where you live,23,1,0,0,24,95.8
+PW13,"Roads, bridges and transit",Why is the repair on my street taking so long?,community-services,Public services where you live,12,0,1,0,13,92.3
+PW10,"Taxes, benefits and financial security",How do taxes and benefit rules change what my household keeps?,work-and-security,Work and financial security,24,2,0,2,28,85.7
+PW02,Grocery prices,Why is my grocery bill higher?,cost-of-living,Cost of living,21,1,2,2,26,80.8
+PW03,Electric and utility bills,Why is my electric bill going up?,cost-of-living,Cost of living,16,1,3,0,20,80
+PW04,Home and auto insurance,Why did my home insurance premium go up?,cost-of-living,Cost of living,19,3,2,0,24,79.2
+PW05,Health coverage and access,Why is it hard to find an appointment?,health-and-care,Health and care,25,4,3,0,32,78.1
+PW06,Medical bills and drug prices,Why can the same care produce different bills?,health-and-care,Health and care,21,7,0,0,28,75
+PW08,Long-term care and disability,Why is it so hard to get help at home as I age or live with a disability?,health-and-care,Health and care,17,4,2,0,23,73.9
+PW01,Housing costs,Why did my rent go up?,cost-of-living,Cost of living,25,3,3,3,34,73.5
+PW15,Voting and public influence,"Which election decides who represents me, and how can I influence the people who decide?",voice-and-power,"Voice, power and information",30,5,6,1,42,71.4
+PW11,Social Security and retirement,"What will I get from Social Security, and could the rules change before I retire?",work-and-security,Work and financial security,20,9,1,0,30,66.7
+PW14,Public schools,Why does my child's school have less than schools in other districts?,community-services,Public services where you live,14,5,1,1,21,66.7
+PW07,Childcare and family care,"Why does childcare cost so much, and why can't I find an opening?",health-and-care,Health and care,17,4,4,2,27,63
+PW09,Pay and working conditions,Why isn't my pay keeping up with what my work produces?,work-and-security,Work and financial security,24,5,4,6,39,61.5
+PW16,Algorithms in daily life,"How do algorithms affect the prices I pay, my job, what I see online and the services I get?",voice-and-power,"Voice, power and information",13,2,6,1,22,59.1

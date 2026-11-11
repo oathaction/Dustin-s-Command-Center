@@ -1,0 +1,37 @@
+{
+ "id": "S12",
+ "form": "tile-map-shift-arrows",
+ "spec": "work/build/chart-kit/specs/s12.json",
+ "rows": 52,
+ "drawings": [
+  {
+   "ground": "newsprint",
+   "page": 1440,
+   "width": 1024,
+   "height": 710,
+   "svg_bytes": 29228
+  },
+  {
+   "ground": "newsprint",
+   "page": 390,
+   "width": 358,
+   "height": 329,
+   "svg_bytes": 14273
+  },
+  {
+   "ground": "charcoal",
+   "page": 1440,
+   "width": 1024,
+   "height": 710,
+   "svg_bytes": 29228
+  },
+  {
+   "ground": "charcoal",
+   "page": 390,
+   "width": 358,
+   "height": 329,
+   "svg_bytes": 14273
+  }
+ ],
+ "faults": []
+}

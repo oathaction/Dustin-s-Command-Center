@@ -1,0 +1,37 @@
+{
+ "id": "S08",
+ "form": "unit-chart",
+ "spec": "work/build/chart-kit/specs/s08.json",
+ "rows": 64,
+ "drawings": [
+  {
+   "ground": "newsprint",
+   "page": 1440,
+   "width": 1024,
+   "height": 425,
+   "svg_bytes": 16130
+  },
+  {
+   "ground": "newsprint",
+   "page": 390,
+   "width": 358,
+   "height": 783,
+   "svg_bytes": 15291
+  },
+  {
+   "ground": "charcoal",
+   "page": 1440,
+   "width": 1024,
+   "height": 425,
+   "svg_bytes": 16130
+  },
+  {
+   "ground": "charcoal",
+   "page": 390,
+   "width": 358,
+   "height": 783,
+   "svg_bytes": 15291
+  }
+ ],
+ "faults": []
+}

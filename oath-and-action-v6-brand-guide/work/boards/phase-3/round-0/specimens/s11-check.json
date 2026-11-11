@@ -1,0 +1,37 @@
+{
+ "id": "S11",
+ "form": "shift-arrows",
+ "spec": "work/build/chart-kit/specs/s11.json",
+ "rows": 52,
+ "drawings": [
+  {
+   "ground": "newsprint",
+   "page": 1440,
+   "width": 1024,
+   "height": 1120,
+   "svg_bytes": 30208
+  },
+  {
+   "ground": "newsprint",
+   "page": 390,
+   "width": 358,
+   "height": 2330,
+   "svg_bytes": 30006
+  },
+  {
+   "ground": "charcoal",
+   "page": 1440,
+   "width": 1024,
+   "height": 1120,
+   "svg_bytes": 30208
+  },
+  {
+   "ground": "charcoal",
+   "page": 390,
+   "width": 358,
+   "height": 2330,
+   "svg_bytes": 30006
+  }
+ ],
+ "faults": []
+}

@@ -1,0 +1,1025 @@
+{
+ "title": "Palette proposal: the chart tokens for Phase 3, round 0",
+ "date": "2026-11-11",
+ "author": "Data visualization and systems lead, with the design director's eye",
+ "status": "Proposed. Every token here is marked \"Proposed until board 1\" in its description; Dustin approves the new colors on board 1. The engineer adds them as one pre-release under Rule 26.8.",
+ "built_from": {
+  "tokens": "work/build/tokens/tokens.json, release 6.0.0-gate2.9",
+  "script": "work/boards/phase-3/round-0/palettes/build_palette_proofs.py",
+  "proofs": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs.html",
+  "measures": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Measures.json"
+ },
+ "release_suggestion": {
+  "version": "6.0.0-gate3.1",
+  "why": "Rule 26.8: before 6.0.0, every change raises the number after the hyphen. The Gate 2 drafts ran gate2.1 to gate2.9; this is the first draft on the way to Gate 3. The engineer names the release",
+  "change_note": {
+   "tokens": "oa.color.tint.prussianN56 and prussianN29 (new); oa.chart.color.diverging on Charcoal; oa.chart.color.categorical; oa.chart.color.ghost; oa.chart.grade; the descriptions listed under description_changes",
+   "change": "Two new colors, both Prussian mixed toward Newsprint, so the diverging scale works on Charcoal. New roles with no new value: the four-ink categorical set with its label inks, the ghost lines of small multiples, and the evidence line code as stroke styles. Every new token is marked proposed until board 1.",
+   "reason": "Dark mode needs the diverging scale on Charcoal (DR-204); the categorical set stays with the four brand inks and no new hue (DR-234); the line code moves out of three build scripts into the tokens (Gate 1, M1; Rule 10.10).",
+   "record": "DR-204, DR-234, D2-95, Gate 1 M1, Rule 10.10; the palette notes' D3 calls",
+   "gate": "Board 1, then Gate 3"
+  }
+ },
+ "summary": {
+  "new_colors": 2,
+  "new_color_tokens": [
+   "oa.color.tint.prussianN56",
+   "oa.color.tint.prussianN29"
+  ],
+  "new_tokens_total": 40,
+  "by_group": {
+   "oa.color.tint (new primitives)": 2,
+   "oa.chart.color.diverging, on Charcoal": 10,
+   "oa.chart.color.categorical": 16,
+   "oa.chart.color.ghost": 2,
+   "oa.chart.grade": 10
+  },
+  "existing_values_reused": [
+   "{oa.color.palette.charcoal}",
+   "{oa.color.palette.newsprint}",
+   "{oa.color.palette.prussian}",
+   "{oa.color.palette.stone}",
+   "{oa.color.palette.verdigris}",
+   "{oa.color.palette.white}",
+   "{oa.color.tint.prussianN62}",
+   "{oa.color.tint.stoneC40}",
+   "{oa.color.tint.stoneC72}",
+   "{oa.color.tint.stoneN55}",
+   "{oa.color.tint.verdigrisC20}",
+   "{oa.color.tint.verdigrisN25}"
+  ],
+  "not_added": [
+   "A Prussian sequential scale: no chart in S01 to S16 or in rounds 1 and 2's plan as read today needs a second measure in sequence (proposal section 1.6 adds it only on need)",
+   "Chart tokens on White: a printed report prints the Newsprint values on the paper (DR-53); this sheet measures them on White and they hold",
+   "Chart tokens on Prussian: Prussian is a data ink in two palettes, and red never sits on it (Rule 05.3); a chart in a Prussian panel sits on its own Newsprint or Charcoal plate",
+   "A new red or a red tint: the red-on-red specimen resolves by Rule 05.3's order, with the point yielding to ink (Rule 11.16)"
+  ]
+ },
+ "needs": {
+  "N-10": "Diverging pair B on Charcoal for the dark theme (DR-204): the scale has Newsprint tokens only, and the dark theme sets it to initial. Measured on this sheet",
+  "N-11": "A categorical set of up to four groups (DR-234): no token names the four brand inks as groups, with a label ink for each and the hatch that keeps Verdigris and Stone apart (D2-95)",
+  "N-12": "The evidence line code (Gate 1, M1; Rule 10.10) as tokens, so the chart kit, chapter 13 and chapter 15 draw one set of patterns: today the patterns live in three build scripts",
+  "N-13": "Small multiples past four groups (DR-234) draw the other groups faint behind each panel; no token names that role"
+ },
+ "tokens": [
+  {
+   "path": "oa.color.tint.prussianN56",
+   "css": "--oa-color-tint-prussian-n56",
+   "tier": "primitive",
+   "type": "color",
+   "value": "#828A9D",
+   "derivation": {
+    "method": "color-mix",
+    "space": "oklab",
+    "base": "{oa.color.palette.prussian}",
+    "toward": "{oa.color.palette.newsprint}",
+    "amount": 0.56,
+    "css": "color-mix(in oklab, #1F2D5A, #DCD9D2 56%)"
+   },
+   "surfaces": [
+    "charcoal"
+   ],
+   "kind": "dataFill",
+   "job": "Strong Prussian end of the diverging scale on Charcoal",
+   "need": "N-10",
+   "ratios": {
+    "on Charcoal": 5.42,
+    "Charcoal text on it": 5.42,
+    "Newsprint text on it": 2.45
+   },
+   "oklab_L": 0.633,
+   "description": "Strong Prussian end of the diverging scale on Charcoal. Prussian mixed 56% toward Newsprint in OKLab. Proposed until board 1.",
+   "reason": "The diverging scale has no Charcoal steps (its description says \"Newsprint only until a Charcoal ramp is measured\"), and the dark theme (DR-204) sets every role with no Charcoal token to initial. The Verdigris half reuses the sequential scale's Charcoal steps 3 and 4; no existing value sits at the matching lightness on the Prussian side, so these two are the only new colors."
+  },
+  {
+   "path": "oa.color.tint.prussianN29",
+   "css": "--oa-color-tint-prussian-n29",
+   "tier": "primitive",
+   "type": "color",
+   "value": "#505C7D",
+   "derivation": {
+    "method": "color-mix",
+    "space": "oklab",
+    "base": "{oa.color.palette.prussian}",
+    "toward": "{oa.color.palette.newsprint}",
+    "amount": 0.29,
+    "css": "color-mix(in oklab, #1F2D5A, #DCD9D2 29%)"
+   },
+   "surfaces": [
+    "charcoal"
+   ],
+   "kind": "dataFill",
+   "job": "Near Prussian step of the diverging scale on Charcoal",
+   "need": "N-10",
+   "ratios": {
+    "on Charcoal": 2.83,
+    "Charcoal text on it": 2.83,
+    "Newsprint text on it": 4.7
+   },
+   "oklab_L": 0.478,
+   "description": "Near Prussian step of the diverging scale on Charcoal. Prussian mixed 29% toward Newsprint in OKLab. Proposed until board 1.",
+   "reason": "The diverging scale has no Charcoal steps (its description says \"Newsprint only until a Charcoal ramp is measured\"), and the dark theme (DR-204) sets every role with no Charcoal token to initial. The Verdigris half reuses the sequential scale's Charcoal steps 3 and 4; no existing value sits at the matching lightness on the Prussian side, so these two are the only new colors."
+  },
+  {
+   "path": "oa.chart.color.diverging.fill.step1.onCharcoal",
+   "css": "--oa-chart-color-diverging-fill-step1-on-charcoal",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.tint.prussianN56}",
+   "resolves_to": "#828A9D",
+   "surface": "charcoal",
+   "kind": "dataFill",
+   "job": "The diverging scale on Charcoal, step 1 of 5: the strong Prussian end.",
+   "ratios": {
+    "on Charcoal": 5.42
+   },
+   "threshold": null,
+   "valuesPrinted": true,
+   "threshold_note": "A data fill under 3 to 1 is allowed only with its value printed on or beside it, or a direct label; the 3 to 1 test applies to the marks a reader needs (Rule 05.5)",
+   "scale": "diverging",
+   "step": 1,
+   "need": "N-10",
+   "reason": "Dark mode (DR-204) needs the diverging scale on Charcoal; the two ends match in lightness, as on any diverging scale, and the boxed arrow or printed sign carries direction (DR-54).",
+   "description": "The diverging scale on Charcoal, step 1 of 5: the strong Prussian end. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.diverging.label.step1.onCharcoal",
+   "css": "--oa-chart-color-diverging-label-step1-on-charcoal",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.charcoal}",
+   "resolves_to": "#121212",
+   "surface": "charcoal",
+   "kind": "text",
+   "job": "Text on diverging step 1 on Charcoal.",
+   "ground": "{oa.chart.color.diverging.fill.step1.onCharcoal}",
+   "ratios": {
+    "on its ground": 5.42
+   },
+   "threshold": 4.5,
+   "passes": true,
+   "need": "N-10",
+   "description": "Text on diverging step 1 on Charcoal. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.diverging.fill.step2.onCharcoal",
+   "css": "--oa-chart-color-diverging-fill-step2-on-charcoal",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.tint.prussianN29}",
+   "resolves_to": "#505C7D",
+   "surface": "charcoal",
+   "kind": "dataFill",
+   "job": "The diverging scale on Charcoal, step 2 of 5: the near Prussian step.",
+   "ratios": {
+    "on Charcoal": 2.83
+   },
+   "threshold": null,
+   "valuesPrinted": true,
+   "threshold_note": "A data fill under 3 to 1 is allowed only with its value printed on or beside it, or a direct label; the 3 to 1 test applies to the marks a reader needs (Rule 05.5)",
+   "scale": "diverging",
+   "step": 2,
+   "need": "N-10",
+   "reason": "Dark mode (DR-204) needs the diverging scale on Charcoal; the two ends match in lightness, as on any diverging scale, and the boxed arrow or printed sign carries direction (DR-54).",
+   "description": "The diverging scale on Charcoal, step 2 of 5: the near Prussian step. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.diverging.label.step2.onCharcoal",
+   "css": "--oa-chart-color-diverging-label-step2-on-charcoal",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.newsprint}",
+   "resolves_to": "#DCD9D2",
+   "surface": "charcoal",
+   "kind": "text",
+   "job": "Text on diverging step 2 on Charcoal.",
+   "ground": "{oa.chart.color.diverging.fill.step2.onCharcoal}",
+   "ratios": {
+    "on its ground": 4.7
+   },
+   "threshold": 4.5,
+   "passes": true,
+   "need": "N-10",
+   "description": "Text on diverging step 2 on Charcoal. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.diverging.fill.step3.onCharcoal",
+   "css": "--oa-chart-color-diverging-fill-step3-on-charcoal",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.tint.stoneC72}",
+   "resolves_to": "#252729",
+   "surface": "charcoal",
+   "kind": "dataFill",
+   "job": "The diverging scale on Charcoal, step 3 of 5: the midpoint, tinted toward the ground.",
+   "ratios": {
+    "on Charcoal": 1.25
+   },
+   "threshold": null,
+   "valuesPrinted": true,
+   "threshold_note": "A data fill under 3 to 1 is allowed only with its value printed on or beside it, or a direct label; the 3 to 1 test applies to the marks a reader needs (Rule 05.5)",
+   "scale": "diverging",
+   "step": 3,
+   "need": "N-10",
+   "reason": "Dark mode (DR-204) needs the diverging scale on Charcoal; the two ends match in lightness, as on any diverging scale, and the boxed arrow or printed sign carries direction (DR-54).",
+   "description": "The diverging scale on Charcoal, step 3 of 5: the midpoint, tinted toward the ground. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.diverging.label.step3.onCharcoal",
+   "css": "--oa-chart-color-diverging-label-step3-on-charcoal",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.newsprint}",
+   "resolves_to": "#DCD9D2",
+   "surface": "charcoal",
+   "kind": "text",
+   "job": "Text on diverging step 3 on Charcoal.",
+   "ground": "{oa.chart.color.diverging.fill.step3.onCharcoal}",
+   "ratios": {
+    "on its ground": 10.64
+   },
+   "threshold": 4.5,
+   "passes": true,
+   "need": "N-10",
+   "description": "Text on diverging step 3 on Charcoal. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.diverging.fill.step4.onCharcoal",
+   "css": "--oa-chart-color-diverging-fill-step4-on-charcoal",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.tint.verdigrisC20}",
+   "resolves_to": "#3F655E",
+   "surface": "charcoal",
+   "kind": "dataFill",
+   "job": "The diverging scale on Charcoal, step 4 of 5: the near Verdigris step.",
+   "ratios": {
+    "on Charcoal": 2.89
+   },
+   "threshold": null,
+   "valuesPrinted": true,
+   "threshold_note": "A data fill under 3 to 1 is allowed only with its value printed on or beside it, or a direct label; the 3 to 1 test applies to the marks a reader needs (Rule 05.5)",
+   "scale": "diverging",
+   "step": 4,
+   "need": "N-10",
+   "reason": "Dark mode (DR-204) needs the diverging scale on Charcoal; the two ends match in lightness, as on any diverging scale, and the boxed arrow or printed sign carries direction (DR-54).",
+   "description": "The diverging scale on Charcoal, step 4 of 5: the near Verdigris step. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.diverging.label.step4.onCharcoal",
+   "css": "--oa-chart-color-diverging-label-step4-on-charcoal",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.newsprint}",
+   "resolves_to": "#DCD9D2",
+   "surface": "charcoal",
+   "kind": "text",
+   "job": "Text on diverging step 4 on Charcoal.",
+   "ground": "{oa.chart.color.diverging.fill.step4.onCharcoal}",
+   "ratios": {
+    "on its ground": 4.61
+   },
+   "threshold": 4.5,
+   "passes": true,
+   "need": "N-10",
+   "description": "Text on diverging step 4 on Charcoal. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.diverging.fill.step5.onCharcoal",
+   "css": "--oa-chart-color-diverging-fill-step5-on-charcoal",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.tint.verdigrisN25}",
+   "resolves_to": "#6F938B",
+   "surface": "charcoal",
+   "kind": "dataFill",
+   "job": "The diverging scale on Charcoal, step 5 of 5: the strong Verdigris end.",
+   "ratios": {
+    "on Charcoal": 5.55
+   },
+   "threshold": null,
+   "valuesPrinted": true,
+   "threshold_note": "A data fill under 3 to 1 is allowed only with its value printed on or beside it, or a direct label; the 3 to 1 test applies to the marks a reader needs (Rule 05.5)",
+   "scale": "diverging",
+   "step": 5,
+   "need": "N-10",
+   "reason": "Dark mode (DR-204) needs the diverging scale on Charcoal; the two ends match in lightness, as on any diverging scale, and the boxed arrow or printed sign carries direction (DR-54).",
+   "description": "The diverging scale on Charcoal, step 5 of 5: the strong Verdigris end. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.diverging.label.step5.onCharcoal",
+   "css": "--oa-chart-color-diverging-label-step5-on-charcoal",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.charcoal}",
+   "resolves_to": "#121212",
+   "surface": "charcoal",
+   "kind": "text",
+   "job": "Text on diverging step 5 on Charcoal.",
+   "ground": "{oa.chart.color.diverging.fill.step5.onCharcoal}",
+   "ratios": {
+    "on its ground": 5.55
+   },
+   "threshold": 4.5,
+   "passes": true,
+   "need": "N-10",
+   "description": "Text on diverging step 5 on Charcoal. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.categorical.fill.group1.onNewsprint",
+   "css": "--oa-chart-color-categorical-fill-group1-on-newsprint",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.charcoal}",
+   "resolves_to": "#121212",
+   "surface": "newsprint",
+   "kind": "graphic",
+   "job": "The categorical set, group 1 of 4, on Newsprint: Charcoal and a circle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234).",
+   "ratios": {
+    "on Newsprint": 13.29
+   },
+   "threshold": 3.0,
+   "group": 1,
+   "pattern": "solid",
+   "marker": "circle",
+   "need": "N-11",
+   "never": "A party, a side or a person (DR-48, DR-58, Rule 01.1); party data takes oa.chart.color.party.mark",
+   "marker_spec": "On a line, the group's marker sits at the line's end beside its label, drawn with the area of a circle of oa.chart.dot.openRadius; markers at data points follow the form",
+   "description": "The categorical set, group 1 of 4, on Newsprint: Charcoal and a circle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234). Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.categorical.label.group1.onNewsprint",
+   "css": "--oa-chart-color-categorical-label-group1-on-newsprint",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.white}",
+   "resolves_to": "#FFFFFF",
+   "surface": "newsprint",
+   "kind": "text",
+   "job": "Text set on categorical group 1 on Newsprint.",
+   "ground": "{oa.chart.color.categorical.fill.group1.onNewsprint}",
+   "ratios": {
+    "on its ground": 18.73
+   },
+   "threshold": 4.5,
+   "passes": true,
+   "need": "N-11",
+   "description": "Text set on categorical group 1 on Newsprint. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.categorical.fill.group2.onNewsprint",
+   "css": "--oa-chart-color-categorical-fill-group2-on-newsprint",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.prussian}",
+   "resolves_to": "#1F2D5A",
+   "surface": "newsprint",
+   "kind": "graphic",
+   "job": "The categorical set, group 2 of 4, on Newsprint: Prussian and a square marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234).",
+   "ratios": {
+    "on Newsprint": 9.42
+   },
+   "threshold": 3.0,
+   "group": 2,
+   "pattern": "solid",
+   "marker": "square",
+   "need": "N-11",
+   "never": "A party, a side or a person (DR-48, DR-58, Rule 01.1); party data takes oa.chart.color.party.mark",
+   "marker_spec": "On a line, the group's marker sits at the line's end beside its label, drawn with the area of a circle of oa.chart.dot.openRadius; markers at data points follow the form",
+   "description": "The categorical set, group 2 of 4, on Newsprint: Prussian and a square marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234). Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.categorical.label.group2.onNewsprint",
+   "css": "--oa-chart-color-categorical-label-group2-on-newsprint",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.white}",
+   "resolves_to": "#FFFFFF",
+   "surface": "newsprint",
+   "kind": "text",
+   "job": "Text set on categorical group 2 on Newsprint.",
+   "ground": "{oa.chart.color.categorical.fill.group2.onNewsprint}",
+   "ratios": {
+    "on its ground": 13.28
+   },
+   "threshold": 4.5,
+   "passes": true,
+   "need": "N-11",
+   "description": "Text set on categorical group 2 on Newsprint. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.categorical.fill.group3.onNewsprint",
+   "css": "--oa-chart-color-categorical-fill-group3-on-newsprint",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.verdigris}",
+   "resolves_to": "#4A7C74",
+   "surface": "newsprint",
+   "kind": "graphic",
+   "job": "The categorical set, group 3 of 4, on Newsprint: Verdigris and a triangle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234).",
+   "ratios": {
+    "on Newsprint": 3.37
+   },
+   "threshold": 3.0,
+   "group": 3,
+   "pattern": "solid",
+   "marker": "triangle",
+   "need": "N-11",
+   "never": "A party, a side or a person (DR-48, DR-58, Rule 01.1); party data takes oa.chart.color.party.mark",
+   "marker_spec": "On a line, the group's marker sits at the line's end beside its label, drawn with the area of a circle of oa.chart.dot.openRadius; markers at data points follow the form",
+   "description": "The categorical set, group 3 of 4, on Newsprint: Verdigris and a triangle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234). Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.categorical.label.group3.onNewsprint",
+   "css": "--oa-chart-color-categorical-label-group3-on-newsprint",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.white}",
+   "resolves_to": "#FFFFFF",
+   "surface": "newsprint",
+   "kind": "text",
+   "job": "Text set on categorical group 3 on Newsprint.",
+   "ground": "{oa.chart.color.categorical.fill.group3.onNewsprint}",
+   "ratios": {
+    "on its ground": 4.74
+   },
+   "threshold": 4.5,
+   "passes": true,
+   "need": "N-11",
+   "description": "Text set on categorical group 3 on Newsprint. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.categorical.fill.group4.onNewsprint",
+   "css": "--oa-chart-color-categorical-fill-group4-on-newsprint",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.stone}",
+   "resolves_to": "#5D636D",
+   "surface": "newsprint",
+   "kind": "graphic",
+   "job": "The categorical set, group 4 of 4, on Newsprint: Stone, hatched, with the hatch and a diamond marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234).",
+   "ratios": {
+    "on Newsprint": 4.29
+   },
+   "threshold": 3.0,
+   "group": 4,
+   "pattern": "hatch",
+   "marker": "diamond",
+   "need": "N-11",
+   "never": "A party, a side or a person (DR-48, DR-58, Rule 01.1); party data takes oa.chart.color.party.mark",
+   "pattern_spec": {
+    "pattern": "hatch",
+    "angle_degrees": 45,
+    "pitch": "{oa.chart.hatch.pitch}",
+    "weight": "{oa.chart.hatch.weight}",
+    "edge": "1 px in the same ink",
+    "why": "Verdigris and Stone sit 0.05 apart in OKLab lightness (D2-95), so the Stone group always carries the hatch, on both grounds"
+   },
+   "marker_spec": "On a line, the group's marker sits at the line's end beside its label, drawn with the area of a circle of oa.chart.dot.openRadius; markers at data points follow the form",
+   "description": "The categorical set, group 4 of 4, on Newsprint: Stone, hatched, with the hatch and a diamond marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234). Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.categorical.label.group4.onNewsprint",
+   "css": "--oa-chart-color-categorical-label-group4-on-newsprint",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.charcoal}",
+   "resolves_to": "#121212",
+   "surface": "newsprint",
+   "kind": "text",
+   "job": "Label of categorical group 4 on Newsprint: set beside the hatch, or on a halo of the ground (oa.chart.halo), never on the hatch itself.",
+   "ground": "{oa.color.surface.newsprint}",
+   "ratios": {
+    "on its ground": 13.29
+   },
+   "threshold": 4.5,
+   "passes": true,
+   "need": "N-11",
+   "description": "Label of categorical group 4 on Newsprint: set beside the hatch, or on a halo of the ground (oa.chart.halo), never on the hatch itself. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.ghost.onNewsprint",
+   "css": "--oa-chart-color-ghost-on-newsprint",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.tint.stoneN55}",
+   "resolves_to": "#A1A2A3",
+   "surface": "newsprint",
+   "kind": "decorative",
+   "job": "Ghost: the other groups drawn faint behind each panel of small multiples on Newsprint, 1 px. They repeat lines drawn in full in their own panels, so they carry no new information and need no 3 to 1 ratio.",
+   "ratios": {
+    "on Newsprint": 1.81
+   },
+   "threshold": null,
+   "need": "N-13",
+   "width": "{oa.chart.line.hairline}",
+   "description": "Ghost: the other groups drawn faint behind each panel of small multiples on Newsprint, 1 px. They repeat lines drawn in full in their own panels, so they carry no new information and need no 3 to 1 ratio. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.categorical.fill.group1.onCharcoal",
+   "css": "--oa-chart-color-categorical-fill-group1-on-charcoal",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.newsprint}",
+   "resolves_to": "#DCD9D2",
+   "surface": "charcoal",
+   "kind": "graphic",
+   "job": "The categorical set, group 1 of 4, on Charcoal: Newsprint and a circle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234).",
+   "ratios": {
+    "on Charcoal": 13.29
+   },
+   "threshold": 3.0,
+   "group": 1,
+   "pattern": "solid",
+   "marker": "circle",
+   "need": "N-11",
+   "never": "A party, a side or a person (DR-48, DR-58, Rule 01.1); party data takes oa.chart.color.party.mark",
+   "marker_spec": "On a line, the group's marker sits at the line's end beside its label, drawn with the area of a circle of oa.chart.dot.openRadius; markers at data points follow the form",
+   "description": "The categorical set, group 1 of 4, on Charcoal: Newsprint and a circle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234). Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.categorical.label.group1.onCharcoal",
+   "css": "--oa-chart-color-categorical-label-group1-on-charcoal",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.charcoal}",
+   "resolves_to": "#121212",
+   "surface": "charcoal",
+   "kind": "text",
+   "job": "Text set on categorical group 1 on Charcoal.",
+   "ground": "{oa.chart.color.categorical.fill.group1.onCharcoal}",
+   "ratios": {
+    "on its ground": 13.29
+   },
+   "threshold": 4.5,
+   "passes": true,
+   "need": "N-11",
+   "description": "Text set on categorical group 1 on Charcoal. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.categorical.fill.group2.onCharcoal",
+   "css": "--oa-chart-color-categorical-fill-group2-on-charcoal",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.tint.prussianN62}",
+   "resolves_to": "#8E94A4",
+   "surface": "charcoal",
+   "kind": "graphic",
+   "job": "The categorical set, group 2 of 4, on Charcoal: Prussian lifted 62% and a square marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234).",
+   "ratios": {
+    "on Charcoal": 6.18
+   },
+   "threshold": 3.0,
+   "group": 2,
+   "pattern": "solid",
+   "marker": "square",
+   "need": "N-11",
+   "never": "A party, a side or a person (DR-48, DR-58, Rule 01.1); party data takes oa.chart.color.party.mark",
+   "marker_spec": "On a line, the group's marker sits at the line's end beside its label, drawn with the area of a circle of oa.chart.dot.openRadius; markers at data points follow the form",
+   "description": "The categorical set, group 2 of 4, on Charcoal: Prussian lifted 62% and a square marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234). Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.categorical.label.group2.onCharcoal",
+   "css": "--oa-chart-color-categorical-label-group2-on-charcoal",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.charcoal}",
+   "resolves_to": "#121212",
+   "surface": "charcoal",
+   "kind": "text",
+   "job": "Text set on categorical group 2 on Charcoal.",
+   "ground": "{oa.chart.color.categorical.fill.group2.onCharcoal}",
+   "ratios": {
+    "on its ground": 6.18
+   },
+   "threshold": 4.5,
+   "passes": true,
+   "need": "N-11",
+   "description": "Text set on categorical group 2 on Charcoal. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.categorical.fill.group3.onCharcoal",
+   "css": "--oa-chart-color-categorical-fill-group3-on-charcoal",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.verdigris}",
+   "resolves_to": "#4A7C74",
+   "surface": "charcoal",
+   "kind": "graphic",
+   "job": "The categorical set, group 3 of 4, on Charcoal: Verdigris and a triangle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234).",
+   "ratios": {
+    "on Charcoal": 3.95
+   },
+   "threshold": 3.0,
+   "group": 3,
+   "pattern": "solid",
+   "marker": "triangle",
+   "need": "N-11",
+   "never": "A party, a side or a person (DR-48, DR-58, Rule 01.1); party data takes oa.chart.color.party.mark",
+   "marker_spec": "On a line, the group's marker sits at the line's end beside its label, drawn with the area of a circle of oa.chart.dot.openRadius; markers at data points follow the form",
+   "description": "The categorical set, group 3 of 4, on Charcoal: Verdigris and a triangle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234). Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.categorical.label.group3.onCharcoal",
+   "css": "--oa-chart-color-categorical-label-group3-on-charcoal",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.white}",
+   "resolves_to": "#FFFFFF",
+   "surface": "charcoal",
+   "kind": "text",
+   "job": "Text set on categorical group 3 on Charcoal.",
+   "ground": "{oa.chart.color.categorical.fill.group3.onCharcoal}",
+   "ratios": {
+    "on its ground": 4.74
+   },
+   "threshold": 4.5,
+   "passes": true,
+   "need": "N-11",
+   "description": "Text set on categorical group 3 on Charcoal. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.categorical.fill.group4.onCharcoal",
+   "css": "--oa-chart-color-categorical-fill-group4-on-charcoal",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.stone}",
+   "resolves_to": "#5D636D",
+   "surface": "charcoal",
+   "kind": "graphic",
+   "job": "The categorical set, group 4 of 4, on Charcoal: Stone, hatched, with the hatch and a diamond marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234).",
+   "ratios": {
+    "on Charcoal": 3.1
+   },
+   "threshold": 3.0,
+   "group": 4,
+   "pattern": "hatch",
+   "marker": "diamond",
+   "need": "N-11",
+   "never": "A party, a side or a person (DR-48, DR-58, Rule 01.1); party data takes oa.chart.color.party.mark",
+   "pattern_spec": {
+    "pattern": "hatch",
+    "angle_degrees": 45,
+    "pitch": "{oa.chart.hatch.pitch}",
+    "weight": "{oa.chart.hatch.weight}",
+    "edge": "1 px in the same ink",
+    "why": "Verdigris and Stone sit 0.05 apart in OKLab lightness (D2-95), so the Stone group always carries the hatch, on both grounds"
+   },
+   "marker_spec": "On a line, the group's marker sits at the line's end beside its label, drawn with the area of a circle of oa.chart.dot.openRadius; markers at data points follow the form",
+   "description": "The categorical set, group 4 of 4, on Charcoal: Stone, hatched, with the hatch and a diamond marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234). Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.categorical.label.group4.onCharcoal",
+   "css": "--oa-chart-color-categorical-label-group4-on-charcoal",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.palette.newsprint}",
+   "resolves_to": "#DCD9D2",
+   "surface": "charcoal",
+   "kind": "text",
+   "job": "Label of categorical group 4 on Charcoal: set beside the hatch, or on a halo of the ground (oa.chart.halo), never on the hatch itself.",
+   "ground": "{oa.color.surface.charcoal}",
+   "ratios": {
+    "on its ground": 13.29
+   },
+   "threshold": 4.5,
+   "passes": true,
+   "need": "N-11",
+   "description": "Label of categorical group 4 on Charcoal: set beside the hatch, or on a halo of the ground (oa.chart.halo), never on the hatch itself. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.color.ghost.onCharcoal",
+   "css": "--oa-chart-color-ghost-on-charcoal",
+   "tier": "semantic",
+   "type": "color",
+   "value": "{oa.color.tint.stoneC40}",
+   "resolves_to": "#3D4046",
+   "surface": "charcoal",
+   "kind": "decorative",
+   "job": "Ghost: the other groups drawn faint behind each panel of small multiples on Charcoal, 1 px. They repeat lines drawn in full in their own panels, so they carry no new information and need no 3 to 1 ratio.",
+   "ratios": {
+    "on Charcoal": 1.8
+   },
+   "threshold": null,
+   "need": "N-13",
+   "width": "{oa.chart.line.hairline}",
+   "description": "Ghost: the other groups drawn faint behind each panel of small multiples on Charcoal, 1 px. They repeat lines drawn in full in their own panels, so they carry no new information and need no 3 to 1 ratio. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.grade.documented",
+   "css": "--oa-chart-grade-documented",
+   "tier": "semantic",
+   "type": "strokeStyle",
+   "value": "solid",
+   "per_line_width": false,
+   "v7_value": "documented",
+   "word": "Documented",
+   "gloss": "on the public record",
+   "texture": "solid",
+   "need": "N-12",
+   "at_widths": {
+    "2 px": "none",
+    "3 px": "none",
+    "6 px": "none"
+   },
+   "job": "Documented (on the public record): solid.",
+   "description": "Evidence grade Documented, on the public record: drawn solid. Proposed until board 1.",
+   "record_square": "{oa.chart.grade.recordSquare}"
+  },
+  {
+   "path": "oa.chart.grade.wellSupported",
+   "css": "--oa-chart-grade-well-supported",
+   "tier": "semantic",
+   "type": "strokeStyle",
+   "value": "solid",
+   "per_line_width": false,
+   "v7_value": "well-supported",
+   "word": "Well supported",
+   "gloss": "strong research evidence",
+   "texture": "solid",
+   "need": "N-12",
+   "at_widths": {
+    "2 px": "none",
+    "3 px": "none",
+    "6 px": "none"
+   },
+   "job": "Well supported (strong research evidence): solid.",
+   "description": "Evidence grade Well supported, strong research evidence: drawn solid. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.grade.plausible",
+   "css": "--oa-chart-grade-plausible",
+   "tier": "semantic",
+   "type": "strokeStyle",
+   "value": {
+    "dashArray": [
+     "4px",
+     "2px"
+    ],
+    "lineCap": "butt"
+   },
+   "per_line_width": true,
+   "v7_value": "plausible",
+   "word": "Plausible",
+   "gloss": "some evidence",
+   "texture": "dashed",
+   "need": "N-12",
+   "at_widths": {
+    "2 px": "8 4",
+    "3 px": "12 6",
+    "6 px": "24 12"
+   },
+   "job": "Plausible (some evidence): dashed, 4 2 line widths, butt caps.",
+   "description": "Evidence grade Plausible, some evidence: drawn dashed; the dash array is per 1 px of line width, so multiply by the width (2, 3 or 6 px) and stretch it to start and end on ink. Proposed until board 1.",
+   "v7_renderer_dasharray": "9 4"
+  },
+  {
+   "path": "oa.chart.grade.contested",
+   "css": "--oa-chart-grade-contested",
+   "tier": "semantic",
+   "type": "strokeStyle",
+   "value": {
+    "dashArray": [
+     "4px",
+     "1.5px",
+     "1px",
+     "1.5px"
+    ],
+    "lineCap": "butt"
+   },
+   "per_line_width": true,
+   "v7_value": "plausible_contested",
+   "word": "Contested",
+   "gloss": "evidence disputed",
+   "texture": "dash-dot",
+   "need": "N-12",
+   "at_widths": {
+    "2 px": "8 3 2 3",
+    "3 px": "12 4.5 3 4.5",
+    "6 px": "24 9 6 9"
+   },
+   "job": "Contested (evidence disputed): dash-dot, 4 1.5 1 1.5 line widths, butt caps.",
+   "description": "Evidence grade Contested, evidence disputed: drawn dash-dot; the dash array is per 1 px of line width, so multiply by the width (2, 3 or 6 px) and stretch it to start and end on ink. Proposed until board 1.",
+   "v7_renderer_dasharray": "9 3 2 3"
+  },
+  {
+   "path": "oa.chart.grade.hypothesis",
+   "css": "--oa-chart-grade-hypothesis",
+   "tier": "semantic",
+   "type": "strokeStyle",
+   "value": {
+    "dashArray": [
+     "0px",
+     "2.5px"
+    ],
+    "lineCap": "round"
+   },
+   "per_line_width": true,
+   "v7_value": "hypothesis",
+   "word": "Hypothesis",
+   "gloss": "untested",
+   "texture": "dotted",
+   "need": "N-12",
+   "at_widths": {
+    "2 px": "0 5",
+    "3 px": "0 7.5",
+    "6 px": "0 15"
+   },
+   "job": "Hypothesis (untested): dotted, 0 2.5 line widths, round caps.",
+   "description": "Evidence grade Hypothesis, untested: drawn dotted; the dash array is per 1 px of line width, so multiply by the width (2, 3 or 6 px) and stretch it to start and end on ink. Proposed until board 1.",
+   "v7_renderer_dasharray": "2 4"
+  },
+  {
+   "path": "oa.chart.grade.conceptual.rail",
+   "css": "--oa-chart-grade-conceptual-rail",
+   "tier": "semantic",
+   "type": "dimension",
+   "value": "1px",
+   "job": "Each of the two rails of a hollow line, on 2 and 3 px lines.",
+   "need": "N-12",
+   "description": "Rail of the hollow line for a conceptual step (Gate 1, M1), on 2 and 3 px lines. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.grade.conceptual.railSelected",
+   "css": "--oa-chart-grade-conceptual-rail-selected",
+   "tier": "semantic",
+   "type": "dimension",
+   "value": "2px",
+   "job": "Each rail of a hollow line on the 6 px lit route.",
+   "need": "N-12",
+   "description": "Rail of the hollow line on the 6 px lit route. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.grade.conceptual.gap",
+   "css": "--oa-chart-grade-conceptual-gap",
+   "tier": "semantic",
+   "type": "number",
+   "value": 1,
+   "unit": "line widths",
+   "job": "The ground between the two rails: one line width.",
+   "need": "N-12",
+   "description": "Gap between the rails of a hollow line, in line widths. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.grade.recordSquare",
+   "css": "--oa-chart-grade-record-square",
+   "tier": "semantic",
+   "type": "dimension",
+   "value": "7px",
+   "need": "N-12",
+   "job": "The filled square set before the word Documented in labels and keys (Gate 1, M1).",
+   "description": "Record square before the word Documented, 7 px, in the label's ink. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.grade.minRun",
+   "css": "--oa-chart-grade-min-run",
+   "tier": "semantic",
+   "type": "number",
+   "value": 28,
+   "unit": "line widths",
+   "need": "N-12",
+   "job": "The shortest run that may carry a texture: 28 line widths, 56 px on a 2 px line. A shorter step prints its grade in words beside it.",
+   "description": "Shortest textured run, in line widths. Proposed until board 1."
+  }
+ ],
+ "description_changes": [
+  {
+   "path": "oa.chart.color.diverging",
+   "field": "$description",
+   "now": "The diverging scale, Prussian through the page color to Verdigris. Neither end keeps its order in grayscale, so a boxed arrow or a printed sign carries direction. Newsprint only until a Charcoal ramp is measured.",
+   "proposed": "The diverging scale, Prussian through a midpoint tinted toward the ground to Verdigris, on Newsprint and Charcoal. Neither end keeps its order in grayscale, so a boxed arrow or a printed sign carries direction."
+  },
+  {
+   "path": "oa.chart.hatch.pitch",
+   "field": "$description",
+   "now": "Spacing of the hatch for contested evidence.",
+   "proposed": "Spacing of the hatch, the pattern a key names: contested evidence in a grade chart, or the Stone group of the categorical set."
+  },
+  {
+   "path": "oa.chart.hatch.weight",
+   "field": "$description",
+   "now": "Stroke of the hatch.",
+   "proposed": "Stroke of the hatch, in the ink of the mark it fills."
+  },
+  {
+   "path": "oa.chart.color.point",
+   "field": "$description",
+   "now": "The one point a title names, in working red at the third rank. Only when no error or ask holds the view's red.",
+   "proposed": "The one point a title names, in working red at the third rank. Only when no error or ask holds the view's red. When an error or an ask holds the view's red, the point yields to the subject ink and keeps its label and its place (Rule 11.16)."
+  },
+  {
+   "path": "oa.chart.color.context",
+   "field": "$description",
+   "now": "Context: every other series, 2 px, so the subject reads first.",
+   "proposed": "Context: every other series, 2 px, so the subject reads first. Past four groups, every group but the one the title names takes this ink, each with its label (DR-234)."
+  },
+  {
+   "path": "oa.color.tint.stoneC72",
+   "field": "job and surfaces",
+   "now": "Band on Charcoal, a stretch of time a note names",
+   "proposed": "Band on Charcoal, and the midpoint of the diverging scale on Charcoal",
+   "surfaces_now": [
+    "charcoal"
+   ],
+   "surfaces_proposed": [
+    "charcoal"
+   ],
+   "contrast_proposed": {
+    "charcoal": 1.25
+   }
+  },
+  {
+   "path": "oa.color.tint.verdigrisC20",
+   "field": "job and surfaces",
+   "now": "Third sequential Verdigris step on Charcoal",
+   "proposed": "Third sequential Verdigris step on Charcoal, and the near Verdigris step of the diverging scale on Charcoal",
+   "surfaces_now": [
+    "charcoal"
+   ],
+   "surfaces_proposed": [
+    "charcoal"
+   ],
+   "contrast_proposed": {
+    "charcoal": 2.89
+   }
+  },
+  {
+   "path": "oa.color.tint.verdigrisN25",
+   "field": "job and surfaces",
+   "now": "Fourth sequential Verdigris step on Charcoal",
+   "proposed": "Fourth sequential Verdigris step on Charcoal, and the strong Verdigris end of the diverging scale on Charcoal",
+   "surfaces_now": [
+    "charcoal"
+   ],
+   "surfaces_proposed": [
+    "charcoal"
+   ],
+   "contrast_proposed": {
+    "charcoal": 5.55
+   }
+  },
+  {
+   "path": "oa.color.tint.prussianN62",
+   "field": "job and surfaces",
+   "now": "Light Prussian step of the diverging scale on Newsprint",
+   "proposed": "Light Prussian step of the diverging scale on Newsprint, and the Prussian group of the categorical set on Charcoal",
+   "surfaces_now": [
+    "newsprint"
+   ],
+   "surfaces_proposed": [
+    "charcoal",
+    "newsprint"
+   ],
+   "contrast_proposed": {
+    "charcoal": 6.18,
+    "newsprint": 2.15
+   }
+  },
+  {
+   "path": "oa.color.tint.stoneN55",
+   "field": "job and surfaces",
+   "now": "Light Stone fill for a category under the subject, with its value printed",
+   "proposed": "Light Stone fill for a category under the subject, and the ghost lines of the other groups in small multiples on Newsprint",
+   "surfaces_now": [
+    "newsprint"
+   ],
+   "surfaces_proposed": [
+    "newsprint"
+   ],
+   "contrast_proposed": {
+    "newsprint": 1.81
+   }
+  },
+  {
+   "path": "oa.color.tint.stoneC40",
+   "field": "job and surfaces",
+   "now": "Second gray step of a phone tile map on Charcoal",
+   "proposed": "Second gray step of a phone tile map on Charcoal, and the ghost lines of the other groups in small multiples on Charcoal",
+   "surfaces_now": [
+    "charcoal"
+   ],
+   "surfaces_proposed": [
+    "charcoal"
+   ],
+   "contrast_proposed": {
+    "charcoal": 1.8
+   }
+  }
+ ],
+ "kit_roles": {
+  "note": "The engineer's kit roles (Contracts, C4) that map to these tokens in kit.css",
+  "div-1 to div-5": "oa.chart.color.diverging.fill.stepN, now on both grounds",
+  "cat-1 to cat-4": "oa.chart.color.categorical.fill.groupN; cat-4 also takes the hatch",
+  "ghost": "oa.chart.color.ghost (a new role the kit needs for small multiples)",
+  "grade-documented to grade-conceptual": "oa.chart.grade.*, for chapter 13 and 15 diagrams and any chart that draws a connection"
+ },
+ "rules_with_the_palettes": [
+  "Sequential: five Verdigris steps per ground, light to strong on Newsprint and dark to light on Charcoal, so the most always reads strongest. Print the value on or beside every step 1 to 3 fill.",
+  "Diverging: pair B only, Prussian for one side and Verdigris for the other, with a boxed arrow or a printed sign in every cell. Say in the key which side is which. Never red with blue.",
+  "Categorical: at most four groups, in the order Charcoal (Newsprint on Charcoal), Prussian, Verdigris, Stone. The Stone group always carries the hatch; every group carries a direct label and, on a line, its end marker. Never for parties.",
+  "Past four groups: small multiples with the other groups as ghosts, or one group in ink and every other in the context gray, every group labeled (DR-234).",
+  "Magnitude: gray Stone steps with no direction; the figure prints in every tile.",
+  "Grade line code: the line's width sets its pattern; no coded line drops under 2 px; a run under 28 widths prints its grade in words.",
+  "Red: one working red per view (Rule 05.3). A chart's red point yields to the subject ink when an error or an ask is in the view, and keeps its label and place."
+ ]
+}

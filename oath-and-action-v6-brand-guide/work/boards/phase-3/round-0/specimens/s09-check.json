@@ -1,0 +1,37 @@
+{
+ "id": "S09",
+ "form": "timeline",
+ "spec": "work/build/chart-kit/specs/s09.json",
+ "rows": 24,
+ "drawings": [
+  {
+   "ground": "newsprint",
+   "page": 1440,
+   "width": 1024,
+   "height": 982,
+   "svg_bytes": 13869
+  },
+  {
+   "ground": "newsprint",
+   "page": 390,
+   "width": 358,
+   "height": 1136,
+   "svg_bytes": 11243
+  },
+  {
+   "ground": "charcoal",
+   "page": 1440,
+   "width": 1024,
+   "height": 982,
+   "svg_bytes": 13869
+  },
+  {
+   "ground": "charcoal",
+   "page": 390,
+   "width": 358,
+   "height": 1136,
+   "svg_bytes": 11243
+  }
+ ],
+ "faults": []
+}

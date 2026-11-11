@@ -1,0 +1,37 @@
+{
+ "id": "S13",
+ "form": "area-sparklines",
+ "spec": "work/build/chart-kit/specs/s13.json",
+ "rows": 1026,
+ "drawings": [
+  {
+   "ground": "newsprint",
+   "page": 1440,
+   "width": 1024,
+   "height": 638,
+   "svg_bytes": 180118
+  },
+  {
+   "ground": "newsprint",
+   "page": 390,
+   "width": 358,
+   "height": 1246,
+   "svg_bytes": 181513
+  },
+  {
+   "ground": "charcoal",
+   "page": 1440,
+   "width": 1024,
+   "height": 638,
+   "svg_bytes": 180118
+  },
+  {
+   "ground": "charcoal",
+   "page": 390,
+   "width": 358,
+   "height": 1246,
+   "svg_bytes": 181513
+  }
+ ],
+ "faults": []
+}

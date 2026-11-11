@@ -1,0 +1,37 @@
+{
+ "id": "S03",
+ "form": "ranked-bar",
+ "spec": "work/build/chart-kit/specs/s03.json",
+ "rows": 7,
+ "drawings": [
+  {
+   "ground": "newsprint",
+   "page": 1440,
+   "width": 720,
+   "height": 334,
+   "svg_bytes": 8879
+  },
+  {
+   "ground": "newsprint",
+   "page": 390,
+   "width": 358,
+   "height": 485,
+   "svg_bytes": 8679
+  },
+  {
+   "ground": "charcoal",
+   "page": 1440,
+   "width": 720,
+   "height": 334,
+   "svg_bytes": 8879
+  },
+  {
+   "ground": "charcoal",
+   "page": 390,
+   "width": 358,
+   "height": 485,
+   "svg_bytes": 8679
+  }
+ ],
+ "faults": []
+}

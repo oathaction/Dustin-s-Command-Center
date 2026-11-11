@@ -1,0 +1,3114 @@
+{
+ "title": "Palette proofs: every measured value",
+ "date": "2026-11-11",
+ "tokens_release": "6.0.0-gate2.9",
+ "proposal": "work/handoffs/phase-3/20261111_Palette-Proposal.json",
+ "method": {
+  "contrast": "WCAG 2.2 ratio from relative luminance; pass or fail on the unrounded ratio; printed to two decimals",
+  "lightness": "OKLab L (Ottosson), the grayscale proof the Phase 2 palette lab used",
+  "grayscale_swatch": "The neutral gray with the same relative luminance, so a gray swatch keeps the color's contrast",
+  "grayscale_capture": "Chromium's CSS filter grayscale(1)",
+  "simulation": "Machado, Oliveira and Fernandes (2009), severity 1.0, applied in linear sRGB; captures apply the same matrices through SVG feColorMatrix, which works in linear RGB",
+  "distance": "OKLab Euclidean distance (delta E OK)",
+  "black_only": "Black ink coverage on White paper that gives the same luminance, dot gain ignored",
+  "thresholds": {
+   "text": 4.5,
+   "graphic": 3.0,
+   "lightness_margin_categorical": 0.1,
+   "note": "Fills inside a scale may sit under 3 to 1 when every value prints on or beside them (Rule 05.5, Gate 2 contrast table)"
+  }
+ },
+ "checks": [
+  {
+   "check": "sequential on newsprint: every label 4.5 to 1 or more on its fill",
+   "passes": true,
+   "detail": "lowest 5.20"
+  },
+  {
+   "check": "sequential on newsprint: grayscale order holds",
+   "passes": true,
+   "detail": "smallest lightness gap 0.099"
+  },
+  {
+   "check": "sequential on newsprint: neighbors stay 0.05 or more apart (OKLab) under every simulation",
+   "passes": true,
+   "detail": "closest 0.092"
+  },
+  {
+   "check": "sequential on charcoal: every label 4.5 to 1 or more on its fill",
+   "passes": true,
+   "detail": "lowest 4.61"
+  },
+  {
+   "check": "sequential on charcoal: grayscale order holds",
+   "passes": true,
+   "detail": "smallest lightness gap 0.089"
+  },
+  {
+   "check": "sequential on charcoal: neighbors stay 0.05 or more apart (OKLab) under every simulation",
+   "passes": true,
+   "detail": "closest 0.091"
+  },
+  {
+   "check": "sequential on white: every label 4.5 to 1 or more on its fill",
+   "passes": true,
+   "detail": "lowest 5.20"
+  },
+  {
+   "check": "sequential on white: grayscale order holds",
+   "passes": true,
+   "detail": "smallest lightness gap 0.099"
+  },
+  {
+   "check": "sequential on white: neighbors stay 0.05 or more apart (OKLab) under every simulation",
+   "passes": true,
+   "detail": "closest 0.092"
+  },
+  {
+   "check": "diverging on newsprint: every label 4.5 to 1 or more on its fill",
+   "passes": true,
+   "detail": "lowest 6.18"
+  },
+  {
+   "check": "diverging on newsprint: grayscale order holds",
+   "passes": true,
+   "detail": "smallest lightness gap 0.114"
+  },
+  {
+   "check": "diverging on newsprint: neighbors stay 0.05 or more apart (OKLab) under every simulation",
+   "passes": true,
+   "detail": "closest 0.106"
+  },
+  {
+   "check": "diverging on charcoal: every label 4.5 to 1 or more on its fill",
+   "passes": true,
+   "detail": "lowest 4.61"
+  },
+  {
+   "check": "diverging on charcoal: grayscale order holds",
+   "passes": true,
+   "detail": "smallest lightness gap 0.155"
+  },
+  {
+   "check": "diverging on charcoal: neighbors stay 0.05 or more apart (OKLab) under every simulation",
+   "passes": true,
+   "detail": "closest 0.153"
+  },
+  {
+   "check": "diverging on white: every label 4.5 to 1 or more on its fill",
+   "passes": true,
+   "detail": "lowest 6.18"
+  },
+  {
+   "check": "diverging on white: grayscale order holds",
+   "passes": true,
+   "detail": "smallest lightness gap 0.114"
+  },
+  {
+   "check": "diverging on white: neighbors stay 0.05 or more apart (OKLab) under every simulation",
+   "passes": true,
+   "detail": "closest 0.106"
+  },
+  {
+   "check": "categorical on newsprint: every label 4.5 to 1 or more on its fill",
+   "passes": true,
+   "detail": "lowest 4.74"
+  },
+  {
+   "check": "categorical on newsprint: every ink 3 to 1 or more on the ground",
+   "passes": true,
+   "detail": "lowest 3.37"
+  },
+  {
+   "check": "categorical on newsprint: only pairs with the hatched Stone group sit under 0.10 lightness",
+   "passes": true,
+   "detail": "1 pairs under 0.10, each with Group 4"
+  },
+  {
+   "check": "categorical on charcoal: every label 4.5 to 1 or more on its fill",
+   "passes": true,
+   "detail": "lowest 4.74"
+  },
+  {
+   "check": "categorical on charcoal: every ink 3 to 1 or more on the ground",
+   "passes": true,
+   "detail": "lowest 3.10"
+  },
+  {
+   "check": "categorical on charcoal: only pairs with the hatched Stone group sit under 0.10 lightness",
+   "passes": true,
+   "detail": "1 pairs under 0.10, each with Group 4"
+  },
+  {
+   "check": "categorical on white: every label 4.5 to 1 or more on its fill",
+   "passes": true,
+   "detail": "lowest 4.74"
+  },
+  {
+   "check": "categorical on white: every ink 3 to 1 or more on the ground",
+   "passes": true,
+   "detail": "lowest 4.74"
+  },
+  {
+   "check": "categorical on white: only pairs with the hatched Stone group sit under 0.10 lightness",
+   "passes": true,
+   "detail": "1 pairs under 0.10, each with Group 4"
+  },
+  {
+   "check": "magnitude on newsprint: every label 4.5 to 1 or more on its fill",
+   "passes": true,
+   "detail": "lowest 4.92"
+  },
+  {
+   "check": "magnitude on newsprint: grayscale order holds",
+   "passes": true,
+   "detail": "smallest lightness gap 0.127"
+  },
+  {
+   "check": "magnitude on newsprint: neighbors stay 0.05 or more apart (OKLab) under every simulation",
+   "passes": true,
+   "detail": "closest 0.126"
+  },
+  {
+   "check": "magnitude on charcoal: every label 4.5 to 1 or more on its fill",
+   "passes": true,
+   "detail": "lowest 7.33"
+  },
+  {
+   "check": "magnitude on charcoal: grayscale order holds",
+   "passes": true,
+   "detail": "smallest lightness gap 0.111"
+  },
+  {
+   "check": "magnitude on charcoal: neighbors stay 0.05 or more apart (OKLab) under every simulation",
+   "passes": true,
+   "detail": "closest 0.109"
+  },
+  {
+   "check": "magnitude on white: every label 4.5 to 1 or more on its fill",
+   "passes": true,
+   "detail": "lowest 4.92"
+  },
+  {
+   "check": "magnitude on white: grayscale order holds",
+   "passes": true,
+   "detail": "smallest lightness gap 0.127"
+  },
+  {
+   "check": "magnitude on white: neighbors stay 0.05 or more apart (OKLab) under every simulation",
+   "passes": true,
+   "detail": "closest 0.126"
+  },
+  {
+   "check": "diverging on Charcoal: ends and near steps match in lightness within 0.01",
+   "passes": true,
+   "detail": "ends 0.633 and 0.634; near steps 0.478 and 0.476"
+  },
+  {
+   "check": "every new color is one palette color mixed in OKLab toward Newsprint or Charcoal",
+   "passes": true,
+   "detail": "prussianN56 #828A9D, prussianN29 #505C7D"
+  },
+  {
+   "check": "grade line code at 2 px: a 28-width run holds at least three dash-dot periods",
+   "passes": true,
+   "detail": "run 56 px, period 16.0 px"
+  },
+  {
+   "check": "grade line code at 3 px: a 28-width run holds at least three dash-dot periods",
+   "passes": true,
+   "detail": "run 84 px, period 24.0 px"
+  },
+  {
+   "check": "grade line code at 6 px: a 28-width run holds at least three dash-dot periods",
+   "passes": true,
+   "detail": "run 168 px, period 48.0 px"
+  }
+ ],
+ "palettes": {
+  "sequential": {
+   "newsprint": {
+    "palette": "sequential",
+    "ground": "newsprint",
+    "ground_hex": "#DCD9D2",
+    "tokens_from": "newsprint",
+    "rows": [
+     {
+      "name": "Step 1",
+      "fill_token": "oa.chart.color.sequential.fill.step1.onNewsprint",
+      "fill_css": "--oa-chart-color-sequential-fill-step1-on-newsprint",
+      "fill_hex": "#C1C8C0",
+      "fill_status": "in tokens",
+      "fill_on_ground": 1.21,
+      "label_token": "oa.chart.color.sequential.label.step1.onNewsprint",
+      "label_css": "--oa-chart-color-sequential-label-step1-on-newsprint",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 10.96,
+      "label_ground": "the fill",
+      "oklab_L": 0.825,
+      "luminance_gray": "#C6C6C6",
+      "black_screen_pct": 44,
+      "sim_protanopia": "#C9C6C0",
+      "sim_deuteranopia": "#C7C6C0",
+      "sim_tritanopia": "#C1C7C6"
+     },
+     {
+      "name": "Step 2",
+      "fill_token": "oa.chart.color.sequential.fill.step2.onNewsprint",
+      "fill_css": "--oa-chart-color-sequential-fill-step2-on-newsprint",
+      "fill_hex": "#97ACA4",
+      "fill_status": "in tokens",
+      "fill_on_ground": 1.7,
+      "label_token": "oa.chart.color.sequential.label.step2.onNewsprint",
+      "label_css": "--oa-chart-color-sequential-label-step2-on-newsprint",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 7.81,
+      "label_ground": "the fill",
+      "oklab_L": 0.726,
+      "luminance_gray": "#A7A7A7",
+      "black_screen_pct": 61,
+      "sim_protanopia": "#ABA9A4",
+      "sim_deuteranopia": "#A7A6A4",
+      "sim_tritanopia": "#93ACAA"
+     },
+     {
+      "name": "Step 3",
+      "fill_token": "oa.chart.color.sequential.fill.step3.onNewsprint",
+      "fill_css": "--oa-chart-color-sequential-fill-step3-on-newsprint",
+      "fill_hex": "#6D9189",
+      "fill_status": "in tokens",
+      "fill_on_ground": 2.46,
+      "label_token": "oa.chart.color.sequential.label.step3.onNewsprint",
+      "label_css": "--oa-chart-color-sequential-label-step3-on-newsprint",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 5.41,
+      "label_ground": "the fill",
+      "oklab_L": 0.627,
+      "luminance_gray": "#8A8A8A",
+      "black_screen_pct": 75,
+      "sim_protanopia": "#8E8D89",
+      "sim_deuteranopia": "#87888A",
+      "sim_tritanopia": "#63928E"
+     },
+     {
+      "name": "Step 4",
+      "fill_token": "oa.chart.color.sequential.fill.step4.onNewsprint",
+      "fill_css": "--oa-chart-color-sequential-fill-step4-on-newsprint",
+      "fill_hex": "#47756E",
+      "fill_status": "in tokens",
+      "fill_on_ground": 3.69,
+      "label_token": "oa.chart.color.sequential.label.step4.onNewsprint",
+      "label_css": "--oa-chart-color-sequential-label-step4-on-newsprint",
+      "label_hex": "#FFFFFF",
+      "label_status": "in tokens",
+      "label_on_fill": 5.2,
+      "label_ground": "the fill",
+      "oklab_L": 0.527,
+      "luminance_gray": "#6D6D6D",
+      "black_screen_pct": 85,
+      "sim_protanopia": "#71706E",
+      "sim_deuteranopia": "#696A6F",
+      "sim_tritanopia": "#377773"
+     },
+     {
+      "name": "Step 5",
+      "fill_token": "oa.chart.color.sequential.fill.step5.onNewsprint",
+      "fill_css": "--oa-chart-color-sequential-fill-step5-on-newsprint",
+      "fill_hex": "#36544F",
+      "fill_status": "in tokens",
+      "fill_on_ground": 5.87,
+      "label_token": "oa.chart.color.sequential.label.step5.onNewsprint",
+      "label_css": "--oa-chart-color-sequential-label-step5-on-newsprint",
+      "label_hex": "#FFFFFF",
+      "label_status": "in tokens",
+      "label_on_fill": 8.27,
+      "label_ground": "the fill",
+      "oklab_L": 0.421,
+      "luminance_gray": "#4E4E4E",
+      "black_screen_pct": 92,
+      "sim_protanopia": "#51514F",
+      "sim_deuteranopia": "#4C4D4F",
+      "sim_tritanopia": "#2C5552"
+     }
+    ],
+    "pairs_measured": "neighbors",
+    "closest": {
+     "normal": {
+      "delta_e_ok": 0.1,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     "protanopia": {
+      "delta_e_ok": 0.092,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     "deuteranopia": {
+      "delta_e_ok": 0.099,
+      "between": [
+       "Step 2",
+       "Step 3"
+      ]
+     },
+     "tritanopia": {
+      "delta_e_ok": 0.1,
+      "between": [
+       "Step 3",
+       "Step 4"
+      ]
+     }
+    },
+    "lightness_gaps": [
+     {
+      "delta_L": 0.099,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     {
+      "delta_L": 0.099,
+      "between": [
+       "Step 2",
+       "Step 3"
+      ]
+     },
+     {
+      "delta_L": 0.1,
+      "between": [
+       "Step 3",
+       "Step 4"
+      ]
+     },
+     {
+      "delta_L": 0.106,
+      "between": [
+       "Step 4",
+       "Step 5"
+      ]
+     }
+    ],
+    "smallest_lightness_gap": 0.099,
+    "grayscale_order_holds": true
+   },
+   "charcoal": {
+    "palette": "sequential",
+    "ground": "charcoal",
+    "ground_hex": "#121212",
+    "tokens_from": "charcoal",
+    "rows": [
+     {
+      "name": "Step 1",
+      "fill_token": "oa.chart.color.sequential.fill.step1.onCharcoal",
+      "fill_css": "--oa-chart-color-sequential-fill-step1-on-charcoal",
+      "fill_hex": "#202A28",
+      "fill_status": "in tokens",
+      "fill_on_ground": 1.27,
+      "label_token": "oa.chart.color.sequential.label.step1.onCharcoal",
+      "label_css": "--oa-chart-color-sequential-label-step1-on-charcoal",
+      "label_hex": "#DCD9D2",
+      "label_status": "in tokens",
+      "label_on_fill": 10.47,
+      "label_ground": "the fill",
+      "oklab_L": 0.275,
+      "luminance_gray": "#282828",
+      "black_screen_pct": 98,
+      "sim_protanopia": "#292928",
+      "sim_deuteranopia": "#272728",
+      "sim_tritanopia": "#1D2A29"
+     },
+     {
+      "name": "Step 2",
+      "fill_token": "oa.chart.color.sequential.fill.step2.onCharcoal",
+      "fill_css": "--oa-chart-color-sequential-fill-step2-on-charcoal",
+      "fill_hex": "#2E4340",
+      "fill_status": "in tokens",
+      "fill_on_ground": 1.78,
+      "label_token": "oa.chart.color.sequential.label.step2.onCharcoal",
+      "label_css": "--oa-chart-color-sequential-label-step2-on-charcoal",
+      "label_hex": "#DCD9D2",
+      "label_status": "in tokens",
+      "label_on_fill": 7.48,
+      "label_ground": "the fill",
+      "oklab_L": 0.364,
+      "luminance_gray": "#3F3F3F",
+      "black_screen_pct": 95,
+      "sim_protanopia": "#414140",
+      "sim_deuteranopia": "#3D3E40",
+      "sim_tritanopia": "#284442"
+     },
+     {
+      "name": "Step 3",
+      "fill_token": "oa.chart.color.sequential.fill.step3.onCharcoal",
+      "fill_css": "--oa-chart-color-sequential-fill-step3-on-charcoal",
+      "fill_hex": "#3F655E",
+      "fill_status": "in tokens",
+      "fill_on_ground": 2.89,
+      "label_token": "oa.chart.color.sequential.label.step3.onCharcoal",
+      "label_css": "--oa-chart-color-sequential-label-step3-on-charcoal",
+      "label_hex": "#DCD9D2",
+      "label_status": "in tokens",
+      "label_on_fill": 4.61,
+      "label_ground": "the fill",
+      "oklab_L": 0.476,
+      "luminance_gray": "#5E5E5E",
+      "black_screen_pct": 89,
+      "sim_protanopia": "#62615E",
+      "sim_deuteranopia": "#5B5C5F",
+      "sim_tritanopia": "#326663"
+     },
+     {
+      "name": "Step 4",
+      "fill_token": "oa.chart.color.sequential.fill.step4.onCharcoal",
+      "fill_css": "--oa-chart-color-sequential-fill-step4-on-charcoal",
+      "fill_hex": "#6F938B",
+      "fill_status": "in tokens",
+      "fill_on_ground": 5.55,
+      "label_token": "oa.chart.color.sequential.label.step4.onCharcoal",
+      "label_css": "--oa-chart-color-sequential-label-step4-on-charcoal",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 5.55,
+      "label_ground": "the fill",
+      "oklab_L": 0.634,
+      "luminance_gray": "#8C8C8C",
+      "black_screen_pct": 74,
+      "sim_protanopia": "#908F8B",
+      "sim_deuteranopia": "#898A8C",
+      "sim_tritanopia": "#659490"
+     },
+     {
+      "name": "Step 5",
+      "fill_token": "oa.chart.color.sequential.fill.step5.onCharcoal",
+      "fill_css": "--oa-chart-color-sequential-fill-step5-on-charcoal",
+      "fill_hex": "#9AAEA6",
+      "fill_status": "in tokens",
+      "fill_on_ground": 8.01,
+      "label_token": "oa.chart.color.sequential.label.step5.onCharcoal",
+      "label_css": "--oa-chart-color-sequential-label-step5-on-charcoal",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 8.01,
+      "label_ground": "the fill",
+      "oklab_L": 0.733,
+      "luminance_gray": "#A9A9A9",
+      "black_screen_pct": 60,
+      "sim_protanopia": "#ADABA6",
+      "sim_deuteranopia": "#A9A8A6",
+      "sim_tritanopia": "#96AEAC"
+     }
+    ],
+    "pairs_measured": "neighbors",
+    "closest": {
+     "normal": {
+      "delta_e_ok": 0.09,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     "protanopia": {
+      "delta_e_ok": 0.092,
+      "between": [
+       "Step 4",
+       "Step 5"
+      ]
+     },
+     "deuteranopia": {
+      "delta_e_ok": 0.091,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     "tritanopia": {
+      "delta_e_ok": 0.092,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     }
+    },
+    "lightness_gaps": [
+     {
+      "delta_L": 0.089,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     {
+      "delta_L": 0.112,
+      "between": [
+       "Step 2",
+       "Step 3"
+      ]
+     },
+     {
+      "delta_L": 0.158,
+      "between": [
+       "Step 3",
+       "Step 4"
+      ]
+     },
+     {
+      "delta_L": 0.099,
+      "between": [
+       "Step 4",
+       "Step 5"
+      ]
+     }
+    ],
+    "smallest_lightness_gap": 0.089,
+    "grayscale_order_holds": true
+   },
+   "white": {
+    "palette": "sequential",
+    "ground": "white",
+    "ground_hex": "#FFFFFF",
+    "tokens_from": "newsprint",
+    "rows": [
+     {
+      "name": "Step 1",
+      "fill_token": "oa.chart.color.sequential.fill.step1.onNewsprint",
+      "fill_css": "--oa-chart-color-sequential-fill-step1-on-newsprint",
+      "fill_hex": "#C1C8C0",
+      "fill_status": "in tokens",
+      "fill_on_ground": 1.71,
+      "label_token": "oa.chart.color.sequential.label.step1.onNewsprint",
+      "label_css": "--oa-chart-color-sequential-label-step1-on-newsprint",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 10.96,
+      "label_ground": "the fill",
+      "oklab_L": 0.825,
+      "luminance_gray": "#C6C6C6",
+      "black_screen_pct": 44,
+      "sim_protanopia": "#C9C6C0",
+      "sim_deuteranopia": "#C7C6C0",
+      "sim_tritanopia": "#C1C7C6"
+     },
+     {
+      "name": "Step 2",
+      "fill_token": "oa.chart.color.sequential.fill.step2.onNewsprint",
+      "fill_css": "--oa-chart-color-sequential-fill-step2-on-newsprint",
+      "fill_hex": "#97ACA4",
+      "fill_status": "in tokens",
+      "fill_on_ground": 2.4,
+      "label_token": "oa.chart.color.sequential.label.step2.onNewsprint",
+      "label_css": "--oa-chart-color-sequential-label-step2-on-newsprint",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 7.81,
+      "label_ground": "the fill",
+      "oklab_L": 0.726,
+      "luminance_gray": "#A7A7A7",
+      "black_screen_pct": 61,
+      "sim_protanopia": "#ABA9A4",
+      "sim_deuteranopia": "#A7A6A4",
+      "sim_tritanopia": "#93ACAA"
+     },
+     {
+      "name": "Step 3",
+      "fill_token": "oa.chart.color.sequential.fill.step3.onNewsprint",
+      "fill_css": "--oa-chart-color-sequential-fill-step3-on-newsprint",
+      "fill_hex": "#6D9189",
+      "fill_status": "in tokens",
+      "fill_on_ground": 3.46,
+      "label_token": "oa.chart.color.sequential.label.step3.onNewsprint",
+      "label_css": "--oa-chart-color-sequential-label-step3-on-newsprint",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 5.41,
+      "label_ground": "the fill",
+      "oklab_L": 0.627,
+      "luminance_gray": "#8A8A8A",
+      "black_screen_pct": 75,
+      "sim_protanopia": "#8E8D89",
+      "sim_deuteranopia": "#87888A",
+      "sim_tritanopia": "#63928E"
+     },
+     {
+      "name": "Step 4",
+      "fill_token": "oa.chart.color.sequential.fill.step4.onNewsprint",
+      "fill_css": "--oa-chart-color-sequential-fill-step4-on-newsprint",
+      "fill_hex": "#47756E",
+      "fill_status": "in tokens",
+      "fill_on_ground": 5.2,
+      "label_token": "oa.chart.color.sequential.label.step4.onNewsprint",
+      "label_css": "--oa-chart-color-sequential-label-step4-on-newsprint",
+      "label_hex": "#FFFFFF",
+      "label_status": "in tokens",
+      "label_on_fill": 5.2,
+      "label_ground": "the fill",
+      "oklab_L": 0.527,
+      "luminance_gray": "#6D6D6D",
+      "black_screen_pct": 85,
+      "sim_protanopia": "#71706E",
+      "sim_deuteranopia": "#696A6F",
+      "sim_tritanopia": "#377773"
+     },
+     {
+      "name": "Step 5",
+      "fill_token": "oa.chart.color.sequential.fill.step5.onNewsprint",
+      "fill_css": "--oa-chart-color-sequential-fill-step5-on-newsprint",
+      "fill_hex": "#36544F",
+      "fill_status": "in tokens",
+      "fill_on_ground": 8.27,
+      "label_token": "oa.chart.color.sequential.label.step5.onNewsprint",
+      "label_css": "--oa-chart-color-sequential-label-step5-on-newsprint",
+      "label_hex": "#FFFFFF",
+      "label_status": "in tokens",
+      "label_on_fill": 8.27,
+      "label_ground": "the fill",
+      "oklab_L": 0.421,
+      "luminance_gray": "#4E4E4E",
+      "black_screen_pct": 92,
+      "sim_protanopia": "#51514F",
+      "sim_deuteranopia": "#4C4D4F",
+      "sim_tritanopia": "#2C5552"
+     }
+    ],
+    "pairs_measured": "neighbors",
+    "closest": {
+     "normal": {
+      "delta_e_ok": 0.1,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     "protanopia": {
+      "delta_e_ok": 0.092,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     "deuteranopia": {
+      "delta_e_ok": 0.099,
+      "between": [
+       "Step 2",
+       "Step 3"
+      ]
+     },
+     "tritanopia": {
+      "delta_e_ok": 0.1,
+      "between": [
+       "Step 3",
+       "Step 4"
+      ]
+     }
+    },
+    "lightness_gaps": [
+     {
+      "delta_L": 0.099,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     {
+      "delta_L": 0.099,
+      "between": [
+       "Step 2",
+       "Step 3"
+      ]
+     },
+     {
+      "delta_L": 0.1,
+      "between": [
+       "Step 3",
+       "Step 4"
+      ]
+     },
+     {
+      "delta_L": 0.106,
+      "between": [
+       "Step 4",
+       "Step 5"
+      ]
+     }
+    ],
+    "smallest_lightness_gap": 0.099,
+    "grayscale_order_holds": true
+   }
+  },
+  "diverging": {
+   "newsprint": {
+    "palette": "diverging",
+    "ground": "newsprint",
+    "ground_hex": "#DCD9D2",
+    "tokens_from": "newsprint",
+    "rows": [
+     {
+      "name": "Step 1",
+      "fill_token": "oa.chart.color.diverging.fill.step1.onNewsprint",
+      "fill_css": "--oa-chart-color-diverging-fill-step1-on-newsprint",
+      "fill_hex": "#1F2D5A",
+      "fill_status": "in tokens",
+      "fill_on_ground": 9.42,
+      "label_token": "oa.chart.color.diverging.label.step1.onNewsprint",
+      "label_css": "--oa-chart-color-diverging-label-step1-on-newsprint",
+      "label_hex": "#FFFFFF",
+      "label_status": "in tokens",
+      "label_on_fill": 13.28,
+      "label_ground": "the fill",
+      "oklab_L": 0.311,
+      "luminance_gray": "#303030",
+      "black_screen_pct": 97,
+      "sim_protanopia": "#17325C",
+      "sim_deuteranopia": "#0E2D59",
+      "sim_tritanopia": "#00373F"
+     },
+     {
+      "name": "Step 2",
+      "fill_token": "oa.chart.color.diverging.fill.step2.onNewsprint",
+      "fill_css": "--oa-chart-color-diverging-fill-step2-on-newsprint",
+      "fill_hex": "#8E94A4",
+      "fill_status": "in tokens",
+      "fill_on_ground": 2.15,
+      "label_token": "oa.chart.color.diverging.label.step2.onNewsprint",
+      "label_css": "--oa-chart-color-diverging-label-step2-on-newsprint",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 6.18,
+      "label_ground": "the fill",
+      "oklab_L": 0.667,
+      "luminance_gray": "#949494",
+      "black_screen_pct": 70,
+      "sim_protanopia": "#9095A5",
+      "sim_deuteranopia": "#8E93A4",
+      "sim_tritanopia": "#899799"
+     },
+     {
+      "name": "Step 3",
+      "fill_token": "oa.chart.color.diverging.fill.step3.onNewsprint",
+      "fill_css": "--oa-chart-color-diverging-fill-step3-on-newsprint",
+      "fill_hex": "#CECDC7",
+      "fill_status": "in tokens",
+      "fill_on_ground": 1.13,
+      "label_token": "oa.chart.color.diverging.label.step3.onNewsprint",
+      "label_css": "--oa-chart-color-diverging-label-step3-on-newsprint",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 11.76,
+      "label_ground": "the fill",
+      "oklab_L": 0.847,
+      "luminance_gray": "#CDCDCD",
+      "black_screen_pct": 39,
+      "sim_protanopia": "#CECDC7",
+      "sim_deuteranopia": "#CFCDC7",
+      "sim_tritanopia": "#CFCCCB"
+     },
+     {
+      "name": "Step 4",
+      "fill_token": "oa.chart.color.diverging.fill.step4.onNewsprint",
+      "fill_css": "--oa-chart-color-diverging-fill-step4-on-newsprint",
+      "fill_hex": "#9AAEA6",
+      "fill_status": "in tokens",
+      "fill_on_ground": 1.66,
+      "label_token": "oa.chart.color.diverging.label.step4.onNewsprint",
+      "label_css": "--oa-chart-color-diverging-label-step4-on-newsprint",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 8.01,
+      "label_ground": "the fill",
+      "oklab_L": 0.733,
+      "luminance_gray": "#A9A9A9",
+      "black_screen_pct": 60,
+      "sim_protanopia": "#ADABA6",
+      "sim_deuteranopia": "#A9A8A6",
+      "sim_tritanopia": "#96AEAC"
+     },
+     {
+      "name": "Step 5",
+      "fill_token": "oa.chart.color.diverging.fill.step5.onNewsprint",
+      "fill_css": "--oa-chart-color-diverging-fill-step5-on-newsprint",
+      "fill_hex": "#3C5F59",
+      "fill_status": "in tokens",
+      "fill_on_ground": 5.01,
+      "label_token": "oa.chart.color.diverging.label.step5.onNewsprint",
+      "label_css": "--oa-chart-color-diverging-label-step5-on-newsprint",
+      "label_hex": "#FFFFFF",
+      "label_status": "in tokens",
+      "label_on_fill": 7.06,
+      "label_ground": "the fill",
+      "oklab_L": 0.457,
+      "luminance_gray": "#585858",
+      "black_screen_pct": 90,
+      "sim_protanopia": "#5C5B59",
+      "sim_deuteranopia": "#56575A",
+      "sim_tritanopia": "#30605D"
+     }
+    ],
+    "pairs_measured": "neighbors",
+    "closest": {
+     "normal": {
+      "delta_e_ok": 0.117,
+      "between": [
+       "Step 3",
+       "Step 4"
+      ]
+     },
+     "protanopia": {
+      "delta_e_ok": 0.106,
+      "between": [
+       "Step 3",
+       "Step 4"
+      ]
+     },
+     "deuteranopia": {
+      "delta_e_ok": 0.117,
+      "between": [
+       "Step 3",
+       "Step 4"
+      ]
+     },
+     "tritanopia": {
+      "delta_e_ok": 0.119,
+      "between": [
+       "Step 3",
+       "Step 4"
+      ]
+     }
+    },
+    "lightness_gaps": [
+     {
+      "delta_L": 0.356,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     {
+      "delta_L": 0.18,
+      "between": [
+       "Step 2",
+       "Step 3"
+      ]
+     },
+     {
+      "delta_L": 0.114,
+      "between": [
+       "Step 3",
+       "Step 4"
+      ]
+     },
+     {
+      "delta_L": 0.276,
+      "between": [
+       "Step 4",
+       "Step 5"
+      ]
+     }
+    ],
+    "smallest_lightness_gap": 0.114,
+    "grayscale_order_holds": true,
+    "end_pair": {
+     "delta_L": 0.146,
+     "delta_e_ok": 0.171,
+     "delta_e_protanopia": 0.174,
+     "delta_e_deuteranopia": 0.176,
+     "delta_e_tritanopia": 0.147,
+     "note": "The two ends are meant to match in lightness; a boxed arrow or a printed sign carries the direction"
+    }
+   },
+   "charcoal": {
+    "palette": "diverging",
+    "ground": "charcoal",
+    "ground_hex": "#121212",
+    "tokens_from": "charcoal",
+    "rows": [
+     {
+      "name": "Step 1",
+      "fill_token": "oa.chart.color.diverging.fill.step1.onCharcoal",
+      "fill_css": "--oa-chart-color-diverging-fill-step1-on-charcoal",
+      "fill_hex": "#828A9D",
+      "fill_status": "proposed",
+      "fill_on_ground": 5.42,
+      "label_token": "oa.chart.color.diverging.label.step1.onCharcoal",
+      "label_css": "--oa-chart-color-diverging-label-step1-on-charcoal",
+      "label_hex": "#121212",
+      "label_status": "proposed",
+      "label_on_fill": 5.42,
+      "label_ground": "the fill",
+      "oklab_L": 0.633,
+      "luminance_gray": "#8A8A8A",
+      "black_screen_pct": 75,
+      "sim_protanopia": "#848B9E",
+      "sim_deuteranopia": "#82899D",
+      "sim_tritanopia": "#7C8E90"
+     },
+     {
+      "name": "Step 2",
+      "fill_token": "oa.chart.color.diverging.fill.step2.onCharcoal",
+      "fill_css": "--oa-chart-color-diverging-fill-step2-on-charcoal",
+      "fill_hex": "#505C7D",
+      "fill_status": "proposed",
+      "fill_on_ground": 2.83,
+      "label_token": "oa.chart.color.diverging.label.step2.onCharcoal",
+      "label_css": "--oa-chart-color-diverging-label-step2-on-charcoal",
+      "label_hex": "#DCD9D2",
+      "label_status": "proposed",
+      "label_on_fill": 4.7,
+      "label_ground": "the fill",
+      "oklab_L": 0.478,
+      "luminance_gray": "#5D5D5D",
+      "black_screen_pct": 89,
+      "sim_protanopia": "#515F7E",
+      "sim_deuteranopia": "#4D5B7C",
+      "sim_tritanopia": "#436367"
+     },
+     {
+      "name": "Step 3",
+      "fill_token": "oa.chart.color.diverging.fill.step3.onCharcoal",
+      "fill_css": "--oa-chart-color-diverging-fill-step3-on-charcoal",
+      "fill_hex": "#252729",
+      "fill_status": "proposed",
+      "fill_on_ground": 1.25,
+      "label_token": "oa.chart.color.diverging.label.step3.onCharcoal",
+      "label_css": "--oa-chart-color-diverging-label-step3-on-charcoal",
+      "label_hex": "#DCD9D2",
+      "label_status": "proposed",
+      "label_on_fill": 10.64,
+      "label_ground": "the fill",
+      "oklab_L": 0.271,
+      "luminance_gray": "#272727",
+      "black_screen_pct": 98,
+      "sim_protanopia": "#262729",
+      "sim_deuteranopia": "#262729",
+      "sim_tritanopia": "#242728"
+     },
+     {
+      "name": "Step 4",
+      "fill_token": "oa.chart.color.diverging.fill.step4.onCharcoal",
+      "fill_css": "--oa-chart-color-diverging-fill-step4-on-charcoal",
+      "fill_hex": "#3F655E",
+      "fill_status": "proposed",
+      "fill_on_ground": 2.89,
+      "label_token": "oa.chart.color.diverging.label.step4.onCharcoal",
+      "label_css": "--oa-chart-color-diverging-label-step4-on-charcoal",
+      "label_hex": "#DCD9D2",
+      "label_status": "proposed",
+      "label_on_fill": 4.61,
+      "label_ground": "the fill",
+      "oklab_L": 0.476,
+      "luminance_gray": "#5E5E5E",
+      "black_screen_pct": 89,
+      "sim_protanopia": "#62615E",
+      "sim_deuteranopia": "#5B5C5F",
+      "sim_tritanopia": "#326663"
+     },
+     {
+      "name": "Step 5",
+      "fill_token": "oa.chart.color.diverging.fill.step5.onCharcoal",
+      "fill_css": "--oa-chart-color-diverging-fill-step5-on-charcoal",
+      "fill_hex": "#6F938B",
+      "fill_status": "proposed",
+      "fill_on_ground": 5.55,
+      "label_token": "oa.chart.color.diverging.label.step5.onCharcoal",
+      "label_css": "--oa-chart-color-diverging-label-step5-on-charcoal",
+      "label_hex": "#121212",
+      "label_status": "proposed",
+      "label_on_fill": 5.55,
+      "label_ground": "the fill",
+      "oklab_L": 0.634,
+      "luminance_gray": "#8C8C8C",
+      "black_screen_pct": 74,
+      "sim_protanopia": "#908F8B",
+      "sim_deuteranopia": "#898A8C",
+      "sim_tritanopia": "#659490"
+     }
+    ],
+    "pairs_measured": "neighbors",
+    "closest": {
+     "normal": {
+      "delta_e_ok": 0.157,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     "protanopia": {
+      "delta_e_ok": 0.153,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     "deuteranopia": {
+      "delta_e_ok": 0.158,
+      "between": [
+       "Step 4",
+       "Step 5"
+      ]
+     },
+     "tritanopia": {
+      "delta_e_ok": 0.157,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     }
+    },
+    "lightness_gaps": [
+     {
+      "delta_L": 0.155,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     {
+      "delta_L": 0.207,
+      "between": [
+       "Step 2",
+       "Step 3"
+      ]
+     },
+     {
+      "delta_L": 0.205,
+      "between": [
+       "Step 3",
+       "Step 4"
+      ]
+     },
+     {
+      "delta_L": 0.158,
+      "between": [
+       "Step 4",
+       "Step 5"
+      ]
+     }
+    ],
+    "smallest_lightness_gap": 0.155,
+    "grayscale_order_holds": true,
+    "end_pair": {
+     "delta_L": 0.001,
+     "delta_e_ok": 0.05,
+     "delta_e_protanopia": 0.038,
+     "delta_e_deuteranopia": 0.028,
+     "delta_e_tritanopia": 0.032,
+     "note": "The two ends are meant to match in lightness; a boxed arrow or a printed sign carries the direction"
+    }
+   },
+   "white": {
+    "palette": "diverging",
+    "ground": "white",
+    "ground_hex": "#FFFFFF",
+    "tokens_from": "newsprint",
+    "rows": [
+     {
+      "name": "Step 1",
+      "fill_token": "oa.chart.color.diverging.fill.step1.onNewsprint",
+      "fill_css": "--oa-chart-color-diverging-fill-step1-on-newsprint",
+      "fill_hex": "#1F2D5A",
+      "fill_status": "in tokens",
+      "fill_on_ground": 13.28,
+      "label_token": "oa.chart.color.diverging.label.step1.onNewsprint",
+      "label_css": "--oa-chart-color-diverging-label-step1-on-newsprint",
+      "label_hex": "#FFFFFF",
+      "label_status": "in tokens",
+      "label_on_fill": 13.28,
+      "label_ground": "the fill",
+      "oklab_L": 0.311,
+      "luminance_gray": "#303030",
+      "black_screen_pct": 97,
+      "sim_protanopia": "#17325C",
+      "sim_deuteranopia": "#0E2D59",
+      "sim_tritanopia": "#00373F"
+     },
+     {
+      "name": "Step 2",
+      "fill_token": "oa.chart.color.diverging.fill.step2.onNewsprint",
+      "fill_css": "--oa-chart-color-diverging-fill-step2-on-newsprint",
+      "fill_hex": "#8E94A4",
+      "fill_status": "in tokens",
+      "fill_on_ground": 3.03,
+      "label_token": "oa.chart.color.diverging.label.step2.onNewsprint",
+      "label_css": "--oa-chart-color-diverging-label-step2-on-newsprint",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 6.18,
+      "label_ground": "the fill",
+      "oklab_L": 0.667,
+      "luminance_gray": "#949494",
+      "black_screen_pct": 70,
+      "sim_protanopia": "#9095A5",
+      "sim_deuteranopia": "#8E93A4",
+      "sim_tritanopia": "#899799"
+     },
+     {
+      "name": "Step 3",
+      "fill_token": "oa.chart.color.diverging.fill.step3.onNewsprint",
+      "fill_css": "--oa-chart-color-diverging-fill-step3-on-newsprint",
+      "fill_hex": "#CECDC7",
+      "fill_status": "in tokens",
+      "fill_on_ground": 1.59,
+      "label_token": "oa.chart.color.diverging.label.step3.onNewsprint",
+      "label_css": "--oa-chart-color-diverging-label-step3-on-newsprint",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 11.76,
+      "label_ground": "the fill",
+      "oklab_L": 0.847,
+      "luminance_gray": "#CDCDCD",
+      "black_screen_pct": 39,
+      "sim_protanopia": "#CECDC7",
+      "sim_deuteranopia": "#CFCDC7",
+      "sim_tritanopia": "#CFCCCB"
+     },
+     {
+      "name": "Step 4",
+      "fill_token": "oa.chart.color.diverging.fill.step4.onNewsprint",
+      "fill_css": "--oa-chart-color-diverging-fill-step4-on-newsprint",
+      "fill_hex": "#9AAEA6",
+      "fill_status": "in tokens",
+      "fill_on_ground": 2.34,
+      "label_token": "oa.chart.color.diverging.label.step4.onNewsprint",
+      "label_css": "--oa-chart-color-diverging-label-step4-on-newsprint",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 8.01,
+      "label_ground": "the fill",
+      "oklab_L": 0.733,
+      "luminance_gray": "#A9A9A9",
+      "black_screen_pct": 60,
+      "sim_protanopia": "#ADABA6",
+      "sim_deuteranopia": "#A9A8A6",
+      "sim_tritanopia": "#96AEAC"
+     },
+     {
+      "name": "Step 5",
+      "fill_token": "oa.chart.color.diverging.fill.step5.onNewsprint",
+      "fill_css": "--oa-chart-color-diverging-fill-step5-on-newsprint",
+      "fill_hex": "#3C5F59",
+      "fill_status": "in tokens",
+      "fill_on_ground": 7.06,
+      "label_token": "oa.chart.color.diverging.label.step5.onNewsprint",
+      "label_css": "--oa-chart-color-diverging-label-step5-on-newsprint",
+      "label_hex": "#FFFFFF",
+      "label_status": "in tokens",
+      "label_on_fill": 7.06,
+      "label_ground": "the fill",
+      "oklab_L": 0.457,
+      "luminance_gray": "#585858",
+      "black_screen_pct": 90,
+      "sim_protanopia": "#5C5B59",
+      "sim_deuteranopia": "#56575A",
+      "sim_tritanopia": "#30605D"
+     }
+    ],
+    "pairs_measured": "neighbors",
+    "closest": {
+     "normal": {
+      "delta_e_ok": 0.117,
+      "between": [
+       "Step 3",
+       "Step 4"
+      ]
+     },
+     "protanopia": {
+      "delta_e_ok": 0.106,
+      "between": [
+       "Step 3",
+       "Step 4"
+      ]
+     },
+     "deuteranopia": {
+      "delta_e_ok": 0.117,
+      "between": [
+       "Step 3",
+       "Step 4"
+      ]
+     },
+     "tritanopia": {
+      "delta_e_ok": 0.119,
+      "between": [
+       "Step 3",
+       "Step 4"
+      ]
+     }
+    },
+    "lightness_gaps": [
+     {
+      "delta_L": 0.356,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     {
+      "delta_L": 0.18,
+      "between": [
+       "Step 2",
+       "Step 3"
+      ]
+     },
+     {
+      "delta_L": 0.114,
+      "between": [
+       "Step 3",
+       "Step 4"
+      ]
+     },
+     {
+      "delta_L": 0.276,
+      "between": [
+       "Step 4",
+       "Step 5"
+      ]
+     }
+    ],
+    "smallest_lightness_gap": 0.114,
+    "grayscale_order_holds": true,
+    "end_pair": {
+     "delta_L": 0.146,
+     "delta_e_ok": 0.171,
+     "delta_e_protanopia": 0.174,
+     "delta_e_deuteranopia": 0.176,
+     "delta_e_tritanopia": 0.147,
+     "note": "The two ends are meant to match in lightness; a boxed arrow or a printed sign carries the direction"
+    }
+   }
+  },
+  "categorical": {
+   "newsprint": {
+    "palette": "categorical",
+    "ground": "newsprint",
+    "ground_hex": "#DCD9D2",
+    "tokens_from": "newsprint",
+    "rows": [
+     {
+      "name": "Group 1",
+      "fill_token": "oa.chart.color.categorical.fill.group1.onNewsprint",
+      "fill_css": "--oa-chart-color-categorical-fill-group1-on-newsprint",
+      "fill_hex": "#121212",
+      "fill_status": "proposed",
+      "fill_on_ground": 13.29,
+      "label_token": "oa.chart.color.categorical.label.group1.onNewsprint",
+      "label_css": "--oa-chart-color-categorical-label-group1-on-newsprint",
+      "label_hex": "#FFFFFF",
+      "label_status": "proposed",
+      "label_on_fill": 18.73,
+      "label_ground": "the fill",
+      "oklab_L": 0.182,
+      "luminance_gray": "#121212",
+      "black_screen_pct": 99,
+      "sim_protanopia": "#121212",
+      "sim_deuteranopia": "#121212",
+      "sim_tritanopia": "#121212"
+     },
+     {
+      "name": "Group 2",
+      "fill_token": "oa.chart.color.categorical.fill.group2.onNewsprint",
+      "fill_css": "--oa-chart-color-categorical-fill-group2-on-newsprint",
+      "fill_hex": "#1F2D5A",
+      "fill_status": "proposed",
+      "fill_on_ground": 9.42,
+      "label_token": "oa.chart.color.categorical.label.group2.onNewsprint",
+      "label_css": "--oa-chart-color-categorical-label-group2-on-newsprint",
+      "label_hex": "#FFFFFF",
+      "label_status": "proposed",
+      "label_on_fill": 13.28,
+      "label_ground": "the fill",
+      "oklab_L": 0.311,
+      "luminance_gray": "#303030",
+      "black_screen_pct": 97,
+      "sim_protanopia": "#17325C",
+      "sim_deuteranopia": "#0E2D59",
+      "sim_tritanopia": "#00373F"
+     },
+     {
+      "name": "Group 3",
+      "fill_token": "oa.chart.color.categorical.fill.group3.onNewsprint",
+      "fill_css": "--oa-chart-color-categorical-fill-group3-on-newsprint",
+      "fill_hex": "#4A7C74",
+      "fill_status": "proposed",
+      "fill_on_ground": 3.37,
+      "label_token": "oa.chart.color.categorical.label.group3.onNewsprint",
+      "label_css": "--oa-chart-color-categorical-label-group3-on-newsprint",
+      "label_hex": "#FFFFFF",
+      "label_status": "proposed",
+      "label_on_fill": 4.74,
+      "label_ground": "the fill",
+      "oklab_L": 0.548,
+      "luminance_gray": "#737373",
+      "black_screen_pct": 83,
+      "sim_protanopia": "#787774",
+      "sim_deuteranopia": "#6F7075",
+      "sim_tritanopia": "#387E79"
+     },
+     {
+      "name": "Group 4",
+      "fill_token": "oa.chart.color.categorical.fill.group4.onNewsprint",
+      "fill_css": "--oa-chart-color-categorical-fill-group4-on-newsprint",
+      "fill_hex": "#5D636D",
+      "fill_status": "proposed",
+      "fill_on_ground": 4.29,
+      "label_token": "oa.chart.color.categorical.label.group4.onNewsprint",
+      "label_css": "--oa-chart-color-categorical-label-group4-on-newsprint",
+      "label_hex": "#121212",
+      "label_status": "proposed",
+      "label_on_fill": 13.29,
+      "label_ground": "halo of the ground",
+      "oklab_L": 0.498,
+      "luminance_gray": "#636363",
+      "black_screen_pct": 88,
+      "sim_protanopia": "#60636E",
+      "sim_deuteranopia": "#5E626D",
+      "sim_tritanopia": "#596566"
+     }
+    ],
+    "pairs_measured": "every pair",
+    "closest": {
+     "normal": {
+      "delta_e_ok": 0.074,
+      "between": [
+       "Group 3",
+       "Group 4"
+      ]
+     },
+     "protanopia": {
+      "delta_e_ok": 0.072,
+      "between": [
+       "Group 3",
+       "Group 4"
+      ]
+     },
+     "deuteranopia": {
+      "delta_e_ok": 0.051,
+      "between": [
+       "Group 3",
+       "Group 4"
+      ]
+     },
+     "tritanopia": {
+      "delta_e_ok": 0.075,
+      "between": [
+       "Group 3",
+       "Group 4"
+      ]
+     }
+    },
+    "lightness_gaps": [
+     {
+      "delta_L": 0.129,
+      "between": [
+       "Group 1",
+       "Group 2"
+      ]
+     },
+     {
+      "delta_L": 0.366,
+      "between": [
+       "Group 1",
+       "Group 3"
+      ]
+     },
+     {
+      "delta_L": 0.316,
+      "between": [
+       "Group 1",
+       "Group 4"
+      ]
+     },
+     {
+      "delta_L": 0.237,
+      "between": [
+       "Group 2",
+       "Group 3"
+      ]
+     },
+     {
+      "delta_L": 0.187,
+      "between": [
+       "Group 2",
+       "Group 4"
+      ]
+     },
+     {
+      "delta_L": 0.05,
+      "between": [
+       "Group 3",
+       "Group 4"
+      ]
+     }
+    ],
+    "smallest_lightness_gap": 0.05,
+    "pairs_under_margin": [
+     {
+      "between": [
+       "Group 3",
+       "Group 4"
+      ],
+      "delta_L": 0.05,
+      "separated_by": "the hatch on the Stone group and a direct label"
+     }
+    ]
+   },
+   "charcoal": {
+    "palette": "categorical",
+    "ground": "charcoal",
+    "ground_hex": "#121212",
+    "tokens_from": "charcoal",
+    "rows": [
+     {
+      "name": "Group 1",
+      "fill_token": "oa.chart.color.categorical.fill.group1.onCharcoal",
+      "fill_css": "--oa-chart-color-categorical-fill-group1-on-charcoal",
+      "fill_hex": "#DCD9D2",
+      "fill_status": "proposed",
+      "fill_on_ground": 13.29,
+      "label_token": "oa.chart.color.categorical.label.group1.onCharcoal",
+      "label_css": "--oa-chart-color-categorical-label-group1-on-charcoal",
+      "label_hex": "#121212",
+      "label_status": "proposed",
+      "label_on_fill": 13.29,
+      "label_ground": "the fill",
+      "oklab_L": 0.886,
+      "luminance_gray": "#D9D9D9",
+      "black_screen_pct": 31,
+      "sim_protanopia": "#DBD9D2",
+      "sim_deuteranopia": "#DCDAD2",
+      "sim_tritanopia": "#DED8D7"
+     },
+     {
+      "name": "Group 2",
+      "fill_token": "oa.chart.color.categorical.fill.group2.onCharcoal",
+      "fill_css": "--oa-chart-color-categorical-fill-group2-on-charcoal",
+      "fill_hex": "#8E94A4",
+      "fill_status": "proposed",
+      "fill_on_ground": 6.18,
+      "label_token": "oa.chart.color.categorical.label.group2.onCharcoal",
+      "label_css": "--oa-chart-color-categorical-label-group2-on-charcoal",
+      "label_hex": "#121212",
+      "label_status": "proposed",
+      "label_on_fill": 6.18,
+      "label_ground": "the fill",
+      "oklab_L": 0.667,
+      "luminance_gray": "#949494",
+      "black_screen_pct": 70,
+      "sim_protanopia": "#9095A5",
+      "sim_deuteranopia": "#8E93A4",
+      "sim_tritanopia": "#899799"
+     },
+     {
+      "name": "Group 3",
+      "fill_token": "oa.chart.color.categorical.fill.group3.onCharcoal",
+      "fill_css": "--oa-chart-color-categorical-fill-group3-on-charcoal",
+      "fill_hex": "#4A7C74",
+      "fill_status": "proposed",
+      "fill_on_ground": 3.95,
+      "label_token": "oa.chart.color.categorical.label.group3.onCharcoal",
+      "label_css": "--oa-chart-color-categorical-label-group3-on-charcoal",
+      "label_hex": "#FFFFFF",
+      "label_status": "proposed",
+      "label_on_fill": 4.74,
+      "label_ground": "the fill",
+      "oklab_L": 0.548,
+      "luminance_gray": "#737373",
+      "black_screen_pct": 83,
+      "sim_protanopia": "#787774",
+      "sim_deuteranopia": "#6F7075",
+      "sim_tritanopia": "#387E79"
+     },
+     {
+      "name": "Group 4",
+      "fill_token": "oa.chart.color.categorical.fill.group4.onCharcoal",
+      "fill_css": "--oa-chart-color-categorical-fill-group4-on-charcoal",
+      "fill_hex": "#5D636D",
+      "fill_status": "proposed",
+      "fill_on_ground": 3.1,
+      "label_token": "oa.chart.color.categorical.label.group4.onCharcoal",
+      "label_css": "--oa-chart-color-categorical-label-group4-on-charcoal",
+      "label_hex": "#DCD9D2",
+      "label_status": "proposed",
+      "label_on_fill": 13.29,
+      "label_ground": "halo of the ground",
+      "oklab_L": 0.498,
+      "luminance_gray": "#636363",
+      "black_screen_pct": 88,
+      "sim_protanopia": "#60636E",
+      "sim_deuteranopia": "#5E626D",
+      "sim_tritanopia": "#596566"
+     }
+    ],
+    "pairs_measured": "every pair",
+    "closest": {
+     "normal": {
+      "delta_e_ok": 0.074,
+      "between": [
+       "Group 3",
+       "Group 4"
+      ]
+     },
+     "protanopia": {
+      "delta_e_ok": 0.072,
+      "between": [
+       "Group 3",
+       "Group 4"
+      ]
+     },
+     "deuteranopia": {
+      "delta_e_ok": 0.051,
+      "between": [
+       "Group 3",
+       "Group 4"
+      ]
+     },
+     "tritanopia": {
+      "delta_e_ok": 0.075,
+      "between": [
+       "Group 3",
+       "Group 4"
+      ]
+     }
+    },
+    "lightness_gaps": [
+     {
+      "delta_L": 0.219,
+      "between": [
+       "Group 1",
+       "Group 2"
+      ]
+     },
+     {
+      "delta_L": 0.338,
+      "between": [
+       "Group 1",
+       "Group 3"
+      ]
+     },
+     {
+      "delta_L": 0.388,
+      "between": [
+       "Group 1",
+       "Group 4"
+      ]
+     },
+     {
+      "delta_L": 0.119,
+      "between": [
+       "Group 2",
+       "Group 3"
+      ]
+     },
+     {
+      "delta_L": 0.169,
+      "between": [
+       "Group 2",
+       "Group 4"
+      ]
+     },
+     {
+      "delta_L": 0.05,
+      "between": [
+       "Group 3",
+       "Group 4"
+      ]
+     }
+    ],
+    "smallest_lightness_gap": 0.05,
+    "pairs_under_margin": [
+     {
+      "between": [
+       "Group 3",
+       "Group 4"
+      ],
+      "delta_L": 0.05,
+      "separated_by": "the hatch on the Stone group and a direct label"
+     }
+    ]
+   },
+   "white": {
+    "palette": "categorical",
+    "ground": "white",
+    "ground_hex": "#FFFFFF",
+    "tokens_from": "newsprint",
+    "rows": [
+     {
+      "name": "Group 1",
+      "fill_token": "oa.chart.color.categorical.fill.group1.onNewsprint",
+      "fill_css": "--oa-chart-color-categorical-fill-group1-on-newsprint",
+      "fill_hex": "#121212",
+      "fill_status": "proposed",
+      "fill_on_ground": 18.73,
+      "label_token": "oa.chart.color.categorical.label.group1.onNewsprint",
+      "label_css": "--oa-chart-color-categorical-label-group1-on-newsprint",
+      "label_hex": "#FFFFFF",
+      "label_status": "proposed",
+      "label_on_fill": 18.73,
+      "label_ground": "the fill",
+      "oklab_L": 0.182,
+      "luminance_gray": "#121212",
+      "black_screen_pct": 99,
+      "sim_protanopia": "#121212",
+      "sim_deuteranopia": "#121212",
+      "sim_tritanopia": "#121212"
+     },
+     {
+      "name": "Group 2",
+      "fill_token": "oa.chart.color.categorical.fill.group2.onNewsprint",
+      "fill_css": "--oa-chart-color-categorical-fill-group2-on-newsprint",
+      "fill_hex": "#1F2D5A",
+      "fill_status": "proposed",
+      "fill_on_ground": 13.28,
+      "label_token": "oa.chart.color.categorical.label.group2.onNewsprint",
+      "label_css": "--oa-chart-color-categorical-label-group2-on-newsprint",
+      "label_hex": "#FFFFFF",
+      "label_status": "proposed",
+      "label_on_fill": 13.28,
+      "label_ground": "the fill",
+      "oklab_L": 0.311,
+      "luminance_gray": "#303030",
+      "black_screen_pct": 97,
+      "sim_protanopia": "#17325C",
+      "sim_deuteranopia": "#0E2D59",
+      "sim_tritanopia": "#00373F"
+     },
+     {
+      "name": "Group 3",
+      "fill_token": "oa.chart.color.categorical.fill.group3.onNewsprint",
+      "fill_css": "--oa-chart-color-categorical-fill-group3-on-newsprint",
+      "fill_hex": "#4A7C74",
+      "fill_status": "proposed",
+      "fill_on_ground": 4.74,
+      "label_token": "oa.chart.color.categorical.label.group3.onNewsprint",
+      "label_css": "--oa-chart-color-categorical-label-group3-on-newsprint",
+      "label_hex": "#FFFFFF",
+      "label_status": "proposed",
+      "label_on_fill": 4.74,
+      "label_ground": "the fill",
+      "oklab_L": 0.548,
+      "luminance_gray": "#737373",
+      "black_screen_pct": 83,
+      "sim_protanopia": "#787774",
+      "sim_deuteranopia": "#6F7075",
+      "sim_tritanopia": "#387E79"
+     },
+     {
+      "name": "Group 4",
+      "fill_token": "oa.chart.color.categorical.fill.group4.onNewsprint",
+      "fill_css": "--oa-chart-color-categorical-fill-group4-on-newsprint",
+      "fill_hex": "#5D636D",
+      "fill_status": "proposed",
+      "fill_on_ground": 6.05,
+      "label_token": "oa.chart.color.categorical.label.group4.onNewsprint",
+      "label_css": "--oa-chart-color-categorical-label-group4-on-newsprint",
+      "label_hex": "#121212",
+      "label_status": "proposed",
+      "label_on_fill": 18.73,
+      "label_ground": "halo of the ground",
+      "oklab_L": 0.498,
+      "luminance_gray": "#636363",
+      "black_screen_pct": 88,
+      "sim_protanopia": "#60636E",
+      "sim_deuteranopia": "#5E626D",
+      "sim_tritanopia": "#596566"
+     }
+    ],
+    "pairs_measured": "every pair",
+    "closest": {
+     "normal": {
+      "delta_e_ok": 0.074,
+      "between": [
+       "Group 3",
+       "Group 4"
+      ]
+     },
+     "protanopia": {
+      "delta_e_ok": 0.072,
+      "between": [
+       "Group 3",
+       "Group 4"
+      ]
+     },
+     "deuteranopia": {
+      "delta_e_ok": 0.051,
+      "between": [
+       "Group 3",
+       "Group 4"
+      ]
+     },
+     "tritanopia": {
+      "delta_e_ok": 0.075,
+      "between": [
+       "Group 3",
+       "Group 4"
+      ]
+     }
+    },
+    "lightness_gaps": [
+     {
+      "delta_L": 0.129,
+      "between": [
+       "Group 1",
+       "Group 2"
+      ]
+     },
+     {
+      "delta_L": 0.366,
+      "between": [
+       "Group 1",
+       "Group 3"
+      ]
+     },
+     {
+      "delta_L": 0.316,
+      "between": [
+       "Group 1",
+       "Group 4"
+      ]
+     },
+     {
+      "delta_L": 0.237,
+      "between": [
+       "Group 2",
+       "Group 3"
+      ]
+     },
+     {
+      "delta_L": 0.187,
+      "between": [
+       "Group 2",
+       "Group 4"
+      ]
+     },
+     {
+      "delta_L": 0.05,
+      "between": [
+       "Group 3",
+       "Group 4"
+      ]
+     }
+    ],
+    "smallest_lightness_gap": 0.05,
+    "pairs_under_margin": [
+     {
+      "between": [
+       "Group 3",
+       "Group 4"
+      ],
+      "delta_L": 0.05,
+      "separated_by": "the hatch on the Stone group and a direct label"
+     }
+    ]
+   }
+  },
+  "magnitude": {
+   "newsprint": {
+    "palette": "magnitude",
+    "ground": "newsprint",
+    "ground_hex": "#DCD9D2",
+    "tokens_from": "newsprint",
+    "rows": [
+     {
+      "name": "Step 1",
+      "fill_token": "oa.chart.color.magnitude.fill.step1.onNewsprint",
+      "fill_css": "--oa-chart-color-magnitude-fill-step1-on-newsprint",
+      "fill_hex": "#CCCAC5",
+      "fill_status": "in tokens",
+      "fill_on_ground": 1.16,
+      "label_token": "oa.chart.color.magnitude.label.step1.onNewsprint",
+      "label_css": "--oa-chart-color-magnitude-label-step1-on-newsprint",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 11.44,
+      "label_ground": "the fill",
+      "oklab_L": 0.839,
+      "luminance_gray": "#CACACA",
+      "black_screen_pct": 41,
+      "sim_protanopia": "#CBCAC5",
+      "sim_deuteranopia": "#CCCAC5",
+      "sim_tritanopia": "#CDC9C9"
+     },
+     {
+      "name": "Step 2",
+      "fill_token": "oa.chart.color.magnitude.fill.step2.onNewsprint",
+      "fill_css": "--oa-chart-color-magnitude-fill-step2-on-newsprint",
+      "fill_hex": "#A1A2A3",
+      "fill_status": "in tokens",
+      "fill_on_ground": 1.81,
+      "label_token": "oa.chart.color.magnitude.label.step2.onNewsprint",
+      "label_css": "--oa-chart-color-magnitude-label-step2-on-newsprint",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 7.33,
+      "label_ground": "the fill",
+      "oklab_L": 0.712,
+      "luminance_gray": "#A2A2A2",
+      "black_screen_pct": 64,
+      "sim_protanopia": "#A2A2A3",
+      "sim_deuteranopia": "#A1A2A3",
+      "sim_tritanopia": "#A1A2A2"
+     },
+     {
+      "name": "Step 3",
+      "fill_token": "oa.chart.color.magnitude.fill.step3.onNewsprint",
+      "fill_css": "--oa-chart-color-magnitude-fill-step3-on-newsprint",
+      "fill_hex": "#555A63",
+      "fill_status": "in tokens",
+      "fill_on_ground": 4.92,
+      "label_token": "oa.chart.color.magnitude.label.step3.onNewsprint",
+      "label_css": "--oa-chart-color-magnitude-label-step3-on-newsprint",
+      "label_hex": "#DCD9D2",
+      "label_status": "in tokens",
+      "label_on_fill": 4.92,
+      "label_ground": "the fill",
+      "oklab_L": 0.466,
+      "luminance_gray": "#5A5A5A",
+      "black_screen_pct": 90,
+      "sim_protanopia": "#575A63",
+      "sim_deuteranopia": "#565963",
+      "sim_tritanopia": "#525C5D"
+     },
+     {
+      "name": "Step 4",
+      "fill_token": "oa.chart.color.magnitude.fill.step4.onNewsprint",
+      "fill_css": "--oa-chart-color-magnitude-fill-step4-on-newsprint",
+      "fill_hex": "#2E3034",
+      "fill_status": "in tokens",
+      "fill_on_ground": 9.38,
+      "label_token": "oa.chart.color.magnitude.label.step4.onNewsprint",
+      "label_css": "--oa-chart-color-magnitude-label-step4-on-newsprint",
+      "label_hex": "#DCD9D2",
+      "label_status": "in tokens",
+      "label_on_fill": 9.38,
+      "label_ground": "the fill",
+      "oklab_L": 0.309,
+      "luminance_gray": "#303030",
+      "black_screen_pct": 97,
+      "sim_protanopia": "#2F3034",
+      "sim_deuteranopia": "#2E3034",
+      "sim_tritanopia": "#2D3131"
+     }
+    ],
+    "pairs_measured": "neighbors",
+    "closest": {
+     "normal": {
+      "delta_e_ok": 0.128,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     "protanopia": {
+      "delta_e_ok": 0.126,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     "deuteranopia": {
+      "delta_e_ok": 0.128,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     "tritanopia": {
+      "delta_e_ok": 0.128,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     }
+    },
+    "lightness_gaps": [
+     {
+      "delta_L": 0.127,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     {
+      "delta_L": 0.246,
+      "between": [
+       "Step 2",
+       "Step 3"
+      ]
+     },
+     {
+      "delta_L": 0.157,
+      "between": [
+       "Step 3",
+       "Step 4"
+      ]
+     }
+    ],
+    "smallest_lightness_gap": 0.127,
+    "grayscale_order_holds": true
+   },
+   "charcoal": {
+    "palette": "magnitude",
+    "ground": "charcoal",
+    "ground_hex": "#121212",
+    "tokens_from": "charcoal",
+    "rows": [
+     {
+      "name": "Step 1",
+      "fill_token": "oa.chart.color.magnitude.fill.step1.onCharcoal",
+      "fill_css": "--oa-chart-color-magnitude-fill-step1-on-charcoal",
+      "fill_hex": "#232426",
+      "fill_status": "in tokens",
+      "fill_on_ground": 1.21,
+      "label_token": "oa.chart.color.magnitude.label.step1.onCharcoal",
+      "label_css": "--oa-chart-color-magnitude-label-step1-on-charcoal",
+      "label_hex": "#DCD9D2",
+      "label_status": "in tokens",
+      "label_on_fill": 11.02,
+      "label_ground": "the fill",
+      "oklab_L": 0.26,
+      "luminance_gray": "#242424",
+      "black_screen_pct": 98,
+      "sim_protanopia": "#232426",
+      "sim_deuteranopia": "#232426",
+      "sim_tritanopia": "#222425"
+     },
+     {
+      "name": "Step 2",
+      "fill_token": "oa.chart.color.magnitude.fill.step2.onCharcoal",
+      "fill_css": "--oa-chart-color-magnitude-fill-step2-on-charcoal",
+      "fill_hex": "#3D4046",
+      "fill_status": "in tokens",
+      "fill_on_ground": 1.8,
+      "label_token": "oa.chart.color.magnitude.label.step2.onCharcoal",
+      "label_css": "--oa-chart-color-magnitude-label-step2-on-charcoal",
+      "label_hex": "#DCD9D2",
+      "label_status": "in tokens",
+      "label_on_fill": 7.37,
+      "label_ground": "the fill",
+      "oklab_L": 0.371,
+      "luminance_gray": "#404040",
+      "black_screen_pct": 95,
+      "sim_protanopia": "#3E4046",
+      "sim_deuteranopia": "#3D3F46",
+      "sim_tritanopia": "#3B4142"
+     },
+     {
+      "name": "Step 3",
+      "fill_token": "oa.chart.color.magnitude.fill.step3.onCharcoal",
+      "fill_css": "--oa-chart-color-magnitude-fill-step3-on-charcoal",
+      "fill_hex": "#A1A2A3",
+      "fill_status": "in tokens",
+      "fill_on_ground": 7.33,
+      "label_token": "oa.chart.color.magnitude.label.step3.onCharcoal",
+      "label_css": "--oa-chart-color-magnitude-label-step3-on-charcoal",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 7.33,
+      "label_ground": "the fill",
+      "oklab_L": 0.712,
+      "luminance_gray": "#A2A2A2",
+      "black_screen_pct": 64,
+      "sim_protanopia": "#A2A2A3",
+      "sim_deuteranopia": "#A1A2A3",
+      "sim_tritanopia": "#A1A2A2"
+     },
+     {
+      "name": "Step 4",
+      "fill_token": "oa.chart.color.magnitude.fill.step4.onCharcoal",
+      "fill_css": "--oa-chart-color-magnitude-fill-step4-on-charcoal",
+      "fill_hex": "#C8C6C2",
+      "fill_status": "in tokens",
+      "fill_on_ground": 10.98,
+      "label_token": "oa.chart.color.magnitude.label.step4.onCharcoal",
+      "label_css": "--oa-chart-color-magnitude-label-step4-on-charcoal",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 10.98,
+      "label_ground": "the fill",
+      "oklab_L": 0.827,
+      "luminance_gray": "#C6C6C6",
+      "black_screen_pct": 43,
+      "sim_protanopia": "#C7C6C2",
+      "sim_deuteranopia": "#C8C6C2",
+      "sim_tritanopia": "#C9C5C5"
+     }
+    ],
+    "pairs_measured": "neighbors",
+    "closest": {
+     "normal": {
+      "delta_e_ok": 0.111,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     "protanopia": {
+      "delta_e_ok": 0.112,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     "deuteranopia": {
+      "delta_e_ok": 0.109,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     "tritanopia": {
+      "delta_e_ok": 0.112,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     }
+    },
+    "lightness_gaps": [
+     {
+      "delta_L": 0.111,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     {
+      "delta_L": 0.341,
+      "between": [
+       "Step 2",
+       "Step 3"
+      ]
+     },
+     {
+      "delta_L": 0.115,
+      "between": [
+       "Step 3",
+       "Step 4"
+      ]
+     }
+    ],
+    "smallest_lightness_gap": 0.111,
+    "grayscale_order_holds": true
+   },
+   "white": {
+    "palette": "magnitude",
+    "ground": "white",
+    "ground_hex": "#FFFFFF",
+    "tokens_from": "newsprint",
+    "rows": [
+     {
+      "name": "Step 1",
+      "fill_token": "oa.chart.color.magnitude.fill.step1.onNewsprint",
+      "fill_css": "--oa-chart-color-magnitude-fill-step1-on-newsprint",
+      "fill_hex": "#CCCAC5",
+      "fill_status": "in tokens",
+      "fill_on_ground": 1.64,
+      "label_token": "oa.chart.color.magnitude.label.step1.onNewsprint",
+      "label_css": "--oa-chart-color-magnitude-label-step1-on-newsprint",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 11.44,
+      "label_ground": "the fill",
+      "oklab_L": 0.839,
+      "luminance_gray": "#CACACA",
+      "black_screen_pct": 41,
+      "sim_protanopia": "#CBCAC5",
+      "sim_deuteranopia": "#CCCAC5",
+      "sim_tritanopia": "#CDC9C9"
+     },
+     {
+      "name": "Step 2",
+      "fill_token": "oa.chart.color.magnitude.fill.step2.onNewsprint",
+      "fill_css": "--oa-chart-color-magnitude-fill-step2-on-newsprint",
+      "fill_hex": "#A1A2A3",
+      "fill_status": "in tokens",
+      "fill_on_ground": 2.56,
+      "label_token": "oa.chart.color.magnitude.label.step2.onNewsprint",
+      "label_css": "--oa-chart-color-magnitude-label-step2-on-newsprint",
+      "label_hex": "#121212",
+      "label_status": "in tokens",
+      "label_on_fill": 7.33,
+      "label_ground": "the fill",
+      "oklab_L": 0.712,
+      "luminance_gray": "#A2A2A2",
+      "black_screen_pct": 64,
+      "sim_protanopia": "#A2A2A3",
+      "sim_deuteranopia": "#A1A2A3",
+      "sim_tritanopia": "#A1A2A2"
+     },
+     {
+      "name": "Step 3",
+      "fill_token": "oa.chart.color.magnitude.fill.step3.onNewsprint",
+      "fill_css": "--oa-chart-color-magnitude-fill-step3-on-newsprint",
+      "fill_hex": "#555A63",
+      "fill_status": "in tokens",
+      "fill_on_ground": 6.93,
+      "label_token": "oa.chart.color.magnitude.label.step3.onNewsprint",
+      "label_css": "--oa-chart-color-magnitude-label-step3-on-newsprint",
+      "label_hex": "#DCD9D2",
+      "label_status": "in tokens",
+      "label_on_fill": 4.92,
+      "label_ground": "the fill",
+      "oklab_L": 0.466,
+      "luminance_gray": "#5A5A5A",
+      "black_screen_pct": 90,
+      "sim_protanopia": "#575A63",
+      "sim_deuteranopia": "#565963",
+      "sim_tritanopia": "#525C5D"
+     },
+     {
+      "name": "Step 4",
+      "fill_token": "oa.chart.color.magnitude.fill.step4.onNewsprint",
+      "fill_css": "--oa-chart-color-magnitude-fill-step4-on-newsprint",
+      "fill_hex": "#2E3034",
+      "fill_status": "in tokens",
+      "fill_on_ground": 13.22,
+      "label_token": "oa.chart.color.magnitude.label.step4.onNewsprint",
+      "label_css": "--oa-chart-color-magnitude-label-step4-on-newsprint",
+      "label_hex": "#DCD9D2",
+      "label_status": "in tokens",
+      "label_on_fill": 9.38,
+      "label_ground": "the fill",
+      "oklab_L": 0.309,
+      "luminance_gray": "#303030",
+      "black_screen_pct": 97,
+      "sim_protanopia": "#2F3034",
+      "sim_deuteranopia": "#2E3034",
+      "sim_tritanopia": "#2D3131"
+     }
+    ],
+    "pairs_measured": "neighbors",
+    "closest": {
+     "normal": {
+      "delta_e_ok": 0.128,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     "protanopia": {
+      "delta_e_ok": 0.126,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     "deuteranopia": {
+      "delta_e_ok": 0.128,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     "tritanopia": {
+      "delta_e_ok": 0.128,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     }
+    },
+    "lightness_gaps": [
+     {
+      "delta_L": 0.127,
+      "between": [
+       "Step 1",
+       "Step 2"
+      ]
+     },
+     {
+      "delta_L": 0.246,
+      "between": [
+       "Step 2",
+       "Step 3"
+      ]
+     },
+     {
+      "delta_L": 0.157,
+      "between": [
+       "Step 3",
+       "Step 4"
+      ]
+     }
+    ],
+    "smallest_lightness_gap": 0.127,
+    "grayscale_order_holds": true
+   }
+  }
+ },
+ "prussian": [
+  {
+   "ink": "Charcoal",
+   "hex": "#121212",
+   "job_in_charts": "Categorical group 1",
+   "on_prussian": 1.41,
+   "passes_3_to_1": false
+  },
+  {
+   "ink": "Prussian",
+   "hex": "#1F2D5A",
+   "job_in_charts": "Categorical group 2; diverging step 1",
+   "on_prussian": 1.0,
+   "passes_3_to_1": false
+  },
+  {
+   "ink": "Verdigris",
+   "hex": "#4A7C74",
+   "job_in_charts": "Categorical group 3; sequential base",
+   "on_prussian": 2.8,
+   "passes_3_to_1": false
+  },
+  {
+   "ink": "Stone",
+   "hex": "#5D636D",
+   "job_in_charts": "Categorical group 4; context",
+   "on_prussian": 2.2,
+   "passes_3_to_1": false
+  },
+  {
+   "ink": "Pillar Red",
+   "hex": "#E63946",
+   "job_in_charts": "The working red",
+   "on_prussian": 3.19,
+   "passes_3_to_1": true
+  },
+  {
+   "ink": "Newsprint",
+   "hex": "#DCD9D2",
+   "job_in_charts": "Subject ink on dark grounds",
+   "on_prussian": 9.42,
+   "passes_3_to_1": true
+  }
+ ],
+ "red_point": {
+  "newsprint": {
+   "pillar_red_on_ground": 2.96,
+   "keyline_needed": true,
+   "allowed": true
+  },
+  "white": {
+   "pillar_red_on_ground": 4.17,
+   "keyline_needed": false,
+   "allowed": true
+  },
+  "charcoal": {
+   "pillar_red_on_ground": 4.49,
+   "keyline_needed": false,
+   "allowed": true
+  },
+  "prussian": {
+   "pillar_red_on_ground": 3.19,
+   "keyline_needed": false,
+   "allowed": false
+  }
+ },
+ "grade_line_code": {
+  "documented": {
+   "v7_value": "documented",
+   "word": "Documented",
+   "texture": "solid",
+   "per_line_width": null,
+   "cap": "butt",
+   "at_widths": {
+    "2": null,
+    "3": null,
+    "6": null
+   },
+   "fitted_on_168_px": {
+    "2": null,
+    "3": null,
+    "6": null
+   },
+   "v7_renderer": null
+  },
+  "wellSupported": {
+   "v7_value": "well-supported",
+   "word": "Well supported",
+   "texture": "solid",
+   "per_line_width": null,
+   "cap": "butt",
+   "at_widths": {
+    "2": null,
+    "3": null,
+    "6": null
+   },
+   "fitted_on_168_px": {
+    "2": null,
+    "3": null,
+    "6": null
+   },
+   "v7_renderer": null
+  },
+  "plausible": {
+   "v7_value": "plausible",
+   "word": "Plausible",
+   "texture": "dashed",
+   "per_line_width": [
+    4,
+    2
+   ],
+   "cap": "butt",
+   "at_widths": {
+    "2": [
+     8,
+     4
+    ],
+    "3": [
+     12,
+     6
+    ],
+    "6": [
+     24,
+     12
+    ]
+   },
+   "fitted_on_168_px": {
+    "2": [
+     8.2,
+     4.1
+    ],
+    "3": [
+     11.59,
+     5.79
+    ],
+    "6": [
+     24.0,
+     12.0
+    ]
+   },
+   "v7_renderer": "9 4"
+  },
+  "contested": {
+   "v7_value": "plausible_contested",
+   "word": "Contested",
+   "texture": "dash-dot",
+   "per_line_width": [
+    4,
+    1.5,
+    1,
+    1.5
+   ],
+   "cap": "butt",
+   "at_widths": {
+    "2": [
+     8,
+     3.0,
+     2,
+     3.0
+    ],
+    "3": [
+     12,
+     4.5,
+     3,
+     4.5
+    ],
+    "6": [
+     24,
+     9.0,
+     6,
+     9.0
+    ]
+   },
+   "fitted_on_168_px": {
+    "2": [
+     8.0,
+     3.0,
+     2.0,
+     3.0
+    ],
+    "3": [
+     12.92,
+     4.85,
+     3.23,
+     4.85
+    ],
+    "6": [
+     24.0,
+     9.0,
+     6.0,
+     9.0
+    ]
+   },
+   "v7_renderer": "9 3 2 3"
+  },
+  "hypothesis": {
+   "v7_value": "hypothesis",
+   "word": "Hypothesis",
+   "texture": "dotted",
+   "per_line_width": [
+    0,
+    2.5
+   ],
+   "cap": "round",
+   "at_widths": {
+    "2": [
+     0,
+     5.0
+    ],
+    "3": [
+     0,
+     7.5
+    ],
+    "6": [
+     0,
+     15.0
+    ]
+   },
+   "fitted_on_168_px": {
+    "2": [
+     0,
+     5.03
+    ],
+    "3": [
+     0,
+     7.5
+    ],
+    "6": [
+     0,
+     14.73
+    ]
+   },
+   "v7_renderer": "2 4"
+  },
+  "conceptual": {
+   "v7_value": null,
+   "word": "Conceptual step",
+   "texture": "hollow",
+   "per_line_width": null,
+   "cap": "butt",
+   "at_widths": {
+    "2": null,
+    "3": null,
+    "6": null
+   },
+   "fitted_on_168_px": {
+    "2": null,
+    "3": null,
+    "6": null
+   },
+   "v7_renderer": null
+  }
+ },
+ "data_drawn": {
+  "turnout_2024": {
+   "breaks": [
+    58,
+    62,
+    66,
+    70
+   ],
+   "states": {
+    "AK": {
+     "name": "Alaska",
+     "pct": 62.1,
+     "moe": 4.1,
+     "step": 3
+    },
+    "AL": {
+     "name": "Alabama",
+     "pct": 58.7,
+     "moe": 4.5,
+     "step": 2
+    },
+    "AR": {
+     "name": "Arkansas",
+     "pct": 52.8,
+     "moe": 2.7,
+     "step": 1
+    },
+    "AZ": {
+     "name": "Arizona",
+     "pct": 61.7,
+     "moe": 3.2,
+     "step": 2
+    },
+    "CA": {
+     "name": "California",
+     "pct": 64.7,
+     "moe": 1.6,
+     "step": 3
+    },
+    "CO": {
+     "name": "Colorado",
+     "pct": 70.1,
+     "moe": 5.0,
+     "step": 5
+    },
+    "CT": {
+     "name": "Connecticut",
+     "pct": 66.3,
+     "moe": 3.4,
+     "step": 4
+    },
+    "DC": {
+     "name": "District of Columbia",
+     "pct": 79.5,
+     "moe": 3.3,
+     "step": 5
+    },
+    "DE": {
+     "name": "Delaware",
+     "pct": 69.8,
+     "moe": 3.7,
+     "step": 4
+    },
+    "FL": {
+     "name": "Florida",
+     "pct": 60.3,
+     "moe": 1.9,
+     "step": 2
+    },
+    "GA": {
+     "name": "Georgia",
+     "pct": 64.4,
+     "moe": 2.6,
+     "step": 3
+    },
+    "HI": {
+     "name": "Hawaii",
+     "pct": 58.5,
+     "moe": 3.4,
+     "step": 2
+    },
+    "IA": {
+     "name": "Iowa",
+     "pct": 71.8,
+     "moe": 4.4,
+     "step": 5
+    },
+    "ID": {
+     "name": "Idaho",
+     "pct": 65.2,
+     "moe": 2.2,
+     "step": 3
+    },
+    "IL": {
+     "name": "Illinois",
+     "pct": 65.9,
+     "moe": 3.0,
+     "step": 3
+    },
+    "IN": {
+     "name": "Indiana",
+     "pct": 60.7,
+     "moe": 3.4,
+     "step": 2
+    },
+    "KS": {
+     "name": "Kansas",
+     "pct": 70.7,
+     "moe": 5.6,
+     "step": 5
+    },
+    "KY": {
+     "name": "Kentucky",
+     "pct": 67.7,
+     "moe": 3.6,
+     "step": 4
+    },
+    "LA": {
+     "name": "Louisiana",
+     "pct": 58.0,
+     "moe": 3.6,
+     "step": 2
+    },
+    "MA": {
+     "name": "Massachusetts",
+     "pct": 68.9,
+     "moe": 3.1,
+     "step": 4
+    },
+    "MD": {
+     "name": "Maryland",
+     "pct": 71.1,
+     "moe": 3.6,
+     "step": 5
+    },
+    "ME": {
+     "name": "Maine",
+     "pct": 67.1,
+     "moe": 3.5,
+     "step": 4
+    },
+    "MI": {
+     "name": "Michigan",
+     "pct": 72.3,
+     "moe": 2.9,
+     "step": 5
+    },
+    "MN": {
+     "name": "Minnesota",
+     "pct": 75.9,
+     "moe": 2.9,
+     "step": 5
+    },
+    "MO": {
+     "name": "Missouri",
+     "pct": 69.5,
+     "moe": 3.3,
+     "step": 4
+    },
+    "MS": {
+     "name": "Mississippi",
+     "pct": 68.9,
+     "moe": 2.8,
+     "step": 4
+    },
+    "MT": {
+     "name": "Montana",
+     "pct": 69.2,
+     "moe": 2.5,
+     "step": 4
+    },
+    "NC": {
+     "name": "North Carolina",
+     "pct": 64.6,
+     "moe": 2.7,
+     "step": 3
+    },
+    "ND": {
+     "name": "North Dakota",
+     "pct": 71.2,
+     "moe": 2.7,
+     "step": 5
+    },
+    "NE": {
+     "name": "Nebraska",
+     "pct": 67.4,
+     "moe": 4.0,
+     "step": 4
+    },
+    "NH": {
+     "name": "New Hampshire",
+     "pct": 71.9,
+     "moe": 3.4,
+     "step": 5
+    },
+    "NJ": {
+     "name": "New Jersey",
+     "pct": 72.5,
+     "moe": 2.8,
+     "step": 5
+    },
+    "NM": {
+     "name": "New Mexico",
+     "pct": 66.0,
+     "moe": 3.7,
+     "step": 4
+    },
+    "NV": {
+     "name": "Nevada",
+     "pct": 66.9,
+     "moe": 2.9,
+     "step": 4
+    },
+    "NY": {
+     "name": "New York",
+     "pct": 59.2,
+     "moe": 2.6,
+     "step": 2
+    },
+    "OH": {
+     "name": "Ohio",
+     "pct": 67.4,
+     "moe": 2.5,
+     "step": 4
+    },
+    "OK": {
+     "name": "Oklahoma",
+     "pct": 59.7,
+     "moe": 3.1,
+     "step": 2
+    },
+    "OR": {
+     "name": "Oregon",
+     "pct": 75.3,
+     "moe": 2.8,
+     "step": 5
+    },
+    "PA": {
+     "name": "Pennsylvania",
+     "pct": 69.7,
+     "moe": 2.3,
+     "step": 4
+    },
+    "RI": {
+     "name": "Rhode Island",
+     "pct": 70.0,
+     "moe": 4.0,
+     "step": 5
+    },
+    "SC": {
+     "name": "South Carolina",
+     "pct": 62.7,
+     "moe": 3.2,
+     "step": 3
+    },
+    "SD": {
+     "name": "South Dakota",
+     "pct": 58.9,
+     "moe": 3.8,
+     "step": 2
+    },
+    "TN": {
+     "name": "Tennessee",
+     "pct": 64.8,
+     "moe": 2.6,
+     "step": 3
+    },
+    "TX": {
+     "name": "Texas",
+     "pct": 57.9,
+     "moe": 2.3,
+     "step": 1
+    },
+    "UT": {
+     "name": "Utah",
+     "pct": 66.9,
+     "moe": 3.1,
+     "step": 4
+    },
+    "VA": {
+     "name": "Virginia",
+     "pct": 72.9,
+     "moe": 2.4,
+     "step": 5
+    },
+    "VT": {
+     "name": "Vermont",
+     "pct": 71.7,
+     "moe": 3.1,
+     "step": 5
+    },
+    "WA": {
+     "name": "Washington",
+     "pct": 70.0,
+     "moe": 4.0,
+     "step": 5
+    },
+    "WI": {
+     "name": "Wisconsin",
+     "pct": 72.2,
+     "moe": 3.4,
+     "step": 5
+    },
+    "WV": {
+     "name": "West Virginia",
+     "pct": 59.5,
+     "moe": 5.5,
+     "step": 2
+    },
+    "WY": {
+     "name": "Wyoming",
+     "pct": 63.8,
+     "moe": 2.4,
+     "step": 3
+    }
+   },
+   "united_states": 65.3,
+   "source_line": "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a, reported voting for states, November 2024, 50 states and DC. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over; state margins of error reach 5.6 points."
+  },
+  "jobs": {
+   "window": "January 2022 to September 2026",
+   "window_reason": "Every jobs chart on this sheet runs from January 2022 to September 2026, the window S13 and S14 use: three full years before the January 2025 inauguration and every month since. The 12-month periods end each September, so none splits at the inauguration.",
+   "source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all employees by sector, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.",
+   "change_since_january_2022_pct": {
+    "Mining and logging": 5.02,
+    "Construction": 10.13,
+    "Manufacturing": 0.7,
+    "Wholesale trade": 3.87,
+    "Retail trade": 0.33,
+    "Transportation and warehousing": 1.87,
+    "Utilities": 11.1,
+    "Information": -8.21,
+    "Financial activities": 1.66,
+    "Professional and business services": 1.35,
+    "Private educational services": 9.11,
+    "Health care and social assistance": 18.84,
+    "Leisure and hospitality": 10.7,
+    "Other services": 7.78,
+    "Government": 5.8
+   },
+   "lead": "Health care and social assistance",
+   "twelve_month_change_pct": {
+    "Mining and logging": {
+     "2023-09": 4.4,
+     "2024-09": -2.96,
+     "2025-09": -2.73,
+     "2026-09": 0.33
+    },
+    "Construction": {
+     "2023-09": 2.82,
+     "2024-09": 2.5,
+     "2025-09": 0.01,
+     "2026-09": 1.32
+    },
+    "Manufacturing": {
+     "2023-09": 0.18,
+     "2024-09": -0.89,
+     "2025-09": -1.14,
+     "2026-09": 0.32
+    },
+    "Wholesale trade": {
+     "2023-09": 1.57,
+     "2024-09": -0.43,
+     "2025-09": -0.78,
+     "2026-09": 0.44
+    },
+    "Retail trade": {
+     "2023-09": 0.21,
+     "2024-09": -0.48,
+     "2025-09": -0.02,
+     "2026-09": 0.17
+    },
+    "Transportation and warehousing": {
+     "2023-09": -0.47,
+     "2024-09": 0.97,
+     "2025-09": -0.61,
+     "2026-09": -0.15
+    },
+    "Utilities": {
+     "2023-09": 2.71,
+     "2024-09": 3.02,
+     "2025-09": 0.74,
+     "2026-09": 1.68
+    },
+    "Information": {
+     "2023-09": -3.88,
+     "2024-09": -2.42,
+     "2025-09": -1.52,
+     "2026-09": -4.2
+    },
+    "Financial activities": {
+     "2023-09": 0.98,
+     "2024-09": -0.26,
+     "2025-09": 0.29,
+     "2026-09": -1.16
+    },
+    "Professional and business services": {
+     "2023-09": -0.0,
+     "2024-09": -0.96,
+     "2025-09": -0.74,
+     "2026-09": 0.55
+    },
+    "Private educational services": {
+     "2023-09": 2.48,
+     "2024-09": 3.55,
+     "2025-09": 0.83,
+     "2026-09": -0.1
+    },
+    "Health care and social assistance": {
+     "2023-09": 4.79,
+     "2024-09": 4.19,
+     "2025-09": 3.37,
+     "2026-09": 2.22
+    },
+    "Leisure and hospitality": {
+     "2023-09": 3.68,
+     "2024-09": 0.8,
+     "2025-09": 0.78,
+     "2026-09": 0.37
+    },
+    "Other services": {
+     "2023-09": 2.67,
+     "2024-09": 1.29,
+     "2025-09": 0.77,
+     "2026-09": 0.57
+    },
+    "Government": {
+     "2023-09": 2.92,
+     "2024-09": 2.18,
+     "2025-09": 0.4,
+     "2026-09": -0.92
+    }
+   },
+   "diverging_breaks": [
+    -2.0,
+    -0.5,
+    0.5,
+    2.0
+   ],
+   "diverging_steps": {
+    "Mining and logging": {
+     "2023-09": 5,
+     "2024-09": 1,
+     "2025-09": 1,
+     "2026-09": 3
+    },
+    "Construction": {
+     "2023-09": 5,
+     "2024-09": 5,
+     "2025-09": 3,
+     "2026-09": 4
+    },
+    "Manufacturing": {
+     "2023-09": 3,
+     "2024-09": 2,
+     "2025-09": 2,
+     "2026-09": 3
+    },
+    "Wholesale trade": {
+     "2023-09": 4,
+     "2024-09": 3,
+     "2025-09": 2,
+     "2026-09": 3
+    },
+    "Retail trade": {
+     "2023-09": 3,
+     "2024-09": 3,
+     "2025-09": 3,
+     "2026-09": 3
+    },
+    "Transportation and warehousing": {
+     "2023-09": 3,
+     "2024-09": 4,
+     "2025-09": 2,
+     "2026-09": 3
+    },
+    "Utilities": {
+     "2023-09": 5,
+     "2024-09": 5,
+     "2025-09": 4,
+     "2026-09": 4
+    },
+    "Information": {
+     "2023-09": 1,
+     "2024-09": 1,
+     "2025-09": 2,
+     "2026-09": 1
+    },
+    "Financial activities": {
+     "2023-09": 4,
+     "2024-09": 3,
+     "2025-09": 3,
+     "2026-09": 2
+    },
+    "Professional and business services": {
+     "2023-09": 3,
+     "2024-09": 2,
+     "2025-09": 2,
+     "2026-09": 4
+    },
+    "Private educational services": {
+     "2023-09": 5,
+     "2024-09": 5,
+     "2025-09": 4,
+     "2026-09": 3
+    },
+    "Health care and social assistance": {
+     "2023-09": 5,
+     "2024-09": 5,
+     "2025-09": 5,
+     "2026-09": 5
+    },
+    "Leisure and hospitality": {
+     "2023-09": 5,
+     "2024-09": 4,
+     "2025-09": 4,
+     "2026-09": 3
+    },
+    "Other services": {
+     "2023-09": 5,
+     "2024-09": 4,
+     "2025-09": 4,
+     "2026-09": 4
+    },
+    "Government": {
+     "2023-09": 5,
+     "2024-09": 5,
+     "2025-09": 3,
+     "2026-09": 2
+    }
+   },
+   "categorical_four": [
+    "Health care and social assistance",
+    "Government",
+    "Manufacturing",
+    "Information"
+   ],
+   "stack_groups": [
+    "Health care and social assistance",
+    "Government",
+    "Professional and business services"
+   ]
+  }
+ },
+ "capture_verification": {
+  "date": "2026-11-11",
+  "tolerance_delta_e_ok": 0.01,
+  "worst": {
+   "normal": {
+    "samples": 255,
+    "largest_delta_e_ok": 0.0,
+    "at": {
+     "section": "sequential",
+     "kind": "fill",
+     "token_hex": "#C1C8C0",
+     "expected": "#C1C8C0",
+     "sampled": "#C1C8C0",
+     "delta_e_ok": 0.0
+    },
+    "all_within_tolerance": true
+   },
+   "grayscale": {
+    "samples": 51,
+    "largest_delta_e_ok": 0.0,
+    "at": {
+     "section": "sequential",
+     "kind": "fill",
+     "token_hex": "#C1C8C0",
+     "expected": "#C6C6C6",
+     "sampled": "#C6C6C6",
+     "delta_e_ok": 0.0,
+     "if_linear_light": "#C6C6C6",
+     "delta_e_linear": 0.0
+    },
+    "all_within_tolerance": true
+   },
+   "protanopia": {
+    "samples": 51,
+    "largest_delta_e_ok": 0.0,
+    "at": {
+     "section": "sequential",
+     "kind": "fill",
+     "token_hex": "#C1C8C0",
+     "expected": "#C9C6C0",
+     "sampled": "#C9C6C0",
+     "delta_e_ok": 0.0
+    },
+    "all_within_tolerance": true
+   },
+   "deuteranopia": {
+    "samples": 51,
+    "largest_delta_e_ok": 0.001,
+    "at": {
+     "section": "sequential",
+     "kind": "fill",
+     "token_hex": "#97ACA4",
+     "expected": "#A7A6A4",
+     "sampled": "#A7A6A5",
+     "delta_e_ok": 0.001
+    },
+    "all_within_tolerance": true
+   },
+   "tritanopia": {
+    "samples": 51,
+    "largest_delta_e_ok": 0.0,
+    "at": {
+     "section": "sequential",
+     "kind": "fill",
+     "token_hex": "#C1C8C0",
+     "expected": "#C1C7C6",
+     "sampled": "#C1C7C6",
+     "delta_e_ok": 0.0
+    },
+    "all_within_tolerance": true
+   }
+  },
+  "samples": 459,
+  "method": "Each probed swatch is sampled in its capture, 15 percent in from its left edge and a quarter down, and compared with the token color (normal), the luma grayscale of CSS filter grayscale(1) (grayscale), or this script's Machado simulation (the three color-vision captures)"
+ }
+}

@@ -1,0 +1,9 @@
+year,election_type,age_group,base,voted_pct,total_voting_age_population_thousands,note
+2020,presidential,18_to_24,citizen_voting_age_population,51.4,28659,
+2024,presidential,18_to_24,citizen_voting_age_population,47.7,29986,
+2020,presidential,25_to_44,citizen_voting_age_population,62.6,86429,
+2024,presidential,25_to_44,citizen_voting_age_population,60.2,88765,
+2020,presidential,45_to_64,citizen_voting_age_population,71,81912,
+2024,presidential,45_to_64,citizen_voting_age_population,70,81204,
+2020,presidential,65_and_over,citizen_voting_age_population,74.5,55273,
+2024,presidential,65_and_over,citizen_voting_age_population,74.7,60408,

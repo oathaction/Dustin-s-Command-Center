@@ -1,0 +1,40 @@
+year,measure,age_group,vintage,series_variant,comparable_with,percent,moe_pct,below_poverty_thousands,moe_thousands,population_thousands,source_table,note
+2009,official,under_18,p60-290,standard,both,20.7,,15450,,74580,P60-290 Table 3,
+2009,spm,under_18,p60-290,standard,both,17,0.5,12700,389,74550,P60-290 Table 8,Census footnote: Implementation of 2010 Census-based population controls.
+2010,official,under_18,p60-290,standard,both,22,,16290,,73870,P60-290 Table 3,Census footnote: Implementation of 2010 Census-based population controls.
+2010,spm,under_18,p60-290,standard,both,17.9,0.5,13290,372,74300,P60-290 Table 8,
+2011,official,under_18,p60-290,standard,both,21.9,,16130,,73740,P60-290 Table 3,
+2011,spm,under_18,p60-290,standard,both,18,0.5,13350,376,74110,P60-290 Table 8,
+2012,official,under_18,p60-290,standard,both,21.8,,16070,,73720,P60-290 Table 3,
+2012,spm,under_18,p60-290,standard,both,18,0.5,13360,366,74190,P60-290 Table 8,
+2013,official,under_18,p60-290,traditional_income_questions,earlier,19.9,,14660,,73630,P60-290 Table 3,"2013 estimate from the 68,000-address subsample that received the traditional income questions; compare with 2012 and earlier"
+2013,official,under_18,p60-290,redesigned_income_questions,later,21.5,,15800,,73440,P60-290 Table 3,"2013 estimate from the 30,000-address subsample that received the redesigned income questions; compare with 2014 and later"
+2013,spm,under_18,p60-290,traditional_income_questions,earlier,16.4,0.5,12180,388,74050,P60-290 Table 8,"2013 estimate from the 68,000-address subsample that received the traditional income questions; compare with 2012 and earlier"
+2013,spm,under_18,p60-290,redesigned_income_questions,later,18.1,0.9,13370,642,73790,P60-290 Table 8,"2013 estimate from the 30,000-address subsample that received the redesigned income questions; compare with 2014 and later"
+2014,official,under_18,p60-290,standard,both,21.1,,15540,,73560,P60-290 Table 3,
+2014,spm,under_18,p60-290,standard,both,17.1,0.5,12630,359,73920,P60-290 Table 8,
+2015,official,under_18,p60-290,standard,both,19.7,,14510,,73650,P60-290 Table 3,
+2015,spm,under_18,p60-290,standard,both,16.2,0.5,12030,370,74060,P60-290 Table 8,
+2016,official,under_18,p60-290,standard,both,18,,13250,,73590,P60-290 Table 3,
+2016,spm,under_18,p60-290,standard,both,15.2,0.5,11280,349,74050,P60-290 Table 8,
+2017,official,under_18,p60-290,legacy_processing,earlier,17.5,,12810,,73360,P60-290 Table 3,2017 estimate from the earlier CPS ASEC processing system; compare with 2016 and earlier
+2017,official,under_18,p60-290,updated_processing,later,17.4,,12760,,73470,P60-290 Table 3,2017 estimate from the updated CPS ASEC processing system; compare with 2018 and later
+2017,spm,under_18,p60-290,legacy_processing,earlier,15.6,0.5,11520,399,73960,P60-290 Table 8,2017 estimate from the earlier CPS ASEC processing system; compare with 2016 and earlier
+2017,spm,under_18,p60-290,updated_processing,later,14.2,0.5,10530,394,74070,P60-290 Table 8,2017 estimate from the updated CPS ASEC processing system; compare with 2018 and later
+2018,official,under_18,p60-290,standard,both,16.2,,11870,,73280,P60-290 Table 3,
+2018,spm,under_18,p60-290,standard,both,13.7,0.5,10100,381,73790,P60-290 Table 8,
+2019,official,under_18,p60-290,standard,both,14.4,,10470,,72640,P60-290 Table 3,
+2019,spm,under_18,p60-290,original_2011_method,earlier,12.5,0.5,9119,354,73150,P60-290 Table 8,2019 estimate under the original 2011 SPM methodology; compare with 2018 and earlier
+2019,spm,under_18,p60-290,corrected_2026_method,later,12.4,0.5,9071,355,73150,P60-290 Table 8,2019 estimate under the SPM methodology used for 2019 onward (revised 2021 method with the July 2026 threshold correction)
+2020,official,under_18,p60-290,standard,both,16,,11790,,73540,P60-290 Table 3,Census footnote: Implementation of 2020 Census-based population controls.
+2020,spm,under_18,p60-290,standard,both,9.6,0.4,7120,332,74030,P60-290 Table 8,Census footnote: Implementation of 2020 Census-based population controls.
+2021,official,under_18,p60-290,standard,both,15.3,,11150,,72940,P60-290 Table 3,
+2021,spm,under_18,p60-290,standard,both,5.1,0.4,3747,264,73470,P60-290 Table 8,
+2022,official,under_18,p60-290,standard,both,15,,10780,,71950,P60-290 Table 3,
+2022,spm,under_18,p60-290,standard,both,12,0.5,8731,356,72500,P60-290 Table 8,
+2023,official,under_18,p60-290,standard,both,15.3,,11020,,72220,P60-290 Table 3,
+2023,spm,under_18,p60-290,standard,both,13.5,0.6,9841,403,72770,P60-290 Table 8,
+2024,official,under_18,p60-290,standard,both,14.4,,10370,,72040,P60-290 Table 3,Census footnote: Implementation of Vintage 2025 population controls.
+2024,spm,under_18,p60-290,standard,both,13.5,0.5,9753,386,72460,P60-290 Table 8,Census footnote: Implementation of Vintage 2025 population controls.
+2025,official,under_18,p60-290,standard,both,13.4,,9607,,71660,P60-290 Table 3,
+2025,spm,under_18,p60-290,standard,both,13.4,0.6,9657,399,72080,P60-290 Table 8,

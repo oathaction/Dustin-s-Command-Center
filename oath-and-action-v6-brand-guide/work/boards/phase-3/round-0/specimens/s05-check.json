@@ -1,0 +1,37 @@
+{
+ "id": "S05",
+ "form": "multi-line-highlight",
+ "spec": "work/build/chart-kit/specs/s05.json",
+ "rows": 132,
+ "drawings": [
+  {
+   "ground": "newsprint",
+   "page": 1440,
+   "width": 1024,
+   "height": 200,
+   "svg_bytes": 31208
+  },
+  {
+   "ground": "newsprint",
+   "page": 390,
+   "width": 358,
+   "height": 370,
+   "svg_bytes": 31766
+  },
+  {
+   "ground": "charcoal",
+   "page": 1440,
+   "width": 1024,
+   "height": 200,
+   "svg_bytes": 31208
+  },
+  {
+   "ground": "charcoal",
+   "page": 390,
+   "width": 358,
+   "height": 370,
+   "svg_bytes": 31766
+  }
+ ],
+ "faults": []
+}

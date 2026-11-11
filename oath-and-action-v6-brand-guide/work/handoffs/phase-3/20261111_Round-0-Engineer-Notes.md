@@ -8,6 +8,10 @@ Oath & Action Edition 06, Phase 3, round 0, November 11, 2026. Written by the en
 
 Work in progress. The Contracts are written first, as the brief asks. The rest of this file fills in as each step lands.
 
+Progress, November 11:
+- Data: S01 to S16's data is in `work/build/data/` under C1 (16 tables: 7 public copied byte for byte, 3 derived, 6 Atlas V7), written by `work/build/scripts/phase-3/data_round0_build.py`; `--check` reads the folder back against the contract (0 faults). No sidecar carries the retired disclosure.
+- Kit: `kit.js`, `parts.js`, `kit.css`, `metrics.js` (measured in Chromium from the guide's fonts), `words.json`, `checks.js` and the command `oa-chart.mjs` work end to end on the S14 fixture: 4 drawings, SVG, PNG and CSV exports, captures with grayscale, parity between the page and the Node drawing, 0 faults. Forms built so far: columns-moving-average, line-event-notes, ranked-bar, big-number.
+
 ## Contracts
 
 These are the formats every agent follows in round 0. The brief's contract points 1 to 7 stand; this section makes them exact.
@@ -59,10 +63,10 @@ Every row has the same keys, the sidecar's `columns` in order; each value is a s
 | `columns` | object | One entry per column, in file order: `{"year": {"type": "year", "description": "calendar year"}}`. `type` is one of `number`, `integer`, `text`, `category`, `date`, `month`, `year`, `code`, `id`, `boolean`. An optional `unit` names the column's unit, such as `percent` or `thousands of jobs` |
 | `printed_source_line` | string | The exact line a chart prints, starting `Source: `, in H04's order: publisher, title or table, period, geography, date retrieved, the qualification that matters |
 | `ledger_row` | string | Its row in the research ledger's Part 7, such as `P7-014`; for the 16 Phase 2 datasets, the Phase 2 ledger row it came from, or `none yet` with a request under "Requests" |
-| `domain` | string | The Atlas V7 domain it serves for Rule 01.9: one of `D01` to `D10` (`D02` Elections and representation, `D04` Congress, agencies and public services, `D07` Work, pay and bargaining power, `D08` Taxes, wealth and economic security, `D09` Housing, health care and getting ahead, and the rest as V7's `domains` lists them) |
+| `domain` | string | The Atlas V7 domain it serves for Rule 01.9: one of `D01` to `D10` (`D02` Elections and representation, `D04` Congress, agencies and public services, `D07` Work, pay and bargaining power, `D08` Taxes, wealth and economic security, `D09` Housing, health care and getting ahead, `D10` Taking part, trust and shared norms, and the rest as V7's `domains` lists them), or `all` for an atlas-wide table that draws on every domain alike (the claims register, the eight scenarios, the four history threads), which the Rule 01.9 count lists apart and adds to no domain. `domain_note` gives the reason in one sentence where the pick is not obvious |
 | `states` | list | USPS codes of the states it names as examples, or `[]` when it names none or covers all states evenly |
 
-Optional fields: `snapshot` (V7 only, `2026-10-15`), `derived_from` (list of data file names) and `derivation` (one sentence on the method, derived only), `which_vintage_to_chart`, `breaks_in_series`, `unconfirmed`, `raw_files_sha256_prefix`, `notes` (list), and any Phase 2 field carried with the copy. A sidecar never carries the retired disclosure or a `required_text` that holds it (DR-100, D2-1756); the data check fails one that does.
+Optional fields: `source_line_variants` (an object of other exact printed lines for the same file, such as a line for the citizen rows only; a spec's source line may equal any of them), `domain_note`, `snapshot` (V7 only, `2026-10-15`), `derived_from` (list of data file names) and `derivation` (one sentence on the method, derived only), `which_vintage_to_chart`, `breaks_in_series`, `unconfirmed`, `raw_files_sha256_prefix`, `notes` (list), and any Phase 2 field carried with the copy. A sidecar never carries the retired disclosure or a `required_text` that holds it (DR-100, D2-1756); the data check fails one that does.
 
 **Rule 01.9 counting.** A specimen's domain and states sit in its spec (C2), copied from its dataset's sidecar unless the spec says otherwise with a reason in `notes_internal`. The count script reads the specs.
 
@@ -91,7 +95,7 @@ Optional fields: `snapshot` (V7 only, `2026-10-15`), `derived_from` (list of dat
 | `reading_guide` | no | One or two sentences on how to read the chart |
 | `measure_line` | yes | What is measured, the unit, the period, the geography and, where it applies, the window's reason (H09) |
 | `notes` | no | List of note sentences printed under the chart |
-| `source_line` | yes | The exact printed line, starting `Source: `. With one dataset it equals the sidecar's `printed_source_line`; with several it names each one's publisher, period and date retrieved |
+| `source_line` | yes | The exact printed line, starting `Source: `. With one dataset it equals the sidecar's `printed_source_line` or one of its `source_line_variants`; with several it names each one's publisher, period and date retrieved |
 | `credit` | no | A credit line such as `Chart: Oath & Action` |
 | `illustrative` | yes | `false`, or the exact label printed beside the chart, `"Illustrative data"` |
 | `alt` | yes | The chart's text alternative: what it shows and its main finding, in one to three sentences |
@@ -99,10 +103,13 @@ Optional fields: `snapshot` (V7 only, `2026-10-15`), `derived_from` (list of dat
 | `chart_notes` | no | Words that describe what the drawing shows beyond the table (the key, a shaded band), printed in the table equivalent under "Notes in the chart" |
 | `phone` | yes | `same` (the phone drawing is the same form at 358 px) or `differs` (the form changes at phone width under DR-64, such as arrows becoming a list); `phone_note` says what changes |
 | `artboard` | no | `reading` (720 px, the default), `mid` (600 px) or `wide` (1024 px) at desktop |
-| `domain` | yes | `D01` to `D10` (C1) |
+| `domain` | yes | `D01` to `D10`, or `all` (C1) |
 | `states` | yes | USPS codes the chart singles out, or `[]` |
 | `encode` | yes | Which columns the form draws, by the form's own names (C4's table) |
 | `labels` | no | Words drawn inside the chart, by the form's own names: axis titles, key words, direct labels, `{"value": "words"}` maps for categories |
+| `formats` | no | Number formats the form uses inside the drawing, by the form's names (`x`, `y`, `y_tick`, `y_tick_top` for the top tick only, `value`, `shift` and so on), from the same list as `table` formats, plus `compact-thousands` and `signed-compact-thousands` (3,798.4 as +3.8 million) and `lead:N` in table columns with a `lead` object `{"positive", "negative", "zero"}` ("Republican +1.5") |
+| `scale` | no | `{"y": [lo, hi]}`: the value scale a form draws, in place of a nice one from the data |
+| `phone_notes` | no | Notes printed under the drawing only below 480 px, for words that leave the plot on a phone |
 | `annotations` | no | Notes drawn inside the plot: `[{"at": {"x": "2021-07"}, "text": "...", "place": "above"}]`, by the form's own names |
 | `failure` | no | For a failure plate only: `{"rule": "13.2", "caption_lead": "Fails Rule 13.2.", "exempt": ["title-verb"]}`; a failure the kit cannot draw by its forms is drawn by its maker as a static plate |
 | `notes_internal` | no | Studio notes that never print (decisions, reasons) |
@@ -229,7 +236,8 @@ beside a spec file in the editor's own specimen space, `work/build/guide/specime
 
 ### Contract changes
 
-None yet.
+- November 11, before any other agent's file used them: `domain` may be `all` for an atlas-wide table, with `domain_note`; a sidecar may carry `source_line_variants`.
+- November 11, from the Explainer maker's requests: spec keys `formats`, `scale` and `phone_notes`; table formats `lead:N`, `thousands:0` and `signed-thousands:0` (rounded to the thousand), `compact-thousands`; `table.pivot.row` may be a list, with `pivot.row_words`; an annotation's `phone` object may carry `"hide": true`; the kit sets V7's type word inside a chip when the words before the ID lack it (E7). Each form's own `labels` names are listed in the header comment of its file in `work/build/chart-kit/forms/`.
 
 ## Routine calls
 
@@ -240,7 +248,11 @@ D3-xxx | Chapter 13's chart plates name a `.chart.json` spec beside their fragme
 
 ## Requests
 
-None yet.
+Answers to the Explainer maker's requests (its notes, E1 to E19, R1 and R2), November 11:
+- Done in the kit: E1 (`lead:N`), E2 (`thousands:0`, `signed-thousands:0`), E3, E5 (a `phone.hide`; b `phone_notes`; c `labels.series_key: "phone"` on line-event-notes), E6 (`scale.y`), E7 (typed chips), E8 (`formats.y_tick_top`), E9 (dashed outlines), E10 (key steps by its wrapped height; `labels.key_cols`), E11, E12 (`labels.share_head`; only the first word of the share is bold), E14 (`table.pivot.row` as a list, `pivot.row_words`), E15, E16 (`labels.cut_at`; `bands[].note`), E18 (a `labels.sub` map by row ID; b cell words at the note size in the label ink; c the key title wraps), E19 (labels sit on the side away from the center line; the axis repeats at the bottom, `labels.axis_unit`).
+- Done in the data: E4 (`documented_share` in `v7-claims-by-grade.json`), R1 (variant `source_line_both_measures` in `census-spm-child-poverty.meta.json`). R2 already exists as `source_line_2024_only`.
+- Not done yet: E13 (gap brackets on small multiples), E17 (the mirrored unit chart), E19's "How to read an arrow" sample and side note. Each waits behind the pilot and the gates; S05 and S08 carry their notes meanwhile.
+- To the research lead: the 16 datasets moved in carry `"ledger_row": "none yet"`, since the research ledger has no Part 7 rows for Phase 2's November 6 downloads. Please give each its Part 7 row; I will write the row IDs into the sidecars (`data_round0_build.py`), or you may name them in your notes and I copy them.
 
 ## Tested
 

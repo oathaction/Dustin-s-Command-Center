@@ -1,0 +1,37 @@
+{
+ "id": "S14",
+ "form": "columns-moving-average",
+ "spec": "work/build/chart-kit/specs/s14.json",
+ "rows": 57,
+ "drawings": [
+  {
+   "ground": "newsprint",
+   "page": 1440,
+   "width": 720,
+   "height": 473,
+   "svg_bytes": 15377
+  },
+  {
+   "ground": "newsprint",
+   "page": 390,
+   "width": 358,
+   "height": 421,
+   "svg_bytes": 15254
+  },
+  {
+   "ground": "charcoal",
+   "page": 1440,
+   "width": 720,
+   "height": 473,
+   "svg_bytes": 15377
+  },
+  {
+   "ground": "charcoal",
+   "page": 390,
+   "width": 358,
+   "height": 421,
+   "svg_bytes": 15254
+  }
+ ],
+ "faults": []
+}

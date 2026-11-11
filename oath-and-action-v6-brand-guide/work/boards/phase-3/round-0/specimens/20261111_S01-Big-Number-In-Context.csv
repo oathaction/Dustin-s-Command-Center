@@ -1,0 +1,9 @@
+key,group,value,measure,body,source_id
+support-all,All registered voters,86,percent who favor a ban,survey,N40
+support-republicans,Republicans,87,percent who favor a ban,survey,N40
+support-democrats,Democrats,88,percent who favor a ban,survey,N40
+house-yes,"House, passage of H.R. 7008, July 22, 2026",232,votes for,House,K1908
+house-no,"House, passage of H.R. 7008, July 22, 2026",198,votes against,House,K1908
+senate-yes,"Senate, cloture on the motion to proceed, September 30, 2026",53,votes for,Senate,W035
+senate-no,"Senate, cloture on the motion to proceed, September 30, 2026",47,votes against,Senate,W035
+senate-needed,"Senate, cloture on the motion to proceed, September 30, 2026",60,votes needed (three-fifths),Senate,W035

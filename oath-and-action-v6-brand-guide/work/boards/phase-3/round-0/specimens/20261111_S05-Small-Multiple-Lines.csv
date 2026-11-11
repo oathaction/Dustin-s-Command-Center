@@ -1,0 +1,133 @@
+year,group,rate_pct,moe_pct,race_definition,series_variant,source_table,note
+1994,all_households,64,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+1994,black,42.3,,pre_2003_race_categories,standard,"HVS Annual Statistics 2025, Table 22",
+1994,hispanic,41.2,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+1994,non_hispanic_white,70,,pre_2003_race_categories,standard,"HVS Annual Statistics 2025, Table 22",
+1995,all_households,64.7,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+1995,black,42.7,,pre_2003_race_categories,standard,"HVS Annual Statistics 2025, Table 22",
+1995,hispanic,42.1,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+1995,non_hispanic_white,70.9,,pre_2003_race_categories,standard,"HVS Annual Statistics 2025, Table 22",
+1996,all_households,65.4,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+1996,black,44.1,,pre_2003_race_categories,standard,"HVS Annual Statistics 2025, Table 22","Census footnote 1: From 1996 to 2002, those answering 'other' for race were allocated to one of the 4 race categories"
+1996,hispanic,42.8,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+1996,non_hispanic_white,71.7,,pre_2003_race_categories,standard,"HVS Annual Statistics 2025, Table 22","Census footnote 1: From 1996 to 2002, those answering 'other' for race were allocated to one of the 4 race categories"
+1997,all_households,65.7,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+1997,black,44.8,,pre_2003_race_categories,standard,"HVS Annual Statistics 2025, Table 22","Census footnote 1: From 1996 to 2002, those answering 'other' for race were allocated to one of the 4 race categories"
+1997,hispanic,43.3,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+1997,non_hispanic_white,72,,pre_2003_race_categories,standard,"HVS Annual Statistics 2025, Table 22","Census footnote 1: From 1996 to 2002, those answering 'other' for race were allocated to one of the 4 race categories"
+1998,all_households,66.3,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+1998,black,45.6,,pre_2003_race_categories,standard,"HVS Annual Statistics 2025, Table 22","Census footnote 1: From 1996 to 2002, those answering 'other' for race were allocated to one of the 4 race categories"
+1998,hispanic,44.7,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+1998,non_hispanic_white,72.6,,pre_2003_race_categories,standard,"HVS Annual Statistics 2025, Table 22","Census footnote 1: From 1996 to 2002, those answering 'other' for race were allocated to one of the 4 race categories"
+1999,all_households,66.8,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+1999,black,46.3,,pre_2003_race_categories,standard,"HVS Annual Statistics 2025, Table 22","Census footnote 1: From 1996 to 2002, those answering 'other' for race were allocated to one of the 4 race categories"
+1999,hispanic,45.5,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+1999,non_hispanic_white,73.2,,pre_2003_race_categories,standard,"HVS Annual Statistics 2025, Table 22","Census footnote 1: From 1996 to 2002, those answering 'other' for race were allocated to one of the 4 race categories"
+2000,all_households,67.4,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2000,black,47.2,,pre_2003_race_categories,standard,"HVS Annual Statistics 2025, Table 22","Census footnote 1: From 1996 to 2002, those answering 'other' for race were allocated to one of the 4 race categories"
+2000,hispanic,46.3,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2000,non_hispanic_white,73.8,,pre_2003_race_categories,standard,"HVS Annual Statistics 2025, Table 22","Census footnote 1: From 1996 to 2002, those answering 'other' for race were allocated to one of the 4 race categories"
+2001,all_households,67.8,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2001,black,47.7,,pre_2003_race_categories,standard,"HVS Annual Statistics 2025, Table 22","Census footnote 1: From 1996 to 2002, those answering 'other' for race were allocated to one of the 4 race categories"
+2001,hispanic,47.3,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2001,non_hispanic_white,74.3,,pre_2003_race_categories,standard,"HVS Annual Statistics 2025, Table 22","Census footnote 1: From 1996 to 2002, those answering 'other' for race were allocated to one of the 4 race categories"
+2002,all_households,67.9,,not_applicable,original,"HVS Annual Statistics 2025, Table 22",Unrevised 2002 value; the table also gives a 2002 value revised based on the 2000 Census
+2002,black,47.3,,pre_2003_race_categories,original,"HVS Annual Statistics 2025, Table 22","Unrevised 2002 value; the table also gives a 2002 value revised based on the 2000 Census; Census footnote 1: From 1996 to 2002, those answering 'other' for race were allocated to one of the 4 race categories"
+2002,hispanic,48.2,,not_applicable,original,"HVS Annual Statistics 2025, Table 22",Unrevised 2002 value; the table also gives a 2002 value revised based on the 2000 Census
+2002,non_hispanic_white,74.5,,pre_2003_race_categories,original,"HVS Annual Statistics 2025, Table 22","Unrevised 2002 value; the table also gives a 2002 value revised based on the 2000 Census; Census footnote 1: From 1996 to 2002, those answering 'other' for race were allocated to one of the 4 race categories"
+2002,all_households,67.9,,not_applicable,revised_2000_census,"HVS Annual Statistics 2025, Table 22",Census footnote r1: Revised based on the 2000 Census.
+2002,black,47.4,,pre_2003_race_categories,revised_2000_census,"HVS Annual Statistics 2025, Table 22","Census footnote r1: Revised based on the 2000 Census.; Census footnote 1: From 1996 to 2002, those answering 'other' for race were allocated to one of the 4 race categories"
+2002,hispanic,47,,not_applicable,revised_2000_census,"HVS Annual Statistics 2025, Table 22",Census footnote r1: Revised based on the 2000 Census.
+2002,non_hispanic_white,74.7,,pre_2003_race_categories,revised_2000_census,"HVS Annual Statistics 2025, Table 22","Census footnote r1: Revised based on the 2000 Census.; Census footnote 1: From 1996 to 2002, those answering 'other' for race were allocated to one of the 4 race categories"
+2003,all_households,68.3,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2003,black,48.1,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2003,hispanic,46.7,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2003,non_hispanic_white,75.4,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2004,all_households,69,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2004,black,49.1,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2004,hispanic,48.1,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2004,non_hispanic_white,76,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2005,all_households,68.9,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2005,black,48.2,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2005,hispanic,49.5,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2005,non_hispanic_white,75.8,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2006,all_households,68.8,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2006,black,47.9,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2006,hispanic,49.7,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2006,non_hispanic_white,75.8,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2007,all_households,68.1,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2007,black,47.2,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2007,hispanic,49.7,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2007,non_hispanic_white,75.2,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2008,all_households,67.8,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2008,black,47.4,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2008,hispanic,49.1,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2008,non_hispanic_white,75,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2009,all_households,67.4,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2009,black,46.2,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2009,hispanic,48.4,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2009,non_hispanic_white,74.8,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2010,all_households,66.9,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2010,black,45.4,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2010,hispanic,47.5,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2010,non_hispanic_white,74.4,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2011,all_households,66.1,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2011,black,44.9,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2011,hispanic,46.9,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2011,non_hispanic_white,73.8,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2012,all_households,65.4,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2012,black,43.9,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2012,hispanic,46.1,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2012,non_hispanic_white,73.5,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2013,all_households,65.1,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2013,black,43.1,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2013,hispanic,46.1,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2013,non_hispanic_white,73.3,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2014,all_households,64.5,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2014,black,43,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2014,hispanic,45.4,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2014,non_hispanic_white,72.6,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2015,all_households,63.7,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2015,black,42.3,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2015,hispanic,45.6,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2015,non_hispanic_white,71.9,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2016,all_households,63.4,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2016,black,41.6,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2016,hispanic,46,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2016,non_hispanic_white,71.9,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2017,all_households,63.9,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2017,black,42.3,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2017,hispanic,46.2,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2017,non_hispanic_white,72.3,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2018,all_households,64.4,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2018,black,42.1,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2018,hispanic,47.1,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2018,non_hispanic_white,73,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2019,all_households,64.6,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2019,black,42.1,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2019,hispanic,47.5,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2019,non_hispanic_white,73.3,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2020,all_households,66.6,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2020,black,45.3,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2020,hispanic,50.1,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2020,non_hispanic_white,75,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2021,all_households,65.5,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2021,black,44.2,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2021,hispanic,48.4,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2021,non_hispanic_white,74.1,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2022,all_households,65.8,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2022,black,45,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2022,hispanic,48.6,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2022,non_hispanic_white,74.4,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2023,all_households,65.9,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2023,black,45.7,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2023,hispanic,49.5,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2023,non_hispanic_white,74.3,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2024,all_households,65.6,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2024,black,45.8,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2024,hispanic,49,,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",
+2024,non_hispanic_white,74.2,,race_alone,standard,"HVS Annual Statistics 2025, Table 22",
+2025,all_households,65.2,0.3,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",Census footnote: no CPS/HVS data were collected for October 2025 because of a lapse in federal funding; the annual 2025 estimate uses the other 11 months
+2025,black,44.7,0.5,race_alone,standard,"HVS Annual Statistics 2025, Table 22",Census footnote: no CPS/HVS data were collected for October 2025 because of a lapse in federal funding; the annual 2025 estimate uses the other 11 months
+2025,hispanic,48.5,0.5,not_applicable,standard,"HVS Annual Statistics 2025, Table 22",Census footnote: no CPS/HVS data were collected for October 2025 because of a lapse in federal funding; the annual 2025 estimate uses the other 11 months
+2025,non_hispanic_white,74.3,0.2,race_alone,standard,"HVS Annual Statistics 2025, Table 22",Census footnote: no CPS/HVS data were collected for October 2025 because of a lapse in federal funding; the annual 2025 estimate uses the other 11 months

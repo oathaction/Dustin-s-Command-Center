@@ -1,0 +1,44 @@
+{
+ "id": "S02",
+ "form": "line-event-notes",
+ "spec": "work/build/chart-kit/specs/s02.json",
+ "rows": 39,
+ "drawings": [
+  {
+   "ground": "newsprint",
+   "page": 1440,
+   "width": 720,
+   "height": 405,
+   "svg_bytes": 10325
+  },
+  {
+   "ground": "newsprint",
+   "page": 390,
+   "width": 358,
+   "height": 342,
+   "svg_bytes": 10031
+  },
+  {
+   "ground": "charcoal",
+   "page": 1440,
+   "width": 720,
+   "height": 405,
+   "svg_bytes": 10325
+  },
+  {
+   "ground": "charcoal",
+   "page": 390,
+   "width": 358,
+   "height": 342,
+   "svg_bytes": 10031
+  }
+ ],
+ "faults": [
+  "layout guard: texts overlap: \"Official measure\" and \"Both measures: 13.4% in 2025. \" (newsprint 390)",
+  "layout guard: texts overlap: \"2013\" and \"2021: the expanded child tax c\" (newsprint 390)",
+  "layout guard: texts overlap: \"2017\" and \"2021: the expanded child tax c\" (newsprint 390)",
+  "layout guard: texts overlap: \"Official measure\" and \"Both measures: 13.4% in 2025. \" (charcoal 390)",
+  "layout guard: texts overlap: \"2013\" and \"2021: the expanded child tax c\" (charcoal 390)",
+  "layout guard: texts overlap: \"2017\" and \"2021: the expanded child tax c\" (charcoal 390)"
+ ]
+}

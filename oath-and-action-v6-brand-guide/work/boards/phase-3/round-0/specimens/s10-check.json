@@ -1,0 +1,37 @@
+{
+ "id": "S10",
+ "form": "percent-bar",
+ "spec": "work/build/chart-kit/specs/s10.json",
+ "rows": 16,
+ "drawings": [
+  {
+   "ground": "newsprint",
+   "page": 1440,
+   "width": 720,
+   "height": 459,
+   "svg_bytes": 15608
+  },
+  {
+   "ground": "newsprint",
+   "page": 390,
+   "width": 358,
+   "height": 910,
+   "svg_bytes": 15536
+  },
+  {
+   "ground": "charcoal",
+   "page": 1440,
+   "width": 720,
+   "height": 459,
+   "svg_bytes": 15608
+  },
+  {
+   "ground": "charcoal",
+   "page": 390,
+   "width": 358,
+   "height": 910,
+   "svg_bytes": 15536
+  }
+ ],
+ "faults": []
+}

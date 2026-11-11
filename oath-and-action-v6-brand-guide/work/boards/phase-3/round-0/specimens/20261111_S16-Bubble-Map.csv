@@ -1,0 +1,52 @@
+code,name,year,citizen_vap_thousands,voted_pct,moe_pct
+AL,Alabama,2024,3779,58.7,4.5
+AK,Alaska,2024,521,62.1,4.1
+AZ,Arizona,2024,5186,61.7,3.2
+AR,Arkansas,2024,2274,52.8,2.7
+CA,California,2024,25327,64.7,1.6
+CO,Colorado,2024,4277,70.1,5
+CT,Connecticut,2024,2608,66.3,3.4
+DE,Delaware,2024,746,69.8,3.7
+DC,District of Columbia,2024,507,79.5,3.3
+FL,Florida,2024,16092,60.3,1.9
+GA,Georgia,2024,7624,64.4,2.6
+HI,Hawaii,2024,1004,58.5,3.4
+ID,Idaho,2024,1428,65.2,2.2
+IL,Illinois,2024,8830,65.9,3
+IN,Indiana,2024,4801,60.7,3.4
+IA,Iowa,2024,2310,71.8,4.4
+KS,Kansas,2024,2041,70.7,5.6
+KY,Kentucky,2024,3178,67.7,3.6
+LA,Louisiana,2024,3273,58,3.6
+ME,Maine,2024,1123,67.1,3.5
+MD,Maryland,2024,4350,71.1,3.6
+MA,Massachusetts,2024,4947,68.9,3.1
+MI,Michigan,2024,7534,72.3,2.9
+MN,Minnesota,2024,4208,75.9,2.9
+MS,Mississippi,2024,2162,68.9,2.8
+MO,Missouri,2024,4664,69.5,3.3
+MT,Montana,2024,881,69.2,2.5
+NE,Nebraska,2024,1377,67.4,4
+NV,Nevada,2024,2230,66.9,2.9
+NH,New Hampshire,2024,1096,71.9,3.4
+NJ,New Jersey,2024,6323,72.5,2.8
+NM,New Mexico,2024,1491,66,3.7
+NY,New York,2024,13667,59.2,2.6
+NC,North Carolina,2024,7695,64.6,2.7
+ND,North Dakota,2024,563,71.2,2.7
+OH,Ohio,2024,8782,67.4,2.5
+OK,Oklahoma,2024,2924,59.7,3.1
+OR,Oregon,2024,3138,75.3,2.8
+PA,Pennsylvania,2024,9789,69.7,2.3
+RI,Rhode Island,2024,811,70,4
+SC,South Carolina,2024,4006,62.7,3.2
+SD,South Dakota,2024,669,58.9,3.8
+TN,Tennessee,2024,5300,64.8,2.6
+TX,Texas,2024,19754,57.9,2.3
+UT,Utah,2024,2324,66.9,3.1
+VT,Vermont,2024,520,71.7,3.1
+VA,Virginia,2024,6259,72.9,2.4
+WA,Washington,2024,5516,70,4
+WV,West Virginia,2024,1355,59.5,5.5
+WI,Wisconsin,2024,4431,72.2,3.4
+WY,Wyoming,2024,443,63.8,2.4
