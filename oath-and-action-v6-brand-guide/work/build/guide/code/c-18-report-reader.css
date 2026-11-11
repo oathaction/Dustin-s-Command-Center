@@ -216,8 +216,9 @@
   display: block;
 }
 
-/* A page's own states. Loading shows in the view, where the page will appear. An error is a message
-   about the page, so it sits under the view, on the surface, drawn as Rule 18.18 draws every message */
+/* A page's own states. Loading shows in the view, where the page will appear. An error is a
+   message about the page, so it sits under the view, on the surface, drawn as Rule 18.18 draws
+   every message */
 .oa-reader-k {
   margin: var(--oa-space-400) 0 var(--oa-space-100);
   font: var(--oa-type-label);

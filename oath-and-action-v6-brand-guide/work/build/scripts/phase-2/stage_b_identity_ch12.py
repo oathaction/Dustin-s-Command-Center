@@ -465,7 +465,7 @@ def _rules():
 # Gate 2's fix pass (CD-S1): the device index is chapter 12's opener, under the intro, and leaves its place after Rule
 # 12.1, so the page carries it once. The systems designer's build keeps the "opener" key it finds.
 EXTRAS = []
-OPENER = {"specimen": "s-12-index", "caption": "The devices this guide sets, the job of each and the rule that sets it."}
+CH_OPENER = {"specimen": "s-12-index", "caption": "The devices this guide sets, the job of each and the rule that sets it."}
 INTRO_ADD = ("Rules 12.1 to 12.3 cover the devices that divide and sign a page: hairlines, watermarks and the monogram "
              "as a small signature. Rule 12.4 says when an open area stays plain and what may sign it.")
 # earlier wordings of INTRO_ADD, replaced in place when the shared file still holds one (round 3, ED 4e, CA-S11; DR-216)
@@ -490,7 +490,7 @@ def write_chapter():
                   "marker on the place a reform acts, a key, a locator, a frame around a process. Each one has a job, and "
                   "the page leaves it out where that job is already done."],
         "rules": [], "related_chapters": []}
-    mine = _smarten({"rules": rules(), "extras": EXTRAS, "intro": [INTRO_ADD], "rel": RELATED_ADD, "opener": OPENER})
+    mine = _smarten({"rules": rules(), "extras": EXTRAS, "intro": [INTRO_ADD], "rel": RELATED_ADD, "opener": CH_OPENER})
     keep = [r for r in ch.get("rules", []) if r.get("id") not in MINE]
     ch["rules"] = sorted(keep + mine["rules"], key=lambda r: [int(x) for x in str(r["id"]).split(".")])
     ch["extras"] = [x for x in ch.get("extras", []) if not str(x.get("specimen", "")).startswith(PREFIXES)] + mine["extras"]
@@ -517,4 +517,4 @@ def specimens_used():
         for k in ("correct", "failure", "corrective"):
             if r.get(k):
                 out.append(r[k]["specimen"])
-    return out + [x["specimen"] for x in EXTRAS] + [OPENER["specimen"]]
+    return out + [x["specimen"] for x in EXTRAS] + [CH_OPENER["specimen"]]
