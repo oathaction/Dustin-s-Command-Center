@@ -197,7 +197,7 @@
       ],
       "tokens": [
         "oa.color.identity.signature.onNewsprint",
-        "oa.color.state.error.mark.onNewsprint",
+        "oa.color.state.error.bar.onNewsprint",
         "oa.color.action.ask.fill.onNewsprint",
         "oa.color.data.emphasisRed.onNewsprint",
         "oa.component.button.ask.keyline.onNewsprint",
@@ -236,7 +236,7 @@
         {
           "label": "Working red, first claim",
           "value": "An error the reader must fix, shown by the 4 px red bar beside it",
-          "token": "oa.color.state.error.mark.onNewsprint"
+          "token": "oa.color.state.error.bar.onNewsprint"
         },
         {
           "label": "Working red, second claim",
@@ -290,7 +290,7 @@
         "oa.color.state.selected.bar.onNewsprint",
         "oa.color.state.warning.mark.onNewsprint",
         "oa.color.state.error.band.onNewsprint",
-        "oa.color.state.error.mark.onNewsprint",
+        "oa.color.state.error.bar.onNewsprint",
         "oa.color.state.success.mark.onNewsprint",
         "oa.color.state.disabled.edge.onNewsprint",
         "oa.color.state.empty.edge.onNewsprint"
@@ -307,7 +307,7 @@
       },
       "failure": {
         "specimen": "s-05-4-failure",
-        "caption": "<strong>Fails 1.4.1.</strong> Two tracker rows that differ only by the hue of a dot. The dots measure 1.14 to 1 against each other, and in grayscale they print as #5F5F5F and #717171, two near grays that say nothing about which row has the problem. Rule 11.2 gives each tracker state a shape and a word."
+        "caption": "<strong>Fails Rule 05.4.</strong> Two tracker rows that differ only by the hue of a dot. The dots measure 1.14 to 1 against each other, and in grayscale they print as #5F5F5F and #717171, two near grays that say nothing about which row has the problem. Rule 11.2 gives each tracker state a shape and a word."
       },
       "specs": [
         {

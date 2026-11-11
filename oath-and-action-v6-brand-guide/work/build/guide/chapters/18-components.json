@@ -6,7 +6,7 @@
   "instruction": "Build controls that work by keyboard and screen reader and announce every change.",
   "intro": [
     "A component is a part of a page that a reader works, such as a button, a menu or a search field. Each rule here gives one component as code to copy, drawn live in the light theme on Newsprint and in the dark theme on Charcoal, and a table of its states, its keys, its name, its target size and what a screen reader hears when it changes.",
-    "The code reads only tokens.css, the file that holds every color, size and type style as a named value, so one copy follows either theme. A screen reader hears the name, role, state and status line the code hands it, and each screen reader words these its own way. How each state looks and moves comes from chapter 17."
+    "The code reads only tokens.css, the file that holds every color, size and type style as a named value, so one copy follows either theme. Each component hands a screen reader its accessible name, the words a screen reader says for it, with its role, such as button, and its state, such as pressed. When something changes, the code writes a sentence into a status line, a line on the page that a screen reader reads at its next pause, and each screen reader words all of this its own way. ARIA, short for Accessible Rich Internet Applications, is W3C’s set of attributes that gives a role or a state where HTML has none, and each rule names the pattern it follows in the ARIA Authoring Practices Guide (APG), W3C’s worked examples of each control. How each state looks and moves comes from chapter 17."
   ],
   "groups": [
     {
@@ -57,18 +57,18 @@
       "id": "18.1",
       "title": "Use a button to act on the page, and keep an unavailable one in reach with its reason.",
       "rule": [
-        "A button acts on the page: it sends a form, copies a value or starts a loop. A control that takes the reader to another page or place is a link (Rule 18.5). A view has one primary button at most, Charcoal on Newsprint and Newsprint on Charcoal. The ask, the Pillar Red button for the one way to take part, appears only where Rule 05.3 gives the view its working red, and every other button is quiet: its word in ink inside a 1 px edge. A utility icon sits beside the word (Rule 11.11).",
-        "When an action cannot run yet, its button stays in place and keeps its focus. It carries aria-disabled, draws a dashed edge and points to a line under it that says why and what makes it work, such as “Fill in your email to send.” While a send runs, its word reads “Sending” and a second press does nothing. While an error on the page holds the red, the ask steps down to the primary look (Rule 11.16)."
+        "A button acts on the page: it sends a form, copies a value or starts a loop. A control that takes the reader to another page or place is a link (Rule 18.5). A view has one primary button at most, Charcoal on Newsprint and Newsprint on Charcoal. The ask, the Pillar Red button for the one way to take part, appears only where Rule 05.3 gives the view its working red, the one job red does in a view: an error first, then the step a reader can take now. The ask stands apart from a primary button, whose hover turns Prussian. Every other button is quiet: its word in ink inside a 1 px edge. A utility icon sits beside the word (Rule 11.11).",
+        "When an action cannot run yet, its button stays in place and keeps its focus. It carries aria-disabled, draws a dashed edge and points to a line under it that says why and what makes it work, such as “Fill in your email to send.” While a send runs, its word reads “Sending” and a second press does nothing. While an error on the page holds the red, the ask steps down to the primary look (Rule 11.16). When an action can no longer run, such as a sign-up for an event that is full, its button stays in place with its reason and the step the reader can take instead, such as another date, and the form leaves out the fields that can no longer send."
       ],
       "tokens": [
-        "--oa-color-action-primary-fill",
-        "--oa-color-action-primary-fill-hover",
-        "--oa-color-action-primary-label",
-        "--oa-color-action-ask-fill",
-        "--oa-color-action-ask-label",
+        "--oa-component-button-primary-fill",
+        "--oa-component-button-primary-fill-hover",
+        "--oa-component-button-primary-label",
+        "--oa-component-button-ask-fill",
+        "--oa-component-button-ask-label",
         "--oa-component-button-ask-keyline",
-        "--oa-color-state-disabled-text",
-        "--oa-color-state-disabled-edge",
+        "--oa-component-button-disabled-label",
+        "--oa-component-button-disabled-edge",
         "oa.size.target.touch"
       ],
       "why": {
@@ -88,7 +88,7 @@
       "code": {
         "set": "c-18-button",
         "name": "Buttons",
-        "caption": "Every kind of button, live: primary, ask and quiet, two with a utility icon, one unavailable with its reason, one sending, and the ask stepped down while an error holds the red. Tab to “Send your comment” and press it: it keeps focus, and its line says why it waits."
+        "caption": "Every kind of button, live: primary, ask on a row of its own, and quiet, two with a utility icon, one unavailable with its reason, one sending, and the ask stepped down while an error holds the red. Tab to “Send your comment” and press it: it keeps focus, and its line says why it waits."
       },
       "specs": [
         {
@@ -135,7 +135,8 @@
         "05"
       ],
       "builders": [
-        "An unavailable button: <code><button type=\"button\" aria-disabled=\"true\" aria-describedby=\"send-why\"></code>, with the script stopping its press. A row of two buttons: <code>grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr))</code>, and no <code>white-space: nowrap</code> on any word."
+        "An unavailable button: <code><button type=\"button\" aria-disabled=\"true\" aria-describedby=\"send-why\"></code>, and as the first line of its click handler <code>if (button.getAttribute('aria-disabled') === 'true') return;</code>, as Rule 18.17’s script does. A row of two buttons: <code>grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr))</code>, and no <code>white-space: nowrap</code> on any word.",
+        "<code>data-red=\"working\"</code> and <code>data-red-job</code> mark the view’s one working red for Rule 05.3’s check, which fails a view with two: an error first, then the one step a reader can take now. Move both attributes as the red moves, from the ask to the error and back."
       ]
     },
     {
@@ -214,7 +215,7 @@
         "11"
       ],
       "builders": [
-        "<code><button type=\"button\" class=\"oa-chip\" aria-pressed=\"false\"></code>, with the check as an inline SVG inside it. Draw the on look from <code>[aria-pressed=\"true\"]</code>, so the state and the look cannot come apart."
+        "<code><button type=\"button\" class=\"oa-toggle oa-toggle--chip\" aria-pressed=\"false\"></code>, with the check as an inline SVG inside it. Draw the on look from <code>[aria-pressed=\"true\"]</code>, so the state and the look cannot come apart."
       ]
     },
     {
@@ -368,7 +369,7 @@
         },
         {
           "label": "Browser support",
-          "value": "<code>prefers-color-scheme</code>: Chrome 76, Edge 79, Firefox 67, Safari 12.1, Safari on iOS 13. <code>&lt;meta name=\"color-scheme\"&gt;</code>: Chrome 81, Edge 81, Firefox 96, Safari 12.1, Safari on iOS 12.2. <code>localStorage</code>: Chrome 4, Edge 12, Firefox 3.5, Safari 4, Safari on iOS 3.2. the <code>change</code> event of <code>matchMedia()</code>: Chrome 39, Edge 79, Firefox 55, Safari 14, Safari on iOS 14."
+          "value": "<code>prefers-color-scheme</code>: Chrome 76, Edge 79, Firefox 67, Safari 12.1, Safari on iOS 13. <code>&lt;meta name=\"color-scheme\"&gt;</code>: Chrome 81, Edge 81, Firefox 96, Safari 12.1, Safari on iOS 12.2. <code>localStorage</code>: Chrome 4, Edge 12, Firefox 3.5, Safari 4, Safari on iOS 3.2. The page follows the device through the media query in tokens.css, so no script listens for a change."
         }
       ],
       "related": [
@@ -465,7 +466,7 @@
       "id": "18.6",
       "title": "Give every page one masthead, with its parts in a named navigation and a phone menu that holds focus.",
       "rule": [
-        "The masthead holds the product’s name, which links home, and its parts in a navigation landmark named for what it holds, such as “Parts of the site”. The link to the part the reader is in carries <code>aria-current=\"page\"</code>, bold words and a 2 px underline. When the parts no longer fit on one line, they move behind a Menu button, its three bars beside the word Menu, which opens them in a native modal dialog.",
+        "The masthead holds the product’s name, which links home, and its parts in a navigation landmark, a region a screen reader can jump to, named for what it holds, such as “Parts of the site”. The link to the part the reader is in carries <code>aria-current=\"page\"</code>, bold words and a 2 px underline. When the parts no longer fit on one line, they move behind a Menu button, its three bars beside the word Menu, which opens them in a native modal dialog.",
         "The open menu covers the page and holds focus. Focus moves to the current part’s link, the Tab key reaches nothing on the page behind it, and Escape or “Close the menu” shuts it and returns focus to Menu. The rows inside open and close as disclosures (Rule 18.8). A masthead that sticks to the top of the page sets scroll-padding-top to its own height, so no focused element hides under it."
       ],
       "tokens": [
@@ -952,7 +953,7 @@
       ],
       "tokens": [
         "--oa-color-state-success-mark",
-        "--oa-color-state-error-mark",
+        "--oa-color-state-error-bar",
         "--oa-color-state-error-band",
         "oa.border.width.bar",
         "oa.size.target.touch"
@@ -1032,7 +1033,7 @@
       ],
       "tokens": [
         "--oa-color-state-success-mark",
-        "--oa-color-state-error-mark",
+        "--oa-color-state-error-bar",
         "oa.size.icon.medium",
         "oa.size.target.touch"
       ],
@@ -1107,7 +1108,7 @@
       "id": "18.14",
       "title": "Name each download for its file, type and size, and say why one is not ready.",
       "rule": [
-        "A download is a link with the download attribute when it fetches a file, and a button when a script builds the file. Its words start with “Download” and name the file, its type and its size, in kilobytes of 1,000 bytes: “Download tokens.css, CSS, 93 KB”. The download icon, an arrow into a tray, sits before the word (Rule 11.11).",
+        "A download is a link with the download attribute when it fetches a file, and a button when a script builds the file. Its words start with “Download” and name the file, its type and its size, in kilobytes of 1,000 bytes: “Download tokens.css, CSS, 95 KB”. The download icon, an arrow into a tray, sits before the word (Rule 11.11).",
         "A file that is not ready keeps its control in place and in the Tab order, with aria-disabled, a dashed edge and a line that says why and when it will be ready. A press does nothing, and focus stays."
       ],
       "tokens": [
@@ -1248,7 +1249,7 @@
         },
         {
           "label": "Light and dark",
-          "value": "The field’s ground is --oa-color-field-ground, White on Newsprint and Prussian on Charcoal, with the strong border as its edge."
+          "value": "The field’s ground is --oa-color-field-ground, White on Newsprint and Charcoal on Charcoal, where the field shows by its strong edge, with the strong border as its edge."
         },
         {
           "label": "Browser support",
@@ -1345,16 +1346,17 @@
       "id": "18.17",
       "title": "Label every field, point it to its error, and move focus to the first field to fix.",
       "rule": [
-        "Each field has a visible label above it and, where it helps, a hint under the label joined by aria-describedby, such as “Five digits”. A placeholder never stands in for either. Personal fields carry autocomplete, such as email and postal-code, so the browser can fill them. A field stays open to typing at all times; a Send button that cannot run yet keeps focus and says why, as Rule 18.1 sets.",
+        "Each field has a visible label above it and, where it helps, a hint under the label joined by aria-describedby, such as “Five digits”. A placeholder never stands in for either. Personal fields carry autocomplete, such as email and postal-code, so the browser can fill them. A field stays open to typing while its form can still send; a Send button that cannot run yet keeps focus and says why, as Rule 18.1 sets.",
         "On a send with mistakes, each wrong field takes aria-invalid, the 4 px Pillar Red bar at its left edge and a message under it joined by aria-describedby: the error mark in ink, “Error:” and how to fix it, on the Error Band on Newsprint and on the ground on Charcoal. Focus moves to the first field to fix, and the ask steps down to the primary look while the error holds the red (Rule 11.16). A send that works writes its result to a status line with the success mark."
       ],
       "tokens": [
         "--oa-color-field-ground",
         "--oa-color-border-strong",
-        "--oa-color-state-error-mark",
+        "--oa-color-state-error-bar",
         "--oa-color-state-error-band",
         "--oa-color-state-error-text",
         "--oa-color-state-success-mark",
+        "--oa-color-state-success-text",
         "oa.border.width.bar",
         "oa.size.target.touch"
       ],
@@ -1433,7 +1435,7 @@
         "A message that a script writes into the page goes into a status line, which a screen reader reads at its next pause. Only an error that appears with no field to move focus to uses <code>role=\"alert\"</code>, which interrupts. A message already in the page when it loads is plain text, since neither role announces it then."
       ],
       "tokens": [
-        "--oa-color-state-error-mark",
+        "--oa-color-state-error-bar",
         "--oa-color-state-error-band",
         "--oa-color-state-warning-mark",
         "--oa-color-state-success-mark",
@@ -1503,7 +1505,7 @@
         "17"
       ],
       "builders": [
-        "Put the status line in the page, empty, when it loads, and write into it later; a live region added with its words already inside may not be read."
+        "Put the status line in the page, empty, when it loads, and write into it later; a status line added with its words already inside may not be read."
       ]
     },
     {
@@ -1732,7 +1734,7 @@
         },
         {
           "label": "Light and dark",
-          "value": "The page sits on --oa-color-field-ground, White on Newsprint and Prussian on Charcoal."
+          "value": "The page sits on --oa-color-field-ground, White on Newsprint and Charcoal on Charcoal, where the field shows by its strong edge."
         },
         {
           "label": "Browser support",
@@ -1751,7 +1753,7 @@
       "id": "18.22",
       "title": "Step through a loop with Play, Reset the loop, Previous step and Next step, and say each step once.",
       "rule": [
-        "A loop stepper walks a reader through a loop of connections one step at a time. Its buttons run in one order in every product, Play, Reset the loop, Previous step and Next step, each with its utility icon beside its word (Rule 11.14). One polite live region says each step as it arrives, “Step 2 of 3:” and the step’s sentence, and the step list marks the current step with <code>aria-current=\"step\"</code> and a 4 px bar.",
+        "A loop stepper walks a reader through a loop of connections one step at a time. Its buttons run in one order in every product, Play, Reset the loop, Previous step and Next step, each with its utility icon beside its word (Rule 11.14). The status line says each step as it arrives, “Step 2 of 3:” and the step’s sentence, and the step list marks the current step with <code>aria-current=\"step\"</code> and a 4 px bar.",
         "Nothing plays until the reader presses Play. Play becomes Pause while it plays and Play again at the end, its icon and its word changing together, and it holds each step about 250 ms a word and never under six seconds, with reduced motion too (Rule 17.3). Next step, Previous step and Reset the loop stop the playback, and no button moves focus. At the start, Previous step and Reset the loop stay in place with aria-disabled and their reason; at the end, Next step does."
       ],
       "tokens": [
@@ -1762,13 +1764,13 @@
       ],
       "why": {
         "text": [
-          "Play on request keeps the page still for a reader who did not ask it to move, and a pace set by the words gives a slow reader time to finish each step. Buttons that keep focus let a reader press Next step again and again, and one live region says each step without repeating the rest."
+          "Play on request keeps the page still for a reader who did not ask it to move, and a pace set by the words gives a slow reader time to finish each step. Buttons that keep focus let a reader press Next step again and again, and the status line says each step without repeating the rest."
         ],
         "basis": "WCAG 2.2 SC 2.2.1, 2.2.2, 4.1.2 and 4.1.3; APG Carousel pattern, its buttons without its slide roles"
       },
       "correct": {
         "specimen": "s-18-22-anatomy",
-        "caption": "The parts of a loop stepper: Play with its icon and word, Reset the loop, Previous step, Next step, an unavailable button’s reason, the live line, and the step list with its current step’s 4 px bar."
+        "caption": "The parts of a loop stepper: Play with its icon and word, Reset the loop, Previous step, Next step, an unavailable button’s reason, the status line, and the step list with its current step’s 4 px bar."
       },
       "failure": {
         "specimen": "s-18-22-failure",
@@ -1836,7 +1838,7 @@
       "title": "Reach a drawing’s items from one Tab stop with the arrow keys, and give every drawing its words.",
       "rule": [
         "The items in an atlas drawing, such as its areas, variables and loops, are toggle buttons in one group. The Tab key reaches the drawing once, at the selected item or the first, and the arrow keys move between items in reading order, with Home and End for the first and the last. Enter or Space selects an item, which lights its related items and opens its record in a panel, or a sheet on a phone; Escape closes it and returns focus to the item.",
-        "A readout line under the drawing repeats the name of the item in focus, so a reader who zooms in sees it without hovering. Each drawing also offers its lines in words behind a disclosure (Rule 18.8), and a drawing that holds values offers its data as a table the same way. Full size opens it in a native modal dialog. Zoom stays in words, as Zoom in, Zoom out, Fit and Reset."
+        "A readout line under the drawing repeats the name of the item in focus, so a reader who zooms in sees it without hovering. The readout sits in its own line, covers nothing and keeps its words until focus moves to another item, and nothing on a drawing shows on hover alone. Each drawing also offers its lines in words behind a disclosure (Rule 18.8), and a drawing that holds values offers its data as a table the same way. Full size opens it in a native modal dialog. Zoom stays in words, as Zoom in, Zoom out, Fit and Reset."
       ],
       "tokens": [
         "--oa-color-state-muted-mark",
@@ -1907,14 +1909,14 @@
         "14"
       ],
       "builders": [
-        "Give one item <code>tabindex=\"0\"</code> and the rest <code>tabindex=\"-1\"</code>, and move both with the arrow keys. The readout is plain text, never a live region, since it changes with every key."
+        "Give one item <code>tabindex=\"0\"</code> and the rest <code>tabindex=\"-1\"</code>, and move both with the arrow keys. The readout is plain text, never a status line, since it changes with every key."
       ]
     },
     {
       "id": "18.24",
       "title": "Write a typed ID with its type in words, and make it a link only when it opens the record.",
       "rule": [
-        "A typed ID names a record in the atlas by its type and its code together, such as “Loop R10” or “Reform R-01”, so a reader never meets a bare code (chapter 02’s house rule H11). The chip sets both in the label style on a hairline edge, in the text’s ink, and color never codes its type.",
+        "A typed ID names a record in the atlas by its type and its code together, such as “Loop R1” or “Reform R-04”, so a reader never meets a bare code (chapter 02’s house rule H11). The chip sets both in the label style on a hairline edge, in the text’s ink, and color never codes its type.",
         "A chip that opens its record is a link, underlined as Rule 18.5 sets, 1 px at rest and 2 px on hover, with a target at least 24 px tall; where the words around it do not name the record, the link’s description does. A chip that only names a record is plain text, with no role and no Tab stop."
       ],
       "tokens": [
@@ -1956,7 +1958,7 @@
         },
         {
           "label": "Accessible name",
-          "value": "Its words, such as “Loop R10”; a link adds the record’s name, such as “Loop R10, the safe-seat loop”."
+          "value": "Its words, such as “Loop R1”; a link adds the record’s name as its description, such as “Independent citizen commissions draw election maps” for Reform R-04."
         },
         {
           "label": "A screen reader hears",
@@ -1986,7 +1988,7 @@
         "10"
       ],
       "builders": [
-        "Keep the type word and the code in one element, with a no-break space between them, so a line never splits “Loop” from “R10”."
+        "Keep the type word and the code in one element, with a no-break space between them, so a line never splits “Loop” from “R1”."
       ]
     }
   ],

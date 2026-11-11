@@ -4,8 +4,9 @@
   "title": "Accessibility",
   "part": "Behavior",
   "instruction": "Check a page against WCAG 2.2 AA before you call it finished.",
+  "opener": "s-19-opener",
   "intro": [
-    "Accessibility means a person can use a page with a keyboard, a screen reader, zoom, voice or touch, and with less motion. The standard is WCAG 2.2, the Web Content Accessibility Guidelines from the World Wide Web Consortium, W3C, which writes many of the web’s standards. This chapter holds its 55 criteria at levels A and AA, each in W3C’s words with the rule in this guide that meets it, then the checks that prove a page meets them.",
+    "Accessibility means a person can use a page with a keyboard, a screen reader, zoom, voice or touch, and with less motion. The standard is WCAG 2.2, the Web Content Accessibility Guidelines from the World Wide Web Consortium, W3C, which writes many of the web’s standards. Each of its success criteria is one requirement a page can be tested against. Level A holds the ones every page must meet, and level AA adds more, such as the contrast of text. This chapter holds the 55 criteria at levels A and AA, each in W3C’s words with the rule in this guide that meets it, then the checks that prove a page meets them.",
     "Our own results so far come next, dated, with what was tested kept apart from what was not, and a short script for the checks only real devices can run."
   ],
   "groups": [
@@ -34,7 +35,7 @@
       "title": "Build every page and product to WCAG 2.2 at level AA, and find each criterion here.",
       "rule": [
         "WCAG 2.2 sets 55 success criteria at levels A and AA: 31 at A and 24 at AA, six of them new in 2.2. Build every page and product we publish to meet all of them. The list below gives each criterion in W3C’s own words and the rule in this guide that meets it.",
-        "Today a rule meets 37 criteria and five more in part. Eight are gaps, each named with the chapter that owes it, and five govern things no product does yet, such as live video or accounts. A gap is open work, and a page that meets the criterion on its own still meets it."
+        "Today a rule meets 33 criteria and eight more in part. Nine are gaps, each named with the chapter that owes it, and five govern things no product does yet, such as live video or accounts. A gap is open work, and a page that meets the criterion on its own still meets it."
       ],
       "tokens": [],
       "why": {
@@ -66,15 +67,15 @@
         },
         {
           "label": "Met today",
-          "value": "37 by a rule, 5 in part"
+          "value": "33 by a rule, 8 in part"
         },
         {
           "label": "Gaps",
-          "value": "8, owed by chapters 02, 16, 20 and 23"
+          "value": "9, owed by chapters 02, 16, 18, 20 and 23"
         },
         {
           "label": "Not used today",
-          "value": "5: live captions, sound that plays itself, legal or money forms, multi-step forms and sign-in"
+          "value": "5: live captions, sound that plays itself, time limits, forms of more than one step and sign-in"
         }
       ],
       "related": [
@@ -129,7 +130,9 @@
         "14",
         "16"
       ],
-      "builders": []
+      "builders": [
+        "An inline svg beside its word takes <code>aria-hidden=\"true\"</code> and <code>focusable=\"false\"</code>, and an img beside its word takes <code>alt=\"\"</code>. A chart that stands alone takes its finding as its alt, or <code>role=\"img\"</code> with an <code>aria-label</code> where it is an svg, and its table or its lines in words sit beside it."
+      ]
     },
     {
       "id": "19.3",
@@ -170,7 +173,9 @@
         "02",
         "18"
       ],
-      "builders": []
+      "builders": [
+        "Copy the control’s words into the instruction exactly as the control shows them, so a reader using voice control can say what they read: “press Send your comment”."
+      ]
     },
     {
       "id": "19.4",
@@ -212,13 +217,15 @@
         "22",
         "23"
       ],
-      "builders": []
+      "builders": [
+        "Set a headline over a photograph as HTML text placed on top of the image, never inside the image file. A social card that must be one image repeats its words in the post and in its alt text."
+      ]
     },
     {
       "id": "19.5",
       "title": "Let every action work with one tap, one click or one key press.",
       "rule": [
-        "Every action has a control a reader can press once: Zoom in and Zoom out as buttons, a drawing moved with buttons or arrow keys, and Undo as a button. A gesture with two fingers, a drag, a tilt or a shake may add a second way beside that control. No product uses a shortcut of one letter key, and an action runs when the press ends, so sliding off a control cancels it."
+        "Every action has a control a reader can press once: Zoom in and Zoom out as buttons, a drawing moved with buttons or arrow keys, and Undo as a button. A gesture with two fingers, a drag, a tilt or a shake may add a second way beside that control. Where a product answers a tilt or a shake, a setting turns that off, so a reader who moves the device by accident sets nothing off. No product uses a shortcut of one letter key, and an action runs when the press ends, so sliding off a control cancels it."
       ],
       "tokens": [
         "oa.size.target.touch"
@@ -231,7 +238,7 @@
       },
       "correct": {
         "specimen": "s-19-5-correct",
-        "caption": "Zoom in, Zoom out and Fit as buttons under the map."
+        "caption": "Zoom in, Zoom out and Fit as buttons under the chart."
       },
       "failure": {
         "specimen": "s-19-5-failure",
@@ -245,7 +252,7 @@
         },
         {
           "label": "Gestures and motion",
-          "value": "Only beside a button that does the same"
+          "value": "Only beside a button that does the same; a setting turns a tilt or a shake off"
         },
         {
           "label": "Shortcuts",
@@ -260,7 +267,9 @@
         "18",
         "15"
       ],
-      "builders": []
+      "builders": [
+        "Run an action on the <code>click</code> event, which fires when the press ends, and never on <code>pointerdown</code> or <code>touchstart</code>. Give a drag or a pinch a button that does the same, and a keyboard shortcut a modifier key, such as Control and K."
+      ]
     },
     {
       "id": "19.6",
@@ -310,13 +319,15 @@
         "06",
         "18"
       ],
-      "builders": []
+      "builders": [
+        "Size type in rem, let a box of words take its height from them, and let words wrap with <code>overflow-wrap: break-word</code>. Leave the orientation out of the web app manifest, and never call <code>screen.orientation.lock()</code>."
+      ]
     },
     {
       "id": "19.7",
       "title": "Check every page with the verification matrix, each check by its own method.",
       "rule": [
-        "The matrix holds 14 checks. Each shows one thing, such as a keyboard path or a color pair, and each has its own method, because no single tool sees them all. A page is ready when every check that applies to it has run and passed, and its results are written down as Rule 19.8 sets."
+        "The matrix holds 15 checks. Each shows one thing, such as a keyboard path or a color pair, and each has its own method, because no single tool sees them all. A page is ready when every check that applies to it has run and passed, and its results are written down as Rule 19.8 sets."
       ],
       "tokens": [],
       "why": {
@@ -340,7 +351,7 @@
         },
         {
           "label": "Automated rules",
-          "value": "axe-core with the WCAG 2.2 A and AA tags"
+          "value": "axe-core with the tags wcag2a, wcag2aa, wcag21a, wcag21aa and wcag22aa; axe-core has no wcag22a tag"
         },
         {
           "label": "Keyboard paths",
@@ -359,7 +370,9 @@
         "18",
         "26"
       ],
-      "builders": []
+      "builders": [
+        "Run the checks a tool can run with the commands in the matrix, on every page and in each theme, and log the tool’s version with each result. The rest need a person: the keyboard order and ring, the reading order, words broken in the middle, and the device script."
+      ]
     },
     {
       "id": "19.8",
@@ -399,7 +412,9 @@
       "related": [
         "18"
       ],
-      "builders": []
+      "builders": [
+        "Keep the results in a dated file that names the build, the tool and its version, and print the page’s results from that file, so the page and the file never disagree."
+      ]
     },
     {
       "id": "19.9",
@@ -439,7 +454,9 @@
       "related": [
         "18"
       ],
-      "builders": []
+      "builders": [
+        "Run the script on each device’s current system and the browser most readers use there: Safari on an iPhone and a Mac, Chrome on Android, and Chrome or Edge on Windows."
+      ]
     }
   ],
   "extras": [],
@@ -470,8 +487,10 @@
     }
   ],
   "sources": [
-    "Source: W3C, “Web Content Accessibility Guidelines (WCAG) 2.2”, W3C Recommendation, December 12, 2024, w3.org/TR/WCAG22, retrieved November 10, 2026. Each criterion’s words in Rule 19.1, quoted as the Recommendation prints them; its notes are informative and sit on W3C’s Understanding pages, w3.org/WAI/WCAG22/Understanding.",
+    "Source: W3C, “Web Content Accessibility Guidelines (WCAG) 2.2”, W3C Recommendation, December 12, 2024, w3.org/TR/WCAG22, retrieved November 11, 2026. Each criterion’s words in Rule 19.1, quoted as the Recommendation prints them and in its order; its notes are informative and sit on W3C’s Understanding pages, w3.org/WAI/WCAG22/Understanding.",
+    "Source: W3C Web Accessibility Initiative, “Understanding Success Criterion 4.1.1: Parsing (Obsolete and removed)”, w3.org/WAI/WCAG22/Understanding/parsing.html, no page date, retrieved November 11, 2026. Behind the line on 4.1.1 under Rule 19.1’s list.",
     "Source: W3C Web Accessibility Initiative, “How to Meet WCAG 2.2 (Quick Reference)”, w3.org/WAI/WCAG22/quickref, no page date, retrieved November 10, 2026.",
-    "Further reading for Rule 19.9, each maker’s own guide: Apple, “Turn on and practice VoiceOver on iPhone” and “VoiceOver User Guide for Mac”; Google, “Get started on Android with TalkBack”; NV Access, “NVDA User Guide”; Microsoft, “Change color contrast in Windows”. We wrote the steps from these makers’ menus as we know them and did not check them on a device; makers rename menus between versions."
+    "Source: Deque Systems, axe-core’s command line, the package @axe-core/cli 4.14.0 on npmjs.com, published October 15, 2026, retrieved November 11, 2026. Its <code>--tags</code>, <code>--rules</code> and <code>--exit</code> options are behind the commands in Rule 19.7’s matrix.",
+    "Further reading for Rule 19.9, each maker’s own guide, each retrieved November 11, 2026: Apple, “Turn on and practice VoiceOver on iPhone”, support.apple.com/guide/iphone/turn-on-and-practice-voiceover-iph3e2e415f/ios; Apple, “VoiceOver User Guide for Mac”, support.apple.com/guide/voiceover/welcome/mac; Google, “Get started on Android with TalkBack”, support.google.com/accessibility/android/answer/6283677; NV Access, “NVDA 2026.3.1 User Guide”, download.nvaccess.org/documentation/userGuide.html; Microsoft, “Change color contrast in Windows”, support.microsoft.com/en-us/accessibility/windows/change-color-contrast-in-windows. We wrote the steps from these makers’ menus as we know them and did not check them on a device; makers rename menus between versions."
   ]
 }

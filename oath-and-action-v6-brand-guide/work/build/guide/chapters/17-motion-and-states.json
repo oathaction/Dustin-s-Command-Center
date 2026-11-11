@@ -500,7 +500,7 @@
         "oa.color.state.loading.mark.onNewsprint",
         "oa.color.state.selected.bar.onNewsprint",
         "oa.color.state.warning.mark.onNewsprint",
-        "oa.color.state.error.mark.onNewsprint",
+        "oa.color.state.error.bar.onNewsprint",
         "oa.color.state.error.band.onNewsprint",
         "oa.color.state.empty.edge.onNewsprint",
         "oa.color.state.success.mark.onNewsprint",
@@ -579,7 +579,7 @@
         "26"
       ],
       "builders": [
-        "Write a state’s colors with the short names, such as <code>var(--oa-color-state-error-mark)</code> for an error’s 4 px bar and <code>var(--oa-color-surface)</code>, never a name that ends in a surface. The theme and the surface classes point each short name at the right value, so the same code draws both columns of this plate.",
+        "Write a state’s colors with the short names, such as <code>var(--oa-color-state-error-bar)</code> for an error’s 4 px bar and <code>var(--oa-color-surface)</code>, never a name that ends in a surface. The theme and the surface classes point each short name at the right value, so the same code draws both columns of this plate.",
         "Draw every state bar as a border, <code>border-left: 4px solid</code>. Forced colors, a setting such as the contrast themes in Windows that repaints a page in a few system colors, removes an inset shadow and keeps a border."
       ]
     },

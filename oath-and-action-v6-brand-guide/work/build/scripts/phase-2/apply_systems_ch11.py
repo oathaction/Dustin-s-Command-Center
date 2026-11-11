@@ -1255,7 +1255,7 @@ def build(ctx):
                         'caption': 'The six states, each drawn on step 4 at true size. Each one changes the '
                                    'shape, so the set reads in grayscale.'},
             'failure': {'specimen': 's-11-2-failure',
-                        'caption': f'<strong>Fails WCAG 2.2 SC 1.4.1.</strong> Six identical circles tell their states by hue alone. '
+                        'caption': f'<strong>Fails Rule 11.2.</strong> Six identical circles tell their states by hue alone. '
                                    f'In grayscale, the done steps in Verdigris and the steps ahead in Stone print as grays '
                                    f'{rr} to 1 apart, and no word says where the bill stands.'},
             'specs': [

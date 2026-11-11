@@ -1,5 +1,5 @@
 {
- "about": "The guide's own accessibility results so far, printed by Rule 19.8 through stage_c_ch19_build.py. Written by the accessibility lead from the runs named in 'runs'. Each line states what ran and what it found; checks that did not run are in 'not_tested' with the reason.",
+ "about": "The guide's own accessibility results so far, printed by Rule 19.8 through stage_c_ch19_build.py. Written by the accessibility lead from the runs named in 'runs'. Each line states what ran and what it found; checks that did not run are in 'not_tested' with the reason. An item still open carries \"open\": true, which the page prints as “Open, to fix before launch.”",
  "date": "November 11, 2026",
  "build": "The chapters page as built at 03:13 UTC from chapters 01 to 12, 17, 18 and 26, 9,206,065 bytes, checked in Chromium at 1440, 1024, 390 and 360 px; chapter 18’s keyboard paths on its build of 03:02 UTC.",
  "runs": {
@@ -27,11 +27,13 @@
   },
   {
    "check": "Text at 200 percent and 320 px",
-   "result": "At the default text size no width scrolled sideways. With text at 200 percent the page scrolled sideways at 390 and 360 px, to 404 and 386 px wide: open, with the guide engineer. In chapter 18, one error line ran past its stage at 320 px, with the component engineer."
+   "result": "At the default text size no width scrolled sideways. With text at 200 percent the page scrolled sideways at 390 and 360 px, to 404 and 386 px wide. In chapter 18, one error line ran past its stage at 320 px.",
+   "open": true
   },
   {
    "check": "Forced colors",
-   "result": "Twelve glyph parts in chapter 18’s live code lost their contrast, among them the warning and success marks, and its masthead kept a red ampersand: open, with the component engineer. Every pressed or checked control kept its check."
+   "result": "Twelve glyph parts in chapter 18’s live code lost their contrast, among them the warning and success marks, and its masthead kept a red ampersand. Every pressed or checked control kept its check.",
+   "open": true
   },
   {
    "check": "Dark surfaces",
@@ -39,11 +41,13 @@
   },
   {
    "check": "Downloads",
-   "result": "12 of 16 cases of the token download test passed. The four that failed expect every download to offer the tokens.css zip, which the new tokens.json download does not: open, with the test’s owner."
+   "result": "12 of 16 cases of the token download test passed. The four that failed expect every download to offer the tokens.css zip, which the new tokens.json download does not.",
+   "open": true
   },
   {
    "check": "Code to copy",
-   "result": "Of chapter 18’s 48 live stages, 20 to 25 drew differently from the code a builder copies, four of them by thousands of pixels and the rest by a few edge pixels: open, with the component engineer and the guide engineer."
+   "result": "Of chapter 18’s 48 live stages, 20 to 25 drew differently from the code a builder copies, four of them by thousands of pixels and the rest by a few edge pixels.",
+   "open": true
   }
  ],
  "not_tested": [

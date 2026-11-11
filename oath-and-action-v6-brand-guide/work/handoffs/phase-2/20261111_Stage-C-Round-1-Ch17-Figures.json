@@ -101,21 +101,21 @@
    "exact": 4.2924,
    "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
   },
-  "contrast oa.color.state.error.mark.onCharcoal on oa.color.surface.charcoal": {
+  "contrast oa.color.state.error.bar.onCharcoal on oa.color.surface.charcoal": {
    "value": "4.49",
    "fg": "#E63946",
    "bg": "#121212",
    "exact": 4.4946,
    "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
   },
-  "contrast oa.color.state.error.mark.onNewsprint on oa.color.state.error.band.onNewsprint": {
+  "contrast oa.color.state.error.bar.onNewsprint on oa.color.state.error.band.onNewsprint": {
    "value": "2.64",
    "fg": "#E63946",
    "bg": "#E1C9C1",
    "exact": 2.645,
    "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
   },
-  "contrast oa.color.state.error.mark.onNewsprint on oa.color.surface.newsprint": {
+  "contrast oa.color.state.error.bar.onNewsprint on oa.color.surface.newsprint": {
    "value": "2.96",
    "fg": "#E63946",
    "bg": "#DCD9D2",

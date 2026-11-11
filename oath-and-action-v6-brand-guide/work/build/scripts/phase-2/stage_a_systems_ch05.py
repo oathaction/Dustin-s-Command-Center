@@ -104,7 +104,7 @@ def phone(ctx, variant='plain'):
         extra += '.ft{background:var(--panel);color:var(--panel-ink)}'
     ft = ''
     if variant == 'error':
-        er = ctx.v('oa.color.state.error.mark.onNewsprint')
+        er = ctx.v('oa.color.state.error.bar.onNewsprint')
         extra += (f'.fld{{margin:0 0 16px}}.fl{{display:block;{ctx.ty("ui")}}}'
                   f'.in{{display:block;height:48px;margin-top:6px;border:1px solid {ctx.v("oa.color.border.strong.onNewsprint")};'
                   f'border-left:4px solid {er};background:{ctx.v("oa.color.surface.white")}}}'
@@ -485,13 +485,14 @@ def s_05_ask(ctx):
     ctx.spec('s-05-ask', html, '05', None, alt, notes='Ratios computed from tokens.json.')
 
 
+# CD-S17: the ten states in Rule 17.8's order, the reference plate's
 STATES = [
+    ('Muted', 'muted', 'Regular weight and an outline mark.'),
+    ('Disabled', 'disabled', 'A dashed edge, readable text and a line that says what makes it available.'),
     ('Hover', 'hover', 'The fill steps from Charcoal to Prussian and the label underlines.'),
     ('Focus', 'focus', 'A 2 px Verdigris ring with a 2 px gap, shown at once.'),
-    ('Disabled', 'disabled', 'A dashed edge, readable text and a line that says what makes it available.'),
     ('Loading', 'loading', 'Words that name what is loading, and a still line where it will sit (Rule 17.7).'),
     ('Selected', 'selected', 'A check before the word, the word in bold and a 2 px edge (Rule 17.10).'),
-    ('Muted', 'muted', 'Regular weight and an outline mark.'),
     ('Warning', 'warning', 'The warning mark, the word Warning and a 4 px bar, all in ink. Warning has no hue of its own.'),
     ('Error', 'error', 'The error mark in the text’s ink, the word Error and the fix in plain words, on the Error Band '
                        'with a 4 px Pillar Red bar.'),
@@ -524,7 +525,7 @@ def s_05_4(ctx):
         'warning': f'<span class="msg" style="border-left:4px solid {v("oa.color.state.warning.mark." + N)};color:{v("oa.color.state.warning.text." + N)}">'
                    f'<span class="mk" style="color:{v("oa.color.state.warning.mark." + N)}">{uicon("warning")}</span>'
                    f'<span><b>Warning:</b> This page uses figures from 2024.</span></span>',
-        'error': f'<span class="msg" data-red="working" data-red-job="error" style="background:{v("oa.color.state.error.band." + N)};border-left:4px solid {v("oa.color.state.error.mark." + N)};color:{v("oa.color.state.error.text." + N)}">'
+        'error': f'<span class="msg" data-red="working" data-red-job="error" style="background:{v("oa.color.state.error.band." + N)};border-left:4px solid {v("oa.color.state.error.bar." + N)};color:{v("oa.color.state.error.text." + N)}">'
                  f'<span class="mk">{uicon("error")}</span>'
                  f'<span><b>Error:</b> Enter a ZIP code with five digits.</span></span>',
         'empty': f'<span class="em" style="border-color:{v("oa.color.state.empty.edge." + N)};color:{v("oa.color.state.empty.text." + N)}">No saved explainers yet. Choose Save on any explainer to keep it here.</span>',
@@ -1043,7 +1044,7 @@ def build(ctx):
             {
                 'id': '05.3', 'title': 'Give each view one working red.',
                 'rule': [RULE_053],
-                'tokens': ['oa.color.identity.signature.onNewsprint', 'oa.color.state.error.mark.onNewsprint',
+                'tokens': ['oa.color.identity.signature.onNewsprint', 'oa.color.state.error.bar.onNewsprint',
                            'oa.color.action.ask.fill.onNewsprint', 'oa.color.data.emphasisRed.onNewsprint',
                            'oa.component.button.ask.keyline.onNewsprint', 'oa.color.identity.hingeDivider.onNewsprint'],
                 'why': {'text': ['One red tells the eye where to go first. The order settles which mark gets it when two '
@@ -1071,7 +1072,7 @@ def build(ctx):
                 'specs': [
                     {'label': 'Signature red on Newsprint, White and Charcoal', 'value': f'Pillar Red; {red_n}, {red_w} and {red_c} to 1', 'token': 'oa.color.identity.signature.onNewsprint'},
                     {'label': 'Signature marks on Prussian', 'value': f'White, {w_p} to 1', 'token': 'oa.color.identity.signature.onPrussian'},
-                    {'label': 'Working red, first claim', 'value': 'An error the reader must fix, shown by the 4 px red bar beside it', 'token': 'oa.color.state.error.mark.onNewsprint'},
+                    {'label': 'Working red, first claim', 'value': 'An error the reader must fix, shown by the 4 px red bar beside it', 'token': 'oa.color.state.error.bar.onNewsprint'},
                     {'label': 'Working red, second claim', 'value': 'The step a reader can take now', 'token': 'oa.color.action.ask.fill.onNewsprint'},
                     {'label': 'Working red, third claim', 'value': 'The one point the headline names', 'token': 'oa.color.data.emphasisRed.onNewsprint'},
                     {'label': 'Keyline on a red mark on Newsprint', 'value': f'Charcoal, 1 px, {ch_n} to 1', 'token': 'oa.component.button.ask.keyline.onNewsprint'},
@@ -1092,7 +1093,7 @@ def build(ctx):
                          'set, kept apart from identity color and from the chart palettes in chapter 14.'],
                 'tokens': ['oa.color.focus.ring.onNewsprint', 'oa.color.state.selected.band.onNewsprint',
                            'oa.color.state.selected.bar.onNewsprint', 'oa.color.state.warning.mark.onNewsprint',
-                           'oa.color.state.error.band.onNewsprint', 'oa.color.state.error.mark.onNewsprint',
+                           'oa.color.state.error.band.onNewsprint', 'oa.color.state.error.bar.onNewsprint',
                            'oa.color.state.success.mark.onNewsprint', 'oa.color.state.disabled.edge.onNewsprint',
                            'oa.color.state.empty.edge.onNewsprint'],
                 'why': {'text': [f'WCAG 2.2 success criterion 1.4.1 Use of Color asks that a state show something besides '
@@ -1106,7 +1107,7 @@ def build(ctx):
                                        f'and the error’s red is its 4 px bar. Nothing here uses opacity. Rule 17.8 draws all ten '
                                        f'on Newsprint and on Charcoal, and its plate is the reference for each.'},
                 'failure': {'specimen': 's-05-4-failure',
-                            'caption': f'<strong>Fails 1.4.1.</strong> Two tracker rows that differ only by the hue of a '
+                            'caption': f'<strong>Fails Rule 05.4.</strong> Two tracker rows that differ only by the hue of a '
                                        f'dot. The dots measure {red_ver} to 1 against each other, and in grayscale they print '
                                        f'as {C.css_gray(ctx.hx(P("pillarRed")))} and {C.css_gray(ctx.hx(P("verdigris")))}, two '
                                        f'near grays that say nothing about which row has the problem. Rule 11.2 gives each '

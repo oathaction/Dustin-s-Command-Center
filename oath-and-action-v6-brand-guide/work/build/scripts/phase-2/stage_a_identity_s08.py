@@ -53,7 +53,7 @@ def s_08_1_correct():
             f'<div style="position:absolute;left:64px;top:40px">{mark(LOCK["display"], h=240, label="Lockmark construction, display master at 240 px")}</div></div>')
 
     def it(lbl, inner, wrap=False):
-        st = ' style="max-width:260px"' if wrap else ""
+        st = ' style="max-width:260px;text-wrap:balance"' if wrap else ""
         return f'<div class="oai-cell">{inner}<span class="oai-tag"{st}>{E(lbl)}</span></div>'
     # rows, each one group (CA-S14): the two large drawings side by side with their places named (round 2, CD-S15): the
     # display master at 120 px and the 48 px master at 96 px, a social card's sign-off; then the three pixel-grid masters

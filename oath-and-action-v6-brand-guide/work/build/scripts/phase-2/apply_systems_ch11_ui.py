@@ -20,6 +20,10 @@ LOOP_ID = 'R1'       # DR-195: the loop the stepper runs; change only this to ru
 # D2-969: a step graded plausible takes "can" and this sentence; D2-972: Play holds a step about 250 ms a word, never
 # under 6 seconds, under reduced motion too
 PLAUSIBLE = 'Our atlas grades this step plausible, the least certain in the loop.'
+# BE-M3, the round 2 fix brief's call 4 (D2-1547): the loop's title is its name, in quotation marks, and the line under
+# it gives the loop's own grade, in the words chapters 17 and 18 print. loop_steps() stops if the atlas grade changes.
+LOOP_GRADE = ('Our atlas grades this loop plausible: its middle step is the least certain, and it runs only on issues '
+              'where large donors and middle-income voters want different things.')
 MS_PER_WORD, MS_FLOOR = 250, 6000
 CHECK_41 = ('CL-001 CL-004 CL-006 CL-010 CL-013 CL-019 CL-020 CL-021 CL-022 CL-023 CL-024 CL-028 CL-031 CL-032 CL-039 '
             'CL-040 CL-047 CL-048 CL-050 CL-051 CL-054 CL-057 CL-060 CL-061 CL-067 CL-068 CL-070 CL-071 CL-072 R-05 R-06 '
@@ -126,9 +130,17 @@ def s_reader(ctx, m):
         f'.bar{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr));gap:8px}}'
         f'.ui .bar .b{{--pl:10px;--pr:10px}}'
         f'.ui .bar .nx{{justify-content:flex-end}}'
-        f'.zm{{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}}'
-        f'.ui .zm .b[aria-pressed="true"]{{font-weight:700;text-decoration:underline;text-decoration-thickness:2px;'
-        f'text-underline-offset:4px;border-width:2px;padding:0 calc(var(--pr) - 1px) 0 calc(var(--pl) - 1px)}}')
+        # D2-1151, D2-1296, D2-1390: Fit width and Full size are a choice of two, native radios as Rule 18.21's reader
+        # draws them, with Rule 17.10's one look: the selected check, bold words and a 2 px edge when checked
+        f'.zm{{min-width:0;margin:16px 0 0;padding:0;border:0}}.zl{{margin:0 0 8px;padding:0;{T("ui")};font-weight:700}}'
+        f'.zr{{display:flex;flex-wrap:wrap;gap:8px}}.ri{{position:relative;display:flex;max-width:100%;cursor:pointer}}'
+        f'.ri input{{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:inherit}}'
+        f'.rf{{display:inline-flex;align-items:center;gap:6px;min-height:var(--touch);padding:0 15px;border:1px solid var(--edge);'
+        f'background:var(--ground);color:var(--ink);{T("ui")};overflow-wrap:anywhere}}.rf svg{{display:none;flex:none}}'
+        f'.ri:hover .rf > span{{text-decoration:underline;text-underline-offset:.2em}}'
+        f'.ri input:focus-visible + .rf{{outline:2px solid var(--ring);outline-offset:2px}}'
+        f'.ri input:checked + .rf{{padding:0 14px 0 8px;border-width:2px;font-weight:700}}'
+        f'.ri input:checked + .rf svg{{display:block}}')
     t0, x0 = REPORT_PAGES[0]
     data = json.dumps(REPORT_PAGES, ensure_ascii=False, separators=(',', ':'))
     # CA-S1: the page's header, title and text stay readable to a screen reader, and the status line names the title
@@ -143,9 +155,11 @@ def s_reader(ctx, m):
             f'{u("arrow", transform=MIRROR[24])}Previous page</button>'
             f'<button type="button" class="b nx" data-act="next">Next page{u("arrow")}</button></div>'
             f'<p class="why" id="rd-why" data-out="why">This is the first page.</p>'
-            f'<div class="zm" role="group" aria-label="Page size">'
-            f'<button type="button" class="b wd" aria-pressed="true" data-zoom="fit">Fit width</button>'
-            f'<button type="button" class="b wd" aria-pressed="false" data-zoom="full">Full size</button></div>'
+            f'<fieldset class="zm"><legend class="zl">Page size</legend><div class="zr">'
+            + ''.join(f'<label class="ri"><input type="radio" name="s-11-11-size" value="{z}"{" checked" if z == "fit" else ""}>'
+                      f'<span class="rf">{u("selected-check")}<span>{w}</span></span></label>'
+                      for z, w in (('fit', 'Fit width'), ('full', 'Full size')))
+            + '</div></fieldset>'
             f'<script type="application/json" data-pages>{data}</script>'
             + script('''
 var R=S.querySelector('[data-ui="reader"]'),T=JSON.parse(R.querySelector('[data-pages]').textContent),n=1,N=T.length,
@@ -161,21 +175,22 @@ function draw(){O.textContent='Page '+n+' of '+N+': '+T[n-1][0];G.textContent=n;
 off(P,n===1);off(X,n===N);W.textContent=n===1?'This is the first page.':(n===N?'This is the last page.':'');}
 P.addEventListener('click',function(){if(n>1){n--;draw();}});
 X.addEventListener('click',function(){if(n<N){n++;draw();}});
-R.querySelectorAll('[data-zoom][aria-pressed]').forEach(function(b){b.addEventListener('click',function(){
-R.querySelectorAll('[data-zoom][aria-pressed]').forEach(function(c){c.setAttribute('aria-pressed',c===b?'true':'false');});
-V.setAttribute('data-zoom',b.getAttribute('data-zoom'));});});
+R.querySelectorAll('input[name="s-11-11-size"]').forEach(function(b){b.addEventListener('change',function(){
+if(b.checked)V.setAttribute('data-zoom',b.value);});});
 draw();''') + '</div>')
     alt = (f'A live report reader at 360 px, Illustrative. Page 1 of the {m.C.num(n_pages)}-page report {REPORT} sits in '
            f'a frame: its heading, “{t0}”, and its text, “{x0}” Under it, a status line reads “Page 1 of {n_pages}: {t0}”. '
            'Two buttons follow, Previous page with the arrow mirrored before its word and Next page with the arrow after '
            'it, each 44 px tall. On the first page, Previous page is unavailable: its outline is dashed, and the line under '
-           'it says “This is the first page.” Two word buttons, Fit width and Full size, change the size of the page; Fit '
-           'width is pressed, bold and underlined. The other pages are ' + ', '.join(f'“{t}”' for t, _ in REPORT_PAGES[1:-1])
+           'it says “This is the first page.” A choice of two under the words Page size, Fit width and Full size, sets the '
+           'size of the page; Fit width is checked, with the selected check before its word, the word in bold and a 2 px '
+           'edge. The other pages are ' + ', '.join(f'“{t}”' for t, _ in REPORT_PAGES[1:-1])
            + f' and “{REPORT_PAGES[-1][0]}”.')
     return m.spec(ctx, 's-11-11-correct', html, '11.11', alt, width=360, interactive=True, illustrative=True,
                   notes='Live (D2-516). Previous page keeps focus while unavailable, with aria-disabled and its reason '
                         'through aria-describedby (G-4); the page count and title are a polite status line (A-9, CA-S1); '
-                        'the page itself is readable text (CD-M1); zoom stays words (DR-154).')
+                        'the page itself is readable text (CD-M1); zoom stays words (DR-154); Fit width and Full size are '
+                        'a radio group with Rule 17.10\'s look, as Rule 18.21\'s reader draws them (D2-1151, D2-1459).')
 
 
 def s_reader_fail(ctx, m):
@@ -502,6 +517,9 @@ def loop_steps(m):
     labels = [lab for lab, _ in lp['chain_labels']]
     signs = [sg for _, sg in lp['chain']]
     grades = [links[lid]['evidence'] for lid in lp['links']]
+    if lp.get('evidence') != 'plausible' or grades.index('plausible') != 1:
+        raise SystemExit(f'loop {LOOP_ID}: the loop is graded {lp.get("evidence")}; LOOP_GRADE words a plausible loop '
+                         'whose middle step is the plausible one')
     if sum(g.startswith('plausible') for g in grades) > 1 or any(
             g not in ('documented', 'well-supported', 'plausible') for g in grades):
         raise SystemExit(f'loop {LOOP_ID}: grades {grades}; the stepper words one plausible step, the least certain')
@@ -537,6 +555,7 @@ def stepper(ctx, m, live=True):
     title, first, steps = loop_steps(m)
     css = ui_css(ctx) + (
         f'.k{{{T("label")};color:var(--sec)}}.t{{margin-top:6px;{T("h4", "floor")};text-wrap:balance}}'
+        f'.gd{{margin-top:4px;{T("bodySmall")}}}'
         f'.st{{margin:16px 0;padding:14px;border:1px solid var(--hair);background:var(--paper);min-height:14rem}}'
         f'.sn{{{T("ui")};font-weight:700;font-variant-numeric:tabular-nums}}.sx{{margin-top:6px;{T("bodySmall")};text-wrap:pretty}}'
         f'.cl{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr));gap:8px}}'
@@ -547,7 +566,7 @@ def stepper(ctx, m, live=True):
     start = (f'Start at {first[0].lower() + first[1:]}, and suppose {rise}. Press Play, or Next step to follow one '
              f'connection at a time.')
     data = json.dumps(steps, ensure_ascii=False, separators=(',', ':'))
-    head = (f'<p class="k">From our systems atlas, loop {LOOP_ID}</p><p class="t">{title}</p>'
+    head = (f'<p class="k">From our systems atlas, Loop {LOOP_ID}</p><p class="t">“{title}”</p><p class="gd">{LOOP_GRADE}</p>'
             f'<div class="st" aria-live="polite"><p class="sn" data-out="sn">Ready</p><p class="sx" data-out="sx">{start}</p></div>')
     if live:
         ctl = (f'<div class="cl" role="group" aria-label="Steps of the loop">'
@@ -584,7 +603,8 @@ show();''')
 def s_stepper(ctx, m):
     css, body, title, steps = stepper(ctx, m)
     html = f'<style>{css}</style>{body}'
-    alt = (f'A live loop stepper at 360 px for loop {LOOP_ID} from our systems atlas, “{title}”. A box shows the step '
+    alt = (f'A live loop stepper at 360 px for Loop {LOOP_ID} from our systems atlas, “{title}”, with the line '
+           f'“{LOOP_GRADE}” A box shows the step '
            'and its sentence, and starts at “Ready”. Four buttons sit under it, each 44 px tall with its icon beside its '
            'word: Play, which turns to Pause while the steps run and to Play again at the end; Reset the loop, with an open '
            'circle and one arrowhead; Previous step, with the arrow mirrored; and Next step, with the arrow after its word. '
@@ -615,7 +635,7 @@ def s_stepper_fail(ctx, m):
            f'<span class="b">{u("arrow", transform=MIRROR[24])}Previous step</span>'
            f'<span class="b nx">Next step{u("arrow")}</span></div>')
     html = f'<style>{css}{fcss}</style>{band}<div class="ui">{head}{ctl}</div>'
-    alt = (f'Failure case: do not publish. The same loop stepper for loop {LOOP_ID}, “{title}”, at 360 px. Its '
+    alt = (f'Failure case: do not publish. The same loop stepper for Loop {LOOP_ID}, “{title}”, at 360 px. Its '
            'Start over button carries CL-024, the feedback loop drawing, two arrows that carry a change between two boxes '
            'and back, in place of the Reset icon.')
     return m.spec(ctx, 's-11-14-failure', html, '11.14', alt, width=360,
@@ -629,11 +649,11 @@ def marks_css(ctx):
     """The error, success and warning messages (Rule 11.15), in role short names (F-1, D2-1159). On Charcoal the Error
     Band's short name is initial, so the message sits on the ground with its 4 px red bar at 4.49 to 1 (D2-1160)."""
     T, v = ctx.ty, ctx.v
-    for k in ('error.band', 'error.text', 'error.mark', 'success.mark', 'success.text', 'warning.mark', 'warning.text'):
+    for k in ('error.band', 'error.text', 'error.bar', 'success.mark', 'success.text', 'warning.mark', 'warning.text'):
         v(f'oa.color.state.{k}.onNewsprint')        # recorded, as in ui_css
     return (f'.er{{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;margin-top:8px;padding:10px 12px;'
             f'background:{v("oa.color.state.error.band")};color:{v("oa.color.state.error.text")};'
-            f'border-left:4px solid {v("oa.color.state.error.mark")};{T("bodySmall")}}}'
+            f'border-left:4px solid {v("oa.color.state.error.bar")};{T("bodySmall")}}}'
             f'.er[hidden],.ok[hidden]{{display:none}}.er svg,.ok svg,.wn svg{{display:block;margin-top:-1px}}'
             f'.er b,.ok b,.wn b{{font-weight:700}}'
             f'.ok{{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;margin-top:12px;padding:10px 0;'
@@ -650,7 +670,7 @@ def s_form(ctx, m):
         f'.f{{margin:0 0 16px}}.l{{display:block;{T("ui")};font-weight:600}}.h{{{T("caption")};color:var(--sec)}}'
         f'.ui .in{{display:block;box-sizing:border-box;width:100%;min-height:48px;margin-top:6px;padding:0 12px;'
         f'border:1px solid var(--edge);background:var(--paper);color:var(--ink);{T("body")}}}'
-        f'.ui .in[aria-invalid="true"]{{border-left:4px solid {v("oa.color.state.error.mark")};padding-left:9px}}'
+        f'.ui .in[aria-invalid="true"]{{border-left:4px solid {v("oa.color.state.error.bar")};padding-left:9px}}'
         f'.ui .ask{{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border:0;cursor:pointer;'
         f'background:{v("oa.component.button.ask.fill")};color:{v("oa.component.button.ask.label")};'
         f'box-shadow:inset 0 0 0 1px {v("oa.component.button.ask.keyline")};{T("ask")}}}'
@@ -782,7 +802,7 @@ def yield_view(ctx, m, fail=False):
         f'.fm{{margin-top:16px;padding-top:12px;border-top:1px solid var(--hair)}}'
         f'.l{{display:block;{T("ui")};font-weight:600}}'
         f'.in{{display:flex;align-items:center;min-height:48px;margin-top:6px;padding:0 9px;border:1px solid var(--strong);'
-        f'border-left:4px solid {v("oa.color.state.error.mark.onNewsprint")};background:{v("oa.color.surface.white")};{T("body")}}}'
+        f'border-left:4px solid {v("oa.color.state.error.bar.onNewsprint")};background:{v("oa.color.surface.white")};{T("body")}}}'
         f'.ask{{display:inline-flex;align-items:center;min-height:48px;margin-top:16px;padding:0 20px;{T("ask")}}}'
         f'.ask.y{{background:{v("oa.component.button.primary.fill.onNewsprint")};color:{v("oa.component.button.primary.label.onNewsprint")}}}'
         f'.ask.r{{background:{v("oa.component.button.ask.fill.onNewsprint")};color:{v("oa.component.button.ask.label.onNewsprint")};'
@@ -890,7 +910,8 @@ def build_ui(ctx, m, rule_titles):
             'correct': {'specimen': 's-11-11-correct',
                         'caption': 'A report reader’s toolbar, live at 360 px. Each icon sits beside its word, every '
                                    'control stands 44 px tall, Previous page says why it is unavailable on the first page, '
-                                   'and the control for the page’s size stays in words.'},
+                                   'and the choice of the page’s size stays in words, with the check, bold words and 2 px '
+                                   'edge of a checked choice (Rule 17.10).'},
             'failure': {'specimen': 's-11-11-failure',
                         'caption': '<strong>Fails Rule 11.11.</strong> The toolbar shows icons with no words, each 32 px '
                                    'square, and its information mark gives its name only in a box that appears on hover.'},
@@ -952,10 +973,11 @@ def build_ui(ctx, m, rule_titles):
                          '<code>&lt;use&gt;</code>, so every line stays on the pixel grid. At 16 px the down arrow is a '
                          'mirror across the diagonal, <code>matrix(0 1 1 0 0 0)</code>, which keeps its shaft on the up '
                          'arrow’s pixel column.',
-                         'Give a search field <code>type="search"</code> and let the Escape key clear it. On a product '
-                         'page, wrap the field, its filters and its status line in a search landmark, the '
-                         '<code>&lt;search&gt;</code> element, so a screen reader can jump straight to it, as Rule 18.15’s '
-                         'code does. Write the count and any advice to that one status line, '
+                         'Give a search field <code>type="search"</code>, and clear it on Escape in your script, as Rule '
+                         '18.15 does. On a product page, wrap the field, its filters and its status line in a search '
+                         'landmark, the <code>&lt;search&gt;</code> element. A landmark is a region a screen reader can '
+                         'jump to, such as the navigation, so a reader reaches the search from anywhere on the page. '
+                         'Write the count and any advice to that one status line, '
                          f'such as “0 of {n_lib} symbols. No symbol matches. Clear the search or the filters to see more.” '
                          'Rule 18.15 is the search’s home, with every state and its code to copy.'],
         },
@@ -1002,7 +1024,7 @@ def build_ui(ctx, m, rule_titles):
                         'caption': f'A stepper for Loop {LOOP_ID} from our systems atlas, “{loop_title}”, live at 360 px. '
                                    'Play, Reset the '
                                    'loop, Previous step and Next step each carry a utility icon beside the word, and the '
-                                   'unavailable ones say why. The least certain step says so in its words.'},
+                                   'unavailable ones say why. The line under the title gives the loop’s grade, and the least certain step says so in its words.'},
             'failure': {'specimen': 's-11-14-failure',
                         'caption': '<strong>Fails Rule 11.14.</strong> CL-024, the feedback loop drawing, stands in for '
                                    'Reset. A reader learns it as a button here and meets it next as the subject of a story '
@@ -1053,7 +1075,7 @@ def build_ui(ctx, m, rule_titles):
                 {'label': 'Error mark', 'value': 'A circle holding an exclamation mark, in the text’s ink, never red',
                  'token': 'oa.color.state.error.text.onNewsprint'},
                 {'label': 'The red bar', 'value': '4 px of Pillar Red at the left of the message and of a field with an '
-                                                  'error; this token colors the bar only', 'token': 'oa.color.state.error.mark.onNewsprint'},
+                                                  'error; this token colors the bar only', 'token': 'oa.color.state.error.bar.onNewsprint'},
                 {'label': 'Error message', 'value': 'On the Error Band: the mark, “Error:” and the fix',
                  'token': 'oa.color.state.error.band.onNewsprint'},
                 {'label': 'Field with an error', 'value': 'The red bar at its left edge, aria-invalid and aria-describedby '
@@ -1072,7 +1094,7 @@ def build_ui(ctx, m, rule_titles):
                          'success or a result in <code>role="status"</code>. Draw the bar as a left border, which stays '
                          'visible when the system forces its own colors.',
                          'Draw the error mark in <code>--oa-color-state-error-text-on-newsprint</code> through '
-                         '<code>currentColor</code>. <code>--oa-color-state-error-mark-on-newsprint</code> colors the 4 px '
+                         '<code>currentColor</code>. <code>--oa-color-state-error-bar-on-newsprint</code> colors the 4 px '
                          'bar only.'],
         },
         {
@@ -1101,7 +1123,7 @@ def build_ui(ctx, m, rule_titles):
                                    'urgent than the rest.'},
             'specs': [
                 {'label': 'First claim', 'value': 'An error the reader must fix, which holds the red bar',
-                 'token': 'oa.color.state.error.mark.onNewsprint'},
+                 'token': 'oa.color.state.error.bar.onNewsprint'},
                 {'label': 'Error mark', 'value': 'In the text’s ink, beside the red bar', 'token': 'oa.color.state.error.text.onNewsprint'},
                 {'label': 'Second claim', 'value': 'The step a reader can take now: the take-part mark and the ask',
                  'token': 'oa.component.mark.takePart.disc'},

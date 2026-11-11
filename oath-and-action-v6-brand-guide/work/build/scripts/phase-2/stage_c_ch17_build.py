@@ -123,9 +123,9 @@ F = {
                  'primary fill against its hover fill on Newsprint'),
     'hover_c': r('oa.color.action.primary.fill.onCharcoal', 'oa.color.action.primary.fillHover.onCharcoal',
                  'primary fill against its hover fill on Charcoal'),
-    'err_c': r('oa.color.state.error.mark.onCharcoal', 'oa.color.surface.charcoal'),
-    'err_n': r('oa.color.state.error.mark.onNewsprint', 'oa.color.surface.newsprint'),
-    'err_band': r('oa.color.state.error.mark.onNewsprint', 'oa.color.state.error.band.onNewsprint'),
+    'err_c': r('oa.color.state.error.bar.onCharcoal', 'oa.color.surface.charcoal'),
+    'err_n': r('oa.color.state.error.bar.onNewsprint', 'oa.color.surface.newsprint'),
+    'err_band': r('oa.color.state.error.bar.onNewsprint', 'oa.color.state.error.band.onNewsprint'),
     'err_text_band': r('oa.color.state.error.text.onNewsprint', 'oa.color.state.error.band.onNewsprint'),
     'load_n': r('oa.color.state.loading.mark.onNewsprint', 'oa.color.surface.newsprint'),
     'load_c': r('oa.color.state.loading.mark.onCharcoal', 'oa.color.surface.charcoal'),
@@ -1093,7 +1093,7 @@ CELL_CSS = (
     '.msg svg{display:block;margin-top:-1px}.msg b{font-weight:700}'
     '.wn{border-left:var(--oa-border-width-bar) solid var(--oa-color-state-warning-mark);color:var(--oa-color-state-warning-text)}'
     '.wn svg{color:var(--oa-color-state-warning-mark)}'
-    '.er{border-left:var(--oa-border-width-bar) solid var(--oa-color-state-error-mark);'
+    '.er{border-left:var(--oa-border-width-bar) solid var(--oa-color-state-error-bar);'
     'background-color:var(--oa-color-state-error-band);color:var(--oa-color-state-error-text)}'
     '.ok{padding-left:16px;color:var(--oa-color-state-success-text)}.ok svg{color:var(--oa-color-state-success-mark)}'
     '.em{display:grid;gap:4px;padding:14px 16px;border:var(--oa-border-width-hairline) dashed var(--oa-color-state-empty-edge);'
@@ -1412,7 +1412,7 @@ def s17_opener():
            '.ld line{stroke:var(--oa-color-state-loading-mark);stroke-width:1.5}'
            '.m{display:flex;gap:6px;align-items:flex-start;padding:6px 8px}.m b{font-weight:700}'
            '.wn{border-left:var(--oa-border-width-bar) solid var(--oa-color-state-warning-mark);color:var(--oa-color-state-warning-text)}'
-           '.er{border-left:var(--oa-border-width-bar) solid var(--oa-color-state-error-mark);'
+           '.er{border-left:var(--oa-border-width-bar) solid var(--oa-color-state-error-bar);'
            'background-color:var(--oa-color-state-error-band);color:var(--oa-color-state-error-text)}'
            '.ok{color:var(--oa-color-state-success-text)}.ok svg{color:var(--oa-color-state-success-mark)}'
            '.em{padding:8px 12px;border:var(--oa-border-width-hairline) dashed var(--oa-color-state-empty-edge);'
@@ -1815,7 +1815,7 @@ def build_chapter():
             'surfaces.'],
         'tokens': ['oa.color.state.muted.text.onNewsprint', 'oa.color.state.disabled.edge.onNewsprint',
                    'oa.color.state.loading.mark.onNewsprint', 'oa.color.state.selected.bar.onNewsprint',
-                   'oa.color.state.warning.mark.onNewsprint', 'oa.color.state.error.mark.onNewsprint',
+                   'oa.color.state.warning.mark.onNewsprint', 'oa.color.state.error.bar.onNewsprint',
                    'oa.color.state.error.band.onNewsprint', 'oa.color.state.empty.edge.onNewsprint',
                    'oa.color.state.success.mark.onNewsprint', 'oa.border.width.bar'],
         'why': {'text': [
@@ -1854,7 +1854,7 @@ def build_chapter():
         ],
         'related': ['05', '11', '18', '26'],
         'builders': [
-            'Write a state’s colors with the short names, such as <code>var(--oa-color-state-error-mark)</code> for an error’s 4 px bar '
+            'Write a state’s colors with the short names, such as <code>var(--oa-color-state-error-bar)</code> for an error’s 4 px bar '
             'and <code>var(--oa-color-surface)</code>, never a name that ends in a surface. The theme and the surface '
             'classes point each short name at the right value, so the same code draws both columns of this plate.',
             'Draw every state bar as a border, <code>border-left: 4px solid</code>. Forced colors, a setting such as the '

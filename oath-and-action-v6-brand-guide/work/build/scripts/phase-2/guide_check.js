@@ -95,6 +95,9 @@
 //   motionPlay         every moving specimen: still on load, Play, Pause and Reset, comes to rest, and under reduced motion
 //                      the final frame at once
 //   tokenTable         chapter 26's token table against tokens.json
+// Added in stage C, round 2 (November 11, 2026):
+//   redTouchesPrussian no Pillar Red pixel within 2 px of a Prussian one in any stage at 1440 px, the live code stages in
+//                      both themes included, as drawn and again after Send is pressed in every form (D2-1544)
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -1695,6 +1698,130 @@ async function motionAudit(browser, file, opts = {}) {
   return out;
 }
 
+// redTouchesPrussian (round 2, D2-1544): Rule 05.3's "Red never sits on Prussian", read from the pixels. The red test
+// above reads each red element's ground from the DOM, so a red border on a box whose own ground is Prussian (the dark
+// form's error bar on its field, CD-M2 and BE-M1) passed, and so did any red that shows only after a reader acts. This
+// step captures every stage at 1440 px, the live code stages in both themes included, then presses Send in every form a
+// stage holds and captures that stage again. A pixel within RP_TOL of Pillar Red with a pixel within RP_TOL of Prussian
+// RP_REACH px away or nearer fails: touching, with room for one pixel of antialiasing between them. A stage whose
+// data-check-exempt names red (a labeled failure plate that shows the fault on purpose) is left out. Only stages that
+// compute both colors somewhere, or hold a raster or a canvas, are captured, which keeps the step to seconds.
+const RP_TOL = 8;
+const RP_REACH = 2;
+async function redPrussian(browser, file, opts = {}) {
+  const out = { stages: 0, captured: 0, forms: 0, sends: 0, exempt: 0, hits: [] };
+  const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
+  const page = await ctx.newPage();
+  await page.goto('file://' + file, { waitUntil: 'load' });
+  await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+  await page.evaluate(() => document.fonts.ready);
+  if (opts.mutate) await page.evaluate(opts.mutate);
+  await page.addStyleTag({ content: '.masthead, .rail { visibility: hidden !important } html { scroll-behavior: auto !important }' });
+  // a form a guide stage holds never leaves the page, whatever its own script does
+  await page.evaluate(() => document.addEventListener('submit', (ev) => ev.preventDefault()));
+  const harness = await ctx.newPage();
+  await harness.setContent('<!doctype html><title>scan</title>');
+  // which stages to capture: both colors computed somewhere inside, or a picture the DOM cannot read
+  const survey = (ids) => page.evaluate(({ ids, RED, PRUSSIAN, TOL }) => {
+    const near = (s, c) => { const m = String(s).match(/rgba?\(([\d.]+),\s*([\d.]+),\s*([\d.]+)(?:,\s*([\d.]+))?/); return !!m && (m[4] === undefined || +m[4] > 0.5) && Math.abs(m[1] - c[0]) <= TOL && Math.abs(m[2] - c[1]) <= TOL && Math.abs(m[3] - c[2]) <= TOL; };
+    const PROPS = ['color', 'backgroundColor', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'outlineColor', 'fill', 'stroke', 'boxShadow', 'textDecorationColor'];
+    const stages = [...document.querySelectorAll('.plate-stage[data-specimen]')].filter((s) => !s.hasAttribute('data-pending') && (!ids || ids.includes(s.getAttribute('data-specimen'))));
+    return stages.map((s) => {
+      const id = s.getAttribute('data-specimen');
+      const ex = s.closest('[data-check-exempt]');
+      const exempt = !!ex && ex.getAttribute('data-check-exempt').split(/\s+/).includes('red');
+      let red = false, pr = false;
+      const els = [s, ...s.querySelectorAll('*')];
+      for (const el of els) {
+        const cs = getComputedStyle(el);
+        if (cs.display === 'none' || cs.visibility === 'hidden') continue;
+        for (const p of PROPS) { const v = cs[p]; if (!v || v === 'none') continue; if (!red && (near(v, RED) || (p === 'boxShadow' && v.includes(`${RED[0]}, ${RED[1]}, ${RED[2]}`)))) red = true; if (!pr && (near(v, PRUSSIAN) || (p === 'boxShadow' && v.includes(`${PRUSSIAN[0]}, ${PRUSSIAN[1]}, ${PRUSSIAN[2]}`)))) pr = true; }
+        if (red && pr) break;
+      }
+      const raster = !!s.querySelector('img, canvas, video, image, iframe') || els.some((el) => /url\(/.test(getComputedStyle(el).backgroundImage));
+      const box = s.getBoundingClientRect();
+      return { id, exempt, red, pr, raster, forms: s.querySelectorAll('form').length, w: box.width, h: box.height };
+    });
+  }, { ids, RED, PRUSSIAN, TOL: RP_TOL });
+  // a stage is captured in tiles no taller than the window, scrolled into place, so a stage of any height is read whole
+  // (a single capture of the 175,000 px token table outgrew the canvas that reads it)
+  const scanTile = (b64) => harness.evaluate(async ([b64, RED, PRUSSIAN, TOL, REACH]) => {
+    const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = 'data:image/png;base64,' + b64; });
+    const W = img.width, H = img.height;
+    const c = document.createElement('canvas'); c.width = W; c.height = H; const g = c.getContext('2d', { willReadFrequently: true });
+    g.drawImage(img, 0, 0); const d = g.getImageData(0, 0, W, H).data;
+    const is = (i, k) => Math.abs(d[i] - k[0]) <= TOL && Math.abs(d[i + 1] - k[1]) <= TOL && Math.abs(d[i + 2] - k[2]) <= TOL;
+    const pr = new Uint8Array(W * H); let any = false;
+    for (let p = 0; p < W * H; p++) if (is(p * 4, PRUSSIAN)) { pr[p] = 1; any = true; }
+    if (!any) return { n: 0, first: null };
+    let n = 0, first = null;
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      if (!is((y * W + x) * 4, RED)) continue;
+      let touch = false;
+      for (let oy = -REACH; oy <= REACH && !touch; oy++) for (let ox = -REACH; ox <= REACH; ox++) {
+        const qx = x + ox, qy = y + oy; if (qx < 0 || qy < 0 || qx >= W || qy >= H) continue;
+        if (pr[qy * W + qx]) { touch = true; break; }
+      }
+      if (touch) { n++; if (!first) first = { x, y }; }
+    }
+    return { n, first };
+  }, [b64, RED, PRUSSIAN, RP_TOL, RP_REACH]);
+  const VW = 1440, VH = 900, STEP = VH - 4 * RP_REACH;
+  const scan = async (id, when) => {
+    const sel = `.plate-stage[data-specimen="${id}"]`;
+    const m = await page.evaluate((sel) => { const r = document.querySelector(sel).getBoundingClientRect(); return { w: r.width, h: r.height }; }, sel);
+    let n = 0, first = null;
+    try {
+      for (let y = 0; y < m.h; y += STEP) {
+        // the page lays out lazily, so a stage can move once it scrolls into view: settle, and read its place again
+        const place = () => page.evaluate(async ([sel, t]) => {
+          const el = document.querySelector(sel);
+          let last = null;
+          for (let k = 0; k < 6; k++) {
+            window.scrollTo(0, Math.max(0, Math.floor(el.getBoundingClientRect().top + window.scrollY + t)));
+            await new Promise((res) => requestAnimationFrame(() => requestAnimationFrame(res)));
+            const b = el.getBoundingClientRect();
+            if (last && Math.abs(b.top - last.y) < 0.5 && Math.abs(b.left - last.x) < 0.5) break;
+            last = { x: b.left, y: b.top };
+          }
+          const b = el.getBoundingClientRect();
+          return { x: b.left, y: b.top };
+        }, [sel, y - 2 * RP_REACH]);
+        const r = await place();
+        const top = Math.max(0, r.y + y - 2 * RP_REACH), left = Math.max(0, r.x);
+        const bottom = Math.min(VH, r.y + Math.min(m.h, y + STEP + 2 * RP_REACH)), right = Math.min(VW, r.x + m.w);
+        if (bottom - top < 1 || right - left < 1) continue;
+        const shot = await page.screenshot({ clip: { x: left, y: top, width: right - left, height: bottom - top }, animations: 'disabled' });
+        const t = await scanTile(shot.toString('base64'));
+        if (t.n) { n += t.n; if (!first) first = { x: Math.round(t.first.x + left - r.x), y: Math.round(t.first.y + top - r.y) }; }
+      }
+    } catch (err) { out.hits.push({ stage: id, when, why: `could not be captured: ${String(err.message || err).split('\n')[0]}` }); return; }
+    out.captured++;
+    if (n) out.hits.push({ stage: id, when, pixels: n, first });
+  };
+  const all = await survey(null);
+  out.stages = all.length;
+  for (const s of all) {
+    if (s.exempt) { out.exempt++; continue; }
+    if (s.w < 1 || s.h < 1) continue;
+    if ((s.red && s.pr) || s.raster) await scan(s.id, 'as drawn');
+    if (!s.forms) continue;
+    // press Send in each form the stage holds, then look again
+    const n = s.forms;
+    for (let i = 0; i < n; i++) {
+      out.forms++;
+      const send = page.locator(`.plate-stage[data-specimen="${s.id}"] form`).nth(i).locator('button[type="submit"], input[type="submit"], button:not([type])').first();
+      if (!(await send.count())) continue;
+      try { await send.scrollIntoViewIfNeeded({ timeout: 5000 }); await send.click({ timeout: 5000 }); out.sends++; } catch (err) { out.hits.push({ stage: s.id, when: `form ${i + 1}`, why: `Send could not be pressed: ${String(err.message || err).split('\n')[0]}` }); continue; }
+      await page.waitForTimeout(900);
+      const [after] = await survey([s.id]);
+      if (after && ((after.red && after.pr) || after.raster)) await scan(s.id, `after Send in form ${i + 1}`);
+    }
+  }
+  await ctx.close();
+  return out;
+}
+
 // Chapter 26's table against tokens.json, read once at the first width.
 async function tokenTable(page) {
   const facts = tokenFacts();
@@ -1887,6 +2014,12 @@ async function checkPage(browser, file, widths, opts = {}) {
     report.motion = { players: m.players, failurePlates: m.failurePlates, reduced: m.reduced, problems: m.problems };
     for (const pr of m.problems) report.failures.push({ key: 'motionPlay', msg: `${pr.where}: ${pr.why}` });
   }
+  // round 2 (D2-1544): no red pixel touches Prussian, in any stage, before or after Send
+  if (opts.redPrussian !== false) {
+    const rp = await redPrussian(browser, file, opts);
+    report.redPrussian = { width: 1440, stages: rp.stages, captured: rp.captured, exempt: rp.exempt, forms: rp.forms, sends: rp.sends, hits: rp.hits.slice(0, 20) };
+    for (const h of rp.hits) report.failures.push({ key: 'redTouchesPrussian', msg: `1440: ${h.stage}, ${h.when}: ${h.why || `${h.pixels} Pillar Red pixel(s) within ${RP_REACH} px of Prussian, first at ${h.first.x}, ${h.first.y} in the stage; red never sits on Prussian (Rule 05.3)`}` });
+  }
   report.pass = report.failures.length === 0;
   return report;
 }
@@ -1915,6 +2048,11 @@ const PLANTS = [
   { key: 'redJobs', fault: 'two working-red jobs in the page', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p data-red="working" data-red-job="ask" style="color:var(--oa-color-palette-charcoal);border-left:4px solid var(--oa-color-palette-pillar-red)">A</p><p data-red="working" data-red-job="error" style="border-left:4px solid var(--oa-color-palette-pillar-red)">B</p>'); } },
   { key: 'redJobsSpecimen', fault: 'two working-red jobs inside one specimen', js: () => { document.querySelector('[data-specimen]:not([data-pending])').insertAdjacentHTML('beforeend', '<p data-red="working" data-red-job="ask" style="border-left:4px solid var(--oa-color-palette-pillar-red)">A</p><p data-red="working" data-red-job="point" style="border-left:4px solid var(--oa-color-palette-pillar-red)">B</p>'); } },
   { key: 'redOnPrussian', fault: 'red on a Prussian ground', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div style="background:var(--oa-color-palette-prussian);padding:16px"><span data-red="signature" style="display:inline-block;width:20px;height:20px;background:var(--oa-color-palette-pillar-red)"></span></div>'); } },
+  // round 2 (D2-1544): red touching Prussian, read from the pixels, as drawn and after Send
+  { key: 'redTouchesPrussian', fault: 'a 4 px red bar on the edge of a field whose own ground is Prussian (the dark form before the release)', js: () => { document.querySelector('.plate-stage[data-specimen]:not([data-pending])').insertAdjacentHTML('beforeend', '<div data-red="working" data-red-job="error" style="box-sizing:border-box;width:200px;height:44px;margin:8px 0;background:var(--oa-color-palette-prussian);border-left:4px solid var(--oa-color-palette-pillar-red)"></div>'); } },
+  { key: 'redTouchesPrussian', fault: 'a form whose Send puts a red bar on a Prussian field, red only after the press', js: () => { const st = document.querySelector('.plate-stage[data-specimen]:not([data-pending])'); st.insertAdjacentHTML('beforeend', '<form class="sb-rp" novalidate><div class="sb-rp-f" style="box-sizing:border-box;width:200px;height:44px;margin:8px 0;background:var(--oa-color-palette-prussian);border-left:4px solid transparent"></div><button type="submit">Send</button></form>'); const f = st.querySelector('.sb-rp'); f.addEventListener('submit', (ev) => { ev.preventDefault(); const b = f.querySelector('.sb-rp-f'); b.setAttribute('data-red', 'working'); b.setAttribute('data-red-job', 'error'); b.style.borderLeftColor = 'var(--oa-color-palette-pillar-red)'; }); } },
+  { key: 'redTouchesPrussian', fault: 'a red mark and a Prussian band 8 px apart in one stage (allowed: must not be flagged)', expect: false, js: () => { document.querySelector('.plate-stage[data-specimen]:not([data-pending])').insertAdjacentHTML('beforeend', '<div style="display:flex;gap:8px;margin:8px 0"><span data-red="working" data-red-job="error" style="width:24px;height:24px;background:var(--oa-color-palette-pillar-red)"></span><span style="width:24px;height:24px;background:var(--oa-color-palette-prussian)"></span></div>'); } },
+  { key: 'redTouchesPrussian', fault: 'red on Prussian in a plate whose data-check-exempt names red, a labeled failure (allowed: must not be flagged)', expect: false, js: () => { const st = document.querySelector('.plate-stage[data-specimen]:not([data-pending])'); st.setAttribute('data-check-exempt', ((st.getAttribute('data-check-exempt') || '') + ' red').trim()); st.insertAdjacentHTML('beforeend', '<div style="width:200px;height:44px;margin:8px 0;background:var(--oa-color-palette-prussian);border-left:4px solid var(--oa-color-palette-pillar-red)"></div>'); } },
   { key: 'emDash', fault: 'an em dash in prose', js: () => { document.querySelector('.rule-text').append(' One clause — then another.'); } },
   { key: 'lockedLines', fault: 'a near miss of the tagline', js: () => { document.querySelector('.rule-text').append(' A nation that answers to its people.'); } },
   { key: 'pillarOrder', fault: 'the pillars out of order', js: () => { document.querySelector('.rule-text').append(' Explain → Connect → Track → Act.'); } },
@@ -2194,7 +2332,7 @@ async function selfTest() {
   result.clean = { pass: clean.pass, failures: clean.failures.map((f) => f.msg), exemptions: clean.runs[0].specimens.exemptions, skippedTexts: clean.runs[0].text.skipped };
   for (const p of PLANTS) {
     const r = await checkPage(browser, page, p.widths || [1440], { mutate: p.js, skipAxe: true, skipFocus: !p.focus, plant: true, hiDpi: p.hiDpi || [],
-      keys: p.key === 'keyPath', motion: p.key === 'motionPlay' });
+      keys: p.key === 'keyPath', motion: p.key === 'motionPlay', redPrussian: p.key === 'redTouchesPrussian' });
     const caught = r.failures.filter((f) => f.key === p.key);
     const others = r.failures.filter((f) => f.key !== p.key).map((f) => f.key);
     // a plant with expect: false proves an allowance: the test must stay quiet. verify, where given, reads the run
@@ -2240,6 +2378,7 @@ async function selfTest() {
   if (report.keys) console.log(`  keyPath: ${report.keys.withKeys} of ${report.keys.sets} code sets with keys files, ${report.keys.paths} paths, ${report.keys.walks} walks and ${report.keys.steps} steps at ${report.keys.widths.join(' and ')} px`
     + (report.keys.missing.length ? `; no keys file: ${report.keys.missing.join(', ')}` : ''));
   if (report.motion) console.log(`  motion: ${report.motion.players} moving specimen(s), ${report.motion.reduced.filter((x) => x.finalAtOnce).length} showing the final frame at once under reduced motion; ${report.motion.failurePlates} on failure plates left alone`);
+  if (report.redPrussian) console.log(`  redTouchesPrussian: ${report.redPrussian.stages} stages at 1440 px, ${report.redPrussian.captured} captured, ${report.redPrussian.exempt} exempt; Send pressed in ${report.redPrussian.sends} of ${report.redPrussian.forms} form(s)`);
   const tt = report.runs[0].tokenTable;
   if (tt) console.log(`  tokenTable: ${tt.rows} rows, ${tt.swatches} swatches, version ${tt.version}; tokens.json ${tt.file ? tt.file.count + ', ' + tt.file.version : 'unread'}`);
   for (const f of report.failures) console.log('  - ' + f.msg);

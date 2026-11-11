@@ -11,19 +11,23 @@
 .oa-link:hover { text-decoration-thickness: var(--oa-border-width-underline-hover) }
 .oa-link:focus-visible, .oa-link-skip:focus-visible, .oa-link-main:focus-visible, .oa-link-k:focus-visible {
   outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
-/* The mark for another site stays on the line with the link's last word, and only that word (F-3) */
+/* The mark for another site stays on the line with the link's last word, and only that word */
 .oa-link-last { white-space: nowrap }
 .oa-link-mark { display: inline-block; width: var(--oa-size-icon-small); height: var(--oa-size-icon-small); margin-left: var(--oa-space-050); vertical-align: -.125em }
 .oa-link-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
 
-/* A list of links: each 44 px tall; the page you are on is semibold with a 2 px underline */
+/* A list of links: each row 44 px tall. The page you are on takes what a list of places gives it (Rule 18.7): the
+   selected band, a 4 px bar drawn as a border, and bold words */
 .oa-link-list { margin: 0; padding: 0; list-style: none; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
 .oa-link-list > li { margin: 0; padding: 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
-.oa-link--item { display: flex; align-items: center; min-height: var(--oa-size-target-touch); font: var(--oa-type-ui); text-decoration: none }
-.oa-link--item:hover { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline-hover) }
-.oa-link--item[aria-current] { font-weight: var(--oa-font-weight-bold); text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline-hover) }
-/* A part not built yet stays text, muted, and says so */
-.oa-link-muted { display: flex; flex-wrap: wrap; align-items: center; column-gap: .3em; min-height: var(--oa-size-target-touch);
+.oa-link--item { display: flex; align-items: center; box-sizing: border-box; min-height: var(--oa-size-target-touch); padding: var(--oa-space-100) var(--oa-space-150);
+  border-left: var(--oa-border-width-bar) solid transparent; font: var(--oa-type-ui); text-decoration: none; overflow-wrap: anywhere }
+.oa-link--item:hover { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline) }
+.oa-link--item[aria-current] { background: var(--oa-color-state-selected-band); border-left-color: var(--oa-color-state-selected-bar); font-weight: var(--oa-font-weight-bold) }
+.oa-link--item:focus-visible { outline-offset: calc(-1 * var(--oa-border-width-focus-ring)) }
+/* A part not built yet stays text, muted, and says so; it lines up with the links' words */
+.oa-link-muted { display: flex; flex-wrap: wrap; align-items: center; column-gap: .3em; box-sizing: border-box; min-height: var(--oa-size-target-touch);
+  padding: var(--oa-space-100) var(--oa-space-150) var(--oa-space-100) calc(var(--oa-space-150) + var(--oa-border-width-bar));
   font: var(--oa-type-ui); color: var(--oa-color-state-muted-text) }
 .oa-link-later { font-weight: var(--oa-font-weight-regular) }
 
@@ -37,4 +41,5 @@
 
 @media (forced-colors: active) {
   .oa-link-skip { border-color: CanvasText }
+  .oa-link--item[aria-current] { border-left-color: Highlight }
 }

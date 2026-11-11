@@ -1,7 +1,8 @@
 // A form with the error pattern (Rule 11.15). On send, each field is checked; a field that fails takes aria-invalid,
 // points to its message and draws the red bar, focus moves to the first field to fix, and the ask yields its red
 // (Rule 11.16). A field in error is checked again as the reader types, so the red returns to the ask once all are
-// fixed. A good send says "Sending" in the status line, keeps the ask unavailable while it runs, then says what happened.
+// fixed. A good send turns the ask's word to "Sending" (its data-oa-sending) and says so in the status line, keeps the
+// ask unavailable while it runs, then gives the ask its word back and says what happened.
 (function () {
   var CHECKS = {
     email: function (v) { return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v); },
@@ -71,10 +72,13 @@
         first.focus();
         return;
       }
+      var word = ask.textContent;
+      ask.textContent = ask.getAttribute('data-oa-sending') || word;
       ask.setAttribute('aria-disabled', 'true');
       if (status.id) ask.setAttribute('aria-describedby', status.id);
       say('.oa-form-say-sending');
       send(form, function () {
+        ask.textContent = word;
         ask.removeAttribute('aria-disabled');
         ask.removeAttribute('aria-describedby');
         say('.oa-form-say-done');

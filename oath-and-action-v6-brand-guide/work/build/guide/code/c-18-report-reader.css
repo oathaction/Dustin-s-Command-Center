@@ -20,7 +20,7 @@
 .oa-reader-hint { margin: var(--oa-space-050) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
 .oa-reader-hint[hidden] { display: none }
 .oa-reader-status { margin: var(--oa-space-150) 0; font: var(--oa-type-ui); font-variant-numeric: tabular-nums }
-/* Two buttons side by side, one column when a label would not fit (F-2) */
+/* Two buttons side by side, one column when a label would not fit */
 .oa-reader-turn { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: var(--oa-space-100) }
 .oa-reader-prev, .oa-reader-next { display: flex; align-items: center; gap: var(--oa-space-100); box-sizing: border-box; min-height: var(--oa-size-target-touch);
   margin: 0; padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px) var(--oa-space-100) calc(var(--oa-space-150) + 1px);

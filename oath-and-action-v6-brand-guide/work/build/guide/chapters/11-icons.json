@@ -118,7 +118,7 @@
       },
       "failure": {
         "specimen": "s-11-2-failure",
-        "caption": "<strong>Fails WCAG 2.2 SC 1.4.1.</strong> Six identical circles tell their states by hue alone. In grayscale, the done steps in Verdigris and the steps ahead in Stone print as grays 1.25 to 1 apart, and no word says where the bill stands."
+        "caption": "<strong>Fails Rule 11.2.</strong> Six identical circles tell their states by hue alone. In grayscale, the done steps in Verdigris and the steps ahead in Stone print as grays 1.25 to 1 apart, and no word says where the bill stands."
       },
       "specs": [
         {
@@ -651,7 +651,7 @@
       },
       "correct": {
         "specimen": "s-11-11-correct",
-        "caption": "A report reader’s toolbar, live at 360 px. Each icon sits beside its word, every control stands 44 px tall, Previous page says why it is unavailable on the first page, and the control for the page’s size stays in words."
+        "caption": "A report reader’s toolbar, live at 360 px. Each icon sits beside its word, every control stands 44 px tall, Previous page says why it is unavailable on the first page, and the choice of the page’s size stays in words, with the check, bold words and 2 px edge of a checked choice (Rule 17.10)."
       },
       "failure": {
         "specimen": "s-11-11-failure",
@@ -760,7 +760,7 @@
       ],
       "builders": [
         "Turn and mirror the arrow and the chevron with the transforms in the utility manifest, on the <code>&lt;use&gt;</code>, so every line stays on the pixel grid. At 16 px the down arrow is a mirror across the diagonal, <code>matrix(0 1 1 0 0 0)</code>, which keeps its shaft on the up arrow’s pixel column.",
-        "Give a search field <code>type=\"search\"</code> and let the Escape key clear it. On a product page, wrap the field, its filters and its status line in a search landmark, the <code>&lt;search&gt;</code> element, so a screen reader can jump straight to it, as Rule 18.15’s code does. Write the count and any advice to that one status line, such as “0 of 125 symbols. No symbol matches. Clear the search or the filters to see more.” Rule 18.15 is the search’s home, with every state and its code to copy."
+        "Give a search field <code>type=\"search\"</code>, and clear it on Escape in your script, as Rule 18.15 does. On a product page, wrap the field, its filters and its status line in a search landmark, the <code>&lt;search&gt;</code> element. A landmark is a region a screen reader can jump to, such as the navigation, so a reader reaches the search from anywhere on the page. Write the count and any advice to that one status line, such as “0 of 125 symbols. No symbol matches. Clear the search or the filters to see more.” Rule 18.15 is the search’s home, with every state and its code to copy."
       ]
     },
     {
@@ -828,7 +828,7 @@
       },
       "correct": {
         "specimen": "s-11-14-correct",
-        "caption": "A stepper for Loop R1 from our systems atlas, “Wealth and political influence reinforce each other”, live at 360 px. Play, Reset the loop, Previous step and Next step each carry a utility icon beside the word, and the unavailable ones say why. The least certain step says so in its words."
+        "caption": "A stepper for Loop R1 from our systems atlas, “Wealth and political influence reinforce each other”, live at 360 px. Play, Reset the loop, Previous step and Next step each carry a utility icon beside the word, and the unavailable ones say why. The line under the title gives the loop’s grade, and the least certain step says so in its words."
       },
       "failure": {
         "specimen": "s-11-14-failure",
@@ -900,7 +900,7 @@
         {
           "label": "The red bar",
           "value": "4 px of Pillar Red at the left of the message and of a field with an error; this token colors the bar only",
-          "token": "oa.color.state.error.mark.onNewsprint"
+          "token": "oa.color.state.error.bar.onNewsprint"
         },
         {
           "label": "Error message",
@@ -937,7 +937,7 @@
       ],
       "builders": [
         "Put an error message in <code>role=\"alert\"</code> or in a status line the field points to, and a success or a result in <code>role=\"status\"</code>. Draw the bar as a left border, which stays visible when the system forces its own colors.",
-        "Draw the error mark in <code>--oa-color-state-error-text-on-newsprint</code> through <code>currentColor</code>. <code>--oa-color-state-error-mark-on-newsprint</code> colors the 4 px bar only."
+        "Draw the error mark in <code>--oa-color-state-error-text-on-newsprint</code> through <code>currentColor</code>. <code>--oa-color-state-error-bar-on-newsprint</code> colors the 4 px bar only."
       ]
     },
     {
@@ -970,7 +970,7 @@
         {
           "label": "First claim",
           "value": "An error the reader must fix, which holds the red bar",
-          "token": "oa.color.state.error.mark.onNewsprint"
+          "token": "oa.color.state.error.bar.onNewsprint"
         },
         {
           "label": "Error mark",

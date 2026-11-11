@@ -107,6 +107,21 @@ R_F01 = r2('failure 18.1: Dim Newsprint word on Newsprint', 'dimNewsprint', 'new
 R_F05 = r2('failure 18.5: Prussian link beside Charcoal text', 'prussian', 'charcoal')
 R_F15 = r2('failure 18.15: Dim Newsprint placeholder on White', 'dimNewsprint', 'white')
 TOKENS_KB = f'{max(1, round(len(TOKENS_CSS.read_bytes()) / 1000)):,} KB'
+
+
+def field_ground(surface):
+    """The palette color a field's ground takes on a surface, read from tokens.json (call 1 of round 2's fix brief)."""
+    ref = json.loads(TOKENS_JSON.read_text())['oa']['color']['field']['ground'][f'on{surface}']['$value']
+    m = re.fullmatch(r'\{oa\.color\.palette\.(\w+)\}', ref)
+    if not m:
+        raise SystemExit(f'the field ground on {surface} is {ref}, not a palette color')
+    return m.group(1)[0].upper() + m.group(1)[1:]
+
+
+FIELD_N, FIELD_C = field_ground('Newsprint'), field_ground('Charcoal')
+FIELD_WORDS = (f'{FIELD_N} on Newsprint and {FIELD_C} on Charcoal'
+               + (', where the field shows by its strong edge' if FIELD_C == 'Charcoal' else ''))
+FIG['field ground'] = {'value': FIELD_WORDS, 'method': 'oa.color.field.ground.onNewsprint and .onCharcoal in tokens.json'}
 CL_INVENTORY = ROOT / 'work/build/assets/civic-line-v6/20261110_Civic-Line-V6-Inventory.json'
 CL_COUNT = json.loads(CL_INVENTORY.read_text())['count']          # Rule 18.15's example reads the set in use
 FIG['Civic Line drawings in use'] = {'value': str(CL_COUNT), 'method': 'count in 20261110_Civic-Line-V6-Inventory.json'}
@@ -161,8 +176,12 @@ INTRO = [
     'gives one component as code to copy, drawn live in the light theme on Newsprint and in the dark theme on Charcoal, '
     'and a table of its states, its keys, its name, its target size and what a screen reader hears when it changes.',
     'The code reads only tokens.css, the file that holds every color, size and type style as a named value, so one copy '
-    'follows either theme. A screen reader hears the name, role, state and status line the code hands it, and each '
-    'screen reader words these its own way. How each state looks and moves comes from chapter 17.',
+    'follows either theme. Each component hands a screen reader its accessible name, the words a screen reader says for '
+    'it, with its role, such as button, and its state, such as pressed. When something changes, the code writes a '
+    'sentence into a status line, a line on the page that a screen reader reads at its next pause, and each screen reader '
+    'words all of this its own way. ARIA, short for Accessible Rich Internet Applications, is W3C’s set of attributes '
+    'that gives a role or a state where HTML has none, and each rule names the pattern it follows in the ARIA Authoring '
+    'Practices Guide (APG), W3C’s worked examples of each control. How each state looks and moves comes from chapter 17.',
 ]
 
 GROUPS = [
@@ -246,15 +265,19 @@ rule(n=1, set='c-18-button', name='Buttons',
      rule=['A button acts on the page: it sends a form, copies a value or starts a loop. A control that takes the reader to '
            'another page or place is a link (Rule 18.5). A view has one primary button at most, Charcoal on Newsprint and '
            'Newsprint on Charcoal. The ask, the Pillar Red button for the one way to take part, appears only where Rule '
-           '05.3 gives the view its working red, and every other button is quiet: its word in ink inside a 1 px edge. A '
-           'utility icon sits beside the word (Rule 11.11).',
+           '05.3 gives the view its working red, the one job red does in a view: an error first, then the step a reader can '
+           'take now. The ask stands apart from a primary button, whose hover turns Prussian. Every other button is quiet: '
+           'its word in ink inside a 1 px edge. A utility icon sits beside the word (Rule 11.11).',
            'When an action cannot run yet, its button stays in place and keeps its focus. It carries aria-disabled, draws '
            'a dashed edge and points to a line under it that says why and what makes it work, such as “Fill in your email '
            'to send.” While a send runs, its word reads “Sending” and a second press does nothing. While an error on the '
-           'page holds the red, the ask steps down to the primary look (Rule 11.16).'],
-     tokens=['--oa-color-action-primary-fill', '--oa-color-action-primary-fill-hover', '--oa-color-action-primary-label',
-             '--oa-color-action-ask-fill', '--oa-color-action-ask-label', '--oa-component-button-ask-keyline',
-             '--oa-color-state-disabled-text', '--oa-color-state-disabled-edge', 'oa.size.target.touch'],
+           'page holds the red, the ask steps down to the primary look (Rule 11.16). When an action can no longer run, such '
+           'as a sign-up for an event that is full, its button stays in place with its reason and the step the reader can '
+           'take instead, such as another date, and the form leaves out the fields that can no longer send.'],
+     tokens=['--oa-component-button-primary-fill', '--oa-component-button-primary-fill-hover',
+             '--oa-component-button-primary-label', '--oa-component-button-ask-fill', '--oa-component-button-ask-label',
+             '--oa-component-button-ask-keyline', '--oa-component-button-disabled-label',
+             '--oa-component-button-disabled-edge', 'oa.size.target.touch'],
      why=['A native button gives every reader the Tab key, Enter, Space and the role “button” with no script. The disabled '
           'attribute would take the button out of the Tab order and hide its reason with it, so an unavailable button '
           'carries aria-disabled, which keeps both in reach. An underline on hover and a dashed edge when unavailable carry each state in a shape as well as '
@@ -262,9 +285,9 @@ rule(n=1, set='c-18-button', name='Buttons',
      basis='WCAG 2.2 SC 1.4.1, 2.1.1, 2.5.8 and 4.1.2; APG Button pattern',
      anatomy='The parts of a button: its word, the 24 px utility icon beside it, its fill or 1 px edge, the 44 px '
              'height, the focus ring at its gap, and the reason line an unavailable button points to.',
-     code_caption='Every kind of button, live: primary, ask and quiet, two with a utility icon, one unavailable with its '
-                  'reason, one sending, and the ask stepped down while an error holds the red. Tab to “Send your comment” '
-                  'and press it: it keeps focus, and its line says why it waits.',
+     code_caption='Every kind of button, live: primary, ask on a row of its own, and quiet, two with a utility icon, one '
+                  'unavailable with its reason, one sending, and the ask stepped down while an error holds the red. Tab to '
+                  '“Send your comment” and press it: it keeps focus, and its line says why it waits.',
      specs=specs(
          (L_PAT, 'APG Button, on the native <code><button type="button"></code>.'),
          (L_ST, 'Default. Hover: the primary fill turns Prussian on Newsprint and White on Charcoal, and the word '
@@ -289,9 +312,13 @@ rule(n=1, set='c-18-button', name='Buttons',
      ),
      related=['17', '11', '05'],
      builders=['An unavailable button: <code><button type="button" aria-disabled="true" '
-               'aria-describedby="send-why"></code>, with the script stopping its press. A row of two buttons: '
-               '<code>grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr))</code>, and no '
-               '<code>white-space: nowrap</code> on any word.'],
+               'aria-describedby="send-why"></code>, and as the first line of its click handler '
+               '<code>if (button.getAttribute(\'aria-disabled\') === \'true\') return;</code>, as Rule 18.17’s script does. '
+               'A row of two buttons: <code>grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr))</code>, '
+               'and no <code>white-space: nowrap</code> on any word.',
+               '<code>data-red="working"</code> and <code>data-red-job</code> mark the view’s one working red for Rule 05.3’s '
+               'check, which fails a view with two: an error first, then the one step a reader can take now. Move both '
+               'attributes as the red moves, from the ask to the error and back.'],
      failure=dict(
          caption=f'<strong>Fails Rule 18.1.</strong> Send is grayed out with the disabled attribute and no words, so the '
                  f'Tab key skips it and nobody learns that the email is missing. Its word measures {R_F01} to 1 on '
@@ -337,7 +364,7 @@ rule(n=2, set='c-18-toggle', name='Toggle buttons and chips',
                 'nothing newer than ' + bs('focus-visible') + ' ' + ARIA_NOTE),
      ),
      related=['17', '11'],
-     builders=['<code><button type="button" class="oa-chip" aria-pressed="false"></code>, with the check as an inline '
+     builders=['<code><button type="button" class="oa-toggle oa-toggle--chip" aria-pressed="false"></code>, with the check as an inline '
                'SVG inside it. Draw the on look from <code>[aria-pressed="true"]</code>, so the state and the look cannot '
                'come apart.'],
      failure=dict(
@@ -439,7 +466,8 @@ rule(n=4, set='c-18-theme-switch', name='Theme switch',
          ('Stored choice', 'The key <code>oa-theme</code> holds light or dark; Match my device removes it. A private window keeps it '
                            'until the window closes, and Safari with tracking prevention on deletes it once the site goes '
                            'seven days of browsing without a press or a tap.'),
-         (L_BR, bs('color-scheme-mq', 'color-scheme-meta', 'localstorage', 'mql-change')),
+         (L_BR, bs('color-scheme-mq', 'color-scheme-meta', 'localstorage') + ' The page follows the device through the '
+                'media query in tokens.css, so no script listens for a change.'),
      ),
      related=['26', '20', '21'],
      builders=['Put <code><meta name="color-scheme" content="light dark"></code> in the head of a themed product, with '
@@ -508,8 +536,8 @@ rule(n=5, set='c-18-link', name='Links',
 # ---- 18.6 Masthead and phone menu -------------------------------------------------------------------------------
 rule(n=6, set='c-18-masthead', name='Masthead and phone menu',
      title='Give every page one masthead, with its parts in a named navigation and a phone menu that holds focus.',
-     rule=['The masthead holds the product’s name, which links home, and its parts in a navigation landmark named for what '
-           'it holds, such as “Parts of the site”. The link to the part the reader is in carries <code>aria-current="page"</code>, bold words and a 2 px '
+     rule=['The masthead holds the product’s name, which links home, and its parts in a navigation landmark, a region a '
+           'screen reader can jump to, named for what it holds, such as “Parts of the site”. The link to the part the reader is in carries <code>aria-current="page"</code>, bold words and a 2 px '
            'underline. When the parts no longer fit on one line, they move behind a Menu button, its three bars beside the '
            'word Menu, which opens them in a native modal dialog.',
            'The open menu covers the page and holds focus. Focus moves to the current part’s link, the Tab key reaches '
@@ -655,8 +683,9 @@ rule(n=8, set='c-18-disclosure', name='Disclosure',
      failure=dict(
          caption='<strong>Fails Rule 18.8.</strong> The plus stays a plus once the row is open, and the row is a plain box '
                  'that the Tab key passes by.',
-         alt='Failure case: do not publish. Two Illustrative rows at 360 px, “Sources” closed and “The lines in words” '
-             'open with two lines of text under it. Both rows end in the same plus sign. A note reads “The sign does not '
+         alt='Failure case: do not publish. Two rows at 360 px, “Sources” closed and “The lines in words” open, with the '
+             'two lines of our systems atlas’s housing loop under it: scarce homes raise owners’ equity, and owners with '
+             'that equity object to new construction. Both rows end in the same plus sign. A note reads “The sign does not '
              'change, and the rows take no focus.”',
          notes='Picture of a fault: a disclosure with no state shape and no button.'))
 
@@ -700,9 +729,10 @@ rule(n=9, set='c-18-tabs', name='Tabs',
      failure=dict(
          caption='<strong>Fails Rule 18.9.</strong> The selected view differs only by its fill, every tab is a Tab stop of '
                  'its own, and the arrow keys do nothing.',
-         alt='Failure case: do not publish. Three Illustrative tabs at 360 px, Drawing, In words and Table, over a panel. '
-             'Drawing is selected, shown only by a Prussian fill; there is no bar and no bold. A note reads “Three Tab '
-             'stops, no arrow keys, and the selection is a fill alone.”',
+         alt='Failure case: do not publish. Three tabs at 360 px, Drawing, In words and Table, over a panel that holds the '
+             'first sentence of Loop R1 from our systems atlas: “Households with concentrated wealth can spend more on '
+             'campaigns, outside groups and lobbying.” Drawing is selected, shown only by a Prussian fill; there is no bar '
+             'and no bold. A note reads “Three Tab stops, no arrow keys, and the selection is a fill alone.”',
          notes='Picture of a fault: tabs with no roles and a fill-only selection.'))
 
 # ---- 18.10 Table ------------------------------------------------------------------------------------------------
@@ -805,7 +835,7 @@ rule(n=12, set='c-18-code-block', name='Code block',
            'When the browser refuses to copy, the line turns into an error with its mark, “Error:”, the Error Band and the '
            '4 px red bar, and says how to copy by hand. The code is then selected in a field under the line, with focus on '
            'it (Rule 18.13).'],
-     tokens=['--oa-color-state-success-mark', '--oa-color-state-error-mark', '--oa-color-state-error-band',
+     tokens=['--oa-color-state-success-mark', '--oa-color-state-error-bar', '--oa-color-state-error-band',
              'oa.border.width.bar', 'oa.size.target.touch'],
      why=['A button for each panel says which file a press takes, and a status line says what happened in words, which a '
           'screen reader hears while focus stays on the button. A browser can refuse the clipboard, so the refusal '
@@ -852,7 +882,7 @@ rule(n=13, set='c-18-copy', name='Copy control',
            'status line says what happened with the success mark: “Copied --oa-color-surface-charcoal.”',
            'When the browser refuses, the line gives the error with its mark and “Error:”, selects the value in a field '
            'and moves focus there, so the reader can copy it by hand with Control and C, or Command and C.'],
-     tokens=['--oa-color-state-success-mark', '--oa-color-state-error-mark', 'oa.size.icon.medium',
+     tokens=['--oa-color-state-success-mark', '--oa-color-state-error-bar', 'oa.size.icon.medium',
              'oa.size.target.touch'],
      why=['A reader who hears “Copy” ten times down a table cannot tell the buttons apart, so each name carries its value. '
           'Words in a status line reach a screen reader, where a check that replaces the icon says nothing and looks like '
@@ -963,8 +993,7 @@ rule(n=15, set='c-18-search', name='Search',
                   f'of {CL_COUNT} symbols.”'),
          (L_TGT, 'The field 44 px tall; Clear the search 44 by 44 px.', 'oa.size.target.touch'),
          (L_FC, 'The field’s edge and Clear’s cross draw in the system’s colors.'),
-         (L_TH, 'The field’s ground is --oa-color-field-ground, White on Newsprint and Prussian on Charcoal, with the '
-                'strong border as its edge.'),
+         (L_TH, f'The field’s ground is --oa-color-field-ground, {FIELD_WORDS}, with the strong border as its edge.'),
          (L_BR, bs('search', 'input-search') + ' In an older browser the search element is a plain box with no landmark, '
                 'and the field still works.'),
      ),
@@ -1028,16 +1057,16 @@ rule(n=17, set='c-18-form', name='Form',
      title='Label every field, point it to its error, and move focus to the first field to fix.',
      rule=['Each field has a visible label above it and, where it helps, a hint under the label joined by '
            'aria-describedby, such as “Five digits”. A placeholder never stands in for either. Personal fields carry '
-           'autocomplete, such as email and postal-code, so the browser can fill them. A field stays open to typing at '
-           'all times; a Send button that cannot run yet keeps focus and says why, as Rule 18.1 sets.',
+           'autocomplete, such as email and postal-code, so the browser can fill them. A field stays open to typing while '
+           'its form can still send; a Send button that cannot run yet keeps focus and says why, as Rule 18.1 sets.',
            'On a send with mistakes, each wrong field takes aria-invalid, the 4 px Pillar Red bar at its left edge and a '
            'message under it joined by aria-describedby: the error mark in ink, “Error:” and how to fix it, on the Error '
            'Band on Newsprint and on the ground on Charcoal. Focus moves to the first field to fix, and the ask steps down '
            'to the primary look while the error holds the red (Rule 11.16). A send that works writes its result to a '
            'status line with the success mark.'],
-     tokens=['--oa-color-field-ground', '--oa-color-border-strong', '--oa-color-state-error-mark',
+     tokens=['--oa-color-field-ground', '--oa-color-border-strong', '--oa-color-state-error-bar',
              '--oa-color-state-error-band', '--oa-color-state-error-text', '--oa-color-state-success-mark',
-             'oa.border.width.bar', 'oa.size.target.touch'],
+             '--oa-color-state-success-text', 'oa.border.width.bar', 'oa.size.target.touch'],
      why=['A label that stays in view helps a reader check what they typed, and autocomplete saves typing for a reader '
           'with limited movement. Moving focus to the first field to fix puts the reader where the work is, and the '
           'field’s description reads the message there, so nothing needs an alert that interrupts.'],
@@ -1084,7 +1113,7 @@ rule(n=18, set='c-18-messages', name='Messages',
            'A message that a script writes into the page goes into a status line, which a screen reader reads at its next '
            'pause. Only an error that appears with no field to move focus to uses <code>role="alert"</code>, which interrupts. A '
            'message already in the page when it loads is plain text, since neither role announces it then.'],
-     tokens=['--oa-color-state-error-mark', '--oa-color-state-error-band', '--oa-color-state-warning-mark',
+     tokens=['--oa-color-state-error-bar', '--oa-color-state-error-band', '--oa-color-state-warning-mark',
              '--oa-color-state-success-mark', 'oa.border.width.bar', 'oa.size.icon.medium'],
      why=['The mark and the first word give each message its kind in a shape and in words, so color never carries it '
           'alone. A status line reaches a screen reader without moving focus or cutting off what it is reading, and '
@@ -1108,7 +1137,7 @@ rule(n=18, set='c-18-messages', name='Messages',
          (L_BR, ARIA_NOTE + ' Whether a change is heard depends on the browser and the screen reader together.'),
      ),
      related=['11', '05', '17'],
-     builders=['Put the status line in the page, empty, when it loads, and write into it later; a live region added '
+     builders=['Put the status line in the page, empty, when it loads, and write into it later; a status line added '
                'with its words already inside may not be read.'],
      failure=dict(
          caption='<strong>Fails Rule 18.18.</strong> Three messages are told apart only by the color of their boxes, with '
@@ -1235,7 +1264,7 @@ rule(n=21, set='c-18-report-reader', name='Report reader',
                   'and the reason.'),
          (L_TGT, '44 px tall.', 'oa.size.target.touch'),
          (L_FC, 'An unavailable button keeps its dashed edge, and the arrows draw in currentColor.'),
-         (L_TH, 'The page sits on --oa-color-field-ground, White on Newsprint and Prussian on Charcoal.'),
+         (L_TH, f'The page sits on --oa-color-field-ground, {FIELD_WORDS}.'),
          (L_BR, bs('dialog') + ' The dialog is needed only for a reader that fills the screen.'),
      ),
      related=['24', '11'],
@@ -1254,7 +1283,7 @@ rule(n=22, set='c-18-loop-stepper', name='Loop stepper',
      title='Step through a loop with Play, Reset the loop, Previous step and Next step, and say each step once.',
      rule=['A loop stepper walks a reader through a loop of connections one step at a time. Its buttons run in one order '
            'in every product, Play, Reset the loop, Previous step and Next step, each with its utility icon beside its '
-           'word (Rule 11.14). One polite live region says each step as it arrives, “Step 2 of 3:” and the step’s '
+           'word (Rule 11.14). The status line says each step as it arrives, “Step 2 of 3:” and the step’s '
            'sentence, and the step list marks the current step with <code>aria-current="step"</code> and a 4 px bar.',
            'Nothing plays until the reader presses Play. Play becomes Pause while it plays and Play again at the end, its '
            'icon and its word changing together, and it holds each step about 250 ms a word and never under six seconds, '
@@ -1264,10 +1293,10 @@ rule(n=22, set='c-18-loop-stepper', name='Loop stepper',
      tokens=['--oa-color-state-selected-bar', 'oa.border.width.bar', 'oa.size.icon.medium', 'oa.size.target.touch'],
      why=['Play on request keeps the page still for a reader who did not ask it to move, and a pace set by the words gives '
           'a slow reader time to finish each step. Buttons that keep focus let a reader press Next step again and again, '
-          'and one live region says each step without repeating the rest.'],
+          'and the status line says each step without repeating the rest.'],
      basis='WCAG 2.2 SC 2.2.1, 2.2.2, 4.1.2 and 4.1.3; APG Carousel pattern, its buttons without its slide roles',
      anatomy='The parts of a loop stepper: Play with its icon and word, Reset the loop, Previous step, Next step, an '
-             'unavailable button’s reason, the live line, and the step list with its current step’s 4 px bar.',
+             'unavailable button’s reason, the status line, and the step list with its current step’s 4 px bar.',
      code_caption='A three-step loop, live. Press Next step and listen for the line; press Play and it holds each step '
                   'long enough to read.',
      specs=specs(
@@ -1307,7 +1336,8 @@ rule(n=23, set='c-18-diagram-controls', name='Diagram controls',
            'related items and opens its record in a panel, or a sheet on a phone; Escape closes it and returns focus to '
            'the item.',
            'A readout line under the drawing repeats the name of the item in focus, so a reader who zooms in sees it '
-           'without hovering. Each drawing also offers its lines in words behind a disclosure (Rule 18.8), and a drawing '
+           'without hovering. The readout sits in its own line, covers nothing and keeps its words until focus moves to '
+           'another item, and nothing on a drawing shows on hover alone. Each drawing also offers its lines in words behind a disclosure (Rule 18.8), and a drawing '
            'that holds values offers its data as a table the same way. Full size opens it in a native modal dialog. Zoom stays in words, as Zoom in, Zoom '
            'out, Fit and Reset.'],
      tokens=['--oa-color-state-muted-mark', '--oa-color-graphic-essential', 'oa.size.target.touch'],
@@ -1336,20 +1366,20 @@ rule(n=23, set='c-18-diagram-controls', name='Diagram controls',
      ),
      related=['15', '21', '14'],
      builders=['Give one item <code>tabindex="0"</code> and the rest <code>tabindex="-1"</code>, and move both with the '
-               'arrow keys. The readout is plain text, never a live region, since it changes with every key.'],
+               'arrow keys. The readout is plain text, never a status line, since it changes with every key.'],
      failure=dict(
          caption='<strong>Fails Rule 18.23.</strong> The drawing answers only to a pointer: the Tab key passes over it, and '
                  'each item’s words show only in a box on hover.',
          alt='Failure case: do not publish. An Illustrative drawing at 360 px of four linked circles. A pointer rests on one '
-             'circle, and a small dark box beside it reads “C1 Safe seats”. Nothing under the drawing gives its words or '
+             'circle, and a small dark box beside it reads “Housing scarcity”. Nothing under the drawing gives its words or '
              'a table. A note reads “Only a pointer reaches the items, and their words show only on hover.”',
          notes='Picture of a fault: hover-only content (SC 1.4.13) and no keyboard path (SC 2.1.1).'))
 
 # ---- 18.24 Typed ID chip ----------------------------------------------------------------------------------------
 rule(n=24, set='c-18-id-chip', name='Typed ID chip',
      title='Write a typed ID with its type in words, and make it a link only when it opens the record.',
-     rule=['A typed ID names a record in the atlas by its type and its code together, such as “Loop R10” or “Reform '
-           'R-01”, so a reader never meets a bare code (chapter 02’s house rule H11). The chip sets both in the label '
+     rule=['A typed ID names a record in the atlas by its type and its code together, such as “Loop R1” or “Reform '
+           'R-04”, so a reader never meets a bare code (chapter 02’s house rule H11). The chip sets both in the label '
            'style on a hairline edge, in the text’s ink, and color never codes its type.',
            'A chip that opens its record is a link, underlined as Rule 18.5 sets, 1 px at rest and 2 px on hover, with a '
            'target at least 24 px tall; where '
@@ -1367,8 +1397,8 @@ rule(n=24, set='c-18-id-chip', name='Typed ID chip',
          (L_PAT, 'None fits a label; APG Link when the chip opens its record.'),
          (L_ST, 'Plain. As a link: a 1 px underline, 2 px on hover; focus, the ring.'),
          (L_KEY, 'A linked chip takes Tab, and Enter follows it; a plain chip takes no focus.'),
-         (L_NAME, 'Its words, such as “Loop R10”; a link adds the record’s name, such as “Loop R10, the safe-seat '
-                  'loop”.'),
+         (L_NAME, 'Its words, such as “Loop R1”; a link adds the record’s name as its description, such as “Independent '
+                  'citizen commissions draw election maps” for Reform R-04.'),
          (L_HEAR, 'As text, its words; as a link, its words and its role.'),
          (L_TGT, 'As a link, at least 24 px tall.', 'oa.size.target.minimum'),
          (L_FC, 'The edge and the words in CanvasText, or LinkText when it links.'),
@@ -1377,13 +1407,14 @@ rule(n=24, set='c-18-id-chip', name='Typed ID chip',
      ),
      related=['02', '21', '10'],
      builders=['Keep the type word and the code in one element, with a no-break space between them, so a line never '
-               'splits “Loop” from “R10”.'],
+               'splits “Loop” from “R1”.'],
      failure=dict(
          caption='<strong>Fails Rule 18.24.</strong> The chips show bare codes, and only their fills say which is a loop '
                  'and which is a reform.',
-         alt='Failure case: do not publish. A sentence at 360 px written from our systems atlas’s records, “R10 shifts accountability to '
-             'small primary electorates, and R-01 sits on that loop.”, with “R10” in a Prussian fill and “R-01” in a '
-             'Verdigris fill and no type word for either. A note reads “A bare code, with its type in color alone.”',
+         alt='Failure case: do not publish. A sentence at 360 px written from our systems atlas’s records, “R8 runs from '
+             'housing scarcity to owners’ equity and back, and R-30 acts on that loop.”, with “R8” in a Prussian fill and '
+             '“R-30” in a Verdigris fill and no type word for either. A note reads “A bare code, with its type in color '
+             'alone.”',
          notes='Picture of a fault: bare codes (house rule H11) typed by color.'))
 
 
@@ -1475,16 +1506,17 @@ FAIL_HTML = {
               '.f18-open{padding:8px 0 12px;font:var(--oa-type-body-small)}',
               '<div class="f18-row2"><span>Sources</span><span class="f18-plus" aria-hidden="true">+</span></div>'
               '<div class="f18-row2"><span>The lines in words</span><span class="f18-plus" aria-hidden="true">+</span></div>'
-              '<p class="f18-open">Safe seats raise the share of races decided in primaries. Primaries draw fewer '
-              'voters.</p>',
-              'The sign does not change, and the rows take no focus.'),
+              '<p class="f18-open">When homes are scarce, the homes that already exist sell for more, so owners’ equity '
+              'grows. Owners whose wealth sits in their home object to new construction nearby, which keeps supply short.</p>',
+              'The sign does not change, and the rows take no focus.', illus=False),
     9: fplate('.f18-tabs{display:flex}.f18-tabs .f18-btn+.f18-btn{border-left:0}'
               '.f18-on{background:var(--oa-color-surface-prussian);color:var(--oa-color-text-primary-on-prussian);'
               'border-color:var(--oa-color-surface-prussian)}'
               '.f18-panel{border:1px solid var(--edge);border-top:0;padding:12px;font:var(--oa-type-body-small)}',
               '<div class="f18-tabs"><span class="f18-btn f18-on">Drawing</span><span class="f18-btn">In words</span>'
-              '<span class="f18-btn">Table</span></div><div class="f18-panel">The drawing of the loop sits here.</div>',
-              'Three Tab stops, no arrow keys, and the selection is a fill alone.'),
+              '<span class="f18-btn">Table</span></div><div class="f18-panel">Households with concentrated wealth can spend '
+              'more on campaigns, outside groups and lobbying.</div>',
+              'Three Tab stops, no arrow keys, and the selection is a fill alone.', illus=False),
     10: fplate('.f18-t{width:100%;border-collapse:collapse;font:var(--oa-type-body-small)}'
                '.f18-t th,.f18-t td{text-align:left;padding:6px 4px;border-bottom:1px solid var(--hair);vertical-align:top}'
                '.f18-t th{font:var(--oa-type-ui)}.f18-ar{white-space:nowrap}',
@@ -1556,7 +1588,7 @@ FAIL_HTML = {
                '.f18-card b{font:var(--oa-type-ui)}.f18-toast{position:absolute;top:8px;right:8px;padding:6px 12px;'
                'background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);'
                'font:var(--oa-type-ui)}',
-               '<div class="f18-card"><p><b>H.99001</b></p><p>Public meeting notice</p><p>Step 3 of 6, Committee vote</p>'
+               '<div class="f18-card"><p><b>H.99001</b></p><p>Public meeting notice</p><p>Step 2 of 6, Hearing</p>'
                '<span class="f18-toast">Updated!</span></div>',
                'Gone after three seconds, and it names no bill and no step.'),
     21: fplate('.f18-pg{border:1px solid var(--hair);background:var(--oa-color-surface-white);padding:12px;min-height:96px;'
@@ -1569,7 +1601,7 @@ FAIL_HTML = {
                'Next page is gone, and focus went with it.'),
     22: fplate('.f18-loop{border:1px solid var(--edge);padding:12px;font:var(--oa-type-body-small)}'
                '.f18-loop b{font:var(--oa-type-ui)}.f18-k{font:var(--oa-type-caption);color:var(--sec);margin-bottom:8px}',
-               '<p class="f18-k">From our systems atlas, loop R1</p><div class="f18-loop"><p><b>Step 1 of 3</b></p>'
+               '<p class="f18-k">From our systems atlas, Loop R1</p><div class="f18-loop"><p><b>Step 1 of 3</b></p>'
                '<p>Wealth concentration raises money in politics.</p></div>',
                'Starts by itself on load and repeats with no way to stop it.', illus=False),
     23: fplate('.f18-dg{position:relative;height:150px}.f18-tip{position:absolute;left:150px;top:28px;padding:4px 8px;'
@@ -1578,14 +1610,14 @@ FAIL_HTML = {
                '<div class="f18-dg"><svg viewBox="0 0 328 150" width="328" height="150" aria-hidden="true" focusable="false">'
                '<g fill="none" stroke="var(--oa-color-text-primary)" stroke-width="2"><circle cx="40" cy="40" r="22"/>'
                '<circle cx="110" cy="40" r="22"/><circle cx="110" cy="110" r="22"/><circle cx="40" cy="110" r="22"/>'
-               '<path d="M62 40h26M110 62v26M88 110H62M40 88V62"/></g></svg><span class="f18-tip">C1 Safe seats</span>'
+               '<path d="M62 40h26M110 62v26M88 110H62M40 88V62"/></g></svg><span class="f18-tip">Housing scarcity</span>'
                + POINTER + '</div>',
                'Only a pointer reaches the items, and their words show only on hover.'),
     24: fplate('.f18-c{display:inline-block;padding:0 8px;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing)}'
                '.f18-c1{background:var(--oa-color-surface-prussian);color:var(--oa-color-text-primary-on-prussian)}'
                '.f18-c2{background:var(--oa-color-palette-verdigris);color:var(--oa-color-palette-white)}',
-               '<p><span class="f18-c f18-c1">R10</span> shifts accountability to small primary electorates, and '
-               '<span class="f18-c f18-c2">R-01</span> sits on that loop.</p>',
+               '<p><span class="f18-c f18-c1">R8</span> runs from housing scarcity to owners’ equity and back, and '
+               '<span class="f18-c f18-c2">R-30</span> acts on that loop.</p>',
                'A bare code, with its type in color alone.', illus=False),
 }
 

@@ -1497,8 +1497,11 @@ def chapter(rows, reads24, like, sheets, figs, icons):
         'files': ['work/build/scripts/phase-2/icon_likeness_check.js',
                   'work/build/assets/civic-line-24-fit/qa/20261110_Five-Look-Alikes-Fits-Likeness.json'],
         'related': ['11'],
-        'builders': ['Run the likeness test on any new drawing before it goes to approval, with '
-                     '<code>node work/build/scripts/phase-2/icon_likeness_check.js</code> and the folder that holds it.'],
+        # PP-S12: the line names who runs the test, since no builder outside the studio holds the script
+        'builders': ['We run the likeness test on every new drawing before it goes to our founder and editor for '
+                     'approval. The test measures how closely the drawing matches each one in the set, and a close pair '
+                     'joins a group in this rule. If you draw a new symbol, send it to Dustin Cathcart or an editor he '
+                     'names, and the test runs before approval.'],
     })
 
     rules.append({

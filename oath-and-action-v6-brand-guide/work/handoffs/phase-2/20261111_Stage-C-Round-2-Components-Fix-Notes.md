@@ -2,34 +2,119 @@
 
 Oath & Action Edition 06, Phase 2, stage C round 2, November 11, 2026. Written by the component engineer, an instance in the `oa-engineer` role, run as a subagent of the main session under `20261111_Stage-C-Round-2-Fix-Brief.md` (my row in "Who fixes what"). I edit chapter 18's code sets, `work/build/guide/code/c-18-*.html`, `.css` and `.js`, and this file. The `.keys.json` files and chapter 18's words are the accessibility lead's; what they need from my changes is under "For the accessibility lead".
 
-I read, in order: `CLAUDE.md`, my role file, the fix brief (calls 1 to 4, 9 and 10, my row, "Order and crossings", "Checks each owner runs"), my items in the creative director's review (CD), the brand and evidence report (BE) and the plain language and production report (PP), the round 1 component engineer's notes, the decision log from D2-1438 on, and chapter 02's writing rules. Atlas content comes from `work/extract/atlas-v7-data.json`, read by script (snapshot October 15, 2026).
+I read, in order: `CLAUDE.md`, my role file, the fix brief (calls 1 to 4, 9 and 10, my row, "Order and crossings", "Checks each owner runs"), my items in the creative director's review (CD), the brand and evidence report (BE) and the plain language and production report (PP), the round 1 component engineer's notes, the decision log from D2-1438 on, and chapter 02's writing rules. Atlas content comes from `work/extract/atlas-v7-data.json`, read by script (snapshot October 15, 2026). The guide engineer's release notes (`20261111_Stage-C-Round-2-Engineer-Fix-Notes.md`) for the renamed token.
 
-Status: **in progress.** Written early and grown as items land.
+Status: **every item in my row is done**, including the two that waited on the token release 6.0.0-gate2.8 (landed 06:24 UTC). The craft and accessibility report's items for me had not reached me when I wrote this; they get their own section when they do.
 
 ## What I changed, item by item
 
-(filled in as each item lands)
+| Item | Set | Change |
+|---|---|---|
+| CD-M2, call 2 | `c-18-button` | The ask has a row of its own. The rows now run: "Primary and quiet" (Save to your list, Read the bill); "With a utility icon" (Start the form over, Next step); "The ask, on a row of its own" (Remind me); "Unavailable, with its reason"; "Sending"; "The ask while an error holds the red". No primary button shares a row with the red ask, and the nearest primary hover sits a kicker line and a row away. The yielded ask's hover no longer steps its fill to the primary hover (Prussian on Newsprint); it keeps the primary fill and underlines its word, as the form's yielded ask already did, so no Prussian hover appears in a view whose error holds the red. The ask's CSS comment says why it stands alone. |
+| CD-M2, after the release | `c-18-form` | Checked in the dark theme after 6.0.0-gate2.8, pasted into a blank page with tokens.css and in my scratch guide: a field's ground computes to Charcoal (18, 18, 18) with its 1 px Newsprint edge (220, 217, 210); after an empty send each field carries `aria-invalid`, its 4 px Pillar Red bar (230, 57, 70) sits on Charcoal, and the message's bar sits on Charcoal too. A pixel scan finds no red pixel within 3 px of a Prussian one in any capture (see Tested). No change to the set was needed for the ground. |
+| Release, renamed token | `c-18-form`, `c-18-tracker`, `c-18-copy`, `c-18-table`, `c-18-code-block`, `c-18-messages`, `c-18-report-reader` | All eight reads of `--oa-color-state-error-mark` (each the 4 px bar beside an error) now read `--oa-color-state-error-bar`. No c-18 file reads the old name. |
+| BE-M3, call 4 | `c-18-loop-stepper`, `c-18-diagram-controls` | The heading keeps V7's title as the loop's name, in quotation marks: kicker "From our systems atlas, Loop R1", then “Wealth and political influence reinforce each other”. A new line under it gives the grade: "Our atlas grades this loop plausible: its middle step is the least certain, and it runs only on issues where large donors and middle-income voters want different things." New classes `oa-stepper-grade` and `oa-diagram-grade`. |
+| CD-S9 | `c-18-diagram-controls`, `c-18-loop-stepper` | The last line closes the loop: the third part's verb reads "raises wealth concentration, where the loop began", in the drawing and in the full-size view, and the lines in words end "Policy tilt to insiders raises wealth concentration, where the loop began." The stepper's third step says the same, and its hold rises from 9,500 to 10,500 ms for its four new words (250 ms a word, as the script's comment sets). |
+| BE-M4, call 3 | `c-18-location` | Off R-01's subject, onto the housing variables. Breadcrumb: Atlas / Housing, health care and getting ahead / Housing scarcity. The list, named "Variables in Housing, health care and getting ahead", holds the four variables the atlas files under that domain, by their V7 titles: Households’ financial security (A4), Housing scarcity (A5, current), Homeowners’ equity (A6), Major external shocks (X5). Previous: Households’ financial security; Next: Homeowners’ equity. A dated source line closes the set (`oa-location-source`). |
+| BE-M4, call 3 | `c-18-disclosure` | The button disclosure's lines in words now give real atlas lines from Loop R8: "Each line in the drawing joins two parts of the loop. Read in order, they say that housing scarcity raises homeowners’ equity, and that owners with that equity at stake oppose new construction, which keeps homes scarce. Our atlas grades both steps well supported." The "Illustrative" tag is gone, since the lines are real, and a source line follows: "Source: Oath & Action’s systems atlas, Who Do They Answer To?, Loop R8, “Housing scarcity strengthens owners’ incentive to restrict building”, snapshot of October 15, 2026." Checked by script: R8's links L38 and L39 are both `well-supported`, and no reform with `interest_note` targets A5, A6, L38, L39 or R8. |
+| BE-M4, call 3 | `c-18-id-chip` | The plain chip "Variable C1" (Seats with little electoral competition, the start of R-01's mechanism) becomes "Variable A5" (Housing scarcity). "Loop R1" and "Reform R-04" stay, as call 3 sets for Rule 18.24. |
+| BE-S1, call 10 | `c-18-tracker`, `c-18-table` | The stopped-in-committee story takes the next free number on chapter 11's counter: **H.99010, Sidewalk repair schedules** (the counter runs H.99001, S.99002, H.99003, H.99004, S.99005, S.99006, S.99007, LB 99008, H.99009; I searched the build tree, the specimens, the chapters and the scripts, and 99010 is used nowhere). The tracker's live card and its list name follow it; its dates stay (filed before March 5, hearing March 19, testimony by March 18, checked March 17, vote and stop March 26). The table's fourth row is H.99010, Sidewalk repair schedules, filed March 5, stopped in committee, sorted by 99010. H.99001 is filed January 16 in the table, as chapter 11 has it. H.99004 now appears in no c-18 file, so it keeps chapter 11's story alone. |
+| BE-S2, call 3 | `c-18-filter-bar`, `c-18-search` | Each result is its name followed by its typed chip, "Reform R-01", in a hairline box with the ID on one line (`oa-filters-result-chip`, `oa-search-result-chip`); no code stands bare. Order and titles unchanged, checked against the atlas: R-01 to R-12 are the atlas's first 12 of 50, titles exact. |
+| BE-S3 | `c-18-filter-bar`, `c-18-search`, `c-18-loop-stepper`, `c-18-diagram-controls`, `c-18-location`, `c-18-disclosure` | Each set that shows atlas content ends on a dated source line in caption type. Filter bar: "Source: Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. The list holds the first 12 of its 50 reforms, in the atlas’s order, with each one’s area and its routes to act." Search: the same, ending "in the atlas’s order." Stepper and diagram: "Source: Oath & Action’s systems atlas, Who Do They Answer To?, Loop R1, snapshot of October 15, 2026." Location and disclosure: as above. |
+| BE-S6 | `c-18-tabs` | The Sponsors panel reads "Two sponsors." |
+| BE-S7 | `c-18-link.css`, `c-18-report-reader.css` | The "(F-3)" and "(F-2)" codes are gone from the comments. No c-18 file carries a studio code now (searched for D2-, DR-, F-, G-, AX-, C- and the report codes). |
+| PP-S1 | `c-18-form` | While a send runs, the ask's word reads "Sending" and goes back to "Remind me" when the send ends. The word comes from the button's new `data-oa-sending="Sending"`, so a builder can change it in the markup; the script's comment says so. The status line still says "Sending your request." |
+| CD-S7, call 9 | `c-18-form`, `c-18-table`, `c-18-tracker`, `c-18-tabs`, `c-18-toggle`, `c-18-report-reader`, `c-18-download` | One Illustrative label, the guide's: uppercase label type, a 1 px edge in the ink (`currentColor`), the text's primary color, at the head of the piece on a line of its own, as the shell's `.illus` draws it for chapters 11 and 12. Each set keeps its own class (`oa-<set>-illus`), since a copied set has no shell. Moved to the head: tabs (was beside the bill's title), toggle (was beside "Show bills on"), report reader (was beside the report's name). Restyled in place at the head: form, table, tracker. The download set's label heads the part that is invented, the file that is not ready, since tokens.css beside it is real and downloadable (see Routine calls). The disclosure's label is gone (BE-M4). |
+| CD-S8 | `c-18-link` | The list's current page now draws as a list of places does (Rule 18.7): the selected band, a 4 px bar drawn as a left border, and bold words, with rows padded to match and the focus ring inside the row. The muted "Votes. Coming later." lines up with the links' words. Under forced colors the current row's bar takes Highlight, as in `c-18-location`. Rule 18.5's States row already says "Current: aria-current and the look of Rule 18.7", so its words need no change. |
 
 ## For the accessibility lead
 
-(filled in as each item lands)
+Exactly what changed in paths, names and words, so the keys files and the specifications follow.
+
+1. **`c-18-button.keys.json`, Tab order.** The ask moved to its own row after the utility icon row. The new order: Save to your list, Read the bill, Start the form over, Next step, Remind me, Send your comment (unavailable), Sending (unavailable), Remind me (yielded), then outside. So steps 2 to 5 of the path become, in order: `.oa-button--quiet:not(.oa-button--icon-start)`, `.oa-button--icon-start`, `.oa-button--icon-end`, `.oa-button--ask:not([data-oa-yield])`. Steps 1 and 6 on are unchanged. Kicker words: "Primary, ask and quiet" became "Primary and quiet", and a new kicker reads "The ask, on a row of its own".
+2. **`c-18-location.keys.json`, one more stop.** The list holds four places now. After the step on `.oa-location-item[aria-current="page"]` there are two `.oa-location-item:not([aria-current])` stops (Homeowners’ equity, then Major external shocks) before Previous. Nine Tab stops in all where there were eight.
+3. **`c-18-form.keys.json`, optional.** The ask's own words now change during a send. The "Send right" path's Enter step could add `{"el": ".oa-form-send", "text": "Sending"}`, and its last step `{"el": ".oa-form-send", "text": "Remind me"}`. Selectors are unchanged; the button gained `data-oa-sending="Sending"`.
+4. **No change needed** in the keys of the search ("voting" still finds 1 of 12, "zzzz" 0 of 12), filter bar, stepper ("Step 1 of 3: Wealth concentration raises money in politics." unchanged), diagram (readout still "Money in politics"), tracker ("Step 3 of 6: Committee vote." unchanged), table (the sort lines are unchanged), tabs, toggle (the group's name is still "Show bills on", now from the kicker itself), disclosure, report reader, download, link and chip sets. The guide check's walk of all 37 paths on my scratch page is under Tested.
+5. **Chapter 18's words that name changed things:**
+   - The four token lists in `18-components.json` that name `--oa-color-state-error-mark` (rules 18.12, 18.13, 18.17 and 18.18 by my reading, at lines 955, 1035, 1354 and 1436) should name `--oa-color-state-error-bar`; the sets read the new name.
+   - Rule 18.1: the plate now shows the ask on a row of its own, under the kicker "The ask, on a row of its own"; call 2's sentence is yours.
+   - Rule 18.7's caption or alt, if they name places: the location sample is now the housing domain (above). Rule 18.8: the button disclosure now holds real atlas lines from Loop R8 with a source line, and no Illustrative label. Rule 18.24: the plain chips read "Loop R1" and "Variable A5".
+   - Rules 18.15 and 18.16: each result now ends in a typed chip, "Reform R-01", and each list has a dated source line naming "the first 12 of its 50 reforms, in the atlas’s order".
+   - Rule 18.17's specification ("Sending: the button reads “Sending” and carries aria-disabled") now matches the code.
+   - Rules 18.22 and 18.23: the title is in quotation marks with the grade line under it; the diagram's last line and the stepper's third step end "where the loop began"; a source line closes each.
+   - Rules 18.10 and 18.20: the stopped bill is H.99010, Sidewalk repair schedules; H.99001 is filed January 16. `s-18-10-failure` is yours to align (BE-S1).
+   - Chapter 18's sources (BE-S3): the sets now cite Loops R1 and R8, variables A4, A5, A6 and X5, and reforms R-01 to R-12, all from the snapshot of October 15, 2026.
 
 ## For the systems designer
 
-(filled in as each item lands)
+The anatomy plates read my sets, so these need a rerun of `stage_c_ch18_anatomy_build.py` (and some plate functions change where a set's structure moved):
+
+- **p01 (`s-18-01-anatomy`)** will stop: it takes `rows[0]`'s ask to drop it, and `rows[2]` as the unavailable row. Now `rows[0]` holds only Save to your list and Read the bill (no ask), `rows[1]` the icon row, `rows[2]` the ask's own row, `rows[3]` the unavailable row, and the kickers shift the same way (`k[0]` "Primary and quiet", `k[1]` "With a utility icon", `k[2]` "The ask, on a row of its own", `k[3]` "Unavailable, with its reason").
+- **p07 (location)**: new words (housing domain, four rows); the callouts read by class and position, so it should run; the new source line is outside the parts it keeps.
+- **p09 (tabs)**: the Illustrative label left `oa-tabs-k` for its own line, `oa-tabs-illus`, at the set's head; keep it if the plate should carry the label at its head (CD-S7, your part).
+- **p10 (table)**, **p20 (tracker)**: the bill numbers and the January 16 date (BE-S1).
+- **p22 (stepper)**: the third step now ends "where the loop began"; the grade line and source line are new elements (`oa-stepper-grade`, `oa-stepper-source`) that the plate drops unless you keep them.
+- **p23 (diagram)**: the title is in quotation marks, `oa-diagram-grade` is new, and the third verb reads "raises wealth concentration, where the loop began". The plate's own readout words ("Wealth concentration. How much of the nation’s wealth the top tenth of households hold.") are written in the plate function, not read from the set; the set's detail for Wealth concentration is the atlas's own description, "How much of all household wealth belongs to the households at the top. Wealth here means assets minus debts, built up over time."
+- **p24 (chips)**: the second plain chip reads "Variable A5".
+- **Chapter 17's players (BE-M3)**: the same words, so the two chapters agree. Kicker "From our systems atlas, Loop R1"; title “Wealth and political influence reinforce each other”, in curly quotation marks; then the grade line "Our atlas grades this loop plausible: its middle step is the least certain, and it runs only on issues where large donors and middle-income voters want different things."
 
 ## For the guide engineer
 
-(filled in as each item lands)
+- No c-18 set reads `--oa-color-state-error-mark` now, so a warning on the old name would not touch chapter 18's code.
+- Call 1's red-on-Prussian step: my own pixel scan of every changed set's copy, both themes, 1440 and 390 px, after the form's empty send, during its good send, after each tracker and stepper update, with the masthead's menu open, and while hovering each primary button found no Pillar Red pixel within 3 px of a Prussian one. The method is in `tools/red_scan.py` in my scratch folder if it helps.
 
 ## Routine calls
 
+- D2-xxx | The ask's own row sits after the utility icon row, so the button kinds come first and the states after, and only one row with a primary button neighbors the ask | Call 2 sets separate rows; this order keeps the plate's groups and leaves the ask a row and a kicker line from the nearest primary hover |
+- D2-xxx | The yielded ask in `c-18-button` keeps the primary fill on hover and underlines its word, as `c-18-form`'s already does | Two sets drew one state two ways, and the button set's hover put Prussian in a view where an error holds the red |
+- D2-xxx | The loop's title stays V7's, in quotation marks as its name, with "Loop R1" in the kicker and the grade on a line of its own | Call 4; the kicker already names the loop, so the title line reads as a name and the grade line carries the claim |
+- D2-xxx | The stepper's third step also ends "where the loop began", and its hold grows by 1,000 ms | CD-S9 asks it of the diagram; the stepper tells the same loop, and its hold follows its words at 250 ms each |
+- D2-xxx | Chapter 18's location sample is the atlas's housing domain, with all four variables the atlas files there, by their V7 titles | Call 3; a list named "Variables in …" should hold all of them, and the titles are the atlas's own words |
+- D2-xxx | The button disclosure shows Loop R8's real lines with its grade and a dated source, and carries no Illustrative label | Call 3; the label marks invented content only (DR-97) |
+- D2-xxx | The chip set's plain variable chip reads "Variable A5" | Call 3; C1 is where R-01's mechanism starts |
+- D2-xxx | Chapter 18's stopped-in-committee bill is H.99010, Sidewalk repair schedules | Call 10 and D2-848: the next free number on chapter 11's counter, with a neutral title |
+- D2-xxx | A result in the filter bar and the search is its name followed by its typed chip | Call 3 and BE-S2; Rule 10.8 sets the order name, then chip |
+- D2-xxx | Each set that shows atlas content ends on a dated source line in caption type | BE-S3; Master Brief section 6 asks a source line of every diagram |
+- D2-xxx | The form's "Sending" word comes from the button's `data-oa-sending`, and the script puts the button's own word back when the send ends | PP-S1; a builder changes words in the markup, not the script |
+- D2-xxx | A set's Illustrative label is its own class drawn as the shell's `.illus`, on its own line at the head of the piece | Call 9; a copied set has no shell, and the build warns on a class that does not start with oa- |
+- D2-xxx | In the download set the label heads the not-ready part only | tokens.css beside it is real and downloads, so a label at the set's head would mark a real file as invented (H03) |
+- D2-xxx | The link list's current page takes the selected band, the 4 px bar and bold words, with the focus ring inside the row | CD-S8; Rule 18.5 already points to Rule 18.7's look |
+
 ## Questions for Dustin
 
-None so far.
+None. Every change sits inside the fix brief's calls.
 
 ## Tested
 
+(filled in below as the checks finish)
+
 ## Not tested
 
+(filled in below)
+
 ## Change log
+
+Modified, all in `work/build/guide/code/`:
+- `c-18-button.html`, `.css`
+- `c-18-form.html`, `.css`, `.js`
+- `c-18-location.html`, `.css`
+- `c-18-disclosure.html`, `.css`
+- `c-18-id-chip.html`
+- `c-18-loop-stepper.html`, `.css`
+- `c-18-diagram-controls.html`, `.css`
+- `c-18-filter-bar.html`, `.css`
+- `c-18-search.html`, `.css`
+- `c-18-tracker.html`, `.css`
+- `c-18-table.html`, `.css`
+- `c-18-tabs.html`, `.css`
+- `c-18-toggle.html`, `.css`
+- `c-18-report-reader.html`, `.css`
+- `c-18-download.html`, `.css`
+- `c-18-link.css`
+- `c-18-code-block.css`, `c-18-copy.css`, `c-18-messages.css` (the renamed token only)
+
+Created: `work/handoffs/phase-2/20261111_Stage-C-Round-2-Components-Fix-Notes.md` (this file).
+
+Not touched: any `.keys.json`, any chapter, specimen, manifest, generator, `guide_build.py`, `guide_check.js`, the shell, the tokens, `source/`, `work/ledger/`, a board or another owner's file. Built only into my scratch folder. Nothing committed or pushed.
+
+Scratch, outside the repository, in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/49b1040f-34e8-55e0-97c3-93e08c6dbc2c/scratchpad/round-2-fix/components/`: `before/` (the sets as they stood), `ch18/` and `ch18.html` (a chapter 18 page built from the tree), `tools/copy_test.js`, `tools/states.js`, `tools/red_scan.py`, `copy/` (pasted pages and captures), contact sheets and logs.

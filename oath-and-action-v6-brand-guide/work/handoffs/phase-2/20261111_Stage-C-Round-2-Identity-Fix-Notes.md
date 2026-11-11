@@ -78,3 +78,66 @@ Modified, written by that script through the identity build:
 - `work/build/guide/specimens/s-12-pattern-failure.html`
 
 Outside the repository: the scratch build `guide.html` and its report, chain and build logs, copies of the files as they stood before, the saved variant plates, `cap/cap.js` and 16 captures, and the build's temporary renders, in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/49b1040f-34e8-55e0-97c3-93e08c6dbc2c/scratchpad/round-2/identity/`.
+
+## Fix pass
+
+Stage C, round 2's fix pass, November 11, 2026, under `20261111_Stage-C-Round-2-Fix-Brief.md` (calls 5 and 12, my row in "Who fixes what") and the main session's message. My items: CD-M1, CD-S4, CD-S15 and CD-S16 from `20261111_CD-Review-Of-Stage-C-Chapters.md`, and PP-S12's Rule 03.2 paragraph from `20261111_Stage-C-Round-2-Red-Team-Plain-Production.md`. I changed three of my generators and wrote no output by hand. I did not run another owner's generator outside the chain, and I committed and pushed nothing.
+
+**To rebuild:** `python3 -I work/build/scripts/phase-2/promotion_identity.py specimens`, with `TMPDIR` set to a scratch folder. Chapter 17 then takes my captions when its own generator, `stage_c_ch17_build.py`, runs.
+
+### What changed
+
+**CD-M1 and call 5: the hinge and lever players rest on their masters** (`stage_c_identity_ch17.py`).
+- On load each player shows the master itself, from the same end layer the last frame uses. Its root reads `data-frame="end"` and `data-oa-rest="master"`.
+- Play steps to the first frame and runs to the master. Pause holds.
+- Reset returns to the master. At rest, on load and after a run, Reset is unavailable with the line "The mark is at rest on its master."
+- The button reads Play at rest, Pause while the motion runs, Play while paused and Play again after a run, as chapter 17's players do.
+- The status line reads "At rest: the wordmark, OATH & ACTION, as its master draws it." on load and after Reset, and "Last frame: ..." after a run. The lever's lines name the lockmark the same way.
+- The dashed squares are gone from the live lever player. The still views stay as they were, including the lever's first frame, which marks the empty field with a dashed square and says so.
+- Captions, alt text and notes now describe the resting state. Both captions open "Live, at rest on ...".
+
+**CD-S4: each resting master starts on its label's left edge** (`stage_c_identity_ch17.py`).
+- The cells lose their inset, so the master and its label share a left edge.
+- The hinge's first frame slides outward from there, into its ground's side padding of 40 px (`oa.space.500`). That holds the largest slide, 32 px at 64 px, with 8 px to spare.
+- The 64 px display master starts its own row, so its slide never meets the 24 px master's.
+- Its container threshold drops from 41rem to 37rem. The slides no longer need room inside the box, and at 41rem the wider padding had hidden the 64 px master at 1440 px.
+
+**CD-S15: Rule 08.1's plate** (`stage_a_identity_s08.py`, caption in `stage_a_identity_chapters.py`).
+- The display master now stands at 120 px, labeled "Display master, 120 px; every size from 49 px but the social sign-off".
+- Beside it is a fifth sample, the 48 px master drawn at exactly 96 px, labeled "48 px master, 96 px; social card sign-off only".
+- The 48, 24 and 16 px masters follow on the next row, then the dark grounds. The caption, alt text and notes say the same.
+
+**CD-S16: Rule 08.2's dark-card words** (`stage_a_identity_chapters.py`).
+- The "Feed test, dark card" row now says that the block of 2 by 2 pixels may sit anywhere in the node's square plus 1 px on every side.
+- It says that each of the block's four pixels must have every color channel over the floor (155 on Charcoal, 190 on Prussian). A new sentence says to judge each pixel on its own, because an average of the four can pass a block whose dimmest pixel fails.
+- It says to reduce the card with Lanczos, as on a light ground.
+- The builders line names the script: "Our script `promotion_c_identity.py` runs the test on the card in the identity proofs, with its `feed` step, and the asset package will carry a copy that takes any card."
+
+**PP-S12 and call 12: Rule 03.2's builders text** (`stage_a_identity_chapters.py`).
+- The paragraph is now nine short lines, one per lockup or group: every lockup, L1, S1 with L2's retirement, L3 in the masthead, L3 elsewhere on screen, L3 in print and at 40 px tall or more, L4 to L7 (L4, L5 and L7 share a line, and L6 has its own), and L8.
+- The record sentence is gone.
+- The three L3 lines keep DR-217's substance and its words.
+- L1 and L8 had no line before. Theirs point to Rules 03.1 and 03.5.
+
+### For the main session
+
+- **The guide check needs the engineer.** `guide_check.js`'s motion step expects every player's `data-frame` to read "start" on load. Under reduced motion it also expects Play to draw something new. An identity player now loads at "end", and under reduced motion Play shows the same master it rested on. The change I suggest: a player whose root carries `data-oa-rest="master"` may load with `data-frame="end"`. Under reduced motion, it passes when Play leaves `data-frame` at "end" with nothing running, even though the drawing does not change. Every other check on Play, Pause, Reset and looping applies as before. What the check reported on my scratch page is under Tested.
+- **The systems designer, Rule 17.3.** My players do what call 5 sets, with the attributes and words above. Rule 17.3's words, builders text and anatomy key can name `data-oa-rest="master"` as the marker of a player that rests on its master.
+- **Phase 3.** Rule 08.2's builders line now tells builders that the asset package will carry a copy of the feed test that takes any card. The CD-S16 fix asks for this, and the Phase 3 proposal should carry it as a task.
+- **The editor.** New strings: the two player captions, their status lines and the Reset line; Rule 08.1's caption and two labels; Rule 08.2's dark-card row and builders sentence; Rule 03.2's nine lines.
+
+### Routine calls
+
+- D2-xxx | An identity player loads with `data-frame="end"` and `data-oa-rest="master"`; Reset is unavailable at rest, both on load and after a run | Call 5. After a run the mark is at rest on its master, so Reset has nothing to undo. The attribute lets the guide check tell these players from chapter 17's, which rest on their first frame
+- D2-xxx | The button reads Play, Pause, Play while paused, and Play again after a run | Chapter 17's players use these words (Rule 17.3), so all seven players read alike
+- D2-xxx | The status line says "At rest: ..." on load and after Reset, and keeps "Last frame: ..." after a run | The line names what the reader sees. The end of a run is still a change worth announcing
+- D2-xxx | The live lever loses its dashed squares; the still view keeps its first frame, a dashed square with words that say it is no part of the mark | CD-M1 says to remove the dashed squares and to keep the still views as they are. An empty first frame needs a mark to show its place
+- D2-xxx | The hinge's ground takes 40 px of side padding (`oa.space.500`), and the 64 px display master starts its own row | The first frame slides outward from the label's edge (CD-S4). On one row, the 24 px master's ACTION and the 64 px master's OATH would meet inside the 40 px gap
+- D2-xxx | The hinge's display master shows from a 37rem content box, down from 41rem | The slides now run in the padding, so the box needs only the 580 px master. At 41rem the wider padding hid it at 1440 px
+- D2-xxx | The hinge's still view keeps its inset frames | The still views stay as they are (CD-M1)
+- D2-xxx | Rule 08.1's fifth sample reads "48 px master, 96 px; social card sign-off only" | The creative director's words name the place. The first half names the master and its size, as the plate's other labels do
+- D2-xxx | Rule 08.1's two large drawings share a row, and their labels wrap at 260 px with balanced lines | Side by side is the review's point. At 1440 px "only" first stood alone on its line
+- D2-xxx | Rule 08.2's dark-card row adds "Judge each pixel on its own, since an average of the four can pass a block whose dimmest pixel fails." | The review names the averaging builder as the failure this fix prevents
+- D2-xxx | The script is named in Rule 08.2's builders line, which also says it now runs on the proofs' card only | A builder looks there for what to run. `promotion_c_identity.py feed` measures our own card from the built page, so the line says what it does today
+- D2-xxx | Rule 03.2's builders text adds lines for L1 and L8 | PP-S12 asks for one line per lockup. Both lines point to the rules that already set them (03.1, 03.5)
+- D2-xxx | I left chapter 17's generator to its owner | The systems designer is editing `stage_c_ch17_build.py`. Its output already carries my new captions; only the failure caption differs, by its own "Fails Rule 17.6." prefix

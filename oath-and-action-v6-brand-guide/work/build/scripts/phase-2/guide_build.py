@@ -335,10 +335,13 @@ class Tokens:
     def __init__(self):
         self.source = None
         self.flat = {}
+        self.theme = {}
         src = TOKENS_JSON if TOKENS_JSON.exists() else TOKENS_DRAFT
         if src.exists():
             try:
-                flatten_dtcg(json.loads(src.read_text()), [], self.flat)
+                tree = json.loads(src.read_text())
+                flatten_dtcg(tree, [], self.flat)
+                self.theme = ((tree.get("$extensions") or {}).get("org.oathandaction") or {}).get("theme") or {}
                 self.source = src
             except Exception as ex:  # a half-written file while the token engineer works
                 R.warn("tokens", f"could not read {src.relative_to(ROOT)}: {ex}")
@@ -391,6 +394,30 @@ class Tokens:
     def value(self, token):
         k = self.by_css.get(css_name(token))
         return css_value(self.flat, self.flat[k]) if k else None
+
+    def theme_values(self, token):
+        """A short name, such as --oa-color-surface, has no value of its own: the light and the dark theme each point it
+        at one surface's token (DR-204). Returns [(theme, value or None, the surface token's CSS name)], or None for any
+        other name (the chapter 18 makers' item 4, round 2)."""
+        n = css_name(token)
+        if n in self.by_css or not self.theme:
+            return None
+        out = []
+        for which in ("light", "dark"):
+            surf = (self.theme.get(which) or {}).get("surface")
+            if not surf:
+                return None
+            full = f"--oa-color-surface-{surf}" if n == self.theme.get("shortSurface") else f"{n}-on-{surf}"
+            out.append((which.capitalize(), self.value(full) if full in self.by_css else None, full))
+        return out if any(v for _, v, _ in out) else None
+
+    def shown(self, token):
+        """The value a reader sees beside a token's name: its own, or each theme's for a short name."""
+        v = self.value(token)
+        if v is not None:
+            return v
+        tv = self.theme_values(token)
+        return "; ".join(f"{w} theme {v or 'unset'}" for w, v, _ in tv) if tv else None
 
     def stylesheet(self):
         if self.css_text is not None:
@@ -1180,10 +1207,18 @@ def token_chip(tok, tokens, where):
     if not tokens.known(tok):
         R.warn(where, f"token {tok} is not in {'tokens.json or tokens.css' if tokens.final else 'the token schema draft'}")
     val = tokens.value(tok)
-    sw = ""
-    if val and re.fullmatch(r"#[0-9A-Fa-f]{6}", val):
-        red = ' data-red="swatch"' if val.upper() == "#E63946" else ""
-        sw = f'<span class="tok-sw" style="background:var({name})"{red} aria-hidden="true"></span>'
+
+    def swatch(v, var):
+        if not (v and re.fullmatch(r"#[0-9A-Fa-f]{6}", v)):
+            return ""
+        red = ' data-red="swatch"' if v.upper() == "#E63946" else ""
+        return f'<span class="tok-sw" style="background:var({var})"{red} aria-hidden="true"></span>'
+    if val is None and tokens.theme_values(tok):
+        # a short name: each theme's value, with the swatch of the surface token it points at
+        parts = "".join(f'<span class="tok-th">{swatch(v, full)}<span class="tok-val">{w} theme {e(v) if v else "unset"}</span></span>'
+                        for w, v, full in tokens.theme_values(tok))
+        return f'<li class="tok"><code class="tok-name">{break_code(name)}</code>{parts}</li>'
+    sw = swatch(val, name)
     shown = f'<span class="tok-val">{e(val)}</span>' if val else ""
     return f'<li class="tok"><code class="tok-name">{break_code(name)}</code>{sw}{shown}</li>'
 
@@ -1645,7 +1680,7 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
     if tok_rows or all_files:
         rows = []
         for name, d in tok_rows.items():
-            val = tokens.value(d["tok"])
+            val = tokens.shown(d["tok"])
             rules_cell = ", ".join(f'<a class="xref" href="#rule-{x.replace(".", "-")}">Rule {x}</a>' for x in dict.fromkeys(d["rules"]))
             rows.append(f'<tr><th scope="row"><code>{break_code(name)}</code></th><td data-k="Value">{e(val) if val else ""}</td>'
                         f'<td data-k="Rules">{rules_cell}</td></tr>')

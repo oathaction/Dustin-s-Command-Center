@@ -64,3 +64,20 @@ Each owner writes its own new sentences in this pass (D2-963). Every word follow
 Each agent writes its notes with: what it changed, item by item with the report code; routine calls as "D2-xxx | decision | reason" lines under a heading "## Routine calls"; questions for Dustin with a recommendation (only where a fix needs his call); Tested and Not tested, kept apart; a change log. Write notes early and add as you go, since the container can restart.
 
 Use the scratchpad `/tmp/claude-0/-home-user-Dustin-s-Command-Center/49b1040f-34e8-55e0-97c3-93e08c6dbc2c/scratchpad/round-2-fix/<your role>/` for anything temporary, never `/tmp` itself, and set `TMPDIR` there. Run Python with `-I`. Never touch `source/`, `work/ledger/`, `deliverables/`, any asset master, any board, or another owner's files. Do not commit or push; the main session commits snapshots. Reply to the main session in 150 words or fewer. Plain spoken prose, no em dashes. Label illustrative people, places, bills and figures beside the item, and give every public policy figure its source, period and qualification.
+
+## Addendum: the craft and accessibility report (CA)
+
+`20261111_Stage-C-Round-2-Red-Team-Craft-Access.md` landed after this brief: 3 of 5, 2 Must fix, 8 Should fix. The copy promise holds: 16 sets, 13 with scripts, copied into blank pages draw and behave as their live stages in light, dark and forced colors. Its judgment on D2-1469 (keep the bar on Prussian, on contrast) is overtaken by call 1, which follows Rule 05.3's party reason.
+
+**Calls on CA's items:**
+13. **The token table (CA-M2 with CD-M3).** A real table whenever the plate's own width reaches 40rem, in CA's five columns (name with its CSS name and Copy under it; value with its swatch; use; tier; contrast). Each category is a disclosure, closed by default, its head giving the count; search opens every group that holds a match; a category index heads the plate. From 1280 px it breaks out over the rail as wide plates do, if its columns need the room. A name breaks only at a dot or a hyphen, and only when the cell truly lacks the room. Under 40rem the cards stay.
+14. **`codeMatch` (CA-S1).** The pixel tolerance goes to 49, the measured antialiasing maximum the log records, and the check adds the computed-style comparison CA describes for every element of each live stage and its pasted copy. Record the change against D2-1519 and D2-1526.
+15. **The live download (CA-M1).** In the live stages only, the build marks `c-18-download`'s ready link `data-oa-file`, so the shell serves the page's own tokens.css; the HTML panel keeps `href="tokens.css"`. The guide check's download test adds the live stage.
+16. **Code panels (CA-S2).** One declaration per line in every CSS panel, long attributes and SVG path data broken onto their own lines; a panel shows about 40 lines before it scrolls, and its name says when it scrolls both ways. Chapter 18 stays under its 1.25 MB ceiling: the component engineer measures the weight before and after and reports it.
+17. **Stages side by side (CA-S3).** From 80em, the two stages of a set whose content fits 32rem sit side by side, as CA lists them; the wide sets keep the stack.
+
+| Owner | CA items |
+|---|---|
+| Engineer | CA-M1 (build and shell, call 15); CA-M2 (call 13, with CD-M3); CA-S1 (call 14); CA-S2 (panel height and names); CA-S3 (call 17); CA-S6 (the build's text transforms skip everything inside `.code-root`); CA-S7 (chapter 26's plates); CA-S8 (the rail's cue and the current chapter scrolled into view) |
+| Component engineer | CA-S2 (formatting in `c-18-*`, call 16, with the weight measured); CA-M1 (a note only if the set's markup changes) |
+| Systems designer | CA-S4 (with CD-S6); CA-S5 (with CD-S3); CA-S7 (anatomy plates `s-18-10` and `s-18-16`) |
