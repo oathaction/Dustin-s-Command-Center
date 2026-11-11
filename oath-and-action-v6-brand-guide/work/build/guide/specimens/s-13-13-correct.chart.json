@@ -32,8 +32,8 @@
  "reader_question": "Which branch will be open the most hours a week?",
  "evidence": "illustration",
  "evidence_label": "Illustration",
- "title": "The Main Library will open the most hours of the three branches",
- "measure_line": "Hours open each week from January 4, three branches of an invented county library",
+ "title": "The Main Library will be open the most hours of the three branches",
+ "measure_line": "Hours open each week from January 4, Alder County’s three library branches",
  "source_line": "Source: Alder County Board, adopted library schedule, hours from January 4, Alder County’s three branches. Retrieved November 2, 2026. Values invented for this example.",
  "illustrative": "Illustrative data",
  "alt": "A ranked bar of weekly hours at three invented library branches: Main Library 52, Riverside 44, Elm Street 36.",
@@ -61,6 +61,8 @@
   "value": "hours"
  },
  "show": [
+  "title",
+  "measure",
   "chart"
  ],
  "notes_internal": "Chapter 13's one chart (Rule 13.13's correct plate), in contract C7's format. Invented values. domain is all because the example is invented and counts toward no atlas domain."

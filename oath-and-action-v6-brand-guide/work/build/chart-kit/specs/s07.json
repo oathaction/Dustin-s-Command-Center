@@ -22,7 +22,7 @@
     ],
     "snapshot": "2026-10-15"
   },
-  "title": "Nineteen states ban ranked-choice voting as of November 2026, 17 of them in all elections.",
+  "title": "Nineteen states ban ranked-choice voting as of November 2026, 17 of them in all elections, by Ballotpedia’s reading.",
   "measure_line": "State laws that prohibit ranked-choice voting, by scope, 50 states and the District of Columbia, as of November 2026. Each square is one state.",
   "notes": [
     "Ranked-choice voting: voters rank candidates in order; if no one wins a majority of first choices, the last-place candidate drops out and those ballots count for their next choice, round by round.",
@@ -61,17 +61,20 @@
         "words": {
           "all": "All elections",
           "some": "Some elections"
-        }
+        },
+        "empty": "No ban"
       },
       {
         "field": "enacted_year",
         "label": "Year",
-        "format": "year"
+        "format": "year",
+        "empty": "None"
       },
       {
         "field": "measure",
         "label": "Measure",
-        "format": "text"
+        "format": "text",
+        "empty": "None"
       }
     ]
   },
@@ -114,7 +117,8 @@
     "No disclosure (DR-100, D2-1756); Phase 2 printed it under this chart.",
     "The grade line opens with H08's grade word, Documented; the bans are statutes and one constitutional amendment on the public record, compiled by a labeled secondary source (D2-99).",
     "The last note now names repair-log entry RL47, the atlas row the list was checked against, so the check is visible to a reader.",
-    "ENG-6: the source line labels Ballotpedia a secondary source (Rule 13.6), as the sidecar now prints it."
+    "ENG-6: the source line labels Ballotpedia a secondary source (Rule 13.6), as the sidecar now prints it.",
+    "Statistics P2-S4: the title credits the count of 17 to Ballotpedia's reading, since the last note says Mississippi's text does not name congressional races. Access S4: a state with no ban reads 'No ban' and 'None' once the kit prints `empty`."
   ],
   "formats": {
     "sub": "year"

@@ -1,121 +1,121 @@
-fiscal_year,source,receipts_billions
-2015,Individual Income Taxes,1540.8
-2015,Corporation Income Taxes,343.8
-2015,Employment and General Retirement,1010.4
-2015,Unemployment Insurance,51.2
-2015,Other Retirement,3.7
-2015,Excise Taxes,98.3
-2015,Estate and Gift Taxes,19.2
-2015,Customs Duties,35
-2015,Miscellaneous Receipts,146.3
-2015,Total,3248.7
-2016,Individual Income Taxes,1546.1
-2016,Corporation Income Taxes,299.6
-2016,Employment and General Retirement,1062.3
-2016,Unemployment Insurance,48.9
-2016,Other Retirement,3.9
-2016,Excise Taxes,95
-2016,Estate and Gift Taxes,21.4
-2016,Customs Duties,34.8
-2016,Miscellaneous Receipts,154.7
-2016,Total,3266.7
-2017,Individual Income Taxes,1587.1
-2017,Corporation Income Taxes,297
-2017,Employment and General Retirement,1111.9
-2017,Unemployment Insurance,45.8
-2017,Other Retirement,4.2
-2017,Excise Taxes,83.8
-2017,Estate and Gift Taxes,22.8
-2017,Customs Duties,34.6
-2017,Miscellaneous Receipts,127.7
-2017,Total,3314.9
-2018,Individual Income Taxes,1683.5
-2018,Corporation Income Taxes,204.7
-2018,Employment and General Retirement,1121.2
-2018,Unemployment Insurance,45
-2018,Other Retirement,4.5
-2018,Excise Taxes,95
-2018,Estate and Gift Taxes,23
-2018,Customs Duties,41.3
-2018,Miscellaneous Receipts,110.5
-2018,Total,3328.7
-2019,Individual Income Taxes,1717.9
-2019,Corporation Income Taxes,230.2
-2019,Employment and General Retirement,1197.4
-2019,Unemployment Insurance,40.9
-2019,Other Retirement,4.8
-2019,Excise Taxes,98.9
-2019,Estate and Gift Taxes,16.7
-2019,Customs Duties,70.8
-2019,Miscellaneous Receipts,84.6
-2019,Total,3462.2
-2020,Individual Income Taxes,1608.7
-2020,Corporation Income Taxes,211.8
-2020,Employment and General Retirement,1261.7
-2020,Unemployment Insurance,43.1
-2020,Other Retirement,5.2
-2020,Excise Taxes,86.8
-2020,Estate and Gift Taxes,17.6
-2020,Customs Duties,68.6
-2020,Miscellaneous Receipts,116.5
-2020,Total,3420
-2021,Individual Income Taxes,2044.4
-2021,Corporation Income Taxes,371.8
-2021,Employment and General Retirement,1251.9
-2021,Unemployment Insurance,56.6
-2021,Other Retirement,5.6
-2021,Excise Taxes,75.3
-2021,Estate and Gift Taxes,27.1
-2021,Customs Duties,80
-2021,Miscellaneous Receipts,133.3
-2021,Total,4046
-2022,Individual Income Taxes,2632.1
-2022,Corporation Income Taxes,424.9
-2022,Employment and General Retirement,1410.7
-2022,Unemployment Insurance,66.5
-2022,Other Retirement,6.3
-2022,Excise Taxes,87.7
-2022,Estate and Gift Taxes,32.6
-2022,Customs Duties,99.9
-2022,Miscellaneous Receipts,135.4
-2022,Total,4896.1
-2023,Individual Income Taxes,2176.5
-2023,Corporation Income Taxes,419.6
-2023,Employment and General Retirement,1558.1
-2023,Unemployment Insurance,49.4
-2023,Other Retirement,6.9
-2023,Excise Taxes,75.8
-2023,Estate and Gift Taxes,33.7
-2023,Customs Duties,80.3
-2023,Miscellaneous Receipts,39
-2023,Total,4439.3
-2024,Individual Income Taxes,2426.1
-2024,Corporation Income Taxes,529.9
-2024,Employment and General Retirement,1653
-2024,Unemployment Insurance,48.6
-2024,Other Retirement,8
-2024,Excise Taxes,101.4
-2024,Estate and Gift Taxes,31.6
-2024,Customs Duties,77
-2024,Miscellaneous Receipts,43.2
-2024,Total,4918.7
-2025,Individual Income Taxes,2656
-2025,Corporation Income Taxes,452.1
-2025,Employment and General Retirement,1685.6
-2025,Unemployment Insurance,54
-2025,Other Retirement,8.6
-2025,Excise Taxes,105.9
-2025,Estate and Gift Taxes,29.5
-2025,Customs Duties,194.9
-2025,Miscellaneous Receipts,47.9
-2025,Total,5234.6
-2026,Individual Income Taxes,2845.5
-2026,Corporation Income Taxes,381.4
-2026,Employment and General Retirement,1754.3
-2026,Unemployment Insurance,49.1
-2026,Other Retirement,8.4
-2026,Excise Taxes,106
-2026,Estate and Gift Taxes,38.7
-2026,Customs Duties,173.2
-2026,Miscellaneous Receipts,46.7
-2026,Total,5403.3
+fiscal_year,source,receipts_dollars
+2015,Individual Income Taxes,1540802375212.60
+2015,Corporation Income Taxes,343797276067.09
+2015,Employment and General Retirement,1010448753612.58
+2015,Unemployment Insurance,51177428272.86
+2015,Other Retirement,3651170989.92
+2015,Excise Taxes,98278948223.77
+2015,Estate and Gift Taxes,19231606071.18
+2015,Customs Duties,35041196205.29
+2015,Miscellaneous Receipts,146294446260.44
+2015,Total,3248723200915.73
+2016,Individual Income Taxes,1546074928107.74
+2016,Corporation Income Taxes,299570939628.32
+2016,Employment and General Retirement,1062305011164.46
+2016,Unemployment Insurance,48852716273.30
+2016,Other Retirement,3905091720.47
+2016,Excise Taxes,95045415455.04
+2016,Estate and Gift Taxes,21354002316.66
+2016,Customs Duties,34837269316.54
+2016,Miscellaneous Receipts,154742996990.82
+2016,Total,3266688370973.35
+2017,Individual Income Taxes,1587119168060.09
+2017,Corporation Income Taxes,297047881064.55
+2017,Employment and General Retirement,1111896553575.01
+2017,Unemployment Insurance,45808340166.15
+2017,Other Retirement,4190632295.93
+2017,Excise Taxes,83822381040.73
+2017,Estate and Gift Taxes,22767709579.77
+2017,Customs Duties,34575150111.34
+2017,Miscellaneous Receipts,127666088630.61
+2017,Total,3314893904524.18
+2018,Individual Income Taxes,1683537216744.80
+2018,Corporation Income Taxes,204733303759.09
+2018,Employment and General Retirement,1121154972925.63
+2018,Unemployment Insurance,45041614844.75
+2018,Other Retirement,4502824328.88
+2018,Excise Taxes,94988171025.65
+2018,Estate and Gift Taxes,22983076198.43
+2018,Customs Duties,41298963821.80
+2018,Miscellaneous Receipts,110505101069.17
+2018,Total,3328745244718.20
+2019,Individual Income Taxes,1717857487901.92
+2019,Corporation Income Taxes,230244746813.76
+2019,Employment and General Retirement,1197393962693.75
+2019,Unemployment Insurance,40933978371.21
+2019,Other Retirement,4758923741.46
+2019,Excise Taxes,98914554367.88
+2019,Estate and Gift Taxes,16671532322.28
+2019,Customs Duties,70783723012.49
+2019,Miscellaneous Receipts,84636700924.45
+2019,Total,3462195610149.20
+2020,Individual Income Taxes,1608661926485.33
+2020,Corporation Income Taxes,211844662323.66
+2020,Employment and General Retirement,1261650036143.35
+2020,Unemployment Insurance,43103787706.28
+2020,Other Retirement,5200612525.77
+2020,Excise Taxes,86782067345.86
+2020,Estate and Gift Taxes,17624156021.78
+2020,Customs Duties,68550229845.51
+2020,Miscellaneous Receipts,116537527367.80
+2020,Total,3419955005765.34
+2021,Individual Income Taxes,2044377037669.21
+2021,Corporation Income Taxes,371831354722.44
+2021,Employment and General Retirement,1251857750842.89
+2021,Unemployment Insurance,56601808949.47
+2021,Other Retirement,5629367791.30
+2021,Excise Taxes,75271184579.46
+2021,Estate and Gift Taxes,27140075206.15
+2021,Customs Duties,79984829486.30
+2021,Miscellaneous Receipts,133285449480.19
+2021,Total,4045978858727.41
+2022,Individual Income Taxes,2632145029572.13
+2022,Corporation Income Taxes,424865169899.91
+2022,Employment and General Retirement,1410735251952.13
+2022,Unemployment Insurance,66497452818.74
+2022,Other Retirement,6294427995.50
+2022,Excise Taxes,87726258304.53
+2022,Estate and Gift Taxes,32550398044.75
+2022,Customs Duties,99907565997.10
+2022,Miscellaneous Receipts,135397489336.21
+2022,Total,4896119043921.00
+2023,Individual Income Taxes,2176480648910.74
+2023,Corporation Income Taxes,419583849964.32
+2023,Employment and General Retirement,1558147763130.71
+2023,Unemployment Insurance,49402230149.42
+2023,Other Retirement,6903778727.32
+2023,Excise Taxes,75803570858.15
+2023,Estate and Gift Taxes,33668147783.93
+2023,Customs Duties,80337268464.15
+2023,Miscellaneous Receipts,38956481931.80
+2023,Total,4439283739920.54
+2024,Individual Income Taxes,2426066988325.89
+2024,Corporation Income Taxes,529866802637.57
+2024,Employment and General Retirement,1652997812476.74
+2024,Unemployment Insurance,48606716906.94
+2024,Other Retirement,7953956052.72
+2024,Excise Taxes,101435326697.24
+2024,Estate and Gift Taxes,31615876108.98
+2024,Customs Duties,77036909944.89
+2024,Miscellaneous Receipts,43155255587.28
+2024,Total,4918735644738.25
+2025,Individual Income Taxes,2656044447275.63
+2025,Corporation Income Taxes,452089303419.78
+2025,Employment and General Retirement,1685631506240.23
+2025,Unemployment Insurance,54048570145.06
+2025,Other Retirement,8613735577.56
+2025,Excise Taxes,105936465307.63
+2025,Estate and Gift Taxes,29462045090.45
+2025,Customs Duties,194865739872.82
+2025,Miscellaneous Receipts,47924573386.27
+2025,Total,5234616386315.43
+2026,Individual Income Taxes,2845526866159.55
+2026,Corporation Income Taxes,381414689057.62
+2026,Employment and General Retirement,1754273234159.58
+2026,Unemployment Insurance,49090010812.43
+2026,Other Retirement,8431476188.91
+2026,Excise Taxes,105995126578.38
+2026,Estate and Gift Taxes,38720146356.13
+2026,Customs Duties,173218614643.40
+2026,Miscellaneous Receipts,46656595004.81
+2026,Total,5403326758960.81

@@ -31,7 +31,7 @@
  "evidence": "finding",
  "evidence_label": "Finding",
  "grade_line": "Documented: a Census Bureau survey",
- "title": "Poverty among all people, as the failure's second chart draws it",
+ "title": "Poverty among all people stood at 13.1 percent in 2025",
  "measure_line": "All people in poverty, Supplemental Poverty Measure, percent, United States, 2017 to 2025",
  "source_line": "Source: U.S. Census Bureau, Poverty in the United States: 2025 (P60-290), Table 8, Supplemental Poverty Measure, children under 18, 2009 to 2025, United States. Retrieved November 6, 2026. Figures for 2019 to 2024 include the Bureau’s August 2026 correction to the poverty thresholds, and 2024 also takes new population weights; they differ by up to 0.4 points from the earlier release.",
  "illustrative": false,
@@ -88,6 +88,9 @@
   "y_max": 25
  },
  "show": [
+  "evidence",
+  "title",
+  "measure",
   "chart"
  ],
  "notes_internal": "Chapter 13, Rule 13.7 (CD S3, brand S5): one of a pair drawn in one window on one scale."

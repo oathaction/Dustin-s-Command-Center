@@ -36,8 +36,8 @@
    "unit": "people"
   },
   "taxes_per_resident": {
-   "type": "integer",
-   "description": "total taxes per resident, computed",
+   "type": "number",
+   "description": "total taxes per resident, computed and stored to four decimals",
    "unit": "dollars"
   }
  },

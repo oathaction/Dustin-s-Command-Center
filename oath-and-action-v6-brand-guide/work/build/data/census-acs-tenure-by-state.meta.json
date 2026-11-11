@@ -11,7 +11,7 @@
  "observation_period": "Calendar year 2025",
  "geography": "50 states and DC, with a United States row (code US)",
  "universe_or_base": "Occupied housing units (households), by whether the household owns or rents its home",
- "unit": "households in housing units, with 90 percent margins of error; owner_pct and renter_pct are computed by the studio from the counts, rounded to one decimal",
+ "unit": "households in housing units, with 90 percent margins of error; owner_pct and renter_pct are computed by the studio from the counts and stored to four decimals, so a chart rounds once",
  "date_retrieved": "2026-11-11",
  "vintage": "ACS 2025 1-year release",
  "qualification": "Survey estimates; shares near 50 percent should be compared using the margins of error before a chart calls a state mostly renters or mostly owners",

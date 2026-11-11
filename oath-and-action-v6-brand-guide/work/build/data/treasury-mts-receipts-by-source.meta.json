@@ -11,7 +11,7 @@
  ],
  "observation_period": "Fiscal years 2015 to 2026 (each October 1 to September 30)",
  "universe_or_base": "Federal receipts by source; the three social insurance lines are payroll and retirement taxes",
- "unit": "billions of dollars, nominal, rounded by the studio from the published dollars",
+ "unit": "dollars, nominal, exactly as published (to the cent); a chart rounds once, at print",
  "vintage": "September Monthly Treasury Statements as served on November 11, 2026",
  "qualification": "Nominal dollars with no adjustment for inflation; an index of each source since fiscal 2016 shows growth, and a source that starts small (customs duties) can grow fast in percent while staying a small share of the total. Fiscal 2026 figures are from the September 2026 statement and may be revised in the fiscal year-end report",
  "columns": {
@@ -23,10 +23,10 @@
    "type": "category",
    "description": "receipt source as Treasury names it; Total is all receipts"
   },
-  "receipts_billions": {
+  "receipts_dollars": {
    "type": "number",
-   "description": "receipts in the fiscal year",
-   "unit": "billions of dollars"
+   "description": "receipts in the fiscal year, as published",
+   "unit": "dollars"
   }
  },
  "printed_source_line": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, receipts by source, fiscal 2015 to 2026, United States. Retrieved November 11, 2026. Nominal dollars, not adjusted for inflation.",

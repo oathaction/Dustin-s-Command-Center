@@ -19,7 +19,7 @@
   "measure_line": "Presidential margin by state in 2020 and 2024: the Republican nominee’s share of all presidential votes minus the Democratic nominee’s, in percentage points, 50 states and DC, with the United States above them",
   "notes": [
     "Margin: the Republican nominee’s share of all presidential votes minus the Democratic nominee’s. Right of Even, the Republican nominee led; left of it, the Democratic nominee led.",
-    "The national margin moved 5.9 points, more than in 39 of the 51 states, because the states with the most voters moved most: California, Texas, Florida and New York each moved 8 points or more.",
+    "The national margin moved 5.9 points, more than in 39 of the 51 states, because the states with the most voters moved most: California, Texas, Florida and New York each moved 8 points or more. Each figure is rounded on its own, so the 2020 and 2024 margins may not add to the shift.",
     "New York’s figures count every ballot line each nominee held, including the Working Families and Conservative lines.",
     "Maine and Nebraska split their electoral votes by district; these margins are statewide.",
     "The 2024 figures come from the Federal Election Commission’s compilation of state results, dated January 16, 2025; its Federal Elections 2024 report may revise them."
@@ -66,7 +66,7 @@
   },
   "chart_notes": [
     "Axis: right of Even, the Republican nominee led; left of it, the Democratic nominee led. The scale skips from 80 to 40 points on the Democratic side so DC fits. Every arrow keeps one scale. The axis repeats at the bottom.",
-    "The United States sits above the states: Democratic +4.5 in 2020 to Republican +1.5 in 2024, a shift of 5.9.",
+    "The United States sits above the states: Democratic +4.5 in 2020 to Republican +1.5 in 2024, a shift of 5.9, each figure rounded on its own.",
     "How to read an arrow: each arrow runs from a state’s 2020 margin, at the dot, to its 2024 margin, at the tip. The figure beside it is the shift in percentage points; the sample shows 10, at the same scale as the chart.",
     "Six states changed leader from the Democratic to the Republican nominee: Wisconsin, Michigan, Pennsylvania, Georgia, Nevada and Arizona. Each carries a tag.",
     "Labels sit on the side away from the Even line: a Democratic-led state’s name and shift left of its arrow, a Republican-led state’s right of it."
@@ -132,7 +132,8 @@
     "The United States row (scope nation) is drawn above the states, set apart and labeled (DR-64).",
     "states: the two the title names. Checked by script: Washington 0.98, New York 10.54; 39 of 51 states moved less than the nation's 5.93.",
     "The second note drops Phase 2's 'more than the margin in', which read as the margin itself; the figure compared is the shift.",
-    "X2: Phase 2's reading aid ('How to read an arrow'), its side note on the six changes of leader near Wisconsin and the axis unit return; labels now sit away from the Even line (E19)."
+    "X2: Phase 2's reading aid ('How to read an arrow'), its side note on the six changes of leader near Wisconsin and the axis unit return; labels now sit away from the Even line (E19).",
+    "Statistics P2-S8: the rounding sentence."
   ],
   "formats": {
     "value": "signed:1",

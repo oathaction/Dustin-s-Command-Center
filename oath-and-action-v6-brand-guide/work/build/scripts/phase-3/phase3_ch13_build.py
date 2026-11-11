@@ -316,7 +316,9 @@ CSS = {
     "card": (".card{max-width:360px;border-top:4px solid var(--oa-color-border-strong);padding:14px 0 0}"
              ".card .hl{font:var(--oa-type-h4-font-weight) 1.25rem/var(--oa-type-h4-line-height) var(--oa-type-h4-font-family);"
              "letter-spacing:var(--oa-type-h4-letter-spacing);margin:0 0 10px;text-wrap:balance}"
-             ".card p+p{margin-top:10px}.card.nb{border-top:0;padding-top:0}"),
+             ".card p+p{margin-top:10px}.card.nb{border-top:0;padding-top:0}"
+             # an article's headline stays larger than the chart title the kit prints inside it (22 px in a narrow column)
+             ".card .hl.art{font-size:1.625rem;line-height:var(--oa-type-h3-line-height)}"),
     "q": (".q{font:var(--oa-type-quote);letter-spacing:var(--oa-type-quote-letter-spacing);margin:0;text-indent:-.42em;max-width:30em}"),
     "qs": f".qs{{font:italic 400 var(--oa-type-body-font-size)/1.6 var(--oa-font-family-quote);margin:0}}",
     "by": f".by{{{CAP};color:var(--oa-color-text-secondary);margin-top:8px}}",
@@ -405,15 +407,9 @@ def node_title(i):
     return NODE[i]["title"]
 
 
-def kit_label(cid):
-    """The id the kit's drawing names as its label (aria-labelledby) when its figure shows the chart alone. The plate's own
-    title carries it, so a screen reader names the drawing by the words a sighted reader sees above it."""
-    return f' id="oac-{cid}-t"'
-
-
-def chart_head(label, grade_line, title, measure, notes=(), source=None, illus=None, cid=None):
+def chart_head(label, grade_line, title, measure, notes=(), source=None, illus=None):
     out = [f'<div class="evr"><span class="ev">{e(label)}</span><span class="gr">{e(grade_line)}</span>{ill(illus) if illus else ""}</div>',
-           f'<p class="ct"{kit_label(cid) if cid else ""}>{e(title)}</p>', f'<p class="ms">{e(measure)}</p>']
+           f'<p class="ct">{e(title)}</p>', f'<p class="ms">{e(measure)}</p>']
     out += [f'<p class="nt">{e(n)}</p>' for n in notes]
     if source:
         out.append(f'<p class="src">{e(source)}</p>')
@@ -1185,7 +1181,7 @@ def cp_spec(cid, group, title, alt, years=None):
         "phone": "same", "domain": "D08", "states": [],
         "encode": {"x": "year", "y": "percent", "break": "comparable_with"},
         "labels": {"break_end": "earlier", "break_start": "later", "y_max": 25},
-        "show": ["chart"],
+        "show": ["evidence", "title", "measure", "chart"],
         "notes_internal": "Chapter 13, Rule 13.7 (CD S3, brand S5): one of a pair drawn in one window on one scale.",
     }
     return f'<div data-oa-chart="{cid}"></div>'
@@ -1208,14 +1204,12 @@ def rule_13_7(book):
     if old_b in before_line:
         before_line = before_line.replace(old_b, "Rates before the Bureau’s August 2026 correction to the poverty thresholds.")
     ch_title, all_title = "Child poverty stood at 13.4 percent in 2025", f"Poverty among all people stood at {all25} percent in 2025"
-    a = chart_head("Finding", GL_CENSUS, ch_title,
-                   "Children under 18 in poverty, Supplemental Poverty Measure, percent, United States, 2009 to 2025", cid="s-13-7-children")
-    a += cp_spec("s-13-7-children", "under_18", ch_title,
-                 "Line chart of child poverty under the Supplemental Poverty Measure, 2009 to 2025, on a scale from 0 to 25 percent, "
+    # the kit prints each chart's head from its spec (label, grade line, title, measure line), so its drawing is named by the
+    # title above it; a head written here beside a chart-only figure left the drawing's label pointing at nothing
+    a = cp_spec("s-13-7-children", "under_18", ch_title,
+                 "Line chart of child poverty under the Supplemental Poverty Measure, 2009 to 2025, on a scale that starts at 0, "
                  "breaking where the Census Bureau changed its method; it stood at 13.4 percent in 2025.")
-    b = chart_head("Finding", GL_CENSUS, all_title,
-                   "All people in poverty, Supplemental Poverty Measure, percent, United States, 2009 to 2025", cid="s-13-7-all")
-    b += cp_spec("s-13-7-all", "all_ages", all_title,
+    b = cp_spec("s-13-7-all", "all_ages", all_title,
                  f"Line chart of poverty among all people under the Supplemental Poverty Measure, 2009 to 2025, on the same scale "
                  f"and window, breaking where the method changed; it stood at {all25} percent in 2025.")
     trs = "".join(f'<tr><th scope="row">{y}</th><td class="num" data-k="Before the revision: P60-287, September 9, 2025">{p}</td>'
@@ -1241,8 +1235,7 @@ def rule_13_7(book):
     fb = chart_head("Finding", GL_CENSUS,
                     f"Child poverty fell from {pair[0][1]} percent in 2020 to {pair[1][1]} percent in 2021, then rose to {pair[2][2]} percent in 2024",
                     "Children in poverty, percent")
-    fc = chart_head("Finding", GL_CENSUS, all_title, "All people in poverty, percent, 2017 to 2025", cid="s-13-7-fail-all")
-    fc += cp_spec("s-13-7-fail-all", "all_ages", "Poverty among all people, as the failure's second chart draws it",
+    fc = cp_spec("s-13-7-fail-all", "all_ages", all_title,
                   "Line chart of poverty among all people under the Supplemental Poverty Measure, 2017 to 2025.",
                   years=[str(y) for y in range(2017, 2026)])
     fail = dnp() + f'<div class="fx two"><div>{fb}</div><div>{fc}</div></div>'
@@ -1724,6 +1717,10 @@ def kit_hook():
             and notes.exists() and "GUIDE HOOK READY" in notes.read_text())
 
 
+LIB_TITLE = "The Main Library will be open the most hours of the three branches"
+LIB_MEASURE = "Hours open each week from January 4, Alder County’s three library branches"
+
+
 def rule_13_13(book):
     head = "Alder County’s libraries add Sunday hours from January"
     hook = kit_hook()
@@ -1732,12 +1729,13 @@ def rule_13_13(book):
     figure = '<div data-oa-chart="s-13-13-correct"></div>' if hook else bars_svg(LIB)
     figure_f = '<div data-oa-chart="s-13-13-fail-chart"></div>' if hook else bars_svg(LIB)
     def chead(cid):
+        # the kit prints the chart's title and measure line from its spec, so the drawing is named by the title above it
         return ('<div class="evr"><span class="ev">Finding</span><span class="gr">Documented: the county’s adopted schedule</span></div>'
-                f'<p class="k"{kit_label(cid) if hook else ""}>Hours open each week, from January 4</p>')
+                + ("" if hook else f'<p class="ct">{e(LIB_TITLE)}</p><p class="ms">{e(LIB_MEASURE)}</p>'))
     note = (f"<b>Corrected November 4, 2026.</b> An earlier version of this article and its chart gave the Main Library’s "
             f"weekly hours as {LIB_WRONG}. The county’s adopted schedule gives {LIB[0][1]}. We replaced the chart and fixed the "
             "second paragraph.")
-    piece = (f'<div class="card nb">{ill()}<p class="cn">{note}</p><p class="hl">{e(head)}</p>'
+    piece = (f'<div class="card nb">{ill()}<p class="cn">{note}</p><p class="hl art">{e(head)}</p>'
              '<p>The county board approved Sunday hours at all three branches from January 4.</p>'
              f'<p>The Main Library will open {LIB[0][1]} hours a week, the most of the three.</p>'
              f'<div class="blk">{chead("s-13-13-correct")}{figure}</div><p class="src">{e(src)}</p></div>')
@@ -1760,7 +1758,7 @@ def rule_13_13(book):
                       "The chart is a static drawing in the chart tokens until the kit's guide hook lands; its kit spec, "
                       "s-13-13-correct.chart.json, passes the kit's checks (oa-chart.mjs build, 0 faults)."))
     book.log("13.13 correct", "Alder County library hours", "invented", level="invented")
-    fail = (dnp() + f'<div class="card">{ill()}<p class="hl">{e(head)}</p>'
+    fail = (dnp() + f'<div class="card">{ill()}<p class="hl art">{e(head)}</p>'
             '<p>The county board approved Sunday hours at all three branches from January 4.</p>'
             f'<p>The Main Library will open {LIB[0][1]} hours a week, the most of the three.</p>'
             f'<div class="blk">{chead("s-13-13-fail-chart")}{figure_f}</div><p class="src">{e(src)}</p>'
@@ -1775,8 +1773,8 @@ def rule_13_13(book):
                  "rows": [{"branch": b, "hours": h} for b, h in LIB]},
         "reader_question": "Which branch will be open the most hours a week?",
         "evidence": "illustration", "evidence_label": "Illustration",
-        "title": "The Main Library will open the most hours of the three branches",
-        "measure_line": "Hours open each week from January 4, three branches of an invented county library",
+        "title": LIB_TITLE,
+        "measure_line": LIB_MEASURE,
         "source_line": src,
         "illustrative": "Illustrative data",
         "alt": "A ranked bar of weekly hours at three invented library branches: Main Library 52, Riverside 44, Elm Street 36.",
@@ -1784,7 +1782,7 @@ def rule_13_13(book):
             {"field": "branch", "label": "Branch", "format": "text", "row_header": True},
             {"field": "hours", "label": "Hours a week", "format": "integer"}]},
         "phone": "same", "domain": "all", "states": [], "encode": {"category": "branch", "value": "hours"},
-        "show": ["chart"],
+        "show": ["title", "measure", "chart"],
         "notes_internal": "Chapter 13's one chart (Rule 13.13's correct plate), in contract C7's format. Invented values. "
                           "domain is all because the example is invented and counts toward no atlas domain.",
     }

@@ -23,7 +23,7 @@
   "title": "The atlas traces 24 rule changes since 1870 on four threads: who counts, who governs, who owns and who checks.",
   "measure_line": "Changes in the rules on four threads, dated by the atlas, Oath & Action’s own research, United States, February 1870 to June 2026. Every event is documented; the atlas chose which to date.",
   "notes": [
-    "Shaded: the two stretches where the atlas’s picks cluster, seven changes from 1964 to 1978 and eight from 2010 to 2026. The atlas chose which changes to date, so the bands describe its picks.",
+    "The atlas’s picks cluster in two stretches, seven changes from 1964 to 1978 and eight from 2010 to 2026, shaded on wide screens. The atlas chose which changes to date, so the clusters describe its picks.",
     "Every event here is graded documented: each rests on a statute, a court ruling, a constitutional text or another official record, cited in its source field. The grade covers the event itself; the size of any effect described in the mechanism comes from the scholarly or official source named beside it.",
     "Event names are the atlas’s, shortened at any parenthesis; the table gives each in full."
   ],
@@ -117,10 +117,12 @@
       1975,
       2000,
       2025
-    ]
+    ],
+    "cut_at": " ("
   },
   "notes_internal": [
     "The table drops Phase 2's E01 to E24 column: those keys are the studio's, and E01 reads like V7's Variable E1 (Master Brief tension 7, H11). The date is the row header.",
-    "Thread questions are V7's own (history.threads[].question)."
+    "Thread questions are V7's own (history.threads[].question).",
+    "CD KM2, brand K3, statistics P2-S5: labels.cut_at trims each name at its first parenthesis, so the note on shortened names is true again; the first note no longer describes bands the phone list lacks. The doubled year ('2025 2025 budget reconciliation law') and the bold years need the form (E29)."
   ]
 }

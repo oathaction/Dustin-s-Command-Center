@@ -77,6 +77,9 @@
   "y_max": 25
  },
  "show": [
+  "evidence",
+  "title",
+  "measure",
   "chart"
  ],
  "notes_internal": "Chapter 13, Rule 13.7 (CD S3, brand S5): one of a pair drawn in one window on one scale."

@@ -1,13 +1,13 @@
 year,row,value,standard_error,moe_90,basis
-2003,non_hispanic_white,75.4,0.1,0.2,"published standard error, 2003 Table B-7"
-2025,non_hispanic_white,74.3,0.12,0.2,"published 90 percent margin, 2025 Table B-7"
-2003,black,48.1,0.3,0.5,"published standard error, 2003 Table B-7"
-2025,black,44.7,0.3,0.5,"published 90 percent margin, 2025 Table B-7"
-2003,hispanic,46.7,0.3,0.5,"published standard error, 2003 Table B-7"
-2025,hispanic,48.5,0.3,0.5,"published 90 percent margin, 2025 Table B-7"
-2003,gap_white_minus_black,27.3,0.32,0.5,computed
-2025,gap_white_minus_black,29.6,0.33,0.5,computed
-2025,change_in_gap_white_minus_black_2003_to_2025,2.3,0.46,0.7,computed
-2003,gap_white_minus_hispanic,28.7,0.32,0.5,computed
-2025,gap_white_minus_hispanic,25.8,0.33,0.5,computed
-2025,change_in_gap_white_minus_hispanic_2003_to_2025,-2.9,0.46,0.7,computed
+2003,non_hispanic_white,75.4,0.1,0.1645,"published standard error, 2003 Table B-7"
+2025,non_hispanic_white,74.3,0.1216,0.2,"published 90 percent margin, 2025 Table B-7"
+2003,black,48.1,0.3,0.4935,"published standard error, 2003 Table B-7"
+2025,black,44.7,0.304,0.5,"published 90 percent margin, 2025 Table B-7"
+2003,hispanic,46.7,0.3,0.4935,"published standard error, 2003 Table B-7"
+2025,hispanic,48.5,0.304,0.5,"published 90 percent margin, 2025 Table B-7"
+2003,gap_white_minus_black,27.3,0.3162,0.5202,computed
+2025,gap_white_minus_black,29.6,0.3274,0.5385,computed
+2025,change_in_gap_white_minus_black_2003_to_2025,2.3,0.4552,0.7487,computed
+2003,gap_white_minus_hispanic,28.7,0.3162,0.5202,computed
+2025,gap_white_minus_hispanic,25.8,0.3274,0.5385,computed
+2025,change_in_gap_white_minus_hispanic_2003_to_2025,-2.9,0.4552,0.7487,computed

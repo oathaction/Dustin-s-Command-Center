@@ -11,7 +11,7 @@
  ],
  "observation_period": "Fiscal years 2015 to 2026",
  "universe_or_base": "Net federal outlays by budget function, as Treasury reports them",
- "unit": "billions of dollars, nominal, rounded by the studio",
+ "unit": "dollars, nominal, exactly as published (to the cent); a chart rounds once, at print",
  "vintage": "September Monthly Treasury Statements as served on November 11, 2026",
  "qualification": "Net outlays: two lines can be negative (Commerce and Housing Credit in some years, and Undistributed Offsetting Receipts every year), so a treemap draws only the positive functions and states what it leaves out; functions group spending by purpose, not by agency",
  "columns": {
@@ -23,10 +23,10 @@
    "type": "category",
    "description": "budget function as Treasury names it; Total is all net outlays"
   },
-  "outlays_billions": {
+  "outlays_dollars": {
    "type": "number",
-   "description": "net outlays in the fiscal year",
-   "unit": "billions of dollars"
+   "description": "net outlays in the fiscal year, as published",
+   "unit": "dollars"
   }
  },
  "printed_source_line": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, outlays by function, fiscal 2026, United States. Retrieved November 11, 2026. Net outlays in nominal dollars; offsetting receipts are shown as negative.",

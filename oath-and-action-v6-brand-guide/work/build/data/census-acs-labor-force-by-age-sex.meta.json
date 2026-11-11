@@ -11,7 +11,7 @@
  "observation_period": "Calendar year 2025",
  "geography": "United States",
  "universe_or_base": "Population 16 years and over, by sex and the table's 13 age groups; in_labor_force counts the employed, the unemployed and the armed forces",
- "unit": "population and in_labor_force in people, with 90 percent margins of error; participation_pct is in_labor_force as a percent of population, computed by the studio from the two counts and rounded to one decimal",
+ "unit": "population and in_labor_force in people, with 90 percent margins of error; participation_pct is in_labor_force as a percent of population, computed by the studio from the two counts and stored to four decimals, so a chart rounds once",
  "date_retrieved": "2026-11-11",
  "vintage": "ACS 2025 1-year release",
  "qualification": "Survey estimates; participation_pct is the studio's division of two published counts, so it carries no published margin of error. The ACS counts a person in the labor force if they worked or looked for work in the reference week",

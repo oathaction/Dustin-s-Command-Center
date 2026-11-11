@@ -11,7 +11,7 @@
  ],
  "observation_period": "Month ends, 2024-01-31 to 2026-10-31",
  "universe_or_base": "Federal debt counted against the limit set in law (31 U.S.C. 3101), held by the public and by government accounts",
- "unit": "billions of dollars, nominal, rounded by the studio from millions",
+ "unit": "millions of dollars, nominal, exactly as published; a chart rounds once, at print",
  "vintage": "Monthly Statements of the Public Debt as served on November 11, 2026",
  "qualification": "An empty limit cell is a month when the table shows the limit as zero, which the studio reads as a suspension of the limit (it was suspended until January 1, 2025, by the Fiscal Responsibility Act of 2023, a reading not checked on govinfo.gov today); the limit of $41,104 billion is the one in force at the latest month, after Public Law 119-21 (July 4, 2025) raised it by $5 trillion. The studio did not read the statute today, so a chart that cites the law checks it on govinfo.gov first",
  "columns": {
@@ -19,20 +19,20 @@
    "type": "date",
    "description": "month end"
   },
-  "debt_subject_to_limit_billions": {
+  "debt_subject_to_limit_millions": {
    "type": "number",
-   "description": "total public debt subject to limit",
-   "unit": "billions of dollars"
+   "description": "total public debt subject to limit, as published",
+   "unit": "millions of dollars"
   },
-  "statutory_limit_billions": {
+  "statutory_limit_millions": {
    "type": "number",
-   "description": "statutory debt limit",
-   "unit": "billions of dollars"
+   "description": "statutory debt limit, as published",
+   "unit": "millions of dollars"
   },
-  "room_under_limit_billions": {
+  "room_under_limit_millions": {
    "type": "number",
-   "description": "balance of the statutory limit",
-   "unit": "billions of dollars"
+   "description": "balance of the statutory limit, as published",
+   "unit": "millions of dollars"
   }
  },
  "printed_source_line": "Source: U.S. Department of the Treasury, Monthly Statement of the Public Debt, Table II, statutory debt limit, October 31, 2026, United States. Retrieved November 11, 2026. Debt subject to the limit, held by the public and by government accounts.",

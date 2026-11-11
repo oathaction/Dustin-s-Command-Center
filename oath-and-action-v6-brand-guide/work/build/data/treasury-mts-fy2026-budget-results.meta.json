@@ -12,9 +12,9 @@
  ],
  "observation_period": "Fiscal year 2026 (October 1, 2025 to September 30, 2026)",
  "universe_or_base": "Federal receipts by source and net outlays by budget function",
- "unit": "billions of dollars, nominal; receipts positive, outlays negative, the deficit as receipts minus outlays (negative)",
+ "unit": "dollars, nominal, exactly as published (to the cent); receipts positive, outlays negative, the deficit as receipts minus outlays (negative); a chart rounds once, at print",
  "vintage": "Monthly Treasury Statement for September 2026 as served on November 11, 2026",
- "qualification": "Table 1 gives fiscal 2026 receipts of $5403.3 billion, outlays of $7395.8 billion and a deficit of $1992.5 billion, matching these rows. Net outlays include two negative lines (offsetting receipts); figures may be revised in the year-end report",
+ "qualification": "Table 1 gives fiscal 2026 receipts of $5,403.3 billion, outlays of $7,395.8 billion and a deficit of $1,992.5 billion, matching these rows. Net outlays include two negative lines (offsetting receipts); figures may be revised in the year-end report",
  "columns": {
   "step": {
    "type": "integer",
@@ -28,10 +28,10 @@
    "type": "text",
    "description": "line as Treasury names it"
   },
-  "amount_billions": {
+  "amount_dollars": {
    "type": "number",
-   "description": "signed amount",
-   "unit": "billions of dollars"
+   "description": "signed amount, as published",
+   "unit": "dollars"
   }
  },
  "printed_source_line": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, September 2026, Tables 1 and 9, fiscal 2026, United States. Retrieved November 11, 2026. Nominal dollars; net outlays, with offsetting receipts as negatives.",

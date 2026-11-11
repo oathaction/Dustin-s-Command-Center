@@ -90,8 +90,9 @@
     "snapshot": "2026-10-15"
   },
   "title": "Of the 64 rule changes in its log, the atlas codes 24 as moving the rules toward voters and 24 as moving them away.",
-  "measure_line": "Each square is one entry in the repair log of the atlas, Oath & Action’s own research, placed by year and by the atlas’s direction code, 1965 to the November 3, 2026 ballot. The count above each year gives every entry the log holds that year.",
+  "measure_line": "Each square is one entry in the repair log, the dated list of changes to the rules that decide who officials answer to, kept by the atlas, Oath & Action’s own research, placed by year and by the atlas’s direction code, 1965 to the November 3, 2026 ballot. The count above each year gives every entry the log holds that year.",
   "notes": [
+    "As of November 11, 2026: voters have cast their ballots on all three measures this chart counts as pending (repair-log entries RL62, RL63 and RL64), and none is certified. Massachusetts Question 3, for one all-candidate primary with the top two advancing, failed 61.0 percent to 39.0 in the unofficial count. Missouri Proposition A, the referendum on the 2025 congressional map, failed 61.8 percent to 38.2 in the unofficial statewide count; a no vote keeps the 2022 districts. Alaska Ballot Measure 2, which would repeal the top-four primary and ranked-choice general elections, trailed 47.4 percent to 52.6 in the unofficial count of November 10, with mailed and overseas ballots still to come. Sources: NBC Boston, Massachusetts ballot question results, November 9, 2026, a secondary source; State of Alaska, Division of Elections, 2026 General Election summary report, unofficial results, November 10, 2026; St. Charles County, Missouri, unofficial statewide returns, November 4, 2026. Retrieved November 11, 2026.",
     "The first year group, To 2012, holds every entry from 1965 to 2012.",
     "Open squares count toward voters and solid squares away from voters; the band below holds entries that went neither way.",
     "The atlas chose which 64 changes to record, and it records more of recent years: 33 of the 64 entries fall in 2025 and 2026.",
@@ -228,6 +229,7 @@
     "No disclosure (DR-100, D2-1756); Phase 2 printed it under this chart.",
     "X1: the kit now draws Phase 2's mirror, the neither-way band, every year from 2013 with 2019 and 2023 at 0, and the ring around RL47, so the notes describe them again.",
     "W09: Phase 2's 'not every rule change in the country' and 'carries no judgment' are recast without the corrective turn; the facts are unchanged.",
-    "Checked by script: 24 toward, 24 away, 10 voters kept existing rules, 3 mixed, 3 pending; three entries to 2012; 33 in 2025 and 2026; 11 of the 19 bans before 2025, of which only Missouri's (RL30) has its own entry."
+    "Checked by script: 24 toward, 24 away, 10 voters kept existing rules, 3 mixed, 3 pending; three entries to 2012; 33 in 2025 and 2026; 11 of the 19 bans before 2025, of which only Missouri's (RL30) has its own entry.",
+    "D3-98: the first note, dated under Rule 13.10, gives the three November 3 outcomes as the record stands, with their sources; the squares keep V7's codes. Statistics P2-S10: the measure line glosses the repair log."
   ]
 }

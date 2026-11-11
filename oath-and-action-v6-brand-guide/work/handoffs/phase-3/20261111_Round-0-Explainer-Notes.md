@@ -161,3 +161,42 @@ D3-xxx | S16's United States row prints in the table in name order, labeled, and
 Still open after the fix pass: E13 (S05's brackets), E20's 11-column phone grid, E27, E28, R5 and R6.
 
 Tested in the fix pass: `oa-chart.mjs build --all`, 16 of 16 passing; each changed specimen viewed at 1440 (S01, S08, S11, S12, S13) or 390 (S02); the S16 table and CSV checked for the United States row; a scan of the exported SVGs for "Atlas V7" and "Official statistic", none found. Not tested: Phase 2's captures beside the fix-pass captures at 2x; S04, S05, S07, S10, S15 and S16 viewed after the fix pass.
+
+## Fix pass 2
+
+November 11, from `work/handoffs/phase-3/20261111_Round-0-Fix-Brief-Part-2.md`: the Explainer maker's row (D3-98, D3-99) and every spec item the four part 2 reviews give me. Rebuilt with `oa-chart.mjs build --all`: 16 of 16 pass every check at 1440, 390 and the 328 px column, on both grounds. Board folder refreshed with the same lean set: 192 files.
+
+| Code | Fix | Spec |
+|---|---|---|
+| D3-99, statistics P2-S1, brand K4, CD KS1 | The votes' heading is "THE VOTES ON H.R. 7008, 2026", with no word tying them to the survey; the chart notes drop "What Congress did next". Both provisions are named in the measure line, directly above the drawing, and in the alt text and chart notes. Each vote carries `party_words_yes` ("{party} {v} for") and `party_words_no` ("{party} {v} against"), ready for E27; until it lands the measure line says each bar runs from the votes for to the votes against. The full House label, naming both provisions in the vote block itself, waits on E30 and is kept in the spec's notes | S01 |
+| D3-98, statistics P2-M2 | A first note dated under Rule 13.10: "As of November 11, 2026:" then Massachusetts Question 3 failed and Missouri Proposition A failed, both in unofficial counts, and Alaska Ballot Measure 2 trailed in the unofficial count of November 10 with ballots still due; none certified; each with its source from the research lead (ledger P7-036a to P7-036c). V7's snapshot codes stay in the drawing | S03, S08 |
+| Statistics P2-S10 | The repair log glossed in Rule 13.11's words in each measure line; how a referendum differs from a citizen initiative; "seasonally adjusted" glossed | S03, S08, S13, S14 |
+| Statistics P2-S3 (in part) | The source line prints the period the chart draws, November 2020 and 2024 | S04 |
+| Statistics P2-S4 | The title credits the 17 all-election bans to "Ballotpedia’s reading" | S07 |
+| Statistics P2-S5, brand K3, CD KM2 | `labels.cut_at: " ("`, so the note on shortened names is true; the first note now says the bands show on wide screens, since the phone list has none | S09 |
+| Statistics P2-S6, brand KS10 | The 2025 note adds RL35's refundable cap ($1,700) and earnings floor ($2,500) and rewraps; the Supplemental measure leads the phone key | S02 |
+| Statistics P2-S8 | "Each figure rounded on its own" beside the national 4.5, 1.5 and 5.9 | S11, S12 |
+| Statistics P2-S9 | The first note says the January and February 2022 averages draw on November and December 2021 | S14 |
+| CD KS2 | Phase 2's eight glosses return under the scenario names (`labels.sub`) | S06 |
+| Access S4 (words) | `empty` words per column, ready for the kit: "Not published" (S02, S05 margins), "No ban" and "None" (S07), "The atlas gives no separate reason." (S06). S14's Status prints "Final" through `words` today; S05's race column names its not-applicable rows | S02, S05, S06, S07, S14 |
+
+Not fixed by me, and why:
+- Statistics P2-S3's labels by margin (S04): the margins of each age group's change are not in the data; the research lead's table holds the gap's. R7 below. The two-point labels stay until then.
+- Statistics P2-S2 (S01's and S13's margins): R5 and R8 below; no number to print yet.
+- Statistics P2-S7 (S06's 2036 horizon): the research lead has not yet cited the V7 field; the words keep 2036 until it does or says none exists.
+- Brand KS7 (S10's row pitch): the form takes no pitch from a spec; E31.
+- Every kit item the brief gives the engineer (D3-93 to D3-97, D3-100 to D3-102, K1, K2, KS1 to KS6, KS8, KS9, KS11, KS12, KM1, KM3, S1 to S3, S5 to S9).
+
+Requests, fix pass 2:
+- **E27 (again, now D3-99).** `party_words_yes` and `party_words_no` on each vote; S01's votes carry them.
+- **E29. Timeline names (S09).** Drop a leading year from a name that already begins with it ("2025 2025 budget reconciliation law"), and set the year bold, as Phase 2 did. The leaders that cross labels are D3-93's guard.
+- **E30. A wrapped vote label at desktop (S01).** `big-number` steps a vote's bar one line under its label at desktop whatever the label's height (phone wraps correctly), so a label naming both provisions overlaps the bar and the date. Step by the wrapped height, and move the date under the label when the label passes it. Then I set the House label in the spec's notes.
+- **E31. Row pitch on the percent bar (S10).** Phase 2 set S10's rows 35 px apart; the kit sets 23. Please take `labels.pitch`, or use Phase 2's pitch.
+- **R7 to the research lead.** The 90 percent margin of each age group's change from 2020 to 2024 in `census-cps-voting-age-gap-moe` (18 to 24, 25 to 44, 45 to 64, 65 and over), so S04 labels each change by its own margin (P2-S3).
+- **R8 to the research lead.** The Bureau of Labor Statistics' sampling errors for the industry estimates S13 draws, in its sidecar (P2-S2).
+
+D3-xxx | S01 names both provisions in its measure line until the form can wrap a vote's label, rather than overlap the drawing | A passing, readable drawing for board 1; the full label is one line to change when E30 lands
+D3-xxx | The November 3 outcomes sit in each chart's first note, with the Alaska measure called trailing, never decided | D3-98 and the research lead's instruction; Rule 13.10 keeps the snapshot and adds what happened with its own source and date
+D3-xxx | S07's title keeps its count of 17 and credits it to Ballotpedia's reading | The reviewer offered both; the count is the chart's finding, and the credit says whose reading it is
+
+Tested in fix pass 2: `oa-chart.mjs build --all`, 16 of 16 passing; S06 and S09 viewed at 1440 after the change; the outcome percentages recomputed from the research lead's counts (61.04, 61.84 and 47.43 percent to one decimal, and the complements). Not tested: the other 14 specimens viewed after this pass; S09 at 390; any `empty` word, which the kit does not print yet.

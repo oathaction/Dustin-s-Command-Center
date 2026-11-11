@@ -12,7 +12,8 @@
   "title": "The three-month average of monthly job change stood at 51,000 in September 2026, a preliminary figure, and payrolls shrank in seven of the 57 months charted.",
   "measure_line": "Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, January 2022 to September 2026, the span both jobs charts share, with the three-month average. Columns start at zero.",
   "notes": [
-    "The three-month average for a month is the mean of that month’s change and the two before it.",
+    "The three-month average for a month is the mean of that month’s change and the two before it, so the averages for January and February 2022 draw on November and December 2021, months the chart does not show.",
+    "Seasonally adjusted: the Bureau removes the swings that recur each year, such as summer hiring and holiday layoffs, so one month compares with the next.",
     "August and September 2026 are preliminary: the Bureau of Labor Statistics revises each month’s first estimate in the next two monthly reports, and a yearly benchmark revision can move earlier months. The average is dashed where it includes a preliminary month.",
     "Payrolls shrank in seven months: January, June, August, October and December 2025, and February and July 2026.",
     "Both jobs charts run from January 2022 to September 2026, so they hold three full years before the January 2025 inauguration and every month since."
@@ -46,7 +47,7 @@
         "format": "text",
         "words": {
           "preliminary": "Preliminary",
-          "final": ""
+          "final": "Final"
         }
       }
     ]
@@ -107,6 +108,7 @@
     "The table rounds the average to the thousand, as Phase 2 printed it (+51,000 for September 2026), so it matches the title; this needs signed-thousands:0 (request to the engineer).",
     "Phase 2's measure line named the scale, −200,000 to +850,000; the kit's scale is set by its ticks, so the line now says only that columns start at zero, and the axis prints its own range.",
     "Checked by script: 57 months; seven with a loss; September 2026 average 50.67 thousand, 51,000 to the thousand.",
-    "D3-83: the grade line prints 'Documented' with its source after the colon; 'Official statistic' leaves every spec."
+    "D3-83: the grade line prints 'Documented' with its source after the colon; 'Official statistic' leaves every spec.",
+    "Statistics P2-S9 and P2-S10: the first note names the two months outside the window, and a note glosses 'seasonally adjusted'. Access S4: the Status column prints 'Final'. D3-87 still holds the title and the count of drops for Dustin."
   ]
 }

@@ -16,7 +16,7 @@
     },
     {
       "field": "measure",
-      "order": "asc"
+      "order": "desc"
     },
     {
       "field": "comparable_with",
@@ -85,14 +85,15 @@
       {
         "field": "moe_pct",
         "label": "Margin of error, points (90%)",
-        "format": "number:1"
+        "format": "number:1",
+        "empty": "Not published"
       }
     ]
   },
   "chart_notes": [
     "Lines: the heavy line is the Supplemental Poverty Measure; the thin gray line is the official measure. The scale runs from 0 to 25 percent.",
     "2021: the expanded child tax credit was in force, and it lapsed after that year.",
-    "2025: both measures stood at 13.4 percent. In July 2025, Public Law 119-21 set the child tax credit at up to $2,200 per child."
+    "2025: both measures stood at 13.4 percent. In July 2025, Public Law 119-21 set the child tax credit at up to $2,200 per child, at most $1,700 of it refundable and only above $2,500 in earnings."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -166,11 +167,11 @@
         "x": 2025,
         "series": "spm"
       },
-      "text": "Both measures: 13.4% in 2025. In July 2025, Public Law 119-21 set the child tax credit at up to $2,200 per child.",
+      "text": "Both measures: 13.4% in 2025. In July 2025, Public Law 119-21 set the child tax credit at up to $2,200 per child, at most $1,700 of it refundable and only above $2,500 in earnings.",
       "place": "above",
       "anchor": "end",
       "dy": -118,
-      "max": 380,
+      "max": 420,
       "phone": {
         "max": 215,
         "dy": -36
@@ -183,7 +184,8 @@
     "Grade line opens with H08's grade word, Documented (Rules 13.2 and 13.3).",
     "D3-83: the grade line prints 'Documented' with its source after the colon; 'Official statistic' leaves every spec.",
     "R1: the source line is the sidecar's source_line_both_measures variant, which names Tables 8 and 3. ENG-5 will reword its last sentence; switch to the new text when it lands.",
-    "X6: on a phone the two long notes leave the plot for full-width text under the axis, and the series names become a line key above the plot, as Phase 2's phone drew them (E5)."
+    "X6: on a phone the two long notes leave the plot for full-width text under the axis, and the series names become a line key above the plot, as Phase 2's phone drew them (E5).",
+    "Fix pass 2: the 2025 note adds RL35's refundable cap and earnings floor (statistics P2-S6); the series sort puts the Supplemental measure first, so the phone key leads with the line the title names (brand KS10); the official measure's blank margins read 'Not published' once the kit prints `empty` (access S4)."
   ],
   "formats": {
     "y": "percent:1",

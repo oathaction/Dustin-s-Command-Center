@@ -12,11 +12,11 @@
  ],
  "observation_period": "November 2020 and November 2024",
  "geography": "United States",
- "universe_or_base": "Citizens 18 to 24 and citizens 65 and over (Table 1's 65 to 74 and 75 and over rows summed)",
+ "universe_or_base": "Citizens in Table A-1's four age groups, with bases from Table 1 (25 to 44 is the 25 to 34 and 35 to 44 rows summed; 45 to 64 the 45 to 54 and 55 to 64 rows; 65 and over the 65 to 74 and 75 and over rows)",
  "unit": "percent and percentage points; standard_error and moe_90 computed by the studio with the Bureau's formula s = sqrt((b / y) p (100 minus p)), y the base in people, and 1.645 standard errors for 90 percent; differences use s = sqrt(s1 squared plus s2 squared)",
  "date_retrieved": "2026-11-11",
  "vintage": "Tables and technical documents as posted on November 11, 2026",
- "qualification": "Approximate margins from the Bureau's generalized variance parameters, which Table A-1 does not print. The gap between citizens 65 and over and citizens 18 to 24 grew by 3.9 points from 2020 to 2024, with a margin of about 2.0 points, so the change passes the margin of error (DR-64). The rates match Table A-1's citizen rows",
+ "qualification": "Approximate margins from the Bureau's generalized variance parameters, which Table A-1 does not print. The gap between citizens 65 and over and citizens 18 to 24 grew by 3.9 points from 2020 to 2024, with a margin of about 2.0 points, so the change passes the margin of error (DR-64). Each group's own change from 2020 to 2024 has its margin in the change_2020_to_2024 rows: 18 to 24 fell 3.7 points (margin about 1.7), 25 to 44 fell 2.4 (about 1.0), 45 to 64 fell 1.0 against a margin of 0.96, too close to call because the published rates are rounded to a tenth, and 65 and over rose 0.2 (about 1.1, inside it). The rates match Table A-1's citizen rows",
  "columns": {
   "year": {
    "type": "year",
