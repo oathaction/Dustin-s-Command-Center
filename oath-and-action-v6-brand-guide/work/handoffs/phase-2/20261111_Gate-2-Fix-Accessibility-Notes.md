@@ -21,6 +21,17 @@ Oath & Action Edition 06, Phase 2, November 11, 2026. The accessibility lead's p
 2. Write `work/handoffs/phase-2/20261111_Gate-2-Ch19-Results.json` in round 2's form (`about`, `date`, `build`, `runs`, `tested`, `not_tested`), naming the preview's file, bytes, SHA-256 and build time, with "Civic Line" in the drawings line. Round 2's file stays as its record.
 3. Point `RESULTS` in `stage_c_ch19_build.py` at the new file, add the check against "civic line" in lower case, run it, then the strict build into scratch, and look at Rule 19.8's plate at 1440 and 390 px.
 
+## Second pass
+
+DR-191's short second pass, from the editor's read (`20261111_Gate-2-Editor-Notes.md`, "## Fix pass read", rows 6, 8, 9 and 10). Each fix is in the generators.
+
+- **Row 8, Rule 18.7's title (serious).** Now "Show where the reader is with aria-current and a mark that needs no color.", as the editor wrote it: "a visible mark" allowed a mark in color alone.
+- **Row 9, Rule 19.6's title.** Now "Keep every word and control when text grows, spacing opens or the screen turns.", as the editor wrote it.
+- **Row 10, Rule 18.1's definitions.** The paragraph on accessible name, role, state, status line, ARIA and the APG moves from "Why it works" into Rule 18.1's rule text as its second paragraph, ahead of the unavailable button; "Why it works" keeps only the button's reason. ARIA is now defined before the rule's own aria-disabled.
+- **Row 6, Rule 18.11, so the citations to it hold.** The ring sentence now names the gap, and the editor's sentence follows it: "Its focus ring sits inside the frame with its 2 px gap, where the frame’s edge cannot clip it. A control whose neighbor stands too close for an outside ring, such as a tab or a row in a list, draws the same ring inside its own edge, with the 2 px gap, offset −4 px." The scroll region's own CSS already draws its ring at −4 px, so the frame and the tabs, list rows, link rows and Clear button now match their rule.
+
+Checks: both generators run, then `--check`, "chapter 18: current" and "chapter 19: current", with only `18-components.json` and `19-accessibility.json` changed. `guide_build.py --strict` into scratch: 185 rules, 433 specimens, 9,442,558 bytes, and one warning, outside my files: "Rule 26.7: s-26-token-table is not what tokens.json 6.0.0-gate2.9 makes; run token_table_build.py", the engineer's token release waiting on its table. The four fixes read as written in the built page.
+
 ## Routine calls
 
 D2-xxx | Chapter 18's definitions of accessible name, role, state, status line, ARIA and the APG open Rule 18.1's "Why it works" | They explain why a native button works, the rule's own reason; in the rule text they would stand before the rule they serve
@@ -54,8 +65,8 @@ D2-xxx | DT-S12 lands with call 12, in the new results file | The plate prints i
 
 Modified:
 
-- `work/build/scripts/phase-2/stage_c_ch18_build.py`: the intro, Rule 18.1's "Why it works", Rule 18.22's citations, 22 titles, `KEYS[17]`'s two form states, Rule 18.17's builders, Rule 18.11's sentence on the guide's mat (D2-1722) and `palette()` reading tints
-- `work/build/scripts/phase-2/stage_c_ch19_build.py`: 8 titles
+- `work/build/scripts/phase-2/stage_c_ch18_build.py`: the intro, Rule 18.1's "Why it works", Rule 18.22's citations, 22 titles, `KEYS[17]`'s two form states, Rule 18.17's builders, Rule 18.11's sentence on the guide's mat (D2-1722) and `palette()` reading tints, the second pass's four fixes
+- `work/build/scripts/phase-2/stage_c_ch19_build.py`: 8 titles, Rule 19.6's again in the second pass
 - `work/build/guide/chapters/18-components.json` and `work/build/guide/chapters/19-accessibility.json`: regenerated
 
 Created:
