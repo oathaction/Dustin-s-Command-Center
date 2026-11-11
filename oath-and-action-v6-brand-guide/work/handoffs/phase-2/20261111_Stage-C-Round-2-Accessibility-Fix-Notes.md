@@ -1,6 +1,6 @@
 # Stage C round 2, the fix pass: accessibility lead
 
-Oath & Action Edition 06, Phase 2, stage C, November 11, 2026. Written by the accessibility lead, in the `oa-ux-accessibility-lead` role, run as a subagent of the main session, under `20261111_Stage-C-Round-2-Fix-Brief.md`. This file is written early and grows as the work lands. Status: **chapter 19's items done; chapter 18's words in progress; keys files wait for the component engineer's sets; chapter 19's results rerun comes last, from the main session's guide check.**
+Oath & Action Edition 06, Phase 2, stage C, November 11, 2026. Written by the accessibility lead, in the `oa-ux-accessibility-lead` role, run as a subagent of the main session, under `20261111_Stage-C-Round-2-Fix-Brief.md`. This file is written early and grows as the work lands. Status: **every item in my row done except the two that wait by design: one more keys walk once the main session says the component engineer's sets have landed, and chapter 19's results, rerun from the main session's final guide check.**
 
 I read `CLAUDE.md`, my role file, the fix brief (calls 2, 3, 8, 10 and 11, my row, "Order and crossings" and "Checks each owner runs"), my items in the creative director's review (CD), the brand and evidence report (BE) and the plain language and production report (PP), my round 1 notes and results file for chapters 18 and 19, the research notes' section 1, the decision log from D2-1349 on, and chapter 02's writing rules.
 
@@ -22,7 +22,12 @@ I read `CLAUDE.md`, my role file, the fix brief (calls 2, 3, 8, 10 and 11, my ro
 
 - **CD-M2, call 2.** Rule 18.1 says "The ask stands apart from a primary button, whose hover turns Prussian.", and its code caption names the ask's own row.
 - **BE-M4, call 3.** Rule 18.24's examples are "Loop R1" and "Reform R-04", and its specifications name Reform R-04's record, "Independent citizen commissions draw election maps", as the linked chip's description, as `c-18-id-chip` does. Its failure plate is rewritten on Loop R8 and Reform R-30, the housing loop and the reform that acts on it, neither flagged (`interest_note` false; R-30's loops are R8): "R8 runs from housing scarcity to owners’ equity and back, and R-30 acts on that loop." `s-18-23-failure`'s hover box reads "Housing scarcity" (variable A5). `s-18-08-failure`, which BE did not list, carried the same subject ("Safe seats raise the share of races decided in primaries"); its lines in words are now Loop R8's two links in V7's plain words (L38 and L39, both well supported), and since they are real atlas lines the plate drops its Illustrative chip and its alt names the atlas.
-- **BE-S1, the failure plates' bills.** `s-18-20-failure` shows H.99001 at "Step 2 of 6, Hearing", where chapter 11 has it. `s-18-10-failure`'s "Last action" dates wait for the component engineer's table, so the rows agree with its filing dates.
+- **BE-S1, the failure plates' bills.** `s-18-20-failure` shows H.99001 at "Step 2 of 6, Hearing", where chapter 11 has it. `s-18-10-failure`'s rows, newest first under its down arrow, now give each bill a last action its own story allows: H.99003 April 2 (it became law, chapters 11 and 18), S.99002 February 20 (filed, the table set's date, still in committee there), H.99001 January 16 (filed, chapters 11 and 18). The old H.99003 row said February 11, before its own filing date of February 2 had any action after it and long before April 2.
+- **BE-S3.** Chapter 18's sources gain the atlas, dated: Loop R1 with its plausible grade, Loop R8 with its two well-supported steps, the variables A4, A5, A6 and X5 by name, reforms R-01 to R-12 as the first 12 of the atlas's 50, and Reform R-30, with the rules that show them. The sets' own source lines are the component engineer's.
+- **BE-M3 and call 4 in the words.** Rule 18.22 says a loop from the atlas takes its atlas title as its name, in quotation marks, with its grade on a line under it (house rule H08), and the code captions of Rules 18.22 and 18.23 say the live loop carries its grade.
+- **The sets' other changes in the words.** Rule 18.1's States row says the stepped-down ask's hover underlines and keeps its fill, as the set now draws it; Rule 18.7's code caption names the atlas sample.
+- **Keys files.** `c-18-button`: the ask is now the fifth stop, after the icon row. `c-18-location`: one more list stop, for four places. `c-18-form`: the "Send right" path checks the ask's own word, "Sending" during the send and "Remind me" after (PP-S1). Every other set's paths stand, as the component engineer's notes say; I walk all 37 once the sets land.
+- **Call 8, chapter 18's opener.** The chapter now names the systems designer's `s-18-opener` as its `"opener"`, at the designer's request through the main session.
 - **The error bar's new name (DR-218).** The release 6.0.0-gate2.8 landed at 06:24 UTC, so Rules 18.12, 18.13, 18.17 and 18.18 name `--oa-color-state-error-bar` in their tokens.
 - **Call 1 in the words.** Rules 18.15 and 18.21 said the field ground on Charcoal is Prussian. The generator now reads both grounds from tokens.json and prints "White on Newsprint and Charcoal on Charcoal, where the field shows by its strong edge", and stops if a ground stops being a palette color.
 - **PP-S2.** Rule 18.1's tokens box names the component tokens its CSS reads (`--oa-component-button-primary-fill` and the rest, nine in all); Rule 18.17 adds `--oa-color-state-success-text`. The closing token table is built from these lists, so it follows.
@@ -34,7 +39,7 @@ I read `CLAUDE.md`, my role file, the fix brief (calls 2, 3, 8, 10 and 11, my ro
 - **CD-S11.** `s-18-09-failure`'s panel holds Loop R1's first sentence from the atlas, "Households with concentrated wealth can spend more on campaigns, outside groups and lobbying.", and drops its Illustrative chip.
 - **BE-S4's 1.4.13 line.** Rule 18.23 now says the readout sits in its own line, covers nothing and keeps its words until focus moves, and that nothing on a drawing shows on hover alone, which `c-18-diagram-controls.js` already does (it writes the readout on focus and never clears it on blur).
 - `s-18-22-failure`'s kicker reads "Loop R1", in H11's form.
-- **Waiting on the component engineer's sets:** the keys files of every changed set, BE-S3's sources line (it lists the loops, variables and reforms the sets end up using), `s-18-10-failure`'s dates, Rule 18.5's words if CD-S8 changes the link list, and any rule words the sets' changes touch.
+- **Still waiting:** the main session's word that the component engineer's sets have landed, for one more walk of all 37 paths; and the main session's final guide check, for chapter 19's results.
 
 ## Routine calls
 
@@ -54,6 +59,9 @@ I read `CLAUDE.md`, my role file, the fix brief (calls 2, 3, 8, 10 and 11, my ro
 - D2-xxx | Rules 18.15 and 18.21 read the field ground's palette color from tokens.json | Call 1 changed it; a typed color would drift at the next release
 - D2-xxx | Chapter 18's token lists take `--oa-color-state-error-bar` now that 6.0.0-gate2.8 has landed | DR-218; the old name is an alias that leaves with 6.1.0
 - D2-xxx | `s-18-20-failure` shows H.99001 at step 2, Hearing | Chapter 11 has it there; one invented bill means one thing (D2-1364)
+- D2-xxx | `s-18-10-failure`'s last actions are dates the guide already prints for each bill (H.99003 became law April 2; S.99002 filed February 20; H.99001 filed January 16), newest first under its arrow | Call 10; no new invented date, so no new conflict
+- D2-xxx | The keys files follow the component engineer's sets: the ask is the fifth stop, the location list has four places, and the form's path checks the ask's own "Sending" and "Remind me" | The landed sets' order and words (D2-1353)
+- D2-xxx | Chapter 18 names `s-18-opener` as its opener | Call 8; the systems designer draws it, my generator places it
 
 ## Questions for Dustin
 
@@ -61,12 +69,39 @@ None. Every call above sits inside the fix brief and D2-1553.
 
 ## Tested
 
-Pending.
+All on November 11, 2026, with Python run with `-I`, `TMPDIR` in my scratch folder, and Chromium through Playwright with outside requests blocked. Scripts and captures are in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/49b1040f-34e8-55e0-97c3-93e08c6dbc2c/scratchpad/round-2-fix/accessibility/`.
+
+- **The Recommendation.** Fetched from w3.org/TR/WCAG22 (200, SHA-256 `6e3c5fe3...e4cf7057`, "W3C Recommendation 12 December 2024"); read by a scratch parser and by `--read-wcag`, which agree part for part; 55 criteria, 31 A, 24 AA, 6 new, 4.1.1 removed. The research notes' 55 quotes match the stored copy line for line and in order (0 of 55 differ).
+- **The chapter 19 check.** Four planted faults, each stopped by the build: the round 1 printer (all paragraphs, then all items), a dropped part, one changed word ("either:" to "either") and two criteria swapped; the unchanged printer passes. A role name planted in a results line stops the build; the plate prints four "Open, to fix before launch." lines from the current file.
+- **Generators.** `stage_c_ch18_build.py --check` and `stage_c_ch19_build.py --check`: current after each write. Their own word checks pass on every string and alt (no dash, straight quote, banned word, studio code or ", not" turn).
+- **Strict builds** of all 16 chapters into my scratch folder, three times as the other owners' work landed: 0 warnings each time. The last (8,955,267 bytes, 185 rules, 424 specimens, with `s-18-opener` placed): chapter 18 at 1,158,133 bytes of its 1.25 MB ceiling, chapter 19 at 167,961 of 0.3 MB.
+- **Keys files.** The guide check's own `keyPaths` walker (lifted from `guide_check.js` unchanged and run alone) on the build of about 06:50 UTC, with the component engineer's sets as they then stood and my three updated keys files: 37 paths, 140 walks, 714 steps, all pass, in both live stages at 1440 and 390 px. The run before my keys changes failed exactly the two paths the component engineer named (`c-18-button`'s second stop, `c-18-location`'s seventh).
+- **Looked at,** at 1440 and 390 px and at 1x and 2x: `s-19-opener`, `s-19-matrix` (by crops of the tall capture), `s-19-2-correct`, `s-19-2-failure`, `s-19-4-failure`, `s-19-5-correct`, `s-19-6-failure`, `s-19-results`, `s-18-08`, `-09`, `-10`, `-20`, `-23` and `-24-failure`. The 19.4 crop showed faint seams between its squares at 1x, so it now draws with crisp edges.
+- **Sources fetched today:** the Recommendation; W3C's Understanding page for 4.1.1 (200; its words quoted in the 4.1.1 line); the five device guides (all 200; titles as printed, the NVDA guide titled "NVDA 2026.3.1 User Guide"); NVDA's guide for its exit keys ("NVDA+q, then enter"); Microsoft's page for the Windows 10 and 11 menu paths; `@axe-core/cli` 4.14.0's npm record and package source for its `--tags`, `--rules` and `--exit` options and its `axe` command.
+- **Atlas facts, by script on `work/extract/atlas-v7-data.json`:** Loop R8's title, links L38 and L39 (both well supported) and their plain words; Reform R-30's title, targets (L39, A5, LE17), loops (R8) and `interest_note` (false); only R-01 and R-02 carry `interest_note`; Loop R1's summary, grade (plausible) and L01 to L03; Reform R-04's title.
+- **Bills:** every bill number in chapters, specimens and code searched after the change: H.99004 now appears only in chapter 11; H.99010 only in `c-18-tracker`, `c-18-table` and `s-18-20-anatomy`; H.99001's filing date reads January 16 wherever it is printed.
 
 ## Not tested
 
-Pending.
+- Any screen reader, real phone, Safari, Firefox or Windows contrast theme: none in this container. The axe-core commands in the matrix were read from the package's source, not run against a page here; the console lines in the matrix were not run either.
+- The keys walk on the component engineer's final sets: it ran on their work as it stood at about 06:50 UTC. It runs again when the main session says the sets have landed.
+- The full guide check (`guide_check.js`) at four widths: the main session's, at the end.
+- Chapter 19's results: left as round 1's, with only BE-S7's wording, until the main session's final guide check.
+- The generator chain's six other generators: I did not run them, since other owners were writing their chapters at the same time; my generators read only the chapter files' rule ids, tokens.json, tokens.css, the Civic Line inventory and the stored WCAG copy.
+- Whether "Night sky" is still a Windows 11 contrast theme: Microsoft's page names no theme, and the step stays as written in round 1.
 
 ## Change log
 
-Pending.
+Paths relative to `oath-and-action-v6-brand-guide/`. Nothing in `source/`, `work/ledger/`, `deliverables/`, any asset master, any board, the shell, `guide_build.py`, `guide_check.js`, the tokens or another owner's files changed. Nothing committed or pushed.
+
+**Created**
+- `work/handoffs/phase-2/20261111_WCAG22-Criteria-Text.json` (the stored copy of the 55 criteria, written by `stage_c_ch19_build.py --read-wcag`)
+- `work/build/guide/specimens/s-19-opener.html` (generated)
+- `work/handoffs/phase-2/20261111_Stage-C-Round-2-Accessibility-Fix-Notes.md` (this file)
+
+**Modified**
+- `work/build/scripts/phase-2/stage_c_ch19_build.py`; its outputs `work/build/guide/chapters/19-accessibility.json`, `work/build/guide/specimens/manifest-accessibility.json`, `s-19-criteria.html`, `s-19-matrix.html`, `s-19-results.html`, `s-19-devices.html`, `s-19-2-correct.html`, `s-19-2-failure.html`, `s-19-4-failure.html`, `s-19-6-correct.html`, `s-19-6-failure.html`
+- `work/handoffs/phase-2/20261111_Stage-C-Round-1-Ch19-Results.json` (BE-S7's wording and `open` fields only)
+- `work/build/scripts/phase-2/stage_c_ch18_build.py`; its outputs `work/build/guide/chapters/18-components.json`, `work/build/guide/specimens/manifest-components.json`, `s-18-08-failure.html`, `s-18-09-failure.html`, `s-18-10-failure.html`, `s-18-20-failure.html`, `s-18-22-failure.html`, `s-18-23-failure.html`, `s-18-24-failure.html`, and `work/build/guide/code/c-18-button.keys.json`, `c-18-location.keys.json`, `c-18-form.keys.json`
+
+**Scratch, outside the repository** (`/tmp/claude-0/-home-user-Dustin-s-Command-Center/49b1040f-34e8-55e0-97c3-93e08c6dbc2c/scratchpad/round-2-fix/accessibility/`): `wcag/` (the Recommendation and the 4.1.1 Understanding page as fetched), `guides/` (the five device guides), `axecli/` (the CLI package read for its options), `scripts/wcag_parse.py`, `cmp_research.py`, `ch19_selftest.py`, `keys_walk.js`, `shots.js`; builds `b1/` to `b3/`; captures in `shots/` and `shots3/`.

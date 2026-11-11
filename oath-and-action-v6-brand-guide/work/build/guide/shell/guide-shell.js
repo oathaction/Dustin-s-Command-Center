@@ -28,11 +28,11 @@
   var pendingReturn = null;
   var navigatingFromMenu = false;
 
-  function keepInView(el, box) {
+  function keepInView(el, box, foot) {
     if (!el || !box) return;
-    var e = el.getBoundingClientRect(), b = box.getBoundingClientRect();
+    var e = el.getBoundingClientRect(), b = box.getBoundingClientRect(), f = foot || 8;
     if (e.top < b.top + 8) box.scrollTop -= (b.top + 8 - e.top);
-    else if (e.bottom > b.bottom - 8) box.scrollTop += (e.bottom - b.bottom + 8);
+    else if (e.bottom > b.bottom - f) box.scrollTop += (e.bottom - b.bottom + f);
   }
   function sectionFor(el) { return el && el.closest ? el.closest('[data-track]') : null; }
 
@@ -49,7 +49,8 @@
     loc.forEach(function (id) { $$('[data-loc="' + id + '"]').forEach(function (a) { a.setAttribute('aria-current', 'location'); }); });
     var part = sec.getAttribute('data-part') || (sec.id === 'contents' ? 'contents' : null);
     if (part) $$('[data-part-link="' + part + '"]').forEach(function (a) { a.setAttribute('aria-current', 'location'); });
-    keepInView($('.rail [data-loc="' + sec.id + '"]'), rail);
+    keepInView($('.rail [data-loc="' + sec.id + '"]'), rail, 72);   // clear of the rail's "More below" cue (CA-S8)
+    railMore();
   }
 
   // The current rule inside a chapter is marked in that chapter's "In this chapter" list.
@@ -66,6 +67,13 @@
   // From 90em the appendix spans the whole page and slides over the rail; once it reaches the rail, the rail is hidden,
   // so no link under the appendix can take focus out of sight. A plate frame that breaks out over the rail (CA-S13)
   // hides it the same way while the two overlap.
+  // CA-S8 (round 2): the rail says "More below" at its foot while it can scroll further down
+  function railMore() {
+    if (!rail) return;
+    rail.classList.toggle('can-scroll', rail.scrollHeight - rail.scrollTop - rail.clientHeight > 4);
+  }
+  if (rail) { rail.addEventListener('scroll', railMore, { passive: true }); window.addEventListener('resize', railMore); window.addEventListener('load', railMore); railMore(); }
+
   function railCover() {
     if (!rail) return;
     var rr = rail.getBoundingClientRect();
@@ -262,7 +270,9 @@
       if (wide || tall) {
         box.setAttribute('tabindex', '0');
         box.setAttribute('role', 'group');
-        box.setAttribute('aria-label', fig ? name + ', at true size. Scroll sideways to see all of it.' : name + '. Scroll to see all of it.');
+        // round 2 (CA-S2): the name says which way the frame scrolls; a code panel holds code, not a piece at true size
+        var way = wide && tall ? 'down and sideways' : wide ? 'sideways' : 'down';
+        box.setAttribute('aria-label', fig && !box.matches('pre') ? name + ', at true size. Scroll ' + way + ' to see all of it.' : name + '. Scroll ' + way + ' to see all of it.');
       } else if (box.hasAttribute('tabindex')) {
         ['tabindex', 'role', 'aria-label'].forEach(function (k) { box.removeAttribute(k); });
       }

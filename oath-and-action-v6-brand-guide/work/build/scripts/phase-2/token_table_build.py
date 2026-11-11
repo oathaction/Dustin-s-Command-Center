@@ -206,7 +206,7 @@ STYLE = """
 .tt-grp:target > summary { scroll-margin-top: 6rem }
 .tt-groups { container-type: inline-size }
 .tt table { border-collapse: collapse; width: 100%; table-layout: fixed; margin: 0 0 var(--oa-space-300) }
-.tt col.tt-c1 { width: 31% } .tt col.tt-c2 { width: 19% } .tt col.tt-c3 { width: 29% } .tt col.tt-c4 { width: 8% } .tt col.tt-c5 { width: 13% }
+.tt col.tt-c1 { width: 30% } .tt col.tt-c2 { width: 18% } .tt col.tt-c3 { width: 27% } .tt col.tt-c4 { width: 9% } .tt col.tt-c5 { width: 16% }
 .tt thead th { font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase; text-align: left;
   padding: var(--oa-space-100) var(--oa-space-200) var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-strong) }
 .tt tbody th, .tt td { text-align: left; vertical-align: top; padding: var(--oa-space-150) var(--oa-space-200) var(--oa-space-150) 0;

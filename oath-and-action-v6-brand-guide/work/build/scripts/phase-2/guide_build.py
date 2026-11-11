@@ -1141,6 +1141,14 @@ def code_instance(html_src, sid, theme):
 LIVE_FILE_IDS = {"tokens.css": "tokens-download", "tokens.json": "tokens-json-download"}
 
 
+# Round 2 (call 17, CA-S3): from 80em the two live stages of these sets sit side by side, so a reader compares one state
+# on both grounds; their content fits 32rem. The wide sets (masthead, table, tracker, report reader, loop stepper,
+# diagram controls, filter bar, scroll region, code block) keep the stack. Chapter 26's four examples fit as well.
+CODE_PAIRS = {"c-18-button", "c-18-toggle", "c-18-choice", "c-18-theme-switch", "c-18-link", "c-18-location", "c-18-disclosure",
+              "c-18-copy", "c-18-download", "c-18-messages", "c-18-loading-empty", "c-18-id-chip", "c-18-search", "c-18-form",
+              "c-26-caption", "c-26-download", "c-26-chart", "c-26-warning"}
+
+
 def code_plate(rid, block, ctx, where):
     codes = ctx.get("codes")
     if isinstance(block, str):
@@ -1195,7 +1203,7 @@ def code_plate(rid, block, ctx, where):
     return (f'<figure class="plate plate--code" id="code-{e(sid)}" data-code-set="{e(sid)}">{style}'
             f'<div class="plate-head"><p class="plate-label"><span class="plate-label-t">Code to copy</span></p>'
             f'<p class="plate-size" id="{nid}">{e(name)}</p></div>'
-            f'<p class="vh" id="{aid}" aria-hidden="true">{e(alt)}</p><div class="code-demo">{"".join(stages)}</div>{lm}'
+            f'<p class="vh" id="{aid}" aria-hidden="true">{e(alt)}</p><div class="code-demo{" code-demo--pair" if sid in CODE_PAIRS else ""}">{"".join(stages)}</div>{lm}'
             f'<div class="code-panels">{"".join(panels)}</div>'
             + status_line(f"code-{sid}-status", cls="status code-status")
             + (f'<figcaption class="plate-cap">{cap}</figcaption>' if cap else "")
@@ -2725,7 +2733,7 @@ def build(args):
   <p class="where" id="where" aria-hidden="true">Cover</p>
 </header>
 <div class="frame">
-  <nav class="rail" aria-label="Chapters">{nav_list("rail", present, has_proofs, appendix_title=appendix_title)}</nav>
+  <nav class="rail" aria-label="Chapters">{nav_list("rail", present, has_proofs, appendix_title=appendix_title)}<p class="rail-more" aria-hidden="true">More below</p></nav>
   <main id="main" tabindex="-1" data-view-root="overview">
     <section class="cover" id="top" data-track="front" data-label="Cover">
       <p class="cover-folio"><span>{e(folio)}</span> <span>Draft of {e(EDITION_DATE)}</span></p>
