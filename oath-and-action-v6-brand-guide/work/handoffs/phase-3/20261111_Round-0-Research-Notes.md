@@ -22,6 +22,53 @@ Oath & Action Edition 06, Phase 3, round 0. Research lead (`oa-research-lead`), 
   - S04, `census-cps-voting-age-gap-moe`: Table A-1 prints no margins, so I used the Census Bureau's own method, the generalized variance parameters in the November 2020 and 2024 Source and Accuracy statements (b = 5,411 and 6,643) on Table 1's citizen bases. The gap between citizens 65 and over and citizens 18 to 24 was 23.1 points in 2020 (margin 1.4) and 27.0 in 2024 (margin 1.5); it grew 3.9 points with a margin of about 2.0, so **the change passes the margin of error**.
   - S05, `census-hvs-homeownership-gap-moe`: the 2003 annual statistics publish standard errors (Table B-7) and the 2025 statistics publish margins. The non-Hispanic White and Black gap was 27.3 points in 2003 and 29.6 in 2025; it widened 2.3 points with a margin of about 0.7, so **the change passes**. The non-Hispanic White and Hispanic gap narrowed 2.9 points, also past its margin.
 
+## Fix pass
+
+From `work/handoffs/phase-3/20261111_Round-0-Fix-Brief-Part-1.md`: every item the statistics and civic education review gives the research lead, D3-88, D3-89, the editor's request for the Brandeis row, and the Bureau of Labor Statistics' figure for question 1. Each data fix is made in my freeze scripts and the files rebuilt from them; the engineer's contract check reads 61 tables with 0 faults after the last change.
+
+**Question 1, the payroll interval (statistics M4). Confirmed from the Bureau's own page.** The Employment Situation Technical Note on bls.gov (the October 2026 release, "Last Modified Date: November 06, 2026") says that at about a 90-percent level of confidence the interval for the monthly change in total nonfarm employment "is on the order of plus or minus 122,000". The reviewer's ±136,000 came from memory of an older note. I read the page through the session's web-fetch tool, since bls.gov refuses this container's own reader; the tool quotes in short fragments, and the note's own example (a 50,000 gain spans −72,000 to +172,000) matches the figure. Tested against `fred-payrolls-monthly-change`: of the seven drops, only October 2025 (−140,000) and February 2026 (−156,000) pass ±122,000. So the reviewer's sentence holds as written: "Only the October 2025 and February 2026 drops pass the survey's margin of error." Ledger row P7-042. One caveat for Dustin: the note gives the interval for the current release, and the Bureau's figure has differed in past years, so the sentence should cite this note and its date.
+
+| Item | What I did | Where |
+|---|---|---|
+| D3-88, statistics M5 (rows 63, 64) | Rebuilt `census-acs-rent-and-income-by-state` from the Census Bureau's own measure, B25071, median gross rent as a percentage of household income, with margins (United States 30.9 percent, margin 0.1), beside median gross rent (B25064) and renter households' median income (B25119_003). The studio ratio is gone; the reader question now asks whether rents run higher where renters earn more and where rent takes the largest share of renters' income. Domain and states unchanged, so the Rule 01.9 count stands (largest domain 12 of 64; New York 3 of 64). For the data lead's sign-off | `freeze_census_b.py`; the data file and sidecar; plan rows 63 and 64; ledger P7-030 |
+| D3-89, statistics M6 (row 40) | Row 40's plain table shows the May 2023 survey alone. The votes stay in row 77 and S01, whose words must name both provisions (DR-98), print each vote's question, and say where a reader sees it that the survey asked about a ban alone and came three years before the bill | Plan row 40 and its fix-pass section |
+| Statistics S13 (row 77) | The row and `congress-hr7008-roll-calls`' printed line now say the Senate voted on ending debate on taking up the bill | `freeze_other_a.py`; plan row 77 |
+| Statistics S14 (row 13) | Added `size_1000_plus` to `opm-federal-employment-by-agency`: the chart draws absolute change for the 37 agencies with 1,000 or more employees on either date (99.4 percent of January 2022's employees); the other 92 stay in the table. A note says each bar nets every change between January 31, 2022 and August 31, 2026 | `freeze_other_b.py`; sidecar notes; plan row 13 |
+| Statistics S15 (rows 47, 48) | `cms-nhe-by-payer-four-groups` adds each group's percent of the year's total, and its fourth group is "all other sources of funds", since investment and public health are not payers. `treasury-mts-outlays-by-function` adds a `treemap_fy2026` source line and note: the positive functions sum to $7,566.3 billion against net outlays of $7,395.8 billion, so tiles are shares of the positive functions | `freeze_other_b.py`, `freeze_treasury.py`; plan rows 47 and 48 |
+| Statistics S16 (rows 4, 56, 57) | The BJS sidecar says to set states beside the STATE row (318 in 2023), not the US row (360), which adds federal prisoners; the SAHIE and SAIPE sidecars say each county counts once, whatever its population | `freeze_other_b.py`, `freeze_census_b.py`; plan rows 4, 56 and 57 |
+| Statistics M3 (S02's sidecar) | Request ENG-5 below: the engineer's copy holds the printed line and the variant | Request |
+| Statistics S17 (Ballotpedia label) | Request ENG-6 below | Request |
+| Statistics S18 (a United States row for the turnout map) | Request ENG-7 below, with the national rows read today from the Bureau's Table 4a files, whose SHA-256 prefixes match Phase 2's | Request |
+| Statistics S10, the editor's request | Ledger row P7-041: New State Ice Co. v. Liebmann, 285 U.S. 262, at 311, read in U.S. Reports through the Library of Congress's scan. U.S. Reports prints "a single courageous State" and "the Nation"; the Legal Information Institute's copy lower-cases both. For the editor: quote U.S. Reports with the page | Research ledger, Part 7 |
+
+New requests to the engineer (his script writes these sidecars):
+
+- **ENG-5. S02's source lines (statistics M3).** In `census-spm-child-poverty.meta.json`, end `printed_source_line` and `source_line_variants.source_line_both_measures` with "Figures for 2019 to 2024 include the Bureau's August 2026 correction to the poverty thresholds, and 2024 also takes new population weights; they differ by up to 0.4 points from the earlier release." in place of the sentence that begins "Figures for 2019 to 2024 include the Bureau's August 2026 revision". Replace `source_line_first_published` with: "Source: U.S. Census Bureau, Poverty in the United States: 2024 (P60-287), Table B-2, Supplemental Poverty Measure, children under 18, 2020, 2021 and 2024, United States. Retrieved November 6, 2026. Rates as published before the Bureau's August 2026 correction; P60-277 (September 13, 2022) printed the same 2020 and 2021 rates." These follow the sidecar's own `v7_comparison` record.
+- **ENG-6. Ballotpedia's label (statistics S17).** In `ballotpedia-rcv-prohibitions-by-state.meta.json`, set `printed_source_line` to "Source: Ballotpedia, a secondary source, Ranked-choice voting (RCV), state laws prohibiting RCV, as of November 2026, 50 states and DC. Retrieved November 6, 2026. Ohio's and Tennessee's bans cover some elections; the other 17 cover all." (Rule 13.6's wording for a secondary source).
+- **ENG-7. National rows for the turnout file (statistics S18).** Add to `census-cps-2024-turnout-by-state.csv` the rows `US,United States,2020,231593,66.8,0.4` and `US,United States,2024,236138,65.3,0.5`, read today from the United States rows of Table 4a (`vote04a_2024.xlsx`, SHA-256 prefix 068e47d3c7fc9701; `table04a.xlsx` for 2020, 8afd077c560de260), and say in the sidecar that code US is the national figure, drawn set apart (DR-64).
+
+Routine calls:
+
+D3-xxx | Rows 63 and 64 draw the Census Bureau's B25071 rent share with its margin, rent against renter households' income, and drop the studio's ratio | D3-88; the Bureau's measure answers the question, and the old ratio ran 6.9 to 12.6 points low in every state
+D3-xxx | Row 40 shows the 2023 survey alone | D3-89 and DR-98: the survey asked about a ban in general, and the bill also carries a photo ID requirement
+D3-xxx | Row 13's chart draws absolute change for agencies with 1,000 or more employees on either date and leaves the rest to the table | Percent change would be led by bodies of a few people; the floor keeps 99.4 percent of employees
+D3-xxx | Row 47 draws shares of each year's total, and its fourth group is "all other sources of funds" | Nominal dollars over 64 years hide the mix behind inflation, and investment and public health are not payers
+D3-xxx | The payroll interval is cited as ±122,000 from the October 2026 Technical Note, read through the web-fetch tool, with its date | It is the Bureau's current figure; bls.gov refuses this container's reader, and the note's own example checks against it
+
+Tested:
+- The engineer's contract check after every rebuild: 61 tables, 0 faults.
+- B25071's United States figure, 30.9 percent, against the API's own row; every state row read from the same request.
+- The seven payroll drops against ±122,000, by script on the frozen file.
+- The treemap sum of positive functions from Treasury's unrounded figures: $7,566.3 billion.
+- The agency size floor by script: 37 agencies, 99.4 percent of January 2022's employees.
+- The Brandeis passage in the Library of Congress's scan of U.S. Reports, page 311 (text extracted from the PDF), and in the Legal Information Institute's copy.
+- The national Table 4a rows, from the Bureau's files fetched today, with SHA-256 prefixes equal to Phase 2's.
+
+Not tested:
+- The Technical Note's full paragraph in one piece; the tool returns fragments. Dustin can save the page if the main session wants the full text on file.
+- Any chart or plate; I changed no plate, so no guide rebuild was needed for my files.
+- The engineer's ENG-5 to ENG-7 changes, which are his to make.
+
 ## Routine calls
 
 D3-xxx | Rule 01.9 counts every specimen that carries data (the 16 built and every new core and extended form) and leaves out reference sketches and avoid entries | They draw no dataset and carry no topic

@@ -3622,3 +3622,10 @@ The main session asked four questions with its round 0 plan. Dustin: "Yeah, I ag
 | D3-87 | The "seven of the 57 months" sentence approved on Board 5 goes to Dustin with the statistics reviewer's recommendation; until he answers, chapter 02 and S14 keep it, and chapter 13's plates take a level title | Five of the seven drops sit inside the survey's sampling error; the sentence is his approved wording (DR-73) |
 | D3-88 | Data plan rows 63 and 64 re-pick to the Census Bureau's gross rent as a percentage of renter household income, with margins | Rent over all households' income ran 7 to 13 points under the Bureau's measure and reordered states |
 | D3-89 | Data plan row 40 states where a reader sees it that the 2023 survey predates both H.R. 7008 votes | The statistics reviewer's finding; the sidecar already holds the qualification |
+
+### Main session, after the engineer's pilot
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-90 | The drawing method is the engineer's `load-table`: each chart draws when the page loads from its own table, which stays live text. Measured on S01 to S16 in a real guide build, it is the lightest of four (lean inline SVG 6.55 MB projected, full data island 4.28, trimmed island 3.58, `load-table` 2.76) and passes the quick guide check, scripts off, print, forced colors, reduced motion, resize and export parity | DR-227 leaves the method to the engineer, who picks the lightest that passes the checks |
+| D3-91 | Chapter 14 projects to 2.76 MB with `load-table`, 1.01 MB over its 1.75 MB stop, and the page to 16.06 MB. DR-232's two steps save about 0.05 MB. Before board 1 asks Dustin, the engineer runs one weight pass that changes nothing a reader sees (a minifier, shared form modules, an audit of the built chapters' bytes, each proved pixel-identical) and measures one more option, tables carried compressed and expanded at load, so board 1 shows measured options and the smallest ask | The studio spends its own effort before asking the client for bytes; DR-232 sends the ask to board 1 only if the fixes fall short |
