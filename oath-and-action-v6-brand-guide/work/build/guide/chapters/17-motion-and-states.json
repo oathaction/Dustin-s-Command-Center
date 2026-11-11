@@ -848,7 +848,7 @@
       "after_rule": "17.6",
       "specimen": "s-17-lever-correct",
       "label": "The lockmark’s motion",
-      "caption": "Live, at rest on the lockmark’s masters. Press Play, and the links draw from the top left, the eight nodes land together, and the lever lands last, coming to rest at 560 ms on the master again: the 48 px master at 48 px, and the display master at 120 px."
+      "caption": "Live, at rest on the lockmark’s masters, the 48 px master at 48 px and the display master at 120 px. Press Play, and the field empties, then the links draw from the top left, the eight nodes land together and the lever lands last, coming to rest on the master again at 560 ms."
     }
   ],
   "related_chapters": [
