@@ -26,7 +26,7 @@ The 13 rules keep the brief's numbers and subjects:
 
 Three groups: 13.1 to 13.5, kinds of evidence and their grades; 13.6 to 13.10, sources, dates and labels; 13.11 to 13.13, records, quotes and corrections. Where chapter 01 or 02 already states a rule, chapter 13 cites it by number (H03, H04, H05, H08, H09, H11, Rules 01.16, 01.22, 02.16, 06.1, 06.7, 10.10, 11.1, 12.6, 18.24, 26.3) and shows how a figure keeps it.
 
-The strict build (`guide_build.py --strict`) passes with 0 warnings; chapter 13 weighs 204,619 bytes as placed (0.20 MB) against its 0.25 MB ceiling, and its opener stays under 16 KB.
+The strict build (`guide_build.py --strict`) passes with 0 warnings; chapter 13 weighs 205,992 bytes as placed (0.21 MB) against its 0.25 MB ceiling, and its opener stays under 16 KB. Rule 13.13's chart is a static drawing in the chart tokens until the kit's guide hook lands (see Requests); its kit spec already passes the kit.
 
 ## Routine calls
 
@@ -73,8 +73,20 @@ None between chapter 13 and chapters 01, 02, 05, 06, 10, 11, 12, 18 and 26 as bu
 
 ## Tested
 
-To be completed at the end of the round.
+- `python3 -I work/build/scripts/phase-3/phase3_ch13_build.py`: its checks pass. They cover em dashes and U+2011, the listed filler and corporate words, studio words and decision codes, near misses of the locked lines, titles at fifteen words or fewer, every failure caption led by "Fails Rule 13.N.", Specifications on every rule, the do-not-publish band on all 13 failure plates with alts that open with its words, Illustrative labels on flagged plates, no literal color, no font size outside the tokens, no heading element, the opener's weight, every chip's ID present in the atlas, and Rule 01.9 over the 24-example log. The generator also stops if any atlas value, sidecar line or Census and payroll figure it prints has changed: L02, LE14, L26, L20, L47 (both readings, equal length), L18, L39, Loops R1, R10, R16, R3 and B2 (each weakest step), Reforms R-30 and R-19, CL1507, DL06, the 13 of 126 dated routes, the grade counts, the Mixed and retired records, the shared IDs B2 to B5, the repair log rows on Loop R1 and the coding note, the snapshot and association definitions, the insulin figure, the 2020, 2021, 2024 and 2025 poverty rates in both releases, and seven falling months in 57.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>`: exit 0, 0 warnings, 17 chapters, chapter 13 at 205,992 bytes (budget 250,000), the page at 9,759,606 bytes.
+- Playwright at 1440 and 390 px (scratch `/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/round-0/editor/platesfinal/`): every one of the 27 plates captured and looked at, with the chapter's head, rules and closers. Fixed what I saw: margins lost to a reset, a class name the shell's menu icon uses, the phone table caption, the record square parting from its word, step rows too narrow on phones, the corrections piece's stacked rules.
+- A focused script on chapter 13 at 1440 and 390 px (`ch13check.js` in the same scratch folder): axe-core 4.10.2 with WCAG 2.0, 2.1 and 2.2 A and AA tags inside `#evidence`, 0 violations at both widths; every font size inside the 27 stages on the guide check's allowed list; text contrast from rendered colors at 4.5 to 1 or 3 to 1 for large text, 0 below; no sideways scroll. Captures under forced colors and reduced motion of Rules 13.1, 13.4 and 13.11's plates, looked at: lines, marks and words hold.
+- The kit on Rule 13.13's spec: `node work/build/chart-kit/oa-chart.mjs build work/build/guide/specimens/s-13-13-correct.chart.json`: PASS, 3 rows, 2 drawings, 0 faults.
+- The Brandeis quotation against the opinion's text at the Legal Information Institute, fetched November 11, 2026: the words, the decision date and the dissent match, and the opinion holds neither "laboratories" nor "democracy".
+- A scan of every sentence with "not" or "never" in the chapter, its plates and alts, read for corrective negation; each is a plain statement of fact.
 
 ## Not tested
 
-To be completed at the end of the round.
+- The full `guide_check.js` run. I started it in quick mode on the whole page and it stopped at its 15-minute limit inside its audit, with no result, so its checks of red, focus order, fit-to-window, the codes pattern and the rest did not run on chapter 13. My focused script stands in for axe, type sizes and contrast only.
+- The kit's guide hook and its figure in Rule 13.13's plate, which has not landed; the plate carries a static drawing in the chart tokens.
+- The engineer's grown V7 check and chart check on chapter 13's plates; the generator's own atlas checks ran.
+- Grayscale and color-vision captures of the plates. Every mark in chapter 13 is in ink on Newsprint, with no hue that carries meaning, so I judged this low risk and did not run it.
+- 200 percent text, 320 px reflow, print and 1024 and 360 px widths.
+- Screen readers and real devices.
+- Any reader with the chapter; no reader has seen it.
