@@ -140,3 +140,41 @@ Created: `work/handoffs/phase-2/20261111_Stage-C-Round-2-Components-Fix-Notes.md
 Not touched: any `.keys.json` (the accessibility lead has since written the three changes I proposed; their content matches my scratch proposals), any chapter, specimen, manifest, generator, `guide_build.py`, `guide_check.js`, the shell, the tokens, `source/`, `work/ledger/`, a board or another owner's file. Built only into my scratch folder. Nothing committed or pushed by me; the main session's snapshots have carried my files as they stood.
 
 Scratch, outside the repository, in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/49b1040f-34e8-55e0-97c3-93e08c6dbc2c/scratchpad/round-2-fix/components/`: `before/` (the sets at the start of my pass), `code-unfmt/` (the sets before the reformat), `keys-proposed/`, `tools/` (`copy_test.js`, `states.js`, `red_scan.py`, `reformat.py`, `same_draw.js`, `anatomy_probe.py`, `zoom_probe.js`, `panel_shot.js`), the chapter 18 pages and full builds with their reports, `copy2/` (captures), and the check logs.
+
+## Second pass
+
+DR-191's short second pass, from section 2 of the editor's notes (`20261111_Stage-C-Round-2-Editor-Notes.md`), applied word for word, and one fault the main session's full guide check found in my sets.
+
+| Item | Set | Change |
+|---|---|---|
+| Editor C1 | `c-18-table.html` | H.99001's Status cell reads "In committee" where it read "Passed the House", so the bill keeps the story chapter 11 and `s-18-20-failure` tell (step 2, Hearing). |
+| Editor C2 | `c-18-loop-stepper.css` | The comment above the button grid reads, as the editor wrote it: "The four buttons sit two by two, each column at least half the row, so Next step never wraps alone under the other three. Once a column would fall under 11rem, they stack one a row." Its line break moved so the comment stays within 100 characters; the words are the editor's. |
+| Guide check, 360 px at 200 percent text | `c-18-diagram-controls.css` | Both live stages ran 2 px past the column (the page scrolled to 362 px). By measuring each part's narrowest width I found the cause: the third line's caption, "raises wealth concentration, where the loop began", could not break inside "concentration," at that size, so the part grew to 240 px and the drawing to 266 px, 2 px more than the stage had. Each line's caption, and the lines in words, now take `overflow-wrap: anywhere`, so a word breaks only when it cannot fit. The drawing's narrowest width falls to 175 px (now the title's). |
+
+**For the accessibility lead:** one visible word changed, H.99001's status in the table ("In committee"). No keys file names it; the table's sort lines are unchanged. Rule 18.10's words and `s-18-10-failure` may want to agree with it. The stepper's change is a code comment, and the diagram's draws the same at every size but the narrowest with large text.
+
+**For the systems designer:** `s-18-10-anatomy` redraws H.99001's row from the set at your next run, if the plate keeps the Status column.
+
+### Routine calls
+
+- D2-xxx | H.99001's status in chapter 18's table is "In committee" | The editor's C1; one invented bill keeps one story (D2-1364) |
+- D2-xxx | The editor's comment is set with its line break moved to stay within 100 characters | Call 16 keeps code panel lines short; the words are as written |
+- D2-xxx | The diagram's line captions and its lines in words may break inside a word | A long word set the drawing's narrowest width past a 360 px column with text at 200 percent; a word breaks only when it cannot fit |
+
+### Tested
+
+- `guide_build.py --strict` of the whole guide into scratch after the last change: 0 warnings; chapter 18 at 1,158,506 bytes of its 1,250,000.
+- The diagram at 360 px with the root text at 200 percent, as the guide check sets it, on a chapter 18 page built from the tree: both stages now span 32 to 328 px, where they spanned 32 to 362; at 320 px, 32 to 288. Each part's narrowest width measured by script before and after (240 px for the third line's caption before, 175 px for the whole drawing after).
+- The diagram and the stepper pasted into blank pages draw the same pixels before and after this pass in both themes at 1440 and 390 px, at load and after a press, motion reduced.
+- The copy check on the table and the stepper: light and dark at 1440, 390 and 320 px, no script error, no sideways scroll, no type under 13 px, nothing from axe-core but my blank page's heading rule.
+- The guide check (`--quick`, 1440 and 390 px) on a chapter 18 page built from the second pass's files: keyPath 136 walks of 36 paths, 698 steps, all pass; codeMatch 48 stages at each width, 0 bad; the red-on-Prussian step finds nothing. Its three failures are the proofs appendix's, as before (decision codes at both widths, and the 200 percent sideways scroll at 390 px that a one-chapter page carries).
+
+### Not tested
+
+- The full guide check at four widths on the whole page after this pass; the main session runs it. My 360 px check is the probe above, not the guide check's 360 px run.
+- Screen readers, real phones, Safari and Firefox.
+
+### Change log
+
+Modified, in `work/build/guide/code/`: `c-18-table.html` (C1), `c-18-loop-stepper.css` (C2), `c-18-diagram-controls.css` (the 360 px fix). Modified: this file, with this section. Nothing committed or pushed.
+
