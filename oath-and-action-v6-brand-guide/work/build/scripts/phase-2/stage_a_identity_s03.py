@@ -16,6 +16,7 @@ on whole pixels (DR-131); L6 draws without its four pillar dots (DR-129).
 Promotion, November 10, 2026: L6 draws its wordmark and tagline centered on the strip (DR-182); L3 places the masthead
 master that carries the rebuilt 48 px lockmark, and the minimum form draws the rebuilt 24 px master (DR-181)."""
 import json
+import math
 import re
 import stage_a_identity_lib as LIB
 from stage_a_identity_lib import (E, ID_DIR, WM, WMC, L2, L3, L8, LOCK, AMP, BADGE, HINGE, TL1, TL2A, TL2B, fragment, mark, s1, s1_width,
@@ -334,12 +335,16 @@ def s_03_l6():
 # ------------------------------------------------------------------------------------------- the opener
 # Gate 2's fix pass (CD-S1, the creative director's list: "03 the eight lockups"). The lockups at the sizes Rule 03.2's
 # plate sets them, built by the same functions and drawn by <use> of the masters that plate carries, so the opener adds
-# about 6 KB and no drawing. Each fits a phone's column but L5, whose 388 px minimum is wider than it, so L5 shows from
-# 48em. L6, at 884 px, keeps its own plate. Two to a row from 48em, one under 48em.
-OPENER_CSS = (".oai-op3{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 32px;align-items:end}"
+# about 6 KB and no drawing. Each fits a phone's column but L5, 400 px wide here, which shows where the column holds it.
+# L6, at 884 px, keeps its own plate. Two 340 px columns where the column holds 712 px, one otherwise. Every box takes a
+# whole-pixel width and height (each mark in a box of its height rounded up, each name on a 20 px line), so L3's
+# masthead master, drawn on the pixel grid, lands on whole pixels wherever the plate's stage does.
+OPENER_CSS = (".oai-op3-w{container-type:inline-size}"
+              ".oai-op3{display:grid;grid-template-columns:minmax(0,1fr);gap:24px 32px;align-items:end}"
               ".oai-op3-c{display:flex;flex-direction:column;gap:10px;align-items:flex-start}"
-              ".oai-op3-c--wide{grid-column:1/-1}"
-              "@media (max-width:47.99em){.oai-op3{grid-template-columns:minmax(0,1fr);gap:24px}.oai-op3-c--wide{display:none}}")
+              ".oai-op3-m{display:flex;align-items:flex-end}.oai-op3 .oai-tag{line-height:20px}"
+              "@container (min-width:712px){.oai-op3{grid-template-columns:340px 340px;row-gap:28px}.oai-op3-c--wide{grid-column:1/-1}}"
+              "@container (max-width:399.98px){.oai-op3-c--wide{display:none}}")
 
 
 @spec
@@ -356,19 +361,23 @@ def s_03_opener():
     finally:
         LIB.REF[0] = None
     # the plate's stage gives the opener its 24 px inset (16 px on a phone), so the grid takes the whole width
-    body = ('<div class="oai-op3">'
-            + "".join(f'<div class="oai-op3-c{" oai-op3-c--wide" if code == "L5" else ""}">{m}<p class="oai-tag">{code} {E(name)}</p></div>'
+    def box(m):
+        hs = [float(x) for x in re.findall(r'(?<![-\w])height(?:="|:)([\d.]+)', m)[:1]]     # the mark's own height, not a line-height
+        return f'<div class="oai-op3-m" style="height:{math.ceil(hs[0]) if hs else 0}px">{m}</div>'
+    body = ('<div class="oai-op3-w"><div class="oai-op3">'
+            + "".join(f'<div class="oai-op3-c{" oai-op3-c--wide" if code == "L5" else ""}">{box(m)}<p class="oai-tag">{code} {E(name)}</p></div>'
                       for code, name, m in cells)
-            + '</div>')
+            + '</div></div>')
     alt = ("The lockups at true size on Newsprint, each with its name, two to a row: L1, the wordmark, beside L8, the O & A "
            "monogram; S1, OATH & over ACTION on two flush-left lines, beside L4, the monogram, a hairline and the tagline; L3, "
-           "the wordmark with the lockmark at its right, beside L7, the wordmark, a hairline and the word TRACK. On screens "
-           "48em wide and up, L5 follows across both columns: the wordmark over the tagline.")
+           "the wordmark with the lockmark at its right, beside L7, the wordmark, a hairline and the word TRACK. Where the "
+           "column is wide enough, L5 follows: the wordmark over the tagline.")
     return rec("s-03-opener", None, None, alt, body, css=OPENER_CSS,
                notes="Gate 2's fix pass, CD-S1: chapter 03's opener. Each mark is an <svg> holding one <use> of the master "
                      "s-03-lockups carries with an id (stage_a_identity_lib.SHARE and REF), at the size that plate sets, from "
-                     "the same lockup functions, so the opener draws no master of its own. L5 shows from 48em, since its 388 px "
-                     "minimum is wider than a phone's column; L6 keeps its own plate, s-03-l6.")
+                     "the same lockup functions, so the opener draws no master of its own. L5, 400 px wide here, shows where the "
+                     "column holds it; L6 keeps its own plate, s-03-l6. Boxes take whole-pixel sizes, so L3's masthead master "
+                     "lands on whole pixels where the stage does.")
 
 
 # ------------------------------------------------------------------------------------------- 03.3

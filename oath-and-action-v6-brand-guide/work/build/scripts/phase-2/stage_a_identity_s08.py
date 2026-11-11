@@ -215,9 +215,11 @@ def s_08_2_failure():
 # each cropped to the part that holds the lockmark, at true size and as that plate draws them: the masthead's left end
 # with L3, a page header and a footer at 330 px and the content's width, and the corner of a social card. Each crop fits
 # a phone's column, so the four stand two to a row from 48em and one under another on a phone.
+# Every box takes a whole-pixel size (a 24 px head over each crop, fixed crop widths), so each master lands on whole
+# pixels wherever the plate's stage does.
 OPENER_CSS = (".oai-op8{display:flex;flex-wrap:wrap;gap:24px 32px;align-items:flex-start}"
               ".oai-op8>div{max-width:100%}.oai-op8 .oai-op8-crop{max-width:100%;overflow:hidden}"
-              ".oai-op8 .oai-pl8-h{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;margin:0 0 8px}"
+              ".oai-op8 .oai-pl8-h{display:flex;align-items:center;gap:10px;height:24px;margin:0 0 8px;white-space:nowrap}"
               ".oai-op8 .oai-pl8-n{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}")
 
 
@@ -234,7 +236,7 @@ def s_08_opener():
     body = ('<div class="oai-op8">'
             + place("Masthead", "L3, the lockmark at 48 px", mast)
             + place("Page header", "24 px", _page_header(330), invented=True)
-            + place("Footer", "24 px beside the tagline", _footer("max-content"))
+            + place("Footer", "24 px beside the tagline", _footer("346px"))
             + place("Sign-off", "96 px on a social card", _signoff(272, 224))
             + '</div>')
     alt = ("The lockmark in its four places at true size, each a crop. Masthead: the left end of a Newsprint bar with L3, the "

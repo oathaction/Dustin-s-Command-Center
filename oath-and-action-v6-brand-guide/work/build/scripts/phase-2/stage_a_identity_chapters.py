@@ -181,7 +181,7 @@ CH03 = {
     "number": "03", "anchor": "identity", "title": "Identity", "part": "Foundations",
     "instruction": "Pick the lockup that fits the surface and size, and give it room on every side.",
     # Gate 2's fix pass (CD-S1): the opener, a plate of the chapter's subject under the intro
-    "opener": {"specimen": "s-03-opener", "caption": "The lockups at true size, drawn from the masters in Rule 03.2's plate. A phone shows six, since L5 needs 388 px, and L6, at 884 px, has its own plate under Rule 03.2."},
+    "opener": {"specimen": "s-03-opener", "caption": "The lockups at true size, drawn from the masters in Rule 03.2's plate. A phone's column is too narrow for L5, so a phone shows six, and L6, at 884 px, has its own plate under Rule 03.2."},
     "intro": [
         "The wordmark is our name drawn as one piece of artwork: OATH and ACTION in heavy capitals, joined by ampersand B, the red ampersand we drew for Oath & Action. A lockup is a fixed arrangement of the wordmark with another part, such as the tagline or the lockmark, the three by three grid of nodes that chapter 08 explains.",
         "Every mark here is a vector master drawn for a range of sizes. You place the master, color it with tokens and leave room around it. In this chapter x means the height of the wordmark's capitals. The wordmark keeps the width our fifth edition drew, with ampersand B as refined for this edition, and the identity proofs at the end of the guide show it in use.",
