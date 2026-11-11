@@ -13,6 +13,8 @@
     var status = box.querySelector('.oa-stepper-status');
     var why = box.querySelector('.oa-stepper-why');
     var i = 0, timer = null;
+    // the words as a reader hears them, whatever line breaks the markup holds
+    function words(el) { return el.textContent.replace(/\s+/g, ' ').trim(); }
     function off(button, unavailable) {
       if (unavailable) {
         button.setAttribute('aria-disabled', 'true');
@@ -28,8 +30,8 @@
         if (k >= i) s.setAttribute('data-oa-ahead', ''); else s.removeAttribute('data-oa-ahead');
       });
       var step = steps[i - 1];
-      status.textContent = i ? 'Step ' + i + ' of ' + steps.length + ': ' + step.querySelector('.oa-stepper-line').textContent + ' ' +
-        step.querySelector('.oa-stepper-more').textContent : status.getAttribute('data-oa-ready');
+      status.textContent = i ? 'Step ' + i + ' of ' + steps.length + ': ' + words(step.querySelector('.oa-stepper-line')) + ' ' +
+        words(step.querySelector('.oa-stepper-more')) : status.getAttribute('data-oa-ready');
       off(prev, !i);
       off(reset, !i);
       off(next, i === steps.length);

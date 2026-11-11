@@ -1,4 +1,12 @@
 {
+ "s-26-opener": {
+  "chapter": "26",
+  "rule": null,
+  "width_px": null,
+  "alt": "The five steps that choose a token, for a caption on a Charcoal panel, in order: surface, Charcoal; role, text; emphasis, secondary; state, none; component, none. They lead to --oa-color-text-secondary, which is Dim Newsprint on Charcoal at 7.26 to 1.",
+  "illustrative": false,
+  "notes": "Chapter 26's opener (call 8 of the round 2 fix brief, D2-1134, D2-1550, CD-S18): Rule 26.3's five steps on its own worked example, flowing with the column; short names only, so it follows the page's theme. The ratio is computed from tokens.json."
+ },
  "s-26-1-correct": {
   "chapter": "26",
   "rule": "26.1",
@@ -119,7 +127,7 @@
   "chapter": "26",
   "rule": "26.4",
   "width_px": 360,
-  "alt": "On a Prussian tracker panel, Step 2 of 6: Hearing, then a warning with a 4 px Newsprint bar, the warning triangle in Newsprint at 9.42 to 1 and the words in White at 13.28 to 1: Warning: The hearing moved to March 12. Check the new date before you travel.",
+  "alt": "On a Prussian tracker panel, Step 2 of 6: Hearing, then a warning with a 4 px Newsprint bar, the warning triangle in Newsprint at 9.42 to 1 and the words in White at 13.28 to 1: Warning: The committee moved the hearing to March 12. Check the new date before you travel.",
   "illustrative": true,
   "notes": "Illustrative date."
  },
@@ -139,7 +147,7 @@
   "chapter": "26",
   "rule": "26.5",
   "width_px": null,
-  "alt": "The lines a page's head needs: the color scheme meta tag, the brand's fonts from Google Fonts, tokens.css, and the body rule margin 0 with the body type. Under them, a page drawn from them: a sentence in Inter at 17 px with no margin around it.",
+  "alt": "The lines a page's head needs: for a product with the theme switch, the head script first; then the color scheme meta tag, the brand's fonts from Google Fonts, tokens.css, and the body rule margin 0 with the body type. Under them, a browser window drawn as a frame, and the page inside it: a sentence in Inter at 17 px that starts at the window's edge, with no margin.",
   "illustrative": false,
   "notes": ""
  },
@@ -147,7 +155,7 @@
   "chapter": "26",
   "rule": "26.5",
   "width_px": null,
-  "alt": "The same head with the body rule left out, and the page it draws: the sentence in the browser's own serif at 16 px, inside the browser's 8 px margin, so no component sits where its code says.",
+  "alt": "The same head with the body rule left out, and the page it draws in a browser window drawn as a frame: the sentence in the browser's own serif at 16 px, 8 px in from the window's edge, so no component sits where its code says.",
   "illustrative": false,
   "notes": "A labeled failure: the browser's default type, off the scale on purpose.",
   "check_exempt": [

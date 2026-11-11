@@ -416,11 +416,13 @@ AX_CSS = minify("""
 .ax-st{position:relative;padding:28px 24px 28px 44px;border:1px solid var(--oa-color-border-hairline);background:var(--oa-color-surface);color:var(--oa-color-text-primary);overflow-wrap:anywhere}
 @container (max-width:24rem){.ax-st{padding:24px 14px 24px 40px}}
 .ax-p{position:relative}
-.ax-n{position:absolute;z-index:3;top:-10px;left:-4px;display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--oa-color-text-primary);color:var(--oa-color-surface);box-shadow:0 0 0 2px var(--oa-color-surface);font:700 .8125rem/1 var(--oa-font-family-reading);letter-spacing:0;text-transform:none;text-decoration:none}
-.ax-tr{left:auto;right:-10px}.ax-bl{top:auto;bottom:-10px}.ax-br{top:auto;bottom:-10px;left:auto;right:-10px}
+.ax-n{position:absolute;z-index:3;top:-24px;left:-2px;display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--oa-color-text-primary);color:var(--oa-color-surface);box-shadow:0 0 0 2px var(--oa-color-surface);font:700 .8125rem/1 var(--oa-font-family-reading);letter-spacing:0;text-transform:none;text-decoration:none}
+.ax-tr{left:auto;right:-2px}.ax-bl{top:auto;bottom:-24px}.ax-br{top:auto;bottom:-24px;left:auto;right:-2px}
+.ax-lm{top:50%;margin-top:-10px;left:-28px}.ax-rm{top:50%;margin-top:-10px;left:auto;right:-28px}
+.ax-il{margin:0 0 20px}
 .ax-t{position:absolute;top:0;bottom:0;left:-14px;width:5px;border:2px solid var(--oa-color-text-primary);border-right:0}
 .ax-t .ax-n{top:50%;left:-27px;margin-top:-10px}.ax-tup .ax-n{top:-24px;left:-14px;margin-top:0}
-.ax-in{top:6px;left:6px}.ax-inr{top:6px;left:auto;right:6px}.ax-l{top:2px;left:-28px}.ax-up{top:-22px;left:0}.ax-dn{top:auto;bottom:-22px;left:0}
+.ax-in{top:6px;left:6px}.ax-inr{top:6px;left:auto;right:6px}.ax-l{top:2px;left:-28px}.ax-up{top:-24px;left:0}.ax-dn{top:auto;bottom:-24px;left:0}
 .ax-st .ax-input{display:flex;align-items:center}.ax-nw{white-space:nowrap}.ax-lup{top:2px;left:-28px}
 @container (min-width:34rem){.ax-lup{top:-22px;left:0}}
 .ax-k{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px 24px}
@@ -431,8 +433,11 @@ AX_CSS = minify("""
 """)
 
 
-def render(sets, root, key, extra_css=''):
-    """The plate's markup: the stage with the cut component and its callouts, then the key."""
+def render(sets, root, key, extra_css='', illus=False):
+    """The plate's markup: the stage with the cut component and its callouts, then the key. An invented piece takes the
+    shell's Illustrative chip at the plate's head, in place of any label the code set draws (CD-S7, CA-S7, D2-1551)."""
+    if illus:
+        drop(*[e for e in walk(root) if any('illus' in c for c in e.cls())])
     css_all = ''.join((CODE / f'c-18-{s}.css').read_text() for s in sets)
     root = to_picture(root, css_attrs_of(css_all))
     markup = ser(root)
@@ -457,10 +462,11 @@ def render(sets, root, key, extra_css=''):
     code_css = re.sub(r'\.(oa-[\w-]+)', lambda m: '.' + short.get(m.group(1), m.group(1)), code_css)
     lis = ''.join(f'<li><span class="ax-n">{n}</span><b>{html.escape(term)}.</b> {html.escape(words)}</li>'
                   for n, term, words in key)
-    ax_classes = classes | {'ax', 'ax-st', 'ax-k', 'ax-n'}
+    ax_classes = classes | {'ax', 'ax-st', 'ax-k', 'ax-n'} | ({'ax-il'} if illus else set())
     ax_css = prune_css(AX_CSS, ax_classes)
     css = alias_vars(minify(ax_css + code_css))
-    return f'<style>{css}</style><div class="ax"><div class="ax-st">{markup}</div><ol class="ax-k">{lis}</ol></div>'
+    head = '<p class="ax-il"><span class="illus">Illustrative</span></p>' if illus else ''
+    return f'<style>{css}</style><div class="ax"><div class="ax-st">{head}{markup}</div><ol class="ax-k">{lis}</ol></div>'
 
 
 def D(name):
@@ -481,20 +487,26 @@ def hover(e):
 def p01():
     r = D('button')
     rows = qa(r, 'oa-button-row')
-    k = qa(r, 'oa-button-k')
+
+    def label_of(row):
+        sib = [x for x in row.up.k if isinstance(x, El)]
+        return sib[sib.index(row) - 1]
     save, read = q(rows[0], 'oa-button--primary'), q(rows[0], 'oa-button--quiet')
-    start = q(rows[1], 'oa-button--icon-start')
-    send, why = q(rows[2], 'oa-button'), q(r, 'oa-button-note')
-    only(r, k[0], rows[0], k[1], rows[1], k[2], rows[2], why)
-    drop(q(rows[0], 'oa-button--ask'), q(rows[1], 'oa-button--icon-end'))
-    say(k[0], 'Primary and quiet')
+    start = q(r, 'oa-button--icon-start')
+    # the unavailable button is the one its reason line describes; the ask now stands on a row of its own (CD-M2)
+    send = next(e for e in qa(r, 'oa-button') if e.a.get('aria-describedby') == 'oa-button-why')
+    why = next(e for e in qa(r, 'oa-button-note') if e.a.get('id') == 'oa-button-why')
+    only(r, label_of(rows[0]), rows[0], label_of(start.up), start.up, label_of(send.up), send.up, why)
+    for e in qa(r, 'oa-button--ask') + qa(r, 'oa-button--icon-end'):
+        drop(e)
+    say(label_of(rows[0]), 'Primary and quiet')
     focus(save)
-    pin(save, 1)
+    pin(save, 1, 'lm')
     pin(save, 2, 'tr')
     pin(read, 3, 'tr')
     bracket(start, 4)
-    pin(start, 5)
-    pin(send, 6, 'tr')
+    pin(start, 5, 'rm')
+    pin(send, 6, 'rm')
     pin(why, 7)
     key = [(1, 'Word', 'What the button does, in a word or a few; the button’s name starts with it'),
            (2, 'Focus ring', 'The code’s own 2 px ring at a 2 px gap, drawn at once'),
@@ -894,7 +906,7 @@ def p17():
     fields = qa(r, 'oa-form-field')
     send = q(r, 'oa-form-send')
     st = q(r, 'oa-form-status')
-    only(r, q(r, 'oa-form-illus'), fields[0], fields[1], send, st)
+    only(r, fields[0], fields[1], send, st)
     em = q(fields[0], 'oa-form-input')
     em.a['aria-invalid'] = 'true'
     say(em, 'name@example')
@@ -964,7 +976,7 @@ def p19():
 def p20():
     r = D('tracker')
     card = q(r, 'oa-tracker-card')
-    only(r, q(r, 'oa-tracker-illus'), card)
+    only(r, card)
     for c in ('oa-tracker-take', 'oa-tracker-alert', 'oa-tracker-next', 'oa-tracker-why', 'oa-tracker-news'):
         for e in qa(card, c):
             drop(e)
@@ -1111,7 +1123,7 @@ def build(write=True):
         nums = [n for n, _, _ in key]
         if nums != list(range(1, len(key) + 1)):
             raise SystemExit(f'18.{i}: the key runs {nums}')
-        body = render(sets, root, key, extra)
+        body = render(sets, root, key, extra, illus)
         placed = sorted(int(x) for x in re.findall(r'class="ax-n[^"]*">(\d+)<', body))
         if placed != sorted(nums * 2):
             raise SystemExit(f'18.{i}: callouts on the plate {placed} do not match the key {nums}')

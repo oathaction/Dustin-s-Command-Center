@@ -1,17 +1,66 @@
 /* A download button that waits for a choice: surface White (the class on the block), role action, state disabled,
    then the button's own component tokens, which win. The label and dashed edge measure 7.74 to 1 on White.
    The button keeps focus and points to its reason, so a keyboard reader learns why it waits. */
-.oa-ex-download { padding: var(--oa-space-300) var(--oa-space-200); background: var(--oa-color-surface); color: var(--oa-color-text-primary); font: var(--oa-type-body) }
-.oa-ex-download-file { margin: 0 0 var(--oa-space-150); font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }
-.oa-ex-download-button { display: inline-flex; align-items: center; box-sizing: border-box; max-width: 100%; min-height: var(--oa-size-target-touch); margin: 0;
-  padding: var(--oa-space-100) var(--oa-space-300); text-align: start;
-  border: var(--oa-border-width-hairline) solid var(--oa-component-button-primary-fill); border-radius: 0;
-  background: var(--oa-component-button-primary-fill); color: var(--oa-component-button-primary-label); font: var(--oa-type-ui); cursor: pointer }
-.oa-ex-download-button[aria-disabled="true"] { border-style: dashed; border-color: var(--oa-component-button-disabled-edge);
-  background: transparent; color: var(--oa-component-button-disabled-label); cursor: not-allowed }
-.oa-ex-download-button:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
-.oa-ex-download-why { margin: var(--oa-space-100) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
+.oa-ex-download {
+  padding: var(--oa-space-300) var(--oa-space-200);
+  background: var(--oa-color-surface);
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-body);
+}
+.oa-ex-download-illus {
+  display: inline-block;
+  margin: 0 0 var(--oa-space-100);
+  padding: 0 .4em;
+  border: var(--oa-border-width-hairline) solid currentColor;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  line-height: 1.5;
+}
+.oa-ex-download-file {
+  margin: 0 0 var(--oa-space-150);
+  font: var(--oa-type-ui);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-ex-download-button {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  max-width: 100%;
+  min-height: var(--oa-size-target-touch);
+  margin: 0;
+  padding: var(--oa-space-100) var(--oa-space-300);
+  text-align: start;
+  border: var(--oa-border-width-hairline) solid var(--oa-component-button-primary-fill);
+  border-radius: 0;
+  background: var(--oa-component-button-primary-fill);
+  color: var(--oa-component-button-primary-label);
+  font: var(--oa-type-ui);
+  cursor: pointer;
+}
+.oa-ex-download-button[aria-disabled="true"] {
+  border-style: dashed;
+  border-color: var(--oa-component-button-disabled-edge);
+  background: transparent;
+  color: var(--oa-component-button-disabled-label);
+  cursor: not-allowed;
+}
+.oa-ex-download-button:focus-visible {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
+.oa-ex-download-why {
+  margin: var(--oa-space-100) 0 0;
+  font: var(--oa-type-caption);
+  color: var(--oa-color-text-secondary);
+}
 @media (forced-colors: active) {
-  .oa-ex-download-button { border-color: ButtonText }
-  .oa-ex-download-button[aria-disabled="true"] { border-color: GrayText; color: GrayText }
+  .oa-ex-download-button {
+    border-color: ButtonText;
+  }
+  .oa-ex-download-button[aria-disabled="true"] {
+    border-color: GrayText;
+    color: GrayText;
+  }
 }

@@ -190,9 +190,17 @@ def share_txt(ctx, sid, k):
     return '<1' if 0 < v < 0.5 else f'{round(v):d}'
 
 
+# D2-1544's check: red never touches Prussian, in the share bar either. The bar runs from the ground through the dark and
+# neutral colors to the accents, so Stone always stands between Prussian and Pillar Red; the build stops if they would meet
+BAR_ORDER = ['newsprint', 'charcoal', 'prussian', 'stone', 'pillarRed', 'verdigris', 'white']
+
+
 def share_bar(ctx, sid):
     sh = ctx.R[f'share {sid}']['shares']
-    order = [k for k in PAL if sh.get(k, 0) > 0.05]
+    order = [k for k in BAR_ORDER if sh.get(k, 0) > 0.05]
+    for x, y in zip(order, order[1:]):
+        if {x, y} == {'pillarRed', 'prussian'}:
+            raise SystemExit(f'{sid}: the share bar would set Pillar Red against Prussian; give them a color between')
     segs = ''.join(f'<span class="sg" style="flex:{sh[k]:.2f} 0 0;background:{ctx.v(P(k))}"></span>' for k in order)
     key = ''.join(f'<li><span class="sw" style="background:{ctx.v(P(k))}"></span>{PNAME[k]} <b>{share_txt(ctx, sid, k)}%</b></li>'
                   for k in order)

@@ -395,7 +395,10 @@
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[data-oa-download], a[data-oa-file]');
     if (!a) return;
-    var l = a.hasAttribute('data-oa-file') ? a : document.getElementById(a.getAttribute('data-oa-download'));
+    // round 2 (CA-M1): a live demo's link carries data-oa-file="<id>", the page's own copy of the file it names, since no
+    // file sits beside the guide; a file's own link carries the attribute with no value
+    var to = a.getAttribute('data-oa-file');
+    var l = a.hasAttribute('data-oa-file') ? (to && to !== a.id ? document.getElementById(to) : a) : document.getElementById(a.getAttribute('data-oa-download'));
     if (!l || !l.hasAttribute('data-oa-file')) return;
     if (dlHost && l.getAttribute('data-oa-zip')) { e.preventDefault(); hostSave(l); return; }
     if (a === l) return;   // a file's own link downloads by itself

@@ -10,7 +10,7 @@
     var panel = box.querySelector('.oa-diagram-panel');
     var panelName = panel.querySelector('.oa-diagram-panel-name');
     var chosen = null;
-    function nameOf(item) { return item.querySelector('.oa-diagram-name').textContent; }
+    function nameOf(item) { return item.querySelector('.oa-diagram-name').textContent.replace(/\s+/g, ' ').trim(); }
     function focusItem(item) {
       items.forEach(function (x) { x.setAttribute('tabindex', x === item ? '0' : '-1'); });
       item.focus();

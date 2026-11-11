@@ -10,6 +10,9 @@
 // with work/build/tokens/tokens.css byte for byte. Exit code 1 when any case fails.
 // Stage C, round 1 (DR-214): where the page carries tokens.json (Rule 26.8), the same cases for it: its own link and a
 // chapter button for it, the plain .json byte for byte with no host, and its own zip, holding tokens.json alone, with one.
+// Stage C, round 2 (CA-M1, call 15): a live code stage's link to tokens.css, which names a file no page sits beside, is
+// marked data-oa-file="tokens-download" in the live stages: pressed in both stages, it serves the page's own tokens.css
+// (or its zip, with a host), the page stays where it is, and the link keeps its own words and drawing.
 const fs = require('fs');
 const path = require('path');
 const zlib = require('zlib');
@@ -84,8 +87,12 @@ async function run(browser, file, mode, opts = {}) {
   const words = () => page.evaluate((json) => [...document.querySelectorAll(json ? 'a[data-oa-download="tokens-json-download"], #tokens-json-download' : 'a[data-oa-download="tokens-download"], #tokens-download')].map((a) => a.textContent), !!opts.json);
   const before = await words();
   const clicks = opts.clicks || ['chapter'];
+  const url = page.url();
+  const liveBefore = await page.evaluate(() => [...document.querySelectorAll('.code-stage a[data-oa-file="tokens-download"]')].map((a) => a.innerHTML));
   for (const which of clicks) {
-    const sel = which === 'chapter' ? 'a[data-oa-download="tokens-download"]' : which === 'json' ? '#tokens-json-download' : which === 'json-chapter' ? 'a[data-oa-download="tokens-json-download"]' : '#tokens-download';
+    const live = /^live-/.test(which);
+    const sel = live ? `.code-stage[data-code-theme="${which.slice(5)}"] a[data-oa-file="tokens-download"]`
+      : which === 'chapter' ? 'a[data-oa-download="tokens-download"]' : which === 'json' ? '#tokens-json-download' : which === 'json-chapter' ? 'a[data-oa-download="tokens-json-download"]' : '#tokens-download';
     const loc = page.locator(sel).first();
     await loc.scrollIntoViewIfNeeded();
     await loc.click();
@@ -95,8 +102,10 @@ async function run(browser, file, mode, opts = {}) {
   const saves = await page.evaluate(() => window.__saves);
   const rejections = await page.evaluate(() => window.__rejections);
   const where = await page.evaluate(() => location.hash);
+  const stayed = page.url() === url;
+  const liveAfter = await page.evaluate(() => [...document.querySelectorAll('.code-stage a[data-oa-file="tokens-download"]')].map((a) => a.innerHTML));
   await ctx.close();
-  return { mode, before, after, saves, downloads, errors, rejections, where };
+  return { mode, before, after, saves, downloads, errors, rejections, where, stayed, liveSame: JSON.stringify(liveBefore) === JSON.stringify(liveAfter), liveCount: liveBefore.length };
 }
 
 const all = (xs, w) => xs.length > 0 && xs.every((x) => x === w);
@@ -144,6 +153,19 @@ const all = (xs, w) => xs.length > 0 && xs.every((x) => x === w);
   check('the host never answers: the plain link works meanwhile', r, { 'the plain words': all(r.after, CSS_WORDS), 'no host save': r.saves.length === 0, 'tokens.css downloads': r.downloads.length === 1 && cssOk(r.downloads[0]) });
   r = await run(browser, file, 'saved', { width: 390 });
   check('host saves at 390 px', r, { 'the zip words': all(r.after, ZIP_WORDS), 'one zip save': r.saves.length === 1 && zipOk(r.saves[0]), 'no browser download': r.downloads.length === 0 });
+  // round 2 (CA-M1): the live demo's download, in both stages
+  if (/class="code-stage[^"]*"[\s\S]*?data-oa-file="tokens-download"/.test(fs.readFileSync(file, 'utf8'))) {
+    r = await run(browser, file, 'none', { clicks: ['live-light', 'live-dark'] });
+    check('the live demo, no host: each stage\'s link downloads the page\'s own tokens.css, and the page stays', r, {
+      'a link in each live stage': r.liveCount === 2, 'two downloads of tokens.css, byte for byte': r.downloads.length === 2 && r.downloads.every(cssOk),
+      'the page stayed where it was': r.stayed && r.where === '', 'the links keep their own words and drawing': r.liveSame, 'no host save': r.saves.length === 0 });
+    r = await run(browser, file, 'saved', { clicks: ['live-light', 'live-dark'] });
+    check('the live demo, host saves: each stage\'s link hands the host the zip of tokens.css', r, {
+      'two saves, each the zip, byte for byte': r.saves.length === 2 && r.saves.every(zipOk), 'no browser download': r.downloads.length === 0,
+      'the page stayed where it was': r.stayed && r.where === '', 'the links keep their own words and drawing': r.liveSame });
+  } else {
+    console.log('  the live demo download: no live stage links tokens.css on this page, so its cases do not run');
+  }
   // tokens.json, where the page carries it (Rule 26.8)
   const page = fs.readFileSync(file, 'utf8');
   const jm = page.match(/id="tokens-json-download"[^>]*data-oa-file-words="([^"]+)"[^>]*data-oa-zip-words="([^"]+)"/) || page.match(/id="tokens-json-download"[^>]*data-oa-zip="[^"]*"[^>]*data-oa-file-words="([^"]+)" data-oa-zip-words="([^"]+)"/);

@@ -9,10 +9,10 @@
     var items = Array.prototype.slice.call(box.querySelectorAll('.oa-search-result'));
     var noun = status.getAttribute('data-oa-noun');
     function run() {
-      var q = field.value.trim().toLowerCase();
+      var q = field.value.replace(/\s+/g, ' ').trim().toLowerCase();
       var n = 0;
       items.forEach(function (li) {
-        var hit = !q || li.textContent.toLowerCase().indexOf(q) >= 0;
+        var hit = !q || li.textContent.replace(/\s+/g, ' ').toLowerCase().indexOf(q) >= 0;
         li.hidden = !hit;
         if (hit) n++;
       });

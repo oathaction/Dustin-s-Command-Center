@@ -124,6 +124,7 @@ Stage C, round 2's fix pass, November 11, 2026, under `20261111_Stage-C-Round-2-
 - **The guide check needs the engineer.** `guide_check.js`'s motion step expects every player's `data-frame` to read "start" on load. Under reduced motion it also expects Play to draw something new. An identity player now loads at "end", and under reduced motion Play shows the same master it rested on. The change I suggest: a player whose root carries `data-oa-rest="master"` may load with `data-frame="end"`. Under reduced motion, it passes when Play leaves `data-frame` at "end" with nothing running, even though the drawing does not change. Every other check on Play, Pause, Reset and looping applies as before. What the check reported on my scratch page is under Tested.
 - **The systems designer, Rule 17.3.** My players do what call 5 sets, with the attributes and words above. Rule 17.3's words, builders text and anatomy key can name `data-oa-rest="master"` as the marker of a player that rests on its master.
 - **Phase 3.** Rule 08.2's builders line now tells builders that the asset package will carry a copy of the feed test that takes any card. The CD-S16 fix asks for this, and the Phase 3 proposal should carry it as a task.
+- **My round 1 check is out of date.** `stage_c_identity_round1.py ch17` expects players that rest on their first frame and Reset back to it. It now reports those steps as differences, so it should not be rerun as a pass or fail. This pass's check is `players.js` in my scratch folder (Tested). I left the round 1 script as round 1's record.
 - **The editor.** New strings: the two player captions, their status lines and the Reset line; Rule 08.1's caption and two labels; Rule 08.2's dark-card row and builders sentence; Rule 03.2's nine lines.
 
 ### Routine calls
@@ -141,3 +142,52 @@ Stage C, round 2's fix pass, November 11, 2026, under `20261111_Stage-C-Round-2-
 - D2-xxx | The script is named in Rule 08.2's builders line, which also says it now runs on the proofs' card only | A builder looks there for what to run. `promotion_c_identity.py feed` measures our own card from the built page, so the line says what it does today
 - D2-xxx | Rule 03.2's builders text adds lines for L1 and L8 | PP-S12 asks for one line per lockup. Both lines point to the rules that already set them (03.1, 03.5)
 - D2-xxx | I left chapter 17's generator to its owner | The systems designer is editing `stage_c_ch17_build.py`. Its output already carries my new captions; only the failure caption differs, by its own "Fails Rule 17.6." prefix
+
+### Tested
+
+- I ran the generator chain from the project folder three times during the pass, each script with `python3 -I`, and every script exited 0 every time. My outputs that changed: `03-identity.json`, `08-lockmark.json`, `manifest-identity.json`, `s-08-1-correct.html`, `s-17-hinge-correct.html` and `s-17-lever-correct.html`. The other changed files belong to owners working in parallel, written by their own scripts.
+- I diffed the manifest by script. Only `s-08-1-correct` (alt, notes), `s-17-hinge-correct` and `s-17-lever-correct` (alt, caption, notes) changed. No entry was added or removed. In chapters 03 and 08 only Rule 03.2's builders text, Rule 08.1's correct caption, and Rule 08.2's specifications and builders text changed.
+- `stage_c_ch17_build.py --check` wrote nothing and placed all three Rule 17.6 specimens. Chapter 17's file already carries my new hinge and lever captions.
+- `guide_build.py --strict --out` into my scratch folder. The first two builds stopped on one warning from the engineer's token check, which was still in progress. Once the engineer's release landed, the build ran with 0 warnings: 16 chapter files, 185 rules, 420 specimens.
+- I wrote a player check in Chromium, run at 1440 and 390 px, at 1x and 2x, with and without reduced motion: 16 runs, all passing. It covered:
+  - On load: `data-frame` "end" with `data-oa-rest` "master", the end layer shown, the moving layer hidden, nothing running, the button reading Play, Reset unavailable, and the Reset line "The mark is at rest on its master."
+  - After Play: `data-frame` "run" with Reset available. At the end: "end", Play again, Reset unavailable, nothing running.
+  - Pause, then Reset: back at the master, Reset unavailable, the button reading Play.
+  - Under reduced motion: Play shows the end frame at once.
+  - No dashed border anywhere in either player's grounds.
+  - Each visible master's left edge sits on its label's, 0 px apart, at all four settings. The 64 px hinge shows at 1440 px (4 cells) and stays hidden at 390 px.
+  - The first frame's moving parts stay inside their ground: at least 8 px from its edge at 1440 px and 28 px at 390 px. The lever's parts stay 25 px clear.
+- I compared captures pixel for pixel. Rest against end after a run, and rest against after Reset, match exactly in 14 of 16 runs. In the other two, the hinge at 1x under reduced motion, 4 pixels differ by at most 5 levels at 1440 px and 2 pixels by at most 4 at 390 px, on the left edge of OATH's O. Both frames come from the same master file; this is the raster difference round 1 recorded.
+- I looked at:
+  - the hinge at rest at 1440 px 1x and 390 px 2x, and mid-run at 1440 px 1x;
+  - the lever at rest at 390 px 2x;
+  - both players in slow motion at 1440 px 1x, where the lever's links draw on an empty field and the hinge's words start outward from the labels' edge;
+  - the controls at rest, with Reset shown unavailable;
+  - Rule 08.1's plate at 1440 px 1x and 2x and at 390 px 1x, where it keeps its 700 px true-size frame and fit switch as before;
+  - Rule 03.2's builders block at 390 px 1x.
+- I read the rendered page by script. Rule 03.2's builders block prints 9 paragraphs, and Rule 08.2's builders line names the script. No "dashed square marks where" and no "Reset works once you press Play" remain in the identity players. The page holds no em or en dash, and neither do my three generators.
+
+### Not tested
+
+- I did not use Firefox, Safari, a real phone, 1.25x or 1.5x screens, forced colors or a screen reader. The status line is `role="status"`, but I did not hear it.
+- I measured no frame of a run against its master in this pass. The moving layers and the end layer are the same code as round 1, which compared them; only the resting state, the controls and the cell inset changed.
+- Rule 08.1's plate at 390 px in its "Fit to window" mode, and at 2x beyond the first screen of its scroll frame.
+- The feed test itself was not run again. Rule 08.2's figures are promotion C's; only the words changed.
+- The editor has not read the new strings. The creative director has not seen the fixed plates.
+- Chapter 17's Rule 17.3 as the systems designer rewrites it. Whether its words match these players waits for their pass.
+
+### Change log
+
+Modified, scripts:
+- `work/build/scripts/phase-2/stage_c_identity_ch17.py`: the players rest on their masters, Reset returns to the master, the dashed squares go, the cell inset goes, the hinge's ground padding and container threshold, words and notes
+- `work/build/scripts/phase-2/stage_a_identity_s08.py`: Rule 08.1's plate, with the 120 px display master and the 96 px sign-off sample
+- `work/build/scripts/phase-2/stage_a_identity_chapters.py`: Rule 03.2's builders lines, Rule 08.1's caption, Rule 08.2's dark-card row and builders line
+
+Modified, written by those scripts through the identity build:
+- `work/build/guide/chapters/03-identity.json`, `work/build/guide/chapters/08-lockmark.json`
+- `work/build/guide/specimens/manifest-identity.json`
+- `work/build/guide/specimens/s-08-1-correct.html`, `s-17-hinge-correct.html`, `s-17-lever-correct.html`
+
+Modified, notes: `work/handoffs/phase-2/20261111_Stage-C-Round-2-Identity-Fix-Notes.md` (this section)
+
+Outside the repository, in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/49b1040f-34e8-55e0-97c3-93e08c6dbc2c/scratchpad/round-2-fix/identity/`: the scratch build and its report, chain and build logs, copies of my three scripts as they stood before, `players.js`, `plates.js` and `slow.js` with their captures and `players.json`, and the guide check's results.

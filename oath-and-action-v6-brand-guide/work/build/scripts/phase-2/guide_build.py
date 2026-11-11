@@ -1123,12 +1123,20 @@ def unlandmark(html_src):
 def code_instance(html_src, sid, theme):
     """The set's markup for one live stage: every id, and every reference to it, takes the stage's prefix, so the two
     stages hold unique ids while the copy panel keeps the builder's own; every form control's name takes it too, so each
-    stage's radios are their own group; and each landmark is drawn as a named group (AX-S8)."""
+    stage's radios are their own group; and each landmark is drawn as a named group (AX-S8). Round 2 (CA-M1, call 15): a
+    link to tokens.css or tokens.json, a file no page sits beside, is marked data-oa-file with the id of the page's own
+    copy, so the shell's download script serves that copy; the panel keeps the builder's href."""
     pre = f"{sid}--{theme}"
     s = prefix_ids(html_src, pre)
     s = re.sub(r"<(?:" + "|".join(CODE_NAMED_CONTROLS) + r")\b[^>]*>",
                lambda m: re.sub(r'(\sname=")([^"]*)(")', lambda n: f"{n.group(1)}{pre}--{n.group(2)}{n.group(3)}", m.group(0)), s, flags=re.I)
+    s = re.sub(r'<a\b(?=[^>]*\shref="(tokens\.css|tokens\.json)")(?![^>]*\sdata-oa-file)',
+               lambda m: f'<a data-oa-file="{LIVE_FILE_IDS[m.group(1)]}"', s)
     return unlandmark(s)[0]
+
+
+# The page's own copy of each token file, by the id of its link (the colophon's tokens.css, Rule 26.8's tokens.json)
+LIVE_FILE_IDS = {"tokens.css": "tokens-download", "tokens.json": "tokens-json-download"}
 
 
 def code_plate(rid, block, ctx, where):
@@ -1465,7 +1473,7 @@ TYPE_PARTS = ("font-family", "font-style", "font-weight", "font-size", "line-hei
 
 
 class TokenCSS:
-    """tokens.css read as data, so each chapter's For builders block copies exactly what tokens.css holds (RP-M3)."""
+    """tokens.css read as data, so each chapter's For builders block shows exactly what tokens.css holds (RP-M3)."""
 
     def __init__(self, text):
         self.text = text or ""
@@ -1491,26 +1499,22 @@ class TokenCSS:
             todo += re.findall(r"var\((--oa-[a-z0-9-]+)", self.decl[n])
         return [n for n in self.decl if n in have]   # in tokens.css order
 
-    def block(self, names, num):
-        deps = set(names)
+    def block(self, names, num, targets=()):
+        """Round 2 (call 6, PP-M2): the chapter's properties as tokens.css holds them, for reading. The block names what the
+        chapter's rules name, each short name's light and dark targets, and every property those read. It holds no themes
+        and no surface classes, and says so, so no reader takes it for tokens.css (D2-266 as amended in round 2)."""
+        deps = set(names) | set(targets)
         # a type style brings all its parts, tracking and case included, not only the ones its shorthand reads
         for n in names:
             if re.fullmatch(r"--oa-type-[a-z-]+", n) and n in self.decl and "var(" in self.decl[n]:
                 deps.update(f"{n}-{part}" for part in TYPE_PARTS if f"{n}-{part}" in self.decl)
-        for _, decls in self.surfaces:
-            for d in decls:
-                deps.update(re.findall(r"var\((--oa-[a-z0-9-]+)", d))
         order = self.closure(deps)
-        lines = ["/* tokens.css is the full source of these values: download it from this page and link it before your own styles.",
-                 f"   This block copies, as tokens.css holds them, the custom properties chapter {num} names, every property they",
-                 "   depend on and the four surface classes, so it also works on its own. Set a page's ground with a surface",
-                 "   class, as in <body class=\"oa-surface-newsprint\">, and set type with font: var(--oa-type-body).",
-                 "   tokens.css also holds the light and dark themes, which follow the reader's device and data-oa-theme on",
-                 "   the root; this block leaves them out. */",
+        lines = [f"/* As tokens.css holds them: the custom properties chapter {num} names, and every property they read.",
+                 "   This block holds no themes and no surface classes, so it cannot stand in for tokens.css. Link",
+                 "   tokens.css, the one source, before your own styles. With it linked, the theme sets the page's ground",
+                 "   and the body takes no surface class. */",
                  ":root {"]
         lines += [f"  {n}: {self.decl[n]};" for n in order] + ["}"]
-        for sel, decls in self.surfaces:
-            lines += ["", sel + " {"] + ["  " + d for d in decls] + ["}"]
         keep = set(order)
         red = [(n, v.strip()) for n, v in self.reduced if n in keep]
         if red:
@@ -1722,13 +1726,17 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
         closers.append(f'<div class="closer" id="{cid}-related"><h3>Related chapters</h3><p class="return" hidden></p><ul class="related">{"".join(items)}</ul></div>')
         toc.append((f"{cid}-related", None, "Related chapters"))
         after.append((f"{cid}-related", "Related chapters"))
-    # For builders: working CSS for the chapter's custom properties, and tokens.css itself (RP-M3)
+    # For builders: tokens.css itself (RP-M3), the one route, and the chapter's custom properties for reading (round 2, call 6)
     if tok_rows:
         if tokens.final:
-            block, n_props = tokens.tcss.block(list(tok_rows), num)
-            intro_p = (f"<p>tokens.css is the full source for every token in this guide. Link it before your own styles, or copy "
-                       f"this chapter&#8217;s block, which holds the {n_props} custom properties it needs, with the type parts and "
-                       f"their clamps, and the four surface classes.</p>")
+            # round 2 (call 6, PP-M1, PP-M2): tokens.css is the one route; the block is for reading and says it holds no themes
+            targets = [full for n in tok_rows for _, _, full in (tokens.theme_values(n) or [])]
+            block, n_props = tokens.tcss.block(list(tok_rows), num, targets)
+            intro_p = ("<p>" + inline("Link tokens.css before your own styles. It is the one source for every token in this guide, and it holds the "
+                                      "light and dark themes, so with it linked the theme sets the page's ground and the body takes no surface class. "
+                                      "Use a surface class only on a block that must keep one ground in both themes (Rule 26.6).", ctx) + "</p>"
+                       f"<p>The block below shows, as tokens.css holds them, the {n_props} custom properties this chapter names and the ones "
+                       f"they read. It holds no themes and no surface classes, so it cannot stand in for tokens.css.</p>")
             # Round 2 (November 10, 2026): the page carries tokens.css as a download once, in the colophon; each chapter's
             # button is a link to it, which the shell's script turns into the download (without script, it lands there)
             dl = f'<a class="btn" href="#tokens-download" data-oa-download="tokens-download">{tokens.css_words}</a>'
@@ -1741,7 +1749,7 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
             intro_p = "<p>Every custom property this chapter names. tokens.css replaces this block when it lands.</p>"
             dl = ""
         closers.append(f'<div class="closer" id="{cid}-builders"><h3>For builders</h3><p class="return" hidden></p>{intro_p}'
-                       f'<p class="btn-row">{dl}<button type="button" class="btn btn--quiet copy" data-copy-from="{cid}-css">Copy this chapter&#8217;s CSS</button></p>'
+                       f'<p class="btn-row">{dl}<button type="button" class="btn btn--quiet copy" data-copy-from="{cid}-css">Copy this chapter&#8217;s properties</button></p>'
                        + status_line(f"{cid}-copy-status", "Nothing copied yet.") +
                        f'<pre class="code" id="{cid}-css" data-plate-scroll data-frame-name="CSS for chapter {num}"><code>{e(block)}</code></pre></div>')
         toc.append((f"{cid}-builders", None, "For builders"))
@@ -2461,10 +2469,14 @@ def keep_ids_whole(page, wrap=True, mark=""):
     """D2-975: IDs in text in <span class="nw"> with an ASCII hyphen; U+2011 out of attributes, SVG and raw text."""
     page = re.sub("&#(?:8209|x2011);", NBH, page, flags=re.I)
     out, pos, svg, n_ids = [], 0, 0, 0
+    # round 2 (CA-S6): a live code stage holds the code a builder copies, element for element (DR-203), so nothing is
+    # added inside .code-root; depth counts the elements open inside it
+    code_depth = 0
+    VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
 
     def text(t):
         nonlocal n_ids
-        if svg or not wrap:
+        if svg or not wrap or code_depth:
             return t.replace(NBH, "-")
 
         def one(m):
@@ -2487,6 +2499,10 @@ def keep_ids_whole(page, wrap=True, mark=""):
         close, name = m.group(1), m.group(2).lower()
         if name == "svg" and not tok.endswith("/>"):
             svg += -1 if close else 1
+        if code_depth and name not in VOID and not tok.endswith("/>"):
+            code_depth += -1 if close else 1
+        elif not close and name not in VOID and re.search(r'\sclass="[^"]*\bcode-root\b', tok):
+            code_depth = 1
         if not close and name in _RAW:
             end = re.compile(rf"</{name}\s*>", re.I).search(page, pos)
             stop = end.start() if end else len(page)

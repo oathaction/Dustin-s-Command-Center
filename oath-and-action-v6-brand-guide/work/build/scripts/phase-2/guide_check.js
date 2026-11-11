@@ -98,6 +98,9 @@
 // Added in stage C, round 2 (November 11, 2026):
 //   redTouchesPrussian no Pillar Red pixel within 2 px of a Prussian one in any stage at 1440 px, the live code stages in
 //                      both themes included, as drawn and again after Send is pressed in every form (D2-1544)
+//   builderBlock       each chapter's For builders closer offers the tokens.css download, says its block holds no themes
+//                      and that the body takes no surface class, never offers the block as a route of its own, and its
+//                      block holds no surface class or theme (call 6, PP-M1, PP-M2)
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -1915,6 +1918,23 @@ async function checkPage(browser, file, widths, opts = {}) {
     const failsSwitch = [];
     a.fitSwitch = await fitSwitch(page, 1);
     if (a.fitSwitch.problems.length) failsSwitch.push({ key: 'fitSwitch', msg: `${width}: ${a.fitSwitch.problems.length} glyph(s) of the 41 at 24 px off the 1x and 2x switch (DR-179, DR-209), first: ${JSON.stringify(a.fitSwitch.problems[0])}` });
+    // round 2 (call 6, PP-M1, PP-M2): each chapter's For builders block offers tokens.css as the one route, says it holds no
+    // themes, and holds no surface class or theme of its own, so no reader takes it for tokens.css
+    if (width === widths[0]) {
+      a.builderBlocks = await page.evaluate(() => [...document.querySelectorAll('.closer[id$="-builders"]')].map((c) => {
+        const words = [...c.querySelectorAll(':scope > p')].map((p) => p.textContent).join(' ');
+        const code = (c.querySelector('pre') || {}).textContent || '';
+        const why = [];
+        if (!c.querySelector('[data-oa-download="tokens-download"]')) why.push('no tokens.css download');
+        if (!/holds no themes/.test(words)) why.push('its words do not say the block holds no themes');
+        if (!/the body takes no surface class/.test(words)) why.push('its words do not say the body takes no surface class');
+        if (/works on its own|or copy this chapter/i.test(words + ' ' + code)) why.push('it offers the block as a route of its own');
+        if (/\.oa-surface-[a-z]+\s*\{|data-oa-theme|prefers-color-scheme/.test(code)) why.push('its block holds a surface class or a theme');
+        if (/class="oa-surface-/.test(code)) why.push('its block puts a surface class on the body');
+        return { closer: c.id, why };
+      }).filter((x) => x.why.length));
+      for (const b of a.builderBlocks) failsSwitch.push({ key: 'builderBlock', msg: `${width}: ${b.closer}: ${b.why.join('; ')} (call 6 of round 2, PP-M1, PP-M2)` });
+    }
     // round 1: chapter 26's table against tokens.json, once
     if (width === widths[0]) {
       a.tokenTable = await tokenTable(page);
@@ -2048,6 +2068,9 @@ const PLANTS = [
   { key: 'redJobs', fault: 'two working-red jobs in the page', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p data-red="working" data-red-job="ask" style="color:var(--oa-color-palette-charcoal);border-left:4px solid var(--oa-color-palette-pillar-red)">A</p><p data-red="working" data-red-job="error" style="border-left:4px solid var(--oa-color-palette-pillar-red)">B</p>'); } },
   { key: 'redJobsSpecimen', fault: 'two working-red jobs inside one specimen', js: () => { document.querySelector('[data-specimen]:not([data-pending])').insertAdjacentHTML('beforeend', '<p data-red="working" data-red-job="ask" style="border-left:4px solid var(--oa-color-palette-pillar-red)">A</p><p data-red="working" data-red-job="point" style="border-left:4px solid var(--oa-color-palette-pillar-red)">B</p>'); } },
   { key: 'redOnPrussian', fault: 'red on a Prussian ground', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div style="background:var(--oa-color-palette-prussian);padding:16px"><span data-red="signature" style="display:inline-block;width:20px;height:20px;background:var(--oa-color-palette-pillar-red)"></span></div>'); } },
+  // round 2 (call 6): the For builders block
+  { key: 'builderBlock', fault: 'a For builders block that offers itself as a route that works on its own', js: () => { const c = document.querySelector('.closer[id$="-builders"]'); if (c) c.querySelector(':scope > p').insertAdjacentText('beforeend', ' Or copy this chapter’s block, which works on its own.'); } },
+  { key: 'builderBlock', fault: 'a For builders block that carries a surface class', js: () => { const pre = document.querySelector('.closer[id$="-builders"] pre code'); if (pre) pre.textContent += '\n\n.oa-surface-newsprint {\n  background-color: var(--oa-color-surface-newsprint);\n}'; } },
   // round 2 (D2-1544): red touching Prussian, read from the pixels, as drawn and after Send
   { key: 'redTouchesPrussian', fault: 'a 4 px red bar on the edge of a field whose own ground is Prussian (the dark form before the release)', js: () => { document.querySelector('.plate-stage[data-specimen]:not([data-pending])').insertAdjacentHTML('beforeend', '<div data-red="working" data-red-job="error" style="box-sizing:border-box;width:200px;height:44px;margin:8px 0;background:var(--oa-color-palette-prussian);border-left:4px solid var(--oa-color-palette-pillar-red)"></div>'); } },
   { key: 'redTouchesPrussian', fault: 'a form whose Send puts a red bar on a Prussian field, red only after the press', js: () => { const st = document.querySelector('.plate-stage[data-specimen]:not([data-pending])'); st.insertAdjacentHTML('beforeend', '<form class="sb-rp" novalidate><div class="sb-rp-f" style="box-sizing:border-box;width:200px;height:44px;margin:8px 0;background:var(--oa-color-palette-prussian);border-left:4px solid transparent"></div><button type="submit">Send</button></form>'); const f = st.querySelector('.sb-rp'); f.addEventListener('submit', (ev) => { ev.preventDefault(); const b = f.querySelector('.sb-rp-f'); b.setAttribute('data-red', 'working'); b.setAttribute('data-red-job', 'error'); b.style.borderLeftColor = 'var(--oa-color-palette-pillar-red)'; }); } },

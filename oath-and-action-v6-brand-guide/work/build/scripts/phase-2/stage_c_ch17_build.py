@@ -294,64 +294,81 @@ def tracker_motion_svg():
 # ------------------------------------------------------------------------------------------------ the mechanism link
 # Loop R1's first link from our systems atlas, as chapter 11's stepper words it (DR-195): "Wealth concentration raises
 # money in politics." Two nodes and the link between them. Plain nodes, untagged: they are a diagram, not status marks.
-MW, MH = 264, 40
+#
+# CD-S3 and CA-S5: each node's name sits centered under its node, on one baseline with the other. The drawing therefore
+# flows with its column up to 26rem: the nodes stand at fixed shares of its width, 28 and 78.5 percent, the centers of
+# the two name columns under it (0 to 56 percent and 57 to 100 percent), so both names
+# fit on one line at 14 px from about 290 px, and each wraps to two lines, still centered, below that. The nodes, the line and the arrowhead keep their true sizes at every width; only the
+# link's length changes. The line runs from center to center under a halo of the ground around each node, 4 px wide,
+# so it shows from 4 px past the first node to the arrowhead's point, 4 px short of the second, as before.
+MH = 40
 MCY = 20
-MA, MB = 12, 252
 MR = 8
+HALO = MR + 4
+MA_P, MB_P = 28, 78.5                  # percent of the drawing's width
+NAME_COLS = '56fr 1fr 43fr'            # name columns centered on 28 and 78.5 percent
+MECH_MAX = '26rem'
+TIP = f'M-{HALO + 7} {MCY - 7}L-{HALO} {MCY}L-{HALO + 7} {MCY + 7}'   # drawn at the second node, its point 4 px short
 
 
-def link_parts():
-    """Path and arrowhead of the drawn link."""
-    x1, x2 = MA + MR + 4, MB - MR - 4
-    path = f'M{x1} {MCY}H{x2}'
-    tip = f'M{x2 - 7} {MCY - 7}L{x2} {MCY}L{x2 - 7} {MCY + 7}'
-    return path, tip
+def _line(extra=''):
+    return f'<line x1="{MA_P}%" y1="{MCY}" x2="{MB_P}%" y2="{MCY}" class="ln"{extra}/>'
+
+
+def _tip(inner_attrs=''):
+    return f'<svg x="{MB_P}%" y="0" overflow="visible"><g{inner_attrs}><path d="{TIP}" class="ln"/></g></svg>'
+
+
+def _node(pct, cls, r=MR, attrs=''):
+    return f'<circle cx="{pct}%" cy="{MCY}" r="{r:g}" class="{cls}"{attrs}/>'
+
+
+def _halos():
+    return ''.join(f'<circle cx="{x}%" cy="{MCY}" r="{HALO}" class="hal"/>' for x in (MA_P, MB_P))
+
+
+def _svg(body):
+    return (f'<svg class="dg dgl" width="100%" height="{MH}" aria-hidden="true" focusable="false" overflow="visible">'
+            f'{body}</svg>')
 
 
 def mech_svg(state, frac=None):
     """A still frame of the link: 'start' (the cause alone) or 'end' (the link drawn, the effect reached). With frac,
     a 'start' frame draws that share of the link's line, as a frame part way through a draw does (CD-S2)."""
-    path, tip = link_parts()
-    a = f'<circle cx="{MA}" cy="{MCY}" r="{MR}" class="nd-on"/>'
+    a = _node(MA_P, 'nd-on')
     if state == 'start':
-        b = f'<circle cx="{MB}" cy="{MCY}" r="{MR - 0.75:g}" class="nd-off"/>'
-        ln = ''
-        if frac:
-            x1, x2 = MA + MR + 4, MB - MR - 4
-            ln = f'<path d="M{x1} {MCY}H{x1 + frac * (x2 - x1):.1f}" class="ln"/>'
-    else:
-        b = f'<circle cx="{MB}" cy="{MCY}" r="{MR}" class="nd-on"/>'
-        ln = f'<path d="{path}" class="ln"/><path d="{tip}" class="ln"/>'
-    return (f'<svg class="dg" width="{MW}" height="{MH}" viewBox="0 0 {MW} {MH}" aria-hidden="true" focusable="false">'
-            f'{ln}{a}{b}</svg>')
+        ln = _line(f' pathLength="1" stroke-dasharray="{frac:.3f} 1"') if frac else ''
+        return _svg(ln + _halos() + a + _node(MB_P, 'nd-off', MR - 0.75))
+    return _svg(_line() + _halos() + _tip() + a + _node(MB_P, 'nd-on'))
 
 
 def mech_motion_svg():
-    path, tip = link_parts()
     body = [
-        f'<path d="{path}" class="ln" data-when="end"/><path d="{tip}" class="ln" data-when="end"/>',
-        f'<path d="{path}" class="ln" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" data-when="run" data-part="draw"/>',
-        f'<g data-when="run" data-part="tip" data-wait=""><path d="{tip}" class="ln"/></g>',
-        f'<circle cx="{MA}" cy="{MCY}" r="{MR}" class="nd-on"/>',
-        f'<circle cx="{MB}" cy="{MCY}" r="{MR - 0.75:g}" class="nd-off" data-when="start"/>',
-        f'<circle cx="{MB}" cy="{MCY}" r="{MR}" class="nd-on" data-when="end"/>',
-        f'<g data-when="run" data-part="land" data-wait=""><circle cx="{MB}" cy="{MCY}" r="{MR}" class="nd-on"/></g>',
+        _line(' data-when="end"'),
+        _line(' pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" data-when="run" data-part="draw"'),
+        _halos(),
+        _tip().replace('<g>', '<g data-when="end">'),
+        _tip(' data-when="run" data-part="tip" data-wait=""'),
+        _node(MA_P, 'nd-on'),
+        _node(MB_P, 'nd-off', MR - 0.75, ' data-when="start"'),
+        _node(MB_P, 'nd-on', MR, ' data-when="end"'),
+        f'<g data-when="run" data-part="land" data-wait="">{_node(MB_P, "nd-on")}</g>',
     ]
-    return (f'<svg class="dg" width="{MW}" height="{MH}" viewBox="0 0 {MW} {MH}" aria-hidden="true" focusable="false">'
-            f'{"".join(body)}</svg>')
+    return _svg(''.join(body))
 
 
 MECH_NAMES = '<p class="nn"><span>Wealth concentration</span><span>Money in politics</span></p>'
-# CD-S3: each name sits centered under its node wherever both fit on one line beside the drawing; below that width they
-# stagger, the first at the left and the second on its own line at the right. The drawing keeps its true size either
-# way. 4.5rem of room before the drawing holds half of "Wealth concentration" at the caption size, at 100 and 200 percent
-# text, so the wide layout needs 4.5rem + 264 px + 4.5rem, 25.5rem at 16 px.
-MECH_FW = '25.5rem'
+MECH_CSS = ('.lk{max-width:' + MECH_MAX + '}.dgl{width:100%;max-width:' + MECH_MAX + ';height:' + str(MH) + 'px}'
+            '.dg .hal{fill:var(--oa-color-surface)}'
+            '.nn{display:grid;grid-template-columns:' + NAME_COLS + ';align-items:start;margin-top:6px;' + ty('caption') + '}'
+            # 6 px inside each column keeps the two names at least 12 px apart; a name that cannot keep it wraps under its node
+            '.nn span{padding:0 6px;text-align:center;text-wrap:balance}.nn span + span{grid-column:3}')
 
 
 def mech_stage(svg):
-    """The drawing with its two node names, in the layout CD-S3 asks for."""
-    return f'<div class="lk"><div class="lki">{svg}{MECH_NAMES}</div></div>'
+    """The drawing with its two node names centered under their nodes (CD-S3, CA-S5)."""
+    return f'<div class="lk">{svg}{MECH_NAMES}</div>'
+
 
 # ------------------------------------------------------------------------------------------------ the three behaviors
 SW, SH = 150, 48
@@ -436,13 +453,7 @@ PLAYER_CSS = (
     '.dg .hl{fill:var(--oa-color-border-hairline)}'
     '.dg .dot{fill:var(--oa-color-graphic-subtle)}'
     '.dg .rg{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:3}'
-    '.nn{display:flex;flex-wrap:wrap;justify-content:space-between;gap:0 16px;max-width:' + str(MW) + 'px;margin-top:6px;' + ty('caption') + '}'
-    '.nn span:last-child{text-align:right;margin-left:auto}'
-    '.lk{container-type:inline-size}'
-    '@container (min-width:' + MECH_FW + '){.lki{width:' + str(MW) + 'px;margin-left:4.5rem}'
-    '.lki .nn{flex-wrap:nowrap;justify-content:flex-start;gap:0;max-width:none;padding-left:' + str(MA) + 'px}'
-    '.lki .nn span{flex:none;width:0;display:flex;justify-content:center;white-space:nowrap}'
-    '.lki .nn span:last-child{margin-left:' + str(MB - MA) + 'px;text-align:center}}'
+    + MECH_CSS +
     '.gd{' + ty('bodySmall') + ';max-width:36rem;margin-top:4px}'
     '.cn{position:relative}.cn > .nb{position:absolute;top:-12px;left:-12px;'
     'box-shadow:0 0 0 2px var(--oa-color-surface)}'
@@ -857,7 +868,7 @@ def mech_player(static):
     return player('p4', kicker=MECH_KICK, title=MECH_TITLE, sub=MECH_GRADE,
                   drawing=mech_stage(mech_motion_svg() if not static else mech_svg('start')),
                   words=MECH_WORDS, frames=frames, timeline=MECH_TIMELINE, motion=motion, why=WHY,
-                  slow=True, preview=not static, group='Play the link', static=static, fw=MECH_FW)
+                  slow=True, preview=not static, group='Play the link', static=static)
 
 
 # CD-S1: the key runs top to bottom, in the order the parts stand in the player.
@@ -948,7 +959,7 @@ def s17_4_failure():
             '.fs3 li{padding:10px 0 0;border:0;border-top:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}') + ('.dg .nd-on{fill:var(--oa-color-graphic-essential)}'
                                                     '.dg .nd-off{fill:var(--oa-color-surface);stroke:var(--oa-color-graphic-subtle);stroke-width:1.5}'
                                                     '.dg .ln{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:2;stroke-linejoin:round}'
-                                                    '.dg{display:block;overflow:visible}')
+                                                    '.dg{display:block;overflow:visible}') + MECH_CSS
     html = (f'<style>{css}{STRIP_CSS}{css2}</style><div class="st">{band}'
             '<p class="code">link.animate(frames, { duration: 400, easing: "ease-out" })</p>'
             '<p class="k">With reduced motion on</p>'

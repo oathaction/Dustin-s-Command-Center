@@ -1,13 +1,52 @@
 /* A warning in a tracker on Prussian: surface Prussian (the class on the block), role state, state warning.
    The words in White, 13.28 to 1; the bar and triangle in Newsprint, 9.42 to 1. Warning has no hue of its own:
    the word and the triangle carry it, and red never sits on Prussian. */
-.oa-ex-track { padding: var(--oa-space-200); background: var(--oa-color-surface); color: var(--oa-color-text-primary); font: var(--oa-type-body) }
-.oa-ex-track-step { margin: 0 0 var(--oa-space-150); font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }
-.oa-ex-warning { display: flex; align-items: flex-start; gap: var(--oa-space-100); margin: 0; padding-left: var(--oa-space-150);
-  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-warning-mark); color: var(--oa-color-state-warning-text); font: var(--oa-type-body-small) }
-.oa-ex-warning-icon { flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium); color: var(--oa-color-state-warning-mark) }
-.oa-ex-warning-word { font-weight: var(--oa-font-weight-bold) }
+.oa-ex-track {
+  padding: var(--oa-space-200);
+  background: var(--oa-color-surface);
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-body);
+}
+.oa-ex-track-illus {
+  display: inline-block;
+  margin: 0 0 var(--oa-space-100);
+  padding: 0 .4em;
+  border: var(--oa-border-width-hairline) solid currentColor;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  line-height: 1.5;
+}
+.oa-ex-track-step {
+  margin: 0 0 var(--oa-space-150);
+  font: var(--oa-type-ui);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-ex-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--oa-space-100);
+  margin: 0;
+  padding-left: var(--oa-space-150);
+  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-warning-mark);
+  color: var(--oa-color-state-warning-text);
+  font: var(--oa-type-body-small);
+}
+.oa-ex-warning-icon {
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+  color: var(--oa-color-state-warning-mark);
+}
+.oa-ex-warning-word {
+  font-weight: var(--oa-font-weight-bold);
+}
 @media (forced-colors: active) {
-  .oa-ex-warning { border-left-color: CanvasText }
-  .oa-ex-warning-icon { color: CanvasText }
+  .oa-ex-warning {
+    border-left-color: CanvasText;
+  }
+  .oa-ex-warning-icon {
+    color: CanvasText;
+  }
 }
