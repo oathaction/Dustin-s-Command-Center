@@ -3211,3 +3211,153 @@ The main session asked five questions with its plan for the Gate 2 preview, the 
 | D2-1721 | The preview embeds the static Inter Tight 800 file Google serves for the 800-only link, in place of the variable file first fetched; letters keep their places and only edge shading differs | D2-1710's one set; still Google's file, unmodified (D2-1697) |
 | D2-1722 | The guide's scroll frames keep their Charcoal ring on the mat, since the focus ring color measures 2.98 to 1 there; Rule 18.11 names the mat and its Charcoal ring in one sentence (accessibility lead) | DT-S1's second remedy; a ring under 3 to 1 against its ground would fail WCAG 1.4.11, Non-text Contrast |
 | D2-1723 | The three font file rows go into the rights ledger as a dated section | The engineer's notes; the ledger records every file that ships |
+
+### Editor, Gate 2 (`20261111_Gate-2-Editor-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1724 | The newcomer’s grade and Illustrative steps link to house rules H08 and H03 inside Rule 02.22 (`#s-02-22-correct--h08`, `#s-02-22-correct--h03`) | They are the rules that answer those steps, each id occurs once, and chapter 01’s word list already links to them |
+| D2-1725 | Only the designer route carries a later step, chapters 20 to 25 | Built chapters answer every newcomer and builder step; a designer needs to know the application chapters are coming |
+| D2-1726 | The edition line reads “Preview for approval, built” with the build’s date, and leaves out “Gate 2” | Chapter 02 keeps studio codes off the page (H11), and a reader can’t tell what a gate is |
+| D2-1727 | A no-break space joins each figure to “px” in the new page’s words | Chapters 17 to 19 do this, so a size never breaks across a line |
+| D2-1728 | The license disclosures read “The license for Inter”, “The license for Inter Tight” and “The license for Lora” | Rule 18.8 asks a disclosure’s words to name what opens |
+| D2-1729 | The colophon names the authors from each OFL.txt’s copyright line: The Inter Project Authors for Inter and Inter Tight, The Lora Project Authors for Lora | Read from the three files on November 11, 2026 |
+| D2-1730 | The instruction line uses the typographic apostrophe, “you’re” | The guide’s prose sets typographic quotes and apostrophes, as the chapter files do |
+
+### Editor, the fix pass (`20261111_Gate-2-Editor-Notes.md`, section Fix pass)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1731 | Chapter 02's opener sets the four locked lines and the pillar order as live text, and the full brand lines table stays in the body | A light version of an existing plate, as call 3 prefers, and Rule 02.23 still points at the table with its roles and the retired record |
+| D2-1732 | The opener carries only the base styles it uses | It drops from 8,794 to 4,001 bytes as placed (D2-1214) |
+| D2-1733 | Rules 01.9, 01.10 and 01.12's failure plates and the 21 writing-rule fault cards go without the bar | Each draws a method, a tally, a log row or a sentence taken apart under “The fault”, and no crop of it reads as a piece (call 4) |
+| D2-1734 | Rules 01.9 and 01.12's failure plates carry their Illustrative label inside the plate | The shell then keeps its chip out of the caption, so “Fails Rule NN.N.” leads it, and each label sits beside its invented item as the correct plates do (DR-97) |
+| D2-1735 | Rule 01.11's title keeps the counts: “Show each party’s cases and counts as the record gives them.” | D2-368 added them so the title teaches the uneven case too (DR-93) |
+| D2-1736 | Rule 01.9's rule now opens on its two limits, and its unit sentence follows | Call 5 moves a title's dropped clause into the rule's first sentence |
+| D2-1737 | Chapter 02's titles and chapter 01's 01.2, 01.6 and 01.23 stay as they are | Each is one clause and fifteen words or fewer, under call 5's limit |
+| D2-1738 | “Terms.” takes `<strong>`, Inter 700 | The rule text's inline tags offer no 600, and 700 is in chapter 06's set; the shell can lower it if 600 is wanted |
+| D2-1739 | The editor build fails a failure caption without the lead, a title past fifteen words, a chapter 01 rule without Specifications, “Prussian blue”, a chapter 02 opener without the four locked lines, and an italic “Terms.” | So a later edit to either generator cannot bring one back |
+
+### Accessibility lead, the Gate 2 evidence (`20261111_Gate-2-Accessibility-Evidence.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1740 | The contrast table measures each token on the surfaces and grounds its own `$extensions` name, and reports marks placed inside a surface's grounds as risks in a separate list | The token files define where each token may sit; a placement they never name is a design question, not a failing pair |
+| D2-1741 | Signature red, decoration and data fills with printed values carry no threshold, and every such pair under 3 to 1 is still listed with the guide's condition | 1.4.3 exempts logotypes and 1.4.11 asks nothing of meaningless or labeled marks; listing them keeps the permitted failures visible |
+| D2-1742 | The error bar on Newsprint is reported as permitted by the mark and the word "Error:", not by the keyline its token claims | The rendered page draws no keyline there, as DR-199 approved; A-1 asks for the metadata to follow |
+| D2-1743 | Each keyboard segment past the top starts by following an in-page link (setting the fragment), never by focusing a stop by script | Keeps the walk to what a keyboard reader can do while keeping it short enough to read |
+| D2-1744 | Normal-motion frames hold the Web Animations at 0 ms and half their length, then let them finish | Screenshots cannot catch a 200 to 680 ms motion at fixed points; holding the animations gives the same three frames every run |
+| D2-1745 | The theme switch comes from chapter 18's live stage | Chapter 17 has no theme switch; chapter 18's is the guide's one |
+| D2-1746 | Forced-colors views use Chromium's light system colors, with Rule 17.8 repeated in its dark ones | One view of each chapter's states is what the brief asks; the dark repeat shows the plates' kept colors on a dark system |
+
+### Drift red team (`20261111_Gate-2-Red-Team-Drift.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1747 | The studio paths in ten chapters' Files lists go under Must fix | They break D2-253 and D2-1098's standard for every reader page, would ship wrong, and stage C already shows the page without them. |
+| D2-1748 | Invented bills shown at different stages in different chapters count as one timeline, not drift | Each number keeps one title, and its stages run forward in time, as H.99003 waits for the governor in Rule 11.1 and becomes law on April 2 in Rule 11.3. |
+| D2-1749 | Ratios that differ only in form (colon, one decimal) are one Should fix, not a numbers fault | Every value is true against the tokens. |
+| D2-1750 | The brief's count of chapter 19's gaps goes to the main session, not into the findings | The page's nine gaps agree with its own list of 55 criteria. |
+
+### Data visualization and systems lead, the Phase 3 proposal draft (`20261111_Phase-3-Proposal-Draft.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1751 | Proportion and overlap, the one family the coverage plan's build order leaves out, joins round 4 with the infographics | Its icon arrays draw on Civic Line as the infographics do (DR-61), and round 4 carries the lightest load |
+| D2-1752 | Round 0 rebuilds S01 to S16 in the kit as its test set and weight pilot | They are the only finished specimens, so the kit and the method are proven on real charts before round 1, and the floor of twenty is passed early in round 1 |
+| D2-1753 | Worked example 1 uses chapter 11's live stepper for Loop R1 | DR-195 already runs it there; one drawing of one loop keeps the chapters in step and saves bytes |
+| D2-1754 | Worked example 6 is Loop B2, with Loops B3 and R9 named beside it | B2 is graded well supported yet has no numbered chain, which teaches that closure and grade are separate; R9 would stack a hypothesis on top |
+| D2-1755 | The three complex examples, recommended: S14 (work and pay), Loops B4 and R10 (elections), the three reforms acting on Loop R8 (housing) | One per domain under Rule 01.9, each with data its exports can carry |
+| D2-1756 | The kit's data drops the editor's disclosure, and the chart check fails any copy of it | DR-100 retired it; `dataviz_shared_data.py` still marks it required text on four datasets (D2-106) |
+| D2-1757 | Chart titles and sets follow DR-124's wording wherever the coverage plan quotes DR-55's balance clause | DR-124 replaced that clause on November 7 |
+| D2-1758 | The district tile map uses the Clerk of the House's 2024 results until 2026 results are certified | The plan's "once certified" would leave the specimen without data in Phase 3 |
+| D2-1759 | The worked examples print V7's snapshot date beside R-01's status and routes | Its status text names two ballot measures that went to voters on November 3, 2026, after the snapshot, and the studio never edits V7 |
+
+### Component engineer, the fix pass (`20261111_Gate-2-Fix-Components-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1760 | Every inside focus ring in chapter 18's code sets takes its 2 px gap, −4 px, including the link list's rows and the search's Clear, which the drift report did not list | DT-S2 names the fault, and builders copy these sets; one look for one behavior, and Rule 17.9's “never 0” holds in every set |
+| D2-1761 | Each inside ring's comment cites Rule 18.11 and names why that control cannot take the outside ring | The brief asks for the citation, and a builder who reads the reason knows when the outside ring applies again |
+| D2-1762 | The tracker's check-date notice takes “Warning:” in bold and the 4 px bar in the text's ink, drawn as `c-18-messages` draws its warning | DT-S3 and the main session's acceptance of item 4: a warning looks the same everywhere, and the systems designer adds the bar to Rule 11.10's plate |
+| D2-1763 | The download example saves as `tokens.css`, the name its words give | DT-S12; the guide's own button keeps its settled dated name, and the live stages still hand a press to it |
+| D2-1764 | The form's fields carry `aria-invalid="false"` from the start, the script adds it where markup leaves it out, and a fixed field returns to `"false"` | The accessibility evidence's note; a field that loses the attribute hands its state back to the browser's own check, which reports an unfinished address as invalid |
+| D2-1765 | The form keys file is edited by hand to match the code, with the generator change written out for the accessibility lead | My row asks me to update the keys paths my changes touch, and the file is that lead's generator's output; the main session routes the generator change |
+
+### Component engineer, the second pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1766 | The four focus comments take the editor's words, with the tab's comment opening “The tab takes its focus ring” | Editor's item 7; one colon a sentence reads more easily than two |
+
+### Accessibility lead, the fix pass (`20261111_Gate-2-Fix-Accessibility-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1767 | Chapter 18's definitions of accessible name, role, state, status line, ARIA and the APG open Rule 18.1's "Why it works" | They explain why a native button works, the rule's own reason; in the rule text they would stand before the rule they serve |
+| D2-1768 | A title's dropped clause is not repeated where its rule's text already states it | Every dropped clause was there already, most in the first paragraph; saying it twice would break W07 |
+| D2-1769 | Three titles of 13 words (18.3, 18.16, 19.5) stay as written | Each is one clause, and the brief sets about twelve words, past fifteen as the line |
+| D2-1770 | Rule 18.17's title becomes "Give every field a visible label and its own error message." | One clause holding the rule's two parts; moving focus to the first field to fix stays in its first paragraph |
+| D2-1771 | Rule 19.9's title names "real devices" and leaves the four platforms to its text | The four names made it eighteen words; the rule's first sentence and its script name each platform |
+| D2-1772 | The form's keys path asks for `aria-invalid="false"` before Send and after a fix, as the component engineer's code sets it | The keys file is this generator's output, so the path lives here; otherwise the next run would revert it and fail the form's walk |
+| D2-1773 | Rule 18.17's builders name the browser's own check as the reason for `aria-invalid="false"` | A builder who knows why keeps the attribute when rewriting the form |
+| D2-1774 | Rule 18.11's sentence on the mat computes its two ratios from the tokens | A printed figure that reads the token file cannot drift from it |
+| D2-1775 | DT-S12 lands with call 12, in the new results file | The plate prints its results file word for word, and the page and the file must not disagree (Rule 19.8's builders line); round 2's file stays its record |
+
+### Systems designer, the fix pass (`20261111_Gate-2-Fix-Systems-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1776 | Chapter 12's opener goes to the identity script, which writes the device index `s-12-index` and its placement | The fix brief's line on chapter 12; my script writes only my sentence of the intro and Rules 12.5 to 12.9 |
+| D2-1777 | Chapters 05 and 06's openers are live text (`readable`); 07's and 11's are pictures | Call 3 makes the three faces and words a reader can select live text; a swatch list with its names and shares reads the same way, and the grids and the tracker are drawings |
+| D2-1778 | Chapter 05's opener is a light palette, swatches with names and shares in the share bar's order | Call 3 prefers a light version over a copy of a heavy plate; that order keeps Stone between Prussian and Pillar Red, as D2-1544's check asks of the share bar |
+| D2-1779 | Chapter 05's opener writes each share with %, as Rule 05.1's share bar keys it | "60 to 85%" holds one line under a swatch seven across; the palette plate keeps "percent" |
+| D2-1780 | Chapter 05's second intro paragraph drops its last sentence, which repeated the instruction line | The opener's names and shares then reach the first screen at 1440 px |
+| D2-1781 | Chapter 11's opener shows a state bill at its hearing with the take-part disc, and says so in a line under it | The disc is what makes the chapter read as ours (the distinctiveness test), and the line keeps the opener from claiming every hearing takes public testimony, which Rule 11.1's sources limit to many states |
+| D2-1782 | Every failure plate in my chapters carries the bar, added by the stage A build where a plate lacks it, with "Failure case: do not publish." at the head of its alt | Call 4; each draws a piece a reader could lift, so none goes without |
+| D2-1783 | Rule 05.3 keeps four approved sentences in its body and moves six to Specifications, word for word; the generator checks each sentence lands once | CD-S10 and the approved wording (D2-01, DR-66); this replaces D2-207's whole-wording body. The first sentence stays because the second's "then" follows from it, and the precedence stays inside the sentence that states the rule |
+| D2-1784 | The 24 px inset goes on every quarter-size grid plate in chapter 07, failures included | CD-S6 named one; three more had the same flush edge |
+| D2-1785 | Every keyline on red in chapters 05 and 11, and chapter 05's swatch edges, draw as 1 px borders | CD-S7; forced colors keeps a border, and chapter 18's code draws it so |
+| D2-1786 | Plate ratios print "N.NN to 1" with no-break spaces | DT-S11; a ratio split over two lines read as "6.18 to" and a stray "1" |
+| D2-1787 | Reset's object is in its visible words, not only its accessible name | Rule 11.14's spec ("Reset or Start over, with its object"); a name that matches the words meets WCAG 2.5.3 Label in Name with no extra markup |
+| D2-1788 | Chapter 17's control row lets each button keep its words on one line, and stacks Reset under Play where both do not fit | "Reset the ring" broke over two lines in a 169 px column |
+| D2-1789 | Rule 17.9 names the inside ring as the case for a control whose neighbor stands too close | DT-S2's words for Rule 17.9, since the component engineer kept inside rings at −4 px, citing Rule 18.11 |
+| D2-1790 | The check-date notice takes the warning's 4 px bar in ink in Rule 11.10's plate, as the tracker set does | The main session's item 2; one warning look everywhere |
+| D2-1791 | Chapter 11's live form keeps `aria-invalid="false"` until a wrong Send and again once fixed | The main session's item 3; chapter 18's form does the same |
+| D2-1792 | Rule 06.10 carries the one link a product loads, and Rule 06.1 points to it | Call 6's words, "A product loads the three faces with this link (Rule 06.10)"; one link in one place |
+
+### Systems designer, the second pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1793 | Chapter 11's opener takes the state route's step names, so step 6 is Governor | Rule 11.1 names step 6 for whoever signs, and the opener shows a state bill |
+| D2-1794 | My chapter 12 intro sentence names only its group of rules | The device index under the intro lists each device with its rule, and a shorter paragraph lifts it into the first screen |
+
+### Identity designer, the fix pass (`20261111_Gate-2-Fix-Identity-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1795 | Rule 12.4 keeps its seventeen-word title | DR-216 approved the creative director's words as the rule's title, and settled decisions stay settled (fix brief). Shortening it would cut the approved choice it states |
+| D2-1796 | Chapter 03's opener draws its masters by `<use>` of the ones `s-03-lockups` carries, with ids, and shows L1, L8, S1, L4, L3, L7 and, where the column holds it, L5; L6 is named in the caption | Seven lockups inline weigh about 56 KB, over the 16 KB ceiling. A reference adds about 9 KB and no drawing. L6's 884 px and L5's 400 px cannot fit a phone at true size, and Rule 03.4 forbids drawing them smaller |
+| D2-1797 | Chapter 04's opener sets B and the hinge headline in two frames, and the headline in H3 at 26 px on a phone | Rule 04.2 allows one ampersand moment per composition, so each frame is one composition. The title style's "The zoning code" runs about 420 px, wider than a phone's column, and Rule 04.3 keeps each phrase whole on its line |
+| D2-1798 | Chapter 01's opener reads the editor's `s-01-pieces` each run and keeps the pillar, kicker, headline, Track's "as of" date, hinge divider, "What you can do", step and button | The words and drawings stay the editor's and follow any change to the full plate. Track keeps its date, so its step reads as of a day. The full plate carries the sources after the rule index, and the caption says so |
+| D2-1799 | Chapter 01's opener writes its manifest row to `manifest-identity-ch01.json` | The identity build rewrites `manifest-identity.json` from its own records, and the editor's build owns `manifest-editor.json` |
+| D2-1800 | An opener keeps only the shared CSS rules its classes use; any identity specimen whose id ends "-opener" gets this | Chapter 08's opener weighed 16,668 bytes with the full shared sheet, and 14,920 with the rules it uses |
+| D2-1801 | `fragment()` adds the do-not-publish band to every identity failure plate that lacks one, and the build opens its alt "Failure case: do not publish." | CD-S2 asks for the band on every plate that draws a piece a reader could lift, and every identity failure plate draws one: a mark, a card, a page, a tile or a flyer |
+| D2-1802 | The band's words take `--oa-color-text-primary-on-charcoal` on `--oa-color-surface-charcoal` | CD-S2's direction; the old `action-primary` tokens printed White, and on a Charcoal stage the fill token would have turned the band Newsprint |
+| D2-1803 | `s-03-2-failure` and `s-03-7-failure` widen from 200 and 300 px to 336 px | The band's words need about 265 px to hold one line, and the stage is the plate's frame, not the piece. The tile and the signature keep their sizes |
+| D2-1804 | `s-04-8-failure` carries its Illustrative label inside the piece | The shell puts the label first in the caption when a piece shows none, which pushed "Fails Rule 04.8." off the lead |
+| D2-1805 | Rule 04.4's new title is "Set a hinge divider before the step a reader can take." | One clause under twelve words that still says where the divider goes. The old title's clause opens the rule |
+| D2-1806 | Rule 09.2's words follow the drawing: the current word is bold at every size, and the 48 px row's words are all bold | The approved 48 px row (DR-111) sets every word bold, so the rule states what the row draws and the underline marks the current word there |
+| D2-1807 | The identity players' Reset names its object in visible words, and their controls become a wrapping row of one-line buttons | Rule 11.14; visible words serve every reader, and the label stays inside the accessible name. In the equal-column grid "Reset the lockmark" broke onto two lines |
+| D2-1808 | The 03 and 08 openers lay out on whole pixels, and so does the lockups sheet | Craft check 2: L3's masthead master and the 24 and 48 px lockmark masters are drawn on the pixel grid and must land on it |
+| D2-1809 | Chapter 12's intro sentence changes shape as well as length | The shorter "Rules 12.1 to 12.4 cover ..." would open the same way as the systems designer's next sentence (W13) |
+| D2-1810 | The proofs' intro becomes one paragraph, and the S1 record moves to its own proof | The creative director's opener form asks for short intros, and the first proof now reaches the first screen |
+| D2-1811 | `stage_c_identity_ch17.py` adds its own folder to the path and, run alone, runs the identity build | The fix brief's chain names it with `python3 -I`, which left its imports unresolved. This is the smallest change that lets that line work; the module's imports stay as they were |
+
+### Identity designer, the second pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1812 | The opener's Track piece keeps its deck, and the step stops if it loses it | DR-98 asks for the bill named whole, with both provisions, at its first mention in each chapter, and the opener now holds that first mention |
+| D2-1813 | The alt joins each piece's parts in short sentences ("... as of November 5, 2026. H.R. 7008, ... It ends on Follow this bill.") | The deck is a full sentence of its own, and a run-on alt would bury it |
