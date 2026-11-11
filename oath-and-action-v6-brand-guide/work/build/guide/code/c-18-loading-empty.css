@@ -1,0 +1,15 @@
+/* Loading and empty. Loading shows its words in a status line beside a still outline, which never pulses or turns.
+   Empty says what is missing and what to do next, in a dashed region. Neither takes focus. Reads only tokens.css. */
+.oa-wait-set { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
+.oa-wait-k { margin: var(--oa-space-300) 0 var(--oa-space-100); font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
+.oa-wait-k:first-child { margin-top: 0 }
+.oa-wait-loading { display: flex; align-items: center; gap: var(--oa-space-150); margin: 0; font: var(--oa-type-ui); color: var(--oa-color-state-loading-text) }
+.oa-wait-still { display: block; flex: none; box-sizing: border-box; width: var(--oa-space-200); height: var(--oa-space-200);
+  border: var(--oa-border-width-rule) solid var(--oa-color-state-loading-mark); border-radius: var(--oa-radius-full) }
+.oa-wait-empty { max-width: var(--oa-layout-measure-body-max); margin: 0; padding: var(--oa-space-150);
+  border: var(--oa-border-width-hairline) dashed var(--oa-color-state-empty-edge); color: var(--oa-color-state-empty-text); font: var(--oa-type-body-small) }
+
+@media (forced-colors: active) {
+  .oa-wait-still, .oa-wait-empty { border-color: CanvasText }
+}

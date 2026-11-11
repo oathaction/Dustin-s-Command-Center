@@ -14,7 +14,6 @@
   margin: calc(-1 * var(--oa-border-width-hairline)) calc(-1 * var(--oa-border-width-hairline)) calc(-1 * var(--oa-border-width-hairline)) 0; padding: 0;
   border: 0; border-radius: var(--oa-radius-none); background: transparent; color: var(--oa-color-text-primary); cursor: pointer }
 .oa-search-clear[hidden] { display: none }
-.oa-search-clear:hover { color: var(--oa-color-text-primary); box-shadow: none; text-decoration: underline }
 .oa-search-clear:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: calc(-1 * var(--oa-border-width-focus-ring)) }
 .oa-search-clear-icon { display: block; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
 .oa-search-status { margin: var(--oa-space-150) 0 0; font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }

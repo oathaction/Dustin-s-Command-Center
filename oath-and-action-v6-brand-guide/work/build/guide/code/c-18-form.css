@@ -1,0 +1,48 @@
+/* Form field, its error and the form's success (Rule 11.15). Each field has a visible label and its hint below it;
+   an error draws the 4 px red bar at the field's left edge and a message the field points to, with the mark in ink and
+   "Error:". While an error holds the red, the ask yields to the primary fill (Rule 11.16). Reads only tokens.css. */
+.oa-form { max-width: 30rem; font: var(--oa-type-body); color: var(--oa-color-text-primary) }
+.oa-form-illus { display: inline-block; margin: 0 0 var(--oa-space-100); padding: 0 var(--oa-space-050);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline); font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing); color: var(--oa-color-text-secondary) }
+.oa-form-title { margin: 0; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); text-wrap: balance }
+.oa-form-lede { margin: var(--oa-space-100) 0 var(--oa-space-200); font: var(--oa-type-body-small) }
+.oa-form-field { margin: 0 0 var(--oa-space-200) }
+.oa-form-label { display: block; font: var(--oa-type-ui); font-weight: var(--oa-font-weight-semibold) }
+.oa-form-hint { margin: 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
+.oa-form-input { display: block; box-sizing: border-box; width: 100%; min-height: var(--oa-space-600); margin: var(--oa-space-050) 0 0;
+  padding: 0 var(--oa-space-150); border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); border-radius: var(--oa-radius-none);
+  background: var(--oa-color-field-ground); color: var(--oa-color-text-primary); font: var(--oa-type-body) }
+.oa-form-input:hover { border-width: var(--oa-border-width-rule); padding-inline: calc(var(--oa-space-150) - 1px) }
+.oa-form-input:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
+/* A field with an error: the red bar at its left edge, drawn as a border so it holds in forced colors */
+.oa-form-input[aria-invalid="true"], .oa-form-input[aria-invalid="true"]:hover { border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-mark);
+  padding-left: calc(var(--oa-space-150) - var(--oa-border-width-bar) + var(--oa-border-width-hairline)) }
+.oa-form-error { display: flex; align-items: flex-start; gap: var(--oa-space-100); margin: var(--oa-space-100) 0 0; padding: var(--oa-space-100) var(--oa-space-150);
+  background: var(--oa-color-state-error-band, transparent); color: var(--oa-color-state-error-text);
+  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-mark); font: var(--oa-type-body-small) }
+.oa-form-error[hidden] { display: none }
+.oa-form-mark { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
+.oa-form-error b, .oa-form-status b { font-weight: var(--oa-font-weight-bold) }
+/* The ask: 48 px tall, in the view's working red with its keyline where the surface needs one */
+.oa-form-send { display: inline-flex; align-items: center; box-sizing: border-box; max-width: 100%; min-height: var(--oa-space-600); margin: 0;
+  padding: var(--oa-space-100) var(--oa-space-300); border: var(--oa-border-width-hairline) solid var(--oa-component-button-ask-keyline, var(--oa-component-button-ask-fill));
+  border-radius: var(--oa-radius-none); background: var(--oa-component-button-ask-fill); color: var(--oa-component-button-ask-label);
+  font: var(--oa-type-ask); text-align: start; overflow-wrap: anywhere; cursor: pointer }
+.oa-form-send:not([aria-disabled="true"]):hover { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
+.oa-form-send:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
+.oa-form-send[data-oa-yield] { background: var(--oa-component-button-primary-fill); border-color: var(--oa-component-button-primary-fill);
+  color: var(--oa-component-button-primary-label) }
+/* Sending: the ask keeps focus, takes aria-disabled and points to the status line */
+.oa-form-send[aria-disabled="true"] { background: transparent; border: var(--oa-border-width-hairline) dashed var(--oa-component-button-disabled-edge);
+  color: var(--oa-component-button-disabled-label); cursor: not-allowed }
+.oa-form-status { margin: var(--oa-space-150) 0 0; font: var(--oa-type-body-small); color: var(--oa-color-state-success-text) }
+.oa-form-status:empty { display: none }
+.oa-form-status:has(.oa-form-mark--ok) { display: flex; align-items: flex-start; gap: var(--oa-space-100) }
+.oa-form-mark--ok { color: var(--oa-color-state-success-mark) }
+
+@media (forced-colors: active) {
+  .oa-form-input, .oa-form-error { border-color: CanvasText }
+  .oa-form-send { border-color: ButtonText }
+  .oa-form-send[aria-disabled="true"] { border-color: GrayText; color: GrayText }
+}
