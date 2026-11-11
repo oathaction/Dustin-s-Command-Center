@@ -18,7 +18,7 @@
   var ROLES = ['subject', 'context', 'secondary', 'baseline', 'gridline', 'label', 'point', 'point-keyline', 'band', 'track', 'light-fill',
     'land', 'party', 'leader', 'chip-fill', 'chip-label', 'surface', 'label-on-subject', 'sequential-outline',
     'seq-1', 'seq-2', 'seq-3', 'seq-4', 'seq-5', 'div-1', 'div-2', 'div-3', 'div-4', 'div-5', 'mag-1', 'mag-2', 'mag-3', 'mag-4',
-    'cat-1', 'cat-2', 'cat-3', 'cat-4', 'ghost', 'none'];
+    'cat-1', 'cat-2', 'cat-3', 'cat-4', 'on-cat-1', 'on-cat-2', 'on-cat-3', 'beside-cat-4', 'ghost', 'none'];
   K.ROLES = ROLES;
   var TEXT_ROLES = { tick: 'type-tick', label: 'type-label', note: 'type-note', big: 'type-big', eyebrow: 'type-eyebrow' };
 
@@ -402,7 +402,7 @@
     var vm = metrics().vertical[face === 'display' ? 'Inter Tight|800' : 'Inter|400'] || { ascent: 969, descent: 241 };
     var asc = size * vm.ascent / 1000, desc = size * vm.descent / 1000, half = (asc + desc - size) / 2;
     var box = { x: x0, y: y - asc + half, w: w, h: asc + desc - 2 * half + lh * (lines.length - 1), size: size, words: String(words), role: role,
-      overlap_ok: !!o.overlap_ok, id: o.guard_id, top: y - asc, bottom: y + desc + lh * (lines.length - 1) };
+      overlap_ok: !!o.overlap_ok, id: o.guard_id, top: y - asc, bottom: y + desc + lh * (lines.length - 1), halo: !!o.halo, fill: o.fill };
     this.texts.push(box);
     return box;
   };

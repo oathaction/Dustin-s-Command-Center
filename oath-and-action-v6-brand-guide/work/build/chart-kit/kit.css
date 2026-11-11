@@ -80,11 +80,15 @@
 .oac-f-div-5 { fill: var(--oa-chart-color-diverging-fill-step5); }
 .oac-f-mag-1 { fill: var(--oa-chart-color-magnitude-fill-step1); } .oac-f-mag-2 { fill: var(--oa-chart-color-magnitude-fill-step2); }
 .oac-f-mag-3 { fill: var(--oa-chart-color-magnitude-fill-step3); } .oac-f-mag-4 { fill: var(--oa-chart-color-magnitude-fill-step4); }
-/* The categorical set (DR-234): Charcoal, Prussian, Verdigris, Stone, from release 6.0.0-gate3.1 (proposed until board 1) */
+/* The categorical set (DR-234): Charcoal, Verdigris, Prussian, Stone, from release 6.0.0-gate3.1 (proposed until board 1).
+   Text on groups 1 to 3 takes the group's label ink; group 4's label sits beside its hatch or on a halo (labelBeside), and
+   checks.js refuses a label on group 4's fill. */
 .oac-f-cat-1 { fill: var(--oa-chart-color-categorical-fill-group1); } .oac-s-cat-1 { stroke: var(--oa-chart-color-categorical-fill-group1); fill: none; }
 .oac-f-cat-2 { fill: var(--oa-chart-color-categorical-fill-group2); } .oac-s-cat-2 { stroke: var(--oa-chart-color-categorical-fill-group2); fill: none; }
 .oac-f-cat-3 { fill: var(--oa-chart-color-categorical-fill-group3); } .oac-s-cat-3 { stroke: var(--oa-chart-color-categorical-fill-group3); fill: none; }
 .oac-f-cat-4 { fill: var(--oa-chart-color-categorical-fill-group4); } .oac-s-cat-4 { stroke: var(--oa-chart-color-categorical-fill-group4); fill: none; }
+.oac-f-on-cat-1 { fill: var(--oa-chart-color-categorical-label-group1); } .oac-f-on-cat-2 { fill: var(--oa-chart-color-categorical-label-group2); }
+.oac-f-on-cat-3 { fill: var(--oa-chart-color-categorical-label-group3); } .oac-f-beside-cat-4 { fill: var(--oa-chart-color-categorical-label-beside-group4); }
 .oac-s-ghost { stroke: var(--oa-chart-color-ghost); fill: none; }
 .oac-f-none { fill: none; }
 .oac-svg line, .oac-svg path, .oac-svg polyline { vector-effect: non-scaling-stroke; }

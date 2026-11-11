@@ -209,6 +209,8 @@ function role_color(role, tok) {
     'light-fill': 'chart-color-light-fill', land: 'chart-color-land', party: 'chart-color-party-mark', leader: 'chart-color-leader',
     'cat-1': 'chart-color-categorical-fill-group1', 'cat-2': 'chart-color-categorical-fill-group2',
     'cat-3': 'chart-color-categorical-fill-group3', 'cat-4': 'chart-color-categorical-fill-group4', ghost: 'chart-color-ghost',
+    'on-cat-1': 'chart-color-categorical-label-group1', 'on-cat-2': 'chart-color-categorical-label-group2',
+    'on-cat-3': 'chart-color-categorical-label-group3', 'beside-cat-4': 'chart-color-categorical-label-beside-group4',
   };
   for (let i = 1; i <= 5; i++) { names['seq-' + i] = 'chart-color-sequential-fill-step' + i; names['div-' + i] = 'chart-color-diverging-fill-step' + i; }
   for (let i = 1; i <= 4; i++) names['mag-' + i] = 'chart-color-magnitude-fill-step' + i;
@@ -236,6 +238,14 @@ function check_drawing(spec, d, tok, where) {
     if (m.area_of) {
       const want = m.area_of.value > 0 ? Math.sqrt(m.area_of.value / m.area_of.max_value) * m.area_of.max_radius : 0;
       if (Math.abs(want - m.r) > 0.5) f.push(`chart: circle ${key} is not sized by area (radius ${m.r.toFixed(2)}, area rule gives ${want.toFixed(2)})${at}`);
+    }
+  }
+  // group 4's label sits beside its hatch or on a halo of the ground, never on the fill (labelBeside, D3-84 fix pass)
+  for (const m of d.marks.filter(x => x.fill === 'cat-4')) {
+    for (const t of d.texts || []) {
+      if (t.halo) continue;
+      const cx = t.x + t.w / 2, cy = t.y + t.h / 2;
+      if (cx > m.x && cx < m.x + m.w && cy > m.y && cy < m.y + m.h) f.push(`chart: "${String(t.words).slice(0, 30)}" is set on group 4's hatch; set it beside the hatch or on a halo${at}`);
     }
   }
   const color = m => role_color(m.fill || m.stroke, tok);

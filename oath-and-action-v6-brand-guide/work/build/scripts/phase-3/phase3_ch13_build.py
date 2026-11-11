@@ -320,6 +320,7 @@ CSS = {
     "fx": ".fx{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}@media (min-width:48em){.fx.two{grid-template-columns:repeat(2,minmax(0,1fr))}}",
     "rw": ".rw{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}",
     "lp": ".lp+.lp{margin-top:20px;padding-top:16px;border-top:1px solid var(--oa-color-border-hairline)}.lp .k{margin-bottom:10px}",
+    "wt": ".st.wt{grid-template-columns:148px minmax(0,1fr)}@media (max-width:30em){.st.wt{grid-template-columns:minmax(0,1fr)}}",
     "st": ".st{display:grid;grid-template-columns:88px minmax(0,1fr);gap:4px 12px;align-items:start;margin-top:10px}.st .ln{margin-top:5px}"
           "@media (max-width:30em){.st{grid-template-columns:minmax(0,1fr);gap:2px}.st .ln{margin-top:0}}",
     "hed": f".hed{{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;margin:0 0 4px;font:var(--oa-type-body-small)}}",
@@ -430,13 +431,14 @@ def opener(book):
              ("The typed chip for every atlas ID", "13.9"),
              ("The snapshot date, since the record can change", "13.10")]
     body = (f'<div class="fx two"><div>'
-            + diagram_label("plausible", "some evidence, the atlas’s grade for this connection")[:-6] + f'{mk(2)}</div>'
+            f'<div class="evr"><span class="ev">{e(GRADE["plausible"][0])}</span>{mk(2)}<span class="gr">some evidence, the '
+            f'atlas’s grade for this connection</span></div>'
             f'<p class="hed">{chip("Connection", "L02")}{mk(5)}<span class="sub">in {chip("Loop", "R1")}</span></p>'
             f'<p class="ct">“{e(head)} can{mk(1)} {e(tail)}”</p>'
             f'<p class="ms">From {chip("Variable", "B1", ",")} {e(lc(node_title("B1")))}, to {chip("Variable", "E1", ",")} '
             f'{e(lc(node_title("E1")))}</p>'
-            f'<div class="st">{line_svg("plausible", STEP_W, delay="M", sign="+")}<p>{mk(3)}{grade_word("plausible")}. '
-            f'Sign +, the two move the same way. Delay M, {DELAY["M"][1]}, two ticks{mk(4)}</p></div>'
+            f'<div class="rw blk">{line_svg("plausible", 168, delay="M", sign="+")}{mk(3)}</div>'
+            f'<p>{grade_word("plausible")}. Sign +, the two move the same way. Delay M, {DELAY["M"][1]}, two ticks{mk(4)}</p>'
             f'<p class="src">Source: {e(ATLAS)}, connection L02, snapshot of {SNAP}{mk(6)}, United States.</p></div>'
             f'<div><p class="k">What each part carries</p><ol class="ol">'
             + "".join(f"<li>{e(w)}, Rule {r}</li>" for w, r in parts) + "</ol></div></div>")
@@ -979,7 +981,7 @@ def rule_13_5(book):
         rowsx.append(f'<div class="fxr"><span class="fn">{e(FAMILY[fam])}</span>{pips_svg(code)}'
                      f'<span><b>{e(code)}</b> {e(words)}</span></div>')
     targets = "".join(
-        f'<div class="st">{line_svg(c["evidence"], STEP_W, delay=c["delay"], sign=c["polarity"], target=True)}'
+        f'<div class="st wt">{line_svg(c["evidence"], 148, delay=c["delay"], sign=c["polarity"], target=True)}'
         f'<p>{chip("Connection", cid)} “{e(c["name"])}”. Delay {c["delay"]}, {DELAY[c["delay"]][1]}.</p></div>'
         for cid, c in (("L39", l39), ("LE17", le17)))
     body = (diagram_label("plausible", "some evidence, the grade of the evidence that the reform works")

@@ -453,7 +453,8 @@ async function self_test() {
     ['text under 13 px', d => { d.guard = K.guard({ texts: [{ x: 10, y: 10, w: 40, h: 12, size: 11, words: 'tiny' }] }, d.width, d.height); }, 'under 13 px'],
     ['a party mark in red', d => { d.marks.push({ kind: 'rect', x: 1, y: 1, w: 2, h: 2, fill: 'point', data: { party: 'Republican' } }); }, 'party mark'],
     ['two working reds', d => { d.marks.push({ kind: 'circle', x: 1, y: 1, w: 2, h: 2, fill: 'point', data: {} }, { kind: 'circle', x: 50, y: 50, w: 2, h: 2, fill: 'point', data: {} }); }, 'working reds'],
-    ['red touching Prussian', d => { d.marks.push({ kind: 'circle', x: 10, y: 10, w: 4, h: 4, fill: 'point', data: {} }, { kind: 'rect', x: 13, y: 10, w: 10, h: 10, fill: 'cat-2', data: {} }); }, 'touches Prussian'],
+    ['red touching Prussian', d => { d.marks.push({ kind: 'circle', x: 10, y: 10, w: 4, h: 4, fill: 'point', data: {} }, { kind: 'rect', x: 13, y: 10, w: 10, h: 10, fill: 'cat-3', data: {} }); }, 'touches Prussian'],
+    ['a label on group 4\'s hatch', d => { d.marks.push({ kind: 'rect', x: 0, y: 0, w: 200, h: 40, fill: 'cat-4', data: {} }); d.texts = (d.texts || []).concat([{ x: 10, y: 10, w: 60, h: 16, size: 15, words: 'Group four' }]); }, 'group 4\'s hatch'],
     ['a circle sized by radius', d => { d.marks.push({ kind: 'circle', x: 0, y: 0, w: 20, h: 20, r: 10, data: {}, area_of: { value: 25, max_value: 100, max_radius: 40 } }); }, 'sized by area'],
     ['a key told apart by lightness alone, too close', d => { d.keys = [[{ fill: 'subject' }, { fill: 'cat-1' }]]; }, 'lightness'],
   ];

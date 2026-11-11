@@ -9,7 +9,8 @@
 (function (K) {
   'use strict';
   var DARK = ['subject', 'seq-4', 'seq-5', 'div-1', 'div-5', 'mag-4', 'cat-1', 'cat-2', 'cat-3'];
-  function ink(tint) { return DARK.indexOf(tint) >= 0 ? 'label-on-subject' : 'label'; }
+  // a categorical group takes its own label ink on either ground (oa.chart.color.categorical.label.groupN)
+  function ink(tint) { return /^cat-[123]$/.test(tint) ? 'on-' + tint : DARK.indexOf(tint) >= 0 ? 'label-on-subject' : 'label'; }
   function glyph(c, x, y, s, kind, tint) {
     var k = ink(tint);
     c.rect(x + 0.5, y + 0.5, s - 1, s - 1, { stroke: k === 'label' ? 'label' : 'surface', mark: false });

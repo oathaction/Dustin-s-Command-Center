@@ -56,6 +56,7 @@ ROOT = Path(__file__).resolve().parents[4]
 # Phase 3 (round 0, November 11, 2026): the chart kit's hook, the weight gates and the projection live in their own module
 sys.path.insert(0, str(ROOT / "work/build/scripts/phase-3"))
 import guide_charts  # noqa: E402
+import weight_pass  # noqa: E402   Phase 3 weight pass: CSS white space and PNG compression, no change a reader sees
 GUIDE = ROOT / "work/build/guide"
 SHELL = GUIDE / "shell"
 TOKENS_CSS = ROOT / "work/build/tokens/tokens.css"
@@ -3233,7 +3234,13 @@ def build(args):
         unread = [n for n in unread if n not in sprites.parity(tokens)]
         if unread:
             R.warn("tokens", f"{len(unread)} token(s) in the mark or utility icon family have no reader in the page: {', '.join(unread[:6])}")
+    # the weight pass (Phase 3, round 0): comments and ignorable white space out of every style block, and each shown PNG
+    # compressed again with the same pixels; proved the same page by weight_pass_proof.js. --no-weight-pass skips it.
+    pass_record = None
+    if not getattr(args, "no_weight_pass", False):
+        page, pass_record = weight_pass.run(page)
     weights = weigh(page, sprite_bytes)
+    weights["pass"] = pass_record
     weights["sprites"] = sprite_counts
     weights["fonts_files"] = fonts.bytes
     stop, projection = guide_charts.gates(weights, charts, fonts.bytes if fonts.ok else 0, present, R.warn)
@@ -4002,6 +4009,7 @@ def main():
     ap.add_argument("--sprite-sheet", metavar="JSON", help="write every symbol of every family, with its file, for sprite_check.js, and stop")
     ap.add_argument("--self-test", action="store_true", help="prove the build's checks on fixtures in a temporary folder")
     ap.add_argument("--pilot", help="Phase 3: a folder whose chapters/ and specimens/ join the page (the drawing-method pilot)")
+    ap.add_argument("--no-weight-pass", action="store_true", help="Phase 3: build without the weight pass, to compare (it changes no pixel)")
     ap.add_argument("--chart-method", choices=guide_charts.METHODS, help=f"Phase 3: how charts are drawn (default {guide_charts.DEFAULT_METHOD})")
     args = ap.parse_args()
     if args.sprite_root:

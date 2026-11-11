@@ -9,7 +9,7 @@
  * --oa-color-text-secondary, at that surface's tokens.
  * Themes: the root follows the device, light on Newsprint or dark on Charcoal (DR-204), and
  * data-oa-theme="light" or "dark" on the root wins over the device. See the theme blocks below.
- * Change in 6.0.0-gate3.1: Two new colors, both Prussian mixed toward Newsprint, so the diverging scale works on Charcoal. New roles with no new value: the four-ink categorical set with its label inks, the ghost lines of small multiples, and the evidence line code as stroke styles. Every new token is marked proposed, until our founder and editor approves it.
+ * Change in 6.0.0-gate3.1: Two new colors, both Prussian mixed toward Newsprint, so the diverging scale works on Charcoal. New roles with no new value: the four-ink categorical set in the order Charcoal, Verdigris, Prussian and Stone with its label inks (group 4's label sits beside its hatch, so its token is labelBeside), the ghost lines of small multiples, and the evidence line code as stroke styles with the atlas build's own numbers: 1 px rails at every line width, a dotted line that stops 1.5 line widths short of its arrowhead, and a shortest textured run of 20 line widths. Every new token is marked proposed, until our founder and editor approves it.
  *
  * Media queries cannot read custom properties. Write breakpoints in em, which follows text size:
  *   wide        (min-width: 90em)
@@ -519,20 +519,20 @@
   --oa-chart-color-diverging-label-step5-on-charcoal: var(--oa-color-palette-charcoal);
   --oa-chart-color-categorical-fill-group1-on-newsprint: var(--oa-color-palette-charcoal);
   --oa-chart-color-categorical-fill-group1-on-charcoal: var(--oa-color-palette-newsprint);
-  --oa-chart-color-categorical-fill-group2-on-newsprint: var(--oa-color-palette-prussian);
-  --oa-chart-color-categorical-fill-group2-on-charcoal: var(--oa-color-tint-prussian-n62);
-  --oa-chart-color-categorical-fill-group3-on-newsprint: var(--oa-color-palette-verdigris);
-  --oa-chart-color-categorical-fill-group3-on-charcoal: var(--oa-color-palette-verdigris);
+  --oa-chart-color-categorical-fill-group2-on-newsprint: var(--oa-color-palette-verdigris);
+  --oa-chart-color-categorical-fill-group2-on-charcoal: var(--oa-color-palette-verdigris);
+  --oa-chart-color-categorical-fill-group3-on-newsprint: var(--oa-color-palette-prussian);
+  --oa-chart-color-categorical-fill-group3-on-charcoal: var(--oa-color-tint-prussian-n62);
   --oa-chart-color-categorical-fill-group4-on-newsprint: var(--oa-color-palette-stone);
   --oa-chart-color-categorical-fill-group4-on-charcoal: var(--oa-color-palette-stone);
   --oa-chart-color-categorical-label-group1-on-newsprint: var(--oa-color-palette-white);
   --oa-chart-color-categorical-label-group1-on-charcoal: var(--oa-color-palette-charcoal);
   --oa-chart-color-categorical-label-group2-on-newsprint: var(--oa-color-palette-white);
-  --oa-chart-color-categorical-label-group2-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-categorical-label-group2-on-charcoal: var(--oa-color-palette-white);
   --oa-chart-color-categorical-label-group3-on-newsprint: var(--oa-color-palette-white);
-  --oa-chart-color-categorical-label-group3-on-charcoal: var(--oa-color-palette-white);
-  --oa-chart-color-categorical-label-group4-on-newsprint: var(--oa-color-palette-charcoal);
-  --oa-chart-color-categorical-label-group4-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-categorical-label-group3-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-categorical-label-beside-group4-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-categorical-label-beside-group4-on-charcoal: var(--oa-color-palette-newsprint);
   --oa-chart-color-ghost-on-newsprint: var(--oa-color-tint-stone-n55);
   --oa-chart-color-ghost-on-charcoal: var(--oa-color-tint-stone-c40);
   --oa-chart-color-sequential-fill-step1-on-newsprint: var(--oa-color-tint-verdigris-n82);
@@ -661,10 +661,10 @@
   --oa-chart-grade-hypothesis-dasharray: 0px 2.5px;
   --oa-chart-grade-hypothesis-line-cap: round;
   --oa-chart-grade-conceptual-rail: 1px;
-  --oa-chart-grade-conceptual-rail-selected: 2px;
   --oa-chart-grade-conceptual-gap: 1;
+  --oa-chart-grade-head-clearance: 1.5;
   --oa-chart-grade-record-square: 7px;
-  --oa-chart-grade-min-run: 28;
+  --oa-chart-grade-min-run: 20;
 
   /* oa.chart */
   --oa-chart-gap-years: 1;
@@ -883,7 +883,7 @@
   --oa-chart-color-categorical-label-group1: var(--oa-chart-color-categorical-label-group1-on-newsprint);
   --oa-chart-color-categorical-label-group2: var(--oa-chart-color-categorical-label-group2-on-newsprint);
   --oa-chart-color-categorical-label-group3: var(--oa-chart-color-categorical-label-group3-on-newsprint);
-  --oa-chart-color-categorical-label-group4: var(--oa-chart-color-categorical-label-group4-on-newsprint);
+  --oa-chart-color-categorical-label-beside-group4: var(--oa-chart-color-categorical-label-beside-group4-on-newsprint);
   --oa-chart-color-ghost: var(--oa-chart-color-ghost-on-newsprint);
   --oa-chart-color-sequential-fill-step1: var(--oa-chart-color-sequential-fill-step1-on-newsprint);
   --oa-chart-color-sequential-fill-step2: var(--oa-chart-color-sequential-fill-step2-on-newsprint);
@@ -992,7 +992,7 @@
   --oa-chart-color-categorical-label-group1: initial;
   --oa-chart-color-categorical-label-group2: initial;
   --oa-chart-color-categorical-label-group3: initial;
-  --oa-chart-color-categorical-label-group4: initial;
+  --oa-chart-color-categorical-label-beside-group4: initial;
   --oa-chart-color-ghost: initial;
   --oa-chart-color-sequential-fill-step1: initial;
   --oa-chart-color-sequential-fill-step2: initial;
@@ -1101,7 +1101,7 @@
   --oa-chart-color-categorical-label-group1: var(--oa-chart-color-categorical-label-group1-on-charcoal);
   --oa-chart-color-categorical-label-group2: var(--oa-chart-color-categorical-label-group2-on-charcoal);
   --oa-chart-color-categorical-label-group3: var(--oa-chart-color-categorical-label-group3-on-charcoal);
-  --oa-chart-color-categorical-label-group4: var(--oa-chart-color-categorical-label-group4-on-charcoal);
+  --oa-chart-color-categorical-label-beside-group4: var(--oa-chart-color-categorical-label-beside-group4-on-charcoal);
   --oa-chart-color-ghost: var(--oa-chart-color-ghost-on-charcoal);
   --oa-chart-color-sequential-fill-step1: var(--oa-chart-color-sequential-fill-step1-on-charcoal);
   --oa-chart-color-sequential-fill-step2: var(--oa-chart-color-sequential-fill-step2-on-charcoal);
@@ -1210,7 +1210,7 @@
   --oa-chart-color-categorical-label-group1: initial;
   --oa-chart-color-categorical-label-group2: initial;
   --oa-chart-color-categorical-label-group3: initial;
-  --oa-chart-color-categorical-label-group4: initial;
+  --oa-chart-color-categorical-label-beside-group4: initial;
   --oa-chart-color-ghost: initial;
   --oa-chart-color-sequential-fill-step1: initial;
   --oa-chart-color-sequential-fill-step2: initial;
@@ -1328,7 +1328,7 @@
   --oa-chart-color-categorical-label-group1: var(--oa-chart-color-categorical-label-group1-on-newsprint);
   --oa-chart-color-categorical-label-group2: var(--oa-chart-color-categorical-label-group2-on-newsprint);
   --oa-chart-color-categorical-label-group3: var(--oa-chart-color-categorical-label-group3-on-newsprint);
-  --oa-chart-color-categorical-label-group4: var(--oa-chart-color-categorical-label-group4-on-newsprint);
+  --oa-chart-color-categorical-label-beside-group4: var(--oa-chart-color-categorical-label-beside-group4-on-newsprint);
   --oa-chart-color-ghost: var(--oa-chart-color-ghost-on-newsprint);
   --oa-chart-color-sequential-fill-step1: var(--oa-chart-color-sequential-fill-step1-on-newsprint);
   --oa-chart-color-sequential-fill-step2: var(--oa-chart-color-sequential-fill-step2-on-newsprint);
@@ -1438,7 +1438,7 @@
     --oa-chart-color-categorical-label-group1: var(--oa-chart-color-categorical-label-group1-on-charcoal);
     --oa-chart-color-categorical-label-group2: var(--oa-chart-color-categorical-label-group2-on-charcoal);
     --oa-chart-color-categorical-label-group3: var(--oa-chart-color-categorical-label-group3-on-charcoal);
-    --oa-chart-color-categorical-label-group4: var(--oa-chart-color-categorical-label-group4-on-charcoal);
+    --oa-chart-color-categorical-label-beside-group4: var(--oa-chart-color-categorical-label-beside-group4-on-charcoal);
     --oa-chart-color-ghost: var(--oa-chart-color-ghost-on-charcoal);
     --oa-chart-color-sequential-fill-step1: var(--oa-chart-color-sequential-fill-step1-on-charcoal);
     --oa-chart-color-sequential-fill-step2: var(--oa-chart-color-sequential-fill-step2-on-charcoal);
@@ -1548,7 +1548,7 @@
   --oa-chart-color-categorical-label-group1: var(--oa-chart-color-categorical-label-group1-on-charcoal);
   --oa-chart-color-categorical-label-group2: var(--oa-chart-color-categorical-label-group2-on-charcoal);
   --oa-chart-color-categorical-label-group3: var(--oa-chart-color-categorical-label-group3-on-charcoal);
-  --oa-chart-color-categorical-label-group4: var(--oa-chart-color-categorical-label-group4-on-charcoal);
+  --oa-chart-color-categorical-label-beside-group4: var(--oa-chart-color-categorical-label-beside-group4-on-charcoal);
   --oa-chart-color-ghost: var(--oa-chart-color-ghost-on-charcoal);
   --oa-chart-color-sequential-fill-step1: var(--oa-chart-color-sequential-fill-step1-on-charcoal);
   --oa-chart-color-sequential-fill-step2: var(--oa-chart-color-sequential-fill-step2-on-charcoal);
