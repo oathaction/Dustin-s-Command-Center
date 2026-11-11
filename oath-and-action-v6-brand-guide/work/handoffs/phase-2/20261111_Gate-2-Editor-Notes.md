@@ -243,6 +243,22 @@ Editor, November 11, 2026: DR-191's short second pass over every reader-facing s
 | 12 | Chapter 26, the token table, 209 rows | “needs 3.00 to 1”, “needs 4.50 to 1” | Every rule and plate gives the thresholds in WCAG's form, “3 to 1” and “4.5 to 1”; the table alone adds decimals | Keep WCAG's form for a threshold and two decimals for a measured ratio. Call 8's example, “3.10 to 1”, is a measurement | Engineer (`token_table_build.py`); main session to confirm the reading of call 8 |
 | 13 | `tokens.json`, two descriptions, printed in the token table | “where Pillar Red measures 2.96:1”; “holding 3:1 on the ground and on the land” | The colon form that call 8 retires | “2.96 to 1”; “3 to 1” | Engineer |
 
+### The identity designer's strings, read after commit 36fb904e
+
+Read by the same scripts at HEAD: 51 changed chapter strings (28 of them only the new lead) and the words and alts of 75 changed specimens, 55 strings of them beyond the do-not-publish bar. Everything on the identity designer's list for the editor is among them. The locked lines in the new openers and the sign-off are exact. Chapter 01's pillar row already sets all four 48 px words bold, as Rule 09.2 now says, so chapter 01 needs no change. The systems designer's shorter chapter 12 sentence has not landed: chapter 12's second intro sentence still reads “Rules 12.5 to 12.9 cover the devices that explain a system: …”.
+
+| # | Where | The string | The fault | The fix | Owner |
+|---|---|---|---|---|---|
+| 14 | Chapter 01, opener `s-01-opener`, the Track piece and its alt | “Tracker · Congress Stop Insider Trading Act Tracker As of November 5, 2026 What you can do Get an email the day the Senate schedules its next vote on the bill.” | The opener is now the bill's first mention in chapter 01. It names the stock ban alone, and both provisions first appear in `s-01-pieces`, further down the chapter. DR-98 asks for the bill named whole, with both provisions, at its first mention in each chapter | Under the headline, the deck: “H.R. 7008, the Stop Insider Trading Act, as the House passed it, would bar members of Congress, their spouses and dependent children from buying individual stocks, and would require photo ID to vote in federal elections.” That is `HR7008_FIRST` in `guide_editor_common.py`. Add the same words to the alt, and an assert in `stage_b_identity_ch01.py` so a rebuild keeps them | Identity designer |
+| 15 | `s-01-opener` alt | “… Stop Insider Trading Act Tracker, as of november 5, 2026, …” | The month lacks its capital | “as of November 5, 2026” | Identity designer |
+| 16 | Chapter 04, Rule 04.3, first sentence | “A hinge headline joins two noun phrases with B, as in “The zoning code & the rent.”, and B takes the view’s working red, …” | The headline's own period runs into the sentence's comma, “.”, and”, which reads as two sentences glued together | “A hinge headline joins two noun phrases with B and gives B the view’s working red, as in “The zoning code & the rent.” That red is the one each view may spend, so when an error or a step the reader can take now already holds it, B takes the headline’s ink.” | Identity designer |
+| 17 | Chapter 08, Rule 08.2, second sentence | “Each place sets the lockmark’s size, as this rule’s specifications list them, and draws the master made for that size.” | “Them” has nothing plural to point at | “Each place sets the lockmark’s size, which this rule’s specifications list, and draws the master made for that size.” | Identity designer |
+| 18 | Chapter 03, opener caption | “… and L6, at 884 px, has its own plate under Rule 03.2.” | L6 is the one lockup the opener neither draws nor names, so the code stands bare (H11) | “… and L6, the 884 px strip that closes a report, has its own plate under Rule 03.2.” | Identity designer |
+| 19 | `s-03-opener` alt | “L1, the wordmark, beside L8, the O & A monogram; …” | Rule 03.7 retires the spaced “O & A”, and the alt names L8 by it | “L1, the wordmark, beside L8, the monogram; …” | Identity designer |
+| 20 | Chapter 04, opener caption | “On a phone the headline sets in H3, so each phrase stays whole on its line.” | “H3” is a style name chapter 06 introduces later in the book, so the caption leans on a term the reader has not met | “On a phone the headline drops to 26 px, so each phrase stays whole on its line.” The plate's own label may keep “H3, 26 px” | Identity designer |
+
+Read and passed: Rule 03.8's basis now matches the others' form; Rules 04.4 and 08.2's shorter titles keep their meaning, with every dropped size in 08.2's specification rows; Rule 09.2 and its Bold row agree with each other and with chapter 01; the proofs' intro and the S1 record sentence; “Reset the wordmark” and “Reset the lockmark”; “Fails Rules 03.1 and 03.5.”; Rule 04.5's alt; the chapter 08 opener's words and alt; chapter 12's opener caption and first intro sentence. The chapter 01 opener's Connect date checks: April 13, 2027 is a Tuesday, as it prints.
+
 ### Read and passed, with a note
 
 - Rule 05.3's specification rows repeat their labels, as in “A hinge headline: A hinge headline’s ampersand uses the view’s working red.” They keep D1-26's words exactly, and that matters more than the echo. No change.
@@ -253,7 +269,7 @@ Editor, November 11, 2026: DR-191's short second pass over every reader-facing s
 
 ### Most serious
 
-Items 2 and 8 weaken accessibility requirements in titles that the contents rail and every rule index repeat. Item 3 contradicts itself in a rule, and `tokens.json` carries the same sentence into every product. Item 5 overstates a fact on chapter 11's first screen.
+Item 14 breaks DR-98 on chapter 01's first screen: the bill is named without its photo ID provision at its first mention. Items 2 and 8 weaken accessibility requirements in titles that the contents rail and every rule index repeat. Item 3 contradicts itself in a rule, and `tokens.json` carries the same sentence into every product. Item 5 overstates a fact on chapter 11's first screen.
 
 ### Tested (read)
 
