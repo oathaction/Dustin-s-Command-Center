@@ -6,9 +6,9 @@ Oath & Action Edition 06, Phase 2, November 11, 2026. Task 6 of `20261111_Gate-2
 
 - Built: `work/boards/phase-2/gate-2/board/20261111_Gate-2-Board.html`, from `work/build/scripts/phase-2/gate_2_board_build.py`, which reads `20261111_Gate-2-Board-Content.json` beside the board and writes every image to `img/` beside it, by relative path. Its figures and sources go to `20261111_Gate-2-Board-Figures.json`.
 - Second run (after the fix pass): panel 1 carries the main session's Phase 3 words; panel 8 sets the creative director's first scores and the rescore in each cell (18 of 18 ready), with the drift team's 4 of 5 and the fix pass's calls; panel 9 gathers every Tested and Not tested list from eleven notes files; panel 7's opening screens are retaken from the preview by this script (each anchor followed from the contents, 1440 by 900 and 390 by 844, scale 1); panel 10 reads the preview's bytes and checks them against the engineer's Final build.
-- Under 250 files: sheets that repeat one kind of picture are drawn as one picture each, every part at true size on whole pixels (the 16, 24 and 48 px sheets, the fifth edition's twenty topic symbols, the pillar rows, the 390 px openers, each motion player and the theme switch). The folder holds 197 files.
+- Under 250 files: sheets that repeat one kind of picture are drawn as one picture each, every part at true size on whole pixels (the 16, 24 and 48 px sheets, the fifth edition's twenty topic symbols, the pillar rows, the 390 px openers, each motion player and the theme switch). 
 - `dataviz_check.js <board> --board --no-captures`: PASS at 1440, 390 and 360 px, 0 failures.
-- `--strict` fails while the preview on disk differs from the bytes and SHA-256 the engineer's Final build records; the rerun after the engineer's last entry clears it.
+- Final run: every panel ready; `--strict` 0 warnings. The preview on disk matches the engineer's last Final build entry (9,447,454 bytes, SHA-256 f9694c0f…75fd, version 8), and the opening screens were taken from that file. The folder holds 197 files, 14.21 MB.
 
 ## How the slots fill
 

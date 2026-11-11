@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/gate-2/board/20261111_Gate-2-Board.html",
- "checked": "2026-11-11T19:21:25.931Z",
+ "checked": "2026-11-11T19:33:09.032Z",
  "views": [
   "overview"
  ],
@@ -42,7 +42,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 49299,
+   "height": 49293,
    "axe": [],
    "focusStops": 40,
    "focusWithoutRing": []
@@ -84,7 +84,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 81240,
+   "height": 81162,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -126,7 +126,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 83769,
+   "height": 83718,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null

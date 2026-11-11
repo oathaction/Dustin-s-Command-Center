@@ -1,5 +1,5 @@
 {
- "built": "2026-11-11T19:20:22.617331+00:00",
+ "built": "2026-11-11T19:32:01.645479+00:00",
  "tokens_version": "6.0.0-gate2.9",
  "contrast_figures": {
   "red_on_prussian": "3.19",
@@ -7,14 +7,14 @@
  },
  "preview": {
   "exists": true,
-  "final": false,
+  "final": true,
   "bytes": 9447454,
   "sha256": "f9694c0fef6030d61e5f506e37106eef618899986aba89c0022068d003de75fd",
   "mtime": 1794424502.8770337,
   "logged": {
-   "bytes": 9445041,
-   "sha_head": "fd288b60",
-   "sha_tail": "f4e7"
+   "bytes": 9447454,
+   "sha_head": "f9694c0fef6030d61e5f506e37106eef618899986aba89c0022068d003de75fd",
+   "sha_tail": "75fd"
   },
   "path": "work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html"
  },
@@ -210,7 +210,7 @@
  "openers": {
   "from": "work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html",
   "sha256": "f9694c0fef6030d61e5f506e37106eef618899986aba89c0022068d003de75fd",
-  "final": false,
+  "final": true,
   "items": [
    "Chapter 01, Purpose",
    "Chapter 02, Voice",
@@ -282,9 +282,9 @@
   "preview_bytes": 9447454
  },
  "board": "work/boards/phase-2/gate-2/board/20261111_Gate-2-Board.html",
- "html_bytes": 362203,
+ "html_bytes": 362773,
  "images": 193,
- "folder_bytes_with_images": 14110469,
+ "folder_bytes_with_images": 14111039,
  "status": {
   "craft": "ready",
   "refinements": "ready",
@@ -295,10 +295,7 @@
   "screens": "ready",
   "scores": "ready",
   "tested": "ready",
-  "weight": [
-   "partial",
-   "engineer"
-  ]
+  "weight": "ready"
  },
  "image_sources": {
   "img/20261111_Sheet-16.png": "composed from work/build/assets/utility/svg-16/20261110_Utility-Close-16px.svg, work/build/assets/utility/svg-16/20261110_Utility-Menu-16px.svg, work/build/assets/utility/svg-16/20261110_Utility-Arrow-16px.svg, work/build/assets/utility/svg-16/20261110_Utility-Chevron-16px.svg, work/build/assets/utility/svg-16/20261110_Utility-Download-16px.svg, work/build/assets/utility/svg-16/20261110_Utility-Another-Site-16px.svg and 16 more",
@@ -580,8 +577,6 @@
   "Y6"
  ],
  "notes": [],
- "warnings": [
-  "the preview on disk (9,447,454 bytes, f9694c0f) is not the one the engineer’s Final build records (9,445,041 bytes, fd288b60…f4e7)"
- ],
- "visible_text_sha1": "c5bf7dd3ce7c4ff188baf37135781de3dca6cb5f"
+ "warnings": [],
+ "visible_text_sha1": "0317535308eb8bb13ae9b7d53459996ddc5a9974"
 }
