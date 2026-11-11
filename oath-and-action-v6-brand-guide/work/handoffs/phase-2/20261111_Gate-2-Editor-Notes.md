@@ -212,3 +212,61 @@ D2-xxx | The editor build fails a failure caption without the lead, a title past
 - Regenerated `work/build/guide/chapters/01-purpose.json`, `02-voice.json`, `work/build/guide/specimens/manifest-editor.json` and the chapter 01 and 02 specimens; created `work/build/guide/specimens/s-02-opener.html`.
 - Modified this file.
 - Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/762f3743-f9b3-59db-919e-2c641afbd759/scratchpad/gate-2-fix/editor/` holds the scratch build, `look.js` and its captures.
+
+## Fix pass read
+
+Editor, November 11, 2026: DR-191's short second pass over every reader-facing string changed since commit 043ad4d8, the frozen baseline, for the four owners who are done. The identity designer's strings wait until the main session says they landed.
+
+**How I read.** By script, against 043ad4d8: every string in `work/build/guide/chapters/*.json`, as old and new pairs; the visible words and alt text of every changed specimen and manifest; the changed comments and words in `work/build/guide/code/c-18-*`; every token description in `tokens.json`; and the shell's own text, from a fresh build at HEAD diffed against the frozen page outside the specimens and the chapter words. I then read every pair myself, and for each shortened title I checked by script and by reading that the dropped clause still stands in its rule.
+
+**Counted.** 834 strings read: 79 chapter and 88 specimen strings from the systems designer, 36 chapter strings from the accessibility lead, 14 chapter and 326 specimen strings from the engineer (315 of them token table rows, 287 of which changed only in how a ratio prints), 14 token descriptions, 9 code comments and words from the component engineer, 85 shell and front-page strings, and my own 183 in chapters 01 and 02. 119 identity strings wait, chapter 01's new opener caption among them.
+
+**Locked lines.** Exact in every use on the fresh build, with no near misses: the tagline 17 times, the mission 6, the reader promise 6 and the editorial commitment 14. The pillars run Explain, Track, Connect, Act in all 8 places they appear together. The colophon's sign-off line is the tagline, exact.
+
+**Titles.** 58 titles changed. In 56 the dropped clause still stands in the rule's body or its Specifications. In two the shorter title says less than the rule, items 2 and 8 below.
+
+### Faults
+
+| # | Where | The string | The fault | The fix | Owner |
+|---|---|---|---|---|---|
+| 1 | Chapter 05, Rule 05.7, failure caption | “A scale from red to blue reads as Republican against Democratic before anyone reads its key, which Rules 01.1 and 01.3 keep out of our charts, and it spends …” | “which” attaches to “its key”, so the sentence says the rules keep the key out of our charts | “A scale from red to blue, which Rules 01.1 and 01.3 keep out of our charts, reads as Republican against Democratic before anyone reads its key, and it spends the view’s red on every rising cell.” | Systems designer |
+| 2 | Chapter 17, Rule 17.9, title | “Show hover and focus with an underline, an edge or a ring.” | Meaning lost: the title now lets focus show as an underline or an edge, where the rule asks for a 2 px ring | “Show hover with an underline or an edge and focus with a ring.” | Systems designer |
+| 3 | Chapter 17, Rule 17.10, third paragraph; and the selected band token's description | “Inside the band go only its words, its bar and a check where the row is a choice. On Charcoal the band is Prussian, so a success mark inside it takes Newsprint …” | “Only” rules out the success mark the next sentence places inside the band; the first sentence also runs in an order no one says aloud. The token description says the same with “The band holds its words, the bar and a check.” | Rule 17.10: “The band holds its words, its bar and, where the row is a choice, a check. On Charcoal the band is Prussian, so a success mark set inside it takes Newsprint, as it does on any Prussian ground, and an error or an ask sits outside the band, since red never sits on Prussian (Rule 05.3).” The token takes the same two sentences, with “it” for “the band” | Systems designer (17.10); Engineer (token) |
+| 4 | Chapter 17, Rule 17.3, second paragraph; `s-17-3-correct`, key item 4 | “Reset, named for what it returns, such as Reset the bill (Rule 11.14), …”; “4 Reset, named for what it returns, here the link, which takes the player back to where it rests.” | “Returns” reads as “gives back”; in the key, “which” attaches to “the link”, so the link seems to take the player back; a control's words go in quotes elsewhere in the guide | Rule: “Reset, named for what it resets, such as “Reset the bill” (Rule 11.14), takes either kind back …”. Key: “4 Reset the link, named for what it resets. It takes the player back to where it rests.” | Systems designer |
+| 5 | Chapter 11, opener `s-11-opener`, its words and alt | “Every bill passes the same six steps. Here a state bill is at its hearing …”, with step 6 named “Governor or President” | Many bills stop before step 6, so “passes” claims more than the record; Rule 11.1 names step 6 for whoever signs, which on a state bill is Governor | “A tracker follows every bill through the same six steps. Here a state bill is at its hearing, where the public can take part.” Name step 6 Governor, and match the alt | Systems designer |
+| 6 | Rule 17.9's new sentence and its Focus gap row; `s-18-09-anatomy` callout 4; the comments in `c-18-tabs.css`, `c-18-location.css`, `c-18-link.css`, `c-18-search.css` | “… draws the ring inside its edge with the same 2 px gap, as Rule 18.11 sets.” | Rule 18.11 sets an inside ring only for a scrolling frame and names no gap or offset, so each citation points at a rule that does not say it | Add to Rule 18.11, after its ring sentence: “A control whose neighbor stands too close for an outside ring, such as a tab or a row in a list, draws the same ring inside its own edge, with the 2 px gap, offset −4 px.” The citations then hold | Accessibility lead (Rule 18.11); main session to confirm, since the brief chose 18.11 |
+| 7 | `c-18-tabs.css`, `c-18-location.css`, `c-18-link.css`, `c-18-search.css`, the new focus comment | “… takes its ring inside, its 2 px and its 2 px gap in from the edge, …” | A word is missing: “its 2 px” names no thing | “… takes its focus ring inside its edge: the 2 px ring and its 2 px gap sit in from the edge, …” | Component engineer |
+| 8 | Chapter 18, Rule 18.7, title | “Show where the reader is with aria-current and a visible mark.” | Meaning lost: a visible mark can be color alone, and the old title asked for a mark that holds without color | “Show where the reader is with aria-current and a mark that needs no color.” | Accessibility lead |
+| 9 | Chapter 19, Rule 19.6, title | “Keep every word when text grows, spacing opens or the screen turns.” | Narrower than the rule: the criterion keeps every control working too, and the 200 percent drops out of the title | “Keep every word and control when text grows, spacing opens or the screen turns.” | Accessibility lead |
+| 10 | Chapter 18, Rule 18.1, “Why it works” | “Every component in this chapter hands a screen reader three things: …” | The definitions of accessible name, role, state, status line, ARIA and APG now open a block labeled as the reason, and the chapter's rule index uses “status line” before them | Set the paragraph as Rule 18.1's second rule paragraph, and keep “Why it works” for the reason that follows | Accessibility lead |
+| 11 | Chapter 26, Rule 26.1 | “A token is a named design value, and its name says its job and the surface it sits on. … Each part of the name is a word you can look up, so a name tells you its job.” | The paragraph says twice that the name tells you its job | End the paragraph: “Each part of the name is a word you can look up.” | Engineer |
+| 12 | Chapter 26, the token table, 209 rows | “needs 3.00 to 1”, “needs 4.50 to 1” | Every rule and plate gives the thresholds in WCAG's form, “3 to 1” and “4.5 to 1”; the table alone adds decimals | Keep WCAG's form for a threshold and two decimals for a measured ratio. Call 8's example, “3.10 to 1”, is a measurement | Engineer (`token_table_build.py`); main session to confirm the reading of call 8 |
+| 13 | `tokens.json`, two descriptions, printed in the token table | “where Pillar Red measures 2.96:1”; “holding 3:1 on the ground and on the land” | The colon form that call 8 retires | “2.96 to 1”; “3 to 1” | Engineer |
+
+### Read and passed, with a note
+
+- Rule 05.3's specification rows repeat their labels, as in “A hinge headline: A hinge headline’s ampersand uses the view’s working red.” They keep D1-26's words exactly, and that matters more than the echo. No change.
+- Rule 11.16's title, “Give an error the red when it meets the other red jobs.”, leans on its rule, which names all three jobs in its first sentence. No change.
+- Rule 26.3 now opens by listing the five steps it then walks through. It gives the reader the point first. No change.
+- The token change note for 6.0.0-gate2.9 prints “Error:” in straight quotes, as 22 token descriptions already do. That is the token file's existing convention, so no change this pass. Typographic quotes in `tokens.json` would be a separate call.
+- The three OFL texts in the colophon are quoted verbatim, “--” and straight quotes included, so chapter 02's marks do not apply to them.
+
+### Most serious
+
+Items 2 and 8 weaken accessibility requirements in titles that the contents rail and every rule index repeat. Item 3 contradicts itself in a rule, and `tokens.json` carries the same sentence into every product. Item 5 overstates a fact on chapter 11's first screen.
+
+### Tested (read)
+
+- Chapter strings old against new by script: 330 changed, 97 of them only the new “Fails Rule” lead.
+- Specimen text and alt old against new by script: 271 changed files, 150 of them with words a reader sees or hears.
+- The shell's text on a fresh strict build at HEAD (0 warnings) against the frozen page.
+- Token descriptions and the c-18 comments by `git diff` against 043ad4d8.
+- The locked lines and the pillar order on the fresh build, by script.
+- For each of the 58 changed titles, the dropped words found or not found in the rule's body and Specifications by script, then each one read.
+- Every pair above read by me against chapter 02's rules.
+
+### Not tested (read)
+
+- The identity designer's 119 changed strings, which wait for their pass.
+- Words only the shell's script writes at run time, such as a copy status: the script's diff adds comments and no new words a reader sees.
+- How any of it sounds read aloud.

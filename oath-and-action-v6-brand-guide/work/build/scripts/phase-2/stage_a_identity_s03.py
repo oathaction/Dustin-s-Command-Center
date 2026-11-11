@@ -277,8 +277,11 @@ LOCK_CSS = (".oai-lockgrid{display:grid;grid-template-columns:minmax(0,1fr) minm
             ".oai-lk{padding:20px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}"
             ".oai-lk--span{grid-column:1/-1}"
             ".oai-lk-mark{min-height:88px;display:flex;align-items:flex-end;margin-bottom:10px}"
-            ".oai-lk-name{font-weight:700;font-size:17px}"
-            ".oai-lk-job{font-size:15px;color:var(--oa-color-text-secondary-on-newsprint)}")
+            ".oai-lk-name{font-weight:700;font-size:17px;line-height:24px}"
+            ".oai-lk-job{font-size:15px;line-height:22px;color:var(--oa-color-text-secondary-on-newsprint)}"
+            # Gate 2's fix pass: whole-pixel lines, so every row of the sheet, and L3's masthead master in it, starts on a
+            # whole pixel of the stage
+            ".oai-lockgrid .oai-tag{line-height:20px}")
 
 
 # Gate 2's fix pass (CD-S1): the plate carries each master once with an id, and chapter 03's opener draws the same
