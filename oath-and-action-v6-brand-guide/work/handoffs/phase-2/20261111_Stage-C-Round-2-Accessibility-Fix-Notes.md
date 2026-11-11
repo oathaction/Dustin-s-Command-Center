@@ -145,3 +145,15 @@ DR-191's short second pass, under the main session's message: every row of secti
 ### Change log
 
 Modified: `work/build/scripts/phase-2/stage_c_ch18_build.py` and its outputs `work/build/guide/chapters/18-components.json` and `work/build/guide/specimens/s-18-10-failure.html`; `work/build/scripts/phase-2/stage_c_ch19_build.py` and its outputs `work/build/guide/chapters/19-accessibility.json`, `work/build/guide/specimens/manifest-accessibility.json`, `s-19-criteria.html`, `s-19-matrix.html`, `s-19-opener.html`, `s-19-5-correct.html`, `s-19-5-failure.html` (A22 changes only the 19.2 alts, which live in the manifest); this file. Created: none. Scratch: build `b6/` and captures `shots6/`. Nothing committed.
+
+### Chapter 19's results, rerun from the final checks
+
+At the main session's word, after its final checks on the fixed build (08:40 UTC, commit 04a3f3b8's chain, 8,962,864 bytes, 0 warnings), I wrote the results as a new dated file, `work/handoffs/phase-2/20261111_Stage-C-Round-2-Ch19-Results.json`, and pointed `stage_c_ch19_build.py` at it; round 1's file stays as the record. It names three runs: the guide check at four widths (PASS, 0 failures), the sprite check (PASS) and the token tests (passed, 6.0.0-gate2.8). Every line holds only what those runs' result files hold, read by script: 11 checks tested (automated rules, contrast, keyboard and focus, reading order, forms and messages, text at 200 percent, reduced motion, forced colors, dark surfaces, code to copy, drawings at each screen density) and 10 not tested with the reason (among them 320 px, long labels, print, downloads, grayscale and a person's look at every chapter). No item is open, so no line carries "Open, to fix before launch."
+
+- D2-xxx | Round 2's results live in a new dated file, and round 1's stays unchanged as the record | The main session's instruction; Rule 19.8 asks for dated results that can be compared
+- D2-xxx | The results name only the three runs the main session reported, and list the token download test, print, grayscale, long labels and 320 px as not tested | None of them ran on this build; the guide check's narrowest width is 360 px
+- D2-xxx | "Forms and messages" is tested from chapter 18's form keyboard paths, and "Drawings at each screen density" from the sprite check | Those runs hold those facts; the second is no matrix check, so it carries its own name
+
+Tested: `stage_c_ch19_build.py --check` and `stage_c_ch18_build.py --check` current; a strict build of all 16 chapters into my scratch folder, 0 warnings, 8,965,291 bytes, chapter 19 at 172,893; `s-19-results` looked at in that build at 1440 and 390 px, 1x and 2x. Not tested: the guide check on the page with the new results plate, which changes only that plate's words.
+
+Change log: created `work/handoffs/phase-2/20261111_Stage-C-Round-2-Ch19-Results.json`; modified `work/build/scripts/phase-2/stage_c_ch19_build.py`, `work/build/guide/specimens/s-19-results.html`, `work/build/guide/specimens/manifest-accessibility.json` and this file. Scratch: build `b7/`, captures `shots7/`. Nothing committed.

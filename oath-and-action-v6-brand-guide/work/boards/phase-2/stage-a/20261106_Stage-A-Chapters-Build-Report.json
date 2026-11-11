@@ -1,6 +1,6 @@
 {
  "page": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "built": "2026-11-11T04:28:28",
+ "built": "2026-11-11T09:10:53",
  "chapters": [
   "01",
   "02",
@@ -21,83 +21,83 @@
  ],
  "placeholders": [],
  "rules": 185,
- "specimens_placed": 420,
+ "specimens_placed": 424,
  "tokens": "tokens.css",
  "demo": false,
- "bytes": 9544650,
+ "bytes": 8965291,
  "weight": {
-  "bytes": 9544650,
+  "bytes": 8965291,
   "budget_page": 15500000.0,
   "limit": 16000000,
   "parts": {
-   "head and shell": 175897,
+   "head and shell": 180958,
    "sprites": 210685,
    "front matter and part openers": 15440,
    "appendix": 140999
   },
   "chapters": {
    "01": {
-    "bytes": 2447201,
+    "bytes": 2399152,
     "budget": 2700000.0
    },
    "02": {
-    "bytes": 692845,
+    "bytes": 643308,
     "budget": 850000.0
    },
    "03": {
-    "bytes": 501726,
+    "bytes": 452957,
     "budget": 650000.0
    },
    "04": {
-    "bytes": 294423,
+    "bytes": 245665,
     "budget": 450000.0
    },
    "05": {
-    "bytes": 279911,
+    "bytes": 234353,
     "budget": 450000.0
    },
    "06": {
-    "bytes": 188735,
+    "bytes": 139079,
     "budget": 350000.0
    },
    "07": {
-    "bytes": 142702,
+    "bytes": 93151,
     "budget": 300000.0
    },
    "08": {
-    "bytes": 150045,
+    "bytes": 103135,
     "budget": 300000.0
    },
    "09": {
-    "bytes": 187506,
+    "bytes": 138649,
     "budget": 400000.0
    },
    "10": {
-    "bytes": 573628,
+    "bytes": 524930,
     "budget": 1000000.0
    },
    "11": {
-    "bytes": 476667,
+    "bytes": 430972,
     "budget": 550000.0
    },
    "12": {
-    "bytes": 246642,
+    "bytes": 197209,
     "budget": 500000.0
    },
    "17": {
-    "bytes": 430039,
+    "bytes": 393437,
     "budget": 500000.0
    },
    "18": {
-    "bytes": 1100477,
+    "bytes": 1158506,
     "budget": 1250000.0
    },
    "19": {
-    "bytes": 204360,
+    "bytes": 172893,
     "budget": 300000.0
    },
    "26": {
-    "bytes": 932500,
+    "bytes": 935252,
     "budget": 1000000.0
    }
   },
@@ -108,7 +108,7 @@
    "utility": 36
   }
  },
- "ids_held_whole": 773,
+ "ids_held_whole": 727,
  "warnings": [],
  "notes": []
 }

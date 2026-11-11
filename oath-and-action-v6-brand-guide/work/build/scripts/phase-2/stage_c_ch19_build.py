@@ -20,8 +20,9 @@ Reads:
         examples and definitions are W3C's informative text and stay out (D2-1138); 4.1.1 Parsing is listed as removed
         (D2-1139). Rule 19.1's list prints each criterion's parts in that order, and the build stops when the words it
         printed, read back from its own HTML, differ from the stored copy (round 2, BE-M2).
-    work/handoffs/phase-2/20261111_Stage-C-Round-1-Ch19-Results.json: the guide's own results, dated, Tested and Not
-        tested apart, written by the accessibility lead from the runs it names. A missing file prints as pending.
+    work/handoffs/phase-2/20261111_Stage-C-Round-2-Ch19-Results.json: the guide's own results after round 2's fix pass,
+        dated, Tested and Not tested apart, written by the accessibility lead from the main session's final runs, which it
+        names. Round 1's file stays as the record. A missing file prints as pending.
     work/build/guide/chapters/*.json: every rule this chapter's map cites must exist in a chapter file that is present,
         and a chapter that is not written yet is named in words, never linked.
 
@@ -44,7 +45,7 @@ OUT_CH = GUIDE / 'chapters/19-accessibility.json'
 OUT_SP = GUIDE / 'specimens'
 MANIFEST = OUT_SP / 'manifest-accessibility.json'
 WCAG = ROOT / 'work/handoffs/phase-2/20261111_WCAG22-Criteria-Text.json'
-RESULTS = ROOT / 'work/handoffs/phase-2/20261111_Stage-C-Round-1-Ch19-Results.json'
+RESULTS = ROOT / 'work/handoffs/phase-2/20261111_Stage-C-Round-2-Ch19-Results.json'   # round 1's file stays as the record
 CH = '19'
 EM, EN = '—', '–'
 WORDS = 'zero one two three four five six seven eight nine'.split()
@@ -553,7 +554,7 @@ def s_results(res):
                + ' '.join(f'{x["check"]}: {x["result"]}' for x in res['tested']) + ' Not tested: '
                + ' '.join(f'{x["check"]}: {x["why"]}' for x in res['not_tested']))
     return spec('s-19-results', f'<style>{BASE}{css}</style><div class="c19">{body}</div>', '19.8', alt, readable=True,
-                notes='Readable: printed from 20261111_Stage-C-Round-1-Ch19-Results.json, which names the runs behind each line.')
+                notes=f'Readable: printed from {RESULTS.name}, which names the runs behind each line.')
 
 
 # ------------------------------------------------------------------------------------------------- the device script
