@@ -232,3 +232,21 @@ Started November 11, 2026, under `20261111_Gate-2-Fix-Brief.md`. Build only to `
 ### Guide check self-test (after the report was sent)
 
 - Second run, with the fixes above: **the clean demo passes; 127 of 127 planted faults caught; 34 of 35 allowed cases left alone.** The one left over, fitSwitch's "the switch as specimens write it", was not flagged by the test; its verify step counted exactly one switch, and the demo's front page now draws the 24 px pillar row, four more. The verify step now asks that every switch on the page, the plant's included, show its fit at 1x and its master at 2x. A third run is going in the background: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/762f3743-f9b3-59db-919e-2c641afbd759/scratchpad/gate-2-fix/engineer/selftest.log` (results in `plant-results.json` beside it). Not yet read when these notes were last written.
+
+## Second pass
+
+DR-191's short second pass on the editor's fix pass read (`20261111_Gate-2-Editor-Notes.md`, "## Fix pass read"), items 3, 11, 12 and 13, November 11, 2026.
+
+- **Item 11, Rule 26.1.** The paragraph ends "Each part of the name is a word you can look up." (`stage_c_ch26_build.py`).
+- **Item 3, the selected band token.** Its description takes the editor's sentences for Rule 17.10, with "it" for "the band": "Ground of the current or selected row in a list. Pair it with the 4 px bar and bold words (Rule 17.10). It holds its words, its bar and, where the row is a choice, a check. On Charcoal it is Prussian, so a success mark set inside it takes Newsprint, as it does on any Prussian ground, and an error or an ask sits outside it, since red never sits on Prussian (Rule 05.3)." The systems designer's 17.10 words take the same sentences; if theirs land worded otherwise, the token follows them.
+- **Item 12, thresholds.** The token table prints a threshold in WCAG's form ("needs 3 to 1", 128 rows; "needs 4.5 to 1", 81 rows) and a measured ratio with two decimals ("3.10 to 1").
+- **Item 13, the colon form.** Every ratio in a token description and in the need records tokens.json ships now reads "to 1": "2.96 to 1", "3 to 1", "4.29 to 1", "1.17 to 1", "1.24 to 1" and seven in the records. The token table holds no ratio with a colon. The change note for 6.0.0-gate2.9 names this; the release stays 6.0.0-gate2.9, since it has not shipped.
+
+Checks:
+- Guide check self-test, third run: **PASS**, the clean demo passes; 127 of 127 planted faults caught; 35 of 35 allowed cases left alone.
+- Token tests: all six steps pass (0 failures; 44 of 44 plants).
+- `guide_build.py --strict --out <scratch>/guide.html`: 0 warnings, 9,443,585 bytes with every owner's work so far.
+- The preview was not rebuilt, as asked.
+
+D2-xxx | The need records in tokens.json write their ratios as "to 1" too | They ship in tokens.json beside the descriptions; one form throughout the file
+D2-xxx | Token release stays 6.0.0-gate2.9 for these description fixes | The release has not shipped; its change note names them
