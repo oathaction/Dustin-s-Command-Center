@@ -2982,3 +2982,27 @@ The main session asked three questions with its plan for round 2, board C and th
 | D2-1589 | A plate gives its labels 28 px of room under them, and stacks a short row where its callouts would otherwise meet a neighbor (18.2, 18.3 under 36 rem, 18.16) | A callout above a control must not sit on the label over it |
 | D2-1590 | An invented anatomy plate takes the shell's Illustrative chip at its head and drops its code set's own label | Call 9, CD-S7, CA-S7; one label style across the guide |
 | D2-1591 | Chapter 18's opener is a primary button, a chip that is on and a choice of two, drawn by the anatomy generator from their code sets | Call 8; the opener reads the same code as the plates, so a set's change redraws it |
+
+### Component engineer, the fix pass (`20261111_Stage-C-Round-2-Components-Fix-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1592 | The ask's own row sits after the utility icon row, so the button kinds come first and the states after, and only one row with a primary button neighbors the ask | Call 2 sets separate rows; this order keeps the plate's groups and leaves the ask a row and a kicker line from the nearest primary hover |
+| D2-1593 | The yielded ask in `c-18-button` keeps the primary fill on hover and underlines its word, as `c-18-form`'s already does | Two sets drew one state two ways, and the button set's hover put Prussian in a view where an error holds the red |
+| D2-1594 | The loop's title stays V7's, in quotation marks as its name, with "Loop R1" in the kicker and the grade on a line of its own | Call 4; the kicker already names the loop, so the title line reads as a name and the grade line carries the claim |
+| D2-1595 | The stepper's third step also ends "where the loop began", and its hold grows by 1,000 ms | CD-S9 asks it of the diagram; the stepper tells the same loop, and its hold follows its words at 250 ms each |
+| D2-1596 | Chapter 18's location sample is the atlas's housing domain, with all four variables the atlas files there, by their V7 titles | Call 3; a list named "Variables in …" should hold all of them, and the titles are the atlas's own words |
+| D2-1597 | The button disclosure shows Loop R8's real lines with its grade and a dated source, and carries no Illustrative label | Call 3; the label marks invented content only (DR-97) |
+| D2-1598 | The chip set's plain variable chip reads "Variable A5" | Call 3; C1 is where R-01's mechanism starts |
+| D2-1599 | Chapter 18's stopped-in-committee bill is H.99010, Sidewalk repair schedules | Call 10 and D2-848: the next free number on chapter 11's counter, with a neutral title |
+| D2-1600 | A result in the filter bar and the search is its name followed by its typed chip | Call 3 and BE-S2; Rule 10.8 sets the order name, then chip |
+| D2-1601 | Each set that shows atlas content ends on a dated source line in caption type | BE-S3; Master Brief section 6 asks a source line of every diagram |
+| D2-1602 | The form's "Sending" word comes from the button's `data-oa-sending`, and the script puts the button's own word back when the send ends | PP-S1; a builder changes words in the markup, not the script |
+| D2-1603 | A set's Illustrative label is its own class drawn as the shell's `.illus`, on its own line at the head of the piece | Call 9; a copied set has no shell, and the build warns on a class that does not start with oa- |
+| D2-1604 | In the download set the label heads the not-ready part only | tokens.css beside it is real and downloads, so a label at the set's head would mark a real file as invented (H03) |
+| D2-1605 | The link list's current page takes the selected band, the 4 px bar and bold words, with the focus ring inside the row | CD-S8; Rule 18.5 already points to Rule 18.7's look |
+| D2-1606 | Code panels: one CSS declaration per line; a long HTML tag takes one attribute per line, SVG path data and children break onto lines of their own, and a line breaks only where whitespace draws nothing | Call 16 (CA-S2); the copy must draw exactly as before, which a pixel comparison of all 24 sets confirms |
+| D2-1607 | Prose in the markup wraps at its own spaces except where a script, a check or a template reads the words | A line break where a space stood draws the same space, and words a script reads keep their exact spacing |
+| D2-1608 | The stepper, the diagram and the search read words with their spaces collapsed | A builder's own markup layout should never change what a status line says or what a search matches |
+| D2-1609 | Path data in a code panel breaks only at its own spaces, and an SVG inside a status line, an alert or a template keeps its children on one line | A new space in path data made "V5" a word for the studio-word scan; a status line's raw words should carry no line breaks |
+| D2-1610 | The stepper's four buttons sit two by two, one a row under 11rem a column | CD-S10; the anatomy plate draws them so, and Next step never wraps alone |
