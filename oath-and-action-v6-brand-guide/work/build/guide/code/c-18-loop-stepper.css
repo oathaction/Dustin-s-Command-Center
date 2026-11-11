@@ -63,8 +63,8 @@
 .oa-stepper-step[data-oa-ahead] {
   color: var(--oa-color-state-muted-text);
 }
-/* The four buttons sit two by two; each column is at least half the row, so no button ever stands alone on a row, and
-   they stack one a row once a column would fall under 11rem */
+/* The four buttons sit two by two, each column at least half the row, so Next step never wraps
+   alone under the other three. Once a column would fall under 11rem, they stack one a row. */
 .oa-stepper-controls {
   display: grid;
   grid-template-columns:
