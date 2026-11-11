@@ -606,7 +606,10 @@ def chapter():
                   "It sets Inter at 17 px with a line height of 1.6 wherever text asks for no other style, and removes the browser's 8 px margin, so a component sits where "
                   "its code puts it.",
                   "A product that follows the reader's light or dark setting also declares <code>&lt;meta name=\"color-scheme\" content=\"light dark\"&gt;</code> in its "
-                  "head, so the browser draws its own scroll bars and form controls to match (Rule 26.6)."],
+                  "head, so the browser draws its own scroll bars and form controls to match (Rule 26.6).",
+                  "tokens.css holds tokens and themes and nothing else. A page that draws one of the 41 symbols at 24 px (Rules 09.3 and 10.4) also needs "
+                  "the two lines that show the pixel fit on a standard screen and the master on a sharper one: <code>.oa-at-2x { display: none }</code> and "
+                  "<code>@media (min-resolution: 2dppx) { .oa-at-1x { display: none } .oa-at-2x { display: inline } }</code>."],
          "tokens": ["oa.type.body"],
          "why": {"text": ["Every code set in chapters 18 and 26 assumes exactly this page. The guide checks each one by pasting its code into a page that holds the "
                           "fonts, tokens.css and this body rule and nothing else, and comparing what it draws with the live demo, pixel for pixel."],
@@ -616,7 +619,8 @@ def chapter():
          "specs": [{"label": "Order in the head", "value": "The color scheme meta tag, the fonts, tokens.css, then your own styles"},
                    {"label": "Body rule", "value": "<code>body { margin: 0; font: var(--oa-type-body) }</code>", "token": "oa.type.body"},
                    {"label": "Fonts", "value": "Inter, Inter Tight and Lora from Google Fonts, under the SIL Open Font License 1.1 (chapter 06)"},
-                   {"label": "Themed product", "value": "<code>&lt;meta name=\"color-scheme\" content=\"light dark\"&gt;</code>; a page that stays light writes <code>only light</code>"}],
+                   {"label": "Themed product", "value": "<code>&lt;meta name=\"color-scheme\" content=\"light dark\"&gt;</code>; a page that stays light writes <code>only light</code>"},
+                   {"label": "24 px symbols", "value": "<code>.oa-at-2x { display: none }</code> and <code>@media (min-resolution: 2dppx) { .oa-at-1x { display: none } .oa-at-2x { display: inline } }</code>, in your own stylesheet"}],
          "related": ["06", "07", "18"],
          "builders": [f"The fonts link this guide uses: <code>{e(FONTS)}</code>."]},
         {"id": "26.6", "title": "Let a product follow the reader's light or dark setting through one attribute.",
