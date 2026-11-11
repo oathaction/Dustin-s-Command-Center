@@ -23,8 +23,16 @@ editor's. This step rewrites only the drawings, in place:
 It touches only inline masters (an <svg> with an xmlns attribute and a Civic Line data-icon) and the one kicker word, so
 it can run again after any rebuild of the editor's chapters, and a second run changes nothing.
 
+Gate 2's fix pass (CD-S1, November 11, 2026): chapter 01's opener, s-01-opener, a light version of the editor's four
+pillar pieces (s-01-pieces) read from that file: each piece keeps its pillar, kicker, headline, Track's "as of" date,
+the hinge divider, "What you can do", its step and its one red button, with the words, classes and drawings the editor's
+plate has; the dek, the blocks, the tracker and the source lines stay on the full plate after the rule index. The step
+keeps only the styles those parts use, so the opener stays under 16 KB. It writes s-01-opener.html, its manifest entry
+in manifest-identity-ch01.json, and the "opener" key in 01-purpose.json.
+
 Run: python3 -I work/build/scripts/phase-2/stage_b_identity_ch01.py
 """
+import json
 import re
 import sys
 from pathlib import Path
@@ -122,6 +130,102 @@ def rewrite(text, sid):
     return out, log
 
 
+# ============================================================================================ the opener (CD-S1)
+CHAP = HERE.parents[1] / "guide/chapters/01-purpose.json"
+OPENER_ID = "s-01-opener"
+OPENER_MANIFEST = SPEC / "manifest-identity-ch01.json"
+OPENER_CAPTION = ("One piece for each pillar at true size, from its kicker to the one red step after the hinge divider. "
+                  "Explain and Track quote real records, and the four pieces stand whole, with their sources, after the rule index.")
+DROP_P = ("dek", "by")                   # the full plate's parts the opener leaves out
+DROP_DIV = ("blk", "trk")
+KEEP_CLASSES = {"ed", "sp", "sp-flow", "grid4", "pl", "pc", "kick", "lb", "dot", "sx", "hl", "lab", "asof", "hg", "hamp",
+                "wycd", "step", "ask", "illus"}
+
+
+def _drop_div(html, cls):
+    """Remove each <div class="cls"> with everything inside it, nested divs included."""
+    while True:
+        i = html.find(f'<div class="{cls}"')
+        if i < 0:
+            return html
+        depth, j = 0, i
+        for m in re.finditer(r"<div\b|</div>", html[i:]):
+            depth += 1 if m.group(0) == "<div" else -1
+            if depth == 0:
+                j = i + m.end()
+                break
+        html = html[:i] + html[j:]
+
+
+def _css_keep(css):
+    """The rules of a style sheet whose selectors name only kept classes; @media blocks keep their kept rules."""
+    out, i = [], 0
+    while i < len(css):
+        k = css.find("{", i)
+        if k < 0:
+            break
+        head = css[i:k].strip()
+        depth, j = 0, k
+        while j < len(css):
+            depth += {"{": 1, "}": -1}.get(css[j], 0)
+            j += 1
+            if depth == 0:
+                break
+        block = css[k + 1:j - 1]
+        if head.startswith("@media"):
+            inner = _css_keep(block)
+            if inner:
+                out.append(f"{head}{{{inner}}}")
+        elif head and set(re.findall(r"\.([A-Za-z][\w-]*)", head)) <= KEEP_CLASSES:
+            out.append(f"{head}{{{block}}}")
+        i = j
+    return "\n".join(out)
+
+
+def _text(s):
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", s)).replace(" ·", " ·").strip()
+
+
+def opener():
+    src = (SPEC / "s-01-pieces.html").read_text()
+    m = re.search(r"<style>(.*?)</style>(.*)$", src, re.S)
+    css, body = m.group(1), m.group(2).strip()
+    for c in DROP_P:
+        body = re.sub(rf'<p class="{c}">.*?</p>', "", body, flags=re.S)
+    for c in DROP_DIV:
+        body = _drop_div(body, c)
+    body = re.sub(r"\n+", "\n", body)
+    pieces = re.findall(r'<div><p class="pl">(.*?)</p><div class="pc">(.*?)</div></div>', body, re.S)
+    assert len(pieces) == 4, f"s-01-pieces holds {len(pieces)} pieces, not four"
+    assert body.count('class="ask"') == 4 and body.count('class="hg"') == 4, "each piece keeps its hinge and its one ask"
+    parts = []
+    for pillar, inner in pieces:
+        hl = _text(re.search(r'<p class="hl">(.*?)</p>', inner, re.S).group(1))
+        ask = _text(re.search(r'<span class="ask"[^>]*>(.*?)</span>', inner, re.S).group(1))
+        asof = re.search(r'<p class="lab asof">(.*?)</p>', inner, re.S)
+        lab = ", Illustrative" if 'class="illus"' in inner else ""
+        when = f", {_text(asof.group(1)).lower()}" if asof else ""
+        parts.append(f"{pillar}{lab}: {hl}{when}, ending on {ask}.")
+    alt = ("Four pieces at a phone's text width, one per pillar, each from its kicker and headline to the hinge divider, "
+           "What you can do, one step and one red button. " + " ".join(parts))
+    alt = alt.replace("..", ".").replace("?.", "?")
+    html = (f"<!-- {OPENER_ID}: Oath & Action guide, Edition 06, chapter 01's opener. Identity designer, Gate 2's fix pass, "
+            f"November 11, 2026, from the editor's s-01-pieces. -->\n<style>\n{_css_keep(css)}\n</style>\n{body}\n")
+    (SPEC / f"{OPENER_ID}.html").write_text(html)
+    entry = {OPENER_ID: {"chapter": "01", "rule": None, "alt": alt, "illustrative": False,
+                         "notes": "Gate 2's fix pass, CD-S1: chapter 01's opener, a light version of s-01-pieces read from the "
+                                  "editor's file by stage_b_identity_ch01.py. Each piece keeps its pillar, kicker, headline, "
+                                  "Track's as-of date, the hinge divider, What you can do, its step and its red button; the "
+                                  "dek, blocks, tracker and source lines stay on the full plate. It flows, as that plate does."}}
+    OPENER_MANIFEST.write_text(json.dumps(entry, indent=1, ensure_ascii=False) + "\n")
+    ch = json.loads(CHAP.read_text())
+    want = {"specimen": OPENER_ID, "caption": OPENER_CAPTION.replace("'", "\u2019")}
+    if ch.get("opener") != want:
+        ch["opener"] = want
+        CHAP.write_text(json.dumps(ch, indent=1, ensure_ascii=False) + "\n")
+    return [f"{OPENER_ID}: {len(html.encode()):,} bytes before the build inlines B, four pieces"]
+
+
 def run():
     report = {}
     for sid in FILES:
@@ -132,6 +236,7 @@ def run():
         if new != text:
             f.write_text(new)
         report[sid] = log or ["unchanged"]
+    report[OPENER_ID] = opener()
     return report
 
 

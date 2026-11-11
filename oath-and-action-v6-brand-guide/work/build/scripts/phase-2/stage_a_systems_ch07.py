@@ -189,7 +189,7 @@ def s_07_opener(ctx):
     items = []
     for name, w in BPS:
         svg, g = grid_svg(ctx, name, scale=0.125, H=88)
-        items.append(f'<li>{svg}<p class="nm">{BNAME[name]}</p><p class="sp">{w:g} px · {g["cols"]} columns</p></li>')
+        items.append(f'<li>{svg}<p class="nm">{BNAME[name]}</p><p class="sp">{w:g} px<br>{g["cols"]} columns</p></li>')
     css = (f'.gr{{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:flex-start;gap:20px 24px}}'
            f'.gr li{{min-width:6rem}}.nm{{margin:8px 0 0;{ctx.ty("ui")}}}.sp{{margin:2px 0 0;{ctx.ty("caption")};color:{sec}}}'
            f'.sc{{margin:16px 0 0;{ctx.ty("label")};color:{sec}}}')
