@@ -70,6 +70,62 @@ Not tested:
 - Any chart or plate; I changed no plate, so no guide rebuild was needed for my files.
 - The engineer's ENG-5 to ENG-7 changes, which are his to make.
 
+## Fix pass 2
+
+From `work/handoffs/phase-3/20261111_Round-0-Fix-Brief-Part-2.md`: D3-98 first, then D3-95, then the statistics report's part 2 items for the research lead (P2-M2's Missouri facts, P2-S2, P2-S3 and P2-S7). The contract check reads 61 tables with 0 faults after the last change.
+
+**D3-98: the three November 3, 2026 measures, as the record stands on November 11, 2026.** Re-read at about 23:40 UTC; none had changed since the first reading. Sent to the Explainer maker by message, in these words:
+
+1. **Massachusetts Question 3** (repair log RL64), one all-candidate primary with the top two advancing: rejected, 1,566,336 no (61.04 percent) to 999,746 yes (38.96 percent), 2,383 of 2,384 precincts; unofficial, not certified; the Associated Press called it on November 4. Source: NBC Boston, Massachusetts ballot question results, report of November 9, 2026, 7:26 p.m., a secondary source (the Secretary of the Commonwealth had posted no 2026 results). Retrieved November 11, 2026. Ledger P7-036b.
+2. **Alaska Ballot Measure 2** (RL62), repeal of the top-four primary and ranked-choice general election: trailing, 110,298 yes (47.43 percent) to 122,266 no (52.57 percent); unofficial count of November 10, 2026; mailed ballots due by November 13 and overseas ballots by November 18; certification targeted for November 25. Source: State of Alaska, Division of Elections, 2026 General Election, Election Summary Report, unofficial results, November 10, 2026. Retrieved November 11, 2026. Not decided. Ledger P7-036a.
+3. **Missouri Proposition A** (RL63), the referendum on House Bill 1's 2025 congressional map (a no vote keeps the 2022 districts): rejected in the unofficial statewide count, 1,273,815 no to 785,969 yes (61.84 percent no, computed by us); not certified. Source: St. Charles County, Missouri, "Voters Turn Out for 2026 Midterm Election in St. Charles County", November 4, 2026, unofficial statewide returns. Retrieved November 11, 2026. The Secretary of State's results site refused our reader. These are the figures chapter 01's Rule 01.11 plate already prints. Ledger P7-036c.
+
+**D3-95: values stored below the publisher's precision.** I read every rounding in my freeze scripts and changed each at its source:
+
+| File | Before | Now |
+|---|---|---|
+| `treasury-mts-receipts-by-source`, `treasury-mts-outlays-by-function`, `treasury-mts-fy2026-budget-results` | billions, rounded to a tenth (the treemap's positive sum came to 7,566.4 from rounded parts against 7,566.3 from the published dollars) | dollars to the cent, exactly as Treasury publishes them; columns renamed `receipts_dollars`, `outlays_dollars`, `amount_dollars` |
+| `treasury-mspd-debt-subject-to-limit` | billions, rounded to a tenth | millions, exactly as published; columns end `_millions` |
+| `census-acs-labor-force-by-age-sex` (participation), `census-acs-tenure-by-state` (shares), `census-acs-earnings-ratio-by-state` (ratio and margin), `census-stc-state-tax-collections` (per resident), `fjc-article-iii-judges` (years), `opm-federal-employment-by-agency` (percent change), `cms-nhe-by-payer-four-groups` (shares), `frb-fomc-projections-unemployment` (bands), `census-cps-voting-age-gap-moe` and `census-hvs-homeownership-gap-moe` (errors, gaps) | computed values rounded to one or two decimals | the same values stored to four decimals, so a chart rounds once |
+
+Values copied from a publisher (Census tables, FHFA, CBP, the FEC's dollars, the Senate's counts) were already stored as published. The two files the statistics report names, `fec-presidential-shift-by-state` and `fred-payrolls-by-sector-change`, are the engineer's derived files (request ENG-8).
+
+**P2-S3, S04's margins by age group.** `census-cps-voting-age-gap-moe` now holds each age group's own change from 2020 to 2024 with its margin, by the same Census method (bases from Table 1): 18 to 24 fell 3.7 points (margin 1.7) and 25 to 44 fell 2.4 (margin 1.0), both past their margins; 45 to 64 fell 1.0 against a margin of 0.96, too close to call because the published rates are rounded to a tenth; 65 and over rose 0.2 (margin 1.1), inside it. For the Explainer maker: label each change by these, in place of the two-point rule.
+
+**P2-S2, margins for S01 and S13.**
+- S01's survey: the Program for Public Consultation's own page says the 2,625-voter sample, fielded May 19 to 30, 2023, has "a margin of error of +/- 1.9%". It gives no margin for each party's voters and states no confidence level (ledger P7-043; request ENG-9).
+- S13: the Bureau of Labor Statistics publishes sampling errors for employment levels and for one-, three- and twelve-month changes, and none for a change as long as S13's 56 months; for levels it gives relative standard errors of 0.1 percent (total nonfarm), 0.3 (professional and business services; health care and social assistance) and 0.9 (information), and it says "estimates of variance are not available for government sectors". Read through the web-fetch tool, first 100,000 characters of the page (ledger P7-044; request ENG-9). A sentence for S13's note: "The Bureau publishes no sampling error for a change over this many months; for employment levels it gives errors of 0.1 to 0.9 percent in these industries, and none for government."
+
+**P2-S7, S06's 2036.** V7's scenarios name no horizon in their introduction or fields; 2036 appears in one scenario's own words (iv-d, "flat through 2036"), and scenario ii is named "State and local track by 2030". The year comes from V7's outcome indicators: `outcomes.indicator_note` says "Each indicator gives its latest reading and two thresholds for 2036", and each indicator carries a `baseline_2026`. For the Explainer maker: either cite that ("directions for the outcome families the atlas measures against thresholds for 2036, from a 2026 baseline") or drop the year, as the reviewer offers.
+
+**The Explainer maker's R7, R8 and the 2036 source (its "Fix pass 2").** All three are answered above:
+- **R7, S04's margin by age group: done in a file I own.** `census-cps-voting-age-gap-moe`, rows `change_2020_to_2024_18_to_24`, `_25_to_44`, `_45_to_64` and `_65_and_over`, each with its 90 percent margin (`moe_90`) and the published rates behind it.
+- **R8, S13's sampling errors: answered, with a sidecar request.** The Bureau publishes no error for a change over 56 months; its level errors and the government gap are above, the sentence for S13's note is above, and ENG-9 asks the engineer to put the same words in `fred-payrolls-by-sector.meta.json` (ledger P7-044).
+- **S06's 2036: answered; nothing to add to a data file.** V7's `outcomes.indicator_note` sets the 2036 thresholds and the indicators' `baseline_2026` sets the base year; the scenarios themselves name no horizon. The words cite that or drop the year.
+
+New requests to the engineer:
+
+- **ENG-8. Derived files stored from rounded figures (D3-95, statistics P2-M1).** Please compute `fec-presidential-shift-by-state`'s margins and shifts from the vote counts in `fec-presidential-results-by-state` (margin = (rep_votes − dem_votes) / total_votes × 100), unrounded, and `fred-payrolls-by-sector-change`'s percent change from the levels, unrounded. The reviewer's four cells (North Dakota 2024, 36.446; North Carolina 2020, 1.348; Mississippi 2020, 16.545; professional and business services, 1.348 percent) then print right.
+- **ENG-9. Margins in two sidecars (P2-S2).** In `v7-stock-trading-ban.meta.json`, add a note: "The Program for Public Consultation gives the full sample's margin of error as plus or minus 1.9 percent (https://publicconsultation.org/united-states/stock-trading-by-members-of-congress/, read November 11, 2026); it gives none for each party's voters and states no confidence level." In `fred-payrolls-by-sector.meta.json`, add: "The Bureau of Labor Statistics publishes sampling errors for levels and for one-, three- and twelve-month changes (All Employees Standard Error Tables, https://www.bls.gov/web/empsit/cesvarae.htm, read November 11, 2026), none for longer changes, and none for government sectors."
+
+Routine calls:
+
+D3-xxx | Every computed value in my data files is stored to four decimals, and every published value exactly as published | D3-95: a chart rounds once, from the stored value
+D3-xxx | Treasury and debt files store dollars and millions as published, with columns renamed for their unit | Billions to a tenth made a treemap's sum differ from Treasury's by a tenth; no maker has drawn from these files yet
+D3-xxx | S03 and S08's note gives Missouri's count from St. Charles County's report of the unofficial statewide returns | The Secretary of State's results site refuses this container's reader, and the county is an election authority reporting the state's returns; chapter 01 already prints the same figures
+
+Tested:
+- The contract check after every rebuild: 61 tables, 0 faults.
+- Alaska's report re-read at 23:40 UTC (unchanged, November 10, 6:45 p.m. report); NBC Boston's page data re-read (unchanged, November 9 report); the St. Charles County release read in full for Proposition A's statewide figures.
+- The treemap's positive sum from published dollars: $7,566.3 billion; the stored deficit equals Table 1's to the cent.
+- Each age group's margin by script with the Bureau's formula and Table 1's bases.
+- The survey page's margin read on the page itself.
+
+Not tested:
+- Missouri's certified count or its certification date; the state's results site refused, and the date in chapter 01's plate was not checked here.
+- The Bureau's change errors for twelve months by industry (Tables 3 and 4 lie past the part of the page the tool read).
+- Whether any spec already names a renamed Treasury column; none of rows 26, 44, 48 or 80 is drawn yet.
+
 ## Routine calls
 
 D3-xxx | Rule 01.9 counts every specimen that carries data (the 16 built and every new core and extended form) and leaves out reference sketches and avoid entries | They draw no dataset and carry no topic
