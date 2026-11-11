@@ -164,3 +164,36 @@ Paths relative to `oath-and-action-v6-brand-guide/`. Nothing in `source/`, `work
 - `work/build/guide/chapters/05-color.json`, `06-type.json`, `07-layout.json`, `10-symbols.json`, `11-icons.json`, `12-graphic-devices.json` (Rules 12.5 to 12.9), `17-motion-and-states.json`
 - `work/build/guide/specimens/`: chapter 05, 06, 07 and 11 specimens that changed, `s-12-marker-correct.html`, `s-12-marker-failure.html`, `s-17-1-correct.html`, `s-17-3-correct.html`, `s-17-4-correct.html`, `s-17-5-correct.html`, `s-18-09-anatomy.html`, `s-18-17-anatomy.html`, `s-18-20-anatomy.html`, `s-18-23-anatomy.html`, `manifest-systems.json`, `manifest-motion.json`, `manifest-anatomy.json`
 - `work/handoffs/phase-2/20261106_Stage-A-Systems-Measurements.json`, `20261110_Stage-B-Round-2-Ch11-Figures.json`, `20261111_Stage-C-Round-1-Ch17-Figures.json`
+
+## Second pass
+
+DR-191's short second pass: the editor's items 1 to 5 under "## Fix pass read" in `20261111_Gate-2-Editor-Notes.md`, applied word for word through my generators.
+
+**What changed**
+- Item 1, `stage_a_systems_ch05.py`: Rule 05.7's failure caption reads "A scale from red to blue, which Rules 01.1 and 01.3 keep out of our charts, reads as Republican against Democratic before anyone reads its key, and it spends the view’s red on every rising cell."
+- Item 2, `stage_c_ch17_build.py`: Rule 17.9's title reads "Show hover with an underline or an edge and focus with a ring."
+- Item 3, `stage_c_ch17_build.py`: Rule 17.10's third paragraph reads "The band holds its words, its bar and, where the row is a choice, a check. On Charcoal the band is Prussian, so a success mark set inside it takes Newsprint, as it does on any Prussian ground, and an error or an ask sits outside the band, since red never sits on Prussian (Rule 05.3)." The token's matching words are the engineer's.
+- Item 4, `stage_c_ch17_build.py`: Rule 17.3 reads "Reset, named for what it resets, such as “Reset the bill” (Rule 11.14), takes either kind back …"; its Reset row reads "Named for what it resets, such as “Reset the bill”; takes the player back to where it rests; unavailable at rest, with its reason"; the anatomy key's item 4 in `s-17-3-correct` reads "Reset the link, named for what it resets. It takes the player back to where it rests. At rest it is unavailable and keeps focus."
+- Item 5, `apply_systems_ch11.py`: `s-11-opener`'s line reads "A tracker follows every bill through the same six steps. Here a state bill is at its hearing, where the public can take part." Step 6 is named Governor, from the state route's names, and the alt matches. The opener weighs 6,899 bytes as placed.
+- Item 6 (Rule 18.11's sentence that Rule 17.9 and the anatomy key cite) is the accessibility lead's; my words cite it as they stand.
+
+### Routine calls
+
+D2-xxx | Chapter 11's opener takes the state route's step names, so step 6 is Governor | Rule 11.1 names step 6 for whoever signs, and the opener shows a state bill
+
+### Tested
+
+- The chain in the brief's order, the stage A build (probe, capture, final) and `stage_c_ch18_anatomy_build.py --check`: all clean.
+- `guide_build.py --strict` to scratch (`second/guide.html`): 0 warnings, 185 rules, 433 specimens, 9,443,603 bytes.
+- The strings read back from `05-color.json`, `17-motion-and-states.json` and `manifest-systems.json`.
+- Looked at `s-11-opener` at 1440 px (2x) and 390 px (2x), Rule 17.3's anatomy key and `s-05-7-failure` at 1440 px.
+
+### Not tested
+
+- A screen reader on the changed alt and key; the guide check.
+
+### Change log
+
+- Modified, generators: `work/build/scripts/phase-2/stage_a_systems_ch05.py`, `stage_c_ch17_build.py`, `apply_systems_ch11.py`.
+- Modified, their outputs: `work/build/guide/chapters/05-color.json`, `11-icons.json`, `17-motion-and-states.json`; `work/build/guide/specimens/s-11-opener.html`, `s-17-3-correct.html`, `manifest-systems.json`, `manifest-motion.json`; `work/handoffs/phase-2/20261106_Stage-A-Systems-Measurements.json`, `20261110_Stage-B-Round-2-Ch11-Figures.json`, `20261111_Stage-C-Round-1-Ch17-Figures.json`.
+- Modified: this file. Nothing committed or pushed.
