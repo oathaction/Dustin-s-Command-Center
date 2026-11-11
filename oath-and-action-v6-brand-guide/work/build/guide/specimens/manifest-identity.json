@@ -503,17 +503,17 @@
   "chapter": "12",
   "rule": "12.4",
   "width_px": 360,
-  "alt": "An Illustrative report cover at true size on Newsprint, 360 by 466 pixels, with the kicker Report 3, the title How state committees record their votes and a short paragraph at the top. Stone arcs 1 pixel wide spread from the bottom right corner across the open lower part of the cover, and stop well short of the words.",
+  "alt": "An Illustrative report cover at true size on Newsprint, 360 by 466 pixels, with the kicker Report 3, the title How state committees record their votes and a short paragraph at the top. A large Charcoal ampersand B runs off the bottom right corner, cut by the cover’s right edge and its foot. What stays inside reads as one letter, clear of the words.",
   "illustrative": true,
-  "notes": "Built from the hinge devices, after icon study 07's ring rhythm. Hinge arcs: circles from the corner at radii 2, 3, 4 and more times 16 px, continuing the hinge diagram's ring and arcs (radii 110 and 165 units, 2 to 3), ending inside a quarter circle 219 px wide, 1 px in oa.color.border.hairline (Stone). Ink coverage measured on a 240 px swatch rendered at 1x in Chromium, as Phase 1 measured its patterns: 5.5 percent, under the 12 percent ceiling (D1-18). Round 3 (CA-S11): the hinge rules leave the rule, since sixteen even lines read as lines to write on, and the plate is the cover alone at 360 px, so no part of the frame stands empty and a phone shows it whole. The cover is a report's first screen, with type at the phone floor (D2-254)."
+  "notes": "DR-216: the large crop of B (Rule 04.8) signs the cover's open corner. B's display master (ampersand/20261028_Amp-B-Display-Master.svg) at 232 px tall in the surface's ink, oa.color.text.primary.onNewsprint, at s-04-8-correct's proportions: 35.5 percent of its width past the right edge and 6.8 percent of its height past the foot. Measured on a 1x Chromium render (20261111_Stage-C-Round-1-Identity-Figures.json, key rule_12_4): 30.1 percent of B's ink falls outside the cover, within Rule 04.8's 25 to 40 percent; what stays inside is one piece, at this place and at every offset within 4 px; B's ink stands 31.1 px from the words, over the body text's 27.2 px line height. The largest B, in 4 px steps, that keeps all three with 2 px to spare. The cover is a report's first screen, with type at the phone floor (D2-254); its words are invented."
  },
  "s-12-pattern-failure": {
   "chapter": "12",
   "rule": "12.4",
   "width_px": 360,
-  "alt": "Failure case: do not publish. The same Illustrative cover with the arcs spread over the whole of it, so the fine lines run behind the title and the paragraph.",
+  "alt": "Failure case: do not publish. The same Illustrative report cover without B. Twelve thin Stone arcs spread from its bottom right corner across the open lower part, and no mark of ours signs the cover.",
   "illustrative": true,
-  "notes": "The arcs under body text, the failure the brief names. The band runs the plate's width, as chapter 11's 360 px plates set it, and the Illustrative label opens the cover under it (CD-S11). Failure band per D2-308."
+  "notes": "The hinge arcs as Rule 12.4 set them until DR-216 retired them: circles from the bottom right corner at radii 32 to 208 px in 16 px steps, 1 px in oa.color.border.hairline (Stone), in a 360 by 220 px area at the cover's foot. The band runs the plate's width, as chapter 11's 360 px plates set it, and the Illustrative label opens the cover under it (CD-S11). Failure band per D2-308."
  },
  "s-proofs-masthead": {
   "chapter": "proofs",

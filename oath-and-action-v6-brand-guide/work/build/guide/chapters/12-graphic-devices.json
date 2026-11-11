@@ -6,7 +6,7 @@
   "instruction": "Add dividers, frames, markers and watermarks only where they help someone read.",
   "intro": [
     "A graphic device is a mark that helps a reader find their way: a divider between sections, a watermark, a marker on the place a reform acts, a key, a locator, a frame around a process. Each one has a job, and the page leaves it out where that job is already done.",
-    "Rules 12.1 to 12.4 cover the devices that divide and sign a page: hairlines, watermarks, the monogram as a small signature and a pattern drawn from the hinge. Rules 12.5 to 12.9 cover the devices that explain a system: the intervention marker, which shows where a reform acts, chart keys, locators, the layer diagram and the frame that names who owns each step."
+    "Rules 12.1 to 12.4 cover the devices that divide and sign a page: hairlines, watermarks, the monogram as a small signature and the rule for open areas. Rules 12.5 to 12.9 cover the devices that explain a system: the intervention marker, which shows where a reform acts, chart keys, locators, the layer diagram and the frame that names who owns each step."
   ],
   "rules": [
     {
@@ -117,7 +117,7 @@
         },
         {
           "label": "Never",
-          "value": "Behind words, a figure or a control; in red; beside a hinge headline, a crop of B or a pattern"
+          "value": "Behind words, a figure or a control; in red; beside a hinge headline or a crop of B"
         }
       ],
       "files": [
@@ -185,54 +185,51 @@
     },
     {
       "id": "12.4",
-      "title": "Use the hinge arcs only in an open area, away from words.",
-      "rule": "One pattern, the hinge arcs, may give texture to a cover, an opener or the background of a social card. Its arcs spread from a corner at the radii of the hinge diagram’s ring and arcs, carried on in equal steps, and end inside a quarter circle, so none is cut off flat. They run 1 px in the surface’s hairline color, cover no more than 12 percent of the area they fill, and stop at least 24 px short of any words, figure or control.",
-      "tokens": [
-        "oa.color.border.hairline.onNewsprint",
-        "oa.border.width.hairline"
-      ],
+      "title": "Leave an open area plain, or sign it with the large crop of B or a watermark.",
+      "rule": "We use no repeating pattern. A cover or a section opener may carry the large crop of B (Rule 04.8), and a report page or a section opener may carry a watermark in its open margin (Rule 12.2). A social card, and any view whose ampersand moment is a hinge headline, keeps its open area plain.",
+      "tokens": [],
       "why": {
-        "text": "A pattern gives an empty area texture without a picture, and drawn from the hinge it adds no new shape for a reader to learn. Behind words, even a faint pattern adds edges the eye has to sort from the letters, so it stays where nothing is read. The arcs cover 5.5 percent of the area they fill.",
-        "basis": "Our measurements, October and November 2026, and design judgment, which sets the 12 percent ceiling"
+        "text": "Every shape we own already has a rule that a repeat would break: a view carries one ampersand moment (Rule 04.2), the lockmark always appears whole (Rule 08.3), and a row of nodes would read as the numbered steps that follow a bill (Rule 11.1). A pattern that avoids them has to use common shapes, so a cover that carries one looks like a stock report template. The crop of B and the watermark sign an open area with the ampersand from our wordmark.",
+        "basis": "Design judgment, approved by our founder and editor in November 2026"
       },
       "correct": {
         "specimen": "s-12-pattern-correct",
-        "caption": "A report cover at true size, the title at top left and the hinge arcs spreading from the bottom right corner, clear of the words."
+        "caption": "The Report 3 cover at true size, signed with the large crop of B off its bottom-right corner, clear of the words."
       },
       "failure": {
         "specimen": "s-12-pattern-failure",
-        "caption": "The same cover with the arcs behind the title and the paragraph. The lines cross the letters and the words lose their clean ground."
+        "caption": "Nothing on this cover says Oath & Action, and the arcs take the corner the crop of B would sign."
       },
       "specs": [
         {
-          "label": "Hinge arcs",
-          "value": "Circles from a corner at 2, 3, 4 and more steps of 16 px, 1 px wide, ending inside a quarter circle as wide as the area’s shorter side"
+          "label": "Plain",
+          "value": "The first choice for an open area"
         },
         {
-          "label": "Color",
-          "value": "The surface’s hairline color: Stone on Newsprint, White and Charcoal; never on Prussian",
-          "token": "oa.color.border.hairline.onNewsprint"
+          "label": "Crop of B",
+          "value": "A cover or a section opener, bottom right, at Rule 04.8’s measures"
         },
         {
-          "label": "Coverage",
-          "value": "At most 12 percent of the area the arcs fill, measured on a render"
+          "label": "Watermark",
+          "value": "A report page or a section opener, in the open margin, at Rule 12.2’s measures"
         },
         {
-          "label": "Clearance",
-          "value": "At least 24 px from any words, figure or control"
+          "label": "Kept plain",
+          "value": "A social card, and any view whose ampersand moment is a hinge headline (Rule 04.2)"
         },
         {
           "label": "Never",
-          "value": "Behind words; in red; dotted or dashed; as evenly ruled lines, which read as a form to fill in; with a watermark or a crop of B in the same view"
+          "value": "A repeating pattern of arcs, lines, dots, nodes or ampersands"
         }
       ],
-      "files": [],
+      "files": [
+        "work/build/assets/identity/ampersand/20261028_Amp-B-Display-Master.svg"
+      ],
       "related": [
         "04",
-        "05",
-        "07"
+        "24"
       ],
-      "builders": "Draw the arcs as an SVG in the hairline token, sized to the open area they fill, and keep it out of the layer that holds the words."
+      "builders": "Leave the open area plain first. Sign it with the crop of B only on a cover or a section opener that holds no hinge headline, and check Rule 04.8’s measures on the cover at its true size."
     },
     {
       "id": "12.5",

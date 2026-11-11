@@ -4,23 +4,23 @@
   12.1  dividers: the Stone hairline, with the hinge divider indexed from Rule 04.4, and an index of every device
   12.2  watermarks: ampersand B from its display master at the token opacities 0.08 and 0.10, in an open margin
   12.3  L8, the monogram, as a small signature: opaque, for small headers and video corners
-  12.4  one restrained pattern built from the hinge devices, the hinge arcs, after icon study 07's ring rhythm (round 3
-        dropped the hinge rules, CA-S11)
+  12.4  open areas: leave them plain, or sign them with the large crop of B or a watermark. DR-216 (stage C round 2,
+        November 11, 2026) retired the hinge arcs this rule set from stage B round 2, as round 3 had retired the hinge
+        rules (CA-S11); the arcs survive only in its failure plate
 
 The chapter file is shared (D2-829, D2-830): the systems designer's stage_b_ch12_systems_build.py writes Rules 12.5 to
 12.9. write_chapter() replaces only Rules 12.1 to 12.4 and this maker's extras, keeps every other rule, extra and the
 opener, and adds one sentence to the intro for Rules 12.1 to 12.4. Specimens are named by device (D2-829):
-s-12-divider-*, s-12-index, s-12-watermark-*, s-12-signature-*, s-12-pattern-*, in manifest-identity.json.
+s-12-divider-*, s-12-index, s-12-watermark-*, s-12-signature-*, s-12-pattern-*, in manifest-identity.json. Rule 12.4's
+plates keep the ids s-12-pattern-* after DR-216, though the correct one now shows the crop of B.
 
 Run through the identity build: python3 -I work/build/scripts/phase-2/promotion_identity.py specimens
 """
-import base64
-import io
 import json
 import re
 
 from stage_a_identity_lib import (E, ROOT, ID_DIR, AMP, L8, fragment, svg_file, mark, illus, head_label, dnp, ty, tv, ink, ink2,
-                                  hair, pal, raster_png, steps, CHAP_DIR)
+                                  hair, pal, steps, CHAP_DIR)
 import stage_a_identity_lib as LIB
 from stage_a_identity_s03 import rec as _rec
 from stage_a_identity_s04 import divider
@@ -111,7 +111,6 @@ INDEX = [("Stone hairline", "Separates sections and modules", "12.1"),
          ("Lockmark", "Signs four fixed places", "08.2"),
          ("Watermark", "Signs an open margin", "12.2"),
          ("L8, the monogram", "Signs a small header or a video corner", "12.3"),
-         ("Hinge arcs", "Gives an open area texture", "12.4"),
          ("Intervention marker", "Shows where a reform acts", "12.5"),
          ("Chart key", "Names what a chart's labels cannot carry", "12.6"),
          ("Locator", "Shows where a view sits in the whole", "12.7"),
@@ -248,102 +247,30 @@ def s_12_signature_failure():
                notes="A watermark shrunk to a corner: L8 at 48 px in Newsprint at oa.opacity.watermarkOnDark. Failure band per D2-308.")
 
 
-# ============================================================================================ 12.4 patterns
-STEP = 16          # the arcs' step in px: half the hinge diagram's ring radius (110 units), whose arcs sit at 165, a 2 to 3 ratio
-ARCS_H = 220       # the open area the arcs fill on a cover, from its foot: it starts at least 24 px under the paragraph
-
-
-def hinge_arcs(w, h, surface, corner="br", fill=False):
-    """Concentric arcs from a corner, at radii 2, 3, 4 and more times STEP: the hinge diagram's ring and arcs (110 and 165
-    units, a 2 to 3 ratio) carried on in equal steps, 1 px, in the surface's hairline color. The arcs end inside a
-    quarter circle as wide as the area's shorter side, so none is cut off flat; fill=True runs them to the far corner
-    (a swatch, or the failure). Clipped to its box, whatever the page's CSS says about overflow."""
-    cx, cy = (w, h) if corner == "br" else (w, 0)
-    rmax = (w * w + h * h) ** 0.5 if fill else min(w, h) - 1
-    circles = "".join(f'<circle cx="{cx}" cy="{cy}" r="{k * STEP}"/>' for k in range(2, int(rmax / STEP) + (2 if fill else 1)))
-    return (f'<svg width="{w}" height="{h}" viewBox="0 0 {w} {h}" aria-hidden="true" focusable="false" class="oai-svg" '
-            f'style="display:block;overflow:hidden" fill="none" stroke="{hl(surface)}" stroke-width="1">{circles}</svg>')
-
-
-def coverage():
-    """Ink coverage of the hinge arcs on a 1x Chromium render, as Phase 1 measured its swatches: the mean of each pixel's
-    distance from the ground over the distance from ground to Stone, on Newsprint."""
-    from PIL import Image
-    swatch = hinge_arcs(240, 240, "newsprint", fill=True)
-    uri = raster_png(f'<div style="line-height:0">{swatch}</div>', 240, 240, "p12-hinge_arcs", scale=1)
-    im = Image.open(io.BytesIO(base64.b64decode(uri.split(",", 1)[1]))).convert("RGB")
-    g, s = (0xDC, 0xD9, 0xD2), (0x5D, 0x63, 0x6D)
-    span = max(abs(a - b) for a, b in zip(g, s))
-    px = list(im.getdata())
-    return {"hinge_arcs": round(sum(min(1, max(abs(a - b) for a, b in zip(p, g)) / span) for p in px) / len(px), 3)}
-
-
-COVER = None
-
-
-def _coverage():
-    global COVER
-    if COVER is None:
-        COVER = coverage()
-    return COVER
-
-
-def cover(behind=False):
-    """A report's first screen at true size, 360 by 466 px, on Newsprint, the whole plate (round 3, CA-S11): the
-    Illustrative label at its head, the title at top left and the hinge arcs in the open lower right. behind=True runs
-    the arcs under the cover's title and paragraph (the failure)."""
-    pat = hinge_arcs(PHONE_W, 466, "newsprint", fill=True) if behind else hinge_arcs(PHONE_W, ARCS_H, "newsprint")
-    pos = "left:0;top:0" if behind else "left:0;bottom:0"
-    return (f'<div class="oai-s-newsprint" style="position:relative;width:{PHONE_W}px;height:466px;overflow:hidden">'
-            f'<div aria-hidden="true" style="position:absolute;{pos};line-height:0">{pat}</div>'
-            f'<div style="position:relative;padding:32px 32px 0">{head_label()}'
-            f'<p style="{ty("label")};color:{ink2("newsprint")};margin:0 0 10px">Report 3</p>'
-            f'<p style="{ty("h3")};color:{ink("newsprint")};margin:0 0 12px">How state committees record their votes</p>'
-            f'<p class="p12-par" style="{ty("body")};color:{ink("newsprint")};margin:0">We read every committee rule in the fifty '
-            f'states and checked which ones post a vote within two days.</p></div></div>')
-
-
-@spec
-def s_12_pattern_correct():
-    c = _coverage()
-    alt = ("An Illustrative report cover at true size on Newsprint, 360 by 466 pixels, with the kicker Report 3, the title How "
-           "state committees record their votes and a short paragraph at the top. Stone arcs 1 pixel wide spread from the "
-           "bottom right corner across the open lower part of the cover, and stop well short of the words.")
-    return rec("s-12-pattern-correct", "12.4", PHONE_W, alt, cover(), illustrative=True,
-               notes=f"Built from the hinge devices, after icon study 07's ring rhythm. Hinge arcs: circles from the corner at "
-                     f"radii 2, 3, 4 and more times {STEP} px, continuing the hinge diagram's ring and arcs (radii 110 and 165 "
-                     f"units, 2 to 3), ending inside a quarter circle {ARCS_H - 1} px wide, 1 px in oa.color.border.hairline "
-                     f"(Stone). Ink coverage measured on a 240 px swatch rendered at 1x in Chromium, as Phase 1 measured its "
-                     f"patterns: {c['hinge_arcs'] * 100:.1f} percent, under the 12 percent ceiling (D1-18). Round 3 (CA-S11): "
-                     f"the hinge rules leave the rule, since sixteen even lines read as lines to write on, and the plate is the "
-                     f"cover alone at 360 px, so no part of the frame stands empty and a phone shows it whole. The cover is a "
-                     f"report's first screen, with type at the phone floor (D2-254).")
-
-
-@spec
-def s_12_pattern_failure():
-    body = f'{dnp()}{cover(behind=True)}'
-    alt = ("Failure case: do not publish. The same Illustrative cover with the arcs spread over the whole of it, so the "
-           "fine lines run behind the title and the paragraph.")
-    return rec("s-12-pattern-failure", "12.4", PHONE_W, alt, body, illustrative=True,
-               notes="The arcs under body text, the failure the brief names. The band runs the plate's width, as chapter 11's "
-                     "360 px plates set it, and the Illustrative label opens the cover under it (CD-S11). Failure band per D2-308.")
-
-
-# ============================================================================================ 12.4 rewritten, for board C
-# Stage C round 1 (November 11, 2026): the creative director's review of Rule 12.4 (20261111_CD-Review-Of-Rule-12-4.md)
-# recommends retiring the hinge arcs and rewriting the rule for open areas: leave them plain, or sign them with the large
-# crop of B (Rule 04.8) or a watermark (Rule 12.2). Dustin decides on board C. This is the rewrite as a variant beside
-# the current rule: its words (REWRITE_12_4, a draft for the editor) and its two plates (rewrite_plates), which
-# stage_c_identity_round1.py sets beside today's rule on a comparison page. Nothing here is a specimen: S does not hold
-# these functions, so chapter 12 and its plates stay as they are until Dustin chooses.
+# ============================================================================================ 12.4 open areas
+# DR-216 (Dustin, November 11, 2026): the hinge arcs retire. Rule 12.4 keeps its number and becomes the rule for open
+# areas, as the creative director drafted it (work/handoffs/phase-2/20261111_CD-Review-Of-Rule-12-4.md): leave them
+# plain, or sign them with the large crop of B (Rule 04.8) or a watermark (Rule 12.2). Its plates are the ones board C
+# showed: the Report 3 cover at 360 px signed with the crop of B, and the same cover with the retired arcs under the
+# failure band. They keep the ids s-12-pattern-correct and s-12-pattern-failure.
 #
-# The crop on the Report 3 cover keeps Rule 04.8's proportions as s-04-8-correct sets them: B's display master in the
-# surface's ink, its right edge 142/400 of its width past the cover's right edge and its foot 30/440 of its height past
-# the cover's foot. Its height on this cover, CROP_B_H, is the largest that keeps Rule 04.8's measures, chosen on a
-# render by stage_c_identity_round1.py (20261111_Stage-C-Round-1-Identity-Figures.json, key rule_12_4).
+# The crop keeps Rule 04.8's proportions as s-04-8-correct sets them: B's display master in the surface's ink, its right
+# edge 142/400 of its width past the cover's right edge and its foot 30/440 of its height past the cover's foot. Its
+# height on this cover, CROP_B_H, is the largest that keeps Rule 04.8's measures, chosen on a render by
+# stage_c_identity_round1.py rule-12-4 (CROP_FIGS, key rule_12_4).
 CROP_B_H = 232
 CROP_RIGHT, CROP_FOOT = 142 / 400, 30 / 440          # s-04-8-correct: 142 of B's 400 px width, 30 of its 440 px height
+CROP_FIGS = ROOT / "work/handoffs/phase-2/20261111_Stage-C-Round-1-Identity-Figures.json"
+# The retired hinge arcs, kept only to draw Rule 12.4's failure plate: their step, and the open area they filled at the
+# cover's foot. Nothing in the guide sets them as a device any longer (DR-216).
+STEP, ARCS_H = 16, 220
+
+
+def crop_figures():
+    """The crop's measures at CROP_B_H, from the render that chose it."""
+    f = json.loads(CROP_FIGS.read_text())["rule_12_4"]
+    assert f["largest_that_passes"] == CROP_B_H, f"the measure chose {f['largest_that_passes']} px; CROP_B_H is {CROP_B_H}"
+    return f["by_height"][str(CROP_B_H)]
 
 
 def crop_b(b_h=None):
@@ -355,47 +282,64 @@ def crop_b(b_h=None):
             f'line-height:0">{mark(AMP["display"], h=b_h, mode="ink", decorative=True)}</span>')
 
 
+def retired_arcs():
+    """The hinge arcs as Rule 12.4 set them until DR-216, for its failure plate only: circles from the cover's bottom
+    right corner at 2, 3, 4 and more steps of STEP px, 1 px in the hairline color, ending inside a quarter circle as wide
+    as the 220 px area at the foot, so 12 arcs in all."""
+    w, h = PHONE_W, ARCS_H
+    circles = "".join(f'<circle cx="{w}" cy="{h}" r="{k * STEP}"/>' for k in range(2, int((min(w, h) - 1) / STEP) + 1))
+    return (f'<div aria-hidden="true" style="position:absolute;left:0;bottom:0;line-height:0">'
+            f'<svg width="{w}" height="{h}" viewBox="0 0 {w} {h}" aria-hidden="true" focusable="false" class="oai-svg" '
+            f'style="display:block;overflow:hidden" fill="none" stroke="{hl("newsprint")}" stroke-width="1">{circles}</svg></div>')
+
+
+def cover(sign):
+    """A report's first screen at true size, 360 by 466 px, on Newsprint, the whole plate: the Illustrative label at its
+    head, the kicker, title and paragraph at top left, and sign, a layer hidden from assistive technology, in the open
+    lower right."""
+    return (f'<div class="oai-s-newsprint" style="position:relative;width:{PHONE_W}px;height:466px;overflow:hidden">{sign}'
+            f'<div style="position:relative;padding:32px 32px 0">{head_label()}'
+            f'<p style="{ty("label")};color:{ink2("newsprint")};margin:0 0 10px">Report 3</p>'
+            f'<p style="{ty("h3")};color:{ink("newsprint")};margin:0 0 12px">How state committees record their votes</p>'
+            f'<p class="p12-par" style="{ty("body")};color:{ink("newsprint")};margin:0">We read every committee rule in the fifty '
+            f'states and checked which ones post a vote within two days.</p></div></div>')
+
+
 def cover_signed(b_h=None):
-    """The same Report 3 cover as cover(), signed with the large crop of B in place of the arcs."""
-    base = cover()
-    arcs = re.search(r'<div aria-hidden="true" style="position:absolute;left:0;bottom:0;line-height:0">.*?</svg></div>', base, flags=re.S)
-    assert arcs, "the cover is not the one this variant was written for"
-    return base.replace(arcs.group(0), crop_b(b_h), 1)
+    """The Report 3 cover signed with the large crop of B; b_h tries another height of B (stage_c_identity_round1.py)."""
+    return cover(crop_b(b_h))
 
 
-def rewrite_plates(b_h=None):
-    """The rewrite's correct plate (the cover signed with the crop of B) and its failure plate (today's cover with the
-    arcs, under the failure band), each Illustrative, as the creative director's instruction for board C sets them."""
-    return cover_signed(b_h), f'{dnp()}{cover()}'
+@spec
+def s_12_pattern_correct():
+    f = crop_figures()
+    alt = ("An Illustrative report cover at true size on Newsprint, 360 by 466 pixels, with the kicker Report 3, the title How "
+           "state committees record their votes and a short paragraph at the top. A large Charcoal ampersand B runs off the "
+           "bottom right corner, cut by the cover's right edge and its foot. What stays inside reads as one letter, clear of "
+           "the words.")
+    return rec("s-12-pattern-correct", "12.4", PHONE_W, alt, cover_signed(), illustrative=True,
+               notes=f"DR-216: the large crop of B (Rule 04.8) signs the cover's open corner. B's display master "
+                     f"({AMP['display']}) at {CROP_B_H} px tall in the surface's ink, oa.color.text.primary.onNewsprint, at "
+                     f"s-04-8-correct's proportions: {CROP_RIGHT * 100:.1f} percent of its width past the right edge and "
+                     f"{CROP_FOOT * 100:.1f} percent of its height past the foot. Measured on a 1x Chromium render "
+                     f"({CROP_FIGS.name}, key rule_12_4): {f['ink_outside_share'] * 100:.1f} percent of B's ink falls outside "
+                     f"the cover, within Rule 04.8's 25 to 40 percent; what stays inside is one piece, at this place and at "
+                     f"every offset within 4 px; B's ink stands {f['clearance_px']:g} px from the words, over the body text's "
+                     f"{f['body_line_height_px']:g} px line height. The largest B, in 4 px steps, that keeps all three with "
+                     f"2 px to spare. The cover is a report's first screen, with type at the phone floor (D2-254); its words "
+                     f"are invented.")
 
 
-REWRITE_12_4 = {
-    "id": "12.4",
-    "title": "Leave an open area plain, or sign it with the large crop of B or a watermark.",
-    "rule": ("We use no repeating pattern. A cover or a section opener may carry the large crop of B (Rule 04.8), and a "
-             "report page or a section opener may carry a watermark in its open margin (Rule 12.2). A social card, and any "
-             "view whose ampersand moment is a hinge headline, keeps its open area plain."),
-    "why": ("Every shape we own already has a rule that a repeat would break: B appears once in a view (Rule 04.2), the "
-            "lockmark stays whole (Rule 08.3), and a row of nodes reads as chapter 11's tracker. A pattern that avoids them "
-            "belongs to no one, so a cover that carries one reads as anyone's report. The crop of B and the watermark sign "
-            "an open area with the mark a reader already knows as ours."),
-    "basis": "Design judgment, approved on board C",
-    "correct": ("The Report 3 cover at true size, signed with the large crop of B off its bottom-right corner, clear of the "
-                "words."),
-    "failure": ("Nothing on this cover says Oath & Action, and the arcs take the corner the crop of B would sign."),
-    "specs": [("Plain", "The first choice for an open area"),
-              ("Crop of B", "A cover or a section opener, bottom right, at Rule 04.8's measures"),
-              ("Watermark", "A report page or a section opener, in the open margin, at Rule 12.2's measures"),
-              ("Kept plain", "A social card, and any view whose ampersand moment is a hinge headline (Rule 04.2)"),
-              ("Never", "A repeating pattern of arcs, lines, dots, nodes or ampersands")],
-    "builders": ("Leave the open area plain first. Sign it with the crop of B only on a cover or a section opener that holds "
-                 "no hinge headline, and check Rule 04.8's measures on the cover at its true size."),
-    "if_chosen": ["Remove the “Hinge arcs” row from s-12-index",
-                  "Change the chapter intro’s “a pattern drawn from the hinge” to “the rule for open areas”",
-                  "Drop “or a pattern” from Rule 12.2’s Never row",
-                  "Remove hinge_arcs and its coverage figure from stage_b_identity_ch12.py, and set the rewrite’s plates as "
-                  "s-12-pattern-correct and s-12-pattern-failure"],
-}
+@spec
+def s_12_pattern_failure():
+    alt = ("Failure case: do not publish. The same Illustrative report cover without B. Twelve thin Stone arcs spread from "
+           "its bottom right corner across the open lower part, and no mark of ours signs the cover.")
+    return rec("s-12-pattern-failure", "12.4", PHONE_W, alt, f'{dnp()}{cover(retired_arcs())}', illustrative=True,
+               notes=f"The hinge arcs as Rule 12.4 set them until DR-216 retired them: circles from the bottom right corner at "
+                     f"radii 32 to {(int((min(PHONE_W, ARCS_H) - 1) / STEP)) * STEP} px in {STEP} px steps, 1 px in "
+                     f"oa.color.border.hairline (Stone), in a {PHONE_W} by {ARCS_H} px area at the cover's foot. The band runs "
+                     f"the plate's width, as chapter 11's 360 px plates set it, and the Illustrative label opens the cover "
+                     f"under it (CD-S11). Failure band per D2-308.")
 
 
 # ============================================================================================ the chapter's rules
@@ -418,7 +362,6 @@ def rules():
 
 def _rules():
     from stage_a_identity_chapters import R, S as SP_, DJ
-    c = _coverage()
     return [
         R("12.1", "Divide sections with a Stone hairline.",
           "Between the sections and modules of a page, draw a 1 px hairline in the surface's hairline color: Stone on "
@@ -465,7 +408,7 @@ def _rules():
                  SP_("Crop", "Where an edge cuts B, it cuts through strokes the eye can follow, with no piece of B left alone "
                              "at the edge and no curve grazing it (Rule 04.8)"),
                  SP_("Place", "An open margin of a report page or a section opener"),
-                 SP_("Never", "Behind words, a figure or a control; in red; beside a hinge headline, a crop of B or a pattern")],
+                 SP_("Never", "Behind words, a figure or a control; in red; beside a hinge headline or a crop of B")],
           files=[A + AMP["display"]],
           related=["04", "05", "24"],
           builders="Set the opacity on the mark from its token, and place the mark in its own layer, outside the text "
@@ -492,41 +435,42 @@ def _rules():
           related=["03", "23", "24"],
           builders="Export the video's signature as a PNG at twice its size from the L8 master, with its colors written in, "
                    "and keep it in the same corner for the whole video."),
-        R("12.4", "Use the hinge arcs only in an open area, away from words.",
-          "One pattern, the hinge arcs, may give texture to a cover, an opener or the background of a social card. Its arcs "
-          "spread from a corner at the radii of the hinge diagram's ring and arcs, carried on in equal steps, and end inside "
-          "a quarter circle, so none is cut off flat. They run 1 px in the surface's hairline color, cover no more than 12 "
-          "percent of the area they fill, and stop at least 24 px short of any words, figure or control.",
-          "A pattern gives an empty area texture without a picture, and drawn from the hinge it adds no new shape for a "
-          "reader to learn. Behind words, even a faint pattern adds edges the eye has to sort from the letters, so it stays "
-          f"where nothing is read. The arcs cover {c['hinge_arcs'] * 100:.1f} percent of the area they fill.",
-          "Our measurements, October and November 2026, and design judgment, which sets the 12 percent ceiling",
-          "A report cover at true size, the title at top left and the hinge arcs spreading from the bottom right corner, "
-          "clear of the words.",
-          "The same cover with the arcs behind the title and the paragraph. The lines cross the letters and the words lose "
-          "their clean ground.",
-          tokens=["oa.color.border.hairline.onNewsprint", "oa.border.width.hairline"],
-          specs=[SP_("Hinge arcs", f"Circles from a corner at 2, 3, 4 and more steps of {STEP} px, 1 px wide, ending inside a "
-                                   "quarter circle as wide as the area's shorter side"),
-                 SP_("Color", "The surface's hairline color: Stone on Newsprint, White and Charcoal; never on Prussian",
-                     "oa.color.border.hairline.onNewsprint"),
-                 SP_("Coverage", "At most 12 percent of the area the arcs fill, measured on a render"),
-                 SP_("Clearance", "At least 24 px from any words, figure or control"),
-                 SP_("Never", "Behind words; in red; dotted or dashed; as evenly ruled lines, which read as a form to fill in; "
-                              "with a watermark or a crop of B in the same view")],
-          related=["04", "05", "07"],
-          builders="Draw the arcs as an SVG in the hairline token, sized to the open area they fill, and keep it out of the "
-                   "layer that holds the words."),
+        # DR-216: the creative director's rewrite. The title, rule and Never row are the review's words; the why, the
+        # other rows and builders are the identity designer's draft (D2-1408), with the editor in the fix pass.
+        R("12.4", "Leave an open area plain, or sign it with the large crop of B or a watermark.",
+          "We use no repeating pattern. A cover or a section opener may carry the large crop of B (Rule 04.8), and a "
+          "report page or a section opener may carry a watermark in its open margin (Rule 12.2). A social card, and any "
+          "view whose ampersand moment is a hinge headline, keeps its open area plain.",
+          "Every shape we own already has a rule that a repeat would break: a view carries one ampersand moment (Rule "
+          "04.2), the lockmark always appears whole (Rule 08.3), and a row of nodes would read as the numbered steps that "
+          "follow a bill (Rule 11.1). A pattern that avoids them has to use common shapes, so a cover that carries one "
+          "looks like a stock report template. The crop of B and the watermark sign an open area with the ampersand from "
+          "our wordmark.",
+          APPROVED,
+          "The Report 3 cover at true size, signed with the large crop of B off its bottom-right corner, clear of the "
+          "words.",
+          "Nothing on this cover says Oath & Action, and the arcs take the corner the crop of B would sign.",
+          specs=[SP_("Plain", "The first choice for an open area"),
+                 SP_("Crop of B", "A cover or a section opener, bottom right, at Rule 04.8's measures"),
+                 SP_("Watermark", "A report page or a section opener, in the open margin, at Rule 12.2's measures"),
+                 SP_("Kept plain", "A social card, and any view whose ampersand moment is a hinge headline (Rule 04.2)"),
+                 SP_("Never", "A repeating pattern of arcs, lines, dots, nodes or ampersands")],
+          files=[A + AMP["display"]],
+          related=["04", "24"],
+          builders="Leave the open area plain first. Sign it with the crop of B only on a cover or a section opener that "
+                   "holds no hinge headline, and check Rule 04.8's measures on the cover at its true size."),
     ]
 
 
 EXTRAS = [{"after_rule": "12.1", "specimen": "s-12-index", "label": "Every graphic device and its rule",
            "caption": "The devices this guide sets, the job of each and the rule that sets it."}]
 INTRO_ADD = ("Rules 12.1 to 12.4 cover the devices that divide and sign a page: hairlines, watermarks, the monogram as "
-             "a small signature and a pattern drawn from the hinge.")
-# earlier wordings of INTRO_ADD, replaced in place when the shared file still holds one (round 3, ED 4e, CA-S11)
+             "a small signature and the rule for open areas.")
+# earlier wordings of INTRO_ADD, replaced in place when the shared file still holds one (round 3, ED 4e, CA-S11; DR-216)
 OLD_INTRO_ADDS = ("Rules 12.1 to 12.4 cover the devices that divide and sign a page: hairlines, watermarks, the compact "
-                  "signature and two patterns drawn from the hinge.",)
+                  "signature and two patterns drawn from the hinge.",
+                  "Rules 12.1 to 12.4 cover the devices that divide and sign a page: hairlines, watermarks, the monogram as "
+                  "a small signature and a pattern drawn from the hinge.")
 RELATED_ADD = [{"chapter": "04", "reason": "The hinge divider, the hinge diagram and the large crop of B."},
                {"chapter": "03", "reason": "L8, the monogram, and the colors of every mark."}]
 

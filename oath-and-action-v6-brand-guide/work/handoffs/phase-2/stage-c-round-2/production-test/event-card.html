@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+// The head script (Rules 18.4 and 26.6), copied from Rule 18.4's Head script panel.
+(function () {
+  try {
+    var t = localStorage.getItem('oa-theme');
+    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-oa-theme', t);
+  } catch (e) {}
+})();
+</script>
+<meta name="color-scheme" content="light dark">
+<title>Library budget workshops: sign up (Illustrative)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Lora:ital,wght@1,400;1,500&display=swap">
+<link rel="stylesheet" href="../../../../build/tokens/tokens.css">
+<link rel="stylesheet" href="event-card.css">
+<script src="event-card.js" defer></script>
+</head>
+<body>
+<header class="ev-masthead">
+  <p class="ev-site">Production test page. Everything below is Illustrative.</p>
+  <!-- Rule 18.4's theme switch, with data-oa-theme-for left out, so it sets the page's root and keeps the choice -->
+  <fieldset class="oa-theme">
+    <legend class="oa-theme-legend">Theme</legend>
+    <div class="oa-theme-row">
+      <label class="oa-theme-item">
+        <input class="oa-theme-input" type="radio" name="oa-theme" value="light">
+        <span class="oa-theme-face"><svg class="oa-theme-check" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="U-selected-check" data-icon-family="utility"><path d="M4 12.5 L9 17.5 L20 6.5"/></svg><span class="oa-theme-label">Light</span></span>
+      </label>
+      <label class="oa-theme-item">
+        <input class="oa-theme-input" type="radio" name="oa-theme" value="dark">
+        <span class="oa-theme-face"><svg class="oa-theme-check" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="U-selected-check" data-icon-family="utility"><path d="M4 12.5 L9 17.5 L20 6.5"/></svg><span class="oa-theme-label">Dark</span></span>
+      </label>
+      <label class="oa-theme-item">
+        <input class="oa-theme-input" type="radio" name="oa-theme" value="device" checked>
+        <span class="oa-theme-face"><svg class="oa-theme-check" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="U-selected-check" data-icon-family="utility"><path d="M4 12.5 L9 17.5 L20 6.5"/></svg><span class="oa-theme-label">Match my device</span></span>
+      </label>
+    </div>
+  </fieldset>
+</header>
+
+<main class="ev-page">
+  <h1 class="ev-page-title">Library budget workshops</h1>
+  <p class="ev-page-lede">Alder County’s library board shows how it sets branch hours before the budget vote, and takes questions. Each session holds 30 people. <span class="ev-illus">Illustrative</span></p>
+
+  <!-- The full state: the button stays in place, keeps focus and says why it cannot send (Rule 18.1) -->
+  <article class="ev-card" aria-labelledby="ev-tue-title">
+    <p class="ev-illus">Illustrative</p>
+    <h2 class="ev-title" id="ev-tue-title">First session</h2>
+    <dl class="ev-facts">
+      <div class="ev-fact"><dt>When</dt><dd>Tuesday, March 16, 2027, 6 p.m. to 7:30 p.m.</dd></div>
+      <div class="ev-fact"><dt>Where</dt><dd>Alder County Main Library, Meeting Room B</dd></div>
+      <div class="ev-fact"><dt>Seats</dt><dd><b>None left.</b> All 30 are taken.</dd></div>
+    </dl>
+    <form class="ev-form" data-ev-form novalidate>
+      <button type="submit" class="ev-send" aria-disabled="true" aria-describedby="ev-tue-why">Save my seat</button>
+      <p class="ev-why" id="ev-tue-why">Every seat in this session is taken. The second session, on Thursday, March 18, still has seats.</p>
+    </form>
+  </article>
+
+  <!-- The open state: name, email, the ask, the status line -->
+  <article class="ev-card" aria-labelledby="ev-thu-title">
+    <p class="ev-illus">Illustrative</p>
+    <h2 class="ev-title" id="ev-thu-title">Second session</h2>
+    <dl class="ev-facts">
+      <div class="ev-fact"><dt>When</dt><dd>Thursday, March 18, 2027, 6 p.m. to 7:30 p.m.</dd></div>
+      <div class="ev-fact"><dt>Where</dt><dd>Alder County Main Library, Meeting Room B</dd></div>
+      <div class="ev-fact"><dt>Seats</dt><dd><b data-ev-seats>8</b> of 30 left</dd></div>
+    </dl>
+    <form class="ev-form" data-ev-form novalidate>
+      <div class="ev-field">
+        <label class="ev-label" for="ev-thu-name">Name</label>
+        <input class="ev-input" id="ev-thu-name" name="name" type="text" autocomplete="name" data-ev-check="name">
+        <p class="ev-error" id="ev-thu-name-error" hidden><svg class="ev-mark" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="U-error" data-icon-family="utility"><circle cx="12" cy="12" r="9"/><path d="M12 7V13"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span><b>Error:</b> Enter your name, so the library can find you on its list.</span></p>
+      </div>
+      <div class="ev-field">
+        <label class="ev-label" for="ev-thu-email">Email</label>
+        <p class="ev-hint" id="ev-thu-email-hint">We send one reminder the day before.</p>
+        <input class="ev-input" id="ev-thu-email" name="email" type="email" autocomplete="email" spellcheck="false" aria-describedby="ev-thu-email-hint" data-ev-check="email">
+        <p class="ev-error" id="ev-thu-email-error" hidden><svg class="ev-mark" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="U-error" data-icon-family="utility"><circle cx="12" cy="12" r="9"/><path d="M12 7V13"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span><b>Error:</b> Enter an email address with an @, such as name@example.com.</span></p>
+      </div>
+      <button type="submit" class="ev-send" data-red="working" data-red-job="take part now">Save my seat</button>
+      <p class="ev-status" id="ev-thu-status" role="status"></p>
+      <template class="ev-say-sending">Saving your seat.</template>
+      <template class="ev-say-done"><svg class="ev-mark ev-mark--ok" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="U-success" data-icon-family="utility"><path d="M20.912 10.747 A9 9 0 1 1 15.945 3.911"/><path d="M7.5 11.5 L11 15 L20.5 5.5"/></svg><span><b>You’re signed up.</b> Your seat is saved for Thursday, March 18, at 6 p.m. We’ll email you the day before.</span></template>
+    </form>
+  </article>
+</main>
+</body>
+</html>
