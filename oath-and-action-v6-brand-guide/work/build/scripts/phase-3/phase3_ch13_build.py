@@ -1072,7 +1072,7 @@ def rule_13_6(book):
         ("Geography", "United States"),
         ("The copy we read", "via FRED, Federal Reserve Bank of St. Louis"),
         ("Date retrieved", "Retrieved November 6, 2026."),
-        ("Qualification", "August and September 2026 are preliminary, and the Bureau will revise them."),
+        ("Qualification", "August and September 2026 are preliminary and will be revised."),
     ]
     pos = -1
     for _, words in parts:

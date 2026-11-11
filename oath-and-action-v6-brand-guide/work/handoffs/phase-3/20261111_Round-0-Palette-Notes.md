@@ -152,7 +152,8 @@ D3-xxx | Recommended for the creative director: where a red point stands among b
 
 1. **Engineer (sent):** the D3-84 token values, `railSelected` withdrawn, `headClearance` added, `minRun` from 28 to 20, the gloss; the categorical order (groups 2 and 3 swap values) and the `labelBeside.group4` rename; a kit check that refuses a label on `cat-4`'s fill.
 2. **Editor (sent):** Rule 13.4's numbers and the 40 px key samples at 2 px; a red target at 4 px or heavier.
-3. **Engineer:** the research lead's ENG-7, the national row in the turnout file. The proof sheet reads it once it is there.
+3. **Engineer:** the research lead's ENG-7, the national row in the turnout file. Done by the engineer; the proof sheet now reads its data from `work/build/data/` (contract C1), takes the national figure from that row, and prints the sidecars' own source lines (the turnout file's 2024 line, and the line S13 prints for the payroll series).
+4. **Engineer (done, reported back):** the D3-84 values and the categorical changes are in release 6.0.0-gate3.1 with every token test passing; the kit refuses a label on `cat-4`'s fill without a halo.
 
 ### Fix pass tested
 

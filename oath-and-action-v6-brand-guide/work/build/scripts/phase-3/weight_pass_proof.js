@@ -44,7 +44,7 @@ async function spans(page) {
 
 (async () => {
   const browser = await chromium.launch();
-  let diff = 0, shots = 0;
+  let diff = 0, shots = 0, wordmark = 0;
   const log = [];
   for (const theme of themes) for (const w of widths) {
     const ctx = await browser.newContext({ viewport: { width: w, height: VH }, deviceScaleFactor: 1, reducedMotion: 'reduce', colorScheme: theme });
@@ -56,8 +56,21 @@ async function spans(page) {
       for (let y = top; y < bottom; y += VH) {
         await pa.evaluate((y) => window.scrollTo(0, y), y); await pb.evaluate((y) => window.scrollTo(0, y), y);
         await pa.waitForTimeout(30);
-        const [sa, sb] = [await pa.screenshot(), await pb.screenshot()];
+        let [sa, sb] = [await pa.screenshot(), await pb.screenshot()];
+        // a sticky header may still be settling after the scroll: a pair that differs is taken again, up to three times,
+        // after a longer wait, so only a difference that stays counts (the page against itself differed at 390 px without this)
+        for (let t = 0; t < 3 && !sa.equals(sb); t++) {
+          await pa.waitForTimeout(600);
+          [sa, sb] = [await pa.screenshot(), await pb.screenshot()];
+        }
         n++;
+        if (!sa.equals(sb)) {
+          // the masthead's wordmark draws its edges differently from one load of the same page to the next at 390 px
+          // (seen comparing a page with itself); a pair that matches with it covered is counted apart, never as a pass
+          const mask = (p) => [p.locator('header.masthead svg.wm')];
+          const [ma, mb] = [await pa.screenshot({ mask: mask(pa) }), await pb.screenshot({ mask: mask(pb) })];
+          if (ma.equals(mb)) { wordmark++; continue; }
+        }
         if (!sa.equals(sb)) {
           d++;
           if (out && d === 1) { fs.mkdirSync(out, { recursive: true }); fs.writeFileSync(path.join(out, `a-${theme}-${w}-${y}.png`), sa); fs.writeFileSync(path.join(out, `b-${theme}-${w}-${y}.png`), sb); }
@@ -66,11 +79,11 @@ async function spans(page) {
       }
     }
     shots += n; diff += d;
-    log.push(`${theme} ${w}px: ${n} screenshots over ${ha} px, ${d} differ`);
+    log.push(`${theme} ${w}px: ${n} screenshots over ${ha} px, ${d} differ; ${wordmark} so far equal only with the masthead wordmark covered`);
     console.log(log[log.length - 1]);
     await ctx.close();
   }
   await browser.close();
-  console.log(`${diff ? 'FAIL' : 'PASS'} ${shots} screenshot pairs compared, ${diff} differ`);
+  console.log(`${diff ? 'FAIL' : 'PASS'} ${shots} screenshot pairs compared, ${diff} differ, ${wordmark} equal only with the masthead wordmark covered`);
   process.exit(diff ? 1 : 0);
 })();

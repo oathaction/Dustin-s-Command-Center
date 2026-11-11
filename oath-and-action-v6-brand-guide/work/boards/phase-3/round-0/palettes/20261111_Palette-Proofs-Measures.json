@@ -2839,7 +2839,7 @@
   "jobs": {
    "window": "January 2022 to September 2026",
    "window_reason": "Every jobs chart on this sheet runs from January 2022 to September 2026, the window S13 and S14 use: three full years before the January 2025 inauguration and every month since. The 12-month periods end each September, so none splits at the inauguration.",
-   "source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all employees by sector, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.",
+   "source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all employees by industry, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.",
    "change_since_january_2022_pct": {
     "Mining and logging": 5.02,
     "Construction": 10.13,

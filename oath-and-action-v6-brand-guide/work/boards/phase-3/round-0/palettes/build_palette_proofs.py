@@ -39,7 +39,7 @@ PROPOSAL = ROOT / 'work/handoffs/phase-3' / f'{DATE}_Palette-Proposal.json'
 PROBES = HERE / f'{DATE}_Palette-Proofs-Capture-Log.json'
 TOKENS_JSON = ROOT / 'work/build/tokens/tokens.json'
 TOKENS_CSS = ROOT / 'work/build/tokens/tokens.css'
-PUBLIC = ROOT / 'work/boards/phase-2/data-viz/shared/public'
+PUBLIC = ROOT / 'work/build/data'          # the kit's data folder (contract C1); the Phase 2 copies stay as records
 TILES = ROOT / 'work/boards/phase-2/data-viz/shared/geo/us-state-tile-grid.json'
 WORDMARK = ROOT / 'work/build/assets/identity/wordmark/20261028_Wordmark-24px-Master.svg'
 
@@ -364,10 +364,7 @@ TURNOUT = {r['code']: {'name': r['name'], 'pct': float(r['voted_pct']), 'moe': f
            for r in _turnout_rows if r['code'] != 'US'}
 _US_ROW = next((r for r in _turnout_rows if r['code'] == 'US'), None)   # the engineer's ENG-7 adds it; until then, the sidecar's note
 TILE = json.loads(TILES.read_text())
-TURNOUT_SOURCE = ('Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a, '
-                  'reported voting for states, November 2024, 50 states and DC. Retrieved November 6, 2026. Self-reported '
-                  'voting among citizens 18 and over; state margins of error reach 5.6 points.')
-assert 'reach 5.6 points' in TURNOUT_META['source_line'] or '5.6' in TURNOUT_META['qualification']
+TURNOUT_SOURCE = TURNOUT_META['source_line_variants']['source_line_2024_only']   # the sidecar's own line for 2024
 TURNOUT_BREAKS = [58, 62, 66, 70]
 _us = re.search(r'National rate, not in the CSV: ([\d.]+)% .*?\(margin ([\d.]+)\)', ' '.join(TURNOUT_META['notes']))
 US_TURNOUT, US_TURNOUT_MOE = ((float(_US_ROW['voted_pct']), float(_US_ROW['moe_pct'])) if _US_ROW
@@ -390,9 +387,9 @@ PERIODS = ['2023-09', '2024-09', '2025-09', '2026-09']
 PERIOD_WORD = {'2023-09': 'Year to Sep. 2023', '2024-09': 'Year to Sep. 2024', '2025-09': 'Year to Sep. 2025', '2026-09': 'Year to Sep. 2026'}
 YOY = {s: {p: 100 * (_jobs[s][p] / _jobs[s][f'{int(p[:4]) - 1}-09'] - 1) for p in PERIODS} for s in SECTORS}
 DIV_BREAKS = [-2.0, -0.5, 0.5, 2.0]
-JOBS_SOURCE = ('Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all employees by sector, seasonally '
-               'adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. '
-               'Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.')
+# The same printed line S13 carries for these series and this window (the derived file's sidecar)
+JOBS_SOURCE = meta('fred-payrolls-by-sector-change.meta.json')['printed_source_line']
+assert 'January 2022 to September 2026' in JOBS_SOURCE and 'preliminary' in JOBS_SOURCE
 WINDOW_REASON = ('Every jobs chart on this sheet runs from January 2022 to September 2026, the window S13 and S14 use: three '
                  'full years before the January 2025 inauguration and every month since. The 12-month periods end each '
                  'September, so none splits at the inauguration.')
