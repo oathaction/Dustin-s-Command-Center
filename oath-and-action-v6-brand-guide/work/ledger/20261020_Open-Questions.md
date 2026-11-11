@@ -8,13 +8,13 @@ Opened at Gate 0, October 20, 2026. Q-11 to Q-14 added at Gate 1, October 21, 20
 
 | # | Question | Why it matters | Default until answered | Raised by |
 |---|---|---|---|---|
-| Q-11 | Can the environment's network access be widened before Phase 3? | Research can't read pages, and Phase 3 can't download public data | Search only. Quotes stay marked as snippets, and chart specimens use Atlas V7 data | Research lead, Gate 1 |
 | Q-12 | Will a trademark attorney run clearance on OATH & ACTION, the monogram and a standalone ampersand before launch? | The drawn ampersand's value depends on it, and Braver Angels had to rename after a settlement | The guide flags the need. No filing assumed | Research lead, Gate 1 |
 
 ## Answered
 
 | # | Question | Answer | Date |
 |---|---|---|---|
+| Q-11 | Can the environment's network access be widened before Phase 3? | Answered in practice (DR-222): census.gov, fec.gov, api.congress.gov and data.gov answer from the container; bls.gov and Missouri's secretary of state return 403 through their own checks for automated visitors. Phase 3 plans on public data downloads | November 11, 2026 |
 | Q-14 | Who made page 14 of `pics_i_like.pdf`, the rendered data visualization study? | Dustin made it with ChatGPT, describing what he wanted; no outside sources were used (DR-212). It is Oath & Action's own design study, and a reference that does not ship | November 10, 2026 |
 | Q-17 | Can you add the Atlas V7 HTML file to `source/` before Phase 3? | Dustin uploaded it on November 10. It matches the Phase 0 manifest byte for byte (3,109,589 bytes, SHA-256 05e26c6b…c97649). Under `.gitignore` it stays out of the repository, so it lives in each container only while a session holds it (D2-711) | November 10, 2026 |
 | Q-16 | Which tool made the Civic Line sheets, and under what terms? | ChatGPT, in Dustin's own conversation over several rounds of describing what he wanted and the look; no one else's work was a source. The plan was not stated for these sheets (DR-144) | November 9, 2026 |

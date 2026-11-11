@@ -2878,3 +2878,21 @@ Dustin, after the round 1 preview: "i approve all recs." The studio reads this a
 | DR-216 | Rule 12.4's hinge arcs retire. Rule 12.4 keeps its number and title and is rewritten as the creative director drafted it: leave an open area plain, or sign it with the large crop of B or a watermark; no new pattern. The identity designer's rewrite (`stage_b_identity_ch12.py`, comparison in `work/handoffs/phase-2/stage-c-identity/20261111_Rule-12-4-Comparison*`) goes into chapter 12 in round 2's fix pass. This overrides Gate 1's approval of patterns (Y6) | Dustin, November 11, as recommended (D2-1277; `20261111_CD-Review-Of-Rule-12-4.md`) |
 | DR-217 | L3 under 40 px tall on screen keeps the pixel masters, so the 196 px minimum stays at 2.43 cap heights; the print L3 of DR-210 serves print and the screen widths the display masters allow, all but the 282 px masthead | Dustin, November 11, as recommended (D2-1329) |
 | DR-218 | The token release 6.0.0-gate2.8 cleans every description a reader sees (the loading mark's, and those carrying studio codes or retired names), and the error mark's token is renamed `oa.color.state.error.bar` with the old CSS name kept as an alias for one release, both in round 2's fix pass before the token table is frozen for board C | Dustin, November 11, as recommended (D2-1524, D2-1525; the engineer's round 1 notes) |
+
+## Answers on the round 2 plan, November 11, 2026
+
+The main session asked three questions with its plan for round 2, board C and the Gate 2 preview. Dustin: "yes please proceed with all recs."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-219 | Round 2's production test asks a simulated developer to build an event sign-up card from chapters 18 and 26 and tokens.css alone: the event's date and place, the seats left, a name and email form, a full state whose button cannot be pressed and says why, and a confirmation message; then to switch it to dark mode | Dustin, November 11, as recommended (question 1) |
+| DR-220 | Board C is the chapters page republished as version 7 with a one-screen note on what changed. A decisions board is built only if round 2 raises a call that is Dustin's | Dustin, November 11, as recommended (question 2) |
+| DR-221 | The creative director reads all 16 chapters together at Gate 2 and scores each one, to catch drift between chapters built at different stages; round 2 scores chapters 17, 18, 19 and 26 and the changed parts of 01 to 12 | Dustin, November 11, as recommended (question 3) |
+| DR-222 | Q-11 is answered in practice: from this container census.gov, fec.gov, api.congress.gov and data.gov answer, and bls.gov and Missouri's secretary of state answer 403 through their own checks for automated visitors. The Phase 3 proposal plans on downloading public data | Dustin, November 11, accepting the main session's note |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1531 | Round 2 reviews a frozen copy of the committed chapters page, `20261106_Stage-A-Chapters.html` at commit df0fb08d (SHA-256 ba1e1f97ee988b1e…), in the scratchpad's `round-2/review/`. Between 10ba650b and df0fb08d only `guide_check.js` changed under `work/build`, so the frozen copy is the page published as version 6 and checked under D2-1530 | One frozen page for every reviewer (D2-955); the copy is the checked build, so no rebuild adds a new timestamp |
+| D2-1532 | Missouri's count is read when the Gate 2 preview is built; if the state has not certified by then, the plate keeps "unofficial" and the read moves to Phase 5's assembly | Counties file by November 17 and certification follows within two weeks (D2-1118) |
