@@ -1,0 +1,153 @@
+{
+ "title": "Creative director's rescore after stage C round 2's fix pass, chapters 17, 18, 19 and 26, the changed parts of 01 to 11, and Rule 12.4 as wired",
+ "date": "2026-11-11",
+ "author": "Creative director (oa-creative-director), subagent of the main session",
+ "basis": "20261111_Stage-C-Round-2-Fix-Brief.md and the five fix notes; Master Brief section 6 rubric; the fixed page in the scratchpad's final/guide.html (8,958,497 bytes, strict build 0 warnings, tokens 6.0.0-gate2.8), looked at by the creative director at 1440 px (1x) and 390 px (2x), in both live themes, with every chapter 17 player played",
+ "review": "work/handoffs/phase-2/20261111_CD-Review-Of-Stage-C-Chapters.md, section \"Rescore after the fix pass\"",
+ "record": "work/handoffs/phase-2/20261111_Stage-C-Round-2-CD-Scores.json keeps the round 2 scores as the record",
+ "threshold": "4 on every criterion; an item is ready when every score is 4 or more and it has no Must fix",
+ "criteria": [
+  {"key": "craft", "name": "Craft"},
+  {"key": "clarity", "name": "Clarity"},
+  {"key": "brand_fidelity", "name": "Brand fidelity"},
+  {"key": "usefulness", "name": "Usefulness"},
+  {"key": "evidence_honesty", "name": "Evidence honesty"},
+  {"key": "accessibility", "name": "Accessibility"}
+ ],
+ "items": [
+  {
+   "key": "ch17",
+   "name": "Chapter 17, Motion and states",
+   "anchor": "#motion-and-states",
+   "scores": {"craft": 4, "clarity": 4, "brand_fidelity": 4, "usefulness": 4, "evidence_honesty": 4, "accessibility": 4},
+   "was": {"craft": 3, "brand_fidelity": 3},
+   "reasons": {
+    "craft": "The hinge and lever rest on their masters with no dashed squares, the player's anatomy runs 1 to 7 top to bottom with Reset's disc off its own corner, the 200 ms failure frame draws its line 68 percent of the way, Loop R1's names sit on one centered line, Rule 17.2's names hold on one line, and the opener shows the ten states at true size.",
+    "clarity": "Rule 17.3 now says which player rests where, and its builders line, its spec row and its anatomy key say the same.",
+    "brand_fidelity": "A reader who never presses Play sees OATH & ACTION and the lockmark whole, at 24, 64, 48 and 120 px on both grounds, at 1440 and 390 px.",
+    "usefulness": "The same tokens and timings as before, plus data-oa-rest=\"master\" and data-frame=\"end\" for a player that rests on its master.",
+    "evidence_honesty": "Loop R1 now carries its grade under its quoted name in both players.",
+    "accessibility": "Reset at rest is unavailable with \"The mark is at rest on its master.\", focus stays put, and under reduced motion Play draws the last frame at once."
+   },
+   "fixes_landed": {"M1": "landed", "S1": "landed", "S2": "landed", "S3": "landed", "S4": "landed", "S5": "landed", "S18": "landed"},
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch18",
+   "name": "Chapter 18, Components and interaction",
+   "anchor": "#components",
+   "scores": {"craft": 4, "clarity": 4, "brand_fidelity": 4, "usefulness": 5, "evidence_honesty": 4, "accessibility": 4},
+   "was": {"craft": 3, "brand_fidelity": 3},
+   "reasons": {
+    "craft": "Every callout I looked at sits beside its part and never on a word or mark, numbers run in reading order, one uppercase Illustrative chip heads every invented piece, the stepper sets its buttons two by two, and the opener draws button, chip and choice from their own sets.",
+    "clarity": "Unchanged in shape; Rule 18.1 now says why the ask stands on its own row.",
+    "brand_fidelity": "A field on Charcoal is Charcoal inside a Newsprint edge, so the dark form's red ask and error bars sit on Charcoal after a send, and the ask has a row of its own, apart from any primary that hovers Prussian.",
+    "usefulness": "Code to copy in both themes, keys files and full specifications, now with real atlas samples and closed loops.",
+    "evidence_honesty": "Loop R1 states its grade, its last step returns to where the loop began, and the atlas samples carry their snapshot date.",
+    "accessibility": "Sending the form empty in either theme moves focus to the email field with aria-invalid, and the messages sit beside each field."
+   },
+   "fixes_landed": {"M2": "landed", "S6": "landed", "S7": "landed", "S8": "landed", "S9": "landed", "S10": "landed", "S11": "landed", "S18": "landed"},
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch19",
+   "name": "Chapter 19, Accessibility",
+   "anchor": "#accessibility",
+   "scores": {"craft": 4, "clarity": 4, "brand_fidelity": 4, "usefulness": 4, "evidence_honesty": 5, "accessibility": 4},
+   "was": {"craft": 3, "usefulness": 3},
+   "reasons": {
+    "craft": "19.2's chart has its title, counts, years and source, 19.4's failure shows a soft picture and its enlarged pixels, 19.6's failure keeps the band at its size, and the opener sets the four counts as one clear figure; 19.5's chart is still a bare line sketch (R2).",
+    "clarity": "The opener's 33, 8, 9 and 5 agree with Rule 19.1's words and the criteria list.",
+    "brand_fidelity": "On-system type and grounds, no stray red.",
+    "usefulness": "Every rule now has a builders line, and the matrix names the axe-core tags and a command for each automated check.",
+    "evidence_honesty": "Met now means a rule states what the criterion asks, so Met fell from 37 to 33 and the rest moved to Met in part or Gap; the results stay dated to their build.",
+    "accessibility": "Unchanged and sound."
+   },
+   "fixes_landed": {"S12": "landed", "S13": "landed, with 19.5's chart still a sketch (R2)", "S18": "landed"},
+   "must_fix_count": 0,
+   "should_fix_count": 2,
+   "should_fix": ["R2", "R3"],
+   "ready": true,
+   "to_ready": "Ready, once the results plate is rerun from the final guide check before board C, as the fix brief already plans (R3)."
+  },
+  {
+   "key": "ch26",
+   "name": "Chapter 26, Tokens and how to choose them",
+   "anchor": "#tokens",
+   "scores": {"craft": 4, "clarity": 4, "brand_fidelity": 4, "usefulness": 5, "evidence_honesty": 4, "accessibility": 4},
+   "was": {"craft": 3, "usefulness": 4},
+   "reasons": {
+    "craft": "The table is 17 closed groups under a linked index, each a real five-column table from 40rem, so the chapter fell from 212,034 to 43,990 px at 1440 px; names break only at a dot when a cell lacks room. The broken-out stage reaches left while its label rule stays in the column (R1).",
+    "clarity": "The opener draws the five steps for one caption, so the chapter's method shows on its first screen.",
+    "brand_fidelity": "Unchanged; the release keeps red off Prussian.",
+    "usefulness": "A builder can now scan a category, compare neighbors, search across groups (\"error\" opens 5 groups, 33 tokens) and copy any name; the page start and the dark theme's surface-class rule are spelled out.",
+    "evidence_honesty": "Version 6.0.0-gate2.8 printed with its change note; invented counts labeled at the plate's head.",
+    "accessibility": "Each group is a native disclosure, and the search's status line gives the count and the groups."
+   },
+   "fixes_landed": {"M3": "landed", "S14": "landed", "S18": "landed"},
+   "must_fix_count": 0,
+   "should_fix_count": 1,
+   "should_fix": ["R1"],
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "group",
+   "name": "Changed parts of chapters 01 to 11",
+   "scores": {"craft": 4, "clarity": 4, "brand_fidelity": 4, "usefulness": 4, "evidence_honesty": 4, "accessibility": 4},
+   "was": {},
+   "reasons": {
+    "craft": "Rule 08.1's plate sets the display master at 120 px beside the 48 px master at 96 px, and Rule 05.4's states follow Rule 17.8's order.",
+    "clarity": "Rule 08.2's dark-card test now says the block sits anywhere in the node's square plus 1 px and that each of its four pixels must clear the floor.",
+    "brand_fidelity": "Both 96 px drawings now stand together with their places named.",
+    "usefulness": "Rule 08.2 names the script that runs the feed test; Rule 03.2's builders text is one short line per lockup.",
+    "evidence_honesty": "Unchanged and sound.",
+    "accessibility": "Chapter 11's reader now chooses its page size as a named radio group with Rule 17.10's look."
+   },
+   "fixes_landed": {"S15": "landed", "S16": "landed", "S17": "landed"},
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "rule_12_4",
+   "name": "Chapter 12, Rule 12.4 as wired (DR-216)",
+   "anchor": "#rule-12-4",
+   "scores": {"craft": 4, "clarity": 4, "brand_fidelity": 5, "usefulness": 4, "evidence_honesty": 4, "accessibility": 4},
+   "was": null,
+   "reasons": {
+    "craft": "The Report 3 cover at true size takes the large crop of B off its bottom-right corner, clear of the words, and the failure sets the retired arcs in the same corner.",
+    "clarity": "Plain first, then the crop of B on a cover or opener, or a watermark on a report page, and a social card or a hinge-headline view kept plain.",
+    "brand_fidelity": "The open area is now signed by the wordmark's own ampersand, so the cover reads as Oath & Action with the wordmark covered, where the arcs read as a stock template.",
+    "usefulness": "Places, measures by rule number, the one file and a never list.",
+    "evidence_honesty": "Basis states design judgment, approved by the founder and editor in November 2026; the cover carries Illustrative.",
+    "accessibility": "The crop is decorative and hidden from screen readers (aria-hidden, empty alt)."
+   },
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "to_ready": "Ready."
+  }
+ ],
+ "totals": {
+  "must_fix": 0,
+  "should_fix": 3,
+  "under_4": [],
+  "ready": ["ch17", "ch18", "ch19", "ch26", "group", "rule_12_4"],
+  "not_ready": []
+ },
+ "second_pass": "Nothing of mine is under 4, so DR-191's short second pass takes no item from this rescore. R1 to R3 are Should fix and can ride the same pass.",
+ "should_fix": {
+  "R1": {"where": "Chapter 26, Rule 26.7, s-26-token-table at 1440 px", "what_and_fix": "The stage breaks out 222 px to the left (x 65 to 1153) while the plate's label row and its rule stay in the text column (x 287), so the gray stage hangs past its own head. Carry the label row and its rule out with the stage, as one plate.", "owner": "Engineer"},
+  "R2": {"where": "Chapter 19, Rule 19.5, s-19-5-correct", "what_and_fix": "The chart above Zoom in, Zoom out and Fit is still two bare lines with no title, axis words or source, beside 19.2's finished chart. Give it a title, its two series named at their ends, its years and a source line, as 19.2 now does.", "owner": "Accessibility lead"},
+  "R3": {"where": "Chapter 19, Rule 19.8, s-19-results", "what_and_fix": "The plate still prints round 1's build (03:13 UTC, 9,206,065 bytes), with open faults the fix pass may have closed. Rerun it from the final guide check on the fixed page before board C, as the fix brief plans.", "owner": "Main session, with the Accessibility lead"}
+ },
+ "questions_for_dustin": []
+}

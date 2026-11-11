@@ -187,3 +187,65 @@ Created:
 - `work/handoffs/phase-2/20261111_Stage-C-Round-2-CD-Scores.json`
 
 Outside the repository: render and play scripts, captures, contact sheets and enlargements in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/49b1040f-34e8-55e0-97c3-93e08c6dbc2c/scratchpad/round-2/creative-director/`. Nothing was committed or pushed by me.
+
+## Rescore after the fix pass
+
+I looked at the fixed page, `final/guide.html` in the session scratchpad (8,958,497 bytes, strict build 0 warnings, tokens 6.0.0-gate2.8). Before that I read the fix brief with its addendum and the five owners' fix notes. The round 2 review above stays as the record. The rescore is also in `work/handoffs/phase-2/20261111_Stage-C-Round-2-CD-Rescores.json`.
+
+### Verdict
+
+Ready. Every item scores 4 or more on all six criteria, including Rule 12.4 as wired. All three Must fix items and all 18 of my Should fix items landed. Nothing of mine goes to DR-191's short second pass. Three small Should fix items (R1 to R3) can go in that pass. One of them, the rerun of chapter 19's results, is already planned before board C.
+
+### Rescored
+
+| Item | Craft | Clarity | Brand | Usefulness | Evidence | Access | Ready |
+|---|---|---|---|---|---|---|---|
+| Chapter 17 | 4 (was 3) | 4 | 4 (was 3) | 4 | 4 | 4 | Yes |
+| Chapter 18 | 4 (was 3) | 4 | 4 (was 3) | 5 | 4 | 4 | Yes |
+| Chapter 19 | 4 (was 3) | 4 | 4 | 4 (was 3) | 5 | 4 | Yes, with R3 before board C |
+| Chapter 26 | 4 (was 3) | 4 | 4 | 5 (was 4) | 4 | 4 | Yes |
+| Changed parts of 01 to 11 | 4 | 4 | 4 | 4 | 4 | 4 | Yes |
+| Rule 12.4 as wired (DR-216) | 4 | 4 | 5 | 4 | 4 | 4 | Yes |
+
+### Each fault I scored under 4, and whether its fix landed
+
+- **M1, the identity players (landed).** On load, at 1440 px (1x) and 390 px (2x), the hinge shows OATH & ACTION at 24 and 64 px on Newsprint and Charcoal. The lever shows the 48 px master at 48 px and the display master at 120 px. No dashed square remains. The status line reads "At rest: ..." and Reset is unavailable with "The mark is at rest on its master." Play ran from split words to the master. Pause read "Paused." Reset returned to the master with focus kept. Under reduced motion, Play drew the last frame at once. Rule 17.3, its spec row and its anatomy key now give both rest rules. Chapter 17's Brand fidelity moves from 3 to 4.
+- **Chapter 17's craft items (landed).** S1: the anatomy runs 1 to 7 top to bottom, and Reset's disc sits off its own corner. S2: the 200 ms frame draws 68 percent of the line and says so. S3: Loop R1's names sit on one centered line. S4: each resting master starts on its label's edge. S5: token names hold on one line. Chapter 17's Craft moves from 3 to 4.
+- **M2, red beside Prussian (landed).** In the dark form a field is Charcoal inside a Newsprint edge. I sent the form empty in both themes: both red error bars and the red ask sit on Charcoal, and focus moved to the email field with aria-invalid. In `c-18-button` the ask has a row of its own. When I hovered the primary there, it turned Prussian two rows from any red. The engineer's new guide-check step that fails red touching Prussian passes on the final tree, by the engineer's notes. Chapter 18's Brand fidelity moves from 3 to 4.
+- **Chapter 18's craft items (landed).** S6: in the plates I looked at (18.05, 18.08, 18.09, 18.11, 18.12, 18.18 to 18.20, 18.22 and 18.23), every disc sits beside its part, and none covers a word or a mark. S7: one uppercase chip heads every invented piece. S8: the link list's current page takes the band, the bar and bold words. S9: Loop R1 closes on "where the loop began". S10: the stepper sets its buttons two by two. S11: the tabs failure holds Loop R1's first sentence. Chapter 18's Craft moves from 3 to 4.
+- **Chapter 19 (landed).** S12: every rule now has a builders line, and the matrix names a command for each automated check. S13: 19.2, 19.4 and 19.6 are redrawn. 19.5's words now say "chart", but its chart is still a bare sketch (R2). Usefulness and Craft move from 3 to 4. The tighter test for Met (33 Met, 8 Met in part, 9 Gaps, 5 Not used today) agrees with Rule 19.1 and the opener.
+- **M3, the token table (landed).** The table is 17 closed groups under a linked index. Each group is a real five-column table from a plate width of 40rem, with names that break only at a dot. Searching "error" opened 5 groups with 33 tokens. The chapter fell from 212,034 to 43,990 px at 1440 px. Under 40rem, at 1024 and 390 px, the cards stay inside closed groups. Chapter 26's Craft moves from 3 to 4 and Usefulness from 4 to 5. S14 landed: 26.5 draws and labels the window's edge, and 26.6's names hold on one line.
+- **S18, openers (landed).** Each chapter now opens on a true-size figure. Chapter 17 shows the ten states, and chapter 18 shows a primary button, two chips and a choice. Chapter 19 shows its four counts, and chapter 26 shows the five steps for one caption.
+- **The group's items (landed).** S15: Rule 08.1 sets the display master at 120 px beside the 48 px master at 96 px, each with its place named. S16: Rule 08.2's dark-card words now give the block's place, the four-pixel test, Lanczos and the script's name. S17: Rule 05.4's states follow Rule 17.8's order.
+
+### Rule 12.4 as wired
+
+The rewrite is the rule I drafted. "We use no repeating pattern." comes first. A cover or section opener may carry the crop of B, and a report page may carry a watermark. A social card or a hinge-headline view stays plain. The Report 3 cover at true size carries the large crop of B off its bottom-right corner, clear of the words. Its failure sets the retired arcs in the same corner. With the wordmark covered, the cover now reads as Oath & Action, so Brand fidelity scores 5. The crop is hidden from screen readers.
+
+### Should fix for the short second pass
+
+- **R1. Chapter 26, `s-26-token-table` at 1440 px.** The stage breaks out 222 px to the left while the plate's label row and rule stay in the text column, so the gray stage hangs past its own head. Carry the label row and its rule out with the stage. Owner: Engineer.
+- **R2. Chapter 19, `s-19-5-correct`.** The chart is still two bare lines. Give it a title, a name at the end of each line, its years and a source line, as 19.2 now has. Owner: Accessibility lead.
+- **R3. Chapter 19, `s-19-results`.** The plate still prints round 1's build (03:13 UTC). Rerun it from the final guide check on the fixed page before board C, as the fix brief plans. Owners: Main session, with the Accessibility lead.
+
+### Tested in the rescore
+
+- Loaded the fixed page in Chromium and measured each chapter at 1440 px: 17 at 54,140 px, 18 at 184,961, 19 at 43,485 and 26 at 43,990.
+- Played all seven chapter 17 players at 1440 px (1x). Drove the hinge and lever through rest, mid-play, Pause, Reset and the end at 1440 px (1x), at 390 px (2x) and under reduced motion, reading the status line, the button states and `data-frame` at each step.
+- At 1440 px (1x) I looked at the four openers and at `s-17-2`, `s-17-3` and `s-17-4` (correct and failure). I also looked at chapter 18's anatomy plates 05, 08, 09, 11, 12, 18, 19, 20, 22 and 23 and at `s-18-09-failure`. The stage pairs I looked at were `c-18-button`, `c-18-link`, `c-18-form` and `c-18-diagram-controls`. In chapter 19 I looked at `s-19-2` (correct and failure), `s-19-4-failure`, `s-19-5-correct` and `s-19-6-failure`. The rest were `s-26-5-correct`, `s-26-6-correct`, `s-08-1-correct`, `s-05-4-correct`, `s-11-11-correct` and `s-12-pattern-correct` with its failure.
+- At 390 px (2x) I looked at the four openers, `s-18-18-anatomy`, the dark `c-18-button` stage and the token table.
+- Sent `c-18-form` empty in both themes. Hovered the primary in `c-18-button`. Searched the token table for "error" and opened one group, at 1440, 1024 and 390 px.
+- Read by script the fixed words of Rules 17.3, 18.1, 19.1 to 19.9 and 08.2's dark-card row, the criteria counts and the results plate's head. Checked that the crop in `s-12-pattern-correct` is aria-hidden with empty alt. Found no em dash in the page.
+
+### Not tested in the rescore
+
+- No screen reader, real phone, Safari, Firefox, forced colors pass or text at 200 percent of my own. No keyboard walk beyond the form, the players and the table's search.
+- The red-on-Prussian guide-check step, the callout script and the copy check were the owners' runs. I read their notes and did not rerun them.
+- At 390 px my capture of `s-18-12-anatomy` came out offset, so I judged that plate at 1440 px only. I did not look at every chapter 18 anatomy plate or live set after the fix.
+- I did not look at 360 or 320 px, and I did not compare the identity players' resting frames with the masters pixel for pixel.
+
+### Change log for the rescore
+
+- Created `work/handoffs/phase-2/20261111_Stage-C-Round-2-CD-Rescores.json`.
+- Modified this file: added this section. `20261111_Stage-C-Round-2-CD-Scores.json` stays unchanged as the record.
+- Scratch scripts and captures are in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/49b1040f-34e8-55e0-97c3-93e08c6dbc2c/scratchpad/round-2/creative-director/rescore/`. I committed and pushed nothing.
