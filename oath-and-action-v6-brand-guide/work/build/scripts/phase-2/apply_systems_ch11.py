@@ -469,9 +469,11 @@ def records_css(ctx):
     mark (Rule 11.10), drawn in the text's ink."""
     T = ctx.ty
     return (f'.wt{{margin-top:6px;{T("bodySmall")};line-height:1.5;text-wrap:pretty}}'
-            f'.wn{{display:flex;gap:8px;align-items:flex-start;margin-top:12px;padding:6px 8px;'
+            f'.wn{{display:flex;gap:8px;align-items:flex-start;margin-top:12px;'
+            f'padding:{ctx.v("oa.space.100")} {ctx.v("oa.space.150")};'
             f'border-left:{ctx.v("oa.border.width.bar")} solid {ctx.v("oa.color.state.warning.mark.onNewsprint")};'
-            f'{T("bodySmall")};line-height:1.5;color:var(--txt)}}.wn svg{{flex:none;display:block;margin-top:-1px}}'
+            f'{T("bodySmall")};line-height:1.5;color:{ctx.v("oa.color.state.warning.text.onNewsprint")}}}'
+            f'.wn svg{{flex:none;display:block;margin-top:-1px}}'
             f'.wn b{{font-weight:700}}')
 
 

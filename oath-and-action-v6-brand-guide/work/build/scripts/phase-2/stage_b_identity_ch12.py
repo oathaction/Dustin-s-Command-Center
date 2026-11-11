@@ -468,7 +468,8 @@ EXTRAS = []
 CH_OPENER = {"specimen": "s-12-index", "caption": "The devices this guide sets, the job of each and the rule that sets it."}
 # Gate 2's fix pass (CD-S1): the device index now opens the chapter and names each device with its rule, so the intro
 # says only what Rules 12.1 to 12.4 cover, and the index reaches the first screen.
-INTRO_ADD = "Rules 12.1 to 12.4 cover the devices that divide and sign a page, and when an open area stays plain."
+INTRO_ADD = ("Hairlines, watermarks and the monogram divide and sign a page (Rules 12.1 to 12.3), and Rule 12.4 says when an "
+             "open area stays plain.")
 # earlier wordings of INTRO_ADD, replaced in place when the shared file still holds one (round 3, ED 4e, CA-S11; DR-216)
 OLD_INTRO_ADDS = ("Rules 12.1 to 12.4 cover the devices that divide and sign a page: hairlines, watermarks, the compact "
                   "signature and two patterns drawn from the hinge.",

@@ -762,7 +762,7 @@ def p09():
     key = [(1, 'Tab list', 'Named Views of the bill; the Tab key enters at the selected tab, and the arrow keys move'),
            (2, 'Height', 'Each tab 44 px tall'),
            (3, 'Selected tab', 'A 4 px bar and bold words; its panel shows at once'),
-           (4, 'Focus ring', 'On the tab in focus'),
+           (4, 'Focus ring', 'Inside the tab in focus, with its 2 px gap, since the tabs stand close (Rule 18.11)'),
            (5, 'Tab', 'A view’s name in a word or two'),
            (6, 'Unavailable tab', 'Dashed, with the reason under the list'),
            (7, 'Panel', 'The selected tab’s view, named by its tab')]
@@ -1048,7 +1048,7 @@ def p20():
            (3, 'Now', 'The step under way, its ring and its word; here a reader can take part'),
            (4, 'Not yet', 'A fine ring and its word'),
            (5, 'Status line', 'Says each change once, politely, in words'),
-           (6, 'Check date', 'The warning mark and when we last checked')]
+           (6, 'Check date', 'The warning mark, “Warning:” and when we last checked, beside a 4 px bar in ink')]
     return ['tracker'], r, key, 'a live tracker', '', True, '.oa-tracker-steps{margin-top:40px}'
 
 
