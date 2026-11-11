@@ -13,12 +13,13 @@
   border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); border-radius: var(--oa-radius-none); background: transparent;
   color: var(--oa-color-text-primary); font: var(--oa-type-ui); text-align: start; overflow-wrap: anywhere; cursor: pointer }
 .oa-code-copy:hover { border-width: var(--oa-border-width-rule); padding: calc(var(--oa-space-100) - 1px) var(--oa-space-200) }
-.oa-code-copy:focus-visible, .oa-code-pre:focus-visible, .oa-code-fallback:focus-visible {
+.oa-code-copy:focus-visible, .oa-code-fallback:focus-visible {
   outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
 .oa-code-pre { margin: var(--oa-space-100) 0 0; padding: var(--oa-space-150); overflow-x: auto; background: var(--oa-color-field-ground);
   border: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline); color: var(--oa-color-text-primary);
   font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: var(--oa-type-caption-font-size); line-height: 1.6; tab-size: 2 }
 .oa-code-pre code { font: inherit }
+.oa-code-pre:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: calc(-1 * (var(--oa-border-width-focus-ring) + var(--oa-border-focus-offset))) }
 /* The status line: the success mark and what was copied, or the error mark, "Error:" and how to copy by hand */
 .oa-code-status { margin: var(--oa-space-150) 0 0; font: var(--oa-type-caption); color: var(--oa-color-state-success-text) }
 .oa-code-status:has(.oa-code-words:empty) { display: none }

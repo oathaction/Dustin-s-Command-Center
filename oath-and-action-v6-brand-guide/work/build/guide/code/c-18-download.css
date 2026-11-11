@@ -7,6 +7,7 @@
 .oa-download-k:first-child { margin-top: 0 }
 .oa-download-illus { margin-left: var(--oa-space-100); padding: 0 var(--oa-space-050); border: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
   text-transform: none }
+.oa-download-row { margin: 0 0 var(--oa-space-100) }
 .oa-download { display: inline-flex; align-items: center; gap: var(--oa-space-100); box-sizing: border-box; max-width: 100%;
   min-height: var(--oa-size-target-touch); padding: var(--oa-space-100) var(--oa-space-200) var(--oa-space-100) var(--oa-space-150);
   border: var(--oa-border-width-hairline) solid var(--oa-component-button-primary-fill); background: var(--oa-component-button-primary-fill);
@@ -18,7 +19,7 @@
 .oa-download:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
 .oa-download[aria-disabled="true"] { background: transparent; border-style: dashed; border-color: var(--oa-component-button-disabled-edge);
   color: var(--oa-component-button-disabled-label); cursor: not-allowed }
-.oa-download-why { margin: var(--oa-space-100) 0 0; font: var(--oa-type-body-small); color: var(--oa-color-text-secondary) }
+.oa-download-why { margin: 0; font: var(--oa-type-body-small); color: var(--oa-color-text-secondary) }
 
 @media (forced-colors: active) {
   .oa-download { border-color: LinkText }

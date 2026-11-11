@@ -33,7 +33,7 @@
       off(prev, !i);
       off(reset, !i);
       off(next, i === steps.length);
-      why.textContent = !i ? 'At the start, so Previous step and Reset the loop wait until you move on.' :
+      why.textContent = !i ? 'Previous step and Reset the loop work once you press Next step or Play.' :
         (i === steps.length ? 'At the last step. Reset the loop to start again.' : '');
       play.toggleAttribute('data-oa-playing', !!timer);
       word.textContent = timer ? 'Pause' : (i === steps.length ? 'Play again' : 'Play');

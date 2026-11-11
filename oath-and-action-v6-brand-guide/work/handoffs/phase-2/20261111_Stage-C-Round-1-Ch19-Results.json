@@ -73,7 +73,7 @@
   },
   {
    "check": "Screen readers, real phones, Safari, Firefox and Windows contrast themes",
-   "why": "This container has none of them; the device script of Rule 19.9 covers them before launch."
+   "why": "The machine these checks ran on has none of them; the device script of Rule 19.9 covers them before launch."
   },
   {
    "check": "Keyboard order and reading order by a person",

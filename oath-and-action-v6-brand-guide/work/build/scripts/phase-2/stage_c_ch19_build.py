@@ -136,8 +136,8 @@ MAP = {
     '3.3.1': ('met', ['18.17', '11.15'], ''),
     '3.3.2': ('met', ['18.17', '18.15'], ''),
     '3.3.3': ('met', ['18.17', '11.15'], ''),
-    '3.3.4': ('none', [], 'No product takes money or legal statements today; chapter 22 if one sends testimony, gifts or petitions.'),
-    '3.3.7': ('none', [], 'No form has more than one step today; chapter 22 when one does.'),
+    '3.3.4': ('none', [], 'No product takes money or legal statements today; chapter 18 if one sends testimony, gifts or petitions.'),
+    '3.3.7': ('none', [], 'No form has more than one step today; chapter 18 when one does.'),
     '3.3.8': ('none', [], 'No product has accounts today; the chapter that adds them owes it.'),
     '4.1.2': ('met', ['18.1', '18.2', '18.9', '17.11'], 'Every rule of chapter 18 gives its accessible name and states.'),
     '4.1.3': ('met', ['18.18', '18.12', '18.15', '18.16', '18.20', '11.15'], ''),
@@ -227,8 +227,11 @@ def s_criteria(crit, held, own):
     for c in crit:
         st, rules, note = MAP[c['n']]
         counts[st] += 1
-        rl = ', '.join(rule_link(r, held, own) for r in rules)
-        what = (f'<span class="c19-st c19-st--{st}">{STATUS_WORD[st]}</span>' + (f' Rules {rl}.' if rules else '')
+        order = sorted(rules, key=lambda r: (int(r.split('.')[0]), int(r.split('.')[1])))   # in the page's order
+        links = [rule_link(r, held, own) for r in order]
+        rl = links[0] if len(links) == 1 else ', '.join(links[:-1]) + ' and ' + links[-1] if links else ''
+        what = (f'<span class="c19-st c19-st--{st}">{STATUS_WORD[st]}</span>'
+                + ((f' Rule {rl}.' if len(links) == 1 else f' Rules {rl}.') if links else '')
                 + (f' {e(note)}' if note else ''))
         new = ' <span class="c19-new">New in 2.2</span>' if c['new'] else ''
         rows.append(f'<li class="c19-c" data-st="{st}"><p class="c19-ch"><span class="c19-cn">{c["n"]}</span> '
@@ -368,10 +371,10 @@ LOOK = [
 DEVICES = [
     ('iPhone with VoiceOver', [
         'Open Settings, then Accessibility, then Accessibility Shortcut, and choose VoiceOver. From now on, pressing the side '
-        'button three times turns VoiceOver on and off.',
+        'button three times, or the Home button on an iPhone that has one, turns VoiceOver on and off.',
         'Open the page in Safari, then press the side button three times. VoiceOver says “VoiceOver on”.',
         'Swipe right with one finger to move to the next item, and left to go back. Each item is read aloud.',
-        'Double-tap anywhere to press the item VoiceOver is on. To type, double-tap a field, type, then swipe on.',
+        'Double-tap anywhere to press the item VoiceOver is on. To type, double-tap a field, type, then swipe right to move on.',
         'Go through the ten things to listen for below, and write Pass or Fail beside each with what you heard.',
         'Press the side button three times to turn VoiceOver off.']),
     ('Android phone with TalkBack', [
@@ -379,7 +382,7 @@ DEVICES = [
         'differently; the shortcut is usually holding both volume keys for three seconds.',
         'Open the page in Chrome, then hold both volume keys for three seconds. TalkBack says it is on.',
         'Swipe right with one finger to move to the next item, and left to go back. Scroll with two fingers.',
-        'Double-tap anywhere to press the item TalkBack is on. To type, double-tap a field, type, then swipe on.',
+        'Double-tap anywhere to press the item TalkBack is on. To type, double-tap a field, type, then swipe right to move on.',
         'Go through the ten things to listen for below, and write Pass or Fail beside each with what you heard. Gestures '
         'differ between TalkBack versions; Google’s TalkBack help lists the ones on your phone.',
         'Hold both volume keys for three seconds to turn TalkBack off.']),
@@ -420,7 +423,7 @@ def s_devices():
     body = (f'<style>{BASE}{css}</style><div class="c19"><ol class="c19-dl0">{blocks}</ol>'
             f'<div class="c19-lk"><p>Ten things to listen for: a pass sounds like this</p><ol>{look}</ol>'
             '<p class="c19-rec">Write down the device, its system version, the browser and its version, the screen reader’s '
-            'version, the date, and each step’s result with what you heard. A fail with its words is as useful as a pass.</p></div></div>')
+            'version, the date, and each step’s result with what you heard. Write a fail down with the words you heard, so the builder can find what broke.</p></div></div>')
     alt = ('The device script, in four parts. ' + ' '.join(f'{n}: ' + ' '.join(f'{i + 1}. {s}' for i, s in enumerate(st))
                                                          for n, st in DEVICES)
            + ' Ten things to listen for: ' + ' '.join(f'{i + 1}. {x}' for i, x in enumerate(LOOK)))
@@ -517,7 +520,7 @@ def pictures():
             '<p class="c19-k">360 px, zoomed to 200 percent</p><div class="c19-g">'
             '<span class="c19-btn" style="justify-content:center">Previous page</span>'
             '<span class="c19-btn" style="justify-content:center">Next page</span></div>',
-            'An Illustrative pair of buttons on a 360 px screen zoomed to 200 percent, drawn at twice true size: Previous '
+            'A pair of buttons on a 360 px screen zoomed to 200 percent, drawn at twice true size: Previous '
             'page and Next page have stacked into one column, each word whole.',
             'Correct: a row of two buttons that stacks as text grows. The 180 px layout a 360 px screen gives at 200 percent, '
             'drawn at exactly twice its sizes (scale 2).', illus=False, css=X2, root=' c19-x2', scale=2)
@@ -572,7 +575,7 @@ def build():
         dict(id='19.1', title='Build every page and product to WCAG 2.2 at level AA, and find each criterion here.',
              rule=[f'WCAG 2.2 sets {n} success criteria at levels A and AA: '
                    f'{sum(c["level"] == "A" for c in crit)} at A and {sum(c["level"] == "AA" for c in crit)} at AA, {w(newn)} of them '
-                   'new in 2.2. Every page and product we publish meets all of them. The list below gives each criterion in '
+                   'new in 2.2. Build every page and product we publish to meet all of them. The list below gives each criterion in '
                    'W3C’s own words and the rule in this guide that meets it.',
                    f'Today a rule meets {w(counts["met"])} criteria and {w(counts["part"])} more in part. {w(counts["gap"], True)} are '
                    f'gaps, each named with the chapter that owes it, and {w(counts["none"])} govern things no product does yet, such as '
@@ -613,10 +616,10 @@ def build():
                     {'label': 'Chart or drawing', 'value': 'Its finding as alt text, and its table or lines in words beside it'},
                     {'label': 'Never', 'value': 'A file name, “image of” or “picture of”, or words that repeat the caption'}],
              related=['10', '14', '16']),
-        dict(id='19.3', title='Name a control or a step by its words, never only by its color, shape or place.',
+        dict(id='19.3', title='Name a control or a step by its words, and add its color, shape or place only after them.',
              rule=['An instruction names the control it means by the words on it: “press Send your comment”. Color, shape '
-                   'and place can add to the words, as in “Send your comment, under the form”, and never stand in for them, '
-                   'since a phone moves things and a screen reader or a contrast theme drops color.'],
+                   'and place can follow the words, as in “Send your comment, under the form”, since a phone moves things, and '
+                   'a screen reader or a contrast theme loses color.'],
              tokens=[], why={'text': ['A reader who cannot see color, or who meets the buttons in another order on a phone, '
                                       'can still follow words that match the control’s name.'],
                              'basis': 'WCAG 2.2 SC 1.3.3 and 1.4.1'},
@@ -629,8 +632,8 @@ def build():
              related=['02', '18']),
         dict(id='19.4', title='Set words as live text, and keep pictures of text for the logo.',
              rule=['Headlines, quotes, labels and chart words are live text in the page. A social card or a slide that '
-                   'must be an image carries its words again in the post or the page beside it. The wordmark is the one '
-                   'picture of text a page holds.'],
+                   'must be an image carries its words again in the post or the page beside it. The wordmark and its lockups are '
+                   'the only pictures of text a page holds.'],
              tokens=[], why={'text': ['Live text grows with a reader’s setting, reflows on a phone and can be found, copied, '
                                       'translated and read aloud. A picture of text blurs when zoomed and says only its alt '
                                       'text.'],
@@ -645,7 +648,7 @@ def build():
         dict(id='19.5', title='Let every action work with one tap, one click or one key press.',
              rule=['Every action has a control a reader can press once: Zoom in and Zoom out as buttons, a drawing moved '
                    'with buttons or arrow keys, and Undo as a button. A gesture with two fingers, a drag, a tilt or a shake '
-                   'may add a way, never the only one. No product uses a shortcut of one letter key, and an action runs when '
+                   'may add a second way beside that control. No product uses a shortcut of one letter key, and an action runs when '
                    'the press ends, so sliding off a control cancels it.'],
              tokens=['oa.size.target.touch'],
              why={'text': ['A reader with a tremor, one hand, a head pointer or voice control can press a button where a '
@@ -665,7 +668,8 @@ def build():
                    'lines, words and letters, or turns the phone on its side. Labels wrap where they would overflow, a row '
                    'of two buttons stacks, and no page locks itself to one orientation. Reflow at 320 px is Rule 07.6.'],
              tokens=[], why={'text': ['Many readers raise the text size or the spacing to read at all, and some hold a phone '
-                                      'one way only. Words that may not wrap are the most common way a page loses them.'],
+                                      'one way only. A label that may not wrap is how this guide’s own pages lost words when we first tested '
+                                      'them at 200 percent.'],
                              'basis': 'WCAG 2.2 SC 1.3.4, 1.4.4, 1.4.10 and 1.4.12'},
              correct={'specimen': 's-19-6-correct', 'caption': 'Zoomed to 200 percent, the two buttons stack, and each word '
                                                                'stays whole.'},
@@ -711,7 +715,7 @@ def build():
                     {'label': 'Not tested', 'value': 'What did not run, and why, in its own list'}],
              related=['18']),
         dict(id='19.9', title='Before launch, run the device script on an iPhone, an Android phone, a Windows PC and a Mac.',
-             rule=['Four short scripts check what no container can: a real screen reader on each of four common platforms, '
+             rule=['Four short scripts check what no automated test can: a real screen reader on each of four common platforms, '
                    'and a Windows contrast theme. Each step says what to press, and the ten things to listen for say what a '
                    'pass sounds like, so anyone can run them with no training.'],
              tokens=[], why={'text': ['Screen readers and contrast themes differ from one platform to the next, and only the '
@@ -735,8 +739,8 @@ def build():
         'number': CH, 'anchor': 'accessibility', 'title': 'Accessibility', 'part': 'Behavior',
         'instruction': 'Check a page against WCAG 2.2 AA before you call it finished.',
         'intro': [f'Accessibility means a person can use a page with a keyboard, a screen reader, zoom, voice or touch, and '
-                  f'with less motion. The standard is WCAG 2.2, the Web Content Accessibility Guidelines from W3C, the body '
-                  f'that writes the web’s standards. This chapter holds its {n} criteria at levels A and AA, each in W3C’s '
+                  f'with less motion. The standard is WCAG 2.2, the Web Content Accessibility Guidelines from the World Wide Web '
+                  f'Consortium, W3C, which writes many of the web’s standards. This chapter holds its {n} criteria at levels A and AA, each in W3C’s '
                   'words with the rule in this guide that meets it, then the checks that prove a page meets them.',
                   'Our own results so far come next, dated, with what was tested kept apart from what was not, and a short '
                   'script for the checks only real devices can run.'],
@@ -761,9 +765,10 @@ def build():
             'w3.org/WAI/WCAG22/Understanding.',
             'Source: W3C Web Accessibility Initiative, “How to Meet WCAG 2.2 (Quick Reference)”, w3.org/WAI/WCAG22/quickref, '
             'no page date, retrieved November 10, 2026.',
-            'Sources for Rule 19.9: Apple, “Turn on and practice VoiceOver on iPhone” and “VoiceOver User Guide for Mac”; '
+            'Further reading for Rule 19.9, each maker’s own guide: Apple, “Turn on and practice VoiceOver on iPhone” and “VoiceOver User Guide for Mac”; '
             'Google, “Get started on Android with TalkBack”; NV Access, “NVDA User Guide”; Microsoft, “Change color contrast '
-            'in Windows”. The steps name the menus as each maker does; makers rename them between versions.'],
+            'in Windows”. We wrote the steps from these makers’ menus as we know them and did not check them on a device; makers '
+            'rename menus between versions.'],
     }
     walk(ch, '19')
     return ch
