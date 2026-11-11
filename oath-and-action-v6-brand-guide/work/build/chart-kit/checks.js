@@ -193,8 +193,8 @@ function role_color(role, tok) {
     subject: 'chart-color-subject', context: 'chart-color-context', secondary: 'chart-color-secondary', label: 'chart-color-label',
     baseline: 'chart-color-baseline', gridline: 'chart-color-gridline', point: 'chart-color-point', band: 'chart-color-band', track: 'chart-color-track',
     'light-fill': 'chart-color-light-fill', land: 'chart-color-land', party: 'chart-color-party-mark', leader: 'chart-color-leader',
-    'cat-1': ['chart-color-categorical-1', 'chart-color-subject'], 'cat-2': ['chart-color-categorical-2', 'chart-color-sequential-fill-step5'],
-    'cat-3': ['chart-color-categorical-3', 'chart-color-sequential-fill-step3'], 'cat-4': ['chart-color-categorical-4', 'chart-color-context'],
+    'cat-1': 'chart-color-categorical-fill-group1', 'cat-2': 'chart-color-categorical-fill-group2',
+    'cat-3': 'chart-color-categorical-fill-group3', 'cat-4': 'chart-color-categorical-fill-group4', ghost: 'chart-color-ghost',
   };
   for (let i = 1; i <= 5; i++) { names['seq-' + i] = 'chart-color-sequential-fill-step' + i; names['div-' + i] = 'chart-color-diverging-fill-step' + i; }
   for (let i = 1; i <= 4; i++) names['mag-' + i] = 'chart-color-magnitude-fill-step' + i;

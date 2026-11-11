@@ -1,0 +1,44 @@
+{
+ "file": "govinfo-hr7008-engrossed-sections.csv",
+ "kind": "public",
+ "publisher": "U.S. Government Publishing Office",
+ "title_or_table": "H.R. 7008, Stop Insider Trading Act, 119th Congress, engrossed in the House (text as passed, July 22, 2026)",
+ "table_id": "BILLS-119hr7008eh",
+ "url": [
+  "https://www.govinfo.gov/content/pkg/BILLS-119hr7008eh/html/BILLS-119hr7008eh.htm",
+  "https://api.congress.gov/v3/bill/119/hr/7008/text?format=json"
+ ],
+ "observation_period": "Text as passed by the House on July 22, 2026",
+ "geography": "United States (federal law, if enacted)",
+ "universe_or_base": "The bill's three sections",
+ "unit": "sections of the bill",
+ "date_retrieved": "2026-11-11",
+ "vintage": "Engrossed text on govinfo.gov, as read on November 11, 2026",
+ "qualification": "A bill, not a law: the Senate did not take it up after cloture on the motion to proceed failed, 53 to 47, on September 30, 2026. The provision lines are the studio's plain summaries of the sections' opening rules",
+ "columns": {
+  "section": {
+   "type": "text",
+   "description": "section number"
+  },
+  "heading": {
+   "type": "text",
+   "description": "section heading as passed, in sentence case"
+  },
+  "provision": {
+   "type": "text",
+   "description": "what the section does, in the studio's plain words"
+  },
+  "law_amended": {
+   "type": "text",
+   "description": "the law the section amends"
+  },
+  "effective": {
+   "type": "text",
+   "description": "when the section would take effect"
+  }
+ },
+ "printed_source_line": "Source: U.S. Government Publishing Office, H.R. 7008, Stop Insider Trading Act, text as passed by the House, sections 2 and 3, July 22, 2026, United States. Retrieved November 11, 2026. A bill the Senate has not passed.",
+ "ledger_row": "P7-040",
+ "domain": "D03",
+ "states": []
+}

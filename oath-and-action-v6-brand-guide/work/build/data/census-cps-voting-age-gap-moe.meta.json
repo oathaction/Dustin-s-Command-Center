@@ -1,0 +1,58 @@
+{
+ "file": "census-cps-voting-age-gap-moe.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "Current Population Survey Voting and Registration Supplement: Table 1, reported voting by sex and single years of age, November 2020 and November 2024; Source and Accuracy statements (Attachment 16), generalized variance parameters for voting and registration (2024 Table 7, total; 2020 Table 8, total or White)",
+ "table_id": "p20/585 table01.xlsx; p20/587 vote01_2024.xlsx; cpsnov20.pdf Table 8; cpsnov24.pdf Table 7",
+ "url": [
+  "https://www2.census.gov/programs-surveys/cps/tables/p20/587/vote01_2024.xlsx",
+  "https://www2.census.gov/programs-surveys/cps/tables/p20/585/table01.xlsx",
+  "https://www2.census.gov/programs-surveys/cps/techdocs/cpsnov24.pdf",
+  "https://www2.census.gov/programs-surveys/cps/techdocs/cpsnov20.pdf"
+ ],
+ "observation_period": "November 2020 and November 2024",
+ "geography": "United States",
+ "universe_or_base": "Citizens 18 to 24 and citizens 65 and over (Table 1's 65 to 74 and 75 and over rows summed)",
+ "unit": "percent and percentage points; standard_error and moe_90 computed by the studio with the Bureau's formula s = sqrt((b / y) p (100 minus p)), y the base in people, and 1.645 standard errors for 90 percent; differences use s = sqrt(s1 squared plus s2 squared)",
+ "date_retrieved": "2026-11-11",
+ "vintage": "Tables and technical documents as posted on November 11, 2026",
+ "qualification": "Approximate margins from the Bureau's generalized variance parameters, which Table A-1 does not print. The gap between citizens 65 and over and citizens 18 to 24 grew by 3.9 points from 2020 to 2024, with a margin of about 2.0 points, so the change passes the margin of error (DR-64). The rates match Table A-1's citizen rows",
+ "columns": {
+  "year": {
+   "type": "year",
+   "description": "election year"
+  },
+  "row": {
+   "type": "category",
+   "description": "age group, the gap, or the change in the gap"
+  },
+  "voted_pct": {
+   "type": "number",
+   "description": "reported voting rate, or the gap in points",
+   "unit": "percent"
+  },
+  "citizens_thousands": {
+   "type": "integer",
+   "description": "citizen base, from Table 1",
+   "unit": "thousands"
+  },
+  "b_parameter": {
+   "type": "integer",
+   "description": "generalized variance b-parameter, total population"
+  },
+  "standard_error": {
+   "type": "number",
+   "description": "standard error, computed",
+   "unit": "percentage points"
+  },
+  "moe_90": {
+   "type": "number",
+   "description": "90 percent margin of error, computed",
+   "unit": "percentage points"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 1 and Source and Accuracy statements, reported voting by age, November 2020 and 2024, United States. Retrieved November 11, 2026. Margins computed by Oath & Action from the Bureau's variance parameters.",
+ "ledger_row": "P7-037",
+ "domain": "D10",
+ "states": []
+}

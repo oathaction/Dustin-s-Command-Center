@@ -218,7 +218,7 @@
   "width_px": null,
   "alt": "An invented article and its corrections page entry, each labeled Illustrative. Above the headline, Alder County’s libraries add Sunday hours from January, a note with a dark bar reads: Corrected November 4, 2026. An earlier version of this article and its chart gave the Main Library’s weekly hours as 58. The county’s adopted schedule gives 52. We replaced the chart and fixed the second paragraph. The fixed chart follows, ranking weekly hours: Main Library 52, Riverside 44, Elm Street 36. The corrections page lists the same note under its date, with the headline and the date the article first ran.",
   "illustrative": true,
-  "notes": "Invented throughout, one label at the head of each piece (DR-97). The note's tokens follow Rule 26.3's example for a correction notice: primary text and a 4 px bar in the essential graphic color. The chart is a static drawing in the chart tokens until the kit's guide hook lands; its kit spec is s-13-13-correct.chart.json.",
+  "notes": "Invented throughout, one label at the head of each piece (DR-97). The note's tokens follow Rule 26.3's example for a correction notice: primary text and a 4 px bar in the essential graphic color. The chart is a static drawing in the chart tokens until the kit's guide hook lands; its kit spec, s-13-13-correct.chart.json, passes the kit's checks (oa-chart.mjs build, 0 faults).",
   "readable": true
  },
  "s-13-13-failure": {

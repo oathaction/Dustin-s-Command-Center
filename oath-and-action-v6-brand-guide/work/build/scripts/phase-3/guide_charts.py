@@ -14,6 +14,9 @@ Drawing methods (the round 0 pilot measures each):
   load       drawn when the page loads: the page carries the words, the table and a data island (the spec and the rows the
              chart draws, every column of the data file, as CSV); the kit's one script draws the SVG in the browser
   load-trim  as load, with the island's rows cut to the columns the spec's encode and table name
+  load-table as load, with the rows read back from the chart's own table equivalent: the table is lean (a raw value only
+             where its words cannot carry it), and the island holds the drawing's spec with no words and, as CSV, only the
+             columns the chart draws that the table lacks
 
 The weight gates (Phase 3 proposal, section 3, DR-227): chapter 13 at most 0.25 MB, chapter 15 at most 0.60 MB (warnings
 that --strict turns into failures); chapter 14 with the chart kit at most 1.75 MB, a hard stop in every mode; the fonts as
@@ -41,8 +44,8 @@ ALLOCATION = {"13": 0.25 * MB, "14": 1.75 * MB, "15": 0.60 * MB,
 # A chapter 14 specimen's average by tier (proposal section 3: words, table equivalent and data); "far over" is three times it
 TIER_AVERAGE = {"core": 8 * 1024, "extended": 8 * 1024, "reference": 4 * 1024, "avoid": 2 * 1024}
 FAR_OVER = 3.0
-METHODS = ("lean", "load", "load-trim")
-DEFAULT_METHOD = "load-trim"     # chosen by the round 0 pilot (engineer notes, "The drawing method")
+METHODS = ("lean", "load", "load-trim", "load-table")
+DEFAULT_METHOD = "load-table"    # chosen by the round 0 pilot (engineer notes, "The drawing method")
 CHART_RE = re.compile(r'<div data-oa-chart="([a-z0-9][a-z0-9-]*)"(?:\s+data-oa-ground="(newsprint|charcoal)")?\s*>\s*</div>')
 KIT_RE = re.compile(r'<(style|script) data-oa-chart-kit>.*?</\1>', re.S)
 FONT_TOLERANCE = 0.02            # base64 adds a third; the part may differ from 4/3 of the files by the @font-face text
@@ -107,7 +110,7 @@ def expand(page, method, spec_dirs, warn, where_of=None):
     if rec:
         style = f"<style data-oa-chart-kit>\n{out['kit_css']}\n</style>"
         page = page.replace("</head>", style + "\n</head>", 1)
-        if method in ("load", "load-trim"):
+        if method in ("load", "load-trim", "load-table"):
             script = f"<script data-oa-chart-kit>\n{out['kit_js']}\nOAChart.words = {json.dumps(out['words'], ensure_ascii=False)};\n</script>"
             i = page.rfind("<script>")
             page = page[:i] + script + "\n" + page[i:]

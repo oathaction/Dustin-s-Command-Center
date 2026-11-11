@@ -19,29 +19,62 @@
     if (ctx) c.path(ctx.map(function (r, i) { return (i ? 'L' : 'M') + K.round(xs(K.time(r[ex]))) + ',' + K.round(ys(r[ey])); }).join(''), { stroke: 'context', width: c.t('spark-context'), mark: false });
     if (o.area) c.path('M' + K.round(pts[0][0]) + ',' + K.round(ys(0)) + pts.map(function (p) { return 'L' + K.round(p[0]) + ',' + K.round(p[1]); }).join('') + 'L' + K.round(pts[pts.length - 1][0]) + ',' + K.round(ys(0)) + 'Z', { fill: 'light-fill', mark: false });
     c.path(pts.map(function (p, i) { return (i ? 'L' : 'M') + K.round(p[0]) + ',' + K.round(p[1]); }).join(''), { stroke: 'subject', width: c.t('spark-line'), data: { series: o.key } }, [Math.min(pts[0][0], pts[pts.length - 1][0]), Math.min.apply(null, pts.map(function (p) { return p[1]; })), Math.abs(pts[pts.length - 1][0] - pts[0][0]), 1]);
-    list.forEach(function (r) { c.circle(xs(K.time(r[ex])), ys(r[ey]), 0.01, { fill: 'subject', data: { key: o.key + '|' + r[ex], field: ey, value: r[ey] } }); });
+    list.forEach(function (r) { c.datum(xs(K.time(r[ex])), ys(r[ey]), { data: { key: o.key + '|' + r[ex], field: ey, value: r[ey] } }); });
     var last = pts[pts.length - 1];
     c.circle(last[0], last[1], c.t('spark-end-radius'), { fill: 'subject', mark: false });
   }
+  function totals_table(c, by, rows_def, cols, titles, y0) {
+    var W = c.width, ey = c.field('y'), f = c.spec.formats || {}, vals = [];
+    rows_def.forEach(function (p) { (by[String(p.value)] || []).forEach(function (r) { vals.push(r[ey]); }); });
+    var dom = K.nice(Math.min(0, Math.min.apply(null, vals)), Math.max.apply(null, vals), 2);
+    var nw = 0;
+    rows_def.forEach(function (p) { nw = Math.max(nw, c.measure(p.label, 'tick', 600) + (p.indent || 0) * 14); });
+    var cw = cols.map(function (k) { var w = c.measure(titles[k] || '', 'tick', 600); rows_def.forEach(function (p) { var l = by[String(p.value)] || []; if (l.length) w = Math.max(w, c.measure(K.fmt(l[l.length - 1][k], f[k] || 'number'), 'tick', 700)); }); return Math.ceil(w + 14); });
+    var cwSum = cw.reduce(function (a, b) { return a + b; }, 0);
+    var sx0 = c.phone ? 0 : Math.ceil(nw + 16), sw = Math.max(60, W - sx0 - cwSum - 10), rh = 28, y = y0;
+    var colx = function (j) { return W - cw.slice(j + 1).reduce(function (a, b) { return a + b; }, 0); };
+    cols.forEach(function (k, j) { if (titles[k]) c.text(colx(j), y + c.size('tick'), titles[k], { role: 'tick', weight: 600, anchor: 'end', fill: 'secondary' }); });
+    y += c.size('tick') + 8;
+    rows_def.forEach(function (p) {
+      var list = by[String(p.value)] || [];
+      if (!list.length) { c.warn('no rows for the totals row ' + p.value); return; }
+      var ry = y + (c.phone ? c.size('tick') + 4 : 0), ind = (p.indent || 0) * 14;
+      c.text(ind, c.phone ? y + c.size('tick') : ry + rh / 2 + 4, p.label, { role: 'tick', weight: 600 });
+      if (ind) c.line(ind - 9, y + (c.phone ? 2 : 4), ind - 9, (c.phone ? y + c.size('tick') : ry + rh / 2), { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
+      var xs = K.scale.linear([K.time(list[0][c.field('x')]), K.time(list[list.length - 1][c.field('x')])], [sx0, sx0 + sw]);
+      var ys = K.scale.linear([dom[0], dom[1]], [ry + rh - 4, ry + 4]);
+      spark(c, list, null, xs, ys, { key: p.value, area: false });
+      cols.forEach(function (k, j) { c.text(colx(j), ry + rh / 2 + 4, K.fmt(list[list.length - 1][k], f[k] || 'number'), { role: 'tick', weight: j ? 400 : 700, anchor: 'end', fill: j ? 'secondary' : 'label' }); });
+      y = ry + rh + 4;
+    });
+    return y;
+  }
   K.register_chart({
     form: 'area-sparklines', name: 'Small Multiple Area Sparklines', family: 'change-over-time',
-    encode: { x: 'month', y: 'number', series: 'category' },
-    labels: ['panels', 'context', 'context_label', 'end', 'domain'],
+    encode: { x: 'month', y: 'number', series: 'category', columns: 'list?' },
+    labels: ['panels', 'context', 'context_label', 'end', 'domain', 'totals', 'totals_title', 'panels_title', 'columns_titles', 'panel_height'],
     phone: 'same',
     draw: function (c) {
       var by = series(c), L = c.labels, W = c.width, ey = c.field('y'), f = c.spec.formats || {};
       var panels = L.panels || [];
       var vals = [];
       panels.forEach(function (p) { (by[String(p.value)] || []).forEach(function (r) { vals.push(r[ey]); }); });
-      var dom = L.domain || K.nice(Math.min(0, Math.min.apply(null, vals)), Math.max.apply(null, vals), 3);
+      var dom = L.domain || K.nice(Math.min(0, Math.min.apply(null, vals)), Math.max.apply(null, vals), 4);
       var cols = c.phone ? 2 : 4, gx = c.t(c.phone ? 'spark-phone-gap-x' : 'spark-gap-x');
-      var ticks = K.ticks(dom[0], dom[1], 0, dom.step || K.nice(dom[0], dom[1], 3).step);
-      var gut = K.parts.value_gutter(c, ticks, f.tick || 'signed');
-      var pw = Math.floor((W - gut - gx * (cols - 1)) / cols), ph = 64, tl = 1;
+      var ticks = K.ticks(dom[0], dom[1], 0, dom.step || K.nice(dom[0], dom[1], 4).step);
+      var gut = 0;
+      ticks.forEach(function (t, i) { gut = Math.max(gut, c.measure(K.fmt(t, (i === ticks.length - 1 && f.y_tick_top) || f.tick || 'signed'), 'tick') + 10); });
+      gut = Math.ceil(gut);
+      var pw = Math.floor((W - gut - gx * (cols - 1) - c.t('spark-end-radius') - 1) / cols), ph = L.panel_height || 88, tl = 1;
       panels.forEach(function (p) { tl = Math.max(tl, K.wrap(p.label, c.size('tick'), pw, 600).length); });
       var head = tl * Math.round(c.size('tick') * 1.25) + (L.end ? 26 : 10);
       var y0 = 0, xs0 = null;
-      if (L.context_label) { c.line(0, 8, 22, 8, { stroke: 'context', width: c.t('spark-context'), mark: false }); c.text(28, 13, L.context_label, { role: 'tick' }); y0 = 30; }
+      if (L.totals && L.totals.length) {
+        if (L.totals_title) { c.text(0, c.size('tick'), L.totals_title, { role: 'eyebrow', weight: 700, fill: 'secondary' }); y0 = c.size('tick') + 10; }
+        y0 = totals_table(c, by, L.totals, c.field('columns', false) || [], L.columns_titles || {}, y0) + 22;
+        if (L.panels_title) { c.text(0, y0 + c.size('tick'), L.panels_title, { role: 'eyebrow', weight: 700, fill: 'secondary' }); y0 += c.size('tick') + 12; }
+      }
+      if (L.context_label) { c.line(0, y0 + 8, 22, y0 + 8, { stroke: 'context', width: c.t('spark-context'), mark: false }); c.text(28, y0 + 13, L.context_label, { role: 'tick' }); y0 += 30; }
       var ctx = L.context ? by[String(L.context)] : null;
       panels.forEach(function (p, i) {
         var list = by[String(p.value)] || [];
@@ -54,7 +87,7 @@
         if (L.end) c.text(px + pw, py + head - 10, K.parts.fill(c, L.end, list[list.length - 1]), { role: 'tick', weight: 700, anchor: 'end' });
         ticks.forEach(function (t) {
           c.line(px, ys(t), px + pw, ys(t), { stroke: t === 0 ? 'baseline' : 'gridline', width: c.t(t === 0 ? 'line-baseline' : 'line-hairline'), mark: false });
-          if (col === 0) c.text(gut - 6, ys(t) + 4, K.fmt(t, f.tick || 'signed'), { role: 'tick', anchor: 'end' });
+          if (col === 0) c.text(gut - 6, ys(t) + 4, K.fmt(t, (t === ticks[ticks.length - 1] && f.y_tick_top) || f.tick || 'signed'), { role: 'tick', anchor: 'end' });
         });
         spark(c, list, ctx && p.value !== L.context ? ctx : null, xs, ys, { key: p.value, area: true });
         c.text(px, py + head + ph + 18, K.fmt(list[0][c.field('x')], 'year'), { role: 'tick' });

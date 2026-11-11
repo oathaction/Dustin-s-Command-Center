@@ -81,24 +81,28 @@ def build(base, pil, method):
 
 
 def kit_parts():
-    js = [KIT / "metrics.js", KIT / "kit.js", KIT / "parts.js"]
-    forms = sorted((KIT / "forms").glob("*.js"))
-    core = sum(p.stat().st_size for p in js) + (KIT / "kit.css").stat().st_size + 2000
-    return core, [p.stat().st_size for p in forms], (KIT / "geo.js").stat().st_size
+    """The kit as the page carries it (comments and indentation stripped): core script, style, map geometry and forms."""
+    js = ("import('" + str(KIT / "oa-chart.mjs") + "').then(k => { const p = k.kit_parts(); const K = globalThis.OAChart;"
+          " console.log(JSON.stringify({ core: Buffer.byteLength(p.core), css: Buffer.byteLength(p.css), geo: Buffer.byteLength(p.geo),"
+          " files: Object.values(p.forms).map(x => Buffer.byteLength(x)), forms: Object.keys(K.forms).length, words: Buffer.byteLength(JSON.stringify(K.words)) })); })")
+    r = subprocess.run(["node", "-e", js], capture_output=True, text=True, cwd=str(ROOT))
+    return json.loads(r.stdout.strip().splitlines()[-1])
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", required=True)
-    ap.add_argument("--methods", default="lean,load,load-trim")
+    ap.add_argument("--methods", default="lean,load,load-trim,load-table")
     ap.add_argument("--fallback", action="append", default=[])
     a = ap.parse_args()
     base = Path(a.out).resolve()
     base.mkdir(parents=True, exist_ok=True)
     pil, used = write_pilot(base, a.fallback)
-    core, form_sizes, geo = kit_parts()
-    form_avg = sum(form_sizes) / len(form_sizes)
-    results = {"specs": used, "methods": {}, "kit": {"core_bytes": core, "forms": len(form_sizes), "form_avg_bytes": round(form_avg), "geo_bytes": geo}}
+    kp = kit_parts()
+    form_avg = sum(kp["files"]) / kp["forms"]          # bytes per registered form (19 forms in 17 files today)
+    core = kp["core"] + kp["css"] + kp["words"] + 400  # the script and style elements' own tags
+    results = {"specs": used, "methods": {}, "kit": dict(kp, form_avg_bytes=round(form_avg), core_with_css=core,
+               note="Map geometry (geo.js) is counted under the proposal's shared map geometry, not the renderer")}
     for m in a.methods.split(","):
         page, rep, code = build(base, pil, m)
         w = rep["weight"]
@@ -112,7 +116,7 @@ def main():
         # projection: 97 finished specimens at this method's measured average (figure plus its plate frame), the sketches and
         # avoid entries, the other parts as allocated, and the renderer grown to every form (kit core + forms x form average + geometry)
         renderer_now = kit
-        renderer_full = (core + FORMS_TOTAL * form_avg + geo) if m != "lean" else (KIT / "kit.css").stat().st_size + geo * 0
+        renderer_full = (core + FORMS_TOTAL * form_avg) if m != "lean" else kp["css"]
         spec_part = FINISHED * (avg + frame)
         sketches = SKETCHES * SKETCH_EACH + AVOID * AVOID_EACH
         proj = spec_part + sketches + sum(OTHER.values()) + renderer_full

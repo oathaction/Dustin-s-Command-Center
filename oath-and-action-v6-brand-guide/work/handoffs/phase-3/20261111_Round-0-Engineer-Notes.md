@@ -248,10 +248,48 @@ D3-xxx | Chapter 13's chart plates name a `.chart.json` spec beside their fragme
 
 ## Requests
 
-Answers to the Explainer maker's requests (its notes, E1 to E19, R1 and R2), November 11:
-- Done in the kit: E1 (`lead:N`), E2 (`thousands:0`, `signed-thousands:0`), E3, E5 (a `phone.hide`; b `phone_notes`; c `labels.series_key: "phone"` on line-event-notes), E6 (`scale.y`), E7 (typed chips), E8 (`formats.y_tick_top`), E9 (dashed outlines), E10 (key steps by its wrapped height; `labels.key_cols`), E11, E12 (`labels.share_head`; only the first word of the share is bold), E14 (`table.pivot.row` as a list, `pivot.row_words`), E15, E16 (`labels.cut_at`; `bands[].note`), E18 (a `labels.sub` map by row ID; b cell words at the note size in the label ink; c the key title wraps), E19 (labels sit on the side away from the center line; the axis repeats at the bottom, `labels.axis_unit`).
-- Done in the data: E4 (`documented_share` in `v7-claims-by-grade.json`), R1 (variant `source_line_both_measures` in `census-spm-child-poverty.meta.json`). R2 already exists as `source_line_2024_only`.
-- Not done yet: E13 (gap brackets on small multiples), E17 (the mirrored unit chart), E19's "How to read an arrow" sample and side note. Each waits behind the pilot and the gates; S05 and S08 carry their notes meanwhile.
+Answers to the Explainer maker's requests (its notes, E1 to E26, R1 and R2). Status at the rebuild of all 16 specs (November 11, `oa-chart.mjs build --all`: 16 of 16 pass every check at 1440 and 390 px on Newsprint and Charcoal; the board folder `work/boards/phase-3/round-0/specimens/` refreshed with the same file set the maker left, 25 MB from 32 MB):
+
+| Request | Status | What the kit takes now |
+|---|---|---|
+| E1 | Done | Table format `lead:N` with the column's `lead` words |
+| E2 | Done | `thousands:0` and `signed-thousands:0` round to the thousand |
+| E3 | Done | `ranked-bar` parts, styles and `total_suffix` |
+| E4 | Done | `documented_share` in `v7-claims-by-grade.json` |
+| E5 | Done | An annotation's `phone` object takes `hide`; on a phone, `line-event-notes` moves a long note (over 60 characters, or `phone.below: true`) under the axis as full-width text, `phone.below: false` keeps it in the plot; spec `phone_notes`; `labels.series_key: "phone"`. S02 now passes at 390 with no spec change |
+| E6 | Done | Spec `scale.y` |
+| E7 | Done | Chips carry V7's type word when the words before the ID lack it |
+| E8 | Done | `formats.y_tick_top` |
+| E9 | Done | Dashed outlines draw dashed |
+| E10 | Done | The key steps by its wrapped height; `labels.key_cols` |
+| E11 | Done | The year labels clear each other |
+| E12 | Done | `labels.share_head`; only the first word of the share is bold |
+| E13 | Not done | Gap brackets on small multiples wait; S05 keeps its note |
+| E14 | Done | `table.pivot.row` as a list, with `pivot.row_words` |
+| E15 | Done | The gutter measures each tick in its own format |
+| E16 | Done | `labels.cut_at`; `bands[].note` under the band's label; the bands now draw under the events |
+| E17 | Done | `labels.mirror`, `labels.neither {label, values}`, `labels.groups` (years with no entry keep their column and print 0), `labels.ring {key, text}` with the words under the lower stack |
+| E18 | Done | `labels.sub` by row ID; cell words at the note size in the label ink; the key title wraps |
+| E19 | Done | Labels on the side away from the center line; the axis repeats at the bottom with `labels.axis_unit`; `labels.how {title, sample {from, to, from_label, to_label, value}, text}` drawn right of the center line at the top; `labels.side_note {near, title, text}` drawn left of the center line from the row `near` names |
+| E20 | Done in part | `labels.nation_label` ("United States {shift}") draws the nation's row and arrow beside the key; `labels.lists {largest, smallest, n}`. The 11-column phone grid waits |
+| E21 | Done | Inside labels yield to outside places when they would touch; up to nine rings of places on a phone; `labels.offsets_phone`; the shade key takes the phone's width; `labels.size_step_words`. S16 passes at 390 with no spec change |
+| E22 | Done | `area-sparklines` takes `labels.totals [{value, label, indent}]` with `encode.columns`, `labels.columns_titles`, `totals_title` and `panels_title`, drawn as a sparkline table on its own scale above the panels; ticks at four steps (−10, 0, +10, +20 for S13's domain) with `formats.y_tick_top`; panels 88 px tall, or `labels.panel_height` |
+| E23 | Done | "+9.0 million" keeps its decimal |
+| E24 | Done | Grayscale proofs are saved as one 8-bit gray channel |
+| E25 | Done | Data marks with no ink are check records only (no SVG element) |
+| E26 | Done | `labels.phone_from` ("2020: {from}") adds the earlier margin under the phone card's line |
+| R1 | Done | Variant `source_line_both_measures` |
+| R2 | Already there | Variant `source_line_2024_only` |
+
+Requests back to the Explainer maker (spec changes these fixes need; each spec passes today without them):
+- X1. S08: set `labels.mirror: ["toward voters", "away from voters"]`, `labels.neither: {"label": "Neither way", "values": ["voters kept existing rules", "mixed", "pending"]}`, `labels.groups` (To 2012, 2013 to 2026) and `labels.ring: {"key": "RL47", "text": "19 states"}`. Tested on a copy of S08: passes at both widths.
+- X2. S11: set `labels.how`, `labels.side_note` (near "WI") and `labels.axis_unit: "points"`. Tested on a copy of S11 with Phase 2's words: passes.
+- X3. S12: set `labels.nation_label: "United States {shift}"` and `labels.lists`; then drop the national figure and the lists from the notes if they repeat.
+- X4. S13: set `labels.totals` (all nonfarm; private industries and government, each with `indent: 1`; federal jobs with `indent: 2`), `encode.columns` (the change in jobs and in percent), `labels.columns_titles`, and drop government and federal government from `labels.panels`; set `formats.y_tick_top` to a percent format.
+- X5. S15: set `labels.phone_from: "2020: {from}"`.
+- X6. S02: the two long notes now leave the plot on a phone by themselves; if you want words other than the in-plot ones there, hide them with `phone.hide` and add `phone_notes`.
+- X7. S16: `labels.size_step_words: ["1 million", "5 million", "20 million"]`.
+
 - To the research lead: the 16 datasets moved in carry `"ledger_row": "none yet"`, since the research ledger has no Part 7 rows for Phase 2's November 6 downloads. Please give each its Part 7 row; I will write the row IDs into the sidecars (`data_round0_build.py`), or you may name them in your notes and I copy them.
 
 ## Tested

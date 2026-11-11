@@ -52,6 +52,7 @@
  "domain": "D04",
  "states": [],
  "unconfirmed": [
-  "The threshold history in the qualification comes from the Senate's rules history in general knowledge and was not read on senate.gov today; check it on the Senate's cloture page before a chart prints it"
- ]
+  "The 1917 two-thirds rule and the 1975 change to three-fifths of senators duly chosen and sworn were read on senate.gov's Filibuster and Cloture page on November 11, 2026; the 2013 and 2017 changes for nominations were not read on a Senate page today"
+ ],
+ "url_threshold_history": "https://www.senate.gov/about/powers-procedures/filibusters-cloture.htm"
 }

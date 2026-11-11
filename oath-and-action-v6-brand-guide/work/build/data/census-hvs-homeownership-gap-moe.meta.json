@@ -1,0 +1,51 @@
+{
+ "file": "census-hvs-homeownership-gap-moe.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "Housing Vacancies and Homeownership, Annual Statistics: 2003, Table B-7, Standard Errors for Homeownership Rate by Race of Householder; Annual Statistics: 2025, Table B-7, Margins of Error for Homeownership Rates, by Race and Ethnicity",
+ "table_id": "HVS ann03tb7.txt; HVS ann25t_b7.xlsx",
+ "url": [
+  "https://www.census.gov/housing/hvs/files/annual03/ann03tb7.txt",
+  "https://www.census.gov/housing/hvs/files/annual25/ann25t_b7.xlsx"
+ ],
+ "observation_period": "Annual averages, 2003 and 2025",
+ "geography": "United States",
+ "universe_or_base": "Households by race and ethnicity of householder: non-Hispanic White, Black and Hispanic",
+ "unit": "percent and percentage points; 2003 standard errors are published (68 chances in 100), 2025 margins are published at 90 percent; gaps and changes computed by the studio with s = sqrt(s1 squared plus s2 squared)",
+ "date_retrieved": "2026-11-11",
+ "vintage": "2003 annual statistics as posted; 2025 annual statistics dated March 24, 2026",
+ "qualification": "Published errors are rounded to one decimal, so the computed margins are approximate. The 2003 table labels its Black row \"Black, total\"; Table 22 of the 2025 release gives the same 48.1 for 2003 as race alone. The non-Hispanic White and Black gap widened by 2.3 points from 2003 to 2025, and the non-Hispanic White and Hispanic gap narrowed by 2.9 points; each change passes its margin of about 0.7 points (DR-64)",
+ "columns": {
+  "year": {
+   "type": "year",
+   "description": "year"
+  },
+  "row": {
+   "type": "category",
+   "description": "group, gap or change"
+  },
+  "value": {
+   "type": "number",
+   "description": "homeownership rate, or the gap in points",
+   "unit": "percent"
+  },
+  "standard_error": {
+   "type": "number",
+   "description": "standard error",
+   "unit": "percentage points"
+  },
+  "moe_90": {
+   "type": "number",
+   "description": "90 percent margin of error",
+   "unit": "percentage points"
+  },
+  "basis": {
+   "type": "text",
+   "description": "published or computed"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, Housing Vacancies and Homeownership, Annual Statistics 2003 and 2025, Table B-7, standard errors and margins of error of homeownership rates by race and ethnicity, 2003 and 2025, United States. Retrieved November 11, 2026. Margins of the gaps computed by Oath & Action.",
+ "ledger_row": "P7-038",
+ "domain": "D09",
+ "states": []
+}

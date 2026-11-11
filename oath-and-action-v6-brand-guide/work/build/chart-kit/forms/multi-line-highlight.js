@@ -56,7 +56,7 @@
         segs(mine).forEach(function (s) {
           c.path(s.map(function (r, j) { return (j ? 'L' : 'M') + K.round(xs(K.time(r[ex]))) + ',' + K.round(ys(r[ey])); }).join(''), { stroke: 'subject', width: c.t('line-context'), data: { series: pnl.value } }, [px, py + head, pw, ph]);
         });
-        mine.forEach(function (r) { c.circle(xs(K.time(r[ex])), ys(r[ey]), 0.01, { fill: 'subject', data: { key: pnl.value + '|' + r[ex] + (eb ? '|' + r[eb] : ''), field: ey, value: r[ey] } }); });
+        mine.forEach(function (r) { c.datum(xs(K.time(r[ex])), ys(r[ey]), { data: { key: pnl.value + '|' + r[ex] + (eb ? '|' + r[eb] : ''), field: ey, value: r[ey] } }); });
         var ay = py + head + ph + c.size('tick') + 6;
         c.text(px, ay, K.fmt(tlo, 'year'), { role: 'tick' });
         c.text(px + pw, ay, K.fmt(Math.round(thi), 'year'), { role: 'tick', anchor: 'end' });

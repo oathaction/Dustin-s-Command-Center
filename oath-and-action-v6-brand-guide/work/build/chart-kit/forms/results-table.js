@@ -9,7 +9,7 @@
   K.register_chart({
     form: 'results-table', name: 'Results Table', family: 'tables-and-plain-words',
     encode: { key: 'code', label: 'text', from: 'number', to: 'number', shift: 'number', scope: 'category?' },
-    labels: ['titles', 'lead', 'tag', 'apart_value', 'even_line'],
+    labels: ['titles', 'lead', 'tag', 'apart_value', 'even_line', 'phone_from', 'phone_to'],
     phone: 'differs',
     draw: function (c) {
       var rows = c.rows, ek = c.field('key'), el = c.field('label'), ef = c.field('from'), et = c.field('to'), esh = c.field('shift'), esc = c.field('scope', false);
@@ -58,11 +58,12 @@
         var cy = c.phone ? y + 40 : yy;
         cell(c.phone ? 0 : nw, c.phone ? W - sw : mw, r[et], cy, true, r[ek], et);
         if (!c.phone) cell(nw + mw, mw, r[ef], yy, false, r[ek], ef);
+        else if (L.phone_from) c.text(0, cy + 26, String(L.phone_from).replace('{from}', words(r[ef])), { role: 'tick', fill: 'secondary' });
         var sy = c.phone ? y + 18 : yy;
         var al = (sw - 40) * Math.abs(r[esh]) / smax, ax = W - sw + 6;
         K.parts.arrow(c, ax, ax + Math.max(al, 4), sy - 4, { data: { key: r[ek], field: esh, value: r[esh] } });
         c.text(ax + Math.max(al, 4) + 6, sy, K.fmt(Math.abs(r[esh]), f.shift || 'number:1'), { role: 'tick' });
-        y += (c.phone ? 60 : pitch) + (tagged && !c.phone ? 8 : 0);
+        y += (c.phone ? (L.phone_from ? 78 : 60) : pitch) + (tagged && !c.phone ? 8 : 0);
         c.line(0, y, W, y, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
         if (apart) { y += 6; c.line(0, y, W, y, { stroke: 'baseline', width: c.t('line-baseline'), mark: false }); }
       });

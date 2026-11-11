@@ -117,6 +117,31 @@ export function used_columns(spec, columns) {
   return Object.keys(columns).filter(c => used.has(c));
 }
 
+// The keys a page needs to draw: no words the figure already prints (method load-table)
+const DRAW_KEYS = ['kit', 'id', 'form', 'artboard', 'encode', 'labels', 'annotations', 'formats', 'scale', 'table', 'phone'];
+export function draw_spec(spec) {
+  const out = {};
+  DRAW_KEYS.forEach(k => { if (spec[k] !== undefined) out[k] = spec[k]; });
+  if (out.table) out.table = Object.assign({}, out.table, { caption: undefined });
+  if (spec.form === 'social-data-card') ['evidence_label', 'title', 'source_line'].forEach(k => { out[k] = spec[k]; });
+  return out;
+}
+export function table_fields(spec) {
+  const tb = spec.table || {};
+  if (tb.pivot) return [].concat(tb.pivot.row, [tb.pivot.column, tb.pivot.value]);
+  return (tb.columns || []).map(c => c.field);
+}
+export function island_table(spec, rows, columns) {
+  // method load-table: the drawing spec, the types of the columns it uses, and as CSV only the used columns the table lacks
+  const used = used_columns(spec, columns), inTable = new Set(table_fields(spec));
+  const extra = used.filter(c => !inTable.has(c));
+  const ctypes = {};
+  used.concat([...inTable]).forEach(c => { if (columns[c]) ctypes[c] = { type: columns[c].type }; });
+  const payload = { mode: 'table', spec: draw_spec(spec), columns: ctypes };
+  if (extra.length) payload.csv = C.to_csv(rows, extra);
+  return '<script type="application/json" data-oa-chart-data>' + JSON.stringify(payload).replace(/</g, '\\u003c') + '</script>';
+}
+
 export function island(spec, rows, columns, trim) {
   // the data a page draws from: the spec, the column types and the rows as CSV (the lightest text form); trim keeps
   // only the columns the spec names
@@ -129,7 +154,22 @@ export function island(spec, rows, columns, trim) {
   return '<script type="application/json" data-oa-chart-data>' + JSON.stringify(payload).replace(/</g, '\\u003c') + '</script>';
 }
 
+// The kit as a page carries it: full-line comments and indentation dropped, nothing else changed (no outside tool, no
+// renaming), so the same code runs in the page and in Node. A comment after code on its line stays.
+export function strip(js) {
+  return js.replace(/^\s*\/\*[\s\S]*?\*\/\s*$/gm, '').split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('//')).join('\n');
+}
+export function kit_parts() {
+  const forms = fs.readdirSync(path.join(KIT, 'forms')).filter(f => f.endsWith('.js')).sort();
+  const core = ['metrics.js', 'kit.js', 'parts.js'].map(f => strip(fs.readFileSync(path.join(KIT, f), 'utf8'))).join('\n');
+  return { core, geo: fs.readFileSync(path.join(KIT, 'geo.js'), 'utf8'), forms: Object.fromEntries(forms.map(f => [f, strip(fs.readFileSync(path.join(KIT, 'forms', f), 'utf8'))])),
+    css: fs.readFileSync(path.join(KIT, 'kit.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').split('\n').map(l => l.trim()).filter(Boolean).join('\n') };
+}
 export function kit_scripts() {
+  const k = kit_parts();
+  return [k.core, k.geo].concat(Object.values(k.forms)).join('\n').replace(/<\/script/gi, '<\\/script');
+}
+export function kit_scripts_full() {
   const forms = fs.readdirSync(path.join(KIT, 'forms')).filter(f => f.endsWith('.js')).sort().map(f => fs.readFileSync(path.join(KIT, 'forms', f), 'utf8'));
   return [fs.readFileSync(path.join(KIT, 'metrics.js'), 'utf8'), fs.readFileSync(path.join(KIT, 'kit.js'), 'utf8'), fs.readFileSync(path.join(KIT, 'parts.js'), 'utf8'), fs.readFileSync(path.join(KIT, 'geo.js'), 'utf8')].concat(forms).join('\n').replace(/<\/script/gi, '<\\/script');
 }
@@ -137,7 +177,7 @@ export function kit_scripts() {
 function page_html(specs) {
   // a plain page: tokens.css, kit.css, the kit and its forms, and each figure with its data island (DR-235)
   const body = specs.map(({ spec, rows, columns, grounds }) => grounds.map(g => `<section class="oa-surface-${g} oac-ground" data-ground="${g}">
-${(f => f.slice(0, f.lastIndexOf('</figure>')) + island(spec, rows, columns) + '</figure>')(K.figure(spec, rows, { id: `oac-${spec.id.toLowerCase()}-${g}` }))}
+${(f => f.slice(0, f.lastIndexOf('</figure>')) + island_table(spec, rows, columns) + '</figure>')(K.figure(spec, rows, { id: `oac-${spec.id.toLowerCase()}-${g}`, lean_table: true, types: columns }))}
 </section>`).join('\n')).join('\n');
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Chart kit build</title><style>${font_css()}</style><style>${CSS}</style><style>${fs.readFileSync(path.join(KIT, 'kit.css'), 'utf8')}</style>
@@ -176,18 +216,20 @@ async function captures(items, o) {
           for (const g of o.grounds) {
             const fid = `#oac-${spec.id.toLowerCase()}-${g}`;
             const node = res.drawings.find(d => d.ground === g && d.page === w);
-            const info = await p.evaluate(({ fid, node_svg }) => {
+            const info = await p.evaluate(({ fid, node_svg, title, alt }) => {
               const f = document.querySelector(fid);
               const err = f.getAttribute('data-oa-error');
               const svg = f.querySelector('svg.oac-svg');
-              const out = { err, rows: f.querySelectorAll('[data-oa-row]').length };
+              const tb = f.querySelector('table.oac-table');
+              const out = { err, rows: tb && tb.hasAttribute('data-oa-lean') ? (tb.querySelector('tbody th[scope=row]') && tb.querySelectorAll('thead th').length > 1 && tb.querySelectorAll('tbody td[data-x]').length + tb.querySelectorAll('tbody td').length !== tb.querySelectorAll('tbody tr').length * (tb.querySelectorAll('thead th').length - 1) ? 0 : 0) : f.querySelectorAll('[data-oa-row]').length };
+              if (tb && tb.hasAttribute('data-oa-lean')) out.rows = window.OAChart.rows_from_table(tb, JSON.parse(f.querySelector('script[data-oa-chart-data]').textContent).spec, JSON.parse(f.querySelector('script[data-oa-chart-data]').textContent)).length;
               if (!svg) return out;
               const clone = svg.cloneNode(true);
               clone.removeAttribute('aria-describedby');
               const ser = new XMLSerializer();
               const a = ser.serializeToString(clone);
               const b = node_svg ? ser.serializeToString(new DOMParser().parseFromString(node_svg, 'image/svg+xml').documentElement) : null;
-              const norm = x => x ? x.replace(/ aria-labelledby="[^"]*"/g, '').replace(/oac-[a-z0-9-]*?-(\d+)-([a-z0-9]+)/g, 'U-$1-$2') : x;
+              const norm = x => x ? x.replace(/ aria-labelledby="[^"]*"/g, '').replace(/<title>.*?<\/title>|<desc>.*?<\/desc>/gs, '').replace(/oac-[a-z0-9-]*?-(\d+)-([a-z0-9]+)/g, 'U-$1-$2') : x;
               out.parity = norm(a) === norm(b);
               out.width = svg.getAttribute('width');
               // the standalone export: computed colors and type written on each element, no classes, title and desc kept
@@ -206,6 +248,10 @@ async function captures(items, o) {
                 dst[i].removeAttribute('class');
               }
               ex.removeAttribute('class');
+              // a standalone file names itself: the spec's title and alt as the SVG's title and desc
+              const NS = 'http://www.w3.org/2000/svg';
+              if (!ex.querySelector(':scope > desc') && alt) { const d = document.createElementNS(NS, 'desc'); d.textContent = alt; ex.insertBefore(d, ex.firstChild); }
+              if (!ex.querySelector(':scope > title') && title) { const t = document.createElementNS(NS, 'title'); t.textContent = title; ex.insertBefore(t, ex.firstChild); }
               ex.removeAttribute('aria-describedby');
               ex.removeAttribute('aria-labelledby');
               ex.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
@@ -219,7 +265,7 @@ async function captures(items, o) {
               const back = new DOMParser().parseFromString(out.export, 'image/svg+xml');
               out.export_ok = !back.querySelector('parsererror') && !!back.querySelector('svg > title') && !!back.querySelector('svg > desc') && out.export.indexOf('var(') < 0 && out.export.indexOf(' class=') < 0;
               return out;
-            }, { fid, node_svg: node ? node.svg : null });
+            }, { fid, node_svg: node ? node.svg : null, title: spec.title, alt: spec.alt });
             if (info.err) { res.faults.push(`page: ${g} ${w}: ${info.err}`); continue; }
             if (dpr === 1) {
               if (!info.parity) res.faults.push(`parity: the page's drawing at ${w} on ${g} differs from the Node drawing the exports use`);
@@ -275,7 +321,15 @@ async function build(o, check_only) {
         res.faults.push(...C.check_csv(K, fs.readFileSync(cf, 'utf8'), res.rows, res.datasets[0].meta));
       }
     }
-    if (o.png) await captures(items.filter(i => i.res.drawings.length), o);
+    if (o.png) {
+      await captures(items.filter(i => i.res.drawings.length), o);
+      // the grayscale proofs are exact gray (R = G = B), so one 8-bit channel holds the same pixels at half the bytes (E24)
+      const { spawnSync } = require('child_process');
+      const dirs = items.map(i => path.join(o.out, i.spec.id.toLowerCase()));
+      const py = "import sys,glob\nfrom PIL import Image\nfor d in sys.argv[1:]:\n    for f in glob.glob(d+'/*-grayscale.png'):\n        im=Image.open(f)\n        if im.mode!='L': im.convert('L').save(f, optimize=True)";
+      const r = spawnSync('python3', ['-I', '-c', py, ...dirs], { encoding: 'utf8' });
+      if (r.status !== 0) console.log('grayscale proofs stay RGB: ' + (r.stderr || '').slice(0, 200));
+    }
   }
   for (const { spec, res } of items) {
     const summary = { id: spec.id, form: spec.form, spec: path.relative(ROOT, res.spec_path), rows: res.rows ? res.rows.length : 0,
@@ -291,7 +345,9 @@ async function build(o, check_only) {
 // guide_build.py's hook: draw each listed spec for the page, by the chosen method, and return the fragments and faults
 async function fragments(o) {
   const list = JSON.parse(fs.readFileSync(o.in, 'utf8'));
-  const out = { kit_js: kit_scripts(), kit_css: fs.readFileSync(path.join(KIT, 'kit.css'), 'utf8'), words: K.words, items: {} };
+  const kp = kit_parts();
+  const out = { kit_js: kit_scripts(), kit_css: kp.css, words: K.words, items: {},
+    kit_sizes: { core: Buffer.byteLength(kp.core), geo: Buffer.byteLength(kp.geo), css: Buffer.byteLength(kp.css), forms: Object.fromEntries(Object.entries(kp.forms).map(([k, v]) => [k, Buffer.byteLength(v)])) } };
   for (const it of list.items) {
     const spec = JSON.parse(fs.readFileSync(it.spec, 'utf8'));
     const res = run_spec(spec, { grounds: [it.ground || 'newsprint'], widths: it.widths || [1440, 390], spec_path: it.spec });
@@ -305,6 +361,9 @@ async function fragments(o) {
       let svg = desk ? desk.svg.replace('class="oac-svg"', 'class="oac-svg oac-desk"') : '';
       if (ph) svg += ph.svg.replace('class="oac-svg"', 'class="oac-svg oac-phone"');
       html = K.figure(spec, res.rows, { id: fid, svg, art_attrs: ' data-oa-lean' });
+    } else if (list.method === 'load-table') {
+      html = K.figure(spec, res.rows, { id: fid, lean_table: true, types: columns });
+      html = html.slice(0, html.lastIndexOf('</figure>')) + island_table(spec, res.rows, columns) + '</figure>';
     } else {
       const isl = island(spec, res.rows, columns, list.method === 'load-trim');
       html = K.figure(spec, res.rows, { id: fid });

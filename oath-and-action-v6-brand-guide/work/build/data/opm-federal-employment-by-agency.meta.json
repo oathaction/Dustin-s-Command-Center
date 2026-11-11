@@ -2,20 +2,20 @@
  "file": "opm-federal-employment-by-agency.csv",
  "kind": "public",
  "publisher": "U.S. Office of Personnel Management",
- "title_or_table": "Federal Workforce Data, Federal Employment Raw Data (EHRI status files), August 2024 (version 4) and August 2026 (version 1), employees counted by department or independent agency",
- "table_id": "data.opm.gov employment files employment_202408_4 and employment_202608_1",
+ "title_or_table": "Federal Workforce Data, Federal Employment Raw Data (EHRI status files), January 2022 (version 4) and August 2026 (version 1), employees counted by department or independent agency",
+ "table_id": "data.opm.gov employment files employment_202201_4 and employment_202608_1",
  "url": [
-  "https://data.opm.gov/api/v1/files/employment/2024/08/4/download",
+  "https://data.opm.gov/api/v1/files/employment/2022/01/4/download",
   "https://data.opm.gov/api/v1/files/employment/2026/08/1/download",
   "https://data.opm.gov/get-data/data-downloads"
  ],
- "observation_period": "Last day of August 2024 and last day of August 2026",
+ "observation_period": "Last day of January 2022 and last day of August 2026; the window starts in January 2022, as S13 and S14 do, and ends in August 2026, the latest month OPM did not flag as incomplete",
  "geography": "United States federal civilian workforce",
  "universe_or_base": "Federal civilian employees in the files, in pay or non-pay status, by department or independent agency; the files leave out intelligence agencies and some others that do not report to OPM, and the U.S. Postal Service",
  "unit": "employees, summed by the studio from the record-level count field",
  "date_retrieved": "2026-11-11",
- "vintage": "August 2024 version 4 (published October 3, 2026) and August 2026 version 1 (published October 4, 2026)",
- "qualification": "Counts people on the rolls on one day, full-time and part-time alike. OPM's site warned on November 11, 2026 that a change in Department of War data processing left September 2026 data incomplete for some components, so this file compares August with August; OPM may revise August 2026 in later versions. Department names are as the files give them",
+ "vintage": "January 2022 version 4 (published October 3, 2026) and August 2026 version 1 (published October 4, 2026)",
+ "qualification": "Counts people on the rolls on one day, full-time and part-time alike. The window matches the jobs charts S13 and S14 and holds no split at an inauguration (H09); it ends in August because OPM's site warned on November 11, 2026 that a change in Department of War data processing left September 2026 data incomplete for some components. OPM may revise August 2026 in later versions. Department names are as the August 2026 file gives them",
  "columns": {
   "department_code": {
    "type": "code",
@@ -23,11 +23,11 @@
   },
   "department": {
    "type": "text",
-   "description": "department or agency as named in the files"
+   "description": "department or agency as named in the August 2026 file"
   },
-  "employees_2024_08": {
+  "employees_2022_01": {
    "type": "integer",
-   "description": "employees, August 31, 2024",
+   "description": "employees, January 31, 2022",
    "unit": "people"
   },
   "employees_2026_08": {
@@ -46,15 +46,16 @@
    "unit": "percent"
   }
  },
- "printed_source_line": "Source: U.S. Office of Personnel Management, Federal Workforce Data, employment status files, August 2024 and August 2026, federal civilian workforce. Retrieved November 11, 2026. People on the rolls on one day; some agencies, including intelligence agencies and the Postal Service, are not in the files.",
+ "printed_source_line": "Source: U.S. Office of Personnel Management, Federal Workforce Data, employment status files, January 2022 and August 2026, federal civilian workforce. Retrieved November 11, 2026. People on the rolls on one day; some agencies, including intelligence agencies and the Postal Service, are not in the files.",
  "ledger_row": "P7-007",
  "domain": "D04",
  "states": [],
  "raw_files_sha256_prefix": {
-  "employment_202408_4.parquet": "8b14c132a49f0075",
+  "employment_202201_4.parquet": "5980689199670193",
   "employment_202608_1.parquet": "b3518369a77bb86c"
  },
  "unconfirmed": [
-  "The list of agencies outside the files is from OPM's general documentation and was not checked against the August 2026 release notes"
+  "The list of agencies outside the files is from OPM's general documentation and was not checked against the release notes",
+  "Monthly files from February 2022 to July 2026 were not read; the chart draws two points"
  ]
 }

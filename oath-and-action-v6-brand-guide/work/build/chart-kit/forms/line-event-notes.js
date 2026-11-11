@@ -81,8 +81,10 @@
         var yw = c.measure(String(yr), 'tick');
         c.text(xs(yr) + yw / 2 > W ? W : xs(yr), ay, String(yr), { role: 'tick', anchor: xs(yr) + yw / 2 > W ? 'end' : 'middle' });
       }
+      var below = [];
       c.annotations.forEach(function (a) {
         if (c.phone && a.phone && a.phone.hide) return;
+        if (c.phone && a.text && !a.value && ((a.phone && a.phone.below) || (!(a.phone && a.phone.below === false) && a.text.length > 60))) { below.push(a.text); return; }
         var hit = rows.filter(function (r) { return String(r[ex]) === String(a.at.x) && (!es || a.at.series === undefined || String(r[es]) === String(a.at.series)) && (!eb || !a.at.break || r[eb] === a.at.break); })[0];
         if (!hit) { c.warn('annotation at ' + JSON.stringify(a.at) + ' matches no row'); return; }
         var px = xs(K.time(hit[ex])), py = ys(hit[ey]);
@@ -91,7 +93,12 @@
         var words = a.value ? K.fmt(hit[ey], f.y || 'number') + (a.text ? a.text : '') : a.text;
         P.note(c, px, py, words, { place: o.place, dx: o.dx, dy: o.dy, max: o.max, weight: a.value ? 700 : 400, anchor: o.anchor, leader: o.leader });
       });
-      c.height(ay + 4);
+      var by = ay + 14;
+      below.forEach(function (t) {
+        var b = c.text(0, by + c.size('note'), t, { role: 'note', max: W });
+        by = b.y + b.h + 10;
+      });
+      c.height(below.length ? by : ay + 4);
     }
   });
 })(globalThis.OAChart);

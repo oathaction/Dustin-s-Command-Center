@@ -285,7 +285,7 @@ CSS = {
     "bc": (".bc{display:block;overflow:visible;margin-top:8px}.bc .b{fill:var(--oa-chart-color-subject)}"
            ".bc .bl{stroke:var(--oa-chart-color-baseline);stroke-width:var(--oa-chart-line-baseline)}"
            ".bc text{font-family:var(--oa-font-family-reading);font-size:var(--oa-chart-type-label);fill:var(--oa-chart-color-label)}"
-           ".bc .n{font-weight:var(--oa-font-weight-semibold)}.bc .v{font-variant-numeric:tabular-nums}"),
+           ".bc .n{font-weight:var(--oa-font-weight-semibold)}.bc .v{font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums}"),
     "foot": f".foot{{{CAP};color:var(--oa-color-text-secondary);margin-top:14px;padding-top:8px;border-top:1px solid var(--oa-color-border-hairline)}}",
     "dek": ".dek{font:var(--oa-type-body-small);margin:0 0 12px}",
     "box": ".box{display:inline-flex;align-items:center;padding:6px 10px;border:1.5px solid var(--oa-color-border-strong);font:var(--oa-type-body-small)}",
@@ -877,9 +877,11 @@ def rule_13_5(book):
         "rule": [
             "Four properties of a claim each keep their own mark and their own words. The evidence grade, how strong the "
             "evidence is, takes the line of Rule 13.4 or the grade word. A reform’s effect size prints as the atlas’s ordinal "
-            "code, a rank of small, moderate or large with no measured amount, such as +M for moderate positive, in one row for "
-            "each outcome family. How sure the atlas is of that size, the uncertainty, prints in its own words or as a drawn "
-            "range. Delay, the time an effect takes to arrive, draws as one, two or three ticks for under 2 years, 2 to 10 years "
+            "code, a rank of small, moderate or large with no measured amount, such as +M for moderate positive. It takes one "
+            "row for each outcome family, one of the four groups of results the atlas judges reforms by, such as Quality of democracy. "
+            "How sure the atlas is of that size, the uncertainty, prints in the atlas’s own words; on a "
+            "chart of survey figures the uncertainty is the margin of error, the range around a figure that sampling allows, "
+            "drawn as an interval. Delay, the time an effect takes to arrive, draws as one, two or three ticks for under 2 years, 2 to 10 years "
             "and over 10 years, with the words beside them.",
             "A grade never borrows a line’s width, a mark’s darkness or its size, and the four outcome families stay apart with "
             "no total. Our systems atlas gives the reason: “" + q2 + "”",
@@ -900,7 +902,7 @@ def rule_13_5(book):
             {"label": "Grade", "value": "The line of Rule 13.4, or the grade word"},
             {"label": "Effect size", "value": "The atlas’s code and words, one row per outcome family: one to three pips right of the zero line for a gain, left for a cost"},
             {"label": "No expected effect", "value": "A bar on the zero line, with the words"},
-            {"label": "Uncertainty", "value": "The atlas’s words, quoted, or a range drawn as an interval"},
+            {"label": "Uncertainty", "value": "The atlas’s words, quoted; for a survey figure, its margin of error drawn as an interval"},
             {"label": "Delay", "value": "One to three ticks, with under 2 years, 2 to 10 years or over 10 years"},
             {"label": "Never", "value": "A total across families, or a width or darkness for a grade"},
         ],
@@ -1094,7 +1096,7 @@ def rule_13_8(book):
            f"Checked {SNAP}. The cap covers people with Medicare Part D drug coverage.")
     who = "Ruth Okafor, 71, Alder County"
     quote = "“I check each fall that my insulin is still on my plan’s list.”"
-    card = lambda label: (f'<div class="card"><p class="hl">Medicare caps what Part D enrollees pay for each covered insulin at $35 a month</p>'
+    card = lambda label: (f'<div class="card"><p class="hl">Medicare caps what Part\u00a0D enrollees pay for each covered insulin at $35 a month</p>'
                           '<p>The cap has applied since January 2023, under the Inflation Reduction Act.</p>'
                           f'<div class="blk"><p class="qs">{e(quote)}</p><p class="by">{e(who)} {label}</p></div>'
                           f'<p class="src">{e(src)}</p>')
@@ -1412,7 +1414,7 @@ def rule_13_12(book):
                    "Oklahoma case the Court decided on March 21, 1932")
     src = ("Source: New State Ice Co. v. Liebmann, 285 U.S. 262 (1932), Brandeis, J., dissenting, via the Legal Information "
            "Institute, Cornell Law School. Retrieved November 11, 2026.")
-    body = (f'<p class="k">Beside {chip("Variable", "D6")} {e(lc(node_title("D6")))}, in our systems atlas</p>'
+    body = (f'<p class="sub">Set beside {chip("Variable", "D6")}, {e(lc(node_title("D6")))}, in our systems atlas</p>'
             f'<p class="q">“{e(BRANDEIS)}”</p><p class="by">{e(attribution)}</p><p class="src">{e(src)}</p>')
     book.add("s-13-12-correct", body, rule="13.12", readable=True,
              alt=(f"A quotation set beside Variable D6, state and local testing of reforms, in our systems atlas. In Lora Italic: "
@@ -1487,15 +1489,28 @@ def bars_svg(data, w=312):
             + "".join(out) + "</svg>")
 
 
+GUIDE_BUILD = ROOT / "work/build/scripts/phase-2/guide_build.py"
+
+
+def kit_hook():
+    """Contract C7: once guide_build.py expands <div data-oa-chart="...">, the plate names its spec and the kit draws the
+    chart in the guide. Until then the plate carries a static drawing in the chart tokens. --static-chart forces it."""
+    if "--static-chart" in sys.argv:
+        return False
+    return GUIDE_BUILD.exists() and "data-oa-chart" in GUIDE_BUILD.read_text()
+
+
 def rule_13_13(book):
     head = "Alder County’s libraries add Sunday hours from January"
+    hook = kit_hook()
+    figure = '<div data-oa-chart="s-13-13-correct"></div>' if hook else bars_svg(LIB)
     note = (f"<b>Corrected November 4, 2026.</b> An earlier version of this article and its chart gave the Main Library’s "
             f"weekly hours as {LIB_WRONG}. The county’s adopted schedule gives {LIB[0][1]}. We replaced the chart and fixed the "
             "second paragraph.")
     piece = (f'<div class="card nb">{ill()}<p class="cn">{note}</p><p class="hl">{e(head)}</p>'
              '<p>The county board approved Sunday hours at all three branches from January 4.</p>'
              f'<p>The Main Library will open {LIB[0][1]} hours a week, the most of the three.</p>'
-             f'<div class="blk"><p class="k">Hours open each week, from January 4</p>{bars_svg(LIB)}</div>'
+             f'<div class="blk"><p class="k">Hours open each week, from January 4</p>{figure}</div>'
              '<p class="src">Source: Alder County Board, adopted library schedule, 2027, three branches. Values invented for this example.</p></div>')
     page = (f'<div class="card nb">{ill()}<p class="hl">Corrections</p><p class="sub">Every correction we have made, newest first.</p>'
             '<div class="blk lp"><p class="dt">November 4, 2026</p>'
@@ -1511,8 +1526,10 @@ def rule_13_13(book):
                   f"{LIB[0][1]}, Riverside {LIB[1][1]}, Elm Street {LIB[2][1]}. The corrections page lists the same note under "
                   "its date, with the headline and the date the article first ran."),
              notes="Invented throughout, one label at the head of each piece (DR-97). The note's tokens follow Rule 26.3's example "
-                   "for a correction notice: primary text and a 4 px bar in the essential graphic color. The chart is a static "
-                   "drawing in the chart tokens until the kit's guide hook lands; its kit spec is s-13-13-correct.chart.json.")
+                   "for a correction notice: primary text and a 4 px bar in the essential graphic color. "
+                   + ("The chart is the kit's figure from s-13-13-correct.chart.json (contract C7)." if hook else
+                      "The chart is a static drawing in the chart tokens until the kit's guide hook lands; its kit spec, "
+                      "s-13-13-correct.chart.json, passes the kit's checks (oa-chart.mjs build, 0 faults)."))
     book.log("13.13 correct", "Alder County library hours", "invented", level="invented")
     wrong = [("Main Library", LIB[0][1]), ("Riverside", LIB[1][1]), ("Elm Street", LIB[2][1])]
     fail = (dnp() + f'<div class="card">{ill()}<p class="hl">{e(head)}</p>'

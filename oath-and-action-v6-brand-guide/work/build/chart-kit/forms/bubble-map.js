@@ -9,7 +9,7 @@
   K.register_chart({
     form: 'bubble-map', name: 'Bubble Map', family: 'maps',
     encode: { code: 'code', size: 'number', shade: 'number' },
-    labels: ['bins', 'ring', 'ring_label', 'shade_title', 'size_title', 'size_steps', 'size_unit', 'nation', 'nation_label', 'offsets'],
+    labels: ['bins', 'ring', 'ring_label', 'shade_title', 'size_title', 'size_steps', 'size_unit', 'size_step_words', 'nation', 'nation_label', 'offsets', 'offsets_phone'],
     phone: 'same',
     draw: function (c) {
       var G = globalThis.OAChartGeo, rows = c.rows, ec = c.field('code'), ez = c.field('size'), eh = c.field('shade');
@@ -20,7 +20,7 @@
       var y = 0, kw = c.phone ? W : W * 0.55;
       if (L.shade_title) { c.text(0, 12, L.shade_title, { role: 'eyebrow', weight: 700, fill: 'secondary', max: kw }); }
       var tb = L.shade_title ? c.texts[c.texts.length - 1] : { y: 0, h: 0 };
-      var sx = 0, sy = Math.ceil(tb.y + tb.h) + (L.nation_label ? 24 : 10), sw = Math.min(46, (kw - 10) / 5);
+      var sx = 0, sy = Math.ceil(tb.y + tb.h) + (L.nation_label ? 24 : 10), sw = c.phone ? (W - 10) / 5 : Math.min(46, (kw - 10) / 5);
       for (var i = 1; i <= 5; i++) c.rect(sx + (i - 1) * sw, sy, sw, 12, { fill: 'seq-' + i, mark: false });
       bins.forEach(function (b, i) { c.text(sx + (i + 1) * sw, sy + 28, K.fmt(b, f.bins || 'integer'), { role: 'tick', anchor: 'middle' }); });
       if (L.nation !== undefined && bins.length) {
@@ -34,8 +34,8 @@
       var szx = c.phone ? 0 : W * 0.62, szy = c.phone ? sy + 48 : 12;
       if (L.size_title) c.text(szx, szy, L.size_title, { role: 'eyebrow', weight: 700, fill: 'secondary' });
       var cx = szx, base = szy + 14 + 2 * area(steps.length ? steps[steps.length - 1] : maxv);
-      steps.forEach(function (s) {
-        var r = area(s), lab = K.fmt(s, f.size_step || 'integer') + (L.size_unit ? ' ' + L.size_unit : ''), lw = c.measure(lab, 'tick');
+      steps.forEach(function (s, si) {
+        var r = area(s), lab = (L.size_step_words || [])[si] || (K.fmt(s, f.size_step || 'integer') + (L.size_unit ? ' ' + L.size_unit : '')), lw = c.measure(lab, 'tick');
         var mid = cx + Math.max(r, lw / 2);
         c.circle(mid, base - r, r, { stroke: 'label', width: c.t('bubble-outline'), mark: false });
         c.text(mid, base + 16, lab, { role: 'tick', anchor: 'middle' });
@@ -87,21 +87,27 @@
         if (c.texts.some(function (t) { return b.x < t.x + t.w + 1 && t.x < b.x + b.w + 1 && b.y < t.y + t.h + 1 && t.y < b.y + b.h + 1; })) return true;
         return pts.some(function (q) { var nx = Math.max(b.x, Math.min(q.x, b.x + b.w)), ny = Math.max(b.y, Math.min(q.y, b.y + b.h)); return (nx - q.x) * (nx - q.x) + (ny - q.y) * (ny - q.y) < q.rad * q.rad - 1; });
       };
-      var offs = L.offsets || {};
-      var inside = function (p) { return p.rad * 2 > c.measure(p.r[ec], 'tick', 700) + 6 && !offs[p.r[ec]]; };
-      pts.filter(inside).forEach(function (p) {
+      var offs = (c.phone && L.offsets_phone) || L.offsets || {};
+      var fits = function (p) { return p.rad * 2 > c.measure(p.r[ec], 'tick', 700) + 6 && !offs[p.r[ec]]; };
+      // a label goes inside its circle, largest circles first, unless it would touch a label already placed or leave the artboard
+      var outside = [];
+      pts.slice().sort(function (a, b) { return b.rad - a.rad; }).forEach(function (p) {
+        if (!fits(p)) { outside.push(p); return; }
+        var s = c.size('tick'), tw = c.measure(p.r[ec], 'tick', 700), b = { x: p.x - tw / 2, y: p.y + s * 0.35 - s * 0.77, w: tw, h: s };
+        var clash = b.x < 0 || b.x + b.w > W || c.texts.some(function (t) { return b.x < t.x + t.w + 1 && t.x < b.x + b.w + 1 && b.y < t.y + t.h + 1 && t.y < b.y + b.h + 1; });
+        if (clash) { outside.push(p); return; }
         var sh = shade(p.r[eh]);
-        c.text(p.x, p.y + c.size('tick') * 0.35, p.r[ec], { role: 'tick', weight: 700, anchor: 'middle', fill: sh === 'seq-4' || sh === 'seq-5' ? 'label-on-subject' : 'label' });
+        c.text(p.x, p.y + s * 0.35, p.r[ec], { role: 'tick', weight: 700, anchor: 'middle', fill: sh === 'seq-4' || sh === 'seq-5' ? 'label-on-subject' : 'label' });
       });
-      pts.filter(function (p) { return !inside(p); }).sort(function (a, b) { return a.rad - b.rad; }).forEach(function (p) {
+      outside.sort(function (a, b) { return a.rad - b.rad; }).forEach(function (p) {
         var code = p.r[ec], s = c.size('tick'), tw = c.measure(code, 'tick', 700);
         var pad = c.t('bubble-label-pad') + 1, asc = s * 0.77, h = s;
         var cands = offs[code] ? [[p.x + offs[code][0], p.y + offs[code][1]]] : [[p.x + p.rad + pad, p.y + s * 0.35], [p.x - p.rad - pad - tw, p.y + s * 0.35], [p.x - tw / 2, p.y - p.rad - pad - s * 0.23], [p.x - tw / 2, p.y + p.rad + pad + asc],
           [p.x + p.rad + pad, p.y - p.rad], [p.x + p.rad + pad, p.y + p.rad + asc], [p.x - p.rad - pad - tw, p.y - p.rad], [p.x - p.rad - pad - tw, p.y + p.rad + asc]];
-        for (var ring = 1; ring <= 4 && !offs[code]; ring++) {
+        for (var ring = 1; ring <= (c.phone ? 9 : 4) && !offs[code]; ring++) {
           var dd = p.rad + pad + ring * 14;
-          for (var ang = 0; ang < 8; ang++) {
-            var th = ang * Math.PI / 4, ex = p.x + Math.cos(th) * dd, ey = p.y + Math.sin(th) * dd;
+          for (var ang = 0; ang < 12; ang++) {
+            var th = ang * Math.PI / 6, ex = p.x + Math.cos(th) * dd, ey = p.y + Math.sin(th) * dd;
             cands.push([Math.cos(th) < -0.1 ? ex - tw : Math.cos(th) > 0.1 ? ex : ex - tw / 2, ey + s * 0.35]);
           }
         }

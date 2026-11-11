@@ -22,7 +22,7 @@
       var bigsize = c.size('big'), y = 0;
       var colw = c.phone ? W : Math.round(W * 0.42);
       if (big) {
-        var bt = c.text(0, bigsize * 0.8, K.fmt(big[ev], f.big || 'number'), { role: 'big', weight: 800, data: { key: big[ek], field: ev, value: big[ev] } });
+        var bt = c.text(0, bigsize * 0.97, K.fmt(big[ev], f.big || 'number'), { role: 'big', weight: 800, data: { key: big[ek], field: ev, value: big[ev] } });
         var cap = c.text(0, bt.y + bt.h + 10 + c.size('label'), c.label('big_caption'), { role: 'label', weight: 600, max: Math.min(colw - 8, 260) });
         y = cap.y + cap.h;
       }

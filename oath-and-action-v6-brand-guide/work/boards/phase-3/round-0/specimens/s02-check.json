@@ -15,8 +15,8 @@
    "ground": "newsprint",
    "page": 390,
    "width": 358,
-   "height": 342,
-   "svg_bytes": 10031
+   "height": 475,
+   "svg_bytes": 9620
   },
   {
    "ground": "charcoal",
@@ -29,16 +29,9 @@
    "ground": "charcoal",
    "page": 390,
    "width": 358,
-   "height": 342,
-   "svg_bytes": 10031
+   "height": 475,
+   "svg_bytes": 9620
   }
  ],
- "faults": [
-  "layout guard: texts overlap: \"Official measure\" and \"Both measures: 13.4% in 2025. \" (newsprint 390)",
-  "layout guard: texts overlap: \"2013\" and \"2021: the expanded child tax c\" (newsprint 390)",
-  "layout guard: texts overlap: \"2017\" and \"2021: the expanded child tax c\" (newsprint 390)",
-  "layout guard: texts overlap: \"Official measure\" and \"Both measures: 13.4% in 2025. \" (charcoal 390)",
-  "layout guard: texts overlap: \"2013\" and \"2021: the expanded child tax c\" (charcoal 390)",
-  "layout guard: texts overlap: \"2017\" and \"2021: the expanded child tax c\" (charcoal 390)"
- ]
+ "faults": []
 }

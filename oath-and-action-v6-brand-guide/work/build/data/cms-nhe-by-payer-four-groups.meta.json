@@ -1,0 +1,56 @@
+{
+ "file": "cms-nhe-by-payer-four-groups.csv",
+ "kind": "derived",
+ "publisher": "Centers for Medicare & Medicaid Services, Office of the Actuary",
+ "title_or_table": "National Health Expenditures by source of funds, folded by the studio into four groups",
+ "table_id": "derived from cms-nhe-by-source-of-funds",
+ "url": [
+  "https://www.cms.gov/files/zip/national-health-expenditures-type-service-source-funds-cy-1960-2024.zip"
+ ],
+ "observation_period": "Calendar years 1960 to 2024",
+ "geography": "United States",
+ "universe_or_base": "All national health expenditures, by who paid, in four groups",
+ "unit": "millions of dollars, nominal; empty where a program did not yet exist (Medicare and Medicaid before 1966)",
+ "date_retrieved": "2026-11-11",
+ "vintage": "NHE release with 2024 data",
+ "qualification": "All other is the total minus private health insurance, Medicare and Medicaid: out of pocket; CHIP; the Departments of Defense and Veterans Affairs; other third party payers and programs; public health activity; and investment. Out of pocket is the largest part of all other, so a note names it",
+ "derived_from": [
+  "cms-nhe-by-source-of-funds.csv"
+ ],
+ "derivation": "Keeps private health insurance, Medicare and Medicaid as published and sums every other payer line into all other, as total minus the three",
+ "columns": {
+  "year": {
+   "type": "year",
+   "description": "calendar year"
+  },
+  "private_health_insurance_millions": {
+   "type": "integer",
+   "description": "private health insurance",
+   "unit": "millions of dollars"
+  },
+  "medicare_millions": {
+   "type": "integer",
+   "description": "Medicare",
+   "unit": "millions of dollars"
+  },
+  "medicaid_millions": {
+   "type": "integer",
+   "description": "Medicaid (Title XIX)",
+   "unit": "millions of dollars"
+  },
+  "all_other_millions": {
+   "type": "integer",
+   "description": "all other payers, computed",
+   "unit": "millions of dollars"
+  },
+  "total_millions": {
+   "type": "integer",
+   "description": "total national health expenditures",
+   "unit": "millions of dollars"
+  }
+ },
+ "printed_source_line": "Source: Centers for Medicare & Medicaid Services, National Health Expenditure Accounts, spending by source of funds, 1960 to 2024, United States. Retrieved November 11, 2026. Nominal dollars; all other payers, out of pocket the largest, folded into one group by Oath & Action.",
+ "ledger_row": "P7-023",
+ "domain": "D09",
+ "states": []
+}

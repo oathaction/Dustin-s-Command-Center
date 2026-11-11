@@ -9,7 +9,7 @@
   K.register_chart({
     form: 'tile-map-shift-arrows', name: 'Tile Grid Map With Shift Arrows', family: 'maps',
     encode: { code: 'code', shift: 'number', from: 'number?', to: 'number?' },
-    labels: ['frame', 'key_title', 'key_steps', 'key_unit', 'frame_label', 'steps', 'steps_labels'],
+    labels: ['frame', 'key_title', 'key_steps', 'key_unit', 'frame_label', 'steps', 'steps_labels', 'nation_label', 'nation_code', 'lists'],
     phone: 'differs',
     draw: function (c) {
       var G = globalThis.OAChartGeo, rows = c.rows, ec = c.field('code'), es = c.field('shift'), ef = c.field('from', false), et = c.field('to', false);
@@ -32,6 +32,12 @@
       var steps = L.steps || [2, 5, 8];
       var shade = function (v) { var a = Math.abs(v); return a >= steps[2] ? 'mag-4' : a >= steps[1] ? 'mag-3' : a >= steps[0] ? 'mag-2' : 'mag-1'; };
       var top = c.phone ? 0 : 0;
+      var nation = rows.filter(function (r) { return !G.tiles[r[ec]] && (r[ec] === 'US' || r[ec] === L.nation_code); })[0];
+      if (nation && L.nation_label && !c.phone) {
+        var ny = 58, nx = pitch;
+        var nt = c.text(nx, ny, String(L.nation_label).replace('{shift}', K.fmt(Math.abs(nation[es]), f.shift || 'number:1')), { role: 'tick', weight: 700 });
+        K.parts.arrow(c, nt.x + nt.w + 10, nt.x + nt.w + 10 + (size - 14) * Math.abs(nation[es]) / max, ny - 4, { data: { key: nation[ec], field: es, value: nation[es] } });
+      }
       rows.forEach(function (r) {
         var t = G.tiles[r[ec]];
         if (!t) return;
@@ -63,6 +69,25 @@
         });
         c.key(['mag-1', 'mag-2', 'mag-3', 'mag-4'].map(function (m) { return { fill: m }; }));
         ky = yy + 22;
+      }
+      if (L.lists) {
+        var states = rows.filter(function (r) { return G.tiles[r[ec]]; }).slice().sort(function (a, b) { return Math.abs(b[es]) - Math.abs(a[es]); });
+        var n = L.lists.n || 4;
+        [['largest', states.slice(0, n)], ['smallest', states.slice(-n).reverse()]].forEach(function (pair) {
+          if (!L.lists[pair[0]]) return;
+          ky += 22;
+          var lx = c.text(0, ky, L.lists[pair[0]], { role: 'eyebrow', weight: 700, fill: 'secondary' });
+          var x = c.phone ? 0 : lx.x + Math.max(lx.w, 120) + 14;
+          if (c.phone) ky += 20;
+          pair[1].forEach(function (r) {
+            var w = c.measure(G.tiles[r[ec]][3] + ' ' + K.fmt(Math.abs(r[es]), f.shift || 'number:1'), 'tick', 600) + 16;
+            if (x + w > W) { x = c.phone ? 0 : lx.x + Math.max(lx.w, 120) + 14; ky += 20; }
+            var nb = c.text(x, ky, G.tiles[r[ec]][3], { role: 'tick', weight: 600 });
+            c.text(nb.x + nb.w + 4, ky, K.fmt(Math.abs(r[es]), f.shift || 'number:1'), { role: 'tick', fill: 'secondary' });
+            x += w;
+          });
+        });
+        ky += 10;
       }
       if (L.frame_label) {
         c.rect(0.5, ky + 6.5, 13, 13, { stroke: 'label', width: c.t('tile-frame'), mark: false });

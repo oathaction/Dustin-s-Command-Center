@@ -50,8 +50,9 @@
         if (i === 0 && L.from_label && L.to_label) {
           var wa = c.measure(L.from_label, 'tick', 600), wb = c.measure(L.to_label, 'tick', 600);
           var apart = Math.abs(a - b) > (wa + wb) / 2 + 6;
-          c.text(a, ry - 14, L.from_label, { role: 'tick', anchor: apart ? 'middle' : (a < b ? 'end' : 'start'), weight: 600 });
-          c.text(b, ry - 14, L.to_label, { role: 'tick', anchor: apart ? 'middle' : (a < b ? 'start' : 'end'), weight: 600 });
+          var yy = c.phone ? ry + 22 : ry - 14;
+          c.text(a, yy, L.from_label, { role: 'tick', anchor: apart ? 'middle' : (a < b ? 'end' : 'start'), weight: 600 });
+          c.text(b, yy, L.to_label, { role: 'tick', anchor: apart ? 'middle' : (a < b ? 'start' : 'end'), weight: 600 });
         }
       });
       c.key([{ fill: 'subject', direct: true }, { fill: 'surface', direct: true }]);

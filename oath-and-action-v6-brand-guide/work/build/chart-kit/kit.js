@@ -18,7 +18,7 @@
   var ROLES = ['subject', 'context', 'secondary', 'baseline', 'gridline', 'label', 'point', 'point-keyline', 'band', 'track', 'light-fill',
     'land', 'party', 'leader', 'chip-fill', 'chip-label', 'surface', 'label-on-subject', 'sequential-outline',
     'seq-1', 'seq-2', 'seq-3', 'seq-4', 'seq-5', 'div-1', 'div-2', 'div-3', 'div-4', 'div-5', 'mag-1', 'mag-2', 'mag-3', 'mag-4',
-    'cat-1', 'cat-2', 'cat-3', 'cat-4', 'none'];
+    'cat-1', 'cat-2', 'cat-3', 'cat-4', 'ghost', 'none'];
   K.ROLES = ROLES;
   var TEXT_ROLES = { tick: 'type-tick', label: 'type-label', note: 'type-note', big: 'type-big', eyebrow: 'type-eyebrow' };
 
@@ -61,7 +61,7 @@
       case 'compact-thousands':
       case 'signed-compact-thousands': {
         var a = Math.abs(v) * 1000, sg = f === 'signed-compact-thousands' ? (v > 0 ? '+' : v < 0 ? MINUS : '') : (v < 0 ? MINUS : '');
-        if (a >= 1e6) return sg + String(Number((a / 1e6).toFixed(a >= 1e7 ? 0 : 1))) + ' million';
+        if (a >= 1e6) return sg + (a / 1e6).toFixed(a >= 1e7 ? 0 : 1) + ' million';
         return sg + group(Math.round(a / 1000) * 1000);
       }
       case 'thousands': return (v < 0 ? MINUS : '') + group(m ? Math.round(Math.abs(v)) * 1000 : Math.round(Math.abs(v) * 1000));
@@ -202,6 +202,16 @@
       }
       return true;
     });
+    var pv0 = spec.table && spec.table.pivot;
+    var after = function () {
+      if (!pv0) return out;
+      var rk = function (r) { return [].concat(pv0.row).map(function (k) { return String(r[k]); }).join('\u0001'); };
+      var keys = [], cols = [], at = {};
+      out.forEach(function (r) { var a = rk(r), b = String(r[pv0.column]); if (keys.indexOf(a) < 0) keys.push(a); if (cols.indexOf(b) < 0) cols.push(b); at[a + '\u0000' + b] = r; });
+      var res = [];
+      keys.forEach(function (a) { cols.forEach(function (b) { if (at[a + '\u0000' + b]) res.push(at[a + '\u0000' + b]); }); });
+      return res;
+    };
     (spec.sort || []).slice().reverse().forEach(function (s) {
       var dir = s.order === 'desc' ? -1 : 1;
       out = out.map(function (r, i) { return [r, i]; }).sort(function (a, b) {
@@ -212,7 +222,7 @@
         return (x < y ? -1 : 1) * dir;
       }).map(function (p) { return p[0]; });
     });
-    return out;
+    return after();
   };
   K.time = function (v) {
     // a date, month or year as a number of years, so one axis serves all three
@@ -353,6 +363,10 @@
     this._push('<path' + attrs(a) + '/>');
     if (box && o.mark !== false) this.mark({ kind: o.kind || 'path', x: box[0], y: box[1], w: box[2], h: box[3], fill: o.fill, stroke: o.stroke, data: o.data || {} });
   };
+  Ctx.prototype.datum = function (x, y, o) {
+    // a record for the checks at a point the drawing already inks (a line's vertex): no element, no bytes
+    this.mark({ kind: 'datum', x: x, y: y, w: 0, h: 0, data: (o && o.data) || {} });
+  };
   Ctx.prototype.circle = function (cx, cy, r, o) {
     o = o || {};
     var a = data_of(o, { cx: r1(cx), cy: r1(cy), r: r2(r), 'class': cls_of(o), 'stroke-width': o.width });
@@ -382,8 +396,12 @@
     var a = data_of(o, { x: r1(x), y: r1(y), 'class': cls.join(' '), 'font-size': size, 'text-anchor': anchor === 'start' ? undefined : anchor });
     var body = lines.length === 1 ? esc(lines[0]) : lines.map(function (ln, i) { return '<tspan x="' + r1(x) + '"' + (i ? ' dy="' + lh + '"' : '') + '>' + esc(ln) + '</tspan>'; }).join('');
     this._push('<text' + attrs(a) + '>' + body + '</text>');
-    var asc = size * 0.77, desc = size * 0.23;
-    var box = { x: x0, y: y - asc, w: w, h: asc + desc + lh * (lines.length - 1), size: size, words: String(words), role: role, overlap_ok: !!o.overlap_ok, id: o.guard_id };
+    // the box the browser gives this text: its line box (ascent 0.969 em, descent 0.241 em, from the metrics) for the edges,
+    // and that box less the half-leading for overlaps, as dataviz_check.js --kit measures a rendered drawing
+    var vm = metrics().vertical[face === 'display' ? 'Inter Tight|800' : 'Inter|400'] || { ascent: 969, descent: 241 };
+    var asc = size * vm.ascent / 1000, desc = size * vm.descent / 1000, half = (asc + desc - size) / 2;
+    var box = { x: x0, y: y - asc + half, w: w, h: asc + desc - 2 * half + lh * (lines.length - 1), size: size, words: String(words), role: role,
+      overlap_ok: !!o.overlap_ok, id: o.guard_id, top: y - asc, bottom: y + desc + lh * (lines.length - 1) };
     this.texts.push(box);
     return box;
   };
@@ -450,11 +468,11 @@
     def.draw(c);
     // the drawing is as tall as its tallest part: the form's height, every text and every mark
     var h = c._h;
-    c.texts.forEach(function (b) { h = Math.max(h, Math.ceil(b.y + b.h + 2)); });
+    c.texts.forEach(function (b) { h = Math.max(h, Math.ceil((b.bottom !== undefined ? b.bottom : b.y + b.h) + 2)); });
     c.marks.forEach(function (m) { h = Math.max(h, Math.ceil(m.y + m.h + 1)); });
     h = Math.max(1, h);
     var guard = K.guard(c, width, h);
-    var title = spec.title ? '<title>' + esc(spec.title) + '</title>' : '';
+    var title = spec.title ? '<title>' + esc(spec.title) + '</title>' : '';   // a table-mode island leaves both out; the figure names the drawing
     var desc = spec.alt ? '<desc>' + esc(spec.alt) + '</desc>' : '';
     var defs = c._defs.length ? '<defs>' + c._defs.join('') + '</defs>' : '';
     var svg = '<svg xmlns="http://www.w3.org/2000/svg" class="oac-svg" viewBox="0 0 ' + width + ' ' + h + '" width="' + width + '" height="' + h + '"' +
@@ -473,7 +491,8 @@
     for (var i = 0; i < tx.length; i++) {
       var a = tx[i];
       if (a.size < K.MIN_TEXT - 1e-6) out.push('text under 13 px (' + a.size + ' px): "' + a.words.slice(0, 40) + '"');
-      if (a.x < -0.5 || a.x + a.w > width + 0.5 || a.y < -0.5 || a.y + a.h > height + 0.5)
+      var top = a.top !== undefined ? a.top : a.y, bot = a.bottom !== undefined ? a.bottom : a.y + a.h;
+      if (a.x < -0.5 || a.x + a.w > width + 0.5 || top < -0.5 || bot > height + 0.5)
         out.push('text outside the artboard: "' + a.words.slice(0, 40) + '" at ' + r1(a.x) + ',' + r1(a.y) + ' (' + r1(a.w) + ' wide; artboard ' + width + ' by ' + height + ')');
       for (var j = i + 1; j < tx.length; j++) {
         var b = tx[j];
@@ -530,6 +549,50 @@
     if (Math.abs(v) < Math.pow(10, -(nd || 0)) / 2) return words.zero || K.fmt(0, 'number:' + (nd || 0));
     return (v > 0 ? words.positive : words.negative) + ' +' + fixed(v, nd || 0);
   };
+  var MONTH_N = {};
+  MONTHS.forEach(function (m, i) { MONTH_N[m] = i + 1; MONTH_N[m.slice(0, 3)] = i + 1; });
+  K.unformat = function (text, col) {
+    // the raw value a printed cell stands for, or undefined when the words cannot say it exactly
+    var t = String(text == null ? '' : text).trim(), f = String(col.format || 'text'), m;
+    if (t === '') return null;
+    if (col.words) {
+      var hits = Object.keys(col.words).filter(function (k) { return col.words[k] === t; });
+      return hits.length === 1 ? hits[0] : undefined;
+    }
+    var lm = /^lead(?::\d+)?$/.exec(f);
+    if (lm) {
+      var w = col.lead || {};
+      if (w.zero && t === w.zero) return '0';
+      var mm = /^(.*) \+([\d,.]+)$/.exec(t);
+      if (!mm) return undefined;
+      var v = parseFloat(mm[2].replace(/,/g, ''));
+      return mm[1] === w.positive ? String(v) : mm[1] === w.negative ? String(-v) : undefined;
+    }
+    var base = f.replace(/:\d+$/, '');
+    if (/^(integer|number|percent|signed|points)$/.test(base)) {
+      var n = t.replace(/[+,%\s]/g, '').replace(MINUS, '-');
+      return /^-?\d+(\.\d+)?$/.test(n) ? n : undefined;
+    }
+    if (base === 'thousands' || base === 'signed-thousands') {
+      var n2 = t.replace(/[+,\s]/g, '').replace(MINUS, '-');
+      return /^-?\d+$/.test(n2) ? String(parseFloat(n2) / 1000) : undefined;
+    }
+    if (base === 'month' && (m = /^([A-Z][a-z]+) (\d{4})$/.exec(t)) && MONTH_N[m[1]]) return m[2] + '-' + String(MONTH_N[m[1]]).padStart(2, '0');
+    if (base === 'date' && (m = /^([A-Z][a-z]+) (\d{1,2}), (\d{4})$/.exec(t)) && MONTH_N[m[1]]) return m[3] + '-' + String(MONTH_N[m[1]]).padStart(2, '0') + '-' + String(m[2]).padStart(2, '0');
+    if (base === 'year' && /^\d{4}$/.test(t)) return t;
+    if (base === 'text') return t;
+    return undefined;
+  };
+  function same_value(a, b, type) {
+    if (a === undefined) return false;
+    if (b === null || b === undefined || b === '') return a === null;
+    if (a === null) return false;
+    if (type === 'number' || type === 'integer' || type === 'year') return Math.abs(parseFloat(a) - Number(b)) < 1e-9;
+    return String(a) === String(b);
+  }
+  function visible_text(h) {
+    return String(h).replace(/<[^>]*>/g, '').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&');
+  }
   K.cell_text = function (col, r) {
     var v = r[col.field];
     var lm = /^lead(?::(\d+))?$/.exec(String(col.format || ''));
@@ -538,6 +601,7 @@
     return K.fmt(v, col.format);
   };
   K.table_html = function (spec, rows, opts) {
+    if (opts && opts.lean) return lean_table(spec, rows, opts);
     var tb = spec.table || {}, ids = (spec.v7 && spec.v7.ids) || [];
     var cap = tb.caption ? '<caption>' + K.chips(tb.caption, ids) + '</caption>' : '';
     var t = K.table_rows(spec, rows), head = '', body = '';
@@ -574,6 +638,89 @@
     }
     return '<table class="oac-table">' + cap + '<thead>' + head + '</thead><tbody>' + body + '</tbody></table>';
   };
+  function lean_table(spec, rows, opts) {
+    var tb = spec.table || {}, ids = (spec.v7 && spec.v7.ids) || [], types = opts.types || {};
+    var cap = tb.caption ? '<caption>' + K.chips(tb.caption, ids) + '</caption>' : '';
+    var t = K.table_rows(spec, rows), head = '', body = '';
+    var num_col = function (col) { return /^(integer|number|percent|signed|points|thousands|signed-thousands|lead|compact-thousands|signed-compact-thousands)/.test(String(col.format || '')); };
+    var dv = function (raw, html, col) {
+      var back = K.unformat(visible_text(html), col);
+      return same_value(back, raw, types[col.field] && types[col.field].type) ? '' : ' data-v="' + esc(raw === null || raw === undefined ? '' : raw) + '"';
+    };
+    if (t.pivot) {
+      var pv = tb.pivot, rc = (tb.columns || [])[0] || { label: pv.row, format: 'text' }, rows_by = [].concat(pv.row);
+      head = '<tr><th scope="col" class="t">' + esc(rc.label) + '</th>' + t.cols.map(function (cn) {
+        var lab = (pv.labels && pv.labels[cn]) || cn, h = K.chips(lab, ids);
+        return '<th scope="col"' + (visible_text(h) === cn ? '' : ' data-v="' + esc(cn) + '"') + '>' + h + '</th>';
+      }).join('') + '</tr>';
+      var vcol = { field: pv.value, format: pv.format };
+      body = t.keys.map(function (k) {
+        var first = null;
+        var cells = t.cols.map(function (cn) {
+          var r = t.cell[k + '\u0000' + cn];
+          if (r && !first) first = r;
+          if (!r) return '<td data-x></td>';
+          var h = esc(K.fmt(r[pv.value], pv.format));
+          return '<td' + dv(r[pv.value], h, vcol) + '>' + h + '</td>';
+        }).join('');
+        var head_txt = first ? K.fmt(first[rows_by[0]], rc.format) : k;
+        if (first && rows_by.length > 1) rows_by.slice(1).forEach(function (k2) { var w2 = (pv.row_words || {})[String(first[k2])]; if (w2) head_txt += ', ' + w2; });
+        var keyv = rows_by.length > 1 ? JSON.stringify(rows_by.map(function (k2) { return first ? first[k2] : null; })) : null;
+        var hv = keyv !== null ? ' data-v="' + esc(keyv) + '"' : dv(first ? first[rows_by[0]] : k, esc(head_txt), { field: rows_by[0], format: rc.format });
+        return '<tr><th scope="row" class="t"' + hv + '>' + esc(head_txt) + '</th>' + cells + '</tr>';
+      }).join('');
+    } else {
+      var cols = tb.columns || [];
+      head = '<tr>' + cols.map(function (col) { return '<th scope="col"' + (num_col(col) ? '' : ' class="t"') + '>' + K.chips(col.label, ids) + '</th>'; }).join('') + '</tr>';
+      body = t.rows.map(function (r) {
+        return '<tr>' + cols.map(function (col) {
+          var h = K.chips(K.cell_text(col, r), ids), tag = col.row_header ? 'th' : 'td';
+          return '<' + tag + (col.row_header ? ' scope="row"' : '') + (num_col(col) ? '' : ' class="t"') + dv(r[col.field], h, col) + '>' + h + '</' + tag + '>';
+        }).join('') + '</tr>';
+      }).join('');
+    }
+    return '<table class="oac-table" data-oa-lean>' + cap + '<thead>' + head + '</thead><tbody>' + body + '</tbody></table>';
+  }
+  K.rows_from_table = function (table, spec, isl) {
+    // the rows a chart draws, read back from its own table equivalent and the island's extra columns (method load-table)
+    var tb = spec.table || {}, out = [], cell_raw = function (el, col) {
+      return el.hasAttribute('data-v') ? el.getAttribute('data-v') : K.unformat(el.textContent, col);
+    };
+    if (tb.pivot) {
+      var pv = tb.pivot, rc = (tb.columns || [])[0] || { format: 'text' }, rows_by = [].concat(pv.row);
+      var heads = Array.prototype.slice.call(table.querySelectorAll('thead th')).slice(1).map(function (th) {
+        if (th.hasAttribute('data-v')) return th.getAttribute('data-v');
+        var lab = th.textContent, inv = null;
+        Object.keys(pv.labels || {}).forEach(function (k) { if (pv.labels[k] === lab) inv = k; });
+        return inv !== null ? inv : lab;
+      });
+      Array.prototype.forEach.call(table.querySelectorAll('tbody tr'), function (tr) {
+        var th = tr.querySelector('th'), keyv;
+        if (rows_by.length > 1) keyv = JSON.parse(th.getAttribute('data-v'));
+        else keyv = [cell_raw(th, { field: rows_by[0], format: rc.format })];
+        Array.prototype.forEach.call(tr.querySelectorAll('td'), function (td, j) {
+          if (td.hasAttribute('data-x')) return;
+          var o = {};
+          rows_by.forEach(function (k, i) { o[k] = keyv[i] === null ? null : String(keyv[i]); });
+          o[pv.column] = heads[j];
+          o[pv.value] = cell_raw(td, { field: pv.value, format: pv.format });
+          out.push(o);
+        });
+      });
+    } else {
+      var cols = tb.columns || [];
+      Array.prototype.forEach.call(table.querySelectorAll('tbody tr'), function (tr) {
+        var o = {}, cells = tr.children;
+        cols.forEach(function (col, i) { o[col.field] = cell_raw(cells[i], col); });
+        out.push(o);
+      });
+    }
+    if (isl.csv) {
+      var extra = K.parse_csv(isl.csv);
+      out.forEach(function (o, i) { var e = extra[i] || {}; for (var k in e) o[k] = e[k]; });
+    }
+    return K.type_rows(out, isl.columns);
+  };
   K.figure = function (spec, rows, opts) {
     // the whole figure as HTML; opts.svg puts a drawing inside, opts.art_attrs adds attributes to the drawing's box
     opts = opts || {};
@@ -606,7 +753,7 @@
       spec.chart_notes.map(function (n) { return '<li>' + K.chips(n, ids) + '</li>'; }).join('') + '</ul>' : '';
     var region = word(opts, 'table_region').replace('{caption}', (spec.table && spec.table.caption) || spec.id);
     p.push('<details class="oac-eq" data-role="equivalent"><summary>' + esc(word(opts, 'table_summary')) + '<span class="oac-vh"> ' + esc(spec.id) + '</span></summary>' +
-      '<div class="oac-eq-b">' + cn + '<div class="oac-tw" role="region" tabindex="0" aria-label="' + esc(region) + '">' + K.table_html(spec, rows, opts) + '</div></div></details>');
+      '<div class="oac-eq-b">' + cn + '<div class="oac-tw" role="region" tabindex="0" aria-label="' + esc(region) + '">' + K.table_html(spec, rows, { lean: opts.lean_table, types: opts.types }) + '</div></div></details>');
     var fail = spec.failure ? ' data-oa-failure="' + esc(spec.failure.rule || '') + '"' : '';
     var ab = spec.artboard && spec.artboard !== 'reading' ? ' data-oa-artboard="' + esc(spec.artboard) + '"' : '';
     return '<figure class="oac-fig" id="' + id + '" data-oa-chart-id="' + esc(spec.id) + '" data-form="' + esc(spec.form) + '" data-evidence="' + esc(spec.evidence) + '"' + ab + fail + '>' + p.join('') + '</figure>';
@@ -647,7 +794,8 @@
       if (!isl || f.getAttribute('data-oa-drawn')) continue;
       try {
         var d = JSON.parse(isl.textContent);
-        var rows = d.csv !== undefined ? K.type_rows(K.parse_csv(d.csv), d.columns) : K.type_rows(d.rows || [], d.columns);
+        var rows = d.mode === 'table' ? K.rows_from_table(f.querySelector('table.oac-table'), d.spec, d)
+          : d.csv !== undefined ? K.type_rows(K.parse_csv(d.csv), d.columns) : K.type_rows(d.rows || [], d.columns);
         K.mount(f, d.spec, rows, { words: d.words });
       } catch (e) {
         f.setAttribute('data-oa-error', String(e && e.message || e));

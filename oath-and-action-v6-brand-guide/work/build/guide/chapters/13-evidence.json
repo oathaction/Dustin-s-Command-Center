@@ -262,7 +262,7 @@
    "id": "13.5",
    "title": "Keep grade, effect size, uncertainty and delay apart, each with its own mark.",
    "rule": [
-    "Four properties of a claim each keep their own mark and their own words. The evidence grade, how strong the evidence is, takes the line of Rule 13.4 or the grade word. A reform’s effect size prints as the atlas’s ordinal code, a rank of small, moderate or large with no measured amount, such as +M for moderate positive, in one row for each outcome family. How sure the atlas is of that size, the uncertainty, prints in its own words or as a drawn range. Delay, the time an effect takes to arrive, draws as one, two or three ticks for under 2 years, 2 to 10 years and over 10 years, with the words beside them.",
+    "Four properties of a claim each keep their own mark and their own words. The evidence grade, how strong the evidence is, takes the line of Rule 13.4 or the grade word. A reform’s effect size prints as the atlas’s ordinal code, a rank of small, moderate or large with no measured amount, such as +M for moderate positive. It takes one row for each outcome family, one of the four groups of results the atlas judges reforms by, such as Quality of democracy. How sure the atlas is of that size, the uncertainty, prints in the atlas’s own words; on a chart of survey figures the uncertainty is the margin of error, the range around a figure that sampling allows, drawn as an interval. Delay, the time an effect takes to arrive, draws as one, two or three ticks for under 2 years, 2 to 10 years and over 10 years, with the words beside them.",
     "A grade never borrows a line’s width, a mark’s darkness or its size, and the four outcome families stay apart with no total. Our systems atlas gives the reason: “The four outcome families use different units. A reform can improve one while imposing a cost on another, and the evidence behind each estimate differs in quality.”"
    ],
    "tokens": [
@@ -297,7 +297,7 @@
     },
     {
      "label": "Uncertainty",
-     "value": "The atlas’s words, quoted, or a range drawn as an interval"
+     "value": "The atlas’s words, quoted; for a survey figure, its margin of error drawn as an interval"
     },
     {
      "label": "Delay",

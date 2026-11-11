@@ -80,11 +80,12 @@
 .oac-f-div-5 { fill: var(--oa-chart-color-diverging-fill-step5); }
 .oac-f-mag-1 { fill: var(--oa-chart-color-magnitude-fill-step1); } .oac-f-mag-2 { fill: var(--oa-chart-color-magnitude-fill-step2); }
 .oac-f-mag-3 { fill: var(--oa-chart-color-magnitude-fill-step3); } .oac-f-mag-4 { fill: var(--oa-chart-color-magnitude-fill-step4); }
-/* The categorical set (DR-234): Charcoal, Prussian, Verdigris, Stone. Until the palette tokens land, each falls back to an existing chart token. */
-.oac-f-cat-1 { fill: var(--oa-chart-color-categorical-1, var(--oa-chart-color-subject)); } .oac-s-cat-1 { stroke: var(--oa-chart-color-categorical-1, var(--oa-chart-color-subject)); fill: none; }
-.oac-f-cat-2 { fill: var(--oa-chart-color-categorical-2, var(--oa-chart-color-sequential-fill-step5)); } .oac-s-cat-2 { stroke: var(--oa-chart-color-categorical-2, var(--oa-chart-color-sequential-fill-step5)); fill: none; }
-.oac-f-cat-3 { fill: var(--oa-chart-color-categorical-3, var(--oa-chart-color-sequential-fill-step3)); } .oac-s-cat-3 { stroke: var(--oa-chart-color-categorical-3, var(--oa-chart-color-sequential-fill-step3)); fill: none; }
-.oac-f-cat-4 { fill: var(--oa-chart-color-categorical-4, var(--oa-chart-color-context)); } .oac-s-cat-4 { stroke: var(--oa-chart-color-categorical-4, var(--oa-chart-color-context)); fill: none; }
+/* The categorical set (DR-234): Charcoal, Prussian, Verdigris, Stone, from release 6.0.0-gate3.1 (proposed until board 1) */
+.oac-f-cat-1 { fill: var(--oa-chart-color-categorical-fill-group1); } .oac-s-cat-1 { stroke: var(--oa-chart-color-categorical-fill-group1); fill: none; }
+.oac-f-cat-2 { fill: var(--oa-chart-color-categorical-fill-group2); } .oac-s-cat-2 { stroke: var(--oa-chart-color-categorical-fill-group2); fill: none; }
+.oac-f-cat-3 { fill: var(--oa-chart-color-categorical-fill-group3); } .oac-s-cat-3 { stroke: var(--oa-chart-color-categorical-fill-group3); fill: none; }
+.oac-f-cat-4 { fill: var(--oa-chart-color-categorical-fill-group4); } .oac-s-cat-4 { stroke: var(--oa-chart-color-categorical-fill-group4); fill: none; }
+.oac-s-ghost { stroke: var(--oa-chart-color-ghost); fill: none; }
 .oac-f-none { fill: none; }
 .oac-svg line, .oac-svg path, .oac-svg polyline { vector-effect: non-scaling-stroke; }
 
@@ -109,3 +110,7 @@
   .oac-art[data-oa-lean] > svg.oac-desk { display: none; }
   .oac-art[data-oa-lean] > svg.oac-phone { display: block; }
 }
+
+/* A lean table (method load-table): numbers right-aligned by default, text cells marked .t */
+.oac-table[data-oa-lean] td { text-align: right; font-variant-numeric: tabular-nums; }
+.oac-table[data-oa-lean] .t { text-align: left; }

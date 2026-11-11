@@ -19,6 +19,13 @@
 // On the first view it also clicks the first link into another view and goes back.
 // Writes <concept dir>/<page stem>-Check-Results.json and captures to <concept dir>/captures/.
 // Exit code 1 when any check fails.
+//
+// Phase 3 (round 0): --kit checks every chart kit figure (figure.oac-fig) on any page, such as a guide build or a kit page,
+// as the browser draws it, so the kit's own layout guard, which measures text with its metrics table, is proven against
+// real rendering: at 1440 and 390 px, every SVG text at 13 px or more at its rendered scale, inside its drawing and clear of
+// every other text; no mark cut by the drawing's edge; no party mark ([data-party]) painted Pillar Red or Prussian; one
+// working red per drawing; no em dash and no copy of the retired disclosure in the figure (DR-100). --kit-self-test plants
+// each fault in a small page and must catch every one.
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
@@ -29,11 +36,11 @@ const RED = [230, 57, 70];
 const PRUSSIAN = [31, 45, 90];
 const ALLOWED_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com'];
 
-const file = path.resolve(process.argv[2] || '');
+const file = path.resolve(process.argv[2] && !process.argv[2].startsWith('--') ? process.argv[2] : '');
 const captures = !process.argv.includes('--no-captures');
 const BOARD = process.argv.includes('--board');   // a review board: one view, no close-up navigation to test
 const MID = process.argv.includes('--mid');       // also check 1024 and 768 px (D2-126)
-if (!fs.existsSync(file)) { console.error('usage: node dataviz_check.js <concept.html>'); process.exit(2); }
+if (!process.argv.includes('--kit-self-test') && !fs.existsSync(file)) { console.error('usage: node dataviz_check.js <concept.html> [--kit] | --kit-self-test'); process.exit(2); }
 const dir = path.dirname(file);
 const stem = path.basename(file, '.html');
 const capDir = path.join(dir, 'captures');
@@ -248,7 +255,114 @@ async function focusAudit(page) {
   return results;
 }
 
+// ---------------------------------------------------------------------------------------------------------------- Phase 3
+const KIT_MODE = process.argv.includes('--kit') || process.argv.includes('--kit-self-test');
+async function kitAudit(page) {
+  return page.evaluate(({ RED, PRUSSIAN }) => {
+    const rgb = (s) => { const m = /rgba?\((\d+),\s*(\d+),\s*(\d+)/.exec(s || ''); return m ? [+m[1], +m[2], +m[3]] : null; };
+    const same = (a, b) => a && b && Math.abs(a[0] - b[0]) < 3 && Math.abs(a[1] - b[1]) < 3 && Math.abs(a[2] - b[2]) < 3;
+    const out = [];
+    document.querySelectorAll('figure.oac-fig').forEach((fig) => {
+      const id = fig.id || fig.getAttribute('data-oa-chart-id');
+      const f = [];
+      const svg = fig.querySelector('svg.oac-svg');
+      const txt = fig.textContent;
+      if (/\u2014/.test(txt)) f.push('an em dash in the figure');
+      if (/Yes on 3|Veterans for All Voters|Ranked Choice Melrose/.test(txt)) f.push('the retired disclosure in the figure (DR-100)');
+      if (!svg) { out.push({ id, f: f.concat(fig.getAttribute('data-oa-error') ? ['drawing error: ' + fig.getAttribute('data-oa-error')] : ['no drawing']) }); return; }
+      const sb = svg.getBoundingClientRect(), scale = sb.width / (+svg.getAttribute('width') || sb.width);
+      const boxes = [];
+      svg.querySelectorAll('text').forEach((t) => {
+        const r = t.getBoundingClientRect();
+        if (!r.width) return;
+        const size = parseFloat(getComputedStyle(t).fontSize) * scale;
+        if (size < 12.99) f.push(`text "${t.textContent.slice(0, 30)}" at ${size.toFixed(1)} px`);
+        if (r.left < sb.left - 1 || r.right > sb.right + 1 || r.top < sb.top - 1 || r.bottom > sb.bottom + 1) f.push(`text "${t.textContent.slice(0, 30)}" outside its drawing`);
+        // the glyphs' own box: the line box less the leading, so two lines set tight do not count as touching
+        const lines = Math.max(1, t.querySelectorAll('tspan').length);
+        const pad = (r.height / lines - size) / 2;
+        boxes.push({ s: t.textContent.slice(0, 30), l: r.left, r: r.right, t: r.top + Math.max(0, pad), b: r.bottom - Math.max(0, pad) });
+      });
+      for (let i = 0; i < boxes.length; i++) for (let j = i + 1; j < boxes.length; j++) {
+        const a = boxes[i], b = boxes[j];
+        if (a.l + 1 < b.r && b.l + 1 < a.r && a.t + 1 < b.b && b.t + 1 < a.b) f.push(`texts overlap: "${a.s}" and "${b.s}"`);
+      }
+      let reds = 0;
+      svg.querySelectorAll('rect, circle, path, polygon, line').forEach((m) => {
+        const cs = getComputedStyle(m), fill = rgb(cs.fill), stroke = rgb(cs.stroke);
+        const r = m.getBoundingClientRect();
+        if (r.width && (r.left < sb.left - 1.5 || r.right > sb.right + 1.5 || r.top < sb.top - 1.5 || r.bottom > sb.bottom + 1.5)) f.push(`a ${m.tagName} cut by the drawing's edge`);
+        if (same(fill, RED) || same(stroke, RED)) reds++;
+        if (m.closest('[data-party]') || m.hasAttribute('data-party')) {
+          if (same(fill, RED) || same(fill, PRUSSIAN) || same(stroke, RED) || same(stroke, PRUSSIAN)) f.push('a party mark in Pillar Red or Prussian (DR-48)');
+        }
+      });
+      if (reds > 1) f.push(`${reds} working-red marks in one drawing (Rule 05.3)`);
+      out.push({ id, f, texts: boxes.length });
+    });
+    return out;
+  }, { RED, PRUSSIAN });
+}
+async function kitMain(target, widths) {
+  const browser = await chromium.launch();
+  const report = { page: target, checked: new Date().toISOString(), widths, figures: 0, failures: [] };
+  for (const width of widths) {
+    const ctx = await browser.newContext({ viewport: { width, height: 900 } });
+    const page = await ctx.newPage();
+    await page.goto('file://' + target, { waitUntil: 'load', timeout: 120000 });
+    await page.evaluate(() => document.fonts.ready);
+    await page.waitForFunction(() => Array.from(document.querySelectorAll('figure.oac-fig')).every((f) => f.getAttribute('data-oa-drawn') || f.getAttribute('data-oa-error') || f.querySelector('svg.oac-svg')), null, { timeout: 60000 });
+    const res = await kitAudit(page);
+    report.figures = Math.max(report.figures, res.length);
+    res.forEach((r) => r.f.forEach((x) => report.failures.push(`${width}: ${r.id}: ${x}`)));
+    await ctx.close();
+  }
+  await browser.close();
+  return report;
+}
+async function kitSelfTest() {
+  // one clean figure and one figure for each planted fault, drawn as the kit draws (static SVG, no script needed)
+  const fig = (id, body, extra) => `<figure class="oac-fig" id="${id}" data-oa-drawn="300"><p>Title.${extra || ''}</p><div data-oa-art><svg class="oac-svg" width="300" height="100" viewBox="0 0 300 100" style="display:block">${body}</svg></div></figure>`;
+  const T = (x, y, s, w) => `<text x="${x}" y="${y}" font-size="${s || 15}" font-family="Inter, Arial">${w || 'Label'}</text>`;
+  const cases = [
+    ['clean', fig('clean', T(10, 30) + '<rect x="10" y="50" width="40" height="20" fill="#121212"/>'), null],
+    ['text under 13 px', fig('small', T(10, 30, 11)), 'px'],
+    ['text outside its drawing', fig('out', T(270, 30, 15, 'Outside the edge')), 'outside its drawing'],
+    ['two texts overlapping', fig('ovl', T(10, 30, 15, 'First label') + T(20, 34, 15, 'Second label')), 'overlap'],
+    ['a mark cut by the edge', fig('cut', '<rect x="280" y="10" width="40" height="20" fill="#121212"/>'), 'cut'],
+    ['a party mark in red', fig('party', '<rect data-party="Republican" x="10" y="10" width="40" height="20" fill="#E63946"/>'), 'party'],
+    ['two working reds', fig('reds', '<circle cx="20" cy="20" r="5" fill="#E63946"/><circle cx="60" cy="20" r="5" fill="#E63946"/>'), 'working-red'],
+    ['an em dash', fig('dash', T(10, 30), ' One \u2014 two.'), 'em dash'],
+    ['the retired disclosure', fig('disc', T(10, 30), ' The editor works with the Yes on 3 campaign.'), 'disclosure'],
+  ];
+  const tmp = path.join(require('os').tmpdir(), `oa-kit-self-test-${process.pid}.html`);
+  fs.writeFileSync(tmp, `<!doctype html><html><head><meta charset="utf-8"></head><body style="margin:20px">${cases.map((c) => c[1]).join('')}</body></html>`);
+  const rep = await kitMain(tmp, [1440]);
+  fs.unlinkSync(tmp);
+  let bad = 0;
+  for (const [name, , want] of cases) {
+    const id = /id="([^"]+)"/.exec(cases.find((c) => c[0] === name)[1])[1];
+    const got = rep.failures.filter((x) => x.includes(`: ${id}: `));
+    const ok = want === null ? got.length === 0 : got.some((x) => x.includes(want));
+    console.log(`${ok ? (want ? 'caught' : 'pass') : 'MISSED'} ${name}${ok ? '' : ': ' + JSON.stringify(got)}`);
+    bad += !ok;
+  }
+  console.log(bad ? `dataviz_check --kit self-test: ${bad} missed` : 'dataviz_check --kit self-test: every planted fault caught');
+  return bad;
+}
+
 (async () => {
+  if (process.argv.includes('--kit-self-test')) process.exit(await kitSelfTest() ? 1 : 0);
+  if (KIT_MODE) {
+    const rep = await kitMain(file, [1440, 390]);
+    rep.pass = rep.failures.length === 0;
+    const outPath = path.join(dir, `${stem}-Kit-Check-Results.json`);
+    fs.writeFileSync(outPath, JSON.stringify(rep, null, 1));
+    console.log(`${rep.pass ? 'PASS' : 'FAIL'} dataviz_check --kit ${path.relative(ROOT, file)}: ${rep.figures} figures at ${rep.widths.join(' and ')} px, ${rep.failures.length} failures`);
+    rep.failures.slice(0, 40).forEach((f) => console.log('  - ' + f));
+    console.log('  results: ' + outPath);
+    process.exit(rep.pass ? 0 : 1);
+  }
   const browser = await chromium.launch();
   const html = fs.readFileSync(file, 'utf8');
   const meta = html.match(/<meta\s+name="chart-views"\s+content="([^"]+)"/) || html.match(/<meta\s+name="atlas-views"\s+content="([^"]+)"/);

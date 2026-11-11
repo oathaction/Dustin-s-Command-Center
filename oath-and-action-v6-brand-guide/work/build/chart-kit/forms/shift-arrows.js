@@ -19,7 +19,7 @@
   K.register_chart({
     form: 'shift-arrows', name: 'Shift Arrows', family: 'shift-and-swing',
     encode: { key: 'code', label: 'text', from: 'number', to: 'number', shift: 'number', scope: 'category?' },
-    labels: ['left', 'right', 'center', 'apart_value', 'tag', 'domain', 'skip', 'phone_value', 'lead', 'axis_unit'],
+    labels: ['left', 'right', 'center', 'apart_value', 'tag', 'domain', 'skip', 'phone_value', 'lead', 'axis_unit', 'how', 'side_note'],
     phone: 'differs',
     draw: function (c) {
       var rows = c.rows, ek = c.field('key'), el = c.field('label'), ef = c.field('from'), et = c.field('to'), esh = c.field('shift'), esc = c.field('scope', false);
@@ -75,7 +75,7 @@
       var row = function (r, yy) {
         var a = xs2(r[ef]), b = xs2(r[et]);
         arrow(c, a, b, yy, { data: { key: r[ek], field: esh, value: r[esh] } });
-        c.circle(a, yy, 0.01, { fill: 'subject', data: { key: r[ek], field: ef, value: r[ef] } });
+        c.datum(a, yy, { data: { key: r[ek], field: ef, value: r[ef] } });
         var right = r[et] >= 0, val = K.fmt(Math.abs(r[esh]), f.shift || 'number:1');
         var tx = right ? Math.max(a, b) + 8 : Math.min(a, b) - 8;
         var lab = right ? val + ' ' + r[el] : r[el] + ' ' + val;
@@ -91,8 +91,31 @@
       };
       apart.forEach(function (r) { row(r, y); y += pitch; });
       if (apart.length) { c.line(0, y - 6, W, y - 6, { stroke: 'gridline', width: c.t('line-hairline'), mark: false }); y += 10; }
-      var ztop = y - 12;
-      rest.forEach(function (r) { row(r, y); y += pitch; });
+      var ztop = y - 12, firstRow = y, rowY = {};
+      rest.forEach(function (r) { rowY[r[ek]] = y; row(r, y); y += pitch; });
+      // the reading aid in the empty upper right (E19): a sample arrow at the chart's own scale, its years and its words
+      var hw = L.how;
+      if (hw) {
+        var hx = xs2(0) + 22, hwid = W - hx - 8, hy = firstRow;
+        if (hw.title) { c.text(hx, hy + c.size('tick'), hw.title, { role: 'eyebrow', weight: 700, fill: 'secondary' }); hy += c.size('tick') + 14; }
+        if (hw.sample) {
+          var sp = hw.sample, a0 = hx + 4, a1 = hx + 4 + (xs2(sp.to) - xs2(sp.from));
+          arrow(c, a0, a1, hy + 8, { data: {} });
+          c.marks = c.marks.filter(function (m) { return m.kind !== 'arrow' || (m.data && m.data.key); });
+          if (sp.value) c.text(a1 + 8, hy + 8 + c.size('label') * 0.35, sp.value, { role: 'label' });
+          if (sp.from_label) c.text(a0, hy + 30, sp.from_label, { role: 'tick' });
+          if (sp.to_label) c.text(a1, hy + 30, sp.to_label, { role: 'tick', anchor: 'middle' });
+          hy += 46;
+        }
+        [].concat(hw.text || []).forEach(function (t) { var b = c.text(hx, hy + c.size('tick'), t, { role: 'tick', max: hwid }); hy = b.y + b.h + 8; });
+      }
+      // a side note left of the center line, beside the row it names (E19)
+      var sn = L.side_note;
+      if (sn && rowY[sn.near] !== undefined) {
+        var sx1 = xs2(0) - 24, swid = Math.min(260, sx1 - 8), sx0 = sx1 - swid, sy = rowY[sn.near] + c.size('tick') * 0.35;
+        if (sn.title) { var st = c.text(sx0, sy, sn.title, { role: 'tick', weight: 700, max: swid }); sy = st.y + st.h + 4 + c.size('tick') * 0.77; }
+        [].concat(sn.text || []).forEach(function (t) { var b = c.text(sx0, sy, t, { role: 'tick', fill: 'secondary', max: swid }); sy = b.y + b.h + 6 + c.size('tick') * 0.77; });
+      }
       c.line(xs2(0), ztop, xs2(0), y - pitch + 10, { stroke: 'baseline', width: c.t('line-baseline'), mark: false });
       y += 8;
       ticks.forEach(function (t, i) {

@@ -39,6 +39,7 @@
       lanes.forEach(function (ln) { lw = Math.max(lw, c.measure(ln.label, 'label', 700)); });
       var x0 = Math.min(Math.ceil(lw + 30), 120), x1 = W - 8, xs = K.scale.linear([lo, hi], [x0, x1]);
       var top = (L.bands || []).some(function (b) { return b.note; }) ? 42 : 26, y = top;
+      var start_i = c._els.length;
       // bands
       var bands = L.bands || [];
       var laneTops = [];
@@ -81,19 +82,19 @@
         c.line(x0, base, x1, base, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
         y = base + 26;
       });
+      // the bands sit under every lane: drawn now, then moved to the start of the drawing so the events paint over them
+      var n0 = c._els.length;
       bands.forEach(function (b) {
         var a = xs(b.from), z = xs(b.to + 1);
         c.rect(a, top - 6, z - a, y - top - 14, { fill: 'band', mark: false });
-        if (b.label) { var bw = c.measure(b.label, 'tick', 700); c.text(Math.min(z - 4, W), top - 10 - (b.note ? 16 : 0), b.label, { role: 'tick', weight: 700, anchor: 'end' }); void bw; }
+      });
+      var under = c._els.splice(n0);
+      c._els.splice.apply(c._els, [start_i, 0].concat(under));
+      bands.forEach(function (b) {
+        var z = xs(b.to + 1);
+        if (b.label) c.text(Math.min(z - 4, W), top - 10 - (b.note ? 16 : 0), b.label, { role: 'tick', weight: 700, anchor: 'end' });
         if (b.note) c.text(Math.min(z - 4, W), top - 10, b.note, { role: 'tick', fill: 'secondary', anchor: 'end' });
       });
-      // bands draw under the lanes: move them to the front of the element list
-      if (bands.length) {
-        var n = bands.length * 1;
-        var els = c._els, tail = els.splice(els.length - (bands.length + bands.filter(function (b) { return b.label; }).length));
-        c._els = tail.filter(function (e) { return e.indexOf('<rect') === 0; }).concat(els, tail.filter(function (e) { return e.indexOf('<rect') !== 0; }));
-        void n;
-      }
       var ay = y - 4;
       (L.axis_years || K.ticks(lo, hi, 6)).forEach(function (yr) {
         if (yr < lo || yr > hi) return;
