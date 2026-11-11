@@ -430,6 +430,8 @@ AX_CSS = minify("""
 .ax-rmx{top:50%;margin-top:-10px;left:auto;right:-28px}
 @container (max-width:24rem){.ax-blx{top:50%;bottom:auto;margin-top:-10px;left:-28px}
 .ax-brx,.ax-trx{top:50%;bottom:auto;margin-top:-10px;right:-28px}.ax-rmx{top:-24px;margin-top:0;right:-2px}}
+.ax-try{left:auto;right:-2px}
+@container (max-width:36rem){.ax-try{top:50%;margin-top:-10px;right:-28px}}
 .ax-in{top:6px;left:6px}.ax-inr{top:6px;left:auto;right:6px}.ax-l{top:2px;left:-28px}.ax-up{top:-24px;left:0}.ax-dn{top:auto;bottom:-24px;left:0}
 .ax-st .ax-input{display:flex;align-items:center}.ax-nw{white-space:nowrap}.ax-lup{top:2px;left:-28px}
 @container (min-width:34rem){.ax-lup{top:-22px;left:0}}
@@ -532,18 +534,19 @@ def p02():
     k = qa(r, 'oa-toggle-k')[1]
     hs, hc, el = qa(chips, 'oa-toggle--chip')[:3]
     only(r, k, chips)
-    drop(qa(chips, 'oa-toggle--chip')[3])
+    drop(*qa(chips, 'oa-toggle--chip')[2:])
     bracket(hs, 1)
     pin(hs, 2)
     pin(hs, 3, 'tr')
-    pin(hc, 4, 'blx')
-    pin(hc, 5, 'brx')
+    pin(hc, 4, 'lm')
+    pin(hc, 5, 'rm')
     key = [(1, 'Height', '44 px tall and at least 44 px wide'),
            (2, 'On: check and bold word', 'The selected check, 24 px, before the word, and the word in bold'),
            (3, 'On: 2 px edge', 'In the strong border color; the fill stays the ground'),
            (4, 'Off: word', 'The same word at 600, the weight every control’s word takes, with no check'),
            (5, 'Off: 1 px edge', 'The chip’s edge when it is off')]
-    return ['toggle'], r, key, 'a chip, on and off', '', True, '.oa-toggle-k{margin-bottom:28px}'
+    return ['toggle'], r, key, 'a chip, on and off', 'The chip that is on stands above one that is off.', True, (
+        '.oa-toggle-k{margin-bottom:28px}.oa-toggle-chips{display:flex;flex-direction:column;align-items:flex-start;gap:16px}')
 
 
 def p03():
@@ -555,7 +558,7 @@ def p03():
     bracket(items[0], 2)
     pin(q(items[0], 'oa-choice-face'), 3)
     pin(q(items[0], 'oa-choice-face'), 4, 'tr')
-    pin(q(items[1], 'oa-choice-face'), 5, 'trx')
+    pin(q(items[1], 'oa-choice-face'), 5, 'try')
     pin(q(items[2], 'oa-choice-face'), 6, 'tr')
     pin(why, 7)
     key = [(1, 'Legend', 'Names the group, and a screen reader says it on entering'),
@@ -565,7 +568,9 @@ def p03():
            (5, 'Segment', 'A choice not taken: its word inside a 1 px edge'),
            (6, 'Waiting', 'A choice that cannot be taken yet: a dashed edge and the disabled color'),
            (7, 'Reason line', 'Says why that choice waits')]
-    return ['choice'], r, key, 'a choice of one of a few', '', False, '.oa-choice-legend{margin-bottom:28px}'
+    return ['choice'], r, key, 'a choice of one of a few', '', False, (
+        '.oa-choice-legend{margin-bottom:28px}'
+        '@container (max-width:36rem){.oa-choice-row{display:flex;flex-direction:column;align-items:flex-start}}')
 
 
 def p04():
@@ -678,7 +683,7 @@ def p07():
            (3, 'Link', 'A place to go, with its words'),
            (4, 'Height', 'Rows 44 px tall in a list a thumb uses'),
            (5, 'Current place', 'The selected band, a 4 px bar drawn as a border, and bold words')]
-    return ['location'], r, key, 'location lists', '', False, ''
+    return ['location'], r, key, 'location lists', '', False, '.oa-location-k{margin-bottom:28px}'
 
 
 def p08():
@@ -743,7 +748,7 @@ def p10():
     bracket(q(th[0], 'oa-table-sort'), 2)
     pin(q(th[0], 'oa-table-word'), 3, 'up')
     pin(q(th[1], 'oa-table-word'), 4, 'up')
-    pin([c for c in rows[1].k if isinstance(c, El)][0], 5, 'bl')
+    pin(q(r, 'oa-table-grid'), 5, 'bl')
     key = [(1, 'Caption', 'Names the table, as table markup’s own caption'),
            (2, 'Height', 'Each sort button at least 44 px tall, across its words and arrow'),
            (3, 'Sorted heading', 'The arrow turned to the order, and the heading says it in aria-sort'),
@@ -897,8 +902,10 @@ def p16():
     pin(tog, 2)
     pin(tog, 3, 'br')
     pin(clear, 4, 'rm')
+    for c in chips[2:]:
+        drop(c)
     pin(chips[0], 5)
-    pin(chips[1], 6, 'tr')
+    pin(chips[1], 6, 'rmx')
     pin(st, 7)
     key = [(1, 'Height', '44 px tall for Filters, each chip and Clear filters'),
            (2, 'Filters', 'The funnel, the word and a chevron that points up while the filters are open'),
@@ -907,7 +914,8 @@ def p16():
            (5, 'Chip on', 'The selected check, the word in bold and a 2 px edge'),
            (6, 'Chip off', 'Its word inside a 1 px edge'),
            (7, 'Status line', 'The count the filters leave, shared with the search')]
-    return ['filter-bar'], r, key, 'a filter bar', '', True, '.oa-filters-k{margin-bottom:28px}'
+    return ['filter-bar'], r, key, 'a filter bar', 'Two chips of the area group, one on and one off, one above the other.', True, (
+        '.oa-filters-k{margin-bottom:28px}.oa-filters-chips{display:flex;flex-direction:column;align-items:flex-start}')
 
 
 def p17():
@@ -1096,7 +1104,7 @@ def p23():
            (6, 'Panel', 'Its title takes focus; Escape closes it and focus returns to the item'),
            (7, 'The lines in words', 'A disclosure that gives the drawing as sentences')]
     return ['diagram-controls'], r, key, 'diagram controls', ('The code set holds the disclosure for the lines in '
-                                                              'words; a disclosure that shows the drawing as a table waits on the set.'), False, ''
+                                                              'words; a disclosure that shows the drawing as a table waits on the set.'), False, '.oa-diagram-title{margin-bottom:28px}'
 
 
 def p24():

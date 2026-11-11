@@ -13,7 +13,7 @@
   "width_px": null,
   "alt": "Anatomy of a chip, on and off, drawn from its code to copy on Newsprint, with five numbered callouts and a key. 1, Height: 44 px tall and at least 44 px wide. 2, On: check and bold word: The selected check, 24 px, before the word, and the word in bold. 3, On: 2 px edge: In the strong border color; the fill stays the ground. 4, Off: word: The same word at 600, the weight every control’s word takes, with no check. 5, Off: 1 px edge: The chip’s edge when it is off.",
   "illustrative": true,
-  "notes": "Drawn from work/build/guide/code/c-18-toggle.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366)."
+  "notes": "Drawn from work/build/guide/code/c-18-toggle.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366). The chip that is on stands above one that is off."
  },
  "s-18-03-anatomy": {
   "chapter": "18",
@@ -125,7 +125,7 @@
   "width_px": null,
   "alt": "Anatomy of a filter bar, drawn from its code to copy on Newsprint, with seven numbered callouts and a key. 1, Height: 44 px tall for Filters, each chip and Clear filters. 2, Filters: The funnel, the word and a chevron that points up while the filters are open. 3, Count: How many filters are on, in the button’s own name. 4, Clear filters: Shown only while a filter is on; focus moves to Filters after it. 5, Chip on: The selected check, the word in bold and a 2 px edge. 6, Chip off: Its word inside a 1 px edge. 7, Status line: The count the filters leave, shared with the search.",
   "illustrative": true,
-  "notes": "Drawn from work/build/guide/code/c-18-filter-bar.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366)."
+  "notes": "Drawn from work/build/guide/code/c-18-filter-bar.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366). Two chips of the area group, one on and one off, one above the other."
  },
  "s-18-17-anatomy": {
   "chapter": "18",

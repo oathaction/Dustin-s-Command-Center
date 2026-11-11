@@ -11,6 +11,20 @@ This file is written early and grows as the work lands.
 | Item | What | Status |
 |---|---|---|
 | Release | 6.0.0-gate2.8: DR-218 and call 1's field ground, one change note (BE-S7's words) | done, 06:24 UTC |
+| Call 1 | The guide check's red-touching-Prussian step | built; one hit, `s-05-1-correct` (systems designer's), sent to the main session |
+| Call 6, PP-M2 | The closing token block | decided: tokens.css is the one route; the block is for reading, holds no themes and says so; tested |
+| Call 7, PP-M1 | A surface class pins its ground | done in Rules 26.3, 26.5 and 26.6 and every closing block |
+| Call 8 | Chapter 26's opener | done, `s-26-opener`, 1.5 KB |
+| Call 9, CD-S7, BE-S8, CA-S7 | The Illustrative chip at the head of chapter 26's plates and sets | done |
+| BE-S6 | `c-26-warning` names who moved the hearing | done |
+| PP-S6, PP-S7, PP-S11, PP-S12 | Rules 26.5, 26.3, 26.5's why, 26.2 | done |
+| CD-S14 | 26.5's window frame, 26.6's names on one line | done |
+| Short-name chips | Token chips print each theme's value | done |
+| CA-M1, call 15 | The live download in `c-18-download` serves the page's own tokens.css; download test | done, 18 of 18 cases |
+| CA-S1, call 14 | `codeMatch` at 49, with a computed-style comparison | built; self-test running |
+| CA-S6 | Text transforms skip `.code-root` | done |
+| CD-M3, CA-M2, call 13 | The token table as a real table | next |
+| CA-S2, CA-S3, CA-S8 | Panel height and names, stages side by side, the rail's cue | to do |
 
 ## 1. The token release, 6.0.0-gate2.8
 
