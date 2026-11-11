@@ -2912,3 +2912,23 @@ The main session asked three questions with its plan for round 2, board C and th
 | D2-1541 | The correct plate's notes read the crop's measures from round 1's figures file (key `rule_12_4`), and the build stops if the height chosen there is not `CROP_B_H` | The figures have one source, and the build stops if the plate differs from the one that was measured |
 | D2-1542 | The correct plate's alt describes the cut by the two edges that make it, not by the parts of B | A reader can check that against the plate |
 | D2-1543 | `crop_b()` and `cover_signed()` keep their names | My round 1 measure calls them, so `CROP_B_H` can be checked again |
+
+## Stage C round 2, the fix pass, November 11, 2026
+
+### Main session (`20261111_Stage-C-Round-2-Fix-Brief.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1544 | `oa.color.field.ground.onCharcoal` resolves to Charcoal, in the token release that carries DR-218, with one change note; D2-1469 is withdrawn. The guide check gains a step that fails any red pixel touching Prussian in every stage, in both themes, after Send is pressed in every form | Rule 05.3 forbids red on Prussian for its party reading as well as its contrast, and the dark form put the error bar on a Prussian field (CD-M2, BE-M1); following an approved rule needs no new approval |
+| D2-1545 | The primary button and the ask stand on separate rows in Rule 18.1's plate; the primary hover token stays | The hover's Prussian sat 12 px from the red ask (BE question 3, CD-M2); the token is the architecture's, and the plate is what teaches the pair |
+| D2-1546 | Chapter 18's atlas samples move off R-01's subject to the housing variables or work and pay, with real grades and a dated source; Rule 18.24's examples become Loop R1 and Reform R-04; the filter bar and search keep R-01 to R-12 as typed chips | D2-278 and D2-958 moved earlier examples off the editor's campaign subject for the same reason (BE-M4); a list in the atlas's own order is no example |
+| D2-1547 | Loop R1's heading keeps V7's title as the loop's name and prints its grade under it, in chapters 17 and 18; the diagram's last step closes the loop | V7 grades the loop plausible, and Master Brief section 15 matches the claim to the grade (BE-M3, CD-S9) |
+| D2-1548 | A player of the wordmark or lockmark rests on its master; a state or mechanism player rests on its first frame, and Rule 17.3 says both | A reader who never presses Play met the brand's marks broken, as correct applications (CD-M1) |
+| D2-1549 | The closing token block is the engineer's call under D2-266: complete and tested by the copy check, or the route dropped; either way the words say the block holds no themes | The block missed 37 properties chapter 18's code reads, and a form built on it drew in a fallback font with targets under 44 px (PP-M2) |
+| D2-1550 | Chapters 17, 18, 19 and 26 each take an opener under D2-1134, a picture under 6 KB that fits the column | Each opened with words alone, unlike 09 to 12 (CD-S18) |
+| D2-1551 | The Illustrative chip sits at the plate's head everywhere, in specimens, anatomy plates and live sets | Three label styles ran across chapters 18 and 26 (CD-S7, BE-S8); stage B set the chip at the head for 11 and 12 |
+| D2-1552 | Chapter 18's stopped-in-committee story takes the next free number on chapter 11's counter with a new neutral title; H.99001 is filed January 16 everywhere | One invented bill means one thing across the guide (D2-1364); D2-1487's move made a new conflict (BE-S1) |
+| D2-1553 | A chapter 19 criterion reads Met only where a rule states what it asks; otherwise Met in part, Gap with its owner, or Not used today, whichever is true | Four "met by" lines claimed more than their rules (BE-S4) |
+| D2-1554 | DR-217's sentence is already in Rule 03.2, in the editor's round 1 wording; the fix pass breaks that paragraph into one short line per lockup | Read in `03-identity.json`; PP-S12 found the paragraph too long to use |
+| D2-1555 | The standing rule BE asks for (no example, sample or failure plate uses a reform the atlas flags for the editor's work, or the mechanism it targets) goes to Dustin on board C | It extends DR-99 across the guide, which is Dustin's call; the chapter 18 fix itself follows D2-278 and D2-958 |
+| D2-1556 | The fix pass starts before the craft and accessibility report lands; its items go to owners as an addendum and a message | Three reports and the creative director's scores are in; owners' work runs 30 to 60 minutes, and messages reach a running agent at its next step (V11) |
