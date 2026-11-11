@@ -48,7 +48,7 @@ EM, EN = '—', '–'
 
 # ------------------------------------------------------------------------------------------------- tokens and contrast
 def palette():
-    """Hex values of the palette and derived colors, from tokens.json."""
+    """Hex values of the palette, derived and tint colors, from tokens.json."""
     data = json.loads(TOKENS_JSON.read_text())
     flat = {}
 
@@ -63,7 +63,7 @@ def palette():
     walk(data, [])
     out = {}
     for k, v in flat.items():
-        m = re.match(r'oa\.color\.(palette|derived)\.(\w+)$', k)
+        m = re.match(r'oa\.color\.(palette|derived|tint)\.(\w+)$', k)
         if m:
             out[m.group(2)] = v['hex'] if isinstance(v, dict) else v
     return out
@@ -103,6 +103,9 @@ R_BAR_C = r2('error bar on Charcoal', 'pillarRed', 'charcoal')
 R_OK_N = r2('success mark on Newsprint', 'verdigris', 'newsprint')
 R_OK_C = r2('success mark on Charcoal', 'verdigris', 'charcoal')
 R_ASK = r2('ask label on Pillar Red', 'white', 'pillarRed')
+# D2-1722: the guide's own scroll frames sit on the mat, the shell's --mat, which is oa.color.tint.stoneN90
+R_RING_MAT = r2('focus ring on the guide’s mat', 'verdigris', 'stoneN90')
+R_CHAR_MAT = r2('Charcoal ring on the guide’s mat', 'charcoal', 'stoneN90')
 R_F01 = r2('failure 18.1: Dim Newsprint word on Newsprint', 'dimNewsprint', 'newsprint')
 R_F05 = r2('failure 18.5: Prussian link beside Charcoal text', 'prussian', 'charcoal')
 R_F15 = r2('failure 18.15: Dim Newsprint placeholder on White', 'dimNewsprint', 'white')
@@ -802,7 +805,9 @@ rule(n=11, set='c-18-scroll-region', name='Scroll region',
            'column. Scroll the frame sideways to see all of it.” shows above it and describes it. Once it fits, the frame '
            'drops all three.',
            'Its focus ring sits inside the frame, where the frame’s edge cannot clip it. The arrow keys scroll a focused '
-           'frame, and the page around it stays where it is.'],
+           'frame, and the page around it stays where it is. This guide sets its plates and code on a light gray mat, '
+           f'where the focus ring’s color measures {R_RING_MAT} to 1, under the 3 to 1 a ring needs, so a frame that '
+           f'scrolls on the mat draws the same ring in Charcoal, {R_CHAR_MAT} to 1.'],
      tokens=['--oa-color-border-hairline', '--oa-color-focus-ring', 'oa.border.width.focusRing'],
      why=['A keyboard reader can scroll only what takes focus, and a frame that takes focus while it has nothing to scroll '
           'is a stop that does nothing. The hint tells a sighted reader the frame holds more, and the name tells a screen '

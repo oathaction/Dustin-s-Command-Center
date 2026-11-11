@@ -155,6 +155,19 @@ def grid_svg(ctx, name, scale=0.25, highlight=None, sections=None, text_band=Non
             + ''.join(parts) + '</svg>'), g
 
 
+def inset(ctx, html, band=False):
+    """A quarter-size diagram inside the 24 px inset every plate keeps (Gate 2 fix pass, CD-S6). A failure takes its
+    do-not-publish bar inside the inset, above the drawing, as the flowing plates draw it (CD-S2)."""
+    b = ''
+    if band:
+        fcss, fb = ctx.fail_band()
+        b = f'<style>{fcss}</style>{fb}'
+    return f'<style>.qi{{padding:{ctx.v("oa.space.300")}}}</style><div class="qi">{b}{html}</div>'
+
+
+QW = 360 + 48     # a 1440 px grid at one quarter size, 360 px, inside the 24 px inset
+
+
 def s_07_2(ctx):
     v = ctx.v
     sec = v('oa.color.text.secondary.onNewsprint')
@@ -169,16 +182,17 @@ def s_07_2(ctx):
     ctx.spec('s-07-2-correct', f'<style>{css}</style><ul>{"".join(items)}</ul>', '07', '07.2',
              'The five column grids drawn at one quarter of true size, each with its columns, gutters and margins: ' +
              '; '.join(f'{BNAME[n]} {w} px, {grid(ctx, n)["cols"]} columns of {grid(ctx, n)["col"]:.1f} px' for n, w in BPS) + '.',
-             width=360 + 2 * int(ctx.T.px('oa.space.300')), scale=0.25,
+             width=QW, scale=0.25,
              notes='Drawn at one quarter of each width, so the 1440 px grid takes 360 px, inside the 24 px inset every '
                    'plate keeps (Gate 2 fix pass, CD-S6); the labels under each drawing are at true size. Column widths '
                    'computed from the grid tokens.')
     svg, g = grid_svg(ctx, 'wide', sections=[3, 5, 2])
     cssf = (f'.nm{{margin:8px 0 0;{ctx.ty("ui")}}}.sp{{margin:2px 0 0;{ctx.ty("caption")};color:{sec}}}')
-    ctx.spec('s-07-2-failure', f'<style>{cssf}</style>{svg}<p class="nm">Wide, 1440 px, at one quarter size</p>'
-                               f'<p class="sp">Three sections on three, five and two columns</p>', '07', '07.2',
-             'A page at 1440 px drawn at one quarter size, with three sections on three, five and two columns whose edges '
-             'never line up.', width=360, scale=0.25, notes='A diagram at one quarter size.')
+    ctx.spec('s-07-2-failure', inset(ctx, f'<style>{cssf}</style>{svg}<p class="nm">Wide, 1440 px, at one quarter size</p>'
+                                          f'<p class="sp">Three sections on three, five and two columns</p>', band=True),
+             '07', '07.2',
+             'Failure case: do not publish. A page at 1440 px drawn at one quarter size, with three sections on three, five '
+             'and two columns whose edges never line up.', width=QW, scale=0.25, notes='A diagram at one quarter size.')
 
 
 def s_07_opener(ctx):
@@ -223,11 +237,11 @@ def s_07_3(ctx):
     # the correct application: the 1440 px grid at one quarter size, with the text span marked
     svg, g = grid_svg(ctx, 'wide', highlight=picks['wide'][0])
     css = (f'.cp{{margin:8px 0 0;{ctx.ty("caption")};color:{sec}}}.nm{{margin:8px 0 0;{ctx.ty("ui")}}}')
-    ctx.spec('s-07-3-correct', f'<style>{css}</style>{svg}<p class="nm">Wide, 1440 px, at one quarter size</p>'
-                               f'<p class="cp">Body text spans the first {picks["wide"][0]} of 12 columns, '
-                               f'{span_w(g, picks["wide"][0]):.0f} px at true size.</p>', '07', '07.3',
+    ctx.spec('s-07-3-correct', inset(ctx, f'<style>{css}</style>{svg}<p class="nm">Wide, 1440 px, at one quarter size</p>'
+                                          f'<p class="cp">Body text spans the first {picks["wide"][0]} of 12 columns, '
+                                          f'{span_w(g, picks["wide"][0]):.0f} px at true size.</p>'), '07', '07.3',
              f'The 1440 px grid drawn at one quarter size, with body text spanning the first {picks["wide"][0]} of 12 columns, '
-             f'{span_w(g, picks["wide"][0]):.0f} px at true size.', width=360, scale=0.25,
+             f'{span_w(g, picks["wide"][0]):.0f} px at true size.', width=QW, scale=0.25,
              notes='A diagram at one quarter size; the span is the one whose measured mean sits nearest 68 within 60 to 75.')
     # the span at every width, as a readable table
     css = (f'table{{width:100%;border-collapse:collapse;{ctx.ty("bodySmall")}}}'
@@ -249,11 +263,12 @@ def s_07_3(ctx):
     full = ctx.R.get('cpl span wide 12') or {'mean': 0, 'min': 0, 'max': 0}
     svgf, _ = grid_svg(ctx, 'wide', text_band=12)
     cssf = f'.cp{{margin:8px 0 0;{ctx.ty("caption")};color:{sec}}}.nm{{margin:8px 0 0;{ctx.ty("ui")}}}'
-    ctx.spec('s-07-3-failure', f'<style>{cssf}</style>{svgf}<p class="nm">Wide, 1440 px, at one quarter size</p>'
-                               f'<p class="cp">The paragraph spans all 12 columns, {full["mean"]:.0f} characters a line.</p>',
+    ctx.spec('s-07-3-failure', inset(ctx, f'<style>{cssf}</style>{svgf}<p class="nm">Wide, 1440 px, at one quarter size</p>'
+                                          f'<p class="cp">The paragraph spans all 12 columns, {full["mean"]:.0f} characters '
+                                          f'a line.</p>', band=True),
              '07', '07.3',
-             f'The 1440 px grid at one quarter size with a paragraph drawn across all 12 columns, measured at '
-             f'{full["mean"]:.0f} characters a line.', width=360, scale=0.25,
+             f'Failure case: do not publish. The 1440 px grid at one quarter size with a paragraph drawn across all 12 '
+             f'columns, measured at {full["mean"]:.0f} characters a line.', width=QW, scale=0.25,
              notes='A diagram at one quarter size, measured with chapter 02’s prose at 17 px across 1,312 px.')
     return picks, full
 

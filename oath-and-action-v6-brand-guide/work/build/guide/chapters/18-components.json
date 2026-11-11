@@ -874,7 +874,7 @@
       "title": "Let wide content scroll inside a named frame.",
       "rule": [
         "Content wider than its column, such as a wide table or a drawing at true size, scrolls sideways inside its own frame, so the page itself never scrolls sideways (Rule 07.6). While it overflows, the frame takes <code>tabindex=\"0\"</code> and the role of a group named for what it holds, and the hint “Wider than this column. Scroll the frame sideways to see all of it.” shows above it and describes it. Once it fits, the frame drops all three.",
-        "Its focus ring sits inside the frame, where the frame’s edge cannot clip it. The arrow keys scroll a focused frame, and the page around it stays where it is."
+        "Its focus ring sits inside the frame, where the frame’s edge cannot clip it. The arrow keys scroll a focused frame, and the page around it stays where it is. This guide sets its plates and code on a light gray mat, where the focus ring’s color measures 2.98 to 1, under the 3 to 1 a ring needs, so a frame that scrolls on the mat draws the same ring in Charcoal, 11.76 to 1."
       ],
       "tokens": [
         "--oa-color-border-hairline",
