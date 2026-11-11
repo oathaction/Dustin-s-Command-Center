@@ -41,6 +41,10 @@ I read `CLAUDE.md`, my role file, the fix brief (calls 2, 3, 8, 10 and 11, my ro
 - `s-18-22-failure`'s kicker reads "Loop R1", in H11's form.
 - **Still waiting:** the main session's word that the component engineer's sets have landed, for one more walk of all 37 paths; and the main session's final guide check, for chapter 19's results.
 
+## For the component engineer, through the main session
+
+1. **`c-18-download.html` line 17 says "Download tokens.css, CSS, 93&nbsp;KB".** After 6.0.0-gate2.8, tokens.css is 94,715 bytes, which Rule 18.14 prints as 95 KB (D2-1209's rounding), and the live link now serves that file (CA-M1). The set's words and the anatomy plate drawn from them should read 95 KB. A size read at build time, as Rule 18.14's builders line asks, would keep them in step at the next release.
+
 ## Routine calls
 
 - D2-xxx | The WCAG text lives in a dated data file, `20261111_WCAG22-Criteria-Text.json`, written by `stage_c_ch19_build.py --read-wcag` from a copy fetched from w3.org, and Rule 19.1 prints from it | One reader for both the store and the check; anyone can refetch, compare the SHA-256 and rewrite it
