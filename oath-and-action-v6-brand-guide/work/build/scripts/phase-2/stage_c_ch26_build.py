@@ -294,7 +294,7 @@ def specimens():
             width=360, illustrative=True, exempt=None if kind == "correct" else ["contrast"],
             notes="Illustrative counts. " + ("" if kind == "correct" else "A labeled failure: the caption fails on purpose."))
     dl_css = (".sx-w{padding:24px 16px;background:var(--oa-color-surface-white);color:var(--oa-color-text-primary-on-white)}"
-              ".sx-file{margin:0 0 12px;font:var(--oa-type-ui);font-weight:var(--oa-font-weight-bold)}.sx-btn{display:inline-flex;align-items:center;min-height:44px;padding:0 24px;font:var(--oa-type-ui)}"
+              ".sx-file{margin:0 0 12px;font:var(--oa-type-ui);font-weight:var(--oa-font-weight-bold)}.sx-btn{display:inline-flex;align-items:center;box-sizing:border-box;max-width:100%;min-height:44px;padding:8px 24px;font:var(--oa-type-ui)}"
               ".sx-why{margin:8px 0 0;font:var(--oa-type-caption);color:var(--oa-color-text-secondary-on-white)}")
     add("s-26-4-2-correct", "26.4", spec(dl_css + ".sx-on{border:1px dashed var(--oa-component-button-disabled-edge-on-white);color:var(--oa-component-button-disabled-label-on-white)}",
         f'<div class="sx-w"><p class="sx-file">Hearing photo, Capitol steps</p><span class="sx-btn sx-on">Download the photo</span>'
@@ -464,7 +464,8 @@ def code_sets():
                 "   The button keeps focus and points to its reason, so a keyboard reader learns why it waits. */\n"
                 ".oa-ex-download { padding: var(--oa-space-300) var(--oa-space-200); background: var(--oa-color-surface); color: var(--oa-color-text-primary); font: var(--oa-type-body) }\n"
                 ".oa-ex-download-file { margin: 0 0 var(--oa-space-150); font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }\n"
-                ".oa-ex-download-button { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); margin: 0; padding: 0 var(--oa-space-300);\n"
+                ".oa-ex-download-button { display: inline-flex; align-items: center; box-sizing: border-box; max-width: 100%; min-height: var(--oa-size-target-touch); margin: 0;\n"
+                "  padding: var(--oa-space-100) var(--oa-space-300); text-align: start;\n"
                 "  border: var(--oa-border-width-hairline) solid var(--oa-component-button-primary-fill); border-radius: 0;\n"
                 "  background: var(--oa-component-button-primary-fill); color: var(--oa-component-button-primary-label); font: var(--oa-type-ui); cursor: pointer }\n"
                 ".oa-ex-download-button[aria-disabled=\"true\"] { border-style: dashed; border-color: var(--oa-component-button-disabled-edge);\n"

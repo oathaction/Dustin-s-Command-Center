@@ -20,7 +20,7 @@ This file is written early and grows as the work lands.
 | 6 | D2-1468, D2-1470: chapter 18's ceiling, `codeMatch` | done: 1.25 MB; tall stages whole, a fresh page, a measured tolerance |
 | 7 | The editor's section 6 on chapter 26 | done: 12 rows through the generator; the tokens.css header left for Phase 3, as the editor marks it |
 | 8 | D2-1332: the proofs' 1200 px card off the pixel grid | done in the shell, for every fixed-width plate |
-| 9 | Strict build, self-tests, guide check at four widths | below |
+| 9 | Strict build, self-tests, guide check at four widths | done on the newest tree (below); the final run after the editor's passes is the main session's |
 
 ## 1. What chapter 18's makers asked for
 
@@ -158,11 +158,37 @@ None. Every call above sits inside DR-203, DR-204, DR-214, the round 1 brief and
 
 ## Tested
 
-(being filled in)
+All builds, captures and outputs went to `/tmp/claude-0/-home-user-Dustin-s-Command-Center/42858b21-febe-5543-930e-ed82e286a69e/scratchpad/stage-c-r1/engineer/`. The newest tree is the main session's snapshot 6092afa0 with my changes since; the editor's passes on chapters 17, 18 and 19 were still landing when I stopped.
+
+- **Strict build** of the newest tree (`final2/guide.html`): exit 0, no warnings, 9.54 MB, 16 chapter files, 185 rules, 420 specimens. Chapter 17 weighs 0.43 MB, 18 1.10, 19 0.20 and 26 0.93, each under its ceiling.
+- **Build self-test**: 21 of 21 scenarios, 262 of 262 expectations (15 and 159 at the start of the promotion). Three new scenarios: chapter 18's five items; chapter 26's examples, downloads, the literal exemption, the table's freshness and `pending_for`; and the class clash.
+- **Mutation tests** on in-memory copies of `guide_build.py`: undoing each of items a to e, and each of the examples, the literal exemption, the once-only tokens.json link, the table's freshness and the downloads' names check, makes the self-test fail.
+- **`guide_check.js --self-test`** on the final script: PASS. The clean demo passes, with its keyboard path walked in both stages and the high-density runs; 107 of 107 planted faults are caught and 32 of 32 allowances stay quiet (round 0: 91 and 25). The new plants cover a key path broken two ways, five motion faults, two token table faults, a tracker one word short, and a `data-frame` left at start. The new allowances cover the demo's path, a good player, a player on a failure plate, and "steps 1 and 2".
+- **`guide_check.js` at 1440, 1024, 390 and 360 px** on the newest build before the download button's last fix (`final/guide.html`): 1 failure, `c-26-download`'s stage at 360 px with text at 200 percent, fixed after (below). Every other test passes:
+  - fitSwitch: 77 switches at every width, fit shown at 1x, master at 2x and 3x;
+  - keyPath: 25 code sets with keys files, 37 paths, 140 walks and 710 steps, all holding;
+  - motion: 7 moving specimens, each still on load and showing its final frame at once under reduced motion;
+  - tokenTable: 500 rows, 302 swatches, version and count as tokens.json;
+  - codeMatch: every live stage, within the measured tolerance;
+  - axe-core, focus, the menu, `lightOnDark` and the rest.
+- **After the button's fix** (`final2/guide.html`): a probe of the 200 percent and text spacing test at 390, 360 and 1024 px finds no sideways scroll, and `codeMatch` passes all 56 live stages at 1440 px (33 identical, 23 within the tolerance) and at 390 px (41 and 15).
+- **Token tests**: all six steps pass (500 tokens; parity, rules, 41 plants, Style Dictionary, rendered). The tokens did not change in this pass.
+- **`sprite_check.js`**: PASS, 206 symbols, every pair at 0, the switch for all 41.
+- **`tokens_download_test.js`** on the newest build: 16 of 16 cases, tokens.css and tokens.json each byte for byte, plain and through a stub host's zip.
+- **`stage_c_ch26_build.py --check`**: 32 of 32 files current; **`token_table_build.py --check`**: current.
+- **Looked at**: chapter 26 at 1440 px from its head through Rule 26.4's third example, in captures; the four examples' plates and code plates.
+- **Probes**: the page's DOM over time after `networkidle` (127, 155, then 176 rules); five sub-pixel phases on four tall stages; every proofs plate's offset at three widths before and after the snap; the 200 percent culprits at 390, 360 and 1024 px.
+- **Read**: the format module's page and Semantic Versioning 2.0.0's page, on November 11, 2026, for chapter 26's sources.
 
 ## Not tested
 
-(being filled in)
+- The full guide check at four widths after the download button's last fix and after the editor's section 6 rows. The probe and `codeMatch` above cover what changed; the main session runs the final check once the other makers' editor passes land.
+- The keyboard paths with a real screen reader, on a real phone, or in Firefox and Safari: Chromium's keyboard only.
+- The motion check on players a maker has not yet written. It reads Web Animations and drawn SVG state; a player that draws on a canvas would pass unseen.
+- A host's real download prompt: the download test stubs it.
+- The snap on screens at 1.25x and 1.5x, and in print.
+- `codeMatch`'s tolerance against a planted change smaller than 64 on an edge only; the plants change sizes, flat areas and padding.
+- Chapter 26 read aloud, or read by the editor after the 03:49 change.
 
 ## Change log
 
@@ -174,10 +200,13 @@ Created:
 - `work/build/guide/shell/fixtures/code/c-00-save-button.keys.json`
 
 Modified:
-- `work/build/scripts/phase-2/guide_build.py`: items a to e; rule `examples` and `downloads`; the tokens.json link; the `literal` exemption; the token table's freshness; `pending_for`; chapter 26's budget; three self-test scenarios
-- `work/build/scripts/phase-2/guide_check.js`: keyPath, motion and tokenTable with their plants; the A-5 count; page loads wait for `load`
+- `work/build/scripts/phase-2/guide_build.py`: items a to e; rule `examples` and `downloads`; the tokens.json link; the `literal` exemption; the token table's freshness; `pending_for`; the class clash warning; chapter 18's and 26's ceilings; three self-test scenarios
+- `work/build/scripts/phase-2/guide_check.js`: keyPath, motionPlay and tokenTable with their plants; the A-5 count; page loads wait for `load`; the 200 percent test names its culprits; `codeMatch` on a fresh page, tall stages whole, the measured tolerance
 - `work/build/scripts/phase-2/token_table_build.py`: reader text for descriptions, printed hex as words
 - `work/build/guide/specimens/s-26-token-table.html` (regenerated)
-- `work/build/guide/shell/guide-shell.css`: `.code-note`, `.ex-head`, `.downloads`
-- `work/build/guide/shell/guide-shell.js`: the downloads for every `data-oa-file` link
+- `work/build/guide/shell/guide-shell.css`: `.code-note`, `.ex-head`, `.downloads`, long words break in reading text
+- `work/build/guide/shell/guide-shell.js`: the downloads for every `data-oa-file` link; fixed-width stages snapped to the pixel
 - `work/build/tests/guide/tokens_download_test.js`: tokens.json's cases; the colophon zip read by id
+- `work/build/guide/code/c-26-download.keys.json` (generated)
+
+Unchanged: tokens.json and tokens.css, every other maker's chapter, specimen, manifest and code set, every asset and board. Nothing in `source/`, `work/ledger/` or `deliverables/`. I committed and pushed nothing.

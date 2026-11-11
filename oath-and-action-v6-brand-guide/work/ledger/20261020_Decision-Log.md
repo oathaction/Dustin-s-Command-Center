@@ -2807,3 +2807,50 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 | # | Decision | Reason |
 |---|---|---|
 | D2-1489 | Rule 18.11's key reads where the ring sits from the code's own `outline-offset`: inside the frame's edge for a negative offset, around the frame otherwise | The plate's words follow the code if the ring moves again |
+
+### Engineer, chapter 26 and round 1 checks (`20261111_Stage-C-Round-1-Engineer-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1490 | In each live stage, every form control's `name` takes the stage's prefix, as ids do | Two stages of one markup otherwise share one radio group (the component engineer's item 1) |
+| D2-1491 | A color name counts as a literal only as a whole word, never inside a property name | `white-space` is no color (item 2) |
+| D2-1492 | `data-oa-theme-for` is an id reference, and the reference pattern matches only an attribute's whole name | The switch's target must follow its id by rule, not by chance (item 3) |
+| D2-1493 | A set's head script lives in `c-NN-name.head.js` and shows as a fourth panel, "Head script", that no live stage runs | It sets the page's root; a builder copies it as its own file (item 4) |
+| D2-1494 | In the live stages only, each landmark is drawn as a named group with `data-oa-landmark`, and the plate says so in words; a set's CSS that selects a landmark by its tag is a warning | AX-S8 keeps the guide's landmarks its own, and a copy must keep the real elements (the accessibility lead's proposal, approved by the main session) |
+| D2-1495 | Chapter 26 is written by `stage_c_ch26_build.py`, which reads every value and computes every ratio from tokens.json | No figure typed by hand can drift from the file |
+| D2-1496 | Rule 26.4's four examples are a rule key, `examples`, each with its own correct plate, failure plate and code set under a numbered line | The brief asks for each example beside its failure with its code; one rule holds them |
+| D2-1497 | The examples' code sets read short names only, with a surface class on the block where the example names a surface | Rule 26.3's first step in code; the code contract forbids surface-named tokens |
+| D2-1498 | The examples' charts are HTML bars, not SVG | Their words stay at 13 px at every width |
+| D2-1499 | tokens.json ships once, in Rule 26.8, as a data URI with its own zip for a host, through a rule key, `downloads` | DR-214; the colophon keeps tokens.css as before |
+| D2-1500 | The shell's download script handles every link marked `data-oa-file`, each with its own zip and words | Two files now, each with the same host path (D2-964) |
+| D2-1501 | Chapter 26's budget is 1.0 MB | tokens.json's download (0.37 MB) and the table (0.31 MB) sit in it; the page budget binds |
+| D2-1502 | The token table drops parentheses of studio codes and rewrites four retired phrases in its descriptions, and stops on any code left | Reader text never shows studio codes or retired names (D2-253, D2-326); tokens.json keeps its words for builders |
+| D2-1503 | A printed hex in a specimen is written `&#35;`, as chapter 05 writes it | The build reads a bare hex as a color drawn |
+| D2-1504 | `check_exempt: ["literal"]` lets a labeled failure plate draw a color no token holds | Rule 26.2 shows the rejected red beside Pillar Red |
+| D2-1505 | The build checks the placed token table against tokens.json at every build | Round 0's plan; a stale table cannot ship |
+| D2-1506 | Rule 26.5 names the two lines that switch a fit for its master, for a page that draws a 24 px symbol | D2-1343: tokens.css holds tokens and themes only |
+| D2-1507 | A manifest entry may carry `pending_for`, which draws the pending plate with a note and no warning; the guide check still fails a pending plate | Chapter 17's item 2; a finished page holds no pending plate |
+| D2-1508 | The keyboard path check walks each path on a fresh page, in both live stages, at 1440 and 390 px, and fails a chapter 18 set with no keys file | Round 0's plan; each path starts from the component as first drawn |
+| D2-1509 | The motion check reads drawn SVG state and Web Animations, skips failure plates, and runs reduced motion in its own run; `data-frame` must read "start" on load and "end" after Play where a player carries it | Round 0's contract and chapter 17's item 1 |
+| D2-1510 | The token table check runs once a page: rows, count, version, defined names and swatches | Round 0's plan |
+| D2-1511 | The A-5 words count reads "steps N and M" as two steps | Chapter 17's item 3 |
+| D2-1512 | Every main page load in the guide check waits for `load`, then for the network to settle | At 9.2 MB the parser outlasts `networkidle` (chapter 17's item 4) |
+| D2-1513 | The download test reads the colophon link's zip by its id | The page may now carry tokens.json's zip first |
+| D2-1514 | The 200 percent test names the elements that push the page wide, innermost first, by their box or their own text | The lead's item 1: "page" alone sent no one to the fault |
+| D2-1515 | Reading text outside specimens takes `overflow-wrap: break-word` in the shell | A web address in running text broke the page's width at 200 percent; break-word moves no word that fits |
+| D2-1516 | A keys state's `present` and `above` and `below` are read, and `is` only when named | The lead's oa-keys/1 fields |
+| D2-1517 | Chapter 18's ceiling is 1.25 MB | D2-1468 |
+| D2-1518 | `codeMatch` runs on a fresh page, captures a tall stage whole and pastes the copy at the stage's own sub-pixel phase | D2-1470; five phases tried, the measured one matched best every time |
+| D2-1519 | `codeMatch` leaves out the capture's outer ring, allows 64 of 255 on an edge of the guide's capture and up to four rows or columns a pixel apart; any other difference fails | Measured: curve edges up to 49, a last row blended with its surroundings, a straight edge one row apart 900,000 px down the page |
+| D2-1520 | Chapter 26's code sets take an `oa-ex-` root, and the build warns when two sets style one class | Two download sets restyled each other's demos |
+| D2-1521 | Every fixed-width plate's stage is translated to the nearest device pixel by the shell | D2-1332: a piece at true size draws sharp at 1x; translate moves nothing after it |
+| D2-1522 | Chapter 26's sources carry the dates they were read: the research lead's for WCAG 2.2 and Media Queries Level 5, mine for the format module and Semantic Versioning | The editor's H04; I list only reads that happened |
+| D2-1523 | `c-26-download` carries a keys file, written by the generator | The one chapter 26 example a keyboard reaches |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1524 | The engineer's token release 6.0.0-gate2.8 (descriptions only: the loading mark's, and every description that carries a studio code or a retired name) goes into round 2's fix pass, before the token table is frozen for board C | Chapter 26's table prints every description to readers; round 1 ends at the preview, and a release now would move the frozen copy |
+| D2-1525 | The rename of the error mark's token to `oa.color.state.error.bar`, with the old CSS name kept as an alias for one release, goes to round 2: the red teams and the creative director read it, and the fix pass makes it if they agree | A shipped token name changes; the engineer recommends it before 6.0.0 ships (D2-1345) |
+| D2-1526 | `codeMatch` allows antialiased edge differences up to 49 of 255 on a channel, as the engineer measured; round 2's craft and accessibility red team reads that tolerance | The engineer found real but harmless edge differences; a tolerance that wide needs a second eye |

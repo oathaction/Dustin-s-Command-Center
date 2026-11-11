@@ -1,6 +1,6 @@
 {
  "page": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "built": "2026-11-10T19:11:03",
+ "built": "2026-11-11T04:28:28",
  "chapters": [
   "01",
   "02",
@@ -13,27 +13,31 @@
   "09",
   "10",
   "11",
-  "12"
+  "12",
+  "17",
+  "18",
+  "19",
+  "26"
  ],
  "placeholders": [],
- "rules": 132,
- "specimens_placed": 306,
+ "rules": 185,
+ "specimens_placed": 420,
  "tokens": "tokens.css",
  "demo": false,
- "bytes": 6812168,
+ "bytes": 9544650,
  "weight": {
-  "bytes": 6812168,
+  "bytes": 9544650,
   "budget_page": 15500000.0,
   "limit": 16000000,
   "parts": {
-   "head and shell": 172985,
-   "sprites": 175026,
-   "front matter and part openers": 13360,
-   "appendix": 140978
+   "head and shell": 175897,
+   "sprites": 210685,
+   "front matter and part openers": 15440,
+   "appendix": 140999
   },
   "chapters": {
    "01": {
-    "bytes": 2447236,
+    "bytes": 2447201,
     "budget": 2700000.0
    },
    "02": {
@@ -41,53 +45,70 @@
     "budget": 850000.0
    },
    "03": {
-    "bytes": 501198,
+    "bytes": 501726,
     "budget": 650000.0
    },
    "04": {
-    "bytes": 294502,
+    "bytes": 294423,
     "budget": 450000.0
    },
    "05": {
-    "bytes": 278498,
+    "bytes": 279911,
     "budget": 450000.0
    },
    "06": {
-    "bytes": 188856,
+    "bytes": 188735,
     "budget": 350000.0
    },
    "07": {
-    "bytes": 142893,
+    "bytes": 142702,
     "budget": 300000.0
    },
    "08": {
-    "bytes": 148445,
+    "bytes": 150045,
     "budget": 300000.0
    },
    "09": {
-    "bytes": 187141,
+    "bytes": 187506,
     "budget": 400000.0
    },
    "10": {
-    "bytes": 555464,
+    "bytes": 573628,
     "budget": 1000000.0
    },
    "11": {
-    "bytes": 475596,
+    "bytes": 476667,
     "budget": 550000.0
    },
    "12": {
-    "bytes": 246618,
+    "bytes": 246642,
     "budget": 500000.0
+   },
+   "17": {
+    "bytes": 430039,
+    "budget": 500000.0
+   },
+   "18": {
+    "bytes": 1100477,
+    "budget": 1250000.0
+   },
+   "19": {
+    "bytes": 204360,
+    "budget": 300000.0
+   },
+   "26": {
+    "bytes": 932500,
+    "budget": 1000000.0
    }
   },
   "sprites": {
-   "civic-line": 67,
+   "civic-line": 69,
+   "fit-24": 37,
    "pillar": 8,
    "utility": 36
   }
  },
- "ids_held_whole": 594,
+ "ids_held_whole": 773,
  "warnings": [],
  "notes": []
 }
