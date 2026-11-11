@@ -1,0 +1,146 @@
+{
+ "checked": "2026-11-11T17:22:35.299Z",
+ "version7": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
+ "preview": "work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html",
+ "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+ "fontRequests": {
+  "version7": 4,
+  "preview": 0
+ },
+ "pairs": [
+  {
+   "el": "#purpose .ch-head",
+   "w": 868,
+   "h": 1536,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "#rule-06-2 .rule-h",
+   "w": 868,
+   "h": 35,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "#rule-05-3 .rule-text",
+   "w": 534,
+   "h": 793,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "#voice .ch-head",
+   "w": 868,
+   "h": 1495,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "#rule-17-8 .rule-h",
+   "w": 868,
+   "h": 105,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "#tokens .ch-head",
+   "w": 868,
+   "h": 1571,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": ".cover .tagline",
+   "w": 825,
+   "h": 315,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": ".cover .pillars",
+   "w": 1090,
+   "h": 34,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "#part-foundations .part-inner",
+   "w": 1090,
+   "h": 876,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "Lora text 1",
+   "w": 676,
+   "h": 32,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "Lora text 2",
+   "w": 229,
+   "h": 50,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "Lora text 3",
+   "w": 223,
+   "h": 77,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "Lora text 4",
+   "w": 231,
+   "h": 77,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "Lora text 5",
+   "w": 224,
+   "h": 50,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "Lora text 6",
+   "w": 249,
+   "h": 159,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "Lora text 7",
+   "w": 222,
+   "h": 23,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "Lora text 8",
+   "w": 232,
+   "h": 23,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "Lora text 9",
+   "w": 255,
+   "h": 50,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "Lora text 10",
+   "w": 724,
+   "h": 43,
+   "differ": 0,
+   "max": 0
+  }
+ ],
+ "pass": true
+}

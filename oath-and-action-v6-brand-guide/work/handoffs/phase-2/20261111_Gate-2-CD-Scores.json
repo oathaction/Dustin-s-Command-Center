@@ -1,8 +1,8 @@
 {
- "title": "Creative director's whole-guide read at Gate 2: 16 chapters and the identity proofs",
+ "title": "Creative director's whole-guide read at Gate 2: 16 chapters and the identity proofs, with the preview's front pages as an addendum",
  "date": "2026-11-11",
  "author": "Creative director (oa-creative-director), subagent of the main session",
- "basis": "20261111_Gate-2-Brief.md task 1 (DR-221); Master Brief section 6 rubric; the frozen page in the scratchpad's gate-2/review/guide.html (8,965,291 bytes, commit 043ad4d8, published as version 7), looked at by the creative director at 1440 px (1x and 2x) and 390 px, with the words read from work/build/guide/chapters/*.json",
+ "basis": "20261111_Gate-2-Brief.md task 1 (DR-221); Master Brief section 6 rubric; the frozen page in the scratchpad's gate-2/review/guide.html (8,965,291 bytes, commit 043ad4d8, published as version 7), looked at by the creative director at 1440 px (1x and 2x) and 390 px, with the words read from work/build/guide/chapters/*.json; the eighteenth item from the Gate 2 preview, work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html (9,441,768 bytes), looked at in the same way",
  "review": "work/handoffs/phase-2/20261111_CD-Gate-2-Whole-Guide-Read.md",
  "threshold": "4 on every criterion; an item is ready when every score is 4 or more and it has no Must fix",
  "criteria": [
@@ -564,13 +564,50 @@
    "should_fix_count": 1,
    "ready": true,
    "to_ready": "Ready."
+  },
+  {
+   "key": "preview_front",
+   "name": "Gate 2 preview: Where to start, the font license and the colophon",
+   "anchor": "#start, #colophon",
+   "stage": "Gate 2 preview",
+   "scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 3,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "The start page sets its 21 steps as whole underlined sentences in three 347 px columns, about 64 underlined lines at 1440 px, so the book's front door reads as a list of links; the license texts mix the file's hard line breaks with reflowed paragraphs, two hairlines sit 13 px apart under the last license, and on a phone the cover's edition line breaks “November / 11, 2026”.",
+    "clarity": "Three routes named for why a reader came, each step saying what the reader will learn and where it goes, with the one later step in plain words and no link.",
+    "brand_fidelity": "Locked lines are exact and no red is spent, yet with the wordmark covered the start page carries no mark, symbol or hinge, and the colophon closes the book with no sign-off.",
+    "usefulness": "Every step points at the rule that answers it, the builder route starts at the token files, and the colophon names each family's authors, OFL 1.1 and Lora's reserved name, with the full texts.",
+    "evidence_honesty": "“We built the font files into this page unchanged, so it loads no type from elsewhere” is true: the preview made no network request, and its six @font-face blocks carry the files as data; the Built row gives 17:12 with no time zone.",
+    "accessibility": "Each route is an ordered list under its own heading, each link's name is the whole step and its target, and each license sits behind a disclosure that names what opens."
+   },
+   "must_fix": [
+    "A1"
+   ],
+   "should_fix": [
+    "A2",
+    "A3",
+    "A4",
+    "A5"
+   ],
+   "must_fix_count": 1,
+   "should_fix_count": 4,
+   "ready": false,
+   "to_ready": "Land A1."
   }
  ],
  "totals": {
-  "must_fix": 1,
-  "should_fix": 11,
+  "must_fix": 2,
+  "should_fix": 15,
   "under_4": [
-   "ch26.usefulness"
+   "ch26.usefulness",
+   "preview_front.craft",
+   "preview_front.brand_fidelity"
   ],
   "ready": [
    "ch01",
@@ -591,15 +628,22 @@
    "proofs"
   ],
   "not_ready": [
-   "ch26"
+   "ch26",
+   "preview_front"
   ]
  },
  "must_fix": {
   "M1": {
    "where": "Chapter 26, Rule 26.5's builders line and its Fonts row; chapter 06, Rule 06.1's builders line; the shell's font declaration",
    "what": "Two answers to which weights a product loads. Rule 06.1: “Load all three with one link: …family=Inter:wght@400;600;700&family=Inter+Tight:wght@800&family=Lora:ital,wght@1,400;1,500…”. Rule 26.5: “The fonts link this guide uses: …family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Lora…”. The page sets no Inter Tight 600 or 700 anywhere and Inter 500 only in Rule 12.5's plates. In the preview, where the files are embedded, 26.5's sentence also stops being true.",
-   "fix": "Make Rule 06.1's set the one set (Inter 400, 600 and 700; Inter Tight 800; Lora Italic 400 and 500), since chapter 06 owns the faces and the tokens use no other weight. Give Rule 26.5 the same link with words such as “A product loads the three faces with this link (Rule 06.10):”, and in the preview's chapter 26 and colophon say the guide carries the files itself. Declare the same weights in the shell. The bytes do not change: Google serves one variable file per family and subset, and the frozen page fetched three.",
+   "fix": "Make Rule 06.1's set the one set (Inter 400, 600 and 700; Inter Tight 800; Lora Italic 400 and 500), since chapter 06 owns the faces and the type tokens use no other weight. Give Rule 26.5 the same link with words such as “A product loads the three faces with this link (Rule 06.10):”, and in the preview's chapter 26 and colophon say the guide carries the files itself. Declare the same weights in the shell. The bytes do not change: Google serves one variable file per family and subset, and the frozen page fetched three.",
    "owner": "Engineer (chapter 26, shell, preview), with the Systems designer (chapter 06's generator) and the Editor (words)"
+  },
+  "A1": {
+   "where": "The preview's “Where to start” page (#start) and the colophon's close",
+   "what": "The book's first page after the contents is three lists of underlined sentences with no mark of the system on it, and the book ends on the colophon's table with no signature. Craft and brand fidelity score 3.",
+   "fix": "Make each step's target line the link (“Rule 01.21 · Purpose”, underlined, with the whole row as its hit area) and set the step's sentence in plain ink, which cuts 64 underlined lines to 21. Set the three route heads on the part opener's Charcoal panel, the dark beat each part opens with, with each route's label and lede there and its seven steps below on Newsprint. Head the newcomer route with the pillar row at 24 px, a place Rule 09.4 allows, since its first step is the pillars. Close the colophon with the footer sign-off Rule 08.2 draws: the lockmark at 24 px beside “A country that answers to its people.” in Newsprint on Charcoal. Nothing here needs a new drawing.",
+   "owner": "Engineer (the page's build and the shell), with the Identity designer for the pillar row and the sign-off, and the Editor for any changed words"
   }
  },
  "should_fix": {
@@ -668,6 +712,30 @@
    "what": "Chapter 26 writes “; Design judgment” with a capital in four bases where 04, 06, 09, 11, 17 and 18 write it in lower case, and Rule 03.8 cites “Dustin Cathcart’s ruling on partners” where 04 and 08 to 12 write “approved by our founder and editor”.",
    "fix": "Lower-case “design judgment” after a semicolon, and write Rule 03.8's basis as the others do, with its month.",
    "owner": "Editor, in the generators of 26 (Engineer) and 03 (Identity designer)"
+  },
+  "A2": {
+   "where": "The start page's route index (ul.route-index), most visible at 390 px",
+   "what": "Three links to the routes are drawn as boxed quiet buttons, which chapter 18 keeps for actions (Rule 18.1), and on a phone they wrap two and one.",
+   "fix": "Draw them as the contents' links or as underlined links in one line of text, as Rule 18.5 sets for a link.",
+   "owner": "Engineer"
+  },
+  "A3": {
+   "where": "The three license disclosures in the colophon",
+   "what": "Paragraphs that keep the file's hard line breaks (“This Font Software is licensed under the SIL Open Font License, / Version 1.1…”, “Permission is hereby granted…”) sit beside reflowed ones, and a second hairline sits 13 px under the last disclosure.",
+   "fix": "Reflow every paragraph, keeping each word, mark and line order of the license as the file has it, and drop the disclosure list's own bottom rule so the row's rule closes it.",
+   "owner": "Engineer"
+  },
+  "A4": {
+   "where": "The cover's edition line at 390 px",
+   "what": "“Preview for approval, built November 11, 2026” breaks between “November” and “11”.",
+   "fix": "Join the month, day and year with no-break spaces, as the editor's notes do for figures and “px”.",
+   "owner": "Engineer, with the Editor"
+  },
+  "A5": {
+   "where": "The colophon's Built row",
+   "what": "“November 11, 2026 at 17:12” gives no time zone, where chapter 19's results give theirs in UTC.",
+   "fix": "Write the time with UTC, as chapter 19 does.",
+   "owner": "Engineer"
   }
  },
  "drift": [
@@ -704,7 +772,7 @@
    "title": "Which weights to load",
    "direction": "later moves to earlier",
    "rank": 1,
-   "finding": "Rule 06.1 (stage A) and Rule 26.5 (stage C) give two font links with different weights, and the shell follows 26. Chapter 06 owns the faces and the tokens use only its weights, so 26 and the shell move to 06. M1."
+   "finding": "Rule 06.1 (stage A) and Rule 26.5 (stage C) give two font links with different weights, and the shell follows 26. Chapter 06 owns the faces and the type tokens use only its weights, so 26 and the shell move to 06. M1."
   },
   {
    "id": "D6",
@@ -716,9 +784,9 @@
   {
    "id": "D7",
    "title": "Weights in plates",
-   "direction": "stage B plates move to chapter 06",
+   "direction": "the plates move to chapter 06",
    "rank": null,
-   "finding": "Stage B plates in 08 and 12 set Inter 800 and Inter 500, outside chapter 06's set, and 02 and 03 fake an Inter italic. S8."
+   "finding": "Plates in 08 (stage A) and 12 (stage B) set Inter 800 and Inter 500, outside chapter 06's set, and 02 and 03 fake an Inter italic. S8."
   },
   {
    "id": "D8",

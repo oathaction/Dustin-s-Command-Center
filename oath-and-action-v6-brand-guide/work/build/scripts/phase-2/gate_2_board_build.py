@@ -730,7 +730,12 @@ def strip_codes(s):
     def bare(m):
         MOVED.add(m.group(2))
         return m.group(1) + ' a logged decision'
-    return re.sub(r'\b(by|in|under|per)\s+(' + CODE + r')\b', bare, s)
+    s = re.sub(r'\b(by|in|under|per)\s+(' + CODE + r')\b', bare, s)
+
+    def poss(m):
+        MOVED.add(m.group(1))
+        return 'the '
+    return re.sub(r'\b(' + CODE + r')(?:’|\')s\s+', poss, s)
 
 
 def md_inline(s):
@@ -780,7 +785,7 @@ def slot_contrast(C):
     P = C['panels']['contrast']
     S = C['slots']['contrast']
     paths = [ROOT / p for p in S['paths'] if (ROOT / p).exists()]
-    if not paths or not a11y_done(C, r'^Contrast table'):
+    if not paths or not a11y_done(C, r'^Contrast'):
         return panel('contrast', P, pending(C, P['who'], P['file_label']), ('waiting', P['who']))
     d = json.loads(paths[0].read_text())
     FIG['contrast_source'] = rel(paths[0])
@@ -847,13 +852,22 @@ def contrast_from(d, C):
 def slot_tokens(C):
     P = C['panels']['tokens']
     notes = ROOT / C['slots']['tokens']['notes']
-    t = notes.read_text() if notes.exists() else ''
-    m = re.search(r'parity[^\n]*?`([^`]+\.(?:json|txt|log|md))`', t, flags=re.I)
+    txt = notes.read_text() if notes.exists() else ''
+    m = re.search(r'(work/[\w./-]*[Pp]arity[\w.-]*\.json)', txt)
     if not m or not (ROOT / m.group(1)).exists():
         return panel('tokens', P, pending(C, P['who'], P['file_label']), ('waiting', P['who']))
-    FIG['token_parity_source'] = m.group(1)
-    raw = (ROOT / m.group(1)).read_text()
-    return panel('tokens', P, f'<p class="intro">The engineer’s parity output, as it ran.</p><pre class="raw" tabindex="0">{esc(raw[:6000])}</pre>', 'ready')
+    d = json.loads((ROOT / m.group(1)).read_text())
+    FIG['token_parity'] = {'source': m.group(1), 'pass': d.get('pass'), 'page': d.get('page'), 'page_sha256': d.get('page_sha256')}
+    par = d['parity']
+    steps = ''.join(f'<tr><th scope="row">{esc(s["step"].capitalize())}</th><td>{"Passes" if s["result"] == "pass" else "<b>Fails</b>"}</td><td>{esc(strip_codes(s["detail"]))}</td></tr>' for s in d['suite']['steps'])
+    page = ''.join(f'<tr><th scope="row">{esc(c["check"][:1].upper() + c["check"][1:])}</th><td>{"Passes" if c["pass"] else "<b>Fails</b>"}</td><td>{esc(strip_codes(c["detail"]))}</td></tr>' for c in d.get('page_checks', []))
+    tf = d['token_files']
+    body = (f'<p class="intro">{"tokens.css and tokens.json agree" if par["pass"] else "The token files disagree"}: {esc(par["output"][0].split(": ", 1)[-1])}. '
+            f'Release {esc(tf.get("version", ""))}, {tf["tokens.css"]["bytes"]:,} and {tf["tokens.json"]["bytes"]:,} bytes.</p>'
+            f'<h3 class="sub">The token tests</h3><div class="tw" role="region" tabindex="0" aria-label="The token tests; scrolls sideways"><table><thead><tr><th scope="col">Step</th><th scope="col">Result</th><th scope="col">What it found</th></tr></thead><tbody>{steps}</tbody></table></div>'
+            f'<h3 class="sub">The preview against the token files</h3><div class="tw" role="region" tabindex="0" aria-label="The preview against the token files; scrolls sideways"><table><thead><tr><th scope="col">Check</th><th scope="col">Result</th><th scope="col">What it found</th></tr></thead><tbody>{page}</tbody></table></div>'
+            f'<p class="caption">Run {esc(words_when(d["suite"].get("run", "")))} by the engineer on the Gate 2 preview.</p>')
+    return panel('tokens', P, body, 'ready' if d.get('pass') else ('waiting', P['who']))
 
 
 def ev_label(stem):
@@ -869,44 +883,110 @@ def ev_label(stem):
     return s.replace('-', ' '), ''
 
 
+def shot_row(files, labels, region_label):
+    figs = []
+    for k, (p, lab) in enumerate(zip(files, labels)):
+        r = image({'copy': rel(p)}, slug('Evidence', p.stem.split('_', 1)[-1]))
+        figs.append(f'<figure class="phone"><img src="{r["src"]}" width="{r["w"]}" height="{r["h"]}" alt="{esc(lab)}" loading="{"eager" if k < 3 else "lazy"}" decoding="async"><figcaption>{esc(lab)}</figcaption></figure>')
+    return f'<div class="phones" role="region" tabindex="0" aria-label="{esc(region_label)}; scrolls sideways">{"".join(figs)}</div>'
+
+
+def a11y_findings(C):
+    p = ROOT / C['slots']['screens']['notes']
+    t = p.read_text() if p.exists() else ''
+    out = []
+    for sev in ('Should fix', 'Could fix'):
+        sec = md_section(t, [re.escape(sev)]) or ''
+        for m in re.finditer(r'^\*\*([A-Z]-\d+)\.\s*(.+?)\*\*', sec, flags=re.M):
+            out.append((sev, m.group(1), m.group(2)))
+    return out
+
+
+def walk_html(d, ev, title, key):
+    parts = []
+    for w in ('1440', '390'):
+        stops = d['widths'].get(w, [])
+        if not stops:
+            continue
+        seen, pick = set(), []
+        for s in stops:
+            if s['segment'] not in seen or s['visibility'] != 'clear':
+                pick.append(s)
+                seen.add(s['segment'])
+        files = [ev / s['screenshot'] for s in pick if s.get('screenshot') and (ev / s['screenshot']).exists()]
+        labs = [f'Stop {s["stop"]}, {s["segment"]}: {s["role"]} “{s["name"] or "no name"}”, {s["visibility"]}' for s in pick if s.get('screenshot') and (ev / s['screenshot']).exists()]
+        rows = ''.join(f'<tr><td class="num">{s["stop"]}</td><td>{esc(s["segment"])}</td><td>{esc(s["keys"])}</td><td>{esc(s["role"] or "")}</td><td>{esc(s["name"] or "")}</td><td>{esc(s["visibility"])}</td></tr>' for s in stops)
+        parts.append(f'<h4 class="sheet-h">At {w} px: {len(stops)} stops</h4><p class="caption">The first stop of each part of the walk, and every stop whose focus was not fully clear, at true size.</p>'
+                     + shot_row(files, labels=labs, region_label=f'{title} at {w} px')
+                     + f'<details class="more"><summary>Every stop at {w} px, with its accessible name</summary><div class="tw" role="region" tabindex="0" aria-label="Stops at {w} px; scrolls sideways"><table><thead><tr><th scope="col">Stop</th><th scope="col">Part</th><th scope="col">Keys</th><th scope="col">Role</th><th scope="col">Accessible name</th><th scope="col">Focus</th></tr></thead><tbody>{rows}</tbody></table></div></details>')
+        FIG.setdefault('keyboard', {})[f'{key}-{w}'] = {'stops': len(stops), 'shown': len(files)}
+    return ''.join(parts)
+
+
 def slot_screens(C):
     P = C['panels']['screens']
     d = ROOT / C['slots']['screens']['dir']
     parts, waiting = [], []
+    fnd = a11y_findings(C)
+    if fnd and a11y_done(C, r'.'):
+        li = ''.join(f'<li><span class="sev">{esc(s)}</span> {esc(strip_codes(x).rstrip("."))}.</li>' for s, c, x in fnd)
+        MOVED.update(c for _, c, _ in fnd)
+        parts.append(f'<h3 class="sub">What the accessibility lead found</h3><p>{nw(len(fnd)).capitalize()} findings, none a failure of WCAG 2.2 at level AA, each with its fix and its owner in the accessibility lead’s report.</p><ul class="findings">{li}</ul>')
     if a11y_done(C, r'^Opening screens'):
         opens = sorted(d.glob('*_Open-*.png'))
         phone = [p for p in opens if p.stem.endswith('-390')]
         desk = [p for p in opens if p.stem.endswith('-1440')]
-        strip = []
-        for p in phone:
-            lab, _ = ev_label(p.stem)
-            r = image({'copy': rel(p)}, slug('Evidence', p.stem.split('_', 1)[-1]))
-            strip.append(f'<figure class="phone"><img src="{r["src"]}" width="{r["w"]}" height="{r["h"]}" alt="{esc(lab)}, the opening screen at 390 px" loading="lazy" decoding="async"><figcaption>{esc(lab)}</figcaption></figure>')
+        parts.append(f'<h3 class="sub">Each chapter’s opening screen</h3><p>The opening screen of every chapter, the identity proofs and the preview’s new front page, at 390 px on a phone, in one row at true size. Each opens at 1440 px below the row.</p>'
+                     + shot_row(phone, [ev_label(p.stem)[0] for p in phone], 'Opening screens at 390 px'))
         dets = []
         for p in desk:
             lab, _ = ev_label(p.stem)
             r = image({'copy': rel(p)}, slug('Evidence', p.stem.split('_', 1)[-1]))
             dets.append(f'<details class="more"><summary>{esc(lab)} at 1440 px</summary>{frame(r, lab + ", the opening screen at 1440 px")}</details>')
-        parts.append(f'<h3 class="sub">Each chapter’s opening screen</h3><p>The opening screen of every chapter and of the identity proofs, at 390 px wide on a phone, in one row at true size. Each opens at 1440 px below it.</p>'
-                     f'<div class="phones" role="region" tabindex="0" aria-label="Opening screens at 390 px; scrolls sideways">{"".join(strip)}</div><div class="desk">{"".join(dets)}</div>')
+        parts.append(f'<div class="desk">{"".join(dets)}</div>')
         FIG['screens_open'] = len(opens)
     else:
         waiting.append('the opening screens')
-    groups = [('keyboard', r'^Keyboard walk on the frozen', 'The keyboard walk', '*_Keyboard-*.png'),
-              ('motion', r'^Reduced-motion', 'Motion, normal and reduced', '*_Motion-*.png'),
-              ('forced', r'^Forced-colors', 'Forced colors', '*_Forced-Colors-*.png'),
-              ('front', r'^Keyboard walk on the preview', 'The keyboard walk on the preview’s front pages', '*_Front-*.png')]
-    for key, pat, h, glb in groups:
-        if not a11y_done(C, pat):
-            waiting.append(h[0].lower() + h[1:])
-            continue
-        files = sorted(d.glob(glb))
-        tiles = []
-        for p in files:
-            lab = p.stem.split('_', 1)[-1].replace('-', ' ')
-            r = image({'copy': rel(p)}, slug('Evidence', p.stem.split('_', 1)[-1]))
-            tiles.append(f'<li>{frame(r, lab)}<span class="nm">{esc(lab)}</span></li>')
-        parts.append(f'<h3 class="sub">{esc(h)}</h3><details class="more"><summary>Open {len(files)} pictures at true size</summary><ul class="tiles shots">{"".join(tiles)}</ul></details>')
+    kw = d / '20261111_Gate-2-Keyboard-Walk.json'
+    if a11y_done(C, r'^Keyboard walk on the frozen') and kw.exists():
+        parts.append('<h3 class="sub">The keyboard walk on the chapters page</h3><p>Keys only, from the top through the skip link, the contents, a rule and its cross-reference, a live form in chapter 18, a player in chapter 17 and the token table’s search and copy in chapter 26.</p>'
+                     + walk_html(json.loads(kw.read_text()), d, 'Keyboard walk', 'frozen'))
+    else:
+        waiting.append('the keyboard walk')
+    kp = d / '20261111_Gate-2-Keyboard-Walk-Preview.json'
+    if a11y_done(C, r'^Keyboard walk on the preview') and kp.exists():
+        parts.append('<h3 class="sub">The keyboard walk on the preview’s front pages</h3><p>The cover, the contents and the new “Where to start” page, by keys alone.</p>'
+                     + walk_html(json.loads(kp.read_text()), d, 'Keyboard walk on the preview', 'preview'))
+    else:
+        waiting.append('the keyboard walk on the preview')
+    mf = d / '20261111_Gate-2-Motion-Frames.json'
+    if a11y_done(C, r'^Reduced-motion') and mf.exists():
+        m = json.loads(mf.read_text())
+        rows = []
+        for r in m['reduced']:
+            pl = r['player']
+            files = sorted(d.glob(f'*_Motion-Ch17-{pl if pl[0].isdigit() else pl.capitalize()}-*.png'))
+            order = ['Reduced-Rest', 'Reduced-Final', 'Normal-Rest', 'Normal-Frame-1', 'Normal-Frame-2', 'Normal-Frame-3']
+            files = sorted(files, key=lambda p: next((i for i, o in enumerate(order) if p.stem.endswith(o)), 9))
+            labs = [p.stem.split(f'-{pl}-' if pl[0].isdigit() else f'-{pl.capitalize()}-', 1)[-1].replace('-', ' ').replace('Reduced', 'Reduced motion,').replace('Normal', 'Normal motion,') for p in files]
+            nm = f'Player {pl.replace("-", ".", 1)}' if pl[0].isdigit() else f'The {pl.lower()} player'
+            rows.append(f'<details class="more"><summary>{esc(nm)}: {esc(r["afterPlay"]["status"])}</summary>{shot_row(files, labs, nm)}</details>')
+        ts = m.get('themeSwitch')
+        theme = ''
+        tfiles = sorted(d.glob('*_Motion-Ch18-Theme-Switch-*.png'))
+        if tfiles:
+            theme = f'<details class="more"><summary>Chapter 18’s theme switch, at once in both modes</summary>{shot_row(tfiles, [p.stem.split("Switch-", 1)[-1].replace("-", " ") for p in tfiles], "Theme switch")}</details>'
+        parts.append(f'<h3 class="sub">Motion, normal and reduced</h3><p>With motion reduced, each of chapter 17’s {nw(len(m["reduced"]))} players lands on its last frame the moment Play is pressed, and nothing moves after. With motion on, each runs its frames. Each row opens to its pictures at true size.</p>{"".join(rows)}{theme}')
+    else:
+        waiting.append('motion, normal and reduced')
+    fc = d / '20261111_Gate-2-Forced-Colors.json'
+    if a11y_done(C, r'^Forced-colors') and fc.exists():
+        f = json.loads(fc.read_text())
+        files = [d / x['file'] for x in f if (d / x['file']).exists()]
+        labs = [x['file'].split('Forced-Colors-', 1)[-1].replace('-1440.png', '').replace('-', ' ') for x in f if (d / x['file']).exists()]
+        parts.append(f'<h3 class="sub">Forced colors</h3><p>Chapters 05, 11, 17 and 18 with the system’s forced colors on, as Windows high contrast draws them.</p><details class="more"><summary>Open {nw(len(files))} pictures at true size</summary>{shot_row(files, labs, "Forced colors")}</details>')
+    else:
+        waiting.append('forced colors')
     if waiting and not parts:
         return panel('screens', P, pending(C, P['who'], P['file_label']), ('waiting', P['who']))
     if waiting:
@@ -926,15 +1006,28 @@ def slot_scores(C):
         parts.append(f'<h3 class="sub">The creative director’s scores</h3>{pending(C, P["who_cd"], P["cd_file_label"])}')
         status = ('waiting', P['who_cd'])
     dp = ROOT / S['drift']
-    sec = md_section(dp.read_text(), [r'score']) if dp.exists() else None
+    dtext = dp.read_text() if dp.exists() else ''
+    sec = md_section(dtext, [r'score']) if dp.exists() else None
     m = re.search(r'\b([1-5])\b', sec or '') if sec and 'pending' not in sec.lower() else None
     if m:
-        FIG['drift_score'] = {'source': rel(dp), 'section': sec}
-        parts.append(f'<h3 class="sub">The drift review</h3><p class="big">{esc(m.group(1))}<span> of 5</span></p>'
-                     + ''.join(f'<p>{md_inline(x)}</p>' for x in sec.split('\n\n') if x.strip()))
+        def titles(name):
+            s = md_section(dtext, [name]) or ''
+            return [(a, b.rstrip('.')) for a, b in re.findall(r'^\*\*([A-Z]{1,2}\d+)\.\s*(.+?)\*\*', s, flags=re.M)]
+        must, should = titles(r'must fix'), titles(r'should fix')
+        MOVED.update(a for a, _ in must + should)
+        FIG['drift'] = {'source': rel(dp), 'score': int(m.group(1)), 'must_fix': len(must), 'should_fix': len(should)}
+        lead = re.sub(r'^\*\*[^*]*\*\*\s*', '', sec.strip())
+        li = lambda xs: ''.join(f'<li>{md_inline(b)}.</li>' for _, b in xs)
+        parts.append(f'<h3 class="sub">The drift review</h3><div class="drift"><p class="big">{esc(m.group(1))}<span> of 5</span></p><div>'
+                     + ''.join(f'<p>{md_inline(x)}</p>' for x in lead.split('\n\n') if x.strip())
+                     + f'<p>{nw(len(must)).capitalize()} Must fix and {nw(len(should))} Should fix, each with its fix and its owner in the team’s report.</p></div></div>'
+                     + f'<div class="tcols"><div class="tcol"><h4>Must fix</h4><ul>{li(must)}</ul></div><div class="tcol"><h4>Should fix</h4><ul>{li(should)}</ul></div></div>')
     else:
         parts.append(f'<h3 class="sub">The drift review</h3>{pending(C, P["who_drift"], P["drift_file_label"])}')
-        status = status if status != 'ready' else ('waiting', P['who_drift'])
+        status = ('waiting', P['who_cd']) if status != 'ready' else ('partial', P['who_drift'])
+        return panel('scores', P, ''.join(parts), status)
+    if status != 'ready':
+        status = ('partial', P['who_cd'])
     return panel('scores', P, ''.join(parts), status)
 
 
@@ -948,7 +1041,20 @@ def cd_table(d):
         cells = ''.join(f'<td class="num sc{" lo" if isinstance(sc.get(c["key"]), (int, float)) and sc.get(c["key"]) < 4 else ""}">{esc(sc.get(c["key"], ""))}</td>' for c in crit)
         rows.append(f'<tr><th scope="row">{esc(it.get("name", it.get("key")))}</th>{cells}<td>{"Yes" if it.get("ready") else "<b>Not yet</b>"}</td></tr>')
     FIG['cd_scores'] = {'items': len(items), 'ready': sum(1 for i in items if i.get('ready'))}
-    return (f'<h3 class="sub">The creative director’s scores</h3><p>Scores run from 1 to 5, and an item is ready at 4 or more on every criterion. A box marks a score under 4.</p>'
+    tot = d.get('totals', {})
+    nr = [i for i in items if not i.get('ready')]
+    summ = (f'<p class="intro">{nw(len(items) - len(nr)).capitalize()} of {len(items)} items are ready.'
+            + ((f' {nr[0]["name"]}, is not ready yet, with {nw(tot.get("must_fix", 0))} Must fix.' if len(nr) == 1 else
+                f' {join_words([i["name"] for i in nr])} are not ready yet, with {nw(tot.get("must_fix", 0))} Must fix between them.') if nr else '')
+            + f' The creative director lists {nw(tot.get("should_fix", 0))} Should fix across the guide.</p>')
+    under = []
+    for i in items:
+        for c in crit:
+            v = i.get('scores', {}).get(c['key'])
+            if isinstance(v, (int, float)) and v < 4:
+                under.append(f'<li><b>{esc(i["name"])}, {esc(c["name"].lower())}, {v}.</b> {md_inline(i.get("reasons", {}).get(c["key"], ""))}</li>')
+    summ += f'<ul class="findings">{"".join(under)}</ul>' if under else ''
+    return (f'<h3 class="sub">The creative director’s scores</h3>{summ}<p>Scores run from 1 to 5, and an item is ready at 4 or more on every criterion. A box marks a score under 4.</p>'
             f'<div class="tw" role="region" tabindex="0" aria-label="Scores; scrolls sideways"><table class="scores"><thead><tr>{head}</tr></thead><tbody>{"".join(rows)}</tbody></table></div>')
 
 
@@ -1032,11 +1138,12 @@ def panel(key, P, body, status):
     STATUS[key] = status
     n = P['n']
     refs = P['refs']
+    check_refs(refs, 'panel ' + key)
     if MOVED:
-        refs += ' · from teammates’ files: ' + ' · '.join(sorted(MOVED, key=lambda c: (c.split('-')[0], int(c.split('-')[1]))))
+        refs += ' · from teammates’ files: ' + ' · '.join(sorted(MOVED, key=lambda c: (re.sub(r'[^A-Z]', '', c), int(re.sub(r'\D', '', c) or 0))))
         MOVED.clear()
     return (f'<section class="sec" id="p-{key}" aria-labelledby="h-{key}"><div class="sec-top"><p class="label">Panel {n}</p>{status_chip(status)}</div>'
-            f'<h2 class="sec-h" id="h-{key}">{esc(P["title"])}</h2>{body}{refline(refs, "panel " + key)}</section>')
+            f'<h2 class="sec-h" id="h-{key}">{esc(P["title"])}</h2>{body}<p class="codes">Reference: {esc(refs)}</p></section>')
 
 
 def status_chip(st, short=False):
@@ -1221,6 +1328,8 @@ td.sc.lo{box-shadow:inset 0 0 0 var(--oa-border-width-rule) var(--wstrong);font-
 .tcol ul{margin:var(--oa-space-050) 0 var(--oa-space-200);padding-left:1.2em;font:var(--oa-type-body-small)}
 .tcol li{margin-bottom:var(--oa-space-050)}
 .big{font:var(--oa-type-section);margin:0}
+.drift{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--oa-space-200) var(--oa-space-500);align-items:start}
+@media (min-width:48em){.drift{grid-template-columns:auto minmax(0,1fr)}}
 .big span{font:var(--oa-type-h4)}
 .wfig{margin:0}
 .wt th{width:16rem;font-weight:600}
@@ -1245,6 +1354,9 @@ td.mx.lt{color:var(--oa-color-palette-newsprint)}
 .phone figcaption{font:var(--oa-type-caption);color:var(--wink-2)}
 .desk{margin-top:var(--oa-space-200);display:grid;grid-template-columns:minmax(0,1fr);gap:0 var(--oa-space-400)}
 @media (min-width:64em){.desk{grid-template-columns:repeat(2,minmax(0,1fr))}.desk details[open]{grid-column:1/-1}}
+.findings{margin:0 0 var(--oa-space-200);padding-left:1.2em;max-width:var(--oa-layout-measure-intro-max)}
+.findings li{margin-bottom:var(--oa-space-100)}
+.sev{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--ink-2);margin-right:.4em}
 pre.raw{white-space:pre-wrap;font-size:.875rem;background:var(--white);color:var(--wink);padding:var(--oa-space-200);border:var(--oa-border-width-hairline) solid var(--whair);max-height:28rem;overflow:auto}
 .foot{margin-top:var(--oa-space-1000);padding-top:var(--oa-space-200);border-top:var(--oa-border-width-hairline) solid var(--hair);max-width:none}
 @media print{.toc{display:none}details{display:block}}

@@ -91,3 +91,33 @@ D2-xxx | The four-width guide check runs with --no-captures | The accessibility 
 D2-xxx | Token parity evidence goes to work/boards/phase-2/gate-2/evidence/20261111_Token-Parity-Results.json, written by token_parity_evidence.py | The board builder reads it there, with the page's own copies of both token files checked against them
 
 
+
+## Calls for the main session
+
+1. **Chapter 26 says the guide loads Google Fonts.** Rule 26.5's For builders line reads "The fonts link this guide uses: <the Google Fonts URL>." In the preview it is no longer true: the guide carries its fonts. The brief keeps chapters unchanged in the preview, so it stands for now. Proposed for the fix pass (owner: engineer; the words are in `stage_c_ch26_build.py`, line 762, then `26-tokens.json`), with the editor's sign-off: "The fonts link for a product page: <URL>." Rule 26.5's own words (a product links the fonts) stay true.
+2. **Rights ledger.** Enter T-INTER, T-INTERTIGHT and T-LORA from the table above.
+3. **"Gate 2" on the page.** The editor's "Preview for approval" stands; the guide check's codes test would fail "Gate" in reader text. To name the gate, change `cover_folio`, `edition` and `description` in `work/build/guide/front/edition.json` and allow it in the codes test.
+4. **Republish as version 8** from `work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html` (DR-225), after the guide check below.
+5. **Commit hygiene.** New files to commit: the fonts folder (six WOFF2 files, three OFL.txt, the manifest), `fonts_fetch.py`, `token_parity_evidence.py`, `font_fidelity_check.js`, `edition.json`, the demo front file, the preview with its build report and check results, and the evidence files below. The token suite rewrote `work/build/tests/tokens/20261106_Token-Test-Results.json` with this run's results.
+
+## Evidence for the board builder
+
+- Guide check results: `work/boards/phase-2/gate-2/20261111_Gate-2-Preview-Guide-Check-Results.json`
+- Guide check self-test (planted faults): `work/boards/phase-2/gate-2/20261111_Guide-Check-Plant-Results.json`
+- Token parity: `work/boards/phase-2/gate-2/evidence/20261111_Token-Parity-Results.json`, from `token_parity_evidence.py`: the parity test's own output, the token suite's six steps, and the page's inlined tokens.css and both downloads checked against the files
+- Sprite check: `work/boards/phase-2/gate-2/evidence/20261111_Sprite-Check-Results.json`
+- Font fidelity: `work/boards/phase-2/gate-2/evidence/20261111_Font-Fidelity-Results.json`
+- Build report with page weight by part: `work/boards/phase-2/gate-2/20261111_Gate-2-Preview-Build-Report.json`
+
+## Checks
+
+Results of each check as it finished. The page checked is the build of 17:12, SHA-256 in the guide check's results.
+
+- **Strict build:** `guide_build.py --strict`, 0 warnings, 0 notes; 16 chapters, 185 rules, 424 specimens, 9,441,768 bytes.
+- **Build self-test:** 27 of 27 scenarios, 294 of 294 expectations, five of them new for Gate 2 (the front page's place and links, a later step with an href, a stop on an href that matches no id, a stop on a schema break, the fonts and licenses).
+- **Font bytes:** `fonts_fetch.py --check`, 9 of 9 files match the manifest; `fonts_fetch.py --page` on the preview, six data URLs, each decoding to its manifest file by SHA-256, each once, with its unicode range; no `<link>`, `@import` or `url()` to a font host; each license on the page word for word its OFL.txt.
+- **Token tests:** `run_token_tests.py`, all six steps pass: build check (504 tokens), parity (624 root properties, 0 failures), rules (0 failures), self-test (44 of 44 plants), Style Dictionary 5.8.0 cross-check (0 disagreements), rendered in Chromium 153 (0 failures). Token set 6.0.0-gate2.8.
+- **Token parity evidence:** `token_parity_evidence.py`, the parity test exit 0 and 6 of 6 page checks: the page inlines tokens.css byte for byte; the tokens.css and tokens.json downloads and both zips hold the files; the page prints 6.0.0-gate2.8.
+- **Sprite check:** `sprite_check.js`, PASS: civic-line 125, pillar 8, fit-24 37, utility 36 symbols; every pair at 1x and 2x with a largest difference of 0; the 41 draw the fit alone at 1x and 1.5x and the master alone at 2x.
+- **Font fidelity:** `font_fidelity_check.js`, 19 of 19 elements of version 7 (fonts from Google) and the preview (fonts inside) match pixel for pixel at 1440 px: four chapter heads, two rule titles, a rule's text, the cover's tagline and pillars, a part opener and the first ten pieces of Lora text. Version 7 asked Google for 4 font files, the preview for none.
+- **License disclosures** (a scratch script): at 1440 and 390 px, with motion and reduced motion, each of the three is reached by Tab with a 2 px ring, stands 44 px tall, opens on Enter and closes on Space; the chevron turns 180 degrees in 0.2 s, or 0 s under reduced motion; no sideways scroll with all three open; the license text on Charcoal at 13.29 to 1; axe-core 4.10.2 on the open colophon, 0 violations.
