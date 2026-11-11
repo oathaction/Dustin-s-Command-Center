@@ -1,6 +1,7 @@
-/* A highlighted bar: surface from the page, role data, emphasis on the bar the headline names, context on the rest.
-   On Newsprint: Charcoal 13.29 to 1, Stone 4.29 to 1, the two 3.10 to 1 apart.
-   Each bar carries its count, so the highlight never rests on color alone. */
+/* A highlighted bar: surface from the page, role data, emphasis on the bar
+   the headline names, context on the rest. On Newsprint: Charcoal 13.29 to
+   1, Stone 4.29 to 1, the two 3.10 to 1 apart. Each bar carries its count,
+   so the highlight never rests on color alone. */
 .oa-ex-bars {
   margin: 0;
   font: var(--oa-type-body);

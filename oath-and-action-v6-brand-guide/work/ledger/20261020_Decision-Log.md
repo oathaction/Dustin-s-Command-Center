@@ -3006,3 +3006,27 @@ The main session asked three questions with its plan for round 2, board C and th
 | D2-1608 | The stepper, the diagram and the search read words with their spaces collapsed | A builder's own markup layout should never change what a status line says or what a search matches |
 | D2-1609 | Path data in a code panel breaks only at its own spaces, and an SVG inside a status line, an alert or a template keeps its children on one line | A new space in path data made "V5" a word for the studio-word scan; a status line's raw words should carry no line breaks |
 | D2-1610 | The stepper's four buttons sit two by two, one a row under 11rem a column | CD-S10; the anatomy plate draws them so, and Next step never wraps alone |
+
+### Accessibility lead, the fix pass (`20261111_Stage-C-Round-2-Accessibility-Fix-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1611 | The WCAG text lives in a dated data file, `20261111_WCAG22-Criteria-Text.json`, written by `stage_c_ch19_build.py --read-wcag` from a copy fetched from w3.org, and Rule 19.1 prints from it | One reader for both the store and the check; anyone can refetch, compare the SHA-256 and rewrite it |
+| D2-1612 | The check reads the printed HTML back with the same reader and rereads the stored file, so a printer fault and an order fault both stop the build | The round 1 fault was the printer's grouping, which a check against the printer's own input would not catch |
+| D2-1613 | A labeled list item prints as a term and its words, as the Recommendation sets them, with no colon added | The colon was the research notes' own mark |
+| D2-1614 | 1.3.1 and 2.4.3 read Met in part, with chapter 20 owing a whole page's headings and focus order | Call 11's test applied to every Met line: the rules state both for components only, as 1.3.2 and 2.4.6 already said |
+| D2-1615 | 2.2.1 reads Not used today | No product sets a time limit; the loop's pace is reader-started and has Pause |
+| D2-1616 | Rule 19.5 says a setting turns a tilt or shake response off, so 2.5.4 stays Met | BE's first fix; the rule now states both halves of the criterion |
+| D2-1617 | 1.4.13 reads Met in part, and 3.3.4 a Gap owed by chapter 18 | BE-S4; call 11 writes no chapter 18 rule for 3.3.4 in this pass |
+| D2-1618 | The matrix keeps Master Brief section 22's 14 checks, worded for any page, and adds "Forms and messages" as a 15th | PP-S10; no existing check heard a form's error before the device script |
+| D2-1619 | Automated checks print a "To run it" line with a command a builder outside the studio can run, never a studio file path | CD-S12 and PP-S12's finding on studio paths |
+| D2-1620 | An open result prints "Open, to fix before launch." from an `open` field, and the generator stops on a role name in a printed result | BE-S7 |
+| D2-1621 | Chapter 19's opener is the four status counts, computed from the map | Call 8; the counts move with the map |
+| D2-1622 | Chapter 18's failure plates leave R-01's subject for Loop R8 and Reform R-30, housing, both unflagged, and `s-18-08-failure` moves with them | Call 3 names housing; the disclosure plate taught the same safe-seat mechanism BE-M4 found in the others |
+| D2-1623 | A failure plate that shows real atlas lines (`s-18-08`, `s-18-09`) carries no Illustrative chip, and its alt names the atlas | DR-97 and call 3: the label marks invented content only |
+| D2-1624 | Rules 18.15 and 18.21 read the field ground's palette color from tokens.json | Call 1 changed it; a typed color would drift at the next release |
+| D2-1625 | Chapter 18's token lists take `--oa-color-state-error-bar` now that 6.0.0-gate2.8 has landed | DR-218; the old name is an alias that leaves with 6.1.0 |
+| D2-1626 | `s-18-20-failure` shows H.99001 at step 2, Hearing | Chapter 11 has it there; one invented bill means one thing (D2-1364) |
+| D2-1627 | `s-18-10-failure`'s last actions are dates the guide already prints for each bill (H.99003 became law April 2; S.99002 filed February 20; H.99001 filed January 16), newest first under its arrow | Call 10; no new invented date, so no new conflict |
+| D2-1628 | The keys files follow the component engineer's sets: the ask is the fifth stop, the location list has four places, and the form's path checks the ask's own "Sending" and "Remind me" | The landed sets' order and words (D2-1353) |
+| D2-1629 | Chapter 18 names `s-18-opener` as its opener | Call 8; the systems designer draws it, my generator places it |

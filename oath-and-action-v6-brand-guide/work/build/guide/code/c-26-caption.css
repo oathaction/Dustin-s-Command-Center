@@ -1,5 +1,6 @@
-/* A caption under a chart: surface from the page, role text, emphasis secondary, no state, no component token.
-   On Newsprint it measures 5.49 to 1; in the dark theme, on Charcoal, 7.26 to 1. */
+/* A caption under a chart: surface from the page, role text, emphasis
+   secondary, no state, no component token. On Newsprint it measures 5.49 to
+   1; in the dark theme, on Charcoal, 7.26 to 1. */
 .oa-ex-figure {
   margin: 0;
   font: var(--oa-type-body);

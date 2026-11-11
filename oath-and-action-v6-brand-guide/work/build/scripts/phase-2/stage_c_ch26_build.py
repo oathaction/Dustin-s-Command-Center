@@ -20,6 +20,7 @@ afterwards and changes them through this script's data.
 import argparse
 import html
 import importlib.util
+import textwrap
 import json
 import re
 import sys
@@ -494,7 +495,10 @@ def css_lines(text):
     while i < len(text):
         if text.startswith("/*", i):
             j = text.index("*/", i) + 2
-            out.append(text[i:j].strip() if depth == 0 else pad() + text[i:j].strip())
+            words = " ".join(text[i + 2:j - 2].split())
+            lines = textwrap.wrap(words, 76, initial_indent="/* ", subsequent_indent="   ")
+            lines[-1] += " */"
+            out += [pad() + x for x in lines]
             i = j
             continue
         if text[i] in " \n":
@@ -533,9 +537,11 @@ def code_sets():
     inner = re.sub(r"<!--.*?-->", "", w[re.search(r"<svg\b[^>]*>", w).end():w.rindex("</svg>")], flags=re.S).strip()
     inner = re.sub(r">\s+<", "><", inner)
     top = max(v for _, v in WEEKS)
+    # one element to a line (call 16): a grid or flex parent ignores the white space between its children
     week_rows = lambda cls: "\n".join(
-        f'    <li class="{cls}-row{f" {cls}-row--subject" if i == 2 and cls == "oa-ex-bars" else ""}"><span class="{cls}-label">{lab}</span>'
-        f'<span class="{cls}-track"><span class="{cls}-bar {cls}-bar--{i + 1}"></span><span class="{cls}-value">{v}</span></span></li>'
+        f'    <li class="{cls}-row{f" {cls}-row--subject" if i == 2 and cls == "oa-ex-bars" else ""}">\n'
+        f'      <span class="{cls}-label">{lab}</span>\n      <span class="{cls}-track">\n'
+        f'        <span class="{cls}-bar {cls}-bar--{i + 1}"></span>\n        <span class="{cls}-value">{v}</span>\n      </span>\n    </li>'
         for i, (lab, v) in enumerate(WEEKS))
     widths = lambda cls: "\n".join(f".{cls}-bar--{i + 1} {{ width: {round(v / top * 78)}% }}" for i, (_, v) in enumerate(WEEKS))
     chart_css = lambda cls: (
@@ -557,7 +563,7 @@ def code_sets():
                 ".oa-ex-figure-caption { margin: var(--oa-space-150) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }\n")}
     sets["c-26-download"] = {
         "html": ('<div class="oa-surface-white oa-ex-download">\n  <p class="oa-ex-download-illus">Illustrative</p>\n  <p class="oa-ex-download-file">Hearing photo, Capitol steps</p>\n'
-                 '  <button type="button" class="oa-ex-download-button" aria-disabled="true" aria-describedby="oa-ex-download-why">Download the photo</button>\n'
+                 '  <button type="button" class="oa-ex-download-button" aria-disabled="true"\n    aria-describedby="oa-ex-download-why">Download the photo</button>\n'
                  '  <p class="oa-ex-download-why" id="oa-ex-download-why">Choose a size to download.</p>\n</div>\n'),
         "css": ("/* A download button that waits for a choice: surface White (the class on the block), role action, state disabled,\n"
                 "   then the button's own component tokens, which win. The label and dashed edge measure " + F["ds_w"] + " to 1 on White.\n"
@@ -589,10 +595,12 @@ def code_sets():
     sets["c-26-warning"] = {
         "html": ('<div class="oa-surface-prussian oa-ex-track">\n  <p class="oa-ex-track-illus">Illustrative</p>\n  <p class="oa-ex-track-step">Step 2 of 6: Hearing</p>\n'
                  '  <p class="oa-ex-warning">\n    <svg class="oa-ex-warning-icon" viewBox="0 0 24 24" width="24" height="24"\n'
-                 '      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"\n'
+                 '      fill="none" stroke="currentColor" stroke-width="2"\n      stroke-linecap="round" stroke-linejoin="round"\n'
                  '      aria-hidden="true" focusable="false" data-icon="U-warning" data-icon-family="utility">\n'
-                 + "".join(f"      {x}\n" for x in re.findall(r"<[^>]+>", inner)) +
-                 '    </svg>\n    <span class="oa-ex-warning-words"><strong class="oa-ex-warning-word">Warning:</strong> The committee moved the hearing to March 12. Check the new date before you travel.</span>\n  </p>\n</div>\n'),
+                 + "".join(f"      {x}\n" for x in (re.sub(r'd="([^"]{60,})"', lambda m: 'd="' + "\n        ".join(textwrap.wrap(m.group(1), 56)) + '"', t)
+                                                    for t in re.findall(r"<[^>]+>", inner))) +
+                 '    </svg>\n    <span class="oa-ex-warning-words">\n      <strong class="oa-ex-warning-word">Warning:</strong> The committee moved\n'
+                 '      the hearing to March 12. Check the new date before you travel.\n    </span>\n  </p>\n</div>\n'),
         "css": ("/* A warning in a tracker on Prussian: surface Prussian (the class on the block), role state, state warning.\n"
                 "   The words in White, " + F["white_pr"] + " to 1; the bar and triangle in Newsprint, " + F["news_pr"] + " to 1. Warning has no hue of its own:\n"
                 "   the word and the triangle carry it, and red never sits on Prussian. */\n"

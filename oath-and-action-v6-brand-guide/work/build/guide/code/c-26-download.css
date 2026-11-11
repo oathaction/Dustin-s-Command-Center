@@ -1,6 +1,8 @@
-/* A download button that waits for a choice: surface White (the class on the block), role action, state disabled,
-   then the button's own component tokens, which win. The label and dashed edge measure 7.74 to 1 on White.
-   The button keeps focus and points to its reason, so a keyboard reader learns why it waits. */
+/* A download button that waits for a choice: surface White (the class on
+   the block), role action, state disabled, then the button's own component
+   tokens, which win. The label and dashed edge measure 7.74 to 1 on White.
+   The button keeps focus and points to its reason, so a keyboard reader
+   learns why it waits. */
 .oa-ex-download {
   padding: var(--oa-space-300) var(--oa-space-200);
   background: var(--oa-color-surface);
