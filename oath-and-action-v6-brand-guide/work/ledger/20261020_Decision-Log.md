@@ -2792,3 +2792,12 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 | D2-1482 | A criterion's rules print in the page's order, "Rule" for one and "Rules" with "and" before the last | The editor's W01 rows |
 | D2-1483 | The maker pages behind Rule 19.9 print as further reading, with a line saying the steps were not checked on a device | None was read or run here; H04 and the honesty rule |
 | D2-1484 | iPhone steps 2 and 6 say "that button" | The editor's fact row on step 1 names the Home button too, so the later steps follow it |
+
+### Component engineer, the editor's pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1485 | The download example offers tokens.css ready and tokens.json in its not-ready state, labeled Illustrative | DR-214 ships those two files only, and the set must still show the unavailable state with its reason |
+| D2-1486 | The download links point at `tokens.css` beside the page, with the guide's own dated file name in `download` | A builder hosts the file beside the page; the guide's live stage shows the link as a builder ships it |
+| D2-1487 | The tracker's live card follows H.99004 | One invented bill means one thing across the guide; chapter 17 moves S.99002 past its committee vote |
+| D2-1488 | The inside focus ring of D2-1475 applies to all three frames that scroll sideways (18.11, 18.12, 18.21) | One look for one behavior, and a frame at the column's edge never cuts its ring |
