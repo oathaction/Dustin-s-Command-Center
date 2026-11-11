@@ -282,5 +282,935 @@
    "4,4": 1
   }
  },
- "date": "2026-11-11"
+ "date": "2026-11-11",
+ "ch17": {
+  "s-17-hinge-correct@1440@1x@no-preference": {
+   "on_load": {
+    "frame": "start",
+    "anims": 0
+   },
+   "reset_unavailable_at_start": true,
+   "after_play": {
+    "frame": "run",
+    "anims": 12,
+    "endMax": 680,
+    "word": "Pause"
+   },
+   "at_end": {
+    "frame": "end",
+    "anims": 0,
+    "status": "Last frame: the wordmark, OATH & ACTION, as its master draws it.",
+    "word": "Play again"
+   },
+   "after_reset": {
+    "frame": "start",
+    "anims": 0
+   },
+   "cells": 4,
+   "end_layer_is_its_master": [
+    "wordmark/20261028_Wordmark-24px-Master.svg",
+    "wordmark/20261028_Wordmark-Display-Master.svg",
+    "wordmark/20261028_Wordmark-24px-Master.svg",
+    "wordmark/20261028_Wordmark-Display-Master.svg"
+   ],
+   "reset_equals_first_frame": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "last_keyframe_vs_end_frame": [
+    {
+     "same": false,
+     "pixels_differing": 151,
+     "max_levels": 7,
+     "of": 6150
+    },
+    {
+     "same": false,
+     "pixels_differing": 5071,
+     "max_levels": 63,
+     "of": 41925
+    },
+    {
+     "same": false,
+     "pixels_differing": 151,
+     "max_levels": 9,
+     "of": 6150
+    },
+    {
+     "same": false,
+     "pixels_differing": 5115,
+     "max_levels": 83,
+     "of": 41925
+    }
+   ],
+   "moving_layer_at_rest_vs_master": [
+    {
+     "same": false,
+     "pixels_differing": 93,
+     "max_levels": 7,
+     "of": 6150
+    },
+    {
+     "same": false,
+     "pixels_differing": 93,
+     "max_levels": 6,
+     "of": 41925
+    },
+    {
+     "same": false,
+     "pixels_differing": 98,
+     "max_levels": 7,
+     "of": 6150
+    },
+    {
+     "same": false,
+     "pixels_differing": 91,
+     "max_levels": 5,
+     "of": 41925
+    }
+   ]
+  },
+  "s-17-lever-correct@1440@1x@no-preference": {
+   "on_load": {
+    "frame": "start",
+    "anims": 0
+   },
+   "reset_unavailable_at_start": true,
+   "after_play": {
+    "frame": "run",
+    "anims": 60,
+    "endMax": 560,
+    "word": "Pause"
+   },
+   "at_end": {
+    "frame": "end",
+    "anims": 0,
+    "status": "Last frame: the lockmark as its master draws it, nine nodes joined by their links, with the red lever at bottom right.",
+    "word": "Play again"
+   },
+   "after_reset": {
+    "frame": "start",
+    "anims": 0
+   },
+   "cells": 4,
+   "end_layer_is_its_master": [
+    "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+    "lockmark/20261107_Lockmark-Display-Master.svg",
+    "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+    "lockmark/20261107_Lockmark-Display-Master.svg"
+   ],
+   "reset_equals_first_frame": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "last_keyframe_vs_end_frame": [
+    {
+     "same": true,
+     "pixels_differing": 0,
+     "max_levels": 0,
+     "of": 2401
+    },
+    {
+     "same": false,
+     "pixels_differing": 1824,
+     "max_levels": 60,
+     "of": 14641
+    },
+    {
+     "same": true,
+     "pixels_differing": 0,
+     "max_levels": 0,
+     "of": 2401
+    },
+    {
+     "same": false,
+     "pixels_differing": 1819,
+     "max_levels": 60,
+     "of": 14641
+    }
+   ],
+   "moving_layer_at_rest_vs_master": [
+    {
+     "same": true,
+     "pixels_differing": 0,
+     "max_levels": 0,
+     "of": 2401
+    },
+    {
+     "same": true,
+     "pixels_differing": 0,
+     "max_levels": 0,
+     "of": 14641
+    },
+    {
+     "same": true,
+     "pixels_differing": 0,
+     "max_levels": 0,
+     "of": 2401
+    },
+    {
+     "same": true,
+     "pixels_differing": 0,
+     "max_levels": 0,
+     "of": 14641
+    }
+   ],
+   "lockmark_48_end_frame_colors": [
+    4,
+    3
+   ]
+  },
+  "s-17-hinge-correct@1440@1x@reduce": {
+   "on_load": {
+    "frame": "start",
+    "anims": 0
+   },
+   "reset_unavailable_at_start": true,
+   "after_play": {
+    "frame": "end",
+    "anims": 0,
+    "slowUnavailable": "true",
+    "why": "Your device asks for reduced motion, so Play shows the last frame at once and Slow motion has nothing to slow.",
+    "tokens": [
+     "0ms",
+     "0ms",
+     "0ms",
+     "0ms",
+     "0ms"
+    ]
+   },
+   "at_end": {
+    "frame": "end",
+    "anims": 0,
+    "status": "Last frame: the wordmark, OATH & ACTION, as its master draws it.",
+    "word": "Play again"
+   },
+   "after_reset": {
+    "frame": "start",
+    "anims": 0
+   },
+   "cells": 4,
+   "end_layer_is_its_master": [
+    "wordmark/20261028_Wordmark-24px-Master.svg",
+    "wordmark/20261028_Wordmark-Display-Master.svg",
+    "wordmark/20261028_Wordmark-24px-Master.svg",
+    "wordmark/20261028_Wordmark-Display-Master.svg"
+   ],
+   "reset_equals_first_frame": [
+    false,
+    true,
+    false,
+    true
+   ]
+  },
+  "s-17-lever-correct@1440@1x@reduce": {
+   "on_load": {
+    "frame": "start",
+    "anims": 0
+   },
+   "reset_unavailable_at_start": true,
+   "after_play": {
+    "frame": "end",
+    "anims": 0,
+    "slowUnavailable": "true",
+    "why": "Your device asks for reduced motion, so Play shows the last frame at once and Slow motion has nothing to slow.",
+    "tokens": [
+     "0ms",
+     "0ms",
+     "0ms",
+     "0ms",
+     "0ms"
+    ]
+   },
+   "at_end": {
+    "frame": "end",
+    "anims": 0,
+    "status": "Last frame: the lockmark as its master draws it, nine nodes joined by their links, with the red lever at bottom right.",
+    "word": "Play again"
+   },
+   "after_reset": {
+    "frame": "start",
+    "anims": 0
+   },
+   "cells": 4,
+   "end_layer_is_its_master": [
+    "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+    "lockmark/20261107_Lockmark-Display-Master.svg",
+    "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+    "lockmark/20261107_Lockmark-Display-Master.svg"
+   ],
+   "reset_equals_first_frame": [
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "s-17-hinge-correct@1440@2x@no-preference": {
+   "on_load": {
+    "frame": "start",
+    "anims": 0
+   },
+   "reset_unavailable_at_start": true,
+   "after_play": {
+    "frame": "run",
+    "anims": 12,
+    "endMax": 680,
+    "word": "Pause"
+   },
+   "at_end": {
+    "frame": "end",
+    "anims": 0,
+    "status": "Last frame: the wordmark, OATH & ACTION, as its master draws it.",
+    "word": "Play again"
+   },
+   "after_reset": {
+    "frame": "start",
+    "anims": 0
+   },
+   "cells": 4,
+   "end_layer_is_its_master": [
+    "wordmark/20261028_Wordmark-24px-Master.svg",
+    "wordmark/20261028_Wordmark-Display-Master.svg",
+    "wordmark/20261028_Wordmark-24px-Master.svg",
+    "wordmark/20261028_Wordmark-Display-Master.svg"
+   ],
+   "reset_equals_first_frame": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "last_keyframe_vs_end_frame": [
+    {
+     "same": false,
+     "pixels_differing": 395,
+     "max_levels": 49,
+     "of": 24600
+    },
+    {
+     "same": false,
+     "pixels_differing": 10285,
+     "max_levels": 72,
+     "of": 167700
+    },
+    {
+     "same": false,
+     "pixels_differing": 388,
+     "max_levels": 23,
+     "of": 24600
+    },
+    {
+     "same": false,
+     "pixels_differing": 10356,
+     "max_levels": 92,
+     "of": 167700
+    }
+   ],
+   "moving_layer_at_rest_vs_master": [
+    {
+     "same": false,
+     "pixels_differing": 148,
+     "max_levels": 6,
+     "of": 24600
+    },
+    {
+     "same": true,
+     "pixels_differing": 0,
+     "max_levels": 0,
+     "of": 167700
+    },
+    {
+     "same": false,
+     "pixels_differing": 149,
+     "max_levels": 6,
+     "of": 24600
+    },
+    {
+     "same": true,
+     "pixels_differing": 0,
+     "max_levels": 0,
+     "of": 167700
+    }
+   ]
+  },
+  "s-17-lever-correct@1440@2x@no-preference": {
+   "on_load": {
+    "frame": "start",
+    "anims": 0
+   },
+   "reset_unavailable_at_start": true,
+   "after_play": {
+    "frame": "run",
+    "anims": 60,
+    "endMax": 560,
+    "word": "Pause"
+   },
+   "at_end": {
+    "frame": "end",
+    "anims": 0,
+    "status": "Last frame: the lockmark as its master draws it, nine nodes joined by their links, with the red lever at bottom right.",
+    "word": "Play again"
+   },
+   "after_reset": {
+    "frame": "start",
+    "anims": 0
+   },
+   "cells": 4,
+   "end_layer_is_its_master": [
+    "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+    "lockmark/20261107_Lockmark-Display-Master.svg",
+    "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+    "lockmark/20261107_Lockmark-Display-Master.svg"
+   ],
+   "reset_equals_first_frame": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "last_keyframe_vs_end_frame": [
+    {
+     "same": true,
+     "pixels_differing": 0,
+     "max_levels": 0,
+     "of": 9604
+    },
+    {
+     "same": false,
+     "pixels_differing": 4782,
+     "max_levels": 70,
+     "of": 58564
+    },
+    {
+     "same": true,
+     "pixels_differing": 0,
+     "max_levels": 0,
+     "of": 9604
+    },
+    {
+     "same": false,
+     "pixels_differing": 4798,
+     "max_levels": 83,
+     "of": 58564
+    }
+   ],
+   "moving_layer_at_rest_vs_master": [
+    {
+     "same": true,
+     "pixels_differing": 0,
+     "max_levels": 0,
+     "of": 9604
+    },
+    {
+     "same": true,
+     "pixels_differing": 0,
+     "max_levels": 0,
+     "of": 58564
+    },
+    {
+     "same": true,
+     "pixels_differing": 0,
+     "max_levels": 0,
+     "of": 9604
+    },
+    {
+     "same": true,
+     "pixels_differing": 0,
+     "max_levels": 0,
+     "of": 58564
+    }
+   ],
+   "lockmark_48_end_frame_colors": [
+    4,
+    3
+   ]
+  },
+  "s-17-hinge-correct@1440@2x@reduce": {
+   "on_load": {
+    "frame": "start",
+    "anims": 0
+   },
+   "reset_unavailable_at_start": true,
+   "after_play": {
+    "frame": "end",
+    "anims": 0,
+    "slowUnavailable": "true",
+    "why": "Your device asks for reduced motion, so Play shows the last frame at once and Slow motion has nothing to slow.",
+    "tokens": [
+     "0ms",
+     "0ms",
+     "0ms",
+     "0ms",
+     "0ms"
+    ]
+   },
+   "at_end": {
+    "frame": "end",
+    "anims": 0,
+    "status": "Last frame: the wordmark, OATH & ACTION, as its master draws it.",
+    "word": "Play again"
+   },
+   "after_reset": {
+    "frame": "start",
+    "anims": 0
+   },
+   "cells": 4,
+   "end_layer_is_its_master": [
+    "wordmark/20261028_Wordmark-24px-Master.svg",
+    "wordmark/20261028_Wordmark-Display-Master.svg",
+    "wordmark/20261028_Wordmark-24px-Master.svg",
+    "wordmark/20261028_Wordmark-Display-Master.svg"
+   ],
+   "reset_equals_first_frame": [
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "s-17-lever-correct@1440@2x@reduce": {
+   "on_load": {
+    "frame": "start",
+    "anims": 0
+   },
+   "reset_unavailable_at_start": true,
+   "after_play": {
+    "frame": "end",
+    "anims": 0,
+    "slowUnavailable": "true",
+    "why": "Your device asks for reduced motion, so Play shows the last frame at once and Slow motion has nothing to slow.",
+    "tokens": [
+     "0ms",
+     "0ms",
+     "0ms",
+     "0ms",
+     "0ms"
+    ]
+   },
+   "at_end": {
+    "frame": "end",
+    "anims": 0,
+    "status": "Last frame: the lockmark as its master draws it, nine nodes joined by their links, with the red lever at bottom right.",
+    "word": "Play again"
+   },
+   "after_reset": {
+    "frame": "start",
+    "anims": 0
+   },
+   "cells": 4,
+   "end_layer_is_its_master": [
+    "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+    "lockmark/20261107_Lockmark-Display-Master.svg",
+    "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+    "lockmark/20261107_Lockmark-Display-Master.svg"
+   ],
+   "reset_equals_first_frame": [
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "s-17-hinge-correct@390@1x@no-preference": {
+   "on_load": {
+    "frame": "start",
+    "anims": 0
+   },
+   "reset_unavailable_at_start": true,
+   "after_play": {
+    "frame": "run",
+    "anims": 12,
+    "endMax": 680,
+    "word": "Pause"
+   },
+   "at_end": {
+    "frame": "end",
+    "anims": 0,
+    "status": "Last frame: the wordmark, OATH & ACTION, as its master draws it.",
+    "word": "Play again"
+   },
+   "after_reset": {
+    "frame": "start",
+    "anims": 0
+   },
+   "cells": 2,
+   "end_layer_is_its_master": [
+    "wordmark/20261028_Wordmark-24px-Master.svg",
+    "wordmark/20261028_Wordmark-Display-Master.svg",
+    "wordmark/20261028_Wordmark-24px-Master.svg",
+    "wordmark/20261028_Wordmark-Display-Master.svg"
+   ],
+   "reset_equals_first_frame": [
+    true,
+    true
+   ],
+   "last_keyframe_vs_end_frame": [
+    {
+     "same": false,
+     "pixels_differing": 194,
+     "max_levels": 86,
+     "of": 6125
+    },
+    {
+     "same": false,
+     "pixels_differing": 160,
+     "max_levels": 66,
+     "of": 6125
+    }
+   ]
+  },
+  "s-17-lever-correct@390@1x@no-preference": {
+   "on_load": {
+    "frame": "start",
+    "anims": 0
+   },
+   "reset_unavailable_at_start": true,
+   "after_play": {
+    "frame": "run",
+    "anims": 60,
+    "endMax": 560,
+    "word": "Pause"
+   },
+   "at_end": {
+    "frame": "end",
+    "anims": 0,
+    "status": "Last frame: the lockmark as its master draws it, nine nodes joined by their links, with the red lever at bottom right.",
+    "word": "Play again"
+   },
+   "after_reset": {
+    "frame": "start",
+    "anims": 0
+   },
+   "cells": 4,
+   "end_layer_is_its_master": [
+    "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+    "lockmark/20261107_Lockmark-Display-Master.svg",
+    "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+    "lockmark/20261107_Lockmark-Display-Master.svg"
+   ],
+   "reset_equals_first_frame": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "last_keyframe_vs_end_frame": [
+    {
+     "same": true,
+     "pixels_differing": 0,
+     "max_levels": 0,
+     "of": 2352
+    },
+    {
+     "same": false,
+     "pixels_differing": 1824,
+     "max_levels": 60,
+     "of": 14520
+    },
+    {
+     "same": true,
+     "pixels_differing": 0,
+     "max_levels": 0,
+     "of": 2352
+    },
+    {
+     "same": false,
+     "pixels_differing": 1819,
+     "max_levels": 60,
+     "of": 14520
+    }
+   ],
+   "lockmark_48_end_frame_colors": [
+    4,
+    3
+   ]
+  },
+  "s-17-hinge-correct@390@1x@reduce": {
+   "on_load": {
+    "frame": "start",
+    "anims": 0
+   },
+   "reset_unavailable_at_start": true,
+   "after_play": {
+    "frame": "end",
+    "anims": 0,
+    "slowUnavailable": "true",
+    "why": "Your device asks for reduced motion, so Play shows the last frame at once and Slow motion has nothing to slow.",
+    "tokens": [
+     "0ms",
+     "0ms",
+     "0ms",
+     "0ms",
+     "0ms"
+    ]
+   },
+   "at_end": {
+    "frame": "end",
+    "anims": 0,
+    "status": "Last frame: the wordmark, OATH & ACTION, as its master draws it.",
+    "word": "Play again"
+   },
+   "after_reset": {
+    "frame": "start",
+    "anims": 0
+   },
+   "cells": 2,
+   "end_layer_is_its_master": [
+    "wordmark/20261028_Wordmark-24px-Master.svg",
+    "wordmark/20261028_Wordmark-Display-Master.svg",
+    "wordmark/20261028_Wordmark-24px-Master.svg",
+    "wordmark/20261028_Wordmark-Display-Master.svg"
+   ],
+   "reset_equals_first_frame": [
+    true,
+    true
+   ]
+  },
+  "s-17-lever-correct@390@1x@reduce": {
+   "on_load": {
+    "frame": "start",
+    "anims": 0
+   },
+   "reset_unavailable_at_start": true,
+   "after_play": {
+    "frame": "end",
+    "anims": 0,
+    "slowUnavailable": "true",
+    "why": "Your device asks for reduced motion, so Play shows the last frame at once and Slow motion has nothing to slow.",
+    "tokens": [
+     "0ms",
+     "0ms",
+     "0ms",
+     "0ms",
+     "0ms"
+    ]
+   },
+   "at_end": {
+    "frame": "end",
+    "anims": 0,
+    "status": "Last frame: the lockmark as its master draws it, nine nodes joined by their links, with the red lever at bottom right.",
+    "word": "Play again"
+   },
+   "after_reset": {
+    "frame": "start",
+    "anims": 0
+   },
+   "cells": 4,
+   "end_layer_is_its_master": [
+    "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+    "lockmark/20261107_Lockmark-Display-Master.svg",
+    "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+    "lockmark/20261107_Lockmark-Display-Master.svg"
+   ],
+   "reset_equals_first_frame": [
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "s-17-hinge-correct@390@2x@no-preference": {
+   "on_load": {
+    "frame": "start",
+    "anims": 0
+   },
+   "reset_unavailable_at_start": true,
+   "after_play": {
+    "frame": "run",
+    "anims": 12,
+    "endMax": 680,
+    "word": "Pause"
+   },
+   "at_end": {
+    "frame": "end",
+    "anims": 0,
+    "status": "Last frame: the wordmark, OATH & ACTION, as its master draws it.",
+    "word": "Play again"
+   },
+   "after_reset": {
+    "frame": "start",
+    "anims": 0
+   },
+   "cells": 2,
+   "end_layer_is_its_master": [
+    "wordmark/20261028_Wordmark-24px-Master.svg",
+    "wordmark/20261028_Wordmark-Display-Master.svg",
+    "wordmark/20261028_Wordmark-24px-Master.svg",
+    "wordmark/20261028_Wordmark-Display-Master.svg"
+   ],
+   "reset_equals_first_frame": [
+    true,
+    true
+   ],
+   "last_keyframe_vs_end_frame": [
+    {
+     "same": false,
+     "pixels_differing": 350,
+     "max_levels": 41,
+     "of": 24500
+    },
+    {
+     "same": false,
+     "pixels_differing": 307,
+     "max_levels": 33,
+     "of": 24500
+    }
+   ]
+  },
+  "s-17-lever-correct@390@2x@no-preference": {
+   "on_load": {
+    "frame": "start",
+    "anims": 0
+   },
+   "reset_unavailable_at_start": true,
+   "after_play": {
+    "frame": "run",
+    "anims": 60,
+    "endMax": 560,
+    "word": "Pause"
+   },
+   "at_end": {
+    "frame": "end",
+    "anims": 0,
+    "status": "Last frame: the lockmark as its master draws it, nine nodes joined by their links, with the red lever at bottom right.",
+    "word": "Play again"
+   },
+   "after_reset": {
+    "frame": "start",
+    "anims": 0
+   },
+   "cells": 4,
+   "end_layer_is_its_master": [
+    "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+    "lockmark/20261107_Lockmark-Display-Master.svg",
+    "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+    "lockmark/20261107_Lockmark-Display-Master.svg"
+   ],
+   "reset_equals_first_frame": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "last_keyframe_vs_end_frame": [
+    {
+     "same": true,
+     "pixels_differing": 0,
+     "max_levels": 0,
+     "of": 9408
+    },
+    {
+     "same": false,
+     "pixels_differing": 4782,
+     "max_levels": 70,
+     "of": 58080
+    },
+    {
+     "same": true,
+     "pixels_differing": 0,
+     "max_levels": 0,
+     "of": 9408
+    },
+    {
+     "same": false,
+     "pixels_differing": 4798,
+     "max_levels": 83,
+     "of": 58080
+    }
+   ],
+   "lockmark_48_end_frame_colors": [
+    4,
+    3
+   ]
+  },
+  "s-17-hinge-correct@390@2x@reduce": {
+   "on_load": {
+    "frame": "start",
+    "anims": 0
+   },
+   "reset_unavailable_at_start": true,
+   "after_play": {
+    "frame": "end",
+    "anims": 0,
+    "slowUnavailable": "true",
+    "why": "Your device asks for reduced motion, so Play shows the last frame at once and Slow motion has nothing to slow.",
+    "tokens": [
+     "0ms",
+     "0ms",
+     "0ms",
+     "0ms",
+     "0ms"
+    ]
+   },
+   "at_end": {
+    "frame": "end",
+    "anims": 0,
+    "status": "Last frame: the wordmark, OATH & ACTION, as its master draws it.",
+    "word": "Play again"
+   },
+   "after_reset": {
+    "frame": "start",
+    "anims": 0
+   },
+   "cells": 2,
+   "end_layer_is_its_master": [
+    "wordmark/20261028_Wordmark-24px-Master.svg",
+    "wordmark/20261028_Wordmark-Display-Master.svg",
+    "wordmark/20261028_Wordmark-24px-Master.svg",
+    "wordmark/20261028_Wordmark-Display-Master.svg"
+   ],
+   "reset_equals_first_frame": [
+    true,
+    true
+   ]
+  },
+  "s-17-lever-correct@390@2x@reduce": {
+   "on_load": {
+    "frame": "start",
+    "anims": 0
+   },
+   "reset_unavailable_at_start": true,
+   "after_play": {
+    "frame": "end",
+    "anims": 0,
+    "slowUnavailable": "true",
+    "why": "Your device asks for reduced motion, so Play shows the last frame at once and Slow motion has nothing to slow.",
+    "tokens": [
+     "0ms",
+     "0ms",
+     "0ms",
+     "0ms",
+     "0ms"
+    ]
+   },
+   "at_end": {
+    "frame": "end",
+    "anims": 0,
+    "status": "Last frame: the lockmark as its master draws it, nine nodes joined by their links, with the red lever at bottom right.",
+    "word": "Play again"
+   },
+   "after_reset": {
+    "frame": "start",
+    "anims": 0
+   },
+   "cells": 4,
+   "end_layer_is_its_master": [
+    "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+    "lockmark/20261107_Lockmark-Display-Master.svg",
+    "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+    "lockmark/20261107_Lockmark-Display-Master.svg"
+   ],
+   "reset_equals_first_frame": [
+    true,
+    true,
+    true,
+    true
+   ]
+  }
+ }
 }

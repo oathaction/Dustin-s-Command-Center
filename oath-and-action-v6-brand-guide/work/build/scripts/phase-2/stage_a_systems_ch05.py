@@ -489,8 +489,8 @@ STATES = [
     ('Hover', 'hover', 'The fill steps from Charcoal to Prussian and the label underlines.'),
     ('Focus', 'focus', 'A 2 px Verdigris ring with a 2 px gap, shown at once.'),
     ('Disabled', 'disabled', 'A dashed edge, readable text and a line that says what makes it available.'),
-    ('Loading', 'loading', 'A still outline and the words that say what is loading.'),
-    ('Selected', 'selected', 'The paired surface, a 4 px bar and the selected check.'),
+    ('Loading', 'loading', 'Words that name what is loading, and a still line where it will sit (Rule 17.7).'),
+    ('Selected', 'selected', 'A check before the word, the word in bold and a 2 px edge (Rule 17.10).'),
     ('Muted', 'muted', 'Regular weight and an outline mark.'),
     ('Warning', 'warning', 'The warning mark, the word Warning and a 4 px bar, all in ink. Warning has no hue of its own.'),
     ('Error', 'error', 'The error mark in the text’s ink, the word Error and the fix in plain words, on the Error Band '
@@ -518,9 +518,8 @@ def s_05_4(ctx):
         'hover': f'<span class="b" style="background:{v("oa.color.action.primary.fillHover." + N)};color:{v("oa.color.action.primary.label." + N)};text-decoration:underline;text-underline-offset:.2em">Download SVG</span>',
         'focus': f'<span class="b" style="background:{v("oa.color.action.primary.fill." + N)};color:{v("oa.color.action.primary.label." + N)};outline:2px solid {v("oa.color.focus.ring." + N)};outline-offset:2px">Download SVG</span>',
         'disabled': f'<span class="b" style="color:{v("oa.color.state.disabled.text." + N)};border:1px dashed {v("oa.color.state.disabled.edge." + N)}">Download PNG</span><span class="why">Choose a size to download.</span>',
-        'loading': f'<span class="ld"><span class="lv" style="border-color:{v("oa.color.state.loading.mark." + N)}"></span><span style="color:{v("oa.color.state.loading.text." + N)}">Loading tracker</span></span>',
-        'selected': f'<span class="sel" style="background:{v("oa.color.state.selected.band." + N)};border-left:4px solid {v("oa.color.state.selected.bar." + N)};color:{v("oa.color.text.primary." + N)}">'
-                    f'{uicon("selected-check")}Track</span>',
+        'loading': f'<span class="lg"><svg width="160" height="8" viewBox="0 0 160 8" aria-hidden="true" focusable="false"><line x1="0" y1="4" x2="160" y2="4" stroke-width="1.5" style="stroke:{v("oa.color.state.loading.mark." + N)}"/></svg><span style="color:{v("oa.color.state.loading.text." + N)}">Loading the tracker</span></span>',
+        'selected': f'<span class="chs"><span class="ch on">{uicon("selected-check")}Housing</span><span class="ch">Schools</span></span>',
         'muted': f'<span class="ld"><span class="lv" style="border-color:{v("oa.color.state.muted.mark." + N)}"></span><span style="color:{v("oa.color.state.muted.text." + N)}">Closed hearing</span></span>',
         'warning': f'<span class="msg" style="border-left:4px solid {v("oa.color.state.warning.mark." + N)};color:{v("oa.color.state.warning.text." + N)}">'
                    f'<span class="mk" style="color:{v("oa.color.state.warning.mark." + N)}">{uicon("warning")}</span>'
@@ -541,8 +540,11 @@ def s_05_4(ctx):
            f'.b{{{btn}}}.why{{display:block;margin-top:6px;color:{v("oa.color.text.secondary." + N)};{ctx.ty("caption")}}}'
            f'.ld{{display:inline-flex;align-items:center;gap:10px;{ctx.ty("ui")}}}'
            f'.lv{{display:block;width:16px;height:16px;border:2px solid;border-radius:50%}}'
-           f'.sel{{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px 0 10px;{ctx.ty("ui")}}}'
-           f'.sel svg,.mk svg{{display:block;flex:none}}'
+           f'.chs{{display:inline-flex;flex-wrap:wrap;gap:8px}}'
+           f'.ch{{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border:1px solid {v("oa.color.border.strong." + N)};color:{v("oa.color.text.primary." + N)};{ctx.ty("ui")}}}'
+           f'.ch.on{{border-width:2px;padding:0 13px 0 7px;font-weight:700}}'
+           f'.lg{{display:grid;gap:8px;{ctx.ty("ui")}}}.lg svg{{display:block;max-width:100%}}'
+           f'.ch svg,.mk svg{{display:block;flex:none}}'
            f'.msg{{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;align-items:start;padding:10px 12px;{ctx.ty("bodySmall")}}}'
            f'.msg .mk{{margin-top:-1px}}.msg b{{font-weight:700}}'
            f'.ok{{display:inline-flex;align-items:center;gap:8px;{ctx.ty("ui")}}}'
@@ -1101,7 +1103,8 @@ def build(ctx):
                 'correct': {'specimen': 's-05-4-correct',
                             'caption': f'Ten states on Newsprint at true size, each with its cue. The focus ring measures '
                                        f'{ver_n} to 1 and the warning mark {ch_n}. The error mark draws in the text’s ink, '
-                                       f'and the error’s red is its 4 px bar. Nothing here uses opacity.'},
+                                       f'and the error’s red is its 4 px bar. Nothing here uses opacity. Rule 17.8 draws all ten '
+                                       f'on Newsprint and on Charcoal, and its plate is the reference for each.'},
                 'failure': {'specimen': 's-05-4-failure',
                             'caption': f'<strong>Fails 1.4.1.</strong> Two tracker rows that differ only by the hue of a '
                                        f'dot. The dots measure {red_ver} to 1 against each other, and in grayscale they print '
@@ -1111,7 +1114,7 @@ def build(ctx):
                 'specs': [
                     {'label': 'Focus ring on light surfaces', 'value': f'Verdigris, 2 px, 2 px gap; {ver_n} to 1 on Newsprint', 'token': 'oa.color.focus.ring.onNewsprint'},
                     {'label': 'Focus ring on dark surfaces', 'value': f'Newsprint; {n_c} to 1 on Charcoal, {n_pr} on Prussian', 'token': 'oa.color.focus.ring.onCharcoal'},
-                    {'label': 'Selected', 'value': 'The paired surface, a 4 px bar and the selected check', 'token': 'oa.color.state.selected.band.onNewsprint'},
+                    {'label': 'Selected', 'value': 'A check before the word, the word in bold and a 2 px edge; in a list, the paired surface and its 4 px bar (Rule 17.10)', 'token': 'oa.border.width.rule'},
                     {'label': 'Error ground', 'value': f'Error Band, {ctx.hx("oa.color.derived.errorBand")}; Charcoal text {eb_c} to 1', 'token': 'oa.color.state.error.band.onNewsprint'},
                     {'label': 'Disabled', 'value': f'Deep Stone text and dashed edge, {ds_n} to 1, with a reason line', 'token': 'oa.color.state.disabled.text.onNewsprint'},
                     {'label': 'State bar', 'value': '4 px, drawn as a border', 'token': 'oa.border.width.bar'},

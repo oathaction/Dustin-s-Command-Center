@@ -968,7 +968,9 @@ async function sbAudit(page) {
       for (const m of text.matchAll(re)) {
         const before = text.slice(Math.max(0, m.index - 40), m.index);
         const r = before.match(/steps?\s+(\d+)\s+(?:to|through)\s+(\d+)\D{0,24}$/i);
-        n += r ? Math.max(1, +r[2] - +r[1] + 1) : 1;
+        // round 1 (chapter 17's maker, item 3): "steps 1 and 2 done" and "steps 1, 3 and 5 done" count each step named
+        const l = r ? null : before.match(/steps\s+((?:\d+\s*,\s*)*\d+)\s+and\s+\d+\D{0,24}$/i);
+        n += r ? Math.max(1, +r[2] - +r[1] + 1) : l ? l[1].split(',').length + 1 : 1;
       }
       return n;
     };
@@ -1574,6 +1576,9 @@ async function motionAudit(browser, file, opts = {}) {
         await page.waitForTimeout(400);
         const running = await h.evaluate((el) => el.getAnimations({ subtree: true }).filter((a) => a.playState === 'running').length);
         if (running || (await h.evaluate(MOTION_STATE)) !== s0) out.problems.push({ where, why: `it moves on load${running ? ` (${running} animation(s) running)` : ''}; motion plays only on request` });
+        // chapter 17's players say where they stand in data-frame: "start" on load
+        const f0 = await h.evaluate((el) => el.getAttribute('data-frame'));
+        if (f0 !== null && f0 !== 'start') out.problems.push({ where, why: `data-frame is "${f0}" on load, not "start"` });
       }
       if (!ctl.play) continue;
       const play = await h.evaluateHandle((el) => el.querySelector('[data-oa-play]') || (el.closest('[data-specimen]') || el).querySelector('[data-oa-play]'));
@@ -1582,12 +1587,15 @@ async function motionAudit(browser, file, opts = {}) {
         await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
         const s1 = await h.evaluate(MOTION_STATE);
         const long = await h.evaluate((el) => el.getAnimations({ subtree: true }).map((a) => a.effect && a.effect.getComputedTiming()).filter((t) => t && t.duration > 0 && t.duration !== Infinity).map((t) => Math.round(t.duration)));
+        const after = await h.evaluate((el) => ({ frame: el.getAttribute('data-frame'), running: el.getAnimations({ subtree: true }).filter((a) => a.playState === 'running').length }));
         await page.waitForTimeout(1000);
         const s2 = await h.evaluate(MOTION_STATE);
         const why = [];
         if (s1 === s0) why.push('Play draws nothing new on the first frame');
         if (s2 !== s1) why.push('it keeps moving after the first frame');
         if (long.length) why.push(`animation(s) of ${[...new Set(long)].join(', ')} ms`);
+        if (after.running) why.push(`${after.running} animation(s) still running`);
+        if (after.frame !== null && after.frame !== 'end') why.push(`data-frame is "${after.frame}", not "end"`);
         out.reduced.push({ where, finalAtOnce: !why.length });
         if (why.length) out.problems.push({ where, why: `with reduced motion on: ${why.join('; ')}; Play shows the final frame at once` });
       } else {
@@ -1655,7 +1663,10 @@ async function checkPage(browser, file, widths, opts = {}) {
     const outside = new Set(); const errors = [];
     page.on('request', (req) => { const u = req.url(); if (/^(file|data|blob|about):/.test(u)) return; const h = new URL(u).hostname; if (!ALLOWED_HOSTS.includes(h)) outside.add(h); });
     page.on('pageerror', (e) => errors.push(String(e.message || e).slice(0, 200)));
-    await page.goto('file://' + file, { waitUntil: 'networkidle' });
+    // Round 1: the page's own load event first. At 9 MB the parser outlasts the network's 500 ms of quiet, so networkidle
+    // alone hands the checks a page whose last chapters are not yet in the DOM; then the fonts and other requests settle.
+    await page.goto('file://' + file, { waitUntil: 'load' });
+    await page.waitForLoadState('networkidle');
     await page.evaluate(() => document.fonts.ready);
     await page.waitForTimeout(500);
     if (opts.mutate) await page.evaluate(opts.mutate);
@@ -1770,7 +1781,8 @@ async function checkPage(browser, file, widths, opts = {}) {
   for (const [width, dpr] of (opts.hiDpi || [])) {
     const ctx = await browser.newContext({ viewport: { width, height: { 1440: 900, 390: 844 }[width] || 900 }, deviceScaleFactor: dpr });
     const page = await ctx.newPage();
-    await page.goto('file://' + file, { waitUntil: 'networkidle' });
+    await page.goto('file://' + file, { waitUntil: 'load' });
+    await page.waitForLoadState('networkidle');
     await page.evaluate(() => document.fonts.ready);
     if (opts.mutate) await page.evaluate(opts.mutate);
     const r = await fitSwitch(page, dpr);
@@ -1953,6 +1965,11 @@ const PLANTS = [
   { key: 'stateWords', fault: 'a live tracker whose words give each step its state, two of them as a range (allowed: must not be flagged)', expect: false, js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div data-specimen="s-demo-live" role="group" aria-label="A bill"><p>Step 3 of 3: Committee vote. <span class="vh">Steps 1 to 2, Filed and Hearing, done. Step 3 Committee vote now.</span></p><svg class="sx-mk" width="96" height="30" viewBox="0 0 96 30" aria-hidden="true" focusable="false"><g data-icon="S-done" data-icon-family="status"><circle cx="13" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-done" data-icon-family="status"><circle cx="48" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-now" data-icon-family="status"><circle cx="83" cy="15" r="11.5" fill="none" stroke="currentColor" stroke-width="3"/></g></svg></div>'); },
     verify: (r) => r.runs[0].stageB.stateStages >= 1 },
+  { key: 'stateWords', fault: 'a live tracker whose words give each step its state, two of them as "steps 1 and 2" (round 1; allowed: must not be flagged)', expect: false, js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div data-specimen="s-demo-live" role="group" aria-label="A bill"><p>Step 3 of 3: Committee vote. <span class="vh">Steps 1 and 2, Filed and Hearing, done. Step 3 Committee vote now.</span></p><svg class="sx-mk" width="96" height="30" viewBox="0 0 96 30" aria-hidden="true" focusable="false"><g data-icon="S-done" data-icon-family="status"><circle cx="13" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-done" data-icon-family="status"><circle cx="48" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-now" data-icon-family="status"><circle cx="83" cy="15" r="11.5" fill="none" stroke="currentColor" stroke-width="3"/></g></svg></div>'); },
+    verify: (r) => r.runs[0].stageB.stateStages >= 1 },
+  { key: 'stateWords', fault: 'a live tracker whose words give each step its state, three done marks said as "steps 1 and 2 done", one short (A-5)', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div data-specimen="s-demo-live" role="group" aria-label="A bill"><p>Step 4 of 4: Floor vote. <span class="vh">Steps 1 and 2, Filed and Hearing, done. Step 4 Floor vote now.</span></p><svg class="sx-mk" width="96" height="30" viewBox="0 0 96 30" aria-hidden="true" focusable="false"><g data-icon="S-done" data-icon-family="status"><circle cx="13" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-done" data-icon-family="status"><circle cx="48" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-done" data-icon-family="status"><circle cx="70" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-now" data-icon-family="status"><circle cx="83" cy="15" r="11.5" fill="none" stroke="currentColor" stroke-width="3"/></g></svg></div>'); }, },
   { key: 'stateWords', fault: 'a live tracker drawn twice, one copy for each screen width with the other hidden, its words giving each state once (allowed: must not be flagged)', expect: false, js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div data-specimen="s-demo-live" role="group" aria-label="A bill"><p>Step 3 of 3: Committee vote. <span class="vh">Steps 1 to 2, Filed and Hearing, done. Step 3 Committee vote now.</span></p><svg class="sx-mk" width="96" height="30" viewBox="0 0 96 30" aria-hidden="true" focusable="false"><g data-icon="S-done" data-icon-family="status"><circle cx="13" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-done" data-icon-family="status"><circle cx="48" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-now" data-icon-family="status"><circle cx="83" cy="15" r="11.5" fill="none" stroke="currentColor" stroke-width="3"/></g></svg><svg class="sx-mk" width="96" height="30" viewBox="0 0 96 30" aria-hidden="true" focusable="false" style="display:none"><g data-icon="S-done" data-icon-family="status"><circle cx="13" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-done" data-icon-family="status"><circle cx="48" cy="15" r="13" fill="currentColor"/></g><g data-icon="S-now" data-icon-family="status"><circle cx="83" cy="15" r="11.5" fill="none" stroke="currentColor" stroke-width="3"/></g></svg></div>'); },
     verify: (r) => r.runs[0].stageB.stateStages >= 1 },
@@ -2070,6 +2087,7 @@ const PLANTS = [
   { key: 'motion', fault: 'a moving specimen with Play and Pause and no Reset', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="sb-mv" data-oa-motion><svg width="80" height="20" viewBox="0 0 80 20" aria-hidden="true" focusable="false"><rect class="sb-mv-r" width="10" height="10" fill="currentColor"/></svg><button type="button" data-oa-play data-oa-pause>Play</button></div>'); const box = document.querySelectorAll('.sb-mv')[document.querySelectorAll('.sb-mv').length - 1]; const r = box.querySelector('rect'); box.querySelector('[data-oa-play]').addEventListener('click', () => { r.animate([{ transform: 'translateX(0px)' }, { transform: 'translateX(50px)' }], { duration: (matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 400), fill: 'forwards' }); }); const rs = box.querySelector('[data-oa-reset]'); if (rs) rs.addEventListener('click', () => r.getAnimations().forEach((a) => a.cancel())); } },
   { key: 'motion', fault: 'a player that keeps its 400 ms under reduced motion', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="sb-mv" data-oa-motion><svg width="80" height="20" viewBox="0 0 80 20" aria-hidden="true" focusable="false"><rect class="sb-mv-r" width="10" height="10" fill="currentColor"/></svg><button type="button" data-oa-play data-oa-pause>Play</button><button type="button" data-oa-reset>Reset</button></div>'); const box = document.querySelectorAll('.sb-mv')[document.querySelectorAll('.sb-mv').length - 1]; const r = box.querySelector('rect'); box.querySelector('[data-oa-play]').addEventListener('click', () => { r.animate([{ transform: 'translateX(0px)' }, { transform: 'translateX(50px)' }], { duration: 400, fill: 'forwards' }); }); const rs = box.querySelector('[data-oa-reset]'); if (rs) rs.addEventListener('click', () => r.getAnimations().forEach((a) => a.cancel())); } },
   { key: 'motion', fault: 'a player whose motion loops after Play', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="sb-mv" data-oa-motion><svg width="80" height="20" viewBox="0 0 80 20" aria-hidden="true" focusable="false"><rect class="sb-mv-r" width="10" height="10" fill="currentColor"/></svg><button type="button" data-oa-play data-oa-pause>Play</button><button type="button" data-oa-reset>Reset</button></div>'); const box = document.querySelectorAll('.sb-mv')[document.querySelectorAll('.sb-mv').length - 1]; const r = box.querySelector('rect'); box.querySelector('[data-oa-play]').addEventListener('click', () => { r.animate([{ transform: 'translateX(0px)' }, { transform: 'translateX(50px)' }], { duration: (matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 400), fill: 'forwards', iterations: Infinity }); }); const rs = box.querySelector('[data-oa-reset]'); if (rs) rs.addEventListener('click', () => r.getAnimations().forEach((a) => a.cancel())); } },
+  { key: 'motion', fault: 'a player that draws its last frame under reduced motion and leaves data-frame at "start" (chapter 17\'s contract)', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="sb-mv" data-oa-motion data-frame="start"><svg width="80" height="20" viewBox="0 0 80 20" aria-hidden="true" focusable="false"><rect class="sb-mv-r" width="10" height="10" fill="currentColor"/></svg><button type="button" data-oa-play data-oa-pause>Play</button><button type="button" data-oa-reset>Reset</button></div>'); const box = document.querySelectorAll('.sb-mv')[document.querySelectorAll('.sb-mv').length - 1]; const r = box.querySelector('rect'); box.querySelector('[data-oa-play]').addEventListener('click', () => { r.animate([{ transform: 'translateX(0px)' }, { transform: 'translateX(50px)' }], { duration: (matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 400), fill: 'forwards' }); }); const rs = box.querySelector('[data-oa-reset]'); if (rs) rs.addEventListener('click', () => r.getAnimations().forEach((a) => a.cancel())); } },
   { key: 'motion', fault: 'the same looping player on a failure plate, shown as a fault on purpose (allowed: must not be flagged)', expect: false, js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<figure class="plate plate--failure"><div class="sb-fail"></div></figure>'); document.querySelector('.sb-fail').insertAdjacentHTML('beforeend', '<div class="sb-mv" data-oa-motion><svg width="80" height="20" viewBox="0 0 80 20" aria-hidden="true" focusable="false"><rect class="sb-mv-r" width="10" height="10" fill="currentColor"/></svg><button type="button" data-oa-play data-oa-pause>Play</button><button type="button" data-oa-reset>Reset</button></div>'); const box = document.querySelectorAll('.sb-mv')[document.querySelectorAll('.sb-mv').length - 1]; const r = box.querySelector('rect'); box.querySelector('[data-oa-play]').addEventListener('click', () => { r.animate([{ transform: 'translateX(0px)' }, { transform: 'translateX(50px)' }], { duration: (matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 400), fill: 'forwards', iterations: Infinity }); }); const rs = box.querySelector('[data-oa-reset]'); if (rs) rs.addEventListener('click', () => r.getAnimations().forEach((a) => a.cancel())); },
     verify: (r) => r.motion && r.motion.failurePlates === 1 && r.motion.players === 0 },

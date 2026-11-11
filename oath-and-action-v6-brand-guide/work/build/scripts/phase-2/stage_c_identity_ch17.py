@@ -511,9 +511,10 @@ def s_17_lever_correct():
 
 # ------------------------------------------------------------------------------------------------ 17.6: the failure
 FAIL_CSS = (".oai-mf{display:grid;gap:16px;max-width:42rem}"
-            ".oai-mf-grid{display:grid;grid-template-columns:auto auto;gap:12px 40px;justify-content:start;align-items:end}"
+            ".oai-mf-grid{display:grid;gap:12px}"
+            ".oai-mf-row{display:flex;flex-wrap:wrap;gap:12px 40px;align-items:flex-end}"
             ".oai-mf-cell{display:grid;gap:8px;justify-items:start}"
-            ".oai-mf-h{" + tyv("label") + ";color:var(--oa-color-text-secondary-on-newsprint);grid-column:1 / -1;margin:8px 0 0}"
+            ".oai-mf-h{" + tyv("label") + ";color:var(--oa-color-text-secondary-on-newsprint);margin:8px 0 0}"
             ".oai-mf-tag{" + tyv("caption") + ";color:var(--oa-color-text-secondary-on-newsprint)}"
             ".oai-mf-px{display:block;max-width:100%;height:auto;image-rendering:pixelated;image-rendering:crisp-edges}"
             ".oai-mf-pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:16px 24px}"
@@ -548,12 +549,12 @@ def s_17_hinge_failure():
     def at(rel, h, low):
         m = mark(rel, h=h, decorative=True)
         return f'<div style="transform:translateY({FAIL_OFF}px);line-height:0">{m}</div>' if low else m
-    true_size = ('<div class="oai-mf-grid">'
-                 '<p class="oai-mf-h">Last frames, half a pixel low</p>'
-                 + "".join(f'<div class="oai-mf-cell">{at(rel, h, True)}<span class="oai-mf-tag">{E(lab)}</span></div>' for _, rel, h, _, lab in marks)
-                 + '<p class="oai-mf-h">The masters</p>'
-                 + "".join(f'<div class="oai-mf-cell">{at(rel, h, False)}<span class="oai-mf-tag">{E(lab)}</span></div>' for _, rel, h, _, lab in marks)
-                 + "</div>")
+    def row(low):
+        return ('<div class="oai-mf-row">'
+                + "".join(f'<div class="oai-mf-cell">{at(rel, h, low)}<span class="oai-mf-tag">{E(lab)}</span></div>' for _, rel, h, _, lab in marks)
+                + "</div>")
+    true_size = ('<div class="oai-mf-grid"><p class="oai-mf-h">Last frames, half a pixel low</p>' + row(True)
+                 + '<p class="oai-mf-h">The masters</p>' + row(False) + "</div>")
     # enlarged from a 1x screen: the lockmark whole, and the wordmark's first letters
     big = []
     for key, rel, h, w_px, crop in (("lockmark", LOCK[48], 48, 48, None), ("wordmark", WM[24], 24, 221, 104)):

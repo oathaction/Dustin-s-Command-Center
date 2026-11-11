@@ -1,0 +1,164 @@
+{
+ "s-19-1-failure": {
+  "chapter": "19",
+  "rule": "19.1",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative badge at 360 px with a check mark and the words “Fully accessible. This site works for everyone.” A note reads “No standard, no level, no date and no list of what was checked.”",
+  "illustrative": true,
+  "notes": "Picture of a fault: a claim with no standard behind it.",
+  "fit_switch": false
+ },
+ "s-19-2-correct": {
+  "chapter": "19",
+  "rule": "19.2",
+  "width_px": 360,
+  "alt": "An Illustrative pair at 360 px. First, the Voting symbol beside its word, “Voting”, marked with empty alt text because the word says it. Second, a bar chart of four bars rising left to right, with the alt text “Comments on the county budget rose each year from 2023 to 2026.”",
+  "illustrative": true,
+  "notes": "Correct: alt text for purpose, and empty alt where a word already says it.",
+  "fit_switch": false
+ },
+ "s-19-2-failure": {
+  "chapter": "19",
+  "rule": "19.2",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative bar chart at 360 px with the alt text “chart_final_v2.png”, a file name. A note says a screen reader hears nothing of what the chart shows.",
+  "illustrative": true,
+  "notes": "Picture of a fault: alt text that names a file.",
+  "fit_switch": false
+ },
+ "s-19-3-correct": {
+  "chapter": "19",
+  "rule": "19.3",
+  "width_px": 360,
+  "alt": "An Illustrative comment form at 360 px with a field and two buttons, Start over and Send your comment. The instruction under it names the button by its words: “When your comment is ready, press Send your comment.”",
+  "illustrative": true,
+  "notes": "Correct: an instruction that names the control by its words.",
+  "fit_switch": false
+ },
+ "s-19-3-failure": {
+  "chapter": "19",
+  "rule": "19.3",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. The same Illustrative form at 360 px, with the instruction “When your comment is ready, press the dark button on the right.”, which names no words.",
+  "illustrative": true,
+  "notes": "Picture of a fault: an instruction by color and place alone (SC 1.3.3).",
+  "fit_switch": false
+ },
+ "s-19-4-correct": {
+  "chapter": "19",
+  "rule": "19.4",
+  "width_px": 360,
+  "alt": "An Illustrative hinge headline at 360 px, “The zoning code & the rent.”, set as live text in White on a Prussian band, with a note that it grows, reflows and can be read aloud and translated.",
+  "illustrative": true,
+  "notes": "Correct: words as live text.",
+  "fit_switch": false
+ },
+ "s-19-4-failure": {
+  "chapter": "19",
+  "rule": "19.4",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative headline at 360 px drawn as a picture, shown blurred into blocks as it looks when zoomed in. A note says it cannot be found, translated or read aloud from its words.",
+  "illustrative": true,
+  "notes": "Picture of a fault: a picture of text in place of text (SC 1.4.5).",
+  "fit_switch": false
+ },
+ "s-19-5-correct": {
+  "chapter": "19",
+  "rule": "19.5",
+  "width_px": 360,
+  "alt": "An Illustrative map of district lines at 360 px with three buttons under it, Zoom in, Zoom out and Fit, each a single press.",
+  "illustrative": true,
+  "notes": "Correct: every action is one press of a button.",
+  "fit_switch": false
+ },
+ "s-19-5-failure": {
+  "chapter": "19",
+  "rule": "19.5",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. The same Illustrative map at 360 px with the line “Pinch to zoom. Drag to pan. Shake to undo. Press Z to zoom.” and no buttons.",
+  "illustrative": true,
+  "notes": "Picture of a fault: gestures, motion and a single-key shortcut with no button (SC 2.1.4, 2.5.1, 2.5.4, 2.5.7).",
+  "fit_switch": false
+ },
+ "s-19-6-correct": {
+  "chapter": "19",
+  "rule": "19.6",
+  "width_px": 360,
+  "alt": "An Illustrative pair of buttons at 360 px with text at 200 percent: Previous page and Next page have stacked into one column, each word whole.",
+  "illustrative": true,
+  "notes": "Correct: a row of two buttons that stacks as text grows.",
+  "fit_switch": false
+ },
+ "s-19-6-failure": {
+  "chapter": "19",
+  "rule": "19.6",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. The same Illustrative buttons at 360 px with text at 200 percent, held side by side; their words may not wrap, so “Previous page” and “Next page” are cut off at the buttons’ edges.",
+  "illustrative": true,
+  "notes": "Picture of a fault: labels that may not wrap (SC 1.4.4, 1.4.12).",
+  "fit_switch": false
+ },
+ "s-19-7-failure": {
+  "chapter": "19",
+  "rule": "19.7",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative report line at 360 px: “Automated scan: 0 errors. The page passes.” A note says one tool stood in for the whole matrix.",
+  "illustrative": true,
+  "notes": "Picture of a fault: one automated score taken as a pass.",
+  "fit_switch": false
+ },
+ "s-19-8-failure": {
+  "chapter": "19",
+  "rule": "19.8",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative results line at 360 px: “Passes WCAG 2.2 AA on every browser and screen reader.” It has no date and mixes what was run with what was not.",
+  "illustrative": true,
+  "notes": "Picture of a fault: a result with no date and no Not tested list.",
+  "fit_switch": false
+ },
+ "s-19-9-failure": {
+  "chapter": "19",
+  "rule": "19.9",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative line at 360 px: “Checked with a screen reader. Looks fine.” A note says it names no device, screen reader, steps or date.",
+  "illustrative": true,
+  "notes": "Picture of a fault: a device check no one could repeat.",
+  "fit_switch": false
+ },
+ "s-19-criteria": {
+  "chapter": "19",
+  "rule": "19.1",
+  "width_px": null,
+  "alt": "A searchable list of the 55 WCAG 2.2 success criteria at levels A and AA, in W3C’s words. Each entry gives the number, the name, the level, a tag for the six new in 2.2, the criterion’s words, and how this guide meets it: 37 are met by a rule, 5 in part, 8 are gaps with the chapter that owes each, and 5 govern things no product does today. A search field and a choice of All, Met, Met in part, Gaps or Not used today narrow the list, and a status line says how many show. A last line says 4.1.1 Parsing was removed in WCAG 2.2.",
+  "illustrative": false,
+  "notes": "Live: search and a radio choice filter the list; the count goes to a polite status line (Rule 18.15).",
+  "interactive": true
+ },
+ "s-19-devices": {
+  "chapter": "19",
+  "rule": "19.9",
+  "width_px": null,
+  "alt": "The device script, in four parts. iPhone with VoiceOver: 1. Open Settings, then Accessibility, then Accessibility Shortcut, and choose VoiceOver. From now on, pressing the side button three times turns VoiceOver on and off. 2. Open the page in Safari, then press the side button three times. VoiceOver says “VoiceOver on”. 3. Swipe right with one finger to move to the next item, and left to go back. Each item is read aloud. 4. Double-tap anywhere to press the item VoiceOver is on. To type, double-tap a field, type, then swipe on. 5. Go through the ten things to listen for below, and write Pass or Fail beside each with what you heard. 6. Press the side button three times to turn VoiceOver off. Android phone with TalkBack: 1. Open Settings, then Accessibility, then TalkBack, and turn on the TalkBack shortcut. Makers name these menus differently; the shortcut is usually holding both volume keys for three seconds. 2. Open the page in Chrome, then hold both volume keys for three seconds. TalkBack says it is on. 3. Swipe right with one finger to move to the next item, and left to go back. Scroll with two fingers. 4. Double-tap anywhere to press the item TalkBack is on. To type, double-tap a field, type, then swipe on. 5. Go through the ten things to listen for below, and write Pass or Fail beside each with what you heard. Gestures differ between TalkBack versions; Google’s TalkBack help lists the ones on your phone. 6. Hold both volume keys for three seconds to turn TalkBack off. Windows PC with NVDA and a contrast theme: 1. Download NVDA, a free screen reader, from nvaccess.org and install it. Start it from the Start menu; it says “NVDA started”. 2. Open the page in Chrome, Edge or Firefox. Press Tab to move from control to control, and Shift and Tab to go back. Press Enter or Space to press a control. Press Control to stop the speech. 3. Press H to jump from heading to heading, and D from landmark to landmark. 4. Go through the ten things to listen for below, and write Pass or Fail beside each with what you heard. Press Insert and Q to quit NVDA. 5. Now turn on a contrast theme: on Windows 11, open Settings, then Accessibility, then Contrast themes, choose Night sky and press Apply. On Windows 10, open Settings, then Ease of Access, then High contrast. 6. Reload the page and look: every button keeps an edge, the focus ring shows on each Tab stop, a pressed chip keeps its check, an error keeps its bar, and the warning and success marks stay visible. Write down any that vanish, then set the theme back to None. Mac with VoiceOver: 1. In Safari, open Settings, then Advanced, and turn on “Press Tab to highlight each item on a webpage”. 2. Press Command and F5 to turn VoiceOver on. It says “VoiceOver on Safari”. 3. Press Tab to move from control to control, and Shift and Tab to go back. Press Control, Option and the Right Arrow to read the next item, and Control, Option and Space to press it. 4. Press Control, Option and U to open the rotor, a list of the page’s headings, links and landmarks. The Left and Right Arrows switch lists, the Up and Down Arrows choose, and Return goes there. 5. Go through the ten things to listen for below, and write Pass or Fail beside each with what you heard. 6. Press Command and F5 to turn VoiceOver off. Ten things to listen for: 1. The page’s title is read as the page opens. 2. The first stop is “Skip to main content”. 3. Headings come in order: the chapter, then each rule. 4. Each control says its words and what kind of control it is, and a pressed, checked or current one says so. 5. A button that waits says it is unavailable and why. 6. The phone menu takes you inside when it opens, and Close the menu, or Escape on a keyboard, brings you back to Menu. 7. Typing in a search field, you hear how many results there are, and the cursor stays in the field. 8. Pressing Copy, you hear what was copied. 9. Sending a form with a mistake takes you to the field to fix, and you hear the error. 10. Nothing you cannot see is read, and nothing you cannot see takes focus.",
+  "illustrative": false,
+  "notes": "Readable: the device script of DR-213, four devices, each step numbered, with what a pass sounds like.",
+  "readable": true
+ },
+ "s-19-matrix": {
+  "chapter": "19",
+  "rule": "19.7",
+  "width_px": null,
+  "alt": "The verification matrix: 14 checks, each with what it shows, its method and the WCAG 2.2 criteria it serves. Every chapter rendered: Screenshots at 1440, 1024, 390 and 360 px, looked at by a person. Report pages: A screenshot of each page in the report reader. Keyboard and focus: A script presses Tab through the page and walks each component’s keyboard path; a person checks the order and the ring. Reading order and headings: The accessibility tree’s outline, read by script and by a person. Automated rules: axe-core with the WCAG 2.2 A and AA tags on every chapter. Contrast: A script reads each rendered color pair, states included. Text at 200 percent and 320 px: Screenshots, and a script that finds sideways scroll and clipped words. Reduced motion: The browser set to reduce motion, then each moving part played. Forced colors: The browser set to forced colors, light and dark, then each part read by script and by eye. Dark surfaces and long labels: Specimens on each surface, and labels from the atlas’s longest variable and reform titles. Print: Print emulation and the print stylesheet. Downloads: Press each download, open each file, check SVG validity and PNG size. Diagram and chart equivalents: Each drawing checked for its words or table and its reading guide. Grayscale: Grayscale screenshots of every data and systems specimen.",
+  "illustrative": false,
+  "notes": "Readable: the checks and methods of the verification matrix, with what each shows.",
+  "readable": true
+ },
+ "s-19-results": {
+  "chapter": "19",
+  "rule": "19.8",
+  "width_px": null,
+  "alt": "The guide’s own results: pending.",
+  "illustrative": false,
+  "notes": "Readable: printed from 20261111_Stage-C-Round-1-Ch19-Results.json, which names the runs behind each line.",
+  "readable": true
+ }
+}

@@ -1,0 +1,477 @@
+{
+  "number": "19",
+  "anchor": "accessibility",
+  "title": "Accessibility",
+  "part": "Behavior",
+  "instruction": "Check a page against WCAG 2.2 AA before you call it finished.",
+  "intro": [
+    "Accessibility means a person can use a page with a keyboard, a screen reader, zoom, voice or touch, and with less motion. The standard is WCAG 2.2, the Web Content Accessibility Guidelines from W3C, the body that writes the web’s standards. This chapter holds its 55 criteria at levels A and AA, each in W3C’s words with the rule in this guide that meets it, then the checks that prove a page meets them.",
+    "Our own results so far come next, dated, with what was tested kept apart from what was not, and a short script for the checks only real devices can run."
+  ],
+  "groups": [
+    {
+      "before_rule": "19.1",
+      "number": 1,
+      "title": "The standard",
+      "line": "WCAG 2.2 at level AA, in W3C’s words, with the rule that meets each criterion."
+    },
+    {
+      "before_rule": "19.2",
+      "number": 2,
+      "title": "Rules this chapter owns",
+      "line": "Five rules that meet criteria no other chapter covers: alt text, instructions, text as text, single presses and text that grows."
+    },
+    {
+      "before_rule": "19.7",
+      "number": 3,
+      "title": "How to check",
+      "line": "The checks, our results so far and the script for real devices."
+    }
+  ],
+  "rules": [
+    {
+      "id": "19.1",
+      "title": "Build every page and product to WCAG 2.2 at level AA, and find each criterion here.",
+      "rule": [
+        "WCAG 2.2 sets 55 success criteria at levels A and AA: 31 at A and 24 at AA, six of them new in 2.2. Every page and product we publish meets all of them. The list below gives each criterion in W3C’s own words and the rule in this guide that meets it.",
+        "Today a rule meets 37 criteria and five more in part. Eight are gaps, each named with the chapter that owes it, and five govern things no product does yet, such as live video or accounts. A gap is open work, and a page that meets the criterion on its own still meets it."
+      ],
+      "tokens": [],
+      "why": {
+        "text": [
+          "One standard, read in its own words, lets a builder check a page without guessing what “accessible” means, and ties each criterion to a rule they can follow. W3C’s notes and examples sit on its Understanding pages, which the sources link."
+        ],
+        "basis": "WCAG 2.2, W3C Recommendation, December 12, 2024, section 5 on conformance"
+      },
+      "correct": {
+        "specimen": "s-19-criteria",
+        "caption": "All 55 criteria in W3C’s words, live. Search by number, name or word, or show only the gaps; the line above the list says how many show."
+      },
+      "failure": {
+        "specimen": "s-19-1-failure",
+        "caption": "<strong>Fails Rule 19.1.</strong> A badge says “Fully accessible” and names no standard, level, date or check."
+      },
+      "specs": [
+        {
+          "label": "Standard",
+          "value": "WCAG 2.2, levels A and AA; level AAA where a rule asks for it"
+        },
+        {
+          "label": "Criteria",
+          "value": "55: 31 at A, 24 at AA, 6 new in 2.2"
+        },
+        {
+          "label": "Removed",
+          "value": "4.1.1 Parsing, which WCAG 2.2 keeps as a number with no level"
+        },
+        {
+          "label": "Met today",
+          "value": "37 by a rule, 5 in part"
+        },
+        {
+          "label": "Gaps",
+          "value": "8, owed by chapters 02, 16, 20 and 23"
+        },
+        {
+          "label": "Not used today",
+          "value": "5: live captions, sound that plays itself, legal or money forms, multi-step forms and sign-in"
+        }
+      ],
+      "related": [
+        "18",
+        "20"
+      ],
+      "builders": [
+        "Use W3C’s quick reference, w3.org/WAI/WCAG22/quickref, to filter the criteria by level and topic, and open a criterion’s Understanding page for its examples."
+      ]
+    },
+    {
+      "id": "19.2",
+      "title": "Write alt text for what an image does on the page, and hide decoration from screen readers.",
+      "rule": [
+        "Alt text says what a reader would miss without the image, in a sentence, such as a chart’s finding or what a photograph shows happening. A symbol beside its own word, a divider or a pattern takes empty alt text, <code>alt=\"\"</code>, so a screen reader passes it. A chart or an atlas drawing also gets its table or its lines in words (Rule 18.23)."
+      ],
+      "tokens": [],
+      "why": {
+        "text": [
+          "Alt text that names a purpose gives a screen reader user what the image gives everyone else. A file name or “image of” adds noise, and decoration read aloud slows the page."
+        ],
+        "basis": "WCAG 2.2 SC 1.1.1"
+      },
+      "correct": {
+        "specimen": "s-19-2-correct",
+        "caption": "A symbol beside its word takes empty alt text; a chart standing alone takes its finding."
+      },
+      "failure": {
+        "specimen": "s-19-2-failure",
+        "caption": "<strong>Fails Rule 19.2.</strong> The chart’s alt text is its file name, so a screen reader hears nothing it shows."
+      },
+      "specs": [
+        {
+          "label": "Informative image",
+          "value": "One or two sentences: what it shows that the text around it does not"
+        },
+        {
+          "label": "Image beside its word",
+          "value": "<code>alt=\"\"</code> and, for inline SVG, <code>aria-hidden=\"true\"</code>"
+        },
+        {
+          "label": "Chart or drawing",
+          "value": "Its finding as alt text, and its table or lines in words beside it"
+        },
+        {
+          "label": "Never",
+          "value": "A file name, “image of” or “picture of”, or words that repeat the caption"
+        }
+      ],
+      "related": [
+        "10",
+        "14",
+        "16"
+      ],
+      "builders": []
+    },
+    {
+      "id": "19.3",
+      "title": "Name a control or a step by its words, never only by its color, shape or place.",
+      "rule": [
+        "An instruction names the control it means by the words on it: “press Send your comment”. Color, shape and place can add to the words, as in “Send your comment, under the form”, and never stand in for them, since a phone moves things and a screen reader or a contrast theme drops color."
+      ],
+      "tokens": [],
+      "why": {
+        "text": [
+          "A reader who cannot see color, or who meets the buttons in another order on a phone, can still follow words that match the control’s name."
+        ],
+        "basis": "WCAG 2.2 SC 1.3.3 and 1.4.1"
+      },
+      "correct": {
+        "specimen": "s-19-3-correct",
+        "caption": "The instruction names Send your comment by its words."
+      },
+      "failure": {
+        "specimen": "s-19-3-failure",
+        "caption": "<strong>Fails Rule 19.3.</strong> “The dark button on the right” gives only color and place."
+      },
+      "specs": [
+        {
+          "label": "Say",
+          "value": "The control’s own words, as its name starts (Rule 18.1)"
+        },
+        {
+          "label": "May add",
+          "value": "Where it is, after its words"
+        },
+        {
+          "label": "Never alone",
+          "value": "Color, shape, size, sound or place"
+        }
+      ],
+      "related": [
+        "02",
+        "18"
+      ],
+      "builders": []
+    },
+    {
+      "id": "19.4",
+      "title": "Set words as live text, and keep pictures of text for the logo.",
+      "rule": [
+        "Headlines, quotes, labels and chart words are live text in the page. A social card or a slide that must be an image carries its words again in the post or the page beside it. The wordmark is the one picture of text a page holds."
+      ],
+      "tokens": [],
+      "why": {
+        "text": [
+          "Live text grows with a reader’s setting, reflows on a phone and can be found, copied, translated and read aloud. A picture of text blurs when zoomed and says only its alt text."
+        ],
+        "basis": "WCAG 2.2 SC 1.4.5; logotypes are essential under its note"
+      },
+      "correct": {
+        "specimen": "s-19-4-correct",
+        "caption": "The hinge headline set as live text on a Prussian band."
+      },
+      "failure": {
+        "specimen": "s-19-4-failure",
+        "caption": "<strong>Fails Rule 19.4.</strong> The headline is a picture, which blurs when zoomed and cannot be read from its words."
+      },
+      "specs": [
+        {
+          "label": "Live text",
+          "value": "Every word on a web page, in an email where it can be, and on a slide"
+        },
+        {
+          "label": "An image that must hold words",
+          "value": "The same words in the text beside it, and as alt text"
+        },
+        {
+          "label": "Allowed as an image",
+          "value": "The wordmark and the lockups (chapter 03)"
+        }
+      ],
+      "related": [
+        "03",
+        "22",
+        "23"
+      ],
+      "builders": []
+    },
+    {
+      "id": "19.5",
+      "title": "Let every action work with one tap, one click or one key press.",
+      "rule": [
+        "Every action has a control a reader can press once: Zoom in and Zoom out as buttons, a drawing moved with buttons or arrow keys, and Undo as a button. A gesture with two fingers, a drag, a tilt or a shake may add a way, never the only one. No product uses a shortcut of one letter key, and an action runs when the press ends, so sliding off a control cancels it."
+      ],
+      "tokens": [
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "A reader with a tremor, one hand, a head pointer or voice control can press a button where a pinch or a drag fails, and a single-letter shortcut fires by accident for a reader who talks to the computer."
+        ],
+        "basis": "WCAG 2.2 SC 2.1.4, 2.5.1, 2.5.2, 2.5.4 and 2.5.7"
+      },
+      "correct": {
+        "specimen": "s-19-5-correct",
+        "caption": "Zoom in, Zoom out and Fit as buttons under the map."
+      },
+      "failure": {
+        "specimen": "s-19-5-failure",
+        "caption": "<strong>Fails Rule 19.5.</strong> Pinch, drag, shake and the Z key are the only ways to act."
+      },
+      "specs": [
+        {
+          "label": "Each action",
+          "value": "A control pressed once, at least 44 px (Rule 11.7)",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Gestures and motion",
+          "value": "Only beside a button that does the same"
+        },
+        {
+          "label": "Shortcuts",
+          "value": "None of one letter; a shortcut takes a modifier key, such as Control"
+        },
+        {
+          "label": "When it runs",
+          "value": "On release, as native buttons do"
+        }
+      ],
+      "related": [
+        "18",
+        "15"
+      ],
+      "builders": []
+    },
+    {
+      "id": "19.6",
+      "title": "Let text grow to 200 percent, spacing open and the screen turn, with nothing lost.",
+      "rule": [
+        "A page keeps every word and control when the reader doubles the text size, widens the spacing between lines, words and letters, or turns the phone on its side. Labels wrap where they would overflow, a row of two buttons stacks, and no page locks itself to one orientation. Reflow at 320 px is Rule 07.6."
+      ],
+      "tokens": [],
+      "why": {
+        "text": [
+          "Many readers raise the text size or the spacing to read at all, and some hold a phone one way only. Words that may not wrap are the most common way a page loses them."
+        ],
+        "basis": "WCAG 2.2 SC 1.3.4, 1.4.4, 1.4.10 and 1.4.12"
+      },
+      "correct": {
+        "specimen": "s-19-6-correct",
+        "caption": "At 200 percent text the two buttons stack, and each word stays whole."
+      },
+      "failure": {
+        "specimen": "s-19-6-failure",
+        "caption": "<strong>Fails Rule 19.6.</strong> The words may not wrap, so both are cut off."
+      },
+      "specs": [
+        {
+          "label": "Text size",
+          "value": "200 percent with nothing cut off or overlapping"
+        },
+        {
+          "label": "Spacing",
+          "value": "Line height 1.5, paragraph spacing 2 times the size, letter spacing 0.12 and word spacing 0.16 times the size, all at once, with nothing lost"
+        },
+        {
+          "label": "Width",
+          "value": "320 px with no sideways scroll outside a scroll region (Rule 07.6)"
+        },
+        {
+          "label": "Orientation",
+          "value": "Both, with no lock"
+        },
+        {
+          "label": "Never",
+          "value": "<code>white-space: nowrap</code> on a label, or a fixed height on a box of words"
+        }
+      ],
+      "related": [
+        "07",
+        "06",
+        "18"
+      ],
+      "builders": []
+    },
+    {
+      "id": "19.7",
+      "title": "Check every page with the verification matrix, each check by its own method.",
+      "rule": [
+        "The matrix holds 14 checks. Each shows one thing, such as a keyboard path or a color pair, and each has its own method, because no single tool sees them all. A page is ready when every check that applies to it has run and passed, and its results are written down as Rule 19.8 sets."
+      ],
+      "tokens": [],
+      "why": {
+        "text": [
+          "An automated scan finds some faults a machine can measure. Keyboard order, reading order, zoom, forced colors and what a screen reader says need their own checks, and most of them need a person."
+        ],
+        "basis": "Design judgment; WCAG 2.2, section 5 on conformance"
+      },
+      "correct": {
+        "specimen": "s-19-matrix",
+        "caption": "Each check, what it shows, its method and the criteria it serves."
+      },
+      "failure": {
+        "specimen": "s-19-7-failure",
+        "caption": "<strong>Fails Rule 19.7.</strong> One scan’s zero stands in for the whole matrix."
+      },
+      "specs": [
+        {
+          "label": "Widths",
+          "value": "1440, 1024, 390 and 360 px"
+        },
+        {
+          "label": "Automated rules",
+          "value": "axe-core with the WCAG 2.2 A and AA tags"
+        },
+        {
+          "label": "Keyboard paths",
+          "value": "Each component’s path, walked in the light and dark themes (chapter 18)"
+        },
+        {
+          "label": "Emulated settings",
+          "value": "Reduced motion, forced colors light and dark, the device set to dark"
+        },
+        {
+          "label": "By a person",
+          "value": "The keyboard order and ring, the reading order, and the device script (Rule 19.9)"
+        }
+      ],
+      "related": [
+        "18",
+        "26"
+      ],
+      "builders": []
+    },
+    {
+      "id": "19.8",
+      "title": "Report each result with its date, and keep what was tested apart from what was not.",
+      "rule": [
+        "A results report gives the date, the build it ran on and, for each check, what ran and what it found. What could not run, and why, goes in a separate list, so no one reads a check nobody made as a pass. The guide’s own results so far are below."
+      ],
+      "tokens": [],
+      "why": {
+        "text": [
+          "A dated result can be repeated and compared. Keeping the untested list apart is how a reader learns what is still unknown, such as how a real screen reader sounds."
+        ],
+        "basis": "Design judgment"
+      },
+      "correct": {
+        "specimen": "s-19-results",
+        "caption": "The guide’s own results, dated, with Tested and Not tested apart."
+      },
+      "failure": {
+        "specimen": "s-19-8-failure",
+        "caption": "<strong>Fails Rule 19.8.</strong> A pass with no date, claiming checks no one ran."
+      },
+      "specs": [
+        {
+          "label": "Each report",
+          "value": "The date, the build, the tool and its version, the widths"
+        },
+        {
+          "label": "Tested",
+          "value": "What ran and what it found, with counts"
+        },
+        {
+          "label": "Not tested",
+          "value": "What did not run, and why, in its own list"
+        }
+      ],
+      "related": [
+        "18"
+      ],
+      "builders": []
+    },
+    {
+      "id": "19.9",
+      "title": "Before launch, run the device script on an iPhone, an Android phone, a Windows PC and a Mac.",
+      "rule": [
+        "Four short scripts check what no container can: a real screen reader on each of the four platforms our readers use, and a Windows contrast theme. Each step says what to press, and the ten things to listen for say what a pass sounds like. Anyone can run them in about half an hour a device, with no training."
+      ],
+      "tokens": [],
+      "why": {
+        "text": [
+          "Screen readers and contrast themes differ from one platform to the next, and only the real thing shows what a reader hears and sees. Short numbered steps let anyone on the team run them and write down the same things."
+        ],
+        "basis": "Design judgment; WCAG 2.2 SC 4.1.2 and 4.1.3 are heard only on a real screen reader"
+      },
+      "correct": {
+        "specimen": "s-19-devices",
+        "caption": "The four scripts and the ten things to listen for."
+      },
+      "failure": {
+        "specimen": "s-19-9-failure",
+        "caption": "<strong>Fails Rule 19.9.</strong> “Checked with a screen reader” names no device, steps or date."
+      },
+      "specs": [
+        {
+          "label": "Devices",
+          "value": "iPhone with VoiceOver; Android with TalkBack; Windows with NVDA and a contrast theme; Mac with VoiceOver"
+        },
+        {
+          "label": "When",
+          "value": "Before launch, and after any change to a component in chapter 18"
+        },
+        {
+          "label": "Record",
+          "value": "Device, system, browser and screen reader versions, date, and each step’s result with what was heard"
+        }
+      ],
+      "related": [
+        "18"
+      ],
+      "builders": []
+    }
+  ],
+  "extras": [],
+  "related_chapters": [
+    {
+      "chapter": "18",
+      "reason": "Every component’s keyboard path, name and announcements."
+    },
+    {
+      "chapter": "17",
+      "reason": "States, focus and motion under the reader’s control."
+    },
+    {
+      "chapter": "05",
+      "reason": "Contrast on each surface."
+    },
+    {
+      "chapter": "07",
+      "reason": "Reading at 320 px."
+    },
+    {
+      "chapter": "20",
+      "reason": "Page titles, language and help on every web page."
+    },
+    {
+      "chapter": "26",
+      "reason": "The token table, with the contrast of each color."
+    }
+  ],
+  "sources": [
+    "Source: W3C, “Web Content Accessibility Guidelines (WCAG) 2.2”, W3C Recommendation, December 12, 2024, w3.org/TR/WCAG22, retrieved November 10, 2026. Each criterion’s words in Rule 19.1, quoted as the Recommendation prints them; its notes are informative and sit on W3C’s Understanding pages, w3.org/WAI/WCAG22/Understanding.",
+    "Source: W3C Web Accessibility Initiative, “How to Meet WCAG 2.2 (Quick Reference)”, w3.org/WAI/WCAG22/quickref, no page date, retrieved November 10, 2026.",
+    "Sources for Rule 19.9: Apple, “Turn on and practice VoiceOver on iPhone” and “VoiceOver User Guide for Mac”; Google, “Get started on Android with TalkBack”; NV Access, “NVDA User Guide”; Microsoft, “Change color contrast in Windows”. The steps name the menus as each maker does; makers rename them between versions."
+  ]
+}

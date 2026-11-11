@@ -2645,3 +2645,11 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 | # | Decision | Reason |
 |---|---|---|
 | D2-1387 | Chapter 17's follow-ups in chapters 05 and 11 (`s-05-4-correct` points to `s-17-8-correct` and its Selected row takes Rule 17.10's look; chapter 11's live hover leaves the inset shadow for Rule 17.9's underline or border) go to chapter 17's maker, now free, through the chapter 05 and 11 generators; the other instance draws only the anatomy plates in its own new generator | The two instances never write one file at once; Rule 17.9 is new and chapter 11 must meet it |
+
+### Systems designer, chapter 17's follow-up pass in chapters 05 and 11
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1388 | Rule 05.4's Loading row draws Rule 17.7's still line and words, along with the Selected row's change | A plate that points to the canonical one must not draw the outline ring D2-200 retired |
+| D2-1389 | Chapter 11's hover thickens the edge from 1 to 2 px and takes the pixel from the padding, with no height change, since a stage sizes its boxes border-box | Rule 17.9; a border stays under forced colors, and nothing beside the button moves |
+| D2-1390 | The reader's pressed choice draws its 2 px edge as a border; its bold and underline stay until the reader's pair becomes a radio group with Rule 17.10's check (D2-1151's next pass) | D2-1158: state edges are borders; the full look change waits for the radio group, which needs new markup and a script |

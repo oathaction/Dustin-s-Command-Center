@@ -127,3 +127,31 @@ Paths relative to `oath-and-action-v6-brand-guide/`. Nothing in `source/`, `work
 **Modified:** none outside the files above.
 
 **Scratch, outside the repository** (`/tmp/claude-0/-home-user-Dustin-s-Command-Center/42858b21-febe-5543-930e-ed82e286a69e/scratchpad/stage-c-r1/ch17/`): builds `b1/`, `b2/`, `b3/`, `final/`, `final2/`; scripts `shoot.js`, `players.js`, `sweep.js`, `dbg.js` to `dbg5.js`, `editor_patch.py`; pictures in `shots/`, `shots3/`, `shots-final/`, `shots-final2/`, `play/` to `play-final/`.
+
+## Follow-up pass (D2-1387): chapters 05 and 11
+
+The main session gave me the two items I had found for chapters 05 and 11 (D2-1387); the other systems designer instance is drawing chapter 18's anatomy plates and did not touch these files. I changed generators only, then ran the chain: `stage_a_systems_build.py probe --out-dir`, `stage_a_systems_capture.js` (Google Fonts loaded, as in the last render), `final --out-dir`, then `apply_systems_ch11.py`, which imports `apply_systems_ch11_ui.py`.
+
+**Chapter 05, `stage_a_systems_ch05.py`.** `s-05-4-correct` now points to Rule 17.8: its caption ends "Rule 17.8 draws all ten on Newsprint and on Charcoal, and its plate is the reference for each." Its Selected row takes Rule 17.10's one look, a pressed Housing chip with the check, bold words and a 2 px edge beside Schools with a 1 px edge, and the cue and the spec say so. Its Loading row now draws Rule 17.7's still line with "Loading the tracker" in place of the outline ring D2-200 retired, so the two plates agree. No figure changed; the measurement record changes only its date and its list of tokens read.
+
+**Chapter 11, `apply_systems_ch11_ui.py`.** Hover on every live quiet button (the reader, the library's search and filters, the stepper, the menu) thickens the edge from 1 to 2 px and takes the pixel from the padding, where it drew an inset shadow. The padding variants now set `--pl` and `--pr`, so one hover rule fits all of them. The reader's pressed Fit width or Full size draws its 2 px edge as a real border, where it was an inset shadow too; its bold and underline stay. Six specimens changed: `s-11-11-correct`, `s-11-12-correct`, `s-11-12-failure`, `s-11-14-correct`, `s-11-14-failure` and `s-11-menu`. Chapter 11's words did not change.
+
+### Routine calls
+
+- D2-xxx | Rule 05.4's Loading row draws Rule 17.7's still line and words, along with the Selected row's change | A plate that points to the canonical one must not draw the outline ring D2-200 retired
+- D2-xxx | Chapter 11's hover thickens the edge from 1 to 2 px and takes the pixel from the padding, with no height change, since a stage sizes its boxes border-box | Rule 17.9; a border stays under forced colors, and nothing beside the button moves
+- D2-xxx | The reader's pressed choice draws its 2 px edge as a border; its bold and underline stay until the reader's pair becomes a radio group with Rule 17.10's check (D2-1151's next pass) | D2-1158: state edges are borders; the full look change waits for the radio group, which needs new markup and a script
+
+### Tested
+
+- Strict build into scratch: no warning in chapters 05, 11 or 17 (one warning left in the page, elsewhere).
+- `hover.js`: all 31 visible live buttons in `s-11-11`, `s-11-12`, `s-11-14` and `s-11-menu` at 1440 and 390 px. On hover the edge is 2 px, width and height do not change, and no box shadow is drawn at rest or on hover. The pressed chip and the reader's pressed choice hold 44 px. With forced colors emulated, a hovered button still draws a 2 px solid border.
+- Looked at `s-05-4-correct`, `s-11-11-correct` and `s-11-12-correct` at 1440 and 390 px, and a hovered stepper and reader button. No sideways scroll at either width.
+
+### Not tested
+
+The guide check was not rerun after this pass. Hover was tested by Chromium's pointer emulation only, with no real mouse, Safari or Firefox, and forced colors only by emulation.
+
+### Change log
+
+Modified: `work/build/scripts/phase-2/stage_a_systems_ch05.py`, `work/build/scripts/phase-2/apply_systems_ch11_ui.py`. Rewritten by their generators: `work/build/guide/chapters/05-color.json`, `work/build/guide/specimens/s-05-4-correct.html`, `work/build/guide/specimens/manifest-systems.json`, `work/handoffs/phase-2/20261106_Stage-A-Systems-Measurements.json`, and the six chapter 11 specimens above. The chain also rewrote chapters 06, 07 and 11's other files byte for byte as they were. `20261111_Stage-C-Round-1-Identity-Figures.json` changed during the pass by the identity designer's own scripts, which my chain does not run.

@@ -303,7 +303,7 @@
       },
       "correct": {
         "specimen": "s-05-4-correct",
-        "caption": "Ten states on Newsprint at true size, each with its cue. The focus ring measures 3.37 to 1 and the warning mark 13.29. The error mark draws in the text’s ink, and the error’s red is its 4 px bar. Nothing here uses opacity."
+        "caption": "Ten states on Newsprint at true size, each with its cue. The focus ring measures 3.37 to 1 and the warning mark 13.29. The error mark draws in the text’s ink, and the error’s red is its 4 px bar. Nothing here uses opacity. Rule 17.8 draws all ten on Newsprint and on Charcoal, and its plate is the reference for each."
       },
       "failure": {
         "specimen": "s-05-4-failure",
@@ -322,8 +322,8 @@
         },
         {
           "label": "Selected",
-          "value": "The paired surface, a 4 px bar and the selected check",
-          "token": "oa.color.state.selected.band.onNewsprint"
+          "value": "A check before the word, the word in bold and a 2 px edge; in a list, the paired surface and its 4 px bar (Rule 17.10)",
+          "token": "oa.border.width.rule"
         },
         {
           "label": "Error ground",

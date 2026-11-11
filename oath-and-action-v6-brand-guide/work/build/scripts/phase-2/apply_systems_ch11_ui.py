@@ -74,13 +74,17 @@ def ui_css(ctx, live=True):
             f'--disedge:{v("oa.component.button.disabled.edge")};--touch:{v("oa.size.target.touch")}}}'
             f'.ui{{{"forced-color-adjust:auto;" if live else ""}background:var(--ground);color:var(--ink);padding:20px 16px 24px;{T("body")}}}'
             f':where(.ui p){{margin:0}}'
-            f'.ui .b{{display:inline-flex;align-items:center;gap:8px;min-height:var(--touch);min-width:var(--touch);margin:0;'
-            f'padding:0 14px 0 10px;border:1px solid var(--edge);border-radius:0;background:var(--ground);color:var(--ink);'
+            f'.ui .b{{--pl:10px;--pr:14px;display:inline-flex;align-items:center;gap:8px;min-height:var(--touch);min-width:var(--touch);margin:0;'
+            f'padding:0 var(--pr) 0 var(--pl);border:1px solid var(--edge);border-radius:0;background:var(--ground);color:var(--ink);'
             f'{T("ui")};text-align:left;cursor:pointer}}'
-            f'.ui .b svg{{flex:none;display:block}}.ui .b.nx{{padding:0 10px 0 14px}}.ui .b.wd{{padding:0 14px}}'
-            f'.ui .b:hover{{box-shadow:inset 0 0 0 1px var(--edge)}}'
+            f'.ui .b svg{{flex:none;display:block}}.ui .b.nx{{--pl:14px;--pr:10px}}.ui .b.wd{{--pl:14px;--pr:14px}}'
+            # Rule 17.9 (D2-1387): hover thickens the edge from 1 to 2 px and takes the pixel from the padding (the box is
+            # border-box in a stage, so its height holds), so nothing moves; a border stays under forced colors, where an
+            # inset shadow did not. Every padding variant sets --pl and --pr, never padding itself.
+            f'.ui .b:hover:not([aria-disabled="true"]):not([aria-pressed="true"]){{border-width:2px;'
+            f'padding:0 calc(var(--pr) - 1px) 0 calc(var(--pl) - 1px)}}'
             f'.ui :focus-visible{{outline:2px solid var(--ring);outline-offset:2px}}'
-            f'.ui .b[aria-disabled="true"]{{color:var(--dis);border-style:dashed;border-color:var(--disedge);cursor:not-allowed;box-shadow:none}}'
+            f'.ui .b[aria-disabled="true"]{{color:var(--dis);border-style:dashed;border-color:var(--disedge);cursor:not-allowed}}'
             f'.why{{margin-top:8px;{T("bodySmall")};color:var(--sec);min-height:1.5em}}'
             f'.vh{{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}}'
             f'.lab{{{T("label")};color:var(--sec)}}')
@@ -120,11 +124,11 @@ def s_reader(ctx, m):
         f'.px{{margin-top:8px;{T("body")};text-wrap:pretty}}'
         f'.pn{{margin:0 0 10px;{T("ui")};font-variant-numeric:tabular-nums}}'
         f'.bar{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr));gap:8px}}'
-        f'.ui .bar .b{{padding:0 10px}}'
+        f'.ui .bar .b{{--pl:10px;--pr:10px}}'
         f'.ui .bar .nx{{justify-content:flex-end}}'
         f'.zm{{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}}'
         f'.ui .zm .b[aria-pressed="true"]{{font-weight:700;text-decoration:underline;text-decoration-thickness:2px;'
-        f'text-underline-offset:4px;box-shadow:inset 0 0 0 1px var(--edge)}}')
+        f'text-underline-offset:4px;border-width:2px;padding:0 calc(var(--pr) - 1px) 0 calc(var(--pl) - 1px)}}')
     t0, x0 = REPORT_PAGES[0]
     data = json.dumps(REPORT_PAGES, ensure_ascii=False, separators=(',', ':'))
     # CA-S1: the page's header, title and text stay readable to a screen reader, and the status line names the title
@@ -272,11 +276,11 @@ def s_library(ctx, m):
         f'.ui .clr{{display:inline-flex;flex:none;align-items:center;justify-content:center;width:var(--touch);'
         f'height:var(--touch);margin:-1px -1px -1px 0;padding:0;border:0;background:transparent;color:var(--ink);cursor:pointer}}'
         f'.ui .clr[hidden]{{display:none}}'
-        f'.r2{{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}}.ui .r2 .ex{{padding:0 10px}}'
+        f'.r2{{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}}.ui .r2 .ex{{--pl:10px;--pr:10px}}'
         f'.sh{{margin-top:12px;padding:12px 0 4px;border-top:1px solid var(--hair)}}'
         f'.gl{{margin:0 0 6px;{T("label")};color:var(--sec)}}'
         f'.cs{{list-style:none;margin:0 0 12px;padding:0;display:flex;flex-wrap:wrap;gap:8px}}'
-        f'.ui .ch{{padding:0 14px}}.ui .ch[aria-pressed="true"]{{font-weight:700;border-width:2px;padding:0 13px 0 9px}}'
+        f'.ui .ch{{--pl:14px;--pr:14px}}.ui .ch[aria-pressed="true"]{{font-weight:700;border-width:2px;padding:0 13px 0 9px}}'
         f'.rs{{margin-top:16px;{T("ui")}}}.rs b{{font-weight:700}}'
         f'.hs{{list-style:none;margin:6px 0 0;padding:0;{T("bodySmall")}}}.hs li{{padding:4px 0;border-top:1px solid var(--hair)}}'
         f'.hs b{{display:inline-block;min-width:4.25em;font-variant-numeric:tabular-nums}}'
@@ -536,7 +540,7 @@ def stepper(ctx, m, live=True):
         f'.st{{margin:16px 0;padding:14px;border:1px solid var(--hair);background:var(--paper);min-height:14rem}}'
         f'.sn{{{T("ui")};font-weight:700;font-variant-numeric:tabular-nums}}.sx{{margin-top:6px;{T("bodySmall")};text-wrap:pretty}}'
         f'.cl{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr));gap:8px}}'
-        f'.ui .cl .b{{padding:0 10px}}'
+        f'.ui .cl .b{{--pl:10px;--pr:10px}}'
         f'.ui .cl .nx{{justify-content:flex-end}}'
         f'.cl svg[hidden]{{display:none}}')
     rise = 'they rise' if plural(first) else 'it rises'

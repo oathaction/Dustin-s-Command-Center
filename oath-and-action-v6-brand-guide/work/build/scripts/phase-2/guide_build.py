@@ -575,6 +575,12 @@ class Specimens:
             self.used[sid] = where
         p = self.files.get(sid)
         if not p:
+            # Round 1 (chapter 17's maker, item 2): a specimen another maker still owes carries "pending_for" in its
+            # manifest entry; the shell's pending plate stands in, with a note naming who owes it and no warning.
+            owed = str((self.manifest.get(sid) or {}).get("pending_for") or "").strip()
+            if owed:
+                R.note(f"{sid} is pending: {owed} owes it")
+                return None
             R.warn(where, f"specimen file work/build/guide/specimens/{sid}.html is missing")
             return None
         if sid not in self.manifest:
@@ -3117,6 +3123,9 @@ def self_test():
                for k, r in (("s-26-a.html", "26.1"), ("s-26-b.html", "26.1"), ("s-26-c.html", "26.1"), ("s-26-d.html", "26.1"),
                             ("s-26-token-table.html", "26.2"), ("s-26-lit.html", "26.2"), ("s-26-litc.html", "26.3"), ("s-26-e.html", "26.3"))}
     c26_man["s-26-lit"]["check_exempt"] = ["literal"]
+    # a specimen another maker still owes (pending_for) and one that is simply missing
+    c26_man["s-26-owed"] = {"chapter": "26", "rule": "26.4", "alt": "A plate another maker owes, a fixture.", "pending_for": "the identity designer"}
+    c26_man["s-26-gone"] = {"chapter": "26", "rule": "26.4", "alt": "A plate nobody wrote, a fixture."}
     c26_man["s-26-litc"]["check_exempt"] = ["literal"]
     c26_code = {"c-26-x.html": '<p class="oa-x">A worked example.</p>\n', "c-26-x.css": ".oa-x { color: var(--oa-color-text-secondary) }\n"}
     c26 = chapter("26", "tokens", "Tokens and how to choose them", [
@@ -3126,7 +3135,8 @@ def self_test():
         rule("26.2", {"downloads": ["tokens.css", "tokens.json"], "correct": {"specimen": "s-26-token-table", "caption": "A fixture."},
                       "failure": {"specimen": "s-26-lit", "caption": "A fixture."}}),
         rule("26.3", {"downloads": ["tokens.json", "a.pdf"], "correct": {"specimen": "s-26-litc", "caption": "A fixture."},
-                      "failure": {"specimen": "s-26-e", "caption": "A fixture."}})])
+                      "failure": {"specimen": "s-26-e", "caption": "A fixture."}}),
+        rule("26.4", {"correct": {"specimen": "s-26-owed", "caption": "A fixture."}, "failure": {"specimen": "s-26-gone", "caption": "A fixture."}})])
 
     def json_link(pg):
         m = re.search(r'<a class="btn" id="tokens-json-download" data-oa-file href="data:application/json;charset=utf-8;base64,([^"]+)"[^>]*data-oa-zip="([^"]+)"', pg)
@@ -3197,9 +3207,10 @@ def self_test():
                      lambda pg: "getItem('oa-theme')" not in pg and 'data-oa-code-js="c-01-r1"' not in pg and "localStorage" not in stage_of(pg, "light"))]}),
         ("round 1, chapter 26: worked examples, the tokens.json download once, the literal exemption and the token table's freshness",
          {"26-tokens.json": c26}, {"specimens": c26_specs, "manifest": c26_man, "code": c26_code},
-         {"warn": ["s-26-token-table is not what tokens.json", "\"downloads\" names 'a.pdf'",
+         {"note": ["s-26-owed is pending: the identity designer owes it"],
+          "warn": ["s-26-token-table is not what tokens.json", "\"downloads\" names 'a.pdf'", "specimen file work/build/guide/specimens/s-26-gone.html is missing",
                    "s-26-litc: check_exempt ['literal']: contrast, red, locked and literal exemptions are for failure cases only"],
-          "absent": ["[Rule 26.1] the rule has no", "s-26-lit: 1 literal color", "example 1 has no", "example 2 has no"],
+          "absent": ["[Rule 26.1] the rule has no", "s-26-lit: 1 literal color", "example 1 has no", "example 2 has no", "s-26-owed.html is missing"],
           "html": ['<p class="ex-head" id="rule-26-1-ex-1"><span class="ex-n">Example 1</span> <span class="ex-t">One</span></p>',
                    '<span class="ex-n">Example 2</span>', 'id="tokens-json-download" data-oa-file', '<a class="btn" href="#tokens-json-download" data-oa-download="tokens-json-download">Download tokens.json, JSON, ',
                    '<a class="btn" href="#tokens-download" data-oa-download="tokens-download">Download tokens.css, CSS, ', 'id="tokens-download" data-oa-file data-oa-file-words="Download tokens.css',
