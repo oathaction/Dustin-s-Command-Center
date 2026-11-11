@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html",
- "checked": "2026-11-11T17:15:39.685Z",
+ "checked": "2026-11-11T18:47:02.937Z",
  "axe": "work/build/node_modules/axe-core/axe.min.js",
  "runs": [
   {
@@ -19,16 +19,16 @@
     "rules": 185
    },
    "anchors": {
-    "ids": 1537,
+    "ids": 1557,
     "duplicates": [],
-    "links": 1996,
+    "links": 2024,
     "broken": [],
     "relatedLinks": 388,
     "relatedBad": [],
     "aliases": []
    },
    "specimens": {
-    "stages": 480,
+    "stages": 489,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -226,7 +226,7 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 468,
+    "stages": 477,
     "exempt": 12,
     "off": [],
     "fluid": [
@@ -266,7 +266,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 20852,
+    "texts": 21199,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -278,7 +278,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 378,
+    "marks": 392,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -289,25 +289,25 @@
     "locked": [
      {
       "line": "tagline",
-      "exact": 26
+      "exact": 34
      },
      {
       "line": "mission",
-      "exact": 8
+      "exact": 12
      },
      {
       "line": "reader promise",
-      "exact": 8
+      "exact": 12
      },
      {
       "line": "editorial commitment",
-      "exact": 20
+      "exact": 28
      }
     ],
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 835062,
+   "height": 841672,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -317,6 +317,54 @@
    "idsHeld": 724,
    "openers": [
     {
+     "specimen": "s-01-opener",
+     "chapter": "purpose",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-02-opener",
+     "chapter": "voice",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-03-opener",
+     "chapter": "identity",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-04-opener",
+     "chapter": "ampersand",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-05-opener",
+     "chapter": "color",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-06-opener",
+     "chapter": "type",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-07-opener",
+     "chapter": "layout",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-08-opener",
+     "chapter": "lockmark",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
      "specimen": "s-09-opener",
      "chapter": "pillar-icons",
      "inHead": true,
@@ -325,6 +373,18 @@
     {
      "specimen": "s-10-opener",
      "chapter": "symbols",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-11-opener",
+     "chapter": "icons",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-12-index",
+     "chapter": "graphic-devices",
      "inHead": true,
      "scrolls": false
     },
@@ -356,7 +416,7 @@
    "code": {
     "plates": 28,
     "stages": 56,
-    "styled": 2152,
+    "styled": 2154,
     "results": [
      {
       "set": "c-18-button",
@@ -425,34 +485,18 @@
      {
       "set": "c-18-link",
       "theme": "light",
-      "same": false,
-      "edgesOnly": true,
-      "tall": false,
-      "pixels": 224,
-      "max": 202,
-      "total": 164844,
-      "flat": 0,
-      "big": 0,
-      "ring": 0,
-      "shiftedRows": 2,
-      "shiftedCols": 0,
-      "firstOff": null
+      "same": true,
+      "w": 341,
+      "h": 481,
+      "tall": false
      },
      {
       "set": "c-18-link",
       "theme": "dark",
-      "same": false,
-      "edgesOnly": true,
-      "tall": false,
-      "pixels": 222,
-      "max": 202,
-      "total": 165326,
-      "flat": 0,
-      "big": 0,
-      "ring": 0,
-      "shiftedRows": 2,
-      "shiftedCols": 0,
-      "firstOff": null
+      "same": true,
+      "w": 341,
+      "h": 481,
+      "tall": false
      },
      {
       "set": "c-18-masthead",
@@ -494,7 +538,7 @@
       "tall": false,
       "pixels": 25,
       "max": 9,
-      "total": 220932,
+      "total": 220590,
       "flat": 0,
       "big": 0,
       "ring": 0,
@@ -510,7 +554,7 @@
       "tall": false,
       "pixels": 76,
       "max": 9,
-      "total": 221578,
+      "total": 221235,
       "flat": 0,
       "big": 0,
       "ring": 0,
@@ -564,8 +608,8 @@
       "same": false,
       "edgesOnly": true,
       "tall": false,
-      "pixels": 64,
-      "max": 16,
+      "pixels": 69,
+      "max": 20,
       "total": 563220,
       "flat": 0,
       "big": 0,
@@ -580,8 +624,8 @@
       "same": false,
       "edgesOnly": true,
       "tall": false,
-      "pixels": 62,
-      "max": 16,
+      "pixels": 67,
+      "max": 20,
       "total": 563220,
       "flat": 0,
       "big": 0,
@@ -596,13 +640,13 @@
       "same": false,
       "edgesOnly": true,
       "tall": false,
-      "pixels": 900,
-      "max": 50,
+      "pixels": 282,
+      "max": 5,
       "total": 110376,
       "flat": 0,
       "big": 0,
       "ring": 0,
-      "shiftedRows": 1,
+      "shiftedRows": 0,
       "shiftedCols": 0,
       "firstOff": null
      },
@@ -612,8 +656,8 @@
       "same": false,
       "edgesOnly": true,
       "tall": false,
-      "pixels": 270,
-      "max": 5,
+      "pixels": 858,
+      "max": 42,
       "total": 110376,
       "flat": 0,
       "big": 0,
@@ -684,9 +728,9 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 28,
-      "max": 3,
-      "total": 316692,
+      "pixels": 46,
+      "max": 26,
+      "total": 317034,
       "flat": 0,
       "big": 0,
       "ring": 0,
@@ -700,9 +744,9 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 30,
-      "max": 12,
-      "total": 317618,
+      "pixels": 47,
+      "max": 30,
+      "total": 317961,
       "flat": 0,
       "big": 0,
       "ring": 0,
@@ -780,8 +824,8 @@
       "same": false,
       "edgesOnly": true,
       "tall": false,
-      "pixels": 68,
-      "max": 4,
+      "pixels": 86,
+      "max": 26,
       "total": 58824,
       "flat": 0,
       "big": 0,
@@ -796,8 +840,8 @@
       "same": false,
       "edgesOnly": true,
       "tall": false,
-      "pixels": 70,
-      "max": 12,
+      "pixels": 87,
+      "max": 30,
       "total": 58996,
       "flat": 0,
       "big": 0,
@@ -812,9 +856,9 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 238,
-      "max": 36,
-      "total": 768852,
+      "pixels": 360,
+      "max": 26,
+      "total": 780948,
       "flat": 0,
       "big": 0,
       "ring": 0,
@@ -828,9 +872,9 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 290,
-      "max": 49,
-      "total": 768852,
+      "pixels": 374,
+      "max": 44,
+      "total": 780948,
       "flat": 0,
       "big": 0,
       "ring": 0,
@@ -844,8 +888,8 @@
       "same": false,
       "edgesOnly": true,
       "tall": false,
-      "pixels": 46,
-      "max": 34,
+      "pixels": 55,
+      "max": 45,
       "total": 480060,
       "flat": 0,
       "big": 0,
@@ -860,9 +904,9 @@
       "same": false,
       "edgesOnly": true,
       "tall": false,
-      "pixels": 26,
-      "max": 3,
-      "total": 480060,
+      "pixels": 54,
+      "max": 40,
+      "total": 480816,
       "flat": 0,
       "big": 0,
       "ring": 0,
@@ -910,7 +954,7 @@
       "tall": false,
       "pixels": 20,
       "max": 9,
-      "total": 390852,
+      "total": 391608,
       "flat": 0,
       "big": 0,
       "ring": 0,
@@ -1023,7 +1067,7 @@
     }
    },
    "lightOnDark": {
-    "elements": 67739,
+    "elements": 68337,
     "attribute": "light",
     "scheme": "light only",
     "deviceDark": true,
@@ -1032,18 +1076,24 @@
    },
    "fitSwitch": {
     "dpr": 1,
-    "glyphs": 77,
-    "pairs": 77,
-    "fitShown": 77,
+    "glyphs": 81,
+    "pairs": 81,
+    "fitShown": 81,
     "masterShown": 0,
     "fixed": 0,
     "problems": []
    },
    "builderBlocks": [],
+   "fixPass": {
+    "failurePlates": 188,
+    "badCaps": [],
+    "fileItems": 149,
+    "studioFiles": []
+   },
    "tokenTable": {
     "rows": 504,
     "count": 504,
-    "version": "6.0.0-gate2.8",
+    "version": "6.0.0-gate2.9",
     "swatches": 306,
     "undef": [],
     "undefCount": 0,
@@ -1051,13 +1101,13 @@
     "offCount": 0,
     "file": {
      "count": 504,
-     "version": "6.0.0-gate2.8"
+     "version": "6.0.0-gate2.9"
     },
     "problems": []
    },
    "frames": {
     "snugPx": 32,
-    "frames": 424,
+    "frames": 433,
     "scrolling": 2,
     "snug": [
      {
@@ -1104,7 +1154,7 @@
     "under": []
    },
    "stageB": {
-    "icons": 632,
+    "icons": 636,
     "stateStages": 13,
     "statePictures": [
      {
@@ -1119,18 +1169,18 @@
     "inlineTargets": 2,
     "missingFamily": [],
     "markReaders": {
-     "ring-now": 59,
-     "ring-ahead": 106,
+     "ring-now": 60,
+     "ring-ahead": 110,
      "slash": 18,
      "halo": 18,
      "line-reached": 139,
      "line-ahead": 61,
-     "take-part-disc": 24,
-     "take-part-keyline": 26,
-     "take-part-cut": 26
+     "take-part-disc": 25,
+     "take-part-keyline": 27,
+     "take-part-cut": 27
     },
-    "glyphParts": 593,
-    "useParts": 309,
+    "glyphParts": 597,
+    "useParts": 313,
     "menu": "not shown at this width",
     "forcedWordmark": "one color in dark and light"
    },
@@ -1191,16 +1241,16 @@
     "rules": 185
    },
    "anchors": {
-    "ids": 1537,
+    "ids": 1557,
     "duplicates": [],
-    "links": 1996,
+    "links": 2024,
     "broken": [],
     "relatedLinks": 388,
     "relatedBad": [],
     "aliases": []
    },
    "specimens": {
-    "stages": 480,
+    "stages": 489,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -1398,7 +1448,7 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 468,
+    "stages": 477,
     "exempt": 12,
     "off": [],
     "fluid": [
@@ -1439,7 +1489,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 20532,
+    "texts": 20877,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -1488,7 +1538,7 @@
     ]
    },
    "red": {
-    "marks": 376,
+    "marks": 390,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -1499,25 +1549,25 @@
     "locked": [
      {
       "line": "tagline",
-      "exact": 26
+      "exact": 34
      },
      {
       "line": "mission",
-      "exact": 8
+      "exact": 12
      },
      {
       "line": "reader promise",
-      "exact": 8
+      "exact": 12
      },
      {
       "line": "editorial commitment",
-      "exact": 20
+      "exact": 28
      }
     ],
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 893007,
+   "height": 901510,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -1527,6 +1577,54 @@
    "idsHeld": 724,
    "openers": [
     {
+     "specimen": "s-01-opener",
+     "chapter": "purpose",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-02-opener",
+     "chapter": "voice",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-03-opener",
+     "chapter": "identity",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-04-opener",
+     "chapter": "ampersand",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-05-opener",
+     "chapter": "color",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-06-opener",
+     "chapter": "type",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-07-opener",
+     "chapter": "layout",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-08-opener",
+     "chapter": "lockmark",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
      "specimen": "s-09-opener",
      "chapter": "pillar-icons",
      "inHead": true,
@@ -1535,6 +1633,18 @@
     {
      "specimen": "s-10-opener",
      "chapter": "symbols",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-11-opener",
+     "chapter": "icons",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-12-index",
+     "chapter": "graphic-devices",
      "inHead": true,
      "scrolls": false
     },
@@ -1566,15 +1676,23 @@
    "code": {
     "plates": 28,
     "stages": 56,
-    "styled": 2152,
+    "styled": 2154,
     "results": [
      {
       "set": "c-18-button",
       "theme": "light",
-      "same": true,
-      "w": 590,
-      "h": 613,
-      "tall": false
+      "same": false,
+      "edgesOnly": true,
+      "tall": false,
+      "pixels": 56,
+      "max": 48,
+      "total": 362260,
+      "flat": 0,
+      "big": 0,
+      "ring": 0,
+      "shiftedRows": 0,
+      "shiftedCols": 0,
+      "firstOff": null
      },
      {
       "set": "c-18-button",
@@ -1619,18 +1737,34 @@
      {
       "set": "c-18-theme-switch",
       "theme": "light",
-      "same": true,
-      "w": 590,
-      "h": 145,
-      "tall": false
+      "same": false,
+      "edgesOnly": true,
+      "tall": false,
+      "pixels": 26,
+      "max": 10,
+      "total": 86140,
+      "flat": 0,
+      "big": 0,
+      "ring": 0,
+      "shiftedRows": 0,
+      "shiftedCols": 0,
+      "firstOff": null
      },
      {
       "set": "c-18-theme-switch",
       "theme": "dark",
-      "same": true,
-      "w": 590,
-      "h": 145,
-      "tall": false
+      "same": false,
+      "edgesOnly": true,
+      "tall": false,
+      "pixels": 26,
+      "max": 11,
+      "total": 86140,
+      "flat": 0,
+      "big": 0,
+      "ring": 0,
+      "shiftedRows": 0,
+      "shiftedCols": 0,
+      "firstOff": null
      },
      {
       "set": "c-18-link",
@@ -1643,12 +1777,20 @@
      {
       "set": "c-18-link",
       "theme": "dark",
+      "same": true,
+      "w": 590,
+      "h": 399,
+      "tall": false
+     },
+     {
+      "set": "c-18-masthead",
+      "theme": "light",
       "same": false,
       "edgesOnly": true,
       "tall": false,
-      "pixels": 11,
-      "max": 30,
-      "total": 236000,
+      "pixels": 71,
+      "max": 22,
+      "total": 71980,
       "flat": 0,
       "big": 0,
       "ring": 0,
@@ -1658,27 +1800,35 @@
      },
      {
       "set": "c-18-masthead",
-      "theme": "light",
-      "same": true,
-      "w": 590,
-      "h": 121,
-      "tall": false
-     },
-     {
-      "set": "c-18-masthead",
       "theme": "dark",
-      "same": true,
-      "w": 590,
-      "h": 121,
-      "tall": false
+      "same": false,
+      "edgesOnly": true,
+      "tall": false,
+      "pixels": 72,
+      "max": 22,
+      "total": 71980,
+      "flat": 0,
+      "big": 0,
+      "ring": 0,
+      "shiftedRows": 0,
+      "shiftedCols": 0,
+      "firstOff": null
      },
      {
       "set": "c-18-location",
       "theme": "light",
-      "same": true,
-      "w": 590,
-      "h": 487,
-      "tall": false
+      "same": false,
+      "edgesOnly": true,
+      "tall": false,
+      "pixels": 7,
+      "max": 162,
+      "total": 287330,
+      "flat": 0,
+      "big": 0,
+      "ring": 0,
+      "shiftedRows": 1,
+      "shiftedCols": 0,
+      "firstOff": null
      },
      {
       "set": "c-18-location",
@@ -1686,13 +1836,13 @@
       "same": false,
       "edgesOnly": true,
       "tall": false,
-      "pixels": 644,
-      "max": 202,
+      "pixels": 17,
+      "max": 9,
       "total": 287920,
       "flat": 0,
       "big": 0,
-      "ring": 2,
-      "shiftedRows": 2,
+      "ring": 0,
+      "shiftedRows": 0,
       "shiftedCols": 0,
       "firstOff": null
      },
@@ -1707,18 +1857,10 @@
      {
       "set": "c-18-disclosure",
       "theme": "dark",
-      "same": false,
-      "edgesOnly": true,
-      "tall": false,
-      "pixels": 41,
-      "max": 17,
-      "total": 162250,
-      "flat": 0,
-      "big": 0,
-      "ring": 0,
-      "shiftedRows": 0,
-      "shiftedCols": 0,
-      "firstOff": null
+      "same": true,
+      "w": 590,
+      "h": 274,
+      "tall": false
      },
      {
       "set": "c-18-tabs",
@@ -1742,7 +1884,7 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 87,
+      "pixels": 82,
       "max": 26,
       "total": 439550,
       "flat": 0,
@@ -1758,7 +1900,7 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 86,
+      "pixels": 81,
       "max": 30,
       "total": 439550,
       "flat": 0,
@@ -1827,10 +1969,18 @@
      {
       "set": "c-18-download",
       "theme": "dark",
-      "same": true,
-      "w": 590,
-      "h": 234,
-      "tall": false
+      "same": false,
+      "edgesOnly": true,
+      "tall": false,
+      "pixels": 30,
+      "max": 6,
+      "total": 138650,
+      "flat": 0,
+      "big": 0,
+      "ring": 0,
+      "shiftedRows": 0,
+      "shiftedCols": 0,
+      "firstOff": null
      },
      {
       "set": "c-18-search",
@@ -1840,7 +1990,7 @@
       "tall": false,
       "pixels": 28,
       "max": 3,
-      "total": 379960,
+      "total": 380550,
       "flat": 0,
       "big": 0,
       "ring": 0,
@@ -1854,12 +2004,12 @@
       "same": false,
       "edgesOnly": true,
       "tall": false,
-      "pixels": 52,
-      "max": 30,
+      "pixels": 69,
+      "max": 40,
       "total": 379960,
       "flat": 0,
       "big": 0,
-      "ring": 4,
+      "ring": 3,
       "shiftedRows": 0,
       "shiftedCols": 0,
       "firstOff": null
@@ -1899,19 +2049,11 @@
      {
       "set": "c-18-messages",
       "theme": "light",
-      "same": true,
-      "w": 590,
-      "h": 247,
-      "tall": false
-     },
-     {
-      "set": "c-18-messages",
-      "theme": "dark",
       "same": false,
       "edgesOnly": true,
       "tall": false,
-      "pixels": 80,
-      "max": 19,
+      "pixels": 82,
+      "max": 26,
       "total": 146320,
       "flat": 0,
       "big": 0,
@@ -1921,30 +2063,22 @@
       "firstOff": null
      },
      {
+      "set": "c-18-messages",
+      "theme": "dark",
+      "same": true,
+      "w": 590,
+      "h": 247,
+      "tall": false
+     },
+     {
       "set": "c-18-loading-empty",
       "theme": "light",
       "same": false,
       "edgesOnly": true,
       "tall": false,
-      "pixels": 52,
-      "max": 5,
+      "pixels": 70,
+      "max": 26,
       "total": 87910,
-      "flat": 0,
-      "big": 0,
-      "ring": 24,
-      "shiftedRows": 0,
-      "shiftedCols": 0,
-      "firstOff": null
-     },
-     {
-      "set": "c-18-loading-empty",
-      "theme": "dark",
-      "same": false,
-      "edgesOnly": true,
-      "tall": false,
-      "pixels": 69,
-      "max": 30,
-      "total": 87320,
       "flat": 0,
       "big": 0,
       "ring": 28,
@@ -1953,14 +2087,14 @@
       "firstOff": null
      },
      {
-      "set": "c-18-tracker",
-      "theme": "light",
+      "set": "c-18-loading-empty",
+      "theme": "dark",
       "same": false,
       "edgesOnly": true,
-      "tall": true,
-      "pixels": 136,
-      "max": 44,
-      "total": 614190,
+      "tall": false,
+      "pixels": 50,
+      "max": 5,
+      "total": 87320,
       "flat": 0,
       "big": 0,
       "ring": 24,
@@ -1970,17 +2104,33 @@
      },
      {
       "set": "c-18-tracker",
+      "theme": "light",
+      "same": false,
+      "edgesOnly": true,
+      "tall": true,
+      "pixels": 415,
+      "max": 56,
+      "total": 623630,
+      "flat": 0,
+      "big": 0,
+      "ring": 27,
+      "shiftedRows": 1,
+      "shiftedCols": 0,
+      "firstOff": null
+     },
+     {
+      "set": "c-18-tracker",
       "theme": "dark",
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 299,
-      "max": 49,
-      "total": 614190,
+      "pixels": 427,
+      "max": 55,
+      "total": 623630,
       "flat": 0,
       "big": 0,
-      "ring": 31,
-      "shiftedRows": 0,
+      "ring": 27,
+      "shiftedRows": 1,
       "shiftedCols": 0,
       "firstOff": null
      },
@@ -1990,9 +2140,9 @@
       "same": false,
       "edgesOnly": true,
       "tall": false,
-      "pixels": 41,
-      "max": 5,
-      "total": 388220,
+      "pixels": 90,
+      "max": 43,
+      "total": 387630,
       "flat": 0,
       "big": 0,
       "ring": 0,
@@ -2006,8 +2156,8 @@
       "same": false,
       "edgesOnly": true,
       "tall": false,
-      "pixels": 26,
-      "max": 3,
+      "pixels": 41,
+      "max": 17,
       "total": 387630,
       "flat": 0,
       "big": 0,
@@ -2137,7 +2287,7 @@
     }
    },
    "lightOnDark": {
-    "elements": 67739,
+    "elements": 68337,
     "attribute": "light",
     "scheme": "light only",
     "deviceDark": true,
@@ -2146,16 +2296,16 @@
    },
    "fitSwitch": {
     "dpr": 1,
-    "glyphs": 77,
-    "pairs": 77,
-    "fitShown": 77,
+    "glyphs": 81,
+    "pairs": 81,
+    "fitShown": 81,
     "masterShown": 0,
     "fixed": 0,
     "problems": []
    },
    "frames": {
     "snugPx": 32,
-    "frames": 424,
+    "frames": 433,
     "scrolling": 17,
     "snug": [
      {
@@ -2179,17 +2329,11 @@
     "breakout": []
    },
    "fit": {
-    "offered": [
-     {
-      "specimen": "s-04-5-failure",
-      "scale": 0.932,
-      "smallest": null
-     }
-    ],
+    "offered": [],
     "under": []
    },
    "stageB": {
-    "icons": 632,
+    "icons": 636,
     "stateStages": 13,
     "statePictures": [
      {
@@ -2204,18 +2348,18 @@
     "inlineTargets": 2,
     "missingFamily": [],
     "markReaders": {
-     "ring-now": 59,
-     "ring-ahead": 106,
+     "ring-now": 60,
+     "ring-ahead": 110,
      "slash": 18,
      "halo": 18,
      "line-reached": 139,
      "line-ahead": 61,
-     "take-part-disc": 24,
-     "take-part-keyline": 26,
-     "take-part-cut": 26
+     "take-part-disc": 25,
+     "take-part-keyline": 27,
+     "take-part-cut": 27
     },
-    "glyphParts": 595,
-    "useParts": 309,
+    "glyphParts": 599,
+    "useParts": 313,
     "menu": "not shown at this width",
     "forcedWordmark": "one color in dark and light"
    },
@@ -2276,16 +2420,16 @@
     "rules": 185
    },
    "anchors": {
-    "ids": 1537,
+    "ids": 1557,
     "duplicates": [],
-    "links": 1996,
+    "links": 2024,
     "broken": [],
     "relatedLinks": 388,
     "relatedBad": [],
     "aliases": []
    },
    "specimens": {
-    "stages": 480,
+    "stages": 489,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -2483,7 +2627,7 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 468,
+    "stages": 477,
     "exempt": 12,
     "off": [],
     "fluid": [
@@ -2523,7 +2667,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 20464,
+    "texts": 20801,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -2626,7 +2770,7 @@
     ]
    },
    "red": {
-    "marks": 376,
+    "marks": 390,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -2637,25 +2781,25 @@
     "locked": [
      {
       "line": "tagline",
-      "exact": 26
+      "exact": 34
      },
      {
       "line": "mission",
-      "exact": 8
+      "exact": 12
      },
      {
       "line": "reader promise",
-      "exact": 8
+      "exact": 12
      },
      {
       "line": "editorial commitment",
-      "exact": 20
+      "exact": 28
      }
     ],
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 1081324,
+   "height": 1089030,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -2665,6 +2809,54 @@
    "idsHeld": 724,
    "openers": [
     {
+     "specimen": "s-01-opener",
+     "chapter": "purpose",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-02-opener",
+     "chapter": "voice",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-03-opener",
+     "chapter": "identity",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-04-opener",
+     "chapter": "ampersand",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-05-opener",
+     "chapter": "color",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-06-opener",
+     "chapter": "type",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-07-opener",
+     "chapter": "layout",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-08-opener",
+     "chapter": "lockmark",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
      "specimen": "s-09-opener",
      "chapter": "pillar-icons",
      "inHead": true,
@@ -2673,6 +2865,18 @@
     {
      "specimen": "s-10-opener",
      "chapter": "symbols",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-11-opener",
+     "chapter": "icons",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-12-index",
+     "chapter": "graphic-devices",
      "inHead": true,
      "scrolls": false
     },
@@ -2704,39 +2908,23 @@
    "code": {
     "plates": 28,
     "stages": 56,
-    "styled": 2152,
+    "styled": 2154,
     "results": [
      {
       "set": "c-18-button",
       "theme": "light",
-      "same": false,
-      "edgesOnly": true,
-      "tall": false,
-      "pixels": 37,
-      "max": 48,
-      "total": 224940,
-      "flat": 0,
-      "big": 0,
-      "ring": 0,
-      "shiftedRows": 0,
-      "shiftedCols": 0,
-      "firstOff": null
+      "same": true,
+      "w": 326,
+      "h": 689,
+      "tall": false
      },
      {
       "set": "c-18-button",
       "theme": "dark",
-      "same": false,
-      "edgesOnly": true,
-      "tall": false,
-      "pixels": 27,
-      "max": 48,
-      "total": 224940,
-      "flat": 0,
-      "big": 0,
-      "ring": 0,
-      "shiftedRows": 0,
-      "shiftedCols": 0,
-      "firstOff": null
+      "same": true,
+      "w": 326,
+      "h": 689,
+      "tall": false
      },
      {
       "set": "c-18-toggle",
@@ -2793,7 +2981,7 @@
       "edgesOnly": true,
       "tall": false,
       "pixels": 1,
-      "max": 198,
+      "max": 92,
       "total": 157132,
       "flat": 0,
       "big": 0,
@@ -2805,10 +2993,18 @@
      {
       "set": "c-18-link",
       "theme": "dark",
-      "same": true,
-      "w": 326,
-      "h": 481,
-      "tall": false
+      "same": false,
+      "edgesOnly": true,
+      "tall": false,
+      "pixels": 1,
+      "max": 172,
+      "total": 157132,
+      "flat": 0,
+      "big": 0,
+      "ring": 0,
+      "shiftedRows": 1,
+      "shiftedCols": 0,
+      "firstOff": null
      },
      {
       "set": "c-18-masthead",
@@ -2821,10 +3017,18 @@
      {
       "set": "c-18-masthead",
       "theme": "dark",
-      "same": true,
-      "w": 326,
-      "h": 121,
-      "tall": false
+      "same": false,
+      "edgesOnly": true,
+      "tall": false,
+      "pixels": 43,
+      "max": 8,
+      "total": 39772,
+      "flat": 0,
+      "big": 0,
+      "ring": 0,
+      "shiftedRows": 0,
+      "shiftedCols": 0,
+      "firstOff": null
      },
      {
       "set": "c-18-location",
@@ -2845,18 +3049,10 @@
      {
       "set": "c-18-disclosure",
       "theme": "light",
-      "same": false,
-      "edgesOnly": true,
-      "tall": false,
-      "pixels": 9,
-      "max": 9,
-      "total": 97800,
-      "flat": 0,
-      "big": 0,
-      "ring": 0,
-      "shiftedRows": 0,
-      "shiftedCols": 0,
-      "firstOff": null
+      "same": true,
+      "w": 326,
+      "h": 298,
+      "tall": false
      },
      {
       "set": "c-18-disclosure",
@@ -2888,12 +3084,12 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 68,
-      "max": 4,
+      "pixels": 113,
+      "max": 36,
       "total": 404566,
       "flat": 0,
       "big": 0,
-      "ring": 40,
+      "ring": 47,
       "shiftedRows": 0,
       "shiftedCols": 0,
       "firstOff": null
@@ -2904,12 +3100,12 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 118,
-      "max": 40,
+      "pixels": 66,
+      "max": 5,
       "total": 404566,
       "flat": 0,
       "big": 0,
-      "ring": 47,
+      "ring": 40,
       "shiftedRows": 0,
       "shiftedCols": 0,
       "firstOff": null
@@ -2984,12 +3180,12 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 28,
-      "max": 3,
+      "pixels": 46,
+      "max": 26,
       "total": 301876,
       "flat": 0,
       "big": 0,
-      "ring": 0,
+      "ring": 4,
       "shiftedRows": 0,
       "shiftedCols": 0,
       "firstOff": null
@@ -3000,12 +3196,12 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 371,
-      "max": 202,
+      "pixels": 54,
+      "max": 40,
       "total": 301876,
       "flat": 0,
       "big": 0,
-      "ring": 330,
+      "ring": 3,
       "shiftedRows": 0,
       "shiftedCols": 0,
       "firstOff": null
@@ -3013,18 +3209,10 @@
      {
       "set": "c-18-filter-bar",
       "theme": "light",
-      "same": false,
-      "edgesOnly": true,
-      "tall": true,
-      "pixels": 46,
-      "max": 17,
-      "total": 274818,
-      "flat": 0,
-      "big": 0,
-      "ring": 0,
-      "shiftedRows": 0,
-      "shiftedCols": 0,
-      "firstOff": null
+      "same": true,
+      "w": 326,
+      "h": 842,
+      "tall": true
      },
      {
       "set": "c-18-filter-bar",
@@ -3072,8 +3260,8 @@
       "same": false,
       "edgesOnly": true,
       "tall": false,
-      "pixels": 108,
-      "max": 42,
+      "pixels": 65,
+      "max": 19,
       "total": 104646,
       "flat": 0,
       "big": 0,
@@ -3120,13 +3308,13 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 361,
-      "max": 49,
-      "total": 425756,
+      "pixels": 552,
+      "max": 202,
+      "total": 430646,
       "flat": 0,
       "big": 0,
-      "ring": 40,
-      "shiftedRows": 0,
+      "ring": 45,
+      "shiftedRows": 2,
       "shiftedCols": 0,
       "firstOff": null
      },
@@ -3136,9 +3324,9 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 145,
-      "max": 30,
-      "total": 425430,
+      "pixels": 248,
+      "max": 49,
+      "total": 430972,
       "flat": 0,
       "big": 0,
       "ring": 44,
@@ -3152,8 +3340,8 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 46,
-      "max": 34,
+      "pixels": 28,
+      "max": 4,
       "total": 261778,
       "flat": 0,
       "big": 0,
@@ -3168,12 +3356,12 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 399,
-      "max": 202,
+      "pixels": 26,
+      "max": 3,
       "total": 261778,
       "flat": 0,
       "big": 0,
-      "ring": 326,
+      "ring": 0,
       "shiftedRows": 0,
       "shiftedCols": 0,
       "firstOff": null
@@ -3184,8 +3372,8 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 40,
-      "max": 34,
+      "pixels": 11,
+      "max": 9,
       "total": 363490,
       "flat": 0,
       "big": 0,
@@ -3200,12 +3388,12 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 336,
-      "max": 202,
+      "pixels": 10,
+      "max": 9,
       "total": 363816,
       "flat": 0,
       "big": 0,
-      "ring": 326,
+      "ring": 0,
       "shiftedRows": 0,
       "shiftedCols": 0,
       "firstOff": null
@@ -3315,7 +3503,7 @@
     }
    },
    "lightOnDark": {
-    "elements": 67739,
+    "elements": 68337,
     "attribute": "light",
     "scheme": "light only",
     "deviceDark": true,
@@ -3324,17 +3512,17 @@
    },
    "fitSwitch": {
     "dpr": 1,
-    "glyphs": 77,
-    "pairs": 77,
-    "fitShown": 77,
+    "glyphs": 81,
+    "pairs": 81,
+    "fitShown": 81,
     "masterShown": 0,
     "fixed": 0,
     "problems": []
    },
    "frames": {
     "snugPx": 32,
-    "frames": 424,
-    "scrolling": 52,
+    "frames": 433,
+    "scrolling": 56,
     "snug": [],
     "hintNoScroll": [],
     "scrollNoHint": [],
@@ -3344,32 +3532,11 @@
     "breakout": []
    },
    "fit": {
-    "offered": [
-     {
-      "specimen": "s-03-1-failure",
-      "scale": 0.587,
-      "smallest": 36.27
-     },
-     {
-      "specimen": "s-03-5-failure",
-      "scale": 0.639,
-      "smallest": null
-     },
-     {
-      "specimen": "s-03-6-failure",
-      "scale": 0.895,
-      "smallest": null
-     },
-     {
-      "specimen": "s-04-5-failure",
-      "scale": 0.551,
-      "smallest": null
-     }
-    ],
+    "offered": [],
     "under": []
    },
    "stageB": {
-    "icons": 632,
+    "icons": 636,
     "stateStages": 13,
     "statePictures": [
      {
@@ -3384,18 +3551,18 @@
     "inlineTargets": 2,
     "missingFamily": [],
     "markReaders": {
-     "ring-now": 59,
-     "ring-ahead": 106,
+     "ring-now": 60,
+     "ring-ahead": 110,
      "slash": 18,
      "halo": 18,
      "line-reached": 139,
      "line-ahead": 61,
-     "take-part-disc": 24,
-     "take-part-keyline": 26,
-     "take-part-cut": 26
+     "take-part-disc": 25,
+     "take-part-keyline": 27,
+     "take-part-cut": 27
     },
-    "glyphParts": 596,
-    "useParts": 310,
+    "glyphParts": 600,
+    "useParts": 314,
     "menu": "opens, holds focus, closes by Escape and Close, returns focus",
     "forcedWordmark": "one color in dark and light"
    },
@@ -3456,16 +3623,16 @@
     "rules": 185
    },
    "anchors": {
-    "ids": 1537,
+    "ids": 1557,
     "duplicates": [],
-    "links": 1996,
+    "links": 2024,
     "broken": [],
     "relatedLinks": 388,
     "relatedBad": [],
     "aliases": []
    },
    "specimens": {
-    "stages": 480,
+    "stages": 489,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -3663,7 +3830,7 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 468,
+    "stages": 477,
     "exempt": 12,
     "off": [],
     "fluid": [
@@ -3703,7 +3870,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 20469,
+    "texts": 20806,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -3806,7 +3973,7 @@
     ]
    },
    "red": {
-    "marks": 376,
+    "marks": 390,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -3817,25 +3984,25 @@
     "locked": [
      {
       "line": "tagline",
-      "exact": 26
+      "exact": 34
      },
      {
       "line": "mission",
-      "exact": 8
+      "exact": 12
      },
      {
       "line": "reader promise",
-      "exact": 8
+      "exact": 12
      },
      {
       "line": "editorial commitment",
-      "exact": 20
+      "exact": 28
      }
     ],
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 1129129,
+   "height": 1136673,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -3845,6 +4012,54 @@
    "idsHeld": 724,
    "openers": [
     {
+     "specimen": "s-01-opener",
+     "chapter": "purpose",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-02-opener",
+     "chapter": "voice",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-03-opener",
+     "chapter": "identity",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-04-opener",
+     "chapter": "ampersand",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-05-opener",
+     "chapter": "color",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-06-opener",
+     "chapter": "type",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-07-opener",
+     "chapter": "layout",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-08-opener",
+     "chapter": "lockmark",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
      "specimen": "s-09-opener",
      "chapter": "pillar-icons",
      "inHead": true,
@@ -3853,6 +4068,18 @@
     {
      "specimen": "s-10-opener",
      "chapter": "symbols",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-11-opener",
+     "chapter": "icons",
+     "inHead": true,
+     "scrolls": false
+    },
+    {
+     "specimen": "s-12-index",
+     "chapter": "graphic-devices",
      "inHead": true,
      "scrolls": false
     },
@@ -3884,7 +4111,7 @@
    "code": {
     "plates": 28,
     "stages": 56,
-    "styled": 2152,
+    "styled": 2154,
     "results": [
      {
       "set": "c-18-button",
@@ -3897,18 +4124,10 @@
      {
       "set": "c-18-button",
       "theme": "dark",
-      "same": false,
-      "edgesOnly": true,
-      "tall": true,
-      "pixels": 296,
-      "max": 202,
-      "total": 209568,
-      "flat": 0,
-      "big": 0,
-      "ring": 296,
-      "shiftedRows": 0,
-      "shiftedCols": 0,
-      "firstOff": null
+      "same": true,
+      "w": 296,
+      "h": 707,
+      "tall": true
      },
      {
       "set": "c-18-toggle",
@@ -3921,34 +4140,18 @@
      {
       "set": "c-18-toggle",
       "theme": "dark",
-      "same": false,
-      "edgesOnly": true,
-      "tall": false,
-      "pixels": 16,
-      "max": 6,
-      "total": 90576,
-      "flat": 0,
-      "big": 0,
-      "ring": 0,
-      "shiftedRows": 0,
-      "shiftedCols": 0,
-      "firstOff": null
+      "same": true,
+      "w": 296,
+      "h": 306,
+      "tall": false
      },
      {
       "set": "c-18-choice",
       "theme": "light",
-      "same": false,
-      "edgesOnly": true,
-      "tall": false,
-      "pixels": 15,
-      "max": 6,
-      "total": 53872,
-      "flat": 0,
-      "big": 0,
-      "ring": 0,
-      "shiftedRows": 0,
-      "shiftedCols": 0,
-      "firstOff": null
+      "same": true,
+      "w": 296,
+      "h": 181,
+      "tall": false
      },
      {
       "set": "c-18-choice",
@@ -3961,18 +4164,10 @@
      {
       "set": "c-18-theme-switch",
       "theme": "light",
-      "same": false,
-      "edgesOnly": true,
-      "tall": false,
-      "pixels": 25,
-      "max": 6,
-      "total": 65712,
-      "flat": 0,
-      "big": 0,
-      "ring": 0,
-      "shiftedRows": 0,
-      "shiftedCols": 0,
-      "firstOff": null
+      "same": true,
+      "w": 296,
+      "h": 221,
+      "tall": false
      },
      {
       "set": "c-18-theme-switch",
@@ -3993,26 +4188,26 @@
      {
       "set": "c-18-link",
       "theme": "dark",
-      "same": true,
-      "w": 296,
-      "h": 481,
-      "tall": false
+      "same": false,
+      "edgesOnly": true,
+      "tall": false,
+      "pixels": 1,
+      "max": 172,
+      "total": 142376,
+      "flat": 0,
+      "big": 0,
+      "ring": 0,
+      "shiftedRows": 1,
+      "shiftedCols": 0,
+      "firstOff": null
      },
      {
       "set": "c-18-masthead",
       "theme": "light",
-      "same": false,
-      "edgesOnly": true,
-      "tall": false,
-      "pixels": 108,
-      "max": 14,
-      "total": 45584,
-      "flat": 0,
-      "big": 0,
-      "ring": 0,
-      "shiftedRows": 0,
-      "shiftedCols": 0,
-      "firstOff": null
+      "same": true,
+      "w": 296,
+      "h": 153,
+      "tall": false
      },
      {
       "set": "c-18-masthead",
@@ -4025,18 +4220,10 @@
      {
       "set": "c-18-location",
       "theme": "light",
-      "same": false,
-      "edgesOnly": true,
-      "tall": false,
-      "pixels": 19,
-      "max": 9,
-      "total": 201576,
-      "flat": 0,
-      "big": 0,
-      "ring": 0,
-      "shiftedRows": 0,
-      "shiftedCols": 0,
-      "firstOff": null
+      "same": true,
+      "w": 296,
+      "h": 681,
+      "tall": false
      },
      {
       "set": "c-18-location",
@@ -4084,12 +4271,12 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 68,
-      "max": 4,
-      "total": 367336,
+      "pixels": 115,
+      "max": 26,
+      "total": 367632,
       "flat": 0,
       "big": 0,
-      "ring": 40,
+      "ring": 44,
       "shiftedRows": 0,
       "shiftedCols": 0,
       "firstOff": null
@@ -4100,12 +4287,12 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 96,
-      "max": 30,
+      "pixels": 66,
+      "max": 5,
       "total": 367336,
       "flat": 0,
       "big": 0,
-      "ring": 44,
+      "ring": 40,
       "shiftedRows": 0,
       "shiftedCols": 0,
       "firstOff": null
@@ -4169,10 +4356,18 @@
      {
       "set": "c-18-download",
       "theme": "dark",
-      "same": true,
-      "w": 296,
-      "h": 274,
-      "tall": false
+      "same": false,
+      "edgesOnly": true,
+      "tall": false,
+      "pixels": 19,
+      "max": 6,
+      "total": 81400,
+      "flat": 0,
+      "big": 0,
+      "ring": 0,
+      "shiftedRows": 0,
+      "shiftedCols": 0,
+      "firstOff": null
      },
      {
       "set": "c-18-search",
@@ -4196,12 +4391,12 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 45,
-      "max": 30,
+      "pixels": 54,
+      "max": 40,
       "total": 281200,
       "flat": 0,
       "big": 0,
-      "ring": 4,
+      "ring": 3,
       "shiftedRows": 0,
       "shiftedCols": 0,
       "firstOff": null
@@ -4262,7 +4457,7 @@
       "tall": false,
       "pixels": 65,
       "max": 19,
-      "total": 94720,
+      "total": 95016,
       "flat": 0,
       "big": 0,
       "ring": 0,
@@ -4276,12 +4471,12 @@
       "same": false,
       "edgesOnly": true,
       "tall": false,
-      "pixels": 68,
-      "max": 4,
+      "pixels": 85,
+      "max": 25,
       "total": 51208,
       "flat": 0,
       "big": 0,
-      "ring": 40,
+      "ring": 44,
       "shiftedRows": 0,
       "shiftedCols": 0,
       "firstOff": null
@@ -4292,12 +4487,12 @@
       "same": false,
       "edgesOnly": true,
       "tall": false,
-      "pixels": 80,
-      "max": 5,
+      "pixels": 99,
+      "max": 40,
       "total": 50912,
       "flat": 0,
       "big": 0,
-      "ring": 43,
+      "ring": 44,
       "shiftedRows": 0,
       "shiftedCols": 0,
       "firstOff": null
@@ -4308,12 +4503,12 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 193,
-      "max": 45,
-      "total": 401672,
+      "pixels": 244,
+      "max": 49,
+      "total": 413512,
       "flat": 0,
       "big": 0,
-      "ring": 40,
+      "ring": 51,
       "shiftedRows": 0,
       "shiftedCols": 0,
       "firstOff": null
@@ -4324,12 +4519,12 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 583,
-      "max": 202,
-      "total": 401672,
+      "pixels": 232,
+      "max": 49,
+      "total": 413216,
       "flat": 0,
       "big": 0,
-      "ring": 339,
+      "ring": 43,
       "shiftedRows": 0,
       "shiftedCols": 0,
       "firstOff": null
@@ -4356,8 +4551,8 @@
       "same": false,
       "edgesOnly": true,
       "tall": true,
-      "pixels": 40,
-      "max": 4,
+      "pixels": 30,
+      "max": 35,
       "total": 250712,
       "flat": 0,
       "big": 0,
@@ -4393,18 +4588,10 @@
      {
       "set": "c-18-diagram-controls",
       "theme": "dark",
-      "same": false,
-      "edgesOnly": true,
-      "tall": true,
-      "pixels": 296,
-      "max": 202,
-      "total": 205128,
-      "flat": 0,
-      "big": 0,
-      "ring": 296,
-      "shiftedRows": 0,
-      "shiftedCols": 0,
-      "firstOff": null
+      "same": true,
+      "w": 296,
+      "h": 691,
+      "tall": true
      },
      {
       "set": "c-18-id-chip",
@@ -4417,10 +4604,18 @@
      {
       "set": "c-18-id-chip",
       "theme": "dark",
-      "same": true,
-      "w": 296,
-      "h": 191,
-      "tall": false
+      "same": false,
+      "edgesOnly": true,
+      "tall": false,
+      "pixels": 162,
+      "max": 202,
+      "total": 56832,
+      "flat": 0,
+      "big": 0,
+      "ring": 0,
+      "shiftedRows": 2,
+      "shiftedCols": 0,
+      "firstOff": null
      },
      {
       "set": "c-26-caption",
@@ -4495,7 +4690,7 @@
     }
    },
    "lightOnDark": {
-    "elements": 67739,
+    "elements": 68337,
     "attribute": "light",
     "scheme": "light only",
     "deviceDark": true,
@@ -4504,17 +4699,17 @@
    },
    "fitSwitch": {
     "dpr": 1,
-    "glyphs": 77,
-    "pairs": 77,
-    "fitShown": 77,
+    "glyphs": 81,
+    "pairs": 81,
+    "fitShown": 81,
     "masterShown": 0,
     "fixed": 0,
     "problems": []
    },
    "frames": {
     "snugPx": 32,
-    "frames": 424,
-    "scrolling": 57,
+    "frames": 433,
+    "scrolling": 61,
     "snug": [],
     "hintNoScroll": [],
     "scrollNoHint": [],
@@ -4524,32 +4719,11 @@
     "breakout": []
    },
    "fit": {
-    "offered": [
-     {
-      "specimen": "s-03-1-failure",
-      "scale": 0.538,
-      "smallest": 33.23
-     },
-     {
-      "specimen": "s-03-5-failure",
-      "scale": 0.586,
-      "smallest": null
-     },
-     {
-      "specimen": "s-03-6-failure",
-      "scale": 0.82,
-      "smallest": null
-     },
-     {
-      "specimen": "s-04-5-failure",
-      "scale": 0.505,
-      "smallest": null
-     }
-    ],
+    "offered": [],
     "under": []
    },
    "stageB": {
-    "icons": 632,
+    "icons": 636,
     "stateStages": 13,
     "statePictures": [
      {
@@ -4564,18 +4738,18 @@
     "inlineTargets": 2,
     "missingFamily": [],
     "markReaders": {
-     "ring-now": 59,
-     "ring-ahead": 106,
+     "ring-now": 60,
+     "ring-ahead": 110,
      "slash": 18,
      "halo": 18,
      "line-reached": 139,
      "line-ahead": 61,
-     "take-part-disc": 24,
-     "take-part-keyline": 26,
-     "take-part-cut": 26
+     "take-part-disc": 25,
+     "take-part-keyline": 27,
+     "take-part-cut": 27
     },
-    "glyphParts": 596,
-    "useParts": 310,
+    "glyphParts": 600,
+    "useParts": 314,
     "menu": "opens, holds focus, closes by Escape and Close, returns focus",
     "forcedWordmark": "one color in dark and light"
    },
@@ -4627,18 +4801,18 @@
   {
    "width": 1440,
    "dpr": 2,
-   "glyphs": 77,
-   "pairs": 77,
-   "masterShown": 77,
+   "glyphs": 81,
+   "pairs": 81,
+   "masterShown": 81,
    "fixed": 0,
    "problems": []
   },
   {
    "width": 390,
    "dpr": 3,
-   "glyphs": 77,
-   "pairs": 77,
-   "masterShown": 77,
+   "glyphs": 81,
+   "pairs": 81,
+   "masterShown": 81,
    "fixed": 0,
    "problems": []
   }
@@ -4697,8 +4871,8 @@
  },
  "redPrussian": {
   "width": 1440,
-  "stages": 480,
-  "captured": 30,
+  "stages": 489,
+  "captured": 31,
   "exempt": 20,
   "forms": 3,
   "sends": 3,
@@ -4733,7 +4907,7 @@
    ],
    "loaded": [
     "Inter normal 400 700 U+0-FF",
-    "Inter Tight normal 600 800 U+0-FF",
+    "Inter Tight normal 800 U+0-FF",
     "Lora italic 400 500 U+0-FF"
    ],
    "blocked": 0,
@@ -4767,7 +4941,7 @@
    ],
    "loaded": [
     "Inter normal 400 700 U+0-FF",
-    "Inter Tight normal 600 800 U+0-FF",
+    "Inter Tight normal 800 U+0-FF",
     "Lora italic 400 500 U+0-FF"
    ],
    "blocked": 0,
