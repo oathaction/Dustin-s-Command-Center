@@ -764,7 +764,7 @@
       spec.chart_notes.map(function (n) { return '<li>' + K.chips(n, ids) + '</li>'; }).join('') + '</ul>' : '';
     var region = word(opts, 'table_region').replace('{caption}', (spec.table && spec.table.caption) || spec.id);
     p.push('<details class="oac-eq" data-role="equivalent"><summary>' + esc(word(opts, 'table_summary')) + '<span class="oac-vh"> ' + esc(spec.id) + '</span></summary>' +
-      '<div class="oac-eq-b">' + cn + (opts.guide ? '<div class="oac-tw" data-plate-scroll data-frame-name="' + esc(region) + '">' : '<div class="oac-tw" role="region" tabindex="0" aria-label="' + esc(region) + '">') + K.table_html(spec, rows, { lean: opts.lean_table, types: opts.types }) + '</div></div></details>');
+      '<div class="oac-eq-b">' + cn + (opts.guide ? '<div class="oac-tw" role="group" aria-label="' + esc(region) + '">' : '<div class="oac-tw" role="region" tabindex="0" aria-label="' + esc(region) + '">') + K.table_html(spec, rows, { lean: opts.lean_table, types: opts.types }) + '</div></div></details>');
     var fail = spec.failure ? ' data-oa-failure="' + esc(spec.failure.rule || '') + '"' : '';
     var ab = spec.artboard && spec.artboard !== 'reading' ? ' data-oa-artboard="' + esc(spec.artboard) + '"' : '';
     return '<figure class="oac-fig" id="' + id + '" data-oa-chart-id="' + esc(spec.id) + '" data-form="' + esc(spec.form) + '" data-evidence="' + esc(spec.evidence) + '"' + ab + fail + '>' + p.join('') + '</figure>';
@@ -796,6 +796,9 @@
     }
     draw();
     if (root.ResizeObserver) new root.ResizeObserver(function () { draw(); }).observe(art);
+    var tw = fig.querySelector('.oac-tw[role="group"]'), eq = fig.querySelector('details.oac-eq');
+    var stop = function () { if (!tw) return; if (tw.scrollWidth > tw.clientWidth + 1) tw.setAttribute('tabindex', '0'); else tw.removeAttribute('tabindex'); };
+    if (tw && eq) { eq.addEventListener('toggle', stop); if (root.addEventListener) root.addEventListener('resize', stop); }
     return { redraw: function () { last = -1; draw(); }, result: function () { return result; } };
   };
   K.mount_all = function (scope) {

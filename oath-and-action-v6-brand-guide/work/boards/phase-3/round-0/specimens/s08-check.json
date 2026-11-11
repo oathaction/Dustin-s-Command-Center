@@ -15,8 +15,8 @@
    "ground": "newsprint",
    "page": 390,
    "width": 358,
-   "height": 783,
-   "svg_bytes": 15291
+   "height": 800,
+   "svg_bytes": 15453
   },
   {
    "ground": "charcoal",
@@ -29,9 +29,11 @@
    "ground": "charcoal",
    "page": 390,
    "width": 358,
-   "height": 783,
-   "svg_bytes": 15291
+   "height": 800,
+   "svg_bytes": 15453
   }
  ],
- "faults": []
+ "faults": [
+  "words: an internal document; the guide says \"Oath & Action’s systems atlas\" in source_line (\"Atlas V7\")"
+ ]
 }

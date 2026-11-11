@@ -33,5 +33,7 @@
    "svg_bytes": 15536
   }
  ],
- "faults": []
+ "faults": [
+  "words: an internal document; the guide says \"Oath & Action’s systems atlas\" in source_line (\"Atlas V7\")"
+ ]
 }

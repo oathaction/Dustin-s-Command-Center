@@ -170,7 +170,7 @@
         var st = STY[cat.style] || STY.solid, maxrows = 1;
         groups.forEach(function (g) { var m = (cell[g + '\u0000' + cat.value] || []).length; maxrows = Math.max(maxrows, Math.ceil(m / per)); });
         var bandH = maxrows * (u + ug) + 10;
-        if (c.phone) { c.text(0, y + c.size('label'), cat.label, { role: 'label', weight: 600 }); y += c.size('label') + 8; }
+        if (c.phone) { var cb = c.text(0, y + c.size('label'), cat.label, { role: 'label', weight: 600, max: W }); y = cb.bottom + 8; }
         else c.text(0, y + c.size('label') * 0.9, cat.label, { role: 'label', weight: 600, max: lw });
         groups.forEach(function (g, gi) {
           (cell[g + '\u0000' + cat.value] || []).forEach(function (r, j) {

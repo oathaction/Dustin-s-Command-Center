@@ -110,6 +110,13 @@ export function run_spec(spec, o) {
     res.faults.push(...C.check_drawing(spec, d, TOK[g], where));
     res.drawings.push({ ground: g, page: w, width: d.width, height: d.height, svg: d.svg, bytes: Buffer.byteLength(d.svg) });
   }
+  if (!o.no_narrow) {
+    // the narrowest column any page gives a chart (328 px on a 360 px screen): checked, never exported
+    try {
+      const d = K.draw(spec, chk.rows, { width: 328, ground: 'newsprint', tokens: TOK.newsprint, extra: extra_rows(chk) });
+      res.faults.push(...C.check_drawing(spec, d, TOK.newsprint, 'newsprint 328 px column'));
+    } catch (e) { res.faults.push(`draw at 328: ${e.message}`); }
+  }
   return res;
 }
 
