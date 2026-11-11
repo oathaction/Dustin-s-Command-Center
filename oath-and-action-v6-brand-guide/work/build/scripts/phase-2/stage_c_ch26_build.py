@@ -120,6 +120,10 @@ _spec = importlib.util.spec_from_file_location("token_table_build", Path(__file_
 _tt = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_tt)
 N_GROUPS = len({_tt.group_of(p) for p in FLAT})
+N_COLOR_GROUPS = len({_tt.group_of(p) for p in FLAT if p.split(".")[1] == "color"})
+N_CHART_GROUPS = len({_tt.group_of(p) for p in FLAT if p.split(".")[1] == "chart"})
+WORDS = dict(enumerate(("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")))   # H06
+assert _tt.group_of("oa.font.family.reading") == "Type: faces and weights" and _tt.group_of("oa.zIndex.skip") == "Stacking order"
 # Deprecated names (DTCG $deprecated, Rule 26.8): each old short name with its new one and the release it leaves with
 DEPRECATED = {}
 for _p, _t in FLAT.items():
@@ -673,16 +677,16 @@ def chapter():
          "related": ["05", "19"],
          "builders": ["Ask the editor for a token before you add a value of your own. Send the need and its evidence with the request, and the five conditions decide."]},
         {"id": "26.3", "title": "Choose a token in five steps: surface, role, emphasis, state, then any component token, which wins.",
-         "rule": ["Start from the surface the element sits on: Newsprint, White, Charcoal or Prussian. Then its role, which here means the token's job and not the "
-                  "role a screen reader names: text, graphic, border, focus, data, action, state or field. Then its emphasis: primary or secondary text, an essential or "
+         "rule": ["Start from the surface the element sits on: Newsprint, White, Charcoal or Prussian. Then its job, which a token’s name calls its role: text, "
+                  "graphic, border, focus, data, action, state or field. Then its emphasis: primary or secondary text, an essential or "
                   "subtle graphic, a strong or hairline border, the data a chart is about or its context. Then its state, if it has one, such as selected, disabled, "
                   "warning or error. Last, look for a component token for the part you are drawing, such as a button's disabled label. When one exists, use it, since "
                   "it already holds the component's own choice.",
                   "A message with no state of its own, such as a correction notice, takes primary text for its words and the essential graphic for its 4 px bar: "
                   "<code>--oa-color-text-primary</code>, and <code>--oa-color-graphic-essential</code> at <code>--oa-border-width-bar</code>. Leave the strong border "
                   "to the edges of fields and controls, since a change to those edges would move the notice too.",
-                  "In CSS the first step is the theme or a class. With tokens.css linked, the theme points every short name at the page's ground, Newsprint in the light "
-                  "theme and Charcoal in the dark one. A block that must keep one ground in both themes takes a surface class: <code>.oa-surface-prussian</code> points "
+                  "In CSS the first step is the theme or a class. With tokens.css linked, the theme points every short name at the tokens for the page’s ground, Newsprint "
+                  "in the light theme and Charcoal in the dark one. A block that must keep one ground in both themes takes a surface class: <code>.oa-surface-prussian</code> points "
                   "every short name inside it at Prussian's tokens. Either way your code names the role alone, <code>--oa-color-text-secondary</code>, and draws right "
                   "on whatever ground the block sits on."],
          "tokens": ["oa.color.text.secondary.onCharcoal", "oa.color.text.secondary.onNewsprint", "oa.color.graphic.essential.onNewsprint", "oa.border.width.bar"],
@@ -782,7 +786,9 @@ def chapter():
          "builders": ["Leave the body with no surface class, so the theme sets its ground. Put the head script in its own script element before the stylesheets. "
                       "Rule 18.4 has the switch and its script to copy."]},
         {"id": "26.7", "title": "Look up any token in the table, and copy its name from there.",
-         "rule": [f"The table lists every token in tokens.json, {N_TOKENS} in all, in {N_GROUPS} groups by category, each closed until you open it. A row gives "
+         "rule": [f"The table lists every token in tokens.json, {N_TOKENS} in all, in {N_GROUPS} groups, each closed until you open it. The groups follow "
+                  f"Rule 26.1’s {len(CATEGORIES)} categories, with color split into {WORDS[N_COLOR_GROUPS]} groups and chart into {WORDS[N_CHART_GROUPS]}, "
+                  "font listed as “Type: faces and weights” and z-index as “Stacking order”. A row gives "
                   "the token's name in the JSON and in CSS, its value, its job, its tier and, for a color, the contrast it measures on each surface it serves. "
                   "Search by any of those words, and every group that holds a match opens. Copy puts the CSS name on your clipboard."],
          "tokens": [],
@@ -846,9 +852,24 @@ def chapter():
 
 
 # ---------------------------------------------------------------------------------------------------------------
+# DR-191's second pass, E9: the guide prints typographic apostrophes in prose (chapter 02's notes, item 16); code keeps its own
+CODE_SPAN = re.compile(r"(<code\b[^>]*>.*?</code>)", re.S)
+
+
+def curly(x):
+    if isinstance(x, str):
+        return "".join(part if part.startswith("<code") else part.replace("'", "’") for part in CODE_SPAN.split(x))
+    if isinstance(x, list):
+        return [curly(v) for v in x]
+    if isinstance(x, dict):
+        return {k: (curly(v) if k not in ("id", "specimen", "set", "tokens", "token", "anchor", "opener", "downloads") else v) for k, v in x.items()}
+    return x
+
+
 def outputs():
     S, M = specimens()
-    files = {CHAPTER: json.dumps(chapter(), indent=1, ensure_ascii=False) + "\n", MANIFEST: json.dumps(M, indent=1, ensure_ascii=False) + "\n"}
+    M = {k: dict(v, alt=curly(v["alt"])) if "alt" in v else v for k, v in M.items()}
+    files = {CHAPTER: json.dumps(curly(chapter()), indent=1, ensure_ascii=False) + "\n", MANIFEST: json.dumps(M, indent=1, ensure_ascii=False) + "\n"}
     for sid, text in S.items():
         files[SPEC / f"{sid}.html"] = text
     for sid, parts in code_sets().items():

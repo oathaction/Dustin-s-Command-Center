@@ -63,8 +63,9 @@ export const meta = {
   title: 'Oath & Action design tokens, Edition 06',
   version: '6.0.0-gate2.8',   // stage C round 2, November 11, 2026: DR-218 (descriptions in reader words, the loading mark's description, error.mark renamed error.bar with a deprecated alias) and D2-1544 (the field ground on Charcoal is Charcoal); see changeNotes (gate2.7: the light and dark themes, DR-204; gate2.6: the error mark token colors the 4 px bar, PP-M3; gate2.5: the icon accent from 48 px, the 16 px utility line; gate2.4: mark tokens, D2-402, the 24 px utility line, icon sizes after DR-136)
   status: 'pre-release',
+  // DR-191's second pass, E3: reader words, since a builder downloads this file
   statusNote:
-    'Built for Gate 2. Version 6.0.0 ships when Dustin approves the token files at Gate 2; until then every value may still change.',
+    'Every value may still change until version 6.0.0 ships, once our founder and editor approves these files.',
   formatVersion: '2025.10',
   formatReference: 'https://www.designtokens.org/TR/2025.10/format/',
   colorReference: 'https://www.designtokens.org/TR/2025.10/color/',
@@ -108,11 +109,11 @@ export const meta = {
     { version: '6.0.0-gate2.8', date: '2026-11-11',
       tokens: 'oa.color.state.error.bar, renamed from oa.color.state.error.mark; oa.color.field.ground.onCharcoal; the description of oa.color.state.loading.mark, and every description that carried a record code or an old name',
       change: 'The token for the 4 px bar beside an error now takes the bar\'s name: oa.color.state.error.bar, --oa-color-state-error-bar in CSS. The old names stay as deprecated aliases through every 6.0 release and leave with 6.1.0. The field ground on Charcoal is now Charcoal, so a field in the dark theme shows by its strong Newsprint edge and an error\'s red bar sits on Charcoal at 4.49 to 1; no value is new. The loading mark\'s description now names the still lines of Rule 17.7, and every description is in plain words. Before 6.0.0, every change raises the number after the hyphen.',
-      reason: 'Red never sits on Prussian (Rule 05.3), and the dark field ground put an error\'s red bar on Prussian. The guide calls the error glyph the error mark, so the bar\'s token needed a name of its own, and the table prints every description to readers.',
+      reason: 'Red never sits on Prussian (Rule 05.3), and the dark field ground put an error\'s red bar on Prussian. The guide calls the error glyph the error mark, so the bar\'s token needed a name of its own. Chapter 26\'s table prints every description for readers, so each one now reads in plain words.',
       record: 'DR-218, D2-1544 (D2-1469 withdrawn)', gate: 'Gate 2' },
     { version: '6.0.0-gate2.7', date: '2026-11-10', tokens: 'oa.color.field.ground on four surfaces (new semantic role, no new value); tokens.css gains the theme blocks and the --oa-color-surface short name',
       change: 'A light and a dark theme in tokens.css: under (prefers-color-scheme: dark), or with data-oa-theme="dark", every short name points at its Charcoal token; data-oa-theme="light" forces Newsprint. Every surface class also sets --oa-color-surface. A field ground role, so an entry box follows the theme.',
-      reason: 'One dark mode for every screen product, drawn from our dark atlas style on Charcoal, that follows the device and a reader\'s switch',
+      reason: 'One dark mode for every screen product, drawn on Charcoal in the style of the interactive version of our systems atlas, that follows the device and a reader\'s switch',
       record: 'DR-204', gate: 'Gate 2' },
     { version: '6.0.0-gate2.6', date: '2026-11-10', tokens: 'oa.color.state.error.mark', change: 'Description only: the token colors the 4 px bar',
       reason: 'The error glyph takes the text\'s ink (Rule 11.15), so the token colors the bar alone', record: 'PP-M3', gate: 'Gate 2' },
@@ -227,7 +228,7 @@ const tints = Object.fromEntries([
   tint('stoneN55', 'stone', 'newsprint', 0.55, 'Light Stone fill for a category under the subject, with its value printed', 'dataFill', ['newsprint'], 'N-05', 'Explainer lt; palette lab'),
   tint('stoneN70', 'stone', 'newsprint', 0.70, 'Gridline on Newsprint', 'decorative', ['newsprint'], 'N-05', 'Explainer grid; palette lab'),
   tint('stoneN88', 'stone', 'newsprint', 0.88, 'Track on Newsprint, the whole a share sits in', 'decorative', ['newsprint'], 'N-05', 'Explainer lt2'),
-  tint('stoneN90', 'stone', 'newsprint', 0.90, 'Midpoint of diverging pair B on Newsprint', 'dataFill', ['newsprint'], 'N-07', 'Palette lab, diverging B'),
+  tint('stoneN90', 'stone', 'newsprint', 0.90, 'Midpoint of the diverging scale on Newsprint', 'dataFill', ['newsprint'], 'N-07', 'Palette lab, diverging B'),
   tint('stoneN35', 'stone', 'newsprint', 0.35, 'Context marks on Charcoal, one step quieter than secondary text', 'graphic', ['charcoal'], 'N-06', 'Explainer dark ctx; palette lab'),
   tint('stoneN85', 'stone', 'newsprint', 0.85, 'Largest gray step of a phone tile map on Charcoal', 'dataFill', ['charcoal'], 'N-09', 'Stretch S12 phone step'),
   tint('stoneC10', 'stone', 'charcoal', 0.10, 'Third gray step of a phone tile map on Newsprint', 'dataFill', ['newsprint'], 'N-09', 'Stretch S12 phone step'),
@@ -240,9 +241,9 @@ const tints = Object.fromEntries([
   tint('stoneC80', 'stone', 'charcoal', 0.80, 'Map land on Charcoal', 'decorative', ['charcoal'], 'N-05', 'Stretch land, dark'),
   // Explainer writes "Newsprint 45% toward White"; OKLab mixing is linear, so that is White 55% toward Newsprint, the form D1-04 allows.
   tint('whiteN55', 'white', 'newsprint', 0.55, 'Band and map land on Newsprint, lighter than the page', 'decorative', ['newsprint'], 'N-05', 'Explainer band; stretch land'),
-  tint('prussianN62', 'prussian', 'newsprint', 0.62, 'Light Prussian step of diverging pair B on Newsprint', 'dataFill', ['newsprint'], 'N-07', 'Palette lab, diverging B'),
-  tint('verdigrisN55', 'verdigris', 'newsprint', 0.55, 'Light Verdigris step: pair B on Newsprint and the top sequential step on Charcoal', 'dataFill', ['newsprint', 'charcoal'], 'N-07', 'Palette lab, diverging B and sequential on Charcoal'),
-  tint('verdigrisC25', 'verdigris', 'charcoal', 0.25, 'Strong Verdigris end of diverging pair B on Newsprint', 'dataFill', ['newsprint'], 'N-07', 'Palette lab, diverging B'),
+  tint('prussianN62', 'prussian', 'newsprint', 0.62, 'Light Prussian step of the diverging scale on Newsprint', 'dataFill', ['newsprint'], 'N-07', 'Palette lab, diverging B'),
+  tint('verdigrisN55', 'verdigris', 'newsprint', 0.55, 'Light Verdigris step: the diverging scale\'s on Newsprint and the top sequential step on Charcoal', 'dataFill', ['newsprint', 'charcoal'], 'N-07', 'Palette lab, diverging B and sequential on Charcoal'),
+  tint('verdigrisC25', 'verdigris', 'charcoal', 0.25, 'Strong Verdigris end of the diverging scale on Newsprint', 'dataFill', ['newsprint'], 'N-07', 'Palette lab, diverging B'),
   tint('verdigrisN82', 'verdigris', 'newsprint', 0.82, 'First sequential Verdigris step on Newsprint', 'dataFill', ['newsprint'], 'N-08', 'Palette lab sequential; stretch q1'),
   tint('verdigrisN52p75', 'verdigris', 'newsprint', 0.5275, 'Second sequential Verdigris step on Newsprint', 'dataFill', ['newsprint'], 'N-08', 'Palette lab sequential; stretch q2'),
   tint('verdigrisN23p5', 'verdigris', 'newsprint', 0.235, 'Third sequential Verdigris step on Newsprint', 'dataFill', ['newsprint'], 'N-08', 'Palette lab sequential; stretch q3'),
@@ -272,7 +273,7 @@ const color = {
     secondary: semantic('text', 'Captions, metadata, labels, source lines and disabled text.', { ...light(D('deepStone'), D('dimNewsprint')) }),
   },
   graphic: {
-    essential: semantic('graphic', 'Marks a reader needs: icons, diagram strokes and the lit nodes in a diagram.', { newsprint: P('charcoal'), white: P('charcoal'), charcoal: P('newsprint'), prussian: P('newsprint') }),
+    essential: semantic('graphic', 'Marks a reader needs: icons, and a diagram\'s strokes and lit nodes.', { newsprint: P('charcoal'), white: P('charcoal'), charcoal: P('newsprint'), prussian: P('newsprint') }),
     subtle: semantic('graphic', 'Marks that support: unlit nodes, secondary diagram strokes.', { newsprint: P('stone'), white: P('stone'), charcoal: D('dimNewsprint'), prussian: D('dimNewsprint') }),
   },
   border: {
@@ -452,7 +453,7 @@ const size = {
   },
   target: {
     minimum: tok('dimension', px(24), 'Smallest pointer target, WCAG 2.2 success criterion 2.5.8.'),
-    touch: tok('dimension', px(44), 'Height of tabs, links and buttons.'),
+    touch: tok('dimension', px(44), 'Height of tabs, buttons and links in a list. A link in running text takes its line\'s height (Rule 18.5).'),
   },
 };
 
@@ -571,8 +572,8 @@ const chartColor = {
   band: semantic('decorative', 'Band: a stretch of time a note names.', NC(T('whiteN55'), T('stoneC72'))),
   land: semantic('decorative', 'Map land under data marks.', NC(T('whiteN55'), T('stoneC80'))),
   diverging: {
-    $description: 'Diverging pair B, Prussian through the page color to Verdigris. Neither end keeps its order in grayscale, so a boxed arrow or a printed sign carries direction. Newsprint only until a Charcoal ramp is measured.',
-    fill: steps(5, (i) => semantic('dataFill', `Diverging pair B, step ${i} of 5: the ${DIV_WORDS[i - 1]}.`, { newsprint: DIV_N[i - 1] },
+    $description: 'The diverging scale, Prussian through the page color to Verdigris. Neither end keeps its order in grayscale, so a boxed arrow or a printed sign carries direction. Newsprint only until a Charcoal ramp is measured.',
+    fill: steps(5, (i) => semantic('dataFill', `The diverging scale, step ${i} of 5: the ${DIV_WORDS[i - 1]}.`, { newsprint: DIV_N[i - 1] },
       { newsprint: { valuesPrinted: true, scale: 'diverging', step: i } })),
     label: steps(5, (i) => semantic('text', `Text on diverging step ${i}.`, { newsprint: P(DIV_LABEL_N[i - 1]) },
       { newsprint: { ground: `{oa.chart.color.diverging.fill.step${i}.onNewsprint}` } })),

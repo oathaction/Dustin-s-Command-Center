@@ -251,7 +251,8 @@ for (const p of order) {
 }
 
 const json = {
-  $description: `${src.meta.title}. Version ${src.meta.version} (${src.meta.status}): ${src.meta.statusNote} Generated from ${src.meta.source} by ${src.meta.generator}; do not edit by hand.`,
+  // DR-191's second pass, E3: the file's own description in reader words; the source and generator stay in $extensions
+  $description: `${src.meta.title}, version ${src.meta.version}, a ${src.meta.status}. ${src.meta.statusNote} Generated from our token source; do not edit by hand.`,
   $extensions: {
     [NS]: {
       ...src.meta,

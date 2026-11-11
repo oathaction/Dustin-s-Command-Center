@@ -12,7 +12,7 @@
   "chapter": "19",
   "rule": "19.2",
   "width_px": 360,
-  "alt": "An Illustrative pair at 360 px. First, the Voting symbol beside its word, “Voting”, marked with empty alt text because the word says it. Second, a bar chart titled “Comments on the county budget, 2023 to 2026”, its four bars rising from 120 comments in 2023 to 180, 240 and 310 in 2026, each with its count above it and its year below, and a source line, with the alt text “Comments on the county budget rose each year, from 120 in 2023 to 310 in 2026.”",
+  "alt": "An Illustrative pair at 360 px. First, the Voting symbol beside its word, “Voting”, marked with empty alt text because the word says it. Second, a bar chart titled “Comments on the county budget, 2023 to 2026”, its four bars rising from 120 comments in 2023 through 180 and 240 to 310 in 2026, each with its count above it and its year below, and a source line, with the alt text “Comments on the county budget rose each year, from 120 in 2023 to 310 in 2026.”",
   "illustrative": true,
   "notes": "Correct: alt text for purpose, and empty alt where a word already says it. Invented counts.",
   "fit_switch": false
@@ -21,7 +21,7 @@
   "chapter": "19",
   "rule": "19.2",
   "width_px": 360,
-  "alt": "Failure case: do not publish. The same Illustrative chart at 360 px, a bar chart titled “Comments on the county budget, 2023 to 2026”, its four bars rising from 120 comments in 2023 to 180, 240 and 310 in 2026, each with its count above it and its year below, and a source line, with the alt text “chart_final_v2.png”, a file name. A note says a screen reader hears nothing of what the chart shows.",
+  "alt": "Failure case: do not publish. The same Illustrative chart at 360 px, a bar chart titled “Comments on the county budget, 2023 to 2026”, its four bars rising from 120 comments in 2023 through 180 and 240 to 310 in 2026, each with its count above it and its year below, and a source line, with the alt text “chart_final_v2.png”, a file name. A note says a screen reader hears nothing of what the chart shows.",
   "illustrative": true,
   "notes": "Picture of a fault: alt text that names a file. Invented counts.",
   "fit_switch": false
@@ -66,18 +66,18 @@
   "chapter": "19",
   "rule": "19.5",
   "width_px": 360,
-  "alt": "An Illustrative line chart at 360 px with three buttons under it, Zoom in, Zoom out and Fit, each a single press.",
+  "alt": "An Illustrative line chart at 360 px, titled “Written comments and speakers at the county’s budget hearing, 2019 to 2026”, its two lines rising from 40 to 150 comments and from 20 to 40 speakers, each named with its last count at its end, the years 2019 and 2026 under it, and a source line. Under it, three buttons, Zoom in, Zoom out and Fit, each a single press.",
   "illustrative": true,
-  "notes": "Correct: every action is one press of a button.",
+  "notes": "Correct: every action is one press of a button. Invented counts.",
   "fit_switch": false
  },
  "s-19-5-failure": {
   "chapter": "19",
   "rule": "19.5",
   "width_px": 360,
-  "alt": "Failure case: do not publish. The same Illustrative line chart at 360 px with the line “Pinch to zoom. Drag to pan. Shake to undo. Press Z to zoom.” and no buttons.",
+  "alt": "Failure case: do not publish. The same Illustrative line chart at 360 px, titled “Written comments and speakers at the county’s budget hearing, 2019 to 2026”, its two lines rising from 40 to 150 comments and from 20 to 40 speakers, each named with its last count at its end, the years 2019 and 2026 under it, and a source line, with the line “Pinch to zoom. Drag to pan. Shake to undo. Press Z to zoom.” and no buttons.",
   "illustrative": true,
-  "notes": "Picture of a fault: gestures, motion and a single-key shortcut with no button (SC 2.1.4, 2.5.1, 2.5.4, 2.5.7).",
+  "notes": "Picture of a fault: gestures, motion and a single-key shortcut with no button (SC 2.1.4, 2.5.1, 2.5.4, 2.5.7). Invented counts.",
   "fit_switch": false
  },
  "s-19-6-correct": {
@@ -149,7 +149,7 @@
   "chapter": "19",
   "rule": "19.7",
   "width_px": null,
-  "alt": "The verification matrix: 15 checks, each with what it shows, its method, the WCAG 2.2 criteria it serves and, where a tool runs it, how. Every page rendered: Screenshots at 1440, 1024, 390 and 360 px, looked at by a person. Report pages: A screenshot of each page in the report reader. Keyboard and focus: A script presses Tab through the page, walks each component’s keyboard path and measures each control; a person checks the order and the ring. Reading order and headings: The accessibility tree’s outline, read by script and by a person. Forms and messages: Send each form empty, then with a mistake, by keyboard: focus lands on the first field to fix, its description holds the message, and the status line holds the result. Automated rules: axe-core with the tags wcag2a, wcag2aa, wcag21a, wcag21aa and wcag22aa on every page. Contrast: A script reads each rendered color pair, states included; a person measures marks, edges and rings against 3 to 1. Text at 200 percent and 320 px: Text doubled, the page at 320 px, then line height 1.5, paragraph spacing 2 times the size, letter spacing 0.12 and word spacing 0.16 times the size, all at once. A script finds sideways scroll and clipped boxes, and a person reads for words broken in the middle. Reduced motion: The browser set to reduce motion, then each moving part played. Forced colors: The browser set to forced colors, light and dark, then each part read by script and by eye. Dark surfaces and long labels: Each part on Newsprint, Charcoal and any other surface it uses, filled with the longest real words it will hold, such as the longest title in its data. Print: Print emulation and the print stylesheet: every word prints, in reading order, and nothing is cut at a page’s edge. Downloads: Press each download, open each file, check SVG validity and PNG size. Diagram and chart equivalents: Each drawing checked for its words or table and its reading guide. Grayscale: Grayscale screenshots of every page, with each state shown.",
+  "alt": "The verification matrix: 15 checks, each with what it shows, its method, the WCAG 2.2 criteria it serves and, where a tool runs it, how. Every page rendered: Screenshots at 1440, 1024, 390 and 360 px, looked at by a person. Report pages: A screenshot of each page in the report reader. Keyboard and focus: A script presses Tab through the page, walks each component’s keyboard path and measures each control’s size; a person checks the order and the ring. Reading order and headings: The accessibility tree’s outline, read by script and by a person. Forms and messages: Send each form empty, then with a mistake, by keyboard: focus lands on the first field to fix, its description holds the message, and the status line holds the result. Automated rules: axe-core with the tags wcag2a, wcag2aa, wcag21a, wcag21aa and wcag22aa on every page. Contrast: A script reads each rendered color pair, states included; a person measures marks, edges and rings against 3 to 1. Text at 200 percent and 320 px: Text doubled, the page at 320 px, then line height 1.5, paragraph spacing 2 times the size, letter spacing 0.12 and word spacing 0.16 times the size, all at once. A script finds sideways scroll and clipped boxes, and a person reads for words broken in the middle. Reduced motion: The browser set to reduce motion, then each moving part played. Forced colors: The browser set to forced colors, light and dark, then each part read by script and by eye. Dark surfaces and long labels: Each part on Newsprint, Charcoal and any other surface it uses, filled with the longest real words it will hold, such as the longest title in its data. Print: Print emulation and the print stylesheet: every word prints, in reading order, and nothing is cut at a page’s edge. Downloads: Press each download, open each file, check SVG validity and PNG size. Diagram and chart equivalents: Each drawing checked for its words or table and its reading guide. Grayscale: Grayscale screenshots of every page, with each state shown.",
   "illustrative": false,
   "notes": "Readable: the checks and methods of the verification matrix, with what each shows.",
   "readable": true
@@ -158,7 +158,7 @@
   "chapter": "19",
   "rule": null,
   "width_px": null,
-  "alt": "Where this guide stands on WCAG 2.2’s 55 criteria at levels A and AA: 33 met, where a rule states what the criterion asks; 8 met in part; 9 gaps, each with the chapter that owes it; and 5 not used today, since no product does the thing yet.",
+  "alt": "Where this guide stands on WCAG 2.2’s 55 criteria at levels A and AA: 33 met, where a rule states what the criterion asks; 8 met in part; 9 gaps, each with the chapter that owes it; and 5 not used today, since no product does what they cover yet.",
   "illustrative": false,
   "notes": "Chapter 19’s opener (CD-S18, D2-1550): the counts from Rule 19.1’s map, as a picture that flows with the column at true size."
  },

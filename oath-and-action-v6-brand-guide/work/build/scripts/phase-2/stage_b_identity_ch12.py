@@ -457,20 +457,22 @@ def _rules():
                  SP_("Never", "A repeating pattern of arcs, lines, dots, nodes or ampersands")],
           files=[A + AMP["display"]],
           related=["04", "24"],
-          builders="Leave the open area plain first. Sign it with the crop of B only on a cover or a section opener that "
+          builders="Leave an open area plain by default. Sign it with the crop of B only on a cover or a section opener that "
                    "holds no hinge headline, and check Rule 04.8's measures on the cover at its true size."),
     ]
 
 
 EXTRAS = [{"after_rule": "12.1", "specimen": "s-12-index", "label": "Every graphic device and its rule",
            "caption": "The devices this guide sets, the job of each and the rule that sets it."}]
-INTRO_ADD = ("Rules 12.1 to 12.4 cover the devices that divide and sign a page: hairlines, watermarks, the monogram as "
-             "a small signature and the rule for open areas.")
+INTRO_ADD = ("Rules 12.1 to 12.3 cover the devices that divide and sign a page: hairlines, watermarks and the monogram "
+             "as a small signature. Rule 12.4 says when an open area stays plain and what may sign it.")
 # earlier wordings of INTRO_ADD, replaced in place when the shared file still holds one (round 3, ED 4e, CA-S11; DR-216)
 OLD_INTRO_ADDS = ("Rules 12.1 to 12.4 cover the devices that divide and sign a page: hairlines, watermarks, the compact "
                   "signature and two patterns drawn from the hinge.",
                   "Rules 12.1 to 12.4 cover the devices that divide and sign a page: hairlines, watermarks, the monogram as "
-                  "a small signature and a pattern drawn from the hinge.")
+                  "a small signature and a pattern drawn from the hinge.",
+                  "Rules 12.1 to 12.4 cover the devices that divide and sign a page: hairlines, watermarks, the monogram as "
+                  "a small signature and the rule for open areas.")
 RELATED_ADD = [{"chapter": "04", "reason": "The hinge divider, the hinge diagram and the large crop of B."},
                {"chapter": "03", "reason": "L8, the monogram, and the colors of every mark."}]
 

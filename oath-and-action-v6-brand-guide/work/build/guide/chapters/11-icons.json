@@ -348,7 +348,7 @@
         "08"
       ],
       "builders": [
-        "Mark up the list as a <code>&lt;ul&gt;</code> of bills, each holding its hidden step list from Rule 11.2. Switch to the wide form with a container query on the list’s own width, <code>@container (min-width: 34.5rem)</code>, so a list in a narrow column keeps its key at any window size. When a tracker updates in place, announce the new status words through a polite live region, as chapter 18 sets out."
+        "Mark up the list as a <code>&lt;ul&gt;</code> of bills, each holding its hidden step list from Rule 11.2. Switch to the wide form with a container query on the list’s own width, <code>@container (min-width: 34.5rem)</code>, so a list in a narrow column keeps its key at any window size. When a tracker updates in place, announce the new status words in a status line, as chapter 18 sets out."
       ]
     },
     {
@@ -760,7 +760,7 @@
       ],
       "builders": [
         "Turn and mirror the arrow and the chevron with the transforms in the utility manifest, on the <code>&lt;use&gt;</code>, so every line stays on the pixel grid. At 16 px the down arrow is a mirror across the diagonal, <code>matrix(0 1 1 0 0 0)</code>, which keeps its shaft on the up arrow’s pixel column.",
-        "Give a search field <code>type=\"search\"</code>, and clear it on Escape in your script, as Rule 18.15 does. On a product page, wrap the field, its filters and its status line in a search landmark, the <code>&lt;search&gt;</code> element. A landmark is a region a screen reader can jump to, such as the navigation, so a reader reaches the search from anywhere on the page. Write the count and any advice to that one status line, such as “0 of 125 symbols. No symbol matches. Clear the search or the filters to see more.” Rule 18.15 is the search’s home, with every state and its code to copy."
+        "Give a search field <code>type=\"search\"</code>, and clear it on Escape in your script, as Rule 18.15 sets, since browsers differ on what Escape does there. On a product page, wrap the field, its filters and its status line in a search landmark, the <code>&lt;search&gt;</code> element. A landmark is a region a screen reader can jump to, such as the navigation. Inside one, the search is a single jump from anywhere on the page. Write the count and any advice to that one status line, such as “0 of 125 symbols. No symbol matches. Clear the search or the filters to see more.” Rule 18.15 is the search’s home, with every state and its code to copy."
       ]
     },
     {

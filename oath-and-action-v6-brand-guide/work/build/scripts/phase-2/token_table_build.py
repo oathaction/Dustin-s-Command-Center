@@ -307,7 +307,7 @@ document.querySelectorAll('.tt').forEach(function (box) {
 # internal one, so a new one cannot slip through. Round 1 rewrote the descriptions here; the source now does.
 NOT_FOR_READERS = re.compile(r"\b(?:DR|D1|D2|G1)-\d+|\bT-\d+\b|\bN-\d+\b|\b(?:PP|BE|CD|CA|AX|RP)-[MS]\d+|\b[RIS]\d+\b|"
                              r"Signal Grid|\bV5\b|\bV4\.2\b|the studio|\bGates?\b|\bPhase\b|Master Brief|Atlas V7|\bBoard \d|"
-                             r"Explainer|palette lab|stretch test|Night Edition|treatment [A-Z]\b|\bsection \d")
+                             r"Explainer|palette lab|stretch test|Night Edition|treatment [A-Z]\b|\bpair [A-Z]\b|dark atlas|\bsection \d")
 
 
 def reader(text, where):

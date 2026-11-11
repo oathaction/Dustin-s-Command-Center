@@ -1498,10 +1498,9 @@ def chapter(rows, reads24, like, sheets, figs, icons):
                   'work/build/assets/civic-line-24-fit/qa/20261110_Five-Look-Alikes-Fits-Likeness.json'],
         'related': ['11'],
         # PP-S12: the line names who runs the test, since no builder outside the studio holds the script
-        'builders': ['We run the likeness test on every new drawing before it goes to our founder and editor for '
-                     'approval. The test measures how closely the drawing matches each one in the set, and a close pair '
-                     'joins a group in this rule. If you draw a new symbol, send it to Dustin Cathcart or an editor he '
-                     'names, and the test runs before approval.'],
+        'builders': ['We run the likeness test on every new drawing before our founder and editor approves it. The '
+                     'test measures how closely the new drawing matches each drawing in the set, and a close pair joins '
+                     'a group in this rule. If you draw a new symbol, send it to the editor.'],
     })
 
     rules.append({

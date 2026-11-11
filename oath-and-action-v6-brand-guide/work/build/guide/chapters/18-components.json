@@ -7,7 +7,7 @@
   "opener": "s-18-opener",
   "intro": [
     "A component is a part of a page that a reader works, such as a button, a menu or a search field. Each rule here gives one component as code to copy, drawn live in the light theme on Newsprint and in the dark theme on Charcoal, and a table of its states, its keys, its name, its target size and what a screen reader hears when it changes.",
-    "The code reads only tokens.css, the file that holds every color, size and type style as a named value, so one copy follows either theme. Each component hands a screen reader its accessible name, the words a screen reader says for it, with its role, such as button, and its state, such as pressed. When something changes, the code writes a sentence into a status line, a line on the page that a screen reader reads at its next pause, and each screen reader words all of this its own way. ARIA, short for Accessible Rich Internet Applications, is W3C’s set of attributes that gives a role or a state where HTML has none, and each rule names the pattern it follows in the ARIA Authoring Practices Guide (APG), W3C’s worked examples of each control. How each state looks and moves comes from chapter 17."
+    "The code reads only tokens.css, the file that holds every color, size and type style as a named value, so one copy follows either theme. Each component hands a screen reader its accessible name, the words a screen reader says for it. It also hands over its role, such as button, and its state, such as pressed. When something changes, the code writes a sentence into a status line, a line on the page that a screen reader reads at its next pause. Each screen reader words all of this its own way. ARIA, short for Accessible Rich Internet Applications, is W3C’s set of attributes that gives a role or a state where HTML has none. Each rule names the pattern it follows in the ARIA Authoring Practices Guide (APG), W3C’s worked examples of each control. How each state looks and moves comes from chapter 17."
   ],
   "groups": [
     {
@@ -58,8 +58,8 @@
       "id": "18.1",
       "title": "Use a button to act on the page, and keep an unavailable one in reach with its reason.",
       "rule": [
-        "A button acts on the page: it sends a form, copies a value or starts a loop. A control that takes the reader to another page or place is a link (Rule 18.5). A view has one primary button at most, Charcoal on Newsprint and Newsprint on Charcoal. The ask, the Pillar Red button for the one way to take part, appears only where Rule 05.3 gives the view its working red, the one job red does in a view: an error first, then the step a reader can take now. The ask stands apart from a primary button, whose hover turns Prussian. Every other button is quiet: its word in ink inside a 1 px edge. A utility icon sits beside the word (Rule 11.11).",
-        "When an action cannot run yet, its button stays in place and keeps its focus. It carries aria-disabled, draws a dashed edge and points to a line under it that says why and what makes it work, such as “Fill in your email to send.” While a send runs, its word reads “Sending” and a second press does nothing. While an error on the page holds the red, the ask steps down to the primary look (Rule 11.16). When an action can no longer run, such as a sign-up for an event that is full, its button stays in place with its reason and the step the reader can take instead, such as another date, and the form leaves out the fields that can no longer send."
+        "A button acts on the page: it sends a form, copies a value or starts a loop. A control that takes the reader to another page or place is a link (Rule 18.5). A view has one primary button at most, Charcoal on Newsprint and Newsprint on Charcoal. The ask, the Pillar Red button for the one way to take part, appears only where Rule 05.3 gives the view its working red, the one job red does in a view, which goes to an error when there is one and otherwise to the step a reader can take now. The ask stands on a row of its own, apart from any primary button, whose hover turns Prussian on Newsprint, so the ask’s red never meets Prussian (Rule 05.3). Every other button is quiet: its word in ink inside a 1 px edge. A utility icon sits beside the word (Rule 11.11).",
+        "When an action cannot run yet, its button stays in place and keeps its focus. It carries aria-disabled, draws a dashed edge and points to a line under it that says why and what makes it work, such as “Fill in your email to send.” While a send runs, its word reads “Sending” and a second press does nothing. While an error on the page holds the red, the ask steps down to the primary look (Rule 11.16). When an action can no longer run, such as a sign-up for an event that is full, its button stays in place with its reason and the step the reader can take instead, such as another date. The form then leaves out the fields a reader could no longer send."
       ],
       "tokens": [
         "--oa-component-button-primary-fill",
@@ -89,7 +89,7 @@
       "code": {
         "set": "c-18-button",
         "name": "Buttons",
-        "caption": "Every kind of button, live: primary, ask on a row of its own, and quiet, two with a utility icon, one unavailable with its reason, one sending, and the ask stepped down while an error holds the red. Tab to “Send your comment” and press it: it keeps focus, and its line says why it waits."
+        "caption": "Every kind of button, live: primary and quiet, two with a utility icon, the ask on a row of its own, one unavailable with its reason, one sending, and the ask stepped down while an error holds the red. Tab to “Send your comment” and press it: it keeps focus, and its line says why it waits."
       },
       "specs": [
         {
@@ -137,7 +137,7 @@
       ],
       "builders": [
         "An unavailable button: <code><button type=\"button\" aria-disabled=\"true\" aria-describedby=\"send-why\"></code>, and as the first line of its click handler <code>if (button.getAttribute('aria-disabled') === 'true') return;</code>, as Rule 18.17’s script does. A row of two buttons: <code>grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr))</code>, and no <code>white-space: nowrap</code> on any word.",
-        "<code>data-red=\"working\"</code> and <code>data-red-job</code> mark the view’s one working red for Rule 05.3’s check, which fails a view with two: an error first, then the one step a reader can take now. Move both attributes as the red moves, from the ask to the error and back."
+        "<code>data-red=\"working\"</code> and <code>data-red-job</code> mark the view’s one working red for Rule 05.3’s check, which fails a view that marks two. Move both attributes as the red moves, to the error while an error holds the red and back to the ask once it clears."
       ]
     },
     {
@@ -575,8 +575,8 @@
       "code": {
         "set": "c-18-location",
         "name": "Location list",
-        "caption": "A breadcrumb and a list of places from our systems atlas, the variables of one domain, live, each marking where the reader is, with Previous and Next after them.",
-        "alt": "A list of a page’s parts and a breadcrumb, drawn live from the code below. In this guide the live copy draws the breadcrumb’s navigation as a named group, so the guide’s own landmarks stay the only ones on the page; the code below keeps the real nav element."
+        "caption": "A breadcrumb and a list of places, live, each marking where the reader is, with Previous and Next after them. The places are the variables our systems atlas files under “Housing, health care and getting ahead”.",
+        "alt": "A breadcrumb and a list of places, drawn live from the code below. In this guide the live copy draws the breadcrumb’s navigation as a named group, so the guide’s own landmarks stay the only ones on the page; the code below keeps the real nav element."
       },
       "specs": [
         {
@@ -1250,7 +1250,7 @@
         },
         {
           "label": "Light and dark",
-          "value": "The field’s ground is --oa-color-field-ground, White on Newsprint and Charcoal on Charcoal, where the field shows by its strong edge, with the strong border as its edge."
+          "value": "The field’s ground is --oa-color-field-ground, White on Newsprint and Charcoal on Charcoal, with the strong border as its edge, which alone shows the field on Charcoal."
         },
         {
           "label": "Browser support",
@@ -1735,7 +1735,7 @@
         },
         {
           "label": "Light and dark",
-          "value": "The page sits on --oa-color-field-ground, White on Newsprint and Charcoal on Charcoal, where the field shows by its strong edge."
+          "value": "The page sits on --oa-color-field-ground, White on Newsprint and Charcoal on Charcoal, inside a hairline edge that parts it from the ground."
         },
         {
           "label": "Browser support",

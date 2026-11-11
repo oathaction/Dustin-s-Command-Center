@@ -78,7 +78,7 @@
     if (!rail) return;
     var rr = rail.getBoundingClientRect();
     var covered = !!appendix && window.matchMedia('(min-width: 90em)').matches && appendix.getBoundingClientRect().top < rr.bottom;
-    if (!covered) covered = $$('.plate.is-breakout > .plate-scroll').some(function (b) {
+    if (!covered) covered = $$('.plate.is-breakout > .plate-scroll, .plate.is-breakout-head > .plate-head').some(function (b) {
       var r = b.getBoundingClientRect(); return r.top < rr.bottom && r.bottom > rr.top && r.left < rr.right;
     });
     rail.classList.toggle('is-covered', covered);
@@ -237,12 +237,14 @@
     });
     // round 2 (call 13): a flowing stage marked data-breakout, such as chapter 26's token table, whose columns need the
     // room, takes all of it from 80em, out to the page's own margin
+    // the creative director's R1 (DR-191's second pass): its label row and rule go out with it, so the stage never hangs
+    // past its own head
     $$('.chapter .plate > .plate-scroll[data-breakout]').forEach(function (b) {
       var fig = b.parentElement;
-      fig.classList.toggle('is-breakout', false); fig.style.setProperty('--bo', '0px');
+      fig.classList.toggle('is-breakout', false); fig.classList.toggle('is-breakout-head', false); fig.style.setProperty('--bo', '0px');
       if (!on) return;
       var reach = Math.floor(fig.getBoundingClientRect().left - edge);
-      if (reach >= 1) { fig.style.setProperty('--bo', reach + 'px'); fig.classList.toggle('is-breakout', true); }
+      if (reach >= 1) { fig.style.setProperty('--bo', reach + 'px'); fig.classList.toggle('is-breakout', true); fig.classList.toggle('is-breakout-head', true); }
     });
   }
   // Every frame returns to its usual sides first, so the flowing stages and the tests above all measure from there.

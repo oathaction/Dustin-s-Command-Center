@@ -148,8 +148,8 @@
     "L3 in the masthead: place L3’s masthead master, which serves the 282 px masthead on screen.",
     "L3 elsewhere on screen, with the wordmark under 40 px tall: build it from the masters drawn on the pixel grid, the wordmark’s 16 or 24 px master beside the lockmark’s master for its size, as the 196 px minimum does.",
     "L3 in print, and on screen with the wordmark 40 px tall or more: place L3’s print master, which sets the lockmark at 2.18 cap heights, the masthead’s proportion.",
-    "L4, L5 and L7: none has a master file yet, so build each from the wordmark, monogram and tagline masters on our brand guide’s fifth edition layouts, as the sheet shows, or ask the editor for a file.",
-    "L6: build it the same way, leave out the four dots that edition drew under the tagline, and move the wordmark and tagline down 14.7 of L6’s 300 units, 9.3 px at 884 px, so the span from the wordmark’s cap line to the tagline’s baseline sits centered on the strip, as the lockmark does.",
+    "L4, L5 and L7: none has a master file yet, so build each from the wordmark, monogram and tagline masters on the layouts from our brand guide’s fifth edition, as the sheet shows, or ask the editor for a file.",
+    "L6: build it the same way, and leave out the four dots our fifth edition drew under its tagline. Move the wordmark and tagline down 14.7 of L6’s 300 units, 9.3 px at 884 px, so the span from the wordmark’s cap line to the tagline’s baseline sits centered on the strip, as the lockmark does.",
     "L8: place its master from 48 px wide, in the colors Rule 03.5 sets for the surface."
    ]
   },

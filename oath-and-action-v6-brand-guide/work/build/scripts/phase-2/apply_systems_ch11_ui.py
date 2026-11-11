@@ -182,7 +182,7 @@ draw();''') + '</div>')
            f'a frame: its heading, “{t0}”, and its text, “{x0}” Under it, a status line reads “Page 1 of {n_pages}: {t0}”. '
            'Two buttons follow, Previous page with the arrow mirrored before its word and Next page with the arrow after '
            'it, each 44 px tall. On the first page, Previous page is unavailable: its outline is dashed, and the line under '
-           'it says “This is the first page.” A choice of two under the words Page size, Fit width and Full size, sets the '
+           'it says “This is the first page.” A choice of two, Fit width and Full size, under the words Page size, sets the '
            'size of the page; Fit width is checked, with the selected check before its word, the word in bold and a 2 px '
            'edge. The other pages are ' + ', '.join(f'“{t}”' for t, _ in REPORT_PAGES[1:-1])
            + f' and “{REPORT_PAGES[-1][0]}”.')
@@ -974,9 +974,10 @@ def build_ui(ctx, m, rule_titles):
                          'mirror across the diagonal, <code>matrix(0 1 1 0 0 0)</code>, which keeps its shaft on the up '
                          'arrow’s pixel column.',
                          'Give a search field <code>type="search"</code>, and clear it on Escape in your script, as Rule '
-                         '18.15 does. On a product page, wrap the field, its filters and its status line in a search '
-                         'landmark, the <code>&lt;search&gt;</code> element. A landmark is a region a screen reader can '
-                         'jump to, such as the navigation, so a reader reaches the search from anywhere on the page. '
+                         '18.15 sets, since browsers differ on what Escape does there. On a product page, wrap the field, '
+                         'its filters and its status line in a search landmark, the <code>&lt;search&gt;</code> element. '
+                         'A landmark is a region a screen reader can jump to, such as the navigation. Inside one, the '
+                         'search is a single jump from anywhere on the page. '
                          'Write the count and any advice to that one status line, '
                          f'such as “0 of {n_lib} symbols. No symbol matches. Clear the search or the filters to see more.” '
                          'Rule 18.15 is the search’s home, with every state and its code to copy.'],

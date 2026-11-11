@@ -128,3 +128,40 @@ Paths relative to `oath-and-action-v6-brand-guide/`. Nothing in `source/`, `work
 - `work/handoffs/phase-2/20261111_Stage-C-Round-1-Ch17-Figures.json`, `20261106_Stage-A-Systems-Measurements.json`, `20261110_Stage-B-Round-2-Ch11-Figures.json`
 
 **Scratch, outside the repository** (`/tmp/claude-0/-home-user-Dustin-s-Command-Center/49b1040f-34e8-55e0-97c3-93e08c6dbc2c/scratchpad/round-2-fix/systems/`): builds `b0/`, `full/`, `p11/`, `p17/`, `p18/`, `p18o/`, `stagea/`; scripts in `scripts/` (`part.sh`, `shot.js`, `shotst.js`, `axcheck.js`, `ax.sh`, `ch11dark.js`, `reader.js`, `play.js`, `redpru.js`, `patch.py` and the patch lists); pictures in `shots0/` to `shots3/`, `shotsA/` to `shotsF/`, `shots11/`, `shotsO/`.
+
+## Second pass
+
+DR-191's short second pass: the six rows of section 4 of `20261111_Stage-C-Round-2-Editor-Notes.md`, applied word for word through my generators, with D2-1666's line for an identity player's Reset at rest.
+
+**What changed**
+- S1, `stage_c_ch18_anatomy_build.py`: `s-18-22-anatomy`'s key 1 and its alt read "Status line. Each step, said once, politely." The plates were rerun.
+- S2, `stage_c_ch17_build.py`: Rule 17.6's second paragraph and its "At rest" spec quote the players' line in full, "The mark is at rest on its master. Reset works once you press Play." Rule 17.3's words ("at rest Reset is unavailable and says why") already agree with it, so they stay.
+- S3, `stage_b_ch10_build.py`: Rule 10.9's builders line in the editor's words, ending "send it to the editor."
+- S4, `apply_systems_ch11.py`: Rule 11.5's last builders sentence reads "announce the new status words in a status line, as chapter 18 sets out."
+- S5, `apply_systems_ch11_ui.py`: Rule 11.12's builders line reads "as Rule 18.15 sets, since browsers differ on what Escape does there" and "A landmark is a region a screen reader can jump to, such as the navigation. Inside one, the search is a single jump from anywhere on the page."
+- S6, `apply_systems_ch11_ui.py`: `s-11-11-correct`'s alt reads "A choice of two, Fit width and Full size, under the words Page size, sets the size of the page".
+
+**For the main session.** `stage_c_identity_ch17.py` already holds D2-1666's line, but the placed specimens `s-17-hinge-correct` and `s-17-lever-correct` still read "The mark is at rest on its master." alone. They follow once the identity designer reruns that generator, which my chain does not run.
+
+### Routine calls
+
+- D2-xxx | Rule 17.3 keeps its own words about Reset at rest, and Rule 17.6 quotes the players' full line | D2-1666 sets the line for the identity players; Rule 17.3 covers every player, and "says why" already holds for both kinds
+- D2-xxx | The anatomy plates were rerun with the editor's key word, and drew the set changes made since the last run | One generator writes the 24 plates; `s-18-14-anatomy` took the download's new size, 95 KB, from its set
+
+### Tested
+
+- The six strings, read back from `manifest-anatomy.json`, `17-motion-and-states.json`, `10-symbols.json`, `11-icons.json` and `manifest-systems.json` after the runs.
+- The generator chain in the brief's order, then my two generators: it changed only my outputs (chapters 10, 11 and 17, `manifest-anatomy.json`, `manifest-systems.json`, `s-18-14-anatomy`, `s-18-22-anatomy`). The identity scripts that show as changed meanwhile are the identity designer's edits; the chain writes no script.
+- `stage_c_ch17_build.py --check` and `stage_c_ch18_anatomy_build.py --check`: both clean.
+- `guide_build.py --strict` into scratch: 0 warnings, 16 chapter files, 185 rules, 424 specimens, 8,958,552 bytes.
+- `axcheck.js` on `s-18-14-anatomy` and `s-18-22-anatomy` at 1440, 390 and 320 px: no fault.
+
+### Not tested
+
+- A screen reader on the changed alts and keys; the guide check; the identity players after D2-1666, which are not rerun yet.
+
+### Change log
+
+- Modified, generators: `work/build/scripts/phase-2/stage_c_ch18_anatomy_build.py`, `stage_c_ch17_build.py`, `stage_b_ch10_build.py`, `apply_systems_ch11.py`, `apply_systems_ch11_ui.py`.
+- Modified, their outputs: `work/build/guide/chapters/10-symbols.json`, `11-icons.json`, `17-motion-and-states.json`; `work/build/guide/specimens/manifest-anatomy.json`, `manifest-systems.json`, `s-18-14-anatomy.html`, `s-18-22-anatomy.html`.
+- Modified: this file. Nothing committed or pushed.

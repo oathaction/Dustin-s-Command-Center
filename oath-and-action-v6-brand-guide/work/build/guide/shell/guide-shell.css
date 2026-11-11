@@ -361,6 +361,9 @@ a.toc-part-k:hover { text-decoration: underline }
    reach in px. The frame and its stage move; the plate's head and caption stay on the text column. The rail hides
    while a frame covers it, as it does for the appendix, so no link sits out of sight under the frame. */
 .plate.is-breakout > .plate-scroll { margin-left: calc(-1 * var(--bo, 0px)); z-index: 1 }
+/* R1 (DR-191's second pass): a flowing plate that breaks out, such as the token table, takes its label row and rule with
+   it; a fixed plate's head stays on the text column, as CA-S13 set */
+.plate.is-breakout-head > .plate-head { margin-left: calc(-1 * var(--bo, 0px)); position: relative; z-index: 1 }
 /* AX-S4: on the mat the ring is Charcoal, 11.76 to 1, drawn inside the frame */
 .plate-scroll:focus-visible, .code:focus-visible, .table-wrap:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-palette-charcoal); outline-offset: calc(-1 * var(--oa-border-width-focus-ring)) }
 /* background and color come from the stage's surface class (.oa-surface-newsprint by default). AX-S13: a 1 px Stone

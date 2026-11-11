@@ -1743,7 +1743,7 @@ def build_chapter():
             'together and the lever lands last, at bottom right.',
             'Each player rests on the master itself (Rule 17.3). Play steps to the first frame and runs to the master, '
             'and Reset returns to the master; at rest Reset is unavailable, with the line “The mark is at rest on its '
-            'master.”',
+            'master. Reset works once you press Play.”',
             'Each is built from slide, draw and land (Rule 17.5), and each ends on a last frame that matches the approved '
             'master for its size, pixel for pixel. The ampersand and the lever keep signature red in every frame, and '
             'signature red never counts as a view’s working red (Rule 05.3).'],
@@ -1765,7 +1765,8 @@ def build_chapter():
                                         f'{ms_words(LEVER - STD)} and comes to rest at {ms_words(LEVER)}',
              'token': 'oa.motion.duration.lever'},
             {'label': 'Built from', 'value': 'Slide, draw and land, with the enter easing for each arrival'},
-            {'label': 'At rest', 'value': 'The master; Reset unavailable, with “The mark is at rest on its master.”'},
+            {'label': 'At rest', 'value': 'The master; Reset unavailable, with “The mark is at rest on its master. Reset '
+                                          'works once you press Play.”'},
             {'label': 'Last frame', 'value': 'The approved master for the size shown, pixel for pixel'},
             {'label': 'Reduced motion', 'value': 'The master at once (Rule 17.4)'},
         ],

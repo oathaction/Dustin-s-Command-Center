@@ -119,8 +119,9 @@ def field_ground(surface):
 
 
 FIELD_N, FIELD_C = field_ground('Newsprint'), field_ground('Charcoal')
-FIELD_WORDS = (f'{FIELD_N} on Newsprint and {FIELD_C} on Charcoal'
-               + (', where the field shows by its strong edge' if FIELD_C == 'Charcoal' else ''))
+if FIELD_C != 'Charcoal':        # Rule 18.15 says the strong edge alone shows a field on Charcoal
+    raise SystemExit(f'the field ground on Charcoal is {FIELD_C}; Rule 18.15 says the edge alone shows the field there')
+FIELD_WORDS = f'{FIELD_N} on Newsprint and {FIELD_C} on Charcoal'
 FIG['field ground'] = {'value': FIELD_WORDS, 'method': 'oa.color.field.ground.onNewsprint and .onCharcoal in tokens.json'}
 CL_INVENTORY = ROOT / 'work/build/assets/civic-line-v6/20261110_Civic-Line-V6-Inventory.json'
 CL_COUNT = json.loads(CL_INVENTORY.read_text())['count']          # Rule 18.15's example reads the set in use
@@ -177,11 +178,12 @@ INTRO = [
     'and a table of its states, its keys, its name, its target size and what a screen reader hears when it changes.',
     'The code reads only tokens.css, the file that holds every color, size and type style as a named value, so one copy '
     'follows either theme. Each component hands a screen reader its accessible name, the words a screen reader says for '
-    'it, with its role, such as button, and its state, such as pressed. When something changes, the code writes a '
-    'sentence into a status line, a line on the page that a screen reader reads at its next pause, and each screen reader '
-    'words all of this its own way. ARIA, short for Accessible Rich Internet Applications, is W3C’s set of attributes '
-    'that gives a role or a state where HTML has none, and each rule names the pattern it follows in the ARIA Authoring '
-    'Practices Guide (APG), W3C’s worked examples of each control. How each state looks and moves comes from chapter 17.',
+    'it. It also hands over its role, such as button, and its state, such as pressed. When something changes, the code '
+    'writes a sentence into a status line, a line on the page that a screen reader reads at its next pause. Each screen '
+    'reader words all of this its own way. ARIA, short for Accessible Rich Internet Applications, is W3C’s set of '
+    'attributes that gives a role or a state where HTML has none. Each rule names the pattern it follows in the ARIA '
+    'Authoring Practices Guide (APG), W3C’s worked examples of each control. How each state looks and moves comes from '
+    'chapter 17.',
 ]
 
 GROUPS = [
@@ -271,15 +273,16 @@ rule(n=1, set='c-18-button', name='Buttons',
      rule=['A button acts on the page: it sends a form, copies a value or starts a loop. A control that takes the reader to '
            'another page or place is a link (Rule 18.5). A view has one primary button at most, Charcoal on Newsprint and '
            'Newsprint on Charcoal. The ask, the Pillar Red button for the one way to take part, appears only where Rule '
-           '05.3 gives the view its working red, the one job red does in a view: an error first, then the step a reader can '
-           'take now. The ask stands apart from a primary button, whose hover turns Prussian. Every other button is quiet: '
-           'its word in ink inside a 1 px edge. A utility icon sits beside the word (Rule 11.11).',
+           '05.3 gives the view its working red, the one job red does in a view, which goes to an error when there is one '
+           'and otherwise to the step a reader can take now. The ask stands on a row of its own, apart from any primary '
+           'button, whose hover turns Prussian on Newsprint, so the ask’s red never meets Prussian (Rule 05.3). Every other '
+           'button is quiet: its word in ink inside a 1 px edge. A utility icon sits beside the word (Rule 11.11).',
            'When an action cannot run yet, its button stays in place and keeps its focus. It carries aria-disabled, draws '
            'a dashed edge and points to a line under it that says why and what makes it work, such as “Fill in your email '
            'to send.” While a send runs, its word reads “Sending” and a second press does nothing. While an error on the '
            'page holds the red, the ask steps down to the primary look (Rule 11.16). When an action can no longer run, such '
            'as a sign-up for an event that is full, its button stays in place with its reason and the step the reader can '
-           'take instead, such as another date, and the form leaves out the fields that can no longer send.'],
+           'take instead, such as another date. The form then leaves out the fields a reader could no longer send.'],
      tokens=['--oa-component-button-primary-fill', '--oa-component-button-primary-fill-hover',
              '--oa-component-button-primary-label', '--oa-component-button-ask-fill', '--oa-component-button-ask-label',
              '--oa-component-button-ask-keyline', '--oa-component-button-disabled-label',
@@ -291,9 +294,9 @@ rule(n=1, set='c-18-button', name='Buttons',
      basis='WCAG 2.2 SC 1.4.1, 2.1.1, 2.5.8 and 4.1.2; APG Button pattern',
      anatomy='The parts of a button: its word, the 24 px utility icon beside it, its fill or 1 px edge, the 44 px '
              'height, the focus ring at its gap, and the reason line an unavailable button points to.',
-     code_caption='Every kind of button, live: primary, ask on a row of its own, and quiet, two with a utility icon, one '
-                  'unavailable with its reason, one sending, and the ask stepped down while an error holds the red. Tab to '
-                  '“Send your comment” and press it: it keeps focus, and its line says why it waits.',
+     code_caption='Every kind of button, live: primary and quiet, two with a utility icon, the ask on a row of its own, '
+                  'one unavailable with its reason, one sending, and the ask stepped down while an error holds the red. Tab '
+                  'to “Send your comment” and press it: it keeps focus, and its line says why it waits.',
      specs=specs(
          (L_PAT, 'APG Button, on the native <code><button type="button"></code>.'),
          (L_ST, 'Default. Hover: the primary fill turns Prussian on Newsprint and White on Charcoal, and the word '
@@ -323,8 +326,8 @@ rule(n=1, set='c-18-button', name='Buttons',
                'A row of two buttons: <code>grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr))</code>, '
                'and no <code>white-space: nowrap</code> on any word.',
                '<code>data-red="working"</code> and <code>data-red-job</code> mark the view’s one working red for Rule 05.3’s '
-               'check, which fails a view with two: an error first, then the one step a reader can take now. Move both '
-               'attributes as the red moves, from the ask to the error and back.'],
+               'check, which fails a view that marks two. Move both attributes as the red moves, to the error while an '
+               'error holds the red and back to the ask once it clears.'],
      failure=dict(
          caption=f'<strong>Fails Rule 18.1.</strong> Send is grayed out with the disabled attribute and no words, so the '
                  f'Tab key skips it and nobody learns that the email is missing. Its word measures {R_F01} to 1 on '
@@ -616,9 +619,10 @@ rule(n=7, set='c-18-location', name='Location list',
      basis='WCAG 2.2 SC 1.4.1 and 4.1.2; APG Breadcrumb pattern',
      anatomy='The parts of a location list: the list’s label, each link, the current link’s band, 4 px bar and bold '
              'words, and a breadcrumb’s current page in bold.',
-     code_caption='A breadcrumb and a list of places from our systems atlas, the variables of one domain, live, each '
-                  'marking where the reader is, with Previous and Next after them.',
-     code_alt='A list of a page’s parts and a breadcrumb, drawn live from the code below. In this guide the live copy '
+     code_caption='A breadcrumb and a list of places, live, each marking where the reader is, with Previous and Next '
+                  'after them. The places are the variables our systems atlas files under “Housing, health care and getting '
+                  'ahead”.',
+     code_alt='A breadcrumb and a list of places, drawn live from the code below. In this guide the live copy '
               'draws the breadcrumb’s navigation as a named group, so the guide’s own landmarks stay the only ones on the '
               'page; the code below keeps the real nav element.',
      specs=specs(
@@ -1000,7 +1004,8 @@ rule(n=15, set='c-18-search', name='Search',
                   f'of {CL_COUNT} symbols.”'),
          (L_TGT, 'The field 44 px tall; Clear the search 44 by 44 px.', 'oa.size.target.touch'),
          (L_FC, 'The field’s edge and Clear’s cross draw in the system’s colors.'),
-         (L_TH, f'The field’s ground is --oa-color-field-ground, {FIELD_WORDS}, with the strong border as its edge.'),
+         (L_TH, f'The field’s ground is --oa-color-field-ground, {FIELD_N} on Newsprint and {FIELD_C} on Charcoal, with '
+                'the strong border as its edge, which alone shows the field on Charcoal.'),
          (L_BR, bs('search', 'input-search') + ' In an older browser the search element is a plain box with no landmark, '
                 'and the field still works.'),
      ),
@@ -1271,7 +1276,8 @@ rule(n=21, set='c-18-report-reader', name='Report reader',
                   'and the reason.'),
          (L_TGT, '44 px tall.', 'oa.size.target.touch'),
          (L_FC, 'An unavailable button keeps its dashed edge, and the arrows draw in currentColor.'),
-         (L_TH, f'The page sits on --oa-color-field-ground, {FIELD_WORDS}.'),
+         (L_TH, f'The page sits on --oa-color-field-ground, {FIELD_N} on Newsprint and {FIELD_C} on Charcoal, inside a '
+                'hairline edge that parts it from the ground.'),
          (L_BR, bs('dialog') + ' The dialog is needed only for a reader that fills the screen.'),
      ),
      related=['24', '11'],
@@ -1532,7 +1538,7 @@ FAIL_HTML = {
                '.f18-t th{font:var(--oa-type-ui)}.f18-ar{white-space:nowrap}',
                '<table class="f18-t"><thead><tr><th>Bill</th><th>Title</th><th><span class="f18-ar">Last action ↓</span></th>'
                '</tr></thead><tbody><tr><td>H.99003</td><td>Library hours</td><td>April 2</td></tr>'
-               '<tr><td>S.99002</td><td>School bus contracts</td><td>February 20</td></tr>'
+               '<tr><td>S.99002</td><td>School bus contracts</td><td>March 3</td></tr>'
                '<tr><td>H.99001</td><td>Public meeting notice</td><td>January 16</td></tr></tbody></table>',
                'Only a pointer can sort, and the new order is never said.'),
     11: fplate('.f18-cut{overflow:hidden;border:1px solid var(--hair)}'

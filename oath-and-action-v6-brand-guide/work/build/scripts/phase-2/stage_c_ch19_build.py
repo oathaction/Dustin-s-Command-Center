@@ -257,7 +257,7 @@ MAP = {
     '3.3.1': ('met', ['18.17', '11.15'], ''),
     '3.3.2': ('met', ['18.17', '18.15'], ''),
     '3.3.3': ('met', ['18.17', '11.15'], ''),
-    '3.3.4': ('gap', [], 'Chapter 18 owes a rule that a send that reaches a legislature, such as testimony, and a delete of saved items can each be checked, confirmed or undone.'),
+    '3.3.4': ('gap', [], 'Chapter 18 owes a rule that lets a reader check, confirm or undo a send that reaches a legislature, such as testimony, and a delete of saved items.'),
     '3.3.7': ('none', [], 'No form has more than one step today; chapter 18 when one does.'),
     '3.3.8': ('none', [], 'No product has accounts today; the chapter that adds them owes it.'),
     '4.1.2': ('met', ['18.1', '18.2', '18.9', '17.11'], 'Every rule of chapter 18 gives its accessible name and states.'),
@@ -419,8 +419,8 @@ def s_criteria(crit, held, own):
             f'<fieldset class="c19-fs"><legend>Show</legend>{chips}</fieldset></div>'
             f'<p class="c19-st-line" id="st" role="status">{total} of {total} criteria.</p>'
             f'<ol class="c19-l">{"".join(rows)}</ol>'
-            '<p class="c19-rm"><b>4.1.1 Parsing</b> was removed in WCAG 2.2, which keeps its number with no level. Many of '
-            'the problems it covered now fail 1.3.1 or 4.1.2, W3C’s Understanding page says, so no rule here is tied to '
+            '<p class="c19-rm"><b>4.1.1 Parsing</b> was removed in WCAG 2.2, which keeps its number with no level. W3C’s '
+            'Understanding page says many of the problems it covered now fail 1.3.1 or 4.1.2, so no rule here is tied to '
             'it.</p></div>' + script)
     check_printed(body)
     sid = spec('s-19-criteria', body, '19.1',
@@ -438,7 +438,7 @@ def s_criteria(crit, held, own):
 def s_opener(counts, n):
     """Chapter 19's opener (CD-S18, D2-1550): the status counts as a picture that flows with the column."""
     tiles = (('met', 'Met', 'a rule states what it asks'), ('part', 'Met in part', 'a rule covers some of it'),
-             ('gap', 'Gaps', 'each with the chapter that owes it'), ('none', 'Not used today', 'no product does the thing yet'))
+             ('gap', 'Gaps', 'each with the chapter that owes it'), ('none', 'Not used today', 'no product does what it covers yet'))
     css = ('.c19-ot{font:var(--oa-type-caption);color:var(--sec);margin-bottom:8px}'
            '.c19-og{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:8px}'
            '.c19-oc{border:1px solid var(--edge);padding:12px;display:grid;gap:2px;align-content:start}'
@@ -452,7 +452,7 @@ def s_opener(counts, n):
     return spec('s-19-opener', body, None,
                 f'Where this guide stands on WCAG 2.2’s {n} criteria at levels A and AA: {counts["met"]} met, where a rule '
                 f'states what the criterion asks; {counts["part"]} met in part; {counts["gap"]} gaps, each with the chapter '
-                f'that owes it; and {counts["none"]} not used today, since no product does the thing yet.',
+                f'that owes it; and {counts["none"]} not used today, since no product does what they cover yet.',
                 notes='Chapter 19’s opener (CD-S18, D2-1550): the counts from Rule 19.1’s map, as a picture that flows with '
                       'the column at true size.')
 
@@ -463,14 +463,14 @@ MATRIX = [
     ('Every page rendered', 'Each page draws whole at the widths readers use', 'Screenshots at 1440, 1024, 390 and 360 px, looked at by a person', '1.4.10', ''),
     ('Report pages', 'Every page of a report reads in the reader', 'A screenshot of each page in the report reader', '1.4.10, 4.1.2', ''),
     ('Keyboard and focus', 'Every control is reached in order, shows its ring, holds no trap and is big enough to press',
-     'A script presses Tab through the page, walks each component’s keyboard path and measures each control; a person checks the order and the ring',
+     'A script presses Tab through the page, walks each component’s keyboard path and measures each control’s size; a person checks the order and the ring',
      '2.1.1, 2.1.2, 2.4.3, 2.4.7, 2.4.11, 2.5.8',
      'To list each control under 24 by 24 px, paste this into the browser’s console: <code>document.querySelectorAll(\'a, button, input, select, '
      'summary, [tabindex]\').forEach(el =&gt; { const r = el.getBoundingClientRect(); if (r.width &amp;&amp; (r.width &lt; 24 || r.height &lt; 24)) '
      'console.log(el, Math.round(r.width), Math.round(r.height)); })</code>. A link inside a sentence may be smaller.'),
     ('Reading order and headings', 'The outline makes sense read aloud', 'The accessibility tree’s outline, read by script and by a person', '1.3.1, 1.3.2, 2.4.6',
      'In Chrome’s developer tools, open the Elements panel’s Accessibility pane and turn on the full-page accessibility tree.'),
-    ('Forms and messages', 'A reader can find, fix and send every field', 'Send each form empty, then with a mistake, by keyboard: focus lands on '
+    ('Forms and messages', 'A reader can find and fix every field, then send the form', 'Send each form empty, then with a mistake, by keyboard: focus lands on '
      'the first field to fix, its description holds the message, and the status line holds the result', '1.3.5, 3.3.1, 3.3.2, 3.3.3, 4.1.3', ''),
     ('Automated rules', 'The faults a machine can find are gone', 'axe-core with the tags wcag2a, wcag2aa, wcag21a, wcag21aa and wcag22aa on every page',
      'Parts of many, such as 1.1.1, 1.3.1, 1.4.3, 2.4.2, 2.4.4, 3.1.1 and 4.1.2',
@@ -657,7 +657,7 @@ def pictures():
              + '</div><p class="c19-yrs">' + ''.join(f'<span>{y}</span>' for y, _ in counts) + '</p>'
              '<p class="c19-src">Source: Alder County clerk’s comment log, 2023 to 2026.</p></div>')
     chart_words = ('a bar chart titled “Comments on the county budget, 2023 to 2026”, its four bars rising from 120 comments in '
-                   '2023 to 180, 240 and 310 in 2026, each with its count above it and its year below, and a source line')
+                   '2023 through 180 and 240 to 310 in 2026, each with its count above it and its year below, and a source line')
     picture('s-19-2-correct', '19.2',
             '<p class="c19-k">A drawing beside its word: the word carries it</p><div class="c19-box c19-row">'
             '<svg viewBox="0 0 128 128" width="48" height="48" aria-hidden="true" focusable="false" data-icon="CL-001" '
@@ -716,19 +716,40 @@ def pictures():
             'until each pixel shows as a square. A note says it cannot be found, translated or read aloud from its words.',
             'Picture of a fault: a picture of text in place of text (SC 1.4.5).', fail=True,
             css='.c19-soft{font:var(--oa-type-h4);font-size:1.25rem;color:var(--oa-color-text-primary-on-prussian);filter:blur(0.7px)}')
-    linebox = ('<div class="c19-box" style="height:120px;position:relative"><svg viewBox="0 0 300 100" width="100%" height="100" '
-              'aria-hidden="true" focusable="false"><g fill="none" stroke="var(--oa-color-text-primary)" stroke-width="1.5">'
-              '<path d="M10 70 L60 40 L120 55 L170 20 L240 35 L290 15"/><path d="M10 90 L80 80 L150 88 L220 70 L290 78"/></g></svg></div>')
+    # 19.5's chart (the creative director's R2): a title, each line named at its end, the first and last years and a
+    # source line, as 19.2's chart has; the words are HTML, so each stays at its size. Invented counts.
+    years = list(range(2019, 2027))
+    series = (('Comments', (40, 65, 55, 90, 85, 120, 110, 150)), ('Speakers', (20, 25, 22, 30, 28, 35, 34, 40)))
+    def ly(v):
+        return round(100 - v / 160 * 90 - 5, 1)
+    lines = ''.join('<polyline points="' + ' '.join(f'{round(4 + i * 192 / 7, 1)},{ly(v)}' for i, v in enumerate(vals)) + '"/>'
+                    for _, vals in series)
+    line_css = ('.c19-cht{font:var(--oa-type-ui);margin-bottom:8px}.c19-lc{display:grid;grid-template-columns:200px auto;gap:8px}'
+                '.c19-lc svg{display:block}.c19-ends{position:relative;font:var(--oa-type-caption)}'
+                '.c19-ends span{position:absolute;left:0;transform:translateY(-50%);white-space:nowrap}'
+                '.c19-yr2{display:flex;justify-content:space-between;width:200px;margin-top:4px;font:var(--oa-type-caption);color:var(--sec)}'
+                '.c19-src{margin-top:8px;font:var(--oa-type-caption);color:var(--sec)}')
+    linebox = ('<div class="c19-box"><p class="c19-cht">Written comments and speakers at the county’s budget hearing, '
+               f'{years[0]} to {years[-1]}</p><div class="c19-lc"><svg viewBox="0 0 200 100" width="200" height="100" '
+               'aria-hidden="true" focusable="false"><g fill="none" stroke="var(--oa-color-text-primary)" stroke-width="1.5" '
+               f'stroke-linejoin="round">{lines}</g></svg><div class="c19-ends">'
+               + ''.join(f'<span style="top:{ly(vals[-1])}px">{name}, {vals[-1]}</span>' for name, vals in series)
+               + f'</div></div><p class="c19-yr2"><span>{years[0]}</span><span>{years[-1]}</span></p>'
+               f'<p class="c19-src">Source: Alder County clerk’s hearing records, {years[0]} to {years[-1]}.</p></div>')
+    line_words = (f'titled “Written comments and speakers at the county’s budget hearing, {years[0]} to {years[-1]}”, its two '
+                  f'lines rising from {series[0][1][0]} to {series[0][1][-1]} comments and from {series[1][1][0]} to '
+                  f'{series[1][1][-1]} speakers, each named with its last count at its end, the years {years[0]} and '
+                  f'{years[-1]} under it, and a source line')
     picture('s-19-5-correct', '19.5', linebox + '<div class="c19-row" style="margin-top:8px"><span class="c19-btn">Zoom in</span>'
             '<span class="c19-btn">Zoom out</span><span class="c19-btn">Fit</span></div>',
-            'An Illustrative line chart at 360 px with three buttons under it, Zoom in, Zoom out and Fit, each a single '
-            'press.', 'Correct: every action is one press of a button.')
+            f'An Illustrative line chart at 360 px, {line_words}. Under it, three buttons, Zoom in, Zoom out and Fit, each a '
+            'single press.', 'Correct: every action is one press of a button. Invented counts.', css=line_css)
     picture('s-19-5-failure', '19.5', linebox + '<p class="c19-k" style="margin-top:8px">Pinch to zoom. Drag to pan. Shake to undo. Press Z to zoom.</p>'
             '<p class="c19-n">Each action needs two fingers, a drag, a shake or one letter key, and has no button.</p>',
-            'Failure case: do not publish. The same Illustrative line chart at 360 px with the line “Pinch to zoom. Drag to pan. '
-            'Shake to undo. Press Z to zoom.” and no buttons.',
-            'Picture of a fault: gestures, motion and a single-key shortcut with no button (SC 2.1.4, 2.5.1, 2.5.4, 2.5.7).',
-            fail=True)
+            f'Failure case: do not publish. The same Illustrative line chart at 360 px, {line_words}, with the line “Pinch to '
+            'zoom. Drag to pan. Shake to undo. Press Z to zoom.” and no buttons.',
+            'Picture of a fault: gestures, motion and a single-key shortcut with no button (SC 2.1.4, 2.5.1, 2.5.4, 2.5.7). '
+            'Invented counts.', fail=True, css=line_css)
     # 19.6: a 360 px screen zoomed to 200 percent lays out like 180 px; the plate draws that layout at exactly twice
     # its sizes, 360 px wide, and says so (scale 2), so every size divided by 2 is one the type scale holds
     X2 = ('.c19-x2 .c19-ui{padding:32px 32px 40px}.c19-x2 .c19-k{font:var(--oa-type-caption);font-size:1.75rem;margin-bottom:12px}'
@@ -857,8 +878,8 @@ def build():
                     {'label': 'May add', 'value': 'Where it is, after its words'},
                     {'label': 'Never alone', 'value': 'Color, shape, size, sound or place'}],
              related=['02', '18'],
-             builders=['Copy the control’s words into the instruction exactly as the control shows them, so a reader using voice '
-                       'control can say what they read: “press Send your comment”.']),
+             builders=['Copy the control’s words into the instruction exactly as the control shows them, as in “Press Send '
+                       'your comment”, so a reader using voice control can say the words they read.']),
         dict(id='19.4', title='Set words as live text, and keep pictures of text for the logo.',
              rule=['Headlines, quotes, labels and chart words are live text in the page. A social card or a slide that '
                    'must be an image carries its words again in the post or the page beside it. The wordmark and its lockups are '
@@ -891,14 +912,14 @@ def build():
              failure={'specimen': 's-19-5-failure', 'caption': '<strong>Fails Rule 19.5.</strong> Pinch, drag, shake and the '
                                                                'Z key are the only ways to act.'},
              specs=[{'label': 'Each action', 'value': 'A control pressed once, at least 44 px (Rule 11.7)', 'token': 'oa.size.target.touch'},
-                    {'label': 'Gestures and motion', 'value': 'Only beside a button that does the same; a setting turns a tilt or a '
-                                                              'shake off'},
+                    {'label': 'Gestures and motion', 'value': 'Only beside a button that does the same; a setting turns off the '
+                                                              'response to a tilt or a shake'},
                     {'label': 'Shortcuts', 'value': 'None of one letter; a shortcut takes a modifier key, such as Control'},
                     {'label': 'When it runs', 'value': 'On release, as native buttons do'}],
              related=['18', '15'],
              builders=['Run an action on the <code>click</code> event, which fires when the press ends, and never on '
                        '<code>pointerdown</code> or <code>touchstart</code>. Give a drag or a pinch a button that does the same, and '
-                       'a keyboard shortcut a modifier key, such as Control and K.']),
+                       'give every keyboard shortcut a modifier key, as in Control and K.']),
         dict(id='19.6', title='Let text grow to 200 percent, spacing open and the screen turn, with nothing lost.',
              rule=['A page keeps every word and control when the reader doubles the text size, widens the spacing between '
                    'lines, words and letters, or turns the phone on its side. Labels wrap where they would overflow, a row '
@@ -940,8 +961,8 @@ def build():
                     {'label': 'By a person', 'value': 'The keyboard order and ring, the reading order, and the device script (Rule 19.9)'}],
              related=['18', '26'],
              builders=['Run the checks a tool can run with the commands in the matrix, on every page and in each theme, and log the '
-                       'tool’s version with each result. The rest need a person: the keyboard order and ring, the reading order, '
-                       'words broken in the middle, and the device script.']),
+                       'tool’s version with each result. The rest need a person: the Tab order and the focus ring, the reading '
+                       'order, words broken in the middle, and the device script.']),
         dict(id='19.8', title='Report each result with its date, and keep what was tested apart from what was not.',
              rule=['A results report gives the date, the build it ran on and, for each check, what ran and what it found. '
                    'What could not run, and why, goes in a separate list, so no one reads a check nobody made as a pass. '
@@ -977,7 +998,7 @@ def build():
                                                  'result with what was heard'}],
              related=['18'],
              builders=['Run each script on the device’s current system and in the browser the script names, and write both '
-                       'versions down with the results, as the last line of the script asks.']),
+                       'versions down with the results, as the script asks at its end.']),
     ]
     for r in rules:
         r.setdefault('related', [])
@@ -989,7 +1010,7 @@ def build():
         'intro': [f'Accessibility means a person can use a page with a keyboard, a screen reader, zoom, voice or touch, and '
                   f'with less motion. The standard is WCAG 2.2, the Web Content Accessibility Guidelines from the World Wide Web '
                   f'Consortium, W3C, which writes many of the web’s standards. Each of its success criteria is one requirement a page '
-                  f'can be tested against. Level A holds the ones every page must meet, and level AA adds more, such as the contrast of '
+                  f'can be tested against. Level A holds the most basic ones, and level AA adds more, such as the contrast of '
                   f'text. This chapter holds the {n} criteria at levels A and AA, each in W3C’s words with the rule in this guide that '
                   'meets it, then the checks that prove a page meets them.',
                   'Our own results so far come next, dated, with what was tested kept apart from what was not, and a short '

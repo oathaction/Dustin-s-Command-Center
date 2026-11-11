@@ -60,9 +60,9 @@ def s_08_1_correct():
     # at their own sizes; then the 48 px master on the two dark surfaces
     body = ('<div class="oai-panel oai-s-newsprint"><div class="oai-stack" style="gap:24px">' + cons
             + '<div class="oai-row" style="flex-wrap:nowrap">'
-            + it("Display master, 120 px; every size from 49 px but the social sign-off",
+            + it("Display master, 120 px; every size from 49 px except a social card's sign-off",
                  lockmark(120, label="Lockmark, display master, at 120 px"), wrap=True)
-            + it("48 px master, 96 px; social card sign-off only",
+            + it("48 px master, 96 px; only for a social card's sign-off",
                  sign_off("social", label="Lockmark, 48 px master at 96 px, a social card's sign-off"), wrap=True)
             + '</div><div class="oai-row" style="flex-wrap:nowrap">'
             + it("48 px master", lockmark(48, label="Lockmark, 48 px master"))
@@ -74,9 +74,9 @@ def s_08_1_correct():
             + '</div></div></div>')
     alt = ("The lockmark: nine nodes on a three by three grid joined by thin links around the edge and through the center, with "
            "a larger red node, the lever, at bottom right. Its construction at 240 pixels with the node centers and radii. "
-           "Then its four masters at true size: the display master at 120 pixels, labeled for every size from 49 pixels but "
-           "the social sign-off, with fine links and small nodes, beside the 48 pixel master drawn at exactly 96 pixels, "
-           "labeled social card sign-off only, heavier, each of its pixels a block of 2 by 2; below them the 48, 24 and 16 "
+           "Then its four masters at true size: the display master at 120 pixels, labeled for every size from 49 pixels except "
+           "a social card's sign-off, with fine links and small nodes, beside the 48 pixel master drawn at exactly 96 pixels, "
+           "labeled only for a social card's sign-off, heavier, each of its pixels a block of 2 by 2; below them the 48, 24 and 16 "
            "pixel masters at their own sizes, each heavier, with the same nine nodes, links and lever. Last, the 48 pixel "
            "master on Charcoal, in Newsprint with its red lever, and on Prussian, all in White.")
     return rec("s-08-1-correct", "08.1", 700, alt, body, fit_switch=True,

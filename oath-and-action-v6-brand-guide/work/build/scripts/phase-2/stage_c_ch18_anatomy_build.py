@@ -1102,7 +1102,7 @@ def p22():
     pin(prev, 6, 'br')
     pin(nxt, 7, 'br')
     pin(why, 8)
-    key = [(1, 'Live line', 'Each step, said once, politely'),
+    key = [(1, 'Status line', 'Each step, said once, politely'),
            (2, 'Current step', 'A 4 px bar drawn as a border, in the step list'),
            (3, 'Height', '44 px tall'),
            (4, 'Play', 'Its icon and word; Pause while it runs, Play again at the end'),

@@ -1400,8 +1400,8 @@ def build(ctx):
             'builders': ['Mark up the list as a <code>&lt;ul&gt;</code> of bills, each holding its hidden step list from '
                          'Rule 11.2. Switch to the wide form with a container query on the list’s own width, '
                          '<code>@container (min-width: 34.5rem)</code>, so a list in a narrow column keeps its key at any '
-                         'window size. When a tracker updates in place, announce the new status words through a polite '
-                         'live region, as chapter 18 sets out.'],
+                         'window size. When a tracker updates in place, announce the new status words in a status line, '
+                         'as chapter 18 sets out.'],
         },
         {
             'id': '11.6', 'title': 'Turn the same steps upright on a bill’s own page.',

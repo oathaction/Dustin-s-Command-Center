@@ -371,7 +371,7 @@
       "title": "Move the hinge and the lever only as their own motions, ending exactly on their masters.",
       "rule": [
         "The hinge and the lever are the two motions that belong to the identity, and each one plays only on request (Rule 17.3). The hinge plays over 680 ms: OATH and ACTION settle into place, then the ampersand lands between them. The lever plays over 560 ms in the lockmark: its links draw, its nodes land together and the lever lands last, at bottom right.",
-        "Each player rests on the master itself (Rule 17.3). Play steps to the first frame and runs to the master, and Reset returns to the master; at rest Reset is unavailable, with the line “The mark is at rest on its master.”",
+        "Each player rests on the master itself (Rule 17.3). Play steps to the first frame and runs to the master, and Reset returns to the master; at rest Reset is unavailable, with the line “The mark is at rest on its master. Reset works once you press Play.”",
         "Each is built from slide, draw and land (Rule 17.5), and each ends on a last frame that matches the approved master for its size, pixel for pixel. The ampersand and the lever keep signature red in every frame, and signature red never counts as a view’s working red (Rule 05.3)."
       ],
       "tokens": [
@@ -409,7 +409,7 @@
         },
         {
           "label": "At rest",
-          "value": "The master; Reset unavailable, with “The mark is at rest on its master.”"
+          "value": "The master; Reset unavailable, with “The mark is at rest on its master. Reset works once you press Play.”"
         },
         {
           "label": "Last frame",

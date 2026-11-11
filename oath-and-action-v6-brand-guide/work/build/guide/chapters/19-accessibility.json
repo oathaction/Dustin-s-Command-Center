@@ -6,7 +6,7 @@
   "instruction": "Check a page against WCAG 2.2 AA before you call it finished.",
   "opener": "s-19-opener",
   "intro": [
-    "Accessibility means a person can use a page with a keyboard, a screen reader, zoom, voice or touch, and with less motion. The standard is WCAG 2.2, the Web Content Accessibility Guidelines from the World Wide Web Consortium, W3C, which writes many of the web’s standards. Each of its success criteria is one requirement a page can be tested against. Level A holds the ones every page must meet, and level AA adds more, such as the contrast of text. This chapter holds the 55 criteria at levels A and AA, each in W3C’s words with the rule in this guide that meets it, then the checks that prove a page meets them.",
+    "Accessibility means a person can use a page with a keyboard, a screen reader, zoom, voice or touch, and with less motion. The standard is WCAG 2.2, the Web Content Accessibility Guidelines from the World Wide Web Consortium, W3C, which writes many of the web’s standards. Each of its success criteria is one requirement a page can be tested against. Level A holds the most basic ones, and level AA adds more, such as the contrast of text. This chapter holds the 55 criteria at levels A and AA, each in W3C’s words with the rule in this guide that meets it, then the checks that prove a page meets them.",
     "Our own results so far come next, dated, with what was tested kept apart from what was not, and a short script for the checks only real devices can run."
   ],
   "groups": [
@@ -174,7 +174,7 @@
         "18"
       ],
       "builders": [
-        "Copy the control’s words into the instruction exactly as the control shows them, so a reader using voice control can say what they read: “press Send your comment”."
+        "Copy the control’s words into the instruction exactly as the control shows them, as in “Press Send your comment”, so a reader using voice control can say the words they read."
       ]
     },
     {
@@ -252,7 +252,7 @@
         },
         {
           "label": "Gestures and motion",
-          "value": "Only beside a button that does the same; a setting turns a tilt or a shake off"
+          "value": "Only beside a button that does the same; a setting turns off the response to a tilt or a shake"
         },
         {
           "label": "Shortcuts",
@@ -268,7 +268,7 @@
         "15"
       ],
       "builders": [
-        "Run an action on the <code>click</code> event, which fires when the press ends, and never on <code>pointerdown</code> or <code>touchstart</code>. Give a drag or a pinch a button that does the same, and a keyboard shortcut a modifier key, such as Control and K."
+        "Run an action on the <code>click</code> event, which fires when the press ends, and never on <code>pointerdown</code> or <code>touchstart</code>. Give a drag or a pinch a button that does the same, and give every keyboard shortcut a modifier key, as in Control and K."
       ]
     },
     {
@@ -371,7 +371,7 @@
         "26"
       ],
       "builders": [
-        "Run the checks a tool can run with the commands in the matrix, on every page and in each theme, and log the tool’s version with each result. The rest need a person: the keyboard order and ring, the reading order, words broken in the middle, and the device script."
+        "Run the checks a tool can run with the commands in the matrix, on every page and in each theme, and log the tool’s version with each result. The rest need a person: the Tab order and the focus ring, the reading order, words broken in the middle, and the device script."
       ]
     },
     {
@@ -455,7 +455,7 @@
         "18"
       ],
       "builders": [
-        "Run each script on the device’s current system and in the browser the script names, and write both versions down with the results, as the last line of the script asks."
+        "Run each script on the device’s current system and in the browser the script names, and write both versions down with the results, as the script asks at its end."
       ]
     }
   ],

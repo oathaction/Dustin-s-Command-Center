@@ -20,7 +20,8 @@ data-part names the script animates; and the end layer, the master placed by ref
 unchanged. Each player rests on the end layer, the master itself (stage C round 2, CD-M1, call 5: data-frame="end"
 and data-oa-rest="master" on load). Play steps to the first frame and runs the moving layer; at its end the player
 shows the end layer again, so the last frame is the master. Reset returns to the master, and at rest it is unavailable
-with the line "The mark is at rest on its master." Under reduced motion every duration token is 0 ms and Play shows the
+with the line "The mark is at rest on its master. Reset works once you press Play." (D2-1666, the editor's I1). Under
+reduced motion every duration token is 0 ms and Play shows the
 end layer at once (Rule 17.4). Nothing moves on load and nothing loops (Rule 17.3). A state or mechanism player in
 chapter 17 still rests on its first frame. The player follows the engineer's
 contract (data-oa-motion on the root, data-oa-play and data-oa-pause on one button, data-oa-reset) and chapter 17's
@@ -358,7 +359,7 @@ L.addEventListener("change",function(){var k=L.checked?0.1:1;A.forEach(function(
 if(RM&&RM.addEventListener)RM.addEventListener("change",function(){if(total()===0&&(st==="running"||st==="paused"))end();else show();});
 show();});})();"""
 
-WHY = {"rest": "The mark is at rest on its master.",
+WHY = {"rest": "The mark is at rest on its master. Reset works once you press Play.",
        "slowDevice": "Your device asks for reduced motion, so Play shows the last frame at once and Slow motion has nothing to slow."}
 
 
@@ -518,9 +519,9 @@ def s_17_lever_correct():
            f"its time.")
     return rec("s-17-lever-correct", "17.6", None, alt, PLAYER_JS_WRAP(body), css=PLAYER_CSS + css, interactive=True,
                label="The lockmark’s motion",
-               caption=(f"Live, at rest on the lockmark’s masters. Press Play, and the links draw from the top left, "
-                        f"the eight nodes land together, and the lever lands last, coming to rest at {msw(LEVER)} on the "
-                        "master again: the 48 px master at 48 px, and the display master at 120 px."),
+               caption=(f"Live, at rest on the lockmark’s masters, the 48 px master at 48 px and the display master at "
+                        f"120 px. Press Play, and the field empties, then the links draw from the top left, the eight nodes "
+                        f"land together and the lever lands last, coming to rest on the master again at {msw(LEVER)}."),
                notes=(f"Rule 17.6, the lever landing (oa.motion.duration.lever, {LEVER} ms). The moving layer is each "
                       "master's own elements, inlined and named by part: three horizontal and three vertical links, "
                       "eight nodes and the lever. The end layer is the master placed by reference. Timing read from "

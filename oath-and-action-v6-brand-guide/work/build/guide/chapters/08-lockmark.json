@@ -156,7 +156,7 @@
     "14",
     "23"
    ],
-   "builders": "Pick the master by the size the place sets: the 48 px master for the sign-off, at exactly 96 px on a social card and 48 px on a cover or poster; L3’s masthead master, which holds it already, for the masthead on screen, and L3’s print master for a masthead in print; the 24 px master in page headers and footers; and the 16 px master in a chart’s footer. Set each on whole pixels. Run the feed test on every new template for a social card, on the file you will upload, before it ships. Our script <code>promotion_c_identity.py</code> runs the test on the card in the identity proofs, with its <code>feed</code> step, and the asset package will carry a copy that takes any card."
+   "builders": "Pick the master by the size the place sets: the 48 px master for the sign-off, at exactly 96 px on a social card and 48 px on a cover or poster; L3’s masthead master, which holds it already, for the masthead on screen, and L3’s print master for a masthead in print; the 24 px master in page headers and footers; and the 16 px master in a chart’s footer. Set each on whole pixels. Run the feed test on every new template for a social card, on the file you will upload, before it ships. We run the test on the card in the identity proofs with a script of our own, and the asset package will carry a copy of that script that takes any card. Until then, ask the editor to run it on yours."
   },
   {
    "id": "08.3",
