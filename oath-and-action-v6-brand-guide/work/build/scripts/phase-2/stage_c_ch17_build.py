@@ -190,7 +190,7 @@ def fail_band():
 # 360 px list. Colors through --ink, --sub, --bg and --txt2, set on the stage from the role names.
 DIA = 26
 RAD = DIA / 2
-MARK_CSS = ('.mk{display:block;overflow:visible;flex:none}'
+MARK_CSS = ('.mk{display:block;overflow:visible;flex:none;max-width:100%;height:auto}'
             '.mk .fi{fill:var(--ink)}.mk .fs{fill:var(--sub)}.mk .fb{fill:var(--bg)}.mk .ft{fill:var(--txt2)}'
             '.mk .si{stroke:var(--ink)}.mk .ss{stroke:var(--sub)}.mk .nf{fill:none}'
             '.mk text{font-family:var(--oa-font-family-reading);font-weight:700;font-variant-numeric:tabular-nums;'
@@ -227,7 +227,7 @@ def seg(x1, x2, cy, reached, w=None, part=None):
     return f'<rect x="{x1:g}" y="{cy - 1:g}" width="{x2 - x1:g}" height="1" class="fs la"{when(w)}{p}/>'
 
 
-TW = 300
+TW = 264          # six 44 px steps: the content width of a fluid plate at 360 px (frame, stage and inset each pad 16 px)
 TXS = [TW // 6 * i + TW // 12 for i in range(6)]
 TCY = 6 + RAD
 TH = int(TCY + RAD + 2)
@@ -274,9 +274,9 @@ def tracker_motion_svg():
 # ------------------------------------------------------------------------------------------------ the mechanism link
 # Loop R1's first link from our systems atlas, as chapter 11's stepper words it (DR-195): "Wealth concentration raises
 # money in politics." Two nodes and the link between them. Plain nodes, untagged: they are a diagram, not status marks.
-MW, MH = 300, 40
+MW, MH = 264, 40
 MCY = 20
-MA, MB = 16, 284
+MA, MB = 12, 252
 MR = 8
 
 
@@ -368,7 +368,7 @@ REDUCED_VARS = ';'.join(f'{tokcss("--oa-motion-duration-" + n)}:0ms' for n in ('
 PLAYER_CSS = (
     ':scope{' + MARK_VARS + '}'
     + MARK_CSS +
-    '.pl{display:grid;gap:12px;max-width:40rem}'
+    '.pl{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;max-width:40rem}'
     ':where(.pl p){margin:0}'
     '.k{' + ty('label') + ';color:var(--oa-color-text-secondary)}'
     '.ti{' + ty('h4') + ';text-wrap:balance}'
@@ -384,7 +384,7 @@ PLAYER_CSS = (
     'border-color:var(--oa-component-button-disabled-edge);cursor:not-allowed}'
     '.b[aria-disabled="true"]:hover{border-width:var(--oa-border-width-hairline);padding:0 14px 0 10px}'
     '.sl{display:flex;align-items:center;gap:10px;min-height:var(--oa-size-target-touch);' + ty('ui') + ';cursor:pointer;'
-    'width:max-content;max-width:100%}'
+    'justify-self:start;min-width:0}'
     '.sl input{flex:none;width:24px;height:24px;margin:0;accent-color:var(--oa-color-graphic-essential)}'
     '.sl[data-off]{color:var(--oa-color-state-disabled-text);cursor:not-allowed}'
     '.why,.dv{' + ty('caption') + ';color:var(--oa-color-text-secondary)}'
@@ -395,15 +395,15 @@ PLAYER_CSS = (
     '.fh{' + ty('caption') + '}.fh b{font-weight:700}'
     '.fw{' + ty('caption') + '}'
     '.tl{margin:0;padding:0;list-style:none;display:grid;gap:2px;' + ty('caption') + '}.tl b{font-weight:700}'
-    '.dg{display:block;overflow:visible}'
+    '.dg{display:block;overflow:visible;max-width:100%;height:auto}'
     '.dg .nd-on{fill:var(--oa-color-graphic-essential)}'
     '.dg .nd-off{fill:var(--oa-color-surface);stroke:var(--oa-color-graphic-subtle);stroke-width:1.5}'
     '.dg .ln{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:2;stroke-linejoin:round;stroke-linecap:butt}'
     '.dg .hl{fill:var(--oa-color-border-hairline)}'
     '.dg .dot{fill:var(--oa-color-graphic-subtle)}'
     '.dg .rg{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:3}'
-    '.nn{display:flex;justify-content:space-between;gap:16px;max-width:' + str(MW) + 'px;margin-top:6px;' + ty('caption') + '}'
-    '.nn span:last-child{text-align:right}'
+    '.nn{display:flex;flex-wrap:wrap;justify-content:space-between;gap:0 16px;max-width:' + str(MW) + 'px;margin-top:6px;' + ty('caption') + '}'
+    '.nn span:last-child{text-align:right;margin-left:auto}'
     # frames: the data-when layers show by the player's data-frame (start, run or end)
     '[data-oa-motion]:not([data-frame="end"]) [data-when="end"]{display:none}'
     '[data-oa-motion][data-frame="end"] [data-when="start"]{display:none}'
@@ -415,9 +415,8 @@ PLAYER_CSS = (
     '[data-oa-motion][data-preview="reduced"]{' + REDUCED_VARS + '}'
     '.nb{display:inline-grid;place-items:center;flex:none;width:24px;height:24px;border-radius:50%;'
     'background:var(--oa-color-graphic-essential);color:var(--oa-color-surface);' + ty('label') + ';letter-spacing:0}'
-    '.ax{display:flex;gap:10px;align-items:flex-start}'
-    '.ax > :last-child{flex:1;min-width:0}'
-    '.row2{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.row2 .b{min-width:8.5rem}'
+    '.ax{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:start}'
+    '.row2{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.row2 .b{min-width:min(100%,8.5rem)}'
 )
 
 # The player's script: one copy per motion specimen. It finds every player inside its own specimen and wires each.
@@ -646,6 +645,7 @@ def s17_1_correct():
 STRIP_CSS = ('.st{display:grid;gap:12px}:where(.st p){margin:0}'
              '.fs3{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,8.5rem),1fr))}'
              '.fs3 li{display:grid;gap:6px;align-content:start;padding:12px;border:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}'
+             '.fs3 svg{max-width:100%;height:auto}'
              '.tm{' + ty('caption') + ';font-weight:700}'
              '.big{' + ty('h4') + ';font-variant-numeric:tabular-nums}'
              '.nt{' + ty('caption') + '}'
@@ -767,7 +767,7 @@ def s17_2_failure():
     curve = curve_svg(*BOUNCE, ymax=1.2, ymin=-0.05, dashed_top=True)
     html = (f'<style>{css}{SHEET_CSS}</style><div class="ts">{band}'
             f'<div class="ez" style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start">{curve}'
-            '<div style="flex:1;min-width:12rem;display:grid;gap:8px">'
+            '<div style="flex:1 1 12rem;min-width:0;display:grid;gap:8px">'
             '<p class="cd">transition: transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1)</p>'
             f'<p class="nt">Two numbers of its own: 250 ms is no token, and the curve goes {OVER} percent past the '
             'dashed line, where the mark should rest, before it comes back.</p></div></div></div>')
@@ -817,7 +817,7 @@ ANATOMY = [
 
 
 def s17_3_correct():
-    css = ('.anat{display:grid;gap:20px}.key{margin:0;padding:0;list-style:none;display:grid;gap:8px}'
+    css = ('.anat{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}.key{margin:0;padding:0;list-style:none;display:grid;gap:8px}'
            '.key li{display:flex;gap:10px;align-items:flex-start;' + ty('bodySmall') + '}'
            '.cb{display:inline-block;flex:none;width:20px;height:20px;border:var(--oa-border-width-hairline) solid var(--oa-color-border-strong);'
            'background:var(--oa-color-field-ground)}')
@@ -840,7 +840,8 @@ def s17_3_failure():
     extra = ('.fp{display:grid;gap:10px;max-width:22rem}.ib{display:inline-grid;place-items:center;width:44px;height:44px;'
              'border:var(--oa-border-width-hairline) solid var(--oa-color-border-strong)}'
              '.lp{display:flex;gap:8px;align-items:center;' + ty('caption') + '}'
-             '.fs3{grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr))}')
+             '.fs3{grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr))}'
+             '.fs3 li{padding:10px 0 0;border:0;border-top:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}')
     lis = ''.join(f'<li><p class="tm">{t}</p>{tracker_svg(s)}</li>'
                   for t, s in ((f'0{NB}ms, as the page opens', START), (f'{T_END:,}{NB}ms', END),
                                (f'{T_END + 2440:,}{NB}ms, starting again', START)))
@@ -881,7 +882,8 @@ def s17_4_failure():
     lis = ''.join(f'<li><p class="tm">{t}</p>{mech_svg(s)}</li>' for t, s in (
         ('0 ms', 'start'), ('200 ms', 'start'), ('400 ms', 'end')))
     lis = lis.replace(' ms<', NB + 'ms<')
-    css2 = '.fs3{grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr))}' + ('.dg .nd-on{fill:var(--oa-color-graphic-essential)}'
+    css2 = ('.fs3{grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr))}'
+            '.fs3 li{padding:10px 0 0;border:0;border-top:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}') + ('.dg .nd-on{fill:var(--oa-color-graphic-essential)}'
                                                     '.dg .nd-off{fill:var(--oa-color-surface);stroke:var(--oa-color-graphic-subtle);stroke-width:1.5}'
                                                     '.dg .ln{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:2;stroke-linejoin:round}'
                                                     '.dg{display:block;overflow:visible}')
@@ -926,7 +928,7 @@ def s17_5_correct():
                              drawing=f'<p class="ds">{desc}</p>' + mini_svg(kind, None, live=True), words=w,
                              frames=frames, timeline=[line], motion={'tracks': tracks}, why=WHY,
                              group=f'Play the {kind}', fw='9.375rem'))
-    css = ('.three{display:grid;gap:32px;container-type:inline-size}.three > .pl + .pl{padding-top:24px;'
+    css = ('.three{display:grid;grid-template-columns:minmax(0,1fr);gap:32px;container-type:inline-size}.three > .pl + .pl{padding-top:24px;'
            'border-top:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}.ds{margin:0 0 12px;' + ty('bodySmall') + '}'
            '.three .stg{padding-top:0}'
            '@container (min-width:38rem){.three .pl{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px;'
@@ -1364,6 +1366,8 @@ def build_chapter():
         if kind in slots:
             sid, meta = slots[kind]
             cap = meta.get('caption') or default_cap
+            if kind == 'failure' and not cap.startswith('<strong>Fails'):
+                cap = '<strong>Fails Rule 17.6.</strong> ' + cap     # every failure caption opens so (chapters 05 to 11)
             return {'specimen': sid, 'caption': cap}
         return {'specimen': default_sid, 'caption': default_cap}
 

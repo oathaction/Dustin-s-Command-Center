@@ -378,12 +378,12 @@
         "basis": "Design judgment; Rules 04.1 and 08.1"
       },
       "correct": {
-        "specimen": "s-17-6-pending",
-        "caption": "Coming later: the hinge, live. Until it is drawn, Rule 04.5 shows the hinge diagram at rest."
+        "specimen": "s-17-hinge-correct",
+        "caption": "Live. Press Play and OATH and ACTION settle into place over 320 ms, then the ampersand lands between them and comes to rest at 680 ms, on the wordmark’s master. The last frame is the master itself, at 24 px and, on a wide screen, at 64 px."
       },
       "failure": {
-        "specimen": "s-17-6-pending-failure",
-        "caption": "Coming later: a failure case for the hinge and the lever, a last frame that misses its master."
+        "specimen": "s-17-hinge-failure",
+        "caption": "<strong>Fails Rule 17.6.</strong> A hinge that comes to rest half a pixel low, because its player centers the 24 px wordmark in a 25 px row. On a 1x screen its edges go gray, so the last frame is a second, softer version of the name."
       },
       "specs": [
         {
@@ -831,7 +831,14 @@
       ]
     }
   ],
-  "extras": [],
+  "extras": [
+    {
+      "after_rule": "17.6",
+      "specimen": "s-17-lever-correct",
+      "label": "The lever landing",
+      "caption": "Live. Press Play and the lockmark’s links draw from the top left, its eight nodes land together, and the lever lands last, coming to rest at 560 ms on the master. The last frame is the master itself: the 48 px master at 48 px, and the display master at 120 px."
+    }
+  ],
   "related_chapters": [
     {
       "chapter": "05",

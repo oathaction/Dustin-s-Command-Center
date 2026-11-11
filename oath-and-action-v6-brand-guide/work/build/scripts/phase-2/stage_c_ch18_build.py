@@ -407,8 +407,9 @@ rule(n=4, set='c-18-theme-switch', name='Theme switch',
            'page, in the masthead or at the top of the phone menu. The switch is a choice (Rule 18.3) of three radio '
            'buttons under the legend “Theme”: Light, Dark and Match my device, with Match my device checked until the '
            'reader picks another. Each choice is a word, since a sun or a moon does not say which theme is on.',
-           'A choice changes the colors at once, with no motion, and focus stays on it. Light and Dark set data-oa-theme '
-           'on the page’s root and store the choice under the key oa-theme; Match my device removes the key, and the page '
+           'A choice changes the colors at once, with no motion, and focus stays on it. Light and Dark set '
+           '<code>data-oa-theme</code> on the page’s root and store the choice under the key <code>oa-theme</code>; '
+           'Match my device removes the key, and the page '
            'follows the device again. The script reads and writes the key inside try and catch, so a browser that refuses '
            'storage still switches for the visit. A short script in the head applies a stored choice before the first '
            'paint (Rule 26.6).'],
@@ -433,9 +434,9 @@ rule(n=4, set='c-18-theme-switch', name='Theme switch',
          (L_TGT, 'Each segment 44 px tall.', 'oa.size.target.touch'),
          (L_FC, 'The system’s colors replace both themes, so a choice changes nothing a reader sees there. The switch '
                 'still works and still shows which choice holds.'),
-         (L_TH, 'Light is Newsprint and Dark is Charcoal. The switch sets data-oa-theme to light, dark or device, and the '
+         (L_TH, 'Light is Newsprint and Dark is Charcoal. The switch sets <code>data-oa-theme</code> to light, dark or device, and the '
                 'theme reaches every role a component reads (Rule 26.6).'),
-         ('Stored choice', 'The key oa-theme holds light or dark; Match my device removes it. A private window keeps it '
+         ('Stored choice', 'The key <code>oa-theme</code> holds light or dark; Match my device removes it. A private window keeps it '
                            'until the window closes, and Safari with tracking prevention on deletes it once the site goes '
                            'seven days of browsing without a press or a tap.'),
          (L_BR, bs('color-scheme-mq', 'color-scheme-meta', 'localstorage', 'mql-change')),
@@ -511,8 +512,8 @@ rule(n=6, set='c-18-masthead', name='Masthead and phone menu',
            'it holds, such as “Parts”. The link to the part the reader is in carries <code>aria-current="page"</code> and a 2 px '
            'underline. When the parts no longer fit on one line, they move behind a Menu button, its three bars beside the '
            'word Menu, which opens them in a native modal dialog.',
-           'The open menu covers the page and holds focus. Focus moves to the current part’s link, Tab stays inside, and '
-           'Escape or “Close the menu” shuts it and returns focus to Menu. The rows inside open and close as disclosures '
+           'The open menu covers the page and holds focus. Focus moves to the current part’s link, the Tab key reaches '
+           'nothing on the page behind it, and Escape or “Close the menu” shuts it and returns focus to Menu. The rows inside open and close as disclosures '
            '(Rule 18.8). A masthead that sticks to the top of the page sets scroll-padding-top to its own height, so no '
            'focused element hides under it.'],
      tokens=['--oa-color-surface', '--oa-color-text-primary', '--oa-color-border-hairline', 'oa.border.width.rule',
@@ -537,8 +538,8 @@ rule(n=6, set='c-18-masthead', name='Masthead and phone menu',
          (L_ST, 'Current part: a 2 px underline and aria-current. Hover: a 2 px underline. Menu closed or open, with '
                 'aria-expanded. Rows closed or open, the chevron down or up. Focus: the ring.'),
          (L_KEY, 'Tab through the home link and the parts. On a phone, Enter or Space on Menu opens the menu with focus on '
-                 'the current part’s link; Tab and Shift+Tab stay inside; Escape or Close the menu shuts it, and focus '
-                 'returns to Menu.'),
+                 'the current part’s link; Tab and Shift+Tab move through the menu and never reach the page behind it; Escape '
+                 'or Close the menu shuts it, and focus returns to Menu.'),
          (L_NAME, 'The navigation’s label, such as “Parts”; “Menu”, with <code>aria-haspopup="dialog"</code>; the dialog named by its '
                   'title; “Close the menu”.'),
          (L_HEAR, 'The navigation and its name on entry; “current page” on the current part; on Menu, “collapsed” or '
@@ -1160,7 +1161,8 @@ rule(n=20, set='c-18-tracker', name='Tracker',
      title='Update a live tracker in place, and say each change once in a status line.',
      rule=['A tracker built from chapter 11’s marks is a list of steps, each with its name and one state word: Done, Now, '
            'Not yet, Never happened or Stopped (Rule 11.2). When a bill moves, the tracker redraws only the steps that '
-           'changed and writes one sentence to its status line that names the bill and its new step.',
+           'changed and writes one sentence to its status line that names the new step, and the bill too where the page '
+           'follows more than one.',
            'The tracker takes no focus and moves nothing on the page when it updates. While its data loads it says so in '
            'words (Rule 18.19), and when nothing matches it says what to do. When the data fails it gives the error with '
            'its mark and how to try again, and a record that has gone unchecked carries the warning of Rule 11.10.'],
@@ -1287,8 +1289,9 @@ rule(n=22, set='c-18-loop-stepper', name='Loop stepper',
      failure=dict(
          caption='<strong>Fails Rule 18.22.</strong> The loop starts on its own when the page loads, repeats without end '
                  'and offers no button to pause it.',
-         alt='Failure case: do not publish. An Illustrative loop panel at 360 px showing “Step 2 of 3” and a sentence, with '
-             'no buttons at all. A note reads “Starts by itself on load and repeats with no way to stop it.”',
+         alt='Failure case: do not publish. A panel at 360 px for loop R1 from our systems atlas, showing “Step 1 of 3” and '
+             'its sentence, “Wealth concentration raises money in politics.”, with no buttons at all. A note reads “Starts '
+             'by itself on load and repeats with no way to stop it.”',
          notes='Picture of a fault: motion that starts by itself with no pause (SC 2.2.2).'))
 
 # ---- 18.23 Diagram controls -------------------------------------------------------------------------------------
@@ -1373,9 +1376,9 @@ rule(n=24, set='c-18-id-chip', name='Typed ID chip',
      failure=dict(
          caption='<strong>Fails Rule 18.24.</strong> The chips show bare codes, and only their fills say which is a loop '
                  'and which is a reform.',
-         alt='Failure case: do not publish. Two Illustrative chips at 360 px in a line of text, “R10” in a Prussian fill '
-             'and “R-01” in a Verdigris fill, with no type word. A note reads “A bare code, with its type in color '
-             'alone.”',
+         alt='Failure case: do not publish. A sentence at 360 px from our systems atlas, “R10 shifts accountability to '
+             'small primary electorates, and R-01 sits on that loop.”, with “R10” in a Prussian fill and “R-01” in a '
+             'Verdigris fill and no type word for either. A note reads “A bare code, with its type in color alone.”',
          notes='Picture of a fault: bare codes (house rule H11) typed by color.'))
 
 
@@ -1482,7 +1485,7 @@ FAIL_HTML = {
                '.f18-t th{font:var(--oa-type-ui)}.f18-ar{white-space:nowrap}',
                '<table class="f18-t"><thead><tr><th>Bill</th><th>Title</th><th><span class="f18-ar">Last action ↓</span></th>'
                '</tr></thead><tbody><tr><td>H.99001</td><td>Public meeting notice</td><td>March 3</td></tr>'
-               '<tr><td>S.99002</td><td>School bus routes</td><td>February 20</td></tr>'
+               '<tr><td>S.99002</td><td>School bus contracts</td><td>February 20</td></tr>'
                '<tr><td>H.99003</td><td>Library hours</td><td>February 11</td></tr></tbody></table>',
                'Only a pointer can sort, and the new order is never said.'),
     11: fplate('.f18-cut{overflow:hidden;border:1px solid var(--hair)}'
@@ -1560,10 +1563,10 @@ FAIL_HTML = {
                + 'Previous page</span><span></span></div>',
                'Next page is gone, and focus went with it.'),
     22: fplate('.f18-loop{border:1px solid var(--edge);padding:12px;font:var(--oa-type-body-small)}'
-               '.f18-loop b{font:var(--oa-type-ui)}',
-               '<div class="f18-loop"><p><b>Step 2 of 3</b></p><p>More money in politics raises the cost of running, which '
-               'favors candidates with wealthy donors.</p></div>',
-               'Starts by itself on load and repeats with no way to stop it.'),
+               '.f18-loop b{font:var(--oa-type-ui)}.f18-k{font:var(--oa-type-caption);color:var(--sec);margin-bottom:8px}',
+               '<p class="f18-k">From our systems atlas, loop R1</p><div class="f18-loop"><p><b>Step 1 of 3</b></p>'
+               '<p>Wealth concentration raises money in politics.</p></div>',
+               'Starts by itself on load and repeats with no way to stop it.', illus=False),
     23: fplate('.f18-dg{position:relative;height:150px}.f18-tip{position:absolute;left:150px;top:28px;padding:4px 8px;'
                'background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);'
                'font:var(--oa-type-caption)}.f18-dg .f18-ptr{position:absolute;left:118px;top:44px}',
@@ -1576,9 +1579,9 @@ FAIL_HTML = {
     24: fplate('.f18-c{display:inline-block;padding:0 8px;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing)}'
                '.f18-c1{background:var(--oa-color-surface-prussian);color:var(--oa-color-text-primary-on-prussian)}'
                '.f18-c2{background:var(--oa-color-palette-verdigris);color:var(--oa-color-palette-white)}',
-               '<p>The safe-seat loop, <span class="f18-c f18-c1">R10</span>, feeds the cost of a campaign, and '
-               '<span class="f18-c f18-c2">R-01</span> would change it.</p>',
-               'A bare code, with its type in color alone.'),
+               '<p><span class="f18-c f18-c1">R10</span> shifts accountability to small primary electorates, and '
+               '<span class="f18-c f18-c2">R-01</span> sits on that loop.</p>',
+               'A bare code, with its type in color alone.', illus=False),
 }
 
 
@@ -1710,19 +1713,43 @@ KEYS = {
             step('Tab', '.oa-link-skip'),
             step('Tab', '.oa-link-text a[href^="#"]'),
             step('Enter', '[id$="oa-link-steps"]')])],
-    6: [path('Open the phone menu, stay inside it, close it with Escape and with Close the menu', [
+    6: [path('Wide: Tab through the home link and the parts; the current part says so', [
         step('Tab', '.oa-masthead-home'),
-        step('Tab', '.oa-masthead-menu', [st('.oa-masthead-menu', attr='aria-expanded', **{'is': 'false'})]),
-        step('Enter', 'dialog [aria-current="page"]', [st('.oa-masthead-menu', attr='aria-expanded', **{'is': 'true'}),
-                                                       st('dialog', prop='open', **{'is': True})]),
-        step('Escape', '.oa-masthead-menu', [st('.oa-masthead-menu', attr='aria-expanded', **{'is': 'false'}),
-                                             st('dialog', prop='open', **{'is': False})]),
-        step('Space', 'dialog [aria-current="page"]', [st('dialog', prop='open', **{'is': True})]),
-        step('Shift+Tab', 'dialog .oa-masthead-close'),
-        step('Enter', '.oa-masthead-menu', [st('dialog', prop='open', **{'is': False})])])],
-    7: [path('Tab through the places; the current one says so', [
-        step('Tab', 'a', [st('[aria-current]', attr='aria-current', present=True)]),
-        step('Tab', 'a')])],
+        step('Tab', '.oa-masthead-part[aria-current="page"]', [st('.oa-masthead-menu', visible=False)]),
+        step('Tab', '.oa-masthead-part:not([aria-current])'),
+        step('Enter', '[id$="oa-masthead-page"]')], widths=[1440]),
+        path('Narrow: Menu opens a modal menu at the current part; Tab moves through it; Escape and Close the menu return to Menu', [
+            step('Tab', '.oa-masthead-home'),
+            step('Tab', '.oa-masthead-menu', [st('.oa-masthead-menu', attr='aria-expanded', **{'is': 'false'}),
+                                              st('.oa-masthead-parts', visible=False)]),
+            step('Enter', '.oa-masthead-row-link[aria-current="page"]', [st('.oa-masthead-menu', attr='aria-expanded', **{'is': 'true'}),
+                                                                        st('.oa-masthead-dialog', prop='open', **{'is': True})]),
+            step('Escape', '.oa-masthead-menu', [st('.oa-masthead-menu', attr='aria-expanded', **{'is': 'false'}),
+                                                 st('.oa-masthead-dialog', prop='open', **{'is': False})]),
+            step('Space', '.oa-masthead-row-link[aria-current="page"]', [st('.oa-masthead-dialog', prop='open', **{'is': True})]),
+            step('Shift+Tab', '.oa-masthead-close'),
+            step('Tab', '.oa-masthead-row-link[aria-current="page"]'),
+            step('Tab', '.oa-masthead-dialog .oa-masthead-row-link:not([aria-current])'),
+            step('Tab', '.oa-masthead-dialog .oa-masthead-row-link:not([aria-current])'),
+            step('Tab', '.oa-masthead-dialog .oa-masthead-row-link:not([aria-current])'),
+            step('Tab', '.oa-masthead-dialog .oa-masthead-row'),
+            step('Enter', '.oa-masthead-dialog .oa-masthead-row', [st('.oa-masthead-dialog .oa-masthead-row', attr='aria-expanded', **{'is': 'true'}),
+                                                                   st('[id$="oa-masthead-topics"]', visible=True)]),
+            step('Tab', '[id$="oa-masthead-topics"] .oa-masthead-row-link'),
+            step('Escape', '.oa-masthead-menu', [st('.oa-masthead-dialog', prop='open', **{'is': False})]),
+            step('Enter', '.oa-masthead-row-link[aria-current="page"]'),
+            step('Shift+Tab', '.oa-masthead-close'),
+            step('Enter', '.oa-masthead-menu', [st('.oa-masthead-dialog', prop='open', **{'is': False})])], widths=[390])],
+    7: [path('Tab through the breadcrumb, the list and the links before and after; each current place says so', [
+        step('Tab', '.oa-location-link:not([aria-current])'),
+        step('Tab', '.oa-location-link:not([aria-current])'),
+        step('Tab', '.oa-location-link[aria-current="page"]'),
+        step('Tab', '.oa-location-item:not([aria-current])'),
+        step('Tab', '.oa-location-item[aria-current="page"]'),
+        step('Tab', '.oa-location-item:not([aria-current])'),
+        step('Tab', '.oa-location-step:not(.oa-location-step--next)'),
+        step('Tab', '.oa-location-step--next'),
+        step('Enter', '[id$="oa-location-page"]')])],
     8: [path('Close and open the details, then the button disclosure; each says its state', [
         step('Tab', '.oa-disclosure:nth-of-type(1) > summary', [st('.oa-disclosure:nth-of-type(1)', prop='open', **{'is': True})]),
         step('Enter', '.oa-disclosure:nth-of-type(1) > summary', [st('.oa-disclosure:nth-of-type(1)', prop='open', **{'is': False})]),
@@ -1783,126 +1810,114 @@ KEYS = {
         step('Tab', '.oa-download[aria-disabled="true"]', [st('.oa-download[aria-disabled="true"]', attr='aria-describedby', present=True)]),
         step('Enter', '.oa-download[aria-disabled="true"]'),
         step('Tab', OUT)])],
-    15: [path('Type, hear the count, then clear with Escape', [
-        step('Tab', 'input[type="search"]'),
-        step(type='loop', focus='input[type="search"]', states=[st('.oa-search-clear', visible=True)], status_has=' of '),
+    15: [path('Type, hear the count, then clear with Escape; focus stays in the field', [
+        step('Tab', 'input[type="search"]', [st('.oa-search-clear', visible=False)], status='12 of 12 reforms', status_el='.oa-search-status'),
+        step(type='voting', focus='input[type="search"]', states=[st('.oa-search-clear', visible=True)], status='1 of 12 reforms',
+             status_el='.oa-search-status'),
         step('Escape', 'input[type="search"]', [st('input[type="search"]', prop='value', **{'is': ''}),
-                                                st('.oa-search-clear', visible=False)])]),
-        path('Clear the search returns focus to the field', [
+                                                st('.oa-search-clear', visible=False)], status='12 of 12 reforms', status_el='.oa-search-status')]),
+        path('No match: the count and the advice in one line; Clear the search returns focus to the field', [
             step('Tab', 'input[type="search"]'),
-            step(type='zzzz', focus='input[type="search"]', status_has='No '),
+            step(type='zzzz', focus='input[type="search"]',
+                 status='0 of 12 reforms. No reform matches. Clear the search to see all 12.', status_el='.oa-search-status'),
             step('Tab', '.oa-search-clear'),
-            step('Enter', 'input[type="search"]', [st('input[type="search"]', prop='value', **{'is': ''})])])],
+            step('Enter', 'input[type="search"]', [st('input[type="search"]', prop='value', **{'is': ''})],
+                 status='12 of 12 reforms', status_el='.oa-search-status')])],
     16: [path('Open Filters, turn a chip on, then Clear filters sends focus to Filters', [
-        step('Tab', '.oa-filters-toggle', [st('.oa-filters-toggle', attr='aria-expanded', **{'is': 'false'})]),
-        step('Enter', '.oa-filters-toggle', [st('.oa-filters-toggle', attr='aria-expanded', **{'is': 'true'})]),
-        step('Tab', '.oa-filters-chip:nth-child(1)'),
-        step('Space', '.oa-filters-chip:nth-child(1)', [st('.oa-filters-chip:nth-child(1)', attr='aria-pressed', **{'is': 'true'}),
-                                                       st('.oa-filters-toggle', text_has='1 on')], status_has=' of '),
-        step('Shift+Tab', '.oa-filters-toggle'),
-        step('Shift+Tab', '.oa-filters-clear', [st('.oa-filters-clear', visible=True)]),
-        step('Enter', '.oa-filters-toggle', [st('.oa-filters-clear', visible=False),
-                                             st('.oa-filters-chip:nth-child(1)', attr='aria-pressed', **{'is': 'false'})])])],
-    17: [path('Send with mistakes: focus moves to the first field to fix', [
+        step('Tab', '.oa-filters-toggle', [st('.oa-filters-toggle', attr='aria-expanded', **{'is': 'false'}),
+                                           st('.oa-filters-clear', visible=False)]),
+        step('Enter', '.oa-filters-toggle', [st('.oa-filters-toggle', attr='aria-expanded', **{'is': 'true'}),
+                                             st('[id$="oa-filters-sheet"]', visible=True)]),
+        step('Tab', '.oa-filters-chip[data-oa-filter="elections"]'),
+        step('Space', '.oa-filters-chip[data-oa-filter="elections"]',
+             [st('.oa-filters-chip[data-oa-filter="elections"]', attr='aria-pressed', **{'is': 'true'}),
+              st('.oa-filters-toggle', text='Filters, 1 on'), st('.oa-filters-clear', visible=True)],
+             status='6 of 12 reforms', status_el='.oa-filters-status'),
+        step('Shift+Tab', '.oa-filters-clear'),
+        step('Enter', '.oa-filters-toggle', [st('.oa-filters-clear', visible=False), st('.oa-filters-toggle', text='Filters, 0 on'),
+                                             st('.oa-filters-chip[data-oa-filter="elections"]', attr='aria-pressed', **{'is': 'false'})],
+             status='12 of 12 reforms', status_el='.oa-filters-status')])],
+    17: [path('Send with mistakes: each wrong field says so, and focus moves to the first', [
         step('Tab', 'input[autocomplete="email"]'),
         step(type='name@', focus='input[autocomplete="email"]'),
         step('Tab', 'input[autocomplete="postal-code"]'),
         step(type='021', focus='input[autocomplete="postal-code"]'),
         step('Tab', '.oa-form-send'),
         step('Enter', 'input[autocomplete="email"]', [st('input[autocomplete="email"]', attr='aria-invalid', **{'is': 'true'}),
-                                                      st('input[autocomplete="postal-code"]', attr='aria-invalid', **{'is': 'true'})])]),
-        path('Send right: the status line says so', [
+                                                      st('input[autocomplete="postal-code"]', attr='aria-invalid', **{'is': 'true'}),
+                                                      st('[id$="oa-form-email-error"]', visible=True)])]),
+        path('Send right: the line says it is sending, then that it worked', [
             step('Tab', 'input[autocomplete="email"]'),
             step(type='reader@example.org', focus='input[autocomplete="email"]'),
             step('Tab', 'input[autocomplete="postal-code"]'),
             step(type='12345', focus='input[autocomplete="postal-code"]'),
-            step('Enter', None, [st('input[autocomplete="email"]', attr='aria-invalid', **{'is': None})], status_filled=True)])],
+            step('Enter', None, [st('input[autocomplete="email"]', attr='aria-invalid', **{'is': None})],
+                 status_has='Sending', status_el='.oa-form-status'),
+            step(None, None, status_has='signed up', status_el='.oa-form-status', wait=1200)])],
     18: [path('Messages take no focus', [step('Tab', OUT)])],
     19: [path('The loading and empty states take no focus of their own', [step('Tab', OUT)])],
-    20: [path('The tracker takes no focus when it updates', [step('Tab', OUT)])],
-    21: [path('Turn to the last page; Next page keeps focus and says why', [
+    20: [path('Show the next update: the line says it once, and focus stays on the button', [
+        step('Tab', '.oa-tracker-link'),
+        step('Tab', '.oa-tracker-next'),
+        step('Enter', '.oa-tracker-next', status_has='Step 3 of 6: Committee vote.', status_el='.oa-tracker-status'),
+        step('Enter', '.oa-tracker-next', [st('.oa-tracker-alert', text_has='Error:')]),
+        step('Enter', '.oa-tracker-next', status_has='Stopped at step 3 of 6', status_el='.oa-tracker-status')]),
+        path('The link to take part moves focus to how to send testimony', [
+            step('Tab', '.oa-tracker-link'),
+            step('Enter', '[id$="oa-tracker-how"]')])],
+    21: [path('Turn to the last page; each button keeps focus, and the line names each page', [
         step('Tab', '.oa-reader-prev', [st('.oa-reader-prev', attr='aria-disabled', **{'is': 'true'})]),
+        step('Enter', '.oa-reader-prev', status='Page 1 of 4: Where the money comes from', status_el='.oa-reader-status'),
         step('Tab', '.oa-reader-next'),
-        step('Enter', '.oa-reader-next', [st('.oa-reader-prev', attr='aria-disabled', **{'is': None})], status_has='Page 2 of'),
-        step('Enter', '.oa-reader-next', status_has='Page 3 of'),
-        step('Enter', '.oa-reader-next', [st('.oa-reader-next', attr='aria-disabled', **{'is': 'true'})], status_has='Page 4 of'),
-        step('Enter', '.oa-reader-next', status_has='Page 4 of'),
-        step('Tab', 'input[type="radio"]:checked')])],
-    22: [path('Step by hand; no button moves focus', [
+        step('Enter', '.oa-reader-next', [st('.oa-reader-prev', attr='aria-disabled', **{'is': None})],
+             status='Page 2 of 4: What a mile of road costs', status_el='.oa-reader-status'),
+        step('Enter', '.oa-reader-next', status='Page 3 of 4: Repairs that wait', status_el='.oa-reader-status'),
+        step('Enter', '.oa-reader-next', [st('.oa-reader-next', attr='aria-disabled', **{'is': 'true'}),
+                                          st('[id$="oa-reader-why"]', text='This is the last page.')],
+             status='Page 4 of 4: Who decides the list', status_el='.oa-reader-status'),
+        step('Enter', '.oa-reader-next', status='Page 4 of 4: Who decides the list', status_el='.oa-reader-status'),
+        step('Tab', '.oa-reader-size-input[value="fit"]', [st('.oa-reader-size-input[value="fit"]', prop='checked', **{'is': True})]),
+        step('ArrowRight', '.oa-reader-size-input[value="full"]', [st('.oa-reader-size-input[value="full"]', prop='checked', **{'is': True})])])],
+    22: [path('Step by hand; the line says each step, and no button moves focus', [
         step('Tab', '.oa-stepper-play'),
         step('Tab', '.oa-stepper-reset', [st('.oa-stepper-reset', attr='aria-disabled', **{'is': 'true'})]),
         step('Tab', '.oa-stepper-prev', [st('.oa-stepper-prev', attr='aria-disabled', **{'is': 'true'})]),
         step('Tab', '.oa-stepper-next'),
-        step('Enter', '.oa-stepper-next', [st('[aria-current="step"]', visible=True)], status_has='Step 1 of'),
-        step('Enter', '.oa-stepper-next', status_has='Step 2 of'),
+        step('Enter', '.oa-stepper-next', [st('.oa-stepper-step:nth-child(1)', attr='aria-current', **{'is': 'step'})],
+             status_has='Step 1 of 3: Wealth concentration raises money in politics.', status_el='.oa-stepper-status'),
+        step('Enter', '.oa-stepper-next', [st('.oa-stepper-step:nth-child(2)', attr='aria-current', **{'is': 'step'})],
+             status_has='Step 2 of 3:', status_el='.oa-stepper-status'),
+        step('Enter', '.oa-stepper-next', [st('.oa-stepper-next', attr='aria-disabled', **{'is': 'true'})],
+             status_has='Step 3 of 3:', status_el='.oa-stepper-status'),
         step('Shift+Tab', '.oa-stepper-prev', [st('.oa-stepper-prev', attr='aria-disabled', **{'is': None})]),
-        step('Enter', '.oa-stepper-prev', status_has='Step 1 of')]),
-        path('Play becomes Pause and back, with focus on it', [
-            step('Tab', '.oa-stepper-play'),
-            step('Enter', '.oa-stepper-play', [st('.oa-stepper-play', text_has='Pause')]),
-            step('Enter', '.oa-stepper-play', [st('.oa-stepper-play', text_has='Play')])], setup={'reducedMotion': True})],
-    23: [path('One Tab stop, the arrow keys inside, Enter selects, Escape closes', [
-        step('Tab', '.oa-diagram-item[tabindex="0"]'),
-        step('ArrowRight', '.oa-diagram-item:nth-of-type(2)'),
-        step('End', '.oa-diagram-item:last-of-type'),
-        step('Home', '.oa-diagram-item:nth-of-type(1)'),
-        step('Enter', None, [st('.oa-diagram-item:nth-of-type(1)', attr='aria-pressed', **{'is': 'true'})]),
-        step('Escape', '.oa-diagram-item:nth-of-type(1)')])],
+        step('Enter', '.oa-stepper-prev', status_has='Step 2 of 3:', status_el='.oa-stepper-status'),
+        step('Shift+Tab', '.oa-stepper-reset'),
+        step('Enter', '.oa-stepper-reset', [st('.oa-stepper-reset', attr='aria-disabled', **{'is': 'true'})],
+             status_has='Ready.', status_el='.oa-stepper-status')]),
+        path('Play becomes Pause and back, with focus on it, under reduced motion too', [
+            step('Tab', '.oa-stepper-play', [st('.oa-stepper-word', text='Play')]),
+            step('Enter', '.oa-stepper-play', [st('.oa-stepper-word', text='Pause')], status_has='Step 1 of 3:', status_el='.oa-stepper-status'),
+            step('Enter', '.oa-stepper-play', [st('.oa-stepper-word', text='Play')])], setup={'reducedMotion': True})],
+    23: [path('One Tab stop, the arrow keys inside, Enter opens the panel, Escape returns to the part', [
+        step('Tab', '.oa-diagram-node:nth-child(1) .oa-diagram-item'),
+        step('ArrowRight', '.oa-diagram-node:nth-child(2) .oa-diagram-item', [st('.oa-diagram-readout', text_has='Money in politics')]),
+        step('End', '.oa-diagram-node:nth-child(3) .oa-diagram-item'),
+        step('Home', '.oa-diagram-node:nth-child(1) .oa-diagram-item'),
+        step('Enter', '.oa-diagram-panel-name', [st('.oa-diagram-node:nth-child(1) .oa-diagram-item', attr='aria-pressed', **{'is': 'true'}),
+                                                  st('.oa-diagram-panel', visible=True)]),
+        step('Escape', '.oa-diagram-node:nth-child(1) .oa-diagram-item', [st('.oa-diagram-panel', visible=False)]),
+        step('Tab', '.oa-diagram-summary')]),
+        path('Full size opens a modal view; Escape returns focus to its button', [
+            step('Tab', '.oa-diagram-item[tabindex="0"]'),
+            step('Tab', '.oa-diagram-summary'),
+            step('Tab', '.oa-diagram-open'),
+            step('Enter', '.oa-diagram-shut', [st('.oa-diagram-dialog', prop='open', **{'is': True})]),
+            step('Escape', '.oa-diagram-open', [st('.oa-diagram-dialog', prop='open', **{'is': False})])])],
     24: [path('The linked chip takes Tab and moves focus to its record; the plain chips take none', [
         step('Tab', 'a.oa-chip--link'),
         step('Enter', '[id$="oa-chip-r04"]')]),
         path('Only the linked chip is a stop', [step('Tab', 'a.oa-chip--link'), step('Tab', OUT)])],
 }
-
-HOOKS = {
-    1: '`.oa-button` on every button, with `.oa-button--primary`, `.oa-button--ask` and `.oa-button--quiet`, in that order; '
-       'one unavailable button with `aria-disabled="true"` and `aria-describedby` to its reason line.',
-    2: 'One toggle `.oa-toggle` first, then a row `.oa-chips` of three `.oa-chip` buttons, all off at first, each with '
-       '`aria-pressed`.',
-    3: 'A `fieldset` with a `legend` and two radios, `value="fit"` (checked first) and `value="full"`.',
-    4: 'Three radios, `value="light"`, `value="dark"` and `value="device"`, in that order. In a live stage the switch '
-       'checks the stage\'s own theme at first (Light in the light stage, Dark in the dark one), sets the nearest '
-       '`[data-oa-theme]` ancestor, and stores nothing; only when that ancestor is the root, or there is none, does it set '
-       'the root and store. (Or `data-oa-theme-for` from the engineer\'s round 0 contract, if the build adds it to live '
-       'stages; the keys file checks only the outcome.)',
-    5: 'Three links in order: the first a link to another site with `.oa-link-away`, its hidden words in `.oa-vh` reading '
-       '"(another site)"; then two more links.',
-    6: 'A home link `.oa-masthead-home`, then Menu `.oa-masthead-menu` (`aria-expanded`, `aria-haspopup="dialog"`) showing '
-       'in the live stage at both page widths, opening a native `dialog` whose first stop is Close the menu `.oa-menu-close` '
-       'and whose current part carries `aria-current="page"` and takes focus on open.',
-    7: 'Links with one `aria-current` on the current one.',
-    8: 'At least two `details.oa-disclosure` as siblings, both closed at first.',
-    9: 'One `[role="tablist"]` of three `[role="tab"]`, the first selected; three `[role="tabpanel"]` siblings with `hidden` '
-       'on the unselected.',
-    10: 'Sort buttons inside `th`, the first column sortable; a status line `[role="status"]` whose words start "Sorted by".',
-    11: 'The frame `.oa-scroll`, wider content inside at both page widths (a stage at 1440 px is about 600 px wide), and '
-        'the hint `.oa-scroll-hint`.',
-    12: 'Copy buttons `.oa-copy` in panel order; a status line whose success words start "Copied" and whose refusal words '
-        'start "Error:"; a refusal moves focus to a `textarea`.',
-    13: 'A Copy button `.oa-copy-value`; status words start "Copied"; a refusal moves focus to the selected value in an '
-        '`input` or `textarea`.',
-    14: 'A ready `a[download]` first, then a file not ready as `.oa-download[aria-disabled="true"]` with `aria-describedby`.',
-    15: 'An `input type="search"`, the clear control `.oa-search-clear` hidden until text is in; the status line holds '
-        '" of " in its count ("5 of 12 ...") and starts its advice "No " when nothing matches; the word "loop" matches '
-        'something and "zzzz" nothing.',
-    16: 'Filters `.oa-filters-toggle` (`aria-expanded`), with its count in its own words ("1 on"); chips `.oa-chip` as '
-        'siblings; Clear filters `.oa-filters-clear` placed before Filters in the Tab order or after the chips (my path '
-        'reaches it with Shift+Tab twice from the first chip; I will match your order); a shared status line holding " of ".',
-    17: 'Two fields, `autocomplete="email"` then `autocomplete="postal-code"`, the send button `.oa-form-send`; "name@" '
-        'and "021" fail, "reader@example.org" and "12345" pass; a good send writes the status line.',
-    18: 'No focusable element.',
-    19: 'No focusable element of its own, unless a control in the empty words (then I add its stop).',
-    20: 'No focusable element of its own, unless the demo has a control to show an update (then I add its path).',
-    21: 'Previous `.oa-reader-prev` (unavailable on page 1), Next `.oa-reader-next`; four pages; the status line holds '
-        '"Page N of 4"; the size choice as radios after the buttons; the page view takes no Tab stop at Fit width.',
-    22: 'Play `.oa-stepper-play`, Reset `.oa-stepper-reset`, Previous `.oa-stepper-prev`, Next `.oa-stepper-next`, in '
-        'that order; the live line holds "Step N of 3"; the current step carries `aria-current="step"`; Play\'s words '
-        'read "Pause" while playing.',
-    23: 'Items `.oa-diagram-item` as siblings, toggle buttons with `aria-pressed`, a roving `tabindex`; Escape returns focus '
-        'to the item and keeps it pressed.',
-    24: 'One linked chip `a.oa-id-chip`, and one plain chip with no role.',
-}
-
 
 def keys_doc(r):
     paths = KEYS[r['n']]
@@ -2043,9 +2058,25 @@ def notes_md():
              '| Plate | Rule | What it labels |', '|---|---|---|']
     for r in RULES:
         lines.append(f'| `s-18-{r["n"]:02d}-anatomy` | 18.{r["n"]} {r["name"]} | {r["anatomy"]} |')
-    lines += ['', '### Hooks my keys files use, set by set', '', '| Set | What the keys file expects |', '|---|---|']
+    lines += ['', '### What each keys file relies on, set by set', '',
+              'Every selector and status line the paths name, read from the keys data itself, with the number of paths and '
+              'steps.', '', '| Set | Paths, steps | Selectors | Status lines |', '|---|---|---|---|']
     for r in RULES:
-        lines.append(f'| `{r["set"]}` | {HOOKS[r["n"]]} |')
+        sels, lines_ = [], []
+        n_steps = 0
+        for pth in KEYS[r['n']]:
+            for stp in pth['steps']:
+                n_steps += 1
+                if stp.get('focus') and stp['focus'] != OUT:
+                    sels.append(stp['focus'])
+                for c in stp.get('states', []):
+                    if c.get('el'):
+                        sels.append(c['el'])
+                if stp.get('status_el'):
+                    lines_.append(stp['status_el'])
+        uniq = list(dict.fromkeys(sels))
+        lines.append(f'| `{r["set"]}` | {len(KEYS[r["n"]])}, {n_steps} | ' + ', '.join(f'`{x}`' for x in uniq).replace('|', '\\|')
+                     + ' | ' + (', '.join(f'`{x}`' for x in dict.fromkeys(lines_)) or 'none') + ' |')
     return '\n'.join(lines)
 
 

@@ -6,7 +6,40 @@
  "about": "The keyboard path of this code set, walked in each live stage by the guide check. Each path starts from the component as the page first draws it, with focus on a stand-in control just before the stage. A step presses \"key\" (a KeyboardEvent key; \"Space\" is the space bar) or types \"type\"; then \"focus\" is a selector inside the stage that the focused element must match, or \"outside\"; \"states\" must hold (\"\" is the stage, \":root\" the page root); \"status\" is the exact words of the stage's role=\"status\" line, and \"status_has\" words it must contain. Written by the accessibility lead for chapter 18, Rule 18.6.",
  "paths": [
   {
-   "name": "Open the phone menu, stay inside it, close it with Escape and with Close the menu",
+   "name": "Wide: Tab through the home link and the parts; the current part says so",
+   "widths": [
+    1440
+   ],
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": ".oa-masthead-home"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-masthead-part[aria-current=\"page\"]",
+     "states": [
+      {
+       "el": ".oa-masthead-menu",
+       "visible": false
+      }
+     ]
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-masthead-part:not([aria-current])"
+    },
+    {
+     "key": "Enter",
+     "focus": "[id$=\"oa-masthead-page\"]"
+    }
+   ]
+  },
+  {
+   "name": "Narrow: Menu opens a modal menu at the current part; Tab moves through it; Escape and Close the menu return to Menu",
+   "widths": [
+    390
+   ],
    "steps": [
     {
      "key": "Tab",
@@ -20,12 +53,16 @@
        "el": ".oa-masthead-menu",
        "attr": "aria-expanded",
        "is": "false"
+      },
+      {
+       "el": ".oa-masthead-parts",
+       "visible": false
       }
      ]
     },
     {
      "key": "Enter",
-     "focus": "dialog [aria-current=\"page\"]",
+     "focus": ".oa-masthead-row-link[aria-current=\"page\"]",
      "states": [
       {
        "el": ".oa-masthead-menu",
@@ -33,7 +70,7 @@
        "is": "true"
       },
       {
-       "el": "dialog",
+       "el": ".oa-masthead-dialog",
        "prop": "open",
        "is": true
       }
@@ -49,7 +86,7 @@
        "is": "false"
       },
       {
-       "el": "dialog",
+       "el": ".oa-masthead-dialog",
        "prop": "open",
        "is": false
       }
@@ -57,10 +94,10 @@
     },
     {
      "key": "Space",
-     "focus": "dialog [aria-current=\"page\"]",
+     "focus": ".oa-masthead-row-link[aria-current=\"page\"]",
      "states": [
       {
-       "el": "dialog",
+       "el": ".oa-masthead-dialog",
        "prop": "open",
        "is": true
       }
@@ -68,14 +105,72 @@
     },
     {
      "key": "Shift+Tab",
-     "focus": "dialog .oa-masthead-close"
+     "focus": ".oa-masthead-close"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-masthead-row-link[aria-current=\"page\"]"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-masthead-dialog .oa-masthead-row-link:not([aria-current])"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-masthead-dialog .oa-masthead-row-link:not([aria-current])"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-masthead-dialog .oa-masthead-row-link:not([aria-current])"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-masthead-dialog .oa-masthead-row"
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-masthead-dialog .oa-masthead-row",
+     "states": [
+      {
+       "el": ".oa-masthead-dialog .oa-masthead-row",
+       "attr": "aria-expanded",
+       "is": "true"
+      },
+      {
+       "el": "[id$=\"oa-masthead-topics\"]",
+       "visible": true
+      }
+     ]
+    },
+    {
+     "key": "Tab",
+     "focus": "[id$=\"oa-masthead-topics\"] .oa-masthead-row-link"
+    },
+    {
+     "key": "Escape",
+     "focus": ".oa-masthead-menu",
+     "states": [
+      {
+       "el": ".oa-masthead-dialog",
+       "prop": "open",
+       "is": false
+      }
+     ]
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-masthead-row-link[aria-current=\"page\"]"
+    },
+    {
+     "key": "Shift+Tab",
+     "focus": ".oa-masthead-close"
     },
     {
      "key": "Enter",
      "focus": ".oa-masthead-menu",
      "states": [
       {
-       "el": "dialog",
+       "el": ".oa-masthead-dialog",
        "prop": "open",
        "is": false
       }

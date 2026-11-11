@@ -134,22 +134,6 @@
   "illustrative": false,
   "notes": "Picture of a fault in still frames: bounce easing, which our fifth edition already left out."
  },
- "s-17-6-pending": {
-  "chapter": "17",
-  "rule": "17.6",
-  "width_px": null,
-  "alt": "A placeholder with a dashed edge that says the hinge and the lever, live, are coming later: the hinge over 680 ms and the lever over 560 ms, each ending on its approved master, with Rules 04.5 and 08.1 showing both masters at rest meanwhile.",
-  "illustrative": false,
-  "notes": "Pending marker for the identity designer’s s-17-hinge-correct and s-17-lever-correct (manifest-identity.json). Leaves the manifest on the first run after they land."
- },
- "s-17-6-pending-failure": {
-  "chapter": "17",
-  "rule": "17.6",
-  "width_px": null,
-  "alt": "A placeholder with a dashed edge that says a failure case is coming later: a hinge or lever motion whose last frame misses its master by a pixel, beside the master at the same size.",
-  "illustrative": false,
-  "notes": "Pending marker for the identity designer’s s-17-hinge-failure or s-17-lever-failure."
- },
  "s-17-7-correct": {
   "chapter": "17",
   "rule": "17.7",

@@ -2551,3 +2551,25 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 | # | Decision | Reason |
 |---|---|---|
 | D2-1333 | The promotion of drawings board C is closed. Checked by the main session on chapters 01 to 12 alone (the round 1 chapters set aside): the generator chain changed no file; `guide_build.py --strict` 0 warnings, 132 rules, 307 specimens, 6,869,033 bytes; the token tests pass; `guide_check.js` at 1440, 1024, 390 and 360 px PASS with 0 failures, 1,102 same-page links, and `fitSwitch` showing the fit at 1x and the master at 2x and 3x in all 77 switches | D2-1259; V12's checks; the round 1 chapters were still being written |
+
+### Editor, round 1 (`20261111_Stage-C-Round-1-Editor-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1334 | CL-075's row joins my label table with the addendum's label and other fields as written and its meaning recast with no colon; the counts rise to 125 and an `updated` line says why | DR-185 and D2-1279 make the table the words' home; none of its other 124 sentences uses a colon (W06) |
+| D2-1335 | I tested the CL-075 change by running chapter 10's generator in a scratch copy of the tree and left the run in the project to the main session or the systems designer | The generator writes the systems designer's files; the scratch run shows one specimen and one sentence change |
+| D2-1336 | Chapter 05 carries the guide's first definition of forced colors, in Rule 17.8's own words | H02 asks for the definition at first use, and one wording keeps the term the same in both chapters |
+| D2-1337 | Rules 09.3 and 10.4 print the two CSS lines that switch a fit and its master, unless the engineer puts them in tokens.css | A builder who copies the svg alone shows both drawings |
+| D2-1338 | Rule 11.12's search landmark follows Rule 18.15's `search` element, pending the accessibility lead's call | Chapter 18 is the component's home (the stage C brief's "One component, two homes") |
+| D2-1339 | "Short names" stays the guide's term for the color names a theme or surface class points at a value, as chapter 05 sets it | Chapter 17 used three names for one thing (H02) |
+| D2-1340 | Chapter 17's empty-state count reads the inventory in use | The set grew to 125 and the typed 124 went stale (D2-1278's reason) |
+| D2-1341 | Chapter 17's edits go to its makers as a list to apply in their generators, each row quoting its string; I edited no chapter 17 file | The maker is still writing (round 1 brief, item 6) |
+| D2-1342 | Rule 05.4's Selected sample follows Rule 17.10 at chapter 05's next build | The round 1 brief makes Rule 17.8's plate the canonical one, and Rule 17.10 sets the look |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1343 | tokens.css stays a file of tokens and themes; Rules 09.3 and 10.4's builders lines print the two CSS lines that switch a fit for its master, as the editor wrote them in its notes, 1b and 1c | The token architecture keeps component CSS out of tokens.css; two lines in the rule are easy to copy, and a builder who copies the svg alone would draw both drawings (the editor's 1d, item 1) |
+| D2-1344 | Rule 11.12's search follows Rule 18.15: the `search` element, with chapter 18 as the component's home | The stage C brief's "One component, two homes"; one answer for a builder who reads both chapters (the editor's 1d, item 2) |
+| D2-1345 | The token named for the error mark keeps its name in round 1; chapter 26 describes it as the error bar's color, and a rename waits for the engineer's call under the version rule | No reader text is wrong today; a rename changes a shipped token name (the editor's 1d, item 3) |

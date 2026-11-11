@@ -41,10 +41,9 @@
   color: var(--oa-color-text-primary); font: var(--oa-type-ui); text-align: start; overflow-wrap: anywhere; cursor: pointer }
 .oa-diagram-button:hover { border-width: var(--oa-border-width-rule); padding: calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px) var(--oa-space-150) }
 .oa-diagram-icon, .oa-diagram-chevron { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
-.oa-diagram-words { margin: var(--oa-space-200) 0 var(--oa-space-150); border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
-  border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
+.oa-diagram-words { margin: var(--oa-space-200) 0 var(--oa-space-150); border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
 .oa-diagram-summary { display: flex; align-items: center; justify-content: space-between; gap: var(--oa-space-100); min-height: var(--oa-size-target-touch);
-  font: var(--oa-type-ui); cursor: pointer; list-style: none }
+  border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline); font: var(--oa-type-ui); cursor: pointer; list-style: none }
 .oa-diagram-summary::-webkit-details-marker { display: none }
 .oa-diagram-summary:hover span { text-decoration: underline; text-underline-offset: .2em }
 .oa-diagram-chevron { transition: transform var(--oa-motion-duration-standard) var(--oa-motion-easing-standard) }
@@ -61,5 +60,5 @@
 
 @media (forced-colors: active) {
   .oa-diagram-item, .oa-diagram-button { border-color: ButtonText }
-  .oa-diagram-drawing, .oa-diagram-panel { border-color: CanvasText }
+  .oa-diagram-drawing, .oa-diagram-panel, .oa-diagram-summary, .oa-diagram-words { border-color: CanvasText }
 }

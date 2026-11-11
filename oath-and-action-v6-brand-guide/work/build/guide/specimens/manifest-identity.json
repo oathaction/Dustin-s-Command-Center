@@ -562,5 +562,35 @@
   "illustrative": false,
   "notes": "The record of DR-113, Dustin's named approval of S1 in place of L2 (gate rule 4). Same cap height in each pair. L2 from its display master at every size (it has no small masters); S1 from its 24 px master at 22 px capitals and its display master at 44 and 100 px. Widths: L2 6.38x, S1 5.09x.",
   "fit_switch": true
+ },
+ "s-17-hinge-correct": {
+  "chapter": "17",
+  "rule": "17.6",
+  "alt": "A live player for the hinge, the wordmark’s own motion, on Newsprint and on Charcoal. At the first frame OATH and ACTION stand apart with no ampersand between them. Play slides OATH and ACTION toward each other over 320 ms; the gap holds, then the red ampersand lands in it, from 112 percent of its size to its true size, and comes to rest at 680 ms on the wordmark’s master. The wordmark plays from its 24 pixel master at 24 pixels, and on a wide screen from its display master at 64 pixels tall as well. One button plays and pauses, Reset returns to the first frame, Slow motion plays at one tenth speed, and a status line says each frame in words. The still view draws the first frame, the words in place and the last frame, and lists each step with its time.",
+  "illustrative": false,
+  "notes": "Rule 17.6, the hinge (oa.motion.duration.hinge, 680 ms). The moving layer is each master's own elements, inlined: the letter path split by position into OATH (six subpaths) and ACTION (eight), each subpath's bytes unchanged, and B's path as the file draws it. The end layer is the master placed by reference, so the last frame is the master itself. Timing read from tokens.css at the press: slide 320 ms, standard easing; B lands at hinge minus standard, 480 ms, over 200 ms with the enter easing, from 112 percent (chapter 17's land). The first frame's slides are whole pixels on screen. Written by stage_c_identity_ch17.py.",
+  "interactive": true,
+  "caption": "Live. Press Play and OATH and ACTION settle into place over 320 ms, then the ampersand lands between them and comes to rest at 680 ms, on the wordmark’s master. The last frame is the master itself, at 24 px and, on a wide screen, at 64 px."
+ },
+ "s-17-lever-correct": {
+  "chapter": "17",
+  "rule": "17.6",
+  "alt": "A live player for the lever landing, the lockmark’s own motion, on Newsprint and on Charcoal, at 48 pixels from the 48 pixel master and at 120 pixels from the display master. At the first frame the field is empty, with a dashed square where each lockmark will stand. Play draws the six links from the top left over 200 ms; one stagger later the eight nodes land together from 112 percent of their size; the red lever lands last, at bottom right, and comes to rest at 560 ms on the lockmark’s master. One button plays and pauses, Reset returns to the first frame, Slow motion plays at one tenth speed, and a status line says each frame in words. The still view draws the empty field, the links drawn and the last frame, and lists each step with its time.",
+  "illustrative": false,
+  "notes": "Rule 17.6, the lever landing (oa.motion.duration.lever, 560 ms). The moving layer is each master's own elements, inlined and named by part: three horizontal and three vertical links, eight nodes and the lever. The end layer is the master placed by reference. Timing read from tokens.css at the press: links draw over 200 ms from 0; nodes land at standard plus stagger, 240 ms; the lever lands at lever minus standard, 360 ms; each land 200 ms with the enter easing from 112 percent. Written by stage_c_identity_ch17.py.",
+  "interactive": true,
+  "label": "The lockmark’s motion",
+  "caption": "Live. Press Play and the lockmark’s links draw from the top left, its eight nodes land together, and the lever lands last, coming to rest at 560 ms on the master. The last frame is the master itself: the 48 px master at 48 px, and the display master at 120 px."
+ },
+ "s-17-hinge-failure": {
+  "chapter": "17",
+  "rule": "17.6",
+  "alt": "Failure case: do not publish. The last frames of the hinge and the lever landing, half a pixel below their masters, beside the masters at true size: the wordmark at 24 pixels and the lockmark at 48 pixels. Below, enlarged six times from a 1x screen: the lockmark half a pixel low, whose one pixel links have each spread into two rows of gray and whose nodes have blurred, beside its crisp master; then the first letters of the wordmark, whose top and bottom edges have gone gray, beside the master.",
+  "illustrative": false,
+  "notes": "Failure for Rule 17.6, for the hinge and the lever: a last frame off its master by half a pixel. The true-size marks sit under 0.5 px of padding; the enlargements are Chromium's 1x renders of the same masters, embedded as PNG and drawn with pixelated scaling, since a 2x screen hides the fault. The wordmark's enlargement keeps its first 104 px. check_exempt scale: the enlargements show pixels on purpose. Written by stage_c_identity_ch17.py.",
+  "check_exempt": [
+   "scale"
+  ],
+  "caption": "Last frames that come to rest half a pixel low, because the player centers each mark in a box one pixel taller than the mark. On a 1x screen the lockmark’s links turn into gray bands and the wordmark goes soft, so each last frame is a second version of its mark."
  }
 }

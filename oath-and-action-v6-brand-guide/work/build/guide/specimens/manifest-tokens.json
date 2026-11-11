@@ -1,0 +1,207 @@
+{
+ "s-26-1-correct": {
+  "chapter": "26",
+  "rule": "26.1",
+  "width_px": null,
+  "alt": "One value in its three tiers, as three linked cards. Component: oa.component.button.disabled.label.onNewsprint, the label of an unavailable button on Newsprint, which points to the semantic token oa.color.state.disabled.text.onNewsprint, disabled text on Newsprint, which points to the primitive oa.color.derived.deepStone, Deep Stone, #4E535B. Each card gives the name in tokens.json and in CSS. Under them, an unavailable Download the photo button with a dashed edge, its label measured at 5.49 to 1.",
+  "illustrative": false,
+  "notes": "Names and the alias chain read from tokens.json."
+ },
+ "s-26-1-failure": {
+  "chapter": "26",
+  "rule": "26.1",
+  "width_px": null,
+  "alt": "A line of CSS that colors an unavailable button's label with the primitive Deep Stone, then the same button twice: on Newsprint its label measures 5.49 to 1; in the dark theme, on Charcoal, the primitive stays Deep Stone and the label all but disappears, at 2.42 to 1.",
+  "illustrative": false,
+  "notes": "A labeled failure: the label on Charcoal fails on purpose.",
+  "check_exempt": [
+   "contrast"
+  ]
+ },
+ "s-26-2-correct": {
+  "chapter": "26",
+  "rule": "26.2",
+  "width_px": null,
+  "alt": "The record of Deep Stone, #4E535B, against the five conditions, each marked Met: the need (Stone measures 4.29 to 1 for small secondary text on Newsprint, 49 failures counted), the value (Stone mixed 18 percent toward Charcoal in OKLab), one job (secondary and disabled text on Newsprint and White), its contrast (5.49 to 1 on Newsprint, 7.74 on White) and its description, tier and status.",
+  "illustrative": false,
+  "notes": "From tokens.json: the need register's N-01 (Secondary small text on Newsprint: Stone measures 4.29:1; 49...), the derivation and the stored contrast; ratios recomputed here."
+ },
+ "s-26-2-failure": {
+  "chapter": "26",
+  "rule": "26.2",
+  "width_px": null,
+  "alt": "The record of a proposed second red, #DA3843, shown beside Pillar Red, against the five conditions. It fails three: no measured need, since Pillar Red with its keyline already draws marks; a red of its own that measures 1.09 to 1 from Pillar Red, so the two cannot be told apart; and a job Pillar Red already holds. It meets the contrast condition at 3.22 to 1 on Newsprint.",
+  "illustrative": false,
+  "notes": "The rejected value from tokens.json's held list, which no token holds, so its swatch is a literal. Two reds side by side on purpose.",
+  "check_exempt": [
+   "red",
+   "literal"
+  ]
+ },
+ "s-26-3-correct": {
+  "chapter": "26",
+  "rule": "26.3",
+  "width_px": null,
+  "alt": "The five steps for a caption on a Charcoal panel, in order: surface Charcoal, role text, emphasis secondary, state none, component none. Under them, on Charcoal, the token they reach, --oa-color-text-secondary inside .oa-surface-charcoal, which is Dim Newsprint, and a caption set with it at 7.26 to 1.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-26-3-failure": {
+  "chapter": "26",
+  "rule": "26.3",
+  "width_px": null,
+  "alt": "The five steps with the first one, the surface, skipped and struck through. On a Prussian panel, a caption takes the secondary text token for Newsprint, Deep Stone, and measures 1.72 to 1, far under the 4.5 to 1 text needs.",
+  "illustrative": false,
+  "notes": "A labeled failure: the caption on Prussian fails on purpose.",
+  "check_exempt": [
+   "contrast"
+  ]
+ },
+ "s-26-4-1-correct": {
+  "chapter": "26",
+  "rule": "26.4",
+  "width_px": 360,
+  "alt": "A small bar chart titled Comments on the transit plan, by week, four weeks of illustrative counts, with its caption under it in Deep Stone at 5.49 to 1 on Newsprint.",
+  "illustrative": true,
+  "notes": "Illustrative counts. "
+ },
+ "s-26-4-1-failure": {
+  "chapter": "26",
+  "rule": "26.4",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. The same chart with its caption in Stone, which measures 4.29 to 1 on Newsprint, under the 4.5 to 1 small text needs.",
+  "illustrative": true,
+  "notes": "Illustrative counts. A labeled failure: the caption fails on purpose.",
+  "check_exempt": [
+   "contrast"
+  ]
+ },
+ "s-26-4-2-correct": {
+  "chapter": "26",
+  "rule": "26.4",
+  "width_px": 360,
+  "alt": "On White, an unavailable button, Download the photo, with a dashed edge and its label in Deep Stone at 7.74 to 1, and under it the reason: Choose a size to download.",
+  "illustrative": true,
+  "notes": "Illustrative file name."
+ },
+ "s-26-4-2-failure": {
+  "chapter": "26",
+  "rule": "26.4",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. On White, the same button faded to 40 percent opacity, its fill measuring 2.61 to 1, with no reason line, so a reader cannot tell it is unavailable or what would make it work.",
+  "illustrative": true,
+  "notes": "A labeled failure: faded on purpose.",
+  "check_exempt": [
+   "contrast"
+  ]
+ },
+ "s-26-4-3-correct": {
+  "chapter": "26",
+  "rule": "26.4",
+  "width_px": 360,
+  "alt": "A bar chart headed Week 3 drew the most comments, with illustrative counts. The week 3 bar is Charcoal at 13.29 to 1 on Newsprint and the others are Stone at 4.29 to 1; the two inks differ by 3.10 to 1, and every bar carries its count beside it.",
+  "illustrative": true,
+  "notes": "Illustrative counts."
+ },
+ "s-26-4-3-failure": {
+  "chapter": "26",
+  "rule": "26.4",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. The same chart under an error message with a red bar, and the week 3 bar in Pillar Red with no keyline, 2.96 to 1 on Newsprint, so the view gives red two jobs and the highlight reads as part of the error.",
+  "illustrative": true,
+  "notes": "A labeled failure: two red jobs on purpose.",
+  "check_exempt": [
+   "red",
+   "contrast"
+  ]
+ },
+ "s-26-4-4-correct": {
+  "chapter": "26",
+  "rule": "26.4",
+  "width_px": 360,
+  "alt": "On a Prussian tracker panel, Step 4 of 6: in committee, then a warning with a 4 px Newsprint bar, the warning triangle in Newsprint at 9.42 to 1 and the words in White at 13.28 to 1: Warning: The hearing moved to March 12. Check the new date before you travel.",
+  "illustrative": true,
+  "notes": "Illustrative date."
+ },
+ "s-26-4-4-failure": {
+  "chapter": "26",
+  "rule": "26.4",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. The same panel with the warning set in Pillar Red on Prussian at 3.19 to 1, with no triangle, no bar and no word Warning, so only color says it matters, in a red that never sits on Prussian.",
+  "illustrative": true,
+  "notes": "A labeled failure: red on Prussian on purpose.",
+  "check_exempt": [
+   "red",
+   "contrast"
+  ]
+ },
+ "s-26-5-correct": {
+  "chapter": "26",
+  "rule": "26.5",
+  "width_px": null,
+  "alt": "The lines a page's head needs: the color scheme meta tag, the brand's fonts from Google Fonts, tokens.css, and the body rule margin 0 with the body type. Under them, a page drawn from them: a sentence in Inter at 17 px with no margin around it.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-26-5-failure": {
+  "chapter": "26",
+  "rule": "26.5",
+  "width_px": null,
+  "alt": "The same head with the body rule left out, and the page it draws: the sentence in the browser's own serif at 16 px, inside the browser's 8 px margin, so no component sits where its code says.",
+  "illustrative": false,
+  "notes": "A labeled failure: the browser's default type, off the scale on purpose.",
+  "check_exempt": [
+   "scale"
+  ]
+ },
+ "s-26-6-correct": {
+  "chapter": "26",
+  "rule": "26.6",
+  "width_px": null,
+  "alt": "One card drawn twice from the same short names, once in the light theme on Newsprint and once in the dark theme on Charcoal: the title Water rate hearing, the line Board of Public Utilities, March 12, and an entry box for an email address on its field ground. Every word passes in both: secondary text measures 5.49 to 1 on Newsprint and 7.26 on Charcoal.",
+  "illustrative": true,
+  "notes": "Illustrative hearing."
+ },
+ "s-26-6-failure": {
+  "chapter": "26",
+  "rule": "26.6",
+  "width_px": null,
+  "alt": "A card whose words name the Newsprint text token, drawn in the dark theme: its ground follows the theme to Charcoal while its words stay Charcoal, so the title and line measure 1.00 to 1 and cannot be read.",
+  "illustrative": true,
+  "notes": "A labeled failure: unreadable on purpose.",
+  "check_exempt": [
+   "contrast"
+  ]
+ },
+ "s-26-7-failure": {
+  "chapter": "26",
+  "rule": "26.7",
+  "width_px": null,
+  "alt": "A line of CSS that types the gray #4E535C from an old file where Deep Stone's name belongs, and the two swatches side by side: #4E535C and Deep Stone, #4E535B, one digit apart. A release that changes Deep Stone never reaches the typed value.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-26-8-correct": {
+  "chapter": "26",
+  "rule": "26.8",
+  "width_px": null,
+  "alt": "The change note of version 6.0.0-gate2.7, as tokens.json records it: its date, the tokens it touches, what changed (a light and a dark theme in tokens.css, and a field ground role) and why.",
+  "illustrative": false,
+  "notes": "The newest change note in tokens.json, read at build."
+ },
+ "s-26-8-failure": {
+  "chapter": "26",
+  "rule": "26.8",
+  "width_px": null,
+  "alt": "Two versions of a made-up release: in 6.0.0 the secondary text token, and in 6.1.0 the same token renamed with no alias and no change note. Beside them the same sentence and source caption twice: with 6.0.0 the caption is gray, with 6.1.0 it falls back to the body's ink, since the name it reads no longer exists.",
+  "illustrative": true,
+  "notes": "Illustrative release and caption."
+ },
+ "s-26-token-table": {
+  "chapter": "26",
+  "rule": "26.7",
+  "interactive": true,
+  "fit_switch": false,
+  "alt": "Every token in tokens.json, one row each: its name, CSS name, value, use, tier and contrast."
+ }
+}

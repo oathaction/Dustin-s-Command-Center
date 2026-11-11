@@ -6,7 +6,7 @@
  "about": "The keyboard path of this code set, walked in each live stage by the guide check. Each path starts from the component as the page first draws it, with focus on a stand-in control just before the stage. A step presses \"key\" (a KeyboardEvent key; \"Space\" is the space bar) or types \"type\"; then \"focus\" is a selector inside the stage that the focused element must match, or \"outside\"; \"states\" must hold (\"\" is the stage, \":root\" the page root); \"status\" is the exact words of the stage's role=\"status\" line, and \"status_has\" words it must contain. Written by the accessibility lead for chapter 18, Rule 18.17.",
  "paths": [
   {
-   "name": "Send with mistakes: focus moves to the first field to fix",
+   "name": "Send with mistakes: each wrong field says so, and focus moves to the first",
    "steps": [
     {
      "key": "Tab",
@@ -41,13 +41,17 @@
        "el": "input[autocomplete=\"postal-code\"]",
        "attr": "aria-invalid",
        "is": "true"
+      },
+      {
+       "el": "[id$=\"oa-form-email-error\"]",
+       "visible": true
       }
      ]
     }
    ]
   },
   {
-   "name": "Send right: the status line says so",
+   "name": "Send right: the line says it is sending, then that it worked",
    "steps": [
     {
      "key": "Tab",
@@ -74,7 +78,13 @@
        "is": null
       }
      ],
-     "status_filled": true
+     "status_has": "Sending",
+     "status_el": ".oa-form-status"
+    },
+    {
+     "status_has": "signed up",
+     "status_el": ".oa-form-status",
+     "wait": 1200
     }
    ]
   }

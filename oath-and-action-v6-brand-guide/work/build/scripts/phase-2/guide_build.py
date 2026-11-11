@@ -358,15 +358,27 @@ class Tokens:
         self.css_words = f"{DL_CSS_WORDS}, CSS, {kb_words(len(self.css_text.encode()))}" if self.css_text else DL_CSS_WORDS
         self.zip_words = f"{DL_ZIP_WORDS}, ZIP, {kb_words(len(self.zip_bytes()))}" if self.css_text else DL_ZIP_WORDS
 
-    def zip_bytes(self):
+    def zip_bytes(self, name="tokens.css", data=None):
         buf = io.BytesIO()
         with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
-            info = zipfile.ZipInfo("tokens.css", date_time=(2026, 11, 6, 0, 0, 0))
+            info = zipfile.ZipInfo(name, date_time=(2026, 11, 6, 0, 0, 0))
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o644 << 16
             info.create_system = 3
-            z.writestr(info, self.css_text.encode(), compresslevel=9)
+            z.writestr(info, data if data is not None else self.css_text.encode(), compresslevel=9)
         return buf.getvalue()
+
+    def json_link(self):
+        """Round 1 (DR-214): the page's one copy of tokens.json, a link Rule 26.8 places, with the zip the shell hands a
+        host that refuses a .json name (D2-964), and words that name the file, its type and its size (F-10)."""
+        if not TOKENS_JSON.exists():
+            return ""
+        data = TOKENS_JSON.read_bytes()
+        z = self.zip_bytes("tokens.json", data)
+        words = f"{DL_JSON_WORDS}, JSON, {kb_words(len(data))}"
+        return (f'<a class="btn" id="tokens-json-download" data-oa-file href="data:application/json;charset=utf-8;base64,{base64.b64encode(data).decode()}" '
+                f'download="{JSON_DOWNLOAD_NAME}" data-oa-zip="{base64.b64encode(z).decode()}" data-oa-zip-name="{JSON_ZIP_NAME}" '
+                f'data-oa-file-words="{words}" data-oa-zip-words="{DL_JSON_ZIP_WORDS}, ZIP, {kb_words(len(z))}">{words}</a>')
 
     @property
     def final(self):
@@ -569,7 +581,7 @@ class Specimens:
             R.warn(where, f"specimen {sid} has no manifest entry (manifest-<maker>.json), so it has no alt text or width")
         elif not str(self.manifest[sid].get("alt", "")).strip():
             R.warn(where, f"specimen {sid} has no alt in its manifest")
-        return process_fragment(p.read_text(), sid, where)
+        return process_fragment(p.read_text(), sid, where, literal_ok="literal" in as_list(self.manifest.get(sid, {}).get("check_exempt")))
 
 
 ID_REF_ATTRS = ("aria-labelledby", "aria-describedby", "aria-controls", "aria-owns", "aria-flowto", "aria-details",
@@ -578,7 +590,7 @@ ID_REF_ATTRS = ("aria-labelledby", "aria-describedby", "aria-controls", "aria-ow
                 "data-oa-theme-for")
 
 
-def process_fragment(src, sid, where):
+def process_fragment(src, sid, where, literal_ok=False):
     s = src
     if re.search(r"<body\b", s, re.I):
         R.warn(where, f"{sid}: the file is a whole document; the shell took the inside of its <body>")
@@ -598,7 +610,7 @@ def process_fragment(src, sid, where):
     bare = re.sub(r"data:[^\"')\s]+", "", bare)       # data URIs
     lits = re.findall(r"(?<![\w&])#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b(?![\w-])|\brgba?\(|\bhsla?\(", bare)
     lits = [x for x in lits if not re.fullmatch(r"#\d{1,2}", x)]
-    if lits:
+    if lits and not literal_ok:
         R.warn(where, f"{sid}: {len(lits)} literal color value(s) ({', '.join(sorted(set(lits))[:4])}); use var(--oa-...) from tokens.css")
     s = inline_assets(s, sid, where)
     s = prefix_ids(s, sid)
@@ -710,7 +722,8 @@ PLATE_LABEL = {"correct": ("Correct application", "✓"), "failure": ("Failure c
 # column of a 360 px screen. Chapters 01 to 08 open with words alone.
 OPENER_FROM = "09"
 OPENER_MAX_PX = 328
-EXEMPT_KINDS = ("contrast", "size", "red", "locked", "scale")
+# Round 1: "literal" lets a labeled failure plate draw a color no token holds, such as a rejected or a typed value
+EXEMPT_KINDS = ("contrast", "size", "red", "locked", "scale", "literal")
 SCALE_WORDS = {0.5: "Half size", 0.25: "One quarter size", 0.2: "One fifth size", 0.125: "One eighth size", 0.1: "One tenth size",
                2: "Twice true size"}
 
@@ -764,8 +777,8 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
     unknown = [x for x in as_list(meta.get("check_exempt")) if x not in EXEMPT_KINDS]
     if unknown:
         R.warn(where, f"{spec_id}: check_exempt {unknown} not known; the shell reads {', '.join(EXEMPT_KINDS)}")
-    if kind != "failure" and set(exempt) & {"contrast", "red", "locked"}:
-        R.warn(where, f"{spec_id}: check_exempt {exempt}: contrast, red and locked exemptions are for failure cases only")
+    if kind != "failure" and set(exempt) & {"contrast", "red", "locked", "literal"}:
+        R.warn(where, f"{spec_id}: check_exempt {exempt}: contrast, red, locked and literal exemptions are for failure cases only")
     if "size" in exempt and kind != "failure" and not re.search(r"true size|minimum size|actual size", str(caption or ""), re.I):
         R.warn(where, f"{spec_id}: exempt from the 13 px floor, so its caption must say it shows a mark or a minimum size at true size")
     if "scale" in exempt:
@@ -1244,7 +1257,8 @@ def render_rule(ch_num, r, specs, tokens, ctx, amp_svg, demo=False):
     if not title:
         R.warn(where, "the rule has no title")
     for k in ("rule", "why", "correct", "failure"):
-        if not r.get(k):
+        # round 1: a rule whose worked examples each carry a correct and a failure plate needs none of its own
+        if not r.get(k) and not (k in ("correct", "failure") and r.get("examples")):
             R.warn(where, f"the rule has no {k!r} block")
     why = r.get("why") or {}
     if isinstance(why, str):
@@ -1264,6 +1278,8 @@ def render_rule(ch_num, r, specs, tokens, ctx, amp_svg, demo=False):
         out.append('<div class="why"><p class="label">Why it works</p>' + basis_tag(why.get("basis")) + paras(why.get("text"), ctx) + "</div>")
         if not why.get("basis"):
             R.warn(where, "why.basis is empty: name the source, or write \"Design judgment\"")
+    if r.get("downloads"):
+        out.append(downloads_block(r.get("downloads"), tokens, ctx, where))
     out.append("</div>")
     out.append(hinge(amp_svg))
     for kind in ("correct", "failure", "corrective"):
@@ -1273,6 +1289,23 @@ def render_rule(ch_num, r, specs, tokens, ctx, amp_svg, demo=False):
     # DR-203: the rule's code to copy, live in both themes, then each file with its Copy button
     if r.get("code"):
         out.append(code_plate(rid, r.get("code"), ctx, where))
+    # Round 1 (chapter 26, Rule 26.4): worked examples, each its own correct plate, failure plate and code to copy,
+    # under a line that numbers and names it
+    for i, ex in enumerate(as_list(r.get("examples")), 1):
+        if not isinstance(ex, dict) or not ex.get("title"):
+            R.warn(where, f"example {i} needs a \"title\" and its plates")
+            continue
+        out.append(f'<p class="ex-head" id="{anchor}-ex-{i}"><span class="ex-n">Example {i}</span> <span class="ex-t">{inline(ex["title"])}</span></p>')
+        for kind in ("correct", "failure"):
+            blk = ex.get(kind)
+            if isinstance(blk, str):
+                blk = {"specimen": blk}
+            if not blk:
+                R.warn(where, f"example {i} has no {kind!r} plate")
+                continue
+            out.append(plate(kind, blk.get("specimen"), blk.get("caption"), specs, ctx, where, rule_id=rid))
+        if ex.get("code"):
+            out.append(code_plate(rid, ex.get("code"), ctx, where))
     # C-S5: the specifications run across the whole text column as one table, and Related chapters and For builders
     # share one row under it.
     foot = []
@@ -1301,11 +1334,37 @@ APPENDIX_LINE = "See today’s wordmark in use at actual size, and the new stack
 # The tokens.css button's words on each path (D2-964): the plain file where no host answers, the zip through the host
 DL_CSS_WORDS = "Download tokens.css"
 DL_ZIP_WORDS = "Download tokens.css in a zip file"
+# Round 1 (DR-214): chapter 26 also ships tokens.json, dated as tokens.css is, with its own zip for the host
+DL_JSON_WORDS = "Download tokens.json"
+DL_JSON_ZIP_WORDS = "Download tokens.json in a zip file"
+JSON_DOWNLOAD_NAME = "20261106_Oath-And-Action-Tokens.json"
+JSON_ZIP_NAME = "20261106_Oath-And-Action-Tokens-Json.zip"
 
 
 def kb_words(n):
     """A file's size as the download's words give it (F-10): kilobytes of 1,000 bytes, rounded, at least 1."""
     return f"{max(1, round(n / 1000)):,} KB"
+
+
+def downloads_block(items, tokens, ctx, where):
+    """Round 1 (DR-214): a rule's downloads. "tokens.css" is a button for the colophon's copy, which the shell starts where
+    the reader is; "tokens.json" is the page's one copy of that file, placed here once, and a button for it anywhere else."""
+    btns = []
+    for it in as_list(items):
+        if it == "tokens.css" and tokens.final:
+            btns.append(f'<a class="btn" href="#tokens-download" data-oa-download="tokens-download">{tokens.css_words}</a>')
+        elif it == "tokens.json" and tokens.final:
+            once = ctx.setdefault("once", {})
+            if once.get("json"):
+                btns.append(f'<a class="btn" href="#tokens-json-download" data-oa-download="tokens-json-download">{once["json"]}</a>')
+            else:
+                link = tokens.json_link()
+                if link:
+                    once["json"] = re.search(r'data-oa-file-words="([^"]+)"', link).group(1)
+                    btns.append(link)
+        else:
+            R.warn(where, f"\"downloads\" names {it!r}; the page offers tokens.css and tokens.json (DR-214)")
+    return f'<div class="downloads"><p class="label">Downloads</p><p class="btn-row">{"".join(btns)}</p></div>' if btns else ""
 
 
 def status_line(sid, initial="", cls="status"):
@@ -1925,7 +1984,9 @@ WEIGHT_PAGE = 15.5 * MB        # the page's budget: half a megabyte under the li
 # still to come at the default) runs past it. Measured on November 10: chapters 01 to 12 weigh 6.16 MB, so those, these
 # four at their ceilings and the rest at the default come to about 14.6 MB with the shell, sprites and appendix.
 WEIGHT_BUDGET = {"01": 2.7, "02": 0.85, "03": 0.65, "04": 0.45, "05": 0.45, "06": 0.35, "07": 0.3, "08": 0.3,
-                 "09": 0.4, "10": 1.0, "11": 0.55, "12": 0.5, "17": 0.5, "18": 1.1, "19": 0.3, "26": 0.6}
+                 "09": 0.4, "10": 1.0, "11": 0.55, "12": 0.5, "17": 0.5, "18": 1.1, "19": 0.3, "26": 1.0}
+# Round 1: chapter 26 carries tokens.json once as its download (0.37 MB as a data URI) beside the token table (0.31 MB),
+# so its budget rises from 0.6 to 1.0 MB.
 WEIGHT_DEFAULT = 0.45          # chapters 13 to 16, 20 to 25, 27 and 28
 WEIGHT_FIXED = {"head and shell": 0.2, "sprites": 0.35, "appendix": 0.2, "front matter and part openers": 0.1}
 
@@ -2434,7 +2495,7 @@ def build(args):
         for r in d.get("rules") or []:
             rule_anchors.add("rule-" + str(r.get("id", "")).replace(".", "-"))
     has_proofs_ids = any(s.startswith("s-proofs-") for s in list(specs.manifest) + list(specs.files)) or (chap_dir / "proofs.json").exists()
-    ctx = {"codes": codes, "present": present, "rule_anchors": rule_anchors, "lines": lines, "names": names, "has_proofs": has_proofs_ids,
+    ctx = {"once": {}, "codes": codes, "present": present, "rule_anchors": rule_anchors, "lines": lines, "names": names, "has_proofs": has_proofs_ids,
            "appendix_title": APPENDIX_TITLE, "appendix_line": None, "order": order}
     pconf = None
     try:
@@ -2529,7 +2590,7 @@ def build(args):
     pillars = LOCKED["pillars"][0] + "".join(f' <span class="nw">{arr} {p}</span>' for p in LOCKED["pillars"][1:])
     # The colophon's link is the page's one copy of tokens.css. data-oa-zip holds the zip the shell offers through the
     # host where one answers (DR-192, D2-964), and the two data-oa-*-words say what the button gives on each path.
-    dl_tokens = (f' <a id="tokens-download" href="{tokens.download_uri}" download="{tokens.download_name}" data-oa-zip="{tokens.zip_b64}" '
+    dl_tokens = (f' <a id="tokens-download" data-oa-file data-oa-file-words="{tokens.css_words}" href="{tokens.download_uri}" download="{tokens.download_name}" data-oa-zip="{tokens.zip_b64}" '
                  f'data-oa-zip-name="{tokens.zip_name}" data-oa-css-words="{tokens.css_words}" data-oa-zip-words="{tokens.zip_words}">{tokens.css_words}</a>.' if tokens.final else "")
 
     # D2-1133 (stage C): the guide stays light whatever the device asks. tokens.css follows the device's dark setting

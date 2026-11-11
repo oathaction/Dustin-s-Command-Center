@@ -6,37 +6,97 @@
  "about": "The keyboard path of this code set, walked in each live stage by the guide check. Each path starts from the component as the page first draws it, with focus on a stand-in control just before the stage. A step presses \"key\" (a KeyboardEvent key; \"Space\" is the space bar) or types \"type\"; then \"focus\" is a selector inside the stage that the focused element must match, or \"outside\"; \"states\" must hold (\"\" is the stage, \":root\" the page root); \"status\" is the exact words of the stage's role=\"status\" line, and \"status_has\" words it must contain. Written by the accessibility lead for chapter 18, Rule 18.23.",
  "paths": [
   {
-   "name": "One Tab stop, the arrow keys inside, Enter selects, Escape closes",
+   "name": "One Tab stop, the arrow keys inside, Enter opens the panel, Escape returns to the part",
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": ".oa-diagram-node:nth-child(1) .oa-diagram-item"
+    },
+    {
+     "key": "ArrowRight",
+     "focus": ".oa-diagram-node:nth-child(2) .oa-diagram-item",
+     "states": [
+      {
+       "el": ".oa-diagram-readout",
+       "text_has": "Money in politics"
+      }
+     ]
+    },
+    {
+     "key": "End",
+     "focus": ".oa-diagram-node:nth-child(3) .oa-diagram-item"
+    },
+    {
+     "key": "Home",
+     "focus": ".oa-diagram-node:nth-child(1) .oa-diagram-item"
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-diagram-panel-name",
+     "states": [
+      {
+       "el": ".oa-diagram-node:nth-child(1) .oa-diagram-item",
+       "attr": "aria-pressed",
+       "is": "true"
+      },
+      {
+       "el": ".oa-diagram-panel",
+       "visible": true
+      }
+     ]
+    },
+    {
+     "key": "Escape",
+     "focus": ".oa-diagram-node:nth-child(1) .oa-diagram-item",
+     "states": [
+      {
+       "el": ".oa-diagram-panel",
+       "visible": false
+      }
+     ]
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-diagram-summary"
+    }
+   ]
+  },
+  {
+   "name": "Full size opens a modal view; Escape returns focus to its button",
    "steps": [
     {
      "key": "Tab",
      "focus": ".oa-diagram-item[tabindex=\"0\"]"
     },
     {
-     "key": "ArrowRight",
-     "focus": ".oa-diagram-item:nth-of-type(2)"
+     "key": "Tab",
+     "focus": ".oa-diagram-summary"
     },
     {
-     "key": "End",
-     "focus": ".oa-diagram-item:last-of-type"
-    },
-    {
-     "key": "Home",
-     "focus": ".oa-diagram-item:nth-of-type(1)"
+     "key": "Tab",
+     "focus": ".oa-diagram-open"
     },
     {
      "key": "Enter",
+     "focus": ".oa-diagram-shut",
      "states": [
       {
-       "el": ".oa-diagram-item:nth-of-type(1)",
-       "attr": "aria-pressed",
-       "is": "true"
+       "el": ".oa-diagram-dialog",
+       "prop": "open",
+       "is": true
       }
      ]
     },
     {
      "key": "Escape",
-     "focus": ".oa-diagram-item:nth-of-type(1)"
+     "focus": ".oa-diagram-open",
+     "states": [
+      {
+       "el": ".oa-diagram-dialog",
+       "prop": "open",
+       "is": false
+      }
+     ]
     }
    ]
   }

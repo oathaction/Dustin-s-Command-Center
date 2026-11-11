@@ -6,14 +6,22 @@
  "about": "The keyboard path of this code set, walked in each live stage by the guide check. Each path starts from the component as the page first draws it, with focus on a stand-in control just before the stage. A step presses \"key\" (a KeyboardEvent key; \"Space\" is the space bar) or types \"type\"; then \"focus\" is a selector inside the stage that the focused element must match, or \"outside\"; \"states\" must hold (\"\" is the stage, \":root\" the page root); \"status\" is the exact words of the stage's role=\"status\" line, and \"status_has\" words it must contain. Written by the accessibility lead for chapter 18, Rule 18.15.",
  "paths": [
   {
-   "name": "Type, hear the count, then clear with Escape",
+   "name": "Type, hear the count, then clear with Escape; focus stays in the field",
    "steps": [
     {
      "key": "Tab",
-     "focus": "input[type=\"search\"]"
+     "focus": "input[type=\"search\"]",
+     "states": [
+      {
+       "el": ".oa-search-clear",
+       "visible": false
+      }
+     ],
+     "status": "12 of 12 reforms",
+     "status_el": ".oa-search-status"
     },
     {
-     "type": "loop",
+     "type": "voting",
      "focus": "input[type=\"search\"]",
      "states": [
       {
@@ -21,7 +29,8 @@
        "visible": true
       }
      ],
-     "status_has": " of "
+     "status": "1 of 12 reforms",
+     "status_el": ".oa-search-status"
     },
     {
      "key": "Escape",
@@ -36,12 +45,14 @@
        "el": ".oa-search-clear",
        "visible": false
       }
-     ]
+     ],
+     "status": "12 of 12 reforms",
+     "status_el": ".oa-search-status"
     }
    ]
   },
   {
-   "name": "Clear the search returns focus to the field",
+   "name": "No match: the count and the advice in one line; Clear the search returns focus to the field",
    "steps": [
     {
      "key": "Tab",
@@ -50,7 +61,8 @@
     {
      "type": "zzzz",
      "focus": "input[type=\"search\"]",
-     "status_has": "No "
+     "status": "0 of 12 reforms. No reform matches. Clear the search to see all 12.",
+     "status_el": ".oa-search-status"
     },
     {
      "key": "Tab",
@@ -65,7 +77,9 @@
        "prop": "value",
        "is": ""
       }
-     ]
+     ],
+     "status": "12 of 12 reforms",
+     "status_el": ".oa-search-status"
     }
    ]
   }

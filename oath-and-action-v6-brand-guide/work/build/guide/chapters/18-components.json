@@ -301,7 +301,7 @@
       "title": "Let the reader choose Light, Dark or Match my device, and remember the choice.",
       "rule": [
         "Every screen product follows the reader’s device at first and offers a theme switch in the same place on every page, in the masthead or at the top of the phone menu. The switch is a choice (Rule 18.3) of three radio buttons under the legend “Theme”: Light, Dark and Match my device, with Match my device checked until the reader picks another. Each choice is a word, since a sun or a moon does not say which theme is on.",
-        "A choice changes the colors at once, with no motion, and focus stays on it. Light and Dark set data-oa-theme on the page’s root and store the choice under the key oa-theme; Match my device removes the key, and the page follows the device again. The script reads and writes the key inside try and catch, so a browser that refuses storage still switches for the visit. A short script in the head applies a stored choice before the first paint (Rule 26.6)."
+        "A choice changes the colors at once, with no motion, and focus stays on it. Light and Dark set <code>data-oa-theme</code> on the page’s root and store the choice under the key <code>oa-theme</code>; Match my device removes the key, and the page follows the device again. The script reads and writes the key inside try and catch, so a browser that refuses storage still switches for the visit. A short script in the head applies a stored choice before the first paint (Rule 26.6)."
       ],
       "tokens": [
         "--oa-color-surface",
@@ -360,11 +360,11 @@
         },
         {
           "label": "Light and dark",
-          "value": "Light is Newsprint and Dark is Charcoal. The switch sets data-oa-theme to light, dark or device, and the theme reaches every role a component reads (Rule 26.6)."
+          "value": "Light is Newsprint and Dark is Charcoal. The switch sets <code>data-oa-theme</code> to light, dark or device, and the theme reaches every role a component reads (Rule 26.6)."
         },
         {
           "label": "Stored choice",
-          "value": "The key oa-theme holds light or dark; Match my device removes it. A private window keeps it until the window closes, and Safari with tracking prevention on deletes it once the site goes seven days of browsing without a press or a tap."
+          "value": "The key <code>oa-theme</code> holds light or dark; Match my device removes it. A private window keeps it until the window closes, and Safari with tracking prevention on deletes it once the site goes seven days of browsing without a press or a tap."
         },
         {
           "label": "Browser support",
@@ -466,7 +466,7 @@
       "title": "Give every page one masthead, with its parts in a named navigation and a phone menu that holds focus.",
       "rule": [
         "The masthead holds the product’s name, which links home, and its parts in a navigation landmark named for what it holds, such as “Parts”. The link to the part the reader is in carries <code>aria-current=\"page\"</code> and a 2 px underline. When the parts no longer fit on one line, they move behind a Menu button, its three bars beside the word Menu, which opens them in a native modal dialog.",
-        "The open menu covers the page and holds focus. Focus moves to the current part’s link, Tab stays inside, and Escape or “Close the menu” shuts it and returns focus to Menu. The rows inside open and close as disclosures (Rule 18.8). A masthead that sticks to the top of the page sets scroll-padding-top to its own height, so no focused element hides under it."
+        "The open menu covers the page and holds focus. Focus moves to the current part’s link, the Tab key reaches nothing on the page behind it, and Escape or “Close the menu” shuts it and returns focus to Menu. The rows inside open and close as disclosures (Rule 18.8). A masthead that sticks to the top of the page sets scroll-padding-top to its own height, so no focused element hides under it."
       ],
       "tokens": [
         "--oa-color-surface",
@@ -506,7 +506,7 @@
         },
         {
           "label": "Keyboard",
-          "value": "Tab through the home link and the parts. On a phone, Enter or Space on Menu opens the menu with focus on the current part’s link; Tab and Shift+Tab stay inside; Escape or Close the menu shuts it, and focus returns to Menu."
+          "value": "Tab through the home link and the parts. On a phone, Enter or Space on Menu opens the menu with focus on the current part’s link; Tab and Shift+Tab move through the menu and never reach the page behind it; Escape or Close the menu shuts it, and focus returns to Menu."
         },
         {
           "label": "Accessible name",
@@ -1593,7 +1593,7 @@
       "id": "18.20",
       "title": "Update a live tracker in place, and say each change once in a status line.",
       "rule": [
-        "A tracker built from chapter 11’s marks is a list of steps, each with its name and one state word: Done, Now, Not yet, Never happened or Stopped (Rule 11.2). When a bill moves, the tracker redraws only the steps that changed and writes one sentence to its status line that names the bill and its new step.",
+        "A tracker built from chapter 11’s marks is a list of steps, each with its name and one state word: Done, Now, Not yet, Never happened or Stopped (Rule 11.2). When a bill moves, the tracker redraws only the steps that changed and writes one sentence to its status line that names the new step, and the bill too where the page follows more than one.",
         "The tracker takes no focus and moves nothing on the page when it updates. While its data loads it says so in words (Rule 18.19), and when nothing matches it says what to do. When the data fails it gives the error with its mark and how to try again, and a record that has gone unchecked carries the warning of Rule 11.10."
       ],
       "tokens": [

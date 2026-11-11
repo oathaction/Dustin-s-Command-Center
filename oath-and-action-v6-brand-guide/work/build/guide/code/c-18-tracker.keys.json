@@ -6,11 +6,50 @@
  "about": "The keyboard path of this code set, walked in each live stage by the guide check. Each path starts from the component as the page first draws it, with focus on a stand-in control just before the stage. A step presses \"key\" (a KeyboardEvent key; \"Space\" is the space bar) or types \"type\"; then \"focus\" is a selector inside the stage that the focused element must match, or \"outside\"; \"states\" must hold (\"\" is the stage, \":root\" the page root); \"status\" is the exact words of the stage's role=\"status\" line, and \"status_has\" words it must contain. Written by the accessibility lead for chapter 18, Rule 18.20.",
  "paths": [
   {
-   "name": "The tracker takes no focus when it updates",
+   "name": "Show the next update: the line says it once, and focus stays on the button",
    "steps": [
     {
      "key": "Tab",
-     "focus": "outside"
+     "focus": ".oa-tracker-link"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-tracker-next"
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-tracker-next",
+     "status_has": "Step 3 of 6: Committee vote.",
+     "status_el": ".oa-tracker-status"
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-tracker-next",
+     "states": [
+      {
+       "el": ".oa-tracker-alert",
+       "text_has": "Error:"
+      }
+     ]
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-tracker-next",
+     "status_has": "Stopped at step 3 of 6",
+     "status_el": ".oa-tracker-status"
+    }
+   ]
+  },
+  {
+   "name": "The link to take part moves focus to how to send testimony",
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": ".oa-tracker-link"
+    },
+    {
+     "key": "Enter",
+     "focus": "[id$=\"oa-tracker-how\"]"
     }
    ]
   }

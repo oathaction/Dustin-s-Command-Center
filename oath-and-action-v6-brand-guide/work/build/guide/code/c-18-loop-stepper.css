@@ -9,7 +9,7 @@
 .oa-stepper-status { margin: 0 0 var(--oa-space-150); font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }
 .oa-stepper-steps { margin: 0 0 var(--oa-space-200); padding: 0; list-style: none; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
 .oa-stepper-step { padding: var(--oa-space-100) var(--oa-space-150); border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
-  border-left: var(--oa-border-width-bar) solid transparent; font: var(--oa-type-body-small) }
+  border-left: var(--oa-border-width-bar) solid transparent; font: var(--oa-type-body-small); overflow-wrap: anywhere }
 .oa-stepper-line { font-weight: var(--oa-font-weight-semibold) }
 .oa-stepper-step[aria-current="step"] { background: var(--oa-color-state-selected-band); border-left-color: var(--oa-color-state-selected-bar) }
 .oa-stepper-step[aria-current="step"] .oa-stepper-line { font-weight: var(--oa-font-weight-bold) }

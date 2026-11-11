@@ -47,7 +47,8 @@
 .oa-reader-size-input:checked + .oa-reader-size-face { padding: calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px) var(--oa-space-150);
   border-width: var(--oa-border-width-rule); font-weight: var(--oa-font-weight-bold) }
 .oa-reader-size-input:checked + .oa-reader-size-face .oa-reader-check { display: block }
-/* A page's own states, in the view */
+/* A page's own states. Loading shows in the view; an error sits under it, on the surface, since red never sits on the
+   field ground's Prussian in the dark theme */
 .oa-reader-k { margin: var(--oa-space-400) 0 var(--oa-space-100); font: var(--oa-type-label);
   letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
 .oa-reader-view--state { padding: var(--oa-space-200) }

@@ -16,6 +16,10 @@
        "el": ".oa-filters-toggle",
        "attr": "aria-expanded",
        "is": "false"
+      },
+      {
+       "el": ".oa-filters-clear",
+       "visible": false
       }
      ]
     },
@@ -27,42 +31,41 @@
        "el": ".oa-filters-toggle",
        "attr": "aria-expanded",
        "is": "true"
+      },
+      {
+       "el": "[id$=\"oa-filters-sheet\"]",
+       "visible": true
       }
      ]
     },
     {
      "key": "Tab",
-     "focus": ".oa-filters-chip:nth-child(1)"
+     "focus": ".oa-filters-chip[data-oa-filter=\"elections\"]"
     },
     {
      "key": "Space",
-     "focus": ".oa-filters-chip:nth-child(1)",
+     "focus": ".oa-filters-chip[data-oa-filter=\"elections\"]",
      "states": [
       {
-       "el": ".oa-filters-chip:nth-child(1)",
+       "el": ".oa-filters-chip[data-oa-filter=\"elections\"]",
        "attr": "aria-pressed",
        "is": "true"
       },
       {
        "el": ".oa-filters-toggle",
-       "text_has": "1 on"
-      }
-     ],
-     "status_has": " of "
-    },
-    {
-     "key": "Shift+Tab",
-     "focus": ".oa-filters-toggle"
-    },
-    {
-     "key": "Shift+Tab",
-     "focus": ".oa-filters-clear",
-     "states": [
+       "text": "Filters, 1 on"
+      },
       {
        "el": ".oa-filters-clear",
        "visible": true
       }
-     ]
+     ],
+     "status": "6 of 12 reforms",
+     "status_el": ".oa-filters-status"
+    },
+    {
+     "key": "Shift+Tab",
+     "focus": ".oa-filters-clear"
     },
     {
      "key": "Enter",
@@ -73,11 +76,17 @@
        "visible": false
       },
       {
-       "el": ".oa-filters-chip:nth-child(1)",
+       "el": ".oa-filters-toggle",
+       "text": "Filters, 0 on"
+      },
+      {
+       "el": ".oa-filters-chip[data-oa-filter=\"elections\"]",
        "attr": "aria-pressed",
        "is": "false"
       }
-     ]
+     ],
+     "status": "12 of 12 reforms",
+     "status_el": ".oa-filters-status"
     }
    ]
   }

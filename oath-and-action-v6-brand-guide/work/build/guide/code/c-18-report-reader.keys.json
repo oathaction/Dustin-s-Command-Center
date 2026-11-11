@@ -6,7 +6,7 @@
  "about": "The keyboard path of this code set, walked in each live stage by the guide check. Each path starts from the component as the page first draws it, with focus on a stand-in control just before the stage. A step presses \"key\" (a KeyboardEvent key; \"Space\" is the space bar) or types \"type\"; then \"focus\" is a selector inside the stage that the focused element must match, or \"outside\"; \"states\" must hold (\"\" is the stage, \":root\" the page root); \"status\" is the exact words of the stage's role=\"status\" line, and \"status_has\" words it must contain. Written by the accessibility lead for chapter 18, Rule 18.21.",
  "paths": [
   {
-   "name": "Turn to the last page; Next page keeps focus and says why",
+   "name": "Turn to the last page; each button keeps focus, and the line names each page",
    "steps": [
     {
      "key": "Tab",
@@ -18,6 +18,12 @@
        "is": "true"
       }
      ]
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-reader-prev",
+     "status": "Page 1 of 4: Where the money comes from",
+     "status_el": ".oa-reader-status"
     },
     {
      "key": "Tab",
@@ -33,12 +39,14 @@
        "is": null
       }
      ],
-     "status_has": "Page 2 of"
+     "status": "Page 2 of 4: What a mile of road costs",
+     "status_el": ".oa-reader-status"
     },
     {
      "key": "Enter",
      "focus": ".oa-reader-next",
-     "status_has": "Page 3 of"
+     "status": "Page 3 of 4: Repairs that wait",
+     "status_el": ".oa-reader-status"
     },
     {
      "key": "Enter",
@@ -48,18 +56,42 @@
        "el": ".oa-reader-next",
        "attr": "aria-disabled",
        "is": "true"
+      },
+      {
+       "el": "[id$=\"oa-reader-why\"]",
+       "text": "This is the last page."
       }
      ],
-     "status_has": "Page 4 of"
+     "status": "Page 4 of 4: Who decides the list",
+     "status_el": ".oa-reader-status"
     },
     {
      "key": "Enter",
      "focus": ".oa-reader-next",
-     "status_has": "Page 4 of"
+     "status": "Page 4 of 4: Who decides the list",
+     "status_el": ".oa-reader-status"
     },
     {
      "key": "Tab",
-     "focus": "input[type=\"radio\"]:checked"
+     "focus": ".oa-reader-size-input[value=\"fit\"]",
+     "states": [
+      {
+       "el": ".oa-reader-size-input[value=\"fit\"]",
+       "prop": "checked",
+       "is": true
+      }
+     ]
+    },
+    {
+     "key": "ArrowRight",
+     "focus": ".oa-reader-size-input[value=\"full\"]",
+     "states": [
+      {
+       "el": ".oa-reader-size-input[value=\"full\"]",
+       "prop": "checked",
+       "is": true
+      }
+     ]
     }
    ]
   }

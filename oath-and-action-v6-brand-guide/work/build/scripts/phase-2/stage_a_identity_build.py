@@ -24,9 +24,10 @@ import stage_a_identity_proofs as SP  # noqa: E402
 import stage_a_identity_chapters as CH  # noqa: E402
 import stage_b_identity_ch09 as S09  # noqa: E402  (stage B round 2: chapter 09, Pillar icons)
 import stage_b_identity_ch12 as S12  # noqa: E402  (stage B round 2: chapter 12's Rules 12.1 to 12.4, in a shared file)
+import stage_c_identity_ch17 as S17  # noqa: E402  (stage C round 1: Rule 17.6's hinge and lever, read by chapter 17's maker)
 
 
-MINE = ("s-03-", "s-04-", "s-08-", "s-09-", "s-proofs-") + S12.PREFIXES      # specimen ids this maker owns; in chapter 12
+MINE = ("s-03-", "s-04-", "s-08-", "s-09-", "s-proofs-", "s-17-hinge-", "s-17-lever-") + S12.PREFIXES      # specimen ids this maker owns; in chapter 12
 # only its own devices, since the systems designer writes s-12-marker-*, s-12-key-* and the rest (D2-829)
 RETIRED_CHAPTER_FILES = ("08-signal-grid.json",)     # this maker's chapter files that no longer exist under that name
 
@@ -41,7 +42,7 @@ def build(preview_dir=None, pdf=False):
     L.CHAP_DIR.mkdir(parents=True, exist_ok=True)
     SP.write_letterhead(pdf=pdf)          # first, so the letterhead specimen can carry the PDF
     records = []
-    for mod in (S03, S04, S08, S09, S12, SP):
+    for mod in (S03, S04, S08, S09, S12, SP, S17):     # S17 last: its inlined masters advance the id counter
         for fn in mod.S:
             records.append(fn())
     ids = [r["id"] for r in records]

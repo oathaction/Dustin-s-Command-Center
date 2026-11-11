@@ -332,49 +332,55 @@
     rt = setTimeout(function () { sizeFrames(); $$('.plate--fit[data-fit="fit"]').forEach(applyFit); offerFit(); frames(); railCover(); }, 120);
   });
 
-  // The tokens.css download (round 2, November 10, 2026; DR-192 and D2-964 in round 3). The page carries the file once,
-  // as the colophon's link, and each chapter's "Download tokens.css" starts that download where the reader is.
-  // Published, the page sits in a host that saves a file only through its own call, which refuses a .css name. Where
-  // window.claude reaches the host's downloads capability, every one of these buttons offers the zip the build packed
-  // beside the link, holding tokens.css, and says so. The host asks the reader before it saves. Declined: nothing more.
-  // Any other refusal: the buttons go back to the plain link, which then starts. With no host, the plain link works.
-  var dlLink = document.getElementById('tokens-download');
+  // The token downloads (round 2, November 10, 2026; DR-192 and D2-964 in round 3; tokens.json in stage C round 1,
+  // DR-214). The page carries each file once, as a link marked data-oa-file: tokens.css in the colophon, tokens.json in
+  // Rule 26.8. Every button marked data-oa-download="<that link's id>" starts that file's download where the reader is.
+  // Published, the page sits in a host that saves a file only through its own call, which refuses a .css or .json name.
+  // Where window.claude reaches the host's downloads capability, every button offers the zip the build packed beside
+  // its link, holding the one file, and says so. The host asks the reader before it saves. Declined: nothing more. Any
+  // other refusal: the buttons go back to the plain links, and the one clicked starts. With no host, the links work.
+  var dlFiles = $$('a[data-oa-file][id]');
   var dlHost = null;   // the host's downloads namespace, once it resolves
+  function dlPlain(l) { return l.getAttribute('data-oa-file-words') || l.getAttribute('data-oa-css-words') || l.textContent; }
   function dlWords(zip) {
-    var w = zip ? (dlLink.getAttribute('data-oa-zip-words') || 'Download tokens.css in a zip file') : (dlLink.getAttribute('data-oa-css-words') || 'Download tokens.css');
-    $$('a[data-oa-download="tokens-download"]').concat([dlLink]).forEach(function (a) { a.textContent = w; });
+    dlFiles.forEach(function (l) {
+      var w = zip && l.getAttribute('data-oa-zip') ? (l.getAttribute('data-oa-zip-words') || dlPlain(l)) : dlPlain(l);
+      $$('a[data-oa-download="' + l.id + '"]').concat([l]).forEach(function (a) { a.textContent = w; });
+    });
   }
-  if (dlLink && dlLink.getAttribute('data-oa-zip') && window.claude && typeof window.claude.use === 'function') {
+  if (dlFiles.some(function (l) { return l.getAttribute('data-oa-zip'); }) && window.claude && typeof window.claude.use === 'function') {
     try {
       Promise.resolve(window.claude.use('downloads')).then(function (ns) {
         if (ns && typeof ns.save === 'function') { dlHost = ns; dlWords(true); }
-      }, function () { /* no host save: the plain link stays */ });
-    } catch (err) { /* no host save: the plain link stays */ }
+      }, function () { /* no host save: the plain links stay */ });
+    } catch (err) { /* no host save: the plain links stay */ }
   }
-  function zipBytes() {
-    var s = atob(dlLink.getAttribute('data-oa-zip')), u = new Uint8Array(s.length);
+  function zipBytes(l) {
+    var s = atob(l.getAttribute('data-oa-zip')), u = new Uint8Array(s.length);
     for (var i = 0; i < s.length; i++) u[i] = s.charCodeAt(i);
     return u;
   }
-  function hostSave() {
+  function hostSave(l) {
     var req;
-    try { req = dlHost.save({ filename: dlLink.getAttribute('data-oa-zip-name'), data: zipBytes() }); } catch (err) { req = Promise.reject(err); }
+    try { req = dlHost.save({ filename: l.getAttribute('data-oa-zip-name'), data: zipBytes(l) }); } catch (err) { req = Promise.reject(err); }
     Promise.resolve(req).then(function () { /* the host saved it */ }, function (err) {
       var code = err && err.code;
       // declined: the reader said no. rate_limited: a prompt is already open, so the reader is already deciding.
       if (code === 'declined' || code === 'rate_limited') return;
       dlHost = null;
       dlWords(false);
-      dlLink.click();
+      l.click();
     });
   }
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[data-oa-download], #tokens-download');
-    if (!a || !dlLink) return;
-    if (dlHost) { e.preventDefault(); hostSave(); return; }
-    if (a === dlLink) return;   // the colophon's link downloads by itself
+    var a = e.target.closest && e.target.closest('a[data-oa-download], a[data-oa-file]');
+    if (!a) return;
+    var l = a.hasAttribute('data-oa-file') ? a : document.getElementById(a.getAttribute('data-oa-download'));
+    if (!l || !l.hasAttribute('data-oa-file')) return;
+    if (dlHost && l.getAttribute('data-oa-zip')) { e.preventDefault(); hostSave(l); return; }
+    if (a === l) return;   // a file's own link downloads by itself
     e.preventDefault();
-    dlLink.click();
+    l.click();
   });
 
   // Copy buttons write their result to the status line beside them (a polite live region).

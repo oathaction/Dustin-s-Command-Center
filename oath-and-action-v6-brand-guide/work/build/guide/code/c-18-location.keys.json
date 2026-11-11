@@ -6,22 +6,43 @@
  "about": "The keyboard path of this code set, walked in each live stage by the guide check. Each path starts from the component as the page first draws it, with focus on a stand-in control just before the stage. A step presses \"key\" (a KeyboardEvent key; \"Space\" is the space bar) or types \"type\"; then \"focus\" is a selector inside the stage that the focused element must match, or \"outside\"; \"states\" must hold (\"\" is the stage, \":root\" the page root); \"status\" is the exact words of the stage's role=\"status\" line, and \"status_has\" words it must contain. Written by the accessibility lead for chapter 18, Rule 18.7.",
  "paths": [
   {
-   "name": "Tab through the places; the current one says so",
+   "name": "Tab through the breadcrumb, the list and the links before and after; each current place says so",
    "steps": [
     {
      "key": "Tab",
-     "focus": "a",
-     "states": [
-      {
-       "el": "[aria-current]",
-       "attr": "aria-current",
-       "present": true
-      }
-     ]
+     "focus": ".oa-location-link:not([aria-current])"
     },
     {
      "key": "Tab",
-     "focus": "a"
+     "focus": ".oa-location-link:not([aria-current])"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-location-link[aria-current=\"page\"]"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-location-item:not([aria-current])"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-location-item[aria-current=\"page\"]"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-location-item:not([aria-current])"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-location-step:not(.oa-location-step--next)"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-location-step--next"
+    },
+    {
+     "key": "Enter",
+     "focus": "[id$=\"oa-location-page\"]"
     }
    ]
   }
