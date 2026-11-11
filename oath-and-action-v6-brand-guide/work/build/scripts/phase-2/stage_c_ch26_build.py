@@ -434,7 +434,7 @@ def code_sets():
     inner = re.sub(r">\s+<", "><", inner)
     top = max(v for _, v in WEEKS)
     week_rows = lambda cls: "\n".join(
-        f'    <li class="{cls}-row{f" {cls}-row--subject" if i == 2 and cls == "oa-bars" else ""}"><span class="{cls}-label">{lab}</span>'
+        f'    <li class="{cls}-row{f" {cls}-row--subject" if i == 2 and cls == "oa-ex-bars" else ""}"><span class="{cls}-label">{lab}</span>'
         f'<span class="{cls}-track"><span class="{cls}-bar {cls}-bar--{i + 1}"></span><span class="{cls}-value">{v}</span></span></li>'
         for i, (lab, v) in enumerate(WEEKS))
     widths = lambda cls: "\n".join(f".{cls}-bar--{i + 1} {{ width: {round(v / top * 78)}% }}" for i, (_, v) in enumerate(WEEKS))
@@ -446,60 +446,71 @@ def code_sets():
         f".{cls}-bar {{ flex: 0 1 auto; min-width: 0; height: 1.25rem }}\n.{cls}-value {{ flex: none }}\n{widths(cls)}\n")
     sets = {}
     sets["c-26-caption"] = {
-        "html": ('<figure class="oa-figure">\n  <p class="oa-figure-title">Comments on the transit plan, by week</p>\n'
-                 '  <ul class="oa-figure-rows" aria-label="Comments by week">\n' + week_rows("oa-figure") + '\n  </ul>\n'
-                 '  <figcaption class="oa-figure-caption">Comments counted each week, Monday to Sunday.</figcaption>\n</figure>\n'),
+        "html": ('<figure class="oa-ex-figure">\n  <p class="oa-ex-figure-title">Comments on the transit plan, by week</p>\n'
+                 '  <ul class="oa-ex-figure-rows" aria-label="Comments by week">\n' + week_rows("oa-ex-figure") + '\n  </ul>\n'
+                 '  <figcaption class="oa-ex-figure-caption">Comments counted each week, Monday to Sunday.</figcaption>\n</figure>\n'),
         "css": ("/* A caption under a chart: surface from the page, role text, emphasis secondary, no state, no component token.\n"
                 "   On Newsprint it measures " + F["ds_n"] + " to 1; in the dark theme, on Charcoal, " + F["dim_c"] + " to 1. */\n"
-                ".oa-figure { margin: 0; font: var(--oa-type-body); color: var(--oa-color-text-primary) }\n"
-                ".oa-figure-title { margin: 0; font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }\n"
-                + chart_css("oa-figure") + ".oa-figure-bar { background: var(--oa-color-graphic-essential) }\n"
-                ".oa-figure-caption { margin: var(--oa-space-150) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }\n")}
+                ".oa-ex-figure { margin: 0; font: var(--oa-type-body); color: var(--oa-color-text-primary) }\n"
+                ".oa-ex-figure-title { margin: 0; font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }\n"
+                + chart_css("oa-ex-figure") + ".oa-ex-figure-bar { background: var(--oa-color-graphic-essential) }\n"
+                ".oa-ex-figure-caption { margin: var(--oa-space-150) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }\n")}
     sets["c-26-download"] = {
-        "html": ('<div class="oa-surface-white oa-download">\n  <p class="oa-download-file">Hearing photo, Capitol steps</p>\n'
-                 '  <button type="button" class="oa-download-button" aria-disabled="true" aria-describedby="oa-download-why">Download the photo</button>\n'
-                 '  <p class="oa-download-why" id="oa-download-why">Choose a size to download.</p>\n</div>\n'),
+        "html": ('<div class="oa-surface-white oa-ex-download">\n  <p class="oa-ex-download-file">Hearing photo, Capitol steps</p>\n'
+                 '  <button type="button" class="oa-ex-download-button" aria-disabled="true" aria-describedby="oa-ex-download-why">Download the photo</button>\n'
+                 '  <p class="oa-ex-download-why" id="oa-ex-download-why">Choose a size to download.</p>\n</div>\n'),
         "css": ("/* A download button that waits for a choice: surface White (the class on the block), role action, state disabled,\n"
                 "   then the button's own component tokens, which win. The label and dashed edge measure " + F["ds_w"] + " to 1 on White.\n"
                 "   The button keeps focus and points to its reason, so a keyboard reader learns why it waits. */\n"
-                ".oa-download { padding: var(--oa-space-300) var(--oa-space-200); background: var(--oa-color-surface); color: var(--oa-color-text-primary); font: var(--oa-type-body) }\n"
-                ".oa-download-file { margin: 0 0 var(--oa-space-150); font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }\n"
-                ".oa-download-button { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); margin: 0; padding: 0 var(--oa-space-300);\n"
+                ".oa-ex-download { padding: var(--oa-space-300) var(--oa-space-200); background: var(--oa-color-surface); color: var(--oa-color-text-primary); font: var(--oa-type-body) }\n"
+                ".oa-ex-download-file { margin: 0 0 var(--oa-space-150); font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }\n"
+                ".oa-ex-download-button { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); margin: 0; padding: 0 var(--oa-space-300);\n"
                 "  border: var(--oa-border-width-hairline) solid var(--oa-component-button-primary-fill); border-radius: 0;\n"
                 "  background: var(--oa-component-button-primary-fill); color: var(--oa-component-button-primary-label); font: var(--oa-type-ui); cursor: pointer }\n"
-                ".oa-download-button[aria-disabled=\"true\"] { border-style: dashed; border-color: var(--oa-component-button-disabled-edge);\n"
+                ".oa-ex-download-button[aria-disabled=\"true\"] { border-style: dashed; border-color: var(--oa-component-button-disabled-edge);\n"
                 "  background: transparent; color: var(--oa-component-button-disabled-label); cursor: not-allowed }\n"
-                ".oa-download-button:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }\n"
-                ".oa-download-why { margin: var(--oa-space-100) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }\n"
-                "@media (forced-colors: active) {\n  .oa-download-button { border-color: ButtonText }\n"
-                "  .oa-download-button[aria-disabled=\"true\"] { border-color: GrayText; color: GrayText }\n}\n")}
+                ".oa-ex-download-button:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }\n"
+                ".oa-ex-download-why { margin: var(--oa-space-100) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }\n"
+                "@media (forced-colors: active) {\n  .oa-ex-download-button { border-color: ButtonText }\n"
+                "  .oa-ex-download-button[aria-disabled=\"true\"] { border-color: GrayText; color: GrayText }\n}\n")}
     sets["c-26-chart"] = {
-        "html": ('<figure class="oa-bars">\n  <p class="oa-bars-head">Week 3 drew the most comments</p>\n'
-                 '  <ul class="oa-bars-rows" aria-label="Comments by week">\n' + week_rows("oa-bars") + '\n  </ul>\n</figure>\n'),
+        "html": ('<figure class="oa-ex-bars">\n  <p class="oa-ex-bars-head">Week 3 drew the most comments</p>\n'
+                 '  <ul class="oa-ex-bars-rows" aria-label="Comments by week">\n' + week_rows("oa-ex-bars") + '\n  </ul>\n</figure>\n'),
         "css": ("/* A highlighted bar: surface from the page, role data, emphasis on the bar the headline names, context on the rest.\n"
                 "   On Newsprint: Charcoal " + F["char_n"] + " to 1, Stone " + F["stone_n"] + " to 1, the two " + F["char_stone"] + " to 1 apart.\n"
                 "   Each bar carries its count, so the highlight never rests on color alone. */\n"
-                ".oa-bars { margin: 0; font: var(--oa-type-body); color: var(--oa-color-text-primary) }\n"
-                ".oa-bars-head { margin: 0; font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }\n"
-                + chart_css("oa-bars") + ".oa-bars-bar { background: var(--oa-color-data-context) }\n"
-                ".oa-bars-row--subject .oa-bars-bar { background: var(--oa-color-data-emphasis) }\n"
-                ".oa-bars-row--subject .oa-bars-label, .oa-bars-row--subject .oa-bars-value { font-weight: var(--oa-font-weight-bold) }\n"
-                "@media (forced-colors: active) {\n  .oa-bars-bar { background: GrayText }\n  .oa-bars-row--subject .oa-bars-bar { background: CanvasText }\n}\n")}
+                ".oa-ex-bars { margin: 0; font: var(--oa-type-body); color: var(--oa-color-text-primary) }\n"
+                ".oa-ex-bars-head { margin: 0; font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }\n"
+                + chart_css("oa-ex-bars") + ".oa-ex-bars-bar { background: var(--oa-color-data-context) }\n"
+                ".oa-ex-bars-row--subject .oa-ex-bars-bar { background: var(--oa-color-data-emphasis) }\n"
+                ".oa-ex-bars-row--subject .oa-ex-bars-label, .oa-ex-bars-row--subject .oa-ex-bars-value { font-weight: var(--oa-font-weight-bold) }\n"
+                "@media (forced-colors: active) {\n  .oa-ex-bars-bar { background: GrayText }\n  .oa-ex-bars-row--subject .oa-ex-bars-bar { background: CanvasText }\n}\n")}
     sets["c-26-warning"] = {
-        "html": ('<div class="oa-surface-prussian oa-track-note">\n  <p class="oa-track-note-step">Step 4 of 6: in committee</p>\n'
-                 '  <p class="oa-warning"><svg class="oa-warning-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" '
+        "html": ('<div class="oa-surface-prussian oa-ex-track">\n  <p class="oa-ex-track-step">Step 4 of 6: in committee</p>\n'
+                 '  <p class="oa-ex-warning"><svg class="oa-ex-warning-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" '
                  'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-warning" data-icon-family="utility">' + inner +
-                 '</svg><span class="oa-warning-words"><strong class="oa-warning-word">Warning:</strong> The hearing moved to March 12. Check the new date before you travel.</span></p>\n</div>\n'),
+                 '</svg><span class="oa-ex-warning-words"><strong class="oa-ex-warning-word">Warning:</strong> The hearing moved to March 12. Check the new date before you travel.</span></p>\n</div>\n'),
         "css": ("/* A warning in a tracker on Prussian: surface Prussian (the class on the block), role state, state warning.\n"
                 "   The words in White, " + F["white_pr"] + " to 1; the bar and triangle in Newsprint, " + F["news_pr"] + " to 1. Warning has no hue of its own:\n"
                 "   the word and the triangle carry it, and red never sits on Prussian. */\n"
-                ".oa-track-note { padding: var(--oa-space-200); background: var(--oa-color-surface); color: var(--oa-color-text-primary); font: var(--oa-type-body) }\n"
-                ".oa-track-note-step { margin: 0 0 var(--oa-space-150); font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }\n"
-                ".oa-warning { display: flex; align-items: flex-start; gap: var(--oa-space-100); margin: 0; padding-left: var(--oa-space-150);\n"
+                ".oa-ex-track { padding: var(--oa-space-200); background: var(--oa-color-surface); color: var(--oa-color-text-primary); font: var(--oa-type-body) }\n"
+                ".oa-ex-track-step { margin: 0 0 var(--oa-space-150); font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }\n"
+                ".oa-ex-warning { display: flex; align-items: flex-start; gap: var(--oa-space-100); margin: 0; padding-left: var(--oa-space-150);\n"
                 "  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-warning-mark); color: var(--oa-color-state-warning-text); font: var(--oa-type-body-small) }\n"
-                ".oa-warning-icon { flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium); color: var(--oa-color-state-warning-mark) }\n"
-                ".oa-warning-word { font-weight: var(--oa-font-weight-bold) }\n"
-                "@media (forced-colors: active) {\n  .oa-warning { border-left-color: CanvasText }\n  .oa-warning-icon { color: CanvasText }\n}\n")}
+                ".oa-ex-warning-icon { flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium); color: var(--oa-color-state-warning-mark) }\n"
+                ".oa-ex-warning-word { font-weight: var(--oa-font-weight-bold) }\n"
+                "@media (forced-colors: active) {\n  .oa-ex-warning { border-left-color: CanvasText }\n  .oa-ex-warning-icon { color: CanvasText }\n}\n")}
+    # the one example a keyboard reaches: its path for guide_check.js's keyPath (format oa-keys/1)
+    btn = ".oa-ex-download-button"
+    sets["c-26-download"]["keys.json"] = json.dumps({
+        "format": "oa-keys/1", "set": "c-26-download", "rule": "26.4", "component": "Download button that waits",
+        "about": "Rule 26.4's second example: the unavailable button keeps focus and its reason, and pressing it changes nothing. Written by stage_c_ch26_build.py.",
+        "paths": [{"name": "Reach the button that waits, press it, and leave", "steps": [
+            {"key": "Tab", "focus": btn, "states": [{"el": btn, "attr": "aria-disabled", "is": "true"}, {"el": btn, "attr": "aria-describedby", "present": True},
+                                                    {"el": ".oa-ex-download-why", "text": "Choose a size to download."}]},
+            {"key": "Enter", "focus": btn, "states": [{"el": btn, "attr": "aria-disabled", "is": "true"}]},
+            {"key": "Space", "focus": btn, "states": [{"el": btn, "attr": "aria-disabled", "is": "true"}]},
+            {"key": "Tab", "focus": "outside"}]}]}, indent=1) + "\n"
     return sets
 
 

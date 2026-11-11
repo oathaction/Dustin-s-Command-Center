@@ -1,0 +1,60 @@
+{
+ "format": "oa-keys/1",
+ "set": "c-26-download",
+ "rule": "26.4",
+ "component": "Download button that waits",
+ "about": "Rule 26.4's second example: the unavailable button keeps focus and its reason, and pressing it changes nothing. Written by stage_c_ch26_build.py.",
+ "paths": [
+  {
+   "name": "Reach the button that waits, press it, and leave",
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": ".oa-ex-download-button",
+     "states": [
+      {
+       "el": ".oa-ex-download-button",
+       "attr": "aria-disabled",
+       "is": "true"
+      },
+      {
+       "el": ".oa-ex-download-button",
+       "attr": "aria-describedby",
+       "present": true
+      },
+      {
+       "el": ".oa-ex-download-why",
+       "text": "Choose a size to download."
+      }
+     ]
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-ex-download-button",
+     "states": [
+      {
+       "el": ".oa-ex-download-button",
+       "attr": "aria-disabled",
+       "is": "true"
+      }
+     ]
+    },
+    {
+     "key": "Space",
+     "focus": ".oa-ex-download-button",
+     "states": [
+      {
+       "el": ".oa-ex-download-button",
+       "attr": "aria-disabled",
+       "is": "true"
+      }
+     ]
+    },
+    {
+     "key": "Tab",
+     "focus": "outside"
+    }
+   ]
+  }
+ ]
+}

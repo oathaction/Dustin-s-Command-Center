@@ -2,7 +2,7 @@
 
 Oath & Action Edition 06, Phase 2, stage C, round 1, November 11, 2026. Written by the editor (`.claude/agents/oa-editor.md`), run as a subagent of the main session, under item 6 of `20261111_Stage-C-Round-1-Brief.md`. I committed nothing and published nothing. Paths are relative to `oath-and-action-v6-brand-guide/`.
 
-Status: done for this pass. Item 1, the words the promotion and round 0 added to chapters 01 to 12, is in section 1: CL-075's sentence is applied in my table, and 18 changes wait with their owners. Item 2, chapter 17's draft as it stood at 02:59, is in section 2: 42 rows of edits for its makers, one of which the maker made before the list reached it. Chapters 26, 18 and 19 come next.
+Status: second pass done. Sections 1 and 2 (chapters 01 to 12 and 17) are applied by their owners (D2-1334 to D2-1342). Sections 4 to 6 hold 67 rows for chapters 18, 19 and 26, as each stood between 03:06 and 03:57, grouped by owner with facts first; none is applied yet, since every one sits in another owner's generator or code.
 
 ## How I work this round
 
@@ -163,6 +163,158 @@ Counted by the main rule each row of sections 1 and 2 serves, until the owners a
 
 Applied this round: one W06, CL-075's sentence in my table.
 
+### 3b. Sections 4 to 6, by type
+
+Counted the same way, by the main rule each row serves: 67 rows.
+
+| Type | Rows |
+|---|---|
+| A rule, its plate, its code or the ledger disagree (a count, a name, a weight, a place, a rule number) | 31 |
+| W01, a sentence a listener has to read twice | 7 |
+| W09, a "never" or "not" turn | 5 |
+| W10, a matched pair | 4 |
+| W20, a claim larger than its evidence | 4 |
+| H04, a source line with no retrieval date or two forms of one source | 4 |
+| H11, a loop or criterion code in the wrong form | 2 |
+| W18, a studio or code word in reader text | 2 |
+| W06, W08, W13, H02, H03, H06, chapter 02's scope line and studio words in a download, one each | 8 |
+| Em dashes, en dashes and the listed fillers, hedges and corporate verbs, by script | 0 |
+
+## 4. Chapter 18, Components and interaction: edits for its makers
+
+**What I read.** `18-components.json` as `stage_c_ch18_build.py` wrote it at 03:42 (unchanged at 03:57), every rule whole in a strict scratch build (0 warnings, 185 rules); the 24 failure alts in `manifest-components.json`; the 24 anatomy plates' keys and alts (`stage_c_ch18_anatomy_build.py`, `manifest-anatomy.json`); and the visible words of the 24 code sets (`c-18-*.html`, with their scripts' status words). I checked the words against the code itself: where a rule, its anatomy key and its code disagree, the row says which one the code bears out. Every rule number the chapter cites exists in the page, and every chapter title it prints matches. Its figures hold: the contrast ratios against `tokens.json`, Prussian against Charcoal at 1.41 to 1, tokens.css at 93,235 bytes (93 KB), and the 125 symbols.
+
+### 4a. For the accessibility lead (`stage_c_ch18_build.py`): facts and contradictions first
+
+| Key | Now | Mine | Rule |
+|---|---|---|---|
+| Rule 18.1 `rule[1]` | …draws a dashed edge and points to a line beside it that says why… | …draws a dashed edge and points to a line under it that says why… | The code sets the reason under the button (`c-18-button.html`), as Rule 17.11 and Rule 05.4's plate do |
+| Rule 18.6 `rule[0]`, second sentence | The link to the part the reader is in carries `aria-current="page"` and a 2 px underline. | The link to the part the reader is in carries `aria-current="page"`, bold words and a 2 px underline. | The code sets the current part bold and underlined (`c-18-masthead.css`, `[aria-current]`), and the anatomy key says "Bold, with a 2 px underline" |
+| Rule 18.6 spec "States" | Current part: a 2 px underline and aria-current. Hover: a 2 px underline. | Current part: bold words, a 2 px underline and aria-current. Hover: a 1 px underline. | The code's hover underline is `--oa-border-width-underline`, 1 px, so it stays apart from the current part's 2 px |
+| Rule 18.6 `rule[0]` and spec "Accessible name" | such as “Parts” | such as “Parts of the site” | The code's label (`aria-label="Parts of the site"`) and the anatomy key |
+| Rule 18.7 `rule[0]`, last clause | …a short list in a line, such as a breadcrumb, sets the current place in bold words while the places before it stay links. | …a short list in a line, such as a breadcrumb, ends on the current page as a link in bold words, with aria-current and no underline, after the links to the places before it. | The code's current crumb is a link with `aria-current="page"`, and anatomy key 1 says "its link says it is the page" |
+| Rule 18.9 spec "States" | Not selected: regular words and no bar. | Not selected: words at 600, the weight every control's word takes, and no bar. | The code sets every tab in `--oa-type-ui`, 600, and Rule 17.10's spec says "600 when off" |
+| Rule 18.9 spec "A screen reader hears" | …and its place, such as 2 of 3. | …and its place, such as 2 of 4. | The live set holds four tabs |
+| Rule 18.11 `rule[1]`, `correct.caption` and `builders[0]` | Its focus ring sits inside the frame… / the focus ring drawn inside the frame / Draw the ring inside the frame with `outline-offset: -2px` plus the ring’s width | Keep the words, and the component engineer moves the ring inside (4d); or, if the ring stays outside, "Its focus ring sits 2 px outside the frame’s edge" and a builders line that drops the negative offset | The code draws the ring 2 px outside (`c-18-scroll-region.css`: `outline-offset: var(--oa-border-focus-offset)`, 2 px), and the anatomy plate draws the code. The rule gives a reason for inside, so I recommend the code follow the words. "−2 px plus the ring’s width" also needs to be one figure: −4 px, the ring's 2 px and its 2 px gap |
+| Rule 18.18 `title` | Give every message its mark, its first word and its bar, and announce only what changes. | Give every message its mark and its first word, and announce only what changes. | A success takes no bar in the code, and anatomy key 6 says "with no bar"; `rule[0]` already says which messages take one |
+| Rule 18.18 `correct.caption` | …its words, its 4 px bar, and the Error Band behind an error on Newsprint. | …its words, the 4 px bar on an error or a warning, and the Error Band behind an error on Newsprint. | As the title |
+| Rule 18.20 `rule[0]` and spec "States" | …one state word: Done, Now, Not yet, Never happened or Stopped (Rule 11.2). / …Stopped (Rule 11.2) | …one state word: Done, Now, You can take part now, Not yet, Never happened or Stopped (Rules 11.2 and 11.4). / …Stopped (Rules 11.2 and 11.4) | The spec lists six words and the rule five; "You can take part now" is Rule 11.4's |
+| Rule 18.24 `rule[1]` | A chip that opens its record is a link, with an underline on hover and a target at least 24 px tall… | A chip that opens its record is a link, underlined as Rule 18.5 sets, 1 px at rest and 2 px on hover, with a target at least 24 px tall… | The code underlines a linked chip at rest (`c-18-id-chip.css`, `.oa-chip--link`) |
+| Rule 18.24 spec "States" | Plain. As a link: hover, an underline; focus, the ring. | Plain. As a link: a 1 px underline, 2 px on hover; focus, the ring. | As above |
+| Rule 18.24 spec "Light and dark" | The edge in --oa-color-border-hairline and the words in the text’s ink. | The edge, a hairline in --oa-color-border-strong, and the words in the text’s ink. | The code draws the edge in `--oa-color-border-strong`, as anatomy key 3 says |
+| `s-18-22-failure` alt | A panel at 360 px for loop R1 from our systems atlas… | A panel at 360 px for Loop R1 from our systems atlas… | H11's form, which chapter 17 now prints |
+| `s-18-24-failure` alt | A sentence at 360 px from our systems atlas, “R10 shifts accountability to small primary electorates, and R-01 sits on that loop.” | A sentence at 360 px written from our systems atlas’s records, “R10 shifts accountability…” | W20: the atlas holds no such sentence; Loop R10's title is "Safe seats shift accountability to small primary electorates", and Reform R-01's record names R10 among its loops |
+| `sources[3]` | …built November 2, 2026, read November 11, 2026. | …built November 2, 2026, retrieved November 11, 2026. | H04's word, as the chapter's other four lines use it |
+
+**One contradiction for the systems designer's chapter 17, found through chapter 18.** Rule 17.10 says "A link to the page a reader is on takes a 2 px underline, and a rail or a list takes the selected band with its 4 px bar", and its spec "Current place" says the same. Chapter 18's code, which its Rules 18.6 and 18.7 describe, draws three looks: a masthead's current part in bold with a 2 px underline, a breadcrumb's current page in bold with no underline, and a list's current place on the band with its 4 px bar and bold words. Chapter 17's own plate sets that list item at 600 (`.sx-cur`), where chapter 18 and Rule 17.10's own spec make "on" 700.
+
+| Generator and string | Now | Mine | Rule |
+|---|---|---|---|
+| `stage_c_ch17_build.py`, Rule 17.10 `rule[1]`, second sentence | A link to the page a reader is on takes a 2 px underline, and a rail or a list takes the selected band with its 4 px bar. | A link to the page a reader is on takes bold words, with a 2 px underline in a masthead and none at the end of a breadcrumb, and a rail or a list takes the selected band, its 4 px bar and bold words. | Rules 18.6 and 18.7 and their code |
+| `stage_c_ch17_build.py`, Rule 17.10 spec "Current place" | A link: 2 px underline; a rail or list: the selected band and its 4 px bar | A link: bold words, with a 2 px underline in a masthead; a rail or list: the selected band, its 4 px bar and bold words | As above |
+| `stage_c_ch17_build.py`, Rule 17.10's plate, the list's `.sx-cur` | `font-weight:600` | `font-weight:700`, from `--oa-font-weight-bold` | Rule 17.10's own spec: "Bold, 700; 600 when off" |
+
+### 4b. For the accessibility lead: voice
+
+| Key | Now | Mine | Rule |
+|---|---|---|---|
+| intro `[1]`, second sentence | What a screen reader hears is what the code hands it, the name, the role, the state and any status line, and each screen reader words these its own way. | A screen reader hears the name, role, state and status line the code hands it, and each screen reader words these its own way. | W06: "is what" holds the point back |
+| `sources[1]`, last sentence | The Practices show one tested way to build each control; WCAG sets what must hold. | The Practices show one tested way to build each control, and WCAG sets what each must meet. | W10: a matched pair |
+| Rule 18.1 `why.text[0]`, second sentence | The disabled attribute would take the button out of the Tab order and hide its reason with it, where aria-disabled keeps both in reach. | The disabled attribute would take the button out of the Tab order and hide its reason with it, so an unavailable button carries aria-disabled, which keeps both in reach. | W10: "where" sets the two against each other |
+| Rule 18.3 `builders[0]` | Hide the native radio with a visually hidden style that keeps it focusable, never with `display: none`, and draw… | Hide the native radio with a visually hidden style that keeps it focusable, since `display: none` would take it out of the Tab order, and draw… | W09: say why, without the "never" turn |
+| Rule 18.5 spec "Target" | …which WCAG 2.2 SC 2.5.8 excepts… | …which WCAG 2.2 SC 2.5.8 exempts… | W18 |
+| Rule 18.15 `why.text[0]`, first sentence | A visible label stays when the reader types, where a placeholder vanishes. | A placeholder vanishes at the first letter typed, so the label sits above the field, where it stays in view. | W10 |
+| Rule 18.17 `rule[0]`, last sentence | …a send that cannot run yet keeps focus and says why, as Rule 18.1 sets. | …a Send button that cannot run yet keeps focus and says why, as Rule 18.1 sets. | W01, and Rule 17.11's wording |
+| Rule 18.19 `why.text[0]`, first sentence | Words tell every reader what is happening, where a spinner shows only that something is, and a pulse moves without end. | Words tell every reader what is happening. A spinner shows only that something is happening, and a pulse moves without end. | W10 and W03 |
+| Rule 18.22 `rule[1]` | …and never under 6 seconds… | …and never under six seconds… | H06 |
+
+### 4c. For the systems designer, the anatomy keys (`stage_c_ch18_anatomy_build.py`)
+
+| Plate and key | Now | Mine | Rule |
+|---|---|---|---|
+| `s-18-02-anatomy`, key 4 | Off: word. The same word in regular weight, with no check | Off: word. The same word at 600, the weight every control's word takes, with no check | Fact: the chip's word is `--oa-type-ui`, 600 (Rule 17.10: "600 when off"); regular is 400. The alt follows |
+| `s-18-24-anatomy`, key 5 | As a link. It opens the record; its words underline under a pointer, as here | As a link. It opens the record; its words keep a 1 px underline, 2 px under a pointer, as here | Fact: the code underlines a linked chip at rest |
+| `s-18-11-anatomy` and its alt | The ring as the code draws it, 2 px outside the frame | Follows the call in 4a's Rule 18.11 row; a rerun picks it up | Rule and plate agree once the code does |
+| `s-18-05-anatomy`, key 2 | Words. Say where the link goes, and work read on their own | Words. Say where the link goes, and make sense read on their own | W01 |
+
+### 4d. For the component engineer (`work/build/guide/code/c-18-*`)
+
+| File and words | Now | Mine | Rule |
+|---|---|---|---|
+| `c-18-download.html`, the file that is not ready | Download the swatch file, ASE / The swatch file comes with the final tokens. | Download the hearing report, PDF / The report comes after the hearing on March 3. (with the Illustrative label the ready file carries) | Fact: DR-214 ships tokens.css and tokens.json only, so the example promises a file nobody plans |
+| `c-18-tracker.html` and `.js`, the update that stops | Stopped at step 3 of 6: Committee vote, on March 10. The committee voted against the bill. (for S.99002) | The same stop for another of chapter 11's invented bills, such as H.99004, Records request fees, which chapter 18's own table already shows as "Stopped in committee" | Contradiction: chapter 17's Rule 17.1 moves S.99002 past its committee vote to step 4, and chapter 18's notes hold that one invented bill means one thing across the guide |
+| `c-18-tabs.html`, the title | Bill S.99002, school bus contracts | Bill S.99002, School bus contracts | The bill's title as chapters 11 and 17, the tracker and the table print it |
+| `c-18-loop-stepper.html` and `.js`, the reason line | At the start, so Previous step and Reset the loop wait until you move on. | Previous step and Reset the loop work once you press Next step or Play. | Rule 17.11's builders line, and chapter 17's players now say "Reset works once you press Play." |
+| `c-18-loop-stepper.html` and `c-18-diagram-controls.html`, the kicker | From our systems atlas, loop R1 | From our systems atlas, Loop R1 | H11's form, as chapter 17 now prints it |
+| `c-18-report-reader.html`, the hint | Wider than this column. Scroll the page sideways to see all of it. | Wider than this column. Scroll the report page sideways to see all of it. | W01: Rule 18.11 says the page never scrolls sideways; here "page" means the report's page |
+| `c-18-scroll-region.css`, the ring | `outline-offset: var(--oa-border-focus-offset)` | A negative offset of the ring and its gap, −4 px, if the accessibility lead keeps the ring inside (4a) | Rule 18.11 |
+
+### 4e. Read and left as they are
+
+- Each of the loop stepper's three steps opens with a short line of its own, then quotes Atlas V7's own sentence for L01, L02 or L03 word for word, and the verbs hold the grades: L02 is plausible and takes "can raise" (H08); L01 and L03 are well supported.
+- The table's "No bills match. Clear the search or the filters to see all 12 bills." counts bills the four-row example does not show; the example carries the Illustrative label, so it stands.
+- The "Updated!" in Rule 18.20's failure and the "click here" in Rule 18.5's are the faults the plates teach.
+
+## 5. Chapter 19, Accessibility: edits for its maker (the accessibility lead, `stage_c_ch19_build.py`)
+
+**What I read.** `19-accessibility.json` as written at 03:46 (unchanged at 03:57), its 18 plates and alts, the guide's own line for each of the 55 criteria (the `c19-m` lines), the matrix, the results and the device script. W3C's quoted criterion text I left exactly as W3C wrote it. The counts hold: WCAG 2.2 has 31 criteria at A and 24 at AA once 4.1.1 is removed, six of them new, and the map's 37, 5, 8 and 5 make 55. Master Brief section 22 has 14 checks, as Rule 19.7 says, and the results plate keeps Tested and Not tested apart.
+
+### 5a. Facts and contradictions
+
+| Key | Now | Mine | Rule |
+|---|---|---|---|
+| Rule 19.1 `rule[0]`, second sentence | Every page and product we publish meets all of them. | Build every page and product we publish to meet all of them. | W20: `rule[1]` counts eight gaps, and Rule 19.8's results list open faults, so the present tense claims a result the chapter's own results contradict |
+| The criteria list, 3.3.4 and 3.3.7 (`stage_c_ch19_build.py`, lines 139 and 140) | …chapter 22 if one sends testimony, gifts or petitions. / …chapter 22 when one does. | …chapter 18 if one sends testimony, gifts or petitions. / …chapter 18 when one does. | Fact: chapter 22 is Newsletter and email; the round 0 map gave both to chapter 18, where forms live. The maker to confirm, or name chapter 20 |
+| The criteria list, every line with one rule (1.3.3, 1.3.4, 1.3.5, 1.4.2, 1.4.5, 1.4.12, 2.1.4, 2.5.2, 2.5.4, 2.5.7) | Rules 19.3. | Rule 19.3. | W01 |
+| The criteria list, every line with several rules | Rules 18.10, 18.3, 18.17, 18.6, 18.7, 11.5. | Rules 11.5, 18.3, 18.6, 18.7, 18.10 and 18.17. | W01: in the page's order, with "and" before the last, as the guide sets its lists |
+| Rule 19.4 `rule[0]`, last sentence | The wordmark is the one picture of text a page holds. | The wordmark and its lockups are the only pictures of text a page holds. | The rule's own spec, "Allowed as an image: The wordmark and the lockups (chapter 03)" |
+| `sources[2]` | Sources for Rule 19.9: Apple, “Turn on and practice VoiceOver on iPhone” and …; Microsoft, “Change color contrast in Windows”. The steps name the menus as each maker does; makers rename them between versions. | Further reading for Rule 19.9, each maker’s own guide: Apple, …; Microsoft, “Change color contrast in Windows”. We wrote the steps from these makers’ menus as we know them and did not check them on a device; makers rename menus between versions. | H04 asks for a retrieval date, and the maker's notes say the steps came from what it knows, with no page read, so "Sources" claims more than happened. If the pages were read, keep "Sources" and add the date instead |
+| `s-19-6-correct` and `s-19-6-failure` alts | An Illustrative pair of buttons… / (the manifest marks both not illustrative) | Drop "Illustrative" from the alt, or set the flag | H03 labels invented content a reader could take for real; two page buttons need no label, but alt and flag must agree |
+| Rule 19.9 `rule[0]`, first sentence, and the results plate's last Not tested line | Four short scripts check what no container can… / This container has none of them… | Four short scripts check what no automated test can… / The machine these checks ran on has none of them… | W18: "container" is the studio's word for its build machine |
+| intro `[0]`, second sentence | …from W3C, the body that writes the web’s standards. | …from the World Wide Web Consortium, W3C, which writes many of the web’s standards. | W20: HTML itself comes from WHATWG, which chapter 18 cites; H02: spell out W3C at its first use |
+
+### 5b. Voice
+
+| Key | Now | Mine | Rule |
+|---|---|---|---|
+| Rule 19.3 `title` | Name a control or a step by its words, never only by its color, shape or place. | Name a control or a step by its words, and add its color, shape or place only after them. | W09 |
+| Rule 19.3 `rule[0]`, second sentence | Color, shape and place can add to the words, as in “Send your comment, under the form”, and never stand in for them, since a phone moves things and a screen reader or a contrast theme drops color. | Color, shape and place can follow the words, as in “Send your comment, under the form”, since a phone moves things, and a screen reader or a contrast theme loses color. | W09 |
+| Rule 19.5 `rule[0]`, second sentence | A gesture with two fingers, a drag, a tilt or a shake may add a way, never the only one. | A gesture with two fingers, a drag, a tilt or a shake may add a second way beside that control. | W09 |
+| Rule 19.6 `why.text[0]`, second sentence | Words that may not wrap are the most common way a page loses them. | A label that may not wrap is how this guide’s own pages lost words when we first tested them at 200 percent. | W20: "most common" counts nothing; the round 0 inventory found clipped labels (its F-2) |
+| The device script, iPhone step 1 | …pressing the side button three times turns VoiceOver on and off. | …pressing the side button three times, or the Home button on an iPhone that has one, turns VoiceOver on and off. | Fact: an iPhone with a Home button takes the shortcut there |
+| The device script, iPhone and Android step 4 | To type, double-tap a field, type, then swipe on. | To type, double-tap a field, type, then swipe right to move on. | W01 |
+| The device script, last line | A fail with its words is as useful as a pass. | Write a fail down with the words you heard, so the builder can find what broke. | W08: a closing line that carries no step |
+
+## 6. Chapter 26, Tokens and how to choose them: edits for its maker (the engineer, `stage_c_ch26_build.py` and the `c-26-*` code sets)
+
+**What I read.** `26-tokens.json` as written at 03:06. The generator changed at 03:49, after its last output, so a row may already be done; each quotes its string. Its figures hold: tokens.json and tokens.css hold the same 500 tokens (tokens.css adds 212 short names and type parts), 13 categories, body type 17 px at 1.6, tokens.json 278 KB, version `6.0.0-gate2.7`, and the change note at the top of tokens.css. Rule 26.5 now gives the two switch lines that section 1d asked for.
+
+### 6a. Facts and contradictions
+
+| Key | Now | Mine | Rule |
+|---|---|---|---|
+| `c-26-warning.html` and `s-26-4-4-correct`'s alt | Step 4 of 6: in committee | Step 2 of 6: Hearing | Fact: Rule 11.1's step 4 is First chamber, and the warning is about the hearing ("The hearing moved to March 12") |
+| intro `[0]`, first sentence | …a named value kept in one file that the guide, the asset package and every product read. | …a named value kept in the token files, which the guide, the asset package and every product read. | The next paragraph and Rule 26.8 name two files |
+| Rule 26.3 `rule[0]`, second sentence | Then its role: text, graphic, border, focus, data, action or state. | Then its role: text, graphic, border, focus, data, action, state or field. | The rule's own spec lists eight roles; the field ground is D2-1193's |
+| `sources[0]` to `sources[3]` | No retrieval date; `sources[2]` and `[3]` give no date at all | Each ends with its retrieval date, and Media Queries Level 5 takes "W3C Working Draft, February 19, 2026", as chapter 17 prints it | H04 |
+| `sources[1]` | W3C, “Web Content Accessibility Guidelines (WCAG) 2.2”, Recommendation, October 5, 2023, updated December 12, 2024 | W3C, “Web Content Accessibility Guidelines (WCAG) 2.2”, W3C Recommendation, December 12, 2024 | One form for one source, as chapters 17, 18 and 19 print it |
+| Rule 26.5 `rule[2]` | …the two lines that show the pixel fit on a standard screen and the master on a sharper one… | …the two lines that show the pixel fit on a screen under 2x and the master from 2x… | H02: the term Rules 09.3 and 10.4 define |
+| The header of `tokens.css` (the token build's source, `oa-tokens.src.mjs`) | …Version 6.0.0 ships when Dustin approves the token files at Gate 2… (DR-204)… | The version and what it means, with no person's name, gate or decision code | Builders download this file; chapter 26 already strips studio codes from the table for the same reason. For Phase 3's package, low priority |
+
+### 6b. Voice
+
+| Key | Now | Mine | Rule |
+|---|---|---|---|
+| Rule 26.2 `rule[0]` | A new token joins tokens.json only when all five hold. First, a measured need… Second, a value… Third, one job… Fourth, contrast… Fifth, a description, a tier and a status. | A new token joins tokens.json only when all five hold: a measured need that no token meets, registered with an ID and its evidence; a value made from one palette color, mixed in OKLab toward Newsprint or Charcoal, with the amount recorded; one job, said in one sentence; contrast that passes on every surface it serves, at the threshold its kind needs, with the ratio stored; and a description, a tier and a status. | W13: five sentences on one frame |
+| Rule 26.3 `why.text[0]`, first sentence | Each step narrows the choice by a fact about the page, never by taste, so two builders reach the same token. | Each step narrows the choice by a fact about the page, so two builders reach the same token. | W09 |
+| Rule 26.4 `rule[0]`, first sentence | Four parts every product needs, each chosen by the five steps of Rule 26.3, at actual size beside its failure, with code to copy. | The four examples below take parts every product needs through the five steps of Rule 26.3, and set each at actual size beside its failure, with code to copy. | Chapter 02's scope line: outside headings, labels, captions and chart keys, every line is a full sentence |
+| Rule 26.7 `why.text[0]` | …and a value typed by hand never hears about the next release. | …and a value typed by hand stays as it was when the next release changes the token. | W01 |
+
+### 6c. Read and left as they are
+
+- Chapter 26's failure alts for Rules 26.1 to 26.3 and 26.5 to 26.8 open on the fault, where Rule 26.4's open "Failure case: do not publish." That follows the guide's practice: an alt opens with the band's words only where the plate draws the band, and those seven draw none, as most failure plates in chapters 01 to 12 draw none.
+- Rule 26.3 walks its five steps in order ("Then its role… Then its emphasis… Then its state…"). It is a procedure, and the order is the point, so the repeated "Then" stays.
+
 ## For the main session
 
 - **Chapter 10.** Run `python3 -I work/build/scripts/phase-2/stage_b_ch10_build.py --no-draw` once, so `s-10-lib-03.html` takes CL-075's sentence from my table (1a). My scratch run shows it changes that one file only.
@@ -170,6 +322,8 @@ Applied this round: one W06, CL-075's sentence in my table.
 - **Rule 11.12 and Rule 18.15 (1d, item 2).** Ask the accessibility lead and the systems designer to settle one markup for the search landmark; my words in 1b follow the `search` element.
 - **Chapter 17.** Pass section 2 to the systems designer (`stage_c_ch17_build.py`) and its two `stage_c_identity_ch17.py` rows to the identity designer. Every row quotes its string, so a row the maker has already rewritten can be skipped.
 - **Chapter 26 (1d, item 3).** When I write its words I will describe `--oa-color-state-error-mark-on-<surface>` as the error bar's color.
+- **Sections 4 to 6.** Pass 4a, 4b and 5 to the accessibility lead; 4c and the three Rule 17.10 rows in 4a to the systems designer; 4d to the component engineer; 6 to the engineer. Two rows need a call before words: Rule 18.11's focus ring, inside the frame as the words say or outside as the code draws it (I recommend inside), and the owner of criteria 3.3.4 and 3.3.7 (I recommend chapter 18, as round 0 set it).
+- **Chapter 26 came to me as a finished draft.** The round 1 brief had me write its words beside the engineer; section 6 is my edit of the engineer's words instead.
 
 ## Routine calls
 
@@ -182,10 +336,16 @@ Applied this round: one W06, CL-075's sentence in my table.
 - D2-xxx | Chapter 17's empty-state count reads the inventory in use | The set grew to 125 and the typed 124 went stale (D2-1278's reason)
 - D2-xxx | Chapter 17's edits go to its makers as a list to apply in their generators, each row quoting its string; I edited no chapter 17 file | The maker is still writing (round 1 brief, item 6)
 - D2-xxx | Rule 05.4's Selected sample follows Rule 17.10 at chapter 05's next build | The round 1 brief makes Rule 17.8's plate the canonical one, and Rule 17.10 sets the look
+- D2-xxx | Where a chapter 18 rule, its anatomy key and its code disagree, the words follow the code, except Rule 18.11's ring, where the rule gives a reason and the code should follow it | The code is what a builder copies; Rule 18.11 says why the ring belongs inside
+- D2-xxx | Rule 17.10 names three current-place looks, a masthead's, a breadcrumb's and a list's, all with bold words, and its plate's list item takes 700 | Chapter 18's code draws all three, and Rule 17.10's spec makes "on" 700
+- D2-xxx | One invented bill keeps one story across the guide, so chapter 18's tracker stops H.99004 in committee and leaves S.99002 to chapter 17's story | Chapter 17 moves S.99002 past its committee vote, and chapter 18's notes set the principle
+- D2-xxx | The criteria list writes "Rule" for one rule and lists several in page order with "and" before the last | The guide's list form, read aloud
+- D2-xxx | A failure alt opens "Failure case: do not publish." only where its plate draws the band | The guide's practice in chapters 01 to 26, checked across all eight manifests
+- D2-xxx | W3C's quoted criterion text in chapter 19 is left exactly as printed; only the guide's own words around it are edited | The main session's instruction and H01's principle for quotations
 
 ## Questions for Dustin
 
-None this round. Every item above is a routine call inside the approved phase, and none touches a locked line or the identity's geometry. The locked lines are exact: in the 02:57 build the tagline appears 13 times, the mission four, the reader promise four and the editorial commitment ten, each word for word, with no near miss.
+None this round, in either pass. Every item above is a routine call inside the approved phase, and none touches a locked line or the identity's geometry. The locked lines are exact: in the 02:57 build the tagline appears 13 times, the mission four, the reader promise four and the editorial commitment ten, each word for word, with no near miss.
 
 ## Tested
 
@@ -199,6 +359,7 @@ None this round. Every item above is a routine call inside the approved phase, a
 - Chapter 17's contrast figures against its figures file (all match); its timings by sum; `tokens.css`'s reduced motion block; Atlas V7's grade for Loop R1's first link (L01, well supported); the guide's titles for chapters 16 and 18; the Media Queries Level 5 quote against the research notes; WCAG 1.4.3's "Incidental" exception in the research notes; where chapters 17 and 18 define forced colors and a quiet button; which chapters open failure captions with "Fails".
 - A script scan for em and en dashes and the listed fillers, hedges, corporate verbs and throat-clearing phrases across chapter 17, `manifest-motion.json`, the changed chapters, both label files and these notes: no real hit. The one run of negatives (W11) I found by reading.
 - The four locked lines across the whole 02:57 build, by script: every use word for word, and no sentence that opens like one and then departs from it.
+- **Second pass (03:47 to 04:01):** a strict scratch build of all 16 chapters (9,538,958 bytes, 185 rules, 420 specimens, 0 warnings); every rule number chapters 18, 19 and 26, their manifests and the 24 code sets cite, checked against the page's rule ids (all exist); every chapter title they print, against the page and the build's chapter table; chapter 18's figures against tokens.json and the files (1.41 for Prussian against Charcoal, 93 KB for tokens.css, 125 symbols, Deep Stone and Dim Newsprint for the secondary text); each disagreement between a rule, its anatomy key and its code read in the code itself (the button's reason line, the masthead's current part and hover, the breadcrumb's current link, the chip and tab weights, the scroll frame's ring, the ID chip's edge and underline, the success message's bar); WCAG 2.2's counts by level and the six new criteria; Master Brief section 22's 14 checks; the round 0 map's owner for 3.3.4 and 3.3.7; tokens.json's 500 tokens against tokens.css's 712 names; the body type's 17 px and 1.6; the top of tokens.css; the loop stepper's sentences against Atlas V7's L01 to L03; the failure alt openings in all eight manifests against whether each plate draws the band; and a script scan of the three chapters, four manifests and the code sets' visible words for dashes and the listed words (no real hit).
 - My own text in these notes, read against chapter 02's rules.
 
 ## Not tested
@@ -209,10 +370,15 @@ None this round. Every item above is a routine call inside the approved phase, a
 - How any of the new words sound read aloud to a real reader, or through a screen reader.
 - `guide_check.js`, which I did not run.
 - Rhetorical triplets and parallel runs, which I checked by reading; no script can rule them out.
-- Chapter 18's words, which are not in this round's task for me.
+- Chapter 18's words, which are not in this round's task for me. (Superseded: section 4 reads them in the second pass.)
+- Chapters 18, 19 and 26 after 03:57, and chapter 26's generator as it stood at 03:49, whose output I did not see.
+- The live code sets in a browser: their states, keyboard paths and status lines as they run. I read their markup, CSS and script strings.
+- The device script's steps on any device; I checked its menus against what I know of each platform only.
+- Each of chapter 19's 55 criterion lines against the rules it cites, beyond spot checks; I checked that each cited rule exists, not that each meets its criterion.
 
 ## Change log
 
 - Created: `work/handoffs/phase-2/20261111_Stage-C-Round-1-Editor-Notes.md` (this file).
 - Modified: `work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json`, CL-075's row after CL-074, the counts (125 rows, 75 CL, 20 topics) and a new `updated` line.
+- Modified in the second pass: this file only, with sections 3b, 4, 5 and 6, the status line, and new lines under the main session, routine calls, Tested, Not tested and this log.
 - Kept in my scratch folder, outside the project: two guide builds, a copy of the tree for the chapter 10 test run and my reading scripts, all under `/tmp/claude-0/-home-user-Dustin-s-Command-Center/42858b21-febe-5543-930e-ed82e286a69e/scratchpad/stage-c-r1/editor/`.

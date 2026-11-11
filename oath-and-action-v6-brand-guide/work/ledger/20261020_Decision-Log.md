@@ -2766,3 +2766,12 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 | D2-1471 | The code block's plate cuts its code at the panel's edge, with no scrolling region | A picture holds no control and no region a reader could need to reach; the real panel scrolls, and its live code plate shows that |
 | D2-1472 | Words inside every anatomy plate may break anywhere they must, and a plate under 24 rem of room takes a narrower stage margin | At 200 percent text the stage left too little room for an unbroken word, and four plates pushed the page sideways |
 | D2-1473 | The code block's panel label takes its callout at its end | At a phone's width the Copy button wraps under the label, and the bracket's callout and the label's would meet |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1474 | Criteria 3.3.4 and 3.3.7 name chapter 18 as their owner in chapter 19's map | Round 0's map set it; the forms and their errors live in chapter 18 (the editor's section 5) |
+| D2-1475 | Rule 18.11's focus ring sits inside the scroll frame, as the rule says; the code changes to match | A ring outside a frame can be cut off by the page around it, and the rule's words are the specification (the editor's section 4) |
+| D2-1476 | Rule 17.10's one look covers pressed, checked and current choices; its words name the exception D2-1152 already set, that links and location lists keep their underline, band and bar | The code draws three current-place looks by design, and the rule must say so (the editor's section 4) |
+| D2-1477 | The editor's 67 edits to chapters 18, 19 and 26 go to their owners: the accessibility lead (18 and 19's words), the component engineer (code and visible words in the sets), the systems designer (anatomy keys), chapter 17's maker (Rule 17.10) and the engineer (26), each through its own generator | One owner per file; the editor's notes, sections 4 to 6 |

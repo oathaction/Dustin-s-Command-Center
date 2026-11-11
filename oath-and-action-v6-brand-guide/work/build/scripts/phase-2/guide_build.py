@@ -948,6 +948,7 @@ class CodeSets:
         self.token_names = token_names
         self.shell_css = shell_css
         self.used = {}
+        self.styled = {}    # round 1: each class a set's CSS styles, and the set that styled it first
 
     def load(self, sid, where):
         if sid in self.used:
@@ -1015,6 +1016,12 @@ class CodeSets:
             w(f"the CSS reads {', '.join(pinned[:4])}, named for one surface or a palette color; read the role's short name, such as "
               f"--oa-color-text-primary or --oa-color-surface, so a surface class and the dark theme reach it (F-1)")
         css_classes = set(re.findall(r"\.(oa-[\w-]+)", css_sel)) | classes
+        # Round 1: in the guide every set's CSS is global, so two sets that style one class restyle each other's demos
+        clash = sorted(c2 for c2 in set(re.findall(r"\.(oa-[\w-]+)", css_sel)) if not c2.startswith("oa-surface-")
+                       and self.styled.setdefault(c2, sid) != sid)
+        if clash:
+            w(f"its CSS styles {', '.join('.' + x for x in clash[:4])}, which code set {self.styled[clash[0]]} also styles; on one page each "
+              f"restyles the other, so give each set's classes its own root")
         shared = sorted(x for x in css_classes if not x.startswith("oa-surface-") and re.search(r"\." + re.escape(x) + r"(?![\w-])", self.shell_css))
         if shared:
             w(f"the guide's shell also styles {', '.join(shared[:5])}, so the guide would draw it differently from a copy")
@@ -3105,9 +3112,12 @@ def self_test():
         "c-01-r1bad.html": '<nav class="oa-r1b" aria-label="Bad"><p class="oa-r1b-p">Bad.</p></nav>\n',
         "c-01-r1bad.css": ".oa-r1b nav, .oa-r1b-p { color: white }\n.oa-r1b > search { display: block }\n",
         "c-01-r1bad.head.js": "import x from './x.js';\n",
+        "c-01-r1clash.html": '<p class="oa-r1-p">A second set that styles the first set\'s class.</p>\n',
+        "c-01-r1clash.css": ".oa-r1-p { color: var(--oa-color-text-secondary) }\n",
     }
     r1_01 = chapter("01", "purpose", "Purpose", [rule("01.1", {"code": {"set": "c-01-r1", "name": "Round 1 fixture"}}),
-                                                 rule("01.2", {"code": {"set": "c-01-r1bad", "name": "Round 1 faults"}})])
+                                                 rule("01.2", {"code": {"set": "c-01-r1bad", "name": "Round 1 faults"}}),
+                                                 rule("01.3", {"code": {"set": "c-01-r1clash", "name": "A class clash"}})])
 
     def stage_of(pg, theme):
         m = re.search(r'data-specimen="c-01-r1--' + theme + r'".*?<div class="code-root">(.*?)</div></div></div>', pg, re.S)
@@ -3188,7 +3198,8 @@ def self_test():
         ("round 1, code to copy: names per stage, color words, the switch's target, the head script, and landmarks drawn as groups (AX-S8)",
          {"01-purpose.json": r1_01}, {"code": r1_code},
          {"warn": ["c-01-r1bad: the selector \".oa-r1b nav\" names <nav> by its tag", "c-01-r1bad: the head script holds an import",
-                   "c-01-r1bad: the CSS sets 1 literal color(s) (white)"],
+                   "c-01-r1bad: the CSS sets 1 literal color(s) (white)",
+                   "c-01-r1clash: its CSS styles .oa-r1-p, which code set c-01-r1 also styles"],
           "absent": ["code set c-01-r1:", "c-01-r1bad: the selector \".oa-r1b > search\""],
           "html": ['name="c-01-r1--light--oa-r1-view"', 'name="c-01-r1--dark--oa-r1-view"', 'name="c-01-r1--dark--oa-r1-pick"',
                    'data-oa-theme-for="c-01-r1--light--oa-r1-page"', 'data-oa-theme-for="c-01-r1--dark--oa-r1-page"',

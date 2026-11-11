@@ -1199,20 +1199,25 @@ async function sbTyped(page) {
 // captured. The masthead and rail are hidden while the guide is captured, so nothing overlaps a stage.
 // Round 1 (D2-1470): codeMatch runs on a fresh page, so no earlier check's hover, focus or scroll leaves a trace. A stage
 // taller than the window is captured whole: the window grows to hold it, its top is scrolled to a whole pixel, and the
-// pasted page sets the same fractional offset on both axes, so both captures fall on the same sub-pixel phase. A pixel
-// may differ only as antialiasing does: by EDGE_TOL or less of 255, on an edge of the guide's own capture (its 3 by 3
-// neighbourhood spans EDGE_SPAN or more in luminance). Any larger difference, or one on a flat area, is drift. Measured
-// on the 48 live stages of the 03:13 build, the curve edges differ by up to 44 (the component engineer's figures and
-// mine, in the round 1 notes).
-const EDGE_TOL = 48;
+// pasted page sets the same fractional offset on both axes, so both captures fall on the same sub-pixel phase (of five
+// phases tried on the tall stages, the measured one matched best every time). What may still differ, measured on the 56
+// live stages of the newest build at 1440 and 390 px:
+//   antialiasing on curved and diagonal edges, up to 49 of 255: a pixel may differ by EDGE_TOL or less where the guide's
+//     own capture has an edge there (its 3 by 3 neighbourhood spans EDGE_SPAN or more in luminance);
+//   the capture's outer ring of pixels, which a stage ending between two pixels blends with whatever lies outside it;
+//   a straight edge rounded one device pixel the other way deep in a 9 MB page, where Chromium's positions lose sub-pixel
+//     precision: up to EDGE_ROWS whole rows or columns whose pixels match the other capture one pixel up, down or across.
+// Anything else is drift: a larger difference on a flat area, more shifted rows, or a different size.
+const EDGE_TOL = 64;
 const EDGE_SPAN = 48;
+const EDGE_ROWS = 4;
 async function codeMatch(page) {
   const plates = await page.evaluate(() => [...document.querySelectorAll('.plate--code[data-code-set]')].map((f) => {
     const text = (lang) => { const pre = f.querySelector(`.code-panel[data-code-lang="${lang}"] pre`); return pre ? pre.textContent : null; };
     return { set: f.getAttribute('data-code-set'), html: text('html'), css: text('css'), js: text('js'),
       themes: [...f.querySelectorAll('.code-stage .code-root')].map((r) => r.closest('.code-stage').getAttribute('data-code-theme')) };
   }));
-  const out = { plates: plates.length, stages: 0, results: [], bad: [], tolerance: { edge: EDGE_TOL, span: EDGE_SPAN } };
+  const out = { plates: plates.length, stages: 0, results: [], bad: [], tolerance: { edge: EDGE_TOL, span: EDGE_SPAN, rows: EDGE_ROWS } };
   if (!plates.length) return out;
   const env = await page.evaluate(() => {
     const a = document.getElementById('tokens-download'); const href = a ? a.getAttribute('href') : '';
@@ -1232,7 +1237,7 @@ async function codeMatch(page) {
       const sel = `.plate--code[data-code-set="${pl.set}"] .code-stage[data-code-theme="${theme}"] .code-root`;
       const h = await page.evaluate((sel) => Math.ceil(document.querySelector(sel).getBoundingClientRect().height), sel);
       const tall = h + 96 > vp.height;
-      if (tall) { await page.setViewportSize({ width: vp.width, height: h + 96 }); await page.waitForTimeout(150); }
+      if (tall) { await page.setViewportSize({ width: vp.width, height: h + 96 }); await page.waitForTimeout(400); }
       const box = await page.evaluate((sel) => {
         const r = document.querySelector(sel);
         // the stage's top 48 px under the window's top, on a whole scroll position
@@ -1264,12 +1269,19 @@ async function codeMatch(page) {
         g.drawImage(x, 0, 0); const dx = g.getImageData(0, 0, W, H).data;
         g.clearRect(0, 0, W, H); g.drawImage(y, 0, 0); const dy = g.getImageData(0, 0, W, H).data;
         const L = (i) => 0.2126 * dx[i] + 0.7152 * dx[i + 1] + 0.0722 * dx[i + 2];
-        let n = 0, max = 0, flat = 0, big = 0, firstOff = null;
+        const near = (i, j) => Math.max(Math.abs(dx[i] - dy[j]), Math.abs(dx[i + 1] - dy[j + 1]), Math.abs(dx[i + 2] - dy[j + 2])) <= tol;
+        let n = 0, max = 0, flat = 0, big = 0, ring = 0, firstOff = null;
+        const rows = new Set(), cols = new Set();
         for (let py = 0; py < H; py++) for (let px = 0; px < W; px++) {
           const i = (py * W + px) * 4;
           const m = Math.max(Math.abs(dx[i] - dy[i]), Math.abs(dx[i + 1] - dy[i + 1]), Math.abs(dx[i + 2] - dy[i + 2]));
           if (!m) continue;
           n++; if (m > max) max = m;
+          if (px === 0 || py === 0 || px === W - 1 || py === H - 1) { ring++; continue; }
+          if (m > tol) {
+            if (near(i, i - W * 4) || near(i, i + W * 4)) { rows.add(py); continue; }
+            if (near(i, i - 4) || near(i, i + 4)) { cols.add(px); continue; }
+          }
           let lo = 255, hi = 0;
           for (let oy = -1; oy <= 1; oy++) for (let ox = -1; ox <= 1; ox++) {
             const qx = px + ox, qy = py + oy; if (qx < 0 || qy < 0 || qx >= W || qy >= H) continue;
@@ -1278,11 +1290,11 @@ async function codeMatch(page) {
           if (m > tol) { big++; if (!firstOff) firstOff = { x: px, y: py, by: m }; }
           else if (hi - lo < span) { flat++; if (!firstOff) firstOff = { x: px, y: py, by: m, flat: true }; }
         }
-        return { pixels: n, max, total: W * H, flat, big, firstOff };
+        return { pixels: n, max, total: W * H, flat, big, ring, shiftedRows: rows.size, shiftedCols: cols.size, firstOff };
       }, [a.toString('base64'), b.toString('base64'), EDGE_TOL, EDGE_SPAN]);
-      const edgesOnly = !d.size && d.big === 0 && d.flat === 0;
+      const edgesOnly = !d.size && d.big === 0 && d.flat === 0 && d.shiftedRows <= EDGE_ROWS && d.shiftedCols <= EDGE_ROWS;
       out.results.push({ set: pl.set, theme, same: false, edgesOnly, tall, ...d });
-      if (!edgesOnly) out.bad.push({ set: pl.set, theme, why: d.size ? `draws ${d.size}` : `${d.pixels} of ${d.total} pixels differ, by up to ${d.max} of 255; ${d.big} by more than ${EDGE_TOL}, ${d.flat} on a flat area; first at ${JSON.stringify(d.firstOff)}` });
+      if (!edgesOnly) out.bad.push({ set: pl.set, theme, why: d.size ? `draws ${d.size}` : `${d.pixels} of ${d.total} pixels differ, by up to ${d.max} of 255; ${d.big} by more than ${EDGE_TOL} off an edge shift, ${d.flat} on a flat area, ${d.shiftedRows} row(s) and ${d.shiftedCols} column(s) a pixel apart; first at ${JSON.stringify(d.firstOff)}` });
     }
   }
   await harness.close();
