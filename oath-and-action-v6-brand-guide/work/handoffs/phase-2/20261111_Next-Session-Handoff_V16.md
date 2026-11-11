@@ -28,7 +28,7 @@ Written November 11, 2026, after Gate 2's preview, reviews, fix pass and rescore
 
 ## 2. Next, in order
 
-### A. The Gate 2 report (this is the one job left before the gate)
+### A. The Gate 2 report: written November 11 at `work/ledger/20261111_Gate-2-Report.md` (D2-1877) and waiting for Dustin's reply. If he approves in a new chat, record the approval and start Phase 3. The checklist below is what the report holds
 Write `work/ledger/20261111_Gate-2-Report.md` under `CLAUDE.md`'s gate rule 2 and the Gate 1 report's section 9, item 6. Say which steps an agent did and which the main session did. Sources, all in `work/handoffs/phase-2/` unless named:
 1. **What was done:** this note's section 1; the Gate 2 brief and fix brief; every owner's notes.
 2. **The boards to open:** the chapters page, version 8, and the Gate 2 board (section 1's table). Both are private; say so.
@@ -36,7 +36,7 @@ Write `work/ledger/20261111_Gate-2-Report.md` under `CLAUDE.md`'s gate rule 2 an
 4. **Evidence Gate 1 asked for:** before and after for each approved refinement, icon craft checks, similarity sheets, contrast for every token on every surface (341 pairs, 0 failures), the token parity test, screenshots at 1440 and 390 px with keyboard and reduced-motion checks: point to the board's panels and `work/boards/phase-2/gate-2/evidence/`.
 5. **Decisions made:** DR-225 to DR-228 by name; the main session's calls D2-1696 to D2-1723, D2-1823, D2-1875 and D2-1876; owners' calls D2-1724 to D2-1874 by group.
 6. **Open questions:** Q-04, Q-12. The four Phase 3 questions are answered (DR-229 to DR-232); print them as answered.
-7. **Tested and Not tested,** from every notes file (the board's panel 9 has them gathered), with DR-213's four device scripts, real screen readers, Windows High Contrast, 200 percent zoom, 320 px reflow and touch under Not tested.
+7. **Tested and Not tested,** from every notes file (the board's panel 9 has them gathered), with DR-213's four device scripts, real screen readers, Windows High Contrast, 320 px reflow and touch under Not tested (text at 200 percent was run at three widths for chapter 19's results).
 8. **Risks:** page weight for Phases 3 to 5 (D2-1214, DR-227); Missouri.
 9. **The Phase 3 proposal:** `20261111_Phase-3-Proposal-Draft.md`, in full or summarized with its tables, and its four questions with recommendations (the board's panel 1 carries the same words).
 10. **Change log** of both chats.
@@ -88,12 +88,13 @@ How to work with me:
 
 Created, all under `work/` unless named:
 - **Briefs:** `handoffs/phase-2/20261111_Gate-2-Brief.md`, `20261111_Gate-2-Fix-Brief.md`.
+- **The Gate 2 report:** `ledger/20261111_Gate-2-Report.md`.
 - **Reports and notes:** `20261111_CD-Gate-2-Whole-Guide-Read.md` with `20261111_Gate-2-CD-Scores.json` and `-CD-Rescores.json`; `20261111_Gate-2-Red-Team-Drift.md`; `20261111_Gate-2-Accessibility-Evidence.md`; `20261111_Gate-2-Engineer-Notes.md`; `20261111_Gate-2-Editor-Notes.md`; `20261111_Gate-2-Board-Builder-Notes.md`; `20261111_Gate-2-Fix-Components-Notes.md`, `-Fix-Accessibility-Notes.md`, `-Fix-Systems-Notes.md`, `-Fix-Identity-Notes.md`; `20261111_Gate-2-Ch19-Results.json`; `20261111_Phase-3-Proposal-Draft.md`; this handoff.
 - **Front matter and fonts:** `build/guide/front/where-to-start.json`, `edition.json` and the demo front file; `build/assets/fonts/` (six WOFF2 files, three OFL texts, the manifest); `build/scripts/phase-2/fonts_fetch.py`, `font_fidelity_check.js`, `gate_2_board_build.py`, `gate_2_board_render.js`; `build/tests/tokens/token_parity_evidence.py`.
 - **Pages:** `boards/phase-2/gate-2/20261111_Gate-2-Preview.html` with its build report and check results; `boards/phase-2/gate-2/evidence/` (contrast table, keyboard, motion and forced-colors records, 251 PNGs, parity, sprite and font results); `boards/phase-2/gate-2/board/` (the board, its content, figures, check results and 193 images).
 
 Modified:
-- `ledger/20261020_Decision-Log.md` (DR-225 to DR-228, D2-1696 to D2-1876), `ledger/20261020_Change-Ledger.md` (C-087 to C-091), `research/20261020_Rights-Ledger.md` (the three font file rows).
+- `ledger/20261020_Decision-Log.md` (DR-225 to DR-232, D2-1696 to D2-1877), `ledger/20261020_Change-Ledger.md` (C-087 to C-091), `research/20261020_Rights-Ledger.md` (the three font file rows).
 - Tokens to 6.0.0-gate2.9 (`build/tokens/`), with the token tests and their results.
 - Chapters 01 to 12, 17, 18, 19 and 26 and the identity proofs through their generators, with their specimens and manifests; chapter 18's code sets and keys files.
 - `guide_build.py`, `guide_check.js`, the shell (`build/guide/shell/`).
