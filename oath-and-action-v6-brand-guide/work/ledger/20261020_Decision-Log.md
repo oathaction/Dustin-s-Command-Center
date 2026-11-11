@@ -2580,3 +2580,9 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 |---|---|---|
 | D2-1346 | Rule 10.9's closest pair of fits is read from the icon designer's figures and stored in the figures file as `fits_closest` | The editor's sentence names the pair; a name typed by hand would go stale if the fits change |
 | D2-1347 | Rule 11.12's builders line ends "Rule 18.15 is the search's home, with every state and its code to copy." | D2-1344 asks Rule 11.12 to link to Rule 18.15 as the component's home; the editor's sentence names the rule for its markup only |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1348 | Chapter 18's 24 anatomy plates go to the systems designer instance that finished chapters 05, 10 and 11, in `manifest-anatomy.json` through its own generator, while chapter 17's maker finishes the editor's edits | The plates are the strict build's only warnings, and that designer is free; the round 1 brief gave them to the systems designer once chapter 17 had a draft, which it has |

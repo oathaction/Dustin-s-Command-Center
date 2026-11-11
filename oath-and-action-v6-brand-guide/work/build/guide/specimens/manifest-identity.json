@@ -587,10 +587,10 @@
   "rule": "17.6",
   "alt": "Failure case: do not publish. The last frames of the hinge and the lever landing, half a pixel below their masters, beside the masters at true size: the wordmark at 24 pixels and the lockmark at 48 pixels. Below, enlarged six times from a 1x screen: the lockmark half a pixel low, whose one pixel links have each spread into two rows of gray and whose nodes have blurred, beside its crisp master; then the first letters of the wordmark, whose top and bottom edges have gone gray, beside the master.",
   "illustrative": false,
-  "notes": "Failure for Rule 17.6, for the hinge and the lever: a last frame off its master by half a pixel. The true-size marks sit under 0.5 px of padding; the enlargements are Chromium's 1x renders of the same masters, embedded as PNG and drawn with pixelated scaling, since a 2x screen hides the fault. The wordmark's enlargement keeps its first 104 px. check_exempt scale: the enlargements show pixels on purpose. Written by stage_c_identity_ch17.py.",
+  "notes": "Failure for Rule 17.6, for the hinge and the lever: a last frame off its master by half a pixel. The true-size marks are moved down with transform: translateY(0.5px), since Chromium snaps an svg's box to whole pixels but not a transform; the enlargements are Chromium's 1x renders of the same masters, embedded as PNG and drawn with pixelated scaling, since a 2x screen hides the fault. The wordmark's enlargement keeps its first 104 px. check_exempt scale: the enlargements show pixels on purpose. Written by stage_c_identity_ch17.py.",
   "check_exempt": [
    "scale"
   ],
-  "caption": "Last frames that come to rest half a pixel low, because the player centers each mark in a box one pixel taller than the mark. On a 1x screen the lockmark’s links turn into gray bands and the wordmark goes soft, so each last frame is a second version of its mark."
+  "caption": "Last frames that come to rest half a pixel low, because the player centers each mark with a transform in a box one pixel taller than the mark. On a 1x screen the lockmark’s links turn into gray bands and the wordmark goes soft, so each last frame is a second version of its mark."
  }
 }
