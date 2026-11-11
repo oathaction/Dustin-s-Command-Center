@@ -2868,3 +2868,13 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 | # | Decision | Reason |
 |---|---|---|
 | D2-1530 | The one `codeMatch` failure was the check's, not the page's: the pixel sits where Pillar Red meets the Charcoal keyline, an edge the check missed because it judged edges by luminance alone; it now judges them by any channel. Rerun by the engineer on a fresh strict build of 10ba650b: 0 warnings; `guide_check.js` at four widths 0 failures; self-test 107 of 107 planted faults caught and 32 of 32 allowed cases left alone. The page is unchanged, so the published preview (D2-1528) is the checked build | The retry Dustin asked for; a failure is fixed at its cause |
+
+## Answers on the open recommendations, November 11, 2026
+
+Dustin, after the round 1 preview: "i approve all recs." The studio reads this as each open recommendation approved as written, by name.
+
+| # | Decision | Source |
+|---|---|---|
+| DR-216 | Rule 12.4's hinge arcs retire. Rule 12.4 keeps its number and title and is rewritten as the creative director drafted it: leave an open area plain, or sign it with the large crop of B or a watermark; no new pattern. The identity designer's rewrite (`stage_b_identity_ch12.py`, comparison in `work/handoffs/phase-2/stage-c-identity/20261111_Rule-12-4-Comparison*`) goes into chapter 12 in round 2's fix pass. This overrides Gate 1's approval of patterns (Y6) | Dustin, November 11, as recommended (D2-1277; `20261111_CD-Review-Of-Rule-12-4.md`) |
+| DR-217 | L3 under 40 px tall on screen keeps the pixel masters, so the 196 px minimum stays at 2.43 cap heights; the print L3 of DR-210 serves print and the screen widths the display masters allow, all but the 282 px masthead | Dustin, November 11, as recommended (D2-1329) |
+| DR-218 | The token release 6.0.0-gate2.8 cleans every description a reader sees (the loading mark's, and those carrying studio codes or retired names), and the error mark's token is renamed `oa.color.state.error.bar` with the old CSS name kept as an alias for one release, both in round 2's fix pass before the token table is frozen for board C | Dustin, November 11, as recommended (D2-1524, D2-1525; the engineer's round 1 notes) |

@@ -1,6 +1,6 @@
 # Handoff for the next session: Oath & Action Edition 06 (fourteenth handoff, November 11)
 
-Written November 11, 2026, after drawings board C's promotion and stage C's round 1. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `20261110_Next-Session-Handoff_V13.md`. V5's sections 3 to 5 and section 3 of V8 to V13 still hold, with the additions below. Decision log entries for this chat run from DR-213 to DR-215 and from D2-1260 on. The change ledger runs to C-071.
+Written November 11, 2026, after drawings board C's promotion and stage C's round 1. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `20261110_Next-Session-Handoff_V13.md`. V5's sections 3 to 5 and section 3 of V8 to V13 still hold, with the additions below. Decision log entries for this chat run from DR-213 to DR-218 and from D2-1260 to D2-1530. The change ledger runs to C-071.
 
 ## 1. Where things stand
 
@@ -28,10 +28,12 @@ Written November 11, 2026, after drawings board C's promotion and stage C's roun
 
 **For round 2's reviewers, noted by the main session:** chapter 26's token table stacks every row at desktop widths (D2-1529); `codeMatch` allows edge differences up to 49 of 255 (D2-1526); the dark-card feed test's 2 by 2 block (D2-1331); the token description release and the error bar rename (D2-1524, D2-1525).
 
-**For board C** (round 2's decisions board):
-- Rule 12.4: retire the hinge arcs and rewrite the rule (the creative director's recommendation, `20261111_CD-Review-Of-Rule-12-4.md`; the identity designer's comparison in `stage-c-identity/20261111_Rule-12-4-Comparison*`), or keep them with five fixes. Named, since it overrides Gate 1's Y6 (D2-1277).
-- L3 under 40 px tall keeps the pixel masters, so the 196 px minimum stays at 2.43 cap heights (D2-1329): one line to confirm.
-- The engineer's proposal to rename the error mark's token to the error bar's (D2-1345 and its notes), if round 2 agrees.
+**Approved after the preview (DR-216 to DR-218)**, Dustin: "i approve all recs":
+- DR-216: Rule 12.4's hinge arcs retire and the rule is rewritten as the creative director drafted it; the identity designer wires its rewrite into chapter 12 in round 2's fix pass.
+- DR-217: L3 under 40 px tall keeps the pixel masters; the 196 px minimum stays at 2.43 cap heights.
+- DR-218: token release 6.0.0-gate2.8 cleans the reader-facing descriptions, and the error mark's token becomes `oa.color.state.error.bar` with a one-release alias, both in round 2's fix pass.
+
+Board C still carries any call round 2 raises, and shows chapter 12 with DR-216 in place.
 
 **Carried.** Missouri's certified count, at the Gate 2 preview (D2-1118; the county deadline is November 17). The dark-card feed test's 2 by 2 block count, for the creative director in round 2 (D2-1331). The proofs' card 0.16 px off the pixel grid (D2-1332). Open questions Q-04, Q-11 and Q-12.
 
@@ -69,7 +71,7 @@ Before you do anything else, read these in order:
 
 Nonpartisan means one standard of evidence for everyone, with findings reported as the record shows them, even when they fall more on one side (DR-93). Never manufacture balance.
 
-Settled and not to be changed: the Civic Line icons, which are final and approved (DR-144), with the redraws and new drawings I approved on the drawings boards (DR-156 to DR-182, DR-207 to DR-211); the atlas visual system (System 1, DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and Phase 3 build order (DR-62, DR-63); the chart rules of DR-64; chapter 02's writing rules (DR-73 to DR-83); and every answer I have given from DR-95 on.
+Settled and not to be changed: the Civic Line icons, which are final and approved (DR-144), with the redraws and new drawings I approved on the drawings boards (DR-156 to DR-182, DR-207 to DR-211, DR-216, DR-217); the atlas visual system (System 1, DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and Phase 3 build order (DR-62, DR-63); the chart rules of DR-64; chapter 02's writing rules (DR-73 to DR-83); and every answer I have given from DR-95 on.
 
 Round 1 of stage C is built. Run round 2, board C and the Gate 2 preview as the fourteenth handoff orders.
 
