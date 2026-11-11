@@ -3381,3 +3381,76 @@ The main session asked five questions with its plan for the Gate 2 preview, the 
 | # | Decision | Reason |
 |---|---|---|
 | D2-1823 | The chapters page is republished privately at https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF as version 8 (1794425535-1c5e), the Gate 2 preview (DR-225): `work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html`, 9,447,454 bytes, SHA-256 f9694c0f…de75fd, built from commit 69c7bcf5 with R1 to R3. Before it the main session diffed the live version 7 against commit 043ad4d8 (only the host's three wrapper lines differed) and read its last lines; scanned the new build (no network calls, no em dashes or U+2011 in its text, no private paths, outside links only in license texts, sources and code samples, storage written only by the theme switch); and looked at the first screens of "Where to start", chapters 03 and 05 and the colophon at 1440 px. The four-width guide check ran on the build before chapter 19's rerun (0 failures, committed at 6f4bf13c); the quick check at 1440 and 390 px ran on the published build (0 failures) | DR-225; every file is seen before it is published |
+
+### Engineer, the Gate 2 preview, fix pass and final build (`20261111_Gate-2-Engineer-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1824 | guide_build.py writes the Gate 2 preview by default; version 7's page stays as its record and is never rebuilt | One 9 MB page per round in the repository; the five scripts that name the old path build earlier boards from version 7 on purpose |
+| D2-1825 | Keep the latin and latin-ext subsets of each family, and leave out cyrillic, greek, vietnamese, math and symbols | Every character on the page sits in latin, and a rendered run loaded only latin faces; latin-ext covers accented names a later chapter may print |
+| D2-1826 | One @font-face per file over the weights Google declares for it (Inter 400 to 700, Inter Tight 600 to 800, Lora italic 400 to 500), in place of Google's one rule per weight | Each variable file goes in once; nineteen elements drawn both ways matched version 7 pixel for pixel |
+| D2-1827 | Store the font files under dated names, with each Google URL, size and SHA-256 in the manifest | The project's file naming; the bytes stay as served, and the manifest ties each file to its source |
+| D2-1828 | Fetch with a desktop Chrome 153 user agent | The version of the Chromium the checks run in; Google serves other files to other agents |
+| D2-1829 | Fixture builds over test chapters keep the Google Fonts link; the guide's own and --demo builds embed | The build's earlier self-test scenarios stay as written; the guide check's self-test plants font faults on a demo that carries its fonts |
+| D2-1830 | The fonts weigh as a part of their own, budget 0.5 MB, out of the head's 0.2 MB | The head's budget was set before the fonts moved in |
+| D2-1831 | The front page takes the Gate 1 wireframe's anchor, #start, and heading id, #start-h | The approved wireframe named them |
+| D2-1832 | Each step is one link, with a line the build writes from the page saying where it leads (Rule NN.n or Chapter NN, then the chapter's name) | A newcomer sees where a step goes before opening it, and learns how the guide numbers its rules |
+| D2-1833 | Routes side by side from 90em, as rows from 48em, stacked on phones under a line of the three route names | Three columns fit only from 1440 px; a phone reader reaches the third route in one press |
+| D2-1834 | The later step takes the secondary ink and no link, with no second "later" marker | Its words already say it comes later (the editor's and the main session's note) |
+| D2-1835 | A step carries its own way back: "Return to step N of <route>, Where to start" | A reader walks a route one step at a time without losing their place |
+| D2-1836 | A target inside a specimen gets its way back right after its plate | The two house-rule steps opened Rule 02.22's plate with the way back at the top of chapter 02, out of the Tab path; chapter 01's word list links gain the same fix |
+| D2-1837 | The license texts open in disclosures on details and summary, the shell's copy of Rule 18.8's code set | Chapter 18's own rule for opening a part in place; no script needed |
+| D2-1838 | The license paragraphs reflow, each heading on its own line, hyphen rules as hairlines | The file's hard line ends broke into ragged pairs at 390 px; the words stay the file's, which fonts_fetch.py checks |
+| D2-1839 | The editor's edition and colophon words live in work/build/guide/front/edition.json | Words go into data files, never the output (the generator trap) |
+| D2-1840 | The guide check's code harness takes the page's own @font-face block | The pasted copy draws with the same files and asks no server, so the pixel match stays fair |
+| D2-1841 | The four-width guide check runs with --no-captures | The accessibility lead's evidence holds the board's screenshots; the captures folder would add about 19 MB to the repository |
+| D2-1842 | Token parity evidence goes to work/boards/phase-2/gate-2/evidence/20261111_Token-Parity-Results.json, written by token_parity_evidence.py | The board builder reads it there, with the page's own copies of both token files checked against them |
+| D2-1843 | Files drop studio sources and the inventories beside the assets with a build note, and warn only on an entry the build cannot place | The brief asks both that makers leave their files data alone and that strict catches stray entries; a known studio path is dropped, an unknown one fails |
+| D2-1844 | A folder of assets prints as its own name and its count of files | It ships as a set; its name and count say what a reader will find |
+| D2-1845 | The guide embeds the single-weight Inter Tight 800 files Google serves for Rule 06.1's link, not the variable file | Chapter 26 now says the guide carries the files a product loads; letters keep their places, edge pixels differ by up to 57 of 255; 73,976 bytes fewer |
+| D2-1846 | Inter is declared over 400 to 700 in one rule per file | One rule per file keeps each file once; the set's three weights draw as before |
+| D2-1847 | The newcomer's pillar row ends its Charcoal panel, after the lede | It leads into step 1, the pillars; a row above the route's name would read as a kicker, which Rule 09.4 keeps the row out of |
+| D2-1848 | The routes' line separates its links with dots hidden from screen readers, each link 24 px tall | Rule 18.5's link in a line of text; the list carries the count to a screen reader |
+| D2-1849 | The appendix's location line reads "After chapter 26" | "Appendix" now stands in the title's number place |
+| D2-1850 | Chapter 26's failure bar goes on 26.1, 26.5 and 26.6, and not on 26.2, 26.3, 26.7 and 26.8 | The first three draw a control, a page and a card; the other four draw a method |
+| D2-1851 | Token release 6.0.0-gate2.9, descriptions only, with a "repeats" record on the error bar that the rule test reads | Rule 26.8 raises the number after the hyphen for any change before 6.0.0; the test must know why the bar takes no keyline |
+| D2-1852 | The token table's status line keeps two lines of room under 48em | A longer message no longer moves the focused Copy button (AX-4) |
+| D2-1853 | The guide check's new tests are failureLead and filesShip, run at the first width | One reading of the page answers both |
+| D2-1854 | The demo chapter's failure captions lead "Fails Rule 01.1." and "Fails Rule 01.2." | The clean demo must pass the guide check's new caption test |
+| D2-1855 | A scroll frame on the mat keeps the Charcoal ring, drawn inside with Rule 18.11's 2 px gap | The focus ring token measures 2.98 to 1 on the mat; Charcoal measures 11.76 |
+| D2-1856 | The colophon becomes a tracked region with its own way back | A step or cross-reference into the colophon then offers the way back, and the rail marks it current |
+| D2-1857 | The guide check's caption test lets the shell's Illustrative label stand before "Fails Rule" | The label is the shell's (C-S8); the caption's own words still lead with the rule |
+
+### Engineer, the second pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1858 | The need records in tokens.json write their ratios as "to 1" too | They ship in tokens.json beside the descriptions; one form throughout the file |
+| D2-1859 | Token release stays 6.0.0-gate2.9 for these description fixes | The release has not shipped; its change note names them |
+| D2-1860 | snapStages() snaps openers, the pillar row's icons and the sign-off's lockmark, each icon on its own | Each pixel-grid master lands on whole device pixels at 1x without fixing the words' widths |
+| D2-1861 | An opener sits 32 px under the intro, with 24 px of mat above and below its stage | Lifts every opener 56 px toward the first screen; a plate inside the chapter keeps its 64 px |
+
+### Board builder, the Gate 2 board (`20261111_Gate-2-Board-Builder-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1862 | The board inlines `board-base.css` under `tokens.css` and its own styles, and links neither | One file publishes whole; Phase 2 boards inline the tokens (board C), and board-base's rules for true size, pixelated enlargements and proposals beside originals still apply |
+| D2-1863 | A "2x view" is the 1x render's own pixels shown at twice the size, with image-rendering: pixelated, for the fifth edition and Edition 06 alike | The fifth edition exists here only as 1x proofs, so a fair pair enlarges the same kind of picture on both sides; it shows where each edge lands |
+| D2-1864 | Drawings unchanged since the identity proofs reuse those proofs; masters changed or added since (the lockmark's 24 and 48 px outlines, the print L3, the White wordmark at 96 px, the pillar and 24 px fits, Housing, Pause and Filter) are drawn fresh from today's files | A test showed the board's renderer matches the proofs pixel for pixel at 16 px (largest difference 0), so either route gives the same picture; fresh draws show what ships |
+| D2-1865 | The fifth edition's topic symbols and pillar marks at 48 px are drawn from `work/boards/sprite-sheet.html`, the fifth edition's sprite | `source/` is not in this container; the sprite draws V5's wordmark and lockmark exactly as the identity proofs show them (largest difference 0) |
+| D2-1866 | Civic Line stands beside the fifth edition's topic symbols only where a subject has the same name in both sets (five: local government, public records, health care, contact an official, testify), with all twenty V5 symbols in a row below | No one-to-one map from V5's twenty to Civic Line was approved (DR-137 made the 72 the set), and the board invents none |
+| D2-1867 | The pillar marks show three columns: V5, Gate 1's Direction A, and the Civic Line icons in use | Gate 1 approved Direction A (Y1), and DR-04 replaced it on October 29; the record needs both steps |
+| D2-1868 | The board reruns the pixel-fit check on today's in-use files (37 fits and four pillar fits at 24 px, four pillar fits at 16 px, 18 utility icons at 16 and 24 px, Housing at 48 px) rather than quoting November 10's QA files | The in-use fits were promoted on November 11, after the QA run |
+| D2-1869 | The keyboard walks show the first stop of each part and every stop whose focus was not fully clear, at true size; every stop is listed in a table | 195 full screenshots would add about 20 MB and bury the stops that matter |
+| D2-1870 | The accessibility lead's findings print by title on panel 7, and the drift team's Must fix and Should fix by title on panel 8, with their IDs in the reference lines | Dustin sees what the reviews found without leaving the board; the reports hold the fixes and owners |
+| D2-1871 | The board shows only the in-use 37 fits' likeness flags from November 10's run, and says so | The flagged pair is the same drawing; the score was not rerun on the November 11 files |
+| D2-1872 | Repeated pictures (sheets, strips, the 390 px openers, motion frames) are composed into one PNG each, every part at true size on whole pixels with its label set in Inter under it | Brings the folder under 250 files for one publish without shrinking any picture |
+| D2-1873 | The board takes the opening screens itself from the final preview instead of the accessibility lead's earlier set | The chapters now open on new plates, and the board must show the build Dustin reads |
+| D2-1874 | Teammates' Tested and Not tested lists are quoted as written; the board's word and path checks skip them | A quoted filler word or a file:// in a test note is the teammate's record, not the board's voice |
+
+### Main session, the Gate 2 board
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1875 | The Gate 2 board is published privately at https://claude.ai/artifact/G5WXqE2mfkpxdBSCdwSHnZ (1794425730-4e65): the HTML and its 193 images, all referenced. Before it the main session scanned the HTML (no scripts, no em dashes, no private paths, outside requests only to Google Fonts as every board makes, D2-49) and looked at a contact sheet of all 193 images | D2-1699; every file is seen before it is published |
+| D2-1876 | The Gate 2 report is written by the next chat from this chat's files, with the context it needs; this chat hands off after both pages are published | The handoffs' rule: hand off after each board |
