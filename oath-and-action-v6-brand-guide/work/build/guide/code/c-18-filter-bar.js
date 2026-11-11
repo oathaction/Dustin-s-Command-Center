@@ -1,5 +1,6 @@
 // Filter bar. Filters opens and closes the sheet of chips (aria-expanded), and its name counts the chips that are on.
 // Within a group, chips widen the list (any one may match); across groups, each group that has a chip on must match.
+// Each item names its values for a group in data-oa-<group>, separated by spaces.
 // The status line gives the count, with its advice when nothing matches. Clear filters turns every chip off, hides
 // itself and sends focus to Filters, since the button the reader pressed is gone.
 (function () {
@@ -18,7 +19,8 @@
       items.forEach(function (li) {
         var hit = groups.every(function (g) {
           var wanted = Array.prototype.filter.call(g.querySelectorAll('.oa-filters-chip'), on).map(function (c) { return c.getAttribute('data-oa-filter'); });
-          return !wanted.length || wanted.indexOf(li.getAttribute('data-oa-' + g.getAttribute('data-oa-group'))) >= 0;
+          var has = (li.getAttribute('data-oa-' + g.getAttribute('data-oa-group')) || '').split(' ');
+          return !wanted.length || wanted.some(function (w) { return has.indexOf(w) >= 0; });
         });
         li.hidden = !hit;
         if (hit) n++;

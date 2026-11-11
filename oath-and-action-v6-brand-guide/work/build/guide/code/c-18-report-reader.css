@@ -59,6 +59,7 @@
   background: var(--oa-color-state-error-band, transparent); color: var(--oa-color-state-error-text);
   border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-mark); font: var(--oa-type-body-small) }
 .oa-reader-error b { font-weight: var(--oa-font-weight-bold) }
+.oa-reader-error > span, .oa-reader-loading { min-width: 0; overflow-wrap: anywhere }
 
 @media (forced-colors: active) {
   .oa-reader-prev, .oa-reader-next, .oa-reader-size-face { border-color: ButtonText }

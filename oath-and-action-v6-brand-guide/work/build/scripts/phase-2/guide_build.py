@@ -1346,6 +1346,27 @@ def kb_words(n):
     return f"{max(1, round(n / 1000)):,} KB"
 
 
+TOKEN_TABLE_ID = "s-26-token-table"
+
+
+def token_table_stale(placed):
+    """Why the placed token table is not what tokens.json makes now, or None: token_table_build.py's own build, run here."""
+    import importlib.util
+    f = ROOT / "work/build/scripts/phase-2/token_table_build.py"
+    try:
+        spec = importlib.util.spec_from_file_location("oa_token_table_build", f)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        frag, n, version = mod.build(TOKENS_JSON)
+    except SystemExit as ex:      # the script stops on a description that still carries a studio code
+        return f"{TOKEN_TABLE_ID}: {ex}"
+    except Exception as ex:
+        return f"{TOKEN_TABLE_ID}: token_table_build.py could not run ({type(ex).__name__}: {ex})"
+    if not placed or not Path(placed).exists() or Path(placed).read_text() != frag:
+        return f"{TOKEN_TABLE_ID} is not what tokens.json {version} makes; run token_table_build.py"
+    return None
+
+
 def downloads_block(items, tokens, ctx, where):
     """Round 1 (DR-214): a rule's downloads. "tokens.css" is a button for the colophon's copy, which the shell starts where
     the reader is; "tokens.json" is the page's one copy of that file, placed here once, and a button for it anywhere else."""
@@ -2524,6 +2545,11 @@ def build(args):
     proofs_html, has_proofs = proofs_section(chap_dir, specs, ctx)
     if not has_proofs:
         ctx["has_proofs"] = False
+    # Round 1 (stage C): the token table chapter 26 places must be what tokens.json makes now (token_table_build.py --check)
+    if TOKEN_TABLE_ID in specs.used:
+        why = token_table_stale(specs.files.get(TOKEN_TABLE_ID))
+        if why:
+            R.warn(specs.used[TOKEN_TABLE_ID], why)
     for sid in specs.manifest:
         if sid not in specs.used and not sid.startswith("s-proofs-") and not sid.startswith("s-demo-"):
             R.warn(specs.origin.get(sid, "manifest"), f"specimen {sid} is listed but no chapter places it")
@@ -3080,6 +3106,38 @@ def self_test():
         m = re.search(r'data-specimen="c-01-r1--' + theme + r'".*?<div class="code-root">(.*?)</div></div></div>', pg, re.S)
         return m.group(1) if m else ""
 
+    # round 1 (November 11, 2026): chapter 26's worked examples, its downloads, the literal exemption and the table's freshness
+    c26_specs = {"s-26-a.html": "<p>Example one, correct.</p>", "s-26-b.html": "<p>Example one, failing.</p>",
+                 "s-26-c.html": "<p>Example two, correct.</p>", "s-26-d.html": "<p>Example two, failing.</p>",
+                 "s-26-token-table.html": "<p>A table that tokens.json no longer makes.</p>",
+                 "s-26-lit.html": '<p><span style="background:#DA3843">A rejected red, shown as a fault.</span></p>',
+                 "s-26-litc.html": '<p><span style="background:#DA3843">The same red on a correct plate.</span></p>',
+                 "s-26-e.html": "<p>A plate.</p>"}
+    c26_man = {k[:-5]: {"chapter": "26", "rule": r, "alt": f"A chapter 26 fixture, {k[:-5]}.", "notes": "fixture"}
+               for k, r in (("s-26-a.html", "26.1"), ("s-26-b.html", "26.1"), ("s-26-c.html", "26.1"), ("s-26-d.html", "26.1"),
+                            ("s-26-token-table.html", "26.2"), ("s-26-lit.html", "26.2"), ("s-26-litc.html", "26.3"), ("s-26-e.html", "26.3"))}
+    c26_man["s-26-lit"]["check_exempt"] = ["literal"]
+    c26_man["s-26-litc"]["check_exempt"] = ["literal"]
+    c26_code = {"c-26-x.html": '<p class="oa-x">A worked example.</p>\n', "c-26-x.css": ".oa-x { color: var(--oa-color-text-secondary) }\n"}
+    c26 = chapter("26", "tokens", "Tokens and how to choose them", [
+        rule("26.1", {"examples": [{"title": "One", "correct": {"specimen": "s-26-a", "caption": "A fixture."}, "failure": {"specimen": "s-26-b", "caption": "A fixture."},
+                                    "code": {"set": "c-26-x", "name": "Example"}},
+                                   {"title": "Two", "correct": "s-26-c", "failure": "s-26-d"}]}),
+        rule("26.2", {"downloads": ["tokens.css", "tokens.json"], "correct": {"specimen": "s-26-token-table", "caption": "A fixture."},
+                      "failure": {"specimen": "s-26-lit", "caption": "A fixture."}}),
+        rule("26.3", {"downloads": ["tokens.json", "a.pdf"], "correct": {"specimen": "s-26-litc", "caption": "A fixture."},
+                      "failure": {"specimen": "s-26-e", "caption": "A fixture."}})])
+
+    def json_link(pg):
+        m = re.search(r'<a class="btn" id="tokens-json-download" data-oa-file href="data:application/json;charset=utf-8;base64,([^"]+)"[^>]*data-oa-zip="([^"]+)"', pg)
+        return m
+
+    def zip_holds(b64, name, data):
+        import base64 as b
+        import io as i
+        z = zipfile.ZipFile(i.BytesIO(b.b64decode(b64)))
+        return z.namelist() == [name] and z.read(name) == data
+
     # promotion C (November 11, 2026): the fourth family, the switch for all 41, CL-075 at 48 px and the archive folders
     sw = lambda i, fam, extra="": (f'<svg viewBox="0 0 24 24" width="24" height="24" {hide} data-icon="{i.upper()}" data-icon-family="{fam}"{extra}>'
                                    f'<use class="oa-at-1x" href="#oa-sym-{i}-24px"/><use class="oa-at-2x" href="#oa-sym-{i}"/></svg>')
@@ -3137,6 +3195,21 @@ def self_test():
                     ("the copy keeps its landmarks and its own names", lambda pg: "&lt;nav class=&quot;oa-r1-nav&quot;" in pg and "&lt;section class=&quot;oa-r1-sec&quot;" in pg),
                     ("the head script runs nowhere: it is no script element and the live stages hold none of it",
                      lambda pg: "getItem('oa-theme')" not in pg and 'data-oa-code-js="c-01-r1"' not in pg and "localStorage" not in stage_of(pg, "light"))]}),
+        ("round 1, chapter 26: worked examples, the tokens.json download once, the literal exemption and the token table's freshness",
+         {"26-tokens.json": c26}, {"specimens": c26_specs, "manifest": c26_man, "code": c26_code},
+         {"warn": ["s-26-token-table is not what tokens.json", "\"downloads\" names 'a.pdf'",
+                   "s-26-litc: check_exempt ['literal']: contrast, red, locked and literal exemptions are for failure cases only"],
+          "absent": ["[Rule 26.1] the rule has no", "s-26-lit: 1 literal color", "example 1 has no", "example 2 has no"],
+          "html": ['<p class="ex-head" id="rule-26-1-ex-1"><span class="ex-n">Example 1</span> <span class="ex-t">One</span></p>',
+                   '<span class="ex-n">Example 2</span>', 'id="tokens-json-download" data-oa-file', '<a class="btn" href="#tokens-json-download" data-oa-download="tokens-json-download">Download tokens.json, JSON, ',
+                   '<a class="btn" href="#tokens-download" data-oa-download="tokens-download">Download tokens.css, CSS, ', 'id="tokens-download" data-oa-file data-oa-file-words="Download tokens.css',
+                   'data-oa-zip-words="Download tokens.json in a zip file, ZIP, ', 'download="20261106_Oath-And-Action-Tokens.json"'],
+          "tests": [("the page carries tokens.json once, byte for byte, and its zip holds it alone",
+                     lambda pg: pg.count('id="tokens-json-download"') == 1 and json_link(pg) is not None
+                     and base64.b64decode(json_link(pg).group(1)) == TOKENS_JSON.read_bytes() and zip_holds(json_link(pg).group(2), "tokens.json", TOKENS_JSON.read_bytes())),
+                    ("each example's line, then its correct plate, failure plate and code, in order",
+                     lambda pg: 0 < pg.find('id="rule-26-1-ex-1"') < pg.find('id="fig-s-26-a"') < pg.find('id="fig-s-26-b"') < pg.find('id="code-c-26-x"')
+                     < pg.find('id="rule-26-1-ex-2"') < pg.find('id="fig-s-26-c"') < pg.find('id="fig-s-26-d"'))]}),
         ("promotion C: four families; the 37 fits as oa-sym-<id>-24px; CL-075 at 48 px; DR-208's 16 px files, never _archive/",
          {"10-symbols.json": c4, "11-icons.json": c11}, {"specimens": c_four, "manifest": {**c4m, **c11m}},
          {"absent": ["reference(s) to no symbol", "draws the 24 px fit", "draws its master on 1x", "[sprite ", "switches to", "is marked oa-at-",

@@ -21,7 +21,6 @@
 .oa-filters-k { margin: var(--oa-space-200) 0 var(--oa-space-100); font: var(--oa-type-label);
   letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
 .oa-filters-sheet > .oa-filters-k:first-child { margin-top: 0 }
-.oa-filters-illus { margin-left: var(--oa-space-100); padding: 0 var(--oa-space-050); border: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline); text-transform: none }
 .oa-filters-chips { display: flex; flex-wrap: wrap; gap: var(--oa-space-100) }
 /* A chip that is on: the check before its word, the word in bold, a 2 px edge */
 .oa-filters-check { display: none }
@@ -32,6 +31,7 @@
 .oa-filters-results { margin: var(--oa-space-100) 0 0; padding: 0; list-style: none; font: var(--oa-type-body-small) }
 .oa-filters-result { padding: var(--oa-space-050) 0; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
 .oa-filters-result[hidden] { display: none }
+.oa-filters-source { margin: var(--oa-space-150) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
 .oa-filters-result-id { display: inline-block; min-width: 3.5em; font-weight: var(--oa-font-weight-bold); font-variant-numeric: tabular-nums }
 
 @media (forced-colors: active) {

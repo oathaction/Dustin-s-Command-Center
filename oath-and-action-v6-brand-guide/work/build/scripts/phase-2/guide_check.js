@@ -90,6 +90,11 @@
 //                      high-density screen the master shows alone (1440 px at 2x and 390 px at 3x, in their own runs);
 //                      data-oa-res="fixed" marks a plate that shows one drawing on every screen. The list of 41 is read
 //                      from the construction file, as guide_build.py and chapter 10's generator read it (B-3 too)
+// Added in stage C, round 1 (November 11, 2026), each described where it is defined below:
+//   keyPath            every code set's keyboard path from its keys file, walked in both live stages at 1440 and 390 px
+//   motion             every moving specimen: still on load, Play, Pause and Reset, comes to rest, and under reduced motion
+//                      the final frame at once
+//   tokenTable         chapter 26's token table against tokens.json
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -1389,6 +1394,255 @@ async function focusAudit(page, stops) {
   return results;
 }
 
+// ------------------------------------------------------------------------------------------------ stage C, round 1
+// Three checks the round 0 notes planned (November 11, 2026, guide engineer).
+//
+// keyPath    Each code set's keyboard path, from <set>.keys.json (format oa-keys/1, the accessibility lead's chapter 18
+//            notes), walked in each live stage at 1440 and 390 px: a fresh page per path, focus on a stand-in control
+//            just before the stage, then each step's key or typed words, and after it the focus, states and status
+//            words the step names. The first step that does not hold fails the path.
+// motion     Every moving specimen, marked data-oa-motion (round 0's contract; chapter 17 builds to it), outside a
+//            failure plate: nothing moves on load; it has Play, Pause and Reset (data-oa-play, data-oa-pause,
+//            data-oa-reset, one button may carry two); after Play it comes to rest, so nothing loops; and with reduced
+//            motion on, in a run of its own, Play shows the final frame at once and nothing after it moves, with every
+//            animation at 0 ms.
+// tokenTable Chapter 26's table (s-26-token-table) against tokens.json: one row per token, the file's count and version,
+//            every CSS name defined on the page's root, and every swatch drawn in the hex its row prints.
+const CODE_DIRS = [path.join(ROOT, 'work/build/guide/code'), path.join(ROOT, 'work/build/guide/shell/fixtures/code')];
+const TOKENS_JSON = path.join(ROOT, 'work/build/tokens/tokens.json');
+const KEY_WIDTHS = [1440, 390];
+
+function keysFor(set) {
+  for (const d of CODE_DIRS) {
+    const f = path.join(d, `${set}.keys.json`);
+    if (fs.existsSync(f)) {
+      try { return { file: f, data: JSON.parse(fs.readFileSync(f, 'utf8')) }; } catch (e) { return { file: f, error: String(e.message || e) }; }
+    }
+  }
+  return null;
+}
+
+function tokenFacts() {
+  try {
+    const t = JSON.parse(fs.readFileSync(TOKENS_JSON, 'utf8'));
+    let n = 0;
+    const walk = (o) => { if (o && typeof o === 'object') { if ('$value' in o) { n++; return; } for (const [k, v] of Object.entries(o)) if (!k.startsWith('$')) walk(v); } };
+    walk(t);
+    const x = (t.$extensions || {})['org.oathandaction'] || {};
+    return { count: n, version: x.tokenSetVersion || x.version || null };
+  } catch (e) { return null; }
+}
+
+// One step's checks, read inside the page: focus, states and the status line's words.
+const KEY_STEP_READ = ({ stageSel, step }) => {
+  const stage = document.querySelector(stageSel);
+  const out = [];
+  if (!stage) return ['the live stage is not on the page'];
+  const words = (el) => (el ? el.textContent : '').replace(/\s+/g, ' ').trim();
+  const pick = (sel) => (sel === '' || sel == null) ? stage : /^:root/.test(sel) ? document.querySelector(sel) : stage.querySelector(sel);
+  const active = document.activeElement;
+  const where = active ? (active.tagName.toLowerCase() + (active.className && typeof active.className === 'string' ? '.' + active.className.split(' ').join('.') : '') + (active.textContent ? ' "' + words(active).slice(0, 30) + '"' : '')) : 'nothing';
+  if (step.focus === 'outside') { if (active && stage.contains(active)) out.push(`focus stayed inside the stage, on ${where}`); }
+  else if (step.focus) {
+    let hit = false;
+    try { hit = [...stage.querySelectorAll(step.focus)].includes(active); } catch (e) { out.push(`the focus selector ${step.focus} does not parse`); }
+    if (!hit) out.push(`focus is on ${where}, not ${step.focus}`);
+  }
+  for (const s of step.states || []) {
+    if (s.storage) { let v = null; try { v = localStorage.getItem(s.storage); } catch (e) { v = null; } if (v !== s.is) out.push(`storage ${s.storage} holds ${JSON.stringify(v)}, not ${JSON.stringify(s.is)}`); continue; }
+    let el = null;
+    try { el = pick(s.el); } catch (e) { out.push(`the selector ${s.el} does not parse`); continue; }
+    if (!el) { out.push(`no element ${s.el} in the stage`); continue; }
+    if ('attr' in s) { const v = el.getAttribute(s.attr); if (v !== s.is) out.push(`${s.el || 'the stage'} has ${s.attr}=${JSON.stringify(v)}, not ${JSON.stringify(s.is)}`); }
+    if ('prop' in s) { const v = el[s.prop]; if (v !== s.is) out.push(`${s.el || 'the stage'}.${s.prop} is ${JSON.stringify(v)}, not ${JSON.stringify(s.is)}`); }
+    if ('text' in s) { const v = words(el); if (v !== s.text) out.push(`${s.el || 'the stage'} says "${v.slice(0, 80)}", not "${s.text}"`); }
+    if ('visible' in s) {
+      const r = el.getBoundingClientRect(); let shown = r.width > 0 || r.height > 0;
+      for (let e = el; e && e.nodeType === 1 && shown; e = e.parentElement) { const cs = getComputedStyle(e); if (cs.display === 'none' || cs.visibility === 'hidden') shown = false; }
+      if (shown !== s.visible) out.push(`${s.el} is ${shown ? 'shown' : 'hidden'}, not ${s.visible ? 'shown' : 'hidden'}`);
+    }
+  }
+  if ('status' in step || 'status_has' in step) {
+    let line = null;
+    try { line = step.status_el ? stage.querySelector(step.status_el) : stage.querySelector('[role="status"]'); } catch (e) { line = null; }
+    if (!line) out.push(`no status line ${step.status_el || '[role="status"]'} in the stage`);
+    else {
+      const v = words(line);
+      if ('status' in step && v !== (step.status == null ? '' : step.status)) out.push(`the status line says "${v.slice(0, 90)}", not "${step.status == null ? '' : step.status}"`);
+      if ('status_has' in step && !v.includes(step.status_has)) out.push(`the status line says "${v.slice(0, 90)}", without "${step.status_has}"`);
+    }
+  }
+  return out;
+};
+
+async function keyPaths(browser, file, widths, opts = {}) {
+  const probe = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+  const pg = await probe.newPage();
+  await pg.goto('file://' + file, { waitUntil: 'load' });
+  const sets = await pg.evaluate(() => [...document.querySelectorAll('.plate--code[data-code-set]')].map((f) => ({ set: f.getAttribute('data-code-set'), themes: [...f.querySelectorAll('.code-stage[data-code-theme]')].map((s) => s.getAttribute('data-code-theme')) })));
+  await probe.close();
+  const out = { sets: sets.length, withKeys: 0, paths: 0, walks: 0, steps: 0, missing: [], problems: [] };
+  for (const { set, themes } of sets) {
+    const k = keysFor(set);
+    if (!k) { out.missing.push(set); continue; }
+    if (k.error || !k.data || k.data.format !== 'oa-keys/1' || !Array.isArray(k.data.paths)) { out.problems.push({ set, why: `${path.relative(ROOT, k.file)} is not an oa-keys/1 file${k.error ? ': ' + k.error : ''}` }); continue; }
+    out.withKeys++;
+    for (const p of k.data.paths) {
+      out.paths++;
+      const setup = p.setup || {};
+      for (const width of widths.filter((w) => !p.widths || p.widths.includes(w))) {
+        const ctx = await browser.newContext({ viewport: { width, height: { 1440: 900, 390: 844 }[width] || 900 }, deviceScaleFactor: 1,
+          reducedMotion: setup.reducedMotion ? 'reduce' : 'no-preference', colorScheme: setup.colorScheme === 'dark' ? 'dark' : 'light' });
+        if (setup.clipboard === 'allow') await ctx.grantPermissions(['clipboard-read', 'clipboard-write']);
+        const page = await ctx.newPage();
+        if (setup.clipboard === 'deny') {
+          await page.addInitScript(() => {
+            const no = () => Promise.reject(Object.assign(new Error('Write permission denied.'), { name: 'NotAllowedError' }));
+            try { Object.defineProperty(navigator, 'clipboard', { value: { writeText: no, write: no, readText: no }, configurable: true }); } catch (e) { /* the page keeps its own */ }
+          });
+        }
+        await page.goto('file://' + file, { waitUntil: 'load' });
+        await page.evaluate(() => document.fonts.ready);
+        if (opts.mutate) await page.evaluate(opts.mutate);
+        for (const theme of themes.filter((t) => !p.themes || p.themes.includes(t))) {
+          const stageSel = `.plate--code[data-code-set="${set}"] .code-stage[data-code-theme="${theme}"]`;
+          const ok = await page.evaluate((sel) => {
+            const st = document.querySelector(sel); if (!st) return false;
+            document.querySelectorAll('.oa-keys-start').forEach((b) => b.remove());
+            const b = document.createElement('button'); b.type = 'button'; b.className = 'oa-keys-start'; b.textContent = 'Start of the keyboard path';
+            st.parentNode.insertBefore(b, st); b.scrollIntoView({ block: 'center' }); b.focus();
+            return document.activeElement === b;
+          }, stageSel);
+          out.walks++;
+          if (!ok) { out.problems.push({ set, path: p.name, theme, width, step: 0, why: 'the stand-in control before the stage could not take focus' }); continue; }
+          let i = 0;
+          for (const step of p.steps || []) {
+            i++; out.steps++;
+            if (step.type != null) await page.keyboard.type(String(step.type), { delay: 20 });
+            if (step.key) await page.keyboard.press(step.key === 'Space' ? ' ' : step.key);
+            await page.waitForTimeout(typeof step.wait === 'number' ? step.wait : 150);
+            const bad = await page.evaluate(KEY_STEP_READ, { stageSel, step });
+            if (bad.length) { out.problems.push({ set, path: p.name, theme, width, step: i, key: step.key || `type "${step.type}"`, why: bad.join('; ') }); break; }
+          }
+        }
+        await ctx.close();
+      }
+    }
+  }
+  return out;
+}
+
+// The drawn state of a moving specimen: each SVG shape outside its controls, as the browser draws it now.
+const MOTION_STATE = (el) => [...el.querySelectorAll('svg *')].filter((x) => !x.closest('button, label, input, [data-oa-still]')).map((x) => {
+  const cs = getComputedStyle(x);
+  const at = ['transform', 'x', 'y', 'width', 'height', 'd', 'points', 'cx', 'cy', 'r', 'x1', 'y1', 'x2', 'y2', 'style'].map((a) => x.getAttribute(a) || '').join('|');
+  return [cs.transform, cs.opacity, cs.strokeDashoffset, cs.visibility, cs.display, at].join('/');
+}).join('\n');
+
+async function motionAudit(browser, file, opts = {}) {
+  const out = { players: 0, failurePlates: 0, problems: [], reduced: [] };
+  const open = async (reduced) => {
+    const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1, reducedMotion: reduced ? 'reduce' : 'no-preference' });
+    const page = await ctx.newPage();
+    await page.goto('file://' + file, { waitUntil: 'load' });
+    await page.evaluate(() => document.fonts.ready);
+    if (opts.mutate) await page.evaluate(opts.mutate);
+    return { ctx, page };
+  };
+  for (const reduced of [false, true]) {
+    const { ctx, page } = await open(reduced);
+    const list = await page.$$('[data-oa-motion]');
+    const players = [];
+    for (const h of list) {
+      const info = await h.evaluate((el) => { const st = el.closest('[data-specimen]'); return { where: st ? st.getAttribute('data-specimen') : ((el.closest('section[id]') || {}).id || 'page'), failure: !!el.closest('.plate--failure'), nested: !!(el.parentElement && el.parentElement.closest('[data-oa-motion]')) }; });
+      if (info.nested) continue;
+      if (info.failure) { if (!reduced) out.failurePlates++; continue; }
+      players.push({ h, where: info.where });
+    }
+    if (!reduced) out.players = players.length;
+    for (const { h, where } of players) {
+      await h.evaluate((el) => el.scrollIntoView({ block: 'center' }));
+      const ctl = await h.evaluate((el) => {
+        const scope = el.closest('[data-specimen]') || el;
+        const q = (a) => el.querySelector(`[${a}]`) || scope.querySelector(`[${a}]`);
+        return { play: !!q('data-oa-play'), pause: !!q('data-oa-pause'), reset: !!q('data-oa-reset') };
+      });
+      const s0 = await h.evaluate(MOTION_STATE);
+      if (!reduced) {
+        const missing = Object.entries(ctl).filter(([, v]) => !v).map(([k]) => k);
+        if (missing.length) out.problems.push({ where, why: `no ${missing.join(', ')} control; a moving specimen has Play, Pause and Reset` });
+        await page.waitForTimeout(400);
+        const running = await h.evaluate((el) => el.getAnimations({ subtree: true }).filter((a) => a.playState === 'running').length);
+        if (running || (await h.evaluate(MOTION_STATE)) !== s0) out.problems.push({ where, why: `it moves on load${running ? ` (${running} animation(s) running)` : ''}; motion plays only on request` });
+      }
+      if (!ctl.play) continue;
+      const play = await h.evaluateHandle((el) => el.querySelector('[data-oa-play]') || (el.closest('[data-specimen]') || el).querySelector('[data-oa-play]'));
+      await play.asElement().click();
+      if (reduced) {
+        await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+        const s1 = await h.evaluate(MOTION_STATE);
+        const long = await h.evaluate((el) => el.getAnimations({ subtree: true }).map((a) => a.effect && a.effect.getComputedTiming()).filter((t) => t && t.duration > 0 && t.duration !== Infinity).map((t) => Math.round(t.duration)));
+        await page.waitForTimeout(1000);
+        const s2 = await h.evaluate(MOTION_STATE);
+        const why = [];
+        if (s1 === s0) why.push('Play draws nothing new on the first frame');
+        if (s2 !== s1) why.push('it keeps moving after the first frame');
+        if (long.length) why.push(`animation(s) of ${[...new Set(long)].join(', ')} ms`);
+        out.reduced.push({ where, finalAtOnce: !why.length });
+        if (why.length) out.problems.push({ where, why: `with reduced motion on: ${why.join('; ')}; Play shows the final frame at once` });
+      } else {
+        await page.waitForTimeout(2500);
+        const a = await h.evaluate(MOTION_STATE);
+        await page.waitForTimeout(600);
+        const b = await h.evaluate(MOTION_STATE);
+        const loops = await h.evaluate((el) => el.getAnimations({ subtree: true }).filter((x) => x.playState === 'running' && x.effect && x.effect.getComputedTiming().iterations === Infinity).length);
+        if (a !== b || loops) out.problems.push({ where, why: `it still moves 2.5 s after Play${loops ? ` (${loops} endless animation(s))` : ''}; nothing loops` });
+      }
+    }
+    await ctx.close();
+  }
+  return out;
+}
+
+// Chapter 26's table against tokens.json, read once at the first width.
+async function tokenTable(page) {
+  const facts = tokenFacts();
+  const r = await page.evaluate(() => {
+    const st = document.querySelector('[data-specimen="s-26-token-table"]');
+    if (!st) return null;
+    const tt = st.querySelector('.tt');
+    const rows = [...st.querySelectorAll('tbody tr')].filter((tr) => !tr.classList.contains('tt-g'));
+    const root = getComputedStyle(document.documentElement);
+    const undef = [], off = [];
+    const probe = document.createElement('span'); document.body.append(probe);
+    let swatches = 0;
+    for (const tr of rows) {
+      const name = (tr.querySelector('code.tt-c') || {}).textContent || '';
+      if (!root.getPropertyValue(name).trim()) undef.push(name);
+      const sw = tr.querySelector('.tt-sw'); const v = tr.querySelector('.tt-v');
+      if (sw && v) {
+        swatches++;
+        const hex = (v.textContent.match(/#[0-9A-Fa-f]{6}/) || [''])[0];
+        probe.style.color = hex; const want = getComputedStyle(probe).color; const got = getComputedStyle(sw).backgroundColor;
+        if (!hex || want !== got) off.push({ name, printed: hex, drawn: got });
+      }
+    }
+    probe.remove();
+    return { rows: rows.length, count: tt ? Number(tt.getAttribute('data-token-count')) : null, version: tt ? tt.getAttribute('data-token-version') : null, swatches, undef: undef.slice(0, 10), undefCount: undef.length, off: off.slice(0, 10), offCount: off.length };
+  });
+  if (!r) return null;
+  r.file = facts;
+  r.problems = [];
+  if (!facts) r.problems.push('tokens.json could not be read');
+  else {
+    if (r.rows !== facts.count || r.count !== facts.count) r.problems.push(`${r.rows} rows (data-token-count ${r.count}) where tokens.json holds ${facts.count} tokens`);
+    if (r.version !== facts.version) r.problems.push(`the table says version ${r.version}, tokens.json ${facts.version}`);
+  }
+  if (r.undefCount) r.problems.push(`${r.undefCount} CSS name(s) the page's root does not define, first: ${r.undef.join(', ')}`);
+  if (r.offCount) r.problems.push(`${r.offCount} swatch(es) drawn in another color than their printed hex, first: ${JSON.stringify(r.off[0])}`);
+  return r;
+}
+
 async function checkPage(browser, file, widths, opts = {}) {
   const report = { file: path.relative(ROOT, file), checked: new Date().toISOString(), axe: AXE ? path.relative(ROOT, AXE) : null, runs: [], failures: [] };
   const dir = path.dirname(file); const stem = path.basename(file, '.html');
@@ -1440,6 +1694,11 @@ async function checkPage(browser, file, widths, opts = {}) {
     const failsSwitch = [];
     a.fitSwitch = await fitSwitch(page, 1);
     if (a.fitSwitch.problems.length) failsSwitch.push({ key: 'fitSwitch', msg: `${width}: ${a.fitSwitch.problems.length} glyph(s) of the 41 at 24 px off the 1x and 2x switch (DR-179, DR-209), first: ${JSON.stringify(a.fitSwitch.problems[0])}` });
+    // round 1: chapter 26's table against tokens.json, once
+    if (width === widths[0]) {
+      a.tokenTable = await tokenTable(page);
+      if (a.tokenTable) for (const pr of a.tokenTable.problems) failsSwitch.push({ key: 'tokenTable', msg: `${width}: the token table: ${pr}` });
+    }
     a.frames = await frameAudit(page);
     a.fit = await fitAudit(page);
     const fails = failuresFrom(a, width);
@@ -1518,6 +1777,20 @@ async function checkPage(browser, file, widths, opts = {}) {
     report.hiDpi.push({ width, dpr, glyphs: r.glyphs, pairs: r.pairs, masterShown: r.masterShown, fixed: r.fixed, problems: r.problems.slice(0, 10) });
     if (r.problems.length) report.failures.push({ key: 'fitSwitch', msg: `${width} at ${dpr}x: ${r.problems.length} glyph(s) of the 41 at 24 px off the 1x and 2x switch (DR-179, DR-209), first: ${JSON.stringify(r.problems[0])}` });
     await ctx.close();
+  }
+  // round 1: each code set's keyboard path, and every moving specimen
+  if (opts.keys !== false) {
+    const kw = KEY_WIDTHS.filter((w) => widths.includes(w));
+    const k = await keyPaths(browser, file, kw.length ? kw : [widths[0]], opts);
+    report.keys = { widths: kw, sets: k.sets, withKeys: k.withKeys, paths: k.paths, walks: k.walks, steps: k.steps, missing: k.missing, problems: k.problems.slice(0, 20) };
+    const need = k.missing.filter((x) => /^c-18-/.test(x));
+    if (need.length) report.failures.push({ key: 'keyPath', msg: `${need.length} chapter 18 code set(s) with no keys file: ${need.join(', ')}` });
+    for (const pr of k.problems) report.failures.push({ key: 'keyPath', msg: `${pr.width || ''}${pr.width ? ' ' : ''}${pr.set}${pr.theme ? ' (' + pr.theme + ')' : ''}${pr.path ? ', "' + pr.path + '"' : ''}${pr.step ? ', step ' + pr.step + (pr.key ? ' (' + pr.key + ')' : '') : ''}: ${pr.why}` });
+  }
+  if (opts.motion !== false) {
+    const m = await motionAudit(browser, file, opts);
+    report.motion = { players: m.players, failurePlates: m.failurePlates, reduced: m.reduced, problems: m.problems };
+    for (const pr of m.problems) report.failures.push({ key: 'motion', msg: `${pr.where}: ${pr.why}` });
   }
   report.pass = report.failures.length === 0;
   return report;
@@ -1784,6 +2057,27 @@ const PLANTS = [
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg viewBox="0 0 128 128" width="24" height="24" aria-hidden="true" focusable="false" data-icon="CL-075" data-icon-family="topic"><use href="#oa-sym-cl-075"/></svg> Housing</p>'); } },
   { key: 'iconSizes', fault: 'CL-075 Housing at 48 px (allowed: must not be flagged)', expect: false, js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg viewBox="0 0 128 128" width="48" height="48" aria-hidden="true" focusable="false" data-icon="CL-075" data-icon-family="topic"><use href="#oa-sym-cl-075"/></svg> Housing</p>'); } },
+  // stage C, round 1 (November 11, 2026): keyboard paths, moving specimens and the token table
+  { key: 'keyPath', fault: 'the demo set\'s keyboard path as built: Tab, Enter, Space and Tab hold in both live stages (allowed: must not be flagged)', expect: false, js: () => {},
+    verify: (r) => r.keys && r.keys.withKeys === 1 && r.keys.walks === 2 && r.keys.steps === 8 },
+  { key: 'keyPath', fault: 'the Save button taken out of the Tab order, so the path\'s first Tab never reaches it', js: () => {
+    document.querySelectorAll('.code-stage .oa-save-btn').forEach((b) => b.setAttribute('tabindex', '-1')); } },
+  { key: 'keyPath', fault: 'a status line whose words differ from what the keys file says Enter announces', js: () => {
+    document.querySelectorAll('.code-stage .oa-save-btn').forEach((b) => b.addEventListener('click', () => setTimeout(() => { b.parentElement.querySelector('.oa-save-note').textContent = 'Done.'; }, 0))); } },
+  { key: 'motion', fault: 'a player that plays on request, comes to rest, and shows its last frame at once under reduced motion (allowed: must not be flagged)', expect: false, js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="sb-mv" data-oa-motion><svg width="80" height="20" viewBox="0 0 80 20" aria-hidden="true" focusable="false"><rect class="sb-mv-r" width="10" height="10" fill="currentColor"/></svg><button type="button" data-oa-play data-oa-pause>Play</button><button type="button" data-oa-reset>Reset</button></div>'); const box = document.querySelectorAll('.sb-mv')[document.querySelectorAll('.sb-mv').length - 1]; const r = box.querySelector('rect'); box.querySelector('[data-oa-play]').addEventListener('click', () => { r.animate([{ transform: 'translateX(0px)' }, { transform: 'translateX(50px)' }], { duration: (matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 400), fill: 'forwards' }); }); const rs = box.querySelector('[data-oa-reset]'); if (rs) rs.addEventListener('click', () => r.getAnimations().forEach((a) => a.cancel())); },
+    verify: (r) => r.motion && r.motion.players === 1 && r.motion.reduced.length === 1 && r.motion.reduced[0].finalAtOnce },
+  { key: 'motion', fault: 'a moving specimen that starts on load and loops', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="sb-mv" data-oa-motion><svg width="80" height="20" viewBox="0 0 80 20" aria-hidden="true" focusable="false"><rect class="sb-mv-r" width="10" height="10" fill="currentColor"/></svg><button type="button" data-oa-play data-oa-pause>Play</button><button type="button" data-oa-reset>Reset</button></div>'); const box = document.querySelectorAll('.sb-mv')[document.querySelectorAll('.sb-mv').length - 1]; const r = box.querySelector('rect'); r.animate([{ transform: 'translateX(0px)' }, { transform: 'translateX(50px)' }], { duration: 800, iterations: Infinity }); box.querySelector('[data-oa-play]').addEventListener('click', () => { r.animate([{ transform: 'translateX(0px)' }, { transform: 'translateX(50px)' }], { duration: (matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 400), fill: 'forwards' }); }); const rs = box.querySelector('[data-oa-reset]'); if (rs) rs.addEventListener('click', () => r.getAnimations().forEach((a) => a.cancel())); } },
+  { key: 'motion', fault: 'a moving specimen with Play and Pause and no Reset', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="sb-mv" data-oa-motion><svg width="80" height="20" viewBox="0 0 80 20" aria-hidden="true" focusable="false"><rect class="sb-mv-r" width="10" height="10" fill="currentColor"/></svg><button type="button" data-oa-play data-oa-pause>Play</button></div>'); const box = document.querySelectorAll('.sb-mv')[document.querySelectorAll('.sb-mv').length - 1]; const r = box.querySelector('rect'); box.querySelector('[data-oa-play]').addEventListener('click', () => { r.animate([{ transform: 'translateX(0px)' }, { transform: 'translateX(50px)' }], { duration: (matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 400), fill: 'forwards' }); }); const rs = box.querySelector('[data-oa-reset]'); if (rs) rs.addEventListener('click', () => r.getAnimations().forEach((a) => a.cancel())); } },
+  { key: 'motion', fault: 'a player that keeps its 400 ms under reduced motion', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="sb-mv" data-oa-motion><svg width="80" height="20" viewBox="0 0 80 20" aria-hidden="true" focusable="false"><rect class="sb-mv-r" width="10" height="10" fill="currentColor"/></svg><button type="button" data-oa-play data-oa-pause>Play</button><button type="button" data-oa-reset>Reset</button></div>'); const box = document.querySelectorAll('.sb-mv')[document.querySelectorAll('.sb-mv').length - 1]; const r = box.querySelector('rect'); box.querySelector('[data-oa-play]').addEventListener('click', () => { r.animate([{ transform: 'translateX(0px)' }, { transform: 'translateX(50px)' }], { duration: 400, fill: 'forwards' }); }); const rs = box.querySelector('[data-oa-reset]'); if (rs) rs.addEventListener('click', () => r.getAnimations().forEach((a) => a.cancel())); } },
+  { key: 'motion', fault: 'a player whose motion loops after Play', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="sb-mv" data-oa-motion><svg width="80" height="20" viewBox="0 0 80 20" aria-hidden="true" focusable="false"><rect class="sb-mv-r" width="10" height="10" fill="currentColor"/></svg><button type="button" data-oa-play data-oa-pause>Play</button><button type="button" data-oa-reset>Reset</button></div>'); const box = document.querySelectorAll('.sb-mv')[document.querySelectorAll('.sb-mv').length - 1]; const r = box.querySelector('rect'); box.querySelector('[data-oa-play]').addEventListener('click', () => { r.animate([{ transform: 'translateX(0px)' }, { transform: 'translateX(50px)' }], { duration: (matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 400), fill: 'forwards', iterations: Infinity }); }); const rs = box.querySelector('[data-oa-reset]'); if (rs) rs.addEventListener('click', () => r.getAnimations().forEach((a) => a.cancel())); } },
+  { key: 'motion', fault: 'the same looping player on a failure plate, shown as a fault on purpose (allowed: must not be flagged)', expect: false, js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<figure class="plate plate--failure"><div class="sb-fail"></div></figure>'); document.querySelector('.sb-fail').insertAdjacentHTML('beforeend', '<div class="sb-mv" data-oa-motion><svg width="80" height="20" viewBox="0 0 80 20" aria-hidden="true" focusable="false"><rect class="sb-mv-r" width="10" height="10" fill="currentColor"/></svg><button type="button" data-oa-play data-oa-pause>Play</button><button type="button" data-oa-reset>Reset</button></div>'); const box = document.querySelectorAll('.sb-mv')[document.querySelectorAll('.sb-mv').length - 1]; const r = box.querySelector('rect'); box.querySelector('[data-oa-play]').addEventListener('click', () => { r.animate([{ transform: 'translateX(0px)' }, { transform: 'translateX(50px)' }], { duration: (matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 400), fill: 'forwards', iterations: Infinity }); }); const rs = box.querySelector('[data-oa-reset]'); if (rs) rs.addEventListener('click', () => r.getAnimations().forEach((a) => a.cancel())); },
+    verify: (r) => r.motion && r.motion.failurePlates === 1 && r.motion.players === 0 },
+  { key: 'tokenTable', fault: 'a token table of three rows where tokens.json holds hundreds', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div data-specimen="s-26-token-table"><div class="tt" data-token-count="3" data-token-version="0"><table><tbody>' + '<tr><th><code class="tt-c">--oa-color-palette-charcoal</code></th><td><span class="tt-sw" style="background:var(--oa-color-palette-charcoal)"></span><span class="tt-v">&#35;121212</span></td></tr>' + '<tr><th><code class="tt-c">--oa-color-palette-newsprint</code></th><td><span class="tt-sw" style="background:var(--oa-color-palette-newsprint)"></span><span class="tt-v">&#35;DCD9D2</span></td></tr>' + '<tr><th><code class="tt-c">--oa-color-palette-white</code></th><td><span class="tt-sw" style="background:var(--oa-color-palette-white)"></span><span class="tt-v">&#35;FFFFFF</span></td></tr>' + '</tbody></table></div></div>'); } },
+  { key: 'tokenTable', fault: 'a token table with a name the page does not define and a swatch whose printed hex is not what it draws', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div data-specimen="s-26-token-table"><div class="tt" data-token-count="3" data-token-version="0"><table><tbody>' + '<tr><th><code class="tt-c">--oa-color-palette-charcoal</code></th><td><span class="tt-sw" style="background:var(--oa-color-palette-charcoal)"></span><span class="tt-v">&#35;121212</span></td></tr>' + '<tr><th><code class="tt-c">--oa-no-such-token</code></th><td><span class="tt-sw" style="background:var(--oa-no-such-token)"></span><span class="tt-v">&#35;121212</span></td></tr>' + '<tr><th><code class="tt-c">--oa-color-palette-white</code></th><td><span class="tt-sw" style="background:var(--oa-color-palette-white)"></span><span class="tt-v">&#35;121212</span></td></tr>' + '</tbody></table></div></div>'); },
+    verify: (r) => r.runs[0].tokenTable && r.runs[0].tokenTable.undefCount === 1 && r.runs[0].tokenTable.offCount === 1 },
 ];
 
 async function selfTest() {
@@ -1795,9 +2089,11 @@ async function selfTest() {
   const result = { checked: new Date().toISOString(), page: 'demo build (guide_build.py --demo), in a temporary folder', axe: AXE ? 'found' : 'not found', clean: null, plants: [] };
   // the clean demo: no structural, text, red or writing failure, and the exempt failure plate's 12 px gray text is skipped
   const clean = await checkPage(browser, page, [1440, 390], { skipFocus: false, hiDpi: [[1440, 2], [390, 3]] });
+  result.clean_keys = clean.keys; result.clean_motion = clean.motion;
   result.clean = { pass: clean.pass, failures: clean.failures.map((f) => f.msg), exemptions: clean.runs[0].specimens.exemptions, skippedTexts: clean.runs[0].text.skipped };
   for (const p of PLANTS) {
-    const r = await checkPage(browser, page, p.widths || [1440], { mutate: p.js, skipAxe: true, skipFocus: !p.focus, plant: true, hiDpi: p.hiDpi || [] });
+    const r = await checkPage(browser, page, p.widths || [1440], { mutate: p.js, skipAxe: true, skipFocus: !p.focus, plant: true, hiDpi: p.hiDpi || [],
+      keys: p.key === 'keyPath', motion: p.key === 'motion' });
     const caught = r.failures.filter((f) => f.key === p.key);
     const others = r.failures.filter((f) => f.key !== p.key).map((f) => f.key);
     // a plant with expect: false proves an allowance: the test must stay quiet. verify, where given, reads the run
@@ -1840,6 +2136,11 @@ async function selfTest() {
   if (r0.specimens.exemptions.length) console.log(`  exemptions: ${r0.specimens.exemptions.map((x) => x.specimen + ' (' + x.skips + ')').join(', ')}`);
   console.log(`  fitSwitch: ${report.runs.map((r) => `${r.width} at 1x ${r.fitSwitch.pairs} switches, fit shown in ${r.fitSwitch.fitShown}`).join('; ')}; `
     + `${report.hiDpi.map((h) => `${h.width} at ${h.dpr}x ${h.pairs} switches, master shown in ${h.masterShown}`).join('; ')}`);
+  if (report.keys) console.log(`  keyPath: ${report.keys.withKeys} of ${report.keys.sets} code sets with keys files, ${report.keys.paths} paths, ${report.keys.walks} walks and ${report.keys.steps} steps at ${report.keys.widths.join(' and ')} px`
+    + (report.keys.missing.length ? `; no keys file: ${report.keys.missing.join(', ')}` : ''));
+  if (report.motion) console.log(`  motion: ${report.motion.players} moving specimen(s), ${report.motion.reduced.filter((x) => x.finalAtOnce).length} showing the final frame at once under reduced motion; ${report.motion.failurePlates} on failure plates left alone`);
+  const tt = report.runs[0].tokenTable;
+  if (tt) console.log(`  tokenTable: ${tt.rows} rows, ${tt.swatches} swatches, version ${tt.version}; tokens.json ${tt.file ? tt.file.count + ', ' + tt.file.version : 'unread'}`);
   for (const f of report.failures) console.log('  - ' + f.msg);
   console.log('  results: ' + path.relative(ROOT, outPath));
   process.exit(report.pass ? 0 : 1);

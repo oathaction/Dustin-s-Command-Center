@@ -342,7 +342,7 @@ def s_12_pattern_failure():
 # surface's ink, its right edge 142/400 of its width past the cover's right edge and its foot 30/440 of its height past
 # the cover's foot. Its height on this cover, CROP_B_H, is the largest that keeps Rule 04.8's measures, chosen on a
 # render by stage_c_identity_round1.py (20261111_Stage-C-Round-1-Identity-Figures.json, key rule_12_4).
-CROP_B_H = 236
+CROP_B_H = 232
 CROP_RIGHT, CROP_FOOT = 142 / 400, 30 / 440          # s-04-8-correct: 142 of B's 400 px width, 30 of its 440 px height
 
 
@@ -390,10 +390,10 @@ REWRITE_12_4 = {
               ("Never", "A repeating pattern of arcs, lines, dots, nodes or ampersands")],
     "builders": ("Leave the open area plain first. Sign it with the crop of B only on a cover or a section opener that holds "
                  "no hinge headline, and check Rule 04.8's measures on the cover at its true size."),
-    "if_chosen": ["Remove the \"Hinge arcs\" row from s-12-index",
-                  "Change the chapter intro's \"a pattern drawn from the hinge\" to \"the rule for open areas\"",
-                  "Drop \"or a pattern\" from Rule 12.2's Never row",
-                  "Remove hinge_arcs and its coverage figure from this generator, and set the rewrite's plates as "
+    "if_chosen": ["Remove the “Hinge arcs” row from s-12-index",
+                  "Change the chapter intro’s “a pattern drawn from the hinge” to “the rule for open areas”",
+                  "Drop “or a pattern” from Rule 12.2’s Never row",
+                  "Remove hinge_arcs and its coverage figure from stage_b_identity_ch12.py, and set the rewrite’s plates as "
                   "s-12-pattern-correct and s-12-pattern-failure"],
 }
 

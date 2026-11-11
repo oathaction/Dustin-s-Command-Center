@@ -44,6 +44,7 @@
   border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-mark) }
 .oa-table-mark { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
 .oa-table-error b { font-weight: var(--oa-font-weight-bold) }
+.oa-table-error > span { min-width: 0; overflow-wrap: anywhere }
 
 /* Cards, in a narrow column */
 @container (max-width: 36rem) {

@@ -60,6 +60,7 @@
 .oa-tracker-link:hover { text-decoration-thickness: var(--oa-border-width-underline-hover) }
 .oa-tracker-check { display: flex; align-items: flex-start; gap: var(--oa-space-100); margin: var(--oa-space-100) 0 0; font: var(--oa-type-body-small); color: var(--oa-color-state-warning-text) }
 .oa-tracker-check .oa-tracker-icon { color: var(--oa-color-state-warning-mark) }
+.oa-tracker-check > span, .oa-tracker-alert > span { min-width: 0; overflow-wrap: anywhere }
 .oa-tracker-icon { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
 .oa-tracker-alert:empty, .oa-tracker-take[hidden], .oa-tracker-check[hidden] { display: none }
 .oa-tracker-alert { display: flex; align-items: flex-start; gap: var(--oa-space-100); margin: var(--oa-space-150) 0 0; padding: var(--oa-space-100) var(--oa-space-150);

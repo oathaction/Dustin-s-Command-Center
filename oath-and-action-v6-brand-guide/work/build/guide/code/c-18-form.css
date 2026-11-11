@@ -24,6 +24,7 @@
 .oa-form-error[hidden] { display: none }
 .oa-form-mark { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
 .oa-form-error b, .oa-form-status b { font-weight: var(--oa-font-weight-bold) }
+.oa-form-error > span, .oa-form-status > span { min-width: 0; overflow-wrap: anywhere }
 /* The ask: 48 px tall, in the view's working red with its keyline where the surface needs one */
 .oa-form-send { display: inline-flex; align-items: center; box-sizing: border-box; max-width: 100%; min-height: var(--oa-space-600); margin: 0;
   padding: var(--oa-space-100) var(--oa-space-300); border: var(--oa-border-width-hairline) solid var(--oa-component-button-ask-keyline, var(--oa-component-button-ask-fill));

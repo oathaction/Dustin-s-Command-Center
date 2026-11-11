@@ -4,30 +4,33 @@
     <button type="button" class="oa-filters-clear" hidden>Clear filters</button>
   </div>
   <div class="oa-filters-sheet" id="oa-filters-sheet" hidden>
-    <p class="oa-filters-k"><span id="oa-filters-area">Area</span> <span class="oa-filters-illus">Illustrative</span></p>
+    <p class="oa-filters-k" id="oa-filters-area">Area</p>
     <div class="oa-filters-chips" role="group" aria-labelledby="oa-filters-area" data-oa-group="area">
-        <button type="button" class="oa-filters-chip" aria-pressed="false" data-oa-filter="elections"><svg class="oa-filters-check" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-selected-check" data-icon-family="utility"><path d="M4 12.5 L9 17.5 L20 6.5"/></svg><span class="oa-filters-word">Elections</span></button>
-        <button type="button" class="oa-filters-chip" aria-pressed="false" data-oa-filter="money"><svg class="oa-filters-check" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-selected-check" data-icon-family="utility"><path d="M4 12.5 L9 17.5 L20 6.5"/></svg><span class="oa-filters-word">Money in politics</span></button>
-        <button type="button" class="oa-filters-chip" aria-pressed="false" data-oa-filter="congress"><svg class="oa-filters-check" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-selected-check" data-icon-family="utility"><path d="M4 12.5 L9 17.5 L20 6.5"/></svg><span class="oa-filters-word">Congress</span></button>
+        <button type="button" class="oa-filters-chip" aria-pressed="false" data-oa-filter="elections"><svg class="oa-filters-check" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-selected-check" data-icon-family="utility"><path d="M4 12.5 L9 17.5 L20 6.5"/></svg><span class="oa-filters-word">Elections and representation</span></button>
+        <button type="button" class="oa-filters-chip" aria-pressed="false" data-oa-filter="money"><svg class="oa-filters-check" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-selected-check" data-icon-family="utility"><path d="M4 12.5 L9 17.5 L20 6.5"/></svg><span class="oa-filters-word">Money, lobbying and ethics</span></button>
+        <button type="button" class="oa-filters-chip" aria-pressed="false" data-oa-filter="government"><svg class="oa-filters-check" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-selected-check" data-icon-family="utility"><path d="M4 12.5 L9 17.5 L20 6.5"/></svg><span class="oa-filters-word">Congress, courts and the executive</span></button>
     </div>
-    <p class="oa-filters-k" id="oa-filters-use">Where it stands</p>
-    <div class="oa-filters-chips" role="group" aria-labelledby="oa-filters-use" data-oa-group="use">
-        <button type="button" class="oa-filters-chip" aria-pressed="false" data-oa-filter="states"><svg class="oa-filters-check" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-selected-check" data-icon-family="utility"><path d="M4 12.5 L9 17.5 L20 6.5"/></svg><span class="oa-filters-word">In use in some states</span></button>
+    <p class="oa-filters-k" id="oa-filters-who">Who can act on it</p>
+    <div class="oa-filters-chips" role="group" aria-labelledby="oa-filters-who" data-oa-group="who">
+        <button type="button" class="oa-filters-chip" aria-pressed="false" data-oa-filter="initiative"><svg class="oa-filters-check" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-selected-check" data-icon-family="utility"><path d="M4 12.5 L9 17.5 L20 6.5"/></svg><span class="oa-filters-word">Voters, by ballot initiative</span></button>
+        <button type="button" class="oa-filters-chip" aria-pressed="false" data-oa-filter="city"><svg class="oa-filters-check" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-selected-check" data-icon-family="utility"><path d="M4 12.5 L9 17.5 L20 6.5"/></svg><span class="oa-filters-word">Cities</span></button>
+        <button type="button" class="oa-filters-chip" aria-pressed="false" data-oa-filter="congress"><svg class="oa-filters-check" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-selected-check" data-icon-family="utility"><path d="M4 12.5 L9 17.5 L20 6.5"/></svg><span class="oa-filters-word">Congress, by law</span></button>
     </div>
   </div>
   <p class="oa-filters-status" role="status" data-oa-noun="reforms" data-oa-none="No reform matches. Turn a filter off, or clear the filters, to see more.">12 of 12 reforms</p>
   <ul class="oa-filters-results">
-      <li class="oa-filters-result" data-oa-area="elections" data-oa-use=""><span class="oa-filters-result-id">R-01</span> All-party primaries with ranked general elections</li>
-      <li class="oa-filters-result" data-oa-area="elections" data-oa-use="states"><span class="oa-filters-result-id">R-02</span> Ranked-choice voting for single-winner races</li>
-      <li class="oa-filters-result" data-oa-area="elections" data-oa-use=""><span class="oa-filters-result-id">R-03</span> Proportional elections in multi-seat House districts</li>
-      <li class="oa-filters-result" data-oa-area="elections" data-oa-use="states"><span class="oa-filters-result-id">R-04</span> Independent citizen commissions draw election maps</li>
-      <li class="oa-filters-result" data-oa-area="elections" data-oa-use="states"><span class="oa-filters-result-id">R-05</span> Automatic voter registration</li>
-      <li class="oa-filters-result" data-oa-area="elections" data-oa-use="states"><span class="oa-filters-result-id">R-06</span> Hold local elections alongside November races</li>
-      <li class="oa-filters-result" data-oa-area="money" data-oa-use="states"><span class="oa-filters-result-id">R-07</span> Public matching for small donations and vouchers</li>
-      <li class="oa-filters-result" data-oa-area="money" data-oa-use=""><span class="oa-filters-result-id">R-08</span> Disclose the original funders of political spending</li>
-      <li class="oa-filters-result" data-oa-area="congress" data-oa-use=""><span class="oa-filters-result-id">R-09</span> Ban stock trading by members of Congress</li>
-      <li class="oa-filters-result" data-oa-area="money" data-oa-use=""><span class="oa-filters-result-id">R-10</span> Limits on lobbying and the revolving door</li>
-      <li class="oa-filters-result" data-oa-area="money" data-oa-use=""><span class="oa-filters-result-id">R-11</span> A Federal Election Commission able to act</li>
-      <li class="oa-filters-result" data-oa-area="congress" data-oa-use=""><span class="oa-filters-result-id">R-12</span> Senate filibuster reform</li>
+    <li class="oa-filters-result" data-oa-area="elections" data-oa-who="city congress initiative"><span class="oa-filters-result-id">R-01</span> All-party primaries with ranked general elections</li>
+    <li class="oa-filters-result" data-oa-area="elections" data-oa-who="city initiative"><span class="oa-filters-result-id">R-02</span> Ranked-choice voting for single-winner races</li>
+    <li class="oa-filters-result" data-oa-area="elections" data-oa-who="city congress"><span class="oa-filters-result-id">R-03</span> Proportional elections in multi-seat House districts</li>
+    <li class="oa-filters-result" data-oa-area="elections" data-oa-who="congress initiative"><span class="oa-filters-result-id">R-04</span> Independent citizen commissions draw election maps</li>
+    <li class="oa-filters-result" data-oa-area="elections" data-oa-who="congress initiative"><span class="oa-filters-result-id">R-05</span> Automatic voter registration</li>
+    <li class="oa-filters-result" data-oa-area="elections" data-oa-who="city initiative"><span class="oa-filters-result-id">R-06</span> Hold local elections alongside November races</li>
+    <li class="oa-filters-result" data-oa-area="money" data-oa-who="city congress initiative"><span class="oa-filters-result-id">R-07</span> Public matching for small donations and vouchers</li>
+    <li class="oa-filters-result" data-oa-area="money" data-oa-who="congress initiative"><span class="oa-filters-result-id">R-08</span> Disclose the original funders of political spending</li>
+    <li class="oa-filters-result" data-oa-area="money" data-oa-who="congress"><span class="oa-filters-result-id">R-09</span> Ban stock trading by members of Congress</li>
+    <li class="oa-filters-result" data-oa-area="money" data-oa-who="congress"><span class="oa-filters-result-id">R-10</span> Limits on lobbying and the revolving door</li>
+    <li class="oa-filters-result" data-oa-area="money" data-oa-who="congress"><span class="oa-filters-result-id">R-11</span> A Federal Election Commission able to act</li>
+    <li class="oa-filters-result" data-oa-area="government" data-oa-who=""><span class="oa-filters-result-id">R-12</span> Senate filibuster reform</li>
   </ul>
+  <p class="oa-filters-source">Areas and the routes to act on each reform come from our systems atlas, as of October 15, 2026.</p>
 </div>

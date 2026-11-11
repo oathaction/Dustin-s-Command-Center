@@ -2615,3 +2615,33 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 |---|---|---|
 | D2-1366 | Chapter 18's 24 anatomy plates aim at 5 KB each; if the family needs more, chapter 18's ceiling rises from 1.1 to 1.25 MB, with no other budget moved | Chapter 18 stands at 0.97 MB before its plates; the whole guide projects to about 14.6 MB against the 15.5 MB page budget (D2-1214), so 0.15 MB more stays inside it |
 | D2-1367 | The component engineer fixes the accessibility lead's ten ranked faults before round 2, the forced colors marks and the four live stages that draw apart from their copy first; the filter bar's sample data takes R-01's states from the atlas model | A live stage must draw what a builder copies (DR-203); sample data shown as a fact must match its source even when labeled Illustrative |
+
+### Systems designer, chapter 17 (`20261111_Stage-C-Round-1-Ch17-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1368 | Rules 17.11 (disabled) and 17.12 (empty) follow the brief's ten; muted, warning, error and success stay on Rule 17.8's plate | The brief allows rules after 17.10 only where a state needs its own; disabled and empty each carry behavior beyond their look (focus kept and the reason in the description; the count and the advice in one status line), and the other four are governed by Rules 11.12, 11.15 and 05.3 |
+| D2-1369 | A land starts at 112 percent of the mark's size and settles to true size over the standard duration with the enter easing | Our fifth edition's lever landed at 1.4 times a node and settled at 1.25; 1.4 / 1.25 = 1.12, so every land keeps that proportion; no new token, since the timing stays on the nine tokens |
+| D2-1370 | A draw takes the standard duration with the enter easing on its own, and the slide's duration and easing when it is drawn behind a slide | The fifth edition's lines drew in 200 ms; a line drawn behind a moving ring has to keep pace with it |
+| D2-1371 | No motion uses opacity, and nothing overshoots its place | The token architecture gives opacity no state job, and the fifth edition's "Never" list leaves out bounce and elastic easing |
+| D2-1372 | One button carries Play and Pause, so it carries both `data-oa-play` and `data-oa-pause` | The utility icons' rule (U-play, U-pause) and the stepper (`s-11-14-correct`) set one button whose icon and word change together; the engineer's planned check names three controls, and this keeps them on the controls a reader has |
+| D2-1373 | Every player has Slow motion, a check box at one tenth speed, unavailable under reduced motion with its reason | Our motions last 120 to 680 ms, so Pause can never be pressed in time at true speed; at one tenth speed it can, and a reader can see the easing |
+| D2-1374 | Players start at the first frame, and Play draws the last frame at once whenever every duration token reads 0 | Rule 17.4; tokens.css already resolves the six durations to 0 ms under reduced motion |
+| D2-1375 | Motion runs through the Web Animations API, timed from the tokens read at the press; the frames at rest are drawn by CSS from `data-frame`; Pause holds only the parts still running | No `@keyframes` inside the build's `@scope`; the last frame is the drawing's own state, so nothing lingers as a filled animation; resuming a finished part would replay it from its start |
+| D2-1376 | Failure cases of motion are still frames, never animated | The guide never plays a motion it forbids, and the guide check fails any animation that repeats |
+| D2-1377 | Rule 17.4's player carries "Preview reduced motion", which sets the player's own duration tokens to 0 ms; when the device asks for reduced motion it is checked and unavailable, with its reason | A reader without the setting can see what a reader with it sees, by the same token path as the media query |
+| D2-1378 | Loading draws the lines the data will sit on, with no marks on them, in the loading mark token: for a tracker, its line alone | D2-200 for the lockmark ("links alone"), applied to any region: a ring or node would read as a state the data has not reached |
+| D2-1379 | The ten-states plate is a readable group | It is a reference that builders and auditors read, and its samples are words |
+| D2-1380 | On Charcoal an error takes no band; the 4 px Pillar Red bar (4.49 to 1) and the mark and "Error:" in Newsprint carry it | Confirms D2-1160, as the inventory asked chapter 17's maker to |
+| D2-1381 | Hover on a quiet control thickens its edge from 1 to 2 px and takes the pixel from its padding | Rule 17.9: hover never moves layout |
+| D2-1382 | The players' check boxes take `accent-color` from the essential graphic role | A browser's own blue sits outside the palette; Charcoal on Newsprint measures 13.29 to 1 |
+| D2-1383 | The tracker and the link drawings are 264 px wide, six steps of 44 px | A fluid plate at 360 px leaves 264 px (frame, stage and phone inset each pad 16 px a side), so the status marks keep their true 26 px from 360 px up |
+| D2-1384 | A fixed drawing in a player may shrink to its column, and never scrolls | At 320 px and at 200 percent text a reader gets a slightly smaller drawing in place of a sideways scroll; at 360 px and wider at normal text size every mark is at true size |
+| D2-1385 | The bill in the players is chapter 11's Illustrative S.99002, School bus contracts, moving from step 3 to step 4 | Chapter 11 shows S.99002 at step 4, so the two chapters agree |
+| D2-1386 | The library's count in Rules 17.8 and 17.12 is read from the Civic Line inventory in use, as chapter 11 reads it | The set grew to 125 with CL-075; a count read from the file holds at the next drawing (the editor's row A1) |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1387 | Chapter 17's follow-ups in chapters 05 and 11 (`s-05-4-correct` points to `s-17-8-correct` and its Selected row takes Rule 17.10's look; chapter 11's live hover leaves the inset shadow for Rule 17.9's underline or border) go to chapter 17's maker, now free, through the chapter 05 and 11 generators; the other instance draws only the anatomy plates in its own new generator | The two instances never write one file at once; Rule 17.9 is new and chapter 11 must meet it |
