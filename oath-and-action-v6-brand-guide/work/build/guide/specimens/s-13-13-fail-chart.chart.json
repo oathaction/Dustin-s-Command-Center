@@ -1,0 +1,67 @@
+{
+ "kit": 1,
+ "id": "s-13-13-fail-chart",
+ "form": "ranked-bar",
+ "family": "comparison",
+ "tier": "core",
+ "data": {
+  "columns": {
+   "branch": {
+    "type": "text"
+   },
+   "hours": {
+    "type": "integer",
+    "unit": "hours a week"
+   }
+  },
+  "rows": [
+   {
+    "branch": "Main Library",
+    "hours": 52
+   },
+   {
+    "branch": "Riverside",
+    "hours": 44
+   },
+   {
+    "branch": "Elm Street",
+    "hours": 36
+   }
+  ]
+ },
+ "reader_question": "Which branch will be open the most hours a week?",
+ "evidence": "illustration",
+ "evidence_label": "Illustration",
+ "title": "The Main Library will open the most hours of the three branches",
+ "measure_line": "Hours open each week from January 4, three branches of an invented county library",
+ "source_line": "Source: Alder County Board, adopted library schedule, hours from January 4, Alder County’s three branches. Retrieved November 2, 2026. Values invented for this example.",
+ "illustrative": "Illustrative data",
+ "alt": "A ranked bar of weekly hours at three invented library branches: Main Library 52, Riverside 44, Elm Street 36.",
+ "table": {
+  "caption": "Hours open each week, from January 4",
+  "columns": [
+   {
+    "field": "branch",
+    "label": "Branch",
+    "format": "text",
+    "row_header": true
+   },
+   {
+    "field": "hours",
+    "label": "Hours a week",
+    "format": "integer"
+   }
+  ]
+ },
+ "phone": "same",
+ "domain": "all",
+ "states": [],
+ "encode": {
+  "category": "branch",
+  "value": "hours"
+ },
+ "show": [
+  "chart"
+ ],
+ "notes_internal": "The failure plate's chart: the same invented data, already fixed."
+}

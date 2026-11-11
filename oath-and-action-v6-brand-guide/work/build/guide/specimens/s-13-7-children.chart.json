@@ -1,0 +1,83 @@
+{
+ "kit": 1,
+ "id": "s-13-7-children",
+ "form": "line-event-notes",
+ "family": "change-over-time",
+ "tier": "core",
+ "dataset": "census-spm-child-poverty",
+ "where": {
+  "measure": "spm",
+  "age_group": "under_18",
+  "vintage": "p60-290"
+ },
+ "sort": [
+  {
+   "field": "year",
+   "order": "asc"
+  }
+ ],
+ "reader_question": "How has poverty under the Supplemental Poverty Measure changed since 2009?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: a Census Bureau survey",
+ "title": "Child poverty stood at 13.4 percent in 2025",
+ "measure_line": "Children under 18 in poverty, Supplemental Poverty Measure, percent, United States, 2009 to 2025",
+ "source_line": "Source: U.S. Census Bureau, Poverty in the United States: 2025 (P60-290), Table 8, Supplemental Poverty Measure, children under 18, 2009 to 2025, United States. Retrieved November 6, 2026. Figures for 2019 to 2024 include the Bureau’s August 2026 correction to the poverty thresholds, and 2024 also takes new population weights; they differ by up to 0.4 points from the earlier release.",
+ "illustrative": false,
+ "alt": "Line chart of child poverty under the Supplemental Poverty Measure, 2009 to 2025, on a scale from 0 to 25 percent, breaking where the Census Bureau changed its method; it stood at 13.4 percent in 2025.",
+ "table": {
+  "caption": "Percent in poverty, Supplemental Poverty Measure",
+  "columns": [
+   {
+    "field": "year",
+    "label": "Year",
+    "format": "year",
+    "row_header": true
+   },
+   {
+    "field": "series_variant",
+    "label": "Estimate",
+    "format": "text",
+    "words": {
+     "standard": "One estimate",
+     "redesigned_income_questions": "Redesigned income questions",
+     "traditional_income_questions": "Traditional income questions",
+     "legacy_processing": "Earlier processing system",
+     "updated_processing": "Updated processing system",
+     "corrected_2026_method": "Method used from 2019 on",
+     "original_2011_method": "Original 2011 method"
+    }
+   },
+   {
+    "field": "percent",
+    "label": "Percent",
+    "format": "number:1"
+   },
+   {
+    "field": "moe_pct",
+    "label": "Margin of error, points (90%)",
+    "format": "number:1"
+   }
+  ]
+ },
+ "chart_notes": [
+  "The line breaks in 2013, 2017 and 2019, where the Census Bureau changed its survey or method."
+ ],
+ "phone": "same",
+ "domain": "D08",
+ "states": [],
+ "encode": {
+  "x": "year",
+  "y": "percent",
+  "break": "comparable_with"
+ },
+ "labels": {
+  "break_end": "earlier",
+  "break_start": "later",
+  "y_max": 25
+ },
+ "show": [
+  "chart"
+ ],
+ "notes_internal": "Chapter 13, Rule 13.7 (CD S3, brand S5): one of a pair drawn in one window on one scale."
+}

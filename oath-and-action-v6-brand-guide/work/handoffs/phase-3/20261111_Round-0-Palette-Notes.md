@@ -9,9 +9,9 @@ Oath & Action Edition 06, Phase 3, round 0, November 11, 2026. Written by the da
 Two colors are new, both Prussian mixed toward Newsprint in OKLab, so diverging pair B works on Charcoal in the dark theme: `oa.color.tint.prussianN56` (#828A9D, 5.42 to 1 on Charcoal) and `oa.color.tint.prussianN29` (#505C7D, 2.83 to 1, its value printed). Every other proposed token points at a value the release already holds:
 
 - **Diverging on Charcoal** (10 tokens): the two new Prussian steps, the Charcoal band tint as the midpoint, and the sequential scale's Charcoal steps 3 and 4 as the Verdigris half. Each Prussian step matches its Verdigris partner in lightness within 0.002.
-- **Categorical, four inks** (16 tokens, DR-234): Charcoal, Prussian, Verdigris and Stone on Newsprint; Newsprint, Prussian 62 percent toward Newsprint, Verdigris and Stone on Charcoal. The Stone group always carries the hatch, and every group carries a direct label and, on a line, its own end marker.
+- **Categorical, four inks** (16 tokens, DR-234): Charcoal, Verdigris, Prussian and Stone on Newsprint; Newsprint, Verdigris, Prussian 62 percent toward Newsprint and Stone on Charcoal (the order changed in the fix pass; see below). The Stone group always carries the hatch, and every group carries a direct label and, on a line, its own end marker.
 - **Ghost lines** for small multiples past four groups (2 tokens).
-- **The grade line code** (10 tokens): Rule 10.10's patterns as stroke styles per 1 px of line width, the record square, the hollow line and the shortest textured run.
+- **The grade line code** (10 tokens): the atlas build's patterns as stroke styles per 1 px of line width, the record square, the hollow line, the dotted line's clearance before its arrowhead and the shortest textured run (set in the fix pass under D3-84; see below).
 
 **The proof sheet** is `work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs.html`, with 43 PNG captures beside it and every measured value in `20261111_Palette-Proofs-Measures.json`. It shows each palette on Newsprint, Charcoal and White (the paper a printed report uses), the Prussian measurement behind keeping charts off Prussian, contrast of every fill on its ground and every label on its fill, grayscale, and protanopia, deuteranopia and tritanopia simulations. It adds the grade line code at 1x and 2x in five treatments, the red-on-red specimen in six views, and both forms past four groups, all on real data with source lines. 41 of 41 scripted checks pass. The simulation method is Machado, Oliveira and Fernandes (2009) at severity 1.0 in linear RGB, the Phase 2 palette lab's method; the captures apply the same matrices through SVG filters and match the script within 0.001 in OKLab.
 
@@ -84,4 +84,90 @@ Scratch, outside the repository: `/tmp/claude-0/-home-user-Dustin-s-Command-Cent
 
 ## Fix pass
 
-Work in progress, from `work/handoffs/phase-3/20261111_Round-0-Fix-Brief-Part-1.md`. D3-84's values are set in the palette proposal under `line_code_source` and were sent to the engineer and the editor at about 23:00 UTC; the categorical order and group 4's label path changed with them.
+From `work/handoffs/phase-3/20261111_Round-0-Fix-Brief-Part-1.md`. Every fix is made in `work/boards/phase-3/round-0/palettes/build_palette_proofs.py`, which rewrites the proposal, the sheet and its measures; the captures and their check were run again after the last change.
+
+### D3-84, the line code from one source
+
+The build script now reads the line code from the atlas build itself, `work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py`. It runs that file's `pattern()` and reads `wire_marks()`, `fitted()`, `ARROW`, `grade_glyph()`, `evidence_key()` and the shared grade table from the source text, and stops if `wire_marks` changes shape. The proposal records every value and its line under the new key `line_code_source`, and the sheet prints them in a table, "Every value, and where it comes from".
+
+| Item | Value | Source |
+|---|---|---|
+| Patterns, per 1 px of line width | Plausible 4 and 2, butt caps; Contested 4, 1.5, 1 and 1.5, butt caps; Hypothesis 0 and 2.5, round caps; Documented and Well supported solid | `pattern()`, line 446 |
+| Fitting | Stretched so each line starts and ends on ink | `fitted()`, line 456 |
+| Line widths | 2, 3 and 6 px, no others | `ARROW`, line 436 |
+| Hollow line | Two 1 px rails at every width, one line width of ground between them | `wire_marks()`, line 570 |
+| Dotted line before an arrowhead | Stops 1.5 line widths short (new token `oa.chart.grade.headClearance`) | `wire_marks()`, line 570 |
+| Shortest textured run | 20 line widths, key samples included: 40 px at 2 px | **Not in the build**; set here |
+| Record square | 7 px, inline before the word Documented | **Not in the build**; set here |
+| Hypothesis gloss | "not yet tested" | Rule 13.3's table; the build's shared table says "untested" |
+
+Logged, where the build defines no value:
+- **Shortest run.** The build has no shortest-line constant. Its keys draw 32 and 36 px samples on a 2 px line, which squeeze a dash-dot sample by up to a fifth. 20 widths holds two full dash-dot periods and the closing dash at every width, which is Rule 13.4's "pattern twice". It replaces both the frame memo's 28 widths, which the build never coded, and Rule 13.4's 48 px.
+- **Record square.** The build draws none. Gate 1, M1 added it, and the frame memo and Rule 13.4 both give 7 px.
+- **Withdrawn:** `oa.chart.grade.conceptual.railSelected` (2 px on the 6 px route). The build draws 1 px rails at every width.
+
+Sent by message to the engineer (`ab61c63fec660d199`) and the editor (`aab950e18c7699aa7`) at about 23:00 UTC, with the categorical changes below for the engineer.
+
+### What each review item became
+
+| Codes | Fix | Where |
+|---|---|---|
+| CD M2, brand M3, statistics S8 | D3-84 above: one set of numbers, read from the atlas build, with the shortest run at 20 widths, the hollow line's 1 px rails and the gloss "not yet tested"; the sheet's line code section prints the same values and draws 1 px rails at 6 px | Proposal `tokens` and `line_code_source`; sheet section 06 |
+| brand P3 | The Hypothesis gloss reads "not yet tested" in the tokens, the proposal and the sheet | `GLOSS` in the build script |
+| CD M5, brand P1 | The categorical card draws the same four sectors in both charts, so each ink names one group in the figure | `cat_stack()` |
+| CD M5, brand P2 | Every bar segment is named on the bar: values inside where they fit, names on leaders laid out so no leader crosses a name, and the narrow last segment named at the bar's end. The key above the bar is gone | `cat_stack()` |
+| brand P2 | The categorical order becomes Charcoal, Verdigris, Prussian, Stone, so neither close pair ever touches in a stack. Charcoal and Prussian print at 99 and 97 percent black in one-ink print, and Verdigris and Stone sit 0.05 apart in lightness. Two new scripted checks hold it: stack neighbors stand 0.10 apart in lightness, or 10 points of black, or the second is hatched | `CAT`, `checks()` |
+| CD S9 | Group 4's label token takes its placement in its name: `oa.chart.color.categorical.labelBeside.group4`, set beside the hatch or on a halo, never on the fill. I asked the engineer to have the kit refuse a label on `cat-4`'s fill | `cat_label_path()` |
+| CD S8, brand P4 | At 390 px the sheet now shows the phone form the kit would use: the categorical charts at 320 px with names that wrap, small multiples in two columns, and ranked bars with each name above its bar for one-in-ink and all eight red-on-red views (DR-64). The desktop drawings stay at 1440 px | `dual()`, `ranked_bars_phone()`, phone arguments |
+| brand P5 | Views 7 and 8 proof the variant: the other bars in the light fill, which prints each value beside its bar. In gray the red bar then prints darker than its neighbors (Chromium's filter: 0.371 against 0.635, where view 1 gives 0.371 against 0.386). Both are on the sheet and in its grayscale capture for the creative director to weigh; I recommend the light fill for bars wherever a red point stands among them, since its values print | `red_views()` |
+| CD S10 | The font link asks for Inter Tight 800 only. The one-in-ink and red-on-red titles now say the September figure is preliminary ("a preliminary figure", as H08's example does) | head; `LEAD_TITLE` |
+| CD S10, the period | **Not changed, with a reason.** The cards' titles are findings, and a finding title is a full sentence with its period (Rule 13.1, the engineer's spec contract). The other headings on the sheet are proof labels, and labels take no period (chapter 02's scope note). The two kinds now differ on sight: a finding carries the evidence chip and its grade line | |
+| statistics S18 | The tile map's national figure was drawn at the key; it now reads "United States, margin 0.5", and a note under the map gives the national figure, the state margins (1.6 to 5.6 points) and why a state near a step's edge may belong in the next step. The script reads the national row from the data file once the engineer adds it (research lead's ENG-7), and from the sidecar until then | `tile_map()`, figure note |
+| D3-83 on the sheet | Every finding card now carries the evidence chip with "Documented: a Bureau of Labor Statistics survey of employers, as copied by FRED" | `JOBS_GRADE` |
+
+### D3-83 sign-off: signed off
+
+The rule is right, and it needs no change from me: an outside figure takes its grade word from H08's table; a count or survey tabulation is a finding with the publisher's margin; a figure resting on a model's assumptions is an estimate with its range or method. For the makers and the editor, this is how rounds 1 and 2's plan rows read under it:
+
+- **Documented, a record, a finding:** rows 2, 13, 14, 22, 25, 26, 27, 33, 39, 44, 48, 49, 54, 77, 78 and 80 (statutes, roll calls, filings, Treasury, OPM, judicial and House records), and the administrative counts in rows 4, 12, 19 and 21.
+- **Documented, a survey tabulation, a finding with its margin:** rows 3, 6, 8, 23, 43, 63, 64, 65, 70 and 71, and the payroll series of S13, S14 and rows 18, 20 and 35. The research lead confirmed the Bureau's interval for total nonfarm monthly change as about plus or minus 122,000 at 90 percent.
+- **An estimate, with its range or method:** rows 56 and 57 (small-area models), 58 (population estimates), 73 (projections), and any with-and-without figure, such as a benefit's effect on poverty.
+- **A finding, with its method in the note:** row 17's repeat-sales price index and row 47's national health accounts, which compile records and surveys with no projection.
+- **Illustration:** row 28. Atlas rows take V7's own grades through Rules 13.2 and 13.3.
+
+### D3-88 sign-off: signed off
+
+`census-acs-rent-and-income-by-state` now carries the Census Bureau's own measure, B25071 (median gross rent as a percentage of renter household income), with its margin. I checked the file by script: 52 rows, the United States at 30.9 percent with a margin of 0.1, and states from 23.8 (North Dakota) to 35.5 (Florida), every row with its margin, which matches the statistics review's figures. The scatter draws rent (B25064) against renter households' income (B25119) under the Association label, and names states by B25071 only past the margin. The domain and states are unchanged, so Rule 01.9 holds. One note for the round 2 maker: B25071 and B25064 count renters paying cash rent, and B25119 counts all renter households. The sidecar's universe line says so, and the chart's note should too.
+
+### Fix pass routine calls
+
+D3-xxx | The line code's numbers are read by script from the atlas build, with the shortest run set at 20 line widths and the record square at 7 px where the build defines none | D3-84; 20 widths holds two dash-dot periods and the closing dash, and 7 px is Gate 1 M1's size as the frame memo and Rule 13.4 give it
+D3-xxx | `oa.chart.grade.conceptual.railSelected` is withdrawn and `oa.chart.grade.headClearance` (1.5 line widths) is added | The build draws 1 px rails at every width and stops a dotted line 1.5 widths short of its head
+D3-xxx | The categorical order becomes Charcoal, Verdigris, Prussian, Stone | Charcoal and Prussian print 2 points of black apart in one-ink print, and Verdigris and Stone 0.05 apart in lightness; this order keeps both pairs from touching in a stack
+D3-xxx | Group 4's label token is renamed `labelBeside` | Its label sits beside the hatch or on a halo; Charcoal on Stone measures 3.10 to 1
+D3-xxx | The proof sheet shows the phone form at 390 px and the desktop drawing at 1440 px | Board 1 shows both widths, and DR-64 lets a phone drawing change form when it carries the same data and finding
+D3-xxx | Recommended for the creative director: where a red point stands among bars, the other bars take the light fill | The red point then holds in gray print, and the light fill already prints its values
+
+### Fix pass requests
+
+1. **Engineer (sent):** the D3-84 token values, `railSelected` withdrawn, `headClearance` added, `minRun` from 28 to 20, the gloss; the categorical order (groups 2 and 3 swap values) and the `labelBeside.group4` rename; a kit check that refuses a label on `cat-4`'s fill.
+2. **Editor (sent):** Rule 13.4's numbers and the 40 px key samples at 2 px; a red target at 4 px or heavier.
+3. **Engineer:** the research lead's ENG-7, the national row in the turnout file. The proof sheet reads it once it is there.
+
+### Fix pass tested
+
+- The atlas build read by script: `pattern()` run for each texture, and the hollow line, head clearance, widths and key lengths read from the source with their lines; the script stops if `wire_marks` changes shape.
+- 46 of 46 scripted checks pass, including the two new stack-order checks for the categorical set on Newsprint, White and Charcoal.
+- The captures again: 43 PNGs; 459 samples; token swatches equal their tokens; grayscale equals the luma formula; the three simulations match the script within 0.001 in OKLab.
+- At 390 px: no horizontal page scroll (0 px), and screenshots of the categorical card, the small multiples, the one-in-ink card and a red-on-red view show the phone forms with every name on screen.
+- At 1440 px: the categorical card with both charts and the bar's callouts, the line code values table, and views 7 and 8 in color and in the grayscale capture.
+- `census-acs-rent-and-income-by-state` by script for D3-88.
+- A scan of the sheet's words: no em dash, no U+2011, none of chapter 02's flagged words; "untested" appears only in the source log.
+
+### Fix pass not tested
+
+- The engineer's and the editor's changes from the messages; I cannot see them yet.
+- Chapter 13's plates against the new numbers; the editor redraws them.
+- The guide build (`guide_build.py --strict`). The brief asks for it after a plate changes, and I changed no guide plate or chapter file.
+- The light fill's effect in print; only the screen's grayscale filter was measured.
+- The ACS universes behind rows 63 and 64, beyond the sidecar's own words.

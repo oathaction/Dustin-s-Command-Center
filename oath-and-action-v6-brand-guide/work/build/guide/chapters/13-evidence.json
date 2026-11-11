@@ -6,11 +6,11 @@
  "instruction": "Name the kind of evidence behind each claim, with its source and any label beside it.",
  "opener": {
   "specimen": "s-13-opener",
-  "caption": "Connection L02 as our systems atlas records it, with each part that carries its evidence and the rule that sets it."
+  "caption": "Connection L02 as our systems atlas records it. Each numeral marks a part that carries its evidence, and the list names the rule that sets it."
  },
  "intro": [
-  "Every chart, diagram and claim we publish carries its evidence with it, so a reader can see what kind of evidence it is, how strong it is, who published it and when. Our systems atlas, Who Do They Answer To?, grades the strength of each claim it holds, and that evidence grade, from documented to hypothesis, decides the words and lines a page may use for it.",
-  "Chapter 02’s house rules already ask for a source line, the Illustrative label and a title sized to its evidence. The rules here carry those into charts, diagrams and the atlas, and where chapter 01 or chapter 02 already states a rule, they cite it and show how a figure keeps it. Chapters 14 and 15 hold every chart and systems drawing to them."
+  "Every chart, diagram and claim we publish carries its evidence: what kind it is, how strong, who published it and when. Our systems atlas, Who Do They Answer To?, grades each claim it holds from documented to hypothesis, and that evidence grade sets the words and lines a page may use.",
+  "Where chapter 01 or chapter 02 already states a rule, the rules here cite it and show how a figure keeps it."
  ],
  "groups": [
   {
@@ -37,12 +37,14 @@
    "id": "13.1",
    "title": "Title each chart or diagram as a finding, an association, an estimate or an illustration.",
    "rule": [
-    "A dark label above every chart and diagram title names the kind of evidence the figure shows, in one of four words, and the title claims no more than that kind allows. A finding is a measured result with a source and a period, such as a count, a vote or a survey figure. An association is what our systems atlas defines as “Two measures that move together without an established causal path.” An estimate is a value that a model or a stated method produces, such as a projection, and it prints with its range or its method. An illustration shows how a design works with invented values, and it carries the Illustrative label (Rule 13.8).",
-    "The grade follows the label in words on the same line, as Rule 13.2 sets out. Because a grade measures how firm the evidence is, an association graded well supported is still a pattern: its title takes words such as “went with” or “ran lower where”, and a note under the figure says the pattern does not show cause."
+    "An evidence label, a chip in the chart chip colors, sits above every chart title and names the kind of evidence in one of four words. A finding is a measured result with a source and a period, such as a count or a survey figure. An association is what our systems atlas defines as “Two measures that move together without an established causal path.” An estimate rests on a model’s assumptions, such as a projection. An illustration shows how a design works with invented values.",
+    "The grade follows the label in words: the atlas’s grade for a figure from the atlas (Rule 13.2), and Documented for an official statistic or a public record, with its source after the colon. A diagram of atlas connections prints the grade word of its least certain step in the label’s place."
    ],
    "tokens": [
     "oa.chart.color.chip.fill.onNewsprint",
-    "oa.chart.color.chip.label.onNewsprint"
+    "oa.chart.color.chip.label.onNewsprint",
+    "oa.chart.color.chip.fill.onCharcoal",
+    "oa.chart.color.chip.label.onCharcoal"
    ],
    "why": {
     "text": [
@@ -52,7 +54,7 @@
    },
    "correct": {
     "specimen": "s-13-1-correct",
-    "caption": "Four chart heads, one of each kind, with the charts under them left out. The association’s note says the pattern does not show cause, and the estimate’s note gives the method behind its number."
+    "caption": "Four chart heads, one of each kind, with the charts under them left out. The finding gives its margin of error, the association’s note says the pattern does not show cause, and the estimate’s note gives the method behind its number."
    },
    "failure": {
     "specimen": "s-13-1-failure",
@@ -61,31 +63,43 @@
    "specs": [
     {
      "label": "Evidence label",
-     "value": "Finding, Association, Estimate or Illustration, in the label style on the chart’s chip fill, first above the title",
+     "value": "Finding, Association, Estimate or Illustration, in the label style on the chart chip fill, which turns with the theme",
      "token": "oa.chart.color.chip.fill.onNewsprint"
     },
     {
      "label": "Grade line",
-     "value": "The grade in words after the label, on the same line, in the caption style (Rule 13.3)",
+     "value": "After the label: the atlas’s grade for an atlas figure; Documented for an official statistic or a public record, then its source, as in “Documented: a Census Bureau survey”",
      "token": "oa.type.caption"
     },
     {
-     "label": "Association",
+     "label": "A finding",
+     "value": "A count or a survey tabulation, with the publisher’s margin of error where one exists, at its stated confidence"
+    },
+    {
+     "label": "An estimate",
+     "value": "A figure that rests on a model’s assumptions, such as a projection, a small-area model or a with-and-without calculation, with its range or method"
+    },
+    {
+     "label": "An association",
      "value": "Words such as “went with” at any grade, and a note that the pattern does not show cause"
     },
     {
-     "label": "Estimate",
-     "value": "Its range or its method, in the measure line or a note"
+     "label": "An illustration",
+     "value": "Invented values only, with “Illustrative data” beside the chart (Rule 13.8)"
     },
     {
-     "label": "Illustration",
-     "value": "Invented values only, with “Illustrative data” beside the chart (Rule 13.8)"
+     "label": "An atlas diagram",
+     "value": "The grade word of its least certain step in the label’s place, and what that grade belongs to after it"
+    },
+    {
+     "label": "Measure line",
+     "value": "The line under the title that says what is counted, in what unit, where and when"
     }
    ],
    "related": [
+    "02",
     "14",
-    "15",
-    "02"
+    "15"
    ],
    "builders": [
     "Store the kind in the chart’s spec as its evidence field and print the label from that field, so the label and the title come from one record.",
@@ -96,12 +110,12 @@
    "id": "13.2",
    "title": "Give the title the verb its evidence grade allows.",
    "rule": [
-    "House rule H08 in chapter 02 gives each evidence grade its verb: record words such as “passed” or “stood at” for documented, a direct verb such as “raises” for well supported, “can” or “may” for plausible, both readings at the same length for contested, and a label that marks a hypothesis as untested. A chart or diagram title takes the grade our systems atlas gives the claim it states, read from the atlas record, and the grade line beside the label prints the same grade.",
-    "The atlas names each connection, a claimed causal link from one of its variables to another, and some names keep a direct verb at a lower grade, such as “Better public services build earned trust”, graded plausible. We quote such a name as the atlas writes it, beside its typed chip, and write our own title in the verb the grade allows."
+    "House rule H08 in chapter 02 gives each evidence grade its verb: record words such as “passed” or “stood at” for documented, a direct verb such as “raises” for well supported, “can” or “may” for plausible, both readings at the same length for contested, and a label that marks a hypothesis as untested. A title takes the grade of the claim it states, read from the atlas record or set by Rule 13.1 for a figure from outside the atlas.",
+    "The atlas names each connection, a claimed causal link from one of its variables to another, and some names keep a direct verb at a lower grade, such as “Better public services build earned trust”, graded plausible. We print such a name in quotation marks after its typed chip, as the atlas writes it, and write our own title in the verb the grade allows."
    ],
    "why": {
     "text": [
-     "The verb carries most of a title’s claim. “Raises” tells a reader that strong studies agree, and “can raise” tells them some evidence points that way, so a verb sized to the grade keeps the claim honest in the sentence a reader repeats. Rule 02.16 asks for the same verbs inside a sentence."
+     "The verb carries most of a title’s claim. “Raises” tells a reader that strong studies agree, while “can raise” says some evidence points that way, so a verb sized to the grade keeps the claim honest in the sentence a reader repeats. Rule 02.16 asks for the same verbs inside a sentence."
     ],
     "basis": "Chapter 02, house rule H08"
    },
@@ -111,12 +125,12 @@
    },
    "failure": {
     "specimen": "s-13-2-failure",
-    "caption": "<strong>Fails Rule 13.2.</strong> The grade line says plausible, and the title states the link with the direct verb “build”, which only well-supported evidence allows."
+    "caption": "<strong>Fails Rule 13.2.</strong> The label says plausible, and the title states the link with the direct verb “build”, which only well-supported evidence allows."
    },
    "specs": [
     {
      "label": "Documented",
-     "value": "Record words: passed, ruled, stood at, reported"
+     "value": "Record words: passed, ruled, stood at, reported, had spent"
     },
     {
      "label": "Well supported",
@@ -135,13 +149,17 @@
      "value": "“Untested” in the title’s first words"
     },
     {
+     "label": "An atlas name",
+     "value": "In quotation marks after its chip, as the atlas writes it"
+    },
+    {
      "label": "Where the grade comes from",
-     "value": "The atlas record the title states, read by script"
+     "value": "The atlas record the title states, read by script, or Rule 13.1 for an outside figure"
     }
    ],
    "related": [
-    "02",
     "01",
+    "02",
     "14",
     "15"
    ],
@@ -206,10 +224,18 @@
    "id": "13.4",
    "title": "Draw a connection’s grade in the atlas’s line code.",
    "rule": [
-    "A connection, the arrow from one variable to another in our systems atlas, takes the line of its own grade as Rule 10.10 draws it: solid for documented and well supported, dashed for plausible, dash and dot for contested, and dots for a hypothesis. Its grade word prints beside it in every view a reader sees, and a documented connection’s label starts with the record square, a small filled square that says the public record itself shows the link.",
-    "A loop, a chain of connections that returns to where it started, draws each step in its own line, so its least certain step stands out. A conceptual loop, one the atlas describes without a complete chain of numbered connections, draws each step as a hollow line: two hairlines with the page between them. Every graded line runs at least 48 px, long enough to show its pattern twice."
+    "A connection, the arrow from one variable to another in our systems atlas, takes the line of its own grade, drawn by the atlas build’s own function as Rule 10.10 sets out: solid for documented and well supported, dashed for plausible, dash and dot for contested, and dots for a hypothesis. Its grade word prints beside it, and a documented connection’s label starts with the record square, a filled square that says the public record itself shows the link.",
+    "A loop, a chain of connections that returns to where it started, draws each step in its own line, so its least certain step stands out, and each step of a conceptual loop, one with no complete chain of numbered connections, draws as a hollow line. The oa.chart.grade tokens hold every number, listed in the Specifications."
    ],
    "tokens": [
+    "oa.chart.grade.documented",
+    "oa.chart.grade.wellSupported",
+    "oa.chart.grade.plausible",
+    "oa.chart.grade.contested",
+    "oa.chart.grade.hypothesis",
+    "oa.chart.grade.conceptual.rail",
+    "oa.chart.grade.minRun",
+    "oa.chart.grade.recordSquare",
     "oa.color.graphic.essential.onNewsprint"
    ],
    "why": {
@@ -220,7 +246,7 @@
    },
    "correct": {
     "specimen": "s-13-4-correct",
-    "caption": "Four loops from our systems atlas, each step in the line of its grade with its word. The record square marks Loop R10’s two documented steps, Loop R16 closes on an untested step, and Loop B2’s step is hollow because the atlas gives it no numbered connection."
+    "caption": "Four loops from our systems atlas, each step in the line of its grade with its word, under a label that gives the loop’s least certain grade. The record square marks Loop R10’s two documented steps, Loop R16 closes on an untested step, and Loop B2’s step is hollow because the atlas gives it no numbered connection."
    },
    "failure": {
     "specimen": "s-13-4-failure",
@@ -228,25 +254,47 @@
    },
    "specs": [
     {
-     "label": "Lines",
-     "value": "As Rule 10.10 measures them, read from each connection’s grade",
-     "token": "oa.color.graphic.essential.onNewsprint"
+     "label": "Documented and Well supported",
+     "value": "Solid",
+     "token": "oa.chart.grade.documented"
     },
     {
-     "label": "Record square",
-     "value": "7 px, filled in the label’s ink, before the word Documented"
+     "label": "Plausible",
+     "value": "Dashed, 4 and 2 line widths, butt caps: 8 and 4 px on a 2 px line",
+     "token": "oa.chart.grade.plausible"
+    },
+    {
+     "label": "Contested",
+     "value": "Dash and dot, 4, 1.5, 1 and 1.5 line widths: 8, 3, 2 and 3 px on a 2 px line",
+     "token": "oa.chart.grade.contested"
+    },
+    {
+     "label": "Hypothesis",
+     "value": "Round dots 2.5 line widths apart, 5 px on a 2 px line, stopping 1.5 line widths short of the arrowhead",
+     "token": "oa.chart.grade.hypothesis"
+    },
+    {
+     "label": "Widths and fit",
+     "value": "Lines at 2, 3 or 6 px; each pattern stretched to start and end on ink"
     },
     {
      "label": "Hollow line",
-     "value": "A 5 px line in ink with a 2 px line of the page’s color down its middle"
+     "value": "Two 1 px rails, 1 line width apart: 4 px across on a 2 px line",
+     "token": "oa.chart.grade.conceptual.rail"
     },
     {
-     "label": "Shortest line",
-     "value": "48 px, two full cycles of the pattern"
+     "label": "Shortest run",
+     "value": "20 line widths, 40 px on a 2 px line, key samples included; a shorter step prints its grade in words beside it",
+     "token": "oa.chart.grade.minRun"
     },
     {
-     "label": "Grade word",
-     "value": "Beside every connection in a view a reader sees"
+     "label": "Record square",
+     "value": "7 px, filled in the label’s ink, inline before the word Documented and nowhere else",
+     "token": "oa.chart.grade.recordSquare"
+    },
+    {
+     "label": "Beside the event mark",
+     "value": "An event’s shape sits only at the head of an event row, with the figure’s key (Rule 13.11)"
     }
    ],
    "related": [
@@ -255,18 +303,19 @@
     "21"
    ],
    "builders": [
-    "Take each step’s grade from its own connection record and draw the line with the atlas build’s <code>wire_marks</code>, so the pattern fits the line’s length and starts and ends on ink."
+    "Take each step’s grade from its own connection record and draw the line with the atlas build’s <code>wire_marks</code>, so the pattern fits the line’s length and starts and ends on ink. Read every number from the oa.chart.grade tokens."
    ]
   },
   {
    "id": "13.5",
    "title": "Keep grade, effect size, uncertainty and delay apart, each with its own mark.",
    "rule": [
-    "Four properties of a claim each keep their own mark and their own words. The evidence grade, how strong the evidence is, takes the line of Rule 13.4 or the grade word. A reform’s effect size prints as the atlas’s ordinal code, a rank of small, moderate or large with no measured amount, such as +M for moderate positive. It takes one row for each outcome family, one of the four groups of results the atlas judges reforms by, such as Quality of democracy. How sure the atlas is of that size, the uncertainty, prints in the atlas’s own words; on a chart of survey figures the uncertainty is the margin of error, the range around a figure that sampling allows, drawn as an interval. Delay, the time an effect takes to arrive, draws as one, two or three ticks for under 2 years, 2 to 10 years and over 10 years, with the words beside them.",
-    "A grade never borrows a line’s width, a mark’s darkness or its size, and the four outcome families stay apart with no total. Our systems atlas gives the reason: “The four outcome families use different units. A reform can improve one while imposing a cost on another, and the evidence behind each estimate differs in quality.”"
+    "Four properties of a claim keep their own marks and words. The evidence grade takes the line of Rule 13.4 or the grade word. A reform’s effect size prints as the atlas’s ordinal code, a rank of small, moderate or large with no measured amount, in one row for each outcome family, one of the four groups of results the atlas judges reforms by. Uncertainty prints in the atlas’s own words, or for a survey figure as its margin of error, the range around the figure that sampling allows. Delay, the time an effect takes, draws as ticks on the connection.",
+    "No mark carries two properties, and the four outcome families never add into one score. Our systems atlas gives the reason: “The four outcome families use different units. A reform can improve one while imposing a cost on another, and the evidence behind each estimate differs in quality.”"
    ],
    "tokens": [
-    "oa.color.graphic.essential.onNewsprint"
+    "oa.color.graphic.essential.onNewsprint",
+    "oa.color.data.emphasisRed.onNewsprint"
    ],
    "why": {
     "text": [
@@ -276,7 +325,7 @@
    },
    "correct": {
     "specimen": "s-13-5-correct",
-    "caption": "Reform R-30 with each property in its own place: the grade of the evidence that it works, its effect on each outcome family with the atlas’s qualifiers kept, the atlas’s confidence in its own words, and the delay of the connection it acts on."
+    "caption": "Reform R-30 with each property in its own place: the grade of the evidence that it works in the label, its effect on each outcome family with the atlas’s qualifiers kept, the atlas’s confidence in its own words, and the delay of each connection it targets, marked in Rule 12.5’s red."
    },
    "failure": {
     "specimen": "s-13-5-failure",
@@ -289,19 +338,24 @@
     },
     {
      "label": "Effect size",
-     "value": "The atlas’s code and words, one row per outcome family: one to three pips right of the zero line for a gain, left for a cost"
-    },
-    {
-     "label": "No expected effect",
-     "value": "A bar on the zero line, with the words"
+     "value": "The atlas’s code and words, one row per outcome family: one to three pips right of the zero line for a gain, left for a cost, and a bar on the zero line for no expected effect"
     },
     {
      "label": "Uncertainty",
-     "value": "The atlas’s words, quoted; for a survey figure, its margin of error drawn as an interval"
+     "value": "The atlas’s words, quoted; for a survey figure, its margin of error at the publisher’s stated confidence, 90 percent for the Census Bureau and the Bureau of Labor Statistics, drawn as an interval"
+    },
+    {
+     "label": "A gap between two survey figures",
+     "value": "Counts only where it passes the margin of error of the gap itself; chapter 14 sets when a chart may rank survey figures"
     },
     {
      "label": "Delay",
-     "value": "One to three ticks, with under 2 years, 2 to 10 years or over 10 years"
+     "value": "One, two or three ticks for under 2 years, 2 to 10 years and over 10 years, with the words"
+    },
+    {
+     "label": "Where a reform acts",
+     "value": "Its target connections in Rule 12.5’s red, at 4 px on a 1 px Charcoal edge and never at 2 px, with a note that names the reform",
+     "token": "oa.color.data.emphasisRed.onNewsprint"
     },
     {
      "label": "Never",
@@ -309,8 +363,9 @@
     }
    ],
    "related": [
-    "15",
+    "12",
     "14",
+    "15",
     "21"
    ],
    "builders": [
@@ -321,8 +376,8 @@
    "id": "13.6",
    "title": "Write the source line in its six parts, in order.",
    "rule": [
-    "House rule H04 in chapter 02 sets the source line’s six parts and their order: the publisher, the title or table, the observation period, the geography, the date retrieved, and the qualification that matters. The observation period is the time the numbers describe, and the date retrieved is the day we read the file. A chart prints the line under its notes, starting “Source:”, and a chart with two sources gives each one its six parts.",
-    "Three kinds of source take a few more words. A copy names the publisher first and the copy after “via”, as when FRED, the St. Louis Fed’s database, republishes a Bureau of Labor Statistics series. A secondary source, one that compiles other people’s records, carries the words “a secondary source” after its name, and an advocacy group is named as one. A value from our systems atlas names the atlas, the record and the snapshot date."
+    "House rule H04 in chapter 02 sets the source line’s six parts and their order: the publisher, the title or table, the observation period, the geography, the date retrieved, and the qualification, the one caveat a reader most needs. The observation period is the time the numbers describe, and the date retrieved is the day we read the file. A chart prints the line under its notes, starting “Source:”, and a chart with two sources gives each its six parts.",
+    "A copy, a secondary source, an advocacy group and a value from our systems atlas each add a few words, which the Specifications set out."
    ],
    "tokens": [
     "oa.type.caption"
@@ -348,11 +403,11 @@
     },
     {
      "label": "A copy",
-     "value": "“via” and the copy’s name, after the geography"
+     "value": "The publisher first, then “via” and the copy’s name after the geography, such as FRED, the St. Louis Fed’s database"
     },
     {
      "label": "A secondary source",
-     "value": "“a secondary source” after its name"
+     "value": "One that compiles other people’s records, with “a secondary source” after its name"
     },
     {
      "label": "An advocacy group",
@@ -380,8 +435,8 @@
    "id": "13.7",
    "title": "Print the period and the vintage, and give charts shown together one window.",
    "rule": [
-    "The measure line, the line under a chart’s title that says what is counted, names the observation period, such as 2009 to 2025 or January 2022 to September 2026. Where the publisher revises its figures, the chart also prints their vintage, the release the figures come from, and marks any figure the publisher calls preliminary. The Census Bureau revised its child poverty rates for 2019 to 2024 in August 2026, so a chart of those years names the release it draws.",
-    "Charts shown together share one time window, printed once with its reason, and no window starts or ends at an inauguration date, as house rule H09 sets. A line on a chart draws from one release, and a table that sets two releases side by side names each one."
+    "The measure line names the observation period, such as 2009 to 2025. Where a publisher revises its figures, the chart also names the vintage, the release its figures come from, and marks any figure the publisher calls preliminary. The Census Bureau’s release of September 15, 2026 carries corrected poverty thresholds for 2019 to 2024 and new weights for 2024, so a chart of those years names that release.",
+    "Charts shown together share one time window, printed once with its reason, and house rule H09 holds: “No chart or sentence splits a period at an inauguration date.” When a publisher revises a figure a published chart shows, the chart takes the new release and a dated update line that names it; a correction note (Rule 13.13) is for our own errors."
    ],
    "why": {
     "text": [
@@ -391,16 +446,16 @@
    },
    "correct": {
     "specimen": "s-13-7-correct",
-    "caption": "Two charts shown together with one window and its reason, and the release named under them. The table shows the revision that makes the release matter."
+    "caption": "Two charts shown together in one window and on one scale, with the reason and the release named under them. The table shows the revision that makes the release matter."
    },
    "failure": {
     "specimen": "s-13-7-failure",
-    "caption": "<strong>Fails Rule 13.7.</strong> The title takes 2020 and 2021 from the first release and 2024 from the revised one without naming either, and the chart beside it starts in another year."
+    "caption": "<strong>Fails Rule 13.7.</strong> The title takes 2020 and 2021 from the earlier release and 2024 from the current one without naming either, and the chart beside it starts in another year."
    },
    "specs": [
     {
      "label": "Period",
-     "value": "In the measure line, in words"
+     "value": "In the measure line, with months in words"
     },
     {
      "label": "Vintage",
@@ -412,11 +467,15 @@
     },
     {
      "label": "One window",
-     "value": "The same first and last period on every chart in a set, with its reason, printed once"
+     "value": "The same first and last period and the same scale on every chart in a set, with its reason, printed once"
+    },
+    {
+     "label": "A publisher’s revision",
+     "value": "The new release, and an update line with its date and the release’s name"
     },
     {
      "label": "Inauguration dates",
-     "value": "No window starts or ends at one (H09)"
+     "value": "No chart or sentence splits a period at one (H09)"
     }
    ],
    "related": [
@@ -451,7 +510,8 @@
    "specs": [
     {
      "label": "Beside the item",
-     "value": "Illustrative, in the shell’s label, right after the invented name, quote, place or figure"
+     "value": "Illustrative, in the label style, right after the invented name, quote, place or figure",
+     "token": "oa.type.label"
     },
     {
      "label": "A chart",
@@ -484,7 +544,7 @@
    "title": "Name every atlas ID in its typed chip.",
    "rule": [
     "Our systems atlas gives each record a short ID, and some IDs repeat across kinds of record. The code B4 names both Variable B4 and Loop B4, B2, B3 and B5 repeat the same way, and Loop R1 sits one hyphen from Reform R-01. Every atlas ID we print sits in a typed chip, the outlined label that holds the kind of record and its ID together, such as Variable B4 or Loop B4, built as Rule 18.24 sets out. The first time a page names a record, its name follows the chip, as house rule H11 asks.",
-    "The kind word comes from the record’s place in the atlas, and the build checks every chip’s ID against the atlas before a page ships."
+    "The kind word comes from the record’s place in the atlas, and the build checks every chip’s ID against the atlas before a page ships. In a source line, the kind word in plain text does the chip’s job, as in “connection L02”."
    ],
    "tokens": [
     "oa.type.dataLabel",
@@ -512,7 +572,11 @@
     },
     {
      "label": "Kind words",
-     "value": "Variable, Connection, Loop, Reform, Issue, Claim, Domain and Route"
+     "value": "Variable, Connection, Loop, Reform, Issue, Claim, Domain, Route, Rule change and Delivery case"
+    },
+    {
+     "label": "In a source line",
+     "value": "The kind word in plain text before the ID, as in “connection L02” or “delivery case DL06”"
     },
     {
      "label": "First use",
@@ -591,10 +655,10 @@
   },
   {
    "id": "13.11",
-   "title": "Draw documented events apart from causal findings.",
+   "title": "Draw documented events apart from causal claims.",
    "rule": [
-    "Our systems atlas keeps two logs of dated events. The repair log records 64 changes to the rules that decide who officials answer to, and the delivery log records 24 times government did something hard at scale with a measured result. An event records what happened on a date. A causal finding says that one thing moves another, and the atlas grades it.",
-    "On a chart or diagram, an event takes a mark of its own: a shape for its instrument, such as a ballot measure or a court ruling, in a row for its direction in the atlas’s words, with an outline for one still pending. It takes no arrowhead, no line pattern and no sign. A causal finding keeps the arrow, the sign and the line of Rule 13.4."
+    "Our systems atlas keeps two logs of dated events. The repair log records 64 changes to the rules that decide who officials answer to, and the delivery log records 24 times government did something hard at scale with a measured result. An event records what happened on a date. A causal claim says that one thing moves another, and the atlas grades it.",
+    "On a chart or diagram, an event takes a mark of its own, a shape for its instrument with an outline for one still pending, and no arrowhead, line pattern or sign. Where the atlas codes an event’s direction, such as toward voters, the page prints the atlas’s words as the atlas’s assessment, with the atlas named, apart from the event’s date, place and text. A causal claim keeps the arrow, the sign and the line of Rule 13.4."
    ],
    "tokens": [
     "oa.color.graphic.essential.onNewsprint"
@@ -607,7 +671,7 @@
    },
    "correct": {
     "specimen": "s-13-11-correct",
-    "caption": "Loop R1’s seven entries in the repair log, each a dated shape in its direction’s group, then the loop’s three connections drawn as causal links with their grades."
+    "caption": "Loop R1’s seven entries in the repair log, under the atlas’s own coding note, each a dated shape under a heading that says how the atlas codes it, then the loop’s three connections drawn as causal claims with their grades."
    },
    "failure": {
     "specimen": "s-13-11-failure",
@@ -619,25 +683,29 @@
      "value": "Ballot measure, a filled square; statute or local law, a wide bar; court ruling, a tall bar; executive or agency action, a framed square"
     },
     {
-     "label": "Direction",
-     "value": "A row or group for each, in the atlas’s words: toward voters, away from voters, voters kept existing rules, mixed, pending"
-    },
-    {
      "label": "Pending",
      "value": "The shape in outline"
     },
     {
+     "label": "Direction",
+     "value": "The atlas’s words, under a heading that names the atlas, such as “The atlas codes these rows toward voters”, with its coding note above the rows"
+    },
+    {
      "label": "Left off",
-     "value": "Arrowheads, line patterns, signs and grade words"
+     "value": "Arrowheads, line patterns, signs and grade words on each event"
     },
     {
      "label": "Label",
      "value": "The date in words, the place and what the rule did, with the row’s ID in its chip"
+    },
+    {
+     "label": "Placement",
+     "value": "An event’s shape sits only at the head of its row, with the figure’s key, 6 px from its word; the record square sits only before the word Documented (Rule 13.4)"
     }
    ],
    "related": [
-    "15",
     "14",
+    "15",
     "21"
    ],
    "builders": [
@@ -717,7 +785,7 @@
    ],
    "why": {
     "text": [
-     "A note that says what was wrong lets a reader who saw the first version learn of the change. A page that keeps every note shows how often we get things wrong and how we fix them. A quiet fix leaves every reader who shared the old figure with no way to learn it changed."
+     "A note that says what was wrong lets a reader who saw the first version learn of the change, and anyone who shared the old figure can find out why it moved. Over months, the corrections page shows readers how often we get things wrong and how we fix it."
     ],
     "basis": "Our founder and editor’s policy on corrections, November 11, 2026"
    },
@@ -803,12 +871,12 @@
   }
  ],
  "sources": [
-  "Source: U.S. Census Bureau, Poverty in the United States: 2025 (P60-290), Table 8, Supplemental Poverty Measure, children under 18, 2009 to 2025, United States. Retrieved November 6, 2026. Figures for 2019 to 2024 include the Bureau’s August 2026 revision and differ by up to 0.4 points from those first published.",
-  "Source: U.S. Census Bureau, Poverty in the United States: 2024 (P60-287), Table B-2, Supplemental Poverty Measure, children under 18, 2020, 2021 and 2024, United States. Retrieved November 6, 2026. Rates as first published; the Bureau revised 2019 to 2024 in August 2026.",
+  "Source: U.S. Census Bureau, Poverty in the United States: 2025 (P60-290), Table 8, Supplemental Poverty Measure, children under 18 and all people, 2009 to 2025, United States. Retrieved November 6, 2026. Figures for 2019 to 2024 include the Bureau’s August 2026 correction to the poverty thresholds, and 2024 also takes new population weights; they differ by up to 0.4 points from the earlier release.",
+  "Source: U.S. Census Bureau, Poverty in the United States: 2024 (P60-287), Table B-2, Supplemental Poverty Measure, children under 18, 2020, 2021 and 2024, United States. Retrieved November 6, 2026. Rates as published before the Bureau’s August 2026 correction; P60-277 (September 13, 2022) printed the same 2020 and 2021 rates.",
   "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.",
   "Source: Oath & Action’s systems atlas, Who Do They Answer To?, the records each rule names (connections, loops, reforms, claims, the repair log, the delivery log, the headline figures and the glossary), snapshot of October 15, 2026, United States. Retrieved November 11, 2026. Facts the atlas rechecked carry their own check dates; inclusion in the snapshot alone does not mean a fact was rechecked on that date.",
   "Source: José Azar, Ioana Marinescu and Marshall I. Steinbaum, “Labor Market Concentration,” Journal of Human Resources, 2022, online job postings, 2010 to 2013, United States, as recorded in our systems atlas, claim CL1507, snapshot of October 15, 2026. Online postings leave out some jobs, behind Rule 13.1.",
-  "Source: National Highway Traffic Safety Administration, Lives Saved by Vehicle Safety Technologies and Associated Federal Motor Vehicle Safety Standards, 1960 to 2012 (DOT HS 812 069), United States, as recorded in our systems atlas’s delivery log, entry DL06, snapshot of October 15, 2026. The agency calls its figure “a hypothetical estimate”, behind Rule 13.1.",
-  "Source: New State Ice Co. v. Liebmann, 285 U.S. 262 (1932), Brandeis, J., dissenting, decided March 21, 1932, via the Legal Information Institute, Cornell Law School. Retrieved November 11, 2026. The quotation behind Rule 13.12."
+  "Source: National Highway Traffic Safety Administration, Lives Saved by Vehicle Safety Technologies and Associated Federal Motor Vehicle Safety Standards, 1960 to 2012 (DOT HS 812 069), United States, as recorded in our systems atlas’s delivery log, delivery case DL06, snapshot of October 15, 2026. The agency calls its figure “a hypothetical estimate”, behind Rule 13.1.",
+  "Source: New State Ice Co. v. Liebmann, 285 U.S. 262, 311 (1932), Brandeis, J., dissenting, decided March 21, 1932, United States Reports, via the Library of Congress. Retrieved November 11, 2026. The quotation behind Rule 13.12."
  ]
 }

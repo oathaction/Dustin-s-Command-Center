@@ -13,7 +13,7 @@ Reads, by script, every value it prints from:
                                                     payroll sidecars and the Census rows
 Writes:
     work/build/guide/chapters/13-evidence.json
-    work/build/guide/specimens/s-13-*.html and s-13-13-correct.chart.json (contract C7's spec for the one chart)
+    work/build/guide/specimens/s-13-*.html and s-13-*.chart.json (contract C7's specs for the kit's charts)
     work/build/guide/specimens/manifest-evidence.json
 
 Then runs the editor's checks and stops on any failure: no em dash, no listed filler or corporate word, no studio
@@ -173,6 +173,10 @@ def line_svg(grade=None, w=STEP_W, delay=None, sign=None, hollow=False, target=F
     need(hollow or run >= MIN_RUN, f"a {w} px line carries {run} px of pattern, under the shortest run, {MIN_RUN} px")
     marks, _, _ = BS.wire_marks([(1, y), (w - 1, y)], PATTERN_KEY.get(grade or "documented"), sign if sign in ("+", "-") else None,
                                 delay, LW, lit=target, sketch=hollow)
+    if not target:
+        # the case under a line shows only on a red target; the rest are defaults the stylesheet sets once
+        marks = re.sub(r'<path class="ak-case"[^>]*/>', "", marks)
+        marks = marks.replace(' fill="none"', "").replace(' stroke-linecap="butt"', "")
     red = ' data-red="working" data-red-job="where a reform acts"' if target else ""
     return (f'<svg class="ln{" tgt" if target else ""}" viewBox="0 0 {w} {h}" width="{w}" height="{h}" aria-hidden="true" '
             f'focusable="false"{red}>{marks}</svg>')
@@ -282,7 +286,7 @@ CSS = {
     "chip": (".chip{display:inline-flex;align-items:center;gap:.3em;padding:1px 8px;border:1px solid var(--oa-color-border-strong);"
              "font:var(--oa-type-data-label);white-space:nowrap;vertical-align:baseline}.chip .id{font-variant-numeric:tabular-nums}"),
     "k": f".k{{{LBL};color:var(--oa-color-text-secondary);margin:0 0 6px}}",
-    "ln": (".ln{display:block;flex:none;overflow:visible}.ln .ak-case{stroke:none}.ln .ak-mark{stroke:var(--oa-color-graphic-essential)}"
+    "ln": (".ln{display:block;flex:none;overflow:visible}.ln path{fill:none}.ln .ak-case{stroke:none}.ln .ak-mark{stroke:var(--oa-color-graphic-essential)}"
            ".ln .hd,.ln .tg polygon{fill:var(--oa-color-graphic-essential)}.ln .tg .sg{fill:var(--oa-color-surface)}"
            ".ln .tk{stroke:var(--oa-color-graphic-essential);stroke-width:2px}.ln .rail{stroke:var(--oa-color-graphic-essential)}"
            ".ln .hi{display:none}.ln.tgt .lo{display:none}.ln.tgt .hi{display:inline}"
@@ -1713,15 +1717,19 @@ def kit_hook():
 def rule_13_13(book):
     head = "Alder County’s libraries add Sunday hours from January"
     hook = kit_hook()
+    src = ("Source: Alder County Board, adopted library schedule, hours from January 4, Alder County’s three branches. "
+           "Retrieved November 2, 2026. Values invented for this example.")
     figure = '<div data-oa-chart="s-13-13-correct"></div>' if hook else bars_svg(LIB)
+    figure_f = '<div data-oa-chart="s-13-13-fail-chart"></div>' if hook else bars_svg(LIB)
+    chead = ('<div class="evr"><span class="ev">Finding</span><span class="gr">Documented: the county’s adopted schedule</span></div>'
+             '<p class="k">Hours open each week, from January 4</p>')
     note = (f"<b>Corrected November 4, 2026.</b> An earlier version of this article and its chart gave the Main Library’s "
             f"weekly hours as {LIB_WRONG}. The county’s adopted schedule gives {LIB[0][1]}. We replaced the chart and fixed the "
             "second paragraph.")
     piece = (f'<div class="card nb">{ill()}<p class="cn">{note}</p><p class="hl">{e(head)}</p>'
              '<p>The county board approved Sunday hours at all three branches from January 4.</p>'
              f'<p>The Main Library will open {LIB[0][1]} hours a week, the most of the three.</p>'
-             f'<div class="blk"><p class="k">Hours open each week, from January 4</p>{figure}</div>'
-             '<p class="src">Source: Alder County Board, adopted library schedule, 2027, three branches. Values invented for this example.</p></div>')
+             f'<div class="blk">{chead}{figure}</div><p class="src">{e(src)}</p></div>')
     page = (f'<div class="card nb">{ill()}<p class="hl">Corrections</p><p class="sub">Every correction we have made, newest first.</p>'
             '<div class="blk lp"><p class="dt">November 4, 2026</p>'
             f'<p><b>{e(head)}</b>, first published November 2, 2026.</p>'
@@ -1741,13 +1749,12 @@ def rule_13_13(book):
                       "The chart is a static drawing in the chart tokens until the kit's guide hook lands; its kit spec, "
                       "s-13-13-correct.chart.json, passes the kit's checks (oa-chart.mjs build, 0 faults)."))
     book.log("13.13 correct", "Alder County library hours", "invented", level="invented")
-    wrong = [("Main Library", LIB[0][1]), ("Riverside", LIB[1][1]), ("Elm Street", LIB[2][1])]
     fail = (dnp() + f'<div class="card">{ill()}<p class="hl">{e(head)}</p>'
             '<p>The county board approved Sunday hours at all three branches from January 4.</p>'
             f'<p>The Main Library will open {LIB[0][1]} hours a week, the most of the three.</p>'
-            f'<div class="blk"><p class="k">Hours open each week, from January 4</p>{bars_svg(wrong)}</div>'
+            f'<div class="blk">{chead}{figure_f}</div><p class="src">{e(src)}</p>'
             '<p class="foot">Updated</p></div>')
-    book.add("s-13-13-failure", fail, rule="13.13", illustrative=True,
+    book.add("s-13-13-failure", fail, rule="13.13", illustrative=True, width=360,
              alt=(FC + f"The same invented article, labeled Illustrative, with the chart already showing {LIB[0][1]} hours and one "
                   "word at its foot, Updated, with no date and no account of what was wrong."),
              notes="Labeled failure: a silent fix with an undated Updated line at the foot.")
@@ -1759,7 +1766,7 @@ def rule_13_13(book):
         "evidence": "illustration", "evidence_label": "Illustration",
         "title": "The Main Library will open the most hours of the three branches",
         "measure_line": "Hours open each week from January 4, three branches of an invented county library",
-        "source_line": "Source: Alder County Board, adopted library schedule, 2027, three branches. Values invented for this example.",
+        "source_line": src,
         "illustrative": "Illustrative data",
         "alt": "A ranked bar of weekly hours at three invented library branches: Main Library 52, Riverside 44, Elm Street 36.",
         "table": {"caption": "Hours open each week, from January 4", "columns": [
@@ -1770,6 +1777,9 @@ def rule_13_13(book):
         "notes_internal": "Chapter 13's one chart (Rule 13.13's correct plate), in contract C7's format. Invented values. "
                           "domain is all because the example is invented and counts toward no atlas domain.",
     }
+    KIT_SPECS["s-13-13-correct"] = spec
+    KIT_SPECS["s-13-13-fail-chart"] = dict(spec, id="s-13-13-fail-chart",
+                                          notes_internal="The failure plate's chart: the same invented data, already fixed.")
     return spec, {
         "id": "13.13",
         "title": "Correct in the open, with a dated note at the top.",
@@ -1783,9 +1793,9 @@ def rule_13_13(book):
             "text color and its 4 px bar the essential graphic color, as Rule 26.3’s example sets out.",
         ],
         "tokens": ["oa.color.graphic.essential.onNewsprint", "oa.border.width.bar"],
-        "why": {"text": ["A note that says what was wrong lets a reader who saw the first version learn of the change. A page that "
-                         "keeps every note shows how often we get things wrong and how we fix them. A quiet fix leaves every reader "
-                         "who shared the old figure with no way to learn it changed."],
+        "why": {"text": ["A note that says what was wrong lets a reader who saw the first version learn of the change, and anyone "
+                         "who shared the old figure can find out why it moved. Over months, the corrections page shows readers how "
+                         "often we get things wrong and how we fix it."],
                 "basis": "Our founder and editor’s policy on corrections, November 11, 2026"},
         "correct": {"specimen": "s-13-13-correct",
                     "caption": "An invented article with its correction note above the headline and the fixed chart in place, "
@@ -1826,13 +1836,10 @@ def chapter(book):
         "instruction": "Name the kind of evidence behind each claim, with its source and any label beside it.",
         "opener": op,
         "intro": [
-            "Every chart, diagram and claim we publish carries its evidence with it, so a reader can see what kind of evidence "
-            "it is, how strong it is, who published it and when. Our systems atlas, Who Do They Answer To?, grades the strength "
-            "of each claim it holds, and that evidence grade, from documented to hypothesis, decides the words and lines a page "
-            "may use for it.",
-            "Chapter 02’s house rules already ask for a source line, the Illustrative label and a title sized to its evidence. "
-            "The rules here carry those into charts, diagrams and the atlas, and where chapter 01 or chapter 02 already states a "
-            "rule, they cite it and show how a figure keeps it. Chapters 14 and 15 hold every chart and systems drawing to them.",
+            "Every chart, diagram and claim we publish carries its evidence: what kind it is, how strong, who published it and "
+            "when. Our systems atlas, Who Do They Answer To?, grades each claim it holds from documented to hypothesis, and that "
+            "evidence grade sets the words and lines a page may use.",
+            "Where chapter 01 or chapter 02 already states a rule, the rules here cite it and show how a figure keeps it.",
         ],
         "groups": [
             {"before_rule": "13.1", "number": 1, "title": "Kinds of evidence and their grades",
@@ -1857,8 +1864,10 @@ def chapter(book):
             {"chapter": "26", "reason": "Rule 26.3, the tokens a correction note takes."},
         ],
         "sources": [
-            cps["printed_source_line"],
-            cps["source_line_variants"]["source_line_first_published"],
+            cp_source("both")[0],
+            cps["source_line_variants"]["source_line_first_published"].replace(
+                "Rates as first published; the Bureau revised 2019 to 2024 in August 2026.",
+                "Rates before the Bureau’s August 2026 correction to the poverty thresholds."),
             pay["printed_source_line"],
             (f"Source: {ATLAS}, the records each rule names (connections, loops, reforms, claims, the repair log, the delivery "
              f"log, the headline figures and the glossary), snapshot of {SNAP}, United States. Retrieved November 11, 2026. "
@@ -1994,7 +2003,11 @@ def write(data, book, spec):
     for sid, txt in book.files.items():
         (SPECIMENS / f"{sid}.html").write_text(txt)
     (SPECIMENS / f"manifest-{MAKER}.json").write_text(json.dumps(book.manifest, indent=1, ensure_ascii=False) + "\n")
-    (SPECIMENS / "s-13-13-correct.chart.json").write_text(json.dumps(spec, indent=1, ensure_ascii=False) + "\n")
+    for old in SPECIMENS.glob("s-13-*.chart.json"):
+        if old.name[: -len(".chart.json")] not in KIT_SPECS:
+            old.unlink()
+    for cid, sp in KIT_SPECS.items():
+        (SPECIMENS / f"{cid}.chart.json").write_text(json.dumps(sp, indent=1, ensure_ascii=False) + "\n")
     p = CHAPTERS / "13-evidence.json"
     p.write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n")
     return p
@@ -2006,6 +2019,8 @@ def main():
     fails, dom, st = check(data, book, spec)
     total = sum(len(x.encode()) for x in book.files.values())
     print(f"chapter 13: {len(data['rules'])} rules, {len(book.files)} plates, {total:,} bytes of fragments")
+    for lag in TOKEN_LAG:
+        print("token not yet in the release:", lag)
     print("examples by domain:", dict(sorted(dom.items())), "| states:", dict(st), "| all examples:", len(book.examples))
     for sid, frag in sorted(book.files.items(), key=lambda x: -len(x[1].encode()))[:6]:
         print(f"  {sid}: {len(frag.encode()):,} bytes")
