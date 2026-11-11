@@ -2429,3 +2429,24 @@ Dustin, replying to drawings board C (https://claude.ai/artifact/LtEuA2zNh1WUidh
 | # | Decision | Source |
 |---|---|---|
 | DR-212 | Page 14 of `pics_i_like.pdf`, the data visualization concept sheet, is Oath & Action's own design study: Dustin made it with ChatGPT, describing what he wanted, with no outside sources. It stays a reference that does not ship, and its ideas may be used as the studio's own. Q-14 is answered | Dustin, November 10: "i made that (page 14) with chatgpt describing what i wanted. no outside sources were used" |
+
+## Answers on the plan for promotion and round 1, November 11, 2026
+
+The main session asked three questions with its plan. Dustin: "go with all your recs or defaults."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-213 | Chapter 19's script for the checks this container cannot run covers iPhone with VoiceOver, Android with TalkBack, Windows with NVDA and a contrast theme, and Mac with VoiceOver. The Gate 2 report lists each as not tested | Dustin, November 11, the default (question 1) |
+| DR-214 | Chapter 26 ships tokens.css and tokens.json, as Master Brief section 20 sets. A Canva brand kit sheet and a Figma variables file come with Phase 3's asset package only if Dustin asks for them | Dustin, November 11, as recommended (question 2) |
+| DR-215 | Dustin sees a private preview of the chapters page at this chat's handoff point, after round 1, with no decisions asked | Dustin, November 11, as recommended (question 3) |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1260 | Work continues on `claude/friendly-brahmagupta-tonmfa`, the repository's default branch. The container's stale local copy was pointed at the remote head (820340a7), with its old pointer kept as a local branch | Dustin's starting prompt; the session's other branch name stood at the same commit |
+| D2-1261 | The promotion runs under `work/handoffs/phase-2/20261111_Promotion-Stage-C-Brief.md`, with four owners in parallel: the icon designer, the identity designer, the engineer and the systems designer for chapters 05, 10 and 11 | D2-1259; the November 10 promotion's form |
+| D2-1262 | Housing enters the set in use as CL-075 Housing | The next topic number after CL-074, as D2-714 numbered Testify and Contact an Official |
+| D2-1263 | Files first made in this chat carry the date 20261111; files in use keep their own dates | `CLAUDE.md`: a file takes the date it is first created |
+| D2-1264 | The replaced 16 px Pause and Filter files move, byte for byte, to `work/build/assets/utility/_archive/svg-16/`, so the folder in use holds one file per icon and size | The record stays (DR-208) and the sprite never meets two files for one icon; `_archive/` is the convention's folder for inactive items |
+| D2-1265 | The 37 fits in use live in `work/build/assets/civic-line-v6/fit-24/`, and their sprite symbols are `oa-sym-<id>-24px`, as the pillar fits' are | One folder for the set in use (D2-716); one switch pattern for all 41 (DR-179, DR-209) |
+| D2-1266 | Round 1 starts beside the promotion where no file crosses: chapter 17's maker and the creative director's reading of Rule 12.4 begin now; chapter 26 follows the engineer's promotion work; chapter 18's specification starts once 17 and 26 have their outlines | V11's note on overlapping rounds; the round 1 brief fixes each chapter's rule numbers ahead (D2-829's method), so 18 can cite 17 and 26 before they are written |
+| D2-1267 | Each new chapter keeps its own specimen manifest: `manifest-motion.json` (17), `manifest-components.json` (18), `manifest-accessibility.json` (19) and `manifest-tokens.json` (26); a specimen another owner makes for that chapter goes in its maker's own manifest | Two makers never write one file at once, as D2-829 kept chapter 12 safe |

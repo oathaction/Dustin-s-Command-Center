@@ -1,0 +1,47 @@
+# Brief: promote drawings board C's approvals into the guide
+
+Oath & Action Edition 06, Phase 2, stage C, November 11, 2026. Written by the main session for the icon designer, the identity designer, the engineer and the systems designer of chapters 05, 10 and 11. Dustin approved every card on drawings board C as recommended and by name (DR-207 to DR-211). The plan for this pass is D2-1259 and D2-1261 to D2-1267 in `work/ledger/20261020_Decision-Log.md`. Read the November 10 promotion brief (`20261110_Promotion-Brief.md`) first: its conventions and checks still hold, with the additions below.
+
+## The goal
+
+Each approved drawing or identity change goes into use, so the guide draws it and the later asset package copies it without asking which file is right. The approved files and every unpicked option stay where they are as the record. Nothing here redraws anything: a file in use is the approved drawing, byte for byte in its paths, with a final's ids, title, description and file name.
+
+## The approved picks
+
+| Card | What goes into use | Approved source |
+|---|---|---|
+| 1 Housing (DR-207) | Option A, as CL-075 Housing (D2-1262), at 48 px and up only; it stays off the list of 41 (D2-1238) | `work/build/assets/civic-line-new-topics/` files `20261110_Housing-Option-A-*` (src, four SVG editions, PNGs, tiles) and `20261110_Stage-C-Housing-Manifest.json` |
+| 2 Pause and Filter at 16 px (DR-208) | The Pause redraw and Filter option A replace the 16 px Pause and Filter in use; every 24 px file and every other 16 px file stays | `work/build/assets/utility-16-redraw/svg/20261110_Utility-Pause-16px-Redraw.svg` and `20261110_Utility-Filter-16px-Redraw-A.svg` |
+| 3 The 37 fits (DR-209) | All 37 at 24 px with the pillar icons' switch: the fit on 1x screens, the master from 2x | `work/build/assets/civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-<ID>-<Slug>-Black.svg` and its manifest |
+| 4 Print L3 (DR-210) | The print L3 serves print and every width but the 282 px masthead; the October master stays as the record | `work/build/assets/identity/lockups/20261110_L3-Horizontal-Print-Master.svg` and `prussian/20261110_L3-Horizontal-Print-Master-Prussian-White.svg` |
+| 5 Social sign-off (DR-211) | Social cards sign off with the 48 px lockmark master drawn at exactly twice its size, 96 px; covers, posters and the masthead keep 48 px | `work/build/assets/identity/lockmark/` 48 px master in use, through `stage_a_identity_proofs._social` |
+
+## Folders and names (every owner follows these)
+
+- **CL-075 in the set in use:** `work/build/assets/civic-line-v6/` gains `20261111_Oath-And-Action-Civic-Line-CL-075-Housing-<Edition>.svg` in `black/`, `red-black/`, `newsprint/` and `red-newsprint/`, its PNGs in `png-256/` and `png-512/`, its tiles in `tiles/` in the October layout, and a 125th row in `20261110_Civic-Line-V6-Inventory.csv` and `.json`, filled as the CL-073 and CL-074 rows are, with DR-207 as its approval. The root keeps `data-id="CL-075"`. The inventory files keep their names (a living file keeps its first date).
+- **The 37 fits in use (D2-1265):** `work/build/assets/civic-line-v6/fit-24/` with `20261111_Civic-Line-<ID>-<Slug>-24px-Fit-Black.svg`, root attributes `data-id="<ID>"` and `data-size="24"`, PNG previews at 1x and 2x in `fit-24/png/`, and `20261111_Civic-Line-24px-Fits-In-Use-Manifest.json` listing each ID, word, family (topic or atlas), source file and approving DR. Slugs are the in-use inventory's.
+- **Utility at 16 px (D2-1264):** `work/build/assets/utility/svg-16/20261111_Utility-Pause-16px.svg` and `20261111_Utility-Filter-16px.svg`, with the root attributes the other utility files carry (`data-icon="U-pause"`, `data-icon-family="utility"`, `data-size="16"`, no `data-option`), PNGs in `utility/png/`, and the manifest's two rows updated with DR-208. The two replaced files move with `git mv` to `work/build/assets/utility/_archive/svg-16/`, bytes unchanged.
+- **Sprite symbol ids (engineer):** Civic Line `oa-sym-cl-075`; fits `oa-sym-<id lowercased>-24px` (`oa-sym-cl-001-24px`, `oa-sym-r-06-24px`); utility unchanged (`oa-sym-u-pause-16px`).
+- **Identity:** the print L3 files keep their names and bytes; they go into use by reference.
+
+## Who does what
+
+1. **Icon designer** (`.claude/agents/oa-design-director.md`): CL-075 into `civic-line-v6/` with every edition, PNG, tile and the inventory row; the 37 fits into `fit-24/` with their manifest; the two utility files into `svg-16/`, the archive move and the utility manifest. Write the in-use folders first and tell the main session the moment they exist, since two owners wait on them.
+2. **Identity designer** (`.claude/agents/oa-design-director.md`): the print L3 through `stage_a_identity_lib.L3`'s print key, Rule 03.2's Files and builders text, Rule 03.6's "In print" row, Rule 08.2 and the minimum sizes record (`work/build/assets/identity/20261028_Identity-Minimum-Sizes.json`), as your round 0 notes' "After approval" paragraph sets. The 96 px sign-off on the social card through `_social`, the words in chapter 08 that name the sign-off's sizes and places, and Rule 08.2's "Feed test, our card" figures measured again on the 96 px card (Newsprint, White, Charcoal and Prussian; the figures file, not hand-typed numbers). Then `s-01-21-correct`: its kicker icon at 24 px takes the switch, through whichever of `guide_editor_ch01.py` and `stage_b_identity_ch01.py` draws it, without changing any word.
+3. **Engineer** (`.claude/agents/oa-engineer.md`): `guide_build.py`'s sprite reads `civic-line-v6/fit-24/` as a fourth family with the ids above; DR-179's 1x and 2x check extends from the four pillar fits to all 41 (a 24 px drawing of one of the 41 must pair `<use class="oa-at-1x" href="#oa-sym-<id>-24px"/>` with `<use class="oa-at-2x" href="#oa-sym-<id>"/>`, and only those may switch); the self-test covers the new family and its faults; `sprite_check.js` and `guide_check.js` follow. You own `guide_build.py`, `guide_check.js` and the shell in this pass and in round 1; no other owner edits them. When the makers' folders exist, run the strict build and the guide check at 1440, 1024, 390 and 360 px. Stay available afterwards: chapter 26 is your next task, under `20261111_Stage-C-Round-1-Brief.md`.
+4. **Systems designer, chapters 05, 10 and 11** (`.claude/agents/oa-design-director.md`, checked against `oa-ux-accessibility-lead.md`): in this order. (a) F-4 first: `s-05-4-correct` redrawn to DR-199, with the error, warning and success rows from the utility set and every bar a border (D2-1158, D2-1167). (b) Chapter 10 once the icon designer's folders exist: Rule 10.4's words on the switch for all 41; CL-075 Housing in the library and in Rule 10.6's words and lists, at 48 px and up; R-06, R-41 and R-44 join Rule 10.9's groups that never share a view at small sizes (D2-1237); every 24 px drawing of the 41 in `s-10-*` and `s-11-14-failure` takes the switch. (c) Chapter 10's opener figure (D2-1135, the engineer's `"opener"` contract). (d) F-1, F-2, F-3, F-5 and F-9 in chapters 05 and 11 (`20261110_Stage-C-Interaction-Inventory.md`, section 5; D2-1150 to D2-1158 for the looks). Change words and plates only through `stage_a_systems_build.py`, `stage_b_ch10_build.py`, `apply_systems_ch11.py`, `apply_systems_ch11_ui.py` and their data, never in their outputs.
+
+## Checks every owner runs
+
+- Byte checks: a file in use draws exactly its approved file's paths; only ids, title, description and file name differ. The archive move keeps bytes. Write the hashes and the comparison to your notes.
+- The pixel fit check on the 37 fits (`--size 24 --weight 1`) and on the two utility files (`--size 16 --weight 1.5`), and the likeness check on CL-075 against the set in use. Report any figure that differs from the drawings board's.
+- The generator chain after any change to a chapter (V12's section 3), and a strict build into your scratch folder.
+- A look at every changed plate at 1440 and 390 px, and every file in use at true size and enlarged at 1x and 2x.
+
+## Notes and limits
+
+Each owner writes `work/handoffs/phase-2/20261111_Promotion-C-<Role>-Notes.md` (`Icons`, `Identity`, `Engineer`, `Systems`) with: what it promoted or changed, a table of every file in use with its source, the checks' figures, routine calls as "D2-xxx | decision | reason" lines, questions for Dustin with a recommendation, Tested and Not tested kept apart, and a change log of files created and modified with their locations. Write the notes early and add as you go.
+
+Never touch `source/`, `work/ledger/`, `deliverables/`, the October Civic Line folder, the makers' option folders (`civic-line-24-fit/`, `utility-16-redraw/`, `civic-line-new-topics/`), the identity masters (new files beside them only), any board, or another owner's files. Run Python with `-I`. Write scratch renders and builds to `/tmp/claude-0/-home-user-Dustin-s-Command-Center/42858b21-febe-5543-930e-ed82e286a69e/scratchpad/promotion-c/<role>/`, never into `work/build` and never `/tmp` itself. Never write the committed chapters page (`work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html`): build with `--out` into your scratch folder. Do not commit or push; the main session commits snapshots. Reply to the main session in 200 words or fewer.
+
+The writing rules in `CLAUDE.md` and chapter 02 bind every word you write, including notes, titles and descriptions: plain spoken prose, no em dashes.
