@@ -3144,3 +3144,19 @@ The main session asked three questions with its plan for round 2, board C and th
 | D2-1691 | Board C is one short page built by a board builder (`20261111_Board-C-Brief.md`): what round 2 found and fixed, the scores before and after, the calls Dustin may overrule, and the one decision, the standing rule on examples (D2-1555) | DR-220: a decisions board only where round 2 raises Dustin's call, and it raised one; board B's form, made shorter |
 | D2-1692 | The chapters page is republished privately at https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF as version 7 (1794389406-98f0), built from the final chain with chapter 19's results rerun. Before it the main session diffed the live version 6 against commit df0fb08d (only the host's three wrapper lines differed); scanned the new build (no network calls, no em dashes, outside links only to Google Fonts, W3C, three official government sites and example.org in a code sample, storage written only by a theme switch that sets a page's root, no private paths); looked at Rules 17.6 and 26.7 at 1440 px; and ran the guide check: four widths on the build before the results rerun (0 failures; sprite check 0 differences at 1x, 1.5x and 2x), then 1440 and 390 px on the published build (0 failures) | DR-220; every file is seen before it is published |
 | D2-1693 | Board C is published privately at https://claude.ai/artifact/4TU4XUmGSH6xMmsNio48yZ, rebuilt against version 7 so its 19 rule links resolve there (strict, 0 warnings); the main session read its words and its one script, a copy button, before publishing | DR-220; D2-1691 |
+
+## Answers on board C, November 11, 2026
+
+Dustin, on board C's one question: "do not, who cares about my work? I'm supportive of these reforms because I think they're the right things to do. All-party primaries with ranked general elections, ranked choice voting for single winner races should absolutely stay in this document." And: "I agree with all other recommendations."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-223 | No standing rule on examples. Reform R-01, All-party primaries with ranked general elections, and Reform R-02, Ranked-choice voting for single-winner races, stay in the guide and are treated as every other reform under one standard (DR-93): a maker may use either, or the mechanism it targets, as an example, sample or failure plate, at its real grade with its source. The studio stops moving examples off them because of the editor's own work. This supersedes the avoidance reasons of DR-99's "touches no campaign the editor works on", D2-203, D2-278, D2-958, D2-1546 and D2-1555 from today on; examples already moved stay where they are unless a maker picks R-01 or R-02 on the merits. DR-100 stands: the guide carries no disclosure | Dustin, November 11, declining the recommendation (D2-1555) |
+| DR-224 | Every other open recommendation on board C stands as made: the dark field ground on Charcoal (D2-1544), the ask on its own row (D2-1545), an identity player resting on its master (D2-1548), tokens.css as the one route (D2-1549), and the token table as closed groups (D2-1557) | Dustin, November 11, "I agree with all other recommendations" |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1694 | Board C is not republished with the answer; the decision log holds it, and the Gate 2 report prints it. R-01 and R-02 appear today in chapter 18's filter bar and search lists and once in chapter 18's words, so nothing in the guide changes | Dustin asked to proceed to the handoff; the board is a record of the question, and no page depends on the answer |
+| D2-1695 | Dustin is still reading version 7. The next chat asks first whether he has notes on it, and folds any into Gate 2's fix pass | His words: "I'm still reviewing this" |
