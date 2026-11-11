@@ -107,3 +107,10 @@ November 11, after the main session logged my calls as D2-1412 to D2-1425 and th
 **Change log**
 - Modified: `work/build/scripts/phase-2/stage_c_ch18_anatomy_build.py`; its outputs `work/build/guide/specimens/s-18-01-anatomy.html` to `s-18-24-anatomy.html` and `manifest-anatomy.json`; this file.
 - Scratch: `build-a4/`, `shots-fix/`, `wide.js`, `wide18.js`, `wide18n.js`, `culprit.js`, `culprit2.js`.
+
+**Second fix pass: the editor's keys and the final code sets** (after D2-1471 to D2-1473)
+- The editor's section 4c, applied through the generator: Rule 18.2's key 4 now reads “The same word at 600, the weight every control’s word takes, with no check”; Rule 18.24's key 5 “It opens the record; its words keep a 1 px underline, 2 px under a pointer, as here”; Rule 18.5's key 2 “Say where the link goes, and make sense read on their own”. The alts follow.
+- Reran the generator on the component engineer's final sets (its "## Editor's pass"). The plates that changed, as the sets did: 18.9 (the title's capital), 18.11 (the ring 4 px inside the frame, D2-1475), 18.14 (tokens.css ready, tokens.json not ready with its reason), 18.20 (the card follows H.99004), 18.22 and 18.23 (the kicker reads Loop R1). Rule 18.14's key 5 now reads “Says why the file is not ready and when to try again”.
+- D2-xxx | Rule 18.11's key reads where the ring sits from the code's own `outline-offset`: inside the frame's edge for a negative offset, around the frame otherwise | The plate's words follow the code if the ring moves again
+- Tested: strict build of every chapter, exit 0, no warning, 9,544,412 bytes, chapter 18 at 1,100,477 bytes of its 1.25 MB ceiling; every plate captured at 1440, 390 and 360 px, every callout visible, no frame that scrolls, the changed plates looked at; no scrolling region in any plate at 390 and 360 px; at 200 percent root text the page stays 390 and 360 px wide, with no anatomy plate past its edge.
+- Modified: `work/build/scripts/phase-2/stage_c_ch18_anatomy_build.py`, its 24 plates and `manifest-anatomy.json`, and this file. Scratch: `build-a5/`, `shots-ed/`.

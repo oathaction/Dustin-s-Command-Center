@@ -83,7 +83,7 @@
   "chapter": "18",
   "rule": "18.11",
   "width_px": null,
-  "alt": "Anatomy of a scroll region, drawn from its code to copy on Newsprint, with five numbered callouts and a key. 1, Name: Names the frame, and the frame takes it. 2, Hint: Shown only while the content is wider than the frame. 3, Frame: A hairline edge; the content scrolls inside it, so the page never does. 4, Wide content: Its own width, cut by the frame’s edge. 5, Focus ring: Drawn around the frame; the frame is a Tab stop only while it scrolls, and the arrow keys move it.",
+  "alt": "Anatomy of a scroll region, drawn from its code to copy on Newsprint, with five numbered callouts and a key. 1, Name: Names the frame, and the frame takes it. 2, Hint: Shown only while the content is wider than the frame. 3, Frame: A hairline edge; the content scrolls inside it, so the page never does. 4, Wide content: Its own width, cut by the frame’s edge. 5, Focus ring: Drawn inside the frame’s edge; the frame is a Tab stop only while it scrolls, and the arrow keys move it.",
   "illustrative": false,
   "notes": "Drawn from work/build/guide/code/c-18-scroll-region.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366)."
  },
@@ -107,7 +107,7 @@
   "chapter": "18",
   "rule": "18.14",
   "width_px": null,
-  "alt": "Anatomy of a download, drawn from its code to copy on Newsprint, with five numbered callouts and a key. 1, Height: 44 px tall. 2, Icon: The download arrow into a tray, 24 px, before the word. 3, Words: From Download to the file, its type and its size. 4, Not ready: A dashed edge and the disabled color; it keeps its focus. 5, Reason line: Says when the file comes.",
+  "alt": "Anatomy of a download, drawn from its code to copy on Newsprint, with five numbered callouts and a key. 1, Height: 44 px tall. 2, Icon: The download arrow into a tray, 24 px, before the word. 3, Words: From Download to the file, its type and its size. 4, Not ready: A dashed edge and the disabled color; it keeps its focus. 5, Reason line: Says why the file is not ready and when to try again.",
   "illustrative": true,
   "notes": "Drawn from work/build/guide/code/c-18-download.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366)."
  },

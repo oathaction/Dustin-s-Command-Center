@@ -829,7 +829,7 @@ def p14():
            (2, 'Icon', 'The download arrow into a tray, 24 px, before the word'),
            (3, 'Words', 'From “Download” to the file, its type and its size'),
            (4, 'Not ready', 'A dashed edge and the disabled color; it keeps its focus'),
-           (5, 'Reason line', 'Says when the file comes')]
+           (5, 'Reason line', 'Says why the file is not ready and when to try again')]
     return ['download'], r, key, 'a download', '', True, ''
 
 
