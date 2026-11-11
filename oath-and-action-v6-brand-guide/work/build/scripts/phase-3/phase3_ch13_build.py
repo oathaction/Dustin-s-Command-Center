@@ -170,7 +170,7 @@ def rsq():
 def grade_word(grade, gloss=True):
     word, g, _ = GRADE[grade]
     lead = rsq() + " " if grade == "documented" else ""
-    return f'<span class="gw">{lead}<b>{e(word)}</b>{", " + e(g) if gloss else ""}</span>'
+    return f'<span class="gw"><span class="w">{lead}<b>{e(word)}</b></span>{", " + e(g) if gloss else ""}</span>'
 
 
 def event_svg(fam, pending=False):
@@ -247,7 +247,7 @@ CSS = {
            ".ln .h{fill:var(--oa-color-graphic-essential)}.ln .t{stroke:var(--oa-color-graphic-essential);stroke-width:1.5}"
            ".ln .o{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:5}.ln .i{fill:none;stroke:var(--oa-color-surface);stroke-width:2}"),
     "rs": ".rs{display:inline-block;fill:var(--oa-color-graphic-essential);vertical-align:.08em;margin-right:5px}",
-    "gw": ".gw b{font-weight:var(--oa-font-weight-bold)}",
+    "gw": ".gw b{font-weight:var(--oa-font-weight-bold)}.gw .w{white-space:nowrap}",
     "ev-m": (".ev-m{display:block;flex:none;fill:var(--oa-color-graphic-essential)}"
              ".ev-m .ol{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:1.5}"),
     "pp": ".pp{display:block;flex:none;fill:var(--oa-color-graphic-essential)}.pp .z{stroke:var(--oa-color-graphic-essential);stroke-width:1}",
@@ -270,7 +270,8 @@ CSS = {
     "fx": ".fx{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}@media (min-width:48em){.fx.two{grid-template-columns:repeat(2,minmax(0,1fr))}}",
     "rw": ".rw{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}",
     "lp": ".lp+.lp{margin-top:20px;padding-top:16px;border-top:1px solid var(--oa-color-border-hairline)}.lp .k{margin-bottom:10px}",
-    "st": ".st{display:grid;grid-template-columns:88px minmax(0,1fr);gap:4px 12px;align-items:start;margin-top:10px}.st .ln{margin-top:5px}",
+    "st": ".st{display:grid;grid-template-columns:88px minmax(0,1fr);gap:4px 12px;align-items:start;margin-top:10px}.st .ln{margin-top:5px}"
+          "@media (max-width:30em){.st{grid-template-columns:minmax(0,1fr);gap:2px}.st .ln{margin-top:0}}",
     "hed": f".hed{{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;margin:0 0 4px;font:var(--oa-type-body-small)}}",
     "sub": f".sub{{{CAP};color:var(--oa-color-text-secondary)}}",
     "fxr": ".fxr{display:grid;grid-template-columns:minmax(0,11rem) 88px minmax(0,1fr);gap:4px 12px;align-items:center;padding:6px 0;border-bottom:1px solid var(--oa-color-border-hairline);font:var(--oa-type-body-small)}"
@@ -527,7 +528,7 @@ def rule_13_2(book):
     read_b = "A 2024 test on X and a break from Facebook found small drops in polarization."
     need(len(read_a.split()) == len(read_b.split()), "the two contested readings differ in length (Rule 01.16)")
     ladder = [
-        ("documented", "Social Security moved 28.8 million people out of poverty in 2025, the Census Bureau reported", "LE14", le14),
+        ("documented", "Social Security moved 28.8 million people out of poverty in 2025 under the Supplemental Poverty Measure, the Census Bureau reported", "LE14", le14),
         ("well-supported", "Local reporting raises incumbents’ risk of losing office", "L26", l26),
         ("plausible", "Better public services can build earned trust in government", "L20", l20),
         ("plausible_contested", None, "L47", l47),
@@ -545,8 +546,8 @@ def rule_13_2(book):
             'Connection LE14 reports a Census Bureau count from Poverty in the United States: 2025 (P60-290).</p>')
     book.add("s-13-2-correct", body, rule="13.2", readable=True,
              alt=("A table of five connections from our systems atlas, one at each grade, with the title its grade allows and the "
-                  "atlas record beside it. Documented: Social Security moved 28.8 million people out of poverty in 2025, the "
-                  "Census Bureau reported. Well supported: Local reporting raises incumbents’ risk of losing office. Plausible: "
+                  "atlas record beside it. Documented: Social Security moved 28.8 million people out of poverty in 2025 under the "
+                  "Supplemental Poverty Measure, the Census Bureau reported. Well supported: Local reporting raises incumbents’ risk of losing office. Plausible: "
                   "Better public services can build earned trust in government, beside the atlas name Better public services "
                   "build earned trust. Contested: two readings of 15 words each, one finding effects near zero and one finding "
                   "small drops. Hypothesis: Untested: more expert congressional staff may reduce insider influence."),
@@ -1493,11 +1494,14 @@ GUIDE_BUILD = ROOT / "work/build/scripts/phase-2/guide_build.py"
 
 
 def kit_hook():
-    """Contract C7: once guide_build.py expands <div data-oa-chart="...">, the plate names its spec and the kit draws the
-    chart in the guide. Until then the plate carries a static drawing in the chart tokens. --static-chart forces it."""
+    """Contract C7: once guide_build.py expands <div data-oa-chart="..."> and the engineer's notes say GUIDE HOOK READY,
+    the plate names its spec and the kit draws the chart in the guide. Until then the plate carries a static drawing in the
+    chart tokens. --static-chart forces the drawing."""
     if "--static-chart" in sys.argv:
         return False
-    return GUIDE_BUILD.exists() and "data-oa-chart" in GUIDE_BUILD.read_text()
+    notes = ROOT / "work/handoffs/phase-3/20261111_Round-0-Engineer-Notes.md"
+    return (GUIDE_BUILD.exists() and "data-oa-chart" in GUIDE_BUILD.read_text()
+            and notes.exists() and "GUIDE HOOK READY" in notes.read_text())
 
 
 def rule_13_13(book):

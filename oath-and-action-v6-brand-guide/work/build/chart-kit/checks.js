@@ -139,7 +139,14 @@ function check_spec(K, spec, opts) {
       const ok = [m.printed_source_line].concat(Object.values(m.source_line_variants || {}));
       if (ok.indexOf(spec.source_line) < 0) f.push(`source: the source line differs from ${datasets[0].file}'s printed_source_line (or its variants)`);
     } else if (datasets.length > 1) {
-      datasets.forEach(d => { if (spec.source_line.indexOf(String(d.meta.publisher).split(',')[0]) < 0) f.push(`source: the source line does not name ${d.meta.publisher}`); });
+      // each dataset's publisher appears: any one of its "; " parts, whole or after its last comma, with "United States" read as "U.S."
+      const norm = x => String(x).replace(/United States/g, 'U.S.').trim();
+      const line = norm(spec.source_line);
+      datasets.forEach(d => {
+        const parts = String(d.meta.publisher).split(';').map(norm);
+        const ok = parts.every(p => line.indexOf(p) >= 0 || line.indexOf(p.split(',').slice(-1)[0].trim()) >= 0);
+        if (!ok) f.push(`source: the source line does not name ${d.meta.publisher}`);
+      });
     }
   }
   // V7: the values a chart draws from the atlas carry the grade and every ID in its chip

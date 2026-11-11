@@ -291,6 +291,7 @@
     this.labels = spec.labels || {};
     this.encode = spec.encode || {};
     this.annotations = spec.annotations || [];
+    this.extra = opts.extra || {};
     this._els = [];
     this._defs = [];
     this.texts = [];
@@ -455,7 +456,7 @@
     if (!def) throw new Error('OAChart: form "' + spec.form + '" is not registered');
     var t = opts.t || token_reader(opts.tokens || {});
     var width = Math.round(opts.width || K.artboard(spec, t));
-    var c = new Ctx(spec, rows, { width: width, ground: opts.ground, t: t, uid: opts.uid || ('oac-' + String(spec.id).toLowerCase() + '-' + width) });
+    var c = new Ctx(spec, rows, { width: width, ground: opts.ground, t: t, extra: opts.extra, uid: opts.uid || ('oac-' + String(spec.id).toLowerCase() + '-' + width) });
     if (def.inner && spec.encode && K.forms[spec.encode.of]) {
       var inn = K.forms[spec.encode.of];
       def = Object.assign({}, def, { encode: Object.assign({}, inn.encode, def.encode), labels: def.labels.concat(inn.labels) });
@@ -773,6 +774,7 @@
   // In a browser: draw into a figure, and again when its width changes
   // ------------------------------------------------------------------------------------------------------------
   K.mount = function (fig, spec, rows, opts) {
+    var extra = (opts && opts.extra) || {};
     opts = opts || {};
     var art = fig.querySelector('[data-oa-art]');
     if (!art) return null;
@@ -783,7 +785,7 @@
       var w = K.artboard(spec, t, art.clientWidth || fig.clientWidth);
       if (w === last) return;
       last = w;
-      result = K.draw(spec, rows, { width: w, ground: ground, t: t, uid: (fig.id || 'oac') + '-' + w, label_id: fig.id ? fig.id + '-t' : null });
+      result = K.draw(spec, rows, { width: w, ground: ground, t: t, extra: extra, uid: (fig.id || 'oac') + '-' + w, label_id: fig.id ? fig.id + '-t' : null });
       var old = art.querySelector('svg.oac-svg');
       if (old) old.remove();
       art.insertAdjacentHTML('beforeend', result.svg);
@@ -806,7 +808,9 @@
         var d = JSON.parse(isl.textContent);
         var rows = d.mode === 'table' ? K.rows_from_table(f.querySelector('table.oac-table'), d.spec, d)
           : d.csv !== undefined ? K.type_rows(K.parse_csv(d.csv), d.columns) : K.type_rows(d.rows || [], d.columns);
-        K.mount(f, d.spec, rows, { words: d.words });
+        var extra = {};
+        Object.keys(d.extra || {}).forEach(function (k) { extra[k] = K.type_rows(K.parse_csv(d.extra[k].csv), d.extra[k].columns); });
+        K.mount(f, d.spec, rows, { words: d.words, extra: extra });
       } catch (e) {
         f.setAttribute('data-oa-error', String(e && e.message || e));
       }

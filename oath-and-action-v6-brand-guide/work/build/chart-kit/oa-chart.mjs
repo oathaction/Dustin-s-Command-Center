@@ -77,6 +77,22 @@ export function file_stem(spec, date) {
   return `${date}_${spec.id.toUpperCase()}-${title_case(form)}`;
 }
 
+// The rows of a spec's second and later datasets, by name, every row (a form filters them itself)
+export function extra_rows(chk) {
+  const out = {};
+  (chk.datasets || []).slice(1).forEach(ds => { out[ds.file.replace(/\.(csv|json)$/, '')] = C.rows_of(K, ds); });
+  return out;
+}
+function extra_island(res) {
+  const out = {};
+  (res.datasets || []).slice(1).forEach(ds => {
+    const cols = Object.keys(ds.meta.columns), ct = {};
+    cols.forEach(c => { ct[c] = { type: ds.meta.columns[c].type }; });
+    out[ds.file.replace(/\.(csv|json)$/, '')] = { columns: ct, csv: C.to_csv(C.rows_of(K, ds), cols) };
+  });
+  return out;
+}
+
 // One spec, checked and drawn in Node at every width and ground
 export function run_spec(spec, o) {
   const res = { id: spec.id, faults: [], drawings: [], spec_path: o.spec_path };
@@ -89,7 +105,7 @@ export function run_spec(spec, o) {
   for (const g of o.grounds) for (const w of o.widths) {
     const cw = container(w, spec);
     let d;
-    try { d = K.draw(spec, chk.rows, { width: cw, ground: g, tokens: TOK[g] }); } catch (e) { res.faults.push(`draw at ${w} on ${g}: ${e.message}`); continue; }
+    try { d = K.draw(spec, chk.rows, { width: cw, ground: g, tokens: TOK[g], extra: extra_rows(chk) }); } catch (e) { res.faults.push(`draw at ${w} on ${g}: ${e.message}`); continue; }
     const where = `${g} ${w}`;
     res.faults.push(...C.check_drawing(spec, d, TOK[g], where));
     res.drawings.push({ ground: g, page: w, width: d.width, height: d.height, svg: d.svg, bytes: Buffer.byteLength(d.svg) });
@@ -131,14 +147,15 @@ export function table_fields(spec) {
   if (tb.pivot) return [].concat(tb.pivot.row, [tb.pivot.column, tb.pivot.value]);
   return (tb.columns || []).map(c => c.field);
 }
-export function island_table(spec, rows, columns) {
+export function island_table(spec, rows, columns, extra) {
   // method load-table: the drawing spec, the types of the columns it uses, and as CSV only the used columns the table lacks
   const used = used_columns(spec, columns), inTable = new Set(table_fields(spec));
-  const extra = used.filter(c => !inTable.has(c));
+  const missing = used.filter(c => !inTable.has(c));
   const ctypes = {};
   used.concat([...inTable]).forEach(c => { if (columns[c]) ctypes[c] = { type: columns[c].type }; });
   const payload = { mode: 'table', spec: draw_spec(spec), columns: ctypes };
-  if (extra.length) payload.csv = C.to_csv(rows, extra);
+  if (extra && Object.keys(extra).length) payload.extra = extra;
+  if (missing.length) payload.csv = C.to_csv(rows, missing);
   return '<script type="application/json" data-oa-chart-data>' + JSON.stringify(payload).replace(/</g, '\\u003c') + '</script>';
 }
 
@@ -175,9 +192,10 @@ export function kit_scripts_full() {
 }
 
 function page_html(specs) {
+  // specs: [{spec, rows, columns, grounds, extra}]
   // a plain page: tokens.css, kit.css, the kit and its forms, and each figure with its data island (DR-235)
-  const body = specs.map(({ spec, rows, columns, grounds }) => grounds.map(g => `<section class="oa-surface-${g} oac-ground" data-ground="${g}">
-${(f => f.slice(0, f.lastIndexOf('</figure>')) + island_table(spec, rows, columns) + '</figure>')(K.figure(spec, rows, { id: `oac-${spec.id.toLowerCase()}-${g}`, lean_table: true, types: columns }))}
+  const body = specs.map(({ spec, rows, columns, grounds, extra }) => grounds.map(g => `<section class="oa-surface-${g} oac-ground" data-ground="${g}">
+${(f => f.slice(0, f.lastIndexOf('</figure>')) + island_table(spec, rows, columns, extra) + '</figure>')(K.figure(spec, rows, { id: `oac-${spec.id.toLowerCase()}-${g}`, lean_table: true, types: columns }))}
 </section>`).join('\n')).join('\n');
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Chart kit build</title><style>${font_css()}</style><style>${CSS}</style><style>${fs.readFileSync(path.join(KIT, 'kit.css'), 'utf8')}</style>
@@ -199,7 +217,7 @@ async function captures(items, o) {
     for (const it of items) {
       const { spec, res } = it;
       const dir = path.join(o.out, spec.id.toLowerCase());
-      const html = page_html([{ spec, rows: res.rows, columns: res.datasets.length ? res.datasets[0].meta.columns : (spec.data || {}).columns, grounds: o.grounds }]);
+      const html = page_html([{ spec, rows: res.rows, columns: res.datasets.length ? res.datasets[0].meta.columns : (spec.data || {}).columns, grounds: o.grounds, extra: extra_island(res) }]);
       const page_file = path.join(dir, spec.id.toLowerCase() + '.html');
       fs.writeFileSync(page_file, html);
       const stem = file_stem(spec, o.date);
@@ -363,7 +381,7 @@ async function fragments(o) {
       html = K.figure(spec, res.rows, { id: fid, svg, art_attrs: ' data-oa-lean' });
     } else if (list.method === 'load-table') {
       html = K.figure(spec, res.rows, { id: fid, lean_table: true, types: columns });
-      html = html.slice(0, html.lastIndexOf('</figure>')) + island_table(spec, res.rows, columns) + '</figure>';
+      html = html.slice(0, html.lastIndexOf('</figure>')) + island_table(spec, res.rows, columns, extra_island(res)) + '</figure>';
     } else {
       const isl = island(spec, res.rows, columns, list.method === 'load-trim');
       html = K.figure(spec, res.rows, { id: fid });

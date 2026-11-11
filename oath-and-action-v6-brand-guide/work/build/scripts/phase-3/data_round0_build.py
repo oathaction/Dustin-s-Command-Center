@@ -96,6 +96,17 @@ def fmt(v, nd=1):
 # ---------------------------------------------------------------------------------------------------------------
 # Public tables, copied byte for byte. Column types and the round 0 fields are added; Phase 2's other fields travel.
 # ---------------------------------------------------------------------------------------------------------------
+# The research ledger's Part 7 rows for the Phase 2 tables (research lead's request ENG-4, November 11, 2026)
+LEDGER = {'ballotpedia-rcv-prohibitions-by-state': 'P7-101', 'census-cps-2024-turnout-by-state': 'P7-102', 'census-cps-reported-voting': 'P7-103',
+          'census-hvs-homeownership-by-race-annual': 'P7-104', 'census-spm-child-poverty': 'P7-105', 'fec-presidential-results-by-state': 'P7-106',
+          'fec-presidential-shift-by-state': 'P7-107', 'fred-payrolls-by-sector': 'P7-108', 'fred-payrolls-by-sector-change': 'P7-109',
+          'fred-payrolls-monthly-change': 'P7-110'}
+# Notes the research lead asked to add (ENG-2, ENG-3)
+EXTRA_NOTES = {
+    'census-cps-reported-voting': 'Margins for the 2020 and 2024 age-gap figures are in census-cps-voting-age-gap-moe: the gap between citizens 65 and over and citizens 18 to 24 grew 3.9 points with a margin of about 2.0 points.',
+    'census-hvs-homeownership-by-race-annual': 'Margins for 2003 and the 2003 to 2025 gaps are in census-hvs-homeownership-gap-moe: the non-Hispanic White and Black gap widened 2.3 points with a margin of about 0.7 points.',
+}
+
 PUBLIC = {
     'census-spm-child-poverty': {
         'specimens': ['S02'], 'kind': 'public', 'domain': 'D08', 'states': [],
@@ -185,7 +196,7 @@ def public_meta(name, spec):
     variants.update(spec.get('extra_variants', {}))
     if variants:
         meta['source_line_variants'] = variants
-    meta['ledger_row'] = 'none yet'
+    meta['ledger_row'] = LEDGER.get(name, 'none yet')
     meta['domain'] = spec['domain']
     if spec.get('domain_note'):
         meta['domain_note'] = spec['domain_note']
@@ -197,6 +208,11 @@ def public_meta(name, spec):
     for k, v in m.items():
         if k not in meta and k not in DROP and k != 'columns' and not k.startswith('source_line'):
             meta[k] = v
+    if name in EXTRA_NOTES:
+        meta['notes'] = list(meta.get('notes') or []) + [EXTRA_NOTES[name]]
+    if name == 'census-hvs-homeownership-by-race-annual' and isinstance(meta.get('unconfirmed'), list):
+        meta['unconfirmed'] = [('Margins of error before 2025, other than 2003 and the 2003 to 2025 gaps, which census-hvs-homeownership-gap-moe now holds'
+                                if 'margin' in u.lower() else u) for u in meta['unconfirmed']]
     return meta
 
 
@@ -247,7 +263,7 @@ def derive_fec_shift():
             'rep_pct_2024': col('number', 'Republican share of all presidential votes in 2024', 'percent'),
             'total_votes_2024': col('integer', 'all presidential votes cast in 2024'),
         },
-        'printed_source_line': smart(m['source_line']), 'ledger_row': 'none yet', 'domain': 'D02', 'states': [],
+        'printed_source_line': smart(m['source_line']), 'ledger_row': LEDGER['fec-presidential-shift-by-state'], 'domain': 'D02', 'states': [],
         'specimens': ['S11', 'S12', 'S15'],
         'derived_from': ['fec-presidential-results-by-state.csv'],
         'derivation': ('One row per state from the two years\' rows; shift_pts is the difference of the two margins as rounded in the FEC file. '
@@ -302,10 +318,10 @@ def derive_fred():
     write_csv('fred-payrolls-monthly-change', ['month', 'change_thousands', 'avg3_thousands', 'status'], change)
     common = {'publisher': 'U.S. Bureau of Labor Statistics, via FRED, Federal Reserve Bank of St. Louis', 'title_or_table': m['title_or_table'],
               'table_id': m['table_id'], 'url': m['url'], 'geography': 'United States', 'universe_or_base': m['universe_or_base'],
-              'date_retrieved': m['date_retrieved'], 'vintage': m['vintage'], 'qualification': FRED_REV, 'ledger_row': 'none yet',
+              'date_retrieved': m['date_retrieved'], 'vintage': m['vintage'], 'qualification': FRED_REV,
               'domain': 'D07', 'states': [], 'derived_from': ['fred-payrolls-by-sector.csv']}
     write_meta('fred-payrolls-by-sector-change', dict(
-        file='fred-payrolls-by-sector-change.csv', kind='derived', **common,
+        file='fred-payrolls-by-sector-change.csv', kind='derived', ledger_row=LEDGER['fred-payrolls-by-sector-change'], **common,
         observation_period='Monthly, January 2022 to September 2026', unit='Thousands of jobs; percent change since January 2022',
         columns={'series_id': col('id', 'FRED series ID'), 'sector': col('category', 'industry sector as BLS names it'),
                  'month': col('month', 'month of the estimate'), 'employees_thousands': col('number', 'all employees, seasonally adjusted', 'thousands of jobs'),
@@ -316,7 +332,7 @@ def derive_fred():
         derivation='Rows from January 2022 on; pct_change_since_2022_01 and change_since_2022_01_thousands compare each month with the same series in January 2022 (D2-126: both jobs charts draw January 2022 to September 2026, one window).',
     ))
     write_meta('fred-payrolls-monthly-change', dict(
-        file='fred-payrolls-monthly-change.csv', kind='derived', **common,
+        file='fred-payrolls-monthly-change.csv', kind='derived', ledger_row=LEDGER['fred-payrolls-monthly-change'], **common,
         observation_period='Monthly, January 2022 to September 2026', unit='Thousands of jobs',
         columns={'month': col('month', 'month of the change'),
                  'change_thousands': col('number', 'total nonfarm payrolls minus the month before', 'thousands of jobs'),
@@ -400,7 +416,7 @@ def v7_tables():
             'numbers[figure 87% and 88%]; sources N40, K1908, W035, N12',
             'Survey fielded May 19 to 30, 2023; House vote July 22, 2026; Senate vote September 30, 2026', 'United States',
             'Registered voters in the survey; members voting in each chamber', 'Percent of registered voters; votes',
-            'The survey predates both votes by three years. The vote totals carry no party split until both chambers’ records can be read (D2-104).',
+            'The survey predates both votes by three years. Both chambers’ party splits are in congress-hr7008-roll-calls, read November 11, 2026.',
             {'key': col('id', 'row key, the studio’s'), 'group': col('text', 'who the figure describes'),
              'value': col('number', 'the figure: percent for the survey rows, votes for the chamber rows'),
              'measure': col('text', 'what the value counts'), 'body': col('category', 'survey, House or Senate'),
@@ -409,6 +425,10 @@ def v7_tables():
              'United States; U.S. House of Representatives, Roll Call 280, July 22, 2026; U.S. Senate, Vote 253, September 30, 2026; '
              'as recorded in Oath & Action, Who Do They Answer To? Systems Atlas V7, snapshot of October 15, 2026. The survey predates both votes by three years.'),
             'D03', ['S01'], domain_note='Members’ stock trading is a conflict of interest, the Conflicts subsystem of V7 domain D03',
+            source_line_variants={'with_bill_text': ('Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, '
+                                                     'United States; U.S. Government Publishing Office, H.R. 7008, Stop Insider Trading Act, text as passed by the House, sections 2 and 3; '
+                                                     'U.S. House of Representatives, Roll Call 280, July 22, 2026; U.S. Senate, Vote 253, September 30, 2026; as recorded in Oath & Action, '
+                                                     'Who Do They Answer To? Systems Atlas V7, snapshot of October 15, 2026. Bill text retrieved November 11, 2026. The survey predates both votes by three years.')},
             v7_figure=n7, notes=['The 86 percent overall figure is in the survey source note (N40), not in the headline figure caption.',
                                  'DR-98: a chart names "H.R. 7008, the Stop Insider Trading Act" with both provisions at first mention; the spec carries those words.'])
 

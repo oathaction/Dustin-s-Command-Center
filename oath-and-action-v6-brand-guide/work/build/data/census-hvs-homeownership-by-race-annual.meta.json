@@ -53,7 +53,7 @@
   }
  },
  "printed_source_line": "Source: U.S. Census Bureau, Current Population Survey/Housing Vacancy Survey, Annual Statistics 2025, Table 22, homeownership rate by race and ethnicity of householder, 1994 to 2025, United States. Retrieved November 6, 2026. Race categories changed in 2003; pandemic changes to data collection affect 2020; the 2025 average leaves out October, when no data were collected.",
- "ledger_row": "none yet",
+ "ledger_row": "P7-104",
  "domain": "D09",
  "states": [],
  "specimens": [
@@ -77,10 +77,13 @@
  },
  "v7_comparison": "Atlas V7 cites second-quarter 2026 rates (74.5% non-Hispanic White, 45.4% Black, 48.1% Hispanic). This annual table ends in 2025; see the quarterly file for the check",
  "unconfirmed": [
-  "Margins of error for years before 2025 are in earlier annual releases and were not collected"
+  "Margins of error before 2025, other than 2003 and the 2003 to 2025 gaps, which census-hvs-homeownership-gap-moe now holds"
  ],
  "raw_files_sha256_prefix": {
   "ann25t_22.xlsx": "ff6fe80bfcadba96",
   "ann25t_b7.xlsx": "9167848cd609afcf"
- }
+ },
+ "notes": [
+  "Margins for 2003 and the 2003 to 2025 gaps are in census-hvs-homeownership-gap-moe: the non-Hispanic White and Black gap widened 2.3 points with a margin of about 0.7 points."
+ ]
 }

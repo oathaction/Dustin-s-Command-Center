@@ -70,10 +70,11 @@ const drawnState = () => Array.from(document.querySelectorAll('figure.oac-fig'))
     {
       const { ctx, p } = await open(b, { ctx: { javaScriptEnabled: false } });
       const st = await p.evaluate(() => Array.from(document.querySelectorAll('figure.oac-fig')).map((f) => {
-        const vis = (el) => !!el && el.getBoundingClientRect().height > 0 && getComputedStyle(el).visibility !== 'hidden';
+        // a part the spec leaves out (a chapter plate's "show") is not required; a part the figure holds must be readable
+        const vis = (el) => !el || (el.getBoundingClientRect().height > 0 && getComputedStyle(el).visibility !== 'hidden');
         const art = f.querySelector('[data-oa-art]');
         return { id: f.id, title: vis(f.querySelector('[data-role=title]')), source: vis(f.querySelector('[data-role=source]')),
-          summary: vis(f.querySelector('details.oac-eq > summary')), rows: f.querySelectorAll('table.oac-table tbody tr').length,
+          summary: !!f.querySelector('details.oac-eq > summary') && vis(f.querySelector('details.oac-eq > summary')), rows: f.querySelectorAll('table.oac-table tbody tr').length,
           artH: art ? art.getBoundingClientRect().height : 0, svgs: f.querySelectorAll('svg').length };
       }));
       st.forEach((s) => {

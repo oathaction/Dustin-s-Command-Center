@@ -6,11 +6,72 @@ Oath & Action Edition 06, Phase 3, round 0, November 11, 2026. Written by the en
 
 ## Summary
 
-Work in progress. The Contracts are written first, as the brief asks. The rest of this file fills in as each step lands.
+GUIDE HOOK READY. The Contracts below were written first, as the brief asks; everything else is done as far as this list says.
 
-Progress, November 11:
-- Data: S01 to S16's data is in `work/build/data/` under C1 (16 tables: 7 public copied byte for byte, 3 derived, 6 Atlas V7), written by `work/build/scripts/phase-3/data_round0_build.py`; `--check` reads the folder back against the contract (0 faults). No sidecar carries the retired disclosure.
-- Kit: `kit.js`, `parts.js`, `kit.css`, `metrics.js` (measured in Chromium from the guide's fonts), `words.json`, `checks.js` and the command `oa-chart.mjs` work end to end on the S14 fixture: 4 drawings, SVG, PNG and CSV exports, captures with grayscale, parity between the page and the Node drawing, 0 faults. Forms built so far: columns-moving-average, line-event-notes, ranked-bar, big-number.
+- **The chart kit** (`work/build/chart-kit/`) draws S01 to S16 from their data files with one command, `node work/build/chart-kit/oa-chart.mjs build --all`: 16 of 16 pass every check at 1440 and 390 px on Newsprint and Charcoal (spec and data against the contract, source lines against sidecars, V7 IDs and grades, the layout guard, the chart check, page and Node drawings identical, SVG, PNG and CSV exports opened and checked), and `dataviz_check.js --kit` finds 0 faults in the drawings as the browser renders them. 19 forms in 17 modules, plain JavaScript with no library, running in a plain page from `tokens.css`, a data file and a spec (DR-235).
+- **The drawing method**: drawn when the page loads, with each chart's rows read back from its own table equivalent (`load-table`). It is the lightest of the four measured in a real guide build, and it passes the guide check at 1440 and 390 px, a page with scripts off, print, forced colors, reduced motion and export parity (results below).
+- **Chapter 14's projection for 97 finished specimens: 2.74 MB, 0.99 MB over the 1.75 MB stop.** DR-232's first step (sketches as one image sheet) saves about 0.05 MB by the proposal's estimate; its second (dropping extended forms' phone drawings) saves nothing under this method, since phone drawings are drawn by the script and cost no bytes. Both fall short, so by DR-232 board 1 asks Dustin. With chapter 14 at 2.74 MB the page projects to about 15.94 MB, over the 15.5 MB budget and under the 16 MB limit.
+- **The data folder**: S01 to S16's data moved in under C1, the retired disclosure dropped; 60 tables in the folder now (18 mine, 42 from the research lead), 0 contract faults.
+- **The weight gates** are in `guide_build.py` through `work/build/scripts/phase-3/guide_charts.py`, with their self-test; the strict build passes with chapter 13 in it: 0 warnings, 198 rules, 460 specimens.
+- **The checks grown**: `v7_check.py` (chapters 13 to 15 and the kit's data and specs against Atlas V7, with a self-test), and `dataviz_check.js --kit` (rendered checks on kit figures, with a self-test).
+- **The palette tokens**: release `6.0.0-gate3.1`, 40 tokens from the data lead's proposal, each marked "Proposed until board 1", every token test passing, tokens.css and tokens.json in parity.
+
+## The drawing method (pilot)
+
+`work/build/scripts/phase-3/chart_pilot.py` places S01 to S16 (the Explainer maker's specs) as plates in a pilot chapter 14 of a real guide build (`guide_build.py --pilot`), once per method, and reads the build report. Measured November 11 on the final kit (results in scratch, `pilot2/20261111_Pilot-Results.json`):
+
+| Method | Chapter 14 bytes (16 charts) | Chart kit in the page | Average chart (figure, words, table, data) | Chapter 14 projected for 97 |
+|---|---|---|---|---|
+| Lean inline SVG (desktop and phone drawings written out) | 953,679 | 9,541 (style only) | 58,461 | 6.54 MB |
+| Drawn at load, full data island | 493,874 | 197,667 | 29,723 | 4.27 MB |
+| Drawn at load, island trimmed to the columns used | 376,951 | 197,667 | 22,415 | 3.56 MB |
+| **Drawn at load, rows read from the table (`load-table`)** | **241,898** | **197,667** | **13,974** | **2.74 MB** |
+
+The projection for `load-table`, part by part (the proposal's section 3 parts, held as allocated where nothing measures them yet):
+
+| Part | Count | Each | Total | Proposal |
+|---|---|---|---|---|
+| Core and extended specimens: words, table, island and plate frame | 97 | 15,118 (13,974 + 1,144 frame) | 1.47 MB | 0.78 MB |
+| The renderer: kit core, style and words (60,948), plus one module per form at today's average (4,816) | 97 forms | | 0.53 MB | 0.22 MB |
+| Reference sketches and avoid entries | 22 and 8 | 4 KB and 2 KB | 0.11 MB | 0.11 MB |
+| Rules and plates, selection guide, palette specification | | | 0.30 MB | 0.30 MB |
+| Three complex examples | | | 0.09 MB | 0.09 MB |
+| Shared map geometry (today's states file is 45,500 bytes) | | | 0.25 MB | 0.25 MB |
+| **Chapter 14** | | | **2.74 MB** | **1.75 MB** |
+
+What drives it: the specimens average 14 KB, not 8 KB, because each carries its whole table as live text (S05's 132 rows and S13's 1,026 cells are the heaviest, 28 KB and 30 KB); and the renderer grows with every form. The words alone (title, measure line, notes, source line, alt text) average about 3.4 KB a chart. Levers beyond DR-232, measured or estimated, for board 1: a minifier in the guide build (terser 5.31.6, run in scratch, not added to the repository) cuts the forms 27 percent and the core 25 percent, about 0.14 MB off the renderer; sharing one module among related forms (bars, dots, lines) would cut the renderer further, by an amount the rounds will show; a long table could move to a download, which contract C2 does not allow today. Even with the minifier the projection stays near 2.6 MB.
+
+Every check the brief names for the method, on the `load-table` pilot page:
+
+| Condition | Result |
+|---|---|
+| Guide check at 1440 and 390 px (`guide_check.js --quick`, with axe-core) | See "Tested" |
+| Scripts on, 1440 and 390 px | 16 of 16 drawn at the column's width; no page error |
+| Resize from 1440 to 390 | 16 of 16 redrawn at the phone width |
+| Scripts off | 16 of 16 with title, source line and table one click away; 674 table rows in all; no empty drawing box |
+| Print, forced colors, reduced motion | 16 of 16 drawn, inside the page; forced colors paint text and marks in the system's ink; no moving element |
+| Export parity | Each chart drawn in the page from its table equals the Node drawing the exports come from (checked on every spec by `oa-chart.mjs build`) |
+| Rendered layout (`dataviz_check.js --kit`) | 0 faults on each of the 16 kit pages |
+
+## The weight gates
+
+`guide_build.py` now imports `work/build/scripts/phase-3/guide_charts.py`:
+- Chapter 13 at most 0.25 MB and chapter 15 at most 0.60 MB, as warnings that `--strict` fails; chapter 14 with the chart kit at most 1.75 MB, a hard stop in every mode (exit 3, the page is not written).
+- The chart kit weighs as its own part ("chart kit", allocated 0.22 MB inside chapter 14), the fonts as theirs, checked against the font manifest's bytes.
+- Each chapter 14 chart against three times its tier's average (core and extended 8 KB, reference 4 KB, avoid 2 KB).
+- The projection: today's page plus the allocation of every chapter not yet built, against 15.5 MB; the build report carries it (14.94 MB today, chapter 13 in).
+- `guide_build.py --self-test` runs the gates' self-test (chapter 14 one byte over, a chart far over its average, a projection over budget, chapters 13 and 15 over, fonts that disagree; each caught).
+- `--pilot DIR` adds a folder's chapters and specimens to a build; `--chart-method` picks the drawing method (default `load-table`).
+
+## The checks grown
+
+- `work/build/scripts/phase-3/v7_check.py --page PAGE`: in chapters 13 to 15, outside failure plates, every ID chip names an atlas ID or route code, carries its type word, no ID prints bare, a block naming one connection prints V7's grade and sign, an authority connection takes no sign or loop, a route prints its V7 check date or "not checked" correctly, no effect total or tally, no disclosure; in the kit, every `v7-*.json` rebuilt from the model matches the file, and the kit's own check passes on every spec. On today's build: chapter 13, 48 chips, 0 failures; 17 kit specs and the data folder, 0 failures. Self-test: 10 planted faults caught.
+- `dataviz_check.js --kit PAGE`: the drawings as the browser renders them (text size, text inside the drawing and clear of other text, marks inside the drawing, party marks never red or Prussian, one working red, no em dash or disclosure). Self-test: 8 planted faults caught. It found four faults the metric guard missed (S01, S04, S08, S13 at 390 px); each is fixed, and the kit's guard now measures text boxes as the browser does.
+- The kit's own check (`checks.js`, run by every build): spec against contract, source line against sidecar (or each publisher named when a chart draws two datasets), the disclosure, colors, em dashes, V7 IDs and grades and the verbs a weak grade allows, the layout guard, bars on their zero line, circles by area, marks inside, party marks, one red, red never touching Prussian, and each key's groups 10 or more L* apart in grayscale or carrying a pattern or direct label. `oa-chart.mjs self-test`: 23 planted faults caught.
+
+## The palette tokens
+
+Release `6.0.0-gate3.1` adds the data lead's 40 tokens (`work/handoffs/phase-3/20261111_Palette-Proposal.json`): two new tints (`oa.color.tint.prussianN56` #828A9D, `prussianN29` #505C7D), the diverging scale on Charcoal (10), the categorical set (16), the ghost lines (2) and the evidence line code (10, five as DTCG stroke styles). Every new token's description ends "Proposed until board 1"; the six tints that take a second job say the second job is proposed. To carry them the generator writes a stroke style as its keyword with `-dasharray` and `-line-cap` companion properties, and the token tests learned the `strokeStyle` type and pair B on Charcoal (Prussian's hue lifted, the midpoint darker toward the ground). Result: 544 tokens, all six token test groups pass, Style Dictionary agrees on all 544. The kit's categorical roles (`cat-1` to `cat-4`) and `ghost` now read these tokens; S06 draws pair B on Charcoal.
 
 ## Contracts
 
@@ -242,9 +303,23 @@ beside a spec file in the editor's own specimen space, `work/build/guide/specime
 ## Routine calls
 
 D3-xxx | The data folder is flat, one table per file, CSV for public data and a row-list JSON for V7 tables, with derived tables as their own files | A table equivalent and a CSV export can then match a file row for row, and a spec never computes data
-D3-xxx | The kit is classic scripts with one global, `OAChart`, and its own text metrics of Inter and Inter Tight | A classic script runs from a file opened in a browser with no server or build step (DR-235), and the same metrics give the same layout in Node and the browser, so exports and the guide cannot drift
+D3-xxx | A sidecar's `domain` may be `all` for an atlas-wide table (the claims register, the eight scenarios, the four history threads), counted apart under Rule 01.9 | Those three tables draw on every domain alike; giving them one domain would bend the count
+D3-xxx | S04's and S16's turnout tables count under D10, Taking part, and election rules and results under D02 | V7's D10 holds the Participation subsystem; turnout measures who takes part
+D3-xxx | The kit is classic scripts with one global, `OAChart`, and its own text metrics of Inter and Inter Tight, measured in Chromium from the guide's own fonts | A classic script runs from a file opened in a browser with no server or build step (DR-235), and one metrics table gives the same layout in Node and every browser, so exports and the guide cannot drift
 D3-xxx | Specs live in `work/build/chart-kit/specs/` as `s01.json` to `s16.json`, the engineer's fixtures apart in `fixtures/specs/` | The maker and the engineer never write the same file
 D3-xxx | Chapter 13's chart plates name a `.chart.json` spec beside their fragment, which `guide_build.py` expands with the kit | The editor keeps its words in its own files and the guide draws every chart with one renderer
+D3-xxx | The few words every figure prints alike (the "Source:" label, the table's summary) live in `work/build/chart-kit/words.json`, which a spec may override | Words never live in the renderer, as the brief's contract 2 asks
+D3-xxx | The drawing method is `load-table`: drawn at load, the rows read back from the chart's own table, the island holding only the drawing spec and the columns the table lacks | The lightest of four measured in a real guide build (2.74 MB projected against 6.54, 4.27 and 3.56), and it passes every check the brief names
+D3-xxx | Chapter 14's projection runs 0.99 MB over its stop; DR-232's two steps save about 0.05 MB and nothing, so board 1 asks Dustin | DR-232's own order; the second step saves nothing because a phone drawing costs no bytes when the page draws it
+D3-xxx | The kit's guard measures a text's box as the browser does (the font's ascent and descent, less the half-leading), and a drawing whose top text would be cut moves down | `dataviz_check.js --kit` found four faults the cap-height box missed
+D3-xxx | Release 6.0.0-gate3.1 for the palette tokens, as the data lead suggested | Rule 26.8: before 6.0.0, every change raises the number after the hyphen; the first draft on the way to Gate 3
+D3-xxx | A DTCG stroke style writes its keyword to tokens.css (as Style Dictionary does) with `-dasharray` and `-line-cap` companion properties | An SVG line needs the dash array and the cap; the keyword keeps tokens.css and Style Dictionary in agreement
+D3-xxx | The token rule test accepts pair B on Charcoal with Prussian's hue lifted toward Newsprint and a midpoint darker toward the ground | The proposal's measured scale; plain Prussian measures under 3 to 1 on Charcoal, and the midpoint tints toward the ground on each ground
+D3-xxx | Five token descriptions lose a decision code and one a gate code ("DR-234", "Gate 1, M1"); the change note's reason keeps its rule number only | Chapter 26 prints descriptions and the newest note to readers, and reader words carry no decision codes (DR-218)
+D3-xxx | Head and shell rise from 0.20 to 0.22 MB and chapter 26 from 1.0 to 1.1 MB | tokens.css, inlined in the head, grows by about 10 KB with the 40 tokens, and chapter 26 carries each token twice (its table and its tokens.json download); the projection still holds the page at 14.94 MB with chapter 14 at its allocation
+D3-xxx | The token table (`s-26-token-table.html`) is regenerated by its own script for 6.0.0-gate3.1 | The strict build fails when the table and tokens.json disagree
+D3-xxx | Phase 2's chart scripts and boards stay as records; nothing was rerun from them, and the November 10 promotion scripts were not touched | The brief
+D3-xxx | S01's votes draw each party's count on its own segment in the one neutral ink of its side, named on the mark, from `congress-hr7008-roll-calls` (`labels.votes[].split`) | D3-07 (both chambers' records can be read, so D2-104's condition is met); DR-48, DR-58, Rule 01.2
 
 ## Requests
 
@@ -290,7 +365,9 @@ Requests back to the Explainer maker (spec changes these fixes need; each spec p
 - X6. S02: the two long notes now leave the plot on a phone by themselves; if you want words other than the in-plot ones there, hide them with `phone.hide` and add `phone_notes`.
 - X7. S16: `labels.size_step_words: ["1 million", "5 million", "20 million"]`.
 
-- To the research lead: the 16 datasets moved in carry `"ledger_row": "none yet"`, since the research ledger has no Part 7 rows for Phase 2's November 6 downloads. Please give each its Part 7 row; I will write the row IDs into the sidecars (`data_round0_build.py`), or you may name them in your notes and I copy them.
+- Research lead's ENG-1 to ENG-4, done in `data_round0_build.py`: ENG-1 S01's `source_line_variants.with_bill_text` and its qualification naming `congress-hr7008-roll-calls`; ENG-2 and ENG-3 the margins notes, with the homeownership sidecar's `unconfirmed` item naming its file; ENG-4 ledger rows P7-101 to P7-110.
+- X8 to the Explainer maker (S01, D3-07): set `dataset: ["v7-stock-trading-ban", "congress-hr7008-roll-calls"]`, `source_line` to the sidecar's `with_bill_text` variant, and on each entry of `labels.votes` a `split: {"dataset": "congress-hr7008-roll-calls", "where": {"chamber": "House"}, "party": "party", "yes": "yea", "no": "nay"}` (Senate for the second) with `party_words: "{party} {v}"`; then the notes and alt text can give the split in words. Tested on a copy of S01: passes at both widths, each party named on its mark, the splits adding to V7's 232 to 198 and 53 to 47.
+- To the main session: `guide_build.py --self-test` misses one expectation of 296, "each step says where it leads" in Gate 2's front-page scenario. The committed version of the script misses the same one against today's files, so it comes from a file other than my changes; I did not trace it.
 
 ## Tested
 

@@ -1,6 +1,7 @@
 {
  "file": "fred-payrolls-by-sector-change.csv",
  "kind": "derived",
+ "ledger_row": "P7-109",
  "publisher": "U.S. Bureau of Labor Statistics, via FRED, Federal Reserve Bank of St. Louis",
  "title_or_table": "All employees, thousands, seasonally adjusted, total nonfarm and 17 sectors",
  "table_id": "PAYEMS, USPRIV, USMINE, USCONS, MANEMP, USWTRADE, USTRADE, CES4300000001, CES4422000001, USINFO, USFIRE, USPBS, CES6561000001, CES6562000001, USLAH, USSERV, USGOVT, CES9091000001",
@@ -10,7 +11,6 @@
  "date_retrieved": "2026-11-06",
  "vintage": "as posted on FRED on November 6, 2026; the latest two months are preliminary and BLS revises them",
  "qualification": "Seasonally adjusted. The Bureau of Labor Statistics revises each month’s first estimate in the next two monthly reports, so August and September 2026 are preliminary, and a yearly benchmark revision can move earlier months. FRED copies the Bureau of Labor Statistics series; bls.gov refuses automated requests, so the studio read FRED (DR-60).",
- "ledger_row": "none yet",
  "domain": "D07",
  "states": [],
  "derived_from": [

@@ -66,17 +66,56 @@
           if (v.tally) c.text(W, c.phone ? lb.y + lb.h + c.size('label') + 2 : ly, v.tally, { role: 'label', weight: 700, anchor: 'end' });
           if (v.date && !c.phone) c.text(W * 0.62, ly, v.date, { role: 'tick', anchor: 'middle' });
           var y0 = (c.phone ? lb.y + lb.h + c.size('label') + 10 : ly + 8);
-          c.rect(0, y0, xs(yes[ev]), vh, { fill: 'subject', kind: 'bar', axis: 'x', zero: 0, data: { key: yes[ek], field: ev, value: yes[ev] } });
-          c.rect(xs(yes[ev]), y0, W - xs(yes[ev]), vh, { fill: 'light-fill', kind: 'segment', data: { key: no[ek], field: ev, value: no[ev] } });
           var mid = y0 + vh / 2 + c.size('label') * 0.35;
-          c.text(8, mid, String(v.yes_words || '{v}').replace('{v}', K.fmt(yes[ev], 'integer')), { role: 'label', weight: 700, fill: 'label-on-subject' });
-          c.text(W - 8, mid, String(v.no_words || '{v}').replace('{v}', K.fmt(no[ev], 'integer')), { role: 'label', weight: 700, anchor: 'end' });
-          y = y0 + vh;
+          var sp = v.split, parts = null;
+          if (sp && c.extra[sp.dataset]) {
+            parts = c.extra[sp.dataset].filter(function (r) { return Object.keys(sp.where || {}).every(function (k) { return String(r[k]) === String(sp.where[k]); }); });
+            var sy = parts.reduce(function (a, r) { return a + (r[sp.yes] || 0); }, 0), sn = parts.reduce(function (a, r) { return a + (r[sp.no] || 0); }, 0);
+            if (sy !== yes[ev] || sn !== no[ev]) c.warn('the party split of "' + v.label + '" gives ' + sy + ' to ' + sn + ', the totals ' + yes[ev] + ' to ' + no[ev]);
+          } else if (sp) c.warn('split names dataset ' + sp.dataset + ', which the spec does not list');
+          if (parts) {
+            // each party's votes as its own segment in the one neutral ink of its side, its name and count on the mark
+            var small = [], x = 0;
+            [[sp.yes, 'party', 'label-on-subject'], [sp.no, 'light-fill', 'label']].forEach(function (side, si) {
+              parts.forEach(function (r) {
+                var n = r[side[0]] || 0;
+                if (!n) return;
+                var w = xs(n), words = String(v.party_words || '{party} {v}').replace('{party}', r[sp.party]).replace('{v}', K.fmt(n, 'integer'));
+                c.rect(x, y0, w, vh, { fill: side[1], kind: x === 0 ? 'bar' : 'segment', axis: 'x', zero: 0, data: { key: (si ? no : yes)[ek] + '|' + r[sp.party], field: side[0], value: n, party: r[sp.party] } });
+                if (x > 0) c.line(x, y0, x, y0 + vh, { stroke: 'surface', width: 2, mark: false });
+                if (c.measure(words, 'label', 700) + 14 < w) c.text(si ? x + w - 7 : x + 7, mid, words, { role: 'label', weight: 700, fill: side[2], anchor: si ? 'end' : 'start' });
+                else small.push([x + w / 2, words]);
+                x += w;
+              });
+            });
+            // segments too narrow for their words: the words in one row under the bar, each on an elbow leader from its segment
+            var ty = y0 + vh + 14 + c.size('tick'), right = -1e9, rowsN = small.length ? 1 : 0;
+            small.forEach(function (p) {
+              var tw = c.measure(p[1], 'tick', 600), lx = Math.max(p[0] - 3, 0, right + 16);
+              if (lx + tw > W) {
+                if (right > -1e9 && W - tw < right + 16) { ty += c.size('tick') + 8; rowsN++; right = -1e9; }
+                lx = Math.min(Math.max(p[0] - 3, 0, right + 16), W - tw);
+              }
+              c.text(lx, ty, p[1], { role: 'tick', weight: 600 });
+              var top = ty - c.size('tick') - 3;
+              c.line(p[0], y0 + vh + 1, p[0], top, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+              if (lx > p[0] + 1) c.line(p[0], top, lx, top, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+              right = lx + tw;
+            });
+            y = y0 + vh + (rowsN ? rowsN * (c.size('tick') + 8) + 10 : 0);
+          } else {
+            c.rect(0, y0, xs(yes[ev]), vh, { fill: 'subject', kind: 'bar', axis: 'x', zero: 0, data: { key: yes[ek], field: ev, value: yes[ev] } });
+            c.rect(xs(yes[ev]), y0, W - xs(yes[ev]), vh, { fill: 'light-fill', kind: 'segment', data: { key: no[ek], field: ev, value: no[ev] } });
+            c.text(8, mid, String(v.yes_words || '{v}').replace('{v}', K.fmt(yes[ev], 'integer')), { role: 'label', weight: 700, fill: 'label-on-subject' });
+            c.text(W - 8, mid, String(v.no_words || '{v}').replace('{v}', K.fmt(no[ev], 'integer')), { role: 'label', weight: 700, anchor: 'end' });
+            y = y0 + vh;
+          }
           if (need) {
             var nx = xs(need[ev]);
-            c.line(nx, y0 - 6, nx, y0 + vh + 22, { stroke: 'label', width: c.t('line-hairline'), data: { key: need[ek], field: ev, value: need[ev] } });
-            if (v.short) c.text(Math.min(nx, W - c.measure(v.short, 'label', 600)) , y0 + vh + 22 + c.size('label'), v.short, { role: 'label', weight: 600, anchor: 'start' });
-            y += 22 + c.size('label') + 6;
+            var nb = y;   // under the bar, and under any party words set beneath it
+            c.line(nx, y0 - 6, nx, nb + 22, { stroke: 'label', width: c.t('line-hairline'), data: { key: need[ek], field: ev, value: need[ev] } });
+            if (v.short) c.text(Math.min(nx, W - c.measure(v.short, 'label', 600)), nb + 22 + c.size('label'), v.short, { role: 'label', weight: 600, anchor: 'start' });
+            y = nb + 22 + c.size('label') + 6;
           }
           y += 24;
         });

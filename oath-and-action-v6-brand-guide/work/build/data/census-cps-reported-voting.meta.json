@@ -51,7 +51,7 @@
  "source_line_variants": {
   "source_line_citizen_only": "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting, citizen voting-age population, November 1978 to 2024, United States. Retrieved November 6, 2026. Self-reported in a survey; citizenship data before 1996 are not fully comparable."
  },
- "ledger_row": "none yet",
+ "ledger_row": "P7-103",
  "domain": "D10",
  "domain_note": "Reported turnout measures who takes part, the Participation subsystem of V7 domain D10; election rules and results stay under D02",
  "states": [],
@@ -70,5 +70,8 @@
  ],
  "raw_files_sha256_prefix": {
   "hst_vote01.xlsx": "175d5ba32190aa65"
- }
+ },
+ "notes": [
+  "Margins for the 2020 and 2024 age-gap figures are in census-cps-voting-age-gap-moe: the gap between citizens 65 and over and citizens 18 to 24 grew 3.9 points with a margin of about 2.0 points."
+ ]
 }

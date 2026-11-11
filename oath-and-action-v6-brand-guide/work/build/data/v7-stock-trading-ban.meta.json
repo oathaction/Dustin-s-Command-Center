@@ -11,7 +11,7 @@
  "unit": "Percent of registered voters; votes",
  "date_retrieved": "2026-10-15",
  "vintage": "Atlas V7 snapshot of October 15, 2026",
- "qualification": "The survey predates both votes by three years. The vote totals carry no party split until both chambers’ records can be read (D2-104).",
+ "qualification": "The survey predates both votes by three years. Both chambers’ party splits are in congress-hr7008-roll-calls, read November 11, 2026.",
  "columns": {
   "key": {
    "type": "id",
@@ -48,6 +48,9 @@
  ],
  "extract_script": "work/build/scripts/phase-3/data_round0_build.py",
  "domain_note": "Members’ stock trading is a conflict of interest, the Conflicts subsystem of V7 domain D03",
+ "source_line_variants": {
+  "with_bill_text": "Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States; U.S. Government Publishing Office, H.R. 7008, Stop Insider Trading Act, text as passed by the House, sections 2 and 3; U.S. House of Representatives, Roll Call 280, July 22, 2026; U.S. Senate, Vote 253, September 30, 2026; as recorded in Oath & Action, Who Do They Answer To? Systems Atlas V7, snapshot of October 15, 2026. Bill text retrieved November 11, 2026. The survey predates both votes by three years."
+ },
  "v7_figure": {
   "figure": "87% and 88%",
   "caption": "of Republicans and of Democrats back a ban on stock trading by members of Congress",

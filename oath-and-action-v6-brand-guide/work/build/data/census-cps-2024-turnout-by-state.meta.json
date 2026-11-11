@@ -50,7 +50,7 @@
  "source_line_variants": {
   "source_line_2024_only": "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a, reported voting for states, November 2024, 50 states and DC. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over; state margins of error reach 5.6 points."
  },
- "ledger_row": "none yet",
+ "ledger_row": "P7-102",
  "domain": "D10",
  "domain_note": "Reported turnout measures who takes part, the Participation subsystem of V7 domain D10",
  "states": [],
