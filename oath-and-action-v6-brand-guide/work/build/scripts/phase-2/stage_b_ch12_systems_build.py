@@ -61,8 +61,9 @@ GRADES = [('Documented', 'on the public record', 'ink'), ('Well supported', 'str
 
 
 # Chapter 12's intro sentence for Rules 12.5 to 12.9 (ED 4c: the marker's job at first use)
-MY_INTRO = ('Rules 12.5 to 12.9 cover the devices that explain a system: the intervention marker, which shows where a reform '
-            'acts, chart keys, locators, the layer diagram and the frame that names who owns each step.')
+# Gate 2 fix pass: chapter 12 opens on the device index, which lists each device and its rule, so the sentence names
+# only the group, and the index rises into the first screen at 1440 px
+MY_INTRO = 'Rules 12.5 to 12.9 cover the devices that explain a system.'
 # D2-960: the title states what the invented counts show, 28 of 39 claims documented or well supported (H08)
 KEY_TITLE = 'Most claims in these three chapters are documented or well supported'
 

@@ -197,3 +197,14 @@ D2-xxx | Chapter 11's opener takes the state route's step names, so step 6 is Go
 - Modified, generators: `work/build/scripts/phase-2/stage_a_systems_ch05.py`, `stage_c_ch17_build.py`, `apply_systems_ch11.py`.
 - Modified, their outputs: `work/build/guide/chapters/05-color.json`, `11-icons.json`, `17-motion-and-states.json`; `work/build/guide/specimens/s-11-opener.html`, `s-17-3-correct.html`, `manifest-systems.json`, `manifest-motion.json`; `work/handoffs/phase-2/20261106_Stage-A-Systems-Measurements.json`, `20261110_Stage-B-Round-2-Ch11-Figures.json`, `20261111_Stage-C-Round-1-Ch17-Figures.json`.
 - Modified: this file. Nothing committed or pushed.
+
+### Second pass, the identity designer's two items (through the main session)
+
+- **Chapter 12's intro**, `stage_b_ch12_systems_build.py`: my sentence now reads "Rules 12.5 to 12.9 cover the devices that explain a system." The device index that opens the chapter lists each device and its rule, so the list of five left the sentence. At 1440 px the index's head row and its first four devices now sit on the first screen.
+- **Chapter 17's players**: their control row already wraps, since my first pass (D2-xxx above): `.cl` is a flex row with `flex-wrap`, each button `flex: 1 1 0` and never narrower than its words (`min-width: max-content`), so Reset moves under Play where both do not fit. The identity designer's note predates that change; no further edit was needed. Measured on the new build, every Reset label holds one line at 1440, 390 and 320 px: Reset the bill, link, ring, line and disc, and the identity players' Reset the wordmark and Reset the lockmark.
+
+D2-xxx | My chapter 12 intro sentence names only its group of rules | The device index under the intro lists each device with its rule, and a shorter paragraph lifts it into the first screen
+
+Tested: the chain in the brief's order, clean; `guide_build.py --strict` to scratch (`third/guide.html`): 0 warnings, 185 rules, 433 specimens, 9,444,334 bytes; chapter 12's first screen at 1440 px; chapter 17's players at 1440 px (1x) and their control rows at 390 px (2x); every Reset label's line count by script at 1440, 390 and 320 px.
+
+Change log: modified `work/build/scripts/phase-2/stage_b_ch12_systems_build.py` and its output `work/build/guide/chapters/12-graphic-devices.json`; this file.

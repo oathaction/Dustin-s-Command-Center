@@ -9,7 +9,8 @@
 // Q1 to Q4 pass, November 8, 2026: a frame takes 32 px sides where that holds its stage whole at true size (CD-S9).
 // Round 3 fix pass, November 10, 2026: the tokens.css button saves a zip through the host where one answers (DR-192,
 // D2-964); from 80em a fixed plate wider than its column breaks out over the rail where the page holds it whole (CA-S13).
-// Gate 2, November 11, 2026: a step of the "Where to start" page offers the way back to itself (D2-1698).
+// Gate 2, November 11, 2026: a step of the "Where to start" page offers the way back to itself (D2-1698); the fix pass
+// snaps openers, the pillar row's icons and the colophon's lockmark onto whole device pixels.
 (function () {
   'use strict';
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -362,8 +363,11 @@
   // draws sharp at 1x. The text above a plate sets fractional line heights, so its top can fall between pixels. One pass
   // reads every stage's place, a second sets the CSS translate property by the fraction: it moves the drawing alone,
   // never what follows it. A plate set to Fit to window is scaled, so it is left as it is.
+  // Gate 2 fix pass (the identity designer's check): an opener's stage flows with the column, and lands between pixels as
+  // often as a fixed one, so it snaps too; so do the front page's 24 px pillar icons and the colophon's 24 px lockmark,
+  // each on its own, so every pixel-grid master sits on whole device pixels at 1x (Rule 08.2, DR-179).
   function snapStages() {
-    var st = $$('.plate-stage[data-width]');
+    var st = $$('.plate-stage[data-width], .plate--opener .plate-stage, .prow-ic, .sign-mark');
     st.forEach(function (s) { s.style.translate = ''; });
     var d = window.devicePixelRatio || 1;
     var off = st.map(function (s) {

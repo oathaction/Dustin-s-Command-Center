@@ -471,7 +471,10 @@ a.toc-part-k:hover { text-decoration: underline }
 .plate--extra, .plate--proof { margin-top: var(--oa-space-800) }
 /* D2-965, D2-1134 (stage C): a chapter's opener figure under its intro. It carries no label; its frame and mat say it
    is a piece at true size, and its head shows only when the frame must scroll. */
-.plate--opener { margin-top: var(--oa-space-600) }
+/* Gate 2 fix pass (the identity designer's check): the opener rises toward the first screen, 32 px under the intro, with 24 px of
+   mat above and below its stage in place of 64, so a chapter whose title takes two lines still shows its opener at 1440 by 900 */
+.plate--opener { margin-top: var(--oa-space-400) }
+.plate--opener > .plate-scroll { padding-block: var(--oa-space-300) }
 .plate--opener > .plate-head { border-top: 0; padding: 0 }
 .plate--opener.is-wide > .plate-head { padding: var(--oa-space-100) 0 }
 /* The True size / Fit to window switch (D2-251) */
