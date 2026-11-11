@@ -4,16 +4,16 @@ Oath & Action Edition 06, Phase 2, November 11, 2026. The accessibility lead's p
 
 ## Items
 
-- [x] **CD-S1 and CD-S10, chapter 18's opener.** The intro's second paragraph drops from eleven lines to two: "The code reads only tokens.css, the file that holds every color, size and type style as a named value, so one copy follows either theme. How each state looks and moves comes from chapter 17." The definitions it carried (accessible name, role, state, status line, ARIA and the APG) open Rule 18.1's "Why it works", as one paragraph ahead of the button's own reason. At 1440 px the opener plate now starts 747 px down and its first row of controls shows on the first screen; before, the first screen ended inside the intro's second paragraph.
+- [x] **CD-S1 and CD-S10, chapter 18's opener.** The intro's second paragraph drops from eleven lines to two: "The code reads only tokens.css, the file that holds every color, size and type style as a named value, so one copy follows either theme. How each state looks and moves comes from chapter 17." The definitions it carried (accessible name, role, state, status line, ARIA and the APG) moved into Rule 18.1, first as the opening of its "Why it works" and, after the editor's read, as its second rule paragraph (see "## Second pass"). At 1440 px the opener plate now starts 747 px down and its first row of controls shows on the first screen; before, the first screen ended inside the intro's second paragraph.
 - [x] **CD-S3, titles.** 22 of chapter 18's 24 titles and 8 of chapter 19's 9 are now one clause. Chapter 18's average falls from 16.6 words to 9.4, chapter 19's from 15.6 to 9.9; the longest are 18.3, 18.16 and 19.5 at 13 words, each already one clause, kept as written. No rule number changed. Each dropped clause was checked against its rule's text, and every one is already stated there (most in the first paragraph; 18.1's unavailable button opens its second), so nothing was added twice. No file outside the two generators and their outputs quotes a changed title (searched across `work/build`).
 - [x] **CD-S2, captions and bars.** No change needed. All 24 failure captions in chapter 18 and all 9 in chapter 19 already lead with "Fails Rule NN.N." in bold, and all 33 failure plates carry the "Failure case: do not publish" bar with its words in `--oa-color-text-primary-on-charcoal`. Every one draws a piece a reader could lift, so none goes without the bar.
 - [x] **DT-S10.** Rule 18.22's second paragraph now cites Rule 17.3 for Play becoming Pause and Rule 11.14 for the pace: "…its icon and its word changing together (Rule 17.3), and it holds each step about 250 ms a word and never under six seconds, with reduced motion too (Rule 11.14)."
 - [x] **The form's keys path, from the component engineer's `aria-invalid` change.** `KEYS[17]` in `stage_c_ch18_build.py` takes the two changes in `20261111_Gate-2-Fix-Components-Notes.md`, "For the main session", item 1: in "Send with mistakes", typing "name@" now asks that the email field's `aria-invalid` read `"false"`; in "Send right", the Enter step asks `"false"` where it asked for no attribute. The generator now emits `c-18-form.keys.json` byte for byte as the component engineer wrote it, and `--check` reports "chapter 18: current".
 - [x] **Rule 18.17's builders**, item 2 of the same section, in these words: "Give each field <code>aria-invalid="false"</code> from the start, and set it back to <code>"false"</code> once the reader fixes it. A field without the attribute takes the browser’s own check, which calls an email address wrong while the reader is still typing it."
 - [x] **D2-1722, the guide's own scroll frames (DT-S1's second remedy).** Rule 18.11's second paragraph ends: "This guide sets its plates and code on a light gray mat, where the focus ring’s color measures 2.98 to 1, under the 3 to 1 a ring needs, so a frame that scrolls on the mat draws the same ring in Charcoal, 11.76 to 1." Both figures are computed in the generator from `tokens.json` (the mat is the shell's `--mat`, `oa.color.tint.stoneN90`), so `palette()` now reads tints as well as palette and derived colors; no other output changed.
-- [ ] **DT-S12, "Civic Line" in Rule 19.8's results.** The lower-case "civic line" is in round 2's results file, which the plate prints word for word and which stays as that round's record. It lands with call 12: the new results file writes "Civic Line", and the generator gains a check that stops on the lower-case form.
+- [x] **DT-S12, "Civic Line" in Rule 19.8's results.** Done in call 12, below. The lower-case "civic line" is in round 2's results file, which the plate prints word for word and which stays as that round's record. It lands with call 12: the new results file writes "Civic Line", and the generator gains a check that stops on the lower-case form.
 - [x] **Call 8 (DT-S11) in 18 and 19.** No change needed. Every measured ratio already prints with two decimals and "to 1"; the colon forms in chapter 19 are WCAG's own words, quoted, and "3 to 1" and "4.5 to 1" are thresholds.
-- [ ] **Call 12, last.** Waiting for the main session's word that the final guide check has run on the fixed preview.
+- [x] **Call 12, last.** Done; see "## Call 12".
 
 ### Plan for call 12
 
@@ -32,6 +32,16 @@ DR-191's short second pass, from the editor's read (`20261111_Gate-2-Editor-Note
 
 Checks: both generators run, then `--check`, "chapter 18: current" and "chapter 19: current", with only `18-components.json` and `19-accessibility.json` changed. `guide_build.py --strict` into scratch: 185 rules, 433 specimens, 9,442,558 bytes, and one warning, outside my files: "Rule 26.7: s-26-token-table is not what tokens.json 6.0.0-gate2.9 makes; run token_table_build.py", the engineer's token release waiting on its table. The four fixes read as written in the built page.
 
+## Call 12
+
+Chapter 19's results rerun on the fixed preview, from the main session's final runs.
+
+- **Sources read.** The guide check on `work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html` (9,445,041 bytes, SHA-256 fd288b6060823c0067b905875ca488ae6eb31b57c945ccb953ea4b0865e8f4e7, built 18:46 UTC from commit 5d458c4e): `20261111_Gate-2-Preview-Guide-Check-Results.json`, four widths, started 18:47 UTC, PASS, 0 failures, axe clean. The engineer's notes, "## Final build", and the evidence files they name: the sprite check (18:49 UTC, PASS), the token tests at 6.0.0-gate2.9 (all six steps) with the page's parity, and the font check (18:48 UTC, PASS). Each figure on the plate was read from these files, not from round 2's.
+- **New file:** `work/handoffs/phase-2/20261111_Gate-2-Ch19-Results.json`, in round 2's form. Its build line names the preview, its bytes, its SHA-256 prefix, the build time in UTC and the four widths. Tested holds 12 lines: the 11 of round 2 with this build's figures (272 headings; 68,337 elements; 489 stages; 597 to 600 glyph parts; 32 to 41 of 56 code stages pixel for pixel, 2,154 elements' styles; the Where to start page's stops and 20 steps; the form's email field no longer reading wrong while typed), and a new Fonts line (the faces load from the file, no font request). Not tested holds 11, DR-213's four device scripts named one by one in their own line, and Safari and Firefox on a line of their own. Round 1's and round 2's files stay as the record.
+- **DT-S12.** The drawings line writes "Civic Line", and `stage_c_ch19_build.py` now stops on the set's name in any other case. A planted "civic line" in a copy of the file, loaded in memory, stopped it with "the results write “civic line” in “Drawings at each screen density”; the set is “Civic Line”"; the real file passes.
+- **Generator.** `RESULTS` points at the new file and the header names it. The first run stopped on "Gate" in the build line, a studio code; the line now says "The preview for approval", the cover's own words.
+- **Checks.** `stage_c_ch19_build.py` run, then `--check`, "chapter 19: current"; `stage_c_ch18_build.py --check`, "chapter 18: current". Only `s-19-results.html` and `manifest-accessibility.json` changed among the outputs. `guide_build.py --strict` into scratch: exit 0, 0 warnings, 185 rules, 433 specimens, 9,447,454 bytes. Rule 19.8's plate looked at 1440 and 390 px: no sideways scroll, every line printed, Tested and Not tested apart. The preview itself was not rebuilt.
+
 ## Routine calls
 
 D2-xxx | Chapter 18's definitions of accessible name, role, state, status line, ARIA and the APG open Rule 18.1's "Why it works" | They explain why a native button works, the rule's own reason; in the rule text they would stand before the rule they serve
@@ -42,6 +52,9 @@ D2-xxx | Rule 19.9's title names "real devices" and leaves the four platforms to
 D2-xxx | The form's keys path asks for `aria-invalid="false"` before Send and after a fix, as the component engineer's code sets it | The keys file is this generator's output, so the path lives here; otherwise the next run would revert it and fail the form's walk
 D2-xxx | Rule 18.17's builders name the browser's own check as the reason for `aria-invalid="false"` | A builder who knows why keeps the attribute when rewriting the form
 D2-xxx | Rule 18.11's sentence on the mat computes its two ratios from the tokens | A printed figure that reads the token file cannot drift from it
+D2-xxx | The results' build line names the build "The preview for approval", as the cover does | The page's check bans studio codes, "Gate" among them
+D2-xxx | The results name DR-213's four device scripts one by one, and Safari and Firefox apart | Each needs a different machine, and a reader should see what each script still owes
+D2-xxx | The results add a Fonts line from the guide check's network-shut test and the font check | The preview carries its fonts now, and a font that failed to load would change every measured size
 D2-xxx | DT-S12 lands with call 12, in the new results file | The plate prints its results file word for word, and the page and the file must not disagree (Rule 19.8's builders line); round 2's file stays its record
 
 ## Tested
@@ -57,7 +70,6 @@ D2-xxx | DT-S12 lands with call 12, in the new results file | The plate prints i
 
 ## Not tested
 
-- Chapter 19's results on the fixed preview: call 12, after the main session's final guide check.
 - The editor's read of the changed strings, which follows every owner.
 - The full guide check on this build; the main session runs it once every owner is done.
 
@@ -66,9 +78,11 @@ D2-xxx | DT-S12 lands with call 12, in the new results file | The plate prints i
 Modified:
 
 - `work/build/scripts/phase-2/stage_c_ch18_build.py`: the intro, Rule 18.1's "Why it works", Rule 18.22's citations, 22 titles, `KEYS[17]`'s two form states, Rule 18.17's builders, Rule 18.11's sentence on the guide's mat (D2-1722) and `palette()` reading tints, the second pass's four fixes
-- `work/build/scripts/phase-2/stage_c_ch19_build.py`: 8 titles, Rule 19.6's again in the second pass
+- `work/build/scripts/phase-2/stage_c_ch19_build.py`: 8 titles, Rule 19.6's again in the second pass; `RESULTS` pointed at the Gate 2 results, the header updated, and the check on the icon set's name (call 12)
+- `work/build/guide/specimens/s-19-results.html` and `work/build/guide/specimens/manifest-accessibility.json`: regenerated (call 12)
 - `work/build/guide/chapters/18-components.json` and `work/build/guide/chapters/19-accessibility.json`: regenerated
 
 Created:
 
+- `work/handoffs/phase-2/20261111_Gate-2-Ch19-Results.json` (call 12)
 - `work/handoffs/phase-2/20261111_Gate-2-Fix-Accessibility-Notes.md` (this file)

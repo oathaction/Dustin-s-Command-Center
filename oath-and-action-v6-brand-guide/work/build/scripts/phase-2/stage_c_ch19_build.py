@@ -20,9 +20,10 @@ Reads:
         examples and definitions are W3C's informative text and stay out (D2-1138); 4.1.1 Parsing is listed as removed
         (D2-1139). Rule 19.1's list prints each criterion's parts in that order, and the build stops when the words it
         printed, read back from its own HTML, differ from the stored copy (round 2, BE-M2).
-    work/handoffs/phase-2/20261111_Stage-C-Round-2-Ch19-Results.json: the guide's own results after round 2's fix pass,
-        dated, Tested and Not tested apart, written by the accessibility lead from the main session's final runs, which it
-        names. Round 1's file stays as the record. A missing file prints as pending.
+    work/handoffs/phase-2/20261111_Gate-2-Ch19-Results.json: the guide's own results on the Gate 2 preview after the fix
+        pass, dated, Tested and Not tested apart, written by the accessibility lead from the main session's final runs, which
+        it names. Round 1's and round 2's files stay as the record. A missing file prints as pending. The build stops on a
+        studio role in the printed lines, and on the icon set's name in any case but "Civic Line" (DT-S12).
     work/build/guide/chapters/*.json: every rule this chapter's map cites must exist in a chapter file that is present,
         and a chapter that is not written yet is named in words, never linked.
 
@@ -45,7 +46,7 @@ OUT_CH = GUIDE / 'chapters/19-accessibility.json'
 OUT_SP = GUIDE / 'specimens'
 MANIFEST = OUT_SP / 'manifest-accessibility.json'
 WCAG = ROOT / 'work/handoffs/phase-2/20261111_WCAG22-Criteria-Text.json'
-RESULTS = ROOT / 'work/handoffs/phase-2/20261111_Stage-C-Round-2-Ch19-Results.json'   # round 1's file stays as the record
+RESULTS = ROOT / 'work/handoffs/phase-2/20261111_Gate-2-Ch19-Results.json'   # Gate 2's call 12; round 1's and round 2's files stay as the record
 CH = '19'
 EM, EN = '—', '–'
 WORDS = 'zero one two three four five six seven eight nine'.split()
@@ -546,6 +547,10 @@ def s_results(res):
             m = ROLE_WORDS.search(words)
             if m:
                 raise SystemExit(f'the results name a role, “{m.group(0)}”, in “{x["check"]}”; write an open item as open, to fix before launch')
+            # DT-S12: one name for the icon set, as every other chapter writes it
+            m = re.search(r'\b(?!Civic Line\b)[Cc]ivic [Ll]ine\b', words)
+            if m:
+                raise SystemExit(f'the results write “{m.group(0)}” in “{x["check"]}”; the set is “Civic Line”')
         t = ''.join(f'<li><b>{e(x["check"])}.</b> {e(x["result"])}</li>' for x in res['tested'])
         n = ''.join(f'<li><b>{e(x["check"])}.</b> {e(x["why"])}</li>' for x in res['not_tested'])
         body = (f'<p class="c19-meta">{e(res["build"])}</p><p class="c19-h">Tested on {e(res["date"])}</p><ul class="c19-rl">{t}</ul>'
