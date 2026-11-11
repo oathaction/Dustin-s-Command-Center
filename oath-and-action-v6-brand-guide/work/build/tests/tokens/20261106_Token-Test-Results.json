@@ -1,5 +1,5 @@
 {
- "run": "2026-11-10",
+ "run": "2026-11-11",
  "command": "python3 -I work/build/tests/tokens/run_token_tests.py",
  "tokenSetVersion": "6.0.0-gate2.7",
  "status": "pre-release",
@@ -423,7 +423,7 @@
    "plant": "A stylesheet edited by hand, so it no longer matches the source",
    "test": "build",
    "caught": true,
-   "failure": "tokens_build --check: tokens.css in ../../../../tmp/oa-token-plants-tmm5429o differ from what the source builds. Run the build.",
+   "failure": "tokens_build --check: tokens.css in ../../../../tmp/oa-token-plants-hld2q4az differ from what the source builds. Run the build.",
    "alsoCaughtBy": [
     "parity"
    ]

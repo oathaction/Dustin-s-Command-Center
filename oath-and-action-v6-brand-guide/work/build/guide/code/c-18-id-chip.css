@@ -8,11 +8,10 @@
 .oa-chip { display: inline-flex; align-items: center; gap: .3em; box-sizing: border-box; max-width: 100%;
   padding: 0 var(--oa-space-100); border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
   color: var(--oa-color-text-primary); font: var(--oa-type-data-label); overflow-wrap: anywhere }
-/* An ID never breaks at its hyphen */
-.oa-chip-id { white-space: nowrap; font-variant-numeric: tabular-nums }
+/* An ID never breaks at its hyphen: it sits in an inline block, which never breaks inside */
+.oa-chip-id { display: inline-block; font-variant-numeric: tabular-nums }
 .oa-chip--link { min-height: var(--oa-size-target-minimum); text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
-.oa-chip--link:hover { text-decoration-thickness: var(--oa-border-width-underline-hover); border-width: var(--oa-border-width-rule);
-  padding: 0 calc(var(--oa-space-100) - 1px); margin: -1px 0 }
+.oa-chip--link:hover { text-decoration-thickness: var(--oa-border-width-underline-hover) }
 .oa-chip--link:focus-visible, .oa-chip-record:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
 .oa-chip-record { margin: var(--oa-space-300) 0 0; font: var(--oa-type-body-small) }
 .oa-chip-record .oa-chip { margin-right: var(--oa-space-050) }

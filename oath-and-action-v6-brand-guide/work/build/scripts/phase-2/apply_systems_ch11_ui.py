@@ -601,8 +601,11 @@ def s_stepper_fail(ctx, m):
     T, u = ctx.ty, m.uicon
     css, head, title, _ = stepper(ctx, m, live=False)
     fcss, band = ctx.fail_band(flush=True)
-    cl24 = ('<svg viewBox="0 0 128 128" width="24" height="24" aria-hidden="true" focusable="false" data-icon="CL-024" '
-            'data-icon-family="topic"><use href="#oa-sym-cl-024"/></svg>')
+    # CL-024 is on the list of 41, so at 24 px it takes the switch: its pixel fit on 1x screens, its master from 2x
+    # (DR-179, DR-209)
+    cl24 = ('<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="CL-024" '
+            'data-icon-family="topic"><use class="oa-at-1x" href="#oa-sym-cl-024-24px"/>'
+            '<use class="oa-at-2x" href="#oa-sym-cl-024"/></svg>')
     ctl = (f'<div class="cl"><span class="b">{u("play")}Play</span><span class="b">{cl24}Start over</span>'
            f'<span class="b">{u("arrow", transform=MIRROR[24])}Previous step</span>'
            f'<span class="b nx">Next step{u("arrow")}</span></div>')
@@ -612,7 +615,8 @@ def s_stepper_fail(ctx, m):
            'and back, in place of the Reset icon.')
     return m.spec(ctx, 's-11-14-failure', html, '11.14', alt, width=360,
                   notes='Picture of a fault: a topic drawing standing for an interface action (D2-515), from the sprite '
-                        '(CL-024 is among the 41 that read at 24 px, one color).')
+                        '(CL-024 is among the 41 that read at 24 px, one color, and takes the switch: its fit on 1x '
+                        'screens, its master from 2x).')
 
 
 # ------------------------------------------------------------------------------------------------ 11.15 the three marks

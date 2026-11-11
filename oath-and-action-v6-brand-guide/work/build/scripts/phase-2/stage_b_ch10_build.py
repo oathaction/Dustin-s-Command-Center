@@ -382,7 +382,8 @@ def nb_tree(o):
     if isinstance(o, list):
         return [nb_tree(x) for x in o]
     if isinstance(o, dict):
-        return {k_: (v if k_ in ('specimen', 'token', 'tokens', 'files', 'related', 'id', 'anchor', 'number') else nb_tree(v))
+        return {k_: (v if k_ in ('specimen', 'token', 'tokens', 'files', 'related', 'id', 'anchor', 'number', 'opener')
+                     else nb_tree(v))
                 for k_, v in o.items()}
     return o
 
@@ -487,6 +488,32 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
              f'{rows["CL-048"]["label"]} drawing, a page rising out of an open folder, at 24 px in place of the download icon.',
              width=360, notes='Topic drawing standing for an interface action (D2-515). CL-048 is on the list of 41, so '
                               'the size is allowed; the class is the fault.')
+
+    # ---------------------------------------------------------------- the opener (D2-1135, CD-S16)
+    # A strip of the library under the chapter's intro, so the first screen shows drawings (the engineer's "opener"
+    # contract, D2-1134): it flows with the column, six drawings in one row from 44.5 rem, three a row from 22 rem and two
+    # on a phone or at large text sizes, so no row is left with one drawing. Each column is at least 7 rem, the width of
+    # the longest typed chip, which stays on one line (Rule 10.6). Each drawing is at 64 px in one color beside its word,
+    # an atlas element with its chip; one color because a row with no current item goes one color (Rule 10.7). Four
+    # topics and two atlas elements; R-01 and R-02 stay out (D2-958).
+    strip = [('CL-001', False), ('CL-073', False), ('CL-048', False), ('CL-075', False), ('CL-032', True), ('R-13', True)]
+    cells = []
+    for i, atl in strip:
+        r = rows[i]
+        chip_ = f'<span class="chip">{esc(r["v7_chip"])}</span>' if atl else ''
+        cells.append(f'<li>{sym(i, 64, fam=family(r, atl))}<span class="w">{esc(word(r, atl))}</span>{chip_}</li>')
+    css = (k.vars() + chip_css + '.op{container-type:inline-size}'
+           '.st{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 8px}'
+           '@container (min-width:22rem){.st{grid-template-columns:repeat(3,minmax(0,1fr))}}'
+           '@container (min-width:44.5rem){.st{grid-template-columns:repeat(6,minmax(0,1fr))}}'
+           '.st li{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;min-width:0}'
+           '.sym{display:block;margin:0 0 6px}'
+           f'.w{{{cap_css};font-weight:600;text-wrap:balance;overflow-wrap:anywhere}}.st .chip{{margin-top:2px}}')
+    ctx.spec('s-10-opener', f'<style>{css}</style><div class="op"><ul class="st">{"".join(cells)}</ul></div>', CH, None,
+             'A strip from the symbol library: six Civic Line drawings at 64 px in one color, each above its word. '
+             + '; '.join(f'{word(rows[i], a)}' + (f', {rows[i]["v7_chip"]}' if a else '') for i, a in strip) + '.',
+             notes='Chapter 10\'s opener (D2-1135, D2-1134, CD-S16): flows with the column, so it fits at every width. '
+                   'Drawings from the sprite, words from the editor\'s label table (DR-185) and the addendum for CL-075.')
 
     # ---------------------------------------------------------------- library extras (after 10.1)
     for num, slug, name in CATEGORIES:
@@ -1058,10 +1085,17 @@ S1_CSS = ('.wire{color:var(--oa-component-icon-ink-on-white)}.wire .ak-case{stro
 
 
 # ------------------------------------------------------------------------------------------------ the chapter
-def chapter(rows, reads24, like, sheets, figs):
-    """The chapter in the content contract. Every symbol's word comes from the editor's label table (DR-185)."""
+def chapter(rows, reads24, like, sheets, figs, icons):
+    """The chapter in the content contract. Every symbol's word comes from the editor's label table (DR-185). Every
+    count of the set comes from the inventory in use, which CL-075 Housing joined at promotion C (DR-207)."""
     lab = lambda i, atlas=False: word(rows[i], atlas)
     n41 = ', '.join(reads24)
+    n_all = len(icons)
+    last_cl = max((i['id'] for i in icons if i['id'].startswith('CL-')), key=lambda x: int(x[3:]))
+    n_cap = sum(1 for i in icons if i['stroke_units'] >= 3.35)
+    n_32 = sum(1 for i in icons if i['tile_min_px']['one-color']['square'] == 48)
+    figs['set counts'] = {'drawings': n_all, 'last CL': last_cl, 'at the cap': n_cap, 'filling 116 units': n_all - n_cap,
+                          'one-color tiles from 48 px': n_32, 'one-color tiles from 72 px': n_all - n_32}
     flag = like['thresholds']['flag']['likeness']
     pk = lambda a, b: like['pairs']['|'.join(sorted((a, b)))]['likeness']
     files_inv = 'work/build/assets/civic-line-v6/20261110_Civic-Line-V6-Inventory.json'
@@ -1091,8 +1125,8 @@ def chapter(rows, reads24, like, sheets, figs):
                                'A reader who knows the drawing reads public records, and one who does not sees a folder. '
                                'The action takes chapter 11’s download icon beside its word.'},
         'specs': [
-            {'label': 'Topic and atlas symbols', 'value': '120 of the 124 Civic Line drawings, CL-001 to CL-074 and R-01 '
-                                                         'to R-50; the other four are the pillar icons'},
+            {'label': 'Topic and atlas symbols', 'value': f'{n_all - 4} of the {n_all} Civic Line drawings, CL-001 to '
+                                                         f'{last_cl} and R-01 to R-50; the other four are the pillar icons'},
             {'label': 'Atlas symbols', 'value': 'The atlas’s 51 variables, one drawing each, and its 50 reforms, whose '
                                                 'drawings carry the atlas’s own IDs'},
             {'label': 'Pillar icons', 'value': 'CL-019 to CL-022, set by chapter 09'},
@@ -1171,8 +1205,8 @@ def chapter(rows, reads24, like, sheets, figs):
                                'and the row stops reading as one set.'},
         'specs': [
             {'label': 'Fill', 'value': 'Up to 116 of 128 units, at most 1.25 times the shared scale'},
-            {'label': 'At the cap', 'value': '92 drawings, line 3.35 units'},
-            {'label': 'Filling 116 units', 'value': '32 drawings, line 2.68 to 3.35 units'},
+            {'label': 'At the cap', 'value': f'{n_cap} drawings, line 3.35 units'},
+            {'label': 'Filling 116 units', 'value': f'{n_all - n_cap} drawings, line 2.68 to 3.35 units'},
             {'label': 'Center', 'value': 'The drawing’s ink is centered on 64, 64'},
         ],
         'files': [files_inv],
@@ -1188,32 +1222,52 @@ def chapter(rows, reads24, like, sheets, figs):
             'still read at 24 px, and only those may be set there, in one color. Four of the 41 are the pillar icons, '
             'which take chapter 09’s own drawings at that size, so 37 topic and atlas symbols remain for 24 px. Never set '
             'a topic or atlas symbol at 16 px.',
+            'Each of the 41 has a pixel fit, a copy redrawn pixel by pixel on the 24 px grid with a line one pixel wide. '
+            'At 24 px, draw the fit on screens under 2x, which give each CSS pixel fewer than two device pixels, and the '
+            'master on 2x screens and denser, with both in one svg that the guide’s stylesheet switches. An exported '
+            'image or a printed page has no stylesheet to switch them, so pick the file yourself: the fit in an image '
+            'exported at 1x, and the master in an image exported at 2x or more and in print.',
             'A kicker, the short line above a headline, may hold one of those 37 drawings, at 24 px, 8 px before the '
             'topic’s own word (Rule 01.21).'],
         'tokens': ['oa.size.icon.large', 'oa.size.icon.medium', 'oa.size.icon.small'],
         'why': {'text': ['Each drawing is one thin line on a 128-unit box, so at 24 px its line measures half a pixel '
-                         'and turns gray. Reviewers set every drawing at 128, 64, 32 and 24 px on Newsprint: 41 still read '
-                         'at 24 px, and 94 of the 124 still read at 32 px, the size Rule 10.5’s smallest tiles hold.'],
+                         'and turns gray on a screen under 2x. Reviewers set every drawing at 128, 64, 32 and 24 px on '
+                         f'Newsprint: 41 still read at 24 px, and 94 of the {n_all} still read at 32 px, the size Rule '
+                         '10.5’s smallest tiles hold.',
+                         'A fit puts every line of its drawing on whole pixels, so it draws in full ink where the master '
+                         'turns gray, and keeps each part that makes the master read. From 2x the master’s half-pixel '
+                         'line covers a whole device pixel, so the master draws there.'],
                 'basis': 'Design judgment, approved by our founder and editor in November 2026'},
         'correct': {'specimen': 's-10-4-correct',
-                    'caption': f'{lab("CL-048")}, on the list, from 128 down to 24 px, and {lab("CL-025")}, off the list, '
-                               'down to 48 px. Below, the 24 px icon in a kicker, one color, 8 px before its word.'},
+                    'caption': f'{lab("CL-048")}, on the list, from 128 down to 24 px, where a screen under 2x draws its '
+                               f'pixel fit, and {lab("CL-025")}, off the list, down to 48 px. Below, the 24 px icon in a '
+                               'kicker, one color, 8 px before its word.'},
         'failure': {'specimen': 's-10-4-failure',
                     'caption': '<strong>Fails Rule 10.4.</strong> A topics menu with each drawing at 16 px. At this size '
                                'the line is under half a pixel, and the six drawings become gray marks a reader cannot '
                                'tell apart.'},
         'specs': [
-            {'label': 'Floor', 'value': '48 px for any of the 124, except inside a one-color tile (Rule 10.5)',
+            {'label': 'Floor', 'value': f'48 px for any of the {n_all}, except inside a one-color tile (Rule 10.5)',
              'token': 'oa.size.icon.large'},
             {'label': '24 px', 'value': f'Only the 41: {n41}', 'token': 'oa.size.icon.medium'},
+            {'label': '24 px, by screen', 'value': 'The pixel fit on screens under 2x; the master from 2x',
+             'token': 'oa.size.icon.medium'},
             {'label': '16 px', 'value': 'Never for a topic or atlas symbol', 'token': 'oa.size.icon.small'},
-            {'label': 'Line', 'value': '0.50 to 0.63 px at 24 px; 1.01 to 1.26 px at 48 px'},
+            {'label': 'Line', 'value': '1 px in each fit; the master’s 0.50 to 0.63 px at 24 px; 1.01 to 1.26 px at 48 px'},
+            {'label': 'Exported image and print', 'value': 'At 24 px, the fit in an image exported at 1x; the master in an '
+                                                           'image exported at 2x or more and in print'},
             {'label': 'Kicker icon', 'value': '24 px, one color, 8 px before its word'},
         ],
-        'files': [files_inv],
+        'files': [files_inv, 'work/build/assets/civic-line-v6/fit-24/'],
         'related': ['01', '09', '06'],
         'builders': ['Check the ID against the list before you set a symbol under 48 px. A drawing that is not on it goes '
-                     'to 48 px, or gives way to its word.'],
+                     'to 48 px, or gives way to its word.',
+                     'Write a 24 px symbol as one svg holding two uses: the fit with the class <code>oa-at-1x</code> and '
+                     'the master with <code>oa-at-2x</code>, as in <code>&lt;svg viewBox="0 0 24 24" width="24" '
+                     'height="24" aria-hidden="true" focusable="false" data-icon="CL-048" data-icon-family="topic"&gt;'
+                     '&lt;use class="oa-at-1x" href="#oa-sym-cl-048-24px"/&gt;&lt;use class="oa-at-2x" '
+                     'href="#oa-sym-cl-048"/&gt;&lt;/svg&gt;</code>. Each fit’s file sits in <code>fit-24/</code> beside '
+                     'the editions, named for its ID.'],
     })
 
     rules.append({
@@ -1228,8 +1282,8 @@ def chapter(rows, reads24, like, sheets, figs):
             'stands at 49 or 50 px and may keep its red.',
             'A one-color tile may go smaller, from 48 px square and 52 px rounded or round, which holds its drawing at '
             '32 to 34 px. This is the one place a drawing off the list of 41 goes under Rule 10.4’s 48 px floor, and it '
-            'is open only to the 94 drawings that reviewers could still name at 32 px. The other 30 take one-color tiles '
-            'from 72, 76 and 80 px, which hold them at 48 px or more.'],
+            f'is open only to the {n_32} drawings that reviewers could still name at 32 px. The other {n_all - n_32} take '
+            'one-color tiles from 72, 76 and 80 px, which hold them at 48 px or more.'],
         'tokens': ['oa.component.icon.ink.onNewsprint', 'oa.component.icon.ink.onCharcoal', 'oa.component.icon.ink.onPrussian'],
         'why': {'text': ['Each edition keeps the ink at 13.29 to 1 or more against its own ground, and 9.42 to 1 on Prussian, so '
                          'the drawing reads on every surface we print. A fixed set of tiles keeps a symbol from turning '
@@ -1250,8 +1304,9 @@ def chapter(rows, reads24, like, sheets, figs):
             {'label': 'Drawing in a tile', 'value': '0.68 of a square, 0.66 of a rounded square, 0.62 of a circle'},
             {'label': 'Two-color tile', 'value': 'From 72 px square, 76 px rounded, 80 px round; the drawing stands at 49 '
                                                  'to 50 px'},
-            {'label': 'One-color tile', 'value': 'From 48, 52 and 52 px for the 94 drawings that read at 32 px, with the '
-                                                 'drawing at 32 to 34 px; from 72, 76 and 80 px for the other 30'},
+            {'label': 'One-color tile', 'value': f'From 48, 52 and 52 px for the {n_32} drawings that read at 32 px, with '
+                                                 f'the drawing at 32 to 34 px; from 72, 76 and 80 px for the other '
+                                                 f'{n_all - n_32}'},
             {'label': 'Never', 'value': 'A Newsprint tile on a White page, where its edge measures 1.41 to 1; a red tile'},
         ],
         'files': ['work/build/assets/civic-line-v6/tiles/', 'work/build/assets/civic-line/tiles/'],
@@ -1269,8 +1324,9 @@ def chapter(rows, reads24, like, sheets, figs):
             'typed chip, a small outlined label that holds the kind of element and its atlas ID, such as Variable D1. Each '
             'reform drawing takes its reform’s name and chip. The rejected option on term limits keeps the word Rejected '
             'wherever it appears.',
-            'A subject that no topic symbol names, such as Housing, takes its word alone. An atlas drawing appears only '
-            'beside the atlas’s own name for it.',
+            'A subject that no topic symbol names, such as Bill, takes its word alone. Housing has its own topic symbol '
+            'from 48 px, and under 48 px it takes its word alone too, since it is not on Rule 10.4’s list of 41. An atlas '
+            'drawing appears only beside the atlas’s own name for it.',
             'Hide the drawing from screen readers when its word sits beside it, so the word is read once.'],
         'tokens': ['oa.type.ui', 'oa.type.label'],
         'why': {'text': [f'Even a clear drawing can name several things: the chamber in {lab("CL-025")} could be any '
@@ -1278,11 +1334,13 @@ def chapter(rows, reads24, like, sheets, figs):
                          'next page. A screen reader user hears the word alone, once.'],
                 'basis': 'WCAG 2.2 SC 1.1.1, and design judgment'},
         'correct': {'specimen': 's-10-6-correct',
-                    'caption': f'One drawing under two words, {lab("CL-025")} and {lab("CL-025", True)}, and the names '
-                               'that keep close subjects apart. Each atlas element’s chip follows its name.'},
+                    'caption': f'One drawing under two words, {lab("CL-025")} and {lab("CL-025", True)}, '
+                               f'{lab("CL-075")} beside its word from 48 px, and the names that keep close subjects apart. '
+                               'Each atlas element’s chip follows its name.'},
         'failure': {'specimen': 's-10-6-failure',
-                    'caption': '<strong>Fails Rule 10.6.</strong> Four drawings with no words. Three houses and a letter '
-                               'leave the reader to guess which subject each one names.'},
+                    'caption': '<strong>Fails Rule 10.6.</strong> Four drawings of homes with no words. A reader cannot '
+                               f'tell which one names {lab("CL-075").lower()} itself and which name a shortage of homes, '
+                               'owners’ equity or the cost of essentials.'},
         'specs': [
             {'label': 'Word', 'value': 'Beside or under the drawing, in the UI or caption style', 'token': 'oa.type.ui'},
             {'label': 'Typed chip', 'value': 'The kind, Variable, Reform or Domain, then the atlas ID, as in Reform R-13, in '
@@ -1363,6 +1421,12 @@ def chapter(rows, reads24, like, sheets, figs):
     g24 = LOOKALIKE_24[0]
     v24 = [like['pairs']['|'.join(sorted((g24[a], g24[b])))]['likeness'] for a in range(len(g24)) for b in range(a + 1, len(g24))]
     over = sum(1 for v in v24 if v >= flag)
+    f24 = figs['look-alikes at 24 px']
+    g48 = LOOKALIKE_48[0]
+    l48 = figs['look-alikes at 48 px and under']
+    v48 = list(l48['masters'].values())
+    top = max(l48['masters'], key=l48['masters'].get)
+    top_is_max = l48['masters'][top] >= like['distribution']['max']
     rules.append({
         'id': '10.9', 'title': 'Check a symbol beside its neighbors before you set it.',
         'rule': [
@@ -1372,6 +1436,9 @@ def chapter(rows, reads24, like, sheets, figs):
             f'At 24 px, five drawings on the list of 41 draw as one shape, a page under a magnifier: '
             f'{lab("CL-023")}, CL-023; {lab("CL-028")}, CL-028; {lab("R-08")}, R-08; {lab("R-27")}, R-27; and '
             f'{lab("R-45")}, R-45. Never set two of them in one view at that size.',
+            'Three reform drawings draw as one shape too, two framed panels with a link between them: '
+            f'{lab("R-06")}, R-06; {lab("R-41")}, R-41; and {lab("R-44")}, R-44. Never set two of them in one view at '
+            '48 px or smaller.',
             'Bill and State house have no drawing. Set those words alone.'],
         'why': {'text': [
             'A likeness test compares two drawings at 24 px, where only their outlines are left, and scores the pair from '
@@ -1382,11 +1449,22 @@ def chapter(rows, reads24, like, sheets, figs):
             f'{fmt_like(close["likeness"])}, closer than {close["percentile"]:.0f} pairs in a hundred.',
             f'The five page-and-magnifier drawings score from {fmt_like(min(v24))} to {fmt_like(max(v24))} among '
             f'themselves, and {C.num(over)} of their 10 pairs score {flag:.2f} or more, so the test agrees with what a reader '
-            'sees at 24 px.'],
+            f'sees at 24 px. Their pixel fits, which a screen under 2x draws, part further, from '
+            f'{fmt_like(f24["fits_likeness_min"])} to {fmt_like(f24["fits_likeness_max"])}, but {lab("CL-023")} and '
+            f'{lab("CL-028")} still score {fmt_like(f24["fits_likeness_max"])}, so the rule holds on every screen.',
+            f'{lab("R-06")}, R-06, is the one of the three reform drawings on the list of 41. Its pixel fit scores '
+            + (f'{fmt_like(l48["R-06 fit"]["R-41"])} against the masters of R-41 and R-44 alike'
+               if fmt_like(l48["R-06 fit"]["R-41"]) == fmt_like(l48["R-06 fit"]["R-44"]) else
+               f'{fmt_like(l48["R-06 fit"]["R-41"])} against the master of R-41 and {fmt_like(l48["R-06 fit"]["R-44"])} '
+               'against R-44')
+            + f', and the three masters score {fmt_like(min(v48))} to {fmt_like(max(v48))} among themselves'
+            + (f', with R-06 and R-44 the closest pair in the set.' if top_is_max and top == 'R-06|R-44' else '.')
+            + ' At 48 px, the smallest size all three take, only the marks inside the panels tell them apart.'],
             'basis': 'Design judgment, measured with the likeness test'},
         'correct': {'specimen': 's-10-9-correct',
                     'caption': 'Six groups to check, each with what tells its drawings apart and their outline likeness '
-                               'at 24 px, then the five that draw as one shape at 24 px.'},
+                               'at 24 px, then the five that draw as one shape at 24 px, and the three reform drawings '
+                               'that do at 48 px and under.'},
         'failure': {'specimen': 's-10-9-failure',
                     'caption': f'<strong>Fails Rule 10.9.</strong> A card that asks readers to testify carries '
                                f'{lab("CL-005")}, its neighbor: a speaker at a lectern in front of residents. '
@@ -1396,9 +1474,12 @@ def chapter(rows, reads24, like, sheets, figs):
                                                 'one in a hundred'},
             {'label': 'One shape at 24 px', 'value': 'CL-023, CL-028, R-08, R-27 and R-45: at most one of them in a view '
                                                      'at 24 px'},
+            {'label': 'One shape at 48 px and under', 'value': 'R-06, R-41 and R-44: at most one of them in a view at '
+                                                              '48 px or smaller'},
             {'label': 'No drawing', 'value': 'Bill and State house: set the word alone'},
         ],
-        'files': ['work/build/scripts/phase-2/icon_likeness_check.js'],
+        'files': ['work/build/scripts/phase-2/icon_likeness_check.js',
+                  'work/build/assets/civic-line-24-fit/qa/20261110_Five-Look-Alikes-Fits-Likeness.json'],
         'related': ['11'],
         'builders': ['Run the likeness test on any new drawing before it goes to approval, with '
                      '<code>node work/build/scripts/phase-2/icon_likeness_check.js</code> and the folder that holds it.'],
@@ -1470,8 +1551,9 @@ def chapter(rows, reads24, like, sheets, figs):
             'A symbol here is one of the Civic Line drawings, our family of line drawings, each drawn in a square box. A '
             'topic symbol names the subject of a piece, such as Voting or Public records, and an atlas symbol names a '
             'variable or a reform in our systems atlas.',
-            'The library after Rule 10.1 shows all 124 drawings by category, each with its word and ID. The rules after '
-            'it say how a drawing is built, how small it may go, which word it carries and when it keeps its red.'],
+            f'The library after Rule 10.1 shows all {n_all} drawings by category, each with its word and ID. The rules '
+            'after it say how a drawing is built, how small it may go, which word it carries and when it keeps its red.'],
+        'opener': 's-10-opener',
         'groups': groups, 'rules': rules, 'extras': extras,
         'related_chapters': [
             {'chapter': '05', 'reason': 'One working red in each view, and the surfaces each edition serves.'},
@@ -1496,6 +1578,10 @@ def main():
     if a.no_draw and FIG_OUT.exists():
         old = json.loads(FIG_OUT.read_text())
         sheets, like = old['sheets'], old['likeness']
+        stale = [n for n, _, _ in CATEGORIES if sheets[n]['ids'] != [i['id'] for i in icons if i['sheet'] == n]]
+        if stale or like['masters'] != len(icons):
+            raise SystemExit(f'--no-draw: the stored sheets {stale} or the likeness run ({like["masters"]} drawings) no '
+                             f'longer match the {len(icons)} drawings in use; run once without --no-draw')
         lack = [p for p in wanted_pairs() if '|'.join(sorted(p)) not in like['pairs']]
         if lack:
             # a new group (D2-971): measure with the same functions and add only the missing pairs, so the figures
@@ -1513,13 +1599,15 @@ def main():
             sheets = draw_sheets(icons, black, tmp)
             like = measure_likeness(black, tmp)
     specimens(ctx, icons, rows, reads24, v7, sheets, like, figs)
-    ch = nb_tree(chapter(rows, reads24, like, sheets, figs))
+    ch = nb_tree(chapter(rows, reads24, like, sheets, figs, icons))
     B.check_chapter(ch)
     used = set()
     for r in ch['rules']:
         for kk in ('correct', 'failure', 'corrective'):
             if r.get(kk):
                 used.add(r[kk]['specimen'])
+    if ch.get('opener'):
+        used.add(ch['opener'])
     for x in ch.get('extras', []):
         used.add(x['specimen'])
     missing, unused = used - set(ctx.specs), set(ctx.specs) - used
@@ -1539,7 +1627,7 @@ def main():
         'about': 'Every figure chapter 10 prints, with how it was measured. Contrast is WCAG 2.x relative luminance on the '
                  'token values in tokens.json; line widths are each file\'s stroke_units in the inventory in use times the '
                  'size over 128; likeness is the engineer\'s icon_likeness_check.js run on the Black files in use.',
-        'built': '2026-11-10', 'sheets': sheets, 'likeness': like, 'figures': {**figs, **ctx.figures},
+        'built': '2026-11-11', 'sheets': sheets, 'likeness': like, 'figures': {**figs, **ctx.figures},
     }, indent=1, ensure_ascii=False, default=str) + '\n')
     print(f'chapter 10: {len(ch["rules"])} rules, {len(ctx.specs)} specimens, {len(sheets)} sheets '
           f'({sum(s["bytes"] for s in sheets.values()):,} bytes)')

@@ -64,7 +64,7 @@ def _thumb():
     except (KeyError, TypeError):
         return "[run promotion_c_identity.py feed, then build again]"
     return (f"On a social card the sign-off stands at {SIGN_OFF['social']} px. A feed shrinks the card to 500 px wide or less, "
-            "and some services then save the small copy as a JPEG, which keeps color in blocks of 2 by 2 pixels. On our card at "
+            "and some services then save the small copy as a JPEG that keeps color in blocks of 2 by 2 pixels. On our card at "
             f"360 px, that leaves the lever {_n(r48, 'red pixel')} at 48 px and {_n(r96, 'red pixel')} at {SIGN_OFF['social']} px.")
 
 
@@ -85,20 +85,28 @@ def _feed_dark(part):
     if not ok:
         return "[run promotion_c_identity.py feed, then build again]"
     if part == "rule":
-        return (f"On Charcoal, each of the eight light nodes keeps at least one pixel with every color channel over "
-                f"{fl['charcoal']}, and the lever keeps at least four red pixels, counted as on a light ground. On Prussian, "
-                f"where the lever is White as well, each of the nine nodes keeps a pixel with every channel over "
-                f"{fl['prussian']}. On a dark ground the links take the nodes' own color, so each floor sits halfway between "
-                "the brightest pixel the links alone leave in a node's square and the dimmest node's brightest pixel, "
-                "measured on our card at both widths")
+        if f.get("dark_unit") != "block of 2 by 2 pixels":
+            return "[run promotion_c_identity.py feed, then build again]"
+        return (f"On Charcoal, each of the eight light nodes keeps at least one block of 2 by 2 pixels with every color "
+                f"channel over {fl['charcoal']}, and the lever keeps at least four red pixels, counted as on a light ground. "
+                f"On Prussian, where the lever is White as well, each of the nine nodes keeps such a block with every channel "
+                f"over {fl['prussian']}. On a dark ground the links take the nodes' own color, and in a {SIGN_OFF['social']} px "
+                "sign-off they run 2 px wide, so one bright pixel can come from a link; a link shrunk under 1 px cannot fill a "
+                "block. Each floor sits halfway between the brightest block the links alone leave in a node's square and the "
+                "dimmest node's brightest block, measured on our card at both widths")
     if f.get("sign_off_px") != SIGN_OFF["social"] or not all(f["white"][w]["passes"] for w in ("at_500", "at_360")):
         return "[run promotion_c_identity.py feed, then build again]"
-    wh, a, b = f["white"], c["at_500"], c["at_360"]
-    return (f"Drawn on White, the same card keeps {wh['at_500']['nodes_kept']} of 8 nodes and {wh['at_500']['lever_red_px']} red "
-            f"pixels at 500 px, and {wh['at_360']['nodes_kept']} and {wh['at_360']['lever_red_px']} at 360 px. On Charcoal it keeps "
-            f"{a['nodes_kept']} of 8 nodes and {a['lever_red_px']} red pixels at 500 px, and {b['nodes_kept']} and "
-            f"{b['lever_red_px']} at 360 px. On Prussian, with the White lever counted as a ninth node, it keeps "
-            f"{p['at_500']['nodes_kept']} of 9 at 500 px and {p['at_360']['nodes_kept']} of 9 at 360 px")
+    def fig(g):
+        x, y = f[g]["at_500"], f[g]["at_360"]
+        return (x["nodes_kept"], x["lever_red_px"], y["nodes_kept"], y["lever_red_px"])
+
+    def said(n5, r5, n3, r3):
+        return f"{n5} of 8 nodes and {r5} red pixels at 500 px, and {n3} and {r3} at 360 px"
+    pr = (f"On Prussian, with the White lever counted as a ninth node, it keeps {p['at_500']['nodes_kept']} of 9 at 500 px and "
+          f"{p['at_360']['nodes_kept']} of 9 at 360 px")
+    if fig("white") == fig("charcoal"):          # one sentence when the two grounds give the same figures
+        return f"Drawn on White or on Charcoal, the same card keeps {said(*fig('white'))}. " + pr
+    return (f"Drawn on White, the same card keeps {said(*fig('white'))}. On Charcoal it keeps {said(*fig('charcoal'))}. " + pr)
 
 
 _B17 = _END.get("17", {})
@@ -199,7 +207,7 @@ CH03 = {
           files=[A + "lockups/20261107_S1-Stacked-Master.svg", A + "lockups/20261107_S1-Stacked-Master-24px.svg", A + "lockups/20261107_S1-Stacked-Master-16px.svg",
                  A + L3["masthead"], A + L3["print"], A + "lockups/20261028_L8-Monogram-Master.svg"],
           related=["04", "07", "27"],
-          builders="Check the lockup's minimum before you place it. When the space falls under that minimum, switch to the lockup Rule 03.4's table names. S1 replaced the earlier stacked lockup, L2, in November 2026, so retire L2 from your templates; S1's files come in a Charcoal edition with its colors written in, for light grounds, and a White edition in <code>prussian/</code>. L4 to L7 have no master files of their own yet: build them from the wordmark, monogram and tagline masters on the layouts from our brand guide's fifth edition, as the sheet shows, or ask the editor for a file. Leave out the four dots that edition drew under L6's tagline, and move the wordmark and tagline down 14.7 of L6's 300 units, 9.3 px at 884 px, so the span from the wordmark's cap line to the tagline's baseline sits centered on the strip, as the lockmark does. L3's masthead master serves the 282 px masthead on screen. For print and any other width, place L3's print master, which sets the lockmark at 2.18 cap heights, as the masthead does, so L3 keeps one proportion on screen and on paper. The earlier L3 master, with its lockmark at 2.4 cap heights, stays in the folder as the record."),
+          builders="Check the lockup's minimum before you place it. When the space falls under that minimum, switch to the lockup Rule 03.4's table names. S1 replaced the earlier stacked lockup, L2, in November 2026, so retire L2 from your templates; S1's files come in a Charcoal edition with its colors written in, for light grounds, and a White edition in <code>prussian/</code>. L4 to L7 have no master files of their own yet: build them from the wordmark, monogram and tagline masters on the layouts from our brand guide's fifth edition, as the sheet shows, or ask the editor for a file. Leave out the four dots that edition drew under L6's tagline, and move the wordmark and tagline down 14.7 of L6's 300 units, 9.3 px at 884 px, so the span from the wordmark's cap line to the tagline's baseline sits centered on the strip, as the lockmark does. L3's masthead master serves the 282 px masthead on screen. For print and any other width, place L3's print master, which sets the lockmark at 2.18 cap heights, the masthead's proportion. The earlier L3 master, with its lockmark at 2.4 cap heights, stays in the folder as the record."),
         R("03.3", "Keep one cap height of clear space on every side.",
           "Leave 1.0x of open space around the lockup's outer edge, with its tagline and lockmark inside that edge. Text, rules, image edges and other logos all stay outside it. In a partnership lockup the hairline and the partner's logo belong to the lockup, so the clear space runs around all three (Rule 03.8). Over a photograph, set the lockup on a solid Newsprint or Charcoal panel with the same space inside the panel.",
           "Open space lets the eye find the name before it reads anything else, and it keeps a headline or a partner's logo from reading as part of our mark. A measure of one cap height grows with the mark, so the rule holds at every size.",
@@ -436,7 +444,7 @@ CH08 = {
     ],
     "rules": [
         R("08.1", "Draw the lockmark from its master for its size, and keep its drawing fixed.",
-          "The lockmark is a three by three grid of nodes joined around its edge and through its center, with the lever in signature red at bottom right. It has four masters. Place the 16 px master from 16 to 23 px, the 24 px master from 24 to 47 px, the 48 px master at 48 px in the masthead and on a cover or poster and at exactly twice that, 96 px, in a social card's sign-off, and the display master, drawn for our brand guide's fifth edition, at every other size from 49 px. Each master keeps the nine nodes in the same order, their links and the lever at bottom right. The 16, 24 and 48 px masters sit on the pixel grid and draw the nodes and the lever heavier than the display master, so the drawing holds at the sizes each one serves.",
+          "The lockmark is a three by three grid of nodes joined around its edge and through its center, with the lever in signature red at bottom right. It has four masters. Place the 16 px master from 16 to 23 px, the 24 px master from 24 to 47 px, the 48 px master at 48 px in the masthead and on covers and posters, and at exactly twice that, 96 px, in a social card's sign-off, and the display master, drawn for our brand guide's fifth edition, at every other size from 49 px. Each master keeps the nine nodes in the same order, their links and the lever at bottom right. The 16, 24 and 48 px masters sit on the pixel grid and draw the nodes and the lever heavier than the display master, so the drawing holds at the sizes each one serves.",
           "At small sizes our fifth edition's single master lost its shape: at 24 px only 5 percent of its ink was solid, and at 16 px the lever became one pink pixel. The small masters set every node and link on whole pixels and draw the lever one size up, so it still reads as the place where one change moves the rest. At 48 px the display master covers 15 percent of its field with ink, against 42 percent for the 24 px master at 24 px, so the masthead and the sign-off take a 48 px master drawn the same way, which covers 22 percent. In the 24 and 48 px masters each node and the lever is one outline on the pixel grid, so between their sizes the nodes stay whole. The 48 px master serves 48 px and exactly twice that, 96 px, where each of its pixels becomes a block of 2 by 2. At any other size its edges fall between pixels and soften.",
           "Our measurements, October and November 2026; the 48 px master, the rebuilt 24 and 48 px files and the 96 px sign-off on social cards approved by our founder and editor in November 2026",
           "The lockmark's construction at 240 px, then its four masters at true size: the display master at 96 px and the 48, 24 and 16 px masters. Last, the 48 px master on Charcoal and on Prussian.",
@@ -453,7 +461,7 @@ CH08 = {
           related=["03", "05"],
           builders="The lockmark files read <code>--link</code> for the links and <code>--lever</code> for the lever. Leave the lever on the signature token; on Prussian, place the White file from <code>prussian/</code>. Place the 48 px master on whole pixels at exactly 48 px, the size its pixel grid was drawn for, or at exactly 96 px in a social card's sign-off. The 24 and 48 px files this rule lists draw each node and the lever as one outline; the earlier files, one rect per pixel row, stay in the folder only as the record. The display master keeps our fifth edition's drawing, with its links held at 1 px at every size."),
         R("08.2", "Place the lockmark only in its four places, once in a view.",
-          "The lockmark signs four places, at the size each one sets: the masthead, where L3 sets it at 48 px beside the wordmark (Rule 03.6); the page header of a report or slide page, 24 px beside the section label; the footer, 24 px beside the tagline or 16 px beside a chart's source line; and the sign-off at the bottom right, 96 px on a social card and 48 px on a cover or poster. Each place draws the master made for its size, and a social card draws the 48 px master at exactly twice its size, so every pixel still lands whole. A view shows the lockmark once, so when a masthead and a footer share a view, the footer keeps it.",
+          "The lockmark signs four places, at the size each one sets: the masthead, where L3 sets it at 48 px beside the wordmark (Rule 03.6); the page header of a report or slide page, 24 px beside the section label; the footer, 24 px beside the tagline or 16 px beside a chart's source line; and the sign-off at the bottom right, 96 px on a social card and 48 px on a cover or poster. Each place draws the master made for its size, and a social card draws the 48 px master at exactly twice its size, so its nodes, links and lever still land on whole pixels. A view shows the lockmark once, so when a masthead and a footer share a view, the footer keeps it.",
           "A signature works by turning up in the same place at the same size, so a reader finds it without looking. Because each place draws a master on whole pixels, at the size it was made for or at exactly twice that, the four places read as one mark at the size each one sets. " + _thumb() + " Used as a bullet or scattered as decoration, the lockmark stops signing the page.",
           "Design judgment, approved by our founder and editor in November 2026",
           "The four places at true size: a 768 px site masthead with L3, its lockmark at 48 px; a report page header with the lockmark at 24 px beside the section label; a footer with the lockmark at 24 px beside the tagline, and a chart's footer with it at 16 px beside the source line; and the bottom-right corner of a 1080 px social card with the lockmark at 96 px inside the 72 px margin.",

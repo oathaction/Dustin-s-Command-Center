@@ -12,7 +12,7 @@
   {
    "id": "08.1",
    "title": "Draw the lockmark from its master for its size, and keep its drawing fixed.",
-   "rule": "The lockmark is a three by three grid of nodes joined around its edge and through its center, with the lever in signature red at bottom right. It has four masters. Place the 16 px master from 16 to 23 px, the 24 px master from 24 to 47 px, the 48 px master at 48 px in the masthead and on a cover or poster and at exactly twice that, 96 px, in a social card’s sign-off, and the display master, drawn for our brand guide’s fifth edition, at every other size from 49 px. Each master keeps the nine nodes in the same order, their links and the lever at bottom right. The 16, 24 and 48 px masters sit on the pixel grid and draw the nodes and the lever heavier than the display master, so the drawing holds at the sizes each one serves.",
+   "rule": "The lockmark is a three by three grid of nodes joined around its edge and through its center, with the lever in signature red at bottom right. It has four masters. Place the 16 px master from 16 to 23 px, the 24 px master from 24 to 47 px, the 48 px master at 48 px in the masthead and on covers and posters, and at exactly twice that, 96 px, in a social card’s sign-off, and the display master, drawn for our brand guide’s fifth edition, at every other size from 49 px. Each master keeps the nine nodes in the same order, their links and the lever at bottom right. The 16, 24 and 48 px masters sit on the pixel grid and draw the nodes and the lever heavier than the display master, so the drawing holds at the sizes each one serves.",
    "tokens": [
     "oa.color.identity.signature.onNewsprint",
     "oa.color.palette.stone"
@@ -88,12 +88,12 @@
   {
    "id": "08.2",
    "title": "Place the lockmark only in its four places, once in a view.",
-   "rule": "The lockmark signs four places, at the size each one sets: the masthead, where L3 sets it at 48 px beside the wordmark (Rule 03.6); the page header of a report or slide page, 24 px beside the section label; the footer, 24 px beside the tagline or 16 px beside a chart’s source line; and the sign-off at the bottom right, 96 px on a social card and 48 px on a cover or poster. Each place draws the master made for its size, and a social card draws the 48 px master at exactly twice its size, so every pixel still lands whole. A view shows the lockmark once, so when a masthead and a footer share a view, the footer keeps it.",
+   "rule": "The lockmark signs four places, at the size each one sets: the masthead, where L3 sets it at 48 px beside the wordmark (Rule 03.6); the page header of a report or slide page, 24 px beside the section label; the footer, 24 px beside the tagline or 16 px beside a chart’s source line; and the sign-off at the bottom right, 96 px on a social card and 48 px on a cover or poster. Each place draws the master made for its size, and a social card draws the 48 px master at exactly twice its size, so its nodes, links and lever still land on whole pixels. A view shows the lockmark once, so when a masthead and a footer share a view, the footer keeps it.",
    "tokens": [
     "oa.color.identity.signature.onNewsprint"
    ],
    "why": {
-    "text": "A signature works by turning up in the same place at the same size, so a reader finds it without looking. Because each place draws a master on whole pixels, at the size it was made for or at exactly twice that, the four places read as one mark at the size each one sets. [run promotion_c_identity.py feed, then build again] Used as a bullet or scattered as decoration, the lockmark stops signing the page.",
+    "text": "A signature works by turning up in the same place at the same size, so a reader finds it without looking. Because each place draws a master on whole pixels, at the size it was made for or at exactly twice that, the four places read as one mark at the size each one sets. On a social card the sign-off stands at 96 px. A feed shrinks the card to 500 px wide or less, and some services then save the small copy as a JPEG that keeps color in blocks of 2 by 2 pixels. On our card at 360 px, that leaves the lever no red pixels at 48 px and 17 red pixels at 96 px. Used as a bullet or scattered as decoration, the lockmark stops signing the page.",
     "basis": "Design judgment, approved by our founder and editor in November 2026"
    },
    "correct": {
@@ -127,11 +127,11 @@
     },
     {
      "label": "Feed test, dark card",
-     "value": "On Charcoal, each of the eight light nodes keeps at least one pixel with every color channel over 155, and the lever keeps at least four red pixels, counted as on a light ground. On Prussian, where the lever is White as well, each of the nine nodes keeps a pixel with every channel over 190. On a dark ground the links take the nodes’ own color, so each floor sits halfway between the brightest pixel the links alone leave in a node’s square and the dimmest node’s brightest pixel, measured on our card at both widths"
+     "value": "On Charcoal, each of the eight light nodes keeps at least one block of 2 by 2 pixels with every color channel over 155, and the lever keeps at least four red pixels, counted as on a light ground. On Prussian, where the lever is White as well, each of the nine nodes keeps such a block with every channel over 190. On a dark ground the links take the nodes’ own color, and in a 96 px sign-off they run 2 px wide, so one bright pixel can come from a link; a link shrunk under 1 px cannot fill a block. Each floor sits halfway between the brightest block the links alone leave in a node’s square and the dimmest node’s brightest block, measured on our card at both widths"
     },
     {
      "label": "Feed test, our card",
-     "value": "[run promotion_c_identity.py feed after the build, then build again]. [run promotion_c_identity.py feed, then build again]"
+     "value": "The link-preview card in the identity proofs passes with its 96 px sign-off. At 500 px wide, its lockmark keeps 8 of 8 nodes and 52 red pixels; at 360 px, 8 of 8 nodes and 22 red pixels. Drawn on White or on Charcoal, the same card keeps 8 of 8 nodes and 48 red pixels at 500 px, and 8 and 20 at 360 px. On Prussian, with the White lever counted as a ninth node, it keeps 9 of 9 at 500 px and 9 of 9 at 360 px"
     },
     {
      "label": "Once in a view",

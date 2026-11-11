@@ -9,10 +9,11 @@
 .oa-link:hover { text-decoration-thickness: var(--oa-border-width-underline-hover) }
 .oa-link:focus-visible, .oa-link-skip:focus-visible, .oa-link-main:focus-visible, .oa-link-k:focus-visible {
   outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
-/* The mark for another site stays on the line with the link's last word, and only that word (F-3) */
-.oa-link-last { white-space: nowrap }
+/* The mark for another site stays on the line with the link's last word, and only that word (F-3): the two sit in
+   one inline block, which never breaks inside */
+.oa-link-last { display: inline-block }
 .oa-link-mark { display: inline-block; width: var(--oa-size-icon-small); height: var(--oa-size-icon-small); margin-left: var(--oa-space-050); vertical-align: -.125em }
-.oa-link-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
+.oa-link-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%) }
 
 /* A list of links: each 44 px tall; the page you are on is semibold with a 2 px underline */
 .oa-link-list { margin: 0; padding: 0; list-style: none; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
@@ -29,7 +30,7 @@
 .oa-link-skip { position: absolute; top: 0; left: 0; z-index: 1; padding: var(--oa-space-100) var(--oa-space-200);
   background: var(--oa-color-surface); color: var(--oa-color-text-primary); font: var(--oa-type-ui);
   border: var(--oa-border-width-rule) solid var(--oa-color-border-strong); text-decoration: underline; text-underline-offset: .2em }
-.oa-link-skip:not(:focus) { width: 1px; height: 1px; padding: 0; border: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
+.oa-link-skip:not(:focus) { width: 1px; height: 1px; padding: 0; border: 0; overflow: hidden; clip-path: inset(50%) }
 .oa-link-main { margin-top: var(--oa-space-300); padding-top: var(--oa-space-050) }
 
 @media (forced-colors: active) {

@@ -2453,3 +2453,20 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 | D2-1268 | Chapter 18's 24 code sets take fixed names, `c-18-button` to `c-18-id-chip`, in the inventory's order, set by the main session before either maker starts | The accessibility lead's keys files and the component engineer's code are written at the same time and must meet |
 | D2-1269 | A second engineer instance, the component engineer, writes chapter 18's code sets in `work/build/guide/code/` only; the guide engineer keeps `guide_build.py`, `guide_check.js` and the shell | 24 sets are the round's largest piece, and one owner per build file keeps two makers from writing it at once |
 | D2-1270 | Chapter 18 starts now with the accessibility lead and the component engineer, beside the promotion | Its rule numbers and its citations of 17 and 26 are fixed in the round 1 brief (D2-1266) |
+
+### Creative director, Rule 12.4 (`20261111_CD-Review-Of-Rule-12-4.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1271 | I judged the page as built: one pattern, the hinge arcs. I scored the hinge rules from the round 2 notes and a reconstruction | D2-989 took the rules off the page; D2-1114 still says two patterns |
+| D2-1272 | The comparison covers clone the built cover inside its own specimen scope and add the crop of B at `s-04-8-correct`'s proportions | That is a fair test against the device that owns the same corner |
+| D2-1273 | My test arcs follow my reading of "the area", starting 24 px under the words | The rule leaves the area undefined, so I report the gap and leave the choice to the maker |
+| D2-1274 | The 200 percent text test sets a cover in the type tokens' rem sizes with the root at 200 percent | The plate is a fixed-size artboard in px and cannot reflow |
+| D2-1275 | I recommend no new pattern for board C, and the rewrite instead | Each owned shape has a rule a repeat breaks (Rules 04.2 and 08.3, D2-900) |
+| D2-1276 | Rule 12.4 keeps its number, and chapter 12 keeps its title | Rules 12.5 to 12.9 stay put, and a reader who looks for patterns finds the answer at 12.4 |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1277 | Rule 12.4 goes to board C as a named question: retire the hinge arcs and rewrite the rule as the creative director drafts it (recommended), or keep them with its five fixes. The identity designer builds the rewrite beside the current rule once its promotion pass and Rule 17.6 are done | Retiring overrides Gate 1's approval of patterns (Y6), so it is Dustin's call; D2-1114 |

@@ -483,7 +483,7 @@ const job = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
   fs.writeFileSync(path.join(job.out, 'plates.json'), JSON.stringify(res, null, 1));
 })();
 """
-PLATES = ["s-08-2-correct", "s-proofs-social", "s-01-21-correct"]
+PLATES = ["s-08-2-correct", "s-proofs-social", "s-03-minimums", "s-01-21-correct"]
 RULES = ["03-2", "03-4", "03-6", "08-1", "08-2"]
 
 

@@ -16,7 +16,8 @@
 //
 // It compares each new drawing against the Civic Line masters (black editions) and against each other, and ranks every
 // likeness as a percentile of the pairs of the masters themselves. The masters are the set in use by default (D2-748,
-// promotion, November 10, 2026): the 124 drawings in civic-line-v6/, 7,626 pairs. --masters october reads the 122
+// promotion, November 10, 2026): the drawings in civic-line-v6/, one per inventory row (125 since CL-075 Housing joined,
+// DR-207, promotion C, November 11, 2026: 7,750 pairs). --masters october reads the 122
 // October masters (7,381 pairs), which Board 6 measured; the self-test runs both, and proves the port on October's.
 //   flag  (default the 99th percentile): as alike as the closest one pair in a hundred among the masters. These are
 //         listed as look-alikes, and the check exits 1.
@@ -302,9 +303,12 @@ async function selfTestSet(key, say) {
     for (const s of b6.sets) for (const p of s.pairs) { const v = r.masterPair[`${p.a}|${p.b}`] ?? r.masterPair[`${p.b}|${p.a}`]; worst = Math.max(worst, Math.abs(v - p.likeness)); n++; }
     say(worst <= 0.002, `Board 6's ${n} set pairs reproduced within ${worst.toFixed(4)} (allowed 0.002)`);
   } else {
-    // 1. The set in use: every drawing read, each pair once.
+    // 1. The set in use: every drawing read, each pair once. The count follows the set in use (promotion C): one inventory
+    // row per drawing, one black file per row, and nothing in black/ the inventory leaves out.
     const k = INV.icons.length;
-    say(k === 124 && d.pairs === k * (k - 1) / 2, `masters: ${k} drawings, ${d.pairs} pairs; p50 ${d.p50}, p95 ${d.p95}, p99 ${d.p99}, closest ${d.max}`);
+    const files = fs.readdirSync(path.join(CL, 'black')).filter((f) => /-Black\.svg$/.test(f)).length;
+    say(k === files && new Set(INV.icons.map((i) => i.id)).size === k && d.pairs === k * (k - 1) / 2,
+      `masters: ${k} drawings in the inventory, ${files} black files, ${d.pairs} pairs; p50 ${d.p50}, p95 ${d.p95}, p99 ${d.p99}, closest ${d.max}`);
   }
   // 2. Plants.
   const flaggedWith = (name, id) => r.flagged.some((x) => x.a === name && x.b.startsWith(id + ' '));
