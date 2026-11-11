@@ -521,7 +521,7 @@ def p02():
     key = [(1, 'Height', '44 px tall and at least 44 px wide'),
            (2, 'On: check and bold word', 'The selected check, 24 px, before the word, and the word in bold'),
            (3, 'On: 2 px edge', 'In the strong border color; the fill stays the ground'),
-           (4, 'Off: word', 'The same word in regular weight, with no check'),
+           (4, 'Off: word', 'The same word at 600, the weight every control’s word takes, with no check'),
            (5, 'Off: 1 px edge', 'The chip’s edge when it is off')]
     return ['toggle'], r, key, 'a chip, on and off', '', True, ''
 
@@ -590,7 +590,7 @@ def p05():
     at_word(links[1], 4, 'up')
     pin(q(text, 'oa-link-last'), 5, 'dn')
     key = [(1, 'Skip link', 'Hidden until the Tab key reaches it first on a page, then shown at the top'),
-           (2, 'Words', 'Say where the link goes, and work read on their own'),
+           (2, 'Words', 'Say where the link goes, and make sense read on their own'),
            (3, 'Underline', '1 px at rest, 2 px under a pointer, as here'),
            (4, 'Link to another site', 'Its name ends with the hidden words “(another site)” for a screen reader'),
            (5, 'Mark', 'The 16 px mark for another site, after the last word, which it never leaves')]
@@ -734,6 +734,10 @@ def p10():
 def p11():
     r = D('scroll-region')
     hint, frame = q(r, 'oa-scroll-hint'), q(r, 'oa-scroll-frame')
+    # the ring sits inside the frame where the code sets a negative offset (D2-1475), around it otherwise
+    ring = re.search(r'\.oa-scroll-frame:focus-visible\s*\{[^}]*outline-offset:\s*([^;}]+)',
+                     (CODE / 'c-18-scroll-region.css').read_text())
+    inside = bool(ring) and ring.group(1).strip().startswith(('-', 'calc(-1', 'calc(0px -', 'calc(-'))
     hint.a.pop('hidden', None)
     focus(frame)
     pin(q(r, 'oa-scroll-k'), 1)
@@ -745,7 +749,8 @@ def p11():
            (2, 'Hint', 'Shown only while the content is wider than the frame'),
            (3, 'Frame', 'A hairline edge; the content scrolls inside it, so the page never does'),
            (4, 'Wide content', 'Its own width, cut by the frame’s edge'),
-           (5, 'Focus ring', 'The frame is a Tab stop only while it scrolls, and the arrow keys move it')]
+           (5, 'Focus ring', ('Drawn inside the frame’s edge' if inside else 'Drawn around the frame')
+            + '; the frame is a Tab stop only while it scrolls, and the arrow keys move it')]
     return ['scroll-region'], r, key, 'a scroll region', '', False, '.oa-scroll-frame{overflow:hidden}'
 
 
@@ -1087,7 +1092,7 @@ def p24():
            (2, 'Code', 'The atlas ID, in tabular figures'),
            (3, 'Edge', 'A hairline in the strong border color'),
            (4, 'Target', 'As a link, at least 24 px tall'),
-           (5, 'As a link', 'It opens the record; its words underline under a pointer, as here')]
+           (5, 'As a link', 'It opens the record; its words keep a 1 px underline, 2 px under a pointer, as here')]
     return ['id-chip'], r, key, 'typed ID chips', '', False, '.oa-chip-row{padding:20px 0 24px}'
 
 

@@ -651,7 +651,7 @@
       "title": "Draw pressed, checked and current choices one way: a check, bold words and a 2 px edge.",
       "rule": [
         "A toggle that is pressed, a choice that is checked and the current choice in a set all draw one look: the selected check before the word, the word in bold and a 2 px edge in the strong border color where the others keep 1 px. The look is the same on Newsprint and Charcoal and stays under forced colors, since the check, the weight and the edge are shapes.",
-        "Links and lists of places keep their own marks for the current place. A link to the page a reader is on takes a 2 px underline, and a rail or a list takes the selected band with its 4 px bar."
+        "Links and lists of places keep their own marks for the current place. A link to the page a reader is on takes bold words, with a 2 px underline in a masthead and none at the end of a breadcrumb, and a rail or a list takes the selected band, its 4 px bar and bold words."
       ],
       "tokens": [
         "oa.border.width.rule",
@@ -698,7 +698,7 @@
         },
         {
           "label": "Current place",
-          "value": "A link: 2 px underline; a rail or list: the selected band and its 4 px bar",
+          "value": "A link: bold words, with a 2 px underline in a masthead; a rail or list: the selected band, its 4 px bar and bold words",
           "token": "oa.color.state.selected.bar.onNewsprint"
         }
       ],

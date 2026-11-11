@@ -161,8 +161,8 @@ INTRO = [
     'gives one component as code to copy, drawn live in the light theme on Newsprint and in the dark theme on Charcoal, '
     'and a table of its states, its keys, its name, its target size and what a screen reader hears when it changes.',
     'The code reads only tokens.css, the file that holds every color, size and type style as a named value, so one copy '
-    'follows either theme. What a screen reader hears is what the code hands it, the name, the role, the state and any '
-    'status line, and each screen reader words these its own way. How each state looks and moves comes from chapter 17.',
+    'follows either theme. A screen reader hears the name, role, state and status line the code hands it, and each '
+    'screen reader words these its own way. How each state looks and moves comes from chapter 17.',
 ]
 
 GROUPS = [
@@ -199,10 +199,10 @@ SOURCES = [
     'November 10, 2026. The success criteria each rule’s basis names.',
     'Source: W3C Web Accessibility Initiative, “ARIA Authoring Practices Guide”, the pattern pages each rule names and '
     'the Disclosure Navigation Menu example, no page dates, retrieved November 10, 2026. The Practices show one tested '
-    'way to build each control; WCAG sets what must hold.',
+    'way to build each control, and WCAG sets what each must meet.',
     'Source: W3C, “Accessible Rich Internet Applications (WAI-ARIA) 1.2”, W3C Recommendation, June 6, 2023, the status '
     'and alert roles and the aria-live property, retrieved November 10, 2026. Behind Rules 18.18 and 18.20.',
-    'Source: MDN Web Docs, browser compatibility data, version 8.1.8, built November 2, 2026, read November 11, 2026. '
+    'Source: MDN Web Docs, browser compatibility data, version 8.1.8, built November 2, 2026, retrieved November 11, 2026. '
     'Each figure is the first version of a browser with full support, with no flag, prefix or partial mark. Every '
     '“Browser support” line in this chapter comes from it.',
     'Sources: WHATWG, “HTML Living Standard”, the sections on web storage and on scripts that block rendering, and MDN '
@@ -249,15 +249,15 @@ rule(n=1, set='c-18-button', name='Buttons',
            '05.3 gives the view its working red, and every other button is quiet: its word in ink inside a 1 px edge. A '
            'utility icon sits beside the word (Rule 11.11).',
            'When an action cannot run yet, its button stays in place and keeps its focus. It carries aria-disabled, draws '
-           'a dashed edge and points to a line beside it that says why and what makes it work, such as “Fill in your email '
+           'a dashed edge and points to a line under it that says why and what makes it work, such as “Fill in your email '
            'to send.” While a send runs, its word reads “Sending” and a second press does nothing. While an error on the '
            'page holds the red, the ask steps down to the primary look (Rule 11.16).'],
      tokens=['--oa-color-action-primary-fill', '--oa-color-action-primary-fill-hover', '--oa-color-action-primary-label',
              '--oa-color-action-ask-fill', '--oa-color-action-ask-label', '--oa-component-button-ask-keyline',
              '--oa-color-state-disabled-text', '--oa-color-state-disabled-edge', 'oa.size.target.touch'],
      why=['A native button gives every reader the Tab key, Enter, Space and the role “button” with no script. The disabled '
-          'attribute would take the button out of the Tab order and hide its reason with it, where aria-disabled keeps '
-          'both in reach. An underline on hover and a dashed edge when unavailable carry each state in a shape as well as '
+          'attribute would take the button out of the Tab order and hide its reason with it, so an unavailable button '
+          'carries aria-disabled, which keeps both in reach. An underline on hover and a dashed edge when unavailable carry each state in a shape as well as '
           'a color.'],
      basis='WCAG 2.2 SC 1.4.1, 2.1.1, 2.5.8 and 4.1.2; APG Button pattern',
      anatomy='The parts of a button: its word, the 24 px utility icon beside it, its fill or 1 px edge, the 44 px '
@@ -389,8 +389,8 @@ rule(n=3, set='c-18-choice', name='Choice',
                 + bs('focus-visible')),
      ),
      related=['17', '11'],
-     builders=['Hide the native radio with a visually hidden style that keeps it focusable, never with '
-               '<code>display: none</code>, and draw the ring on its segment from '
+     builders=['Hide the native radio with a visually hidden style that keeps it focusable, since '
+               '<code>display: none</code> would take it out of the Tab order, and draw the ring on its segment from '
                '<code>input:focus-visible + span</code>.'],
      failure=dict(
          caption='<strong>Fails Rule 18.3.</strong> Nothing names the choice, and the chosen size differs only by its '
@@ -486,7 +486,7 @@ rule(n=5, set='c-18-link', name='Links',
                   'where it must open one.'),
          (L_HEAR, 'Its words and its role, link, with “visited” once followed and “current page” where aria-current says '
                   'so.'),
-         (L_TGT, 'In running text, the line itself, which WCAG 2.2 SC 2.5.8 excepts; in a list, 44 px tall (Rule '
+         (L_TGT, 'In running text, the line itself, which WCAG 2.2 SC 2.5.8 exempts; in a list, 44 px tall (Rule '
                  '11.13).', 'oa.size.target.minimum'),
          (L_FC, 'Links take LinkText and keep their underline; the mark draws in currentColor.'),
          (L_TH, 'A link takes the text’s ink, Charcoal on Newsprint and Newsprint on Charcoal.'),
@@ -509,7 +509,7 @@ rule(n=5, set='c-18-link', name='Links',
 rule(n=6, set='c-18-masthead', name='Masthead and phone menu',
      title='Give every page one masthead, with its parts in a named navigation and a phone menu that holds focus.',
      rule=['The masthead holds the product’s name, which links home, and its parts in a navigation landmark named for what '
-           'it holds, such as “Parts”. The link to the part the reader is in carries <code>aria-current="page"</code> and a 2 px '
+           'it holds, such as “Parts of the site”. The link to the part the reader is in carries <code>aria-current="page"</code>, bold words and a 2 px '
            'underline. When the parts no longer fit on one line, they move behind a Menu button, its three bars beside the '
            'word Menu, which opens them in a native modal dialog.',
            'The open menu covers the page and holds focus. Focus moves to the current part’s link, the Tab key reaches '
@@ -535,12 +535,12 @@ rule(n=6, set='c-18-masthead', name='Masthead and phone menu',
          (L_PAT, 'Landmarks, banner and navigation; APG Dialog (Modal) for the phone menu; Disclosure for its rows. A '
                  'dropdown that leaves the page in view follows APG’s Disclosure Navigation Menu example, and no part of '
                  'the masthead takes the menu role.'),
-         (L_ST, 'Current part: a 2 px underline and aria-current. Hover: a 2 px underline. Menu closed or open, with '
+         (L_ST, 'Current part: bold words, a 2 px underline and aria-current. Hover: a 1 px underline. Menu closed or open, with '
                 'aria-expanded. Rows closed or open, the chevron down or up. Focus: the ring.'),
          (L_KEY, 'Tab through the home link and the parts. On a phone, Enter or Space on Menu opens the menu with focus on '
                  'the current part’s link; Tab and Shift+Tab move through the menu and never reach the page behind it; Escape '
                  'or Close the menu shuts it, and focus returns to Menu.'),
-         (L_NAME, 'The navigation’s label, such as “Parts”; “Menu”, with <code>aria-haspopup="dialog"</code>; the dialog named by its '
+         (L_NAME, 'The navigation’s label, such as “Parts of the site”; “Menu”, with <code>aria-haspopup="dialog"</code>; the dialog named by its '
                   'title; “Close the menu”.'),
          (L_HEAR, 'The navigation and its name on entry; “current page” on the current part; on Menu, “collapsed” or '
                   '“expanded”, and once it opens, the dialog’s name.'),
@@ -568,8 +568,9 @@ rule(n=7, set='c-18-location', name='Location list',
      rule=['A list of places in a product, such as a chapter rail, an “In this chapter” list or a breadcrumb, marks the '
            'reader’s place in two ways at once. The link carries aria-current: “page” for the page itself, “location” for '
            'a part of a long page and “step” for a step in a process. A list beside the text marks it with the selected '
-           'band, a 4 px bar at its left edge and bold words; a short list in a line, such as a breadcrumb, sets the '
-           'current place in bold words while the places before it stay links.',
+           'band, a 4 px bar at its left edge and bold words. A short list in a line, such as a breadcrumb, ends on the '
+           'current page as a link in bold words, with aria-current and no underline, after the links to the places '
+           'before it.',
            'A list that follows the reader down a long page moves its mark as each part comes into view, and leaves focus '
            'and its own scroll where they are. A breadcrumb sits in a navigation landmark named “Breadcrumb”, with its '
            'places in an ordered list and the current page last.'],
@@ -681,12 +682,12 @@ rule(n=9, set='c-18-tabs', name='Tabs',
      specs=specs(
          (L_PAT, 'APG Tabs, with each view shown as its tab takes focus, since every panel is already in the page.'),
          (L_ST, 'Selected: the 4 px bar as a bottom border and bold words, with <code>aria-selected="true"</code>. Not selected: '
-                'regular words and no bar. Hover: the words underline. Focus: the ring.'),
+                'words at 600, the weight every control’s word takes, and no bar. Hover: the words underline. Focus: the ring.'),
          (L_KEY, 'Tab enters at the selected tab. Left and Right Arrow move and select, wrapping at the ends. Home and End '
                  'go to the first and the last. Tab moves on to the panel.'),
          (L_NAME, 'The tab list’s label; each tab its words; each panel named by its tab through aria-labelledby.'),
          (L_HEAR, 'The tab list and its name on entry; each tab’s words, “tab”, “selected” and its place, such as 2 of '
-                  '3.'),
+                  '4.'),
          (L_TGT, 'Each tab 44 px tall.', 'oa.size.target.touch'),
          (L_FC, 'The bar, a border, and the bold words hold in the system’s colors.'),
          (L_TH, 'The bar in --oa-color-state-selected-bar: Charcoal on Newsprint, Newsprint on Charcoal.'),
@@ -783,7 +784,7 @@ rule(n=11, set='c-18-scroll-region', name='Scroll region',
          (L_BR, bs('resize-observer') + ' It tells the script when the frame starts or stops overflowing.'),
      ),
      related=['07', '19'],
-     builders=['Draw the ring inside the frame with <code>outline-offset: -2px</code> plus the ring’s width, and set '
+     builders=['Draw the ring inside the frame with <code>outline-offset: -4px</code>, the ring’s 2 px and its 2 px gap, and set '
                '<code>tabindex</code>, the name and the hint together from one check of '
                '<code>scrollWidth > clientWidth</code>.'],
      failure=dict(
@@ -940,7 +941,7 @@ rule(n=15, set='c-18-search', name='Search',
            'which empties the field and returns focus to it. Escape does the same. Where results come from a server, the '
            'line says “Searching” while they load.'],
      tokens=['--oa-color-field-ground', '--oa-color-border-strong', 'oa.size.icon.medium', 'oa.size.target.touch'],
-     why=['A visible label stays when the reader types, where a placeholder vanishes. A status line lets a screen reader '
+     why=['A placeholder vanishes at the first letter typed, so the label sits above the field, where it stays in view. A status line lets a screen reader '
           'hear the count while focus stays in the field, and advice in the same line tells a reader who found nothing '
           'what to do next.'],
      basis='WCAG 2.2 SC 1.3.1, 2.4.6, 3.3.2 and 4.1.3; APG Landmarks pattern',
@@ -1028,7 +1029,7 @@ rule(n=17, set='c-18-form', name='Form',
      rule=['Each field has a visible label above it and, where it helps, a hint under the label joined by '
            'aria-describedby, such as “Five digits”. A placeholder never stands in for either. Personal fields carry '
            'autocomplete, such as email and postal-code, so the browser can fill them. A field stays open to typing at '
-           'all times; a send that cannot run yet keeps focus and says why, as Rule 18.1 sets.',
+           'all times; a Send button that cannot run yet keeps focus and says why, as Rule 18.1 sets.',
            'On a send with mistakes, each wrong field takes aria-invalid, the 4 px Pillar Red bar at its left edge and a '
            'message under it joined by aria-describedby: the error mark in ink, “Error:” and how to fix it, on the Error '
            'Band on Newsprint and on the ground on Charcoal. Focus moves to the first field to fix, and the ask steps down '
@@ -1076,7 +1077,7 @@ rule(n=17, set='c-18-form', name='Form',
 
 # ---- 18.18 Messages ---------------------------------------------------------------------------------------------
 rule(n=18, set='c-18-messages', name='Messages',
-     title='Give every message its mark, its first word and its bar, and announce only what changes.',
+     title='Give every message its mark and its first word, and announce only what changes.',
      rule=['An error, a warning and a success each start with their mark and their words (Rule 11.15). An error starts '
            '“Error:” and says how to fix it, beside a 4 px Pillar Red bar. A warning starts “Warning:” beside a 4 px bar in '
            'ink, and a success says what happened beside the Verdigris mark. Each bar is a left border.',
@@ -1089,7 +1090,8 @@ rule(n=18, set='c-18-messages', name='Messages',
           'alone. A status line reaches a screen reader without moving focus or cutting off what it is reading, and '
           'keeping alerts for errors keeps interruptions rare.'],
      basis='WCAG 2.2 SC 1.4.1, 1.4.11 and 4.1.3; WAI-ARIA 1.2 status and alert roles',
-     anatomy='The parts of each message: its 24 px mark, its first word, its words, its 4 px bar, and the Error Band '
+     anatomy='The parts of each message: its 24 px mark, its first word, its words, the 4 px bar on an error or a '
+             'warning, and the Error Band '
              'behind an error on Newsprint.',
      code_caption='An error, a warning and a success, live in both themes.',
      specs=specs(
@@ -1127,8 +1129,8 @@ rule(n=19, set='c-18-loading-empty', name='Loading and empty states',
            'name a step the reader can take on the page, such as a control in the filter bar.'],
      tokens=['--oa-color-state-loading-text', '--oa-color-state-loading-mark', '--oa-color-state-empty-text',
              '--oa-color-state-empty-edge'],
-     why=['Words tell every reader what is happening, where a spinner shows only that something is, and a pulse moves '
-          'without end. Saying what to do next turns an empty list into a step.'],
+     why=['Words tell every reader what is happening. A spinner shows only that something is happening, and a pulse '
+          'moves without end. Saying what to do next turns an empty list into a step.'],
      basis='WCAG 2.2 SC 2.2.2 and 4.1.3; design judgment',
      anatomy='The parts of a loading state, its still drawing and its words, and of an empty state, its dashed edge, '
              'what is missing and what to do next.',
@@ -1162,7 +1164,7 @@ rule(n=19, set='c-18-loading-empty', name='Loading and empty states',
 rule(n=20, set='c-18-tracker', name='Tracker',
      title='Update a live tracker in place, and say each change once in a status line.',
      rule=['A tracker built from chapter 11’s marks is a list of steps, each with its name and one state word: Done, Now, '
-           'Not yet, Never happened or Stopped (Rule 11.2). When a bill moves, the tracker redraws only the steps that '
+           'You can take part now, Not yet, Never happened or Stopped (Rules 11.2 and 11.4). When a bill moves, the tracker redraws only the steps that '
            'changed and writes one sentence to its status line that names the new step, and the bill too where the page '
            'follows more than one.',
            'The tracker takes no focus and moves nothing on the page when it updates. While its data loads it says so in '
@@ -1178,7 +1180,7 @@ rule(n=20, set='c-18-tracker', name='Tracker',
      code_caption='A tracker that updates, live. Each change is said once in the line under it.',
      specs=specs(
          (L_PAT, 'None fits; list markup for the steps and the status role for an update.'),
-         (L_ST, 'Done, Now, You can take part now, Not yet, Never happened and Stopped (Rule 11.2); loading; empty; '
+         (L_ST, 'Done, Now, You can take part now, Not yet, Never happened and Stopped (Rules 11.2 and 11.4); loading; empty; '
                 'error; the warning on a record unchecked too long (Rule 11.10).'),
          (L_KEY, 'None of its own; a link inside, such as a bill’s page, takes Tab.'),
          (L_NAME, 'The list’s label names the bill; each step its name and state word.'),
@@ -1255,7 +1257,7 @@ rule(n=22, set='c-18-loop-stepper', name='Loop stepper',
            'word (Rule 11.14). One polite live region says each step as it arrives, “Step 2 of 3:” and the step’s '
            'sentence, and the step list marks the current step with <code>aria-current="step"</code> and a 4 px bar.',
            'Nothing plays until the reader presses Play. Play becomes Pause while it plays and Play again at the end, its '
-           'icon and its word changing together, and it holds each step about 250 ms a word and never under 6 seconds, '
+           'icon and its word changing together, and it holds each step about 250 ms a word and never under six seconds, '
            'with reduced motion too (Rule 17.3). Next step, Previous step and Reset the loop stop the playback, and no '
            'button moves focus. At the start, Previous step and Reset the loop stay in place with aria-disabled and their '
            'reason; at the end, Next step does.'],
@@ -1286,12 +1288,12 @@ rule(n=22, set='c-18-loop-stepper', name='Loop stepper',
          (L_BR, bs('reduced-motion')),
      ),
      related=['17', '15', '11'],
-     builders=['Time each step from its own words, at 250 ms a word with a 6 second floor, and clear the timer on '
+     builders=['Time each step from its own words, at 250 ms a word with a six-second floor, and clear the timer on '
                'every press of Next step, Previous step or Reset the loop.'],
      failure=dict(
          caption='<strong>Fails Rule 18.22.</strong> The loop starts on its own when the page loads, repeats without end '
                  'and offers no button to pause it.',
-         alt='Failure case: do not publish. A panel at 360 px for loop R1 from our systems atlas, showing “Step 1 of 3” and '
+         alt='Failure case: do not publish. A panel at 360 px for Loop R1 from our systems atlas, showing “Step 1 of 3” and '
              'its sentence, “Wealth concentration raises money in politics.”, with no buttons at all. A note reads “Starts '
              'by itself on load and repeats with no way to stop it.”',
          notes='Picture of a fault: motion that starts by itself with no pause (SC 2.2.2).'))
@@ -1349,7 +1351,8 @@ rule(n=24, set='c-18-id-chip', name='Typed ID chip',
      rule=['A typed ID names a record in the atlas by its type and its code together, such as “Loop R10” or “Reform '
            'R-01”, so a reader never meets a bare code (chapter 02’s house rule H11). The chip sets both in the label '
            'style on a hairline edge, in the text’s ink, and color never codes its type.',
-           'A chip that opens its record is a link, with an underline on hover and a target at least 24 px tall; where '
+           'A chip that opens its record is a link, underlined as Rule 18.5 sets, 1 px at rest and 2 px on hover, with a '
+           'target at least 24 px tall; where '
            'the words around it do not name the record, the link’s description does. A chip that only names a record is plain text, with no role and no '
            'Tab stop.'],
      tokens=['--oa-color-border-hairline', '--oa-color-text-primary', 'oa.size.target.minimum'],
@@ -1362,14 +1365,14 @@ rule(n=24, set='c-18-id-chip', name='Typed ID chip',
      code_caption='Two chips that name a record and one that opens it, live.',
      specs=specs(
          (L_PAT, 'None fits a label; APG Link when the chip opens its record.'),
-         (L_ST, 'Plain. As a link: hover, an underline; focus, the ring.'),
+         (L_ST, 'Plain. As a link: a 1 px underline, 2 px on hover; focus, the ring.'),
          (L_KEY, 'A linked chip takes Tab, and Enter follows it; a plain chip takes no focus.'),
          (L_NAME, 'Its words, such as “Loop R10”; a link adds the record’s name, such as “Loop R10, the safe-seat '
                   'loop”.'),
          (L_HEAR, 'As text, its words; as a link, its words and its role.'),
          (L_TGT, 'As a link, at least 24 px tall.', 'oa.size.target.minimum'),
          (L_FC, 'The edge and the words in CanvasText, or LinkText when it links.'),
-         (L_TH, 'The edge in --oa-color-border-hairline and the words in the text’s ink.'),
+         (L_TH, 'The edge, a hairline in --oa-color-border-strong, and the words in the text’s ink.'),
          (L_BR, 'Plain links and text, which every browser MDN lists reads.'),
      ),
      related=['02', '21', '10'],
@@ -1378,7 +1381,7 @@ rule(n=24, set='c-18-id-chip', name='Typed ID chip',
      failure=dict(
          caption='<strong>Fails Rule 18.24.</strong> The chips show bare codes, and only their fills say which is a loop '
                  'and which is a reform.',
-         alt='Failure case: do not publish. A sentence at 360 px from our systems atlas, “R10 shifts accountability to '
+         alt='Failure case: do not publish. A sentence at 360 px written from our systems atlas’s records, “R10 shifts accountability to '
              'small primary electorates, and R-01 sits on that loop.”, with “R10” in a Prussian fill and “R-01” in a '
              'Verdigris fill and no type word for either. A note reads “A bare code, with its type in color alone.”',
          notes='Picture of a fault: bare codes (house rule H11) typed by color.'))

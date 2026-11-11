@@ -1046,11 +1046,11 @@ CELL_CSS = (
     '.mu svg{flex:none;display:block}.mu .dk{fill:var(--oa-color-graphic-essential)}'
     '.mu .ol{fill:none;stroke:var(--oa-color-state-muted-mark);stroke-width:1.5}'
     '.cur{display:block;padding:8px 12px;background:var(--oa-color-state-selected-band);'
-    'border-left:var(--oa-border-width-bar) solid var(--oa-color-state-selected-bar);font-weight:600;color:var(--oa-color-text-primary);' + ty('bodySmall') + ';font-weight:600}'
+    'border-left:var(--oa-border-width-bar) solid var(--oa-color-state-selected-bar);color:var(--oa-color-text-primary);' + ty('bodySmall') + ';font-weight:var(--oa-font-weight-bold)}'
     '.nav{list-style:none;margin:0;padding:0;display:grid;gap:2px}'
     '.nav span:not(.cur){display:block;padding:8px 12px 8px 16px;color:var(--oa-color-text-primary);' + ty('bodySmall') + '}'
     '.uc{color:var(--oa-color-text-primary);text-decoration:underline;text-decoration-thickness:var(--oa-border-width-rule);'
-    'text-underline-offset:0.25em;font-weight:600;' + ty('bodySmall') + ';font-weight:600}'
+    'text-underline-offset:0.25em;' + ty('bodySmall') + ';font-weight:var(--oa-font-weight-bold)}'
     '.fld{display:flex;align-items:center;gap:8px;min-height:var(--oa-size-target-touch);padding:0 12px;'
     'background:var(--oa-color-field-ground);border:var(--oa-border-width-hairline) solid var(--oa-color-border-strong);'
     'color:var(--oa-color-text-primary);' + ty('ui') + ';font-weight:400}'
@@ -1244,13 +1244,13 @@ def s17_10_correct():
                 '<div class="hfr"><p class="sf">The current page in a list</p><ul class="nav">'
                 '<li><span>16 Photography, illustration and video</span></li><li><span class="cur">17 Motion and states</span></li>'
                 '<li><span>18 Components and interaction</span></li></ul></div>'
-                '<div class="hfr"><p class="sf">The current page as a link</p><p><span class="uc">Motion</span></p></div>')
+                '<div class="hfr"><p class="sf">The current part in a masthead</p><p><span class="uc">Behavior</span></p></div>')
     css = CELL_CSS + '.hfr{display:grid;gap:6px}.hfr + .hfr{margin-top:10px}'
     html = f'<style>{css}</style><div class="wr">{cells(sample)}</div>'
     alt = ('On Newsprint and on Charcoal: a Housing toggle that is pressed, with the selected check before the word, the '
            'word in bold and a 2 px edge, beside Schools with a 1 px edge; Fit width checked the same way beside Full '
-           'size; a list of three chapters with 17 Motion and states as the current page, on the selected band with a '
-           f'4 px bar; and a link to the current page, Motion, with a 2 px underline. The band measures {F["band_n"]} '
+           'size; a list of three chapters with 17 Motion and states as the current page, in bold on the selected band '
+           f'with a 4 px bar; and Behavior, the current part in a masthead, in bold with a 2 px underline. The band measures {F["band_n"]} '
            f'to 1 against Newsprint and {F["band_c"]} against Charcoal, so the bar and the weight carry it.')
     return spec('s-17-10-correct', html, '17.10', alt)
 
@@ -1787,7 +1787,8 @@ def build_chapter():
             'others keep 1 px. The look is the same on Newsprint and Charcoal and stays under forced colors, since '
             'the check, the weight and the edge are shapes.',
             'Links and lists of places keep their own marks for the current place. A link to the page a reader is on '
-            'takes a 2 px underline, and a rail or a list takes the selected band with its 4 px bar.'],
+            'takes bold words, with a 2 px underline in a masthead and none at the end of a breadcrumb, and a rail '
+            'or a list takes the selected band, its 4 px bar and bold words.'],
         'tokens': ['oa.border.width.rule', 'oa.color.border.strong.onNewsprint', 'oa.color.state.selected.band.onNewsprint',
                    'oa.color.state.selected.bar.onNewsprint'],
         'why': {'text': [
@@ -1809,7 +1810,7 @@ def build_chapter():
              'token': 'oa.border.width.rule'},
             {'label': 'Fill', 'value': 'The surface’s own ground, on and off'},
             {'label': 'Markup', 'value': '<code>aria-pressed="true"</code> on a toggle; a native radio or check box, <code>:checked</code>'},
-            {'label': 'Current place', 'value': 'A link: 2 px underline; a rail or list: the selected band and its 4 px bar',
+            {'label': 'Current place', 'value': 'A link: bold words, with a 2 px underline in a masthead; a rail or list: the selected band, its 4 px bar and bold words',
              'token': 'oa.color.state.selected.bar.onNewsprint'},
         ],
         'related': ['11', '18'],
