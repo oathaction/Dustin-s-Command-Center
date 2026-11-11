@@ -42,6 +42,7 @@
 .oa-form-mark--ok { color: var(--oa-color-state-success-mark) }
 
 @media (forced-colors: active) {
+  .oa-form-mark--ok { color: CanvasText }
   .oa-form-input, .oa-form-error { border-color: CanvasText }
   .oa-form-send { border-color: ButtonText }
   .oa-form-send[aria-disabled="true"] { border-color: GrayText; color: GrayText }

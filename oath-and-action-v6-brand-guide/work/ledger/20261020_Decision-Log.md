@@ -2573,3 +2573,10 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 | D2-1343 | tokens.css stays a file of tokens and themes; Rules 09.3 and 10.4's builders lines print the two CSS lines that switch a fit for its master, as the editor wrote them in its notes, 1b and 1c | The token architecture keeps component CSS out of tokens.css; two lines in the rule are easy to copy, and a builder who copies the svg alone would draw both drawings (the editor's 1d, item 1) |
 | D2-1344 | Rule 11.12's search follows Rule 18.15: the `search` element, with chapter 18 as the component's home | The stage C brief's "One component, two homes"; one answer for a builder who reads both chapters (the editor's 1d, item 2) |
 | D2-1345 | The token named for the error mark keeps its name in round 1; chapter 26 describes it as the error bar's color, and a rename waits for the engineer's call under the version rule | No reader text is wrong today; a rename changes a shipped token name (the editor's 1d, item 3) |
+
+### Systems designer, the editor's pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1346 | Rule 10.9's closest pair of fits is read from the icon designer's figures and stored in the figures file as `fits_closest` | The editor's sentence names the pair; a name typed by hand would go stale if the fits change |
+| D2-1347 | Rule 11.12's builders line ends "Rule 18.15 is the search's home, with every state and its code to copy." | D2-1344 asks Rule 11.12 to link to Rule 18.15 as the component's home; the editor's sentence names the rule for its markup only |

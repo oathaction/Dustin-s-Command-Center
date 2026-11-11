@@ -288,7 +288,7 @@
       ],
       "builders": [
         "Check the ID against the list before you set a symbol under 48 px. A drawing that is not on it goes to 48 px, or gives way to its word.",
-        "Write a 24 px symbol as one svg holding two uses: the fit with the class <code>oa-at-1x</code> and the master with <code>oa-at-2x</code>, as in <code>&lt;svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" aria-hidden=\"true\" focusable=\"false\" data-icon=\"CL-048\" data-icon-family=\"topic\"&gt;&lt;use class=\"oa-at-1x\" href=\"#oa-sym-cl-048-24px\"/&gt;&lt;use class=\"oa-at-2x\" href=\"#oa-sym-cl-048\"/&gt;&lt;/svg&gt;</code>. Each fit’s file sits in <code>fit-24/</code> beside the editions, named for its ID."
+        "Write a 24 px symbol as one svg holding two uses: the fit with the class <code>oa-at-1x</code> and the master with <code>oa-at-2x</code>, as in <code>&lt;svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" aria-hidden=\"true\" focusable=\"false\" data-icon=\"CL-048\" data-icon-family=\"topic\"&gt;&lt;use class=\"oa-at-1x\" href=\"#oa-sym-cl-048-24px\"/&gt;&lt;use class=\"oa-at-2x\" href=\"#oa-sym-cl-048\"/&gt;&lt;/svg&gt;</code>. Each fit’s file sits in <code>fit-24/</code> beside the editions, named for its ID. The guide’s stylesheet switches the two with two lines; copy them into yours: <code>.oa-at-2x { display: none } @media (min-resolution: 2dppx) { .oa-at-1x { display: none } .oa-at-2x { display: inline } }</code>."
       ]
     },
     {
@@ -383,7 +383,7 @@
       },
       "correct": {
         "specimen": "s-10-6-correct",
-        "caption": "One drawing under two words, Congress and Congressional capacity, Housing beside its word from 48 px, and the names that keep close subjects apart. Each atlas element’s chip follows its name."
+        "caption": "One drawing under two words, Congress and Congressional capacity; Housing beside its word from 48 px; and the names that keep close subjects apart. Each atlas element’s chip follows its name."
       },
       "failure": {
         "specimen": "s-10-6-failure",
@@ -527,8 +527,8 @@
       "why": {
         "text": [
           "A likeness test compares two drawings at 24 px, where only their outlines are left, and scores the pair from −1 to 1. Among the 7,750 pairs in the set, one pair in a hundred scores 0.91 or more. The six groups of neighbors all score under that, and their risk lies in the subjects, since a builder looking for a hearing can reach for Public meeting although the two drawings score −0.09. Of those, Doctrine favoring the appointing coalition and Local government come closest, at 0.84, closer than 88 pairs in a hundred.",
-          "The five page-and-magnifier drawings score from 0.80 to 0.96 among themselves, and four of their 10 pairs score 0.91 or more, so the test agrees with what a reader sees at 24 px. Their pixel fits, which a screen under 2x draws, part further, from 0.70 to 0.90, but Evidence and Oversight and enforcement still score 0.90, so the rule holds on every screen.",
-          "Hold local elections alongside November races, R‑06, is the one of the three reform drawings on the list of 41. Its pixel fit scores 0.92 against the masters of R‑41 and R‑44 alike, and the three masters score 0.89 to 0.96 among themselves, with R‑06 and R‑44 the closest pair in the set. At 48 px, the smallest size all three take, only the marks inside the panels tell them apart."
+          "The five page-and-magnifier drawings score from 0.80 to 0.96 among themselves, and four of their 10 pairs score 0.91 or more, so the test agrees with what a reader sees at 24 px. Their pixel fits, which a screen under 2x draws, sit further apart, from 0.70 to 0.90, and the closest pair, Evidence with Oversight and enforcement, still scores 0.90, so the rule holds on every screen.",
+          "Hold local elections alongside November races, R‑06, is the only one of the three reform drawings on the list of 41. Its pixel fit scores 0.92 against the masters of R‑41 and R‑44 alike, and the three masters score 0.89 to 0.96 among themselves, with R‑06 and R‑44 the closest pair in the set. At 48 px, the smallest size all three take, only the marks inside the panels tell them apart."
         ],
         "basis": "Design judgment, measured with the likeness test"
       },

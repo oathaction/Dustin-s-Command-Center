@@ -28,6 +28,7 @@
   color: var(--oa-color-text-primary); font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: var(--oa-type-caption-font-size) }
 
 @media (forced-colors: active) {
+  .oa-copy-mark--ok { color: CanvasText }
   .oa-copy-button { border-color: ButtonText }
   .oa-copy-status[data-oa-state="error"] { border-color: CanvasText }
 }

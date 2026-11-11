@@ -303,7 +303,7 @@
       },
       "correct": {
         "specimen": "s-05-4-correct",
-        "caption": "Ten states on Newsprint at true size, each with its cue. The focus ring measures 3.37 to 1 and the warning mark 13.29. The error mark draws in the text’s ink, and its red is the 4 px bar. Nothing here uses opacity."
+        "caption": "Ten states on Newsprint at true size, each with its cue. The focus ring measures 3.37 to 1 and the warning mark 13.29. The error mark draws in the text’s ink, and the error’s red is its 4 px bar. Nothing here uses opacity."
       },
       "failure": {
         "specimen": "s-05-4-failure",
@@ -347,7 +347,7 @@
         "18"
       ],
       "builders": [
-        "Change two things in every state: the color and either the words or the shape. Use <code>aria-disabled=\"true\"</code> so a disabled control keeps its focus and its reason line can be read. Never fade a control with opacity; take the state token instead. Draw a state’s bar as a border, such as <code>border-left: 4px solid</code>, since forced colors removes an inset shadow."
+        "Change two things in every state: the color and either the words or the shape. Use <code>aria-disabled=\"true\"</code> so a disabled control keeps its focus and its reason line can be read. Never fade a control with opacity; take the state token instead. Draw a state’s bar as a border, such as <code>border-left: 4px solid</code>. Forced colors, a setting such as the contrast themes in Windows that repaints a page in a few system colors, keeps a border and removes an inset shadow."
       ]
     },
     {

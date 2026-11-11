@@ -133,7 +133,7 @@ BASE = (".sx-k{margin:0;font:var(--oa-type-label);letter-spacing:var(--oa-type-l
         ".sx-p{margin:0;font:var(--oa-type-body)}.sx-s{margin:0;font:var(--oa-type-body-small)}.sx-c{margin:0;font:var(--oa-type-caption)}"
         ".sx-code{display:block;margin:0;padding:12px 16px;background:var(--oa-color-surface-white);color:var(--oa-color-text-primary-on-white);"
         "font-family:ui-monospace,\"SFMono-Regular\",Menlo,Consolas,monospace;font-size:.875rem;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}"
-        ".sx-meas{margin:12px 0 0;font:var(--oa-type-caption);color:var(--oa-color-text-secondary-on-newsprint)}"
+        ".sx-meas{margin:0;padding:12px 16px 16px;font:var(--oa-type-caption);color:var(--oa-color-text-secondary-on-newsprint)}"
         ".dnp{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 10px;background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);"
         "font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}")
 BAND = '<p class="dnp"><span aria-hidden="true">×</span>Failure case: do not publish</p>'

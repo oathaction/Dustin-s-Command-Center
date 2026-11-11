@@ -84,6 +84,7 @@
 .oa-tracker-how { margin: var(--oa-space-300) 0 0; font: var(--oa-type-body-small) }
 
 @media (forced-colors: active) {
+  .oa-tracker-icon { color: CanvasText }
   .oa-tracker-step[data-oa-state="done"] .oa-tracker-mark, .oa-tracker-step[data-oa-state="stopped"] .oa-tracker-mark { forced-color-adjust: none; background: CanvasText; color: Canvas }
   .oa-tracker-step[data-oa-take-part] .oa-tracker-mark::after { forced-color-adjust: none; background: Highlight; border-color: CanvasText }
   .oa-tracker-next { border-color: ButtonText }

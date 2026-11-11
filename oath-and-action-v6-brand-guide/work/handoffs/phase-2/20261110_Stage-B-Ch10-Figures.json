@@ -371,6 +371,10 @@
    "likeness_max": 0.958,
    "fits_likeness_min": 0.7022,
    "fits_likeness_max": 0.897,
+   "fits_closest": [
+    "CL-023",
+    "CL-028"
+   ],
    "fits_source": "work/build/assets/civic-line-24-fit/qa/20261110_Five-Look-Alikes-Fits-Likeness.json"
   },
   "look-alikes at 48 px and under": {

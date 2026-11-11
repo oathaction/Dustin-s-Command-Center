@@ -519,7 +519,8 @@ FAIL_CSS = (".oai-mf{display:grid;gap:16px;max-width:42rem}"
             ".oai-mf-pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:16px 24px}"
             ".oai-mf-one{grid-template-columns:minmax(0,1fr)}"
             ".oai-mf-nt{" + tyv("body-small") + ";max-width:62ch}")
-FAIL_OFF = 0.5                   # half a pixel: the player centers each mark in a box one pixel taller than the mark
+FAIL_OFF = 0.5                   # half a pixel: the player centers each mark with translate(-50%, -50%) in a box one
+                                 # pixel taller than the mark; a transform is not snapped to whole pixels, as padding is
 FAIL_ZOOM = 6
 
 
@@ -533,8 +534,9 @@ def _fail_raster(rel, h, w_px, low, name, crop_w=None):
         LIB.INLINE_ALL[0] = False
     w = (crop_w or w_px) + 4
     hh = h + 4
+    tf = f'transform:translateY({FAIL_OFF}px);' if low else ''
     html = (f'<div style="width:{w}px;height:{hh}px;overflow:hidden;background:var(--oa-color-surface-newsprint);'
-            f'padding:{2 + (FAIL_OFF if low else 0)}px 0 0 2px;box-sizing:border-box;line-height:0">{raw}</div>')
+            f'padding:2px 0 0 2px;box-sizing:border-box;line-height:0"><div style="{tf}line-height:0">{raw}</div></div>')
     return raster_png(html, w, hh, name, scale=1), w, hh
 
 
@@ -545,7 +547,7 @@ def s_17_hinge_failure():
 
     def at(rel, h, low):
         m = mark(rel, h=h, decorative=True)
-        return f'<div style="padding-top:{FAIL_OFF if low else 0}px;line-height:0">{m}</div>' if low else m
+        return f'<div style="transform:translateY({FAIL_OFF}px);line-height:0">{m}</div>' if low else m
     true_size = ('<div class="oai-mf-grid">'
                  '<p class="oai-mf-h">Last frames, half a pixel low</p>'
                  + "".join(f'<div class="oai-mf-cell">{at(rel, h, True)}<span class="oai-mf-tag">{E(lab)}</span></div>' for _, rel, h, _, lab in marks)
@@ -563,7 +565,8 @@ def s_17_hinge_failure():
         big.append(f'<div class="oai-mf-pair{" oai-mf-one" if crop else ""}">{"".join(cells)}</div>')
     body = (f'<div class="oai-mf">{dnp()}<div class="oai-panel oai-s-newsprint">{true_size}</div>'
             f'<p class="oai-mf-h" style="margin:0">Enlarged {FAIL_ZOOM} times from a 1x screen</p>{"".join(big)}'
-            f'<p class="oai-mf-nt">The player centers each mark in a box one pixel taller than the mark, so the motion comes to '
+            f'<p class="oai-mf-nt">The player centers each mark with <code>translate(-50%, -50%)</code> in a box one pixel '
+            f'taller than the mark, so the motion comes to '
             f'rest half a pixel below the pixel grid. On a 1x screen each 1{NB}px link of the lockmark spreads into two rows of '
             f'gray, every node blurs, and the wordmark’s top and bottom edges go soft. A 2x screen hides the fault, so check '
             f'the last frame on a 1x screen.</p></div>')
@@ -573,11 +576,12 @@ def s_17_hinge_failure():
            "two rows of gray and whose nodes have blurred, beside its crisp master; then the first letters of the wordmark, "
            "whose top and bottom edges have gone gray, beside the master.")
     return rec("s-17-hinge-failure", "17.6", None, alt, body, css=FAIL_CSS, check_exempt=["scale"],
-               caption=("Last frames that come to rest half a pixel low, because the player centers each mark in a box one "
-                        "pixel taller than the mark. On a 1x screen the lockmark’s links turn into gray bands and the "
-                        "wordmark goes soft, so each last frame is a second version of its mark."),
+               caption=("Last frames that come to rest half a pixel low, because the player centers each mark with a "
+                        "transform in a box one pixel taller than the mark. On a 1x screen the lockmark’s links turn into "
+                        "gray bands and the wordmark goes soft, so each last frame is a second version of its mark."),
                notes=("Failure for Rule 17.6, for the hinge and the lever: a last frame off its master by half a pixel. The "
-                      "true-size marks sit under 0.5 px of padding; the enlargements are Chromium's 1x renders of the same "
+                      "true-size marks are moved down with transform: translateY(0.5px), since Chromium snaps an svg's "
+                      "box to whole pixels but not a transform; the enlargements are Chromium's 1x renders of the same "
                       "masters, embedded as PNG and drawn with pixelated scaling, since a 2x screen hides the fault. The "
                       "wordmark's enlargement keeps its first 104 px. check_exempt scale: the enlargements show pixels on "
                       "purpose. Written by stage_c_identity_ch17.py."))

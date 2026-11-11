@@ -139,3 +139,30 @@ Paths relative to `oath-and-action-v6-brand-guide/`. Nothing in `source/`, `work
 - `work/handoffs/phase-2/20261110_Stage-B-Ch10-Figures.json`, `20261106_Stage-A-Systems-Measurements.json`, `20261110_Stage-B-Round-2-Ch11-Figures.json` (the tokens the specimens cite)
 
 **Scratch, outside the repository** (`/tmp/claude-0/-home-user-Dustin-s-Command-Center/42858b21-febe-5543-930e-ed82e286a69e/scratchpad/promotion-c/systems/`): builds `build-1/` to `build-3/`, the chapter and specimen copies `ch-mine/` and `sp-mine/`, scripts `shot.js`, `clip.js`, `first.js`, `sw.js`, `live.js`, `look.js`, results `live.json` and `guide-check-quick.log`, and captures in `shots/` to `shots4/`.
+
+## Editor's pass
+
+November 11, after the main session logged my calls as D2-1278 to D2-1296. I applied the eight changes in section 1b of `20261111_Stage-C-Round-1-Editor-Notes.md` through my generators, with the two answers that bind them: D2-1343 (Rule 10.4 prints the two CSS lines that switch a fit for its master) and D2-1344 (Rule 11.12's search follows Rule 18.15's `search` element, with chapter 18 as its home). None of the eight had been applied before.
+
+**What changed**
+- `stage_a_systems_ch05.py`, Rule 05.4: the builders line defines forced colors at its first use in the editor's words (Rule 17.8's), and the caption reads "the error's red is its 4 px bar".
+- `stage_b_ch10_build.py`: Rule 10.4's second builders line ends with the shell's two lines, `.oa-at-2x { display: none } @media (min-resolution: 2dppx) { .oa-at-1x { display: none } .oa-at-2x { display: inline } }`, for a builder to copy; Rule 10.6's caption takes semicolons; Rule 10.9's reasons read "sit further apart" and "the closest pair, Evidence with Oversight and enforcement, still scores 0.90" (the pair read from the icon designer's figures, not typed), and "the only one of the three"; `s-10-9-correct`'s alt lists a group of three or more with commas and a last "and".
+- `apply_systems_ch11_ui.py`, Rule 11.12's builders line: the search landmark is the `<search>` element, "so a screen reader can jump straight to it, as Rule 18.15's code does", and a closing sentence names Rule 18.15 as the search's home. The shell links both mentions to `#rule-18-15`. The live plate still holds no landmark, since AX-S8 still binds specimens; the engineer's landmark swap serves code sets only.
+- The editor's new meaning for CL-075 (D2-1334) was already in `s-10-lib-03` from the main session's rebuild; my run left that file as it was.
+
+**Routine calls**
+- D2-xxx | Rule 10.9's closest pair of fits is read from the icon designer's figures and stored in the figures file as `fits_closest` | The editor's sentence names the pair; a name typed by hand would go stale if the fits change
+- D2-xxx | Rule 11.12's builders line ends "Rule 18.15 is the search's home, with every state and its code to copy." | D2-1344 asks Rule 11.12 to link to Rule 18.15 as the component's home; the editor's sentence names the rule for its markup only
+
+**Tested**
+- Chapters 05 to 07 rebuilt in two steps (probe, capture, final): only `05-color.json`'s two strings and the measurement record's date changed.
+- The generator chain in order: my generators changed `05-color.json`, `10-symbols.json`, `11-icons.json`, `manifest-systems.json` (`s-10-9-correct`'s alt) and the chapter 10 figures file (`fits_closest`), and nothing else. Chapter 26 and chapter 18 files that show as changed in the tree are their owners' work in progress; the chain does not write them.
+- Strict build of every chapter in the folder (01 to 12, 17, 18 and 26) into my scratch folder: 9,204,248 bytes, 15 chapter files, 176 rules, 402 specimens; exit 1 on 24 warnings, every one a missing chapter 18 anatomy specimen (`s-18-NN-anatomy.html`, Rules 18.1 to 18.24). No other warning.
+- In that build, Rule 11.12's two mentions of Rule 18.15 link to `#rule-18-15`, which exists.
+
+**Not tested**
+- The guide check on this build (chapter 18 is still in progress); the words changed and no plate did.
+
+**Change log**
+- Modified: `work/build/scripts/phase-2/stage_a_systems_ch05.py`, `stage_b_ch10_build.py`, `apply_systems_ch11_ui.py`; their outputs `work/build/guide/chapters/05-color.json`, `10-symbols.json`, `11-icons.json`, `work/build/guide/specimens/manifest-systems.json`, `work/handoffs/phase-2/20261110_Stage-B-Ch10-Figures.json`, `20261106_Stage-A-Systems-Measurements.json` (date only); this file.
+- Scratch: `build-4/` and `build-4.log`, `stagea-2/`.

@@ -949,9 +949,11 @@ def build_ui(ctx, m, rule_titles):
                          'mirror across the diagonal, <code>matrix(0 1 1 0 0 0)</code>, which keeps its shaft on the up '
                          'arrow’s pixel column.',
                          'Give a search field <code>type="search"</code> and let the Escape key clear it. On a product '
-                         'page, wrap the field, its filters and its status line in a search landmark, '
-                         '<code>&lt;div role="search"&gt;</code>. Write the count and any advice to that one status line, '
-                         f'such as “0 of {n_lib} symbols. No symbol matches. Clear the search or the filters to see more.”'],
+                         'page, wrap the field, its filters and its status line in a search landmark, the '
+                         '<code>&lt;search&gt;</code> element, so a screen reader can jump straight to it, as Rule 18.15’s '
+                         'code does. Write the count and any advice to that one status line, '
+                         f'such as “0 of {n_lib} symbols. No symbol matches. Clear the search or the filters to see more.” '
+                         'Rule 18.15 is the search’s home, with every state and its code to copy.'],
         },
         {
             'id': '11.13', 'title': 'Mark a link to another site, and open it in the same tab.',

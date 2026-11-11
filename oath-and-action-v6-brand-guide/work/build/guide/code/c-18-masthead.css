@@ -62,6 +62,7 @@
 .oa-masthead-page { margin: var(--oa-space-200) 0 0; font: var(--oa-type-body-small); color: var(--oa-color-text-secondary) }
 
 @media (forced-colors: active) {
+  .oa-masthead-amp { fill: currentColor }
   .oa-masthead-menu, .oa-masthead-close { border-color: ButtonText }
   .oa-masthead-row-link[aria-current] { border-left-color: Highlight }
 }

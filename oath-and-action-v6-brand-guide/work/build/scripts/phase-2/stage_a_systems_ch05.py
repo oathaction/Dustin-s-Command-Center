@@ -1101,7 +1101,7 @@ def build(ctx):
                 'correct': {'specimen': 's-05-4-correct',
                             'caption': f'Ten states on Newsprint at true size, each with its cue. The focus ring measures '
                                        f'{ver_n} to 1 and the warning mark {ch_n}. The error mark draws in the text’s ink, '
-                                       f'and its red is the 4 px bar. Nothing here uses opacity.'},
+                                       f'and the error’s red is its 4 px bar. Nothing here uses opacity.'},
                 'failure': {'specimen': 's-05-4-failure',
                             'caption': f'<strong>Fails 1.4.1.</strong> Two tracker rows that differ only by the hue of a '
                                        f'dot. The dots measure {red_ver} to 1 against each other, and in grayscale they print '
@@ -1120,8 +1120,9 @@ def build(ctx):
                 'builders': ['Change two things in every state: the color and either the words or the shape. Use '
                              '<code>aria-disabled="true"</code> so a disabled control keeps its focus and its reason line can '
                              'be read. Never fade a control with opacity; take the state token instead. Draw a state’s bar '
-                             'as a border, such as <code>border-left: 4px solid</code>, since forced colors removes an inset '
-                             'shadow.'],
+                             'as a border, such as <code>border-left: 4px solid</code>. Forced colors, a setting such as the '
+                             'contrast themes in Windows that repaints a page in a few system colors, keeps a border and '
+                             'removes an inset shadow.'],
             },
             {
                 'id': '05.5', 'title': 'Keep marks that carry meaning at 3 to 1, and give red on Newsprint a Charcoal keyline.',

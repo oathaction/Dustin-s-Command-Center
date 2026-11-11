@@ -949,8 +949,10 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
     figs['look-alikes at 24 px'] = {'ids': list(g24), 'likeness_min': min(v24), 'likeness_max': max(v24)}
     fl = fit_likeness()
     f24 = list(fl['five_fits'].values())
+    closest = max(fl['five_fits'], key=fl['five_fits'].get).split('|')
+    closest = sorted(closest, key=LOOKALIKE_24[0].index)
     figs['look-alikes at 24 px'].update({'fits_likeness_min': min(f24), 'fits_likeness_max': max(f24),
-                                         'fits_source': fl['files'][0]})
+                                         'fits_closest': closest, 'fits_source': fl['files'][0]})
     cells = ''.join(f'<div class="c c24"><span class="h24">{sym(i, 24, fam=family(rows[i]))}</span>'
                     f'<span class="w">{esc(word(rows[i]))}</span><span class="id">{esc(i)}</span></div>' for i in g24)
     groups.append(f'<li class="g24"><p class="gk">At 24 px, never two in one view</p><div class="cs">{cells}</div>'
@@ -985,7 +987,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
     ctx.spec('s-10-9-correct', f'<style>{css}</style><ul class="l">{"".join(groups)}</ul>', CH, '10.9',
              'Six groups of drawings for close subjects, each at 64 px with its word and ID, then what tells them apart '
              'and their outline likeness at 24 px. ' + ' '.join(
-                 f'{" and ".join(word(rows[i]) for i in grp)}: {look}' for grp, look in LOOKALIKES)
+                 f'{names_list([word(rows[i]) for i in grp])}: {look}' for grp, look in LOOKALIKES)
              + ' Then a group headed At 24 px, never two in one view, with five drawings at 24 px in one color: '
              + ', '.join(word(rows[i]) for i in LOOKALIKE_24[0]) + '. ' + look24(rows)
              + f' Their outline likeness at 24 px runs from {fmt_like(min(v24))} to {fmt_like(max(v24))} as masters, and '
@@ -1070,6 +1072,11 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
              'for raises and a red line for lowers. The sign lives in color alone, and red means something it never means '
              'in the atlas.', width=360, surface='white', exempt=['red'],
              notes='Labeled failure: polarity by hue, with red spent on a sign.')
+
+
+def names_list(names):
+    """Two names joined by "and"; three or more as a list, with commas and "and" before the last."""
+    return ' and '.join(names) if len(names) < 3 else ', '.join(names[:-1]) + ' and ' + names[-1]
 
 
 def fx(figs, key):
@@ -1273,7 +1280,9 @@ def chapter(rows, reads24, like, sheets, figs, icons):
                      'height="24" aria-hidden="true" focusable="false" data-icon="CL-048" data-icon-family="topic"&gt;'
                      '&lt;use class="oa-at-1x" href="#oa-sym-cl-048-24px"/&gt;&lt;use class="oa-at-2x" '
                      'href="#oa-sym-cl-048"/&gt;&lt;/svg&gt;</code>. Each fit’s file sits in <code>fit-24/</code> beside '
-                     'the editions, named for its ID.'],
+                     'the editions, named for its ID. The guide’s stylesheet switches the two with two lines; copy them '
+                     'into yours: <code>.oa-at-2x { display: none } @media (min-resolution: 2dppx) { .oa-at-1x { display: '
+                     'none } .oa-at-2x { display: inline } }</code>.'],
     })
 
     rules.append({
@@ -1340,8 +1349,8 @@ def chapter(rows, reads24, like, sheets, figs, icons):
                          'next page. A screen reader user hears the word alone, once.'],
                 'basis': 'WCAG 2.2 SC 1.1.1, and design judgment'},
         'correct': {'specimen': 's-10-6-correct',
-                    'caption': f'One drawing under two words, {lab("CL-025")} and {lab("CL-025", True)}, '
-                               f'{lab("CL-075")} beside its word from 48 px, and the names that keep close subjects apart. '
+                    'caption': f'One drawing under two words, {lab("CL-025")} and {lab("CL-025", True)}; '
+                               f'{lab("CL-075")} beside its word from 48 px; and the names that keep close subjects apart. '
                                'Each atlas element’s chip follows its name.'},
         'failure': {'specimen': 's-10-6-failure',
                     'caption': '<strong>Fails Rule 10.6.</strong> Four drawings of homes with no words. A reader cannot '
@@ -1455,10 +1464,11 @@ def chapter(rows, reads24, like, sheets, figs, icons):
             f'{fmt_like(close["likeness"])}, closer than {close["percentile"]:.0f} pairs in a hundred.',
             f'The five page-and-magnifier drawings score from {fmt_like(min(v24))} to {fmt_like(max(v24))} among '
             f'themselves, and {C.num(over)} of their 10 pairs score {flag:.2f} or more, so the test agrees with what a reader '
-            f'sees at 24 px. Their pixel fits, which a screen under 2x draws, part further, from '
-            f'{fmt_like(f24["fits_likeness_min"])} to {fmt_like(f24["fits_likeness_max"])}, but {lab("CL-023")} and '
-            f'{lab("CL-028")} still score {fmt_like(f24["fits_likeness_max"])}, so the rule holds on every screen.',
-            f'{lab("R-06")}, R-06, is the one of the three reform drawings on the list of 41. Its pixel fit scores '
+            f'sees at 24 px. Their pixel fits, which a screen under 2x draws, sit further apart, from '
+            f'{fmt_like(f24["fits_likeness_min"])} to {fmt_like(f24["fits_likeness_max"])}, and the closest pair, '
+            f'{lab(f24["fits_closest"][0])} with {lab(f24["fits_closest"][1])}, still scores '
+            f'{fmt_like(f24["fits_likeness_max"])}, so the rule holds on every screen.',
+            f'{lab("R-06")}, R-06, is the only one of the three reform drawings on the list of 41. Its pixel fit scores '
             + (f'{fmt_like(l48["R-06 fit"]["R-41"])} against the masters of R-41 and R-44 alike'
                if fmt_like(l48["R-06 fit"]["R-41"]) == fmt_like(l48["R-06 fit"]["R-44"]) else
                f'{fmt_like(l48["R-06 fit"]["R-41"])} against the master of R-41 and {fmt_like(l48["R-06 fit"]["R-44"])} '

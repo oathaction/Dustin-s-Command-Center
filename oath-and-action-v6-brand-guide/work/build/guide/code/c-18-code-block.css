@@ -31,6 +31,7 @@
   font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: var(--oa-type-caption-font-size) }
 
 @media (forced-colors: active) {
+  .oa-code-mark--ok { color: CanvasText }
   .oa-code-copy { border-color: ButtonText }
   .oa-code-pre, .oa-code-status[data-oa-state="error"] { border-color: CanvasText }
 }
