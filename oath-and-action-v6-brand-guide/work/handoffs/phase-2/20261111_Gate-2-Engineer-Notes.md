@@ -1,3 +1,10 @@
+OPENER SLOT READY: every chapter, 01 to 26, takes one opener (guide_build.py, November 11, 2026). The contract:
+- In the chapter's JSON, written by your generator: `"opener": "s-NN-opener"`, or `"opener": {"specimen": "s-NN-opener", "caption": "..."}` for a caption under it. Any id starting `s-NN-` works.
+- The fragment at `work/build/guide/specimens/<id>.html`, with a row in your manifest: `chapter`, `alt` (15 characters or more, saying what a reader learns; required), and `width_px` of 328 at most, or no width so it flows with the column. `"readable": true` makes it live text a reader can select (the stage becomes a group described by the alt, for the brand lines or the three faces); otherwise the stage is `role="img"` named by the alt. `surface` and `illustrative` work as on any plate. No `rule` key is needed.
+- It sits under the intro, before the rule index, with no label, whole in its frame at true size from 360 px up (the guide check's openerFit).
+- It weighs under 16,384 bytes as placed, frame included; over that is a strict warning. Draw a symbol the sprite holds as `<svg viewBox="0 0 128 128"><use href="#oa-sym-cl-019"/></svg>` (or the `-24px` fits), so the page carries it once. No headings inside a specimen.
+- Check: `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <your scratch>/guide.html`.
+
 PREVIEW READY work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html 9441768
 
 # Gate 2 engineer notes: the preview build
@@ -121,3 +128,15 @@ Results of each check as it finished. The page checked is the build of 17:12, SH
 - **Sprite check:** `sprite_check.js`, PASS: civic-line 125, pillar 8, fit-24 37, utility 36 symbols; every pair at 1x and 2x with a largest difference of 0; the 41 draw the fit alone at 1x and 1.5x and the master alone at 2x.
 - **Font fidelity:** `font_fidelity_check.js`, 19 of 19 elements of version 7 (fonts from Google) and the preview (fonts inside) match pixel for pixel at 1440 px: four chapter heads, two rule titles, a rule's text, the cover's tagline and pillars, a part opener and the first ten pieces of Lora text. Version 7 asked Google for 4 font files, the preview for none.
 - **License disclosures** (a scratch script): at 1440 and 390 px, with motion and reduced motion, each of the three is reached by Tab with a 2 px ring, stands 44 px tall, opens on Enter and closes on Space; the chevron turns 180 degrees in 0.2 s, or 0 s under reduced motion; no sideways scroll with all three open; the license text on Charcoal at 13.29 to 1; axe-core 4.10.2 on the open colophon, 0 violations.
+
+
+## Fix pass
+
+Started November 11, 2026, under `20261111_Gate-2-Fix-Brief.md`. Build only to `/tmp/claude-0/-home-user-Dustin-s-Command-Center/762f3743-f9b3-59db-919e-2c641afbd759/scratchpad/gate-2-fix/engineer/`.
+
+### Call 3 (CD-S1): the opener slot, first
+
+- `OPENER_FROM` is now 01, so chapters 01 to 08 take an opener as 09 on do. Every opener's figure, as placed with its frame, stays under 16,384 bytes, or the strict build warns; an opener with no alt warns too.
+- The six openers in the page today weigh 2,331 to 8,531 bytes (s-09 8,531; s-10 4,333; s-17 5,768; s-18 5,194; s-19 2,396; s-26 2,331).
+- The build's self-test: the opener scenario now places chapter 03's opener and catches a 17 KB one in chapter 04; 27 of 27 scenarios, 295 of 295 expectations.
+- A scratch build with no other change: 0 warnings, 9,441,768 bytes, the preview's own size.
