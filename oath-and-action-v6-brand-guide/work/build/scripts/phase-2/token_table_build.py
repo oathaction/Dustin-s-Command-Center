@@ -145,6 +145,11 @@ def value_html(p, toks):
     return f'<span class="tt-v">{e(json.dumps(v))}</span>{via}'
 
 
+def ratio(r):
+    """DT-S11 (Gate 2 fix pass): one form for a contrast ratio across the guide, two decimals and "to 1": "3.10 to 1"."""
+    return f"{float(r):.2f} to 1"
+
+
 def contrast_html(p, toks):
     """The contrast a color measures where it serves: its own surface for a role, each listed surface for a primitive."""
     t = toks[p]
@@ -167,19 +172,19 @@ def contrast_html(p, toks):
         where = SURF.get(last) or SURF.get(sem.split(".")[-1]) or ""
         ground = alias(x.get("ground") or "")
         on = f"on {ground.split('.')[-2]} {ground.split('.')[-1][2:]}" if ground else f"on {where}"
-        bits = [f'<span class="tt-r">{num(x["contrast"])}:1 {e(on)}</span>, {e(kind)}' + (f", needs {num(need)}:1" if need else "")]
+        bits = [f'<span class="tt-r">{ratio(x["contrast"])} {e(on)}</span>, {e(kind)}' + (f", needs {ratio(need)}" if need else "")]
         if x.get("keylineContrast"):
-            bits.append(f"keyline {num(x['keylineContrast'])}:1")
+            bits.append(f"keyline {ratio(x['keylineContrast'])}")
         for g, r in (x.get("contrastAlso") or {}).items():
-            bits.append(f"{num(r)}:1 on {e(g.split('.')[-2])}")
+            bits.append(f"{ratio(r)} on {e(g.split('.')[-2])}")
         return "; ".join(bits)
     if x.get("kind") == "background" and x.get("textContrast"):
-        return "Text on it: " + "; ".join(f'{e(k.split(".")[-2] if k.split(".")[-1].startswith("on") else k.split(".")[-1])} {num(r)}:1'
+        return "Text on it: " + "; ".join(f'{e(k.split(".")[-2] if k.split(".")[-1].startswith("on") else k.split(".")[-1])} {ratio(r)}'
                                           for k, r in x["textContrast"].items())
     if isinstance(x.get("contrast"), dict):
         kind, need = KIND.get(x.get("kind"), (x.get("kind"), None))
-        return "; ".join(f'<span class="tt-r">{num(r)}:1 on {e(s.capitalize())}</span>' for s, r in x["contrast"].items()) \
-            + (f", {e(kind)}, needs {num(need)}:1" if need else (f", {e(kind)}" if kind else ""))
+        return "; ".join(f'<span class="tt-r">{ratio(r)} on {e(s.capitalize())}</span>' for s, r in x["contrast"].items()) \
+            + (f", {e(kind)}, needs {ratio(need)}" if need else (f", {e(kind)}" if kind else ""))
     return ""
 
 
@@ -191,6 +196,9 @@ STYLE = """
   border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); background: var(--oa-color-field-ground); color: var(--oa-color-text-primary); font: var(--oa-type-body) }
 .tt-q:focus-visible, .tt-copy:focus-visible, .tt-grp > summary:focus-visible, .tt-index a:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
 .tt-status { margin: 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
+/* Gate 2 fix pass (AX-4): under 48em the line keeps room for two lines, so "Copied" and a long name never push the table, and the
+   Copy button that keeps focus, down the screen */
+@media (max-width: 47.99em) { .tt-status { min-height: calc(2em * var(--oa-type-caption-line-height) + 2 * var(--oa-space-100)) } }
 .tt-about { margin: 0 0 var(--oa-space-150); font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
 .tt-index { margin: 0 0 var(--oa-space-300); padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 0 var(--oa-space-300) }
 .tt-index li { display: flex; align-items: center; min-height: 1.75rem }
@@ -216,9 +224,10 @@ STYLE = """
 .tt-n, .tt-c, .tt-via code { overflow-wrap: normal; word-break: normal; hyphens: manual }
 .tt-n { display: block; font-weight: var(--oa-font-weight-semibold) }
 .tt-c { display: block; margin-top: var(--oa-space-050); font-size: .875rem; color: var(--oa-color-text-secondary) }
-.tt-copy { box-sizing: border-box; margin-top: var(--oa-space-100); min-height: var(--oa-size-target-touch); padding: 0 var(--oa-space-200); border: 0;
-  box-shadow: inset 0 0 0 var(--oa-border-width-hairline) var(--oa-color-border-strong); background: transparent; color: var(--oa-color-text-primary); font: var(--oa-type-ui); cursor: pointer }
-.tt-copy:hover { box-shadow: inset 0 0 0 var(--oa-border-width-rule) var(--oa-color-border-strong); text-decoration: underline }
+.tt-copy { box-sizing: border-box; margin-top: var(--oa-space-100); min-height: var(--oa-size-target-touch); padding: 0 calc(var(--oa-space-200) - 1px);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); background: transparent; color: var(--oa-color-text-primary); font: var(--oa-type-ui); cursor: pointer }
+/* Gate 2 fix pass (DT-S1): hover thickens the 1 px edge to 2 px, as chapter 18's Copy button does, and never an inset shadow (Rule 17.9) */
+.tt-copy:hover { border-width: var(--oa-border-width-rule); padding: 0 calc(var(--oa-space-200) - 2px); text-decoration: underline }
 .tt-sw { display: inline-block; width: 1.25rem; height: 1.25rem; margin-right: var(--oa-space-100); vertical-align: -.3em;
   box-shadow: inset 0 0 0 var(--oa-border-width-hairline) var(--oa-color-border-strong) }
 .tt-v { font-variant-numeric: tabular-nums }

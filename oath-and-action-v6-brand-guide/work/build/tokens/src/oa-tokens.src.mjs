@@ -61,7 +61,7 @@ const chartNum = (value, unit, description, source, ext = {}) => tok('number', v
 // ------------------------------------------------------------------------------------------ metadata
 export const meta = {
   title: 'Oath & Action design tokens, Edition 06',
-  version: '6.0.0-gate2.8',   // stage C round 2, November 11, 2026: DR-218 (descriptions in reader words, the loading mark's description, error.mark renamed error.bar with a deprecated alias) and D2-1544 (the field ground on Charcoal is Charcoal); see changeNotes (gate2.7: the light and dark themes, DR-204; gate2.6: the error mark token colors the 4 px bar, PP-M3; gate2.5: the icon accent from 48 px, the 16 px utility line; gate2.4: mark tokens, D2-402, the 24 px utility line, icon sizes after DR-136)
+  version: '6.0.0-gate2.9',   // Gate 2 fix pass, November 11, 2026: descriptions only (DT-S5, DT-S6, AX-1, AX-2), no name or value changes; the error bar drops its keyline record. Before that, gate2.8, stage C round 2, November 11, 2026: DR-218 (descriptions in reader words, the loading mark's description, error.mark renamed error.bar with a deprecated alias) and D2-1544 (the field ground on Charcoal is Charcoal); see changeNotes (gate2.7: the light and dark themes, DR-204; gate2.6: the error mark token colors the 4 px bar, PP-M3; gate2.5: the icon accent from 48 px, the 16 px utility line; gate2.4: mark tokens, D2-402, the 24 px utility line, icon sizes after DR-136)
   status: 'pre-release',
   // DR-191's second pass, E3: reader words, since a builder downloads this file
   statusNote:
@@ -106,6 +106,11 @@ export const meta = {
   // A note's version, date, tokens, change and reason are reader words: chapter 26 prints the newest note (Rule 26.8), and
   // tokens.css's header carries its change. The studio's decision codes sit in `record` alone (DR-218, BE-S7).
   changeNotes: [
+    { version: '6.0.0-gate2.9', date: '2026-11-11',
+      tokens: 'oa.color.state.error.bar and its deprecated alias oa.color.state.error.mark; oa.color.state.selected.band; oa.size.icon.medium; oa.color.action.ask.fill',
+      change: 'Descriptions only; no token is renamed and no value changes. The error bar no longer records a Charcoal keyline: it repeats the error mark and the word "Error:", which carry the error, so it takes none, as the guide draws it. The selected band is the ground of the current or selected row in a list, paired with the 4 px bar and bold words, and says which marks may sit inside it in the dark theme. The 24 px icon size names the 37 topic and atlas symbols on Rule 10.4\'s list. The ask fill says it is Newsprint on Prussian.',
+      reason: 'Each description now says what the chapters say and what the page draws: chapter 26\'s table prints them for readers, and tokens.json carries them to every product.',
+      record: 'Gate 2 fix pass: DT-S5, DT-S6, AX-1, AX-2', gate: 'Gate 2' },
     { version: '6.0.0-gate2.8', date: '2026-11-11',
       tokens: 'oa.color.state.error.bar, renamed from oa.color.state.error.mark; oa.color.field.ground.onCharcoal; the description of oa.color.state.loading.mark, and every description that carried a record code or an old name',
       change: 'The token for the 4 px bar beside an error now takes the bar\'s name: oa.color.state.error.bar, --oa-color-state-error-bar in CSS. The old names stay as deprecated aliases through every 6.0 release and leave with 6.1.0. The field ground on Charcoal is now Charcoal, so a field in the dark theme shows by its strong Newsprint edge and an error\'s red bar sits on Charcoal at 4.49 to 1; no value is new. The loading mark\'s description now names the still lines of Rule 17.7, and every description is in plain words. Before 6.0.0, every change raises the number after the hyphen.',
@@ -257,9 +262,11 @@ const tints = Object.fromEntries([
 
 // The 4 px bar beside an error, the first claim on the view's working red (Rule 05.3); named oa.color.state.error.mark
 // until 6.0.0-gate2.8 (DR-218), and below under both names.
-const ERROR_BAR = semantic('graphic', 'The 4 px bar beside an error message and at the left of a field with an error: the first claim on the view\'s working red. The error mark, the glyph, takes the error text\'s ink, --oa-color-state-error-text-on-<surface>, since red on the Error Band falls under 3 to 1. Newsprint on Prussian, where red never sits.',
+// Gate 2 fix pass (AX-1): the bar repeats the error mark and the word "Error:", which carry the error, so it takes no
+// keyline, as DR-199's drawing shows; the keyline record goes, and Rule 05.5 names the bar as that case
+const ERROR_BAR = semantic('graphic', 'The 4 px bar beside an error message and at the left of a field with an error: the first claim on the view\'s working red. It repeats the error mark and the word "Error:", which carry the error, so it takes no keyline (Rule 05.5). The error mark, the glyph, takes the error text\'s ink, --oa-color-state-error-text-on-<surface>, since red on the Error Band falls under 3 to 1. Newsprint on Prussian, where red never sits.',
   { newsprint: P('pillarRed'), white: P('pillarRed'), charcoal: P('pillarRed'), prussian: P('newsprint') },
-  { newsprint: { redRole: 'working', precedence: 1, keyline: '{oa.color.palette.charcoal}' },
+  { newsprint: { redRole: 'working', precedence: 1, repeats: 'the error mark and the word "Error:"' },
     white: { redRole: 'working', precedence: 1 }, charcoal: { redRole: 'working', precedence: 1 } });
 
 const color = {
@@ -305,7 +312,7 @@ const color = {
   },
   action: {
     ask: {
-      fill: semantic('graphic', 'Ask button fill: the step a reader can take now, the second claim on the view\'s working red. On Newsprint it takes a 1 px Charcoal keyline.',
+      fill: semantic('graphic', 'Ask button fill: the step a reader can take now, the second claim on the view\'s working red. On Newsprint it takes a 1 px Charcoal keyline. On Prussian it is Newsprint, since red never sits on Prussian (Rule 05.3).',
         { newsprint: P('pillarRed'), white: P('pillarRed'), charcoal: P('pillarRed'), prussian: P('newsprint') },
         { newsprint: { redRole: 'working', precedence: 2, keyline: '{oa.color.palette.charcoal}' },
           white: { redRole: 'working', precedence: 2 }, charcoal: { redRole: 'working', precedence: 2 } }),
@@ -340,7 +347,7 @@ const color = {
         Object.fromEntries(SURF4.map((s) => [s, { motion: 'none' }]))),
     },
     selected: {
-      band: semantic('background', 'Ground of a selected row or option: the paired surface. Pair it with the 4 px bar and a check glyph.',
+      band: semantic('background', 'Ground of the current or selected row in a list. Pair it with the 4 px bar and bold words (Rule 17.10). The band holds its words, the bar and a check. On Charcoal it is Prussian, so a success mark inside it takes Newsprint, and an error or an ask sits outside it, since red never sits on Prussian (Rule 05.3).',
         { newsprint: P('white'), white: P('newsprint'), charcoal: P('prussian'), prussian: P('charcoal') },
         Object.fromEntries(SURF4.map((s) => [s, { textOnIt: [`{oa.color.text.primary.${SURFACE_KEY[s]}}`, `{oa.color.text.secondary.${SURFACE_KEY[s]}}`] }]))),
       bar: semantic('graphic', 'The 4 px bar beside a selected item, drawn on the selected band.',
@@ -448,7 +455,7 @@ const size = {
   // symbol is set at 16 px, and only the 41 that read there are set at 24 px.
   icon: {
     small: tok('dimension', px(16), 'Icon at 16 px: a utility icon inline in text or a table heading, or a pixel-fit pillar icon. One color, with no red. No topic or atlas symbol is set at this size.', { oneColor: true }),
-    medium: tok('dimension', px(24), 'Icon at 24 px: a utility icon beside a control\'s word, a pixel-fit pillar icon, or one of the 41 topic symbols that read at this size. One color, with no red.'),
+    medium: tok('dimension', px(24), 'Icon at 24 px: a utility icon beside a control\'s word, a pixel-fit pillar icon, or one of the 37 topic and atlas symbols on Rule 10.4\'s list. One color, with no red.'),
     large: tok('dimension', px(48), 'Icon at 48 px: the smallest size for a topic or atlas symbol, and the smallest that may carry a red accent. A pillar icon under this size sits with its word.'),
   },
   target: {

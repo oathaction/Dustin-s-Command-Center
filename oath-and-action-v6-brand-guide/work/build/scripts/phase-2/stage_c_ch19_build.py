@@ -818,7 +818,7 @@ def build():
     n = len(crit)
     newn = sum(c['new'] for c in crit)
     rules = [
-        dict(id='19.1', title='Build every page and product to WCAG 2.2 at level AA, and find each criterion here.',
+        dict(id='19.1', title='Build every page and product to WCAG 2.2 at level AA.',
              rule=[f'WCAG 2.2 sets {n} success criteria at levels A and AA: '
                    f'{sum(c["level"] == "A" for c in crit)} at A and {sum(c["level"] == "AA" for c in crit)} at AA, {w(newn)} of them '
                    'new in 2.2. Build every page and product we publish to meet all of them. The list below gives each criterion in '
@@ -844,7 +844,7 @@ def build():
                     {'label': 'Not used today', 'value': f'{counts["none"]}: ' + and_list([NONE_WHAT[k] for k in sorted(NONE_WHAT, key=sort_key)])}],
              related=['18', '20'], builders=['Use W3C’s quick reference, w3.org/WAI/WCAG22/quickref, to filter the criteria '
                                              'by level and topic, and open a criterion’s Understanding page for its examples.']),
-        dict(id='19.2', title='Write alt text for what an image does on the page, and hide decoration from screen readers.',
+        dict(id='19.2', title='Write alt text for what an image does on the page.',
              rule=['Alt text says what a reader would miss without the image, in a sentence, such as a chart’s finding or '
                    'what a photograph shows happening. A symbol beside its own word, a divider or a pattern takes empty alt '
                    'text, <code>alt=""</code>, so a screen reader passes it. A chart or an atlas drawing also gets its table or its lines '
@@ -865,7 +865,7 @@ def build():
                        'img beside its word takes <code>alt=""</code>. A chart that stands alone takes its finding as its alt, or '
                        '<code>role="img"</code> with an <code>aria-label</code> where it is an svg, and its table or its lines in words '
                        'sit beside it.']),
-        dict(id='19.3', title='Name a control or a step by its words, and add its color, shape or place only after them.',
+        dict(id='19.3', title='Name a control or a step by its words.',
              rule=['An instruction names the control it means by the words on it: “press Send your comment”. Color, shape '
                    'and place can follow the words, as in “Send your comment, under the form”, since a phone moves things, and '
                    'a screen reader or a contrast theme loses color.'],
@@ -881,7 +881,7 @@ def build():
              related=['02', '18'],
              builders=['Copy the control’s words into the instruction exactly as the control shows them, as in “Press Send '
                        'your comment”, so a reader using voice control can say the words they read.']),
-        dict(id='19.4', title='Set words as live text, and keep pictures of text for the logo.',
+        dict(id='19.4', title='Set every word as live text except the logo.',
              rule=['Headlines, quotes, labels and chart words are live text in the page. A social card or a slide that '
                    'must be an image carries its words again in the post or the page beside it. The wordmark and its lockups are '
                    'the only pictures of text a page holds.'],
@@ -921,7 +921,7 @@ def build():
              builders=['Run an action on the <code>click</code> event, which fires when the press ends, and never on '
                        '<code>pointerdown</code> or <code>touchstart</code>. Give a drag or a pinch a button that does the same, and '
                        'give every keyboard shortcut a modifier key, as in Control and K.']),
-        dict(id='19.6', title='Let text grow to 200 percent, spacing open and the screen turn, with nothing lost.',
+        dict(id='19.6', title='Keep every word when text grows, spacing opens or the screen turns.',
              rule=['A page keeps every word and control when the reader doubles the text size, widens the spacing between '
                    'lines, words and letters, or turns the phone on its side. Labels wrap where they would overflow, a row '
                    'of two buttons stacks, and no page locks itself to one orientation. Reflow at 320 px is Rule 07.6.'],
@@ -943,7 +943,7 @@ def build():
              builders=['Size type in rem, let a box of words take its height from them, and let words wrap with '
                        '<code>overflow-wrap: break-word</code>. Leave the orientation out of the web app manifest, and never call '
                        '<code>screen.orientation.lock()</code>.']),
-        dict(id='19.7', title='Check every page with the verification matrix, each check by its own method.',
+        dict(id='19.7', title='Check every page against the verification matrix.',
              rule=[f'The matrix holds {len(MATRIX)} checks. Each shows one thing, such as a keyboard path or a color pair, '
                    'and each has its own method, because no single tool sees them all. A page is ready when every check '
                    'that applies to it has run and passed, and its results are written down as Rule 19.8 sets.'],
@@ -964,7 +964,7 @@ def build():
              builders=['Run the checks a tool can run with the commands in the matrix, on every page and in each theme, and log the '
                        'tool’s version with each result. The rest need a person: the Tab order and the focus ring, the reading '
                        'order, words broken in the middle, and the device script.']),
-        dict(id='19.8', title='Report each result with its date, and keep what was tested apart from what was not.',
+        dict(id='19.8', title='Report each result with its date and build.',
              rule=['A results report gives the date, the build it ran on and, for each check, what ran and what it found. '
                    'What could not run, and why, goes in a separate list, so no one reads a check nobody made as a pass. '
                    'The guide’s own results so far are below.'],
@@ -981,7 +981,7 @@ def build():
              related=['18'],
              builders=['Keep the results in a dated file that names the build, the tool and its version, and print the page’s '
                        'results from that file, so the page and the file never disagree.']),
-        dict(id='19.9', title='Before launch, run the device script on an iPhone, an Android phone, a Windows PC and a Mac.',
+        dict(id='19.9', title='Before launch, run the device script on real devices.',
              rule=['Four short scripts check what no automated test can: a real screen reader on each of four common platforms, '
                    'and a Windows contrast theme. Each step says what to press, and the ten things to listen for say what a '
                    'pass sounds like, so anyone can run them with no training.'],

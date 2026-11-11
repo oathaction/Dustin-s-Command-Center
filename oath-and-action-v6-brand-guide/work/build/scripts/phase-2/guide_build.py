@@ -1296,16 +1296,69 @@ def specs_list(specs_rows, tokens, where):
     return f'<dl class="spec-list">{"".join(rows)}</dl>' if rows else ""
 
 
-def files_list(files, where):
-    if not files:
+# Gate 2 fix pass (DT-M1, call 1): a rule's Files list prints only what ships. An asset under work/build/assets/ prints by
+# its file name alone, the name it carries into the asset package (a folder by its own name and its count of files);
+# the two token files print as links to Rule 26.8's downloads. Studio sources (boards, handoffs, extracts, research,
+# ledgers, build scripts) and the inventories and manifests beside the assets never reach a reader: each is dropped with
+# a note, and a list left empty goes. Anything else is a warning, as is an asset path that does not exist.
+SHIP_EXT = {".svg", ".png", ".jpg", ".jpeg", ".webp", ".pdf", ".woff2", ".ttf", ".otf", ".zip", ".mp4", ".webm", ".txt"}
+STUDIO_PREFIX = ("work/boards/", "work/handoffs/", "work/extract/", "work/research/", "work/ledger/", "work/build/scripts/",
+                 "work/build/tests/", "work/build/guide/", "work/build/tokens/src/", "brief/", "source/")
+TOKEN_FILES = {"work/build/tokens/tokens.css": "tokens.css", "work/build/tokens/tokens.json": "tokens.json"}
+
+
+def ship_files(files, where, ctx=None):
+    """[(key, html, needs_note)] for a rule's files: what ships, by name, in order, once each (DT-M1)."""
+    out, seen = [], set()
+    for f in as_list(files):
+        f = str(f).strip()
+        if f in TOKEN_FILES:
+            name = TOKEN_FILES[f]
+            link = ctx is None or "26" in ctx.get("present", ())
+            html_ = (f'<a class="xref" href="#rule-26-8"><code>{name}</code></a>, downloaded under Rule 26.8' if link else f"<code>{name}</code>")
+            key, note = name, False
+        elif f.startswith("work/build/assets/"):
+            p = ROOT / f
+            if not p.exists():
+                R.warn(where, f"file {f} does not exist in the repository")
+                continue
+            if p.is_dir():
+                n = sum(1 for x in p.iterdir() if x.is_file() and x.suffix.lower() in SHIP_EXT)
+                key = p.name + "/"
+                html_ = f"<code>{e(key)}</code>, {n:,} file{'s' if n != 1 else ''}"
+            elif p.suffix.lower() in SHIP_EXT and not re.search(r"(?:^|/)(?:qa|_archive)/", f):
+                key = p.name
+                html_ = f"<code>{break_code(p.name)}</code>"
+            else:
+                R.note(f"{where}: Files leaves out {f}, an inventory or record beside the assets, which does not ship (DT-M1)")
+                continue
+            note = True
+        elif f.startswith(STUDIO_PREFIX):
+            R.note(f"{where}: Files leaves out {f}, a studio source, which stays off the page (DT-M1)")
+            continue
+        else:
+            R.warn(where, f"Files names {f}, which is neither an asset under work/build/assets/, a token file, nor a studio source the build "
+                          f"knows to leave out; list a file that ships, or remove it from the rule's files (DT-M1)")
+            continue
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append((key, html_, note))
+    return out
+
+
+def ship_files_quiet(files, ctx=None):
+    keep = R.warnings[:], R.notes[:]
+    items = ship_files(files, "", ctx)
+    R.warnings[:], R.notes[:] = keep
+    return items
+
+
+def files_list(files, where, ctx=None):
+    items = ship_files(files, where, ctx)
+    if not items:
         return ""
-    items = []
-    for f in files:
-        p = ROOT / f
-        if not p.exists():
-            R.warn(where, f"file {f} does not exist in the repository")
-        items.append(f"<li><code>{break_code(f, '/')}</code></li>")
-    return f'<p class="label">Files</p><ul class="file-list">{"".join(items)}</ul>'
+    return f'<p class="label">Files</p><ul class="file-list">{"".join(f"<li>{h}</li>" for _, h, _ in items)}</ul>'
 
 
 def as_list(v):
@@ -1393,7 +1446,7 @@ def render_rule(ch_num, r, specs, tokens, ctx, amp_svg, demo=False):
     # share one row under it.
     foot = []
     sl = specs_list(r.get("specs"), tokens, where)
-    fl = files_list(r.get("files"), where)
+    fl = files_list(r.get("files"), where, ctx)
     if sl or fl:
         foot.append(f'<div class="foot-block foot-specs"><p class="label">Specifications</p>{sl}{fl}</div>')
     pair = []
@@ -1715,7 +1768,7 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
     tok_rows = {}
     for t, rid in all_tokens:
         tok_rows.setdefault(css_name(t), {"tok": t, "rules": []})["rules"].append(rid)
-    if tok_rows or all_files:
+    if tok_rows or (all_files and ship_files_quiet([f for f, _ in all_files], ctx)):
         rows = []
         for name, d in tok_rows.items():
             val = tokens.shown(d["tok"])
@@ -1729,9 +1782,14 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
                      f'<tbody>{"".join(rows)}</tbody></table></div>')
         flist = ""
         if all_files:
-            uniq = list(dict.fromkeys(f for f, _ in all_files))
-            flist = ('<p class="label">Files</p><ul class="file-list">' + "".join(f"<li><code>{break_code(f, '/')}</code></li>" for f in uniq) + "</ul>"
-                     f'<p class="closer-note">{e(FILES_NOTE)}</p>')
+            # DT-M1: the same rule as each rule's list, quietly (each rule's own list has already said what it left out);
+            # D2-252's note stays only where a listed file has no download yet
+            keep_r = R.warnings[:], R.notes[:]
+            items = ship_files([f for f, _ in all_files], where, ctx)
+            R.warnings[:], R.notes[:] = keep_r
+            if items:
+                flist = ('<p class="label">Files</p><ul class="file-list">' + "".join(f"<li>{h}</li>" for _, h, _ in items) + "</ul>"
+                         + (f'<p class="closer-note">{e(FILES_NOTE)}</p>' if any(n for _, _, n in items) else ""))
         closers.append(f'<div class="closer" id="{cid}-specs"><h3>Specifications</h3><p class="return" hidden></p>{table}{flist}</div>')
         toc.append((f"{cid}-specs", None, "Specifications"))
         after.append((f"{cid}-specs", "Specifications"))

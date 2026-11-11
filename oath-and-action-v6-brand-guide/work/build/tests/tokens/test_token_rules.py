@@ -351,7 +351,19 @@ def check(json_path, css_path=None):
             c = L.ratio(h, ground)
             need = THRESH[kind]
             cell.update(ratio=c, threshold=need, measuredAgainst=e.get('ground') or s)
-            if c < need:
+            # Gate 2 fix pass (AX-1): a graphic that repeats a state its mark and words already carry, such as the error bar
+            # beside the error mark and the word "Error:", is not needed to read the state, so WCAG 1.4.11's 3 to 1 does not
+            # bind it, and it takes no keyline; its description must say so
+            rep = e.get('repeats') if kind == 'graphic' else None
+            if rep:
+                cell.update(repeats=rep)
+                said = str(t.get('$description', ''))
+                dep = (e.get('deprecated') or {}).get('replacedBy')
+                if dep:   # a deprecated alias says so through the token that replaces it
+                    said += ' ' + str(T.get(L.alias_target(dep), {}).get('$description', ''))
+                if not re.search(r'repeats|no keyline', said):
+                    fails.append(f'{p}: it repeats {rep}, and its description does not say so')
+            if c < need and not rep:
                 kl = e.get('keyline')
                 if kind == 'graphic' and kl:
                     kh = ref_hex(kl, p)
@@ -420,7 +432,7 @@ def check(json_path, css_path=None):
                 fails.append(f'{p}: Rule 05.3, a red token names its claim: signature, or working red at rank 1 to 3')
             if role == 'signature' and e.get('kind') != 'logotype':
                 fails.append(f'{p}: signature red belongs to identity marks (kind logotype)')
-            if role == 'working' and s == 'newsprint':
+            if role == 'working' and s == 'newsprint' and not e.get('repeats'):
                 kl = e.get('keyline')
                 kh = ref_hex(kl, p) if kl else None
                 if not kh or L.ratio(kh, L.LOCKED['newsprint']) < 3.0:
@@ -671,7 +683,7 @@ def check(json_path, css_path=None):
                 elif kind in THRESH:
                     g = ref_hex(e['ground'], sem) if e.get('ground') else ground
                     c = L.ratio(h, g)
-                    if c < THRESH[kind]:
+                    if c < THRESH[kind] and not (kind == 'graphic' and e.get('repeats')):
                         kl = e.get('keyline')
                         kc = L.ratio(ref_hex(kl, sem), ground) if kl and kind == 'graphic' else 0
                         if kc < 3.0:

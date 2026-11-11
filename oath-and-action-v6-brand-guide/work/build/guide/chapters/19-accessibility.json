@@ -32,7 +32,7 @@
   "rules": [
     {
       "id": "19.1",
-      "title": "Build every page and product to WCAG 2.2 at level AA, and find each criterion here.",
+      "title": "Build every page and product to WCAG 2.2 at level AA.",
       "rule": [
         "WCAG 2.2 sets 55 success criteria at levels A and AA: 31 at A and 24 at AA, six of them new in 2.2. Build every page and product we publish to meet all of them. The list below gives each criterion in W3C’s own words and the rule in this guide that meets it.",
         "Today a rule meets 33 criteria and eight more in part. Nine are gaps, each named with the chapter that owes it, and five govern things no product does yet, such as live video or accounts. A gap is open work, and a page that meets the criterion on its own still meets it."
@@ -88,7 +88,7 @@
     },
     {
       "id": "19.2",
-      "title": "Write alt text for what an image does on the page, and hide decoration from screen readers.",
+      "title": "Write alt text for what an image does on the page.",
       "rule": [
         "Alt text says what a reader would miss without the image, in a sentence, such as a chart’s finding or what a photograph shows happening. A symbol beside its own word, a divider or a pattern takes empty alt text, <code>alt=\"\"</code>, so a screen reader passes it. A chart or an atlas drawing also gets its table or its lines in words (Rule 18.23)."
       ],
@@ -136,7 +136,7 @@
     },
     {
       "id": "19.3",
-      "title": "Name a control or a step by its words, and add its color, shape or place only after them.",
+      "title": "Name a control or a step by its words.",
       "rule": [
         "An instruction names the control it means by the words on it: “press Send your comment”. Color, shape and place can follow the words, as in “Send your comment, under the form”, since a phone moves things, and a screen reader or a contrast theme loses color."
       ],
@@ -179,7 +179,7 @@
     },
     {
       "id": "19.4",
-      "title": "Set words as live text, and keep pictures of text for the logo.",
+      "title": "Set every word as live text except the logo.",
       "rule": [
         "Headlines, quotes, labels and chart words are live text in the page. A social card or a slide that must be an image carries its words again in the post or the page beside it. The wordmark and its lockups are the only pictures of text a page holds."
       ],
@@ -273,7 +273,7 @@
     },
     {
       "id": "19.6",
-      "title": "Let text grow to 200 percent, spacing open and the screen turn, with nothing lost.",
+      "title": "Keep every word when text grows, spacing opens or the screen turns.",
       "rule": [
         "A page keeps every word and control when the reader doubles the text size, widens the spacing between lines, words and letters, or turns the phone on its side. Labels wrap where they would overflow, a row of two buttons stacks, and no page locks itself to one orientation. Reflow at 320 px is Rule 07.6."
       ],
@@ -325,7 +325,7 @@
     },
     {
       "id": "19.7",
-      "title": "Check every page with the verification matrix, each check by its own method.",
+      "title": "Check every page against the verification matrix.",
       "rule": [
         "The matrix holds 15 checks. Each shows one thing, such as a keyboard path or a color pair, and each has its own method, because no single tool sees them all. A page is ready when every check that applies to it has run and passed, and its results are written down as Rule 19.8 sets."
       ],
@@ -376,7 +376,7 @@
     },
     {
       "id": "19.8",
-      "title": "Report each result with its date, and keep what was tested apart from what was not.",
+      "title": "Report each result with its date and build.",
       "rule": [
         "A results report gives the date, the build it ran on and, for each check, what ran and what it found. What could not run, and why, goes in a separate list, so no one reads a check nobody made as a pass. The guide’s own results so far are below."
       ],
@@ -418,7 +418,7 @@
     },
     {
       "id": "19.9",
-      "title": "Before launch, run the device script on an iPhone, an Android phone, a Windows PC and a Mac.",
+      "title": "Before launch, run the device script on real devices.",
       "rule": [
         "Four short scripts check what no automated test can: a real screen reader on each of four common platforms, and a Windows contrast theme. Each step says what to press, and the ten things to listen for say what a pass sounds like, so anyone can run them with no training."
       ],

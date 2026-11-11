@@ -177,13 +177,7 @@ INTRO = [
     'gives one component as code to copy, drawn live in the light theme on Newsprint and in the dark theme on Charcoal, '
     'and a table of its states, its keys, its name, its target size and what a screen reader hears when it changes.',
     'The code reads only tokens.css, the file that holds every color, size and type style as a named value, so one copy '
-    'follows either theme. Each component hands a screen reader its accessible name, the words a screen reader says for '
-    'it. It also hands over its role, such as button, and its state, such as pressed. When something changes, the code '
-    'writes a sentence into a status line, a line on the page that a screen reader reads at its next pause. Each screen '
-    'reader words all of this its own way. ARIA, short for Accessible Rich Internet Applications, is W3C’s set of '
-    'attributes that gives a role or a state where HTML has none. Each rule names the pattern it follows in the ARIA '
-    'Authoring Practices Guide (APG), W3C’s worked examples of each control. How each state looks and moves comes from '
-    'chapter 17.',
+    'follows either theme. How each state looks and moves comes from chapter 17.',
 ]
 
 GROUPS = [
@@ -269,7 +263,7 @@ def rule(**kw):
 
 # ---- 18.1 Buttons -----------------------------------------------------------------------------------------------
 rule(n=1, set='c-18-button', name='Buttons',
-     title='Use a button to act on the page, and keep an unavailable one in reach with its reason.',
+     title='Use a button to act on the page.',
      rule=['A button acts on the page: it sends a form, copies a value or starts a loop. A control that takes the reader to '
            'another page or place is a link (Rule 18.5). A view has one primary button at most, Charcoal on Newsprint and '
            'Newsprint on Charcoal. The ask, the Pillar Red button for the one way to take part, appears only where Rule '
@@ -287,7 +281,13 @@ rule(n=1, set='c-18-button', name='Buttons',
              '--oa-component-button-primary-label', '--oa-component-button-ask-fill', '--oa-component-button-ask-label',
              '--oa-component-button-ask-keyline', '--oa-component-button-disabled-label',
              '--oa-component-button-disabled-edge', 'oa.size.target.touch'],
-     why=['A native button gives every reader the Tab key, Enter, Space and the role “button” with no script. The disabled '
+     why=['Every component in this chapter hands a screen reader three things: its accessible name, the words a screen '
+          'reader says for it; its role, such as button; and its state, such as pressed. When something changes, the code '
+          'writes a sentence into a status line, a line on the page that a screen reader reads at its next pause. Each '
+          'screen reader words all of this its own way. ARIA, short for Accessible Rich Internet Applications, is W3C’s set '
+          'of attributes that gives a role or a state where HTML has none, and each rule names the pattern it follows in '
+          'the ARIA Authoring Practices Guide (APG), W3C’s worked examples of each control.',
+          'A native button gives every reader the Tab key, Enter, Space and the role “button” with no script. The disabled '
           'attribute would take the button out of the Tab order and hide its reason with it, so an unavailable button '
           'carries aria-disabled, which keeps both in reach. An underline on hover and a dashed edge when unavailable carry each state in a shape as well as '
           'a color.'],
@@ -340,7 +340,7 @@ rule(n=1, set='c-18-button', name='Buttons',
 
 # ---- 18.2 Toggle buttons and chips ------------------------------------------------------------------------------
 rule(n=2, set='c-18-toggle', name='Toggle buttons and chips',
-     title='Turn a setting on or off with a toggle button, and mark it on with a check, bold words and a 2 px edge.',
+     title='Turn a setting on or off with a toggle button.',
      rule=['A toggle button turns one thing on or off and keeps its word in both states, such as “Show sources”. A filter '
            'chip is a toggle that narrows a list, and chips combine, so a reader can turn on several at once. Each carries '
            'aria-pressed, true while it is on.',
@@ -438,7 +438,7 @@ rule(n=3, set='c-18-choice', name='Choice',
 
 # ---- 18.4 Theme switch ------------------------------------------------------------------------------------------
 rule(n=4, set='c-18-theme-switch', name='Theme switch',
-     title='Let the reader choose Light, Dark or Match my device, and remember the choice.',
+     title='Let the reader choose Light, Dark or Match my device.',
      rule=['Every screen product follows the reader’s device at first and offers a theme switch in the same place on every '
            'page, in the masthead or at the top of the phone menu. The switch is a choice (Rule 18.3) of three radio '
            'buttons under the legend “Theme”: Light, Dark and Match my device, with Match my device checked until the '
@@ -495,7 +495,7 @@ rule(n=4, set='c-18-theme-switch', name='Theme switch',
 
 # ---- 18.5 Links -------------------------------------------------------------------------------------------------
 rule(n=5, set='c-18-link', name='Links',
-     title='Underline every link in text, and say in its name when it leaves our site.',
+     title='Underline every link in text.',
      rule=['A link takes the reader to another page or place, and its words name the place, such as “the committee’s '
            'hearing schedule”. A link in running text keeps a 1 px underline that thickens to 2 px on hover, so its color '
            'is never the only sign. A link to another site opens in the same tab; its 16 px mark follows its last word, '
@@ -544,7 +544,7 @@ rule(n=5, set='c-18-link', name='Links',
 
 # ---- 18.6 Masthead and phone menu -------------------------------------------------------------------------------
 rule(n=6, set='c-18-masthead', name='Masthead and phone menu',
-     title='Give every page one masthead, with its parts in a named navigation and a phone menu that holds focus.',
+     title='Give every page one masthead with its parts in a named navigation.',
      rule=['The masthead holds the product’s name, which links home, and its parts in a navigation landmark, a region a '
            'screen reader can jump to, named for what it holds, such as “Parts of the site”. The link to the part the reader is in carries <code>aria-current="page"</code>, bold words and a 2 px '
            'underline. When the parts no longer fit on one line, they move behind a Menu button, its three bars beside the '
@@ -601,7 +601,7 @@ rule(n=6, set='c-18-masthead', name='Masthead and phone menu',
 
 # ---- 18.7 Location ----------------------------------------------------------------------------------------------
 rule(n=7, set='c-18-location', name='Location list',
-     title='Show where the reader is with aria-current and a mark that holds without color.',
+     title='Show where the reader is with aria-current and a visible mark.',
      rule=['A list of places in a product, such as a chapter rail, an “In this chapter” list or a breadcrumb, marks the '
            'reader’s place in two ways at once. The link carries aria-current: “page” for the page itself, “location” for '
            'a part of a long page and “step” for a step in a process. A list beside the text marks it with the selected '
@@ -656,7 +656,7 @@ rule(n=7, set='c-18-location', name='Location list',
 
 # ---- 18.8 Disclosure --------------------------------------------------------------------------------------------
 rule(n=8, set='c-18-disclosure', name='Disclosure',
-     title='Open a part of the page in place with a disclosure whose words name it and whose chevron turns.',
+     title='Open a part of the page in place with a disclosure.',
      rule=['A disclosure shows or hides one part of the page in place, such as a drawing’s lines in words or the sources of '
            'a claim. Build it on native details and summary, or on a button with aria-expanded and aria-controls where the '
            'part must sit apart from its control. Its words name what opens, such as “The lines in words”, and its chevron '
@@ -702,7 +702,7 @@ rule(n=8, set='c-18-disclosure', name='Disclosure',
 
 # ---- 18.9 Tabs --------------------------------------------------------------------------------------------------
 rule(n=9, set='c-18-tabs', name='Tabs',
-     title='Switch between views of one thing with tabs that move by the arrow keys.',
+     title='Switch between views of one thing with tabs.',
      rule=['Use tabs only where a reader switches between views of one thing that never need to show at once, such as a '
            'drawing, its lines in words and its table. A process with steps takes a stepper (Rule 18.22), and other pages '
            'take links. The tabs sit in a tab list named for the thing, each tab names its view, and the selected tab '
@@ -748,7 +748,7 @@ rule(n=9, set='c-18-tabs', name='Tabs',
 
 # ---- 18.10 Table ------------------------------------------------------------------------------------------------
 rule(n=10, set='c-18-table', name='Sortable table',
-     title='Build a table from table markup, and sort a column with a button in its heading.',
+     title='Build a table from table markup.',
      rule=['A table has a caption that names it, column headings in th with <code>scope="col"</code>, and row headings where the first '
            'column names each row. A column a reader can sort holds a button in its heading, with the heading’s words and '
            'the 16 px sort arrow after them. The sorted column’s heading carries aria-sort, and the arrow turns up for '
@@ -795,7 +795,7 @@ rule(n=10, set='c-18-table', name='Sortable table',
 
 # ---- 18.11 Scroll region ----------------------------------------------------------------------------------------
 rule(n=11, set='c-18-scroll-region', name='Scroll region',
-     title='Let wide content scroll inside a named frame that the Tab key reaches only while it scrolls.',
+     title='Let wide content scroll inside a named frame.',
      rule=['Content wider than its column, such as a wide table or a drawing at true size, scrolls sideways inside its own '
            'frame, so the page itself never scrolls sideways (Rule 07.6). While it overflows, the frame takes '
            '<code>tabindex="0"</code> and the role of a group named for what it holds, and the hint “Wider than this '
@@ -838,7 +838,7 @@ rule(n=11, set='c-18-scroll-region', name='Scroll region',
 
 # ---- 18.12 Code block -------------------------------------------------------------------------------------------
 rule(n=12, set='c-18-code-block', name='Code block',
-     title='Show code in labeled panels, each with a Copy button named for what it copies.',
+     title='Show code in labeled panels with named Copy buttons.',
      rule=['Code a reader can copy sits in one panel per file, HTML, CSS or Script, each with its label and a Copy button '
            'named for its panel: “Copy the HTML”, “Copy the CSS” and “Copy the script”. One status line under the panels '
            'says what was copied, with the success mark, such as “Copied the CSS, 2 lines, to the clipboard.” The code keeps its own line breaks at 14 px, and a panel that overflows scrolls as Rule 18.11 '
@@ -886,7 +886,7 @@ rule(n=12, set='c-18-code-block', name='Code block',
 
 # ---- 18.13 Copy a value -----------------------------------------------------------------------------------------
 rule(n=13, set='c-18-copy', name='Copy control',
-     title='Copy one value with a button that names it, and say the result in words.',
+     title='Copy one value with a button that names it.',
      rule=['A value a builder needs, such as a token’s name or a hex color, sits beside a Copy button. Its visible word is '
            '“Copy”, and its name goes on with the value from hidden words, “Copy --oa-color-surface-charcoal”, so every '
            'Copy in a table names its own value. The icon’s two sheets stay as drawn after a press (Rule 11.12), and the '
@@ -927,7 +927,7 @@ rule(n=13, set='c-18-copy', name='Copy control',
 
 # ---- 18.14 Download ---------------------------------------------------------------------------------------------
 rule(n=14, set='c-18-download', name='Download',
-     title='Name each download for its file, type and size, and say why one is not ready.',
+     title='Name each download for its file, type and size.',
      rule=['A download is a link with the download attribute when it fetches a file, and a button when a script builds '
            f'the file. Its words start with “Download” and name the file, its type and its size, in kilobytes of 1,000 '
            f'bytes: “Download tokens.css, CSS, {TOKENS_KB}”. The download icon, an arrow into a tray, sits before the '
@@ -972,7 +972,7 @@ rule(n=14, set='c-18-download', name='Download',
 
 # ---- 18.15 Search -----------------------------------------------------------------------------------------------
 rule(n=15, set='c-18-search', name='Search',
-     title='Search with a labeled field that says the count and the advice in one status line.',
+     title='Search with a labeled field and one status line.',
      rule=['On a product page a search sits in a search landmark, the search element, so a screen reader can jump '
            'straight to it. It has a visible label above its field and a field of type search; a placeholder never '
            'stands in for the label. Results update as the reader types, and focus stays in the field. The status line '
@@ -1066,7 +1066,7 @@ rule(n=16, set='c-18-filter-bar', name='Filter bar',
 
 # ---- 18.17 Form -------------------------------------------------------------------------------------------------
 rule(n=17, set='c-18-form', name='Form',
-     title='Label every field, point it to its error, and move focus to the first field to fix.',
+     title='Give every field a visible label and its own error message.',
      rule=['Each field has a visible label above it and, where it helps, a hint under the label joined by '
            'aria-describedby, such as “Five digits”. A placeholder never stands in for either. Personal fields carry '
            'autocomplete, such as email and postal-code, so the browser can fill them. A field stays open to typing while '
@@ -1118,7 +1118,7 @@ rule(n=17, set='c-18-form', name='Form',
 
 # ---- 18.18 Messages ---------------------------------------------------------------------------------------------
 rule(n=18, set='c-18-messages', name='Messages',
-     title='Give every message its mark and its first word, and announce only what changes.',
+     title='Give every message its mark and its first word.',
      rule=['An error, a warning and a success each start with their mark and their words (Rule 11.15). An error starts '
            '“Error:” and says how to fix it, beside a 4 px Pillar Red bar. A warning starts “Warning:” beside a 4 px bar in '
            'ink, and a success says what happened beside the Verdigris mark. Each bar is a left border.',
@@ -1161,7 +1161,7 @@ rule(n=18, set='c-18-messages', name='Messages',
 
 # ---- 18.19 Loading and empty ------------------------------------------------------------------------------------
 rule(n=19, set='c-18-loading-empty', name='Loading and empty states',
-     title='Say in words what is loading, and when nothing is there, say what is missing and what to do.',
+     title='Say in words what is loading or missing.',
      rule=['While a part of the page waits for its data, it shows a still drawing and words that name what is coming, such '
            'as “Loading the tracker”, in a status line, with no spinner and no pulse (Rule 17.7). The words sit where the '
            'content will, so nothing jumps when the data lands.',
@@ -1203,7 +1203,7 @@ rule(n=19, set='c-18-loading-empty', name='Loading and empty states',
 
 # ---- 18.20 Tracker ----------------------------------------------------------------------------------------------
 rule(n=20, set='c-18-tracker', name='Tracker',
-     title='Update a live tracker in place, and say each change once in a status line.',
+     title='Update a live tracker in place.',
      rule=['A tracker built from chapter 11’s marks is a list of steps, each with its name and one state word: Done, Now, '
            'You can take part now, Not yet, Never happened or Stopped (Rules 11.2 and 11.4). When a bill moves, the tracker redraws only the steps that '
            'changed and writes one sentence to its status line that names the new step, and the bill too where the page '
@@ -1245,7 +1245,7 @@ rule(n=20, set='c-18-tracker', name='Tracker',
 
 # ---- 18.21 Report reader ----------------------------------------------------------------------------------------
 rule(n=21, set='c-18-report-reader', name='Report reader',
-     title='Page through a report with buttons that keep their place and a status line that names each page.',
+     title='Page through a report with buttons that keep their place.',
      rule=['A report reader shows one page at a time, with Previous page and Next page buttons, each with its arrow beside '
            'its word, and the page’s size as a choice of Fit width or Full size (Rule 18.3). The status line names the '
            'page, the count and the page’s title, such as “Page 2 of 4:” and the title.',
@@ -1293,7 +1293,7 @@ rule(n=21, set='c-18-report-reader', name='Report reader',
 
 # ---- 18.22 Loop stepper -----------------------------------------------------------------------------------------
 rule(n=22, set='c-18-loop-stepper', name='Loop stepper',
-     title='Step through a loop with Play, Reset the loop, Previous step and Next step, and say each step once.',
+     title='Step through a loop one step at a time.',
      rule=['A loop stepper walks a reader through a loop of connections one step at a time. Its buttons run in one order '
            'in every product, Play, Reset the loop, Previous step and Next step, each with its utility icon beside its '
            'word (Rule 11.14). A loop from our atlas takes its atlas title as its name, in quotation marks, with a line '
@@ -1301,8 +1301,8 @@ rule(n=22, set='c-18-loop-stepper', name='Loop stepper',
            'house rule H08). The status line says each step as it arrives, “Step 2 of 3:” and the step’s '
            'sentence, and the step list marks the current step with <code>aria-current="step"</code> and a 4 px bar.',
            'Nothing plays until the reader presses Play. Play becomes Pause while it plays and Play again at the end, its '
-           'icon and its word changing together, and it holds each step about 250 ms a word and never under six seconds, '
-           'with reduced motion too (Rule 17.3). Next step, Previous step and Reset the loop stop the playback, and no '
+           'icon and its word changing together (Rule 17.3), and it holds each step about 250 ms a word and never under six '
+           'seconds, with reduced motion too (Rule 11.14). Next step, Previous step and Reset the loop stop the playback, and no '
            'button moves focus. At the start, Previous step and Reset the loop stay in place with aria-disabled and their '
            'reason; at the end, Next step does.'],
      tokens=['--oa-color-state-selected-bar', 'oa.border.width.bar', 'oa.size.icon.medium', 'oa.size.target.touch'],
@@ -1345,7 +1345,7 @@ rule(n=22, set='c-18-loop-stepper', name='Loop stepper',
 
 # ---- 18.23 Diagram controls -------------------------------------------------------------------------------------
 rule(n=23, set='c-18-diagram-controls', name='Diagram controls',
-     title='Reach a drawing’s items from one Tab stop with the arrow keys, and give every drawing its words.',
+     title='Reach a drawing’s items from one Tab stop with the arrow keys.',
      rule=['The items in an atlas drawing, such as its areas, variables and loops, are toggle buttons in one group. The Tab '
            'key reaches the drawing once, at the selected item or the first, and the arrow keys move between items in '
            'reading order, with Home and End for the first and the last. Enter or Space selects an item, which lights its '
@@ -1393,7 +1393,7 @@ rule(n=23, set='c-18-diagram-controls', name='Diagram controls',
 
 # ---- 18.24 Typed ID chip ----------------------------------------------------------------------------------------
 rule(n=24, set='c-18-id-chip', name='Typed ID chip',
-     title='Write a typed ID with its type in words, and make it a link only when it opens the record.',
+     title='Write a typed ID with its type in words.',
      rule=['A typed ID names a record in the atlas by its type and its code together, such as “Loop R1” or “Reform '
            'R-04”, so a reader never meets a bare code (chapter 02’s house rule H11). The chip sets both in the label '
            'style on a hairline edge, in the text’s ink, and color never codes its type.',
