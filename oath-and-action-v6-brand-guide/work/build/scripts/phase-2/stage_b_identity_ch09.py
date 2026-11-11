@@ -188,7 +188,8 @@ def s_09_opener():
     alt = ("The four pillar icons at true size, 48 pixels, in one row on Newsprint: Explain, Track, Connect and Act, each icon "
            "beside its word, joined by arrows, every icon in one color. Explain, three short rays rising from an open book; "
            "Track, a route from a map pin to a magnifier; Connect, two overlapping rings; Act, a finger pressing a round "
-           "control. On a phone the row stands in one column, with a downward arrow under each icon but the last.")
+           "control. Where the column is narrower than the row, it breaks after the arrow that follows Track, two pillars to a "
+           "line. On a phone the row stands in one column, with a downward arrow under each icon but the last.")
     return rec("s-09-opener", "09.1", None, alt, body, css=ROW_CSS + OPENER_CSS,
                notes="Chapter 09's opener figure (D2-965, D2-1134, CD S16), named by the chapter's opener key and drawn under "
                      "its intro. The 48 px row from Rule 09.1's sheet (s-09-1-correct), on Newsprint, one color in the "
@@ -439,7 +440,9 @@ def chapter():
               tokens=["oa.component.icon.ink.onNewsprint", "oa.size.icon.large", "oa.size.icon.medium"],
               specs=[SP_("Order", "Explain, Track, Connect, Act, with an arrow between each pair; the arrows are hidden from screen "
                                   "readers, since the list's order carries the sequence"),
-                     SP_("48 px row", "Words in the intro style, bold, 19 px on a phone and 22 px from 48em; 12 px from each icon's ink to its word"),
+                     SP_("48 px row", "Words in the intro style, bold, 19 px on a phone and 22 px from 48em; 12 px from each icon's ink to its word. "
+                                     "Where the column is narrower than the row's 592 px, from 48em to screens about 1,080 px wide, the row "
+                                     "breaks after the arrow that follows Track, two pillars to a line"),
                      SP_("24 px row", "Words in body text, 17 px; 8 px from each icon's ink to its word"),
                      SP_("Spacing", "Measured from each icon's ink, so Act's narrow hand sits as close to its word as Explain's book; in a stacked column, from each icon's whole box, so the four words share one left edge"),
                      SP_("Color", "One color in the surface's icon ink: Charcoal on Newsprint and White, Newsprint on Charcoal and Prussian",
@@ -511,7 +514,9 @@ def chapter():
               builders="Write a 24 px icon as one svg holding two uses: the fit with the class <code>oa-at-1x</code> and the master "
                        "with <code>oa-at-2x</code>, as in <code>&lt;use class=\"oa-at-1x\" href=\"#oa-sym-cl-020-24px\"/&gt;&lt;use "
                        "class=\"oa-at-2x\" href=\"#oa-sym-cl-020\"/&gt;</code>. The guide's stylesheet shows the master from 2 "
-                       "device pixels per CSS pixel. A 16 px icon is one use of its fit. Give the svg whole-pixel coordinates, and "
+                       "device pixels per CSS pixel with two lines; copy them into yours: <code>.oa-at-2x { display: none } "
+                       "@media (min-resolution: 2dppx) { .oa-at-1x { display: none } .oa-at-2x { display: inline } }</code>. "
+                       "A 16 px icon is one use of its fit. Give the svg whole-pixel coordinates, and "
                        "set no accent under 48 px."),
             R("09.4", "Put pillar icons only in the pillar row, on section openers and on tiles.",
               "A pillar icon appears in three places: the pillar row; the opener of a section that serves one pillar, where it "

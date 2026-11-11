@@ -168,6 +168,55 @@ None so far.
 
 ## Tested
 
+All in Chromium through Playwright in this container, November 11, 2026, with the scratch folder `/tmp/claude-0/-home-user-Dustin-s-Command-Center/42858b21-febe-5543-930e-ed82e286a69e/scratchpad/stage-c-r1/components/`.
+
+- **Build, static checks.** `guide_build.py --strict` on a scratch chapter that attaches all 24 sets (`gen_chapter.py`, `chapters-min/`): exit 0, no warning, after the guide engineer's five changes. On a scratch copy of every chapter (`chapters-full/`, the accessibility lead's `18-components.json` included) with `--specimens work/build/guide/specimens --code work/build/guide/code`: the only warnings are the 24 anatomy plates still to come; none names a code set. Chapter 18 weighs 0.97 MB of 1.1 MB there.
+- **Each set in both live stages** (`comp_test.js`, `keys.js`, `summ.py`), at 1440, 390 and 320 px: nothing runs past the stage, nothing under 13 px, axe-core 4.10 (WCAG 2.0 to 2.2 A and AA, best practice) clean on every stage at 1440 and 390; text at 200 percent at 390 and 320 px and SC 1.4.12's text spacing at 320 px with nothing past the stage; forced colors emulated with an edge, underline or system color on every control (the table's sort buttons and the search field carry theirs on an inner word or the box, checked in the captures); reduced motion with every transition at 0 s; and a key path per set in both stages at 1440 and 390 px, 2 to 14 steps each, all passing. Captures in `shots/`.
+- **The theme switch as a product uses it** (`product_theme.js`): a page built from the copy, with the head script in its head and two switches, passes 14 of 14: nothing stored follows the device both ways; Dark stores `dark` and both switches show it; after a reload the root is dark before the body is parsed; Light wins over a dark device; Match my device removes the key and follows the device; a refused storage (every read throws) leaves the switch working with no script error; a stored value other than `light` or `dark` is ignored.
+- **Red on Prussian** (`red_probe.js`), in every dark stage with every red state shown (form errors, the tracker's error, refused copies): none on a Prussian ground except the field-in-error case written to the accessibility lead.
+- **`codeMatch`'s method on a fresh page** (`cm.js`, `cmsum.py`) for all 48 stages at 1440 and 390 px: results under "For the guide engineer", item 1.
+- **`guide_check.js`** on the full scratch page, `--quick` (1440 and 390 px), then in full: results below.
+
 ## Not tested
 
+- Any screen reader (NVDA, JAWS, VoiceOver, TalkBack): names, states and live regions were read from the DOM and the accessibility tree, never heard.
+- Safari, Firefox, real phones, touch and Windows contrast themes: Chromium only, with forced colors emulated.
+- Page zoom at 200 percent: the root text size was doubled, which media and container queries in rem follow.
+- The brand's web fonts in my harness: it blocks outside requests, so captures use the fallback faces. The guide check loads Google Fonts where the network allows.
+- The theme switch's first paint was proved by the root attribute being set before the body is parsed, not by a frame-by-frame capture.
+- The keyboard path check the guide engineer is writing from the accessibility lead's `oa-keys/1` files: not yet in `guide_check.js`, so my own paths stand in for it.
+- Print with any code set.
+
 ## Change log
+
+Created, in `work/build/guide/code/` (65 files: 24 HTML, 24 CSS, 16 scripts and one head script):
+- `c-18-button.html`, `.css`
+- `c-18-toggle.html`, `.css`, `.js`
+- `c-18-choice.html`, `.css`
+- `c-18-theme-switch.html`, `.css`, `.js`, `.head.js`
+- `c-18-link.html`, `.css`
+- `c-18-masthead.html`, `.css`, `.js`
+- `c-18-location.html`, `.css`
+- `c-18-disclosure.html`, `.css`, `.js`
+- `c-18-tabs.html`, `.css`, `.js`
+- `c-18-table.html`, `.css`, `.js`
+- `c-18-scroll-region.html`, `.css`, `.js`
+- `c-18-code-block.html`, `.css`, `.js`
+- `c-18-copy.html`, `.css`, `.js`
+- `c-18-download.html`, `.css`
+- `c-18-search.html`, `.css`, `.js`
+- `c-18-filter-bar.html`, `.css`, `.js`
+- `c-18-form.html`, `.css`, `.js`
+- `c-18-messages.html`, `.css`
+- `c-18-loading-empty.html`, `.css`
+- `c-18-tracker.html`, `.css`, `.js`
+- `c-18-report-reader.html`, `.css`, `.js`
+- `c-18-loop-stepper.html`, `.css`, `.js`
+- `c-18-diagram-controls.html`, `.css`, `.js`
+- `c-18-id-chip.html`, `.css`
+
+Created: `work/handoffs/phase-2/20261111_Stage-C-Round-1-Components-Engineer-Notes.md` (this file).
+
+Modified: none. I did not touch the `.keys.json` files, any chapter, specimen, manifest, generator, `guide_build.py`, `guide_check.js`, the shell, `source/`, `work/ledger/`, a board or another owner's file. Built only into my scratch folder. Nothing committed or pushed.
+
+Scratch, outside the repository: `gen_chapter.py`, `chapters-min/`, `chapters-full/`, `spec-empty/`, `comp_test.js`, `keys.js`, `summ.py`, `build_names.py` (retired once the build changes landed), `product_theme.js`, `product/`, `red_probe.js`, `cm.js`, `cmsum.py`, `diffimg.py`, `montage.py`, `out/`, `shots/`, `cm/`.

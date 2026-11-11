@@ -12,7 +12,7 @@
   {
    "id": "08.1",
    "title": "Draw the lockmark from its master for its size, and keep its drawing fixed.",
-   "rule": "The lockmark is a three by three grid of nodes joined around its edge and through its center, with the lever in signature red at bottom right. It has four masters. Place the 16 px master from 16 to 23 px, the 24 px master from 24 to 47 px, the 48 px master at 48 px in the masthead and on covers and posters, and at exactly twice that, 96 px, in a social card’s sign-off, and the display master, drawn for our brand guide’s fifth edition, at every other size from 49 px. Each master keeps the nine nodes in the same order, their links and the lever at bottom right. The 16, 24 and 48 px masters sit on the pixel grid and draw the nodes and the lever heavier than the display master, so the drawing holds at the sizes each one serves.",
+   "rule": "The lockmark is a three by three grid of nodes joined around its edge and through its center, with the lever in signature red at bottom right. It has four masters. Place the 16 px master from 16 to 23 px and the 24 px master from 24 to 47 px. The 48 px master serves 48 px in the masthead and on covers and posters, and exactly twice that, 96 px, in a social card’s sign-off. The display master, drawn for our brand guide’s fifth edition, serves every other size from 49 px. Each master keeps the nine nodes in the same order, their links and the lever at bottom right. The 16, 24 and 48 px masters sit on the pixel grid and draw the nodes and the lever heavier than the display master, so the drawing holds at the sizes each one serves.",
    "tokens": [
     "oa.color.identity.signature.onNewsprint",
     "oa.color.palette.stone"
@@ -66,7 +66,7 @@
     },
     {
      "label": "Display master",
-     "value": "The field and node sizes above, at every size from 49 px but a social card’s 96 px sign-off; its links stay 1 px wide at every size"
+     "value": "The field and node sizes above, at every size from 49 px except a social card’s 96 px sign-off; its links stay 1 px wide at every size"
     },
     {
      "label": "Print",
@@ -119,7 +119,7 @@
     },
     {
      "label": "Sign-off",
-     "value": "Bottom right, inside the margin. On a social card, 96 px: the 48 px master drawn at exactly twice its size, so every node, link and the lever land on whole pixels. On a cover or poster, 48 px from the 48 px master. In print, 0.50 in from the display master, since the 48 px master is drawn for a screen’s pixel grid"
+     "value": "Bottom right, inside the margin. On a social card, 96 px: the 48 px master drawn at exactly twice its size, so every node, every link and the lever land on whole pixels. On a cover or poster, 48 px from the 48 px master. In print, 0.50 in from the display master, since the 48 px master is drawn for a screen’s pixel grid"
     },
     {
      "label": "Feed test",
@@ -127,11 +127,11 @@
     },
     {
      "label": "Feed test, dark card",
-     "value": "On Charcoal, each of the eight light nodes keeps at least one block of 2 by 2 pixels with every color channel over 155, and the lever keeps at least four red pixels, counted as on a light ground. On Prussian, where the lever is White as well, each of the nine nodes keeps such a block with every channel over 190. On a dark ground the links take the nodes’ own color, and in a 96 px sign-off they run 2 px wide, so one bright pixel can come from a link; a link shrunk under 1 px cannot fill a block. Each floor sits halfway between the brightest block the links alone leave in a node’s square and the dimmest node’s brightest block, measured on our card at both widths"
+     "value": "On Charcoal, each of the eight light nodes keeps at least one block of 2 by 2 pixels with every color channel over 155, and the lever keeps at least four red pixels, counted as on a light ground. On Prussian, where the lever is White as well, each of the nine nodes keeps such a block with every channel over 190. On a dark ground the links take the nodes’ own color. In a 96 px sign-off they run 2 px wide, so a single bright pixel can come from a link, and the test counts blocks because a link the feed shrinks under 1 px wide cannot fill one. Each floor sits halfway between the brightest block the links alone leave in a node’s square and the dimmest node’s brightest block, measured on our card at both widths, then rounded down to a multiple of 5"
     },
     {
      "label": "Feed test, our card",
-     "value": "The link-preview card in the identity proofs passes with its 96 px sign-off. At 500 px wide, its lockmark keeps 8 of 8 nodes and 52 red pixels; at 360 px, 8 of 8 nodes and 22 red pixels. Drawn on White or on Charcoal, the same card keeps 8 of 8 nodes and 48 red pixels at 500 px, and 8 and 20 at 360 px. On Prussian, with the White lever counted as a ninth node, it keeps 9 of 9 at 500 px and 9 of 9 at 360 px"
+     "value": "The link-preview card in the identity proofs, on Newsprint, passes with its 96 px sign-off. At 500 px wide, its lockmark keeps 8 of 8 nodes and 52 red pixels; at 360 px, 8 of 8 nodes and 22 red pixels. Drawn on White or on Charcoal, the same card keeps 8 of 8 nodes and 48 red pixels at 500 px, and 8 of 8 nodes and 20 red pixels at 360 px. On Prussian, with the White lever counted as a ninth node, it keeps 9 of 9 nodes at both widths"
     },
     {
      "label": "Once in a view",

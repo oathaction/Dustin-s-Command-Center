@@ -38,7 +38,7 @@
     },
     {
      "label": "48 px row",
-     "value": "Words in the intro style, bold, 19 px on a phone and 22 px from 48em; 12 px from each icon’s ink to its word"
+     "value": "Words in the intro style, bold, 19 px on a phone and 22 px from 48em; 12 px from each icon’s ink to its word. Where the column is narrower than the row’s 592 px, from 48em to screens about 1,080 px wide, the row breaks after the arrow that follows Track, two pillars to a line"
     },
     {
      "label": "24 px row",
@@ -189,7 +189,7 @@
     "10",
     "19"
    ],
-   "builders": "Write a 24 px icon as one svg holding two uses: the fit with the class <code>oa-at-1x</code> and the master with <code>oa-at-2x</code>, as in <code>&lt;use class=\"oa-at-1x\" href=\"#oa-sym-cl-020-24px\"/&gt;&lt;use class=\"oa-at-2x\" href=\"#oa-sym-cl-020\"/&gt;</code>. The guide’s stylesheet shows the master from 2 device pixels per CSS pixel. A 16 px icon is one use of its fit. Give the svg whole-pixel coordinates, and set no accent under 48 px."
+   "builders": "Write a 24 px icon as one svg holding two uses: the fit with the class <code>oa-at-1x</code> and the master with <code>oa-at-2x</code>, as in <code>&lt;use class=\"oa-at-1x\" href=\"#oa-sym-cl-020-24px\"/&gt;&lt;use class=\"oa-at-2x\" href=\"#oa-sym-cl-020\"/&gt;</code>. The guide’s stylesheet shows the master from 2 device pixels per CSS pixel with two lines; copy them into yours: <code>.oa-at-2x { display: none } @media (min-resolution: 2dppx) { .oa-at-1x { display: none } .oa-at-2x { display: inline } }</code>. A 16 px icon is one use of its fit. Give the svg whole-pixel coordinates, and set no accent under 48 px."
   },
   {
    "id": "09.4",

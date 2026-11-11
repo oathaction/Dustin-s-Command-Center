@@ -17,6 +17,7 @@ Run through the identity build: python3 -I work/build/scripts/phase-2/promotion_
 import base64
 import io
 import json
+import re
 
 from stage_a_identity_lib import (E, ROOT, ID_DIR, AMP, L8, fragment, svg_file, mark, illus, head_label, dnp, ty, tv, ink, ink2,
                                   hair, pal, raster_png, steps, CHAP_DIR)
@@ -327,6 +328,74 @@ def s_12_pattern_failure():
     return rec("s-12-pattern-failure", "12.4", PHONE_W, alt, body, illustrative=True,
                notes="The arcs under body text, the failure the brief names. The band runs the plate's width, as chapter 11's "
                      "360 px plates set it, and the Illustrative label opens the cover under it (CD-S11). Failure band per D2-308.")
+
+
+# ============================================================================================ 12.4 rewritten, for board C
+# Stage C round 1 (November 11, 2026): the creative director's review of Rule 12.4 (20261111_CD-Review-Of-Rule-12-4.md)
+# recommends retiring the hinge arcs and rewriting the rule for open areas: leave them plain, or sign them with the large
+# crop of B (Rule 04.8) or a watermark (Rule 12.2). Dustin decides on board C. This is the rewrite as a variant beside
+# the current rule: its words (REWRITE_12_4, a draft for the editor) and its two plates (rewrite_plates), which
+# stage_c_identity_round1.py sets beside today's rule on a comparison page. Nothing here is a specimen: S does not hold
+# these functions, so chapter 12 and its plates stay as they are until Dustin chooses.
+#
+# The crop on the Report 3 cover keeps Rule 04.8's proportions as s-04-8-correct sets them: B's display master in the
+# surface's ink, its right edge 142/400 of its width past the cover's right edge and its foot 30/440 of its height past
+# the cover's foot. Its height on this cover, CROP_B_H, is the largest that keeps Rule 04.8's measures, chosen on a
+# render by stage_c_identity_round1.py (20261111_Stage-C-Round-1-Identity-Figures.json, key rule_12_4).
+CROP_B_H = 236
+CROP_RIGHT, CROP_FOOT = 142 / 400, 30 / 440          # s-04-8-correct: 142 of B's 400 px width, 30 of its 440 px height
+
+
+def crop_b(b_h=None):
+    """The large crop of B for the 360 px cover, at Rule 04.8's proportions, in the surface's ink, behind the words."""
+    b_h = b_h or CROP_B_H
+    vb = [float(v) for v in re.search(r'viewBox="([^"]+)"', (ID_DIR / AMP["display"]).read_text()).group(1).split()]
+    b_w = b_h * vb[2] / vb[3]
+    return (f'<span aria-hidden="true" style="position:absolute;right:{-CROP_RIGHT * b_w:.2f}px;bottom:{-CROP_FOOT * b_h:.2f}px;'
+            f'line-height:0">{mark(AMP["display"], h=b_h, mode="ink", decorative=True)}</span>')
+
+
+def cover_signed(b_h=None):
+    """The same Report 3 cover as cover(), signed with the large crop of B in place of the arcs."""
+    base = cover()
+    arcs = re.search(r'<div aria-hidden="true" style="position:absolute;left:0;bottom:0;line-height:0">.*?</svg></div>', base, flags=re.S)
+    assert arcs, "the cover is not the one this variant was written for"
+    return base.replace(arcs.group(0), crop_b(b_h), 1)
+
+
+def rewrite_plates(b_h=None):
+    """The rewrite's correct plate (the cover signed with the crop of B) and its failure plate (today's cover with the
+    arcs, under the failure band), each Illustrative, as the creative director's instruction for board C sets them."""
+    return cover_signed(b_h), f'{dnp()}{cover()}'
+
+
+REWRITE_12_4 = {
+    "id": "12.4",
+    "title": "Leave an open area plain, or sign it with the large crop of B or a watermark.",
+    "rule": ("We use no repeating pattern. A cover or a section opener may carry the large crop of B (Rule 04.8), and a "
+             "report page or a section opener may carry a watermark in its open margin (Rule 12.2). A social card, and any "
+             "view whose ampersand moment is a hinge headline, keeps its open area plain."),
+    "why": ("Every shape we own already has a rule that a repeat would break: B appears once in a view (Rule 04.2), the "
+            "lockmark stays whole (Rule 08.3), and a row of nodes reads as chapter 11's tracker. A pattern that avoids them "
+            "belongs to no one, so a cover that carries one reads as anyone's report. The crop of B and the watermark sign "
+            "an open area with the mark a reader already knows as ours."),
+    "basis": "Design judgment, approved on board C",
+    "correct": ("The Report 3 cover at true size, signed with the large crop of B off its bottom-right corner, clear of the "
+                "words."),
+    "failure": ("Nothing on this cover says Oath & Action, and the arcs take the corner the crop of B would sign."),
+    "specs": [("Plain", "The first choice for an open area"),
+              ("Crop of B", "A cover or a section opener, bottom right, at Rule 04.8's measures"),
+              ("Watermark", "A report page or a section opener, in the open margin, at Rule 12.2's measures"),
+              ("Kept plain", "A social card, and any view whose ampersand moment is a hinge headline (Rule 04.2)"),
+              ("Never", "A repeating pattern of arcs, lines, dots, nodes or ampersands")],
+    "builders": ("Leave the open area plain first. Sign it with the crop of B only on a cover or a section opener that holds "
+                 "no hinge headline, and check Rule 04.8's measures on the cover at its true size."),
+    "if_chosen": ["Remove the \"Hinge arcs\" row from s-12-index",
+                  "Change the chapter intro's \"a pattern drawn from the hinge\" to \"the rule for open areas\"",
+                  "Drop \"or a pattern\" from Rule 12.2's Never row",
+                  "Remove hinge_arcs and its coverage figure from this generator, and set the rewrite's plates as "
+                  "s-12-pattern-correct and s-12-pattern-failure"],
+}
 
 
 # ============================================================================================ the chapter's rules

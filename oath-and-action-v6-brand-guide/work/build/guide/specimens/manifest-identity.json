@@ -370,7 +370,7 @@
  "s-09-opener": {
   "chapter": "09",
   "rule": "09.1",
-  "alt": "The four pillar icons at true size, 48 pixels, in one row on Newsprint: Explain, Track, Connect and Act, each icon beside its word, joined by arrows, every icon in one color. Explain, three short rays rising from an open book; Track, a route from a map pin to a magnifier; Connect, two overlapping rings; Act, a finger pressing a round control. On a phone the row stands in one column, with a downward arrow under each icon but the last.",
+  "alt": "The four pillar icons at true size, 48 pixels, in one row on Newsprint: Explain, Track, Connect and Act, each icon beside its word, joined by arrows, every icon in one color. Explain, three short rays rising from an open book; Track, a route from a map pin to a magnifier; Connect, two overlapping rings; Act, a finger pressing a round control. Where the column is narrower than the row, it breaks after the arrow that follows Track, two pillars to a line. On a phone the row stands in one column, with a downward arrow under each icon but the last.",
   "illustrative": false,
   "notes": "Chapter 09's opener figure (D2-965, D2-1134, CD S16), named by the chapter's opener key and drawn under its intro. The 48 px row from Rule 09.1's sheet (s-09-1-correct), on Newsprint, one color in the surface's icon ink token, since no pillar is current, with no tag: Rule 09.1 places the 48 px row near the top of a page that introduces the four pillars. Each icon from the sprite with data-icon-family pillar (D2-590, D2-517). No width, so the shell flows it in the chapter column at true size: one line from 48em, and under 48em one column with downward arrows, as Rule 09.1 sets (D2-376)."
  },
@@ -570,7 +570,7 @@
   "illustrative": false,
   "notes": "Rule 17.6, the hinge (oa.motion.duration.hinge, 680 ms). The moving layer is each master's own elements, inlined: the letter path split by position into OATH (six subpaths) and ACTION (eight), each subpath's bytes unchanged, and B's path as the file draws it. The end layer is the master placed by reference, so the last frame is the master itself. Timing read from tokens.css at the press: slide 320 ms, standard easing; B lands at hinge minus standard, 480 ms, over 200 ms with the enter easing, from 112 percent (chapter 17's land). The first frame's slides are whole pixels on screen. Written by stage_c_identity_ch17.py.",
   "interactive": true,
-  "caption": "Live. Press Play and OATH and ACTION settle into place over 320 ms, then the ampersand lands between them and comes to rest at 680 ms, on the wordmark’s master. The last frame is the master itself, at 24 px and, on a wide screen, at 64 px."
+  "caption": "Live. Press Play, and OATH and ACTION settle into place over 320 ms, then the ampersand lands between them and comes to rest at 680 ms, on the wordmark’s master. The last frame is the master itself, at 24 px and, on a wide screen, at 64 px."
  },
  "s-17-lever-correct": {
   "chapter": "17",
@@ -580,7 +580,7 @@
   "notes": "Rule 17.6, the lever landing (oa.motion.duration.lever, 560 ms). The moving layer is each master's own elements, inlined and named by part: three horizontal and three vertical links, eight nodes and the lever. The end layer is the master placed by reference. Timing read from tokens.css at the press: links draw over 200 ms from 0; nodes land at standard plus stagger, 240 ms; the lever lands at lever minus standard, 360 ms; each land 200 ms with the enter easing from 112 percent. Written by stage_c_identity_ch17.py.",
   "interactive": true,
   "label": "The lockmark’s motion",
-  "caption": "Live. Press Play and the lockmark’s links draw from the top left, its eight nodes land together, and the lever lands last, coming to rest at 560 ms on the master. The last frame is the master itself: the 48 px master at 48 px, and the display master at 120 px."
+  "caption": "Live. Press Play, and the lockmark’s links draw from the top left, its eight nodes land together, and the lever lands last, coming to rest at 560 ms on the master. The last frame is the master itself: the 48 px master at 48 px, and the display master at 120 px."
  },
  "s-17-hinge-failure": {
   "chapter": "17",

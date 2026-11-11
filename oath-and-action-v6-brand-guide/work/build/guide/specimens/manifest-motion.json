@@ -3,7 +3,7 @@
   "chapter": "17",
   "rule": "17.1",
   "width_px": null,
-  "alt": "A live player for an Illustrative bill, S.99002, School bus contracts, drawn as a tracker of six numbered steps. At the first frame steps 1 to 2 done, step 3 now, steps 4 to 6 not yet, and the words say “Step 3 of 6: Committee vote.” Play moves the bill on: step 3 lands as done, then the ring that marks the step the bill is at now slides to step 4 and draws the line behind it, 560 ms in all. The last frame reads steps 1 to 3 done, step 4 now, steps 5 to 6 not yet, “Step 4 of 6: First chamber.” One button plays and pauses, Reset returns to the first frame and is unavailable there with its reason, and Slow motion plays at one tenth speed. Under the player, the still view draws the first and last frames with their times and words.",
+  "alt": "A live player for an Illustrative bill, S.99002, School bus contracts, drawn as a tracker of six numbered steps. At the first frame steps 1 and 2 done, step 3 now, steps 4 to 6 not yet, and the words say “Step 3 of 6: Committee vote.” Play moves the bill on: step 3 lands as done, then the ring that marks the step the bill is at now slides to step 4 and draws the line behind it, 560 ms in all. The last frame reads steps 1 to 3 done, step 4 now, steps 5 and 6 not yet, “Step 4 of 6: First chamber.” One button plays and pauses, Reset returns to the first frame and is unavailable there with its reason, and Slow motion plays at one tenth speed. Under the player, the still view draws the first and last frames with their times and words.",
   "illustrative": true,
   "notes": "Live motion player (data-oa-motion). Land, then slide with its draw, one stagger apart, timed from the tokens at the press. Chapter 11’s marks and words for S.99002, which chapter 11 shows at step 4.",
   "interactive": true
@@ -55,7 +55,7 @@
   "chapter": "17",
   "rule": "17.12",
   "width_px": null,
-  "alt": "A symbol search with no match, on Newsprint and on Charcoal: the label “Search the symbols”, a field holding “parking meter”, and under it a dashed region whose words say “0 of 124 symbols. No symbol matches. Clear the search or the filters to see more.”",
+  "alt": "A symbol search with no match, on Newsprint and on Charcoal: the label “Search the symbols”, a field holding “parking meter”, and under it a dashed region whose words say “0 of 125 symbols. No symbol matches. Clear the search or the filters to see more.”",
   "illustrative": true,
   "notes": "D2-1157: the count and the advice in one status line."
  },
@@ -71,7 +71,7 @@
   "chapter": "17",
   "rule": "17.2",
   "width_px": null,
-  "alt": "The nine motion tokens. Six durations as bars on one scale, the hinge’s 680 ms the longest: fast 120 ms for hover and toggles; standard 200 ms for reveals, panels, a mark that lands and a line that draws on its own; slow 320 ms for a move across a page or a component; stagger 40 ms between siblings; hinge 680 ms and lever 560 ms, each played on request only. A line says each is 0 ms under reduced motion. Then three easing curves, time across and progress up: standard cubic-bezier(0.2, 0, 0, 1), which starts quickly and slows into place; enter cubic-bezier(0, 0, 0.2, 1), which slows all the way into place; exit cubic-bezier(0.4, 0, 1, 1), which starts slowly and leaves at speed. Each curve ends at its place without passing it.",
+  "alt": "The nine motion tokens. Six durations as bars on one scale, the hinge’s 680 ms the longest: fast 120 ms for hover and toggles; standard 200 ms for reveals, panels, a mark that lands and a line that draws on its own; slow 320 ms for a move across a page or a component; stagger 40 ms between marks that move one after another; hinge 680 ms and lever 560 ms, each played on request only. A line says each is 0 ms under reduced motion. Then three easing curves, time across and progress up: standard cubic-bezier(0.2, 0, 0, 1), which starts quickly and slows into place; enter cubic-bezier(0, 0, 0.2, 1), which slows all the way into place; exit cubic-bezier(0.4, 0, 1, 1), which starts slowly and leaves at speed. Each curve ends at its place without passing it.",
   "illustrative": false,
   "notes": "Values read from tokens.json; bars drawn as calc(value / 680 * 100%) so the scale holds at every width.",
   "readable": true
@@ -80,7 +80,7 @@
   "chapter": "17",
   "rule": "17.2",
   "width_px": null,
-  "alt": "Failure case: do not publish. A line of CSS, transition: transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1), beside the curve it draws, which rises past the dashed line that marks the mark’s place by 10 percent before it falls back. A note says 250 ms is no token and the curve overshoots its place.",
+  "alt": "Failure case: do not publish. A line of CSS, transition: transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1), beside the curve it draws, which rises 10 percent past the dashed line where the mark should rest before it falls back. A note says 250 ms is no token and the curve overshoots its place.",
   "illustrative": false,
   "notes": "Picture of a fault: literal timing and an overshooting easing."
  },
@@ -88,7 +88,7 @@
   "chapter": "17",
   "rule": "17.3",
   "width_px": null,
-  "alt": "The parts of a motion player, numbered 1 to 7, drawn from the player for loop R1’s first link in Rule 17.4. 1, the stage at its first frame: two nodes, wealth concentration filled and money in politics empty. 2, the Play button, which turns to Pause while the motion runs and to Play again at its end. 3, Reset, unavailable at the first frame with a dashed edge. 4, Slow motion, a check box that plays at one tenth speed. 5, the reason line: “At the first frame, so Reset waits until you press Play.” 6, the status line, which says what the frame shows. 7, the still view: the first and last frames with their times and words, and the steps of the motion in order. A numbered key under the player says the same.",
+  "alt": "The parts of a motion player, numbered 1 to 7, drawn from the player for Loop R1’s first link in Rule 17.4. 1, the stage at its first frame: two nodes, wealth concentration filled and money in politics empty. 2, the Play button, which turns to Pause while the motion runs and to Play again at its end. 3, Reset, unavailable at the first frame with a dashed edge. 4, Slow motion, a check box that plays at one tenth speed. 5, the reason line: “Reset works once you press Play.” 6, the status line, which says what the frame shows. 7, the still view: the first and last frames with their times and words, and the steps of the motion in order. A numbered key under the player says the same.",
   "illustrative": false,
   "notes": "A picture of the player, with no controls and no script: the live player is s-17-4-correct."
  },
@@ -96,7 +96,7 @@
   "chapter": "17",
   "rule": "17.3",
   "width_px": null,
-  "alt": "Failure case: do not publish. An Illustrative bill’s tracker drawn in three still frames: at 0 ms as the page opens steps 1 to 2 done, step 3 now, steps 4 to 6 not yet; at 560 ms steps 1 to 3 done, step 4 now, steps 5 to 6 not yet; at 3,000 ms, starting again, steps 1 to 2 done, step 3 now, steps 4 to 6 not yet. Above them, one square button with a play icon and no word, and a note that there is no Pause, no Reset and no still view. A line says the motion starts as the page opens and every 3 seconds after.",
+  "alt": "Failure case: do not publish. An Illustrative bill’s tracker drawn in three still frames: at 0 ms as the page opens steps 1 and 2 done, step 3 now, steps 4 to 6 not yet; at 560 ms steps 1 to 3 done, step 4 now, steps 5 and 6 not yet; at 3,000 ms, starting again, steps 1 and 2 done, step 3 now, steps 4 to 6 not yet. Above them, one square button with a play icon and no word, and a note that Pause, Reset and the still view are all missing. A line says the motion starts as the page opens and every three seconds after.",
   "illustrative": true,
   "notes": "Picture of a fault in still frames. The tracker’s marks keep chapter 11’s words in the alt, so the drawing says its steps."
  },
@@ -104,7 +104,7 @@
   "chapter": "17",
   "rule": "17.4",
   "width_px": null,
-  "alt": "A live player for the first link of loop R1 from our systems atlas, “Wealth and political influence reinforce each other”. At the first frame the node for wealth concentration is filled and the node for money in politics is empty. Play draws the link from the first node to the second over 200 ms, then the arrowhead and the second node land, 440 ms in all, and the status line says “Last frame: wealth concentration raises money in politics.” A check box, Preview reduced motion, sets this player’s motion tokens to 0 ms, so Play draws the last frame at once, as it does for every player when a device asks for reduced motion. A line says what this device asks for, and when it asks for reduced motion the preview is checked and unavailable with its reason. Slow motion plays at one tenth speed. The still view draws the first and last frames with their words and lists the steps of the motion.",
+  "alt": "A live player for the first link of Loop R1 from our systems atlas, “Wealth and political influence reinforce each other”. At the first frame the node for wealth concentration is filled and the node for money in politics is empty. Play draws the link from the first node to the second over 200 ms, then the arrowhead and the second node land, 440 ms in all, and the status line says “Last frame: wealth concentration raises money in politics.” A check box, Preview reduced motion, sets this player’s motion tokens to 0 ms, so Play draws the last frame at once, as it does for every player when a device asks for reduced motion. A line says what this device asks for, and when it asks for reduced motion the preview is checked and unavailable with its reason. Slow motion plays at one tenth speed. The still view draws the first and last frames with their words and lists the steps of the motion.",
   "illustrative": false,
   "notes": "Live motion player with a reduced-motion preview: data-preview=\"reduced\" sets the six duration tokens to 0ms on the player, so the script reads 0 exactly as it does under the media query.",
   "interactive": true
@@ -113,7 +113,7 @@
   "chapter": "17",
   "rule": "17.4",
   "width_px": null,
-  "alt": "Failure case: do not publish. A line of script, link.animate(frames, { duration: 400, easing: “ease-out” }), over three still frames of loop R1’s first link with reduced motion on: at 0 ms and 200 ms the link is still drawing, and only at 400 ms does it reach the second node. A note says the script carries its own 400 ms and never reads the tokens.",
+  "alt": "Failure case: do not publish. A line of script, link.animate(frames, { duration: 400, easing: “ease-out” }), over three still frames of Loop R1’s first link with reduced motion on: at 0 ms and 200 ms the link is still drawing, and only at 400 ms does it reach the second node. A note says the script carries its own 400 ms and never reads the tokens.",
   "illustrative": false,
   "notes": "Picture of a fault: a script timing that the reduced motion setting cannot reach."
  },
@@ -154,7 +154,7 @@
   "chapter": "17",
   "rule": "17.8",
   "width_px": null,
-  "alt": "The ten states, each drawn on Newsprint and on Charcoal from the same role tokens, with its cue in words. Muted: Loop R2, outside this view, in secondary words in regular weight with an outline dot, under Loop R1 in bold with a filled dot. Disabled: a download button with a dashed edge and readable words, and the line “Choose a size to download.” Hover: a primary button one shade lighter, its label underlined. Focus: the primary button with a 2 px ring 2 px outside it, Verdigris on Newsprint and Newsprint on Charcoal. Loading: a still line where a tracker will sit and “Loading the tracker for S.99002.” Selected: a Housing chip with a check, bold words and a 2 px edge beside a Schools chip with a 1 px edge. Warning: the warning mark, “Warning:” and a 4 px bar in the text’s ink. Error: the error mark, “Error: Enter a ZIP code with five digits.” and a 4 px Pillar Red bar, on the Error Band on Newsprint and on the ground on Charcoal. Empty: a dashed region that says “0 of 124 symbols. No symbol matches. Clear the search or the filters to see more.” Success: the Verdigris success mark and “You’re signed up. We’ll email you on March 1.”",
+  "alt": "The ten states, each drawn on Newsprint and on Charcoal from the same short names, with its cue in words. Muted: Zoning hearing, outside this view, in secondary words in regular weight with an outline dot, under Budget hearing in bold with a filled dot. Disabled: a download button with a dashed edge and readable words, and the line “Choose a size to download.” Hover: a primary button one shade lighter, its label underlined. Focus: the primary button with a 2 px ring 2 px outside it, Verdigris on Newsprint and Newsprint on Charcoal. Loading: a still line where a tracker will sit and “Loading the tracker for S.99002.” Selected: a Housing chip with a check, bold words and a 2 px edge beside a Schools chip with a 1 px edge. Warning: the warning mark, “Warning:” and a 4 px bar in the text’s ink. Error: the error mark, “Error: Enter a ZIP code with five digits.” and a 4 px Pillar Red bar, on the Error Band on Newsprint and on the ground on Charcoal. Empty: a dashed region that says “0 of 125 symbols. No symbol matches. Clear the search or the filters to see more.” Success: the Verdigris success mark and “You’re signed up. We’ll email you on March 1.”",
   "illustrative": true,
   "notes": "The canonical ten-states plate (round 1 brief, Rule 17.8): data-oa-theme light and dark cells, role names only. Error Band is initial on Charcoal (D2-1160, confirmed here).",
   "readable": true

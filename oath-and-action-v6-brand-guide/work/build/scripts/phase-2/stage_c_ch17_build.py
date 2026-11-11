@@ -62,6 +62,8 @@ OUT_SP = ROOT / 'work/build/guide/specimens'
 MANIFEST = OUT_SP / 'manifest-motion.json'
 ID_MANIFEST = OUT_SP / 'manifest-identity.json'
 FIG_OUT = ROOT / 'work/handoffs/phase-2/20261111_Stage-C-Round-1-Ch17-Figures.json'
+INVENTORY = ROOT / 'work/build/assets/civic-line-v6/20261110_Civic-Line-V6-Inventory.json'
+N_LIB = len(json.loads(INVENTORY.read_text())['icons'])     # the symbol library's count, as chapter 11 reads it
 CH = '17'
 ILLUS = B.ILLUS
 RED_ERR = 'data-red="working" data-red-job="error"'
@@ -416,7 +418,8 @@ PLAYER_CSS = (
     '.nb{display:inline-grid;place-items:center;flex:none;width:24px;height:24px;border-radius:50%;'
     'background:var(--oa-color-graphic-essential);color:var(--oa-color-surface);' + ty('label') + ';letter-spacing:0}'
     '.ax{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:start}'
-    '.row2{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.row2 .b{min-width:min(100%,8.5rem)}'
+    '.row2{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}.row2 .b{min-width:min(100%,8.5rem)}'
+    '.pair{display:inline-flex;gap:10px;align-items:center;max-width:100%}'
 )
 
 # The player's script: one copy per motion specimen. It finds every player inside its own specimen and wires each.
@@ -478,8 +481,8 @@ def player(pid, *, kicker, title, drawing, below='', words, frames, timeline, mo
     stage = f'<div class="stg">{drawing}{below}</div>'
     out = f'<p class="out"{"" if static else " role=\"status\" data-out=\"\""}>{words["start"]}</p>'
     if static:
-        ctl = (f'<div class="row2">{badge(2)}<span class="b">{play_icons}<span>Play</span></span>'
-               f'{badge(3)}<span class="b" aria-disabled="true">{uicon("reset")}<span>Reset</span></span></div>')
+        ctl = (f'<div class="row2"><span class="pair">{badge(2)}<span class="b">{play_icons}<span>Play</span></span></span>'
+               f'<span class="pair">{badge(3)}<span class="b" aria-disabled="true">{uicon("reset")}<span>Reset</span></span></span></div>')
         sl = (f'<p class="sl"><span class="cb" aria-hidden="true"></span>Slow motion, one tenth speed</p>' if slow else '')
         whyp = f'<p class="why">{why["start"]}</p>'
     else:
@@ -524,7 +527,7 @@ def track(part, frames, dur, ease, at=(), fill=None):
 
 LAND = [{'transform': f'scale({LAND_FROM:g})'}, {'transform': 'scale(1)'}]
 LAND_SHOW = [{'transform': f'scale({LAND_FROM:g})', 'visibility': 'visible'}, {'transform': 'scale(1)', 'visibility': 'visible'}]
-WHY_START = 'At the first frame, so Reset waits until you press Play.'
+WHY_START = 'Reset works once you press Play.'
 WHY = {'start': WHY_START,
        'slowDevice': 'Your device asks for reduced motion, so Play shows the last frame at once and Slow motion has nothing to slow.',
        'slowPreview': 'Preview reduced motion is on, so Play shows the last frame at once and Slow motion has nothing to slow.',
@@ -604,8 +607,8 @@ def player_specimen(css_extra, body):
 
 # ---- 17.1 correct: a bill moves on (live)
 TRACK_WORDS = {
-    'start': 'Step 3 of 6: Committee vote. Steps 1 to 2 done, step 3 now, steps 4 to 6 not yet.',
-    'end': 'Step 4 of 6: First chamber. Steps 1 to 3 done, step 4 now, steps 5 to 6 not yet.',
+    'start': 'Step 3 of 6: Committee vote. Steps 1 and 2 done, step 3 now, steps 4 to 6 not yet.',
+    'end': 'Step 4 of 6: First chamber. Steps 1 to 3 done, step 4 now, steps 5 and 6 not yet.',
     'run': 'Playing.', 'pause': 'Paused.'}
 T_SLIDE_AT = STD + STAG
 T_END = T_SLIDE_AT + SLOW
@@ -629,10 +632,10 @@ def s17_1_correct():
     body = player('p1', kicker=ILLUS, title='Bill S.99002, School bus contracts', drawing=svg, words=TRACK_WORDS,
                   frames=frames, timeline=timeline, motion=motion, why=WHY, group='Play the bill’s move')
     alt = ('A live player for an Illustrative bill, S.99002, School bus contracts, drawn as a tracker of six numbered '
-           'steps. At the first frame steps 1 to 2 done, step 3 now, steps 4 to 6 not yet, and the words say “Step 3 of '
+           'steps. At the first frame steps 1 and 2 done, step 3 now, steps 4 to 6 not yet, and the words say “Step 3 of '
            '6: Committee vote.” Play moves the bill on: step 3 lands as done, then the ring that marks the step the bill '
            f'is at now slides to step 4 and draws the line behind it, {T_END} ms in all. The last frame reads steps 1 to '
-           '3 done, step 4 now, steps 5 to 6 not yet, “Step 4 of 6: First chamber.” One button plays and pauses, Reset '
+           '3 done, step 4 now, steps 5 and 6 not yet, “Step 4 of 6: First chamber.” One button plays and pauses, Reset '
            'returns to the first frame and is unavailable there with its reason, and Slow motion plays at one tenth '
            'speed. Under the player, the still view draws the first and last frames with their times and words.')
     return spec('s-17-1-correct', player_specimen('', body), '17.1', alt, interactive=True, illustrative=True,
@@ -723,7 +726,7 @@ DUR_ROWS = [
     ('fast', 'Fast', 'Hover and toggles.'),
     ('standard', 'Standard', 'Reveals, panels, a mark that lands and a line that draws on its own.'),
     ('slow', 'Slow', 'A move across a page or a component, such as the ring that slides to a bill’s next step.'),
-    ('stagger', 'Stagger', 'The wait between siblings that move one after another.'),
+    ('stagger', 'Stagger', 'The wait between marks that move one after another.'),
     ('hinge', 'Hinge', 'The hinge, played on request only.'),
     ('lever', 'Lever', 'The lever landing, played on request only.'),
 ]
@@ -753,7 +756,7 @@ def s17_2_correct():
     alt = (f'The nine motion tokens. Six durations as bars on one scale, the hinge’s {HINGE} ms the longest: fast '
            f'{FAST} ms for hover and toggles; standard {STD} ms for reveals, panels, a mark that lands and a line that '
            f'draws on its own; slow {SLOW} ms for a move across a page or a component; stagger {STAG} ms between '
-           f'siblings; hinge {HINGE} ms and lever {LEVER} ms, each played on request only. A line says each is 0 ms under '
+           f'marks that move one after another; hinge {HINGE} ms and lever {LEVER} ms, each played on request only. A line says each is 0 ms under '
            f'reduced motion. Then three easing curves, time across and progress up: standard {bz("standard")}, which '
            f'starts quickly and slows into place; enter {bz("enter")}, which slows all the way into place; exit '
            f'{bz("exit")}, which starts slowly and leaves at speed. Each curve ends at its place without passing it.')
@@ -772,14 +775,14 @@ def s17_2_failure():
             f'<p class="nt">Two numbers of its own: 250 ms is no token, and the curve goes {OVER} percent past the '
             'dashed line, where the mark should rest, before it comes back.</p></div></div></div>')
     alt = (f'Failure case: do not publish. A line of CSS, transition: transform 250ms cubic-bezier(0.34, 1.56, 0.64, '
-           f'1), beside the curve it draws, which rises past the dashed line that marks the mark’s place by {OVER} '
-           'percent before it falls back. A note says 250 ms is no token and the curve overshoots its place.')
+           f'1), beside the curve it draws, which rises {OVER} percent past the dashed line where '
+           'the mark should rest before it falls back. A note says 250 ms is no token and the curve overshoots its place.')
     return spec('s-17-2-failure', html, '17.2', alt, notes='Picture of a fault: literal timing and an overshooting easing.')
 
 
 # ---- 17.3 correct: the player's parts (a picture), 17.4 correct: the same player live
 MECH_WORDS = {
-    'start': 'First frame: wealth concentration, where loop R1 starts.',
+    'start': 'First frame: wealth concentration, where Loop R1 starts.',
     'end': 'Last frame: wealth concentration raises money in politics.',
     'run': 'Playing.', 'pause': 'Paused.'}
 M_LAND_AT = STD + STAG
@@ -788,7 +791,7 @@ MECH_TIMELINE = [
     f'0{NB}ms: the link draws from wealth concentration toward money in politics, over the standard {ms_words(STD)} with the enter easing.',
     f'{ms_words(M_LAND_AT)}: the arrowhead and the second node land, over the standard {ms_words(STD)} with the enter easing.',
     f'{ms_words(M_END)}: at rest. Under reduced motion the last frame shows at 0{NB}ms.']
-MECH_KICK = 'From our systems atlas, loop R1'
+MECH_KICK = 'From our systems atlas, Loop R1'
 MECH_TITLE = 'Wealth and political influence reinforce each other'
 
 
@@ -824,11 +827,11 @@ def s17_3_correct():
     key = ''.join(f'<li><span class="nb" aria-hidden="true">{i + 1}</span><span>{t}</span></li>' for i, t in enumerate(ANATOMY))
     html = (f'<style>{PLAYER_CSS}{css}</style><div class="anat">{mech_player(True)}'
             f'<ol class="key">{key}</ol></div>')
-    alt = ('The parts of a motion player, numbered 1 to 7, drawn from the player for loop R1’s first link in Rule 17.4. '
+    alt = ('The parts of a motion player, numbered 1 to 7, drawn from the player for Loop R1’s first link in Rule 17.4. '
            '1, the stage at its first frame: two nodes, wealth concentration filled and money in politics empty. 2, '
            'the Play button, which turns to Pause while the motion runs and to Play again at its end. 3, Reset, '
            'unavailable at the first frame with a dashed edge. 4, Slow motion, a check box that plays at one tenth speed. '
-           '5, the reason line: “At the first frame, so Reset waits until you press Play.” 6, the status line, which '
+           '5, the reason line: “Reset works once you press Play.” 6, the status line, which '
            'says what the frame shows. 7, the still view: the first and last frames with their times and words, and the '
            'steps of the motion in order. A numbered key under the player says the same.')
     return spec('s-17-3-correct', html, '17.3', alt, notes='A picture of the player, with no controls and no script: the '
@@ -847,15 +850,15 @@ def s17_3_failure():
                                (f'{T_END + 2440:,}{NB}ms, starting again', START)))
     html = (f'<style>{css}{STRIP_CSS}{PLAYER_CSS}{extra}</style><div class="st">{band}<p>{ILLUS}</p>'
             f'<div class="fp"><span class="ib">{uicon("play")}</span>'
-            '<p class="nt">One button with a play icon and no word. No Pause, no Reset and no still view.</p></div>'
+            '<p class="nt">One button with a play icon and no word. Pause, Reset and the still view are all missing.</p></div>'
             f'<ol class="fs3">{lis}</ol>'
-            '<p class="nt">The motion starts as the page opens and starts again every 3 seconds, so the bill seems to '
+            '<p class="nt">The motion starts as the page opens and starts again every three seconds, so the bill seems to '
             'move back and forth between two steps.</p></div>')
     alt = ('Failure case: do not publish. An Illustrative bill’s tracker drawn in three still frames: at 0 ms as the '
-           f'page opens steps 1 to 2 done, step 3 now, steps 4 to 6 not yet; at {T_END:,} ms steps 1 to 3 done, step 4 '
-           f'now, steps 5 to 6 not yet; at {T_END + 2440:,} ms, starting again, steps 1 to 2 done, step 3 now, steps 4 to '
-           '6 not yet. Above them, one square button with a play icon and no word, and a note that there is no Pause, no '
-           'Reset and no still view. A line says the motion starts as the page opens and every 3 seconds after.')
+           f'page opens steps 1 and 2 done, step 3 now, steps 4 to 6 not yet; at {T_END:,} ms steps 1 to 3 done, step 4 '
+           f'now, steps 5 and 6 not yet; at {T_END + 2440:,} ms, starting again, steps 1 and 2 done, step 3 now, steps 4 to '
+           '6 not yet. Above them, one square button with a play icon and no word, and a note that Pause, Reset and the still view are all '
+           'missing. A line says the motion starts as the page opens and every three seconds after.')
     return spec('s-17-3-failure', html, '17.3', alt, illustrative=True,
                 notes='Picture of a fault in still frames. The tracker’s marks keep chapter 11’s words in '
                       'the alt, so the drawing says its steps.')
@@ -863,7 +866,7 @@ def s17_3_failure():
 
 def s17_4_correct():
     body = mech_player(False)
-    alt = ('A live player for the first link of loop R1 from our systems atlas, “Wealth and political influence reinforce '
+    alt = ('A live player for the first link of Loop R1 from our systems atlas, “Wealth and political influence reinforce '
            'each other”. At the first frame the node for wealth concentration is filled and the node for money in '
            f'politics is empty. Play draws the link from the first node to the second over {STD} ms, then the arrowhead '
            f'and the second node land, {M_END} ms in all, and the status line says “Last frame: wealth concentration '
@@ -894,7 +897,7 @@ def s17_4_failure():
             '<p class="nt">The script carries its own 400 ms and never reads the tokens, so a reader who asked for '
             'reduced motion still watches the link draw for 400 ms.</p></div>')
     alt = ('Failure case: do not publish. A line of script, link.animate(frames, { duration: 400, easing: “ease-out” }), '
-           'over three still frames of loop R1’s first link with reduced motion on: at 0 ms and 200 ms the link is '
+           'over three still frames of Loop R1’s first link with reduced motion on: at 0 ms and 200 ms the link is '
            'still drawing, and only at 400 ms does it reach the second node. A note says the script carries its own 400 '
            'ms and never reads the tokens.')
     return spec('s-17-4-failure', html, '17.4', alt, notes='Picture of a fault: a script timing that the reduced '
@@ -906,15 +909,15 @@ MINI = [
     ('slide', 'Slide', 'The ring marks the current place and slides to the next one.',
      {'start': 'First frame: the ring at the first place.', 'end': 'Last frame: the ring at the second place.'},
      [track('slide', [{'transform': 'translateX(0px)'}, {'transform': 'translateX(122px)'}], 'slow', 'standard')],
-     SLOW, f'0{NB}ms to {ms_words(SLOW)}: a straight move, slow, with the standard easing.'),
+     SLOW, f'0{NB}ms to {ms_words(SLOW)}: a straight move over the slow {ms_words(SLOW)}, with the standard easing.'),
     ('draw', 'Draw', 'A line draws along its own path, from its first node to its second.',
      {'start': 'First frame: two nodes, not yet joined.', 'end': 'Last frame: a line joins the first node to the second.'},
      [track('draw', [{'strokeDashoffset': 1}, {'strokeDashoffset': 0}], 'standard', 'enter')],
-     STD, f'0{NB}ms to {ms_words(STD)}: the line extends from its start, standard, with the enter easing.'),
+     STD, f'0{NB}ms to {ms_words(STD)}: the line extends from its start over the standard {ms_words(STD)}, with the enter easing.'),
     ('land', 'Land', f'A mark arrives at {round(LAND_FROM * 100)} percent of its size and settles to its true size.',
      {'start': 'First frame: an empty node.', 'end': 'Last frame: the node is filled.'},
      [track('land', LAND, 'standard', 'enter')],
-     STD, f'0{NB}ms to {ms_words(STD)}: from {round(LAND_FROM * 100)} percent to true size, standard, with the enter easing.'),
+     STD, f'0{NB}ms to {ms_words(STD)}: from {round(LAND_FROM * 100)} percent to true size over the standard {ms_words(STD)}, with the enter easing.'),
 ]
 
 
@@ -1078,9 +1081,9 @@ def tracker_line_svg():
 def state_samples():
     """The ten states of Rule 17.8: (name, cue in words, sample markup)."""
     muted = ('<div class="mu"><p class="on"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">'
-             '<circle cx="8" cy="8" r="6" class="dk"/></svg>Loop R1, in this view</p>'
+             '<circle cx="8" cy="8" r="6" class="dk"/></svg>Budget hearing, in this view</p>'
              '<p class="off"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">'
-             '<circle cx="8" cy="8" r="5.25" class="ol"/></svg>Loop R2, outside this view</p></div>')
+             '<circle cx="8" cy="8" r="5.25" class="ol"/></svg>Zoning hearing, outside this view</p></div>')
     disabled = (f'<div class="st-l"><span class="btn dis">{uicon("download")}Download the files</span>'
                 '<p class="why">Choose a size to download.</p></div>')
     hover = '<div class="row"><span class="btn pri hv">Download the files</span></div>'
@@ -1090,7 +1093,7 @@ def state_samples():
     warning = (f'<div class="msg wn">{uicon("warning")}<span><b>Warning:</b> Checked October 15, 2026. The agency may '
                'have acted since.</span></div>')
     error = (f'<div class="msg er" {RED_ERR}>{uicon("error")}<span><b>Error:</b> Enter a ZIP code with five digits.</span></div>')
-    empty = ('<div class="em"><p>0 of 124 symbols. No symbol matches.</p><p>Clear the search or the filters to see more.</p></div>')
+    empty = (f'<div class="em"><p>0 of {N_LIB} symbols. No symbol matches.</p><p>Clear the search or the filters to see more.</p></div>')
     success = (f'<div class="msg ok">{uicon("success")}<span><b>You’re signed up.</b> We’ll email you on '
                'March 1.</span></div>')
     return [
@@ -1113,8 +1116,8 @@ def s17_8_correct():
     css = (CELL_CSS + '.tn{list-style:none;margin:0;padding:0;display:grid;gap:24px}'
            '.tn > li{display:grid;gap:8px}.nm{' + ty('label') + '}.cu{' + ty('bodySmall') + ';max-width:40rem}')
     html = f'<style>{css}</style><div class="wr"><p style="margin:0 0 16px">{ILLUS}</p><ol class="tn">{lis}</ol></div>'
-    alt = ('The ten states, each drawn on Newsprint and on Charcoal from the same role tokens, with its cue in words. '
-           'Muted: Loop R2, outside this view, in secondary words in regular weight with an outline dot, under Loop R1 in '
+    alt = ('The ten states, each drawn on Newsprint and on Charcoal from the same short names, with its cue in words. '
+           'Muted: Zoning hearing, outside this view, in secondary words in regular weight with an outline dot, under Budget hearing in '
            'bold with a filled dot. Disabled: a download button with a dashed edge and readable words, and the line '
            '“Choose a size to download.” Hover: a primary button one shade lighter, its label underlined. Focus: the '
            'primary button with a 2 px ring 2 px outside it, Verdigris on Newsprint and Newsprint on Charcoal. Loading: '
@@ -1122,7 +1125,7 @@ def s17_8_correct():
            'check, bold words and a 2 px edge beside a Schools chip with a 1 px edge. Warning: the warning mark, '
            '“Warning:” and a 4 px bar in the text’s ink. Error: the error mark, “Error: Enter a ZIP code with five '
            'digits.” and a 4 px Pillar Red bar, on the Error Band on Newsprint and on the ground on Charcoal. Empty: a '
-           'dashed region that says “0 of 124 symbols. No symbol matches. Clear the search or the filters to see more.” '
+           f'dashed region that says “0 of {N_LIB} symbols. No symbol matches. Clear the search or the filters to see more.” '
            'Success: the Verdigris success mark and “You’re signed up. We’ll email you on March 1.”')
     return spec('s-17-8-correct', html, '17.8', alt, illustrative=True, readable=True,
                 notes='The canonical ten-states plate (round 1 brief, Rule 17.8): data-oa-theme light and dark cells, role '
@@ -1182,7 +1185,7 @@ def s17_7_failure():
                   for t, o in ops)
     extra = '.pu{fill:var(--oa-color-graphic-essential)}'
     html = (f'<style>{css}{STRIP_CSS}{extra}</style><div class="st">{band}<p class="k">A pulse, with no words</p>'
-            f'<ol class="fs3">{lis}</ol><p class="nt">The disc fades between 20 and 50 percent every 1.2 seconds for as '
+            f'<ol class="fs3">{lis}</ol><p class="nt">The disc fades between 20 and 50 percent strength every 1.2 seconds for as '
             'long as the wait lasts, and nothing says what is loading.</p></div>')
     alt = ('Failure case: do not publish. Three still frames of a loading pulse: a disc at 20 percent strength at 0 ms, '
            '50 percent at 600 ms and 20 percent again at 1,200 ms. A note says it fades every 1.2 seconds for as long as '
@@ -1239,8 +1242,8 @@ def s17_10_correct():
                 '<div class="hfr"><p class="sf">A choice of one, checked</p>'
                 f'<div class="seg"><span class="chip on">{check()}Fit width</span><span class="chip">Full size</span></div></div>'
                 '<div class="hfr"><p class="sf">The current page in a list</p><ul class="nav">'
-                '<li><span>16 Photography</span></li><li><span class="cur">17 Motion and states</span></li>'
-                '<li><span>18 Components</span></li></ul></div>'
+                '<li><span>16 Photography, illustration and video</span></li><li><span class="cur">17 Motion and states</span></li>'
+                '<li><span>18 Components and interaction</span></li></ul></div>'
                 '<div class="hfr"><p class="sf">The current page as a link</p><p><span class="uc">Motion</span></p></div>')
     css = CELL_CSS + '.hfr{display:grid;gap:6px}.hfr + .hfr{margin-top:10px}'
     html = f'<style>{css}</style><div class="wr">{cells(sample)}</div>'
@@ -1302,11 +1305,11 @@ def s17_12_correct():
     def sample(theme):
         return ('<div class="st-l" style="gap:8px"><p class="lb">Search the symbols</p>'
                 f'<p class="fld">{uicon("search")}<span>parking meter</span></p>'
-                '<div class="em"><p>0 of 124 symbols. No symbol matches.</p>'
+                f'<div class="em"><p>0 of {N_LIB} symbols. No symbol matches.</p>'
                 '<p>Clear the search or the filters to see more.</p></div></div>')
     html = f'<style>{CELL_CSS}</style><div class="wr"><p style="margin:0 0 12px">{ILLUS}</p>{cells(sample)}</div>'
     alt = ('A symbol search with no match, on Newsprint and on Charcoal: the label “Search the symbols”, a field holding '
-           '“parking meter”, and under it a dashed region whose words say “0 of 124 symbols. No symbol matches. Clear the '
+           f'“parking meter”, and under it a dashed region whose words say “0 of {N_LIB} symbols. No symbol matches. Clear the '
            'search or the filters to see more.”')
     return spec('s-17-12-correct', html, '17.12', alt, illustrative=True,
                 notes='D2-1157: the count and the advice in one status line.')
@@ -1380,15 +1383,15 @@ def build_chapter():
             'Motion has two jobs. It shows a state changing, as when a bill finishes one step and moves to the next, and '
             'it shows a mechanism at work, as when a link draws from a cause to its effect. A mark that would move for '
             'any other reason, to decorate a page or to catch the eye, stays still.',
-            f'A reader’s own actions answer at once or within the fast {ms_words(FAST)}: hover, a toggle, a theme '
-            'change. The focus ring shows at once, with no motion at all.'],
+            f'A reader’s own actions, such as a hover, a toggle or a change of theme, answer at once or within the fast '
+            f'duration, {ms_words(FAST)}. The focus ring shows at once, with no motion at all.'],
         'tokens': ['oa.motion.duration.fast', 'oa.motion.duration.standard', 'oa.motion.duration.slow'],
         'why': {'text': [
             'A moving mark draws the eye before the words around it, so a motion with no change behind it takes a reader '
-            'away from the sentence they came to read. Motion also costs some readers more than attention: the W3C’s '
-            'Media Queries Level 5 describes the motion a reduced motion setting removes as motion that can “trigger '
+            'away from the sentence they came to read. For some readers motion costs more than attention. The W3C’s '
+            'Media Queries Level 5 says the motion a reduced motion setting removes can “trigger '
             'discomfort for those with vestibular motion sensitivity, or distraction for those with attention deficits.” '
-            'A vestibular disorder affects the inner ear’s sense of balance.'],
+            'The vestibular sense is the inner ear’s sense of balance and motion.'],
             'basis': 'Design judgment, with the W3C’s Media Queries Level 5'},
         'correct': {'specimen': 's-17-1-correct', 'caption':
                     'Live. Press Play and bill S.99002 moves from step 3, Committee vote, to step 4, First chamber. Step 3 '
@@ -1418,12 +1421,13 @@ def build_chapter():
         'title': 'Time every motion with the nine motion tokens.',
         'rule': [
             f'Every duration and easing in a motion comes from a token: three durations for most moves, a {STAG}{NB}ms '
-            'stagger between siblings, two durations kept for the hinge and the lever, and three easings. A motion reads '
+            'stagger between marks that move one after another, two durations kept for the hinge and the lever, and three easings. A motion reads '
             'them from tokens.css by name, so a reduced motion setting reaches it (Rule 17.4).',
-            f'Fast, {ms_words(FAST)}, serves hover and toggles. Standard, {ms_words(STD)}, serves reveals, panels, a mark '
-            f'that lands and a line that draws on its own. Slow, {ms_words(SLOW)}, serves a move across a page or a '
-            'component. A mark that arrives takes the enter easing, a mark that leaves takes the exit easing at the fast '
-            'duration, and a mark that moves from one place to another takes the standard easing.'],
+            f'Hover and toggles take the fast duration, {ms_words(FAST)}. Reveals, panels, a mark that lands and a line '
+            f'that draws on its own take the standard {ms_words(STD)}, and a move across a page or a component takes the '
+            f'slow {ms_words(SLOW)}. The easing follows where a mark goes: the enter easing for a mark that arrives, the '
+            'exit easing at the fast duration for one that leaves, and the standard easing for one that moves from place '
+            'to place.'],
         'tokens': ['oa.motion.duration.fast', 'oa.motion.duration.standard', 'oa.motion.duration.slow',
                    'oa.motion.duration.stagger', 'oa.motion.duration.hinge', 'oa.motion.duration.lever',
                    'oa.motion.easing.standard', 'oa.motion.easing.enter', 'oa.motion.easing.exit'],
@@ -1434,8 +1438,8 @@ def build_chapter():
             'the still view draws it.'],
             'basis': 'Design judgment, kept from our fifth edition'},
         'correct': {'specimen': 's-17-2-correct', 'caption':
-                    f'The nine tokens. The six durations share one scale, the hinge’s {ms_words(HINGE)} across the '
-                    'full width, and each easing is drawn as its curve.'},
+                    f'The nine tokens. The six durations share one scale, with the hinge’s {ms_words(HINGE)} across '
+                    'its full width, and each easing is drawn as its curve.'},
         'failure': {'specimen': 's-17-2-failure', 'caption':
                     '<strong>Fails Rule 17.2.</strong> A transition written with its own numbers. A reduced motion '
                     f'setting never reaches 250{NB}ms, and the curve goes {OVER} percent past its place before it comes '
@@ -1444,7 +1448,7 @@ def build_chapter():
             {'label': 'Fast', 'value': f'{ms_words(FAST)}; hover and toggles', 'token': 'oa.motion.duration.fast'},
             {'label': 'Standard', 'value': f'{ms_words(STD)}; reveals, panels, a land, a draw on its own', 'token': 'oa.motion.duration.standard'},
             {'label': 'Slow', 'value': f'{ms_words(SLOW)}; a move across a page or a component', 'token': 'oa.motion.duration.slow'},
-            {'label': 'Stagger', 'value': f'{ms_words(STAG)} between siblings', 'token': 'oa.motion.duration.stagger'},
+            {'label': 'Stagger', 'value': f'{ms_words(STAG)} between marks that move one after another', 'token': 'oa.motion.duration.stagger'},
             {'label': 'Hinge', 'value': f'{ms_words(HINGE)}, on request only (Rule 17.6)', 'token': 'oa.motion.duration.hinge'},
             {'label': 'Lever', 'value': f'{ms_words(LEVER)}, on request only (Rule 17.6)', 'token': 'oa.motion.duration.lever'},
             {'label': 'Standard easing', 'value': f'{bz("standard")}; a move from place to place', 'token': 'oa.motion.easing.standard'},
@@ -1463,25 +1467,25 @@ def build_chapter():
         'title': 'Play a motion only when a reader asks, with Play, Pause, Reset and a still view.',
         'rule': [
             'A motion starts when a reader presses Play, and never as the page opens, as it scrolls into view or on a '
-            'timer. It runs once and stops on its last frame, and nothing loops. One button carries Play and Pause and '
+            'timer. It runs once and stops on its last frame. One button carries Play and Pause and '
             'changes its icon and its word together, then reads Play again at the end. Reset returns to the first frame; '
             'at the first frame it is unavailable and says why.',
             'Beside every player sits its still view: the first and last frames at true size, each with its time and the '
             'words for what it shows, then each step of the motion in order. A status line says the same words when the '
-            'frame changes, so a reader who never presses Play, prints the page or listens with a screen reader gets '
-            'every fact the motion shows.'],
+            'frame changes, so every fact the motion shows reaches a reader who prints the page or listens with a screen '
+            'reader, and one who never presses Play.'],
         'tokens': ['oa.size.target.touch', 'oa.size.icon.medium'],
         'why': {'text': [
             'WCAG 2.2 success criterion 2.2.2 Pause, Stop, Hide asks for a way to pause anything that starts on its own '
             'and moves for more than five seconds. Our motions last under a second and never start on their own, so none '
-            'needs it, and every player gets the controls anyway, so a reader always decides when a mark moves. Slow '
+            'needs it. Every player has the controls all the same, and a reader decides when each mark moves. Slow '
             'motion stretches a motion to a few seconds, which gives Pause time to work and lets a reader see the easing.'],
             'basis': 'WCAG 2.2 SC 2.2.2; design judgment'},
         'correct': {'specimen': 's-17-3-correct', 'caption':
                     'The parts of a player, numbered, drawn from the live player in Rule 17.4. Each part has its words, '
                     'and the controls stand 44 px tall.'},
         'failure': {'specimen': 's-17-3-failure', 'caption':
-                    '<strong>Fails Rule 17.3.</strong> The bill moves as the page opens and again every 3 seconds, so it '
+                    '<strong>Fails Rule 17.3.</strong> The bill moves as the page opens and again every three seconds, so it '
                     'seems to go back and forth between two steps. Its one button has an icon and no word, and there is '
                     'no Pause, Reset or still view.'},
         'specs': [
@@ -1489,7 +1493,7 @@ def build_chapter():
             {'label': 'Reset', 'value': 'Returns to the first frame; unavailable there, with its reason'},
             {'label': 'Slow motion', 'value': 'A check box that plays at one tenth speed; unavailable under reduced motion, with its reason'},
             {'label': 'Still view', 'value': 'First and last frames at true size, each with its time and words, then the steps in order'},
-            {'label': 'Status line', 'value': 'Polite; says Playing, Paused, and the words of the frame the motion stops on'},
+            {'label': 'Status line', 'value': 'Polite, so a screen reader waits until it finishes speaking; it says Playing, Paused and the words of the frame the motion stops on'},
             {'label': 'Controls', 'value': '44 px tall, with 24 px icons beside their words', 'token': 'oa.size.target.touch'},
             {'label': 'Runs', 'value': 'Once for each press; never on load, on scroll or on a timer; never loops'},
         ],
@@ -1516,15 +1520,15 @@ def build_chapter():
             'they prefer an interface that removes or replaces the types of motion-based animation that either trigger '
             'discomfort for those with vestibular motion sensitivity, or distraction for those with attention deficits.” '
             'Drawing the last frame keeps every fact the motion shows and removes the movement alone.'],
-            'basis': 'Media Queries Level 5, W3C Working Draft, 19 February 2026'},
+            'basis': 'Media Queries Level 5, W3C Working Draft, February 19, 2026'},
         'correct': {'specimen': 's-17-4-correct', 'caption':
-                    'Live. The first link of loop R1 from our systems atlas draws from wealth concentration to money in '
+                    'Live. The first link of Loop R1 from our systems atlas draws from wealth concentration to money in '
                     'politics, and the arrowhead and the second node land. Turn on Preview reduced motion, or set your '
                     'device to reduce motion, and Play draws the last frame at once. The line under the check boxes says '
                     'what your device asks for now.'},
         'failure': {'specimen': 's-17-4-failure', 'caption':
                     '<strong>Fails Rule 17.4.</strong> A script times its own 400 ms. The setting reaches tokens.css, '
-                    'the script never reads it, and a reader who asked for reduced motion still watches the link draw.'},
+                    'which the script never reads, so a reader who asked for reduced motion still watches the link draw.'},
         'specs': [
             {'label': 'Durations', 'value': 'All six resolve to 0 ms: fast, standard, slow, stagger, hinge and lever',
              'token': 'oa.motion.duration.standard'},
@@ -1598,8 +1602,8 @@ def build_chapter():
             f'lands between them. The lever plays over {ms_words(LEVER)} in the lockmark: its links draw, its nodes land '
             'together and the lever lands last, at bottom right.',
             'Each is built from slide, draw and land (Rule 17.5), and each ends on a last frame that matches the approved '
-            'master for its size, pixel for pixel. The ampersand and the lever keep signature red in every frame, which '
-            'never counts as a view’s working red (Rule 05.3).'],
+            'master for its size, pixel for pixel. The ampersand and the lever keep signature red in every frame, and '
+            'signature red never counts as a view’s working red (Rule 05.3).'],
         'tokens': ['oa.motion.duration.hinge', 'oa.motion.duration.lever'],
         'why': {'text': [
             'The hinge and the lever carry our name and our idea of a place where one change moves the rest, so a reader '
@@ -1625,15 +1629,16 @@ def build_chapter():
         'title': 'Show loading with words and a still drawing, never a pulse.',
         'rule': [
             'While a region waits for its data, it shows words that name what is loading, such as “Loading the tracker '
-            'for S.99002.”, and a still drawing of the lines the data will sit on, with no marks on them yet. The words '
+            'for S.99002.” <span class="illus">Illustrative</span>, and a still drawing of the lines the data will sit on, with no marks on them yet. The words '
             'sit in a status line, so a screen reader hears them once. Nothing moves while the region waits.',
             'The data replaces the drawing and the words together. When the data fails to arrive, the region shows the '
             'error state with what failed and the fix (Rule 11.15).'],
         'tokens': ['oa.color.state.loading.text.onNewsprint', 'oa.color.state.loading.mark.onNewsprint'],
         'why': {'text': [
             'A pulse repeats for as long as the wait lasts, which puts it under WCAG 2.2 success criterion 2.2.2 Pause, '
-            'Stop, Hide once the wait passes five seconds, and our fifth edition’s pulsing lever fell to 1.27 to 1 '
-            'against Newsprint at its faintest, under the 3 to 1 a needed graphic takes. Words say what is happening, '
+            'Stop, Hide once the wait passes five seconds. Our fifth edition’s pulsing lever also fell to 1.27 to 1 '
+            'against Newsprint at its faintest, under the 3 to 1 that success criterion 1.4.11 asks of a graphic a '
+            'reader needs. Words say what is happening, '
             'and a screen reader can say them too. The drawing leaves out marks, because a step or a node on it would '
             'read as a state the data has not reached.'],
             'basis': 'WCAG 2.2 SC 2.2.2 and 1.4.11; design judgment'},
@@ -1642,7 +1647,7 @@ def build_chapter():
                     f'measures {F["load_n"]} to 1 on Newsprint and {F["load_c"]} on Charcoal, and the words name the bill.'},
         'failure': {'specimen': 's-17-7-failure', 'caption':
                     '<strong>Fails Rule 17.7.</strong> Our fifth edition’s loading pulse, in still frames. It fades '
-                    'between 20 and 50 percent for as long as the wait lasts, and nothing says what is loading.'},
+                    'between 20 and 50 percent strength for as long as the wait lasts, and nothing says what is loading.'},
         'specs': [
             {'label': 'Words', 'value': 'What is loading, by name, in a status line', 'token': 'oa.color.state.loading.text.onNewsprint'},
             {'label': 'Drawing', 'value': f'The lines the data will sit on, with no marks; {F["load_n"]} to 1 on Newsprint',
@@ -1675,14 +1680,14 @@ def build_chapter():
         'why': {'text': [
             'WCAG 2.2 success criterion 1.4.1 Use of Color asks that color never be the only way a state shows, and 1.4.11 '
             'Non-text Contrast asks 3 to 1 for the edges, marks and rings that show one. Each sample here reads only the '
-            'role names a theme points at Newsprint or Charcoal, so one set of code draws both columns, and a product '
+            'short names, which a theme points at Newsprint’s values or Charcoal’s, so one set of code draws both columns, and a product '
             'that follows a reader’s theme changes its colors and keeps its words and shapes.'],
             'basis': 'WCAG 2.2 SC 1.4.1 and 1.4.11'},
         'correct': {'specimen': 's-17-8-correct', 'caption':
                     'The ten states, each on Newsprint and on Charcoal, with its cue in words. Each cell sets its own theme, '
-                    'and every color in it comes from a role token that follows the theme.'},
+                    'and every color in it comes from a short name that follows the theme.'},
         'failure': {'specimen': 's-17-8-failure', 'caption':
-                    f'<strong>Fails 1.4.1.</strong> Four states by color alone. The red words measure {F["red_text_n"]} '
+                    f'<strong>Fails WCAG 2.2 SC 1.4.1.</strong> Four states by color alone. The red words measure {F["red_text_n"]} '
                     f'to 1 and the Verdigris words {F["verd_text_n"]}, and a reader who sees neither color gets no state '
                     f'at all; the faded button falls to {F["faded_n"]} and gives no reason.'},
         'specs': [
@@ -1708,7 +1713,7 @@ def build_chapter():
         ],
         'related': ['05', '11', '18', '26'],
         'builders': [
-            'Write a state’s colors with the short role names, such as <code>var(--oa-color-state-error-mark)</code> '
+            'Write a state’s colors with the short names, such as <code>var(--oa-color-state-error-mark)</code> for an error’s 4 px bar '
             'and <code>var(--oa-color-surface)</code>, never a name that ends in a surface. The theme and the surface '
             'classes point each short name at the right value, so the same code draws both columns of this plate.',
             'Draw every state bar as a border, <code>border-left: 4px solid</code>. Forced colors, a setting such as the '
@@ -1720,13 +1725,14 @@ def build_chapter():
         'id': '17.9',
         'title': 'Show hover with an underline or a thicker edge, and focus with a 2 px ring and its gap.',
         'rule': [
-            'Hover underlines a label, grows a link’s underline from 1 to 2 px, or thickens a quiet control’s '
-            'edge from 1 to 2 px, and a filled button also steps its fill one shade. Hover never draws an inset '
+            'Hover underlines a label, grows a link’s underline from 1 to 2 px, or thickens the edge of a quiet control, '
+            'its word in ink inside a 1 px edge, to 2 px. A filled button also steps its fill one shade. Hover never '
+            'draws an inset '
             'shadow, which forced colors removes, and never moves layout.',
             'Focus draws a 2 px ring 2 px outside the control, at once: Verdigris on Newsprint and White, '
             f'Newsprint on Charcoal and Prussian. On Charcoal the ring around a Newsprint button measures '
-            f'{F["ring_on_fill_c"]} to 1 against its fill, so the 2 px gap of Charcoal between them is what shows the '
-            'ring. Keep the gap there, always.'],
+            f'{F["ring_on_fill_c"]} to 1 against its fill, so the 2 px gap of Charcoal between them shows the '
+            'ring.'],
         'tokens': ['oa.border.width.focusRing', 'oa.border.focusOffset', 'oa.color.focus.ring.onNewsprint',
                    'oa.color.focus.ring.onCharcoal', 'oa.border.width.underlineHover'],
         'why': {'text': [
@@ -1758,7 +1764,7 @@ def build_chapter():
         'builders': [
             'Draw the ring with <code>:focus-visible</code> and <code>outline</code>: <code>outline: '
             'var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: '
-            'var(--oa-border-focus-offset)</code>. An outline stays under forced colors; a box shadow does not.',
+            'var(--oa-border-focus-offset)</code>. Forced colors keeps an outline and removes a box shadow.',
             'When hover thickens an edge, take the extra pixel from the padding, so the control keeps its size and '
             'nothing beside it moves.'],
     })
@@ -1768,7 +1774,7 @@ def build_chapter():
         'title': 'Draw pressed, checked and current choices one way: a check, bold words and a 2 px edge.',
         'rule': [
             'A toggle that is pressed, a choice that is checked and the current choice in a set all draw one look: the '
-            'selected check before the word, the word in bold, and a 2 px edge in the strong border color where the '
+            'selected check before the word, the word in bold and a 2 px edge in the strong border color where the '
             'others keep 1 px. The look is the same on Newsprint and Charcoal and stays under forced colors, since '
             'the check, the weight and the edge are shapes.',
             'Links and lists of places keep their own marks for the current place. A link to the page a reader is on '
@@ -1807,18 +1813,18 @@ def build_chapter():
         'id': '17.11',
         'title': 'Keep an unavailable action in reach and say what makes it available.',
         'rule': [
-            'An action that cannot run yet stays in its place with a dashed edge, readable words and a reason line beside '
+            'An action that cannot run yet stays in its place with a dashed edge, readable words and a reason line under '
             'it that names the step that makes it available, such as “Choose a size to download.” It keeps focus, so a '
-            'keyboard reader reaches it, and its accessible description carries the reason. Its words take the disabled '
+            'keyboard reader reaches it, and its accessible description, the line a screen reader reads after its name, carries the reason. Its words take the disabled '
             f'text token, {F["dis_n"]} to 1 on Newsprint and {F["dis_c"]} on Charcoal, and nothing fades.',
-            'Form fields stay editable. A send that cannot run yet keeps focus and says why beside it.'],
+            'Form fields stay editable. A Send button that cannot run yet keeps focus and says why under it.'],
         'tokens': ['oa.color.state.disabled.text.onNewsprint', 'oa.color.state.disabled.edge.onNewsprint',
                    'oa.color.state.disabled.text.onCharcoal'],
         'why': {'text': [
             f'A control faded with opacity falls below the contrast its words need: Charcoal at 40 percent measures '
             f'{F["faded_n"]} to 1 on Newsprint and {F["faded_w"]} on White. A button with the disabled attribute also '
             'leaves the keyboard’s path, so the reader who most needs the reason never meets it. WCAG 2.2 success '
-            'criterion 1.4.3 sets no contrast for an inactive control’s text, and we hold it to the same 4.5 to 1 as '
+            'criterion 1.4.3 exempts an inactive control’s text from its minimum, and we hold that text to the same 4.5 to 1 as '
             'any other words.'],
             'basis': 'WCAG 2.2 SC 1.4.3; design judgment'},
         'correct': {'specimen': 's-17-11-correct', 'caption':
@@ -1830,7 +1836,7 @@ def build_chapter():
         'specs': [
             {'label': 'Edge', 'value': 'Dashed, 1 px', 'token': 'oa.color.state.disabled.edge.onNewsprint'},
             {'label': 'Words', 'value': f'{F["dis_n"]} to 1 on Newsprint; {F["dis_c"]} on Charcoal', 'token': 'oa.color.state.disabled.text.onNewsprint'},
-            {'label': 'Reason line', 'value': 'Beside the control in secondary words, and in its accessible description',
+            {'label': 'Reason line', 'value': 'Under the control in secondary words, and in its accessible description',
              'token': 'oa.color.text.secondary.onNewsprint'},
             {'label': 'Markup', 'value': '<code>aria-disabled="true"</code> with <code>aria-describedby</code> to the reason; '
                                          'never the <code>disabled</code> attribute'},
@@ -1849,14 +1855,14 @@ def build_chapter():
         'rule': [
             'A list, table, search or tracker with nothing to show draws a dashed region in place of its rows, and its '
             'words say what is missing and the step that would fill it. A search writes both into its status line with '
-            'the count, so a screen reader hears them together: “0 of 124 symbols. No symbol matches. Clear the search or '
+            f'the count, so a screen reader hears them together: “0 of {N_LIB} symbols. No symbol matches. Clear the search or '
             'the filters to see more.”',
             'An empty region names no fault, since nothing failed. When the data fails to arrive, the region shows the '
             'error state instead (Rule 11.15).'],
         'tokens': ['oa.color.state.empty.text.onNewsprint', 'oa.color.state.empty.edge.onNewsprint'],
         'why': {'text': [
             'WCAG 2.2 success criterion 4.1.3 Status Messages asks that a result such as a count reach a screen reader '
-            'without moving focus, and a count of 0 alone leaves a reader with no way on. The dashed edge keeps the '
+            'without moving focus, and a count of 0 alone leaves a reader with nothing to try next. The dashed edge keeps the '
             'region at its size, so the page holds still when results return.'],
             'basis': 'WCAG 2.2 SC 4.1.3; design judgment'},
         'correct': {'specimen': 's-17-12-correct', 'caption':
@@ -1893,7 +1899,7 @@ def build_chapter():
         'intro': [
             'Motion here means a mark that moves on screen to show a change, such as a bill reaching its next step or a '
             'link forming between a cause and its effect. A state is how a control or a region looks while something '
-            'about it holds, from a focus ring to an error. This chapter sets how each one moves and how it looks, and '
+            'about it holds, from a focus ring to an error. This chapter sets how a motion runs and how each state looks, and '
             'chapter 18 says where each component uses them.',
             'A reader starts every motion, and a reader whose device asks for less motion sees the last frame at once. '
             'Every state shows words or a shape as well as a color, on Newsprint and on Charcoal, so it reads in gray '
@@ -1926,8 +1932,9 @@ def build_chapter():
             'Source: MDN Web Docs, browser compatibility data, @mdn/browser-compat-data version 8.1.8, built November 2, '
             '2026, retrieved November 10, 2026. The first version of each browser with full support for '
             'prefers-reduced-motion, behind Rule 17.4.',
-            'Source: our systems atlas, Who Do They Answer To?, loop R1, “Wealth and political influence reinforce each '
-            'other”, its first link and its sentence. The player in Rule 17.4.',
+            'Source: Oath & Action’s systems atlas, Who Do They Answer To?, Loop R1, “Wealth and political influence '
+            'reinforce each other”, snapshot of October 15, 2026. Its first link and its sentence, behind the player in '
+            'Rule 17.4.',
         ],
     }
     return ch

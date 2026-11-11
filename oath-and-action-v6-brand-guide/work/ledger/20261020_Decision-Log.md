@@ -2586,3 +2586,32 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 | # | Decision | Reason |
 |---|---|---|
 | D2-1348 | Chapter 18's 24 anatomy plates go to the systems designer instance that finished chapters 05, 10 and 11, in `manifest-anatomy.json` through its own generator, while chapter 17's maker finishes the editor's edits | The plates are the strict build's only warnings, and that designer is free; the round 1 brief gave them to the systems designer once chapter 17 had a draft, which it has |
+
+### Accessibility lead, chapter 18 (`20261111_Stage-C-Round-1-Ch18-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1349 | Rules 18.1 to 18.24 each take the anatomy plate as their correct application, a failure plate from the chapter's generator, and the component engineer's code set as "Code to copy" | The round 1 brief's three parts of each rule, in the shell's existing slots |
+| D2-1350 | AX-S8 settled: in the two live stages only, each landmark draws as a named group with `data-oa-landmark` and the plate says so; the panels, Copy and `codeMatch` keep the real elements, and no set's CSS selects a landmark by its tag | Agreed with the component engineer and built by the guide engineer; the guide's landmarks stay its own and the copy keeps its meaning |
+| D2-1351 | The keyboard path files take the format `oa-keys/1` above, with paths limited to a theme or a width where a component draws differently there | One format for the guide engineer's check; the masthead and the scroll region change with the stage's width |
+| D2-1352 | A path starts from a stand-in control just before the live stage, and "outside" means focus has left the stage | A fixed start that does not depend on what the check ran before |
+| D2-1353 | Each keys file follows the landed set's own selectors and words, and is walked in both stages at 1440 and 390 px before it counts as done | A path written from the plan alone tests nothing |
+| D2-1354 | No path asks a native modal dialog to wrap from its first control to its last | Chromium sends Shift+Tab from the first control to the browser; the page behind stays out of reach, which is what WCAG 2.1.2 and Rule 18.6 ask |
+| D2-1355 | A choice that cannot be made yet stays in view as a disabled radio with its reason under the row, and the group points to the reason | The component engineer's set; the arrow keys pass a disabled radio, so the reason must reach a reader on entering the group. It replaces my inventory's "leave it out" |
+| D2-1356 | The theme switch's copy names a sample page with `data-oa-theme-for`, starts on Match my device in both stages, and stores nothing there; Rule 18.4 tells a builder to leave the attribute out | The component engineer's set; each stage stands for a device set to its theme, and the guide's root and storage stay untouched |
+| D2-1357 | A table may read as one card a row on a phone when it restates its roles with role attributes | The component engineer's set; the roles keep its table meaning whatever CSS does |
+| D2-1358 | A scroll region is named for what it holds, with the hint as its description | The component engineer's set; the name stays short and the hint says what to do |
+| D2-1359 | A file not ready keeps a focusable control with `aria-disabled` and its reason, link or button | The component engineer's set uses a link role; both keep focus and say why |
+| D2-1360 | Rule 18.15's example count reads the Civic Line inventory, 125 today, and the rule says the search sits in a search landmark on a product page | The main session's note |
+| D2-1361 | Every "Browser support" line comes from MDN's compatibility data 8.1.8 by script, first full support only, with 13 features added to the research lead's table | D2-1140 and D2-1141's source and rule |
+| D2-1362 | Chapter 18 cites the short names (`--oa-color-surface` and the rest) as its tokens | The code reads only role names (DR-203, F-1), and Rule 26.6 explains them |
+| D2-1363 | Failure plates for 18.22 and 18.24 show real atlas content with no Illustrative label; the others carry it | DR-97: the label marks invented content only |
+| D2-1364 | Failure plates use chapter 11's invented bills, numbers and titles together | One invented bill means one thing across the guide |
+| D2-1365 | "A screen reader hears" names the name, role, state and live text the code hands over, and the intro says each screen reader words these its own way | Nothing here was heard on a real screen reader |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1366 | Chapter 18's 24 anatomy plates aim at 5 KB each; if the family needs more, chapter 18's ceiling rises from 1.1 to 1.25 MB, with no other budget moved | Chapter 18 stands at 0.97 MB before its plates; the whole guide projects to about 14.6 MB against the 15.5 MB page budget (D2-1214), so 0.15 MB more stays inside it |
+| D2-1367 | The component engineer fixes the accessibility lead's ten ranked faults before round 2, the forced colors marks and the four live stages that draw apart from their copy first; the filter bar's sample data takes R-01's states from the atlas model | A live stage must draw what a builder copies (DR-203); sample data shown as a fact must match its source even when labeled Illustrative |

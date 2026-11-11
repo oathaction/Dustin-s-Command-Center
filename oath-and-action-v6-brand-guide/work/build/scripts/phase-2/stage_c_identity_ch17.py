@@ -436,7 +436,7 @@ def s_17_hinge_correct():
            f"and a status line says each frame in words. The still view draws the first frame, the words in place and "
            f"the last frame, and lists each step with its time.")
     return rec("s-17-hinge-correct", "17.6", None, alt, PLAYER_JS_WRAP(body), css=PLAYER_CSS + css, interactive=True,
-               caption=(f"Live. Press Play and OATH and ACTION settle into place over {msw(SLOW)}, then the ampersand "
+               caption=(f"Live. Press Play, and OATH and ACTION settle into place over {msw(SLOW)}, then the ampersand "
                         f"lands between them and comes to rest at {msw(HINGE)}, on the wordmark’s master. The last frame "
                         "is the master itself, at 24 px and, on a wide screen, at 64 px."),
                notes=(f"Rule 17.6, the hinge (oa.motion.duration.hinge, {HINGE} ms). The moving layer is each master's own "
@@ -498,7 +498,7 @@ def s_17_lever_correct():
            f"empty field, the links drawn and the last frame, and lists each step with its time.")
     return rec("s-17-lever-correct", "17.6", None, alt, PLAYER_JS_WRAP(body), css=PLAYER_CSS + css, interactive=True,
                label="The lockmark’s motion",
-               caption=(f"Live. Press Play and the lockmark’s links draw from the top left, its eight nodes land "
+               caption=(f"Live. Press Play, and the lockmark’s links draw from the top left, its eight nodes land "
                         f"together, and the lever lands last, coming to rest at {msw(LEVER)} on the master. The last "
                         "frame is the master itself: the 48 px master at 48 px, and the display master at 120 px."),
                notes=(f"Rule 17.6, the lever landing (oa.motion.duration.lever, {LEVER} ms). The moving layer is each "
