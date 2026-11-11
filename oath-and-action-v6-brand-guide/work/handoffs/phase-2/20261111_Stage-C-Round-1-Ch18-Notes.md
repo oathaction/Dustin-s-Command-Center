@@ -144,10 +144,18 @@ Read from the keys data by `stage_c_ch18_build.py --notes`: 36 paths, 186 steps.
 - D2-xxx | Failure plates for 18.22 and 18.24 show real atlas content with no Illustrative label; the others carry it | DR-97: the label marks invented content only
 - D2-xxx | Failure plates use chapter 11's invented bills, numbers and titles together | One invented bill means one thing across the guide
 - D2-xxx | "A screen reader hears" names the name, role, state and live text the code hands over, and the intro says each screen reader words these its own way | Nothing here was heard on a real screen reader
+- D2-xxx | Rule 18.7 follows its code: a list's current place takes the band, the 4 px bar and bold words, and a breadcrumb's current page bold words, with no underline | The systems designer's anatomy notes found the difference; bold sets the current crumb apart from the links before it more clearly than a heavier underline would, and Rule 17.10 already pairs bold with the current choice
+- D2-xxx | Rule 18.10's sort button is at least 44 px tall and as wide as its words and arrow | The code's size meets WCAG 2.5.8 and Rule 11.7; filling the heading cell was my wording, not a need
+- D2-xxx | Rule 18.19's empty state names a step the reader can take on the page, and holds no control of its own | The code's empty words name the control where it lives, such as Save on an explainer or Clear the filters in the bar
+- D2-xxx | Rule 18.23 asks for the lines in words behind a disclosure, and a table only where a drawing holds values; its caption names three items | The code's loop of three connections holds no values, so its lines in words are the whole equivalent
 
 ## Questions for Dustin
 
 None. Every call above sits inside DR-203, DR-204 and the round 1 brief. The weight item goes to the main session.
+
+## Later the same day: the anatomy plates
+
+The systems designer drew all 24 plates from the code sets and listed four captions that named parts the code draws differently (`20261111_Stage-C-Round-1-Anatomy-Notes.md`). In each case the code was sound, so the caption and the rule's words changed to match it, through my generator (the four calls above). None goes to the component engineer. A strict build of all 16 chapters then had no warnings, with chapter 18 at 1,097,094 bytes. If the systems designer's plate keys quote my captions, its generator may want a rerun. When the component engineer lands its fixes for my ten faults, my keys files need one more walk.
 
 ## Tested
 

@@ -568,19 +568,19 @@ rule(n=7, set='c-18-location', name='Location list',
      rule=['A list of places in a product, such as a chapter rail, an “In this chapter” list or a breadcrumb, marks the '
            'reader’s place in two ways at once. The link carries aria-current: “page” for the page itself, “location” for '
            'a part of a long page and “step” for a step in a process. A list beside the text marks it with the selected '
-           'band, a 4 px bar at its left edge and semibold words; a short list in a line, such as a breadcrumb, marks it '
-           'with a 2 px underline.',
+           'band, a 4 px bar at its left edge and bold words; a short list in a line, such as a breadcrumb, sets the '
+           'current place in bold words while the places before it stay links.',
            'A list that follows the reader down a long page moves its mark as each part comes into view, and leaves focus '
            'and its own scroll where they are. A breadcrumb sits in a navigation landmark named “Breadcrumb”, with its '
            'places in an ordered list and the current page last.'],
      tokens=['--oa-color-state-selected-band', '--oa-color-state-selected-bar', 'oa.border.width.bar',
              'oa.border.width.rule'],
-     why=['aria-current lets a screen reader say where the reader is, and the bar and the underline say it to everyone '
+     why=['aria-current lets a screen reader say where the reader is, and the bar and the bold words say it to everyone '
           'else in shapes that hold in gray print and in a contrast theme. A mark that follows the scroll helps only while '
           'it leaves focus alone.'],
      basis='WCAG 2.2 SC 1.4.1 and 4.1.2; APG Breadcrumb pattern',
-     anatomy='The parts of a location list: the list’s label, each link, the current link’s band, 4 px bar and semibold '
-             'words, and a breadcrumb’s current page with its 2 px underline.',
+     anatomy='The parts of a location list: the list’s label, each link, the current link’s band, 4 px bar and bold '
+             'words, and a breadcrumb’s current page in bold.',
      code_caption='A list of a page’s parts and a breadcrumb, live, each marking where the reader is.',
      code_alt='A list of a page’s parts and a breadcrumb, drawn live from the code below. In this guide the live copy '
               'draws the breadcrumb’s navigation as a named group, so the guide’s own landmarks stay the only ones on the '
@@ -588,7 +588,8 @@ rule(n=7, set='c-18-location', name='Location list',
      specs=specs(
          (L_PAT, 'APG Link; APG Breadcrumb for a trail of places; a navigation landmark for each list that leads around '
                  'the product.'),
-         (L_ST, 'Current: the band, the 4 px bar and semibold words, or a 2 px underline, with aria-current. Hover: an '
+         (L_ST, 'Current: the band, the 4 px bar and bold words in a list, or bold words in a breadcrumb, with '
+                'aria-current. Hover: an '
                 'underline. Focus: the ring.'),
          (L_KEY, 'Tab through the links; Enter follows one.'),
          (L_NAME, 'The list’s label, such as “In this chapter” or “Breadcrumb”; each link its words.'),
@@ -596,7 +597,8 @@ rule(n=7, set='c-18-location', name='Location list',
                   'with the scroll, since moving it changes no focus.'),
          (L_TGT, 'Rows 44 px tall in a list a thumb uses; at least 24 px with spacing in a list of words.',
           'oa.size.target.minimum'),
-         (L_FC, 'The band drops out. The 4 px bar, drawn as a border, and the underline hold in the system’s colors.'),
+         (L_FC, 'The band drops out. The 4 px bar, drawn as a border, takes the system’s highlight color, and the bold words '
+                'hold.'),
          (L_TH, 'On Newsprint the band is White and the bar Charcoal; on Charcoal the band is Prussian and the bar '
                 'Newsprint.'),
          (L_BR, bs('sticky', 'intersection-observer') + ' The second tells a script which part is in view.'),
@@ -733,7 +735,7 @@ rule(n=10, set='c-18-table', name='Sortable table',
          (L_NAME, 'The caption names the table; each sort button takes its heading’s words.'),
          (L_HEAR, 'The column heading and “sorted ascending” or “sorted descending” on the sorted column; after a press, '
                   'the status line, such as “Sorted by date, newest first.”'),
-         (L_TGT, 'Each sort button fills its heading cell, at least 44 px tall.', 'oa.size.target.touch'),
+         (L_TGT, 'Each sort button at least 44 px tall, as wide as its words and arrow.', 'oa.size.target.touch'),
          (L_FC, 'The arrow draws in currentColor, and the rules between rows hold as borders.'),
          (L_TH, 'Rules in --oa-color-border-hairline and words in the text’s ink on either surface.'),
          (L_BR, 'Tables, captions and th: every browser MDN lists, from its oldest versions. ' + ARIA_NOTE),
@@ -1121,15 +1123,15 @@ rule(n=19, set='c-18-loading-empty', name='Loading and empty states',
            'as “Loading the tracker”, in a status line, with no spinner and no pulse (Rule 17.7). The words sit where the '
            'content will, so nothing jumps when the data lands.',
            'When the data holds nothing, the part says what is missing and what to do next, inside a dashed edge: “No '
-           'bills match these filters. Clear the filters to see every bill.” The empty words are plain text, and the '
-           'control they name sits in reach.'],
+           'bills match these filters. Clear the filters to see every bill.” The empty words are plain text, and they '
+           'name a step the reader can take on the page, such as a control in the filter bar.'],
      tokens=['--oa-color-state-loading-text', '--oa-color-state-loading-mark', '--oa-color-state-empty-text',
              '--oa-color-state-empty-edge'],
      why=['Words tell every reader what is happening, where a spinner shows only that something is, and a pulse moves '
           'without end. Saying what to do next turns an empty list into a step.'],
      basis='WCAG 2.2 SC 2.2.2 and 4.1.3; design judgment',
      anatomy='The parts of a loading state, its still drawing and its words, and of an empty state, its dashed edge, '
-             'what is missing and the control to try next.',
+             'what is missing and what to do next.',
      code_caption='A loading state and an empty state, live in both themes.',
      specs=specs(
          (L_PAT, 'None fits; the status role for the loading words.'),
@@ -1139,7 +1141,7 @@ rule(n=19, set='c-18-loading-empty', name='Loading and empty states',
          (L_NAME, 'None; the words say it.'),
          (L_HEAR, 'The loading words once, at the next pause, when loading starts; the content when it lands; the empty '
                   'words when the reader reaches them.'),
-         (L_TGT, 'The control in the empty words, 44 px tall.', 'oa.size.target.touch'),
+         (L_TGT, 'Any control the empty words name, wherever the page holds it, at least 44 px tall.', 'oa.size.target.touch'),
          (L_FC, 'The dashed edge and the drawing hold in CanvasText.'),
          (L_TH, f'Loading and empty words in the secondary color, {R_DIS_N} to 1 on Newsprint and {R_DIS_C} on '
                 'Charcoal.'),
@@ -1303,18 +1305,18 @@ rule(n=23, set='c-18-diagram-controls', name='Diagram controls',
            'related items and opens its record in a panel, or a sheet on a phone; Escape closes it and returns focus to '
            'the item.',
            'A readout line under the drawing repeats the name of the item in focus, so a reader who zooms in sees it '
-           'without hovering. Each drawing also offers its lines in words and its data as a table, each behind a '
-           'disclosure (Rule 18.8), and Full size opens it in a native modal dialog. Zoom stays in words, as Zoom in, Zoom '
+           'without hovering. Each drawing also offers its lines in words behind a disclosure (Rule 18.8), and a drawing '
+           'that holds values offers its data as a table the same way. Full size opens it in a native modal dialog. Zoom stays in words, as Zoom in, Zoom '
            'out, Fit and Reset.'],
      tokens=['--oa-color-state-muted-mark', '--oa-color-graphic-essential', 'oa.size.target.touch'],
      why=['One Tab stop for each drawing keeps a keyboard reader from passing every item to leave it, and the arrow keys '
-          'still reach each one. The words and the table give a reader who cannot see the drawing the same connections, '
+          'still reach each one. The lines in words, with a table where a drawing holds values, give a reader who cannot see the drawing the same connections, '
           'and the readout takes the place of help that would show only on hover.'],
      basis='WCAG 2.2 SC 1.1.1, 1.4.13, 2.1.1, 2.5.1 and 4.1.2; APG Button, Disclosure and Dialog (Modal) patterns',
      anatomy='The parts of the diagram controls: the drawing’s items, the item in focus with its heavier mark and '
              'underlined label, the selected item, the muted items, the readout line, the panel with its title, and the '
-             'disclosures for the words and the table.',
-     code_caption='A small drawing of four items, live. Tab to it once, move with the arrow keys, select with Enter and '
+             'disclosure for the lines in words.',
+     code_caption='A small drawing of three items, live. Tab to it once, move with the arrow keys, select with Enter and '
                   'close with Escape.',
      specs=specs(
          (L_PAT, 'APG Button, as toggle buttons, for the items; Disclosure for More and Less, the lines in words and the '

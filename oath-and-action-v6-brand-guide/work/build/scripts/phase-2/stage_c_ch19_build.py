@@ -167,7 +167,8 @@ def rule_link(rid, held, own):
 SPECS = {}
 
 
-def spec(sid, html_, rule, alt, width=None, interactive=False, readable=False, illustrative=False, notes='', exempt=None):
+def spec(sid, html_, rule, alt, width=None, interactive=False, readable=False, illustrative=False, notes='', exempt=None,
+         scale=None):
     if re.search(r'<h[1-6]\b|<(nav|article|header|footer|main|aside|section|form|search)\b', html_, re.I):
         raise SystemExit(f'{sid}: heading or landmark in a specimen')
     bare = re.sub(r'var\((?:[^()]|\([^()]*\))*\)', '', html_)
@@ -185,6 +186,8 @@ def spec(sid, html_, rule, alt, width=None, interactive=False, readable=False, i
         meta['readable'] = True
     if exempt:
         meta['check_exempt'] = exempt
+    if scale:
+        meta['scale'] = scale
     SPECS[sid] = {'html': html_.strip() + '\n', 'meta': meta}
     return sid
 
@@ -212,10 +215,10 @@ def icon(name, px=24):
             f'data-icon="U-{name}" data-icon-family="utility"><use href="#oa-sym-u-{name}-{px}px"/></svg>')
 
 
-def picture(sid, rule, body, alt, notes, fail=False, illus=True, css='', exempt=None):
-    h = (f'<style>{BASE}{FAIL_CSS}{css}</style><div class="c19">{BAND if fail else ""}<div class="c19-ui">'
+def picture(sid, rule, body, alt, notes, fail=False, illus=True, css='', exempt=None, width=360, scale=None, root=''):
+    h = (f'<style>{BASE}{FAIL_CSS}{css}</style><div class="c19{root}">{BAND if fail else ""}<div class="c19-ui">'
          f'{ILL if illus else ""}{body}</div></div>')
-    return spec(sid, h, rule, alt, width=360, illustrative=illus, notes=notes, exempt=exempt)
+    return spec(sid, h, rule, alt, width=width, illustrative=illus, notes=notes, exempt=exempt, scale=scale)
 
 
 def s_criteria(crit, held, own):
@@ -504,21 +507,28 @@ def pictures():
             'Shake to undo. Press Z to zoom.” and no buttons.',
             'Picture of a fault: gestures, motion and a single-key shortcut with no button (SC 2.1.4, 2.5.1, 2.5.4, 2.5.7).',
             fail=True)
-    big = 'font:var(--oa-type-ui);font-size:1.875rem;line-height:1.3'
+    # 19.6: a 360 px screen zoomed to 200 percent lays out like 180 px; the plate draws that layout at exactly twice
+    # its sizes, 360 px wide, and says so (scale 2), so every size divided by 2 is one the type scale holds
+    X2 = ('.c19-x2 .c19-ui{padding:32px 32px 40px}.c19-x2 .c19-k{font:var(--oa-type-caption);font-size:1.75rem;margin-bottom:12px}'
+          '.c19-x2 .c19-btn{min-height:88px;padding:0 32px;border-width:2px;font:var(--oa-type-ui);font-size:1.875rem;gap:16px}'
+          '.c19-x2 .c19-fb{font-size:1.625rem;padding:12px 24px;gap:16px}.c19-x2 .c19-g{display:grid;gap:12px}'
+          '.c19-x2 .c19-g2{grid-template-columns:1fr 1fr}.c19-x2 .c19-g2 .c19-btn{padding:0 12px;overflow:hidden;white-space:nowrap}')
     picture('s-19-6-correct', '19.6',
-            f'<p class="c19-k">Text at 200 percent, 360 px wide</p><div style="display:grid;gap:8px">'
-            f'<span class="c19-btn" style="{big};padding:8px 16px;justify-content:center">Previous page</span>'
-            f'<span class="c19-btn" style="{big};padding:8px 16px;justify-content:center">Next page</span></div>',
-            'An Illustrative pair of buttons at 360 px with text at 200 percent: Previous page and Next page have stacked into '
-            'one column, each word whole.', 'Correct: a row of two buttons that stacks as text grows.')
+            '<p class="c19-k">360 px, zoomed to 200 percent</p><div class="c19-g">'
+            '<span class="c19-btn" style="justify-content:center">Previous page</span>'
+            '<span class="c19-btn" style="justify-content:center">Next page</span></div>',
+            'An Illustrative pair of buttons on a 360 px screen zoomed to 200 percent, drawn at twice true size: Previous '
+            'page and Next page have stacked into one column, each word whole.',
+            'Correct: a row of two buttons that stacks as text grows. The 180 px layout a 360 px screen gives at 200 percent, '
+            'drawn at exactly twice its sizes (scale 2).', illus=False, css=X2, root=' c19-x2', scale=2)
     picture('s-19-6-failure', '19.6',
-            f'<p class="c19-k">Text at 200 percent, 360 px wide</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'
-            f'<span class="c19-btn" style="{big};padding:8px 10px;overflow:hidden;white-space:nowrap">Previous page</span>'
-            f'<span class="c19-btn" style="{big};padding:8px 10px;overflow:hidden;white-space:nowrap">Next page</span></div>'
-            '<p class="c19-n">The words may not wrap, so they run out of their buttons and are cut off.</p>',
-            'Failure case: do not publish. The same Illustrative buttons at 360 px with text at 200 percent, held side by side; '
-            'their words may not wrap, so “Previous page” and “Next page” are cut off at the buttons’ edges.',
-            'Picture of a fault: labels that may not wrap (SC 1.4.4, 1.4.12).', fail=True)
+            '<p class="c19-k">360 px, zoomed to 200 percent</p><div class="c19-g c19-g2">'
+            '<span class="c19-btn">Previous page</span><span class="c19-btn">Next page</span></div>',
+            'Failure case: do not publish. The same buttons on a 360 px screen zoomed to 200 percent, drawn at twice true '
+            'size and held side by side; their words may not wrap, so “Previous page” and “Next page” are cut off at the '
+            'buttons’ edges.',
+            'Picture of a fault: labels that may not wrap (SC 1.4.4, 1.4.12). The 180 px layout a 360 px screen gives at '
+            '200 percent, drawn at exactly twice its sizes (scale 2).', fail=True, illus=False, css=X2, root=' c19-x2', scale=2)
     picture('s-19-7-failure', '19.7',
             '<div class="c19-box"><p class="c19-code">Automated scan: 0 errors</p><p style="margin-top:6px"><b>The page passes.</b></p></div>'
             '<p class="c19-n">One tool’s score stands in for the whole matrix, so keyboard, reading order, zoom and forced '
@@ -657,7 +667,7 @@ def build():
              tokens=[], why={'text': ['Many readers raise the text size or the spacing to read at all, and some hold a phone '
                                       'one way only. Words that may not wrap are the most common way a page loses them.'],
                              'basis': 'WCAG 2.2 SC 1.3.4, 1.4.4, 1.4.10 and 1.4.12'},
-             correct={'specimen': 's-19-6-correct', 'caption': 'At 200 percent text the two buttons stack, and each word '
+             correct={'specimen': 's-19-6-correct', 'caption': 'Zoomed to 200 percent, the two buttons stack, and each word '
                                                                'stays whole.'},
              failure={'specimen': 's-19-6-failure', 'caption': '<strong>Fails Rule 19.6.</strong> The words may not wrap, so '
                                                                'both are cut off.'},

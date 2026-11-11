@@ -84,19 +84,21 @@
   "chapter": "19",
   "rule": "19.6",
   "width_px": 360,
-  "alt": "An Illustrative pair of buttons at 360 px with text at 200 percent: Previous page and Next page have stacked into one column, each word whole.",
-  "illustrative": true,
-  "notes": "Correct: a row of two buttons that stacks as text grows.",
-  "fit_switch": false
+  "alt": "An Illustrative pair of buttons on a 360 px screen zoomed to 200 percent, drawn at twice true size: Previous page and Next page have stacked into one column, each word whole.",
+  "illustrative": false,
+  "notes": "Correct: a row of two buttons that stacks as text grows. The 180 px layout a 360 px screen gives at 200 percent, drawn at exactly twice its sizes (scale 2).",
+  "fit_switch": false,
+  "scale": 2
  },
  "s-19-6-failure": {
   "chapter": "19",
   "rule": "19.6",
   "width_px": 360,
-  "alt": "Failure case: do not publish. The same Illustrative buttons at 360 px with text at 200 percent, held side by side; their words may not wrap, so “Previous page” and “Next page” are cut off at the buttons’ edges.",
-  "illustrative": true,
-  "notes": "Picture of a fault: labels that may not wrap (SC 1.4.4, 1.4.12).",
-  "fit_switch": false
+  "alt": "Failure case: do not publish. The same buttons on a 360 px screen zoomed to 200 percent, drawn at twice true size and held side by side; their words may not wrap, so “Previous page” and “Next page” are cut off at the buttons’ edges.",
+  "illustrative": false,
+  "notes": "Picture of a fault: labels that may not wrap (SC 1.4.4, 1.4.12). The 180 px layout a 360 px screen gives at 200 percent, drawn at exactly twice its sizes (scale 2).",
+  "fit_switch": false,
+  "scale": 2
  },
  "s-19-7-failure": {
   "chapter": "19",

@@ -277,7 +277,7 @@
       },
       "correct": {
         "specimen": "s-19-6-correct",
-        "caption": "At 200 percent text the two buttons stack, and each word stays whole."
+        "caption": "Zoomed to 200 percent, the two buttons stack, and each word stays whole."
       },
       "failure": {
         "specimen": "s-19-6-failure",

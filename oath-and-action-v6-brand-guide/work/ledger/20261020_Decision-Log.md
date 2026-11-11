@@ -2698,3 +2698,20 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 | D2-1423 | The stepper is drawn at its last step, with the reason the stepper's own script writes there | The caption asks for a current step and an unavailable button's reason at once; only the last step has both |
 | D2-1424 | Invented content keeps the code set's own Illustrative label; the table's plate takes the caption's label instead, so its caption's callout has room | DR-97, one label per piece |
 | D2-1425 | Every key's words describe what the code draws, where the caption says otherwise | The plate is the code; the differences go to their owners below |
+
+### Accessibility lead, chapter 19 (`20261111_Stage-C-Round-1-Ch19-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1426 | Chapter 19 holds nine rules in three groups: the standard (19.1), five rules that close the gaps the round 0 map gave chapter 19 (19.2 to 19.6), and how to check (19.7 to 19.9) | The brief's four parts, plus the criteria only chapter 19 was owed |
+| D2-1427 | The 55 criteria are one searchable list with a status choice, in W3C's words, with links to the rules that meet each | A builder looks up one criterion or the open gaps; it must read and search on a phone |
+| D2-1428 | W3C's informative notes stay out of the list, and the sources point to the Understanding pages | D2-1138 keeps notes apart; they would double the list's weight |
+| D2-1429 | A criterion's status is Met, Met in part, Gap with the chapter that owes it, or Not used today with the chapter that would add it | Round 0's four kinds, in plain words |
+| D2-1430 | The map counts 37 met, 5 in part, 8 gaps and 5 not used today | Chapters 17, 18, 19 and 26 now exist |
+| D2-1431 | A gap stays a gap until a rule states the criterion, even where this guide's own page meets it (2.4.2, 3.1.1) | The rules are what a builder follows; the shell's title and language are not a rule yet |
+| D2-1432 | The results print from a dated file that names its runs, and the generator shows "pending" when it is missing | D2-469 and D2-805: figures come from a file |
+| D2-1433 | The results cite only checks whose results hold; the check's miscounts on the new chapters go to its owner | Honesty rule: never describe a result the run did not support |
+| D2-1434 | The device script uses only basic gestures and keys, and says where they differ by version | A person with no training must be able to follow it, and gestures change between versions |
+| D2-1435 | The device script asks for ten things to listen for, the same on every device | One list makes four devices' results comparable |
+| D2-1436 | Numbers under ten in the chapter's prose print as words, through the generator | House rule H06 |
+| D2-1437 | Rule 19.6's pictures show a 360 px screen zoomed to 200 percent as its 180 px layout drawn at twice its sizes, marked twice true size | That is what 200 percent zoom does, and every size divided by two stays on the type scale (D2-254) |

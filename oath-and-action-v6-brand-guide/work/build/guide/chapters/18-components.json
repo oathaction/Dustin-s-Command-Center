@@ -547,7 +547,7 @@
       "id": "18.7",
       "title": "Show where the reader is with aria-current and a mark that holds without color.",
       "rule": [
-        "A list of places in a product, such as a chapter rail, an “In this chapter” list or a breadcrumb, marks the reader’s place in two ways at once. The link carries aria-current: “page” for the page itself, “location” for a part of a long page and “step” for a step in a process. A list beside the text marks it with the selected band, a 4 px bar at its left edge and semibold words; a short list in a line, such as a breadcrumb, marks it with a 2 px underline.",
+        "A list of places in a product, such as a chapter rail, an “In this chapter” list or a breadcrumb, marks the reader’s place in two ways at once. The link carries aria-current: “page” for the page itself, “location” for a part of a long page and “step” for a step in a process. A list beside the text marks it with the selected band, a 4 px bar at its left edge and bold words; a short list in a line, such as a breadcrumb, sets the current place in bold words while the places before it stay links.",
         "A list that follows the reader down a long page moves its mark as each part comes into view, and leaves focus and its own scroll where they are. A breadcrumb sits in a navigation landmark named “Breadcrumb”, with its places in an ordered list and the current page last."
       ],
       "tokens": [
@@ -558,13 +558,13 @@
       ],
       "why": {
         "text": [
-          "aria-current lets a screen reader say where the reader is, and the bar and the underline say it to everyone else in shapes that hold in gray print and in a contrast theme. A mark that follows the scroll helps only while it leaves focus alone."
+          "aria-current lets a screen reader say where the reader is, and the bar and the bold words say it to everyone else in shapes that hold in gray print and in a contrast theme. A mark that follows the scroll helps only while it leaves focus alone."
         ],
         "basis": "WCAG 2.2 SC 1.4.1 and 4.1.2; APG Breadcrumb pattern"
       },
       "correct": {
         "specimen": "s-18-07-anatomy",
-        "caption": "The parts of a location list: the list’s label, each link, the current link’s band, 4 px bar and semibold words, and a breadcrumb’s current page with its 2 px underline."
+        "caption": "The parts of a location list: the list’s label, each link, the current link’s band, 4 px bar and bold words, and a breadcrumb’s current page in bold."
       },
       "failure": {
         "specimen": "s-18-07-failure",
@@ -583,7 +583,7 @@
         },
         {
           "label": "States",
-          "value": "Current: the band, the 4 px bar and semibold words, or a 2 px underline, with aria-current. Hover: an underline. Focus: the ring."
+          "value": "Current: the band, the 4 px bar and bold words in a list, or bold words in a breadcrumb, with aria-current. Hover: an underline. Focus: the ring."
         },
         {
           "label": "Keyboard",
@@ -604,7 +604,7 @@
         },
         {
           "label": "Forced colors",
-          "value": "The band drops out. The 4 px bar, drawn as a border, and the underline hold in the system’s colors."
+          "value": "The band drops out. The 4 px bar, drawn as a border, takes the system’s highlight color, and the bold words hold."
         },
         {
           "label": "Light and dark",
@@ -841,7 +841,7 @@
         },
         {
           "label": "Target",
-          "value": "Each sort button fills its heading cell, at least 44 px tall.",
+          "value": "Each sort button at least 44 px tall, as wide as its words and arrow.",
           "token": "oa.size.target.touch"
         },
         {
@@ -1511,7 +1511,7 @@
       "title": "Say in words what is loading, and when nothing is there, say what is missing and what to do.",
       "rule": [
         "While a part of the page waits for its data, it shows a still drawing and words that name what is coming, such as “Loading the tracker”, in a status line, with no spinner and no pulse (Rule 17.7). The words sit where the content will, so nothing jumps when the data lands.",
-        "When the data holds nothing, the part says what is missing and what to do next, inside a dashed edge: “No bills match these filters. Clear the filters to see every bill.” The empty words are plain text, and the control they name sits in reach."
+        "When the data holds nothing, the part says what is missing and what to do next, inside a dashed edge: “No bills match these filters. Clear the filters to see every bill.” The empty words are plain text, and they name a step the reader can take on the page, such as a control in the filter bar."
       ],
       "tokens": [
         "--oa-color-state-loading-text",
@@ -1527,7 +1527,7 @@
       },
       "correct": {
         "specimen": "s-18-19-anatomy",
-        "caption": "The parts of a loading state, its still drawing and its words, and of an empty state, its dashed edge, what is missing and the control to try next."
+        "caption": "The parts of a loading state, its still drawing and its words, and of an empty state, its dashed edge, what is missing and what to do next."
       },
       "failure": {
         "specimen": "s-18-19-failure",
@@ -1561,7 +1561,7 @@
         },
         {
           "label": "Target",
-          "value": "The control in the empty words, 44 px tall.",
+          "value": "Any control the empty words name, wherever the page holds it, at least 44 px tall.",
           "token": "oa.size.target.touch"
         },
         {
@@ -1836,7 +1836,7 @@
       "title": "Reach a drawing’s items from one Tab stop with the arrow keys, and give every drawing its words.",
       "rule": [
         "The items in an atlas drawing, such as its areas, variables and loops, are toggle buttons in one group. The Tab key reaches the drawing once, at the selected item or the first, and the arrow keys move between items in reading order, with Home and End for the first and the last. Enter or Space selects an item, which lights its related items and opens its record in a panel, or a sheet on a phone; Escape closes it and returns focus to the item.",
-        "A readout line under the drawing repeats the name of the item in focus, so a reader who zooms in sees it without hovering. Each drawing also offers its lines in words and its data as a table, each behind a disclosure (Rule 18.8), and Full size opens it in a native modal dialog. Zoom stays in words, as Zoom in, Zoom out, Fit and Reset."
+        "A readout line under the drawing repeats the name of the item in focus, so a reader who zooms in sees it without hovering. Each drawing also offers its lines in words behind a disclosure (Rule 18.8), and a drawing that holds values offers its data as a table the same way. Full size opens it in a native modal dialog. Zoom stays in words, as Zoom in, Zoom out, Fit and Reset."
       ],
       "tokens": [
         "--oa-color-state-muted-mark",
@@ -1845,13 +1845,13 @@
       ],
       "why": {
         "text": [
-          "One Tab stop for each drawing keeps a keyboard reader from passing every item to leave it, and the arrow keys still reach each one. The words and the table give a reader who cannot see the drawing the same connections, and the readout takes the place of help that would show only on hover."
+          "One Tab stop for each drawing keeps a keyboard reader from passing every item to leave it, and the arrow keys still reach each one. The lines in words, with a table where a drawing holds values, give a reader who cannot see the drawing the same connections, and the readout takes the place of help that would show only on hover."
         ],
         "basis": "WCAG 2.2 SC 1.1.1, 1.4.13, 2.1.1, 2.5.1 and 4.1.2; APG Button, Disclosure and Dialog (Modal) patterns"
       },
       "correct": {
         "specimen": "s-18-23-anatomy",
-        "caption": "The parts of the diagram controls: the drawing’s items, the item in focus with its heavier mark and underlined label, the selected item, the muted items, the readout line, the panel with its title, and the disclosures for the words and the table."
+        "caption": "The parts of the diagram controls: the drawing’s items, the item in focus with its heavier mark and underlined label, the selected item, the muted items, the readout line, the panel with its title, and the disclosure for the lines in words."
       },
       "failure": {
         "specimen": "s-18-23-failure",
@@ -1860,7 +1860,7 @@
       "code": {
         "set": "c-18-diagram-controls",
         "name": "Diagram controls",
-        "caption": "A small drawing of four items, live. Tab to it once, move with the arrow keys, select with Enter and close with Escape."
+        "caption": "A small drawing of three items, live. Tab to it once, move with the arrow keys, select with Enter and close with Escape."
       },
       "specs": [
         {

@@ -32,6 +32,8 @@ I read the round 1 brief's chapter 19 lines, Master Brief section 22, the resear
 1. **The page scrolls sideways at 200 percent text at 390 and 360 px** (404 and 386 px wide; `textSpacing`, first item "page"), in the full check of the 03:13 UTC build. At the default size no width scrolls. The element is not named in the results; a new chapter (17, 18 or 26) is the likely source.
 2. **The check counts the new chapters inconsistently.** On a page that holds 176 rules it counted 155 at 1440 px and 165 at the other widths, and it failed links to `#tokens` and `#part-production` and citations of Rules 18.15 and 18.22 that the page holds (`grep` finds each id once). I did not count these as faults of the page.
 3. **The token download test** fails 4 of 16 cases that expect every download button to offer the tokens.css zip; chapter 26's tokens.json download does not.
+4. **The new `keyPath` check skips two fields of `oa-keys/1`.** It ran my 24 files on the build with chapter 19 and failed only two paths, each on a field it does not read: `"present": true` with `"attr"` (c-18-download: "has aria-describedby=..., not undefined") and `"above": 0` with `"prop"` (c-18-scroll-region: "scrollLeft is 40, not undefined"). Both sets do what the paths ask; my walker passes them. Both fields are in the format in my chapter 18 notes, because a prefixed id differs by theme and a scroll position has no fixed value.
+5. **For the systems designer:** axe-core flags `scrollable-region-focusable` once at 390 px on `.sx-kd.sx-ax-p > .sx-kk`, which sits in one of its specimens.
 
 ## For the main session
 
@@ -51,6 +53,7 @@ I read the round 1 brief's chapter 19 lines, Master Brief section 22, the resear
 - D2-xxx | The device script uses only basic gestures and keys, and says where they differ by version | A person with no training must be able to follow it, and gestures change between versions
 - D2-xxx | The device script asks for ten things to listen for, the same on every device | One list makes four devices' results comparable
 - D2-xxx | Numbers under ten in the chapter's prose print as words, through the generator | House rule H06
+- D2-xxx | Rule 19.6's pictures show a 360 px screen zoomed to 200 percent as its 180 px layout drawn at twice its sizes, marked twice true size | That is what 200 percent zoom does, and every size divided by two stays on the type scale (D2-254)
 
 ## Questions for Dustin
 
@@ -64,7 +67,7 @@ All on November 11, 2026, in Chromium through Playwright, with outside requests 
 - `guide_build.py --strict` with chapter 19: 9,537,586 bytes, 16 chapter files, 185 rules; no warning on chapter 19 (the remaining warnings are other owners' anatomy plates in progress).
 - The criteria list by keyboard at 1440 and 390 px (search, Escape, Clear the search, the status choice by arrow keys, the status line's words).
 - `guide_check.js` at four widths on the 03:13 UTC build (before chapter 19): the results the chapter prints.
-- `guide_check.js --quick` on the build with chapter 19: see the line added below when it finishes.
+- `guide_check.js --quick` on the build with chapter 19 (1440 and 390 px): chapter 19's plates have no text under 13 px or under contrast, no landmark, no axe-core item and no sideways scroll. Its one finding was mine, the 19.6 pictures' 30 px type off the type scale; I redrew them as the 180 px layout a 360 px screen gives at 200 percent, at exactly twice its sizes and marked twice true size, and the strict build of all 16 chapters then had no warnings, with chapter 19 at 203,879 bytes and chapter 18 at 1,097,358.
 - `tokens_download_test.js` on the 03:13 UTC build: 12 of 16 pass.
 - Captures at 390 px of the device script, the matrix, the results and three pictures, looked at.
 
