@@ -716,44 +716,86 @@ def approves_panel(C):
     return panel('approves', P, body, status)
 
 
+def a11y_status(C):
+    """The accessibility lead's own checklist: {item text: done}. Their notes mark each check [x] when it is finished."""
+    p = ROOT / C['slots']['contrast']['notes']
+    if not p.exists():
+        return {}
+    return {m.group(2).strip(): m.group(1).lower() == 'x' for m in re.finditer(r'^- \[( |x|X)\]\s*(.+)$', p.read_text(), flags=re.M)}
+
+
+def a11y_done(C, pattern):
+    st = a11y_status(C)
+    hits = [v for k, v in st.items() if re.search(pattern, k, flags=re.I)]
+    return bool(hits) and all(hits)
+
+
 def slot_contrast(C):
     P = C['panels']['contrast']
     S = C['slots']['contrast']
     paths = [ROOT / p for p in S['paths'] if (ROOT / p).exists()]
-    if not paths:
+    if not paths or not a11y_done(C, r'^Contrast table'):
         return panel('contrast', P, pending(C, P['who'], P['file_label']), ('waiting', P['who']))
     d = json.loads(paths[0].read_text())
     FIG['contrast_source'] = rel(paths[0])
     return panel('contrast', P, contrast_from(d, C), 'ready')
 
 
-def contrast_from(d, C):
-    """The accessibility lead's table, read by its own keys; any shape it cannot read shows its raw counts."""
-    pairs = None
-    if isinstance(d, list):
-        pairs = d
-    elif isinstance(d, dict):
-        for k in ('pairs', 'rows', 'results', 'table'):
-            if isinstance(d.get(k), list):
-                pairs = d[k]
-                break
-    if not pairs:
-        warn('the contrast table landed in a shape the board does not read yet')
-        return '<div class="pending" role="status"><p><b>The contrast table has landed.</b> The board builder lays it out on the next run.</p></div>'
+SURF = [('newsprint', 'Newsprint'), ('white', 'White'), ('charcoal', 'Charcoal'), ('prussian', 'Prussian')]
+USE_WORD = {'text': 'Text', 'large text and graphics only': 'Large text and graphics', 'neither text nor a needed graphic': 'Neither'}
 
-    def g(r, *ks):
-        for k in ks:
-            if k in r and r[k] not in (None, ''):
-                return r[k]
-        return ''
-    fails = [r for r in pairs if str(g(r, 'pass', 'passes', 'ok')).lower() in ('false', 'fail', 'no')]
-    permitted = [r for r in fails if g(r, 'permitted', 'guide_permits', 'allowed') not in ('', False, 'false')]
-    FIG['contrast'] = {'pairs': len(pairs), 'fails': len(fails), 'permitted_fails': len(permitted)}
-    rows = ''.join(f'<tr><th scope="row">{esc(g(r, "token", "fg", "ink", "foreground"))}</th><td>{esc(g(r, "surface", "bg", "ground", "background"))}</td>'
-                   f'<td>{esc(g(r, "theme", "mode"))}</td><td>{esc(g(r, "role", "kind"))}</td><td class="num">{esc(g(r, "ratio"))}</td><td class="num">{esc(g(r, "threshold", "needs", "min"))}</td>'
-                   f'<td><b>Fails</b></td></tr>' for r in fails)
-    return (f'<p class="intro">{len(pairs):,} pairs measured; {len(fails)} fall short of the threshold their role needs, and the guide permits {len(permitted)} of those.</p>'
-            f'<div class="tw" role="region" tabindex="0" aria-label="Failing contrast pairs; scrolls sideways"><table><caption>Every pair that falls short</caption><thead><tr><th scope="col">Token</th><th scope="col">Surface</th><th scope="col">Theme</th><th scope="col">Role</th><th scope="col">Ratio</th><th scope="col">Needs</th><th scope="col">Result</th></tr></thead><tbody>{rows}</tbody></table></div>')
+
+def contrast_from(d, C):
+    T = d['totals']
+    by = T['byResult']
+    FIG['contrast'] = {'totals': T}
+    pal, _ = tokens()
+    hexes = {k.replace('-', ''): v.upper() for k, v in pal.items()}
+    # the palette on the four grounds: a swatch of the color, its ratio and what the guide lets it do there
+    head = '<th scope="col">Color</th>' + ''.join(f'<th scope="col">On {n}</th>' for _, n in SURF)
+    rows = []
+    for r in d['paletteMatrix']:
+        name = re.sub(r'([a-z])([A-Z])', r'\1 \2', r['token'].split('.')[-1]).title()
+        cells = []
+        for key, sname in SURF:
+            ratio, use = r.get(key), r.get(key + 'Use', '')
+            g = GROUND[key]
+            light = key in ('charcoal', 'prussian')
+            red_on_prussian = r['hex'].upper() == '#E63946' and key == 'prussian'
+            sw = '' if red_on_prussian else f'<i class="sw" style="background:{r["hex"]}" aria-hidden="true"></i>'
+            word = 'Never: red stays off Prussian' if red_on_prussian else USE_WORD.get(use, use.capitalize())
+            if ratio is not None and float(ratio) == 1.0:
+                word = 'The same color'
+            cells.append(f'<td class="mx {"lt" if light else "dk"}" style="background:{g}">{sw}<span class="r">{float(ratio):.2f}</span><span class="u">{esc(word)}</span></td>')
+        rows.append(f'<tr><th scope="row"><i class="sw" style="background:{r["hex"]}" aria-hidden="true"></i>{esc(name)}<span class="hx">{esc(r["hex"])}</span></th>{"".join(cells)}</tr>')
+    matrix = (f'<h3 class="sub">The palette on its four grounds</h3><p>Each cell gives the ratio and what the guide lets that color do on that ground. '
+              f'Text needs 4.5 to 1, and large text, icons, borders and needed graphics need 3 to 1.</p>'
+              f'<div class="tw" role="region" tabindex="0" aria-label="The palette on its four grounds; scrolls sideways" data-red="specimen"><table class="matrix"><thead><tr>{head}</tr></thead><tbody>{"".join(rows)}</tbody></table></div>')
+    # every failing pair, and the pairs the guide permits under a threshold
+    fails = d.get('failures', [])
+    if fails:
+        fl = ''.join(f'<tr><th scope="row">{esc(f.get("css") or f.get("token"))}</th><td>{esc(f.get("surface"))}</td><td>{esc(f.get("theme"))}</td><td class="num">{f.get("ratio")}</td><td class="num">{f.get("threshold")}</td></tr>' for f in fails)
+        fail_html = f'<div class="tw" role="region" tabindex="0" aria-label="Failing pairs; scrolls sideways"><table><caption>Every failing pair</caption><thead><tr><th scope="col">Token</th><th scope="col">Surface</th><th scope="col">Theme</th><th scope="col">Ratio</th><th scope="col">Needs</th></tr></thead><tbody>{fl}</tbody></table></div>'
+    else:
+        fail_html = '<p class="nofail">No pair fails. The list of failing pairs is empty.</p>'
+    groups = {}
+    for p in d['permittedBelowThreshold']:
+        groups.setdefault(p.get('permittedBecause') or p.get('criterion') or '', []).append(p)
+    gl = ''.join(f'<tr><th scope="row">{esc(reason)}</th><td class="num">{len(ps)}</td><td>{esc(", ".join(sorted({p["css"].replace("--oa-color-", "") for p in ps}))[:400])}</td></tr>'
+                 for reason, ps in sorted(groups.items(), key=lambda kv: -len(kv[1])))
+    under = d['marksInsideGrounds'].get('underThreshold') or [r for r in d['marksInsideGrounds']['rows'] if r.get('result') not in ('pass',)]
+    ul = ''.join(f'<tr><th scope="row">{esc(r.get("token", "").replace("oa.color.", ""))}</th><td>{esc(r.get("ground", "").replace("oa.color.", ""))}</td><td class="num">{r.get("ratio")}</td><td class="num">{r.get("threshold")}</td><td>{esc(r.get("note", ""))}</td></tr>' for r in under)
+    ch26 = T.get('chapter26TableRatioResults', {}).get('match', 0)
+    body = (f'<p class="intro">The accessibility lead measured {T["pairs"]} pairs, every color token on every surface it may sit on, in the light and the dark theme. '
+            f'{by.get("pass", 0)} pass, {by.get("exempt", 0)} are exempt under WCAG’s own terms or carry no meaning, {by.get("permitted", 0)} sit under their threshold where a stated rule of the guide covers them, and {T["failures"]} fail.</p>'
+            f'{matrix}<h3 class="sub">Failing pairs</h3>{fail_html}'
+            f'<h3 class="sub">Pairs under a threshold, and why the guide permits them</h3><p>{T["permittedBelowThreshold"]} pairs sit under the threshold a text or graphic role would need. Each falls into one of these cases.</p>'
+            f'<div class="tw" role="region" tabindex="0" aria-label="Pairs under a threshold; scrolls sideways"><table><thead><tr><th scope="col">Why the guide permits it</th><th scope="col">Pairs</th><th scope="col">Tokens</th></tr></thead><tbody>{gl}</tbody></table></div>'
+            f'<details class="more"><summary>{len(under)} marks under 3 to 1 on a field or band inside a surface</summary><p class="caption">{esc(d["marksInsideGrounds"]["note"])}</p>'
+            f'<div class="tw" role="region" tabindex="0" aria-label="Marks inside grounds; scrolls sideways"><table><thead><tr><th scope="col">Token</th><th scope="col">Ground</th><th scope="col">Ratio</th><th scope="col">Needs</th><th scope="col">Note</th></tr></thead><tbody>{ul}</tbody></table></div></details>'
+            f'<dl class="facts"><div><dt>Chapter 26’s published ratios</dt><dd>{ch26} of {T.get("chapter26TableRatiosChecked", 0)} in the token table and {T.get("chapter26ProseMatches", 0)} of {T.get("chapter26ProseRatiosChecked", 0)} in its words match the recomputed ratio.</dd></div>'
+            f'<div><dt>The two token files</dt><dd>{T.get("cssValuesDifferingFromJson", 0)} values differ between tokens.css and tokens.json, and {T.get("storedRatiosDiffering", 0)} of {T.get("storedRatiosChecked", 0)} stored ratios differ from the measured one.</dd></div></dl>')
+    return body
 
 
 def slot_tokens(C):
@@ -768,18 +810,62 @@ def slot_tokens(C):
     return panel('tokens', P, f'<p class="intro">The engineer’s parity output, as it ran.</p><pre class="raw" tabindex="0">{esc(raw[:6000])}</pre>', 'ready')
 
 
+def ev_label(stem):
+    s = stem.split('_', 1)[-1]
+    s = re.sub(r'^Open-', '', s)
+    m = re.match(r'Ch(\d\d)-(.+)-(1440|390)$', s)
+    if m:
+        return f'Chapter {m.group(1)}, {m.group(2).replace("-", " ")}', m.group(3)
+    m = re.match(r'(.+)-(1440|390)$', s)
+    if m:
+        return m.group(1).replace('-', ' '), m.group(2)
+    return s.replace('-', ' '), ''
+
+
 def slot_screens(C):
     P = C['panels']['screens']
     d = ROOT / C['slots']['screens']['dir']
-    shots = sorted(d.glob('*.png')) if d.exists() else []
-    if not shots:
+    parts, waiting = [], []
+    if a11y_done(C, r'^Opening screens'):
+        opens = sorted(d.glob('*_Open-*.png'))
+        phone = [p for p in opens if p.stem.endswith('-390')]
+        desk = [p for p in opens if p.stem.endswith('-1440')]
+        strip = []
+        for p in phone:
+            lab, _ = ev_label(p.stem)
+            r = image({'copy': rel(p)}, slug('Evidence', p.stem.split('_', 1)[-1]))
+            strip.append(f'<figure class="phone"><img src="{r["src"]}" width="{r["w"]}" height="{r["h"]}" alt="{esc(lab)}, the opening screen at 390 px" loading="lazy" decoding="async"><figcaption>{esc(lab)}</figcaption></figure>')
+        dets = []
+        for p in desk:
+            lab, _ = ev_label(p.stem)
+            r = image({'copy': rel(p)}, slug('Evidence', p.stem.split('_', 1)[-1]))
+            dets.append(f'<details class="more"><summary>{esc(lab)} at 1440 px</summary>{frame(r, lab + ", the opening screen at 1440 px")}</details>')
+        parts.append(f'<h3 class="sub">Each chapter’s opening screen</h3><p>The opening screen of every chapter and of the identity proofs, at 390 px wide on a phone, in one row at true size. Each opens at 1440 px below it.</p>'
+                     f'<div class="phones" role="region" tabindex="0" aria-label="Opening screens at 390 px; scrolls sideways">{"".join(strip)}</div><div class="desk">{"".join(dets)}</div>')
+        FIG['screens_open'] = len(opens)
+    else:
+        waiting.append('the opening screens')
+    groups = [('keyboard', r'^Keyboard walk on the frozen', 'The keyboard walk', '*_Keyboard-*.png'),
+              ('motion', r'^Reduced-motion', 'Motion, normal and reduced', '*_Motion-*.png'),
+              ('forced', r'^Forced-colors', 'Forced colors', '*_Forced-Colors-*.png'),
+              ('front', r'^Keyboard walk on the preview', 'The keyboard walk on the preview’s front pages', '*_Front-*.png')]
+    for key, pat, h, glb in groups:
+        if not a11y_done(C, pat):
+            waiting.append(h[0].lower() + h[1:])
+            continue
+        files = sorted(d.glob(glb))
+        tiles = []
+        for p in files:
+            lab = p.stem.split('_', 1)[-1].replace('-', ' ')
+            r = image({'copy': rel(p)}, slug('Evidence', p.stem.split('_', 1)[-1]))
+            tiles.append(f'<li>{frame(r, lab)}<span class="nm">{esc(lab)}</span></li>')
+        parts.append(f'<h3 class="sub">{esc(h)}</h3><details class="more"><summary>Open {len(files)} pictures at true size</summary><ul class="tiles shots">{"".join(tiles)}</ul></details>')
+    if waiting and not parts:
         return panel('screens', P, pending(C, P['who'], P['file_label']), ('waiting', P['who']))
-    FIG['screens'] = [rel(p) for p in shots]
-    tiles = []
-    for p in shots[:80]:
-        r = image({'copy': rel(p)}, slug('Evidence', p.stem.split('_', 1)[-1]))
-        tiles.append(f'<li>{frame(r, p.stem.split("_", 1)[-1].replace("-", " "))}<span class="nm">{esc(p.stem.split("_", 1)[-1].replace("-", " "))}</span></li>')
-    return panel('screens', P, f'<ul class="tiles shots">{"".join(tiles)}</ul>', 'ready')
+    if waiting:
+        parts.append(f'<div class="pending" role="status"><p><b>Waiting for {esc(owner(C, P["who"]))}.</b> Still to come: {esc(join_words(waiting))}.</p></div>')
+        return panel('screens', P, ''.join(parts), ('partial', P['who']))
+    return panel('screens', P, ''.join(parts), 'ready')
 
 
 def slot_scores(C):
@@ -793,11 +879,12 @@ def slot_scores(C):
         parts.append(f'<h3 class="sub">The creative director’s scores</h3>{pending(C, P["who_cd"], P["cd_file_label"])}')
         status = ('waiting', P['who_cd'])
     dp = ROOT / S['drift']
-    if dp.exists():
-        t = dp.read_text()
-        m = re.search(r'(?:score|Score)[^\n]*?\b([1-5])\b(?:\s*(?:of|out of|/)\s*5)?[^\n]*', t)
-        parts.append(f'<h3 class="sub">The drift review</h3><p class="big">{esc(m.group(1)) if m else "Score not found"}<span> of 5</span></p>'
-                     f'<p>{md_inline(m.group(0).strip("*# ")) if m else ""}</p>')
+    sec = md_section(dp.read_text(), [r'score']) if dp.exists() else None
+    m = re.search(r'\b([1-5])\b', sec or '') if sec and 'pending' not in sec.lower() else None
+    if m:
+        FIG['drift_score'] = {'source': rel(dp), 'section': sec}
+        parts.append(f'<h3 class="sub">The drift review</h3><p class="big">{esc(m.group(1))}<span> of 5</span></p>'
+                     + ''.join(f'<p>{md_inline(x)}</p>' for x in sec.split('\n\n') if x.strip()))
     else:
         parts.append(f'<h3 class="sub">The drift review</h3>{pending(C, P["who_drift"], P["drift_file_label"])}')
         status = status if status != 'ready' else ('waiting', P['who_drift'])
@@ -828,15 +915,22 @@ def slot_tested(C):
             waiting.append(who)
             continue
         t = p.read_text()
-        tested = md_section(t, [r'tested', r'what i tested', r'checked'])
+        head = '\n'.join(t.splitlines()[:12]).lower()
+        tested = md_section(t, [r'tested', r'what i tested', r'checked', r'tested and not tested'])
         nott = md_section(t, [r'not tested', r'what i could not test', r'not checked'])
-        if tested is None and nott is None:
+        if tested and nott is None:
+            nott = md_section(tested, [r'not tested'])
+            tested = re.split(r'^#+\s*not tested', tested, flags=re.I | re.M)[0]
+        ti, ni = md_items(tested or ''), md_items(nott or '')
+        unfinished = ('in progress' in head or (s['who'] == 'a11y' and not all(a11y_status(C).values() or [False]))
+                      or not ti or (nott or '').strip().lower().startswith('(pending'))
+        if unfinished:
             waiting.append(who)
             continue
-        ti, ni = md_items(tested or ''), md_items(nott or '')
+        FIG.setdefault('tested_sources', []).append(rel(p))
         cols.append(f'<div class="tcol"><h4>{esc(who[:1].upper() + who[1:])}</h4>'
-                    f'<p class="label">Tested</p><ul>{"".join(f"<li>{md_inline(x)}</li>" for x in ti) or "<li>None listed yet.</li>"}</ul>'
-                    f'<p class="label">Not tested</p><ul>{"".join(f"<li>{md_inline(x)}</li>" for x in ni) or "<li>None listed yet.</li>"}</ul></div>')
+                    f'<p class="label">Not tested</p><ul>{"".join(f"<li>{md_inline(x)}</li>" for x in ni) or "<li>Nothing listed.</li>"}</ul>'
+                    f'<details class="more"><summary>What {esc(who)} tested, {len(ti)} items</summary><ul>{"".join(f"<li>{md_inline(x)}</li>" for x in ti)}</ul></details></div>')
     dev = ''.join(f'<li>{esc(x)}</li>' for x in P['devices'])
     body = (f'<p class="intro">{esc(P["lede"])}</p><div class="device"><h3 class="sub">{esc(P["device_h"])}</h3><p>{esc(P["device_lede"])}</p><ul>{dev}</ul></div>'
             f'<div class="tcols">{"".join(cols)}</div>')
@@ -1074,6 +1168,23 @@ td.sc.lo{box-shadow:inset 0 0 0 var(--oa-border-width-rule) var(--wstrong);font-
 .bar{display:block;height:1.25rem;background:var(--oa-color-palette-charcoal)}
 .bar.proj{background:var(--oa-color-tint-stone-n55)}
 .bar.budget,.bar.limit{background:transparent;box-shadow:inset 0 0 0 var(--oa-border-width-rule) var(--oa-color-palette-charcoal)}
+table.matrix{min-width:46rem}
+table.matrix tbody th{white-space:nowrap;vertical-align:middle}
+table.matrix .hx{display:block;font:var(--oa-type-caption);color:var(--wink-2);font-variant-numeric:tabular-nums;margin-left:calc(18px + .5em)}
+.sw{display:inline-block;width:18px;height:18px;vertical-align:-3px;margin-right:.5em;box-shadow:inset 0 0 0 1px rgba(18,18,18,.35)}
+td.mx{vertical-align:middle;min-width:9.5rem;border-bottom:1px solid var(--oa-color-tint-stone-n88)}
+td.mx .sw{width:22px;height:22px;vertical-align:-5px;box-shadow:none}
+td.mx .r{font:var(--oa-type-ui);font-weight:700;font-variant-numeric:tabular-nums}
+td.mx .u{display:block;font:var(--oa-type-caption)}
+td.mx.dk{color:var(--oa-color-palette-charcoal)}
+td.mx.lt{color:var(--oa-color-palette-newsprint)}
+.nofail{font:var(--oa-type-h4);margin:var(--oa-space-100) 0 var(--oa-space-200)}
+.phones{display:flex;gap:var(--oa-space-300);overflow-x:auto;padding:var(--oa-space-200);background:var(--white);border:var(--oa-border-width-hairline) solid var(--whair);margin-top:var(--oa-space-200)}
+.phone{margin:0;flex:0 0 auto;display:flex;flex-direction:column;gap:var(--oa-space-100)}
+.phone img{display:block;max-width:none;outline:1px solid var(--oa-color-tint-stone-n70)}
+.phone figcaption{font:var(--oa-type-caption);color:var(--wink-2)}
+.desk{margin-top:var(--oa-space-200);display:grid;grid-template-columns:minmax(0,1fr);gap:0 var(--oa-space-400)}
+@media (min-width:64em){.desk{grid-template-columns:repeat(2,minmax(0,1fr))}.desk details[open]{grid-column:1/-1}}
 pre.raw{white-space:pre-wrap;font-size:.875rem;background:var(--white);color:var(--wink);padding:var(--oa-space-200);border:var(--oa-border-width-hairline) solid var(--whair);max-height:28rem;overflow:auto}
 .foot{margin-top:var(--oa-space-1000);padding-top:var(--oa-space-200);border-top:var(--oa-border-width-hairline) solid var(--hair);max-width:none}
 @media print{.toc{display:none}details{display:block}}

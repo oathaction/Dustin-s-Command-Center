@@ -101,6 +101,17 @@
 //   builderBlock       each chapter's For builders closer offers the tokens.css download, says its block holds no themes
 //                      and that the body takes no surface class, never offers the block as a route of its own, and its
 //                      block holds no surface class or theme (call 6, PP-M1, PP-M2)
+// Added for the Gate 2 preview (November 11, 2026), each described where it is defined below:
+//   fontsLocal         a page that carries its fonts (<style id="oa-fonts">) asks no server for anything, fonts above all:
+//                      with every outside request blocked, each family loads from its data URL and no @font-face names
+//                      a server (D2-1697); the requests check then allows no outside host at all
+//   startPage          the "Where to start" page sits between the contents and the first part, is linked from the cover,
+//                      the contents, the rail and the menu, holds three routes of four to seven steps, every step link
+//                      lands on an id in a rule, chapter or the appendix, a later step is never a link, every target is
+//                      44 px tall; and each step, opened by Enter, moves focus to what it opens, whose way back returns
+//                      focus to that step (D2-1698)
+//   startFocus         from the page's heading, Tab visits every control of the page once, in reading order (the routes'
+//                      line where it shows, then each route's steps in order), each with a 2 px ring, in view
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -1244,7 +1255,9 @@ async function codeMatch(page) {
     const b64 = href.split(',')[1] || '';
     const tokens = b64 ? new TextDecoder().decode(Uint8Array.from(atob(b64), (c) => c.charCodeAt(0))) : '';
     const fonts = [...document.querySelectorAll('link[rel="stylesheet"]')].map((l) => l.href).filter((h) => /fonts\.googleapis/.test(h));
-    return { tokens, fonts };
+    // Gate 2: a page that carries its fonts hands the pasted copy the same files, so neither asks a server for type
+    const own = document.getElementById('oa-fonts');
+    return { tokens, fonts, fontCss: own ? own.textContent : '' };
   });
   if (!env.tokens) { out.bad.push({ set: '*', why: 'the page carries no tokens.css download to paste beside the code' }); return out; }
   const hide = await page.addStyleTag({ content: '.masthead, .rail { visibility: hidden !important } html { scroll-behavior: auto !important }' });
@@ -1272,7 +1285,7 @@ async function codeMatch(page) {
       await harness.setViewportSize(tall ? { width: vp.width, height: h + 96 } : vp);
       const js = pl.js ? `<script>${pl.js}<\/script>` : '';
       await harness.setContent(`<!doctype html><html lang="en" data-oa-theme="${theme}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">`
-        + env.fonts.map((u) => `<link rel="stylesheet" href="${u}">`).join('') + `<style>${env.tokens}</style><style>body { margin: 0; font: var(--oa-type-body) }</style>`
+        + (env.fontCss ? `<style>${env.fontCss}</style>` : env.fonts.map((u) => `<link rel="stylesheet" href="${u}">`).join('')) + `<style>${env.tokens}</style><style>body { margin: 0; font: var(--oa-type-body) }</style>`
         + `<style>${pl.css || ''}</style></head><body><div id="oa-harness" style="display:flow-root;width:${box.w}px;margin:${48 + fy}px 0 0 ${Math.floor(box.x) + fx}px">${pl.html || ''}</div>${js}</body></html>`, { waitUntil: 'networkidle' });
       await harness.evaluate(() => document.fonts.ready);
       await harness.mouse.move(0, 0);
@@ -1919,6 +1932,10 @@ async function tokenTable(page) {
 
 async function checkPage(browser, file, widths, opts = {}) {
   const report = { file: path.relative(ROOT, file), checked: new Date().toISOString(), axe: AXE ? path.relative(ROOT, AXE) : null, runs: [], failures: [] };
+  // Gate 2 (D2-1697): a page that carries its fonts may ask no outside host for anything
+  const ownFonts = /<style id="oa-fonts">/.test(fs.readFileSync(file, 'utf8').slice(0, 2000000));
+  const allowed = ownFonts ? [] : ALLOWED_HOSTS;
+  report.fonts = ownFonts ? 'embedded' : 'Google Fonts';
   const dir = path.dirname(file); const stem = path.basename(file, '.html');
   const capDir = path.join(dir, 'captures');
   if (opts.captures) fs.mkdirSync(capDir, { recursive: true });
@@ -1927,7 +1944,9 @@ async function checkPage(browser, file, widths, opts = {}) {
     const ctx = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: 1 });
     const page = await ctx.newPage();
     const outside = new Set(); const errors = [];
-    page.on('request', (req) => { const u = req.url(); if (/^(file|data|blob|about):/.test(u)) return; const h = new URL(u).hostname; if (!ALLOWED_HOSTS.includes(h)) outside.add(h); });
+    const fontAsks = [];
+    page.on('request', (req) => { const u = req.url(); if (/^(file|data|blob|about):/.test(u)) return; const h = new URL(u).hostname; if (!allowed.includes(h)) outside.add(h);
+      if (ownFonts && (req.resourceType() === 'font' || /fonts\.(googleapis|gstatic)\.com/.test(h))) fontAsks.push(u.slice(0, 120)); });
     page.on('pageerror', (e) => errors.push(String(e.message || e).slice(0, 200)));
     // Round 1: the page's own load event first. At 9 MB the parser outlasts the network's 500 ms of quiet, so networkidle
     // alone hands the checks a page whose last chapters are not yet in the DOM; then the fonts and other requests settle.
@@ -2034,6 +2053,7 @@ async function checkPage(browser, file, widths, opts = {}) {
       if (hidden.length) fails.push({ key: 'focus', msg: `${width}: ${hidden.length} focus stop(s) hidden under the masthead, first: ${JSON.stringify(hidden[0])}` });
     }
     if (outside.size) fails.push({ key: 'requests', msg: `${width}: outside requests to ${[...outside].join(', ')}` });
+    if (fontAsks.length) fails.push({ key: 'fontsLocal', msg: `${width}: the page carries its fonts and still asked a server for ${fontAsks.length} font file(s) or stylesheet(s), first: ${fontAsks[0]} (D2-1697)` });
     if (errors.length) fails.push({ key: 'errors', msg: `${width}: script errors: ${errors.slice(0, 3).join(' | ')}` });
     report.runs.push({ width, ...a, axe, focusStops: focus ? focus.length : null, focusProblems: focus ? focus.filter((x) => !x.ring || x.obscured).slice(0, 10) : null });
     report.failures.push(...fails);
@@ -2093,8 +2113,177 @@ async function checkPage(browser, file, widths, opts = {}) {
     report.redPrussian = { width: 1440, stages: rp.stages, captured: rp.captured, exempt: rp.exempt, forms: rp.forms, sends: rp.sends, hits: rp.hits.slice(0, 20) };
     for (const h of rp.hits) report.failures.push({ key: 'redTouchesPrussian', msg: `1440: ${h.stage}, ${h.when}: ${h.why || `${h.pixels} Pillar Red pixel(s) within ${RP_REACH} px of Prussian, first at ${h.first.x}, ${h.first.y} in the stage; red never sits on Prussian (Rule 05.3)`}` });
   }
+  // Gate 2 (D2-1697): with every outside request blocked, the page's own fonts load
+  if (ownFonts && opts.fontsLocal !== false) {
+    report.fontsLocal = [];
+    for (const w of widths.filter((x) => x === 1440 || x === 390)) {
+      const f = await fontsLocal(browser, file, w, opts);
+      report.fontsLocal.push(f);
+      for (const pr of f.problems) report.failures.push({ key: 'fontsLocal', msg: `${w}: ${pr}` });
+    }
+  }
+  // Gate 2 (D2-1698): the "Where to start" page, its links and its focus order
+  if (opts.start !== false) {
+    report.start = [];
+    for (const w of widths) {
+      const st = await startAudit(browser, file, w, opts);
+      if (!st) break;
+      report.start.push(st);
+      for (const pr of st.problems) report.failures.push({ key: pr.key, msg: `${w}: ${pr.why}` });
+    }
+  }
   report.pass = report.failures.length === 0;
   return report;
+}
+
+// ------------------------------------------------------------------------------------------------ Gate 2
+// fontsLocal  A page that carries its fonts loads them with the network shut. A fresh page in a context that blocks
+//             every http and https request (and records it): each @font-face rule in the page's stylesheets takes its
+//             src from a data: URL, each of the guide's faces (Inter 400 and 700, Inter Tight 800, Lora italic 400)
+//             loads through document.fonts with status "loaded", the browser lists no resource from a server, and
+//             nothing was blocked. The families are read from the page, so a family the page names and cannot load fails.
+const FACES = ['400 16px "Inter"', '700 16px "Inter"', '800 16px "Inter Tight"', 'italic 400 16px "Lora"'];
+async function fontsLocal(browser, file, width, opts = {}) {
+  const ctx = await browser.newContext({ viewport: { width, height: { 1440: 900, 390: 844 }[width] || 900 }, deviceScaleFactor: 1 });
+  const blocked = [];
+  await ctx.route(/^https?:/, (route) => { blocked.push(route.request().url().slice(0, 120)); route.abort(); });
+  const page = await ctx.newPage();
+  await page.goto('file://' + file, { waitUntil: 'load' });
+  await page.evaluate(() => document.fonts.ready);
+  if (opts.mutate) { await page.evaluate(opts.mutate); await page.waitForTimeout(600); await page.evaluate(() => document.fonts.ready); }
+  const r = await page.evaluate(async (faces) => {
+    const rules = [];
+    for (const sh of document.styleSheets) {
+      let list; try { list = sh.cssRules; } catch (e) { rules.push({ family: '?', src: 'a stylesheet the page cannot read' }); continue; }
+      for (const ru of list) if (ru instanceof CSSFontFaceRule) rules.push({ family: ru.style.getPropertyValue('font-family').replace(/["']/g, ''), src: ru.style.getPropertyValue('src').slice(0, 60) });
+    }
+    const loads = [];
+    for (const f of faces) {
+      let got = []; try { got = await document.fonts.load(f, 'Ag'); } catch (e) { got = []; }
+      loads.push({ face: f, faces: got.length, loaded: got.filter((x) => x.status === 'loaded').length });
+    }
+    const resources = performance.getEntriesByType('resource').map((x) => x.name).filter((n) => /^https?:/.test(n)).map((n) => n.slice(0, 120));
+    const loaded = [...document.fonts].filter((f) => f.status === 'loaded').map((f) => `${f.family} ${f.style} ${f.weight} ${f.unicodeRange.split(',')[0]}`);
+    return { rules, loads, resources, loaded };
+  }, FACES);
+  await ctx.close();
+  const problems = [];
+  const fromServer = r.rules.filter((x) => !/^url\("?data:/.test(x.src));
+  if (!r.rules.length) problems.push('the page holds no @font-face rule, so its fonts cannot come from inside it');
+  for (const x of fromServer) problems.push(`an @font-face for ${x.family} takes its src from ${x.src}, not a data URL inside the page`);
+  for (const l of r.loads) if (!l.faces || l.loaded < l.faces) problems.push(`${l.face} did not load from the page with the network shut (${l.loaded} of ${l.faces} face(s) loaded)`);
+  if (blocked.length) problems.push(`with the network shut the page still asked for ${blocked.length} outside file(s), first: ${blocked[0]}`);
+  if (r.resources.length) problems.push(`the browser lists ${r.resources.length} resource(s) from a server, first: ${r.resources[0]}`);
+  return { width, rules: r.rules.length, dataRules: r.rules.length - fromServer.length, loads: r.loads, loaded: r.loaded, blocked: blocked.length, problems };
+}
+
+// startPage and startFocus  The "Where to start" page (D2-1698), in a fresh page per width. Structure: its place between
+//             the contents and the first part; a link to it from the cover, the contents, the rail and the phone menu;
+//             three routes (newcomer, designer, builder) of four to seven steps; each step link lands on an id inside
+//             a rule, a chapter or the appendix, and is 44 px tall at least; a later step holds no link. Focus: from
+//             the page's own heading, as a reader arriving from the contents has it, Tab visits each visible control
+//             in the page once and in document order, each with a 2 px outline, in view below the masthead. Links:
+//             each step, focused and opened with Enter, moves focus to what it opens (its heading, or the target
+//             itself), and the way back that appears there, opened with Enter, puts focus on that same step.
+async function startAudit(browser, file, width, opts = {}) {
+  const ctx = await browser.newContext({ viewport: { width, height: { 1440: 900, 1024: 768, 390: 844, 360: 780 }[width] || 900 }, deviceScaleFactor: 1 });
+  const page = await ctx.newPage();
+  await page.goto('file://' + file, { waitUntil: 'load' });
+  await page.evaluate(() => document.fonts.ready);
+  await page.waitForTimeout(300);
+  if (opts.mutate) await page.evaluate(opts.mutate);
+  const has = await page.evaluate(() => !!document.getElementById('start'));
+  if (!has) { await ctx.close(); return null; }
+  const problems = [];
+  const s = await page.evaluate(() => {
+    const st = document.getElementById('start'), out = { why: [] };
+    const after = (a, b) => !!(a && b && (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING));
+    const firstPart = document.querySelector('section.part');
+    if (!after(document.getElementById('contents'), st) || (firstPart && !after(st, firstPart))) out.why.push('the page does not sit between the contents and the first part');
+    const linked = { cover: '.cover a[href="#start"]', contents: '#contents a[href="#start"]', rail: '.rail a[href="#start"]', menu: '#menu a[href="#start"]' };
+    for (const [k, sel] of Object.entries(linked)) if (!document.querySelector(sel)) out.why.push(`no link to it from the ${k}`);
+    const routes = [...st.querySelectorAll('.route')];
+    out.routes = routes.map((r) => ({ id: r.getAttribute('data-route'), steps: r.querySelectorAll('.route-step').length, later: r.querySelectorAll('[data-later]').length }));
+    if (routes.map((r) => r.getAttribute('data-route')).join() !== 'newcomer,designer,builder') out.why.push(`its routes are ${out.routes.map((r) => r.id).join(', ')}; the page holds newcomer, designer and builder, in that order`);
+    for (const r of out.routes) if (r.steps < 4 || r.steps > 7) out.why.push(`route ${r.id} has ${r.steps} steps; four to seven`);
+    out.links = 0; out.targets = {};
+    for (const a of st.querySelectorAll('a[href]')) {
+      out.links++;
+      const href = a.getAttribute('href'); const t = href.startsWith('#') ? document.getElementById(decodeURIComponent(href.slice(1))) : null;
+      if (!t) { out.why.push(`the link "${a.textContent.trim().slice(0, 40)}" goes to ${href}, which matches no id`); continue; }
+      if (a.classList.contains('step-go')) {
+        const home = t.closest('.rule, section.chapter, section.appendix');
+        if (!home) out.why.push(`the step "${a.textContent.trim().slice(0, 40)}" opens ${href}, which sits in no rule, chapter or appendix`);
+        out.targets[href] = home ? (home.id || home.className) : null;
+      }
+      if (a.closest('[data-later]')) out.why.push(`the later step "${a.closest('[data-later]').textContent.trim().slice(0, 40)}" holds a link`);
+      const r = a.getBoundingClientRect(), cs = getComputedStyle(a);
+      if (cs.display !== 'none' && r.width > 0 && (r.height < 44 - 0.5 || r.width < 24)) out.why.push(`the link "${a.textContent.trim().slice(0, 40)}" is ${Math.round(r.width)} by ${Math.round(r.height)} px; a target stands 44 px tall`);
+    }
+    for (const li of st.querySelectorAll('[data-later]')) if (li.querySelector('a, button, [tabindex]:not([tabindex="-1"])')) out.why.push('a later step holds a control');
+    return out;
+  });
+  for (const w of s.why) problems.push({ key: 'startPage', why: w });
+  // Focus order from the page's heading
+  const expected = await page.evaluate(() => {
+    const vis = (el) => { const r = el.getBoundingClientRect(); if (!r.width && !r.height) return false; for (let e = el; e; e = e.parentElement) { const cs = getComputedStyle(e); if (cs.display === 'none' || cs.visibility === 'hidden') return false; } return true; };
+    const els = [...document.querySelectorAll('#start :is(a[href], button, summary, input, select, textarea, [tabindex])')].filter((el) => el.tabIndex >= 0 && !el.disabled && vis(el));
+    els.forEach((el, i) => el.setAttribute('data-oa-fo', String(i)));
+    return els.map((el) => (el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 40));
+  });
+  await page.evaluate(() => { location.hash = '#start'; });
+  await page.waitForTimeout(250);
+  const startFocus = await page.evaluate(() => document.activeElement && document.activeElement.id);
+  if (startFocus !== 'start-h') problems.push({ key: 'startFocus', why: `opening #start put focus on ${startFocus || 'nothing'}, not the page's heading` });
+  const walk = [];
+  for (let i = 0; i < expected.length + 2; i++) {
+    await page.keyboard.press('Tab');
+    const r = await page.evaluate(() => {
+      const el = document.activeElement; if (!el || el === document.body) return { out: true };
+      const inside = !!el.closest('#start');
+      const cs = getComputedStyle(el); const b = el.getBoundingClientRect(); const head = document.querySelector('.masthead');
+      const hb = head ? head.getBoundingClientRect().bottom : 0;
+      return { inside, n: el.getAttribute('data-oa-fo'), label: (el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 40),
+        ring: cs.outlineStyle !== 'none' && parseFloat(cs.outlineWidth) >= 2, inView: b.top >= hb - 1 && b.bottom <= innerHeight + 1 };
+    });
+    if (!r.inside) break;
+    walk.push(r);
+  }
+  const order = walk.map((x) => x.n);
+  const want = expected.map((_, i) => String(i));
+  if (order.join() !== want.join()) {
+    const k = want.findIndex((x, i) => order[i] !== x);
+    problems.push({ key: 'startFocus', why: `Tab visits the page's ${expected.length} controls out of order or not all of them: stop ${k + 1} is ${walk[k] ? `"${walk[k].label}"` : 'outside the page'}, where reading order has "${expected[k] || 'nothing'}"` });
+  }
+  for (const x of walk) {
+    if (!x.ring) problems.push({ key: 'startFocus', why: `the stop "${x.label}" shows no 2 px focus ring` });
+    if (!x.inView) problems.push({ key: 'startFocus', why: `the stop "${x.label}" takes focus out of view or under the masthead` });
+  }
+  // Each step opens what it names, and its way back returns to it
+  const steps = await page.evaluate(() => [...document.querySelectorAll('#start .route-step:not([data-later])')].filter((li) => li.querySelector('a.step-go')).map((li) => ({ id: li.id, href: li.querySelector('a.step-go').getAttribute('href') })));
+  let opened = 0, returned = 0;
+  for (const stp of steps) {
+    await page.evaluate((id) => { document.querySelector(`#${id} a.step-go`).focus(); }, stp.id);
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(120);
+    const land = await page.evaluate((href) => {
+      const t = document.getElementById(decodeURIComponent(href.slice(1))); const a = document.activeElement;
+      const back = [...document.querySelectorAll('.return:not([hidden]) a')];
+      return { onTarget: !!(t && a && (a === t || t.contains(a))), focus: a ? (a.id || a.tagName) : null, back: back.map((x) => x.getAttribute('href')) };
+    }, stp.href);
+    if (!land.onTarget) { problems.push({ key: 'startPage', why: `the step ${stp.id} (${stp.href}) put focus on ${land.focus}, outside what it opens` }); continue; }
+    opened++;
+    if (land.back.join() !== '#' + stp.id) { problems.push({ key: 'startPage', why: `after the step ${stp.id}, the way back reads ${land.back.join(', ') || 'nothing'}; it leads to #${stp.id}` }); continue; }
+    await page.evaluate(() => { document.querySelector('.return:not([hidden]) a').focus(); });
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(120);
+    const home = await page.evaluate(() => document.activeElement && document.activeElement.id);
+    if (home !== stp.id) problems.push({ key: 'startPage', why: `the way back from ${stp.href} put focus on ${home || 'nothing'}, not on the step ${stp.id}` });
+    else returned++;
+  }
+  await ctx.close();
+  return { width, routes: s.routes, links: s.links, targets: s.targets, focusStops: walk.length, controls: expected.length, ringed: walk.filter((x) => x.ring).length,
+    steps: steps.length, opened, returned, problems };
 }
 
 // A demo player at rest on its master (call 5), written as a string for page.evaluate, with one fault switched on at a time
