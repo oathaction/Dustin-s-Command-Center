@@ -1,8 +1,6 @@
-/* Report reader: one page at a time. The page number and title go to a status line; Previous page and Next page keep
-   focus at either end with a reason; Fit width and Full size are a choice of two. At full size the page scrolls inside
-   its view, which then becomes a named Tab stop. The two buttons stack when a label would not fit. Reads only tokens.css. */
+/* Report reader: one page at a time, its number and title in a status line; both ends keep focus and say why;
+   Fit width or Full size is a choice of two. */
 .oa-reader { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
-/* Utility icons: drawn from the masters' line, with the line width from the icon tokens */
 .oa-reader [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
 .oa-reader-head { margin: 0 0 var(--oa-space-100); font: var(--oa-type-ui) }
 .oa-reader-doc { font-weight: var(--oa-font-weight-bold) }

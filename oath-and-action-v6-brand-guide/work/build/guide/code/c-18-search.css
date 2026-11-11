@@ -1,7 +1,6 @@
 /* Search: a labeled field in a search landmark, its count and its advice in one polite status line, and a Clear
    control that shows once there is text. Escape clears the field. Reads only tokens.css. */
 .oa-search { display: block; font: var(--oa-type-body); color: var(--oa-color-text-primary) }
-/* Utility icons: drawn from the masters' line, with the line width from the icon tokens */
 .oa-search [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
 .oa-search-label { display: block; margin: 0 0 var(--oa-space-100); font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }
 .oa-search-box { display: flex; align-items: center; box-sizing: border-box; max-width: 30rem; min-height: var(--oa-size-target-touch);

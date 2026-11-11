@@ -1,8 +1,6 @@
-/* Diagram controls: a drawing's parts are one Tab stop with the arrow keys inside; Enter or Space opens a part's panel,
-   whose name takes focus, and Escape closes it and returns focus to the part. A chosen part takes the pressed look and
-   the others mute. The lines in words and a full size view sit under the drawing. Reads only tokens.css. */
+/* Diagram controls: the parts are one Tab stop with the arrow keys inside; a chosen part opens its panel, and Escape
+   returns focus to it. The lines in words and a full size view sit under the drawing. */
 .oa-diagram { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
-/* Utility icons: drawn from the masters' line, with the line width from the icon tokens */
 .oa-diagram [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
 .oa-diagram-k { margin: 0; font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing);
   text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }

@@ -1613,8 +1613,14 @@ def build_chapter():
         'correct': idblock('correct', 's-17-6-pending', hinge_cap),
         'failure': idblock('failure', 's-17-6-pending-failure', lever_fail_cap),
         'specs': [
-            {'label': 'Hinge', 'value': f'{ms_words(HINGE)} in all, on request', 'token': 'oa.motion.duration.hinge'},
-            {'label': 'Lever', 'value': f'{ms_words(LEVER)} in all, on request', 'token': 'oa.motion.duration.lever'},
+            # the identity designer's draft words (20261111_Stage-C-Round-1-Identity-Notes.md), times from the tokens
+            {'label': 'Hinge', 'value': f'{ms_words(HINGE)} in all, on request: OATH and ACTION slide toward each other '
+                                        f'over the slow {ms_words(SLOW)}, and the ampersand lands from {ms_words(HINGE - STD)} '
+                                        f'and comes to rest at {ms_words(HINGE)}', 'token': 'oa.motion.duration.hinge'},
+            {'label': 'Lever', 'value': f'{ms_words(LEVER)} in all, on request: the links draw over {ms_words(STD)}, the '
+                                        f'nodes land together from {ms_words(STD + STAG)}, and the lever lands from '
+                                        f'{ms_words(LEVER - STD)} and comes to rest at {ms_words(LEVER)}',
+             'token': 'oa.motion.duration.lever'},
             {'label': 'Built from', 'value': 'Slide, draw and land, with the enter easing for each arrival'},
             {'label': 'Last frame', 'value': 'The approved master for the size shown, pixel for pixel'},
             {'label': 'Reduced motion', 'value': 'The master at once (Rule 17.4)'},
@@ -1622,7 +1628,10 @@ def build_chapter():
         'related': ['04', '08'],
         'builders': [
             'Animate the master itself, never a redrawn copy, and compare the last frame with the master at its size '
-            'before it ships.'],
+            'before it ships.',
+            'When the motion ends, show the master file itself, placed as Rules 03.1 and 08.1 place it, so the last '
+            'frame is the master. Check the last frame on a 1x screen, since a 2x screen hides a mark that rests half a '
+            'pixel off the grid.'],
     })
     rules.append({
         'id': '17.7',

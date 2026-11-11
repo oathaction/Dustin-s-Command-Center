@@ -1,9 +1,6 @@
-/* Loop stepper: Play, Reset the loop, Previous step and Next step, in that order, step through a loop's connections.
-   The current step takes the selected band, a 4 px bar and aria-current="step"; steps not reached yet are muted. One
-   polite status line says each step. No button moves focus. The buttons sit two by two and stack when a label would
-   not fit. Reads only tokens.css. */
+/* Loop stepper: Play, Reset the loop, Previous step, Next step. The current step takes the selected band, a 4 px bar
+   and aria-current="step"; the buttons stack when a label would not fit. */
 .oa-stepper { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
-/* Utility icons: drawn from the masters' line, with the line width from the icon tokens */
 .oa-stepper [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
 .oa-stepper-k { margin: 0; font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing);
   text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }

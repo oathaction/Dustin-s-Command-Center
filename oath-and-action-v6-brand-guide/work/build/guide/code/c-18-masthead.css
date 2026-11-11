@@ -3,7 +3,6 @@
    paint the ground of whatever theme they sit in. Reads only tokens.css. */
 .oa-masthead { container-type: inline-size; display: block; background: var(--oa-color-surface); color: var(--oa-color-text-primary);
   border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline); font: var(--oa-type-body) }
-/* Utility icons: drawn from the masters' line, with the line width from the icon tokens */
 .oa-masthead [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
 .oa-masthead-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--oa-space-100) var(--oa-space-300);
   min-height: var(--oa-space-800); padding: var(--oa-space-100) var(--oa-space-200) }

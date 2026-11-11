@@ -1,7 +1,6 @@
 /* Copy a value: a Copy button beside each value. The copy glyph never turns into a check; the result goes to the
    status line in words, with the success mark, or with the error mark and the value selected for copying by hand. */
 .oa-copy { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
-/* Utility icons: drawn from the masters' line, with the line width from the icon tokens */
 .oa-copy [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
 .oa-copy [data-icon][width="16"] { stroke-width: var(--oa-component-icon-utility-line-small) }
 .oa-copy-list { margin: 0; padding: 0; list-style: none; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }

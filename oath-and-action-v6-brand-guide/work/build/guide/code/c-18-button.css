@@ -1,6 +1,5 @@
 /* Buttons: primary, ask and quiet, with or without a utility icon. Reads only tokens.css, so it follows the theme. */
 .oa-button-set { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
-/* Utility icons: drawn from the masters' line, with the line width from the icon tokens */
 .oa-button-set [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
 .oa-button-k { margin: var(--oa-space-300) 0 var(--oa-space-100); font: var(--oa-type-label);
   letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }

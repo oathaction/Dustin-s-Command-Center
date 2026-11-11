@@ -1,7 +1,6 @@
 /* Download: a link that names the file, its type and its size in visible words, with the download icon before them.
    A file that is not ready keeps its focus, takes aria-disabled and points to a line that says why. */
 .oa-download-set { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
-/* Utility icons: drawn from the masters' line, with the line width from the icon tokens */
 .oa-download-set [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
 .oa-download-k { margin: var(--oa-space-300) 0 var(--oa-space-100); font: var(--oa-type-label);
   letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }

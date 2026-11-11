@@ -388,12 +388,12 @@
       "specs": [
         {
           "label": "Hinge",
-          "value": "680 ms in all, on request",
+          "value": "680 ms in all, on request: OATH and ACTION slide toward each other over the slow 320 ms, and the ampersand lands from 480 ms and comes to rest at 680 ms",
           "token": "oa.motion.duration.hinge"
         },
         {
           "label": "Lever",
-          "value": "560 ms in all, on request",
+          "value": "560 ms in all, on request: the links draw over 200 ms, the nodes land together from 240 ms, and the lever lands from 360 ms and comes to rest at 560 ms",
           "token": "oa.motion.duration.lever"
         },
         {
@@ -414,7 +414,8 @@
         "08"
       ],
       "builders": [
-        "Animate the master itself, never a redrawn copy, and compare the last frame with the master at its size before it ships."
+        "Animate the master itself, never a redrawn copy, and compare the last frame with the master at its size before it ships.",
+        "When the motion ends, show the master file itself, placed as Rules 03.1 and 08.1 place it, so the last frame is the master. Check the last frame on a 1x screen, since a 2x screen hides a mark that rests half a pixel off the grid."
       ]
     },
     {
