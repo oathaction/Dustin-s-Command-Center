@@ -3507,3 +3507,106 @@ The main session asked four questions with its round 0 plan. Dustin: "Yeah, I ag
 |---|---|---|
 | D3-05 | Dustin sent no notes on version 8 or the Gate 2 board; any he sends later join the next round | Question 4 carried no recommendation, and his reply named none |
 | D3-06 | "Please" at the end of his reply is read as his go for round 0, as D2-1877 read the same cut-off word as "Please proceed" | The plan asked for his answers and his go in one reply; round 0 sits inside the approved proposal, and every step is committed and can be undone |
+
+## Phase 3 round 0, November 11, 2026
+
+### Main session (`work/handoffs/phase-3/20261111_Phase-3-Round-0-Brief.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-07 | Both chambers' records of H.R. 7008 can now be read (the research lead's `congress-hr7008-roll-calls`), so S01 adds both chambers' party splits together, in neutral inks with each party named on its mark | D2-104's own condition for adding the split is met; DR-48, DR-58 and Rule 01.2 set the inks |
+| D3-08 | Dustin downloaded FRED's `fredgraph.csv` (UNRATE and JTSJOL) and attached it to the chat on November 11 at 22:27 UTC; the research lead froze it unchanged as `fred-unemployment-and-job-openings` (SHA-256 10c1d1ed…a58532), ledger row P7-013. It is the one download rounds 1 and 2 need | DR-230; FRED reset the container's connection and bls.gov refuses automated readers |
+| D3-09 | Round 0 ran five makers as separate agents, each briefed to read and adopt its role file: the engineer, the data visualization lead (with the design director's eye), the editor, the research lead, and the Explainer maker as a general-purpose agent briefed as a senior newspaper graphics editor. The main session wrote the briefs, routed requests between them and committed their work | Master Brief section 4 and `CLAUDE.md`'s agents rule; the gate report says who did each step |
+| D3-10 | Routine calls from Phase 3 notes files are numbered by `work/build/scripts/phase-3/log_routine_calls.py`, a copy of Phase 2's logger that reads "D3-xxx" lines | The Phase 2 logger reads only D2 lines |
+
+### Data visualization lead, palette proofs and data plan sign-off (`20261111_Round-0-Palette-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-11 | Diverging pair B on Charcoal takes two new tints, Prussian 56 and 29 percent toward Newsprint, with the Verdigris half reusing the sequential Charcoal steps 3 and 4 and the midpoint reusing the Charcoal band tint | Each Prussian step then matches its Verdigris partner in lightness (0.633 with 0.634, 0.478 with 0.476), so neither side outweighs the other, and only two values are new |
+| D3-12 | Labels on the Charcoal diverging steps: Charcoal on the two ends, Newsprint on the three middle steps | Each passes 4.5 to 1, at 4.61 to 1 the least |
+| D3-13 | The categorical set on Charcoal is Newsprint, Prussian 62 percent toward Newsprint (the existing `prussianN62`), Verdigris and Stone, in the Newsprint order | Prussian itself measures 1.41 to 1 on Charcoal; this set keeps every pair outside Verdigris and Stone at least 0.119 apart in lightness with no new value |
+| D3-14 | The Stone group of the categorical set always carries the 45 degree hatch at the existing hatch tokens, with its label beside it or on a halo of the ground | Verdigris and Stone sit 0.050 apart in lightness and 0.051 apart under deuteranopia (D2-95); the hatch also keeps the set's order in gray |
+| D3-15 | Categorical lines end on a marker per group (circle, square, triangle, diamond) and never take a dash | A dash reads as an evidence grade (Rule 10.10) or a projection; shapes and labels survive gray and one-ink print |
+| D3-16 | Small multiples draw the other groups as 1 px ghosts under a new role, `oa.chart.color.ghost`, pointing at `stoneN55` on Newsprint and `stoneC40` on Charcoal; one group in ink against gray uses the existing context role | DR-234 allows no new hue, and the ghosts repeat lines drawn in full in their own panels |
+| D3-17 | The grade line code becomes `oa.chart.grade` stroke styles per 1 px of width with Rule 10.10's ratios (4 and 2; 4, 1.5, 1 and 1.5; round dots 2.5 apart), the 7 px record square, the hollow line's rails and a 28-width shortest run | Rule 10.10 and the atlas frame memo already set these; tokens give the kit and chapters 13 and 15 one source. V7's renderer arrays (9 and 4; 9, 3, 2 and 3; 2 and 4) are the same textures at its own weight |
+| D3-18 | A red target never draws at 2 px; it takes the 4 px or heavier target weight | At 2 px the Charcoal case swallows the red of a dotted line, as the 2x proof shows |
+| D3-19 | Red on red resolves by Rule 05.3's order with Rule 11.16's yield: whenever an error or an ask is in the view, the chart's point yields to the subject ink and keeps its bold label and its place | No token is needed, and nothing the point says is lost; in gray the red bar and the Stone bars print almost alike (0.371 and 0.386 in Chromium's filter), so the keyline, label and title carry it there |
+| D3-20 | No chart tokens on White or Prussian: a printed report prints the Newsprint values on the paper, and a chart in a Prussian panel sits on its own Newsprint or Charcoal plate | Every Newsprint label holds on White; on Prussian the four categorical inks measure 1.00 to 2.80 to 1, and red never sits there (Rule 05.3) |
+| D3-21 | No Prussian sequential set | No chart in S01 to S16 or in rounds 1 and 2's plan needs a second measure in sequence (proposal section 1.6 adds it only on need) |
+| D3-22 | The proofs draw real data: 2024 reported turnout by state from the Census Bureau, and payrolls by sector from the Bureau of Labor Statistics via FRED, January 2022 to September 2026, the window S13 and S14 use | Real data tests the palettes as charts will use them, and one window across the jobs proofs follows H09 |
+| D3-23 | The suggested release name is `6.0.0-gate3.1` | Rule 26.8 raises the number after the hyphen before 6.0.0; the engineer names it |
+| D3-24 | Data plan signed off with five changes: row 13's window from January 2022 rather than September 2024; rows 26, 47 and 48 past four groups under DR-234; rows 14 and 49 in one neutral party ink; row 77 names both provisions of H.R. 7008; rows 6 and 23 carry the October 2025 gap | Rule 01.9 and DR-229 hold as planned; the changes follow H09, DR-124, DR-234, DR-48, DR-58 and DR-98 |
+
+### Explainer maker, S01 to S16 in the kit (`20261111_Round-0-Explainer-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-25 | Every grade line opens with H08's grade word, Documented, and a plain gloss of its source; S06 keeps "Conditional directions: no forecast and no odds" | Rules 13.2 and 13.3 want one grade vocabulary; Phase 2's "Official statistic" and "A compiled list" leads now sit inside the gloss |
+| D3-26 | S01's first mention of H.R. 7008 is its reading guide, with both provisions as the House passed it; the drawing's label reads "The House passed H.R. 7008" | DR-98 and D2-406; the survey stays a finding about a ban in general, and the bill holds more than the ban |
+| D3-27 | S01 keeps D2-104's vote totals and no party split, though Rule 02.25 prints the Senate split (DR-126) | The task names D2-104; the House split alone would tilt the chart, and the Senate roster DR-126 used is secondary |
+| D3-28 | S01 cites the bill text in a note until its sidecar's source line carries it (R3) | The spec's source line must equal the sidecar's, and DR-98's provisions need a source a reader can find |
+| D3-29 | S02's credit amount ($2,200) is sourced to repair-log entry RL35 in a note, and "P.L. 119-21" is written "Public Law 119-21" | H04 sources every public policy figure; H12 uses the official name |
+| D3-30 | S06's cell tints follow pair B: up toward Verdigris, down toward Prussian, flat or down on the light midpoint | DR-54 picked pair B after the Explainer page drew the down side in Stone |
+| D3-31 | S09's table drops the studio's E01 to E24 keys and heads each row with its date | E01 reads like V7's Variable E1 (tension 7, H11), and V7 events carry no IDs |
+| D3-32 | S11, S12 and S15 carry the United States, set apart and labeled | DR-64; Phase 2 drew it on S11 only |
+| D3-33 | S13 draws sixteen area panels, the fourteen industries plus government and federal government, until the kit can draw Phase 2's two-part figure (E22) | A one-form sparkline table of all 18 series kept every series but flattened every line at 26 px a row; the panels keep the title's evidence in the drawing |
+| D3-34 | S13 and S14 add chapter 02's H09 sentence on their shared window | H09 asks charts shown together to print the reason for their window |
+| D3-35 | Words name inks by weight ("heavy line", "the ink of the text"), never by "black" or "dark" | Every chart draws on Newsprint and Charcoal, where the subject's ink inverts |
+| D3-36 | A spec's words describe only what the kit draws today; a Phase 2 element still waiting on a request (S08's ring, S12's lists, S05's brackets) moves into a note in words | Chapter 13's rule and its demonstration must agree; a note may not describe a mark the reader cannot find |
+| D3-37 | `states` lists the states each title names (S11, S12, S16); the rest copy their sidecar's empty list | Rule 01.9 counts the examples a chapter singles out, and a title is where a chart singles one out |
+| D3-38 | Phase 2's corrective turns in S03 and S08 ("not every rule change", "carries no judgment") are recast without the negation | W09; the facts are unchanged |
+| D3-39 | S14's measure line drops Phase 2's scale sentence and says only that columns start at zero | The kit sets the scale from its ticks, and the axis prints its own range |
+| D3-40 | S07's table takes its status from the 0 and 1 ban column | The kit reads an empty scope as null, so a words map on scope cannot print "No state ban" |
+| D3-41 | S02 and S16 keep their sidecars' printed lines until R1 and R2 land, though each names a table or year the chart does not match exactly | C2 requires the spec's line to equal the sidecar's; the gap is named in each spec's `notes_internal` |
+| D3-42 | "H.R. 7008" is set with a no-break space wherever S01's own words print it | At 720 px the reading guide broke it across two lines |
+| D3-43 | The board folder holds each specimen's eight captures, one export set (Newsprint 1440 SVG and PNG, and the CSV) and its check file | The task asks for a lean folder; the other exports rebuild from the specs in about 40 seconds |
+
+### Research lead, rounds 1 and 2 data (`20261111_Round-0-Research-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-44 | Rule 01.9 counts every specimen that carries data (the 16 built and every new core and extended form) and leaves out reference sketches and avoid entries | They draw no dataset and carry no topic |
+| D3-45 | Specimens whose rows span every domain (claims across the 16 everyday answers, all reforms, all issues, V7's headline figures, scenarios, history) count as atlas-wide, in the total and in no single domain | Contract C1 allows `domain: "all"`; the data lead signed it off |
+| D3-46 | A specimen counts toward a state when the state is its subject, is named in its title or is lit on the chart; a chart of all states alike counts toward none | Chapter 01's rotation log treats "50 states and DC" this way |
+| D3-47 | Charts of who reports voting (S04, S16, round 3's funnel) count under taking part, trust and shared norms; charts of election rules and results under elections and representation | V7's first D10 subsystem is "Who takes part", and the engineer's sidecars code the CPS voting files D10 |
+| D3-48 | Twenty-eight round 1 and 2 forms take new data: twelve move off election data and sixteen off data a built specimen already draws | DR-229, and one dataset per lesson |
+| D3-49 | Row 73's fan chart uses the Federal Reserve's September 2026 projections of unemployment with its published historical errors in place of CBO projections | cbo.gov refuses automated readers, and the Fed's error table gives the bands with no download |
+| D3-50 | Row 77's progress bar uses the Senate's September 30, 2026 cloture vote on H.R. 7008 (53 of the 60 needed) | It is the Senate record D2-104 waited for, and it teaches the 60-vote rule with a real vote |
+| D3-51 | Row 70 computes women's to men's earnings ratios from ACS Table B20017 with the Census Bureau's ratio approximation for the margin | The data API returned empty state values for Table S2002 today; the computed U.S. ratio, 82.0, matches S2002's published 82.0 |
+| D3-52 | Row 13 compares federal civilian employees on January 31, 2022 and August 31, 2026 | The data lead's change 1 (the jobs charts' window, no split at an inauguration); OPM flagged September 2026 as incomplete for some Department of War components |
+| D3-53 | Row 47 draws `cms-nhe-by-payer-four-groups`, a derived file that folds every payer but private insurance, Medicare and Medicaid into "all other" | The data lead's change 2 under DR-234 |
+| D3-54 | Row 39's tracker list holds eight housing bills of the 119th Congress that moved past referral, two of them now law | Congress.gov's API has no policy-area filter, so I read the bill lists of Senate Banking and House Financial Services and kept the housing bills that moved |
+| D3-55 | Row 79's status chips draw V7's dated statuses of six checks-on-power issues, and Illinois counts once for Trump v. Illinois | The statuses name rulings and cases, which is what status chips are for |
+| D3-56 | The Alaska Division of Elections site sends an incomplete certificate chain; I added only the missing GlobalSign intermediate its certificate names to a copy of the proxy's CA bundle, and verification stayed on | The chain then verified to GlobalSign Root R46 in the trusted store; nothing was fetched with verification off |
+| D3-57 | My V7 tables come from my own script, `work/build/scripts/phase-3/research_v7_extract.py`, which imports nothing of the engineer's and writes only `v7-reform-routes`, `v7-issues`, `v7-claims-drug-prices`, `v7-numbers` and `v7-issue-status-checks-on-power` | Contract C1 allows it; rows 7 and 9 reuse the engineer's `v7-claims-by-grade` |
+| D3-58 | The five-download list holds one file | Every other round 1 and 2 dataset answered from its publisher today; fewer is better (DR-230) |
+
+### Editor, chapter 13 (`20261111_Round-0-Editor-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-59 | Chapter 13 sits in three groups: 13.1 to 13.5, 13.6 to 13.10, 13.11 to 13.13 | The fixed numbers fall into three jobs a reader meets in that order: what kind of evidence, where and when it came from, and records, quotes and corrections |
+| D3-60 | Rule 13.1 states the evidence label as the approved chart system draws it: a dark chip with one of four words, and the grade in words beside it | Chapters 01 and 02 never state it, and the kit prints it on every chart (contract C5) |
+| D3-61 | Rule 13.1's four heads: child poverty in 2025 (Census Bureau, finding), atlas claim CL1507 on employer concentration and posted wages (association), delivery log DL06, NHTSA's lives saved (estimate), and an invented ranked bar (illustration) | One real example for each kind that has one, from four domains; the Federal Reserve's wealth estimate was set aside to keep domain D08 under one in four |
+| D3-62 | An association keeps association words at any grade, and Rule 13.1 says so | The atlas grades CL1507, an association, well supported, so a grade alone would allow a causal verb |
+| D3-63 | Rule 13.2's correct plate is a ladder of five atlas connections, one per grade (LE14, L26, L20, L47, L18); its failure uses the atlas's own name for L20 as a title | It teaches that a name the atlas keeps at a lower grade is a label to quote, and that our title takes the grade's verb |
+| D3-64 | Rule 13.2's contested readings come from L47's record and run 15 words each | Rule 01.16 asks for equal length; the generator checks the count |
+| D3-65 | Rule 13.3's display words and key glosses are those Rule 12.6's key already prints (the chart system's grade table); plausible_contested and contested display as Contested; Mixed prints beside its one record; Retired stays out of keys | One vocabulary in the guide, so nothing is stated two ways; tension 8 asked for the mapping table |
+| D3-66 | The atlas's separate label "not yet tested", which no record carries on October 15, 2026, is named under the table and gets no display row yet | A row for an unused value would print a word no page needs, and the generator stops if a record takes it |
+| D3-67 | Rule 13.4 carries the record square and the hollow line approved with the line code (Gate 1, M1) and cites Rule 10.10 for every measurement | 10.10 holds the numbers; M1 added the square and the hollow line, which no built chapter drew |
+| D3-68 | Rule 13.4's plate draws four loops (R10, R16, R3, B2) so every pattern, the square and the hollow line appear on real steps, each weakest step named as the atlas names it | One loop would leave out the contested and hypothesis patterns or the conceptual case |
+| D3-69 | Rule 13.5 uses Reform R-30: remedy grade, four effect codes with the atlas's qualifiers, its confidence in quotes and the delay of its target, Connection L39, with pips and ticks as Gate 1's M4 marks draw them | R-30 carries qualifiers on two families and a clear target with a delay |
+| D3-70 | Rule 13.6 takes apart the payroll source line read from the engineer's sidecar, and the generator checks H04's order in it | The line holds all six parts, a copy and a preliminary qualification |
+| D3-71 | Rule 13.7 shows the Census Bureau's August 2026 revision of child poverty rates in the two releases, from the sidecar's first-published variant and release dates | A real revision a reader comparing reports would meet; H09 is cited for the window |
+| D3-72 | Rule 13.8 pairs the atlas's Medicare insulin cap (checked October 15, 2026) with an invented reader in Alder County, whose words are practical and take no side | Alder County is the guide's invented county (chapter 02); Rule 11.1 is cited for invented bill numbers |
+| D3-73 | Rule 13.9 uses the four IDs variables and loops share (B2 to B5, counted by script) and Loop R1 against Reform R-01 | The collisions tension 7 names |
+| D3-74 | Rule 13.10 uses Reform R-19's three routes, one checked, and prints the atlas's count, 13 of 126 route entries dated | A real mix of checked and unchecked routes in a subject both parties legislated on |
+| D3-75 | Rule 13.11 lists all seven repair log rows on Loop R1, both directions, the one unchecked row marked, and quotes the atlas's coding note, beside the loop's three connections | Every row on the loop, so no row is picked to make a point; events and findings on one loop |
+| D3-76 | Rule 13.12 quotes Justice Brandeis in New State Ice Co. v. Liebmann as the Legal Information Institute prints it (lower-case "state"), read November 11, 2026; the failure is the "laboratories of democracy" paraphrase | The opinion's text holds neither "laboratories" nor "democracy" (checked by script); the case is a federalism quote readers on each side use |
+| D3-77 | Rule 13.13's plates are wholly invented, one Illustrative label at each piece's head; the note takes Rule 26.3's correction notice tokens and no red | DR-233 asks for Illustrative plates; Rule 26.3 already sets the tokens |
+| D3-78 | Every failure plate carries the do-not-publish band, and every failure alt opens with its words, the sentence plate of 13.9 included | Each draws a title, key, card, line or sentence a reader could lift |
+| D3-79 | Rule 13.13's chart is a static drawing in the chart tokens until the kit's guide hook lands; the generator switches to `<div data-oa-chart="s-13-13-correct">` by itself once `guide_build.py` handles `data-oa-chart` (`--static-chart` forces the drawing) | The kit's SVG export carries literal colors the guide build refuses; the spec already passes the kit (0 faults) |
+| D3-80 | Every plate flows with the column and carries only the styles its markup uses | Fluid type tokens stay legal at every width, and the chapter stays at 0.20 MB |
+| D3-81 | Text taken from atlas records prints with curly apostrophes | Rule 06's typography; the words stay the atlas's |
+| D3-82 | The chapter's example log (Rule 01.12) holds 24 examples: 20 counted by domain (D08 4, D04 3, D01, D03, D07, D09 and D10 2 each, D02, D05 and D06 1 each), 2 atlas-wide, 2 invented; New York, Washington, Alaska and Oklahoma once each | Under one in four by domain and one in five by state (Rule 01.9, DR-229); the generator fails the build otherwise |
