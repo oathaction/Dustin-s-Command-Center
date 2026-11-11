@@ -287,6 +287,7 @@
     if (!b) return;
     setFit(b.closest('.plate'), b.getAttribute('data-fit'));
     frames();
+    snapStages();
   });
 
   // Fix pass (CA-M1, CA-N9): every fixed-width plate carries the switch, hidden. It shows only where the stage is wider
@@ -326,10 +327,29 @@
     });
   }
 
+  // Stage C, round 1 (D2-1332): a fixed-width plate's stage lands on a whole device pixel, so a piece shown at true size
+  // draws sharp at 1x. The text above a plate sets fractional line heights, so its top can fall between pixels. One pass
+  // reads every stage's place, a second sets the CSS translate property by the fraction: it moves the drawing alone,
+  // never what follows it. A plate set to Fit to window is scaled, so it is left as it is.
+  function snapStages() {
+    var st = $$('.plate-stage[data-width]');
+    st.forEach(function (s) { s.style.translate = ''; });
+    var d = window.devicePixelRatio || 1;
+    var off = st.map(function (s) {
+      if (s.closest('.plate--fit[data-fit="fit"]')) return null;
+      var r = s.getBoundingClientRect(), x = (r.left + window.scrollX) * d, y = (r.top + window.scrollY) * d;
+      return [(Math.round(x) - x) / d, (Math.round(y) - y) / d];
+    });
+    st.forEach(function (s, i) {
+      var o = off[i];
+      if (o && (Math.abs(o[0]) > 0.001 || Math.abs(o[1]) > 0.001)) s.style.translate = o[0].toFixed(3) + 'px ' + o[1].toFixed(3) + 'px';
+    });
+  }
+
   var rt = null;
   window.addEventListener('resize', function () {
     clearTimeout(rt);
-    rt = setTimeout(function () { sizeFrames(); $$('.plate--fit[data-fit="fit"]').forEach(applyFit); offerFit(); frames(); railCover(); }, 120);
+    rt = setTimeout(function () { sizeFrames(); $$('.plate--fit[data-fit="fit"]').forEach(applyFit); offerFit(); frames(); railCover(); snapStages(); }, 120);
   });
 
   // The token downloads (round 2, November 10, 2026; DR-192 and D2-964 in round 3; tokens.json in stage C round 1,
@@ -472,5 +492,6 @@
     if (location.hash) onHash(); else setCurrent(compute());
   }
   start();
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { current = null; start(); });
+  snapStages();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { current = null; start(); snapStages(); });
 })();

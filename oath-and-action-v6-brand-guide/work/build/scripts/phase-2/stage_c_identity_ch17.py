@@ -349,7 +349,7 @@ L.addEventListener("change",function(){var k=L.checked?0.1:1;A.forEach(function(
 if(RM&&RM.addEventListener)RM.addEventListener("change",function(){if(total()===0&&(st==="running"||st==="paused"))end();else show();});
 show();});})();"""
 
-WHY = {"start": "At the first frame, so Reset waits until you press Play.",
+WHY = {"start": "Reset works once you press Play.",
        "slowDevice": "Your device asks for reduced motion, so Play shows the last frame at once and Slow motion has nothing to slow."}
 
 

@@ -319,6 +319,26 @@ def attr_ok(sel, markup):
     return True
 
 
+def split_selectors(pre):
+    """A selector list split at its top-level commas only, so :is(a, b) stays whole."""
+    out, depth, cur, quote = [], 0, '', None
+    for ch in pre:
+        if quote:
+            quote = None if ch == quote else quote
+        elif ch in '"\'':
+            quote = ch
+        elif ch in '([':
+            depth += 1
+        elif ch in ')]':
+            depth -= 1
+        elif ch == ',' and depth == 0:
+            out.append(cur)
+            cur = ''
+            continue
+        cur += ch
+    return out + [cur]
+
+
 def prune_css(css, classes, markup=''):
     out = []
     for pre, body in css_blocks(css):
@@ -330,7 +350,7 @@ def prune_css(css, classes, markup=''):
                 out.append(f'{pre}{{{inner}}}')
             continue
         sels = []
-        for s in pre.split(','):
+        for s in split_selectors(pre):
             s = rewrite_selector(s.strip())
             if s and all(c in classes for c in re.findall(r'\.([A-Za-z][\w-]*)', s)) and (not markup or attr_ok(s, markup)):
                 sels.append(s)
@@ -371,8 +391,9 @@ AX_CSS = minify("""
 .ax-n{position:absolute;z-index:3;top:-10px;left:-10px;display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--oa-color-text-primary);color:var(--oa-color-surface);box-shadow:0 0 0 2px var(--oa-color-surface);font:700 .8125rem/1 var(--oa-font-family-reading);letter-spacing:0;text-transform:none;text-decoration:none}
 .ax-tr{left:auto;right:-10px}.ax-bl{top:auto;bottom:-10px}.ax-br{top:auto;bottom:-10px;left:auto;right:-10px}
 .ax-t{position:absolute;top:0;bottom:0;left:-14px;width:5px;border:2px solid var(--oa-color-text-primary);border-right:0}
-.ax-t .ax-n{top:50%;left:-27px;margin-top:-10px}
-.ax-in{top:6px;left:6px}.ax-inr{top:6px;left:auto;right:6px}.ax-l{top:2px;left:-28px}
+.ax-t .ax-n{top:-24px;left:-16px}
+.ax-in{top:6px;left:6px}.ax-inr{top:6px;left:auto;right:6px}.ax-l{top:2px;left:-28px}.ax-up{top:-22px;left:0}.ax-dn{top:auto;bottom:-22px;left:0}
+.ax-st .ax-input{display:flex;align-items:center}
 .ax-k{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px 24px}
 @container (min-width:34rem){.ax-k{grid-template-columns:1fr 1fr}}
 .ax-k li{position:relative;min-height:22px;padding-left:30px;font:var(--oa-type-body-small);color:var(--oa-color-text-primary)}
@@ -466,8 +487,8 @@ def p02():
     bracket(hs, 1)
     pin(hs, 2)
     pin(hs, 3, 'tr')
-    pin(hc, 4)
-    pin(hc, 5, 'tr')
+    pin(hc, 4, 'bl')
+    pin(hc, 5, 'br')
     key = [(1, 'Height', '44 px tall and at least 44 px wide'),
            (2, 'On: check and bold word', 'The selected check, 24 px, before the word, and the word in bold'),
            (3, 'On: 2 px edge', 'In the strong border color; the fill stays the ground'),
@@ -523,7 +544,7 @@ def p04():
            (3, 'Height', 'Each segment 44 px tall'),
            (4, 'A choice', 'Light, Dark and Match my device, each its word inside a 1 px edge'),
            (5, 'Checked', 'Match my device, checked at first: the selected check, the word in bold and a 2 px edge')]
-    return ['masthead', 'theme-switch'], root, key, 'the theme switch', '', False, ''
+    return ['masthead', 'theme-switch'], root, key, 'the theme switch', '', False, '.oa-masthead-dialog{overflow:visible;height:auto}'
 
 
 def p05():
@@ -535,16 +556,18 @@ def p05():
     focus(skip)
     hover(links[0])
     pin(skip, 1, 'tr')
-    pin(links[0], 2)
-    pin(links[0], 3, 'tr')
-    pin(links[1], 4)
-    pin(q(text, 'oa-link-last'), 5, 'tr')
+    pin(links[0], 2, 'up')
+    pin(links[0], 3, 'dn')
+    pin(links[1], 4, 'up')
+    pin(q(text, 'oa-link-last'), 5, 'dn')
     key = [(1, 'Skip link', 'Hidden until the Tab key reaches it first on a page, then shown at the top'),
            (2, 'Words', 'Say where the link goes, and work read on their own'),
            (3, 'Underline', '1 px at rest, 2 px under a pointer, as here'),
            (4, 'Link to another site', 'Its name ends with the hidden words “(another site)” for a screen reader'),
            (5, 'Mark', 'The 16 px mark for another site, after the last word, which it never leaves')]
-    return ['link'], r, key, 'links', '', False, ''
+    return ['link'], r, key, 'links', ('The skip link is drawn in place above the text, and the lines are spaced apart to '
+                                       'leave room for the callouts.'), False, ('.oa-link-skip{position:static;display:inline-block;margin:0 0 20px}'
+                                       '.oa-link-text{line-height:2.6}')
 
 
 def p06():
@@ -572,7 +595,7 @@ def p06():
     pin(q(dlg, 'oa-masthead-close'), 7, 'tr')
     rows = qa(dlg, 'oa-masthead-row-link')
     pin(rows[0], 8, 'tr')
-    pin(rows[1], 9, 'tr')
+    pin(rows[1], 9, 'br')
     key = [(1, 'Home link', 'The product’s name, from the wordmark’s master, links to the front page'),
            (2, 'Navigation', 'Named Parts of the site; with 40rem of room it sits in the bar in place of Menu'),
            (3, 'Current part', 'Bold, with a 2 px underline'),
@@ -600,11 +623,11 @@ def p07():
     pin(items[0], 3, 'tr')
     bracket(items[1], 4)
     pin(items[1], 5, 'tr')
-    key = [(1, 'Breadcrumb’s current page', 'The last step, with a 2 px underline; its link says it is the page'),
+    key = [(1, 'Breadcrumb’s current page', 'The last step, in bold and not underlined; its link says it is the page'),
            (2, 'Label', 'Names the list, as the navigation’s own name does'),
            (3, 'Link', 'A place to go, with its words'),
            (4, 'Height', 'Rows 44 px tall in a list a thumb uses'),
-           (5, 'Current place', 'The selected band, a 4 px bar drawn as a border, and semibold words')]
+           (5, 'Current place', 'The selected band, a 4 px bar drawn as a border, and bold words')]
     return ['location'], r, key, 'location lists', '', False, ''
 
 
@@ -616,9 +639,9 @@ def p08():
     drop(q(ds[1], 'oa-disclosure-body'))
     s0, s1 = q(ds[0], 'oa-disclosure-summary'), q(ds[1], 'oa-disclosure-summary')
     focus(s1)
-    pin(q(s0, 'oa-disclosure-label'), 1)
+    pin(q(s0, 'oa-disclosure-label'), 1, 'l')
     pin(s0, 2, 'tr')
-    pin(q(ds[0], 'oa-disclosure-body'), 3)
+    pin(q(ds[0], 'oa-disclosure-body'), 3, 'l')
     bracket(s1, 4)
     pin(s1, 5)
     pin(s1, 6, 'tr')
@@ -638,13 +661,13 @@ def p09():
     panel = q(r, 'oa-tabs-panel')
     only(r, q(r, 'oa-tabs-k'), lst, why, panel)
     focus(tabs[0])
-    pin(lst, 1, 'tr')
+    pin(lst, 1, 'br')
     bracket(tabs[0], 2)
     pin(tabs[0], 3)
     pin(tabs[0], 4, 'tr')
     pin(tabs[1], 5, 'tr')
     pin(tabs[3], 6, 'tr')
-    pin(panel, 7)
+    pin(panel, 7, 'l')
     key = [(1, 'Tab list', 'Named Views of the bill; the Tab key enters at the selected tab, and the arrow keys move'),
            (2, 'Height', 'Each tab 44 px tall'),
            (3, 'Selected tab', 'A 4 px bar and bold words; its panel shows at once'),
@@ -671,10 +694,10 @@ def p10():
             if ('oa-table-icon--up' in e.cls()) != (i == 0) or 'oa-table-icon--down' in e.cls():
                 drop(e)
     pin(q(r, 'oa-table-caption'), 1)
-    pin(th[1], 2, 'tr')
+    pin(q(th[1], 'oa-table-word'), 2, 'up')
     bracket(q(th[0], 'oa-table-sort'), 3)
-    pin(sort, 4, 'tr')
-    pin(rows[1], 5, 'bl')
+    pin(q(th[0], 'oa-table-word'), 4, 'up')
+    pin(q(rows[1], 'oa-table-td'), 5, 'bl')
     key = [(1, 'Caption', 'Names the table, as table markup’s own caption'),
            (2, 'Column heading', 'Each heading holds a sort button with its words and a 16 px arrow'),
            (3, 'Height', 'Each sort button fills its heading, at least 44 px tall'),
@@ -690,9 +713,9 @@ def p11():
     focus(frame)
     pin(q(r, 'oa-scroll-k'), 1)
     pin(hint, 2)
-    pin(frame, 3, 'tr')
-    pin(q(frame, 'oa-scroll-wide'), 4, 'in')
-    pin(frame, 5, 'bl')
+    pin(frame, 3, 'inr')
+    pin(q(frame, 'oa-scroll-step', 1), 4, 'tr')
+    pin(q(r, 'oa-scroll'), 5, 'br')
     key = [(1, 'Name', 'Names the frame, and the frame takes it'),
            (2, 'Hint', 'Shown only while the content is wider than the frame'),
            (3, 'Frame', 'A hairline edge; the content scrolls inside it, so the page never does'),
@@ -707,8 +730,10 @@ def p12():
     st = q(r, 'oa-code-status')
     only(r, q(r, 'oa-code-name'), panel, st)
     err = parse(ser(st)).k[0]
-    for mark in qa(st, 'oa-code-mark--error') or []:
+    for mark in qa(st, 'oa-code-mark--error'):
         mark.a['hidden'] = None
+    for mark in qa(st, 'oa-code-mark--ok'):
+        mark.a.pop('hidden', None)
     say(q(st, 'oa-code-words'), 'Copied the HTML, 2 lines, to the clipboard.')
     err.a['data-oa-state'] = 'error'
     words = q(err, 'oa-code-words')
@@ -723,7 +748,7 @@ def p12():
     pin(q(panel, 'oa-code-lang'), 1)
     bracket(copy, 2)
     pin(copy, 3, 'tr')
-    pin(q(panel, 'oa-code-pre'), 4, 'in')
+    pin(panel, 4, 'bl')
     pin(st, 5)
     pin(err, 6)
     key = [(1, 'Panel label', 'The file’s kind, HTML, CSS or Script'),
@@ -743,8 +768,10 @@ def p13():
     say(q(st, 'oa-copy-words'), 'Copied --oa-color-text-primary.')
     for mark in qa(st, 'oa-copy-mark--error'):
         mark.a['hidden'] = None
+    for mark in qa(st, 'oa-copy-mark--ok'):
+        mark.a.pop('hidden', None)
     btn = q(row, 'oa-copy-button')
-    pin(q(row, 'oa-copy-value'), 1)
+    pin(q(row, 'oa-copy-value'), 1, 'up')
     bracket(btn, 2)
     pin(btn, 3, 'tr')
     pin(st, 4)
@@ -763,7 +790,7 @@ def p14():
     why = q(r, 'oa-download-why')
     bracket(ds[0], 1)
     pin(ds[0], 2)
-    pin(q(ds[0], 'oa-download-label'), 3, 'tr')
+    pin(ds[0], 3, 'br')
     pin(ds[1], 4, 'tr')
     pin(why, 5)
     key = [(1, 'Height', '44 px tall'),
@@ -798,6 +825,9 @@ def p15():
 def p16():
     r = D('filter-bar')
     bar, sheet, st = q(r, 'oa-filters-bar'), q(r, 'oa-filters-sheet'), q(r, 'oa-filters-status')
+    first = qa(sheet, 'oa-filters-chip')[0].a.get('data-oa-filter')
+    results = qa(r, 'oa-filters-result')
+    n_on = sum(1 for x in results if x.a.get('data-oa-area') == first)
     only(r, bar, sheet, st)
     tog, clear = q(bar, 'oa-filters-toggle'), q(bar, 'oa-filters-clear')
     tog.a['aria-expanded'] = 'true'
@@ -809,10 +839,10 @@ def p16():
     for g in qa(sheet, 'oa-filters-chips')[1:]:
         drop(g)
     drop(qa(sheet, 'oa-filters-k')[1])
-    say(st, '6 of 12 reforms')
+    say(st, f'{n_on} of {len(results)} reforms')
     bracket(tog, 1)
     pin(tog, 2)
-    pin(q(tog, 'oa-filters-count'), 3, 'tr')
+    pin(tog, 3, 'br')
     pin(clear, 4, 'tr')
     pin(chips[0], 5)
     pin(chips[1], 6, 'tr')
@@ -903,7 +933,7 @@ def p20():
     r = D('tracker')
     card = q(r, 'oa-tracker-card')
     only(r, q(r, 'oa-tracker-illus'), card)
-    for c in ('oa-tracker-take', 'oa-tracker-alert', 'oa-tracker-next', 'oa-tracker-why', 'oa-tracker-news', 'oa-tracker-key'):
+    for c in ('oa-tracker-take', 'oa-tracker-alert', 'oa-tracker-next', 'oa-tracker-why', 'oa-tracker-news'):
         for e in qa(card, c):
             drop(e)
     steps = qa(card, 'oa-tracker-step')
@@ -944,7 +974,7 @@ def p21():
            (5, 'Next page', 'Its word and the arrow after it'),
            (6, 'Reason line', 'Says why Previous page waits'),
            (7, 'Page size', 'Fit width or Full size, a choice of one, the checked one with its check')]
-    return ['report-reader'], r, key, 'a report reader', '', True, ''
+    return ['report-reader'], r, key, 'a report reader', '', True, '.oa-reader-view{overflow:visible}'
 
 
 def p22():
@@ -1021,9 +1051,9 @@ def p24():
     plain = q(rows[0], 'oa-chip')
     link = q(rows[1], 'oa-chip--link')
     hover(link)
-    pin(plain, 1)
-    pin(q(plain, 'oa-chip-id'), 2, 'tr')
-    pin(plain, 3, 'br')
+    pin(plain, 1, 'up')
+    pin(q(plain, 'oa-chip-id'), 2, 'up')
+    pin(plain, 3, 'dn')
     bracket(link, 4)
     pin(link, 5, 'tr')
     key = [(1, 'Type word', 'Loop, Variable, Reform or Domain, before the code'),
@@ -1031,7 +1061,7 @@ def p24():
            (3, 'Edge', 'A hairline in the strong border color'),
            (4, 'Target', 'As a link, at least 24 px tall'),
            (5, 'As a link', 'It opens the record; its words underline under a pointer, as here')]
-    return ['id-chip'], r, key, 'typed ID chips', '', False, ''
+    return ['id-chip'], r, key, 'typed ID chips', '', False, '.oa-chip-row{padding:20px 0 24px}'
 
 
 PLATES = [p01, p02, p03, p04, p05, p06, p07, p08, p09, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21,

@@ -37,7 +37,7 @@
   "width_px": null,
   "alt": "Anatomy of links, drawn from its code to copy on Newsprint, with five numbered callouts and a key. 1, Skip link: Hidden until the Tab key reaches it first on a page, then shown at the top. 2, Words: Say where the link goes, and work read on their own. 3, Underline: 1 px at rest, 2 px under a pointer, as here. 4, Link to another site: Its name ends with the hidden words (another site) for a screen reader. 5, Mark: The 16 px mark for another site, after the last word, which it never leaves.",
   "illustrative": false,
-  "notes": "Drawn from work/build/guide/code/c-18-link.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366)."
+  "notes": "Drawn from work/build/guide/code/c-18-link.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366). The skip link is drawn in place above the text, and the lines are spaced apart to leave room for the callouts."
  },
  "s-18-06-anatomy": {
   "chapter": "18",
@@ -51,7 +51,7 @@
   "chapter": "18",
   "rule": "18.7",
   "width_px": null,
-  "alt": "Anatomy of location lists, drawn from its code to copy on Newsprint, with five numbered callouts and a key. 1, Breadcrumb’s current page: The last step, with a 2 px underline; its link says it is the page. 2, Label: Names the list, as the navigation’s own name does. 3, Link: A place to go, with its words. 4, Height: Rows 44 px tall in a list a thumb uses. 5, Current place: The selected band, a 4 px bar drawn as a border, and semibold words.",
+  "alt": "Anatomy of location lists, drawn from its code to copy on Newsprint, with five numbered callouts and a key. 1, Breadcrumb’s current page: The last step, in bold and not underlined; its link says it is the page. 2, Label: Names the list, as the navigation’s own name does. 3, Link: A place to go, with its words. 4, Height: Rows 44 px tall in a list a thumb uses. 5, Current place: The selected band, a 4 px bar drawn as a border, and bold words.",
   "illustrative": false,
   "notes": "Drawn from work/build/guide/code/c-18-location.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366)."
  },
