@@ -52,6 +52,15 @@ def write_pilot(base, fallback):
         if not src:
             continue
         spec = json.loads(src.read_text())
+        # a spec still on its sidecar's Phase 2 wording of the atlas takes the reader wording for the pilot (request X9)
+        ds = spec.get("dataset")
+        first = (ds[0] if isinstance(ds, list) else ds) if ds else None
+        mp = ROOT / "work/build/data" / f"{first}.meta.json" if first else None
+        if mp and mp.exists():
+            meta = json.loads(mp.read_text())
+            if spec.get("source_line") == (meta.get("source_line_variants") or {}).get("phase_2_wording"):
+                spec["source_line"] = meta["printed_source_line"]
+                origin += ", source line moved to the reader wording"
         pid = f"s-14-{sid}"
         (pil / "specimens" / f"{pid}.chart.json").write_text(json.dumps(spec, ensure_ascii=False))
         (pil / "specimens" / f"{pid}.html").write_text(f'<div data-oa-chart="{pid}"></div>\n')
@@ -62,7 +71,7 @@ def write_pilot(base, fallback):
     ch = {
         "number": "14", "anchor": "data-visualization", "title": "Data visualization", "part": "evidence",
         "instruction": "Start from the reader's question to choose a chart, then title it with the evidence it shows.",
-        "intro": ["A pilot of the drawing method, built for measurement only: the 16 charts Phase 2 finished, drawn by the chart kit."],
+        "intro": ["A pilot of the drawing method, built for measurement only: sixteen finished charts, drawn by the chart kit."],
         "rules": [{"id": "14.1", "title": "Draw every chart with the chart kit from its data file.",
                    "rule": ["A pilot rule that carries the plates below; the real chapter is built from round 1."],
                    "why": {"text": ["One renderer draws the guide, the exports and the boards, so they cannot drift."], "basis": "Pilot"}}],
