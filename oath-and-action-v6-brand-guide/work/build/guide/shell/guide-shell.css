@@ -512,6 +512,9 @@ a.toc-part-k:hover { text-decoration: underline }
 .code-panel > .code { margin-top: var(--oa-space-100) }
 /* Round 1: words under the live demos (AX-S8's landmark swap) and under a head script's label */
 .code-note { margin: var(--oa-space-150) 0 0; font: var(--oa-type-caption); max-width: 32rem }
+/* Round 1 (the accessibility lead's item 1): a word too long for its line, such as a web address in running text, breaks
+   rather than push the page sideways at 200 percent text. break-word leaves every word that fits alone. Specimens keep their own. */
+:where(.chapter, .part, .cover, .colophon) :where(p, li, dd, dt, td, th, figcaption, blockquote):not(:where(.plate-stage *)) { overflow-wrap: break-word }
 /* Round 1 (chapter 26): a worked example's line above its plates, and a rule's downloads */
 .ex-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--oa-space-150); margin: var(--oa-space-800) 0 0;
   padding-top: var(--oa-space-150); border-top: var(--oa-border-width-rule) solid var(--ink); font: var(--oa-type-h4) }

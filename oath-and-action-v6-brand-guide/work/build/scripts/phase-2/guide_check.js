@@ -1120,7 +1120,16 @@ async function sbSpacing(page, modes = ['spacing', 'zoom'], zoomScroll = false) 
           }
         }
       }
-      if ((mode === 'spacing' || zoomScroll) && document.documentElement.scrollWidth > window.innerWidth + 1) bad.push({ where: 'page', mode, why: `scrolls sideways (${document.documentElement.scrollWidth} px)` });
+      if ((mode === 'spacing' || zoomScroll) && document.documentElement.scrollWidth > window.innerWidth + 1) {
+        // round 1 (the accessibility lead's item 1): name what pushes the page wide, innermost first: an element whose
+        // right edge passes the screen, with no box around it that scrolls or clips, and no child that passes it further
+        const W = window.innerWidth + 1;
+        const free = (el) => { for (let e = el.parentElement; e && e !== document.body; e = e.parentElement) { const ox = getComputedStyle(e).overflowX; if (/auto|scroll|hidden|clip/.test(ox)) return false; } return true; };
+        const past = [...document.querySelectorAll('body *')].filter((el) => { const r = el.getBoundingClientRect(); return r.width && r.right > W && free(el); });
+        const inner = past.filter((el) => !past.some((o) => o !== el && el.contains(o)));
+        const name = (el) => { const st = el.closest('[data-specimen]'); const sec = el.closest('section[id]'); return { where: st ? st.getAttribute('data-specimen') : sec ? '#' + sec.id : 'page', el: el.tagName.toLowerCase() + (typeof el.className === 'string' && el.className ? '.' + el.className.trim().split(/\s+/).slice(0, 2).join('.') : ''), right: Math.round(el.getBoundingClientRect().right), text: (el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 40) }; };
+        bad.push({ where: 'page', mode, why: `scrolls sideways (${document.documentElement.scrollWidth} px)`, culprits: inner.slice(0, 4).map(name) });
+      }
       // a masthead control pushed past either edge cannot be reached: past the left edge no scroll brings it back
       if (zoomScroll) for (const el of document.querySelectorAll('.masthead a, .masthead button')) {
         if (!rendered(el)) continue; const r = el.getBoundingClientRect();

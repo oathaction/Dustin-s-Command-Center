@@ -7,7 +7,8 @@
 .oa-bars-row { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); align-items: center; gap: var(--oa-space-100) }
 .oa-bars-label, .oa-bars-value { font: var(--oa-type-data-label); font-variant-numeric: tabular-nums }
 .oa-bars-track { display: flex; align-items: center; gap: var(--oa-space-100); min-width: 0 }
-.oa-bars-bar { flex: none; height: 1.25rem }
+.oa-bars-bar { flex: 0 1 auto; min-width: 0; height: 1.25rem }
+.oa-bars-value { flex: none }
 .oa-bars-bar--1 { width: 28% }
 .oa-bars-bar--2 { width: 41% }
 .oa-bars-bar--3 { width: 78% }

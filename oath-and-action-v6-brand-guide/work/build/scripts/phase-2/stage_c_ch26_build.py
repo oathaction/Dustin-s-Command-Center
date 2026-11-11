@@ -156,7 +156,7 @@ def hx(text):
 WEEKS = [("Week 1", 120), ("Week 2", 180), ("Week 3", 340), ("Week 4", 150)]
 CHART_CSS = (".sx-ch{display:grid;gap:8px;margin:12px 0 0}.sx-row{display:grid;grid-template-columns:4.5rem minmax(0,1fr);align-items:center;gap:8px}"
              ".sx-rl{font:var(--oa-type-data-label)}.sx-track{display:flex;align-items:center;gap:8px;min-width:0}"
-             ".sx-bar{height:20px;flex:none}.sx-v{font:var(--oa-type-data-label);font-variant-numeric:tabular-nums}")
+             ".sx-bar{height:20px;flex:0 1 auto;min-width:0}.sx-v{flex:none;font:var(--oa-type-data-label);font-variant-numeric:tabular-nums}")
 
 
 def bars(fill, subject=None, subject_fill=None, attrs=""):
@@ -443,7 +443,7 @@ def code_sets():
         f".{cls}-row {{ display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); align-items: center; gap: var(--oa-space-100) }}\n"
         f".{cls}-label, .{cls}-value {{ font: var(--oa-type-data-label); font-variant-numeric: tabular-nums }}\n"
         f".{cls}-track {{ display: flex; align-items: center; gap: var(--oa-space-100); min-width: 0 }}\n"
-        f".{cls}-bar {{ flex: none; height: 1.25rem }}\n{widths(cls)}\n")
+        f".{cls}-bar {{ flex: 0 1 auto; min-width: 0; height: 1.25rem }}\n.{cls}-value {{ flex: none }}\n{widths(cls)}\n")
     sets = {}
     sets["c-26-caption"] = {
         "html": ('<figure class="oa-figure">\n  <p class="oa-figure-title">Comments on the transit plan, by week</p>\n'

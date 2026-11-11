@@ -6,7 +6,8 @@
 .oa-figure-row { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); align-items: center; gap: var(--oa-space-100) }
 .oa-figure-label, .oa-figure-value { font: var(--oa-type-data-label); font-variant-numeric: tabular-nums }
 .oa-figure-track { display: flex; align-items: center; gap: var(--oa-space-100); min-width: 0 }
-.oa-figure-bar { flex: none; height: 1.25rem }
+.oa-figure-bar { flex: 0 1 auto; min-width: 0; height: 1.25rem }
+.oa-figure-value { flex: none }
 .oa-figure-bar--1 { width: 28% }
 .oa-figure-bar--2 { width: 41% }
 .oa-figure-bar--3 { width: 78% }

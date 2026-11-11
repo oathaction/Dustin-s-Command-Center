@@ -2715,3 +2715,46 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 | D2-1435 | The device script asks for ten things to listen for, the same on every device | One list makes four devices' results comparable |
 | D2-1436 | Numbers under ten in the chapter's prose print as words, through the generator | House rule H06 |
 | D2-1437 | Rule 19.6's pictures show a 360 px screen zoomed to 200 percent as its 180 px layout drawn at twice its sizes, marked twice true size | That is what 200 percent zoom does, and every size divided by two stays on the type scale (D2-254) |
+
+### Component engineer, chapter 18 code sets (`20261111_Stage-C-Round-1-Components-Engineer-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1438 | Each set's classes start with its own name (`oa-button-`, `oa-toggle-`, `oa-choice-`), and each set styles everything it holds | In the guide all 24 sets' CSS is on one page, and a builder copies one set at a time |
+| D2-1439 | Utility icons are drawn inline from the 24 px and 16 px masters, with `data-icon` and `data-icon-family` | A builder's page has no sprite; the attributes let the shared checks find each icon |
+| D2-1440 | Every script runs inside its own function and finds each copy of its component | All sets' scripts share one page in the guide, and two copies show in each plate |
+| D2-1441 | A short name that is `initial` in the dark theme is read with a fallback (the ask's keyline falls back to its fill, the Error Band to transparent) | `var()` of a guaranteed-invalid value would otherwise fall to the property's initial value, a keyline in the label's color |
+| D2-1442 | Hover rules skip a control with `aria-disabled="true"` | An unavailable control does not answer a pointer |
+| D2-1443 | A choice's native radio stays in the page, transparent over its face, and the face draws the check, bold word and edge | The radio keeps Tab, the arrow keys and "2 of 3" with no script; the whole face is the target |
+| D2-1444 | An unavailable radio choice uses the native `disabled`, with its reason in visible words below the row | A radio group's arrow keys skip a disabled choice; `aria-disabled` would let the arrows check it |
+| D2-1445 | The theme switch's target is `data-oa-theme-for`, an id; absent, the page's root. A named target that is missing sets nothing | The guide's specimen changes only its own stage, and never falls back to the guide's root |
+| D2-1446 | Only a switch that sets the root stores the choice | Storage holds the page's choice; a nested specimen that stored would recolor the guide's other stage on the next visit |
+| D2-1447 | On a nested target, Match my device sets `data-oa-theme="device"`, which follows whatever theme the target sits in | tokens.css follows the device only on the root; in the guide, each stage stands for a device set to its theme, and the dark-device check stays clean |
+| D2-1448 | The theme switch keeps every switch that sets the same element on the same choice | A product may show it in the masthead and again in the phone menu |
+| D2-1449 | The link to another site keeps only its last word and the mark together, in an inline block | F-3 and D2-1156; the build reads `white-space` as a color today |
+| D2-1450 | AX-S8 settled with the accessibility lead: in the live stages only, the build draws each landmark (`header`, `nav`, `search`, `footer`, `aside`, `main`, a named `section` or `form`, a landmark role) as a `div` with `role="group"`, its own attributes and `data-oa-landmark`; the panels and `codeMatch` keep the real elements, and no set selects a landmark by its tag | The copy keeps its landmarks while the guide's own landmark list stays the guide's |
+| D2-1451 | The theme switch's head script is its own file, `c-18-theme-switch.head.js`, shown as the "Head script" panel and never run in a live stage | It must run in the head before the first paint, and in the guide it would set the guide's root |
+| D2-1452 | Loading draws the still outline of the ten-states plate (Rule 05.4) beside its words, until chapter 17's Rule 17.7 sets the drawing | G-4; a builder needs a still mark now, and one class swaps it later |
+| D2-1453 | A data component (table, search, tracker, reader) shows its loading, empty and error states as small static examples under the live one | Every state shows at once, in both themes, with no extra script; the static markup is what a product writes into the component for that state |
+| D2-1454 | The form's script keeps the request in one named function, `send()`, which the example fills with a short wait | A builder replaces one function with its own request, and the example still shows "Sending" |
+| D2-1455 | The tracker's live card plays three updates from a hidden list, one of them an error in an alert, and the update button keeps focus with a reason after the last | Each state and each announcement shows by keyboard; one working red at a time |
+| D2-1456 | The tracker's marks are drawn in HTML and CSS from the mark tokens, with hidden state words in each step, and carry no `data-icon` | One list is both the drawing and the words; the S- icon tags belong to the SVG trackers of chapter 11 |
+| D2-1457 | The masthead draws the 24 px wordmark master, and the 16 px master under 25rem of room, with the ampersand in the identity signature role | The guide's own masthead does the same, and the role follows the theme |
+| D2-1458 | The phone menu and the diagram's full size view are native `dialog`s opened with `showModal()`, and closing returns focus to the button that opened them | F-12; Escape and the trap come with the element |
+| D2-1459 | The report reader's Fit width and Full size are a radio group; its two page buttons stack under 22rem | D2-1151 and F-2 |
+| D2-1460 | The stepper's step list is the drawing: the current step takes the selected band, a 4 px bar and `aria-current="step"`, later steps mute | The atlas kit's marking, with the words always visible |
+| D2-1461 | The diagram's parts are toggle buttons with roving focus; choosing one opens its panel and moves focus to the panel's name; Escape unchooses it and returns focus | The atlas kit's A8 and A9; zoom and "show as a table" wait for the atlas kit's own pass |
+| D2-1462 | Each set's CSS draws its utility icons (fill none, `currentColor`, round caps and joins) and reads the line width from `--oa-component-icon-utility-line-medium` and `-small`; the SVGs keep their paths, size and data attributes | It keeps chapter 18 under its weight budget and ties the icon line to its token |
+| D2-1463 | The filter bar's data comes from the atlas model, snapshot October 15, 2026: areas from its reform groups, and who can act from each reform's routes, with a source line under the list | Fault 4; a filter that marks facts must take them from the record, dated |
+| D2-1464 | Invented bills use chapter 11's numbers and titles together | Fault 7; one invented bill means one thing across the guide |
+| D2-1465 | The skip link hides with `clip-path: inset(50%)` alone, at its full size | The guide check's clip test exempts only the shell's skip link, and a link at full size never clips its words when it shows |
+| D2-1466 | A mark that sets its own color takes `CanvasText` under forced colors, and the wordmark's ampersand `currentColor` | Fault 1 and 3; an SVG keeps a color its own rule sets |
+| D2-1467 | The skip link is the first stop and shows on focus at the top left of its component | WCAG 2.4.1; it moves focus to the main content, which carries `tabindex="-1"` |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1468 | Chapter 18's weight ceiling rises from 1.1 to 1.25 MB, the limit D2-1366 set, and the engineer writes it in `guide_build.py` | Chapter 18 stands at 1.097 MB after the component engineer's trims; the editor's pass and round 2's fixes need room, and the page still projects under its 15.5 MB budget |
+| D2-1469 | In the dark theme a form field's 4 px Pillar Red error bar may touch the Prussian field ground; it stays as drawn | Pillar Red measures 3.19 to 1 on Prussian and 4.49 on Charcoal (main session, WCAG formula on the palette's hex values), over 1.4.11's 3 to 1 for a graphic; round 2's accessibility red team may look again |
+| D2-1470 | `codeMatch` gets a measured tolerance for antialiased curve edges and captures stages taller than the window whole; the guide engineer sets both and records the tolerance | The component engineer found its four flagged sets differ only by curve edges and, in the tracker, one line a pixel apart, with a 4,000 px window |
