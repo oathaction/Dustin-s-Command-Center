@@ -101,6 +101,28 @@
     var nk = K.nice(lo, hi, count);
     return { lo: nk[0], hi: nk[1], ticks: K.ticks(nk[0], nk[1], 0, nk.step) };
   };
+  // Styles that tell parts apart in grayscale (ranked bar, unit chart): fill, outline, hatch, dash. A form passes its own
+  // pattern name and dash where its drawing needs them, so each draws exactly as before the styles were shared.
+  P.style = function (name, over) {
+    var base = { solid: { fill: 'subject', text: 'label-on-subject' }, open: { fill: 'surface', stroke: 'subject', text: 'label' },
+      gray: { fill: 'light-fill', text: 'label' }, hatch: { pattern: 'hatch', stroke: 'subject', text: null },
+      dashed: { fill: 'none', stroke: 'subject', dash: '3 2', text: null } };
+    var st = base[name] || base.solid, o = (over || {})[name in base ? name : 'solid'] || {};
+    var out = {};
+    for (var k in st) out[k] = st[k];
+    for (var k2 in o) out[k2] = o[k2];
+    return out;
+  };
+  P.styled = function (c, x, y, w, h, st, o) {
+    if (st.pattern) c.pattern(st.pattern, st.stroke);
+    c.rect(x, y, w, h, Object.assign({ fill: st.fill === 'none' ? 'none' : st.fill, pattern: st.pattern }, o));
+    if (st.stroke) c.rect(x + 0.5, y + 0.5, w - 1, h - 1, { stroke: st.stroke, dash: st.dash, mark: false });
+  };
+  // The square tile grid's measures at this width
+  P.tiles = function (c) {
+    var gap = c.t(c.phone ? 'tile-phone-gap' : 'tile-gap'), size = Math.min(c.t('tile-size-max'), Math.floor((c.width - 11 * gap) / 12));
+    return { gap: gap, size: size, pitch: size + gap };
+  };
   // Fill {placeholders} in a label from a row: {x}, {y} and any encode name, formatted by spec.formats
   P.fill = function (c, tmpl, row) {
     var f = c.spec.formats || {};

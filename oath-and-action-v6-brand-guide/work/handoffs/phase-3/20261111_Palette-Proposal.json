@@ -4,7 +4,7 @@
  "author": "Data visualization and systems lead, with the design director's eye",
  "status": "Proposed. Every token here is marked \"Proposed until board 1\" in its description; Dustin approves the new colors on board 1. The engineer adds them as one pre-release under Rule 26.8.",
  "built_from": {
-  "tokens": "work/build/tokens/tokens.json, release 6.0.0-gate2.9",
+  "tokens": "work/build/tokens/tokens.json, release 6.0.0-gate3.1",
   "script": "work/boards/phase-3/round-0/palettes/build_palette_proofs.py",
   "proofs": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs.html",
   "measures": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Measures.json"
@@ -60,6 +60,94 @@
   "N-11": "A categorical set of up to four groups (DR-234): no token names the four brand inks as groups, with a label ink for each and the hatch that keeps Verdigris and Stone apart (D2-95)",
   "N-12": "The evidence line code (Gate 1, M1; Rule 10.10) as tokens, so the chart kit, chapter 13 and chapter 15 draw one set of patterns: today the patterns live in three build scripts",
   "N-13": "Small multiples past four groups (DR-234) draw the other groups faint behind each panel; no token names that role"
+ },
+ "line_code_source": {
+  "decision": "D3-84: the atlas build's own constants are the one source of the line code; Rule 10.10's builders line names them, the tokens take them, and Rule 13.4 states the same numbers and cites the tokens",
+  "read_by_script_from": "work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py",
+  "read": {
+   "patterns_per_line_width": {
+    "Documented": null,
+    "Well supported": null,
+    "Plausible": [
+     4,
+     2
+    ],
+    "Contested": [
+     4,
+     1.5,
+     1,
+     1.5
+    ],
+    "Hypothesis": [
+     0,
+     2.5
+    ]
+   },
+   "caps": {
+    "Documented": "butt",
+    "Well supported": "butt",
+    "Plausible": "butt",
+    "Contested": "butt",
+    "Hypothesis": "round"
+   },
+   "pattern_function_line": 446,
+   "fitting": "Stretch the pattern so the line starts and ends on ink (design frame memo, rule 3.2). (fitted(), line 456)",
+   "line_widths_px": [
+    2,
+    3,
+    6
+   ],
+   "line_widths_from": "ARROW, line 436",
+   "hollow_line": "two rails of 1 px at w / 2 + 0.5 either side of the line, at every width, so the ground between them is one line width plus 0 px (wire_marks(), line 570)",
+   "dotted_head_clearance_line_widths": 1.5,
+   "grade_words_and_build_glosses": {
+    "documented": [
+     "Documented",
+     "on the public record"
+    ],
+    "well-supported": [
+     "Well supported",
+     "strong research evidence"
+    ],
+    "plausible": [
+     "Plausible",
+     "some evidence"
+    ],
+    "plausible_contested": [
+     "Contested",
+     "evidence disputed"
+    ],
+    "hypothesis": [
+     "Hypothesis",
+     "untested"
+    ]
+   },
+   "key_glyph_lengths_px_on_a_2px_line": {
+    "grade_glyph default": 36,
+    "evidence_key": 32
+   }
+  },
+  "set_here_because_the_build_defines_none": [
+   {
+    "value": "oa.chart.grade.minRun = 20 line widths",
+    "why": "The build has no shortest-line constant. Its keys draw 32 and 36 px samples on a 2 px line (16 and 18 widths), which squeeze a dash-dot sample by up to a fifth to fit it. 20 widths holds two full dash-dot periods (8 widths each) and the closing dash at every width, which is what Rule 13.4's \"long enough to show its pattern twice\" asks: 40 px at 2 px, 60 px at 3 px, 120 px at 6 px. It replaces both the 28 widths of the Phase 2 frame memo, which the build never coded, and Rule 13.4's 48 px"
+   },
+   {
+    "value": "oa.chart.grade.recordSquare = 7 px",
+    "why": "The build draws no record square. Gate 1 M1 added it; the Phase 2 atlas design frame memo and Rule 13.4 both set 7 px, so the value stays, set inline before the word Documented only"
+   },
+   {
+    "value": "Hypothesis gloss \"not yet tested\"",
+    "why": "The build's shared table glosses Hypothesis \"untested\"; D3-84 names Rule 13.3's table, which prints \"not yet tested\" as Rule 12.6's key does, so the tokens and the sheet take it. The Phase 2 build stays as a record"
+   }
+  ],
+  "changed_from_the_first_proposal": [
+   "oa.chart.grade.conceptual.railSelected (2 px on the 6 px route) is withdrawn: the build draws 1 px rails at every width",
+   "oa.chart.grade.minRun goes from 28 to 20 line widths",
+   "oa.chart.grade.headClearance is new: 1.5 line widths, read from wire_marks()",
+   "The hypothesis gloss reads \"not yet tested\"",
+   "The source of every grade token is the atlas build, in place of \"Atlas V7 renderer\""
+  ]
  },
  "tokens": [
   {
@@ -371,13 +459,13 @@
    "css": "--oa-chart-color-categorical-fill-group2-on-newsprint",
    "tier": "semantic",
    "type": "color",
-   "value": "{oa.color.palette.prussian}",
-   "resolves_to": "#1F2D5A",
+   "value": "{oa.color.palette.verdigris}",
+   "resolves_to": "#4A7C74",
    "surface": "newsprint",
    "kind": "graphic",
-   "job": "The categorical set, group 2 of 4, on Newsprint: Prussian and a square marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234).",
+   "job": "The categorical set, group 2 of 4, on Newsprint: Verdigris and a square marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234).",
    "ratios": {
-    "on Newsprint": 9.42
+    "on Newsprint": 3.37
    },
    "threshold": 3.0,
    "group": 2,
@@ -386,7 +474,7 @@
    "need": "N-11",
    "never": "A party, a side or a person (DR-48, DR-58, Rule 01.1); party data takes oa.chart.color.party.mark",
    "marker_spec": "On a line, the group's marker sits at the line's end beside its label, drawn with the area of a circle of oa.chart.dot.openRadius; markers at data points follow the form",
-   "description": "The categorical set, group 2 of 4, on Newsprint: Prussian and a square marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234). Proposed until board 1."
+   "description": "The categorical set, group 2 of 4, on Newsprint: Verdigris and a square marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234). Proposed until board 1."
   },
   {
    "path": "oa.chart.color.categorical.label.group2.onNewsprint",
@@ -400,7 +488,7 @@
    "job": "Text set on categorical group 2 on Newsprint.",
    "ground": "{oa.chart.color.categorical.fill.group2.onNewsprint}",
    "ratios": {
-    "on its ground": 13.28
+    "on its ground": 4.74
    },
    "threshold": 4.5,
    "passes": true,
@@ -412,13 +500,13 @@
    "css": "--oa-chart-color-categorical-fill-group3-on-newsprint",
    "tier": "semantic",
    "type": "color",
-   "value": "{oa.color.palette.verdigris}",
-   "resolves_to": "#4A7C74",
+   "value": "{oa.color.palette.prussian}",
+   "resolves_to": "#1F2D5A",
    "surface": "newsprint",
    "kind": "graphic",
-   "job": "The categorical set, group 3 of 4, on Newsprint: Verdigris and a triangle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234).",
+   "job": "The categorical set, group 3 of 4, on Newsprint: Prussian and a triangle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234).",
    "ratios": {
-    "on Newsprint": 3.37
+    "on Newsprint": 9.42
    },
    "threshold": 3.0,
    "group": 3,
@@ -427,7 +515,7 @@
    "need": "N-11",
    "never": "A party, a side or a person (DR-48, DR-58, Rule 01.1); party data takes oa.chart.color.party.mark",
    "marker_spec": "On a line, the group's marker sits at the line's end beside its label, drawn with the area of a circle of oa.chart.dot.openRadius; markers at data points follow the form",
-   "description": "The categorical set, group 3 of 4, on Newsprint: Verdigris and a triangle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234). Proposed until board 1."
+   "description": "The categorical set, group 3 of 4, on Newsprint: Prussian and a triangle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234). Proposed until board 1."
   },
   {
    "path": "oa.chart.color.categorical.label.group3.onNewsprint",
@@ -441,7 +529,7 @@
    "job": "Text set on categorical group 3 on Newsprint.",
    "ground": "{oa.chart.color.categorical.fill.group3.onNewsprint}",
    "ratios": {
-    "on its ground": 4.74
+    "on its ground": 13.28
    },
    "threshold": 4.5,
    "passes": true,
@@ -479,8 +567,8 @@
    "description": "The categorical set, group 4 of 4, on Newsprint: Stone, hatched, with the hatch and a diamond marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234). Proposed until board 1."
   },
   {
-   "path": "oa.chart.color.categorical.label.group4.onNewsprint",
-   "css": "--oa-chart-color-categorical-label-group4-on-newsprint",
+   "path": "oa.chart.color.categorical.labelBeside.group4.onNewsprint",
+   "css": "--oa-chart-color-categorical-label-beside-group4-on-newsprint",
    "tier": "semantic",
    "type": "color",
    "value": "{oa.color.palette.charcoal}",
@@ -561,13 +649,13 @@
    "css": "--oa-chart-color-categorical-fill-group2-on-charcoal",
    "tier": "semantic",
    "type": "color",
-   "value": "{oa.color.tint.prussianN62}",
-   "resolves_to": "#8E94A4",
+   "value": "{oa.color.palette.verdigris}",
+   "resolves_to": "#4A7C74",
    "surface": "charcoal",
    "kind": "graphic",
-   "job": "The categorical set, group 2 of 4, on Charcoal: Prussian lifted 62% and a square marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234).",
+   "job": "The categorical set, group 2 of 4, on Charcoal: Verdigris and a square marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234).",
    "ratios": {
-    "on Charcoal": 6.18
+    "on Charcoal": 3.95
    },
    "threshold": 3.0,
    "group": 2,
@@ -576,21 +664,21 @@
    "need": "N-11",
    "never": "A party, a side or a person (DR-48, DR-58, Rule 01.1); party data takes oa.chart.color.party.mark",
    "marker_spec": "On a line, the group's marker sits at the line's end beside its label, drawn with the area of a circle of oa.chart.dot.openRadius; markers at data points follow the form",
-   "description": "The categorical set, group 2 of 4, on Charcoal: Prussian lifted 62% and a square marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234). Proposed until board 1."
+   "description": "The categorical set, group 2 of 4, on Charcoal: Verdigris and a square marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234). Proposed until board 1."
   },
   {
    "path": "oa.chart.color.categorical.label.group2.onCharcoal",
    "css": "--oa-chart-color-categorical-label-group2-on-charcoal",
    "tier": "semantic",
    "type": "color",
-   "value": "{oa.color.palette.charcoal}",
-   "resolves_to": "#121212",
+   "value": "{oa.color.palette.white}",
+   "resolves_to": "#FFFFFF",
    "surface": "charcoal",
    "kind": "text",
    "job": "Text set on categorical group 2 on Charcoal.",
    "ground": "{oa.chart.color.categorical.fill.group2.onCharcoal}",
    "ratios": {
-    "on its ground": 6.18
+    "on its ground": 4.74
    },
    "threshold": 4.5,
    "passes": true,
@@ -602,13 +690,13 @@
    "css": "--oa-chart-color-categorical-fill-group3-on-charcoal",
    "tier": "semantic",
    "type": "color",
-   "value": "{oa.color.palette.verdigris}",
-   "resolves_to": "#4A7C74",
+   "value": "{oa.color.tint.prussianN62}",
+   "resolves_to": "#8E94A4",
    "surface": "charcoal",
    "kind": "graphic",
-   "job": "The categorical set, group 3 of 4, on Charcoal: Verdigris and a triangle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234).",
+   "job": "The categorical set, group 3 of 4, on Charcoal: Prussian lifted 62% and a triangle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234).",
    "ratios": {
-    "on Charcoal": 3.95
+    "on Charcoal": 6.18
    },
    "threshold": 3.0,
    "group": 3,
@@ -617,21 +705,21 @@
    "need": "N-11",
    "never": "A party, a side or a person (DR-48, DR-58, Rule 01.1); party data takes oa.chart.color.party.mark",
    "marker_spec": "On a line, the group's marker sits at the line's end beside its label, drawn with the area of a circle of oa.chart.dot.openRadius; markers at data points follow the form",
-   "description": "The categorical set, group 3 of 4, on Charcoal: Verdigris and a triangle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234). Proposed until board 1."
+   "description": "The categorical set, group 3 of 4, on Charcoal: Prussian lifted 62% and a triangle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234). Proposed until board 1."
   },
   {
    "path": "oa.chart.color.categorical.label.group3.onCharcoal",
    "css": "--oa-chart-color-categorical-label-group3-on-charcoal",
    "tier": "semantic",
    "type": "color",
-   "value": "{oa.color.palette.white}",
-   "resolves_to": "#FFFFFF",
+   "value": "{oa.color.palette.charcoal}",
+   "resolves_to": "#121212",
    "surface": "charcoal",
    "kind": "text",
    "job": "Text set on categorical group 3 on Charcoal.",
    "ground": "{oa.chart.color.categorical.fill.group3.onCharcoal}",
    "ratios": {
-    "on its ground": 4.74
+    "on its ground": 6.18
    },
    "threshold": 4.5,
    "passes": true,
@@ -669,8 +757,8 @@
    "description": "The categorical set, group 4 of 4, on Charcoal: Stone, hatched, with the hatch and a diamond marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray (DR-234). Proposed until board 1."
   },
   {
-   "path": "oa.chart.color.categorical.label.group4.onCharcoal",
-   "css": "--oa-chart-color-categorical-label-group4-on-charcoal",
+   "path": "oa.chart.color.categorical.labelBeside.group4.onCharcoal",
+   "css": "--oa-chart-color-categorical-label-beside-group4-on-charcoal",
    "tier": "semantic",
    "type": "color",
    "value": "{oa.color.palette.newsprint}",
@@ -717,6 +805,7 @@
    "gloss": "on the public record",
    "texture": "solid",
    "need": "N-12",
+   "source": "work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py, pattern() line 446, wire_marks() line 570",
    "at_widths": {
     "2 px": "none",
     "3 px": "none",
@@ -738,6 +827,7 @@
    "gloss": "strong research evidence",
    "texture": "solid",
    "need": "N-12",
+   "source": "work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py, pattern() line 446, wire_marks() line 570",
    "at_widths": {
     "2 px": "none",
     "3 px": "none",
@@ -764,6 +854,7 @@
    "gloss": "some evidence",
    "texture": "dashed",
    "need": "N-12",
+   "source": "work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py, pattern() line 446, wire_marks() line 570",
    "at_widths": {
     "2 px": "8 4",
     "3 px": "12 6",
@@ -793,6 +884,7 @@
    "gloss": "evidence disputed",
    "texture": "dash-dot",
    "need": "N-12",
+   "source": "work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py, pattern() line 446, wire_marks() line 570",
    "at_widths": {
     "2 px": "8 3 2 3",
     "3 px": "12 4.5 3 4.5",
@@ -817,16 +909,17 @@
    "per_line_width": true,
    "v7_value": "hypothesis",
    "word": "Hypothesis",
-   "gloss": "untested",
+   "gloss": "not yet tested",
    "texture": "dotted",
    "need": "N-12",
+   "source": "work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py, pattern() line 446, wire_marks() line 570",
    "at_widths": {
     "2 px": "0 5",
     "3 px": "0 7.5",
     "6 px": "0 15"
    },
-   "job": "Hypothesis (untested): dotted, 0 2.5 line widths, round caps.",
-   "description": "Evidence grade Hypothesis, untested: drawn dotted; the dash array is per 1 px of line width, so multiply by the width (2, 3 or 6 px) and stretch it to start and end on ink. Proposed until board 1.",
+   "job": "Hypothesis (not yet tested): dotted, 0 2.5 line widths, round caps.",
+   "description": "Evidence grade Hypothesis, not yet tested: drawn dotted; the dash array is per 1 px of line width, so multiply by the width (2, 3 or 6 px) and stretch it to start and end on ink. Proposed until board 1.",
    "v7_renderer_dasharray": "2 4"
   },
   {
@@ -835,19 +928,10 @@
    "tier": "semantic",
    "type": "dimension",
    "value": "1px",
-   "job": "Each of the two rails of a hollow line, on 2 and 3 px lines.",
    "need": "N-12",
-   "description": "Rail of the hollow line for a conceptual step (Gate 1, M1), on 2 and 3 px lines. Proposed until board 1."
-  },
-  {
-   "path": "oa.chart.grade.conceptual.railSelected",
-   "css": "--oa-chart-grade-conceptual-rail-selected",
-   "tier": "semantic",
-   "type": "dimension",
-   "value": "2px",
-   "job": "Each rail of a hollow line on the 6 px lit route.",
-   "need": "N-12",
-   "description": "Rail of the hollow line on the 6 px lit route. Proposed until board 1."
+   "source": "work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py, pattern() line 446, wire_marks() line 570",
+   "job": "Each of the two rails of a hollow line, at every line width.",
+   "description": "Rail of the hollow line for a conceptual step (Gate 1, M1): 1 px at every line width, centered half a width plus 0.5 px either side of the line. Proposed until board 1."
   },
   {
    "path": "oa.chart.grade.conceptual.gap",
@@ -856,9 +940,27 @@
    "type": "number",
    "value": 1,
    "unit": "line widths",
-   "job": "The ground between the two rails: one line width.",
    "need": "N-12",
-   "description": "Gap between the rails of a hollow line, in line widths. Proposed until board 1."
+   "source": "work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py, pattern() line 446, wire_marks() line 570",
+   "job": "The ground between the two rails: one line width, so the hollow line is two widths plus 2 px across.",
+   "at_widths": {
+    "2 px": "2 px of ground, 4 px across",
+    "3 px": "3 px of ground, 5 px across",
+    "6 px": "6 px of ground, 8 px across"
+   },
+   "description": "Ground between the rails of a hollow line, in line widths. Proposed until board 1."
+  },
+  {
+   "path": "oa.chart.grade.headClearance",
+   "css": "--oa-chart-grade-head-clearance",
+   "tier": "semantic",
+   "type": "number",
+   "value": 1.5,
+   "unit": "line widths",
+   "need": "N-12",
+   "source": "work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py, pattern() line 446, wire_marks() line 570",
+   "job": "A dotted line stops 1.5 line widths short of its arrowhead, so its last dot stays clear of the head.",
+   "description": "Gap between a dotted line's last dot and its arrowhead, in line widths. Proposed until board 1."
   },
   {
    "path": "oa.chart.grade.recordSquare",
@@ -867,56 +969,63 @@
    "type": "dimension",
    "value": "7px",
    "need": "N-12",
+   "source": "set by the data lead: the atlas build draws no record square (D3-84 log)",
    "job": "The filled square set before the word Documented in labels and keys (Gate 1, M1).",
-   "description": "Record square before the word Documented, 7 px, in the label's ink. Proposed until board 1."
+   "description": "Record square before the word Documented, 7 px, in the label's ink, set inline before the word only. Proposed until board 1."
   },
   {
    "path": "oa.chart.grade.minRun",
    "css": "--oa-chart-grade-min-run",
    "tier": "semantic",
    "type": "number",
-   "value": 28,
+   "value": 20,
    "unit": "line widths",
    "need": "N-12",
-   "job": "The shortest run that may carry a texture: 28 line widths, 56 px on a 2 px line. A shorter step prints its grade in words beside it.",
-   "description": "Shortest textured run, in line widths. Proposed until board 1."
+   "source": "set by the data lead: the atlas build defines no shortest line (D3-84 log)",
+   "at_widths": {
+    "2 px": "40 px",
+    "3 px": "60 px",
+    "6 px": "120 px"
+   },
+   "job": "The shortest run that may carry a texture, key samples included: 20 line widths, 40 px on a 2 px line, which holds two full dash-dot periods and the closing dash. A shorter step prints its grade in words beside it.",
+   "description": "Shortest textured run, key samples included, in line widths. Proposed until board 1."
   }
  ],
  "description_changes": [
   {
    "path": "oa.chart.color.diverging",
    "field": "$description",
-   "now": "The diverging scale, Prussian through the page color to Verdigris. Neither end keeps its order in grayscale, so a boxed arrow or a printed sign carries direction. Newsprint only until a Charcoal ramp is measured.",
+   "now": "The diverging scale, Prussian through a midpoint tinted toward the ground to Verdigris, on Newsprint and Charcoal. Neither end keeps its order in grayscale, so a boxed arrow or a printed sign carries direction.",
    "proposed": "The diverging scale, Prussian through a midpoint tinted toward the ground to Verdigris, on Newsprint and Charcoal. Neither end keeps its order in grayscale, so a boxed arrow or a printed sign carries direction."
   },
   {
    "path": "oa.chart.hatch.pitch",
    "field": "$description",
-   "now": "Spacing of the hatch for contested evidence.",
+   "now": "Spacing of the hatch, the pattern a key names: contested evidence in a grade chart, or the Stone group of the categorical set.",
    "proposed": "Spacing of the hatch, the pattern a key names: contested evidence in a grade chart, or the Stone group of the categorical set."
   },
   {
    "path": "oa.chart.hatch.weight",
    "field": "$description",
-   "now": "Stroke of the hatch.",
+   "now": "Stroke of the hatch, in the ink of the mark it fills.",
    "proposed": "Stroke of the hatch, in the ink of the mark it fills."
   },
   {
    "path": "oa.chart.color.point",
    "field": "$description",
-   "now": "The one point a title names, in working red at the third rank. Only when no error or ask holds the view's red.",
-   "proposed": "The one point a title names, in working red at the third rank. Only when no error or ask holds the view's red. When an error or an ask holds the view's red, the point yields to the subject ink and keeps its label and its place (Rule 11.16)."
+   "now": "The one point a title names, in working red at the third rank. Only when no error or ask holds the view's red. When an error or an ask holds the view's red, the point yields to the subject ink and keeps its label and its place (Rule 11.16).",
+   "proposed": "The one point a title names, in working red at the third rank. Only when no error or ask holds the view's red. When an error or an ask holds the view's red, the point yields to the subject ink and keeps its label and its place (Rule 11.16). When an error or an ask holds the view's red, the point yields to the subject ink and keeps its label and its place (Rule 11.16)."
   },
   {
    "path": "oa.chart.color.context",
    "field": "$description",
-   "now": "Context: every other series, 2 px, so the subject reads first.",
-   "proposed": "Context: every other series, 2 px, so the subject reads first. Past four groups, every group but the one the title names takes this ink, each with its label (DR-234)."
+   "now": "Context: every other series, 2 px, so the subject reads first. Past four groups, every group but the one the title names takes this ink, each with its label.",
+   "proposed": "Context: every other series, 2 px, so the subject reads first. Past four groups, every group but the one the title names takes this ink, each with its label. Past four groups, every group but the one the title names takes this ink, each with its label (DR-234)."
   },
   {
    "path": "oa.color.tint.stoneC72",
    "field": "job and surfaces",
-   "now": "Band on Charcoal, a stretch of time a note names",
+   "now": "Band on Charcoal, and the midpoint of the diverging scale on Charcoal",
    "proposed": "Band on Charcoal, and the midpoint of the diverging scale on Charcoal",
    "surfaces_now": [
     "charcoal"
@@ -931,7 +1040,7 @@
   {
    "path": "oa.color.tint.verdigrisC20",
    "field": "job and surfaces",
-   "now": "Third sequential Verdigris step on Charcoal",
+   "now": "Third sequential Verdigris step on Charcoal, and the near Verdigris diverging step there",
    "proposed": "Third sequential Verdigris step on Charcoal, and the near Verdigris step of the diverging scale on Charcoal",
    "surfaces_now": [
     "charcoal"
@@ -946,7 +1055,7 @@
   {
    "path": "oa.color.tint.verdigrisN25",
    "field": "job and surfaces",
-   "now": "Fourth sequential Verdigris step on Charcoal",
+   "now": "Fourth sequential Verdigris step on Charcoal, and the strong Verdigris diverging end there",
    "proposed": "Fourth sequential Verdigris step on Charcoal, and the strong Verdigris end of the diverging scale on Charcoal",
    "surfaces_now": [
     "charcoal"
@@ -961,9 +1070,10 @@
   {
    "path": "oa.color.tint.prussianN62",
    "field": "job and surfaces",
-   "now": "Light Prussian step of the diverging scale on Newsprint",
+   "now": "Light Prussian diverging step on Newsprint, and the Prussian categorical group on Charcoal",
    "proposed": "Light Prussian step of the diverging scale on Newsprint, and the Prussian group of the categorical set on Charcoal",
    "surfaces_now": [
+    "charcoal",
     "newsprint"
    ],
    "surfaces_proposed": [
@@ -978,7 +1088,7 @@
   {
    "path": "oa.color.tint.stoneN55",
    "field": "job and surfaces",
-   "now": "Light Stone fill for a category under the subject, with its value printed",
+   "now": "Light Stone fill under the subject, and the ghost lines of small multiples on Newsprint",
    "proposed": "Light Stone fill for a category under the subject, and the ghost lines of the other groups in small multiples on Newsprint",
    "surfaces_now": [
     "newsprint"
@@ -993,7 +1103,7 @@
   {
    "path": "oa.color.tint.stoneC40",
    "field": "job and surfaces",
-   "now": "Second gray step of a phone tile map on Charcoal",
+   "now": "Second gray step of a phone tile map on Charcoal, and the ghost lines of small multiples there",
    "proposed": "Second gray step of a phone tile map on Charcoal, and the ghost lines of the other groups in small multiples on Charcoal",
    "surfaces_now": [
     "charcoal"
@@ -1016,10 +1126,10 @@
  "rules_with_the_palettes": [
   "Sequential: five Verdigris steps per ground, light to strong on Newsprint and dark to light on Charcoal, so the most always reads strongest. Print the value on or beside every step 1 to 3 fill.",
   "Diverging: pair B only, Prussian for one side and Verdigris for the other, with a boxed arrow or a printed sign in every cell. Say in the key which side is which. Never red with blue.",
-  "Categorical: at most four groups, in the order Charcoal (Newsprint on Charcoal), Prussian, Verdigris, Stone. The Stone group always carries the hatch; every group carries a direct label and, on a line, its end marker. Never for parties.",
+  "Categorical: at most four groups, in the order Charcoal (Newsprint on Charcoal), Verdigris, Prussian, Stone, so neither close pair ever touches in a stack. The Stone group always carries the hatch; every group carries a direct label on the chart and, on a line, its end marker. Never for parties.",
   "Past four groups: small multiples with the other groups as ghosts, or one group in ink and every other in the context gray, every group labeled (DR-234).",
   "Magnitude: gray Stone steps with no direction; the figure prints in every tile.",
-  "Grade line code: the line's width sets its pattern; no coded line drops under 2 px; a run under 28 widths prints its grade in words.",
+  "Grade line code: the line's width sets its pattern; no coded line drops under 2 px; a run under 20 widths, key samples included, prints its grade in words.",
   "Red: one working red per view (Rule 05.3). A chart's red point yields to the subject ink when an error or an ask is in the view, and keeps its label and place."
  ]
 }

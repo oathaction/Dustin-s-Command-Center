@@ -65,10 +65,11 @@
     ]
   },
   "chart_notes": [
-    "Axis: right of Even, the Republican nominee led; left of it, the Democratic nominee led. The scale skips from 80 to 40 points on the Democratic side so DC fits. Every arrow keeps one scale.",
+    "Axis: right of Even, the Republican nominee led; left of it, the Democratic nominee led. The scale skips from 80 to 40 points on the Democratic side so DC fits. Every arrow keeps one scale. The axis repeats at the bottom.",
     "The United States sits above the states: Democratic +4.5 in 2020 to Republican +1.5 in 2024, a shift of 5.9.",
-    "How to read an arrow: each arrow runs from a state’s 2020 margin, at the dot, to its 2024 margin, at the tip. The figure beside it is the shift in percentage points.",
-    "Six states changed leader from the Democratic to the Republican nominee: Wisconsin, Michigan, Pennsylvania, Georgia, Nevada and Arizona. Each carries a tag."
+    "How to read an arrow: each arrow runs from a state’s 2020 margin, at the dot, to its 2024 margin, at the tip. The figure beside it is the shift in percentage points; the sample shows 10, at the same scale as the chart.",
+    "Six states changed leader from the Democratic to the Republican nominee: Wisconsin, Michigan, Pennsylvania, Georgia, Nevada and Arizona. Each carries a tag.",
+    "Labels sit on the side away from the Even line: a Democratic-led state’s name and shift left of its arrow, a Republican-led state’s right of it."
   ],
   "phone": "differs",
   "phone_note": "On phones the chart ranks the states by shift, each arrow from one start at zero, with the 2024 leader and margin in words on each row.",
@@ -104,13 +105,34 @@
     "lead": {
       "neg": "Democratic",
       "pos": "Republican"
+    },
+    "axis_unit": "points",
+    "how": {
+      "title": "HOW TO READ AN ARROW",
+      "sample": {
+        "from": 0,
+        "to": 10,
+        "from_label": "2020",
+        "to_label": "2024",
+        "value": "10.0"
+      },
+      "text": [
+        "Each arrow runs from a state’s 2020 margin, at the dot, to its 2024 margin, at the tip. The figure beside it is the shift in percentage points; this one shows 10, at the same scale as the chart.",
+        "The scale skips from 80 to 40 points on the Democratic side so DC fits. Every arrow keeps one scale."
+      ]
+    },
+    "side_note": {
+      "near": "WI",
+      "title": "Six states changed leader",
+      "text": "from the Democratic to the Republican nominee: Wisconsin, Michigan, Pennsylvania, Georgia, Nevada and Arizona. Each carries a tag."
     }
   },
   "notes_internal": [
     "Party marks take neutral inks with the party named; arrows, position and words carry direction (DR-48, DR-58). No red and blue (DR-64).",
     "The United States row (scope nation) is drawn above the states, set apart and labeled (DR-64).",
     "states: the two the title names. Checked by script: Washington 0.98, New York 10.54; 39 of 51 states moved less than the nation's 5.93.",
-    "The second note drops Phase 2's 'more than the margin in', which read as the margin itself; the figure compared is the shift."
+    "The second note drops Phase 2's 'more than the margin in', which read as the margin itself; the figure compared is the shift.",
+    "X2: Phase 2's reading aid ('How to read an arrow'), its side note on the six changes of leader near Wisconsin and the axis unit return; labels now sit away from the Even line (E19)."
   ],
   "formats": {
     "value": "signed:1",

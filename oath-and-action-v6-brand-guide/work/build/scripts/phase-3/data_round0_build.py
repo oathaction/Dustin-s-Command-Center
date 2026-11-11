@@ -103,6 +103,31 @@ LEDGER = {'ballotpedia-rcv-prohibitions-by-state': 'P7-101', 'census-cps-2024-tu
           'census-hvs-homeownership-by-race-annual': 'P7-104', 'census-spm-child-poverty': 'P7-105', 'fec-presidential-results-by-state': 'P7-106',
           'fec-presidential-shift-by-state': 'P7-107', 'fred-payrolls-by-sector': 'P7-108', 'fred-payrolls-by-sector-change': 'P7-109',
           'fred-payrolls-monthly-change': 'P7-110'}
+# Printed lines the research lead corrected in the fix pass (ENG-5 for statistics M3, ENG-6 for S17): {name: {field: (old start, new text)}}
+SPM_NEW_END = ("Figures for 2019 to 2024 include the Bureau's August 2026 correction to the poverty thresholds, and 2024 also takes new "
+               "population weights; they differ by up to 0.4 points from the earlier release.")
+LINE_FIXES = {
+    'census-spm-child-poverty': {
+        'end_from': "Figures for 2019 to 2024 include the Bureau's August 2026 revision", 'end_to': SPM_NEW_END,
+        'variants': {'source_line_first_published': (
+            "Source: U.S. Census Bureau, Poverty in the United States: 2024 (P60-287), Table B-2, Supplemental Poverty Measure, children under 18, "
+            "2020, 2021 and 2024, United States. Retrieved November 6, 2026. Rates as published before the Bureau's August 2026 correction; "
+            "P60-277 (September 13, 2022) printed the same 2020 and 2021 rates.")},
+    },
+    'ballotpedia-rcv-prohibitions-by-state': {
+        'printed': ("Source: Ballotpedia, a secondary source, Ranked-choice voting (RCV), state laws prohibiting RCV, as of November 2026, "
+                    "50 states and DC. Retrieved November 6, 2026. Ohio's and Tennessee's bans cover some elections; the other 17 cover all."),
+    },
+}
+# Rows the research lead read after Phase 2 and asked to add (ENG-7, statistics S18): the nation, from Table 4a's United States rows
+ADDED_ROWS = {
+    'census-cps-2024-turnout-by-state': {
+        'rows': ['US,United States,2020,231593,66.8,0.4', 'US,United States,2024,236138,65.3,0.5'],
+        'note': ('Code US is the national figure, read November 11, 2026 from the United States rows of Table 4a (vote04a_2024.xlsx, SHA-256 '
+                 'prefix 068e47d3c7fc9701; table04a.xlsx for 2020, 8afd077c560de260); a chart draws it set apart from the states and labeled (DR-64).'),
+    },
+}
+
 # Notes the research lead asked to add (ENG-2, ENG-3)
 EXTRA_NOTES = {
     'census-cps-reported-voting': 'Margins for the 2020 and 2024 age-gap figures are in census-cps-voting-age-gap-moe: the gap between citizens 65 and over and citizens 18 to 24 grew 3.9 points with a margin of about 2.0 points.',
@@ -196,6 +221,18 @@ def public_meta(name, spec):
     meta['printed_source_line'] = smart(m['source_line'])
     variants = {v: smart(m[v]) for v in spec.get('variants', ()) if m.get(v)}
     variants.update(spec.get('extra_variants', {}))
+    fx = LINE_FIXES.get(name)
+    if fx:
+        if fx.get('printed'):
+            meta['printed_source_line'] = smart(fx['printed'])
+        if fx.get('end_from'):
+            def fix_end(line):
+                i = line.find(smart(fx['end_from']))
+                return line if i < 0 else line[:i] + smart(fx['end_to'])
+            meta['printed_source_line'] = fix_end(meta['printed_source_line'])
+            variants = {k: fix_end(v) for k, v in variants.items()}
+        for k, v in (fx.get('variants') or {}).items():
+            variants[k] = smart(v)
     if variants:
         meta['source_line_variants'] = variants
     meta['ledger_row'] = LEDGER.get(name, 'none yet')
@@ -220,8 +257,16 @@ def public_meta(name, spec):
 
 def copy_public():
     for name, spec in PUBLIC.items():
-        (OUT / f'{name}.csv').write_bytes((PUB / f'{name}.csv').read_bytes())
-        write_meta(name, public_meta(name, spec))
+        raw = (PUB / f'{name}.csv').read_bytes()
+        meta = public_meta(name, spec)
+        add = ADDED_ROWS.get(name)
+        if add:
+            # the Phase 2 rows byte for byte, then the rows read since, each named in the sidecar
+            raw = raw.rstrip(b'\n') + b'\n' + '\n'.join(add['rows']).encode() + b'\n'
+            meta['added_rows'] = add['rows']
+            meta['notes'] = list(meta.get('notes') or []) + [add['note']]
+        (OUT / f'{name}.csv').write_bytes(raw)
+        write_meta(name, meta)
 
 
 # ---------------------------------------------------------------------------------------------------------------

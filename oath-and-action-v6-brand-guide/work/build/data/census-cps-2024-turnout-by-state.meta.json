@@ -62,7 +62,8 @@
  "notes": [
   "National rate, not in the CSV: 65.3% of 236,138 thousand citizens 18 and over reported voting in 2024 (margin 0.5), matching historical Table A-1",
   "2024 range: 52.8% (Arkansas) to 79.5% (District of Columbia). 2020 range: 54.0% (Arkansas) to 84.0% (District of Columbia)",
-  "The citizen voting-age population here is the CPS survey estimate. D2-115 also names Census CVAP tables; no American Community Survey CVAP file was fetched"
+  "The citizen voting-age population here is the CPS survey estimate. D2-115 also names Census CVAP tables; no American Community Survey CVAP file was fetched",
+  "Code US is the national figure, read November 11, 2026 from the United States rows of Table 4a (vote04a_2024.xlsx, SHA-256 prefix 068e47d3c7fc9701; table04a.xlsx for 2020, 8afd077c560de260); a chart draws it set apart from the states and labeled (DR-64)."
  ],
  "unconfirmed": [
   "The 2024 and 2020 release dates were read from the voting tables index and page footers, not from a press release"
@@ -70,5 +71,9 @@
  "raw_files_sha256_prefix": {
   "vote04a_2024.xlsx": "068e47d3c7fc9701",
   "table04a_2020.xlsx": "8afd077c560de260"
- }
+ },
+ "added_rows": [
+  "US,United States,2020,231593,66.8,0.4",
+  "US,United States,2024,236138,65.3,0.5"
+ ]
 }

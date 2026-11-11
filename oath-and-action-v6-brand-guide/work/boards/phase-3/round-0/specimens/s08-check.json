@@ -8,32 +8,30 @@
    "ground": "newsprint",
    "page": 1440,
    "width": 1024,
-   "height": 425,
-   "svg_bytes": 16130
+   "height": 294,
+   "svg_bytes": 17460
   },
   {
    "ground": "newsprint",
    "page": 390,
    "width": 358,
-   "height": 800,
-   "svg_bytes": 15453
+   "height": 595,
+   "svg_bytes": 16447
   },
   {
    "ground": "charcoal",
    "page": 1440,
    "width": 1024,
-   "height": 425,
-   "svg_bytes": 16130
+   "height": 294,
+   "svg_bytes": 17460
   },
   {
    "ground": "charcoal",
    "page": 390,
    "width": 358,
-   "height": 800,
-   "svg_bytes": 15453
+   "height": 595,
+   "svg_bytes": 16447
   }
  ],
- "faults": [
-  "words: an internal document; the guide says \"Oath & Action’s systems atlas\" in source_line (\"Atlas V7\")"
- ]
+ "faults": []
 }

@@ -8,29 +8,29 @@
    "ground": "newsprint",
    "page": 1440,
    "width": 1024,
-   "height": 734,
-   "svg_bytes": 50967
+   "height": 892,
+   "svg_bytes": 50284
   },
   {
    "ground": "newsprint",
    "page": 390,
    "width": 358,
-   "height": 1438,
-   "svg_bytes": 53496
+   "height": 1552,
+   "svg_bytes": 52642
   },
   {
    "ground": "charcoal",
    "page": 1440,
    "width": 1024,
-   "height": 734,
-   "svg_bytes": 50967
+   "height": 892,
+   "svg_bytes": 50284
   },
   {
    "ground": "charcoal",
    "page": 390,
    "width": 358,
-   "height": 1438,
-   "svg_bytes": 53496
+   "height": 1552,
+   "svg_bytes": 52642
   }
  ],
  "faults": []

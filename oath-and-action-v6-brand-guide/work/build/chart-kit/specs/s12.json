@@ -18,9 +18,8 @@
   "title": "New York, New Jersey, Florida and California moved furthest toward the Republican nominee, each by 9 points or more.",
   "measure_line": "Shift in the presidential margin, the Republican nominee’s share of all presidential votes minus the Democratic nominee’s, from 2020 to 2024, in percentage points, 50 states and DC, with the United States beside the map. Each square is one state, whatever its size.",
   "notes": [
-    "Each arrow’s length shows the shift, at one scale across the map. On phones each square’s shade shows the size of the shift in four steps.",
-    "Largest shifts: New York 10.5, New Jersey 10.0, Florida 9.7 and California 9.0 points. Smallest: Washington 1.0, Utah 1.1, Oklahoma 1.2 and Nebraska 1.4.",
-    "The United States moved 5.9 points, from a Democratic lead of 4.5 points in 2020 to a Republican lead of 1.5 in 2024.",
+    "Each arrow’s length shows the shift, at one scale across the map. On phones each square’s shade shows the size of the shift in four steps, and the lists name the largest and smallest shifts.",
+    "The United States, beside the key, moved 5.9 points, from a Democratic lead of 4.5 points in 2020 to a Republican lead of 1.5 in 2024.",
     "New York’s figures count every ballot line each nominee held, including the Working Families and Conservative lines."
   ],
   "source_line": "Source: Federal Election Commission, Federal Elections 2020 (Table 2) and Official 2024 Presidential General Election Results, compiled from state election offices, November 2020 and November 2024, 50 states and DC. Retrieved November 6, 2026. Margins are Republican minus Democratic share of all presidential votes; New York counts fused party lines.",
@@ -65,7 +64,8 @@
   },
   "chart_notes": [
     "Size of shift: sample arrows for 1, 5 and 10 points. A frame marks a state whose leader changed, from the Democratic to the Republican nominee. All 51 arrows point right, toward the Republican nominee; a longer arrow means a larger shift.",
-    "On phones each square takes one of four gray steps by the size of its shift: under 3 points, 3 to 5.9, 6 to 8.9, and 9 or more."
+    "On phones each square takes one of four gray steps by the size of its shift: under 3 points, 3 to 5.9, 6 to 8.9, and 9 or more.",
+    "Largest shifts: New York 10.5, New Jersey 10.0, Florida 9.7 and California 9.0 points. Smallest: Washington 1.0, Utah 1.1, Oklahoma 1.2 and Nebraska 1.4. The United States, beside the key: 5.9."
   ],
   "phone": "differs",
   "phone_note": "On phones each square takes a gray step by the size of its shift in place of an arrow, which would be too short to read (DR-64).",
@@ -102,12 +102,19 @@
       "3 to 5.9",
       "6 to 8.9",
       "9 or more"
-    ]
+    ],
+    "nation_label": "United States {shift}",
+    "lists": {
+      "largest": "Largest shifts",
+      "smallest": "Smallest shifts",
+      "n": 4
+    }
   },
   "notes_internal": [
     "DR-64: flat shift arrows with the figure printed in each tile and gray steps on phones; the national figure set apart and labeled. Phase 2's S12 drew no national figure; this rebuild adds it beside the map and in a note.",
     "Party marks in neutral inks, direction in words and arrows (DR-48, DR-58); no red and blue.",
-    "states: the four the title names. Checked by script: CA 9.03, FL 9.74, NJ 10.03, NY 10.54; WA 0.98, UT 1.10, OK 1.17, NE 1.40."
+    "states: the four the title names. Checked by script: CA 9.03, FL 9.74, NJ 10.03, NY 10.54; WA 0.98, UT 1.10, OK 1.17, NE 1.40.",
+    "X3: the kit draws the United States beside the key (DR-64) and Phase 2's two lists, so the lists leave the notes; the national note stays for the two margins the drawing does not print. The 11-column phone grid still waits (E20)."
   ],
   "formats": {
     "shift": "number:1"

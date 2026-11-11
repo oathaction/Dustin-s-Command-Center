@@ -70,9 +70,9 @@
       var head = tl * Math.round(c.size('tick') * 1.25) + (L.end ? 26 : 10);
       var y0 = 0, xs0 = null;
       if (L.totals && L.totals.length) {
-        if (L.totals_title) { c.text(0, c.size('tick'), L.totals_title, { role: 'eyebrow', weight: 700, fill: 'secondary' }); y0 = c.size('tick') + 10; }
+        if (L.totals_title) { var tt = c.text(0, c.size('tick'), L.totals_title, { role: 'eyebrow', weight: 700, fill: 'secondary', max: W }); y0 = tt.bottom + 8; }
         y0 = totals_table(c, by, L.totals, c.field('columns', false) || [], L.columns_titles || {}, y0) + 22;
-        if (L.panels_title) { c.text(0, y0 + c.size('tick'), L.panels_title, { role: 'eyebrow', weight: 700, fill: 'secondary' }); y0 += c.size('tick') + 12; }
+        if (L.panels_title) { var pt = c.text(0, y0 + c.size('tick'), L.panels_title, { role: 'eyebrow', weight: 700, fill: 'secondary', max: W }); y0 = pt.bottom + 10; }
       }
       if (L.context_label) { c.line(0, y0 + 8, 22, y0 + 8, { stroke: 'context', width: c.t('spark-context'), mark: false }); c.text(28, y0 + 13, L.context_label, { role: 'tick' }); y0 += 30; }
       var ctx = L.context ? by[String(L.context)] : null;

@@ -32,7 +32,7 @@
     "Tennessee: Bars county election commissions from using it for a statewide or local government office; federal offices are not named. Signed by the governor February 28, 2022; Public Chapter 621 assigned March 7, 2022, the date Ballotpedia gives as signing.",
     "Ballotpedia reads 17 of the bans as covering all elections; Mississippi’s quoted text does not name congressional races. Ballotpedia is a secondary source. The atlas cites the National Conference of State Legislatures and lists the same 19 states in repair-log entry RL47."
   ],
-  "source_line": "Source: Ballotpedia, Ranked-choice voting (RCV), state laws prohibiting RCV, as of November 2026, 50 states and DC. Retrieved November 6, 2026. Ohio’s and Tennessee’s bans cover some elections; the other 17 cover all.",
+  "source_line": "Source: Ballotpedia, a secondary source, Ranked-choice voting (RCV), state laws prohibiting RCV, as of November 2026, 50 states and DC. Retrieved November 6, 2026. Ohio’s and Tennessee’s bans cover some elections; the other 17 cover all.",
   "credit": "Chart: Oath & Action",
   "illustrative": false,
   "alt": "A tile map with one square per state. Nineteen states ban ranked-choice voting as of November 2026: 17 in all elections, from Florida in 2022 to Indiana in 2026, and Ohio and Tennessee in some elections. The other 31 states and DC have no state ban.",
@@ -113,7 +113,8 @@
   "notes_internal": [
     "No disclosure (DR-100, D2-1756); Phase 2 printed it under this chart.",
     "The grade line opens with H08's grade word, Documented; the bans are statutes and one constitutional amendment on the public record, compiled by a labeled secondary source (D2-99).",
-    "The last note now names repair-log entry RL47, the atlas row the list was checked against, so the check is visible to a reader."
+    "The last note now names repair-log entry RL47, the atlas row the list was checked against, so the check is visible to a reader.",
+    "ENG-6: the source line labels Ballotpedia a secondary source (Rule 13.6), as the sidecar now prints it."
   ],
   "formats": {
     "sub": "year"

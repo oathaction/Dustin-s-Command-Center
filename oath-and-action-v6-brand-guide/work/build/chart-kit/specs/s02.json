@@ -26,7 +26,7 @@
   "reader_question": "What happened to child poverty when the expanded child tax credit was paid, and after it lapsed?",
   "evidence": "finding",
   "evidence_label": "Finding",
-  "grade_line": "Documented: an official statistic from a Census Bureau survey",
+  "grade_line": "Documented: a Census Bureau survey",
   "v7": {
     "grade": "documented",
     "ids": [
@@ -38,9 +38,10 @@
   "measure_line": "Children under 18 below the Supplemental Poverty Measure, which counts tax credits and other aid, percent, United States, 2009 to 2025; the official measure, which counts pretax cash income only, in gray. The scale starts at zero.",
   "notes": [
     "Census changed its survey or method in 2013, 2017 and 2019. The line breaks there, and each of those years shows two estimates, one for each method.",
+    "Margins of error, at 90 percent, run from 0.4 to 0.9 points for the supplemental measure and are in the table; the Bureau prints none for the official measure. The 2021 low and the 2022 rise each pass them.",
     "The 2025 law’s credit amount comes from the atlas’s repair log, entry RL35, snapshot of October 15, 2026."
   ],
-  "source_line": "Source: U.S. Census Bureau, Poverty in the United States: 2025 (P60-290), Table 8, Supplemental Poverty Measure, children under 18, 2009 to 2025, United States. Retrieved November 6, 2026. Figures for 2019 to 2024 include the Bureau’s August 2026 revision and differ by up to 0.4 points from those first published.",
+  "source_line": "Source: U.S. Census Bureau, Poverty in the United States: 2025 (P60-290), Table 8, Supplemental Poverty Measure, and Table 3, official poverty measure, children under 18, 2009 to 2025, United States. Retrieved November 6, 2026. Figures for 2019 to 2024 include the Bureau’s August 2026 correction to the poverty thresholds, and 2024 also takes new population weights; they differ by up to 0.4 points from the earlier release.",
   "credit": "Chart: Oath & Action",
   "illustrative": false,
   "alt": "Line chart of child poverty under the Supplemental Poverty Measure, 2009 to 2025, with the official measure in gray. It fell from 17.0 percent in 2009 to 5.1 percent in 2021, the year the expanded child tax credit was paid, rose to 12.0 percent in 2022 and stood at 13.4 percent in 2025, where both measures meet.",
@@ -121,7 +122,8 @@
         "x": 2009,
         "dy": 30
       }
-    }
+    },
+    "series_key": "phone"
   },
   "annotations": [
     {
@@ -178,7 +180,10 @@
   "notes_internal": [
     "The chart draws vintage p60-290 only (the sidecar's which_vintage_to_chart); both measures, 39 rows.",
     "H12: Phase 2's 'P.L. 119-21' is written out as 'Public Law 119-21'. Its $2,200 figure is V7 repair-log entry RL35, now named in a note so the figure carries its source (H04).",
-    "Grade line opens with H08's grade word, Documented (Rules 13.2 and 13.3)."
+    "Grade line opens with H08's grade word, Documented (Rules 13.2 and 13.3).",
+    "D3-83: the grade line prints 'Documented' with its source after the colon; 'Official statistic' leaves every spec.",
+    "R1: the source line is the sidecar's source_line_both_measures variant, which names Tables 8 and 3. ENG-5 will reword its last sentence; switch to the new text when it lands.",
+    "X6: on a phone the two long notes leave the plot for full-width text under the axis, and the series names become a line key above the plot, as Phase 2's phone drew them (E5)."
   ],
   "formats": {
     "y": "percent:1",

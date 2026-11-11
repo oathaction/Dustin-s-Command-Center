@@ -158,13 +158,19 @@ DIV_LABEL_C = ['charcoal', 'newsprint', 'newsprint', 'newsprint', 'charcoal']
 DIV_WORDS = ['strong Prussian end', 'near Prussian step', 'midpoint, tinted toward the ground',
              'near Verdigris step', 'strong Verdigris end']
 CAT = {
-    'newsprint': ['{oa.color.palette.charcoal}', '{oa.color.palette.prussian}', '{oa.color.palette.verdigris}', '{oa.color.palette.stone}'],
-    'charcoal': ['{oa.color.palette.newsprint}', '{oa.color.tint.prussianN62}', '{oa.color.palette.verdigris}', '{oa.color.palette.stone}'],
+    'newsprint': ['{oa.color.palette.charcoal}', '{oa.color.palette.verdigris}', '{oa.color.palette.prussian}', '{oa.color.palette.stone}'],
+    'charcoal': ['{oa.color.palette.newsprint}', '{oa.color.palette.verdigris}', '{oa.color.tint.prussianN62}', '{oa.color.palette.stone}'],
 }
-CAT_LABEL = {'newsprint': ['white', 'white', 'white', 'charcoal'], 'charcoal': ['charcoal', 'charcoal', 'white', 'newsprint']}
-CAT_NAMES = ['Charcoal group', 'Prussian group', 'Verdigris group', 'Stone group']
-CAT_INK_WORD = {'newsprint': ['Charcoal', 'Prussian', 'Verdigris', 'Stone, hatched'],
-                'charcoal': ['Newsprint', 'Prussian lifted 62%', 'Verdigris', 'Stone, hatched']}
+CAT_LABEL = {'newsprint': ['white', 'white', 'white', 'charcoal'], 'charcoal': ['charcoal', 'white', 'charcoal', 'newsprint']}
+CAT_NAMES = ['Charcoal group', 'Verdigris group', 'Prussian group', 'Stone group']
+CAT_INK_WORD = {'newsprint': ['Charcoal', 'Verdigris', 'Prussian', 'Stone, hatched'],
+                'charcoal': ['Newsprint', 'Verdigris', 'Prussian lifted 62%', 'Stone, hatched']}
+
+
+def cat_label_path(i, surface_key):
+    """Groups 1 to 3 set their labels on the fill; group 4's label sits beside the hatch or on a halo, and says so."""
+    return (f'oa.chart.color.categorical.labelBeside.group{i}.{surface_key}' if i == 4
+            else f'oa.chart.color.categorical.label.group{i}.{surface_key}')
 CAT_MARKER = ['circle', 'square', 'triangle', 'diamond']
 CAT_PATTERN = ['solid', 'solid', 'solid', 'hatch']
 GHOST = {'newsprint': '{oa.color.tint.stoneN55}', 'charcoal': '{oa.color.tint.stoneC40}'}
@@ -203,7 +209,7 @@ def atlas_line_code():
         'fitting': ast.get_docstring(fn['fitted']), 'fitted_line': fn['fitted'].lineno,
         'line_widths': widths, 'line_widths_from': f'ARROW, line {asg["ARROW"].lineno}',
         'hollow_rail_px': rail_w, 'hollow_rail_offset': f'w / 2 + {off_k:g}',
-        'hollow_gap_widths': round((2 * (0.5 * 1 + off_k) - rail_w) / 1 - 0, 3) if False else 1,
+        'hollow_inner_gap': f'one line width plus {2 * off_k - rail_w:g} px',
         'dotted_head_clearance_widths': float(clear.group(1)),
         'key_glyph_px_at_2px': {'grade_glyph default': fn['grade_glyph'].args.defaults[0].value,
                                 'evidence_key': int(key_call.group(1)) if key_call else None},
@@ -216,7 +222,7 @@ def atlas_line_code():
 ALC = atlas_line_code()
 # The hollow line: rails of ALC['hollow_rail_px'] centered at w/2 + 0.5 either side, so the ground between them is one line
 # width at every width (2 x (w/2 + 0.5) - 1 = w).
-assert ALC['hollow_rail_px'] == 1 and ALC['hollow_rail_offset'] == 'w / 2 + 0.5'
+assert ALC['hollow_rail_px'] == 1 and ALC['hollow_inner_gap'] == 'one line width plus 0 px'
 # Display words and glosses: Rule 13.3's table, as Rule 12.6's key prints them (D3-84 names the hypothesis gloss).
 GLOSS = {'documented': 'on the public record', 'well-supported': 'strong research evidence', 'plausible': 'some evidence',
          'plausible_contested': 'evidence disputed', 'hypothesis': 'not yet tested'}
@@ -241,7 +247,7 @@ for i in range(5):
 for g in ('newsprint', 'charcoal'):
     for i in range(4):
         PROPOSED[f'oa.chart.color.categorical.fill.group{i + 1}.{SURF[g]}'] = CAT[g][i]
-        PROPOSED[f'oa.chart.color.categorical.label.group{i + 1}.{SURF[g]}'] = f'{{oa.color.palette.{CAT_LABEL[g][i]}}}'
+        PROPOSED[cat_label_path(i + 1, SURF[g])] = f'{{oa.color.palette.{CAT_LABEL[g][i]}}}'
     PROPOSED[f'oa.chart.color.ghost.{SURF[g]}'] = GHOST[g]
 
 
@@ -269,9 +275,12 @@ def mag_paths(g):
            [f'oa.chart.color.magnitude.label.step{i}.{SURF[g]}' for i in range(1, 5)]
 
 
+VS_PAIR = {'Group 2', 'Group 4'}    # Verdigris and Stone, 0.05 apart in lightness (D2-95)
+
+
 def cat_paths(g):
     return [f'oa.chart.color.categorical.fill.group{i}.{SURF[g]}' for i in range(1, 5)], \
-           [f'oa.chart.color.categorical.label.group{i}.{SURF[g]}' for i in range(1, 5)]
+           [cat_label_path(i, SURF[g]) for i in range(1, 5)]
 
 
 PALETTES = {
@@ -281,7 +290,7 @@ PALETTES = {
                   'step_names': ['Step 1', 'Step 2', 'Step 3', 'Step 4', 'Step 5'],
                   'sample': [f'{MINUS}3.9', f'{MINUS}0.9', '+0.2', '+1.3', '+4.8']},
     'categorical': {'name': 'Categorical, four inks', 'kind': 'categorical', 'paths': cat_paths,
-                    'step_names': ['Group 1', 'Group 2', 'Group 3', 'Group 4'], 'sample': ['24.0', '23.3', '12.7', '89.3']},
+                    'step_names': ['Group 1', 'Group 2', 'Group 3', 'Group 4'], 'sample': ['24.0', '23.3', '12.7', '2.7']},
     'magnitude': {'name': 'Magnitude, Stone steps', 'kind': 'ordered', 'paths': mag_paths,
                   'step_names': [f'Step {i}' for i in range(1, 5)], 'sample': ['0.4', '2.1', '4.8', '9.6']},
 }
@@ -350,14 +359,20 @@ def meta(name):
 
 
 TURNOUT_META = meta('census-cps-2024-turnout-by-state.meta.json')
+_turnout_rows = [r for r in read_csv('census-cps-2024-turnout-by-state.csv') if r['year'] == '2024']
 TURNOUT = {r['code']: {'name': r['name'], 'pct': float(r['voted_pct']), 'moe': float(r['moe_pct'])}
-           for r in read_csv('census-cps-2024-turnout-by-state.csv') if r['year'] == '2024'}
+           for r in _turnout_rows if r['code'] != 'US'}
+_US_ROW = next((r for r in _turnout_rows if r['code'] == 'US'), None)   # the engineer's ENG-7 adds it; until then, the sidecar's note
 TILE = json.loads(TILES.read_text())
 TURNOUT_SOURCE = ('Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a, '
                   'reported voting for states, November 2024, 50 states and DC. Retrieved November 6, 2026. Self-reported '
                   'voting among citizens 18 and over; state margins of error reach 5.6 points.')
 assert 'reach 5.6 points' in TURNOUT_META['source_line'] or '5.6' in TURNOUT_META['qualification']
 TURNOUT_BREAKS = [58, 62, 66, 70]
+_us = re.search(r'National rate, not in the CSV: ([\d.]+)% .*?\(margin ([\d.]+)\)', ' '.join(TURNOUT_META['notes']))
+US_TURNOUT, US_TURNOUT_MOE = ((float(_US_ROW['voted_pct']), float(_US_ROW['moe_pct'])) if _US_ROW
+                              else (float(_us.group(1)), float(_us.group(2))))
+MOE_RANGE = re.search(r'margins of error run from ([\d.]+) to ([\d.]+) points in 2024', TURNOUT_META['qualification']).groups()
 
 JOBS_META = meta('fred-payrolls-by-sector.meta.json')
 _jobs = {}
@@ -382,8 +397,9 @@ WINDOW_REASON = ('Every jobs chart on this sheet runs from January 2022 to Septe
                  'full years before the January 2025 inauguration and every month since. The 12-month periods end each '
                  'September, so none splits at the inauguration.')
 LEAD = max(SECTORS, key=lambda s: CHANGE4[s])
+LEAD_TITLE = (f'{LEAD} grew {CHANGE4[LEAD]:.1f} percent from January 2022 to September 2026, a '
+              'preliminary figure, the most of 15 sectors.')
 FOUR = ['Health care and social assistance', 'Government', 'Manufacturing', 'Information']
-STACK = ['Health care and social assistance', 'Government', 'Professional and business services']
 
 
 def fmt_signed(v, d=1):
@@ -536,7 +552,7 @@ def build_proposal():
                    f'{", with the hatch" if i == 3 else ""} and a {CAT_MARKER[i]} marker. Every group carries a direct label; '
                    f'past four groups, use small multiples or one group in ink against gray (DR-234).')
             toks.append(semantic_token(fp, CAT[g][i], job, 'graphic', g, extra))
-            lp = f'oa.chart.color.categorical.label.group{i + 1}.{SURF[g]}'
+            lp = cat_label_path(i + 1, SURF[g])
             if i == 3:
                 toks.append(semantic_token(lp, f'{{oa.color.palette.{CAT_LABEL[g][i]}}}',
                                            f'Label of categorical group 4 on {GROUND_WORD[g]}: set beside the hatch, or on a '
@@ -551,24 +567,26 @@ def build_proposal():
                                    '1 px. They repeat lines drawn in full in their own panels, so they carry no new information '
                                    'and need no 3 to 1 ratio.',
                                    'decorative', g, {'need': 'N-13', 'width': '{oa.chart.line.hairline}'}))
-    # grade line code
+    # grade line code (D3-84): every value read from the atlas build, or set here where the build defines none
+    src_ref = f'{ALC["source"]}, pattern() line {ALC["pattern_line"]}, wire_marks() line {ALC["wire_marks_line"]}'
     for key, v7, word, gloss, tex, pat, cap in GRADES:
         path = f'oa.chart.grade.{key}'
         if key == 'conceptual':
             toks.append({'path': f'{path}.rail', 'css': css_name(f'{path}.rail'), 'tier': 'semantic', 'type': 'dimension',
-                         'value': '1px', 'job': 'Each of the two rails of a hollow line, on 2 and 3 px lines.', 'need': 'N-12',
-                         'description': 'Rail of the hollow line for a conceptual step (Gate 1, M1), on 2 and 3 px lines. Proposed until board 1.'})
-            toks.append({'path': f'{path}.railSelected', 'css': css_name(f'{path}.railSelected'), 'tier': 'semantic',
-                         'type': 'dimension', 'value': '2px', 'job': 'Each rail of a hollow line on the 6 px lit route.',
-                         'need': 'N-12', 'description': 'Rail of the hollow line on the 6 px lit route. Proposed until board 1.'})
+                         'value': f'{ALC["hollow_rail_px"]:g}px', 'need': 'N-12', 'source': src_ref,
+                         'job': 'Each of the two rails of a hollow line, at every line width.',
+                         'description': ('Rail of the hollow line for a conceptual step (Gate 1, M1): 1 px at every line '
+                                         'width, centered half a width plus 0.5 px either side of the line. Proposed until board 1.')})
             toks.append({'path': f'{path}.gap', 'css': css_name(f'{path}.gap'), 'tier': 'semantic', 'type': 'number',
-                         'value': 1, 'unit': 'line widths', 'job': 'The ground between the two rails: one line width.',
-                         'need': 'N-12', 'description': 'Gap between the rails of a hollow line, in line widths. Proposed until board 1.'})
+                         'value': 1, 'unit': 'line widths', 'need': 'N-12', 'source': src_ref,
+                         'job': 'The ground between the two rails: one line width, so the hollow line is two widths plus 2 px across.',
+                         'at_widths': {f'{w} px': f'{w} px of ground, {w + 2} px across' for w in LINE_WIDTHS},
+                         'description': 'Ground between the rails of a hollow line, in line widths. Proposed until board 1.'})
             continue
         value = 'solid' if pat is None else {'dashArray': [f'{f2(x)}px' for x in pat], 'lineCap': cap}
         rec = {'path': path, 'css': css_name(path), 'tier': 'semantic', 'type': 'strokeStyle', 'value': value,
                'per_line_width': pat is not None, 'v7_value': v7, 'word': word, 'gloss': gloss, 'texture': tex,
-               'need': 'N-12',
+               'need': 'N-12', 'source': src_ref,
                'at_widths': {f'{w} px': ('none' if pat is None else ' '.join(f2(x * w) for x in pat)) for w in LINE_WIDTHS},
                'job': f'{word} ({gloss}): {tex}' + ('' if pat is None else f', {" ".join(f2(x) for x in pat)} line widths, {cap} caps') + '.',
                'description': (f'Evidence grade {word}, {gloss}: drawn {tex}' +
@@ -580,14 +598,24 @@ def build_proposal():
         if key == 'documented':
             rec['record_square'] = '{oa.chart.grade.recordSquare}'
         toks.append(rec)
+    toks.append({'path': 'oa.chart.grade.headClearance', 'css': css_name('oa.chart.grade.headClearance'), 'tier': 'semantic',
+                 'type': 'number', 'value': ALC['dotted_head_clearance_widths'], 'unit': 'line widths', 'need': 'N-12',
+                 'source': src_ref,
+                 'job': 'A dotted line stops 1.5 line widths short of its arrowhead, so its last dot stays clear of the head.',
+                 'description': 'Gap between a dotted line\'s last dot and its arrowhead, in line widths. Proposed until board 1.'})
     toks.append({'path': 'oa.chart.grade.recordSquare', 'css': css_name('oa.chart.grade.recordSquare'), 'tier': 'semantic',
-                 'type': 'dimension', 'value': '7px', 'need': 'N-12',
+                 'type': 'dimension', 'value': f'{RECORD_SQUARE}px', 'need': 'N-12',
+                 'source': 'set by the data lead: the atlas build draws no record square (D3-84 log)',
                  'job': 'The filled square set before the word Documented in labels and keys (Gate 1, M1).',
-                 'description': 'Record square before the word Documented, 7 px, in the label\'s ink. Proposed until board 1.'})
+                 'description': 'Record square before the word Documented, 7 px, in the label\'s ink, set inline before the word only. Proposed until board 1.'})
     toks.append({'path': 'oa.chart.grade.minRun', 'css': css_name('oa.chart.grade.minRun'), 'tier': 'semantic',
-                 'type': 'number', 'value': 28, 'unit': 'line widths', 'need': 'N-12',
-                 'job': 'The shortest run that may carry a texture: 28 line widths, 56 px on a 2 px line. A shorter step prints its grade in words beside it.',
-                 'description': 'Shortest textured run, in line widths. Proposed until board 1.'})
+                 'type': 'number', 'value': MIN_RUN, 'unit': 'line widths', 'need': 'N-12',
+                 'source': 'set by the data lead: the atlas build defines no shortest line (D3-84 log)',
+                 'at_widths': {f'{w} px': f'{MIN_RUN * w} px' for w in LINE_WIDTHS},
+                 'job': (f'The shortest run that may carry a texture, key samples included: {MIN_RUN} line widths, '
+                         f'{MIN_RUN * 2} px on a 2 px line, which holds two full dash-dot periods and the closing dash. '
+                         'A shorter step prints its grade in words beside it.'),
+                 'description': 'Shortest textured run, key samples included, in line widths. Proposed until board 1.'})
 
     new_colors = [t for t in toks if t['tier'] == 'primitive']
     descr = [
@@ -668,6 +696,44 @@ def build_proposal():
             ],
         },
         'needs': needs,
+        'line_code_source': {
+            'decision': 'D3-84: the atlas build\'s own constants are the one source of the line code; Rule 10.10\'s builders line names them, the tokens take them, and Rule 13.4 states the same numbers and cites the tokens',
+            'read_by_script_from': ALC['source'],
+            'read': {
+                'patterns_per_line_width': {g[2]: g[5] for g in GRADES if g[0] != 'conceptual'},
+                'caps': {g[2]: g[6] for g in GRADES if g[0] != 'conceptual'},
+                'pattern_function_line': ALC['pattern_line'],
+                'fitting': ALC['fitting'] + f' (fitted(), line {ALC["fitted_line"]})',
+                'line_widths_px': ALC['line_widths'], 'line_widths_from': ALC['line_widths_from'],
+                'hollow_line': (f'two rails of {ALC["hollow_rail_px"]:g} px at {ALC["hollow_rail_offset"]} either side of the '
+                                f'line, at every width, so the ground between them is {ALC["hollow_inner_gap"]} '
+                                f'(wire_marks(), line {ALC["wire_marks_line"]})'),
+                'dotted_head_clearance_line_widths': ALC['dotted_head_clearance_widths'],
+                'grade_words_and_build_glosses': {k: list(v[:2]) for k, v in ALC['grades'].items()},
+                'key_glyph_lengths_px_on_a_2px_line': ALC['key_glyph_px_at_2px'],
+            },
+            'set_here_because_the_build_defines_none': [
+                {'value': f'oa.chart.grade.minRun = {MIN_RUN} line widths',
+                 'why': (f'The build has no shortest-line constant. Its keys draw 32 and 36 px samples on a 2 px line (16 and 18 '
+                         f'widths), which squeeze a dash-dot sample by up to a fifth to fit it. {MIN_RUN} widths holds two full '
+                         'dash-dot periods (8 widths each) and the closing dash at every width, which is what Rule 13.4\'s "long '
+                         'enough to show its pattern twice" asks: 40 px at 2 px, 60 px at 3 px, 120 px at 6 px. It replaces '
+                         'both the 28 widths of the Phase 2 frame memo, which the build never coded, and Rule 13.4\'s 48 px')},
+                {'value': f'oa.chart.grade.recordSquare = {RECORD_SQUARE} px',
+                 'why': ('The build draws no record square. Gate 1 M1 added it; the Phase 2 atlas design frame memo and Rule 13.4 '
+                         'both set 7 px, so the value stays, set inline before the word Documented only')},
+                {'value': 'Hypothesis gloss "not yet tested"',
+                 'why': ('The build\'s shared table glosses Hypothesis "untested"; D3-84 names Rule 13.3\'s table, which prints '
+                         '"not yet tested" as Rule 12.6\'s key does, so the tokens and the sheet take it. The Phase 2 build stays as a record')},
+            ],
+            'changed_from_the_first_proposal': [
+                'oa.chart.grade.conceptual.railSelected (2 px on the 6 px route) is withdrawn: the build draws 1 px rails at every width',
+                f'oa.chart.grade.minRun goes from 28 to {MIN_RUN} line widths',
+                'oa.chart.grade.headClearance is new: 1.5 line widths, read from wire_marks()',
+                'The hypothesis gloss reads "not yet tested"',
+                'The source of every grade token is the atlas build, in place of "Atlas V7 renderer"',
+            ],
+        },
         'tokens': toks,
         'description_changes': descr,
         'kit_roles': {
@@ -680,10 +746,10 @@ def build_proposal():
         'rules_with_the_palettes': [
             'Sequential: five Verdigris steps per ground, light to strong on Newsprint and dark to light on Charcoal, so the most always reads strongest. Print the value on or beside every step 1 to 3 fill.',
             'Diverging: pair B only, Prussian for one side and Verdigris for the other, with a boxed arrow or a printed sign in every cell. Say in the key which side is which. Never red with blue.',
-            'Categorical: at most four groups, in the order Charcoal (Newsprint on Charcoal), Prussian, Verdigris, Stone. The Stone group always carries the hatch; every group carries a direct label and, on a line, its end marker. Never for parties.',
+            'Categorical: at most four groups, in the order Charcoal (Newsprint on Charcoal), Verdigris, Prussian, Stone, so neither close pair ever touches in a stack. The Stone group always carries the hatch; every group carries a direct label on the chart and, on a line, its end marker. Never for parties.',
             'Past four groups: small multiples with the other groups as ghosts, or one group in ink and every other in the context gray, every group labeled (DR-234).',
             'Magnitude: gray Stone steps with no direction; the figure prints in every tile.',
-            'Grade line code: the line\'s width sets its pattern; no coded line drops under 2 px; a run under 28 widths prints its grade in words.',
+            f'Grade line code: the line\'s width sets its pattern; no coded line drops under 2 px; a run under {MIN_RUN} widths, key samples included, prints its grade in words.',
             'Red: one working red per view (Rule 05.3). A chart\'s red point yields to the subject ink when an error or an ask is in the view, and keeps its label and place.',
         ],
     }
@@ -730,6 +796,7 @@ def ground_vars():
                       '--land': f'var(--oa-chart-color-land-{c})', '--track': f'var(--oa-chart-color-track-{c})'})
             if tg == 'newsprint':
                 v['--keyline'] = 'var(--oa-chart-color-point-keyline-on-newsprint)'
+            v['--lfill'] = f'var(--oa-chart-color-light-fill-{c})'
             for i in range(1, 6):
                 v[f'--seq{i}'] = f'var(--oa-chart-color-sequential-fill-step{i}-{c})'
                 v[f'--seql{i}'] = f'var(--oa-chart-color-sequential-label-step{i}-{c})'
@@ -739,7 +806,7 @@ def ground_vars():
                 v[f'--mag{i}'] = f'var(--oa-chart-color-magnitude-fill-step{i}-{c})'
                 v[f'--magl{i}'] = f'var(--oa-chart-color-magnitude-label-step{i}-{c})'
                 v[f'--cat{i}'] = f'var(--oa-chart-color-categorical-fill-group{i}-{c})'
-                v[f'--catl{i}'] = f'var(--oa-chart-color-categorical-label-group{i}-{c})'
+                v[f'--catl{i}'] = f'var({css_name(cat_label_path(i, SURF[tg]))})'
         out.append(f'.g-{g}{{{";".join(f"{k}:{val}" for k, val in v.items())};background:var(--gr);color:var(--ink)}}')
     return '\n'.join(out)
 
@@ -862,11 +929,14 @@ table.m td.n{text-align:right}
 .ask.ink{background:var(--oa-color-action-primary-fill-on-newsprint);color:var(--oa-color-action-primary-label-on-newsprint)}
 .g-charcoal .ask.ink{background:var(--oa-color-action-primary-fill-on-charcoal);color:var(--oa-color-action-primary-label-on-charcoal)}
 .ex{margin:4px 0 0;font:400 13px/18px Inter,sans-serif;color:var(--sec)}
+.phn{display:none}
+.fh .ek{display:inline-block;margin-right:8px;padding:2px 7px;background:var(--ink);color:var(--gr);letter-spacing:.06em}
+.fh .gl{text-transform:none;letter-spacing:0;font-weight:600;font-size:14px;color:var(--sec)}
 .foot{padding:32px 0 64px;border-top:2px solid var(--oa-color-palette-charcoal);font:400 14px/21px Inter,sans-serif;color:var(--oa-color-derived-deep-stone)}
 .foot p{margin:0 0 8px;max-width:72em}
 @media (max-width:1100px){.top,.sh{grid-template-columns:minmax(0,1fr)}.two,.views{grid-template-columns:minmax(0,1fr)}}
 .view,.vbody,.plate,figure{min-width:0}
-@media (max-width:767.98px){.wrap{padding:0 16px}.display{font-size:40px;line-height:44px}.sh h2{font-size:30px;line-height:34px}.mrow{gap:4px 20px;flex-wrap:wrap;padding:10px 16px}.plate{padding:16px 12px}.vbody{padding:16px 12px}}
+@media (max-width:767.98px){.dsk{display:none}.phn{display:block}.wrap{padding:0 16px}.display{font-size:40px;line-height:44px}.sh h2{font-size:30px;line-height:34px}.mrow{gap:4px 20px;flex-wrap:wrap;padding:10px 16px}.plate{padding:16px 12px}.vbody{padding:16px 12px}}
 '''
 
 SIM_FILTERS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>' + ''.join(
@@ -952,8 +1022,8 @@ def ramp_plate(pid, ground, m):
         if k == 'grayscale':
             gap = m['smallest_lightness_gap']
             if cat:
-                rest = min(p['delta_L'] for p in m['lightness_gaps'] if set(p['between']) != {'Group 3', 'Group 4'})
-                sims.append(f'<div class="simv">Groups 3 and 4: <b>{gap:.3f}</b>, kept apart by the hatch; every other pair <b>{rest:.3f}</b> or more</div>')
+                rest = min(p['delta_L'] for p in m['lightness_gaps'] if set(p['between']) != VS_PAIR)
+                sims.append(f'<div class="simv">Groups 2 and 4: <b>{gap:.3f}</b>, kept apart by the hatch; every other pair <b>{rest:.3f}</b> or more</div>')
             else:
                 sims.append(f'<div class="simv">Smallest lightness gap between neighbors: <b>{gap:.3f}</b></div>')
         else:
@@ -1050,8 +1120,18 @@ def hatch_def(pid, color):
             f'<rect width="1.5" height="5" style="fill:{color}"/></pattern>')
 
 
-def figure(eyebrow, heading, measure, body, source, notes=''):
-    return (f'<figure><p class="fh">{e(eyebrow)}</p><p class="ft">{e(heading)}</p><p class="fm">{e(measure)}</p>'
+JOBS_GRADE = 'Documented: a Bureau of Labor Statistics survey of employers, as copied by FRED'   # D3-83
+PHONE_W = 320   # the widest drawing a 390 px screen holds inside a plate
+
+
+def dual(desktop, phone):
+    """The desktop drawing and the phone drawing the kit would use (DR-64); CSS shows one by the screen's width."""
+    return f'<div class="dsk">{desktop}</div><div class="phn">{phone}</div>'
+
+
+def figure(eyebrow, heading, measure, body, source, notes='', grade=None):
+    kick = (f'<p class="fh"><span class="ek">Finding</span><span class="gl">{e(grade)}</span></p>' if grade else f'<p class="fh">{e(eyebrow)}</p>')
+    return (f'<figure>{kick}<p class="ft">{e(heading)}</p><p class="fm">{e(measure)}</p>'
             f'<div class="scroll">{body}</div>{notes}<p class="fs">{e(source)}</p></figure>')
 
 
@@ -1069,13 +1149,13 @@ def tile_map(ground):
         x = i * 76
         body.append(f'<rect x="{x}" y="0" width="68" height="18" style="fill:var(--seq{i + 1})"/>')
         body.append(text(x, 36, rng, 't13', 'var(--csec)'))
-    us = 65.3
+    us = US_TURNOUT
     k = seq_step(us)
     ux = 5 * 76 + 28
     body.append(f'<rect x="{ux}" y="0" width="{ts}" height="{ts}" style="fill:var(--seq{k})"/>')
     body.append(text(ux + 5, 16, 'U.S.', 't13 b', f'var(--seql{k})'))
     body.append(text(ux + 5, 38, f'{us:.1f}', 't13', f'var(--seql{k})'))
-    body.append(tspan_lines(ux + ts + 10, 16, ['United States,', 'set apart'], 17, 't13', 'var(--csec)'))
+    body.append(tspan_lines(ux + ts + 10, 16, ['United States,', f'margin {US_TURNOUT_MOE:g}'], 17, 't13', 'var(--csec)'))
     for t in TILE:
         v = TURNOUT[t['code']]['pct']
         s = seq_step(v)
@@ -1150,9 +1230,9 @@ def scale(d0, d1, r0, r1):
     return lambda v: r0 + (v - d0) * (r1 - r0) / (d1 - d0)
 
 
-def x_ticks(X, y, color):
+def x_ticks(X, y, color, every=1):
     out = []
-    for m in ['2022-01', '2023-01', '2024-01', '2025-01', '2026-01']:
+    for m in ['2022-01', '2023-01', '2024-01', '2025-01', '2026-01'][::every]:
         i = MONTHS.index(m)
         out.append(f'<line x1="{f2(X(i))}" y1="{y}" x2="{f2(X(i))}" y2="{y + 5}" style="stroke:{color};stroke-width:1"/>')
         out.append(text(X(i), y + 20, m[:4], 't13', 'var(--csec)', 'middle'))   # ticks sit at each January
@@ -1169,9 +1249,10 @@ def y_grid(Y, lo, hi, step, x0, x1, fmt=lambda v: f'{v:g}'):
     return ''.join(out)
 
 
-def cat_lines(ground):
-    pw, ph = 300, 250
-    x0, y0 = 36, 10
+def cat_lines(ground, phone=False):
+    pw, ph = (156, 230) if phone else (300, 250)
+    lab_w = 120 if phone else 220
+    x0, y0 = 30 if phone else 36, 10
     lo = math.floor(min(min(INDEX[s]) for s in FOUR) / 5) * 5
     hi = math.ceil(max(max(INDEX[s]) for s in FOUR) / 5) * 5
     X = scale(0, len(MONTHS) - 1, x0, x0 + pw)
@@ -1184,51 +1265,68 @@ def cat_lines(ground):
         body.append(f'<path d="{line_path([X(j) for j in range(len(MONTHS))], ys)}" style="fill:none;stroke:var(--cat{i + 1});'
                     f'stroke-width:2;stroke-linejoin:round"/>')
         ends.append(ys[-1])
-    lab_x = x0 + pw + 22
-    pos = spread(ends, 44, y0 + 8, y0 + ph + 10)
+    lab_x = x0 + pw + (16 if phone else 22)
+    pos = spread(ends, 58 if phone else 44, y0 + 8, y0 + ph + 10)
     for i, s in enumerate(FOUR):
         body.append(marker(CAT_MARKER[i], x0 + pw, ends[i], f'var(--cat{i + 1})'))
-        lines = wrap(s, 220, 14, 600)
+        lines = wrap(s, lab_w, 14, 600)
         ly = pos[i] - (len(lines) * 17) / 2 + 12
         if abs(pos[i] - ends[i]) > 3:
             body.append(f'<path d="M{x0 + pw + 8} {f2(ends[i])}L{lab_x - 4} {f2(pos[i])}" style="fill:none;stroke:var(--ctx);stroke-width:1"/>')
         body.append(tspan_lines(lab_x, ly, lines, 17, 't14 b', 'var(--lab)'))
         body.append(text(lab_x, ly + len(lines) * 17, f'{fmt_signed(CHANGE4[s])} percent', 't14', 'var(--csec)'))
-    body.append(x_ticks(X, y0 + ph, 'var(--csec)'))
-    return svg(x0 + pw + 250, y0 + ph + 30, ''.join(body),
+    body.append(x_ticks(X, y0 + ph, 'var(--csec)', every=2 if phone else 1))
+    return svg(lab_x + lab_w + 4, y0 + ph + 30, ''.join(body),
                'Line chart: jobs in four sectors indexed to January 2022, to September 2026, one line each in the four '
                'categorical inks with an end marker and a direct label.')
 
 
-def cat_stack(ground):
-    W = 560
-    tot = _jobs['Total nonfarm']['2026-09']
-    parts = [(s, _jobs[s]['2026-09']) for s in STACK] + [('All other sectors', tot - sum(_jobs[s]['2026-09'] for s in STACK))]
-    body = [f'<defs>{hatch_def(f"h4-{ground}", "var(--cat4)")}</defs>']
-    x = 0
-    lab_y = 52
+def cat_stack(ground, W=560):
+    """The same four groups as the line chart above it, in one bar of their September 2026 jobs, each segment named on the
+    bar (CD M5, brand P1 and P2). The last segment's name sits at the bar's end; the others hang from leaders in rows
+    ordered right to left, each name to the right of its own leader, so no leader crosses a name."""
+    size = 13 if W < 400 else 14
+    parts = [(s, _jobs[s]['2026-09']) for s in FOUR]
+    tot = sum(v for _, v in parts)
+    last = f'{parts[-1][0]}, {parts[-1][1] / 1000:.1f}'
+    BW = W - tw(last, size, 600) - 22
+    body = [f'<defs>{hatch_def(f"h4-{ground}-{W}", "var(--cat4)")}</defs>']
+    x, bh = 0, 36
+    segs = []
     for i, (s, v) in enumerate(parts):
-        w = W * v / tot
-        gapw = 1 if i < 3 else 0
+        w = BW * v / tot
+        val = f'{v / 1000:.1f}'
+        fits = w - 16 >= tw(val, 15, 600)
         if i == 3:
-            body.append(f'<rect x="{f2(x + 0.5)}" y="0.5" width="{f2(w - 1)}" height="35" style="fill:url(#h4-{ground});stroke:var(--cat4);stroke-width:1"/>')
-            body.append(f'<rect x="{f2(x + 8)}" y="9" width="{f2(tw(f"{v / 1000:.1f}", 15, 600) + 8)}" height="20" style="fill:var(--gr)"/>')
-            body.append(text(x + 12, 24, f'{v / 1000:.1f}', 't15 b', 'var(--catl4)'))
+            body.append(f'<rect x="{f2(x + 0.5)}" y="0.5" width="{f2(max(w - 1, 1))}" height="{bh - 1}" '
+                        f'style="fill:url(#h4-{ground}-{W});stroke:var(--cat4);stroke-width:1"/>')
         else:
-            body.append(f'<rect x="{f2(x)}" y="0" width="{f2(w - gapw)}" height="36" style="fill:var(--cat{i + 1})"/>')
-            body.append(text(x + 8, 24, f'{v / 1000:.1f}', 't15 b', f'var(--catl{i + 1})'))
+            body.append(f'<rect x="{f2(x)}" y="0" width="{f2(w - 1)}" height="{bh}" style="fill:var(--cat{i + 1})"/>')
+            if fits:
+                body.append(text(x + 8, 23, val, 't15 b', f'var(--catl{i + 1})'))
+        segs.append((x, w, s, val, fits, i))
         x += w
-    key = ''.join(
-        f'<li><span class="sw" style="background:{hatch_bg("var(--cat4)", "var(--gr)") if i == 3 else f"var(--cat{i + 1})"};'
-        f'{"box-shadow:inset 0 0 0 1px var(--cat4)" if i == 3 else ""}"></span>{e(s)}</li>' for i, (s, v) in enumerate(parts))
-    return f'<ul class="key" aria-label="Key, in the order of the bar">{key}</ul>' + svg(W, 36, ''.join(body),
-               'One bar of all 159 million jobs in September 2026, split into four groups in the categorical inks, the fourth '
-               'hatched: health care and social assistance, government, professional and business services, and all other sectors.')
+    # the last, narrow segment: its name at the bar's end, with its marker
+    body.append(marker(CAT_MARKER[3], x + 9, bh / 2, 'var(--cat4)', 4.5))
+    body.append(text(x + 18, bh / 2 + 5, last, f't{size} b', 'var(--lab)'))
+    y = bh + 8
+    for x0, w, s, val, fits, i in reversed(segs[:3]):
+        cx = x0 + min(w / 2, 14)
+        words = s + ('' if fits else f', {val}')
+        lines = wrap(words, W - cx - 12, size, 600)
+        y += size + 6
+        body.append(f'<path d="M{f2(cx)} {bh + 2}V{f2(y - 5)}" style="fill:none;stroke:var(--ctx);stroke-width:1"/>')
+        body.append(marker(CAT_MARKER[i], cx, y - 5, f'var(--cat{i + 1})', 4.5))
+        body.append(tspan_lines(cx + 10, y, lines, size + 4, f't{size} b', 'var(--lab)'))
+        y += (len(lines) - 1) * (size + 4)
+    return svg(W, y + 6, ''.join(body),
+               'One bar of the same four sectors\' jobs in September 2026, millions, in the categorical inks with the fourth '
+               'hatched, each segment named on the chart: health care and social assistance, government, manufacturing and information.')
 
 
 # ------------------------------------------------------------------------------------------------ past four groups
-def small_multiples(ground):
-    cols, pw, ph, gx, gy = 5, 236, 112, 21, 26
+def small_multiples(ground, phone=False):
+    cols, pw, ph, gx, gy = (2, 150, 90, 20, 22) if phone else (5, 236, 112, 21, 26)
     order = sorted(SECTORS, key=lambda s: -CHANGE4[s])
     lo = math.floor(min(min(INDEX[s]) for s in SECTORS) / 5) * 5
     hi = math.ceil(max(max(INDEX[s]) for s in SECTORS) / 5) * 5
@@ -1239,16 +1337,16 @@ def small_multiples(ground):
         cy = (n // cols) * (head + ph + gy + 18)
         X = scale(0, len(MONTHS) - 1, cx, cx + pw)
         Y = scale(lo, hi, cy + head + ph, cy + head)
-        lines = wrap(s, pw - 70, 14, 600)
-        body.append(tspan_lines(cx, cy + 15, lines, 17, 't14 b', 'var(--lab)'))
-        body.append(text(cx + pw, cy + 15, f'{fmt_signed(CHANGE4[s])}%', 't14 b', 'var(--lab)', 'end'))
+        lines = wrap(s, pw - (58 if phone else 70), 13 if phone else 14, 600)
+        body.append(tspan_lines(cx, cy + 15, lines, 16 if phone else 17, ('t13' if phone else 't14') + ' b', 'var(--lab)'))
+        body.append(text(cx + pw, cy + 15, f'{fmt_signed(CHANGE4[s])}%', ('t13' if phone else 't14') + ' b', 'var(--lab)', 'end'))
         body.append(f'<line x1="{cx}" y1="{f2(Y(100))}" x2="{cx + pw}" y2="{f2(Y(100))}" style="stroke:var(--base);stroke-width:1.5"/>')
         xs = [X(j) for j in range(len(MONTHS))]
         for o in SECTORS:
             if o != s:
                 body.append(f'<path d="{line_path(xs, [Y(v) for v in INDEX[o]])}" style="fill:none;stroke:var(--ghost);stroke-width:1"/>')
         body.append(f'<path d="{line_path(xs, [Y(v) for v in INDEX[s]])}" style="fill:none;stroke:var(--sub);stroke-width:3;stroke-linejoin:round"/>')
-        if n >= len(order) - cols:
+        if n >= len(order) - (len(order) % cols or cols):
             body.append(text(cx, cy + head + ph + 17, 'Jan. 2022', 't13', 'var(--csec)'))
             body.append(text(cx + pw, cy + head + ph + 17, 'Sep. 2026', 't13', 'var(--csec)', 'end'))
     rows = math.ceil(len(order) / cols)
@@ -1307,7 +1405,7 @@ def grade_line(key, w, length, color, x=0, y=0, case=None):
     g = next(r for r in GRADES if r[0] == key)
     pat, cap = g[5], g[6]
     if key == 'conceptual':
-        rail = 2 if w >= 6 else 1
+        rail = ALC['hollow_rail_px']
         off = w / 2 + rail / 2
         return ''.join(f'<line x1="{f2(x)}" y1="{f2(y + d)}" x2="{f2(x + length)}" y2="{f2(y + d)}" '
                        f'style="stroke:{color};stroke-width:{rail}"/>' for d in (-off, off))
@@ -1399,8 +1497,33 @@ def v7_compare():
 
 
 # ------------------------------------------------------------------------------------------------ red: point and red on red
-def ranked_bars(ground, mode):
-    """Ranked bars of the change since January 2022; mode 'red' gives the named bar the working red, 'ink' yields it to the subject ink."""
+def ranked_bars_phone(ground, mode, ctx='ctx', W=PHONE_W):
+    """The phone form of the ranked bars (DR-64): each name above its bar, so no name runs off a 390 px screen."""
+    order = sorted(SECTORS, key=lambda s: -CHANGE4[s])
+    X = scale(-15, 20, 0, W - 56)
+    body, y = [], 0
+    for s in order:
+        v, lead = CHANGE4[s], s == LEAD
+        cls, col = ('t13 bb', 'var(--lab)') if lead else ('t13', 'var(--csec)')
+        body.append(text(0, y + 13, s, cls, col))
+        x1, x2 = sorted([X(0), X(v)])
+        if lead and mode == 'red':
+            kl = 'var(--keyline)' if ground == 'newsprint' else 'none'
+            body.append(f'<rect x="{f2(x1 + 0.5)}" y="{y + 19.5}" width="{f2(x2 - x1 - 1)}" height="11" '
+                        f'style="fill:var(--point);stroke:{kl};stroke-width:1" data-red="working" data-red-job="the point the title names"/>')
+        else:
+            body.append(f'<rect x="{f2(x1)}" y="{y + 19}" width="{f2(x2 - x1)}" height="12" '
+                        f'style="fill:var(--{"sub" if lead else ctx})"/>')
+        body.append(text((X(v) if v >= 0 else X(0)) + 5, y + 29, f'{fmt_signed(v)}%', cls, col))
+        body.append(f'<line x1="{f2(X(0))}" y1="{y + 17}" x2="{f2(X(0))}" y2="{y + 33}" style="stroke:var(--base);stroke-width:1.5"/>')
+        y += 40
+    return svg(W, y - 4, ''.join(body), f'Ranked bars, phone form: change in jobs for 15 sectors, January 2022 to '
+                                        f'September 2026, each name above its bar; {LEAD} named in the title.')
+
+
+def ranked_bars(ground, mode, ctx='ctx'):
+    """Ranked bars of the change since January 2022; mode 'red' gives the named bar the working red, 'ink' yields it to
+    the subject ink. ctx='lfill' draws the other bars in the light fill (brand P5's variant)."""
     order = sorted(SECTORS, key=lambda s: -CHANGE4[s])
     name_w, bar_w, pitch, bh = 232, 196, 22, 14
     lo, hi = -15, 20
@@ -1418,7 +1541,7 @@ def ranked_bars(ground, mode):
         elif lead:
             body.append(f'<rect x="{f2(x1)}" y="{y}" width="{f2(x2 - x1)}" height="{bh}" style="fill:var(--sub)"/>')
         else:
-            body.append(f'<rect x="{f2(x1)}" y="{y}" width="{f2(x2 - x1)}" height="{bh}" style="fill:var(--ctx)"/>')
+            body.append(f'<rect x="{f2(x1)}" y="{y}" width="{f2(x2 - x1)}" height="{bh}" style="fill:var(--{ctx})"/>')
         cls = 't13 bb' if lead else 't13'
         col = 'var(--lab)' if lead else 'var(--csec)'
         body.append(text(name_w, y + 11, s, cls, col, 'end'))
@@ -1437,12 +1560,12 @@ def error_mark(color):
             f'<rect x="8.1" y="4.2" width="1.8" height="6.4" style="fill:{color}"/><rect x="8.1" y="12" width="1.8" height="1.8" style="fill:{color}"/></svg>')
 
 
-def view_card(label, ground, chart_mode, form, ask_mode, caption, fail=False):
-    title = (f'{LEAD} grew {fmt_signed(CHANGE4[LEAD]).lstrip("+")} percent, the most of 15 sectors, from January 2022 '
-             'to September 2026.')
-    chart = (f'<p class="fh" style="color:var(--sec)">Finding</p><p class="ft" style="font-size:22px;line-height:26px">{e(title)}</p>'
+def view_card(label, ground, chart_mode, form, ask_mode, caption, fail=False, ctx='ctx'):
+    chart = (f'<p class="fh"><span class="ek">Finding</span><span class="gl">{e(JOBS_GRADE)}</span></p>'
+             f'<p class="ft" style="font-size:22px;line-height:26px">{e(LEAD_TITLE)}</p>'
              f'<p class="fm" style="font-size:14px;line-height:21px">Change in jobs, percent, January 2022 to September 2026, '
-             f'United States; August and September 2026 are preliminary.</p><div class="scroll">{ranked_bars(ground, chart_mode)}</div>')
+             f'United States; August and September 2026 are preliminary.</p>'
+             f'<div class="scroll">{dual(ranked_bars(ground, chart_mode, ctx), ranked_bars_phone(ground, chart_mode, ctx))}</div>')
     f = ''
     if form:
         err = form == 'error'
@@ -1480,6 +1603,15 @@ def red_views():
                   'the point yields to Newsprint, the subject ink on Charcoal.'),
         view_card('6. The point in red, on Charcoal', 'charcoal', 'red', None, None,
                   'Correct. In a view of its own on Charcoal, the named bar takes the working red with no keyline.'),
+        view_card('7. A variant to weigh: the other bars in the light fill', 'newsprint', 'red', None, None,
+                  f'Correct, and a choice for the creative director. With the other bars in the light fill, which prints '
+                  f'each value beside its bar, the red bar prints darker than its neighbors in gray: Chromium\'s filter gives '
+                  f'{luma(P["pillarRed"]):.3f} against {luma(hx("oa.chart.color.lightFill.onNewsprint")):.3f}, where view 1 '
+                  f'gives {luma(P["pillarRed"]):.3f} against {luma(P["stone"]):.3f}. The grayscale capture shows both.',
+                  ctx='lfill'),
+        view_card('8. The same variant, resolved', 'newsprint', 'ink', 'error', 'ink',
+                  'Correct. When an error holds the red, the named bar yields to the subject ink, which stands out against '
+                  'the light fill in color and in gray.', ctx='lfill'),
     ]
     return f'<div class="views">{"".join(cards)}</div>{src}'
 
@@ -1554,6 +1686,17 @@ def checks(M):
                 bad = [p for p in m['pairs_under_margin'] if 'Group 4' not in p['between']]
                 add(f'categorical on {g}: only pairs with the hatched Stone group sit under 0.10 lightness', not bad,
                     f'{len(m["pairs_under_margin"])} pairs under 0.10, each with Group 4')
+            if pid == 'categorical':
+                rows = m['rows']
+                nb = [(rows[i]['name'], rows[i + 1]['name'], round(abs(rows[i]['oklab_L'] - rows[i + 1]['oklab_L']), 3),
+                       abs(rows[i]['black_screen_pct'] - rows[i + 1]['black_screen_pct'])) for i in range(3)]
+                ok = all(d >= 0.10 or b == 'Group 4' for a, b, d, s in nb)
+                add(f'categorical on {g}: neighbors in a stack stand 0.10 apart in lightness, or the second is the hatched group',
+                    ok, '; '.join(f'{a} and {b}: {d:.3f}' for a, b, d, s in nb))
+                if g != 'charcoal':
+                    ok2 = all(s >= 10 or b == 'Group 4' for a, b, d, s in nb)
+                    add(f'categorical on {g}: neighbors in a stack differ by 10 points of black or more in one-ink print',
+                        ok2, '; '.join(f'{a} and {b}: {s} points' for a, b, d, s in nb))
             if 'grayscale_order_holds' in m:
                 add(f'{pid} on {g}: grayscale order holds', m['grayscale_order_holds'],
                     f'smallest lightness gap {m["smallest_lightness_gap"]:.3f}')
@@ -1567,9 +1710,41 @@ def checks(M):
     add('every new color is one palette color mixed in OKLab toward Newsprint or Charcoal',
         all(NEW_TINTS[k][1] in ('newsprint', 'charcoal') for k in NEW_TINTS), ', '.join(f'{k} {NEW_TINT_HEX[k]}' for k in NEW_TINTS))
     for w in LINE_WIDTHS:
-        add(f'grade line code at {w} px: a 28-width run holds at least three dash-dot periods',
-            28 * w >= 3 * sum(x * w for x in GRADES[3][5]) + 4 * w, f'run {28 * w} px, period {sum(x * w for x in GRADES[3][5])} px')
+        add(f'grade line code at {w} px: the {MIN_RUN}-width shortest run holds two full dash-dot periods and the closing dash',
+            MIN_RUN * w >= 2 * sum(x * w for x in GRADES[3][5]) + GRADES[3][5][0] * w,
+            f'run {MIN_RUN * w} px, period {f2(sum(x * w for x in GRADES[3][5]))} px')
     return res
+
+
+def line_code_values():
+    """One table of every line code value, with where it comes from (D3-84)."""
+    src = f'Atlas build, <code>pattern()</code>, line {ALC["pattern_line"]}'
+    rows = []
+    for g in GRADES:
+        if g[0] == 'conceptual':
+            continue
+        nums = 'one unbroken line' if g[5] is None else ', '.join(f2(x) for x in g[5]) + f' line widths, {g[6]} caps'
+        at2 = 'solid' if g[5] is None else ' '.join(f2(x * 2) for x in g[5])
+        rows.append((f'{g[2]}: {g[3]}', nums, at2, src))
+    rows += [
+        ('Conceptual step: the hollow line', f'two {ALC["hollow_rail_px"]:g} px rails, one line width of ground between them',
+         '1, 2, 1 (4 px across)', f'Atlas build, <code>wire_marks()</code>, line {ALC["wire_marks_line"]}'),
+        ('Line widths', ', '.join(f'{w} px' for w in LINE_WIDTHS) + ', no others', '2 px', f'Atlas build, <code>{ALC["line_widths_from"].split(",")[0]}</code>,{ALC["line_widths_from"].split(",")[1]}'),
+        ('Fitting', 'stretched so each line starts and ends on ink', 'per run', f'Atlas build, <code>fitted()</code>, line {ALC["fitted_line"]}'),
+        ('Dotted line before an arrowhead', f'stops {f2(ALC["dotted_head_clearance_widths"])} line widths short', '3 px',
+         f'Atlas build, <code>wire_marks()</code>, line {ALC["wire_marks_line"]}'),
+        ('Shortest textured run', f'{MIN_RUN} line widths, key samples included', f'{MIN_RUN * 2} px',
+         'Set here: the build defines none; two full dash-dot periods and the closing dash'),
+        ('Record square', f'{RECORD_SQUARE} px, filled, inline before the word Documented', f'{RECORD_SQUARE} px',
+         'Set here: the build draws none; Gate 1, M1, at the frame memo\'s size'),
+        ('Hypothesis gloss', 'not yet tested', '', 'Rule 13.3\'s table; the build\'s shared table says untested'),
+    ]
+    body = ''.join(f'<tr><th scope="row">{e(a)}</th><td>{e(b)}</td><td>{e(c)}</td><td>{d}</td></tr>' for a, b, c, d in rows)
+    return ('<div class="plate g-newsprint"><div class="ph"><h3>Every value, and where it comes from</h3>'
+            '<p>The tokens in <code>oa.chart.grade</code> take these numbers, and Rule 13.4 states the same ones.</p></div>'
+            '<div class="scroll"><table class="m"><caption class="vh">The line code\'s values and their sources</caption>'
+            '<thead><tr><th>Item</th><th>Value</th><th>On a 2 px line</th><th>Source</th></tr></thead>'
+            f'<tbody>{body}</tbody></table></div></div>')
 
 
 def section(sid, num, status, title, lede, side, body):
@@ -1619,8 +1794,8 @@ def build_page(M, CK):
     sq, dv, ct, mg = M['sequential'], M['diverging'], M['categorical'], M['magnitude']
     dvc = dv['charcoal']['rows']
     ctn = ct['newsprint']
-    other_pairs = [p['delta_L'] for p in ctn['lightness_gaps'] if not ({'Group 3', 'Group 4'} == set(p['between']))]
-    ctc_pairs = [p['delta_L'] for p in ct['charcoal']['lightness_gaps'] if not ({'Group 3', 'Group 4'} == set(p['between']))]
+    other_pairs = [p['delta_L'] for p in ctn['lightness_gaps'] if set(p['between']) != VS_PAIR]
+    ctc_pairs = [p['delta_L'] for p in ct['charcoal']['lightness_gaps'] if set(p['between']) != VS_PAIR]
     seq_gaps_n = [p['delta_L'] for p in sq['newsprint']['lightness_gaps']]
     n_tokens = PROPOSAL_DATA['summary']['new_tokens_total']
     n_colors = PROPOSAL_DATA['summary']['new_colors']
@@ -1665,7 +1840,11 @@ def build_page(M, CK):
         two(applied('newsprint', figure('Proof on real data, Newsprint', 'Sequential Verdigris on a state tile map',
                                         'Reported voting among citizens 18 and over, percent, November 2024, 50 states and DC, '
                                         'in five steps. Every tile prints its value, so no reader has to match a shade.',
-                                        tile_map('newsprint'), TURNOUT_SOURCE), 'tile-newsprint'),
+                                        tile_map('newsprint'), TURNOUT_SOURCE,
+                                        f'<p class="fn">The United States stood at {US_TURNOUT:g} percent, margin {US_TURNOUT_MOE:g} '
+                                        f'points, set apart beside the key (DR-64). State margins of error run from '
+                                        f'{MOE_RANGE[0]} to {MOE_RANGE[1]} points, so a state near a step\'s edge may belong '
+                                        'in the next step; every tile prints its value, and no tile is ranked.</p>'), 'tile-newsprint'),
             applied('charcoal', figure('Proof on real data, Charcoal', 'The same map in the dark theme',
                                        'The same data and steps on Charcoal, where the strongest step is the lightest.',
                                        tile_map('charcoal'), TURNOUT_SOURCE), 'tile-charcoal')) +
@@ -1694,28 +1873,32 @@ def build_page(M, CK):
 
     s_cat = section(
         'categorical', '03', ['Proposed, no new value'], 'Categorical: four inks, four groups',
-        'Up to four named groups, in the four brand inks and no added hue (DR-234): Charcoal, Prussian, Verdigris and Stone, '
+        'Up to four named groups, in the four brand inks and no added hue (DR-234): Charcoal, Verdigris, Prussian and Stone, '
         'in that order. On Charcoal, Newsprint takes Charcoal\'s place and Prussian lifts 62 percent toward Newsprint, a '
         'value the tokens already hold.',
-        f'<p>Verdigris and Stone sit {ctn["rows"][2]["oklab_L"] - ctn["rows"][3]["oklab_L"]:.2f} apart in lightness (D2-95), '
-        'so the Stone group always carries the hatch, and every group carries a direct label. On a line, each group ends on '
-        'its own marker: circle, square, triangle and diamond.</p>'
+        f'<p>The order is Charcoal, Verdigris, Prussian, Stone, so neither close pair ever touches in a stack: Charcoal and '
+        f'Prussian print at {ctn["rows"][0]["black_screen_pct"]} and {ctn["rows"][2]["black_screen_pct"]} percent black in '
+        f'one-ink print, and Verdigris and Stone sit {ctn["rows"][1]["oklab_L"] - ctn["rows"][3]["oklab_L"]:.2f} apart in '
+        'lightness (D2-95). The Stone group always carries the hatch, and every group carries a direct label; on a line, '
+        'each group ends on its own marker: circle, square, triangle and diamond.</p>'
         f'<p>Every other pair stands at least {min(other_pairs):.3f} apart in lightness on Newsprint and '
         f'{min(ctc_pairs):.3f} on Charcoal. The set never marks a party (DR-48).</p>',
         plates('categorical', M) +
         two(applied('newsprint', figure('Proof on real data, Newsprint', 'Four groups on a line chart, and in one bar',
                                         'Jobs in four sectors, indexed to January 2022 = 100, January 2022 to September 2026, '
-                                        'United States. Below, all jobs in September 2026, millions, in four groups.',
-                                        cat_lines('newsprint') + '<div style="height:28px"></div>' + cat_stack('newsprint'),
+                                        'United States. Below, the same four sectors\' jobs in September 2026, millions, a '
+                                        'preliminary month.',
+                                        dual(cat_lines('newsprint') + '<div style="height:28px"></div>' + cat_stack('newsprint'),
+                                             cat_lines('newsprint', phone=True) + '<div style="height:24px"></div>' + cat_stack('newsprint', PHONE_W)),
                                         JOBS_SOURCE), 'cat-newsprint'),
             applied('charcoal', figure('Proof on real data, Charcoal', 'The same two charts in the dark theme',
-                                       'The same data on Charcoal, in Newsprint, Prussian lifted 62 percent, Verdigris and '
-                                       'hatched Stone.', cat_lines('charcoal') + '<div style="height:28px"></div>' + cat_stack('charcoal'),
+                                       'The same data on Charcoal, in Newsprint, Verdigris, Prussian lifted 62 percent and '
+                                       'hatched Stone.', dual(cat_lines('charcoal') + '<div style="height:28px"></div>' + cat_stack('charcoal'),
+                                                              cat_lines('charcoal', phone=True) + '<div style="height:24px"></div>' + cat_stack('charcoal', PHONE_W)),
                                        JOBS_SOURCE), 'cat-charcoal')) +
         measure_table(M, ['categorical']))
 
-    lead_title = (f'{LEAD} grew {fmt_signed(CHANGE4[LEAD]).lstrip("+")} percent, the most of 15 sectors, from January 2022 to '
-                  'September 2026.')
+    lead_title = LEAD_TITLE
     s_past = section(
         'past-four', '04', ['Proposed, no new value'], 'Past four groups',
         'Past four groups a chart takes one of two forms, with every group labeled on the chart (DR-234). Small multiples give '
@@ -1726,17 +1909,21 @@ def build_page(M, CK):
         'context ink the release already holds.</p>',
         applied('newsprint', figure('Proof on real data, Newsprint', 'Small multiples: 15 sectors, one panel each',
                                     'Jobs indexed to January 2022 = 100, January 2022 to September 2026, United States, '
-                                    'on one shared scale, sorted by the change since January 2022.', small_multiples('newsprint'),
+                                    'on one shared scale, sorted by the change since January 2022.',
+                                    dual(small_multiples('newsprint'), small_multiples('newsprint', phone=True)),
                                     JOBS_SOURCE, f'<p class="fn">{e(WINDOW_REASON)}</p>'), 'sm-newsprint') +
         applied('charcoal', figure('Proof on real data, Charcoal', 'The same small multiples in the dark theme',
                                    'The same panels on Charcoal, with the ghost lines in the dark Stone step.',
-                                   small_multiples('charcoal'), JOBS_SOURCE), 'sm-charcoal') +
+                                   dual(small_multiples('charcoal'), small_multiples('charcoal', phone=True)), JOBS_SOURCE), 'sm-charcoal') +
         two(applied('newsprint', figure('Finding, Newsprint', lead_title,
                                         'Jobs indexed to January 2022 = 100, January 2022 to September 2026, United States. '
-                                        'One sector in ink, 14 in gray, each labeled with its change since January 2022.',
-                                        one_in_ink('newsprint'), JOBS_SOURCE), 'ink-newsprint'),
+                                        'One sector in ink, 14 in gray, each labeled with its change since January 2022. On a '
+                                        'phone the chart becomes ranked bars, each name above its bar (DR-64).',
+                                        dual(one_in_ink('newsprint'), ranked_bars_phone('newsprint', 'ink')), JOBS_SOURCE,
+                                        grade=JOBS_GRADE), 'ink-newsprint'),
             applied('charcoal', figure('Finding, Charcoal', lead_title, 'The same chart in the dark theme.',
-                                       one_in_ink('charcoal'), JOBS_SOURCE), 'ink-charcoal')))
+                                       dual(one_in_ink('charcoal'), ranked_bars_phone('charcoal', 'ink')), JOBS_SOURCE,
+                                       grade=JOBS_GRADE), 'ink-charcoal')))
 
     s_mag = section(
         'magnitude', '05', ['In tokens'], 'Magnitude: Stone steps',
@@ -1748,15 +1935,17 @@ def build_page(M, CK):
         plates('magnitude', M) + measure_table(M, ['magnitude']))
 
     s_lc = section(
-        'line-code', '06', ['Proposed, values from Rule 10.10'], 'The grade line code',
+        'line-code', '06', ['Proposed, read from the atlas build'], 'The grade line code',
         'V7\'s line code for the evidence grade of a connection: solid for documented and well supported, dashed for '
         'plausible, dash-dot for contested and dotted for hypothesis, with the record square and the hollow line Gate 1 '
         'added (M1). Each pattern is a multiple of the line\'s width, as Rule 10.10 sets it, so the 6 px lit route keeps its texture.',
-        '<p>The tokens carry each pattern per 1 px of width, and the kit stretches it so a line starts and ends on ink. Phase 0 '
-        'read V7\'s renderer\'s dash arrays as 9 and 4 for plausible, 9, 3, 2 and 3 for contested, and 2 and 4 for '
-        'hypothesis. On a 2 px line the tokens draw 8 and 4, then 8, 3, 2 and 3, then round dots 5 px apart: the same '
-        'textures at the guide\'s weights.</p><p>No coded line drops under 2 px, and a run shorter than 28 widths prints '
-        'its grade in words beside it.</p>',
+        '<p>Every value comes from one source, the atlas build\'s own <code>wire_marks</code> and its constants, read by '
+        'script (D3-84). The tokens carry each pattern per 1 px of width, and the kit stretches it so a line starts and ends '
+        'on ink. Phase 0 read V7\'s renderer\'s dash arrays as 9 and 4 for plausible, 9, 3, 2 and 3 for contested, and 2 '
+        'and 4 for hypothesis; on a 2 px line the build draws 8 and 4, then 8, 3, 2 and 3, then round dots 5 px apart.</p>'
+        f'<p>No coded line drops under 2 px. A run shorter than {MIN_RUN} widths, key samples included, prints its grade in '
+        f'words beside it: {MIN_RUN * 2} px on a 2 px line.</p>',
+        line_code_values() +
         '<div class="plate g-newsprint"><div class="ph"><h3>At true size</h3><p>Each grade at 2, 3 and 6 px, in color and in black, 168 px long.</p></div>'
         + line_code_table(1, caption='The grade line code at true size, in five treatments') +
         '<p class="pn">On a 2 px dotted line the Charcoal case swallows most of the red, so the dots read dark. The atlas '
@@ -1803,7 +1992,7 @@ def build_page(M, CK):
             '<title>Data Palettes, Measured</title>'
             '<meta name="description" content="Phase 3 round 0 palette proofs for the Oath &amp; Action brand guide: every data palette on each ground, with contrast, grayscale and color-vision simulations, the grade line code and the red-on-red specimen.">'
             '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-            '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Inter+Tight:wght@700;800&display=swap" rel="stylesheet">'
+            '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Inter+Tight:wght@800&display=swap" rel="stylesheet">'
             f'<style>{token_css()}\n{ground_vars()}\n{PAGE_CSS}</style></head><body>')
     page = (head + SIM_FILTERS + top + '<main class="wrap">' + s_seq + s_div + s_cat + s_past + s_mag + s_lc + s_red + s_pr
             + '</main>' + foot + script + '</body></html>')
@@ -1852,7 +2041,7 @@ def main():
                      'twelve_month_change_pct': {s: {p: round(v, 2) for p, v in YOY[s].items()} for s in SECTORS},
                      'diverging_breaks': DIV_BREAKS,
                      'diverging_steps': {s: {p: div_step(v) for p, v in YOY[s].items()} for s in SECTORS},
-                     'categorical_four': FOUR, 'stack_groups': STACK},
+                     'categorical_four': FOUR, 'stack_groups': FOUR},
         },
     }
     MEASURES.write_text(json.dumps(measures, indent=1, ensure_ascii=False) + '\n')

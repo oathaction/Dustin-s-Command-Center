@@ -81,3 +81,7 @@ Modified:
 - `work/handoffs/phase-3/20261111_Rounds-1-2-Data-Plan.md`: the "Data lead sign-off" section appended at its end, as the brief asks; nothing above it changed.
 
 Scratch, outside the repository: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/round-0/palettes/` holds the exploration scripts and preview slices.
+
+## Fix pass
+
+Work in progress, from `work/handoffs/phase-3/20261111_Round-0-Fix-Brief-Part-1.md`. D3-84's values are set in the palette proposal under `line_code_source` and were sent to the engineer and the editor at about 23:00 UTC; the categorical order and group 4's label path changed with them.

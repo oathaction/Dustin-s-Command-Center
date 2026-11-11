@@ -8,7 +8,7 @@
   "reader_question": "How many jobs did the economy add each month?",
   "evidence": "finding",
   "evidence_label": "Finding",
-  "grade_line": "Documented: an official statistic from a Bureau of Labor Statistics survey of employers, as copied by FRED",
+  "grade_line": "Documented: a Bureau of Labor Statistics survey of employers, as copied by FRED",
   "title": "The three-month average of monthly job change stood at 51,000 in September 2026, a preliminary figure, and payrolls shrank in seven of the 57 months charted.",
   "measure_line": "Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, January 2022 to September 2026, the span both jobs charts share, with the three-month average. Columns start at zero.",
   "notes": [
@@ -24,10 +24,31 @@
   "table": {
     "caption": "Monthly change in payroll jobs and its three-month average",
     "columns": [
-      { "field": "month", "label": "Month", "format": "month", "row_header": true },
-      { "field": "change_thousands", "label": "Change in jobs", "format": "signed-thousands" },
-      { "field": "avg3_thousands", "label": "Three-month average", "format": "signed-thousands:0" },
-      { "field": "status", "label": "Status", "format": "text", "words": { "preliminary": "Preliminary", "final": "" } }
+      {
+        "field": "month",
+        "label": "Month",
+        "format": "month",
+        "row_header": true
+      },
+      {
+        "field": "change_thousands",
+        "label": "Change in jobs",
+        "format": "signed-thousands"
+      },
+      {
+        "field": "avg3_thousands",
+        "label": "Three-month average",
+        "format": "signed-thousands:0"
+      },
+      {
+        "field": "status",
+        "label": "Status",
+        "format": "text",
+        "words": {
+          "preliminary": "Preliminary",
+          "final": ""
+        }
+      }
     ]
   },
   "chart_notes": [
@@ -39,23 +60,53 @@
   "artboard": "reading",
   "domain": "D07",
   "states": [],
-  "encode": { "x": "month", "y": "change_thousands", "average": "avg3_thousands", "status": "status" },
-  "formats": { "x": "month", "y": "signed-thousands", "y_tick": "signed-thousands" },
+  "encode": {
+    "x": "month",
+    "y": "change_thousands",
+    "average": "avg3_thousands",
+    "status": "status"
+  },
+  "formats": {
+    "x": "month",
+    "y": "signed-thousands",
+    "y_tick": "signed-thousands"
+  },
   "labels": {
     "key_columns": "Jobs added or lost in the month",
     "key_preliminary": "Preliminary: August and September 2026",
     "preliminary_value": "preliminary",
-    "latest": ["{y} jobs", "in {x}, preliminary"]
+    "latest": [
+      "{y} jobs",
+      "in {x}, preliminary"
+    ]
   },
   "annotations": [
-    { "at": { "x": "2023-06" }, "text": "Three-month average", "target": "average", "place": "above", "dy": -40 },
-    { "at": { "x": "2025-01" }, "text": "Seven months with a loss", "target": "low", "place": "below", "dx": -60, "dy": 14 }
+    {
+      "at": {
+        "x": "2023-06"
+      },
+      "text": "Three-month average",
+      "target": "average",
+      "place": "above",
+      "dy": -40
+    },
+    {
+      "at": {
+        "x": "2025-01"
+      },
+      "text": "Seven months with a loss",
+      "target": "low",
+      "place": "below",
+      "dx": -60,
+      "dy": 14
+    }
   ],
   "notes_internal": [
     "Grade line opens with H08's grade word, Documented.",
     "H09: the last note gives the reason both jobs charts share one window, in chapter 02's own words.",
     "The table rounds the average to the thousand, as Phase 2 printed it (+51,000 for September 2026), so it matches the title; this needs signed-thousands:0 (request to the engineer).",
     "Phase 2's measure line named the scale, −200,000 to +850,000; the kit's scale is set by its ticks, so the line now says only that columns start at zero, and the axis prints its own range.",
-    "Checked by script: 57 months; seven with a loss; September 2026 average 50.67 thousand, 51,000 to the thousand."
+    "Checked by script: 57 months; seven with a loss; September 2026 average 50.67 thousand, 51,000 to the thousand.",
+    "D3-83: the grade line prints 'Documented' with its source after the colon; 'Official statistic' leaves every spec."
   ]
 }

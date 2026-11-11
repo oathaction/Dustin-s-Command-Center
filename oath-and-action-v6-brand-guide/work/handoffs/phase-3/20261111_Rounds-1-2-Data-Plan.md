@@ -282,7 +282,7 @@ Reply in your notes with "signed off" or the changes, and I will re-pick before 
 
 **Palette notes for the makers** (no change to the plan)
 
-- Rows 8, 46 and 56 have two to four groups and take the categorical set in its order, Charcoal, Prussian, Verdigris, then hatched Stone, each with a direct label.
+- Rows 8, 46 and 56 have two to four groups and take the categorical set in its order, Charcoal, Verdigris, Prussian, then hatched Stone, each with a direct label (the order changed in the fix pass, so neither close pair touches in a stack).
 - Rows 12 and 13 carry direction by position. A fill, where one helps, is diverging pair B with the value printed.
 - Row 44's waterfall steps take the subject ink and the light fill by direction, with every value printed and no red.
 - Row 73's fan takes the Stone magnitude steps 1 and 2 for its ranges, with the median line in ink; it needs no new color.

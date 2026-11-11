@@ -1,7 +1,7 @@
 {
  "title": "Palette proofs: every measured value",
  "date": "2026-11-11",
- "tokens_release": "6.0.0-gate2.9",
+ "tokens_release": "6.0.0-gate3.1",
  "proposal": "work/handoffs/phase-3/20261111_Palette-Proposal.json",
  "method": {
   "contrast": "WCAG 2.2 ratio from relative luminance; pass or fail on the unrounded ratio; printed to two decimals",
@@ -125,6 +125,16 @@
    "detail": "1 pairs under 0.10, each with Group 4"
   },
   {
+   "check": "categorical on newsprint: neighbors in a stack stand 0.10 apart in lightness, or the second is the hatched group",
+   "passes": true,
+   "detail": "Group 1 and Group 2: 0.366; Group 2 and Group 3: 0.237; Group 3 and Group 4: 0.187"
+  },
+  {
+   "check": "categorical on newsprint: neighbors in a stack differ by 10 points of black or more in one-ink print",
+   "passes": true,
+   "detail": "Group 1 and Group 2: 16 points; Group 2 and Group 3: 14 points; Group 3 and Group 4: 9 points"
+  },
+  {
    "check": "categorical on charcoal: every label 4.5 to 1 or more on its fill",
    "passes": true,
    "detail": "lowest 4.74"
@@ -140,6 +150,11 @@
    "detail": "1 pairs under 0.10, each with Group 4"
   },
   {
+   "check": "categorical on charcoal: neighbors in a stack stand 0.10 apart in lightness, or the second is the hatched group",
+   "passes": true,
+   "detail": "Group 1 and Group 2: 0.338; Group 2 and Group 3: 0.119; Group 3 and Group 4: 0.169"
+  },
+  {
    "check": "categorical on white: every label 4.5 to 1 or more on its fill",
    "passes": true,
    "detail": "lowest 4.74"
@@ -153,6 +168,16 @@
    "check": "categorical on white: only pairs with the hatched Stone group sit under 0.10 lightness",
    "passes": true,
    "detail": "1 pairs under 0.10, each with Group 4"
+  },
+  {
+   "check": "categorical on white: neighbors in a stack stand 0.10 apart in lightness, or the second is the hatched group",
+   "passes": true,
+   "detail": "Group 1 and Group 2: 0.366; Group 2 and Group 3: 0.237; Group 3 and Group 4: 0.187"
+  },
+  {
+   "check": "categorical on white: neighbors in a stack differ by 10 points of black or more in one-ink print",
+   "passes": true,
+   "detail": "Group 1 and Group 2: 16 points; Group 2 and Group 3: 14 points; Group 3 and Group 4: 9 points"
   },
   {
    "check": "magnitude on newsprint: every label 4.5 to 1 or more on its fill",
@@ -210,19 +235,19 @@
    "detail": "prussianN56 #828A9D, prussianN29 #505C7D"
   },
   {
-   "check": "grade line code at 2 px: a 28-width run holds at least three dash-dot periods",
+   "check": "grade line code at 2 px: the 20-width shortest run holds two full dash-dot periods and the closing dash",
    "passes": true,
-   "detail": "run 56 px, period 16.0 px"
+   "detail": "run 40 px, period 16 px"
   },
   {
-   "check": "grade line code at 3 px: a 28-width run holds at least three dash-dot periods",
+   "check": "grade line code at 3 px: the 20-width shortest run holds two full dash-dot periods and the closing dash",
    "passes": true,
-   "detail": "run 84 px, period 24.0 px"
+   "detail": "run 60 px, period 24 px"
   },
   {
-   "check": "grade line code at 6 px: a 28-width run holds at least three dash-dot periods",
+   "check": "grade line code at 6 px: the 20-width shortest run holds two full dash-dot periods and the closing dash",
    "passes": true,
-   "detail": "run 168 px, period 48.0 px"
+   "detail": "run 120 px, period 48 px"
   }
  ],
  "palettes": {
@@ -1311,31 +1336,11 @@
       "name": "Group 2",
       "fill_token": "oa.chart.color.categorical.fill.group2.onNewsprint",
       "fill_css": "--oa-chart-color-categorical-fill-group2-on-newsprint",
-      "fill_hex": "#1F2D5A",
-      "fill_status": "proposed",
-      "fill_on_ground": 9.42,
-      "label_token": "oa.chart.color.categorical.label.group2.onNewsprint",
-      "label_css": "--oa-chart-color-categorical-label-group2-on-newsprint",
-      "label_hex": "#FFFFFF",
-      "label_status": "proposed",
-      "label_on_fill": 13.28,
-      "label_ground": "the fill",
-      "oklab_L": 0.311,
-      "luminance_gray": "#303030",
-      "black_screen_pct": 97,
-      "sim_protanopia": "#17325C",
-      "sim_deuteranopia": "#0E2D59",
-      "sim_tritanopia": "#00373F"
-     },
-     {
-      "name": "Group 3",
-      "fill_token": "oa.chart.color.categorical.fill.group3.onNewsprint",
-      "fill_css": "--oa-chart-color-categorical-fill-group3-on-newsprint",
       "fill_hex": "#4A7C74",
       "fill_status": "proposed",
       "fill_on_ground": 3.37,
-      "label_token": "oa.chart.color.categorical.label.group3.onNewsprint",
-      "label_css": "--oa-chart-color-categorical-label-group3-on-newsprint",
+      "label_token": "oa.chart.color.categorical.label.group2.onNewsprint",
+      "label_css": "--oa-chart-color-categorical-label-group2-on-newsprint",
       "label_hex": "#FFFFFF",
       "label_status": "proposed",
       "label_on_fill": 4.74,
@@ -1348,14 +1353,34 @@
       "sim_tritanopia": "#387E79"
      },
      {
+      "name": "Group 3",
+      "fill_token": "oa.chart.color.categorical.fill.group3.onNewsprint",
+      "fill_css": "--oa-chart-color-categorical-fill-group3-on-newsprint",
+      "fill_hex": "#1F2D5A",
+      "fill_status": "proposed",
+      "fill_on_ground": 9.42,
+      "label_token": "oa.chart.color.categorical.label.group3.onNewsprint",
+      "label_css": "--oa-chart-color-categorical-label-group3-on-newsprint",
+      "label_hex": "#FFFFFF",
+      "label_status": "proposed",
+      "label_on_fill": 13.28,
+      "label_ground": "the fill",
+      "oklab_L": 0.311,
+      "luminance_gray": "#303030",
+      "black_screen_pct": 97,
+      "sim_protanopia": "#17325C",
+      "sim_deuteranopia": "#0E2D59",
+      "sim_tritanopia": "#00373F"
+     },
+     {
       "name": "Group 4",
       "fill_token": "oa.chart.color.categorical.fill.group4.onNewsprint",
       "fill_css": "--oa-chart-color-categorical-fill-group4-on-newsprint",
       "fill_hex": "#5D636D",
       "fill_status": "proposed",
       "fill_on_ground": 4.29,
-      "label_token": "oa.chart.color.categorical.label.group4.onNewsprint",
-      "label_css": "--oa-chart-color-categorical-label-group4-on-newsprint",
+      "label_token": "oa.chart.color.categorical.labelBeside.group4.onNewsprint",
+      "label_css": "--oa-chart-color-categorical-label-beside-group4-on-newsprint",
       "label_hex": "#121212",
       "label_status": "proposed",
       "label_on_fill": 13.29,
@@ -1373,42 +1398,42 @@
      "normal": {
       "delta_e_ok": 0.074,
       "between": [
-       "Group 3",
+       "Group 2",
        "Group 4"
       ]
      },
      "protanopia": {
       "delta_e_ok": 0.072,
       "between": [
-       "Group 3",
+       "Group 2",
        "Group 4"
       ]
      },
      "deuteranopia": {
       "delta_e_ok": 0.051,
       "between": [
-       "Group 3",
+       "Group 2",
        "Group 4"
       ]
      },
      "tritanopia": {
       "delta_e_ok": 0.075,
       "between": [
-       "Group 3",
+       "Group 2",
        "Group 4"
       ]
      }
     },
     "lightness_gaps": [
      {
-      "delta_L": 0.129,
+      "delta_L": 0.366,
       "between": [
        "Group 1",
        "Group 2"
       ]
      },
      {
-      "delta_L": 0.366,
+      "delta_L": 0.129,
       "between": [
        "Group 1",
        "Group 3"
@@ -1429,14 +1454,14 @@
       ]
      },
      {
-      "delta_L": 0.187,
+      "delta_L": 0.05,
       "between": [
        "Group 2",
        "Group 4"
       ]
      },
      {
-      "delta_L": 0.05,
+      "delta_L": 0.187,
       "between": [
        "Group 3",
        "Group 4"
@@ -1447,7 +1472,7 @@
     "pairs_under_margin": [
      {
       "between": [
-       "Group 3",
+       "Group 2",
        "Group 4"
       ],
       "delta_L": 0.05,
@@ -1485,31 +1510,11 @@
       "name": "Group 2",
       "fill_token": "oa.chart.color.categorical.fill.group2.onCharcoal",
       "fill_css": "--oa-chart-color-categorical-fill-group2-on-charcoal",
-      "fill_hex": "#8E94A4",
-      "fill_status": "proposed",
-      "fill_on_ground": 6.18,
-      "label_token": "oa.chart.color.categorical.label.group2.onCharcoal",
-      "label_css": "--oa-chart-color-categorical-label-group2-on-charcoal",
-      "label_hex": "#121212",
-      "label_status": "proposed",
-      "label_on_fill": 6.18,
-      "label_ground": "the fill",
-      "oklab_L": 0.667,
-      "luminance_gray": "#949494",
-      "black_screen_pct": 70,
-      "sim_protanopia": "#9095A5",
-      "sim_deuteranopia": "#8E93A4",
-      "sim_tritanopia": "#899799"
-     },
-     {
-      "name": "Group 3",
-      "fill_token": "oa.chart.color.categorical.fill.group3.onCharcoal",
-      "fill_css": "--oa-chart-color-categorical-fill-group3-on-charcoal",
       "fill_hex": "#4A7C74",
       "fill_status": "proposed",
       "fill_on_ground": 3.95,
-      "label_token": "oa.chart.color.categorical.label.group3.onCharcoal",
-      "label_css": "--oa-chart-color-categorical-label-group3-on-charcoal",
+      "label_token": "oa.chart.color.categorical.label.group2.onCharcoal",
+      "label_css": "--oa-chart-color-categorical-label-group2-on-charcoal",
       "label_hex": "#FFFFFF",
       "label_status": "proposed",
       "label_on_fill": 4.74,
@@ -1522,14 +1527,34 @@
       "sim_tritanopia": "#387E79"
      },
      {
+      "name": "Group 3",
+      "fill_token": "oa.chart.color.categorical.fill.group3.onCharcoal",
+      "fill_css": "--oa-chart-color-categorical-fill-group3-on-charcoal",
+      "fill_hex": "#8E94A4",
+      "fill_status": "proposed",
+      "fill_on_ground": 6.18,
+      "label_token": "oa.chart.color.categorical.label.group3.onCharcoal",
+      "label_css": "--oa-chart-color-categorical-label-group3-on-charcoal",
+      "label_hex": "#121212",
+      "label_status": "proposed",
+      "label_on_fill": 6.18,
+      "label_ground": "the fill",
+      "oklab_L": 0.667,
+      "luminance_gray": "#949494",
+      "black_screen_pct": 70,
+      "sim_protanopia": "#9095A5",
+      "sim_deuteranopia": "#8E93A4",
+      "sim_tritanopia": "#899799"
+     },
+     {
       "name": "Group 4",
       "fill_token": "oa.chart.color.categorical.fill.group4.onCharcoal",
       "fill_css": "--oa-chart-color-categorical-fill-group4-on-charcoal",
       "fill_hex": "#5D636D",
       "fill_status": "proposed",
       "fill_on_ground": 3.1,
-      "label_token": "oa.chart.color.categorical.label.group4.onCharcoal",
-      "label_css": "--oa-chart-color-categorical-label-group4-on-charcoal",
+      "label_token": "oa.chart.color.categorical.labelBeside.group4.onCharcoal",
+      "label_css": "--oa-chart-color-categorical-label-beside-group4-on-charcoal",
       "label_hex": "#DCD9D2",
       "label_status": "proposed",
       "label_on_fill": 13.29,
@@ -1547,42 +1572,42 @@
      "normal": {
       "delta_e_ok": 0.074,
       "between": [
-       "Group 3",
+       "Group 2",
        "Group 4"
       ]
      },
      "protanopia": {
       "delta_e_ok": 0.072,
       "between": [
-       "Group 3",
+       "Group 2",
        "Group 4"
       ]
      },
      "deuteranopia": {
       "delta_e_ok": 0.051,
       "between": [
-       "Group 3",
+       "Group 2",
        "Group 4"
       ]
      },
      "tritanopia": {
       "delta_e_ok": 0.075,
       "between": [
-       "Group 3",
+       "Group 2",
        "Group 4"
       ]
      }
     },
     "lightness_gaps": [
      {
-      "delta_L": 0.219,
+      "delta_L": 0.338,
       "between": [
        "Group 1",
        "Group 2"
       ]
      },
      {
-      "delta_L": 0.338,
+      "delta_L": 0.219,
       "between": [
        "Group 1",
        "Group 3"
@@ -1603,14 +1628,14 @@
       ]
      },
      {
-      "delta_L": 0.169,
+      "delta_L": 0.05,
       "between": [
        "Group 2",
        "Group 4"
       ]
      },
      {
-      "delta_L": 0.05,
+      "delta_L": 0.169,
       "between": [
        "Group 3",
        "Group 4"
@@ -1621,7 +1646,7 @@
     "pairs_under_margin": [
      {
       "between": [
-       "Group 3",
+       "Group 2",
        "Group 4"
       ],
       "delta_L": 0.05,
@@ -1659,31 +1684,11 @@
       "name": "Group 2",
       "fill_token": "oa.chart.color.categorical.fill.group2.onNewsprint",
       "fill_css": "--oa-chart-color-categorical-fill-group2-on-newsprint",
-      "fill_hex": "#1F2D5A",
-      "fill_status": "proposed",
-      "fill_on_ground": 13.28,
-      "label_token": "oa.chart.color.categorical.label.group2.onNewsprint",
-      "label_css": "--oa-chart-color-categorical-label-group2-on-newsprint",
-      "label_hex": "#FFFFFF",
-      "label_status": "proposed",
-      "label_on_fill": 13.28,
-      "label_ground": "the fill",
-      "oklab_L": 0.311,
-      "luminance_gray": "#303030",
-      "black_screen_pct": 97,
-      "sim_protanopia": "#17325C",
-      "sim_deuteranopia": "#0E2D59",
-      "sim_tritanopia": "#00373F"
-     },
-     {
-      "name": "Group 3",
-      "fill_token": "oa.chart.color.categorical.fill.group3.onNewsprint",
-      "fill_css": "--oa-chart-color-categorical-fill-group3-on-newsprint",
       "fill_hex": "#4A7C74",
       "fill_status": "proposed",
       "fill_on_ground": 4.74,
-      "label_token": "oa.chart.color.categorical.label.group3.onNewsprint",
-      "label_css": "--oa-chart-color-categorical-label-group3-on-newsprint",
+      "label_token": "oa.chart.color.categorical.label.group2.onNewsprint",
+      "label_css": "--oa-chart-color-categorical-label-group2-on-newsprint",
       "label_hex": "#FFFFFF",
       "label_status": "proposed",
       "label_on_fill": 4.74,
@@ -1696,14 +1701,34 @@
       "sim_tritanopia": "#387E79"
      },
      {
+      "name": "Group 3",
+      "fill_token": "oa.chart.color.categorical.fill.group3.onNewsprint",
+      "fill_css": "--oa-chart-color-categorical-fill-group3-on-newsprint",
+      "fill_hex": "#1F2D5A",
+      "fill_status": "proposed",
+      "fill_on_ground": 13.28,
+      "label_token": "oa.chart.color.categorical.label.group3.onNewsprint",
+      "label_css": "--oa-chart-color-categorical-label-group3-on-newsprint",
+      "label_hex": "#FFFFFF",
+      "label_status": "proposed",
+      "label_on_fill": 13.28,
+      "label_ground": "the fill",
+      "oklab_L": 0.311,
+      "luminance_gray": "#303030",
+      "black_screen_pct": 97,
+      "sim_protanopia": "#17325C",
+      "sim_deuteranopia": "#0E2D59",
+      "sim_tritanopia": "#00373F"
+     },
+     {
       "name": "Group 4",
       "fill_token": "oa.chart.color.categorical.fill.group4.onNewsprint",
       "fill_css": "--oa-chart-color-categorical-fill-group4-on-newsprint",
       "fill_hex": "#5D636D",
       "fill_status": "proposed",
       "fill_on_ground": 6.05,
-      "label_token": "oa.chart.color.categorical.label.group4.onNewsprint",
-      "label_css": "--oa-chart-color-categorical-label-group4-on-newsprint",
+      "label_token": "oa.chart.color.categorical.labelBeside.group4.onNewsprint",
+      "label_css": "--oa-chart-color-categorical-label-beside-group4-on-newsprint",
       "label_hex": "#121212",
       "label_status": "proposed",
       "label_on_fill": 18.73,
@@ -1721,42 +1746,42 @@
      "normal": {
       "delta_e_ok": 0.074,
       "between": [
-       "Group 3",
+       "Group 2",
        "Group 4"
       ]
      },
      "protanopia": {
       "delta_e_ok": 0.072,
       "between": [
-       "Group 3",
+       "Group 2",
        "Group 4"
       ]
      },
      "deuteranopia": {
       "delta_e_ok": 0.051,
       "between": [
-       "Group 3",
+       "Group 2",
        "Group 4"
       ]
      },
      "tritanopia": {
       "delta_e_ok": 0.075,
       "between": [
-       "Group 3",
+       "Group 2",
        "Group 4"
       ]
      }
     },
     "lightness_gaps": [
      {
-      "delta_L": 0.129,
+      "delta_L": 0.366,
       "between": [
        "Group 1",
        "Group 2"
       ]
      },
      {
-      "delta_L": 0.366,
+      "delta_L": 0.129,
       "between": [
        "Group 1",
        "Group 3"
@@ -1777,14 +1802,14 @@
       ]
      },
      {
-      "delta_L": 0.187,
+      "delta_L": 0.05,
       "between": [
        "Group 2",
        "Group 4"
       ]
      },
      {
-      "delta_L": 0.05,
+      "delta_L": 0.187,
       "between": [
        "Group 3",
        "Group 4"
@@ -1795,7 +1820,7 @@
     "pairs_under_margin": [
      {
       "between": [
-       "Group 3",
+       "Group 2",
        "Group 4"
       ],
       "delta_L": 0.05,
@@ -3032,7 +3057,8 @@
    "stack_groups": [
     "Health care and social assistance",
     "Government",
-    "Professional and business services"
+    "Manufacturing",
+    "Information"
    ]
   }
  },

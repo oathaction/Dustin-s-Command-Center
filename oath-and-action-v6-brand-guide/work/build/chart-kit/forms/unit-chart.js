@@ -5,7 +5,10 @@
  * optional: groups up to max print as one column), count_label (words before the counts row, optional). */
 (function (K) {
   'use strict';
-  var STY = { solid: { fill: 'subject' }, open: { fill: 'surface', stroke: 'subject' }, gray: { fill: 'light-fill' }, hatch: { pattern: 'u-hatch', stroke: 'subject' }, dashed: { fill: 'none', stroke: 'subject', dash: '2 2' } };
+  // the shared styles, with the unit chart's own hatch name and dash; text inks are not used here
+  var OVER = { hatch: { pattern: 'u-hatch' }, dashed: { dash: '2 2' } };
+  var STY = {};
+  ['solid', 'open', 'gray', 'hatch', 'dashed'].forEach(function (n) { STY[n] = K.parts.style(n, OVER); delete STY[n].text; });
   // The mirrored layout (E17, Phase 2's S08): one category stacks up from a central row of group labels, a second hangs down
   // from it, and the rest share a band below with their own key; a ring marks one square with its words on a leader.
   function mirrored(c, gkey, groups) {
@@ -26,10 +29,7 @@
     var nUp = nrows(up), nDown = nrows(down);
     var ring = L.ring || null, ringBox = null;
     var draw_unit = function (r, x, y, style) {
-      var st = STY[style] || STY.solid;
-      if (st.pattern) c.pattern(st.pattern, st.stroke);
-      c.rect(x, y, u, u, { fill: st.fill === 'none' ? 'none' : st.fill, pattern: st.pattern, kind: 'unit', data: { key: r[ek], field: ec, value: r[ec] } });
-      if (st.stroke) c.rect(x + 0.5, y + 0.5, u - 1, u - 1, { stroke: st.stroke, dash: st.dash, mark: false });
+      K.parts.styled(c, x, y, u, u, STY[style] || STY.solid, { kind: 'unit', data: { key: r[ek], field: ec, value: r[ec] } });
       if (ring && r[ek] === ring.key) ringBox = [x, y];
     };
     var colx = function (gi, j, n) { var used = Math.min(per, n); return x0 + gi * cw + (cw - used * (u + ug) + ug) / 2 + (j % per) * (u + ug); };
@@ -176,9 +176,7 @@
           (cell[g + '\u0000' + cat.value] || []).forEach(function (r, j) {
             var col = j % per, rw = Math.floor(j / per);
             var x = x0 + gi * cw + (cw - Math.min(per, (cell[g + '\u0000' + cat.value] || []).length) * (u + ug) + ug) / 2 + col * (u + ug), yy = y + rw * (u + ug);
-            if (st.pattern) c.pattern(st.pattern, st.stroke);
-            c.rect(x, yy, u, u, { fill: st.fill === 'none' ? 'none' : st.fill, pattern: st.pattern, kind: 'unit', data: { key: r[ek], field: ec, value: r[ec] } });
-            if (st.stroke) c.rect(x + 0.5, yy + 0.5, u - 1, u - 1, { stroke: st.stroke, dash: st.dash, mark: false });
+            K.parts.styled(c, x, yy, u, u, st, { kind: 'unit', data: { key: r[ek], field: ec, value: r[ec] } });
           });
         });
         y += bandH + 8;

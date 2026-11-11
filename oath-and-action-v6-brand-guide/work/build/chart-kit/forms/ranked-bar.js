@@ -5,13 +5,7 @@
  * value_unit (words after each total, optional). formats: value. */
 (function (K) {
   'use strict';
-  var STYLE = {
-    solid: { fill: 'subject', text: 'label-on-subject' },
-    open: { fill: 'surface', stroke: 'subject', text: 'label' },
-    gray: { fill: 'light-fill', text: 'label' },
-    hatch: { pattern: 'hatch', stroke: 'subject', text: null },
-    dashed: { fill: 'none', stroke: 'subject', dash: '3 2', text: null },
-  };
+  var STYLE = function (n) { return K.parts.style(n); };
   K.register_chart({
     form: 'ranked-bar',
     name: 'Ranked Bar',
@@ -27,7 +21,7 @@
       if (defs.length) {
         y += c.size('label') + 2;
         y += P.key(c, defs.map(function (d) {
-          var s = STYLE[d.style] || STYLE.solid;
+          var s = STYLE(d.style);
           return { label: d.label, fill: s.fill === 'none' || s.fill === 'surface' ? null : s.fill, stroke: s.stroke, dash: s.dash, open: s.fill === 'surface', pattern: s.pattern, direct: d.style !== 'solid' && d.style !== 'gray' };
         }), 0, y, W) + 10;
       }
@@ -51,10 +45,8 @@
           defs.forEach(function (d) {
             var v = r[d.field] || 0;
             if (!v) return;
-            var w = xs(v) - x0, s = STYLE[d.style] || STYLE.solid;
-            if (s.pattern) c.pattern(s.pattern, s.stroke);
-            c.rect(x, by, w, bh, { fill: s.fill === 'none' ? 'none' : s.fill, pattern: s.pattern, kind: x === x0 ? 'bar' : 'segment', axis: 'x', zero: x0, data: { key: r[ek], field: d.field, value: v } });
-            if (s.stroke) c.rect(x + 0.5, by + 0.5, w - 1, bh - 1, { stroke: s.stroke, dash: s.dash, mark: false });
+            var w = xs(v) - x0, s = STYLE(d.style);
+            K.parts.styled(c, x, by, w, bh, s, { kind: x === x0 ? 'bar' : 'segment', axis: 'x', zero: x0, data: { key: r[ek], field: d.field, value: v } });
             var t = K.fmt(v, f.value || 'integer');
             if (s.text && c.measure(t, 'label', 700) + 8 < w) c.text(x + w / 2, cy + size * 0.35, t, { role: 'label', weight: 700, anchor: 'middle', fill: s.text });
             x += w;

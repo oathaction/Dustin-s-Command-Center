@@ -14,7 +14,7 @@
     draw: function (c) {
       var G = globalThis.OAChartGeo, rows = c.rows, ec = c.field('code'), es = c.field('shift'), ef = c.field('from', false), et = c.field('to', false);
       var L = c.labels, f = c.spec.formats || {}, W = c.width;
-      var gap = c.t(c.phone ? 'tile-phone-gap' : 'tile-gap'), size = Math.min(c.t('tile-size-max'), Math.floor((W - 11 * gap) / 12)), pitch = size + gap;
+      var tm = K.parts.tiles(c), gap = tm.gap, size = tm.size, pitch = tm.pitch;
       var max = Math.max.apply(null, rows.map(function (r) { return Math.abs(r[es]); }));
       var ky = 0;
       // key

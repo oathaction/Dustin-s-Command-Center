@@ -77,11 +77,11 @@
    "description": "Census footnote text or a description of the break"
   }
  },
- "printed_source_line": "Source: U.S. Census Bureau, Poverty in the United States: 2025 (P60-290), Table 8, Supplemental Poverty Measure, children under 18, 2009 to 2025, United States. Retrieved November 6, 2026. Figures for 2019 to 2024 include the Bureau’s August 2026 revision and differ by up to 0.4 points from those first published.",
+ "printed_source_line": "Source: U.S. Census Bureau, Poverty in the United States: 2025 (P60-290), Table 8, Supplemental Poverty Measure, children under 18, 2009 to 2025, United States. Retrieved November 6, 2026. Figures for 2019 to 2024 include the Bureau’s August 2026 correction to the poverty thresholds, and 2024 also takes new population weights; they differ by up to 0.4 points from the earlier release.",
  "source_line_variants": {
   "source_line_official_measure": "Source: U.S. Census Bureau, Poverty in the United States: 2025 (P60-290), Table 3, official poverty measure, children under 18, 2009 to 2025, United States. Retrieved November 6, 2026. The official measure compares pretax money income with a national threshold and leaves out several assistance programs that the SPM counts.",
-  "source_line_first_published": "Source: U.S. Census Bureau, Poverty in the United States: 2024 (P60-287), Table B-2, Supplemental Poverty Measure, children under 18, 2020, 2021 and 2024, United States. Retrieved November 6, 2026. Rates as first published; the Bureau revised 2019 to 2024 in August 2026.",
-  "source_line_both_measures": "Source: U.S. Census Bureau, Poverty in the United States: 2025 (P60-290), Table 8, Supplemental Poverty Measure, and Table 3, official poverty measure, children under 18, 2009 to 2025, United States. Retrieved November 6, 2026. Figures for 2019 to 2024 include the Bureau’s August 2026 revision and differ by up to 0.4 points from those first published."
+  "source_line_first_published": "Source: U.S. Census Bureau, Poverty in the United States: 2024 (P60-287), Table B-2, Supplemental Poverty Measure, children under 18, 2020, 2021 and 2024, United States. Retrieved November 6, 2026. Rates as published before the Bureau’s August 2026 correction; P60-277 (September 13, 2022) printed the same 2020 and 2021 rates.",
+  "source_line_both_measures": "Source: U.S. Census Bureau, Poverty in the United States: 2025 (P60-290), Table 8, Supplemental Poverty Measure, and Table 3, official poverty measure, children under 18, 2009 to 2025, United States. Retrieved November 6, 2026. Figures for 2019 to 2024 include the Bureau’s August 2026 correction to the poverty thresholds, and 2024 also takes new population weights; they differ by up to 0.4 points from the earlier release."
  },
  "ledger_row": "P7-105",
  "domain": "D08",

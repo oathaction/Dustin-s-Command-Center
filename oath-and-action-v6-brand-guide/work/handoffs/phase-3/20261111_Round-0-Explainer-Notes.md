@@ -98,12 +98,18 @@ To the engineer (kit and data), numbered so a reply can name them. Each says whi
 
 - **E26. The results table's phone card (S15).** Phase 2's phone card named the leader and margin in both years ("2024 Democratic +83.8", "2020 Democratic +86.8") and the shift in words beside its arrow; the kit's phone row prints the 2024 margin only. Please add the 2020 line under it in the secondary ink. S15's phone note describes what the kit draws today.
 
+- **E27. For and against on S01's split bars.** With the party split (D3-07, X8), each segment reads "Republican 218" or "Democratic 198", and the words "for" and "against" that Phase 2 printed on the two sides are gone; only the tally, "232 to 198", and the side of the bar say which is which. Please let a vote take `party_words_yes` and `party_words_no` ("{party} {v} for", "{party} {v} against"), set inside the segment where they fit.
+- **E28. The ring's leader on S08.** RL47's ring sits on the top square of 2026's away stack, but its leader runs only from "19 states" up to the foot of the stack, so it does not reach the ringed square. Phase 2 drew the ringed square at the foot of the stack, with the leader just under it. Please run the leader to the ring, or draw the ringed square last in its stack.
+
 To the research lead (sidecars and sources), through the engineer where the sidecar is the engineer's copy:
 
 - **R1. S02's source line names one of its two tables.** The chart draws the Supplemental Poverty Measure (Table 8) and the official measure (Table 3); the printed line names Table 8 only. Please add a variant naming both, for example "Source: U.S. Census Bureau, Poverty in the United States: 2025 (P60-290), Table 8, Supplemental Poverty Measure, and Table 3, official poverty measure, children under 18, 2009 to 2025, United States. Retrieved November 6, 2026. Figures for 2019 to 2024 include the Bureau’s August 2026 revision and differ by up to 0.4 points from those first published." I will switch the spec to it the moment it lands.
 - **R2. S16's source line names 2020 too.** S16 draws 2024 rows only; the sidecar's line reads "November 2024 (and November 2020)". Please add a 2024-only variant, as Phase 2 printed it: "... Table 4a, reported voting for states, November 2024, 50 states and DC. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over; state margins of error reach 5.6 points."
 - **R3. S01's bill text source.** DR-98 asks S01 to name both provisions of H.R. 7008; they come from the bill's text as the House passed it (sections 2 and 3), which the Phase 2 apply pass read on govinfo.gov (DR-126's source line). S01 cites it in a note today. Please fold it into the sidecar's printed line, in H04's order, so the source line carries it.
 - **R4. Margins of error for S04 and S05 (DR-64).** S04's title singles out a gap between age groups that grew by four points; Table A-1 publishes no margins of error. S05's title compares the 2025 gap with 2003's; the sidecar has margins for 2025 only. Please find the Census Bureau's published standard errors or source-and-accuracy parameters for both, so each title can say whether its change passes the margin, as DR-64 asks. Both titles keep Phase 2's approved wording until then, with a note that says what is missing.
+
+- **R5. The survey's margin for S01 (D3-83).** A survey tabulation carries the publisher's margin of error where one exists. The Program for Public Consultation's report on its May 2023 survey of 2,625 registered voters may state one; it is not in `v7-stock-trading-ban` or its sources' notes. If it exists, please add it to the sidecar so S01 can print it.
+- **R6. The payroll interval for S14 (D3-83, D3-87).** Your fix pass found the Bureau of Labor Statistics' 90 percent interval for a month's change in total payrolls, about ±122,000 (ledger P7-042). It lives in the ledger only; S14 can print it once `fred-payrolls-monthly-change`'s sidecar carries it with its source and date. I have not added it: D3-87 holds S14's words for Dustin, and the interval bears directly on his answer.
 
 ## Tested
 
@@ -121,3 +127,37 @@ To the research lead (sidecars and sources), through the engineer where the side
 - The Charcoal drawings against the palette tokens the data lead is proposing; S06's tints resolve to near black on Charcoal until pair B's Charcoal steps land.
 - The kit's self-test, the drawing-method pilot and the page weight in a guide build, which are the engineer's.
 - Whether the research lead can supply R1 to R4; nothing in the specs assumes an answer.
+
+## Fix pass
+
+November 11, from the coordinator's message: the engineer's X1 to X9, D3-83, D3-07 with D3-89, and the research lead's answers to R1 to R4. All 16 specs rebuilt with `oa-chart.mjs build --all`: 16 of 16 pass every check, at 1440 and 390 px on Newsprint and Charcoal and in the new 328 px column check. The board folder is refreshed with the same lean set: 192 files, 26 MB (grayscale proofs now one gray channel, E24).
+
+| Item | What changed | Specs |
+|---|---|---|
+| X9 | Source lines name the atlas as readers know it, "Oath & Action’s systems atlas, Who Do They Answer To?", from each sidecar's printed line; no spec says "Atlas V7" | S01, S03, S06, S08, S09, S10 |
+| X8, D3-07 | S01 lists `congress-hr7008-roll-calls` and draws both chambers' party splits together, each party named on its mark in neutral inks (DR-48, DR-58, Rule 01.2); the kit checks each split adds to V7's totals. A note, the alt text and the chart notes give the splits in words, with the Senate vote named as a vote on ending debate on taking up the bill. Source line: the sidecar's `with_bill_text` variant, so the bill-text note goes | S01 |
+| D3-89 | The reading guide, right under the title, says the May 2023 survey asked about a ban alone, three years before either vote; the first note and the source line repeat the three years | S01 |
+| X1 | Phase 2's mirror, the neither-way band, every year from 2013 (2019 and 2023 at 0) and the ring around RL47; the notes describe the ring again | S08 |
+| X2 | "How to read an arrow", the side note on the six changes of leader near Wisconsin, and "points" on the axis | S11 |
+| X3 | The United States beside the key and the largest and smallest lists drawn; the lists leave the notes | S12 |
+| X4 | Phase 2's two-part figure: a sparkline table of the total, its two parts and federal jobs, indented, above the fourteen private-industry panels; ticks −10 to "20%" | S13 |
+| X5 | The phone card adds "2020: Democratic +86.8" under the 2024 line; the phone note names both years again | S15 |
+| X6 | No words changed: on a phone the long notes leave the plot by themselves. I added the phone line key (`series_key`), as Phase 2's phone drew it | S02 |
+| X7 | Size key reads 1, 5 and 20 million | S16 |
+| D3-83 | Grade lines print "Documented: <source>": "Documented: a Census Bureau survey", "Documented: a Bureau of Labor Statistics survey of employers, as copied by FRED". "Official statistic" leaves every spec. S02, S04 and S05 now print the publisher's margins of error and say each claim passes them; S16 already did | S02, S04, S05, S13, S14, S16 |
+| R1 | S02's line names Tables 8 and 3 (`source_line_both_measures`, in ENG-5's corrected wording) | S02 |
+| R2 | S16's line is the 2024-only variant | S16 |
+| R3 | Folded into S01's `with_bill_text` line (ENG-1) | S01 |
+| R4 | S04 and S05 list the research lead's margin tables as second datasets, with a source line that names both tables. S04: the gap grew 3.9 points against a margin of about 2.0. S05: the White and Black gap widened 2.3 points against about 0.7, and the White and Hispanic gap narrowed 2.9, also past its margin. Both titles stand, now supported | S04, S05 |
+| ENG-6, ENG-7 | S07 takes Ballotpedia's new line, which labels it a secondary source. S16's table now lists the United States row (65.3 percent, margin 0.5), so the key's "Nation 65.3%" matches a data row (DR-64) | S07, S16 |
+
+Routine calls, fix pass:
+
+D3-xxx | S01 keeps chapter 02's "individual stocks" for section 2, though the research lead's plain summary says "a covered investment" | Rule 02.25 and the Phase 2 apply pass read the same section; one wording across the guide. The data lead may prefer the bill's term
+D3-xxx | S04 and S05 keep their Phase 2 titles and state the margin test in the first note | DR-64 asks a chart to say so; the titles already make only the claims the margins now support
+D3-xxx | S14 prints no payroll interval yet | The interval is in the research ledger, not a sidecar, and D3-87 holds S14's words for Dustin (R6)
+D3-xxx | S16's United States row prints in the table in name order, labeled, and on the key as "Nation 65.3%" | The bubble map draws no circle for the nation; the key is where it stands apart
+
+Still open after the fix pass: E13 (S05's brackets), E20's 11-column phone grid, E27, E28, R5 and R6.
+
+Tested in the fix pass: `oa-chart.mjs build --all`, 16 of 16 passing; each changed specimen viewed at 1440 (S01, S08, S11, S12, S13) or 390 (S02); the S16 table and CSV checked for the United States row; a scan of the exported SVGs for "Atlas V7" and "Official statistic", none found. Not tested: Phase 2's captures beside the fix-pass captures at 2x; S04, S05, S07, S10, S15 and S16 viewed after the fix pass.

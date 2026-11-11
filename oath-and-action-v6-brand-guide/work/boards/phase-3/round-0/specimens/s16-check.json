@@ -2,35 +2,35 @@
  "id": "S16",
  "form": "bubble-map",
  "spec": "work/build/chart-kit/specs/s16.json",
- "rows": 51,
+ "rows": 52,
  "drawings": [
   {
    "ground": "newsprint",
    "page": 1440,
    "width": 1024,
-   "height": 791,
-   "svg_bytes": 63807
+   "height": 760,
+   "svg_bytes": 63361
   },
   {
    "ground": "newsprint",
    "page": 390,
    "width": 358,
-   "height": 446,
-   "svg_bytes": 64821
+   "height": 419,
+   "svg_bytes": 64137
   },
   {
    "ground": "charcoal",
    "page": 1440,
    "width": 1024,
-   "height": 791,
-   "svg_bytes": 63807
+   "height": 760,
+   "svg_bytes": 63361
   },
   {
    "ground": "charcoal",
    "page": 390,
    "width": 358,
-   "height": 446,
-   "svg_bytes": 64821
+   "height": 419,
+   "svg_bytes": 64137
   }
  ],
  "faults": []

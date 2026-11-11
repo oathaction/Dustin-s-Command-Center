@@ -84,10 +84,10 @@
     ]
   },
   "chart_notes": [
-    "Each margin sits on the side of the nominee who led, with the party named. Bars grow from the center line; arrows give the shift toward the Republican nominee. The rows run in order of the 2024 margin, with a line where the leader changes. On phones each row shows the 2024 margin and the shift, and the 2020 margin is in this table."
+    "Each margin sits on the side of the nominee who led, with the party named. Bars grow from the center line; arrows give the shift toward the Republican nominee. The rows run in order of the 2024 margin, with a line where the leader changes. Where a full row does not fit, each row becomes a card that names the leader and margin in each year and gives the shift beside its arrow."
   ],
   "phone": "differs",
-  "phone_note": "On phones each row shows the state, its 2024 margin with the leader named and the shift toward the Republican nominee beside its arrow; the 2020 margin is in the table equivalent.",
+  "phone_note": "Where a full row does not fit, each row becomes a card that names the leader and margin in 2024 and in 2020 and gives the shift toward the Republican nominee beside its arrow.",
   "artboard": "wide",
   "domain": "D02",
   "states": [],
@@ -112,13 +112,15 @@
     },
     "tag": "Leader changed",
     "apart_value": "nation",
-    "even_line": "Even line. In every row above, the Democratic nominee led in 2024; in every row below, the Republican nominee led."
+    "even_line": "Even line. In every row above, the Democratic nominee led in 2024; in every row below, the Republican nominee led.",
+    "phone_from": "2020: {from}"
   },
   "notes_internal": [
     "DR-64: the United States row (scope nation) is drawn above the states, set apart and labeled; Phase 2's S15 had none.",
     "Party names in words and neutral inks (H10, DR-48, DR-58).",
     "The table equivalent joins Phase 2's two tables, the margins and the vote shares, so one table holds every row the chart draws.",
-    "Checked by script: Republican lead in 31 states in 2024 and 25 in 2020; changed leader WI 0.86, MI 1.41, PA 1.70, GA 2.19, NV 3.10, AZ 5.53."
+    "Checked by script: Republican lead in 31 states in 2024 and 25 in 2020; changed leader WI 0.86, MI 1.41, PA 1.70, GA 2.19, NV 3.10, AZ 5.53.",
+    "X5: the phone card adds the 2020 margin under the 2024 line (E26), so the phone note names both years again."
   ],
   "formats": {
     "margin": "number:1",

@@ -15,8 +15,8 @@
       var rows = c.rows, ec = c.field('code'), ek = c.field('category'), esub = c.field('sub', false), f = c.spec.formats || {};
       var W = c.width, cats = c.labels.categories || [], by = {};
       cats.forEach(function (x) { by[String(x.value)] = x; });
-      var gap = c.t(c.phone ? 'tile-phone-gap' : 'tile-gap'), size = Math.min(c.t('tile-size-max'), Math.floor((W - 11 * gap) / 12));
-      var pitch = size + gap, top = 0, tsize = c.phone ? c.t('type-tile-code-phone') : c.size('tick');
+      var tm = K.parts.tiles(c), gap = tm.gap, size = tm.size;
+      var pitch = tm.pitch, top = 0, tsize = c.phone ? c.t('type-tile-code-phone') : c.size('tick');
       var drawn = {};
       rows.forEach(function (r) {
         var t = G.tiles[r[ec]];

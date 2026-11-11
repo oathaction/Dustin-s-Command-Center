@@ -13,6 +13,7 @@ import fs from 'fs';
 import path from 'path';
 import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
+import { minify } from './tools/minify.mjs';
 
 const require = createRequire(import.meta.url);
 const KIT = path.dirname(fileURLToPath(import.meta.url));
@@ -178,20 +179,21 @@ export function island(spec, rows, columns, trim) {
   return '<script type="application/json" data-oa-chart-data>' + JSON.stringify(payload).replace(/</g, '\\u003c') + '</script>';
 }
 
-// The kit as a page carries it: full-line comments and indentation dropped, nothing else changed (no outside tool, no
-// renaming), so the same code runs in the page and in Node. A comment after code on its line stays.
+// The kit as a page carries it: minified by tools/minify.mjs (every comment and needless space dropped, nothing renamed),
+// so the same code runs in the page and in Node; tools/kit_snapshot.mjs proves the drawings identical (weight pass).
+// strip() is the round 0 pilot's lighter pass, kept for comparison.
 export function strip(js) {
   return js.replace(/^\s*\/\*[\s\S]*?\*\/\s*$/gm, '').split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('//')).join('\n');
 }
 export function kit_parts() {
   const forms = fs.readdirSync(path.join(KIT, 'forms')).filter(f => f.endsWith('.js')).sort();
-  const core = ['metrics.js', 'kit.js', 'parts.js'].map(f => strip(fs.readFileSync(path.join(KIT, f), 'utf8'))).join('\n');
-  return { core, geo: fs.readFileSync(path.join(KIT, 'geo.js'), 'utf8'), forms: Object.fromEntries(forms.map(f => [f, strip(fs.readFileSync(path.join(KIT, 'forms', f), 'utf8'))])),
+  const core = ['metrics.js', 'kit.js', 'parts.js'].map(f => minify(fs.readFileSync(path.join(KIT, f), 'utf8'))).join('');
+  return { core, geo: minify(fs.readFileSync(path.join(KIT, 'geo.js'), 'utf8')), forms: Object.fromEntries(forms.map(f => [f, minify(fs.readFileSync(path.join(KIT, 'forms', f), 'utf8'))])),
     css: fs.readFileSync(path.join(KIT, 'kit.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').split('\n').map(l => l.trim()).filter(Boolean).join('\n') };
 }
 export function kit_scripts() {
   const k = kit_parts();
-  return [k.core, k.geo].concat(Object.values(k.forms)).join('\n').replace(/<\/script/gi, '<\\/script');
+  return [k.core, k.geo].concat(Object.values(k.forms)).join('').replace(/<\/script/gi, '<\\/script');
 }
 export function kit_scripts_full() {
   const forms = fs.readdirSync(path.join(KIT, 'forms')).filter(f => f.endsWith('.js')).sort().map(f => fs.readFileSync(path.join(KIT, 'forms', f), 'utf8'));
