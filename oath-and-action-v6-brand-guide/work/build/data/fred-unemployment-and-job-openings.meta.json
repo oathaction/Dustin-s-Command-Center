@@ -1,0 +1,53 @@
+{
+ "file": "fred-unemployment-and-job-openings.csv",
+ "kind": "public",
+ "publisher": "U.S. Bureau of Labor Statistics, Current Population Survey and Job Openings and Labor Turnover Survey, as copied by the Federal Reserve Bank of St. Louis (FRED)",
+ "title_or_table": "FRED series UNRATE (Unemployment Rate) and JTSJOL (Job Openings: Total Nonfarm), downloaded together as fredgraph.csv",
+ "table_id": "UNRATE, JTSJOL",
+ "url": [
+  "https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE,JTSJOL",
+  "https://fred.stlouisfed.org/series/UNRATE",
+  "https://fred.stlouisfed.org/series/JTSJOL"
+ ],
+ "observation_period": "Monthly: unemployment rate January 1948 to October 2026, with October 2025 missing; job openings December 2000 to September 2026",
+ "geography": "United States",
+ "universe_or_base": "Unemployment rate: unemployed people as a percent of the civilian labor force, 16 and over. Job openings: open positions at nonfarm employers on the last business day of the month",
+ "unit": "unemployment_rate in percent; job_openings_thousands in thousands of openings; both seasonally adjusted as FRED serves these series",
+ "date_retrieved": "2026-11-11",
+ "vintage": "FRED values as of Dustin Cathcart's download on November 11, 2026 (attached to the studio chat at 22:27 UTC); SHA-256 10c1d1ed61e8b494195f087331ad53aa7651ba3ceca05597599a7953c1a58532. BLS revises recent months and seasonal factors, so later downloads can differ",
+ "qualification": "The unemployment rate has no value for October 2025: the cell is blank in FRED's file, matching the month the Current Population Survey collected no data during the lapse in federal funding (the Census Bureau notes the same gap in its CPS/HVS tables). A line chart breaks at that month. Job openings run one month behind the unemployment rate; recent months are preliminary",
+ "columns": {
+  "month": {
+   "type": "month",
+   "description": "month of observation"
+  },
+  "unemployment_rate": {
+   "type": "number",
+   "description": "unemployment rate, seasonally adjusted",
+   "unit": "percent"
+  },
+  "job_openings_thousands": {
+   "type": "integer",
+   "description": "job openings, total nonfarm, seasonally adjusted",
+   "unit": "thousands"
+  },
+  "note": {
+   "type": "text",
+   "description": "studio note on a missing value"
+  }
+ },
+ "printed_source_line": "Source: U.S. Bureau of Labor Statistics, Current Population Survey and Job Openings and Labor Turnover Survey, unemployment rate and job openings, seasonally adjusted, January 2022 to October 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 11, 2026. No unemployment rate was published for October 2025; recent months are preliminary and will be revised.",
+ "source_line_variants": {
+  "connected_scatter": "Source: U.S. Bureau of Labor Statistics, Current Population Survey and Job Openings and Labor Turnover Survey, unemployment rate and job openings, seasonally adjusted, December 2000 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 11, 2026. No unemployment rate was published for October 2025; recent months are preliminary and will be revised."
+ },
+ "ledger_row": "P7-013",
+ "domain": "D07",
+ "states": [],
+ "raw_files_sha256_prefix": {
+  "fredgraph.csv": "10c1d1ed61e8b494"
+ },
+ "unconfirmed": [
+  "Whether FRED's copies are seasonally adjusted was not read on the series pages today; UNRATE and JTSJOL are the seasonally adjusted series IDs on FRED, and the not-adjusted ones carry other IDs (UNRATENSA, JTUJOL)",
+  "The cause of the October 2025 gap rests on the Census Bureau's CPS/HVS footnote (no data collected that month), not on a BLS page read today"
+ ]
+}

@@ -10,7 +10,7 @@ GUIDE HOOK READY. The Contracts below were written first, as the brief asks; eve
 
 - **The chart kit** (`work/build/chart-kit/`) draws S01 to S16 from their data files with one command, `node work/build/chart-kit/oa-chart.mjs build --all`: 16 of 16 pass every check at 1440 and 390 px on Newsprint and Charcoal (spec and data against the contract, source lines against sidecars, V7 IDs and grades, the layout guard, the chart check, page and Node drawings identical, SVG, PNG and CSV exports opened and checked), and `dataviz_check.js --kit` finds 0 faults in the drawings as the browser renders them. 19 forms in 17 modules, plain JavaScript with no library, running in a plain page from `tokens.css`, a data file and a spec (DR-235).
 - **The drawing method**: drawn when the page loads, with each chart's rows read back from its own table equivalent (`load-table`). It is the lightest of the four measured in a real guide build, and it passes the guide check at 1440 and 390 px, a page with scripts off, print, forced colors, reduced motion and export parity (results below).
-- **Chapter 14's projection for 97 finished specimens: 2.74 MB, 0.99 MB over the 1.75 MB stop.** DR-232's first step (sketches as one image sheet) saves about 0.05 MB by the proposal's estimate; its second (dropping extended forms' phone drawings) saves nothing under this method, since phone drawings are drawn by the script and cost no bytes. Both fall short, so by DR-232 board 1 asks Dustin. With chapter 14 at 2.74 MB the page projects to about 15.94 MB, over the 15.5 MB budget and under the 16 MB limit.
+- **Chapter 14's projection for 97 finished specimens: 2.74 MB, 0.99 MB over the 1.75 MB stop.** DR-232's first step (sketches as one image sheet) saves about 0.05 MB by the proposal's estimate; its second (dropping extended forms' phone drawings) saves nothing under this method, since phone drawings are drawn by the script and cost no bytes. Both fall short, so by DR-232 board 1 asks Dustin. Today's build projects the page at 15.05 MB with chapter 14 at its 1.75 MB allocation (chapter 13 in at 0.21 MB, the tokens release in); with chapter 14 at 2.74 MB the page projects to 16.04 MB, over the 15.5 MB budget and 0.04 MB over the 16 MB limit. With the minifier lever below it projects to about 15.90 MB.
 - **The data folder**: S01 to S16's data moved in under C1, the retired disclosure dropped; 60 tables in the folder now (18 mine, 42 from the research lead), 0 contract faults.
 - **The weight gates** are in `guide_build.py` through `work/build/scripts/phase-3/guide_charts.py`, with their self-test; the strict build passes with chapter 13 in it: 0 warnings, 198 rules, 460 specimens.
 - **The checks grown**: `v7_check.py` (chapters 13 to 15 and the kit's data and specs against Atlas V7, with a self-test), and `dataviz_check.js --kit` (rendered checks on kit figures, with a self-test).
@@ -59,7 +59,7 @@ Every check the brief names for the method, on the `load-table` pilot page:
 - Chapter 13 at most 0.25 MB and chapter 15 at most 0.60 MB, as warnings that `--strict` fails; chapter 14 with the chart kit at most 1.75 MB, a hard stop in every mode (exit 3, the page is not written).
 - The chart kit weighs as its own part ("chart kit", allocated 0.22 MB inside chapter 14), the fonts as theirs, checked against the font manifest's bytes.
 - Each chapter 14 chart against three times its tier's average (core and extended 8 KB, reference 4 KB, avoid 2 KB).
-- The projection: today's page plus the allocation of every chapter not yet built, against 15.5 MB; the build report carries it (14.94 MB today, chapter 13 in).
+- The projection: today's page plus the allocation of every chapter not yet built, against 15.5 MB; the build report carries it (15.05 MB on today's build, with chapter 13 and release 6.0.0-gate3.1 in).
 - `guide_build.py --self-test` runs the gates' self-test (chapter 14 one byte over, a chart far over its average, a projection over budget, chapters 13 and 15 over, fonts that disagree; each caught).
 - `--pilot DIR` adds a folder's chapters and specimens to a build; `--chart-method` picks the drawing method (default `load-table`).
 
@@ -316,7 +316,7 @@ D3-xxx | Release 6.0.0-gate3.1 for the palette tokens, as the data lead suggeste
 D3-xxx | A DTCG stroke style writes its keyword to tokens.css (as Style Dictionary does) with `-dasharray` and `-line-cap` companion properties | An SVG line needs the dash array and the cap; the keyword keeps tokens.css and Style Dictionary in agreement
 D3-xxx | The token rule test accepts pair B on Charcoal with Prussian's hue lifted toward Newsprint and a midpoint darker toward the ground | The proposal's measured scale; plain Prussian measures under 3 to 1 on Charcoal, and the midpoint tints toward the ground on each ground
 D3-xxx | Five token descriptions lose a decision code and one a gate code ("DR-234", "Gate 1, M1"); the change note's reason keeps its rule number only | Chapter 26 prints descriptions and the newest note to readers, and reader words carry no decision codes (DR-218)
-D3-xxx | Head and shell rise from 0.20 to 0.22 MB and chapter 26 from 1.0 to 1.1 MB | tokens.css, inlined in the head, grows by about 10 KB with the 40 tokens, and chapter 26 carries each token twice (its table and its tokens.json download); the projection still holds the page at 14.94 MB with chapter 14 at its allocation
+D3-xxx | Head and shell rise from 0.20 to 0.22 MB and chapter 26 from 1.0 to 1.1 MB | tokens.css, inlined in the head, grows by about 10 KB with the 40 tokens, and chapter 26 carries each token twice (its table and its tokens.json download); the projection still holds the page under 15.5 MB with chapter 14 at its allocation (15.05 MB)
 D3-xxx | The token table (`s-26-token-table.html`) is regenerated by its own script for 6.0.0-gate3.1 | The strict build fails when the table and tokens.json disagree
 D3-xxx | Phase 2's chart scripts and boards stay as records; nothing was rerun from them, and the November 10 promotion scripts were not touched | The brief
 D3-xxx | S01's votes draw each party's count on its own segment in the one neutral ink of its side, named on the mark, from `congress-hr7008-roll-calls` (`labels.votes[].split`) | D3-07 (both chambers' records can be read, so D2-104's condition is met); DR-48, DR-58, Rule 01.2
@@ -371,8 +371,32 @@ Requests back to the Explainer maker (spec changes these fixes need; each spec p
 
 ## Tested
 
-Nothing yet.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict` with chapter 13 in: 0 warnings, 198 rules, 460 specimens, 9,759,606 bytes; chapter 13 at 205,992 bytes against its 0.25 MB ceiling; projection 15,049,606 bytes against 15.5 MB.
+- The chart hook in a strict build: the editor's `s-13-13-correct.chart.json` placed through `<div data-oa-chart="s-13-13-correct">` in a `--pilot` copy of its fragment: 0 warnings; the chart drawn, readable with scripts off, in print, forced colors and reduced motion (`chart_pilot_check.js`, 0 failures). The editor's real fragment does not place it yet.
+- `guide_charts.py --self-test`, and the same through `guide_build.py --self-test`: 10 of 10. The whole `guide_build.py --self-test`: 295 of 296 expectations; the one missed (Gate 2's front-page "each step says where it leads") is missed the same way by the committed script against today's files.
+- `node work/build/chart-kit/oa-chart.mjs build --all`: 16 of 16 specs pass at 1440 and 390 px on Newsprint and Charcoal, 64 drawings: contract, data, source lines, V7, layout guard, chart check, key lightness, page-to-Node parity (the page reading its rows from its table), SVG exports parsed with title and desc, PNG exports at exactly twice the drawing's size, CSV exports row for row against the data. The fixture `fixtures/specs/s14.json` and the editor's plate spec pass too.
+- `oa-chart.mjs self-test`: 23 of 23 planted faults caught.
+- `node work/build/scripts/phase-2/dataviz_check.js <page> --kit` on each of the 16 kit pages (1440 and 390 px): 0 failures; `--kit-self-test`: 8 of 8 planted faults caught, and a clean figure passes.
+- The pilot, four methods, each a real guide build (`chart_pilot.py`), and the conditions check on the `load-table` page (`chart_pilot_check.js`): scripts on at 1440 and 390, resize, scripts off, print, forced colors, reduced motion, 0 failures.
+- `v7_check.py` on today's build: 0 failures (chapter 13, 48 chips; 17 kit specs; every `v7-*.json` rebuilt from the model and equal); self-test: 10 of 10 faults caught, a correct block passes, a failure plate is left out.
+- `data_round0_build.py --check`: 60 tables, 0 faults against C1 (including the research lead's 42).
+- Token build and `run_token_tests.py`: all pass (build check, parity, rules, self-test 44 of 44, Style Dictionary cross-check 544 of 544, rendered in Chromium); `token_table_build.py` regenerated.
+- The grayscale proofs are one 8-bit gray channel (S15 read back as mode L).
+- terser 5.31.6 installed in scratch only and run on the stripped kit: forms 89,040 to 64,981 bytes, core 49,444 to 37,138.
 
 ## Not tested
 
-Everything in this file so far is a contract; nothing has run.
+- The full guide check at four widths with the kit's charts in the page, and the quick check's final result on the pilot page if it has not finished when this file was last written (its log: scratch `pilot/check/guide-check.log`).
+- Chapter 14's real weight: the projection scales 16 measured charts to 97; reference sketches, avoid entries, the complex examples, the rules and plates, and map geometry beyond the states file are held at the proposal's allocation, unmeasured.
+- A shared module for related forms, and a minifier in the guide build: estimates only (the minifier measured in scratch, not wired in).
+- Keyboard order and focus through the charts' table disclosures beyond what the guide check covers; real screen readers and devices (DR-213); 200 percent text and 320 px reflow on chart figures.
+- Gap brackets on small multiples (E13) and the 11-column phone tile grid (E20) are not built.
+- The PNG exports are rasterized by Chromium screenshots at twice size; a plain page's own download buttons (DR-235's later page) are not built.
+- The Rule 01.9 count across S01 to S16 and the new datasets: the sidecars carry `domain` and `states`, but I ran no count; the research lead's plan holds it.
+- Kit text measurement leaves out pair kerning; the rendered check agrees with it on all 16 specs, which is the only evidence.
+
+## Files
+
+Created: `work/build/chart-kit/` (kit.js, parts.js, kit.css, metrics.js, geo.js, geo-LICENSE.txt, words.json, checks.js, oa-chart.mjs, forms/ with 17 modules, tools/metrics_build.js, tools/geo_build.py, fixtures/specs/s14.json); `work/build/data/` (18 tables and sidecars, by `work/build/scripts/phase-3/data_round0_build.py`); `work/build/scripts/phase-3/` (data_round0_build.py, guide_charts.py, chart_pilot.py, chart_pilot_check.js, v7_check.py); this notes file.
+Modified: `work/build/scripts/phase-2/guide_build.py` (the hook, gates, `--pilot`, `--chart-method`, two budgets), `work/build/scripts/phase-2/dataviz_check.js` (`--kit`, `--kit-self-test`), `work/build/scripts/phase-2/tokens_build.mjs` (stroke styles), `work/build/tokens/src/oa-tokens.src.mjs`, `work/build/tokens/tokens.css`, `work/build/tokens/tokens.json`, `work/build/tests/tokens/test_token_rules.py`, `test_token_parity.py`, `sd_crosscheck.mjs`, `20261106_Token-Test-Results.json`, `work/build/guide/specimens/s-26-token-table.html` (regenerated), `work/boards/phase-3/round-0/specimens/` (refreshed captures and exports, at the coordinator's request).
+Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/round-0/engineer/` (pilot pages and results in `pilot2/`, kit builds in `all-out/`, test specs, terser).
