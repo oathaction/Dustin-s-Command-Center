@@ -120,6 +120,13 @@ def fill(s, extra=None):
 
 
 FILL = {}
+WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+
+
+def nw(n, zero='no'):
+    """A count in running prose: words under ten (H06), figures from ten."""
+    n = int(n)
+    return (zero if n == 0 else WORDS[n]) if 0 <= n < 10 else f'{n:,}'
 
 
 # ------------------------------------------------------------------------------------------------------- sources
@@ -341,7 +348,7 @@ def rows_html(item):
         cells = ''.join(cell_html(c, (item['cols'][k] if k < len(item['cols']) else ''), item, row, zoom, k) for k, c in enumerate(row['cells']))
         nt = f'<p class="row-note">{esc(row["note"])}</p>' if row.get('note') else ''
         h = (f'<div class="row{" stack" if item.get("stack") else ""}"><p class="row-label">{esc(row["label"])}'
-             f'{"<span class=zl>The second view in each pair doubles every pixel.</span>" if zoom and not out and not more else ""}</p>{nt}<div class="cells">{cells}</div></div>')
+             f'</p>{nt}<div class="cells">{cells}</div></div>')
         (more if row.get('more') else out).append(h)
     if item.get('grid'):
         out = [f'<div class="rowgrid">{"".join(out)}</div>']
@@ -353,8 +360,9 @@ def rows_html(item):
 def card(item, body):
     tag = item.get('tag', '')
     tcls = ' defect' if tag == 'Defect fix' else ''
+    zl = '<p class="zl">Where a drawing appears twice, the second view doubles every pixel.</p>' if 'class="frame zoom' in body else ''
     return (f'<article class="card" id="{esc(item["id"])}"><header class="card-h"><h4>{esc(item["title"])}</h4>'
-            f'<span class="tag{tcls}">{esc(tag)}</span></header><p class="what">{esc(fill(item["what"]))}</p>'
+            f'<span class="tag{tcls}">{esc(tag)}</span></header><p class="what">{esc(fill(item["what"]))}</p>{zl}'
             f'{body}{refline(item["refs"], item["id"])}</article>')
 
 
@@ -375,11 +383,16 @@ def fits_item(item):
     for fid in item['examples']:
         f = fits[fid]
         master = (ASSETS / 'civic-line-v6/fit-24' / f['master_from_2x']['svg']).resolve()
-        rows.append({'label': f'{fid} {f["word"]}', 'zoom': True, 'cells': [
+        rows.append({'label': id_label(fid, f['word']), 'zoom': True, 'cells': [
             {'img': {'svg': rel(master), 'h': 24}},
             {'img': {'svg': rel(ASSETS / 'civic-line-v6/fit-24' / f['svg']), 'h': 24}}]})
     it = dict(item, rows=rows, grid=True)
     return card(item, rows_html(it))
+
+
+def id_label(fid, word):
+    """A drawing's name first, then what its ID is (H11): a reform takes its type word."""
+    return f'{word}, Reform {fid}' if fid.startswith('R-') else f'{word}, {fid}'
 
 
 def civic_item(item):
@@ -504,8 +517,8 @@ def craft_panel(C, pf, sp):
     unchanged = inv['counts_by_source'].get('October master, unchanged', 0)
     tm = v['tile_margins']
     qa_items = [
-        ('The October trace', f'All {v["ids"]} drawings traced and reviewed, with {v["states"]["todo"]} left to do and {len(v["errors"])} errors. The four color editions of each drawing share one set of shapes, checked element by element in {v["edition_tree_elements_compared"]:,} places.'),
-        ('Files', f'{v["svgs"]} SVG files and {v["tile_svgs"]:,} tile files, with {v["id_audit"]["repeated_ids"]} repeated and {v["id_audit"]["unresolved_references"]} broken internal IDs across {v["id_audit"]["files"]:,} files.'),
+        ('The October trace', f'All {v["ids"]} drawings traced and reviewed, with {nw(v["states"]["todo"], "none")} left to do and {nw(len(v["errors"]))} errors. The four color editions of each drawing share one set of shapes, checked element by element in {v["edition_tree_elements_compared"]:,} places.'),
+        ('Files', f'{v["svgs"]} SVG files and {v["tile_svgs"]:,} tile files, with {nw(v["id_audit"]["repeated_ids"])} repeated and {nw(v["id_audit"]["unresolved_references"])} broken internal IDs across {v["id_audit"]["files"]:,} files.'),
         ('Tiles', f'Every drawing clears the edge of its square, rounded and circle tile; the tightest margins are {tm["square"]["min_margin"]:.1f}, {tm["rounded"]["min_margin"]:.1f} and {tm["circle"]["min_margin"]:.1f} units of 128.'),
         ('The set in use', f'{inv["count"]} drawings: {unchanged} October masters unchanged and {inv["count"] - unchanged} redrawn or new drawings you approved by name, in the October order.'),
     ]
@@ -517,6 +530,9 @@ def craft_panel(C, pf, sp):
           + '</tbody></table></div><p class="caption">Pillar Red on Newsprint falls short of 3 to 1. Every red part is a drawn shape that the one-color editions carry in Charcoal or Newsprint, so red never carries a meaning alone.</p>')
     FIG['civic_line_qa'] = {'verify': rel(ASSETS / 'civic-line/qa/20261029_Civic-Line-Verify-Report.json'), 'ids': v['ids'], 'in_use': inv['count'], 'unchanged': unchanged}
     sheets = craft_sheets(C)
+    small_ok = all(pf[f['key']]['pass'] == pf[f['key']]['files'] for f in K['families'] if f['size'] in (16, 24))
+    if not small_ok or not sp['pass']:
+        warn('the craft panel’s opening sentence says every small icon and the sprite pass, and a check now fails')
     body = f'<p class="intro">{esc(P["lede"])}</p>{sheets}{pixel}{sprite}{qa}'
     return panel('craft', P, body, 'ready')
 
@@ -553,13 +569,13 @@ def craft_sheets(C):
     t24 = [(p['word'], image({'svg': rel(ASSETS / 'pillar-icons' / p['svg']), 'h': 24}, slug('Sheet-24-Pillar', p['word'])))
            for p in pillar_fits() if p['size_px'] == 24]
     for f in fits_manifest():
-        t24.append((f'{f["id"]} {f["word"]}', image({'svg': rel(ASSETS / 'civic-line-v6/fit-24' / f['svg']), 'h': 24}, slug('Sheet-24', f['id']))))
+        t24.append((id_label(f['id'], f['word']), image({'svg': rel(ASSETS / 'civic-line-v6/fit-24' / f['svg']), 'h': 24}, slug('Sheet-24', f['id']))))
     FILL['n_24'] = len(t24)
     FILL['n_fits'] = len(fits_manifest())
     s24 = sheet('sheet-24', fill(K['sheet_24_h']), K['sheet_24_cap'], t24, zoom=True)
     # 48 px: every Civic Line drawing in use
     inv = json.loads((ASSETS / 'civic-line-v6/20261110_Civic-Line-V6-Inventory.json').read_text())
-    t48 = [(f'{i["id"]} {i["label"]}', image({'svg': rel(civic_black(i)), 'h': 48}, slug('Sheet-48', i['id']))) for i in inv['icons']]
+    t48 = [(id_label(i['id'], i['label']), image({'svg': rel(civic_black(i)), 'h': 48}, slug('Sheet-48', i['id']))) for i in inv['icons']]
     FILL['n_civic'] = len(t48)
     s48 = sheet('sheet-48', fill(K['sheet_48_h']), K['sheet_48_cap'], t48, zoom=False, folded=True)
     return f'<h3 class="sub">{esc(K["sheets_h"])}</h3>{s16}{s24}{s48}'
@@ -596,7 +612,7 @@ def similarity_panel(C):
         pick.append(('Ampersand B', faces[b_name], None))
     lora_key = next((k for k in faces if k.startswith('Lora Bold')), None)
     if lora_key:
-        pick.append(('Lora Bold, the fifth edition’s source', faces[lora_key], res.get('Lora Bold', {}).get('silhouette_overlap_200px')))
+        pick.append(('Lora Bold, the fifth edition’s source', faces[lora_key], verdict['recognition']['value']))
     n = 0
     for face, v in order:
         if face.startswith('Lora'):
@@ -642,10 +658,12 @@ def similarity_panel(C):
             b_id = re.match(r'((?:CL|R)-\d+)', f['b']).group(1)
             ra = image({'svg': rel(ASSETS / 'civic-line-v6/fit-24' / fits[a_id]['svg']), 'h': 24}, slug('Sheet-24', a_id))
             rb = image({'svg': rel(civic_black(inv[b_id])), 'h': 24}, slug('Likeness', b_id, '24'))
-            pr.append(f'<li class="pair"><figure class="shot">{frame(ra, f"{a_id} {fits[a_id]["word"]}, the fit", zoom=True)}<figcaption><b>{esc(a_id)} {esc(fits[a_id]["word"])}</b> <span>the fit</span></figcaption></figure>'
-                      f'<figure class="shot">{frame(rb, f"{f["b"]}, the master at 24 px", zoom=True)}<figcaption><b>{esc(f["b"])}</b> <span>the master</span></figcaption></figure>'
+            b_word = inv[b_id]['label']
+            pr.append(f'<li class="pair"><figure class="shot">{frame(ra, f"{id_label(a_id, fits[a_id]["word"])}, the fit", zoom=True)}<figcaption><b>{esc(id_label(a_id, fits[a_id]["word"]))}</b> <span>the fit</span></figcaption></figure>'
+                      f'<figure class="shot">{frame(rb, f"{id_label(b_id, b_word)}, the master at 24 px", zoom=True)}<figcaption><b>{esc(id_label(b_id, b_word))}</b> <span>the master</span></figcaption></figure>'
                       f'<p class="score">{f["likeness"]:.3f}<span>top {100 - f["percentile"]:.1f} percent</span></p></li>')
-        icons += f'<h4 class="sheet-h">{esc(K["flagged_h"])}</h4><p>{esc(K["flagged_lede"])}</p><ul class="pairs">{"".join(pr)}</ul>'
+        icons += (f'<h4 class="sheet-h">{esc(K["flagged_h"])}</h4><p>{esc(K["flagged_lede"])}</p><ul class="pairs">{"".join(pr)}</ul>'
+                  f'<p class="caption">Scores from the run of {esc(words_when(d0["run"]))}. Each fit stands as the guide draws it today.</p>')
     return panel('similarity', P, f'<p class="intro">{esc(P["lede"])}</p>{amp}{icons}', 'ready')
 
 
@@ -682,6 +700,8 @@ def md_section(text, names):
 
 
 def md_items(block):
+    if block and not re.search(r'^\s*(?:[-*]|\d+\.)\s+', block, flags=re.M):
+        return [p.strip() for p in re.split(r'\n\s*\n', block) if p.strip() and not p.strip().startswith('**')]
     items, cur = [], None
     for l in block.splitlines():
         m = re.match(r'^\s*(?:[-*]|\d+\.)\s+(.*)$', l)
@@ -705,7 +725,12 @@ def strip_codes(s):
     def one(m):
         MOVED.update(re.findall(CODE, m.group(0)))
         return ''
-    return re.sub(r'\s*\((?:' + CODE + r'(?:,\s*|\s+and\s+|;\s*)?)+\)', one, str(s))
+    s = re.sub(r'\s*\((?:(?:' + CODE + r'|[A-Z]{1,2}\d{1,2}|[A-Z]{2}-[MS]\d+)(?:,\s*|\s+and\s+|;\s*)?)+\)', one, str(s))
+
+    def bare(m):
+        MOVED.add(m.group(2))
+        return m.group(1) + ' a logged decision'
+    return re.sub(r'\b(by|in|under|per)\s+(' + CODE + r')\b', bare, s)
 
 
 def md_inline(s):
@@ -802,20 +827,20 @@ def contrast_from(d, C):
     groups = {}
     for p in d['permittedBelowThreshold']:
         groups.setdefault(p.get('permittedBecause') or p.get('criterion') or '', []).append(p)
-    gl = ''.join(f'<tr><th scope="row">{esc(strip_codes(reason))}</th><td class="num">{len(ps)}</td><td>{esc(", ".join(sorted({p["css"].replace("--oa-color-", "") for p in ps}))[:400])}</td></tr>'
+    gl = ''.join(f'<tr><th scope="row">{esc(strip_codes(reason))}</th><td class="num">{len(ps)}</td><td class="toks">{esc(", ".join(sorted({p["css"].replace("--oa-", "") for p in ps})))}</td></tr>'
                  for reason, ps in sorted(groups.items(), key=lambda kv: -len(kv[1])))
     under = d['marksInsideGrounds'].get('underThreshold') or [r for r in d['marksInsideGrounds']['rows'] if r.get('result') not in ('pass',)]
     ul = ''.join(f'<tr><th scope="row">{esc(r.get("token", "").replace("oa.color.", ""))}</th><td>{esc(r.get("ground", "").replace("oa.color.", ""))}</td><td class="num">{r.get("ratio")}</td><td class="num">{r.get("threshold")}</td><td>{esc(strip_codes(r.get("note", "")))}</td></tr>' for r in under)
     ch26 = T.get('chapter26TableRatioResults', {}).get('match', 0)
     body = (f'<p class="intro">The accessibility lead measured {T["pairs"]} pairs, every color token on every surface it may sit on, in the light and the dark theme. '
-            f'{by.get("pass", 0)} pass, {by.get("exempt", 0)} are exempt under WCAG’s own terms or carry no meaning, {by.get("permitted", 0)} sit under their threshold where a stated rule of the guide covers them, and {T["failures"]} fail.</p>'
+            f'{nw(by.get("pass", 0))} pass, {nw(by.get("exempt", 0))} are exempt under WCAG’s own terms or carry no meaning, {nw(by.get("permitted", 0))} sit under their threshold where a stated rule of the guide covers them, and {nw(T["failures"], "none")} fail.</p>'
             f'{matrix}<h3 class="sub">Failing pairs</h3>{fail_html}'
             f'<h3 class="sub">Pairs under a threshold, and why the guide permits them</h3><p>{T["permittedBelowThreshold"]} pairs sit under the threshold a text or graphic role would need. Each falls into one of these cases.</p>'
             f'<div class="tw" role="region" tabindex="0" aria-label="Pairs under a threshold; scrolls sideways"><table><thead><tr><th scope="col">Why the guide permits it</th><th scope="col">Pairs</th><th scope="col">Tokens</th></tr></thead><tbody>{gl}</tbody></table></div>'
             f'<details class="more"><summary>{len(under)} marks under 3 to 1 on a field or band inside a surface</summary><p class="caption">{esc(strip_codes(d["marksInsideGrounds"]["note"]))}</p>'
             f'<div class="tw" role="region" tabindex="0" aria-label="Marks inside grounds; scrolls sideways"><table><thead><tr><th scope="col">Token</th><th scope="col">Ground</th><th scope="col">Ratio</th><th scope="col">Needs</th><th scope="col">Note</th></tr></thead><tbody>{ul}</tbody></table></div></details>'
-            f'<dl class="facts"><div><dt>Chapter 26’s published ratios</dt><dd>{ch26} of {T.get("chapter26TableRatiosChecked", 0)} in the token table and {T.get("chapter26ProseMatches", 0)} of {T.get("chapter26ProseRatiosChecked", 0)} in its words match the recomputed ratio.</dd></div>'
-            f'<div><dt>The two token files</dt><dd>{T.get("cssValuesDifferingFromJson", 0)} values differ between tokens.css and tokens.json, and {T.get("storedRatiosDiffering", 0)} of {T.get("storedRatiosChecked", 0)} stored ratios differ from the measured one.</dd></div></dl>')
+            f'<dl class="facts"><div><dt>Chapter 26’s published ratios</dt><dd>{nw(ch26)} of {T.get("chapter26TableRatiosChecked", 0)} in the token table and {T.get("chapter26ProseMatches", 0)} of {T.get("chapter26ProseRatiosChecked", 0)} in its words match the recomputed ratio.</dd></div>'
+            f'<div><dt>The two token files</dt><dd>{nw(T.get("cssValuesDifferingFromJson", 0)).capitalize()} values differ between tokens.css and tokens.json, and {nw(T.get("storedRatiosDiffering", 0), "none")} of {T.get("storedRatiosChecked", 0)} stored ratios differ from the measured one.</dd></div></dl>')
     return body
 
 
@@ -834,12 +859,13 @@ def slot_tokens(C):
 def ev_label(stem):
     s = stem.split('_', 1)[-1]
     s = re.sub(r'^Open-', '', s)
+    sc = lambda x: x.replace('-', ' ')[:1].upper() + x.replace('-', ' ')[1:].lower()
     m = re.match(r'Ch(\d\d)-(.+)-(1440|390)$', s)
     if m:
-        return f'Chapter {m.group(1)}, {m.group(2).replace("-", " ")}', m.group(3)
+        return f'Chapter {m.group(1)}, {sc(m.group(2))}', m.group(3)
     m = re.match(r'(.+)-(1440|390)$', s)
     if m:
-        return m.group(1).replace('-', ' '), m.group(2)
+        return sc(m.group(1)), m.group(2)
     return s.replace('-', ' '), ''
 
 
@@ -937,11 +963,12 @@ def slot_tested(C):
             continue
         t = p.read_text()
         head = '\n'.join(t.splitlines()[:12]).lower()
-        tested = md_section(t, [r'tested', r'what i tested', r'checked', r'tested and not tested'])
+        tested = md_section(t, [r'tested', r'what i tested', r'checked'])
         nott = md_section(t, [r'not tested', r'what i could not test', r'not checked'])
-        if tested and nott is None:
-            nott = md_section(tested, [r'not tested'])
-            tested = re.split(r'^#+\s*not tested', tested, flags=re.I | re.M)[0]
+        both = md_section(t, [r'tested and not tested', r'tested and not tested\b.*'])
+        if both is not None and (tested is None or nott is None):
+            parts = re.split(r'^(?:#+\s*|\*\*)not tested\b.*$', both, flags=re.I | re.M, maxsplit=1)
+            tested, nott = parts[0], (parts[1] if len(parts) > 1 else '')
         ti, ni = md_items(tested or ''), md_items(nott or '')
         unfinished = ('in progress' in head or (s['who'] == 'a11y' and not all(a11y_status(C).values() or [False]))
                       or not ti or (nott or '').strip().lower().startswith('(pending'))
@@ -977,7 +1004,8 @@ def weight_panel(C):
     bars = [('The chapters page today, 16 chapters', frozen, 'now')]
     status = 'ready'
     if pv.exists():
-        bars.append(('The Gate 2 preview, with its fonts', pv.stat().st_size, 'now'))
+        built_pv = datetime.datetime.fromtimestamp(pv.stat().st_mtime, datetime.timezone.utc)
+        bars.append((f'The Gate 2 preview, with its fonts, as built {built_pv.strftime("%B")} {built_pv.day}', pv.stat().st_size, 'now'))
         FIG['weight']['preview_bytes'] = pv.stat().st_size
     else:
         status = ('partial', 'engineer')
@@ -1113,7 +1141,7 @@ h1{font:var(--oa-type-title);letter-spacing:var(--oa-type-title-letter-spacing);
 .shot{margin:0;min-width:0;max-width:100%;display:flex;flex-direction:column;gap:var(--oa-space-100)}
 .shot figcaption{font:var(--oa-type-caption);color:var(--wink-2);border-top:var(--oa-border-width-bar) solid var(--oa-color-tint-stone-n70);padding-top:var(--oa-space-050)}
 .frames{display:flex;flex-wrap:wrap;gap:var(--oa-space-150) var(--oa-space-300);align-items:flex-end;max-width:100%}
-.rowgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,17rem),1fr));gap:0 var(--oa-space-400)}
+.rowgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,11.5rem),1fr));gap:0 var(--oa-space-300)}
 .rowgrid .cells{gap:var(--oa-space-200) var(--oa-space-300)}
 .shot.after figcaption{border-top-color:var(--oa-color-palette-charcoal)}
 .shot figcaption b{color:var(--wink);font-weight:600}
@@ -1160,7 +1188,9 @@ table{border-collapse:collapse;width:100%;font:var(--oa-type-body-small)}
 caption{caption-side:top;text-align:left;padding:var(--oa-space-150) var(--oa-space-200);font:var(--oa-type-body-small);color:var(--wink-2);border-bottom:var(--oa-border-width-hairline) solid var(--whair)}
 th,td{text-align:left;vertical-align:top;padding:var(--oa-space-100) var(--oa-space-150);border-bottom:var(--oa-border-width-hairline) solid var(--oa-color-tint-stone-n88)}
 thead th{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--wink-2);background:var(--oa-color-tint-white-n55);vertical-align:bottom;white-space:nowrap}
-tbody th{font-weight:600}
+tbody th{font:var(--oa-type-body-small);font-weight:600;text-transform:none;letter-spacing:0;color:var(--wink)}
+td.toks{font:var(--oa-type-caption);color:var(--wink-2);overflow-wrap:anywhere}
+.zl{font:var(--oa-type-caption);color:var(--wink-2);margin:calc(-1*var(--oa-space-100)) 0 var(--oa-space-200)}
 td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 td.miss{font-weight:700}
 .fl{display:block;font:var(--oa-type-caption);color:var(--wink-2);font-weight:400}
@@ -1263,7 +1293,7 @@ def checks(page):
         raise BoardError('the tagline is quoted inexactly (H01)')
     no_codes = visible_text(re.sub(r'<p class="codes">.*?</p>', ' ', page, flags=re.S))
     no_codes = re.sub(r'<div class="tcols">.*', ' ', no_codes, flags=re.S)
-    stray = set(re.findall(r'\b(?:DR|D2|D1|G1|DC|Q)-\d+\b|\b[IYSMT]\d{1,2}\b(?!\s*px)', visible_text(re.sub(r'<div class="tcols">.*?</div></div>', ' ', re.sub(r'<p class="codes">.*?</p>', ' ', page, flags=re.S), flags=re.S))))
+    stray = set(re.findall(r'\b(?:DR|D2|D1|G1|DC|Q)-\d+\b|\b[IYSMT]\d{1,2}\b(?!\s*px)', visible_text(re.sub(r'<p class="codes">.*?</p>', ' ', page, flags=re.S))))
     if stray:
         warn('studio codes on the board’s face: ' + ', '.join(sorted(stray)))
     for pat in (r'/home/', r'file:', r'scratchpad', r'@anthropic'):

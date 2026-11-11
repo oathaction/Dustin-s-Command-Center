@@ -569,10 +569,11 @@
         "h": 200
        }
       }
-     ]
+     ],
+     "note": "The display master is the fifth edition’s drawing, byte for byte, under a new file name."
     }
    ],
-   "refs": "I7 · G1-02 · DR-131 · DR-181 · D2-24 · D2-465"
+   "refs": "I7 · G1-02 · DR-131 · DR-181 · D2-24 · D2-465 · D2-419"
   },
   {
    "id": "minimums",
@@ -634,8 +635,7 @@
      ]
     }
    ],
-   "refs": "I8 · G1-02 · D2-27 · DR-217",
-   "grid": true
+   "refs": "I8 · G1-02 · D2-27 · DR-217"
   },
   {
    "id": "print-l3",
@@ -824,7 +824,7 @@
    "group": "color",
    "tag": "Refinement",
    "title": "One job for red, and White on Prussian",
-   "what": "Rule 05.3 gives red one working job in each view and keeps it off Prussian. On Prussian the fifth edition’s red ampersand measures {red_on_prussian} to 1, so identity marks there now take White, at {white_on_prussian} to 1.",
+   "what": "Rule 05.3 gives red one working job in each view and keeps it off Prussian. As flat colors, Pillar Red on Prussian measures {red_on_prussian} to 1, and the Gate 1 report measured the fifth edition’s red ampersand at 2.27 to 1 at 16 px, where its thin strokes blend into the ground. Identity marks on Prussian now take White, at {white_on_prussian} to 1.",
    "cols": [
     "Fifth edition",
     "Edition 06"
