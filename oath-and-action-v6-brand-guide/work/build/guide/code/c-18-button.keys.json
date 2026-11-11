@@ -14,10 +14,6 @@
     },
     {
      "key": "Tab",
-     "focus": ".oa-button--ask:not([data-oa-yield])"
-    },
-    {
-     "key": "Tab",
      "focus": ".oa-button--quiet:not(.oa-button--icon-start)"
     },
     {
@@ -27,6 +23,10 @@
     {
      "key": "Tab",
      "focus": ".oa-button--icon-end"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-button--ask:not([data-oa-yield])"
     },
     {
      "key": "Tab",

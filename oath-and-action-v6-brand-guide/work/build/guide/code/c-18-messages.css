@@ -1,26 +1,92 @@
-/* Messages (Rule 11.15): error, warning and success, each with its mark and first words; the error on the Error Band
-   where the surface has one, with the 4 px red bar. A status line is a polite live region a script writes. */
-.oa-msg-set { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
-.oa-msg-set [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
-.oa-msg-set [data-icon][width="16"] { stroke-width: var(--oa-component-icon-utility-line-small) }
-.oa-msg { display: flex; align-items: flex-start; gap: var(--oa-space-100); max-width: var(--oa-layout-measure-body-max); margin: 0 0 var(--oa-space-200);
-  padding: var(--oa-space-100) var(--oa-space-150); font: var(--oa-type-body-small); overflow-wrap: break-word }
-.oa-msg-mark { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
-.oa-msg-words { min-width: 0; overflow-wrap: anywhere }
-.oa-msg-words b { font-weight: var(--oa-font-weight-bold) }
-.oa-msg--error { background: var(--oa-color-state-error-band, transparent); color: var(--oa-color-state-error-text);
-  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar) }
-.oa-msg--warning { color: var(--oa-color-state-warning-text); border-left: var(--oa-border-width-bar) solid var(--oa-color-state-warning-mark) }
-.oa-msg--warning .oa-msg-mark { color: var(--oa-color-state-warning-mark) }
-.oa-msg--success { padding-left: 0; color: var(--oa-color-state-success-text) }
-.oa-msg--success .oa-msg-mark { color: var(--oa-color-state-success-mark) }
-.oa-msg-k { margin: var(--oa-space-300) 0 var(--oa-space-100); font: var(--oa-type-label);
-  letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
+/* Messages (Rule 11.15): error, warning and success, each with its mark and first words; the error
+   on the Error Band where the surface has one, with the 4 px red bar. A status line is a polite
+   live region a script writes. */
+.oa-msg-set {
+  font: var(--oa-type-body);
+  color: var(--oa-color-text-primary);
+}
+.oa-msg-set [data-icon] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--oa-component-icon-utility-line-medium);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.oa-msg-set [data-icon][width="16"] {
+  stroke-width: var(--oa-component-icon-utility-line-small);
+}
+.oa-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--oa-space-100);
+  max-width: var(--oa-layout-measure-body-max);
+  margin: 0 0 var(--oa-space-200);
+  padding: var(--oa-space-100) var(--oa-space-150);
+  font: var(--oa-type-body-small);
+  overflow-wrap: break-word;
+}
+.oa-msg-mark {
+  display: block;
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+}
+.oa-msg-words {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.oa-msg-words b {
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-msg--error {
+  background: var(--oa-color-state-error-band, transparent);
+  color: var(--oa-color-state-error-text);
+  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar);
+}
+.oa-msg--warning {
+  color: var(--oa-color-state-warning-text);
+  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-warning-mark);
+}
+.oa-msg--warning .oa-msg-mark {
+  color: var(--oa-color-state-warning-mark);
+}
+.oa-msg--success {
+  padding-left: 0;
+  color: var(--oa-color-state-success-text);
+}
+.oa-msg--success .oa-msg-mark {
+  color: var(--oa-color-state-success-mark);
+}
+.oa-msg-k {
+  margin: var(--oa-space-300) 0 var(--oa-space-100);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  color: var(--oa-color-text-secondary);
+}
+
 /* A status line inside running text: the 16 px mark on the line with its words */
-.oa-msg-status { margin: 0; font: var(--oa-type-caption); color: var(--oa-color-state-success-text) }
-.oa-msg-dot { width: var(--oa-size-icon-small); height: var(--oa-size-icon-small); margin-right: var(--oa-space-100); vertical-align: -.2em; color: var(--oa-color-state-success-mark) }
+.oa-msg-status {
+  margin: 0;
+  font: var(--oa-type-caption);
+  color: var(--oa-color-state-success-text);
+}
+.oa-msg-dot {
+  width: var(--oa-size-icon-small);
+  height: var(--oa-size-icon-small);
+  margin-right: var(--oa-space-100);
+  vertical-align: -.2em;
+  color: var(--oa-color-state-success-mark);
+}
 
 @media (forced-colors: active) {
-  .oa-msg .oa-msg-mark, .oa-msg--warning .oa-msg-mark, .oa-msg--success .oa-msg-mark, .oa-msg-dot { color: CanvasText }
-  .oa-msg--error, .oa-msg--warning { border-left-color: CanvasText }
+  .oa-msg .oa-msg-mark,
+  .oa-msg--warning .oa-msg-mark,
+  .oa-msg--success .oa-msg-mark,
+  .oa-msg-dot {
+    color: CanvasText;
+  }
+  .oa-msg--error, .oa-msg--warning {
+    border-left-color: CanvasText;
+  }
 }

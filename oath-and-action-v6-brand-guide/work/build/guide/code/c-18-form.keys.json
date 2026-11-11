@@ -76,12 +76,22 @@
        "el": "input[autocomplete=\"email\"]",
        "attr": "aria-invalid",
        "is": null
+      },
+      {
+       "el": ".oa-form-send",
+       "text": "Sending"
       }
      ],
      "status_has": "Sending",
      "status_el": ".oa-form-status"
     },
     {
+     "states": [
+      {
+       "el": ".oa-form-send",
+       "text": "Remind me"
+      }
+     ],
      "status_has": "signed up",
      "status_el": ".oa-form-status",
      "wait": 1200

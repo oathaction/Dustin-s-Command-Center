@@ -1,39 +1,156 @@
-/* Location: where the reader is. A breadcrumb marks the page it ends on; a list of places marks the one the reader is
-   in with the selected band, a 4 px bar and bold; Previous and Next lead to the places on either side. Every current
-   place carries aria-current. Reads only tokens.css. */
-.oa-location { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
-.oa-location [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
-.oa-location-k { margin: var(--oa-space-300) 0 var(--oa-space-100); font: var(--oa-type-label);
-  letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
-.oa-location-k:first-child { margin-top: 0 }
-.oa-location-crumbs, .oa-location-rail, .oa-location-foot { display: block }
-.oa-location-trail { display: flex; flex-wrap: wrap; align-items: center; margin: 0; padding: 0; list-style: none; font: var(--oa-type-ui) }
-.oa-location-trail > li { display: flex; align-items: center }
-.oa-location-link { display: inline-flex; align-items: center; min-height: var(--oa-size-target-minimum); padding: var(--oa-space-050) 0; color: var(--oa-color-text-primary);
-  text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em; overflow-wrap: anywhere }
-.oa-location-link:hover { text-decoration-thickness: var(--oa-border-width-underline-hover) }
-.oa-location-link[aria-current] { font-weight: var(--oa-font-weight-bold); text-decoration: none }
-.oa-location-sep { margin: 0 var(--oa-space-100); color: var(--oa-color-text-secondary) }
-.oa-location-list { margin: 0; padding: 0; list-style: none; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
-.oa-location-list > li { border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
-.oa-location-item { display: flex; align-items: center; box-sizing: border-box; min-height: var(--oa-size-target-touch); padding: var(--oa-space-100) var(--oa-space-150);
-  border-left: var(--oa-border-width-bar) solid transparent; color: var(--oa-color-text-primary); font: var(--oa-type-ui); text-decoration: none; overflow-wrap: anywhere }
-.oa-location-item:hover { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
-.oa-location-item[aria-current] { background: var(--oa-color-state-selected-band); border-left-color: var(--oa-color-state-selected-bar); font-weight: var(--oa-font-weight-bold) }
-.oa-location-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--oa-space-100) var(--oa-space-300);
-  padding-top: var(--oa-space-100); border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-strong) }
-.oa-location-step { display: inline-flex; align-items: center; gap: var(--oa-space-100); min-height: var(--oa-size-target-touch); color: var(--oa-color-text-primary);
-  font: var(--oa-type-ui); text-decoration: none; overflow-wrap: anywhere }
-.oa-location-step--next { margin-left: auto; text-align: end }
-.oa-location-step:hover > span { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
-.oa-location-dir { color: var(--oa-color-text-secondary); font-weight: var(--oa-font-weight-regular) }
-.oa-location-icon { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
-.oa-location-link:focus-visible, .oa-location-item:focus-visible, .oa-location-step:focus-visible, .oa-location-page:focus-visible {
-  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
-.oa-location-item:focus-visible { outline-offset: calc(-1 * var(--oa-border-width-focus-ring)) }
-.oa-location-page { margin: var(--oa-space-200) 0 0; font: var(--oa-type-body-small); color: var(--oa-color-text-secondary) }
-.oa-location-source { margin: var(--oa-space-150) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
+/* Location: where the reader is. A breadcrumb marks the page it ends on; a list of places marks the
+   one the reader is in with the selected band, a 4 px bar and bold; Previous and Next lead to the
+   places on either side. Every current place carries aria-current. Reads only tokens.css. */
+.oa-location {
+  font: var(--oa-type-body);
+  color: var(--oa-color-text-primary);
+}
+.oa-location [data-icon] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--oa-component-icon-utility-line-medium);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.oa-location-k {
+  margin: var(--oa-space-300) 0 var(--oa-space-100);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  color: var(--oa-color-text-secondary);
+}
+.oa-location-k:first-child {
+  margin-top: 0;
+}
+.oa-location-crumbs, .oa-location-rail, .oa-location-foot {
+  display: block;
+}
+.oa-location-trail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font: var(--oa-type-ui);
+}
+.oa-location-trail > li {
+  display: flex;
+  align-items: center;
+}
+.oa-location-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--oa-size-target-minimum);
+  padding: var(--oa-space-050) 0;
+  color: var(--oa-color-text-primary);
+  text-decoration: underline;
+  text-decoration-thickness: var(--oa-border-width-underline);
+  text-underline-offset: .2em;
+  overflow-wrap: anywhere;
+}
+.oa-location-link:hover {
+  text-decoration-thickness: var(--oa-border-width-underline-hover);
+}
+.oa-location-link[aria-current] {
+  font-weight: var(--oa-font-weight-bold);
+  text-decoration: none;
+}
+.oa-location-sep {
+  margin: 0 var(--oa-space-100);
+  color: var(--oa-color-text-secondary);
+}
+.oa-location-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+}
+.oa-location-list > li {
+  border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+}
+.oa-location-item {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: var(--oa-size-target-touch);
+  padding: var(--oa-space-100) var(--oa-space-150);
+  border-left: var(--oa-border-width-bar) solid transparent;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-ui);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.oa-location-item:hover {
+  text-decoration: underline;
+  text-decoration-thickness: var(--oa-border-width-underline);
+  text-underline-offset: .2em;
+}
+.oa-location-item[aria-current] {
+  background: var(--oa-color-state-selected-band);
+  border-left-color: var(--oa-color-state-selected-bar);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-location-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--oa-space-100) var(--oa-space-300);
+  padding-top: var(--oa-space-100);
+  border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+}
+.oa-location-step {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--oa-space-100);
+  min-height: var(--oa-size-target-touch);
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-ui);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.oa-location-step--next {
+  margin-left: auto;
+  text-align: end;
+}
+.oa-location-step:hover > span {
+  text-decoration: underline;
+  text-decoration-thickness: var(--oa-border-width-underline);
+  text-underline-offset: .2em;
+}
+.oa-location-dir {
+  color: var(--oa-color-text-secondary);
+  font-weight: var(--oa-font-weight-regular);
+}
+.oa-location-icon {
+  display: block;
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+}
+.oa-location-link:focus-visible,
+.oa-location-item:focus-visible,
+.oa-location-step:focus-visible,
+.oa-location-page:focus-visible {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
+.oa-location-item:focus-visible {
+  outline-offset: calc(-1 * var(--oa-border-width-focus-ring));
+}
+.oa-location-page {
+  margin: var(--oa-space-200) 0 0;
+  font: var(--oa-type-body-small);
+  color: var(--oa-color-text-secondary);
+}
+.oa-location-source {
+  margin: var(--oa-space-150) 0 0;
+  font: var(--oa-type-caption);
+  color: var(--oa-color-text-secondary);
+}
 
 @media (forced-colors: active) {
-  .oa-location-item[aria-current] { border-left-color: Highlight }
+  .oa-location-item[aria-current] {
+    border-left-color: Highlight;
+  }
 }

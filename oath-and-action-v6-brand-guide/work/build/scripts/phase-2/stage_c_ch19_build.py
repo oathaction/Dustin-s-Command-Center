@@ -874,14 +874,14 @@ def build():
                     {'label': 'An image that must hold words', 'value': 'The same words in the text beside it, and as alt text'},
                     {'label': 'Allowed as an image', 'value': 'The wordmark and the lockups (chapter 03)'}],
              related=['03', '22', '23'],
-             builders=['Set a headline over a photograph as HTML text placed on top of the image, never inside the image file. A '
-                       'social card that must be one image repeats its words in the post and in its alt text.']),
+             builders=['Set a headline that sits over a photograph as HTML text layered on the image, so the image file holds '
+                       'no words. A social card that must be one image repeats its words in the post and in its alt text.']),
         dict(id='19.5', title='Let every action work with one tap, one click or one key press.',
              rule=['Every action has a control a reader can press once: Zoom in and Zoom out as buttons, a drawing moved '
                    'with buttons or arrow keys, and Undo as a button. A gesture with two fingers, a drag, a tilt or a shake '
-                   'may add a second way beside that control. Where a product answers a tilt or a shake, a setting turns that off, '
-                   'so a reader who moves the device by accident sets nothing off. No product uses a shortcut of one letter key, and '
-                   'an action runs when the press ends, so sliding off a control cancels it.'],
+                   'may add a second way beside that control. Where a product answers a tilt or a shake, a setting lets the reader '
+                   'turn that response off, so moving the device by accident changes nothing. No product uses a shortcut of one '
+                   'letter key, and an action runs when the press ends, so sliding off a control cancels it.'],
              tokens=['oa.size.target.touch'],
              why={'text': ['A reader with a tremor, one hand, a head pointer or voice control can press a button where a '
                            'pinch or a drag fails, and a single-letter shortcut fires by accident for a reader who talks to '
@@ -976,8 +976,8 @@ def build():
                     {'label': 'Record', 'value': 'Device, system, browser and screen reader versions, date, and each step’s '
                                                  'result with what was heard'}],
              related=['18'],
-             builders=['Run the script on each device’s current system and the browser most readers use there: Safari on an '
-                       'iPhone and a Mac, Chrome on Android, and Chrome or Edge on Windows.']),
+             builders=['Run each script on the device’s current system and in the browser the script names, and write both '
+                       'versions down with the results, as the last line of the script asks.']),
     ]
     for r in rules:
         r.setdefault('related', [])

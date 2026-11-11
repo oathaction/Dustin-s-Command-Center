@@ -1215,7 +1215,20 @@ async function sbTyped(page) {
 //   a straight edge rounded one device pixel the other way deep in a 9 MB page, where Chromium's positions lose sub-pixel
 //     precision: up to EDGE_ROWS whole rows or columns whose pixels match the other capture one pixel up, down or across.
 // Anything else is drift: a larger difference on a flat area, more shifted rows, or a different size.
-const EDGE_TOL = 64;
+// Round 2 (call 14, CA-S1; amends D2-1519 and D2-1526): the edge tolerance is 49, the measured antialiasing maximum; at 64
+// a table's secondary words drawn in the wrong token passed. A thin mark's color sits wholly in edge pixels, so no pixel
+// tolerance can police it, and the check also compares the computed style of every element of the live stage with the
+// same element of the pasted copy, in document order: STYLE_PROPS below, any difference failing, and the count of
+// elements too (so a build that adds markup to a live stage, as CA-S6 found, fails).
+const EDGE_TOL = 49;
+const STYLE_PROPS = ['color', 'background-color', 'border-top-color', 'border-right-color', 'border-bottom-color', 'border-left-color',
+  'border-top-width', 'border-right-width', 'border-bottom-width', 'border-left-width', 'outline-color', 'fill', 'stroke',
+  'font-family', 'font-size', 'font-weight', 'letter-spacing', 'line-height'];
+const styleList = ([sel, props]) => {
+  const root = document.querySelector(sel);
+  if (!root) return null;
+  return [...root.querySelectorAll('*')].map((el) => { const cs = getComputedStyle(el); return [el.tagName.toLowerCase(), props.map((p) => cs.getPropertyValue(p))]; });
+};
 const EDGE_SPAN = 48;
 const EDGE_ROWS = 4;
 async function codeMatch(page) {
@@ -1224,7 +1237,7 @@ async function codeMatch(page) {
     return { set: f.getAttribute('data-code-set'), html: text('html'), css: text('css'), js: text('js'),
       themes: [...f.querySelectorAll('.code-stage .code-root')].map((r) => r.closest('.code-stage').getAttribute('data-code-theme')) };
   }));
-  const out = { plates: plates.length, stages: 0, results: [], bad: [], tolerance: { edge: EDGE_TOL, span: EDGE_SPAN, rows: EDGE_ROWS } };
+  const out = { plates: plates.length, stages: 0, styled: 0, results: [], bad: [], tolerance: { edge: EDGE_TOL, span: EDGE_SPAN, rows: EDGE_ROWS } };
   if (!plates.length) return out;
   const env = await page.evaluate(() => {
     const a = document.getElementById('tokens-download'); const href = a ? a.getAttribute('href') : '';
@@ -1263,6 +1276,16 @@ async function codeMatch(page) {
         + `<style>${pl.css || ''}</style></head><body><div id="oa-harness" style="display:flow-root;width:${box.w}px;margin:${48 + fy}px 0 0 ${Math.floor(box.x) + fx}px">${pl.html || ''}</div>${js}</body></html>`, { waitUntil: 'networkidle' });
       await harness.evaluate(() => document.fonts.ready);
       await harness.mouse.move(0, 0);
+      // round 2 (CA-S1): the computed styles, element by element; a landmark the live stage draws as a group keeps its styles
+      const sa = await page.evaluate(styleList, [sel, STYLE_PROPS]);
+      const sb = await harness.evaluate(styleList, ['#oa-harness', STYLE_PROPS]);
+      let styleOff = null;
+      if (!sa || !sb || sa.length !== sb.length) styleOff = `${sa ? sa.length : 0} element(s) in the live stage, ${sb ? sb.length : 0} in the pasted copy`;
+      else for (let i = 0; i < sa.length && !styleOff; i++) for (let k = 0; k < STYLE_PROPS.length; k++) {
+        if (sa[i][1][k] !== sb[i][1][k]) { styleOff = `element ${i + 1} (${sa[i][0]}): ${STYLE_PROPS[k]} is ${sa[i][1][k]} in the live stage, ${sb[i][1][k]} pasted`; break; }
+      }
+      out.styled = (out.styled || 0) + (sa ? sa.length : 0);
+      if (styleOff) out.bad.push({ set: pl.set, theme, why: `computed styles differ: ${styleOff}` });
       const b = await harness.locator('#oa-harness').screenshot();
       if (tall) { await page.setViewportSize(vp); await page.waitForTimeout(150); }
       out.stages++;
@@ -2274,6 +2297,11 @@ const PLANTS = [
     const css = document.createElement('style'); css.textContent = '.code-stage .oa-save-btn { padding-inline: 4px !important }'; document.head.append(css); } },
   { key: 'codeMatch', fault: 'a CSS panel whose copy no longer matches the live stage: the button\'s side padding changed in the copy alone (DR-203)', js: () => {
     const pre = document.querySelector('.code-panel[data-code-lang="css"] pre code'); pre.textContent = pre.textContent.replace('padding: 0 var(--oa-space-300)', 'padding: 0 var(--oa-space-100)'); } },
+  // round 2 (CA-S1): faults no pixel tolerance sees
+  { key: 'codeMatch', fault: 'a live stage whose button label is a near-white off its token, rgb(252, 255, 255) for White, which pixels alone pass', js: () => {
+    const css = document.createElement('style'); css.textContent = '.code-stage[data-code-theme="light"] .oa-save-btn { color: rgb(252, 255, 255) !important }'; document.head.append(css); } },
+  { key: 'codeMatch', fault: 'a live stage holding an element its code does not (a span the build added), which draws the same', js: () => {
+    const b = document.querySelector('.code-stage .code-root button, .code-stage .code-root a, .code-stage .code-root p'); if (b) b.insertAdjacentHTML('beforeend', '<span></span>'); } },
   { key: 'codeMatch', fault: 'the demo\'s code set as built: the copy draws what the live stages draw in both themes (allowed: must not be flagged)', expect: false, js: () => {},
     verify: (r) => r.runs[0].code && r.runs[0].code.stages === 2 && r.runs[0].code.results.every((x) => x.same) },
   { key: 'openerFit', fault: 'an opener figure 900 px wide, which scrolls in its frame at 1440 px (D2-965)', js: () => {

@@ -31,7 +31,7 @@
       });
       var step = steps[i - 1];
       status.textContent = i ? 'Step ' + i + ' of ' + steps.length + ': ' + words(step.querySelector('.oa-stepper-line')) + ' ' +
-        words(step.querySelector('.oa-stepper-more')) : status.getAttribute('data-oa-ready');
+        words(step.querySelector('.oa-stepper-more')) : status.getAttribute('data-oa-ready').replace(/\s+/g, ' ').trim();
       off(prev, !i);
       off(reset, !i);
       off(next, i === steps.length);

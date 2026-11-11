@@ -154,7 +154,7 @@ const all = (xs, w) => xs.length > 0 && xs.every((x) => x === w);
   r = await run(browser, file, 'saved', { width: 390 });
   check('host saves at 390 px', r, { 'the zip words': all(r.after, ZIP_WORDS), 'one zip save': r.saves.length === 1 && zipOk(r.saves[0]), 'no browser download': r.downloads.length === 0 });
   // round 2 (CA-M1): the live demo's download, in both stages
-  if (/class="code-stage[^"]*"[\s\S]*?data-oa-file="tokens-download"/.test(fs.readFileSync(file, 'utf8'))) {
+  if (/code-stage[\s\S]*?data-oa-file="tokens-download"/.test(fs.readFileSync(file, 'utf8'))) {
     r = await run(browser, file, 'none', { clicks: ['live-light', 'live-dark'] });
     check('the live demo, no host: each stage\'s link downloads the page\'s own tokens.css, and the page stays', r, {
       'a link in each live stage': r.liveCount === 2, 'two downloads of tokens.css, byte for byte': r.downloads.length === 2 && r.downloads.every(cssOk),

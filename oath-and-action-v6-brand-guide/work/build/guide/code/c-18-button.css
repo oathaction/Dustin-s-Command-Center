@@ -1,51 +1,147 @@
-/* Buttons: primary, ask and quiet, with or without a utility icon. Reads only tokens.css, so it follows the theme. */
-.oa-button-set { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
-.oa-button-set [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
-.oa-button-k { margin: var(--oa-space-300) 0 var(--oa-space-100); font: var(--oa-type-label);
-  letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
-.oa-button-k:first-child { margin-top: 0 }
-.oa-button-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--oa-space-100) var(--oa-space-150) }
-.oa-button-note { margin: var(--oa-space-100) 0 0; font: var(--oa-type-body-small); color: var(--oa-color-text-secondary) }
-
-.oa-button { display: inline-flex; align-items: center; justify-content: center; gap: var(--oa-space-100); box-sizing: border-box;
-  max-width: 100%; min-width: var(--oa-size-target-touch); min-height: var(--oa-size-target-touch); margin: 0;
-  padding: var(--oa-space-100) var(--oa-space-200); border: var(--oa-border-width-hairline) solid transparent; border-radius: var(--oa-radius-none);
-  font: var(--oa-type-ui); text-align: center; overflow-wrap: anywhere; cursor: pointer }
-.oa-button-label { min-width: 0 }
-.oa-button-icon { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
-.oa-button--icon-start { padding-inline-start: var(--oa-space-150) }
-.oa-button--icon-end { padding-inline-end: var(--oa-space-150) }
-.oa-button:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
+/* Buttons: primary, ask and quiet, with or without a utility icon. Reads only tokens.css, so it
+   follows the theme. */
+.oa-button-set {
+  font: var(--oa-type-body);
+  color: var(--oa-color-text-primary);
+}
+.oa-button-set [data-icon] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--oa-component-icon-utility-line-medium);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.oa-button-k {
+  margin: var(--oa-space-300) 0 var(--oa-space-100);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  color: var(--oa-color-text-secondary);
+}
+.oa-button-k:first-child {
+  margin-top: 0;
+}
+.oa-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--oa-space-100) var(--oa-space-150);
+}
+.oa-button-note {
+  margin: var(--oa-space-100) 0 0;
+  font: var(--oa-type-body-small);
+  color: var(--oa-color-text-secondary);
+}
+.oa-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--oa-space-100);
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: var(--oa-size-target-touch);
+  min-height: var(--oa-size-target-touch);
+  margin: 0;
+  padding: var(--oa-space-100) var(--oa-space-200);
+  border: var(--oa-border-width-hairline) solid transparent;
+  border-radius: var(--oa-radius-none);
+  font: var(--oa-type-ui);
+  text-align: center;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.oa-button-label {
+  min-width: 0;
+}
+.oa-button-icon {
+  display: block;
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+}
+.oa-button--icon-start {
+  padding-inline-start: var(--oa-space-150);
+}
+.oa-button--icon-end {
+  padding-inline-end: var(--oa-space-150);
+}
+.oa-button:focus-visible {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
 
 /* Primary: the fill steps one tone on hover and the label underlines */
-.oa-button--primary { background: var(--oa-component-button-primary-fill); border-color: var(--oa-component-button-primary-fill);
-  color: var(--oa-component-button-primary-label) }
-.oa-button--primary:not([aria-disabled="true"]):hover { background: var(--oa-component-button-primary-fill-hover); border-color: var(--oa-component-button-primary-fill-hover);
-  text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
+.oa-button--primary {
+  background: var(--oa-component-button-primary-fill);
+  border-color: var(--oa-component-button-primary-fill);
+  color: var(--oa-component-button-primary-label);
+}
+.oa-button--primary:not([aria-disabled="true"]):hover {
+  background: var(--oa-component-button-primary-fill-hover);
+  border-color: var(--oa-component-button-primary-fill-hover);
+  text-decoration: underline;
+  text-decoration-thickness: var(--oa-border-width-underline);
+  text-underline-offset: .2em;
+}
 
-/* Ask: the one step a reader can take now, in the view's working red, 48 px tall, with its keyline where the surface needs
-   one. It stands on a row of its own, apart from a primary button, whose hover turns Prussian on Newsprint (Rule 05.3). */
-.oa-button--ask { min-height: var(--oa-space-600); padding-inline: var(--oa-space-300); font: var(--oa-type-ask);
-  background: var(--oa-component-button-ask-fill); color: var(--oa-component-button-ask-label);
-  border-color: var(--oa-component-button-ask-keyline, var(--oa-component-button-ask-fill)) }
-.oa-button--ask:not([aria-disabled="true"]):hover { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
-/* While an error in the same view holds the red, the ask yields to the primary fill (Rule 11.16). Its hover keeps that
-   fill and underlines the word, as the form's does, so no Prussian hover sits in a view whose error is red. */
-.oa-button--ask[data-oa-yield] { background: var(--oa-component-button-primary-fill); border-color: var(--oa-component-button-primary-fill);
-  color: var(--oa-component-button-primary-label) }
+/* Ask: the one step a reader can take now, in the view's working red, 48 px tall, with its keyline
+   where the surface needs one. It stands on a row of its own, apart from a primary button, whose
+   hover turns Prussian on Newsprint (Rule 05.3). */
+.oa-button--ask {
+  min-height: var(--oa-space-600);
+  padding-inline: var(--oa-space-300);
+  font: var(--oa-type-ask);
+  background: var(--oa-component-button-ask-fill);
+  color: var(--oa-component-button-ask-label);
+  border-color: var(--oa-component-button-ask-keyline, var(--oa-component-button-ask-fill));
+}
+.oa-button--ask:not([aria-disabled="true"]):hover {
+  text-decoration: underline;
+  text-decoration-thickness: var(--oa-border-width-underline);
+  text-underline-offset: .2em;
+}
+
+/* While an error in the same view holds the red, the ask yields to the primary fill (Rule 11.16).
+   Its hover keeps that fill and underlines the word, as the form's does, so no Prussian hover sits
+   in a view whose error is red. */
+.oa-button--ask[data-oa-yield] {
+  background: var(--oa-component-button-primary-fill);
+  border-color: var(--oa-component-button-primary-fill);
+  color: var(--oa-component-button-primary-label);
+}
 
 /* Quiet: an edge and no fill; the edge thickens on hover */
-.oa-button--quiet { background: transparent; border-color: var(--oa-color-border-strong); color: var(--oa-color-text-primary) }
-.oa-button--quiet:not([aria-disabled="true"]):hover { border-width: var(--oa-border-width-rule);
-  padding: calc(var(--oa-space-100) - 1px) calc(var(--oa-space-200) - 1px) }
-.oa-button--quiet.oa-button--icon-start:not([aria-disabled="true"]):hover { padding-inline-start: calc(var(--oa-space-150) - 1px) }
-.oa-button--quiet.oa-button--icon-end:not([aria-disabled="true"]):hover { padding-inline-end: calc(var(--oa-space-150) - 1px) }
+.oa-button--quiet {
+  background: transparent;
+  border-color: var(--oa-color-border-strong);
+  color: var(--oa-color-text-primary);
+}
+.oa-button--quiet:not([aria-disabled="true"]):hover {
+  border-width: var(--oa-border-width-rule);
+  padding: calc(var(--oa-space-100) - 1px) calc(var(--oa-space-200) - 1px);
+}
+.oa-button--quiet.oa-button--icon-start:not([aria-disabled="true"]):hover {
+  padding-inline-start: calc(var(--oa-space-150) - 1px);
+}
+.oa-button--quiet.oa-button--icon-end:not([aria-disabled="true"]):hover {
+  padding-inline-end: calc(var(--oa-space-150) - 1px);
+}
 
-/* Unavailable or sending: keeps focus, takes aria-disabled and points to its reason; a dashed edge and the disabled label */
-.oa-button[aria-disabled="true"] { background: transparent; color: var(--oa-component-button-disabled-label);
-  border: var(--oa-border-width-hairline) dashed var(--oa-component-button-disabled-edge); cursor: not-allowed }
+/* Unavailable or sending: keeps focus, takes aria-disabled and points to its reason; a dashed edge
+   and the disabled label */
+.oa-button[aria-disabled="true"] {
+  background: transparent;
+  color: var(--oa-component-button-disabled-label);
+  border: var(--oa-border-width-hairline) dashed var(--oa-component-button-disabled-edge);
+  cursor: not-allowed;
+}
 
 @media (forced-colors: active) {
-  .oa-button { border-color: ButtonText }
-  .oa-button[aria-disabled="true"] { color: GrayText; border-color: GrayText }
+  .oa-button {
+    border-color: ButtonText;
+  }
+  .oa-button[aria-disabled="true"] {
+    color: GrayText;
+    border-color: GrayText;
+  }
 }

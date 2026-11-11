@@ -227,6 +227,12 @@ SOURCES = [
     'Sources: WHATWG, “HTML Living Standard”, the sections on web storage and on scripts that block rendering, and MDN '
     'Web Docs, “Window: localStorage property” and “Storage quotas and eviction criteria”, retrieved November 10, 2026. '
     'Behind Rule 18.4’s stored choice, its private windows and Safari’s seven days.',
+    'Source: Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. Behind Loop R1, '
+    '“Wealth and political influence reinforce each other”, which the atlas grades plausible, and Loop R8, “Housing '
+    'scarcity strengthens owners’ incentive to restrict building”, whose two steps it grades well supported; the '
+    'variables Households’ financial security (A4), Housing scarcity (A5), Homeowners’ equity (A6) and Major external '
+    'shocks (X5); the first 12 of its 50 reforms, R-01 to R-12, in its own order; and Reform R-30, “More homes allowed '
+    'by right near jobs”. Rules 18.7 to 18.9, 18.15, 18.16 and 18.22 to 18.24 show them.',
 ]
 
 # Specification labels, in the order every table takes (the round 1 brief's list, then the themes and browsers)
@@ -294,7 +300,7 @@ rule(n=1, set='c-18-button', name='Buttons',
                 'underlines; a quiet button’s edge thickens from 1 to 2 px. Focus: ' + RING + '. Unavailable: a dashed '
                 f'edge, the word in the disabled color ({R_DIS_N} to 1 on Newsprint, {R_DIS_C} on Charcoal) and the reason '
                 'line, with focus kept. Sending: the word reads “Sending”. Stepping down: the ask takes the primary look '
-                'while an error holds the red.'),
+                'while an error holds the red, and its hover underlines its word and keeps its fill.'),
          (L_KEY, 'Tab reaches it; Enter or Space presses it. An unavailable button takes focus, and a press does '
                  'nothing.'),
          (L_NAME, 'Its visible word, which starts the name (WCAG 2.2 SC 2.5.3); the icon carries aria-hidden. An '
@@ -610,7 +616,8 @@ rule(n=7, set='c-18-location', name='Location list',
      basis='WCAG 2.2 SC 1.4.1 and 4.1.2; APG Breadcrumb pattern',
      anatomy='The parts of a location list: the list’s label, each link, the current link’s band, 4 px bar and bold '
              'words, and a breadcrumb’s current page in bold.',
-     code_caption='A list of a page’s parts and a breadcrumb, live, each marking where the reader is.',
+     code_caption='A breadcrumb and a list of places from our systems atlas, the variables of one domain, live, each '
+                  'marking where the reader is, with Previous and Next after them.',
      code_alt='A list of a page’s parts and a breadcrumb, drawn live from the code below. In this guide the live copy '
               'draws the breadcrumb’s navigation as a named group, so the guide’s own landmarks stay the only ones on the '
               'page; the code below keeps the real nav element.',
@@ -1283,7 +1290,9 @@ rule(n=22, set='c-18-loop-stepper', name='Loop stepper',
      title='Step through a loop with Play, Reset the loop, Previous step and Next step, and say each step once.',
      rule=['A loop stepper walks a reader through a loop of connections one step at a time. Its buttons run in one order '
            'in every product, Play, Reset the loop, Previous step and Next step, each with its utility icon beside its '
-           'word (Rule 11.14). The status line says each step as it arrives, “Step 2 of 3:” and the step’s '
+           'word (Rule 11.14). A loop from our atlas takes its atlas title as its name, in quotation marks, with a line '
+           'under it that gives its evidence grade, so the heading claims no more than the evidence holds (chapter 02’s '
+           'house rule H08). The status line says each step as it arrives, “Step 2 of 3:” and the step’s '
            'sentence, and the step list marks the current step with <code>aria-current="step"</code> and a 4 px bar.',
            'Nothing plays until the reader presses Play. Play becomes Pause while it plays and Play again at the end, its '
            'icon and its word changing together, and it holds each step about 250 ms a word and never under six seconds, '
@@ -1297,8 +1306,9 @@ rule(n=22, set='c-18-loop-stepper', name='Loop stepper',
      basis='WCAG 2.2 SC 2.2.1, 2.2.2, 4.1.2 and 4.1.3; APG Carousel pattern, its buttons without its slide roles',
      anatomy='The parts of a loop stepper: Play with its icon and word, Reset the loop, Previous step, Next step, an '
              'unavailable button’s reason, the status line, and the step list with its current step’s 4 px bar.',
-     code_caption='A three-step loop, live. Press Next step and listen for the line; press Play and it holds each step '
-                  'long enough to read.',
+     code_caption='Loop R1 from our systems atlas, three steps, live, with its grade under its name and its source '
+                  'under the steps. Press Next step and listen for the line; press Play and it holds each step long enough '
+                  'to read.',
      specs=specs(
          (L_PAT, 'None fits. The Carousel pattern is nearest, and the stepper takes its buttons and its rule that no '
                  'button moves focus, without its slide roles.'),
@@ -1348,8 +1358,8 @@ rule(n=23, set='c-18-diagram-controls', name='Diagram controls',
      anatomy='The parts of the diagram controls: the drawing’s items, the item in focus with its heavier mark and '
              'underlined label, the selected item, the muted items, the readout line, the panel with its title, and the '
              'disclosure for the lines in words.',
-     code_caption='A small drawing of three items, live. Tab to it once, move with the arrow keys, select with Enter and '
-                  'close with Escape.',
+     code_caption='A small drawing of Loop R1’s three items, live, with the loop’s grade under its name. Tab to it once, '
+                  'move with the arrow keys, select with Enter and close with Escape.',
      specs=specs(
          (L_PAT, 'APG Button, as toggle buttons, for the items; Disclosure for More and Less, the lines in words and the '
                  'table; Dialog (Modal) for Full size.'),
@@ -1521,9 +1531,9 @@ FAIL_HTML = {
                '.f18-t th,.f18-t td{text-align:left;padding:6px 4px;border-bottom:1px solid var(--hair);vertical-align:top}'
                '.f18-t th{font:var(--oa-type-ui)}.f18-ar{white-space:nowrap}',
                '<table class="f18-t"><thead><tr><th>Bill</th><th>Title</th><th><span class="f18-ar">Last action ↓</span></th>'
-               '</tr></thead><tbody><tr><td>H.99001</td><td>Public meeting notice</td><td>March 3</td></tr>'
+               '</tr></thead><tbody><tr><td>H.99003</td><td>Library hours</td><td>April 2</td></tr>'
                '<tr><td>S.99002</td><td>School bus contracts</td><td>February 20</td></tr>'
-               '<tr><td>H.99003</td><td>Library hours</td><td>February 11</td></tr></tbody></table>',
+               '<tr><td>H.99001</td><td>Public meeting notice</td><td>January 16</td></tr></tbody></table>',
                'Only a pointer can sort, and the new order is never said.'),
     11: fplate('.f18-cut{overflow:hidden;border:1px solid var(--hair)}'
                '.f18-t{width:560px;border-collapse:collapse;font:var(--oa-type-body-small)}'
@@ -1689,10 +1699,10 @@ COPY2 = '.oa-copy-row:nth-child(2) .oa-copy-button'
 KEYS = {
     1: [path('Tab through every button; the unavailable ones keep focus, and a press does nothing', [
         step('Tab', '.oa-button--primary:not([aria-disabled]):not(.oa-button--icon-end)'),
-        step('Tab', '.oa-button--ask:not([data-oa-yield])'),
         step('Tab', '.oa-button--quiet:not(.oa-button--icon-start)'),
         step('Tab', '.oa-button--icon-start'),
         step('Tab', '.oa-button--icon-end'),
+        step('Tab', '.oa-button--ask:not([data-oa-yield])'),
         step('Tab', B_WHY, [st(B_WHY, attr='aria-disabled', **{'is': 'true'})]),
         step('Enter', B_WHY, [st(B_WHY, attr='aria-disabled', **{'is': 'true'})]),
         step('Space', B_WHY),
@@ -1783,6 +1793,7 @@ KEYS = {
         step('Tab', '.oa-location-link[aria-current="page"]'),
         step('Tab', '.oa-location-item:not([aria-current])'),
         step('Tab', '.oa-location-item[aria-current="page"]'),
+        step('Tab', '.oa-location-item:not([aria-current])'),
         step('Tab', '.oa-location-item:not([aria-current])'),
         step('Tab', '.oa-location-step:not(.oa-location-step--next)'),
         step('Tab', '.oa-location-step--next'),
@@ -1888,9 +1899,11 @@ KEYS = {
             step(type='reader@example.org', focus='input[autocomplete="email"]'),
             step('Tab', 'input[autocomplete="postal-code"]'),
             step(type='12345', focus='input[autocomplete="postal-code"]'),
-            step('Enter', None, [st('input[autocomplete="email"]', attr='aria-invalid', **{'is': None})],
+            step('Enter', None, [st('input[autocomplete="email"]', attr='aria-invalid', **{'is': None}),
+                                 st('.oa-form-send', text='Sending')],
                  status_has='Sending', status_el='.oa-form-status'),
-            step(None, None, status_has='signed up', status_el='.oa-form-status', wait=1200)])],
+            step(None, None, [st('.oa-form-send', text='Remind me')], status_has='signed up', status_el='.oa-form-status',
+                 wait=1200)])],
     18: [path('Messages take no focus', [step('Tab', OUT)])],
     19: [path('The loading and empty states take no focus of their own', [step('Tab', OUT)])],
     20: [path('Show the next update: the line says it once, and focus stays on the button', [

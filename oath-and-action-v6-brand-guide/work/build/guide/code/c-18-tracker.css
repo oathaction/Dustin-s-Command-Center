@@ -1,93 +1,359 @@
-/* Bill tracker (Rules 11.1 to 11.5): six numbered steps drawn by state from the mark tokens, the status words in a
-   polite line, and the take-part mark in the working red. Under 34.5rem the step names move into a key. */
-.oa-tracker { container-type: inline-size; font: var(--oa-type-body); color: var(--oa-color-text-primary) }
-.oa-tracker [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
-/* Illustrative: the label at the head of an invented piece, in the guide's one style (uppercase, a 1 px edge in the ink) */
-.oa-tracker-illus { display: inline-block; margin: 0 0 var(--oa-space-100); padding: 0 .4em; border: var(--oa-border-width-hairline) solid currentColor;
-  color: var(--oa-color-text-primary); font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing);
-  text-transform: var(--oa-type-label-text-transform); line-height: 1.5 }
-.oa-tracker-card { padding: var(--oa-space-200) 0; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
-.oa-tracker-list { margin: 0; padding: 0; list-style: none }
-.oa-tracker-bill { margin: 0 0 var(--oa-space-150); font: var(--oa-type-body) }
-.oa-tracker-bill b, .oa-tracker-status b, .oa-tracker-words b, .oa-tracker-take b, .oa-tracker-alert b { font-weight: var(--oa-font-weight-bold) }
-.oa-tracker-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
-
-/* The marks: 26 px circles, each step a sixth of the row, joined by the line */
-.oa-tracker-steps { display: flex; max-width: 34.5rem; margin: 0; padding: 0; list-style: none }
-.oa-tracker-step { position: relative; display: flex; flex: 1 1 0; flex-direction: column; align-items: center; min-width: 0 }
-.oa-tracker-step + .oa-tracker-step::before { content: ""; position: absolute; top: 12px; right: 50%; width: 100%;
-  border-top: var(--oa-component-mark-line-ahead) solid var(--oa-color-graphic-subtle) }
-/* the line into a step the record has reached is 2 px in ink; into a step still ahead, 1 px in the subtle ink */
-.oa-tracker-step + .oa-tracker-step:is([data-oa-state="done"], [data-oa-state="now"], [data-oa-state="never"], [data-oa-state="stopped"])::before {
-  border-top: var(--oa-component-mark-line-reached) solid var(--oa-color-graphic-essential) }
-.oa-tracker-mark { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; box-sizing: border-box;
-  width: 26px; height: 26px; border-radius: var(--oa-radius-full); background: var(--oa-color-surface);
-  font: var(--oa-type-data-label); font-weight: var(--oa-font-weight-bold) }
-.oa-tracker-n { position: relative; z-index: 1 }
-/* Done: filled, its number in the surface color */
-.oa-tracker-step[data-oa-state="done"] .oa-tracker-mark { background: var(--oa-color-graphic-essential); color: var(--oa-color-surface) }
-/* Now: a 3 px ring, its number in bold */
-.oa-tracker-step[data-oa-state="now"] .oa-tracker-mark { border: var(--oa-component-mark-ring-now) solid var(--oa-color-graphic-essential); color: var(--oa-color-text-primary) }
-/* Not yet, and never happened: a 1.5 px ring in the subtle ink, its number at 600 in the secondary text color */
-.oa-tracker-step:is([data-oa-state="ahead"], [data-oa-state="never"]) .oa-tracker-mark { border: var(--oa-component-mark-ring-ahead) solid var(--oa-color-graphic-subtle);
-  color: var(--oa-color-text-secondary); font-weight: var(--oa-font-weight-semibold) }
-/* Never happened: a 2 px slash in ink, 4 px longer than the circle is wide, under a halo of the surface around the number */
-.oa-tracker-step[data-oa-state="never"] .oa-tracker-mark::before { content: ""; position: absolute; top: 50%; left: 50%; width: 30px;
-  border-top: var(--oa-component-mark-slash) solid var(--oa-color-graphic-essential); transform: translate(-50%, -50%) rotate(-45deg) }
-.oa-tracker-step[data-oa-state="never"] .oa-tracker-n { padding: 0 1px; background: var(--oa-color-surface); line-height: 1 }
-/* Stopped: a filled square 2 px narrower than the circle; the line ends there */
-.oa-tracker-step[data-oa-state="stopped"] .oa-tracker-mark { width: 24px; height: 24px; margin: 1px 0; border-radius: var(--oa-radius-none);
-  background: var(--oa-color-graphic-essential); color: var(--oa-color-surface) }
-/* Take part: an 11 px disc in the working red at the upper right of the Now ring, with its keyline and a cut of surface */
-.oa-tracker-step[data-oa-take-part] .oa-tracker-mark::after { content: ""; position: absolute; top: -4px; right: -4px; box-sizing: border-box;
-  width: var(--oa-component-mark-take-part-disc); height: var(--oa-component-mark-take-part-disc); border-radius: var(--oa-radius-full);
-  background: var(--oa-component-button-ask-fill);
-  border: var(--oa-component-mark-take-part-keyline) solid var(--oa-component-button-ask-keyline, var(--oa-component-button-ask-fill));
-  outline: var(--oa-component-mark-take-part-cut) solid var(--oa-color-surface) }
-.oa-tracker-name { display: none }
-.oa-tracker-key { display: flex; flex-wrap: wrap; gap: 0 var(--oa-space-150); margin: var(--oa-space-100) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
-.oa-tracker-key b { color: var(--oa-color-text-primary); font-variant-numeric: tabular-nums }
-@container (min-width: 34.5rem) {
-  .oa-tracker-name { display: block; margin-top: var(--oa-space-050); font: var(--oa-type-data-label); text-align: center; color: var(--oa-color-text-secondary) }
-  .oa-tracker-step:is([data-oa-state="now"], [data-oa-state="stopped"]) .oa-tracker-name { font-weight: var(--oa-font-weight-bold); color: var(--oa-color-text-primary) }
-  .oa-tracker-key { display: none }
+/* Bill tracker (Rules 11.1 to 11.5): six numbered steps drawn by state from the mark tokens, the
+   status words in a polite line, and the take-part mark in the working red. Under 34.5rem the step
+   names move into a key. */
+.oa-tracker {
+  container-type: inline-size;
+  font: var(--oa-type-body);
+  color: var(--oa-color-text-primary);
+}
+.oa-tracker [data-icon] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--oa-component-icon-utility-line-medium);
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.oa-tracker-status, .oa-tracker-words { margin: var(--oa-space-150) 0 0; max-width: var(--oa-layout-measure-body-max); font: var(--oa-type-body-small) }
-.oa-tracker-take { margin: var(--oa-space-100) 0 0; max-width: var(--oa-layout-measure-body-max); font: var(--oa-type-body-small) }
-.oa-tracker-link { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); color: var(--oa-color-text-primary); font: var(--oa-type-ui);
-  text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
-.oa-tracker-link:hover { text-decoration-thickness: var(--oa-border-width-underline-hover) }
-.oa-tracker-check { display: flex; align-items: flex-start; gap: var(--oa-space-100); margin: var(--oa-space-100) 0 0; font: var(--oa-type-body-small); color: var(--oa-color-state-warning-text) }
-.oa-tracker-check .oa-tracker-icon { color: var(--oa-color-state-warning-mark) }
-.oa-tracker-check > span, .oa-tracker-alert > span { min-width: 0; overflow-wrap: anywhere }
-.oa-tracker-icon { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
-.oa-tracker-alert:empty, .oa-tracker-take[hidden], .oa-tracker-check[hidden] { display: none }
-.oa-tracker-alert { display: flex; align-items: flex-start; gap: var(--oa-space-100); margin: var(--oa-space-150) 0 0; padding: var(--oa-space-100) var(--oa-space-150);
-  background: var(--oa-color-state-error-band, transparent); color: var(--oa-color-state-error-text);
-  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar); font: var(--oa-type-body-small) }
-.oa-tracker-next { box-sizing: border-box; max-width: 100%; min-height: var(--oa-size-target-touch); margin: var(--oa-space-200) 0 0;
-  padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px); border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
-  border-radius: var(--oa-radius-none); background: transparent; color: var(--oa-color-text-primary); font: var(--oa-type-ui); text-align: start; overflow-wrap: anywhere; cursor: pointer }
-.oa-tracker-next:not([aria-disabled="true"]):hover { border-width: var(--oa-border-width-rule); padding: calc(var(--oa-space-100) - 1px) var(--oa-space-200) }
-.oa-tracker-next[aria-disabled="true"] { border-style: dashed; border-color: var(--oa-color-state-disabled-edge); color: var(--oa-color-state-disabled-text); cursor: not-allowed }
-.oa-tracker-next:focus-visible, .oa-tracker-link:focus-visible, .oa-tracker-how:focus-visible {
-  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
-.oa-tracker-why { margin: var(--oa-space-100) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
-.oa-tracker-news[hidden] { display: none }
-.oa-tracker-k { margin: var(--oa-space-300) 0 var(--oa-space-100); font: var(--oa-type-label);
-  letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
-.oa-tracker-loading { display: flex; align-items: center; gap: var(--oa-space-150); margin: 0; font: var(--oa-type-ui); color: var(--oa-color-state-loading-text) }
-.oa-tracker-still { display: block; flex: none; box-sizing: border-box; width: var(--oa-space-200); height: var(--oa-space-200);
-  border: var(--oa-border-width-rule) solid var(--oa-color-state-loading-mark); border-radius: var(--oa-radius-full) }
-.oa-tracker-empty { max-width: var(--oa-layout-measure-body-max); margin: 0; padding: var(--oa-space-150);
-  border: var(--oa-border-width-hairline) dashed var(--oa-color-state-empty-edge); color: var(--oa-color-state-empty-text); font: var(--oa-type-body-small) }
-.oa-tracker-how { margin: var(--oa-space-300) 0 0; font: var(--oa-type-body-small) }
+/* Illustrative: the label at the head of an invented piece, in the guide's one style (uppercase, a
+   1 px edge in the ink) */
+.oa-tracker-illus {
+  display: inline-block;
+  margin: 0 0 var(--oa-space-100);
+  padding: 0 .4em;
+  border: var(--oa-border-width-hairline) solid currentColor;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  line-height: 1.5;
+}
+.oa-tracker-card {
+  padding: var(--oa-space-200) 0;
+  border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+}
+.oa-tracker-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.oa-tracker-bill {
+  margin: 0 0 var(--oa-space-150);
+  font: var(--oa-type-body);
+}
+.oa-tracker-bill b,
+.oa-tracker-status b,
+.oa-tracker-words b,
+.oa-tracker-take b,
+.oa-tracker-alert b {
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-tracker-vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* The marks: 26 px circles, each step a sixth of the row, joined by the line */
+.oa-tracker-steps {
+  display: flex;
+  max-width: 34.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.oa-tracker-step {
+  position: relative;
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+.oa-tracker-step + .oa-tracker-step::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: 50%;
+  width: 100%;
+  border-top: var(--oa-component-mark-line-ahead) solid var(--oa-color-graphic-subtle);
+}
+
+/* the line into a step the record has reached is 2 px in ink; into a step still ahead, 1 px in the
+   subtle ink */
+.oa-tracker-step + .oa-tracker-step:is([data-oa-state="done"], [data-oa-state="now"], [data-oa-state="never"], [data-oa-state="stopped"])::before {
+  border-top: var(--oa-component-mark-line-reached) solid var(--oa-color-graphic-essential);
+}
+.oa-tracker-mark {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--oa-radius-full);
+  background: var(--oa-color-surface);
+  font: var(--oa-type-data-label);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-tracker-n {
+  position: relative;
+  z-index: 1;
+}
+
+/* Done: filled, its number in the surface color */
+.oa-tracker-step[data-oa-state="done"] .oa-tracker-mark {
+  background: var(--oa-color-graphic-essential);
+  color: var(--oa-color-surface);
+}
+
+/* Now: a 3 px ring, its number in bold */
+.oa-tracker-step[data-oa-state="now"] .oa-tracker-mark {
+  border: var(--oa-component-mark-ring-now) solid var(--oa-color-graphic-essential);
+  color: var(--oa-color-text-primary);
+}
+
+/* Not yet, and never happened: a 1.5 px ring in the subtle ink, its number at 600 in the secondary
+   text color */
+.oa-tracker-step:is([data-oa-state="ahead"], [data-oa-state="never"]) .oa-tracker-mark {
+  border: var(--oa-component-mark-ring-ahead) solid var(--oa-color-graphic-subtle);
+  color: var(--oa-color-text-secondary);
+  font-weight: var(--oa-font-weight-semibold);
+}
+
+/* Never happened: a 2 px slash in ink, 4 px longer than the circle is wide, under a halo of the
+   surface around the number */
+.oa-tracker-step[data-oa-state="never"] .oa-tracker-mark::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  border-top: var(--oa-component-mark-slash) solid var(--oa-color-graphic-essential);
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.oa-tracker-step[data-oa-state="never"] .oa-tracker-n {
+  padding: 0 1px;
+  background: var(--oa-color-surface);
+  line-height: 1;
+}
+
+/* Stopped: a filled square 2 px narrower than the circle; the line ends there */
+.oa-tracker-step[data-oa-state="stopped"] .oa-tracker-mark {
+  width: 24px;
+  height: 24px;
+  margin: 1px 0;
+  border-radius: var(--oa-radius-none);
+  background: var(--oa-color-graphic-essential);
+  color: var(--oa-color-surface);
+}
+
+/* Take part: an 11 px disc in the working red at the upper right of the Now ring, with its keyline
+   and a cut of surface */
+.oa-tracker-step[data-oa-take-part] .oa-tracker-mark::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  box-sizing: border-box;
+  width: var(--oa-component-mark-take-part-disc);
+  height: var(--oa-component-mark-take-part-disc);
+  border-radius: var(--oa-radius-full);
+  background: var(--oa-component-button-ask-fill);
+  border:
+    var(--oa-component-mark-take-part-keyline) solid
+    var(--oa-component-button-ask-keyline, var(--oa-component-button-ask-fill));
+  outline: var(--oa-component-mark-take-part-cut) solid var(--oa-color-surface);
+}
+.oa-tracker-name {
+  display: none;
+}
+.oa-tracker-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--oa-space-150);
+  margin: var(--oa-space-100) 0 0;
+  font: var(--oa-type-caption);
+  color: var(--oa-color-text-secondary);
+}
+.oa-tracker-key b {
+  color: var(--oa-color-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+@container (min-width: 34.5rem) {
+  .oa-tracker-name {
+    display: block;
+    margin-top: var(--oa-space-050);
+    font: var(--oa-type-data-label);
+    text-align: center;
+    color: var(--oa-color-text-secondary);
+  }
+  .oa-tracker-step:is([data-oa-state="now"], [data-oa-state="stopped"]) .oa-tracker-name {
+    font-weight: var(--oa-font-weight-bold);
+    color: var(--oa-color-text-primary);
+  }
+  .oa-tracker-key {
+    display: none;
+  }
+}
+.oa-tracker-status, .oa-tracker-words {
+  margin: var(--oa-space-150) 0 0;
+  max-width: var(--oa-layout-measure-body-max);
+  font: var(--oa-type-body-small);
+}
+.oa-tracker-take {
+  margin: var(--oa-space-100) 0 0;
+  max-width: var(--oa-layout-measure-body-max);
+  font: var(--oa-type-body-small);
+}
+.oa-tracker-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--oa-size-target-touch);
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-ui);
+  text-decoration: underline;
+  text-decoration-thickness: var(--oa-border-width-underline);
+  text-underline-offset: .2em;
+}
+.oa-tracker-link:hover {
+  text-decoration-thickness: var(--oa-border-width-underline-hover);
+}
+.oa-tracker-check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--oa-space-100);
+  margin: var(--oa-space-100) 0 0;
+  font: var(--oa-type-body-small);
+  color: var(--oa-color-state-warning-text);
+}
+.oa-tracker-check .oa-tracker-icon {
+  color: var(--oa-color-state-warning-mark);
+}
+.oa-tracker-check > span, .oa-tracker-alert > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.oa-tracker-icon {
+  display: block;
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+}
+.oa-tracker-alert:empty, .oa-tracker-take[hidden], .oa-tracker-check[hidden] {
+  display: none;
+}
+.oa-tracker-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--oa-space-100);
+  margin: var(--oa-space-150) 0 0;
+  padding: var(--oa-space-100) var(--oa-space-150);
+  background: var(--oa-color-state-error-band, transparent);
+  color: var(--oa-color-state-error-text);
+  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar);
+  font: var(--oa-type-body-small);
+}
+.oa-tracker-next {
+  box-sizing: border-box;
+  max-width: 100%;
+  min-height: var(--oa-size-target-touch);
+  margin: var(--oa-space-200) 0 0;
+  padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+  border-radius: var(--oa-radius-none);
+  background: transparent;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-ui);
+  text-align: start;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.oa-tracker-next:not([aria-disabled="true"]):hover {
+  border-width: var(--oa-border-width-rule);
+  padding: calc(var(--oa-space-100) - 1px) var(--oa-space-200);
+}
+.oa-tracker-next[aria-disabled="true"] {
+  border-style: dashed;
+  border-color: var(--oa-color-state-disabled-edge);
+  color: var(--oa-color-state-disabled-text);
+  cursor: not-allowed;
+}
+.oa-tracker-next:focus-visible,
+.oa-tracker-link:focus-visible,
+.oa-tracker-how:focus-visible {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
+.oa-tracker-why {
+  margin: var(--oa-space-100) 0 0;
+  font: var(--oa-type-caption);
+  color: var(--oa-color-text-secondary);
+}
+.oa-tracker-news[hidden] {
+  display: none;
+}
+.oa-tracker-k {
+  margin: var(--oa-space-300) 0 var(--oa-space-100);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  color: var(--oa-color-text-secondary);
+}
+.oa-tracker-loading {
+  display: flex;
+  align-items: center;
+  gap: var(--oa-space-150);
+  margin: 0;
+  font: var(--oa-type-ui);
+  color: var(--oa-color-state-loading-text);
+}
+.oa-tracker-still {
+  display: block;
+  flex: none;
+  box-sizing: border-box;
+  width: var(--oa-space-200);
+  height: var(--oa-space-200);
+  border: var(--oa-border-width-rule) solid var(--oa-color-state-loading-mark);
+  border-radius: var(--oa-radius-full);
+}
+.oa-tracker-empty {
+  max-width: var(--oa-layout-measure-body-max);
+  margin: 0;
+  padding: var(--oa-space-150);
+  border: var(--oa-border-width-hairline) dashed var(--oa-color-state-empty-edge);
+  color: var(--oa-color-state-empty-text);
+  font: var(--oa-type-body-small);
+}
+.oa-tracker-how {
+  margin: var(--oa-space-300) 0 0;
+  font: var(--oa-type-body-small);
+}
 
 @media (forced-colors: active) {
-  .oa-tracker-icon, .oa-tracker-check .oa-tracker-icon { color: CanvasText }
-  .oa-tracker-step[data-oa-state="done"] .oa-tracker-mark, .oa-tracker-step[data-oa-state="stopped"] .oa-tracker-mark { forced-color-adjust: none; background: CanvasText; color: Canvas }
-  .oa-tracker-step[data-oa-take-part] .oa-tracker-mark::after { forced-color-adjust: none; background: Highlight; border-color: CanvasText }
-  .oa-tracker-next { border-color: ButtonText }
-  .oa-tracker-alert, .oa-tracker-empty, .oa-tracker-still { border-color: CanvasText }
+  .oa-tracker-icon, .oa-tracker-check .oa-tracker-icon {
+    color: CanvasText;
+  }
+  .oa-tracker-step[data-oa-state="done"] .oa-tracker-mark,
+  .oa-tracker-step[data-oa-state="stopped"] .oa-tracker-mark {
+    forced-color-adjust: none;
+    background: CanvasText;
+    color: Canvas;
+  }
+  .oa-tracker-step[data-oa-take-part] .oa-tracker-mark::after {
+    forced-color-adjust: none;
+    background: Highlight;
+    border-color: CanvasText;
+  }
+  .oa-tracker-next {
+    border-color: ButtonText;
+  }
+  .oa-tracker-alert, .oa-tracker-empty, .oa-tracker-still {
+    border-color: CanvasText;
+  }
 }

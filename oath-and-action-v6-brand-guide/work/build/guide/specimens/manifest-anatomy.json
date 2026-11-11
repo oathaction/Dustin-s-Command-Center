@@ -43,7 +43,7 @@
   "chapter": "18",
   "rule": "18.6",
   "width_px": null,
-  "alt": "Anatomy of a masthead and its phone menu, drawn from its code to copy on Newsprint, with nine numbered callouts and a key. 1, Home link: The product’s name, from the wordmark’s master, links to the front page. 2, Navigation: Named Parts of the site; with 40rem of room it sits in the bar in place of Menu. 3, Current part: Bold, with a 2 px underline. 4, Height: Each link and Menu at least 44 px tall; Close the menu 44 by 44 px. 5, Menu: Under 40rem: three bars and the word, which opens the menu over the page. 6, Open menu: Its title, in a dialog that holds focus until it closes. 7, Close the menu: The cross and its words; Escape closes it too, and focus returns to Menu. 8, Current row: The selected band, a 4 px bar and bold words. 9, Row: Each part again, 44 px tall.",
+  "alt": "Anatomy of a masthead and its phone menu, drawn from its code to copy on Newsprint, with nine numbered callouts and a key. 1, Home link: The product’s name, from the wordmark’s master, links to the front page. 2, Height: Each link and Menu at least 44 px tall; Close the menu 44 by 44 px. 3, Menu: Under 40rem: three bars and the word, which opens the menu over the page. 4, Navigation: Named Parts of the site; with 40rem of room it sits in the bar in place of Menu. 5, Current part: Bold, with a 2 px underline. 6, Open menu: Its title, in a dialog that holds focus until it closes. 7, Close the menu: The cross and its words; Escape closes it too, and focus returns to Menu. 8, Current row: The selected band, a 4 px bar and bold words. 9, Row: Each part again, 44 px tall.",
   "illustrative": false,
   "notes": "Drawn from work/build/guide/code/c-18-masthead.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366)."
  },
@@ -75,7 +75,7 @@
   "chapter": "18",
   "rule": "18.10",
   "width_px": null,
-  "alt": "Anatomy of a sortable table, drawn from its code to copy on Newsprint, with five numbered callouts and a key. 1, Caption: Names the table, as table markup’s own caption. 2, Column heading: Each heading holds a sort button with its words and a 16 px arrow. 3, Height: Each sort button at least 44 px tall, across its words and arrow. 4, Sorted heading: The arrow turned to the order, and the heading says it in aria-sort. 5, Row rule: A hairline between rows, drawn as a border.",
+  "alt": "Anatomy of a sortable table, drawn from its code to copy on Newsprint, with five numbered callouts and a key. 1, Caption: Names the table, as table markup’s own caption. 2, Height: Each sort button at least 44 px tall, across its words and arrow. 3, Sorted heading: The arrow turned to the order, and the heading says it in aria-sort. 4, Column heading: Each heading holds a sort button with its words and a 16 px arrow. 5, Row rule: A hairline between rows, drawn as a border.",
   "illustrative": true,
   "notes": "Drawn from work/build/guide/code/c-18-table.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366). The status line under the table is written by its script when a reader sorts; the plate shows the table at rest."
  },
@@ -83,7 +83,7 @@
   "chapter": "18",
   "rule": "18.11",
   "width_px": null,
-  "alt": "Anatomy of a scroll region, drawn from its code to copy on Newsprint, with five numbered callouts and a key. 1, Name: Names the frame, and the frame takes it. 2, Hint: Shown only while the content is wider than the frame. 3, Frame: A hairline edge; the content scrolls inside it, so the page never does. 4, Wide content: Its own width, cut by the frame’s edge. 5, Focus ring: Drawn inside the frame’s edge; the frame is a Tab stop only while it scrolls, and the arrow keys move it.",
+  "alt": "Anatomy of a scroll region, drawn from its code to copy on Newsprint, with five numbered callouts and a key. 1, Name: Names the frame, and the frame takes it. 2, Hint: Shown only while the content is wider than the frame. 3, Wide content: Its own width, cut by the frame’s edge. 4, Frame: A hairline edge; the content scrolls inside it, so the page never does. 5, Focus ring: Drawn inside the frame’s edge; the frame is a Tab stop only while it scrolls, and the arrow keys move it.",
   "illustrative": false,
   "notes": "Drawn from work/build/guide/code/c-18-scroll-region.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366)."
  },
@@ -139,7 +139,7 @@
   "chapter": "18",
   "rule": "18.18",
   "width_px": null,
-  "alt": "Anatomy of messages, drawn from its code to copy on Newsprint, with six numbered callouts and a key. 1, Mark: 24 px: the error mark in the text’s ink. 2, First word: Error:, Warning: or what happened, in bold. 3, Error Band: Behind an error on Newsprint; none on Charcoal. 4, Bar: 4 px, drawn as a border: Pillar Red for an error. 5, Warning: The warning mark and a 4 px bar, both in the text’s ink. 6, Success: The success mark in Verdigris, with no bar.",
+  "alt": "Anatomy of messages, drawn from its code to copy on Newsprint, with six numbered callouts and a key. 1, Mark: 24 px: the error mark in the text’s ink. 2, First word: Error:, Warning: or what happened, in bold. 3, Bar: 4 px, drawn as a border: Pillar Red for an error. 4, Error Band: Behind an error on Newsprint; none on Charcoal. 5, Warning: The warning mark and a 4 px bar, both in the text’s ink. 6, Success: The success mark in Verdigris, with no bar.",
   "illustrative": false,
   "notes": "Drawn from work/build/guide/code/c-18-messages.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366)."
  },
@@ -173,7 +173,7 @@
   "width_px": null,
   "alt": "Anatomy of a loop stepper, drawn from its code to copy on Newsprint, with eight numbered callouts and a key. 1, Live line: Each step, said once, politely. 2, Current step: A 4 px bar drawn as a border, in the step list. 3, Height: 44 px tall. 4, Play: Its icon and word; Pause while it runs, Play again at the end. 5, Reset the loop: The open circle with one arrowhead, and its words. 6, Previous step: The arrow mirrored, before the words. 7, Next step, unavailable: At the last step: a dashed edge, and it keeps its focus. 8, Reason line: Says why Next step waits and what to do.",
   "illustrative": false,
-  "notes": "Drawn from work/build/guide/code/c-18-loop-stepper.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366). Drawn at the last step, the state the stepper script writes there."
+  "notes": "Drawn from work/build/guide/code/c-18-loop-stepper.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366). Drawn at the last step, the state the stepper script writes there, with its four buttons two by two."
  },
  "s-18-23-anatomy": {
   "chapter": "18",

@@ -1,45 +1,157 @@
-/* Links: in running text, to another site (Rule 11.13), in a list with the current page, a part not built yet, and a
-   skip link. Underlined at 1 px, 2 px on hover. Reads only tokens.css. */
-.oa-link-set { position: relative; font: var(--oa-type-body); color: var(--oa-color-text-primary) }
-.oa-link-set [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
-.oa-link-set [data-icon][width="16"] { stroke-width: var(--oa-component-icon-utility-line-small) }
-.oa-link-k { margin: var(--oa-space-300) 0 var(--oa-space-100); font: var(--oa-type-label);
-  letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
-.oa-link-set > .oa-link-k:first-of-type { margin-top: 0 }
-.oa-link-text { margin: 0; max-width: var(--oa-layout-measure-body-max); overflow-wrap: break-word }
-.oa-link { color: inherit; text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
-.oa-link:hover { text-decoration-thickness: var(--oa-border-width-underline-hover) }
-.oa-link:focus-visible, .oa-link-skip:focus-visible, .oa-link-main:focus-visible, .oa-link-k:focus-visible {
-  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
-/* The mark for another site stays on the line with the link's last word, and only that word */
-.oa-link-last { white-space: nowrap }
-.oa-link-mark { display: inline-block; width: var(--oa-size-icon-small); height: var(--oa-size-icon-small); margin-left: var(--oa-space-050); vertical-align: -.125em }
-.oa-link-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
+/* Links: in running text, to another site (Rule 11.13), in a list with the current page, a part not
+   built yet, and a skip link. Underlined at 1 px, 2 px on hover. Reads only tokens.css. */
+.oa-link-set {
+  position: relative;
+  font: var(--oa-type-body);
+  color: var(--oa-color-text-primary);
+}
+.oa-link-set [data-icon] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--oa-component-icon-utility-line-medium);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.oa-link-set [data-icon][width="16"] {
+  stroke-width: var(--oa-component-icon-utility-line-small);
+}
+.oa-link-k {
+  margin: var(--oa-space-300) 0 var(--oa-space-100);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  color: var(--oa-color-text-secondary);
+}
+.oa-link-set > .oa-link-k:first-of-type {
+  margin-top: 0;
+}
+.oa-link-text {
+  margin: 0;
+  max-width: var(--oa-layout-measure-body-max);
+  overflow-wrap: break-word;
+}
+.oa-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: var(--oa-border-width-underline);
+  text-underline-offset: .2em;
+}
+.oa-link:hover {
+  text-decoration-thickness: var(--oa-border-width-underline-hover);
+}
+.oa-link:focus-visible,
+.oa-link-skip:focus-visible,
+.oa-link-main:focus-visible,
+.oa-link-k:focus-visible {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
 
-/* A list of links: each row 44 px tall. The page you are on takes what a list of places gives it (Rule 18.7): the
-   selected band, a 4 px bar drawn as a border, and bold words */
-.oa-link-list { margin: 0; padding: 0; list-style: none; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
-.oa-link-list > li { margin: 0; padding: 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
-.oa-link--item { display: flex; align-items: center; box-sizing: border-box; min-height: var(--oa-size-target-touch); padding: var(--oa-space-100) var(--oa-space-150);
-  border-left: var(--oa-border-width-bar) solid transparent; font: var(--oa-type-ui); text-decoration: none; overflow-wrap: anywhere }
-.oa-link--item:hover { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline) }
-.oa-link--item[aria-current] { background: var(--oa-color-state-selected-band); border-left-color: var(--oa-color-state-selected-bar); font-weight: var(--oa-font-weight-bold) }
-.oa-link--item:focus-visible { outline-offset: calc(-1 * var(--oa-border-width-focus-ring)) }
+/* The mark for another site stays on the line with the link's last word, and only that word */
+.oa-link-last {
+  white-space: nowrap;
+}
+.oa-link-mark {
+  display: inline-block;
+  width: var(--oa-size-icon-small);
+  height: var(--oa-size-icon-small);
+  margin-left: var(--oa-space-050);
+  vertical-align: -.125em;
+}
+.oa-link-vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* A list of links: each row 44 px tall. The page you are on takes what a list of places gives it
+   (Rule 18.7): the selected band, a 4 px bar drawn as a border, and bold words */
+.oa-link-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+}
+.oa-link-list > li {
+  margin: 0;
+  padding: 0;
+  border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+}
+.oa-link--item {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: var(--oa-size-target-touch);
+  padding: var(--oa-space-100) var(--oa-space-150);
+  border-left: var(--oa-border-width-bar) solid transparent;
+  font: var(--oa-type-ui);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.oa-link--item:hover {
+  text-decoration: underline;
+  text-decoration-thickness: var(--oa-border-width-underline);
+}
+.oa-link--item[aria-current] {
+  background: var(--oa-color-state-selected-band);
+  border-left-color: var(--oa-color-state-selected-bar);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-link--item:focus-visible {
+  outline-offset: calc(-1 * var(--oa-border-width-focus-ring));
+}
+
 /* A part not built yet stays text, muted, and says so; it lines up with the links' words */
-.oa-link-muted { display: flex; flex-wrap: wrap; align-items: center; column-gap: .3em; box-sizing: border-box; min-height: var(--oa-size-target-touch);
-  padding: var(--oa-space-100) var(--oa-space-150) var(--oa-space-100) calc(var(--oa-space-150) + var(--oa-border-width-bar));
-  font: var(--oa-type-ui); color: var(--oa-color-state-muted-text) }
-.oa-link-later { font-weight: var(--oa-font-weight-regular) }
+.oa-link-muted {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: .3em;
+  box-sizing: border-box;
+  min-height: var(--oa-size-target-touch);
+  padding:
+    var(--oa-space-100) var(--oa-space-150) var(--oa-space-100)
+    calc(var(--oa-space-150) + var(--oa-border-width-bar));
+  font: var(--oa-type-ui);
+  color: var(--oa-color-state-muted-text);
+}
+.oa-link-later {
+  font-weight: var(--oa-font-weight-regular);
+}
 
 /* The skip link: out of sight until it takes focus, then on top of the page at its start */
-.oa-link-skip { position: absolute; top: 0; left: 0; z-index: 1; overflow-wrap: anywhere; padding: var(--oa-space-100) var(--oa-space-200);
-  background: var(--oa-color-surface); color: var(--oa-color-text-primary); font: var(--oa-type-ui);
-  border: var(--oa-border-width-rule) solid var(--oa-color-border-strong); text-decoration: underline; text-underline-offset: .2em }
+.oa-link-skip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  overflow-wrap: anywhere;
+  padding: var(--oa-space-100) var(--oa-space-200);
+  background: var(--oa-color-surface);
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-ui);
+  border: var(--oa-border-width-rule) solid var(--oa-color-border-strong);
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
 /* clipped to nothing until focus; it keeps its size, so its words never wrap or clip when it shows */
-.oa-link-skip:not(:focus) { clip-path: inset(50%) }
-.oa-link-main { margin-top: var(--oa-space-300); padding-top: var(--oa-space-050) }
+.oa-link-skip:not(:focus) {
+  clip-path: inset(50%);
+}
+.oa-link-main {
+  margin-top: var(--oa-space-300);
+  padding-top: var(--oa-space-050);
+}
 
 @media (forced-colors: active) {
-  .oa-link-skip { border-color: CanvasText }
-  .oa-link--item[aria-current] { border-left-color: Highlight }
+  .oa-link-skip {
+    border-color: CanvasText;
+  }
+  .oa-link--item[aria-current] {
+    border-left-color: Highlight;
+  }
 }

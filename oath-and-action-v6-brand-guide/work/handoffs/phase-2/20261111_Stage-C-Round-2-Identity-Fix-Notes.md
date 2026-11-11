@@ -165,6 +165,11 @@ Stage C, round 2's fix pass, November 11, 2026, under `20261111_Stage-C-Round-2-
   - the controls at rest, with Reset shown unavailable;
   - Rule 08.1's plate at 1440 px 1x and 2x and at 390 px 1x, where it keeps its 700 px true-size frame and fit switch as before;
   - Rule 03.2's builders block at 390 px 1x.
+- I ran the engineer's `guide_check.js` with `--quick --no-captures` on my scratch page, using the engineer's in-progress copy. It found 15 failures, 4 of them on my players and of the two kinds the change predicts:
+  - `s-17-hinge-correct` and `s-17-lever-correct`: "data-frame is "end" on load, not "start"".
+  - The same two, under reduced motion: "Play draws nothing new on the first frame".
+  - The other 11 belong to other owners' work in progress: 8 keyPath walks in `c-18-button` and `c-18-location`, 2 codeMatch results on `c-18-link`, and red within 2 px of Prussian in `s-05-1-correct`.
+  - Otherwise: fitSwitch 77 of 77 at every setting, and motion found 7 players. Results: `guide-Guide-Check-Results.json` in my scratch folder.
 - I read the rendered page by script. Rule 03.2's builders block prints 9 paragraphs, and Rule 08.2's builders line names the script. No "dashed square marks where" and no "Reset works once you press Play" remain in the identity players. The page holds no em or en dash, and neither do my three generators.
 
 ### Not tested

@@ -1,29 +1,113 @@
-/* Choice: one of a few, through native radio buttons in a fieldset, so Tab enters at the checked choice and the arrow
-   keys move and choose with no script. The checked look: a check before the word, the word in bold and a 2 px edge. */
-.oa-choice { min-width: 0; margin: 0; padding: 0; border: 0; font: var(--oa-type-body); color: var(--oa-color-text-primary) }
-.oa-choice [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
-.oa-choice-legend { margin: 0 0 var(--oa-space-100); padding: 0; font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }
-.oa-choice-row { display: flex; flex-wrap: wrap; gap: var(--oa-space-100) }
-.oa-choice-item { position: relative; display: flex; max-width: 100%; cursor: pointer }
-/* The native radio stays in the page for the keyboard and screen readers; the face beside it draws the choice */
-.oa-choice-input { position: absolute; top: 0; left: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: inherit }
-.oa-choice-face { display: inline-flex; align-items: center; gap: var(--oa-space-100); box-sizing: border-box; max-width: 100%;
-  min-height: var(--oa-size-target-touch); padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px);
-  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); font: var(--oa-type-ui); overflow-wrap: anywhere }
-.oa-choice-label { min-width: 0 }
-.oa-choice-check { display: none; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
-.oa-choice-input:focus-visible + .oa-choice-face { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
-.oa-choice-item:hover .oa-choice-input:not(:disabled) + .oa-choice-face .oa-choice-label { text-decoration: underline;
-  text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
-.oa-choice-input:checked + .oa-choice-face { padding: calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px) var(--oa-space-150);
-  border-width: var(--oa-border-width-rule); font-weight: var(--oa-font-weight-bold) }
-.oa-choice-input:checked + .oa-choice-face .oa-choice-check { display: block }
+/* Choice: one of a few, through native radio buttons in a fieldset, so Tab enters at the checked
+   choice and the arrow keys move and choose with no script. The checked look: a check before the
+   word, the word in bold and a 2 px edge. */
+.oa-choice {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: var(--oa-type-body);
+  color: var(--oa-color-text-primary);
+}
+.oa-choice [data-icon] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--oa-component-icon-utility-line-medium);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.oa-choice-legend {
+  margin: 0 0 var(--oa-space-100);
+  padding: 0;
+  font: var(--oa-type-ui);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-choice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--oa-space-100);
+}
+.oa-choice-item {
+  position: relative;
+  display: flex;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+/* The native radio stays in the page for the keyboard and screen readers; the face beside it draws
+   the choice */
+.oa-choice-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+.oa-choice-face {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--oa-space-100);
+  box-sizing: border-box;
+  max-width: 100%;
+  min-height: var(--oa-size-target-touch);
+  padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+  font: var(--oa-type-ui);
+  overflow-wrap: anywhere;
+}
+.oa-choice-label {
+  min-width: 0;
+}
+.oa-choice-check {
+  display: none;
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+}
+.oa-choice-input:focus-visible + .oa-choice-face {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
+.oa-choice-item:hover .oa-choice-input:not(:disabled) + .oa-choice-face .oa-choice-label {
+  text-decoration: underline;
+  text-decoration-thickness: var(--oa-border-width-underline);
+  text-underline-offset: .2em;
+}
+.oa-choice-input:checked + .oa-choice-face {
+  padding:
+    calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px)
+    var(--oa-space-150);
+  border-width: var(--oa-border-width-rule);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-choice-input:checked + .oa-choice-face .oa-choice-check {
+  display: block;
+}
+
 /* An unavailable choice: dashed, in the disabled colors, with its reason in words below the row */
-.oa-choice-item:has(.oa-choice-input:disabled) { cursor: not-allowed }
-.oa-choice-input:disabled + .oa-choice-face { border-style: dashed; border-color: var(--oa-color-state-disabled-edge); color: var(--oa-color-state-disabled-text) }
-.oa-choice-why { margin: var(--oa-space-100) 0 0; font: var(--oa-type-body-small); color: var(--oa-color-text-secondary) }
+.oa-choice-item:has(.oa-choice-input:disabled) {
+  cursor: not-allowed;
+}
+.oa-choice-input:disabled + .oa-choice-face {
+  border-style: dashed;
+  border-color: var(--oa-color-state-disabled-edge);
+  color: var(--oa-color-state-disabled-text);
+}
+.oa-choice-why {
+  margin: var(--oa-space-100) 0 0;
+  font: var(--oa-type-body-small);
+  color: var(--oa-color-text-secondary);
+}
 
 @media (forced-colors: active) {
-  .oa-choice-face { border-color: ButtonText }
-  .oa-choice-input:disabled + .oa-choice-face { border-color: GrayText; color: GrayText }
+  .oa-choice-face {
+    border-color: ButtonText;
+  }
+  .oa-choice-input:disabled + .oa-choice-face {
+    border-color: GrayText;
+    color: GrayText;
+  }
 }

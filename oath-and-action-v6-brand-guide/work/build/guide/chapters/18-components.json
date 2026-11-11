@@ -97,7 +97,7 @@
         },
         {
           "label": "States",
-          "value": "Default. Hover: the primary fill turns Prussian on Newsprint and White on Charcoal, and the word underlines; a quiet button’s edge thickens from 1 to 2 px. Focus: the 2 px focus ring at a 2 px gap, in Verdigris on Newsprint (3.37 to 1) and Newsprint on Charcoal (13.29 to 1) (Rule 17.9). Unavailable: a dashed edge, the word in the disabled color (5.49 to 1 on Newsprint, 7.26 on Charcoal) and the reason line, with focus kept. Sending: the word reads “Sending”. Stepping down: the ask takes the primary look while an error holds the red."
+          "value": "Default. Hover: the primary fill turns Prussian on Newsprint and White on Charcoal, and the word underlines; a quiet button’s edge thickens from 1 to 2 px. Focus: the 2 px focus ring at a 2 px gap, in Verdigris on Newsprint (3.37 to 1) and Newsprint on Charcoal (13.29 to 1) (Rule 17.9). Unavailable: a dashed edge, the word in the disabled color (5.49 to 1 on Newsprint, 7.26 on Charcoal) and the reason line, with focus kept. Sending: the word reads “Sending”. Stepping down: the ask takes the primary look while an error holds the red, and its hover underlines its word and keeps its fill."
         },
         {
           "label": "Keyboard",
@@ -574,7 +574,7 @@
       "code": {
         "set": "c-18-location",
         "name": "Location list",
-        "caption": "A list of a page’s parts and a breadcrumb, live, each marking where the reader is.",
+        "caption": "A breadcrumb and a list of places from our systems atlas, the variables of one domain, live, each marking where the reader is, with Previous and Next after them.",
         "alt": "A list of a page’s parts and a breadcrumb, drawn live from the code below. In this guide the live copy draws the breadcrumb’s navigation as a named group, so the guide’s own landmarks stay the only ones on the page; the code below keeps the real nav element."
       },
       "specs": [
@@ -1753,7 +1753,7 @@
       "id": "18.22",
       "title": "Step through a loop with Play, Reset the loop, Previous step and Next step, and say each step once.",
       "rule": [
-        "A loop stepper walks a reader through a loop of connections one step at a time. Its buttons run in one order in every product, Play, Reset the loop, Previous step and Next step, each with its utility icon beside its word (Rule 11.14). The status line says each step as it arrives, “Step 2 of 3:” and the step’s sentence, and the step list marks the current step with <code>aria-current=\"step\"</code> and a 4 px bar.",
+        "A loop stepper walks a reader through a loop of connections one step at a time. Its buttons run in one order in every product, Play, Reset the loop, Previous step and Next step, each with its utility icon beside its word (Rule 11.14). A loop from our atlas takes its atlas title as its name, in quotation marks, with a line under it that gives its evidence grade, so the heading claims no more than the evidence holds (chapter 02’s house rule H08). The status line says each step as it arrives, “Step 2 of 3:” and the step’s sentence, and the step list marks the current step with <code>aria-current=\"step\"</code> and a 4 px bar.",
         "Nothing plays until the reader presses Play. Play becomes Pause while it plays and Play again at the end, its icon and its word changing together, and it holds each step about 250 ms a word and never under six seconds, with reduced motion too (Rule 17.3). Next step, Previous step and Reset the loop stop the playback, and no button moves focus. At the start, Previous step and Reset the loop stay in place with aria-disabled and their reason; at the end, Next step does."
       ],
       "tokens": [
@@ -1779,7 +1779,7 @@
       "code": {
         "set": "c-18-loop-stepper",
         "name": "Loop stepper",
-        "caption": "A three-step loop, live. Press Next step and listen for the line; press Play and it holds each step long enough to read."
+        "caption": "Loop R1 from our systems atlas, three steps, live, with its grade under its name and its source under the steps. Press Next step and listen for the line; press Play and it holds each step long enough to read."
       },
       "specs": [
         {
@@ -1862,7 +1862,7 @@
       "code": {
         "set": "c-18-diagram-controls",
         "name": "Diagram controls",
-        "caption": "A small drawing of three items, live. Tab to it once, move with the arrow keys, select with Enter and close with Escape."
+        "caption": "A small drawing of Loop R1’s three items, live, with the loop’s grade under its name. Tab to it once, move with the arrow keys, select with Enter and close with Escape."
       },
       "specs": [
         {
@@ -2032,6 +2032,7 @@
     "Source: W3C Web Accessibility Initiative, “ARIA Authoring Practices Guide”, the pattern pages each rule names and the Disclosure Navigation Menu example, no page dates, retrieved November 10, 2026. The Practices show one tested way to build each control, and WCAG sets what each must meet.",
     "Source: W3C, “Accessible Rich Internet Applications (WAI-ARIA) 1.2”, W3C Recommendation, June 6, 2023, the status and alert roles and the aria-live property, retrieved November 10, 2026. Behind Rules 18.18 and 18.20.",
     "Source: MDN Web Docs, browser compatibility data, version 8.1.8, built November 2, 2026, retrieved November 11, 2026. Each figure is the first version of a browser with full support, with no flag, prefix or partial mark. Every “Browser support” line in this chapter comes from it.",
-    "Sources: WHATWG, “HTML Living Standard”, the sections on web storage and on scripts that block rendering, and MDN Web Docs, “Window: localStorage property” and “Storage quotas and eviction criteria”, retrieved November 10, 2026. Behind Rule 18.4’s stored choice, its private windows and Safari’s seven days."
+    "Sources: WHATWG, “HTML Living Standard”, the sections on web storage and on scripts that block rendering, and MDN Web Docs, “Window: localStorage property” and “Storage quotas and eviction criteria”, retrieved November 10, 2026. Behind Rule 18.4’s stored choice, its private windows and Safari’s seven days.",
+    "Source: Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. Behind Loop R1, “Wealth and political influence reinforce each other”, which the atlas grades plausible, and Loop R8, “Housing scarcity strengthens owners’ incentive to restrict building”, whose two steps it grades well supported; the variables Households’ financial security (A4), Housing scarcity (A5), Homeowners’ equity (A6) and Major external shocks (X5); the first 12 of its 50 reforms, R-01 to R-12, in its own order; and Reform R-30, “More homes allowed by right near jobs”. Rules 18.7 to 18.9, 18.15, 18.16 and 18.22 to 18.24 show them."
   ]
 }

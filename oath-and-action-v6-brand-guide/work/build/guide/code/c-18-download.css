@@ -1,31 +1,104 @@
-/* Download: a link that names the file, its type and its size in visible words, with the download icon before them.
-   A file that is not ready keeps its focus, takes aria-disabled and points to a line that says why. */
-.oa-download-set { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
-.oa-download-set [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
-.oa-download-k { margin: var(--oa-space-300) 0 var(--oa-space-100); font: var(--oa-type-label);
-  letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
-.oa-download-k:first-child, .oa-download-illus + .oa-download-k { margin-top: 0 }
-/* Illustrative: the label at the head of an invented piece, in the guide's one style (uppercase, a 1 px edge in the ink) */
-.oa-download-illus { display: inline-block; margin: 0 0 var(--oa-space-100); padding: 0 .4em; border: var(--oa-border-width-hairline) solid currentColor;
-  color: var(--oa-color-text-primary); font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing);
-  text-transform: var(--oa-type-label-text-transform); line-height: 1.5 }
-/* Only the file that is not ready is invented here, so its label heads that part, with the space a kicker takes above it */
-.oa-download-row + .oa-download-illus { margin-top: var(--oa-space-300) }
-.oa-download-row { margin: 0 0 var(--oa-space-100) }
-.oa-download { display: inline-flex; align-items: center; gap: var(--oa-space-100); box-sizing: border-box; max-width: 100%;
-  min-height: var(--oa-size-target-touch); padding: var(--oa-space-100) var(--oa-space-200) var(--oa-space-100) var(--oa-space-150);
-  border: var(--oa-border-width-hairline) solid var(--oa-component-button-primary-fill); background: var(--oa-component-button-primary-fill);
-  color: var(--oa-component-button-primary-label); font: var(--oa-type-ui); text-decoration: none; overflow-wrap: anywhere }
-.oa-download-label { min-width: 0 }
-.oa-download-icon { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
-.oa-download[href]:hover { background: var(--oa-component-button-primary-fill-hover); border-color: var(--oa-component-button-primary-fill-hover);
-  text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
-.oa-download:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
-.oa-download[aria-disabled="true"] { background: transparent; border-style: dashed; border-color: var(--oa-component-button-disabled-edge);
-  color: var(--oa-component-button-disabled-label); cursor: not-allowed }
-.oa-download-why { margin: 0; font: var(--oa-type-body-small); color: var(--oa-color-text-secondary) }
+/* Download: a link that names the file, its type and its size in visible words, with the download
+   icon before them. A file that is not ready keeps its focus, takes aria-disabled and points to a
+   line that says why. */
+.oa-download-set {
+  font: var(--oa-type-body);
+  color: var(--oa-color-text-primary);
+}
+.oa-download-set [data-icon] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--oa-component-icon-utility-line-medium);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.oa-download-k {
+  margin: var(--oa-space-300) 0 var(--oa-space-100);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  color: var(--oa-color-text-secondary);
+}
+.oa-download-k:first-child, .oa-download-illus + .oa-download-k {
+  margin-top: 0;
+}
+
+/* Illustrative: the label at the head of an invented piece, in the guide's one style (uppercase, a
+   1 px edge in the ink) */
+.oa-download-illus {
+  display: inline-block;
+  margin: 0 0 var(--oa-space-100);
+  padding: 0 .4em;
+  border: var(--oa-border-width-hairline) solid currentColor;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  line-height: 1.5;
+}
+
+/* Only the file that is not ready is invented here, so its label heads that part, with the space a
+   kicker takes above it */
+.oa-download-row + .oa-download-illus {
+  margin-top: var(--oa-space-300);
+}
+.oa-download-row {
+  margin: 0 0 var(--oa-space-100);
+}
+.oa-download {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--oa-space-100);
+  box-sizing: border-box;
+  max-width: 100%;
+  min-height: var(--oa-size-target-touch);
+  padding: var(--oa-space-100) var(--oa-space-200) var(--oa-space-100) var(--oa-space-150);
+  border: var(--oa-border-width-hairline) solid var(--oa-component-button-primary-fill);
+  background: var(--oa-component-button-primary-fill);
+  color: var(--oa-component-button-primary-label);
+  font: var(--oa-type-ui);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.oa-download-label {
+  min-width: 0;
+}
+.oa-download-icon {
+  display: block;
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+}
+.oa-download[href]:hover {
+  background: var(--oa-component-button-primary-fill-hover);
+  border-color: var(--oa-component-button-primary-fill-hover);
+  text-decoration: underline;
+  text-decoration-thickness: var(--oa-border-width-underline);
+  text-underline-offset: .2em;
+}
+.oa-download:focus-visible {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
+.oa-download[aria-disabled="true"] {
+  background: transparent;
+  border-style: dashed;
+  border-color: var(--oa-component-button-disabled-edge);
+  color: var(--oa-component-button-disabled-label);
+  cursor: not-allowed;
+}
+.oa-download-why {
+  margin: 0;
+  font: var(--oa-type-body-small);
+  color: var(--oa-color-text-secondary);
+}
 
 @media (forced-colors: active) {
-  .oa-download { border-color: LinkText }
-  .oa-download[aria-disabled="true"] { border-color: GrayText; color: GrayText }
+  .oa-download {
+    border-color: LinkText;
+  }
+  .oa-download[aria-disabled="true"] {
+    border-color: GrayText;
+    color: GrayText;
+  }
 }

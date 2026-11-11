@@ -1,71 +1,261 @@
-/* Table: a native table whose sortable headings hold a button and aria-sort. Under 36rem each row reads as a card.
-   The explicit roles keep the table's meaning where a browser drops it for a table drawn as blocks. */
-.oa-table { container-type: inline-size; font: var(--oa-type-body); color: var(--oa-color-text-primary) }
-.oa-table [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
-.oa-table [data-icon][width="16"] { stroke-width: var(--oa-component-icon-utility-line-small) }
-/* Illustrative: the label at the head of an invented piece, in the guide's one style (uppercase, a 1 px edge in the ink) */
-.oa-table-illus { display: inline-block; margin: 0 0 var(--oa-space-100); padding: 0 .4em; border: var(--oa-border-width-hairline) solid currentColor;
-  color: var(--oa-color-text-primary); font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing);
-  text-transform: var(--oa-type-label-text-transform); line-height: 1.5 }
-.oa-table-k { margin: var(--oa-space-400) 0 var(--oa-space-100); font: var(--oa-type-label);
-  letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
-.oa-table-grid { width: 100%; border-collapse: collapse; font: var(--oa-type-body-small) }
-.oa-table-caption { margin: 0; padding: 0 0 var(--oa-space-100); caption-side: top; text-align: start; font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }
-.oa-table-th { padding: 0 var(--oa-space-150) 0 0; border-bottom: var(--oa-border-width-rule) solid var(--oa-color-border-strong);
-  text-align: start; vertical-align: bottom; font: var(--oa-type-ui) }
-.oa-table-th--plain { padding-block: var(--oa-space-100) }
-.oa-table-td { padding: var(--oa-space-100) var(--oa-space-150) var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
-  text-align: start; vertical-align: top; overflow-wrap: anywhere }
-.oa-table-label { display: none }
-/* The sort button: the heading's word, then the 16 px sort mark, or the arrow turned to the order in use */
-.oa-table-sort { display: inline-flex; align-items: center; gap: var(--oa-space-100); box-sizing: border-box; max-width: 100%;
-  min-height: var(--oa-size-target-touch); margin: 0; padding: var(--oa-space-100) 0; border: 0; background: transparent;
-  color: var(--oa-color-text-primary); font: var(--oa-type-ui); text-align: start; overflow-wrap: anywhere; cursor: pointer }
-.oa-table-word { min-width: 0 }
-.oa-table-sort:hover .oa-table-word { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
-.oa-table-sort:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
-.oa-table-icon { display: none; flex: none; width: var(--oa-size-icon-small); height: var(--oa-size-icon-small) }
-.oa-table-th:not([aria-sort]) .oa-table-icon--can, .oa-table-th[aria-sort="none"] .oa-table-icon--can,
-.oa-table-th[aria-sort="ascending"] .oa-table-icon--order, .oa-table-th[aria-sort="descending"] .oa-table-icon--order { display: block }
+/* Table: a native table whose sortable headings hold a button and aria-sort. Under 36rem each row
+   reads as a card. The explicit roles keep the table's meaning where a browser drops it for a table
+   drawn as blocks. */
+.oa-table {
+  container-type: inline-size;
+  font: var(--oa-type-body);
+  color: var(--oa-color-text-primary);
+}
+.oa-table [data-icon] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--oa-component-icon-utility-line-medium);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.oa-table [data-icon][width="16"] {
+  stroke-width: var(--oa-component-icon-utility-line-small);
+}
+
+/* Illustrative: the label at the head of an invented piece, in the guide's one style (uppercase, a
+   1 px edge in the ink) */
+.oa-table-illus {
+  display: inline-block;
+  margin: 0 0 var(--oa-space-100);
+  padding: 0 .4em;
+  border: var(--oa-border-width-hairline) solid currentColor;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  line-height: 1.5;
+}
+.oa-table-k {
+  margin: var(--oa-space-400) 0 var(--oa-space-100);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  color: var(--oa-color-text-secondary);
+}
+.oa-table-grid {
+  width: 100%;
+  border-collapse: collapse;
+  font: var(--oa-type-body-small);
+}
+.oa-table-caption {
+  margin: 0;
+  padding: 0 0 var(--oa-space-100);
+  caption-side: top;
+  text-align: start;
+  font: var(--oa-type-ui);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-table-th {
+  padding: 0 var(--oa-space-150) 0 0;
+  border-bottom: var(--oa-border-width-rule) solid var(--oa-color-border-strong);
+  text-align: start;
+  vertical-align: bottom;
+  font: var(--oa-type-ui);
+}
+.oa-table-th--plain {
+  padding-block: var(--oa-space-100);
+}
+.oa-table-td {
+  padding: var(--oa-space-100) var(--oa-space-150) var(--oa-space-100) 0;
+  border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+  text-align: start;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+.oa-table-label {
+  display: none;
+}
+
+/* The sort button: the heading's word, then the 16 px sort mark, or the arrow turned to the order
+   in use */
+.oa-table-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--oa-space-100);
+  box-sizing: border-box;
+  max-width: 100%;
+  min-height: var(--oa-size-target-touch);
+  margin: 0;
+  padding: var(--oa-space-100) 0;
+  border: 0;
+  background: transparent;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-ui);
+  text-align: start;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.oa-table-word {
+  min-width: 0;
+}
+.oa-table-sort:hover .oa-table-word {
+  text-decoration: underline;
+  text-decoration-thickness: var(--oa-border-width-underline);
+  text-underline-offset: .2em;
+}
+.oa-table-sort:focus-visible {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
+.oa-table-icon {
+  display: none;
+  flex: none;
+  width: var(--oa-size-icon-small);
+  height: var(--oa-size-icon-small);
+}
+.oa-table-th:not([aria-sort]) .oa-table-icon--can,
+.oa-table-th[aria-sort="none"] .oa-table-icon--can,
+.oa-table-th[aria-sort="ascending"] .oa-table-icon--order,
+.oa-table-th[aria-sort="descending"] .oa-table-icon--order {
+  display: block;
+}
+
 /* the arrow turned to the order in use: up for ascending, down for descending */
-.oa-table-th:not([aria-sort="ascending"]) .oa-table-up, .oa-table-th:not([aria-sort="descending"]) .oa-table-down { display: none }
-.oa-table-th[aria-sort="ascending"] .oa-table-word, .oa-table-th[aria-sort="descending"] .oa-table-word { font-weight: var(--oa-font-weight-bold) }
-.oa-table-status { margin: var(--oa-space-100) 0 0; font: var(--oa-type-body-small) }
-.oa-table-status:empty { display: none }
+.oa-table-th:not([aria-sort="ascending"]) .oa-table-up,
+.oa-table-th:not([aria-sort="descending"]) .oa-table-down {
+  display: none;
+}
+.oa-table-th[aria-sort="ascending"] .oa-table-word,
+.oa-table-th[aria-sort="descending"] .oa-table-word {
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-table-status {
+  margin: var(--oa-space-100) 0 0;
+  font: var(--oa-type-body-small);
+}
+.oa-table-status:empty {
+  display: none;
+}
 
 /* The data's own states, in one cell across the row */
-.oa-table-td--note { padding: var(--oa-space-200) 0 }
-.oa-table-loading, .oa-table-empty, .oa-table-error { margin: 0 }
-.oa-table-loading { display: flex; align-items: center; gap: var(--oa-space-150); font: var(--oa-type-ui); color: var(--oa-color-state-loading-text) }
+.oa-table-td--note {
+  padding: var(--oa-space-200) 0;
+}
+.oa-table-loading, .oa-table-empty, .oa-table-error {
+  margin: 0;
+}
+.oa-table-loading {
+  display: flex;
+  align-items: center;
+  gap: var(--oa-space-150);
+  font: var(--oa-type-ui);
+  color: var(--oa-color-state-loading-text);
+}
+
 /* Loading: a still outline and the words, never a pulse */
-.oa-table-still { display: block; flex: none; box-sizing: border-box; width: var(--oa-space-200); height: var(--oa-space-200);
-  border: var(--oa-border-width-rule) solid var(--oa-color-state-loading-mark); border-radius: var(--oa-radius-full) }
+.oa-table-still {
+  display: block;
+  flex: none;
+  box-sizing: border-box;
+  width: var(--oa-space-200);
+  height: var(--oa-space-200);
+  border: var(--oa-border-width-rule) solid var(--oa-color-state-loading-mark);
+  border-radius: var(--oa-radius-full);
+}
+
 /* Empty: a dashed region that says what is missing and what to do next */
-.oa-table-empty { padding: var(--oa-space-150); border: var(--oa-border-width-hairline) dashed var(--oa-color-state-empty-edge); color: var(--oa-color-state-empty-text) }
-/* Error: the mark in ink, "Error:" and the fix, on the Error Band where the surface has one, with the 4 px red bar */
-.oa-table-error { display: flex; align-items: flex-start; gap: var(--oa-space-100); padding: var(--oa-space-100) var(--oa-space-150);
-  background: var(--oa-color-state-error-band, transparent); color: var(--oa-color-state-error-text);
-  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar) }
-.oa-table-mark { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
-.oa-table-error b { font-weight: var(--oa-font-weight-bold) }
-.oa-table-error > span { min-width: 0; overflow-wrap: anywhere }
+.oa-table-empty {
+  padding: var(--oa-space-150);
+  border: var(--oa-border-width-hairline) dashed var(--oa-color-state-empty-edge);
+  color: var(--oa-color-state-empty-text);
+}
+
+/* Error: the mark in ink, "Error:" and the fix, on the Error Band where the surface has one, with
+   the 4 px red bar */
+.oa-table-error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--oa-space-100);
+  padding: var(--oa-space-100) var(--oa-space-150);
+  background: var(--oa-color-state-error-band, transparent);
+  color: var(--oa-color-state-error-text);
+  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar);
+}
+.oa-table-mark {
+  display: block;
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+}
+.oa-table-error b {
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-table-error > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 
 /* Cards, in a narrow column */
+
 @container (max-width: 36rem) {
-  .oa-table-grid, .oa-table-caption, .oa-table-tbody, .oa-table-row, .oa-table-td { display: block }
-  .oa-table-thead { display: block; margin-bottom: var(--oa-space-100) }
-  .oa-table-thead .oa-table-row { display: flex; flex-wrap: wrap; column-gap: var(--oa-space-300); border-bottom: var(--oa-border-width-rule) solid var(--oa-color-border-strong) }
-  .oa-table-th { display: block; padding: 0; border: 0 }
-  .oa-table-th--plain { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
-  .oa-table-tbody .oa-table-row { padding: var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
-  .oa-table-td { display: flex; gap: var(--oa-space-150); padding: var(--oa-space-050) 0; border: 0 }
-  .oa-table-label { display: block; flex: none; width: 4.5em; font-weight: var(--oa-font-weight-bold) }
-  .oa-table-td--note { padding: var(--oa-space-100) 0 }
+  .oa-table-grid,
+  .oa-table-caption,
+  .oa-table-tbody,
+  .oa-table-row,
+  .oa-table-td {
+    display: block;
+  }
+  .oa-table-thead {
+    display: block;
+    margin-bottom: var(--oa-space-100);
+  }
+  .oa-table-thead .oa-table-row {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--oa-space-300);
+    border-bottom: var(--oa-border-width-rule) solid var(--oa-color-border-strong);
+  }
+  .oa-table-th {
+    display: block;
+    padding: 0;
+    border: 0;
+  }
+  .oa-table-th--plain {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .oa-table-tbody .oa-table-row {
+    padding: var(--oa-space-100) 0;
+    border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+  }
+  .oa-table-td {
+    display: flex;
+    gap: var(--oa-space-150);
+    padding: var(--oa-space-050) 0;
+    border: 0;
+  }
+  .oa-table-label {
+    display: block;
+    flex: none;
+    width: 4.5em;
+    font-weight: var(--oa-font-weight-bold);
+  }
+  .oa-table-td--note {
+    padding: var(--oa-space-100) 0;
+  }
 }
 
 @media (forced-colors: active) {
-  .oa-table-th, .oa-table-thead .oa-table-row { border-color: CanvasText }
-  .oa-table-sort { color: ButtonText }
-  .oa-table-sort .oa-table-word { text-decoration: underline; text-underline-offset: .2em }
-  .oa-table-error, .oa-table-empty { border-color: CanvasText }
+  .oa-table-th, .oa-table-thead .oa-table-row {
+    border-color: CanvasText;
+  }
+  .oa-table-sort {
+    color: ButtonText;
+  }
+  .oa-table-sort .oa-table-word {
+    text-decoration: underline;
+    text-underline-offset: .2em;
+  }
+  .oa-table-error, .oa-table-empty {
+    border-color: CanvasText;
+  }
 }

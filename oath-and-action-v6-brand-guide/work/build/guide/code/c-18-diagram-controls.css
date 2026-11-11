@@ -1,67 +1,271 @@
-/* Diagram controls: the parts are one Tab stop with the arrow keys inside; a chosen part opens its panel, and Escape
-   returns focus to it. The lines in words and a full size view sit under the drawing. */
-.oa-diagram { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
-.oa-diagram [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
-.oa-diagram-k { margin: 0; font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing);
-  text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
-.oa-diagram-title { margin: var(--oa-space-050) 0 var(--oa-space-100); font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); text-wrap: balance }
-/* The loop's title is its name, in quotation marks; the line under it gives the atlas's grade for the whole loop */
-.oa-diagram-grade { margin: 0 0 var(--oa-space-150); max-width: var(--oa-layout-measure-body-max); font: var(--oa-type-body-small) }
+/* Diagram controls: the parts are one Tab stop with the arrow keys inside; a chosen part opens its
+   panel, and Escape returns focus to it. The lines in words and a full size view sit under the
+   drawing. */
+.oa-diagram {
+  font: var(--oa-type-body);
+  color: var(--oa-color-text-primary);
+}
+.oa-diagram [data-icon] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--oa-component-icon-utility-line-medium);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.oa-diagram-k {
+  margin: 0;
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  color: var(--oa-color-text-secondary);
+}
+.oa-diagram-title {
+  margin: var(--oa-space-050) 0 var(--oa-space-100);
+  font: var(--oa-type-h4);
+  letter-spacing: var(--oa-type-h4-letter-spacing);
+  text-wrap: balance;
+}
+
+/* The loop's title is its name, in quotation marks; the line under it gives the atlas's grade for
+   the whole loop */
+.oa-diagram-grade {
+  margin: 0 0 var(--oa-space-150);
+  max-width: var(--oa-layout-measure-body-max);
+  font: var(--oa-type-body-small);
+}
+
 /* The drawing: each part a box, each line a word, the loop closing back to the first part */
-.oa-diagram-drawing { display: flex; flex-direction: column; align-items: flex-start; margin: 0; padding: 0 0 0 var(--oa-space-150); list-style: none;
-  border-left: var(--oa-border-width-rule) solid var(--oa-color-graphic-essential) }
-.oa-diagram-node { display: flex; flex-direction: column; align-items: flex-start; max-width: 100% }
-.oa-diagram-verb { margin: var(--oa-space-050) 0 var(--oa-space-050) var(--oa-space-200); padding-left: var(--oa-space-100);
-  border-left: var(--oa-border-width-hairline) solid var(--oa-color-graphic-subtle); font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
-.oa-diagram-item, .oa-diagram-box { display: inline-flex; align-items: center; gap: var(--oa-space-100); box-sizing: border-box; max-width: 100%;
-  min-height: var(--oa-size-target-touch); margin: 0; padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px);
-  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); border-radius: var(--oa-radius-none); background: var(--oa-color-surface);
-  color: var(--oa-color-text-primary); font: var(--oa-type-ui); text-align: start; overflow-wrap: anywhere }
-.oa-diagram-item { cursor: pointer }
-.oa-diagram-check { display: none; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
-.oa-diagram-name { min-width: 0 }
+.oa-diagram-drawing {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0 0 0 var(--oa-space-150);
+  list-style: none;
+  border-left: var(--oa-border-width-rule) solid var(--oa-color-graphic-essential);
+}
+.oa-diagram-node {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 100%;
+}
+.oa-diagram-verb {
+  margin: var(--oa-space-050) 0 var(--oa-space-050) var(--oa-space-200);
+  padding-left: var(--oa-space-100);
+  border-left: var(--oa-border-width-hairline) solid var(--oa-color-graphic-subtle);
+  font: var(--oa-type-caption);
+  color: var(--oa-color-text-secondary);
+}
+.oa-diagram-item, .oa-diagram-box {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--oa-space-100);
+  box-sizing: border-box;
+  max-width: 100%;
+  min-height: var(--oa-size-target-touch);
+  margin: 0;
+  padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+  border-radius: var(--oa-radius-none);
+  background: var(--oa-color-surface);
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-ui);
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+.oa-diagram-item {
+  cursor: pointer;
+}
+.oa-diagram-check {
+  display: none;
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+}
+.oa-diagram-name {
+  min-width: 0;
+}
+
 /* Hover and focus preview the part: its edge thickens and its name underlines */
-.oa-diagram-item:hover, .oa-diagram-item:focus-visible { border-width: var(--oa-border-width-rule); padding: calc(var(--oa-space-100) - 1px) var(--oa-space-200) }
-.oa-diagram-item:hover .oa-diagram-name, .oa-diagram-item:focus-visible .oa-diagram-name { text-decoration: underline; text-underline-offset: .2em }
-.oa-diagram-item:focus-visible, .oa-diagram-button:focus-visible, .oa-diagram-summary:focus-visible, .oa-diagram-panel-name:focus-visible {
-  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
+.oa-diagram-item:hover, .oa-diagram-item:focus-visible {
+  border-width: var(--oa-border-width-rule);
+  padding: calc(var(--oa-space-100) - 1px) var(--oa-space-200);
+}
+.oa-diagram-item:hover .oa-diagram-name,
+.oa-diagram-item:focus-visible .oa-diagram-name {
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+.oa-diagram-item:focus-visible,
+.oa-diagram-button:focus-visible,
+.oa-diagram-summary:focus-visible,
+.oa-diagram-panel-name:focus-visible {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
+
 /* Chosen: the check before the name, the name in bold, a 2 px edge; the other parts mute */
-.oa-diagram-item[aria-pressed="true"] { padding: calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px) var(--oa-space-150);
-  border-width: var(--oa-border-width-rule); font-weight: var(--oa-font-weight-bold) }
-.oa-diagram-item[aria-pressed="true"] .oa-diagram-check { display: block }
-.oa-diagram-drawing[data-oa-chosen] .oa-diagram-item[aria-pressed="false"] { border-color: var(--oa-color-state-muted-mark); color: var(--oa-color-state-muted-text) }
-.oa-diagram-how, .oa-diagram-readout { margin: var(--oa-space-100) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
-.oa-diagram-readout:empty { display: none }
-.oa-diagram-panel { margin-top: var(--oa-space-150); padding: var(--oa-space-150); border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
-  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-selected-bar); background: var(--oa-color-state-selected-band) }
-.oa-diagram-panel[hidden] { display: none }
-.oa-diagram-panel-name { margin: 0; font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }
-.oa-diagram-panel-text { margin: var(--oa-space-050) 0 var(--oa-space-150); font: var(--oa-type-body-small) }
-.oa-diagram-button { display: inline-flex; align-items: center; gap: var(--oa-space-100); box-sizing: border-box; max-width: 100%; min-height: var(--oa-size-target-touch);
-  margin: 0; padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px) var(--oa-space-100) calc(var(--oa-space-150) + 1px);
-  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); border-radius: var(--oa-radius-none); background: transparent;
-  color: var(--oa-color-text-primary); font: var(--oa-type-ui); text-align: start; overflow-wrap: anywhere; cursor: pointer }
-.oa-diagram-button:hover { border-width: var(--oa-border-width-rule); padding: calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px) var(--oa-space-150) }
-.oa-diagram-icon, .oa-diagram-chevron { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
-.oa-diagram-words { margin: var(--oa-space-200) 0 var(--oa-space-150); border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
-.oa-diagram-summary { display: flex; align-items: center; justify-content: space-between; gap: var(--oa-space-100); min-height: var(--oa-size-target-touch);
-  border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline); font: var(--oa-type-ui); cursor: pointer; list-style: none }
-.oa-diagram-summary::-webkit-details-marker { display: none }
-.oa-diagram-summary:hover span { text-decoration: underline; text-underline-offset: .2em }
-.oa-diagram-chevron { transition: transform var(--oa-motion-duration-standard) var(--oa-motion-easing-standard) }
-.oa-diagram-words[open] .oa-diagram-chevron { transform: rotate(180deg) }
-.oa-diagram-lines { margin: 0 0 var(--oa-space-150); padding-left: var(--oa-space-300); font: var(--oa-type-body-small) }
-.oa-diagram-source { margin: var(--oa-space-150) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
+.oa-diagram-item[aria-pressed="true"] {
+  padding:
+    calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px)
+    var(--oa-space-150);
+  border-width: var(--oa-border-width-rule);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-diagram-item[aria-pressed="true"] .oa-diagram-check {
+  display: block;
+}
+.oa-diagram-drawing[data-oa-chosen] .oa-diagram-item[aria-pressed="false"] {
+  border-color: var(--oa-color-state-muted-mark);
+  color: var(--oa-color-state-muted-text);
+}
+.oa-diagram-how, .oa-diagram-readout {
+  margin: var(--oa-space-100) 0 0;
+  font: var(--oa-type-caption);
+  color: var(--oa-color-text-secondary);
+}
+.oa-diagram-readout:empty {
+  display: none;
+}
+.oa-diagram-panel {
+  margin-top: var(--oa-space-150);
+  padding: var(--oa-space-150);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-selected-bar);
+  background: var(--oa-color-state-selected-band);
+}
+.oa-diagram-panel[hidden] {
+  display: none;
+}
+.oa-diagram-panel-name {
+  margin: 0;
+  font: var(--oa-type-ui);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-diagram-panel-text {
+  margin: var(--oa-space-050) 0 var(--oa-space-150);
+  font: var(--oa-type-body-small);
+}
+.oa-diagram-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--oa-space-100);
+  box-sizing: border-box;
+  max-width: 100%;
+  min-height: var(--oa-size-target-touch);
+  margin: 0;
+  padding:
+    var(--oa-space-100) calc(var(--oa-space-200) + 1px) var(--oa-space-100)
+    calc(var(--oa-space-150) + 1px);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+  border-radius: var(--oa-radius-none);
+  background: transparent;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-ui);
+  text-align: start;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.oa-diagram-button:hover {
+  border-width: var(--oa-border-width-rule);
+  padding:
+    calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px)
+    var(--oa-space-150);
+}
+.oa-diagram-icon, .oa-diagram-chevron {
+  display: block;
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+}
+.oa-diagram-words {
+  margin: var(--oa-space-200) 0 var(--oa-space-150);
+  border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+}
+.oa-diagram-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--oa-space-100);
+  min-height: var(--oa-size-target-touch);
+  border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+  font: var(--oa-type-ui);
+  cursor: pointer;
+  list-style: none;
+}
+.oa-diagram-summary::-webkit-details-marker {
+  display: none;
+}
+.oa-diagram-summary:hover span {
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+.oa-diagram-chevron {
+  transition: transform var(--oa-motion-duration-standard) var(--oa-motion-easing-standard);
+}
+.oa-diagram-words[open] .oa-diagram-chevron {
+  transform: rotate(180deg);
+}
+.oa-diagram-lines {
+  margin: 0 0 var(--oa-space-150);
+  padding-left: var(--oa-space-300);
+  font: var(--oa-type-body-small);
+}
+.oa-diagram-source {
+  margin: var(--oa-space-150) 0 0;
+  font: var(--oa-type-caption);
+  color: var(--oa-color-text-secondary);
+}
+
 /* Full size: a modal dialog that covers the page, on the ground of the theme it opens in */
-.oa-diagram-dialog { box-sizing: border-box; width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0 var(--oa-space-200) var(--oa-space-300);
-  border: 0; background: var(--oa-color-surface); color: var(--oa-color-text-primary); font: var(--oa-type-body); overflow: auto }
-.oa-diagram-dialog-head { position: sticky; top: 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--oa-space-100);
-  min-height: var(--oa-space-800); margin-bottom: var(--oa-space-200); background: var(--oa-color-surface); border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-strong) }
-.oa-diagram-dialog-name { margin: 0; font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }
-.oa-diagram-drawing--full .oa-diagram-box { font: var(--oa-type-h4) }
-.oa-diagram-drawing--full .oa-diagram-verb { font: var(--oa-type-body) }
+.oa-diagram-dialog {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0 var(--oa-space-200) var(--oa-space-300);
+  border: 0;
+  background: var(--oa-color-surface);
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-body);
+  overflow: auto;
+}
+.oa-diagram-dialog-head {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--oa-space-100);
+  min-height: var(--oa-space-800);
+  margin-bottom: var(--oa-space-200);
+  background: var(--oa-color-surface);
+  border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+}
+.oa-diagram-dialog-name {
+  margin: 0;
+  font: var(--oa-type-ui);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-diagram-drawing--full .oa-diagram-box {
+  font: var(--oa-type-h4);
+}
+.oa-diagram-drawing--full .oa-diagram-verb {
+  font: var(--oa-type-body);
+}
 
 @media (forced-colors: active) {
-  .oa-diagram-item, .oa-diagram-button { border-color: ButtonText }
-  .oa-diagram-drawing, .oa-diagram-panel, .oa-diagram-summary, .oa-diagram-words { border-color: CanvasText }
+  .oa-diagram-item, .oa-diagram-button {
+    border-color: ButtonText;
+  }
+  .oa-diagram-drawing,
+  .oa-diagram-panel,
+  .oa-diagram-summary,
+  .oa-diagram-words {
+    border-color: CanvasText;
+  }
 }

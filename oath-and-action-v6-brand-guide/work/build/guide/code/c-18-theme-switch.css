@@ -1,24 +1,99 @@
-/* Theme switch: three native radio buttons under the legend "Theme". The sample page paints the ground of whatever
-   theme it sits in, so a choice shows at once, with no motion. Reads only tokens.css. */
-.oa-theme-page { padding: var(--oa-space-200); background: var(--oa-color-surface); color: var(--oa-color-text-primary); font: var(--oa-type-body) }
-.oa-theme [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
-.oa-theme { min-width: 0; margin: 0; padding: 0; border: 0 }
-.oa-theme-legend { margin: 0 0 var(--oa-space-100); padding: 0; font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }
-.oa-theme-row { display: flex; flex-wrap: wrap; gap: var(--oa-space-100) }
-.oa-theme-item { position: relative; display: flex; max-width: 100%; cursor: pointer }
-.oa-theme-input { position: absolute; top: 0; left: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: inherit }
-.oa-theme-face { display: inline-flex; align-items: center; gap: var(--oa-space-100); box-sizing: border-box; max-width: 100%;
-  min-height: var(--oa-size-target-touch); padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px);
-  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); font: var(--oa-type-ui); overflow-wrap: anywhere }
-.oa-theme-label { min-width: 0 }
-.oa-theme-check { display: none; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
-.oa-theme-input:focus-visible + .oa-theme-face { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
-.oa-theme-item:hover .oa-theme-label { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
-.oa-theme-input:checked + .oa-theme-face { padding: calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px) var(--oa-space-150);
-  border-width: var(--oa-border-width-rule); font-weight: var(--oa-font-weight-bold) }
-.oa-theme-input:checked + .oa-theme-face .oa-theme-check { display: block }
-.oa-theme-sample { margin: var(--oa-space-200) 0 0; font: var(--oa-type-body-small) }
+/* Theme switch: three native radio buttons under the legend "Theme". The sample page paints the
+   ground of whatever theme it sits in, so a choice shows at once, with no motion. Reads only
+   tokens.css. */
+.oa-theme-page {
+  padding: var(--oa-space-200);
+  background: var(--oa-color-surface);
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-body);
+}
+.oa-theme [data-icon] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--oa-component-icon-utility-line-medium);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.oa-theme {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.oa-theme-legend {
+  margin: 0 0 var(--oa-space-100);
+  padding: 0;
+  font: var(--oa-type-ui);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-theme-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--oa-space-100);
+}
+.oa-theme-item {
+  position: relative;
+  display: flex;
+  max-width: 100%;
+  cursor: pointer;
+}
+.oa-theme-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+.oa-theme-face {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--oa-space-100);
+  box-sizing: border-box;
+  max-width: 100%;
+  min-height: var(--oa-size-target-touch);
+  padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+  font: var(--oa-type-ui);
+  overflow-wrap: anywhere;
+}
+.oa-theme-label {
+  min-width: 0;
+}
+.oa-theme-check {
+  display: none;
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+}
+.oa-theme-input:focus-visible + .oa-theme-face {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
+.oa-theme-item:hover .oa-theme-label {
+  text-decoration: underline;
+  text-decoration-thickness: var(--oa-border-width-underline);
+  text-underline-offset: .2em;
+}
+.oa-theme-input:checked + .oa-theme-face {
+  padding:
+    calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px)
+    var(--oa-space-150);
+  border-width: var(--oa-border-width-rule);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-theme-input:checked + .oa-theme-face .oa-theme-check {
+  display: block;
+}
+.oa-theme-sample {
+  margin: var(--oa-space-200) 0 0;
+  font: var(--oa-type-body-small);
+}
 
 @media (forced-colors: active) {
-  .oa-theme-face { border-color: ButtonText }
+  .oa-theme-face {
+    border-color: ButtonText;
+  }
 }

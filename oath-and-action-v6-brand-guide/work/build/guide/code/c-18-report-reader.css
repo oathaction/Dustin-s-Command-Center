@@ -1,70 +1,278 @@
-/* Report reader: one page at a time, its number and title in a status line; both ends keep focus and say why;
-   Fit width or Full size is a choice of two. */
-.oa-reader { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
-.oa-reader [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
-.oa-reader-head { margin: 0 0 var(--oa-space-100); font: var(--oa-type-ui) }
-.oa-reader-doc { font-weight: var(--oa-font-weight-bold) }
-/* Illustrative: the label at the head of an invented piece, in the guide's one style (uppercase, a 1 px edge in the ink) */
-.oa-reader-illus { display: inline-block; margin: 0 0 var(--oa-space-100); padding: 0 .4em; border: var(--oa-border-width-hairline) solid currentColor;
-  color: var(--oa-color-text-primary); font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing);
-  text-transform: var(--oa-type-label-text-transform); line-height: 1.5 }
-.oa-reader-view { overflow-x: auto; border: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline); background: var(--oa-color-field-ground) }
-.oa-reader-view:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: calc(-1 * (var(--oa-border-width-focus-ring) + var(--oa-border-focus-offset))) }
-.oa-reader-sheet { box-sizing: border-box; padding: var(--oa-space-200) }
-.oa-reader-view[data-oa-size="full"] .oa-reader-sheet { width: 30rem }
-.oa-reader-page[hidden] { display: none }
-.oa-reader-running { margin: 0; font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing);
-  text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
-.oa-reader-title { margin: var(--oa-space-100) 0 0; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing) }
-.oa-reader-text { margin: var(--oa-space-100) 0 0; max-width: var(--oa-layout-measure-body-max) }
-.oa-reader-hint { margin: var(--oa-space-050) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
-.oa-reader-hint[hidden] { display: none }
-.oa-reader-status { margin: var(--oa-space-150) 0; font: var(--oa-type-ui); font-variant-numeric: tabular-nums }
+/* Report reader: one page at a time, its number and title in a status line; both ends keep focus
+   and say why; Fit width or Full size is a choice of two. */
+.oa-reader {
+  font: var(--oa-type-body);
+  color: var(--oa-color-text-primary);
+}
+.oa-reader [data-icon] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--oa-component-icon-utility-line-medium);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.oa-reader-head {
+  margin: 0 0 var(--oa-space-100);
+  font: var(--oa-type-ui);
+}
+.oa-reader-doc {
+  font-weight: var(--oa-font-weight-bold);
+}
+
+/* Illustrative: the label at the head of an invented piece, in the guide's one style (uppercase, a
+   1 px edge in the ink) */
+.oa-reader-illus {
+  display: inline-block;
+  margin: 0 0 var(--oa-space-100);
+  padding: 0 .4em;
+  border: var(--oa-border-width-hairline) solid currentColor;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  line-height: 1.5;
+}
+.oa-reader-view {
+  overflow-x: auto;
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+  background: var(--oa-color-field-ground);
+}
+.oa-reader-view:focus-visible {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: calc(-1 * (var(--oa-border-width-focus-ring) + var(--oa-border-focus-offset)));
+}
+.oa-reader-sheet {
+  box-sizing: border-box;
+  padding: var(--oa-space-200);
+}
+.oa-reader-view[data-oa-size="full"] .oa-reader-sheet {
+  width: 30rem;
+}
+.oa-reader-page[hidden] {
+  display: none;
+}
+.oa-reader-running {
+  margin: 0;
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  color: var(--oa-color-text-secondary);
+}
+.oa-reader-title {
+  margin: var(--oa-space-100) 0 0;
+  font: var(--oa-type-h4);
+  letter-spacing: var(--oa-type-h4-letter-spacing);
+}
+.oa-reader-text {
+  margin: var(--oa-space-100) 0 0;
+  max-width: var(--oa-layout-measure-body-max);
+}
+.oa-reader-hint {
+  margin: var(--oa-space-050) 0 0;
+  font: var(--oa-type-caption);
+  color: var(--oa-color-text-secondary);
+}
+.oa-reader-hint[hidden] {
+  display: none;
+}
+.oa-reader-status {
+  margin: var(--oa-space-150) 0;
+  font: var(--oa-type-ui);
+  font-variant-numeric: tabular-nums;
+}
+
 /* Two buttons side by side, one column when a label would not fit */
-.oa-reader-turn { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: var(--oa-space-100) }
-.oa-reader-prev, .oa-reader-next { display: flex; align-items: center; gap: var(--oa-space-100); box-sizing: border-box; min-height: var(--oa-size-target-touch);
-  margin: 0; padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px) var(--oa-space-100) calc(var(--oa-space-150) + 1px);
-  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); border-radius: var(--oa-radius-none); background: transparent;
-  color: var(--oa-color-text-primary); font: var(--oa-type-ui); text-align: start; overflow-wrap: anywhere; cursor: pointer }
-.oa-reader-next { justify-content: flex-end; padding: var(--oa-space-100) calc(var(--oa-space-150) + 1px) var(--oa-space-100) calc(var(--oa-space-200) + 1px); text-align: end }
-.oa-reader-prev:not([aria-disabled="true"]):hover, .oa-reader-next:not([aria-disabled="true"]):hover { border-width: var(--oa-border-width-rule); padding: calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px) var(--oa-space-150) }
-.oa-reader-next:not([aria-disabled="true"]):hover { padding: calc(var(--oa-space-100) - 1px) var(--oa-space-150) calc(var(--oa-space-100) - 1px) var(--oa-space-200) }
-.oa-reader-prev:focus-visible, .oa-reader-next:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
-.oa-reader-prev[aria-disabled="true"], .oa-reader-next[aria-disabled="true"] { border-style: dashed; border-color: var(--oa-color-state-disabled-edge);
-  color: var(--oa-color-state-disabled-text); cursor: not-allowed }
-.oa-reader-icon, .oa-reader-check, .oa-reader-mark { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
-.oa-reader-why { min-height: 1.6em; margin: var(--oa-space-100) 0 0; font: var(--oa-type-body-small); color: var(--oa-color-text-secondary) }
+.oa-reader-turn {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: var(--oa-space-100);
+}
+.oa-reader-prev, .oa-reader-next {
+  display: flex;
+  align-items: center;
+  gap: var(--oa-space-100);
+  box-sizing: border-box;
+  min-height: var(--oa-size-target-touch);
+  margin: 0;
+  padding:
+    var(--oa-space-100) calc(var(--oa-space-200) + 1px) var(--oa-space-100)
+    calc(var(--oa-space-150) + 1px);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+  border-radius: var(--oa-radius-none);
+  background: transparent;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-ui);
+  text-align: start;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.oa-reader-next {
+  justify-content: flex-end;
+  padding:
+    var(--oa-space-100) calc(var(--oa-space-150) + 1px) var(--oa-space-100)
+    calc(var(--oa-space-200) + 1px);
+  text-align: end;
+}
+.oa-reader-prev:not([aria-disabled="true"]):hover,
+.oa-reader-next:not([aria-disabled="true"]):hover {
+  border-width: var(--oa-border-width-rule);
+  padding:
+    calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px)
+    var(--oa-space-150);
+}
+.oa-reader-next:not([aria-disabled="true"]):hover {
+  padding:
+    calc(var(--oa-space-100) - 1px) var(--oa-space-150) calc(var(--oa-space-100) - 1px)
+    var(--oa-space-200);
+}
+.oa-reader-prev:focus-visible, .oa-reader-next:focus-visible {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
+.oa-reader-prev[aria-disabled="true"], .oa-reader-next[aria-disabled="true"] {
+  border-style: dashed;
+  border-color: var(--oa-color-state-disabled-edge);
+  color: var(--oa-color-state-disabled-text);
+  cursor: not-allowed;
+}
+.oa-reader-icon, .oa-reader-check, .oa-reader-mark {
+  display: block;
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+}
+.oa-reader-why {
+  min-height: 1.6em;
+  margin: var(--oa-space-100) 0 0;
+  font: var(--oa-type-body-small);
+  color: var(--oa-color-text-secondary);
+}
+
 /* Fit width or Full size: native radio buttons, drawn with the check, bold word and 2 px edge */
-.oa-reader-size { min-width: 0; margin: var(--oa-space-200) 0 0; padding: 0; border: 0 }
-.oa-reader-legend { margin: 0 0 var(--oa-space-100); padding: 0; font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }
-.oa-reader-size-row { display: flex; flex-wrap: wrap; gap: var(--oa-space-100) }
-.oa-reader-size-item { position: relative; display: flex; max-width: 100%; cursor: pointer }
-.oa-reader-size-input { position: absolute; top: 0; left: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: inherit }
-.oa-reader-size-face { display: inline-flex; align-items: center; gap: var(--oa-space-100); box-sizing: border-box; max-width: 100%;
-  min-height: var(--oa-size-target-touch); padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px);
-  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); font: var(--oa-type-ui); overflow-wrap: anywhere }
-.oa-reader-check { display: none }
-.oa-reader-size-input:focus-visible + .oa-reader-size-face { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
-.oa-reader-size-item:hover .oa-reader-size-face > span { text-decoration: underline; text-underline-offset: .2em }
-.oa-reader-size-input:checked + .oa-reader-size-face { padding: calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px) var(--oa-space-150);
-  border-width: var(--oa-border-width-rule); font-weight: var(--oa-font-weight-bold) }
-.oa-reader-size-input:checked + .oa-reader-size-face .oa-reader-check { display: block }
-/* A page's own states. Loading shows in the view; an error sits under it, on the surface, since red never sits on the
-   field ground's Prussian in the dark theme */
-.oa-reader-k { margin: var(--oa-space-400) 0 var(--oa-space-100); font: var(--oa-type-label);
-  letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
-.oa-reader-view--state { padding: var(--oa-space-200) }
-.oa-reader-loading { display: flex; align-items: center; gap: var(--oa-space-150); margin: 0; font: var(--oa-type-ui); color: var(--oa-color-state-loading-text) }
-.oa-reader-still { display: block; flex: none; box-sizing: border-box; width: var(--oa-space-200); height: var(--oa-space-200);
-  border: var(--oa-border-width-rule) solid var(--oa-color-state-loading-mark); border-radius: var(--oa-radius-full) }
-.oa-reader-error { display: flex; align-items: flex-start; gap: var(--oa-space-100); margin: 0; padding: var(--oa-space-100) var(--oa-space-150);
-  background: var(--oa-color-state-error-band, transparent); color: var(--oa-color-state-error-text);
-  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar); font: var(--oa-type-body-small) }
-.oa-reader-error b { font-weight: var(--oa-font-weight-bold) }
-.oa-reader-error > span, .oa-reader-loading { min-width: 0; overflow-wrap: anywhere }
+.oa-reader-size {
+  min-width: 0;
+  margin: var(--oa-space-200) 0 0;
+  padding: 0;
+  border: 0;
+}
+.oa-reader-legend {
+  margin: 0 0 var(--oa-space-100);
+  padding: 0;
+  font: var(--oa-type-ui);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-reader-size-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--oa-space-100);
+}
+.oa-reader-size-item {
+  position: relative;
+  display: flex;
+  max-width: 100%;
+  cursor: pointer;
+}
+.oa-reader-size-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+.oa-reader-size-face {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--oa-space-100);
+  box-sizing: border-box;
+  max-width: 100%;
+  min-height: var(--oa-size-target-touch);
+  padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+  font: var(--oa-type-ui);
+  overflow-wrap: anywhere;
+}
+.oa-reader-check {
+  display: none;
+}
+.oa-reader-size-input:focus-visible + .oa-reader-size-face {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
+.oa-reader-size-item:hover .oa-reader-size-face > span {
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+.oa-reader-size-input:checked + .oa-reader-size-face {
+  padding:
+    calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px)
+    var(--oa-space-150);
+  border-width: var(--oa-border-width-rule);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-reader-size-input:checked + .oa-reader-size-face .oa-reader-check {
+  display: block;
+}
+
+/* A page's own states. Loading shows in the view; an error sits under it, on the surface, since red
+   never sits on the field ground's Prussian in the dark theme */
+.oa-reader-k {
+  margin: var(--oa-space-400) 0 var(--oa-space-100);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  color: var(--oa-color-text-secondary);
+}
+.oa-reader-view--state {
+  padding: var(--oa-space-200);
+}
+.oa-reader-loading {
+  display: flex;
+  align-items: center;
+  gap: var(--oa-space-150);
+  margin: 0;
+  font: var(--oa-type-ui);
+  color: var(--oa-color-state-loading-text);
+}
+.oa-reader-still {
+  display: block;
+  flex: none;
+  box-sizing: border-box;
+  width: var(--oa-space-200);
+  height: var(--oa-space-200);
+  border: var(--oa-border-width-rule) solid var(--oa-color-state-loading-mark);
+  border-radius: var(--oa-radius-full);
+}
+.oa-reader-error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--oa-space-100);
+  margin: 0;
+  padding: var(--oa-space-100) var(--oa-space-150);
+  background: var(--oa-color-state-error-band, transparent);
+  color: var(--oa-color-state-error-text);
+  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar);
+  font: var(--oa-type-body-small);
+}
+.oa-reader-error b {
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-reader-error > span, .oa-reader-loading {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 
 @media (forced-colors: active) {
-  .oa-reader-prev, .oa-reader-next, .oa-reader-size-face { border-color: ButtonText }
-  .oa-reader-prev[aria-disabled="true"], .oa-reader-next[aria-disabled="true"] { border-color: GrayText; color: GrayText }
-  .oa-reader-view, .oa-reader-error { border-color: CanvasText }
+  .oa-reader-prev, .oa-reader-next, .oa-reader-size-face {
+    border-color: ButtonText;
+  }
+  .oa-reader-prev[aria-disabled="true"], .oa-reader-next[aria-disabled="true"] {
+    border-color: GrayText;
+    color: GrayText;
+  }
+  .oa-reader-view, .oa-reader-error {
+    border-color: CanvasText;
+  }
 }

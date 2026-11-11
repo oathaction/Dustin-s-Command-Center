@@ -34,6 +34,10 @@
     },
     {
      "key": "Tab",
+     "focus": ".oa-location-item:not([aria-current])"
+    },
+    {
+     "key": "Tab",
      "focus": ".oa-location-step:not(.oa-location-step--next)"
     },
     {

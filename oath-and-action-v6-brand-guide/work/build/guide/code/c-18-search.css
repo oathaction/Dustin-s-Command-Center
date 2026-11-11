@@ -1,41 +1,168 @@
-/* Search: a labeled field in a search landmark, its count and its advice in one polite status line, and a Clear
-   control that shows once there is text. Escape clears the field. Reads only tokens.css. */
-.oa-search { display: block; font: var(--oa-type-body); color: var(--oa-color-text-primary) }
-.oa-search [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
-.oa-search-label { display: block; margin: 0 0 var(--oa-space-100); font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }
-.oa-search-box { display: flex; align-items: center; box-sizing: border-box; max-width: 30rem; min-height: var(--oa-size-target-touch);
-  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); background: var(--oa-color-field-ground); color: var(--oa-color-text-primary) }
-.oa-search-box:has(.oa-search-input:focus-visible) { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
-.oa-search-icon { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium); margin: 0 var(--oa-space-100) 0 var(--oa-space-150) }
-.oa-search-input { flex: 1 1 auto; align-self: stretch; min-width: 0; margin: 0; padding: 0 var(--oa-space-050); border: 0; border-radius: var(--oa-radius-none);
-  background: transparent; color: var(--oa-color-text-primary); font: var(--oa-type-body); appearance: none }
-.oa-search-input:focus { outline: none }
-.oa-search-input::-webkit-search-cancel-button { appearance: none }
-.oa-search-clear { display: inline-flex; flex: none; align-items: center; justify-content: center; width: var(--oa-size-target-touch); height: var(--oa-size-target-touch);
-  margin: calc(-1 * var(--oa-border-width-hairline)) calc(-1 * var(--oa-border-width-hairline)) calc(-1 * var(--oa-border-width-hairline)) 0; padding: 0;
-  border: 0; border-radius: var(--oa-radius-none); background: transparent; color: var(--oa-color-text-primary); cursor: pointer }
-.oa-search-clear[hidden] { display: none }
-.oa-search-clear:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: calc(-1 * var(--oa-border-width-focus-ring)) }
-.oa-search-clear-icon { display: block; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
-.oa-search-status { margin: var(--oa-space-150) 0 0; font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }
-.oa-search-results { margin: var(--oa-space-100) 0 0; padding: 0; list-style: none; font: var(--oa-type-body-small) }
-.oa-search-result { padding: var(--oa-space-050) 0; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
-.oa-search-result[hidden] { display: none }
-/* Each result is its name, then its typed chip: the type word and the code together, so no code stands bare */
-.oa-search-result-chip { display: inline-block; margin-left: var(--oa-space-050); padding: 0 var(--oa-space-100);
-  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); font: var(--oa-type-data-label) }
+/* Search: a labeled field in a search landmark, its count and its advice in one polite status line,
+   and a Clear control that shows once there is text. Escape clears the field. Reads only
+   tokens.css. */
+.oa-search {
+  display: block;
+  font: var(--oa-type-body);
+  color: var(--oa-color-text-primary);
+}
+.oa-search [data-icon] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--oa-component-icon-utility-line-medium);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.oa-search-label {
+  display: block;
+  margin: 0 0 var(--oa-space-100);
+  font: var(--oa-type-ui);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-search-box {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  max-width: 30rem;
+  min-height: var(--oa-size-target-touch);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+  background: var(--oa-color-field-ground);
+  color: var(--oa-color-text-primary);
+}
+.oa-search-box:has(.oa-search-input:focus-visible) {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
+.oa-search-icon {
+  display: block;
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+  margin: 0 var(--oa-space-100) 0 var(--oa-space-150);
+}
+.oa-search-input {
+  flex: 1 1 auto;
+  align-self: stretch;
+  min-width: 0;
+  margin: 0;
+  padding: 0 var(--oa-space-050);
+  border: 0;
+  border-radius: var(--oa-radius-none);
+  background: transparent;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-body);
+  appearance: none;
+}
+.oa-search-input:focus {
+  outline: none;
+}
+.oa-search-input::-webkit-search-cancel-button {
+  appearance: none;
+}
+.oa-search-clear {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--oa-size-target-touch);
+  height: var(--oa-size-target-touch);
+  margin:
+    calc(-1 * var(--oa-border-width-hairline)) calc(-1 * var(--oa-border-width-hairline))
+    calc(-1 * var(--oa-border-width-hairline)) 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--oa-radius-none);
+  background: transparent;
+  color: var(--oa-color-text-primary);
+  cursor: pointer;
+}
+.oa-search-clear[hidden] {
+  display: none;
+}
+.oa-search-clear:focus-visible {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: calc(-1 * var(--oa-border-width-focus-ring));
+}
+.oa-search-clear-icon {
+  display: block;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+}
+.oa-search-status {
+  margin: var(--oa-space-150) 0 0;
+  font: var(--oa-type-ui);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-search-results {
+  margin: var(--oa-space-100) 0 0;
+  padding: 0;
+  list-style: none;
+  font: var(--oa-type-body-small);
+}
+.oa-search-result {
+  padding: var(--oa-space-050) 0;
+  border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+}
+.oa-search-result[hidden] {
+  display: none;
+}
+
+/* Each result is its name, then its typed chip: the type word and the code together, so no code
+   stands bare */
+.oa-search-result-chip {
+  display: inline-block;
+  margin-left: var(--oa-space-050);
+  padding: 0 var(--oa-space-100);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+  font: var(--oa-type-data-label);
+}
+
 /* An ID never breaks at its hyphen */
-.oa-search-result-id { white-space: nowrap; font-variant-numeric: tabular-nums }
-.oa-search-source { margin: var(--oa-space-150) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
-.oa-search-k { margin: var(--oa-space-400) 0 var(--oa-space-100); font: var(--oa-type-label);
-  letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
+.oa-search-result-id {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.oa-search-source {
+  margin: var(--oa-space-150) 0 0;
+  font: var(--oa-type-caption);
+  color: var(--oa-color-text-secondary);
+}
+.oa-search-k {
+  margin: var(--oa-space-400) 0 var(--oa-space-100);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  color: var(--oa-color-text-secondary);
+}
+
 /* Searching: a still outline and the words, never a pulse */
-.oa-search-loading { display: flex; align-items: center; gap: var(--oa-space-150); margin: 0; font: var(--oa-type-ui); color: var(--oa-color-state-loading-text) }
-.oa-search-still { display: block; flex: none; box-sizing: border-box; width: var(--oa-space-200); height: var(--oa-space-200);
-  border: var(--oa-border-width-rule) solid var(--oa-color-state-loading-mark); border-radius: var(--oa-radius-full) }
+.oa-search-loading {
+  display: flex;
+  align-items: center;
+  gap: var(--oa-space-150);
+  margin: 0;
+  font: var(--oa-type-ui);
+  color: var(--oa-color-state-loading-text);
+}
+.oa-search-still {
+  display: block;
+  flex: none;
+  box-sizing: border-box;
+  width: var(--oa-space-200);
+  height: var(--oa-space-200);
+  border: var(--oa-border-width-rule) solid var(--oa-color-state-loading-mark);
+  border-radius: var(--oa-radius-full);
+}
 
 @media (forced-colors: active) {
-  .oa-search-box { border-color: CanvasText }
-  .oa-search-clear { color: ButtonText; border: var(--oa-border-width-hairline) solid ButtonText }
-  .oa-search-result-chip { border-color: CanvasText }
+  .oa-search-box {
+    border-color: CanvasText;
+  }
+  .oa-search-clear {
+    color: ButtonText;
+    border: var(--oa-border-width-hairline) solid ButtonText;
+  }
+  .oa-search-result-chip {
+    border-color: CanvasText;
+  }
 }

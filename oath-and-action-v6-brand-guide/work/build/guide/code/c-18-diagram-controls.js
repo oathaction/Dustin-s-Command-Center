@@ -11,6 +11,7 @@
     var panelName = panel.querySelector('.oa-diagram-panel-name');
     var chosen = null;
     function nameOf(item) { return item.querySelector('.oa-diagram-name').textContent.replace(/\s+/g, ' ').trim(); }
+    function detailOf(item) { return item.getAttribute('data-oa-detail').replace(/\s+/g, ' ').trim(); }
     function focusItem(item) {
       items.forEach(function (x) { x.setAttribute('tabindex', x === item ? '0' : '-1'); });
       item.focus();
@@ -21,7 +22,7 @@
       drawing.toggleAttribute('data-oa-chosen', !!item);
       if (!item) { panel.hidden = true; return; }
       panelName.textContent = nameOf(item);
-      panel.querySelector('.oa-diagram-panel-text').textContent = item.getAttribute('data-oa-detail');
+      panel.querySelector('.oa-diagram-panel-text').textContent = detailOf(item);
       panel.hidden = false;
       panelName.focus();
     }
@@ -31,7 +32,7 @@
       if (back) focusItem(back);
     }
     items.forEach(function (item, i) {
-      item.addEventListener('focus', function () { readout.textContent = nameOf(item) + '. ' + item.getAttribute('data-oa-detail'); });
+      item.addEventListener('focus', function () { readout.textContent = nameOf(item) + '. ' + detailOf(item); });
       item.addEventListener('click', function () { focusItem(item); choose(item); });
       item.addEventListener('keydown', function (e) {
         var to = null;

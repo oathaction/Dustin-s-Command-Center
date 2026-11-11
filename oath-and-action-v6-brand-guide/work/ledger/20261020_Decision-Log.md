@@ -2938,3 +2938,27 @@ The main session asked three questions with its plan for round 2, board C and th
 | D2-1560 | Every CSS panel in chapter 18 sets one declaration per line, long attributes and path data on their own lines; panels show about 40 lines before they scroll; chapter 18 keeps its 1.25 MB ceiling | Panels ran up to 27,922 px wide in a 448 px tall frame (CA-S2); the ceiling binds (D2-1468) |
 | D2-1561 | From 80em, a set whose content fits 32rem shows its two stages side by side; wide sets keep the stack | Chapter 17's pairs side by side read better, and a reader compares one state on both grounds (CA-S3) |
 | D2-1562 | D2-1469 stays withdrawn although CA judged the bar on Prussian sound on contrast | Rule 05.3's reason is the party reading of red with blue, which contrast does not answer (D2-1544) |
+
+### Identity designer, the fix pass (`20261111_Stage-C-Round-2-Identity-Fix-Notes.md`, section Fix pass)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1563 | An identity player loads with `data-frame="end"` and `data-oa-rest="master"`; Reset is unavailable at rest, both on load and after a run | Call 5. After a run the mark is at rest on its master, so Reset has nothing to undo. The attribute lets the guide check tell these players from chapter 17's, which rest on their first frame |
+| D2-1564 | The button reads Play, Pause, Play while paused, and Play again after a run | Chapter 17's players use these words (Rule 17.3), so all seven players read alike |
+| D2-1565 | The status line says "At rest: ..." on load and after Reset, and keeps "Last frame: ..." after a run | The line names what the reader sees. The end of a run is still a change worth announcing |
+| D2-1566 | The live lever loses its dashed squares; the still view keeps its first frame, a dashed square with words that say it is no part of the mark | CD-M1 says to remove the dashed squares and to keep the still views as they are. An empty first frame needs a mark to show its place |
+| D2-1567 | The hinge's ground takes 40 px of side padding (`oa.space.500`), and the 64 px display master starts its own row | The first frame slides outward from the label's edge (CD-S4). On one row, the 24 px master's ACTION and the 64 px master's OATH would meet inside the 40 px gap |
+| D2-1568 | The hinge's display master shows from a 37rem content box, down from 41rem | The slides now run in the padding, so the box needs only the 580 px master. At 41rem the wider padding hid it at 1440 px |
+| D2-1569 | The hinge's still view keeps its inset frames | The still views stay as they are (CD-M1) |
+| D2-1570 | Rule 08.1's fifth sample reads "48 px master, 96 px; social card sign-off only" | The creative director's words name the place. The first half names the master and its size, as the plate's other labels do |
+| D2-1571 | Rule 08.1's two large drawings share a row, and their labels wrap at 260 px with balanced lines | Side by side is the review's point. At 1440 px "only" first stood alone on its line |
+| D2-1572 | Rule 08.2's dark-card row adds "Judge each pixel on its own, since an average of the four can pass a block whose dimmest pixel fails." | The review names the averaging builder as the failure this fix prevents |
+| D2-1573 | The script is named in Rule 08.2's builders line, which also says it now runs on the proofs' card only | A builder looks there for what to run. `promotion_c_identity.py feed` measures our own card from the built page, so the line says what it does today |
+| D2-1574 | Rule 03.2's builders text adds lines for L1 and L8 | PP-S12 asks for one line per lockup. Both lines point to the rules that already set them (03.1, 03.5) |
+| D2-1575 | I left chapter 17's generator to its owner | The systems designer is editing `stage_c_ch17_build.py`. Its output already carries my new captions; only the failure caption differs, by its own "Fails Rule 17.6." prefix |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1576 | The guide check's motion test reads `data-oa-rest="master"`: such a player shows its end frame on load and after reduced-motion Play, runs on Play otherwise, and has Reset unavailable at rest; other players keep the start-frame contract | Call 5 (D2-1548) moved the identity players' rest to the master; a test that reads the attribute keeps checking them, where an exemption would check nothing |

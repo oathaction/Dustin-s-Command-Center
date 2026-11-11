@@ -1,36 +1,142 @@
-/* Copy a value: a Copy button beside each value. The copy glyph never turns into a check; the result goes to the
-   status line in words, with the success mark, or with the error mark and the value selected for copying by hand. */
-.oa-copy { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
-.oa-copy [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
-.oa-copy [data-icon][width="16"] { stroke-width: var(--oa-component-icon-utility-line-small) }
-.oa-copy-list { margin: 0; padding: 0; list-style: none; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
-.oa-copy-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--oa-space-050) var(--oa-space-200); margin: 0; padding: var(--oa-space-100) 0;
-  border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
-.oa-copy-what { flex: 1 1 12rem; min-width: 0; font: var(--oa-type-body-small); color: var(--oa-color-text-secondary) }
-.oa-copy-value { flex: 1 1 12rem; min-width: 0; font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  font-size: var(--oa-type-caption-font-size); overflow-wrap: anywhere }
-.oa-copy-button { display: inline-flex; align-items: center; gap: var(--oa-space-100); box-sizing: border-box; min-height: var(--oa-size-target-touch);
-  min-width: var(--oa-size-target-touch); margin: 0; padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px) var(--oa-space-100) calc(var(--oa-space-150) + 1px);
-  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); border-radius: var(--oa-radius-none); background: transparent;
-  color: var(--oa-color-text-primary); font: var(--oa-type-ui); cursor: pointer }
-.oa-copy-button:hover { border-width: var(--oa-border-width-rule); padding: calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px) var(--oa-space-150) }
-.oa-copy-button:focus-visible, .oa-copy-fallback:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
-.oa-copy-icon { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
-.oa-copy-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
-.oa-copy-status { margin: var(--oa-space-150) 0 0; font: var(--oa-type-caption); color: var(--oa-color-state-success-text) }
-.oa-copy-status:has(.oa-copy-words:empty) { display: none }
-.oa-copy-mark { width: var(--oa-size-icon-small); height: var(--oa-size-icon-small); margin-right: var(--oa-space-100); vertical-align: -.2em }
-.oa-copy-mark[hidden] { display: none }
-.oa-copy-mark--ok { color: var(--oa-color-state-success-mark) }
-.oa-copy-status[data-oa-state="error"] { padding: var(--oa-space-100) var(--oa-space-150); background: var(--oa-color-state-error-band, transparent);
-  color: var(--oa-color-state-error-text); border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar) }
-.oa-copy-words b { font-weight: var(--oa-font-weight-bold) }
-.oa-copy-fallback { display: block; box-sizing: border-box; width: 100%; max-width: 30rem; min-height: var(--oa-size-target-touch); margin-top: var(--oa-space-100);
-  padding: var(--oa-space-100); border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); background: var(--oa-color-field-ground);
-  color: var(--oa-color-text-primary); font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: var(--oa-type-caption-font-size) }
+/* Copy a value: a Copy button beside each value. The copy glyph never turns into a check; the
+   result goes to the status line in words, with the success mark, or with the error mark and the
+   value selected for copying by hand. */
+.oa-copy {
+  font: var(--oa-type-body);
+  color: var(--oa-color-text-primary);
+}
+.oa-copy [data-icon] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--oa-component-icon-utility-line-medium);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.oa-copy [data-icon][width="16"] {
+  stroke-width: var(--oa-component-icon-utility-line-small);
+}
+.oa-copy-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+}
+.oa-copy-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--oa-space-050) var(--oa-space-200);
+  margin: 0;
+  padding: var(--oa-space-100) 0;
+  border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+}
+.oa-copy-what {
+  flex: 1 1 12rem;
+  min-width: 0;
+  font: var(--oa-type-body-small);
+  color: var(--oa-color-text-secondary);
+}
+.oa-copy-value {
+  flex: 1 1 12rem;
+  min-width: 0;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: var(--oa-type-caption-font-size);
+  overflow-wrap: anywhere;
+}
+.oa-copy-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--oa-space-100);
+  box-sizing: border-box;
+  min-height: var(--oa-size-target-touch);
+  min-width: var(--oa-size-target-touch);
+  margin: 0;
+  padding:
+    var(--oa-space-100) calc(var(--oa-space-200) + 1px) var(--oa-space-100)
+    calc(var(--oa-space-150) + 1px);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+  border-radius: var(--oa-radius-none);
+  background: transparent;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-ui);
+  cursor: pointer;
+}
+.oa-copy-button:hover {
+  border-width: var(--oa-border-width-rule);
+  padding:
+    calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px)
+    var(--oa-space-150);
+}
+.oa-copy-button:focus-visible, .oa-copy-fallback:focus-visible {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
+.oa-copy-icon {
+  display: block;
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+}
+.oa-copy-vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.oa-copy-status {
+  margin: var(--oa-space-150) 0 0;
+  font: var(--oa-type-caption);
+  color: var(--oa-color-state-success-text);
+}
+.oa-copy-status:has(.oa-copy-words:empty) {
+  display: none;
+}
+.oa-copy-mark {
+  width: var(--oa-size-icon-small);
+  height: var(--oa-size-icon-small);
+  margin-right: var(--oa-space-100);
+  vertical-align: -.2em;
+}
+.oa-copy-mark[hidden] {
+  display: none;
+}
+.oa-copy-mark--ok {
+  color: var(--oa-color-state-success-mark);
+}
+.oa-copy-status[data-oa-state="error"] {
+  padding: var(--oa-space-100) var(--oa-space-150);
+  background: var(--oa-color-state-error-band, transparent);
+  color: var(--oa-color-state-error-text);
+  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar);
+}
+.oa-copy-words b {
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-copy-fallback {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 30rem;
+  min-height: var(--oa-size-target-touch);
+  margin-top: var(--oa-space-100);
+  padding: var(--oa-space-100);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+  background: var(--oa-color-field-ground);
+  color: var(--oa-color-text-primary);
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: var(--oa-type-caption-font-size);
+}
 
 @media (forced-colors: active) {
-  .oa-copy-mark--ok { color: CanvasText }
-  .oa-copy-button { border-color: ButtonText }
-  .oa-copy-status[data-oa-state="error"] { border-color: CanvasText }
+  .oa-copy-mark--ok {
+    color: CanvasText;
+  }
+  .oa-copy-button {
+    border-color: ButtonText;
+  }
+  .oa-copy-status[data-oa-state="error"] {
+    border-color: CanvasText;
+  }
 }

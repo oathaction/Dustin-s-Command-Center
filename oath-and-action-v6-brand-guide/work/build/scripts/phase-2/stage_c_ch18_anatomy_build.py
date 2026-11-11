@@ -422,6 +422,14 @@ AX_CSS = minify("""
 .ax-il{margin:0 0 20px}
 .ax-t{position:absolute;top:0;bottom:0;left:-14px;width:5px;border:2px solid var(--oa-color-text-primary);border-right:0}
 .ax-t .ax-n{top:50%;left:-27px;margin-top:-10px}.ax-tup .ax-n{top:-24px;left:-14px;margin-top:0}
+.ax-upl{top:-30px;left:0}.ax-dnl{top:auto;bottom:-30px;left:0}.ax-dnrl{top:auto;bottom:-30px;left:auto;right:-2px}
+.ax-upl::after,.ax-dnl::after,.ax-dnrl::after{content:"";position:absolute;left:9px;height:8px;border-left:1px solid var(--oa-color-text-primary)}
+.ax-upl::after{top:22px}.ax-dnl::after,.ax-dnrl::after{bottom:22px}
+.ax-tlm{left:14px}
+.ax-blx{top:auto;bottom:-24px}.ax-brx{top:auto;bottom:-24px;left:auto;right:-2px}.ax-trx{left:auto;right:-2px}
+.ax-rmx{top:50%;margin-top:-10px;left:auto;right:-28px}
+@container (max-width:24rem){.ax-blx{top:50%;bottom:auto;margin-top:-10px;left:-28px}
+.ax-brx,.ax-trx{top:50%;bottom:auto;margin-top:-10px;right:-28px}.ax-rmx{top:-24px;margin-top:0;right:-2px}}
 .ax-in{top:6px;left:6px}.ax-inr{top:6px;left:auto;right:6px}.ax-l{top:2px;left:-28px}.ax-up{top:-24px;left:0}.ax-dn{top:auto;bottom:-24px;left:0}
 .ax-st .ax-input{display:flex;align-items:center}.ax-nw{white-space:nowrap}.ax-lup{top:2px;left:-28px}
 @container (min-width:34rem){.ax-lup{top:-22px;left:0}}
@@ -503,9 +511,9 @@ def p01():
     focus(save)
     pin(save, 1, 'lm')
     pin(save, 2, 'tr')
-    pin(read, 3, 'tr')
+    pin(read, 3, 'rm')
     bracket(start, 4)
-    pin(start, 5, 'rm')
+    pin(start, 5, 'rmx')
     pin(send, 6, 'rm')
     pin(why, 7)
     key = [(1, 'Word', 'What the button does, in a word or a few; the button’s name starts with it'),
@@ -515,7 +523,7 @@ def p01():
            (5, 'Utility icon', '24 px, before or after the word, in the word’s ink'),
            (6, 'Unavailable', 'A dashed edge and the disabled label color; it keeps its focus'),
            (7, 'Reason line', 'Says what makes the button available, and the button points to it')]
-    return ['button'], r, key, 'a button', '', False, ''
+    return ['button'], r, key, 'a button', '', False, '.oa-button-k{margin-bottom:28px}'
 
 
 def p02():
@@ -528,14 +536,14 @@ def p02():
     bracket(hs, 1)
     pin(hs, 2)
     pin(hs, 3, 'tr')
-    pin(hc, 4, 'bl')
-    pin(hc, 5, 'br')
+    pin(hc, 4, 'blx')
+    pin(hc, 5, 'brx')
     key = [(1, 'Height', '44 px tall and at least 44 px wide'),
            (2, 'On: check and bold word', 'The selected check, 24 px, before the word, and the word in bold'),
            (3, 'On: 2 px edge', 'In the strong border color; the fill stays the ground'),
            (4, 'Off: word', 'The same word at 600, the weight every control’s word takes, with no check'),
            (5, 'Off: 1 px edge', 'The chip’s edge when it is off')]
-    return ['toggle'], r, key, 'a chip, on and off', '', True, ''
+    return ['toggle'], r, key, 'a chip, on and off', '', True, '.oa-toggle-k{margin-bottom:28px}'
 
 
 def p03():
@@ -547,7 +555,7 @@ def p03():
     bracket(items[0], 2)
     pin(q(items[0], 'oa-choice-face'), 3)
     pin(q(items[0], 'oa-choice-face'), 4, 'tr')
-    pin(q(items[1], 'oa-choice-face'), 5, 'tr')
+    pin(q(items[1], 'oa-choice-face'), 5, 'trx')
     pin(q(items[2], 'oa-choice-face'), 6, 'tr')
     pin(why, 7)
     key = [(1, 'Legend', 'Names the group, and a screen reader says it on entering'),
@@ -557,7 +565,7 @@ def p03():
            (5, 'Segment', 'A choice not taken: its word inside a 1 px edge'),
            (6, 'Waiting', 'A choice that cannot be taken yet: a dashed edge and the disabled color'),
            (7, 'Reason line', 'Says why that choice waits')]
-    return ['choice'], r, key, 'a choice of one of a few', '', False, ''
+    return ['choice'], r, key, 'a choice of one of a few', '', False, '.oa-choice-legend{margin-bottom:28px}'
 
 
 def p04():
@@ -575,17 +583,18 @@ def p04():
                 k.up = root
                 root.k.append(k)
     pin(q(head, 'oa-masthead-dialog-name'), 1)
-    pin(q(fs, 'oa-theme-legend'), 2)
+    pin(q(fs, 'oa-theme-legend'), 2, 'up')
     bracket(items[0], 3)
     pin(q(items[0], 'oa-theme-face'), 4)
-    pin(q(items[2], 'oa-theme-face'), 5, 'tr')
+    pin(q(items[2], 'oa-theme-face'), 5, 'rm')
     key = [(1, 'Its place', 'At the top of the phone menu, under its title, or in the masthead, in the same place on '
                             'every page'),
            (2, 'Legend', 'The word Theme names the group of three'),
            (3, 'Height', 'Each segment 44 px tall'),
            (4, 'A choice', 'Light, Dark and Match my device, each its word inside a 1 px edge'),
            (5, 'Checked', 'Match my device, checked at first: the selected check, the word in bold and a 2 px edge')]
-    return ['masthead', 'theme-switch'], root, key, 'the theme switch', '', False, '.oa-masthead-dialog{overflow:visible;height:auto}'
+    return ['masthead', 'theme-switch'], root, key, 'the theme switch', '', False, ('.oa-masthead-dialog{overflow:visible;height:auto}'
+                                                                                 '.oa-theme-legend{margin-bottom:28px}')
 
 
 def p05():
@@ -596,19 +605,19 @@ def p05():
     links = qa(text, 'oa-link')
     focus(skip)
     hover(links[0])
-    pin(skip, 1, 'tr')
-    at_word(links[0], 2, 'up')
-    at_word(links[0], 3, 'dn')
-    at_word(links[1], 4, 'up')
-    pin(q(text, 'oa-link-last'), 5, 'dn')
+    pin(skip, 1, 'lm')
+    at_word(links[0], 2, 'upl')
+    at_word(links[0], 3, 'dnl')
+    at_word(links[1], 4, 'upl')
+    pin(q(text, 'oa-link-last'), 5, 'dnrl')
     key = [(1, 'Skip link', 'Hidden until the Tab key reaches it first on a page, then shown at the top'),
            (2, 'Words', 'Say where the link goes, and make sense read on their own'),
            (3, 'Underline', '1 px at rest, 2 px under a pointer, as here'),
            (4, 'Link to another site', 'Its name ends with the hidden words “(another site)” for a screen reader'),
            (5, 'Mark', 'The 16 px mark for another site, after the last word, which it never leaves')]
     return ['link'], r, key, 'links', ('The skip link is drawn in place above the text, and the lines are spaced apart to '
-                                       'leave room for the callouts.'), False, ('.oa-link-skip{position:static;display:inline-block;margin:0 0 20px}'
-                                       '.oa-link-text{line-height:2.4}')
+                                       'leave room for the callouts.'), False, ('.oa-link-skip{position:relative;display:inline-block;margin:0 0 20px}'
+                                       '.oa-link-text{line-height:3.25}')
 
 
 def p06():
@@ -627,26 +636,26 @@ def p06():
     nav.up = head
     head.k.insert(head.k.index(bar) + 1, nav)
     pin(q(bar, 'oa-masthead-home'), 1)
-    pin(nav, 2, 'l')
-    pin(q(nav, 'oa-masthead-part'), 3, 'bl')
     menu = q(bar, 'oa-masthead-menu')
-    bracket(menu, 4)
-    pin(menu, 5, 'tr')
+    bracket(menu, 2)
+    pin(menu, 3, 'trx')
+    pin(nav, 4, 'l')
+    pin(q(nav, 'oa-masthead-part'), 5, 'upl')
     pin(q(dlg, 'oa-masthead-dialog-name'), 6, 'l')
     pin(q(dlg, 'oa-masthead-close'), 7, 'tr')
     rows = qa(dlg, 'oa-masthead-row-link')
     pin(rows[0], 8, 'tr')
     pin(rows[1], 9, 'br')
     key = [(1, 'Home link', 'The product’s name, from the wordmark’s master, links to the front page'),
-           (2, 'Navigation', 'Named Parts of the site; with 40rem of room it sits in the bar in place of Menu'),
-           (3, 'Current part', 'Bold, with a 2 px underline'),
-           (4, 'Height', 'Each link and Menu at least 44 px tall; Close the menu 44 by 44 px'),
-           (5, 'Menu', 'Under 40rem: three bars and the word, which opens the menu over the page'),
+           (2, 'Height', 'Each link and Menu at least 44 px tall; Close the menu 44 by 44 px'),
+           (3, 'Menu', 'Under 40rem: three bars and the word, which opens the menu over the page'),
+           (4, 'Navigation', 'Named Parts of the site; with 40rem of room it sits in the bar in place of Menu'),
+           (5, 'Current part', 'Bold, with a 2 px underline'),
            (6, 'Open menu', 'Its title, in a dialog that holds focus until it closes'),
            (7, 'Close the menu', 'The cross and its words; Escape closes it too, and focus returns to Menu'),
            (8, 'Current row', 'The selected band, a 4 px bar and bold words'),
            (9, 'Row', 'Each part again, 44 px tall')]
-    extra = ('.ax-wide.oa-masthead-nav{display:block;margin:12px 0 0;padding:0 16px;border-top:1px dashed var(--oa-color-border-hairline)}'
+    extra = ('.ax-wide.oa-masthead-nav{display:block;margin:24px 0 0;padding:16px 16px 0;border-top:1px dashed var(--oa-color-border-hairline)}'
              '.oa-masthead-wm--16{display:block}.oa-masthead-bar .oa-masthead-menu{display:inline-flex}'
              '.oa-masthead-dialog{display:block;height:auto;margin-top:16px;border:1px solid var(--oa-color-border-strong);overflow:visible}'
              '.oa-masthead-dialog-head{position:static}')
@@ -684,7 +693,7 @@ def p08():
     pin(s0, 2, 'tr')
     pin(q(ds[0], 'oa-disclosure-body'), 3, 'l')
     bracket(s1, 4)
-    pin(s1, 5)
+    pin(s1, 5, 'bl')
     pin(s1, 6, 'tr')
     key = [(1, 'Words', 'Name the part that opens'),
            (2, 'Chevron up', 'While the part is open'),
@@ -707,7 +716,7 @@ def p09():
     pin(tabs[0], 3)
     pin(tabs[0], 4, 'tr')
     pin(tabs[1], 5, 'tr')
-    pin(tabs[3], 6, 'tr')
+    pin(tabs[3], 6, 'rm')
     pin(panel, 7, 'l')
     key = [(1, 'Tab list', 'Named Views of the bill; the Tab key enters at the selected tab, and the arrow keys move'),
            (2, 'Height', 'Each tab 44 px tall'),
@@ -716,7 +725,7 @@ def p09():
            (5, 'Tab', 'A view’s name in a word or two'),
            (6, 'Unavailable tab', 'Dashed, with the reason under the list'),
            (7, 'Panel', 'The selected tab’s view, named by its tab')]
-    return ['tabs'], r, key, 'tabs', '', True, ''
+    return ['tabs'], r, key, 'tabs', '', True, '.oa-tabs-k{margin-bottom:28px}'
 
 
 def p10():
@@ -730,17 +739,17 @@ def p10():
         drop(cells[-1])
     th = qa(r, 'oa-table-th')
     sort = q(th[0], 'oa-table-sort')
-    pin(q(r, 'oa-table-caption'), 1, 'up')
-    pin(q(th[1], 'oa-table-word'), 2, 'up')
-    bracket(q(th[0], 'oa-table-sort'), 3)
-    pin(q(th[0], 'oa-table-word'), 4, 'up')
-    pin([c for c in rows[1].k if isinstance(c, El)][-1], 5, 'bl')
+    pin(q(r, 'oa-table-caption'), 1, 'l')
+    bracket(q(th[0], 'oa-table-sort'), 2)
+    pin(q(th[0], 'oa-table-word'), 3, 'up')
+    pin(q(th[1], 'oa-table-word'), 4, 'up')
+    pin([c for c in rows[1].k if isinstance(c, El)][0], 5, 'bl')
     key = [(1, 'Caption', 'Names the table, as table markup’s own caption'),
-           (2, 'Column heading', 'Each heading holds a sort button with its words and a 16 px arrow'),
-           (3, 'Height', 'Each sort button at least 44 px tall, across its words and arrow'),
-           (4, 'Sorted heading', 'The arrow turned to the order, and the heading says it in aria-sort'),
+           (2, 'Height', 'Each sort button at least 44 px tall, across its words and arrow'),
+           (3, 'Sorted heading', 'The arrow turned to the order, and the heading says it in aria-sort'),
+           (4, 'Column heading', 'Each heading holds a sort button with its words and a 16 px arrow'),
            (5, 'Row rule', 'A hairline between rows, drawn as a border')]
-    return ['table'], r, key, 'a sortable table', 'The status line under the table is written by its script when a reader sorts; the plate shows the table at rest.', True, ''
+    return ['table'], r, key, 'a sortable table', 'The status line under the table is written by its script when a reader sorts; the plate shows the table at rest.', True, '.oa-table-caption{padding-bottom:24px}'
 
 
 def p11():
@@ -754,13 +763,13 @@ def p11():
     focus(frame)
     pin(q(r, 'oa-scroll-k'), 1)
     pin(hint, 2)
-    pin(frame, 3, 'inr')
-    pin(q(frame, 'oa-scroll-step', 1), 4, 'tr')
+    pin(frame, 3, 'tr')
+    pin(frame, 4, 'bl')
     pin(q(r, 'oa-scroll'), 5, 'br')
     key = [(1, 'Name', 'Names the frame, and the frame takes it'),
            (2, 'Hint', 'Shown only while the content is wider than the frame'),
-           (3, 'Frame', 'A hairline edge; the content scrolls inside it, so the page never does'),
-           (4, 'Wide content', 'Its own width, cut by the frame’s edge'),
+           (3, 'Wide content', 'Its own width, cut by the frame’s edge'),
+           (4, 'Frame', 'A hairline edge; the content scrolls inside it, so the page never does'),
            (5, 'Focus ring', ('Drawn inside the frame’s edge' if inside else 'Drawn around the frame')
             + '; the frame is a Tab stop only while it scrolls, and the arrow keys move it')]
     return ['scroll-region'], r, key, 'a scroll region', '', False, '.oa-scroll-frame{overflow:hidden}'
@@ -787,7 +796,7 @@ def p12():
     err.up = st.up
     st.up.k.insert(st.up.k.index(st) + 1, err)
     copy = q(panel, 'oa-code-copy')
-    pin(q(panel, 'oa-code-lang'), 1, 'tr')
+    pin(q(panel, 'oa-code-lang'), 1, 'l')
     bracket(copy, 2)
     pin(copy, 3, 'tr')
     pin(panel, 4, 'bl')
@@ -801,7 +810,7 @@ def p12():
            (6, 'Copy refused', 'The error mark, “Error:”, the Error Band and the 4 px bar, with the code selected')]
     # a picture holds no scrolling region (axe's scrollable-region-focusable); the code is cut at the panel's edge, as
     # the panel draws it at rest
-    return ['code-block'], r, key, 'a code block', 'The code is cut at the panel’s edge, as it draws before a reader scrolls it.', False, '.oa-code-pre{overflow:hidden}'
+    return ['code-block'], r, key, 'a code block', 'The code is cut at the panel’s edge, as it draws before a reader scrolls it.', False, '.oa-code-status{margin-top:28px}.oa-code-pre{overflow:hidden}'
 
 
 def p13():
@@ -817,14 +826,14 @@ def p13():
     btn = q(row, 'oa-copy-button')
     pin(q(row, 'oa-copy-value'), 1, 'lup')
     bracket(btn, 2)
-    pin(btn, 3, 'tr')
+    pin(btn, 3, 'br')
     pin(st, 4)
     key = [(1, 'Value', 'The value to copy, in the code face, beside what it is'),
            (2, 'Size', 'At least 44 by 44 px, even beside a short value'),
            (3, 'Copy button', 'The two-sheet icon and the word Copy; hidden words finish its name with what it '
                               'copies'),
            (4, 'Status line', 'The success mark and what was copied, in words; the icon never turns into a check')]
-    return ['copy'], r, key, 'a copy control', '', False, ''
+    return ['copy'], r, key, 'a copy control', '', False, '.oa-copy-status{margin-top:28px}'
 
 
 def p14():
@@ -842,7 +851,7 @@ def p14():
            (3, 'Words', 'From “Download” to the file, its type and its size'),
            (4, 'Not ready', 'A dashed edge and the disabled color; it keeps its focus'),
            (5, 'Reason line', 'Says why the file is not ready and when to try again')]
-    return ['download'], r, key, 'a download', '', True, ''
+    return ['download'], r, key, 'a download', '', True, '.oa-download-k{margin-bottom:28px}'
 
 
 def p15():
@@ -863,7 +872,7 @@ def p15():
            (3, 'Field', 'Its edge on the field ground, with the magnifier before the text'),
            (4, 'Clear the search', 'The cross, once there is text; Escape clears it too'),
            (5, 'Status line', 'The count, and when nothing matches, the advice in the same line')]
-    return ['search'], r, key, 'a search', '', False, ''
+    return ['search'], r, key, 'a search', '', False, '.oa-search-label{display:block;margin-bottom:28px}'
 
 
 def p16():
@@ -887,7 +896,7 @@ def p16():
     bracket(tog, 1)
     pin(tog, 2)
     pin(tog, 3, 'br')
-    pin(clear, 4, 'tr')
+    pin(clear, 4, 'rm')
     pin(chips[0], 5)
     pin(chips[1], 6, 'tr')
     pin(st, 7)
@@ -898,7 +907,7 @@ def p16():
            (5, 'Chip on', 'The selected check, the word in bold and a 2 px edge'),
            (6, 'Chip off', 'Its word inside a 1 px edge'),
            (7, 'Status line', 'The count the filters leave, shared with the search')]
-    return ['filter-bar'], r, key, 'a filter bar', '', True, ''
+    return ['filter-bar'], r, key, 'a filter bar', '', True, '.oa-filters-k{margin-bottom:28px}'
 
 
 def p17():
@@ -943,26 +952,26 @@ def p18():
     r = D('messages')
     msgs = qa(r, 'oa-msg')
     only(r, *msgs)
-    pin(msgs[0], 1)
+    pin(msgs[0], 1, 'tlm')
     pin(q(msgs[0], 'oa-msg-words'), 2)
-    pin(msgs[0], 3, 'tr')
-    pin(msgs[0], 4, 'bl')
-    pin(msgs[1], 5, 'tr')
-    pin(msgs[2], 6)
+    pin(msgs[0], 3, 'lm')
+    pin(msgs[0], 4, 'rm')
+    pin(msgs[1], 5, 'rm')
+    pin(msgs[2], 6, 'lm')
     key = [(1, 'Mark', '24 px: the error mark in the text’s ink'),
            (2, 'First word', '“Error:”, “Warning:” or what happened, in bold'),
-           (3, 'Error Band', 'Behind an error on Newsprint; none on Charcoal'),
-           (4, 'Bar', '4 px, drawn as a border: Pillar Red for an error'),
+           (3, 'Bar', '4 px, drawn as a border: Pillar Red for an error'),
+           (4, 'Error Band', 'Behind an error on Newsprint; none on Charcoal'),
            (5, 'Warning', 'The warning mark and a 4 px bar, both in the text’s ink'),
            (6, 'Success', 'The success mark in Verdigris, with no bar')]
-    return ['messages'], r, key, 'messages', '', False, ''
+    return ['messages'], r, key, 'messages', '', False, '.oa-msg{margin-right:36px}.oa-msg + .oa-msg{margin-top:20px}'
 
 
 def p19():
     r = D('loading-empty')
     ld, em = q(r, 'oa-wait-loading'), q(r, 'oa-wait-empty')
-    pin(q(ld, 'oa-wait-still'), 1)
-    pin(ld, 2, 'tr')
+    pin(q(ld, 'oa-wait-still'), 1, 'lm')
+    pin(ld, 2, 'rm')
     pin(em, 3, 'tr')
     pin(em, 4, 'bl')
     key = [(1, 'Still drawing', 'An outline that never pulses or turns'),
@@ -970,7 +979,7 @@ def p19():
            (3, 'Empty region', 'A dashed edge around the words'),
            (4, 'What to do next', 'What is missing, then what to do to fill it')]
     return ['loading-empty'], r, key, 'loading and empty', ('The code set’s empty state names its next step in words '
-                                                            'and holds no control yet; the caption’s control waits on the set.'), False, ''
+                                                            'and holds no control yet; the caption’s control waits on the set.'), False, '.oa-wait-loading{width:fit-content}'
 
 
 def p20():
@@ -982,9 +991,9 @@ def p20():
             drop(e)
     steps = qa(card, 'oa-tracker-step')
     pin(q(card, 'oa-tracker-bill'), 1)
-    pin(q(steps[0], 'oa-tracker-mark'), 2, 'up')
-    pin(q(steps[1], 'oa-tracker-mark'), 3, 'up')
-    pin(q(steps[2], 'oa-tracker-mark'), 4, 'up')
+    pin(q(steps[0], 'oa-tracker-mark'), 2, 'upl')
+    pin(q(steps[1], 'oa-tracker-mark'), 3, 'upl')
+    pin(q(steps[2], 'oa-tracker-mark'), 4, 'upl')
     pin(q(card, 'oa-tracker-status'), 5)
     pin(q(card, 'oa-tracker-check'), 6)
     key = [(1, 'Bill', 'Its number and title'),
@@ -993,7 +1002,7 @@ def p20():
            (4, 'Not yet', 'A fine ring and its word'),
            (5, 'Status line', 'Says each change once, politely, in words'),
            (6, 'Check date', 'The warning mark and when we last checked')]
-    return ['tracker'], r, key, 'a live tracker', '', True, '.oa-tracker-steps{margin-top:30px}'
+    return ['tracker'], r, key, 'a live tracker', '', True, '.oa-tracker-steps{margin-top:40px}'
 
 
 def p21():
@@ -1004,7 +1013,7 @@ def p21():
     for pg in qa(view, 'oa-reader-page')[1:]:
         drop(pg)
     prev, nxt = q(turn, 'oa-reader-prev'), q(turn, 'oa-reader-next')
-    pin(view, 1)
+    pin(view, 1, 'lm')
     pin(st, 2)
     bracket(prev, 3)
     pin(prev, 4, 'tr')
@@ -1018,7 +1027,8 @@ def p21():
            (5, 'Next page', 'Its word and the arrow after it'),
            (6, 'Reason line', 'Says why Previous page waits'),
            (7, 'Page size', 'Fit width or Full size, a choice of one, the checked one with its check')]
-    return ['report-reader'], r, key, 'a report reader', '', True, '.oa-reader-view{overflow:visible}'
+    return ['report-reader'], r, key, 'a report reader', '', True, ('.oa-reader-view{overflow:visible}'
+                                                                     '.oa-reader-turn{margin-top:28px}')
 
 
 def p22():
@@ -1041,8 +1051,8 @@ def p22():
     bracket(play, 3)
     pin(play, 4, 'tr')
     pin(reset, 5, 'tr')
-    pin(prev, 6, 'tr')
-    pin(nxt, 7, 'tr')
+    pin(prev, 6, 'br')
+    pin(nxt, 7, 'br')
     pin(why, 8)
     key = [(1, 'Live line', 'Each step, said once, politely'),
            (2, 'Current step', 'A 4 px bar drawn as a border, in the step list'),
@@ -1052,7 +1062,9 @@ def p22():
            (6, 'Previous step', 'The arrow mirrored, before the words'),
            (7, 'Next step, unavailable', 'At the last step: a dashed edge, and it keeps its focus'),
            (8, 'Reason line', 'Says why Next step waits and what to do')]
-    return ['loop-stepper'], r, key, 'a loop stepper', 'Drawn at the last step, the state the stepper script writes there.', False, ''
+    return ['loop-stepper'], r, key, 'a loop stepper', ('Drawn at the last step, the state the stepper script writes '
+                                                        'there, with its four buttons two by two.'), False, (
+        '.oa-stepper-controls{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:28px}.oa-stepper-why{margin-top:28px}')
 
 
 def p23():
@@ -1070,12 +1082,12 @@ def p23():
     say(q(panel, 'oa-diagram-panel-text'), 'The money spent to influence elections and policy: campaign gifts, outside '
                                            'groups and lobbying.')
     bracket(items[0], 1)
-    pin(items[0], 2, 'tr')
-    pin(items[1], 3, 'tr')
-    pin(items[2], 4, 'tr')
+    pin(items[0], 2, 'rmx')
+    pin(items[1], 3, 'rmx')
+    pin(items[2], 4, 'rmx')
     pin(readout, 5)
     pin(q(panel, 'oa-diagram-panel-name'), 6)
-    pin(q(words, 'oa-diagram-summary'), 7, 'tr')
+    pin(q(words, 'oa-diagram-summary'), 7, 'lm')
     key = [(1, 'Height', 'Each item at least 44 px tall on a phone'),
            (2, 'Item in focus', 'Its heavier mark and underlined label; the arrow keys move between items'),
            (3, 'Selected item', 'The selected check, bold words and a 2 px edge'),
