@@ -1,0 +1,185 @@
+{
+ "title": "Creative director's scores for stage C round 2, chapters 17, 18, 19 and 26 and the changed parts of 01 to 11",
+ "date": "2026-11-11",
+ "author": "Creative director (oa-creative-director), subagent of the main session",
+ "basis": "20261111_Stage-C-Round-2-Brief.md; Master Brief section 6 rubric; the frozen chapters page at commit df0fb08d (D2-1531), looked at by the creative director at 1440 px (1x, and 2x for chosen plates) and 390 px (2x)",
+ "review": "work/handoffs/phase-2/20261111_CD-Review-Of-Stage-C-Chapters.md",
+ "threshold": "4 on every criterion; an item is ready when every score is 4 or more and it has no Must fix",
+ "criteria": [
+  {"key": "craft", "name": "Craft"},
+  {"key": "clarity", "name": "Clarity"},
+  {"key": "brand_fidelity", "name": "Brand fidelity"},
+  {"key": "usefulness", "name": "Usefulness"},
+  {"key": "evidence_honesty", "name": "Evidence honesty"},
+  {"key": "accessibility", "name": "Accessibility"}
+ ],
+ "items": [
+  {
+   "key": "ch17",
+   "name": "Chapter 17, Motion and states",
+   "anchor": "#motion-and-states",
+   "scores": {"craft": 3, "clarity": 4, "brand_fidelity": 3, "usefulness": 4, "evidence_honesty": 4, "accessibility": 4},
+   "reasons": {
+    "craft": "The tracker, slide, draw and land players and the ten-state plate are exact at true size, but the lever plate rests on four empty dashed squares, Rule 17.3's anatomy runs its callouts 1, 6, 2, 3, 4, 5, 7 with 3 sitting on Play's edge, and Rule 17.4's failure draws its 200 ms frame the same as its 0 ms frame.",
+    "clarity": "Three groups in the order a builder needs them and a sentence per motion that says what changed; Rule 17.3's builders text says the player rests on the last frame while its anatomy key says the first.",
+    "brand_fidelity": "A reader who does not press Play sees the wordmark split as \"OATH ACTION\" with no ampersand at 24 and 64 px on both grounds, and no lockmark at all, in the two plates that show the identity's own motion.",
+    "usefulness": "Nine tokens with their jobs, timings printed in every still view, the getComputedStyle line and the data attributes the check reads let a builder make a player without asking.",
+    "evidence_honesty": "Loop R1 carries its atlas snapshot date, Media Queries Level 5 is quoted with its date, the invented bill and counts are labeled, and every contrast figure names its pair.",
+    "accessibility": "All seven players keep focus on Play, Pause and Reset, write each frame to a status line, and under emulated reduced motion draw the last frame at once; I ran no screen reader."
+   },
+   "lowest": 3,
+   "must_fix_count": 1,
+   "should_fix_count": 5,
+   "must_fix": ["M1"],
+   "should_fix": ["S1", "S2", "S3", "S4", "S5"],
+   "ready": false,
+   "to_ready": "Brand fidelity and Craft lift to 4 once M1 lands (the hinge and lever rest on their masters, no dashed squares, Rule 17.3 says what a stage draws before Play) with S1 and S2. Owners: Identity designer, Systems designer, Editor."
+  },
+  {
+   "key": "ch18",
+   "name": "Chapter 18, Components and interaction",
+   "anchor": "#components",
+   "scores": {"craft": 3, "clarity": 4, "brand_fidelity": 3, "usefulness": 5, "evidence_honesty": 4, "accessibility": 4},
+   "reasons": {
+    "craft": "The 24 live components are finished and consistent on both grounds, but the anatomy family's callouts cover the parts they name (the E of \"Error:\" in 18.18, the L of \"HTML\" in 18.12, the still drawing in 18.19, the Now ring in 18.20, step 6 in 18.11), run out of reading order, and the chapter uses three styles of Illustrative label.",
+    "clarity": "Seven groups with a line each, and every rule names its component, its pattern and its parts in a numbered key.",
+    "brand_fidelity": "In the dark theme the field ground on Charcoal is Prussian, so the Pillar Red ask sits under two Prussian fields and the error bar touches a Prussian field, the party pair Rule 05.3 rules out; in the light theme the primary beside the ask hovers Prussian.",
+    "usefulness": "Code to copy in both themes, a keys file per component, and a nine-row specification of states, keys, name, what a screen reader hears, target, forced colors and browser support: the most useful chapter in the guide.",
+    "evidence_honesty": "Each rule names its WCAG criteria and APG pattern, the browser lines name MDN's data version and date, and invented bills and reports are labeled, though in three styles.",
+    "accessibility": "aria-disabled keeps every waiting control in reach with its reason; I walked the stepper, the diagram controls and the tracker by keyboard and the guide check walks all 24 keys files; no screen reader."
+   },
+   "lowest": 3,
+   "must_fix_count": 1,
+   "should_fix_count": 6,
+   "must_fix": ["M2"],
+   "should_fix": ["S6", "S7", "S8", "S9", "S10", "S11"],
+   "ready": false,
+   "to_ready": "Brand fidelity lifts to 4 once M2 lands (no Pillar Red beside or on Prussian in any stage or theme). Craft lifts to 4 once S6 and S7 land (no callout covers a word or a drawn part; one Illustrative label style). Owners: Engineer, Component engineer, Accessibility lead, Systems designer."
+  },
+  {
+   "key": "ch19",
+   "name": "Chapter 19, Accessibility",
+   "anchor": "#accessibility",
+   "scores": {"craft": 3, "clarity": 4, "brand_fidelity": 4, "usefulness": 3, "evidence_honesty": 5, "accessibility": 4},
+   "reasons": {
+    "craft": "The criteria list, matrix, results and device script are cleanly set, but five of the nine rule plates are sketches below the guide's bar: an unlabeled chart as the correct example, a \"map\" that is a line chart, a picture of text drawn as unreadable blocks, and a failure band enlarged to 200 percent with its sample.",
+    "clarity": "The intro defines WCAG and W3C at first use, and three groups take a reader from the standard to the rules this chapter owns to how to check.",
+    "brand_fidelity": "On-system type and grounds, no stray red, and the hinge headline on Prussian takes a White ampersand as Rule 05.3 sets.",
+    "usefulness": "The searchable criteria list and the device script are ready to use, but Rules 19.2 to 19.9 carry no builders line and the matrix names each method without the command a builder runs.",
+    "evidence_honesty": "W3C's words with dates, Met, Met in part, Gap and Not used today kept apart, results tied to a named build and time with open faults and owners, and the device script says its steps were not checked on a device.",
+    "accessibility": "The criteria search and its Show choice follow Rules 18.3 and 18.15, and the matrix covers every check of Master Brief section 22; no screen reader."
+   },
+   "lowest": 3,
+   "must_fix_count": 0,
+   "should_fix_count": 2,
+   "must_fix": [],
+   "should_fix": ["S12", "S13"],
+   "ready": false,
+   "to_ready": "Usefulness lifts to 4 with S12 (a builders line for Rules 19.2 to 19.9 and a runnable command for each automated check). Craft lifts to 4 with S13 (the four weak rule plates redrawn). Owner: Accessibility lead, with the Engineer."
+  },
+  {
+   "key": "ch26",
+   "name": "Chapter 26, Tokens and how to choose them",
+   "anchor": "#tokens",
+   "scores": {"craft": 3, "clarity": 4, "brand_fidelity": 4, "usefulness": 4, "evidence_honesty": 4, "accessibility": 4},
+   "reasons": {
+    "craft": "The tier ladder, the five-condition sheets and the four worked examples are exact, but the token table stacks every token into a card about 280 px tall, 175,000 px at 1440 px (18 percent of the whole page), with names breaking at dots and hyphens in a narrow column (D2-1529).",
+    "clarity": "Surface, role, emphasis, state, then component: each step is drawn, and each failure shows the step that was skipped.",
+    "brand_fidelity": "Palette and red discipline exact, and Rule 26.4's last failure teaches that red never sits on Prussian.",
+    "usefulness": "The page start, the dark theme's one attribute, four examples with code, the version rule and both downloads let a builder start a page; the table's search and Copy work, though scanning it at desktop is impractical.",
+    "evidence_honesty": "Every ratio names its pair and threshold, sources carry read dates, and invented counts and releases are labeled, in the caption rather than the plate.",
+    "accessibility": "Search and Copy are named controls with a status line; I did not walk the table by keyboard."
+   },
+   "lowest": 3,
+   "must_fix_count": 1,
+   "should_fix_count": 1,
+   "must_fix": ["M3"],
+   "should_fix": ["S14"],
+   "ready": false,
+   "to_ready": "Craft lifts to 4 once M3 lands (a real table from 64rem that breaks out over the rail from 1280 px, one row per token, a category index, names that do not break). Owner: Engineer."
+  },
+  {
+   "key": "group",
+   "name": "Changed parts of chapters 01 to 11",
+   "scope": "s-01-21-correct's kicker drawing; Rules 03.2, 03.4 and 03.6 with the print L3; Rule 05.4's ten states, s-05-3-corrective and the first definition of forced colors; Rules 08.1 and 08.2, the 96 px sign-off, its feed test and s-proofs-social; Rules 09.1 and 09.3's words; chapter 10's opener, CL-075 Housing, Rules 10.4, 10.6 and 10.9 and s-10-list-41; chapter 11's live specimens and Rule 11.12's search",
+   "scores": {"craft": 4, "clarity": 4, "brand_fidelity": 4, "usefulness": 4, "evidence_honesty": 4, "accessibility": 4},
+   "reasons": {
+    "craft": "The kicker's 24 px fit draws crisp 1 px lines at 1x and the master at 2x, the library and list of 41 take the switch cleanly, and chapter 10's opener sits at true size; Rule 05.4's ten states run in a different order from Rule 17.8's.",
+    "clarity": "Rule 05.4 now points to Rule 17.8, and Rules 09.1 and 09.3 say where the row breaks and print the two switch lines.",
+    "brand_fidelity": "The 96 px sign-off is the 48 px master at exactly twice its size as DR-211 approved, Housing joins at 48 px and up only, and red discipline holds in every changed plate.",
+    "usefulness": "File lists name the print L3 and the fits, and the builders lines give the exact markup for the switch.",
+    "evidence_honesty": "The feed figures print from the figures file with their grounds and widths, and invented headlines and bills keep Illustrative.",
+    "accessibility": "Chapter 11's live specimens wrap labels, stack two-button rows, put the advice in the search's status line and clear the field on Escape; forced colors is defined at first use in Rule 05.4."
+   },
+   "lowest": 4,
+   "must_fix_count": 0,
+   "should_fix_count": 3,
+   "must_fix": [],
+   "should_fix": ["S15", "S16", "S17"],
+   "known_fix_list_items": [
+    "DR-217: Rule 03.2's builders text gains the sentence on L3 under 40 px tall (the words on the frozen page already carry it; the fix pass confirms)",
+    "Chapter 11's reader keeps Fit width and Full size as two pressed buttons until they become chapter 18's radio group"
+   ],
+   "ready": true,
+   "to_ready": "Ready as it stands. S15 to S17 are Should fix."
+  }
+ ],
+ "shell_should_fix": ["S18"],
+ "totals": {
+  "must_fix": 3,
+  "should_fix": 18,
+  "questions_for_dustin": 0,
+  "ready": ["group"],
+  "not_ready": ["ch17", "ch18", "ch19", "ch26"]
+ },
+ "must_fix": {
+  "M1": {
+   "where": "Chapter 17, Rule 17.6, s-17-hinge-correct and s-17-lever-correct; Rule 17.3's builders text and s-17-3-correct's key",
+   "what": "Both identity players rest on their first frames (D2-1374, D2-1399): the hinge shows \"OATH ACTION\" with no ampersand at 24 and 64 px on Newsprint and Charcoal, and the lever shows four empty dashed squares where the lockmark should stand, on desktop and phone. A reader who never presses Play meets the brand's two marks broken or missing, as correct applications. Rule 17.3's builders text says \"At rest the player draws the still view's last frame\" while its anatomy key says \"drawn at its first frame until a reader presses Play\".",
+   "fix": "A player of an identity mark rests on the master itself. Play steps to the first frame and runs to the master; Pause holds; Reset returns to the master and, at rest, is unavailable with the line \"The mark is at rest on its master.\" Remove the dashed squares. Keep the still view's first, middle and last frames as they are. Add one sentence to Rule 17.3: a state or mechanism player rests on its first frame; a player of the wordmark or lockmark rests on its master. Make the builders text and the anatomy key say the same.",
+   "owner": "Identity designer (players, stage_c_identity_ch17.py); Systems designer (Rule 17.3, stage_c_ch17_build.py); Editor"
+  },
+  "M2": {
+   "where": "Chapter 18, dark theme: c-18-form, c-18-search, c-18-code-block, c-18-report-reader and every stage that uses --oa-color-field-ground on Charcoal; light theme: c-18-button's first row; token oa.color.field.ground.onCharcoal (D2-1193, D2-1469)",
+   "what": "The field ground on Charcoal is Prussian, so in the dark form the Pillar Red \"Remind me\" sits directly under two Prussian fields, and a field in error puts the 4 px red bar against Prussian. On hover in the light theme, \"Save to your list\" turns Prussian beside the red \"Remind me\". Rule 05.3: \"Red never sits on Prussian, where it measures 3.19 to 1 and reads as a party pair of red and blue.\" Rule 26.4's own failure teaches the same.",
+   "fix": "Set oa.color.field.ground.onCharcoal to Charcoal, so a field on Charcoal is the ground inside its strong border edge, which already measures 3 to 1 or more; no new value, a release of the second part with a change note. Check every Charcoal stage that reads the field ground (chapter 11's reader and stepper per D2-1292, chapter 18's code panels) still separates its panel by its edge. In c-18-button, give the ask its own row apart from the primary, and add to Rule 18.1: \"The ask stands apart from a primary button, whose hover turns Prussian.\"",
+   "owner": "Engineer (token and release note); Component engineer (c-18-button, c-18-form and the other sets); Accessibility lead (Rule 18.1's words); Systems designer (chapter 11's live specimens)"
+  },
+  "M3": {
+   "where": "Chapter 26, Rule 26.7, s-26-token-table at 1024 and 1440 px (D2-1529)",
+   "what": "Every token is a stacked card about 280 px tall, so the table runs 175,000 px at 1440 px, 18 percent of the whole page, and names break mid-token in a narrow column (\"oa.color.state.empty.edge.\" / \"onWhite\"). A builder can search, but cannot scan a category or compare neighbors.",
+   "fix": "From 64rem, draw a real table: one row per token with columns for the name (JSON over CSS, with Copy), value and swatch, use, tier and contrast; break it out over the rail from 1280 px as wide plates do (C-062); put a category index at its head linking to each category's heading; keep names whole on one line and let the use column wrap. Keep the stacked cards under 50rem.",
+   "owner": "Engineer (token_table_build.py, stage_c_ch26_build.py)"
+  }
+ },
+ "should_fix": {
+  "S1": {"where": "Chapter 17, Rule 17.3, s-17-3-correct", "what_and_fix": "The callouts run 1, 6, 2, 3, 4, 5, 7 down the plate, and 3 sits on Play's right edge. Number them top to bottom and set 3 off Reset's top-left corner, clear of Play.", "owner": "Systems designer"},
+  "S2": {"where": "Chapter 17, Rule 17.4, s-17-4-failure", "what_and_fix": "The 200 ms frame draws no line, the same as 0 ms, though a 400 ms ease-out draw is past halfway at 200 ms. Draw the line about two thirds of the way to the second node at 200 ms.", "owner": "Systems designer"},
+  "S3": {"where": "Chapter 17, Loop R1's stage in Rules 17.3 and 17.4", "what_and_fix": "At 1440 px \"Money in politics\" drops to a second line, right-aligned to its node, though both labels fit on one line. Center each label under its node on one line wherever they fit, and stagger only below that width.", "owner": "Systems designer"},
+  "S4": {"where": "Chapter 17, Rule 17.6, s-17-hinge-correct", "what_and_fix": "At rest the 24 and 64 px masters start 11 and 31 px in from their labels, the slide distance. Align each master's left edge with its label and slide the first frame outward from there.", "owner": "Identity designer"},
+  "S5": {"where": "Chapter 17, Rule 17.2, s-17-2-correct", "what_and_fix": "\"--oa-motion-easing-standard\" breaks at a hyphen under its curve. Keep each token name on one line, with a wider column or a smaller code size no less than 13 px.", "owner": "Systems designer"},
+  "S6": {"where": "Chapter 18, the anatomy plates", "what_and_fix": "Callouts cover what they name, against D2-1418: the L of \"HTML\" (18.12, worse at 390 px where 1 and 2 touch), the E of \"Error:\" (18.18), the still drawing (18.19), the Now ring and its red dot (18.20), step 6's numeral (18.11). Others float far from their part (18.05's 1, 18.18's 3 and 5, 18.19's 2), and numbers leave reading order (18.05, 18.08, 18.09). Set every disc outside the part, within 8 px of it or on a hairline leader, and number each plate left to right, top to bottom, with its key in the same order.", "owner": "Systems designer (stage_c_ch18_anatomy_build.py)"},
+  "S7": {"where": "Chapters 18 and 26, and s-05-3-corrective", "what_and_fix": "Three Illustrative labels: the uppercase chip at the plate's head (chapter 17, every failure plate), a small gray mixed-case chip inline (18.02, 18.09, 18.14, 18.17, 18.20, 18.21 and the live stages), and the uppercase chip in the caption (18.10, 18.16, 26.4, 26.6). Use the chip at the head of the plate everywhere, as stage B's S6 and S11 set for chapters 11 and 12.", "owner": "Systems designer (anatomy); Component engineer (live sets); Engineer (chapter 26)"},
+  "S8": {"where": "Chapter 18, Rule 18.5, c-18-link, \"In a list, with the page you are on\"", "what_and_fix": "The current page takes bold words and a 2 px underline, the masthead's look, while Rules 17.10 and 18.7 give a list the selected band, its 4 px bar and bold words, so two code sets teach two looks for one state. Draw the list's current page as Rule 18.7 does, or drop the list and point to Rule 18.7.", "owner": "Component engineer (words: Accessibility lead)"},
+  "S9": {"where": "Chapter 18, Rule 18.23, c-18-diagram-controls and s-18-23-anatomy", "what_and_fix": "Loop R1 is drawn as three items with a last \"raises\" that leads nowhere, so a loop that reinforces itself never closes. End the chain on \"raises wealth concentration, where the loop began\", with the first item marked as the return.", "owner": "Component engineer; Systems designer (anatomy)"},
+  "S10": {"where": "Chapter 18, Rule 18.22, s-18-22-anatomy", "what_and_fix": "Next step wraps alone onto a second row under three buttons. Set the four in one row at the plate's width, or two by two, as the live stage does at 1440 px.", "owner": "Systems designer"},
+  "S11": {"where": "Chapter 18, Rule 18.9, s-18-09-failure", "what_and_fix": "The panel reads \"The drawing of the loop sits here.\", a placeholder line (Master Brief section 6). Put Loop R1's first sentence or a small drawing in the panel.", "owner": "Accessibility lead"},
+  "S12": {"where": "Chapter 19, Rules 19.2 to 19.9 and s-19-matrix", "what_and_fix": "No builders line under eight of nine rules, and the matrix gives each method without the command. Add one or two builders sentences to each rule (for example 19.2: an svg beside its word takes aria-hidden=\"true\" and focusable=\"false\"; an img, alt=\"\"), and give each automated check its command or script: axe-core with the wcag2a, wcag2aa, wcag21aa and wcag22aa tags, the contrast script, the 200 percent check.", "owner": "Accessibility lead, with the Engineer"},
+  "S13": {"where": "Chapter 19, s-19-2-correct, s-19-4-failure, s-19-5-correct, s-19-6-failure", "what_and_fix": "19.2's correct chart has no title, year labels or source, against chapter 12's rules; 19.5's caption says \"under the map\" over a line chart; 19.4's picture of text is drawn as blocks no picture would show; 19.6's failure enlarges the guide's failure band with its sample. Give the chart its title, labels and source line; say \"under the chart\"; show the headline as a soft picture with an enlarged crop; keep the band at its size and zoom the sample alone.", "owner": "Accessibility lead"},
+  "S14": {"where": "Chapter 26, s-26-5-correct and s-26-6-correct", "what_and_fix": "In 26.5 the sample text touches its frame, so the intended 0 margin reads as a fault; draw the frame as the window's edge and label it. In 26.6, \"--oa-color-field-ground\" breaks at a hyphen; keep token names whole.", "owner": "Engineer"},
+  "S15": {"where": "Chapter 08, Rule 08.1, s-08-1-correct", "what_and_fix": "I agree with the identity designer: set the display master's sample at 120 px, the size chapter 17's lever player uses (D2-1397), labeled \"Display master, 120 px; every size from 49 px but the social sign-off\", and add a fifth sample, the 48 px master at 96 px, labeled \"Social card sign-off only\", so both 96 px drawings sit side by side with their places named.", "owner": "Identity designer"},
+  "S16": {"where": "Chapter 08, Rule 08.2, \"Feed test, dark card\"", "what_and_fix": "The method is sound, but the words never say that all four pixels of the block must each clear the floor, that the block may sit anywhere in the node's square plus 1 px, or that the card is reduced with Lanczos as on a light ground; a builder who averages the block would pass a card the studio's script fails. Say: \"a block of 2 by 2 pixels anywhere in the node's square, whose four pixels each have every color channel over 155\", and name the script that runs the test, to ship with Phase 3's asset package.", "owner": "Identity designer (words: Editor)"},
+  "S17": {"where": "Chapter 05, Rule 05.4, s-05-4-correct", "what_and_fix": "The ten states run hover, focus, disabled, loading, selected, muted, warning, error, empty, success, while Rule 17.8, the reference, runs muted, disabled, hover, focus, loading, selected, warning, error, empty, success. Use Rule 17.8's order.", "owner": "Systems designer"},
+  "S18": {"where": "The shell, chapters 17, 18, 19 and 26", "what_and_fix": "Each opens with words alone, so the first screen shows no state, control or token. Give each an opener figure under the contract of D2-1134: the ten states strip for 17, a row of button, chip and choice for 18, the five steps for 26, and the Met, Gap and Not used today counts for 19.", "owner": "Engineer, with the Systems designer (17), the Accessibility lead (18, 19) and the chapter 26 hand"}
+ },
+ "questions_for_dustin": [],
+ "d2_1331": {
+  "verdict": "Sound. Keep the 2 by 2 block on dark grounds and the single pixel on light grounds.",
+  "reason": "promotion_c_identity.counts slides a 2 by 2 window over each node's square plus 1 px and keeps the node when the window's darkest channel clears the floor. On the 96 px card the links are 2 px wide and the nodes' color, so one bright pixel proves nothing; a link reduced under 1 px cannot fill a block, while a 14 px node still spans about 4 px at 360 px wide. The identity designer's figures leave about 40 levels or more on each side of both floors (links alone 87 to 145, weakest node 196 to 251).",
+  "words": "Rule 08.2 explains why the test counts blocks, but not exactly how; see S16."
+ },
+ "rule_08_1_plate": {
+  "verdict": "Agree with the 120 px sample, and add the doubled 48 px master beside it; see S15.",
+  "reason": "120 px is a size the display master serves and the size chapter 17's lever player uses, and setting both 96 px drawings side by side with their places named answers the question a reader would otherwise ask between two plates. No identity geometry changes."
+ }
+}
