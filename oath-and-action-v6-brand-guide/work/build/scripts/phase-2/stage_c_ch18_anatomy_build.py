@@ -781,7 +781,9 @@ def p12():
            (4, 'Code', 'At 14 px in the code face, scrolling inside its panel'),
            (5, 'Status line', 'The success mark and what was copied, in words'),
            (6, 'Copy refused', 'The error mark, “Error:”, the Error Band and the 4 px bar, with the code selected')]
-    return ['code-block'], r, key, 'a code block', '', False, ''
+    # a picture holds no scrolling region (axe's scrollable-region-focusable); the code is cut at the panel's edge, as
+    # the panel draws it at rest
+    return ['code-block'], r, key, 'a code block', 'The code is cut at the panel’s edge, as it draws before a reader scrolls it.', False, '.oa-code-pre{overflow:hidden}'
 
 
 def p13():

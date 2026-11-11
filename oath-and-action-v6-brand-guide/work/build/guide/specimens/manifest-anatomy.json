@@ -93,7 +93,7 @@
   "width_px": null,
   "alt": "Anatomy of a code block, drawn from its code to copy on Newsprint, with six numbered callouts and a key. 1, Panel label: The file’s kind, HTML, CSS or Script. 2, Height: Each Copy button 44 px tall. 3, Copy button: Named for what it copies, Copy the HTML, and described by the block’s name. 4, Code: At 14 px in the code face, scrolling inside its panel. 5, Status line: The success mark and what was copied, in words. 6, Copy refused: The error mark, Error:, the Error Band and the 4 px bar, with the code selected.",
   "illustrative": false,
-  "notes": "Drawn from work/build/guide/code/c-18-code-block.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366)."
+  "notes": "Drawn from work/build/guide/code/c-18-code-block.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366). The code is cut at the panel’s edge, as it draws before a reader scrolls it."
  },
  "s-18-13-anatomy": {
   "chapter": "18",

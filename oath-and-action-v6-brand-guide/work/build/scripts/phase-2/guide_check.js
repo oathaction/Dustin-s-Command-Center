@@ -1455,8 +1455,19 @@ const KEY_STEP_READ = ({ stageSel, step }) => {
     let el = null;
     try { el = pick(s.el); } catch (e) { out.push(`the selector ${s.el} does not parse`); continue; }
     if (!el) { out.push(`no element ${s.el} in the stage`); continue; }
-    if ('attr' in s) { const v = el.getAttribute(s.attr); if (v !== s.is) out.push(`${s.el || 'the stage'} has ${s.attr}=${JSON.stringify(v)}, not ${JSON.stringify(s.is)}`); }
-    if ('prop' in s) { const v = el[s.prop]; if (v !== s.is) out.push(`${s.el || 'the stage'}.${s.prop} is ${JSON.stringify(v)}, not ${JSON.stringify(s.is)}`); }
+    // "present" asks only whether the attribute is there (a prefixed id differs by theme); "above" and "below" bound a
+    // number (a scroll position has no fixed value). The accessibility lead's oa-keys/1 fields.
+    if ('attr' in s) {
+      const v = el.getAttribute(s.attr);
+      if ('present' in s && (v !== null) !== !!s.present) out.push(`${s.el || 'the stage'} ${v !== null ? 'has' : 'lacks'} ${s.attr}${s.present ? '' : ', which it should lack'}`);
+      if ('is' in s && v !== s.is) out.push(`${s.el || 'the stage'} has ${s.attr}=${JSON.stringify(v)}, not ${JSON.stringify(s.is)}`);
+    }
+    if ('prop' in s) {
+      const v = el[s.prop];
+      if ('is' in s && v !== s.is) out.push(`${s.el || 'the stage'}.${s.prop} is ${JSON.stringify(v)}, not ${JSON.stringify(s.is)}`);
+      if ('above' in s && !(v > s.above)) out.push(`${s.el || 'the stage'}.${s.prop} is ${JSON.stringify(v)}, not above ${s.above}`);
+      if ('below' in s && !(v < s.below)) out.push(`${s.el || 'the stage'}.${s.prop} is ${JSON.stringify(v)}, not below ${s.below}`);
+    }
     if ('text' in s) { const v = words(el); if (v !== s.text) out.push(`${s.el || 'the stage'} says "${v.slice(0, 80)}", not "${s.text}"`); }
     if ('visible' in s) {
       const r = el.getBoundingClientRect(); let shown = r.width > 0 || r.height > 0;
