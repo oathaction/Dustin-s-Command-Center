@@ -360,7 +360,7 @@ def check(json_path, css_path=None):
                 said = str(t.get('$description', ''))
                 dep = (e.get('deprecated') or {}).get('replacedBy')
                 if dep:   # a deprecated alias says so through the token that replaces it
-                    said += ' ' + str(T.get(L.alias_target(dep), {}).get('$description', ''))
+                    said += ' ' + str(toks.get(L.alias_target(dep), {}).get('$description', ''))
                 if not re.search(r'repeats|no keyline', said):
                     fails.append(f'{p}: it repeats {rep}, and its description does not say so')
             if c < need and not rep:

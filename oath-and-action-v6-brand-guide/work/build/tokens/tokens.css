@@ -1,5 +1,5 @@
 /* Oath & Action design tokens, Edition 06
- * Version 6.0.0-gate2.8 (pre-release). Every value may still change until version 6.0.0 ships, once our founder and editor approves these files.
+ * Version 6.0.0-gate2.9 (pre-release). Every value may still change until version 6.0.0 ships, once our founder and editor approves these files.
  * DTCG Format Module 2025.10. Generated from work/build/tokens/src/oa-tokens.src.mjs
  * by work/build/scripts/phase-2/tokens_build.mjs. Do not edit by hand: the token tests fail when this
  * file and tokens.json disagree.
@@ -9,7 +9,7 @@
  * --oa-color-text-secondary, at that surface's tokens.
  * Themes: the root follows the device, light on Newsprint or dark on Charcoal (DR-204), and
  * data-oa-theme="light" or "dark" on the root wins over the device. See the theme blocks below.
- * Change in 6.0.0-gate2.8: The token for the 4 px bar beside an error now takes the bar's name: oa.color.state.error.bar, --oa-color-state-error-bar in CSS. The old names stay as deprecated aliases through every 6.0 release and leave with 6.1.0. The field ground on Charcoal is now Charcoal, so a field in the dark theme shows by its strong Newsprint edge and an error's red bar sits on Charcoal at 4.49 to 1; no value is new. The loading mark's description now names the still lines of Rule 17.7, and every description is in plain words. Before 6.0.0, every change raises the number after the hyphen.
+ * Change in 6.0.0-gate2.9: Descriptions only; no token is renamed and no value changes. The error bar no longer records a Charcoal keyline: it repeats the error mark and the word "Error:", which carry the error, so it takes none, as the guide draws it. The selected band is the ground of the current or selected row in a list, paired with the 4 px bar and bold words, and says which marks may sit inside it in the dark theme. The 24 px icon size names the 37 topic and atlas symbols on Rule 10.4's list. The ask fill says it is Newsprint on Prussian.
  *
  * Media queries cannot read custom properties. Write breakpoints in em, which follows text size:
  *   wide        (min-width: 90em)

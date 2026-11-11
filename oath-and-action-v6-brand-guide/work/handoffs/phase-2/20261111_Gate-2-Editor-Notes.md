@@ -116,3 +116,9 @@ D2-xxx | The instruction line uses the typographic apostrophe, “you’re” | 
 - Created `work/build/guide/front/where-to-start.json`.
 - Created `work/handoffs/phase-2/20261111_Gate-2-Editor-Notes.md` (this file).
 - Scratch, outside the project: the writer and checker scripts and the three fetched license texts in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/762f3743-f9b3-59db-919e-2c641afbd759/scratchpad/gate-2/editor/`.
+
+## Fix pass
+
+Editor, November 11, 2026, under `20261111_Gate-2-Fix-Brief.md`. Items: CD-S1 for chapter 02, CD-S2 and CD-S3 in chapters 01 and 02, CD-S8 in chapter 02, CD-S9, DT-S12. Every change goes through `guide_editor_ch01.py`, `guide_editor_ch02.py`, `guide_editor_common.py` and the checks in `guide_editor_build.py`. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/762f3743-f9b3-59db-919e-2c641afbd759/scratchpad/gate-2-fix/editor/`.
+
+Status: in progress. The sections below fill in as each item lands.
