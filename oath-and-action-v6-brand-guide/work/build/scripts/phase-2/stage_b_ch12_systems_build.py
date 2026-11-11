@@ -127,7 +127,7 @@ def specimens(ctx, rows, v7, figs):
 
     s1css = ('.ch{display:block;color:var(--ink);overflow:visible}'
              '.ch text{font-family:var(--oa-font-family-reading)}'
-             '.st-map{font-size:0.9375rem;font-weight:600;fill:var(--t1)}.vb{font-size:0.8125rem;font-weight:500;fill:var(--t1)}'
+             '.st-map{font-size:0.9375rem;font-weight:600;fill:var(--t1)}.vb{font-size:0.8125rem;font-weight:600;fill:var(--t1)}'
              '.pl{fill:var(--oa-color-surface-newsprint);stroke:currentColor}'
              '.wire{color:var(--ink)}.ak-case{stroke:none}.ak-mark{stroke:currentColor}.hd{fill:currentColor}'
              '.tg polygon{fill:currentColor}.tg .sg{fill:var(--oa-color-surface-newsprint)}.tk{stroke:currentColor;stroke-width:2px}'
@@ -463,9 +463,9 @@ def specimens(ctx, rows, v7, figs):
 def chapter(ctx, figs, existing):
     rules = []
     rules.append({
-        'id': '12.5', 'title': 'Mark where a reform acts with the atlas’s red target, and with nothing else in red.',
+        'id': '12.5', 'title': 'Mark where a reform acts with the atlas’s red target.',
         'rule': [
-            'Where a figure shows a reform at work, the marks it acts on turn Pillar Red at a heavier weight: each '
+            'Where a figure shows a reform at work, only the marks it acts on turn Pillar Red, at a heavier weight: each '
             'connection it changes, with its arrowhead, and the outline of each variable it targets. A connection is '
             'the atlas’s arrow from one variable to another (Rule 10.10). On Newsprint '
             'a red connection carries a 1 px Charcoal edge. A note beside the figure names the reform and says that it '
@@ -504,7 +504,7 @@ def chapter(ctx, figs, existing):
                      '<code>data-red="working"</code> on the red marks so the check can count the view’s red.'],
     })
     rules.append({
-        'id': '12.6', 'title': 'Label marks where they sit, and set a key above the chart only for what labels cannot carry.',
+        'id': '12.6', 'title': 'Label each mark where it sits.',
         'rule': [
             'Name each line, bar or point beside it where the label fits. When a chart codes something a label cannot '
             'carry on every mark, such as the evidence grade of each segment, set a key above the plot. List its items '

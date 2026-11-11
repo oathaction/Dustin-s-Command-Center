@@ -513,10 +513,11 @@ show();});})();"""
 
 
 def player(pid, *, kicker, title, drawing, below='', words, frames, timeline, motion, why, slow=True, preview=False,
-           group, static=False, fw=None, sub=None):
+           group, reset, static=False, fw=None, sub=None):
     """One motion player. static=True draws the same parts as a picture (no controls, no script, no data-oa-motion),
     with numbered badges for the anatomy plate of Rule 17.3, numbered top to bottom (CD-S1). sub is a line under the
-    title, such as a loop's evidence grade."""
+    title, such as a loop's evidence grade. reset is the object Reset names, such as "the bill", so a screen reader
+    that lists the page's buttons hears "Reset the bill" and never a bare Reset (Rule 11.14, DT-S8)."""
     wid = f'{pid}-why'
     play_icons = uicon('play') + uicon('pause').replace('<svg ', '<svg hidden ', 1)
 
@@ -537,14 +538,14 @@ def player(pid, *, kicker, title, drawing, below='', words, frames, timeline, mo
     if static:
         # Play takes its number in the margin, as every other part does; Reset's sits off its top left corner (CD-S1)
         ctl = row(3, f'<div class="row2 an"><span class="b">{play_icons}<span>Play</span></span>'
-                     f'<span class="b cn" aria-disabled="true">{badge(4)}{uicon("reset")}<span>Reset</span></span></div>')
+                     f'<span class="b cn" aria-disabled="true">{badge(4)}{uicon("reset")}<span>Reset {reset}</span></span></div>')
         sl = (f'<p class="sl"><span class="cb" aria-hidden="true"></span>Slow motion, one tenth speed</p>' if slow else '')
         whyp = f'<p class="why">{why["start"]}</p>'
     else:
         ctl = (f'<div class="cl" role="group" aria-label="{group}">'
                f'<button type="button" class="b" data-oa-play="" data-oa-pause="">{play_icons}<span data-word="">Play</span></button>'
                f'<button type="button" class="b" data-oa-reset="" aria-disabled="true" aria-describedby="{wid}">'
-               f'{uicon("reset")}<span>Reset</span></button></div>')
+               f'{uicon("reset")}<span>Reset {reset}</span></button></div>')
         sl = ''
         if slow:
             sl += f'<label class="sl"><input type="checkbox" data-slow=""><span>Slow motion, one tenth speed</span></label>'
@@ -685,13 +686,13 @@ def s17_1_correct():
         f'{ms_words(SLOW)} with the standard easing.',
         f'{ms_words(T_END)}: at rest on step 4.']
     body = player('p1', kicker=ILLUS, title='Bill S.99002, School bus contracts', drawing=svg, words=TRACK_WORDS,
-                  frames=frames, timeline=timeline, motion=motion, why=WHY, group='Play the bill’s move')
+                  frames=frames, timeline=timeline, motion=motion, why=WHY, group='Play the bill’s move', reset='the bill')
     alt = ('A live player for an Illustrative bill, S.99002, School bus contracts, drawn as a tracker of six numbered '
            'steps. At the first frame steps 1 and 2 done, step 3 now, steps 4 to 6 not yet, and the words say “Step 3 of '
            '6: Committee vote.” Play moves the bill on: step 3 lands as done, then the ring that marks the step the bill '
            f'is at now slides to step 4 and draws the line behind it, {T_END} ms in all. The last frame reads steps 1 to '
-           '3 done, step 4 now, steps 5 and 6 not yet, “Step 4 of 6: First chamber.” One button plays and pauses, Reset '
-           'returns to the first frame and is unavailable there with its reason, and Slow motion plays at one tenth '
+           '3 done, step 4 now, steps 5 and 6 not yet, “Step 4 of 6: First chamber.” One button plays and pauses, Reset the '
+           'bill returns to the first frame and is unavailable there with its reason, and Slow motion plays at one tenth '
            'speed. Under the player, the still view draws the first and last frames with their times and words.')
     return spec('s-17-1-correct', player_specimen('', body), '17.1', alt, interactive=True, illustrative=True,
                 notes='Live motion player (data-oa-motion). Land, then slide with its draw, one stagger apart, timed '
@@ -868,7 +869,7 @@ def mech_player(static):
     return player('p4', kicker=MECH_KICK, title=MECH_TITLE, sub=MECH_GRADE,
                   drawing=mech_stage(mech_motion_svg() if not static else mech_svg('start')),
                   words=MECH_WORDS, frames=frames, timeline=MECH_TIMELINE, motion=motion, why=WHY,
-                  slow=True, preview=not static, group='Play the link', static=static)
+                  slow=True, preview=not static, group='Play the link', reset='the link', static=static)
 
 
 # CD-S1: the key runs top to bottom, in the order the parts stand in the player.
@@ -877,7 +878,8 @@ ANATOMY = [
     'Play. A player of the wordmark or the lockmark rests on its master.',
     'The status line, which says in words what the frame shows. A screen reader hears it when it changes.',
     'Play, one button that turns to Pause while the motion runs and to Play again at its end. Its icon and its word change together.',
-    'Reset, which returns the player to where it rests. At rest it is unavailable and keeps focus.',
+    'Reset, named for what it returns, here the link, which takes the player back to where it rests. At rest it is '
+    'unavailable and keeps focus.',
     'Slow motion, which plays at one tenth speed, so Pause has time to work.',
     'The reason line, which says why a control is unavailable and what makes it available.',
     'The still view: the first and last frames at true size, each with its time and its words, then each step of the motion in order.',
@@ -897,7 +899,7 @@ def s17_3_correct():
            '1, the stage at its first frame, where a player of a state or a mechanism rests: two nodes, wealth '
            'concentration filled and money in politics empty. A player of the wordmark or the lockmark rests on its '
            'master. 2, the status line, which says what the frame shows. 3, the Play button, which turns to Pause while '
-           'the motion runs and to Play again at its end. 4, Reset, unavailable at rest with a dashed edge, its number '
+           'the motion runs and to Play again at its end. 4, Reset the link, unavailable at rest with a dashed edge, its number '
            'set off its top left corner. 5, Slow motion, a check box that plays at one tenth speed. 6, the reason line: '
            '“Reset works once you press Play.” 7, the still view: the first and last frames with their times and words, '
            'and the steps of the motion in order. A numbered key under the player says the same.')
@@ -976,6 +978,7 @@ def s17_4_failure():
 
 
 # ---- 17.5: the three behaviors, live
+RESET_OF = {'slide': 'the ring', 'draw': 'the line', 'land': 'the disc'}
 MINI = [
     ('slide', 'Slide', 'The ring marks the current place and slides to the next one.',
      {'start': 'First frame: the ring at the first place.', 'end': 'Last frame: the ring at the second place.'},
@@ -1001,7 +1004,7 @@ def s17_5_correct():
         blocks.append(player(f'p5{kind[0]}', kicker=name, title=None,
                              drawing=f'<p class="ds">{desc}</p>' + mini_svg(kind, None, live=True), words=w,
                              frames=frames, timeline=[line], motion={'tracks': tracks}, why=WHY,
-                             group=f'Play the {kind}', fw='9.375rem'))
+                             group=f'Play the {kind}', reset=RESET_OF[kind], fw='9.375rem'))
     css = ('.three{display:grid;grid-template-columns:minmax(0,1fr);gap:32px;container-type:inline-size}.three > .pl + .pl{padding-top:24px;'
            'border-top:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}.ds{margin:0 0 12px;' + ty('bodySmall') + '}'
            '.three .stg{padding-top:0}'
@@ -1013,7 +1016,8 @@ def s17_5_correct():
            f'hairline to the second over {SLOW} ms with the standard easing. Draw: a line with one bend extends from a '
            f'filled node to an empty one over {STD} ms with the enter easing. Land: a filled disc arrives over an empty '
            f'node at {round(LAND_FROM * 100)} percent of its size and settles to its true size over {STD} ms with the '
-           'enter easing. Each has a Play button that pauses, Reset, Slow motion at one tenth speed, a status line, and '
+           'enter easing. Each has a Play button that pauses, a Reset button named for its mark (Reset the ring, Reset the '
+           'line, Reset the disc), Slow motion at one tenth speed, a status line, and '
            'a still view with its first and last frames and its timing in words.')
     return spec('s-17-5-correct', player_specimen(css, body), '17.5', alt, interactive=True,
                 notes='Three motion players (data-oa-motion each), plain nodes untagged.')
@@ -1597,15 +1601,16 @@ def build_chapter():
 
     rules.append({
         'id': '17.3',
-        'title': 'Play a motion only when a reader asks, with Play, Pause, Reset and a still view.',
+        'title': 'Play a motion only when a reader asks.',
         'rule': [
-            'A motion starts when a reader presses Play, and never as the page opens, as it scrolls into view or on a '
-            'timer. It runs once and stops on its last frame. One button carries Play and Pause and '
+            'Every player has Play, Pause, Reset and a still view, and a motion starts only when a reader presses Play, '
+            'never as the page opens, as it scrolls into view or on a timer. It runs once and stops on its last frame. One button carries Play and Pause and '
             'changes its icon and its word together, then reads Play again at the end.',
             'A player of a state or a mechanism rests on its first frame, where the change starts. For the wordmark or '
             'the lockmark, the player rests on the master itself, so a reader who never presses Play still sees the '
-            'whole mark; Play then steps to the first frame and runs to the master. Reset returns either kind to where '
-            'it rests, and at rest Reset is unavailable and says why.',
+            'whole mark; Play then steps to the first frame and runs to the master. Reset, named for what it returns, '
+            'such as Reset the bill (Rule 11.14), takes either kind back to where it rests, and at rest it is '
+            'unavailable and says why.',
             'Beside every player sits its still view: the first and last frames at true size, each with its time and the '
             'words for what it shows, then each step of the motion in order. A status line says the same words when the '
             'frame changes, so every fact the motion shows reaches a reader who prints the page or listens with a screen '
@@ -1628,7 +1633,8 @@ def build_chapter():
         'specs': [
             {'label': 'Play and Pause', 'value': 'One button; its icon and word change together: Play, Pause, Play again'},
             {'label': 'At rest', 'value': 'A state or a mechanism: its first frame. The wordmark or the lockmark: its master'},
-            {'label': 'Reset', 'value': 'Returns the player to where it rests; unavailable at rest, with its reason'},
+            {'label': 'Reset', 'value': 'Named for its object, such as Reset the bill; returns the player to where it '
+                                        'rests; unavailable at rest, with its reason'},
             {'label': 'Slow motion', 'value': 'A check box that plays at one tenth speed; unavailable under reduced motion, with its reason'},
             {'label': 'Still view', 'value': 'First and last frames at true size, each with its time and words, then the steps in order'},
             {'label': 'Status line', 'value': 'Polite, so a screen reader waits until it finishes speaking; it says Playing, Paused and the words of the frame the motion stops on'},
@@ -1735,10 +1741,10 @@ def build_chapter():
     lever_fail_cap = ('Coming later: a failure case for the hinge and the lever, a last frame that misses its master.')
     rules.append({
         'id': '17.6',
-        'title': 'Move the hinge and the lever only as their own motions, ending exactly on their masters.',
+        'title': 'Move the hinge and the lever only as their own motions.',
         'rule': [
             'The hinge and the lever are the two motions that belong to the identity, and each one plays only on request '
-            f'(Rule 17.3). The hinge plays over {ms_words(HINGE)}: OATH and ACTION settle into place, then the ampersand '
+            f'(Rule 17.3) and ends exactly on its master. The hinge plays over {ms_words(HINGE)}: OATH and ACTION settle into place, then the ampersand '
             f'lands between them. The lever plays over {ms_words(LEVER)} in the lockmark: its links draw, its nodes land '
             'together and the lever lands last, at bottom right.',
             'Each player rests on the master itself (Rule 17.3). Play steps to the first frame and runs to the master, '
@@ -1818,10 +1824,10 @@ def build_chapter():
 
     rules.append({
         'id': '17.8',
-        'title': 'Give each of the ten states words or a shape as well as a color, on Newsprint and on Charcoal.',
+        'title': 'Give all ten states words or a shape as well as a color.',
         'rule': [
-            'Ten states cover every control and region: muted, disabled, hover, focus, loading, selected, warning, error, '
-            'empty and success. Each changes its words or its shape along with its color, so a reader who sees no color, '
+            'Ten states cover every control and region, on Newsprint and on Charcoal: muted, disabled, hover, focus, '
+            'loading, selected, warning, error, empty and success. Each changes its words or its shape along with its color, so a reader who sees no color, '
             'prints in gray or reads in a dark theme gets the same state. This plate is the reference for all ten.',
             f'On Charcoal an error takes no band: the 4{NB}px Pillar Red bar measures {F["err_c"]} to 1 there, and the '
             'mark and the word “Error:” in Newsprint carry it. Every other state keeps the same shapes and words on both '
@@ -1854,7 +1860,8 @@ def build_chapter():
             {'label': 'Focus', 'value': f'2 px ring, 2 px gap; {F["ring_n"]} to 1 on Newsprint, {F["ring_c"]} on Charcoal (Rule 17.9)',
              'token': 'oa.color.focus.ring.onNewsprint'},
             {'label': 'Loading', 'value': 'Words and a still drawing (Rule 17.7)', 'token': 'oa.color.state.loading.text.onNewsprint'},
-            {'label': 'Selected', 'value': 'Check, bold words, 2 px edge; in a list, the band and its 4 px bar (Rule 17.10)',
+            {'label': 'Selected', 'value': 'Check, bold words, 2 px edge; in a list, the selected band, its 4 px bar and '
+                                           'bold words (Rule 17.10)',
              'token': 'oa.color.state.selected.bar.onNewsprint'},
             {'label': 'Warning', 'value': f'Warning mark, “Warning:”, 4 px bar in the text’s ink, {F["warn_n"]} to 1',
              'token': 'oa.color.state.warning.mark.onNewsprint'},
@@ -1877,7 +1884,7 @@ def build_chapter():
 
     rules.append({
         'id': '17.9',
-        'title': 'Show hover with an underline or a thicker edge, and focus with a 2 px ring and its gap.',
+        'title': 'Show hover and focus with an underline, an edge or a ring.',
         'rule': [
             'Hover underlines a label, grows a link’s underline from 1 to 2 px, or thickens a quiet control’s 1 px edge '
             'to 2 px. A quiet control is a button drawn as its word in ink inside that edge, on the page’s own ground. A '
@@ -1886,7 +1893,8 @@ def build_chapter():
             'Focus draws a 2 px ring 2 px outside the control, at once: Verdigris on Newsprint and White, '
             f'Newsprint on Charcoal and Prussian. On Charcoal the ring around a Newsprint button measures '
             f'{F["ring_on_fill_c"]} to 1 against its fill, so the 2 px gap of Charcoal between them shows the '
-            'ring.'],
+            'ring. A control whose neighbor stands too close for an outside ring, such as a tab beside the next tab or a '
+            'row in a list, draws the ring inside its edge with the same 2 px gap, as Rule 18.11 sets.'],
         'tokens': ['oa.border.width.focusRing', 'oa.border.focusOffset', 'oa.color.focus.ring.onNewsprint',
                    'oa.color.focus.ring.onCharcoal', 'oa.border.width.underlineHover'],
         'why': {'text': [
@@ -1910,7 +1918,8 @@ def build_chapter():
             {'label': 'Hover, quiet control', 'value': 'Edge from 1 to 2 px, with no shift in size', 'token': 'oa.border.width.rule'},
             {'label': 'Hover timing', 'value': f'At once, or the fast {ms_words(FAST)}', 'token': 'oa.motion.duration.fast'},
             {'label': 'Focus ring', 'value': '2 px outline, at once', 'token': 'oa.border.width.focusRing'},
-            {'label': 'Focus gap', 'value': '2 px; never 0', 'token': 'oa.border.focusOffset'},
+            {'label': 'Focus gap', 'value': '2 px; never 0. Inside the edge where a neighbor stands too close, offset '
+                                            '−4 px (Rule 18.11)', 'token': 'oa.border.focusOffset'},
             {'label': 'Ring color', 'value': f'Verdigris on Newsprint {F["ring_n"]} to 1 and White {F["ring_w"]}; Newsprint on '
                                              f'Charcoal {F["ring_c"]} and Prussian {F["ring_p"]}', 'token': 'oa.color.focus.ring.onNewsprint'},
         ],
@@ -1925,7 +1934,7 @@ def build_chapter():
 
     rules.append({
         'id': '17.10',
-        'title': 'Draw pressed, checked and current choices one way: a check, bold words and a 2 px edge.',
+        'title': 'Draw pressed, checked and current choices one way.',
         'rule': [
             'A toggle that is pressed, a choice that is checked and the current choice in a set all draw one look: the '
             'selected check before the word, the word in bold and a 2 px edge in the strong border color where the '
@@ -1933,7 +1942,10 @@ def build_chapter():
             'the check, the weight and the edge are shapes.',
             'Links and lists of places keep their own marks for the current place. A link to the page a reader is on '
             'takes bold words, with a 2 px underline in a masthead and none at the end of a breadcrumb, and a rail '
-            'or a list takes the selected band, its 4 px bar and bold words.'],
+            'or a list takes the selected band, its 4 px bar and bold words.',
+            'Inside the band go only its words, its bar and a check where the row is a choice. On Charcoal the band is '
+            'Prussian, so a success mark inside it takes Newsprint, as it does on any Prussian ground, and an error or '
+            'an ask sits outside the band, since red never sits on Prussian (Rule 05.3).'],
         'tokens': ['oa.border.width.rule', 'oa.color.border.strong.onNewsprint', 'oa.color.state.selected.band.onNewsprint',
                    'oa.color.state.selected.bar.onNewsprint'],
         'why': {'text': [

@@ -4,6 +4,7 @@
   "title": "Status and utility icons",
   "part": "Symbols and graphics",
   "instruction": "Give each record state or interface action a glyph and a word that read without color.",
+  "opener": "s-11-opener",
   "intro": [
     "A glyph here is a small drawn mark, and each one carries its meaning twice, in its shape and in the word beside it. A reader who sees no color, or prints the page in gray, gets the same meaning as everyone else.",
     "Trackers come first: they show how far a bill has come in six numbered steps, and the same marks then follow a records request or an agency rule. After them come the utility icons, which sit beside the word for an action on a page, and the three marks that give an error, a success or a warning its shape."
@@ -233,7 +234,7 @@
     },
     {
       "id": "11.4",
-      "title": "Mark the one way to take part in red, on its own shape, beside its words.",
+      "title": "Mark the one way to take part in red, on its own shape.",
       "rule": [
         "When the public can act on a bill before a date, the step it is at takes the take-part mark: a small red disc at the upper right of its ring, with a 1 px Charcoal keyline inside the disc’s edge. The words “You can take part now” sit beside it, with the deadline and the way to act. It is the view’s one working red (Rule 05.3), and it can sit on any step where the public can take part, such as a hearing in the second chamber at step 5. Every other state stays in the surface’s ink."
       ],
@@ -518,7 +519,7 @@
     },
     {
       "id": "11.9",
-      "title": "Follow an agency rule through six steps, and mark the open comment period as the way to take part.",
+      "title": "Follow an agency rule through six steps.",
       "rule": [
         "A federal agency writes a rule in six steps: Early notice, Proposed, Comments open, Comments closed, Final rule and In effect. Step 1 is optional, so a rule that had no early notice keeps step 1 under a slash. While comments are open, step 3 takes the take-part mark from Rule 11.4, with the deadline and how to send a comment.",
         "A rule the agency issued without asking for comment first keeps steps 2 to 4 under slashes, and its words say so: “Issued without advance comment.” An interim final rule is one such rule, and it takes comments only after it takes effect. A rule that ends early says how in words, with the date: Withdrawn by the agency, Struck by Congress, or Set aside by a court. Once a rule takes effect, all six steps fill, as a bill’s do once it becomes law."
@@ -580,7 +581,7 @@
       "title": "Say a wait or a later step in words, and keep the count at six.",
       "rule": [
         "A wait inside a step, such as an agency’s question to the requester, a fee estimate or an extension of up to 10 working days, shows as words under the step it falls in. It never adds a mark, so every request still counts to six. A step outside the agency, such as mediation by the National Archives or a lawsuit, follows the end words as a sentence with its date.",
-        "A status taken from the agency’s own tracking service, or from the Federal Register for a rule, needs no mark. A status we piece together ourselves, such as a wait we learn of from the agency’s letter, carries the warning mark and the date we checked it: “Checked April 20. The agency may have acted since.”"
+        "A status taken from the agency’s own tracking service, or from the Federal Register for a rule, needs no mark. A status we piece together ourselves, such as a wait we learn of from the agency’s letter, carries a warning with the date we checked it, drawn as Rule 11.15 draws every warning: “Warning: Checked April 20. The agency may have acted since.”"
       ],
       "tokens": [
         "oa.color.state.warning.mark.onNewsprint"
@@ -614,7 +615,7 @@
         },
         {
           "label": "Check date",
-          "value": "For a status we piece together ourselves: the warning mark at 24 px, in ink, then “Checked” and the date",
+          "value": "For a status we piece together ourselves: the warning mark at 24 px, in ink, then “Warning: Checked” and the date, beside a 4 px bar in ink",
           "token": "oa.color.state.warning.mark.onNewsprint"
         },
         {
@@ -632,7 +633,7 @@
     },
     {
       "id": "11.11",
-      "title": "Set each utility icon beside its word, at 24 px by a control and 16 px only inside a line of text.",
+      "title": "Set each utility icon beside its word.",
       "rule": [
         "A utility icon names an action on a page, such as Close, Download or Filter. It sits beside its word: 24 px wide beside the word of a button or link, and 16 px wide only inside a line of text or a table heading, where it comes from its own 16 px drawing. Three icons sit beside other words that carry their meaning: the sort mark beside a column’s heading, the mark after a link to another site and the chevron beside a row’s words. The clear control inside a search field is the one icon with no word; its field’s label gives the context, and its name is “Clear the search”.",
         "Share, zoom, print and information stay words. Their usual signs repeat drawings we already use, such as the two rings of the Connect pillar icon and the atlas’s plus and minus, and an information mark invites help that shows only on hover."
@@ -740,7 +741,7 @@
         },
         {
           "label": "Selected check",
-          "value": "Inside a chip that is on, before its word, with a heavier outline"
+          "value": "Inside a chip that is on, before its word, with bold words and a 2 px edge (Rule 17.10)"
         },
         {
           "label": "Copy",
@@ -816,9 +817,9 @@
     },
     {
       "id": "11.14",
-      "title": "Keep topic and atlas symbols out of buttons, and draw each action with its utility icon.",
+      "title": "Keep topic and atlas symbols out of buttons.",
       "rule": [
-        "A topic or atlas symbol names a subject: a feedback loop, public records, a vote. It never stands for an action on a page. Reset is the utility icon’s open circle with one arrowhead, Download is the arrow into a tray, and each sits beside its word."
+        "Draw each action on a page with its utility icon. A topic or atlas symbol names a subject, such as a feedback loop, public records or a vote, and never stands for an action. Reset is the utility icon’s open circle with one arrowhead, Download is the arrow into a tray, and each sits beside its word."
       ],
       "why": {
         "text": [
@@ -889,7 +890,7 @@
       },
       "failure": {
         "specimen": "s-11-15-failure",
-        "caption": "<strong>Fails Rule 11.15 and WCAG 2.2 SC 1.4.1.</strong> The message is red text beside a cross. The cross means Close, the red text measures 2.96 to 1, and nothing says “Error” or how to fix the entry."
+        "caption": "<strong>Fails Rule 11.15.</strong> The message is red text beside a cross, so it leans on color alone, against WCAG 2.2 success criterion 1.4.1. The cross means Close, the red text measures 2.96 to 1, and nothing says “Error” or how to fix the entry."
       },
       "specs": [
         {
@@ -942,7 +943,7 @@
     },
     {
       "id": "11.16",
-      "title": "When an error, the take-part mark and an intervention marker meet, give the error the red.",
+      "title": "Give an error the red when it meets the other red jobs.",
       "rule": [
         "Rule 05.3 gives each view one working red, in this order: an error the reader must fix, then the step a reader can take now, then the one point the headline names, which in a systems figure is where a reform acts. So when the three meet in one view, the error keeps the red. The take-part mark yields: its disc draws in the surface’s ink, keeps its place on the ring, and “You can take part now” stays beside it, while the ask button steps down to Charcoal. The intervention marker yields too: its outline stays heavier, in ink, with its words.",
         "Once the reader fixes the error, the red goes back to the take-part mark and the ask. The intervention marker takes the red only in a view with no error and no step to take."

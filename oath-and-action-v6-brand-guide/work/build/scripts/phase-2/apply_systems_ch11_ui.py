@@ -48,7 +48,7 @@ ICONS = [
     ('selected-check', 'Selected check', 'A chip’s own word, while the chip is on'),
     ('view-full-size', 'View full size', 'View the map full size'),
     ('sort', 'Sort', 'Beside a column heading’s word'),
-    ('warning', 'Warning', 'The notice, such as Checked April 20'),
+    ('warning', 'Warning', 'Warning, then the notice, such as Warning: Checked April 20'),
 ]
 MIRROR = {24: 'matrix(-1 0 0 1 24 0)', 16: 'matrix(-1 0 0 1 16 0)'}
 OPEN = {24: 'rotate(180 12 12)', 16: 'rotate(180 8 8)'}
@@ -356,7 +356,7 @@ run();''') + '</div>')
            'and the Escape key clears it too. '
            'Under it, the Filters button carries the funnel, the words “Filters, 1 on” and a chevron pointing up, since '
            'the filters are open, and a word button, Clear filters. The open filters show Kind: Topic, Atlas and Pillar, '
-           'and Size: Reads at 24 px. Atlas is on, so it carries a check and a heavier outline, and the status line '
+           'and Size: Reads at 24 px. Atlas is on, so it carries a check, bold words and a 2 px edge, and the status line '
            f'reads “{n_atlas} of {n_all} symbols”, with the first three listed by ID and name and a line that says how many '
            f'more match: “The first three are listed here, and {n_atlas - 3} more match.” When nothing matches, the '
            f'status line reads “0 of {n_all} symbols. No symbol matches. Clear the search or the filters to see more.”')
@@ -671,11 +671,11 @@ def s_form(ctx, m):
         f'.ui .in{{display:block;box-sizing:border-box;width:100%;min-height:48px;margin-top:6px;padding:0 12px;'
         f'border:1px solid var(--edge);background:var(--paper);color:var(--ink);{T("body")}}}'
         f'.ui .in[aria-invalid="true"]{{border-left:4px solid {v("oa.color.state.error.bar")};padding-left:9px}}'
-        f'.ui .ask{{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border:0;cursor:pointer;'
+        f'.ui .ask{{display:inline-flex;align-items:center;box-sizing:border-box;min-height:48px;padding:0 20px;cursor:pointer;'
         f'background:{v("oa.component.button.ask.fill")};color:{v("oa.component.button.ask.label")};'
-        f'box-shadow:inset 0 0 0 1px {v("oa.component.button.ask.keyline")};{T("ask")}}}'
+        f'border:{v("oa.border.width.hairline")} solid var(--oa-component-button-ask-keyline, {v("oa.component.button.ask.fill")});{T("ask")}}}'
         f'.ui .ask[data-yield]{{background:{v("oa.component.button.primary.fill")};'
-        f'color:{v("oa.component.button.primary.label")};box-shadow:none}}'
+        f'color:{v("oa.component.button.primary.label")};border-color:{v("oa.component.button.primary.fill")}}}'
         f'@media (forced-colors:active){{.ui .ask{{border:1px solid ButtonText}}}}')
 
     def field(key, label, hint, attrs):
@@ -754,15 +754,15 @@ def s_marks(ctx, m):
     items = [
         ('Error', f'<div class="er">{u("error")}<span><b>Error:</b> Enter a ZIP code with five digits.</span></div>'),
         ('Success', f'<div class="ok">{u("success")}<span><b>You’re signed up.</b> We’ll email you on March 1.</span></div>'),
-        ('Warning', f'<div class="wn">{u("warning")}<span><b>Checked April 20.</b> The agency may have acted since.</span></div>'),
+        ('Warning', f'<div class="wn">{u("warning")}<span><b>Warning:</b> Checked April 20. The agency may have acted since.</span></div>'),
     ]
     html = (f'<style>{css}</style><p class="il"><span class="illus">Illustrative</span></p><ul class="mk3">'
             + ''.join(f'<li><p class="n">{n}</p>{b}</li>' for n, b in items) + '</ul>')
     alt = ('The three marks at true size, each in its Illustrative message. Error: a circle holding an exclamation mark, in ink, on the '
            'pale Error Band with a 4 px red bar at its left, beside “Error: Enter a ZIP code with five digits.” Success: a '
            'check leaving an open circle, in Verdigris, beside “You’re signed up. We’ll email you on March 1.” Warning: a '
-           'triangle holding an exclamation mark, in ink, with a 4 px Charcoal bar, beside “Checked April 20. The agency '
-           'may have acted since.”')
+           'triangle holding an exclamation mark, in ink, with a 4 px bar in the text’s ink, beside “Warning: Checked '
+           'April 20. The agency may have acted since.”')
     return m.spec(ctx, 's-11-marks', html, None, alt, readable=True, illustrative=True,
                   notes='A readable list (D2-255). The error’s red is the bar; the mark draws in ink (see notes).')
 
@@ -806,7 +806,7 @@ def yield_view(ctx, m, fail=False):
         f'.ask{{display:inline-flex;align-items:center;min-height:48px;margin-top:16px;padding:0 20px;{T("ask")}}}'
         f'.ask.y{{background:{v("oa.component.button.primary.fill.onNewsprint")};color:{v("oa.component.button.primary.label.onNewsprint")}}}'
         f'.ask.r{{background:{v("oa.component.button.ask.fill.onNewsprint")};color:{v("oa.component.button.ask.label.onNewsprint")};'
-        f'box-shadow:inset 0 0 0 1px {v("oa.component.button.ask.keyline.onNewsprint")}}}'
+        f'box-sizing:border-box;border:{v("oa.border.width.hairline")} solid {v("oa.component.button.ask.keyline.onNewsprint")}}}'
         f'.pl.rd{{border-color:var(--red)}}'))
     arrow = ('<svg class="mk" width="14" height="10" viewBox="0 0 14 10" aria-hidden="true" focusable="false">'
              '<path d="M0 5h11M8 1.5l4 3.5-4 3.5" class="si nf" stroke-width="1.5"/></svg>')
@@ -889,7 +889,7 @@ def build_ui(ctx, m, rule_titles):
              'work/build/assets/utility/20261110_Utility-Icons-Manifest.json']
     rules = [
         {
-            'id': '11.11', 'title': 'Set each utility icon beside its word, at 24 px by a control and 16 px only inside a line of text.',
+            'id': '11.11', 'title': 'Set each utility icon beside its word.',
             'rule': ['A utility icon names an action on a page, such as Close, Download or Filter. It sits beside its '
                      'word: 24 px wide beside the word of a button or link, and 16 px wide only inside a line of text or a '
                      'table heading, where it comes from its own 16 px drawing. Three icons sit beside other words that '
@@ -962,7 +962,8 @@ def build_ui(ctx, m, rule_titles):
                 {'label': 'Chevron', 'value': 'Down while closed, up while open; the turn takes 200 ms or less, and none '
                                               'when a reader asks for less motion', 'token': 'oa.motion.duration.standard'},
                 {'label': 'Cross', 'value': 'Close, and the clear control in a search field'},
-                {'label': 'Selected check', 'value': 'Inside a chip that is on, before its word, with a heavier outline'},
+                {'label': 'Selected check', 'value': 'Inside a chip that is on, before its word, with bold words and a 2 px '
+                                                     'edge (Rule 17.10)'},
                 {'label': 'Copy', 'value': 'The two sheets stay; the result goes to a status line'},
                 {'label': 'Menu', 'value': 'Three bars, open or closed; the open menu holds Close and the Escape key, and '
                                            'focus returns to Menu'},
@@ -1013,10 +1014,11 @@ def build_ui(ctx, m, rule_titles):
                          'site)”. Leave out <code>target="_blank"</code>.'],
         },
         {
-            'id': '11.14', 'title': 'Keep topic and atlas symbols out of buttons, and draw each action with its utility icon.',
-            'rule': ['A topic or atlas symbol names a subject: a feedback loop, public records, a vote. It never stands for '
-                     'an action on a page. Reset is the utility icon’s open circle with one arrowhead, Download is the '
-                     'arrow into a tray, and each sits beside its word.'],
+            'id': '11.14', 'title': 'Keep topic and atlas symbols out of buttons.',
+            'rule': ['Draw each action on a page with its utility icon. A topic or atlas symbol names a subject, such as a '
+                     'feedback loop, public records or a vote, and never stands for an action. Reset is the utility '
+                     'icon’s open circle with one arrowhead, Download is the arrow into a tray, and each sits beside its '
+                     'word.'],
             'why': {'text': ['A symbol that works as a button in one place and names a subject in another teaches the '
                              'reader two meanings for one drawing. CL-024, Feedback loop, looks most like a refresh sign, '
                              'and a loop stepper is where a builder would reach for one.'],
@@ -1069,9 +1071,9 @@ def build_ui(ctx, m, rule_titles):
                                    'words and the red bar, and the red button step down to Charcoal; send it right to see '
                                    'the success mark.'},
             'failure': {'specimen': 's-11-15-failure',
-                        'caption': '<strong>Fails Rule 11.15 and WCAG 2.2 SC 1.4.1.</strong> The message is red text beside '
-                                   'a cross. The cross means Close, the red text measures 2.96 to 1, and nothing says '
-                                   '“Error” or how to fix the entry.'},
+                        'caption': '<strong>Fails Rule 11.15.</strong> The message is red text beside a cross, so it '
+                                   'leans on color alone, against WCAG 2.2 success criterion 1.4.1. The cross means Close, '
+                                   'the red text measures 2.96 to 1, and nothing says “Error” or how to fix the entry.'},
             'specs': [
                 {'label': 'Error mark', 'value': 'A circle holding an exclamation mark, in the text’s ink, never red',
                  'token': 'oa.color.state.error.text.onNewsprint'},
@@ -1099,7 +1101,7 @@ def build_ui(ctx, m, rule_titles):
                          'bar only.'],
         },
         {
-            'id': '11.16', 'title': 'When an error, the take-part mark and an intervention marker meet, give the error the red.',
+            'id': '11.16', 'title': 'Give an error the red when it meets the other red jobs.',
             'rule': ['Rule 05.3 gives each view one working red, in this order: an error the reader must fix, then the '
                      'step a reader can take now, then the one point the headline names, which in a systems figure is '
                      'where a reform acts. So when the three meet in one view, the error keeps the red. The take-part '

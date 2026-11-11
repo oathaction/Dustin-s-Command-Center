@@ -745,7 +745,7 @@
   "chapter": "11",
   "rule": "11.10",
   "width_px": 360,
-  "alt": "Two Illustrative records requests at 360 px on Newsprint, with a key of the six steps and the marks. Request 99007, Weather station repair records: Step 3 of 6: Searching. The agency is looking for the records. Waiting on you: on April 2 the agency asked which years you need. Its 20 working days stop until you answer. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching now; 4 Reviewing not yet; 5 Answered not yet; 6 Appeal not yet. Beside the warning mark: Checked April 20. The agency may have acted since. Request 99009, Prison inspection reports: Upheld on appeal on July 8. The appeal office kept the agency’s answer. The requester took the request to federal court on August 3. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching done; 4 Reviewing done; 5 Answered done; 6 Appeal done.",
+  "alt": "Two Illustrative records requests at 360 px on Newsprint, with a key of the six steps and the marks. Request 99007, Weather station repair records: Step 3 of 6: Searching. The agency is looking for the records. Waiting on you: on April 2 the agency asked which years you need. Its 20 working days stop until you answer. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching now; 4 Reviewing not yet; 5 Answered not yet; 6 Appeal not yet. Beside the warning mark and a 4 px bar in ink: Warning: Checked April 20. The agency may have acted since. Request 99009, Prison inspection reports: Upheld on appeal on July 8. The appeal office kept the agency’s answer. The requester took the request to federal court on August 3. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching done; 4 Reviewing done; 5 Answered done; 6 Appeal done.",
   "illustrative": true,
   "notes": "",
   "fit_switch": false
@@ -782,7 +782,7 @@
   "chapter": "11",
   "rule": "11.12",
   "width_px": 360,
-  "alt": "The symbol library’s search and filter bar, live at 360 px. A field labeled Search the symbols holds the magnifier before the text; once you type, a cross at its end clears the search, named “Clear the search”, and the Escape key clears it too. Under it, the Filters button carries the funnel, the words “Filters, 1 on” and a chevron pointing up, since the filters are open, and a word button, Clear filters. The open filters show Kind: Topic, Atlas and Pillar, and Size: Reads at 24 px. Atlas is on, so it carries a check and a heavier outline, and the status line reads “101 of 125 symbols”, with the first three listed by ID and name and a line that says how many more match: “The first three are listed here, and 98 more match.” When nothing matches, the status line reads “0 of 125 symbols. No symbol matches. Clear the search or the filters to see more.”",
+  "alt": "The symbol library’s search and filter bar, live at 360 px. A field labeled Search the symbols holds the magnifier before the text; once you type, a cross at its end clears the search, named “Clear the search”, and the Escape key clears it too. Under it, the Filters button carries the funnel, the words “Filters, 1 on” and a chevron pointing up, since the filters are open, and a word button, Clear filters. The open filters show Kind: Topic, Atlas and Pillar, and Size: Reads at 24 px. Atlas is on, so it carries a check, bold words and a 2 px edge, and the status line reads “101 of 125 symbols”, with the first three listed by ID and name and a line that says how many more match: “The first three are listed here, and 98 more match.” When nothing matches, the status line reads “0 of 125 symbols. No symbol matches. Clear the search or the filters to see more.”",
   "illustrative": false,
   "notes": "Live (D2-516). Labels and kinds read from the editor’s label table for chapter 10; the 41 from chapter 10’s construction text, section 10. Chips carry aria-pressed and the Selected check (C-5); the count is a polite status line (A-9), and with no match it carries its advice (F-5, D2-1157); Clear the search is the one glyph-only control (A-4). The field is type=\"search\" and Escape clears it (F-9); the search landmark stays out of the stage, which holds no landmark (AX-S8), and Rule 11.12’s builders line names it.",
   "interactive": true,
@@ -1036,7 +1036,7 @@
   "chapter": "11",
   "rule": null,
   "width_px": null,
-  "alt": "The 18 utility icons, each drawn at 24 px and then at 16 px from its own 16 px drawing, with its name and the word that goes beside it. Close: Close, or Close the menu where two things could close. Menu: Menu. Arrow: Next page; mirrored, Previous page; turned up or down, the order a column is sorted in. Chevron: The row’s own words; down while closed, up while open. Download: Download, then the file, its type and its size. Another site: After a link’s last word, with the hidden words “(another site)”. Search: The field’s label, such as Search the symbols. Filter: Filters, and how many are on. Copy: Copy, and what it copies. Play: Play, or Play again once the run has ended. Pause: Pause, on the same button while it plays. Reset: Reset or Start over, with its object, such as Reset the loop. Error: Error, then the fix, such as Enter a ZIP code with five digits. Success: What happened, such as You’re signed up. Selected check: A chip’s own word, while the chip is on. View full size: View the map full size. Sort: Beside a column heading’s word. Warning: The notice, such as Checked April 20.",
+  "alt": "The 18 utility icons, each drawn at 24 px and then at 16 px from its own 16 px drawing, with its name and the word that goes beside it. Close: Close, or Close the menu where two things could close. Menu: Menu. Arrow: Next page; mirrored, Previous page; turned up or down, the order a column is sorted in. Chevron: The row’s own words; down while closed, up while open. Download: Download, then the file, its type and its size. Another site: After a link’s last word, with the hidden words “(another site)”. Search: The field’s label, such as Search the symbols. Filter: Filters, and how many are on. Copy: Copy, and what it copies. Play: Play, or Play again once the run has ended. Pause: Pause, on the same button while it plays. Reset: Reset or Start over, with its object, such as Reset the loop. Error: Error, then the fix, such as Enter a ZIP code with five digits. Success: What happened, such as You’re signed up. Selected check: A chip’s own word, while the chip is on. View full size: View the map full size. Sort: Beside a column heading’s word. Warning: Warning, then the notice, such as Warning: Checked April 20.",
   "illustrative": false,
   "notes": "A readable list (D2-255) of the 18 finals in the audit’s order, drawn from the sprite: oa-sym-u-<name>-24px and -16px (DR-161 to DR-178).",
   "readable": true
@@ -1055,7 +1055,7 @@
   "chapter": "11",
   "rule": null,
   "width_px": null,
-  "alt": "The three marks at true size, each in its Illustrative message. Error: a circle holding an exclamation mark, in ink, on the pale Error Band with a 4 px red bar at its left, beside “Error: Enter a ZIP code with five digits.” Success: a check leaving an open circle, in Verdigris, beside “You’re signed up. We’ll email you on March 1.” Warning: a triangle holding an exclamation mark, in ink, with a 4 px Charcoal bar, beside “Checked April 20. The agency may have acted since.”",
+  "alt": "The three marks at true size, each in its Illustrative message. Error: a circle holding an exclamation mark, in ink, on the pale Error Band with a 4 px red bar at its left, beside “Error: Enter a ZIP code with five digits.” Success: a check leaving an open circle, in Verdigris, beside “You’re signed up. We’ll email you on March 1.” Warning: a triangle holding an exclamation mark, in ink, with a 4 px bar in the text’s ink, beside “Warning: Checked April 20. The agency may have acted since.”",
   "illustrative": true,
   "notes": "A readable list (D2-255). The error’s red is the bar; the mark draws in ink (see notes).",
   "readable": true
@@ -1078,6 +1078,14 @@
   "notes": "Live (D2-516): the dialog holds focus, Escape and Close return focus to Menu (G-3); the page behind it is inert while it is open.",
   "interactive": true,
   "fit_switch": false
+ },
+ "s-11-opener": {
+  "chapter": "11",
+  "rule": null,
+  "width_px": null,
+  "alt": "The six steps every bill follows, drawn as a tracker draws them, each with its name and its state in words: 1 Filed, done, a filled circle; 2 Hearing, a heavy ring with a small red disc at its upper right, which says you can take part now; 3 Committee vote, 4 First chamber, 5 Second chamber and 6 Governor or President, not yet, fine rings. A line joins them, heavy as far as the bill has come and fine ahead. A line under it says every bill passes the same six steps, and this state bill is at its hearing, where the public can take part.",
+  "illustrative": false,
+  "notes": "Chapter 11’s opener (Gate 2 fix pass, call 3, CD-S1): Rules 11.1 and 11.2’s marks at true size in one tracker, flowing with the column. The take-part disc is its one working red."
  },
  "s-11-steps": {
   "chapter": "11",

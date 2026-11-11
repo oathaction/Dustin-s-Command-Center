@@ -11,7 +11,7 @@
   "chapter": "03",
   "rule": "03.1",
   "width_px": 610,
-  "alt": "Failure case: OATH & ACTION typed in Inter Tight 800 with the font’s own sans-serif ampersand colored red and ordinary word spaces, so the ampersand is a different shape and the gaps around it are wide and uneven.",
+  "alt": "Failure case: do not publish. OATH & ACTION typed in Inter Tight 800 with the font’s own sans-serif ampersand colored red and ordinary word spaces, so the ampersand is a different shape and the gaps around it are wide and uneven.",
   "illustrative": false,
   "notes": "Drawn as live SVG text inside a labeled image, at the correct case's cap height (44.98 px capitals, so 61.8 px type): a labeled failure, so it takes check_exempt scale and contrast (the font's red ampersand measures 2.96:1).",
   "check_exempt": [
@@ -31,7 +31,7 @@
   "chapter": "03",
   "rule": "03.2",
   "width_px": 200,
-  "alt": "Failure case: the same 120 pixel tile with the full OATH & ACTION wordmark squeezed to 100 pixels wide; its capitals are 10 pixels tall and blur.",
+  "alt": "Failure case: do not publish. The same 120 pixel tile with the full OATH & ACTION wordmark squeezed to 100 pixels wide; its capitals are 10 pixels tall and blur.",
   "illustrative": false,
   "notes": "Display master scaled to 100 px wide (10.2 px capitals), as a producer would drag it."
  },
@@ -52,6 +52,13 @@
   "notes": "L6 on V5's layout, measured from the Gate 0 capture: 1400 by 300 units, without the four pillar dots V5 drew under the tagline (DR-129). In use since November 10, 2026: the wordmark and tagline centered on the strip (DR-182), moved down 14.72 units, 9.3 px at 884 px, so the span from the wordmark's cap line to the tagline's baseline has its middle on the strip's middle, as the identity designer's stage B proposal drew it. The strip, the lockmark and every size stay as they were: the lockmark keeps L6's proportion, 93.5 px at 884 px, from the display master. No web address until it is settled (DR-55).",
   "fit_switch": true
  },
+ "s-03-opener": {
+  "chapter": "03",
+  "rule": null,
+  "alt": "The lockups at true size on Newsprint, each with its name, two to a row: L1, the wordmark, beside L8, the O & A monogram; S1, OATH & over ACTION on two flush-left lines, beside L4, the monogram, a hairline and the tagline; L3, the wordmark with the lockmark at its right, beside L7, the wordmark, a hairline and the word TRACK. On screens 48em wide and up, L5 follows across both columns: the wordmark over the tagline.",
+  "illustrative": false,
+  "notes": "Gate 2's fix pass, CD-S1: chapter 03's opener. Each mark is an <svg> holding one <use> of the master s-03-lockups carries with an id (stage_a_identity_lib.SHARE and REF), at the size that plate sets, from the same lockup functions, so the opener draws no master of its own. L5 shows from 48em, since its 388 px minimum is wider than a phone's column; L6 keeps its own plate, s-03-l6."
+ },
  "s-03-3-correct": {
   "chapter": "03",
   "rule": "03.3",
@@ -64,7 +71,7 @@
   "chapter": "03",
   "rule": "03.3",
   "width_px": 520,
-  "alt": "Failure case: the same page head with the headline moved up to 9 pixels below the wordmark, inside its clear space, so the headline’s first words read as part of the name. The headline is Illustrative.",
+  "alt": "Failure case: do not publish. The same page head with the headline moved up to 9 pixels below the wordmark, inside its clear space, so the headline’s first words read as part of the name. The headline is Illustrative.",
   "illustrative": true,
   "notes": "Headline 0.3x below the wordmark."
  },
@@ -80,7 +87,7 @@
   "chapter": "03",
   "rule": "03.4",
   "width_px": 360,
-  "alt": "Failure case: the wordmark’s display master scaled down to 12 pixels tall, its capitals 11 pixels, the gaps around the ampersand filling in.",
+  "alt": "Failure case: do not publish. The wordmark’s display master scaled down to 12 pixels tall, its capitals 11 pixels, the gaps around the ampersand filling in.",
   "illustrative": false,
   "notes": "Display master at 12 px tall (11.1 px capitals), as an email footer might place it."
  },
@@ -103,7 +110,7 @@
   "chapter": "03",
   "rule": "03.5",
   "width_px": 560,
-  "alt": "Failure case: the Newsprint version of the wordmark placed on a Charcoal slide. The black letters disappear into the black ground and only the red ampersand shows.",
+  "alt": "Failure case: do not publish. The Newsprint version of the wordmark placed on a Charcoal slide. The black letters disappear into the black ground and only the red ampersand shows.",
   "illustrative": false,
   "notes": "Charcoal letters on Charcoal, 1:1."
  },
@@ -120,7 +127,7 @@
   "chapter": "03",
   "rule": "03.6",
   "width_px": 400,
-  "alt": "Failure case: a 390 pixel phone bar with the L3 lockup squeezed to 150 pixels wide; its capitals are 12 pixels tall, under the 14 pixel floor, and the lockmark shrinks to 26 pixels.",
+  "alt": "Failure case: do not publish. A 390 pixel phone bar with the L3 lockup squeezed to 150 pixels wide; its capitals are 12 pixels tall, under the 14 pixel floor, and the lockmark shrinks to 26 pixels.",
   "illustrative": false,
   "notes": "L3's masthead master at 150 px wide: 11.7 px capitals, a 25.5 px lockmark. Since November 10, 2026 the masthead master carries the rebuilt 48 px lockmark master (DR-181), so the squeezed lockmark keeps whole nodes, where the earlier file's pixel rows parted into stripes. The failure is the capitals under the 14 px floor and L3 under its 196 px minimum (Rule 03.4)."
  },
@@ -136,7 +143,7 @@
   "chapter": "03",
   "rule": "03.7",
   "width_px": 300,
-  "alt": "Failure case: the compact signature from our brand guide’s fourth edition, O & A typed in Inter Tight with word spaces and the font’s sans-serif ampersand in red, at the same cap height as L8 at 120 pixels.",
+  "alt": "Failure case: do not publish. The compact signature from our brand guide’s fourth edition, O & A typed in Inter Tight with word spaces and the font’s sans-serif ampersand in red, at the same cap height as L8 at 120 pixels.",
   "illustrative": false,
   "notes": "V4.2's typed signature at L8's cap height (40 px capitals, so 55 px type): a labeled failure, so check_exempt scale and contrast.",
   "check_exempt": [
@@ -156,7 +163,7 @@
   "chapter": "03",
   "rule": "03.8",
   "width_px": 700,
-  "alt": "Failure case: an event flyer that reads OATH & ACTION & MERRIMACK VALLEY CIVIC LAB present a workshop on public comment, with a second red ampersand joining the two names. Illustrative.",
+  "alt": "Failure case: do not publish. An event flyer that reads OATH & ACTION & MERRIMACK VALLEY CIVIC LAB present a workshop on public comment, with a second red ampersand joining the two names. Illustrative.",
   "illustrative": true,
   "notes": "A labeled failure: the partner's name is typed in Inter Tight 800 capitals at our capitals' height (40.3 px type), as a producer would fake a joint lockup, so check_exempt scale.",
   "check_exempt": [
@@ -166,9 +173,16 @@
  "s-03-misuse": {
   "chapter": "03",
   "rule": "03.8",
-  "alt": "Three more failure cases at true size: the wordmark stretched 30 percent wider, the wordmark with a drop shadow, and the wordmark with its ampersand recolored dark blue.",
+  "alt": "Failure case: do not publish. Three more failure cases at true size: the wordmark stretched 30 percent wider, the wordmark with a drop shadow, and the wordmark with its ampersand recolored dark blue.",
   "illustrative": false,
   "notes": "Extras: three failures producers make in slide and design apps. A sheet, so the stage flows. Placement attributes only; the master is unchanged."
+ },
+ "s-04-opener": {
+  "chapter": "04",
+  "rule": null,
+  "alt": "Two frames at true size on Newsprint. In the first, ampersand B in red from its display master, 160 pixels tall. In the second, the hinge headline The zoning code & the rent., its red B leading the second line, in the title style at 56 pixels, or in H3 at 26 pixels on a phone.",
+  "illustrative": false,
+  "notes": "Gate 2's fix pass, CD-S1: chapter 04's opener. B is Rule 04.1's display master at 160 px; the headline is Rule 04.3's first, from chapter 02's list, B from the master whose range holds its cap height (the 24 px master at 56 px type, the 16 px master at 26 px). Two frames keep one ampersand moment each (Rule 04.2)."
  },
  "s-04-1-correct": {
   "chapter": "04",
@@ -181,7 +195,7 @@
   "chapter": "04",
   "rule": "04.1",
   "width_px": 420,
-  "alt": "Failure case: the ampersand from our brand guide’s fifth edition, the unmodified Lora Bold glyph that any Lora user can type, in red at 160 pixels tall. It has no beak, and its strokes are more even than B’s.",
+  "alt": "Failure case: do not publish. The ampersand from our brand guide’s fifth edition, the unmodified Lora Bold glyph that any Lora user can type, in red at 160 pixels tall. It has no beak, and its strokes are more even than B’s.",
   "illustrative": false,
   "notes": "V5's glyph placed from the re-exported I1 record file, as an old Edition 05 file would place it."
  },
@@ -197,7 +211,7 @@
   "chapter": "04",
   "rule": "04.2",
   "width_px": 358,
-  "alt": "Failure case: the same card with a large cropped ampersand in the corner and a second small ampersand beside the wordmark, so three ampersands compete with the headline’s. Illustrative.",
+  "alt": "Failure case: do not publish. The same card with a large cropped ampersand in the corner and a second small ampersand beside the wordmark, so three ampersands compete with the headline’s. Illustrative.",
   "illustrative": true,
   "notes": ""
  },
@@ -213,7 +227,7 @@
   "chapter": "04",
   "rule": "04.3",
   "width_px": 358,
-  "alt": "Failure case: an Act card whose hinge headline The route plan & your commute. has a red ampersand above a red Send a comment button, two working reds in one view. Illustrative.",
+  "alt": "Failure case: do not publish. An Act card whose hinge headline The route plan & your commute. has a red ampersand above a red Send a comment button, two working reds in one view. Illustrative.",
   "illustrative": true,
   "notes": "The failure is two working reds in one view, so check_exempt red. Kicker per D2-250.",
   "check_exempt": [
@@ -239,7 +253,7 @@
   "chapter": "04",
   "rule": "04.4",
   "width_px": 358,
-  "alt": "Failure case: our fifth edition’s hinge divider with a red ampersand, above a red Send testimony button, so two red marks compete for the step. Illustrative.",
+  "alt": "Failure case: do not publish. Our fifth edition’s hinge divider with a red ampersand, above a red Send testimony button, so two red marks compete for the step. Illustrative.",
   "illustrative": true,
   "notes": "The failure is V5's red divider beside a red ask, so check_exempt red.",
   "check_exempt": [
@@ -249,8 +263,8 @@
  "s-04-5-correct": {
   "chapter": "04",
   "rule": "04.5",
-  "width_px": 650,
-  "alt": "The hinge diagram at true size: the display master 600 pixels wide on Newsprint, with OATH and ACTION on a line through four nodes, a red ampersand B in a ring between them, two solid arcs running clockwise and the words UNDERSTAND and IMPACT beneath; and the compact master at 280 pixels on Newsprint and on Charcoal.",
+  "width_px": 676,
+  "alt": "The hinge diagram at true size: the display master 600 pixels wide on Newsprint, with OATH and ACTION on a line through four nodes, a red ampersand B in a ring between them, two solid arcs running clockwise and the words UNDERSTAND and IMPACT beneath; and under it, side by side, the compact master at 280 pixels on Newsprint and on Charcoal.",
   "illustrative": false,
   "notes": ""
  },
@@ -258,7 +272,7 @@
   "chapter": "04",
   "rule": "04.5",
   "width_px": 650,
-  "alt": "Failure case: the hinge diagram redrawn with dashed arcs and a dashed ring. In our systems atlas’s key a dashed line marks a connection graded plausible, so the diagram reads as a guess.",
+  "alt": "Failure case: do not publish. The hinge diagram redrawn with dashed arcs and a dashed ring. In our systems atlas’s key a dashed line marks a connection graded plausible, so the diagram reads as a guess.",
   "illustrative": false,
   "notes": "The master is placed unchanged; a dash pattern applied to its strokes at placement shows the failure."
  },
@@ -291,7 +305,7 @@
   "chapter": "04",
   "rule": "04.7",
   "width_px": 358,
-  "alt": "Failure case: a Newsprint circle avatar with no keyline in a white feed. The circle’s edge measures 1.41 to 1 against the page and fades, so the ampersand floats without its tile.",
+  "alt": "Failure case: do not publish. A Newsprint circle avatar with no keyline in a white feed. The circle’s edge measures 1.41 to 1 against the page and fades, so the ampersand floats without its tile.",
   "illustrative": false,
   "notes": ""
  },
@@ -310,7 +324,7 @@
   "chapter": "04",
   "rule": "04.8",
   "width_px": 528,
-  "alt": "Failure case: the same cover with the large ampersand moved up behind the title, so the title’s letters cross its strokes. Illustrative.",
+  "alt": "Failure case: do not publish. The same cover with the large ampersand moved up behind the title, so the title’s letters cross its strokes. Illustrative.",
   "illustrative": true,
   "notes": "A print piece set in points (D2-205), so check_exempt scale.",
   "check_exempt": [
@@ -330,7 +344,7 @@
   "chapter": "08",
   "rule": "08.1",
   "width_px": 420,
-  "alt": "Failure case: the lockmark master from our brand guide’s fifth edition scaled to 16 pixels, its nodes no wider than its links and the lever a single pink pixel, beside the 16 pixel master for comparison.",
+  "alt": "Failure case: do not publish. The lockmark master from our brand guide’s fifth edition scaled to 16 pixels, its nodes no wider than its links and the lever a single pink pixel, beside the 16 pixel master for comparison.",
   "illustrative": false,
   "notes": ""
  },
@@ -350,6 +364,13 @@
   "alt": "Failure case: do not publish. A flyer, How to speak at a council meeting, whose three list items each start with a 16 pixel lockmark used as a bullet. Illustrative.",
   "illustrative": true,
   "notes": "The flyer could pass for our work, so it carries the Charcoal failure band (D2-308; CD-N5, CA-S6)."
+ },
+ "s-08-opener": {
+  "chapter": "08",
+  "rule": null,
+  "alt": "The lockmark in its four places at true size, each a crop. Masthead: the left end of a Newsprint bar with L3, the wordmark and the lockmark at 48 pixels. Page header: a white header with the lockmark at 24 pixels beside the section label 03 Who writes the budget and the page number 7; the section title is Illustrative. Footer: a Charcoal footer with the lockmark at 24 pixels beside the tagline, A country that answers to its people. Sign-off: the bottom-right corner of a 1080 pixel social card with the lockmark at 96 pixels, 72 pixels from its right and bottom edges.",
+  "illustrative": false,
+  "notes": "Gate 2's fix pass, CD-S1: chapter 08's opener, a light version of Rule 08.2's plate (s-08-2-correct) from the same place functions and masters: L3's masthead master, the 24 px master in the page header and footer, and the 48 px master at exactly 96 px in the sign-off (DR-211). Each crop is 330 px wide or less, so the opener fits a phone at true size."
  },
  "s-08-3-correct": {
   "chapter": "08",
@@ -423,7 +444,7 @@
   "chapter": "09",
   "rule": "09.3",
   "width_px": 360,
-  "alt": "Failure case: Track’s master scaled to 16 pixels beside the word Track, next to the 16 pixel fit beside the same word, at true size and enlarged four times. Scaled down, the master’s lines fall under a pixel and draw gray, and the magnifier’s lens and the route’s turns blur together; the fit draws each line as one full pixel.",
+  "alt": "Failure case: do not publish. Track’s master scaled to 16 pixels beside the word Track, next to the 16 pixel fit beside the same word, at true size and enlarged four times. Scaled down, the master’s lines fall under a pixel and draw gray, and the magnifier’s lens and the route’s turns blur together; the fit draws each line as one full pixel.",
   "illustrative": false,
   "notes": "The master (civic-line-v6/black) at 16 px from the sprite, as a producer would drag it into a menu, beside the fit. The enlarged views are PNG renders at 1x, scaled four times in square pixels."
  },

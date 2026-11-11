@@ -469,8 +469,10 @@ def records_css(ctx):
     mark (Rule 11.10), drawn in the text's ink."""
     T = ctx.ty
     return (f'.wt{{margin-top:6px;{T("bodySmall")};line-height:1.5;text-wrap:pretty}}'
-            f'.wn{{display:flex;gap:8px;align-items:flex-start;margin-top:10px;padding-top:10px;border-top:1px solid var(--hair);'
-            f'{T("bodySmall")};line-height:1.5;color:var(--txt)}}.wn svg{{flex:none;display:block;margin-top:-1px}}')
+            f'.wn{{display:flex;gap:8px;align-items:flex-start;margin-top:12px;padding:6px 8px;'
+            f'border-left:{ctx.v("oa.border.width.bar")} solid {ctx.v("oa.color.state.warning.mark.onNewsprint")};'
+            f'{T("bodySmall")};line-height:1.5;color:var(--txt)}}.wn svg{{flex:none;display:block;margin-top:-1px}}'
+            f'.wn b{{font-weight:700}}')
 
 
 def key(nm, show=('done', 'now', 'notyet', 'skipped', 'stopped', 'take'), steps=True, red=True):
@@ -504,7 +506,7 @@ def row(b, size, nm=None, red_progress=False, step_word=None, kind_label=None, r
     sw = step_word or status_words(b, nm)
     st = f'<p class="st"><b>{sw}</b> {b["line"]}</p>'
     wait = f'<p class="wt">{b["wait"]}</p>' if b.get('wait') else ''
-    chk = f'<p class="wn">{uicon("warning")}<span>{b["checked"]}</span></p>' if b.get('checked') else ''
+    chk = f'<p class="wn">{uicon("warning")}<span><b>Warning:</b> {b["checked"]}</span></p>' if b.get('checked') else ''
     core = f'{marks}{lab}{st}{wait}{take_part(b, size, red=red)}{chk}'
     return f'<li class="row">{bill}{core}</li>'
 
@@ -936,7 +938,8 @@ def generic_mark(s):
 def page_css(ctx, surf, size):
     T = ctx.ty
     on = {'n': 'onNewsprint', 'c': 'onCharcoal'}[surf]
-    keyline = (f';box-shadow:inset 0 0 0 1px {ctx.v("oa.component.button.ask.keyline.onNewsprint")}' if surf == 'n' else '')
+    keyline = (f';box-sizing:border-box;border:{ctx.v("oa.border.width.hairline")} solid '
+               f'{ctx.v("oa.component.button.ask.keyline.onNewsprint")}' if surf == 'n' else '')
     return (piece_css(ctx, surf, size) +
             f'.chip{{display:inline-flex;{T("dataLabel")};border:1px solid var(--strong);vertical-align:middle}}'
             f'.chip span{{padding:4px 6px}}.chip span:first-child{{background:var(--ink);color:var(--bg)}}'
@@ -1027,7 +1030,8 @@ def s_11_7(ctx):
            f'text-decoration:underline;text-underline-offset:3px;outline:1px dashed var(--sub);outline-offset:0}}'
            f'.ask{{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;'
            f'background:{ctx.v("oa.component.button.ask.fill.onNewsprint")};color:{ctx.v("oa.component.button.ask.label.onNewsprint")};'
-           f'{T("ask")};box-shadow:inset 0 0 0 1px {ctx.v("oa.component.button.ask.keyline.onNewsprint")}}}'
+           f'{T("ask")};box-sizing:border-box;border:{ctx.v("oa.border.width.hairline")} solid '
+           f'{ctx.v("oa.component.button.ask.keyline.onNewsprint")}}}'
            f'@container (max-width:30rem){{.sz li{{grid-template-columns:1fr}}}}.wr{{container-type:inline-size}}')
     sizes = [(24, 13, 'On a story card', '24 px circles, numbers at 13 px'),
              (26, 13, 'In a list at 360 px', '26 px circles, numbers at 13 px'),
@@ -1078,7 +1082,7 @@ def alt_rows(items, nm):
         st = '; '.join(f'{i + 1} {nm[i]} {STATE_WORD[s].lower()}' for i, s in enumerate(b['states']))
         tp = f' You can take part now: {b["take"]}' if 'take' in b['states'] else ''
         wt = f' {b["wait"]}' if b.get('wait') else ''
-        ck = f' Beside the warning mark: {b["checked"]}' if b.get('checked') else ''
+        ck = f' Beside the warning mark and a 4 px bar in ink: Warning: {b["checked"]}' if b.get('checked') else ''
         out.append(f'{b.get("noun", "Bill")} {b["id"]}, {b["title"]}: {status_words(b, nm)} {b["line"]}{wt} Steps: {st}.{tp}{ck}')
     return ' '.join(out)
 
@@ -1153,8 +1157,52 @@ def s_11_10(ctx):
     spec(ctx, 's-11-10-failure', html2, '11.10', alt2, width=360, illustrative=True)
 
 
+def s_opener(ctx):
+    """Chapter 11's opener (Gate 2 fix pass, call 3, CD-S1): the six steps every bill follows, drawn with the tracker's
+    marks at true size, each with its name and its state in words. A state bill at its hearing, step 2, where the
+    public can take part, so the take-part disc is the opener's one working red. Across the column from 36rem, with
+    each name under its step; upright below, as a bill's own page turns them (Rule 11.6). A picture with an alt."""
+    st = ['done', 'take', 'notyet', 'notyet', 'notyet', 'notyet']
+    nm = [n for n, _ in STEPS[:5]] + ['Governor or President']
+    lis = []
+    for i, s_ in enumerate(st):
+        seg = 'end' if i == 5 else ('on' if st[i + 1] != 'notyet' else 'off')
+        cur = ' cur' if s_ in ('now', 'take') else ''
+        lis.append(f'<li class="{seg}{cur}">{sample(s_, 26, num=i + 1)}<span class="t"><span class="n">{nm[i]}</span>'
+                   f'<span class="s">{STATE_WORD[s_]}</span></span></li>')
+    T = ctx.ty
+    css = (f':scope{{{mark_vars(ctx, "n")}}}' + MARK_CSS +
+           '.op{container-type:inline-size;color:var(--txt)}:where(.op p){margin:0}'
+           '.ot{list-style:none;margin:0;padding:0}'
+           '.ot li{position:relative;display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:8px;'
+           'padding-bottom:12px;min-height:52px}'
+           '.ot li::after{content:"";position:absolute;left:19px;width:2px;top:33px;bottom:-7px;background:var(--ink)}'
+           '.ot li.off::after{left:19.5px;width:1px;background:var(--sub)}.ot li.end::after{display:none}'
+           '.t{display:flex;flex-direction:column;padding-top:9px;min-width:0}'
+           f'.n{{{T("ui")};font-weight:600}}.cur .n{{font-weight:700}}'
+           f'.s{{{T("label")};color:var(--txt2)}}.cur .s{{color:var(--txt)}}'
+           f'.ln{{margin-top:12px;{T("caption")};color:var(--txt2)}}'
+           '@container (min-width:36rem){.ot{display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}'
+           '.ot li{display:flex;flex-direction:column;align-items:center;padding:0 4px;min-height:0;text-align:center}'
+           '.ot li::after{left:calc(50% + 13px);width:calc(100% - 26px);top:19px;bottom:auto;height:2px}'
+           '.ot li.off::after{left:calc(50% + 13px);width:calc(100% - 26px);top:19.5px;height:1px}'
+           '.t{align-items:center;padding-top:4px}.ln{margin-top:20px}}')
+    html = (f'<style>{css}</style><div class="op"><ol class="ot">{"".join(lis)}</ol>'
+            '<p class="ln">Every bill passes the same six steps. Here a state bill is at its hearing, where the public '
+            'can take part.</p></div>')
+    alt = ('The six steps every bill follows, drawn as a tracker draws them, each with its name and its state in words: '
+           '1 Filed, done, a filled circle; 2 Hearing, a heavy ring with a small red disc at its upper right, which says '
+           'you can take part now; 3 Committee vote, 4 First chamber, 5 Second chamber and 6 Governor or President, not '
+           'yet, fine rings. A line joins them, heavy as far as the bill has come and fine ahead. A line under it says '
+           'every bill passes the same six steps, and this state bill is at its hearing, where the public can take part.')
+    return spec(ctx, 's-11-opener', html, None, alt,
+                notes='Chapter 11’s opener (Gate 2 fix pass, call 3, CD-S1): Rules 11.1 and 11.2’s marks at true size '
+                      'in one tracker, flowing with the column. The take-part disc is its one working red.')
+
+
 # ------------------------------------------------------------------------------------------------ chapter
 def build(ctx):
+    s_opener(ctx)
     s_steps(ctx)
     s_marks_table(ctx)
     s_11_1(ctx)
@@ -1324,7 +1372,7 @@ def build(ctx):
                          'only from the signed date.'],
         },
         {
-            'id': '11.4', 'title': 'Mark the one way to take part in red, on its own shape, beside its words.',
+            'id': '11.4', 'title': 'Mark the one way to take part in red, on its own shape.',
             'rule': ['When the public can act on a bill before a date, the step it is at takes the take-part mark: a '
                      'small red disc at the upper right of its ring, with a 1 px Charcoal keyline inside the disc’s edge. '
                      'The words “You can take part now” sit beside it, with the deadline and the way to act. It is the '
@@ -1510,7 +1558,7 @@ def build(ctx):
                          'label it Illustrative.'],
         },
         {
-            'id': '11.9', 'title': 'Follow an agency rule through six steps, and mark the open comment period as the way to take part.',
+            'id': '11.9', 'title': 'Follow an agency rule through six steps.',
             'rule': ['A federal agency writes a rule in six steps: Early notice, Proposed, Comments open, Comments closed, '
                      'Final rule and In effect. Step 1 is optional, so a rule that had no early notice keeps step 1 under a '
                      'slash. While comments are open, step 3 takes the take-part mark from Rule 11.4, with the deadline and '
@@ -1560,8 +1608,8 @@ def build(ctx):
                      'follows the end words as a sentence with its date.',
                      'A status taken from the agency’s own tracking service, or from the Federal Register for a rule, '
                      'needs no mark. A status we piece together ourselves, such as a wait we learn of from the '
-                     'agency’s letter, carries the warning mark and the date we checked it: “Checked April 20. The agency '
-                     'may have acted since.”'],
+                     'agency’s letter, carries a warning with the date we checked it, drawn as Rule 11.15 draws every '
+                     'warning: “Warning: Checked April 20. The agency may have acted since.”'],
             'tokens': ['oa.color.state.warning.mark.onNewsprint'],
             'why': {'text': ['The law lets an agency stop its 20 working days while it waits on the requester, once for '
                              'more information and again to settle fees, and add up to 10 working days in unusual '
@@ -1581,7 +1629,7 @@ def build(ctx):
                 {'label': 'A proposed rule that sits', 'value': '“No action since” and the date, under its step'},
                 {'label': 'After the agency', 'value': 'Mediation or a lawsuit, in a sentence after the end words'},
                 {'label': 'Check date', 'value': 'For a status we piece together ourselves: the warning mark at 24 px, in '
-                                                 'ink, then “Checked” and the date',
+                                                 'ink, then “Warning: Checked” and the date, beside a 4 px bar in ink',
                  'token': 'oa.color.state.warning.mark.onNewsprint'},
                 {'label': 'Marks', 'value': 'Six, always'},
             ],
@@ -1607,6 +1655,7 @@ def build(ctx):
     ch = {
         'number': CH, 'anchor': 'icons', 'title': 'Status and utility icons', 'part': 'Symbols and graphics',
         'instruction': 'Give each record state or interface action a glyph and a word that read without color.',
+        'opener': 's-11-opener',
         'intro': [
             'A glyph here is a small drawn mark, and each one carries its meaning twice, in its shape and in the word '
             'beside it. A reader who sees no color, or prints the page in gray, gets the same meaning as everyone else.',
@@ -1675,7 +1724,7 @@ def build(ctx):
 
 def nb_walk(o, key=None):
     if isinstance(o, str):
-        return o if key in ('specimen', 'token', 'id', 'anchor', 'number', 'before_rule', 'chapter', 'after_rule') else nb(o)
+        return o if key in ('specimen', 'token', 'id', 'anchor', 'number', 'before_rule', 'chapter', 'after_rule', 'opener') else nb(o)
     if isinstance(o, list):
         return [nb_walk(x, key) for x in o]
     if isinstance(o, dict):
@@ -1693,6 +1742,8 @@ def main():
         for k in ('correct', 'failure'):
             used.add(r[k]['specimen'])
     used |= {x['specimen'] for x in ch['extras']}
+    if ch.get('opener'):
+        used.add(ch['opener'])
     missing, unused = used - set(ctx.specs), set(ctx.specs) - used
     if missing or unused:
         raise SystemExit(f'specimens missing {sorted(missing)} unused {sorted(unused)}')

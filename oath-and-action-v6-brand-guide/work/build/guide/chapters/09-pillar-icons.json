@@ -29,7 +29,7 @@
    },
    "failure": {
     "specimen": "s-09-1-failure",
-    "caption": "The four icons in a row with no words. A reader has to decode each drawing, and nothing tells Track’s magnifier from a search button."
+    "caption": "<strong>Fails Rule 09.1.</strong> The four icons in a row with no words. A reader has to decode each drawing, and nothing tells Track’s magnifier from a search button."
    },
    "specs": [
     {
@@ -77,7 +77,7 @@
   {
    "id": "09.2",
    "title": "Underline the current pillar’s word, and add its red only from 48 px.",
-   "rule": "On a page or a section that serves one pillar, underline that pillar’s word in the row, at every size, and set the word bold under 48 px. From 48 px the current icon also keeps its red, as a second sign, and that red is signature red, which never counts against a view’s working red (Rule 05.3). Under 48 px every icon stays one color, the current one included. On Prussian no icon takes red, so the underline marks the current pillar alone.",
+   "rule": "On a page or a section that serves one pillar, underline that pillar’s word in the row and set it bold, at every size. The 48 px row sets all four words bold, so there the underline marks the current one. From 48 px the current icon also keeps its red, as a second sign, and that red is signature red, which never counts against a view’s working red (Rule 05.3). Under 48 px every icon stays one color, the current one included. On Prussian no icon takes red, so the underline marks the current pillar alone.",
    "tokens": [
     "oa.component.icon.accent.onNewsprint",
     "oa.component.icon.accent.onCharcoal"
@@ -92,7 +92,7 @@
    },
    "failure": {
     "specimen": "s-09-2-failure",
-    "caption": "Track marked by its red icon alone, with no underline. A reader who cannot tell red from Charcoal, or who reads the page in gray print, sees no current pillar."
+    "caption": "<strong>Fails Rule 09.2.</strong> Track marked by its red icon alone, with no underline. A reader who cannot tell red from Charcoal, or who reads the page in gray print, sees no current pillar."
    },
    "specs": [
     {
@@ -101,7 +101,7 @@
     },
     {
      "label": "Bold",
-     "value": "The current word, under 48 px"
+     "value": "The current word, at every size; in the 48 px row all four words are bold"
     },
     {
      "label": "Red",
@@ -139,7 +139,7 @@
    },
    "failure": {
     "specimen": "s-09-3-failure",
-    "caption": "Track’s master scaled to 16 px beside its 16 px fit, at true size and enlarged four times. The master’s lines fall under a pixel and draw gray, and its magnifier blurs."
+    "caption": "<strong>Fails Rule 09.3.</strong> Track’s master scaled to 16 px beside its 16 px fit, at true size and enlarged four times. The master’s lines fall under a pixel and draw gray, and its magnifier blurs."
    },
    "specs": [
     {
@@ -209,7 +209,7 @@
    },
    "failure": {
     "specimen": "s-09-4-failure",
-    "caption": "A report’s kicker with Track’s icon before its label. The label says Report, the icon says Track, and no word beside the icon names the pillar."
+    "caption": "<strong>Fails Rule 09.4.</strong> A report’s kicker with Track’s icon before its label. The label says Report, the icon says Track, and no word beside the icon names the pillar."
    },
    "specs": [
     {

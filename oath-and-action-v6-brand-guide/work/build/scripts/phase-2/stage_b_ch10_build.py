@@ -1229,7 +1229,7 @@ def chapter(rows, reads24, like, sheets, figs, icons):
     })
 
     rules.append({
-        'id': '10.4', 'title': 'Set topic and atlas symbols at 48 px or larger, and at 24 px only from the list of 41.',
+        'id': '10.4', 'title': 'Set topic and atlas symbols at 48 px or larger.',
         'rule': [
             'A topic or atlas symbol starts at 48 px, where every line is at least one pixel wide. Forty-one drawings '
             'still read at 24 px, and only those may be set there, in one color. Four of the 41 are the pillar icons, '

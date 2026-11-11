@@ -29,7 +29,7 @@
       },
       "failure": {
         "specimen": "s-12-divider-failure",
-        "caption": "The same article divided by dashed lines. The breaks now read as the atlas’s mark for a plausible connection, and the turn to the reader’s step loses its divider."
+        "caption": "<strong>Fails Rule 12.1.</strong> The same article divided by dashed lines. The breaks now read as the atlas’s mark for a plausible connection, and the turn to the reader’s step loses its divider."
       },
       "specs": [
         {
@@ -86,7 +86,7 @@
       },
       "failure": {
         "specimen": "s-12-watermark-failure",
-        "caption": "The report page with the watermark moved behind its heading and paragraph. Its edges cross the letters, and the words lose the clean ground they need."
+        "caption": "<strong>Fails Rule 12.2.</strong> The report page with the watermark moved behind its heading and paragraph. Its edges cross the letters, and the words lose the clean ground they need."
       },
       "specs": [
         {
@@ -148,7 +148,7 @@
       },
       "failure": {
         "specimen": "s-12-signature-failure",
-        "caption": "The video still with L8 at a watermark’s 10 percent. In the corner of a moving picture the mark all but vanishes."
+        "caption": "<strong>Fails Rule 12.3.</strong> The video still with L8 at a watermark’s 10 percent. In the corner of a moving picture the mark all but vanishes."
       },
       "specs": [
         {
@@ -198,7 +198,7 @@
       },
       "failure": {
         "specimen": "s-12-pattern-failure",
-        "caption": "Nothing on this cover says Oath & Action, and the arcs take the corner the crop of B would sign."
+        "caption": "<strong>Fails Rule 12.4.</strong> Nothing on this cover says Oath & Action, and the arcs take the corner the crop of B would sign."
       },
       "specs": [
         {
@@ -528,12 +528,9 @@
       "reason": "The atlas, with its locator on every view."
     }
   ],
-  "extras": [
-    {
-      "after_rule": "12.1",
-      "specimen": "s-12-index",
-      "label": "Every graphic device and its rule",
-      "caption": "The devices this guide sets, the job of each and the rule that sets it."
-    }
-  ]
+  "extras": [],
+  "opener": {
+    "specimen": "s-12-index",
+    "caption": "The devices this guide sets, the job of each and the rule that sets it."
+  }
 }

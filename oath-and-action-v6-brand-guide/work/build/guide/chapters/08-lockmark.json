@@ -4,6 +4,10 @@
  "title": "The lockmark",
  "part": "Foundations",
  "instruction": "Draw the lockmark from its master, and place it only in its four fixed places.",
+ "opener": {
+  "specimen": "s-08-opener",
+  "caption": "The lockmark in its four places at true size, each cropped to the part that holds it. Rule 08.2 sets the size for each place."
+ },
  "intro": [
   "Democracy has a structure. The lockmark draws it as nine nodes joined by links, with the lever, a larger red node at bottom right, at the place where one change moves the rest. It signs our work in four fixed places: the masthead, the page header, the footer and the sign-off.",
   "Its drawing never changes, and it codes nothing. Chapter 11 sets how a tracker shows a bill’s steps, and words name a series or a pillar."
@@ -27,7 +31,7 @@
    },
    "failure": {
     "specimen": "s-08-1-failure",
-    "caption": "Our fifth edition’s master scaled to 16 px beside the 16 px master. Its nodes shrink to the width of a link and the lever turns into a single pink pixel."
+    "caption": "<strong>Fails Rule 08.1.</strong> Our fifth edition’s master scaled to 16 px beside the 16 px master. Its nodes shrink to the width of a link and the lever turns into a single pink pixel."
    },
    "specs": [
     {
@@ -88,7 +92,7 @@
   {
    "id": "08.2",
    "title": "Place the lockmark only in its four places, once in a view.",
-   "rule": "The lockmark signs four places, at the size each one sets: the masthead, where L3 sets it at 48 px beside the wordmark (Rule 03.6); the page header of a report or slide page, 24 px beside the section label; the footer, 24 px beside the tagline or 16 px beside a chart’s source line; and the sign-off at the bottom right, 96 px on a social card and 48 px on a cover or poster. Each place draws the master made for its size, and a social card draws the 48 px master at exactly twice its size, so its nodes, links and lever still land on whole pixels. A view shows the lockmark once, so when a masthead and a footer share a view, the footer keeps it.",
+   "rule": "The lockmark signs four places: the masthead, the page header, the footer and the sign-off. Each place sets the lockmark’s size, as this rule’s specifications list them, and draws the master made for that size. A social card draws the 48 px master at exactly twice its size, so its nodes, links and lever still land on whole pixels. A view shows the lockmark once, so when a masthead and a footer share a view, the footer keeps it.",
    "tokens": [
     "oa.color.identity.signature.onNewsprint"
    ],
@@ -98,11 +102,11 @@
    },
    "correct": {
     "specimen": "s-08-2-correct",
-    "caption": "The four places at true size: a 768 px site masthead with L3, its lockmark at 48 px; a report page header with the lockmark at 24 px beside the section label; a footer with the lockmark at 24 px beside the tagline, and a chart’s footer with it at 16 px beside the source line; and the bottom-right corner of a 1080 px social card with the lockmark at 96 px inside the 72 px margin."
+    "caption": "The four places at true size, each with the size it sets: the masthead, a report’s page header, two footers and the corner of a social card."
    },
    "failure": {
     "specimen": "s-08-2-failure",
-    "caption": "The lockmark used as list bullets on a flyer, three lockmarks in one view, each one decoration."
+    "caption": "<strong>Fails Rule 08.2.</strong> The lockmark used as list bullets on a flyer, three lockmarks in one view, each one decoration."
    },
    "specs": [
     {
@@ -156,7 +160,7 @@
     "14",
     "23"
    ],
-   "builders": "Pick the master by the size the place sets: the 48 px master for the sign-off, at exactly 96 px on a social card and 48 px on a cover or poster; L3’s masthead master, which holds it already, for the masthead on screen, and L3’s print master for a masthead in print; the 24 px master in page headers and footers; and the 16 px master in a chart’s footer. Set each on whole pixels. Run the feed test on every new template for a social card, on the file you will upload, before it ships. We run the test on the card in the identity proofs with a script of our own, and the asset package will carry a copy of that script that takes any card. Until then, ask the editor to run it on yours."
+   "builders": "Pick the master by the size each place sets in the specifications, and set it on whole pixels. On screen the masthead places L3’s masthead master, which holds the lockmark already, and in print L3’s print master. Run the feed test on every new template for a social card, on the file you will upload, before it ships. We run the test on the card in the identity proofs with a script of our own, and the asset package will carry a copy of that script that takes any card. Until then, ask the editor to run it on yours."
   },
   {
    "id": "08.3",
@@ -173,7 +177,7 @@
    },
    "failure": {
     "specimen": "s-08-3-failure",
-    "caption": "The same bill drawn on the lockmark’s nine nodes, four of them filled to show progress. Nine nodes cannot count six steps, a reader has to decode the filled ones, and the mark that signs our pages changes from bill to bill."
+    "caption": "<strong>Fails Rule 08.3.</strong> The same bill drawn on the lockmark’s nine nodes, four of them filled to show progress. Nine nodes cannot count six steps, a reader has to decode the filled ones, and the mark that signs our pages changes from bill to bill."
    },
    "specs": [
     {

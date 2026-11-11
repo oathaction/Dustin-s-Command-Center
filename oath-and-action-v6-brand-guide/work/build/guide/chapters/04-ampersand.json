@@ -4,6 +4,10 @@
  "title": "The Ampersand and the hinge",
  "part": "Foundations",
  "instruction": "Use the ampersand once per composition to join a commitment to what it produces.",
+ "opener": {
+  "specimen": "s-04-opener",
+  "caption": "Ampersand B at display size, and a hinge headline in its own frame, since a composition carries one ampersand moment (Rule 04.2). On a phone the headline sets in H3, so each phrase stays whole on its line."
+ },
  "intro": [
   "The ampersand is the hinge of the brand. It joins an oath, the commitment a person or an office makes, to the action that keeps it, and in our headlines it joins a rule to its result. Ampersand B is our own drawing: one pen path that crosses itself at the waist, with a beak at the top right and a tail that lands on the baseline.",
   "This chapter covers B drawn alone and the places the hinge appears: the hinge headline, the hinge divider, the hinge diagram, the end mark that closes an article and the hinge-circle badge. It ends with the tiles for avatars and the app icon, and the large crop for covers."
@@ -26,7 +30,7 @@
    },
    "failure": {
     "specimen": "s-04-1-failure",
-    "caption": "Our fifth edition’s ampersand, placed from an old file. It is Lora Bold’s glyph, which anyone with Lora can type, and it has no beak."
+    "caption": "<strong>Fails Rule 04.1.</strong> Our fifth edition’s ampersand, placed from an old file. It is Lora Bold’s glyph, which anyone with Lora can type, and it has no beak."
    },
    "specs": [
     {
@@ -82,7 +86,7 @@
    },
    "failure": {
     "specimen": "s-04-2-failure",
-    "caption": "The same card with a cropped B in the corner and a second B beside the wordmark. Three ampersands compete for one glance."
+    "caption": "<strong>Fails Rule 04.2.</strong> The same card with a cropped B in the corner and a second B beside the wordmark. Three ampersands compete for one glance."
    },
    "specs": [
     {
@@ -103,8 +107,8 @@
   },
   {
    "id": "04.3",
-   "title": "Join a rule to its result with a hinge headline, and give its ampersand the view’s working red.",
-   "rule": "A hinge headline joins two noun phrases with B, as in “The zoning code & the rent.” B takes the view’s working red, the one red each view may spend, unless an error or a step the reader can take now already holds it. Then B takes the headline’s ink. Rule 02.27 sets how to write one, and Rules 01.18 to 01.20 set when to use one.",
+   "title": "Join a rule to its result with a hinge headline.",
+   "rule": "A hinge headline joins two noun phrases with B, as in “The zoning code & the rent.”, and B takes the view’s working red, the one red each view may spend, unless an error or a step the reader can take now already holds it. Then B takes the headline’s ink. Rule 02.27 sets how to write one, and Rules 01.18 to 01.20 set when to use one.",
    "tokens": [
     "oa.color.identity.signature.onNewsprint",
     "oa.color.action.ask.fill.onNewsprint"
@@ -119,7 +123,7 @@
    },
    "failure": {
     "specimen": "s-04-3-failure",
-    "caption": "An Act card with a red ampersand in its headline and a red button below it, two working reds in one view."
+    "caption": "<strong>Fails Rule 04.3.</strong> An Act card with a red ampersand in its headline and a red button below it, two working reds in one view."
    },
    "specs": [
     {
@@ -157,8 +161,8 @@
   },
   {
    "id": "04.4",
-   "title": "Set a hinge divider between how a decision is made and what you can do about it.",
-   "rule": "The hinge divider centers B’s 24 px master on a 1 px line as wide as the text it divides, with 12 px of clear line on each side of B. Line and B take the surface’s ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian. It is never red.",
+   "title": "Set a hinge divider before the step a reader can take.",
+   "rule": "Set the divider between how a decision is made and what you can do about it. It centers B’s 24 px master on a 1 px line as wide as the text it divides, with 12 px of clear line on each side of B. Line and B take the surface’s ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian. It is never red.",
    "tokens": [
     "oa.color.identity.hingeDivider.onNewsprint",
     "oa.color.identity.hingeDivider.onCharcoal",
@@ -174,7 +178,7 @@
    },
    "failure": {
     "specimen": "s-04-4-failure",
-    "caption": "Our fifth edition’s divider, with a red ampersand, above a red button. The divider spends the view’s red, and two red marks compete for the step."
+    "caption": "<strong>Fails Rule 04.4.</strong> Our fifth edition’s divider, with a red ampersand, above a red button. The divider spends the view’s red, and two red marks compete for the step."
    },
    "specs": [
     {
@@ -224,7 +228,7 @@
    },
    "failure": {
     "specimen": "s-04-5-failure",
-    "caption": "The diagram with dashed arcs and a dashed ring, as an early mockup drew it. In the atlas’s key a dashed line marks a connection graded plausible, so the brand’s own idea reads as unproven."
+    "caption": "<strong>Fails Rule 04.5.</strong> The diagram with dashed arcs and a dashed ring, as an early mockup drew it. In the atlas’s key a dashed line marks a connection graded plausible, so the brand’s own idea reads as unproven."
    },
    "specs": [
     {
@@ -277,7 +281,7 @@
    },
    "failure": {
     "specimen": "s-04-6-failure",
-    "caption": "The badge at 16 px after an article’s last word. Beside the registered trademark sign at the same size, its ring reads as the same mark."
+    "caption": "<strong>Fails Rule 04.6.</strong> The badge at 16 px after an article’s last word. Beside the registered trademark sign at the same size, its ring reads as the same mark."
    },
    "specs": [
     {
@@ -356,7 +360,7 @@
    },
    "failure": {
     "specimen": "s-04-7-failure",
-    "caption": "A Newsprint circle in a white feed with no keyline. Its edge measures 1.41 to 1 against the page, so the tile fades and B floats."
+    "caption": "<strong>Fails Rule 04.7.</strong> A Newsprint circle in a white feed with no keyline. Its edge measures 1.41 to 1 against the page, so the tile fades and B floats."
    },
    "specs": [
     {
@@ -413,7 +417,7 @@
    },
    "failure": {
     "specimen": "s-04-8-failure",
-    "caption": "The crop moved up behind the title. The title’s letters cross B’s strokes and lose their edge."
+    "caption": "<strong>Fails Rule 04.8.</strong> The crop moved up behind the title. The title’s letters cross B’s strokes and lose their edge."
    },
    "specs": [
     {

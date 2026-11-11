@@ -31,9 +31,11 @@ No master is written. Every drawing is placed from its file.
 """
 import json
 import re
+import sys
 from pathlib import Path
 
-import stage_a_identity_lib as LIB
+sys.path.insert(0, str(Path(__file__).resolve().parent))   # python3 -I leaves the script's folder off the path
+import stage_a_identity_lib as LIB  # noqa: E402
 from stage_a_identity_lib import E, ROOT, ID_DIR, WM, LOCK, mark, tv, ink, dnp, raster_png
 from stage_a_identity_s03 import rec as _rec
 
@@ -611,3 +613,10 @@ def s_17_hinge_failure():
                       "masters, embedded as PNG and drawn with pixelated scaling, since a 2x screen hides the fault. The "
                       "wordmark's enlargement keeps its first 104 px. check_exempt scale: the enlargements show pixels on "
                       "purpose. Written by stage_c_identity_ch17.py."))
+
+
+if __name__ == "__main__":
+    # This module is placed by the identity build, which writes its specimens with the rest of the identity designer's
+    # (promotion_identity.py specimens). Run alone, it runs that build, so the generator chain's line for it does its work.
+    import stage_a_identity_build
+    stage_a_identity_build.build()

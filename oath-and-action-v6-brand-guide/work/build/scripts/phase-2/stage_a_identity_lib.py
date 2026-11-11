@@ -727,11 +727,42 @@ def inline_master(relpath, h, style=""):
     return s
 
 
+def trim_css(css, used):
+    """The rules of a style sheet whose selectors name only classes in used; @media blocks keep their kept rules. Gate
+    2's fix pass: an opener carries only the shared rules it uses, so it stays under 16 KB as placed (CD-S1)."""
+    out, i = [], 0
+    while i < len(css):
+        k = css.find("{", i)
+        if k < 0:
+            break
+        head = css[i:k].strip()
+        depth, j = 0, k
+        while j < len(css):
+            depth += {"{": 1, "}": -1}.get(css[j], 0)
+            j += 1
+            if depth == 0:
+                break
+        block = css[k + 1:j - 1]
+        if head.startswith("@media"):
+            inner = trim_css(block, used)
+            if inner:
+                out.append(f"{head}{{{inner}}}")
+        elif head and set(re.findall(r"\.([A-Za-z][\w-]*)", head)) <= used:
+            out.append(f"{head}{{{block}}}")
+        i = j
+    return "\n".join(out) + "\n"
+
+
 def fragment(spec_id, body, *, cls="", extra_css="", role_img=None, attrs=""):
     """One self-contained specimen fragment: a style block, then the root element. The shell's plate stage names the
-    specimen from the manifest's alt (role="img"), so the fragment carries no name of its own."""
+    specimen from the manifest's alt (role="img"), so the fragment carries no name of its own. An opener (an id that
+    ends "-opener") keeps only the shared rules its classes use."""
     if body.startswith('<div class="oai-panel oai-s-newsprint"'):
         body = '<div class="oai-pad oai-s-newsprint"' + body[len('<div class="oai-panel oai-s-newsprint"'):]
     body = with_bar(spec_id, body)
-    return curl_html(f'<style>{CSS}{extra_css}</style>\n'
+    base = CSS
+    if spec_id.endswith("-opener"):
+        used = {"oai"} | {c for v in re.findall(r'class="([^"]*)"', body + cls) for c in v.split()}
+        base = trim_css(CSS, used)
+    return curl_html(f'<style>{base}{extra_css}</style>\n'
                      f'<div class="oai {cls}" data-oai="{spec_id}"{attrs}>{body}</div>\n')

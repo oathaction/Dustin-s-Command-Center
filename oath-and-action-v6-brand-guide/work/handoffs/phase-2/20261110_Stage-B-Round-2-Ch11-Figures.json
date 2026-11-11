@@ -129,6 +129,8 @@
   }
  },
  "tokens_cited": [
+  "oa.border.width.bar",
+  "oa.border.width.hairline",
   "oa.color.border.hairline",
   "oa.color.border.hairline.onCharcoal",
   "oa.color.border.hairline.onNewsprint",
@@ -176,7 +178,6 @@
   "oa.color.text.secondary.onNewsprint",
   "oa.component.button.ask.fill",
   "oa.component.button.ask.fill.onNewsprint",
-  "oa.component.button.ask.keyline",
   "oa.component.button.ask.keyline.onNewsprint",
   "oa.component.button.ask.label",
   "oa.component.button.ask.label.onNewsprint",
