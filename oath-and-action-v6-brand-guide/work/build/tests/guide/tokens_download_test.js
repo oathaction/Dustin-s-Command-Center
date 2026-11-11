@@ -105,7 +105,8 @@ const all = (xs, w) => xs.length > 0 && xs.every((x) => x === w);
   const arg = process.argv.slice(2).find((x, i, a) => !x.startsWith('--') && a[i - 1] !== '--results');
   const file = arg ? path.resolve(arg) : '';
   if (!file || !fs.existsSync(file)) { console.error('usage: node tokens_download_test.js <page.html> [--results out.json]'); process.exit(2); }
-  const zm = fs.readFileSync(file, 'utf8').match(/data-oa-zip="([A-Za-z0-9+\/=]+)"/);
+  // the colophon's link: since round 1 the page may carry tokens.json's zip earlier, in Rule 26.8
+  const zm = fs.readFileSync(file, 'utf8').match(/id="tokens-download"[^>]*?data-oa-zip="([A-Za-z0-9+\/=]+)"/);
   if (zm) ZIP_WORDS = `Download tokens.css in a zip file, ZIP, ${kb(Buffer.from(zm[1], 'base64').length)}`;
   const browser = await chromium.launch();
   const cases = [];

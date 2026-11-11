@@ -368,7 +368,7 @@ AX_CSS = minify("""
 .ax-tr{left:auto;right:-10px}.ax-bl{top:auto;bottom:-10px}.ax-br{top:auto;bottom:-10px;left:auto;right:-10px}
 .ax-t{position:absolute;top:0;bottom:0;left:-14px;width:5px;border:2px solid var(--oa-color-text-primary);border-right:0}
 .ax-t .ax-n{top:50%;left:-27px;margin-top:-10px}
-.ax-in{top:6px;left:6px}.ax-inr{top:6px;left:auto;right:6px}
+.ax-in{top:6px;left:6px}.ax-inr{top:6px;left:auto;right:6px}.ax-l{top:2px;left:-28px}
 .ax-k{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px 24px}
 @container (min-width:34rem){.ax-k{grid-template-columns:1fr 1fr}}
 .ax-k li{position:relative;min-height:22px;padding-left:30px;font:var(--oa-type-body-small);color:var(--oa-color-text-primary)}
@@ -388,7 +388,15 @@ def render(sets, root, key, extra_css=''):
     # shorten the code's class names inside the plate (D2-1366); a class holding "illus" keeps its name, so the shell
     # still finds the piece's Illustrative label
     used = sorted({c for c in classes if c.startswith('oa-') and 'illus' not in c}, key=lambda c: (-len(c), c))
-    short = {c: f'c{i}' for i, c in enumerate(used)}
+    # letters only: the specimen build leaves a class unprefixed after a digit, so .c9.c1 would lose its second class
+    def letters(i):
+        out = ''
+        while True:
+            out = 'abcdefghijklmnopqrstuvwxyz'[i % 26] + out
+            i = i // 26 - 1
+            if i < 0:
+                return 'k' + out
+    short = {c: letters(i) for i, c in enumerate(used)}
 
     markup = re.sub(r'class="([^"]*)"', lambda m: 'class="' + ' '.join(short.get(c, c) for c in m.group(1).split()) + '"',
                     markup)
@@ -551,12 +559,12 @@ def p06():
     nav.up = head
     head.k.insert(head.k.index(bar) + 1, nav)
     pin(q(bar, 'oa-masthead-home'), 1)
-    pin(nav, 2, 'tr')
+    pin(nav, 2, 'l')
     pin(q(nav, 'oa-masthead-part'), 3, 'bl')
     menu = q(bar, 'oa-masthead-menu')
     bracket(menu, 4)
     pin(menu, 5, 'tr')
-    pin(q(dlg, 'oa-masthead-dialog-name'), 6)
+    pin(q(dlg, 'oa-masthead-dialog-name'), 6, 'l')
     pin(q(dlg, 'oa-masthead-close'), 7, 'tr')
     rows = qa(dlg, 'oa-masthead-row-link')
     pin(rows[0], 8, 'tr')
@@ -570,8 +578,8 @@ def p06():
            (7, 'Close the menu', 'The cross and its words; Escape closes it too, and focus returns to Menu'),
            (8, 'Current row', 'The selected band, a 4 px bar and bold words'),
            (9, 'Row', 'Each part again, 44 px tall')]
-    extra = ('.oa-masthead-nav.ax-wide{display:block;margin:12px 0 0;padding:0 16px;border-top:1px dashed var(--oa-color-border-hairline)}'
-             '.oa-masthead-wm--16{display:block}'
+    extra = ('.ax-wide.oa-masthead-nav{display:block;margin:12px 0 0;padding:0 16px;border-top:1px dashed var(--oa-color-border-hairline)}'
+             '.oa-masthead-wm--16{display:block}.oa-masthead-bar .oa-masthead-menu{display:inline-flex}'
              '.oa-masthead-dialog{display:block;height:auto;margin-top:16px;border:1px solid var(--oa-color-border-strong);overflow:visible}'
              '.oa-masthead-dialog-head{position:static}')
     return ['masthead'], r, key, 'a masthead and its phone menu', '', False, extra
