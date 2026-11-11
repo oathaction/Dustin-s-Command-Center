@@ -51,7 +51,7 @@
   .oa-table-thead { display: block; margin-bottom: var(--oa-space-100) }
   .oa-table-thead .oa-table-row { display: flex; flex-wrap: wrap; column-gap: var(--oa-space-300); border-bottom: var(--oa-border-width-rule) solid var(--oa-color-border-strong) }
   .oa-table-th { display: block; padding: 0; border: 0 }
-  .oa-table-th--plain, .oa-table-thead--still { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%) }
+  .oa-table-th--plain, .oa-table-thead--still { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
   .oa-table-tbody .oa-table-row { padding: var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
   .oa-table-td { display: flex; gap: var(--oa-space-150); padding: var(--oa-space-050) 0; border: 0 }
   .oa-table-label { display: block; flex: none; width: 4.5em; font-weight: var(--oa-font-weight-bold) }

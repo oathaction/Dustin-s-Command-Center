@@ -88,7 +88,7 @@
       "code": {
         "set": "c-18-button",
         "name": "Buttons",
-        "caption": "The primary button, the ask, a quiet button with its icon and an unavailable button with its reason, live. Tab to the unavailable one and press it: it keeps focus, and its line says why it waits."
+        "caption": "Every kind of button, live: primary, ask and quiet, two with a utility icon, one unavailable with its reason, one sending, and the ask stepped down while an error holds the red. Tab to “Send your comment” and press it: it keeps focus, and its line says why it waits."
       },
       "specs": [
         {
@@ -168,7 +168,7 @@
       "code": {
         "set": "c-18-toggle",
         "name": "Toggle buttons and chips",
-        "caption": "A toggle button and three filter chips, live. Press Space on a chip to turn it on and off; focus stays where it is."
+        "caption": "A toggle button and four filter chips, live, one chip waiting with its reason. Press Space on each: the line under it says what changed, and focus stays where it is."
       },
       "specs": [
         {
@@ -222,7 +222,7 @@
       "title": "Offer one of a few choices as radio buttons in a named group.",
       "rule": [
         "When a reader picks one of two to five choices and only one can hold, such as the size of a page, use native radio buttons in a fieldset whose legend names the choice. Draw them as a row of segments or as a list, and make the whole segment the label, so a press anywhere on it chooses.",
-        "The checked choice takes the one look for a current choice (Rule 17.10): a check before the word, the word in bold and a 2 px edge. A choice applies at once, with no Apply button, and focus stays on it. A choice that cannot be made yet stays out of the group, and a hint under the legend says why."
+        "The checked choice takes the one look for a current choice (Rule 17.10): a check before the word, the word in bold and a 2 px edge. A choice applies at once, with no Apply button, and focus stays on it. A choice that cannot be made yet stays in view as a disabled radio, with a line under the row that says why, and the group points to that line with aria-describedby, so a screen reader hears it on entering the group."
       ],
       "tokens": [
         "--oa-color-border-strong",
@@ -232,13 +232,13 @@
       ],
       "why": {
         "text": [
-          "Radio buttons tell a screen reader that only one choice holds and how many there are, and the arrow keys move between them with no script. A pair of pressed buttons says neither. A disabled radio is skipped by the arrow keys and hides its reason, so a choice that waits leaves the group and the hint explains it."
+          "Radio buttons tell a screen reader that only one choice holds and how many there are, and the arrow keys move between them with no script. A pair of pressed buttons says neither. The arrow keys pass a disabled radio, so the line the group points to tells every reader why it waits."
         ],
         "basis": "WCAG 2.2 SC 1.3.1, 3.2.2 and 4.1.2; APG Radio Group pattern"
       },
       "correct": {
         "specimen": "s-18-03-anatomy",
-        "caption": "The parts of a choice: the legend, each segment with its word and its edge, the checked segment’s check, bold word and 2 px edge, the focus ring around the whole segment, and the hint under the legend."
+        "caption": "The parts of a choice: the legend, each segment with its word and its edge, the checked segment’s check, bold word and 2 px edge, the focus ring around the whole segment, and the line under the row that says why a choice waits."
       },
       "failure": {
         "specimen": "s-18-03-failure",
@@ -247,7 +247,7 @@
       "code": {
         "set": "c-18-choice",
         "name": "Choice",
-        "caption": "A choice of page size, live. Tab into it, then use the arrow keys: each one checks the next choice."
+        "caption": "A choice of how to show a bill, live. Tab into it and use the arrow keys: each checks the next choice and passes the one that waits."
       },
       "specs": [
         {
@@ -256,11 +256,11 @@
         },
         {
           "label": "States",
-          "value": "Unchecked: a 1 px edge. Checked: a check before the word, the word in bold and a 2 px edge (Rule 17.10). Hover: the word underlines. Focus: the ring around the whole segment."
+          "value": "Unchecked: a 1 px edge. Checked: a check before the word, the word in bold and a 2 px edge (Rule 17.10). Hover: the word underlines. Focus: the ring around the whole segment. Waiting: a disabled radio with a dashed edge and its reason under the row."
         },
         {
           "label": "Keyboard",
-          "value": "Tab enters the group at the checked choice. The arrow keys move and check, wrapping at the ends. Space checks the focused choice when none is checked. Tab leaves the group."
+          "value": "Tab enters the group at the checked choice. The arrow keys move and check, wrapping at the ends and passing a choice that waits. Space checks the focused choice when none is checked. Tab leaves the group."
         },
         {
           "label": "Accessible name",
@@ -326,7 +326,7 @@
       "code": {
         "set": "c-18-theme-switch",
         "name": "Theme switch",
-        "caption": "The theme switch, live. In this guide it changes only its own stage and stores nothing, so the guide stays on Newsprint; in a product it changes the whole page and remembers the choice."
+        "caption": "The theme switch, live. Match my device is checked first, so each stage follows the theme it stands in. In this guide a choice changes only its own stage and stores nothing; in a product it changes the whole page and remembers the choice."
       },
       "specs": [
         {
@@ -377,7 +377,8 @@
         "21"
       ],
       "builders": [
-        "Put <code><meta name=\"color-scheme\" content=\"light dark\"></code> in the head of a themed product, with the head script of Rule 26.6 before the stylesheet. The switch’s own script stores only light or dark, and removes the key for Match my device."
+        "Put <code><meta name=\"color-scheme\" content=\"light dark\"></code> in the head of a themed product, with the head script of Rule 26.6 before the stylesheet, as the Head script panel below gives it. The switch’s own script stores only light or dark, and removes the key for Match my device.",
+        "The copy names a sample page with <code>data-oa-theme-for</code>, so the guide’s live copy changes only its own stage. Leave the attribute out in a product, and the switch sets the page’s root and keeps the reader’s choice."
       ]
     },
     {
@@ -411,7 +412,7 @@
       "code": {
         "set": "c-18-link",
         "name": "Links",
-        "caption": "A paragraph with a link, a link to another site and a short list of links, live. The mark stays with the last word at every width."
+        "caption": "A skip link, two links in a sentence, one of them to another site, and a list that marks the page you are on, live. The mark stays with the last word at every width."
       },
       "specs": [
         {
@@ -652,7 +653,7 @@
       "code": {
         "set": "c-18-disclosure",
         "name": "Disclosure",
-        "caption": "Two disclosures, live. Press Enter or Space on a summary to open it; the chevron turns at once under reduced motion."
+        "caption": "Two disclosures built on details and summary and one built on a button, live. Press Enter or Space on each to open or close it."
       },
       "specs": [
         {
@@ -735,7 +736,7 @@
       "code": {
         "set": "c-18-tabs",
         "name": "Tabs",
-        "caption": "Three tabs, live. Tab to the selected one, then use the arrow keys, Home and End."
+        "caption": "Four tabs, live, the last waiting with its reason. Tab to the selected one, then use the arrow keys, Home and End."
       },
       "specs": [
         {
@@ -790,7 +791,7 @@
       "title": "Build a table from table markup, and sort a column with a button in its heading.",
       "rule": [
         "A table has a caption that names it, column headings in th with <code>scope=\"col\"</code>, and row headings where the first column names each row. A column a reader can sort holds a button in its heading, with the heading’s words and the 16 px sort arrow after them. The sorted column’s heading carries aria-sort, and the arrow turns up for ascending and down for descending.",
-        "A press sorts the column, a second press reverses it, and focus stays on the button. A status line under the table says the order in words, such as “Sorted by date, newest first.” The same line says when rows are loading, what is missing when there are none, and the error with its mark when they fail to load (Rules 18.18 and 18.19). On a phone a wide table scrolls inside a scroll region (Rule 18.11)."
+        "A press sorts the column, a second press reverses it, and focus stays on the button. A status line under the table says the order in words, such as “Sorted by date, newest first.” The same line says when rows are loading, what is missing when there are none, and the error with its mark when they fail to load (Rules 18.18 and 18.19). On a phone a table either scrolls inside a scroll region (Rule 18.11) or reads as one card for each row, each value under its column’s word. A table drawn as cards states its roles with role attributes, so it keeps its meaning however CSS displays it."
       ],
       "tokens": [
         "--oa-color-border-hairline",
@@ -815,7 +816,7 @@
       "code": {
         "set": "c-18-table",
         "name": "Sortable table",
-        "caption": "A short table of bills, live. Sort a column with Enter, then press it again to reverse it; the line under the table says the order."
+        "caption": "A table of four bills, live, with its loading, empty and error states under it. Sort a column with Enter, then press it again to reverse it; the line under the table says the order."
       },
       "specs": [
         {
@@ -869,7 +870,7 @@
       "id": "18.11",
       "title": "Let wide content scroll inside a named frame that the Tab key reaches only while it scrolls.",
       "rule": [
-        "Content wider than its column, such as a wide table or a drawing at true size, scrolls sideways inside its own frame, so the page itself never scrolls sideways (Rule 07.6). While it overflows, the frame takes <code>tabindex=\"0\"</code>, a name that ends “Scroll sideways to see all of it.” and the visible hint “Wider than this column. Scroll the frame sideways to see all of it.” Once it fits, the frame drops all three.",
+        "Content wider than its column, such as a wide table or a drawing at true size, scrolls sideways inside its own frame, so the page itself never scrolls sideways (Rule 07.6). While it overflows, the frame takes <code>tabindex=\"0\"</code> and the role of a group named for what it holds, and the hint “Wider than this column. Scroll the frame sideways to see all of it.” shows above it and describes it. Once it fits, the frame drops all three.",
         "Its focus ring sits inside the frame, where the frame’s edge cannot clip it. The arrow keys scroll a focused frame, and the page around it stays where it is."
       ],
       "tokens": [
@@ -894,7 +895,7 @@
       "code": {
         "set": "c-18-scroll-region",
         "name": "Scroll region",
-        "caption": "A table wider than its frame, live. Tab to the frame and use the arrow keys; widen the window until it fits and the stop and the hint go away."
+        "caption": "A bill’s six steps in a frame, live. Where the frame is narrower than the steps, as on a phone, Tab reaches it and the arrow keys scroll it; where it holds them whole, it takes no stop and shows no hint."
       },
       "specs": [
         {
@@ -911,11 +912,11 @@
         },
         {
           "label": "Accessible name",
-          "value": "What it holds, then “Scroll sideways to see all of it.”"
+          "value": "What it holds, such as “The six steps of a bill”, with the hint as its description."
         },
         {
           "label": "A screen reader hears",
-          "value": "The group and its name when focus enters."
+          "value": "The group, its name and the hint when focus enters."
         },
         {
           "label": "Target",
@@ -946,7 +947,7 @@
       "id": "18.12",
       "title": "Show code in labeled panels, each with a Copy button named for what it copies.",
       "rule": [
-        "Code a reader can copy sits in one panel per file, HTML, CSS or Script, each with its label and a Copy button named for its panel: “Copy the HTML”, “Copy the CSS” and “Copy the script”. One status line under the panels says what was copied, with the success mark, such as “Copied the CSS of the theme switch, 32 lines, to the clipboard.” The code keeps its own line breaks at 14 px, and a panel that overflows scrolls as Rule 18.11 sets.",
+        "Code a reader can copy sits in one panel per file, HTML, CSS or Script, each with its label and a Copy button named for its panel: “Copy the HTML”, “Copy the CSS” and “Copy the script”. One status line under the panels says what was copied, with the success mark, such as “Copied the CSS, 2 lines, to the clipboard.” The code keeps its own line breaks at 14 px, and a panel that overflows scrolls as Rule 18.11 sets.",
         "When the browser refuses to copy, the line turns into an error with its mark, “Error:”, the Error Band and the 4 px red bar, and says how to copy by hand. The code is then selected in a field under the line, with focus on it (Rule 18.13)."
       ],
       "tokens": [
@@ -1107,7 +1108,7 @@
       "title": "Name each download for its file, type and size, and say why one is not ready.",
       "rule": [
         "A download is a link with the download attribute when it fetches a file, and a button when a script builds the file. Its words start with “Download” and name the file, its type and its size, in kilobytes of 1,000 bytes: “Download tokens.css, CSS, 93 KB”. The download icon, an arrow into a tray, sits before the word (Rule 11.11).",
-        "A file that is not ready keeps its control in place as a button with aria-disabled, a dashed edge and a line that says why and when it will be ready. A press does nothing, and focus stays."
+        "A file that is not ready keeps its control in place and in the Tab order, with aria-disabled, a dashed edge and a line that says why and when it will be ready. A press does nothing, and focus stays."
       ],
       "tokens": [
         "--oa-color-state-disabled-text",
@@ -1137,7 +1138,7 @@
       "specs": [
         {
           "label": "Pattern",
-          "value": "APG Link, on <code><a href download></code>; APG Button when a script builds the file or it is not ready."
+          "value": "APG Link, on <code><a href download></code>; APG Button when a script builds the file. A file not ready keeps its control focusable, with aria-disabled."
         },
         {
           "label": "States",
@@ -1186,7 +1187,7 @@
       "id": "18.15",
       "title": "Search with a labeled field that says the count and the advice in one status line.",
       "rule": [
-        "A search sits in a search landmark, with a visible label above its field and a field of type search; a placeholder never stands in for the label. Results update as the reader types, and focus stays in the field. The status line under it gives the count and, when nothing matches, the advice in the same line: “0 of 124 symbols. No symbol matches. Clear the search or the filters to see more.”",
+        "On a product page a search sits in a search landmark, the search element, so a screen reader can jump straight to it. It has a visible label above its field and a field of type search; a placeholder never stands in for the label. Results update as the reader types, and focus stays in the field. The status line under it gives the count and, when nothing matches, the advice in the same line: “0 of 125 symbols. No symbol matches. Clear the search or the filters to see more.”",
         "Once the field holds text, a Clear the search control appears at its end, a 44 by 44 px cross (Rule 11.11), which empties the field and returns focus to it. Escape does the same. Where results come from a server, the line says “Searching” while they load."
       ],
       "tokens": [
@@ -1234,7 +1235,7 @@
         },
         {
           "label": "A screen reader hears",
-          "value": "The search landmark; the label and the field’s role; once typing pauses, the status line, such as “5 of 124 symbols.”"
+          "value": "The search landmark; the label and the field’s role; once typing pauses, the status line, such as “5 of 125 symbols.”"
         },
         {
           "label": "Target",
@@ -1914,7 +1915,7 @@
       "title": "Write a typed ID with its type in words, and make it a link only when it opens the record.",
       "rule": [
         "A typed ID names a record in the atlas by its type and its code together, such as “Loop R10” or “Reform R-01”, so a reader never meets a bare code (chapter 02’s house rule H11). The chip sets both in the label style on a hairline edge, in the text’s ink, and color never codes its type.",
-        "A chip that opens its record is a link, with the record’s name in its words or its description, an underline on hover and a target at least 24 px tall. A chip that only names a record is plain text, with no role and no Tab stop."
+        "A chip that opens its record is a link, with an underline on hover and a target at least 24 px tall; where the words around it do not name the record, the link’s description does. A chip that only names a record is plain text, with no role and no Tab stop."
       ],
       "tokens": [
         "--oa-color-border-hairline",
@@ -1938,7 +1939,7 @@
       "code": {
         "set": "c-18-id-chip",
         "name": "Typed ID chip",
-        "caption": "Two chips, live: one that names a loop and one that links to a reform’s record."
+        "caption": "Two chips that name a record and one that opens it, live."
       },
       "specs": [
         {

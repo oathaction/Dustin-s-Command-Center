@@ -2545,3 +2545,9 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 | D2-1330 | The print L3 files keep their round 0 title ("Proposed for board C") and bytes; the asset package's copy takes a final title at Phase 3 | The brief keeps approved files' bytes, and the guide strips titles when it inlines a master |
 | D2-1331 | The dark-card feed test's 2 by 2 block count goes to the creative director's round 2 reading | It changes how Rule 08.2's dark test counts, inside the approved rule, and needs a second eye |
 | D2-1332 | The card's 0.16 px offset in the built page goes to the engineer as a low-priority shell fix | The sign-off snaps to whole pixels; the wordmark and type draw slightly softer at 1x |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1333 | The promotion of drawings board C is closed. Checked by the main session on chapters 01 to 12 alone (the round 1 chapters set aside): the generator chain changed no file; `guide_build.py --strict` 0 warnings, 132 rules, 307 specimens, 6,869,033 bytes; the token tests pass; `guide_check.js` at 1440, 1024, 390 and 360 px PASS with 0 failures, 1,102 same-page links, and `fitSwitch` showing the fit at 1x and the master at 2x and 3x in all 77 switches | D2-1259; V12's checks; the round 1 chapters were still being written |

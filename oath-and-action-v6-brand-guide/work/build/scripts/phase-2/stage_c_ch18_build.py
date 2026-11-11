@@ -107,6 +107,9 @@ R_F01 = r2('failure 18.1: Dim Newsprint word on Newsprint', 'dimNewsprint', 'new
 R_F05 = r2('failure 18.5: Prussian link beside Charcoal text', 'prussian', 'charcoal')
 R_F15 = r2('failure 18.15: Dim Newsprint placeholder on White', 'dimNewsprint', 'white')
 TOKENS_KB = f'{max(1, round(len(TOKENS_CSS.read_bytes()) / 1000)):,} KB'
+CL_INVENTORY = ROOT / 'work/build/assets/civic-line-v6/20261110_Civic-Line-V6-Inventory.json'
+CL_COUNT = json.loads(CL_INVENTORY.read_text())['count']          # Rule 18.15's example reads the set in use
+FIG['Civic Line drawings in use'] = {'value': str(CL_COUNT), 'method': 'count in 20261110_Civic-Line-V6-Inventory.json'}
 FIG['tokens.css size'] = {'value': TOKENS_KB, 'method': 'bytes of work/build/tokens/tokens.css over 1,000, rounded (D2-1209)'}
 
 
@@ -259,8 +262,9 @@ rule(n=1, set='c-18-button', name='Buttons',
      basis='WCAG 2.2 SC 1.4.1, 2.1.1, 2.5.8 and 4.1.2; APG Button pattern',
      anatomy='The parts of a button: its word, the 24 px utility icon beside it, its fill or 1 px edge, the 44 px '
              'height, the focus ring at its gap, and the reason line an unavailable button points to.',
-     code_caption='The primary button, the ask, a quiet button with its icon and an unavailable button with its reason, '
-                  'live. Tab to the unavailable one and press it: it keeps focus, and its line says why it waits.',
+     code_caption='Every kind of button, live: primary, ask and quiet, two with a utility icon, one unavailable with its '
+                  'reason, one sending, and the ask stepped down while an error holds the red. Tab to “Send your comment” '
+                  'and press it: it keeps focus, and its line says why it waits.',
      specs=specs(
          (L_PAT, 'APG Button, on the native <code><button type="button"></code>.'),
          (L_ST, 'Default. Hover: the primary fill turns Prussian on Newsprint and White on Charcoal, and the word '
@@ -314,8 +318,8 @@ rule(n=2, set='c-18-toggle', name='Toggle buttons and chips',
      basis='WCAG 2.2 SC 1.4.1, 1.4.11 and 4.1.2; APG Button pattern, the toggle button',
      anatomy='The parts of a chip, off and on: its word, the 1 px edge, then the check before the word, the bold word '
              'and the 2 px edge, at 44 px tall.',
-     code_caption='A toggle button and three filter chips, live. Press Space on a chip to turn it on and off; focus '
-                  'stays where it is.',
+     code_caption='A toggle button and four filter chips, live, one chip waiting with its reason. Press Space on each: '
+                  'the line under it says what changed, and focus stays where it is.',
      specs=specs(
          (L_PAT, 'APG Button, as a toggle button with aria-pressed. A long list of filters inside a form may use '
                  'checkboxes instead (APG Checkbox).'),
@@ -353,22 +357,26 @@ rule(n=3, set='c-18-choice', name='Choice',
            'make the whole segment the label, so a press anywhere on it chooses.',
            'The checked choice takes the one look for a current choice (Rule 17.10): ' + PRESSED.replace(' (Rule 17.10)', '')
            + '. A choice applies at once, with no Apply button, and focus stays on it. A choice that cannot be made yet '
-           'stays out of the group, and a hint under the legend says why.'],
+           'stays in view as a disabled radio, with a line under the row that says why, and the group points to that '
+           'line with aria-describedby, so a screen reader hears it on entering the group.'],
      tokens=['--oa-color-border-strong', '--oa-color-text-primary', 'oa.border.width.rule', 'oa.size.target.touch'],
      why=['Radio buttons tell a screen reader that only one choice holds and how many there are, and the arrow keys move '
-          'between them with no script. A pair of pressed buttons says neither. A disabled radio is skipped by the arrow '
-          'keys and hides its reason, so a choice that waits leaves the group and the hint explains it.'],
+          'between them with no script. A pair of pressed buttons says neither. The arrow keys pass a disabled radio, so '
+          'the line the group points to tells every reader why it waits.'],
      basis='WCAG 2.2 SC 1.3.1, 3.2.2 and 4.1.2; APG Radio Group pattern',
      anatomy='The parts of a choice: the legend, each segment with its word and its edge, the checked segment’s check, '
-             'bold word and 2 px edge, the focus ring around the whole segment, and the hint under the legend.',
-     code_caption='A choice of page size, live. Tab into it, then use the arrow keys: each one checks the next choice.',
+             'bold word and 2 px edge, the focus ring around the whole segment, and the line under the row that says why a choice '
+             'waits.',
+     code_caption='A choice of how to show a bill, live. Tab into it and use the arrow keys: each checks the next choice '
+                  'and passes the one that waits.',
      specs=specs(
          (L_PAT, 'APG Radio Group, on native <code><input type="radio"></code> in a <code><fieldset></code> with a '
                  '<code><legend></code>.'),
          (L_ST, 'Unchecked: a 1 px edge. Checked: ' + PRESSED + '. Hover: the word underlines. Focus: the ring around the '
-                'whole segment.'),
-         (L_KEY, 'Tab enters the group at the checked choice. The arrow keys move and check, wrapping at the ends. Space '
-                 'checks the focused choice when none is checked. Tab leaves the group.'),
+                'whole segment. Waiting: a disabled radio with a dashed edge and its reason under the row.'),
+         (L_KEY, 'Tab enters the group at the checked choice. The arrow keys move and check, wrapping at the ends and '
+                 'passing a choice that waits. Space checks the focused choice when none is checked. Tab leaves the '
+                 'group.'),
          (L_NAME, 'The legend names the group; each label names its choice.'),
          (L_HEAR, 'The group’s name on entry, then the choice’s word, “radio button”, “checked” and its place, such as 2 '
                   'of 3; after an arrow key, the next choice the same way.'),
@@ -411,8 +419,9 @@ rule(n=4, set='c-18-theme-switch', name='Theme switch',
      basis='WCAG 2.2 SC 3.2.3 and 4.1.2; APG Radio Group pattern; design judgment',
      anatomy='The parts of the theme switch: the legend “Theme”, the three segments Light, Dark and Match my device, the '
              'checked segment’s check, bold word and 2 px edge, and its place in the masthead.',
-     code_caption='The theme switch, live. In this guide it changes only its own stage and stores nothing, so the guide '
-                  'stays on Newsprint; in a product it changes the whole page and remembers the choice.',
+     code_caption='The theme switch, live. Match my device is checked first, so each stage follows the theme it stands '
+                  'in. In this guide a choice changes only its own stage and stores nothing; in a product it changes the '
+                  'whole page and remembers the choice.',
      specs=specs(
          (L_PAT, 'APG Radio Group, as Rule 18.3.'),
          (L_ST, 'Checked and unchecked, as Rule 18.3, with Match my device checked first. No unavailable state: every '
@@ -433,8 +442,11 @@ rule(n=4, set='c-18-theme-switch', name='Theme switch',
      ),
      related=['26', '20', '21'],
      builders=['Put <code><meta name="color-scheme" content="light dark"></code> in the head of a themed product, with '
-               'the head script of Rule 26.6 before the stylesheet. The switch’s own script stores only light or dark, '
-               'and removes the key for Match my device.'],
+               'the head script of Rule 26.6 before the stylesheet, as the Head script panel below gives it. The switch’s '
+               'own script stores only light or dark, and removes the key for Match my device.',
+               'The copy names a sample page with <code>data-oa-theme-for</code>, so the guide’s live copy changes '
+               'only its own stage. Leave the attribute out in a product, and the switch sets the page’s root and keeps '
+               'the reader’s choice.'],
      failure=dict(
          caption='<strong>Fails Rule 18.4.</strong> A moon with no word flips between two themes. Once it is pressed, the '
                  'page never follows the device again, and the drawing does not say which theme is on.',
@@ -462,8 +474,8 @@ rule(n=5, set='c-18-link', name='Links',
      basis='WCAG 2.2 SC 1.4.1, 2.4.1, 2.4.4 and 3.2.5; APG Link pattern',
      anatomy='The parts of a link: its words, the 1 px underline and its 2 px hover, the 16 px mark after the last word of '
              'a link to another site, the hidden words “(another site)”, and the skip link shown at the top of a page.',
-     code_caption='A paragraph with a link, a link to another site and a short list of links, live. The mark stays with '
-                  'the last word at every width.',
+     code_caption='A skip link, two links in a sentence, one of them to another site, and a list that marks the page '
+                  'you are on, live. The mark stays with the last word at every width.',
      specs=specs(
          (L_PAT, 'APG Link, on <code><a href></code>.'),
          (L_ST, 'Default: a 1 px underline. Hover: a 2 px underline. Focus: the ring. Current: aria-current and the look '
@@ -616,8 +628,8 @@ rule(n=8, set='c-18-disclosure', name='Disclosure',
      basis='WCAG 2.2 SC 1.3.1, 2.1.1 and 4.1.2; APG Disclosure (Show/Hide) and Accordion patterns',
      anatomy='The parts of a disclosure: the summary’s words, the chevron down and up, the 44 px row, the focus ring and '
              'the part that opens.',
-     code_caption='Two disclosures, live. Press Enter or Space on a summary to open it; the chevron turns at once under '
-                  'reduced motion.',
+     code_caption='Two disclosures built on details and summary and one built on a button, live. Press Enter or Space '
+                  'on each to open or close it.',
      specs=specs(
          (L_PAT, 'APG Disclosure (Show/Hide); Accordion for a stack under headings.'),
          (L_ST, 'Closed: the chevron down. Open: the chevron up. Hover: the words underline. Focus: the ring.'),
@@ -661,7 +673,8 @@ rule(n=9, set='c-18-tabs', name='Tabs',
      basis='WCAG 2.2 SC 1.3.1, 2.1.1, 2.4.3 and 4.1.2; APG Tabs pattern',
      anatomy='The parts of tabs: the tab list and its label, each tab’s words, the selected tab’s 4 px bar and bold words, '
              'the focus ring and the panel.',
-     code_caption='Three tabs, live. Tab to the selected one, then use the arrow keys, Home and End.',
+     code_caption='Four tabs, live, the last waiting with its reason. Tab to the selected one, then use the arrow keys, '
+                  'Home and End.',
      specs=specs(
          (L_PAT, 'APG Tabs, with each view shown as its tab takes focus, since every panel is already in the page.'),
          (L_ST, 'Selected: the 4 px bar as a bottom border and bold words, with <code>aria-selected="true"</code>. Not selected: '
@@ -698,7 +711,9 @@ rule(n=10, set='c-18-table', name='Sortable table',
            'A press sorts the column, a second press reverses it, and focus stays on the button. A status line under the '
            'table says the order in words, such as “Sorted by date, newest first.” The same line says when rows are '
            'loading, what is missing when there are none, and the error with its mark when they fail to load (Rules 18.18 '
-           'and 18.19). On a phone a wide table scrolls inside a scroll region (Rule 18.11).'],
+           'and 18.19). On a phone a table either scrolls inside a scroll region (Rule 18.11) or reads as one card for each '
+           'row, each value under its column’s word. A table drawn as cards states its roles with role attributes, so it '
+           'keeps its meaning however CSS displays it.'],
      tokens=['--oa-color-border-hairline', '--oa-color-text-primary', 'oa.size.icon.small', 'oa.size.target.touch'],
      why=['Table markup lets a screen reader name the row and the column of every cell as a reader moves through it. A '
           'button in the heading gives sorting a key and a name, and aria-sort with the status line says the new order to '
@@ -706,8 +721,8 @@ rule(n=10, set='c-18-table', name='Sortable table',
      basis='WCAG 2.2 SC 1.3.1, 2.1.1, 4.1.2 and 4.1.3; APG Table pattern and its Sortable Table example',
      anatomy='The parts of a sortable table: the caption, the column headings, a sort button with its words and 16 px '
              'arrow, the sorted heading, the row rules and the status line under the table.',
-     code_caption='A short table of bills, live. Sort a column with Enter, then press it again to reverse it; the line '
-                  'under the table says the order.',
+     code_caption='A table of four bills, live, with its loading, empty and error states under it. Sort a column with '
+                  'Enter, then press it again to reverse it; the line under the table says the order.',
      specs=specs(
          (L_PAT, 'APG Table, on a native <code><table></code>; the Sortable Table example for aria-sort.'),
          (L_ST, 'Unsorted, sorted ascending, sorted descending. Hover on a sort button: the words underline. Focus: the '
@@ -738,8 +753,9 @@ rule(n=11, set='c-18-scroll-region', name='Scroll region',
      title='Let wide content scroll inside a named frame that the Tab key reaches only while it scrolls.',
      rule=['Content wider than its column, such as a wide table or a drawing at true size, scrolls sideways inside its own '
            'frame, so the page itself never scrolls sideways (Rule 07.6). While it overflows, the frame takes '
-           '<code>tabindex="0"</code>, a name that ends “Scroll sideways to see all of it.” and the visible hint “Wider than this '
-           'column. Scroll the frame sideways to see all of it.” Once it fits, the frame drops all three.',
+           '<code>tabindex="0"</code> and the role of a group named for what it holds, and the hint “Wider than this '
+           'column. Scroll the frame sideways to see all of it.” shows above it and describes it. Once it fits, the frame '
+           'drops all three.',
            'Its focus ring sits inside the frame, where the frame’s edge cannot clip it. The arrow keys scroll a focused '
            'frame, and the page around it stays where it is.'],
      tokens=['--oa-color-border-hairline', '--oa-color-focus-ring', 'oa.border.width.focusRing'],
@@ -749,15 +765,15 @@ rule(n=11, set='c-18-scroll-region', name='Scroll region',
      basis='WCAG 2.2 SC 1.4.10, 2.1.1 and 4.1.2',
      anatomy='The parts of a scroll region: the frame and its edge, the wide content inside, the hint above it, and the '
              'focus ring drawn inside the frame.',
-     code_caption='A table wider than its frame, live. Tab to the frame and use the arrow keys; widen the window until it '
-                  'fits and the stop and the hint go away.',
+     code_caption='A bill’s six steps in a frame, live. Where the frame is narrower than the steps, as on a phone, Tab '
+                  'reaches it and the arrow keys scroll it; where it holds them whole, it takes no stop and shows no hint.',
      specs=specs(
          (L_PAT, 'None fits; a group with a name, <code>role="group"</code>, that takes focus while it scrolls.'),
          (L_ST, 'Fits: no Tab stop and no hint. Overflows: the Tab stop, the hint and the name. Focus: the ring inside the '
                 'frame.'),
          (L_KEY, 'Tab reaches it while it overflows; Left and Right Arrow scroll it; Tab leaves it.'),
-         (L_NAME, 'What it holds, then “Scroll sideways to see all of it.”'),
-         (L_HEAR, 'The group and its name when focus enters.'),
+         (L_NAME, 'What it holds, such as “The six steps of a bill”, with the hint as its description.'),
+         (L_HEAR, 'The group, its name and the hint when focus enters.'),
          (L_TGT, 'The whole frame.'),
          (L_FC, 'The frame draws a 1 px edge in CanvasText, and the ring takes the system’s color.'),
          (L_TH, 'The edge in --oa-color-border-hairline and the ring in --oa-color-focus-ring, on either surface.'),
@@ -780,8 +796,7 @@ rule(n=12, set='c-18-code-block', name='Code block',
      title='Show code in labeled panels, each with a Copy button named for what it copies.',
      rule=['Code a reader can copy sits in one panel per file, HTML, CSS or Script, each with its label and a Copy button '
            'named for its panel: “Copy the HTML”, “Copy the CSS” and “Copy the script”. One status line under the panels '
-           'says what was copied, with the success mark, such as “Copied the CSS of the theme switch, 32 lines, to the '
-           'clipboard.” The code keeps its own line breaks at 14 px, and a panel that overflows scrolls as Rule 18.11 '
+           'says what was copied, with the success mark, such as “Copied the CSS, 2 lines, to the clipboard.” The code keeps its own line breaks at 14 px, and a panel that overflows scrolls as Rule 18.11 '
            'sets.',
            'When the browser refuses to copy, the line turns into an error with its mark, “Error:”, the Error Band and the '
            '4 px red bar, and says how to copy by hand. The code is then selected in a field under the line, with focus on '
@@ -872,8 +887,8 @@ rule(n=14, set='c-18-download', name='Download',
            f'the file. Its words start with “Download” and name the file, its type and its size, in kilobytes of 1,000 '
            f'bytes: “Download tokens.css, CSS, {TOKENS_KB}”. The download icon, an arrow into a tray, sits before the '
            'word (Rule 11.11).',
-           'A file that is not ready keeps its control in place as a button with aria-disabled, a dashed edge and a line '
-           'that says why and when it will be ready. A press does nothing, and focus stays.'],
+           'A file that is not ready keeps its control in place and in the Tab order, with aria-disabled, a dashed edge and '
+           'a line that says why and when it will be ready. A press does nothing, and focus stays.'],
      tokens=['--oa-color-state-disabled-text', '--oa-color-state-disabled-edge', 'oa.size.icon.medium',
              'oa.size.target.touch'],
      why=['The file’s name, type and size let a reader on a slow or metered connection decide before the download starts, '
@@ -885,8 +900,8 @@ rule(n=14, set='c-18-download', name='Download',
      code_caption='A download that works and one that is not ready, live. Tab to the second and press it: it keeps focus '
                   'and says why.',
      specs=specs(
-         (L_PAT, 'APG Link, on <code><a href download></code>; APG Button when a script builds the file or it is not '
-                 'ready.'),
+         (L_PAT, 'APG Link, on <code><a href download></code>; APG Button when a script builds the file. A file not '
+                 'ready keeps its control focusable, with aria-disabled.'),
          (L_ST, 'Ready. Not ready: aria-disabled, a dashed edge and the reason, with focus kept. Hover and focus as Rule '
                 '18.1.'),
          (L_KEY, 'Tab reaches it; Enter starts the download. A file that is not ready keeps focus, and a press does '
@@ -913,10 +928,11 @@ rule(n=14, set='c-18-download', name='Download',
 # ---- 18.15 Search -----------------------------------------------------------------------------------------------
 rule(n=15, set='c-18-search', name='Search',
      title='Search with a labeled field that says the count and the advice in one status line.',
-     rule=['A search sits in a search landmark, with a visible label above its field and a field of type search; a '
-           'placeholder never stands in for the label. Results update as the reader types, and focus stays in the field. '
-           'The status line under it gives the count and, when nothing matches, the advice in the same line: “0 of 124 '
-           'symbols. No symbol matches. Clear the search or the filters to see more.”',
+     rule=['On a product page a search sits in a search landmark, the search element, so a screen reader can jump '
+           'straight to it. It has a visible label above its field and a field of type search; a placeholder never '
+           'stands in for the label. Results update as the reader types, and focus stays in the field. The status line '
+           'under it gives the count and, when nothing matches, the advice in the same line: '
+           f'“0 of {CL_COUNT} symbols. No symbol matches. Clear the search or the filters to see more.”',
            'Once the field holds text, a Clear the search control appears at its end, a 44 by 44 px cross (Rule 11.11), '
            'which empties the field and returns focus to it. Escape does the same. Where results come from a server, the '
            'line says “Searching” while they load.'],
@@ -940,7 +956,7 @@ rule(n=15, set='c-18-search', name='Search',
                  'clears the field and returns focus to it.'),
          (L_NAME, 'The field: its visible label, such as “Search the symbols”. The clear control: “Clear the search”.'),
          (L_HEAR, 'The search landmark; the label and the field’s role; once typing pauses, the status line, such as “5 '
-                  'of 124 symbols.”'),
+                  f'of {CL_COUNT} symbols.”'),
          (L_TGT, 'The field 44 px tall; Clear the search 44 by 44 px.', 'oa.size.target.touch'),
          (L_FC, 'The field’s edge and Clear’s cross draw in the system’s colors.'),
          (L_TH, 'The field’s ground is --oa-color-field-ground, White on Newsprint and Prussian on Charcoal, with the '
@@ -1328,8 +1344,8 @@ rule(n=24, set='c-18-id-chip', name='Typed ID chip',
      rule=['A typed ID names a record in the atlas by its type and its code together, such as “Loop R10” or “Reform '
            'R-01”, so a reader never meets a bare code (chapter 02’s house rule H11). The chip sets both in the label '
            'style on a hairline edge, in the text’s ink, and color never codes its type.',
-           'A chip that opens its record is a link, with the record’s name in its words or its description, an underline '
-           'on hover and a target at least 24 px tall. A chip that only names a record is plain text, with no role and no '
+           'A chip that opens its record is a link, with an underline on hover and a target at least 24 px tall; where '
+           'the words around it do not name the record, the link’s description does. A chip that only names a record is plain text, with no role and no '
            'Tab stop.'],
      tokens=['--oa-color-border-hairline', '--oa-color-text-primary', 'oa.size.target.minimum'],
      why=['The type in words tells every reader what the code refers to, where a color would leave a screen reader, or a '
@@ -1338,7 +1354,7 @@ rule(n=24, set='c-18-id-chip', name='Typed ID chip',
      basis='WCAG 2.2 SC 1.3.1, 1.4.1 and 2.4.4; chapter 02, house rule H11',
      anatomy='The parts of a typed ID chip: its type word, its code, the hairline edge, and as a link, its underline on '
              'hover and its 24 px target.',
-     code_caption='Two chips, live: one that names a loop and one that links to a reform’s record.',
+     code_caption='Two chips that name a record and one that opens it, live.',
      specs=specs(
          (L_PAT, 'None fits a label; APG Link when the chip opens its record.'),
          (L_ST, 'Plain. As a link: hover, an underline; focus, the ring.'),
@@ -1738,10 +1754,13 @@ KEYS = {
         step('Enter', SORT2, [st('.oa-table-th:nth-child(2)', attr='aria-sort', **{'is': 'ascending'}),
                               st('.oa-table-th:nth-child(1)', attr='aria-sort', **{'is': None})],
              status='Sorted by title, A to Z.', status_el=TLINE)])],
-    11: [path('Reach the frame while it overflows, scroll it with the arrow keys, then leave', [
+    11: [path('Where the steps are wider than the frame: reach it, scroll it with the arrow keys, then leave', [
         step('Tab', '.oa-scroll-frame[tabindex="0"][role="group"]', [st('.oa-scroll-hint', visible=True)]),
         step('ArrowRight', '.oa-scroll-frame', [st('.oa-scroll-frame', prop='scrollLeft', above=0)]),
-        step('Tab', OUT)])],
+        step('Tab', OUT)], widths=[390]),
+        path('Where the frame holds the steps whole: no Tab stop and no hint', [
+            step('Tab', OUT, [st('.oa-scroll-hint', visible=False), st('.oa-scroll-frame', attr='tabindex', **{'is': None})])],
+            widths=[1440])],
     12: [path('Copy the HTML; the line says what was copied', [
         step('Tab', '.oa-code-panel:nth-of-type(1) .oa-code-copy'),
         step('Enter', '.oa-code-panel:nth-of-type(1) .oa-code-copy', status='Copied the HTML, 2 lines, to the clipboard.')],

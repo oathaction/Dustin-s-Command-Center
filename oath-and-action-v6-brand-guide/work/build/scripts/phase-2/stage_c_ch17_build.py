@@ -332,7 +332,7 @@ def mini_svg(kind, state, live=False):
         n.append(f'<circle cx="{a}" cy="{cy}" r="4" class="dot"/><circle cx="{b}" cy="{cy}" r="4" class="dot"/>')
         ring = f'<circle cx="{{x}}" cy="{cy}" r="10.5" class="rg"/>'
         if live:
-            n.append(f'<g data-when="start">{ring.format(x=a)}</g><g data-when="end">{ring.format(x=b)}</g>')
+            n.append(f'<g data-when="first">{ring.format(x=a)}</g><g data-when="end">{ring.format(x=b)}</g>')
             n.append(f'<g data-when="run" data-part="slide">{ring.format(x=a)}</g>')
         else:
             n.append(ring.format(x=a if state == 'start' else b))
@@ -385,7 +385,7 @@ PLAYER_CSS = (
     '.b[aria-disabled="true"]:hover{border-width:var(--oa-border-width-hairline);padding:0 14px 0 10px}'
     '.sl{display:flex;align-items:center;gap:10px;min-height:var(--oa-size-target-touch);' + ty('ui') + ';cursor:pointer;'
     'width:max-content;max-width:100%}'
-    '.sl input{flex:none;width:24px;height:24px;margin:0}'
+    '.sl input{flex:none;width:24px;height:24px;margin:0;accent-color:var(--oa-color-graphic-essential)}'
     '.sl[data-off]{color:var(--oa-color-state-disabled-text);cursor:not-allowed}'
     '.why,.dv{' + ty('caption') + ';color:var(--oa-color-text-secondary)}'
     '.why:empty{display:none}'
@@ -408,6 +408,7 @@ PLAYER_CSS = (
     '[data-oa-motion]:not([data-frame="end"]) [data-when="end"]{display:none}'
     '[data-oa-motion][data-frame="end"] [data-when="start"]{display:none}'
     '[data-oa-motion]:not([data-frame="run"]) [data-when="run"]{display:none}'
+    '[data-oa-motion]:not([data-frame="start"]) [data-when="first"]{display:none}'
     '[data-wait]{visibility:hidden}'
     '[data-part]{transform-box:fill-box;transform-origin:center}'
     '[data-part="grow"]{transform-origin:0 50%}'
@@ -441,13 +442,13 @@ if(D)D.textContent=dev()?M.device.reduce:M.device.full;W.textContent=why.join(" 
 function frame(f){P.setAttribute("data-frame",f);}
 function end(){run++;A.forEach(function(a){a.cancel();});A=[];frame("end");st="end";O.textContent=M.words.end;show();}
 function reset(quiet){run++;A.forEach(function(a){a.cancel();});A=[];frame("start");st="start";if(!quiet)O.textContent=M.words.start;show();}
-function play(){if(st==="paused"){A.forEach(function(a){a.play();});st="running";O.textContent=M.words.run;show();return;}
+function play(){if(st==="paused"){A.forEach(function(a){if(a.oaHeld){a.oaHeld=false;a.play();}});st="running";O.textContent=M.words.run;show();return;}
 if(st==="end")reset(true);if(total()===0){end();return;}
 frame("run");st="running";var my=++run,rate=L&&L.checked?0.1:1;
 A=M.tracks.map(function(t){var el=P.querySelector('[data-part="'+t.part+'"]'),d=(t.at||[]).reduce(function(s,n){return s+tok(P,n);},0);
 var a=el.animate(t.frames,{duration:tok(P,t.dur),easing:ez(P,t.ease),delay:d,fill:t.fill||"both"});a.playbackRate=rate;return a;});
 O.textContent=M.words.run;Promise.all(A.map(function(a){return a.finished;})).then(function(){if(my===run)end();},function(){});show();}
-function pause(){A.forEach(function(a){a.pause();});st="paused";O.textContent=M.words.pause;show();}
+function pause(){A.forEach(function(a){if(a.playState==="running"){a.oaHeld=true;a.pause();}});st="paused";O.textContent=M.words.pause;show();}
 B.addEventListener("click",function(){if(st==="running")pause();else play();});
 R.addEventListener("click",function(){if(R.getAttribute("aria-disabled")!=="true")reset(false);});
 [L,V].forEach(function(c){if(c)c.addEventListener("click",function(e){if(c.getAttribute("aria-disabled")==="true")e.preventDefault();});});

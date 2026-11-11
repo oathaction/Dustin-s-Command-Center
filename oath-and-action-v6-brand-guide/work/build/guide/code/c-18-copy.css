@@ -14,7 +14,7 @@
 .oa-copy-button:hover { border-width: var(--oa-border-width-rule); padding: calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px) var(--oa-space-150) }
 .oa-copy-button:focus-visible, .oa-copy-fallback:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
 .oa-copy-icon { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
-.oa-copy-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%) }
+.oa-copy-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
 .oa-copy-status { margin: var(--oa-space-150) 0 0; font: var(--oa-type-caption); color: var(--oa-color-state-success-text) }
 .oa-copy-status:has(.oa-copy-words:empty) { display: none }
 .oa-copy-mark { width: var(--oa-size-icon-small); height: var(--oa-size-icon-small); margin-right: var(--oa-space-100); vertical-align: -.2em }

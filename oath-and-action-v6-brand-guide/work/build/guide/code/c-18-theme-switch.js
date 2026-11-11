@@ -1,14 +1,8 @@
-// The head script. Copy these lines, without the slashes, into a script element of their own in the page's head,
-// before the stylesheets. It applies a stored Light or Dark before the first paint; with nothing stored, tokens.css
-// follows the device. A page that offers the switch also declares <meta name="color-scheme" content="light dark">.
-//
-//   try { var t = localStorage.getItem('oa-theme');
-//     if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-oa-theme', t); } catch (e) {}
-//
-// The switch. Light and Dark set data-oa-theme on the target and Match my device sets "device", which follows the
+// The theme switch. Light and Dark set data-oa-theme on the target and Match my device sets "device", which follows the
 // device on the page's root. Only a switch that sets the root stores the choice: Light or Dark under the key oa-theme,
 // and Match my device removes the key. Storage can be refused, so each read and write sits in try and catch, and the
-// switch still works for the visit.
+// switch still works for the visit. The head script, in its own file, applies a stored choice before the first paint, and a
+// page that offers the switch declares <meta name="color-scheme" content="light dark">.
 (function () {
   var KEY = 'oa-theme';
   function stored() {

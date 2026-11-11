@@ -2,12 +2,13 @@
  "date": "2026-11-10",
  "author": "Editor (oa-editor), stage B round 2",
  "purpose": "The words chapter 10 prints beside each drawing in use, under DR-185, and one meaning sentence for each. The editor’s table of labels governs the words (round 2 brief).",
+ "updated": "2026-11-11, stage C round 1: CL-075 Housing added after CL-074 (DR-207, D2-1262), from the systems designer’s addendum (20261111_Promotion-C-Ch10-Labels-Addendum.json) with its label as written and its meaning recast in the table’s form, one sentence with no colon.",
  "count": {
-  "rows": 124,
-  "cl": 74,
+  "rows": 125,
+  "cl": 75,
   "reform": 50,
   "by_class": {
-   "topic": 19,
+   "topic": 20,
    "atlas variable": 50,
    "pillar": 4,
    "topic and atlas variable": 1,
@@ -1140,6 +1141,21 @@
    "label_source": "Civic Line word, sentence case",
    "meaning": "One line carries a speech mark from a person to an official at a desk, for calling, writing to or visiting the office of someone who represents you.",
    "drawn_as": "New drawing, approved by name: DR-160, option A"
+  },
+  {
+   "id": "CL-075",
+   "civic_line_word": "Housing",
+   "sheet": "03",
+   "class": "topic",
+   "v7_id": null,
+   "v7_chip": null,
+   "v7_title": null,
+   "v7_short_name": null,
+   "v7_name": null,
+   "label": "Housing",
+   "label_source": "Civic Line word, sentence case",
+   "meaning": "An apartment block stands beside a smaller pitched-roof house on one ground line, for housing, the homes of every kind that people rent or own.",
+   "drawn_as": "New drawing, approved by name: DR-207, option A"
   },
   {
    "id": "R-01",
