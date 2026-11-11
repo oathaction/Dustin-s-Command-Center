@@ -180,6 +180,10 @@ def say(e, text):
 
 
 def pin(e, n, at='tl'):
+    """A numbered callout on a part. A block of words takes it in the margin before its first line, so no word is
+    covered; a control takes it on a corner."""
+    if at == 'tl' and e.tag in ('p', 'legend', 'caption', 'label', 'li'):
+        at = 'l'
     e.add_cls('ax-p')
     b = El('span', {'class': 'ax-n' if at == 'tl' else f'ax-n ax-{at}'})
     b.k = [str(n)]

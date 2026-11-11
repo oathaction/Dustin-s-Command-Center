@@ -2653,3 +2653,29 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 | D2-1388 | Rule 05.4's Loading row draws Rule 17.7's still line and words, along with the Selected row's change | A plate that points to the canonical one must not draw the outline ring D2-200 retired |
 | D2-1389 | Chapter 11's hover thickens the edge from 1 to 2 px and takes the pixel from the padding, with no height change, since a stage sizes its boxes border-box | Rule 17.9; a border stays under forced colors, and nothing beside the button moves |
 | D2-1390 | The reader's pressed choice draws its 2 px edge as a border; its bold and underline stay until the reader's pair becomes a radio group with Rule 17.10's check (D2-1151's next pass) | D2-1158: state edges are borders; the full look change waits for the radio group, which needs new markup and a script |
+
+### Identity designer, round 1 (`20261111_Stage-C-Round-1-Identity-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1391 | Rule 17.6's specimens come from a new generator, `stage_c_identity_ch17.py`, run last in the identity build, with "s-17-hinge-" and "s-17-lever-" as its exact prefixes | Run last, its inlined masters cannot renumber the ids in the proofs; the exact prefixes keep the build from ever touching the chapter 17 maker's `s-17-*` files |
+| D2-1392 | The hinge's B starts at hinge minus standard, 480 ms, so it comes to rest at the hinge token; the gap holds 160 ms after the slide | The token sets the motion's length (V5: 680 ms in all), and a beat of stillness before B lands lets the eye see the place it fills |
+| D2-1393 | The lever's links draw from 0, its nodes land at standard plus stagger, 240 ms, and the lever lands from lever minus standard, 360 ms, coming to rest at the lever token | V5's order (lines, then nodes together, the lever last) in Rule 17.5's behaviors, ending on the token |
+| D2-1394 | Each player shows the master file itself at the end, placed by reference beside the moving layer | The last frame is then the master by construction; the moving layer's last keyframe differs from it by up to 92 levels on edge pixels of the display drawings, as Chromium draws an element it has just animated |
+| D2-1395 | The wordmark's letter path is split by position into OATH and ACTION for the moving layer, each subpath's bytes unchanged | The two words must move apart; the file draws them as one path |
+| D2-1396 | The hinge plays the 24 px master at 24 px on every screen, and the display master at 64 px tall only where the panel is at least 41rem wide | A phone column cannot hold the 64 px wordmark, and the display master may not stand under 40 px tall (Rule 03.4) |
+| D2-1397 | The lever plays the 48 px master at 48 px and the display master at 120 px | Rule 08.1's ranges: 96 px belongs to a social card's sign-off |
+| D2-1398 | The first frame's slides are whole pixels on screen, 12 px at 24 px and 32 px at 64 px | The first frame of the 24 px master then lands on the pixel grid too |
+| D2-1399 | The lever's first frame shows a dashed square where each lockmark will stand, in the first frame only, and the words say it is no part of the mark | An empty first frame read as a broken plate |
+| D2-1400 | One player per motion shows both grounds, Newsprint and Charcoal, playing together on one press | The brief asks for both; one press keeps one status line and one still view |
+| D2-1401 | The still view shows three frames, from the 24 px and 48 px masters only, and lists every step with its time | It fits a phone column and gives every fact the motion shows (Rule 17.3) |
+| D2-1402 | The failure plate shows both marks half a pixel low, moved with a transform, and enlarges Chromium's 1x renders six times | Chromium snaps an svg's box to whole pixels but not a transform, so padding hid the fault; a 2x screen hides it too |
+| D2-1403 | The players' kickers give the durations, and the extra's label reads "The lockmark’s motion" | The label repeated the player's title |
+| D2-1404 | The specimens take Rule 17.6's slots as chapter 17's contract names them: the hinge's correct and failure plates, the lever as the extra | The generator's docstring sets the names and their order |
+| D2-1405 | Rule 12.4's rewrite sits in `stage_b_identity_ch12.py` as unregistered functions and words | The creative director's instruction places it there, and chapter 12 must not change until Dustin chooses |
+| D2-1406 | The crop of B on the 360 px cover stands 232 px tall: the largest height, in 4 px steps, that keeps Rule 04.8's three measures with 2 px to spare | At 236 px the clearance is 0.3 px over the line height, which type rendered a little differently could break |
+| D2-1407 | The rewrite's failure caption reads "Nothing on this cover says Oath & Action, and the arcs take the corner the crop of B would sign." where the review wrote "With the wordmark covered, nothing here says Oath & Action, ..." | The plate's cover carries no wordmark to cover |
+| D2-1408 | I drafted the rewrite's why, specifications and builders text from the review's reasons, marked for the editor | The review gives the rule and its Never row; a rule in the guide's form needs the rest |
+| D2-1409 | The comparison page draws a keyline around each cover and reads the shell's Illustrative style from its stylesheet | On the Newsprint page the cover's edge, and so the crop, could not be seen; the label printed as plain text |
+| D2-1410 | My scratch builds use copies of the chapters and specimens, with chapter 18's files left out for the strict build | Chapter 18's 24 anatomy plates are still being drawn, so a strict build of the whole guide stops on them; the copy shows that nothing else warns |
+| D2-1411 | I set `TMPDIR` to the scratchpad for every run | The identity build renders PNGs through temporary files, which would otherwise land in `/tmp` |

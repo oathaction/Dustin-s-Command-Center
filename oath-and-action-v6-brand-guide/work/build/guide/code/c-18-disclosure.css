@@ -1,6 +1,8 @@
 /* Disclosure: a row that shows and hides what follows it. The chevron points down while closed and up while open; the
    turn takes the standard motion token, which tokens.css sets to 0 ms when a reader asks for less motion. */
 .oa-disclosure-set { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
+/* Utility icons: drawn from the masters' line, with the line width from the icon tokens */
+.oa-disclosure-set [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
 .oa-disclosure-k { margin: var(--oa-space-300) 0 var(--oa-space-100); font: var(--oa-type-label);
   letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
 .oa-disclosure-k:first-child { margin-top: 0 }

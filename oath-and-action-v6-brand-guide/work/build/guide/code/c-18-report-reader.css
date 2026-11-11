@@ -2,6 +2,8 @@
    focus at either end with a reason; Fit width and Full size are a choice of two. At full size the page scrolls inside
    its view, which then becomes a named Tab stop. The two buttons stack when a label would not fit. Reads only tokens.css. */
 .oa-reader { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
+/* Utility icons: drawn from the masters' line, with the line width from the icon tokens */
+.oa-reader [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
 .oa-reader-head { margin: 0 0 var(--oa-space-100); font: var(--oa-type-ui) }
 .oa-reader-doc { font-weight: var(--oa-font-weight-bold) }
 .oa-reader-illus { margin-left: var(--oa-space-050); padding: 0 var(--oa-space-050); border: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);

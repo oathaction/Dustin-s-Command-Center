@@ -1,6 +1,8 @@
 /* Choice: one of a few, through native radio buttons in a fieldset, so Tab enters at the checked choice and the arrow
    keys move and choose with no script. The checked look: a check before the word, the word in bold and a 2 px edge. */
 .oa-choice { min-width: 0; margin: 0; padding: 0; border: 0; font: var(--oa-type-body); color: var(--oa-color-text-primary) }
+/* Utility icons: drawn from the masters' line, with the line width from the icon tokens */
+.oa-choice [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
 .oa-choice-legend { margin: 0 0 var(--oa-space-100); padding: 0; font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }
 .oa-choice-row { display: flex; flex-wrap: wrap; gap: var(--oa-space-100) }
 .oa-choice-item { position: relative; display: flex; max-width: 100%; cursor: pointer }

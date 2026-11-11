@@ -2,6 +2,8 @@
    an error draws the 4 px red bar at the field's left edge and a message the field points to, with the mark in ink and
    "Error:". While an error holds the red, the ask yields to the primary fill (Rule 11.16). Reads only tokens.css. */
 .oa-form { max-width: 30rem; font: var(--oa-type-body); color: var(--oa-color-text-primary) }
+/* Utility icons: drawn from the masters' line, with the line width from the icon tokens */
+.oa-form [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
 .oa-form-illus { display: inline-block; margin: 0 0 var(--oa-space-100); padding: 0 var(--oa-space-050);
   border: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline); font: var(--oa-type-label);
   letter-spacing: var(--oa-type-label-letter-spacing); color: var(--oa-color-text-secondary) }

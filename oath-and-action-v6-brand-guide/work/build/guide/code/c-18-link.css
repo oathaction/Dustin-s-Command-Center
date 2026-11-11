@@ -1,6 +1,9 @@
 /* Links: in running text, to another site (Rule 11.13), in a list with the current page, a part not built yet, and a
    skip link. Underlined at 1 px, 2 px on hover. Reads only tokens.css. */
 .oa-link-set { position: relative; font: var(--oa-type-body); color: var(--oa-color-text-primary) }
+/* Utility icons: drawn from the masters' line, with the line width from the icon tokens */
+.oa-link-set [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
+.oa-link-set [data-icon][width="16"] { stroke-width: var(--oa-component-icon-utility-line-small) }
 .oa-link-k { margin: var(--oa-space-300) 0 var(--oa-space-100); font: var(--oa-type-label);
   letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
 .oa-link-set > .oa-link-k:first-of-type { margin-top: 0 }

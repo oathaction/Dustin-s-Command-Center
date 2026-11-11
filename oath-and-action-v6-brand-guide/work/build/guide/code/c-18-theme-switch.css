@@ -1,6 +1,8 @@
 /* Theme switch: three native radio buttons under the legend "Theme". The sample page paints the ground of whatever
    theme it sits in, so a choice shows at once, with no motion. Reads only tokens.css. */
 .oa-theme-page { padding: var(--oa-space-200); background: var(--oa-color-surface); color: var(--oa-color-text-primary); font: var(--oa-type-body) }
+/* Utility icons: drawn from the masters' line, with the line width from the icon tokens */
+.oa-theme [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
 .oa-theme { min-width: 0; margin: 0; padding: 0; border: 0 }
 .oa-theme-legend { margin: 0 0 var(--oa-space-100); padding: 0; font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }
 .oa-theme-row { display: flex; flex-wrap: wrap; gap: var(--oa-space-100) }

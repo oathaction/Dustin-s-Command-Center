@@ -1,6 +1,8 @@
 /* Filter bar: Filters opens a sheet of chips that combine; its name counts the chips that are on, and Clear filters
    shows only while one is on. The result count, with its advice when nothing matches, goes to one status line. */
 .oa-filters { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
+/* Utility icons: drawn from the masters' line, with the line width from the icon tokens */
+.oa-filters [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
 .oa-filters-bar { display: flex; flex-wrap: wrap; gap: var(--oa-space-100) }
 .oa-filters-toggle, .oa-filters-clear, .oa-filters-chip { display: inline-flex; align-items: center; gap: var(--oa-space-100); box-sizing: border-box;
   max-width: 100%; min-height: var(--oa-size-target-touch); margin: 0; padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px);

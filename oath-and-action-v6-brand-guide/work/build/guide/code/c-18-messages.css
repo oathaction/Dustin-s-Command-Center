@@ -2,6 +2,9 @@
    the Error Band where the surface has one, with the 4 px red bar; the warning takes a 4 px bar in ink; the success mark
    is Verdigris. A status line is a polite live region a script writes. Reads only tokens.css. */
 .oa-msg-set { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
+/* Utility icons: drawn from the masters' line, with the line width from the icon tokens */
+.oa-msg-set [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
+.oa-msg-set [data-icon][width="16"] { stroke-width: var(--oa-component-icon-utility-line-small) }
 .oa-msg { display: flex; align-items: flex-start; gap: var(--oa-space-100); max-width: var(--oa-layout-measure-body-max); margin: 0 0 var(--oa-space-200);
   padding: var(--oa-space-100) var(--oa-space-150); font: var(--oa-type-body-small); overflow-wrap: break-word }
 .oa-msg-mark { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }

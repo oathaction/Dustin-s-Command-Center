@@ -2,6 +2,8 @@
    whose name takes focus, and Escape closes it and returns focus to the part. A chosen part takes the pressed look and
    the others mute. The lines in words and a full size view sit under the drawing. Reads only tokens.css. */
 .oa-diagram { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
+/* Utility icons: drawn from the masters' line, with the line width from the icon tokens */
+.oa-diagram [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
 .oa-diagram-k { margin: 0; font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing);
   text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
 .oa-diagram-title { margin: var(--oa-space-050) 0 var(--oa-space-150); font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); text-wrap: balance }
