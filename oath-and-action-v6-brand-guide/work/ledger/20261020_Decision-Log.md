@@ -3060,3 +3060,10 @@ The main session asked three questions with its plan for round 2, board C and th
 | D2-1652 | Rule 26.5's head shows the head script first, marked "For a product with the theme switch" | PP-S6 |
 | D2-1653 | Chapter 26's code sets write one declaration per line, through a formatter in the generator | Call 16 |
 | D2-1654 | Code samples in chapter 26's plates escape no apostrophe | The hex guard turned `&#x27;` into words on the page |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1655 | The fix pass is closed at the owners' end. Checked by the main session: the generator chain changed no file; every round 1 generator's `--check` reports its files current; `guide_build.py --strict` 0 warnings, 16 chapters, 185 rules, 424 specimens, 8,958,497 bytes; the token tests pass at 6.0.0-gate2.8 with 504 tokens; the old error token name appears only in chapter 26's alias rows and an archived stage B board script | Every owner reported done; a check is run before the editor's read and the rescore |
+| D2-1656 | The editor's read of every changed string and the creative director's rescore run at the same time on the fixed build, with the full guide check at four widths beside them | The rescore judges the work and the editor the words; word edits that follow are small, and DR-191's short second pass takes whatever either finds |
