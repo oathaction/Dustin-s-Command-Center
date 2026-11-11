@@ -306,6 +306,7 @@ The words are good. The routes are the right three, each step says what a reader
 - Scripted reads of the rendered page: the computed style of every Illustrative chip and do-not-publish bar, heading sizes, figure caption type, every text under 13 px (two failure plates only), every red fill in a figure with its ground and how its keyline is drawn, every family and weight the page sets, and the font requests (three WOFF2 files).
 - The distinctiveness test on six views with the masthead hidden by CSS.
 - Side-by-side reads of Rules 05.4 and 17.8, 09.2 against 17.10 and 18.7, 04.8 against 12.4, and 06.1, 06.10 and 26.5's words.
+- The preview: loaded it in Chromium and recorded its requests (none left the file); counted its six `@font-face` blocks and their weight ranges; looked at the cover, the contents' last screen, the start page and the colophon at 1440 px (1x) and 390 px (2x), with the Inter Tight license opened by script; read the start page's markup and the routes' words; found every Google Fonts line left in the preview's words (two links and three mentions).
 
 **Not tested**
 
@@ -315,6 +316,7 @@ The words are good. The routes are the right three, each step says what a reader
 - Every one of the 424 specimens at full size. I read 28 closely and the rest at quarter and half scale.
 - Cross-references, counts and values against `tokens.json`, the Civic Line folder and the WCAG text, which the drift red team checks by script.
 - Print.
+- On the preview: a keyboard walk and focus order through the start page and the license disclosures, whether every step's link lands where it says (the build stops on a missing id, by the engineer's notes), the license texts against the fetched OFL.txt files character by character, and any chapter page, which the brief says the preview does not change.
 
 ## Routine calls
 
@@ -323,3 +325,5 @@ D2-xxx | M1 sits on chapter 26, with chapter 06's builders line aligned in the s
 D2-xxx | The opener and failure-plate drift (S1, S2) go back as Should fix | Every chapter still states its job in words on its first screen, and every failure plate carries the frame's “Failure case” label
 D2-xxx | The distinctiveness test hid the masthead by CSS and used views with no wordmark inside a plate | Covering the wordmark is the test; a plate that draws the wordmark would pass for the page
 D2-xxx | The difference in who speaks between chapters (D8) is a note for the editor, with no score lowered | Each chapter's choice suits its job, and the book still reads as one voice
+D2-xxx | The preview's start page, font license and colophon are scored together as one eighteenth item | The brief names them as one addendum item
+D2-xxx | Chapter 06's Google Fonts line, which the main session raised, is folded into M1 | It is the same fault as Rule 26.5's link: one weight set, offered as the link a product uses
