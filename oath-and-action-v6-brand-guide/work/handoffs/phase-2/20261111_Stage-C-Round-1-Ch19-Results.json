@@ -1,0 +1,87 @@
+{
+ "about": "The guide's own accessibility results so far, printed by Rule 19.8 through stage_c_ch19_build.py. Written by the accessibility lead from the runs named in 'runs'. Each line states what ran and what it found; checks that did not run are in 'not_tested' with the reason.",
+ "date": "November 11, 2026",
+ "build": "The chapters page as built at 03:13 UTC from chapters 01 to 12, 17, 18 and 26, 9,206,065 bytes, checked in Chromium at 1440, 1024, 390 and 360 px; chapter 18’s keyboard paths on its build of 03:02 UTC.",
+ "runs": {
+  "guide_check": "work/build/scripts/phase-2/guide_check.js on the 03:13 UTC build, four widths, started 03:14 UTC, finished 03:27 UTC; results in the accessibility lead's scratch folder, stage-c-r1/ch19/full/guide-Guide-Check-Results.json",
+  "keys_walk": "The accessibility lead's oa-keys/1 walker on chapter 18's 24 keyboard path files, both live stages, 1440 and 390 px; stage-c-r1/ch18/final/keys.log",
+  "audit": "The accessibility lead's audit of chapter 18's 48 live stages (axe-core per stage, targets, forced colors, reflow); stage-c-r1/ch18/final/audit.json",
+  "downloads": "work/build/tests/guide/tokens_download_test.js on the 03:13 UTC build; stage-c-r1/ch19/full/downloads.json"
+ },
+ "tested": [
+  {
+   "check": "Automated rules",
+   "result": "axe-core 4.10.2 with the WCAG 2.2 A and AA tags found no violation at any of the four widths, and none in any of chapter 18’s 48 live stages."
+  },
+  {
+   "check": "Contrast",
+   "result": "No text measured under 4.5 to 1, or 3 to 1 for large text, outside the labeled failure plates, and no text under 13 px, at all four widths."
+  },
+  {
+   "check": "Keyboard and focus",
+   "result": "The first 60 Tab stops at 1440 and 390 px each showed a focus ring. Chapter 18’s 24 components passed all 136 walks of their keyboard paths, in both themes at both widths."
+  },
+  {
+   "check": "Reading order and headings",
+   "result": "The headings ran with no skipped level and none inside a specimen, at every width."
+  },
+  {
+   "check": "Text at 200 percent and 320 px",
+   "result": "At the default text size no width scrolled sideways. With text at 200 percent the page scrolled sideways at 390 and 360 px, to 404 and 386 px wide: open, with the guide engineer. In chapter 18, one error line ran past its stage at 320 px, with the component engineer."
+  },
+  {
+   "check": "Forced colors",
+   "result": "Twelve glyph parts in chapter 18’s live code lost their contrast, among them the warning and success marks, and its masthead kept a red ampersand: open, with the component engineer. Every pressed or checked control kept its check."
+  },
+  {
+   "check": "Dark surfaces",
+   "result": "With the device set to dark, all 60,512 elements kept their light colors, so the guide stays on Newsprint. Each of chapter 18’s 24 components drew live on Newsprint and on Charcoal."
+  },
+  {
+   "check": "Downloads",
+   "result": "12 of 16 cases of the token download test passed. The four that failed expect every download to offer the tokens.css zip, which the new tokens.json download does not: open, with the test’s owner."
+  },
+  {
+   "check": "Code to copy",
+   "result": "Of chapter 18’s 48 live stages, 20 to 25 drew differently from the code a builder copies, four of them by thousands of pixels and the rest by a few edge pixels: open, with the component engineer and the guide engineer."
+  }
+ ],
+ "not_tested": [
+  {
+   "check": "Every chapter rendered",
+   "why": "The run took no screenshots, and no person looked at every chapter at four widths today."
+  },
+  {
+   "check": "Report pages",
+   "why": "No report exists yet; chapter 24 brings the first."
+  },
+  {
+   "check": "Reduced motion",
+   "why": "The check that plays each moving specimen with reduced motion is being written; it did not run today."
+  },
+  {
+   "check": "Print",
+   "why": "Not run today."
+  },
+  {
+   "check": "Diagram and chart equivalents",
+   "why": "Not checked by script; chapters 14 and 15, which hold most drawings, are not written yet."
+  },
+  {
+   "check": "Grayscale",
+   "why": "Not run today."
+  },
+  {
+   "check": "Screen readers, real phones, Safari, Firefox and Windows contrast themes",
+   "why": "This container has none of them; the device script of Rule 19.9 covers them before launch."
+  },
+  {
+   "check": "Keyboard order and reading order by a person",
+   "why": "Only scripts walked them today."
+  },
+  {
+   "check": "Chapter 19 in the full check",
+   "why": "It joined the page after the 03:13 UTC build; its own build was checked separately."
+  }
+ ]
+}

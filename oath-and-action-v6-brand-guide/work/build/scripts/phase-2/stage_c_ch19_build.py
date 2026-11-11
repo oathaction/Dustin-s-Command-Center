@@ -701,9 +701,9 @@ def build():
                     {'label': 'Not tested', 'value': 'What did not run, and why, in its own list'}],
              related=['18']),
         dict(id='19.9', title='Before launch, run the device script on an iPhone, an Android phone, a Windows PC and a Mac.',
-             rule=['Four short scripts check what no container can: a real screen reader on each of the four platforms our '
-                   'readers use, and a Windows contrast theme. Each step says what to press, and the ten things to listen '
-                   'for say what a pass sounds like. Anyone can run them in about half an hour a device, with no training.'],
+             rule=['Four short scripts check what no container can: a real screen reader on each of four common platforms, '
+                   'and a Windows contrast theme. Each step says what to press, and the ten things to listen for say what a '
+                   'pass sounds like, so anyone can run them with no training.'],
              tokens=[], why={'text': ['Screen readers and contrast themes differ from one platform to the next, and only the '
                                       'real thing shows what a reader hears and sees. Short numbered steps let anyone on the '
                                       'team run them and write down the same things.'],

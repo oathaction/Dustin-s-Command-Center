@@ -21,6 +21,6 @@
 .oa-msg-dot { width: var(--oa-size-icon-small); height: var(--oa-size-icon-small); margin-right: var(--oa-space-100); vertical-align: -.2em; color: var(--oa-color-state-success-mark) }
 
 @media (forced-colors: active) {
-  .oa-msg-mark, .oa-msg-dot { color: CanvasText }
+  .oa-msg .oa-msg-mark, .oa-msg--warning .oa-msg-mark, .oa-msg--success .oa-msg-mark, .oa-msg-dot { color: CanvasText }
   .oa-msg--error, .oa-msg--warning { border-left-color: CanvasText }
 }

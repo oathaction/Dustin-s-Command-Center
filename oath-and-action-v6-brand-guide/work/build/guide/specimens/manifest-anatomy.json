@@ -75,7 +75,7 @@
   "chapter": "18",
   "rule": "18.10",
   "width_px": null,
-  "alt": "Anatomy of a sortable table, drawn from its code to copy on Newsprint, with five numbered callouts and a key. 1, Caption: Names the table, as table markup’s own caption. 2, Column heading: Each heading holds a sort button with its words and a 16 px arrow. 3, Height: Each sort button fills its heading, at least 44 px tall. 4, Sorted heading: The arrow turned to the order, and the heading says it in aria-sort. 5, Row rule: A hairline between rows, drawn as a border.",
+  "alt": "Anatomy of a sortable table, drawn from its code to copy on Newsprint, with five numbered callouts and a key. 1, Caption: Names the table, as table markup’s own caption. 2, Column heading: Each heading holds a sort button with its words and a 16 px arrow. 3, Height: Each sort button at least 44 px tall, across its words and arrow. 4, Sorted heading: The arrow turned to the order, and the heading says it in aria-sort. 5, Row rule: A hairline between rows, drawn as a border.",
   "illustrative": true,
   "notes": "Drawn from work/build/guide/code/c-18-table.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366). The status line under the table is written by its script when a reader sorts; the plate shows the table at rest."
  },

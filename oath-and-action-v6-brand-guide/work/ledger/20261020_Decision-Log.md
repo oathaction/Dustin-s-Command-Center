@@ -2679,3 +2679,22 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 | D2-1409 | The comparison page draws a keyline around each cover and reads the shell's Illustrative style from its stylesheet | On the Newsprint page the cover's edge, and so the crop, could not be seen; the label printed as plain text |
 | D2-1410 | My scratch builds use copies of the chapters and specimens, with chapter 18's files left out for the strict build | Chapter 18's 24 anatomy plates are still being drawn, so a strict build of the whole guide stops on them; the copy shows that nothing else warns |
 | D2-1411 | I set `TMPDIR` to the scratchpad for every run | The identity build renders PNGs through temporary files, which would otherwise land in `/tmp` |
+
+### Systems designer, chapter 18 anatomy plates (`20261111_Stage-C-Round-1-Anatomy-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1412 | Each plate is drawn from its component's own code set, markup and CSS, cut to the parts its caption names | The plate shows the real parts, and a rerun follows any change the component engineer makes |
+| D2-1413 | A plate is a picture: controls and landmarks become spans and divs, ids, names and links go, and the stage is `role="img"` with an alt that names every callout and its words | AX-S8 and the brief; the key sits inside the picture, so the alt carries it for a screen reader |
+| D2-1414 | States a reader sets by hand (focus, hover, checked, disabled) are set as `data-ax-*` attributes, and the code's CSS is rewritten to read them | The plate draws the code's own focus ring, hover and checked look, with no script |
+| D2-1415 | Inside a plate the code's class names are shortened to letters, and tokens read twice or more are aliased once | Weight (D2-1366); letters only, since the specimen build leaves a class unprefixed after a digit |
+| D2-1416 | Utility icons in the plates draw from the sprite, one `<use>` for each turn, mirror or state class the code draws | The build warns on an inlined drawing the sprite holds; a table heading's two arrows keep the classes its CSS shows and hides by sort state |
+| D2-1417 | One callout style and one key layout across the 24: a 20 px Charcoal numbered disc with a ring of the ground, a 2 px bracket for the target's height, a numbered key in one column on a phone and two from 34 rem | A family the reader learns once |
+| D2-1418 | A callout on a block of words sits in the margin before its first line; on a control, on a corner; on a word in running text, above or below that word | No callout covers a word |
+| D2-1419 | The theme switch's plate shows it at the top of the phone menu, drawn from the masthead set's menu head and the theme set | Its caption names its place in the masthead, and the menu's head is the masthead set's own |
+| D2-1420 | The masthead's plate shows the phone bar, then the navigation as it sits with 40 rem of room, under a dashed rule, then the open menu | One picture holds every part the caption names at a phone's width |
+| D2-1421 | The links plate draws the skip link in place above the text and spaces the lines at 2.4 | The skip link otherwise covers the text it skips to, and the callouts need room between lines |
+| D2-1422 | The scroll region's frame clips its content in the plate, and the reader's page view does not | The first shows a cut, which is its point; the second's callout would be cut off |
+| D2-1423 | The stepper is drawn at its last step, with the reason the stepper's own script writes there | The caption asks for a current step and an unavailable button's reason at once; only the last step has both |
+| D2-1424 | Invented content keeps the code set's own Illustrative label; the table's plate takes the caption's label instead, so its caption's callout has room | DR-97, one label per piece |
+| D2-1425 | Every key's words describe what the code draws, where the caption says otherwise | The plate is the code; the differences go to their owners below |

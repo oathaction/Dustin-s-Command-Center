@@ -191,10 +191,27 @@ def pin(e, n, at='tl'):
     e.k.append(b)
 
 
-def bracket(e, n):
-    """A bracket down the target's left edge, with its callout: the height a finger or pointer can hit."""
+def at_word(e, n, at):
+    """A callout on the first word of a run of words, held in a span that does not wrap, for a link that wraps and so
+    has no single corner."""
+    for i, k in enumerate(e.k):
+        if isinstance(k, str) and k.strip():
+            lead = len(k) - len(k.lstrip())
+            word, rest = (k[lead:].split(' ', 1) + [''])[:2]
+            w = El('span', {'class': 'ax-nw'})
+            w.k = [word]
+            w.up = e
+            e.k[i:i + 1] = ([k[:lead]] if lead else []) + [w] + ([' ' + rest] if rest else [])
+            pin(w, n, at)
+            return
+    pin(e, n, at)
+
+
+def bracket(e, n, up=False):
+    """A bracket down the target's left edge, with its callout: the height a finger or pointer can hit. up=True sets the
+    callout above the bracket, where words sit close before the target."""
     e.add_cls('ax-p')
-    t = El('span', {'class': 'ax-t'})
+    t = El('span', {'class': 'ax-t ax-tup' if up else 'ax-t'})
     b = El('span', {'class': 'ax-n'})
     b.k = [str(n)]
     t.k = [b]
@@ -239,16 +256,26 @@ def to_picture(root, css_attrs):
             # a utility icon draws from the sprite, as the build asks of every specimen from chapter 09 on; a mirror or a
             # turn on the code's path moves to the <use>
             size = (e.a.get('viewBox') or '0 0 24 24').split()[-1]
-            moves = {k.a.get('transform') for k in walk(e)}
-            if len(moves) == 1:
+            # one <use> for each way the code draws the icon: a turn or mirror, and a class the CSS shows or hides by
+            # state (a table heading's up and down arrows)
+            ways = []
+            for k in walk(e):
+                way = (k.a.get('class'), k.a.get('transform'))
+                if way not in ways:
+                    ways.append(way)
+            uses = []
+            for cls, move in ways:
                 use = El('use', {'href': f'#oa-sym-u-{icon[2:].lower()}-{size}px'})
-                if next(iter(moves)):
-                    use.a['transform'] = next(iter(moves))
+                if cls:
+                    use.a['class'] = cls
+                if move:
+                    use.a['transform'] = move
                 use.up = e
-                e.k = [use]
-                e.a = {k: v for k, v in a.items() if k in ('class', 'viewBox', 'width', 'height', 'hidden', 'data-icon')}
-                e.a['data-icon-family'] = 'utility'
-                continue
+                uses.append(use)
+            e.k = uses
+            e.a = {k: v for k, v in a.items() if k in ('class', 'viewBox', 'width', 'height', 'hidden', 'data-icon')}
+            e.a['data-icon-family'] = 'utility'
+            continue
         for stroke, kls in ((UTIL_STROKE, 'ax-u'), (dict(UTIL_STROKE, **{'stroke-width': '1.5'}), 'ax-u16')):
             if t == 'svg' and all(a.get(k) == v for k, v in stroke.items()):
                 for k in stroke:
@@ -388,12 +415,13 @@ AX_CSS = minify("""
 .ax{container-type:inline-size}
 .ax-st{position:relative;padding:28px 24px 28px 44px;border:1px solid var(--oa-color-border-hairline);background:var(--oa-color-surface);color:var(--oa-color-text-primary)}
 .ax-p{position:relative}
-.ax-n{position:absolute;z-index:3;top:-10px;left:-10px;display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--oa-color-text-primary);color:var(--oa-color-surface);box-shadow:0 0 0 2px var(--oa-color-surface);font:700 .8125rem/1 var(--oa-font-family-reading);letter-spacing:0;text-transform:none;text-decoration:none}
+.ax-n{position:absolute;z-index:3;top:-10px;left:-4px;display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--oa-color-text-primary);color:var(--oa-color-surface);box-shadow:0 0 0 2px var(--oa-color-surface);font:700 .8125rem/1 var(--oa-font-family-reading);letter-spacing:0;text-transform:none;text-decoration:none}
 .ax-tr{left:auto;right:-10px}.ax-bl{top:auto;bottom:-10px}.ax-br{top:auto;bottom:-10px;left:auto;right:-10px}
 .ax-t{position:absolute;top:0;bottom:0;left:-14px;width:5px;border:2px solid var(--oa-color-text-primary);border-right:0}
-.ax-t .ax-n{top:-24px;left:-16px}
+.ax-t .ax-n{top:50%;left:-27px;margin-top:-10px}.ax-tup .ax-n{top:-24px;left:-14px;margin-top:0}
 .ax-in{top:6px;left:6px}.ax-inr{top:6px;left:auto;right:6px}.ax-l{top:2px;left:-28px}.ax-up{top:-22px;left:0}.ax-dn{top:auto;bottom:-22px;left:0}
-.ax-st .ax-input{display:flex;align-items:center}
+.ax-st .ax-input{display:flex;align-items:center}.ax-nw{white-space:nowrap}.ax-lup{top:2px;left:-28px}
+@container (min-width:34rem){.ax-lup{top:-22px;left:0}}
 .ax-k{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px 24px}
 @container (min-width:34rem){.ax-k{grid-template-columns:1fr 1fr}}
 .ax-k li{position:relative;min-height:22px;padding-left:30px;font:var(--oa-type-body-small);color:var(--oa-color-text-primary)}
@@ -556,9 +584,9 @@ def p05():
     focus(skip)
     hover(links[0])
     pin(skip, 1, 'tr')
-    pin(links[0], 2, 'up')
-    pin(links[0], 3, 'dn')
-    pin(links[1], 4, 'up')
+    at_word(links[0], 2, 'up')
+    at_word(links[0], 3, 'dn')
+    at_word(links[1], 4, 'up')
     pin(q(text, 'oa-link-last'), 5, 'dn')
     key = [(1, 'Skip link', 'Hidden until the Tab key reaches it first on a page, then shown at the top'),
            (2, 'Words', 'Say where the link goes, and work read on their own'),
@@ -567,7 +595,7 @@ def p05():
            (5, 'Mark', 'The 16 px mark for another site, after the last word, which it never leaves')]
     return ['link'], r, key, 'links', ('The skip link is drawn in place above the text, and the lines are spaced apart to '
                                        'leave room for the callouts.'), False, ('.oa-link-skip{position:static;display:inline-block;margin:0 0 20px}'
-                                       '.oa-link-text{line-height:2.6}')
+                                       '.oa-link-text{line-height:2.4}')
 
 
 def p06():
@@ -681,7 +709,7 @@ def p09():
 def p10():
     r = D('table')
     rows = qa(r, 'oa-table-row')
-    only(r, q(r, 'oa-table-illus'), q(r, 'oa-table-grid'))
+    only(r, q(r, 'oa-table-grid'))
     for row in rows[3:]:
         drop(row)
     for row in rows[:3]:
@@ -689,18 +717,14 @@ def p10():
         drop(cells[-1])
     th = qa(r, 'oa-table-th')
     sort = q(th[0], 'oa-table-sort')
-    for i, h in enumerate(th):     # each heading keeps only the icon its sort state shows
-        for e in qa(h, 'oa-table-icon'):
-            if ('oa-table-icon--up' in e.cls()) != (i == 0) or 'oa-table-icon--down' in e.cls():
-                drop(e)
-    pin(q(r, 'oa-table-caption'), 1)
+    pin(q(r, 'oa-table-caption'), 1, 'up')
     pin(q(th[1], 'oa-table-word'), 2, 'up')
     bracket(q(th[0], 'oa-table-sort'), 3)
     pin(q(th[0], 'oa-table-word'), 4, 'up')
-    pin(q(rows[1], 'oa-table-td'), 5, 'bl')
+    pin([c for c in rows[1].k if isinstance(c, El)][-1], 5, 'bl')
     key = [(1, 'Caption', 'Names the table, as table markup’s own caption'),
            (2, 'Column heading', 'Each heading holds a sort button with its words and a 16 px arrow'),
-           (3, 'Height', 'Each sort button fills its heading, at least 44 px tall'),
+           (3, 'Height', 'Each sort button at least 44 px tall, across its words and arrow'),
            (4, 'Sorted heading', 'The arrow turned to the order, and the heading says it in aria-sort'),
            (5, 'Row rule', 'A hairline between rows, drawn as a border')]
     return ['table'], r, key, 'a sortable table', 'The status line under the table is written by its script when a reader sorts; the plate shows the table at rest.', True, ''
@@ -746,7 +770,7 @@ def p12():
     st.up.k.insert(st.up.k.index(st) + 1, err)
     copy = q(panel, 'oa-code-copy')
     pin(q(panel, 'oa-code-lang'), 1)
-    bracket(copy, 2)
+    bracket(copy, 2, up=True)
     pin(copy, 3, 'tr')
     pin(panel, 4, 'bl')
     pin(st, 5)
@@ -771,7 +795,7 @@ def p13():
     for mark in qa(st, 'oa-copy-mark--ok'):
         mark.a.pop('hidden', None)
     btn = q(row, 'oa-copy-button')
-    pin(q(row, 'oa-copy-value'), 1, 'up')
+    pin(q(row, 'oa-copy-value'), 1, 'lup')
     bracket(btn, 2)
     pin(btn, 3, 'tr')
     pin(st, 4)
@@ -938,9 +962,9 @@ def p20():
             drop(e)
     steps = qa(card, 'oa-tracker-step')
     pin(q(card, 'oa-tracker-bill'), 1)
-    pin(q(steps[0], 'oa-tracker-mark'), 2, 'tr')
-    pin(q(steps[1], 'oa-tracker-mark'), 3, 'tr')
-    pin(q(steps[2], 'oa-tracker-mark'), 4, 'tr')
+    pin(q(steps[0], 'oa-tracker-mark'), 2, 'up')
+    pin(q(steps[1], 'oa-tracker-mark'), 3, 'up')
+    pin(q(steps[2], 'oa-tracker-mark'), 4, 'up')
     pin(q(card, 'oa-tracker-status'), 5)
     pin(q(card, 'oa-tracker-check'), 6)
     key = [(1, 'Bill', 'Its number and title'),
@@ -949,7 +973,7 @@ def p20():
            (4, 'Not yet', 'A fine ring and its word'),
            (5, 'Status line', 'Says each change once, politely, in words'),
            (6, 'Check date', 'The warning mark and when we last checked')]
-    return ['tracker'], r, key, 'a live tracker', '', True, ''
+    return ['tracker'], r, key, 'a live tracker', '', True, '.oa-tracker-steps{margin-top:30px}'
 
 
 def p21():
