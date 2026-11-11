@@ -1,6 +1,6 @@
 {
  "page": "work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html",
- "built": "2026-11-11T17:12:11",
+ "built": "2026-11-11T18:46:43",
  "chapters": [
   "01",
   "02",
@@ -21,84 +21,84 @@
  ],
  "placeholders": [],
  "rules": 185,
- "specimens_placed": 424,
+ "specimens_placed": 433,
  "tokens": "tokens.css",
  "demo": false,
- "bytes": 9441768,
+ "bytes": 9445041,
  "weight": {
-  "bytes": 9441768,
+  "bytes": 9445041,
   "budget_page": 15500000.0,
   "limit": 16000000,
   "parts": {
-   "head and shell": 189118,
+   "head and shell": 194447,
    "sprites": 210685,
-   "fonts": 443189,
-   "front matter and part openers": 25495,
-   "appendix": 140999
+   "fonts": 344579,
+   "front matter and part openers": 27145,
+   "appendix": 141120
   },
   "chapters": {
    "01": {
-    "bytes": 2399152,
+    "bytes": 2417845,
     "budget": 2700000.0
    },
    "02": {
-    "bytes": 643308,
+    "bytes": 647807,
     "budget": 850000.0
    },
    "03": {
-    "bytes": 452957,
+    "bytes": 463525,
     "budget": 650000.0
    },
    "04": {
-    "bytes": 245665,
+    "bytes": 253098,
     "budget": 450000.0
    },
    "05": {
-    "bytes": 234353,
+    "bytes": 240976,
     "budget": 450000.0
    },
    "06": {
-    "bytes": 139079,
+    "bytes": 148162,
     "budget": 350000.0
    },
    "07": {
-    "bytes": 93151,
+    "bytes": 103975,
     "budget": 300000.0
    },
    "08": {
-    "bytes": 103135,
+    "bytes": 117056,
     "budget": 300000.0
    },
    "09": {
-    "bytes": 138649,
+    "bytes": 135561,
     "budget": 400000.0
    },
    "10": {
-    "bytes": 524930,
+    "bytes": 522612,
     "budget": 1000000.0
    },
    "11": {
-    "bytes": 430972,
+    "bytes": 436870,
     "budget": 550000.0
    },
    "12": {
-    "bytes": 197209,
+    "bytes": 195759,
     "budget": 500000.0
    },
    "17": {
-    "bytes": 393437,
+    "bytes": 394236,
     "budget": 500000.0
    },
    "18": {
-    "bytes": 1158506,
+    "bytes": 1161014,
     "budget": 1250000.0
    },
    "19": {
-    "bytes": 172893,
+    "bytes": 172143,
     "budget": 300000.0
    },
    "26": {
-    "bytes": 935252,
+    "bytes": 944182,
     "budget": 1000000.0
    }
   },
@@ -108,14 +108,14 @@
    "pillar": 8,
    "utility": 36
   },
-  "fonts_files": 329896
+  "fonts_files": 255920
  },
- "ids_held_whole": 727,
+ "ids_held_whole": 726,
  "fonts": {
   "embedded": true,
   "files": 6,
-  "file_bytes": 329896,
-  "page_bytes": 443189,
+  "file_bytes": 255920,
+  "page_bytes": 344579,
   "manifest": "work/build/assets/fonts/20261111_Font-Manifest.json"
  },
  "start": {
@@ -139,5 +139,28 @@
   ]
  },
  "warnings": [],
- "notes": []
+ "notes": [
+  "Rule 01.5: Files leaves out work/boards/phase-2/data-viz/shared/geo/us-state-tile-grid.json, a studio source, which stays off the page (DT-M1)",
+  "Rule 02.22: Files leaves out work/boards/phase-2/voice/20261106_Voice-Rules-Content.json, a studio source, which stays off the page (DT-M1)",
+  "Rule 02.22: Files leaves out work/handoffs/phase-2/20261106_Voice-Writing-Rules.md, a studio source, which stays off the page (DT-M1)",
+  "Rule 03.4: Files leaves out work/build/assets/identity/20261028_Identity-Minimum-Sizes.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 05.6: Files leaves out work/build/tokens/src/oa-tokens.src.mjs, a studio source, which stays off the page (DT-M1)",
+  "Rule 05.7: Files leaves out work/boards/phase-2/data-viz/shared/20261106_Palette-Lab.json, a studio source, which stays off the page (DT-M1)",
+  "Rule 09.3: Files leaves out work/build/assets/pillar-icons/20261110_Pillar-Icons-Manifest.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 10.1: Files leaves out work/build/assets/civic-line-v6/20261110_Civic-Line-V6-Inventory.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 10.3: Files leaves out work/build/assets/civic-line-v6/20261110_Civic-Line-V6-Inventory.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 10.4: Files leaves out work/build/assets/civic-line-v6/20261110_Civic-Line-V6-Inventory.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 10.6: Files leaves out work/build/assets/civic-line-v6/20261110_Civic-Line-V6-Inventory.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 10.8: Files leaves out work/build/assets/civic-line-v6/20261110_Civic-Line-V6-Inventory.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 10.9: Files leaves out work/build/scripts/phase-2/icon_likeness_check.js, a studio source, which stays off the page (DT-M1)",
+  "Rule 10.9: Files leaves out work/build/assets/civic-line-24-fit/qa/20261110_Five-Look-Alikes-Fits-Likeness.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 10.10: Files leaves out work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py, a studio source, which stays off the page (DT-M1)",
+  "Rule 11.11: Files leaves out work/build/assets/utility/20261110_Utility-Icons-Manifest.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 11.12: Files leaves out work/build/assets/utility/20261110_Utility-Icons-Manifest.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 12.5: Files leaves out work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py, a studio source, which stays off the page (DT-M1)",
+  "Rule 12.5: Files leaves out work/boards/phase-2/atlas-concepts/shared/atlas-kit.css, a studio source, which stays off the page (DT-M1)",
+  "Rule 12.6: Files leaves out work/boards/phase-2/data-viz/01-explainer/build_concept.py, a studio source, which stays off the page (DT-M1)",
+  "Rule 12.7: Files leaves out work/boards/phase-2/data-viz/shared/geo/us-state-tile-grid.json, a studio source, which stays off the page (DT-M1)",
+  "Rule 12.8: Files leaves out work/extract/atlas-v7-data.json, a studio source, which stays off the page (DT-M1)"
+ ]
 }

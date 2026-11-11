@@ -1,17 +1,17 @@
 {
  "about": "Token parity for the Gate 2 board: the token files against each other, and the guide page against the token files. Written by work/build/tests/tokens/token_parity_evidence.py.",
  "page": "work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html",
- "page_sha256": "36ee7624f3b63f9a8613b92eeddfb0584cb7d72ff48c133d78e5afb6c4d48b05",
+ "page_sha256": "fd288b6060823c0067b905875ca488ae6eb31b57c945ccb953ea4b0865e8f4e7",
  "token_files": {
   "tokens.css": {
-   "bytes": 94694,
-   "sha256": "8bb46d1d444b8a60ac14164b395ca401e199b9ed735423090451ebb2f1544728"
+   "bytes": 94724,
+   "sha256": "9a447df3090f068e3c47c2fb52c1b0246d0e2c8750e1adde5067eadc45516c96"
   },
   "tokens.json": {
-   "bytes": 284027,
-   "sha256": "66d8f0f0075bba50202bd0584768e27d55076095b0d9c80c5f5b6a7cc3a238b5"
+   "bytes": 287075,
+   "sha256": "012531cea68f8356747e6215e31f7c75763f52ffc456fd3a9457c62faf3541fc"
   },
-  "version": "6.0.0-gate2.8"
+  "version": "6.0.0-gate2.9"
  },
  "parity": {
   "command": "python3 -I work/build/tests/tokens/test_token_parity.py",
@@ -26,7 +26,7 @@
   "run": "2026-11-11",
   "status": "pre-release",
   "passed": true,
-  "version": "6.0.0-gate2.8",
+  "version": "6.0.0-gate2.9",
   "steps": [
    {
     "step": "build check",
@@ -119,32 +119,32 @@
   {
    "check": "the page inlines tokens.css byte for byte, under the build's one-line note of where it came from",
    "pass": true,
-   "detail": "inlined 94,694 bytes and tokens.css 94,694 bytes, both SHA-256 4ae8989f97a16674 with the final newline trimmed"
+   "detail": "inlined 94,724 bytes and tokens.css 94,724 bytes, both SHA-256 18101e395420e8be with the final newline trimmed"
   },
   {
    "check": "the tokens.css download is tokens.css",
    "pass": true,
-   "detail": "20261106_Oath-And-Action-Tokens.css: 94,694 bytes, SHA-256 8bb46d1d444b8a60"
+   "detail": "20261106_Oath-And-Action-Tokens.css: 94,724 bytes, SHA-256 9a447df3090f068e"
   },
   {
    "check": "the tokens.css zip holds tokens.css alone",
    "pass": true,
-   "detail": "20261106_Oath-And-Action-Tokens.zip: ['tokens.css'], 94,694 bytes"
+   "detail": "20261106_Oath-And-Action-Tokens.zip: ['tokens.css'], 94,724 bytes"
   },
   {
    "check": "the tokens.json download is tokens.json",
    "pass": true,
-   "detail": "20261106_Oath-And-Action-Tokens.json: 284,027 bytes, SHA-256 66d8f0f0075bba50"
+   "detail": "20261106_Oath-And-Action-Tokens.json: 287,075 bytes, SHA-256 012531cea68f8356"
   },
   {
    "check": "the tokens.json zip holds tokens.json alone",
    "pass": true,
-   "detail": "20261106_Oath-And-Action-Tokens-Json.zip: ['tokens.json'], 284,027 bytes"
+   "detail": "20261106_Oath-And-Action-Tokens-Json.zip: ['tokens.json'], 287,075 bytes"
   },
   {
    "check": "the page prints the token files' version",
    "pass": true,
-   "detail": "6.0.0-gate2.8"
+   "detail": "6.0.0-gate2.9"
   }
  ],
  "pass": true

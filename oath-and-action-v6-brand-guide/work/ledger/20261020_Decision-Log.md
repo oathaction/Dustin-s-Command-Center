@@ -3361,3 +3361,17 @@ The main session asked five questions with its plan for the Gate 2 preview, the 
 |---|---|---|
 | D2-1812 | The opener's Track piece keeps its deck, and the step stops if it loses it | DR-98 asks for the bill named whole, with both provisions, at its first mention in each chapter, and the opener now holds that first mention |
 | D2-1813 | The alt joins each piece's parts in short sentences ("... as of November 5, 2026. H.R. 7008, ... It ends on Follow this bill.") | The deck is a full sentence of its own, and a run-on alt would bury it |
+
+### Creative director, the whole-guide read and rescore (`20261111_CD-Gate-2-Whole-Guide-Read.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1814 | The identity proofs are scored on the six criteria as a seventeenth item, like a chapter | The brief names them so |
+| D2-1815 | M1 sits on chapter 26, with chapter 06's builders line aligned in the same fix | Rule 26.5 is where the builder route starts, and its weight set is the one wider than the faces chapter 06 owns |
+| D2-1816 | The opener and failure-plate drift (S1, S2) go back as Should fix | Every chapter still states its job in words on its first screen, and every failure plate carries the frame's “Failure case” label |
+| D2-1817 | The distinctiveness test hid the masthead by CSS and used views with no wordmark inside a plate | Covering the wordmark is the test; a plate that draws the wordmark would pass for the page |
+| D2-1818 | The difference in who speaks between chapters (D8) is a note for the editor, with no score lowered | Each chapter's choice suits its job, and the book still reads as one voice |
+| D2-1819 | The preview's start page, font license and colophon are scored together as one eighteenth item | The brief names them as one addendum item |
+| D2-1820 | Chapter 06's Google Fonts line, which the main session raised, is folded into M1 | It is the same fault as Rule 26.5's link: one weight set, offered as the link a product uses |
+| D2-1821 | The rescore reads the identity designer's seven wording fixes from the working tree as landed | The coordinator allowed it, and its notes and the files agree |
+| D2-1822 | Chapter 19's results waiting for call 12 lowers no score | The plate names its own build honestly, and the brief schedules the rerun last |

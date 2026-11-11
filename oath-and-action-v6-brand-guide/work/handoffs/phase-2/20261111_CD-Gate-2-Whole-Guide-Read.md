@@ -296,6 +296,47 @@ The words are good. The routes are the right three, each step says what a reader
 
 **Chapter 19 in the preview.** Its results plate still describes the chapters page of commit 04a3f3b8 at 8,962,864 bytes (see Risks).
 
+## Rescore
+
+The fixed page, the scratchpad's `gate-2/rescore/guide.html` (9,444,334 bytes, commit 2a11e2e3), read against the fix brief and the six owners' notes. I looked at every chapter's first screen and the proofs at 1440 by 900 and at 390 px, the start page and the licenses at 2x, a sample of the new failure plates and openers by element, and recounted leads, bars, titles, weights, keylines and font lines by script on the page and the chapter files. The identity designer's seven wording fixes (the editor's rows 14 to 20) are read from the working tree and its notes as landed.
+
+**Verdict.** All 18 items are ready, every score 4 or more, with no Must fix. Three Should fix items remain, all the engineer's, and chapter 19's results wait for call 12 as planned.
+
+| Item | Craft | Clarity | Brand fidelity | Usefulness | Evidence honesty | Accessibility | Was under 4 |
+|---|---|---|---|---|---|---|---|
+| Chapter 01, Purpose | 4 | 4 | 4 | 4 | 5 | 4 |  |
+| Chapter 02, Voice | 4 | 4 | 4 | 4 | 4 | 4 |  |
+| Chapter 03, Identity | 4 | 5 | 5 | 5 | 4 | 4 |  |
+| Chapter 04, The Ampersand and the hinge | 4 | 4 | 4 | 4 | 4 | 4 |  |
+| Chapter 05, Color | 4 | 5 | 5 | 4 | 4 | 4 |  |
+| Chapter 06, Type | 4 | 5 | 4 | 5 | 4 | 4 |  |
+| Chapter 07, Layout and spacing | 4 | 4 | 4 | 4 | 4 | 4 |  |
+| Chapter 08, The lockmark | 4 | 4 | 4 | 4 | 4 | 4 |  |
+| Chapter 09, Pillar icons | 4 | 4 | 5 | 4 | 4 | 4 |  |
+| Chapter 10, Topic and atlas symbols | 4 | 4 | 4 | 5 | 4 | 4 |  |
+| Chapter 11, Status and utility icons | 4 | 4 | 4 | 5 | 4 | 4 |  |
+| Chapter 12, Graphic devices and patterns | 4 | 4 | 4 | 4 | 4 | 4 |  |
+| Chapter 17, Motion and states | 4 | 4 | 4 | 4 | 4 | 4 |  |
+| Chapter 18, Components and interaction | 4 | 5 | 4 | 5 | 4 | 4 |  |
+| Chapter 19, Accessibility | 4 | 4 | 4 | 4 | 4 | 4 |  |
+| Chapter 26, Tokens and how to choose them | 4 | 4 | 4 | 4 | 4 | 4 | Usefulness 3 |
+| Identity proofs | 4 | 4 | 5 | 4 | 4 | 4 |  |
+| Gate 2 preview: Where to start, the font license and the colophon | 4 | 4 | 4 | 4 | 4 | 4 | Craft 3, Brand fidelity 3 |
+
+**What closed.** M1: one weight set and one link in Rules 06.1, 06.10 and 26.5, in both of 26.5's plates and in the six `@font-face` rules, and Rule 26.5 says the guide carries the files. A1: the route heads on the Charcoal panel with the pillar row, plain step sentences under 20 underlined target lines, and the colophon closing on the lockmark beside the tagline, exact. D1 to D7 closed: one opener form in all 16 chapters and the proofs, every opener reaching the first screen at 1440 by 900; all 184 failure captions leading “Fails Rule NN.N.”, every bar in Newsprint on Charcoal, and the 28 plates without a bar each drawing a method with its reason in its owner's notes; one title past fifteen words, Rule 12.4's; no shadow keyline; no off-system weight.
+
+**Should fix**
+
+- **R1.** Where: “Where to start”, every step's target line (1440 and 390 px). What: The underline runs under the space after “Rule 26.8” and before “Tokens”, so one link reads as two, and “Tokens and how to choose them” leaves “them” alone on a line in the builder route. Fix: Underline the words alone, with the spaces and the dot outside the underlined spans, and join the target's last two words with a no-break space. Owner: Engineer.
+- **R2.** Where: “Where to start”, the route index at 390 px. What: The third link wraps with its separator dot at the start of the line: “· Building with code”. Fix: Bind each dot to the link before it with a no-break space, so a line never starts with a dot. Owner: Engineer.
+- **R3.** Where: The colophon's sign-off. What: The sign-off's hairline runs to 1376 px at 1440 while the colophon's rows end at 1183, so the book closes on two measures. Fix: End the hairline at the rows' right edge, the colophon's measure. Owner: Engineer.
+
+**Open, by plan.** Chapter 19's results plate still describes commit 04a3f3b8 at 8,962,864 bytes; call 12 reruns it on the fixed preview last, as the fix brief plans (Accessibility lead, after the main session's final guide check).
+
+**Tested.** The fixed page in Chromium: its 21 openers and front pages at 1440 by 900 and 390 px; the start page's steps and an opened license at 2x; seven plates by element (03.4 and 06.4 failures, 07.2, 04.5, and the 01, 04 and 08 openers); by script, every failure caption's lead and every failure specimen's bar in the chapter files, title lengths, the computed style of every bar, every family and weight the page sets, every red fill's keyline, every font link and `@font-face` rule, and chapter 19's results line.
+
+**Not tested.** Keyboard and screen reader on the new front pages and openers; forced colors on the sign-off and the pillar row; every one of the 433 specimens at full size; the identity designer's seven wording fixes on a rebuilt page; the main session's four-width guide check, which runs after.
+
 ## Tested and Not tested
 
 **Tested**
@@ -327,3 +368,5 @@ D2-xxx | The distinctiveness test hid the masthead by CSS and used views with no
 D2-xxx | The difference in who speaks between chapters (D8) is a note for the editor, with no score lowered | Each chapter's choice suits its job, and the book still reads as one voice
 D2-xxx | The preview's start page, font license and colophon are scored together as one eighteenth item | The brief names them as one addendum item
 D2-xxx | Chapter 06's Google Fonts line, which the main session raised, is folded into M1 | It is the same fault as Rule 26.5's link: one weight set, offered as the link a product uses
+D2-xxx | The rescore reads the identity designer's seven wording fixes from the working tree as landed | The coordinator allowed it, and its notes and the files agree
+D2-xxx | Chapter 19's results waiting for call 12 lowers no score | The plate names its own build honestly, and the brief schedules the rerun last

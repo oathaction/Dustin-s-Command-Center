@@ -1,0 +1,734 @@
+{
+ "title": "Creative director's rescore after Gate 2's fix pass: 16 chapters, the identity proofs and the preview's front pages",
+ "date": "2026-11-11",
+ "author": "Creative director (oa-creative-director), subagent of the main session",
+ "basis": "20261111_Gate-2-Fix-Brief.md and the six owners' notes; Master Brief section 6 rubric; the fixed page in the scratchpad's gate-2/rescore/guide.html (9,444,334 bytes, commit 2a11e2e3, fonts embedded, strict build 0 warnings), looked at by the creative director at 1440 by 900 (1x, and 2x for the start page and the licenses) and 390 px (1x and 2x), every opener on its chapter's first screen, with the identity designer's seven wording fixes (the editor's rows 14 to 20) read from the working tree and its notes as landed",
+ "review": "work/handoffs/phase-2/20261111_CD-Gate-2-Whole-Guide-Read.md, section \"Rescore\"",
+ "record": "work/handoffs/phase-2/20261111_Gate-2-CD-Scores.json keeps the first read's scores as the record",
+ "threshold": "4 on every criterion; an item is ready when every score is 4 or more and it has no Must fix",
+ "criteria": [
+  {
+   "key": "craft",
+   "name": "Craft"
+  },
+  {
+   "key": "clarity",
+   "name": "Clarity"
+  },
+  {
+   "key": "brand_fidelity",
+   "name": "Brand fidelity"
+  },
+  {
+   "key": "usefulness",
+   "name": "Usefulness"
+  },
+  {
+   "key": "evidence_honesty",
+   "name": "Evidence honesty"
+  },
+  {
+   "key": "accessibility",
+   "name": "Accessibility"
+  }
+ ],
+ "items": [
+  {
+   "key": "ch01",
+   "name": "Chapter 01, Purpose",
+   "anchor": "#purpose",
+   "stage": "A",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "was": null,
+   "reasons": {
+    "craft": "The opener cuts the four pillar pieces to kicker, headline, hinge and red step at true size, every failure caption leads “Fails Rule 01.n.”, and 21 of 24 failures carry the bar, the other three drawing a planning tally or a log row.",
+    "clarity": "At 1440 by 900 the pieces' heads reach the first screen under the intro.",
+    "brand_fidelity": "The first screen now shows the kicker, the hinge divider and the one red step that mark our work.",
+    "usefulness": "All 24 rules now carry Specifications.",
+    "evidence_honesty": "The opener names H.R. 7008 with both provisions at its first mention, as DR-98 sets, and Connect and Act carry Illustrative.",
+    "accessibility": "Each piece reads in gray, and the opener's alt says what a reader learns."
+   },
+   "fixes_landed": {
+    "S1": "landed",
+    "S2": "landed",
+    "S9": "landed"
+   },
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "should_fix": [],
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch02",
+   "name": "Chapter 02, Voice",
+   "anchor": "#voice",
+   "stage": "A",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "was": null,
+   "reasons": {
+    "craft": "The brand lines open the chapter as live text with the quotation marks hung, and all 27 failure captions lead “Fails Rule 02.n.”",
+    "clarity": "The opener shows the four locked lines word for word before the rules that teach them.",
+    "brand_fidelity": "Lora Italic carries only the quoted lines, and “Terms.” no longer fakes an Inter italic.",
+    "usefulness": "Each writing rule still teaches from its worked pair.",
+    "evidence_honesty": "Each quoted line names its source, and the 21 fault cards stay without the bar because none reads as a finished piece.",
+    "accessibility": "The opener is selectable text, so a screen reader reads the lines themselves."
+   },
+   "fixes_landed": {
+    "S1": "landed",
+    "S2": "landed",
+    "S8": "landed"
+   },
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "should_fix": [],
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch03",
+   "name": "Chapter 03, Identity",
+   "anchor": "#identity",
+   "stage": "A",
+   "scores": {
+    "craft": 4,
+    "clarity": 5,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "was": {
+    "clarity": 4,
+    "brand_fidelity": 4
+   },
+   "reasons": {
+    "craft": "Seven lockups open the chapter from the same masters as Rule 03.2's plate, on whole pixels, and all eight failures and the misuse sheet carry the bar.",
+    "clarity": "A newcomer sees the lockups at true size on the first screen, under the intro that names them.",
+    "brand_fidelity": "With the wordmark in the masthead covered, the first screen still shows the system's own marks.",
+    "usefulness": "Minimums, masters and replacements are unchanged and exact.",
+    "evidence_honesty": "Rule 03.8's basis now reads as the others do, with its month.",
+    "accessibility": "The opener is a picture with alt text naming each lockup."
+   },
+   "fixes_landed": {
+    "S1": "landed",
+    "S2": "landed",
+    "S8": "landed",
+    "S11": "landed"
+   },
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "should_fix": [],
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch04",
+   "name": "Chapter 04, The Ampersand and the hinge",
+   "anchor": "#ampersand",
+   "stage": "A",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "was": null,
+   "reasons": {
+    "craft": "Rule 04.5's compact masters stand side by side under the display master, and the opener sets B at 160 px beside one hinge headline, each in its own frame.",
+    "clarity": "The opener's top reaches the first screen at 1440 px, and the two titles are now one clause each.",
+    "brand_fidelity": "Red is spent once per frame, and every failure now carries the bar.",
+    "usefulness": "The masters, divider and crop measures are unchanged.",
+    "evidence_honesty": "Bases and approvals are as before.",
+    "accessibility": "The opener names B and the headline in its alt."
+   },
+   "fixes_landed": {
+    "S1": "landed",
+    "S2": "landed",
+    "S5": "landed",
+    "S7": "landed"
+   },
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "should_fix": [],
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch05",
+   "name": "Chapter 05, Color",
+   "anchor": "#color",
+   "stage": "A",
+   "scores": {
+    "craft": 4,
+    "clarity": 5,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "was": {
+    "clarity": 4,
+    "brand_fidelity": 4
+   },
+   "reasons": {
+    "craft": "Every keyline on red is a 1 px border, Rule 05.3's body keeps four sentences and moves six to Specifications, and every failure carries the bar.",
+    "clarity": "The seven colors and their shares sit whole on the first screen at 1440 px.",
+    "brand_fidelity": "With the wordmark covered, the first screen is the palette itself, in its proportions.",
+    "usefulness": "Ratios print one way, with two decimals and “to 1”.",
+    "evidence_honesty": "Rule 05.5 now names the error bar as the case that takes no keyline.",
+    "accessibility": "The swatches are live text, and each ratio is printed."
+   },
+   "fixes_landed": {
+    "S1": "landed",
+    "S2": "landed",
+    "S7": "landed",
+    "S10": "landed"
+   },
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "should_fix": [],
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch06",
+   "name": "Chapter 06, Type",
+   "anchor": "#type",
+   "stage": "A",
+   "scores": {
+    "craft": 4,
+    "clarity": 5,
+    "brand_fidelity": 4,
+    "usefulness": 5,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "was": {
+    "clarity": 4,
+    "usefulness": 4
+   },
+   "reasons": {
+    "craft": "The three faces open the chapter side by side in their jobs, and all ten failures carry the bar and the lead.",
+    "clarity": "The first screen shows each face named with its weights.",
+    "brand_fidelity": "Inter Tight 800 still shares the wordmark's voice, and no off-system weight remains on the page.",
+    "usefulness": "Rules 06.1 and 06.10 give the one weight set and the one link a product loads.",
+    "evidence_honesty": "Bases are unchanged.",
+    "accessibility": "The opener is live text, and no text on screen sets under 13 px outside the plate that teaches the floor."
+   },
+   "fixes_landed": {
+    "S1": "landed",
+    "S2": "landed"
+   },
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "should_fix": [],
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch07",
+   "name": "Chapter 07, Layout and spacing",
+   "anchor": "#layout",
+   "stage": "A",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "was": null,
+   "reasons": {
+    "craft": "Rule 07.2's frame now takes its 24 px inset, and the opener draws the five grids at one eighth size in one row.",
+    "clarity": "The grids sit whole on the first screen at 1440 px.",
+    "brand_fidelity": "The grid plates stay quiet on Newsprint, as the system intends.",
+    "usefulness": "Columns, gutters and margins for five widths, unchanged.",
+    "evidence_honesty": "Ratios print one way.",
+    "accessibility": "The opener is a picture with alt text naming each width."
+   },
+   "fixes_landed": {
+    "S1": "landed",
+    "S2": "landed",
+    "S6": "landed"
+   },
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "should_fix": [],
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch08",
+   "name": "Chapter 08, The lockmark",
+   "anchor": "#lockmark",
+   "stage": "A",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "was": null,
+   "reasons": {
+    "craft": "The opener crops Rule 08.2's four places at true size on whole pixels, and the step numeral sets in Inter 700.",
+    "clarity": "The masthead and page header reach the first screen at 1440 px.",
+    "brand_fidelity": "The lockmark appears whole in each place, with the lever as signature red.",
+    "usefulness": "Rule 08.2's long sentences are short leads now, with sizes in the specification rows.",
+    "evidence_honesty": "Approvals keep their months.",
+    "accessibility": "The opener's alt names the four places."
+   },
+   "fixes_landed": {
+    "S1": "landed",
+    "S2": "landed",
+    "S8": "landed"
+   },
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "should_fix": [],
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch09",
+   "name": "Chapter 09, Pillar icons",
+   "anchor": "#pillar-icons",
+   "stage": "B",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "was": null,
+   "reasons": {
+    "craft": "Every failure caption leads “Fails Rule 09.n.” and all four carry the bar.",
+    "clarity": "As in the first read: The opener's pillar row says what the chapter is for before a word of the rules. The pillar row opens the chapter.",
+    "brand_fidelity": "As in the first read: With the wordmark covered the row reads as ours: the Civic Line, the order and one red underline beside a word. The row reads as ours with the wordmark covered.",
+    "usefulness": "Rule 09.2 now sets the current word bold at every size.",
+    "evidence_honesty": "As in the first read: Bases name the founder's approval of the pixel fits.",
+    "accessibility": "The current pillar holds without red at every size."
+   },
+   "fixes_landed": {
+    "S2": "landed"
+   },
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "should_fix": [],
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch10",
+   "name": "Chapter 10, Topic and atlas symbols",
+   "anchor": "#symbols",
+   "stage": "B",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 5,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "was": null,
+   "reasons": {
+    "craft": "As in the first read: The library's 125 drawings sit on one grid with words, IDs and typed chips at 2x, with every failure stamped and captioned.",
+    "clarity": "Rule 10.4's title is now one clause, and the opener still shows the subject before the rules.",
+    "brand_fidelity": "As in the first read: One line weight, round ends and one red accent make the family recognizable without the wordmark.",
+    "usefulness": "As in the first read: Sizes, the list of 41, tiles, editions and the likeness test give a maker every decision.",
+    "evidence_honesty": "As in the first read: Typed chips match Atlas V7 IDs and the likeness test is named as its basis.",
+    "accessibility": "As in the first read: Each drawing stands beside its word, so alt text stays empty and nothing is lost."
+   },
+   "fixes_landed": {},
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "should_fix": [],
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch11",
+   "name": "Chapter 11, Status and utility icons",
+   "anchor": "#icons",
+   "stage": "B",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 5,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "was": null,
+   "reasons": {
+    "craft": "The new opener draws the six steps at true size with the take-part disc, and the asks' keylines are borders.",
+    "clarity": "Five titles are now one clause, and the first screen shows the tracker.",
+    "brand_fidelity": "The take-part disc is the view's one red.",
+    "usefulness": "As in the first read: Six steps, three processes with statute bases, target sizes and a mark for every message.",
+    "evidence_honesty": "The opener says “follows” where it said “passes”, and step 6 is Governor on a state bill.",
+    "accessibility": "Each step's state is in words beside its shape."
+   },
+   "fixes_landed": {
+    "S1": "landed",
+    "S7": "landed"
+   },
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "should_fix": [],
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch12",
+   "name": "Chapter 12, Graphic devices and patterns",
+   "anchor": "#graphic-devices",
+   "stage": "B",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "was": null,
+   "reasons": {
+    "craft": "The device index now opens the chapter, “raises” sets in Inter 600, and every failure carries the bar and the lead.",
+    "clarity": "The index's head reaches the first screen at 1440 px, under a shorter intro.",
+    "brand_fidelity": "As in the first read: Rule 12.4 now signs open areas with B or a watermark, and the red target alone carries a reform's red.",
+    "usefulness": "As in the first read: Opacity tokens, the crop's measures by rule number and a never list for each device.",
+    "evidence_honesty": "As in the first read: Bases name the atlas's visual system and the fourth edition where devices come from them.",
+    "accessibility": "As in the first read: Rules 12.2 and 12.4 mark the watermark and the crop decorative, and the layer diagram keeps every name flat and readable."
+   },
+   "fixes_landed": {
+    "S1": "landed",
+    "S2": "landed",
+    "S8": "landed"
+   },
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "should_fix": [],
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch17",
+   "name": "Chapter 17, Motion and states",
+   "anchor": "#motion-and-states",
+   "stage": "C",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "was": null,
+   "reasons": {
+    "craft": "Titles are one clause, and the players' controls wrap with Reset named for what it resets.",
+    "clarity": "Rules 17.9 and 17.10 keep their meaning in shorter titles, after the editor's second pass.",
+    "brand_fidelity": "As in the first read: Red stays off Prussian, the identity players end on their masters, and every state has a shape.",
+    "usefulness": "Rule 17.9 names the inside ring for a close neighbor.",
+    "evidence_honesty": "As in the first read: Loop R1 carries its grade and the W3C draft its date.",
+    "accessibility": "Reset names its object in its visible words."
+   },
+   "fixes_landed": {
+    "S3": "landed"
+   },
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "should_fix": [],
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch18",
+   "name": "Chapter 18, Components and interaction",
+   "anchor": "#components",
+   "stage": "C",
+   "scores": {
+    "craft": 4,
+    "clarity": 5,
+    "brand_fidelity": 4,
+    "usefulness": 5,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "was": {
+    "clarity": 4
+   },
+   "reasons": {
+    "craft": "As in the first read: Callouts sit beside their parts, the code sets run live in both themes, and every failure is stamped. In its plates; the tabs' and location list's rings draw inside with their gap.",
+    "clarity": "The intro is two paragraphs, the opener reaches the first screen, and the titles average 9.5 words.",
+    "brand_fidelity": "As in the first read: The ask stands on its own row, a field on Charcoal stays Charcoal, and red never meets Prussian.",
+    "usefulness": "As in the first read: Code to copy in both themes, keys, names, target sizes and status lines for every component. With Rule 18.17's builders line on aria-invalid.",
+    "evidence_honesty": "As in the first read: Atlas samples carry their snapshot date, and Loop R1 its grade.",
+    "accessibility": "The definitions now sit in Rule 18.1's rule text, ahead of the first use of aria-disabled."
+   },
+   "fixes_landed": {
+    "S3": "landed",
+    "S10": "landed"
+   },
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "should_fix": [],
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch19",
+   "name": "Chapter 19, Accessibility",
+   "anchor": "#accessibility",
+   "stage": "C",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "was": {
+    "evidence_honesty": 5
+   },
+   "reasons": {
+    "craft": "As in the first read: The 33, 8, 9 and 5 count opens the chapter as a plate, and Rule 19.5's chart now has its title, series, years and source.",
+    "clarity": "Eight of nine titles are one clause, and Rule 19.6 keeps controls in its title.",
+    "brand_fidelity": "As in the first read: The chapter speaks in the house's plain voice and spends no red it does not need.",
+    "usefulness": "As in the first read: Each criterion links the rule that meets it, and the device script is ready for Phase 5.",
+    "evidence_honesty": "The results plate still names the earlier build, commit 04a3f3b8 at 8,962,864 bytes, which is honest about itself; call 12 reruns it on the preview.",
+    "accessibility": "As in the first read: Rule 19.2's alt text plate and Rule 19.5's chart model what they teach, and the results report axe-core with no violation at four widths."
+   },
+   "fixes_landed": {
+    "S3": "landed"
+   },
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "should_fix": [],
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch26",
+   "name": "Chapter 26, Tokens and how to choose them",
+   "anchor": "#tokens",
+   "stage": "C",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "was": {
+    "usefulness": 3
+   },
+   "reasons": {
+    "craft": "Every failure leads “Fails Rule 26.n.”, three more carry the bar, and the four method plates go without it by a stated reason.",
+    "clarity": "Three titles are one clause.",
+    "brand_fidelity": "As in the first read: Token names follow the surface and role, and the worked examples keep red off Prussian.",
+    "usefulness": "Rule 26.5's builders line, its Fonts row and both its plates' code give the one weight set and say the guide carries the files.",
+    "evidence_honesty": "Bases lower-case “design judgment” after a semicolon.",
+    "accessibility": "The token table's status line keeps room for two lines on a phone."
+   },
+   "fixes_landed": {
+    "M1": "landed",
+    "S2": "landed",
+    "S11": "landed"
+   },
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "should_fix": [],
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "proofs",
+   "name": "Identity proofs",
+   "anchor": "#proofs",
+   "stage": "A, revised at B and C",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "was": null,
+   "reasons": {
+    "craft": "The proofs open in the chapter form, “Appendix” in the number's place at 80 px, and the rail lists the five proofs.",
+    "clarity": "One intro paragraph names all five, so the first proof's head reaches the first screen.",
+    "brand_fidelity": "As in the first read: With the wordmark covered the social card still reads as ours through the hinge headline, the lockmark and the Newsprint ground.",
+    "usefulness": "As in the first read: Each proof prints its sizes, margins and masters, and the letter downloads as a print proof.",
+    "evidence_honesty": "The S1 record now sits in its own proof's words.",
+    "accessibility": "As in the first read: The site bar scrolls inside its frame with a Fit to window control, and each proof prints its sizes in text beside it."
+   },
+   "fixes_landed": {
+    "S4": "landed"
+   },
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "should_fix": [],
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "preview_front",
+   "name": "Gate 2 preview: Where to start, the font license and the colophon",
+   "anchor": "#start, #colophon",
+   "stage": "Gate 2 preview",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "was": {
+    "craft": 3,
+    "brand_fidelity": 3
+   },
+   "reasons": {
+    "craft": "The route heads sit on the part opener's Charcoal panel, the step sentences are plain ink with 20 underlined target lines, and the licenses reflow; the target lines still underline the spaces around their dot and leave “them” alone on a line (R1).",
+    "clarity": "As in the first read: Three routes named for why a reader came, each step saying what the reader will learn and where it goes, with the one later step in plain words and no link. Three routes, each step saying where it goes.",
+    "brand_fidelity": "The newcomer's panel ends on the pillar row, and the colophon closes on the lockmark beside “A country that answers to its people.”, exact.",
+    "usefulness": "As in the first read: Every step points at the rule that answers it, the builder route starts at the token files, and the colophon names each family's authors, OFL 1.1 and Lora's reserved name, with the full texts. With the date joined and UTC in the Built row.",
+    "evidence_honesty": "The colophon's claim still holds: the page loads nothing from elsewhere.",
+    "accessibility": "The whole row stays the link and its target, at least 44 px tall."
+   },
+   "fixes_landed": {
+    "A1": "landed",
+    "A2": "landed",
+    "A3": "landed",
+    "A4": "landed",
+    "A5": "landed"
+   },
+   "must_fix_count": 0,
+   "should_fix_count": 3,
+   "should_fix": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "ready": true,
+   "to_ready": "Ready."
+  }
+ ],
+ "totals": {
+  "must_fix": 0,
+  "should_fix": 3,
+  "under_4": [],
+  "ready": [
+   "ch01",
+   "ch02",
+   "ch03",
+   "ch04",
+   "ch05",
+   "ch06",
+   "ch07",
+   "ch08",
+   "ch09",
+   "ch10",
+   "ch11",
+   "ch12",
+   "ch17",
+   "ch18",
+   "ch19",
+   "ch26",
+   "proofs",
+   "preview_front"
+  ],
+  "not_ready": []
+ },
+ "drift": [
+  {
+   "id": "D1",
+   "status": "closed",
+   "note": "Every chapter and the proofs open in one form, and every opener reaches the first screen at 1440 by 900; on a phone each sits under its intro, the same way in every chapter."
+  },
+  {
+   "id": "D2",
+   "status": "closed",
+   "note": "All 184 failure captions lead “Fails Rule NN.N.”; every bar prints Newsprint on Charcoal; the 28 plates without a bar draw a method and each owner names its reason."
+  },
+  {
+   "id": "D3",
+   "status": "closed",
+   "note": "One title past fifteen words remains, Rule 12.4's, kept as DR-216 approved it."
+  },
+  {
+   "id": "D4",
+   "status": "closed",
+   "note": "The proofs open at chapter scale with “Appendix” in the number's place."
+  },
+  {
+   "id": "D5",
+   "status": "closed",
+   "note": "One weight set and one link in Rules 06.1, 06.10 and 26.5, Rule 26.5's code and the six @font-face rules."
+  },
+  {
+   "id": "D6",
+   "status": "closed",
+   "note": "No keyline on red is drawn as a shadow."
+  },
+  {
+   "id": "D7",
+   "status": "closed",
+   "note": "The page sets only Inter 400, 600 and 700, Inter Tight 800 and Lora Italic."
+  },
+  {
+   "id": "D8",
+   "status": "note",
+   "note": "Left as a note for the editor, as in the first read."
+  }
+ ],
+ "should_fix": {
+  "R1": {
+   "where": "“Where to start”, every step's target line (1440 and 390 px)",
+   "what": "The underline runs under the space after “Rule 26.8” and before “Tokens”, so one link reads as two, and “Tokens and how to choose them” leaves “them” alone on a line in the builder route.",
+   "fix": "Underline the words alone, with the spaces and the dot outside the underlined spans, and join the target's last two words with a no-break space.",
+   "owner": "Engineer"
+  },
+  "R2": {
+   "where": "“Where to start”, the route index at 390 px",
+   "what": "The third link wraps with its separator dot at the start of the line: “· Building with code”.",
+   "fix": "Bind each dot to the link before it with a no-break space, so a line never starts with a dot.",
+   "owner": "Engineer"
+  },
+  "R3": {
+   "where": "The colophon's sign-off",
+   "what": "The sign-off's hairline runs to 1376 px at 1440 while the colophon's rows end at 1183, so the book closes on two measures.",
+   "fix": "End the hairline at the rows' right edge, the colophon's measure.",
+   "owner": "Engineer"
+  }
+ },
+ "open": "Chapter 19's results plate still describes commit 04a3f3b8 at 8,962,864 bytes; call 12 reruns it on the fixed preview last, as the fix brief plans (Accessibility lead, after the main session's final guide check).",
+ "second_pass": "Nothing is under 4, so DR-191's short second pass takes no item. R1 to R3 are the engineer's and can ride the next build.",
+ "questions_for_dustin": []
+}

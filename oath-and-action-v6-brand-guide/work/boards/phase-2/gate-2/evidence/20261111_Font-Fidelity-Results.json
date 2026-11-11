@@ -1,6 +1,7 @@
 {
- "checked": "2026-11-11T17:22:35.299Z",
- "version7": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
+ "about": "Final Gate 2 preview (after the fix pass) against the same page with its embedded fonts block replaced by Rule 06.10's Google Fonts link (Inter 400, 600 and 700; Inter Tight 800; Lora Italic 400 and 500), fetched with the Chrome 153 user agent. The field version7 names that Google-loaded twin, in the engineer's scratch folder.",
+ "checked": "2026-11-11T18:48:58.049Z",
+ "version7": "../../../../tmp/claude-0/-home-user-Dustin-s-Command-Center/762f3743-f9b3-59db-919e-2c641afbd759/scratchpad/gate-2-fix/engineer/preview-google-fonts.html",
  "preview": "work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html",
  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
  "fontRequests": {
@@ -11,7 +12,7 @@
   {
    "el": "#purpose .ch-head",
    "w": 868,
-   "h": 1536,
+   "h": 2731,
    "differ": 0,
    "max": 0
   },
@@ -25,28 +26,28 @@
   {
    "el": "#rule-05-3 .rule-text",
    "w": 534,
-   "h": 793,
+   "h": 397,
    "differ": 0,
    "max": 0
   },
   {
    "el": "#voice .ch-head",
    "w": 868,
-   "h": 1495,
+   "h": 2253,
    "differ": 0,
    "max": 0
   },
   {
    "el": "#rule-17-8 .rule-h",
    "w": 868,
-   "h": 105,
+   "h": 70,
    "differ": 0,
    "max": 0
   },
   {
    "el": "#tokens .ch-head",
    "w": 868,
-   "h": 1571,
+   "h": 1454,
    "differ": 0,
    "max": 0
   },
@@ -80,64 +81,64 @@
   },
   {
    "el": "Lora text 2",
+   "w": 650,
+   "h": 42,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "Lora text 3",
+   "w": 650,
+   "h": 85,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "Lora text 4",
+   "w": 650,
+   "h": 84,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "Lora text 5",
+   "w": 650,
+   "h": 43,
+   "differ": 0,
+   "max": 0
+  },
+  {
+   "el": "Lora text 6",
    "w": 229,
    "h": 50,
    "differ": 0,
    "max": 0
   },
   {
-   "el": "Lora text 3",
+   "el": "Lora text 7",
    "w": 223,
    "h": 77,
    "differ": 0,
    "max": 0
   },
   {
-   "el": "Lora text 4",
+   "el": "Lora text 8",
    "w": 231,
    "h": 77,
    "differ": 0,
    "max": 0
   },
   {
-   "el": "Lora text 5",
+   "el": "Lora text 9",
    "w": 224,
    "h": 50,
    "differ": 0,
    "max": 0
   },
   {
-   "el": "Lora text 6",
+   "el": "Lora text 10",
    "w": 249,
    "h": 159,
-   "differ": 0,
-   "max": 0
-  },
-  {
-   "el": "Lora text 7",
-   "w": 222,
-   "h": 23,
-   "differ": 0,
-   "max": 0
-  },
-  {
-   "el": "Lora text 8",
-   "w": 232,
-   "h": 23,
-   "differ": 0,
-   "max": 0
-  },
-  {
-   "el": "Lora text 9",
-   "w": 255,
-   "h": 50,
-   "differ": 0,
-   "max": 0
-  },
-  {
-   "el": "Lora text 10",
-   "w": 724,
-   "h": 43,
    "differ": 0,
    "max": 0
   }
