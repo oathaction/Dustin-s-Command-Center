@@ -264,15 +264,24 @@ AMP_END = {17: ("ampersand/20261109_Amp-B-14px-End-Mark-Fit-B.svg", 13, 13),
 # parts into stripes at any size between whole multiples of its grid (its node cores fall to 0 to 72 percent full
 # color from 49 to 95 px at 1x), while the display master draws each part as one shape at every size.
 LOCK_DISPLAY_FROM = 49
+# Promotion C, November 11, 2026 (DR-211): a social card signs off with the 48 px master drawn at exactly twice its size,
+# 96 px, so every node, link and the lever still land on whole pixels, each of its pixels a 2 by 2 block. Covers,
+# posters and the masthead keep 48 px. lockmark() keeps its ranges; sign_off() draws the place.
+SIGN_OFF = {"social": 96, "cover": 48}
 BADGE = {"display": "badge/20261028_Hinge-Badge-Display-Master.svg", 24: "badge/20261028_Hinge-Badge-24px-Master.svg",
          16: "badge/20261028_Hinge-Badge-16px-Master.svg"}
 L2 = {"today": "lockups/20261028_L2-Stacked-Master.svg", "condensed": "lockups/20261028_L2-Stacked-Condensed-Master.svg"}
 L3 = {"today": "lockups/20261028_L3-Horizontal-Master.svg", "condensed": "lockups/20261028_L3-Horizontal-Condensed-Master.svg",
-      "masthead": "lockups/20261110_L3-Horizontal-Master.svg", "masthead_rect": "lockups/20261108_L3-Horizontal-Master.svg"}
+      "masthead": "lockups/20261110_L3-Horizontal-Master.svg", "masthead_rect": "lockups/20261108_L3-Horizontal-Master.svg",
+      "print": "lockups/20261110_L3-Horizontal-Print-Master.svg"}
 # L3 at the masthead since November 8, 2026 (DR-131): the 24 px wordmark master, 13 px of space and the lockmark's 48 px
 # master, on the pixel grid, 282 by 48 px. Since November 10, 2026 (DR-181) the masthead master is the file that carries
 # the rebuilt 48 px lockmark, written by promotion_identity.py; the November 8 file (stage_a_identity_s1.py) and the
 # October file stay as the record.
+# Promotion C, November 11, 2026 (DR-210): the print master serves print and every width but the 282 px masthead. It is
+# the October master with its lockmark at 48/22 cap heights, the masthead's proportion, centered on the capitals as
+# before (stage_c_identity_round0.py proposals wrote it, with its White file in prussian/). It enters use by reference,
+# bytes unchanged. "today", the October master with its lockmark at 2.4 cap heights, stays as the record.
 L8 = {"today": "lockups/20261028_L8-Monogram-Master.svg", "condensed": "lockups/20261028_L8-Monogram-Condensed-Master.svg"}
 HINGE = {"display": "hinge/20261028_Hinge-Diagram-V2-Display-Master.svg", "compact": "hinge/20261028_Hinge-Diagram-V2-Compact-Master.svg"}
 # S1, the stacked lockup that replaced L2 (DR-113), written by stage_a_identity_s1.py from Board 6's files.
@@ -312,12 +321,16 @@ FIGURES = ROOT / "work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json"
 FIGURES_PROMOTION = ROOT / "work/handoffs/phase-2/20261110_Promotion-Identity-Figures.json"
 # Stage C round 0, November 10, 2026 (CD-N12): the feed test on dark cards, written by stage_c_identity_round0.py feed
 FIGURES_STAGE_C = ROOT / "work/handoffs/phase-2/20261110_Stage-C-Identity-Figures.json"
+# Promotion C, November 11, 2026 (DR-211): the feed test on the social card with its 96 px sign-off, on Newsprint, White,
+# Charcoal and Prussian, written by promotion_c_identity.py feed. Its keys win over the earlier files'.
+FIGURES_PROMOTION_C = ROOT / "work/handoffs/phase-2/20261111_Promotion-C-Identity-Figures.json"
 
 
 def figures(key):
     """Measured figures the chapters print (Q1 to Q4 pass): 'endmark', 'feed' or 'range', written by
     stage_a_identity_q_measure.py, and from the promotion 'feed' again and 'endmark_fit', written by
-    promotion_identity.py, and from stage C 'feed_dark', written by stage_c_identity_round0.py. None, with a
+    promotion_identity.py, and from stage C 'feed_dark', written by stage_c_identity_round0.py, and from promotion C
+    'feed', 'feed_dark' and 'feed_thumbnail' on the 96 px sign-off, written by promotion_c_identity.py. None, with a
     warning, when the test has not run; the page then prints a marker that the
     build's own text scan would show, and the maker reruns the test and the build."""
     import json as _json
@@ -326,17 +339,30 @@ def figures(key):
         d.update({k: v for k, v in _json.loads(FIGURES_PROMOTION.read_text()).items() if k in ("feed", "endmark_fit")})
     if FIGURES_STAGE_C.exists():
         d.update({k: v for k, v in _json.loads(FIGURES_STAGE_C.read_text()).items() if k in ("feed_dark",)})
+    if FIGURES_PROMOTION_C.exists():
+        d.update({k: v for k, v in _json.loads(FIGURES_PROMOTION_C.read_text()).items()
+                  if k in ("feed", "feed_dark", "feed_thumbnail")})
     if key not in d:
-        print(f"  WARNING: no '{key}' figures in {FIGURES.name} or {FIGURES_PROMOTION.name}; run the test that writes it, then build again")
+        print(f"  WARNING: no '{key}' figures in {FIGURES.name}, {FIGURES_PROMOTION.name} or {FIGURES_PROMOTION_C.name}; "
+              "run the test that writes it, then build again")
         return None
-    if key == "feed" and LOCK[48] not in str(d[key].get("lockmark_master", "")):
-        print(f"  WARNING: the feed figures were measured on {d[key].get('lockmark_master')}, not {LOCK[48]}; run the feed test again")
+    if key in ("feed", "feed_dark") and LOCK[48] not in str(d[key].get("lockmark_master", "")):
+        print(f"  WARNING: the {key} figures were measured on {d[key].get('lockmark_master')}, not {LOCK[48]}; run the feed test again")
+    if key in ("feed", "feed_dark", "feed_thumbnail") and d[key].get("sign_off_px") != SIGN_OFF["social"]:
+        print(f"  WARNING: the {key} figures were measured on a {d[key].get('sign_off_px', 48)} px sign-off, not the "
+              f"{SIGN_OFF['social']} px one in use (DR-211); run promotion_c_identity.py feed, then build again")
     return d[key]
 
 
 def lockmark(size, *, surface="newsprint", mode="color", label="Lockmark", decorative=False):
     key = 16 if size < 24 else (24 if size < 48 else (48 if size < LOCK_DISPLAY_FROM else "display"))
     return mark(LOCK[key], h=size, surface=surface, mode=mode, label=label, decorative=decorative)
+
+
+def sign_off(place="social", *, surface="newsprint", mode="color", label="Lockmark", decorative=False):
+    """The sign-off at the size its place sets (Rule 08.2): 96 px on a social card, the 48 px master at exactly twice its
+    size (DR-211); 48 px from the same master on a cover or poster."""
+    return mark(LOCK[48], h=SIGN_OFF[place], surface=surface, mode=mode, label=label, decorative=decorative)
 
 
 def s1_key(caps):

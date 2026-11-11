@@ -83,6 +83,13 @@
 //   lightOnDark        with the device set to dark, the guide stays light: the root keeps data-oa-theme="light" and
 //                      color-scheme "only light", and every element's colors, fills, strokes, borders, outlines, shadows
 //                      and color scheme compute exactly as they do with the device set to light (DR-204, D2-1133)
+// Added in promotion C (November 11, 2026):
+//   fitSwitch          DR-179 and DR-209 as drawn: every <svg> that draws one of the 41 at 24 px (its box measured, so a
+//                      size CSS sets counts too) pairs <use class="oa-at-1x"> of the 24 px fit with <use class="oa-at-2x">
+//                      of its own master, and only the 41 switch; at 1x the fit shows alone at every width, and on a
+//                      high-density screen the master shows alone (1440 px at 2x and 390 px at 3x, in their own runs);
+//                      data-oa-res="fixed" marks a plate that shows one drawing on every screen. The list of 41 is read
+//                      from the construction file, as guide_build.py and chapter 10's generator read it (B-3 too)
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -670,10 +677,18 @@ const GLYPH_ONLY_OK = ['clear the search'];                 // A-4: the one cont
 // elsewhere. Round 2 (November 10, 2026): on everywhere, since every glyph on the page with chapters 01 to 11 carries it.
 const REQUIRE_FAMILY = true;
 // B-3: the 41 drawings that read at 24 px (DR-136), from 20261110_Stage-B-Ch10-Construction.md, section 10: 37 topic
-// and atlas drawings and the four pillar icons.
-const READS_AT_24 = ['CL-001', 'CL-004', 'CL-006', 'CL-010', 'CL-013', 'CL-019', 'CL-020', 'CL-021', 'CL-022', 'CL-023', 'CL-024', 'CL-028', 'CL-031', 'CL-032',
-  'CL-039', 'CL-040', 'CL-047', 'CL-048', 'CL-050', 'CL-051', 'CL-054', 'CL-057', 'CL-060', 'CL-061', 'CL-067', 'CL-068', 'CL-070', 'CL-071', 'CL-072',
-  'R-05', 'R-06', 'R-08', 'R-09', 'R-14', 'R-15', 'R-17', 'R-19', 'R-23', 'R-27', 'R-37', 'R-45'];
+// and atlas drawings and the four pillar icons. Promotion C: read from that file, the one source guide_build.py and
+// chapter 10's generator read, so the three cannot drift apart. CL-075 Housing is not on it (DR-207).
+const CONSTRUCTION = path.join(ROOT, 'work/handoffs/phase-2/20261110_Stage-B-Ch10-Construction.md');
+const READS_AT_24 = (() => {
+  const m = fs.readFileSync(CONSTRUCTION, 'utf8').match(/\*\*The list, by ID\*\*[\s\S]*?\n\n(.*?)\n/);
+  const ids = (m && m[1].match(/(?:CL|R)-\d+/g)) || [];
+  if (ids.length !== 41 || new Set(ids).size !== 41 || !['CL-019', 'CL-020', 'CL-021', 'CL-022'].every((x) => ids.includes(x))) {
+    console.error(`guide_check: ${path.relative(ROOT, CONSTRUCTION)} gives ${ids.length} IDs under "The list, by ID"; the list of 41 with the four pillar icons is needed`);
+    process.exit(2);
+  }
+  return ids;
+})();
 const ICON_SIZES = { utility: [16, 24], pillar: [16, 24], status: [24, 26, 28, 30] };   // B-3; topic and atlas: 48 up, or 24 for the 41
 // The mark tokens' readers: each mark by its classes and its width attribute, which the plates keep while their own
 // CSS sets the width from the token (round 2; the shell's bridge rules went), and each mark kind for the parity
@@ -783,6 +798,58 @@ async function sbInstall(page) { await page.evaluate((src) => { if (!window.__sb
 
 // Normal mode: names, targets, sizes, label in name, glyph-only controls, titles, disabled controls, state cues, motion
 // with motion allowed, and the mark tokens.
+// Promotion C (November 11, 2026): DR-179 and DR-209 as the browser draws them, at the page's own device scale. Each
+// <svg> outside the sprites that draws one of the 41 at 24 px (its drawn box, whatever sets it) or carries the switch's
+// classes: the switch pairs one 24 px fit of the 41 with its own master, the right one of the two shows alone at this
+// scale, and a master of the 41 never stands alone at 24 px. A fit standing alone at 24 px draws on 2x screens too.
+// data-oa-res="fixed" exempts a plate that shows one drawing on every screen on purpose.
+async function fitSwitch(page, dpr) {
+  return page.evaluate(({ READS_AT_24, dpr }) => {
+    const out = { dpr, glyphs: 0, pairs: 0, fitShown: 0, masterShown: 0, fixed: 0, problems: [] };
+    const where = (el) => { const st = el.closest('[data-specimen]'); const sec = el.closest('section[id]'); return st ? st.getAttribute('data-specimen') : sec ? '#' + sec.id : 'masthead and shell'; };
+    const ref = (u) => (u.getAttribute('href') || u.getAttribute('xlink:href') || '').replace(/^#/, '');
+    const kind = (sid) => {
+      let m = sid.match(/^oa-sym-((?:cl|r)-\d+)-(16|24)px$/);
+      if (m) return { fit: true, id: m[1].toUpperCase(), size: Number(m[2]) };
+      m = sid.match(/^oa-sym-((?:cl|r)-\d+)$/);
+      return m ? { fit: false, id: m[1].toUpperCase() } : null;
+    };
+    const shown = (el) => getComputedStyle(el).display !== 'none';
+    const drawn = (el) => { const r = el.getBoundingClientRect(); if (!r.width && !r.height) return false; for (let e = el; e && e.nodeType === 1; e = e.parentElement) { const cs = getComputedStyle(e); if (cs.display === 'none' || cs.visibility === 'hidden') return false; } return !el.closest('dialog:not([open])'); };
+    const on41 = (k) => k && READS_AT_24.includes(k.id) && (!k.fit || k.size === 24);
+    for (const svg of document.querySelectorAll('svg')) {
+      if (svg.closest('.oa-sprite')) continue;
+      const uses = [...svg.querySelectorAll('use')].filter((u) => u.closest('svg') === svg)
+        .map((u) => ({ u, sid: ref(u), k: kind(ref(u)), one: u.classList.contains('oa-at-1x'), two: u.classList.contains('oa-at-2x') }));
+      const ones = uses.filter((x) => x.one), twos = uses.filter((x) => x.two);
+      if (!uses.some((x) => on41(x.k)) && !ones.length && !twos.length) continue;
+      if (!drawn(svg)) continue;
+      const w = Math.round(svg.getBoundingClientRect().width * 2) / 2;
+      const at24 = Math.abs(w - 24) < 0.5;
+      if (!at24 && !ones.length && !twos.length) continue;   // a master of the 41 at 48 px and up
+      out.glyphs++;
+      const loc = { where: where(svg), w, uses: uses.map((x) => x.sid + (x.one ? ' (1x)' : x.two ? ' (2x)' : '')).join(', ') };
+      if (svg.getAttribute('data-oa-res') === 'fixed') { out.fixed++; continue; }
+      if (ones.length || twos.length) {
+        const fit = ones.length === 1 && ones[0].k && ones[0].k.fit && on41(ones[0].k) ? ones[0] : null;
+        const master = fit && twos.length === 1 && twos[0].k && !twos[0].k.fit && twos[0].k.id === fit.k.id ? twos[0] : null;
+        if (!fit || !master) { out.problems.push({ ...loc, why: 'the switch pairs one 24 px fit of the 41 with its own master, and nothing else switches (DR-179, DR-209)' }); continue; }
+        if (!at24) { out.problems.push({ ...loc, why: `the switch drawn at ${w} px; a fit serves 24 px only` }); continue; }
+        out.pairs++;
+        const wantFit = dpr < 2;
+        if (shown(fit.u) !== wantFit || shown(master.u) === wantFit) out.problems.push({ ...loc, why: `at ${dpr}x the ${wantFit ? 'fit' : 'master'} must show alone, and the fit is ${shown(fit.u) ? 'shown' : 'hidden'}, the master ${shown(master.u) ? 'shown' : 'hidden'}` });
+        else if (wantFit) out.fitShown++; else out.masterShown++;
+      } else {
+        const m = uses.find((x) => x.k && !x.k.fit && on41(x.k));
+        const f = uses.find((x) => x.k && x.k.fit && on41(x.k));
+        if (m) out.problems.push({ ...loc, why: `${m.k.id} at 24 px draws its master on 1x screens; 1x screens take its fit (${['CL-019', 'CL-020', 'CL-021', 'CL-022'].includes(m.k.id) ? 'DR-179' : 'DR-209'})` });
+        else if (f) out.problems.push({ ...loc, why: `${f.k.id}'s 24 px fit stands alone, so 2x screens draw it too; pair it with its master` });
+      }
+    }
+    return out;
+  }, { READS_AT_24, dpr });
+}
+
 async function sbAudit(page) {
   await sbInstall(page);
   return page.evaluate(({ GLYPH_ONLY_OK, READS_AT_24, ICON_SIZES, MARKS }) => {
@@ -1369,9 +1436,14 @@ async function checkPage(browser, file, widths, opts = {}) {
     // D2-1133: the guide stays light with the device set to dark
     const dk = await lightOnDark(page);
     a.lightOnDark = { elements: dk.elements, attribute: dk.attribute, scheme: dk.scheme, deviceDark: dk.dark, changed: dk.changed.length, first: dk.changed.slice(0, 5) };
+    // DR-179, DR-209: the 41 switch at 24 px; at this run's scale, 1x, the fit shows
+    const failsSwitch = [];
+    a.fitSwitch = await fitSwitch(page, 1);
+    if (a.fitSwitch.problems.length) failsSwitch.push({ key: 'fitSwitch', msg: `${width}: ${a.fitSwitch.problems.length} glyph(s) of the 41 at 24 px off the 1x and 2x switch (DR-179, DR-209), first: ${JSON.stringify(a.fitSwitch.problems[0])}` });
     a.frames = await frameAudit(page);
     a.fit = await fitAudit(page);
     const fails = failuresFrom(a, width);
+    fails.push(...failsSwitch);
     const sb = { audit: await sbAudit(page) };
     if (!opts.skipStageB) {
       sb.forced = await sbForced(page);
@@ -1432,6 +1504,19 @@ async function checkPage(browser, file, widths, opts = {}) {
       if (typed.small.length) report.failures.push({ key: 'iconTargets', msg: `${width}: ${typed.small.length} control(s) that show after typing, holding a glyph under 44 by 44 px (B-1, CA-M2), first: ${JSON.stringify(typed.small[0])}` });
       report.runs[report.runs.length - 1].typed = { fields: typed.fields, shown: typed.shown };
     }
+    await ctx.close();
+  }
+  // DR-179, DR-209 on high-density screens: the master shows alone wherever the switch stands, in a run of its own
+  report.hiDpi = [];
+  for (const [width, dpr] of (opts.hiDpi || [])) {
+    const ctx = await browser.newContext({ viewport: { width, height: { 1440: 900, 390: 844 }[width] || 900 }, deviceScaleFactor: dpr });
+    const page = await ctx.newPage();
+    await page.goto('file://' + file, { waitUntil: 'networkidle' });
+    await page.evaluate(() => document.fonts.ready);
+    if (opts.mutate) await page.evaluate(opts.mutate);
+    const r = await fitSwitch(page, dpr);
+    report.hiDpi.push({ width, dpr, glyphs: r.glyphs, pairs: r.pairs, masterShown: r.masterShown, fixed: r.fixed, problems: r.problems.slice(0, 10) });
+    if (r.problems.length) report.failures.push({ key: 'fitSwitch', msg: `${width} at ${dpr}x: ${r.problems.length} glyph(s) of the 41 at 24 px off the 1x and 2x switch (DR-179, DR-209), first: ${JSON.stringify(r.problems[0])}` });
     await ctx.close();
   }
   report.pass = report.failures.length === 0;
@@ -1677,6 +1762,28 @@ const PLANTS = [
     st.insertAdjacentHTML('beforeend', '<style>@media (prefers-color-scheme: dark) { .sb-dark { color: var(--oa-color-palette-newsprint) } }</style><p class="sb-dark">Pale in the dark</p>'); } },
   { key: 'lightOnDark', fault: 'a block that shows the dark theme on purpose with data-oa-theme="dark", the same with the device light or dark (allowed: must not be flagged)', expect: false, js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div data-oa-theme="dark" style="padding:16px"><p style="color:var(--oa-color-text-secondary)">Secondary text on Charcoal, set by the theme.</p></div>'); } },
+  // promotion C (November 11, 2026): the switch for all 41 (DR-179, DR-209) and CL-075 Housing at 48 px and up (DR-207)
+  { key: 'fitSwitch', fault: 'a master of the 41 at 24 px, sized by CSS where the build cannot see it, drawn alone on 1x screens (DR-209)', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg viewBox="0 0 128 128" style="width:24px;height:24px" aria-hidden="true" focusable="false" data-icon="CL-048" data-icon-family="topic"><use href="#oa-sym-cl-048"/></svg> Public records</p>'); } },
+  { key: 'fitSwitch', fault: 'the switch as specimens write it, the fit at 1x and the master at 2x (allowed: must not be flagged)', expect: false, hiDpi: [[1440, 2]], js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="CL-048" data-icon-family="topic"><use class="oa-at-1x" href="#oa-sym-cl-048-24px"/><use class="oa-at-2x" href="#oa-sym-cl-048"/></svg> Public records</p>'); },
+    verify: (r) => r.runs[0].fitSwitch.fitShown === 1 && r.hiDpi[0].masterShown === 1 },
+  { key: 'fitSwitch', fault: 'a specimen style that shows both drawings of the switch on 1x screens', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<style>.sb-both use { display: inline !important }</style><p class="sb-both"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="CL-048" data-icon-family="topic"><use class="oa-at-1x" href="#oa-sym-cl-048-24px"/><use class="oa-at-2x" href="#oa-sym-cl-048"/></svg> Public records</p>'); } },
+  { key: 'fitSwitch', fault: 'a specimen style that keeps the fit on 2x screens, which only the high-density run sees', hiDpi: [[1440, 2]], js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<style>@media (min-resolution: 2dppx) { .sb-keep .oa-at-1x { display: inline !important } .sb-keep .oa-at-2x { display: none !important } }</style><p class="sb-keep"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="CL-048" data-icon-family="topic"><use class="oa-at-1x" href="#oa-sym-cl-048-24px"/><use class="oa-at-2x" href="#oa-sym-cl-048"/></svg> Public records</p>'); },
+    verify: (r) => r.runs[0].fitSwitch.problems.length === 0 && r.hiDpi[0].problems.length === 1 },
+  { key: 'fitSwitch', fault: 'the switch on CL-075 Housing, which is off the list of 41 (DR-207)', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="CL-075" data-icon-family="topic" style="display:none"></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><use class="oa-at-1x" href="#oa-sym-cl-075-24px"/><use class="oa-at-2x" href="#oa-sym-cl-075"/></svg> Housing</p>'); } },
+  { key: 'fitSwitch', fault: 'a 24 px fit of the 41 standing alone, so 2x screens draw it too', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="CL-048" data-icon-family="topic"><use href="#oa-sym-cl-048-24px"/></svg> Public records</p>'); } },
+  { key: 'fitSwitch', fault: 'a master of the 41 at 24 px on a plate marked data-oa-res="fixed" (allowed: must not be flagged)', expect: false, js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg viewBox="0 0 128 128" width="24" height="24" data-oa-res="fixed" aria-hidden="true" focusable="false" data-icon="CL-048" data-icon-family="topic"><use href="#oa-sym-cl-048"/></svg> Public records, the master at 24 px</p>'); },
+    verify: (r) => r.runs[0].fitSwitch.fixed === 1 },
+  { key: 'iconSizes', fault: 'CL-075 Housing at 24 px, off the list of 41 (DR-136, DR-207, B-3)', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg viewBox="0 0 128 128" width="24" height="24" aria-hidden="true" focusable="false" data-icon="CL-075" data-icon-family="topic"><use href="#oa-sym-cl-075"/></svg> Housing</p>'); } },
+  { key: 'iconSizes', fault: 'CL-075 Housing at 48 px (allowed: must not be flagged)', expect: false, js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg viewBox="0 0 128 128" width="48" height="48" aria-hidden="true" focusable="false" data-icon="CL-075" data-icon-family="topic"><use href="#oa-sym-cl-075"/></svg> Housing</p>'); } },
 ];
 
 async function selfTest() {
@@ -1687,10 +1794,10 @@ async function selfTest() {
   const browser = await chromium.launch();
   const result = { checked: new Date().toISOString(), page: 'demo build (guide_build.py --demo), in a temporary folder', axe: AXE ? 'found' : 'not found', clean: null, plants: [] };
   // the clean demo: no structural, text, red or writing failure, and the exempt failure plate's 12 px gray text is skipped
-  const clean = await checkPage(browser, page, [1440, 390], { skipFocus: false });
+  const clean = await checkPage(browser, page, [1440, 390], { skipFocus: false, hiDpi: [[1440, 2], [390, 3]] });
   result.clean = { pass: clean.pass, failures: clean.failures.map((f) => f.msg), exemptions: clean.runs[0].specimens.exemptions, skippedTexts: clean.runs[0].text.skipped };
   for (const p of PLANTS) {
-    const r = await checkPage(browser, page, p.widths || [1440], { mutate: p.js, skipAxe: true, skipFocus: !p.focus, plant: true });
+    const r = await checkPage(browser, page, p.widths || [1440], { mutate: p.js, skipAxe: true, skipFocus: !p.focus, plant: true, hiDpi: p.hiDpi || [] });
     const caught = r.failures.filter((f) => f.key === p.key);
     const others = r.failures.filter((f) => f.key !== p.key).map((f) => f.key);
     // a plant with expect: false proves an allowance: the test must stay quiet. verify, where given, reads the run
@@ -1724,13 +1831,15 @@ async function selfTest() {
   if (!file || !fs.existsSync(file)) { console.error('usage: node guide_check.js <page.html> [--quick] [--no-captures] | --self-test'); process.exit(2); }
   const widths = process.argv.includes('--quick') ? [1440, 390] : [1440, 1024, 390, 360];
   const browser = await chromium.launch();
-  const report = await checkPage(browser, file, widths, { captures: !process.argv.includes('--no-captures') });
+  const report = await checkPage(browser, file, widths, { captures: !process.argv.includes('--no-captures'), hiDpi: [[1440, 2], [390, 3]] });
   await browser.close();
   const outPath = path.join(path.dirname(file), `${path.basename(file, '.html')}-Guide-Check-Results.json`);
   fs.writeFileSync(outPath, JSON.stringify(report, null, 1));
   const r0 = report.runs[0];
   console.log(`${report.pass ? 'PASS' : 'FAIL'} ${report.file}: ${widths.length} widths, ${r0.structure.rules} rules, ${r0.specimens.stages} specimens, ${r0.anchors.links} same-page links, ${report.failures.length} failures`);
   if (r0.specimens.exemptions.length) console.log(`  exemptions: ${r0.specimens.exemptions.map((x) => x.specimen + ' (' + x.skips + ')').join(', ')}`);
+  console.log(`  fitSwitch: ${report.runs.map((r) => `${r.width} at 1x ${r.fitSwitch.pairs} switches, fit shown in ${r.fitSwitch.fitShown}`).join('; ')}; `
+    + `${report.hiDpi.map((h) => `${h.width} at ${h.dpr}x ${h.pairs} switches, master shown in ${h.masterShown}`).join('; ')}`);
   for (const f of report.failures) console.log('  - ' + f.msg);
   console.log('  results: ' + path.relative(ROOT, outPath));
   process.exit(report.pass ? 0 : 1);

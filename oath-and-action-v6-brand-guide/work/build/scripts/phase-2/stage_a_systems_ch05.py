@@ -107,15 +107,16 @@ def phone(ctx, variant='plain'):
         er = ctx.v('oa.color.state.error.mark.onNewsprint')
         extra += (f'.fld{{margin:0 0 16px}}.fl{{display:block;{ctx.ty("ui")}}}'
                   f'.in{{display:block;height:48px;margin-top:6px;border:1px solid {ctx.v("oa.color.border.strong.onNewsprint")};'
-                  f'background:{ctx.v("oa.color.surface.white")};box-shadow:inset 4px 0 0 {er}}}'
-                  f'.er{{display:grid;grid-template-columns:24px 1fr;gap:8px;margin-top:8px;padding:12px 12px 12px 16px;'
+                  f'border-left:4px solid {er};background:{ctx.v("oa.color.surface.white")}}}'
+                  f'.er{{display:grid;grid-template-columns:24px 1fr;gap:8px;margin-top:8px;padding:12px;'
                   f'background:{ctx.v("oa.color.state.error.band.onNewsprint")};color:{ctx.v("oa.color.state.error.text.onNewsprint")};'
-                  f'box-shadow:inset 4px 0 0 {er};{ctx.ty("bodySmall")}}}'
+                  f'border-left:4px solid {er};{ctx.ty("bodySmall")}}}'
                   f'.er svg{{display:block;margin-top:-1px}}.er b{{font-weight:700}}'
                   f'.ask.pri{{background:{ctx.v("oa.component.button.primary.fill.onNewsprint")};'
                   f'color:{ctx.v("oa.component.button.primary.label.onNewsprint")};box-shadow:none}}')
         # The error mark as Rule 11.15 builds it (D2-880, D2-959): chapter 11's U-error from the sprite, drawn in the
-        # message's ink (currentColor), with the working red held by the 4 px bar on the field and the message.
+        # message's ink (currentColor), with the working red held by the 4 px bar on the field and the message. Both
+        # bars are borders, which forced colors keeps, never inset shadows, which it drops (D2-1158).
         glyph = ('<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="U-error" '
                  'data-icon-family="utility"><use href="#oa-sym-u-error-24px"/></svg>')
         ft = ('<div class="fld" data-red="working" data-red-job="error"><span class="fl">Email</span><span class="in"></span>'
@@ -489,16 +490,27 @@ STATES = [
     ('Focus', 'focus', 'A 2 px Verdigris ring with a 2 px gap, shown at once.'),
     ('Disabled', 'disabled', 'A dashed edge, readable text and a line that says what makes it available.'),
     ('Loading', 'loading', 'A still outline and the words that say what is loading.'),
-    ('Selected', 'selected', 'The paired surface, a 4 px bar and a check.'),
+    ('Selected', 'selected', 'The paired surface, a 4 px bar and the selected check.'),
     ('Muted', 'muted', 'Regular weight and an outline mark.'),
-    ('Warning', 'warning', 'A triangle, the word Warning and a 4 px bar. Warning has no hue of its own.'),
-    ('Error', 'error', 'The word Error, a glyph and the fix in plain words, on the Error Band.'),
+    ('Warning', 'warning', 'The warning mark, the word Warning and a 4 px bar, all in ink. Warning has no hue of its own.'),
+    ('Error', 'error', 'The error mark in the text’s ink, the word Error and the fix in plain words, on the Error Band '
+                       'with a 4 px Pillar Red bar.'),
     ('Empty', 'empty', 'A dashed region that says what is missing and what to do next.'),
-    ('Success', 'success', 'A Verdigris check and a word such as Saved.'),
+    ('Success', 'success', 'The success mark in Verdigris and a word such as Saved.'),
 ]
 
 
+def uicon(name, px=24):
+    """A utility icon from the sprite, as chapter 11 draws it (D2-589): oa-sym-u-<name>-<px>px, hidden beside its word
+    and tagged for the checks (D2-517). It draws in its parent's color through currentColor, never in red (DR-161)."""
+    return (f'<svg viewBox="0 0 {px} {px}" width="{px}" height="{px}" aria-hidden="true" focusable="false" '
+            f'data-icon="U-{name}" data-icon-family="utility"><use href="#oa-sym-u-{name}-{px}px"/></svg>')
+
+
 def s_05_4(ctx):
+    """Rule 05.4's ten states. F-4 (D2-1167): the error, warning and success rows take chapter 11's approved marks from
+    the utility set, the error mark in the text's ink with its red on a 4 px Pillar Red bar (DR-199), and every state bar
+    is a border, which forced colors keeps, never an inset shadow (D2-1158)."""
     v = ctx.v
     N = 'onNewsprint'
     btn = (f'display:inline-flex;align-items:center;min-height:44px;padding:0 16px;{ctx.ty("ui")}')
@@ -507,17 +519,17 @@ def s_05_4(ctx):
         'focus': f'<span class="b" style="background:{v("oa.color.action.primary.fill." + N)};color:{v("oa.color.action.primary.label." + N)};outline:2px solid {v("oa.color.focus.ring." + N)};outline-offset:2px">Download SVG</span>',
         'disabled': f'<span class="b" style="color:{v("oa.color.state.disabled.text." + N)};border:1px dashed {v("oa.color.state.disabled.edge." + N)}">Download PNG</span><span class="why">Choose a size to download.</span>',
         'loading': f'<span class="ld"><span class="lv" style="border-color:{v("oa.color.state.loading.mark." + N)}"></span><span style="color:{v("oa.color.state.loading.text." + N)}">Loading tracker</span></span>',
-        'selected': f'<span class="sel" style="background:{v("oa.color.state.selected.band." + N)};box-shadow:inset 4px 0 0 {v("oa.color.state.selected.bar." + N)}">'
-                    f'<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="{v("oa.color.text.primary." + N)}" stroke-width="2"/></svg>Track</span>',
+        'selected': f'<span class="sel" style="background:{v("oa.color.state.selected.band." + N)};border-left:4px solid {v("oa.color.state.selected.bar." + N)};color:{v("oa.color.text.primary." + N)}">'
+                    f'{uicon("selected-check")}Track</span>',
         'muted': f'<span class="ld"><span class="lv" style="border-color:{v("oa.color.state.muted.mark." + N)}"></span><span style="color:{v("oa.color.state.muted.text." + N)}">Closed hearing</span></span>',
-        'warning': f'<span class="msg" style="box-shadow:inset 4px 0 0 {v("oa.color.state.warning.mark." + N)};color:{v("oa.color.state.warning.text." + N)}">'
-                   f'<svg width="18" height="16" viewBox="0 0 18 16" aria-hidden="true"><path d="M9 1.5L17 15H1z" fill="none" stroke="{v("oa.color.state.warning.mark." + N)}" stroke-width="1.5" stroke-linejoin="miter"/><path d="M9 6v4.5M9 12v1.5" stroke="{v("oa.color.state.warning.mark." + N)}" stroke-width="1.5"/></svg>'
+        'warning': f'<span class="msg" style="border-left:4px solid {v("oa.color.state.warning.mark." + N)};color:{v("oa.color.state.warning.text." + N)}">'
+                   f'<span class="mk" style="color:{v("oa.color.state.warning.mark." + N)}">{uicon("warning")}</span>'
                    f'<span><b>Warning:</b> This page uses figures from 2024.</span></span>',
-        'error': f'<span class="msg" data-red="working" data-red-job="error" style="background:{v("oa.color.state.error.band." + N)};box-shadow:inset 4px 0 0 {v("oa.color.state.error.mark." + N)};color:{v("oa.color.state.error.text." + N)}">'
-                 f'<svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7.5" fill="{v("oa.color.state.error.mark." + N)}" stroke="{v("oa.color.border.strong." + N)}"/><path d="M6 6l6 6M12 6l-6 6" stroke="{v("oa.color.text.primary.onCharcoal")}" stroke-width="1.75"/></svg>'
+        'error': f'<span class="msg" data-red="working" data-red-job="error" style="background:{v("oa.color.state.error.band." + N)};border-left:4px solid {v("oa.color.state.error.mark." + N)};color:{v("oa.color.state.error.text." + N)}">'
+                 f'<span class="mk">{uicon("error")}</span>'
                  f'<span><b>Error:</b> Enter a ZIP code with five digits.</span></span>',
         'empty': f'<span class="em" style="border-color:{v("oa.color.state.empty.edge." + N)};color:{v("oa.color.state.empty.text." + N)}">No saved explainers yet. Choose Save on any explainer to keep it here.</span>',
-        'success': f'<span class="ld"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="{v("oa.color.state.success.mark." + N)}"/><path d="M5 9.5l2.5 2.5 5.5-5.5" fill="none" stroke="{v("oa.color.text.primary.onCharcoal")}" stroke-width="2"/></svg>'
+        'success': f'<span class="ok"><span class="mk" style="color:{v("oa.color.state.success.mark." + N)}">{uicon("success")}</span>'
                    f'<span style="color:{v("oa.color.state.success.text." + N)}">Saved</span></span>',
     }
     rows = ''.join(f'<li><span class="nm">{n}</span><span class="sm">{samples[k]}</span><span class="cu">{cue}</span></li>'
@@ -529,17 +541,23 @@ def s_05_4(ctx):
            f'.b{{{btn}}}.why{{display:block;margin-top:6px;color:{v("oa.color.text.secondary." + N)};{ctx.ty("caption")}}}'
            f'.ld{{display:inline-flex;align-items:center;gap:10px;{ctx.ty("ui")}}}'
            f'.lv{{display:block;width:16px;height:16px;border:2px solid;border-radius:50%}}'
-           f'.sel{{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px 0 14px;{ctx.ty("ui")}}}'
-           f'.msg{{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:start;padding:10px 12px 10px 14px;{ctx.ty("bodySmall")}}}'
-           f'.msg svg{{margin-top:3px}}.msg b{{font-weight:700}}'
+           f'.sel{{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px 0 10px;{ctx.ty("ui")}}}'
+           f'.sel svg,.mk svg{{display:block;flex:none}}'
+           f'.msg{{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;align-items:start;padding:10px 12px;{ctx.ty("bodySmall")}}}'
+           f'.msg .mk{{margin-top:-1px}}.msg b{{font-weight:700}}'
+           f'.ok{{display:inline-flex;align-items:center;gap:8px;{ctx.ty("ui")}}}'
            f'.em{{display:block;padding:12px;border:1px dashed;{ctx.ty("bodySmall")}}}'
            f'.hd{{margin:0 0 4px}}'
            f'@container (max-width:36rem){{li{{grid-template-columns:1fr}}}}')
     html = f'<style>{css}</style><div class="wr"><p class="hd">{B.ILLUS}</p><ul>{rows}</ul></div>'
     alt = ('Ten interface states on Newsprint, labeled Illustrative, each with a sample and its cue: '
-           + ' '.join(f'{n}: {cue}' for n, _, cue in STATES))
+           + ' '.join(f'{n}: {cue}' for n, _, cue in STATES)
+           + ' The selected check is a check mark; the warning mark is a triangle holding an exclamation mark; the error '
+             'mark is a circle holding an exclamation mark; the success mark is a check leaving an open circle.')
     ctx.spec('s-05-4-correct', html, '05', '05.4', alt, illustrative=True,
-             notes='Fluid sheet. Every text and mark color is a state token; every sample changes text or shape too.')
+             notes='Fluid sheet. Every text and mark color is a state token; every sample changes text or shape too. The '
+                   'selected check and the warning, error and success marks are chapter 11\'s utility drawings from the '
+                   'sprite at 24 px (DR-161 to DR-178, DR-199); every bar is a 4 px border (D2-1158).')
 
     red, ver = ctx.hx(P('pillarRed')), ctx.hx(P('verdigris'))
     rv = ctx.ratio(P('pillarRed'), P('verdigris'), 'contrast Pillar Red against Verdigris')
@@ -1082,8 +1100,8 @@ def build(ctx):
                         'basis': 'WCAG 2.2 SC 1.4.1 and 1.4.11'},
                 'correct': {'specimen': 's-05-4-correct',
                             'caption': f'Ten states on Newsprint at true size, each with its cue. The focus ring measures '
-                                       f'{ver_n} to 1, the warning mark {ch_n} and the error glyph keeps a Charcoal edge. '
-                                       f'Nothing here uses opacity.'},
+                                       f'{ver_n} to 1 and the warning mark {ch_n}. The error mark draws in the text’s ink, '
+                                       f'and its red is the 4 px bar. Nothing here uses opacity.'},
                 'failure': {'specimen': 's-05-4-failure',
                             'caption': f'<strong>Fails 1.4.1.</strong> Two tracker rows that differ only by the hue of a '
                                        f'dot. The dots measure {red_ver} to 1 against each other, and in grayscale they print '
@@ -1093,15 +1111,17 @@ def build(ctx):
                 'specs': [
                     {'label': 'Focus ring on light surfaces', 'value': f'Verdigris, 2 px, 2 px gap; {ver_n} to 1 on Newsprint', 'token': 'oa.color.focus.ring.onNewsprint'},
                     {'label': 'Focus ring on dark surfaces', 'value': f'Newsprint; {n_c} to 1 on Charcoal, {n_pr} on Prussian', 'token': 'oa.color.focus.ring.onCharcoal'},
-                    {'label': 'Selected', 'value': 'The paired surface, a 4 px bar and a check glyph', 'token': 'oa.color.state.selected.band.onNewsprint'},
+                    {'label': 'Selected', 'value': 'The paired surface, a 4 px bar and the selected check', 'token': 'oa.color.state.selected.band.onNewsprint'},
                     {'label': 'Error ground', 'value': f'Error Band, {ctx.hx("oa.color.derived.errorBand")}; Charcoal text {eb_c} to 1', 'token': 'oa.color.state.error.band.onNewsprint'},
                     {'label': 'Disabled', 'value': f'Deep Stone text and dashed edge, {ds_n} to 1, with a reason line', 'token': 'oa.color.state.disabled.text.onNewsprint'},
-                    {'label': 'State bar', 'value': '4 px', 'token': 'oa.border.width.bar'},
+                    {'label': 'State bar', 'value': '4 px, drawn as a border', 'token': 'oa.border.width.bar'},
                 ],
                 'related': ['11', '17', '18'],
                 'builders': ['Change two things in every state: the color and either the words or the shape. Use '
                              '<code>aria-disabled="true"</code> so a disabled control keeps its focus and its reason line can '
-                             'be read. Never fade a control with opacity; take the state token instead.'],
+                             'be read. Never fade a control with opacity; take the state token instead. Draw a state’s bar '
+                             'as a border, such as <code>border-left: 4px solid</code>, since forced colors removes an inset '
+                             'shadow.'],
             },
             {
                 'id': '05.5', 'title': 'Keep marks that carry meaning at 3 to 1, and give red on Newsprint a Charcoal keyline.',

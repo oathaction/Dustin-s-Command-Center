@@ -191,7 +191,7 @@ def feed(scratch):
     d.mkdir(parents=True, exist_ok=True)
     LIB.INLINE_ALL[0] = True
     try:
-        cards = {s: f'<div id="card-{s}" style="width:1200px">{SP._social(s)}</div>' for s in GROUNDS}
+        cards = {s: f'<div id="card-{s}" style="width:1200px">{SP._social(s, sign=48)}</div>' for s in GROUNDS}
         # the 48 px master alone on each ground, whole and with its links only, for the floor (no node, no lever)
         tiles = {}
         for s in GROUNDS:
@@ -615,7 +615,7 @@ def plates(scratch):
     try:
         cards = {}
         for s in ("newsprint", "charcoal"):
-            today = SP._social(s)
+            today = SP._social(s, sign=48)
             m48 = LIB.lockmark(48, surface=s, label="Lockmark")
             assert today.count(m48) == 1, "the card's sign-off is not where the plate expects it"
             cards[f"{s}-48"] = today

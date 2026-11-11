@@ -14,6 +14,11 @@ editor's. This step rewrites only the drawings, in place:
   the phone column under 48em, the 48 px row keeps each icon's whole box, so its four words share one left edge, and
                    each downward arrow stands centered under its icon between rows, as chapter 09's row does (round 3,
                    CD-S1, CA-S6)
+  the 24 px switch promotion C (DR-209, D2-1265): a 24 px drawing of the 37 topic and atlas drawings on the list of 41
+                   draws its pixel fit on 1x screens and its master from 2x, as the pillar icons do (DR-179), in one
+                   <svg viewBox="0 0 24 24"> with <use class="oa-at-1x" href="#oa-sym-<id>-24px"/> and
+                   <use class="oa-at-2x" href="#oa-sym-<id>"/>. In chapter 01 that is s-01-21-correct's kicker icon,
+                   CL-057. No word changes. A drawing placed before as the master alone is upgraded in place.
 
 It touches only inline masters (an <svg> with an xmlns attribute and a Civic Line data-icon) and the one kicker word, so
 it can run again after any rebuild of the editor's chapters, and a second run changes nothing.
@@ -36,6 +41,15 @@ KICKER_OLD, KICKER_NEW = ("CL-055", "Productivity"), ("CL-057", "Workers’ shar
 # Each Civic Line drawing's family where chapter 10 files it under atlas (D2-517): CL-057 is Variable EC3, an atlas
 # symbol, as Rule 01.21 and its alt now call it (round 3, the editor's BE-S7 follow-on). Any other drawing is a topic.
 FAMILY = {"CL-057": "atlas"}
+# The 37 topic and atlas drawings on the list of 41 (work/handoffs/phase-2/20261110_Stage-B-Ch10-Construction.md,
+# section 10; D2-587). Each takes the 24 px switch since DR-209; their fits live in civic-line-v6/fit-24/ (D2-1265).
+FIT_24 = frozenset(("CL-001 CL-004 CL-006 CL-010 CL-013 CL-023 CL-024 CL-028 CL-031 CL-032 CL-039 CL-040 CL-047 CL-048 CL-050 "
+                    "CL-051 CL-054 CL-057 CL-060 CL-061 CL-067 CL-068 CL-070 CL-071 CL-072 R-05 R-06 R-08 R-09 R-14 R-15 R-17 "
+                    "R-19 R-23 R-27 R-37 R-45").split())
+assert len(FIT_24) == 37
+# a 24 px drawing of one of the 37 that an earlier run placed as the master alone
+MASTER_24 = re.compile(r'<svg viewBox="0 0 128 128" width="24" height="24" ([^>]*\bdata-icon="((?:CL|R)-\d+)"[^>]*)>'
+                       r'<use href="#oa-sym-([a-z0-9-]+)"/></svg>')
 STACK_CSS = ("@media (max-width:47.99em){.ed .prow-48{row-gap:" + str(C9.STACK_GAP) + "px}.ed .prow-48 .cl{margin:0!important}"
              ".ed .prow-48 .pi{position:relative}.ed .prow-48 .pi:not(:last-child)::after{position:absolute;left:24px;"
              "top:calc(100% + " + str(C9.STACK_GAP // 2) + "px);transform:translate(-50%,-50%);margin:0;line-height:1}}")
@@ -49,9 +63,25 @@ def _attr(tag, name):
 
 def topic(cid, size, cls):
     fam = FAMILY.get(cid, "topic")
-    return (f'<svg viewBox="0 0 128 128" width="{size}" height="{size}" class="{cls}" aria-hidden="true" focusable="false" '
-            f'data-icon="{cid}" data-icon-family="{fam}" style="color:var(--oa-component-icon-ink-on-newsprint)">'
-            f'<use href="#oa-sym-{cid.lower()}"/></svg>')
+    sid = cid.lower()
+    if size == 24 and cid in FIT_24:          # the fit on 1x screens, the master from 2x (DR-209)
+        vb, uses = "0 0 24 24", f'<use class="oa-at-1x" href="#oa-sym-{sid}-24px"/><use class="oa-at-2x" href="#oa-sym-{sid}"/>'
+    else:
+        vb, uses = "0 0 128 128", f'<use href="#oa-sym-{sid}"/>'
+    return (f'<svg viewBox="{vb}" width="{size}" height="{size}" class="{cls}" aria-hidden="true" focusable="false" '
+            f'data-icon="{cid}" data-icon-family="{fam}" style="color:var(--oa-component-icon-ink-on-newsprint)">{uses}</svg>')
+
+
+def upgrade_24(text, log):
+    """A 24 px drawing of one of the 37 placed as the master alone takes the switch, its attributes kept."""
+    def swap(m):
+        attrs, cid, ref = m.group(1), m.group(2), m.group(3)
+        if cid not in FIT_24 or ref != cid.lower():
+            return m.group(0)
+        log.append(f"{cid} at 24 px takes the 1x and 2x switch")
+        return (f'<svg viewBox="0 0 24 24" width="24" height="24" {attrs}><use class="oa-at-1x" href="#oa-sym-{ref}-24px"/>'
+                f'<use class="oa-at-2x" href="#oa-sym-{ref}"/></svg>')
+    return MASTER_24.sub(swap, text)
 
 
 def rewrite(text, sid):
@@ -72,6 +102,7 @@ def rewrite(text, sid):
         return topic(cid, size, cls)
 
     out = INLINE.sub(swap, text)
+    out = upgrade_24(out, log)
     for cid, fam in FAMILY.items():          # a drawing this step placed before with the topic family
         old = f'data-icon="{cid}" data-icon-family="topic"'
         if old in out:

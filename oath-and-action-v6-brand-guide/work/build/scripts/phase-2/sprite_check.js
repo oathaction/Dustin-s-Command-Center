@@ -1,20 +1,23 @@
 #!/usr/bin/env node
 // Sprite check (promotion, November 10, 2026, guide engineer): every symbol the guide's sprite can hold, drawn through
-// <use> beside its own file, and the pillar icons' 1x and 2x pattern (DR-179), in Chromium.
+// <use> beside its own file, and the 1x and 2x pattern (DR-179), in Chromium. Promotion C (November 11, 2026): the
+// fourth family, the 37 fits in civic-line-v6/fit-24/ (black edition only, D2-1132), and the pattern for all 41 on the
+// list of drawings that read at 24 px (DR-136, DR-209).
 //
 // Usage:
 //   node work/build/scripts/phase-2/sprite_check.js [--sprite-root DIR] [--json out.json] [--png DIR]
 //
-// It asks guide_build.py for every symbol of the three families (--sprite-sheet), then draws, on a Newsprint ground at
+// It asks guide_build.py for every symbol of the four families (--sprite-sheet), then draws, on a Newsprint ground at
 // device scale 1 and 2:
-//   symbols   each symbol through <use> in an <svg> the size the guide sets it (Civic Line at 48 and 128 px, a pillar fit
-//             or utility icon at its own size), beside its file inline in the page at the same size, as the guide drew
+//   symbols   each symbol through <use> in an <svg> the size the guide sets it (Civic Line at 48 and 128 px, a fit or
+//             utility icon at its own size), beside its file inline in the page at the same size, as the guide drew
 //             icons before the sprite. The black edition in the ink, #121212 (a utility icon's currentColor takes it
 //             too); for Civic Line and the pillar fits also the red-black edition, with --oa-icon-accent set to that
-//             file's red. The drawings of one item take turns in one cell, and the screenshots are compared there.
-//   pattern   each 24 px pillar icon as specimens write it, <use class="oa-at-1x"> of the fit and <use class="oa-at-2x">
-//             of the master, with the shell's switch: at 1x and 1.5x it must draw the fit's file, at 2x the master's file
-//             at 24 px, and differ from the other one, so the switch is seen to work.
+//             file's red. The 37 fits have no red-black edition (D2-1132). The drawings of one item take turns in one
+//             cell, and the screenshots are compared there.
+//   pattern   each 24 px drawing of the 41 as specimens write it, <use class="oa-at-1x"> of the fit and <use
+//             class="oa-at-2x"> of the master, with the shell's switch: at 1x and 1.5x it must draw the fit's file, at
+//             2x the master's file at 24 px, and differ from the other one, so the switch is seen to work.
 // A pair matches when no channel of any pixel differs by more than 8 of 255. Exit 0 when every pair matches and the
 // pattern switches, 1 otherwise, 2 on misuse. --png writes the turns of any page with a failing pair to DIR (a scratch
 // folder, never work/build).
@@ -67,7 +70,7 @@ function items(sheet) {
     const vb = s.symbol.match(/viewBox="([^"]+)"/)[1];
     const sizes = s.family === 'civic-line' ? [48, 128] : [Number(sid.match(/-(\d+)px$/)[1])];
     for (const px of sizes) out.push({ kind: 'symbol', sid, label: s.label, edition: 'black', px, refs: [fileOf(s.file, px)], test: useOf(sid, vb, px) });
-    if (s.family === 'utility') continue;
+    if (s.family === 'utility' || s.family === 'fit-24') continue;   // one color: no red-black edition
     const red = s.family === 'civic-line' ? s.file.replace(/\/black\/([^/]+)-Black\.svg$/, '/red-black/$1-Red-Black.svg') : s.file.replace(/-Black\.svg$/, '-Red-Black.svg');
     if (red === s.file || !fs.existsSync(red)) { out.push({ kind: 'missing', sid, label: s.label, edition: 'red-black', file: red }); continue; }
     const accent = firstRed(red, INK);
@@ -75,7 +78,7 @@ function items(sheet) {
   }
   for (const [sid, s] of Object.entries(sheet.symbols)) {
     const m = sid.match(/^oa-sym-((?:cl|r)-\d+)-24px$/);
-    if (!m || s.family !== 'pillar') continue;
+    if (!m || !['pillar', 'fit-24'].includes(s.family)) continue;
     const master = sheet.symbols[`oa-sym-${m[1]}`];
     if (!master) { out.push({ kind: 'missing', sid, label: s.label, edition: 'master for 2x screens', file: `oa-sym-${m[1]}` }); continue; }
     out.push({ kind: 'pattern', sid, label: s.label, px: 24, refs: [fileOf(s.file, 24), fileOf(master.file, 24)],
@@ -134,6 +137,7 @@ async function run(browser, list, dpr, sheet, pngDir) {
   const list = items(sheet);
   const browser = await chromium.launch();
   const report = { checked: new Date().toISOString(), root: sheet.root, tolerance: TOL, missingFolders: sheet.missing, buildWarnings: sheet.warnings, scales: {}, failures: [] };
+  for (const w of sheet.warnings) report.failures.push(`the build reading the families: [${w.where}] ${w.message}`);
   if (o.png) fs.mkdirSync(o.png, { recursive: true });
   for (const dpr of [1, 1.5, 2]) {   // at 1.5 only the pattern, which must still draw the fit there
     const res = await run(browser, dpr === 1.5 ? list.filter((x) => x.kind === 'pattern') : list, dpr, sheet, o.png);
@@ -160,9 +164,13 @@ async function run(browser, list, dpr, sheet, pngDir) {
   console.log(`${report.pass ? 'PASS' : 'FAIL'} sprite check: ${Object.entries(counts).map(([f, n]) => `${f} ${n}`).join(', ')} symbols, from ${path.relative(ROOT, sheet.root) || sheet.root}`);
   for (const [s, v] of Object.entries(report.scales)) {
     if (Object.keys(v.families).length) console.log(`  ${s}: ` + Object.entries(v.families).map(([k, x]) => `${k} ${x.pairs} pairs, largest difference ${x.largest}`).join('; '));
-    if (v.pattern.length) console.log(`  ${s} pattern: ` + v.pattern.map((p) => `${p.icon} draws the ${p.draws} (${p.ok ? 'right' : 'WRONG'}; against fit ${p.againstFit}, master ${p.againstMaster})`).join('; '));
+    if (v.pattern.length) {
+      const span = (k) => `${Math.min(...v.pattern.map((p) => p[k]))} to ${Math.max(...v.pattern.map((p) => p[k]))}`;
+      console.log(`  ${s} pattern: ${v.pattern.filter((p) => p.ok).length} of ${v.pattern.length} draw the ${v.pattern[0].draws} alone `
+        + `(largest difference against the fit ${span('againstFit')}, against the master ${span('againstMaster')})`);
+      for (const p of v.pattern.filter((x) => !x.ok)) console.log(`    WRONG ${p.icon}: against the fit ${p.againstFit}, the master ${p.againstMaster}`);
+    }
   }
-  for (const w of sheet.warnings) console.log(`  build warning [${w.where}] ${w.message}`);
   for (const f of report.failures.slice(0, 40)) console.log('  - ' + f);
   if (report.failures.length > 40) console.log(`  ... and ${report.failures.length - 40} more`);
   process.exit(report.pass ? 0 : 1);

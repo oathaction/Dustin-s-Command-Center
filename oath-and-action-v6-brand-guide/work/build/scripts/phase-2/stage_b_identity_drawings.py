@@ -547,7 +547,7 @@ def feed(scratch):
     try:
         for k in ("today", "new"):
             SP.lockmark = (lambda kk: (lambda s, **kw: svg_file(lk_file(kk, 48), h=s, label="Lockmark", style=mark_style("newsprint"))))(k)
-            cards[k] = f'<div id="card-{k}" style="width:1200px">{SP._social()}</div>'
+            cards[k] = f'<div id="card-{k}" style="width:1200px">{SP._social(sign=48)}</div>'
     finally:
         SP.lockmark = keep
     p = scratch / "feed.html"

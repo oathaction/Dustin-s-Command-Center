@@ -1,0 +1,22 @@
+{
+ "date": "2026-11-11",
+ "author": "Systems designer (oa-design-director), promotion C, for the editor to fold into its table",
+ "purpose": "Words for drawings that joined the set in use after the editor's table of labels (20261110_Stage-B-Ch10-Labels.json): CL-075 Housing (DR-207, D2-1262). Written in the table's own form and by its label and meaning rules (DR-185). stage_b_ch10_build.py and apply_systems_ch11_ui.py read the table first and take a row here only for a drawing the table does not hold, so the editor's words win the moment the table holds the row.",
+ "rows": [
+  {
+   "id": "CL-075",
+   "civic_line_word": "Housing",
+   "sheet": "03",
+   "class": "topic",
+   "v7_id": null,
+   "v7_chip": null,
+   "v7_title": null,
+   "v7_short_name": null,
+   "v7_name": null,
+   "label": "Housing",
+   "label_source": "Civic Line word, sentence case",
+   "meaning": "An apartment block stands beside a smaller pitched-roof house on one ground line, for housing as a subject: the homes of every kind where people live.",
+   "drawn_as": "New drawing, approved by name: DR-207, option A"
+  }
+ ]
+}

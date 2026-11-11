@@ -759,7 +759,8 @@
         "18"
       ],
       "builders": [
-        "Turn and mirror the arrow and the chevron with the transforms in the utility manifest, on the <code>&lt;use&gt;</code>, so every line stays on the pixel grid. At 16 px the down arrow is a mirror across the diagonal, <code>matrix(0 1 1 0 0 0)</code>, which keeps its shaft on the up arrow’s pixel column."
+        "Turn and mirror the arrow and the chevron with the transforms in the utility manifest, on the <code>&lt;use&gt;</code>, so every line stays on the pixel grid. At 16 px the down arrow is a mirror across the diagonal, <code>matrix(0 1 1 0 0 0)</code>, which keeps its shaft on the up arrow’s pixel column.",
+        "Give a search field <code>type=\"search\"</code> and let the Escape key clear it. On a product page, wrap the field, its filters and its status line in a search landmark, <code>&lt;div role=\"search\"&gt;</code>. Write the count and any advice to that one status line, such as “0 of 125 symbols. No symbol matches. Clear the search or the filters to see more.”"
       ]
     },
     {

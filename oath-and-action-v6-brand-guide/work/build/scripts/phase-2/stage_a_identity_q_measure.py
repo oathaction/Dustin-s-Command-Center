@@ -235,6 +235,9 @@ def feed_test(scratch):
     card = Image.open(shot).convert("RGB")
     assert card.size == CARD, f"the card captured at {card.size}, not {CARD}"
     lk, bx = info["lk"], info["clip"]
+    # since promotion C (DR-211) the card signs off at 96 px, which this count's 48 px grid cannot read;
+    # promotion_c_identity.py feed measures that card
+    assert round(lk["h"]) == 48, f"the card's sign-off is {lk['h']} px, not 48; run promotion_c_identity.py feed instead"
     ox, oy = lk["x"] - bx["x"], lk["y"] - bx["y"]           # the lockmark's box in the captured card, as layout places it
     vb48 = re.search(r'viewBox="([^"]+)"', (ID_DIR / LOCK[48]).read_text()).group(1)
     master = LOCK[48] if lk["viewBox"] == vb48 else f"a drawing with viewBox {lk['viewBox']}"     # the guide inlines masters
@@ -266,7 +269,7 @@ def feed_control(scratch):
     try:
         for k, f in (("display", lambda s, **kw: LIB.mark(LOCK["display"], h=s, label="Lockmark")), ("m48", keep)):
             SP.lockmark = f
-            cards[k] = f'<div id="card-{k}" style="width:1200px">{SP._social()}</div>'
+            cards[k] = f'<div id="card-{k}" style="width:1200px">{SP._social(sign=48)}</div>'
     finally:
         SP.lockmark = keep
         LIB.INLINE_ALL[0] = False

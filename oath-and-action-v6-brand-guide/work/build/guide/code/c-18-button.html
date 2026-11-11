@@ -1,0 +1,37 @@
+<div class="oa-button-set">
+  <p class="oa-button-k">Primary, ask and quiet</p>
+  <div class="oa-button-row">
+    <button type="button" class="oa-button oa-button--primary">Save to your list</button>
+    <button type="button" class="oa-button oa-button--ask" data-red="working" data-red-job="take part now">Remind me</button>
+    <button type="button" class="oa-button oa-button--quiet">Read the bill</button>
+  </div>
+
+  <p class="oa-button-k">With a utility icon</p>
+  <div class="oa-button-row">
+    <button type="button" class="oa-button oa-button--quiet oa-button--icon-start">
+      <svg class="oa-button-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-reset" data-icon-family="utility"><path d="M6.343 17.657 A8 8 0 1 0 6.858 5.872 L5 8"/><path d="M5 3 L5 8 L10 8"/></svg>
+      <span class="oa-button-label">Start the form over</span>
+    </button>
+    <button type="button" class="oa-button oa-button--primary oa-button--icon-end">
+      <span class="oa-button-label">Next step</span>
+      <svg class="oa-button-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-arrow" data-icon-family="utility"><path d="M5 12 L19 12 M12 5 L19 12 L12 19"/></svg>
+    </button>
+  </div>
+
+  <p class="oa-button-k">Unavailable, with its reason</p>
+  <div class="oa-button-row">
+    <button type="button" class="oa-button oa-button--primary" aria-disabled="true" aria-describedby="oa-button-why">Send your comment</button>
+  </div>
+  <p class="oa-button-note" id="oa-button-why">Write your comment first, then send it.</p>
+
+  <p class="oa-button-k">Sending</p>
+  <div class="oa-button-row">
+    <button type="button" class="oa-button oa-button--primary" aria-disabled="true" aria-describedby="oa-button-sending">Sending</button>
+  </div>
+  <p class="oa-button-note" id="oa-button-sending" role="status">Sending your comment. This takes a few seconds.</p>
+
+  <p class="oa-button-k">The ask while an error holds the red</p>
+  <div class="oa-button-row">
+    <button type="button" class="oa-button oa-button--ask" data-oa-yield>Remind me</button>
+  </div>
+</div>

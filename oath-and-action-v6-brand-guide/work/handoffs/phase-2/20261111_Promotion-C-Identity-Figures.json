@@ -1,0 +1,2076 @@
+{
+ "feed_study": {
+  "method": "The proofs' link-preview card (stage_a_identity_proofs._social) drawn by the built guide page and drawn alone on each ground with every master inlined, captured at 1x in Chromium through Playwright; reduced with Pillow; counted node by node in each node's square, scaled with the sign-off, plus 1 px, as Rule 08.2 counts it",
+  "lockmark_master": "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+  "sign_off_px": 96,
+  "sign_off_box_in_card": [
+   1031,
+   461,
+   96,
+   96
+  ],
+  "card_px": [
+   1200,
+   630
+  ],
+  "built_page": {
+   "strict_exit": 1,
+   "strict_tail": [
+    "  warning [s-10-9-correct] R-08 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-r-08-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-r-08\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself",
+    "  warning [s-10-9-correct] R-27 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-r-27-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-r-27\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself",
+    "  warning [s-10-9-correct] R-45 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-r-45-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-r-45\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself",
+    "  warning [s-11-14-failure] CL-024 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-024-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-024\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself",
+    "  note: code set c-18-button is in the code folder, and no rule shows it yet",
+    "  report: /tmp/claude-0/-home-user-Dustin-s-Command-Center/42858b21-febe-5543-930e-ed82e286a69e/scratchpad/promotion-c/identity/guide-Build-Report.json"
+   ],
+   "plain_exit": 0,
+   "warnings": [
+    {
+     "where": "s-10-1-failure",
+     "message": "CL-048 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-048-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-048\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-4-correct",
+     "message": "CL-048 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-048-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-048\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-4-correct",
+     "message": "CL-048 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-048-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-048\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-001 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-001-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-001\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-004 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-004-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-004\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-006 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-006-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-006\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-010 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-010-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-010\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-013 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-013-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-013\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-023 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-023-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-023\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-024 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-024-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-024\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-028 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-028-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-028\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-031 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-031-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-031\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-032 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-032-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-032\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-039 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-039-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-039\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-040 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-040-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-040\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-047 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-047-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-047\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-048 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-048-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-048\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-050 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-050-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-050\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-051 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-051-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-051\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-054 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-054-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-054\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-057 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-057-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-057\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-060 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-060-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-060\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-061 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-061-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-061\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-067 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-067-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-067\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-068 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-068-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-068\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-070 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-070-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-070\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-071 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-071-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-071\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "CL-072 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-cl-072-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-072\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "R-05 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-r-05-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-r-05\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "R-06 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-r-06-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-r-06\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "R-08 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-r-08-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-r-08\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "R-09 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-r-09-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-r-09\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "R-14 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-r-14-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-r-14\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "R-15 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-r-15-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-r-15\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "R-17 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-r-17-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-r-17\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "R-19 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-r-19-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-r-19\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "R-23 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-r-23-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-r-23\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "R-27 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-r-27-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-r-27\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "R-37 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-r-37-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-r-37\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    },
+    {
+     "where": "s-10-list-41",
+     "message": "R-45 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit: <use class=\"oa-at-1x\" href=\"#oa-sym-r-45-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-r-45\"/> in one <svg>, or data-oa-res=\"fixed\" on a plate that shows the master itself"
+    }
+   ]
+  },
+  "built_page_sign_off_box": [
+   1030.984,
+   460.844,
+   96,
+   96
+  ],
+  "built_page_sign_off_same_pixels_as_card_alone": true,
+  "built_page_card_pixels_differing_from_card_alone": 10199,
+  "card_sign_off_same_pixels_as_tile_alone": {
+   "newsprint": true,
+   "white": true,
+   "charcoal": true,
+   "prussian": true
+  },
+  "floors": {
+   "charcoal": 210,
+   "prussian": 255
+  },
+  "floors_round_0_on_the_48_px_card": {
+   "charcoal": 155,
+   "prussian": 190
+  },
+  "floor_study": {
+   "charcoal": {
+    "at_rule_widths": {
+     "360": {
+      "links_alone_max": 189,
+      "weakest_node_min": 210
+     },
+     "500": {
+      "links_alone_max": 210,
+      "weakest_node_min": 210
+     }
+    },
+    "band_300_to_600": {
+     "links_alone_max": 215,
+     "weakest_node_min": 208,
+     "widths_where_a_node_falls_to_the_links": [
+      418,
+      428,
+      431,
+      436,
+      437,
+      438,
+      439,
+      446,
+      447,
+      448,
+      449,
+      450,
+      453,
+      454,
+      457,
+      458,
+      460,
+      461,
+      464,
+      465,
+      466,
+      467,
+      468,
+      469,
+      476,
+      477,
+      478,
+      479,
+      483,
+      484,
+      486,
+      487,
+      488,
+      491,
+      492,
+      493,
+      494,
+      496,
+      497,
+      498,
+      499,
+      500,
+      506,
+      507,
+      508,
+      509,
+      513,
+      514,
+      515,
+      516,
+      517,
+      520,
+      521,
+      522,
+      523,
+      525,
+      526,
+      527,
+      528,
+      529,
+      530,
+      533,
+      534,
+      535,
+      536,
+      537,
+      538,
+      542,
+      543,
+      544,
+      545,
+      546,
+      547,
+      548,
+      549,
+      550,
+      551,
+      552,
+      553,
+      554,
+      555,
+      556,
+      557,
+      558,
+      559,
+      560,
+      561,
+      562,
+      563,
+      564,
+      565,
+      566,
+      567,
+      568,
+      573,
+      574,
+      575,
+      576,
+      577,
+      578,
+      579,
+      580,
+      581,
+      582,
+      583,
+      584,
+      585,
+      586,
+      587,
+      588,
+      589,
+      590,
+      591,
+      592,
+      593,
+      594,
+      595,
+      596,
+      597,
+      598,
+      599
+     ]
+    },
+    "floor": 210,
+    "floor_share_of_the_way_from_ground_to_node": 1.0
+   },
+   "prussian": {
+    "at_rule_widths": {
+     "360": {
+      "links_alone_max": 230,
+      "weakest_node_min": 255
+     },
+     "500": {
+      "links_alone_max": 255,
+      "weakest_node_min": 255
+     }
+    },
+    "band_300_to_600": {
+     "links_alone_max": 255,
+     "weakest_node_min": 253,
+     "widths_where_a_node_falls_to_the_links": [
+      418,
+      428,
+      431,
+      436,
+      437,
+      438,
+      439,
+      446,
+      447,
+      448,
+      449,
+      450,
+      453,
+      454,
+      457,
+      458,
+      460,
+      461,
+      464,
+      465,
+      466,
+      467,
+      468,
+      469,
+      476,
+      477,
+      478,
+      479,
+      483,
+      484,
+      486,
+      487,
+      488,
+      491,
+      492,
+      493,
+      494,
+      496,
+      497,
+      498,
+      499,
+      500,
+      506,
+      507,
+      508,
+      509,
+      513,
+      514,
+      515,
+      516,
+      517,
+      520,
+      521,
+      522,
+      523,
+      525,
+      526,
+      527,
+      528,
+      529,
+      530,
+      533,
+      534,
+      535,
+      536,
+      537,
+      538,
+      542,
+      543,
+      544,
+      545,
+      546,
+      547,
+      548,
+      549,
+      550,
+      551,
+      552,
+      553,
+      554,
+      555,
+      556,
+      557,
+      558,
+      559,
+      560,
+      561,
+      562,
+      563,
+      564,
+      565,
+      566,
+      567,
+      568,
+      573,
+      574,
+      575,
+      576,
+      577,
+      578,
+      579,
+      580,
+      581,
+      582,
+      583,
+      584,
+      585,
+      586,
+      587,
+      588,
+      589,
+      590,
+      591,
+      592,
+      593,
+      594,
+      595,
+      596,
+      597,
+      598,
+      599
+     ]
+    },
+    "floor": 255,
+    "floor_share_of_the_way_from_ground_to_node": 1.0
+   },
+   "newsprint": {
+    "links_alone_darkest_high_channel_300_to_600": 106,
+    "under_70": false
+   },
+   "white": {
+    "links_alone_darkest_high_channel_300_to_600": 105,
+    "under_70": false
+   }
+  },
+  "at_rule_widths": {
+   "newsprint": {
+    "at_500": {
+     "lanczos": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       0,
+       0,
+       0,
+       2,
+       4,
+       6,
+       1,
+       7
+      ],
+      "lever_red_px": 52,
+      "passes": true
+     },
+     "bicubic": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       4,
+       5,
+       7,
+       7,
+       10,
+       10,
+       7,
+       12
+      ],
+      "lever_red_px": 52,
+      "passes": true
+     },
+     "bilinear": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       18,
+       18,
+       18,
+       18,
+       18,
+       18,
+       18,
+       18
+      ],
+      "lever_red_px": 50,
+      "passes": true
+     },
+     "box": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       18,
+       18,
+       18,
+       18,
+       18,
+       18,
+       18,
+       18
+      ],
+      "lever_red_px": 52,
+      "passes": true
+     }
+    },
+    "at_360": {
+     "lanczos": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       14,
+       4,
+       8,
+       4,
+       0,
+       0,
+       8,
+       1
+      ],
+      "lever_red_px": 22,
+      "passes": true
+     },
+     "bicubic": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       14,
+       9,
+       10,
+       10,
+       7,
+       6,
+       11,
+       6
+      ],
+      "lever_red_px": 22,
+      "passes": true
+     },
+     "bilinear": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       18,
+       18,
+       18,
+       18,
+       18,
+       18,
+       18,
+       18
+      ],
+      "lever_red_px": 22,
+      "passes": true
+     },
+     "box": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       18,
+       18,
+       18,
+       18,
+       18,
+       18,
+       18,
+       18
+      ],
+      "lever_red_px": 22,
+      "passes": true
+     }
+    }
+   },
+   "white": {
+    "at_500": {
+     "lanczos": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       0,
+       0,
+       0,
+       0,
+       1,
+       4,
+       0,
+       5
+      ],
+      "lever_red_px": 48,
+      "passes": true
+     },
+     "bicubic": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       1,
+       2,
+       3,
+       4,
+       8,
+       8,
+       5,
+       11
+      ],
+      "lever_red_px": 48,
+      "passes": true
+     },
+     "bilinear": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       18,
+       18,
+       18,
+       18,
+       18,
+       18,
+       18,
+       18
+      ],
+      "lever_red_px": 40,
+      "passes": true
+     },
+     "box": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       18,
+       18,
+       18,
+       18,
+       18,
+       18,
+       18,
+       18
+      ],
+      "lever_red_px": 44,
+      "passes": true
+     }
+    },
+    "at_360": {
+     "lanczos": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       14,
+       1,
+       5,
+       0,
+       0,
+       0,
+       5,
+       0
+      ],
+      "lever_red_px": 20,
+      "passes": true
+     },
+     "bicubic": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       12,
+       8,
+       8,
+       8,
+       5,
+       4,
+       8,
+       4
+      ],
+      "lever_red_px": 20,
+      "passes": true
+     },
+     "bilinear": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       18,
+       18,
+       18,
+       18,
+       18,
+       18,
+       18,
+       18
+      ],
+      "lever_red_px": 20,
+      "passes": true
+     },
+     "box": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       18,
+       18,
+       18,
+       18,
+       18,
+       18,
+       18,
+       18
+      ],
+      "lever_red_px": 22,
+      "passes": true
+     }
+    }
+   },
+   "charcoal": {
+    "at_500": {
+     "lanczos": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       230,
+       230,
+       230,
+       226,
+       224,
+       222,
+       227,
+       221
+      ],
+      "lever_red_px": 48,
+      "passes": true
+     },
+     "bicubic": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       224,
+       223,
+       221,
+       221,
+       218,
+       217,
+       221,
+       216
+      ],
+      "lever_red_px": 48,
+      "passes": true
+     },
+     "bilinear": {
+      "nodes_kept": 0,
+      "of": 8,
+      "best_per_node": [
+       210,
+       210,
+       210,
+       210,
+       210,
+       210,
+       210,
+       210
+      ],
+      "lever_red_px": 44,
+      "passes": false
+     },
+     "box": {
+      "nodes_kept": 0,
+      "of": 8,
+      "best_per_node": [
+       210,
+       210,
+       210,
+       210,
+       210,
+       210,
+       210,
+       210
+      ],
+      "lever_red_px": 44,
+      "passes": false
+     }
+    },
+    "at_360": {
+     "lanczos": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       214,
+       225,
+       221,
+       225,
+       224,
+       227,
+       220,
+       227
+      ],
+      "lever_red_px": 20,
+      "passes": true
+     },
+     "bicubic": {
+      "nodes_kept": 8,
+      "of": 8,
+      "best_per_node": [
+       214,
+       218,
+       218,
+       217,
+       219,
+       220,
+       217,
+       220
+      ],
+      "lever_red_px": 20,
+      "passes": true
+     },
+     "bilinear": {
+      "nodes_kept": 0,
+      "of": 8,
+      "best_per_node": [
+       210,
+       210,
+       210,
+       210,
+       210,
+       210,
+       210,
+       210
+      ],
+      "lever_red_px": 20,
+      "passes": false
+     },
+     "box": {
+      "nodes_kept": 0,
+      "of": 8,
+      "best_per_node": [
+       210,
+       210,
+       210,
+       210,
+       210,
+       210,
+       210,
+       210
+      ],
+      "lever_red_px": 22,
+      "passes": false
+     }
+    }
+   },
+   "prussian": {
+    "at_500": {
+     "lanczos": {
+      "nodes_kept": 0,
+      "of": 9,
+      "best_per_node": [
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255
+      ],
+      "passes": false
+     },
+     "bicubic": {
+      "nodes_kept": 0,
+      "of": 9,
+      "best_per_node": [
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255
+      ],
+      "passes": false
+     },
+     "bilinear": {
+      "nodes_kept": 0,
+      "of": 9,
+      "best_per_node": [
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255
+      ],
+      "passes": false
+     },
+     "box": {
+      "nodes_kept": 0,
+      "of": 9,
+      "best_per_node": [
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255
+      ],
+      "passes": false
+     }
+    },
+    "at_360": {
+     "lanczos": {
+      "nodes_kept": 0,
+      "of": 9,
+      "best_per_node": [
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255
+      ],
+      "passes": false
+     },
+     "bicubic": {
+      "nodes_kept": 0,
+      "of": 9,
+      "best_per_node": [
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255
+      ],
+      "passes": false
+     },
+     "bilinear": {
+      "nodes_kept": 0,
+      "of": 9,
+      "best_per_node": [
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255
+      ],
+      "passes": false
+     },
+     "box": {
+      "nodes_kept": 0,
+      "of": 9,
+      "best_per_node": [
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255,
+       255
+      ],
+      "passes": false
+     }
+    }
+   }
+  },
+  "built_page_at_rule_widths": {
+   "at_500": {
+    "nodes_kept": 8,
+    "of": 8,
+    "best_per_node": [
+     0,
+     0,
+     0,
+     2,
+     4,
+     6,
+     1,
+     7
+    ],
+    "lever_red_px": 52,
+    "passes": true
+   },
+   "at_360": {
+    "nodes_kept": 8,
+    "of": 8,
+    "best_per_node": [
+     14,
+     4,
+     8,
+     4,
+     0,
+     0,
+     8,
+     1
+    ],
+    "lever_red_px": 22,
+    "passes": true
+   }
+  },
+  "thumbnail": {
+   "newsprint": {
+    "48": {
+     "at_500": {
+      "nodes_kept": 8,
+      "of": 8,
+      "lever_red_px": 3,
+      "passes": false
+     },
+     "at_360": {
+      "nodes_kept": 8,
+      "of": 8,
+      "lever_red_px": 0,
+      "passes": false
+     },
+     "fail_widths_every_4th_300_to_600": {
+      "fails": 50,
+      "of": 76,
+      "widths": [
+       300,
+       304,
+       308,
+       312,
+       316,
+       320,
+       324,
+       328,
+       332,
+       336,
+       340,
+       344,
+       348,
+       352,
+       356,
+       360,
+       364,
+       368,
+       372,
+       376,
+       380,
+       384,
+       388,
+       392,
+       396,
+       400,
+       404,
+       408,
+       412,
+       416,
+       420,
+       424,
+       428,
+       432,
+       436,
+       440,
+       444,
+       448,
+       452,
+       456,
+       460,
+       468,
+       472,
+       476,
+       480,
+       488,
+       496,
+       500,
+       524,
+       568
+      ]
+     }
+    },
+    "96": {
+     "at_500": {
+      "nodes_kept": 8,
+      "of": 8,
+      "lever_red_px": 41,
+      "passes": true
+     },
+     "at_360": {
+      "nodes_kept": 8,
+      "of": 8,
+      "lever_red_px": 17,
+      "passes": true
+     },
+     "fail_widths_every_4th_300_to_600": {
+      "fails": 0,
+      "of": 76,
+      "widths": []
+     }
+    }
+   },
+   "white": {
+    "48": {
+     "at_500": {
+      "nodes_kept": 8,
+      "of": 8,
+      "lever_red_px": 3,
+      "passes": false
+     },
+     "at_360": {
+      "nodes_kept": 8,
+      "of": 8,
+      "lever_red_px": 0,
+      "passes": false
+     },
+     "fail_widths_every_4th_300_to_600": {
+      "fails": 54,
+      "of": 76,
+      "widths": [
+       300,
+       304,
+       308,
+       312,
+       316,
+       320,
+       324,
+       328,
+       332,
+       336,
+       340,
+       344,
+       348,
+       352,
+       356,
+       360,
+       364,
+       368,
+       372,
+       376,
+       380,
+       384,
+       388,
+       392,
+       396,
+       400,
+       404,
+       408,
+       412,
+       416,
+       420,
+       424,
+       428,
+       432,
+       436,
+       440,
+       444,
+       448,
+       452,
+       456,
+       460,
+       464,
+       468,
+       472,
+       476,
+       480,
+       488,
+       496,
+       500,
+       524,
+       528,
+       544,
+       556,
+       564
+      ]
+     }
+    },
+    "96": {
+     "at_500": {
+      "nodes_kept": 8,
+      "of": 8,
+      "lever_red_px": 35,
+      "passes": true
+     },
+     "at_360": {
+      "nodes_kept": 8,
+      "of": 8,
+      "lever_red_px": 17,
+      "passes": true
+     },
+     "fail_widths_every_4th_300_to_600": {
+      "fails": 0,
+      "of": 76,
+      "widths": []
+     }
+    }
+   },
+   "charcoal": {
+    "48": {
+     "at_500": {
+      "nodes_kept": 8,
+      "of": 8,
+      "lever_red_px": 3,
+      "passes": false
+     },
+     "at_360": {
+      "nodes_kept": 7,
+      "of": 8,
+      "lever_red_px": 0,
+      "passes": false
+     },
+     "fail_widths_every_4th_300_to_600": {
+      "fails": 48,
+      "of": 76,
+      "widths": [
+       300,
+       304,
+       308,
+       312,
+       316,
+       320,
+       324,
+       328,
+       332,
+       336,
+       340,
+       344,
+       348,
+       352,
+       356,
+       360,
+       364,
+       368,
+       372,
+       376,
+       380,
+       384,
+       388,
+       392,
+       396,
+       400,
+       404,
+       408,
+       412,
+       416,
+       420,
+       424,
+       428,
+       432,
+       436,
+       440,
+       448,
+       452,
+       456,
+       464,
+       468,
+       472,
+       476,
+       480,
+       488,
+       496,
+       500,
+       564
+      ]
+     }
+    },
+    "96": {
+     "at_500": {
+      "nodes_kept": 8,
+      "of": 8,
+      "lever_red_px": 34,
+      "passes": true
+     },
+     "at_360": {
+      "nodes_kept": 8,
+      "of": 8,
+      "lever_red_px": 16,
+      "passes": true
+     },
+     "fail_widths_every_4th_300_to_600": {
+      "fails": 0,
+      "of": 76,
+      "widths": []
+     }
+    }
+   },
+   "prussian": {
+    "48": {
+     "at_500": {
+      "nodes_kept": 0,
+      "of": 9,
+      "passes": false
+     },
+     "at_360": {
+      "nodes_kept": 0,
+      "of": 9,
+      "passes": false
+     },
+     "fail_widths_every_4th_300_to_600": {
+      "fails": 76,
+      "of": 76,
+      "widths": [
+       300,
+       304,
+       308,
+       312,
+       316,
+       320,
+       324,
+       328,
+       332,
+       336,
+       340,
+       344,
+       348,
+       352,
+       356,
+       360,
+       364,
+       368,
+       372,
+       376,
+       380,
+       384,
+       388,
+       392,
+       396,
+       400,
+       404,
+       408,
+       412,
+       416,
+       420,
+       424,
+       428,
+       432,
+       436,
+       440,
+       444,
+       448,
+       452,
+       456,
+       460,
+       464,
+       468,
+       472,
+       476,
+       480,
+       484,
+       488,
+       492,
+       496,
+       500,
+       504,
+       508,
+       512,
+       516,
+       520,
+       524,
+       528,
+       532,
+       536,
+       540,
+       544,
+       548,
+       552,
+       556,
+       560,
+       564,
+       568,
+       572,
+       576,
+       580,
+       584,
+       588,
+       592,
+       596,
+       600
+      ]
+     }
+    },
+    "96": {
+     "at_500": {
+      "nodes_kept": 0,
+      "of": 9,
+      "passes": false
+     },
+     "at_360": {
+      "nodes_kept": 0,
+      "of": 9,
+      "passes": false
+     },
+     "fail_widths_every_4th_300_to_600": {
+      "fails": 76,
+      "of": 76,
+      "widths": [
+       300,
+       304,
+       308,
+       312,
+       316,
+       320,
+       324,
+       328,
+       332,
+       336,
+       340,
+       344,
+       348,
+       352,
+       356,
+       360,
+       364,
+       368,
+       372,
+       376,
+       380,
+       384,
+       388,
+       392,
+       396,
+       400,
+       404,
+       408,
+       412,
+       416,
+       420,
+       424,
+       428,
+       432,
+       436,
+       440,
+       444,
+       448,
+       452,
+       456,
+       460,
+       464,
+       468,
+       472,
+       476,
+       480,
+       484,
+       488,
+       492,
+       496,
+       500,
+       504,
+       508,
+       512,
+       516,
+       520,
+       524,
+       528,
+       532,
+       536,
+       540,
+       544,
+       548,
+       552,
+       556,
+       560,
+       564,
+       568,
+       572,
+       576,
+       580,
+       584,
+       588,
+       592,
+       596,
+       600
+      ]
+     }
+    }
+   }
+  },
+  "widths_300_to_600": {
+   "newsprint": {
+    "fail_widths": [],
+    "nodes_min": 8,
+    "lever_red_min": 15,
+    "lever_red_max": 69
+   },
+   "white": {
+    "fail_widths": [],
+    "nodes_min": 8,
+    "lever_red_min": 13,
+    "lever_red_max": 69
+   },
+   "charcoal": {
+    "fail_widths": [],
+    "nodes_min": 8,
+    "lever_red_min": 14,
+    "lever_red_max": 69
+   },
+   "prussian": {
+    "fail_widths": [
+     300,
+     301,
+     302,
+     303,
+     304,
+     305,
+     306,
+     307,
+     308,
+     309,
+     310,
+     311,
+     312,
+     313,
+     314,
+     315,
+     316,
+     317,
+     318,
+     319,
+     320,
+     321,
+     322,
+     323,
+     324,
+     325,
+     326,
+     327,
+     328,
+     329,
+     330,
+     331,
+     332,
+     333,
+     334,
+     335,
+     336,
+     337,
+     338,
+     339,
+     340,
+     341,
+     342,
+     343,
+     344,
+     345,
+     346,
+     347,
+     348,
+     349,
+     350,
+     351,
+     352,
+     353,
+     354,
+     355,
+     356,
+     357,
+     358,
+     359,
+     360,
+     361,
+     362,
+     363,
+     364,
+     365,
+     366,
+     367,
+     368,
+     369,
+     370,
+     371,
+     372,
+     373,
+     374,
+     375,
+     376,
+     377,
+     378,
+     379,
+     380,
+     381,
+     382,
+     383,
+     384,
+     385,
+     386,
+     387,
+     388,
+     389,
+     390,
+     391,
+     392,
+     393,
+     394,
+     395,
+     396,
+     397,
+     398,
+     399,
+     400,
+     401,
+     402,
+     403,
+     404,
+     405,
+     406,
+     407,
+     408,
+     409,
+     410,
+     411,
+     412,
+     413,
+     414,
+     415,
+     416,
+     417,
+     418,
+     419,
+     420,
+     421,
+     422,
+     423,
+     424,
+     425,
+     426,
+     427,
+     428,
+     429,
+     430,
+     431,
+     432,
+     433,
+     434,
+     435,
+     436,
+     437,
+     438,
+     439,
+     440,
+     441,
+     442,
+     443,
+     444,
+     445,
+     446,
+     447,
+     448,
+     449,
+     450,
+     451,
+     452,
+     453,
+     454,
+     455,
+     456,
+     457,
+     458,
+     459,
+     460,
+     461,
+     462,
+     463,
+     464,
+     465,
+     466,
+     467,
+     468,
+     469,
+     470,
+     471,
+     472,
+     473,
+     474,
+     475,
+     476,
+     477,
+     478,
+     479,
+     480,
+     481,
+     482,
+     483,
+     484,
+     485,
+     486,
+     487,
+     488,
+     489,
+     490,
+     491,
+     492,
+     493,
+     494,
+     495,
+     496,
+     497,
+     498,
+     499,
+     500,
+     501,
+     502,
+     503,
+     504,
+     505,
+     506,
+     507,
+     508,
+     509,
+     510,
+     511,
+     512,
+     513,
+     514,
+     515,
+     516,
+     517,
+     518,
+     519,
+     520,
+     521,
+     522,
+     523,
+     524,
+     525,
+     526,
+     527,
+     528,
+     529,
+     530,
+     531,
+     532,
+     533,
+     534,
+     535,
+     536,
+     537,
+     538,
+     539,
+     540,
+     541,
+     542,
+     543,
+     544,
+     545,
+     546,
+     547,
+     548,
+     549,
+     550,
+     551,
+     552,
+     553,
+     554,
+     555,
+     556,
+     557,
+     558,
+     559,
+     560,
+     561,
+     562,
+     563,
+     564,
+     565,
+     566,
+     567,
+     568,
+     569,
+     570,
+     571,
+     572,
+     573,
+     574,
+     575,
+     576,
+     577,
+     578,
+     579,
+     580,
+     581,
+     582,
+     583,
+     584,
+     585,
+     586,
+     587,
+     588,
+     589,
+     590,
+     591,
+     592,
+     593,
+     594,
+     595,
+     596,
+     597,
+     598,
+     599,
+     600
+    ],
+    "nodes_min": 0,
+    "lever_red_min": null,
+    "lever_red_max": null
+   }
+  }
+ },
+ "date": "2026-11-11",
+ "feed": {
+  "source": "work/build/scripts/phase-2/promotion_c_identity.py feed, key feed_study, built_page_at_rule_widths",
+  "lockmark_master": "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+  "sign_off_px": 96,
+  "filter": "lanczos",
+  "card": "the built guide page, Newsprint",
+  "at_500": {
+   "dark_nodes_kept": 8,
+   "lever_red_px": 52,
+   "passes": true
+  },
+  "at_360": {
+   "dark_nodes_kept": 8,
+   "lever_red_px": 22,
+   "passes": true
+  }
+ },
+ "feed_dark": {
+  "source": "work/build/scripts/phase-2/promotion_c_identity.py feed, key feed_study, at_rule_widths and floors",
+  "lockmark_master": "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+  "sign_off_px": 96,
+  "floors": {
+   "charcoal": 210,
+   "prussian": 255
+  },
+  "filter": "lanczos",
+  "newsprint": {
+   "at_500": {
+    "nodes_kept": 8,
+    "of": 8,
+    "lever_red_px": 52,
+    "passes": true
+   },
+   "at_360": {
+    "nodes_kept": 8,
+    "of": 8,
+    "lever_red_px": 22,
+    "passes": true
+   }
+  },
+  "white": {
+   "at_500": {
+    "nodes_kept": 8,
+    "of": 8,
+    "lever_red_px": 48,
+    "passes": true
+   },
+   "at_360": {
+    "nodes_kept": 8,
+    "of": 8,
+    "lever_red_px": 20,
+    "passes": true
+   }
+  },
+  "charcoal": {
+   "at_500": {
+    "nodes_kept": 8,
+    "of": 8,
+    "lever_red_px": 48,
+    "passes": true
+   },
+   "at_360": {
+    "nodes_kept": 8,
+    "of": 8,
+    "lever_red_px": 20,
+    "passes": true
+   }
+  },
+  "prussian": {
+   "at_500": {
+    "nodes_kept": 0,
+    "of": 9,
+    "passes": false
+   },
+   "at_360": {
+    "nodes_kept": 0,
+    "of": 9,
+    "passes": false
+   }
+  }
+ },
+ "feed_thumbnail": {
+  "source": "work/build/scripts/phase-2/promotion_c_identity.py feed, key feed_study, thumbnail",
+  "lockmark_master": "lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+  "sign_off_px": 96,
+  "jpeg": "quality 75, chroma 4:2:0, after a Lanczos reduction",
+  "newsprint": {
+   "48": {
+    "at_500": {
+     "nodes_kept": 8,
+     "of": 8,
+     "lever_red_px": 3,
+     "passes": false
+    },
+    "at_360": {
+     "nodes_kept": 8,
+     "of": 8,
+     "lever_red_px": 0,
+     "passes": false
+    }
+   },
+   "96": {
+    "at_500": {
+     "nodes_kept": 8,
+     "of": 8,
+     "lever_red_px": 41,
+     "passes": true
+    },
+    "at_360": {
+     "nodes_kept": 8,
+     "of": 8,
+     "lever_red_px": 17,
+     "passes": true
+    }
+   }
+  },
+  "white": {
+   "48": {
+    "at_500": {
+     "nodes_kept": 8,
+     "of": 8,
+     "lever_red_px": 3,
+     "passes": false
+    },
+    "at_360": {
+     "nodes_kept": 8,
+     "of": 8,
+     "lever_red_px": 0,
+     "passes": false
+    }
+   },
+   "96": {
+    "at_500": {
+     "nodes_kept": 8,
+     "of": 8,
+     "lever_red_px": 35,
+     "passes": true
+    },
+    "at_360": {
+     "nodes_kept": 8,
+     "of": 8,
+     "lever_red_px": 17,
+     "passes": true
+    }
+   }
+  },
+  "charcoal": {
+   "48": {
+    "at_500": {
+     "nodes_kept": 8,
+     "of": 8,
+     "lever_red_px": 3,
+     "passes": false
+    },
+    "at_360": {
+     "nodes_kept": 7,
+     "of": 8,
+     "lever_red_px": 0,
+     "passes": false
+    }
+   },
+   "96": {
+    "at_500": {
+     "nodes_kept": 8,
+     "of": 8,
+     "lever_red_px": 34,
+     "passes": true
+    },
+    "at_360": {
+     "nodes_kept": 8,
+     "of": 8,
+     "lever_red_px": 16,
+     "passes": true
+    }
+   }
+  },
+  "prussian": {
+   "48": {
+    "at_500": {
+     "nodes_kept": 0,
+     "of": 9,
+     "passes": false
+    },
+    "at_360": {
+     "nodes_kept": 0,
+     "of": 9,
+     "passes": false
+    }
+   },
+   "96": {
+    "at_500": {
+     "nodes_kept": 0,
+     "of": 9,
+     "passes": false
+    },
+    "at_360": {
+     "nodes_kept": 0,
+     "of": 9,
+     "passes": false
+    }
+   }
+  }
+ }
+}

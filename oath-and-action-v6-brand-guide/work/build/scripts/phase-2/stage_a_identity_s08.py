@@ -10,9 +10,12 @@ Q1 to Q4 pass, November 8, 2026 (DR-131, CD-N9): the masthead (L3's masthead mas
 master at 48 px; Rule 08.1's plate shows the four masters; Rule 08.2's places stand 16 px in from the frame.
 
 Promotion, November 10, 2026 (DR-181): the 24 and 48 px masters are the rebuilt files, each node and the lever one
-outline, through stage_a_identity_lib.LOCK; the drawings on the plates keep the same pixels."""
-from stage_a_identity_lib import (E, LOCK, fragment, mark, lockmark, sgrid, progress, illus, head_label, dnp, steps, ink, ink2,
-                                  hair, pal, ground, ty, tv)
+outline, through stage_a_identity_lib.LOCK; the drawings on the plates keep the same pixels.
+
+Promotion C, November 11, 2026 (DR-211): the sign-off place shows a social card's corner, so it draws the 48 px master
+at exactly twice its size, 96 px (stage_a_identity_lib.sign_off)."""
+from stage_a_identity_lib import (E, LOCK, SIGN_OFF, fragment, mark, lockmark, sign_off, sgrid, progress, illus, head_label, dnp,
+                                  steps, ink, ink2, hair, pal, ground, ty, tv)
 from stage_a_identity_s03 import rec as _rec, l3_small
 
 S = []
@@ -134,9 +137,10 @@ def _chart_foot():
 
 
 def _signoff():
-    """The bottom-right corner of a 1080 px social card at true size: its right and bottom edges, the lockmark at 48 px
-    from its 48 px master 72 px in from each, and two dimension lines that measure the margin."""
-    W, H, M, L = 360, 216, 72, 48
+    """The bottom-right corner of a 1080 px social card at true size: its right and bottom edges, the lockmark at 96 px,
+    the 48 px master at exactly twice its size (DR-211), 72 px in from each, and two dimension lines that measure the
+    margin."""
+    W, H, M, L = 360, 216, 72, SIGN_OFF["social"]
     st = pal("stone")
     cx, cy = W - M - L / 2, H - M - L / 2          # the lockmark's center
     dims = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" aria-hidden="true" class="oai-svg" '
@@ -148,7 +152,7 @@ def _signoff():
               f'<span class="oai-tag" style="position:absolute;right:{M + L / 2 + 8:.0f}px;bottom:28px">72 px</span>')
     return (f'<div class="oai-s-newsprint" style="position:relative;width:{W}px;height:{H}px;border-right:1px solid {ink("newsprint")};'
             f'border-bottom:1px solid {ink("newsprint")};overflow:hidden">{dims}{labels}'
-            f'<span style="position:absolute;right:{M}px;bottom:{M}px;line-height:0">{lockmark(L, label="Lockmark, 48 px, the sign-off")}</span></div>')
+            f'<span style="position:absolute;right:{M}px;bottom:{M}px;line-height:0">{sign_off("social", label="Lockmark, 96 px, the sign-off on a social card")}</span></div>')
 
 
 @spec
@@ -158,21 +162,22 @@ def s_08_2_correct():
             + _place("Page header", "24 px, beside the section label on a report page", _page_header(), "The section title is invented.")
             + _place("Footer", "24 px beside the tagline; 16 px beside the source line in a chart's footer",
                      f'<div class="oai-stack" style="gap:12px">{_footer()}{_chart_foot()}</div>')
-            + _place("Sign-off", "48 px, bottom right of a social card, cover or poster", _signoff())
+            + _place("Sign-off", "96 px at the bottom right of a social card; 48 px on a cover or poster", _signoff())
             + '</div>')
     alt = ("The lockmark's four places at true size, one under another. Masthead: a 768 pixel Newsprint bar with the wordmark "
            "and the lockmark at 48 pixels at left and four navigation words at right. Page header: a white report header with the lockmark "
            "at 24 pixels beside the section label 03 Who writes the budget and the page number 7; the section title is "
            "Illustrative. Footer: a Charcoal footer with the lockmark at 24 pixels beside the tagline, A country that answers "
            "to its people., and a chart's footer with its source line and the lockmark at 16 pixels at right. Sign-off: the "
-           "bottom-right corner of a 1080 pixel social card with the lockmark at 48 pixels inside its 72 pixel margin.")
+           "bottom-right corner of a 1080 pixel social card with the lockmark at 96 pixels inside its 72 pixel margin.")
     return rec("s-08-2-correct", "08.2", 802, alt, body, css=PLACE_CSS, fit_switch=True,
                notes="DR-110 and DR-131. Footer place: the lockmark, 12 px, then the tagline, at the footer's left edge, as the "
                      "letterhead proof draws it too (CA-S10). Masthead: L3's masthead master, the 24 px wordmark master with the "
                      "lockmark at 48 px from its 48 px master, in a 768 px bar (Rule 03.6's breakpoint). Page header and footer: the "
                      "24 px master on whole pixels. Chart footer: the 16 px master beside chapter 02's jobs chart source line, word "
-                     "for word. Sign-off: the 48 px master at 48 px, 72 px from the card's right and bottom edges (D2-295's card "
-                     "margin). The places and their labels stand 16 px in from the frame (CD-N9), so the plate is 802 px wide. Type "
+                     "for word. Sign-off: since November 11, 2026 the 48 px master at exactly twice its size, 96 px, as a social "
+                     "card signs off (DR-211), 72 px from the card's right and bottom edges (D2-295's card margin); from November 8 "
+                     "to 10 it stood at 48 px. The places and their labels stand 16 px in from the frame (CD-N9), so the plate is 802 px wide. Type "
                      "takes sizes common to both columns of the scale (13 to 17 px). Since November 10, 2026 the 48 and 24 px masters "
                      "are the rebuilt files, each node and the lever one outline, and L3's masthead master is "
                      "lockups/20261110_L3-Horizontal-Master.svg, which carries the rebuilt 48 px master; each draws the same pixels "

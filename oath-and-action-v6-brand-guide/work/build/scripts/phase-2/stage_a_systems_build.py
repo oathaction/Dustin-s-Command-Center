@@ -55,8 +55,9 @@ ARTBOARD_FLOOR = {'title': 56, 'section': 44, 'figure': 48, 'h3': 26, 'h4': 20, 
 ARTBOARD_CEIL = dict(ARTBOARD_FLOOR, title=110, section=80, figure=104, h3=32, h4=24, quote=32, intro=22)
 # DR-95: display tracking, in em
 TRACKING_DR95 = {'title': -0.03, 'section': -0.025, 'h3': -0.01, 'h4': -0.005}
-# Classes the shell styles on purpose inside a specimen: the one Illustrative label (DR-97)
-SHELL_CLASSES = ('illus',)
+# Classes the shell styles on purpose inside a specimen: the one Illustrative label (DR-97), and the switch that draws a
+# 24 px drawing's pixel fit on 1x screens and its master from 2x (DR-179, DR-209)
+SHELL_CLASSES = ('illus', 'oa-at-1x', 'oa-at-2x')
 ILLUS = '<span class="illus">Illustrative</span>'
 FAIL_BAND = ('<div class="fb" aria-hidden="true"><span>×</span> Failure case: do not publish</div>')
 

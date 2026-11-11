@@ -18,6 +18,10 @@ The letterhead's print proof is printed again as 20261110_Letterhead-Proof.pdf w
 Stage C, round 0, November 10, 2026: _social takes a surface, so stage_c_identity_round0.py can run Rule 08.2's feed
 test on the same card drawn on Charcoal and Prussian (CD-N12). The guide's proof stays on Newsprint, unchanged.
 
+Promotion C, November 11, 2026 (DR-211): the social card signs off with the 48 px master drawn at exactly twice its
+size, 96 px (stage_a_identity_lib.sign_off). The feed figures come from promotion_c_identity.py's test on that card.
+_social(sign=48) still draws the earlier card for the scripts that measured it.
+
 Earlier rulings that still bind: each width-free proof is one specimen at actual size; kickers follow Rule 01.21
 (D2-250); the social card breaks at the hinge and carries its specifications; the letterhead's town is invented
 (Wrenfield) and its letter opens on the request; no decision codes or production words reach the page (D2-253)."""
@@ -26,8 +30,8 @@ import json
 import subprocess
 
 import stage_a_identity_lib as LIB
-from stage_a_identity_lib import (E, ROOT, WM, L2, LOCK, AMP, S1, S1_BOX, mark, lockmark, illus, ink, ink2, hair, pal, tv, ty,
-                                  CHAP_DIR, HERE, curl_html, figures)
+from stage_a_identity_lib import (E, ROOT, WM, L2, LOCK, AMP, S1, S1_BOX, SIGN_OFF, mark, lockmark, sign_off, illus, ink, ink2,
+                                  hair, pal, tv, ty, CHAP_DIR, HERE, curl_html, figures)
 from stage_a_identity_s03 import rec as _rec, l3_small
 from stage_a_identity_s04 import headline
 
@@ -143,7 +147,7 @@ SOCIAL_SPECS = [
                "topic in Deep Stone (Rule 01.21)"),
     ("Headline", "The title style at 110 px, broken at the hinge; B from its display master in the card's working red"),
     ("Wordmark", "The display master, 44 px tall, bottom left"),
-    ("Lockmark", "48 px from its 48 px master, bottom right, inside the margin (Rule 08.2)"),
+    ("Lockmark", "96 px, the 48 px master drawn at exactly twice its size, bottom right, inside the margin (Rule 08.2)"),
     ("Feed test", None),
     ("Left out", "A deck, so the headline keeps the title size; a web address until ours is settled; the pillar row and "
                  "any topic or atlas symbol, since a phone's feed shows the card at about 30 percent and would draw a 48 px "
@@ -151,23 +155,27 @@ SOCIAL_SPECS = [
 ]
 
 
-def _social(surface="newsprint"):
+def _social(surface="newsprint", sign=SIGN_OFF["social"]):
     """The link-preview card. surface draws the same card on another approved ground for the feed test on dark cards
-    (stage C, CD-N12); the guide's proof draws it on Newsprint. On Prussian, B in the headline goes White (Rule 05.3)."""
+    (stage C, CD-N12); the guide's proof draws it on Newsprint. On Prussian, B in the headline goes White (Rule 05.3).
+    sign: the sign-off's size, 96 px since promotion C (DR-211), the 48 px master at exactly twice its size. The scripts
+    that measured the card before ask for 48, so a rerun keeps their records."""
     s = surface
+    lk = sign_off("social", surface=s, label="Lockmark") if sign == SIGN_OFF["social"] else lockmark(sign, surface=s, label="Lockmark")
     return (f'<div class="oai-s-{s}" style="position:relative;width:1200px;height:630px;padding:72px;border:1px solid {hair(s)}">'
             f'<p style="{ty("h3", 1200)};color:{ink(s)}">Explainer<span style="color:{ink2(s)}"> · Zoning</span></p>'
             f'{headline("The zoning code", "the rent.", "title", board=1200, surface=s, red=s != "prussian", extra_style="margin-top:24px")}'
             f'<div style="position:absolute;left:72px;bottom:72px">{mark(WM["display"], h=44, surface=s, label="Oath & Action")}</div>'
-            f'<div style="position:absolute;right:72px;bottom:72px;line-height:0">{lockmark(48, surface=s, label="Lockmark")}</div></div>')
+            f'<div style="position:absolute;right:72px;bottom:72px;line-height:0">{lk}</div></div>')
 
 
 def feed_line():
-    """Rule 08.2's feed test on this card, as stage_a_identity_q_measure.py measured it on the built page."""
+    """Rule 08.2's feed test on this card, as promotion_c_identity.py measured it on the built page with the 96 px
+    sign-off (DR-211)."""
     f = figures("feed") or {}
     a, b = f.get("at_500"), f.get("at_360")
-    if not (a and b and a.get("passes") and b.get("passes")):
-        return "[run stage_a_identity_q_measure.py feed after the build, then build again]"
+    if not (a and b and a.get("passes") and b.get("passes")) or f.get("sign_off_px") != SIGN_OFF["social"]:
+        return "[run promotion_c_identity.py feed after the build, then build again]"
     return (f"Passes Rule 08.2's test. Reduced to 500 px wide, the lockmark keeps {a['dark_nodes_kept']} of 8 nodes and "
             f"{a['lever_red_px']} red pixels; at 360 px, {b['dark_nodes_kept']} of 8 nodes and {b['lever_red_px']} red pixels")
 
@@ -185,7 +193,7 @@ def s_proofs_social():
     alt = ("A social card at actual size, 1200 by 630 pixels, on Newsprint: the kicker Explainer · Zoning, its label in "
            "Charcoal and its topic in gray, the hinge headline "
            "The zoning code & the rent. broken before a red ampersand B, the wordmark 44 pixels tall at bottom left and the "
-           "lockmark at 48 pixels at bottom right, inside the 72 pixel margin. No web address. Under it, the card's "
+           "lockmark at 96 pixels at bottom right, inside the 72 pixel margin. No web address. Under it, the card's "
            "specifications. The headline and kicker are invented.")
     return rec("s-proofs-social", "proofs", 1248, alt, body, css=css, illustrative=True, fit_switch=True,
                notes="1200 by 630, the link-preview size, type at the desktop ceiling (D2-254). The headline is chapter 02's hinge example. "
@@ -193,10 +201,12 @@ def s_proofs_social():
                      "step the type scale gives a 1200 px board below the section and title styles, so at 358 px wide in a "
                      "phone's feed it stands 9.5 px, legible on a 2x screen, where 24 px gave 7.2 px; its label takes Charcoal and its "
                      "topic Deep Stone, as Rule 01.21 sets a kicker's two parts. No pillar row or symbol (D2-962). "
-                     "Sign-off from the lockmark's 48 px master at 48 px (DR-131): since November 10, 2026 the rebuilt file, "
-                     "lockmark/20261109_Lockmark-48px-Master-Outline.svg, each node and the lever one outline (DR-181). The feed test "
-                     "(D2-468) ran again on this card in the built page with that master, and its figures are the ones printed here "
-                     "(work/handoffs/phase-2/20261110_Promotion-Identity-Figures.json, key feed). No web address until the site is "
+                     "Sign-off from the lockmark's 48 px master, the rebuilt file lockmark/20261109_Lockmark-48px-Master-Outline.svg, "
+                     "each node and the lever one outline (DR-181). Since November 11, 2026 it is drawn at exactly twice its size, "
+                     "96 px, 72 px in from the right and bottom edges, so each of its pixels is a 2 by 2 block on whole pixels "
+                     "(DR-211); from November 8 to 10 it stood at 48 px (DR-131). The feed test (D2-468) ran again on this card in "
+                     "the built page with the 96 px sign-off, and its figures are the ones printed here "
+                     "(work/handoffs/phase-2/20261111_Promotion-C-Identity-Figures.json, key feed). No web address until the site is "
                      "settled (DR-55).")
 
 

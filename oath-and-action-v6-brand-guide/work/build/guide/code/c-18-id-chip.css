@@ -1,0 +1,23 @@
+/* Typed ID chip: the kind and the ID together are its name, "Loop R1", never a bare "R1". A chip that opens its record
+   is a link, with hover and focus; one that only names it is text. Reads only tokens.css. */
+.oa-chip-set { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
+.oa-chip-k { margin: var(--oa-space-300) 0 var(--oa-space-100); font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
+.oa-chip-k:first-child { margin-top: 0 }
+.oa-chip-row { display: flex; flex-wrap: wrap; gap: var(--oa-space-100); margin: 0 }
+.oa-chip { display: inline-flex; align-items: center; gap: .3em; box-sizing: border-box; max-width: 100%;
+  padding: 0 var(--oa-space-100); border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+  color: var(--oa-color-text-primary); font: var(--oa-type-data-label); overflow-wrap: anywhere }
+/* An ID never breaks at its hyphen */
+.oa-chip-id { white-space: nowrap; font-variant-numeric: tabular-nums }
+.oa-chip--link { min-height: var(--oa-size-target-minimum); text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
+.oa-chip--link:hover { text-decoration-thickness: var(--oa-border-width-underline-hover); border-width: var(--oa-border-width-rule);
+  padding: 0 calc(var(--oa-space-100) - 1px); margin: -1px 0 }
+.oa-chip--link:focus-visible, .oa-chip-record:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
+.oa-chip-record { margin: var(--oa-space-300) 0 0; font: var(--oa-type-body-small) }
+.oa-chip-record .oa-chip { margin-right: var(--oa-space-050) }
+
+@media (forced-colors: active) {
+  .oa-chip { border-color: CanvasText }
+  .oa-chip--link { border-color: LinkText }
+}

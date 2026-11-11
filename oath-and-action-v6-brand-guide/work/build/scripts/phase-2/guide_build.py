@@ -16,8 +16,10 @@ Reads, from the repository root (found from this file's place, so the working fo
   work/build/tokens/tokens.css (inlined) and tokens.json (token names and values), when they exist;
   until then a provisional block generated from work/build/tokens/20261021_Token-Schema-Draft.json
   work/build/assets/identity/...                   the wordmark masters and ampersand B for the hinge divider
-  work/build/assets/civic-line-v6/black/, pillar-icons/, utility/svg-24/ and svg-16/   the sprite's three families
-                                                  (promotion brief); a page draws them by <use href="#oa-sym-...">
+  work/build/assets/civic-line-v6/black/, pillar-icons/, civic-line-v6/fit-24/, utility/svg-24/ and svg-16/
+                                                  the sprite's four families (the November 10 and 11 promotion briefs);
+                                                  a page draws them by <use href="#oa-sym-...">; no _archive/ is read
+  work/handoffs/phase-2/20261110_Stage-B-Ch10-Construction.md, section 10   the list of 41 that read at 24 px (DR-136)
 
 Writes work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html: one page that stands alone except for Google Fonts.
 Any chapter of 01 to 08 without a JSON file gets a placeholder that keeps its anchor and contents entry, so the page
@@ -1767,18 +1769,46 @@ def load_chapters(chap_dir):
 # A 16 px pillar icon keeps its fit on every screen (one <use> of oa-sym-<id>-16px). Under 48 px a pillar icon is one
 # color (R10, D2-497), so it sets no --oa-icon-accent. data-oa-res="fixed" on the <svg> marks a plate that shows one
 # drawing on every screen on purpose, such as a fit enlarged to show its pixels.
+#
+# Promotion C (November 11, 2026, 20261111_Promotion-Stage-C-Brief.md): the switch covers all 41 drawings on the list
+# of those that read at 24 px (DR-136, DR-209). The 37 fits that are not pillar icons form a fourth family, read from
+# civic-line-v6/fit-24/ as oa-sym-<id>-24px (D2-1265), and a 24 px drawing of any of the 41 is the pattern above:
+#   <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="CL-048"
+#        data-icon-family="topic"><use class="oa-at-1x" href="#oa-sym-cl-048-24px"/><use class="oa-at-2x"
+#        href="#oa-sym-cl-048"/></svg>
+# A 24 px drawing of one of the 41 without the pair is a warning, and only the 41 switch. CL-075 Housing joins the Civic
+# Line family at 48 px and up (DR-207); it is off the list. No family reads a folder that starts with "_", so the
+# utility files moved to utility/_archive/ (D2-1264) never reach the sprite.
 SPRITE_ROOT = ASSETS          # --sprite-root moves it, for fixture runs while the makers' folders are on their way
 SPRITE_FAMILIES = {
-    # the 124 drawings in use, black edition (D2-716)
+    # the 125 drawings in use, black edition (D2-716; CL-075 Housing from DR-207)
     "civic-line": {"name": "Civic Line", "dirs": ("civic-line-v6/black",), "deep": False, "pick": r"-Black\.svg$",
                    "key": "data-id", "key_re": r"(?:CL|R)-\d+", "sized": False, "ink": "#121212"},
     # the pillar fits in use under 48 px, black edition only (D2-497); the red-black files beside them stay as the record
     "pillar": {"name": "pillar fits", "dirs": ("pillar-icons",), "deep": True, "pick": r"(?<!-Red)-Black\.svg$",
-               "key": "data-id", "key_re": r"CL-\d+", "sized": True, "ink": "#121212"},
-    # the utility set at its two sizes, drawn in currentColor with no red (DR-134, DR-161)
+               "key": "data-id", "key_re": r"CL-\d+", "sized": True, "sizes": (16, 24), "ink": "#121212"},
+    # the 24 px fits of the 37 other drawings on the list of 41, one color, black edition only (DR-209, D2-1132, D2-1265)
+    "fit-24": {"name": "24 px fits", "dirs": ("civic-line-v6/fit-24",), "deep": False, "pick": r"(?<!-Red)-Black\.svg$",
+               "key": "data-id", "key_re": r"(?:CL|R)-\d+", "sized": True, "sizes": (24,), "ink": "#121212"},
+    # the utility set at its two sizes, drawn in currentColor with no red (DR-134, DR-161); DR-208's Pause and Filter in
+    # svg-16, the files they replaced in utility/_archive/, which no family reads (D2-1264)
     "utility": {"name": "utility icons", "dirs": ("utility/svg-24", "utility/svg-16"), "deep": False, "pick": r"\.svg$",
-                "key": "data-icon", "key_re": r"U-[a-z0-9]+(?:-[a-z0-9]+)*", "sized": True, "ink": None},
+                "key": "data-icon", "key_re": r"U-[a-z0-9]+(?:-[a-z0-9]+)*", "sized": True, "sizes": (16, 24), "ink": None},
 }
+# The list of 41 drawings that read at 24 px (DR-136, D2-587), read from the construction file chapter 10's generator
+# reads, so the build, chapter 10 and guide_check.js's B-3 test name one list. Four of the 41 are the pillar icons.
+CONSTRUCTION = ROOT / "work/handoffs/phase-2/20261110_Stage-B-Ch10-Construction.md"
+PILLAR_IDS = ("CL-019", "CL-020", "CL-021", "CL-022")
+
+
+def list_of_41():
+    """The 41 IDs from the construction file's section 10, "The list, by ID"; None when it cannot be read whole."""
+    try:
+        m = re.search(r"\*\*The list, by ID\*\*.*?\n\n(.*?)\n", CONSTRUCTION.read_text(), re.S)
+    except OSError:
+        return None
+    ids = re.findall(r"(?:CL|R)-\d+", m.group(1)) if m else []
+    return tuple(ids) if len(ids) == 41 == len(set(ids)) and set(PILLAR_IDS) <= set(ids) else None
 # The root attributes a symbol carries onto its drawing: the inherited paint and rendering properties. color stays
 # behind, so currentColor follows the page; width, height and the data and aria attributes describe the file.
 SPRITE_CARRY = ("fill", "fill-opacity", "fill-rule", "clip-rule", "stroke", "stroke-width", "stroke-linecap", "stroke-linejoin",
@@ -1787,7 +1817,8 @@ SPRITE_CARRY = ("fill", "fill-opacity", "fill-rule", "clip-rule", "stroke", "str
 # The token that sets a utility icon's line at each size; the 16 px line joins the token file with the first 16 px
 # utility icon on a page (D2-577).
 UTILITY_LINE = {24: "oa.component.icon.utility.line.medium", 16: "oa.component.icon.utility.line.small"}
-PILLAR_FIT = re.compile(r"^oa-sym-((?:cl|r)-\d+)-(16|24)px$")
+FIT = re.compile(r"^oa-sym-((?:cl|r)-\d+)-(16|24)px$")     # a pixel fit: a pillar fit, or one of the 37 at 24 px
+MASTER = re.compile(r"^oa-sym-((?:cl|r)-\d+)$")              # a Civic Line master
 SPRITE_FROM_CHAPTER = "09"     # from this chapter on, a specimen that inlines a drawing a sprite holds is a warning
 SHEET_COLORS = 16              # a contact sheet image is line art: a 16-color palette PNG at twice its shown width
 MB = 1_000_000
@@ -1815,6 +1846,10 @@ class Sprites:
         self.prints = {}       # symbol id -> set of path data, to find a drawing a specimen inlines
         self.missing = {}      # family -> its folders that do not exist
         self.placed = []       # the symbol ids the last page referenced and the sprite holds
+        self.list41 = list_of_41()
+        if self.list41 is None:
+            R.warn("sprites", f"{self.rel(CONSTRUCTION)} gives no list of 41 IDs with the four pillar icons under \"The list, by ID\", "
+                              "so the 1x and 2x check knows only the drawings whose 24 px fits it reads (DR-136)")
         for fam, cfg in SPRITE_FAMILIES.items():
             for sub in cfg["dirs"]:
                 folder = SPRITE_ROOT / sub
@@ -1822,13 +1857,41 @@ class Sprites:
                     self.missing.setdefault(fam, []).append(sub)
                     R.note(f"sprite family {fam}: {self.rel(folder)} does not exist yet")
                     continue
-                files = sorted(p for p in (folder.rglob("*.svg") if cfg["deep"] else folder.glob("*.svg")) if re.search(cfg["pick"], p.name))
+                # a folder that starts with "_" (_archive/, _templates/) holds no drawing in use (D2-1264)
+                files = sorted(p for p in (folder.rglob("*.svg") if cfg["deep"] else folder.glob("*.svg"))
+                               if re.search(cfg["pick"], p.name) and not any(d.startswith("_") for d in p.relative_to(folder).parts[:-1]))
                 n = 0
                 for p in files:
                     if self.read(fam, cfg, p):
                         n += 1
                 if not n:
                     R.warn(f"sprite {fam}", f"{self.rel(folder)} holds no {cfg['name']} drawing the sprite can read")
+        self.check_fits()
+        # the drawings that switch by screen: the list of 41, or, when it cannot be read, those whose 24 px fit is read
+        self.reads = set(self.list41 or ()) or {FIT.match(s).group(1).upper() for s, (f, _, _) in self.symbols.items()
+                                                 if f in ("pillar", "fit-24") and s.endswith("-24px")}
+
+    def check_fits(self):
+        """The fits in use against the list of 41 (DR-136, DR-179, DR-209): the pillar folder holds the four pillar icons'
+        fits at 16 and 24 px, fit-24/ holds a 24 px fit for each of the 37 others and nothing else, and each 24 px fit has
+        its master in the Civic Line family for 2x screens. (read() leaves out a fit the list does not allow.)"""
+        for sid, (fam, p, label) in self.symbols.items():
+            f = FIT.match(sid)
+            if fam not in ("pillar", "fit-24") or not f:
+                continue
+            cid, size = f.group(1).upper(), int(f.group(2))
+            if size == 24 and f"oa-sym-{f.group(1)}" not in self.symbols and "civic-line" not in self.missing:
+                R.warn(f"sprite {fam}", f"{p.name}: {cid} has no master in {SPRITE_FAMILIES['civic-line']['dirs'][0]}/ to draw on 2x screens (DR-179, DR-209)")
+        if self.list41 is None:
+            return
+        want = {"pillar": [(c, s) for c in PILLAR_IDS for s in (16, 24)], "fit-24": [(c, 24) for c in self.list41 if c not in PILLAR_IDS]}
+        for fam, items in want.items():
+            if fam in self.missing:
+                continue
+            gone = [c + (f" at {s} px" if fam == "pillar" else "") for c, s in items if f"oa-sym-{c.lower()}-{s}px" not in self.symbols]
+            if gone:
+                R.warn(f"sprite {fam}", f"{', '.join(SPRITE_FAMILIES[fam]['dirs'])} lacks {len(gone)} of the {len(items)} fits in use: "
+                                        f"{', '.join(gone[:8])}{', ...' if len(gone) > 8 else ''} (DR-179, DR-209)")
 
     @staticmethod
     def rel(p):
@@ -1857,10 +1920,18 @@ class Sprites:
                 R.warn(where, f"{p.name} names no size (data-size on its root, or NNpx in its name)")
                 return False
             size = int(size.group(1))
+            if cfg.get("sizes") and size not in cfg["sizes"]:
+                R.warn(where, f"{p.name} is sized {size} px, and the {cfg['name']} family takes "
+                              f"{' and '.join(str(s) for s in cfg['sizes'])} px only; the sprite leaves it out")
+                return False
             units = float(vb.group(1).split()[2])
             if abs(units - size) > 1e-6:
                 R.warn(where, f"{p.name}: drawn on a {units:g}-unit grid but sized {size} px, so its pixels would miss the grid")
             sid, label = f"{sid}-{size}px", f"{key} at {size} px"
+        why = self.not_in_use(fam, key)
+        if why:
+            R.warn(where, f"{p.name}: {why}; the sprite leaves it out")
+            return False
         if sid in self.symbols:
             R.warn(where, f"{p.name} is a second drawing for {sid}; the sprite keeps {self.symbols[sid][1].name}")
             return False
@@ -1870,11 +1941,26 @@ class Sprites:
             self.prints[sid] = ds
         return True
 
+    def not_in_use(self, fam, key):
+        """Why a fit the folder holds is not one the list of 41 puts in use (DR-136, DR-179, DR-209), or None."""
+        if fam not in ("pillar", "fit-24"):
+            return None
+        if fam == "fit-24" and key in PILLAR_IDS:
+            return f"{key} is a pillar icon, whose fits are read from pillar-icons/ (DR-179)"
+        if fam == "pillar" and key not in PILLAR_IDS:
+            return f"{key} is no pillar icon; a 24 px fit of the 37 others belongs in civic-line-v6/fit-24/ (D2-1265)"
+        if self.list41 is not None and key not in self.list41:
+            return f"{key} is off the list of 41 that read at 24 px (DR-136), so no fit of it is in use"
+        return None
+
     def family_of(self, sid):
         """The family a symbol id belongs to by its form, for a reference the sprite cannot meet."""
         if sid.startswith("oa-sym-u-"):
             return "utility"
-        return "pillar" if PILLAR_FIT.match(sid) else "civic-line"
+        f = FIT.match(sid)
+        if f:
+            return "pillar" if f.group(1).upper() in PILLAR_IDS else "fit-24"
+        return "civic-line"
 
     def inlined(self, text):
         """Symbols whose drawing a fragment carries inline: half or more of its path data, character for character."""
@@ -1951,20 +2037,34 @@ class Sprites:
         return "".join(out) + inner[i:]
 
     def check_res(self, page):
-        """DR-179 and D2-634 in the page's markup: a 24 px pillar fit draws on 1x screens with its master on 2x screens
-        beside it in one <svg>, a 16 px fit draws on every screen, and a pillar icon under 48 px sets no accent (R10,
-        D2-497). A plate marked data-oa-res="fixed" shows one drawing on every screen on purpose."""
+        """DR-179, DR-209 and D2-634 in the page's markup. A 24 px drawing of one of the 41 on the list (DR-136) draws its
+        fit on 1x screens with its master on 2x screens beside it in one <svg>; a 16 px pillar fit draws on every screen;
+        only the 41 switch, each fit to its own master; a fit draws at its own size; and under 48 px a symbol sets no
+        accent (R10, D2-497). A plate marked data-oa-res="fixed" shows one drawing on every screen on purpose. The size
+        is the <svg>'s width attribute; guide_check.js's fitSwitch measures the drawn box, which CSS may set."""
         specs = [(m.start(), m.group(1)) for m in re.finditer(r'\sdata-specimen="([^"]+)"', page)]
 
         def where(pos):
             k = max((s for s in specs if s[0] < pos), default=None)
             return k[1] if k else "masthead and shell"
 
+        def ref(tag):
+            r = re.search(r'href="#(oa-sym-[a-z0-9-]+)"', tag)
+            return r.group(1) if r else ""
+
+        def on_list(sid):
+            m = MASTER.match(sid)
+            return bool(m) and m.group(1).upper() in self.reads
+
+        def fit_of_41(sid):
+            f = FIT.match(sid)
+            return bool(f) and f.group(2) == "24" and f.group(1).upper() in self.reads
+
         uses = list(re.finditer(r"<use\b[^>]*>", page))
         seen = set()
         for u in uses:
-            ref = re.search(r'href="#(oa-sym-[a-z0-9-]+)"', u.group(0))
-            if not ref or not (PILLAR_FIT.match(ref.group(1)) or "oa-at-" in u.group(0)):
+            sid = ref(u.group(0))
+            if not sid or not (FIT.match(sid) or on_list(sid) or "oa-at-" in u.group(0)):
                 continue
             start = page.rfind("<svg", 0, u.start())
             end = page.find("</svg>", u.end())
@@ -1972,33 +2072,56 @@ class Sprites:
                 continue
             seen.add(start)
             open_tag = re.match(r"<svg\b[^>]*>", page[start:]).group(0)
+            w = re.search(r'\swidth="(\d+(?:\.\d+)?)(?:px)?"', open_tag)
+            width = float(w.group(1)) if w else None
             group = []
             for v in uses:
                 if start < v.start() < end:
-                    r = re.search(r'href="#(oa-sym-[a-z0-9-]+)"', v.group(0))
                     cls = (re.search(r'\sclass="([^"]*)"', v.group(0)) or [None, ""])[1].split()
-                    group.append((r.group(1) if r else "", "oa-at-1x" in cls, "oa-at-2x" in cls))
-            fits = [(g, PILLAR_FIT.match(g[0])) for g in group if PILLAR_FIT.match(g[0])]
+                    group.append((ref(v.group(0)), "oa-at-1x" in cls, "oa-at-2x" in cls))
+            fits = [(g, FIT.match(g[0])) for g in group if FIT.match(g[0])]
+            masters = [g for g in group if on_list(g[0])]
             at = where(start)
-            if fits and "--oa-icon-accent" in open_tag:
-                R.warn(at, f"a pillar icon under 48 px ({fits[0][0][0]}) sets --oa-icon-accent; icons are one color under 48 px (R10, D2-497)")
+            small = [g[0] for g, _ in fits] + ([g[0] for g in masters] if width is not None and width < 48 else [])
+            if small and "--oa-icon-accent" in open_tag:
+                cid = (FIT.match(small[0]) or MASTER.match(small[0])).group(1).upper()
+                kind = "pillar icon" if cid in PILLAR_IDS else "topic or atlas symbol"
+                R.warn(at, f"a {kind} under 48 px ({small[0]}) sets --oa-icon-accent; icons are one color under 48 px (R10, D2-497, DR-136)")
             if 'data-oa-res="fixed"' in open_tag:
                 continue
             ones = [g for g in group if g[1]]
             twos = [g for g in group if g[2]]
             for (sid, one, two), m in fits:
-                master = f"oa-sym-{m.group(1)}"
-                if m.group(2) == "24":
-                    if not one or not any(t[0] == master for t in twos):
-                        R.warn(at, f'{sid} draws the 24 px fit on 2x screens too; DR-179 gives them the master: <use class="oa-at-1x" '
+                master, size = f"oa-sym-{m.group(1)}", int(m.group(2))
+                if width is not None and abs(width - size) > 1e-6:
+                    R.warn(at, f'{sid} is a {size} px fit drawn at {width:g} px; a fit serves its own size only, and data-oa-res="fixed" '
+                               f"marks a plate that enlarges one on purpose")
+                    continue
+                if size == 24:
+                    others = [t[0] for t in twos if t[0] != master]
+                    if one and others and not any(t[0] == master for t in twos):
+                        R.warn(at, f"{sid} switches to {others[0]} on 2x screens; each fit switches to its own master, {master} (DR-179, DR-209)")
+                    elif not one or not any(t[0] == master for t in twos):
+                        R.warn(at, f'{sid} draws the 24 px fit on 2x screens too; DR-179 and DR-209 give them the master: <use class="oa-at-1x" '
                                    f'href="#{sid}"/><use class="oa-at-2x" href="#{master}"/> in one <svg>, or data-oa-res="fixed" on a plate that shows the fit itself')
                 elif twos:
                     R.warn(at, f"{sid} has a master on 2x screens beside it; a 16 px pillar icon keeps its fit on every screen (D2-634)")
+            if width == 24:
+                for sid, one, two in masters:
+                    if not two:
+                        cid = MASTER.match(sid).group(1).upper()
+                        R.warn(at, f'{cid} at 24 px draws its master on 1x screens; {"DR-179" if cid in PILLAR_IDS else "DR-209"} gives 1x screens the fit: '
+                                   f'<use class="oa-at-1x" href="#{sid}-24px"/><use class="oa-at-2x" href="#{sid}"/> in one <svg>, or '
+                                   f'data-oa-res="fixed" on a plate that shows the master itself')
             if twos and not ones:
                 R.warn(at, f"{twos[0][0]} draws only on 2x screens, so 1x screens show nothing; pair it with an oa-at-1x <use>")
             for sid, one, two in ones:
-                if not PILLAR_FIT.match(sid):
-                    R.warn(at, f'{sid} is marked oa-at-1x but is no pixel fit; only a 24 px pillar fit switches by screen (DR-179)')
+                if not fit_of_41(sid):
+                    R.warn(at, f"{sid} is marked oa-at-1x but is no pixel fit of the 41; only the 24 px fit of a drawing on the list "
+                               f"switches by screen (DR-179, DR-209)")
+            for sid, one, two in twos:
+                if not on_list(sid):
+                    R.warn(at, f"{sid} is marked oa-at-2x but is no master of the 41; only a drawing on the list switches by screen (DR-136, DR-209)")
 
     def parity(self, tokens):
         """Each utility icon the page draws carries the line, caps, joins and grid its size's token sets, and is that
@@ -2441,8 +2564,8 @@ def build(args):
 def self_test():
     import shutil
     import tempfile
-    global R, LEGACY_FILE, SPRITE_ROOT
-    kept_legacy, kept_root = LEGACY_FILE, SPRITE_ROOT
+    global R, LEGACY_FILE, SPRITE_ROOT, CONSTRUCTION
+    kept_legacy, kept_root, kept_list = LEGACY_FILE, SPRITE_ROOT, CONSTRUCTION
 
     def rule(rid, extra=None):
         r = {"id": rid, "title": f"Rule {rid} in a fixture.", "rule": "A fixture rule.", "why": {"text": "A fixture.", "basis": "Design judgment"}}
@@ -2478,13 +2601,29 @@ def self_test():
     # Sprite families as fixtures (promotion, November 10, 2026), named and rooted as the promotion brief sets the finals,
     # made from the October set and the approved option files, which stay as the record (D2-718). Every scenario reads
     # the full set unless it names another; the faulty set lacks the pillar folder and holds the faults the build names.
-    def families(root, faulty=False):
+    # Promotion C (November 11, 2026): the full set adds the masters of all 41 on the list, CL-075 Housing from the
+    # approved option A, the fourth family (fit-24/, the 37 fits from the approved option files under their in-use
+    # names), DR-208's Pause and Filter in svg-16 with the files they replace in utility/_archive/, and a superseded
+    # pillar fit in pillar-icons/_archive/; no file in an _archive/ may reach the sprite. "fits" holds the new family's
+    # faults: a fit missing, one off the list, a pillar fit in fit-24/, a 16 px file, a second file, a red-black file
+    # and a fit whose master is missing.
+    list41 = list_of_41() or ()
+    fit_src = ASSETS / "civic-line-24-fit/svg"
+
+    def families(root, kind="full"):
+        faulty = kind == "faulty"
         cl = root / "civic-line-v6/black"
         cl.mkdir(parents=True)
         october = ASSETS / "civic-line/black"
-        for cid in (("CL-019", "CL-024") if faulty else ("CL-019", "CL-020", "CL-021", "CL-022", "CL-024", "CL-025", "CL-029")):
+        ids = ("CL-019", "CL-024") if faulty else tuple(sorted(set(list41) | {"CL-025", "CL-029"}))
+        for cid in ids:
+            if kind == "fits" and cid == "R-45":
+                continue   # a fit whose master is missing
             src = next(october.glob(f"*-{cid}-*-Black.svg"))
             shutil.copyfile(src, cl / src.name)
+        if not faulty:   # CL-075 Housing, as the icon designer names and keys it (DR-207, D2-1262)
+            s = (ASSETS / "civic-line-new-topics/svg/20261110_Housing-Option-A-Black.svg").read_text()
+            (cl / "20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Black.svg").write_text(s.replace(' data-id="Housing"', ' data-id="CL-075"', 1))
         utility = {"24": [("Menu", "A"), ("Close", "A")] + ([] if faulty else [("Success", "A")]), "16": [] if faulty else [("Close", "A")]}
         for size, names in utility.items():
             d = root / f"utility/svg-{size}"
@@ -2498,16 +2637,44 @@ def self_test():
             (cl / "20261110_Oath-And-Action-Civic-Line-No-Id-Black.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path d="M0 0h1"/></svg>')
             shutil.copyfile(next(cl.glob("*-CL-019-*")), cl / "20261110_Oath-And-Action-Civic-Line-CL-019-Explain-Copy-Black.svg")
             return
+        # DR-208: the redraws in use under their new names, the files they replace in utility/_archive/ (D2-1264)
+        arch = root / "utility/_archive/svg-16"
+        arch.mkdir(parents=True)
+        for nm, redraw in (("Pause", "Redraw"), ("Filter", "Redraw-A")):
+            (root / f"utility/svg-16/20261111_Utility-{nm}-16px.svg").write_text((ASSETS / f"utility-16-redraw/svg/20261110_Utility-{nm}-16px-{redraw}.svg").read_text())
+            s = re.sub(r'\sdata-option="[^"]*"', "", (ASSETS / f"utility-icons/svg-16/20261109_Utility-{nm}-Option-A-16px.svg").read_text(), count=1)
+            (arch / f"20261110_Utility-{nm}-16px.svg").write_text(s)
         pf = root / "pillar-icons"
         (pf / "svg").mkdir(parents=True)
+        (pf / "_archive/svg").mkdir(parents=True)
         for src in sorted((ASSETS / "pillar-pixel-fit/svg").glob("*.svg")):
             m = re.match(r"20261109_(CL-\d+)-(\w+)-(16|24)px-Fit-([AB])-(Black|Red-Black)\.svg$", src.name)
-            if not m or (m.group(3) == "24" and m.group(4) != "B"):
+            if not m:
                 continue
-            cid, word, size, _, ed = m.groups()
+            cid, word, size, opt, ed = m.groups()
             s = src.read_text().replace(f' data-id="{cid}"', f' data-id="{cid}" data-size="{size}"', 1)
+            if size == "24" and opt != "B":   # fit A, not approved, kept in an _archive/ the sprite never reads
+                if ed == "Black":
+                    (pf / f"_archive/svg/20261110_Pillar-Icon-{cid}-{word}-{size}px-{ed}.svg").write_text(s)
+                continue
             # the black edition one folder down, the red-black beside it, so the sprite must look down and pick black
             (pf / ("svg" if ed == "Black" else "") / f"20261110_Pillar-Icon-{cid}-{word}-{size}px-{ed}.svg").write_text(s)
+        ft = root / "civic-line-v6/fit-24"
+        ft.mkdir(parents=True)
+        for src in sorted(fit_src.glob("20261110_Civic-Line-24px-Fit-*-Black.svg")):
+            m = re.match(r"20261110_Civic-Line-24px-Fit-((?:CL|R)-\d+)-(.+)-Black\.svg$", src.name)
+            if kind == "fits" and m.group(1) == "CL-072":
+                continue   # a fit missing from the folder
+            shutil.copyfile(src, ft / f"20261111_Civic-Line-{m.group(1)}-{m.group(2)}-24px-Fit-Black.svg")
+        if kind != "fits":
+            return
+        one = (ft / "20261111_Civic-Line-CL-001-Voting-24px-Fit-Black.svg").read_text()
+        (ft / "20261111_Civic-Line-CL-075-Housing-24px-Fit-Black.svg").write_text(one.replace('data-id="CL-001"', 'data-id="CL-075"', 1))
+        (ft / "20261111_Civic-Line-CL-019-Explain-24px-Fit-Black.svg").write_text((pf / "svg/20261110_Pillar-Icon-CL-019-Explain-24px-Black.svg").read_text())
+        (ft / "20261111_Civic-Line-CL-004-Petition-16px-Fit-Black.svg").write_text(
+            (ft / "20261111_Civic-Line-CL-004-Petition-24px-Fit-Black.svg").read_text().replace('data-size="24"', 'data-size="16"', 1).replace('viewBox="0 0 24 24"', 'viewBox="0 0 16 16"', 1))
+        (ft / "20261111_Civic-Line-CL-001-Voting-24px-Fit-Copy-Black.svg").write_text(one)
+        (ft / "20261111_Civic-Line-CL-006-Civic-Ties-24px-Fit-Red-Black.svg").write_text(one.replace('data-id="CL-001"', 'data-id="CL-006"', 1))
 
     # stage B page weight fixtures (November 9, 2026)
     cl24 = next((ASSETS / "civic-line/black").glob("*CL-024-*-Black.svg")).read_text()
@@ -2738,11 +2905,105 @@ def self_test():
           "tests": [("the HTML panel keeps the builder's own ids", lambda pg: 'aria-controls=&quot;panel&quot;' in pg and 'id=&quot;panel&quot;' in pg),
                     ("the status line carries the success and the error marks, hidden", lambda pg: 'id="code-c-01-good-status"><svg class="st-mark st-ok"' in pg)]}),
     ]
+    # promotion C (November 11, 2026): the fourth family, the switch for all 41, CL-075 at 48 px and the archive folders
+    sw = lambda i, fam, extra="": (f'<svg viewBox="0 0 24 24" width="24" height="24" {hide} data-icon="{i.upper()}" data-icon-family="{fam}"{extra}>'
+                                   f'<use class="oa-at-1x" href="#oa-sym-{i}-24px"/><use class="oa-at-2x" href="#oa-sym-{i}"/></svg>')
+    m24 = lambda i, fam, extra="": (f'<svg viewBox="0 0 128 128" width="24" height="24" {hide} data-icon="{i.upper()}" data-icon-family="{fam}"{extra}>'
+                                    f'<use href="#oa-sym-{i}"/></svg>')
+    first_d = lambda f: re.search(r'\sd="([^"]+)"', f.read_text()).group(1)
+    fit_a20, fit_b20 = (first_d(ASSETS / f"pillar-pixel-fit/svg/20261109_CL-020-Track-24px-Fit-{o}-Black.svg") for o in "AB")
+    c_four = {"s-10-c-four.html": (f"<p>{sw('cl-048', 'topic')} Public records</p><p>{sw('r-06', 'atlas')} On-cycle elections</p>"
+                                   f"<p>{pair('cl-020')} Track</p><p>{use('cl-075', accent)} Housing</p>"),
+              "s-11-c-redraw.html": f"<p>{util('pause', 16)}Pause</p><p>{util('filter', 16)}Filter</p>"}
+    c4, c4m = plates("10", "symbols", "Topic and atlas symbols", ["s-10-c-four"])
+    c11, c11m = plates("11", "icons", "Status and utility icons", ["s-11-c-redraw"])
+    c_faults = {"s-10-c-faults.html": f"<p>{sw('cl-072', 'topic')} Reform</p><p>{sw('r-45', 'atlas')} Paper ballots</p><p>{sw('cl-001', 'topic')} Voting</p>"
+                                      f'<p><svg viewBox="0 0 24 24" width="24" height="24" {hide} data-oa-res="fixed"><use href="#oa-sym-cl-075-24px"/></svg> Housing</p>'}
+    cf, cfm = plates("10", "symbols", "Topic and atlas symbols", ["s-10-c-faults"])
+    one24 = lambda body, extra="": f'<svg viewBox="0 0 24 24" width="24" height="24" {hide}{extra}>{body}</svg>'
+    c_res = {"s-10-c-good.html": f"<p>{sw('cl-048', 'topic')} Public records</p><p>{sw('r-06', 'atlas')} On-cycle elections</p><p>{sw('cl-001', 'topic')} Voting</p><p>{pair('cl-021')} Connect</p>",
+             "s-10-c-master.html": f"<p>{m24('cl-001', 'topic')} Voting</p>",
+             "s-10-c-pillar.html": f"<p>{m24('cl-019', 'pillar')} Explain</p>",
+             "s-10-c-alone.html": f"<p>{one24('<use href=\"#oa-sym-cl-004-24px\"/>')} Petition</p>",
+             "s-10-c-mismatch.html": f"<p>{one24('<use class=\"oa-at-1x\" href=\"#oa-sym-cl-006-24px\"/><use class=\"oa-at-2x\" href=\"#oa-sym-cl-010\"/>')} Civic ties</p>",
+             "s-10-c-offlist.html": (f'<p><svg viewBox="0 0 128 128" width="48" height="48" {hide}><use class="oa-at-1x" href="#oa-sym-cl-025"/>'
+                                     f'<use class="oa-at-2x" href="#oa-sym-cl-029"/></svg> Congress</p>'),
+             "s-10-c-housing.html": f"<p>{sw('cl-075', 'topic')} Housing</p>",
+             "s-10-c-utility.html": f"<p>{one24('<use class=\"oa-at-1x\" href=\"#oa-sym-u-close-24px\"/>')}Close</p>",
+             "s-10-c-accent.html": f"<p>{sw('cl-048', 'topic', accent)} Public records</p>",
+             "s-10-c-accent-fixed.html": f"<p>{m24('r-06', 'atlas', ' data-oa-res=\"fixed\"' + accent)} On-cycle elections</p>",
+             "s-10-c-big.html": f'<p><svg viewBox="0 0 24 24" width="48" height="48" {hide}><use href="#oa-sym-cl-048-24px"/></svg> Public records</p>',
+             "s-10-c-twoonly.html": f"<p>{one24('<use class=\"oa-at-2x\" href=\"#oa-sym-cl-048\"/>')} Public records</p>",
+             "s-10-c-fixed.html": (f'<p><svg viewBox="0 0 24 24" width="96" height="96" {hide} data-oa-res="fixed"><use href="#oa-sym-cl-048-24px"/></svg> The fit, enlarged</p>'
+                                   f'<p>{m24("cl-048", "topic", " data-oa-res=\"fixed\"")} The master at 24 px on every screen</p>'),
+             "s-10-c-big48.html": f"<p>{use('cl-048')} Public records</p><p>{use('cl-075')} Housing</p>"}
+    cr, crm = plates("10", "symbols", "Topic and atlas symbols", [k[:-5] for k in c_res])
+    c_nolist = {"s-10-c-nolist.html": f"<p>{sw('cl-048', 'topic')} Public records</p><p>{m24('cl-001', 'topic')} Voting</p>"}
+    cn, cnm = plates("10", "symbols", "Topic and atlas symbols", ["s-10-c-nolist"])
+    scenarios += [
+        ("promotion C: four families; the 37 fits as oa-sym-<id>-24px; CL-075 at 48 px; DR-208's 16 px files, never _archive/",
+         {"10-symbols.json": c4, "11-icons.json": c11}, {"specimens": c_four, "manifest": {**c4m, **c11m}},
+         {"absent": ["reference(s) to no symbol", "draws the 24 px fit", "draws its master on 1x", "[sprite ", "switches to", "is marked oa-at-",
+                     "sets --oa-icon-accent", "is a second drawing", "fit drawn at", "lacks", "gives no list"],
+          "html": ['data-sprite="fit-24"', '<symbol id="oa-sym-cl-048-24px" viewBox="0 0 24 24"><g shape-rendering="crispEdges">',
+                   '<symbol id="oa-sym-r-06-24px" viewBox="0 0 24 24"><g shape-rendering="crispEdges">', '<symbol id="oa-sym-cl-075" viewBox="0 0 128 128">',
+                   '<use class="oa-at-1x" href="#oa-sym-r-06-24px"/><use class="oa-at-2x" href="#oa-sym-r-06"/></svg>'],
+          "tests": [("one sprite per family, four in all, right after <body> and before the skip links",
+                     lambda pg: sorted(f for f, _ in sprites_of(pg)) == ["civic-line", "fit-24", "pillar", "utility"]
+                     and re.search(r'<body\b[^>]*>\s*(<svg class="oa-sprite".*?</svg>){4}\s*<a class="skip"', pg, re.S) is not None),
+                    ("the sprite holds each symbol the page references, once, and no other",
+                     lambda pg: sorted(s for s, _ in symbols_of(pg)) == sorted(set(re.findall(r'href="#(oa-sym-[a-z0-9-]+)"', pg)))),
+                    ("a fit draws in currentColor, one color, with no ink, accent, id or comment of its file",
+                     lambda pg: all('fill="currentColor"' in b and "#121212" not in b and "oa-icon-accent" not in b and " id=" not in b and "<!--" not in b
+                                    for s, b in symbols_of(pg) if s in ("oa-sym-cl-048-24px", "oa-sym-r-06-24px"))),
+                    ("CL-075's accent draws through --oa-icon-accent", lambda pg: "var(--oa-icon-accent,currentColor)" in dict(symbols_of(pg)).get("oa-sym-cl-075", "")),
+                    ("the 16 px Pause is DR-208's redraw, 5 px bars", lambda pg: "M10.5 2.75 L12.5 2.75" in dict(symbols_of(pg)).get("oa-sym-u-pause-16px", "")),
+                    ("the 16 px Filter is DR-208's option A", lambda pg: "L10.414 6.295" in dict(symbols_of(pg)).get("oa-sym-u-filter-16px", "")),
+                    ("no drawing in an _archive/ folder reaches the sprite: Pause, Filter and the superseded pillar fit",
+                     lambda pg: "L11.5 2.75" not in pg and "L9.414 7.545" not in pg and fit_a20 != fit_b20 and fit_b20 in pg and fit_a20 not in pg)]}),
+        ("promotion C: the 24 px fits folder's faults (a fit missing, off the list, a pillar fit, 16 px, a second file, no master)",
+         {"10-symbols.json": cf}, {"specimens": c_faults, "manifest": cfm, "sprites": "fits"},
+         {"warn": ["20261111_Civic-Line-CL-075-Housing-24px-Fit-Black.svg: CL-075 is off the list of 41 that read at 24 px (DR-136), so no fit of it is in use; the sprite leaves it out",
+                   "20261111_Civic-Line-CL-019-Explain-24px-Fit-Black.svg: CL-019 is a pillar icon, whose fits are read from pillar-icons/",
+                   "20261111_Civic-Line-CL-004-Petition-16px-Fit-Black.svg is sized 16 px, and the 24 px fits family takes 24 px only",
+                   "20261111_Civic-Line-CL-001-Voting-24px-Fit-Copy-Black.svg is a second drawing for oa-sym-cl-001-24px",
+                   "civic-line-v6/fit-24 lacks 1 of the 37 fits in use: CL-072 (DR-179, DR-209)",
+                   "20261111_Civic-Line-R-45-Paper-Ballots-And-Audits-24px-Fit-Black.svg: R-45 has no master in civic-line-v6/black/ to draw on 2x screens",
+                   "reference(s) to no symbol: oa-sym-cl-072-24px, oa-sym-cl-075-24px, oa-sym-r-45"],
+          "absent": ["Red-Black", "_archive", "pillar-icons lacks", "[s-10-c-faults] oa-sym-cl-001-24px"],
+          "tests": [("the page still builds, with the fits that exist and none the folder may not hold",
+                     lambda pg: {"oa-sym-cl-001-24px", "oa-sym-r-45-24px", "oa-sym-cl-001"} <= {s for s, _ in symbols_of(pg)}
+                     and "oa-sym-cl-075-24px" not in {s for s, _ in symbols_of(pg)})]}),
+        ("promotion C: the 1x and 2x pattern for all 41 (DR-179, DR-209): each 24 px drawing pairs its fit and master, and only the 41 switch",
+         {"10-symbols.json": cr}, {"specimens": c_res, "manifest": crm},
+         {"warn": ["[s-10-c-master] CL-001 at 24 px draws its master on 1x screens; DR-209 gives 1x screens the fit",
+                   "[s-10-c-pillar] CL-019 at 24 px draws its master on 1x screens; DR-179 gives 1x screens the fit",
+                   "[s-10-c-alone] oa-sym-cl-004-24px draws the 24 px fit on 2x screens too",
+                   "[s-10-c-mismatch] oa-sym-cl-006-24px switches to oa-sym-cl-010 on 2x screens; each fit switches to its own master, oa-sym-cl-006",
+                   "[s-10-c-offlist] oa-sym-cl-025 is marked oa-at-1x but is no pixel fit of the 41",
+                   "[s-10-c-offlist] oa-sym-cl-029 is marked oa-at-2x but is no master of the 41",
+                   "[s-10-c-housing] oa-sym-cl-075-24px is marked oa-at-1x but is no pixel fit of the 41",
+                   "[s-10-c-housing] oa-sym-cl-075 is marked oa-at-2x but is no master of the 41",
+                   "[s-10-c-utility] oa-sym-u-close-24px is marked oa-at-1x but is no pixel fit of the 41",
+                   "[s-10-c-accent] a topic or atlas symbol under 48 px (oa-sym-cl-048-24px) sets --oa-icon-accent",
+                   "[s-10-c-accent-fixed] a topic or atlas symbol under 48 px (oa-sym-r-06) sets --oa-icon-accent",
+                   "[s-10-c-big] oa-sym-cl-048-24px is a 24 px fit drawn at 48 px",
+                   "[s-10-c-twoonly] oa-sym-cl-048 draws only on 2x screens"],
+          "absent": ["[s-10-c-good]", "[s-10-c-fixed]", "[s-10-c-big48]", "[s-10-c-accent-fixed] R-06 at 24 px", "[s-10-c-big] oa-sym-cl-048-24px draws"],
+          "html": [".oa-at-2x { display: none }", "@media (min-resolution: 2dppx) { .oa-at-1x { display: none } .oa-at-2x { display: inline } }"],
+          "tests": [("the sprite holds each fit and master the good pattern names",
+                     lambda pg: {"oa-sym-cl-048-24px", "oa-sym-cl-048", "oa-sym-r-06-24px", "oa-sym-r-06", "oa-sym-cl-021-24px", "oa-sym-cl-021"} <= {s for s, _ in symbols_of(pg)})]}),
+        ("promotion C: with no list of 41 to read, a warning, and the drawings whose 24 px fits are read still switch",
+         {"10-symbols.json": cn}, {"specimens": c_nolist, "manifest": cnm, "no_list": True},
+         {"warn": ["gives no list of 41 IDs with the four pillar icons", "[s-10-c-nolist] CL-001 at 24 px draws its master on 1x screens"],
+          "absent": ["[s-10-c-nolist] oa-sym-cl-048", "lacks", "off the list"]}),
+    ]
     results, ok_all = [], True
     with tempfile.TemporaryDirectory(prefix="oa-guide-build-") as tmp:
-        roots = {"full": Path(tmp) / "families-full", "faulty": Path(tmp) / "families-faulty"}
-        families(roots["full"])
-        families(roots["faulty"], faulty=True)
+        roots = {k: Path(tmp) / f"families-{k}" for k in ("full", "faulty", "fits")}
+        for k, root in roots.items():
+            families(root, k)
+        (Path(tmp) / "no-list.md").write_text("**The list, by ID** (a fixture that names too few):\n\nCL-001, CL-019.\n")
         for i, (name, files, extra, expect) in enumerate(scenarios):
             base = Path(tmp) / f"s{i}"
             (base / "chapters").mkdir(parents=True)
@@ -2760,12 +3021,13 @@ def self_test():
             R = Report()
             LEGACY_FILE = extra.get("legacy", kept_legacy)
             SPRITE_ROOT = roots[extra.get("sprites", "full")]
+            CONSTRUCTION = Path(tmp) / "no-list.md" if extra.get("no_list") else kept_list
             out = base / "page.html"
             try:
                 build(argparse.Namespace(chapters=str(base / "chapters"), specimens=str(base / "specimens"), out=str(out),
                                          code=str(base / "code"), demo=False, strict=False, quiet=True))
             finally:
-                LEGACY_FILE, SPRITE_ROOT = kept_legacy, kept_root
+                LEGACY_FILE, SPRITE_ROOT, CONSTRUCTION = kept_legacy, kept_root, kept_list
             warns = [f"[{w['where']}] {w['message']}" for w in R.warnings]
             page = out.read_text()
             checks = []

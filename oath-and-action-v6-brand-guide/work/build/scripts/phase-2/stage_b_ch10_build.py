@@ -12,8 +12,13 @@ Writes:
     work/handoffs/phase-2/20261110_Stage-B-Ch10-Figures.json    every figure the chapter prints, and how
 
 Reads, never edits:
-    work/build/assets/civic-line-v6/                            the 124 drawings in use and their inventory (D2-716)
+    work/build/assets/civic-line-v6/                            the 125 drawings in use and their inventory (D2-716; CL-075
+                                                                Housing joined at promotion C, DR-207)
+    work/build/assets/civic-line-v6/fit-24/                     the 24 px pixel fits of the 37 (DR-209), drawn on 1x screens
     work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json     the editor's words: every label and meaning (DR-185)
+    work/handoffs/phase-2/20261111_Promotion-C-Ch10-Labels-Addendum.json   words for a drawing the table does not hold
+                                                                yet (CL-075), in the table's own form; the table wins
+    work/build/assets/civic-line-24-fit/qa/                     the icon designer's likeness of the five look-alikes' fits
     work/handoffs/phase-2/20261110_Stage-B-Ch10-Construction.md the rules this chapter carries (the list of 41)
     work/build/assets/civic-line/tiles/                         the rounded tile's superellipse outline (D2-41)
     work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py   System 1's encoding glyphs (DR-36)
@@ -21,7 +26,8 @@ Reads, never edits:
     work/build/scripts/phase-2/icon_likeness_check.js           the engineer's look-alike figure, run as written
 
 Drawings reach the page from the engineer's sprite by <use> (D2-590): Civic Line as #oa-sym-<id>, utility icons as
-#oa-sym-u-<name>-24px. The library shows each category as one contact sheet image (D2-591, D2-717), drawn here in
+#oa-sym-u-<name>-24px. A 24 px drawing of the 41 switches by screen (DR-179, DR-209): its fit, #oa-sym-<id>-24px, on 1x
+screens and its master from 2x, two <use> in one <svg> that the shell's oa-at-1x and oa-at-2x classes switch. The library shows each category as one contact sheet image (D2-591, D2-717), drawn here in
 Chromium from the Black files at 128 px a drawing, kept to 16 colors, and shown at 64 px a drawing: each cell of the
 library grid draws its own square of the sheet with <use> of one <image>, so the page carries each sheet once while the
 words beside each drawing stay live text that wraps on a phone.
@@ -59,6 +65,9 @@ S1 = _load('s1_times_explainer', ROOT / 'work/boards/phase-2/atlas-editorial/01-
 CL6 = ROOT / 'work/build/assets/civic-line-v6'
 INV_PATH = CL6 / '20261110_Civic-Line-V6-Inventory.json'
 LABELS_PATH = ROOT / 'work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json'
+LABELS_ADD = ROOT / 'work/handoffs/phase-2/20261111_Promotion-C-Ch10-Labels-Addendum.json'
+FITS_LIKE = ROOT / 'work/build/assets/civic-line-24-fit/qa/20261110_Five-Look-Alikes-Fits-Likeness.json'
+FITS37_LIKE = ROOT / 'work/build/assets/civic-line-24-fit/qa/20261110_Fits-Likeness.json'
 CONSTRUCTION = ROOT / 'work/handoffs/phase-2/20261110_Stage-B-Ch10-Construction.md'
 TILE_ROUNDED = (ROOT / 'work/build/assets/civic-line/tiles/rounded-charcoal/svg/'
                 '20261029_Oath-And-Action-Civic-Line-CL-031-Local-Government-Tile-Rounded-Charcoal-Two-Color.svg')
@@ -92,9 +101,11 @@ LOOKALIKES = [   # the round 2 brief's side by side checks, with what tells each
                            'Household income runs an arrow from a person to an envelope.'),
     (('CL-025', 'CL-014'), 'Congress shows the chamber in session under its three-tier rostrum. Entrenched majority '
                            'control fences the chamber, and a ballot’s arrow stops at the fence.'),
-    (('CL-053', 'CL-054', 'CL-063'), 'All three hold a house. Housing scarcity draws the missing home in dashes between '
-                                     'two houses, Owner home equity sets a rising chart against the house, and Cost of '
-                                     'essentials puts a grocery bag and a price tag in front of it.'),
+    # CL-075 Housing joins the house group at promotion C (DR-207): the subject a builder reaches for first
+    (('CL-075', 'CL-053', 'CL-054', 'CL-063'), 'All four hold a home. Housing sets an apartment block beside a pitched-roof '
+                                               'house on one ground line, Housing scarcity draws the missing home in dashes '
+                                               'between two houses, Owner home equity sets a rising chart against the house, '
+                                               'and Cost of essentials puts a grocery bag and a price tag in front of it.'),
     (('CL-027', 'CL-031'), 'Doctrine favoring the appointing coalition sets a balance scale before a sealed ruling. Local '
                            'government is a low town hall with a tall doorway.'),
     (('CL-048', 'CL-023'), 'Both hold a page. Public records lifts it out of an open folder, and Evidence rests a '
@@ -109,9 +120,18 @@ LOOKALIKE_24 = (('CL-023', 'CL-028', 'R-08', 'R-27', 'R-45'),
                 'record; and {R-45} sets paper ballots under a lens with a check.')
 
 
-def look24(rows):
-    """LOOKALIKE_24's sentence with the editor's words for each drawing (DR-185)."""
-    ids, text = LOOKALIKE_24
+# D2-1237: R-06's fit and the masters of R-41 and R-44 draw as one shape at small sizes (the icon designer's question 6).
+# R-06 is the only one of the three on the list of 41, so the three meet at 48 px, the smallest size all three take.
+LOOKALIKE_48 = (('R-06', 'R-41', 'R-44'),
+                'Each one draws as two framed panels side by side with a link between them, and at 48 px and under the '
+                'marks inside the panels are all that tell them apart: {R-06} marks two calendars on the same date and '
+                'joins them with an arrow; {R-41} plugs a row of servers into a bill with a dollar sign; and {R-44} '
+                'passes arrows both ways between two browser windows, each holding a search magnifier.')
+
+
+def look24(rows, group=LOOKALIKE_24):
+    """A look-alike group's sentence with the editor's words for each drawing (DR-185)."""
+    ids, text = group
     return re.sub(r'\{((?:CL|R)-\d+)\}', lambda m: rows[m.group(1)]['label'], text)
 
 
@@ -119,8 +139,8 @@ def look24(rows):
 def load_inputs():
     inv = json.loads(INV_PATH.read_text())
     icons = inv['icons']
-    if len(icons) != 124:
-        raise SystemExit(f'{INV_PATH.name}: {len(icons)} drawings, expected 124')
+    if len(icons) != 125:
+        raise SystemExit(f'{INV_PATH.name}: {len(icons)} drawings, expected 125 (124 and CL-075 Housing, DR-207)')
     black = {}
     for p in sorted((CL6 / 'black').glob('*-Black.svg')):
         m = re.search(r'\sdata-id="([^"]+)"', p.read_text())
@@ -131,6 +151,8 @@ def load_inputs():
         raise SystemExit(f'civic-line-v6/black lacks {missing}')
     lab = json.loads(LABELS_PATH.read_text())
     rows = {r['id']: r for r in lab['rows']}
+    if LABELS_ADD.exists():      # the editor's table wins; the addendum fills only a drawing it does not hold yet
+        rows.update({r['id']: r for r in json.loads(LABELS_ADD.read_text())['rows'] if r['id'] not in rows})
     if set(rows) != {i['id'] for i in icons}:
         raise SystemExit('the label table and the inventory in use name different drawings')
     text = CONSTRUCTION.read_text()
@@ -233,8 +255,32 @@ const lib = new Function('require', '__dirname', 'process', src.slice(0, src.las
 """
 
 
+def fit_likeness():
+    """The icon designer's likeness figures for the fits (icon_likeness_check.js on the approved fit files, read, never
+    rerun here): the five look-alikes' fits against one another, and R-06's fit against the masters of R-41 and R-44."""
+    five = {'Evidence': 'CL-023', 'Watchdogs': 'CL-028', 'Donor-Disclosure': 'R-08', 'Tax-Enforcement': 'R-27',
+            'Paper-Ballots-And-Audits': 'R-45'}
+    d = json.loads(FITS_LIKE.read_text())
+    pairs = {}
+    for x in d['flagged'] + d['watch']:
+        if x.get('against') == 'new' and x['a'].startswith('Five-Fits-') and x['b'].startswith('Five-Fits-'):
+            a, b = (five[n[len('Five-Fits-'):-len('.svg')]] for n in (x['a'], x['b']))
+            pairs['|'.join(sorted((a, b)))] = x['likeness']
+    if len(pairs) != 10:
+        raise SystemExit(f'{FITS_LIKE.name}: {len(pairs)} of the 10 pairs among the five fits')
+    d37 = json.loads(FITS37_LIKE.read_text())
+    r06 = {}
+    for x in d37['flagged'] + d37['watch']:
+        if '-Fit-R-06-' in x['a'] and x.get('against') == 'master' and x['b'].split()[0] in ('R-41', 'R-44'):
+            r06[x['b'].split()[0]] = x['likeness']
+    if set(r06) != {'R-41', 'R-44'}:
+        raise SystemExit(f'{FITS37_LIKE.name}: R-06\'s fit against {sorted(r06)}, expected R-41 and R-44')
+    return {'five_fits': pairs, 'r06_fit': r06, 'flag': d['thresholds']['flag']['likeness'],
+            'files': [str(FITS_LIKE.relative_to(ROOT)), str(FITS37_LIKE.relative_to(ROOT))]}
+
+
 def wanted_pairs():
-    groups = [grp for grp, _ in LOOKALIKES] + [LOOKALIKE_24[0]]
+    groups = [grp for grp, _ in LOOKALIKES] + [LOOKALIKE_24[0], LOOKALIKE_48[0]]
     return [[grp[a], grp[b]] for grp in groups for a in range(len(grp)) for b in range(a + 1, len(grp))]
 
 
@@ -254,14 +300,25 @@ def measure_likeness(black, tmp):
 
 
 # ------------------------------------------------------------------------------------------------ markup helpers
+READS24 = set()     # the list of 41, from the construction file; filled by main() before any specimen is drawn
+
+
 def sym(i, px, surface='newsprint', two=False, fam='topic', cls='sym', vb='0 0 128 128', ink=None, accent=None):
-    """A Civic Line drawing from the sprite. Two-color sets the accent from the surface's token (DR-66, R11)."""
+    """A Civic Line drawing from the sprite. Two-color sets the accent from the surface's token (DR-66, R11). At 24 px a
+    drawing on the list of 41 takes the pillar icons' switch (DR-179, DR-209): its pixel fit on 1x screens and its master
+    from 2x, in one svg on the fit's 24 px box; under 48 px it is one color, so it never sets an accent there."""
     col = ink or f'var(--oa-component-icon-ink-on-{surface})'
     st = f'color:{col}'
     if two:
+        if px < 48:
+            raise ValueError(f'{i} at {px} px: every drawing is one color under 48 px (Rule 10.7)')
         st += f';--oa-icon-accent:{accent or f"var(--oa-component-icon-accent-on-{surface})"}'
+    uses = f'<use href="#oa-sym-{i.lower()}"/>'
+    if px == 24 and i in READS24 and vb == '0 0 128 128':
+        vb = '0 0 24 24'
+        uses = f'<use class="oa-at-1x" href="#oa-sym-{i.lower()}-24px"/><use class="oa-at-2x" href="#oa-sym-{i.lower()}"/>'
     return (f'<svg class="{cls}" viewBox="{vb}" width="{px:g}" height="{px:g}" aria-hidden="true" focusable="false" '
-            f'data-icon="{i}" data-icon-family="{fam}" style="{st}"><use href="#oa-sym-{i.lower()}"/></svg>')
+            f'data-icon="{i}" data-icon-family="{fam}" style="{st}">{uses}</svg>')
 
 
 def util(name, px=24, cls='ug'):
@@ -271,6 +328,26 @@ def util(name, px=24, cls='ug'):
 
 def esc(s):
     return C.esc(s)
+
+
+def id_span(ids, wrap=lambda x: x):
+    """A sheet's IDs in words: each run of three or more as "first to last", others one by one, so a sheet that gained
+    a drawing out of order reads "CL-049 to CL-072 and CL-075" (D2-714 for CL-073 and CL-074; DR-207 for CL-075)."""
+    runs = []
+    for i in ids:
+        pre, n = i.rsplit('-', 1)
+        if runs and runs[-1][0] == pre and runs[-1][2] + 1 == int(n):
+            runs[-1][2] = int(n)
+            runs[-1][3].append(i)
+        else:
+            runs.append([pre, int(n), int(n), [i]])
+    parts = []
+    for pre, a, b, members in runs:
+        if len(members) >= 3:
+            parts.append(f'{wrap(members[0])} to {wrap(members[-1])}')
+        else:
+            parts.extend(wrap(x) for x in members)
+    return parts[0] if len(parts) == 1 else ', '.join(parts[:-1]) + ' and ' + parts[-1]
 
 
 def nb(s):
@@ -441,8 +518,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
                       f'{extra}<dd class="sz">Smallest size: {size}</dd></div>')
         n_ids = len(sh['ids'])
         nw = lambda s: f'<span class="nw">{s}</span>'
-        span = (f'{nw(sh["ids"][0])} to {nw(sh["ids"][-1])}' if num != '01'
-                else f'{nw("CL-001")} to {nw("CL-024")}, {nw("CL-073")} and {nw("CL-074")}')
+        span = id_span(sh['ids'], nw)
         n24 = sum(1 for i in sh['ids'] if i in reads24 and rows[i]['class'] != 'pillar')
         key = (f' The words “Also at 24 px” mark the {C.num(n24)} that may also be set at that size.' if n24 else '')
         html = (f'<p class="hd">{n_ids} drawings, {span}.{key}</p>'
@@ -591,8 +667,10 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
     def ladder(i, sizes, gap24=False):
         out = []
         for s in sizes:
-            out.append(f'<li><span class="hold">{sym(i, s)}</span><span class="m">{s} px</span>'
-                       f'<span class="m2">line {px2(round(line_px(inv[i]["stroke_units"], s), 2))} px</span></li>')
+            # at 24 px a screen under 2x draws the pixel fit, whose line is one whole pixel (DR-209)
+            line = ('<span class="m2">pixel fit</span><span class="m2">line 1 px</span>' if s == 24 and i in READS24 else
+                    f'<span class="m2">line {px2(round(line_px(inv[i]["stroke_units"], s), 2))} px</span>')
+            out.append(f'<li><span class="hold">{sym(i, s)}</span><span class="m">{s} px</span>{line}</li>')
         if gap24:
             out.append('<li><span class="hold"><span class="no"></span></span><span class="m">24 px</span>'
                        '<span class="m2">not allowed</span></li>')
@@ -613,17 +691,19 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
            f'.kick{{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:8px 0;{t("label")}}}'
            '.ki{display:inline-flex;align-items:center;gap:8px}'
            f'.hl{{margin:0;{t("h4")}}}')
-    lad48 = ', '.join(f'{px2(round(line_px(inv["CL-048"]["stroke_units"], s), 2))}' for s in (128, 96, 64, 48, 24))
+    lad48 = ', '.join(f'{px2(round(line_px(inv["CL-048"]["stroke_units"], s), 2))}' for s in (128, 96, 64, 48))
     ctx.spec('s-10-4-correct', f'<style>{css}</style><div class="pad">{html}</div>', CH, '10.4',
              f'Two size ladders and a kicker at true size. {rows["CL-048"]["label"]}, which is on the list of 41, at 128, '
-             f'96, 64, 48 and 24 px, with lines of {lad48} px. {rows["CL-025"]["label"]}, which is not on the list, at 128, '
-             '96, 64 and 48 px, and an empty dashed square where 24 px would be, marked not allowed. Below, a story card '
-             f'labeled Illustrative at its head, whose kicker reads Explainer, then the {rows["CL-048"]["label"]} drawing at '
-             f'24 px directly before the words {rows["CL-048"]["label"]}, over the headline How to ask your town for its '
-             'meeting minutes.',
+             f'96, 64 and 48 px, with lines of {lad48} px, and at 24 px as its pixel fit, redrawn on whole pixels with a '
+             f'1 px line, which a screen under 2x draws; from 2x the master draws there. {rows["CL-025"]["label"]}, which '
+             'is not on the list, at 128, 96, 64 and 48 px, and an empty dashed square where 24 px would be, marked not '
+             'allowed. Below, a story card labeled Illustrative at its head, whose kicker reads Explainer, then the '
+             f'{rows["CL-048"]["label"]} drawing at 24 px directly before the words {rows["CL-048"]["label"]}, over the '
+             'headline How to ask your town for its meeting minutes.',
              width=600, illustrative=True,
-             notes='Ladder sizes on whole pixels; CL-048 is on the list of 41 (construction file, section 10). The story '
-                   'card is invented and carries one Illustrative label at its head (DR-97, D2-440, CA-S9).')
+             notes='Ladder sizes on whole pixels; CL-048 is on the list of 41 (construction file, section 10). Its 24 px '
+                   'rung and the kicker take the switch, the fit on 1x screens and the master from 2x (DR-179, DR-209). '
+                   'The story card is invented and carries one Illustrative label at its head (DR-97, D2-440, CA-S9).')
     menu = ['CL-001', 'CL-005', 'CL-031', 'CL-067', 'CL-068', 'CL-069']
     li = ''.join(f'<li>{sym(i, 16)}<span>{esc(rows[i]["label"])}</span></li>' for i in menu)
     css = (k.vars() + band_css + pad(360) + f'.mn{{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}}'
@@ -641,17 +721,20 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
                  for i in topics41)
     pil = ', '.join(f'{i} {rows[i]["label"]}' for i in PILLARS)
     html = (f'<ul class="l41">{li}</ul><p class="nt">The other four on the list are the pillar icons, {esc(pil)}. At '
-            f'24 px they take chapter 09’s own drawings.</p>')
+            f'24 px they take chapter 09’s own pixel fits, with the same switch.</p>')
     css = (k.vars() + '.l41{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:0 24px}'
            '.l41 li{display:grid;grid-template-columns:24px minmax(0,1fr) auto;align-items:center;gap:4px 12px;min-height:44px;'
            'padding:6px 0;border-bottom:1px solid var(--hair)}.sym{display:block}'
            f'.w{{{t("bodySmall")}}}.id{{{cap_css};color:var(--t2);font-variant-numeric:tabular-nums}}'
            f'.nt{{margin:16px 0 0;{t("bodySmall")};color:var(--t1)}}')
     ctx.spec('s-10-list-41', f'<style>{css}</style>{html}', CH, None,
-             'The 37 topic and atlas drawings that may be set at 24 px, each at 24 px in one color with its word and ID: '
+             'The 37 topic and atlas drawings that may be set at 24 px, each at 24 px in one color with its word and ID, '
+             'drawn from its pixel fit on a screen under 2x and from its master on 2x screens and denser: '
              + '; '.join(f'{word(rows[i])}, {i}' for i in topics41)
-             + f'. The other four on the list are the pillar icons, {pil}, which take chapter 09’s own drawings at 24 px.',
-             readable=True, notes='The list of 41 from the construction file, section 10 (DR-136, D2-587).')
+             + f'. The other four on the list are the pillar icons, {pil}, which take chapter 09’s own pixel fits at '
+               '24 px, with the same switch.',
+             readable=True, notes='The list of 41 from the construction file, section 10 (DR-136, D2-587). Each of the 37 '
+                                  'takes the switch: oa-sym-<id>-24px on 1x screens, oa-sym-<id> from 2x (DR-209, D2-1265).')
 
     # ---------------------------------------------------------------- 10.5 editions and tiles
     eds = [('newsprint', 'Red-Black', True, 'On Newsprint'), ('white', 'Black', False, 'On White'),
@@ -713,6 +796,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
     pairs6 = [
         ('CL-025', False, 'As a topic, in a story’s subject line'),
         ('CL-025', True, 'In the atlas, where it stands for the variable'),
+        ('CL-075', False, 'A topic set from 48 px only, so under 48 px its word stands alone'),
         ('R-13', False, 'A reform, under its short name'),
         ('CL-056', False, 'An atlas variable, under the atlas’s full name'),
         ('R-36', False, 'A reform on a close subject, kept apart by its own name'),
@@ -729,16 +813,16 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
            '.l li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;align-items:center;padding:14px 0;border-bottom:1px solid var(--hair)}'
            f'.sym{{display:block}}.w{{margin:0 0 6px;{t("ui")};font-weight:700}}.m{{margin:6px 0 0;{cap_css};color:var(--t2)}}')
     ctx.spec('s-10-6-correct', f'<style>{css}</style><ul class="l">{"".join(li)}</ul>', CH, '10.6',
-             'Six symbols at 64 px, each with its word and, for an atlas element, its typed chip. '
+             f'{C.num(len(pairs6)).capitalize()} symbols at 64 px, each with its word and, for an atlas element, its typed chip. '
              + ' '.join(f'{word(rows[i], a)}{", " + rows[i]["v7_chip"] if has_chip(i, a) else ""}: {w}.' for i, a, w in pairs6),
              readable=True, notes='Every word from the editor\'s label table (DR-185).')
-    four = ['CL-053', 'CL-054', 'CL-063', 'CL-061']
+    four = ['CL-075', 'CL-053', 'CL-054', 'CL-063']      # four homes since Housing joined (DR-207)
     css = (k.vars() + band_css + pad(360) + '.r{list-style:none;margin:0;padding:0;display:flex;justify-content:space-between}.sym{display:block}')
     ctx.spec('s-10-6-failure', f'<style>{css}</style>{band}<div class="pad"><ul class="r">'
              + ''.join(f'<li>{sym(i, 64, fam=family(rows[i]))}</li>' for i in four) + '</ul></div>', CH, '10.6',
-             'Failure case: do not publish. Four Civic Line drawings at 64 px in a row with no words: three houses, '
-             'one with a missing neighbor drawn in dashes, one with a rising chart and one with a grocery bag and a price '
-             'tag, and a person joined by an arrow to an envelope.', width=360,
+             'Failure case: do not publish. Four Civic Line drawings at 64 px in a row with no words, each holding a '
+             'home: an apartment block beside a house, two houses with a missing neighbor drawn in dashes between them, '
+             'a house with a rising chart, and a house with a grocery bag and a price tag.', width=360,
              notes=f'The drawings are {", ".join(four)}.')
 
     # ---------------------------------------------------------------- 10.7 red
@@ -833,11 +917,30 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
     g24, _ = LOOKALIKE_24
     v24 = [like['pairs']['|'.join(sorted((g24[a], g24[b])))]['likeness'] for a in range(len(g24)) for b in range(a + 1, len(g24))]
     figs['look-alikes at 24 px'] = {'ids': list(g24), 'likeness_min': min(v24), 'likeness_max': max(v24)}
+    fl = fit_likeness()
+    f24 = list(fl['five_fits'].values())
+    figs['look-alikes at 24 px'].update({'fits_likeness_min': min(f24), 'fits_likeness_max': max(f24),
+                                         'fits_source': fl['files'][0]})
     cells = ''.join(f'<div class="c c24"><span class="h24">{sym(i, 24, fam=family(rows[i]))}</span>'
                     f'<span class="w">{esc(word(rows[i]))}</span><span class="id">{esc(i)}</span></div>' for i in g24)
     groups.append(f'<li class="g24"><p class="gk">At 24 px, never two in one view</p><div class="cs">{cells}</div>'
                   f'<div class="tx"><p class="lk">{esc(look24(rows))}</p><p class="fg">Outline likeness at 24 px: '
-                  f'{fmt_like(min(v24))} to {fmt_like(max(v24))} across the 10 pairs.</p></div></li>')
+                  f'{fmt_like(min(v24))} to {fmt_like(max(v24))} across the 10 pairs of masters, and '
+                  f'{fmt_like(min(f24))} to {fmt_like(max(f24))} for the pixel fits a screen under 2x draws.</p></div></li>')
+    # D2-1237: R-06, R-41 and R-44 at 48 px, the smallest size all three take, one color, each with its word and ID
+    g48, _ = LOOKALIKE_48
+    v48 = {f'{g48[a]}|{g48[b]}': like['pairs']['|'.join(sorted((g48[a], g48[b])))]['likeness']
+           for a in range(len(g48)) for b in range(a + 1, len(g48))}
+    figs['look-alikes at 48 px and under'] = {'ids': list(g48), 'masters': v48, 'R-06 fit': fl['r06_fit'],
+                                              'fits_source': fl['files'][1]}
+    cells = ''.join(f'<div class="c">{sym(i, 48, fam=family(rows[i]))}<span class="w">{esc(word(rows[i]))}</span>'
+                    f'<span class="id">{esc(i)}</span></div>' for i in g48)
+    groups.append(f'<li class="g24"><p class="gk">At 48 px and under, never two in one view</p><div class="cs">{cells}</div>'
+                  f'<div class="tx"><p class="lk">{esc(look24(rows, LOOKALIKE_48))}</p><p class="fg">Outline likeness at '
+                  f'24 px: {fmt_like(min(v48.values()))} to {fmt_like(max(v48.values()))} across the three pairs of '
+                  f'masters; {esc(word(rows["R-06"]))}’s pixel fit {fmt_like(fl["r06_fit"]["R-41"])} against '
+                  f'{esc(word(rows["R-41"]))} and {fmt_like(fl["r06_fit"]["R-44"])} against {esc(word(rows["R-44"]))}.'
+                  f'</p></div></li>')
     css = (k.vars() + '.l{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}'
            '.l li{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;padding:16px 0;border-bottom:1px solid var(--hair)}'
            '@media (min-width:48em){.l li{grid-template-columns:auto minmax(0,1fr);gap:24px;align-items:center}}'
@@ -850,12 +953,20 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
              'Six groups of drawings for close subjects, each at 64 px with its word and ID, then what tells them apart '
              'and their outline likeness at 24 px. ' + ' '.join(
                  f'{" and ".join(word(rows[i]) for i in grp)}: {look}' for grp, look in LOOKALIKES)
-             + ' Last, a group headed At 24 px, never two in one view, with five drawings at 24 px in one color: '
+             + ' Then a group headed At 24 px, never two in one view, with five drawings at 24 px in one color: '
              + ', '.join(word(rows[i]) for i in LOOKALIKE_24[0]) + '. ' + look24(rows)
-             + f' Their outline likeness at 24 px runs from {fmt_like(min(v24))} to {fmt_like(max(v24))}.',
+             + f' Their outline likeness at 24 px runs from {fmt_like(min(v24))} to {fmt_like(max(v24))} as masters, and '
+               f'from {fmt_like(min(f24))} to {fmt_like(max(f24))} as the pixel fits a screen under 2x draws.'
+             + ' Last, a group headed At 48 px and under, never two in one view, with three reform drawings at 48 px in '
+               'one color: ' + ', '.join(word(rows[i]) for i in g48) + '. ' + look24(rows, LOOKALIKE_48)
+             + f' Their masters’ outline likeness at 24 px runs from {fmt_like(min(v48.values()))} to '
+               f'{fmt_like(max(v48.values()))}.',
              readable=True,
-             notes=f'Likeness from the engineer\'s icon_likeness_check.js functions on the 124 drawings in use '
-                   f'(flag {like["thresholds"]["flag"]["likeness"]}, watch {like["thresholds"]["watch"]["likeness"]}).')
+             notes=f'Likeness from the engineer\'s icon_likeness_check.js functions on the {like["masters"]} drawings in '
+                   f'use (flag {like["thresholds"]["flag"]["likeness"]}, watch {like["thresholds"]["watch"]["likeness"]}); '
+                   f'the fits\' figures from the icon designer\'s runs of the same check ({", ".join(fl["files"])}). '
+                   'The five at 24 px take the switch, the fit on 1x screens and the master from 2x (DR-209); the three '
+                   'reform drawings join as D2-1237 sets.')
     card = (f'{band}<div class="pad"><div class="card">{ILLUS}<p class="kick"><span>Act</span><span aria-hidden="true">'
             f' {DOT} </span><span>How to take part</span></p><div class="hd">{sym("CL-005", 64)}'
             f'<span class="w">{esc(rows["CL-005"]["label"])}</span></div>'
@@ -1378,6 +1489,7 @@ def main():
     ap.add_argument('--no-draw', action='store_true', help='reuse the sheets and the likeness figures already written')
     a = ap.parse_args()
     icons, black, rows, reads24, v7 = load_inputs()
+    READS24.update(reads24)
     T = C.Tokens(C.TOKENS_JSON, C.TOKENS_CSS)
     ctx = B.Ctx(T, {}, 'final')
     figs = {}

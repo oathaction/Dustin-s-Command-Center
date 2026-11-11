@@ -58,15 +58,20 @@ def tpl(html):
 
 def ui_css(ctx, live=True):
     """The controls every live specimen shares: a 44 px button with its icon before its word, the unavailable state with
-    its reason, the focus ring and the visually hidden text. Colors from the Newsprint surface's tokens."""
+    its reason, the focus ring and the visually hidden text. F-1 (D2-1159): every color is a role's short name, which a
+    surface class or the dark theme remaps, so the component follows the theme it is copied into: the ground is
+    --oa-color-surface, and a field or a panel one step from the ground is --oa-color-field-ground (White on Newsprint,
+    Prussian on Charcoal). On the guide's Newsprint stage each short name resolves to its Newsprint token."""
     T, v = ctx.ty, ctx.v
-    for k in ('text.primary', 'text.secondary', 'border.strong', 'border.hairline', 'focus.ring'):
-        v(f'oa.color.{k}.onNewsprint')        # recorded; the short names below point at these on a Newsprint stage
+    for k in ('color.text.primary', 'color.text.secondary', 'color.border.strong', 'color.border.hairline',
+              'color.focus.ring', 'color.field.ground', 'component.button.disabled.label',
+              'component.button.disabled.edge'):
+        v(f'oa.{k}.onNewsprint')        # recorded; the short names below point at these on a Newsprint stage
     return (f':scope{{--ink:{v("oa.color.text.primary")};--sec:{v("oa.color.text.secondary")};'
             f'--edge:{v("oa.color.border.strong")};--hair:{v("oa.color.border.hairline")};'
-            f'--ring:{v("oa.color.focus.ring")};--ground:{v("oa.color.surface.newsprint")};'
-            f'--paper:{v("oa.color.surface.white")};--dis:{v("oa.component.button.disabled.label.onNewsprint")};'
-            f'--disedge:{v("oa.component.button.disabled.edge.onNewsprint")};--touch:{v("oa.size.target.touch")}}}'
+            f'--ring:{v("oa.color.focus.ring")};--ground:{v("oa.color.surface")};'
+            f'--paper:{v("oa.color.field.ground")};--dis:{v("oa.component.button.disabled.label")};'
+            f'--disedge:{v("oa.component.button.disabled.edge")};--touch:{v("oa.size.target.touch")}}}'
             f'.ui{{{"forced-color-adjust:auto;" if live else ""}background:var(--ground);color:var(--ink);padding:20px 16px 24px;{T("body")}}}'
             f':where(.ui p){{margin:0}}'
             f'.ui .b{{display:inline-flex;align-items:center;gap:8px;min-height:var(--touch);min-width:var(--touch);margin:0;'
@@ -114,7 +119,8 @@ def s_reader(ctx, m):
         f'.pr{{{T("label")};color:var(--sec);text-wrap:balance}}.pt{{margin-top:8px;{T("h4", "floor")}}}'
         f'.px{{margin-top:8px;{T("body")};text-wrap:pretty}}'
         f'.pn{{margin:0 0 10px;{T("ui")};font-variant-numeric:tabular-nums}}'
-        f'.bar{{display:grid;grid-template-columns:1fr 1fr;gap:8px}}.ui .bar .b{{padding:0 10px;white-space:nowrap}}'
+        f'.bar{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr));gap:8px}}'
+        f'.ui .bar .b{{padding:0 10px}}'
         f'.ui .bar .nx{{justify-content:flex-end}}'
         f'.zm{{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}}'
         f'.ui .zm .b[aria-pressed="true"]{{font-weight:700;text-decoration:underline;text-decoration-thickness:2px;'
@@ -221,25 +227,48 @@ def s_icons(ctx, m):
 
 
 # ------------------------------------------------------------------------------------------------ 11.12 the library and the phone menu
+LABELS = 'work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json'
+# Words for drawings that joined the set in use after the editor's table: CL-075 Housing (DR-207). The editor folds
+# them into the table at the next pass; chapter 10's build reads the same file.
+LABELS_ADD = 'work/handoffs/phase-2/20261111_Promotion-C-Ch10-Labels-Addendum.json'
+INVENTORY = 'work/build/assets/civic-line-v6/20261110_Civic-Line-V6-Inventory.json'
+
+
+def label_rows(root):
+    """The editor's rows, then the addendum's for any drawing in use the table does not hold yet."""
+    rows = json.loads((root / LABELS).read_text())['rows']
+    have = {r['id'] for r in rows}
+    add = root / LABELS_ADD
+    if add.exists():
+        rows = rows + [r for r in json.loads(add.read_text())['rows'] if r['id'] not in have]
+    return rows
+
+
 def library_data(m):
-    lab = json.loads((m.ROOT / 'work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json').read_text())
     kind = {'topic': 't', 'atlas variable': 'a', 'atlas reform': 'a', 'topic and atlas variable': 'ta', 'pillar': 'p'}
-    rows = [[r['id'], r['label'], kind[r['class']], 1 if r['id'] in CHECK_41 else 0] for r in lab['rows']]
-    if len(rows) != 124 or sum(r[3] for r in rows) != 41:
-        raise SystemExit(f'library data: {len(rows)} rows and {sum(r[3] for r in rows)} at 24 px; chapter 10 holds 124 and 41')
+    in_use = [i['id'] for i in json.loads((m.ROOT / INVENTORY).read_text())['icons']]
+    by_id = {r['id']: r for r in label_rows(m.ROOT)}
+    lack = [i for i in in_use if i not in by_id]
+    if lack:
+        raise SystemExit(f'library data: no words for {lack}')
+    rows = [[i, by_id[i]['label'], kind[by_id[i]['class']], 1 if i in CHECK_41 else 0] for i in in_use]
+    if sum(r[3] for r in rows) != 41:
+        raise SystemExit(f'library data: {sum(r[3] for r in rows)} at 24 px; chapter 10 holds 41')
     return rows
 
 
 def s_library(ctx, m):
     T, u = ctx.ty, m.uicon
     rows = library_data(m)
+    n_all = len(rows)
     n_atlas = sum(1 for r in rows if 'a' in r[2])
     css = ui_css(ctx) + (
         f'.l{{display:block;margin:0 0 6px;{T("ui")};font-weight:600}}'
         f'.fd{{display:flex;align-items:center;min-height:var(--touch);border:1px solid var(--edge);background:var(--paper)}}'
         f'.fd > svg{{flex:none;margin:0 8px 0 10px}}'
         f'.ui .q{{flex:1 1 auto;min-width:0;align-self:stretch;margin:0;padding:0 4px;border:0;background:transparent;'
-        f'color:var(--ink);{T("body")}}}'
+        f'color:var(--ink);-webkit-appearance:none;appearance:none;{T("body")}}}'
+        f'.ui .q::-webkit-search-cancel-button,.ui .q::-webkit-search-decoration{{-webkit-appearance:none;appearance:none}}'
         f'.ui .clr{{display:inline-flex;flex:none;align-items:center;justify-content:center;width:var(--touch);'
         f'height:var(--touch);margin:-1px -1px -1px 0;padding:0;border:0;background:transparent;color:var(--ink);cursor:pointer}}'
         f'.ui .clr[hidden]{{display:none}}'
@@ -260,7 +289,7 @@ def s_library(ctx, m):
     data = json.dumps(rows, ensure_ascii=False, separators=(',', ':'))
     html = (f'<style>{css}</style><div class="ui" data-ui="library">'
             f'<label class="l" for="lb-q">Search the symbols</label>'
-            f'<div class="fd">{u("search")}<input class="q" id="lb-q" type="text" autocomplete="off" spellcheck="false" '
+            f'<div class="fd">{u("search")}<input class="q" id="lb-q" type="search" autocomplete="off" spellcheck="false" '
             f'data-q><button type="button" class="clr" aria-label="Clear the search" data-act="clear" hidden>{u("close")}'
             f'</button></div>'
             f'<div class="r2"><button type="button" class="b" aria-expanded="true" aria-controls="lb-sh" data-act="sheet">'
@@ -269,7 +298,7 @@ def s_library(ctx, m):
             f'<div class="sh" id="lb-sh" data-sheet><p class="gl" id="lb-k">Kind</p><ul class="cs" aria-labelledby="lb-k">'
             f'{chip("t", "Topic")}{chip("a", "Atlas", True)}{chip("p", "Pillar")}</ul>'
             f'<p class="gl" id="lb-s">Size</p><ul class="cs" aria-labelledby="lb-s">{chip("24", "Reads at 24 px")}</ul></div>'
-            f'<p class="rs" role="status" data-out="res">{n_atlas} of 124 symbols</p><ul class="hs" data-out="hits"></ul>'
+            f'<p class="rs" role="status" data-out="res">{n_atlas} of {n_all} symbols</p><ul class="hs" data-out="hits"></ul>'
             f'<p class="mr" data-out="more"></p>'
             + tpl(u('selected-check')) + f'<script type="application/json" data-rows>{data}</script>'
             + script('''
@@ -289,12 +318,13 @@ function run(){var q=Q.value.trim().toLowerCase(),k=B.filter(function(b){return 
 .map(function(b){return b.getAttribute('data-f');}),s=B.filter(function(b){return on(b)&&b.getAttribute('data-f')==='24';}).length,
 r=D.filter(function(d){return(!k.length||k.some(function(x){return d[2].indexOf(x)>=0;}))&&(!s||d[3])&&
 (!q||d[0].toLowerCase().indexOf(q)>=0||d[1].toLowerCase().indexOf(q)>=0);}),n=B.filter(on).length;
-K.textContent='Filters, '+n+' on';Z.hidden=!n;C.hidden=!Q.value;O.textContent=r.length+' of 124 symbols';
+K.textContent='Filters, '+n+' on';Z.hidden=!n;C.hidden=!Q.value;
+O.textContent=r.length+' of '+D.length+' symbols'+(r.length?'':'. No symbol matches. Clear the search or the filters to see more.');
 U.textContent='';r.slice(0,3).forEach(function(d){var li=document.createElement('li'),b=document.createElement('b');
 put(b,d[0]);li.appendChild(b);var t=document.createElement('span');put(t,' '+d[1]);li.appendChild(t);U.appendChild(li);});
-var k=r.length-3;Y.textContent=!r.length?'No symbol matches. Clear the search or the filters to see more.':
-(k>0?'The first three are listed here, and '+(k<10?N9[k]:k)+' more '+(k===1?'matches':'match')+'.':'');}
+var k=r.length-3;Y.textContent=k>0?'The first three are listed here, and '+(k<10?N9[k]:k)+' more '+(k===1?'matches':'match')+'.':'';}
 Q.addEventListener('input',run);
+Q.addEventListener('keydown',function(e){if(e.key==='Escape'&&Q.value){e.preventDefault();e.stopPropagation();Q.value='';run();}});
 C.addEventListener('click',function(){Q.value='';run();Q.focus();});
 F.addEventListener('click',function(){var o=F.getAttribute('aria-expanded')!=='true';F.setAttribute('aria-expanded',o?'true':'false');
 H.hidden=!o;F.querySelector('[data-icon="U-chevron"] use').setAttribute('transform',o?'rotate(180 12 12)':'');});
@@ -302,16 +332,21 @@ B.forEach(function(b){b.addEventListener('click',function(){mark(b,!on(b));run()
 Z.addEventListener('click',function(){B.forEach(function(b){mark(b,false);});run();F.focus();});
 run();''') + '</div>')
     alt = ('The symbol library’s search and filter bar, live at 360 px. A field labeled Search the symbols holds the '
-           'magnifier before the text; once you type, a cross at its end clears the search, named “Clear the search”. '
+           'magnifier before the text; once you type, a cross at its end clears the search, named “Clear the search”, '
+           'and the Escape key clears it too. '
            'Under it, the Filters button carries the funnel, the words “Filters, 1 on” and a chevron pointing up, since '
            'the filters are open, and a word button, Clear filters. The open filters show Kind: Topic, Atlas and Pillar, '
            'and Size: Reads at 24 px. Atlas is on, so it carries a check and a heavier outline, and the status line '
-           f'reads “{n_atlas} of 124 symbols”, with the first three listed by ID and name and a line that says how many '
-           f'more match: “The first three are listed here, and {n_atlas - 3} more match.”')
+           f'reads “{n_atlas} of {n_all} symbols”, with the first three listed by ID and name and a line that says how many '
+           f'more match: “The first three are listed here, and {n_atlas - 3} more match.” When nothing matches, the '
+           f'status line reads “0 of {n_all} symbols. No symbol matches. Clear the search or the filters to see more.”')
     return m.spec(ctx, 's-11-12-correct', html, '11.12', alt, width=360, interactive=True,
                   notes='Live (D2-516). Labels and kinds read from the editor’s label table for chapter 10; the 41 from '
                         'chapter 10’s construction text, section 10. Chips carry aria-pressed and the Selected check (C-5); '
-                        'the count is a polite status line (A-9); Clear the search is the one glyph-only control (A-4).')
+                        'the count is a polite status line (A-9), and with no match it carries its advice (F-5, D2-1157); '
+                        'Clear the search is the one glyph-only control (A-4). The field is type="search" and Escape '
+                        'clears it (F-9); the search landmark stays out of the stage, which holds no landmark (AX-S8), and '
+                        'Rule 11.12’s builders line names it.')
 
 
 def s_library_fail(ctx, m):
@@ -341,13 +376,13 @@ def s_menu(ctx, m, rule_titles):
     css = ui_css(ctx) + (
         f'.ui{{padding:0;position:relative;min-height:440px}}'
         f'.mh{{display:flex;align-items:center;gap:12px;min-height:60px;padding:0 16px;border-bottom:1px solid var(--hair)}}'
-        f'.lc{{flex:1 1 auto;{T("ui")};font-weight:700}}'
+        f'.lc{{flex:1 1 auto;min-width:0;{T("ui")};font-weight:700}}.mh .b,.dh .b{{flex:none}}'
         f'.bd{{padding:20px 16px}}.bd p + p{{margin-top:12px}}.k{{{T("label")};color:var(--sec)}}'
         f'.hl{{{T("h4", "floor")}}}'
         f'.dl{{position:absolute;inset:0;overflow-y:auto;background:var(--ground)}}.dl[hidden]{{display:none}}'
         f'.dh{{position:sticky;top:0;z-index:1;display:flex;align-items:center;gap:12px;min-height:60px;padding:0 16px;'
         f'background:var(--ground);border-bottom:1px solid var(--edge)}}'
-        f'.dt{{flex:1 1 auto;{T("ui")};font-weight:700}}'
+        f'.dt{{flex:1 1 auto;min-width:0;{T("ui")};font-weight:700}}'
         f'.ps{{list-style:none;margin:0;padding:0 16px 16px}}.ps > li{{border-bottom:1px solid var(--hair)}}'
         f'.ui .rw{{display:flex;width:100%;align-items:center;gap:8px;min-height:var(--touch);padding:8px 0;border:0;'
         f'background:transparent;color:var(--ink);{T("ui")};font-weight:700;text-align:left;cursor:pointer}}'
@@ -409,8 +444,12 @@ def s_links(ctx, m):
         f'.sl a{{display:block;min-height:var(--touch);box-sizing:border-box;padding:11px 0;color:var(--ink);{T("bodySmall")};'
         f'text-underline-offset:3px}}'
         f'.nw{{white-space:nowrap}}.nw svg{{display:inline-block;vertical-align:-2px;margin-left:4px}}')
-    lis = ''.join(f'<li><a href="{url}">{a} <span class="nw">{b}{u("another-site", 16)}</span>'
-                  f'<span class="vh"> (another site)</span></a></li>' for a, b, url in SOURCES_LIVE)
+    def link(a, b, url):
+        # F-3 (D2-1156): the span that does not wrap holds the link's last word and the mark, never more
+        head, last = f'{a} {b}'.rsplit(' ', 1)
+        return (f'<li><a href="{url}">{head} <span class="nw">{last}{u("another-site", 16)}</span>'
+                f'<span class="vh"> (another site)</span></a></li>')
+    lis = ''.join(link(a, b, url) for a, b, url in SOURCES_LIVE)
     html = (f'<style>{css}</style><div class="ui"><p class="k">Sources</p><ul class="sl">{lis}</ul></div>')
     alt = ('A live list of three sources at 360 px, each a link to another site that opens in the same tab: Nebraska '
            'Legislature, “Lawmaking in Nebraska”; FOIA.gov, “Frequently Asked Questions”; and 5 U.S.C. 553, rulemaking, '
@@ -495,7 +534,8 @@ def stepper(ctx, m, live=True):
         f'.k{{{T("label")};color:var(--sec)}}.t{{margin-top:6px;{T("h4", "floor")};text-wrap:balance}}'
         f'.st{{margin:16px 0;padding:14px;border:1px solid var(--hair);background:var(--paper);min-height:14rem}}'
         f'.sn{{{T("ui")};font-weight:700;font-variant-numeric:tabular-nums}}.sx{{margin-top:6px;{T("bodySmall")};text-wrap:pretty}}'
-        f'.cl{{display:grid;grid-template-columns:1fr 1fr;gap:8px}}.ui .cl .b{{padding:0 10px;white-space:nowrap}}'
+        f'.cl{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr));gap:8px}}'
+        f'.ui .cl .b{{padding:0 10px}}'
         f'.ui .cl .nx{{justify-content:flex-end}}'
         f'.cl svg[hidden]{{display:none}}')
     rise = 'they rise' if plural(first) else 'it rises'
@@ -577,17 +617,21 @@ def s_stepper_fail(ctx, m):
 
 # ------------------------------------------------------------------------------------------------ 11.15 the three marks
 def marks_css(ctx):
+    """The error, success and warning messages (Rule 11.15), in role short names (F-1, D2-1159). On Charcoal the Error
+    Band's short name is initial, so the message sits on the ground with its 4 px red bar at 4.49 to 1 (D2-1160)."""
     T, v = ctx.ty, ctx.v
+    for k in ('error.band', 'error.text', 'error.mark', 'success.mark', 'success.text', 'warning.mark', 'warning.text'):
+        v(f'oa.color.state.{k}.onNewsprint')        # recorded, as in ui_css
     return (f'.er{{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;margin-top:8px;padding:10px 12px;'
-            f'background:{v("oa.color.state.error.band.onNewsprint")};color:{v("oa.color.state.error.text.onNewsprint")};'
-            f'border-left:4px solid {v("oa.color.state.error.mark.onNewsprint")};{T("bodySmall")}}}'
+            f'background:{v("oa.color.state.error.band")};color:{v("oa.color.state.error.text")};'
+            f'border-left:4px solid {v("oa.color.state.error.mark")};{T("bodySmall")}}}'
             f'.er[hidden],.ok[hidden]{{display:none}}.er svg,.ok svg,.wn svg{{display:block;margin-top:-1px}}'
             f'.er b,.ok b,.wn b{{font-weight:700}}'
             f'.ok{{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;margin-top:12px;padding:10px 0;'
-            f'{T("bodySmall")}}}.ok svg{{color:{v("oa.color.state.success.mark.onNewsprint")}}}'
+            f'color:{v("oa.color.state.success.text")};{T("bodySmall")}}}.ok svg{{color:{v("oa.color.state.success.mark")}}}'
             f'.wn{{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;padding:10px 12px;'
-            f'border-left:4px solid {v("oa.color.state.warning.mark.onNewsprint")};{T("bodySmall")}}}'
-            f'.wn svg{{color:{v("oa.color.state.warning.mark.onNewsprint")}}}')
+            f'color:{v("oa.color.state.warning.text")};border-left:4px solid {v("oa.color.state.warning.mark")};{T("bodySmall")}}}'
+            f'.wn svg{{color:{v("oa.color.state.warning.mark")}}}')
 
 
 def s_form(ctx, m):
@@ -597,12 +641,12 @@ def s_form(ctx, m):
         f'.f{{margin:0 0 16px}}.l{{display:block;{T("ui")};font-weight:600}}.h{{{T("caption")};color:var(--sec)}}'
         f'.ui .in{{display:block;box-sizing:border-box;width:100%;min-height:48px;margin-top:6px;padding:0 12px;'
         f'border:1px solid var(--edge);background:var(--paper);color:var(--ink);{T("body")}}}'
-        f'.ui .in[aria-invalid="true"]{{border-left:4px solid {v("oa.color.state.error.mark.onNewsprint")};padding-left:9px}}'
+        f'.ui .in[aria-invalid="true"]{{border-left:4px solid {v("oa.color.state.error.mark")};padding-left:9px}}'
         f'.ui .ask{{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border:0;cursor:pointer;'
-        f'background:{v("oa.component.button.ask.fill.onNewsprint")};color:{v("oa.component.button.ask.label.onNewsprint")};'
-        f'box-shadow:inset 0 0 0 1px {v("oa.component.button.ask.keyline.onNewsprint")};{T("ask")}}}'
-        f'.ui .ask[data-yield]{{background:{v("oa.component.button.primary.fill.onNewsprint")};'
-        f'color:{v("oa.component.button.primary.label.onNewsprint")};box-shadow:none}}'
+        f'background:{v("oa.component.button.ask.fill")};color:{v("oa.component.button.ask.label")};'
+        f'box-shadow:inset 0 0 0 1px {v("oa.component.button.ask.keyline")};{T("ask")}}}'
+        f'.ui .ask[data-yield]{{background:{v("oa.component.button.primary.fill")};'
+        f'color:{v("oa.component.button.primary.label")};box-shadow:none}}'
         f'@media (forced-colors:active){{.ui .ask{{border:1px solid ButtonText}}}}')
 
     def field(key, label, hint, attrs):
@@ -810,6 +854,7 @@ def build_ui(ctx, m, rule_titles):
     verd = r('oa.color.state.success.mark.onNewsprint', 'oa.color.surface.newsprint')
     ring = r('oa.color.focus.ring.onNewsprint', 'oa.color.surface.newsprint')
     loop_title, _, lsteps = loop_steps(m)
+    n_lib = len(library_data(m))
     pace_lo, pace_hi = min(x[2] for x in lsteps) / 1000, max(x[2] for x in lsteps) / 1000
     files = ['work/build/assets/utility/svg-24/', 'work/build/assets/utility/svg-16/',
              'work/build/assets/utility/20261110_Utility-Icons-Manifest.json']
@@ -897,7 +942,11 @@ def build_ui(ctx, m, rule_titles):
             'builders': ['Turn and mirror the arrow and the chevron with the transforms in the utility manifest, on the '
                          '<code>&lt;use&gt;</code>, so every line stays on the pixel grid. At 16 px the down arrow is a '
                          'mirror across the diagonal, <code>matrix(0 1 1 0 0 0)</code>, which keeps its shaft on the up '
-                         'arrow’s pixel column.'],
+                         'arrow’s pixel column.',
+                         'Give a search field <code>type="search"</code> and let the Escape key clear it. On a product '
+                         'page, wrap the field, its filters and its status line in a search landmark, '
+                         '<code>&lt;div role="search"&gt;</code>. Write the count and any advice to that one status line, '
+                         f'such as “0 of {n_lib} symbols. No symbol matches. Clear the search or the filters to see more.”'],
         },
         {
             'id': '11.13', 'title': 'Mark a link to another site, and open it in the same tab.',

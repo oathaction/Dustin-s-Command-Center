@@ -12,14 +12,14 @@
   {
    "id": "08.1",
    "title": "Draw the lockmark from its master for its size, and keep its drawing fixed.",
-   "rule": "The lockmark is a three by three grid of nodes joined around its edge and through its center, with the lever in signature red at bottom right. It has four masters. Place the 16 px master from 16 to 23 px, the 24 px master from 24 to 47 px, the 48 px master at 48 px in the masthead and the sign-off, and the display master, drawn for our brand guide’s fifth edition, from 49 px. Each master keeps the nine nodes in the same order, their links and the lever at bottom right. The 16, 24 and 48 px masters sit on the pixel grid and draw the nodes and the lever heavier than the display master, so the drawing holds at the sizes each one serves.",
+   "rule": "The lockmark is a three by three grid of nodes joined around its edge and through its center, with the lever in signature red at bottom right. It has four masters. Place the 16 px master from 16 to 23 px, the 24 px master from 24 to 47 px, the 48 px master at 48 px in the masthead and on a cover or poster and at exactly twice that, 96 px, in a social card’s sign-off, and the display master, drawn for our brand guide’s fifth edition, at every other size from 49 px. Each master keeps the nine nodes in the same order, their links and the lever at bottom right. The 16, 24 and 48 px masters sit on the pixel grid and draw the nodes and the lever heavier than the display master, so the drawing holds at the sizes each one serves.",
    "tokens": [
     "oa.color.identity.signature.onNewsprint",
     "oa.color.palette.stone"
    ],
    "why": {
-    "text": "At small sizes our fifth edition’s single master lost its shape: at 24 px only 5 percent of its ink was solid, and at 16 px the lever became one pink pixel. The small masters set every node and link on whole pixels and draw the lever one size up, so it still reads as the place where one change moves the rest. At 48 px the display master covers 15 percent of its field with ink, against 42 percent for the 24 px master at 24 px, so the masthead and the sign-off take a 48 px master drawn the same way, which covers 22 percent. In the 24 and 48 px masters each node and the lever is one outline on the pixel grid, so between their sizes the nodes stay whole. The 48 px master serves 48 px alone, since at other sizes its edges fall between pixels and soften.",
-    "basis": "Our measurements, October and November 2026; the 48 px master and the rebuilt 24 and 48 px files approved by our founder and editor in November 2026"
+    "text": "At small sizes our fifth edition’s single master lost its shape: at 24 px only 5 percent of its ink was solid, and at 16 px the lever became one pink pixel. The small masters set every node and link on whole pixels and draw the lever one size up, so it still reads as the place where one change moves the rest. At 48 px the display master covers 15 percent of its field with ink, against 42 percent for the 24 px master at 24 px, so the masthead and the sign-off take a 48 px master drawn the same way, which covers 22 percent. In the 24 and 48 px masters each node and the lever is one outline on the pixel grid, so between their sizes the nodes stay whole. The 48 px master serves 48 px and exactly twice that, 96 px, where each of its pixels becomes a block of 2 by 2. At any other size its edges fall between pixels and soften.",
+    "basis": "Our measurements, October and November 2026; the 48 px master, the rebuilt 24 and 48 px files and the 96 px sign-off on social cards approved by our founder and editor in November 2026"
    },
    "correct": {
     "specimen": "s-08-1-correct",
@@ -62,11 +62,11 @@
     },
     {
      "label": "48 px master",
-     "value": "Centers at 4.5, 23.5 and 42.5 px; 7 px nodes; 9 px lever; at 48 px only"
+     "value": "Centers at 4.5, 23.5 and 42.5 px; 7 px nodes; 9 px lever; at 48 px, and at exactly 96 px in a social card’s sign-off"
     },
     {
      "label": "Display master",
-     "value": "The field and node sizes above, from 49 px; its links stay 1 px wide at every size"
+     "value": "The field and node sizes above, at every size from 49 px but a social card’s 96 px sign-off; its links stay 1 px wide at every size"
     },
     {
      "label": "Print",
@@ -83,22 +83,22 @@
     "03",
     "05"
    ],
-   "builders": "The lockmark files read <code>--link</code> for the links and <code>--lever</code> for the lever. Leave the lever on the signature token; on Prussian, place the White file from <code>prussian/</code>. Place the 48 px master at exactly 48 px on whole pixels, the size its pixel grid was drawn for. The 24 and 48 px files this rule lists draw each node and the lever as one outline; the earlier files, one rect per pixel row, stay in the folder only as the record. The display master keeps our fifth edition’s drawing, with its links held at 1 px at every size."
+   "builders": "The lockmark files read <code>--link</code> for the links and <code>--lever</code> for the lever. Leave the lever on the signature token; on Prussian, place the White file from <code>prussian/</code>. Place the 48 px master on whole pixels at exactly 48 px, the size its pixel grid was drawn for, or at exactly 96 px in a social card’s sign-off. The 24 and 48 px files this rule lists draw each node and the lever as one outline; the earlier files, one rect per pixel row, stay in the folder only as the record. The display master keeps our fifth edition’s drawing, with its links held at 1 px at every size."
   },
   {
    "id": "08.2",
    "title": "Place the lockmark only in its four places, once in a view.",
-   "rule": "The lockmark signs four places, at the size each one sets: the masthead, where L3 sets it at 48 px beside the wordmark (Rule 03.6); the page header of a report or slide page, 24 px beside the section label; the footer, 24 px beside the tagline or 16 px beside a chart’s source line; and the sign-off, 48 px at the bottom right of a social card, cover or poster. Each place draws the master made for its size. A view shows the lockmark once, so when a masthead and a footer share a view, the footer keeps it.",
+   "rule": "The lockmark signs four places, at the size each one sets: the masthead, where L3 sets it at 48 px beside the wordmark (Rule 03.6); the page header of a report or slide page, 24 px beside the section label; the footer, 24 px beside the tagline or 16 px beside a chart’s source line; and the sign-off at the bottom right, 96 px on a social card and 48 px on a cover or poster. Each place draws the master made for its size, and a social card draws the 48 px master at exactly twice its size, so every pixel still lands whole. A view shows the lockmark once, so when a masthead and a footer share a view, the footer keeps it.",
    "tokens": [
     "oa.color.identity.signature.onNewsprint"
    ],
    "why": {
-    "text": "A signature works by turning up in the same place at the same size, so a reader finds it without looking. Because each place draws a master on whole pixels at the size it was made for, the four places read as one mark at the size each one sets. The 48 px master also keeps the sign-off visible when a feed shrinks a social card to 500 px wide or less, as the feed test in the specifications measures. Used as a bullet or scattered as decoration, the lockmark stops signing the page.",
+    "text": "A signature works by turning up in the same place at the same size, so a reader finds it without looking. Because each place draws a master on whole pixels, at the size it was made for or at exactly twice that, the four places read as one mark at the size each one sets. [run promotion_c_identity.py feed, then build again] Used as a bullet or scattered as decoration, the lockmark stops signing the page.",
     "basis": "Design judgment, approved by our founder and editor in November 2026"
    },
    "correct": {
     "specimen": "s-08-2-correct",
-    "caption": "The four places at true size: a 768 px site masthead with L3, its lockmark at 48 px; a report page header with the lockmark at 24 px beside the section label; a footer with the lockmark at 24 px beside the tagline, and a chart’s footer with it at 16 px beside the source line; and the bottom-right corner of a 1080 px social card with the lockmark at 48 px inside the 72 px margin."
+    "caption": "The four places at true size: a 768 px site masthead with L3, its lockmark at 48 px; a report page header with the lockmark at 24 px beside the section label; a footer with the lockmark at 24 px beside the tagline, and a chart’s footer with it at 16 px beside the source line; and the bottom-right corner of a 1080 px social card with the lockmark at 96 px inside the 72 px margin."
    },
    "failure": {
     "specimen": "s-08-2-failure",
@@ -107,7 +107,7 @@
    "specs": [
     {
      "label": "Masthead",
-     "value": "L3 on screens from 48em, 768 px at the default text size, and in the email header, from its masthead master: the 24 px wordmark master, 13 px of space and the lockmark at 48 px from its 48 px master (Rule 03.6)"
+     "value": "L3 on screens from 48em, 768 px at the default text size, and in the email header, from its masthead master: the 24 px wordmark master, 13 px of space and the lockmark at 48 px from its 48 px master (Rule 03.6). In print, L3’s print master, with the lockmark at the same 2.18 cap heights (Rule 03.2)"
     },
     {
      "label": "Page header",
@@ -119,7 +119,7 @@
     },
     {
      "label": "Sign-off",
-     "value": "48 px from the 48 px master, bottom right of social cards, covers and posters, inside the margin. In print, 0.50 in from the display master, since the 48 px master is drawn for a screen’s pixel grid"
+     "value": "Bottom right, inside the margin. On a social card, 96 px: the 48 px master drawn at exactly twice its size, so every node, link and the lever land on whole pixels. On a cover or poster, 48 px from the 48 px master. In print, 0.50 in from the display master, since the 48 px master is drawn for a screen’s pixel grid"
     },
     {
      "label": "Feed test",
@@ -131,7 +131,7 @@
     },
     {
      "label": "Feed test, our card",
-     "value": "The link-preview card in the identity proofs passes. At 500 px wide, its lockmark keeps 8 of 8 nodes and 11 red pixels; at 360 px, 8 of 8 nodes and 5 red pixels. Drawn on Charcoal, the same card keeps 8 of 8 nodes and 11 red pixels at 500 px, and 8 of 8 nodes and 5 red pixels at 360 px. Drawn on Prussian, it keeps 9 of 9 nodes at 500 px and 9 of 9 at 360 px"
+     "value": "[run promotion_c_identity.py feed after the build, then build again]. [run promotion_c_identity.py feed, then build again]"
     },
     {
      "label": "Once in a view",
@@ -144,6 +144,7 @@
    ],
    "files": [
     "work/build/assets/identity/lockups/20261110_L3-Horizontal-Master.svg",
+    "work/build/assets/identity/lockups/20261110_L3-Horizontal-Print-Master.svg",
     "work/build/assets/identity/lockmark/20261109_Lockmark-48px-Master-Outline.svg",
     "work/build/assets/identity/lockmark/20261109_Lockmark-24px-Master-Outline.svg",
     "work/build/assets/identity/lockmark/20261028_Lockmark-16px-Master.svg",
@@ -155,7 +156,7 @@
     "14",
     "23"
    ],
-   "builders": "Pick the master by the size the place sets: the 48 px master for the sign-off, and L3’s masthead master, which holds it already, for the masthead; the 24 px master in page headers and footers; and the 16 px master in a chart’s footer. Set each on whole pixels. Run the feed test on every new template for a social card, on the file you will upload, before it ships."
+   "builders": "Pick the master by the size the place sets: the 48 px master for the sign-off, at exactly 96 px on a social card and 48 px on a cover or poster; L3’s masthead master, which holds it already, for the masthead on screen, and L3’s print master for a masthead in print; the 24 px master in page headers and footers; and the 16 px master in a chart’s footer. Set each on whole pixels. Run the feed test on every new template for a social card, on the file you will upload, before it ships."
   },
   {
    "id": "08.3",
