@@ -31,7 +31,7 @@ Status: **done.** Every item in my row is in the files, and every check below ra
                         st('.oa-form-send', text='Sending')],
         status_has='Sending', status_el='.oa-form-status'),
    ```
-   Imported read-only with these two changes made in memory, the generator emits my keys file byte for byte. Until the lead lands them, `stage_c_ch18_build.py --check` names this one file as differing.
+   Imported read-only with these two changes made in memory, the generator emits my keys file byte for byte. Until the lead lands them, `stage_c_ch18_build.py --check` names this one file as differing. **Landed:** the lead's generator now carries both changes (lines 1905 and 1917), and `--check` reads “chapter 18: current”.
 2. **Words the lead may want** (chapter 18 is the lead's): Rule 18.17's builders could say “Give each field <code>aria-invalid="false"</code> until a send finds it wrong, and set it back to "false" once fixed, so a browser's own check of an email address says nothing while the reader types.” Nothing in the chapter is wrong without it.
 3. **Chapter 11's live form has the same behavior.** `s-11-15-correct` (systems designer, `apply_systems_ch11_ui.py`, line 692) draws its email field as `type="email"` with no `aria-invalid` until a send, so Chromium reports it invalid while an address with no @ is being typed. The same two-line change fixes it there, if the systems designer wants the two forms to agree.
 4. **The warning's bar. Accepted by the main session, done in the tracker** (the systems designer adds the same bar to `s-11-10-correct`). Rule 18.18 says a warning starts “Warning:” beside a 4 px bar in ink, and chapter 11's mark table (`s-11-marks`) draws its warning with that bar. Rule 11.10's plate (`s-11-10-correct`) and this tracker draw the check-date notice with the mark and the words and no bar. I left the tracker matching Rule 11.10's plate, which Rule 18.20 cites. If the studio wants the bar on the check-date notice too, it goes on both at once: the systems designer's plate and my tracker (one border-left and its padding). My recommendation: add the bar to both, so a warning looks the same everywhere.
@@ -97,3 +97,32 @@ Created: `work/handoffs/phase-2/20261111_Gate-2-Fix-Components-Notes.md` (this f
 Not touched: any generator, chapter, specimen, manifest, `guide_build.py`, `guide_check.js`, the shell, the tokens, `source/`, `work/ledger/`, a board or another owner's file. The generator chain rewrote files as the brief has every owner do, and left `work/build/guide` and `work/build/assets` byte for byte as it found them. Built only into my scratch folder. Nothing committed or pushed.
 
 Scratch, outside the repository: `before/` (the sets at the start of this pass), `tools/` (`anatomy_probe.py`, `keys_walk.js`, `keys_walk_dir.js`, `copy_check.js`, `copy_check_2x.js`, `sheet.py`), `build/` and `ch18/` (the strict builds, their reports and the walk results), `chain/` (hashes and logs of the chain), `copy/`, `copy-final/` and `copy2x/` (captures and results), `sheets/` (contact sheets).
+
+## Second pass
+
+DR-191's short second pass, from “## Fix pass read” in the editor's notes (`20261111_Gate-2-Editor-Notes.md`), item 7, the one fault in my sets.
+
+| Item | Set | Change |
+|---|---|---|
+| Editor 7 | `c-18-tabs.css`, `c-18-location.css`, `c-18-link.css`, `c-18-search.css` | The focus comment named no thing after “its 2 px”. Each now reads in the editor's words: “… takes its focus ring inside its edge: the 2 px ring and its 2 px gap sit in from the edge, as Rule 18.11 draws it, since …”, with each control's own reason after “since” unchanged. The tab's comment starts “The tab takes its focus ring” where it started “Focus: the ring sits inside the tab”, so the line holds one colon. Every line stays within 100 characters, and “Rule 18.11” stays on one line. |
+
+The editor's item 6 (Rule 18.11 names no gap or offset for a control, so these comments cite a rule that does not yet say it) is the accessibility lead's sentence in Rule 18.11. My comments need no other change once it lands.
+
+### Routine calls
+
+- D2-xxx | The four focus comments take the editor's words, with the tab's comment opening “The tab takes its focus ring” | Editor's item 7; one colon a sentence reads more easily than two |
+
+### Tested
+
+- `stage_c_ch18_build.py --check`: “chapter 18: current”, exit 0.
+- `guide_build.py --strict` of the whole guide into scratch after the change: exit 0, 0 warnings, 9,442,230 bytes; chapter 18 at 1,160,769 of 1,250,000.
+- The anatomy probe still moves only `s-18-09`, `s-18-17` and `s-18-20`: the comments reach no plate.
+- Every changed comment line measured: 99 characters at most.
+
+### Not tested
+
+- No capture or key walk after this pass: only comments changed, and a comment draws nothing and runs nothing.
+
+### Change log
+
+Modified, in `work/build/guide/code/`: `c-18-tabs.css`, `c-18-location.css`, `c-18-link.css`, `c-18-search.css` (comments only). Modified: this file, with this section. Nothing committed or pushed.

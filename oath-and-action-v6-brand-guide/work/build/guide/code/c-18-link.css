@@ -100,8 +100,9 @@
   border-left-color: var(--oa-color-state-selected-bar);
   font-weight: var(--oa-font-weight-bold);
 }
-/* A row in the list takes its ring inside, its 2 px and its 2 px gap in from the edge, as
-   Rule 18.11 draws it, since the rows touch and a ring outside would cross the next row */
+/* A row in the list takes its focus ring inside its edge: the 2 px ring and its 2 px gap sit in
+   from the edge, as Rule 18.11 draws it, since the rows touch and a ring outside would cross the
+   next row */
 .oa-link--item:focus-visible {
   outline-offset: calc(-1 * (var(--oa-border-width-focus-ring) + var(--oa-border-focus-offset)));
 }

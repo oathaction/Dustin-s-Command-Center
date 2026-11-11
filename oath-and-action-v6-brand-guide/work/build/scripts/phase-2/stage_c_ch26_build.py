@@ -642,7 +642,7 @@ def chapter():
         {"id": "26.1", "title": "Read every value through a token named for its job.",
          "rule": [f"A token is a named design value, and its name says its job and the surface it sits on. tokens.css and tokens.json hold the same {N_TOKENS} tokens in {len(CATEGORIES)} categories: {cats}. "
                   "A name runs from its category to its surface: <code>oa.color.text.secondary.onNewsprint</code> in tokens.json is "
-                  "<code>--oa-color-text-secondary-on-newsprint</code> in CSS. Each part of the name is a word you can look up, so a name tells you its job.",
+                  "<code>--oa-color-text-secondary-on-newsprint</code> in CSS. Each part of the name is a word you can look up.",
                   "Tokens come in three tiers. A primitive holds a value, such as Deep Stone. A semantic token gives a primitive one job on one surface, such as "
                   "disabled text on Newsprint. A component token gives one part of one component its value, such as the label of an unavailable button, and points to "
                   "a semantic token. Build with semantic and component tokens. A primitive is there for them to point to."],

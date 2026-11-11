@@ -150,6 +150,11 @@ def ratio(r):
     return f"{float(r):.2f} to 1"
 
 
+def threshold(r):
+    """A threshold in WCAG's own form, "3 to 1", "4.5 to 1"; a measured ratio keeps two decimals (the editor's read, item 12)."""
+    return f"{float(r):g} to 1"
+
+
 def contrast_html(p, toks):
     """The contrast a color measures where it serves: its own surface for a role, each listed surface for a primitive."""
     t = toks[p]
@@ -172,7 +177,7 @@ def contrast_html(p, toks):
         where = SURF.get(last) or SURF.get(sem.split(".")[-1]) or ""
         ground = alias(x.get("ground") or "")
         on = f"on {ground.split('.')[-2]} {ground.split('.')[-1][2:]}" if ground else f"on {where}"
-        bits = [f'<span class="tt-r">{ratio(x["contrast"])} {e(on)}</span>, {e(kind)}' + (f", needs {ratio(need)}" if need else "")]
+        bits = [f'<span class="tt-r">{ratio(x["contrast"])} {e(on)}</span>, {e(kind)}' + (f", needs {threshold(need)}" if need else "")]
         if x.get("keylineContrast"):
             bits.append(f"keyline {ratio(x['keylineContrast'])}")
         for g, r in (x.get("contrastAlso") or {}).items():
@@ -184,7 +189,7 @@ def contrast_html(p, toks):
     if isinstance(x.get("contrast"), dict):
         kind, need = KIND.get(x.get("kind"), (x.get("kind"), None))
         return "; ".join(f'<span class="tt-r">{ratio(r)} on {e(s.capitalize())}</span>' for s, r in x["contrast"].items()) \
-            + (f", {e(kind)}, needs {ratio(need)}" if need else (f", {e(kind)}" if kind else ""))
+            + (f", {e(kind)}, needs {threshold(need)}" if need else (f", {e(kind)}" if kind else ""))
     return ""
 
 

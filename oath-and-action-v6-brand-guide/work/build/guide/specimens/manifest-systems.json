@@ -1083,7 +1083,7 @@
   "chapter": "11",
   "rule": null,
   "width_px": null,
-  "alt": "The six steps every bill follows, drawn as a tracker draws them, each with its name and its state in words: 1 Filed, done, a filled circle; 2 Hearing, a heavy ring with a small red disc at its upper right, which says you can take part now; 3 Committee vote, 4 First chamber, 5 Second chamber and 6 Governor or President, not yet, fine rings. A line joins them, heavy as far as the bill has come and fine ahead. A line under it says every bill passes the same six steps, and this state bill is at its hearing, where the public can take part.",
+  "alt": "The six steps a tracker follows every bill through, drawn as a tracker draws them, each with its name and its state in words, for a state bill: 1 Filed, done, a filled circle; 2 Hearing, a heavy ring with a small red disc at its upper right, which says you can take part now; 3 Committee vote, 4 First chamber, 5 Second chamber and 6 Governor, not yet, fine rings. A line joins them, heavy as far as the bill has come and fine ahead. A line under it says a tracker follows every bill through the same six steps, and this state bill is at its hearing, where the public can take part.",
   "illustrative": false,
   "notes": "Chapter 11’s opener (Gate 2 fix pass, call 3, CD-S1): Rules 11.1 and 11.2’s marks at true size in one tracker, flowing with the column. The take-part disc is its one working red."
  },

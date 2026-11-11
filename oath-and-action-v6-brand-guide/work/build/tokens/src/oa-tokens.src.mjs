@@ -107,8 +107,8 @@ export const meta = {
   // tokens.css's header carries its change. The studio's decision codes sit in `record` alone (DR-218, BE-S7).
   changeNotes: [
     { version: '6.0.0-gate2.9', date: '2026-11-11',
-      tokens: 'oa.color.state.error.bar and its deprecated alias oa.color.state.error.mark; oa.color.state.selected.band; oa.size.icon.medium; oa.color.action.ask.fill',
-      change: 'Descriptions only; no token is renamed and no value changes. The error bar no longer records a Charcoal keyline: it repeats the error mark and the word "Error:", which carry the error, so it takes none, as the guide draws it. The selected band is the ground of the current or selected row in a list, paired with the 4 px bar and bold words, and says which marks may sit inside it in the dark theme. The 24 px icon size names the 37 topic and atlas symbols on Rule 10.4\'s list. The ask fill says it is Newsprint on Prussian.',
+      tokens: 'oa.color.state.error.bar and its deprecated alias oa.color.state.error.mark; oa.color.state.selected.band; oa.size.icon.medium; oa.color.action.ask.fill; and every description that wrote a contrast ratio with a colon',
+      change: 'Descriptions only; no token is renamed and no value changes. The error bar no longer records a Charcoal keyline: it repeats the error mark and the word "Error:", which carry the error, so it takes none, as the guide draws it. The selected band is the ground of the current or selected row in a list, paired with the 4 px bar and bold words, and says which marks may sit inside it in the dark theme. The 24 px icon size names the 37 topic and atlas symbols on Rule 10.4\'s list. The ask fill says it is Newsprint on Prussian. Every contrast ratio in a description reads as the guide writes it, "2.96 to 1".',
       reason: 'Each description now says what the chapters say and what the page draws: chapter 26\'s table prints them for readers, and tokens.json carries them to every product.',
       record: 'Gate 2 fix pass: DT-S5, DT-S6, AX-1, AX-2', gate: 'Gate 2' },
     { version: '6.0.0-gate2.8', date: '2026-11-11',
@@ -134,20 +134,20 @@ export const meta = {
 // The register of measured needs (condition 1 of the rule for adding a token).
 export const needs = {
   'N-01':
-    'Secondary small text on Newsprint: Stone measures 4.29:1; 49 Stone-on-Newsprint text failures in the V5 census; Concepts V2 already uses #4E535C 1,606 times',
-  'N-02': 'Secondary text on Charcoal and Prussian: Stone measures 3.10:1 and 2.20:1; 8 failures in the V5 census',
+    'Secondary small text on Newsprint: Stone measures 4.29 to 1; 49 Stone-on-Newsprint text failures in the V5 census; Concepts V2 already uses #4E535C 1,606 times',
+  'N-02': 'Secondary text on Charcoal and Prussian: Stone measures 3.10 to 1 and 2.20 to 1; 8 failures in the V5 census',
   'N-03':
-    'Error message ground that holds 13 px text: Charcoal on Pillar Red is 4.49:1 and White on Pillar Red 4.17:1',
+    'Error message ground that holds 13 px text: Charcoal on Pillar Red is 4.49 to 1 and White on Pillar Red 4.17 to 1',
   'N-05':
     'Chart structure that recedes behind the data (gridlines, tracks, bands, light fills, map land): no palette color sits between a ground and Stone. Measured in the Explainer system (DR-52) and the palette lab (D2-95)',
   'N-06':
-    'Context marks on Charcoal one step quieter than secondary text: Dim Newsprint carries secondary text there at 7.26:1, so context lines need their own ink (Explainer dark view, palette lab "Context, quieter" at 5.41:1)',
+    'Context marks on Charcoal one step quieter than secondary text: Dim Newsprint carries secondary text there at 7.26 to 1, so context lines need their own ink (Explainer dark view, palette lab "Context, quieter" at 5.41 to 1)',
   'N-07':
     'Diverging pair B (DR-54) needs a light step on each side and a midpoint tinted toward the ground; no palette color supplies them',
   'N-08':
     'One-sided magnitude scales (S16 turnout in the stretch test, approved with Board 4 under DR-62) need five ordered Verdigris steps per ground',
   'N-09':
-    'Phone tile maps of shifts draw gray steps by size (DR-64): four ordered Stone steps per ground, each holding a 4.5:1 label',
+    'Phone tile maps of shifts draw gray steps by size (DR-64): four ordered Stone steps per ground, each holding a 4.5 to 1 label',
 };
 
 // Values registered at Gate 1 that are not tokens. They stay out of tokens.json and tokens.css.
@@ -156,7 +156,7 @@ export const held = {
     hex: '#59857D',
     derivation: 'Verdigris 10% toward Newsprint in OKLab',
     need: 'N-04',
-    needText: 'Verdigris status marks on Prussian measure 2.80:1',
+    needText: 'Verdigris status marks on Prussian measure 2.80 to 1',
     status: 'held',
     reason: 'Success on Prussian takes Newsprint (section 4), so no token needs this value; it waits for the Signal Grid chapter',
   },
@@ -197,7 +197,7 @@ const palette = {
     { tier: 'primitive', status: 'locked', job: 'Signature red and the one working red per view', lockedIn: 'Master Brief V2 section 3' }),
   prussian: tok('color', hex('#1F2D5A'), 'Prussian, the depth surface for panels and explainers. Red never sits on it.',
     { tier: 'primitive', status: 'locked', job: 'Depth surface for panels and explainers', lockedIn: 'Master Brief V2 section 3' }),
-  stone: tok('color', hex('#5D636D'), 'Stone, hairlines, structure and context marks. Too light for small text on Newsprint (4.29:1).',
+  stone: tok('color', hex('#5D636D'), 'Stone, hairlines, structure and context marks. Too light for small text on Newsprint (4.29 to 1).',
     { tier: 'primitive', status: 'locked', job: 'Hairlines, structure and context marks', lockedIn: 'Master Brief V2 section 3' }),
   verdigris: tok('color', hex('#4A7C74'), 'Verdigris, success marks and the focus ring on light surfaces.',
     { tier: 'primitive', status: 'locked', job: 'Success marks and focus on light surfaces', lockedIn: 'Master Brief V2 section 3' }),
@@ -347,7 +347,7 @@ const color = {
         Object.fromEntries(SURF4.map((s) => [s, { motion: 'none' }]))),
     },
     selected: {
-      band: semantic('background', 'Ground of the current or selected row in a list. Pair it with the 4 px bar and bold words (Rule 17.10). The band holds its words, the bar and a check. On Charcoal it is Prussian, so a success mark inside it takes Newsprint, and an error or an ask sits outside it, since red never sits on Prussian (Rule 05.3).',
+      band: semantic('background', 'Ground of the current or selected row in a list. Pair it with the 4 px bar and bold words (Rule 17.10). It holds its words, its bar and, where the row is a choice, a check. On Charcoal it is Prussian, so a success mark set inside it takes Newsprint, as it does on any Prussian ground, and an error or an ask sits outside it, since red never sits on Prussian (Rule 05.3).',
         { newsprint: P('white'), white: P('newsprint'), charcoal: P('prussian'), prussian: P('charcoal') },
         Object.fromEntries(SURF4.map((s) => [s, { textOnIt: [`{oa.color.text.primary.${SURFACE_KEY[s]}}`, `{oa.color.text.secondary.${SURFACE_KEY[s]}}`] }]))),
       bar: semantic('graphic', 'The 4 px bar beside a selected item, drawn on the selected band.',
@@ -504,8 +504,8 @@ const border = {
 
 const opacity = {
   $description: 'Two decorative jobs and no others. A color token is never transparent.',
-  watermarkOnLight: tok('number', 0.08, 'Charcoal watermark on Newsprint or White. Decoration only: it measures 1.17:1 and never carries meaning.', { composite: { ink: '{oa.color.palette.charcoal}', ground: '{oa.color.palette.newsprint}' } }),
-  watermarkOnDark: tok('number', 0.10, 'Newsprint watermark on Charcoal or Prussian. Decoration only: it measures 1.24:1 and never carries meaning.', { composite: { ink: '{oa.color.palette.newsprint}', ground: '{oa.color.palette.charcoal}' } }),
+  watermarkOnLight: tok('number', 0.08, 'Charcoal watermark on Newsprint or White. Decoration only: it measures 1.17 to 1 and never carries meaning.', { composite: { ink: '{oa.color.palette.charcoal}', ground: '{oa.color.palette.newsprint}' } }),
+  watermarkOnDark: tok('number', 0.10, 'Newsprint watermark on Charcoal or Prussian. Decoration only: it measures 1.24 to 1 and never carries meaning.', { composite: { ink: '{oa.color.palette.newsprint}', ground: '{oa.color.palette.charcoal}' } }),
 };
 
 const motion = {
@@ -560,7 +560,7 @@ const chartColor = {
   baseline: component('The zero baseline and reference rules, 1.5 px.', NC('{oa.color.data.emphasis.onNewsprint}', '{oa.color.data.emphasis.onCharcoal}')),
   leader: component('Leaders from a note to its mark, 1 px.', NC('{oa.color.data.context.onNewsprint}', '{oa.color.data.context.onCharcoal}')),
   point: component('The one point a title names, in working red at the third rank. Only when no error or ask holds the view\'s red.', NC('{oa.color.data.emphasisRed.onNewsprint}', '{oa.color.data.emphasisRed.onCharcoal}')),
-  pointKeyline: component('The 1 px keyline around a red point on Newsprint, where Pillar Red measures 2.96:1.', { newsprint: '{oa.color.border.strong.onNewsprint}' }),
+  pointKeyline: component('The 1 px keyline around a red point on Newsprint, where Pillar Red measures 2.96 to 1.', { newsprint: '{oa.color.border.strong.onNewsprint}' }),
   party: {
     mark: component('Every mark that stands for a party\'s lead, vote or share: one neutral ink for every party, with the party named on the mark.', NC('{oa.color.data.emphasis.onNewsprint}', '{oa.color.data.emphasis.onCharcoal}'),
       { newsprint: { partyMark: true }, charcoal: { partyMark: true } }),
@@ -591,7 +591,7 @@ const chartColor = {
       { newsprint: { valuesPrinted: true, scale: 'sequential', step: i }, charcoal: { valuesPrinted: true, scale: 'sequential', step: i } })),
     label: steps(5, (i) => semantic('text', `Text on sequential step ${i}.`, NC(P(SEQ_LABEL_N[i - 1]), P(SEQ_LABEL_C[i - 1])),
       { newsprint: { ground: `{oa.chart.color.sequential.fill.step${i}.onNewsprint}` }, charcoal: { ground: `{oa.chart.color.sequential.fill.step${i}.onCharcoal}` } })),
-    outline: semantic('graphic', 'Outline of a sized circle on a sequential map: the strongest step, holding 3:1 on the ground and on the land.', NC(T(SEQ_N[4]), T(SEQ_C[4])),
+    outline: semantic('graphic', 'Outline of a sized circle on a sequential map: the strongest step, holding 3 to 1 on the ground and on the land.', NC(T(SEQ_N[4]), T(SEQ_C[4])),
       { newsprint: { groundsAlso: ['{oa.chart.color.land.onNewsprint}'] }, charcoal: { groundsAlso: ['{oa.chart.color.land.onCharcoal}'] } }),
   },
   magnitude: {

@@ -880,7 +880,7 @@ ANATOMY = [
     'Play. A player of the wordmark or the lockmark rests on its master.',
     'The status line, which says in words what the frame shows. A screen reader hears it when it changes.',
     'Play, one button that turns to Pause while the motion runs and to Play again at its end. Its icon and its word change together.',
-    'Reset, named for what it returns, here the link, which takes the player back to where it rests. At rest it is '
+    'Reset the link, named for what it resets. It takes the player back to where it rests. At rest it is '
     'unavailable and keeps focus.',
     'Slow motion, which plays at one tenth speed, so Pause has time to work.',
     'The reason line, which says why a control is unavailable and what makes it available.',
@@ -1610,8 +1610,8 @@ def build_chapter():
             'changes its icon and its word together, then reads Play again at the end.',
             'A player of a state or a mechanism rests on its first frame, where the change starts. For the wordmark or '
             'the lockmark, the player rests on the master itself, so a reader who never presses Play still sees the '
-            'whole mark; Play then steps to the first frame and runs to the master. Reset, named for what it returns, '
-            'such as Reset the bill (Rule 11.14), takes either kind back to where it rests, and at rest it is '
+            'whole mark; Play then steps to the first frame and runs to the master. Reset, named for what it resets, '
+            'such as “Reset the bill” (Rule 11.14), takes either kind back to where it rests, and at rest it is '
             'unavailable and says why.',
             'Beside every player sits its still view: the first and last frames at true size, each with its time and the '
             'words for what it shows, then each step of the motion in order. A status line says the same words when the '
@@ -1635,8 +1635,8 @@ def build_chapter():
         'specs': [
             {'label': 'Play and Pause', 'value': 'One button; its icon and word change together: Play, Pause, Play again'},
             {'label': 'At rest', 'value': 'A state or a mechanism: its first frame. The wordmark or the lockmark: its master'},
-            {'label': 'Reset', 'value': 'Named for its object, such as Reset the bill; returns the player to where it '
-                                        'rests; unavailable at rest, with its reason'},
+            {'label': 'Reset', 'value': 'Named for what it resets, such as “Reset the bill”; takes the player back to '
+                                        'where it rests; unavailable at rest, with its reason'},
             {'label': 'Slow motion', 'value': 'A check box that plays at one tenth speed; unavailable under reduced motion, with its reason'},
             {'label': 'Still view', 'value': 'First and last frames at true size, each with its time and words, then the steps in order'},
             {'label': 'Status line', 'value': 'Polite, so a screen reader waits until it finishes speaking; it says Playing, Paused and the words of the frame the motion stops on'},
@@ -1886,7 +1886,7 @@ def build_chapter():
 
     rules.append({
         'id': '17.9',
-        'title': 'Show hover and focus with an underline, an edge or a ring.',
+        'title': 'Show hover with an underline or an edge and focus with a ring.',
         'rule': [
             'Hover underlines a label, grows a link’s underline from 1 to 2 px, or thickens a quiet control’s 1 px edge '
             'to 2 px. A quiet control is a button drawn as its word in ink inside that edge, on the page’s own ground. A '
@@ -1945,9 +1945,9 @@ def build_chapter():
             'Links and lists of places keep their own marks for the current place. A link to the page a reader is on '
             'takes bold words, with a 2 px underline in a masthead and none at the end of a breadcrumb, and a rail '
             'or a list takes the selected band, its 4 px bar and bold words.',
-            'Inside the band go only its words, its bar and a check where the row is a choice. On Charcoal the band is '
-            'Prussian, so a success mark inside it takes Newsprint, as it does on any Prussian ground, and an error or '
-            'an ask sits outside the band, since red never sits on Prussian (Rule 05.3).'],
+            'The band holds its words, its bar and, where the row is a choice, a check. On Charcoal the band is '
+            'Prussian, so a success mark set inside it takes Newsprint, as it does on any Prussian ground, and an error '
+            'or an ask sits outside the band, since red never sits on Prussian (Rule 05.3).'],
         'tokens': ['oa.border.width.rule', 'oa.color.border.strong.onNewsprint', 'oa.color.state.selected.band.onNewsprint',
                    'oa.color.state.selected.bar.onNewsprint'],
         'why': {'text': [

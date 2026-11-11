@@ -921,7 +921,7 @@ def build():
              builders=['Run an action on the <code>click</code> event, which fires when the press ends, and never on '
                        '<code>pointerdown</code> or <code>touchstart</code>. Give a drag or a pinch a button that does the same, and '
                        'give every keyboard shortcut a modifier key, as in Control and K.']),
-        dict(id='19.6', title='Keep every word when text grows, spacing opens or the screen turns.',
+        dict(id='19.6', title='Keep every word and control when text grows, spacing opens or the screen turns.',
              rule=['A page keeps every word and control when the reader doubles the text size, widens the spacing between '
                    'lines, words and letters, or turns the phone on its side. Labels wrap where they would overflow, a row '
                    'of two buttons stacks, and no page locks itself to one orientation. Reflow at 320 px is Rule 07.6.'],

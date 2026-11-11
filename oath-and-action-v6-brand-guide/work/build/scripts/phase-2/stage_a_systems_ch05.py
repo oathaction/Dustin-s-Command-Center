@@ -1293,9 +1293,9 @@ def build(ctx):
                                        'label on a fill passes 4.5 to 1. Chapter 14 holds the full chart palette, with the '
                                        'dark ground and the grayscale proofs of each chart.'},
                 'failure': {'specimen': 's-05-7-failure',
-                            'caption': '<strong>Fails Rule 05.7.</strong> A scale from red to blue reads as Republican '
-                                       'against Democratic before anyone reads its key, which Rules 01.1 and 01.3 keep out of '
-                                       'our charts, and it spends the view’s red on every rising cell.'},
+                            'caption': '<strong>Fails Rule 05.7.</strong> A scale from red to blue, which Rules 01.1 and '
+                                       '01.3 keep out of our charts, reads as Republican against Democratic before anyone '
+                                       'reads its key, and it spends the view’s red on every rising cell.'},
                 'specs': [
                     {'label': 'Chart ground', 'value': 'Newsprint; Charcoal for dark views', 'token': 'oa.color.surface.newsprint'},
                     {'label': 'Subject', 'value': f'Charcoal, {ch_n} to 1', 'token': 'oa.chart.color.subject.onNewsprint'},

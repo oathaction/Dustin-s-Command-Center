@@ -32,7 +32,7 @@
   "width_px": null,
   "alt": "The record of Deep Stone, #4E535B, against the five conditions, each marked Met: the need (Stone measures 4.29 to 1 for small secondary text on Newsprint, 49 failures counted), the value (Stone mixed 18 percent toward Charcoal in OKLab), one job (secondary and disabled text on Newsprint and White), its contrast (5.49 to 1 on Newsprint, 7.74 on White) and its description, tier and status.",
   "illustrative": false,
-  "notes": "From tokens.json: the need register's N-01 (Secondary small text on Newsprint: Stone measures 4.29:1; 49...), the derivation and the stored contrast; ratios recomputed here."
+  "notes": "From tokens.json: the need register's N-01 (Secondary small text on Newsprint: Stone measures 4.29 to 1;...), the derivation and the stored contrast; ratios recomputed here."
  },
  "s-26-2-failure": {
   "chapter": "26",
@@ -193,7 +193,7 @@
   "chapter": "26",
   "rule": "26.8",
   "width_px": null,
-  "alt": "The change note of version 6.0.0-gate2.9, as tokens.json records it. Date: November 11, 2026. Tokens: oa.color.state.error.bar and its deprecated alias oa.color.state.error.mark; oa.color.state.selected.band; oa.size.icon.medium; oa.color.action.ask.fill. Change: Descriptions only; no token is renamed and no value changes. The error bar no longer records a Charcoal keyline: it repeats the error mark and the word \"Error:\", which carry the error, so it takes none, as the guide draws it. The selected band is the ground of the current or selected row in a list, paired with the 4 px bar and bold words, and says which marks may sit inside it in the dark theme. The 24 px icon size names the 37 topic and atlas symbols on Rule 10.4’s list. The ask fill says it is Newsprint on Prussian. Why: Each description now says what the chapters say and what the page draws: chapter 26’s table prints them for readers, and tokens.json carries them to every product.",
+  "alt": "The change note of version 6.0.0-gate2.9, as tokens.json records it. Date: November 11, 2026. Tokens: oa.color.state.error.bar and its deprecated alias oa.color.state.error.mark; oa.color.state.selected.band; oa.size.icon.medium; oa.color.action.ask.fill; and every description that wrote a contrast ratio with a colon. Change: Descriptions only; no token is renamed and no value changes. The error bar no longer records a Charcoal keyline: it repeats the error mark and the word \"Error:\", which carry the error, so it takes none, as the guide draws it. The selected band is the ground of the current or selected row in a list, paired with the 4 px bar and bold words, and says which marks may sit inside it in the dark theme. The 24 px icon size names the 37 topic and atlas symbols on Rule 10.4’s list. The ask fill says it is Newsprint on Prussian. Every contrast ratio in a description reads as the guide writes it, \"2.96 to 1\". Why: Each description now says what the chapters say and what the page draws: chapter 26’s table prints them for readers, and tokens.json carries them to every product.",
   "illustrative": false,
   "notes": "The newest change note in tokens.json, read at build."
  },

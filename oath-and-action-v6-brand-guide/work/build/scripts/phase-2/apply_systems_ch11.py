@@ -1162,10 +1162,11 @@ def s_11_10(ctx):
 def s_opener(ctx):
     """Chapter 11's opener (Gate 2 fix pass, call 3, CD-S1): the six steps every bill follows, drawn with the tracker's
     marks at true size, each with its name and its state in words. A state bill at its hearing, step 2, where the
-    public can take part, so the take-part disc is the opener's one working red. Across the column from 36rem, with
+    public can take part, so the take-part disc is the opener's one working red, and step 6 is Governor, who signs a
+    state bill (Rule 11.1). Across the column from 36rem, with
     each name under its step; upright below, as a bill's own page turns them (Rule 11.6). A picture with an alt."""
     st = ['done', 'take', 'notyet', 'notyet', 'notyet', 'notyet']
-    nm = [n for n, _ in STEPS[:5]] + ['Governor or President']
+    nm = names('state')
     lis = []
     for i, s_ in enumerate(st):
         seg = 'end' if i == 5 else ('on' if st[i + 1] != 'notyet' else 'off')
@@ -1190,13 +1191,14 @@ def s_opener(ctx):
            '.ot li.off::after{left:calc(50% + 13px);width:calc(100% - 26px);top:19.5px;height:1px}'
            '.t{align-items:center;padding-top:4px}.ln{margin-top:20px}}')
     html = (f'<style>{css}</style><div class="op"><ol class="ot">{"".join(lis)}</ol>'
-            '<p class="ln">Every bill passes the same six steps. Here a state bill is at its hearing, where the public '
-            'can take part.</p></div>')
-    alt = ('The six steps every bill follows, drawn as a tracker draws them, each with its name and its state in words: '
-           '1 Filed, done, a filled circle; 2 Hearing, a heavy ring with a small red disc at its upper right, which says '
-           'you can take part now; 3 Committee vote, 4 First chamber, 5 Second chamber and 6 Governor or President, not '
-           'yet, fine rings. A line joins them, heavy as far as the bill has come and fine ahead. A line under it says '
-           'every bill passes the same six steps, and this state bill is at its hearing, where the public can take part.')
+            '<p class="ln">A tracker follows every bill through the same six steps. Here a state bill is at its hearing, '
+            'where the public can take part.</p></div>')
+    alt = ('The six steps a tracker follows every bill through, drawn as a tracker draws them, each with its name and its '
+           'state in words, for a state bill: 1 Filed, done, a filled circle; 2 Hearing, a heavy ring with a small red '
+           'disc at its upper right, which says you can take part now; 3 Committee vote, 4 First chamber, 5 Second '
+           'chamber and 6 Governor, not yet, fine rings. A line joins them, heavy as far as the bill has come and fine '
+           'ahead. A line under it says a tracker follows every bill through the same six steps, and this state bill is '
+           'at its hearing, where the public can take part.')
     return spec(ctx, 's-11-opener', html, None, alt,
                 notes='Chapter 11’s opener (Gate 2 fix pass, call 3, CD-S1): Rules 11.1 and 11.2’s marks at true size '
                       'in one tracker, flowing with the column. The take-part disc is its one working red.')

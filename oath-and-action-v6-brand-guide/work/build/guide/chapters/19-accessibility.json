@@ -273,7 +273,7 @@
     },
     {
       "id": "19.6",
-      "title": "Keep every word when text grows, spacing opens or the screen turns.",
+      "title": "Keep every word and control when text grows, spacing opens or the screen turns.",
       "rule": [
         "A page keeps every word and control when the reader doubles the text size, widens the spacing between lines, words and letters, or turns the phone on its side. Labels wrap where they would overflow, a row of two buttons stacks, and no page locks itself to one orientation. Reflow at 320 px is Rule 07.6."
       ],

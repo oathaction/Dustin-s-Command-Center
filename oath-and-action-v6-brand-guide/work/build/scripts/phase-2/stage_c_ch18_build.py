@@ -274,6 +274,12 @@ rule(n=1, set='c-18-button', name='Buttons',
            'and otherwise to the step a reader can take now. The ask stands on a row of its own, apart from any primary '
            'button, whose hover turns Prussian on Newsprint, so the ask’s red never meets Prussian (Rule 05.3). Every other '
            'button is quiet: its word in ink inside a 1 px edge. A utility icon sits beside the word (Rule 11.11).',
+           'Every component in this chapter hands a screen reader three things: its accessible name, the words a screen '
+           'reader says for it; its role, such as button; and its state, such as pressed. When something changes, the code '
+           'writes a sentence into a status line, a line on the page that a screen reader reads at its next pause. Each '
+           'screen reader words all of this its own way. ARIA, short for Accessible Rich Internet Applications, is W3C’s set '
+           'of attributes that gives a role or a state where HTML has none, and each rule names the pattern it follows in '
+           'the ARIA Authoring Practices Guide (APG), W3C’s worked examples of each control.',
            'When an action cannot run yet, its button stays in place and keeps its focus. It carries aria-disabled, draws '
            'a dashed edge and points to a line under it that says why and what makes it work, such as “Fill in your email '
            'to send.” While a send runs, its word reads “Sending” and a second press does nothing. While an error on the '
@@ -284,13 +290,7 @@ rule(n=1, set='c-18-button', name='Buttons',
              '--oa-component-button-primary-label', '--oa-component-button-ask-fill', '--oa-component-button-ask-label',
              '--oa-component-button-ask-keyline', '--oa-component-button-disabled-label',
              '--oa-component-button-disabled-edge', 'oa.size.target.touch'],
-     why=['Every component in this chapter hands a screen reader three things: its accessible name, the words a screen '
-          'reader says for it; its role, such as button; and its state, such as pressed. When something changes, the code '
-          'writes a sentence into a status line, a line on the page that a screen reader reads at its next pause. Each '
-          'screen reader words all of this its own way. ARIA, short for Accessible Rich Internet Applications, is W3C’s set '
-          'of attributes that gives a role or a state where HTML has none, and each rule names the pattern it follows in '
-          'the ARIA Authoring Practices Guide (APG), W3C’s worked examples of each control.',
-          'A native button gives every reader the Tab key, Enter, Space and the role “button” with no script. The disabled '
+     why=['A native button gives every reader the Tab key, Enter, Space and the role “button” with no script. The disabled '
           'attribute would take the button out of the Tab order and hide its reason with it, so an unavailable button '
           'carries aria-disabled, which keeps both in reach. An underline on hover and a dashed edge when unavailable carry each state in a shape as well as '
           'a color.'],
@@ -604,7 +604,7 @@ rule(n=6, set='c-18-masthead', name='Masthead and phone menu',
 
 # ---- 18.7 Location ----------------------------------------------------------------------------------------------
 rule(n=7, set='c-18-location', name='Location list',
-     title='Show where the reader is with aria-current and a visible mark.',
+     title='Show where the reader is with aria-current and a mark that needs no color.',
      rule=['A list of places in a product, such as a chapter rail, an “In this chapter” list or a breadcrumb, marks the '
            'reader’s place in two ways at once. The link carries aria-current: “page” for the page itself, “location” for '
            'a part of a long page and “step” for a step in a process. A list beside the text marks it with the selected '
@@ -804,8 +804,10 @@ rule(n=11, set='c-18-scroll-region', name='Scroll region',
            '<code>tabindex="0"</code> and the role of a group named for what it holds, and the hint “Wider than this '
            'column. Scroll the frame sideways to see all of it.” shows above it and describes it. Once it fits, the frame '
            'drops all three.',
-           'Its focus ring sits inside the frame, where the frame’s edge cannot clip it. The arrow keys scroll a focused '
-           'frame, and the page around it stays where it is. This guide sets its plates and code on a light gray mat, '
+           'Its focus ring sits inside the frame with its 2 px gap, where the frame’s edge cannot clip it. A control whose '
+           'neighbor stands too close for an outside ring, such as a tab or a row in a list, draws the same ring inside its '
+           'own edge, with the 2 px gap, offset −4 px. The arrow keys scroll a focused frame, and the page around it stays '
+           'where it is. This guide sets its plates and code on a light gray mat, '
            f'where the focus ring’s color measures {R_RING_MAT} to 1, under the 3 to 1 a ring needs, so a frame that '
            f'scrolls on the mat draws the same ring in Charcoal, {R_CHAR_MAT} to 1.'],
      tokens=['--oa-color-border-hairline', '--oa-color-focus-ring', 'oa.border.width.focusRing'],

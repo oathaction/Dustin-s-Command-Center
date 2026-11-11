@@ -54,8 +54,9 @@
   text-decoration-thickness: var(--oa-border-width-underline);
   text-underline-offset: .2em;
 }
-/* Focus: the ring sits inside the tab, its 2 px and its 2 px gap in from the edge, as Rule 18.11
-   draws it, since the tabs stand 4 px apart and a ring outside would reach the next one */
+/* The tab takes its focus ring inside its edge: the 2 px ring and its 2 px gap sit in from the
+   edge, as Rule 18.11 draws it, since the tabs stand 4 px apart and a ring outside would reach the
+   next one */
 .oa-tabs-tab:focus-visible {
   outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
   outline-offset: calc(-1 * (var(--oa-border-width-focus-ring) + var(--oa-border-focus-offset)));
