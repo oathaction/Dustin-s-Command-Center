@@ -699,8 +699,8 @@ def pictures():
     # 19.4's failure (CD-S13): the headline as a picture, soft at true size, and a drawing of "Th" enlarged until its
     # pixels show; the drawing stands for the pixels and claims no exact scale
     pix = [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (2, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6), (7, 0), (7, 1), (7, 2), (7, 3), (7, 4), (7, 5), (7, 6), (8, 3), (9, 3), (10, 4), (10, 5), (10, 6)]
-    soft = [(5, 0), (3, 1), (1, 1), (8, 4), (9, 4), (6, 6), (11, 6), (11, 4), (3, 6), (1, 6)]
-    crop = ('<svg viewBox="0 0 72 42" width="216" height="126" aria-hidden="true" focusable="false">'
+    soft = [(10, 3), (8, 4)]
+    crop = ('<svg viewBox="0 0 66 42" width="198" height="126" aria-hidden="true" focusable="false">'
             '<g fill="var(--oa-color-text-primary-on-prussian)">' + ''.join(f'<rect x="{x * 6}" y="{y * 6}" width="6" height="6"/>' for x, y in pix)
             + '</g><g fill="var(--oa-color-text-primary-on-prussian)" fill-opacity="0.45">'
             + ''.join(f'<rect x="{x * 6}" y="{y * 6}" width="6" height="6"/>' for x, y in soft) + '</g></svg>')
