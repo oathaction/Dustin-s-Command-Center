@@ -6,7 +6,7 @@
  "instruction": "Use the ampersand once per composition to join a commitment to what it produces.",
  "opener": {
   "specimen": "s-04-opener",
-  "caption": "Ampersand B at display size, and a hinge headline in its own frame, since a composition carries one ampersand moment (Rule 04.2). On a phone the headline sets in H3, so each phrase stays whole on its line."
+  "caption": "Ampersand B at display size, and a hinge headline in its own frame, since a composition carries one ampersand moment (Rule 04.2). On a phone the headline drops to 26 px, so each phrase stays whole on its line."
  },
  "intro": [
   "The ampersand is the hinge of the brand. It joins an oath, the commitment a person or an office makes, to the action that keeps it, and in our headlines it joins a rule to its result. Ampersand B is our own drawing: one pen path that crosses itself at the waist, with a beak at the top right and a tail that lands on the baseline.",
@@ -108,7 +108,7 @@
   {
    "id": "04.3",
    "title": "Join a rule to its result with a hinge headline.",
-   "rule": "A hinge headline joins two noun phrases with B, as in “The zoning code & the rent.”, and B takes the view’s working red, the one red each view may spend, unless an error or a step the reader can take now already holds it. Then B takes the headline’s ink. Rule 02.27 sets how to write one, and Rules 01.18 to 01.20 set when to use one.",
+   "rule": "A hinge headline joins two noun phrases with B and gives B the view’s working red, as in “The zoning code & the rent.” That red is the one each view may spend, so when an error or a step the reader can take now already holds it, B takes the headline’s ink. Rule 02.27 sets how to write one, and Rules 01.18 to 01.20 set when to use one.",
    "tokens": [
     "oa.color.identity.signature.onNewsprint",
     "oa.color.action.ask.fill.onNewsprint"

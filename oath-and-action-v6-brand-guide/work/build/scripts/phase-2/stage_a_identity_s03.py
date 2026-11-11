@@ -371,7 +371,7 @@ def s_03_opener():
             + "".join(f'<div class="oai-op3-c{" oai-op3-c--wide" if code == "L5" else ""}">{box(m)}<p class="oai-tag">{code} {E(name)}</p></div>'
                       for code, name, m in cells)
             + '</div></div>')
-    alt = ("The lockups at true size on Newsprint, each with its name, two to a row: L1, the wordmark, beside L8, the O & A "
+    alt = ("The lockups at true size on Newsprint, each with its name, two to a row: L1, the wordmark, beside L8, the "
            "monogram; S1, OATH & over ACTION on two flush-left lines, beside L4, the monogram, a hairline and the tagline; L3, "
            "the wordmark with the lockmark at its right, beside L7, the wordmark, a hairline and the word TRACK. Where the "
            "column is wide enough, L5 follows: the wordmark over the tagline.")

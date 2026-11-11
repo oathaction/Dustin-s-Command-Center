@@ -177,3 +177,38 @@ Modified, written by those scripts:
 Created, notes: this file.
 
 Outside the repository, in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/762f3743-f9b3-59db-919e-2c641afbd759/scratchpad/gate-2-fix/identity/`: copies of my scripts and outputs as they stood before (`before/`); the scratch builds, their logs and the chain logs; the check scripts (`cap/*.js`) and their captures and results.
+
+## Second pass
+
+DR-191's short second pass, November 11, 2026: rows 14 to 20 under "## Fix pass read" in `20261111_Gate-2-Editor-Notes.md`, each applied in my generators, with the editor's words where the row gives them.
+
+### What changed
+
+- **Row 14, serious** (`stage_b_identity_ch01.py`). Chapter 01's opener is now the first place H.R. 7008 appears in the chapter, so the Track piece keeps its deck: "H.R. 7008, the Stop Insider Trading Act, as the House passed it, would bar members of Congress, their spouses and dependent children from buying individual stocks, and would require photo ID to vote in federal elections." That is the editor's `HR7008_FIRST`, read from `s-01-pieces`. The alt carries the same words. The step stops if the Track piece loses the bill's full name or either provision, or if any other piece keeps a deck. The opener weighs 11,062 bytes as placed.
+- **Row 15** (same script). The alt reads "as of November 5, 2026", with the month's capital.
+- **Row 16** (`stage_a_identity_chapters.py`). Rule 04.3 opens "A hinge headline joins two noun phrases with B and gives B the view's working red, as in "The zoning code & the rent." That red is the one each view may spend, so when an error or a step the reader can take now already holds it, B takes the headline's ink."
+- **Row 17** (same script). Rule 08.2: "Each place sets the lockmark's size, which this rule's specifications list, and draws the master made for that size."
+- **Row 18** (same script). Chapter 03's opener caption: "... and L6, the 884 px strip that closes a report, has its own plate under Rule 03.2."
+- **Row 19** (`stage_a_identity_s03.py`). The opener's alt names "L8, the monogram".
+- **Row 20** (`stage_a_identity_chapters.py`). Chapter 04's opener caption: "On a phone the headline drops to 26 px, so each phrase stays whole on its line." The plate's own label keeps "A hinge headline, H3, 26 px".
+
+### Routine calls
+
+- D2-xxx | The opener's Track piece keeps its deck, and the step stops if it loses it | DR-98 asks for the bill named whole, with both provisions, at its first mention in each chapter, and the opener now holds that first mention
+- D2-xxx | The alt joins each piece's parts in short sentences ("... as of November 5, 2026. H.R. 7008, ... It ends on Follow this bill.") | The deck is a full sentence of its own, and a run-on alt would bury it
+
+### Tested
+
+- The fix brief's chain from the project folder, each script with `python3 -I`: all eight exited 0, my chapter 01 step after the editor's build (`chain4.log`).
+- `guide_build.py --strict --out` to my scratch folder (`second/guide.html`): 0 warnings, 16 chapter files, 185 rules, 433 specimens, 9,445,041 bytes.
+- Each fixed string read back from the chapter files and manifests by script.
+- I looked at chapter 01's opener at 1440 and 390 px, 1x and 2x. The Track deck sits under the headline, as on the full plate. At 1440 px the two pieces in each row still align, and at 390 px the four pieces stack with nothing cut off.
+
+### Not tested
+
+- The guide check on this build.
+- The editor's read of row 14's alt sentences.
+
+### Change log
+
+Modified: `work/build/scripts/phase-2/stage_b_identity_ch01.py`, `stage_a_identity_chapters.py`, `stage_a_identity_s03.py`. Through them: `03-identity.json`, `04-ampersand.json`, `08-lockmark.json`, `01-purpose.json` (the opener key), `manifest-identity.json`, `manifest-identity-ch01.json`, `s-01-opener.html`. This section.

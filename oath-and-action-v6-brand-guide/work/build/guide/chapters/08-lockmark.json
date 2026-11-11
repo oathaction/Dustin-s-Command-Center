@@ -92,7 +92,7 @@
   {
    "id": "08.2",
    "title": "Place the lockmark only in its four places, once in a view.",
-   "rule": "The lockmark signs four places: the masthead, the page header, the footer and the sign-off. Each place sets the lockmark’s size, as this rule’s specifications list them, and draws the master made for that size. A social card draws the 48 px master at exactly twice its size, so its nodes, links and lever still land on whole pixels. A view shows the lockmark once, so when a masthead and a footer share a view, the footer keeps it.",
+   "rule": "The lockmark signs four places: the masthead, the page header, the footer and the sign-off. Each place sets the lockmark’s size, which this rule’s specifications list, and draws the master made for that size. A social card draws the 48 px master at exactly twice its size, so its nodes, links and lever still land on whole pixels. A view shows the lockmark once, so when a masthead and a footer share a view, the footer keeps it.",
    "tokens": [
     "oa.color.identity.signature.onNewsprint"
    ],

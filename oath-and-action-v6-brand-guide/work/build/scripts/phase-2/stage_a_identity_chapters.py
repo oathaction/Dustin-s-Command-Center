@@ -181,7 +181,7 @@ CH03 = {
     "number": "03", "anchor": "identity", "title": "Identity", "part": "Foundations",
     "instruction": "Pick the lockup that fits the surface and size, and give it room on every side.",
     # Gate 2's fix pass (CD-S1): the opener, a plate of the chapter's subject under the intro
-    "opener": {"specimen": "s-03-opener", "caption": "The lockups at true size, drawn from the masters in Rule 03.2's plate. A phone's column is too narrow for L5, so a phone shows six, and L6, at 884 px, has its own plate under Rule 03.2."},
+    "opener": {"specimen": "s-03-opener", "caption": "The lockups at true size, drawn from the masters in Rule 03.2's plate. A phone's column is too narrow for L5, so a phone shows six, and L6, the 884 px strip that closes a report, has its own plate under Rule 03.2."},
     "intro": [
         "The wordmark is our name drawn as one piece of artwork: OATH and ACTION in heavy capitals, joined by ampersand B, the red ampersand we drew for Oath & Action. A lockup is a fixed arrangement of the wordmark with another part, such as the tagline or the lockmark, the three by three grid of nodes that chapter 08 explains.",
         "Every mark here is a vector master drawn for a range of sizes. You place the master, color it with tokens and leave room around it. In this chapter x means the height of the wordmark's capitals. The wordmark keeps the width our fifth edition drew, with ampersand B as refined for this edition, and the identity proofs at the end of the guide show it in use.",
@@ -335,7 +335,7 @@ CH03 = {
 CH04 = {
     "number": "04", "anchor": "ampersand", "title": "The Ampersand and the hinge", "part": "Foundations",
     "instruction": "Use the ampersand once per composition to join a commitment to what it produces.",
-    "opener": {"specimen": "s-04-opener", "caption": "Ampersand B at display size, and a hinge headline in its own frame, since a composition carries one ampersand moment (Rule 04.2). On a phone the headline sets in H3, so each phrase stays whole on its line."},
+    "opener": {"specimen": "s-04-opener", "caption": "Ampersand B at display size, and a hinge headline in its own frame, since a composition carries one ampersand moment (Rule 04.2). On a phone the headline drops to 26 px, so each phrase stays whole on its line."},
     "intro": [
         "The ampersand is the hinge of the brand. It joins an oath, the commitment a person or an office makes, to the action that keeps it, and in our headlines it joins a rule to its result. Ampersand B is our own drawing: one pen path that crosses itself at the waist, with a beak at the top right and a tail that lands on the baseline.",
         "This chapter covers B drawn alone and the places the hinge appears: the hinge headline, the hinge divider, the hinge diagram, the end mark that closes an article and the hinge-circle badge. It ends with the tiles for avatars and the app icon, and the large crop for covers.",
@@ -364,7 +364,7 @@ CH04 = {
           related=["02", "05"],
           builders="When a template already holds a hinge headline, leave its ampersand slot out of every other layer."),
         R("04.3", "Join a rule to its result with a hinge headline.",
-          "A hinge headline joins two noun phrases with B, as in \"The zoning code & the rent.\", and B takes the view's working red, the one red each view may spend, unless an error or a step the reader can take now already holds it. Then B takes the headline's ink. Rule 02.27 sets how to write one, and Rules 01.18 to 01.20 set when to use one.",
+          "A hinge headline joins two noun phrases with B and gives B the view's working red, as in \"The zoning code & the rent.\" That red is the one each view may spend, so when an error or a step the reader can take now already holds it, B takes the headline's ink. Rule 02.27 sets how to write one, and Rules 01.18 to 01.20 set when to use one.",
           "The headline names a mechanism in five or six words, and the red ampersand marks the joint. Rule 05.3 ranks an error first and the step a reader can take now second, so on an Act piece with a red button the step keeps the red.",
           "Rule 05.3, the red rule",
           "Three hinge headlines from Rule 02.27 at three sizes of the type scale, at true size: the title style at 56 px, the section style at 44 and H3 at 26. Each B comes from the master whose range holds that cap height.",
@@ -487,7 +487,7 @@ CH08 = {
           related=["03", "05"],
           builders="The lockmark files read <code>--link</code> for the links and <code>--lever</code> for the lever. Leave the lever on the signature token; on Prussian, place the White file from <code>prussian/</code>. Place the 48 px master on whole pixels at exactly 48 px, the size its pixel grid was drawn for, or at exactly 96 px in a social card's sign-off. The 24 and 48 px files this rule lists draw each node and the lever as one outline; the earlier files, one rect per pixel row, stay in the folder only as the record. The display master keeps our fifth edition's drawing, with its links held at 1 px at every size."),
         R("08.2", "Place the lockmark only in its four places, once in a view.",
-          "The lockmark signs four places: the masthead, the page header, the footer and the sign-off. Each place sets the lockmark's size, as this rule's specifications list them, and draws the master made for that size. A social card draws the 48 px master at exactly twice its size, so its nodes, links and lever still land on whole pixels. A view shows the lockmark once, so when a masthead and a footer share a view, the footer keeps it.",
+          "The lockmark signs four places: the masthead, the page header, the footer and the sign-off. Each place sets the lockmark's size, which this rule's specifications list, and draws the master made for that size. A social card draws the 48 px master at exactly twice its size, so its nodes, links and lever still land on whole pixels. A view shows the lockmark once, so when a masthead and a footer share a view, the footer keeps it.",
           "A signature works by turning up in the same place at the same size, so a reader finds it without looking. Because each place draws a master on whole pixels, at the size it was made for or at exactly twice that, the four places read as one mark at the size each one sets. " + _thumb() + " Used as a bullet or scattered as decoration, the lockmark stops signing the page.",
           "Design judgment, approved by our founder and editor in November 2026",
           "The four places at true size, each with the size it sets: the masthead, a report's page header, two footers and the corner of a social card.",

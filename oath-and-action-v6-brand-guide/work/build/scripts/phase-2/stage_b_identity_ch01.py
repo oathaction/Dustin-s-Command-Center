@@ -26,7 +26,9 @@ it can run again after any rebuild of the editor's chapters, and a second run ch
 Gate 2's fix pass (CD-S1, November 11, 2026): chapter 01's opener, s-01-opener, a light version of the editor's four
 pillar pieces (s-01-pieces) read from that file: each piece keeps its pillar, kicker, headline, Track's "as of" date,
 the hinge divider, "What you can do", its step and its one red button, with the words, classes and drawings the editor's
-plate has; the dek, the blocks, the tracker and the source lines stay on the full plate after the rule index. The step
+plate has; the blocks, the tracker and the source lines stay on the full plate after the rule index, and so does every
+dek but Track's, which names H.R. 7008 whole with both its provisions, as DR-98 asks at a bill's first mention in a
+chapter (the editor's second pass, row 14). The step
 keeps only the styles those parts use, so the opener stays under 16 KB. It writes s-01-opener.html, its manifest entry
 in manifest-identity-ch01.json, and the "opener" key in 01-purpose.json.
 
@@ -136,9 +138,11 @@ OPENER_ID = "s-01-opener"
 OPENER_MANIFEST = SPEC / "manifest-identity-ch01.json"
 OPENER_CAPTION = ("One piece for each pillar at true size, from its kicker to the one red step after the hinge divider. "
                   "Explain and Track quote real records, and the four pieces stand whole, with their sources, after the rule index.")
-DROP_P = ("dek", "by")                   # the full plate's parts the opener leaves out
+DROP_P = ("dek", "by")                   # the full plate's parts the opener leaves out; Track keeps its dek (DR-98)
+KEEP_DEK = "Track"
+HR7008_WHOLE = ("H.R. 7008, the Stop Insider Trading Act", "buying individual stocks", "photo ID to vote in federal elections")
 DROP_DIV = ("blk", "trk")
-KEEP_CLASSES = {"ed", "sp", "sp-flow", "grid4", "pl", "pc", "kick", "lb", "dot", "sx", "hl", "lab", "asof", "hg", "hamp",
+KEEP_CLASSES = {"ed", "sp", "sp-flow", "grid4", "pl", "pc", "kick", "lb", "dot", "sx", "hl", "dek", "lab", "asof", "hg", "hamp",
                 "wycd", "step", "ask", "illus"}
 
 
@@ -190,22 +194,33 @@ def opener():
     src = (SPEC / "s-01-pieces.html").read_text()
     m = re.search(r"<style>(.*?)</style>(.*)$", src, re.S)
     css, body = m.group(1), m.group(2).strip()
-    for c in DROP_P:
-        body = re.sub(rf'<p class="{c}">.*?</p>', "", body, flags=re.S)
     for c in DROP_DIV:
         body = _drop_div(body, c)
+    head = '<div><p class="pl">'
+    chunks = body.split(head)                # one chunk per piece after the first
+    for i in range(1, len(chunks)):
+        for c in DROP_P:
+            if not (c == "dek" and chunks[i].startswith(KEEP_DEK + "</p>")):
+                chunks[i] = re.sub(rf'<p class="{c}">.*?</p>', "", chunks[i], flags=re.S)
+    body = head.join(chunks)
     body = re.sub(r"\n+", "\n", body)
     pieces = re.findall(r'<div><p class="pl">(.*?)</p><div class="pc">(.*?)</div></div>', body, re.S)
     assert len(pieces) == 4, f"s-01-pieces holds {len(pieces)} pieces, not four"
     assert body.count('class="ask"') == 4 and body.count('class="hg"') == 4, "each piece keeps its hinge and its one ask"
+    track = next(inner for pillar, inner in pieces if pillar == KEEP_DEK)
+    assert all(w in _text(track) for w in HR7008_WHOLE), "the Track piece must name H.R. 7008 whole with both provisions (DR-98)"
+    assert body.count('class="dek"') == 1, "only Track keeps its dek"
     parts = []
     for pillar, inner in pieces:
         hl = _text(re.search(r'<p class="hl">(.*?)</p>', inner, re.S).group(1))
         ask = _text(re.search(r'<span class="ask"[^>]*>(.*?)</span>', inner, re.S).group(1))
         asof = re.search(r'<p class="lab asof">(.*?)</p>', inner, re.S)
         lab = ", Illustrative" if 'class="illus"' in inner else ""
-        when = f", {_text(asof.group(1)).lower()}" if asof else ""
-        parts.append(f"{pillar}{lab}: {hl}{when}, ending on {ask}.")
+        t = _text(asof.group(1)) if asof else ""
+        when = f", {t[:1].lower()}{t[1:]}" if asof else ""        # "as of November 5, 2026": the month keeps its capital
+        dek = re.search(r'<p class="dek">(.*?)</p>', inner, re.S)
+        deck = f" {_text(dek.group(1))}" if dek else ""
+        parts.append(f"{pillar}{lab}: {hl}{when}.{deck} It ends on {ask}.")
     alt = ("Four pieces at a phone's text width, one per pillar, each from its kicker and headline to the hinge divider, "
            "What you can do, one step and one red button. " + " ".join(parts))
     alt = alt.replace("..", ".").replace("?.", "?")
