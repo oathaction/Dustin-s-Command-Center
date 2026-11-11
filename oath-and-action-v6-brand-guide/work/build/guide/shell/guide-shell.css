@@ -236,7 +236,9 @@ a.toc-part-k:hover { text-decoration: underline }
    least (Rule 18.5's inline target), separated by a dot hidden from screen readers */
 .route-index { list-style: none; margin: var(--oa-space-300) 0 0; padding: 0; font: var(--oa-type-body) }
 .route-index li { display: inline }
-.route-index li + li::before { content: "·" / ""; margin: 0 .55em; color: var(--ink-2) }
+/* R2 (the creative director's rescore): each link but the last carries its dot, bound to it by a no-break space, so a line
+   never starts with a dot; the space between the items is where a line may break */
+.route-index li:not(:last-child)::after { content: "\a0·" / ""; color: var(--ink-2) }
 .route-index a { display: inline-flex; align-items: center; min-height: var(--oa-size-target-minimum) }
 .routes { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--oa-space-1000) var(--g); margin-top: var(--oa-space-800) }
 .route { min-width: 0 }
@@ -263,10 +265,11 @@ a.toc-part-k:hover { text-decoration: underline }
    whole row is the link's target */
 .step-go { display: block; min-width: 0; min-height: var(--oa-size-target-touch); padding: var(--oa-space-200) 0; color: var(--ink); text-decoration: none }
 .step-t { display: block; margin: 0; text-wrap: pretty; overflow-wrap: break-word }
-.step-to { display: inline-block; margin-top: var(--oa-space-100); font: var(--oa-type-ui); text-decoration: underline;
-  text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
-.step-go:hover .step-to { text-decoration-thickness: var(--oa-border-width-underline-hover) }
-.step-to [aria-hidden] { display: inline-block; margin: 0 .4em; text-decoration: none }   /* the dot stays out of the underline */
+/* R1 (the creative director's rescore): the rule or chapter and its name are underlined each alone; the dot and the spaces
+   around it stay clear, so the line reads as one link */
+.step-to { display: inline-block; margin-top: var(--oa-space-100); font: var(--oa-type-ui) }
+.step-to .u { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
+.step-go:hover .step-to .u { text-decoration-thickness: var(--oa-border-width-underline-hover) }
 .route-step--later .step-t { padding: var(--oa-space-200) 0; color: var(--ink-2) }
 @media (min-width: 48em) and (max-width: 89.99em) {
   .route { display: grid; grid-template-columns: repeat(var(--mc), minmax(0, 1fr)); column-gap: var(--g); align-items: start }
@@ -679,7 +682,7 @@ a.toc-part-k:hover { text-decoration: underline }
 /* a way back that lands in the colophon sits on Charcoal: its edge and words take Charcoal's inks */
 .colophon .return a { background: transparent; color: var(--oa-color-text-primary); border-color: var(--oa-color-border-strong) }
 /* CD-A1: the footer sign-off of Rule 08.2 closes the book: the lockmark at 24 px, 12 px of space and the tagline, one line */
-.colophon-sign { display: flex; align-items: center; gap: var(--oa-space-150); margin: var(--oa-space-800) 0 0; padding-top: var(--oa-space-300);
+.colophon-sign { display: flex; align-items: center; gap: var(--oa-space-150); max-width: 56rem; margin: var(--oa-space-800) 0 0; padding-top: var(--oa-space-300);
   border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline); font: var(--oa-type-body-small); color: var(--oa-color-text-primary-on-charcoal) }
 .sign-red { display: inline-flex; flex: none; line-height: 0 }
 .sign-mark { display: block; flex: none }

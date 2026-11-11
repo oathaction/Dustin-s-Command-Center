@@ -2106,7 +2106,8 @@ def start_section(d, ctx):
            f'<h2 id="start-h" class="front-title">{no_links(inline(d["title"]))}</h2><p class="return" hidden></p>',
            f'<p class="instr">{no_links(inline(d["instr"]))}</p>',
            # CD-A2: the routes' line is a line of underlined links, as Rule 18.5 sets for a link
-           '<ul class="route-index">' + "".join(f'<li><a href="#start-{r["id"]}">{no_links(inline(r["label"]))}</a></li>' for r in routes) + "</ul>",
+           # R2: a space between the items is the only place a line breaks, after the dot each link carries
+           '<ul class="route-index">' + " ".join(f'<li><a href="#start-{r["id"]}">{no_links(inline(r["label"]))}</a></li>' for r in routes) + "</ul>",
            '</div><div class="routes">']
     for r in routes:
         rid, label = r["id"], plain(r["label"])
@@ -2167,7 +2168,11 @@ def resolve_start(page, d, ctx):
                 words = ("Part", e(PART_NAME.get(sec_id[5:], "")))
             else:
                 words = ({"contents": "Contents", "colophon": "Colophon", "cover": "Cover", "start": "Where to start"}.get(kind, ""), None)
-            line = words[0] + (f' <span aria-hidden="true">·</span> {words[1]}' if words[1] else "")
+            # R1 (the creative director's rescore): each part of the line is underlined alone, with the dot and the spaces
+            # outside the underline, and the name's last two words held together, so no word stands alone on a line
+            tail = re.sub(r" (\S+)$", "\u00a0\\1", words[1]) if words[1] else None
+            head = words[0].replace(" ", "\u00a0")   # "Rule 26.8" and "Chapter 05" never break
+            line = f'<span class="u">{head}</span>' + (f' <span aria-hidden="true">·</span> <span class="u">{tail}</span>' if tail else "")
             page = page.replace(DEST.format(st["href"]), line)
     if missing:
         raise FrontStop("the \"Where to start\" page links to " + str(len(missing)) + " id(s) the page does not hold: " + "; ".join(missing))
@@ -3907,8 +3912,10 @@ def self_test():
             ("three routes in the schema's order", lambda pg: order(sec(pg), 'id="start-newcomer"', 'id="start-designer"', 'id="start-builder"')),
             ("every step a link but the later one", lambda pg: sec(pg).count('class="xref step-go"') == 11 and sec(pg).count("data-later") == 1),
             ("the later step holds no link", lambda pg: "<a" not in re.search(r'<li class="route-step route-step--later".*?</li>', sec(pg), re.S).group(0)),
-            ("each step says where it leads", lambda pg: "Rule 01.1 <span aria-hidden=\"true\">·</span>" in sec(pg) and "Chapter 05 <span" in sec(pg)
-             and "Part <span aria-hidden=\"true\">·</span> Foundations" in sec(pg) and ">Colophon</span>" in sec(pg) and "oa-dest" not in pg),
+            ("each step says where it leads", lambda pg: '<span class="u">Rule 01.1</span> <span aria-hidden="true">·</span>' in sec(pg)
+             and '<span class="u">Chapter 05</span>' in sec(pg) and '<span class="u">Part</span> <span aria-hidden="true">·</span> <span class="u">Foundations</span>' in sec(pg)
+             and '<span class="u">Colophon</span>' in sec(pg) and "oa-dest" not in pg),
+            ("a target's last two words are held together (R1)", lambda pg: '<span class="u">Layout and\u00a0spacing</span>' in sec(pg)),
             ("each step carries its way back", lambda pg: 'id="start-newcomer-2" data-return-label="step 2 of New to the demonstration"' in sec(pg)),
         ])
         ok_all &= g2("Gate 2: a later step with an href prints as text, and its href is not checked", later_bad, tests=[

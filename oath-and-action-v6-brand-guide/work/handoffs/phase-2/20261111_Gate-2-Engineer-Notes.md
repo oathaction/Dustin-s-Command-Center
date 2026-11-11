@@ -259,3 +259,28 @@ D2-xxx | Token release stays 6.0.0-gate2.9 for these description fixes | The rel
 
 D2-xxx | snapStages() snaps openers, the pillar row's icons and the sign-off's lockmark, each icon on its own | Each pixel-grid master lands on whole device pixels at 1x without fixing the words' widths
 D2-xxx | An opener sits 32 px under the intro, with 24 px of mat above and below its stage | Lifts every opener 56 px toward the first screen; a plate inside the chapter keeps its 64 px
+
+## Final build
+
+November 11, 2026, from commit 5d458c4e with every owner's fix pass and second pass in.
+
+- **Generator chain**, each under `python3 -I`, in the fix brief's order: `apply_systems_ch11.py`, `stage_b_ch10_build.py --no-draw`, `stage_b_ch12_systems_build.py`, `promotion_identity.py specimens`, `guide_editor_build.py`, `stage_b_identity_ch01.py`, `stage_c_identity_ch17.py`, `stage_c_ch17_build.py`; each exited 0, and git status stayed clean. The check modes: `stage_c_ch18_build.py`, `stage_c_ch19_build.py`, `stage_c_ch26_build.py` (33 of 33), `token_table_build.py`, `stage_c_ch18_anatomy_build.py` and `tokens_build.mjs` all current. `stage_a_systems_build.py` in its three steps (probe, capture, final): chapters 05 to 07 and their 56 specimens came out byte for byte; only the measurement file's run date moved, and I restored it.
+- **Preview rebuilt**, `guide_build.py --strict`: 0 warnings, 0 notes of warning weight; 9,445,041 bytes (SHA-256 fd288b60…f4e7), 16 chapters, 185 rules, 433 specimens.
+- **Page weight against 15.5 MB:** 60.9 percent, 6.05 MB of room. Fonts 344,579 bytes (3.6 percent; six files of 255,920). The 16 openers 100,067 bytes as placed (1.06 percent), from 2,331 (26) to 14,920 (08), each under 16 KB. Sprites 210,685; head and shell 194,447; front matter 27,145; appendix 141,120.
+- **Token tests:** all six steps pass at 6.0.0-gate2.9.
+- **Font bytes:** `fonts_fetch.py --page`, 6 data URLs matched to the manifest by SHA-256.
+- **Token parity evidence:** rewritten for the final preview, parity exit 0, 6 of 6 page checks.
+- **Sprite check:** PASS, every pair at 1x and 2x with a largest difference of 0; the 41 switch at 1x, 1.5x and 2x.
+- **Font fidelity:** 19 of 19 elements pixel for pixel between the final preview and the same page with its fonts block replaced by Rule 06.10's Google Fonts link (4 font requests there, 0 in the preview). The evidence file says so in its "about" line; its field "version7" names that twin.
+- **Guide check, four widths:** running on the build above, results to `work/boards/phase-2/gate-2/20261111_Gate-2-Preview-Guide-Check-Results.json` (below when done).
+
+### The creative director's rescore, R1 to R3 (in the sources; they go into the rebuild after chapter 19's rerun)
+
+- **R1.** A step's target line underlines its two parts alone: the dot and the spaces around it stand clear, the rule or chapter ("Rule 26.8") holds together with a no-break space, and the name's last two words do too, so "them" never stands alone.
+- **R2.** Each link in the routes' line carries its dot after it, bound by a no-break space, and a real space between the items is the only break: at 390 px the line breaks after "Designing a piece ·".
+- **R3.** The sign-off's hairline ends at the colophon's 56rem measure, 1,183 px at 1440, with the rows.
+- Checked on a scratch build: the build's self-test 27 of 27 scenarios, 296 of 296 expectations; strict 0 warnings, 9,446,282 bytes; looked at 1440 and 390 px.
+
+D2-xxx | stage_a_systems_build.py ran in the final chain, and its measurement file's run date was restored | The systems designer changed chapters 05 to 07 this pass; the run proves their outputs reproduce, and a moved date is not a change
+D2-xxx | The font fidelity check compares the final preview with its own Google-loaded twin | Version 7 now differs by chapter edits; the twin isolates the fonts
+D2-xxx | A target line's rule or chapter, and its name's last two words, are held by no-break spaces | R1; neither part breaks alone
