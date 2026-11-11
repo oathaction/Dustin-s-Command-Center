@@ -1,0 +1,61 @@
+{
+ "file": "fjc-article-iii-judges.csv",
+ "kind": "public",
+ "publisher": "Federal Judicial Center",
+ "title_or_table": "Biographical Directory of Article III Federal Judges, 1789 to present, export file federal-judicial-service.csv (active judges only)",
+ "table_id": "FJC judges export, federal-judicial-service.csv",
+ "url": [
+  "https://www.fjc.gov/sites/default/files/history/federal-judicial-service.csv",
+  "https://www.fjc.gov/history/judges/biographical-directory-article-iii-federal-judges-export"
+ ],
+ "observation_period": "Judges in active service on the export's latest record (latest commission date 2026-10-22); years counted to November 11, 2026",
+ "geography": "United States federal courts",
+ "universe_or_base": "850 service records of Article III judges with no senior-status or termination date: Supreme Court, courts of appeals, district courts, and the Court of International Trade (the file's \"Other\")",
+ "unit": "years, computed by the studio from commission dates to November 11, 2026, one decimal",
+ "date_retrieved": "2026-11-11",
+ "vintage": "FJC export as posted on November 11, 2026; the file states no as-of date",
+ "qualification": "A judge who takes senior status still hears cases but leaves this count; vacancies are not in the file. Years in seat start at the commission for the current court, so a judge promoted from a district court counts from the promotion; years as a federal judge start at the first Article III commission",
+ "columns": {
+  "nid": {
+   "type": "id",
+   "description": "FJC judge ID"
+  },
+  "judge_name": {
+   "type": "text",
+   "description": "judge name, last name first"
+  },
+  "court_type": {
+   "type": "category",
+   "description": "court type as the FJC labels it"
+  },
+  "court_name": {
+   "type": "text",
+   "description": "court name"
+  },
+  "commission_date": {
+   "type": "date",
+   "description": "commission date for the current seat"
+  },
+  "years_in_seat": {
+   "type": "number",
+   "description": "years since that commission, computed",
+   "unit": "years"
+  },
+  "first_article_iii_commission": {
+   "type": "date",
+   "description": "first Article III commission"
+  },
+  "years_as_federal_judge": {
+   "type": "number",
+   "description": "years since the first commission, computed",
+   "unit": "years"
+  }
+ },
+ "printed_source_line": "Source: Federal Judicial Center, Biographical Directory of Article III Federal Judges, judges in active service, as of November 11, 2026, United States. Retrieved November 11, 2026. Judges on senior status are not counted; years computed by Oath & Action from commission dates.",
+ "ledger_row": "P7-025",
+ "domain": "D05",
+ "states": [],
+ "notes": [
+  "The export's appointing-president and party columns are left out of this file; a tenure chart does not need them"
+ ]
+}

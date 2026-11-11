@@ -225,7 +225,7 @@ LBL = ("font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spac
 CAP = "font:var(--oa-type-caption)"
 BASE = (":scope{color:var(--oa-color-text-primary)}"
         ".p{box-sizing:border-box;padding:16px;font:var(--oa-type-body);max-width:100%}"
-        ".p *{box-sizing:border-box}.p p{margin:0}@media (min-width:48em){.p{padding:24px}}")
+        ".p *{box-sizing:border-box}:where(.p) :where(p){margin:0}@media (min-width:48em){.p{padding:24px}}")
 CSS = {
     "dnp": f".dnp{{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 10px;background:var(--oa-color-surface-charcoal);"
            f"color:var(--oa-color-text-primary-on-charcoal);{LBL}}}",
@@ -257,9 +257,9 @@ CSS = {
            f".tb caption{{{CAP};color:var(--oa-color-text-secondary);text-align:left;margin:0 0 8px}}"
            f".tb .num{{font-variant-numeric:tabular-nums}}.tb tbody th{{font-weight:var(--oa-font-weight-regular)}}"
            f".tb .ttl{{font-family:var(--oa-font-family-display);font-weight:var(--oa-font-weight-extrabold)}}.tb .ttl p+p{{margin-top:6px}}"
-           f".tb .cl{{display:flex;flex-direction:column;align-items:flex-start;gap:4px}}"),
+           f".tb .cl{{display:flex;flex-direction:column;align-items:flex-start;gap:4px}}.tb .cl .ln{{display:inline-block;vertical-align:middle}}"),
     "stack": (".stack td[data-k]::before{content:none}@media (max-width:47.99em){.stack,.stack tbody,.stack tr,.stack th,.stack td{display:block;width:100%}"
-              ".stack thead{display:none}.stack tr{border-bottom:1px solid var(--oa-color-border-strong);padding:8px 0}"
+              ".stack caption{display:block;width:auto}.stack thead{display:none}.stack tr{border-bottom:1px solid var(--oa-color-border-strong);padding:8px 0}"
               ".stack th,.stack td{border:0;padding:3px 0}.stack td[data-k]::before{content:attr(data-k) \": \";font-weight:var(--oa-font-weight-bold)}}"),
     "card": (".card{max-width:360px;border-top:4px solid var(--oa-color-border-strong);padding:14px 0 0}"
              ".card .hl{font:var(--oa-type-h4);letter-spacing:var(--oa-type-h4-letter-spacing);margin:0 0 10px;text-wrap:balance}"
@@ -291,6 +291,7 @@ CSS = {
     "box": ".box{display:inline-flex;align-items:center;padding:6px 10px;border:1.5px solid var(--oa-color-border-strong);font:var(--oa-type-body-small)}",
     "arrowrow": ".arrowrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}",
     "tag": f".tag{{{LBL}}}",
+    "kl": ".kl{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:6px;font:var(--oa-type-body-small)}",
     "thick": ".ln .thick{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:12}",
 }
 
@@ -465,13 +466,13 @@ def rule_13_1(book):
         "rule": [
             "A dark label above every chart and diagram title names the kind of evidence the figure shows, in one of four words, "
             "and the title claims no more than that kind allows. A finding is a measured result with a source and a period, such "
-            "as a count, a vote or a survey figure. An association is a pattern, which our systems atlas defines as “"
+            "as a count, a vote or a survey figure. An association is what our systems atlas defines as “"
             + GLOSS["Association"].split(". ")[0] + ".” An estimate is a value that a model or a stated method produces, such "
             "as a projection, and it prints with its range or its method. An illustration shows how a design works with invented "
             "values, and it carries the Illustrative label (Rule 13.8).",
-            "The grade follows the label in words on the same line, as Rule 13.2 sets out. The grade says how firm the evidence "
-            "is and the kind says what it can show, so an association graded well supported still takes words such as “went "
-            "with” or “ran lower where”, and a note under the figure says the pattern does not show cause.",
+            "The grade follows the label in words on the same line, as Rule 13.2 sets out. Because a grade measures how firm the "
+            "evidence is, an association graded well supported is still a pattern: its title takes words such as “went with” or "
+            "“ran lower where”, and a note under the figure says the pattern does not show cause.",
         ],
         "tokens": ["oa.chart.color.chip.fill.onNewsprint", "oa.chart.color.chip.label.onNewsprint"],
         "why": {"text": ["A reader decides how far to trust a chart before reading it closely. The label names what they are "
@@ -597,8 +598,8 @@ def rule_13_2(book):
         ],
         "related": ["02", "01", "14", "15"],
         "builders": ["Read the grade from the record the title states and check the verb against H08’s table before the chart "
-                     "ships. A title about a whole loop takes the grade of its least certain step, which the atlas names in the "
-                     "loop’s evidence summary."],
+                     "ships. A title about a whole loop takes the grade of its least certain step, read from the grades of its "
+                     "connections."],
     }
 
 
@@ -689,7 +690,7 @@ def rule_13_3(book):
     lis = "".join(f'<li><span class="rw">{line_svg({"solid": "documented", "dashdot": "contested", "dotted": "hypothesis"}[t], 48)}'
                   f"<span>{e(w)}</span></span></li>" for w, t in fail_key)
     fail = (dnp() + chart_head("Finding", "Grades as stored", "How sure each step of the loop is",
-                               "Connections in one loop, by grade") + f'<ul class="ol">{lis}</ul>')
+                               "Connections in one loop, by grade") + f'<ul class="kl">{lis}</ul>')
     book.add("s-13-3-failure", fail, rule="13.3",
              alt=(FC + "A chart key that lists well_supported and well-supported as two entries, plausible_contested as the "
                   "atlas stores it, a made-up grade called Strong, and hypothesis in lower case, each beside a line sample."),
@@ -874,14 +875,14 @@ def rule_13_5(book):
         "id": "13.5",
         "title": "Keep grade, effect size, uncertainty and delay apart, each with its own mark.",
         "rule": [
-            "Four properties of a claim each keep their own mark and their own words. The evidence grade says how strong the "
-            "evidence is, in the line of Rule 13.4 or the grade word. The effect size says how large a change the atlas expects, "
-            "and a reform’s effect prints as the atlas’s ordinal code, a rank of small, moderate or large with no measured "
-            "amount, such as +M for moderate positive, one row for each outcome family. The uncertainty says how sure the atlas "
-            "is of that size, in its own words or as a drawn range. The delay says how long the effect takes, as one, two or "
-            "three ticks for under 2 years, 2 to 10 years and over 10 years, with the words.",
-            "Line width, darkness and size never stand for a grade, and the four outcome families never add into one score. Our "
-            "systems atlas gives the reason: “" + q2 + "”",
+            "Four properties of a claim each keep their own mark and their own words. The evidence grade, how strong the "
+            "evidence is, takes the line of Rule 13.4 or the grade word. A reform’s effect size prints as the atlas’s ordinal "
+            "code, a rank of small, moderate or large with no measured amount, such as +M for moderate positive, in one row for "
+            "each outcome family. How sure the atlas is of that size, the uncertainty, prints in its own words or as a drawn "
+            "range. Delay, the time an effect takes to arrive, draws as one, two or three ticks for under 2 years, 2 to 10 years "
+            "and over 10 years, with the words beside them.",
+            "A grade never borrows a line’s width, a mark’s darkness or its size, and the four outcome families stay apart with "
+            "no total. Our systems atlas gives the reason: “" + q2 + "”",
         ],
         "tokens": ["oa.color.graphic.essential.onNewsprint"],
         "why": {"text": ["Each property answers its own question: how strong the evidence is, how large the change, how sure the "
@@ -1049,7 +1050,8 @@ def rule_13_7(book):
         "id": "13.7",
         "title": "Print the period and the vintage, and give charts shown together one window.",
         "rule": [
-            "The measure line under a chart’s title names the observation period in words, such as 2009 to 2025. Where the "
+            "The measure line, the line under a chart’s title that says what is counted, names the observation period, such as "
+            "2009 to 2025 or January 2022 to September 2026. Where the "
             "publisher revises its figures, the chart also prints their vintage, the release the figures come from, and marks "
             "any figure the publisher calls preliminary. The Census Bureau revised its child poverty rates for 2019 to 2024 in "
             "August 2026, so a chart of those years names the release it draws.",
@@ -1122,9 +1124,9 @@ def rule_13_8(book):
             "An invented bill takes a number from the ranges Rule 11.1 sets, from H.99001 and S.99002 up, which no legislature "
             "assigns, and an invented place takes a name we keep for examples, such as Alder County.",
         ],
-        "why": {"text": ["A reader trusts the real items in a piece partly because the invented ones sit beside them. A label "
-                         "beside each invented item keeps that trust where it belongs, while a note at the foot of a page "
-                         "arrives after the reader has believed what came before it."],
+        "why": {"text": ["Many of our pieces set real and invented items side by side. A label beside each invented item tells "
+                         "a reader which is which at the moment they read it, while a note at the foot of a page arrives after "
+                         "they have believed what came before it."],
                 "basis": "Chapter 02, house rule H03"},
         "correct": {"specimen": "s-13-8-correct",
                     "caption": "A story card that mixes a real rule with an invented reader. The rule keeps its source, and the "
@@ -1178,8 +1180,9 @@ def rule_13_9(book):
         "id": "13.9",
         "title": "Name every atlas ID in its typed chip.",
         "rule": [
-            "Our systems atlas gives each record a short ID, and some IDs repeat across kinds of record. B4 names both a "
-            "variable and a loop, and so do B2, B3 and B5, while Loop R1 sits one hyphen from Reform R-01. Every atlas ID we "
+            "Our systems atlas gives each record a short ID, and some IDs repeat across kinds of record. The code B4 names both "
+            "Variable B4 and Loop B4, B2, B3 and B5 repeat the same way, and Loop R1 sits one hyphen from Reform R-01. Every "
+            "atlas ID we "
             "print sits in a typed chip, the outlined label that holds the kind of record and its ID together, such as Variable "
             "B4 or Loop B4, built as Rule 18.24 sets out. The first time a page names a record, its name follows the chip, as "
             "house rule H11 asks.",
@@ -1187,8 +1190,8 @@ def rule_13_9(book):
             "before a page ships.",
         ],
         "tokens": ["oa.type.dataLabel", "oa.color.border.strong.onNewsprint"],
-        "why": {"text": ["A bare B4 could mean hostility toward the other party or a loop about what elections make officials "
-                         "do, and the reader cannot tell which. The kind word settles it, and the chip keeps the word and the ID "
+        "why": {"text": ["A bare B4 could mean hostility toward the other party or the loop in which electoral consequences can "
+                         "improve public performance, and the reader cannot tell which. The kind word settles it, and the chip keeps the word and the ID "
                          "on one line."],
                 "basis": "Chapter 02, house rule H11, and Rule 18.24"},
         "correct": {"specimen": "s-13-9-correct",
@@ -1230,12 +1233,12 @@ def rule_13_10(book):
     order = ["FS", "ENF", "SS"]
     by = {x["route"]: x for x in r["routes"]}
     trs = "".join(f'<tr><th scope="row">{chip("Route", c)} {e(ROUTE_NAME[c])}</th><td data-k="Rated">{e(by[c]["feasibility"].capitalize())}</td>'
-                  f'<td data-k="Checked">{"Checked " + words_date(by[c]["checked"]) if by[c]["checked"] else "Not checked"}</td></tr>'
+                  f'<td data-k="Date">{"Checked " + words_date(by[c]["checked"]) if by[c]["checked"] else "Not checked"}</td></tr>'
                   for c in order)
     body = (f'<p class="hed">{chip("Reform", "R-19")}<span>{e(r["title"])}</span></p>'
             f'<p class="ms">Status, as of {SNAP}: partly in place.</p>'
             '<table class="tb stack blk"><caption>Routes to change, with the date each was last checked</caption><thead><tr>'
-            '<th scope="col">Route</th><th scope="col">Rated</th><th scope="col">Checked</th></tr></thead>'
+            '<th scope="col">Route</th><th scope="col">Rated</th><th scope="col">Date</th></tr></thead>'
             f'<tbody>{trs}</tbody></table>'
             f'<p class="src">Source: {e(ATLAS)}, reform R-19, its status and routes, snapshot of {SNAP}, United States. '
             f'Of the atlas’s {total} route entries, {dated} carry a check date.</p>')
@@ -1260,9 +1263,9 @@ def rule_13_10(book):
         "title": "Date what can change, and print an undated route as not checked.",
         "rule": [
             "A status, a count or a rule that can change after we publish carries the date it was last checked, in words, as in "
-            f"“as of {SNAP}”. Our systems atlas dates its research as a snapshot, which its glossary defines as “"
-            + GLOSS["Snapshot"].split(". ")[0] + ".”, and gives each fact it rechecked a date of its own. A page prints a fact’s own "
-            "check date where it has one, and the snapshot date where it does not.",
+            f"“as of {SNAP}”. Our systems atlas dates its research as a snapshot, and its glossary defines one as “"
+            + GLOSS["Snapshot"].split(". ")[0] + ".” Each fact the atlas rechecked also carries a date of its own. A page prints "
+            "a fact’s own check date where it has one, and the snapshot date where it does not.",
             "A route, one of the paths a reform can take to become law or practice, carries its check date when the atlas gives "
             f"one and the words “Not checked” when it does not. Of the atlas’s {total} route entries, {dated} carry a date. When "
             "something the record names has happened since its date, such as an election, the page keeps the dated words and "
@@ -1276,7 +1279,7 @@ def rule_13_10(book):
                                "and prints the other two as not checked. The status carries its own date."},
         "failure": {"specimen": "s-13-10-failure",
                     "caption": "<strong>Fails Rule 13.10.</strong> The heading says now and no route carries a date, so all three "
-                               "read as checked, though the atlas checked one."},
+                               "read as checked, though the atlas checked only one."},
         "specs": [
             {"label": "A checked route", "value": "“Checked” and the date, from the route’s own record"},
             {"label": "An undated route", "value": "“Not checked”, in the same type and place"},
@@ -1490,7 +1493,7 @@ def rule_13_13(book):
             f"weekly hours as {LIB_WRONG}. The county’s adopted schedule gives {LIB[0][1]}. We replaced the chart and fixed the "
             "second paragraph.")
     piece = (f'<div class="card nb">{ill()}<p class="cn">{note}</p><p class="hl">{e(head)}</p>'
-             '<p class="dek">The county board approved Sunday hours at all three branches from January 4.</p>'
+             '<p>The county board approved Sunday hours at all three branches from January 4.</p>'
              f'<p>The Main Library will open {LIB[0][1]} hours a week, the most of the three.</p>'
              f'<div class="blk"><p class="k">Hours open each week, from January 4</p>{bars_svg(LIB)}</div>'
              '<p class="src">Source: Alder County Board, adopted library schedule, 2027, three branches. Values invented for this example.</p></div>')
@@ -1513,7 +1516,7 @@ def rule_13_13(book):
     book.log("13.13 correct", "Alder County library hours", "invented", level="invented")
     wrong = [("Main Library", LIB[0][1]), ("Riverside", LIB[1][1]), ("Elm Street", LIB[2][1])]
     fail = (dnp() + f'<div class="card">{ill()}<p class="hl">{e(head)}</p>'
-            '<p class="dek">The county board approved Sunday hours at all three branches from January 4.</p>'
+            '<p>The county board approved Sunday hours at all three branches from January 4.</p>'
             f'<p>The Main Library will open {LIB[0][1]} hours a week, the most of the three.</p>'
             f'<div class="blk"><p class="k">Hours open each week, from January 4</p>{bars_svg(wrong)}</div>'
             '<p class="foot">Updated</p></div>')
@@ -1554,8 +1557,8 @@ def rule_13_13(book):
         ],
         "tokens": ["oa.color.graphic.essential.onNewsprint", "oa.border.width.bar"],
         "why": {"text": ["A note that says what was wrong lets a reader who saw the first version learn of the change. A page that "
-                         "keeps every note shows how often we get things wrong and how we fix them, and a quiet fix leaves the "
-                         "wrong figure in every copy already shared."],
+                         "keeps every note shows how often we get things wrong and how we fix them. A quiet fix leaves every reader "
+                         "who shared the old figure with no way to learn it changed."],
                 "basis": "Our founder and editor’s policy on corrections, November 11, 2026"},
         "correct": {"specimen": "s-13-13-correct",
                     "caption": "An invented article with its correction note above the headline and the fixed chart in place, "

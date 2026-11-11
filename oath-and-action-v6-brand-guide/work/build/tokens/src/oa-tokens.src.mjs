@@ -61,7 +61,7 @@ const chartNum = (value, unit, description, source, ext = {}) => tok('number', v
 // ------------------------------------------------------------------------------------------ metadata
 export const meta = {
   title: 'Oath & Action design tokens, Edition 06',
-  version: '6.0.0-gate2.9',   // Gate 2 fix pass, November 11, 2026: descriptions only (DT-S5, DT-S6, AX-1, AX-2), no name or value changes; the error bar drops its keyline record. Before that, gate2.8, stage C round 2, November 11, 2026: DR-218 (descriptions in reader words, the loading mark's description, error.mark renamed error.bar with a deprecated alias) and D2-1544 (the field ground on Charcoal is Charcoal); see changeNotes (gate2.7: the light and dark themes, DR-204; gate2.6: the error mark token colors the 4 px bar, PP-M3; gate2.5: the icon accent from 48 px, the 16 px utility line; gate2.4: mark tokens, D2-402, the 24 px utility line, icon sizes after DR-136)
+  version: '6.0.0-gate3.1',   // Phase 3 round 0, November 11, 2026: the palette proposal's chart tokens, proposed until board 1 (DR-204, DR-234, Gate 1 M1). Before that, gate2.9, the Gate 2 fix pass, November 11, 2026: descriptions only (DT-S5, DT-S6, AX-1, AX-2), no name or value changes; the error bar drops its keyline record. Before that, gate2.8, stage C round 2, November 11, 2026: DR-218 (descriptions in reader words, the loading mark's description, error.mark renamed error.bar with a deprecated alias) and D2-1544 (the field ground on Charcoal is Charcoal); see changeNotes (gate2.7: the light and dark themes, DR-204; gate2.6: the error mark token colors the 4 px bar, PP-M3; gate2.5: the icon accent from 48 px, the 16 px utility line; gate2.4: mark tokens, D2-402, the 24 px utility line, icon sizes after DR-136)
   status: 'pre-release',
   // DR-191's second pass, E3: reader words, since a builder downloads this file
   statusNote:
@@ -100,12 +100,17 @@ export const meta = {
       'data-oa-theme="light" or "dark" on the root wins over the device setting; the reader\'s Theme choice (Light, Dark, Match my device) writes it.',
       'The attribute on any other element sets that element and what it holds, so a specimen can show both themes on one page.',
       'A surface class keeps its own surface inside either theme. A product that follows the theme puts no surface class on its body.',
-      'A role with no token on Charcoal, such as the diverging chart scale and the Error Band, is initial in the dark theme.',
+      'A role with no token on Charcoal, such as the Error Band, is initial in the dark theme.',
     ],
   },
   // A note's version, date, tokens, change and reason are reader words: chapter 26 prints the newest note (Rule 26.8), and
   // tokens.css's header carries its change. The studio's decision codes sit in `record` alone (DR-218, BE-S7).
   changeNotes: [
+    { version: '6.0.0-gate3.1', date: '2026-11-11',
+      tokens: 'oa.color.tint.prussianN56 and prussianN29 (new); oa.chart.color.diverging on Charcoal; oa.chart.color.categorical; oa.chart.color.ghost; oa.chart.grade; the descriptions listed under description_changes',
+      change: 'Two new colors, both Prussian mixed toward Newsprint, so the diverging scale works on Charcoal. New roles with no new value: the four-ink categorical set with its label inks, the ghost lines of small multiples, and the evidence line code as stroke styles. Every new token is marked proposed until board 1.',
+      reason: 'Dark mode needs the diverging scale on Charcoal; the categorical set stays with the four brand inks and adds no hue; the evidence line code moves out of three build scripts into the tokens, so every chapter draws one set of patterns (Rule 10.10).',
+      record: 'DR-204, DR-234, D2-95, Gate 1 M1, Rule 10.10; the palette notes\' D3 calls', gate: 'Board 1, then Gate 3' },
     { version: '6.0.0-gate2.9', date: '2026-11-11',
       tokens: 'oa.color.state.error.bar and its deprecated alias oa.color.state.error.mark; oa.color.state.selected.band; oa.size.icon.medium; oa.color.action.ask.fill; and every description that wrote a contrast ratio with a colon',
       change: 'Descriptions only; no token is renamed and no value changes. The error bar no longer records a Charcoal keyline: it repeats the error mark and the word "Error:", which carry the error, so it takes none, as the guide draws it. The selected band is the ground of the current or selected row in a list, paired with the 4 px bar and bold words, and says which marks may sit inside it in the dark theme. The 24 px icon size names the 37 topic and atlas symbols on Rule 10.4\'s list. The ask fill says it is Newsprint on Prussian. Every contrast ratio in a description reads as the guide writes it, "2.96 to 1".',
@@ -148,6 +153,14 @@ export const needs = {
     'One-sided magnitude scales (S16 turnout in the stretch test, approved with Board 4 under DR-62) need five ordered Verdigris steps per ground',
   'N-09':
     'Phone tile maps of shifts draw gray steps by size (DR-64): four ordered Stone steps per ground, each holding a 4.5 to 1 label',
+  'N-10':
+    'Diverging pair B on Charcoal for the dark theme (DR-204): the scale has Newsprint tokens only, and the dark theme sets it to initial. Measured on this sheet',
+  'N-11':
+    'A categorical set of up to four groups (DR-234): no token names the four brand inks as groups, with a label ink for each and the hatch that keeps Verdigris and Stone apart (D2-95)',
+  'N-12':
+    'The evidence line code (Gate 1, M1; Rule 10.10) as tokens, so the chart kit, chapter 13 and chapter 15 draw one set of patterns: today the patterns live in three build scripts',
+  'N-13':
+    'Small multiples past four groups (DR-234) draw the other groups faint behind each panel; no token names that role',
 };
 
 // Values registered at Gate 1 that are not tokens. They stay out of tokens.json and tokens.css.
@@ -230,23 +243,23 @@ function tint(name, base, toward, amount, job, kind, surfaces, need, from) {
     tier: 'primitive', status: 'adopted', job, kind, surfaces, need, from })];
 }
 const tints = Object.fromEntries([
-  tint('stoneN55', 'stone', 'newsprint', 0.55, 'Light Stone fill for a category under the subject, with its value printed', 'dataFill', ['newsprint'], 'N-05', 'Explainer lt; palette lab'),
+  tint('stoneN55', 'stone', 'newsprint', 0.55, 'Light Stone fill under the subject, and the ghost lines of small multiples on Newsprint', 'dataFill', ['newsprint'], 'N-05', 'Explainer lt; palette lab; Phase 3 palette proposal'),
   tint('stoneN70', 'stone', 'newsprint', 0.70, 'Gridline on Newsprint', 'decorative', ['newsprint'], 'N-05', 'Explainer grid; palette lab'),
   tint('stoneN88', 'stone', 'newsprint', 0.88, 'Track on Newsprint, the whole a share sits in', 'decorative', ['newsprint'], 'N-05', 'Explainer lt2'),
   tint('stoneN90', 'stone', 'newsprint', 0.90, 'Midpoint of the diverging scale on Newsprint', 'dataFill', ['newsprint'], 'N-07', 'Palette lab, diverging B'),
   tint('stoneN35', 'stone', 'newsprint', 0.35, 'Context marks on Charcoal, one step quieter than secondary text', 'graphic', ['charcoal'], 'N-06', 'Explainer dark ctx; palette lab'),
   tint('stoneN85', 'stone', 'newsprint', 0.85, 'Largest gray step of a phone tile map on Charcoal', 'dataFill', ['charcoal'], 'N-09', 'Stretch S12 phone step'),
   tint('stoneC10', 'stone', 'charcoal', 0.10, 'Third gray step of a phone tile map on Newsprint', 'dataFill', ['newsprint'], 'N-09', 'Stretch S12 phone step'),
-  tint('stoneC40', 'stone', 'charcoal', 0.40, 'Second gray step of a phone tile map on Charcoal', 'dataFill', ['charcoal'], 'N-09', 'Stretch S12 phone step'),
+  tint('stoneC40', 'stone', 'charcoal', 0.40, 'Second gray step of a phone tile map on Charcoal, and the ghost lines of small multiples there', 'dataFill', ['charcoal'], 'N-09', 'Stretch S12 phone step; Phase 3 palette proposal'),
   tint('stoneC45', 'stone', 'charcoal', 0.45, 'Gridline on Charcoal', 'decorative', ['charcoal'], 'N-05', 'Explainer dark grid; palette lab'),
   tint('stoneC55', 'stone', 'charcoal', 0.55, 'Track on Charcoal, the whole a share sits in', 'decorative', ['charcoal'], 'N-05', 'Explainer dark lt2'),
   tint('stoneC60', 'stone', 'charcoal', 0.60, 'Largest gray step of a phone tile map on Newsprint', 'dataFill', ['newsprint'], 'N-09', 'Stretch S12 phone step'),
-  tint('stoneC72', 'stone', 'charcoal', 0.72, 'Band on Charcoal, a stretch of time a note names', 'decorative', ['charcoal'], 'N-05', 'Explainer dark band'),
+  tint('stoneC72', 'stone', 'charcoal', 0.72, 'Band on Charcoal, and the midpoint of the diverging scale on Charcoal', 'decorative', ['charcoal'], 'N-05', 'Explainer dark band; Phase 3 palette proposal'),
   tint('stoneC75', 'stone', 'charcoal', 0.75, 'Smallest gray step of a phone tile map on Charcoal', 'dataFill', ['charcoal'], 'N-09', 'Stretch S12 phone step'),
   tint('stoneC80', 'stone', 'charcoal', 0.80, 'Map land on Charcoal', 'decorative', ['charcoal'], 'N-05', 'Stretch land, dark'),
   // Explainer writes "Newsprint 45% toward White"; OKLab mixing is linear, so that is White 55% toward Newsprint, the form D1-04 allows.
   tint('whiteN55', 'white', 'newsprint', 0.55, 'Band and map land on Newsprint, lighter than the page', 'decorative', ['newsprint'], 'N-05', 'Explainer band; stretch land'),
-  tint('prussianN62', 'prussian', 'newsprint', 0.62, 'Light Prussian step of the diverging scale on Newsprint', 'dataFill', ['newsprint'], 'N-07', 'Palette lab, diverging B'),
+  tint('prussianN62', 'prussian', 'newsprint', 0.62, 'Light Prussian diverging step on Newsprint, and the Prussian categorical group on Charcoal', 'dataFill', ['charcoal', 'newsprint'], 'N-07', 'Palette lab, diverging B; Phase 3 palette proposal'),
   tint('verdigrisN55', 'verdigris', 'newsprint', 0.55, 'Light Verdigris step: the diverging scale\'s on Newsprint and the top sequential step on Charcoal', 'dataFill', ['newsprint', 'charcoal'], 'N-07', 'Palette lab, diverging B and sequential on Charcoal'),
   tint('verdigrisC25', 'verdigris', 'charcoal', 0.25, 'Strong Verdigris end of the diverging scale on Newsprint', 'dataFill', ['newsprint'], 'N-07', 'Palette lab, diverging B'),
   tint('verdigrisN82', 'verdigris', 'newsprint', 0.82, 'First sequential Verdigris step on Newsprint', 'dataFill', ['newsprint'], 'N-08', 'Palette lab sequential; stretch q1'),
@@ -256,9 +269,17 @@ const tints = Object.fromEntries([
   tint('verdigrisC35', 'verdigris', 'charcoal', 0.35, 'Fifth sequential Verdigris step and the circle outline on Newsprint', 'dataFill', ['newsprint'], 'N-08', 'Palette lab sequential; stretch q5 and qk'),
   tint('verdigrisC75', 'verdigris', 'charcoal', 0.75, 'First sequential Verdigris step on Charcoal', 'dataFill', ['charcoal'], 'N-08', 'Palette lab sequential on Charcoal'),
   tint('verdigrisC50', 'verdigris', 'charcoal', 0.50, 'Second sequential Verdigris step on Charcoal', 'dataFill', ['charcoal'], 'N-08', 'Palette lab sequential on Charcoal'),
-  tint('verdigrisC20', 'verdigris', 'charcoal', 0.20, 'Third sequential Verdigris step on Charcoal', 'dataFill', ['charcoal'], 'N-08', 'Palette lab sequential on Charcoal'),
-  tint('verdigrisN25', 'verdigris', 'newsprint', 0.25, 'Fourth sequential Verdigris step on Charcoal', 'dataFill', ['charcoal'], 'N-08', 'Palette lab sequential on Charcoal'),
+  tint('verdigrisC20', 'verdigris', 'charcoal', 0.20, 'Third sequential Verdigris step on Charcoal, and the near Verdigris diverging step there', 'dataFill', ['charcoal'], 'N-08', 'Palette lab sequential on Charcoal; Phase 3 palette proposal'),
+  tint('verdigrisN25', 'verdigris', 'newsprint', 0.25, 'Fourth sequential Verdigris step on Charcoal, and the strong Verdigris diverging end there', 'dataFill', ['charcoal'], 'N-08', 'Palette lab sequential on Charcoal; Phase 3 palette proposal'),
+  // Phase 3, round 0 (the palette proposal, N-10): the Prussian half of the diverging scale on Charcoal. Proposed until board 1.
+  tint('prussianN56', 'prussian', 'newsprint', 0.56, 'Strong Prussian end of the diverging scale on Charcoal', 'dataFill', ['charcoal'], 'N-10', 'Phase 3 palette proposal'),
+  tint('prussianN29', 'prussian', 'newsprint', 0.29, 'Near Prussian step of the diverging scale on Charcoal', 'dataFill', ['charcoal'], 'N-10', 'Phase 3 palette proposal'),
 ]);
+// The proposal's own descriptions for the two new tints: the recipe in words and the board that approves them
+// Six tints take a second job from the palette proposal; their descriptions say the second job waits for board 1
+for (const n of ["stoneC72", "verdigrisC20", "verdigrisN25", "prussianN62", "stoneN55", "stoneC40"]) tints[n].$description = tints[n].$description.replace(/\.$/, '. The second job is proposed until board 1.');
+tints.prussianN56.$description = "Strong Prussian end of the diverging scale on Charcoal. Prussian mixed 56% toward Newsprint in OKLab. Proposed until board 1.";
+tints.prussianN29.$description = "Near Prussian step of the diverging scale on Charcoal. Prussian mixed 29% toward Newsprint in OKLab. Proposed until board 1.";
 
 // The 4 px bar beside an error, the first claim on the view's working red (Rule 05.3); named oa.color.state.error.mark
 // until 6.0.0-gate2.8 (DR-218), and below under both names.
@@ -545,6 +566,12 @@ const SEQ_LABEL_N = ['charcoal', 'charcoal', 'charcoal', 'white', 'white'];
 const SEQ_LABEL_C = ['newsprint', 'newsprint', 'newsprint', 'charcoal', 'charcoal'];
 const DIV_N = [P('prussian'), T('prussianN62'), T('stoneN90'), T('verdigrisN55'), T('verdigrisC25')];
 const DIV_LABEL_N = ['white', 'charcoal', 'charcoal', 'charcoal', 'white'];
+// Phase 3, round 0 (palette proposal, N-10; DR-204): the diverging scale on Charcoal, proposed until board 1
+const DIV_C = [T('prussianN56'), T('prussianN29'), T('stoneC72'), T('verdigrisC20'), T('verdigrisN25')];
+const DIV_LABEL_C = ['charcoal', 'newsprint', 'newsprint', 'newsprint', 'charcoal'];
+const DIV_WORDS_C = ['strong Prussian end', 'near Prussian step', 'midpoint, tinted toward the ground', 'near Verdigris step', 'strong Verdigris end'];
+// A role whose Charcoal token is new carries its own description there (the proposal's words)
+const describeOn = (group, surfaceKey, text) => { group[surfaceKey].$description = text; return group; };
 const MAG_N = [T('stoneN88'), T('stoneN55'), T('stoneC10'), T('stoneC60')];
 const MAG_C = [T('stoneC75'), T('stoneC40'), T('stoneN55'), T('stoneN85')];
 const MAG_LABEL_N = ['charcoal', 'charcoal', 'newsprint', 'newsprint'];
@@ -554,12 +581,12 @@ const DIV_WORDS = ['strong Prussian end', 'light Prussian step', 'midpoint, tint
 const chartColor = {
   $description: 'Chart color on Newsprint, the page color, and on Charcoal, the dark ground. One dark subject against gray context; red only for the one point a title names.',
   subject: component('Subject: the series the title names and its labels. 3 px lines, 6.5 px dots.', NC('{oa.color.data.emphasis.onNewsprint}', '{oa.color.data.emphasis.onCharcoal}')),
-  context: component('Context: every other series, 2 px, so the subject reads first.', NC('{oa.color.data.context.onNewsprint}', '{oa.color.data.context.onCharcoal}')),
+  context: component("Context: every other series, 2 px, so the subject reads first. Past four groups, every group but the one the title names takes this ink, each with its label.", NC('{oa.color.data.context.onNewsprint}', '{oa.color.data.context.onCharcoal}')),
   label: component('Direct labels on the subject and chart headings.', NC('{oa.color.text.primary.onNewsprint}', '{oa.color.text.primary.onCharcoal}')),
   secondary: component('Ticks, notes, measure lines and source lines.', NC('{oa.color.text.secondary.onNewsprint}', '{oa.color.text.secondary.onCharcoal}')),
   baseline: component('The zero baseline and reference rules, 1.5 px.', NC('{oa.color.data.emphasis.onNewsprint}', '{oa.color.data.emphasis.onCharcoal}')),
   leader: component('Leaders from a note to its mark, 1 px.', NC('{oa.color.data.context.onNewsprint}', '{oa.color.data.context.onCharcoal}')),
-  point: component('The one point a title names, in working red at the third rank. Only when no error or ask holds the view\'s red.', NC('{oa.color.data.emphasisRed.onNewsprint}', '{oa.color.data.emphasisRed.onCharcoal}')),
+  point: component("The one point a title names, in working red at the third rank. Only when no error or ask holds the view\'s red. When an error or an ask holds the view\'s red, the point yields to the subject ink and keeps its label and its place (Rule 11.16).", NC('{oa.color.data.emphasisRed.onNewsprint}', '{oa.color.data.emphasisRed.onCharcoal}')),
   pointKeyline: component('The 1 px keyline around a red point on Newsprint, where Pillar Red measures 2.96 to 1.', { newsprint: '{oa.color.border.strong.onNewsprint}' }),
   party: {
     mark: component('Every mark that stands for a party\'s lead, vote or share: one neutral ink for every party, with the party named on the mark.', NC('{oa.color.data.emphasis.onNewsprint}', '{oa.color.data.emphasis.onCharcoal}'),
@@ -579,12 +606,41 @@ const chartColor = {
   band: semantic('decorative', 'Band: a stretch of time a note names.', NC(T('whiteN55'), T('stoneC72'))),
   land: semantic('decorative', 'Map land under data marks.', NC(T('whiteN55'), T('stoneC80'))),
   diverging: {
-    $description: 'The diverging scale, Prussian through the page color to Verdigris. Neither end keeps its order in grayscale, so a boxed arrow or a printed sign carries direction. Newsprint only until a Charcoal ramp is measured.',
-    fill: steps(5, (i) => semantic('dataFill', `The diverging scale, step ${i} of 5: the ${DIV_WORDS[i - 1]}.`, { newsprint: DIV_N[i - 1] },
-      { newsprint: { valuesPrinted: true, scale: 'diverging', step: i } })),
-    label: steps(5, (i) => semantic('text', `Text on diverging step ${i}.`, { newsprint: P(DIV_LABEL_N[i - 1]) },
-      { newsprint: { ground: `{oa.chart.color.diverging.fill.step${i}.onNewsprint}` } })),
+    $description: "The diverging scale, Prussian through a midpoint tinted toward the ground to Verdigris, on Newsprint and Charcoal. Neither end keeps its order in grayscale, so a boxed arrow or a printed sign carries direction.",
+    fill: steps(5, (i) => describeOn(semantic('dataFill', `The diverging scale, step ${i} of 5: the ${DIV_WORDS[i - 1]}.`, NC(DIV_N[i - 1], DIV_C[i - 1]),
+      { newsprint: { valuesPrinted: true, scale: 'diverging', step: i }, charcoal: { valuesPrinted: true, scale: 'diverging', step: i, proposed: 'board 1' } }),
+      'onCharcoal', `The diverging scale on Charcoal, step ${i} of 5: the ${DIV_WORDS_C[i - 1]}. Proposed until board 1.`)),
+    label: steps(5, (i) => describeOn(semantic('text', `Text on diverging step ${i}.`, NC(P(DIV_LABEL_N[i - 1]), P(DIV_LABEL_C[i - 1])),
+      { newsprint: { ground: `{oa.chart.color.diverging.fill.step${i}.onNewsprint}` }, charcoal: { ground: `{oa.chart.color.diverging.fill.step${i}.onCharcoal}`, proposed: 'board 1' } }),
+      'onCharcoal', `Text on diverging step ${i} on Charcoal. Proposed until board 1.`)),
   },
+  // Phase 3, round 0 (palette proposal, N-11, N-13; DR-234, D2-95): the four brand inks as groups, each with its label
+  // ink, and the ghost lines of small multiples. No new value; proposed until board 1.
+  categorical: {
+    $description: 'The categorical set: at most four groups, in the order Charcoal (Newsprint on Charcoal), Prussian, Verdigris and Stone, each with a direct label and a marker; the Stone group always carries the hatch, so Verdigris and Stone never tell two groups apart alone. Proposed until board 1.',
+    fill: {
+      group1: describeOn(describeOn(semantic('graphic', 'x', NC(ref('oa.color.palette.charcoal'), ref('oa.color.palette.newsprint')), { newsprint: { group: 1, proposed: 'board 1' }, charcoal: { group: 1, proposed: 'board 1' } }),
+        'onNewsprint', "The categorical set, group 1 of 4, on Newsprint: Charcoal and a circle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray. Proposed until board 1."), 'onCharcoal', "The categorical set, group 1 of 4, on Charcoal: Newsprint and a circle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray. Proposed until board 1."),
+      group2: describeOn(describeOn(semantic('graphic', 'x', NC(ref('oa.color.palette.prussian'), ref('oa.color.tint.prussianN62')), { newsprint: { group: 2, proposed: 'board 1' }, charcoal: { group: 2, proposed: 'board 1' } }),
+        'onNewsprint', "The categorical set, group 2 of 4, on Newsprint: Prussian and a square marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray. Proposed until board 1."), 'onCharcoal', "The categorical set, group 2 of 4, on Charcoal: Prussian lifted 62% and a square marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray. Proposed until board 1."),
+      group3: describeOn(describeOn(semantic('graphic', 'x', NC(ref('oa.color.palette.verdigris'), ref('oa.color.palette.verdigris')), { newsprint: { group: 3, proposed: 'board 1' }, charcoal: { group: 3, proposed: 'board 1' } }),
+        'onNewsprint', "The categorical set, group 3 of 4, on Newsprint: Verdigris and a triangle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray. Proposed until board 1."), 'onCharcoal', "The categorical set, group 3 of 4, on Charcoal: Verdigris and a triangle marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray. Proposed until board 1."),
+      group4: describeOn(describeOn(semantic('graphic', 'x', NC(ref('oa.color.palette.stone'), ref('oa.color.palette.stone')), { newsprint: { group: 4, proposed: 'board 1' }, charcoal: { group: 4, proposed: 'board 1' } }),
+        'onNewsprint', "The categorical set, group 4 of 4, on Newsprint: Stone, hatched, with the hatch and a diamond marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray. Proposed until board 1."), 'onCharcoal', "The categorical set, group 4 of 4, on Charcoal: Stone, hatched, with the hatch and a diamond marker. Every group carries a direct label; past four groups, use small multiples or one group in ink against gray. Proposed until board 1."),
+    },
+    label: {
+      group1: describeOn(describeOn(semantic('text', 'x', NC(ref('oa.color.palette.white'), ref('oa.color.palette.charcoal')), { newsprint: { ground: '{oa.chart.color.categorical.fill.group1.onNewsprint}', proposed: 'board 1' }, charcoal: { ground: '{oa.chart.color.categorical.fill.group1.onCharcoal}', proposed: 'board 1' } }),
+        'onNewsprint', "Text set on categorical group 1 on Newsprint. Proposed until board 1."), 'onCharcoal', "Text set on categorical group 1 on Charcoal. Proposed until board 1."),
+      group2: describeOn(describeOn(semantic('text', 'x', NC(ref('oa.color.palette.white'), ref('oa.color.palette.charcoal')), { newsprint: { ground: '{oa.chart.color.categorical.fill.group2.onNewsprint}', proposed: 'board 1' }, charcoal: { ground: '{oa.chart.color.categorical.fill.group2.onCharcoal}', proposed: 'board 1' } }),
+        'onNewsprint', "Text set on categorical group 2 on Newsprint. Proposed until board 1."), 'onCharcoal', "Text set on categorical group 2 on Charcoal. Proposed until board 1."),
+      group3: describeOn(describeOn(semantic('text', 'x', NC(ref('oa.color.palette.white'), ref('oa.color.palette.white')), { newsprint: { ground: '{oa.chart.color.categorical.fill.group3.onNewsprint}', proposed: 'board 1' }, charcoal: { ground: '{oa.chart.color.categorical.fill.group3.onCharcoal}', proposed: 'board 1' } }),
+        'onNewsprint', "Text set on categorical group 3 on Newsprint. Proposed until board 1."), 'onCharcoal', "Text set on categorical group 3 on Charcoal. Proposed until board 1."),
+      group4: describeOn(describeOn(semantic('text', 'x', NC(ref('oa.color.palette.charcoal'), ref('oa.color.palette.newsprint')), { newsprint: { ground: '{oa.color.surface.newsprint}', proposed: 'board 1' }, charcoal: { ground: '{oa.color.surface.charcoal}', proposed: 'board 1' } }),
+        'onNewsprint', "Label of categorical group 4 on Newsprint: set beside the hatch, or on a halo of the ground (oa.chart.halo), never on the hatch itself. Proposed until board 1."), 'onCharcoal', "Label of categorical group 4 on Charcoal: set beside the hatch, or on a halo of the ground (oa.chart.halo), never on the hatch itself. Proposed until board 1."),
+    },
+  },
+  ghost: describeOn(describeOn(semantic('decorative', 'x', NC(ref('oa.color.tint.stoneN55'), ref('oa.color.tint.stoneC40')), { newsprint: { proposed: 'board 1', repeats: 'the same lines in their own panels' }, charcoal: { proposed: 'board 1', repeats: 'the same lines in their own panels' } }),
+    'onNewsprint', "Ghost: the other groups drawn faint behind each panel of small multiples on Newsprint, 1 px. They repeat lines drawn in full in their own panels, so they carry no new information and need no 3 to 1 ratio. Proposed until board 1."), 'onCharcoal', "Ghost: the other groups drawn faint behind each panel of small multiples on Charcoal, 1 px. They repeat lines drawn in full in their own panels, so they carry no new information and need no 3 to 1 ratio. Proposed until board 1."),
   sequential: {
     $description: 'Sequential Verdigris, five steps per ground, light to strong on Newsprint and dark to light on Charcoal, so the most always reads strongest.',
     fill: steps(5, (i) => semantic('dataFill', `Sequential Verdigris, step ${i} of 5.`, NC(T(SEQ_N[i - 1]), T(SEQ_C[i - 1])),
@@ -671,10 +727,27 @@ const chart = {
   },
   halo: chartDim(4, 'Ground-colored halo behind a label that a gridline passes behind.', EXPL("['halo']")),
   hatch: {
-    pitch: chartDim(5, 'Spacing of the hatch for contested evidence.', EXPL("['hatch']['pitch']")),
-    weight: chartDim(1.5, 'Stroke of the hatch.', EXPL("['hatch']['weight']")),
+    pitch: chartDim(5, "Spacing of the hatch, the pattern a key names: contested evidence in a grade chart, or the Stone group of the categorical set.", EXPL("['hatch']['pitch']")),
+    weight: chartDim(1.5, "Stroke of the hatch, in the ink of the mark it fills.", EXPL("['hatch']['weight']")),
   },
   keyline: chartDim(1, 'Keyline around a red point on Newsprint.', EXPL("['keyline']")),
+  // Phase 3, round 0 (palette proposal, N-12; Gate 1, M1; Rule 10.10): the evidence line code as stroke styles, so the chart
+  // kit, chapter 13 and chapter 15 draw one set of patterns. tokens.css writes each style as a stroke-dasharray ("none" when
+  // solid) with a -line-cap companion. Proposed until board 1.
+  grade: {
+    documented: tok('strokeStyle', 'solid', "Evidence grade Documented, on the public record: drawn solid. Proposed until board 1.", { proposed: 'board 1', source: 'Atlas V7 renderer, Gate 1 M1' }),
+    wellSupported: tok('strokeStyle', 'solid', "Evidence grade Well supported, strong research evidence: drawn solid. Proposed until board 1.", { proposed: 'board 1', source: 'Atlas V7 renderer, Gate 1 M1' }),
+    plausible: tok('strokeStyle', { dashArray: [px(4), px(2)], lineCap: 'butt' }, "Evidence grade Plausible, some evidence: drawn dashed; the dash array is per 1 px of line width, so multiply by the width (2, 3 or 6 px) and stretch it to start and end on ink. Proposed until board 1.", { proposed: 'board 1', source: 'Atlas V7 renderer, Gate 1 M1', perLineWidth: true }),
+    contested: tok('strokeStyle', { dashArray: [px(4), px(1.5), px(1), px(1.5)], lineCap: 'butt' }, "Evidence grade Contested, evidence disputed: drawn dash-dot; the dash array is per 1 px of line width, so multiply by the width (2, 3 or 6 px) and stretch it to start and end on ink. Proposed until board 1.", { proposed: 'board 1', source: 'Atlas V7 renderer, Gate 1 M1', perLineWidth: true }),
+    hypothesis: tok('strokeStyle', { dashArray: [px(0), px(2.5)], lineCap: 'round' }, "Evidence grade Hypothesis, untested: drawn dotted; the dash array is per 1 px of line width, so multiply by the width (2, 3 or 6 px) and stretch it to start and end on ink. Proposed until board 1.", { proposed: 'board 1', source: 'Atlas V7 renderer, Gate 1 M1', perLineWidth: true }),
+    conceptual: {
+      rail: chartDim(1, "Rail of the hollow line for a conceptual step, a link the model names with no numbered chain, on 2 and 3 px lines. Proposed until board 1.", 'Atlas V7 renderer, Gate 1 M1', { proposed: 'board 1' }),
+      railSelected: chartDim(2, "Rail of the hollow line on the 6 px lit route. Proposed until board 1.", 'Atlas V7 renderer, Gate 1 M1', { proposed: 'board 1' }),
+      gap: chartNum(1, 'line widths', "Gap between the rails of a hollow line, in line widths. Proposed until board 1.", 'Atlas V7 renderer, Gate 1 M1', { proposed: 'board 1' }),
+    },
+    recordSquare: chartDim(7, "Record square before the word Documented, 7 px, in the label\'s ink. Proposed until board 1.", 'Atlas V7 renderer, Gate 1 M1', { proposed: 'board 1' }),
+    minRun: chartNum(28, 'line widths', "Shortest textured run, in line widths. Proposed until board 1.", 'Atlas V7 renderer, Gate 1 M1', { proposed: 'board 1' }),
+  },
   gapYears: chartNum(1, 'years', 'A unit chart gives each year its own column after the last run of two or more empty years; this is the gap it allows.', EXPL("['gap_years']")),
   arrow: {
     shaft: chartDim(2, 'Shaft of a shift arrow.', STR("['arrow']['shaft']")),

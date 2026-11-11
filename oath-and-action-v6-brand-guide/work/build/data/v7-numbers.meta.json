@@ -1,0 +1,51 @@
+{
+ "file": "v7-numbers.json",
+ "kind": "v7",
+ "publisher": "Oath & Action, Who Do They Answer To? Systems Atlas V7",
+ "url": "work/extract/atlas-v7-data.json",
+ "geography": "United States",
+ "date_retrieved": "2026-10-15",
+ "vintage": "Atlas V7 snapshot of October 15, 2026",
+ "snapshot": "2026-10-15",
+ "ledger_row": "not needed: Atlas V7, read by script",
+ "columns": {
+  "order": {
+   "type": "integer",
+   "description": "order in V7"
+  },
+  "figure": {
+   "type": "text",
+   "description": "the figure as V7 prints it"
+  },
+  "caption": {
+   "type": "text",
+   "description": "V7's caption"
+  },
+  "qualification": {
+   "type": "text",
+   "description": "V7's qualification"
+  },
+  "kind": {
+   "type": "category",
+   "description": "kind of figure, as V7 labels it"
+  },
+  "sources": {
+   "type": "text",
+   "description": "V7 source IDs, joined by \"; \""
+  },
+  "verified_status": {
+   "type": "text",
+   "description": "V7's check note"
+  }
+ },
+ "title_or_table": "headline figures, 8 numbers with captions, qualifications and sources",
+ "table_id": "numbers",
+ "observation_period": "Each figure states its own period; all checked October 15, 2026",
+ "universe_or_base": "The atlas's headline figures",
+ "unit": "figures, each in its own unit",
+ "qualification": "Each figure carries its own qualification, printed with it; several describe events that may have moved since the snapshot, such as Alaska's Ballot Measure 2, decided on November 3, 2026",
+ "printed_source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, headline figures, 8 numbers, checked October 15, 2026, United States. Snapshot of October 15, 2026. Each figure carries its own source and qualification.",
+ "domain": "all",
+ "domain_note": "The eight figures come from several domains",
+ "states": []
+}

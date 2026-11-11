@@ -1,0 +1,65 @@
+{
+ "file": "congress-gov-housing-bills-119.csv",
+ "kind": "public",
+ "publisher": "Library of Congress, Congress.gov",
+ "title_or_table": "Congress.gov API, bills of the 119th Congress with the policy area Housing and Community Development that moved past referral, from the bill lists of the Senate Committee on Banking, Housing, and Urban Affairs and the House Committee on Financial Services",
+ "table_id": "api.congress.gov v3 /committee/senate/ssbk00/bills, /committee/house/hsba00/bills, /committee/house/hsba04/bills, and /bill/119/{type}/{number}",
+ "url": [
+  "https://api.congress.gov/v3/committee/senate/ssbk00/bills?format=json",
+  "https://api.congress.gov/v3/committee/house/hsba00/bills?format=json",
+  "https://api.congress.gov/v3/bill/119/hr/6644?format=json"
+ ],
+ "observation_period": "119th Congress, January 3, 2025 to November 11, 2026",
+ "geography": "United States Congress",
+ "universe_or_base": "Eight bills chosen by the studio from the 276 housing bills found in those committee lists: every one that had moved past referral to committee, with H.R. 4646 left out because its title is not about housing",
+ "unit": "bills, with dated latest actions",
+ "date_retrieved": "2026-11-11",
+ "vintage": "Congress.gov data as served on November 11, 2026",
+ "qualification": "A tracker list shows where each bill stands on one date; housing provisions also ride in larger bills that these committee lists do not catch, and S. 2651's ideas may have moved in H.R. 6644, which the record here does not show. Sponsors are named with their party in words as the record gives them",
+ "columns": {
+  "bill": {
+   "type": "id",
+   "description": "bill number"
+  },
+  "title": {
+   "type": "text",
+   "description": "short title"
+  },
+  "introduced": {
+   "type": "date",
+   "description": "date introduced"
+  },
+  "sponsor": {
+   "type": "text",
+   "description": "sponsor as Congress.gov names them"
+  },
+  "sponsor_party": {
+   "type": "category",
+   "description": "sponsor's party, in words"
+  },
+  "sponsor_state": {
+   "type": "code",
+   "description": "sponsor's state"
+  },
+  "latest_action_date": {
+   "type": "date",
+   "description": "date of the latest action"
+  },
+  "latest_action": {
+   "type": "text",
+   "description": "latest action as recorded"
+  },
+  "status": {
+   "type": "category",
+   "description": "stage, in the studio's words, from the latest action"
+  },
+  "law_number": {
+   "type": "text",
+   "description": "public law number, if any"
+  }
+ },
+ "printed_source_line": "Source: Library of Congress, Congress.gov, housing bills in the 119th Congress, status as of November 11, 2026, United States Congress. Retrieved November 11, 2026. Eight bills that moved past committee referral; status words are Oath & Action's.",
+ "ledger_row": "P7-018",
+ "domain": "D09",
+ "states": []
+}

@@ -1,0 +1,75 @@
+{
+ "file": "v7-issues.json",
+ "kind": "v7",
+ "publisher": "Oath & Action, Who Do They Answer To? Systems Atlas V7",
+ "url": "work/extract/atlas-v7-data.json",
+ "geography": "United States",
+ "date_retrieved": "2026-10-15",
+ "vintage": "Atlas V7 snapshot of October 15, 2026",
+ "snapshot": "2026-10-15",
+ "ledger_row": "not needed: Atlas V7, read by script",
+ "columns": {
+  "id": {
+   "type": "id",
+   "description": "V7 issue ID"
+  },
+  "domain": {
+   "type": "code",
+   "description": "V7 domain ID"
+  },
+  "domain_title": {
+   "type": "category",
+   "description": "domain title"
+  },
+  "subsystem": {
+   "type": "category",
+   "description": "subsystem"
+  },
+  "title": {
+   "type": "text",
+   "description": "issue title"
+  },
+  "grade": {
+   "type": "category",
+   "description": "V7 grade word as stored"
+  },
+  "jurisdiction": {
+   "type": "category",
+   "description": "level V7 records"
+  },
+  "observed": {
+   "type": "text",
+   "description": "when V7 observed it, as stored (a year or a year and month)"
+  },
+  "actor": {
+   "type": "text",
+   "description": "who can act, as V7 states it"
+  },
+  "loops": {
+   "type": "text",
+   "description": "V7 loop IDs, joined by \"; \""
+  },
+  "aimed_reforms": {
+   "type": "text",
+   "description": "V7 reform IDs aimed at the issue, joined by \"; \""
+  },
+  "retired": {
+   "type": "boolean",
+   "description": "V7 marks the record retired"
+  },
+  "status_checked": {
+   "type": "date",
+   "description": "date of the status check, where V7 gives one"
+  }
+ },
+ "title_or_table": "issue records, 194 issues",
+ "table_id": "issues",
+ "observation_period": "Issues as recorded at the October 15, 2026 snapshot",
+ "universe_or_base": "Every issue record, 193 active and 1 retired",
+ "unit": "issue records",
+ "qualification": "Grade words are V7's stored values (for example well_supported and retired) and print through chapter 13's mapping table, never raw; the observed field is V7's own, and where V7 stores \"n/a\" the cell is left empty",
+ "printed_source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, issue records, 194 issues across ten domains, as of October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas's own; retired records are marked.",
+ "domain": "all",
+ "domain_note": "The issue register spans all ten domains",
+ "states": []
+}

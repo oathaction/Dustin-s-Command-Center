@@ -2463,8 +2463,10 @@ WEIGHT_BUDGET = {"01": 2.7, "02": 0.85, "03": 0.65, "04": 0.45, "05": 0.45, "06"
 # Round 1: chapter 26 carries tokens.json once as its download (0.37 MB as a data URI) beside the token table (0.31 MB),
 # so its budget rises from 0.6 to 1.0 MB.
 WEIGHT_DEFAULT = 0.45          # chapters 13 to 16, 20 to 25, 27 and 28
-WEIGHT_FIXED = {"head and shell": 0.2, "sprites": 0.35, "appendix": 0.2, "front matter and part openers": 0.1,
+WEIGHT_FIXED = {"head and shell": 0.22, "sprites": 0.35, "appendix": 0.2, "front matter and part openers": 0.1,
                 "fonts": 0.5, "chart kit": 0.22}
+# Phase 3 (round 0): head and shell rise from 0.20 to 0.22 MB, since tokens.css, inlined in the head, carries the palette
+# proposal's chart tokens (6.0.0-gate3.1, about 10 KB); the projection still holds the page under 15.5 MB.
 # Phase 3 (the proposal's section 3, DR-227): chapters 13, 14 and 15 take their ceilings from guide_charts.CEILING, where
 # chapter 14 with the chart kit is a hard stop; the chart kit weighs as its own part, allocated 0.22 MB inside chapter 14.   # Gate 2: six WOFF2 files, 255,920 bytes after the fix pass (CD-M1), about 342 KB as base64 (D2-1697)
 

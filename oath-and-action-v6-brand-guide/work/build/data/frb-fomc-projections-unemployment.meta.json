@@ -1,0 +1,68 @@
+{
+ "file": "frb-fomc-projections-unemployment.csv",
+ "kind": "public",
+ "publisher": "Board of Governors of the Federal Reserve System",
+ "title_or_table": "Summary of Economic Projections, September 16, 2026: Table 1 (economic projections, unemployment rate) and Table 2 (average historical projection error ranges)",
+ "table_id": "FOMC projections materials, fomcprojtabl20260916",
+ "url": [
+  "https://www.federalreserve.gov/monetarypolicy/files/fomcprojtabl20260916.pdf",
+  "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260916.htm"
+ ],
+ "observation_period": "Projections made at the September 15 to 16, 2026 meeting for the fourth quarters of 2026 to 2029 and the longer run",
+ "geography": "United States",
+ "universe_or_base": "Projections of the civilian unemployment rate, average for the fourth quarter of each year, by Federal Reserve Board members and Reserve Bank presidents under each one's own view of appropriate policy",
+ "unit": "percent; historical_error is the root mean squared error of past projections in percentage points; band_70_low and band_70_high are the median minus and plus that error, computed by the studio",
+ "date_retrieved": "2026-11-11",
+ "vintage": "September 2026 Summary of Economic Projections",
+ "qualification": "Projections are officials' expectations, not forecasts of what will happen. Table 2's note says that under certain assumptions there is about a 70 percent probability that actual outcomes fall within ranges set by past errors (forecasts for 2006 through 2025); the band here applies those errors to the median as the Fed's own fan charts do. The longer run has no error range",
+ "columns": {
+  "period": {
+   "type": "category",
+   "description": "projection year, or longer_run"
+  },
+  "median": {
+   "type": "number",
+   "description": "median projection",
+   "unit": "percent"
+  },
+  "central_tendency_low": {
+   "type": "number",
+   "description": "central tendency, low",
+   "unit": "percent"
+  },
+  "central_tendency_high": {
+   "type": "number",
+   "description": "central tendency, high",
+   "unit": "percent"
+  },
+  "range_low": {
+   "type": "number",
+   "description": "range of all projections, low",
+   "unit": "percent"
+  },
+  "range_high": {
+   "type": "number",
+   "description": "range of all projections, high",
+   "unit": "percent"
+  },
+  "historical_error": {
+   "type": "number",
+   "description": "average historical projection error",
+   "unit": "percentage points"
+  },
+  "band_70_low": {
+   "type": "number",
+   "description": "median minus the error, computed",
+   "unit": "percent"
+  },
+  "band_70_high": {
+   "type": "number",
+   "description": "median plus the error, computed",
+   "unit": "percent"
+  }
+ },
+ "printed_source_line": "Source: Board of Governors of the Federal Reserve System, Summary of Economic Projections, September 16, 2026, Tables 1 and 2, unemployment rate projections for 2026 to 2029, United States. Retrieved November 11, 2026. Officials' projections; the band applies the average error of past forecasts.",
+ "ledger_row": "P7-033",
+ "domain": "D07",
+ "states": []
+}

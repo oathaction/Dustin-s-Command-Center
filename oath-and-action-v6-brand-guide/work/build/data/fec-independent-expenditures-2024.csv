@@ -1,0 +1,26 @@
+rank,committee_id,committee_name,committee_type,committee_type_words,independent_expenditures,coverage_end_date
+1,C00669259,FF PAC,V,"Hybrid PAC, nonqualified",503317964.13,2024-12-31
+2,C00825851,MAKE AMERICA GREAT AGAIN INC.,O,Super PAC (independent expenditure-only),376948786.7,2024-12-31
+3,C00865444,WINSENATE,O,Super PAC (independent expenditure-only),311285589.2,2024-12-31
+4,C00504530,CONGRESSIONAL LEADERSHIP FUND,W,"Hybrid PAC, qualified",216785222.48,2024-12-31
+5,C00571703,SENATE LEADERSHIP FUND,O,Super PAC (independent expenditure-only),211093032.88,2024-12-31
+6,C00495028,HMP,W,"Hybrid PAC, qualified",195994624.44,2024-12-31
+7,C00879510,AMERICA PAC,O,Super PAC (independent expenditure-only),173734996.5,2024-12-31
+8,C00687103,"AMERICANS FOR PROSPERITY ACTION, INC. (AFP ACTION) DBA CVA ACTION AND DBA LIBRE ACTION",V,"Hybrid PAC, nonqualified",151773456.24,2024-12-31
+9,C00878801,PRESERVE AMERICA PAC,O,Super PAC (independent expenditure-only),112321879.52,2024-12-31
+10,C00828061,"SFA FUND, INC",V,"Hybrid PAC, nonqualified",81820666.44,2024-12-31
+11,C00000935,DCCC,Y,"Party committee, qualified",74258192.57,2024-12-31
+12,C00867036,RIGHT FOR AMERICA,O,Super PAC (independent expenditure-only),69583233.16,2024-12-31
+13,C00487363,AMERICAN CROSSROADS,O,Super PAC (independent expenditure-only),60267523.21,2024-12-31
+14,C00492140,AB PAC,V,"Hybrid PAC, nonqualified",58551575.41,2024-12-31
+15,C00836221,DEFEND AMERICAN JOBS,O,Super PAC (independent expenditure-only),57809173.64,2024-12-31
+16,C00849489,KEYSTONE RENEWAL PAC,O,Super PAC (independent expenditure-only),54394982.49,2024-12-31
+17,C00844613,WIN IT BACK PAC,O,Super PAC (independent expenditure-only),54062372.99,2024-12-31
+18,C00486845,LCV VICTORY FUND,O,Super PAC (independent expenditure-only),46685018.06,2024-12-31
+19,C00042366,DSCC,Y,"Party committee, qualified",43757729.31,2024-12-31
+20,C00571588,RESTORATION PAC,O,Super PAC (independent expenditure-only),42999847.59,2024-12-31
+21,C00835959,FAIRSHAKE,O,Super PAC (independent expenditure-only),40661820.61,2024-12-31
+22,C00799031,UNITED DEMOCRACY PROJECT ('UDP'),O,Super PAC (independent expenditure-only),37859810.12,2024-12-31
+23,C00834077,NEVER BACK DOWN INC.,O,Super PAC (independent expenditure-only),37764477.49,2024-12-31
+24,C00804856,REPUBLICAN ACCOUNTABILITY PAC,O,Super PAC (independent expenditure-only),36750840.41,2024-12-31
+25,C00075820,NRCC,Y,"Party committee, qualified",36483146.06,2024-12-31

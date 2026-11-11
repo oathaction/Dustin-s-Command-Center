@@ -1,5 +1,5 @@
 /* Oath & Action design tokens, Edition 06
- * Version 6.0.0-gate2.9 (pre-release). Every value may still change until version 6.0.0 ships, once our founder and editor approves these files.
+ * Version 6.0.0-gate3.1 (pre-release). Every value may still change until version 6.0.0 ships, once our founder and editor approves these files.
  * DTCG Format Module 2025.10. Generated from work/build/tokens/src/oa-tokens.src.mjs
  * by work/build/scripts/phase-2/tokens_build.mjs. Do not edit by hand: the token tests fail when this
  * file and tokens.json disagree.
@@ -9,7 +9,7 @@
  * --oa-color-text-secondary, at that surface's tokens.
  * Themes: the root follows the device, light on Newsprint or dark on Charcoal (DR-204), and
  * data-oa-theme="light" or "dark" on the root wins over the device. See the theme blocks below.
- * Change in 6.0.0-gate2.9: Descriptions only; no token is renamed and no value changes. The error bar no longer records a Charcoal keyline: it repeats the error mark and the word "Error:", which carry the error, so it takes none, as the guide draws it. The selected band is the ground of the current or selected row in a list, paired with the 4 px bar and bold words, and says which marks may sit inside it in the dark theme. The 24 px icon size names the 37 topic and atlas symbols on Rule 10.4's list. The ask fill says it is Newsprint on Prussian. Every contrast ratio in a description reads as the guide writes it, "2.96 to 1".
+ * Change in 6.0.0-gate3.1: Two new colors, both Prussian mixed toward Newsprint, so the diverging scale works on Charcoal. New roles with no new value: the four-ink categorical set with its label inks, the ghost lines of small multiples, and the evidence line code as stroke styles. Every new token is marked proposed until board 1.
  *
  * Media queries cannot read custom properties. Write breakpoints in em, which follows text size:
  *   wide        (min-width: 90em)
@@ -62,6 +62,8 @@
   --oa-color-tint-verdigris-c50: #2E4340;
   --oa-color-tint-verdigris-c20: #3F655E;
   --oa-color-tint-verdigris-n25: #6F938B;
+  --oa-color-tint-prussian-n56: #828A9D;
+  --oa-color-tint-prussian-n29: #505C7D;
 
   /* oa.color.surface */
   --oa-color-surface-newsprint: var(--oa-color-palette-newsprint);
@@ -496,15 +498,43 @@
   --oa-chart-color-land-on-newsprint: var(--oa-color-tint-white-n55);
   --oa-chart-color-land-on-charcoal: var(--oa-color-tint-stone-c80);
   --oa-chart-color-diverging-fill-step1-on-newsprint: var(--oa-color-palette-prussian);
+  --oa-chart-color-diverging-fill-step1-on-charcoal: var(--oa-color-tint-prussian-n56);
   --oa-chart-color-diverging-fill-step2-on-newsprint: var(--oa-color-tint-prussian-n62);
+  --oa-chart-color-diverging-fill-step2-on-charcoal: var(--oa-color-tint-prussian-n29);
   --oa-chart-color-diverging-fill-step3-on-newsprint: var(--oa-color-tint-stone-n90);
+  --oa-chart-color-diverging-fill-step3-on-charcoal: var(--oa-color-tint-stone-c72);
   --oa-chart-color-diverging-fill-step4-on-newsprint: var(--oa-color-tint-verdigris-n55);
+  --oa-chart-color-diverging-fill-step4-on-charcoal: var(--oa-color-tint-verdigris-c20);
   --oa-chart-color-diverging-fill-step5-on-newsprint: var(--oa-color-tint-verdigris-c25);
+  --oa-chart-color-diverging-fill-step5-on-charcoal: var(--oa-color-tint-verdigris-n25);
   --oa-chart-color-diverging-label-step1-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-diverging-label-step1-on-charcoal: var(--oa-color-palette-charcoal);
   --oa-chart-color-diverging-label-step2-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-diverging-label-step2-on-charcoal: var(--oa-color-palette-newsprint);
   --oa-chart-color-diverging-label-step3-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-diverging-label-step3-on-charcoal: var(--oa-color-palette-newsprint);
   --oa-chart-color-diverging-label-step4-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-diverging-label-step4-on-charcoal: var(--oa-color-palette-newsprint);
   --oa-chart-color-diverging-label-step5-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-diverging-label-step5-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-categorical-fill-group1-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-categorical-fill-group1-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-categorical-fill-group2-on-newsprint: var(--oa-color-palette-prussian);
+  --oa-chart-color-categorical-fill-group2-on-charcoal: var(--oa-color-tint-prussian-n62);
+  --oa-chart-color-categorical-fill-group3-on-newsprint: var(--oa-color-palette-verdigris);
+  --oa-chart-color-categorical-fill-group3-on-charcoal: var(--oa-color-palette-verdigris);
+  --oa-chart-color-categorical-fill-group4-on-newsprint: var(--oa-color-palette-stone);
+  --oa-chart-color-categorical-fill-group4-on-charcoal: var(--oa-color-palette-stone);
+  --oa-chart-color-categorical-label-group1-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-categorical-label-group1-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-categorical-label-group2-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-categorical-label-group2-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-categorical-label-group3-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-categorical-label-group3-on-charcoal: var(--oa-color-palette-white);
+  --oa-chart-color-categorical-label-group4-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-categorical-label-group4-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-ghost-on-newsprint: var(--oa-color-tint-stone-n55);
+  --oa-chart-color-ghost-on-charcoal: var(--oa-color-tint-stone-c40);
   --oa-chart-color-sequential-fill-step1-on-newsprint: var(--oa-color-tint-verdigris-n82);
   --oa-chart-color-sequential-fill-step1-on-charcoal: var(--oa-color-tint-verdigris-c75);
   --oa-chart-color-sequential-fill-step2-on-newsprint: var(--oa-color-tint-verdigris-n52p75);
@@ -613,6 +643,30 @@
 
   /* oa.chart */
   --oa-chart-keyline: 1px;
+
+  /* oa.chart.grade */
+  --oa-chart-grade-documented: solid;
+  --oa-chart-grade-documented-dasharray: none;
+  --oa-chart-grade-documented-line-cap: butt;
+  --oa-chart-grade-well-supported: solid;
+  --oa-chart-grade-well-supported-dasharray: none;
+  --oa-chart-grade-well-supported-line-cap: butt;
+  --oa-chart-grade-plausible: dashed;
+  --oa-chart-grade-plausible-dasharray: 4px 2px;
+  --oa-chart-grade-plausible-line-cap: butt;
+  --oa-chart-grade-contested: dashed;
+  --oa-chart-grade-contested-dasharray: 4px 1.5px 1px 1.5px;
+  --oa-chart-grade-contested-line-cap: butt;
+  --oa-chart-grade-hypothesis: dashed;
+  --oa-chart-grade-hypothesis-dasharray: 0px 2.5px;
+  --oa-chart-grade-hypothesis-line-cap: round;
+  --oa-chart-grade-conceptual-rail: 1px;
+  --oa-chart-grade-conceptual-rail-selected: 2px;
+  --oa-chart-grade-conceptual-gap: 1;
+  --oa-chart-grade-record-square: 7px;
+  --oa-chart-grade-min-run: 28;
+
+  /* oa.chart */
   --oa-chart-gap-years: 1;
 
   /* oa.chart.arrow */
@@ -822,6 +876,15 @@
   --oa-chart-color-diverging-label-step3: var(--oa-chart-color-diverging-label-step3-on-newsprint);
   --oa-chart-color-diverging-label-step4: var(--oa-chart-color-diverging-label-step4-on-newsprint);
   --oa-chart-color-diverging-label-step5: var(--oa-chart-color-diverging-label-step5-on-newsprint);
+  --oa-chart-color-categorical-fill-group1: var(--oa-chart-color-categorical-fill-group1-on-newsprint);
+  --oa-chart-color-categorical-fill-group2: var(--oa-chart-color-categorical-fill-group2-on-newsprint);
+  --oa-chart-color-categorical-fill-group3: var(--oa-chart-color-categorical-fill-group3-on-newsprint);
+  --oa-chart-color-categorical-fill-group4: var(--oa-chart-color-categorical-fill-group4-on-newsprint);
+  --oa-chart-color-categorical-label-group1: var(--oa-chart-color-categorical-label-group1-on-newsprint);
+  --oa-chart-color-categorical-label-group2: var(--oa-chart-color-categorical-label-group2-on-newsprint);
+  --oa-chart-color-categorical-label-group3: var(--oa-chart-color-categorical-label-group3-on-newsprint);
+  --oa-chart-color-categorical-label-group4: var(--oa-chart-color-categorical-label-group4-on-newsprint);
+  --oa-chart-color-ghost: var(--oa-chart-color-ghost-on-newsprint);
   --oa-chart-color-sequential-fill-step1: var(--oa-chart-color-sequential-fill-step1-on-newsprint);
   --oa-chart-color-sequential-fill-step2: var(--oa-chart-color-sequential-fill-step2-on-newsprint);
   --oa-chart-color-sequential-fill-step3: var(--oa-chart-color-sequential-fill-step3-on-newsprint);
@@ -922,6 +985,15 @@
   --oa-chart-color-diverging-label-step3: initial;
   --oa-chart-color-diverging-label-step4: initial;
   --oa-chart-color-diverging-label-step5: initial;
+  --oa-chart-color-categorical-fill-group1: initial;
+  --oa-chart-color-categorical-fill-group2: initial;
+  --oa-chart-color-categorical-fill-group3: initial;
+  --oa-chart-color-categorical-fill-group4: initial;
+  --oa-chart-color-categorical-label-group1: initial;
+  --oa-chart-color-categorical-label-group2: initial;
+  --oa-chart-color-categorical-label-group3: initial;
+  --oa-chart-color-categorical-label-group4: initial;
+  --oa-chart-color-ghost: initial;
   --oa-chart-color-sequential-fill-step1: initial;
   --oa-chart-color-sequential-fill-step2: initial;
   --oa-chart-color-sequential-fill-step3: initial;
@@ -1012,16 +1084,25 @@
   --oa-chart-color-gridline: var(--oa-chart-color-gridline-on-charcoal);
   --oa-chart-color-band: var(--oa-chart-color-band-on-charcoal);
   --oa-chart-color-land: var(--oa-chart-color-land-on-charcoal);
-  --oa-chart-color-diverging-fill-step1: initial;
-  --oa-chart-color-diverging-fill-step2: initial;
-  --oa-chart-color-diverging-fill-step3: initial;
-  --oa-chart-color-diverging-fill-step4: initial;
-  --oa-chart-color-diverging-fill-step5: initial;
-  --oa-chart-color-diverging-label-step1: initial;
-  --oa-chart-color-diverging-label-step2: initial;
-  --oa-chart-color-diverging-label-step3: initial;
-  --oa-chart-color-diverging-label-step4: initial;
-  --oa-chart-color-diverging-label-step5: initial;
+  --oa-chart-color-diverging-fill-step1: var(--oa-chart-color-diverging-fill-step1-on-charcoal);
+  --oa-chart-color-diverging-fill-step2: var(--oa-chart-color-diverging-fill-step2-on-charcoal);
+  --oa-chart-color-diverging-fill-step3: var(--oa-chart-color-diverging-fill-step3-on-charcoal);
+  --oa-chart-color-diverging-fill-step4: var(--oa-chart-color-diverging-fill-step4-on-charcoal);
+  --oa-chart-color-diverging-fill-step5: var(--oa-chart-color-diverging-fill-step5-on-charcoal);
+  --oa-chart-color-diverging-label-step1: var(--oa-chart-color-diverging-label-step1-on-charcoal);
+  --oa-chart-color-diverging-label-step2: var(--oa-chart-color-diverging-label-step2-on-charcoal);
+  --oa-chart-color-diverging-label-step3: var(--oa-chart-color-diverging-label-step3-on-charcoal);
+  --oa-chart-color-diverging-label-step4: var(--oa-chart-color-diverging-label-step4-on-charcoal);
+  --oa-chart-color-diverging-label-step5: var(--oa-chart-color-diverging-label-step5-on-charcoal);
+  --oa-chart-color-categorical-fill-group1: var(--oa-chart-color-categorical-fill-group1-on-charcoal);
+  --oa-chart-color-categorical-fill-group2: var(--oa-chart-color-categorical-fill-group2-on-charcoal);
+  --oa-chart-color-categorical-fill-group3: var(--oa-chart-color-categorical-fill-group3-on-charcoal);
+  --oa-chart-color-categorical-fill-group4: var(--oa-chart-color-categorical-fill-group4-on-charcoal);
+  --oa-chart-color-categorical-label-group1: var(--oa-chart-color-categorical-label-group1-on-charcoal);
+  --oa-chart-color-categorical-label-group2: var(--oa-chart-color-categorical-label-group2-on-charcoal);
+  --oa-chart-color-categorical-label-group3: var(--oa-chart-color-categorical-label-group3-on-charcoal);
+  --oa-chart-color-categorical-label-group4: var(--oa-chart-color-categorical-label-group4-on-charcoal);
+  --oa-chart-color-ghost: var(--oa-chart-color-ghost-on-charcoal);
   --oa-chart-color-sequential-fill-step1: var(--oa-chart-color-sequential-fill-step1-on-charcoal);
   --oa-chart-color-sequential-fill-step2: var(--oa-chart-color-sequential-fill-step2-on-charcoal);
   --oa-chart-color-sequential-fill-step3: var(--oa-chart-color-sequential-fill-step3-on-charcoal);
@@ -1122,6 +1203,15 @@
   --oa-chart-color-diverging-label-step3: initial;
   --oa-chart-color-diverging-label-step4: initial;
   --oa-chart-color-diverging-label-step5: initial;
+  --oa-chart-color-categorical-fill-group1: initial;
+  --oa-chart-color-categorical-fill-group2: initial;
+  --oa-chart-color-categorical-fill-group3: initial;
+  --oa-chart-color-categorical-fill-group4: initial;
+  --oa-chart-color-categorical-label-group1: initial;
+  --oa-chart-color-categorical-label-group2: initial;
+  --oa-chart-color-categorical-label-group3: initial;
+  --oa-chart-color-categorical-label-group4: initial;
+  --oa-chart-color-ghost: initial;
   --oa-chart-color-sequential-fill-step1: initial;
   --oa-chart-color-sequential-fill-step2: initial;
   --oa-chart-color-sequential-fill-step3: initial;
@@ -1231,6 +1321,15 @@
   --oa-chart-color-diverging-label-step3: var(--oa-chart-color-diverging-label-step3-on-newsprint);
   --oa-chart-color-diverging-label-step4: var(--oa-chart-color-diverging-label-step4-on-newsprint);
   --oa-chart-color-diverging-label-step5: var(--oa-chart-color-diverging-label-step5-on-newsprint);
+  --oa-chart-color-categorical-fill-group1: var(--oa-chart-color-categorical-fill-group1-on-newsprint);
+  --oa-chart-color-categorical-fill-group2: var(--oa-chart-color-categorical-fill-group2-on-newsprint);
+  --oa-chart-color-categorical-fill-group3: var(--oa-chart-color-categorical-fill-group3-on-newsprint);
+  --oa-chart-color-categorical-fill-group4: var(--oa-chart-color-categorical-fill-group4-on-newsprint);
+  --oa-chart-color-categorical-label-group1: var(--oa-chart-color-categorical-label-group1-on-newsprint);
+  --oa-chart-color-categorical-label-group2: var(--oa-chart-color-categorical-label-group2-on-newsprint);
+  --oa-chart-color-categorical-label-group3: var(--oa-chart-color-categorical-label-group3-on-newsprint);
+  --oa-chart-color-categorical-label-group4: var(--oa-chart-color-categorical-label-group4-on-newsprint);
+  --oa-chart-color-ghost: var(--oa-chart-color-ghost-on-newsprint);
   --oa-chart-color-sequential-fill-step1: var(--oa-chart-color-sequential-fill-step1-on-newsprint);
   --oa-chart-color-sequential-fill-step2: var(--oa-chart-color-sequential-fill-step2-on-newsprint);
   --oa-chart-color-sequential-fill-step3: var(--oa-chart-color-sequential-fill-step3-on-newsprint);
@@ -1322,16 +1421,25 @@
     --oa-chart-color-gridline: var(--oa-chart-color-gridline-on-charcoal);
     --oa-chart-color-band: var(--oa-chart-color-band-on-charcoal);
     --oa-chart-color-land: var(--oa-chart-color-land-on-charcoal);
-    --oa-chart-color-diverging-fill-step1: initial;
-    --oa-chart-color-diverging-fill-step2: initial;
-    --oa-chart-color-diverging-fill-step3: initial;
-    --oa-chart-color-diverging-fill-step4: initial;
-    --oa-chart-color-diverging-fill-step5: initial;
-    --oa-chart-color-diverging-label-step1: initial;
-    --oa-chart-color-diverging-label-step2: initial;
-    --oa-chart-color-diverging-label-step3: initial;
-    --oa-chart-color-diverging-label-step4: initial;
-    --oa-chart-color-diverging-label-step5: initial;
+    --oa-chart-color-diverging-fill-step1: var(--oa-chart-color-diverging-fill-step1-on-charcoal);
+    --oa-chart-color-diverging-fill-step2: var(--oa-chart-color-diverging-fill-step2-on-charcoal);
+    --oa-chart-color-diverging-fill-step3: var(--oa-chart-color-diverging-fill-step3-on-charcoal);
+    --oa-chart-color-diverging-fill-step4: var(--oa-chart-color-diverging-fill-step4-on-charcoal);
+    --oa-chart-color-diverging-fill-step5: var(--oa-chart-color-diverging-fill-step5-on-charcoal);
+    --oa-chart-color-diverging-label-step1: var(--oa-chart-color-diverging-label-step1-on-charcoal);
+    --oa-chart-color-diverging-label-step2: var(--oa-chart-color-diverging-label-step2-on-charcoal);
+    --oa-chart-color-diverging-label-step3: var(--oa-chart-color-diverging-label-step3-on-charcoal);
+    --oa-chart-color-diverging-label-step4: var(--oa-chart-color-diverging-label-step4-on-charcoal);
+    --oa-chart-color-diverging-label-step5: var(--oa-chart-color-diverging-label-step5-on-charcoal);
+    --oa-chart-color-categorical-fill-group1: var(--oa-chart-color-categorical-fill-group1-on-charcoal);
+    --oa-chart-color-categorical-fill-group2: var(--oa-chart-color-categorical-fill-group2-on-charcoal);
+    --oa-chart-color-categorical-fill-group3: var(--oa-chart-color-categorical-fill-group3-on-charcoal);
+    --oa-chart-color-categorical-fill-group4: var(--oa-chart-color-categorical-fill-group4-on-charcoal);
+    --oa-chart-color-categorical-label-group1: var(--oa-chart-color-categorical-label-group1-on-charcoal);
+    --oa-chart-color-categorical-label-group2: var(--oa-chart-color-categorical-label-group2-on-charcoal);
+    --oa-chart-color-categorical-label-group3: var(--oa-chart-color-categorical-label-group3-on-charcoal);
+    --oa-chart-color-categorical-label-group4: var(--oa-chart-color-categorical-label-group4-on-charcoal);
+    --oa-chart-color-ghost: var(--oa-chart-color-ghost-on-charcoal);
     --oa-chart-color-sequential-fill-step1: var(--oa-chart-color-sequential-fill-step1-on-charcoal);
     --oa-chart-color-sequential-fill-step2: var(--oa-chart-color-sequential-fill-step2-on-charcoal);
     --oa-chart-color-sequential-fill-step3: var(--oa-chart-color-sequential-fill-step3-on-charcoal);
@@ -1423,16 +1531,25 @@
   --oa-chart-color-gridline: var(--oa-chart-color-gridline-on-charcoal);
   --oa-chart-color-band: var(--oa-chart-color-band-on-charcoal);
   --oa-chart-color-land: var(--oa-chart-color-land-on-charcoal);
-  --oa-chart-color-diverging-fill-step1: initial;
-  --oa-chart-color-diverging-fill-step2: initial;
-  --oa-chart-color-diverging-fill-step3: initial;
-  --oa-chart-color-diverging-fill-step4: initial;
-  --oa-chart-color-diverging-fill-step5: initial;
-  --oa-chart-color-diverging-label-step1: initial;
-  --oa-chart-color-diverging-label-step2: initial;
-  --oa-chart-color-diverging-label-step3: initial;
-  --oa-chart-color-diverging-label-step4: initial;
-  --oa-chart-color-diverging-label-step5: initial;
+  --oa-chart-color-diverging-fill-step1: var(--oa-chart-color-diverging-fill-step1-on-charcoal);
+  --oa-chart-color-diverging-fill-step2: var(--oa-chart-color-diverging-fill-step2-on-charcoal);
+  --oa-chart-color-diverging-fill-step3: var(--oa-chart-color-diverging-fill-step3-on-charcoal);
+  --oa-chart-color-diverging-fill-step4: var(--oa-chart-color-diverging-fill-step4-on-charcoal);
+  --oa-chart-color-diverging-fill-step5: var(--oa-chart-color-diverging-fill-step5-on-charcoal);
+  --oa-chart-color-diverging-label-step1: var(--oa-chart-color-diverging-label-step1-on-charcoal);
+  --oa-chart-color-diverging-label-step2: var(--oa-chart-color-diverging-label-step2-on-charcoal);
+  --oa-chart-color-diverging-label-step3: var(--oa-chart-color-diverging-label-step3-on-charcoal);
+  --oa-chart-color-diverging-label-step4: var(--oa-chart-color-diverging-label-step4-on-charcoal);
+  --oa-chart-color-diverging-label-step5: var(--oa-chart-color-diverging-label-step5-on-charcoal);
+  --oa-chart-color-categorical-fill-group1: var(--oa-chart-color-categorical-fill-group1-on-charcoal);
+  --oa-chart-color-categorical-fill-group2: var(--oa-chart-color-categorical-fill-group2-on-charcoal);
+  --oa-chart-color-categorical-fill-group3: var(--oa-chart-color-categorical-fill-group3-on-charcoal);
+  --oa-chart-color-categorical-fill-group4: var(--oa-chart-color-categorical-fill-group4-on-charcoal);
+  --oa-chart-color-categorical-label-group1: var(--oa-chart-color-categorical-label-group1-on-charcoal);
+  --oa-chart-color-categorical-label-group2: var(--oa-chart-color-categorical-label-group2-on-charcoal);
+  --oa-chart-color-categorical-label-group3: var(--oa-chart-color-categorical-label-group3-on-charcoal);
+  --oa-chart-color-categorical-label-group4: var(--oa-chart-color-categorical-label-group4-on-charcoal);
+  --oa-chart-color-ghost: var(--oa-chart-color-ghost-on-charcoal);
   --oa-chart-color-sequential-fill-step1: var(--oa-chart-color-sequential-fill-step1-on-charcoal);
   --oa-chart-color-sequential-fill-step2: var(--oa-chart-color-sequential-fill-step2-on-charcoal);
   --oa-chart-color-sequential-fill-step3: var(--oa-chart-color-sequential-fill-step3-on-charcoal);

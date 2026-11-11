@@ -1,0 +1,52 @@
+{
+ "file": "fec-independent-expenditures-2024.csv",
+ "kind": "public",
+ "publisher": "Federal Election Commission",
+ "title_or_table": "OpenFEC API, financial totals for PACs and party committees, 2023 to 2024 election cycle, sorted by independent expenditures (top 25)",
+ "table_id": "api.open.fec.gov v1 /totals/pac-party/?cycle=2024&sort=-independent_expenditures",
+ "url": [
+  "https://api.open.fec.gov/v1/totals/pac-party/?cycle=2024&sort=-independent_expenditures&per_page=40"
+ ],
+ "observation_period": "Two-year election cycle 2023 to 2024 (January 1, 2023 to December 31, 2024)",
+ "geography": "United States (federal elections)",
+ "universe_or_base": "Political action committees and party committees registered with the FEC (9688 in the cycle), ranked by the independent expenditures their reports total",
+ "unit": "dollars, nominal, as the FEC's processed totals give them",
+ "date_retrieved": "2026-11-11",
+ "vintage": "FEC processed data as served on November 11, 2026",
+ "qualification": "Independent expenditures are spending for or against candidates made without coordinating with them; the totals count spending for and against together and leave out groups that are not political committees (filers of Form 5, such as some nonprofits). Money moved between committees is counted where it was spent. The FEC records no party for a PAC, so the register names each committee as the FEC lists it",
+ "columns": {
+  "rank": {
+   "type": "integer",
+   "description": "rank by independent expenditures"
+  },
+  "committee_id": {
+   "type": "id",
+   "description": "FEC committee ID"
+  },
+  "committee_name": {
+   "type": "text",
+   "description": "committee name as the FEC lists it"
+  },
+  "committee_type": {
+   "type": "code",
+   "description": "FEC committee type code"
+  },
+  "committee_type_words": {
+   "type": "text",
+   "description": "the committee type in words"
+  },
+  "independent_expenditures": {
+   "type": "number",
+   "description": "independent expenditures in the cycle",
+   "unit": "dollars"
+  },
+  "coverage_end_date": {
+   "type": "date",
+   "description": "last day covered by the committee's reports"
+  }
+ },
+ "printed_source_line": "Source: Federal Election Commission, financial totals for PACs and party committees, independent expenditures, 2023 to 2024 cycle, United States. Retrieved November 11, 2026. Spending for and against candidates together; groups that are not political committees are not included.",
+ "ledger_row": "P7-017",
+ "domain": "D03",
+ "states": []
+}

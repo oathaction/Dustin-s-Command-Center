@@ -61,6 +61,8 @@ def literal_css(t, e):
         return ', '.join(n if n in GENERIC else f'"{n}"' for n in names)
     if typ == 'cubicBezier':
         return 'cubic-bezier(' + ', '.join(num(x) for x in v) + ')'
+    if typ == 'strokeStyle':   # Phase 3: the DTCG keyword; an object reads "dashed" (its companions carry the dashes)
+        return v if isinstance(v, str) else 'dashed'
     raise ValueError(f'no CSS rule for type {typ}')
 
 
@@ -94,6 +96,10 @@ def expected_props(toks):
             exp[n] = (f'var({n}-font-style) var({n}-font-weight) var({n}-font-size)/var({n}-line-height) var({n}-font-family)', p)
             continue
         exp[n] = (f'var({L.css_name(tgt)})' if tgt else literal_css(t, L.ext(t)), p)
+        if typ == 'strokeStyle' and not tgt:   # Phase 3: the dash array and line cap an SVG line takes
+            v = t['$value']
+            exp[f'{n}-dasharray'] = (('none' if v == 'solid' else v) if isinstance(v, str) else ' '.join(f"{num(d['value'])}{d['unit']}" for d in v['dashArray']), p)
+            exp[f'{n}-line-cap'] = ('butt' if isinstance(v, str) else v['lineCap'], p)
     return exp
 
 

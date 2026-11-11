@@ -1,0 +1,76 @@
+{
+ "rows": [
+  {
+   "order": 1,
+   "figure": "743",
+   "caption": "votes of 321,203: the margin by which Alaska's top-four primary survived a 2024 repeal measure, after a December 2024 recount. A second repeal measure, Ballot Measure 2, is on the ballot November 3, 2026.",
+   "qualification": "The recount ended with 160,973 votes against repeal and 160,230 for it (Office of the Lieutenant Governor of Alaska, December 11, 2024).",
+   "kind": "vote count",
+   "sources": "K1900; K1923; W039; K1915; N04",
+   "verified_status": "checked October 15, 2026"
+  },
+  {
+   "order": 2,
+   "figure": "$7.3 billion",
+   "caption": "what pharmacies owned by the three largest pharmacy benefit managers (Caremark, Express Scripts and OptumRx) took in above their estimated cost to acquire 51 specialty generic drugs, 2017 to 2022",
+   "qualification": "The figure counts revenue above acquisition cost; the Federal Trade Commission staff interim report (January 14, 2025) did not estimate profit. The FTC's separate insulin case is being resolved through proposed consent orders with Caremark and Express Scripts; as of October 15, 2026 neither order is final.",
+   "kind": "problem measure",
+   "sources": "S10; W032; K1921",
+   "verified_status": "checked October 15, 2026"
+  },
+  {
+   "order": 3,
+   "figure": "$35",
+   "caption": "a month: the cap on what people with Medicare Part D drug coverage pay out of pocket for each covered insulin since January 2023, under the Inflation Reduction Act",
+   "qualification": "On March 1, 2023 Eli Lilly announced a $35 monthly cap on its insulins for people with commercial insurance or no insurance. The Federal Trade Commission's complaint of September 20, 2024 cites Humalog's list price as $21 in 1999 and more than $274 in 2017.",
+   "kind": "rule in force",
+   "sources": "N37; K1935",
+   "verified_status": "checked October 15, 2026"
+  },
+  {
+   "order": 4,
+   "figure": "At least 17",
+   "caption": "inspectors general removed by email on January 24, 2025 without the 30 days' notice to Congress that the law requires",
+   "qualification": "On September 24, 2025 a federal district court said the President almost undoubtedly violated the Inspector General Act and reinstated no one (Storch v. Hegseth). The latest public docket listing, dated July 22, 2026, shows no ruling on the merits.",
+   "kind": "problem measure",
+   "sources": "N38",
+   "verified_status": "checked October 15, 2026"
+  },
+  {
+   "order": 5,
+   "figure": "$62.7 billion",
+   "caption": "in financial benefits the Government Accountability Office reported for fiscal 2025",
+   "qualification": "On September 24, 2025 a federal district court said the President almost undoubtedly violated the Inspector General Act and reinstated no one (Storch v. Hegseth). The latest docket entry listed, a July 20, 2026 minute order, shows no ruling on the merits.",
+   "kind": "agency-reported result",
+   "sources": "N39; S14",
+   "verified_status": "checked October 15, 2026"
+  },
+  {
+   "order": 6,
+   "figure": "5.2%",
+   "caption": "the child poverty rate under the Supplemental Poverty Measure in 2021, when the expanded child tax credit was in force, down from 9.7% in 2020; it was 13.4% in 2024 after the credit lapsed",
+   "qualification": "These are the rates as first published. The Census Bureau revised its Supplemental Poverty Measure estimates for 2019 to 2024 in August 2026 after a correction to the poverty thresholds, and its report for 2025 came out September 15, 2026.",
+   "kind": "evidence a rule changed an outcome",
+   "sources": "S19; N05; W001; K1913",
+   "verified_status": "checked October 15, 2026"
+  },
+  {
+   "order": 7,
+   "figure": "87% and 88%",
+   "caption": "of Republicans and of Democrats back a ban on stock trading by members of Congress",
+   "qualification": "From a University of Maryland Program for Public Consultation survey of 2,625 registered voters (May 2023). The House passed a ban 232 to 198 on July 22, 2026. On September 30, 2026 the Senate fell short of the 60 votes needed to take it up, 53 to 47.",
+   "kind": "shared view",
+   "sources": "N40; K1908; W035; N12",
+   "verified_status": "checked October 15, 2026"
+  },
+  {
+   "order": 8,
+   "figure": "9.4%",
+   "caption": "of eligible voters cast the 2026 primary ballots that, by Unite America's count, effectively decided 88% of House seats (383 of 435)",
+   "qualification": "Unite America, an advocacy group, built the count from Cook Political Report ratings (published September 16, 2026) and defines 'effectively decided' itself. Its 2024 figures (87% of seats, about 7%) used the voting-age population, so the two years are not directly comparable.",
+   "kind": "advocacy count",
+   "sources": "W017",
+   "verified_status": "checked October 15, 2026"
+  }
+ ]
+}

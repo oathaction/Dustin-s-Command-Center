@@ -137,6 +137,10 @@ function materialize(node, p) {
       default: errors.push(`${p}: unknown recipe ${v.$kind}`);
     }
   }
+  // Phase 3 (round 0): a DTCG strokeStyle object whose dash array holds px() recipes
+  if (v && typeof v === 'object' && Array.isArray(v.dashArray)) {
+    return { dashArray: v.dashArray.map((d) => (d && d.$kind === 'dim' ? { value: d.value, unit: d.unit } : d)), lineCap: v.lineCap };
+  }
   return v;   // numbers, arrays (fontFamily, cubicBezier), plain values
 }
 
@@ -281,6 +285,10 @@ function cssLiteral(p, t, ext) {
     case 'fontWeight': return fmt(v);
     case 'fontFamily': return cssFamily(v);
     case 'cubicBezier': return `cubic-bezier(${v.map(fmt).join(', ')})`;
+    // Phase 3 (round 0): a stroke style as an SVG stroke-dasharray, "none" when solid; its line cap is a companion property
+    // The property holds the DTCG keyword (an object reads "dashed", as Style Dictionary writes it); two companion
+    // properties carry what an SVG line needs: -dasharray ("none" when solid) and -line-cap.
+    case 'strokeStyle': return typeof v === 'string' ? v : 'dashed';
     default: throw new Error(`${p}: no CSS rule for type ${t.$type}`);
   }
 }
@@ -315,6 +323,11 @@ for (const p of order) {
   const dep = t.$deprecated !== undefined && ext.deprecated
     ? `deprecated, renamed ${cssName(aliasPath(ext.deprecated.replacedBy))}, leaves with ${ext.deprecated.removedIn}` : null;
   decls.push([n, valueFor(t.$value, () => cssLiteral(p, t, ext)), null, dep]);
+  if (t.$type === 'strokeStyle' && !isAlias(t.$value)) {
+    const v = t.$value;
+    decls.push([`${n}-dasharray`, typeof v === 'string' ? (v === 'solid' ? 'none' : v) : v.dashArray.map((d) => `${fmt(d.value)}${d.unit}`).join(' ')]);
+    decls.push([`${n}-line-cap`, typeof v === 'string' ? 'butt' : v.lineCap]);
+  }
 }
 
 // surface classes: short names point at one surface's tokens; a role with no token on a surface is set

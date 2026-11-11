@@ -1,0 +1,6 @@
+period,median,central_tendency_low,central_tendency_high,range_low,range_high,historical_error,band_70_low,band_70_high
+2026,4.1,4.1,4.2,4,4.3,0.5,3.6,4.6
+2027,4.1,4,4.2,4,4.5,1.3,2.8,5.4
+2028,4.1,4,4.2,3.9,4.4,1.9,2.2,6
+2029,4.1,4,4.3,3.8,4.4,2.1,2,6.2
+longer_run,4.2,4,4.3,3.8,4.4,,,

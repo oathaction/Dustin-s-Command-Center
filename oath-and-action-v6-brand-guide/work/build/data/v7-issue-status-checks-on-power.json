@@ -1,0 +1,52 @@
+{
+ "rows": [
+  {
+   "id": "I068",
+   "title": "Withholding appropriated money weakens Congress's spending decisions",
+   "domain": "D05",
+   "status_text": "The Impoundment Control Act of 1974 remains in force. The Government Accountability Office, which audits for Congress, found violations in several 2025 decisions, including withheld NIH grant funds (August 5, 2025) and FEMA assistance funds (September 29, 2025), and found two more on October 7, 2026, involving EPA's Community Change Grants and grants from the Agency for Healthcare Research and Quality. On September 26, 2025 the Supreme Court, acting on an emergency application, let about $4 billion in foreign aid expire after the President proposed rescinding it so late in the fiscal year that the money lapsed before Congress acted, a move called a pocket rescission. The Court's preliminary view was that the Act likely bars grant recipients from suing under the Administrative Procedure Act to enforce the appropriation.",
+   "status_result": "updated",
+   "checked": "2026-10-15"
+  },
+  {
+   "id": "I070",
+   "title": "Firing and emptying watchdog offices weakens oversight",
+   "domain": "D05",
+   "status_text": "On January 24, 2025 at least 17 inspectors general were removed by email without the 30 days' notice to Congress that the Inspector General Act requires. Eight of them sued (Storch v. Hegseth, U.S. District Court for the District of Columbia). On September 24, 2025 the court said the President almost undoubtedly violated the Act, but it denied reinstatement, because the President could remove them again after giving notice, and it paused the case until the Supreme Court decided Trump v. Slaughter (June 29, 2026). In July 2026 the court set a process for summary-judgment motions, with a conference planned for the week of August 24, 2026. The latest docket entry listed, a July 20, 2026 minute order, shows no ruling on the merits.",
+   "status_result": "partly confirmed",
+   "checked": "2026-10-15"
+  },
+  {
+   "id": "I163",
+   "title": "At-will removal of regulators narrows agency independence",
+   "domain": "D05",
+   "status_text": "On June 29, 2026 the Supreme Court ruled 6 to 3 in Trump v. Slaughter that the President may remove Federal Trade Commission members at will, and it overruled Humphrey's Executor (1935). The same day, in Trump v. Cook, the Court voted 5 to 4 to deny the government's request to let the President remove Federal Reserve Governor Lisa Cook while her case continues. Cook is an interim order: she stays in office for now, and the Court has not decided whether the Fed's for-cause protection is valid.",
+   "status_result": "updated",
+   "checked": "2026-10-15"
+  },
+  {
+   "id": "X05",
+   "title": "Domestic troop deployments test the limits on military power",
+   "domain": "D05",
+   "status_text": "On December 23, 2025, in Trump v. Illinois, the Supreme Court refused on its emergency docket to lift a lower-court order blocking the deployment of federalized National Guard troops in Illinois. The majority read 'regular forces' in the federal statute (10 U.S.C. 12406) as likely meaning the regular U.S. military, so the President would first need legal authority to execute the laws with the military and be unable to do so; the government had not identified that authority. Justices Alito, Thomas and Gorsuch dissented. The order is preliminary.",
+   "status_result": "confirmed",
+   "checked": "2026-10-15"
+  },
+  {
+   "id": "X06",
+   "title": "An attempted removal tests Federal Reserve independence",
+   "domain": "D05",
+   "status_text": "As of October 15, 2026, the dispute over removing Federal Reserve Governor Lisa Cook has been decided only at the stay stage: on June 29, 2026 the Supreme Court, 5 to 4, denied the government's request to let her removal take effect while the case continues. Congress has not written cause, notice and a hearing for Fed governors into law.",
+   "status_result": "partly confirmed",
+   "checked": "2026-10-15"
+  },
+  {
+   "id": "X18",
+   "title": "Where a case is filed can decide which judge hears it",
+   "domain": "D05",
+   "status_text": "The Congressional Research Service (report R49022, July 7, 2026) counted 34 cases in which federal courts issued nationwide injunctions against the second Trump administration between January 20, 2025 and June 27, 2025, the day the Supreme Court decided Trump v. CASA, and 16 more cases from June 28, 2025 to June 27, 2026, for 50 in all.",
+   "status_result": "confirmed",
+   "checked": "2026-10-15"
+  }
+ ]
+}

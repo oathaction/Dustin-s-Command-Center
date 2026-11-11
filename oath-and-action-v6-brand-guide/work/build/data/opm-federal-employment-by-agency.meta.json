@@ -1,0 +1,60 @@
+{
+ "file": "opm-federal-employment-by-agency.csv",
+ "kind": "public",
+ "publisher": "U.S. Office of Personnel Management",
+ "title_or_table": "Federal Workforce Data, Federal Employment Raw Data (EHRI status files), August 2024 (version 4) and August 2026 (version 1), employees counted by department or independent agency",
+ "table_id": "data.opm.gov employment files employment_202408_4 and employment_202608_1",
+ "url": [
+  "https://data.opm.gov/api/v1/files/employment/2024/08/4/download",
+  "https://data.opm.gov/api/v1/files/employment/2026/08/1/download",
+  "https://data.opm.gov/get-data/data-downloads"
+ ],
+ "observation_period": "Last day of August 2024 and last day of August 2026",
+ "geography": "United States federal civilian workforce",
+ "universe_or_base": "Federal civilian employees in the files, in pay or non-pay status, by department or independent agency; the files leave out intelligence agencies and some others that do not report to OPM, and the U.S. Postal Service",
+ "unit": "employees, summed by the studio from the record-level count field",
+ "date_retrieved": "2026-11-11",
+ "vintage": "August 2024 version 4 (published October 3, 2026) and August 2026 version 1 (published October 4, 2026)",
+ "qualification": "Counts people on the rolls on one day, full-time and part-time alike. OPM's site warned on November 11, 2026 that a change in Department of War data processing left September 2026 data incomplete for some components, so this file compares August with August; OPM may revise August 2026 in later versions. Department names are as the files give them",
+ "columns": {
+  "department_code": {
+   "type": "code",
+   "description": "OPM department or agency code; ALL is every row"
+  },
+  "department": {
+   "type": "text",
+   "description": "department or agency as named in the files"
+  },
+  "employees_2024_08": {
+   "type": "integer",
+   "description": "employees, August 31, 2024",
+   "unit": "people"
+  },
+  "employees_2026_08": {
+   "type": "integer",
+   "description": "employees, August 31, 2026",
+   "unit": "people"
+  },
+  "change": {
+   "type": "integer",
+   "description": "change, computed",
+   "unit": "people"
+  },
+  "change_pct": {
+   "type": "number",
+   "description": "percent change, computed",
+   "unit": "percent"
+  }
+ },
+ "printed_source_line": "Source: U.S. Office of Personnel Management, Federal Workforce Data, employment status files, August 2024 and August 2026, federal civilian workforce. Retrieved November 11, 2026. People on the rolls on one day; some agencies, including intelligence agencies and the Postal Service, are not in the files.",
+ "ledger_row": "P7-007",
+ "domain": "D04",
+ "states": [],
+ "raw_files_sha256_prefix": {
+  "employment_202408_4.parquet": "8b14c132a49f0075",
+  "employment_202608_1.parquet": "b3518369a77bb86c"
+ },
+ "unconfirmed": [
+  "The list of agencies outside the files is from OPM's general documentation and was not checked against the August 2026 release notes"
+ ]
+}

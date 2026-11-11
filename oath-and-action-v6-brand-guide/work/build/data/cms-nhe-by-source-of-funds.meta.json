@@ -1,0 +1,83 @@
+{
+ "file": "cms-nhe-by-source-of-funds.csv",
+ "kind": "public",
+ "publisher": "Centers for Medicare & Medicaid Services, Office of the Actuary",
+ "title_or_table": "National Health Expenditures by Type of Service and Source of Funds, Calendar Years 1960 to 2024 (NHE2024.csv, Total National Health Expenditures section)",
+ "table_id": "NHE2024, total national health expenditures by source of funds",
+ "url": [
+  "https://www.cms.gov/files/zip/national-health-expenditures-type-service-source-funds-cy-1960-2024.zip",
+  "https://www.cms.gov/data-research/statistics-trends-and-reports/national-health-expenditure-data/historical"
+ ],
+ "observation_period": "Calendar years 1960 to 2024",
+ "geography": "United States",
+ "universe_or_base": "All spending on health care, public health, research and structures, by who paid",
+ "unit": "millions of dollars, nominal; an empty cell is a program that did not yet exist (Medicare and Medicaid before 1966, CHIP before 1998)",
+ "date_retrieved": "2026-11-11",
+ "vintage": "NHE release with 2024 data (published in late 2025 or 2026)",
+ "qualification": "Nominal dollars. \"Out of pocket\" is what patients pay directly; insurance premiums paid by households count under the insurer. The ten parts sum to 5,278,588 million in 2024 against a total of 5,278,588 million",
+ "columns": {
+  "year": {
+   "type": "year",
+   "description": "year"
+  },
+  "total_millions": {
+   "type": "integer",
+   "description": "total",
+   "unit": "millions of dollars"
+  },
+  "out_of_pocket_millions": {
+   "type": "integer",
+   "description": "out of pocket",
+   "unit": "millions of dollars"
+  },
+  "private_health_insurance_millions": {
+   "type": "integer",
+   "description": "private health insurance",
+   "unit": "millions of dollars"
+  },
+  "medicare_millions": {
+   "type": "integer",
+   "description": "medicare",
+   "unit": "millions of dollars"
+  },
+  "medicaid_millions": {
+   "type": "integer",
+   "description": "medicaid",
+   "unit": "millions of dollars"
+  },
+  "chip_millions": {
+   "type": "integer",
+   "description": "chip",
+   "unit": "millions of dollars"
+  },
+  "defense_millions": {
+   "type": "integer",
+   "description": "defense",
+   "unit": "millions of dollars"
+  },
+  "veterans_affairs_millions": {
+   "type": "integer",
+   "description": "veterans affairs",
+   "unit": "millions of dollars"
+  },
+  "other_third_party_millions": {
+   "type": "integer",
+   "description": "other third party",
+   "unit": "millions of dollars"
+  },
+  "public_health_millions": {
+   "type": "integer",
+   "description": "public health",
+   "unit": "millions of dollars"
+  },
+  "investment_millions": {
+   "type": "integer",
+   "description": "investment",
+   "unit": "millions of dollars"
+  }
+ },
+ "printed_source_line": "Source: Centers for Medicare & Medicaid Services, National Health Expenditure Accounts, spending by source of funds, 1960 to 2024, United States. Retrieved November 11, 2026. Nominal dollars; premiums count under the insurer that receives them.",
+ "ledger_row": "P7-023",
+ "domain": "D09",
+ "states": []
+}

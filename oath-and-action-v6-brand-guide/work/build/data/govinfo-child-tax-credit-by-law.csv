@@ -1,0 +1,11 @@
+tax_year,max_credit_per_child,max_credit_young_child,law,citation,note
+2017,1000,1000,Before Public Law 115-97,26 U.S.C. 24(a),The amount Public Law 115-97 replaced
+2018,2000,2000,"Public Law 115-97, sec. 11022","26 U.S.C. 24(h)(2), for taxable years 2018 through 2025","December 22, 2017"
+2019,2000,2000,"Public Law 115-97, sec. 11022",26 U.S.C. 24(h)(2),
+2020,2000,2000,"Public Law 115-97, sec. 11022",26 U.S.C. 24(h)(2),
+2021,3000,3600,"Public Law 117-2, sec. 9611","26 U.S.C. 24(i), taxable years beginning in 2021 only","March 11, 2021; $3,600 for a child under 6; fully refundable that year"
+2022,2000,2000,"Public Law 115-97, sec. 11022",26 U.S.C. 24(h)(2),The 2021 rules lapsed
+2023,2000,2000,"Public Law 115-97, sec. 11022",26 U.S.C. 24(h)(2),
+2024,2000,2000,"Public Law 115-97, sec. 11022",26 U.S.C. 24(h)(2),
+2025,2200,2200,"Public Law 119-21, sec. 70104","26 U.S.C. 24(h)(2), taxable years beginning after December 31, 2024","July 4, 2025; made permanent and indexed to inflation after 2025"
+2026,2200,2200,"Public Law 119-21, sec. 70104; IRS Revenue Procedure 2025-32, sec. 3.05",26 U.S.C. 24(h)(2) and 24(i)(2),"Inflation adjustment rounds down to a multiple of $100, so 2026 stays at $2,200"

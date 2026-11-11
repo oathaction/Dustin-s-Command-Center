@@ -1,0 +1,125 @@
+{
+ "rows": [
+  {
+   "id": "CL1357",
+   "claim": "The three largest pharmacy benefit managers processed nearly 80% of U.S. prescriptions in 2023 and are tied to major insurers and pharmacies.",
+   "confidence": "documented",
+   "population": "U.S. prescriptions",
+   "jurisdiction": "United States",
+   "period": "2023",
+   "limitation": "These are interim staff findings, not a Commission ruling, and PBM market shares vary by market segment.",
+   "sources": "Q208",
+   "verified_on": "2026-10-15"
+  },
+  {
+   "id": "CL1358",
+   "claim": "Pharmacies affiliated with the three largest PBMs took in more than $7.3 billion above estimated acquisition cost on 51 specialty generic drugs from 2017 to 2022.",
+   "confidence": "documented",
+   "population": "Commercial and Medicare Part D plan members",
+   "jurisdiction": "United States",
+   "period": "2017 to 2022",
+   "limitation": "Revenue above drug acquisition cost, not profit; other pharmacy costs are not subtracted, and it is not a judicial finding.",
+   "sources": "S10",
+   "verified_on": "2026-10-15"
+  },
+  {
+   "id": "CL1359",
+   "claim": "The FTC's 2024 complaint alleges the three largest PBMs used rebates that favored high-list-price insulins.",
+   "confidence": "documented",
+   "population": "People using insulin with commercial coverage",
+   "jurisdiction": "United States",
+   "period": "Complaint filed September 2024",
+   "limitation": "These are allegations; no court or administrative judge found the companies liable, and the case moved to settlements.",
+   "sources": "N37",
+   "verified_on": "2026-10-15"
+  },
+  {
+   "id": "CL1360",
+   "claim": "Two insulin cases have proposed settlements and the third was withdrawn from adjudication for a settlement that has not been published; no final FTC order existed for any of them as of October 15, 2026.",
+   "confidence": "documented",
+   "population": "PBM plan sponsors and members",
+   "jurisdiction": "United States",
+   "period": "February to October 2026",
+   "limitation": "Proposed orders can change before the Commission makes them final, and no data on outcomes for patients exist yet.",
+   "sources": "W032; N13; K1347",
+   "verified_on": "2026-10-15"
+  },
+  {
+   "id": "CL1361",
+   "claim": "A 2026 federal law requires PBMs to pass manufacturer rebates through to Medicare drug plans from January 1, 2028, and to employer plans for plan years beginning on or after August 3, 2028.",
+   "confidence": "documented",
+   "population": "Medicare drug plans and employer group health plans",
+   "jurisdiction": "United States",
+   "period": "Enacted February 3, 2026; effective 2028",
+   "limitation": "Dates come from a law firm summary of Public Law 119-75, and implementing rules are pending.",
+   "sources": "W033; S53",
+   "verified_on": "2026-10-15"
+  },
+  {
+   "id": "CL1362",
+   "claim": "Medicare limits insulin costs to $35 for a one-month supply of each covered insulin, with no deductible.",
+   "confidence": "documented",
+   "population": "Medicare enrollees using insulin",
+   "jurisdiction": "United States",
+   "period": "In force, checked October 15, 2026",
+   "limitation": "Applies to Medicare only; private plans set their own insulin cost sharing unless a state law or settlement applies.",
+   "sources": "K1343",
+   "verified_on": "2026-10-15"
+  },
+  {
+   "id": "CL1363",
+   "claim": "Out-of-pocket spending on covered Medicare Part D drugs is capped at $2,100 in 2026 and $2,400 in 2027.",
+   "confidence": "documented",
+   "population": "Medicare Part D enrollees",
+   "jurisdiction": "United States",
+   "period": "Calendar years 2026 and 2027",
+   "limitation": "The cap covers drugs on the plan's formulary only; monthly premiums and drugs outside the formulary are separate.",
+   "sources": "K1344",
+   "verified_on": "2026-10-15"
+  },
+  {
+   "id": "CL1364",
+   "claim": "Medicare has paid negotiated prices for 10 drugs since January 1, 2026; CMS estimated 22% net savings.",
+   "confidence": "documented",
+   "population": "Medicare Part D",
+   "jurisdiction": "United States",
+   "period": "Prices effective January 1, 2026",
+   "limitation": "Savings are CMS estimates against prior net prices; the sources do not measure effects on drug development.",
+   "sources": "K1330",
+   "verified_on": "2026-10-15"
+  },
+  {
+   "id": "CL1365",
+   "claim": "Negotiated prices for 15 more drugs take effect in 2027 and 15 more, including Part B drugs, in 2028.",
+   "confidence": "documented",
+   "population": "Medicare Parts B and D",
+   "jurisdiction": "United States",
+   "period": "Announced November 2025 and January 2026",
+   "limitation": "Savings are estimates measured against prior net prices, and third-cycle prices were not final as of October 15, 2026.",
+   "sources": "K1331; K1330",
+   "verified_on": "2026-10-15"
+  },
+  {
+   "id": "CL1366",
+   "claim": "Most drugs that received new patents from 2005 to 2015 were existing drugs.",
+   "confidence": "documented",
+   "population": "Small-molecule drugs listed in the FDA Orange Book",
+   "jurisdiction": "United States",
+   "period": "2005 to 2015",
+   "limitation": "A new patent listing does not always delay generic entry; the study counts listings and does not measure price effects.",
+   "sources": "Q227",
+   "verified_on": "2026-10-15"
+  },
+  {
+   "id": "CL1367",
+   "claim": "Generic competition lowers drug prices, by about 30% with one competitor and nearly 85% with five, according to the FDA.",
+   "confidence": "well-supported",
+   "population": "Prescription drug markets",
+   "jurisdiction": "United States",
+   "period": "Content current as of November 1, 2021",
+   "limitation": "Agency summary of its own analyses; effects for biosimilars, which are copies of biologic drugs, are smaller and slower.",
+   "sources": "K1345",
+   "verified_on": "2026-10-15"
+  }
+ ]
+}

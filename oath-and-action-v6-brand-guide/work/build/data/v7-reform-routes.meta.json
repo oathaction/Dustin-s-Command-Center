@@ -1,0 +1,59 @@
+{
+ "file": "v7-reform-routes.json",
+ "kind": "v7",
+ "publisher": "Oath & Action, Who Do They Answer To? Systems Atlas V7",
+ "url": "work/extract/atlas-v7-data.json",
+ "geography": "United States",
+ "date_retrieved": "2026-10-15",
+ "vintage": "Atlas V7 snapshot of October 15, 2026",
+ "snapshot": "2026-10-15",
+ "ledger_row": "not needed: Atlas V7, read by script",
+ "columns": {
+  "reform_id": {
+   "type": "id",
+   "description": "V7 reform ID"
+  },
+  "reform_title": {
+   "type": "text",
+   "description": "reform title"
+  },
+  "reform_group": {
+   "type": "category",
+   "description": "V7 reform group"
+  },
+  "route": {
+   "type": "code",
+   "description": "V7 route code"
+  },
+  "route_name": {
+   "type": "category",
+   "description": "route name"
+  },
+  "who": {
+   "type": "text",
+   "description": "who acts on this route"
+  },
+  "feasibility": {
+   "type": "category",
+   "description": "high, medium, low or very low, on V7's scale for 2026 to 2030"
+  },
+  "note": {
+   "type": "text",
+   "description": "V7's note on the route"
+  },
+  "checked": {
+   "type": "date",
+   "description": "date V7 checked the route; empty means not checked"
+  }
+ },
+ "title_or_table": "reform profiles, routes to change: 126 route entries for 50 reforms",
+ "table_id": "reforms[].routes; routes.items; reformGroups",
+ "observation_period": "Feasibility for 2026 to 2030, as of October 15, 2026",
+ "universe_or_base": "Every route entry in every reform profile",
+ "unit": "route entries; feasibility is an ordinal category, never a number",
+ "qualification": "13 of 126 route entries carry a check date (October 15, 2026); a route with no date prints as not checked. Feasibility is the atlas's own judgment on its four-step scale, and a heat table shows each cell's word, never a score or a total",
+ "printed_source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, reform profiles, routes to change, 126 route entries for 50 reforms, feasibility for 2026 to 2030, United States. Snapshot of October 15, 2026. 13 routes carry a check date; the rest are not checked.",
+ "domain": "all",
+ "domain_note": "The 50 reforms span every atlas domain",
+ "states": []
+}

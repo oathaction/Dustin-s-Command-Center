@@ -1,0 +1,61 @@
+{
+ "file": "bjs-imprisonment-rate-by-state.csv",
+ "kind": "public",
+ "publisher": "Bureau of Justice Statistics",
+ "title_or_table": "Prisoners in 2023, Statistical Tables, Table 7. Imprisonment rates of U.S. residents, based on sentenced prisoners under the jurisdiction of state or federal correctional authorities, by sex, age, and jurisdiction, 2022 and 2023",
+ "table_id": "NCJ series Prisoners in 2023, statistical tables, p23stt07",
+ "url": [
+  "https://bjs.ojp.gov/document/p23st.zip",
+  "https://bjs.ojp.gov/library/publications/prisoners-2023-statistical-tables",
+  "https://bjs.ojp.gov/document/p23st-jurisdiction-notes.pdf"
+ ],
+ "observation_period": "December 31, 2022 and December 31, 2023",
+ "geography": "50 states, with rows for the U.S. total, the federal system and all states together (codes US, FED, STATE); DC felons are federal prisoners",
+ "universe_or_base": "Sentenced prisoners (sentences of more than one year) under state or federal jurisdiction, per 100,000 U.S. residents (all ages, and 18 or older)",
+ "unit": "prisoners per 100,000 residents",
+ "date_retrieved": "2026-11-11",
+ "vintage": "Prisoners in 2023 statistical tables, the latest BJS edition found on November 11, 2026 (a 2024 edition was not found at its expected address)",
+ "qualification": "Rates count prisoners by the state with legal authority over them, wherever they are held. In six states prisons and jails form one system, so their rates include jail populations (footnote b); other footnotes mark state reporting differences listed in the table",
+ "columns": {
+  "code": {
+   "type": "code",
+   "description": "USPS state code, or US, FED, STATE"
+  },
+  "name": {
+   "type": "text",
+   "description": "jurisdiction"
+  },
+  "footnote": {
+   "type": "text",
+   "description": "the table's footnote letters for the row"
+  },
+  "rate_2022": {
+   "type": "integer",
+   "description": "imprisonment rate, all ages, 2022",
+   "unit": "per 100,000 residents"
+  },
+  "rate_2023": {
+   "type": "integer",
+   "description": "imprisonment rate, all ages, 2023",
+   "unit": "per 100,000 residents"
+  },
+  "rate_2023_adults": {
+   "type": "integer",
+   "description": "imprisonment rate, ages 18 and older, 2023",
+   "unit": "per 100,000 residents 18 and older"
+  }
+ },
+ "printed_source_line": "Source: Bureau of Justice Statistics, Prisoners in 2023, Table 7, imprisonment rates of sentenced prisoners, year-end 2023, 50 states. Retrieved November 11, 2026. Sentences of more than one year; six states with combined prison and jail systems include jail populations.",
+ "ledger_row": "P7-003",
+ "domain": "D05",
+ "states": [],
+ "notes": [
+  "a/Includes adult prisoners held in nonsecure community corrections facilities and adults and persons age 17 or younger held in privately operated facilities.",
+  "b/Prisons and jails form one integrated system. Data include total jail and prison populations.",
+  "c/Does not include persons held in federal or other state prisons in its sentenced jurisdiction count.",
+  "d/Includes a small number of prisoners sentenced to 1 year or less.",
+  "e/Includes persons who were waiting in county jail to be moved to state prison.",
+  "f/Imprisonment rates include persons serving a sentence of more than 1 year but less than 2.5 years, the legal delineation between prisons and jails in Massachusetts. These persons were not included in the counts in this table, because they were housed in local jails; however, because the BJS definition of imprisonment rate includes persons sentenced to more than 1 year in a correctional facility, these persons (1,133 in 2022 and 1,529 in 2023) were included in the imprisonment rate calculations.",
+  "g/Excludes persons serving time in residential confinement from its sentenced jurisdiction count."
+ ]
+}

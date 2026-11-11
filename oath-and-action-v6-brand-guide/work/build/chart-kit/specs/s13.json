@@ -73,7 +73,7 @@
     "series": "series_id"
   },
   "formats": {
-    "change_since_2022_01_thousands": "signed-thousands",
+    "change_since_2022_01_thousands": "signed-compact-thousands",
     "pct_change_since_2022_01": "signed:1",
     "tick": "signed"
   },

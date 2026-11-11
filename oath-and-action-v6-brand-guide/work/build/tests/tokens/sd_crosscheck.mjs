@@ -83,6 +83,7 @@ function same(type, sdValue, ours, token) {
     case 'fontWeight': return Number(sdValue) === num(ours);
     case 'fontFamily': return unq(sdValue) === unq(ours);
     case 'cubicBezier': return String(sdValue).replace(/\s+/g, '') === ours.replace(/\s+/g, '');
+    case 'strokeStyle': return String(sdValue) === ours;   // Phase 3: the keyword; tokens.css's -dasharray and -line-cap are its own
     case 'typography': {
       // Style Dictionary writes "weight size/line-height family"; tokens.css adds the style and writes the
       // fluid size as clamp(), whose maximum is the DTCG fontSize.
@@ -109,7 +110,9 @@ for (const t of sdTokens) {
 }
 const typeParts = /-(font-family|font-style|font-weight|font-size|line-height|letter-spacing|text-transform|font-variant-numeric)$/;
 const oursOnly = [...props.keys()].filter((n) => !seenNames.has(n));
-const unexplained = oursOnly.filter((n) => !(typeParts.test(n) && seenNames.has(n.replace(typeParts, ''))));
+const strokeParts = /-(dasharray|line-cap)$/;
+const unexplained = oursOnly.filter((n) => !(typeParts.test(n) && seenNames.has(n.replace(typeParts, '')))
+  && !(strokeParts.test(n) && seenNames.has(n.replace(strokeParts, ''))));
 for (const n of unexplained) mismatches.push(`${n}: in tokens.css but not among Style Dictionary's tokens`);
 
 console.log(`sd-crosscheck: Style Dictionary ${sdVersion} read ${sdTokens.length} tokens (${Object.entries(byType).map(([k, v]) => `${v} ${k}`).join(', ')}); `

@@ -1,0 +1,54 @@
+code,name,footnote,rate_2022,rate_2023,rate_2023_adults
+US,U.S. total,,355,360,460
+FED,Federal,a,44,43,54
+STATE,State,,311,318,405
+AL,Alabama,,390,394,505
+AK,Alaska,b,205,202,266
+AZ,Arizona,,446,448,568
+AR,Arkansas,,574,596,773
+CA,California,,250,246,314
+CO,Colorado,,288,290,364
+CT,Connecticut,b,171,183,229
+DE,Delaware,b,272,275,346
+FL,Florida,,377,382,474
+GA,Georgia,,436,449,582
+HI,Hawaii,b,174,165,207
+ID,Idaho,c,461,490,641
+IL,Illinois,d,236,238,303
+IN,Indiana,,349,351,455
+IA,Iowa,,264,274,354
+KS,Kansas,,292,305,399
+KY,Kentucky,,437,423,545
+LA,Louisiana,,596,617,804
+ME,Maine,,107,119,144
+MD,Maryland,e,252,261,334
+MA,Massachusetts,"d,f",94,96,118
+MI,Michigan,,323,328,415
+MN,Minnesota,,151,152,196
+MS,Mississippi,,661,652,847
+MO,Missouri,c,381,385,494
+MT,Montana,,416,438,552
+NE,Nebraska,,283,295,390
+NV,Nevada,g,323,327,415
+NH,New Hampshire,,149,151,183
+NJ,New Jersey,d,136,125,160
+NM,New Mexico,,231,259,328
+NY,New York,,159,167,209
+NC,North Carolina,,268,275,350
+ND,North Dakota,,230,240,313
+OH,Ohio,,385,394,504
+OK,Oklahoma,e,563,545,715
+OR,Oregon,,295,291,361
+PA,Pennsylvania,,292,300,376
+RI,Rhode Island,b,124,122,150
+SC,South Carolina,,302,299,380
+SD,South Dakota,d,371,405,533
+TN,Tennessee,,335,341,436
+TX,Texas,,453,477,634
+UT,Utah,d,177,186,255
+VT,Vermont,b,126,124,150
+VA,Virginia,,312,314,400
+WA,Washington,,174,181,229
+WV,West Virginia,,331,328,409
+WI,Wisconsin,,311,346,438
+WY,Wyoming,,370,378,484

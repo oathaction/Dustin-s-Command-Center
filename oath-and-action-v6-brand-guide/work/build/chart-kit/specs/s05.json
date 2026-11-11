@@ -5,7 +5,20 @@
   "family": "change-over-time",
   "tier": "core",
   "dataset": "census-hvs-homeownership-by-race-annual",
-  "sort": [{ "field": "year", "order": "asc" }, { "field": "series_variant", "order": "asc" }, { "field": "group", "order": "asc" }],
+  "sort": [
+    {
+      "field": "year",
+      "order": "asc"
+    },
+    {
+      "field": "series_variant",
+      "order": "asc"
+    },
+    {
+      "field": "group",
+      "order": "asc"
+    }
+  ],
   "reader_question": "How far apart are homeownership rates by race, and has the gap closed?",
   "evidence": "finding",
   "evidence_label": "Finding",
@@ -26,12 +39,53 @@
   "table": {
     "caption": "Homeownership rate by race and ethnicity of householder, percent",
     "columns": [
-      { "field": "year", "label": "Year", "format": "year", "row_header": true },
-      { "field": "group", "label": "Householder", "format": "text", "words": { "all_households": "All households", "non_hispanic_white": "Non-Hispanic White", "hispanic": "Hispanic (any race)", "black": "Black" } },
-      { "field": "rate_pct", "label": "Percent", "format": "number:1" },
-      { "field": "moe_pct", "label": "Margin of error, points (90%)", "format": "number:1" },
-      { "field": "series_variant", "label": "Estimate", "format": "text", "words": { "standard": "One estimate", "original": "2002, first published weights", "revised_2000_census": "2002, reweighted to the 2000 Census" } },
-      { "field": "race_definition", "label": "Race categories", "format": "text", "words": { "not_applicable": "", "pre_2003_race_categories": "Before 2003", "race_alone": "Race alone, from 2003" } }
+      {
+        "field": "year",
+        "label": "Year",
+        "format": "year",
+        "row_header": true
+      },
+      {
+        "field": "group",
+        "label": "Householder",
+        "format": "text",
+        "words": {
+          "all_households": "All households",
+          "non_hispanic_white": "Non-Hispanic White",
+          "hispanic": "Hispanic (any race)",
+          "black": "Black"
+        }
+      },
+      {
+        "field": "rate_pct",
+        "label": "Percent",
+        "format": "number:1"
+      },
+      {
+        "field": "moe_pct",
+        "label": "Margin of error, points (90%)",
+        "format": "number:1"
+      },
+      {
+        "field": "series_variant",
+        "label": "Estimate",
+        "format": "text",
+        "words": {
+          "standard": "One estimate",
+          "original": "2002, first published weights",
+          "revised_2000_census": "2002, reweighted to the 2000 Census"
+        }
+      },
+      {
+        "field": "race_definition",
+        "label": "Race categories",
+        "format": "text",
+        "words": {
+          "not_applicable": "",
+          "pre_2003_race_categories": "Before 2003",
+          "race_alone": "Race alone, from 2003"
+        }
+      }
     ]
   },
   "chart_notes": [
@@ -42,23 +96,49 @@
   "artboard": "wide",
   "domain": "D09",
   "states": [],
-  "encode": { "x": "year", "y": "rate_pct", "series": "group", "break": "race_definition" },
-  "formats": { "tick": "integer", "tick_last": "percent:0", "y": "percent:1", "x": "year" },
+  "encode": {
+    "x": "year",
+    "y": "rate_pct",
+    "series": "group",
+    "break": "race_definition"
+  },
+  "formats": {
+    "tick": "integer",
+    "tick_last": "percent:0",
+    "y": "percent:1",
+    "x": "year"
+  },
   "labels": {
     "panels": [
-      { "value": "all_households", "label": "All households" },
-      { "value": "non_hispanic_white", "label": "Non-Hispanic White" },
-      { "value": "hispanic", "label": "Hispanic (any race)" },
-      { "value": "black", "label": "Black" }
+      {
+        "value": "all_households",
+        "label": "All households"
+      },
+      {
+        "value": "non_hispanic_white",
+        "label": "Non-Hispanic White"
+      },
+      {
+        "value": "hispanic",
+        "label": "Hispanic (any race)"
+      },
+      {
+        "value": "black",
+        "label": "Black"
+      }
     ],
     "panel_value": "{x}: {y}",
-    "domain": [40, 80],
+    "domain": [
+      40,
+      80
+    ],
     "columns": 4
   },
   "notes_internal": [
     "Breaks: the form starts a segment where two rows share a year (2002's two weightings) and where race_definition changes (2003, Black and non-Hispanic White), the two breaks Phase 2 drew. The sort puts 2002's original row before its revised one.",
     "Phase 2 drew brackets for the 2003 and 2025 gaps in the Hispanic and Black panels; the form has no bracket yet (request E13), so the first note and the chart notes carry the four gaps in words.",
     "DR-64: the title compares two survey gaps; the 2003 margins are not in the table (request R4). The last note says so.",
-    "Checked by script: 2003 NHW 75.4, Black 48.1, Hispanic 46.7; 2025 NHW 74.3, Black 44.7, Hispanic 48.5, all households 65.2."
+    "Checked by script: 2003 NHW 75.4, Black 48.1, Hispanic 46.7; 2025 NHW 74.3, Black 44.7, Hispanic 48.5, all households 65.2.",
+    "The table is the full 132-row list. The kit can now pivot it to 33 rows a year by group, with 2002's two weightings as two rows, as Phase 2's table did; the pivot spec is ready, but checks.js still reads pivot.row as one column and fails it (E14). Switch when the check accepts a list."
   ]
 }

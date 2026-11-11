@@ -1,0 +1,51 @@
+{
+ "file": "govinfo-pl-119-75-effective-dates.csv",
+ "kind": "public",
+ "publisher": "U.S. Government Publishing Office",
+ "title_or_table": "Public Law 119-75, Consolidated Appropriations Act, 2026, sections 6223, 6224, 6701 and 6702 (pharmacy benefit managers)",
+ "table_id": "PLAW-119publ75, 140 Stat.",
+ "url": [
+  "https://www.govinfo.gov/content/pkg/PLAW-119publ75/html/PLAW-119publ75.htm",
+  "https://api.congress.gov/v3/law/119/pub/75?format=json"
+ ],
+ "observation_period": "February 3, 2026 (approved) to January 1, 2029 (last date in these sections)",
+ "geography": "United States",
+ "universe_or_base": "The pharmacy benefit manager provisions that V7 issue I084 names, with each provision's effective date as the law states it",
+ "unit": "dates",
+ "date_retrieved": "2026-11-11",
+ "vintage": "Public law text on govinfo.gov as read on November 11, 2026",
+ "qualification": "Dates tied to \"plan years beginning on or after\" a date reach each plan only when its next plan year starts. Two dates are computed by the studio from the law's \"18 months\" and \"30 months after the date of enactment\" (February 3, 2026); they agree with V7's status text for issue I084 (checked October 15, 2026). The headings are the law's own; the effect lines are the studio's plain summaries of each section's opening rule, and the law has more requirements than each line names",
+ "columns": {
+  "date": {
+   "type": "date",
+   "description": "date the part takes effect or is due"
+  },
+  "section": {
+   "type": "text",
+   "description": "section of Public Law 119-75"
+  },
+  "heading": {
+   "type": "text",
+   "description": "the section heading as enacted, in sentence case"
+  },
+  "what_takes_effect": {
+   "type": "text",
+   "description": "plain summary of what starts, written by the studio"
+  },
+  "kind": {
+   "type": "category",
+   "description": "enacted, deadline, or plan years beginning on or after"
+  },
+  "date_basis": {
+   "type": "text",
+   "description": "how the law sets the date"
+  }
+ },
+ "printed_source_line": "Source: U.S. Government Publishing Office, Public Law 119-75, Consolidated Appropriations Act, 2026, sections 6223, 6224, 6701 and 6702, February 3, 2026 to January 1, 2029, United States. Retrieved November 11, 2026. Two dates computed from \"months after enactment\"; plan-year dates apply as each plan year begins.",
+ "ledger_row": "P7-014",
+ "domain": "D06",
+ "states": [],
+ "notes": [
+  "V7 issue I084 status (checked October 15, 2026): \"Partly enacted. Public Law 119-75 (February 3, 2026) sets Medicare drug-plan fee and rebate pass-through rules from January 1, 2028, Medicare pharmacy contract standards from January 1, 2029, and rebate pass-through for employer plans for plan years beginning on or after August 3, 2028.\""
+ ]
+}

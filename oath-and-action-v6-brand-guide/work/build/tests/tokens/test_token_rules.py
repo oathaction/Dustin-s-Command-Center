@@ -49,7 +49,10 @@ _spec.loader.exec_module(L)
 
 THRESH = {'text': 4.5, 'largeText': 3.0, 'graphic': 3.0, 'focus': 3.0}
 KINDS = {'text', 'largeText', 'graphic', 'focus', 'decorative', 'dataFill', 'background', 'logotype', 'surface'}
-TYPES = {'color', 'dimension', 'fontFamily', 'fontWeight', 'duration', 'cubicBezier', 'number', 'typography'}
+TYPES = {'color', 'dimension', 'fontFamily', 'fontWeight', 'duration', 'cubicBezier', 'number', 'typography', 'strokeStyle'}
+# Phase 3 (round 0): the evidence line code as DTCG 2025.10 stroke styles (palette proposal, N-12)
+STROKE_KEYWORDS = {'solid', 'dashed', 'dotted', 'double', 'groove', 'ridge', 'outset', 'inset'}
+LINE_CAPS = {'round', 'butt', 'square'}
 FLOOR_PX = 13
 RED = L.LOCKED['pillarRed']
 PRUSSIAN = L.LOCKED['prussian']
@@ -105,6 +108,14 @@ def shape_errors(p, t, toks):
     elif typ == 'fontFamily':
         if not (isinstance(v, str) or (isinstance(v, list) and v and all(isinstance(x, str) for x in v))):
             bad('must be a font name or a list of names')
+    elif typ == 'strokeStyle':
+        if isinstance(v, str):
+            if v not in STROKE_KEYWORDS:
+                bad(f'must be one of {sorted(STROKE_KEYWORDS)} or a {{dashArray, lineCap}} object')
+        elif not isinstance(v, dict) or set(v) != {'dashArray', 'lineCap'} or v['lineCap'] not in LINE_CAPS \
+                or not isinstance(v['dashArray'], list) or not v['dashArray'] \
+                or any(not (isinstance(d, dict) and set(d) == {'value', 'unit'} and isinstance(d['value'], (int, float)) and d['value'] >= 0 and d['unit'] in ('px', 'rem')) for d in v['dashArray']):
+            bad('must be a keyword or {dashArray: [dimensions], lineCap: round, butt or square}')
     elif typ == 'cubicBezier':
         if not isinstance(v, list) or len(v) != 4 or not all(isinstance(x, (int, float)) for x in v) or not (0 <= v[0] <= 1 and 0 <= v[2] <= 1):
             bad('must be four numbers with x coordinates from 0 to 1')
@@ -514,7 +525,9 @@ def check(json_path, css_path=None):
                 Lh, Ch, Hh = L.oklch(h)
                 if is_red(h) or (Ch >= 0.02 and L.hue_gap(Hh, red_h) <= 45):
                     fails.append(f'{p}: a diverging step is red ({h}); no diverging scale pairs red with blue (Master Brief V2 section 13)')
-            if hexes[0].upper() != PRUSSIAN:
+            # Phase 3 (round 0, palette proposal N-10): on Charcoal the Prussian end is Prussian lifted toward Newsprint,
+            # so it holds 3 to 1 on the dark ground; it keeps Prussian's hue
+            if hexes[0].upper() != PRUSSIAN and not (s == 'charcoal' and L.hue_gap(L.oklch(hexes[0])[2], L.oklch(PRUSSIAN)[2]) <= 30):
                 fails.append(f'chart: diverging pair B starts at Prussian (DR-54); step 1 on {s} is {hexes[0]}')
             mid = hexes[len(hexes) // 2]
             if L.oklch(mid)[1] >= 0.02:
@@ -523,8 +536,11 @@ def check(json_path, css_path=None):
                 fails.append(f'chart: diverging pair B ends at Verdigris (DR-54); step {len(hexes)} on {s} is {hexes[-1]}')
             ls = [L.oklab(h)[0] for h in hexes]
             half = len(ls) // 2
+            # the midpoint is tinted toward the ground: lighter than both ends on a light ground, darker on a dark one
+            if s == 'charcoal':
+                ls = [-x for x in ls]
             if not (all(a < b for a, b in zip(ls[:half], ls[1:half + 1])) and all(a > b for a, b in zip(ls[half:], ls[half + 1:]))):
-                fails.append(f'chart: diverging pair B on {s} must lighten toward the midpoint from both ends')
+                fails.append(f'chart: diverging pair B on {s} must move toward the ground from both ends, lighter on Newsprint and darker on Charcoal')
         else:
             ls = [L.oklab(h)[0] for h in hexes]
             steps_ = [b - a for a, b in zip(ls, ls[1:])]

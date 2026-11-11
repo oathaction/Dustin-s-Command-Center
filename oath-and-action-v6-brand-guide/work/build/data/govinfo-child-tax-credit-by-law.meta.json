@@ -1,0 +1,52 @@
+{
+ "file": "govinfo-child-tax-credit-by-law.csv",
+ "kind": "public",
+ "publisher": "U.S. Government Publishing Office (Public Laws 115-97, 117-2 and 119-21); Internal Revenue Service (Revenue Procedure 2025-32)",
+ "title_or_table": "Public Law 115-97, sec. 11022; Public Law 117-2, sec. 9611; Public Law 119-21, sec. 70104; Rev. Proc. 2025-32, sec. 3.05, Child Tax Credit",
+ "table_id": "Statute text, 26 U.S.C. 24 as amended",
+ "url": [
+  "https://www.govinfo.gov/content/pkg/PLAW-115publ97/html/PLAW-115publ97.htm",
+  "https://www.govinfo.gov/content/pkg/PLAW-117publ2/html/PLAW-117publ2.htm",
+  "https://www.govinfo.gov/content/pkg/PLAW-119publ21/html/PLAW-119publ21.htm",
+  "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf"
+ ],
+ "observation_period": "Tax years 2017 to 2026",
+ "geography": "United States (federal income tax)",
+ "universe_or_base": "The maximum child tax credit per qualifying child that the law sets for each tax year, before phase-outs and refundability limits",
+ "unit": "dollars per qualifying child, nominal",
+ "date_retrieved": "2026-11-11",
+ "vintage": "Statute texts on govinfo.gov and Rev. Proc. 2025-32 as read on November 11, 2026",
+ "qualification": "The maximum credit is not what every family receives: income limits, phase-outs, the refundable cap ($1,400 indexed under Public Law 115-97, $1,700 for 2025 and 2026) and, from 2025, the Social Security number rules decide each family's amount. In 2021 the credit was fully refundable and $3,600 for a child under 6. The 2017 value of $1,000 is the base amount in 26 U.S.C. 24(a) that Public Law 115-97 replaced, read from that law's text",
+ "columns": {
+  "tax_year": {
+   "type": "year",
+   "description": "tax year"
+  },
+  "max_credit_per_child": {
+   "type": "integer",
+   "description": "maximum credit per qualifying child",
+   "unit": "dollars"
+  },
+  "max_credit_young_child": {
+   "type": "integer",
+   "description": "maximum credit for a child under 6",
+   "unit": "dollars"
+  },
+  "law": {
+   "type": "text",
+   "description": "the law that set the amount"
+  },
+  "citation": {
+   "type": "text",
+   "description": "Internal Revenue Code provision"
+  },
+  "note": {
+   "type": "text",
+   "description": "date signed or other note"
+  }
+ },
+ "printed_source_line": "Source: U.S. Government Publishing Office, Public Laws 115-97, 117-2 and 119-21, and Internal Revenue Service, Revenue Procedure 2025-32, maximum child tax credit, tax years 2017 to 2026, United States. Retrieved November 11, 2026. The maximum before income limits and refundability caps.",
+ "ledger_row": "P7-012",
+ "domain": "D08",
+ "states": []
+}

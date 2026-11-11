@@ -1,0 +1,49 @@
+{
+ "file": "v7-issue-status-checks-on-power.json",
+ "kind": "v7",
+ "publisher": "Oath & Action, Who Do They Answer To? Systems Atlas V7",
+ "url": "work/extract/atlas-v7-data.json",
+ "geography": "United States",
+ "date_retrieved": "2026-10-15",
+ "vintage": "Atlas V7 snapshot of October 15, 2026",
+ "snapshot": "2026-10-15",
+ "ledger_row": "not needed: Atlas V7, read by script",
+ "columns": {
+  "id": {
+   "type": "id",
+   "description": "V7 issue ID"
+  },
+  "title": {
+   "type": "text",
+   "description": "issue title"
+  },
+  "domain": {
+   "type": "code",
+   "description": "V7 domain ID"
+  },
+  "status_text": {
+   "type": "text",
+   "description": "V7's status text, verbatim"
+  },
+  "status_result": {
+   "type": "category",
+   "description": "V7's check result word"
+  },
+  "checked": {
+   "type": "date",
+   "description": "date V7 checked the status"
+  }
+ },
+ "title_or_table": "issue records, status of six issues in Checks on power and equal justice (I068, I070, I163, X05, X06, X18)",
+ "table_id": "issues[].status",
+ "observation_period": "Statuses as checked on October 15, 2026",
+ "universe_or_base": "Six issues the studio chose because each status names a court case, a ruling or a watchdog finding",
+ "unit": "issue statuses",
+ "qualification": "Statuses can have moved since October 15, 2026; a chip prints V7's date beside it. The chip words (decided, pending, in court) are the studio's reading of V7's text and must quote the case and date the text gives",
+ "printed_source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, issue records, status of six issues on checks on power, as of October 15, 2026, United States. Snapshot of October 15, 2026. Statuses may have changed since that date.",
+ "domain": "D05",
+ "states": [
+  "IL"
+ ],
+ "domain_note": "Issue X05 names Trump v. Illinois, so Illinois counts once under Rule 01.9"
+}

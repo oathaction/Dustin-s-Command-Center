@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, round 0. Editor (`oa-editor`), November 11, 2
 
 ## Summary
 
-In progress. Read the brief, the proposal, Master Brief sections 3, 8, 13 to 15, 22 and 23, the decision log entries the brief names, chapter 02's writing rules, chapters 01, 02, 10, 11 and 12 as built, and the editor's Phase 2 generators. Writing `work/build/scripts/phase-3/phase3_ch13_build.py` next.
+In progress, first full draft built. Chapter 13 is written by `work/build/scripts/phase-3/phase3_ch13_build.py` into `work/build/guide/chapters/13-evidence.json`, 27 specimens `work/build/guide/specimens/s-13-*.html` (an opener and a correct and a failure plate for each of 13 rules), `manifest-evidence.json` and one kit spec, `s-13-13-correct.chart.json` (contract C7). The strict build passes with 0 warnings and chapter 13 weighs about 0.20 MB against its 0.25 MB ceiling.
 
 ## Routine calls
 
