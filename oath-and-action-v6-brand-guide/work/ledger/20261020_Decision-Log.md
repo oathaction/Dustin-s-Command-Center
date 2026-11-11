@@ -3160,3 +3160,27 @@ Dustin, on board C's one question: "do not, who cares about my work? I'm support
 |---|---|---|
 | D2-1694 | Board C is not republished with the answer; the decision log holds it, and the Gate 2 report prints it. R-01 and R-02 appear today in chapter 18's filter bar and search lists and once in chapter 18's words, so nothing in the guide changes | Dustin asked to proceed to the handoff; the board is a record of the question, and no page depends on the answer |
 | D2-1695 | Dustin is still reading version 7. The next chat asks first whether he has notes on it, and folds any into Gate 2's fix pass | His words: "I'm still reviewing this" |
+
+## Answers on the Gate 2 plan, November 11, 2026
+
+The main session asked five questions with its plan for the Gate 2 preview, the reviews and the report. Dustin: "I approve all recs." He asked what "version 7" means; it is the seventh published version of the chapters page, unrelated to Atlas V7, and he has sent no notes on it yet.
+
+| # | Decision | Source |
+|---|---|---|
+| DR-225 | The Gate 2 preview is republished at the chapters page's address as version 8, so Dustin keeps one link | Dustin, November 11, as recommended (question 2) |
+| DR-226 | Gate 2's review is the creative director's whole-guide read (DR-221) plus one red team that reads all 16 chapters for drift only: a term, size, token or rule stated two ways, a cross-reference to the wrong rule, a stage A plate that no longer matches chapters 17, 18 and 26 | Dustin, November 11, as recommended (question 3) |
+| DR-227 | Phase 3 keeps the guide one file. The Phase 3 proposal sets chapter 14 a hard byte ceiling, and the engineer picks the lightest drawing method that passes the checks | Dustin, November 11, as recommended (question 4) |
+| DR-228 | Phase 3 shows three boards before Gate 3: after round 0 (the chart kit, the palette proofs and chapter 13), after form rounds 1 to 3, and after rounds 4 and 5 with chapter 15's six worked examples | Dustin, November 11, as recommended (question 5) |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1696 | Missouri has not certified (counties file by November 17), so the plate keeps "unofficial" and the read moves to Phase 5's assembly | D2-1532; the state's site also turns automated visitors away (DR-222) |
+| D2-1697 | The preview embeds Inter, Inter Tight and Lora in the weights the page loads today, as the WOFF2 files Google Fonts serves, unmodified, with the OFL 1.1 text in the guide and a row per file in the rights ledger. The studio neither subsets nor renames a font | D2-171; Lora's license reserves its name, so any change of ours would need a new name |
+| D2-1698 | "Where to start" carries three routes, for a newcomer, a designer and a builder (architecture map, section 2). A step in a chapter not yet built (13, 27, 28) prints as text marked for a later phase, never as a link | D2-164 kept these routes for the preview; the contents already treat later chapters this way |
+| D2-1699 | One private Gate 2 board carries the report's evidence: before and after at actual size for each approved refinement, the icon craft checks and similarity sheets, contrast for every token on every surface, the token parity test, and screenshots at 1440 and 390 px with keyboard and reduced-motion checks | Gate 1 report section 9, item 6; Dustin reviews a board at each stage |
+| D2-1700 | The Phase 3 proposal keeps Reform R-01 as the worked example Master Brief section 14 and the Phase 3 prompt name | DR-223 removed the reason to avoid it |
+| D2-1701 | The three items Gate 1 scheduled for Phase 3 come to Gate 2 as settled: the diverging pair (DR-54), chart data from Atlas V7 and primary public sources (DR-46), invented bills labeled Illustrative (DR-151) | Dustin answered each during Phase 2 |
+| D2-1702 | The creative director and the drift team start now on a frozen copy of the committed chapters page; the preview's new parts (the "Where to start" page, the font license and the colophon) go to the creative director as an addendum when the preview lands | The preview changes no chapter, so the chapters read the same; starting early saves the build's wait (V11's note on overlapping rounds) |
+| D2-1703 | Notes Dustin sends on the chapters page before the fix pass join it; notes after it go to Phase 3's first board | D2-1695 |
