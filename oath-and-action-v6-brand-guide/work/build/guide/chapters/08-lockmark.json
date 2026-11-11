@@ -23,7 +23,7 @@
    },
    "correct": {
     "specimen": "s-08-1-correct",
-    "caption": "The lockmark’s construction at 240 px, then its four masters at true size: the display master at 96 px and the 48, 24 and 16 px masters. Last, the 48 px master on Charcoal and on Prussian."
+    "caption": "The lockmark’s construction at 240 px, then its four masters at true size: the display master at 120 px beside the 48 px master drawn at 96 px for a social card’s sign-off, then the 48, 24 and 16 px masters at their own sizes. Last, the 48 px master on Charcoal and on Prussian."
    },
    "failure": {
     "specimen": "s-08-1-failure",
@@ -127,7 +127,7 @@
     },
     {
      "label": "Feed test, dark card",
-     "value": "On Charcoal, each of the eight light nodes keeps at least one block of 2 by 2 pixels with every color channel over 155, and the lever keeps at least four red pixels, counted as on a light ground. On Prussian, where the lever is White as well, each of the nine nodes keeps such a block with every channel over 190. On a dark ground the links take the nodes’ own color. In a 96 px sign-off they run 2 px wide, so a single bright pixel can come from a link, and the test counts blocks because a link the feed shrinks under 1 px wide cannot fill one. Each floor sits halfway between the brightest block the links alone leave in a node’s square and the dimmest node’s brightest block, measured on our card at both widths, then rounded down to a multiple of 5"
+     "value": "On Charcoal, each of the eight light nodes keeps at least one block of 2 by 2 pixels, anywhere in the node’s square plus 1 px on every side, whose four pixels each have every color channel over 155. Judge each pixel on its own, since an average of the four can pass a block whose dimmest pixel fails. The lever keeps at least four red pixels, counted as on a light ground. On Prussian, where the lever is White as well, each of the nine nodes keeps such a block, its four pixels each with every channel over 190. Reduce the card with Lanczos resampling, as on a light ground. On a dark ground the links take the nodes’ own color. In a 96 px sign-off they run 2 px wide, so a single bright pixel can come from a link, and the test counts blocks because a link the feed shrinks under 1 px wide cannot fill one. Each floor sits halfway between the brightest block the links alone leave in a node’s square and the dimmest node’s brightest block, measured on our card at both widths, then rounded down to a multiple of 5"
     },
     {
      "label": "Feed test, our card",
@@ -156,7 +156,7 @@
     "14",
     "23"
    ],
-   "builders": "Pick the master by the size the place sets: the 48 px master for the sign-off, at exactly 96 px on a social card and 48 px on a cover or poster; L3’s masthead master, which holds it already, for the masthead on screen, and L3’s print master for a masthead in print; the 24 px master in page headers and footers; and the 16 px master in a chart’s footer. Set each on whole pixels. Run the feed test on every new template for a social card, on the file you will upload, before it ships."
+   "builders": "Pick the master by the size the place sets: the 48 px master for the sign-off, at exactly 96 px on a social card and 48 px on a cover or poster; L3’s masthead master, which holds it already, for the masthead on screen, and L3’s print master for a masthead in print; the 24 px master in page headers and footers; and the 16 px master in a chart’s footer. Set each on whole pixels. Run the feed test on every new template for a social card, on the file you will upload, before it ships. Our script <code>promotion_c_identity.py</code> runs the test on the card in the identity proofs, with its <code>feed</code> step, and the asset package will carry a copy that takes any card."
   },
   {
    "id": "08.3",

@@ -1,39 +1,39 @@
 {
  "run": "2026-11-11",
  "command": "python3 -I work/build/tests/tokens/run_token_tests.py",
- "tokenSetVersion": "6.0.0-gate2.7",
+ "tokenSetVersion": "6.0.0-gate2.8",
  "status": "pre-release",
  "passed": true,
  "steps": [
   {
    "step": "build check",
    "result": "pass",
-   "detail": "tokens_build --check: tokens.json and tokens.css match the source (500 tokens)."
+   "detail": "tokens_build --check: tokens.json and tokens.css match the source (504 tokens)."
   },
   {
    "step": "parity",
    "result": "pass",
-   "detail": "500 tokens, 620 :root properties, 91 short names in each of 4 surface classes and the light and dark themes, 0 failures"
+   "detail": "504 tokens, 624 :root properties, 92 short names in each of 4 surface classes and the light and dark themes, 0 failures"
   },
   {
    "step": "rules",
    "result": "pass",
-   "detail": "500 tokens, 30 derived colors and tints, 205 semantic color cells measured, light theme 69 roles on newsprint, dark theme 61 roles on charcoal, 0 failures"
+   "detail": "504 tokens, 30 derived colors and tints, 205 semantic color cells measured, light theme 70 roles on newsprint, dark theme 62 roles on charcoal, 0 failures"
   },
   {
    "step": "self-test",
    "result": "pass",
-   "detail": "clean files pass; plants caught 41 of 41"
+   "detail": "clean files pass; plants caught 44 of 44"
   },
   {
    "step": "cross-check",
    "result": "pass",
-   "detail": "sd-crosscheck: Style Dictionary 5.8.0 read 500 tokens (302 color, 5 fontFamily, 5 fontWeight, 15 typography, 142 dimension, 22 number, 6 duration, 3 cubicBezier); 500 agree with tokens.css; 120 typography part properties are tokens.css's own; 0 disagreements; planted Stone change reported"
+   "detail": "sd-crosscheck: Style Dictionary 5.8.0 read 504 tokens (306 color, 5 fontFamily, 5 fontWeight, 15 typography, 142 dimension, 22 number, 6 duration, 3 cubicBezier); 504 agree with tokens.css; 120 typography part properties are tokens.css's own; 0 disagreements; planted Stone change reported"
   },
   {
    "step": "rendered",
    "result": "pass",
-   "detail": "render: Chromium 153.0.8010.12 resolved 469 token values, 30 color-mix() derivations (largest channel difference 0), 364 surface short names nested in another surface, 14 type styles at 390 and 1440 px, 6 durations under reduced motion and 14 theme cases (device light and dark, the root's attribute, nested themes and surfaces); 0 failures; planted red leak onto Prussian reported; planted dark block that overrides data-oa-theme=\"light\" reported"
+   "detail": "render: Chromium 153.0.8010.12 resolved 473 token values, 30 color-mix() derivations (largest channel difference 0), 368 surface short names nested in another surface, 14 type styles at 390 and 1440 px, 6 durations under reduced motion and 14 theme cases (device light and dark, the root's attribute, nested themes and surfaces); 0 failures; planted red leak onto Prussian reported; planted dark block that overrides data-oa-theme=\"light\" reported"
   }
  ],
  "counts": {
@@ -47,7 +47,7 @@
    "primitive": 27
   },
   "color (roles)": {
-   "semantic": 141
+   "semantic": 145
   },
   "font": {
    "untiered": 10
@@ -423,7 +423,7 @@
    "plant": "A stylesheet edited by hand, so it no longer matches the source",
    "test": "build",
    "caught": true,
-   "failure": "tokens_build --check: tokens.css in ../../../../tmp/oa-token-plants-nf7eky8j differ from what the source builds. Run the build.",
+   "failure": "tokens_build --check: tokens.css in ../../../../tmp/claude-0/-home-user-Dustin-s-Command-Center/49b1040f-34e8-55e0-97c3-93e08c6dbc2c/scratchpad/round-2-fix/engineer/oa-token-plants-yqj2tcko differ from what the source bu",
    "alsoCaughtBy": [
     "parity"
    ]
@@ -480,12 +480,41 @@
    "plant": "A version rise with no change note",
    "test": "rules",
    "caught": true,
-   "failure": "root: version 6.0.0-gate2.8 has no change note (version, change, reason) at the head of changeNotes (section 7, step 6)",
+   "failure": "root: version 6.0.0-gate2.9 has no change note (version, change, reason) at the head of changeNotes (section 7, step 6)",
    "alsoCaughtBy": [
     "build",
     "parity"
    ]
+  },
+  {
+   "plant": "A deprecated token that points past its replacement (the old error bar name straight at Pillar Red)",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.color.state.error.mark.onWhite: a deprecated token points at its replacement, {oa.color.state.error.bar.onWhite}, and nothing else; it holds {oa.color.palette.pillarRed}",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "A live token built on a deprecated name",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.component.button.disabled.label.onWhite: points at the deprecated name oa.color.state.error.mark.onWhite; point at its replacement",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "A deprecated alias kept past the release that removes it",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.color.state.error.mark.onCharcoal: removedIn '6.0.0' names a later release of the second part than 6.0.0-gate2.8",
+   "alsoCaughtBy": [
+    "build"
+   ]
   }
  ],
- "roleTable": "| Role | Newsprint | White | Charcoal | Prussian |\n|---|---|---|---|---|\n| color.surface | Newsprint 1.00 | White 1.00 | Charcoal 1.00 | Prussian 1.00 |\n| color.text.primary | Charcoal 13.29 (needs 4.5) | Charcoal 18.73 (needs 4.5) | Newsprint 13.29 (needs 4.5) | White 13.28 (needs 4.5) |\n| color.text.secondary | Deep Stone 5.49 (needs 4.5) | Deep Stone 7.74 (needs 4.5) | Dim Newsprint 7.26 (needs 4.5) | Dim Newsprint 5.14 (needs 4.5) |\n| color.graphic.essential | Charcoal 13.29 (needs 3) | Charcoal 18.73 (needs 3) | Newsprint 13.29 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.graphic.subtle | Stone 4.29 (needs 3) | Stone 6.05 (needs 3) | Dim Newsprint 7.26 (needs 3) | Dim Newsprint 5.14 (needs 3) |\n| color.border.strong | Charcoal 13.29 (needs 3) | Charcoal 18.73 (needs 3) | Newsprint 13.29 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.border.hairline | Stone 4.29 | Stone 6.05 | Stone 3.10 | White 13.28 |\n| color.focus.ring | Verdigris 3.37 (needs 3) | Verdigris 4.74 (needs 3) | Newsprint 13.29 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.field.ground | White 7.74 (needs 4.5) | Newsprint 5.49 (needs 4.5) | Prussian 5.14 (needs 4.5) | Charcoal 7.26 (needs 4.5) |\n| color.identity.signature | Pillar Red 2.96 | Pillar Red 4.17 | Pillar Red 4.49 | White 13.28 |\n| color.identity.hingeDivider | Charcoal 13.29 (needs 3) | Charcoal 18.73 (needs 3) | Newsprint 13.29 (needs 3) | White 13.28 (needs 3) |\n| color.action.ask.fill | Pillar Red 2.96, keyline 13.29 (needs 3) | Pillar Red 4.17 (needs 3) | Pillar Red 4.49 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.action.ask.label | White 4.17 (needs 3) | White 4.17 (needs 3) | White 4.17 (needs 3) | Charcoal 13.29 (needs 3) |\n| color.action.primary.fill | Charcoal 13.29 (needs 3) | Charcoal 18.73 (needs 3) | Newsprint 13.29 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.action.primary.fillHover | Prussian 9.42 (needs 3) | Prussian 13.28 (needs 3) | White 18.73 (needs 3) | White 13.28 (needs 3) |\n| color.action.primary.label | White 18.73 (needs 4.5) | White 18.73 (needs 4.5) | Charcoal 13.29 (needs 4.5) | Charcoal 13.29 (needs 4.5) |\n| color.state.muted.text | Deep Stone 5.49 (needs 4.5) | Deep Stone 7.74 (needs 4.5) | Dim Newsprint 7.26 (needs 4.5) | Dim Newsprint 5.14 (needs 4.5) |\n| color.state.muted.mark | Stone 4.29 (needs 3) | Stone 6.05 (needs 3) | Dim Newsprint 7.26 (needs 3) | Dim Newsprint 5.14 (needs 3) |\n| color.state.disabled.text | Deep Stone 5.49 (needs 4.5) | Deep Stone 7.74 (needs 4.5) | Dim Newsprint 7.26 (needs 4.5) | Dim Newsprint 5.14 (needs 4.5) |\n| color.state.disabled.edge | Deep Stone 5.49 (needs 3) | Deep Stone 7.74 (needs 3) | Dim Newsprint 7.26 (needs 3) | Dim Newsprint 5.14 (needs 3) |\n| color.state.loading.text | Deep Stone 5.49 (needs 4.5) | Deep Stone 7.74 (needs 4.5) | Dim Newsprint 7.26 (needs 4.5) | Dim Newsprint 5.14 (needs 4.5) |\n| color.state.loading.mark | Stone 4.29 (needs 3) | Stone 6.05 (needs 3) | Dim Newsprint 7.26 (needs 3) | Dim Newsprint 5.14 (needs 3) |\n| color.state.selected.band | White 7.74 (needs 4.5) | Newsprint 5.49 (needs 4.5) | Prussian 5.14 (needs 4.5) | Charcoal 7.26 (needs 4.5) |\n| color.state.selected.bar | Charcoal 18.73 (needs 3) | Charcoal 13.29 (needs 3) | Newsprint 9.42 (needs 3) | White 18.73 (needs 3) |\n| color.state.warning.mark | Charcoal 13.29 (needs 3) | Charcoal 18.73 (needs 3) | Newsprint 13.29 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.state.warning.text | Charcoal 13.29 (needs 4.5) | Charcoal 18.73 (needs 4.5) | Newsprint 13.29 (needs 4.5) | White 13.28 (needs 4.5) |\n| color.state.error.band | Error Band 4.91 (needs 4.5) | Error Band 4.91 (needs 4.5) | none | none |\n| color.state.error.mark | Pillar Red 2.96, keyline 13.29 (needs 3) | Pillar Red 4.17 (needs 3) | Pillar Red 4.49 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.state.error.text | Charcoal 13.29 (needs 4.5) | Charcoal 18.73 (needs 4.5) | Newsprint 13.29 (needs 4.5) | White 13.28 (needs 4.5) |\n| color.state.empty.text | Deep Stone 5.49 (needs 4.5) | Deep Stone 7.74 (needs 4.5) | Dim Newsprint 7.26 (needs 4.5) | Dim Newsprint 5.14 (needs 4.5) |\n| color.state.empty.edge | Stone 4.29 (needs 3) | Stone 6.05 (needs 3) | Dim Newsprint 7.26 (needs 3) | Dim Newsprint 5.14 (needs 3) |\n| color.state.success.mark | Verdigris 3.37 (needs 3) | Verdigris 4.74 (needs 3) | Verdigris 3.95 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.state.success.text | Charcoal 13.29 (needs 4.5) | Charcoal 18.73 (needs 4.5) | Newsprint 13.29 (needs 4.5) | White 13.28 (needs 4.5) |\n| color.data.emphasis | Charcoal 13.29 (needs 3) | Charcoal 18.73 (needs 3) | Newsprint 13.29 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.data.context | Stone 4.29 (needs 3) | Stone 6.05 (needs 3) | #878A8F 5.41 (needs 3) | Dim Newsprint 5.14 (needs 3) |\n| color.data.emphasisRed | Pillar Red 2.96, keyline 13.29 (needs 3) | Pillar Red 4.17 (needs 3) | Pillar Red 4.49 (needs 3) | none |\n| chart.color.labelOnSubject | White 18.73 (needs 4.5) | none | Charcoal 13.29 (needs 4.5) | none |\n| chart.color.chip.fill | Charcoal 13.29 (needs 3) | none | Newsprint 13.29 (needs 3) | none |\n| chart.color.chip.label | Newsprint 13.29 (needs 4.5) | none | Charcoal 13.29 (needs 4.5) | none |\n| chart.color.lightFill | #A1A2A3 1.81 | none | Stone 3.10 | none |\n| chart.color.track | #CCCAC5 1.16 | none | #323438 1.50 | none |\n| chart.color.gridline | #B4B4B3 1.47 | none | #393C41 1.69 | none |\n| chart.color.band | #ECEAE6 1.17 | none | #252729 1.25 | none |\n| chart.color.land | #ECEAE6 1.17 | none | #202122 1.16 | none |\n| chart.color.diverging.fill.step1 | Prussian 9.42 | none | none | none |\n| chart.color.diverging.fill.step2 | #8E94A4 2.15 | none | none | none |\n| chart.color.diverging.fill.step3 | #CECDC7 1.13 | none | none | none |\n| chart.color.diverging.fill.step4 | #9AAEA6 1.66 | none | none | none |\n| chart.color.diverging.fill.step5 | #3C5F59 5.01 | none | none | none |\n| chart.color.diverging.label.step1 | White 13.28 (needs 4.5) | none | none | none |\n| chart.color.diverging.label.step2 | Charcoal 6.18 (needs 4.5) | none | none | none |\n| chart.color.diverging.label.step3 | Charcoal 11.76 (needs 4.5) | none | none | none |\n| chart.color.diverging.label.step4 | Charcoal 8.01 (needs 4.5) | none | none | none |\n| chart.color.diverging.label.step5 | White 7.06 (needs 4.5) | none | none | none |\n| chart.color.sequential.fill.step1 | #C1C8C0 1.21 | none | #202A28 1.27 | none |\n| chart.color.sequential.fill.step2 | #97ACA4 1.70 | none | #2E4340 1.78 | none |\n| chart.color.sequential.fill.step3 | #6D9189 2.46 | none | #3F655E 2.89 | none |\n| chart.color.sequential.fill.step4 | #47756E 3.69 | none | #6F938B 5.55 | none |\n| chart.color.sequential.fill.step5 | #36544F 5.87 | none | #9AAEA6 8.01 | none |\n| chart.color.sequential.label.step1 | Charcoal 10.96 (needs 4.5) | none | Newsprint 10.47 (needs 4.5) | none |\n| chart.color.sequential.label.step2 | Charcoal 7.81 (needs 4.5) | none | Newsprint 7.48 (needs 4.5) | none |\n| chart.color.sequential.label.step3 | Charcoal 5.41 (needs 4.5) | none | Newsprint 4.61 (needs 4.5) | none |\n| chart.color.sequential.label.step4 | White 5.20 (needs 4.5) | none | Charcoal 5.55 (needs 4.5) | none |\n| chart.color.sequential.label.step5 | White 8.27 (needs 4.5) | none | Charcoal 8.01 (needs 4.5) | none |\n| chart.color.sequential.outline | #36544F 5.87 (needs 3) | none | #9AAEA6 8.01 (needs 3) | none |\n| chart.color.magnitude.fill.step1 | #CCCAC5 1.16 | none | #232426 1.21 | none |\n| chart.color.magnitude.fill.step2 | #A1A2A3 1.81 | none | #3D4046 1.80 | none |\n| chart.color.magnitude.fill.step3 | #555A63 4.92 | none | #A1A2A3 7.33 | none |\n| chart.color.magnitude.fill.step4 | #2E3034 9.38 | none | #C8C6C2 10.98 | none |\n| chart.color.magnitude.label.step1 | Charcoal 11.44 (needs 4.5) | none | Newsprint 11.02 (needs 4.5) | none |\n| chart.color.magnitude.label.step2 | Charcoal 7.33 (needs 4.5) | none | Newsprint 7.37 (needs 4.5) | none |\n| chart.color.magnitude.label.step3 | Newsprint 4.92 (needs 4.5) | none | Charcoal 7.33 (needs 4.5) | none |\n| chart.color.magnitude.label.step4 | Newsprint 9.38 (needs 4.5) | none | Charcoal 10.98 (needs 4.5) | none |"
+ "roleTable": "| Role | Newsprint | White | Charcoal | Prussian |\n|---|---|---|---|---|\n| color.surface | Newsprint 1.00 | White 1.00 | Charcoal 1.00 | Prussian 1.00 |\n| color.text.primary | Charcoal 13.29 (needs 4.5) | Charcoal 18.73 (needs 4.5) | Newsprint 13.29 (needs 4.5) | White 13.28 (needs 4.5) |\n| color.text.secondary | Deep Stone 5.49 (needs 4.5) | Deep Stone 7.74 (needs 4.5) | Dim Newsprint 7.26 (needs 4.5) | Dim Newsprint 5.14 (needs 4.5) |\n| color.graphic.essential | Charcoal 13.29 (needs 3) | Charcoal 18.73 (needs 3) | Newsprint 13.29 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.graphic.subtle | Stone 4.29 (needs 3) | Stone 6.05 (needs 3) | Dim Newsprint 7.26 (needs 3) | Dim Newsprint 5.14 (needs 3) |\n| color.border.strong | Charcoal 13.29 (needs 3) | Charcoal 18.73 (needs 3) | Newsprint 13.29 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.border.hairline | Stone 4.29 | Stone 6.05 | Stone 3.10 | White 13.28 |\n| color.focus.ring | Verdigris 3.37 (needs 3) | Verdigris 4.74 (needs 3) | Newsprint 13.29 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.field.ground | White 7.74 (needs 4.5) | Newsprint 5.49 (needs 4.5) | Charcoal 7.26 (needs 4.5) | Charcoal 7.26 (needs 4.5) |\n| color.identity.signature | Pillar Red 2.96 | Pillar Red 4.17 | Pillar Red 4.49 | White 13.28 |\n| color.identity.hingeDivider | Charcoal 13.29 (needs 3) | Charcoal 18.73 (needs 3) | Newsprint 13.29 (needs 3) | White 13.28 (needs 3) |\n| color.action.ask.fill | Pillar Red 2.96, keyline 13.29 (needs 3) | Pillar Red 4.17 (needs 3) | Pillar Red 4.49 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.action.ask.label | White 4.17 (needs 3) | White 4.17 (needs 3) | White 4.17 (needs 3) | Charcoal 13.29 (needs 3) |\n| color.action.primary.fill | Charcoal 13.29 (needs 3) | Charcoal 18.73 (needs 3) | Newsprint 13.29 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.action.primary.fillHover | Prussian 9.42 (needs 3) | Prussian 13.28 (needs 3) | White 18.73 (needs 3) | White 13.28 (needs 3) |\n| color.action.primary.label | White 18.73 (needs 4.5) | White 18.73 (needs 4.5) | Charcoal 13.29 (needs 4.5) | Charcoal 13.29 (needs 4.5) |\n| color.state.muted.text | Deep Stone 5.49 (needs 4.5) | Deep Stone 7.74 (needs 4.5) | Dim Newsprint 7.26 (needs 4.5) | Dim Newsprint 5.14 (needs 4.5) |\n| color.state.muted.mark | Stone 4.29 (needs 3) | Stone 6.05 (needs 3) | Dim Newsprint 7.26 (needs 3) | Dim Newsprint 5.14 (needs 3) |\n| color.state.disabled.text | Deep Stone 5.49 (needs 4.5) | Deep Stone 7.74 (needs 4.5) | Dim Newsprint 7.26 (needs 4.5) | Dim Newsprint 5.14 (needs 4.5) |\n| color.state.disabled.edge | Deep Stone 5.49 (needs 3) | Deep Stone 7.74 (needs 3) | Dim Newsprint 7.26 (needs 3) | Dim Newsprint 5.14 (needs 3) |\n| color.state.loading.text | Deep Stone 5.49 (needs 4.5) | Deep Stone 7.74 (needs 4.5) | Dim Newsprint 7.26 (needs 4.5) | Dim Newsprint 5.14 (needs 4.5) |\n| color.state.loading.mark | Stone 4.29 (needs 3) | Stone 6.05 (needs 3) | Dim Newsprint 7.26 (needs 3) | Dim Newsprint 5.14 (needs 3) |\n| color.state.selected.band | White 7.74 (needs 4.5) | Newsprint 5.49 (needs 4.5) | Prussian 5.14 (needs 4.5) | Charcoal 7.26 (needs 4.5) |\n| color.state.selected.bar | Charcoal 18.73 (needs 3) | Charcoal 13.29 (needs 3) | Newsprint 9.42 (needs 3) | White 18.73 (needs 3) |\n| color.state.warning.mark | Charcoal 13.29 (needs 3) | Charcoal 18.73 (needs 3) | Newsprint 13.29 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.state.warning.text | Charcoal 13.29 (needs 4.5) | Charcoal 18.73 (needs 4.5) | Newsprint 13.29 (needs 4.5) | White 13.28 (needs 4.5) |\n| color.state.error.band | Error Band 4.91 (needs 4.5) | Error Band 4.91 (needs 4.5) | none | none |\n| color.state.error.bar | Pillar Red 2.96, keyline 13.29 (needs 3) | Pillar Red 4.17 (needs 3) | Pillar Red 4.49 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.state.error.text | Charcoal 13.29 (needs 4.5) | Charcoal 18.73 (needs 4.5) | Newsprint 13.29 (needs 4.5) | White 13.28 (needs 4.5) |\n| color.state.empty.text | Deep Stone 5.49 (needs 4.5) | Deep Stone 7.74 (needs 4.5) | Dim Newsprint 7.26 (needs 4.5) | Dim Newsprint 5.14 (needs 4.5) |\n| color.state.empty.edge | Stone 4.29 (needs 3) | Stone 6.05 (needs 3) | Dim Newsprint 7.26 (needs 3) | Dim Newsprint 5.14 (needs 3) |\n| color.state.success.mark | Verdigris 3.37 (needs 3) | Verdigris 4.74 (needs 3) | Verdigris 3.95 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.state.success.text | Charcoal 13.29 (needs 4.5) | Charcoal 18.73 (needs 4.5) | Newsprint 13.29 (needs 4.5) | White 13.28 (needs 4.5) |\n| color.data.emphasis | Charcoal 13.29 (needs 3) | Charcoal 18.73 (needs 3) | Newsprint 13.29 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.data.context | Stone 4.29 (needs 3) | Stone 6.05 (needs 3) | #878A8F 5.41 (needs 3) | Dim Newsprint 5.14 (needs 3) |\n| color.data.emphasisRed | Pillar Red 2.96, keyline 13.29 (needs 3) | Pillar Red 4.17 (needs 3) | Pillar Red 4.49 (needs 3) | none |\n| chart.color.labelOnSubject | White 18.73 (needs 4.5) | none | Charcoal 13.29 (needs 4.5) | none |\n| chart.color.chip.fill | Charcoal 13.29 (needs 3) | none | Newsprint 13.29 (needs 3) | none |\n| chart.color.chip.label | Newsprint 13.29 (needs 4.5) | none | Charcoal 13.29 (needs 4.5) | none |\n| chart.color.lightFill | #A1A2A3 1.81 | none | Stone 3.10 | none |\n| chart.color.track | #CCCAC5 1.16 | none | #323438 1.50 | none |\n| chart.color.gridline | #B4B4B3 1.47 | none | #393C41 1.69 | none |\n| chart.color.band | #ECEAE6 1.17 | none | #252729 1.25 | none |\n| chart.color.land | #ECEAE6 1.17 | none | #202122 1.16 | none |\n| chart.color.diverging.fill.step1 | Prussian 9.42 | none | none | none |\n| chart.color.diverging.fill.step2 | #8E94A4 2.15 | none | none | none |\n| chart.color.diverging.fill.step3 | #CECDC7 1.13 | none | none | none |\n| chart.color.diverging.fill.step4 | #9AAEA6 1.66 | none | none | none |\n| chart.color.diverging.fill.step5 | #3C5F59 5.01 | none | none | none |\n| chart.color.diverging.label.step1 | White 13.28 (needs 4.5) | none | none | none |\n| chart.color.diverging.label.step2 | Charcoal 6.18 (needs 4.5) | none | none | none |\n| chart.color.diverging.label.step3 | Charcoal 11.76 (needs 4.5) | none | none | none |\n| chart.color.diverging.label.step4 | Charcoal 8.01 (needs 4.5) | none | none | none |\n| chart.color.diverging.label.step5 | White 7.06 (needs 4.5) | none | none | none |\n| chart.color.sequential.fill.step1 | #C1C8C0 1.21 | none | #202A28 1.27 | none |\n| chart.color.sequential.fill.step2 | #97ACA4 1.70 | none | #2E4340 1.78 | none |\n| chart.color.sequential.fill.step3 | #6D9189 2.46 | none | #3F655E 2.89 | none |\n| chart.color.sequential.fill.step4 | #47756E 3.69 | none | #6F938B 5.55 | none |\n| chart.color.sequential.fill.step5 | #36544F 5.87 | none | #9AAEA6 8.01 | none |\n| chart.color.sequential.label.step1 | Charcoal 10.96 (needs 4.5) | none | Newsprint 10.47 (needs 4.5) | none |\n| chart.color.sequential.label.step2 | Charcoal 7.81 (needs 4.5) | none | Newsprint 7.48 (needs 4.5) | none |\n| chart.color.sequential.label.step3 | Charcoal 5.41 (needs 4.5) | none | Newsprint 4.61 (needs 4.5) | none |\n| chart.color.sequential.label.step4 | White 5.20 (needs 4.5) | none | Charcoal 5.55 (needs 4.5) | none |\n| chart.color.sequential.label.step5 | White 8.27 (needs 4.5) | none | Charcoal 8.01 (needs 4.5) | none |\n| chart.color.sequential.outline | #36544F 5.87 (needs 3) | none | #9AAEA6 8.01 (needs 3) | none |\n| chart.color.magnitude.fill.step1 | #CCCAC5 1.16 | none | #232426 1.21 | none |\n| chart.color.magnitude.fill.step2 | #A1A2A3 1.81 | none | #3D4046 1.80 | none |\n| chart.color.magnitude.fill.step3 | #555A63 4.92 | none | #A1A2A3 7.33 | none |\n| chart.color.magnitude.fill.step4 | #2E3034 9.38 | none | #C8C6C2 10.98 | none |\n| chart.color.magnitude.label.step1 | Charcoal 11.44 (needs 4.5) | none | Newsprint 11.02 (needs 4.5) | none |\n| chart.color.magnitude.label.step2 | Charcoal 7.33 (needs 4.5) | none | Newsprint 7.37 (needs 4.5) | none |\n| chart.color.magnitude.label.step3 | Newsprint 4.92 (needs 4.5) | none | Charcoal 7.33 (needs 4.5) | none |\n| chart.color.magnitude.label.step4 | Newsprint 9.38 (needs 4.5) | none | Charcoal 10.98 (needs 4.5) | none |"
 }

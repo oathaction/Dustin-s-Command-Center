@@ -33,8 +33,13 @@
 .oa-filters-result { padding: var(--oa-space-050) 0; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
 .oa-filters-result[hidden] { display: none }
 .oa-filters-source { margin: var(--oa-space-150) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
-.oa-filters-result-id { display: inline-block; min-width: 3.5em; font-weight: var(--oa-font-weight-bold); font-variant-numeric: tabular-nums }
+/* Each result is its name, then its typed chip: the type word and the code together, so no code stands bare */
+.oa-filters-result-chip { display: inline-block; margin-left: var(--oa-space-050); padding: 0 var(--oa-space-100);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); font: var(--oa-type-data-label) }
+/* An ID never breaks at its hyphen */
+.oa-filters-result-id { white-space: nowrap; font-variant-numeric: tabular-nums }
 
 @media (forced-colors: active) {
   .oa-filters-toggle, .oa-filters-clear, .oa-filters-chip { border-color: ButtonText }
+  .oa-filters-result-chip { border-color: CanvasText }
 }

@@ -3,8 +3,10 @@
 .oa-tabs { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
 .oa-tabs-k { margin: 0 0 var(--oa-space-100); font: var(--oa-type-ui) }
 .oa-tabs-title { font-weight: var(--oa-font-weight-bold) }
-.oa-tabs-illus { margin-left: var(--oa-space-050); padding: 0 var(--oa-space-050); border: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
-  font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); color: var(--oa-color-text-secondary) }
+/* Illustrative: the label at the head of an invented piece, in the guide's one style (uppercase, a 1 px edge in the ink) */
+.oa-tabs-illus { display: inline-block; margin: 0 0 var(--oa-space-100); padding: 0 .4em; border: var(--oa-border-width-hairline) solid currentColor;
+  color: var(--oa-color-text-primary); font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform); line-height: 1.5 }
 .oa-tabs-list { display: flex; flex-wrap: wrap; column-gap: var(--oa-space-050); border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-strong) }
 .oa-tabs-tab { box-sizing: border-box; max-width: 100%; min-height: var(--oa-size-target-touch); margin: 0 0 -1px;
   padding: var(--oa-space-100) var(--oa-space-200) calc(var(--oa-space-100) + var(--oa-border-width-bar) - 1px);

@@ -1,7 +1,7 @@
 {
  "about": "Every figure chapter 17 prints, with the method that produced it. Contrast is WCAG 2.x relative luminance on the token hex values in tokens.json; motion values are read from tokens.json.",
  "built": "2026-11-11",
- "token_set_version": "6.0.0-gate2.7",
+ "token_set_version": "6.0.0-gate2.8",
  "figures": {
   "Charcoal at 40 percent opacity over Newsprint": {
    "value": "2.48",
@@ -205,6 +205,10 @@
    "bg": "#DCD9D2",
    "exact": 13.291,
    "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "ease-out at half its time": {
+   "value": "68 percent of the way",
+   "method": "cubic-bezier(0, 0, 0.58, 1), the CSS keyword ease-out, solved for progress at time 0.5 by bisection"
   },
   "focus ring on Charcoal against the Newsprint primary fill": {
    "value": "1.00",

@@ -113,12 +113,27 @@ F = {
     "char_n_body": r2(ratio(P["charcoal"], P["newsprint"])),
 }
 N_TOKENS = len(FLAT)
+# Deprecated names (DTCG $deprecated, Rule 26.8): each old short name with its new one and the release it leaves with
+DEPRECATED = {}
+for _p, _t in FLAT.items():
+    if "$deprecated" in _t:
+        _d = _t["$extensions"]["org.oathandaction"]["deprecated"]
+        DEPRECATED.setdefault(css(".".join(_p.split(".")[:-1])), (css(".".join(_d["replacedBy"].strip("{}").split(".")[:-1])), _d["removedIn"], _d["since"]))
 CATEGORIES = [k for k in TREE["oa"]]
 CAT_WORDS = {"zIndex": "z-index"}
 VERSION = META["tokenSetVersion"]
 NOTE = META["changeNotes"][0]
 STUDIO_CODE = re.compile(r"^(?:(?:DR|D1|D2|G1)-\d+|T-\d+)\s*:\s*")
 assert N_TOKENS == 500 or N_TOKENS > 0
+
+
+MONTHS = ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+
+
+def date_words(iso):
+    """2026-11-11 -> November 11, 2026 (H05: dates in words)."""
+    y, m, d = (int(x) for x in iso.split("-"))
+    return f"{MONTHS[m - 1]} {d}, {y}"
 
 
 def words_list(xs):
@@ -397,15 +412,15 @@ def specimens():
     # 26.8, a change note, and a rename with no alias
     reason = STUDIO_CODE.sub("", NOTE["reason"])
     reason = reason[0].upper() + reason[1:]
-    rows = [("Version", f"<code>{e(NOTE['version'])}</code>"), ("Date", "November 10, 2026" if NOTE["date"] == "2026-11-10" else e(NOTE["date"])),
+    rows = [("Version", f"<code>{e(NOTE['version'])}</code>"), ("Date", date_words(NOTE["date"])),
             ("Tokens", e(NOTE["tokens"])), ("Change", e(NOTE["change"])), ("Why", e(reason))]
     add("s-26-8-correct", "26.8", spec(
         ".sx-note{margin:0;padding:16px;background:var(--oa-color-surface-white);color:var(--oa-color-text-primary-on-white);display:grid;grid-template-columns:5.5rem minmax(0,1fr);gap:8px 12px}"
         ".sx-note dt{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary-on-white)}"
         ".sx-note dd{margin:0;font:var(--oa-type-body-small);overflow-wrap:anywhere}",
         '<dl class="sx-note">' + "".join(f"<dt>{a}</dt><dd>{b}</dd>" for a, b in rows) + "</dl>"),
-        f"The change note of version {NOTE['version']}, as tokens.json records it: its date, the tokens it touches, what changed (a light and a dark theme in "
-        "tokens.css, and a field ground role) and why.", notes="The newest change note in tokens.json, read at build.")
+        f"The change note of version {NOTE['version']}, as tokens.json records it. Date: {date_words(NOTE['date'])}. Tokens: {NOTE['tokens']}. "
+        f"Change: {NOTE['change']} Why: {reason}", notes="The newest change note in tokens.json, read at build.")
     add("s-26-8-failure", "26.8", spec(
         ".sx-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:12px;margin:12px 0 0}.sx-v{padding:16px;background:var(--oa-color-surface-newsprint);"
         "border:1px solid var(--oa-color-border-hairline-on-newsprint);display:grid;gap:8px}.sx-v p{margin:0}.sx-cap1{font:var(--oa-type-caption);color:var(--oa-color-text-secondary-on-newsprint)}"
@@ -669,14 +684,16 @@ def chapter():
                    {"label": "Search", "value": "Any word of a name, a value, a job or a tier; the line under the field says how many rows show"},
                    {"label": "Copy", "value": "The CSS name, with a line that says what was copied, or what to do when the browser refuses"}],
          "related": ["05", "06"],
-         "builders": ["The descriptions in the table leave out the internal record codes that tokens.json carries in some of them."]},
+         "builders": ["The Use column prints each token's description from tokens.json word for word, and a deprecated token says which name replaced it."]},
         {"id": "26.8", "title": "Read the version before you update, and download both token files here.",
          "rule": ["tokens.css and tokens.json carry one version number, in three parts. A renamed or removed token, or a changed palette color, raises the first "
                   "part, and may break a page. A new token, or a changed value that still passes its contrast, raises the second. A change to descriptions alone "
                   "raises the third.",
                   "A replaced token keeps its old CSS name as an alias for one more release of the second part, marked as deprecated, so a page that reads it keeps "
                   "working while you move it. Every version comes with a change note: its date, the tokens it touches, what changed and why.",
-                  f"The files in this draft carry <code>{e(VERSION)}</code>. The part after the hyphen marks a draft before 6.0.0, the first release."],
+                  f"The files in this draft carry <code>{e(VERSION)}</code>. The part after the hyphen marks a draft before 6.0.0, the first release."
+                  + ("".join(f" Since {e(since)}, <code>{e(old)}</code> is the deprecated old name of <code>{e(new)}</code>, and it leaves with {e(gone)}."
+                             for old, (new, gone, since) in DEPRECATED.items()))],
          "downloads": ["tokens.css", "tokens.json"],
          "tokens": [],
          "why": {"text": ["A builder who reads the first part of the number knows at once whether an update can break a page, and the note says what to change."],

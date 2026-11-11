@@ -17,9 +17,12 @@ The motions (timing from tokens.json, read at build time and again by the script
 Each player draws three layers in one place: the moving layer, which is the master's own elements inlined (the
 wordmark's one letter path split by position into OATH and ACTION, every other element as the file draws it) with
 data-part names the script animates; and the end layer, the master placed by reference, which the guide build inlines
-unchanged. Play runs the moving layer; at its end the player shows the end layer, so the last frame is the master
-itself. Reset returns to the first frame. Under reduced motion every duration token is 0 ms and Play shows the end
-layer at once (Rule 17.4). Nothing moves on load and nothing loops (Rule 17.3). The player follows the engineer's
+unchanged. Each player rests on the end layer, the master itself (stage C round 2, CD-M1, call 5: data-frame="end"
+and data-oa-rest="master" on load). Play steps to the first frame and runs the moving layer; at its end the player
+shows the end layer again, so the last frame is the master. Reset returns to the master, and at rest it is unavailable
+with the line "The mark is at rest on its master." Under reduced motion every duration token is 0 ms and Play shows the
+end layer at once (Rule 17.4). Nothing moves on load and nothing loops (Rule 17.3). A state or mechanism player in
+chapter 17 still rests on its first frame. The player follows the engineer's
 contract (data-oa-motion on the root, data-oa-play and data-oa-pause on one button, data-oa-reset) and chapter 17's
 player in its parts and words: one Play and Pause button, Reset, Slow motion, a status line and a still view.
 
@@ -248,6 +251,14 @@ def lever_frames():
     return tracks, "".join(start_css)
 
 
+# The hinge's display master shows where its ground's content box is at least BIG_REM wide. The first frame's slides
+# run into the ground's padding (HINGE_CSS), so the box needs only the master's own width (round 2: was 41rem, which
+# held the slides as well).
+_WM_W64 = 64 * _vb(WM["display"])[2] / _vb(WM["display"])[3]
+BIG_REM = "37"
+assert _WM_W64 <= int(BIG_REM) * 16, (_WM_W64, BIG_REM)
+
+
 # ------------------------------------------------------------------------------------------------ the player
 def tyv(name, size=None):
     k = f"--oa-type-{name}"
@@ -275,12 +286,9 @@ PLAYER_CSS = (
     ".oai-mv-cell{display:grid;gap:8px;justify-items:start}"
     ".oai-mv-tag{" + tyv("caption") + "}"
     ".oai-mv-box{display:block;position:relative;line-height:0;overflow:visible}"
-    ".oai-mv-field{display:none;position:absolute;inset:0;border:var(--oa-border-width-hairline) dashed var(--oa-color-state-empty-edge)}"
-    '.oai-s-charcoal .oai-mv-field{border-color:var(--oa-color-border-hairline-on-charcoal)}'
-    '.oai-mv[data-frame="start"] .oai-mv-field{display:block}'
     ".oai-mv-box svg{display:block;overflow:visible}"
     ".oai-mv-big{display:none}"
-    "@container (min-width:41rem){.oai-mv-big{display:grid}}"
+    "@container (min-width:" + BIG_REM + "rem){.oai-mv-big{display:grid}}"
     # layers: the moving master until the end, then the master itself
     '.oai-mv [data-layer="end"]{display:none}'
     '.oai-mv[data-frame="end"] [data-layer="end"]{display:block}'
@@ -324,32 +332,33 @@ function ez(el,n){return getComputedStyle(el).getPropertyValue(n).trim()||"linea
 S.querySelectorAll("[data-oa-motion]").forEach(function(P){
 var M=JSON.parse(P.querySelector("script[data-motion]").textContent),B=P.querySelector("[data-oa-play]"),R=P.querySelector("[data-oa-reset]"),
 L=P.querySelector("input[data-slow]"),W=P.querySelector("[data-why]"),O=P.querySelector("[data-out]"),I=B.querySelectorAll("svg"),
-Y=B.querySelector("[data-word]"),A=[],run=0,st="start";
+Y=B.querySelector("[data-word]"),A=[],run=0,st="rest";
 function at(t){return (t.at||[]).reduce(function(s,a){return s+(a[0]==="-"?-1:1)*tok(P,a[1]);},0);}
 function total(){return M.tracks.reduce(function(s,t){return Math.max(s,at(t)+tok(P,t.dur));},0);}
 function off(el,y){if(!el)return;var lab=el.closest("label");if(y){el.setAttribute("aria-disabled","true");el.setAttribute("aria-describedby",W.id);if(lab)lab.setAttribute("data-off","");}
 else{el.removeAttribute("aria-disabled");el.removeAttribute("aria-describedby");if(lab)lab.removeAttribute("data-off");}}
 function show(){var z=total()===0,why=[];I[0].toggleAttribute("hidden",st==="running");I[1].toggleAttribute("hidden",st!=="running");
-Y.textContent=st==="running"?"Pause":(st==="end"?"Play again":"Play");off(R,st==="start");if(st==="start")why.push(M.why.start);
+Y.textContent=st==="running"?"Pause":(st==="end"?"Play again":"Play");var still=st==="rest"||st==="end";off(R,still);if(still)why.push(M.why.rest);
 if(L){off(L,z);if(z)why.push(M.why.slowDevice);}W.textContent=why.join(" ");}
 function frame(f){P.setAttribute("data-frame",f);}
-function end(){run++;A.forEach(function(a){a.cancel();});A=[];frame("end");st="end";O.textContent=M.words.end;show();}
-function reset(quiet){run++;A.forEach(function(a){a.cancel();});A=[];frame("start");st="start";if(!quiet)O.textContent=M.words.start;show();}
+function stop(){run++;A.forEach(function(a){a.cancel();});A=[];}
+function end(){stop();frame("end");st="end";O.textContent=M.words.end;show();}
+function reset(){stop();frame("end");st="rest";O.textContent=M.words.rest;show();}
 function play(){if(st==="paused"){A.forEach(function(a){a.play();});st="running";O.textContent=M.words.run;show();return;}
-if(st==="end")reset(true);if(total()===0){end();return;}
+stop();frame("start");if(total()===0){end();return;}
 frame("run");st="running";var my=++run,rate=L&&L.checked?0.1:1;A=[];
 M.tracks.forEach(function(t){P.querySelectorAll('[data-part="'+t.part+'"]').forEach(function(el){
 var a=el.animate(t.frames,{duration:tok(P,t.dur),easing:ez(P,t.ease),delay:at(t),fill:t.fill||"both"});a.playbackRate=rate;A.push(a);});});
 O.textContent=M.words.run;Promise.all(A.map(function(a){return a.finished;})).then(function(){if(my===run)end();},function(){});show();}
 function pause(){A.forEach(function(a){a.pause();});st="paused";O.textContent=M.words.pause;show();}
 B.addEventListener("click",function(){if(st==="running")pause();else play();});
-R.addEventListener("click",function(){if(R.getAttribute("aria-disabled")!=="true")reset(false);});
+R.addEventListener("click",function(){if(R.getAttribute("aria-disabled")!=="true")reset();});
 if(L){L.addEventListener("click",function(e){if(L.getAttribute("aria-disabled")==="true")e.preventDefault();});
 L.addEventListener("change",function(){var k=L.checked?0.1:1;A.forEach(function(a){a.updatePlaybackRate(k);});});}
 if(RM&&RM.addEventListener)RM.addEventListener("change",function(){if(total()===0&&(st==="running"||st==="paused"))end();else show();});
 show();});})();"""
 
-WHY = {"start": "Reset works once you press Play.",
+WHY = {"rest": "The mark is at rest on its master.",
        "slowDevice": "Your device asks for reduced motion, so Play shows the last frame at once and Slow motion has nothing to slow."}
 
 
@@ -361,15 +370,15 @@ def player(pid, *, title, kicker, grounds, words, frames, timeline, tracks, grou
            f'<button type="button" class="oai-mv-b" data-oa-reset="" aria-disabled="true" aria-describedby="{wid}">'
            f'{uicon("reset")}<span>Reset</span></button></div>')
     sl = '<label class="oai-mv-sl"><input type="checkbox" data-slow=""><span>Slow motion, one tenth speed</span></label>'
-    whyp = f'<p class="oai-mv-why" id="{wid}" data-why="">{E(WHY["start"])}</p>'
-    out = f'<p class="oai-mv-out" role="status" data-out="">{E(words["start"])}</p>'
+    whyp = f'<p class="oai-mv-why" id="{wid}" data-why="">{E(WHY["rest"])}</p>'
+    out = f'<p class="oai-mv-out" role="status" data-out="">{E(words["rest"])}</p>'
     fl = "".join(f'<li><p class="oai-mv-fh"><b>{E(t)}</b>, {msw(tm)}</p>{svg}<p class="oai-mv-fw">{E(w)}</p></li>' for t, tm, svg, w in frames)
     tl = "".join(f"<li>{E(x)}</li>" for x in timeline)
     sv = (f'<div class="oai-mv-sv"><p class="oai-mv-k">Still view</p><ol class="oai-mv-fr">{fl}</ol>'
           f'<ol class="oai-mv-tl">{tl}</ol></div>')
     data = json.dumps({"tracks": tracks, "words": words, "why": WHY}, ensure_ascii=False)
     head = f'<div><p class="oai-mv-k">{E(kicker)}</p><p class="oai-mv-ti">{E(title)}</p></div>'
-    return (f'<div class="oai-mv" data-oa-motion="" data-frame="start">{head}'
+    return (f'<div class="oai-mv" data-oa-motion="" data-oa-rest="master" data-frame="end">{head}'
             f'<div class="oai-mv-grounds">{grounds}</div>{out}{ctl}{sl}{whyp}{sv}'
             f'<script type="application/json" data-motion="">{data}</script></div>')
 
@@ -380,21 +389,26 @@ def ground(surface, cells):
             f'<div class="oai-mv-row">{cells}</div></div>')
 
 
-def cell(run_svg, end_mark, label, pad=0, big=False, field=False):
-    """One size of a mark: the moving master and the master itself in one place, padded for the first frame's slide.
-    field: a dashed square where the mark will stand, drawn in the first frame only, so an empty first frame still
-    shows its place (it is no part of the mark)."""
-    st = f' style="padding:0 {pad}px"' if pad else ""
-    fl = '<span class="oai-mv-field" aria-hidden="true"></span>' if field else ""
-    return (f'<div class="oai-mv-cell{" oai-mv-big" if big else ""}"><div class="oai-mv-box"{st}>{fl}'
+def cell(run_svg, end_mark, label, big=False):
+    """One size of a mark: the moving master and the master itself in one place, with the master's left edge on its
+    label's (CD-S4). A first frame that slides outward runs into the ground's padding (HINGE_CSS)."""
+    return (f'<div class="oai-mv-cell{" oai-mv-big" if big else ""}"><div class="oai-mv-box">'
             f'<div data-layer="run">{run_svg}</div><div data-layer="end">{end_mark}</div></div>'
             f'<span class="oai-mv-tag">{E(label)}</span></div>')
 
 
 # ------------------------------------------------------------------------------------------------ 17.6: the hinge
-HINGE_WORDS = {"start": "First frame: OATH and ACTION stand apart, with no ampersand between them.",
+HINGE_WORDS = {"rest": "At rest: the wordmark, OATH & ACTION, as its master draws it.",
+               "start": "First frame: OATH and ACTION stand apart, with no ampersand between them.",
                "end": "Last frame: the wordmark, OATH & ACTION, as its master draws it.",
                "run": "Playing.", "pause": "Paused."}
+# The master rests on its label's left edge (CD-S4), so the first frame's slide runs outward into the ground's padding:
+# 40 px (oa.space.500) each side holds the largest slide with 8 px to spare. The display master's cell starts its own
+# row, so no slide meets the next cell's.
+HINGE_PAD = 40
+assert max(d for _, _, _, d, _ in HINGE_SIZES) + 8 <= HINGE_PAD
+HINGE_CSS = (".oai-mv-ground{padding:var(--oa-space-300) var(--oa-space-500)}"
+             ".oai-mv-big{flex-basis:100%}")
 
 
 def _hinge_still(sfx, rel, h, d, state):
@@ -409,7 +423,7 @@ def s_17_hinge_correct():
     tracks, css = hinge_frames()
     cells = {}
     for s in ("newsprint", "charcoal"):
-        cells[s] = "".join(cell(hinge_layer(rel, h, s, sfx), mark(rel, h=h, surface=s, decorative=True), lab, pad=d, big=sfx != "24")
+        cells[s] = "".join(cell(hinge_layer(rel, h, s, sfx), mark(rel, h=h, surface=s, decorative=True), lab, big=sfx != "24")
                            for sfx, rel, h, d, lab in HINGE_SIZES)
     grounds = ground("newsprint", cells["newsprint"]) + ground("charcoal", cells["charcoal"])
     sfx, rel, h, d, _ = HINGE_SIZES[0]
@@ -427,25 +441,29 @@ def s_17_hinge_correct():
         f"{msw(HINGE)}, the hinge duration: at rest on the master."]
     body = player("oai-hinge", title="The hinge", kicker=f"The wordmark, {HINGE} ms", grounds=grounds, words=HINGE_WORDS, frames=frames,
                   timeline=timeline, tracks=tracks, group="Play the hinge", start_css=css)
-    alt = (f"A live player for the hinge, the wordmark's own motion, on Newsprint and on Charcoal. At the first frame "
-           f"OATH and ACTION stand apart with no ampersand between them. Play slides OATH and ACTION toward each other "
-           f"over {SLOW} ms; the gap holds, then the red ampersand lands in it, from {round(LAND_FROM * 100)} percent of "
-           f"its size to its true size, and comes to rest at {HINGE} ms on the wordmark's master. The wordmark plays "
-           f"from its 24 pixel master at 24 pixels, and on a wide screen from its display master at 64 pixels tall as "
-           f"well. One button plays and pauses, Reset returns to the first frame, Slow motion plays at one tenth speed, "
-           f"and a status line says each frame in words. The still view draws the first frame, the words in place and "
-           f"the last frame, and lists each step with its time.")
-    return rec("s-17-hinge-correct", "17.6", None, alt, PLAYER_JS_WRAP(body), css=PLAYER_CSS + css, interactive=True,
-               caption=(f"Live. Press Play, and OATH and ACTION settle into place over {msw(SLOW)}, then the ampersand "
-                        f"lands between them and comes to rest at {msw(HINGE)}, on the wordmark’s master. The last frame "
-                        "is the master itself, at 24 px and, on a wide screen, at 64 px."),
+    alt = (f"A live player for the hinge, the wordmark's own motion, on Newsprint and on Charcoal. At rest it shows the "
+           f"wordmark's master, OATH & ACTION with its red ampersand, from its 24 pixel master at 24 pixels, and on a "
+           f"wide screen from its display master at 64 pixels tall as well. Play steps to the first frame, where OATH and "
+           f"ACTION stand apart with no ampersand between them, then slides them toward each other over {SLOW} ms; the "
+           f"gap holds, then the ampersand lands in it, from {round(LAND_FROM * 100)} percent of its size to its true "
+           f"size, and comes to rest at {HINGE} ms on the master. One button plays and pauses, Reset returns to the "
+           f"master, Slow motion plays at one tenth speed, and a status line says each frame in words. The still view "
+           f"draws the first frame, the words in place and the last frame, and lists each step with its time.")
+    return rec("s-17-hinge-correct", "17.6", None, alt, PLAYER_JS_WRAP(body), css=PLAYER_CSS + HINGE_CSS + css, interactive=True,
+               caption=(f"Live, at rest on the wordmark’s master. Press Play, and OATH and ACTION start apart, settle into "
+                        f"place over {msw(SLOW)}, then the ampersand lands between them and comes to rest at "
+                        f"{msw(HINGE)}, on the master again. The master stands at 24 px and, on a wide screen, at 64 px."),
                notes=(f"Rule 17.6, the hinge (oa.motion.duration.hinge, {HINGE} ms). The moving layer is each master's own "
                       "elements, inlined: the letter path split by position into OATH (six subpaths) and ACTION (eight), "
                       "each subpath's bytes unchanged, and B's path as the file draws it. The end layer is the master "
                       "placed by reference, so the last frame is the master itself. Timing read from tokens.css at the "
                       f"press: slide {SLOW} ms, standard easing; B lands at hinge minus standard, {HINGE_B_AT} ms, over "
                       f"{STD} ms with the enter easing, from {round(LAND_FROM * 100)} percent (chapter 17's land). The "
-                      "first frame's slides are whole pixels on screen. Written by stage_c_identity_ch17.py."))
+                      "first frame's slides are whole pixels on screen. Round 2 fix pass (CD-M1, CD-S4, call 5): the "
+                      "player rests on the master (data-frame end, data-oa-rest master), Play steps to the first frame "
+                      "and runs to the master, Reset returns to the master and is unavailable at rest; each master's left "
+                      f"edge sits on its label's, and the first frame slides outward into the ground's {HINGE_PAD} px "
+                      "padding. Written by stage_c_identity_ch17.py."))
 
 
 def PLAYER_JS_WRAP(body):
@@ -453,7 +471,9 @@ def PLAYER_JS_WRAP(body):
 
 
 # ------------------------------------------------------------------------------------------------ 17.6: the lever
-LEVER_WORDS = {"start": "First frame: the field is empty; a dashed square marks where the lockmark will stand.",
+LEVER_WORDS = {"rest": "At rest: the lockmark as its master draws it, nine nodes joined by their links, with the red "
+                       "lever at bottom right.",
+               "start": "First frame: the field is empty.",
                "end": "Last frame: the lockmark as its master draws it, nine nodes joined by their links, with the red "
                       "lever at bottom right.",
                "run": "Playing.", "pause": "Paused."}
@@ -472,7 +492,7 @@ def s_17_lever_correct():
     tracks, css = lever_frames()
     cells = {}
     for s in ("newsprint", "charcoal"):
-        cells[s] = "".join(cell(lever_layer(rel, h, s, sfx), mark(rel, h=h, surface=s, decorative=True), lab, field=True)
+        cells[s] = "".join(cell(lever_layer(rel, h, s, sfx), mark(rel, h=h, surface=s, decorative=True), lab)
                            for sfx, rel, h, lab in LEVER_SIZES)
     grounds = ground("newsprint", cells["newsprint"]) + ground("charcoal", cells["charcoal"])
     sfx, rel, h, _ = LEVER_SIZES[0]
@@ -489,24 +509,28 @@ def s_17_lever_correct():
     body = player("oai-lever", title="The lever landing", kicker=f"{LEVER} ms, on request", grounds=grounds, words=LEVER_WORDS,
                   frames=frames, timeline=timeline, tracks=tracks, group="Play the lever landing", start_css=css)
     alt = (f"A live player for the lever landing, the lockmark's own motion, on Newsprint and on Charcoal, at 48 pixels "
-           f"from the 48 pixel master and at 120 pixels from the display master. At the first frame the field is empty, "
-           f"with a dashed square where each lockmark will stand. "
-           f"Play draws the six links from the top left over {STD} ms; one stagger later the eight nodes land together "
-           f"from {round(LAND_FROM * 100)} percent of their size; the red lever lands last, at bottom right, and comes to "
-           f"rest at {LEVER} ms on the lockmark's master. One button plays and pauses, Reset returns to the first frame, "
-           f"Slow motion plays at one tenth speed, and a status line says each frame in words. The still view draws the "
-           f"empty field, the links drawn and the last frame, and lists each step with its time.")
+           f"from the 48 pixel master and at 120 pixels from the display master. At rest it shows the lockmark's masters. "
+           f"Play steps to the first frame, an empty field, then draws the six links from the top left over {STD} ms; one "
+           f"stagger later the eight nodes land together from {round(LAND_FROM * 100)} percent of their size; the red "
+           f"lever lands last, at bottom right, and comes to rest at {LEVER} ms on the master. One button plays and "
+           f"pauses, Reset returns to the master, Slow motion plays at one tenth speed, and a status line says each frame "
+           f"in words. The still view draws the empty field, the links drawn and the last frame, and lists each step with "
+           f"its time.")
     return rec("s-17-lever-correct", "17.6", None, alt, PLAYER_JS_WRAP(body), css=PLAYER_CSS + css, interactive=True,
                label="The lockmark’s motion",
-               caption=(f"Live. Press Play, and the lockmark’s links draw from the top left, its eight nodes land "
-                        f"together, and the lever lands last, coming to rest at {msw(LEVER)} on the master. The last "
-                        "frame is the master itself: the 48 px master at 48 px, and the display master at 120 px."),
+               caption=(f"Live, at rest on the lockmark’s masters. Press Play, and the links draw from the top left, "
+                        f"the eight nodes land together, and the lever lands last, coming to rest at {msw(LEVER)} on the "
+                        "master again: the 48 px master at 48 px, and the display master at 120 px."),
                notes=(f"Rule 17.6, the lever landing (oa.motion.duration.lever, {LEVER} ms). The moving layer is each "
                       "master's own elements, inlined and named by part: three horizontal and three vertical links, "
                       "eight nodes and the lever. The end layer is the master placed by reference. Timing read from "
                       f"tokens.css at the press: links draw over {STD} ms from 0; nodes land at standard plus stagger, "
                       f"{LEVER_NODES_AT} ms; the lever lands at lever minus standard, {LEVER_AT} ms; each land {STD} ms "
-                      f"with the enter easing from {round(LAND_FROM * 100)} percent. Written by stage_c_identity_ch17.py."))
+                      f"with the enter easing from {round(LAND_FROM * 100)} percent. Round 2 fix pass (CD-M1, call 5): "
+                      "the player rests on the master, Play steps to the empty first frame and runs to the master, Reset "
+                      "returns to the master and is unavailable at rest, and the dashed squares that marked the empty "
+                      "first frame in the live player are gone; the still view keeps its first frame. Written by "
+                      "stage_c_identity_ch17.py."))
 
 
 # ------------------------------------------------------------------------------------------------ 17.6: the failure

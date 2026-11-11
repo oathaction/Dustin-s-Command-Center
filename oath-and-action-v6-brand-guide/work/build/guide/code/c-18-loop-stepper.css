@@ -4,7 +4,9 @@
 .oa-stepper [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
 .oa-stepper-k { margin: 0; font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing);
   text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
-.oa-stepper-title { margin: var(--oa-space-050) 0 var(--oa-space-150); font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); text-wrap: balance }
+.oa-stepper-title { margin: var(--oa-space-050) 0 var(--oa-space-100); font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); text-wrap: balance }
+/* The loop's title is its name, in quotation marks; the line under it gives the atlas's grade for the whole loop */
+.oa-stepper-grade { margin: 0 0 var(--oa-space-150); max-width: var(--oa-layout-measure-body-max); font: var(--oa-type-body-small) }
 .oa-stepper-status { margin: 0 0 var(--oa-space-150); font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }
 .oa-stepper-steps { margin: 0 0 var(--oa-space-200); padding: 0; list-style: none; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
 .oa-stepper-step { padding: var(--oa-space-100) var(--oa-space-150); border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
@@ -28,6 +30,7 @@
 .oa-stepper-icon--pause, .oa-stepper-play[data-oa-playing] .oa-stepper-icon--play { display: none }
 .oa-stepper-play[data-oa-playing] .oa-stepper-icon--pause { display: block }
 .oa-stepper-why { min-height: 1.6em; margin: var(--oa-space-100) 0 0; font: var(--oa-type-body-small); color: var(--oa-color-text-secondary) }
+.oa-stepper-source { margin: var(--oa-space-150) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
 
 @media (forced-colors: active) {
   .oa-stepper-controls button { border-color: ButtonText }

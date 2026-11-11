@@ -168,6 +168,24 @@ ctx.fig('overshoot of cubic-bezier(0.34, 1.56, 0.64, 1)', f'{OVER} percent past 
         'sampled at 2,001 points of the curve’s progress')
 
 
+def bezier_y_at(x1, y1, x2, y2, x):
+    """Progress of a CSS cubic-bezier easing at time fraction x, by bisection on the curve's own parameter."""
+    lo, hi = 0.0, 1.0
+    for _ in range(60):
+        t = (lo + hi) / 2
+        xt = 3 * (1 - t) ** 2 * t * x1 + 3 * (1 - t) * t ** 2 * x2 + t ** 3
+        lo, hi = (t, hi) if xt < x else (lo, t)
+    t = (lo + hi) / 2
+    return 3 * (1 - t) ** 2 * t * y1 + 3 * (1 - t) * t ** 2 * y2 + t ** 3
+
+
+# CD-S2: the failure of Rule 17.4 times a 400 ms draw with the browser's "ease-out", cubic-bezier(0, 0, 0.58, 1); at
+# 200 ms, halfway in time, the line is this far along
+EASE_OUT_HALF = bezier_y_at(0, 0, 0.58, 1, 0.5)
+ctx.fig('ease-out at half its time', f'{round(EASE_OUT_HALF * 100)} percent of the way',
+        'cubic-bezier(0, 0, 0.58, 1), the CSS keyword ease-out, solved for progress at time 0.5 by bisection')
+
+
 # ------------------------------------------------------------------------------------------------ small parts
 def ty(name):
     return ctx.ty(name)
@@ -290,13 +308,17 @@ def link_parts():
     return path, tip
 
 
-def mech_svg(state):
-    """A still frame of the link: 'start' (the cause alone) or 'end' (the link drawn, the effect reached)."""
+def mech_svg(state, frac=None):
+    """A still frame of the link: 'start' (the cause alone) or 'end' (the link drawn, the effect reached). With frac,
+    a 'start' frame draws that share of the link's line, as a frame part way through a draw does (CD-S2)."""
     path, tip = link_parts()
     a = f'<circle cx="{MA}" cy="{MCY}" r="{MR}" class="nd-on"/>'
     if state == 'start':
         b = f'<circle cx="{MB}" cy="{MCY}" r="{MR - 0.75:g}" class="nd-off"/>'
         ln = ''
+        if frac:
+            x1, x2 = MA + MR + 4, MB - MR - 4
+            ln = f'<path d="M{x1} {MCY}H{x1 + frac * (x2 - x1):.1f}" class="ln"/>'
     else:
         b = f'<circle cx="{MB}" cy="{MCY}" r="{MR}" class="nd-on"/>'
         ln = f'<path d="{path}" class="ln"/><path d="{tip}" class="ln"/>'
@@ -320,6 +342,16 @@ def mech_motion_svg():
 
 
 MECH_NAMES = '<p class="nn"><span>Wealth concentration</span><span>Money in politics</span></p>'
+# CD-S3: each name sits centered under its node wherever both fit on one line beside the drawing; below that width they
+# stagger, the first at the left and the second on its own line at the right. The drawing keeps its true size either
+# way. 4.5rem of room before the drawing holds half of "Wealth concentration" at the caption size, at 100 and 200 percent
+# text, so the wide layout needs 4.5rem + 264 px + 4.5rem, 25.5rem at 16 px.
+MECH_FW = '25.5rem'
+
+
+def mech_stage(svg):
+    """The drawing with its two node names, in the layout CD-S3 asks for."""
+    return f'<div class="lk"><div class="lki">{svg}{MECH_NAMES}</div></div>'
 
 # ------------------------------------------------------------------------------------------------ the three behaviors
 SW, SH = 150, 48
@@ -406,6 +438,15 @@ PLAYER_CSS = (
     '.dg .rg{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:3}'
     '.nn{display:flex;flex-wrap:wrap;justify-content:space-between;gap:0 16px;max-width:' + str(MW) + 'px;margin-top:6px;' + ty('caption') + '}'
     '.nn span:last-child{text-align:right;margin-left:auto}'
+    '.lk{container-type:inline-size}'
+    '@container (min-width:' + MECH_FW + '){.lki{width:' + str(MW) + 'px;margin-left:4.5rem}'
+    '.lki .nn{flex-wrap:nowrap;justify-content:flex-start;gap:0;max-width:none;padding-left:' + str(MA) + 'px}'
+    '.lki .nn span{flex:none;width:0;display:flex;justify-content:center;white-space:nowrap}'
+    '.lki .nn span:last-child{margin-left:' + str(MB - MA) + 'px;text-align:center}}'
+    '.gd{' + ty('bodySmall') + ';max-width:36rem;margin-top:4px}'
+    '.cn{position:relative}.cn > .nb{position:absolute;top:-12px;left:-12px;'
+    'box-shadow:0 0 0 2px var(--oa-color-surface)}'
+    '.row2.an{gap:20px 28px}'
     # frames: the data-when layers show by the player's data-frame (start, run or end)
     '[data-oa-motion]:not([data-frame="end"]) [data-when="end"]{display:none}'
     '[data-oa-motion][data-frame="end"] [data-when="start"]{display:none}'
@@ -461,9 +502,10 @@ show();});})();"""
 
 
 def player(pid, *, kicker, title, drawing, below='', words, frames, timeline, motion, why, slow=True, preview=False,
-           group, static=False, fw=None):
+           group, static=False, fw=None, sub=None):
     """One motion player. static=True draws the same parts as a picture (no controls, no script, no data-oa-motion),
-    with numbered badges for the anatomy plate of Rule 17.3."""
+    with numbered badges for the anatomy plate of Rule 17.3, numbered top to bottom (CD-S1). sub is a line under the
+    title, such as a loop's evidence grade."""
     wid = f'{pid}-why'
     play_icons = uicon('play') + uicon('pause').replace('<svg ', '<svg hidden ', 1)
 
@@ -477,12 +519,14 @@ def player(pid, *, kicker, title, drawing, below='', words, frames, timeline, mo
     if kicker or title:
         k = f'<p class="k">{kicker}</p>' if kicker else ''
         t = f'<p class="ti">{title}</p>' if title else ''
-        head = f'<div>{k}{t}</div>'
+        g = f'<p class="gd">{sub}</p>' if sub else ''
+        head = f'<div>{k}{t}{g}</div>'
     stage = f'<div class="stg">{drawing}{below}</div>'
     out = f'<p class="out"{"" if static else " role=\"status\" data-out=\"\""}>{words["start"]}</p>'
     if static:
-        ctl = (f'<div class="row2"><span class="pair">{badge(2)}<span class="b">{play_icons}<span>Play</span></span></span>'
-               f'<span class="pair">{badge(3)}<span class="b" aria-disabled="true">{uicon("reset")}<span>Reset</span></span></span></div>')
+        # Play takes its number in the margin, as every other part does; Reset's sits off its top left corner (CD-S1)
+        ctl = row(3, f'<div class="row2 an"><span class="b">{play_icons}<span>Play</span></span>'
+                     f'<span class="b cn" aria-disabled="true">{badge(4)}{uicon("reset")}<span>Reset</span></span></div>')
         sl = (f'<p class="sl"><span class="cb" aria-hidden="true"></span>Slow motion, one tenth speed</p>' if slow else '')
         whyp = f'<p class="why">{why["start"]}</p>'
     else:
@@ -509,9 +553,9 @@ def player(pid, *, kicker, title, drawing, below='', words, frames, timeline, mo
                          'full': 'Your device sets no motion preference, so Play runs each motion.'})
         data = f'<script type="application/json" data-motion="">{json.dumps(m, ensure_ascii=False)}</script>'
     attrs = '' if static else ' data-oa-motion="" data-frame="start"'
-    parts = [head, row(1, stage), row(6, out), ctl]
+    parts = [head, row(1, stage), row(2, out), ctl]
     if static:
-        parts += [row(4, sl), row(5, whyp)]
+        parts += [row(5, sl), row(6, whyp)]
     else:
         parts += [sl, whyp]
     parts.append(row(7, sv))
@@ -702,6 +746,9 @@ SHEET_CSS = (':where(.ts p){margin:0}.ts{display:grid;gap:20px;max-width:44rem}'
              '.nm{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;' + ty('bodySmall') + '}'
              '.nm b{font-weight:700;font-variant-numeric:tabular-nums}'
              '.nm code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:0.875rem;overflow-wrap:anywhere}'
+             # CD-S5: a token name stays on one line wherever its row holds it, and breaks only where it cannot fit
+             '.ts .tk{white-space:nowrap;font-size:0.8125rem}.rows > li{container:tr / inline-size}.ez > li{container:te / inline-size}'
+             '@container tr (max-width:14.25rem){.ts .tk{white-space:normal}}@container te (max-width:13.25rem){.ts .tk{white-space:normal}}'
              '.jb{' + ty('caption') + ';color:var(--oa-color-text-secondary)}'
              '.trk{position:relative;height:10px;margin-top:6px;background:var(--oa-color-surface);'
              'border-left:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}'
@@ -714,7 +761,7 @@ SHEET_CSS = (':where(.ts p){margin:0}.ts{display:grid;gap:20px;max-width:44rem}'
              '.rl span{border-left:0}.rl span::before{content:"";position:absolute;top:0;left:50%;height:5px;'
              'border-left:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}'
              '.rl span:first-child::before{left:0}'
-             '.ez{list-style:none;margin:0;padding:0;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr))}'
+             '.ez{list-style:none;margin:0;padding:0;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,13.5rem),1fr))}'
              '.ez li{display:grid;gap:6px;align-content:start}'
              '.cv{display:block;overflow:visible}.cv .fr1{fill:none;stroke:var(--oa-color-border-hairline);stroke-width:1}'
              '.cv .cvl{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:2}'
@@ -739,13 +786,13 @@ EASE_ROWS = [
 
 def s17_2_correct():
     rows = ''.join(
-        f'<li><p class="nm"><b>{lab}, {ms(n)}{NB}ms</b><code>{tokcss(DUR[n] if n in DUR else "--oa-motion-duration-" + n)}</code></p>'
+        f'<li><p class="nm"><b>{lab}, {ms(n)}{NB}ms</b><code class="tk">{tokcss(DUR[n] if n in DUR else "--oa-motion-duration-" + n)}</code></p>'
         f'<p class="jb">{job}</p><div class="trk"><span class="bar" style="--v:{ms(n)}"></span></div></li>'
         for n, lab, job in DUR_ROWS)
     ticks = ''.join(f'<span style="--v:{t}">{t}{NB}ms</span>' for t in (0, 200, 400, 600))
     ez = ''.join(
         f'<li>{curve_svg(*bez(n))}<p class="nm"><b>{lab}</b></p><p class="cd">{bz(n)}</p>'
-        f'<p class="cd">{tokcss(EASE[n])}</p><p class="jb">{job}</p></li>' for n, lab, job in EASE_ROWS)
+        f'<p class="cd tk">{tokcss(EASE[n])}</p><p class="jb">{job}</p></li>' for n, lab, job in EASE_ROWS)
     html = (f'<style>{SHEET_CSS}</style><div class="ts">'
             f'<div><p class="k">Six durations, drawn to one scale</p></div><ul class="rows">{rows}</ul>'
             f'<div class="rl" aria-hidden="true">{ticks}</div>'
@@ -792,7 +839,11 @@ MECH_TIMELINE = [
     f'{ms_words(M_LAND_AT)}: the arrowhead and the second node land, over the standard {ms_words(STD)} with the enter easing.',
     f'{ms_words(M_END)}: at rest. Under reduced motion the last frame shows at 0{NB}ms.']
 MECH_KICK = 'From our systems atlas, Loop R1'
-MECH_TITLE = 'Wealth and political influence reinforce each other'
+# BE-M3 and the fix brief's call 4 (D2-1547): V7's title stays as the loop's name, in quotation marks, and the line under
+# it gives the loop's grade. The same words sit in chapter 18's two loop sets.
+MECH_TITLE = '“Wealth and political influence reinforce each other”'
+MECH_GRADE = ('Our atlas grades this loop plausible: its middle step is the least certain, and it runs only on issues '
+              'where large donors and middle-income voters want different things.')
 
 
 def mech_player(static):
@@ -801,20 +852,23 @@ def mech_player(static):
         track('tip', LAND_SHOW, 'standard', 'enter', ('standard', 'stagger'), fill='forwards'),
         track('land', LAND_SHOW, 'standard', 'enter', ('standard', 'stagger'), fill='forwards'),
     ]}
-    frames = [('First frame', 0, mech_svg('start'), MECH_WORDS['start'], MECH_NAMES),
-              ('Last frame', M_END, mech_svg('end'), MECH_WORDS['end'], MECH_NAMES)]
-    return player('p4', kicker=MECH_KICK, title=MECH_TITLE, drawing=mech_motion_svg() if not static else mech_svg('start'),
-                  below=MECH_NAMES, words=MECH_WORDS, frames=frames, timeline=MECH_TIMELINE, motion=motion, why=WHY,
-                  slow=True, preview=not static, group='Play the link', static=static)
+    frames = [('First frame', 0, mech_stage(mech_svg('start')), MECH_WORDS['start'], ''),
+              ('Last frame', M_END, mech_stage(mech_svg('end')), MECH_WORDS['end'], '')]
+    return player('p4', kicker=MECH_KICK, title=MECH_TITLE, sub=MECH_GRADE,
+                  drawing=mech_stage(mech_motion_svg() if not static else mech_svg('start')),
+                  words=MECH_WORDS, frames=frames, timeline=MECH_TIMELINE, motion=motion, why=WHY,
+                  slow=True, preview=not static, group='Play the link', static=static, fw=MECH_FW)
 
 
+# CD-S1: the key runs top to bottom, in the order the parts stand in the player.
 ANATOMY = [
-    'The stage, drawn at its first frame until a reader presses Play.',
+    'The stage. A player of a state or a mechanism, like this one, rests on its first frame until a reader presses '
+    'Play. A player of the wordmark or the lockmark rests on its master.',
+    'The status line, which says in words what the frame shows. A screen reader hears it when it changes.',
     'Play, one button that turns to Pause while the motion runs and to Play again at its end. Its icon and its word change together.',
-    'Reset, which returns to the first frame. At the first frame it is unavailable and keeps focus.',
+    'Reset, which returns the player to where it rests. At rest it is unavailable and keeps focus.',
     'Slow motion, which plays at one tenth speed, so Pause has time to work.',
     'The reason line, which says why a control is unavailable and what makes it available.',
-    'The status line, which says in words what the frame shows. A screen reader hears it when it changes.',
     'The still view: the first and last frames at true size, each with its time and its words, then each step of the motion in order.',
 ]
 
@@ -827,13 +881,15 @@ def s17_3_correct():
     key = ''.join(f'<li><span class="nb" aria-hidden="true">{i + 1}</span><span>{t}</span></li>' for i, t in enumerate(ANATOMY))
     html = (f'<style>{PLAYER_CSS}{css}</style><div class="anat">{mech_player(True)}'
             f'<ol class="key">{key}</ol></div>')
-    alt = ('The parts of a motion player, numbered 1 to 7, drawn from the player for Loop R1’s first link in Rule 17.4. '
-           '1, the stage at its first frame: two nodes, wealth concentration filled and money in politics empty. 2, '
-           'the Play button, which turns to Pause while the motion runs and to Play again at its end. 3, Reset, '
-           'unavailable at the first frame with a dashed edge. 4, Slow motion, a check box that plays at one tenth speed. '
-           '5, the reason line: “Reset works once you press Play.” 6, the status line, which '
-           'says what the frame shows. 7, the still view: the first and last frames with their times and words, and the '
-           'steps of the motion in order. A numbered key under the player says the same.')
+    alt = ('The parts of a motion player, numbered 1 to 7 from top to bottom, drawn from the player for Loop R1’s first '
+           f'link in Rule 17.4, under its heading, the loop’s name, {MECH_TITLE}, and the line “{MECH_GRADE}” '
+           '1, the stage at its first frame, where a player of a state or a mechanism rests: two nodes, wealth '
+           'concentration filled and money in politics empty. A player of the wordmark or the lockmark rests on its '
+           'master. 2, the status line, which says what the frame shows. 3, the Play button, which turns to Pause while '
+           'the motion runs and to Play again at its end. 4, Reset, unavailable at rest with a dashed edge, its number '
+           'set off its top left corner. 5, Slow motion, a check box that plays at one tenth speed. 6, the reason line: '
+           '“Reset works once you press Play.” 7, the still view: the first and last frames with their times and words, '
+           'and the steps of the motion in order. A numbered key under the player says the same.')
     return spec('s-17-3-correct', html, '17.3', alt, notes='A picture of the player, with no controls and no script: the '
                 'live player is s-17-4-correct.')
 
@@ -867,7 +923,8 @@ def s17_3_failure():
 def s17_4_correct():
     body = mech_player(False)
     alt = ('A live player for the first link of Loop R1 from our systems atlas, “Wealth and political influence reinforce '
-           'each other”. At the first frame the node for wealth concentration is filled and the node for money in '
+           f'each other”, with the line “{MECH_GRADE}” '
+           'At the first frame the node for wealth concentration is filled and the node for money in '
            f'politics is empty. Play draws the link from the first node to the second over {STD} ms, then the arrowhead '
            f'and the second node land, {M_END} ms in all, and the status line says “Last frame: wealth concentration '
            'raises money in politics.” A check box, Preview reduced motion, sets this player’s motion tokens to 0 '
@@ -882,8 +939,10 @@ def s17_4_correct():
 
 def s17_4_failure():
     css, band = fail_band()
-    lis = ''.join(f'<li><p class="tm">{t}</p>{mech_svg(s)}</li>' for t, s in (
-        ('0 ms', 'start'), ('200 ms', 'start'), ('400 ms', 'end')))
+    pc = round(EASE_OUT_HALF * 100)
+    lis = ''.join(f'<li><p class="tm">{t}</p>{mech_svg(s, fr)}<p class="nt">{w}</p></li>' for t, s, fr, w in (
+        ('0 ms', 'start', None, 'Not started'), ('200 ms', 'start', EASE_OUT_HALF, f'{pc} percent drawn'),
+        ('400 ms', 'end', None, 'Reaches the second node')))
     lis = lis.replace(' ms<', NB + 'ms<')
     css2 = ('.fs3{grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr))}'
             '.fs3 li{padding:10px 0 0;border:0;border-top:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}') + ('.dg .nd-on{fill:var(--oa-color-graphic-essential)}'
@@ -897,8 +956,9 @@ def s17_4_failure():
             '<p class="nt">The script carries its own 400 ms and never reads the tokens, so a reader who asked for '
             'reduced motion still watches the link draw for 400 ms.</p></div>')
     alt = ('Failure case: do not publish. A line of script, link.animate(frames, { duration: 400, easing: “ease-out” }), '
-           'over three still frames of Loop R1’s first link with reduced motion on: at 0 ms and 200 ms the link is '
-           'still drawing, and only at 400 ms does it reach the second node. A note says the script carries its own 400 '
+           'over three still frames of Loop R1’s first link with reduced motion on: at 0 ms the link has not started, at '
+           f'200 ms it is {round(EASE_OUT_HALF * 100)} percent drawn, and only at 400 ms does it reach the second node. '
+           'A note says the script carries its own 400 '
            'ms and never reads the tokens.')
     return spec('s-17-4-failure', html, '17.4', alt, notes='Picture of a fault: a script timing that the reduced '
                 'motion setting cannot reach.')
@@ -1325,6 +1385,67 @@ def s17_12_failure():
     return spec('s-17-12-failure', html, '17.12', alt)
 
 
+# ---- the chapter's opener (the fix brief's call 8, CD-S18, D2-1550): the ten states strip
+def s17_opener():
+    """The ten states of Rule 17.8 in the order of its plate, one small sample each at true size, on the page's own
+    ground. A picture that flows with the column: five a row from 40rem, two on a phone, one at large text sizes. Every
+    color is a short name, so the strip follows the page's theme. Under 6 KB (D2-1550)."""
+    def lab(t):
+        return f'font:var(--oa-type-{t});letter-spacing:var(--oa-type-{t}-letter-spacing);text-transform:var(--oa-type-{t}-text-transform)'
+    css = ('.op{container-type:inline-size}:where(.op p){margin:0}'
+           '.g{list-style:none;margin:0;padding:0;display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}'
+           '@container (min-width:15rem){.g{grid-template-columns:repeat(2,minmax(0,1fr))}}'
+           '@container (min-width:40rem){.g{grid-template-columns:repeat(5,minmax(0,1fr))}}'
+           '.g li{display:grid;gap:8px;align-content:start;justify-items:start;min-width:0}'
+           '.n{' + lab('label') + ';color:var(--oa-color-text-secondary)}'
+           '.s{' + lab('caption') + ';color:var(--oa-color-text-primary)}'
+           '.b{display:inline-flex;align-items:center;gap:6px;min-height:var(--oa-size-target-touch);padding:0 14px;'
+           'border:var(--oa-border-width-hairline) solid var(--oa-color-border-strong);background:var(--oa-color-surface);' + lab('ui') + '}'
+           '.b svg,.m svg{flex:none;display:block}'
+           '.hv{border-width:var(--oa-border-width-rule);padding:0 13px}'
+           '.fo{outline:var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);outline-offset:var(--oa-border-focus-offset)}'
+           '.ds{color:var(--oa-component-button-disabled-label);border-style:dashed;border-color:var(--oa-component-button-disabled-edge)}'
+           '.on{border-width:var(--oa-border-width-rule);font-weight:700;padding:0 13px 0 7px}'
+           '.mu{display:flex;gap:8px;align-items:center;color:var(--oa-color-state-muted-text)}'
+           '.mu circle{fill:none;stroke:var(--oa-color-state-muted-mark);stroke-width:1.5}'
+           '.ld{display:grid;gap:6px;color:var(--oa-color-state-loading-text)}'
+           '.ld line{stroke:var(--oa-color-state-loading-mark);stroke-width:1.5}'
+           '.m{display:flex;gap:6px;align-items:flex-start;padding:6px 8px}.m b{font-weight:700}'
+           '.wn{border-left:var(--oa-border-width-bar) solid var(--oa-color-state-warning-mark);color:var(--oa-color-state-warning-text)}'
+           '.er{border-left:var(--oa-border-width-bar) solid var(--oa-color-state-error-mark);'
+           'background-color:var(--oa-color-state-error-band);color:var(--oa-color-state-error-text)}'
+           '.ok{color:var(--oa-color-state-success-text)}.ok svg{color:var(--oa-color-state-success-mark)}'
+           '.em{padding:8px 12px;border:var(--oa-border-width-hairline) dashed var(--oa-color-state-empty-edge);'
+           'color:var(--oa-color-state-empty-text)}')
+    cells = [
+        ('Muted', '<p class="s mu"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">'
+                  '<circle cx="8" cy="8" r="5.25"/></svg>Outside this view</p>'),
+        ('Disabled', '<span class="b ds">Download</span>'),
+        ('Hover', '<span class="b hv">Save</span>'),
+        ('Focus', '<span class="b fo">Save</span>'),
+        ('Loading', '<p class="s ld"><svg width="96" height="8" viewBox="0 0 96 8" aria-hidden="true" focusable="false">'
+                    '<line x1="0" y1="4" x2="96" y2="4"/></svg>Loading the tracker</p>'),
+        ('Selected', f'<span class="b on">{check()}Housing</span>'),
+        ('Warning', f'<p class="s m wn">{uicon("warning")}<span><b>Warning:</b> Checked in October</span></p>'),
+        ('Error', f'<p class="s m er" {RED_ERR}>{uicon("error")}<span><b>Error:</b> Enter a date</span></p>'),
+        ('Empty', '<p class="s em">No symbol matches</p>'),
+        ('Success', f'<p class="s m ok">{uicon("success")}<span>Saved</span></p>'),
+    ]
+    lis = ''.join(f'<li><p class="n">{n}</p>{x}</li>' for n, x in cells)
+    html = f'<style>{css}</style><div class="op"><ul class="g">{lis}</ul></div>'
+    alt = ('The ten states in a strip, each named above a small sample at true size: muted, “Outside this view” in '
+           'secondary words with an outline dot; disabled, a Download button with a dashed edge; hover, a Save button '
+           'with a 2 px edge; focus, a Save button with a 2 px ring 2 px outside it; loading, a still line and “Loading '
+           'the tracker”; selected, a Housing chip with a check, bold words and a 2 px edge; warning, the warning mark '
+           'and “Warning: Checked in October” beside a 4 px bar in ink; error, the error mark and “Error: Enter a date” '
+           'beside a 4 px Pillar Red bar; empty, “No symbol matches” in a dashed box; success, the success mark and '
+           '“Saved”. Rule 17.8 draws each one in full.')
+    return spec('s-17-opener', html, None, alt,
+                notes='Chapter 17’s opener (call 8 of the round 2 fix brief, D2-1134, D2-1550): the ten states of Rule '
+                      '17.8 in its order, flowing with the column; short names only, so it follows the page’s theme. '
+                      'The error’s red bar is the strip’s one working red.')
+
+
 # ------------------------------------------------------------------------------------------------ the identity slots
 def identity_slots():
     """The identity designer's Rule 17.6 specimens, if any have landed (see the module docstring)."""
@@ -1364,6 +1485,7 @@ def build_chapter():
     s17_10_correct(); s17_10_failure()
     s17_11_correct(); s17_11_failure()
     s17_12_correct(); s17_12_failure()
+    s17_opener()
 
     def idblock(kind, default_sid, default_cap):
         if kind in slots:
@@ -1468,8 +1590,11 @@ def build_chapter():
         'rule': [
             'A motion starts when a reader presses Play, and never as the page opens, as it scrolls into view or on a '
             'timer. It runs once and stops on its last frame. One button carries Play and Pause and '
-            'changes its icon and its word together, then reads Play again at the end. Reset returns to the first frame; '
-            'at the first frame it is unavailable and says why.',
+            'changes its icon and its word together, then reads Play again at the end.',
+            'A player of a state or a mechanism rests on its first frame, where the change starts. For the wordmark or '
+            'the lockmark, the player rests on the master itself, so a reader who never presses Play still sees the '
+            'whole mark; Play then steps to the first frame and runs to the master. Reset returns either kind to where '
+            'it rests, and at rest Reset is unavailable and says why.',
             'Beside every player sits its still view: the first and last frames at true size, each with its time and the '
             'words for what it shows, then each step of the motion in order. A status line says the same words when the '
             'frame changes, so every fact the motion shows reaches a reader who prints the page or listens with a screen '
@@ -1482,15 +1607,17 @@ def build_chapter():
             'motion stretches a motion to a few seconds, which gives Pause time to work and lets a reader see the easing.'],
             'basis': 'WCAG 2.2 SC 2.2.2; design judgment'},
         'correct': {'specimen': 's-17-3-correct', 'caption':
-                    'The parts of a player, numbered, drawn from the live player in Rule 17.4. Each part has its words, '
-                    'and the controls stand 44 px tall.'},
+                    'The parts of a player, numbered from top to bottom, drawn from the live player in Rule 17.4. It shows '
+                    'a mechanism, so it rests on its first frame. Each part has its words, and the controls stand 44 px '
+                    'tall.'},
         'failure': {'specimen': 's-17-3-failure', 'caption':
                     '<strong>Fails Rule 17.3.</strong> The bill moves as the page opens and again every three seconds, so it '
                     'seems to go back and forth between two steps. Its one button has an icon and no word, and there is '
                     'no Pause, Reset or still view.'},
         'specs': [
             {'label': 'Play and Pause', 'value': 'One button; its icon and word change together: Play, Pause, Play again'},
-            {'label': 'Reset', 'value': 'Returns to the first frame; unavailable there, with its reason'},
+            {'label': 'At rest', 'value': 'A state or a mechanism: its first frame. The wordmark or the lockmark: its master'},
+            {'label': 'Reset', 'value': 'Returns the player to where it rests; unavailable at rest, with its reason'},
             {'label': 'Slow motion', 'value': 'A check box that plays at one tenth speed; unavailable under reduced motion, with its reason'},
             {'label': 'Still view', 'value': 'First and last frames at true size, each with its time and words, then the steps in order'},
             {'label': 'Status line', 'value': 'Polite, so a screen reader waits until it finishes speaking; it says Playing, Paused and the words of the frame the motion stops on'},
@@ -1502,7 +1629,8 @@ def build_chapter():
             'Mark the player’s root <code>data-oa-motion</code>, its one Play and Pause button <code>data-oa-play '
             'data-oa-pause</code> and Reset <code>data-oa-reset</code>; the guide’s own check looks for them. Start a '
             'motion from a click handler and nowhere else.',
-            'Leave the last frame on screen when the motion ends. At rest the player draws the still view’s last frame.'],
+            'Leave the last frame on screen when the motion ends. On load, draw a state or mechanism player at its '
+            'first frame, and a player of the wordmark or the lockmark at its master.'],
     })
 
     rules.append({
@@ -1601,6 +1729,9 @@ def build_chapter():
             f'(Rule 17.3). The hinge plays over {ms_words(HINGE)}: OATH and ACTION settle into place, then the ampersand '
             f'lands between them. The lever plays over {ms_words(LEVER)} in the lockmark: its links draw, its nodes land '
             'together and the lever lands last, at bottom right.',
+            'Each player rests on the master itself (Rule 17.3). Play steps to the first frame and runs to the master, '
+            'and Reset returns to the master; at rest Reset is unavailable, with the line “The mark is at rest on its '
+            'master.”',
             'Each is built from slide, draw and land (Rule 17.5), and each ends on a last frame that matches the approved '
             'master for its size, pixel for pixel. The ampersand and the lever keep signature red in every frame, and '
             'signature red never counts as a view’s working red (Rule 05.3).'],
@@ -1622,6 +1753,7 @@ def build_chapter():
                                         f'{ms_words(LEVER - STD)} and comes to rest at {ms_words(LEVER)}',
              'token': 'oa.motion.duration.lever'},
             {'label': 'Built from', 'value': 'Slide, draw and land, with the enter easing for each arrival'},
+            {'label': 'At rest', 'value': 'The master; Reset unavailable, with “The mark is at rest on its master.”'},
             {'label': 'Last frame', 'value': 'The approved master for the size shown, pixel for pixel'},
             {'label': 'Reduced motion', 'value': 'The master at once (Rule 17.4)'},
         ],
@@ -1696,7 +1828,7 @@ def build_chapter():
                     'The ten states, each on Newsprint and on Charcoal, with its cue in words. Each cell sets its own theme, '
                     'and every color in it comes from a short name that follows the theme.'},
         'failure': {'specimen': 's-17-8-failure', 'caption':
-                    f'<strong>Fails WCAG 2.2 SC 1.4.1.</strong> Four states by color alone. The red words measure {F["red_text_n"]} '
+                    f'<strong>Fails Rule 17.8.</strong> Four states by color alone. The red words measure {F["red_text_n"]} '
                     f'to 1 and the Verdigris words {F["verd_text_n"]}, and a reader who sees neither color gets no state '
                     f'at all; the faded button falls to {F["faded_n"]} and gives no reason.'},
         'specs': [
@@ -1734,10 +1866,10 @@ def build_chapter():
         'id': '17.9',
         'title': 'Show hover with an underline or a thicker edge, and focus with a 2 px ring and its gap.',
         'rule': [
-            'Hover underlines a label, grows a link’s underline from 1 to 2 px, or thickens the edge of a quiet control, '
-            'its word in ink inside a 1 px edge, to 2 px. A filled button also steps its fill one shade. Hover never '
-            'draws an inset '
-            'shadow, which forced colors removes, and never moves layout.',
+            'Hover underlines a label, grows a link’s underline from 1 to 2 px, or thickens a quiet control’s 1 px edge '
+            'to 2 px. A quiet control is a button drawn as its word in ink inside that edge, on the page’s own ground. A '
+            'filled button also steps its fill one shade. Hover never draws an inset shadow, which forced colors removes, '
+            'and never moves layout.',
             'Focus draws a 2 px ring 2 px outside the control, at once: Verdigris on Newsprint and White, '
             f'Newsprint on Charcoal and Prussian. On Charcoal the ring around a Newsprint button measures '
             f'{F["ring_on_fill_c"]} to 1 against its fill, so the 2 px gap of Charcoal between them shows the '
@@ -1746,7 +1878,7 @@ def build_chapter():
                    'oa.color.focus.ring.onCharcoal', 'oa.border.width.underlineHover'],
         'why': {'text': [
             'WCAG 2.2 success criterion 2.4.7 Focus Visible asks that keyboard focus always show, and 2.4.11 Focus Not '
-            'Obscured (Minimum) asks that content we place never hide it. A ring outside the control, in a color measured '
+            'Obscured (Minimum) asks that content we place never hide it entirely. A ring outside the control, in a color measured '
             'on the surface, shows on every control, filled or not. An underline and an edge are lines in the text’s '
             'own ink, so they stay when forced colors repaints the page.'],
             'basis': 'WCAG 2.2 SC 2.4.7 and 2.4.11'},
@@ -1905,6 +2037,7 @@ def build_chapter():
         'anchor': 'motion-and-states',
         'title': 'Motion and states',
         'part': 'Behavior',
+        'opener': 's-17-opener',
         'instruction': 'Keep motion under the reader’s control, and give every state visible text.',
         'intro': [
             'Motion here means a mark that moves on screen to show a change, such as a bill reaching its next step or a '
@@ -1943,8 +2076,8 @@ def build_chapter():
             '2026, retrieved November 10, 2026. The first version of each browser with full support for '
             'prefers-reduced-motion, behind Rule 17.4.',
             'Source: Oath & Action’s systems atlas, Who Do They Answer To?, Loop R1, “Wealth and political influence '
-            'reinforce each other”, snapshot of October 15, 2026. Its first link and its sentence, behind the player in '
-            'Rule 17.4.',
+            'reinforce each other”, graded plausible, snapshot of October 15, 2026. Its first link, graded well '
+            'supported, and its sentence, behind the players in Rules 17.3 and 17.4.',
         ],
     }
     return ch
@@ -1962,6 +2095,8 @@ def main():
             used.add(rr[k]['specimen'])
     for x in ch['extras']:
         used.add(x['specimen'])
+    if ch.get('opener'):
+        used.add(ch['opener'])
     ours = set(ctx.specs)
     id_used = {s for s in used if re.match(r'^s-17-(hinge|lever)-', s)}
     missing = used - ours - id_used

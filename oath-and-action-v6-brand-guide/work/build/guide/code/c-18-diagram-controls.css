@@ -4,7 +4,9 @@
 .oa-diagram [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
 .oa-diagram-k { margin: 0; font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing);
   text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
-.oa-diagram-title { margin: var(--oa-space-050) 0 var(--oa-space-150); font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); text-wrap: balance }
+.oa-diagram-title { margin: var(--oa-space-050) 0 var(--oa-space-100); font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); text-wrap: balance }
+/* The loop's title is its name, in quotation marks; the line under it gives the atlas's grade for the whole loop */
+.oa-diagram-grade { margin: 0 0 var(--oa-space-150); max-width: var(--oa-layout-measure-body-max); font: var(--oa-type-body-small) }
 /* The drawing: each part a box, each line a word, the loop closing back to the first part */
 .oa-diagram-drawing { display: flex; flex-direction: column; align-items: flex-start; margin: 0; padding: 0 0 0 var(--oa-space-150); list-style: none;
   border-left: var(--oa-border-width-rule) solid var(--oa-color-graphic-essential) }
@@ -49,6 +51,7 @@
 .oa-diagram-chevron { transition: transform var(--oa-motion-duration-standard) var(--oa-motion-easing-standard) }
 .oa-diagram-words[open] .oa-diagram-chevron { transform: rotate(180deg) }
 .oa-diagram-lines { margin: 0 0 var(--oa-space-150); padding-left: var(--oa-space-300); font: var(--oa-type-body-small) }
+.oa-diagram-source { margin: var(--oa-space-150) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
 /* Full size: a modal dialog that covers the page, on the ground of the theme it opens in */
 .oa-diagram-dialog { box-sizing: border-box; width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0 var(--oa-space-200) var(--oa-space-300);
   border: 0; background: var(--oa-color-surface); color: var(--oa-color-text-primary); font: var(--oa-type-body); overflow: auto }

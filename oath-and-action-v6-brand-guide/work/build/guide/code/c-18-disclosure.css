@@ -23,8 +23,9 @@
 .oa-disclosure-body { padding: 0 0 var(--oa-space-200) }
 .oa-disclosure-body[hidden] { display: none }
 .oa-disclosure-body p { margin: 0; max-width: var(--oa-layout-measure-body-max); font: var(--oa-type-body-small) }
-.oa-disclosure-illus { margin-right: var(--oa-space-050); padding: 0 var(--oa-space-050); border: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
-  font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); color: var(--oa-color-text-secondary) }
+.oa-disclosure-body p + p { margin-top: var(--oa-space-100) }
+/* A source line under real content: where it comes from and when */
+.oa-disclosure-body .oa-disclosure-source { font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
 
 @media (forced-colors: active) {
   .oa-disclosure-summary, .oa-disclosure-stack { border-color: CanvasText }

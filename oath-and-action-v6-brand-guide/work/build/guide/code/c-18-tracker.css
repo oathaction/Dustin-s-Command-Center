@@ -2,9 +2,10 @@
    polite line, and the take-part mark in the working red. Under 34.5rem the step names move into a key. */
 .oa-tracker { container-type: inline-size; font: var(--oa-type-body); color: var(--oa-color-text-primary) }
 .oa-tracker [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
-.oa-tracker-illus { display: inline-block; margin: 0 0 var(--oa-space-100); padding: 0 var(--oa-space-050);
-  border: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline); font: var(--oa-type-label);
-  letter-spacing: var(--oa-type-label-letter-spacing); color: var(--oa-color-text-secondary) }
+/* Illustrative: the label at the head of an invented piece, in the guide's one style (uppercase, a 1 px edge in the ink) */
+.oa-tracker-illus { display: inline-block; margin: 0 0 var(--oa-space-100); padding: 0 .4em; border: var(--oa-border-width-hairline) solid currentColor;
+  color: var(--oa-color-text-primary); font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform); line-height: 1.5 }
 .oa-tracker-card { padding: var(--oa-space-200) 0; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
 .oa-tracker-list { margin: 0; padding: 0; list-style: none }
 .oa-tracker-bill { margin: 0 0 var(--oa-space-150); font: var(--oa-type-body) }

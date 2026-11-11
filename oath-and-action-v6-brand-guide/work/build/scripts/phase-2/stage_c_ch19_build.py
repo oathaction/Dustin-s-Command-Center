@@ -1,8 +1,12 @@
-"""Chapter 19, Accessibility (accessibility lead), stage C round 1, November 11, 2026.
+"""Chapter 19, Accessibility (accessibility lead), stage C round 1, November 11, 2026; round 2's fix pass the same day.
 
 Usage:
     python3 -I work/build/scripts/phase-2/stage_c_ch19_build.py            write the chapter and its specimens
     python3 -I work/build/scripts/phase-2/stage_c_ch19_build.py --check    write nothing; exit 1 if any output differs
+    python3 -I work/build/scripts/phase-2/stage_c_ch19_build.py --read-wcag <wcag22.html> --read-on "November 11, 2026"
+                                                                         rewrite the stored copy of WCAG 2.2's criteria
+                                                                         from a copy of the Recommendation fetched from
+                                                                         https://www.w3.org/TR/WCAG22/, then stop
 
 Writes:
     work/build/guide/chapters/19-accessibility.json         the chapter in the content contract (round 1 brief)
@@ -10,18 +14,24 @@ Writes:
     work/build/guide/specimens/manifest-accessibility.json  their entries (D2-1267)
 
 Reads:
-    work/handoffs/phase-2/20261110_Stage-C-Research-Notes.md, section 1: the 55 WCAG 2.2 criteria at levels A and AA in
-        W3C's words, from the Recommendation of December 12, 2024, as the research lead quoted them (D2-1137). Notes are
-        W3C's informative text and stay out (D2-1138); 4.1.1 Parsing is listed as removed (D2-1139).
+    work/handoffs/phase-2/20261111_WCAG22-Criteria-Text.json: the 55 WCAG 2.2 criteria at levels A and AA in W3C's
+        words and in the Recommendation's document order, read from w3.org on November 11, 2026 by --read-wcag (the
+        Recommendation of December 12, 2024; the file names its address and the SHA-256 of the copy read). Notes,
+        examples and definitions are W3C's informative text and stay out (D2-1138); 4.1.1 Parsing is listed as removed
+        (D2-1139). Rule 19.1's list prints each criterion's parts in that order, and the build stops when the words it
+        printed, read back from its own HTML, differ from the stored copy (round 2, BE-M2).
     work/handoffs/phase-2/20261111_Stage-C-Round-1-Ch19-Results.json: the guide's own results, dated, Tested and Not
         tested apart, written by the accessibility lead from the runs it names. A missing file prints as pending.
     work/build/guide/chapters/*.json: every rule this chapter's map cites must exist in a chapter file that is present,
         and a chapter that is not written yet is named in words, never linked.
 
-The map of criterion to rule starts from the round 0 inventory's section 4 and adds chapters 17, 18, 19 and 26.
+The map of criterion to rule starts from the round 0 inventory's section 4 and adds chapters 17, 18, 19 and 26. A
+criterion reads Met only where a rule states what it asks (round 2, D2-1553).
 """
 import argparse
+import hashlib
 import html
+import html.parser
 import json
 import pathlib
 import re
@@ -33,7 +43,7 @@ GUIDE = ROOT / 'work/build/guide'
 OUT_CH = GUIDE / 'chapters/19-accessibility.json'
 OUT_SP = GUIDE / 'specimens'
 MANIFEST = OUT_SP / 'manifest-accessibility.json'
-RESEARCH = ROOT / 'work/handoffs/phase-2/20261110_Stage-C-Research-Notes.md'
+WCAG = ROOT / 'work/handoffs/phase-2/20261111_WCAG22-Criteria-Text.json'
 RESULTS = ROOT / 'work/handoffs/phase-2/20261111_Stage-C-Round-1-Ch19-Results.json'
 CH = '19'
 EM, EN = '—', '–'
@@ -48,38 +58,149 @@ def w(n, cap=False):
 e = html.escape
 
 # ------------------------------------------------------------------------------------------------- WCAG's words
+def norm(t):
+    return re.sub(r'\s+', ' ', html.unescape(t)).strip()
+
+
+class _Parts(html.parser.HTMLParser):
+    """Read a criterion's normative parts in document order: a paragraph, or a list whose items may carry a label (a
+    definition list in the Recommendation). Notes, examples, definition pop-ups, the level and the "New" mark stay out.
+    The same reader reads back the HTML this script prints, so both sides of the check are read one way."""
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.parts, self.skip, self.buf, self.mode, self.label = [], 0, None, None, None
+
+    def handle_starttag(self, tag, attrs):
+        cls = (dict(attrs).get('class') or '').split()
+        if self.skip:
+            if tag in ('div', 'p', 'span'):
+                self.skip += 1
+            return
+        if (tag == 'div' and {'note', 'doclinks', 'example'} & set(cls)) or (tag == 'p' and {'conformance-level', 'change'} & set(cls)) \
+                or (tag == 'span' and 'dfn-panel' in cls):
+            self.skip = 1
+        elif tag in ('ul', 'ol', 'dl') and self.mode is None:
+            self.mode = tag
+            self.parts.append({'list': []})
+        elif (self.mode in ('ul', 'ol') and tag == 'li') or (self.mode == 'dl' and tag in ('dt', 'dd')) or (self.mode is None and tag == 'p'):
+            self.buf = []
+
+    def handle_endtag(self, tag):
+        if self.skip:
+            if tag in ('div', 'p', 'span'):
+                self.skip -= 1
+            return
+        if self.mode and tag == self.mode:
+            self.mode = None
+        elif self.mode in ('ul', 'ol') and tag == 'li':
+            self.parts[-1]['list'].append({'text': norm(''.join(self.buf))})
+            self.buf = None
+        elif self.mode == 'dl' and tag == 'dt':
+            self.label, self.buf = norm(''.join(self.buf)), None
+        elif self.mode == 'dl' and tag == 'dd':
+            self.parts[-1]['list'].append({'label': self.label, 'text': norm(''.join(self.buf))})
+            self.buf, self.label = None, None
+        elif self.mode is None and tag == 'p' and self.buf is not None:
+            self.parts.append({'p': norm(''.join(self.buf))})
+            self.buf = None
+
+    def handle_data(self, d):
+        if not self.skip and self.buf is not None:
+            self.buf.append(d)
+
+
+def parts_of(fragment):
+    r = _Parts()
+    r.feed(fragment)
+    r.close()
+    return r.parts
+
+
+def read_wcag(src, read_on):
+    """Write the stored copy from a copy of the Recommendation fetched from w3.org (BE-M2)."""
+    raw = pathlib.Path(src).read_bytes()
+    doc = raw.decode('utf-8')
+    crit, removed = [], []
+    for m in re.finditer(r'<section id="([^"]+)" class="guideline"><div class="header-wrapper"><h4 id="[^"]+">'
+                         r'<bdi class="secno">Success Criterion (\d\.\d+\.\d+) </bdi>(.*?)</h4>(.*?)</section>', doc, re.S):
+        sid, n, name, body = m.groups()
+        name = norm(re.sub(r'<[^>]+>', '', name))
+        lv = re.search(r'<p class="conformance-level">\(Level (A{1,3})\)</p>', body)
+        und = re.search(r'<a href="(https://www\.w3\.org/WAI/WCAG22/Understanding/[^"]+)">', body)
+        if not lv:
+            removed.append({'n': n, 'name': name, 'id': sid})
+        elif lv.group(1) != 'AAA':
+            crit.append({'n': n, 'name': name, 'level': lv.group(1), 'new': '<p class="change">New</p>' in body, 'id': sid,
+                         'understanding': und.group(1) if und else None, 'parts': parts_of(body)})
+    status = re.search(r'W3C Recommendation \d{1,2} \w+ \d{4}', doc)
+    this = re.search(r'https://www\.w3\.org/TR/\d{4}/REC-WCAG22-\d{8}/', doc)
+    out = {
+        'about': ('The 55 success criteria of WCAG 2.2 at levels A and AA, in the Recommendation’s own words and in its '
+                  'document order, read from w3.org by stage_c_ch19_build.py --read-wcag. Each criterion’s parts run as the '
+                  'Recommendation prints them: a paragraph, or a list whose items may carry a label. Notes, examples and '
+                  'definitions are informative and stay out. Rule 19.1 prints its list from this file, and the build stops '
+                  'when the words it prints differ from it.'),
+        'title': 'Web Content Accessibility Guidelines (WCAG) 2.2',
+        'status': status.group(0) if status else None,
+        'url': 'https://www.w3.org/TR/WCAG22/',
+        'this_version': this.group(0) if this else None,
+        'read': read_on,
+        'sha256': hashlib.sha256(raw).hexdigest(),
+        'bytes': len(raw),
+        'count': {'A': sum(c['level'] == 'A' for c in crit), 'AA': sum(c['level'] == 'AA' for c in crit),
+                  'all': len(crit), 'new': sum(c['new'] for c in crit)},
+        'removed': removed,
+        'criteria': crit,
+    }
+    if out['count'] != {'A': 31, 'AA': 24, 'all': 55, 'new': 6} or [r['n'] for r in removed] != ['4.1.1']:
+        raise SystemExit(f'the copy read does not hold WCAG 2.2’s 55 criteria and 4.1.1: {out["count"]}, {removed}')
+    WCAG.write_text(json.dumps(out, indent=1, ensure_ascii=False) + '\n')
+    print(f'{WCAG.relative_to(ROOT)}: {len(crit)} criteria, {out["status"]}, SHA-256 {out["sha256"][:16]}…')
+
+
 def criteria():
-    s = RESEARCH.read_text()
-    sec = s[s.index('### Principle 1, Perceivable'):s.index('## 2. WAI-ARIA')]
+    d = json.loads(WCAG.read_text())
+    out = d['criteria']
+    if len(out) != 55 or sum(c['level'] == 'A' for c in out) != 31 or sum(c['new'] for c in out) != 6:
+        raise SystemExit(f'expected 55 criteria, 31 at level A and 6 new; the stored copy holds {len(out)}')
+    for c in out:
+        if not c['parts'] or any(not (p.get('p') or p.get('list')) for p in c['parts']):
+            raise SystemExit(f'{c["n"]}: an empty part in the stored copy')
+    return out
+
+
+def quote_html(parts):
+    """W3C's words in the Recommendation's order: each paragraph, then each list where it stands; a labeled item keeps
+    its label as a term, as the Recommendation sets it."""
     out = []
-    blocks = re.split(r'^(?=\*\*\d\.\d+\.\d+ )', sec, flags=re.M)
-    for b in blocks:
-        m = re.match(r'\*\*(\d\.\d+\.\d+) ([^*]+)\*\* \(Level (A|AA)\)(\. \*\*New in 2\.2\.\*\*)?', b)
-        if not m:
-            continue
-        quote = [ln[1:].strip() for ln in b.splitlines() if ln.startswith('>')]
-        url = re.search(r'Understanding page: (\S+)', b).group(1)
-        out.append({'n': m.group(1), 'name': m.group(2).strip(), 'level': m.group(3), 'new': bool(m.group(4)),
-                    'quote': quote, 'url': url})
-    if len(out) != 55 or sum(c['level'] == 'A' for c in out) != 31:
-        raise SystemExit(f'expected 55 criteria, 31 at level A; read {len(out)}')
-    return out
-
-
-def quote_html(lines):
-    """W3C's words as written: a lead paragraph and any list of labeled items. Bold labels stay bold."""
-    paras, items = [], []
-    for ln in lines:
-        t = e(ln, quote=False)
-        t = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', t)
-        if t.startswith('- '):
-            items.append(t[2:].strip())
+    for p in parts:
+        if 'p' in p:
+            out.append(f'<p>{e(p["p"], quote=False)}</p>')
+        elif any(i.get('label') for i in p['list']):
+            out.append('<dl>' + ''.join(f'<dt>{e(i["label"], quote=False)}</dt><dd>{e(i["text"], quote=False)}</dd>'
+                                        for i in p['list']) + '</dl>')
         else:
-            paras.append(t)
-    out = ''.join(f'<p>{p}</p>' for p in paras)
-    if items:
-        out += '<ul>' + ''.join(f'<li>{i}</li>' for i in items) + '</ul>'
-    return out
+            out.append('<ul>' + ''.join(f'<li>{e(i["text"], quote=False)}</li>' for i in p['list']) + '</ul>')
+    return ''.join(out)
+
+
+def check_printed(printed):
+    """Read back every criterion the list printed, in order, and stop on any difference from the stored copy, read
+    afresh from its file (BE-M2)."""
+    crit = json.loads(WCAG.read_text())['criteria']
+    items = re.findall(r'<li class="c19-c" data-st="\w+"><p class="c19-ch"><span class="c19-cn">([\d.]+)</span> '
+                       r'<span class="c19-ct">(.*?)</span> <span class="c19-lv">Level (A{1,2})</span>.*?</p>'
+                       r'<blockquote class="c19-q">(.*?)</blockquote>', printed, re.S)
+    if [i[0] for i in items] != [c['n'] for c in crit]:
+        raise SystemExit('Rule 19.1’s list prints the criteria out of the Recommendation’s order, or drops one')
+    for (n, name, level, quote), c in zip(items, crit):
+        got = parts_of(quote)
+        want = [p if 'p' in p else {'list': [{k: v for k, v in i.items() if v is not None} for i in p['list']]} for p in c['parts']]
+        if norm(name) != c['name'] or level != c['level'] or got != want:
+            first = next((f'part {k + 1}: printed {g!r}, stored {w!r}' for k, (g, w) in enumerate(zip(got, want)) if g != w),
+                         f'{len(got)} parts printed, {len(want)} stored')
+            raise SystemExit(f'{n} {c["name"]}: the printed text differs from the stored copy of the Recommendation; {first}')
 
 
 # The map. Status: met (a guide rule states what the criterion asks), part (a rule covers part of it), gap (no rule
@@ -92,12 +213,12 @@ MAP = {
     '1.2.3': ('gap', [], 'Chapters 16 and 23, with video.'),
     '1.2.4': ('none', [], 'No product streams live today; chapter 23 if one does.'),
     '1.2.5': ('gap', [], 'Chapters 16 and 23, with video.'),
-    '1.3.1': ('met', ['18.10', '18.3', '18.17', '18.6', '18.7', '11.5'], ''),
+    '1.3.1': ('part', ['18.10', '18.3', '18.17', '18.6', '18.7', '11.5'], 'Tables, forms, lists, landmarks and the current place keep their structure in markup; chapter 20 owes the headings of a whole page.'),
     '1.3.2': ('part', ['18.22', '18.6'], 'Components keep their order; chapter 20 owes the reading order of a whole page.'),
     '1.3.3': ('met', ['19.3'], ''),
     '1.3.4': ('met', ['19.6'], ''),
     '1.3.5': ('met', ['18.17'], ''),
-    '1.4.1': ('met', ['05.4', '17.8', '17.10', '18.2', '18.5', '18.7', '19.3', '11.2', '11.15'], ''),
+    '1.4.1': ('met', ['05.4', '17.8', '17.10', '18.2', '18.5', '18.7', '19.3', '11.2', '11.15', '12.6'], ''),
     '1.4.2': ('none', ['17.3'], 'No product plays sound; chapter 23 if a page ever does.'),
     '1.4.3': ('met', ['05.2', '26.7'], ''),
     '1.4.4': ('met', ['19.6', '07.5', '06.2'], ''),
@@ -105,16 +226,16 @@ MAP = {
     '1.4.10': ('met', ['07.6', '19.6', '18.11'], ''),
     '1.4.11': ('met', ['05.5', '17.8', '17.9', '11.2'], ''),
     '1.4.12': ('met', ['19.6'], ''),
-    '1.4.13': ('met', ['11.11', '18.23', '18.6'], ''),
+    '1.4.13': ('part', ['18.23', '18.6', '11.11'], 'A drawing’s readout stays in its own line and covers nothing, and menus open on a press; no rule yet sets the three conditions for words that show on hover or focus, such as a tooltip, which chapter 18 owes if a product adds one.'),
     '2.1.1': ('met', ['18.1', '18.9', '18.23', '19.5'], 'Every rule of chapter 18 gives its keyboard path.'),
     '2.1.2': ('met', ['18.6', '18.23'], ''),
     '2.1.4': ('met', ['19.5'], ''),
-    '2.2.1': ('met', ['18.22', '11.14', '18.20'], ''),
+    '2.2.1': ('none', [], 'No product sets a time limit today; the chapter that adds one owes it. A loop a reader plays holds each step at least six seconds, and Pause stops it (Rule 18.22).'),
     '2.2.2': ('met', ['17.3', '17.4', '18.22'], ''),
     '2.3.1': ('part', ['17.1', '17.3'], 'Motion plays only on request; chapter 23 owes the flash test for video.'),
     '2.4.1': ('met', ['18.5', '18.6'], ''),
     '2.4.2': ('gap', [], 'Chapter 20, with each web page. This guide’s own page has a title.'),
-    '2.4.3': ('met', ['18.6', '18.16', '18.17', '18.21', '18.22', '18.23'], ''),
+    '2.4.3': ('part', ['18.6', '18.16', '18.17', '18.21', '18.22', '18.23'], 'Each component says where focus goes; chapter 20 owes the focus order of a whole page.'),
     '2.4.4': ('met', ['18.5', '18.14', '11.13'], ''),
     '2.4.5': ('part', ['18.15', '18.7'], 'Search and location lists; chapter 20 owes the ways around a whole site.'),
     '2.4.6': ('part', ['18.17', '18.3', '11.11'], 'Labels; chapter 20 owes the headings of a page.'),
@@ -136,7 +257,7 @@ MAP = {
     '3.3.1': ('met', ['18.17', '11.15'], ''),
     '3.3.2': ('met', ['18.17', '18.15'], ''),
     '3.3.3': ('met', ['18.17', '11.15'], ''),
-    '3.3.4': ('none', [], 'No product takes money or legal statements today; chapter 18 if one sends testimony, gifts or petitions.'),
+    '3.3.4': ('gap', [], 'Chapter 18 owes a rule that a send that reaches a legislature, such as testimony, and a delete of saved items can each be checked, confirmed or undone.'),
     '3.3.7': ('none', [], 'No form has more than one step today; chapter 18 when one does.'),
     '3.3.8': ('none', [], 'No product has accounts today; the chapter that adds them owes it.'),
     '4.1.2': ('met', ['18.1', '18.2', '18.9', '17.11'], 'Every rule of chapter 18 gives its accessible name and states.'),
@@ -236,7 +357,7 @@ def s_criteria(crit, held, own):
         new = ' <span class="c19-new">New in 2.2</span>' if c['new'] else ''
         rows.append(f'<li class="c19-c" data-st="{st}"><p class="c19-ch"><span class="c19-cn">{c["n"]}</span> '
                     f'<span class="c19-ct">{e(c["name"])}</span> <span class="c19-lv">Level {c["level"]}</span>{new}</p>'
-                    f'<blockquote class="c19-q">{quote_html(c["quote"])}</blockquote><p class="c19-m">{what}</p></li>')
+                    f'<blockquote class="c19-q">{quote_html(c["parts"])}</blockquote><p class="c19-m">{what}</p></li>')
     total = len(crit)
     chips = ''.join(f'<label class="c19-f"><input type="radio" name="show" value="{v}"{" checked" if v == "all" else ""}>'
                     f'<span class="c19-fw">{w}</span></label>'
@@ -260,7 +381,8 @@ def s_criteria(crit, held, own):
            '.c19-cn{font-variant-numeric:tabular-nums}.c19-lv,.c19-new{font:var(--oa-type-caption);color:var(--sec)}'
            '.c19-new{border:1px solid var(--edge);padding:0 6px;color:var(--ink)}'
            '.c19-q{margin:8px 0 0;padding-left:12px;border-left:2px solid var(--hair);font:var(--oa-type-body-small)}'
-           '.c19-q p+p,.c19-q ul{margin-top:6px}.c19-q ul{padding-left:18px}.c19-q li+li{margin-top:4px}'
+           '.c19-q>*+*{margin-top:6px}.c19-q ul{padding-left:18px}.c19-q li+li,.c19-q dd+dt{margin-top:4px}'
+           '.c19-q dt{font-weight:var(--oa-font-weight-bold)}.c19-q dd{margin:0}'
            '.c19-m{margin-top:8px;font:var(--oa-type-body-small)}.c19-st{font-weight:var(--oa-font-weight-bold);margin-right:4px}'
            '.c19-st--gap::before{content:"\\25B3";margin-right:4px}.c19-st--met::before{content:"\\2713";margin-right:4px}'
            '.c19-m a{color:inherit;text-decoration:underline;text-underline-offset:.2em}'
@@ -283,8 +405,10 @@ def s_criteria(crit, held, own):
             f'<fieldset class="c19-fs"><legend>Show</legend>{chips}</fieldset></div>'
             f'<p class="c19-st-line" id="st" role="status">{total} of {total} criteria.</p>'
             f'<ol class="c19-l">{"".join(rows)}</ol>'
-            '<p class="c19-rm"><b>4.1.1 Parsing</b> was removed in WCAG 2.2, which keeps its number with no level. The problems '
-            'it covered now fall under 1.3.1 and 4.1.2, so no rule here is tied to it.</p></div>' + script)
+            '<p class="c19-rm"><b>4.1.1 Parsing</b> was removed in WCAG 2.2, which keeps its number with no level. Many of '
+            'the problems it covered now fail 1.3.1 or 4.1.2, W3C’s Understanding page says, so no rule here is tied to '
+            'it.</p></div>' + script)
+    check_printed(body)
     sid = spec('s-19-criteria', body, '19.1',
                f'A searchable list of the {total} WCAG 2.2 success criteria at levels A and AA, in W3C’s words. Each entry '
                'gives the number, the name, the level, a tag for the six new in 2.2, the criterion’s words, and how this '
@@ -826,7 +950,14 @@ def outputs():
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--check', action='store_true')
+    ap.add_argument('--read-wcag', metavar='HTML', help='a copy of https://www.w3.org/TR/WCAG22/ to store the criteria from')
+    ap.add_argument('--read-on', metavar='DATE', help='the date the copy was fetched, in words, such as "November 11, 2026"')
     a = ap.parse_args()
+    if a.read_wcag:
+        if not a.read_on:
+            raise SystemExit('--read-wcag needs --read-on, the date the copy was fetched')
+        read_wcag(a.read_wcag, a.read_on)
+        return
     out, ch = outputs()
     if a.check:
         stale = [str(p.relative_to(ROOT)) for p, t in out.items() if not p.exists() or p.read_text() != t]

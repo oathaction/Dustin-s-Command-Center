@@ -2,9 +2,10 @@
    bar at an erring field's edge, and the ask yielding its red while an error shows. */
 .oa-form { max-width: 30rem; font: var(--oa-type-body); color: var(--oa-color-text-primary) }
 .oa-form [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
-.oa-form-illus { display: inline-block; margin: 0 0 var(--oa-space-100); padding: 0 var(--oa-space-050);
-  border: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline); font: var(--oa-type-label);
-  letter-spacing: var(--oa-type-label-letter-spacing); color: var(--oa-color-text-secondary) }
+/* Illustrative: the label at the head of an invented piece, in the guide's one style (uppercase, a 1 px edge in the ink) */
+.oa-form-illus { display: inline-block; margin: 0 0 var(--oa-space-100); padding: 0 .4em; border: var(--oa-border-width-hairline) solid currentColor;
+  color: var(--oa-color-text-primary); font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform); line-height: 1.5 }
 .oa-form-title { margin: 0; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); text-wrap: balance }
 .oa-form-lede { margin: var(--oa-space-100) 0 var(--oa-space-200); font: var(--oa-type-body-small) }
 .oa-form-field { margin: 0 0 var(--oa-space-200) }

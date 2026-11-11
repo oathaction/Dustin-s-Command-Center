@@ -4,9 +4,13 @@
 .oa-download-set [data-icon] { fill: none; stroke: currentColor; stroke-width: var(--oa-component-icon-utility-line-medium); stroke-linecap: round; stroke-linejoin: round }
 .oa-download-k { margin: var(--oa-space-300) 0 var(--oa-space-100); font: var(--oa-type-label);
   letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
-.oa-download-k:first-child { margin-top: 0 }
-.oa-download-illus { margin-left: var(--oa-space-100); padding: 0 var(--oa-space-050); border: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
-  text-transform: none }
+.oa-download-k:first-child, .oa-download-illus + .oa-download-k { margin-top: 0 }
+/* Illustrative: the label at the head of an invented piece, in the guide's one style (uppercase, a 1 px edge in the ink) */
+.oa-download-illus { display: inline-block; margin: 0 0 var(--oa-space-100); padding: 0 .4em; border: var(--oa-border-width-hairline) solid currentColor;
+  color: var(--oa-color-text-primary); font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform); line-height: 1.5 }
+/* Only the file that is not ready is invented here, so its label heads that part, with the space a kicker takes above it */
+.oa-download-row + .oa-download-illus { margin-top: var(--oa-space-300) }
 .oa-download-row { margin: 0 0 var(--oa-space-100) }
 .oa-download { display: inline-flex; align-items: center; gap: var(--oa-space-100); box-sizing: border-box; max-width: 100%;
   min-height: var(--oa-size-target-touch); padding: var(--oa-space-100) var(--oa-space-200) var(--oa-space-100) var(--oa-space-150);

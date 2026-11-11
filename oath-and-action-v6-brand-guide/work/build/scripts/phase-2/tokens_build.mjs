@@ -150,6 +150,11 @@ function walk(node, p, outGroup) {
       const holder = { $value: child.$value, ext };
       const value = materialize(holder, cp);
       const t = { $type: child.$type, $value: value, $description: child.$description };
+      // DTCG 2025.10's $deprecated: a renamed token's old name, kept as an alias for one release (Rule 26.8)
+      if (child.$deprecated !== undefined) {
+        if (!isAlias(value) || !(typeof child.$deprecated === 'string' && child.$deprecated.trim())) errors.push(`${cp}: a deprecated token is an alias of its new name and says why in $deprecated`);
+        t.$deprecated = child.$deprecated;
+      }
       tokens.set(cp, { token: t, ext: holder.ext });
       order.push(cp);
       outGroup[k] = t;
@@ -306,7 +311,9 @@ for (const p of order) {
     }
     continue;
   }
-  decls.push([n, valueFor(t.$value, () => cssLiteral(p, t, ext))]);
+  const dep = t.$deprecated !== undefined && ext.deprecated
+    ? `deprecated, renamed ${cssName(aliasPath(ext.deprecated.replacedBy))}, leaves with ${ext.deprecated.removedIn}` : null;
+  decls.push([n, valueFor(t.$value, () => cssLiteral(p, t, ext)), null, dep]);
 }
 
 // surface classes: short names point at one surface's tokens; a role with no token on a surface is set
@@ -398,7 +405,7 @@ const queries = order.filter((p) => p.startsWith('oa.layout.breakpoint.')).map((
   return ` *   ${p.split('.').pop().padEnd(11)} ${q || '(base layout, no query)'}`;
 }).join('\n');
 
-const rootLines = decls.map(([n, v, g]) => (n === null ? `\n  /* ${g} */` : `  ${n}: ${v};`)).join('\n');
+const rootLines = decls.map(([n, v, g, note]) => (n === null ? `\n  /* ${g} */` : `  ${n}: ${v};${note ? ` /* ${note} */` : ''}`)).join('\n');
 const css = `/* ${src.meta.title}
  * Version ${src.meta.version} (${src.meta.status}). ${src.meta.statusNote}
  * DTCG Format Module ${src.meta.formatVersion}. Generated from ${src.meta.source}

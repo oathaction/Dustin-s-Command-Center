@@ -10,6 +10,8 @@ What it holds the files to (work/ledger/20261021_Token-Architecture.md and the d
      the derivation recomputed in OKLab (D1-04) and every stored ratio recomputed.
   D. Tiers (section 2): primitives hold values, semantic tokens point at primitives, component tokens at
      semantic tokens.
+     A deprecated token ($deprecated, Rule 26.8) points at its replacement alone, in its own tier and type, with a
+     later release named for its removal, and no live token points at it.
   E. Contrast on every surface (section 3): text 4.5:1, large text and graphics 3:1, measured on the
      token's own ground, its other grounds, its keyline and the text set on a band.
   F. Rule 05.3: red never on Prussian, working red names its rank, working red on Newsprint keeps its
@@ -247,10 +249,41 @@ def check(json_path, css_path=None):
 
     # --- D. tiers
     tier_of = {p: X[p].get('tier') for p in toks}
+    # A deprecated token (DTCG's $deprecated) is a renamed token's old name, kept for one release of the second part
+    # (section 7, step 5; Rule 26.8): it points at its new name alone, keeps its tier and record, and nothing live
+    # builds on it.
+    deprecated = {p for p, t in toks.items() if '$deprecated' in t}
+    ver_now = SEMVER.match(meta.get('tokenSetVersion', '') or '')
+    for p in sorted(deprecated):
+        t, d = toks[p], X[p].get('deprecated') or {}
+        tgt = L.alias_target(t['$value'])
+        if not (isinstance(t['$deprecated'], str) and t['$deprecated'].strip()):
+            fails.append(f'{p}: $deprecated says what replaced the token, in words')
+        if not tgt or L.alias_target(d.get('replacedBy') or '') != tgt:
+            fails.append(f'{p}: a deprecated token points at its replacement, {d.get("replacedBy")}, and nothing else; it holds {t["$value"]}')
+        elif tgt in deprecated:
+            fails.append(f'{p}: its replacement {tgt} is itself deprecated')
+        elif tier_of.get(tgt) != tier_of[p] or L.resolved_type(tgt, toks) != L.resolved_type(p, toks):
+            fails.append(f'{p}: a deprecated token keeps the tier and type of {tgt}')
+        if tgt and tgt.split('.')[-1] != p.split('.')[-1]:
+            fails.append(f'{p}: a renamed token keeps its surface; it points at {tgt}')
+        rm = SEMVER.match(str(d.get('removedIn') or ''))
+        if not rm or not ver_now or (int(rm.group(1)), int(rm.group(2))) <= (int(ver_now.group(1)), int(ver_now.group(2))):
+            fails.append(f'{p}: removedIn {d.get("removedIn")!r} names a later release of the second part than {meta.get("tokenSetVersion")}')
+        if not str(t.get('$description', '')).startswith('Deprecated'):
+            fails.append(f'{p}: a deprecated token\'s description opens with "Deprecated"')
+        if d.get('since') != meta.get('tokenSetVersion') and not any(d.get('since') == n.get('version') for n in meta.get('changeNotes') or []):
+            fails.append(f'{p}: the release that deprecated it, {d.get("since")!r}, has no change note')
+    for p, t in toks.items():
+        a = L.alias_target(t['$value'])
+        if a in deprecated and p not in deprecated:
+            fails.append(f'{p}: points at the deprecated name {a}; point at its replacement')
     for p, t in toks.items():
         typ = L.resolved_type(p, toks)
         tier = tier_of[p]
         tgt = L.alias_target(t['$value'])
+        if p in deprecated:
+            continue                     # held above: a deprecated token points at its replacement, in its own tier
         if typ == 'color' and tier not in ('primitive', 'semantic', 'component'):
             fails.append(f'{p}: a color token names its tier')
         if tier == 'primitive' and tgt:
@@ -283,6 +316,8 @@ def check(json_path, css_path=None):
         if e.get('surface') and e['surface'] != L.SURFACE_KEYS.get(p.split('.')[-1], e['surface']):
             fails.append(f'{p}: its surface record ({e["surface"]}) disagrees with its name')
         row = '.'.join(p.split('.')[:-1])
+        if p in deprecated:
+            row = None                   # measured as any token, and left out of the role table, which its replacement fills
         cell = {'hex': h, 'kind': kind}
         if kind == 'background':
             texts = e.get('textOnIt') or []
@@ -359,7 +394,8 @@ def check(json_path, css_path=None):
             cell.update(ratio=L.ratio(h, L.LOCKED[s]), threshold=None, measuredAgainst=s)
             if kind == 'dataFill' and e.get('valuesPrinted') is not True:
                 fails.append(f'{p}: a data fill with no 3:1 duty must print its values beside or on the mark (valuesPrinted)')
-        table.setdefault(row, {})[s] = cell
+        if row:
+            table.setdefault(row, {})[s] = cell
     report['table'] = table
 
     # --- F. Rule 05.3

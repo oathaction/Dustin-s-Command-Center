@@ -23,15 +23,16 @@
 .oa-button--primary:not([aria-disabled="true"]):hover { background: var(--oa-component-button-primary-fill-hover); border-color: var(--oa-component-button-primary-fill-hover);
   text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
 
-/* Ask: the one step a reader can take now, in the view's working red, 48 px tall, with its keyline where the surface needs one */
+/* Ask: the one step a reader can take now, in the view's working red, 48 px tall, with its keyline where the surface needs
+   one. It stands on a row of its own, apart from a primary button, whose hover turns Prussian on Newsprint (Rule 05.3). */
 .oa-button--ask { min-height: var(--oa-space-600); padding-inline: var(--oa-space-300); font: var(--oa-type-ask);
   background: var(--oa-component-button-ask-fill); color: var(--oa-component-button-ask-label);
   border-color: var(--oa-component-button-ask-keyline, var(--oa-component-button-ask-fill)) }
 .oa-button--ask:not([aria-disabled="true"]):hover { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
-/* While an error in the same view holds the red, the ask yields to the primary fill (Rule 11.16) */
+/* While an error in the same view holds the red, the ask yields to the primary fill (Rule 11.16). Its hover keeps that
+   fill and underlines the word, as the form's does, so no Prussian hover sits in a view whose error is red. */
 .oa-button--ask[data-oa-yield] { background: var(--oa-component-button-primary-fill); border-color: var(--oa-component-button-primary-fill);
   color: var(--oa-component-button-primary-label) }
-.oa-button--ask[data-oa-yield]:not([aria-disabled="true"]):hover { background: var(--oa-component-button-primary-fill-hover); border-color: var(--oa-component-button-primary-fill-hover) }
 
 /* Quiet: an edge and no fill; the edge thickens on hover */
 .oa-button--quiet { background: transparent; border-color: var(--oa-color-border-strong); color: var(--oa-color-text-primary) }

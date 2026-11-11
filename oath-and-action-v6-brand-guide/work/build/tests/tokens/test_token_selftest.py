@@ -220,8 +220,21 @@ PLANTS = [
     ('The dark theme moved from Charcoal to Prussian',
      edit(lambda j: j['$extensions'][NS]['theme']['dark'].__setitem__('surface', 'prussian')), 'parity', 'DR-204'),
     ('A version rise with no change note',
-     edit(lambda j: j['$extensions'][NS].__setitem__('tokenSetVersion', '6.0.0-gate2.8')), 'rules', 'change note'),
+     edit(lambda j: j['$extensions'][NS].__setitem__('tokenSetVersion', _next_version(j['$extensions'][NS]['tokenSetVersion']))), 'rules', 'change note'),
+    # stage C round 2 (November 11, 2026): a renamed token's old name, kept as a deprecated alias (DR-218, Rule 26.8)
+    ('A deprecated token that points past its replacement (the old error bar name straight at Pillar Red)',
+     alias('oa.color.state.error.mark.onWhite', 'oa.color.palette.pillarRed'), 'rules', 'points at its replacement'),
+    ('A live token built on a deprecated name',
+     alias('oa.component.button.disabled.label.onWhite', 'oa.color.state.error.mark.onWhite'), 'rules', 'deprecated name'),
+    ('A deprecated alias kept past the release that removes it',
+     edit(lambda j: x(j, 'oa.color.state.error.mark.onCharcoal')['deprecated'].__setitem__('removedIn', '6.0.0')), 'rules', 'removedIn'),
 ]
+
+
+def _next_version(v):
+    """The same version with its last number one higher, so the plant always rises past today's version."""
+    m = re.match(r'^(.*?)(\d+)$', v)
+    return f'{m.group(1)}{int(m.group(2)) + 1}' if m else v + '.1'
 
 def run_checks(jp, cp):
     out = {}

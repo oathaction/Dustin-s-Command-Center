@@ -32,6 +32,7 @@
   outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
 .oa-location-item:focus-visible { outline-offset: calc(-1 * var(--oa-border-width-focus-ring)) }
 .oa-location-page { margin: var(--oa-space-200) 0 0; font: var(--oa-type-body-small); color: var(--oa-color-text-secondary) }
+.oa-location-source { margin: var(--oa-space-150) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
 
 @media (forced-colors: active) {
   .oa-location-item[aria-current] { border-left-color: Highlight }

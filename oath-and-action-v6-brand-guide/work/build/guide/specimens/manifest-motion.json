@@ -88,7 +88,7 @@
   "chapter": "17",
   "rule": "17.3",
   "width_px": null,
-  "alt": "The parts of a motion player, numbered 1 to 7, drawn from the player for Loop R1’s first link in Rule 17.4. 1, the stage at its first frame: two nodes, wealth concentration filled and money in politics empty. 2, the Play button, which turns to Pause while the motion runs and to Play again at its end. 3, Reset, unavailable at the first frame with a dashed edge. 4, Slow motion, a check box that plays at one tenth speed. 5, the reason line: “Reset works once you press Play.” 6, the status line, which says what the frame shows. 7, the still view: the first and last frames with their times and words, and the steps of the motion in order. A numbered key under the player says the same.",
+  "alt": "The parts of a motion player, numbered 1 to 7 from top to bottom, drawn from the player for Loop R1’s first link in Rule 17.4, under its heading, the loop’s name, “Wealth and political influence reinforce each other”, and the line “Our atlas grades this loop plausible: its middle step is the least certain, and it runs only on issues where large donors and middle-income voters want different things.” 1, the stage at its first frame, where a player of a state or a mechanism rests: two nodes, wealth concentration filled and money in politics empty. A player of the wordmark or the lockmark rests on its master. 2, the status line, which says what the frame shows. 3, the Play button, which turns to Pause while the motion runs and to Play again at its end. 4, Reset, unavailable at rest with a dashed edge, its number set off its top left corner. 5, Slow motion, a check box that plays at one tenth speed. 6, the reason line: “Reset works once you press Play.” 7, the still view: the first and last frames with their times and words, and the steps of the motion in order. A numbered key under the player says the same.",
   "illustrative": false,
   "notes": "A picture of the player, with no controls and no script: the live player is s-17-4-correct."
  },
@@ -104,7 +104,7 @@
   "chapter": "17",
   "rule": "17.4",
   "width_px": null,
-  "alt": "A live player for the first link of Loop R1 from our systems atlas, “Wealth and political influence reinforce each other”. At the first frame the node for wealth concentration is filled and the node for money in politics is empty. Play draws the link from the first node to the second over 200 ms, then the arrowhead and the second node land, 440 ms in all, and the status line says “Last frame: wealth concentration raises money in politics.” A check box, Preview reduced motion, sets this player’s motion tokens to 0 ms, so Play draws the last frame at once, as it does for every player when a device asks for reduced motion. A line says what this device asks for, and when it asks for reduced motion the preview is checked and unavailable with its reason. Slow motion plays at one tenth speed. The still view draws the first and last frames with their words and lists the steps of the motion.",
+  "alt": "A live player for the first link of Loop R1 from our systems atlas, “Wealth and political influence reinforce each other”, with the line “Our atlas grades this loop plausible: its middle step is the least certain, and it runs only on issues where large donors and middle-income voters want different things.” At the first frame the node for wealth concentration is filled and the node for money in politics is empty. Play draws the link from the first node to the second over 200 ms, then the arrowhead and the second node land, 440 ms in all, and the status line says “Last frame: wealth concentration raises money in politics.” A check box, Preview reduced motion, sets this player’s motion tokens to 0 ms, so Play draws the last frame at once, as it does for every player when a device asks for reduced motion. A line says what this device asks for, and when it asks for reduced motion the preview is checked and unavailable with its reason. Slow motion plays at one tenth speed. The still view draws the first and last frames with their words and lists the steps of the motion.",
   "illustrative": false,
   "notes": "Live motion player with a reduced-motion preview: data-preview=\"reduced\" sets the six duration tokens to 0ms on the player, so the script reads 0 exactly as it does under the media query.",
   "interactive": true
@@ -113,7 +113,7 @@
   "chapter": "17",
   "rule": "17.4",
   "width_px": null,
-  "alt": "Failure case: do not publish. A line of script, link.animate(frames, { duration: 400, easing: “ease-out” }), over three still frames of Loop R1’s first link with reduced motion on: at 0 ms and 200 ms the link is still drawing, and only at 400 ms does it reach the second node. A note says the script carries its own 400 ms and never reads the tokens.",
+  "alt": "Failure case: do not publish. A line of script, link.animate(frames, { duration: 400, easing: “ease-out” }), over three still frames of Loop R1’s first link with reduced motion on: at 0 ms the link has not started, at 200 ms it is 68 percent drawn, and only at 400 ms does it reach the second node. A note says the script carries its own 400 ms and never reads the tokens.",
   "illustrative": false,
   "notes": "Picture of a fault: a script timing that the reduced motion setting cannot reach."
  },
@@ -185,5 +185,13 @@
   "alt": "Failure case: do not publish. On Newsprint and on Charcoal, a primary button whose focus ring touches it with no gap, and a quiet button whose hover is an inset shadow. On Charcoal the Newsprint ring meets the Newsprint fill, 1.00 to 1, so focus only makes the button 2 px larger; with forced colors on, the inset shadow disappears and hover shows nothing.",
   "illustrative": false,
   "notes": "Picture of a fault on both surfaces."
+ },
+ "s-17-opener": {
+  "chapter": "17",
+  "rule": null,
+  "width_px": null,
+  "alt": "The ten states in a strip, each named above a small sample at true size: muted, “Outside this view” in secondary words with an outline dot; disabled, a Download button with a dashed edge; hover, a Save button with a 2 px edge; focus, a Save button with a 2 px ring 2 px outside it; loading, a still line and “Loading the tracker”; selected, a Housing chip with a check, bold words and a 2 px edge; warning, the warning mark and “Warning: Checked in October” beside a 4 px bar in ink; error, the error mark and “Error: Enter a date” beside a 4 px Pillar Red bar; empty, “No symbol matches” in a dashed box; success, the success mark and “Saved”. Rule 17.8 draws each one in full.",
+  "illustrative": false,
+  "notes": "Chapter 17’s opener (call 8 of the round 2 fix brief, D2-1134, D2-1550): the ten states of Rule 17.8 in its order, flowing with the column; short names only, so it follows the page’s theme. The error’s red bar is the strip’s one working red."
  }
 }

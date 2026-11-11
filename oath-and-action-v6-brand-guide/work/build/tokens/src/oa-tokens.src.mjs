@@ -41,6 +41,19 @@ function onSurfaces(description, ext, map, perSurface = {}) {
 const semantic = (kind, job, map, perSurface) => onSurfaces(job, { tier: 'semantic', kind }, map, perSurface);
 const component = (job, map, perSurface) => onSurfaces(job, { tier: 'component' }, map, perSurface);
 
+// A renamed group keeps its old name as a deprecated alias for one release of the second part (Token Architecture
+// section 7, step 5; Rule 26.8). Each old token points at its new one, keeps its record (tier, kind, red role, keyline),
+// so every rule the new token meets holds for the old name too, and carries DTCG's $deprecated with the new name.
+// tokens.css writes the old CSS name as var() of the new one, and the surface classes and themes keep its short name.
+function deprecatedAlias(group, newPath, since, removedIn) {
+  return Object.fromEntries(Object.entries(group).map(([k, t]) => [k, {
+    ...tok(t.$type, ref(`${newPath}.${k}`),
+      `Deprecated: the old name of ${newPath}.${k}, kept as an alias through every 6.0 release. It leaves with ${removedIn}; use the new name.`,
+      { ...t.ext, deprecated: { replacedBy: `{${newPath}.${k}}`, since, removedIn } }),
+    $deprecated: `Renamed ${newPath}.${k} in ${since}; this alias leaves with ${removedIn}.`,
+  }]));
+}
+
 // Chart sizes keep a pointer to the build-script key they came from, so the chart kit can map them.
 const chartDim = (value, description, source, ext = {}) => tok('dimension', px(value), description, { source, ...ext });
 const chartNum = (value, unit, description, source, ext = {}) => tok('number', value, description, { unit, source, ...ext });
@@ -48,7 +61,7 @@ const chartNum = (value, unit, description, source, ext = {}) => tok('number', v
 // ------------------------------------------------------------------------------------------ metadata
 export const meta = {
   title: 'Oath & Action design tokens, Edition 06',
-  version: '6.0.0-gate2.7',   // stage C round 0, November 10, 2026: the light and dark themes (DR-204); see changeNotes (gate2.6: the error mark token colors the 4 px bar, PP-M3; gate2.5: the icon accent from 48 px, the 16 px utility line; gate2.4: mark tokens, D2-402, the 24 px utility line, icon sizes after DR-136)
+  version: '6.0.0-gate2.8',   // stage C round 2, November 11, 2026: DR-218 (descriptions in reader words, the loading mark's description, error.mark renamed error.bar with a deprecated alias) and D2-1544 (the field ground on Charcoal is Charcoal); see changeNotes (gate2.7: the light and dark themes, DR-204; gate2.6: the error mark token colors the 4 px bar, PP-M3; gate2.5: the icon accent from 48 px, the 16 px utility line; gate2.4: mark tokens, D2-402, the 24 px utility line, icon sizes after DR-136)
   status: 'pre-release',
   statusNote:
     'Built for Gate 2. Version 6.0.0 ships when Dustin approves the token files at Gate 2; until then every value may still change.',
@@ -89,11 +102,20 @@ export const meta = {
       'A role with no token on Charcoal, such as the diverging chart scale and the Error Band, is initial in the dark theme.',
     ],
   },
+  // A note's version, date, tokens, change and reason are reader words: chapter 26 prints the newest note (Rule 26.8), and
+  // tokens.css's header carries its change. The studio's decision codes sit in `record` alone (DR-218, BE-S7).
   changeNotes: [
+    { version: '6.0.0-gate2.8', date: '2026-11-11',
+      tokens: 'oa.color.state.error.bar, renamed from oa.color.state.error.mark; oa.color.field.ground.onCharcoal; oa.color.state.loading.mark and every description that carried a record code or an old name',
+      change: 'The token for the 4 px bar beside an error now takes the bar\'s name: oa.color.state.error.bar, --oa-color-state-error-bar in CSS. The old names stay as deprecated aliases through every 6.0 release and leave with 6.1.0. The field ground on Charcoal is now Charcoal, so a field in the dark theme shows by its strong Newsprint edge and an error\'s red bar sits on Charcoal at 4.49 to 1; no value is new. The loading mark\'s description now names the still lines of Rule 17.7, and every description is in plain words. Before 6.0.0, every change raises the number after the hyphen.',
+      reason: 'Red never sits on Prussian (Rule 05.3), and the dark field ground put an error\'s red bar on Prussian. The guide calls the error glyph the error mark, so the bar\'s token needed a name of its own, and the table prints every description to readers.',
+      record: 'DR-218, D2-1544 (D2-1469 withdrawn)', gate: 'Gate 2' },
     { version: '6.0.0-gate2.7', date: '2026-11-10', tokens: 'oa.color.field.ground on four surfaces (new semantic role, no new value); tokens.css gains the theme blocks and the --oa-color-surface short name',
       change: 'A light and a dark theme in tokens.css: under (prefers-color-scheme: dark), or with data-oa-theme="dark", every short name points at its Charcoal token; data-oa-theme="light" forces Newsprint. Every surface class also sets --oa-color-surface. A field ground role, so an entry box follows the theme.',
-      reason: 'DR-204: one dark mode for every screen product, drawn from Night Edition on Charcoal, that follows the device and a reader\'s switch', gate: 'Gate 2' },
-    { version: '6.0.0-gate2.6', date: '2026-11-10', tokens: 'oa.color.state.error.mark', change: 'Description only: the token colors the 4 px bar', reason: 'PP-M3', gate: 'Gate 2' },
+      reason: 'One dark mode for every screen product, drawn from our dark atlas style on Charcoal, that follows the device and a reader\'s switch',
+      record: 'DR-204', gate: 'Gate 2' },
+    { version: '6.0.0-gate2.6', date: '2026-11-10', tokens: 'oa.color.state.error.mark', change: 'Description only: the token colors the 4 px bar',
+      reason: 'The error glyph takes the text\'s ink (Rule 11.15), so the token colors the bar alone', record: 'PP-M3', gate: 'Gate 2' },
   ],
   fluidRange: { minViewportPx: 390, maxViewportPx: 1440 },
   remBasePx: 16,
@@ -161,7 +183,7 @@ const SURF4 = ['newsprint', 'white', 'charcoal', 'prussian'];
 const light = (a, b) => ({ newsprint: a, white: a, charcoal: b, prussian: b });
 
 const palette = {
-  newsprint: tok('color', hex('#DCD9D2'), 'Newsprint, the default reading surface and the page color for charts and the atlas (DR-53).',
+  newsprint: tok('color', hex('#DCD9D2'), 'Newsprint, the default reading surface and the page color for charts and the atlas.',
     { tier: 'primitive', status: 'locked', job: 'Default reading surface', lockedIn: 'Master Brief V2 section 3' }),
   charcoal: tok('color', hex('#121212'), 'Charcoal, primary text on light surfaces and the dark ground.',
     { tier: 'primitive', status: 'locked', job: 'Primary text on light surfaces and the dark ground', lockedIn: 'Master Brief V2 section 3' }),
@@ -180,15 +202,15 @@ const palette = {
 // Derived colors adopted at Gate 1 (T-4, T-5).
 const derived = {
   deepStone: tok('color', mix('stone', 'charcoal', 0.18),
-    'Deep Stone, secondary and disabled text on Newsprint and White. Stone mixed 18% toward Charcoal in OKLab (T-4).',
+    'Deep Stone, secondary and disabled text on Newsprint and White. Stone mixed 18% toward Charcoal in OKLab.',
     { tier: 'primitive', status: 'adopted', job: 'Secondary and disabled text on Newsprint and White', kind: 'text',
       surfaces: ['newsprint', 'white'], need: 'N-01', gate: 'Gate 1, T-4' }),
   dimNewsprint: tok('color', mix('newsprint', 'charcoal', 0.25),
-    'Dim Newsprint, secondary and disabled text on Charcoal and Prussian. Newsprint mixed 25% toward Charcoal in OKLab (T-5).',
+    'Dim Newsprint, secondary and disabled text on Charcoal and Prussian. Newsprint mixed 25% toward Charcoal in OKLab.',
     { tier: 'primitive', status: 'adopted', job: 'Secondary and disabled text on Charcoal and Prussian', kind: 'text',
       surfaces: ['charcoal', 'prussian'], need: 'N-02', gate: 'Gate 1, T-5' }),
   errorBand: tok('color', mix('pillarRed', 'newsprint', 0.88),
-    'Error Band, the ground of an error message on Newsprint and White. Pillar Red mixed 88% toward Newsprint in OKLab (T-5).',
+    'Error Band, the ground of an error message on Newsprint and White. Pillar Red mixed 88% toward Newsprint in OKLab.',
     { tier: 'primitive', status: 'adopted', job: 'Ground of an error message on Newsprint and White', kind: 'background',
       surfaces: ['newsprint', 'white'], need: 'N-03', gate: 'Gate 1, T-5',
       textOnIt: ['{oa.color.palette.charcoal}', '{oa.color.derived.deepStone}'] }),
@@ -232,6 +254,13 @@ const tints = Object.fromEntries([
   tint('verdigrisN25', 'verdigris', 'newsprint', 0.25, 'Fourth sequential Verdigris step on Charcoal', 'dataFill', ['charcoal'], 'N-08', 'Palette lab sequential on Charcoal'),
 ]);
 
+// The 4 px bar beside an error, the first claim on the view's working red (Rule 05.3); named oa.color.state.error.mark
+// until 6.0.0-gate2.8 (DR-218), and below under both names.
+const ERROR_BAR = semantic('graphic', 'The 4 px bar beside an error message and at the left of a field with an error: the first claim on the view\'s working red. The error mark, the glyph, takes the error text\'s ink, --oa-color-state-error-text-on-<surface>, since red on the Error Band falls under 3 to 1. Newsprint on Prussian, where red never sits.',
+  { newsprint: P('pillarRed'), white: P('pillarRed'), charcoal: P('pillarRed'), prussian: P('newsprint') },
+  { newsprint: { redRole: 'working', precedence: 1, keyline: '{oa.color.palette.charcoal}' },
+    white: { redRole: 'working', precedence: 1 }, charcoal: { redRole: 'working', precedence: 1 } });
+
 const color = {
   $description: 'Identity, state and data color. Identity marks use palette colors only; tints serve data scales, state grounds and chart structure.',
   palette,
@@ -243,7 +272,7 @@ const color = {
     secondary: semantic('text', 'Captions, metadata, labels, source lines and disabled text.', { ...light(D('deepStone'), D('dimNewsprint')) }),
   },
   graphic: {
-    essential: semantic('graphic', 'Marks a reader needs: icons, diagram strokes, lit Signal Grid nodes.', { newsprint: P('charcoal'), white: P('charcoal'), charcoal: P('newsprint'), prussian: P('newsprint') }),
+    essential: semantic('graphic', 'Marks a reader needs: icons, diagram strokes and the lit nodes in a diagram.', { newsprint: P('charcoal'), white: P('charcoal'), charcoal: P('newsprint'), prussian: P('newsprint') }),
     subtle: semantic('graphic', 'Marks that support: unlit nodes, secondary diagram strokes.', { newsprint: P('stone'), white: P('stone'), charcoal: D('dimNewsprint'), prussian: D('dimNewsprint') }),
   },
   border: {
@@ -256,14 +285,18 @@ const color = {
   // Stage C (November 10, 2026): the accessibility lead's G-1. A text field or other entry box sat on White by name, so
   // code could not follow the dark theme (DR-204). This role names the field's ground one step from its surface, the
   // pairing the selected band already uses; no value is new. Its strong border carries the boundary at 3:1 or more.
+  // Stage C round 2 (November 11, 2026), D2-1544: on Charcoal the field ground is Charcoal itself, not Prussian. An
+  // error's 4 px Pillar Red bar sits at a field's left edge, and red never sits on Prussian (Rule 05.3), for the party
+  // reading of red beside blue as well as its 3.19:1. The strong Newsprint edge carries the field at 13.29:1. The
+  // selected band on Charcoal stays Prussian; no red mark may touch it (the guide check's red-on-Prussian step).
   field: {
-    ground: semantic('background', 'Ground of a text field, select or other entry box: one step from the surface, as the selected band pairs them (White on Newsprint, Prussian on Charcoal). Its edge is the strong border, and the words in it take the surface\'s text roles.',
-      { newsprint: P('white'), white: P('newsprint'), charcoal: P('prussian'), prussian: P('charcoal') },
+    ground: semantic('background', 'Ground of a text field, select or other entry box. On Newsprint it is White and on White it is Newsprint, one step from the surface. On Charcoal it is Charcoal, so the field shows by its strong edge and an error\'s red bar never touches Prussian (Rule 05.3); on Prussian it is Charcoal. The words in it take the surface\'s text roles.',
+      { newsprint: P('white'), white: P('newsprint'), charcoal: P('charcoal'), prussian: P('charcoal') },
       Object.fromEntries(SURF4.map((s) => [s, { textOnIt: [`{oa.color.text.primary.${SURFACE_KEY[s]}}`, `{oa.color.text.secondary.${SURFACE_KEY[s]}}`], edge: `{oa.color.border.strong.${SURFACE_KEY[s]}}` }]))),
   },
   identity: {
     signature: semantic('logotype',
-      'Signature red: the wordmark ampersand, the lockmark lever, the ampersands in the hinge diagram and the hinge-circle badge, and a standalone icon\'s accent. It does not count against the view\'s working red (Rule 05.3). White on Prussian, treatment D.',
+      'Signature red: the wordmark ampersand, the lockmark lever, the ampersands in the hinge diagram and the hinge-circle badge, and a standalone icon\'s accent. It does not count against the view\'s working red (Rule 05.3). On Prussian it is White.',
       { newsprint: P('pillarRed'), white: P('pillarRed'), charcoal: P('pillarRed'), prussian: P('white') },
       { newsprint: { redRole: 'signature' }, white: { redRole: 'signature' }, charcoal: { redRole: 'signature' } }),
     hingeDivider: semantic('graphic', 'The ampersand in the hinge divider takes its surface\'s ink and is never red (Rule 05.3).',
@@ -275,7 +308,7 @@ const color = {
         { newsprint: P('pillarRed'), white: P('pillarRed'), charcoal: P('pillarRed'), prussian: P('newsprint') },
         { newsprint: { redRole: 'working', precedence: 2, keyline: '{oa.color.palette.charcoal}' },
           white: { redRole: 'working', precedence: 2 }, charcoal: { redRole: 'working', precedence: 2 } }),
-      label: semantic('largeText', 'Ask button label, White on Pillar Red, set in oa.type.ask at 19 px bold or larger (T-7).',
+      label: semantic('largeText', 'Ask button label, White on Pillar Red, set in oa.type.ask at 19 px bold or larger.',
         { newsprint: P('white'), white: P('white'), charcoal: P('white'), prussian: P('charcoal') },
         Object.fromEntries(SURF4.map((s) => [s, { requiresType: '{oa.type.ask}', ground: `{oa.color.action.ask.fill.${SURFACE_KEY[s]}}` }]))),
     },
@@ -290,7 +323,7 @@ const color = {
     },
   },
   state: {
-    $description: 'Every state changes text or shape as well as color, and no state uses opacity (section 4).',
+    $description: 'Every state changes text or shape as well as color, and no state uses opacity.',
     muted: {
       text: semantic('text', 'Muted text, set in regular weight.', light(D('deepStone'), D('dimNewsprint'))),
       mark: semantic('graphic', 'Muted marks, drawn as outlines.', light(P('stone'), D('dimNewsprint'))),
@@ -302,7 +335,7 @@ const color = {
     },
     loading: {
       text: semantic('text', 'Loading text in a role="status" region, such as "Loading tracker".', light(D('deepStone'), D('dimNewsprint'))),
-      mark: semantic('graphic', 'The still outline lever of the loading state. It never moves (T-10).', light(P('stone'), D('dimNewsprint')),
+      mark: semantic('graphic', 'The still lines of the loading state: the lines the data will sit on, drawn with no marks on them. They never move (Rule 17.7).', light(P('stone'), D('dimNewsprint')),
         Object.fromEntries(SURF4.map((s) => [s, { motion: 'none' }]))),
     },
     selected: {
@@ -324,11 +357,9 @@ const color = {
         { newsprint: { textOnIt: ['{oa.color.text.primary.onNewsprint}', '{oa.color.text.secondary.onNewsprint}'] },
           white: { textOnIt: ['{oa.color.text.primary.onWhite}', '{oa.color.text.secondary.onWhite}'] } }),
       // PP-M3 (round 3, November 10, 2026): Rule 11.15 draws the error glyph in the text's ink, so this token colors the
-      // 4 px bar alone. Its name waits for Dustin's answer at Gate 2 (D2-880).
-      mark: semantic('graphic', 'The 4 px bar beside an error message and at the left of a field with an error: the first claim on the view\'s working red. The error glyph takes the error text\'s ink, --oa-color-state-error-text-on-<surface>, since red on the Error Band falls under 3 to 1. Newsprint on Prussian, where red never sits.',
-        { newsprint: P('pillarRed'), white: P('pillarRed'), charcoal: P('pillarRed'), prussian: P('newsprint') },
-        { newsprint: { redRole: 'working', precedence: 1, keyline: '{oa.color.palette.charcoal}' },
-          white: { redRole: 'working', precedence: 1 }, charcoal: { redRole: 'working', precedence: 1 } }),
+      // 4 px bar alone. DR-218 (November 11, 2026) renames it for the bar; the old name stays as a deprecated alias.
+      bar: ERROR_BAR,
+      mark: deprecatedAlias(ERROR_BAR, 'oa.color.state.error.bar', '6.0.0-gate2.8', '6.1.0'),
       text: semantic('text', 'Error message text, in primary ink. Red never sets text.', { newsprint: P('charcoal'), white: P('charcoal'), charcoal: P('newsprint'), prussian: P('white') }),
     },
     empty: {
@@ -362,9 +393,9 @@ const color = {
 const font = {
   family: {
     display: tok('fontFamily', ['Inter Tight', 'Arial', 'sans-serif'], 'Display: titles, headings and big figures.'),
-    reading: tok('fontFamily', ['Inter', 'Arial', 'sans-serif'], 'Reading and interface text, chart labels and numbers (DR-47).'),
+    reading: tok('fontFamily', ['Inter', 'Arial', 'sans-serif'], 'Reading and interface text, chart labels and numbers.'),
     quote: tok('fontFamily', ['Lora', 'Georgia', 'serif'], 'Editorial quotation, italic only, and only for quoted words.', { fontStyle: 'italic' }),
-    emailSans: tok('fontFamily', ['Helvetica', 'Arial', 'sans-serif'], 'Email display and body, the system stack V5 documents.'),
+    emailSans: tok('fontFamily', ['Helvetica', 'Arial', 'sans-serif'], 'Email display and body, in the system stack.'),
     emailQuote: tok('fontFamily', ['Georgia', 'serif'], 'Email quotation, set italic.', { fontStyle: 'italic' }),
   },
   weight: {
@@ -392,10 +423,10 @@ const TYPE = [
   ['bodySmall', 'reading', 'regular', 15, 15, 1.6, 0, 'none', null, 'Table cells and dense specimen notes.'],
   ['ui', 'reading', 'semibold', 15, 15, 1.4, 0, 'none', null, 'Buttons, navigation and form controls.'],
   ['caption', 'reading', 'regular', 14, 14, 1.5, 0, 'none', null, 'Figure captions and source lines.'],
-  ['label', 'reading', 'bold', 13, 13, 1.4, 0.06, 'uppercase', null, 'Eyebrows, column heads and tags, set in capitals at 13 px with 6% tracking (T-9).'],
+  ['label', 'reading', 'bold', 13, 13, 1.4, 0.06, 'uppercase', null, 'Eyebrows, column heads and tags, set in capitals at 13 px with 6% tracking.'],
   ['dataLabel', 'reading', 'semibold', 13, 13, 1.3, 0, 'none', 'tabular-nums', 'Chart labels, axis values and table figures, with tabular figures and the true minus sign.'],
   ['figure', 'display', 'extrabold', 48, 104, 1.0, -0.03, 'none', 'tabular-nums', 'Big numbers in reports and specimens, with tabular figures and the true minus sign.'],
-  ['ask', 'reading', 'bold', 19, 19, 1.2, 0, 'none', null, 'Ask button label. White on Pillar Red passes only as large text, so it never sets below 19 px bold (T-7).'],
+  ['ask', 'reading', 'bold', 19, 19, 1.2, 0, 'none', null, 'Ask button label. White on Pillar Red passes only as large text, so it never sets below 19 px bold.'],
 ];
 const type = Object.fromEntries(TYPE.map(([name, fam, wt, minPx, maxPx, lh, tr, tt, numeric, job]) => [name, {
   $type: 'typography',
@@ -407,7 +438,7 @@ const type = Object.fromEntries(TYPE.map(([name, fam, wt, minPx, maxPx, lh, tr, 
 // ------------------------------------------------------------------------------------------ space, size, layout
 const SPACE = [['0', 0], ['050', 4], ['100', 8], ['150', 12], ['200', 16], ['300', 24], ['400', 32], ['500', 40], ['600', 48], ['800', 64], ['1000', 80], ['1300', 104]];
 const space = {
-  $description: 'Eleven steps on V5\'s 8 px rhythm plus zero, named by the multiple of 8 times 100. Type rhythm in rem.',
+  $description: 'Eleven steps on our fifth edition\'s 8 px rhythm plus zero, named by the multiple of 8 times 100. Type rhythm in rem.',
   ...Object.fromEntries(SPACE.map(([k, p]) => [k, tok('dimension', { $kind: 'remFromPx', px: p }, `${p} px at the default text size.`)])),
 };
 
@@ -415,13 +446,13 @@ const size = {
   // Stage B (November 9, 2026): which family sets an icon at each size follows DR-136 and D2-497. No topic or atlas
   // symbol is set at 16 px, and only the 41 that read there are set at 24 px.
   icon: {
-    small: tok('dimension', px(16), 'Icon at 16 px: a utility icon inline in text or a table heading, or a pixel-fit pillar icon. One color, with no red (R10, DR-67). No topic or atlas symbol is set at this size (DR-136).', { oneColor: true }),
-    medium: tok('dimension', px(24), 'Icon at 24 px: a utility icon beside a control\'s word, a pixel-fit pillar icon, or one of the 41 topic symbols that read at this size (DR-136). One color, with no red (D2-373, D2-497).'),
-    large: tok('dimension', px(48), 'Icon at 48 px: the smallest size for a topic or atlas symbol (DR-136), and the smallest that may carry a red accent. A pillar icon under this size sits with its word (R9, DR-67).'),
+    small: tok('dimension', px(16), 'Icon at 16 px: a utility icon inline in text or a table heading, or a pixel-fit pillar icon. One color, with no red. No topic or atlas symbol is set at this size.', { oneColor: true }),
+    medium: tok('dimension', px(24), 'Icon at 24 px: a utility icon beside a control\'s word, a pixel-fit pillar icon, or one of the 41 topic symbols that read at this size. One color, with no red.'),
+    large: tok('dimension', px(48), 'Icon at 48 px: the smallest size for a topic or atlas symbol, and the smallest that may carry a red accent. A pillar icon under this size sits with its word.'),
   },
   target: {
     minimum: tok('dimension', px(24), 'Smallest pointer target, WCAG 2.2 success criterion 2.5.8.'),
-    touch: tok('dimension', px(44), 'Height of tabs, links and buttons in the studio pages and the guide.'),
+    touch: tok('dimension', px(44), 'Height of tabs, links and buttons.'),
   },
 };
 
@@ -448,7 +479,7 @@ const layout = {
 
 const radius = {
   none: tok('dimension', px(0), 'Every box, button and input.'),
-  full: tok('number', 0.5, 'Circles: Signal Grid nodes, badges and the round container mark. DTCG has no percentage, so the value is a fraction and CSS writes 50%.', { css: '50%' }),
+  full: tok('number', 0.5, 'Circles: diagram nodes, badges and the round container mark. DTCG has no percentage, so the value is a fraction and CSS writes 50%.', { css: '50%' }),
 };
 
 const border = {
@@ -464,7 +495,7 @@ const border = {
 };
 
 const opacity = {
-  $description: 'Two decorative jobs and no others (T-10). A color token is never transparent.',
+  $description: 'Two decorative jobs and no others. A color token is never transparent.',
   watermarkOnLight: tok('number', 0.08, 'Charcoal watermark on Newsprint or White. Decoration only: it measures 1.17:1 and never carries meaning.', { composite: { ink: '{oa.color.palette.charcoal}', ground: '{oa.color.palette.newsprint}' } }),
   watermarkOnDark: tok('number', 0.10, 'Newsprint watermark on Charcoal or Prussian. Decoration only: it measures 1.24:1 and never carries meaning.', { composite: { ink: '{oa.color.palette.newsprint}', ground: '{oa.color.palette.charcoal}' } }),
 };
@@ -513,50 +544,50 @@ const MAG_LABEL_C = ['newsprint', 'newsprint', 'charcoal', 'charcoal'];
 const DIV_WORDS = ['strong Prussian end', 'light Prussian step', 'midpoint, tinted toward the page', 'light Verdigris step', 'strong Verdigris end'];
 
 const chartColor = {
-  $description: 'Chart color on Newsprint, the page color (DR-53), and on Charcoal, the dark ground (DR-50). One dark subject against gray context; red only for the one point a title names.',
-  subject: component('Subject: the series the title names and its labels (Explainer ink). 3 px lines, 6.5 px dots.', NC('{oa.color.data.emphasis.onNewsprint}', '{oa.color.data.emphasis.onCharcoal}')),
-  context: component('Context: every other series, 2 px, so the subject reads first (Explainer ctx).', NC('{oa.color.data.context.onNewsprint}', '{oa.color.data.context.onCharcoal}')),
+  $description: 'Chart color on Newsprint, the page color, and on Charcoal, the dark ground. One dark subject against gray context; red only for the one point a title names.',
+  subject: component('Subject: the series the title names and its labels. 3 px lines, 6.5 px dots.', NC('{oa.color.data.emphasis.onNewsprint}', '{oa.color.data.emphasis.onCharcoal}')),
+  context: component('Context: every other series, 2 px, so the subject reads first.', NC('{oa.color.data.context.onNewsprint}', '{oa.color.data.context.onCharcoal}')),
   label: component('Direct labels on the subject and chart headings.', NC('{oa.color.text.primary.onNewsprint}', '{oa.color.text.primary.onCharcoal}')),
-  secondary: component('Ticks, notes, measure lines and source lines (Explainer sec).', NC('{oa.color.text.secondary.onNewsprint}', '{oa.color.text.secondary.onCharcoal}')),
+  secondary: component('Ticks, notes, measure lines and source lines.', NC('{oa.color.text.secondary.onNewsprint}', '{oa.color.text.secondary.onCharcoal}')),
   baseline: component('The zero baseline and reference rules, 1.5 px.', NC('{oa.color.data.emphasis.onNewsprint}', '{oa.color.data.emphasis.onCharcoal}')),
   leader: component('Leaders from a note to its mark, 1 px.', NC('{oa.color.data.context.onNewsprint}', '{oa.color.data.context.onCharcoal}')),
   point: component('The one point a title names, in working red at the third rank. Only when no error or ask holds the view\'s red.', NC('{oa.color.data.emphasisRed.onNewsprint}', '{oa.color.data.emphasisRed.onCharcoal}')),
   pointKeyline: component('The 1 px keyline around a red point on Newsprint, where Pillar Red measures 2.96:1.', { newsprint: '{oa.color.border.strong.onNewsprint}' }),
   party: {
-    mark: component('Every mark that stands for a party\'s lead, vote or share: one neutral ink for every party, with the party named on the mark (DR-48, DR-58).', NC('{oa.color.data.emphasis.onNewsprint}', '{oa.color.data.emphasis.onCharcoal}'),
+    mark: component('Every mark that stands for a party\'s lead, vote or share: one neutral ink for every party, with the party named on the mark.', NC('{oa.color.data.emphasis.onNewsprint}', '{oa.color.data.emphasis.onCharcoal}'),
       { newsprint: { partyMark: true }, charcoal: { partyMark: true } }),
   },
-  labelOnSubject: semantic('text', 'Text set on a subject-colored bar or chip (Explainer inv).', NC(P('white'), P('charcoal')),
+  labelOnSubject: semantic('text', 'Text set on a subject-colored bar or chip.', NC(P('white'), P('charcoal')),
     { newsprint: { ground: '{oa.color.data.emphasis.onNewsprint}' }, charcoal: { ground: '{oa.color.data.emphasis.onCharcoal}' } }),
   chip: {
     fill: semantic('graphic', 'Fill of the evidence-label chip above a chart title.', NC(P('charcoal'), P('newsprint'))),
     label: semantic('text', 'Text in the evidence-label chip.', NC(P('newsprint'), P('charcoal')),
       { newsprint: { ground: '{oa.chart.color.chip.fill.onNewsprint}' }, charcoal: { ground: '{oa.chart.color.chip.fill.onCharcoal}' } }),
   },
-  lightFill: semantic('dataFill', 'Light fill: a category under the subject, with its value printed (Explainer lt).', NC(T('stoneN55'), P('stone')),
+  lightFill: semantic('dataFill', 'Light fill: a category under the subject, with its value printed.', NC(T('stoneN55'), P('stone')),
     { newsprint: { valuesPrinted: true }, charcoal: { valuesPrinted: true } }),
-  track: semantic('decorative', 'Track: the whole a share sits in (Explainer lt2).', NC(T('stoneN88'), T('stoneC55'))),
+  track: semantic('decorative', 'Track: the whole a share sits in.', NC(T('stoneN88'), T('stoneC55'))),
   gridline: semantic('decorative', 'Gridline, 1 px. It may pass behind a label, which carries a ground-colored halo.', NC(T('stoneN70'), T('stoneC45'))),
   band: semantic('decorative', 'Band: a stretch of time a note names.', NC(T('whiteN55'), T('stoneC72'))),
-  land: semantic('decorative', 'Map land under data marks (stretch test).', NC(T('whiteN55'), T('stoneC80'))),
+  land: semantic('decorative', 'Map land under data marks.', NC(T('whiteN55'), T('stoneC80'))),
   diverging: {
-    $description: 'Diverging pair B, Prussian through the page color to Verdigris (DR-54). Neither end keeps its order in grayscale, so a boxed arrow or a printed sign carries direction. Newsprint only until a Charcoal ramp is measured.',
+    $description: 'Diverging pair B, Prussian through the page color to Verdigris. Neither end keeps its order in grayscale, so a boxed arrow or a printed sign carries direction. Newsprint only until a Charcoal ramp is measured.',
     fill: steps(5, (i) => semantic('dataFill', `Diverging pair B, step ${i} of 5: the ${DIV_WORDS[i - 1]}.`, { newsprint: DIV_N[i - 1] },
       { newsprint: { valuesPrinted: true, scale: 'diverging', step: i } })),
     label: steps(5, (i) => semantic('text', `Text on diverging step ${i}.`, { newsprint: P(DIV_LABEL_N[i - 1]) },
       { newsprint: { ground: `{oa.chart.color.diverging.fill.step${i}.onNewsprint}` } })),
   },
   sequential: {
-    $description: 'Sequential Verdigris, five steps per ground, light to strong on Newsprint and dark to light on Charcoal, so the most always reads strongest (palette lab; stretch S16).',
+    $description: 'Sequential Verdigris, five steps per ground, light to strong on Newsprint and dark to light on Charcoal, so the most always reads strongest.',
     fill: steps(5, (i) => semantic('dataFill', `Sequential Verdigris, step ${i} of 5.`, NC(T(SEQ_N[i - 1]), T(SEQ_C[i - 1])),
       { newsprint: { valuesPrinted: true, scale: 'sequential', step: i }, charcoal: { valuesPrinted: true, scale: 'sequential', step: i } })),
     label: steps(5, (i) => semantic('text', `Text on sequential step ${i}.`, NC(P(SEQ_LABEL_N[i - 1]), P(SEQ_LABEL_C[i - 1])),
       { newsprint: { ground: `{oa.chart.color.sequential.fill.step${i}.onNewsprint}` }, charcoal: { ground: `{oa.chart.color.sequential.fill.step${i}.onCharcoal}` } })),
-    outline: semantic('graphic', 'Outline of a sized circle on a sequential map: the strongest step, holding 3:1 on the ground and on the land (stretch qk).', NC(T(SEQ_N[4]), T(SEQ_C[4])),
+    outline: semantic('graphic', 'Outline of a sized circle on a sequential map: the strongest step, holding 3:1 on the ground and on the land.', NC(T(SEQ_N[4]), T(SEQ_C[4])),
       { newsprint: { groundsAlso: ['{oa.chart.color.land.onNewsprint}'] }, charcoal: { groundsAlso: ['{oa.chart.color.land.onCharcoal}'] } }),
   },
   magnitude: {
-    $description: 'Gray steps by size, with no direction, for phone tile maps of shifts (DR-64; stretch S12). The figure prints in every tile.',
+    $description: 'Gray steps by size, with no direction, for phone tile maps of shifts. The figure prints in every tile.',
     fill: steps(4, (i) => semantic('dataFill', `Gray magnitude step ${i} of 4.`, NC(MAG_N[i - 1], MAG_C[i - 1]),
       { newsprint: { valuesPrinted: true, scale: 'magnitude', step: i }, charcoal: { valuesPrinted: true, scale: 'magnitude', step: i } })),
     label: steps(4, (i) => semantic('text', `Text on gray magnitude step ${i}.`, NC(P(MAG_LABEL_N[i - 1]), P(MAG_LABEL_C[i - 1])),
@@ -567,7 +598,7 @@ const chartColor = {
 const EXPL = (k) => `build_concept.py CHART_TOKENS${k}`;
 const STR = (k) => `build_stretch.py STRETCH_TOKENS${k}`;
 const chart = {
-  $description: 'The chart kit\'s tokens: color roles on the two chart grounds and every size the Explainer generators draw with. Sizes are SVG px at the artboard\'s natural width.',
+  $description: 'Chart tokens: color roles on the two chart grounds and every size a chart is drawn with. Sizes are SVG px at the artboard\'s natural width.',
   color: chartColor,
   artboard: {
     wide: chartDim(1024, 'Widest artboard: a chart that breaks out of the reading column.', EXPL("['artboard']['wide']")),
@@ -577,7 +608,7 @@ const chart = {
     smallPhone: chartDim(328, 'Small phone artboard: 360 px less the margins.', EXPL("['artboard']['small_phone']")),
   },
   type: {
-    $description: 'Type sizes inside chart drawings, in Inter and Inter Tight only (DR-47). Nothing under 13 px; phone artboards set nothing under 14 px except tile codes.',
+    $description: 'Type sizes inside chart drawings, in Inter and Inter Tight only. Nothing under 13 px; phone artboards set nothing under 14 px except tile codes.',
     label: chartDim(15, 'Direct labels on marks.', EXPL("['type']['label']"), { role: 'fontSize' }),
     tick: chartDim(13, 'Axis tick values.', EXPL("['type']['tick']"), { role: 'fontSize' }),
     note: chartDim(14, 'Notes inside the drawing.', EXPL("['type']['note']"), { role: 'fontSize' }),
@@ -727,10 +758,10 @@ const componentTokens = {
     },
   },
   icon: {
-    ink: component('Civic Line icon ink. At 16 px the whole icon takes this one color (R10).', Object.fromEntries(SURF4.map((s) => [s, `{oa.color.graphic.essential.${SURFACE_KEY[s]}}`]))),
+    ink: component('Civic Line icon ink. At 16 px the whole icon takes this one color.', Object.fromEntries(SURF4.map((s) => [s, `{oa.color.graphic.essential.${SURFACE_KEY[s]}}`]))),
     // Round 2 (November 10, 2026): every Civic Line drawing is one color under 48 px (D2-373, D2-497), and the light
     // editions on Prussian keep their own rule (DR-09), so the accent starts at 48 px and names no Prussian treatment.
-    accent: component('Red accent of a standalone icon, or of the current icon in a row or menu, at 48 px and up: signature red, bare on Newsprint (R11, DR-66).',
+    accent: component('Red accent of a standalone icon, or of the current icon in a row or menu, at 48 px and up: signature red, bare on Newsprint.',
       Object.fromEntries(SURF4.map((s) => [s, `{oa.color.identity.signature.${SURFACE_KEY[s]}}`])),
       Object.fromEntries(SURF4.map((s) => [s, { minSize: '{oa.size.icon.large}' }]))),
     // The utility set (DR-134, DR-161 to DR-178): round caps and joins, one color through currentColor, no red. Each
@@ -765,12 +796,12 @@ const componentTokens = {
     },
   },
   appIcon: {
-    tile: tok('color', '{oa.color.surface.charcoal}', 'App icon tile: Charcoal by default (R13, DR-67).', { tier: 'component' }),
-    mark: tok('color', '{oa.color.graphic.essential.onCharcoal}', 'The icon on the app icon tile, in Newsprint (G1-09).', { tier: 'component' }),
+    tile: tok('color', '{oa.color.surface.charcoal}', 'App icon tile: Charcoal by default.', { tier: 'component' }),
+    mark: tok('color', '{oa.color.graphic.essential.onCharcoal}', 'The icon on the app icon tile, in Newsprint.', { tier: 'component' }),
     accent: tok('color', '{oa.color.identity.signature.onCharcoal}', 'Red accent on the app icon tile: signature red, since the icon stands alone.', { tier: 'component' }),
   },
   avatar: {
-    tile: tok('color', '{oa.color.surface.charcoal}', 'Avatar tile: Charcoal by default (R13, DR-67).', { tier: 'component' }),
+    tile: tok('color', '{oa.color.surface.charcoal}', 'Avatar tile: Charcoal by default.', { tier: 'component' }),
     mark: tok('color', '{oa.color.graphic.essential.onCharcoal}', 'The mark on the avatar tile, in Newsprint.', { tier: 'component' }),
     accent: tok('color', '{oa.color.identity.signature.onCharcoal}', 'Red accent on the avatar: signature red, since the mark stands alone.', { tier: 'component' }),
   },

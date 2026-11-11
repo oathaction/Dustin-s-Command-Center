@@ -1,5 +1,5 @@
 /* Oath & Action design tokens, Edition 06
- * Version 6.0.0-gate2.7 (pre-release). Built for Gate 2. Version 6.0.0 ships when Dustin approves the token files at Gate 2; until then every value may still change.
+ * Version 6.0.0-gate2.8 (pre-release). Built for Gate 2. Version 6.0.0 ships when Dustin approves the token files at Gate 2; until then every value may still change.
  * DTCG Format Module 2025.10. Generated from work/build/tokens/src/oa-tokens.src.mjs
  * by work/build/scripts/phase-2/tokens_build.mjs. Do not edit by hand: the token tests fail when this
  * file and tokens.json disagree.
@@ -9,7 +9,7 @@
  * --oa-color-text-secondary, at that surface's tokens.
  * Themes: the root follows the device, light on Newsprint or dark on Charcoal (DR-204), and
  * data-oa-theme="light" or "dark" on the root wins over the device. See the theme blocks below.
- * Change in 6.0.0-gate2.7: A light and a dark theme in tokens.css: under (prefers-color-scheme: dark), or with data-oa-theme="dark", every short name points at its Charcoal token; data-oa-theme="light" forces Newsprint. Every surface class also sets --oa-color-surface. A field ground role, so an entry box follows the theme.
+ * Change in 6.0.0-gate2.8: The token for the 4 px bar beside an error now takes the bar's name: oa.color.state.error.bar, --oa-color-state-error-bar in CSS. The old names stay as deprecated aliases through every 6.0 release and leave with 6.1.0. The field ground on Charcoal is now Charcoal, so a field in the dark theme shows by its strong Newsprint edge and an error's red bar sits on Charcoal at 4.49 to 1; no value is new. The loading mark's description now names the still lines of Rule 17.7, and every description is in plain words. Before 6.0.0, every change raises the number after the hyphen.
  *
  * Media queries cannot read custom properties. Write breakpoints in em, which follows text size:
  *   wide        (min-width: 90em)
@@ -108,7 +108,7 @@
   /* oa.color.field */
   --oa-color-field-ground-on-newsprint: var(--oa-color-palette-white);
   --oa-color-field-ground-on-white: var(--oa-color-palette-newsprint);
-  --oa-color-field-ground-on-charcoal: var(--oa-color-palette-prussian);
+  --oa-color-field-ground-on-charcoal: var(--oa-color-palette-charcoal);
   --oa-color-field-ground-on-prussian: var(--oa-color-palette-charcoal);
 
   /* oa.color.identity */
@@ -186,10 +186,14 @@
   --oa-color-state-warning-text-on-prussian: var(--oa-color-palette-white);
   --oa-color-state-error-band-on-newsprint: var(--oa-color-derived-error-band);
   --oa-color-state-error-band-on-white: var(--oa-color-derived-error-band);
-  --oa-color-state-error-mark-on-newsprint: var(--oa-color-palette-pillar-red);
-  --oa-color-state-error-mark-on-white: var(--oa-color-palette-pillar-red);
-  --oa-color-state-error-mark-on-charcoal: var(--oa-color-palette-pillar-red);
-  --oa-color-state-error-mark-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-state-error-bar-on-newsprint: var(--oa-color-palette-pillar-red);
+  --oa-color-state-error-bar-on-white: var(--oa-color-palette-pillar-red);
+  --oa-color-state-error-bar-on-charcoal: var(--oa-color-palette-pillar-red);
+  --oa-color-state-error-bar-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-state-error-mark-on-newsprint: var(--oa-color-state-error-bar-on-newsprint); /* deprecated, renamed --oa-color-state-error-bar-on-newsprint, leaves with 6.1.0 */
+  --oa-color-state-error-mark-on-white: var(--oa-color-state-error-bar-on-white); /* deprecated, renamed --oa-color-state-error-bar-on-white, leaves with 6.1.0 */
+  --oa-color-state-error-mark-on-charcoal: var(--oa-color-state-error-bar-on-charcoal); /* deprecated, renamed --oa-color-state-error-bar-on-charcoal, leaves with 6.1.0 */
+  --oa-color-state-error-mark-on-prussian: var(--oa-color-state-error-bar-on-prussian); /* deprecated, renamed --oa-color-state-error-bar-on-prussian, leaves with 6.1.0 */
   --oa-color-state-error-text-on-newsprint: var(--oa-color-palette-charcoal);
   --oa-color-state-error-text-on-white: var(--oa-color-palette-charcoal);
   --oa-color-state-error-text-on-charcoal: var(--oa-color-palette-newsprint);
@@ -781,6 +785,7 @@
   --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-newsprint);
   --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-newsprint);
   --oa-color-state-error-band: var(--oa-color-state-error-band-on-newsprint);
+  --oa-color-state-error-bar: var(--oa-color-state-error-bar-on-newsprint);
   --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-newsprint);
   --oa-color-state-error-text: var(--oa-color-state-error-text-on-newsprint);
   --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-newsprint);
@@ -880,6 +885,7 @@
   --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-white);
   --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-white);
   --oa-color-state-error-band: var(--oa-color-state-error-band-on-white);
+  --oa-color-state-error-bar: var(--oa-color-state-error-bar-on-white);
   --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-white);
   --oa-color-state-error-text: var(--oa-color-state-error-text-on-white);
   --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-white);
@@ -979,6 +985,7 @@
   --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-charcoal);
   --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-charcoal);
   --oa-color-state-error-band: initial;
+  --oa-color-state-error-bar: var(--oa-color-state-error-bar-on-charcoal);
   --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-charcoal);
   --oa-color-state-error-text: var(--oa-color-state-error-text-on-charcoal);
   --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-charcoal);
@@ -1078,6 +1085,7 @@
   --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-prussian);
   --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-prussian);
   --oa-color-state-error-band: initial;
+  --oa-color-state-error-bar: var(--oa-color-state-error-bar-on-prussian);
   --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-prussian);
   --oa-color-state-error-text: var(--oa-color-state-error-text-on-prussian);
   --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-prussian);
@@ -1186,6 +1194,7 @@
   --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-newsprint);
   --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-newsprint);
   --oa-color-state-error-band: var(--oa-color-state-error-band-on-newsprint);
+  --oa-color-state-error-bar: var(--oa-color-state-error-bar-on-newsprint);
   --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-newsprint);
   --oa-color-state-error-text: var(--oa-color-state-error-text-on-newsprint);
   --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-newsprint);
@@ -1286,6 +1295,7 @@
     --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-charcoal);
     --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-charcoal);
     --oa-color-state-error-band: initial;
+    --oa-color-state-error-bar: var(--oa-color-state-error-bar-on-charcoal);
     --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-charcoal);
     --oa-color-state-error-text: var(--oa-color-state-error-text-on-charcoal);
     --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-charcoal);
@@ -1386,6 +1396,7 @@
   --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-charcoal);
   --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-charcoal);
   --oa-color-state-error-band: initial;
+  --oa-color-state-error-bar: var(--oa-color-state-error-bar-on-charcoal);
   --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-charcoal);
   --oa-color-state-error-text: var(--oa-color-state-error-text-on-charcoal);
   --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-charcoal);

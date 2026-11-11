@@ -202,7 +202,7 @@ STYLE = """
 .tt-via code { overflow-wrap: break-word }
 .tt-st .tt-mk { width: var(--oa-size-icon-small); height: var(--oa-size-icon-small); margin-right: .4em; vertical-align: -.2em }
 .tt-st .tt-ok { color: var(--oa-color-state-success-mark) }
-.tt-st.is-error { color: var(--oa-color-state-error-text); background: var(--oa-color-state-error-band); border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-mark); padding: var(--oa-space-100) var(--oa-space-150) }
+.tt-st.is-error { color: var(--oa-color-state-error-text); background: var(--oa-color-state-error-band); border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar); padding: var(--oa-space-100) var(--oa-space-150) }
 .tt-wrap { container-type: inline-size }
 @container (max-width: 50rem) {
   .tt thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%) }
@@ -259,27 +259,21 @@ document.querySelectorAll('.tt').forEach(function (box) {
 """
 
 
-# Round 1 (November 11, 2026): the table is reader text, so a description reaches it without the studio's decision
-# codes and with today's names (guide_check.js's codes and retiredWords tests hold every reader page to this). tokens.json
-# keeps its descriptions whole for builders. A description that still carries a code stops the script, so a new one
-# cannot slip through.
-STUDIO = r"(?:DR|D1|D2|G1)-\d+|T-\d+|[RIS]\d+|N-\d+"
-READER_WORDS = (("lit Signal Grid nodes", "lit nodes in a diagram"), ("Circles: Signal Grid nodes,", "Circles: diagram nodes,"),
-                (", the system stack V5 documents", ", the system stack"), (" in the studio pages and the guide", ""))
-NOT_FOR_READERS = re.compile(r"\b(?:DR|D1|D2|G1)-\d+|\bT-\d+\b|\b(?:R9|R13|I6|I8|S5|S9)\b|Signal Grid|\bV5\b|\bV4\.2\b|the studio|"
-                             r"\bGates?\b|\bPhase\b|Master Brief|Atlas V7|\bBoard \d")
+# The table is reader text (guide_check.js's codes and retiredWords tests hold every reader page to this). Since
+# 6.0.0-gate2.8 (DR-218) every description in tokens.json is written for readers, so the table prints each one word for
+# word, and this guard stops the script on any description that brings back a studio code, a retired name or an
+# internal one, so a new one cannot slip through. Round 1 rewrote the descriptions here; the source now does.
+NOT_FOR_READERS = re.compile(r"\b(?:DR|D1|D2|G1)-\d+|\bT-\d+\b|\bN-\d+\b|\b(?:PP|BE|CD|CA|AX|RP)-[MS]\d+|\b[RIS]\d+\b|"
+                             r"Signal Grid|\bV5\b|\bV4\.2\b|the studio|\bGates?\b|\bPhase\b|Master Brief|Atlas V7|\bBoard \d|"
+                             r"Explainer|palette lab|stretch test|Night Edition|treatment [A-Z]\b|\bsection \d")
 
 
 def reader(text, where):
-    """A description as the guide's readers see it: a parenthesis of studio codes alone goes, and retired names take
-    today's words."""
-    t = re.sub(r"\s*\((?:\s*(?:" + STUDIO + r")\s*,?)+\)", "", text)
-    for a, b in READER_WORDS:
-        t = t.replace(a, b)
-    left = NOT_FOR_READERS.search(t)
+    """A description as the guide's readers see it: tokens.json's words, held to the guard above."""
+    left = NOT_FOR_READERS.search(text)
     if left:
-        raise SystemExit(f"token_table_build: the description of {where} still says {left.group(0)!r} to readers: {t}")
-    return t
+        raise SystemExit(f"token_table_build: the description of {where} says {left.group(0)!r} to readers: {text}")
+    return text
 
 
 def build(tokens_path):
@@ -298,7 +292,7 @@ def build(tokens_path):
             cn = css_name(p)
             rows.append(f'<tr><th scope="row"><span class="tt-n">{dots(p)}</span><code class="tt-c">{e(cn)}</code>'
                         f'<button type="button" class="tt-copy" data-copy="{e(cn)}" aria-label="Copy {e(cn)}">Copy</button></th>'
-                        f'<td>{value_html(p, toks)}</td><td>{e(reader(t.get("$description", ""), p))}</td><td>{e(TIER.get(x.get("tier"), "Untiered"))}</td>'
+                        f'<td>{value_html(p, toks)}</td><td>{e(reader(t.get("$description", ""), p))}</td><td>{e(TIER.get(x.get("tier"), "Untiered"))}{", deprecated" if "$deprecated" in t else ""}</td>'
                         f'<td>{contrast_html(p, toks)}</td></tr>')
         body.append(f'<tbody>{"".join(rows)}</tbody>')
     n = len(toks)

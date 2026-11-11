@@ -477,7 +477,7 @@ a.toc-part-k:hover { text-decoration: underline }
 .status .st-ok { color: var(--oa-color-state-success-mark) }
 .status.is-ok { color: var(--oa-color-state-success-text) }
 .status.is-error { color: var(--oa-color-state-error-text); background: var(--oa-color-state-error-band);
-  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-mark); padding: var(--oa-space-100) var(--oa-space-150) }
+  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar); padding: var(--oa-space-100) var(--oa-space-150) }
 .status.is-error b { font-weight: var(--oa-font-weight-bold) }
 .copy-fallback { display: block; margin-top: var(--oa-space-100); width: 100%; max-width: 30rem; font-family: var(--mono) }
 

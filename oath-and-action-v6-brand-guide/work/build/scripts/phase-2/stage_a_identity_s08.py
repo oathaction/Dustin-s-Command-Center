@@ -52,12 +52,19 @@ def s_08_1_correct():
     cons = (f'<div style="position:relative;width:560px;height:320px">{over}'
             f'<div style="position:absolute;left:64px;top:40px">{mark(LOCK["display"], h=240, label="Lockmark construction, display master at 240 px")}</div></div>')
 
-    def it(lbl, inner):
-        return f'<div class="oai-cell">{inner}<span class="oai-tag">{E(lbl)}</span></div>'
-    # two rows, each one group (CA-S14): the four masters at their own sizes, then the 48 px master on the two dark surfaces
+    def it(lbl, inner, wrap=False):
+        st = ' style="max-width:260px"' if wrap else ""
+        return f'<div class="oai-cell">{inner}<span class="oai-tag"{st}>{E(lbl)}</span></div>'
+    # rows, each one group (CA-S14): the two large drawings side by side with their places named (round 2, CD-S15): the
+    # display master at 120 px and the 48 px master at 96 px, a social card's sign-off; then the three pixel-grid masters
+    # at their own sizes; then the 48 px master on the two dark surfaces
     body = ('<div class="oai-panel oai-s-newsprint"><div class="oai-stack" style="gap:24px">' + cons
             + '<div class="oai-row" style="flex-wrap:nowrap">'
-            + it("Display master, 96 px", lockmark(96, label="Lockmark, display master, at 96 px"))
+            + it("Display master, 120 px; every size from 49 px but the social sign-off",
+                 lockmark(120, label="Lockmark, display master, at 120 px"), wrap=True)
+            + it("48 px master, 96 px; social card sign-off only",
+                 sign_off("social", label="Lockmark, 48 px master at 96 px, a social card's sign-off"), wrap=True)
+            + '</div><div class="oai-row" style="flex-wrap:nowrap">'
             + it("48 px master", lockmark(48, label="Lockmark, 48 px master"))
             + it("24 px master", lockmark(24, label="Lockmark, 24 px master"))
             + it("16 px master", lockmark(16, label="Lockmark, 16 px master"))
@@ -66,13 +73,17 @@ def s_08_1_correct():
             + f'<div class="oai-cell"><div class="oai-s-prussian" style="padding:12px;line-height:0">{lockmark(48, surface="prussian", label="Lockmark at 48 px on Prussian, all White")}</div><span class="oai-tag">On Prussian, all White</span></div>'
             + '</div></div></div>')
     alt = ("The lockmark: nine nodes on a three by three grid joined by thin links around the edge and through the center, with "
-           "a larger red node, the lever, at bottom right. Its construction at 240 pixels with the node centers and radii, then "
-           "its four masters at true size: the display master at 96 pixels with fine links and small nodes, and the 48, 24 and "
-           "16 pixel masters, each heavier, with the same nine nodes, links and lever. Last, the 48 pixel master on Charcoal, "
-           "in Newsprint with its red lever, and on Prussian, all in White.")
+           "a larger red node, the lever, at bottom right. Its construction at 240 pixels with the node centers and radii. "
+           "Then its four masters at true size: the display master at 120 pixels, labeled for every size from 49 pixels but "
+           "the social sign-off, with fine links and small nodes, beside the 48 pixel master drawn at exactly 96 pixels, "
+           "labeled social card sign-off only, heavier, each of its pixels a block of 2 by 2; below them the 48, 24 and 16 "
+           "pixel masters at their own sizes, each heavier, with the same nine nodes, links and lever. Last, the 48 pixel "
+           "master on Charcoal, in Newsprint with its red lever, and on Prussian, all in White.")
     return rec("s-08-1-correct", "08.1", 700, alt, body, fit_switch=True,
-               notes="Construction from the display master at 240 px. The four masters each at their own size (DR-131): the display "
-                     "master at 96 px, then the 48, 24 and 16 px masters on whole pixels. The 48 and 24 px masters are the rebuilt "
+               notes="Construction from the display master at 240 px. The four masters (DR-131): the display master at 120 px, a "
+                     "size it serves and the size chapter 17's lever player uses (D2-1397), beside the 48 px master at exactly "
+                     "96 px, the social card's sign-off (DR-211), so the two large drawings stand side by side with their "
+                     "places named (stage C round 2, CD-S15); then the 48, 24 and 16 px masters on whole pixels. The 48 and 24 px masters are the rebuilt "
                      "files in use since November 10, 2026, each node and the lever one outline (DR-181): "
                      "lockmark/20261109_Lockmark-48px-Master-Outline.svg and lockmark/20261109_Lockmark-24px-Master-Outline.svg, the "
                      "same pixels as the earlier files at these sizes (DR-145). The 16 px master is unchanged. On Prussian, the rebuilt "
