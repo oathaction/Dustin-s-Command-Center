@@ -441,7 +441,7 @@ After the weight pass and the data lead's fix pass (November 11, late):
 - `guide_build.py --strict` with and without the weight pass: 0 warnings each; 9,982,210 and 9,936,110 bytes; projected 15,095,975 and 15,050,725 against 15.5 MB.
 - The pixel proof, `weight_pass_proof.js` on those two pages: PROOF_RESULT. The page against itself at 1280 px: 739 of 739 equal.
 - `weight_pass.py --self-test`: every case passes (CSS cases, a PNG made smaller with the same pixels, a changed pixel told apart, a download left whole).
-- (a) and (b): `tools/kit_snapshot.mjs` on the source kit and the minified bundle, and before and after the shared module: 429 drawings and figures, 0 differ.
+- (a) and (b): `tools/kit_snapshot.mjs` on the source kit and the minified bundle, and before and after the shared module: 429 drawings and figures, 0 differ; again after the token fix pass and the kit's new label roles, source against the guide's minified bundle: 242 drawings and figures from 22 specs, 0 differ.
 - The pilot rebuilt with the minified kit and the pass (`chart_pilot.py --methods load-table`, scratch `pilot6/`): 16 plates, average 14,383 bytes with a 1,313 byte frame, kit part 175,385, chapter 14 projected at 2,709,327 bytes.
 - (d) measured by script on the pilot page: deflated, base64 tables and islands, and islands alone.
 - The two photographs' lossless progressive encodings decoded to the same pixels as the files (Pillow), in scratch only.
