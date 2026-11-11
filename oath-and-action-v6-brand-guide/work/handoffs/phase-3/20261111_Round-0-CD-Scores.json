@@ -1,0 +1,298 @@
+{
+ "title": "Creative director’s scores for Phase 3, round 0: Part 1, chapter 13 and the palette proofs",
+ "date": "2026-11-11",
+ "author": "Creative director (oa-creative-director), subagent of the main session",
+ "basis": "20261111_Phase-3-Round-0-Review-Brief.md, creative director’s lens; Master Brief section 6 rubric; the review build in the scratchpad’s phase-3/round-0-review/20261111_Round-0-Review-Guide-A.html (9,762,798 bytes, built 2026-11-11T22:30:55), anchor #evidence, looked at by the creative director at 1440 and 390 px, 1x and 2x, with the words read from work/build/guide/chapters/13-evidence.json; the palette sheet work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs.html at 1440 and 390 px, 1x and 2x; 20261111_Palette-Proposal.json; tokens release 6.0.0-gate3.1",
+ "review": "work/handoffs/phase-3/20261111_CD-Review-Of-Round-0.md",
+ "part": 1,
+ "threshold": "4 on every criterion; an item is ready when every score is 4 or more and it has no Must fix",
+ "criteria": [
+  {
+   "key": "craft",
+   "name": "Craft"
+  },
+  {
+   "key": "clarity",
+   "name": "Clarity"
+  },
+  {
+   "key": "brand_fidelity",
+   "name": "Brand fidelity"
+  },
+  {
+   "key": "usefulness",
+   "name": "Usefulness"
+  },
+  {
+   "key": "evidence_honesty",
+   "name": "Evidence honesty"
+  },
+  {
+   "key": "accessibility",
+   "name": "Accessibility"
+  }
+ ],
+ "items": [
+  {
+   "key": "ch13",
+   "name": "Chapter 13, Evidence and sourcing",
+   "anchor": "#evidence",
+   "stage": "Phase 3, round 0",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 3,
+    "evidence_honesty": 3,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "Twenty-seven plates share one frame, every failure plate leads “Fails Rule 13.N.” and carries the do-not-publish bar, and the line code holds at 2x, though the mapping table’s last column steps its rules above the rows, the opener strands a comma at a line’s start, and three plates leave half their frame empty at 1440 px.",
+    "clarity": "The instruction and two paragraphs say what the chapter is for, and the group index sorts 13 rules into three jobs, though at 1440 px only the opener’s top 87 px reaches the first screen.",
+    "brand_fidelity": "Typed chips, the atlas line code, the evidence chip and the do-not-publish bar carry the system and no red is spent, though with the wordmark covered the first screen is type on Newsprint, as in chapters 01 to 08.",
+    "usefulness": "Every rule has tokens, specifications and a builders line, yet Rule 13.4 disagrees with the oa.chart.grade tokens on three numbers and Rule 13.1 leaves a diagram’s label unnamed (M2, M3).",
+    "evidence_honesty": "Every atlas value I checked by script matches V7 and invented items carry Illustrative, but correct plates print grade lines outside Rule 13.3’s table, give the plausible Connection L46 the verb “raises”, and print an all-people rate under a source line for children only (M1, M4).",
+    "accessibility": "Grade travels in pattern, word and the record square, plates are ink on Newsprint, and each alt text says what a sighted reader learns; axe and the access checks were not rerun by the creative director."
+   },
+   "must_fix": [
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+   ],
+   "should_fix": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7"
+   ],
+   "must_fix_count": 4,
+   "should_fix_count": 7,
+   "ready": false,
+   "to_ready": "Land M1 to M4; usefulness and evidence honesty then reach 4."
+  },
+  {
+   "key": "palettes",
+   "name": "Palette proofs and the proposed palette tokens",
+   "anchor": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs.html; 20261111_Palette-Proposal.json",
+   "stage": "Phase 3, round 0",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 3,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "One grid sets every swatch with its ratios, lightness, gray and simulations on four grounds and holds at 2x, though at 390 px every chart sits whole in a sideways frame (36 frames by script).",
+    "clarity": "Each section opens with its job and its status (in tokens, proposed, no new value), and the index and the view switch take Dustin to the new colors at once.",
+    "brand_fidelity": "Four brand inks, two mixes of Prussian toward Newsprint, pair B with boxed arrows, nothing red beside Prussian or blue, and red on red resolved by Rule 05.3’s order, all recognizable with the wordmark covered.",
+    "usefulness": "Each of the 40 tokens has its path, value, surfaces, ratios and job, now in release 6.0.0-gate3.1, though the group 4 label token reads like a label on the fill and the grade tokens disagree with Rule 13.4 (M2, S9).",
+    "evidence_honesty": "All 28 ratios recomputed match and every proof carries its source line, but the categorical card’s key names Verdigris and Stone for groups the lines above it do not draw (M5).",
+    "accessibility": "Every label passes 4.5 to 1 on its fill or sits on a halo, Stone carries the hatch and each line its marker, and every ordered scale keeps its order in gray and under three simulations."
+   },
+   "must_fix": [
+    "M2",
+    "M5"
+   ],
+   "should_fix": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "must_fix_count": 2,
+   "should_fix_count": 3,
+   "ready": false,
+   "to_ready": "Land M5 and the token side of M2; evidence honesty then reaches 4. The two new colors are ready for Dustin’s approval as proposed."
+  }
+ ],
+ "pending": [
+  {
+   "key": "kit",
+   "name": "The chart kit with S01 to S16, the drawing method and chapter 14’s projected weight",
+   "status": "Part 2, when the main session sends the final kit and a new build"
+  }
+ ],
+ "totals": {
+  "must_fix": 5,
+  "should_fix": 10,
+  "under_4": [
+   "ch13.usefulness",
+   "ch13.evidence_honesty",
+   "palettes.evidence_honesty"
+  ],
+  "ready": [],
+  "not_ready": [
+   "ch13",
+   "palettes"
+  ]
+ },
+ "must_fix": {
+  "M1": {
+   "where": "Chapter 13: s-13-1-correct, s-13-6-correct, s-13-7-correct, s-13-9-correct, s-13-4-correct; failures s-13-1, s-13-6, s-13-7",
+   "what": "Correct plates break Rules 13.2 and 13.3. Grade lines read “Official statistic: a Census Bureau survey” and “Official statistic: a Bureau of Labor Statistics survey of employers”, outside Rule 13.3’s display words, while the kit’s specs print the same series as “Documented: an official statistic from a Census Bureau survey” (S02, S05) and “Documented: an official statistic from a Bureau of Labor Statistics survey of employers, as copied by FRED” (S13, S14). s-13-9-correct says Variable B4 “raises” Variable B6 through Connection L46, which V7 grades plausible. s-13-4-correct prints the plausible names of L46 and L53 as plain sentences, where Rule 13.2 says “We quote such a name as the atlas writes it”. Failure plates s-13-6 and s-13-7 print “Official statistic” and s-13-1 “A published study”, so each fails more than the rule it names.",
+   "fix": "Open every grade line with Rule 13.3’s display word in the kit’s wording; let each failure plate break only the rule it names; write “can raise” in 13.9; set every atlas name in 13.4 in quotation marks as 13.2 does; add L46 to the V7.1 list of direct-verb names.",
+   "owner": "Editor",
+   "items": [
+    "ch13"
+   ]
+  },
+  "M2": {
+   "where": "Rule 13.4 words and specifications, s-13-3-correct’s key; oa.chart.grade tokens in release 6.0.0-gate3.1 and the proof sheet’s line code section",
+   "what": "The grade line code is stated two ways. Rule 13.4: “Every graded line runs at least 48 px”; oa.chart.grade.minRun: 28 line widths, “56 px on a 2 px line”, and s-13-3-correct draws 36 px of pattern (32 px of dots) in 48 px boxes. Rule 13.4: “A 5 px line in ink with a 2 px line of the page’s color down its middle”; the tokens: 1 px rails with a gap of one line width, 4 px on a 2 px line. Rule 13.3 and Rule 12.6’s key gloss Hypothesis “not yet tested”; the token and the sheet say “untested”. Rule 13.4 cites none of the ten oa.chart.grade tokens.",
+   "fix": "Make the tokens the one source: Rule 13.4 cites oa.chart.grade.* by name and prints their values, the generator reads them, 13.3’s key draws each sample at the minimum run, and the hypothesis gloss reads “not yet tested” everywhere. If 48 px is preferred, change the token so one number remains.",
+   "owner": "Editor (Rule 13.4, 13.3’s key), data visualization lead (token values and descriptions), engineer if a value changes",
+   "items": [
+    "ch13",
+    "palettes"
+   ]
+  },
+  "M3": {
+   "where": "Rule 13.1; s-13-opener; s-13-4, s-13-5 and s-13-11 correct; s-13-2-failure",
+   "what": "Rule 13.1: “A dark label above every chart and diagram title names the kind of evidence the figure shows, in one of four words.” The opener and the diagrams of 13.4, 13.5 and 13.11 carry no label, and s-13-2-failure puts “Finding” over a plausible connection, which Rule 13.1’s definition of a finding rules out, while its caption faults only the verb. A builder of chapter 15’s diagrams cannot tell which word an atlas diagram takes.",
+   "fix": "Say in Rule 13.1 what a diagram of atlas connections prints in the label’s place. Recommended: the grade word of its least certain step in the same chip (“Plausible” on the opener), so the chip still states the kind of evidence as Master Brief section 15 asks. Add it to the opener, 13.4, 13.5 and 13.11, and set s-13-2-failure’s chip to Plausible so it fails on the verb alone.",
+   "owner": "Editor, with the data visualization lead",
+   "items": [
+    "ch13"
+   ]
+  },
+  "M4": {
+   "where": "Rule 13.7 text and s-13-7-correct; work/build/data/census-spm-child-poverty.meta.json printed line",
+   "what": "“Poverty among all people stood at 13.1 percent in 2025” sits under a source line for “Supplemental Poverty Measure, children under 18”, so the figure has no source of its own (H04; Rule 13.6). The source line says “the Bureau’s August 2026 revision”, the table heads its column “Current release, September 15, 2026”, and the rule says “revised … in August 2026”; the sidecar dates the release September 15, 2026 and the method paper August 19.",
+   "fix": "Give the all-people figure its six parts, or widen the sidecar’s printed line to name both groups; name the vintage once, as the release that carries it, in the rule, the source line and the table.",
+   "owner": "Editor; research lead for the sidecar’s printed line",
+   "items": [
+    "ch13"
+   ]
+  },
+  "M5": {
+   "where": "Palette sheet, section 03, card “Four groups on a line chart, and in one bar”, on Newsprint and Charcoal, at 1440 and 390 px",
+   "what": "The lines are Health care, Government, Manufacturing (Verdigris) and Information (Stone); the key under them names Health care, Government, “Professional and business services” (Verdigris) and “All other sectors” (Stone hatch) for the bar. One ink names two groups in one figure, and the bar’s segments carry only values, against DR-234’s “every group labeled on the chart”. At 390 px the line chart’s labels sit off screen in a sideways frame, so the key in view names two lines wrongly.",
+   "fix": "One set of four groups for both charts, or two figures each with its own title and labels; name each bar segment on the bar.",
+   "owner": "Data visualization lead",
+   "items": [
+    "palettes"
+   ]
+  }
+ },
+ "should_fix": {
+  "S1": {
+   "where": "s-13-opener; chapter 13 intro",
+   "what": "At 1440 px the comma after the Variable E1 chip starts its own line; the 131-word intro puts the opener’s top at 813 px on a 900 px screen, the lowest of 17 chapters (649 to 758 elsewhere).",
+   "fix": "Hold each chip and the punctuation after it in one no-wrap span; cut the intro to about 80 words so the opener’s chips and title reach the first screen.",
+   "owner": "Editor",
+   "items": [
+    "ch13"
+   ]
+  },
+  "S2": {
+   "where": "s-13-3-correct",
+   "what": "The fourth column draws its rule under its own content, above the row’s rule, and the row rule stops at the third column, so the grid steps down the table at 1x and 2x.",
+   "fix": "One rule per row across all four columns.",
+   "owner": "Editor",
+   "items": [
+    "ch13"
+   ]
+  },
+  "S3": {
+   "where": "s-13-7-correct",
+   "what": "The caption says “Two charts shown together with one window” and the plate draws no chart.",
+   "fix": "Draw the two lines with the kit in one window once the guide hook (C7) lands; chapter 13 has 44 KB under its ceiling.",
+   "owner": "Editor, with the engineer",
+   "items": [
+    "ch13"
+   ]
+  },
+  "S4": {
+   "where": "s-13-8-correct, s-13-8-failure, s-13-13-failure; s-13-11-correct key",
+   "what": "A 360 px card sits at the left of a 770 px frame with the right half empty at 1440 px; in 13.11’s key each shape sits about as close to the word before it as to its own.",
+   "fix": "Center the card or set two pieces side by side; key spacing 6 px mark to word, 24 px between items.",
+   "owner": "Editor",
+   "items": [
+    "ch13"
+   ]
+  },
+  "S5": {
+   "where": "s-13-2-correct Documented row; s-13-1-correct estimate head",
+   "what": "“Social Security moved 28.8 million people out of poverty in 2025 …, the Census Bureau reported” states a count made by a stated method, which Rule 13.1 calls an estimate when NHTSA uses one; the estimate head prints “613,501 lives” for “a hypothetical estimate” and writes “1960 through 2012” where the source says “1960 to 2012”.",
+   "fix": "Retitle the Documented row in record words or pick a documented connection whose record is an event; round the estimate in the title to about 614,000, keep the agency’s figure in the note, and write “1960 to 2012”.",
+   "owner": "Editor",
+   "items": [
+    "ch13"
+   ]
+  },
+  "S6": {
+   "where": "Rule 13.9 and its specifications; atlas source lines; s-13-11-correct",
+   "what": "“Every atlas ID we print sits in a typed chip”, yet atlas source lines print IDs as words (“connection L02”), and the kind words leave out “Rule change”, which 13.11 prints in seven chips.",
+   "fix": "Name the source-line case and the Rule change kind in the rule and its specifications.",
+   "owner": "Editor",
+   "items": [
+    "ch13"
+   ]
+  },
+  "S7": {
+   "where": "Rule 13.1 text and tokens; s-13-13-correct; s-13-10-correct",
+   "what": "“A dark label” turns Newsprint on Charcoal; 13.13’s article chart carries no evidence label and its source line no date retrieved; 13.10’s column “Rated” does not say what is rated and “PBMs” goes unexpanded.",
+   "fix": "Describe the chip by role and cite oa.chart.color.chip.fill and .label; add the label and the date retrieved to 13.13’s chart; head 13.10’s column Feasibility and spell out pharmacy benefit managers once.",
+   "owner": "Editor",
+   "items": [
+    "ch13"
+   ]
+  },
+  "S8": {
+   "where": "Palette sheet at 390 px",
+   "what": "Each proof chart sits whole in a sideways frame (36 frames), so the red-on-red bars show as a sliver at the edge and the small multiples show one panel.",
+   "fix": "Show the phone drawing for the categorical, past-four and red-on-red proofs from the kit, or say on the sheet where the kit’s phone drawings are.",
+   "owner": "Data visualization lead, with the engineer",
+   "items": [
+    "palettes"
+   ]
+  },
+  "S9": {
+   "where": "oa.chart.color.categorical.label.group4.onNewsprint and .onCharcoal",
+   "what": "The path follows groups 1 to 3, whose labels sit on the fill, while group 4’s sits beside the hatch; on the Stone fill its inks measure 3.10 and 4.29 to 1.",
+   "fix": "Put the placement in the path, or have the kit refuse the label on the fill.",
+   "owner": "Data visualization lead and engineer",
+   "items": [
+    "palettes"
+   ]
+  },
+  "S10": {
+   "where": "Palette sheet: font link; card “Health care and social assistance grew 18.8 percent …”",
+   "what": "The font link requests Inter Tight 700 as well, outside Rule 06.1’s one set (D2-1710); the one-in-ink card’s title closes on preliminary months without saying so, and ends with a period other proof titles do not carry.",
+   "fix": "Request Rule 06.1’s set only; mark the figure preliminary as H08’s example does and drop the period.",
+   "owner": "Data visualization lead",
+   "items": [
+    "palettes"
+   ]
+  }
+ },
+ "distinctiveness_test": [
+  {
+   "view": "Chapter 13, first screen at 1440 px, wordmark covered",
+   "verdict": "Not on its own. Inter Tight 800 on Newsprint, the rails and the chapter number carry it; two typed chips show in the last 87 px (S1)."
+  },
+  {
+   "view": "Chapter 13, first screen at 390 px, wordmark covered",
+   "verdict": "Not on its own: words only."
+  },
+  {
+   "view": "Chapter 13, opener in view",
+   "verdict": "Reads as Oath & Action: typed chips, the dashed line with its two delay ticks, and a numbered key that ties each mark to its rule."
+  },
+  {
+   "view": "Palette sheet, categorical and red on red, wordmark covered",
+   "verdict": "Reads as Oath & Action: four inks with the hatch and markers, boxed arrows, and one working red that yields to the error."
+  }
+ ],
+ "risks_for_dustin": [
+  "The record square before Documented (Gate 1, M1, 7 px) and the ballot measure event (Gate 1, M4, 8 px) are both filled squares and will meet in chapter 15. Recommended: keep both and write a placement rule into Rules 13.4 and 13.11; a redraw of either would come to Dustin.",
+  "Rule 13.11’s plate lists three Supreme Court campaign finance rulings under the atlas’s heading “Away from voters”. The words are V7’s, quoted with its note that the direction carries no judgment; a reader on the right may still read the heading as a verdict.",
+  "Chapter 13’s plates are words, tables and line samples with one small chart; S3 adds the two charts its captions promise."
+ ],
+ "questions_for_dustin": []
+}
