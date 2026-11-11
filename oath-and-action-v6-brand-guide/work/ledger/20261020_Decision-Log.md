@@ -3375,3 +3375,9 @@ The main session asked five questions with its plan for the Gate 2 preview, the 
 | D2-1820 | Chapter 06's Google Fonts line, which the main session raised, is folded into M1 | It is the same fault as Rule 26.5's link: one weight set, offered as the link a product uses |
 | D2-1821 | The rescore reads the identity designer's seven wording fixes from the working tree as landed | The coordinator allowed it, and its notes and the files agree |
 | D2-1822 | Chapter 19's results waiting for call 12 lowers no score | The plate names its own build honestly, and the brief schedules the rerun last |
+
+### Main session, version 8
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1823 | The chapters page is republished privately at https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF as version 8 (1794425535-1c5e), the Gate 2 preview (DR-225): `work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html`, 9,447,454 bytes, SHA-256 f9694c0f…de75fd, built from commit 69c7bcf5 with R1 to R3. Before it the main session diffed the live version 7 against commit 043ad4d8 (only the host's three wrapper lines differed) and read its last lines; scanned the new build (no network calls, no em dashes or U+2011 in its text, no private paths, outside links only in license texts, sources and code samples, storage written only by the theme switch); and looked at the first screens of "Where to start", chapters 03 and 05 and the colophon at 1440 px. The four-width guide check ran on the build before chapter 19's rerun (0 failures, committed at 6f4bf13c); the quick check at 1440 and 390 px ran on the published build (0 failures) | DR-225; every file is seen before it is published |

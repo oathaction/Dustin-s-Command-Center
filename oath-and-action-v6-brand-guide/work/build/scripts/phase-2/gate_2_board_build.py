@@ -863,9 +863,10 @@ def preview_record(C):
     if pv.exists():
         b = pv.read_bytes()
         rec.update({'bytes': len(b), 'sha256': hashlib.sha256(b).hexdigest(), 'mtime': pv.stat().st_mtime})
-    hits = re.findall(r'([\d,]{7,}) bytes \(SHA-256 ([0-9a-f]{6,})\W+([0-9a-f]{4,})\)', sec or '')
+    hits = re.findall(r'([\d,]{7,}) bytes,? \(?SHA-256 ([0-9a-f]{6,})(?:…|\.\.\.)?([0-9a-f]{4,})?', sec or '')
     if hits:
         nb, head, tail = hits[-1]
+        tail = tail or head[-4:]
         rec['logged'] = {'bytes': int(nb.replace(',', '')), 'sha_head': head, 'sha_tail': tail}
         if pv.exists():
             rec['final'] = (rec['bytes'] == rec['logged']['bytes'] and rec['sha256'].startswith(head) and rec['sha256'].endswith(tail))
