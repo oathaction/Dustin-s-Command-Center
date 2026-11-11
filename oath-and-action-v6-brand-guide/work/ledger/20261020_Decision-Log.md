@@ -2494,3 +2494,24 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 | D2-1294 | The ten states' Selected row takes the utility selected check, and its bar becomes a border | D2-1158 names selected bars; the approved drawing replaces a hand-drawn check |
 | D2-1295 | The library's status line bolds the count and sets the advice in regular weight | A whole bold sentence read as a heading; the screen reader hears the same words |
 | D2-1296 | The reader's Fit width and Full size stay a pair of pressed buttons in this pass | D2-1151 and D2-1152 move them to a radio group with one pressed look at their owner's next pass; this pass carries the five routed faults, and neither fails WCAG today (inventory, F-6) |
+
+### Engineer, promotion (`20261111_Promotion-C-Engineer-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1297 | The 37 fits form a fourth sprite family, read from `civic-line-v6/fit-24/`, black edition only, 24 px only, with symbols `oa-sym-<id>-24px` in their own sprite, `data-sprite="fit-24"` | The brief's folder and ids (D2-1265); the fits are one color (D2-1132) |
+| D2-1298 | No sprite family reads a file under a folder whose name starts with `_` | D2-1264 keeps replaced files in `_archive/`, and the sprite must never meet two files for one icon |
+| D2-1299 | The build and the guide check read the list of 41 from the construction file's section 10, the source chapter 10's generator reads; the guide check's own copy is gone | One list in three readers cannot drift; CL-075 stays off it (D2-1238, DR-207) |
+| D2-1300 | With no list of 41 to read, the build warns and switches only the drawings whose 24 px fits it reads; the guide check stops | The build never stops on content problems; a check with no list cannot judge sizes |
+| D2-1301 | The sprite leaves out, with a warning, a fit off the list, a pillar fit in `fit-24/`, a non-pillar fit in `pillar-icons/` and a file of another size | Only approved fits in their own folders reach a page |
+| D2-1302 | A family folder that lacks a fit the list puts in use, and a 24 px fit with no master for 2x screens, are warnings | DR-209 puts all 37 in use, and the switch needs both drawings |
+| D2-1303 | A master of the 41 at 24 px with no switch is a warning, and only the 41 switch, each fit to its own master | The brief's rule for DR-209, in DR-179's pattern |
+| D2-1304 | A fit drawn at a size other than its own is a warning unless its plate is marked `data-oa-res="fixed"` | A fit serves its own size only (the fits manifest, "Use each fit at 24 px only") |
+| D2-1305 | `--oa-icon-accent` on a topic or atlas symbol under 48 px is a warning, as on a pillar icon | Rule 10.4 sets the 41 at 24 px in one color; R10 and D2-497 |
+| D2-1306 | The build reads the size from the `<svg>`'s width attribute; the guide check's `fitSwitch` measures the drawn box | Markup is what the build sees; CSS can size a glyph, which only the browser knows |
+| D2-1307 | The 48 px floor and CL-075 at 24 px stay with the guide check's B-3 test, not a build warning | Failure plates show symbols under 48 px on purpose, and B-3 already skips pictures |
+| D2-1308 | `fitSwitch` runs at 1x at every width and in two runs of its own, 1440 px at 2x and 390 px at 3x | The switch sits at `min-resolution: 2dppx`; a laptop at 2x and a phone at 3x are the screens most readers use above it |
+| D2-1309 | `sprite_check.js` compares the fits in black only and draws the switch for all 41; a build warning while it reads the families fails it | The fits have no red-black edition; a fit missing from its folder must not pass |
+| D2-1310 | `icon_likeness_check.js --self-test` asks that the inventory's rows, its IDs and the black files agree, in place of a fixed 124 | The count follows the set in use, 125 with CL-075 (main session's call) |
+| D2-1311 | The shell's comment on the switch names the 41 and DR-209; its rules stay as they were | One rule already switches any `<use>` |
+| D2-1312 | The self-test's fixture families add the masters of all 41 from the October set, CL-075 from Housing option A with its new `data-id`, the 37 fits from the approved option files under their in-use names, DR-208's redraws, and the replaced files in `_archive/` folders, all in a temporary folder | The self-test must run before, during and after the makers' work; the approved files stay as the record |
