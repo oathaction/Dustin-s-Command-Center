@@ -11,7 +11,7 @@ This file was written early and grew as the work landed.
 | Item | What | Status |
 |---|---|---|
 | Release | 6.0.0-gate2.8: DR-218 and call 1's field ground, one change note (BE-S7's words) | done, 06:24 UTC |
-| Call 1 | The guide check's red-touching-Prussian step | done; one hit, `s-05-1-correct` (systems designer's), sent to the main session |
+| Call 1 | The guide check's red-touching-Prussian step | done; its one hit, `s-05-1-correct` (systems designer's), went to the main session, and the final run on the newest tree finds none |
 | Call 5 | The motion test reads `data-oa-rest="master"` | done, with six plants |
 | Call 6, PP-M2 | The closing token block | decided: tokens.css is the one route; the block is for reading, holds no themes and says so; tested |
 | Call 7, PP-M1 | A surface class pins its ground | done in Rules 26.3, 26.5 and 26.6 and in every closing block |
@@ -51,7 +51,7 @@ All in `work/build/scripts/phase-2/guide_check.js`.
 
 - **redTouchesPrussian (call 1, D2-1544).** The old red test reads a red mark's ground from the DOM, so a red border on a box whose own ground is Prussian passed, and so did any red that shows only after a press. The new step captures every stage at 1440 px, the live code stages in both themes included, in tiles no taller than the window, after letting the page's lazy layout settle. A pixel within 8 levels of Pillar Red with a pixel within 8 of Prussian 2 px away or nearer fails (touching, with one pixel of antialiasing between). It then presses Send in every form a stage holds, waits 900 ms and captures that stage again. A stage whose `data-check-exempt` names red is left out. Only stages that compute both colors somewhere, or hold a raster or canvas, are captured. On today's page: 477 stages, 30 captured, 20 exempt, Send pressed in all 3 forms, about 80 seconds. **One hit:** `s-05-1-correct`, chapter 05's proportion bar, where the Pillar Red segment touches the Prussian one (23 pixels at about 16, 855). It belongs to the systems designer; I sent it to the main session. A gap of 3 px or more, or an order where the two never meet, fixes it.
 - **motionPlay and `data-oa-rest="master"` (call 5, D2-1548).** A player marked `data-oa-rest="master"` must read `data-frame="end"` on load with nothing running and Reset `aria-disabled`; after Play it must run (outside reduced motion), come back to "end" within 2.5 s, with nothing looping and Reset unavailable again; under reduced motion, Play leaves it at "end" with no animation, and the drawing need not change. A player without the attribute keeps today's contract ("start" on load, a new drawing at once under reduced motion). Six plants: one allowed player and five faults (loads at "start", Reset available at rest, Play does nothing, a run that ends at "start", a reduced-motion run of 400 ms that stays at "run").
-- **codeMatch (call 14, CA-S1).** `EDGE_TOL` is 49, the measured antialiasing maximum; the comment had said 49 while the code allowed 64. The check now also compares, element by element in document order, 18 computed properties of every element in each live stage with the same element in the pasted copy (colors, four border colors and widths, outline color, fill, stroke, font family, size and weight, letter spacing, line height), and fails a different count of elements. Two new plants: a label in rgb(252, 255, 255) where White belongs, which no pixel test sees, and a live stage holding a span its code does not.
+- **codeMatch (call 14, CA-S1).** `EDGE_TOL` is 49, the measured antialiasing maximum; the comment had said 49 while the code allowed 64. The check now also compares, element by element in document order, 18 computed properties of every element in each live stage with the same element in the pasted copy (colors, four border colors and widths, outline color, fill, stroke, font family, size and weight, letter spacing, line height), and fails a different count of elements. Two new plants: a label in rgb(252, 255, 255) where White belongs, which no pixel test sees, and a live stage holding a span its code does not. One more change, found by my own run on the newest tree: `c-18-link`'s new list draws its underline one row lower in the guide than in the copy at 1440 px, which uncovers a descender pixel in one capture and covers it in the other. The row-shift allowance now matches a pixel either way, the guide's against the copy's rows above and below or the copy's against the guide's, with their diagonal neighbours; it still allows at most four such rows. With it, both `c-18-link` stages pass, with no flat-area or style difference.
 - **builderBlock (call 6).** Each chapter's For builders closer must offer the tokens.css download, say its block holds no themes and that the body takes no surface class, never offer the block as a route of its own, and hold no surface class or theme in its block. Two plants.
 - **Frame names (CA-S2, in the shell).** A frame that scrolls says which way: "down", "sideways" or "down and sideways". A code panel no longer says "at true size".
 
@@ -93,6 +93,7 @@ All through `stage_c_ch26_build.py` and `token_table_build.py`.
 - D2-xxx | It presses Send in every form a stage holds, with a document-level guard that stops any submission leaving the page | Call 1 asks for the state after Send; a stage's form must never navigate the guide
 - D2-xxx | A player marked `data-oa-rest="master"` follows call 5's contract in the motion test; any other player keeps "start" on load | The main session's message; the attribute is the identity designer's marker
 - D2-xxx | `codeMatch`'s edge tolerance is 49, and it compares 18 computed properties of every element and the element count | Call 14, CA-S1; amends D2-1519 and D2-1526
+- D2-xxx | A row a pixel apart is matched either way, with diagonal neighbours | An underline a row lower uncovers a descender in one capture only (c-18-link at 1440 px); the four-row limit and the style comparison still hold
 - D2-xxx | The For builders block shows the chapter's properties for reading, without surface classes or themes, and tokens.css is the one route | Call 6, under D2-266; a light-only route breaks DR-204, and a complete one is tokens.css again
 - D2-xxx | The block lists each short name's light and dark targets | A short name has no `:root` value of its own
 - D2-xxx | The token table groups by category in disclosures, closed by default, as tables from 40rem and cards under it | Call 13
@@ -116,7 +117,7 @@ None. Every call above sits inside DR-203, DR-204, DR-214, DR-218, D2-266, the f
 
 ## For the main session
 
-- **`s-05-1-correct`** fails the new red-on-Prussian step (above). The systems designer owns it.
+- **`s-05-1-correct`** failed the new red-on-Prussian step on my first run. On my final run of the newest tree (07:30 to 07:50 UTC) no stage fails it, so the systems designer's fix has landed.
 - **The old error token name** is still read in the files listed under section 1. It works until 6.1.0.
 - **`c-18-download`'s label** says 93 KB; tokens.css is 95 KB since the release.
 - **A strict build of the newest tree** stopped on one warning that is not mine while I worked: `manifest-anatomy.json` lists `s-18-opener` and no chapter places it yet (the systems designer's chapter 18 opener, in progress).
@@ -124,12 +125,48 @@ None. Every call above sits inside DR-203, DR-204, DR-214, DR-218, D2-266, the f
 
 ## Tested
 
-(Filled in at the end of the pass; see below.)
+All builds and runs went to `/tmp/claude-0/-home-user-Dustin-s-Command-Center/49b1040f-34e8-55e0-97c3-93e08c6dbc2c/scratchpad/round-2-fix/engineer/`, on the newest tree, with the other owners' fix-pass work in it as the main session's snapshots carried it.
+
+- **Token tests** (`node scripts/phase-2/tokens_build.mjs`, then `python3 -I work/build/tests/tokens/run_token_tests.py`), after the release and again after the note's reword: all six steps pass. 504 tokens; parity 624 root properties and 92 short names; rules 205 semantic cells, 0 failures; self-test 44 of 44 plants; Style Dictionary 5.8.0 reads all 504 and agrees; Chromium resolves 473 values, 30 derivations and 14 theme cases, and reports both planted faults.
+- **Release diff, by script:** 504 tokens where there were 500; the four added are `oa.color.state.error.bar`; none removed; 66 token descriptions and nine group descriptions changed; the values that changed are `oa.color.field.ground.onCharcoal` (Prussian to Charcoal) and the four old error names (now aliases of the same Pillar Red and Newsprint). After the change, no token description matches the studio-code, retired-name or internal-name patterns.
+- **Generators:** `stage_c_ch26_build.py --check` 33 of 33 files current; `token_table_build.py --check` current; the `--check` modes of chapters 17, 18 and 19 and the anatomy plates report current. I did not rerun other owners' generators in write mode (see Not tested).
+- **`guide_build.py --strict`** on the final tree: exit 0, 0 warnings, 16 chapter files, 185 rules, 424 specimens, 8,958,497 bytes (9,544,650 at round 1's close). Chapter 18 weighs 1,157,846 bytes of its 1.25 MB, chapter 26 933,571 of its 1.0 MB.
+- **`guide_build.py --self-test`:** 22 of 22 scenarios, 273 of 273 expectations, with a new round 2 scenario (no `span.nw` in either live stage, the live link marked and the panel's kept, `data-breakout` on a flowing plate only, the paired stages, the For builders block's words and contents, a short name's targets and chip).
+- **`guide_check.js --self-test`** on the final script: PASS. The clean demo passes; 118 of 118 planted faults caught and 35 of 35 allowed cases left alone (round 1: 107 and 32). New: two red-on-Prussian faults and two allowances, two `builderBlock` faults, two `codeMatch` faults the pixels miss, and five master-rest player faults with one allowance.
+- **`guide_check.js --quick`** (1440 and 390 px, with the 2x and 3x runs) on the final build: PASS, 0 failures. 1,966 same-page links; fitSwitch 77 of 77 at 1x, 2x and 3x; keyPath 140 walks of 37 paths, 714 steps; motion 7 of 7, the hinge and lever under the master-rest contract; redTouchesPrussian 480 stages, 30 captured, 20 exempt, Send pressed in 3 of 3 forms, no hit; tokenTable 504 rows, 306 swatches, version 6.0.0-gate2.8; codeMatch 56 stages at each width (1440: 30 identical, 26 within the allowance; 390: 39 and 17), 2,152 elements compared for style at each, no difference; `builderBlock` no fault.
+- **`tokens_download_test.js`** on the final build: 18 of 18 cases, the two new live-demo cases among them.
+- **Looked at, in captures:** the token table at 1440, 1024 and 390 px, closed, with one group open and with a search; chapter 26's opener at 1440 1x and 390 2x; Rules 26.5, 26.6 and 26.8's correct plates and 26.4's first failure at 1440; 26.5 and 26.6 at 390 2x; `c-26-download`'s plate at 1440 2x; `c-26-warning`'s stages at 390 2x; chapter 26's For builders block; Rule 18.4's short-name chips; `c-18-form` and `c-18-search` side by side at 1440 (the dark fields now Charcoal with Newsprint edges); the rail at the top of the page and in chapter 26 at 1440.
+- **By keyboard, at 1440:** the token table's search ("error bar" gives 13 rows in 2 groups, opened), Tab to the group list, Enter on a group opens it and puts focus on its head, Space closes it; clearing the search puts every group back as it was.
+- **Probes:** the red-on-Prussian step alone on the page before and after the tile fix; `codeMatch` on `c-18-link` alone at 1440 px, with both captures dumped and their pixels read, before and after the row-shift change.
 
 ## Not tested
 
-(Filled in at the end of the pass.)
+- The full guide check at 1024 and 360 px: my run was `--quick`; the main session runs all four widths.
+- The red-on-Prussian step at other widths or at 2x: it runs at 1440 px, 1x, only.
+- The other owners' generators in write mode: the generator chain's write runs were refused by the session's permission check, so I ran the `--check` modes of the round 1 generators and my own chapter's generator only.
+- Mutation tests of this pass's new build and check code on copies of the scripts; the plants and the new build scenario stand for them.
+- A screen reader, a real phone, Safari, Firefox or a Windows contrast theme; the host's real download prompt (the test stubs it).
+- The rail cue and the side-by-side stages at 80em on screens between 1280 and 1440 px, and in print.
+- Every chapter 26 plate at 1024 and 360 px, and the token table's open groups at 390 px beyond one.
+- Chapter 26's new words read aloud or read by the editor.
 
 ## Change log
 
-(Filled in at the end of the pass.)
+Created:
+- `work/handoffs/phase-2/20261111_Stage-C-Round-2-Engineer-Fix-Notes.md` (this file)
+- `work/build/guide/specimens/s-26-opener.html` (generated)
+
+Modified (all mine):
+- `work/build/tokens/src/oa-tokens.src.mjs`: 6.0.0-gate2.8, the field ground, the error bar and its deprecated alias, the descriptions, the change notes
+- `work/build/tokens/tokens.json`, `work/build/tokens/tokens.css` (generated)
+- `work/build/scripts/phase-2/tokens_build.mjs`: `$deprecated`, and the comment on a deprecated CSS line
+- `work/build/tests/tokens/test_token_rules.py`, `test_token_selftest.py`; `20261106_Token-Test-Results.json` (written by the run)
+- `work/build/scripts/phase-2/token_table_build.py`: grouped tables, the index, names that break at dots and hyphens, the guard
+- `work/build/scripts/phase-2/stage_c_ch26_build.py`: rules 26.2, 26.3 and 26.5 to 26.8, the opener, the chips, the code sets' format, `breakout`
+- `work/build/guide/chapters/26-tokens.json`, `work/build/guide/specimens/manifest-tokens.json`, `s-26-*.html`, `s-26-token-table.html`, `work/build/guide/code/c-26-*` (generated)
+- `work/build/scripts/phase-2/guide_build.py`: the For builders block, short-name values, the live file links, `.code-root` left alone, `breakout`, the paired stages, the rail's cue, a self-test scenario
+- `work/build/scripts/phase-2/guide_check.js`: redTouchesPrussian, builderBlock, the master-rest motion contract, `codeMatch` at 49 with the style comparison and the two-way row match, their plants
+- `work/build/guide/shell/guide-shell.css`, `guide-shell.js`: the error bar's token, short-name chips, the break-out for a flowing stage, the panel height and frame names, the paired stages, the rail's cue, the live download
+- `work/build/tests/guide/tokens_download_test.js`: the live demo's cases
+
+No other owner's file, nothing in `source/`, `work/ledger/` or `deliverables/`, no asset and no board. I committed and pushed nothing.

@@ -479,7 +479,7 @@ def specimens():
 
     # 26.7's table, written by token_table_build.py
     M["s-26-token-table"] = {"chapter": "26", "rule": "26.7", "interactive": True, "fit_switch": False, "breakout": True,
-                             "alt": "Every token in tokens.json, one row each: its name, CSS name, value, use, tier and contrast."}
+                             "alt": "Every token in tokens.json, in groups by category, each closed until opened, under a search field and a list of the groups. Each row gives a token's name, CSS name, value, use, tier and contrast."}
     return S, M
 
 

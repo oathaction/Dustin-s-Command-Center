@@ -1299,6 +1299,7 @@ async function codeMatch(page) {
         g.drawImage(x, 0, 0); const dx = g.getImageData(0, 0, W, H).data;
         g.clearRect(0, 0, W, H); g.drawImage(y, 0, 0); const dy = g.getImageData(0, 0, W, H).data;
         const near = (i, j) => Math.max(Math.abs(dx[i] - dy[j]), Math.abs(dx[i + 1] - dy[j + 1]), Math.abs(dx[i + 2] - dy[j + 2])) <= tol;
+        const nearBack = (j, i) => Math.max(Math.abs(dy[j] - dx[i]), Math.abs(dy[j + 1] - dx[i + 1]), Math.abs(dy[j + 2] - dx[i + 2])) <= tol;
         let n = 0, max = 0, flat = 0, big = 0, ring = 0, firstOff = null;
         const rows = new Set(), cols = new Set();
         for (let py = 0; py < H; py++) for (let px = 0; px < W; px++) {
@@ -1308,7 +1309,12 @@ async function codeMatch(page) {
           n++; if (m > max) max = m;
           if (px === 0 || py === 0 || px === W - 1 || py === H - 1) { ring++; continue; }
           if (m > tol) {
-            if (near(i, i - W * 4) || near(i, i + W * 4)) { rows.add(py); continue; }
+            // round 2: a straight edge a row apart is matched either way, the guide's pixel in the copy's rows above and below
+            // or the copy's pixel in the guide's, each with its diagonal neighbours: an underline a row lower can uncover a
+            // descender in one capture and cover it in the other (c-18-link at 1440 px, three pixels 82 to 150 apart)
+            const up = i - W * 4, dn = i + W * 4;
+            const vs = [up, dn].concat(px > 0 ? [up - 4, dn - 4] : [], px < W - 1 ? [up + 4, dn + 4] : []).filter((k) => k >= 0 && k < dx.length);
+            if (vs.some((k) => near(i, k) || nearBack(i, k))) { rows.add(py); continue; }
             if (near(i, i - 4) || near(i, i + 4)) { cols.add(px); continue; }
           }
           // an edge is where any channel changes across the 3 by 3 neighbourhood: Pillar Red against its Charcoal keyline

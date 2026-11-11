@@ -3030,3 +3030,33 @@ The main session asked three questions with its plan for round 2, board C and th
 | D2-1627 | `s-18-10-failure`'s last actions are dates the guide already prints for each bill (H.99003 became law April 2; S.99002 filed February 20; H.99001 filed January 16), newest first under its arrow | Call 10; no new invented date, so no new conflict |
 | D2-1628 | The keys files follow the component engineer's sets: the ask is the fifth stop, the location list has four places, and the form's path checks the ask's own "Sending" and "Remind me" | The landed sets' order and words (D2-1353) |
 | D2-1629 | Chapter 18 names `s-18-opener` as its opener | Call 8; the systems designer draws it, my generator places it |
+
+### Engineer, the fix pass (`20261111_Stage-C-Round-2-Engineer-Fix-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1630 | The error mark's old names stay in tokens.json as deprecated tokens with DTCG's `$deprecated`, pointing at the new ones, until 6.1.0 | Token Architecture section 7, step 5, and Rule 26.8 keep a replaced name for one release of the second part; a token keeps the rule tests and the short names working |
+| D2-1631 | A change note's decision codes go in a `record` field that chapter 26 does not print | BE-S7 and DR-218: readers see the note; the studio keeps its trail |
+| D2-1632 | The token table's description filter is a guard only, and it also stops on internal names (Explainer, the palette lab, the stretch test, Night Edition, a lettered treatment) | The source now holds reader words, so a new code is caught at the build |
+| D2-1633 | The red-on-Prussian step reads pixels at 1440 px only: a Pillar Red pixel within 8 levels, with Prussian within 2 px | Rule 05.3 does not depend on width; 2 px allows one antialiased pixel between the two colors |
+| D2-1634 | It captures in tiles no taller than the window, after the lazy layout settles | A single capture of the token table outgrew the canvas; an early capture landed 60 px off |
+| D2-1635 | It presses Send in every form a stage holds, with a document-level guard that stops any submission leaving the page | Call 1 asks for the state after Send; a stage's form must never navigate the guide |
+| D2-1636 | A player marked `data-oa-rest="master"` follows call 5's contract in the motion test; any other player keeps "start" on load | The main session's message; the attribute is the identity designer's marker |
+| D2-1637 | `codeMatch`'s edge tolerance is 49, and it compares 18 computed properties of every element and the element count | Call 14, CA-S1; amends D2-1519 and D2-1526 |
+| D2-1638 | A row a pixel apart is matched either way, with diagonal neighbours | An underline a row lower uncovers a descender in one capture only (c-18-link at 1440 px); the four-row limit and the style comparison still hold |
+| D2-1639 | The For builders block shows the chapter's properties for reading, without surface classes or themes, and tokens.css is the one route | Call 6, under D2-266; a light-only route breaks DR-204, and a complete one is tokens.css again |
+| D2-1640 | The block lists each short name's light and dark targets | A short name has no `:root` value of its own |
+| D2-1641 | The token table groups by category in disclosures, closed by default, as tables from 40rem and cards under it | Call 13 |
+| D2-1642 | A flowing plate may carry the manifest key `breakout`, which takes the room over the rail from 80em; the token table is the first | Call 13; the shell's break-out served fixed stages only |
+| D2-1643 | The token table's columns: name 30 percent, value 18, use 27, tier 9, contrast 16 | Measured at 1440 px: the first split clipped "Semantic" and wrapped every ratio onto four lines |
+| D2-1644 | A live stage's link to tokens.css or tokens.json takes `data-oa-file` with the page copy's id; the shell serves it | Call 15; a file's own link keeps the bare attribute |
+| D2-1645 | Nothing is added inside `.code-root` by the build's ID transform | CA-S6; DR-203's copy promise holds element for element |
+| D2-1646 | Fourteen chapter 18 sets and chapter 26's four sit side by side from 80em | Call 17; chapter 26's examples fit as well |
+| D2-1647 | A code panel shows 40 lines before it scrolls, and a frame's name says which way it scrolls | Call 16, CA-S2 |
+| D2-1648 | The rail ends with a "More below" cue while it can scroll, and keeps the current entry 88 px clear of its foot | CA-S8 |
+| D2-1649 | A chip for a short name prints each theme's value with its swatch | The round 2 brief's fix list (chapter 18 makers' item 4) |
+| D2-1650 | Chapter 26's opener is Rule 26.3's five steps on its own caption example | Call 8; the chapter teaches the steps first |
+| D2-1651 | Rule 26.2's builders line names the editor as the one who answers a token request | PP-S12; the guide's other requests go to the editor (D2-252) |
+| D2-1652 | Rule 26.5's head shows the head script first, marked "For a product with the theme switch" | PP-S6 |
+| D2-1653 | Chapter 26's code sets write one declaration per line, through a formatter in the generator | Call 16 |
+| D2-1654 | Code samples in chapter 26's plates escape no apostrophe | The hex guard turned `&#x27;` into words on the page |
