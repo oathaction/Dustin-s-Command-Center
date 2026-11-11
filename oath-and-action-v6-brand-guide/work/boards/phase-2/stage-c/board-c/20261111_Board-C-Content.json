@@ -1,0 +1,636 @@
+{
+ "built": "2026-11-11T08:59:57.249859+00:00",
+ "board": "work/boards/phase-2/stage-c/board-c/20261111_Board-C.html",
+ "title": "Board C Decision",
+ "chapters_page": {
+  "url": "https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF",
+  "version": 7
+ },
+ "frozen_page": {
+  "commit": "df0fb08d",
+  "sha256": "ba1e1f97ee988b1e8989511deea9c624c66acb85bd4bb209f029ee5aceb116ed",
+  "version": 6,
+  "path": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html"
+ },
+ "answered": null,
+ "words": {
+  "kicker": "Edition 06 · Stage C · Board C",
+  "for_line": "For Dustin Cathcart · {built_date}",
+  "title": "One decision is yours",
+  "title_answered": "You answered the one decision",
+  "deck": [
+   "Board C closes round 2 of stage C, in which three red teams and the creative director read chapters 17, 18, 19 and 26 and the parts of 01 to 11 that changed, and the studio fixed what they found.",
+   "Round 2 raised one question that is yours, a standing rule on examples, and this page sets it beside the scores, what changed and the calls you may overrule."
+  ],
+  "deck_answered_2": "Round 2 raised one question that was yours, a standing rule on examples, and this page records your answer beside the scores, what changed and the calls you may overrule.",
+  "pages_h": "The two pages of board C",
+  "pages": [
+   [
+    "The chapters page",
+    "chapters",
+    "version {chapters_version}, with chapters {chapter_list} and the identity proofs as the fix pass left them. Each rule number on this board opens it at that rule."
+   ],
+   [
+    "This board",
+    null,
+    "the one decision, the scores, what round 2 found and fixed, the calls you may overrule and what comes next."
+   ]
+  ],
+  "reply_h": "A reply can be this short",
+  "sample_reply": "Yes to the standing rule on examples.",
+  "copy_reply": "Copy the reply",
+  "answer_h": "Your answer, {answered_on}",
+  "toc_h": "On this board",
+  "decision": {
+   "label": "The one decision",
+   "label_answered": "The one decision, answered",
+   "title": "A standing rule on examples",
+   "codes": "D2-1555 · D2-1546 · D2-958 · D2-278 · DR-99 · DR-100",
+   "lede": [
+    "Our systems atlas flags two of its {n_reforms} reforms as tied to your own work: Reform R-01, “{r01}”, and Reform R-02, “{r02}”. The guide prints no disclosure, so the studio keeps its examples off both.",
+    "Round 2 found chapter 18’s examples back on Reform R-01 and on the safe-seat and primary mechanism it targets, across {n_plates} plates. The studio has now moved examples off that subject three times, one case at a time: chapter 01’s failure row in Rule 01.12, then Rules 10.8 and 11.16 at stage B, and now chapter 18, whose samples moved to the housing loop and Reform R-30. The brand and evidence team asks for one rule that holds everywhere."
+   ],
+   "rule_cap": "The standing rule, as the brand and evidence team wrote it",
+   "drift_h": "Where it drifted: the example in Rule 18.24",
+   "before_h": "Before, version {frozen_version}",
+   "after_h": "After, version {chapters_version}",
+   "before_src": "Rule 18.24 on the frozen page the reviewers read",
+   "after_src": "Rule 18.24 in chapter 18 as the fix pass left it",
+   "before_cap": "Loop R10 is “{r10}”, and Reform R-01, a flagged reform, sits on that loop.",
+   "after_cap": "Loop R1 is “{r1}”, and Reform R-04 is “{r04}”. Neither reform sits on Loop R1, and Reform R-04 carries no flag.",
+   "marks_note": "Struck words show what the fix pass took out, and bold words show what it put in their place.",
+   "rec_h": "Recommendation",
+   "rec": [
+    "Yes. With one standing rule, a maker checks each new example against the atlas’s flag before drawing it, so the next chapter needs no round of moves."
+   ],
+   "cost_h": "What it costs",
+   "cost": [
+    "Nothing on the page changes today, since the fix pass already moved chapter 18’s samples. From now on, makers check every new example, sample and failure plate against the atlas’s flag. The filter bar and the search keep Reforms R-01 to R-12 in the atlas’s own order, since a list in that order is no example, and real atlas content keeps its grade and source."
+   ],
+   "approve_h": "What you approve by name",
+   "approve": "The standing rule on examples.",
+   "answered_h": "Your answer, {answered_on}"
+  },
+  "scores": {
+   "title": "The creative director’s scores",
+   "intro_ready": "The creative director scored chapters 17, 18, 19 and 26, the changed parts of chapters 01 to 11 and Rule 12.4 as rewritten, on the six criteria of our rubric, from 1 to 5. An item is ready at 4 or more on every one, and after the fix pass every item is.",
+   "intro_not_ready": "The creative director scored chapters 17, 18, 19 and 26, the changed parts of chapters 01 to 11 and Rule 12.4 as rewritten, on the six criteria of our rubric, from 1 to 5. An item is ready at 4 or more on every one.",
+   "caption": "Scores from 1 to 5, round 2 and after the fix pass",
+   "legend": "In each cell, round 2’s score in small type, then the rescore after the fix pass, both on {score_dates}. A box marks a score under 4.",
+   "scroll_hint": "The table scrolls sideways, with each item’s name held at the left.",
+   "item_h": "Chapter or part",
+   "ready_h": "Ready",
+   "new_item": "First scored after the fix pass",
+   "moved_h": "What moved, with the creative director’s reason"
+  },
+  "found": {
+   "title": "What round 2 found and fixed",
+   "intro": "The reviewers read the frozen page you saw as version {frozen_version}. These are the faults a reader or a builder would notice, each with its fix, now in version {chapters_version}.",
+   "groups": [
+    [
+     "What a reader sees",
+     [
+      [
+       "Red stays off Prussian",
+       null,
+       "In the dark theme a form field sat on Prussian, so an error’s red bar touched it, the red and blue pair Rule 05.3 rules out. A field on Charcoal now takes Charcoal inside its light edge, where the bar measures {red_on_charcoal} to 1. The guide check now fails any red pixel beside Prussian, in both themes, after it presses Send in every form."
+      ],
+      [
+       "Our marks rest whole",
+       null,
+       "The players for the wordmark and the lockmark rested on their first frames, so a reader who never pressed Play met split words and empty squares. Each now rests on its master (Rule 17.3)."
+      ],
+      [
+       "Rule 12.4, rewritten",
+       null,
+       "As you approved on November 11, the hinge arcs retire. An open area stays plain, or carries the large crop of our ampersand or a watermark."
+      ]
+     ]
+    ],
+    [
+     "What a builder uses",
+     [
+      [
+       "A production test",
+       "Simulated",
+       "One reviewer played a panel of three in turn. As its developer, they built an event sign-up card from chapters 18 and 26 and tokens.css alone, then switched it to dark mode, and the guide failed them twice. The chapters said to put a surface class on the body, and that class keeps one ground in both themes, so the card stayed light. The token block each chapter offered as a second route missed {n_missing} properties its code reads, so the form drew in a fallback font with a send button under {target_px} px. Rules 26.3 and 26.6 now leave the body with no surface class, and tokens.css is the one route. {pp_label}"
+      ],
+      [
+       "A token table you can scan",
+       null,
+       "Its {n_groups} groups stay closed until a reader opens one, so the table stands {h_after} px tall at 1440 px, where it ran {h_before} px. From a plate width of 40rem each group is a real table (Rule 26.7)."
+      ],
+      [
+       "Code panels break their lines",
+       null,
+       "Each declaration and each long attribute takes its own line, so the longest line fell from {line_before} characters to {line_after}, and a panel shows about {panel_lines} lines before it scrolls."
+      ],
+      [
+       "Token release {version}",
+       null,
+       "The error bar’s token takes the name {bar_name}, and the old name works until {alias_leaves}. Every description a reader sees, across all {n_tokens} tokens, is in plain words."
+      ]
+     ]
+    ],
+    [
+     "What the evidence says",
+     [
+      [
+       "W3C’s words in W3C’s order",
+       null,
+       "Four criteria printed their parts out of order, so success criterion 3.3.7 read as if filling in a field for the reader were an exception. All {n_criteria} now print from a stored copy of the Recommendation fetched from w3.org, and the build stops if the page differs from it (Rule 19.1)."
+      ],
+      [
+       "Met means a rule says so",
+       null,
+       "A criterion now reads Met only where a rule states what it asks. Met fell from {met_before} to {met_after}; {inpart_after} are met in part, {gaps_after} are gaps and {unused_after} cover things no product does yet."
+      ],
+      [
+       "Loop R1 states its grade",
+       null,
+       "The guide’s main example of a loop about money in politics read as a finding. Its heading now names the loop in quotation marks, with a line under it (Rule 18.22): “{grade_line}”"
+      ],
+      [
+       "Examples left the subject of your work",
+       null,
+       "Chapter 18’s samples now come from the housing loop, Loop R8, and Reform R-30, with their real grades and a dated source. The decision above asks whether this becomes a standing rule."
+      ]
+     ]
+    ]
+   ]
+  },
+  "calls": {
+   "title": "Calls the studio made that you may overrule",
+   "intro": "The studio made these five calls inside the plan you approved. Each stands unless you say otherwise.",
+   "items": [
+    [
+     "Fields on Charcoal take Charcoal",
+     "D2-1544 · D2-1469 · D2-1562",
+     "An earlier call let an error’s red bar touch a Prussian field in the dark theme, because the pair measures {red_on_prussian} to 1, over the 3 to 1 a mark needs. The fix pass withdrew that call, since Rule 05.3 gives this reason: “{q_05_3}” The field’s ground moved to Charcoal, so a field shows by its light edge (Rule 18.17). The selected band on Charcoal stays Prussian, and the guide check keeps red away from it."
+    ],
+    [
+     "The ask stands on its own row",
+     "D2-1545 · D2-1592",
+     "A primary button’s hover turns Prussian, and in Rule 18.1’s plate it sat {hover_gap} px from the red ask. The hover stays as our token plan sets it, and the ask now has a row of its own. Rule 18.1 says: “{q_18_1}”"
+    ],
+    [
+     "A mark’s player rests on the mark",
+     "D2-1548 · D2-1563",
+     "Rule 17.3 now says: “{q_17_3}” A player of a state or a mechanism still rests on its first frame, where the change starts."
+    ],
+    [
+     "tokens.css is the one route",
+     "D2-1549 · D2-1639 · D2-266",
+     "The engineer chose one route over a complete copy of each chapter’s tokens. A copy with both themes would hold most of tokens.css, and one without them would teach a product with no dark mode. Each chapter’s block stays for reading, and the words above it say: “{q_block}” Rule 26.5 starts every page from tokens.css."
+    ],
+    [
+     "Closed groups for the token table",
+     "D2-1557 · D2-1641",
+     "Each of the {n_groups} groups stays closed until a reader opens it or a search finds a match in it, and a list of the groups heads the table. Under a plate width of 40rem, as on a phone, the rows stay cards (Rule 26.7). An open table with the rail out of the way would still run roughly {open_px} px, as the craft team measured."
+    ]
+   ]
+  },
+  "answered": {
+   "title": "What you answered this chat",
+   "intro": "You gave these answers on November 11, each as the studio proposed.",
+   "lines": [
+    [
+     "DR-219",
+     "Round 2’s production test had a simulated developer build an event sign-up card from chapters 18 and 26 and tokens.css alone, then switch it to dark mode."
+    ],
+    [
+     "DR-220",
+     "The chapters page comes back at its address as version {chapters_version} with a note on what changed, and a decisions board follows only when round 2 raises a call that is yours. It raised one, so this board exists."
+    ],
+    [
+     "DR-221",
+     "At Gate 2 the creative director reads all 16 chapters together and scores each one, to catch drift between chapters built at different stages."
+    ],
+    [
+     "DR-222",
+     "From this container census.gov, fec.gov, api.congress.gov and data.gov answer, while bls.gov and Missouri’s secretary of state turn automated visitors away. The Phase 3 proposal plans on downloading public data."
+    ]
+   ]
+  },
+  "next": {
+   "title": "What comes next",
+   "lines": [
+    [
+     "DR-221",
+     "The Gate 2 preview, in a new chat. It holds the whole guide as one file with its fonts embedded and the creative director’s read of all 16 chapters together, then the Gate 2 report with the proposal for Phase 3."
+    ]
+   ],
+   "carried_h": "Still open",
+   "carried": [
+    [
+     "D2-1532 · D2-1118",
+     "Missouri’s certified count. The studio reads it when the preview is built; if the state has not certified by then, the plate keeps “unofficial” and the read moves to Phase 5’s assembly."
+    ],
+    [
+     "Q-04",
+     "Whether a photography commission or licensed documentary images come before launch. Until then the guide uses placeholders and its full photography rules."
+    ],
+    [
+     "Q-12",
+     "Whether a trademark attorney clears OATH & ACTION, the monogram and a standalone ampersand before launch. The guide flags the need and assumes no filing."
+    ]
+   ]
+  },
+  "foot": "Built {built_date} at {built_time} UTC from the chapter files, the frozen page, the tokens, the atlas, round 2’s reports and fix notes, the creative director’s scores and the decision log."
+ },
+ "filled": {
+  "chapters_version": 7,
+  "frozen_version": 6,
+  "chapter_list": "01 to 12, 17, 18, 19 and 26",
+  "n_reforms": 50,
+  "r01": "All-party primaries with ranked general elections",
+  "r02": "Ranked-choice voting for single-winner races",
+  "r04": "Independent citizen commissions draw election maps",
+  "r1": "Wealth and political influence reinforce each other",
+  "r10": "Safe seats shift accountability to small primary electorates",
+  "red_on_charcoal": "4.49",
+  "red_on_prussian": "3.19",
+  "q_05_3": "Red never sits on Prussian, where it measures 3.19 to 1 and reads as a party pair of red and blue.",
+  "q_18_1": "The ask stands on a row of its own, apart from any primary button, whose hover turns Prussian on Newsprint, so the ask’s red never meets Prussian (Rule 05.3).",
+  "q_17_3": "For the wordmark or the lockmark, the player rests on the master itself, so a reader who never presses Play still sees the whole mark; Play then steps to the first frame and runs to the master.",
+  "q_block": "It holds no themes and no surface classes, so it cannot stand in for tokens.css.",
+  "version": "6.0.0-gate2.8",
+  "n_tokens": "504",
+  "bar_name": "oa.color.state.error.bar",
+  "alias_leaves": "6.1.0",
+  "grade_line": "Our atlas grades this loop plausible: its middle step is the least certain, and it runs only on issues where large donors and middle-income voters want different things.",
+  "n_missing": "37",
+  "target_px": "44",
+  "hover_gap": "12",
+  "pp_label": "The panel is simulated and untested with real people.",
+  "rule_text": "no example, sample or failure plate in the guide uses a reform the atlas flags for the editor's work, or the mechanism that reform targets; real atlas content elsewhere keeps its grade and source.",
+  "n_plates": "five",
+  "open_px": "35,000",
+  "h_after": "1,057",
+  "h_before": "175,377",
+  "n_groups": "17",
+  "panel_lines": "40",
+  "line_before": "3,307",
+  "line_after": "193",
+  "n_criteria": 55,
+  "met_before": "37",
+  "met_after": "33",
+  "inpart_after": "eight",
+  "gaps_after": "nine",
+  "unused_after": "five",
+  "built_date": "November 11, 2026",
+  "built_time": "8:59 a.m.",
+  "answered_on": "November 11, 2026",
+  "score_dates": "November 11, 2026"
+ },
+ "chapter_19_counts": {
+  "before": {
+   "met": "37",
+   "in_part": "five",
+   "gaps": "eight",
+   "unused": "five"
+  },
+  "after": {
+   "met": "33",
+   "in_part": "eight",
+   "gaps": "nine",
+   "unused": "five"
+  }
+ },
+ "quotes": {
+  "q_05_3": {
+   "text": "Red never sits on Prussian, where it measures 3.19 to 1 and reads as a party pair of red and blue.",
+   "source": "chapter 05, Rule 05.3, why"
+  },
+  "q_18_1": {
+   "text": "The ask stands on a row of its own, apart from any primary button, whose hover turns Prussian on Newsprint, so the ask’s red never meets Prussian (Rule 05.3).",
+   "source": "chapter 18, Rule 18.1"
+  },
+  "q_17_3": {
+   "text": "For the wordmark or the lockmark, the player rests on the master itself, so a reader who never presses Play still sees the whole mark; Play then steps to the first frame and runs to the master.",
+   "source": "chapter 17, Rule 17.3"
+  },
+  "q_block": {
+   "text": "It holds no themes and no surface classes, so it cannot stand in for tokens.css.",
+   "source": "work/build/scripts/phase-2/guide_build.py, the For builders block"
+  },
+  "grade_line": {
+   "text": "Our atlas grades this loop plausible: its middle step is the least certain, and it runs only on issues where large donors and middle-income voters want different things.",
+   "source": "work/build/guide/code/c-18-loop-stepper.html"
+  },
+  "pp_label": {
+   "text": "The panel is simulated and untested with real people.",
+   "source": "the plain language and production report"
+  },
+  "rule_text": {
+   "text": "no example, sample or failure plate in the guide uses a reform the atlas flags for the editor's work, or the mechanism that reform targets; real atlas content elsewhere keeps its grade and source.",
+   "source": "the brand and evidence report, question 2"
+  },
+  "r1824_before": {
+   "text": "A typed ID names a record in the atlas by its type and its code together, such as “Loop R10” or “Reform R-01”, so a reader never meets a bare code (chapter 02’s house rule H11).",
+   "source": "the frozen page, Rule 18.24 (commit df0fb08d)"
+  },
+  "r1824_after": {
+   "text": "A typed ID names a record in the atlas by its type and its code together, such as “Loop R1” or “Reform R-04”, so a reader never meets a bare code (chapter 02’s house rule H11).",
+   "source": "work/build/guide/chapters/18-components.json, Rule 18.24"
+  }
+ },
+ "atlas": {
+  "n_reforms": 50,
+  "r01": "All-party primaries with ranked general elections",
+  "r02": "Ranked-choice voting for single-winner races",
+  "r04": "Independent citizen commissions draw election maps",
+  "r30": "More homes allowed by right near jobs",
+  "r1": "Wealth and political influence reinforce each other",
+  "r8": "Housing scarcity strengthens owners' incentive to restrict building",
+  "r10": "Safe seats shift accountability to small primary electorates",
+  "r1_grade": "plausible",
+  "snapshot": "2026-10-15"
+ },
+ "tokens": {
+  "version": "6.0.0-gate2.8",
+  "count": 504,
+  "colors": {
+   "red": "#E63946",
+   "charcoal": "#121212",
+   "prussian": "#1F2D5A",
+   "field_on_charcoal": "#121212"
+  }
+ },
+ "scores": {
+  "rows": [
+   {
+    "key": "ch17",
+    "name": "Chapter 17, Motion and states",
+    "round_2": {
+     "craft": 3,
+     "clarity": 4,
+     "brand_fidelity": 3,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    },
+    "after": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    },
+    "ready_round_2": false,
+    "ready_after": true
+   },
+   {
+    "key": "ch18",
+    "name": "Chapter 18, Components and interaction",
+    "round_2": {
+     "craft": 3,
+     "clarity": 4,
+     "brand_fidelity": 3,
+     "usefulness": 5,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    },
+    "after": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 5,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    },
+    "ready_round_2": false,
+    "ready_after": true
+   },
+   {
+    "key": "ch19",
+    "name": "Chapter 19, Accessibility",
+    "round_2": {
+     "craft": 3,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 3,
+     "evidence_honesty": 5,
+     "accessibility": 4
+    },
+    "after": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 5,
+     "accessibility": 4
+    },
+    "ready_round_2": false,
+    "ready_after": true
+   },
+   {
+    "key": "ch26",
+    "name": "Chapter 26, Tokens and how to choose them",
+    "round_2": {
+     "craft": 3,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    },
+    "after": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 5,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    },
+    "ready_round_2": false,
+    "ready_after": true
+   },
+   {
+    "key": "group",
+    "name": "Changed parts of chapters 01 to 11",
+    "round_2": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    },
+    "after": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    },
+    "ready_round_2": true,
+    "ready_after": true
+   },
+   {
+    "key": "rule_12_4",
+    "name": "Chapter 12, Rule 12.4 as rewritten",
+    "round_2": null,
+    "after": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 5,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    },
+    "ready_round_2": null,
+    "ready_after": true
+   }
+  ],
+  "moved": [
+   {
+    "item": "Chapter 17, Motion and states",
+    "criterion": "Craft",
+    "from": 3,
+    "to": 4,
+    "reason": "The hinge and lever rest on their masters with no dashed squares, the player's anatomy runs 1 to 7 top to bottom with Reset's disc off its own corner, the 200 ms failure frame draws its line 68 percent of the way, Loop R1's names sit on one centered line, Rule 17.2's names hold on one line, and the opener shows the ten states at true size."
+   },
+   {
+    "item": "Chapter 17, Motion and states",
+    "criterion": "Brand fidelity",
+    "from": 3,
+    "to": 4,
+    "reason": "A reader who never presses Play sees OATH & ACTION and the lockmark whole, at 24, 64, 48 and 120 px on both grounds, at 1440 and 390 px."
+   },
+   {
+    "item": "Chapter 18, Components and interaction",
+    "criterion": "Craft",
+    "from": 3,
+    "to": 4,
+    "reason": "Every callout I looked at sits beside its part and never on a word or mark, numbers run in reading order, one uppercase Illustrative chip heads every invented piece, the stepper sets its buttons two by two, and the opener draws button, chip and choice from their own sets."
+   },
+   {
+    "item": "Chapter 18, Components and interaction",
+    "criterion": "Brand fidelity",
+    "from": 3,
+    "to": 4,
+    "reason": "A field on Charcoal is Charcoal inside a Newsprint edge, so the dark form's red ask and error bars sit on Charcoal after a send, and the ask has a row of its own, apart from any primary that hovers Prussian."
+   },
+   {
+    "item": "Chapter 19, Accessibility",
+    "criterion": "Craft",
+    "from": 3,
+    "to": 4,
+    "reason": "19.2's chart has its title, counts, years and source, 19.4's failure shows a soft picture and its enlarged pixels, 19.6's failure keeps the band at its size, and the opener sets the four counts as one clear figure; the short second pass then gave 19.5's chart its title, its lines' names, its years and a source line."
+   },
+   {
+    "item": "Chapter 19, Accessibility",
+    "criterion": "Usefulness",
+    "from": 3,
+    "to": 4,
+    "reason": "Every rule now has a builders line, and the matrix names the axe-core tags and a command for each automated check."
+   },
+   {
+    "item": "Chapter 26, Tokens and how to choose them",
+    "criterion": "Craft",
+    "from": 3,
+    "to": 4,
+    "reason": "The table is 17 closed groups under a linked index, each a real five-column table from 40rem, so the chapter fell from 212,034 to 43,990 px at 1440 px; names break only at a dot when a cell lacks room. The short second pass then carried the plate’s label row and rule out with the stage."
+   },
+   {
+    "item": "Chapter 26, Tokens and how to choose them",
+    "criterion": "Usefulness",
+    "from": 4,
+    "to": 5,
+    "reason": "A builder can now scan a category, compare neighbors, search across groups (\"error\" opens 5 groups, 33 tokens) and copy any name; the page start and the dark theme's surface-class rule are spelled out."
+   }
+  ],
+  "printed_lines": [
+   {
+    "item": "Chapter 17, Motion and states",
+    "moves": "Craft 3 to 4 · Brand fidelity 3 to 4",
+    "reason_of": "Brand fidelity",
+    "reason": "A reader who never presses Play sees OATH & ACTION and the lockmark whole, at 24, 64, 48 and 120 px on both grounds, at 1440 and 390 px."
+   },
+   {
+    "item": "Chapter 18, Components and interaction",
+    "moves": "Craft 3 to 4 · Brand fidelity 3 to 4",
+    "reason_of": "Brand fidelity",
+    "reason": "A field on Charcoal is Charcoal inside a Newsprint edge, so the dark form's red ask and error bars sit on Charcoal after a send, and the ask has a row of its own, apart from any primary that hovers Prussian."
+   },
+   {
+    "item": "Chapter 19, Accessibility",
+    "moves": "Craft 3 to 4 · Usefulness 3 to 4",
+    "reason_of": "Usefulness",
+    "reason": "Every rule now has a builders line, and the matrix names the axe-core tags and a command for each automated check."
+   },
+   {
+    "item": "Chapter 26, Tokens and how to choose them",
+    "moves": "Craft 3 to 4 · Usefulness 4 to 5",
+    "reason_of": "Usefulness",
+    "reason": "A builder can now scan a category, compare neighbors, search across groups (\"error\" opens 5 groups, 33 tokens) and copy any name; the page start and the dark theme's surface-class rule are spelled out."
+   }
+  ],
+  "all_ready": true,
+  "files": [
+   "work/handoffs/phase-2/20261111_Stage-C-Round-2-CD-Scores.json",
+   "work/handoffs/phase-2/20261111_Stage-C-Round-2-CD-Rescores.json"
+  ]
+ },
+ "overrides": [
+  {
+   "find": "Chapter 12, Rule 12.4 as wired (DR-216)",
+   "put": "Chapter 12, Rule 12.4 as rewritten",
+   "n": 1
+  },
+  {
+   "find": "; 19.5's chart is still a bare line sketch (R2).",
+   "put": "; the short second pass then gave 19.5's chart its title, its lines' names, its years and a source line.",
+   "n": 1
+  },
+  {
+   "find": " The broken-out stage reaches left while its label rule stays in the column (R1).",
+   "put": " The short second pass then carried the plate’s label row and rule out with the stage.",
+   "n": 1
+  }
+ ],
+ "rule_anchors_linked": [
+  "accessibility",
+  "components",
+  "motion-and-states",
+  "rule-01-12",
+  "rule-05-3",
+  "rule-10-8",
+  "rule-11-16",
+  "rule-12-4",
+  "rule-17-3",
+  "rule-18-1",
+  "rule-18-17",
+  "rule-18-22",
+  "rule-18-24",
+  "rule-19-1",
+  "rule-26-3",
+  "rule-26-5",
+  "rule-26-6",
+  "rule-26-7",
+  "tokens"
+ ],
+ "guide_checked": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/49b1040f-34e8-55e0-97c3-93e08c6dbc2c/scratchpad/final/guide.html",
+ "sources": {
+  "scores": "work/handoffs/phase-2/20261111_Stage-C-Round-2-CD-Scores.json",
+  "rescores": "work/handoffs/phase-2/20261111_Stage-C-Round-2-CD-Rescores.json",
+  "be": "work/handoffs/phase-2/20261111_Stage-C-Round-2-Red-Team-Brand-Evidence.md",
+  "pp": "work/handoffs/phase-2/20261111_Stage-C-Round-2-Red-Team-Plain-Production.md",
+  "ca": "work/handoffs/phase-2/20261111_Stage-C-Round-2-Red-Team-Craft-Access.md",
+  "eng": "work/handoffs/phase-2/20261111_Stage-C-Round-2-Engineer-Fix-Notes.md",
+  "comp": "work/handoffs/phase-2/20261111_Stage-C-Round-2-Components-Fix-Notes.md",
+  "a11y": "work/handoffs/phase-2/20261111_Stage-C-Round-2-Accessibility-Fix-Notes.md",
+  "wcag": "work/handoffs/phase-2/20261111_WCAG22-Criteria-Text.json",
+  "tokens_css": "work/build/tokens/tokens.css",
+  "tokens_json": "work/build/tokens/tokens.json",
+  "atlas": "work/extract/atlas-v7-data.json",
+  "loop_set": "work/build/guide/code/c-18-loop-stepper.html",
+  "guide_build": "work/build/scripts/phase-2/guide_build.py"
+ },
+ "notes": [],
+ "warnings": [],
+ "visible_text_sha1": "8a8fb90d9be5f97b909f4a110e1178c4009fa72b"
+}
