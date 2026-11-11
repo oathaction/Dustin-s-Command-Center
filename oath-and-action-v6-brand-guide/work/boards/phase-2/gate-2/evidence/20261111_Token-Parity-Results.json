@@ -1,7 +1,7 @@
 {
  "about": "Token parity for the Gate 2 board: the token files against each other, and the guide page against the token files. Written by work/build/tests/tokens/token_parity_evidence.py.",
  "page": "work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html",
- "page_sha256": "fd288b6060823c0067b905875ca488ae6eb31b57c945ccb953ea4b0865e8f4e7",
+ "page_sha256": "f9694c0fef6030d61e5f506e37106eef618899986aba89c0022068d003de75fd",
  "token_files": {
   "tokens.css": {
    "bytes": 94724,

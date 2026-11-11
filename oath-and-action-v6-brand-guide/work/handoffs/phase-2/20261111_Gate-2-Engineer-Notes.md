@@ -285,3 +285,11 @@ D2-xxx | stage_a_systems_build.py ran in the final chain, and its measurement fi
 D2-xxx | The font fidelity check compares the final preview with its own Google-loaded twin | Version 7 now differs by chapter edits; the twin isolates the fonts
 D2-xxx | A target line's rule or chapter, and its name's last two words, are held by no-break spaces | R1; neither part breaks alone
 - **Guide check, four widths, on the final preview** (SHA-256 fd288b60…f4e7, `--no-captures`): **PASS, 0 failures** at 1440, 1024, 390 and 360 px; 185 rules, 489 specimen stages, 2,024 same-page links; axe-core 0 violations at every width; keyPath 140 walks of 37 paths (714 steps); motion 7 of 7; redTouchesPrussian 489 stages, Send in 3 of 3 forms; tokenTable 504 rows at 6.0.0-gate2.9; fontsLocal 6 of 6 rules from data URLs and 4 of 4 faces with the network shut at 1440 and 390; start pages at all four widths, every stop in order with its ring and all 20 steps opened and returned; failureLead and filesShip clean. Results: `work/boards/phase-2/gate-2/20261111_Gate-2-Preview-Guide-Check-Results.json`. This is the record for chapter 19's rerun; R1 to R3 go into the next rebuild with it, followed by the quick check at 1440 and 390 px.
+
+### The last rebuild: version 8 (after chapter 19's rerun)
+
+- Built from commit 69c7bcf5 ("Call 12: chapter 19's results rerun from the final preview's checks"), which carries R1 to R3, with a clean tree.
+- Generator chain in the brief's order: every script exited 0; the check modes (18, 19, 26, the token table, the anatomy plates) all current; git status clean.
+- `guide_build.py --strict`: 0 warnings; `work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html`, **9,447,454 bytes, SHA-256 f9694c0fef6030d61e5f506e37106eef618899986aba89c0022068d003de75fd**; 16 chapters, 185 rules, 433 specimens.
+- Font bytes: 6 data URLs matched to the manifest. Token tests: all six steps pass at 6.0.0-gate2.9. Token parity evidence rewritten for this page: parity exit 0, 6 of 6 page checks. Font fidelity: 19 of 19 elements pixel for pixel against the page's Google-loaded twin (4 font requests there, 0 here).
+- Quick guide check at 1440 and 390 px: running when this line was written; result below.

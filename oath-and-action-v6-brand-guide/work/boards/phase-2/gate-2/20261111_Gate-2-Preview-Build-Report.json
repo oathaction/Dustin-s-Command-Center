@@ -1,6 +1,6 @@
 {
  "page": "work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html",
- "built": "2026-11-11T18:46:43",
+ "built": "2026-11-11T19:15:02",
  "chapters": [
   "01",
   "02",
@@ -24,16 +24,16 @@
  "specimens_placed": 433,
  "tokens": "tokens.css",
  "demo": false,
- "bytes": 9445041,
+ "bytes": 9447454,
  "weight": {
-  "bytes": 9445041,
+  "bytes": 9447454,
   "budget_page": 15500000.0,
   "limit": 16000000,
   "parts": {
-   "head and shell": 194447,
+   "head and shell": 194738,
    "sprites": 210685,
    "fonts": 344579,
-   "front matter and part openers": 27145,
+   "front matter and part openers": 28095,
    "appendix": 141120
   },
   "chapters": {
@@ -94,7 +94,7 @@
     "budget": 1250000.0
    },
    "19": {
-    "bytes": 172143,
+    "bytes": 173315,
     "budget": 300000.0
    },
    "26": {

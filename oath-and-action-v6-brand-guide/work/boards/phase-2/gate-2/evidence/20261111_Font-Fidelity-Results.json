@@ -1,6 +1,6 @@
 {
- "about": "Final Gate 2 preview (after the fix pass) against the same page with its embedded fonts block replaced by Rule 06.10's Google Fonts link (Inter 400, 600 and 700; Inter Tight 800; Lora Italic 400 and 500), fetched with the Chrome 153 user agent. The field version7 names that Google-loaded twin, in the engineer's scratch folder.",
- "checked": "2026-11-11T18:48:58.049Z",
+ "about": "Final Gate 2 preview (version 8) against the same page with its embedded fonts block replaced by Rule 06.10's Google Fonts link (Inter 400, 600 and 700; Inter Tight 800; Lora Italic 400 and 500), fetched with the Chrome 153 user agent. The field version7 names that Google-loaded twin, in the engineer's scratch folder.",
+ "checked": "2026-11-11T19:17:04.090Z",
  "version7": "../../../../tmp/claude-0/-home-user-Dustin-s-Command-Center/762f3743-f9b3-59db-919e-2c641afbd759/scratchpad/gate-2-fix/engineer/preview-google-fonts.html",
  "preview": "work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html",
  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",

@@ -246,6 +246,11 @@ def image(spec, name):
         need(out.exists(), f'the photograph of {e["file"]} was not made')
         rec['w'], rec['h'] = png_size(out)
         rec['source'] = f'{e["file"]} ({e["selector"]} {e.get("index", 0)})'
+    elif 'compose' in spec:
+        mk, W, H, srcs = compose_markup(spec['compose'], name)
+        JOBS.append({'out': str(out), 'markup': mk, 'w': W, 'h': H, 'dsf': 1, 'bg': GROUND[spec['compose'].get('bg', 'newsprint')], 'ink': INK['charcoal']})
+        rec['w'], rec['h'] = W, H
+        rec['source'] = 'composed from ' + ', '.join(srcs[:6]) + (f' and {len(srcs) - 6} more' if len(srcs) > 6 else '')
     elif 'crop' in spec:
         c = spec['crop']
         CROPS.append((ROOT / c['src'], c['box'], out))
@@ -260,6 +265,76 @@ def image(spec, name):
 
 SEEN_OUT_REC = {}
 ALL_IMAGES = []
+FONT_CSS = None
+
+
+def font_css():
+    global FONT_CSS
+    if FONT_CSS is None:
+        import base64
+        f = ASSETS / 'fonts/inter/20261111_Inter-Latin.woff2'
+        FONT_CSS = (f"<style>@font-face{{font-family:'Inter';src:url(data:font/woff2;base64,{base64.b64encode(f.read_bytes()).decode()}) format('woff2');font-weight:100 900}}"
+                    ".lb{position:absolute;font:500 13px/16px Inter,sans-serif;color:#4E535B;white-space:normal;overflow:hidden}</style>")
+    return FONT_CSS
+
+
+def to_png(specs, base):
+    """Draw each sub-drawing of a sheet to the scratchpad first, so a sheet holds pictures made the same way as the board's own."""
+    import base64
+    outs, jobs, srcs = [], [], []
+    d = SCRATCH / 'parts'
+    d.mkdir(parents=True, exist_ok=True)
+    for i, s in enumerate(specs):
+        if 'copy' in s:
+            f = ROOT / s['copy']
+            need(f.exists(), f'missing image {s["copy"]}')
+            outs.append(f)
+            srcs.append(s['copy'])
+            continue
+        f = d / f'{base}-{i:03d}.png'
+        if 'svg' in s:
+            mk, w = svg_markup(ROOT / s['svg'], s['h'])
+            srcs.append(s['svg'])
+        else:
+            mk, w = sprite_markup(s['sprite'], s['h'])
+            srcs.append('sprite-sheet.html#' + s['sprite'])
+        bg = s.get('bg', 'newsprint')
+        jobs.append({'out': str(f), 'markup': mk, 'w': max(1, round(w + 0.499)), 'h': max(1, round(s['h'] + 0.499)), 'dsf': 1, 'bg': GROUND[bg], 'ink': INK[s.get('ink', INK_FOR[bg])]})
+        outs.append(f)
+    if jobs and (RENDER or not all(pathlib.Path(j['out']).exists() for j in jobs)):
+        run_jobs(jobs)
+    data = []
+    for f in outs:
+        w, h = png_size(f)
+        data.append((base64.b64encode(f.read_bytes()).decode(), w, h))
+    return data, srcs
+
+
+def compose_markup(c, name):
+    """One picture of many: each part at its own true size on whole pixels, an optional twice-size pixel copy beside it,
+    and an optional label under it in Inter at 13 px. Returns the markup, its width and height, and its sources."""
+    data, srcs = to_png(c['items'], name)
+    labels = c.get('labels') or [None] * len(data)
+    zoom = c.get('zoom', False)
+    gap = c.get('gap', 16)
+    zgap = 8
+    cw = c.get('cell_w') or max((w + (zgap + 2 * w if zoom else 0)) for _, w, _ in data)
+    ch = max((2 * h if zoom else h) for _, _, h in data)
+    lh = c.get('label_h', 36 if any(labels) else 0)
+    cols = c.get('cols') or len(data)
+    rows = (len(data) + cols - 1) // cols
+    W = cols * cw + (cols - 1) * gap
+    H = rows * (ch + lh) + (rows - 1) * gap
+    parts = [font_css()] if any(labels) else []
+    for i, (b64, w, h) in enumerate(data):
+        r, k = divmod(i, cols)
+        x, y = k * (cw + gap), r * (ch + lh + gap)
+        parts.append(f'<img src="data:image/png;base64,{b64}" width="{w}" height="{h}" style="position:absolute;left:{x}px;top:{y + ch - (2 * h if zoom else h)}px">')
+        if zoom:
+            parts.append(f'<img src="data:image/png;base64,{b64}" width="{2 * w}" height="{2 * h}" style="position:absolute;left:{x + w + zgap}px;top:{y + ch - 2 * h}px;image-rendering:pixelated">')
+        if labels[i]:
+            parts.append(f'<div class="lb" style="left:{x}px;top:{y + ch + 4}px;width:{cw}px;height:{lh - 4}px">{esc(labels[i])}</div>')
+    return ''.join(parts), W, H, srcs
 
 
 RENDER = True
@@ -319,6 +394,12 @@ def cell_html(cell, col, item, row, zoom, k):
     base = slug(item['id'], row['label'], label)
     if 'empty' in cell:
         return f'<figure class="shot empty"><div class="none"><p>{esc(cell["empty"])}</p></div><figcaption><b>{esc(label)}</b></figcaption></figure>'
+    if 'imgs' in cell and item.get('strip_one'):
+        names = item.get('names') or []
+        rec = image({'compose': {'items': cell['imgs'], 'gap': 16}}, slug(item['id'], row['label'], label))
+        alt = f'{item["title"]}: {label}, {row["label"]}, ' + ', '.join(names) + ' from left to right'
+        return (f'<figure class="shot {"after" if k == len(item["cols"]) - 1 else "before"}">{frame(rec, alt, zoom)}'
+                f'<figcaption><b>{esc(label)}</b> <span>{esc(join_words(names))}, from left</span></figcaption></figure>')
     if 'imgs' in cell:
         names = item.get('names') or [str(i + 1) for i in range(len(cell['imgs']))]
         recs = [image(s, slug(item['id'], row['label'], label, names[i])) for i, s in enumerate(cell['imgs'])]
@@ -404,11 +485,9 @@ def civic_item(item):
             {'img': {'sprite': p['v5'], 'h': 48}},
             {'img': {'svg': rel(civic_black(cl)), 'h': 48}}]})
     body = rows_html(dict(item, rows=rows, grid=True))
-    tiles = []
-    for sid, name in item['v5_set']:
-        r = image({'sprite': sid, 'h': 48}, slug('V5-Topic', name, '48'))
-        tiles.append(f'<li>{frame(r, f"{name}, fifth edition, 48 px")}<span class="nm">{esc(name)}</span></li>')
-    body += (f'<div class="row"><p class="row-label">{esc(item["v5_set_h"])}</p><ul class="tiles">{"".join(tiles)}</ul></div>'
+    r = image({'compose': {'items': [{'sprite': s, 'h': 48} for s, _ in item['v5_set']], 'labels': [n for _, n in item['v5_set']],
+                           'cols': 10, 'cell_w': 104, 'gap': 16, 'bg': 'white'}}, 'V5-Topic-Symbols-48')
+    body += (f'<div class="row"><p class="row-label">{esc(item["v5_set_h"])}</p>{frame(r, "The fifth edition’s twenty topic symbols at 48 px: " + join_words([n for _, n in item["v5_set"]]))}</div>'
              f'<p class="row-note"><a href="#sheet-48">{esc(item["set_link"])}</a></p>')
     return card(item, body)
 
@@ -552,33 +631,38 @@ def words_when(iso):
 
 def craft_sheets(C):
     K = C['craft']
-    # 16 px: the utility icons in use and the pillar fits
     um = json.loads((ASSETS / 'utility/20261110_Utility-Icons-Manifest.json').read_text())
-    t16 = []
+    s16, l16 = [], []
     for u in um['icons']:
-        name = u['name'].replace('-', ' ')
         f = sorted((ASSETS / 'utility/svg-16').glob(f'*_Utility-{u["name"]}-16px.svg'))
         need(f, f'no 16 px file for {u["name"]}')
-        r = image({'svg': rel(f[-1]), 'h': 16}, slug('Sheet-16', name))
-        t16.append((name, r))
+        s16.append({'svg': rel(f[-1]), 'h': 16})
+        l16.append(u['name'].replace('-', ' '))
     for p in [i for i in pillar_fits() if i['size_px'] == 16]:
-        r = image({'svg': rel(ASSETS / 'pillar-icons' / p['svg']), 'h': 16}, slug('Sheet-16-Pillar', p['word']))
-        t16.append((p['word'], r))
-    s16 = sheet('sheet-16', K['sheet_16_h'], K['sheet_16_cap'], t16, zoom=True)
-    # 24 px: the 37 fits and the four pillar fits, as 1x screens draw them
-    t24 = [(p['word'], image({'svg': rel(ASSETS / 'pillar-icons' / p['svg']), 'h': 24}, slug('Sheet-24-Pillar', p['word'])))
-           for p in pillar_fits() if p['size_px'] == 24]
+        s16.append({'svg': rel(ASSETS / 'pillar-icons' / p['svg']), 'h': 16})
+        l16.append(p['word'])
+    r16 = image({'compose': {'items': s16, 'labels': l16, 'zoom': True, 'cols': 8, 'cell_w': 120, 'gap': 16, 'bg': 'white'}}, 'Sheet-16')
+    s24, l24 = [], []
+    for p in [i for i in pillar_fits() if i['size_px'] == 24]:
+        s24.append({'svg': rel(ASSETS / 'pillar-icons' / p['svg']), 'h': 24})
+        l24.append(p['word'])
     for f in fits_manifest():
-        t24.append((id_label(f['id'], f['word']), image({'svg': rel(ASSETS / 'civic-line-v6/fit-24' / f['svg']), 'h': 24}, slug('Sheet-24', f['id']))))
-    FILL['n_24'] = len(t24)
+        s24.append({'svg': rel(ASSETS / 'civic-line-v6/fit-24' / f['svg']), 'h': 24})
+        l24.append(id_label(f['id'], f['word']))
+    FILL['n_24'] = len(s24)
     FILL['n_fits'] = len(fits_manifest())
-    s24 = sheet('sheet-24', fill(K['sheet_24_h']), K['sheet_24_cap'], t24, zoom=True)
-    # 48 px: every Civic Line drawing in use
+    r24 = image({'compose': {'items': s24, 'labels': l24, 'zoom': True, 'cols': 7, 'cell_w': 140, 'gap': 16, 'label_h': 52, 'bg': 'white'}}, 'Sheet-24')
     inv = json.loads((ASSETS / 'civic-line-v6/20261110_Civic-Line-V6-Inventory.json').read_text())
-    t48 = [(id_label(i['id'], i['label']), image({'svg': rel(civic_black(i)), 'h': 48}, slug('Sheet-48', i['id']))) for i in inv['icons']]
-    FILL['n_civic'] = len(t48)
-    s48 = sheet('sheet-48', fill(K['sheet_48_h']), K['sheet_48_cap'], t48, zoom=False, folded=True)
-    return f'<h3 class="sub">{esc(K["sheets_h"])}</h3>{s16}{s24}{s48}'
+    s48 = [{'svg': rel(civic_black(i)), 'h': 48} for i in inv['icons']]
+    l48 = [id_label(i['id'], i['label']) for i in inv['icons']]
+    FILL['n_civic'] = len(s48)
+    r48 = image({'compose': {'items': s48, 'labels': l48, 'cols': 9, 'cell_w': 112, 'gap': 16, 'label_h': 52, 'bg': 'white'}}, 'Sheet-48')
+    out = f'<h3 class="sub">{esc(K["sheets_h"])}</h3>'
+    for sid, h, cap, r, n in (('sheet-16', K['sheet_16_h'], K['sheet_16_cap'], r16, len(s16)), ('sheet-24', fill(K['sheet_24_h']), K['sheet_24_cap'], r24, len(s24)),
+                              ('sheet-48', fill(K['sheet_48_h']), K['sheet_48_cap'], r48, len(s48))):
+        out += (f'<div class="sheet" id="{sid}"><h4 class="sheet-h">{esc(h)}</h4><p class="caption">{esc(cap)}</p>'
+                f'{frame(r, f"{h}: {n} drawings, each named under it")}</div>')
+    return out
 
 
 def sheet(sid, h, cap, tiles, zoom, folded=False):
@@ -767,6 +851,31 @@ def approves_panel(C):
     return panel('approves', P, body, status)
 
 
+def preview_record(C):
+    """The final preview: the bytes and SHA-256 the engineer's Final build gives, checked against the file on disk."""
+    W = C['slots']['weight']
+    pv = ROOT / W['preview']
+    notes = ROOT / C['slots']['tokens']['notes']
+    sec = md_section(notes.read_text(), [r'final build']) if notes.exists() else None
+    rec = {'path': pv, 'exists': pv.exists(), 'final': False}
+    if pv.exists():
+        b = pv.read_bytes()
+        rec.update({'bytes': len(b), 'sha256': hashlib.sha256(b).hexdigest(), 'mtime': pv.stat().st_mtime})
+    hits = re.findall(r'([\d,]{7,}) bytes \(SHA-256 ([0-9a-f]{6,})\W+([0-9a-f]{4,})\)', sec or '')
+    if hits:
+        nb, head, tail = hits[-1]
+        rec['logged'] = {'bytes': int(nb.replace(',', '')), 'sha_head': head, 'sha_tail': tail}
+        if pv.exists():
+            rec['final'] = (rec['bytes'] == rec['logged']['bytes'] and rec['sha256'].startswith(head) and rec['sha256'].endswith(tail))
+            if not rec['final']:
+                warn(f'the preview on disk ({rec["bytes"]:,} bytes, {rec["sha256"][:8]}) is not the one the engineer’s Final build records ({nb} bytes, {head}…{tail})')
+    FIG['preview'] = {k: v for k, v in rec.items() if k != 'path'} | {'path': rel(pv)}
+    return rec
+
+
+PREVIEW = {}
+
+
 def a11y_status(C):
     """The accessibility lead's own checklist: {item text: done}. Their notes mark each check [x] when it is finished."""
     p = ROOT / C['slots']['contrast']['notes']
@@ -891,6 +1000,16 @@ def shot_row(files, labels, region_label):
     return f'<div class="phones" role="region" tabindex="0" aria-label="{esc(region_label)}; scrolls sideways">{"".join(figs)}</div>'
 
 
+def openers(C):
+    r = json.loads((ROOT / C['slots']['scores']['rescore']).read_text())
+    out = []
+    for i in r['items']:
+        a = i['anchor'].split(',')[0].strip()
+        name = 'Where to start' if a == '#start' else i['name']
+        out.append((name, a))
+    return out
+
+
 def a11y_findings(C):
     p = ROOT / C['slots']['screens']['notes']
     t = p.read_text() if p.exists() else ''
@@ -932,19 +1051,22 @@ def slot_screens(C):
         li = ''.join(f'<li><span class="sev">{esc(s)}</span> {esc(strip_codes(x).rstrip("."))}.</li>' for s, c, x in fnd)
         MOVED.update(c for _, c, _ in fnd)
         parts.append(f'<h3 class="sub">What the accessibility lead found</h3><p>{nw(len(fnd)).capitalize()} findings, none a failure of WCAG 2.2 at level AA, each with its fix and its owner in the accessibility lead’s report.</p><ul class="findings">{li}</ul>')
-    if a11y_done(C, r'^Opening screens'):
-        opens = sorted(d.glob('*_Open-*.png'))
-        phone = [p for p in opens if p.stem.endswith('-390')]
-        desk = [p for p in opens if p.stem.endswith('-1440')]
-        parts.append(f'<h3 class="sub">Each chapter’s opening screen</h3><p>The opening screen of every chapter, the identity proofs and the preview’s new front page, at 390 px on a phone, in one row at true size. Each opens at 1440 px below the row.</p>'
-                     + shot_row(phone, [ev_label(p.stem)[0] for p in phone], 'Opening screens at 390 px'))
+    if PREVIEW.get('exists'):
+        items = openers(C)
+        shots = SCRATCH / 'openers'
+        if RENDER or not all((shots / f'{slug(n)}-{w}.png').exists() for n, _ in items for w in (1440, 390)):
+            run_jobs([{'shots': [{'anchor': a, 'out': str(shots / f'{slug(n)}-{w}.png')} for n, a in items], 'file': str(PREVIEW['path']),
+                       'width': w, 'height': h, 'dsf': 1, 'w': 0, 'h': 0} for w, h in ((1440, 900), (390, 844))])
+        r390 = image({'compose': {'items': [{'copy': rel(shots / f'{slug(n)}-390.png')} for n, _ in items], 'labels': [n for n, _ in items], 'gap': 24, 'label_h': 40}}, 'Openers-390')
+        state = 'the final preview' if PREVIEW.get('final') else 'the preview as it stood at this build'
+        parts.append(f'<h3 class="sub">Each chapter’s opening screen</h3><p>Every chapter, the identity proofs and “Where to start”, as a reader lands on each from the contents of {state}, at 390 by 844 px in one row at true size. Each opens at 1440 by 900 px below the row.</p>'
+                     + frame(r390, 'Opening screens at 390 px: ' + join_words([n for n, _ in items])))
         dets = []
-        for p in desk:
-            lab, _ = ev_label(p.stem)
-            r = image({'copy': rel(p)}, slug('Evidence', p.stem.split('_', 1)[-1]))
-            dets.append(f'<details class="more"><summary>{esc(lab)} at 1440 px</summary>{frame(r, lab + ", the opening screen at 1440 px")}</details>')
+        for n, _ in items:
+            r = image({'copy': rel(shots / f'{slug(n)}-1440.png')}, slug('Opener', n, '1440'))
+            dets.append(f'<details class="more"><summary>{esc(n)} at 1440 px</summary>{frame(r, n + ", the opening screen at 1440 px")}</details>')
         parts.append(f'<div class="desk">{"".join(dets)}</div>')
-        FIG['screens_open'] = len(opens)
+        FIG['openers'] = {'from': rel(PREVIEW['path']), 'sha256': PREVIEW.get('sha256'), 'final': PREVIEW.get('final'), 'items': [n for n, _ in items]}
     else:
         waiting.append('the opening screens')
     kw = d / '20261111_Gate-2-Keyboard-Walk.json'
@@ -970,12 +1092,15 @@ def slot_screens(C):
             files = sorted(files, key=lambda p: next((i for i, o in enumerate(order) if p.stem.endswith(o)), 9))
             labs = [p.stem.split(f'-{pl}-' if pl[0].isdigit() else f'-{pl.capitalize()}-', 1)[-1].replace('-', ' ').replace('Reduced', 'Reduced motion,').replace('Normal', 'Normal motion,') for p in files]
             nm = f'Player {pl.replace("-", ".", 1)}' if pl[0].isdigit() else f'The {pl.lower()} player'
-            rows.append(f'<details class="more"><summary>{esc(nm)}: {esc(r["afterPlay"]["status"])}</summary>{shot_row(files, labs, nm)}</details>')
+            rec = image({'compose': {'items': [{'copy': rel(f)} for f in files], 'labels': labs, 'gap': 24, 'label_h': 24}}, slug('Motion', nm))
+            rows.append(f'<details class="more"><summary>{esc(nm)}: {esc(r["afterPlay"]["status"])}</summary>{frame(rec, nm + ": " + join_words(labs))}</details>')
         ts = m.get('themeSwitch')
         theme = ''
         tfiles = sorted(d.glob('*_Motion-Ch18-Theme-Switch-*.png'))
         if tfiles:
-            theme = f'<details class="more"><summary>Chapter 18’s theme switch, at once in both modes</summary>{shot_row(tfiles, [p.stem.split("Switch-", 1)[-1].replace("-", " ") for p in tfiles], "Theme switch")}</details>'
+            tl = [p.stem.split('Switch-', 1)[-1].replace('-', ' ') for p in tfiles]
+            rec = image({'compose': {'items': [{'copy': rel(f)} for f in tfiles], 'labels': tl, 'gap': 24, 'label_h': 24}}, 'Motion-Theme-Switch')
+            theme = f'<details class="more"><summary>Chapter 18’s theme switch, at once in both modes</summary>{frame(rec, "Theme switch: " + join_words(tl))}</details>'
         parts.append(f'<h3 class="sub">Motion, normal and reduced</h3><p>With motion reduced, each of chapter 17’s {nw(len(m["reduced"]))} players lands on its last frame the moment Play is pressed, and nothing moves after. With motion on, each runs its frames. Each row opens to its pictures at true size.</p>{"".join(rows)}{theme}')
     else:
         waiting.append('motion, normal and reduced')
