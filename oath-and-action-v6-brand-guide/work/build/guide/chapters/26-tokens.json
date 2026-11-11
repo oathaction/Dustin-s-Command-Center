@@ -439,7 +439,7 @@
    "id": "26.7",
    "title": "Look up any token in the table, and copy its name from there.",
    "rule": [
-    "The table lists every token in tokens.json, 504 in all, grouped by category: its name in the JSON and in CSS, its value, its job, its tier and, for a color, the contrast it measures on each surface it serves. Search by any of those words. Copy puts the CSS name on your clipboard."
+    "The table lists every token in tokens.json, 504 in all, in 17 groups by category, each closed until you open it. A row gives the token's name in the JSON and in CSS, its value, its job, its tier and, for a color, the contrast it measures on each surface it serves. Search by any of those words, and every group that holds a match opens. Copy puts the CSS name on your clipboard."
    ],
    "tokens": [],
    "why": {
@@ -459,11 +459,11 @@
    "specs": [
     {
      "label": "Rows",
-     "value": "504, grouped by category, with the count of each group"
+     "value": "504, in 17 groups by category, each closed until opened; the list above them opens one"
     },
     {
      "label": "Search",
-     "value": "Any word of a name, a value, a job or a tier; the line under the field says how many rows show"
+     "value": "Any word of a name, a value, a job or a tier; every group with a match opens, and the line beside the field says how many rows show"
     },
     {
      "label": "Copy",

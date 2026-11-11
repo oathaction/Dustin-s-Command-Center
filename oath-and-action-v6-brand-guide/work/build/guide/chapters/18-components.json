@@ -4,6 +4,7 @@
   "title": "Components and interaction",
   "part": "Behavior",
   "instruction": "Build controls that work by keyboard and screen reader and announce every change.",
+  "opener": "s-18-opener",
   "intro": [
     "A component is a part of a page that a reader works, such as a button, a menu or a search field. Each rule here gives one component as code to copy, drawn live in the light theme on Newsprint and in the dark theme on Charcoal, and a table of its states, its keys, its name, its target size and what a screen reader hears when it changes.",
     "The code reads only tokens.css, the file that holds every color, size and type style as a named value, so one copy follows either theme. Each component hands a screen reader its accessible name, the words a screen reader says for it, with its role, such as button, and its state, such as pressed. When something changes, the code writes a sentence into a status line, a line on the page that a screen reader reads at its next pause, and each screen reader words all of this its own way. ARIA, short for Accessible Rich Internet Applications, is W3C’s set of attributes that gives a role or a state where HTML has none, and each rule names the pattern it follows in the ARIA Authoring Practices Guide (APG), W3C’s worked examples of each control. How each state looks and moves comes from chapter 17."

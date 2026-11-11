@@ -19,6 +19,7 @@ afterwards and changes them through this script's data.
 """
 import argparse
 import html
+import importlib.util
 import json
 import re
 import sys
@@ -113,6 +114,11 @@ F = {
     "char_n_body": r2(ratio(P["charcoal"], P["newsprint"])),
 }
 N_TOKENS = len(FLAT)
+# the token table's groups, as token_table_build.py makes them (round 2, call 13)
+_spec = importlib.util.spec_from_file_location("token_table_build", Path(__file__).with_name("token_table_build.py"))
+_tt = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_tt)
+N_GROUPS = len({_tt.group_of(p) for p in FLAT})
 # Deprecated names (DTCG $deprecated, Rule 26.8): each old short name with its new one and the release it leaves with
 DEPRECATED = {}
 for _p, _t in FLAT.items():
@@ -471,7 +477,7 @@ def specimens():
         illustrative=True, notes="Illustrative release and caption.")
 
     # 26.7's table, written by token_table_build.py
-    M["s-26-token-table"] = {"chapter": "26", "rule": "26.7", "interactive": True, "fit_switch": False,
+    M["s-26-token-table"] = {"chapter": "26", "rule": "26.7", "interactive": True, "fit_switch": False, "breakout": True,
                              "alt": "Every token in tokens.json, one row each: its name, CSS name, value, use, tier and contrast."}
     return S, M
 
@@ -768,15 +774,16 @@ def chapter():
          "builders": ["Leave the body with no surface class, so the theme sets its ground. Put the head script in its own script element before the stylesheets. "
                       "Rule 18.4 has the switch and its script to copy."]},
         {"id": "26.7", "title": "Look up any token in the table, and copy its name from there.",
-         "rule": [f"The table lists every token in tokens.json, {N_TOKENS} in all, grouped by category: its name in the JSON and in CSS, its value, its job, its tier "
-                  "and, for a color, the contrast it measures on each surface it serves. Search by any of those words. Copy puts the CSS name on your clipboard."],
+         "rule": [f"The table lists every token in tokens.json, {N_TOKENS} in all, in {N_GROUPS} groups by category, each closed until you open it. A row gives "
+                  "the token's name in the JSON and in CSS, its value, its job, its tier and, for a color, the contrast it measures on each surface it serves. "
+                  "Search by any of those words, and every group that holds a match opens. Copy puts the CSS name on your clipboard."],
          "tokens": [],
          "why": {"text": ["A name copied from the source cannot drift, and a value typed by hand stays as it was when the next release changes the token."],
                  "basis": "Design judgment"},
          "correct": {"specimen": "s-26-token-table", "caption": f"Every token in tokens.json, version {VERSION}. Search, then copy a name."},
          "failure": {"specimen": "s-26-7-failure", "caption": f"<strong>Fails Rule 26.7.</strong> A gray typed from an old file, {OLD_STONE}, where Deep Stone's name belongs. It matches today and falls behind with the next release."},
-         "specs": [{"label": "Rows", "value": f"{N_TOKENS}, grouped by category, with the count of each group"},
-                   {"label": "Search", "value": "Any word of a name, a value, a job or a tier; the line under the field says how many rows show"},
+         "specs": [{"label": "Rows", "value": f"{N_TOKENS}, in {N_GROUPS} groups by category, each closed until opened; the list above them opens one"},
+                   {"label": "Search", "value": "Any word of a name, a value, a job or a tier; every group with a match opens, and the line beside the field says how many rows show"},
                    {"label": "Copy", "value": "The CSS name, with a line that says what was copied, or what to do when the browser refuses"}],
          "related": ["05", "06"],
          "builders": ["The Use column prints each token's description from tokens.json word for word, and a deprecated token says which name replaced it."]},

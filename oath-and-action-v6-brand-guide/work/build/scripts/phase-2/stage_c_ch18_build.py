@@ -2075,6 +2075,7 @@ def build():
         'title': 'Components and interaction',
         'part': 'Behavior',
         'instruction': 'Build controls that work by keyboard and screen reader and announce every change.',
+        'opener': 's-18-opener',      # call 8: the systems designer's picture of a button, a chip and a choice (manifest-anatomy.json)
         'intro': INTRO,
         'groups': groups,
         'rules': rules,

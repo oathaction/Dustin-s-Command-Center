@@ -785,7 +785,8 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
     maker's. Specimens do not count toward the page's red (D2-102), so the stage carries data-red="specimen".
 
     Manifest keys the shell reads (shell notes, section 0): width_px, height_px, surface, alt, illustrative, readable,
-    interactive, scale, fit_switch, check_exempt."""
+    interactive, scale, fit_switch, check_exempt, breakout (round 2: a flowing stage that takes the room over the rail
+    from 80em, as a wide fixed stage does, such as chapter 26's token table)."""
     meta = specs.meta(spec_id) if spec_id else {}
     frag = specs.fragment(spec_id, where) if spec_id else None
     lab, glyph = PLATE_LABEL.get(kind, (None, None))
@@ -899,6 +900,7 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
             + f'<div class="plate-head">{"".join(head)}</div>'
             + f'<div class="plate-scroll" data-plate-scroll data-frame-name="{e(frame_name)}"'
             + (f' data-width="{width:g}" style="--w:{width:g}px"' if isinstance(width, (int, float)) else "")
+            + (' data-breakout' if meta.get("breakout") and not isinstance(width, (int, float)) else "")
             + f'>{alt_html}{stage}</div>'
             + cap + "</figure>")
 

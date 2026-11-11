@@ -227,6 +227,15 @@
         fig.classList.toggle('is-breakout', true);
       }
     });
+    // round 2 (call 13): a flowing stage marked data-breakout, such as chapter 26's token table, whose columns need the
+    // room, takes all of it from 80em, out to the page's own margin
+    $$('.chapter .plate > .plate-scroll[data-breakout]').forEach(function (b) {
+      var fig = b.parentElement;
+      fig.classList.toggle('is-breakout', false); fig.style.setProperty('--bo', '0px');
+      if (!on) return;
+      var reach = Math.floor(fig.getBoundingClientRect().left - edge);
+      if (reach >= 1) { fig.style.setProperty('--bo', reach + 'px'); fig.classList.toggle('is-breakout', true); }
+    });
   }
   // Every frame returns to its usual sides first, so the flowing stages and the tests above all measure from there.
   function sizeFrames() {

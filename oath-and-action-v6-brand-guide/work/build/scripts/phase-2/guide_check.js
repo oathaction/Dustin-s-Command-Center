@@ -1668,13 +1668,18 @@ async function motionAudit(browser, file, opts = {}) {
     const list = await page.$$('[data-oa-motion]');
     const players = [];
     for (const h of list) {
-      const info = await h.evaluate((el) => { const st = el.closest('[data-specimen]'); return { where: st ? st.getAttribute('data-specimen') : ((el.closest('section[id]') || {}).id || 'page'), failure: !!el.closest('.plate--failure'), nested: !!(el.parentElement && el.parentElement.closest('[data-oa-motion]')) }; });
+      const info = await h.evaluate((el) => { const st = el.closest('[data-specimen]'); return { where: st ? st.getAttribute('data-specimen') : ((el.closest('section[id]') || {}).id || 'page'), failure: !!el.closest('.plate--failure'), nested: !!(el.parentElement && el.parentElement.closest('[data-oa-motion]')), master: el.getAttribute('data-oa-rest') === 'master' }; });
       if (info.nested) continue;
       if (info.failure) { if (!reduced) out.failurePlates++; continue; }
-      players.push({ h, where: info.where });
+      players.push({ h, where: info.where, master: info.master });
     }
-    if (!reduced) out.players = players.length;
-    for (const { h, where } of players) {
+    if (!reduced) { out.players = players.length; out.masterRest = players.filter((x) => x.master).length; }
+    // Round 2 (call 5, D2-1548): a player of the wordmark or lockmark, marked data-oa-rest="master", rests on its master:
+    // on load it reads data-frame="end" with nothing running and Reset unavailable (aria-disabled); Play runs it, outside
+    // reduced motion, and it comes back to "end"; under reduced motion Play leaves it at "end" with no animation. Any
+    // other player keeps the contract above: "start" on load, and Play draws its last frame at once under reduced motion.
+    const resetOff = (h) => h.evaluate((el) => { const r = el.querySelector('[data-oa-reset]') || (el.closest('[data-specimen]') || el).querySelector('[data-oa-reset]'); return !!r && r.getAttribute('aria-disabled') === 'true'; });
+    for (const { h, where, master } of players) {
       await h.evaluate((el) => el.scrollIntoView({ block: 'center' }));
       const ctl = await h.evaluate((el) => {
         const scope = el.closest('[data-specimen]') || el;
@@ -1688,9 +1693,16 @@ async function motionAudit(browser, file, opts = {}) {
         await page.waitForTimeout(400);
         const running = await h.evaluate((el) => el.getAnimations({ subtree: true }).filter((a) => a.playState === 'running').length);
         if (running || (await h.evaluate(MOTION_STATE)) !== s0) out.problems.push({ where, why: `it moves on load${running ? ` (${running} animation(s) running)` : ''}; motion plays only on request` });
-        // chapter 17's players say where they stand in data-frame: "start" on load
+        // chapter 17's players say where they stand in data-frame: "start" on load, or "end" for a player at rest on its master
         const f0 = await h.evaluate((el) => el.getAttribute('data-frame'));
-        if (f0 !== null && f0 !== 'start') out.problems.push({ where, why: `data-frame is "${f0}" on load, not "start"` });
+        if (master) {
+          if (f0 !== 'end') out.problems.push({ where, why: `a player at rest on its master (data-oa-rest="master") reads data-frame "${f0}" on load, not "end"` });
+          if (!(await resetOff(h))) out.problems.push({ where, why: 'a player at rest on its master offers Reset at rest; Reset is aria-disabled there, with its reason' });
+        } else if (f0 !== null && f0 !== 'start') out.problems.push({ where, why: `data-frame is "${f0}" on load, not "start"` });
+      } else if (master) {
+        const f0 = await h.evaluate((el) => el.getAttribute('data-frame'));
+        if (f0 !== 'end') out.problems.push({ where, why: `with reduced motion on, a player at rest on its master reads data-frame "${f0}" on load, not "end"` });
+        if (!(await resetOff(h))) out.problems.push({ where, why: 'with reduced motion on, a player at rest on its master offers Reset at rest' });
       }
       if (!ctl.play) continue;
       const play = await h.evaluateHandle((el) => el.querySelector('[data-oa-play]') || (el.closest('[data-specimen]') || el).querySelector('[data-oa-play]'));
@@ -1703,20 +1715,32 @@ async function motionAudit(browser, file, opts = {}) {
         await page.waitForTimeout(1000);
         const s2 = await h.evaluate(MOTION_STATE);
         const why = [];
-        if (s1 === s0) why.push('Play draws nothing new on the first frame');
+        if (s1 === s0 && !master) why.push('Play draws nothing new on the first frame');
         if (s2 !== s1) why.push('it keeps moving after the first frame');
         if (long.length) why.push(`animation(s) of ${[...new Set(long)].join(', ')} ms`);
         if (after.running) why.push(`${after.running} animation(s) still running`);
-        if (after.frame !== null && after.frame !== 'end') why.push(`data-frame is "${after.frame}", not "end"`);
+        if ((after.frame !== null || master) && after.frame !== 'end') why.push(`data-frame is "${after.frame}", not "end"`);
         out.reduced.push({ where, finalAtOnce: !why.length });
         if (why.length) out.problems.push({ where, why: `with reduced motion on: ${why.join('; ')}; Play shows the final frame at once` });
       } else {
+        if (master) {
+          // Play runs it: something moves, or the player says it is running, soon after the press
+          await page.waitForTimeout(120);
+          const ran = await h.evaluate((el, s0) => el.getAnimations({ subtree: true }).some((a) => a.playState === 'running') || el.getAttribute('data-frame') === 'run', s0);
+          const moved = (await h.evaluate(MOTION_STATE)) !== s0;
+          if (!ran && !moved) out.problems.push({ where, why: 'Play does not run a player at rest on its master; Play steps to the first frame and runs to the master' });
+        }
         await page.waitForTimeout(2500);
         const a = await h.evaluate(MOTION_STATE);
         await page.waitForTimeout(600);
         const b = await h.evaluate(MOTION_STATE);
         const loops = await h.evaluate((el) => el.getAnimations({ subtree: true }).filter((x) => x.playState === 'running' && x.effect && x.effect.getComputedTiming().iterations === Infinity).length);
         if (a !== b || loops) out.problems.push({ where, why: `it still moves 2.5 s after Play${loops ? ` (${loops} endless animation(s))` : ''}; nothing loops` });
+        if (master) {
+          const fe = await h.evaluate((el) => el.getAttribute('data-frame'));
+          if (fe !== 'end') out.problems.push({ where, why: `a player at rest on its master reads data-frame "${fe}" 2.5 s after Play, not back at "end"` });
+          if (!(await resetOff(h))) out.problems.push({ where, why: 'a player back at rest on its master after a run still offers Reset' });
+        }
       }
     }
     await ctx.close();
@@ -2067,6 +2091,23 @@ async function checkPage(browser, file, widths, opts = {}) {
   return report;
 }
 
+// A demo player at rest on its master (call 5), written as a string for page.evaluate, with one fault switched on at a time
+function masterPlayer({ frame0 = 'end', resetAtRest = true, runs = true, endFrame = 'end', reducedPlays = false }) {
+  return `(() => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="sb-mr" data-oa-motion data-oa-rest="master" data-frame="${frame0}"><svg width="80" height="20" viewBox="0 0 80 20" aria-hidden="true" focusable="false"><rect width="10" height="10" fill="currentColor"/></svg><button type="button" data-oa-play data-oa-pause>Play</button><button type="button" data-oa-reset${resetAtRest ? ' aria-disabled="true"' : ''}>Reset</button></div>');
+    const box = [...document.querySelectorAll('.sb-mr')].pop(), r = box.querySelector('rect'), reset = box.querySelector('[data-oa-reset]');
+    const rest = () => { box.setAttribute('data-frame', '${endFrame}'); if (${resetAtRest}) reset.setAttribute('aria-disabled', 'true'); };
+    box.querySelector('[data-oa-play]').addEventListener('click', () => {
+      const rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (rm && !${reducedPlays}) { rest(); return; }
+      if (!${runs}) return;
+      box.setAttribute('data-frame', 'run'); reset.removeAttribute('aria-disabled');
+      const a = r.animate([{ transform: 'translateX(-40px)' }, { transform: 'translateX(0px)' }], { duration: 400 });
+      a.onfinish = () => { if (!(rm && ${reducedPlays})) rest(); };
+    });
+  })()`;
+}
+
 // ------------------------------------------------------------------------------------------------ self-test
 // Each plant puts one fault into a fresh copy of the demo build and names the test that must catch it.
 const PLANTS = [
@@ -2360,6 +2401,13 @@ const PLANTS = [
   { key: 'motionPlay', fault: 'a player that keeps its 400 ms under reduced motion', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="sb-mv" data-oa-motion><svg width="80" height="20" viewBox="0 0 80 20" aria-hidden="true" focusable="false"><rect class="sb-mv-r" width="10" height="10" fill="currentColor"/></svg><button type="button" data-oa-play data-oa-pause>Play</button><button type="button" data-oa-reset>Reset</button></div>'); const box = document.querySelectorAll('.sb-mv')[document.querySelectorAll('.sb-mv').length - 1]; const r = box.querySelector('rect'); box.querySelector('[data-oa-play]').addEventListener('click', () => { r.animate([{ transform: 'translateX(0px)' }, { transform: 'translateX(50px)' }], { duration: 400, fill: 'forwards' }); }); const rs = box.querySelector('[data-oa-reset]'); if (rs) rs.addEventListener('click', () => r.getAnimations().forEach((a) => a.cancel())); } },
   { key: 'motionPlay', fault: 'a player whose motion loops after Play', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="sb-mv" data-oa-motion><svg width="80" height="20" viewBox="0 0 80 20" aria-hidden="true" focusable="false"><rect class="sb-mv-r" width="10" height="10" fill="currentColor"/></svg><button type="button" data-oa-play data-oa-pause>Play</button><button type="button" data-oa-reset>Reset</button></div>'); const box = document.querySelectorAll('.sb-mv')[document.querySelectorAll('.sb-mv').length - 1]; const r = box.querySelector('rect'); box.querySelector('[data-oa-play]').addEventListener('click', () => { r.animate([{ transform: 'translateX(0px)' }, { transform: 'translateX(50px)' }], { duration: (matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 400), fill: 'forwards', iterations: Infinity }); }); const rs = box.querySelector('[data-oa-reset]'); if (rs) rs.addEventListener('click', () => r.getAnimations().forEach((a) => a.cancel())); } },
   { key: 'motionPlay', fault: 'a player that draws its last frame under reduced motion and leaves data-frame at "start" (chapter 17\'s contract)', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="sb-mv" data-oa-motion data-frame="start"><svg width="80" height="20" viewBox="0 0 80 20" aria-hidden="true" focusable="false"><rect class="sb-mv-r" width="10" height="10" fill="currentColor"/></svg><button type="button" data-oa-play data-oa-pause>Play</button><button type="button" data-oa-reset>Reset</button></div>'); const box = document.querySelectorAll('.sb-mv')[document.querySelectorAll('.sb-mv').length - 1]; const r = box.querySelector('rect'); box.querySelector('[data-oa-play]').addEventListener('click', () => { r.animate([{ transform: 'translateX(0px)' }, { transform: 'translateX(50px)' }], { duration: (matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 400), fill: 'forwards' }); }); const rs = box.querySelector('[data-oa-reset]'); if (rs) rs.addEventListener('click', () => r.getAnimations().forEach((a) => a.cancel())); } },
+  // round 2 (call 5, D2-1548): players at rest on their masters, marked data-oa-rest="master"
+  { key: 'motionPlay', fault: 'a player at rest on its master that plays, comes back to "end", keeps Reset unavailable at rest and stays at "end" under reduced motion (allowed: must not be flagged)', expect: false, js: masterPlayer({}) },
+  { key: 'motionPlay', fault: 'a player marked to rest on its master that loads at "start"', js: masterPlayer({ frame0: 'start' }) },
+  { key: 'motionPlay', fault: 'a player at rest on its master whose Reset is available at rest', js: masterPlayer({ resetAtRest: false }) },
+  { key: 'motionPlay', fault: 'a player at rest on its master that Play does not run', js: masterPlayer({ runs: false }) },
+  { key: 'motionPlay', fault: 'a player at rest on its master that ends a run at "start", not back at "end"', js: masterPlayer({ endFrame: 'start' }) },
+  { key: 'motionPlay', fault: 'a player at rest on its master that, under reduced motion, plays its 400 ms and leaves data-frame at "run"', js: masterPlayer({ reducedPlays: true }) },
   { key: 'motionPlay', fault: 'the same looping player on a failure plate, shown as a fault on purpose (allowed: must not be flagged)', expect: false, js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<figure class="plate plate--failure"><div class="sb-fail"></div></figure>'); document.querySelector('.sb-fail').insertAdjacentHTML('beforeend', '<div class="sb-mv" data-oa-motion><svg width="80" height="20" viewBox="0 0 80 20" aria-hidden="true" focusable="false"><rect class="sb-mv-r" width="10" height="10" fill="currentColor"/></svg><button type="button" data-oa-play data-oa-pause>Play</button><button type="button" data-oa-reset>Reset</button></div>'); const box = document.querySelectorAll('.sb-mv')[document.querySelectorAll('.sb-mv').length - 1]; const r = box.querySelector('rect'); box.querySelector('[data-oa-play]').addEventListener('click', () => { r.animate([{ transform: 'translateX(0px)' }, { transform: 'translateX(50px)' }], { duration: (matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 400), fill: 'forwards', iterations: Infinity }); }); const rs = box.querySelector('[data-oa-reset]'); if (rs) rs.addEventListener('click', () => r.getAnimations().forEach((a) => a.cancel())); },
     verify: (r) => r.motion && r.motion.failurePlates === 1 && r.motion.players === 0 },

@@ -50,6 +50,15 @@ def dots(path):
     return "<wbr>.".join(e(x) for x in path.split(".")).replace("<wbr>.", ".<wbr>")
 
 
+def hyph(name):
+    """A CSS name that may break after each hyphen, and nowhere else."""
+    return "-<wbr>".join(e(x) for x in name.split("-")).replace("<wbr>", "", 2)   # never inside the leading --
+
+
+def slug(text):
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+
+
 def css_name(path):
     return "--" + "-".join(re.sub(r"([a-z0-9])([A-Z])", r"\1-\2", seg).lower() for seg in path.split("."))
 
@@ -179,19 +188,34 @@ STYLE = """
 .tt-find { display: flex; flex-wrap: wrap; align-items: end; gap: var(--oa-space-100) var(--oa-space-300); margin: 0 0 var(--oa-space-200) }
 .tt-find label { display: block; font: var(--oa-type-ui) }
 .tt-q { box-sizing: border-box; min-height: var(--oa-size-target-touch); width: min(100%, 24rem); padding: 0 var(--oa-space-150);
-  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); background: var(--oa-color-surface); color: var(--oa-color-text-primary); font: var(--oa-type-body) }
-.tt-q:focus-visible, .tt-copy:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); background: var(--oa-color-field-ground); color: var(--oa-color-text-primary); font: var(--oa-type-body) }
+.tt-q:focus-visible, .tt-copy:focus-visible, .tt-grp > summary:focus-visible, .tt-index a:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
 .tt-status { margin: 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
-.tt table { border-collapse: collapse; width: 100% }
-.tt caption { text-align: left; font: var(--oa-type-caption); color: var(--oa-color-text-secondary); padding-bottom: var(--oa-space-100) }
+.tt-about { margin: 0 0 var(--oa-space-150); font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
+.tt-index { margin: 0 0 var(--oa-space-300); padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 0 var(--oa-space-300) }
+.tt-index li { display: flex; align-items: center; min-height: 1.75rem }
+.tt-index a { color: var(--oa-color-text-primary); text-decoration: underline; text-underline-offset: .2em; font: var(--oa-type-body-small) }
+.tt-index a:hover { text-decoration-thickness: var(--oa-border-width-rule) }
+.tt-k { color: var(--oa-color-text-secondary); font-variant-numeric: tabular-nums }
+.tt-grp { border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-strong) }
+.tt-grp:last-child { border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-strong) }
+.tt-grp > summary { display: list-item; min-height: var(--oa-size-target-touch); box-sizing: border-box; padding: var(--oa-space-100) 0; cursor: pointer;
+  font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold); line-height: 1.75 }
+.tt-grp > summary:hover .tt-gn { text-decoration: underline }
+.tt-grp[open] > summary { border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-strong) }
+.tt-grp:target > summary { scroll-margin-top: 6rem }
+.tt-groups { container-type: inline-size }
+.tt table { border-collapse: collapse; width: 100%; table-layout: fixed; margin: 0 0 var(--oa-space-300) }
+.tt col.tt-c1 { width: 31% } .tt col.tt-c2 { width: 19% } .tt col.tt-c3 { width: 29% } .tt col.tt-c4 { width: 8% } .tt col.tt-c5 { width: 13% }
 .tt thead th { font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase; text-align: left;
   padding: var(--oa-space-100) var(--oa-space-200) var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-strong) }
 .tt tbody th, .tt td { text-align: left; vertical-align: top; padding: var(--oa-space-150) var(--oa-space-200) var(--oa-space-150) 0;
   border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline); font: var(--oa-type-body-small) }
-.tt .tt-g th { padding-top: var(--oa-space-400); font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); border-bottom-color: var(--oa-color-border-strong) }
-.tt-n { display: block; font-weight: var(--oa-font-weight-semibold); overflow-wrap: break-word }
-.tt-c { display: block; margin-top: var(--oa-space-050); font-size: .875rem; overflow-wrap: break-word; color: var(--oa-color-text-secondary) }
-.tt tbody th[scope="row"] { width: 16rem }
+.tt tbody tr:last-child > * { border-bottom: 0 }
+/* a name breaks only at a dot or a hyphen, and only when its cell lacks the room (call 13) */
+.tt-n, .tt-c, .tt-via code { overflow-wrap: normal; word-break: normal; hyphens: manual }
+.tt-n { display: block; font-weight: var(--oa-font-weight-semibold) }
+.tt-c { display: block; margin-top: var(--oa-space-050); font-size: .875rem; color: var(--oa-color-text-secondary) }
 .tt-copy { box-sizing: border-box; margin-top: var(--oa-space-100); min-height: var(--oa-size-target-touch); padding: 0 var(--oa-space-200); border: 0;
   box-shadow: inset 0 0 0 var(--oa-border-width-hairline) var(--oa-color-border-strong); background: transparent; color: var(--oa-color-text-primary); font: var(--oa-type-ui); cursor: pointer }
 .tt-copy:hover { box-shadow: inset 0 0 0 var(--oa-border-width-rule) var(--oa-color-border-strong); text-decoration: underline }
@@ -199,15 +223,16 @@ STYLE = """
   box-shadow: inset 0 0 0 var(--oa-border-width-hairline) var(--oa-color-border-strong) }
 .tt-v { font-variant-numeric: tabular-nums }
 .tt-via { display: block; margin-top: var(--oa-space-050); font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
-.tt-via code { overflow-wrap: break-word }
 .tt-st .tt-mk { width: var(--oa-size-icon-small); height: var(--oa-size-icon-small); margin-right: .4em; vertical-align: -.2em }
 .tt-st .tt-ok { color: var(--oa-color-state-success-mark) }
 .tt-st.is-error { color: var(--oa-color-state-error-text); background: var(--oa-color-state-error-band); border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar); padding: var(--oa-space-100) var(--oa-space-150) }
-.tt-wrap { container-type: inline-size }
-@container (max-width: 50rem) {
+/* under 40rem each row is a card: the name, then each value under its column's word (call 13, CA-M2) */
+@container (max-width: 39.99rem) {
   .tt thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%) }
+  .tt table, .tt tbody { display: block }
+  .tt colgroup { display: none }
   .tt tr { display: block; padding: var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
-  .tt .tt-g { border-bottom-color: var(--oa-color-border-strong) }
+  .tt tbody tr:last-child { border-bottom: 0 }
   .tt tbody th, .tt td { display: block; border: 0; padding: var(--oa-space-050) 0 }
   .tt td::before { display: block; font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase; color: var(--oa-color-text-secondary) }
   .tt td:nth-child(2)::before { content: "Value" }
@@ -220,13 +245,17 @@ STYLE = """
 """
 
 SCRIPT = """
-// Chapter 26's token table: the search filters the rows and says how many show; each Copy copies its CSS name.
+// Chapter 26's token table (round 2, call 13): each category is a group, closed until a reader opens it or searches.
+// The search filters the rows, opens every group that holds a match and hides the rest, and says how many show; clearing
+// it puts each group back as the reader left it. The index opens the group it names. Each Copy copies its CSS name.
 document.querySelectorAll('.tt').forEach(function (box) {
   var q = box.querySelector('.tt-q'), status = box.querySelector('.tt-status'), words = status.querySelector('.tt-t');
-  var groups = Array.prototype.slice.call(box.querySelectorAll('tbody'));
-  var rows = Array.prototype.slice.call(box.querySelectorAll('tbody tr:not(.tt-g)'));
+  var groups = Array.prototype.slice.call(box.querySelectorAll('.tt-grp'));
+  var rows = Array.prototype.slice.call(box.querySelectorAll('tbody tr'));
   var text = rows.map(function (r) { return r.textContent.replace(/\\s+/g, ' ').toLowerCase(); });
-  var total = rows.length, timer = null;
+  var total = rows.length, timer = null, searching = false, setting = false;
+  groups.forEach(function (g) { g.addEventListener('toggle', function () { if (!searching && !setting) g.setAttribute('data-user-open', g.open ? '1' : ''); }); });
+  var openTo = function (g, on) { setting = true; g.open = on; setting = false; };
   // the line carries the count with its advice (F-5), and a copy's result with the success or the error mark (F-7)
   var say = function (t, mark) {
     words.textContent = '';
@@ -237,14 +266,27 @@ document.querySelectorAll('.tt').forEach(function (box) {
     if (mark === 'err') { status.setAttribute('data-red', 'working'); status.setAttribute('data-red-job', 'error'); } else { status.removeAttribute('data-red'); status.removeAttribute('data-red-job'); }
   };
   function filter() {
-    var words = q.value.toLowerCase().replace(/^--/, '').split(/\\s+/).filter(Boolean), shown = 0;   // the search's words
-    rows.forEach(function (r, i) { var hit = words.every(function (w) { return text[i].indexOf(w) >= 0; }); r.hidden = !hit; if (hit) shown++; });
-    groups.forEach(function (g) { g.hidden = !g.querySelector('tr:not(.tt-g):not([hidden])'); });
-    say(!words.length ? 'Showing all ' + total + ' tokens.' : shown ? 'Showing ' + shown + ' of ' + total + ' tokens.'
+    var ws = q.value.toLowerCase().replace(/^--/, '').split(/\\s+/).filter(Boolean), shown = 0, open = 0;   // the search's words
+    searching = ws.length > 0;
+    rows.forEach(function (r, i) { var hit = ws.every(function (w) { return text[i].indexOf(w) >= 0; }); r.hidden = !hit; if (hit) shown++; });
+    groups.forEach(function (g) {
+      var any = !!g.querySelector('tbody tr:not([hidden])');
+      if (searching) { g.hidden = !any; openTo(g, any); if (any) open++; }
+      else { g.hidden = false; openTo(g, g.getAttribute('data-user-open') === '1'); }
+    });
+    say(!searching ? 'All ' + total + ' tokens, in ' + groups.length + ' groups. Open a group, or search.'
+      : shown ? 'Showing ' + shown + ' of ' + total + ' tokens, in ' + open + (open === 1 ? ' group.' : ' groups.')
       : 'Showing 0 of ' + total + ' tokens. No token matches. Try a role, such as text or focus, or a surface, such as Charcoal.');
   }
   q.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(filter, 250); });
   box.addEventListener('click', function (ev) {
+    var a = ev.target.closest && ev.target.closest('.tt-index a');
+    if (a) {
+      var g = document.getElementById(a.getAttribute('href').slice(1));
+      if (g) { ev.preventDefault(); if (searching) { q.value = ''; filter(); } g.setAttribute('data-user-open', '1'); openTo(g, true);
+        var sm = g.querySelector('summary'); g.scrollIntoView({ block: 'start' }); sm.focus({ preventScroll: true }); }
+      return;
+    }
     var b = ev.target.closest && ev.target.closest('.tt-copy');
     if (!b) return;
     var name = b.getAttribute('data-copy');
@@ -283,20 +325,25 @@ def build(tokens_path):
     groups = {}
     for p in toks:
         groups.setdefault(group_of(p), []).append(p)
-    body = []
+    n = len(toks)
+    version = meta.get("tokenSetVersion", "")
+    index, body = [], []
+    head = ('<colgroup><col class="tt-c1"><col class="tt-c2"><col class="tt-c3"><col class="tt-c4"><col class="tt-c5"></colgroup>'
+            '<thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Use</th><th scope="col">Tier</th><th scope="col">Contrast</th></tr></thead>')
     for g, paths in groups.items():
-        rows = [f'<tr class="tt-g"><th scope="rowgroup" colspan="5">{e(g)} <span class="tt-k">({len(paths)})</span></th></tr>']
+        gid = f"tt-g-{slug(g)}"
+        index.append(f'<li><a href="#{gid}">{e(g)}</a>&nbsp;<span class="tt-k">({len(paths)})</span></li>')
+        rows = []
         for p in paths:
             t = toks[p]
             x = ext(t)
             cn = css_name(p)
-            rows.append(f'<tr><th scope="row"><span class="tt-n">{dots(p)}</span><code class="tt-c">{e(cn)}</code>'
+            rows.append(f'<tr><th scope="row"><span class="tt-n">{dots(p)}</span><code class="tt-c">{hyph(cn)}</code>'
                         f'<button type="button" class="tt-copy" data-copy="{e(cn)}" aria-label="Copy {e(cn)}">Copy</button></th>'
                         f'<td>{value_html(p, toks)}</td><td>{e(reader(t.get("$description", ""), p))}</td><td>{e(TIER.get(x.get("tier"), "Untiered"))}{", deprecated" if "$deprecated" in t else ""}</td>'
                         f'<td>{contrast_html(p, toks)}</td></tr>')
-        body.append(f'<tbody>{"".join(rows)}</tbody>')
-    n = len(toks)
-    version = meta.get("tokenSetVersion", "")
+        body.append(f'<details class="tt-grp" id="{gid}"><summary><span class="tt-gn" id="{gid}-n">{e(g)}</span> <span class="tt-k">({len(paths)})</span></summary>'
+                    f'<table aria-labelledby="{gid}-n">{head}<tbody>{"".join(rows)}</tbody></table></details>')
     return (f'<!-- Generated by work/build/scripts/phase-2/token_table_build.py from work/build/tokens/tokens.json, version {e(version)}, {n} tokens. '
             f'Do not edit by hand: run the script; its --check fails when this file and tokens.json disagree. -->\n'
             f'<style>{STYLE}</style>\n'
@@ -306,10 +353,11 @@ def build(tokens_path):
             f'<p class="tt-status tt-st" id="tt-status" role="status">'
             f'<svg class="tt-mk tt-ok" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false" data-icon="U-success" data-icon-family="utility" hidden><use href="#oa-sym-u-success-16px"/></svg>'
             f'<svg class="tt-mk tt-er" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false" data-icon="U-error" data-icon-family="utility" hidden><use href="#oa-sym-u-error-16px"/></svg>'
-            f'<span class="tt-t">Showing all {n} tokens.</span></p></div>'
-            f'<div class="tt-wrap"><table><caption>Every token in tokens.json, version {e(version)}, by category: its name and CSS name, value, use, tier and the contrast it measures where it serves.</caption>'
-            f'<thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Use</th><th scope="col">Tier</th><th scope="col">Contrast</th></tr></thead>'
-            f'{"".join(body)}</table></div></div>\n'
+            f'<span class="tt-t">All {n} tokens, in {len(groups)} groups. Open a group, or search.</span></p></div>'
+            f'<p class="tt-about">Every token in tokens.json, version {e(version)}, in {len(groups)} groups by category. Each row gives the name and CSS name, '
+            f'the value, the use, the tier and the contrast the token measures where it serves.</p>'
+            f'<ul class="tt-index" aria-label="Token groups">{"".join(index)}</ul>'
+            f'<div class="tt-groups">{"".join(body)}</div></div>\n'
             f'<script>{SCRIPT}</script>\n'), n, version
 
 

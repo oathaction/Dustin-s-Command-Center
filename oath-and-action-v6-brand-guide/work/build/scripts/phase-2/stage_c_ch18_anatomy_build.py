@@ -191,9 +191,10 @@ def pin(e, n, at='tl'):
     e.k.append(b)
 
 
-def at_word(e, n, at):
+def at_word(e, n, at, glue=False):
     """A callout on the first word of a run of words, held in a span that does not wrap, for a link that wraps and so
-    has no single corner."""
+    has no single corner. glue=True joins the next word with a no-break space, for words inside a flex box, where a
+    plain space between two runs collapses."""
     for i, k in enumerate(e.k):
         if isinstance(k, str) and k.strip():
             lead = len(k) - len(k.lstrip())
@@ -201,7 +202,7 @@ def at_word(e, n, at):
             w = El('span', {'class': 'ax-nw'})
             w.k = [word]
             w.up = e
-            e.k[i:i + 1] = ([k[:lead]] if lead else []) + [w] + ([' ' + rest] if rest else [])
+            e.k[i:i + 1] = ([k[:lead]] if lead else []) + [w] + ([('\u00a0' if glue else ' ') + rest] if rest else [])
             pin(w, n, at)
             return
     pin(e, n, at)
@@ -432,6 +433,8 @@ AX_CSS = minify("""
 .ax-brx,.ax-trx{top:50%;bottom:auto;margin-top:-10px;right:-28px}.ax-rmx{top:-24px;margin-top:0;right:-2px}}
 .ax-try{left:auto;right:-2px}
 @container (max-width:36rem){.ax-try{top:50%;margin-top:-10px;right:-28px}}
+.ax-trb{left:auto;right:-2px}
+@container (max-width:24rem){.ax-trb{top:auto;bottom:-24px}}
 .ax-in{top:6px;left:6px}.ax-inr{top:6px;left:auto;right:6px}.ax-l{top:2px;left:-28px}.ax-up{top:-24px;left:0}.ax-dn{top:auto;bottom:-24px;left:0}
 .ax-st .ax-input{display:flex;align-items:center}.ax-nw{white-space:nowrap}.ax-lup{top:2px;left:-28px}
 @container (min-width:34rem){.ax-lup{top:-22px;left:0}}
@@ -448,6 +451,18 @@ def render(sets, root, key, extra_css='', illus=False):
     shell's Illustrative chip at the plate's head, in place of any label the code set draws (CD-S7, CA-S7, D2-1551)."""
     if illus:
         drop(*[e for e in walk(root) if any('illus' in c for c in e.cls())])
+    code_css, markup, classes = draw(sets, root, extra_css)
+    lis = ''.join(f'<li><span class="ax-n">{n}</span><b>{html.escape(term)}.</b> {html.escape(words)}</li>'
+                  for n, term, words in key)
+    ax_classes = classes | {'ax', 'ax-st', 'ax-k', 'ax-n'} | ({'ax-il'} if illus else set())
+    ax_css = prune_css(AX_CSS, ax_classes)
+    css = alias_vars(minify(ax_css + code_css))
+    head = '<p class="ax-il"><span class="illus">Illustrative</span></p>' if illus else ''
+    return f'<style>{css}</style><div class="ax"><div class="ax-st">{head}{markup}</div><ol class="ax-k">{lis}</ol></div>'
+
+
+def draw(sets, root, extra_css=''):
+    """The cut component as a picture: its markup and its own CSS, cut to the rules it uses, class names shortened."""
     css_all = ''.join((CODE / f'c-18-{s}.css').read_text() for s in sets)
     root = to_picture(root, css_attrs_of(css_all))
     markup = ser(root)
@@ -470,13 +485,32 @@ def render(sets, root, key, extra_css='', illus=False):
     markup = re.sub(r'class="([^"]*)"', lambda m: 'class="' + ' '.join(short.get(c, c) for c in m.group(1).split()) + '"',
                     markup)
     code_css = re.sub(r'\.(oa-[\w-]+)', lambda m: '.' + short.get(m.group(1), m.group(1)), code_css)
-    lis = ''.join(f'<li><span class="ax-n">{n}</span><b>{html.escape(term)}.</b> {html.escape(words)}</li>'
-                  for n, term, words in key)
-    ax_classes = classes | {'ax', 'ax-st', 'ax-k', 'ax-n'} | ({'ax-il'} if illus else set())
-    ax_css = prune_css(AX_CSS, ax_classes)
-    css = alias_vars(minify(ax_css + code_css))
-    head = '<p class="ax-il"><span class="illus">Illustrative</span></p>' if illus else ''
-    return f'<style>{css}</style><div class="ax"><div class="ax-st">{head}{markup}</div><ol class="ax-k">{lis}</ol></div>'
+    return code_css, markup, classes
+
+
+def opener():
+    """Chapter 18's opener (the round 2 fix brief's call 8, CD-S18, D2-1550): a button, a chip and a choice in one row,
+    each drawn from its own code set at true size, as a picture. The row wraps where the column is narrow."""
+    b = D('button')
+    only(b, q(qa(b, 'oa-button-row')[0], 'oa-button--primary'))
+    t = D('toggle')
+    only(t, qa(q(t, 'oa-toggle-chips'), 'oa-toggle--chip')[0])
+    c = D('choice')
+    row = q(c, 'oa-choice-row')
+    only(c, row)
+    drop(*qa(row, 'oa-choice-item')[2:])
+    root = El('#')
+    for tree in (b, t, c):
+        for k in tree.k:
+            if isinstance(k, El):
+                k.up = root
+                root.k.append(k)
+    code_css, markup, _ = draw(['button', 'toggle', 'choice'], root)
+    css = alias_vars(minify('.ax-op{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px}' + code_css))
+    alt = ('Three controls from this chapter, drawn from their code: a primary button, Save to your list, filled in '
+           'Charcoal; a chip that is on, Housing, with the selected check, its word in bold and a 2 px edge; and a '
+           'choice of two, Summary and Full text, with Summary checked the same way.')
+    return f'<style>{css}</style><div class="ax ax-op">{markup}</div>', alt
 
 
 def D(name):
@@ -516,7 +550,7 @@ def p01():
     pin(read, 3, 'rm')
     bracket(start, 4)
     pin(start, 5, 'rmx')
-    pin(send, 6, 'rm')
+    pin(send, 6, 'rmx')
     pin(why, 7)
     key = [(1, 'Word', 'What the button does, in a word or a few; the button’s name starts with it'),
            (2, 'Focus ring', 'The code’s own 2 px ring at a 2 px gap, drawn at once'),
@@ -649,8 +683,8 @@ def p06():
     pin(q(dlg, 'oa-masthead-dialog-name'), 6, 'l')
     pin(q(dlg, 'oa-masthead-close'), 7, 'tr')
     rows = qa(dlg, 'oa-masthead-row-link')
-    pin(rows[0], 8, 'tr')
-    pin(rows[1], 9, 'br')
+    pin(rows[0], 8, 'rm')
+    pin(rows[1], 9, 'rm')
     key = [(1, 'Home link', 'The product’s name, from the wordmark’s master, links to the front page'),
            (2, 'Height', 'Each link and Menu at least 44 px tall; Close the menu 44 by 44 px'),
            (3, 'Menu', 'Under 40rem: three bars and the word, which opens the menu over the page'),
@@ -663,7 +697,7 @@ def p06():
     extra = ('.ax-wide.oa-masthead-nav{display:block;margin:24px 0 0;padding:16px 16px 0;border-top:1px dashed var(--oa-color-border-hairline)}'
              '.oa-masthead-wm--16{display:block}.oa-masthead-bar .oa-masthead-menu{display:inline-flex}'
              '.oa-masthead-dialog{display:block;height:auto;margin-top:16px;border:1px solid var(--oa-color-border-strong);overflow:visible}'
-             '.oa-masthead-dialog-head{position:static}')
+             '.oa-masthead-dialog-head{position:static}.oa-masthead-dialog .oa-masthead-row-link{margin-right:36px}')
     return ['masthead'], r, key, 'a masthead and its phone menu', '', False, extra
 
 
@@ -673,17 +707,19 @@ def p07():
     ks = qa(r, 'oa-location-k')
     only(r, ks[0], crumbs, ks[1], rail)
     items = qa(rail, 'oa-location-item')
-    pin(q(crumbs, 'oa-location-link', 2), 1, 'tr')
+    at_word(q(crumbs, 'oa-location-link', 2), 1, 'dnl', glue=True)      # under its first word, wherever the trail wraps
     pin(ks[1], 2)
-    pin(items[0], 3, 'tr')
+    pin(items[0], 3, 'rm')
     bracket(items[1], 4)
-    pin(items[1], 5, 'tr')
+    pin(items[1], 5, 'rm')
     key = [(1, 'Breadcrumb’s current page', 'The last step, in bold and not underlined; its link says it is the page'),
            (2, 'Label', 'Names the list, as the navigation’s own name does'),
            (3, 'Link', 'A place to go, with its words'),
            (4, 'Height', 'Rows 44 px tall in a list a thumb uses'),
            (5, 'Current place', 'The selected band, a 4 px bar drawn as a border, and bold words')]
-    return ['location'], r, key, 'location lists', '', False, '.oa-location-k{margin-bottom:28px}'
+    return ['location'], r, key, 'location lists', '', False, ('.oa-location-k{margin-bottom:28px}'
+                                                                 '.oa-location-crumbs{margin-bottom:40px}'
+                                                                 '.oa-location-rail{margin-right:36px}')
 
 
 def p08():
@@ -699,7 +735,7 @@ def p08():
     pin(q(ds[0], 'oa-disclosure-body'), 3, 'l')
     bracket(s1, 4)
     pin(s1, 5, 'bl')
-    pin(s1, 6, 'tr')
+    pin(s1, 6, 'br')
     key = [(1, 'Words', 'Name the part that opens'),
            (2, 'Chevron up', 'While the part is open'),
            (3, 'The part that opens', 'Shown in place, under its row'),
@@ -730,7 +766,7 @@ def p09():
            (5, 'Tab', 'A view’s name in a word or two'),
            (6, 'Unavailable tab', 'Dashed, with the reason under the list'),
            (7, 'Panel', 'The selected tab’s view, named by its tab')]
-    return ['tabs'], r, key, 'tabs', '', True, '.oa-tabs-k{margin-bottom:28px}'
+    return ['tabs'], r, key, 'tabs', '', True, '.oa-tabs-k{margin-bottom:28px}.oa-tabs-list{row-gap:28px}'
 
 
 def p10():
@@ -748,7 +784,7 @@ def p10():
     bracket(q(th[0], 'oa-table-sort'), 2)
     pin(q(th[0], 'oa-table-word'), 3, 'up')
     pin(q(th[1], 'oa-table-word'), 4, 'up')
-    pin(q(r, 'oa-table-grid'), 5, 'bl')
+    pin(q(r, 'oa-table-grid').up, 5, 'bl')      # on the table's wrapper: a span inside a table would leave it
     key = [(1, 'Caption', 'Names the table, as table markup’s own caption'),
            (2, 'Height', 'Each sort button at least 44 px tall, across its words and arrow'),
            (3, 'Sorted heading', 'The arrow turned to the order, and the heading says it in aria-sort'),
@@ -768,8 +804,9 @@ def p11():
     focus(frame)
     pin(q(r, 'oa-scroll-k'), 1)
     pin(hint, 2)
-    pin(frame, 3, 'tr')
-    pin(frame, 4, 'bl')
+    # on the region around the frame, since the frame cuts anything past its edge
+    pin(q(r, 'oa-scroll'), 3, 'tr')
+    pin(q(r, 'oa-scroll'), 4, 'bl')
     pin(q(r, 'oa-scroll'), 5, 'br')
     key = [(1, 'Name', 'Names the frame, and the frame takes it'),
            (2, 'Hint', 'Shown only while the content is wider than the frame'),
@@ -777,7 +814,7 @@ def p11():
            (4, 'Frame', 'A hairline edge; the content scrolls inside it, so the page never does'),
            (5, 'Focus ring', ('Drawn inside the frame’s edge' if inside else 'Drawn around the frame')
             + '; the frame is a Tab stop only while it scrolls, and the arrow keys move it')]
-    return ['scroll-region'], r, key, 'a scroll region', '', False, '.oa-scroll-frame{overflow:hidden}'
+    return ['scroll-region'], r, key, 'a scroll region', '', False, '.oa-scroll-frame{overflow:hidden}.oa-scroll-hint{margin-bottom:28px}'
 
 
 def p12():
@@ -915,7 +952,8 @@ def p16():
            (6, 'Chip off', 'Its word inside a 1 px edge'),
            (7, 'Status line', 'The count the filters leave, shared with the search')]
     return ['filter-bar'], r, key, 'a filter bar', 'Two chips of the area group, one on and one off, one above the other.', True, (
-        '.oa-filters-k{margin-bottom:28px}.oa-filters-chips{display:flex;flex-direction:column;align-items:flex-start}')
+        '.oa-filters-k{margin-bottom:28px}.oa-filters-chips{display:flex;flex-direction:column;align-items:flex-start}'
+        '@container (max-width:24rem){.oa-filters-clear{margin-top:28px}}')
 
 
 def p17():
@@ -943,7 +981,7 @@ def p17():
     pin(err, 4, 'tr')
     pin(q(fields[1], 'oa-form-hint'), 5)
     bracket(q(fields[1], 'oa-form-input'), 6)
-    pin(send, 7, 'tr')
+    pin(send, 7, 'rmx')
     pin(st, 8)
     key = [(1, 'Label', 'Above its field, always shown'),
            (2, 'Field in error', 'The 4 px red bar on its edge, drawn as a border, and it points to its message'),
@@ -953,7 +991,8 @@ def p17():
            (6, 'Height', 'Fields and the send button at least 44 px tall'),
            (7, 'Send', 'While an error holds the red, the ask steps down to the primary button'),
            (8, 'Success line', 'After a send that works: the success mark and what happens next')]
-    return ['form'], r, key, 'a form field, in error and after a send', '', True, ''
+    return ['form'], r, key, 'a form field, in error and after a send', '', True, (
+        '.oa-form-field .oa-form-error{margin-top:28px}.oa-form-send{margin-top:28px}')
 
 
 def p18():
@@ -979,7 +1018,7 @@ def p19():
     r = D('loading-empty')
     ld, em = q(r, 'oa-wait-loading'), q(r, 'oa-wait-empty')
     pin(q(ld, 'oa-wait-still'), 1, 'lm')
-    pin(ld, 2, 'rm')
+    pin(ld, 2, 'rmx')
     pin(em, 3, 'tr')
     pin(em, 4, 'bl')
     key = [(1, 'Still drawing', 'An outline that never pulses or turns'),
@@ -1025,7 +1064,7 @@ def p21():
     pin(st, 2)
     bracket(prev, 3)
     pin(prev, 4, 'tr')
-    pin(nxt, 5, 'tr')
+    pin(nxt, 5, 'trb')
     pin(why, 6)
     pin(q(size, 'oa-reader-size-face'), 7, 'tr')
     key = [(1, 'Page view', 'The page as readable text, fitted to the width'),
@@ -1036,7 +1075,8 @@ def p21():
            (6, 'Reason line', 'Says why Previous page waits'),
            (7, 'Page size', 'Fit width or Full size, a choice of one, the checked one with its check')]
     return ['report-reader'], r, key, 'a report reader', '', True, ('.oa-reader-view{overflow:visible}'
-                                                                     '.oa-reader-turn{margin-top:28px}')
+                                                                     '.oa-reader-turn{margin-top:28px}'
+                                                                     '@container (max-width:24rem){.oa-reader-why{margin-top:28px}}')
 
 
 def p22():
@@ -1117,7 +1157,7 @@ def p24():
     hover(link)
     pin(plain, 1, 'up')
     pin(q(plain, 'oa-chip-id'), 2, 'up')
-    pin(plain, 3, 'dn')
+    pin(plain, 3, 'lm')
     bracket(link, 4)
     pin(link, 5, 'tr')
     key = [(1, 'Type word', 'Loop, Variable, Reform or Domain, before the code'),
@@ -1158,6 +1198,12 @@ def build(write=True):
         sizes[sid] = len(ctx.specs[sid]['html'].encode()) + len(alt.encode())
         if caps.get(f'18.{i}') is None and CH18.exists():
             print(f'  note: Rule 18.{i} has no anatomy caption in 18-components.json')
+    body, alt = opener()
+    ctx.spec('s-18-opener', body, '18', None, alt,
+             notes='Chapter 18’s opener (call 8 of the round 2 fix brief, D2-1134, D2-1550): a primary button, a chip '
+                   'that is on and a choice of two, drawn from c-18-button, c-18-toggle and c-18-choice by '
+                   'stage_c_ch18_anatomy_build.py; it flows with the column and wraps on a phone.')
+    sizes['s-18-opener'] = len(ctx.specs['s-18-opener']['html'].encode()) + len(alt.encode())
     if write:
         for sid, s in ctx.specs.items():
             (OUT_SP / f'{sid}.html').write_text(s['html'])

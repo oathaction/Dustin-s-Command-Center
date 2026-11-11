@@ -190,5 +190,13 @@
   "alt": "Anatomy of typed ID chips, drawn from its code to copy on Newsprint, with five numbered callouts and a key. 1, Type word: Loop, Variable, Reform or Domain, before the code. 2, Code: The atlas ID, in tabular figures. 3, Edge: A hairline in the strong border color. 4, Target: As a link, at least 24 px tall. 5, As a link: It opens the record; its words keep a 1 px underline, 2 px under a pointer, as here.",
   "illustrative": false,
   "notes": "Drawn from work/build/guide/code/c-18-id-chip.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366)."
+ },
+ "s-18-opener": {
+  "chapter": "18",
+  "rule": null,
+  "width_px": null,
+  "alt": "Three controls from this chapter, drawn from their code: a primary button, Save to your list, filled in Charcoal; a chip that is on, Housing, with the selected check, its word in bold and a 2 px edge; and a choice of two, Summary and Full text, with Summary checked the same way.",
+  "illustrative": false,
+  "notes": "Chapter 18’s opener (call 8 of the round 2 fix brief, D2-1134, D2-1550): a primary button, a chip that is on and a choice of two, drawn from c-18-button, c-18-toggle and c-18-choice by stage_c_ch18_anatomy_build.py; it flows with the column and wraps on a phone."
  }
 }
