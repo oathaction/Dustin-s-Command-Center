@@ -1,27 +1,100 @@
 # Round 0 red team: accessibility and the production test
 
-Oath & Action Edition 06, Phase 3, round 0, November 11, 2026. Written by the UX and accessibility lead (`oa-ux-accessibility-lead`) as reviewer, not maker, for `work/handoffs/phase-3/20261111_Phase-3-Round-0-Review-Brief.md`. Paths are relative to `oath-and-action-v6-brand-guide/`. Work in progress; sections fill as checks finish.
+Oath & Action Edition 06, Phase 3, round 0, November 11, 2026. Written by the UX and accessibility lead (`oa-ux-accessibility-lead`) as reviewer, not maker, for `work/handoffs/phase-3/20261111_Phase-3-Round-0-Review-Brief.md`, then as the runner of a simulated panel. Paths are relative to `oath-and-action-v6-brand-guide/`. Scratch work, scripts and captures are in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/round-0-review/access-production/`; the panel's files are in `work/handoffs/phase-3/round-0-production-test/`.
 
-## Score
+What I reviewed: the chart kit in `work/build/chart-kit/` against the engineer's contracts; the fresh build of the 16 kit pages; S01 to S16 drawn in a pilot chapter 14 by `chart_pilot.py --methods load-table`, the way the guide will draw them; chapter 13's chart plates as that build places them, weighed lightly since the editor is fixing chapter 13 now; and the palette proofs. I left out what is already in flight: the weight pass, the categorical order swap, the line code values (D3-84) and ENG-1 to ENG-7.
 
-Pending.
+## 1. Score
 
-## Must fix
+**3 of 5.** The reading path for screen readers, keyboards and readers with scripts off is sound, and every palette ratio holds when recomputed, but forced colors, the widths between 390 and 1440 px, print and chapter 13's chart plates lose content that the engineer's notes report as passing.
 
-Pending.
+What holds, so the fixes below stay narrow: every one of the 16 charts carries its table as live text with scripts off, rows equal to its data (S04 and S13 pivot by design), every header marked with `scope`, a caption on every table; the one control the kit adds, the "Show the table and notes" disclosure, is reachable in order with a 2 px focus ring that measures 3.37 to 1 on Newsprint and 13.29 to 1 on Charcoal, and in my walk at 1440 px the sticky header never covered it; a wide table becomes a tab stop only when it scrolls; the alt texts say what a sighted reader learns, with the figures that carry the title; no animation or transition runs anywhere in a figure; axe-core finds nothing on chapter 14's pilot charts.
 
-## Should fix
+## 2. Must fix
 
-Pending.
+**M1. Forced colors paint over chart content in 7 of the 16 specimens.**
+Where: `work/build/chart-kit/kit.css`, the `@media (forced-colors: active)` block; S01, S03, S06, S07, S09, S12, S16, on the kit pages and in the pilot guide page alike.
+What is wrong: the rule `.oac-svg [class*="oac-f-"]:not(.oac-t) { fill: CanvasText; }` turns every data fill into the system's text color, and every label into the same color. A script that compares each drawing text with the fill under its center found 277 texts in the same ink as their ground across the 16 kit pages at 1440 px (both grounds): S12 102, S07 70, S16 45, S06 36, S03 14, S01 6, S09 4. On screen, S06's 32 direction cells are solid slabs with their words and arrows gone; S07's and S12's tiles go solid, so the state codes, years, shift figures and arrows vanish and S07's three categories look alike; S16's circles and their state codes merge; S03's and S10's parts merge into one bar, so the grades and directions the titles name cannot be read; S14's average line disappears wherever it crosses a column. The engineer's notes say "forced colors paint text and marks in the system's ink" and count 16 of 16 as passing; the check confirmed the charts drew, not that a reader could read them. Fails Master Brief section 22 ("no lost content and every frame readable"), and WCAG 1.4.1 and 1.4.11 for anyone who reads in a contrast theme.
+Fix: give the drawing its own ground and keep its inks in forced colors: `svg.oac-svg { forced-color-adjust: none; }` with a background rect in the surface token drawn first, so every pair keeps its measured contrast; keep the figure's HTML text in system colors. If the studio prefers system colors inside charts, map each fill role to a pattern or an outline instead of one solid ink, and give lines a Canvas halo. Either way, add the same-ink probe to `dataviz_check.js --kit` and run it in forced colors on every specimen.
+Owner: Engineer.
 
-## Questions for Dustin
+**M2. Charts break at widths the guide gives them and the kit never draws: 1024 px, 360 px, 320 px and 200 percent zoom.**
+Where: `oa-chart.mjs` (`container()`, the 328 px column check), the guide shell's plate widths; S15 most, then S07, S12, S14, S10, S13, S02, S06, S08, S09, S11.
+What is wrong: the kit builds and checks at 720, 358 and 328 px. Measured in the pilot page, the guide gives a chart 558 px at a 1024 px window, 296 px at 360, 256 px at 320 and 656 px at 200 percent zoom of a 1440 px window; chapter 13's plates get 243 px at 1024 and 224 px at 320. At those widths the kit's own layout guard reports faults the build never sees: at 1024 px, S15 22 (its 2024 and 2020 margins print over each other: "Republican +1.5" on "Democratic +4.5"), S07 4 (the key's "No state ban: 31 states and DC" prints over the WA, ID, MT and ND tiles), S12 2 (figures past the right edge), S02, S06 and S09 one each; at 200 percent zoom, S15 6; at 360 px, S15 3, S14 2 ("Three-month average" against "+500,000"), S10 and S13 one each; at 320 px, S15 20, S07 5, S14 3, S13 2, and S08, S10 and S11 one each. I confirmed S15 and S07 at 1024 in screen captures. 1024 and 360 are two of Master Brief section 22's four widths, and 320 px is WCAG 1.4.10's reflow width; 200 percent is 1.4.4.
+Fix: draw and check every spec at every width the shell can give a chart, measured from the shell (today 224 to 723 px), or have the shell offer charts a fixed set of widths and check those. Make a guard fault at any guide width fail the build. Then fix the forms: `results-table` stacks its two margins when they would touch; `tile-map-categorical` keeps its key clear of the tiles; `tile-map-shift-arrows` keeps figures inside.
+Owner: Engineer (kit and shell); Explainer maker for any spec words the fix needs.
 
-Pending.
+**M3. Chapter 13's five chart plates draw images with no name.**
+Where: `kit.js`, `K.mount` and `K.draw`; plates `s-13-7-children`, `s-13-7-all`, `s-13-7-fail-all`, `s-13-13-correct`, `s-13-13-fail-chart`, as a build made today from the editor's current files places them.
+What is wrong: each plate spec sets `"show": ["chart"]`, so the figure prints no title paragraph, but the drawing keeps `aria-labelledby="oac-s-13-7-all-t"`, an ID that is not in the page, and the table-mode drawing carries no `<title>`. Chromium's accessibility tree gives each one the role image and an empty name; axe-core reports `svg-img-alt`, serious, on all five. Fails WCAG 1.1.1 and 4.1.2. The review guide build A carried no kit plates yet, so this appears once the editor's fragments are built.
+Fix: point `aria-labelledby` at an element that exists: the title when shown, otherwise the alt paragraph. Have the kit's check and `v7_check.py` or `guide_check.js` fail any `aria-labelledby` or `aria-describedby` that names a missing ID.
+Owner: Engineer.
 
-## Tested
+**M4. Printing chapter 14 cuts tall charts and prints the next chart over them.**
+Where: the shell's plate frame (`.plate-scroll`, `overflow: auto hidden`) with `kit.css`'s `.oac-fig { break-inside: avoid-page; }`; S09 seen, any plate taller than a page at risk.
+What is wrong: I printed the pilot's chapter 14 to Letter PDF in Chromium (print media, other chapters hidden). On page 30, S09's timeline stops after its second lane, "Who governs", and S10 begins directly under it; S09's lanes "Who owns" and "Who checks", its notes and its source line do not appear on paper, though their text sits in the PDF's text layer. The frame clips a figure taller than the page. Nine of the 47 pages print almost empty (pages 11, 13, 15, 20, 22, 23, 25, 26 and 29, each with a plate label or a line or two), because a figure that must avoid a break is pushed whole to the next page, leaving its label behind. The engineer reports print as "16 of 16 drawn, inside the page". Fails Master Brief section 22 (print) and Rule 13.6, since a printed chart loses its source line.
+Fix: in print, set the plate frame's overflow to visible, let a figure taller than a page break (keep `break-inside: avoid` on the title block, the drawing and the source block apart), and open each table equivalent so the table prints. Add a print check that compares each figure's printed box with its drawing's height.
+Owner: Engineer.
 
-Pending.
+## 3. Should fix
 
-## Not tested
+**S1. A screen reader hears each title twice and each alt text twice.** Where: `kit.js`, `K.figure` and `K.mount`. The title prints as a paragraph and names the drawing (`aria-labelledby`); the alt prints as a hidden paragraph in the reading order and also describes the drawing (`aria-describedby`). Chromium's tree for S14 shows the title as the image's name and the alt as its description, after both paragraphs. Fix: once drawn, name the drawing by the alt paragraph and hide that paragraph from the reading order (`hidden`, which `aria-labelledby` still reads); with scripts off, leave the paragraph as it is. Owner: Engineer.
 
-Pending.
+**S2. Scripts off, a sighted reader gets neither the chart nor its description.** Where: `kit.css` `.oac-alt`; every specimen. The hidden alt stays hidden when no drawing comes, and the table stays folded (see the capture of S11 with scripts off). Fix: show the alt paragraph when the figure carries no `data-oa-drawn`, and write the table's `<details>` open in the build, closed by the script once it draws. Owner: Engineer.
+
+**S3. The disclosure's name ends in a studio ID.** Where: `kit.js` `K.figure`, `words.json`. Every summary reads "Show the table and notes S14" to a screen reader; S14 means nothing to a reader, and the guide may show 97 of them. Fix: name it from the table caption, "Show the table and notes: Monthly change in payroll jobs and its three-month average", with a `{caption}` key in `words.json`. Owner: Engineer, wording by the Editor.
+
+**S4. Table equivalents leave cells blank where the chart means something.** Where: S14 (55 blank Status cells, meaning final), S05 (194 blank cells, mostly margins not published), S07 (96, no ban, so no scope, year or measure), S02 (19, margins not published), S06 (12). A screen reader reads "blank", and a sighted reader cannot tell "none" from "missing". Fix: a per-column `empty` word in the table spec ("Final", "Not published", "No ban"), printed by the kit. Owner: Engineer (the key), Explainer maker (the words).
+
+**S5. The grayscale margin: I would keep 10 but change what it measures and where it applies.** Where: `checks.js` `KEY_LIGHTNESS_MARGIN` and `check_drawing`. My answer to the brief's question:
+- The test measures CIE L*, while the board's grayscale proofs use Chromium's `grayscale(1)` luma on encoded values, which is also close to what an office printer does. The two disagree most on red and on Verdigris: Pillar Red and Stone context stand 10.3 apart in L*, so they pass, and 1.5 apart in the proof's gray (0.371 and 0.386), so they look the same. Take the smaller gap of the two models.
+- The exemption is self-declared. Each form marks key entries `direct`, and S16's five turnout steps are all marked direct though no circle prints its value, only its state code. Let the kit earn the exemption from what it drew: every mark of that fill has a text box on or beside it.
+- Ordered scales need neighbors only, at a lower bar such as 8 (the data lead's OKLab 0.08); all pairs at 10 is stricter than needed on Charcoal's first sequential steps (10.5 apart).
+- Test the lightest step against the ground too, or require an outline: S16 does this right with its 1 px outline at 6.89 to 1 on the land.
+Owner: Engineer.
+
+**S6. The kit cannot make a plain ranked bar of the federal budget without help** (production test 1, `round-0-production-test/20261111_Designer-Log.md`). Where: the kit folder, `checks.js`, `forms/ranked-bar.js`. A designer with chapter 13 and the kit folder could not find the spec format; the contract lives only in the engineer's handoff, and chapter 13 never names the kit. `where` has no "not", so keeping the Total line out took a list of 19 function names. The check passed a "Total" bar of $7,395.8 billion drawn first among the functions it sums, at 1440 px. `ranked-bar` cannot draw negative values at phone width and neither wraps nor shortens a long category name ("Education, Training, Employment, and Social Services" runs off at 390 px), so V3 still fails at phone widths with no spec key that fixes it. Fix: a README in `work/build/chart-kit/` with C2's keys, a starter spec per form and the command; a `not` in `where`; a warning when a category reads Total or All; negative bars and wrapped or short category names in `ranked-bar`; and one line in chapter 13 or 14 that says where the kit lives. Owner: Engineer; the Editor for the pointer in the chapter.
+
+**S7. A new chart of an existing dataset needs a new source line from the research lead.** Where: the C1 and C2 contract. The outlays sidecar's two lines say "offsetting receipts are shown as negative" and "Tiles show ...", so a ranked bar of the positive functions matched neither and failed the source check. The rule is right; the path is slow. Fix: the check's message names the research lead and the sidecar to change, and the research lead adds a variant on request. Owner: Engineer (message), Research lead (variants).
+
+**S8. The plain page DR-235 promises needs code the renderer does not have yet** (production test 2, `round-0-production-test/20261111_Non-Coder-Log.md`). Where: contract C4 and `kit.js`. C4's snippet draws nothing and says nothing: it lists two of five scripts, never loads the shared words, and mounts into a figure with no drawing box. Made to draw, the page showed all 240 rows of the outlays file, every year and the Total line, under a fiscal 2026 title, because `mount` applies neither the spec's `where` and `sort` nor the sidecar's types. A page opened from disk cannot `fetch` a CSV; the checks need Node; the exports live in Node; `tokens.css` loads no fonts, so the page set in Arial while the kit measured Inter. The engineer's notes record a plain-page test that passed with a fuller page than C4 shows. Fix: correct C4 now; for Gate 3, a `mount_from_files` that selects, sorts and types rows, the shared words inside `kit.js`, fonts linked, the checks that need no atlas model in the page, and an export that reads the page's computed tokens. Owner: Engineer.
+
+**S9. The SVG export names its fonts without carrying them.** Where: `oa-chart.mjs` export. `font-family="Inter, Arial, sans-serif"` on every text; a designer or editor without Inter sees labels set in Arial, at widths the layout guard never measured. Fix: embed a subset of Inter and Inter Tight in the SVG's style, or offer a second export with text as outlines beside the live-text one. Owner: Engineer.
+
+**S10. The palette proof sheet has scroll frames a keyboard cannot reach.** Where: `work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs.html`. axe-core's `scrollable-region-focusable`, serious: 21 frames at 390 px and 2 at 1440 px (the small multiples). A board page, so it touches Dustin's review, not readers. Fix: `tabindex="0"`, a role and a name on each frame. Owner: Data visualization lead.
+
+## 4. Questions for Dustin
+
+None. M1's choice between brand inks with their own ground and system colors with patterns is a routine call for the engineer; I recommend brand inks with their own ground, since every pair is already measured.
+
+## 5. Tested
+
+- **Scripts off**, 16 kit pages and the pilot page at 1440 px: every figure has a title, source line, hidden alt paragraph and table; table rows against the CSV export (equal on 14; S04 and S13 pivot, 4 and 57 rows for 8 and 1,026 records); `scope` on every header cell, a caption on every table; no empty drawing box (the drawing box measures 0 px tall, or 20 px where it holds an Illustrative label). Blank cells counted per table.
+- **Widths**, kit pages at 1440, 720, 390, 360 and 320 px, and the pilot page at 1440, 1024, 390, 360 and 320 px and at 720 px with device scale 2 for 200 percent zoom: page scroll width, drawn width, smallest rendered text (13 px everywhere; 12.99 on wide artboards at 723 px), the kit's guard count per figure, page errors (none). Every spec drawn in Node at 224, 243, 256, 264, 288, 296, 326, 328, 358, 558, 656 and 720 px with the kit's own `check_drawing`. Screen captures of S04, S06, S11, S13, S16 and chapter 13's plate at 320 and 360 px, and S15, S07, S12 and S02 at 1024 px, S15 at 720.
+- **Forced colors** (Playwright `forcedColors: 'active'`): full captures of all 16 kit pages at 1440 and 390 px, nine pilot figures at 1440 px, and the same-ink probe on every drawing text.
+- **Keyboard**: a Tab walk on each kit page (both grounds) and through S01 to S14 in the pilot page, recording each stop's element, name, outline and whether a fixed element covers it.
+- **Accessibility tree**: Chromium's own tree (`Accessibility.getPartialAXTree`) for S10, S14 and two chapter 13 plates; Playwright's aria snapshot for S10 and S14.
+- **axe-core** (`work/build/node_modules/axe-core`), WCAG 2.0 to 2.2 A and AA tags: each kit page with tables closed and open; the pilot's `#data-visualization` and `#evidence` with tables closed and open; the palette proof sheet at 1440 and 390 px.
+- **Print**: the pilot's chapter 14 to a 47-page Letter PDF in Chromium, every page rendered and looked at as a contact sheet, pages 29 to 32 at 45 and 70 dpi, and the PDF's text layer; a PDF of each kit page. A probe of plate and drawing heights under print media at 768 px.
+- **Reduced motion**: animations, transitions and running animations inside every figure of the pilot page with `reducedMotion: 'reduce'` (0, 0, 0).
+- **Contrast**: 108 pairs recomputed by the WCAG 2.2 formula from `tokens.css` (54 fills against their ground and 54 labels against their fill or ground, every palette on Newsprint, Charcoal and White): 0 differences from the proof sheet's measures over 0.01, and every swatch on the sheet equals its token. The kit's color roles on Newsprint and Charcoal measured the same way, with CIE L*, OKLab L and Rec. 709 luma for the margin question.
+- **Key lightness**: every key the kit's test sees in the 16 specs, on both grounds, with each entry's flags and its lightness in L* and luma.
+- **Bubble outlines**: S16's fills and outline against the land on both grounds.
+- **Production test 1**: three specs written, checked and built with `oa-chart.mjs`; the third checked again against a scratch copy of the sidecar with its line added; exports opened and read.
+- **Production test 2**: five plain pages opened from disk in Chromium, each with its console, page errors, drawn marks and table rows recorded.
+
+## 6. Not tested
+
+- Real screen readers (VoiceOver, TalkBack, NVDA) and real devices (DR-213); the tree and axe stand in for them.
+- Real people for either panel; both are simulated, as the brief asks.
+- Windows' own contrast themes; Playwright's forced colors emulation in Chromium only, with its light scheme.
+- Browser text zoom alone and user text spacing (WCAG 1.4.12) on the SVG labels; 200 percent was tested as page zoom.
+- Paper: no page was printed, and only Chromium's PDF output on Letter was read. The cause of M4 is my reading of the frame's CSS, not a traced fix.
+- The full `guide_check.js` at four widths, and chapter 13 beyond its five chart plates, since the editor is changing it now.
+- Forced colors, print and keyboard on the palette proof sheet beyond axe-core.
+- Exports opened in design tools (Illustrator, Figma); the SVG was read as text.
+- Color-vision simulations: I did not re-derive the data lead's.
+
+## Change log
+
+Created: this report; in `work/handoffs/phase-3/round-0-production-test/`, `20261111_Designer-Log.md`, `20261111_Non-Coder-Log.md`, `20261111_P01-Spec-V1.json`, `20261111_P01-Spec-V2.json`, `20261111_P01-Spec-V3.json`, `20261111_P01-Check-V3.json`, `20261111_P01-Ranked-Bar-Newsprint-1440.svg`, `20261111_P01-Ranked-Bar-Newsprint-1440.png`, `20261111_P01-Ranked-Bar.csv`, `20261111_P01-Capture-V1-Newsprint-1440.png`, `20261111_P01-Capture-V3-Newsprint-390.png`, `20261111_Plain-Page-Contract-Recipe-Empty.png`, `20261111_Plain-Page-Draws-Every-Row.png`. Modified: none. Scratch only: the pilot build, audit scripts, results JSON and captures in the scratch folder named at the top.

@@ -405,9 +405,15 @@ def node_title(i):
     return NODE[i]["title"]
 
 
-def chart_head(label, grade_line, title, measure, notes=(), source=None, illus=None):
+def kit_label(cid):
+    """The id the kit's drawing names as its label (aria-labelledby) when its figure shows the chart alone. The plate's own
+    title carries it, so a screen reader names the drawing by the words a sighted reader sees above it."""
+    return f' id="oac-{cid}-t"'
+
+
+def chart_head(label, grade_line, title, measure, notes=(), source=None, illus=None, cid=None):
     out = [f'<div class="evr"><span class="ev">{e(label)}</span><span class="gr">{e(grade_line)}</span>{ill(illus) if illus else ""}</div>',
-           f'<p class="ct">{e(title)}</p>', f'<p class="ms">{e(measure)}</p>']
+           f'<p class="ct"{kit_label(cid) if cid else ""}>{e(title)}</p>', f'<p class="ms">{e(measure)}</p>']
     out += [f'<p class="nt">{e(n)}</p>' for n in notes]
     if source:
         out.append(f'<p class="src">{e(source)}</p>')
@@ -1203,12 +1209,12 @@ def rule_13_7(book):
         before_line = before_line.replace(old_b, "Rates before the Bureau’s August 2026 correction to the poverty thresholds.")
     ch_title, all_title = "Child poverty stood at 13.4 percent in 2025", f"Poverty among all people stood at {all25} percent in 2025"
     a = chart_head("Finding", GL_CENSUS, ch_title,
-                   "Children under 18 in poverty, Supplemental Poverty Measure, percent, United States, 2009 to 2025")
+                   "Children under 18 in poverty, Supplemental Poverty Measure, percent, United States, 2009 to 2025", cid="s-13-7-children")
     a += cp_spec("s-13-7-children", "under_18", ch_title,
                  "Line chart of child poverty under the Supplemental Poverty Measure, 2009 to 2025, on a scale from 0 to 25 percent, "
                  "breaking where the Census Bureau changed its method; it stood at 13.4 percent in 2025.")
     b = chart_head("Finding", GL_CENSUS, all_title,
-                   "All people in poverty, Supplemental Poverty Measure, percent, United States, 2009 to 2025")
+                   "All people in poverty, Supplemental Poverty Measure, percent, United States, 2009 to 2025", cid="s-13-7-all")
     b += cp_spec("s-13-7-all", "all_ages", all_title,
                  f"Line chart of poverty among all people under the Supplemental Poverty Measure, 2009 to 2025, on the same scale "
                  f"and window, breaking where the method changed; it stood at {all25} percent in 2025.")
@@ -1224,8 +1230,8 @@ def rule_13_7(book):
             f'<p class="src">{e(before_line)}</p>')
     book.add("s-13-7-correct", body, rule="13.7", readable=True,
              alt=(f"Two charts shown together, each a chart head over a small line chart in one window, 2009 to 2025, on one scale: "
-                  f"{ch_title}, and {all_title}. A note gives the shared window and its reason and says the figures do not show "
-                  "which policy changed poverty. The source line names children under 18 and all people and the current "
+                  f"{ch_title}, and {all_title}. A note gives the shared window and its reason and says that tying a change to a "
+                  "policy takes a study of its own. The source line names children under 18 and all people and the current "
                   "release. A table sets the two releases side by side for children: 2020, 9.7 before the revision and 9.6 now; "
                   "2021, 5.2 and 5.1; 2024, 13.4 and 13.5."),
              notes=f"Rows from the engineer's census-spm-child-poverty file; the pair's source line from the {how}; the earlier "
@@ -1235,7 +1241,7 @@ def rule_13_7(book):
     fb = chart_head("Finding", GL_CENSUS,
                     f"Child poverty fell from {pair[0][1]} percent in 2020 to {pair[1][1]} percent in 2021, then rose to {pair[2][2]} percent in 2024",
                     "Children in poverty, percent")
-    fc = chart_head("Finding", GL_CENSUS, all_title, "All people in poverty, percent, 2017 to 2025")
+    fc = chart_head("Finding", GL_CENSUS, all_title, "All people in poverty, percent, 2017 to 2025", cid="s-13-7-fail-all")
     fc += cp_spec("s-13-7-fail-all", "all_ages", "Poverty among all people, as the failure's second chart draws it",
                   "Line chart of poverty among all people under the Supplemental Poverty Measure, 2017 to 2025.",
                   years=[str(y) for y in range(2017, 2026)])
@@ -1725,15 +1731,16 @@ def rule_13_13(book):
            "Retrieved November 2, 2026. Values invented for this example.")
     figure = '<div data-oa-chart="s-13-13-correct"></div>' if hook else bars_svg(LIB)
     figure_f = '<div data-oa-chart="s-13-13-fail-chart"></div>' if hook else bars_svg(LIB)
-    chead = ('<div class="evr"><span class="ev">Finding</span><span class="gr">Documented: the county’s adopted schedule</span></div>'
-             '<p class="k">Hours open each week, from January 4</p>')
+    def chead(cid):
+        return ('<div class="evr"><span class="ev">Finding</span><span class="gr">Documented: the county’s adopted schedule</span></div>'
+                f'<p class="k"{kit_label(cid) if hook else ""}>Hours open each week, from January 4</p>')
     note = (f"<b>Corrected November 4, 2026.</b> An earlier version of this article and its chart gave the Main Library’s "
             f"weekly hours as {LIB_WRONG}. The county’s adopted schedule gives {LIB[0][1]}. We replaced the chart and fixed the "
             "second paragraph.")
     piece = (f'<div class="card nb">{ill()}<p class="cn">{note}</p><p class="hl">{e(head)}</p>'
              '<p>The county board approved Sunday hours at all three branches from January 4.</p>'
              f'<p>The Main Library will open {LIB[0][1]} hours a week, the most of the three.</p>'
-             f'<div class="blk">{chead}{figure}</div><p class="src">{e(src)}</p></div>')
+             f'<div class="blk">{chead("s-13-13-correct")}{figure}</div><p class="src">{e(src)}</p></div>')
     page = (f'<div class="card nb">{ill()}<p class="hl">Corrections</p><p class="sub">Every correction we have made, newest first.</p>'
             '<div class="blk lp"><p class="dt">November 4, 2026</p>'
             f'<p><b>{e(head)}</b>, first published November 2, 2026.</p>'
@@ -1756,7 +1763,7 @@ def rule_13_13(book):
     fail = (dnp() + f'<div class="card">{ill()}<p class="hl">{e(head)}</p>'
             '<p>The county board approved Sunday hours at all three branches from January 4.</p>'
             f'<p>The Main Library will open {LIB[0][1]} hours a week, the most of the three.</p>'
-            f'<div class="blk">{chead}{figure_f}</div><p class="src">{e(src)}</p>'
+            f'<div class="blk">{chead("s-13-13-fail-chart")}{figure_f}</div><p class="src">{e(src)}</p>'
             '<p class="foot">Updated</p></div>')
     book.add("s-13-13-failure", fail, rule="13.13", illustrative=True, width=360,
              alt=(FC + f"The same invented article, labeled Illustrative, with the chart already showing {LIB[0][1]} hours and one "
