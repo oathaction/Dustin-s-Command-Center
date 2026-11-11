@@ -329,15 +329,15 @@ def specimens():
                 ".sx-ic{flex:none;width:24px;height:24px}")
     add("s-26-4-4-correct", "26.4", spec(warn_css + ".sx-warn{border-left:4px solid var(--oa-color-state-warning-mark-on-prussian);color:var(--oa-color-state-warning-text-on-prussian)}"
                                          ".sx-ic{color:var(--oa-color-state-warning-mark-on-prussian)}",
-        f'<div class="sx-pr"><p class="sx-step">Step 4 of 6: in committee</p><p class="sx-warn">'
+        f'<div class="sx-pr"><p class="sx-step">Step 2 of 6: Hearing</p><p class="sx-warn">'
         f'<svg class="sx-ic" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="U-warning" data-icon-family="utility"><use href="#oa-sym-u-warning-24px"/></svg>'
         f'<span><strong>Warning:</strong> The hearing moved to March 12. Check the new date before you travel.</span></p></div>'
         f'<p class="sx-meas">Words in White, {F["white_pr"]} to 1; the bar and triangle in Newsprint, {F["news_pr"]} to 1.</p>'),
-        f"On a Prussian tracker panel, Step 4 of 6: in committee, then a warning with a 4 px Newsprint bar, the warning triangle in Newsprint at {F['news_pr']} to 1 "
+        f"On a Prussian tracker panel, Step 2 of 6: Hearing, then a warning with a 4 px Newsprint bar, the warning triangle in Newsprint at {F['news_pr']} to 1 "
         f"and the words in White at {F['white_pr']} to 1: Warning: The hearing moved to March 12. Check the new date before you travel.",
         width=360, illustrative=True, notes="Illustrative date.")
     add("s-26-4-4-failure", "26.4", spec(warn_css + ".sx-warn{padding-left:0;color:var(--oa-color-palette-pillar-red)}",
-        f'{BAND}<div class="sx-pr"><p class="sx-step">Step 4 of 6: in committee</p><p class="sx-warn" data-red="working" data-red-job="error">'
+        f'{BAND}<div class="sx-pr"><p class="sx-step">Step 2 of 6: Hearing</p><p class="sx-warn" data-red="working" data-red-job="error">'
         f'<span>The hearing moved to March 12. Check the new date before you travel.</span></p></div>'
         f'<p class="sx-meas">Words in Pillar Red on Prussian, {F["red_pr"]} to 1, with no word and no mark.</p>'),
         f"Failure case: do not publish. The same panel with the warning set in Pillar Red on Prussian at {F['red_pr']} to 1, with no triangle, no bar and no word "
@@ -486,7 +486,7 @@ def code_sets():
                 ".oa-ex-bars-row--subject .oa-ex-bars-label, .oa-ex-bars-row--subject .oa-ex-bars-value { font-weight: var(--oa-font-weight-bold) }\n"
                 "@media (forced-colors: active) {\n  .oa-ex-bars-bar { background: GrayText }\n  .oa-ex-bars-row--subject .oa-ex-bars-bar { background: CanvasText }\n}\n")}
     sets["c-26-warning"] = {
-        "html": ('<div class="oa-surface-prussian oa-ex-track">\n  <p class="oa-ex-track-step">Step 4 of 6: in committee</p>\n'
+        "html": ('<div class="oa-surface-prussian oa-ex-track">\n  <p class="oa-ex-track-step">Step 2 of 6: Hearing</p>\n'
                  '  <p class="oa-ex-warning"><svg class="oa-ex-warning-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" '
                  'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="U-warning" data-icon-family="utility">' + inner +
                  '</svg><span class="oa-ex-warning-words"><strong class="oa-ex-warning-word">Warning:</strong> The hearing moved to March 12. Check the new date before you travel.</span></p>\n</div>\n'),
@@ -543,10 +543,9 @@ def chapter():
          "related": ["05"],
          "builders": ["Search the table in Rule 26.7 by any word of a name. Its tier is in the fourth column."]},
         {"id": "26.2", "title": "Add a token only when it meets all five conditions.",
-         "rule": ["A new token joins tokens.json only when all five hold. First, a measured need that no token meets, registered with an ID and its evidence. "
-                  "Second, a value made from one palette color, mixed in OKLab toward Newsprint or Charcoal, with the amount recorded. Third, one job, said in one "
-                  "sentence. Fourth, contrast that passes on every surface it serves, at the threshold its kind needs, with the ratio stored. Fifth, a description, "
-                  "a tier and a status.",
+         "rule": ["A new token joins tokens.json only when all five hold: a measured need that no token meets, registered with an ID and its evidence; a "
+                  "value made from one palette color, mixed in OKLab toward Newsprint or Charcoal, with the amount recorded; one job, said in one sentence; "
+                  "contrast that passes on every surface it serves, at the threshold its kind needs, with the ratio stored; and a description, a tier and a status.",
                   "Look in the table first (Rule 26.7). Most needs already have a token, and a second token for one job leaves builders to guess between them. "
                   "Values that failed stay on record as held or rejected, and nothing uses them."],
          "tokens": ["oa.color.derived.deepStone", "oa.color.palette.stone"],
@@ -562,14 +561,14 @@ def chapter():
          "related": ["05", "19"],
          "builders": ["Ask for a token before you add a value of your own. The request names the need and its evidence, and the five conditions decide."]},
         {"id": "26.3", "title": "Choose a token in five steps: surface, role, emphasis, state, then any component token, which wins.",
-         "rule": ["Start from the surface the element sits on: Newsprint, White, Charcoal or Prussian. Then its role: text, graphic, border, focus, data, action or "
-                  "state. Then its emphasis: primary or secondary text, an essential or subtle graphic, the data a chart is about or its context. Then its state, if it "
+         "rule": ["Start from the surface the element sits on: Newsprint, White, Charcoal or Prussian. Then its role: text, graphic, border, focus, data, action, state "
+                  "or field. Then its emphasis: primary or secondary text, an essential or subtle graphic, the data a chart is about or its context. Then its state, if it "
                   "has one, such as selected, disabled, warning or error. Last, look for a component token for the part you are drawing, such as a button's disabled "
                   "label. When one exists, use it, since it already holds the component's own choice.",
                   "In CSS the first step is a class. <code>.oa-surface-charcoal</code> on a block points every short name inside it at Charcoal's tokens, so your "
                   "code names the role alone, <code>--oa-color-text-secondary</code>, and draws right on any surface the block is given."],
          "tokens": ["oa.color.text.secondary.onCharcoal", "oa.color.text.secondary.onNewsprint"],
-         "why": {"text": ["Each step narrows the choice by a fact about the page, never by taste, so two builders reach the same token. Every color token was "
+         "why": {"text": ["Each step narrows the choice by a fact about the page, so two builders reach the same token. Every color token was "
                           "measured on its own surface, and starting from the surface keeps you on the one it was measured for."],
                  "basis": "WCAG 2.2 SC 1.4.3 and 1.4.11; Design judgment"},
          "correct": {"specimen": "s-26-3-correct", "caption": f"A caption on a Charcoal panel: surface Charcoal, role text, emphasis secondary, no state, no component token. The token is Dim Newsprint, {F['dim_c']} to 1."},
@@ -582,7 +581,8 @@ def chapter():
          "related": ["05", "17", "18"],
          "builders": ["Write the role's short name in your CSS and the surface class in your HTML. A component then needs no change to move from one surface to another."]},
         {"id": "26.4", "title": "Work through the five steps on four common parts, and copy the code they lead to.",
-         "rule": ["Four parts every product needs, each chosen by the five steps of Rule 26.3, at actual size beside its failure, with code to copy. Each code set "
+         "rule": ["The four examples below take parts every product needs through the five steps of Rule 26.3, and set each at actual size beside its failure, "
+                  "with code to copy. Each code set "
                   "reads only tokens.css, by short name, with a surface class where the example names a surface. Its live demos show it in the light theme and the "
                   "dark theme, so you can see each token follow the ground."],
          "tokens": ["oa.color.text.secondary.onNewsprint", "oa.component.button.disabled.label.onWhite", "oa.color.data.emphasis.onNewsprint",
@@ -619,7 +619,7 @@ def chapter():
                   "A product that follows the reader's light or dark setting also declares <code>&lt;meta name=\"color-scheme\" content=\"light dark\"&gt;</code> in its "
                   "head, so the browser draws its own scroll bars and form controls to match (Rule 26.6).",
                   "tokens.css holds tokens and themes and nothing else. A page that draws one of the 41 symbols at 24 px (Rules 09.3 and 10.4) also needs "
-                  "the two lines that show the pixel fit on a standard screen and the master on a sharper one: <code>.oa-at-2x { display: none }</code> and "
+                  "the two lines that show the pixel fit on a screen under 2x and the master from 2x: <code>.oa-at-2x { display: none }</code> and "
                   "<code>@media (min-resolution: 2dppx) { .oa-at-1x { display: none } .oa-at-2x { display: inline } }</code>."],
          "tokens": ["oa.type.body"],
          "why": {"text": ["Every code set in chapters 18 and 26 assumes exactly this page. The guide checks each one by pasting its code into a page that holds the "
@@ -660,7 +660,7 @@ def chapter():
          "rule": [f"The table lists every token in tokens.json, {N_TOKENS} in all, grouped by category: its name in the JSON and in CSS, its value, its job, its tier "
                   "and, for a color, the contrast it measures on each surface it serves. Search by any of those words. Copy puts the CSS name on your clipboard."],
          "tokens": [],
-         "why": {"text": ["A name copied from the source cannot drift, and a value typed by hand never hears about the next release."],
+         "why": {"text": ["A name copied from the source cannot drift, and a value typed by hand stays as it was when the next release changes the token."],
                  "basis": "Design judgment"},
          "correct": {"specimen": "s-26-token-table", "caption": f"Every token in tokens.json, version {VERSION}. Search, then copy a name."},
          "failure": {"specimen": "s-26-7-failure", "caption": f"<strong>Fails Rule 26.7.</strong> A gray typed from an old file, {OLD_STONE}, where Deep Stone's name belongs. It matches today and falls behind with the next release."},
@@ -693,7 +693,7 @@ def chapter():
     return {
         "number": "26", "anchor": "tokens", "title": "Tokens and how to choose them", "part": "Production",
         "instruction": "Choose a token step by step from its surface, and call it by name.",
-        "intro": [f"Every color, size, space and speed in this guide comes from a design token: a named value kept in one file that the guide, the asset package "
+        "intro": [f"Every color, size, space and speed in this guide comes from a design token: a named value kept in the token files, which the guide, the asset package "
                   f"and every product read. This chapter shows how the names work, when a new token may join, and how to choose the right one in five steps, with "
                   f"four worked examples to copy.",
                   f"The files are tokens.css, for a web page, and tokens.json, for design tools and build scripts. Both hold the same {N_TOKENS} tokens and the same "
@@ -710,10 +710,10 @@ def chapter():
                              {"chapter": "19", "reason": "The contrast thresholds each token is measured against."},
                              {"chapter": "27", "reason": "The asset package that carries the token files."},
                              {"chapter": "28", "reason": "The checklist that asks for tokens by name."}],
-        "sources": ["Source: Design Tokens Community Group, “Design Tokens Format Module 2025.10”, Final Community Group Report, October 28, 2025. The format of tokens.json, behind Rules 26.1 and 26.8.",
-                    "Source: W3C, “Web Content Accessibility Guidelines (WCAG) 2.2”, Recommendation, October 5, 2023, updated December 12, 2024, success criteria 1.4.1, 1.4.3 and 1.4.11. The contrast thresholds behind Rules 26.2 to 26.4.",
-                    "Source: W3C, “Media Queries Level 5”, the prefers-color-scheme feature. The device setting behind Rule 26.6.",
-                    "Source: Tom Preston-Werner, “Semantic Versioning 2.0.0”, semver.org. The version rule behind Rule 26.8."],
+        "sources": ["Source: Design Tokens Community Group, “Design Tokens Format Module 2025.10”, Final Community Group Report, October 28, 2025, retrieved November 11, 2026. The format of tokens.json, behind Rules 26.1 and 26.8.",
+                    "Source: W3C, “Web Content Accessibility Guidelines (WCAG) 2.2”, W3C Recommendation, December 12, 2024, success criteria 1.4.1, 1.4.3 and 1.4.11, retrieved November 10, 2026. The contrast thresholds behind Rules 26.2 to 26.4.",
+                    "Source: W3C, “Media Queries Level 5”, W3C Working Draft, February 19, 2026, the prefers-color-scheme feature, retrieved November 10, 2026. The device setting behind Rule 26.6.",
+                    "Source: Tom Preston-Werner, “Semantic Versioning 2.0.0”, semver.org, retrieved November 11, 2026. The version rule behind Rule 26.8."],
     }
 
 

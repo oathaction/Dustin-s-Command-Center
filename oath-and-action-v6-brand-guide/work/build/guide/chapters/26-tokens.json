@@ -5,7 +5,7 @@
  "part": "Production",
  "instruction": "Choose a token step by step from its surface, and call it by name.",
  "intro": [
-  "Every color, size, space and speed in this guide comes from a design token: a named value kept in one file that the guide, the asset package and every product read. This chapter shows how the names work, when a new token may join, and how to choose the right one in five steps, with four worked examples to copy.",
+  "Every color, size, space and speed in this guide comes from a design token: a named value kept in the token files, which the guide, the asset package and every product read. This chapter shows how the names work, when a new token may join, and how to choose the right one in five steps, with four worked examples to copy.",
   "The files are tokens.css, for a web page, and tokens.json, for design tools and build scripts. Both hold the same 500 tokens and the same version, and Rule 26.8 has both to download."
  ],
  "groups": [
@@ -88,7 +88,7 @@
    "id": "26.2",
    "title": "Add a token only when it meets all five conditions.",
    "rule": [
-    "A new token joins tokens.json only when all five hold. First, a measured need that no token meets, registered with an ID and its evidence. Second, a value made from one palette color, mixed in OKLab toward Newsprint or Charcoal, with the amount recorded. Third, one job, said in one sentence. Fourth, contrast that passes on every surface it serves, at the threshold its kind needs, with the ratio stored. Fifth, a description, a tier and a status.",
+    "A new token joins tokens.json only when all five hold: a measured need that no token meets, registered with an ID and its evidence; a value made from one palette color, mixed in OKLab toward Newsprint or Charcoal, with the amount recorded; one job, said in one sentence; contrast that passes on every surface it serves, at the threshold its kind needs, with the ratio stored; and a description, a tier and a status.",
     "Look in the table first (Rule 26.7). Most needs already have a token, and a second token for one job leaves builders to guess between them. Values that failed stay on record as held or rejected, and nothing uses them."
    ],
    "tokens": [
@@ -139,7 +139,7 @@
    "id": "26.3",
    "title": "Choose a token in five steps: surface, role, emphasis, state, then any component token, which wins.",
    "rule": [
-    "Start from the surface the element sits on: Newsprint, White, Charcoal or Prussian. Then its role: text, graphic, border, focus, data, action or state. Then its emphasis: primary or secondary text, an essential or subtle graphic, the data a chart is about or its context. Then its state, if it has one, such as selected, disabled, warning or error. Last, look for a component token for the part you are drawing, such as a button's disabled label. When one exists, use it, since it already holds the component's own choice.",
+    "Start from the surface the element sits on: Newsprint, White, Charcoal or Prussian. Then its role: text, graphic, border, focus, data, action, state or field. Then its emphasis: primary or secondary text, an essential or subtle graphic, the data a chart is about or its context. Then its state, if it has one, such as selected, disabled, warning or error. Last, look for a component token for the part you are drawing, such as a button's disabled label. When one exists, use it, since it already holds the component's own choice.",
     "In CSS the first step is a class. <code>.oa-surface-charcoal</code> on a block points every short name inside it at Charcoal's tokens, so your code names the role alone, <code>--oa-color-text-secondary</code>, and draws right on any surface the block is given."
    ],
    "tokens": [
@@ -148,7 +148,7 @@
    ],
    "why": {
     "text": [
-     "Each step narrows the choice by a fact about the page, never by taste, so two builders reach the same token. Every color token was measured on its own surface, and starting from the surface keeps you on the one it was measured for."
+     "Each step narrows the choice by a fact about the page, so two builders reach the same token. Every color token was measured on its own surface, and starting from the surface keeps you on the one it was measured for."
     ],
     "basis": "WCAG 2.2 SC 1.4.3 and 1.4.11; Design judgment"
    },
@@ -195,7 +195,7 @@
    "id": "26.4",
    "title": "Work through the five steps on four common parts, and copy the code they lead to.",
    "rule": [
-    "Four parts every product needs, each chosen by the five steps of Rule 26.3, at actual size beside its failure, with code to copy. Each code set reads only tokens.css, by short name, with a surface class where the example names a surface. Its live demos show it in the light theme and the dark theme, so you can see each token follow the ground."
+    "The four examples below take parts every product needs through the five steps of Rule 26.3, and set each at actual size beside its failure, with code to copy. Each code set reads only tokens.css, by short name, with a surface class where the example names a surface. Its live demos show it in the light theme and the dark theme, so you can see each token follow the ground."
    ],
    "tokens": [
     "oa.color.text.secondary.onNewsprint",
@@ -315,7 +315,7 @@
    "rule": [
     "Link the brand's fonts and tokens.css before your own styles, then give the body one rule: <code>body { margin: 0; font: var(--oa-type-body) }</code>. It sets Inter at 17 px with a line height of 1.6 wherever text asks for no other style, and removes the browser's 8 px margin, so a component sits where its code puts it.",
     "A product that follows the reader's light or dark setting also declares <code>&lt;meta name=\"color-scheme\" content=\"light dark\"&gt;</code> in its head, so the browser draws its own scroll bars and form controls to match (Rule 26.6).",
-    "tokens.css holds tokens and themes and nothing else. A page that draws one of the 41 symbols at 24 px (Rules 09.3 and 10.4) also needs the two lines that show the pixel fit on a standard screen and the master on a sharper one: <code>.oa-at-2x { display: none }</code> and <code>@media (min-resolution: 2dppx) { .oa-at-1x { display: none } .oa-at-2x { display: inline } }</code>."
+    "tokens.css holds tokens and themes and nothing else. A page that draws one of the 41 symbols at 24 px (Rules 09.3 and 10.4) also needs the two lines that show the pixel fit on a screen under 2x and the master from 2x: <code>.oa-at-2x { display: none }</code> and <code>@media (min-resolution: 2dppx) { .oa-at-1x { display: none } .oa-at-2x { display: inline } }</code>."
    ],
    "tokens": [
     "oa.type.body"
@@ -434,7 +434,7 @@
    "tokens": [],
    "why": {
     "text": [
-     "A name copied from the source cannot drift, and a value typed by hand never hears about the next release."
+     "A name copied from the source cannot drift, and a value typed by hand stays as it was when the next release changes the token."
     ],
     "basis": "Design judgment"
    },
@@ -562,9 +562,9 @@
   }
  ],
  "sources": [
-  "Source: Design Tokens Community Group, “Design Tokens Format Module 2025.10”, Final Community Group Report, October 28, 2025. The format of tokens.json, behind Rules 26.1 and 26.8.",
-  "Source: W3C, “Web Content Accessibility Guidelines (WCAG) 2.2”, Recommendation, October 5, 2023, updated December 12, 2024, success criteria 1.4.1, 1.4.3 and 1.4.11. The contrast thresholds behind Rules 26.2 to 26.4.",
-  "Source: W3C, “Media Queries Level 5”, the prefers-color-scheme feature. The device setting behind Rule 26.6.",
-  "Source: Tom Preston-Werner, “Semantic Versioning 2.0.0”, semver.org. The version rule behind Rule 26.8."
+  "Source: Design Tokens Community Group, “Design Tokens Format Module 2025.10”, Final Community Group Report, October 28, 2025, retrieved November 11, 2026. The format of tokens.json, behind Rules 26.1 and 26.8.",
+  "Source: W3C, “Web Content Accessibility Guidelines (WCAG) 2.2”, W3C Recommendation, December 12, 2024, success criteria 1.4.1, 1.4.3 and 1.4.11, retrieved November 10, 2026. The contrast thresholds behind Rules 26.2 to 26.4.",
+  "Source: W3C, “Media Queries Level 5”, W3C Working Draft, February 19, 2026, the prefers-color-scheme feature, retrieved November 10, 2026. The device setting behind Rule 26.6.",
+  "Source: Tom Preston-Werner, “Semantic Versioning 2.0.0”, semver.org, retrieved November 11, 2026. The version rule behind Rule 26.8."
  ]
 }

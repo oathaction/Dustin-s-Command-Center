@@ -1798,7 +1798,7 @@ def build_chapter():
             f'{F["band_n"]} to 1 from Newsprint, so the bar beside it does that work in a list.'],
             'basis': 'Design judgment; WCAG 2.2 SC 1.4.1'},
         'correct': {'specimen': 's-17-10-correct', 'caption':
-                    'A pressed toggle, a checked choice, the current page in a list and the current page as a link, on '
+                    'A pressed toggle, a checked choice, the current page in a list and the current part in a masthead, on '
                     'Newsprint and on Charcoal.'},
         'failure': {'specimen': 's-17-10-failure', 'caption':
                     '<strong>Fails Rule 17.10.</strong> Three controls in one view mark their choice three ways: a fill '

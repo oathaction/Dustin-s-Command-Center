@@ -667,7 +667,7 @@
       },
       "correct": {
         "specimen": "s-17-10-correct",
-        "caption": "A pressed toggle, a checked choice, the current page in a list and the current page as a link, on Newsprint and on Charcoal."
+        "caption": "A pressed toggle, a checked choice, the current page in a list and the current part in a masthead, on Newsprint and on Charcoal."
       },
       "failure": {
         "specimen": "s-17-10-failure",
