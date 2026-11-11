@@ -31,8 +31,12 @@
  },
  "printed_source_line": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, outlays by function, fiscal 2026, United States. Retrieved November 11, 2026. Net outlays in nominal dollars; offsetting receipts are shown as negative.",
  "source_line_variants": {
-  "all_years": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, outlays by function, fiscal 2015 to 2026, United States. Retrieved November 11, 2026. Net outlays in nominal dollars; offsetting receipts are shown as negative."
+  "all_years": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, outlays by function, fiscal 2015 to 2026, United States. Retrieved November 11, 2026. Net outlays in nominal dollars; offsetting receipts are shown as negative.",
+  "treemap_fy2026": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, outlays by function, fiscal 2026, United States. Retrieved November 11, 2026. Tiles show the functions with positive net outlays, $7,566.3 billion against total net outlays of $7,395.8 billion; offsetting receipts and Commerce and Housing Credit, both negative, are left out."
  },
+ "notes": [
+  "A treemap can draw only positive functions: in fiscal 2026 they sum to $7,566.3 billion, against net outlays of $7,395.8 billion, so each tile's share is a share of the positive functions and the chart says so (fix pass, statistics S15)"
+ ],
  "ledger_row": "P7-024",
  "domain": "D08",
  "states": []

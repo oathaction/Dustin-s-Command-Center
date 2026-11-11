@@ -10,14 +10,14 @@
  "observation_period": "Calendar years 1960 to 2024",
  "geography": "United States",
  "universe_or_base": "All national health expenditures, by who paid, in four groups",
- "unit": "millions of dollars, nominal; empty where a program did not yet exist (Medicare and Medicaid before 1966)",
+ "unit": "millions of dollars, nominal, and each group's percent of the year's total, computed by the studio; empty where a program did not yet exist (Medicare and Medicaid before 1966). A chart over 64 years draws the percent columns, since nominal dollars hide the mix behind inflation",
  "date_retrieved": "2026-11-11",
  "vintage": "NHE release with 2024 data",
- "qualification": "All other is the total minus private health insurance, Medicare and Medicaid: out of pocket; CHIP; the Departments of Defense and Veterans Affairs; other third party payers and programs; public health activity; and investment. Out of pocket is the largest part of all other, so a note names it",
+ "qualification": "All other sources of funds is the total minus private health insurance, Medicare and Medicaid: out of pocket; CHIP; the Departments of Defense and Veterans Affairs; other third party payers and programs; and public health activity and investment, which are spending, not payers, so the group is named sources of funds. Out of pocket is its largest part, and a note names it",
  "derived_from": [
   "cms-nhe-by-source-of-funds.csv"
  ],
- "derivation": "Keeps private health insurance, Medicare and Medicaid as published and sums every other payer line into all other, as total minus the three",
+ "derivation": "Keeps private health insurance, Medicare and Medicaid as published, sums every other line into all other sources of funds as total minus the three, and gives each group's percent of the total",
  "columns": {
   "year": {
    "type": "year",
@@ -38,18 +38,38 @@
    "description": "Medicaid (Title XIX)",
    "unit": "millions of dollars"
   },
-  "all_other_millions": {
+  "all_other_sources_millions": {
    "type": "integer",
-   "description": "all other payers, computed",
+   "description": "all other sources of funds, computed",
    "unit": "millions of dollars"
   },
   "total_millions": {
    "type": "integer",
    "description": "total national health expenditures",
    "unit": "millions of dollars"
+  },
+  "private_health_insurance_pct": {
+   "type": "number",
+   "description": "share of the total, computed",
+   "unit": "percent"
+  },
+  "medicare_pct": {
+   "type": "number",
+   "description": "share of the total, computed",
+   "unit": "percent"
+  },
+  "medicaid_pct": {
+   "type": "number",
+   "description": "share of the total, computed",
+   "unit": "percent"
+  },
+  "all_other_sources_pct": {
+   "type": "number",
+   "description": "share of the total, computed",
+   "unit": "percent"
   }
  },
- "printed_source_line": "Source: Centers for Medicare & Medicaid Services, National Health Expenditure Accounts, spending by source of funds, 1960 to 2024, United States. Retrieved November 11, 2026. Nominal dollars; all other payers, out of pocket the largest, folded into one group by Oath & Action.",
+ "printed_source_line": "Source: Centers for Medicare & Medicaid Services, National Health Expenditure Accounts, spending by source of funds, 1960 to 2024, United States. Retrieved November 11, 2026. Shares of each year's total; all other sources of funds, out of pocket the largest, folded into one group by Oath & Action.",
  "ledger_row": "P7-023",
  "domain": "D09",
  "states": []

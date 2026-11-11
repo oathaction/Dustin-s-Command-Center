@@ -14,7 +14,7 @@
  "unit": "child_poverty_pct in percent, with its 90 percent margin of error in percentage points; children_in_poverty in people",
  "date_retrieved": "2026-11-11",
  "vintage": "SAIPE 2024 release; 2019 as currently served by the data API",
- "qualification": "Model-based estimates under the official poverty measure, which counts pretax cash income and leaves out tax credits such as the child tax credit; the national rate was 16.8 percent in 2019 and 15.5 percent in 2024. County lists differ slightly between years where Connecticut moved from counties to planning regions",
+ "qualification": "Each county counts once, whatever its population, so the distributions describe counties, not children, and the note under the chart says so. Model-based estimates under the official poverty measure, which counts pretax cash income and leaves out tax credits such as the child tax credit; the national rate was 16.8 percent in 2019 and 15.5 percent in 2024. County lists differ slightly between years where Connecticut moved from counties to planning regions",
  "columns": {
   "year": {
    "type": "year",

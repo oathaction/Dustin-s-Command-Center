@@ -15,7 +15,7 @@
  "unit": "prisoners per 100,000 residents",
  "date_retrieved": "2026-11-11",
  "vintage": "Prisoners in 2023 statistical tables, the latest BJS edition found on November 11, 2026 (a 2024 edition was not found at its expected address)",
- "qualification": "Rates count prisoners by the state with legal authority over them, wherever they are held. In six states prisons and jails form one system, so their rates include jail populations (footnote b); other footnotes mark state reporting differences listed in the table",
+ "qualification": "Rates count prisoners by the state with legal authority over them, wherever they are held. A chart of states compares them with the STATE row (318 per 100,000 in 2023), which counts state prisoners only; the US row (360) adds federal prisoners. In six states prisons and jails form one system, so their rates include jail populations (footnote b); other footnotes mark state reporting differences listed in the table",
  "columns": {
   "code": {
    "type": "code",

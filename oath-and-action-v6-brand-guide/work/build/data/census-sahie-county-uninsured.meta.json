@@ -13,7 +13,7 @@
  "unit": "uninsured_pct in percent, with its 90 percent margin of error in percentage points; counts in people",
  "date_retrieved": "2026-11-11",
  "vintage": "SAHIE 2024 release (the latest year in the data API on November 11, 2026)",
- "qualification": "Model-based estimates that combine survey and administrative data; small counties carry wide margins of error, so a box plot shows spread and no single county is ranked",
+ "qualification": "Model-based estimates that combine survey and administrative data; small counties carry wide margins of error, so a box plot shows spread and no single county is ranked. Each county counts once, whatever its population, so the box describes counties, not people, and the note under the chart says so",
  "notes": [
   "1 margin-of-error cells read \"<0.1\" in the source and are left empty here"
  ],
