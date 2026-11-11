@@ -764,7 +764,7 @@
       spec.chart_notes.map(function (n) { return '<li>' + K.chips(n, ids) + '</li>'; }).join('') + '</ul>' : '';
     var region = word(opts, 'table_region').replace('{caption}', (spec.table && spec.table.caption) || spec.id);
     p.push('<details class="oac-eq" data-role="equivalent"><summary>' + esc(word(opts, 'table_summary')) + '<span class="oac-vh"> ' + esc(spec.id) + '</span></summary>' +
-      '<div class="oac-eq-b">' + cn + '<div class="oac-tw" role="region" tabindex="0" aria-label="' + esc(region) + '">' + K.table_html(spec, rows, { lean: opts.lean_table, types: opts.types }) + '</div></div></details>');
+      '<div class="oac-eq-b">' + cn + (opts.guide ? '<div class="oac-tw" data-plate-scroll data-frame-name="' + esc(region) + '">' : '<div class="oac-tw" role="region" tabindex="0" aria-label="' + esc(region) + '">') + K.table_html(spec, rows, { lean: opts.lean_table, types: opts.types }) + '</div></div></details>');
     var fail = spec.failure ? ' data-oa-failure="' + esc(spec.failure.rule || '') + '"' : '';
     var ab = spec.artboard && spec.artboard !== 'reading' ? ' data-oa-artboard="' + esc(spec.artboard) + '"' : '';
     return '<figure class="oac-fig" id="' + id + '" data-oa-chart-id="' + esc(spec.id) + '" data-form="' + esc(spec.form) + '" data-evidence="' + esc(spec.evidence) + '"' + ab + fail + '>' + p.join('') + '</figure>';

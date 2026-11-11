@@ -17,6 +17,10 @@ const REQUIRED = ['kit', 'id', 'form', 'family', 'tier', 'reader_question', 'evi
 const DOMAINS = Array.from({ length: 10 }, (_, i) => 'D' + String(i + 1).padStart(2, '0')).concat(['all']);
 // The retired disclosure (DR-100, D2-1756): any copy of its words fails
 const DISCLOSURE = /Yes on 3|Veterans for All Voters|Ranked Choice Melrose|\bDisclosure:/i;
+// Words and codes that never reach a reader, as guide_check.js lists them (D2-253): decision codes, studio words, internal names
+const STUDIO = [[/\b(?:DR|D1|D2|D3|G1)-\d+/, 'a decision code'], [/\bMaster Brief\b/, 'an internal document'], [/\bPhase\b/, 'a studio word'],
+  [/\bGates?\b/, 'a studio word'], [/\b[Bb]oards?[\s\u00a0]+(?:\d+|[A-F])\b/, 'a studio word'], [/\bthe studio\b/i, 'a studio word'],
+  [/\bV5\b/, 'an internal edition name'], [/\bAtlas V7/, 'an internal document; the guide says "Oath & Action\u2019s systems atlas"']];
 const COLOR_LITERAL = /#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b|\brgba?\(|\bhsla?\(|\boklch\(|\blab\(/;
 // V7's grade words for a claim or connection (Gate 1, M1 and M2) and the grades a causal verb needs (H08, Rule 13.2)
 const V7_GRADES = ['documented', 'well-supported', 'well supported', 'plausible', 'plausible_contested', 'contested', 'hypothesis',
@@ -103,6 +107,9 @@ function check_spec(K, spec, opts) {
     if (/‑/.test(s)) f.push(`words: U+2011 in ${where}; IDs take an ASCII hyphen (D2-975)`);
     if (DISCLOSURE.test(s)) f.push(`words: the retired disclosure in ${where} (DR-100, D2-1756)`);
     if (COLOR_LITERAL.test(s)) f.push(`words: a literal color in ${where}; color comes from oa.chart tokens only`);
+    if (!/^(?:form|family|tier|dataset|encode|where|sort|formats|scale|artboard|phone$|phone_note|reader_question|domain|states|v7|kit|id$|failure|show|data\b|table\.columns\[\d+\]\.(?:field|format)|table\.pivot\.(?:row|column|value|format))/.test(where)) {
+      for (const [re, what] of STUDIO) if (re.test(s)) { f.push(`words: ${what} in ${where} ("${(s.match(re) || [''])[0]}")`); break; }
+    }
   }
   // data
   const names = spec.dataset === undefined ? [] : (Array.isArray(spec.dataset) ? spec.dataset : [spec.dataset]);

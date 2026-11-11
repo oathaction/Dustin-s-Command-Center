@@ -1,7 +1,7 @@
 {
  "file": "v7-claims-by-grade.json",
  "kind": "v7",
- "publisher": "Oath & Action, Who Do They Answer To? Systems Atlas V7",
+ "publisher": "Oath & Action’s systems atlas, Who Do They Answer To?",
  "title_or_table": "claims register, 433 claims across 16 everyday questions, by evidence grade",
  "table_id": "claims, counted by pathway and confidence",
  "url": "work/extract/atlas-v7-data.json",
@@ -59,7 +59,7 @@
    "unit": "percent"
   }
  },
- "printed_source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, claims register, 433 claims across 16 everyday questions, claims checked through October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.",
+ "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, claims register, 433 claims across 16 everyday questions, claims checked through October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.",
  "ledger_row": "not needed: Atlas V7, read by script",
  "domain": "all",
  "states": [],
@@ -74,5 +74,8 @@
   "plausible": "some evidence",
   "contested": "evidence disputed"
  },
- "domain_note": "The 16 everyday questions span the atlas’s five hubs and every domain"
+ "domain_note": "The 16 everyday questions span the atlas’s five hubs and every domain",
+ "source_line_variants": {
+  "phase_2_wording": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, claims register, 433 claims across 16 everyday questions, claims checked through October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone."
+ }
 }

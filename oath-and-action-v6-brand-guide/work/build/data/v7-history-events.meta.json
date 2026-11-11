@@ -1,7 +1,7 @@
 {
  "file": "v7-history-events.json",
  "kind": "v7",
- "publisher": "Oath & Action, Who Do They Answer To? Systems Atlas V7",
+ "publisher": "Oath & Action’s systems atlas, Who Do They Answer To?",
  "title_or_table": "history, 24 events on four threads",
  "table_id": "history.events",
  "url": "work/extract/atlas-v7-data.json",
@@ -54,7 +54,7 @@
    "description": "V7’s quality word"
   }
  },
- "printed_source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, history, 24 events, February 3, 1870 to June 29, 2026, United States. Snapshot of October 15, 2026. Each event rests on a statute, ruling, constitutional text or official record, cited in its own row; the size of any effect comes from the source named beside it.",
+ "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, history, 24 events, February 3, 1870 to June 29, 2026, United States. Snapshot of October 15, 2026. Each event rests on a statute, ruling, constitutional text or official record, cited in its own row; the size of any effect comes from the source named beside it.",
  "ledger_row": "not needed: Atlas V7, read by script",
  "domain": "all",
  "states": [],
@@ -86,5 +86,8 @@
   }
  ],
  "events_note": "Every event here is graded documented: each rests on a statute, a court ruling, a constitutional text or another official record, cited in its source field. The grade covers the event itself; the size of any effect described in the mechanism comes from the scholarly or official source named beside it.",
- "domain_note": "The four threads run across domains D02, D05, D06 and D08 alike"
+ "domain_note": "The four threads run across domains D02, D05, D06 and D08 alike",
+ "source_line_variants": {
+  "phase_2_wording": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, history, 24 events, February 3, 1870 to June 29, 2026, United States. Snapshot of October 15, 2026. Each event rests on a statute, ruling, constitutional text or official record, cited in its own row; the size of any effect comes from the source named beside it."
+ }
 }

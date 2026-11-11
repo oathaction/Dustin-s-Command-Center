@@ -9,7 +9,7 @@
  * --oa-color-text-secondary, at that surface's tokens.
  * Themes: the root follows the device, light on Newsprint or dark on Charcoal (DR-204), and
  * data-oa-theme="light" or "dark" on the root wins over the device. See the theme blocks below.
- * Change in 6.0.0-gate3.1: Two new colors, both Prussian mixed toward Newsprint, so the diverging scale works on Charcoal. New roles with no new value: the four-ink categorical set with its label inks, the ghost lines of small multiples, and the evidence line code as stroke styles. Every new token is marked proposed until board 1.
+ * Change in 6.0.0-gate3.1: Two new colors, both Prussian mixed toward Newsprint, so the diverging scale works on Charcoal. New roles with no new value: the four-ink categorical set with its label inks, the ghost lines of small multiples, and the evidence line code as stroke styles. Every new token is marked proposed, until our founder and editor approves it.
  *
  * Media queries cannot read custom properties. Write breakpoints in em, which follows text size:
  *   wide        (min-width: 90em)

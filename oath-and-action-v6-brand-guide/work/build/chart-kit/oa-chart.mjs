@@ -378,13 +378,13 @@ async function fragments(o) {
       const desk = res.drawings.find(d => d.page >= 600), ph = res.drawings.find(d => d.page < 600);
       let svg = desk ? desk.svg.replace('class="oac-svg"', 'class="oac-svg oac-desk"') : '';
       if (ph) svg += ph.svg.replace('class="oac-svg"', 'class="oac-svg oac-phone"');
-      html = K.figure(spec, res.rows, { id: fid, svg, art_attrs: ' data-oa-lean' });
+      html = K.figure(spec, res.rows, { id: fid, svg, art_attrs: ' data-oa-lean', guide: true });
     } else if (list.method === 'load-table') {
-      html = K.figure(spec, res.rows, { id: fid, lean_table: true, types: columns });
+      html = K.figure(spec, res.rows, { id: fid, lean_table: true, types: columns, guide: true });
       html = html.slice(0, html.lastIndexOf('</figure>')) + island_table(spec, res.rows, columns, extra_island(res)) + '</figure>';
     } else {
       const isl = island(spec, res.rows, columns, list.method === 'load-trim');
-      html = K.figure(spec, res.rows, { id: fid });
+      html = K.figure(spec, res.rows, { id: fid, guide: true });
       html = html.slice(0, html.lastIndexOf('</figure>')) + isl + '</figure>';
     }
     out.items[it.key || spec.id] = { html, faults: res.faults, id: spec.id, form: spec.form, tier: spec.tier,
@@ -402,6 +402,8 @@ async function self_test() {
     ['U+2011 in an ID', s => { s.notes = ['Loop R‑10']; }, 'U+2011'],
     ['the retired disclosure', s => { s.notes = ['Disclosure: the editor works with Yes on 3.']; }, 'disclosure'],
     ['a literal color', s => { s.labels = Object.assign({}, s.labels, { average: '#E63946 line' }); }, 'literal color'],
+    ['a studio word in printed words', s => { s.notes = ['As Board 1 decided.']; }, 'studio word'],
+    ['the atlas by its studio name', s => { s.measure_line = 'From Atlas V7.'; }, 'internal document'],
     ['a source line that differs from the sidecar', s => { s.source_line = 'Source: somewhere else.'; }, 'source line differs'],
     ['a table that drops a row', s => { s.where = { month: ['2022-01', '2022-02'] }; s.table.columns = [{ field: 'month', label: 'Month', format: 'month' }]; s.table.pivot = { row: 'month', column: 'status', value: 'change_thousands', format: 'signed-thousands' }; }, null],
     ['a missing table', s => { s.table = { caption: 'x', columns: [] }; }, 'no columns'],

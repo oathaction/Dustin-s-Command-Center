@@ -26,7 +26,7 @@
         var o = { data: { key: r[ec], field: ek, value: r[ek], category: r[ek] } };
         if (st === 'solid') c.rect(x, y, size, size, Object.assign({ fill: 'subject' }, o));
         else if (st === 'open') { c.rect(x, y, size, size, Object.assign({ fill: 'surface' }, o)); c.rect(x + 1, y + 1, size - 2, size - 2, { stroke: 'subject', width: c.t('tile-frame'), mark: false }); }
-        else c.rect(x, y, size, size, Object.assign({ fill: 'light-fill' }, o));
+        else c.rect(x, y, size, size, Object.assign({ fill: 'track' }, o));
         var ink = st === 'solid' ? 'label-on-subject' : 'label';
         c.text(x + 5, y + 5 + tsize * 0.8, r[ec], { role: 'tick', size: tsize, weight: 600, fill: ink });
         if (esub && r[esub] !== null && r[esub] !== '' && size >= 34) c.text(x + 5, y + 8 + tsize * 1.85, K.fmt(r[esub], f.sub || 'text'), { role: 'tick', size: tsize, fill: ink });
@@ -38,11 +38,11 @@
       cats.forEach(function (x) {
         if (x.style === 'solid') c.rect(kx, ly - 11, sw, sw, { fill: 'subject', mark: false });
         else if (x.style === 'open') { c.rect(kx, ly - 11, sw, sw, { fill: 'surface', mark: false }); c.rect(kx + 1, ly - 10, sw - 2, sw - 2, { stroke: 'subject', width: c.t('tile-frame'), mark: false }); }
-        else c.rect(kx, ly - 11, sw, sw, { fill: 'light-fill', mark: false });
+        else c.rect(kx, ly - 11, sw, sw, { fill: 'track', mark: false });
         var kb = c.text(kx + sw + 7, ly, x.label, { role: 'tick', max: c.phone ? W - sw - 8 : (c.labels.key_cols || 4) * pitch - sw - 8 });
         ly = kb.y + kb.h + 8 + c.size('tick') * 0.77;
       });
-      c.key(cats.map(function (x) { return { fill: x.style === 'solid' ? 'subject' : 'light-fill', direct: x.style === 'open' }; }));
+      c.key(cats.map(function (x) { return { fill: x.style === 'solid' ? 'subject' : 'track', direct: x.style === 'open' }; }));
       c.height(Math.max(top + 8 * pitch - gap, ly));
     }
   });

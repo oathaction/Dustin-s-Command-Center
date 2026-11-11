@@ -48,9 +48,10 @@
           c.rect(x, y, size, size, { fill: sh, data: { key: r[ec], field: es, value: r[es] } });
           c.text(x + size / 2, y + size / 2 + 4, r[ec], { role: 'tick', size: c.t('type-tile-code-phone'), weight: 600, anchor: 'middle', fill: sh === 'mag-4' || sh === 'mag-3' ? 'label-on-subject' : 'label' });
         } else {
-          c.rect(x, y, size, size, { fill: 'light-fill', mark: false });
-          c.text(x + 5, y + 16, r[ec], { role: 'tick', weight: 700 });
-          c.text(x + 5 + c.measure(r[ec] + ' ', 'tick', 700), y + 16, K.fmt(Math.abs(r[es]), f.shift || 'number:1'), { role: 'tick', fill: 'secondary' });
+          // the track ground keeps the code and figure at 4.5 to 1 or more on both grounds, in the label ink
+          c.rect(x, y, size, size, { fill: 'track', mark: false });
+          c.text(x + 5, y + 16, r[ec], { role: 'tick', weight: 700, fill: 'label' });
+          c.text(x + 5 + c.measure(r[ec] + ' ', 'tick', 700), y + 16, K.fmt(Math.abs(r[es]), f.shift || 'number:1'), { role: 'tick', fill: 'label' });
           var len = (size - 14) * Math.abs(r[es]) / max, ay = y + size - 16;
           var dir = r[es] >= 0 ? 1 : -1, ax = dir > 0 ? x + 7 : x + size - 7;
           K.parts.arrow(c, ax, ax + dir * len, ay, { data: { key: r[ec], field: es, value: r[es] } });

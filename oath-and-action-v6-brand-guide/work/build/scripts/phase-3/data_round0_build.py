@@ -29,8 +29,10 @@ V7P = ROOT / 'work/extract/atlas-v7-data.json'
 OUT = ROOT / 'work/build/data'
 SNAP = '2026-10-15'
 SNAP_WORDS = 'October 15, 2026'
-ATLAS_PUB = 'Oath & Action, Who Do They Answer To? Systems Atlas V7'
-ATLAS_LINE = 'Source: Oath & Action, Who Do They Answer To? Systems Atlas V7'
+# The atlas as the guide names it to readers (chapter 02's source lines): "Atlas V7" is the studio's name for the file
+ATLAS_PUB = 'Oath & Action’s systems atlas, Who Do They Answer To?'
+ATLAS_LINE = 'Source: Oath & Action’s systems atlas, Who Do They Answer To?'
+OLD_ATLAS = ('Source: Oath & Action, Who Do They Answer To? Systems Atlas V7', 'Oath & Action, Who Do They Answer To? Systems Atlas V7')
 DISCLOSURE_RE = re.compile(r'Yes on 3|Veterans for All Voters|Ranked Choice Melrose|Disclosure:', re.I)
 TYPES = {'number', 'integer', 'text', 'category', 'date', 'month', 'year', 'code', 'id', 'boolean'}
 REQUIRED = ('file', 'kind', 'publisher', 'title_or_table', 'table_id', 'url', 'observation_period', 'geography',
@@ -347,6 +349,9 @@ def derive_fred():
 # Atlas V7 tables
 # ---------------------------------------------------------------------------------------------------------------
 def v7_meta(name, table, table_id, period, geography, universe, unit, qual, columns, line, domain, specimens, states=(), **extra):
+    old = line.replace(ATLAS_LINE, OLD_ATLAS[0]).replace('as recorded in ' + ATLAS_PUB + ',', 'as recorded in ' + OLD_ATLAS[1] + ',')
+    if old != line:
+        extra.setdefault('source_line_variants', {})['phase_2_wording'] = old
     meta = {'file': f'{name}.json', 'kind': extra.pop('kind', 'v7'), 'publisher': ATLAS_PUB, 'title_or_table': table, 'table_id': table_id,
             'url': 'work/extract/atlas-v7-data.json', 'observation_period': period, 'geography': geography, 'universe_or_base': universe,
             'unit': unit, 'date_retrieved': SNAP, 'vintage': f'Atlas V7 snapshot of {SNAP_WORDS}', 'qualification': qual, 'columns': columns,
@@ -423,12 +428,12 @@ def v7_tables():
              'source_id': col('id', 'the V7 source the row rests on')},
             ('Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, '
              'United States; U.S. House of Representatives, Roll Call 280, July 22, 2026; U.S. Senate, Vote 253, September 30, 2026; '
-             'as recorded in Oath & Action, Who Do They Answer To? Systems Atlas V7, snapshot of October 15, 2026. The survey predates both votes by three years.'),
+             'as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. The survey predates both votes by three years.'),
             'D03', ['S01'], domain_note='Members’ stock trading is a conflict of interest, the Conflicts subsystem of V7 domain D03',
             source_line_variants={'with_bill_text': ('Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, '
                                                      'United States; U.S. Government Publishing Office, H.R. 7008, Stop Insider Trading Act, text as passed by the House, sections 2 and 3; '
-                                                     'U.S. House of Representatives, Roll Call 280, July 22, 2026; U.S. Senate, Vote 253, September 30, 2026; as recorded in Oath & Action, '
-                                                     'Who Do They Answer To? Systems Atlas V7, snapshot of October 15, 2026. Bill text retrieved November 11, 2026. The survey predates both votes by three years.')},
+                                                     'U.S. House of Representatives, Roll Call 280, July 22, 2026; U.S. Senate, Vote 253, September 30, 2026; as recorded in Oath & Action’s systems atlas, '
+                                                     'Who Do They Answer To?, snapshot of October 15, 2026. Bill text retrieved November 11, 2026. The survey predates both votes by three years.')},
             v7_figure=n7, notes=['The 86 percent overall figure is in the survey source note (N40), not in the headline figure caption.',
                                  'DR-98: a chart names "H.R. 7008, the Stop Insider Trading Act" with both provisions at first mention; the spec carries those words.'])
 

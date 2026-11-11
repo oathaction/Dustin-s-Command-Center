@@ -1,7 +1,7 @@
 {
  "file": "v7-scenarios-2030.json",
  "kind": "v7",
- "publisher": "Oath & Action, Who Do They Answer To? Systems Atlas V7",
+ "publisher": "Oath & Action’s systems atlas, Who Do They Answer To?",
  "title_or_table": "reform outcomes, eight scenarios and the direction each would move four outcome families",
  "table_id": "scenarios.items",
  "url": "work/extract/atlas-v7-data.json",
@@ -74,7 +74,7 @@
    "description": "V7’s reason for the Income and wealth equality direction"
   }
  },
- "printed_source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, reform outcomes, eight scenarios, conditional directions to 2036 from a 2026 baseline, United States. Snapshot of October 15, 2026. Each scenario gives a direction only if its assumptions hold. It is no forecast, gives no odds, and the four families are never added together.",
+ "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, reform outcomes, eight scenarios, conditional directions to 2036 from a 2026 baseline, United States. Snapshot of October 15, 2026. Each scenario gives a direction only if its assumptions hold. It is no forecast, gives no odds, and the four families are never added together.",
  "ledger_row": "not needed: Atlas V7, read by script",
  "domain": "all",
  "states": [],
@@ -95,5 +95,8 @@
   "GE": "Government efficacy",
   "EP": "Economic performance",
   "EQ": "Income and wealth equality"
+ },
+ "source_line_variants": {
+  "phase_2_wording": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, reform outcomes, eight scenarios, conditional directions to 2036 from a 2026 baseline, United States. Snapshot of October 15, 2026. Each scenario gives a direction only if its assumptions hold. It is no forecast, gives no odds, and the four families are never added together."
  }
 }

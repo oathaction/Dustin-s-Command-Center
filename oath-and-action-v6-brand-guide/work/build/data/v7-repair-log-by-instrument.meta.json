@@ -1,7 +1,7 @@
 {
  "file": "v7-repair-log-by-instrument.json",
  "kind": "derived",
- "publisher": "Oath & Action, Who Do They Answer To? Systems Atlas V7",
+ "publisher": "Oath & Action’s systems atlas, Who Do They Answer To?",
  "title_or_table": "repair log of 64 dated rule changes, counted by how each was made",
  "table_id": "repairLog.rows, grouped",
  "url": "work/extract/atlas-v7-data.json",
@@ -42,7 +42,7 @@
    "description": "coded pending"
   }
  },
- "printed_source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, repair log of 64 dated rule changes, August 6, 1965 to the November 3, 2026 ballot, United States: federal, state and local. Snapshot of October 15, 2026. Directions are the atlas’s own codes, set out in its coding note; each row cites its own source. One entry, New York City’s 1988 small-donor matching law, rests on a source the atlas did not check.",
+ "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, repair log of 64 dated rule changes, August 6, 1965 to the November 3, 2026 ballot, United States: federal, state and local. Snapshot of October 15, 2026. Directions are the atlas’s own codes, set out in its coding note; each row cites its own source. One entry, New York City’s 1988 small-donor matching law, rests on a source the atlas did not check.",
  "ledger_row": "not needed: Atlas V7, read by script",
  "domain": "D02",
  "states": [],
@@ -55,5 +55,8 @@
   "v7-repair-log.json"
  ],
  "derivation": "Counts of v7-repair-log rows by instrument_group and direction. Agency rule, executive action and executive order group as \"Executive or agency action\"; municipal ordinance and council funding vote as \"Local law or funding vote\". The grouping is the studio’s; the instruments are V7’s.",
- "domain_note": "53 of the 64 rows change election, ballot, district or campaign rules, V7 domain D02"
+ "domain_note": "53 of the 64 rows change election, ballot, district or campaign rules, V7 domain D02",
+ "source_line_variants": {
+  "phase_2_wording": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, repair log of 64 dated rule changes, August 6, 1965 to the November 3, 2026 ballot, United States: federal, state and local. Snapshot of October 15, 2026. Directions are the atlas’s own codes, set out in its coding note; each row cites its own source. One entry, New York City’s 1988 small-donor matching law, rests on a source the atlas did not check."
+ }
 }

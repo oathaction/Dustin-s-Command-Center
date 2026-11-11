@@ -815,7 +815,9 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
     height = meta.get("height_px")
     alt = html.unescape(str(meta.get("alt", ""))).strip()
     illustrative = bool(meta.get("illustrative"))
-    interactive = bool(meta.get("interactive"))
+    # Phase 3: a stage that holds a chart kit figure is a group, never an image: the figure carries its own title, drawing,
+    # notes and a table a reader opens (contract C7)
+    interactive = bool(meta.get("interactive")) or bool(frag and "data-oa-chart=" in frag)
     readable = bool(meta.get("readable")) and not interactive
     # CA-N9 and CA-M1 (fix pass): every plate with a fixed width carries the True size / Fit to window switch, hidden
     # until the shell's script finds the stage wider than its frame and finds that fitting keeps every text at 13 px or
