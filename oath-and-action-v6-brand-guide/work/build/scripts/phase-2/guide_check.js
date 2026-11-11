@@ -1294,7 +1294,7 @@ async function codeMatch(page) {
 async function codeMatchFresh(ctx, file) {
   const page = await ctx.newPage();
   await page.goto('file://' + file, { waitUntil: 'load' });
-  await page.waitForLoadState('networkidle');
+  await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});   // the fonts' requests may linger; the page itself has loaded
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(300);
   const r = await codeMatch(page);
@@ -1733,7 +1733,7 @@ async function checkPage(browser, file, widths, opts = {}) {
     // Round 1: the page's own load event first. At 9 MB the parser outlasts the network's 500 ms of quiet, so networkidle
     // alone hands the checks a page whose last chapters are not yet in the DOM; then the fonts and other requests settle.
     await page.goto('file://' + file, { waitUntil: 'load' });
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});   // the fonts' requests may linger; the page itself has loaded
     await page.evaluate(() => document.fonts.ready);
     await page.waitForTimeout(500);
     if (opts.mutate) await page.evaluate(opts.mutate);
@@ -1849,7 +1849,7 @@ async function checkPage(browser, file, widths, opts = {}) {
     const ctx = await browser.newContext({ viewport: { width, height: { 1440: 900, 390: 844 }[width] || 900 }, deviceScaleFactor: dpr });
     const page = await ctx.newPage();
     await page.goto('file://' + file, { waitUntil: 'load' });
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});   // the fonts' requests may linger; the page itself has loaded
     await page.evaluate(() => document.fonts.ready);
     if (opts.mutate) await page.evaluate(opts.mutate);
     const r = await fitSwitch(page, dpr);
