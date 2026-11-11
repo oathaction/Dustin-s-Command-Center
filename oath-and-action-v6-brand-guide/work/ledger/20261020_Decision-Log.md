@@ -3067,3 +3067,24 @@ The main session asked three questions with its plan for round 2, board C and th
 |---|---|---|
 | D2-1655 | The fix pass is closed at the owners' end. Checked by the main session: the generator chain changed no file; every round 1 generator's `--check` reports its files current; `guide_build.py --strict` 0 warnings, 16 chapters, 185 rules, 424 specimens, 8,958,497 bytes; the token tests pass at 6.0.0-gate2.8 with 504 tokens; the old error token name appears only in chapter 26's alias rows and an archived stage B board script | Every owner reported done; a check is run before the editor's read and the rescore |
 | D2-1656 | The editor's read of every changed string and the creative director's rescore run at the same time on the fixed build, with the full guide check at four widths beside them | The rescore judges the work and the editor the words; word edits that follow are small, and DR-191's short second pass takes whatever either finds |
+
+### Editor, round 2's read of every changed string (`20261111_Stage-C-Round-2-Editor-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1657 | Keep call 5's line in the identity players and add "Reset works once you press Play." after it, in the players and in Rule 17.6 | Rule 17.11 asks every reason line to name the next step; the added sentence is the one chapter 17's other players already use |
+| D2-1658 | Rule 08.2 names the feed test's script by its job until the asset package gives the file a public name, and a builder asks the editor to run it until then | The house rule on studio names, Rule 10.9's PP-S12 fix and D2-252's route for files that have not shipped |
+| D2-1659 | "The editor" is the one contact the guide names for requests, so Rule 10.9 follows Rules 03.2 and 26.2 | D2-252 and D2-1651; one term per idea (H02) |
+| D2-1660 | Chapter 18's invented bills keep chapter 11's stories: H.99001 waits at its hearing in the table, and S.99002's last action is its March 3 hearing | D2-1364 and call 10; the tabs set already prints the March 3 hearing |
+| D2-1661 | Chapter 26's prose takes the typographic apostrophe, and tokens.json keeps plain ones | The page reads like the rest of the guide; builders' tools read the JSON |
+| D2-1662 | A row may quote an unchanged string where a changed one now contradicts it (S4, and E4's five step descriptions) | The contradiction is this pass's, though the words are older |
+| D2-1663 | Keys files and manifest notes stay out of the read | The build prints neither on the reader's page; notes print only for a proofs specimen, and no changed specimen is one |
+| D2-1664 | Rule 12.4's DR-216 rewrite is read with the fix pass, and its rows go to the identity designer | It falls in the diff the task names, and `stage_b_identity_ch12.py` writes it |
+| D2-1665 | W3C's criterion words and call 4's grade line are checked for facts and left as written | H01's principle for quotations; call 4 set the grade line word for word |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1666 | An identity player's Reset at rest reads "The mark is at rest on its master. Reset works once you press Play." | The editor's I1 and S2 rows: Rule 17.11 asks a reason line to name the next step, and call 5's words stay first |
+| D2-1667 | DR-191's short second pass sends the editor's 49 rows to their five owners, with the creative director's R1 (the token table's label row, engineer) and R2 (Rule 19.5's chart, accessibility lead), each owner resumed with its context; chapter 19's results are rerun after it, from the final guide check | Every item scores 4 or more after the fix pass (the rescore); the remaining work is words and two small craft items, each in one owner's files |
