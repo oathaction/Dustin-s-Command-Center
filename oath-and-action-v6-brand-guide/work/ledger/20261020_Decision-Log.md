@@ -3454,3 +3454,14 @@ The main session asked five questions with its plan for the Gate 2 preview, the 
 |---|---|---|
 | D2-1875 | The Gate 2 board is published privately at https://claude.ai/artifact/G5WXqE2mfkpxdBSCdwSHnZ (1794425730-4e65): the HTML and its 193 images, all referenced. Before it the main session scanned the HTML (no scripts, no em dashes, no private paths, outside requests only to Google Fonts as every board makes, D2-49) and looked at a contact sheet of all 193 images | D2-1699; every file is seen before it is published |
 | D2-1876 | The Gate 2 report is written by the next chat from this chat's files, with the context it needs; this chat hands off after both pages are published | The handoffs' rule: hand off after each board |
+
+## Answers on the Phase 3 proposal's four questions, November 11, 2026
+
+Dustin, after version 8 and the Gate 2 board were published: "Yes, I agree with all recommendations." The studio reads this as each of the four questions on the board's first panel answered as recommended. The Gate 2 report is still to be written; the gate's own approval of the proposal waits for it.
+
+| # | Decision | Source |
+|---|---|---|
+| DR-229 | Chapter 14 keeps every form and tier; the studio picks specimen data from other domains (taxes and budgets, work and pay, housing, Congress and agencies) until Rule 01.9's one example in four from one atlas domain holds, and election data stays on the forms built for elections. Board 2 shows the count | Dustin, November 11, as recommended (Phase 3 question 1) |
+| DR-230 | Dustin signs up for a free api.data.gov key and a free Census Bureau key and enters them only in the environment's credential form when Phase 3 starts; he agrees to download up to five files the studio lists at round 1. Until then the studio uses bulk files and labels any chart it cannot source as Illustrative | Dustin, November 11, as recommended (Phase 3 question 2) |
+| DR-231 | Ballot measure and court case trackers join chapter 11 in Phase 3 as six-step trackers under DR-108 and DR-150, drawn by the systems designer and shown on board 3. This takes up what DR-140 held for a later stage | Dustin, November 11, as recommended (Phase 3 question 3) |
+| DR-232 | If round 0's pilot projects chapter 14 over 1.75 MB with the lightest method, the reference and avoid sketches become one image sheet first, then extended forms whose form does not change drop their separate phone drawing; only if both fall short does board 1 ask to move bytes from Phase 4's share | Dustin, November 11, as recommended (Phase 3 question 4) |
