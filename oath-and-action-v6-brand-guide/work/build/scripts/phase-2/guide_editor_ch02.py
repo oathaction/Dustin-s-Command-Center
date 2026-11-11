@@ -11,7 +11,7 @@ so the shell prints the group blocks and the rule index; the old index and group
 import re
 
 from guide_editor_common import (AMP16, AMP24, BASE, HL, HR7008, HR7008_BOTH, HR7008_FIRST, LOCKED, PAIR, PIECE, VOICE_CONTENT,
-                                 VOICE_LINE_B, WORDMARK24, added, amp_h, curl, dnp, e, flow, fx, hinge, ill, kicker, load,
+                                 VOICE_LINE_B, WORDMARK24, added, amp_h, curl, dnp, e, fails_lead, flow, fx, hinge, ill, kicker, load,
                                  marks, plain, q, removed, say_dash)
 
 VOICE_MD = "work/handoffs/phase-2/20261106_Voice-Writing-Rules.md"
@@ -246,6 +246,38 @@ def build(book):
             "record quotes each to the end of its last whole sentence, with an ellipsis, and says it is kept in part. CP-S9: colophon explained at "
             "first use. The pillars row names the pillar row of DR-111 in place of the grid's corners, which DR-110 retires.")
 
+    # --- Gate 2 fix pass, CD-S1: the opener. The four locked lines and the pillar order as live text a reader can select,
+    # set as chapter 06 sets quoted lines (Lora Italic 400 at the quote style, the opening mark hung 0.388 em, Rule 06.7).
+    # It reuses the brand lines table's words with no new drawing; the full table, with each line's role and places,
+    # stays in the chapter body as the reference.
+    op_rows = [("Tagline", q(LOCKED["tagline"]), True), ("Mission", q(LOCKED["mission"]), True),
+               ("Reader promise", q(LOCKED["promise"]), True), ("Editorial commitment", q(LOCKED["commitment"]), True)]
+    arr = '<span class="arr" aria-hidden="true">→</span>'
+    # each arrow stays with the pillar after it, so the row breaks whole, as the cover sets it
+    op_pill = "Explain" + "".join(f' <span class="nw">{arr} {e(p)}</span>' for p in ("Track", "Connect", "Act"))
+    OPCSS = (f".ed.op2 .opt{{{fx('caption')};color:var(--oa-color-text-secondary);margin:0 0 12px;max-width:40rem}}"
+             f".ed.op2 .opl{{margin:0}}"
+             f".ed.op2 .opl>div{{padding:12px 0 16px;border-top:1px solid var(--oa-color-border-hairline)}}"
+             f".ed.op2 .opl>div:first-child{{border-top:2px solid var(--oa-color-border-strong)}}"
+             f".ed.op2 dt{{{fx('label')};text-transform:uppercase;color:var(--oa-color-text-secondary);margin:0 0 6px}}"
+             f".ed.op2 dd{{margin:0;max-width:34ch;text-wrap:balance}}.ed.op2 .nw{{white-space:nowrap}}"
+             + flow(".ed.op2 dd.lk", "quote") + ".ed.op2 dd.lk{text-indent:-0.388em}"
+             + flow(".ed.op2 dd.pl", "intro", weight="var(--oa-font-weight-semibold)") + ".ed.op2 dd.pl{max-width:none}"
+             f".ed.op2 .arr{{color:var(--oa-color-text-secondary)}}")
+    # the few base styles the opener uses, in place of the whole BASE block, to keep the page light (D2-1214)
+    OPBASE = (f".ed{{{fx('body')};color:var(--oa-color-text-primary);max-width:100%}}.ed *{{box-sizing:border-box}}.ed p{{margin:0}}"
+              ".sp{box-sizing:border-box;padding:16px}@media (min-width:48em){.sp-flow{padding:24px}}")
+    op_dl = "".join(f'<div><dt>{e(a)}</dt><dd class="lk">{e(b)}</dd></div>' for a, b, _ in op_rows)
+    op_dl += f'<div><dt>Pillars, in order</dt><dd class="pl">{op_pill}</dd></div>'
+    A("s-02-opener", f'<div class="ed op2"><p class="opt">Our four locked lines and the order of the pillars, word for word.</p><dl class="opl">{op_dl}</dl></div>',
+      css=(OPBASE, OPCSS), rule=None, readable=True,
+      alt=("Our four locked lines and the order of the pillars, word for word. Tagline: " + LOCKED["tagline"] + " Mission: " + LOCKED["mission"]
+           + " Reader promise: " + LOCKED["promise"] + " Editorial commitment: " + LOCKED["commitment"]
+           + " Pillars, in order: Explain, Track, Connect, Act."),
+      notes="Gate 2 fix pass, CD-S1: chapter 02's opener, the brand lines as live text. The locked lines from Master Brief section 3, "
+            "set in Lora Italic at the quote style with the hung opening mark of Rule 06.7; the pillars in the intro style at 600 with "
+            "arrows hidden from screen readers, as the cover sets them.")
+
     # --- how to read the writing rules (the writing section's opening, without its index) ---------------------------
     ACSS = (flow(".ed .deck", "intro") + f".ed .deck{{max-width:58ch;margin:0 0 14px}}"
             f".ed .nar{{{fx('body')};max-width:64ch;margin:0 0 10px}}"
@@ -283,7 +315,7 @@ def build(book):
             cap_fail = cap_fail.replace("{lengths}", ", ".join(parts[:-1]) + " and " + parts[-1])
         text = [r["rule"]]
         if r["id"] in FAULT_TERMS:
-            text.append(f"<em>Terms.</em> {curl(r['terms'])}")
+            text.append(f"<strong>Terms.</strong> {curl(r['terms'])}")   # CD-S8: roman, from chapter 06's set
         rule = {
             "id": n, "title": f"{r['id']} {r['name']}.",
             "rule": text,
@@ -511,7 +543,7 @@ def build(book):
            f'<div><p class="lab">Words we leave out, and what to write</p><dl>' + "".join(f'<dt><span class="out">{e(a)}</span></dt><dd>{e(b)}</dd>' for a, b in leave) + "</dl></div>"
            f'<div><p class="lab">Series names, exactly</p><dl>' + "".join(f"<dt>{e(a)}</dt><dd>{e(b)}</dd>" for a, b in series) + "</dl></div>"
            f'<div><p class="lab">Terms we define at first use</p><dl>' + "".join(f"<dt>{e(a)}</dt><dd>{e(b)}</dd>" for a, b in terms) + "</dl></div></div></div>")
-    bad_v = ('<div class="ed"><div class="lnbox"><p class="bl">Stakeholders must leverage this unprecedented moment to empower communities and fix a broken system. '
+    bad_v = ('<div class="ed">' + dnp() + '<div class="lnbox"><p class="bl">Stakeholders must leverage this unprecedented moment to empower communities and fix a broken system. '
              + ill() + '</p></div></div>')
     rules.append({
         "id": "02.26", "title": "Use the words a reader would use, and spell series names exactly.",
@@ -526,7 +558,7 @@ def build(book):
                                         "The lockmark's four places follow DR-110. CP-S7: lever joins W04's definition to the lockmark's node."),
                     "caption": "The list to leave out pairs each word with what to write in its place."},
         "failure": {"specimen": A("s-02-26-failure", bad_v, css=(BASE, VCSS), rule="02.26", illustrative=True,
-                                  alt="An illustrative sentence: Stakeholders must leverage this unprecedented moment to empower communities and fix a broken system."),
+                                  alt="Failure case: do not publish. An illustrative sentence: Stakeholders must leverage this unprecedented moment to empower communities and fix a broken system."),
                     "caption": "Five words from the list fill one sentence, and it leaves the reader without a rule, an office or a step."},
         "related": ["08", "13"],
         "builders": "Search a draft for every word on the list to leave out, and check each series name against the list before a kicker ships.",
@@ -566,10 +598,14 @@ def build(book):
            {"before_rule": "02.23", "number": len(groups) + 2, "title": "Our lines and words",
             "line": "Quote each brand line in its own place, and write everything around it in the words a reader would use."}]
 
+    for r in rules:
+        r["failure"]["caption"] = fails_lead(r["id"], r["failure"]["caption"])
+
     data = {
         "number": "02", "anchor": "voice", "title": "Voice", "part": "Foundations",
         "instruction": "Write the way you’d explain a rule to a neighbor, and quote the brand lines exactly.",
         "intro": [C["narrative"][0], C["narrative"][1]],
+        "opener": "s-02-opener",
         "groups": gl,
         "rules": rules, "extras": extras, "sources": sources,
         "related_chapters": [{"chapter": "01", "reason": "What the voice serves, and the nonpartisan rules."}, {"chapter": "04", "reason": "How hinge headlines are drawn."},

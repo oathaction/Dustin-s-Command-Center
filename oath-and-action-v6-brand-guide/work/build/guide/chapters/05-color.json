@@ -4,6 +4,7 @@
   "title": "Color",
   "part": "Foundations",
   "instruction": "Choose a surface first, then the text and graphic colors that pass on it.",
+  "opener": "s-05-opener",
   "intro": [
     "Oath & Action works in seven colors, and each one has a job. Newsprint, a warm off-white, is the page most of our work sits on, and Charcoal carries the words. Pillar Red marks the one thing a reader should see first in each view, meaning each screen, card, slide or printed page. The other four do narrower work: Prussian, our dark blue, holds panels of dates and figures, Stone draws hairlines, Verdigris, a muted green, shows success and focus, and White serves specimens and email.",
     "Every pair in this chapter carries a contrast ratio, a measure of how far apart two colors sit in lightness. It runs from 1 to 1 for the same color up to 21 to 1 for black on white, by the formula in the Web Content Accessibility Guidelines (WCAG). We measured each ratio on the token values, the exact colors our code names. Pick the surface first, and the tables tell you which text and marks can sit on it."
@@ -37,7 +38,7 @@
       },
       "failure": {
         "specimen": "s-05-1-failure",
-        "caption": "<strong>Fails the proportion.</strong> The same page set on Charcoal and Prussian. Newsprint falls to 10 percent and dark surfaces take 86, so no panel can mark a turn. Every text pair here still passes 4.5 to 1, and the fault lies in how much of the view is dark."
+        "caption": "<strong>Fails Rule 05.1.</strong> The same page set on Charcoal and Prussian. Newsprint falls to 10 percent and dark surfaces take 86, so no panel can mark a turn. Every text pair here still passes 4.5 to 1, and the fault lies in how much of the view is dark."
       },
       "specs": [
         {
@@ -128,7 +129,7 @@
       },
       "failure": {
         "specimen": "s-05-2-failure",
-        "caption": "<strong>Fails 1.4.3.</strong> The caption in Stone measures 4.29 to 1 and the red link 2.96 to 1, both under the 4.5 to 1 that 14 px text needs. A reader with low vision loses the caption first, and the red link spends the view’s one red on a line of small text."
+        "caption": "<strong>Fails Rule 05.2.</strong> The caption in Stone measures 4.29 to 1 and the red link 2.96 to 1, both under the 4.5 to 1 that 14 px text needs. A reader with low vision loses the caption first, and the red link spends the view’s one red on a line of small text."
       },
       "specs": [
         {
@@ -193,7 +194,7 @@
       "id": "05.3",
       "title": "Give each view one working red.",
       "rule": [
-        "The wordmark’s ampersand and the lockmark’s lever are signature red and do not count, and neither do the ampersands inside the hinge diagram and the hinge-circle badge, which are identity marks. The hinge diagram never shares a view with the wordmark and never stands in for the hinge divider. An icon’s red accent counts as signature red when the icon stands alone, as an app tile, an avatar or a single feature icon. In a row or a menu, icons go one color and only the current one keeps its red, and that red counts as signature red. Each view (one screen, card, slide or printed page) then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point the headline names, which in a systems figure is where a reform acts. One job may take several marks, such as each target of one reform. A hinge headline’s ampersand uses the view’s working red. The hinge divider’s ampersand takes its surface’s ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian. In the guide itself, specimens, labeled failure cases and palette swatches do not count. Red never sits on Prussian."
+        "Each view (one screen, card, slide or printed page) then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point the headline names, which in a systems figure is where a reform acts. One job may take several marks, such as each target of one reform. Red never sits on Prussian."
       ],
       "tokens": [
         "oa.color.identity.signature.onNewsprint",
@@ -224,16 +225,6 @@
       },
       "specs": [
         {
-          "label": "Signature red on Newsprint, White and Charcoal",
-          "value": "Pillar Red; 2.96, 4.17 and 4.49 to 1",
-          "token": "oa.color.identity.signature.onNewsprint"
-        },
-        {
-          "label": "Signature marks on Prussian",
-          "value": "White, 13.28 to 1",
-          "token": "oa.color.identity.signature.onPrussian"
-        },
-        {
           "label": "Working red, first claim",
           "value": "An error the reader must fix, shown by the 4 px red bar beside it",
           "token": "oa.color.state.error.bar.onNewsprint"
@@ -249,19 +240,54 @@
           "token": "oa.color.data.emphasisRed.onNewsprint"
         },
         {
+          "label": "Signature red, which does not count",
+          "value": "The wordmark’s ampersand and the lockmark’s lever are signature red and do not count, and neither do the ampersands inside the hinge diagram and the hinge-circle badge, which are identity marks.",
+          "token": "oa.color.identity.signature.onNewsprint"
+        },
+        {
+          "label": "Signature red on Newsprint, White and Charcoal",
+          "value": "Pillar Red; 2.96, 4.17 and 4.49 to 1",
+          "token": "oa.color.identity.signature.onNewsprint"
+        },
+        {
+          "label": "Signature marks on Prussian",
+          "value": "White, 13.28 to 1",
+          "token": "oa.color.identity.signature.onPrussian"
+        },
+        {
+          "label": "An icon that stands alone",
+          "value": "An icon’s red accent counts as signature red when the icon stands alone, as an app tile, an avatar or a single feature icon."
+        },
+        {
+          "label": "Icons in a row or a menu",
+          "value": "In a row or a menu, icons go one color and only the current one keeps its red, and that red counts as signature red."
+        },
+        {
+          "label": "The hinge diagram",
+          "value": "The hinge diagram never shares a view with the wordmark and never stands in for the hinge divider."
+        },
+        {
+          "label": "A hinge headline",
+          "value": "A hinge headline’s ampersand uses the view’s working red."
+        },
+        {
+          "label": "Hinge divider ampersand",
+          "value": "The hinge divider’s ampersand takes its surface’s ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian.",
+          "token": "oa.color.identity.hingeDivider.onNewsprint"
+        },
+        {
           "label": "Keyline on a red mark on Newsprint",
           "value": "Charcoal, 1 px, 13.29 to 1",
           "token": "oa.component.button.ask.keyline.onNewsprint"
         },
         {
-          "label": "Hinge divider ampersand",
-          "value": "Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian",
-          "token": "oa.color.identity.hingeDivider.onNewsprint"
-        },
-        {
           "label": "Ask label",
           "value": "White on Pillar Red, 4.17 to 1, 19 px bold or larger",
           "token": "oa.type.ask"
+        },
+        {
+          "label": "In this guide",
+          "value": "In the guide itself, specimens, labeled failure cases and palette swatches do not count."
         }
       ],
       "files": [
@@ -322,7 +348,7 @@
         },
         {
           "label": "Selected",
-          "value": "A check before the word, the word in bold and a 2 px edge; in a list, the paired surface and its 4 px bar (Rule 17.10)",
+          "value": "A check before the word, the word in bold and a 2 px edge; in a list, the selected band, its 4 px bar and bold words (Rule 17.10)",
           "token": "oa.border.width.rule"
         },
         {
@@ -352,9 +378,9 @@
     },
     {
       "id": "05.5",
-      "title": "Keep marks that carry meaning at 3 to 1, and give red on Newsprint a Charcoal keyline.",
+      "title": "Keep marks that carry meaning at 3 to 1.",
       "rule": [
-        "An icon, a chart mark, a control’s edge or a focus ring needs a ratio of 3 to 1 against its surface. Pillar Red measures 2.96 to 1 on Newsprint, so a red mark that carries meaning there takes a 1 px Charcoal keyline. Stone passes for marks on light surfaces, and a hairline that carries no meaning may sit lower."
+        "An icon, a chart mark, a control’s edge or a focus ring needs a ratio of 3 to 1 against its surface. Pillar Red measures 2.96 to 1 on Newsprint, so a red mark that carries meaning there takes a 1 px Charcoal keyline. The error bar takes none, since the error mark and the word “Error:” carry the error and the 4 px bar beside them repeats it. Stone passes for marks on light surfaces, and a hairline that carries no meaning may sit lower."
       ],
       "tokens": [
         "oa.color.graphic.essential.onNewsprint",
@@ -376,7 +402,7 @@
       },
       "failure": {
         "specimen": "s-05-5-failure",
-        "caption": "<strong>Fails 1.4.11.</strong> Without its keyline the red bar measures 2.96 to 1 against Newsprint, under the 3 to 1 a mark needs, and its edge softens into the page."
+        "caption": "<strong>Fails Rule 05.5.</strong> Without its keyline the red bar measures 2.96 to 1 against Newsprint, under the 3 to 1 a mark needs, and its edge softens into the page."
       },
       "specs": [
         {
@@ -406,8 +432,13 @@
         },
         {
           "label": "Keyline on red",
-          "value": "1 px Charcoal, inside the mark",
+          "value": "1 px Charcoal border, inside the mark",
           "token": "oa.border.width.hairline"
+        },
+        {
+          "label": "Error bar",
+          "value": "4 px Pillar Red with no keyline; the error mark and “Error:” carry the error",
+          "token": "oa.color.state.error.bar.onNewsprint"
         }
       ],
       "related": [
@@ -416,7 +447,7 @@
         "18"
       ],
       "builders": [
-        "Draw the keyline inside the shape, with <code>box-shadow: inset 0 0 0 1px</code> in HTML or a 1 px stroke on an inner path in SVG, so the mark keeps its size. On White and Charcoal, where red measures 4.17 and 4.49 to 1, a red mark needs no keyline."
+        "Draw the keyline as a 1 px border with <code>box-sizing: border-box</code> in HTML, as chapter 18’s ask does with <code>--oa-component-button-ask-keyline-on-newsprint</code>, or as a 1 px stroke on an inner path in SVG, so the mark keeps its size. Forced colors keeps a border and removes an inset shadow. On White and Charcoal, where red measures 4.17 and 4.49 to 1, a red mark needs no keyline."
       ]
     },
     {
@@ -446,7 +477,7 @@
       },
       "failure": {
         "specimen": "s-05-6-failure",
-        "caption": "<strong>Fails 1.4.3 and Rule 05.6.</strong> The date line is Charcoal at 40 percent opacity, a gray no token names. It measures 2.48 to 1, and its color changes with whatever sits behind it."
+        "caption": "<strong>Fails Rule 05.6.</strong> The date line is Charcoal at 40 percent opacity, a gray no token names. It measures 2.48 to 1, under the 4.5 to 1 its text needs, and its color changes with whatever sits behind it."
       },
       "specs": [
         {
@@ -510,7 +541,7 @@
       },
       "failure": {
         "specimen": "s-05-7-failure",
-        "caption": "<strong>Fails Rules 01.1 and 01.3.</strong> A scale from red to blue reads as Republican against Democratic before anyone reads its key, and it spends the view’s red on every rising cell."
+        "caption": "<strong>Fails Rule 05.7.</strong> A scale from red to blue reads as Republican against Democratic before anyone reads its key, which Rules 01.1 and 01.3 keep out of our charts, and it spends the view’s red on every rising cell."
       },
       "specs": [
         {

@@ -132,6 +132,38 @@ def s_06_1(ctx):
              notes='A labeled failure: the face does a job that is not its own.')
 
 
+def s_06_opener(ctx):
+    """Chapter 06's opener (Gate 2 fix pass, call 3, CD-S1): the three faces side by side, each in its job, with its
+    weights. A light version of Rule 06.1's plate, set as live text a reader can select, so it is readable rather than a
+    picture. Three columns from 40rem, one under another below."""
+    v = ctx.v
+    sec = v('oa.color.text.secondary.onNewsprint')
+    css = (f'.op{{container-type:inline-size}}'
+           f'.fc{{list-style:none;margin:0;padding:0;display:grid;gap:24px;grid-template-columns:minmax(0,1fr)}}'
+           f'@container (min-width:40rem){{.fc{{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 32px}}'
+           f'.fc li{{display:grid;grid-template-rows:subgrid;grid-row:span 3}}}}'
+           f'.fc li{{padding-top:12px;border-top:{v("oa.border.width.rule")} solid {v("oa.color.border.strong.onNewsprint")}}}'
+           f':where(.fc p){{margin:0}}'
+           f'.k{{{ctx.ty("label")};color:{sec};padding-bottom:12px}}'
+           f'.d{{{ctx.ty("h3")};text-wrap:balance}}.b{{{ctx.ty("body")}}}'
+           f'.q{{{ctx.ty("quote")};text-indent:-{hang(ctx):.3f}em;text-wrap:balance}}'
+           f'.t{{{ctx.ty("caption")};color:{sec};padding-top:12px}}')
+    cols = [('Inter Tight 800 · display', f'<p class="d">{HEAD}</p>', 'Titles, headings and big figures'),
+            ('Inter 400, 600 and 700 · reading', f'<p class="b">{W02}</p>',
+             'Body text, the interface, labels, captions, tables and chart text'),
+            ('Lora Italic 400 and 500 · quotation', f'<p class="q">“{COMMIT}”</p>', 'Only the words we quote')]
+    lis = ''.join(f'<li><p class="k">{k}</p>{x}<p class="t">{t}</p></li>' for k, x, t in cols)
+    html = f'<style>{css}</style><div class="op"><ul class="fc">{lis}</ul></div>'
+    ctx.spec('s-06-opener', html, '06', None,
+             f'The three faces, each in its job and named with its weights. Inter Tight 800 sets the heading {HEAD} for '
+             f'titles, headings and big figures. Inter, at 400, 600 and 700, sets the sentence {W02} for body text, the '
+             f'interface, labels, captions, tables and chart text. Lora Italic, at 400 and 500, sets our editorial '
+             f'commitment, “{COMMIT}”, and only the words we quote.',
+             readable=True,
+             notes='Chapter 06’s opener (Gate 2 fix pass, call 3, CD-S1): a light version of Rule 06.1’s plate, as live '
+                   'text. The weights are the one set Rule 06.1 gives (CD-M1).')
+
+
 def style_spec(ctx, key):
     """Face, weight, web size, line height, tracking and extras for one style, read from tokens.json."""
     T = ctx.T
@@ -434,6 +466,7 @@ def s_06_10(ctx):
 def build(ctx):
     probes(ctx)
     T = ctx.T
+    s_06_opener(ctx)
     s_06_1(ctx)
     s_06_2(ctx)
     s_06_3(ctx)
@@ -504,6 +537,7 @@ def build(ctx):
     ch = {
         'number': '06', 'anchor': 'type', 'title': 'Type', 'part': 'Foundations',
         'instruction': 'Set every word at a readable size with the three faces and the type scale.',
+        'opener': 's-06-opener',
         'intro': [
             'Three typefaces carry every word we publish: Inter Tight for headlines and big figures, Inter for reading and '
             'the interface, and Lora Italic for the words we quote. Each has a single job, so a reader can tell a headline '
@@ -529,7 +563,7 @@ def build(ctx):
                                        'sentence, a button and a kicker in Inter, and our editorial commitment quoted in Lora '
                                        'Italic.'},
                 'failure': {'specimen': 's-06-1-failure',
-                            'caption': '<strong>Fails the faces’ jobs.</strong> Set in Lora Italic, the heading reads as a '
+                            'caption': '<strong>Fails Rule 06.1.</strong> Set in Lora Italic, the heading reads as a '
                                        'quotation, and the reader looks for the person who said it.'},
                 'specs': [
                     {'label': 'Display', 'value': 'Inter Tight 800; fallback Arial, sans-serif', 'token': 'oa.font.family.display'},
@@ -538,10 +572,9 @@ def build(ctx):
                     {'label': 'Source', 'value': 'Google Fonts, SIL Open Font License', 'token': None},
                 ],
                 'related': ['03', '14', '22'],
-                'builders': ['Load all three with one link: <code>https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700'
-                             '&amp;family=Inter+Tight:wght@800&amp;family=Lora:ital,wght@1,400;1,500&amp;display=swap</code>. '
-                             'Then set faces only through <code>--oa-font-family-display</code>, '
-                             '<code>--oa-font-family-reading</code> and <code>--oa-font-family-quote</code>.'],
+                'builders': ['Load these weights and no others, with the one link in Rule 06.10. Then set faces only '
+                             'through <code>--oa-font-family-display</code>, <code>--oa-font-family-reading</code> and '
+                             '<code>--oa-font-family-quote</code>.'],
             },
             {
                 'id': '06.2', 'title': 'Take every size from the type scale.',
@@ -565,7 +598,7 @@ def build(ctx):
                                        'the size for artboards 1,200 px and wider. On a web page, display styles move between '
                                        'the two as the window grows.'},
                 'failure': {'specimen': 's-06-2-failure',
-                            'caption': '<strong>Fails 1.4.4.</strong> Two columns as a reader sees them with text set to 200 '
+                            'caption': '<strong>Fails Rule 06.2.</strong> Two columns as a reader sees them with text set to 200 '
                                        'percent. The column set in rem has grown to 34 px; the column set in px is still 17 px.'},
                 'specs': [
                     {'label': 'Text size base', 'value': '16 px, the browser default; every size is a multiple in rem', 'token': None},
@@ -600,7 +633,7 @@ def build(ctx):
                             'caption': f'Four labels at true size, all at 13 px. The location line is secondary text at '
                                        f'{lab_r} to 1; the column head, tag and data label are primary text at {ch_n} to 1.'},
                 'failure': {'specimen': 's-06-3-failure',
-                            'caption': '<strong>Fails the 13 px floor.</strong> A graphic at true size of two labels from our '
+                            'caption': '<strong>Fails Rule 06.3.</strong> A graphic at true size of two labels from our '
                                        'fifth edition: the chapter kicker at 11 px with 13 percent tracking, and the footer '
                                        'line at 10 px.'},
                 'specs': [
@@ -640,7 +673,7 @@ def build(ctx):
                                        f'letter pairs {"touches" if pr_tok.get("touching") == 1 else "touch"}'
                                        + (', where the arm of an r meets its neighbor.' if all_r else '.')},
                 'failure': {'specimen': 's-06-4-failure',
-                            'caption': f'<strong>Fails the tracking scale.</strong> The same heading at {pct(DRAFT_H3)}, the '
+                            'caption': f'<strong>Fails Rule 06.4.</strong> The same heading at {pct(DRAFT_H3)}, the '
                                        f'H3 value in an early draft of this guide. {C.num(pr_dr.get("touching", 0)).capitalize()} of its '
                                        f'{pr_dr.get("pairs", 0)} letter pairs touch, and its word spaces shrink to '
                                        f'{sp_dr:.1f} px.'},
@@ -675,7 +708,7 @@ def build(ctx):
                             'caption': 'A finding at true size, set in Inter with tabular figures. The figures align on the '
                                        'right, and the one fall, in information jobs, takes the true minus.'},
                 'failure': {'specimen': 's-06-5-failure',
-                            'caption': '<strong>Fails the figure rule.</strong> The same table with proportional figures, '
+                            'caption': '<strong>Fails Rule 06.5.</strong> The same table with proportional figures, '
                                        'columns aligned left and a hyphen for each minus. The digits no longer stack, and the '
                                        'two minus signs read like dashes.'},
                 'specs': [
@@ -699,7 +732,7 @@ def build(ctx):
                 'correct': {'specimen': 's-06-6-correct',
                             'caption': 'A heading from our fifth edition’s type chapter at true size, its two lines balanced.'},
                 'failure': {'specimen': 's-06-6-failure',
-                            'caption': '<strong>Fails the widow rule.</strong> The same heading wrapped by width alone, which '
+                            'caption': '<strong>Fails Rule 06.6.</strong> The same heading wrapped by width alone, which '
                                        'leaves one word on its last line.'},
                 'specs': [
                     {'label': 'Headings', 'value': 'text-wrap: balance', 'token': 'oa.type.h3'},
@@ -724,7 +757,7 @@ def build(ctx):
                                        f'{hang_em:.2f} em into the margin, its measured width, and every line starts on the '
                                        f'hairline.'},
                 'failure': {'specimen': 's-06-7-failure',
-                            'caption': '<strong>Fails the hanging rule.</strong> With the mark inside the edge, the first line '
+                            'caption': '<strong>Fails Rule 06.7.</strong> With the mark inside the edge, the first line '
                                        'starts a mark’s width to the right of the second.'},
                 'specs': [
                     {'label': 'Hang', 'value': f'{hang_em:.2f} em in Lora Italic 400, measured', 'token': 'oa.type.quote'},
@@ -753,7 +786,7 @@ def build(ctx):
                                        f'characters of chapter 02’s prose at the same width, lines average {li[0]:.0f}, and at '
                                        f'the widest body measure, {lm[0]:.0f}.'},
                 'failure': {'specimen': 's-06-8-failure',
-                            'caption': f'<strong>Fails the measure.</strong> The same paragraph as our fifth edition set its '
+                            'caption': f'<strong>Fails Rule 06.8.</strong> The same paragraph as our fifth edition set its '
                                        f'intros, at 22 px and 65ch. Its full lines run {v5[1]} to {v5[2]} characters, and the '
                                        f'eye has far to travel back to the start of each.'},
                 'specs': [
@@ -781,7 +814,7 @@ def build(ctx):
                                        'headline in Helvetica or Arial at 26 px, the H3 floor, and the quote in Georgia Italic '
                                        'at 24 px, the quote floor.'},
                 'failure': {'specimen': 's-06-9-failure',
-                            'caption': '<strong>Fails the email rule.</strong> The headline set in Inter Tight, which a mail '
+                            'caption': '<strong>Fails Rule 06.9.</strong> The headline set in Inter Tight, which a mail '
                                        'app that cannot load the web font shows in its own default serif.'},
                 'specs': [
                     {'label': 'Headlines and body', 'value': 'Helvetica, Arial, sans-serif', 'token': 'oa.font.family.emailSans'},
@@ -810,18 +843,22 @@ def build(ctx):
                 'correct': {'specimen': 's-06-10-correct',
                             'caption': f'A heading at true size in Inter Tight 800, {wi:.0f} px wide at 32 px.'},
                 'failure': {'specimen': 's-06-10-failure',
-                            'caption': f'<strong>Fails the face rule.</strong> The same heading in Arial, the fallback that '
+                            'caption': f'<strong>Fails Rule 06.10.</strong> The same heading in Arial, the fallback that '
                                        f'shows when Inter Tight fails to load. It sets {wa:.0f} px wide, close to the '
                                        f'original, and its letters lose the cut of the wordmark’s face.'},
                 'specs': [
+                    {'label': 'Weights', 'value': 'Inter 400, 600 and 700; Inter Tight 800; Lora Italic 400 and 500, the set '
+                                                  'Rule 06.1 gives', 'token': None},
                     {'label': 'Display stack', 'value': '<code>"Inter Tight", Arial, sans-serif</code>', 'token': 'oa.font.family.display'},
                     {'label': 'Reading stack', 'value': 'Inter, Arial, sans-serif', 'token': 'oa.font.family.reading'},
                     {'label': 'Quotation stack', 'value': 'Lora, Georgia, serif', 'token': 'oa.font.family.quote'},
                 ],
                 'related': ['03', '27'],
-                'builders': ['Use <code>font-display: swap</code>, as the Google Fonts link sets it, so text shows at once in '
-                             'the fallback and changes face when the file arrives. Ship the font license with any package that '
-                             'carries the files.'],
+                'builders': ['A product loads the three faces with this link: <code>https://fonts.googleapis.com/css2?'
+                             'family=Inter:wght@400;600;700&amp;family=Inter+Tight:wght@800&amp;family=Lora:ital,wght@1,400;'
+                             '1,500&amp;display=swap</code>. Its <code>display=swap</code> shows text at once in the fallback '
+                             'and changes face when the file arrives. Ship the font license with any package that carries '
+                             'the files.'],
             },
         ],
         'extras': [

@@ -158,10 +158,16 @@ def S(label, value, token=None):
     return d
 
 
+def fails(id_, caption):
+    """Gate 2's fix pass (CD-S2): a failure caption leads with the rule it breaks, in bold, as stage C's captions do."""
+    lead = f"<strong>Fails Rule {id_}.</strong> "
+    return caption if caption.startswith("<strong>Fails Rule") else lead + caption
+
+
 def R(id_, title, rule, why, basis, correct, failure, *, tokens=(), specs=(), files=(), related=(), builders="", corrective=None):
     r = {"id": id_, "title": title, "rule": rule, "tokens": list(tokens), "why": {"text": why, "basis": basis},
          "correct": {"specimen": f"s-{id_.replace('.', '-')}-correct", "caption": correct},
-         "failure": {"specimen": f"s-{id_.replace('.', '-')}-failure", "caption": failure},
+         "failure": {"specimen": f"s-{id_.replace('.', '-')}-failure", "caption": fails(id_, failure)},
          "specs": list(specs), "files": list(files), "related": list(related), "builders": builders}
     if corrective:
         r["corrective"] = {"specimen": f"s-{id_.replace('.', '-')}-corrective", "caption": corrective}
@@ -174,6 +180,8 @@ DJ = "Design judgment"
 CH03 = {
     "number": "03", "anchor": "identity", "title": "Identity", "part": "Foundations",
     "instruction": "Pick the lockup that fits the surface and size, and give it room on every side.",
+    # Gate 2's fix pass (CD-S1): the opener, a plate of the chapter's subject under the intro
+    "opener": {"specimen": "s-03-opener", "caption": "Seven of the eight lockups at true size, from the masters Rule 03.2's plate draws. L5 needs 388 px, so it shows on screens 48em wide and up, and L6, at 884 px, has its own plate under Rule 03.2."},
     "intro": [
         "The wordmark is our name drawn as one piece of artwork: OATH and ACTION in heavy capitals, joined by ampersand B, the red ampersand we drew for Oath & Action. A lockup is a fixed arrangement of the wordmark with another part, such as the tagline or the lockmark, the three by three grid of nodes that chapter 08 explains.",
         "Every mark here is a vector master drawn for a range of sizes. You place the master, color it with tokens and leave room around it. In this chapter x means the height of the wordmark's capitals. The wordmark keeps the width our fifth edition drew, with ampersand B as refined for this edition, and the identity proofs at the end of the guide show it in use.",
@@ -300,7 +308,7 @@ CH03 = {
         R("03.8", "Join a partner with a hairline, and keep our ampersand inside our name.",
           "In a partnership lockup the host's name leads: on a piece we host, L1 sits at left; on a piece the partner hosts, the partner's logo sits at left and L1 follows. A 1 px vertical hairline stands between them with 0.6x of space on each side, and the partner's logo stands no taller than our capitals. For a square, set L8 beside the partner's logo the same way. Our ampersand stays inside the wordmark, and a second ampersand or a plus sign never joins the two names.",
           "The ampersand is our hinge between an oath and the action that keeps it. Used to join two organizations, it turns our mark into a conjunction anyone can borrow, and the reader sees one organization with a long name. A hairline marks a partnership and gives each name its own field, and the host leads because a reader first wants to know who is holding the event.",
-          "Design judgment; Dustin Cathcart's ruling on partners, November 6, 2026",
+          "Design judgment, approved by our founder and editor in November 2026",
           "Two partnership lockups at true size, each led by the host: our name on a piece we host, the partner's on a piece it hosts. The partner is invented.",
           "An event flyer that joins the names with a second ampersand, so it reads as one organization called \"Oath & Action & Merrimack Valley Civic Lab\".",
           tokens=["oa.color.border.hairline.onNewsprint"],
@@ -318,7 +326,7 @@ CH03 = {
         {"after_rule": "03.2", "specimen": "s-03-lockups", "label": "The eight lockups", "caption": "Seven of the eight lockups at true size, each with its job and its minimum on screen and in print; L6 follows in its own plate. L1, S1, L3 and L8 are masters; L4, L5 and L7 are built from the approved masters on our fifth edition's layouts."},
         {"after_rule": "03.2", "specimen": "s-03-l6", "label": "L6 at its minimum", "caption": "L6 at its 884 px minimum, wider than this column, so it scrolls on smaller screens. The wordmark and tagline sit centered on the strip, as the lockmark does. A page narrower than 884 px closes with the footer place (Rule 08.2). L6 leaves out a web address until ours is settled."},
         {"after_rule": "03.4", "specimen": "s-03-minimums", "label": "Minimum sizes", "caption": "The smallest size for every mark on screen and in print, and the mark to use below it."},
-        {"after_rule": "03.8", "specimen": "s-03-misuse", "label": "Three more failures", "caption": "Three more failures that slide and design apps make easy: a stretched mark, a drop shadow and a recolored ampersand."},
+        {"after_rule": "03.8", "specimen": "s-03-misuse", "label": "Three more failures", "caption": "<strong>Fails Rules 03.1 and 03.5.</strong> Three more failures that slide and design apps make easy: a stretched mark, a drop shadow and a recolored ampersand."},
     ],
     "sources": [],
 }
@@ -327,6 +335,7 @@ CH03 = {
 CH04 = {
     "number": "04", "anchor": "ampersand", "title": "The Ampersand and the hinge", "part": "Foundations",
     "instruction": "Use the ampersand once per composition to join a commitment to what it produces.",
+    "opener": {"specimen": "s-04-opener", "caption": "Ampersand B at display size, and a hinge headline in its own frame, since a composition carries one ampersand moment (Rule 04.2). On a phone the headline sets in H3, so each phrase stays whole on its line."},
     "intro": [
         "The ampersand is the hinge of the brand. It joins an oath, the commitment a person or an office makes, to the action that keeps it, and in our headlines it joins a rule to its result. Ampersand B is our own drawing: one pen path that crosses itself at the waist, with a beak at the top right and a tail that lands on the baseline.",
         "This chapter covers B drawn alone and the places the hinge appears: the hinge headline, the hinge divider, the hinge diagram, the end mark that closes an article and the hinge-circle badge. It ends with the tiles for avatars and the app icon, and the large crop for covers.",
@@ -354,8 +363,8 @@ CH04 = {
           specs=[S("Moments", "A hinge headline, a freestanding B or a cropped B"), S("Not counted", "The wordmark's ampersand, the hinge divider and the end mark (Rule 04.6)")],
           related=["02", "05"],
           builders="When a template already holds a hinge headline, leave its ampersand slot out of every other layer."),
-        R("04.3", "Join a rule to its result with a hinge headline, and give its ampersand the view's working red.",
-          "A hinge headline joins two noun phrases with B, as in \"The zoning code & the rent.\" B takes the view's working red, the one red each view may spend, unless an error or a step the reader can take now already holds it. Then B takes the headline's ink. Rule 02.27 sets how to write one, and Rules 01.18 to 01.20 set when to use one.",
+        R("04.3", "Join a rule to its result with a hinge headline.",
+          "A hinge headline joins two noun phrases with B, as in \"The zoning code & the rent.\", and B takes the view's working red, the one red each view may spend, unless an error or a step the reader can take now already holds it. Then B takes the headline's ink. Rule 02.27 sets how to write one, and Rules 01.18 to 01.20 set when to use one.",
           "The headline names a mechanism in five or six words, and the red ampersand marks the joint. Rule 05.3 ranks an error first and the step a reader can take now second, so on an Act piece with a red button the step keeps the red.",
           "Rule 05.3, the red rule",
           "Three hinge headlines from Rule 02.27 at three sizes of the type scale, at true size: the title style at 56 px, the section style at 44 and H3 at 26. Each B comes from the master whose range holds that cap height.",
@@ -368,8 +377,8 @@ CH04 = {
                  S("Master", "16 px master for capitals 16 to 23 px tall, 24 px master from 24 to 47 px, display master from 48 px")],
           related=["02", "05", "06"],
           builders="Set B as an inline image of its master, joined to the second phrase with no-break spaces, so a line break falls at the hinge."),
-        R("04.4", "Set a hinge divider between how a decision is made and what you can do about it.",
-          "The hinge divider centers B's 24 px master on a 1 px line as wide as the text it divides, with 12 px of clear line on each side of B. Line and B take the surface's ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian. It is never red.",
+        R("04.4", "Set a hinge divider before the step a reader can take.",
+          "Set the divider between how a decision is made and what you can do about it. It centers B's 24 px master on a 1 px line as wide as the text it divides, with 12 px of clear line on each side of B. Line and B take the surface's ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian. It is never red.",
           "The divider marks the turn from how a decision is made to the step a reader can take, the same turn the ampersand makes in our name. In ink it stays quiet, and the view's one working red stays free for the step itself.",
           "Rule 05.3, the red rule; design judgment",
           "A divider at true size in an article, between how a bill leaves committee and what a reader can do, and below it the divider on all four surfaces.",
@@ -454,6 +463,7 @@ CH04 = {
 CH08 = {
     "number": "08", "anchor": "lockmark", "title": "The lockmark", "part": "Foundations",
     "instruction": "Draw the lockmark from its master, and place it only in its four fixed places.",
+    "opener": {"specimen": "s-08-opener", "caption": "The lockmark in its four places at true size, each cropped to the part that holds it. Rule 08.2 sets the size for each place."},
     "intro": [
         "Democracy has a structure. The lockmark draws it as nine nodes joined by links, with the lever, a larger red node at bottom right, at the place where one change moves the rest. It signs our work in four fixed places: the masthead, the page header, the footer and the sign-off.",
         "Its drawing never changes, and it codes nothing. Chapter 11 sets how a tracker shows a bill's steps, and words name a series or a pillar.",
@@ -477,10 +487,10 @@ CH08 = {
           related=["03", "05"],
           builders="The lockmark files read <code>--link</code> for the links and <code>--lever</code> for the lever. Leave the lever on the signature token; on Prussian, place the White file from <code>prussian/</code>. Place the 48 px master on whole pixels at exactly 48 px, the size its pixel grid was drawn for, or at exactly 96 px in a social card's sign-off. The 24 and 48 px files this rule lists draw each node and the lever as one outline; the earlier files, one rect per pixel row, stay in the folder only as the record. The display master keeps our fifth edition's drawing, with its links held at 1 px at every size."),
         R("08.2", "Place the lockmark only in its four places, once in a view.",
-          "The lockmark signs four places, at the size each one sets: the masthead, where L3 sets it at 48 px beside the wordmark (Rule 03.6); the page header of a report or slide page, 24 px beside the section label; the footer, 24 px beside the tagline or 16 px beside a chart's source line; and the sign-off at the bottom right, 96 px on a social card and 48 px on a cover or poster. Each place draws the master made for its size, and a social card draws the 48 px master at exactly twice its size, so its nodes, links and lever still land on whole pixels. A view shows the lockmark once, so when a masthead and a footer share a view, the footer keeps it.",
+          "The lockmark signs four places: the masthead, the page header, the footer and the sign-off. Each place sets the lockmark's size, as this rule's specifications list them, and draws the master made for that size. A social card draws the 48 px master at exactly twice its size, so its nodes, links and lever still land on whole pixels. A view shows the lockmark once, so when a masthead and a footer share a view, the footer keeps it.",
           "A signature works by turning up in the same place at the same size, so a reader finds it without looking. Because each place draws a master on whole pixels, at the size it was made for or at exactly twice that, the four places read as one mark at the size each one sets. " + _thumb() + " Used as a bullet or scattered as decoration, the lockmark stops signing the page.",
           "Design judgment, approved by our founder and editor in November 2026",
-          "The four places at true size: a 768 px site masthead with L3, its lockmark at 48 px; a report page header with the lockmark at 24 px beside the section label; a footer with the lockmark at 24 px beside the tagline, and a chart's footer with it at 16 px beside the source line; and the bottom-right corner of a 1080 px social card with the lockmark at 96 px inside the 72 px margin.",
+          "The four places at true size, each with the size it sets: the masthead, a report's page header, two footers and the corner of a social card.",
           "The lockmark used as list bullets on a flyer, three lockmarks in one view, each one decoration.",
           tokens=["oa.color.identity.signature.onNewsprint"],
           specs=[S("Masthead", "L3 on screens from 48em, 768 px at the default text size, and in the email header, from its masthead master: the 24 px wordmark master, 13 px of space and the lockmark at 48 px from its 48 px master (Rule 03.6). In print, L3's print master, with the lockmark at the same 2.18 cap heights (Rule 03.2)"),
@@ -494,7 +504,7 @@ CH08 = {
                  S("Favicon", "Never the lockmark: favicons use ampersand B's 16 px master (Rule 03.4)")],
           files=[A + L3["masthead"], A + L3["print"], A + LOCK[48], A + LOCK[24], A + LOCK[16], A + LOCK["display"]],
           related=["03", "07", "14", "23"],
-          builders="Pick the master by the size the place sets: the 48 px master for the sign-off, at exactly 96 px on a social card and 48 px on a cover or poster; L3's masthead master, which holds it already, for the masthead on screen, and L3's print master for a masthead in print; the 24 px master in page headers and footers; and the 16 px master in a chart's footer. Set each on whole pixels. Run the feed test on every new template for a social card, on the file you will upload, before it ships. We run the test on the card in the identity proofs with a script of our own, and the asset package will carry a copy of that script that takes any card. Until then, ask the editor to run it on yours."),
+          builders="Pick the master by the size each place sets in the specifications, and set it on whole pixels. On screen the masthead places L3's masthead master, which holds the lockmark already, and in print L3's print master. Run the feed test on every new template for a social card, on the file you will upload, before it ships. We run the test on the card in the identity proofs with a script of our own, and the asset package will carry a copy of that script that takes any card. Until then, ask the editor to run it on yours."),
         R("08.3", "Let the lockmark code nothing.",
           "Draw the lockmark the same in every place, with no node lit, dimmed, moved or added. It never shows how far a bill has moved, which series a piece belongs to or which pillar a piece serves. Each of those jobs has its own sign: chapter 11 numbers a bill's steps, the kicker names a series in words (Rule 01.21), and a pillar takes its icon with its word beside it.",
           "One drawing with one job is easy to learn. Our fifth edition used the same nine nodes to code a bill's stage, a series, a pillar and a kind of content, and a reader could not tell which code a grid carried, or whether the mark in the masthead meant anything at all. Numbers and words do those jobs better, because a reader can say \"step 4 of 6\" out loud and words survive gray print.",
@@ -538,6 +548,7 @@ def specimens_used(ch):
             if r.get(k):
                 out.append(r[k]["specimen"])
     out += [x["specimen"] for x in ch.get("extras", [])]
-    if ch.get("opener"):                  # stage C: a chapter's opener figure (D2-1134)
-        out.append(ch["opener"])
+    op = ch.get("opener")                 # stage C: a chapter's opener figure (D2-1134); from Gate 2's fix pass a
+    if op:                                # specimen id or {"specimen", "caption"}
+        out.append(op if isinstance(op, str) else op["specimen"])
     return out

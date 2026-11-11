@@ -238,9 +238,33 @@ def check(chapters, book, house):
                 if r.get(k):
                     placed.append(r[k]["specimen"])
         placed += [x["specimen"] for x in c.get("extras", [])]
+        op = c.get("opener")
+        if op:
+            placed.append(op if isinstance(op, str) else op["specimen"])
     for sid in book.files:
         if placed.count(sid) != 1:
             fails.append(f"{sid} is placed {placed.count(sid)} times")
+
+    # 9b. Gate 2 fix pass: every failure caption leads with the rule it fails (CD-S2); titles stay one short clause,
+    # fifteen words at most (CD-S3); every chapter 01 rule carries a Specifications block (CD-S9); the color is
+    # "Prussian" (DT-S12); chapter 02 opens on the brand lines (CD-S1); "Terms." is never slanted (CD-S8)
+    for c in chapters:
+        for r in c["rules"]:
+            cap = (r.get("failure") or {}).get("caption", "")
+            if not cap.startswith(f"<strong>Fails Rule {r['id']}.</strong> "):
+                fails.append(f"Rule {r['id']}: the failure caption does not lead with “Fails Rule {r['id']}.” in bold (CD-S2)")
+            if len(r["title"].split()) > 15:
+                fails.append(f"Rule {r['id']}: a title of {len(r['title'].split())} words (CD-S3)")
+            if c["number"] == "01" and not r.get("specs"):
+                fails.append(f"Rule {r['id']}: no Specifications block (CD-S9)")
+    for k, t in texts.items():
+        if re.search(r"Prussian blue", t, re.I):
+            fails.append(f"“Prussian blue” in {k}; the color is Prussian (DT-S12)")
+    c2 = next(c for c in chapters if c["number"] == "02")
+    if c2.get("opener") != "s-02-opener" or any(line not in texts.get("s-02-opener", "") for line in LOCKED.values()):
+        fails.append("chapter 02's opener does not carry the four locked lines (CD-S1)")
+    if "<em>Terms.</em>" in " ".join(strings(c2)):
+        fails.append("“Terms.” is set in italic, a face the page never loads (CD-S8)")
 
     # 10. chapter 01's own rotation (Rule 01.9)
     n, dom, st = ch01.tally()

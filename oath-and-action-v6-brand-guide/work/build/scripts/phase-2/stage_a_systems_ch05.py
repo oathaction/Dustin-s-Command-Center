@@ -58,7 +58,7 @@ PHONE_CSS = """
 .st li{display:grid;grid-template-columns:5.5rem 1fr;gap:12px;padding:5px 0;border-top:1px solid var(--panel-rule);%(bodySmall)s}
 .st b{font-weight:600}
 .ft{padding:24px 16px 20px}
-.ask{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 20px;background:var(--ask);color:var(--ask-ink);box-shadow:var(--ask-edge);%(ask)s}
+.ask{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-height:52px;padding:0 20px;background:var(--ask);color:var(--ask-ink);border:var(--oa-border-width-hairline) solid var(--ask-edge);%(ask)s}
 """
 
 
@@ -71,14 +71,14 @@ def phone_vars(ctx, dark=False):
                 f'--panel:{v("oa.color.surface.charcoal")};--panel-ink:{v("oa.color.text.primary.onCharcoal")};'
                 f'--panel-sec:{v("oa.color.text.secondary.onCharcoal")};--panel-rule:{v("oa.color.border.hairline.onCharcoal")};'
                 f'--ask:{v("oa.component.button.ask.fill.onNewsprint")};--ask-ink:{v("oa.component.button.ask.label.onNewsprint")};'
-                f'--ask-edge:inset 0 0 0 1px {v("oa.component.button.ask.keyline.onNewsprint")};'
+                f'--ask-edge:{v("oa.component.button.ask.keyline.onNewsprint")};'
                 f'background:{v("oa.color.surface.newsprint")};color:{v("oa.color.text.primary.onNewsprint")}')
     return (f'--rule:{v("oa.color.border.hairline.onCharcoal")};--edge:{v("oa.color.border.strong.onCharcoal")};'
             f'--sec:{v("oa.color.text.secondary.onCharcoal")};--hinge:{v("oa.color.identity.hingeDivider.onCharcoal")};'
             f'--panel:{v("oa.color.surface.prussian")};--panel-ink:{v("oa.color.text.primary.onPrussian")};'
             f'--panel-sec:{v("oa.color.text.secondary.onPrussian")};--panel-rule:{v("oa.color.border.hairline.onPrussian")};'
             f'--ask:{v("oa.component.button.ask.fill.onPrussian")};--ask-ink:{v("oa.component.button.ask.label.onPrussian")};'
-            f'--ask-edge:none;background:{v("oa.color.surface.charcoal")};color:{v("oa.color.text.primary.onCharcoal")}')
+            f'--ask-edge:{v("oa.component.button.ask.fill.onPrussian")};background:{v("oa.color.surface.charcoal")};color:{v("oa.color.text.primary.onCharcoal")}')
 
 
 def phone_css(ctx):
@@ -113,7 +113,8 @@ def phone(ctx, variant='plain'):
                   f'border-left:4px solid {er};{ctx.ty("bodySmall")}}}'
                   f'.er svg{{display:block;margin-top:-1px}}.er b{{font-weight:700}}'
                   f'.ask.pri{{background:{ctx.v("oa.component.button.primary.fill.onNewsprint")};'
-                  f'color:{ctx.v("oa.component.button.primary.label.onNewsprint")};box-shadow:none}}')
+                  f'color:{ctx.v("oa.component.button.primary.label.onNewsprint")};'
+                  f'border-color:{ctx.v("oa.component.button.primary.fill.onNewsprint")}}}')
         # The error mark as Rule 11.15 builds it (D2-880, D2-959): chapter 11's U-error from the sprite, drawn in the
         # message's ink (currentColor), with the working red held by the 4 px bar on the field and the message. Both
         # bars are borders, which forced colors keeps, never inset shadows, which it drops (D2-1158).
@@ -208,7 +209,7 @@ def share_bar(ctx, sid):
            f'.sb .sg{{display:block;min-width:2px}}.sb .sg + .sg{{box-shadow:inset 1px 0 0 {ctx.v("oa.color.border.strong.onNewsprint")}}}'
            f'.sk{{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 16px;{ctx.ty("caption")}}}'
            f'.sk li{{display:inline-flex;align-items:center;gap:6px}}.sk b{{font-weight:600}}'
-           f'.sw{{width:12px;height:12px;flex:none;box-shadow:inset 0 0 0 1px {ctx.v("oa.color.border.strong.onNewsprint")}}}')
+           f'.sw{{width:12px;height:12px;flex:none;box-sizing:border-box;border:var(--oa-border-width-hairline) solid {ctx.v("oa.color.border.strong.onNewsprint")}}}')
     return css, f'<div class="sb" aria-hidden="true">{segs}</div><ul class="sk">{key}</ul>'
 
 
@@ -261,7 +262,7 @@ def s_05_palette(ctx):
         ctx.T.used.add(P(k))
     css = (f'.pl{{list-style:none;margin:0;padding:0;display:grid;gap:24px;grid-template-columns:repeat(auto-fill,minmax(min(100%,13rem),1fr))}}'
            f'.pl li{{display:flex;flex-direction:column;gap:12px}}'
-           f'.sw{{display:block;height:88px}}.sw.edge{{box-shadow:inset 0 0 0 1px {ctx.v("oa.color.border.hairline.onNewsprint")}}}'
+           f'.sw{{display:block;height:88px}}.sw.edge{{box-sizing:border-box;border:var(--oa-border-width-hairline) solid {ctx.v("oa.color.border.hairline.onNewsprint")}}}'
            f'.tx{{display:flex;flex-direction:column;gap:4px}}'
            f'.tx b{{{ctx.ty("h4", "floor")}}}'
            f'.hx{{{ctx.ty("dataLabel")};color:{ctx.v("oa.color.text.secondary.onNewsprint")}}}'
@@ -275,6 +276,38 @@ def s_05_palette(ctx):
     ctx.spec('s-05-palette', html, '05', None, alt, readable=True,
              notes='Fluid sheet, a readable list (D2-255). Values read from tokens.json; shares are Master Brief and V5 '
                    'ranges.')
+
+
+def s_05_opener(ctx):
+    """Chapter 05's opener (Gate 2 fix pass, call 3, CD-S1): the seven colors with their shares, a light version of the
+    palette plate after Rule 05.1. One swatch each, named, with its share across a body of work, in the share bar's
+    order, largest share first, so Stone stands between Prussian and Pillar Red. Seven across from 44rem, wrapping
+    below. Live text: a readable list."""
+    rows = []
+    for k in BAR_ORDER:
+        share = SHARE[k]
+        share_t = f'{share[0]} to {share[1]} percent' if share else 'As needed'
+        cls = 'sw edge' if k in ('white', 'newsprint') else 'sw'
+        red = ' data-red="swatch"' if k == 'pillarRed' else ''
+        rows.append(f'<li><span class="{cls}"{red} aria-hidden="true" style="background:{ctx.v(P(k))}"></span>'
+                    f'<span class="nm">{PNAME[k]}</span><span class="sh">{share_t}</span></li>')
+    sec = ctx.v('oa.color.text.secondary.onNewsprint')
+    css = (f'.op{{container-type:inline-size}}'
+           f'.pl{{list-style:none;margin:0;padding:0;display:grid;gap:16px;'
+           f'grid-template-columns:repeat(auto-fill,minmax(min(100%,6.5rem),1fr))}}'
+           f'@container (min-width:44rem){{.pl{{grid-template-columns:repeat(7,minmax(0,1fr))}}}}'
+           f'.pl li{{display:flex;flex-direction:column;gap:4px;min-width:0}}'
+           f'.sw{{display:block;height:64px;margin-bottom:8px}}'
+           f'.sw.edge{{box-sizing:border-box;border:var(--oa-border-width-hairline) solid {ctx.v("oa.color.border.hairline.onNewsprint")}}}'
+           f'.nm{{{ctx.ty("ui")};font-weight:var(--oa-font-weight-bold)}}'
+           f'.sh{{{ctx.ty("caption")};color:{sec}}}')
+    html = f'<style>{css}</style><div class="op"><ul class="pl">{"".join(rows)}</ul></div>'
+    alt = ('The seven colors with their shares across a body of work, largest first: ' +
+           '; '.join(f'{PNAME[k]}, ' + (f'{SHARE[k][0]} to {SHARE[k][1]} percent' if SHARE[k] else 'as needed')
+                     for k in BAR_ORDER) + '. The palette after Rule 05.1 gives each one’s values and job.')
+    ctx.spec('s-05-opener', html, '05', None, alt, readable=True,
+             notes='Chapter 05’s opener (Gate 2 fix pass, call 3, CD-S1): a light version of the palette plate, the '
+                   'swatches and shares only. A readable list; the red swatch is a swatch and does not count (Rule 05.3).')
 
 
 def surface_tile(ctx, s, failing=False):
@@ -295,7 +328,7 @@ def surface_tile(ctx, s, failing=False):
             f'<p class="bt">The council sets the hours each spring, when it passes the budget. Residents can speak at the '
             f'hearing before the vote.</p>'
             f'<p class="cp">New hours start July 1, with the budget year.</p>'
-            f'<p class="rt">Primary text {rp}:1 · secondary text {rs}:1</p></div>'), rp, rs
+            f'<p class="rt">Primary text {rp} to 1 · secondary text {rs} to 1</p></div>'), rp, rs
 
 
 TILE_CSS = """
@@ -334,7 +367,7 @@ def s_05_2(ctx):
     t = t.replace(f'--sec:{ctx.v("oa.color.text.secondary.onNewsprint")}', f'--sec:{ctx.v(P("stone"))}', 1)
     t = t.replace('<p class="cp">New hours start July 1, with the budget year.</p>',
                   '<p class="cp">New hours start July 1, with the budget year.</p><p class="lk"><span data-red="working" data-red-job="link">Read the hearing notice</span></p>')
-    t = re.sub(r'<p class="rt">.*?</p>', f'<p class="rt">Caption {stone}:1 · link {red}:1</p>', t)
+    t = re.sub(r'<p class="rt">.*?</p>', f'<p class="rt">Caption {stone} to 1 · link {red} to 1</p>', t)
     html = (f'<style>{css}.lk{{margin:12px 0 0;{ctx.ty("caption")}}}.lk span{{color:{ctx.v(P("pillarRed"))};'
             f'text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em}}</style>{t}')
     alt = (f'The Newsprint tile, labeled Illustrative, with its kicker, caption and ratio line in Stone, measured at '
@@ -384,7 +417,7 @@ def roles_matrix(ctx):
             else:
                 edge = ''
                 if s == 'newsprint' and hexv == ctx.hx(P('pillarRed')):
-                    edge = f';box-shadow:inset 0 0 0 1px {v("oa.color.border.strong.onNewsprint")}'
+                    edge = f';box-sizing:border-box;border:var(--oa-border-width-hairline) solid {v("oa.color.border.strong.onNewsprint")}'
                 sw = ' data-red="swatch"' if hexv == ctx.hx(P('pillarRed')) else ''
                 sample = f'<span class="ch"{sw} aria-hidden="true" style="background:{v(path)}{edge}"></span>'
             note = ''
@@ -403,7 +436,7 @@ def roles_matrix(ctx):
             if need:
                 verdict = ' · passes' if C.contrast(hexv, ctx.hx(surf)) >= need else ' · fails'
             cells.append(f'<td style="background:{bg};color:{ink}" data-s="{SNAME[s]}">{sample}'
-                         f'<span class="nm">{cname}</span><span class="rr">{r}:1{verdict}</span>'
+                         f'<span class="nm">{cname}</span><span class="rr">{r} to 1{verdict}</span>'
                          + (f'<span class="nt" style="color:{sec}">{note}</span>' if note else '') + '</td>')
         thr = {'text': 'Needs 4.5 to 1', 'graphic': 'Needs 3 to 1', 'decorative': 'No minimum',
                'mark': 'Governed by Rule 05.3'}[kind]
@@ -468,24 +501,25 @@ def s_05_ask(ctx):
         surf = f'oa.color.surface.{s}'
         rf = ctx.ratio(fill, surf)
         rl = ctx.ratio(lab, fill)
-        lines = [f'Fill on {SNAME[s]} {rf}:1', f'Label on fill {rl}:1, 19 px bold']
-        edge = 'none'
+        lines = [f'Fill on {SNAME[s]} {rf} to 1', f'Label on fill {rl} to 1, 19 px bold']
+        edge = ctx.v(fill)
         if s == 'newsprint':
             kl = 'oa.component.button.ask.keyline.onNewsprint'
             rk = ctx.ratio(kl, surf)
-            lines.insert(1, f'Charcoal keyline {rk}:1')
-            edge = f'inset 0 0 0 1px {ctx.v(kl)}'
+            lines.insert(1, f'Charcoal keyline {rk} to 1')
+            edge = ctx.v(kl)
         if s == 'prussian':
             lines.append('Red never sits on Prussian')
         facts[s] = lines
         dr = '' if s == 'prussian' else ' data-red="working" data-red-job="ask"'
         tiles.append(f'<div class="tl"{dr} style="background:{ctx.v(surf)};color:{ctx.v("oa.color.text.primary." + on)}">'
                      f'<p class="sn">{SNAME[s]}</p>'
-                     f'<span class="ask" style="background:{ctx.v(fill)};color:{ctx.v(lab)};box-shadow:{edge}">Sign up to speak</span>'
+                     f'<span class="ask" style="background:{ctx.v(fill)};color:{ctx.v(lab)};border-color:{edge}">Sign up to speak</span>'
                      f'<ul>{"".join(f"<li>{x}</li>" for x in lines)}</ul></div>')
     css = (f'.gr{{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr))}}'
            f'.tl{{padding:24px}}.sn{{margin:0 0 16px;{ctx.ty("label")}}}'
-           f'.ask{{display:flex;align-items:center;justify-content:center;min-height:52px;padding:0 20px;{ctx.ty("ask")}}}'
+           f'.ask{{display:flex;align-items:center;justify-content:center;box-sizing:border-box;min-height:52px;padding:0 20px;'
+           f'border:var(--oa-border-width-hairline) solid;{ctx.ty("ask")}}}'
            f'ul{{list-style:none;margin:16px 0 0;padding:0;{ctx.ty("caption")}}}li{{padding:2px 0}}')
     html = f'<style>{css}</style><div class="gr">{"".join(tiles)}</div>'
     alt = ('The ask button, Sign up to speak, on the four surfaces. ' +
@@ -619,7 +653,8 @@ def bar_chart(ctx, keyline=True):
         left = zero if r['change'] >= 0 else zero - w
         red = i == 0
         fill = v('oa.chart.color.point.onNewsprint') if red else v('oa.chart.color.context.onNewsprint')
-        edge = f';box-shadow:inset 0 0 0 1px {v("oa.chart.color.pointKeyline.onNewsprint")}' if red and keyline else ''
+        edge = (f';box-sizing:border-box;border:var(--oa-border-width-hairline) solid {v("oa.chart.color.pointKeyline.onNewsprint")}'
+                if red and keyline else '')
         val = C.signed(r['change'], 0)
         dr = ' data-red="working" data-red-job="the point the title names"' if red else ''
         out.append(f'<li{dr}><span class="lb{" s" if red else ""}">{r["sector"]}</span><span class="tr">'
@@ -703,22 +738,24 @@ def s_05_pairs(ctx):
             elif fg != 'pillarRed' and exact >= 3:
                 smp = f'<span class="aa lg" aria-hidden="true" style="color:{v(P(fg))}">Aa</span>'
             else:
-                edge = f';box-shadow:inset 0 0 0 1px {v("oa.color.border.strong.onNewsprint")}' if (fg == 'pillarRed' and s == 'newsprint') else ''
+                edge = (f';box-sizing:border-box;border:var(--oa-border-width-hairline) solid {v("oa.color.border.strong.onNewsprint")}'
+                        if (fg == 'pillarRed' and s == 'newsprint') else '')
                 sw = ' data-red="swatch"' if fg == 'pillarRed' else ''
                 smp = f'<span class="ch"{sw} aria-hidden="true" style="background:{v(P(fg))}{edge}"></span>'
             if fg == 'pillarRed' and s == 'prussian':
                 smp = '<span class="ch none" aria-hidden="true"></span>'
-            cells.append(f'<td style="background:{bg};color:{ink}" data-s="{SNAME[s]}">{smp}<span class="rr">{r}:1</span>'
+            cells.append(f'<td style="background:{bg};color:{ink}" data-s="{SNAME[s]}">{smp}<span class="rr">{r} to 1</span>'
                          f'<span class="vd">{vd}</span></td>')
         sw = ' data-red="swatch"' if fg == 'pillarRed' else ''
         rows.append(f'<tr><th scope="row"><span class="sw"{sw} aria-hidden="true" style="background:{v(P(fg))}"></span>{PNAME[fg]}</th>{"".join(cells)}</tr>')
     css = (f'.wr{{container-type:inline-size}}table{{width:100%;border-collapse:collapse;{ctx.ty("bodySmall")}}}'
            f'th,td{{text-align:left;vertical-align:top;padding:12px;border-bottom:1px solid {v("oa.color.border.hairline.onNewsprint")}}}'
            f'thead th{{{ctx.ty("label")}}}tbody th{{{ctx.ty("ui")};white-space:nowrap}}'
-           f'.sw{{display:inline-block;width:14px;height:14px;margin-right:8px;vertical-align:-2px;box-shadow:inset 0 0 0 1px {v("oa.color.border.strong.onNewsprint")}}}'
+           f'.sw{{display:inline-block;box-sizing:border-box;width:14px;height:14px;margin-right:8px;vertical-align:-2px;'
+           f'border:var(--oa-border-width-hairline) solid {v("oa.color.border.strong.onNewsprint")}}}'
            f'td span{{display:block}}.rr{{margin-top:4px;{ctx.ty("dataLabel")}}}.vd{{{ctx.ty("caption")}}}'
            f'.aa{{{ctx.ty("body")};font-weight:var(--oa-font-weight-semibold)}}.aa.lg{{{ctx.ty("h4", "ceil")};line-height:1}}'
-           f'.ch{{width:40px;height:20px}}.ch.none{{box-shadow:inset 0 0 0 1px currentColor;background:transparent}}'
+           f'.ch{{width:40px;height:20px}}.ch.none{{box-sizing:border-box;border:var(--oa-border-width-hairline) solid currentColor;background:transparent}}'
            f'@container (max-width:40rem){{thead{{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}}'
            f'table,tbody,tr,th,td{{display:block}}tr{{margin-bottom:16px}}tbody th{{padding-left:0}}'
            f'td{{display:grid;grid-template-columns:6.5rem 44px 1fr;gap:2px 12px;align-items:start;border-bottom:0}}'
@@ -760,7 +797,7 @@ def s_05_6(ctx):
         hexv = ctx.hx(path)
         ext = ctx.T.ext(path)
         der = ext.get('derivation') or {}
-        meas = '; '.join(f'{lab} {ctx.ratio(a, b)}:1' for a, b, lab in pairs)
+        meas = '; '.join(f'{lab} {ctx.ratio(a, b)} to 1' for a, b, lab in pairs)
         rows.append(f'<tr><td><span class="sw" aria-hidden="true" style="background:{v(path)}"></span></td><th scope="row">{name}'
                     f'<code>{C.css_name(path)}</code></th><td>{recipe} in OKLab<span class="hx">&#35;{hexv[1:]}</span></td>'
                     f'<td>{job}</td><td class="n">{meas}</td></tr>')
@@ -768,7 +805,7 @@ def s_05_6(ctx):
     css = (f'.wr{{container-type:inline-size}}table{{width:100%;border-collapse:collapse;{ctx.ty("bodySmall")}}}'
            f'th,td{{text-align:left;vertical-align:top;padding:12px 12px 12px 0;border-bottom:1px solid {v("oa.color.border.hairline.onNewsprint")}}}'
            f'thead th{{{ctx.ty("label")}}}tbody th{{{ctx.ty("ui")}}}tbody th code,.hx{{display:block;{ctx.ty("caption")};color:{v("oa.color.text.secondary.onNewsprint")}}}'
-           f'.sw{{display:block;width:48px;height:48px;box-shadow:inset 0 0 0 1px {v("oa.color.border.strong.onNewsprint")}}}'
+           f'.sw{{display:block;width:48px;height:48px;box-sizing:border-box;border:var(--oa-border-width-hairline) solid {v("oa.color.border.strong.onNewsprint")}}}'
            f'.n{{{ctx.ty("dataLabel")}}}'
            f'@container (max-width:40rem){{thead{{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}}'
            f'table,tbody,tr,th,td{{display:block}}tr{{position:relative;padding:12px 0 12px 64px;border-bottom:1px solid {v("oa.color.border.hairline.onNewsprint")}}}'
@@ -817,7 +854,7 @@ def s_05_7(ctx):
         ctx.fig(f'OKLab lightness diverging step {i}', f'{L:.3f}', 'OKLab L of the token hex')
         steps.append((fill, lab, r, words[i - 1], arrows[i - 1], L))
     cells = ''.join(f'<li style="background:{v(f)};color:{v(l)}"><span class="ar" aria-hidden="true">{a}</span><span class="wd">{w}</span>'
-                    f'<span class="rt">{r}:1</span></li>' for f, l, r, w, a, L in steps)
+                    f'<span class="rt">{r} to 1</span></li>' for f, l, r, w, a, L in steps)
     gcells = ''.join(f'<li style="background:{v(f)};color:{v(l)}"><span class="ar" aria-hidden="true">{a}</span><span class="wd">{w}</span></li>'
                      for f, l, r, w, a, L in steps)
     seq, seq_r = [], []
@@ -826,7 +863,7 @@ def s_05_7(ctx):
         lab = f'oa.chart.color.sequential.label.step{i}.{N}'
         r = ctx.ratio(lab, fill)
         seq_r.append(r)
-        seq.append(f'<li style="background:{v(fill)};color:{v(lab)}"><span class="wd">Step {i}</span><span class="rt">{r}:1</span></li>')
+        seq.append(f'<li style="background:{v(fill)};color:{v(lab)}"><span class="wd">Step {i}</span><span class="rt">{r} to 1</span></li>')
     roles = [('Subject', 'oa.chart.color.subject.onNewsprint', 'The series the title names'),
              ('Context', 'oa.chart.color.context.onNewsprint', 'Every other series'),
              ('Gridline', 'oa.chart.color.gridline.onNewsprint', 'Decoration only'),
@@ -835,9 +872,9 @@ def s_05_7(ctx):
     for n, path, job in roles:
         r = ctx.ratio(path, P('newsprint'))
         role_r.append((n, r))
-        edge = f';box-shadow:inset 0 0 0 1px {v("oa.chart.color.pointKeyline.onNewsprint")}' if 'point' in path else ''
+        edge = f';box-sizing:border-box;border:var(--oa-border-width-hairline) solid {v("oa.chart.color.pointKeyline.onNewsprint")}' if 'point' in path else ''
         sw = ' data-red="swatch"' if 'point' in path else ''
-        rl.append(f'<li><span class="ln"{sw} style="background:{v(path)}{edge}"></span><span><b>{n}</b> {job}<span class="rt2">{r}:1 on Newsprint</span></span></li>')
+        rl.append(f'<li><span class="ln"{sw} style="background:{v(path)}{edge}"></span><span><b>{n}</b> {job}<span class="rt2">{r} to 1 on Newsprint</span></span></li>')
     # color-vision separation of the diverging scale's neighbors
     hexes = [ctx.hx(f) for f, *_ in steps]
     worst = {}
@@ -900,6 +937,7 @@ def s_05_7(ctx):
 # ------------------------------------------------------------------------------------------------ the chapter
 def build(ctx):
     v = ctx.ratio
+    s_05_opener(ctx)
     s_05_1(ctx)
     s_05_palette(ctx)
     s_05_2(ctx)
@@ -963,10 +1001,19 @@ def build(ctx):
     if src_rule and src_rule.replace("'", '’') != RULE_053:
         raise ValueError('Rule 05.3 differs from the wording in tokens.json')
     ctx.fig('Rule 05.3 matches tokens.json redRule.text', 'yes' if src_rule else 'not found in tokens.json', 'string comparison, straight apostrophes read as curly')
+    # Gate 2 fix pass, CD-S10: the approved wording (D2-01, DR-66) stays word for word, sentence by sentence. The three
+    # sentences that state the rule stay its body, in their order: one working red in each view with its order of
+    # precedence, one job over several marks, and red never on Prussian. The signature exceptions and the special
+    # cases move to Specifications, one sentence a row, so the rule reaches its plate in about 70 words.
+    R053 = re.split(r'(?<=\.)\s+(?=[A-Z])', RULE_053)
+    if len(R053) != 10:
+        raise ValueError(f'Rule 05.3 splits into {len(R053)} sentences; the body and specification rows expect 10')
+    R053_BODY = (4, 5, 9)
 
     ch = {
         'number': '05', 'anchor': 'color', 'title': 'Color', 'part': 'Foundations',
         'instruction': 'Choose a surface first, then the text and graphic colors that pass on it.',
+        'opener': 's-05-opener',
         'intro': [
             'Oath & Action works in seven colors, and each one has a job. Newsprint, a warm off-white, is the page most of '
             'our work sits on, and Charcoal carries the words. Pillar Red marks the one thing a reader should see first in '
@@ -998,7 +1045,7 @@ def build(ctx):
                                        f'dark panel, the type and the rules, and Pillar Red {rc_share} percent, counting the wordmark’s '
                                        f'ampersand.'},
                 'failure': {'specimen': 's-05-1-failure',
-                            'caption': f'<strong>Fails the proportion.</strong> The same page set on Charcoal and Prussian. '
+                            'caption': f'<strong>Fails Rule 05.1.</strong> The same page set on Charcoal and Prussian. '
                                        f'Newsprint falls to {nf} percent and dark surfaces take {chf + prf}, so no panel can '
                                        f'mark a turn. Every text pair here still passes 4.5 to 1, and the fault lies in how '
                                        f'much of the view is dark.'},
@@ -1034,8 +1081,8 @@ def build(ctx):
                                        f'White, {n_c} on Charcoal and {w_p} on Prussian; secondary text measures {ds_n}, '
                                        f'{ds_w}, {dn_c} and {dn_p}.'},
                 'failure': {'specimen': 's-05-2-failure',
-                            'caption': f'<strong>Fails 1.4.3.</strong> The caption in Stone measures {st_n} to 1 and the '
-                                       f'red link {red_n} to 1, both under the 4.5 to 1 that 14 px text needs. A reader with '
+                            'caption': f'<strong>Fails Rule 05.2.</strong> The caption in Stone measures {st_n} to 1 and '
+                                       f'the red link {red_n} to 1, both under the 4.5 to 1 that 14 px text needs. A reader with '
                                        f'low vision loses the caption first, and the red link spends the view’s one red on '
                                        f'a line of small text.'},
                 'specs': [{'label': f'{"Primary" if r == "primary" else "Secondary"} text on {SNAME[s]}',
@@ -1051,7 +1098,7 @@ def build(ctx):
             },
             {
                 'id': '05.3', 'title': 'Give each view one working red.',
-                'rule': [RULE_053],
+                'rule': [' '.join(R053[i] for i in R053_BODY)],
                 'tokens': ['oa.color.identity.signature.onNewsprint', 'oa.color.state.error.bar.onNewsprint',
                            'oa.color.action.ask.fill.onNewsprint', 'oa.color.data.emphasisRed.onNewsprint',
                            'oa.component.button.ask.keyline.onNewsprint', 'oa.color.identity.hingeDivider.onNewsprint'],
@@ -1078,14 +1125,20 @@ def build(ctx):
                                           '4 px bar beside the field and the message, and the error mark draws in the text’s '
                                           f'ink (Rule 11.15). The message sits on the Error Band, where Charcoal text measures {eb_c} to 1.'},
                 'specs': [
-                    {'label': 'Signature red on Newsprint, White and Charcoal', 'value': f'Pillar Red; {red_n}, {red_w} and {red_c} to 1', 'token': 'oa.color.identity.signature.onNewsprint'},
-                    {'label': 'Signature marks on Prussian', 'value': f'White, {w_p} to 1', 'token': 'oa.color.identity.signature.onPrussian'},
                     {'label': 'Working red, first claim', 'value': 'An error the reader must fix, shown by the 4 px red bar beside it', 'token': 'oa.color.state.error.bar.onNewsprint'},
                     {'label': 'Working red, second claim', 'value': 'The step a reader can take now', 'token': 'oa.color.action.ask.fill.onNewsprint'},
                     {'label': 'Working red, third claim', 'value': 'The one point the headline names', 'token': 'oa.color.data.emphasisRed.onNewsprint'},
+                    {'label': 'Signature red, which does not count', 'value': R053[0], 'token': 'oa.color.identity.signature.onNewsprint'},
+                    {'label': 'Signature red on Newsprint, White and Charcoal', 'value': f'Pillar Red; {red_n}, {red_w} and {red_c} to 1', 'token': 'oa.color.identity.signature.onNewsprint'},
+                    {'label': 'Signature marks on Prussian', 'value': f'White, {w_p} to 1', 'token': 'oa.color.identity.signature.onPrussian'},
+                    {'label': 'An icon that stands alone', 'value': R053[2]},
+                    {'label': 'Icons in a row or a menu', 'value': R053[3]},
+                    {'label': 'The hinge diagram', 'value': R053[1]},
+                    {'label': 'A hinge headline', 'value': R053[6]},
+                    {'label': 'Hinge divider ampersand', 'value': R053[7], 'token': 'oa.color.identity.hingeDivider.onNewsprint'},
                     {'label': 'Keyline on a red mark on Newsprint', 'value': f'Charcoal, 1 px, {ch_n} to 1', 'token': 'oa.component.button.ask.keyline.onNewsprint'},
-                    {'label': 'Hinge divider ampersand', 'value': 'Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian', 'token': 'oa.color.identity.hingeDivider.onNewsprint'},
                     {'label': 'Ask label', 'value': f'White on Pillar Red, {wl_red} to 1, 19 px bold or larger', 'token': 'oa.type.ask'},
+                    {'label': 'In this guide', 'value': R053[8]},
                 ],
                 'files': [WORDMARK16, 'work/build/tokens/tokens.json'],
                 'related': ['03', '04', '14', '17'],
@@ -1123,7 +1176,7 @@ def build(ctx):
                 'specs': [
                     {'label': 'Focus ring on light surfaces', 'value': f'Verdigris, 2 px, 2 px gap; {ver_n} to 1 on Newsprint', 'token': 'oa.color.focus.ring.onNewsprint'},
                     {'label': 'Focus ring on dark surfaces', 'value': f'Newsprint; {n_c} to 1 on Charcoal, {n_pr} on Prussian', 'token': 'oa.color.focus.ring.onCharcoal'},
-                    {'label': 'Selected', 'value': 'A check before the word, the word in bold and a 2 px edge; in a list, the paired surface and its 4 px bar (Rule 17.10)', 'token': 'oa.border.width.rule'},
+                    {'label': 'Selected', 'value': 'A check before the word, the word in bold and a 2 px edge; in a list, the selected band, its 4 px bar and bold words (Rule 17.10)', 'token': 'oa.border.width.rule'},
                     {'label': 'Error ground', 'value': f'Error Band, {ctx.hx("oa.color.derived.errorBand")}; Charcoal text {eb_c} to 1', 'token': 'oa.color.state.error.band.onNewsprint'},
                     {'label': 'Disabled', 'value': f'Deep Stone text and dashed edge, {ds_n} to 1, with a reason line', 'token': 'oa.color.state.disabled.text.onNewsprint'},
                     {'label': 'State bar', 'value': '4 px, drawn as a border', 'token': 'oa.border.width.bar'},
@@ -1137,11 +1190,12 @@ def build(ctx):
                              'removes an inset shadow.'],
             },
             {
-                'id': '05.5', 'title': 'Keep marks that carry meaning at 3 to 1, and give red on Newsprint a Charcoal keyline.',
+                'id': '05.5', 'title': 'Keep marks that carry meaning at 3 to 1.',
                 'rule': [f'An icon, a chart mark, a control’s edge or a focus ring needs a ratio of 3 to 1 against its '
                          f'surface. Pillar Red measures {red_n} to 1 on Newsprint, so a red mark that carries meaning there '
-                         f'takes a 1 px Charcoal keyline. Stone passes for marks on light surfaces, and a hairline that '
-                         f'carries no meaning may sit lower.'],
+                         f'takes a 1 px Charcoal keyline. The error bar takes none, since the error mark and the word '
+                         f'“Error:” carry the error and the 4 px bar beside them repeats it. Stone passes for marks on light '
+                         f'surfaces, and a hairline that carries no meaning may sit lower.'],
                 'tokens': ['oa.color.graphic.essential.onNewsprint', 'oa.color.graphic.subtle.onNewsprint',
                            'oa.color.border.strong.onNewsprint', 'oa.color.border.hairline.onNewsprint',
                            'oa.chart.color.pointKeyline.onNewsprint', 'oa.border.width.hairline'],
@@ -1154,7 +1208,7 @@ def build(ctx):
                             'caption': f'A finding at true size, 600 px wide. The bar the title names takes the view’s working red with a '
                                        f'1 px Charcoal keyline at {rk} to 1; the other sectors stay in Stone at {rc} to 1.'},
                 'failure': {'specimen': 's-05-5-failure',
-                            'caption': f'<strong>Fails 1.4.11.</strong> Without its keyline the red bar measures {rp} to 1 '
+                            'caption': f'<strong>Fails Rule 05.5.</strong> Without its keyline the red bar measures {rp} to 1 '
                                        f'against Newsprint, under the 3 to 1 a mark needs, and its edge softens into the page.'},
                 'specs': [
                     {'label': 'Essential marks on Newsprint', 'value': f'Charcoal, {ch_n} to 1', 'token': 'oa.color.graphic.essential.onNewsprint'},
@@ -1162,13 +1216,17 @@ def build(ctx):
                     {'label': 'Control edges on Newsprint', 'value': f'Charcoal, {ch_n} to 1', 'token': 'oa.color.border.strong.onNewsprint'},
                     {'label': 'Hairline on Newsprint', 'value': f'Stone, {st_n} to 1, decoration only', 'token': 'oa.color.border.hairline.onNewsprint'},
                     {'label': 'Hairline on Charcoal', 'value': f'Stone, {stone_c} to 1, decoration only', 'token': 'oa.color.border.hairline.onCharcoal'},
-                    {'label': 'Keyline on red', 'value': '1 px Charcoal, inside the mark', 'token': 'oa.border.width.hairline'},
+                    {'label': 'Keyline on red', 'value': '1 px Charcoal border, inside the mark', 'token': 'oa.border.width.hairline'},
+                    {'label': 'Error bar', 'value': '4 px Pillar Red with no keyline; the error mark and “Error:” carry the error',
+                     'token': 'oa.color.state.error.bar.onNewsprint'},
                 ],
                 'sources_note': None,
                 'related': ['12', '14', '18'],
-                'builders': ['Draw the keyline inside the shape, with <code>box-shadow: inset 0 0 0 1px</code> in HTML or a '
-                             '1 px stroke on an inner path in SVG, so the mark keeps its size. On White and Charcoal, where '
-                             f'red measures {red_w} and {red_c} to 1, a red mark needs no keyline.'],
+                'builders': ['Draw the keyline as a 1 px border with <code>box-sizing: border-box</code> in HTML, as '
+                             'chapter 18’s ask does with <code>--oa-component-button-ask-keyline-on-newsprint</code>, or as a '
+                             '1 px stroke on an inner path in SVG, so the mark keeps its size. Forced colors keeps a border '
+                             f'and removes an inset shadow. On White and Charcoal, where red measures {red_w} and {red_c} to '
+                             '1, a red mark needs no keyline.'],
             },
             {
                 'id': '05.6', 'title': 'Give each tint one named job, and keep tints off identity marks.',
@@ -1190,9 +1248,9 @@ def build(ctx):
                                        f'ratio. The set holds three derived colors and {n_tints} chart tints; chapter 26 '
                                        f'lists every one.'},
                 'failure': {'specimen': 's-05-6-failure',
-                            'caption': f'<strong>Fails 1.4.3 and Rule 05.6.</strong> The date line is Charcoal at 40 percent '
-                                       f'opacity, a gray no token names. It measures {r_opacity} to 1, and its color changes '
-                                       f'with whatever sits behind it.'},
+                            'caption': f'<strong>Fails Rule 05.6.</strong> The date line is Charcoal at 40 percent '
+                                       f'opacity, a gray no token names. It measures {r_opacity} to 1, under the 4.5 to 1 its '
+                                       f'text needs, and its color changes with whatever sits behind it.'},
                 'specs': [
                     {'label': 'Deep Stone', 'value': f'{ctx.hx("oa.color.derived.deepStone")}, Stone 18% toward Charcoal; {ds_n} to 1 on Newsprint, {ds_w} on White', 'token': 'oa.color.derived.deepStone'},
                     {'label': 'Dim Newsprint', 'value': f'{ctx.hx("oa.color.derived.dimNewsprint")}, Newsprint 25% toward Charcoal; {dn_c} to 1 on Charcoal, {dn_p} on Prussian', 'token': 'oa.color.derived.dimNewsprint'},
@@ -1235,9 +1293,9 @@ def build(ctx):
                                        'label on a fill passes 4.5 to 1. Chapter 14 holds the full chart palette, with the '
                                        'dark ground and the grayscale proofs of each chart.'},
                 'failure': {'specimen': 's-05-7-failure',
-                            'caption': '<strong>Fails Rules 01.1 and 01.3.</strong> A scale from red to blue reads as '
-                                       'Republican against Democratic before anyone reads its key, and it spends the view’s '
-                                       'red on every rising cell.'},
+                            'caption': '<strong>Fails Rule 05.7.</strong> A scale from red to blue reads as Republican '
+                                       'against Democratic before anyone reads its key, which Rules 01.1 and 01.3 keep out of '
+                                       'our charts, and it spends the view’s red on every rising cell.'},
                 'specs': [
                     {'label': 'Chart ground', 'value': 'Newsprint; Charcoal for dark views', 'token': 'oa.color.surface.newsprint'},
                     {'label': 'Subject', 'value': f'Charcoal, {ch_n} to 1', 'token': 'oa.chart.color.subject.onNewsprint'},
@@ -1289,6 +1347,13 @@ def build(ctx):
                     'Color Vision Deficiency,” IEEE Transactions on Visualization and Computer Graphics 15, no. 6 (2009), '
                     'severity 1.0, as the palette lab applies it.'],
     }
+    # CD-S10: every sentence of the approved Rule 05.3 appears once, in its body or a specification row
+    r053 = next(r for r in ch['rules'] if r['id'] == '05.3')
+    placed = re.split(r'(?<=\.)\s+(?=[A-Z])', r053['rule'][0]) + [x['value'] for x in r053['specs'] if x['value'] in R053]
+    if sorted(placed) != sorted(R053):
+        raise ValueError('Rule 05.3 no longer holds each sentence of the approved wording exactly once')
+    ctx.fig('Rule 05.3 sentences placed', f'body {", ".join(str(i + 1) for i in R053_BODY)}; the other seven in specifications',
+            'each sentence of the approved wording found once in the rule body or a specification value')
     # drop helper keys the contract does not hold
     for r in ch['rules']:
         r.pop('sources_note', None)

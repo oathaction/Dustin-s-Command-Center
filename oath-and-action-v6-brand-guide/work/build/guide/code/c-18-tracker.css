@@ -44,6 +44,7 @@
 .oa-tracker-status b,
 .oa-tracker-words b,
 .oa-tracker-take b,
+.oa-tracker-check b,
 .oa-tracker-alert b {
   font-weight: var(--oa-font-weight-bold);
 }

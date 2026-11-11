@@ -32,6 +32,15 @@ MINE = ("s-03-", "s-04-", "s-08-", "s-09-", "s-proofs-", "s-17-hinge-", "s-17-le
 RETIRED_CHAPTER_FILES = ("08-signal-grid.json",)     # this maker's chapter files that no longer exist under that name
 
 
+def bar_alt(sid, alt):
+    """Gate 2's fix pass (CD-S2): a plate that carries the do-not-publish band says so first in its alt, as the
+    plates that already carried it do: "Failure case: do not publish. ..." """
+    if not L.needs_bar(sid) or alt.startswith("Failure case: do not publish"):
+        return alt
+    rest = alt[len("Failure case: "):] if alt.startswith("Failure case: ") else alt
+    return "Failure case: do not publish. " + rest[:1].upper() + rest[1:]
+
+
 def CHAPTERS():
     """Chapters 03, 04 and 08, then chapter 09 from stage B round 2, its prose set by the same quote rules."""
     return CH.CHAPTERS + [CH._smarten(S09.chapter())]
@@ -49,6 +58,7 @@ def build(preview_dir=None, pdf=False):
     assert len(ids) == len(set(ids)), "duplicate specimen id"
     manifest = {}
     for r in records:
+        r["alt"] = bar_alt(r["id"], r["alt"])
         (L.SPEC_DIR / f'{r["id"]}.html').write_text(r["html"])
         m = {"chapter": r["chapter"], "rule": r["rule"]}
         if r["width_px"]:

@@ -133,7 +133,7 @@ const spec = JSON.parse(fs.readFileSync(path.join(dir, 'probes.json'), 'utf8'));
     await pg.close();
   }
   results._env = { browser: 'chromium ' + browser.version(), viewport: '1440x900', deviceScaleFactor: 1,
-    fonts: 'Google Fonts css2: Inter 400 500 600 700, Inter Tight 800, Lora italic 400 500', date: new Date().toISOString() };
+    fonts: 'Google Fonts css2: Inter 400 600 700, Inter Tight 800, Lora italic 400 500', date: new Date().toISOString() };
   fs.writeFileSync(path.join(dir, 'results.json'), JSON.stringify(results, null, 1));
   console.log(`capture: ${Object.keys(results).length - 1} results in ${path.join(dir, 'results.json')}`);
   await browser.close();

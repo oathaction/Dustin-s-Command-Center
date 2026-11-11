@@ -363,13 +363,13 @@ WHY = {"rest": "The mark is at rest on its master. Reset works once you press Pl
        "slowDevice": "Your device asks for reduced motion, so Play shows the last frame at once and Slow motion has nothing to slow."}
 
 
-def player(pid, *, title, kicker, grounds, words, frames, timeline, tracks, group, start_css):
+def player(pid, *, title, kicker, grounds, words, frames, timeline, tracks, group, start_css, obj):
     wid = f"{pid}-why"
     icons = uicon("play") + uicon("pause").replace("<svg ", "<svg hidden ", 1)
     ctl = (f'<div class="oai-mv-cl" role="group" aria-label="{E(group)}">'
            f'<button type="button" class="oai-mv-b" data-oa-play="" data-oa-pause="">{icons}<span data-word="">Play</span></button>'
            f'<button type="button" class="oai-mv-b" data-oa-reset="" aria-disabled="true" aria-describedby="{wid}">'
-           f'{uicon("reset")}<span>Reset</span></button></div>')
+           f'{uicon("reset")}<span>Reset {E(obj)}</span></button></div>')     # Rule 11.14: Reset names its object (DT-S8)
     sl = '<label class="oai-mv-sl"><input type="checkbox" data-slow=""><span>Slow motion, one tenth speed</span></label>'
     whyp = f'<p class="oai-mv-why" id="{wid}" data-why="">{E(WHY["rest"])}</p>'
     out = f'<p class="oai-mv-out" role="status" data-out="">{E(words["rest"])}</p>'
@@ -441,7 +441,7 @@ def s_17_hinge_correct():
         f"size, over the standard {msw(STD)} with the enter easing.",
         f"{msw(HINGE)}, the hinge duration: at rest on the master."]
     body = player("oai-hinge", title="The hinge", kicker=f"The wordmark, {HINGE} ms", grounds=grounds, words=HINGE_WORDS, frames=frames,
-                  timeline=timeline, tracks=tracks, group="Play the hinge", start_css=css)
+                  timeline=timeline, tracks=tracks, group="Play the hinge", start_css=css, obj="the wordmark")
     alt = (f"A live player for the hinge, the wordmark's own motion, on Newsprint and on Charcoal. At rest it shows the "
            f"wordmark's master, OATH & ACTION with its red ampersand, from its 24 pixel master at 24 pixels, and on a "
            f"wide screen from its display master at 64 pixels tall as well. Play steps to the first frame, where OATH and "
@@ -508,7 +508,7 @@ def s_17_lever_correct():
         f"{msw(LEVER_AT)}: the lever lands last, the same way, over {msw(STD)}.",
         f"{msw(LEVER)}, the lever duration: at rest on the master."]
     body = player("oai-lever", title="The lever landing", kicker=f"{LEVER} ms, on request", grounds=grounds, words=LEVER_WORDS,
-                  frames=frames, timeline=timeline, tracks=tracks, group="Play the lever landing", start_css=css)
+                  frames=frames, timeline=timeline, tracks=tracks, group="Play the lever landing", start_css=css, obj="the lockmark")
     alt = (f"A live player for the lever landing, the lockmark's own motion, on Newsprint and on Charcoal, at 48 pixels "
            f"from the 48 pixel master and at 120 pixels from the display master. At rest it shows the lockmark's masters. "
            f"Play steps to the first frame, an empty field, then draws the six links from the top left over {STD} ms; one "

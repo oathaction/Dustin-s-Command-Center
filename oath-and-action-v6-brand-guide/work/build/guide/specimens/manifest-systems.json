@@ -27,7 +27,7 @@
   "chapter": "05",
   "rule": "05.2",
   "width_px": 360,
-  "alt": "The Newsprint tile, labeled Illustrative, with its kicker, caption and ratio line in Stone, measured at 4.29 to 1, and a link, Read the hearing notice, in Pillar Red at 14 px, measured at 2.96 to 1.",
+  "alt": "Failure case: do not publish. The Newsprint tile, labeled Illustrative, with its kicker, caption and ratio line in Stone, measured at 4.29 to 1, and a link, Read the hearing notice, in Pillar Red at 14 px, measured at 2.96 to 1.",
   "illustrative": true,
   "notes": "A labeled failure case: its small text fails 4.5 to 1 on purpose.",
   "check_exempt": [
@@ -74,7 +74,7 @@
   "chapter": "05",
   "rule": "05.4",
   "width_px": null,
-  "alt": "Two Illustrative tracker rows, Budget hearing with a red dot and Zoning vote with a Verdigris dot, and no word for either status. Beside them the same rows in grayscale, where the two dots print as nearly the same gray.",
+  "alt": "Failure case: do not publish. Two Illustrative tracker rows, Budget hearing with a red dot and Zoning vote with a Verdigris dot, and no word for either status. Beside them the same rows in grayscale, where the two dots print as nearly the same gray.",
   "illustrative": true,
   "notes": "Pillar Red against Verdigris 1.14 to 1; in grayscale #5F5F5F and #717171."
  },
@@ -98,7 +98,7 @@
   "chapter": "05",
   "rule": "05.6",
   "width_px": null,
-  "alt": "A table of six tints, each with its swatch, name, token, recipe, hex value, one job and measured ratio. Deep Stone, Stone 18% toward Charcoal, #4E535B: Secondary and disabled text on Newsprint and White; text on Newsprint 5.49:1; text on White 7.74:1. Dim Newsprint, Newsprint 25% toward Charcoal, #A3A19C: Secondary and disabled text on Charcoal and Prussian; text on Charcoal 7.26:1; text on Prussian 5.14:1. Error Band, Pillar Red 88% toward Newsprint, #E1C9C1: The ground of an error message on Newsprint and White; Charcoal text on it 11.89:1; Deep Stone text on it 4.91:1. Gridline, Stone 70% toward Newsprint, #B4B4B3: Chart gridlines on Newsprint; decoration only; on Newsprint 1.47:1. Light Prussian, Prussian 62% toward Newsprint, #8E94A4: The light Prussian step of the diverging scale; Charcoal label on it 6.18:1. Light Verdigris, Verdigris 55% toward Newsprint, #9AAEA6: The light Verdigris step of the diverging scale; Charcoal label on it 8.01:1.",
+  "alt": "A table of six tints, each with its swatch, name, token, recipe, hex value, one job and measured ratio. Deep Stone, Stone 18% toward Charcoal, #4E535B: Secondary and disabled text on Newsprint and White; text on Newsprint 5.49 to 1; text on White 7.74 to 1. Dim Newsprint, Newsprint 25% toward Charcoal, #A3A19C: Secondary and disabled text on Charcoal and Prussian; text on Charcoal 7.26 to 1; text on Prussian 5.14 to 1. Error Band, Pillar Red 88% toward Newsprint, #E1C9C1: The ground of an error message on Newsprint and White; Charcoal text on it 11.89 to 1; Deep Stone text on it 4.91 to 1. Gridline, Stone 70% toward Newsprint, #B4B4B3: Chart gridlines on Newsprint; decoration only; on Newsprint 1.47 to 1. Light Prussian, Prussian 62% toward Newsprint, #8E94A4: The light Prussian step of the diverging scale; Charcoal label on it 6.18 to 1. Light Verdigris, Verdigris 55% toward Newsprint, #9AAEA6: The light Verdigris step of the diverging scale; Charcoal label on it 8.01 to 1.",
   "illustrative": false,
   "notes": "A readable table (D2-255). Recipes read from each token's derivation in tokens.json; ratios computed here.",
   "readable": true
@@ -137,9 +137,18 @@
   "chapter": "05",
   "rule": null,
   "width_px": null,
-  "alt": "The ask button, Sign up to speak, on the four surfaces. Newsprint: Fill on Newsprint 2.96:1; Charcoal keyline 13.29:1; Label on fill 4.17:1, 19 px bold. White: Fill on White 4.17:1; Label on fill 4.17:1, 19 px bold. Charcoal: Fill on Charcoal 4.49:1; Label on fill 4.17:1, 19 px bold. Prussian: Fill on Prussian 9.42:1; Label on fill 13.29:1, 19 px bold; Red never sits on Prussian.",
+  "alt": "The ask button, Sign up to speak, on the four surfaces. Newsprint: Fill on Newsprint 2.96 to 1; Charcoal keyline 13.29 to 1; Label on fill 4.17 to 1, 19 px bold. White: Fill on White 4.17 to 1; Label on fill 4.17 to 1, 19 px bold. Charcoal: Fill on Charcoal 4.49 to 1; Label on fill 4.17 to 1, 19 px bold. Prussian: Fill on Prussian 9.42 to 1; Label on fill 13.29 to 1, 19 px bold; Red never sits on Prussian.",
   "illustrative": false,
   "notes": "Ratios computed from tokens.json."
+ },
+ "s-05-opener": {
+  "chapter": "05",
+  "rule": null,
+  "width_px": null,
+  "alt": "The seven colors with their shares across a body of work, largest first: Newsprint, 60 to 85 percent; Charcoal, 10 to 25 percent; Prussian, 5 to 15 percent; Stone, 5 to 15 percent; Pillar Red, 1 to 5 percent; Verdigris, 1 to 5 percent; White, as needed. The palette after Rule 05.1 gives each one’s values and job.",
+  "illustrative": false,
+  "notes": "Chapter 05’s opener (Gate 2 fix pass, call 3, CD-S1): a light version of the palette plate, the swatches and shares only. A readable list; the red swatch is a swatch and does not count (Rule 05.3).",
+  "readable": true
  },
  "s-05-pairs": {
   "chapter": "05",
@@ -180,7 +189,7 @@
   "chapter": "06",
   "rule": "06.1",
   "width_px": null,
-  "alt": "The heading Who decides what happens next? set in Lora Italic above the sentence A regulator or a board approves your rate., so the heading looks like a quotation.",
+  "alt": "Failure case: do not publish. The heading Who decides what happens next? set in Lora Italic above the sentence A regulator or a board approves your rate., so the heading looks like a quotation.",
   "illustrative": false,
   "notes": "A labeled failure: the face does a job that is not its own."
  },
@@ -196,7 +205,7 @@
   "chapter": "06",
   "rule": "06.10",
   "width_px": null,
-  "alt": "The heading Who decides what happens next? set in Arial bold, about the same width, with plainer letters than Inter Tight.",
+  "alt": "Failure case: do not publish. The heading Who decides what happens next? set in Arial bold, about the same width, with plainer letters than Inter Tight.",
   "illustrative": false,
   "notes": "Widths measured at 32 px, the H3 size at 1440 px, on one line."
  },
@@ -213,7 +222,7 @@
   "chapter": "06",
   "rule": "06.2",
   "width_px": null,
-  "alt": "Two columns showing the sentence A regulator or a board approves your rate. as a reader sees it with text set to 200 percent: on the left, set in rem, it has grown to 34 px; on the right, set in px, it is still 17 px.",
+  "alt": "Failure case: do not publish. Two columns showing the sentence A regulator or a board approves your rate. as a reader sees it with text set to 200 percent: on the left, set in rem, it has grown to 34 px; on the right, set in px, it is still 17 px.",
   "illustrative": false,
   "notes": "A depiction: both columns are drawn at the sizes a 200 percent text setting produces, since the guide page itself runs at the reader’s own setting. Exempt from the scale check: 34 px is the body size doubled, off the scale on purpose in a labeled failure.",
   "check_exempt": [
@@ -232,7 +241,7 @@
   "chapter": "06",
   "rule": "06.3",
   "width_px": null,
-  "alt": "A graphic at true size of two labels from our fifth edition: the kicker 06 / Type at 11 px in capitals with wide tracking, and the footer line Oath & Action, Type / 06 at 10 px.",
+  "alt": "Failure case: do not publish. A graphic at true size of two labels from our fifth edition: the kicker 06 / Type at 11 px in capitals with wide tracking, and the footer line Oath & Action, Type / 06 at 10 px.",
   "illustrative": false,
   "notes": "Sizes and tracking from the V5 text census (eyebrow 11 px, 700, 1.43 px tracking; footer 10 px). A historical record in a labeled failure, so its sizes sit off the scale on purpose.",
   "check_exempt": [
@@ -252,7 +261,7 @@
   "chapter": "06",
   "rule": "06.4",
   "width_px": null,
-  "alt": "The heading Tighten tracking only as headings grow. in Inter Tight 800 at 32 px with minus 3 percent tracking. A line below it reads: word space 5.0 px, 4 of 28 letter pairs touch.",
+  "alt": "Failure case: do not publish. The heading Tighten tracking only as headings grow. in Inter Tight 800 at 32 px with minus 3 percent tracking. A line below it reads: word space 5.0 px, 4 of 28 letter pairs touch.",
   "illustrative": false,
   "notes": "Set at 32 px, the H3 ceiling. Word space and touching pairs measured in Chromium with the Google Fonts files the page loads, at this tracking."
  },
@@ -269,7 +278,7 @@
   "chapter": "06",
   "rule": "06.5",
   "width_px": null,
-  "alt": "The same table with proportional figures aligned left and a hyphen for each minus sign, so the columns no longer line up.",
+  "alt": "Failure case: do not publish. The same table with proportional figures aligned left and a hyphen for each minus sign, so the columns no longer line up.",
   "illustrative": false,
   "notes": "A labeled failure: hyphen-minus on purpose."
  },
@@ -285,7 +294,7 @@
   "chapter": "06",
   "rule": "06.6",
   "width_px": null,
-  "alt": "The heading What a primary decides, and who may vote in it in Inter Tight 800, with the single word it alone on its last line.",
+  "alt": "Failure case: do not publish. The heading What a primary decides, and who may vote in it in Inter Tight 800, with the single word it alone on its last line.",
   "illustrative": false,
   "notes": "The heading is our fifth edition’s balanced-heading sample. The widow is set with a line break so it shows at every window width; ordinary wrapping produces the same break at some widths."
  },
@@ -301,7 +310,7 @@
   "chapter": "06",
   "rule": "06.7",
   "width_px": null,
-  "alt": "Our editorial commitment, “Clarity is our duty. Action is our promise.”, set as a pull quote in Lora Italic beside a hairline that marks the text edge, with the opening mark inside the edge, so the first line starts to the right of the second.",
+  "alt": "Failure case: do not publish. Our editorial commitment, “Clarity is our duty. Action is our promise.”, set as a pull quote in Lora Italic beside a hairline that marks the text edge, with the opening mark inside the edge, so the first line starts to the right of the second.",
   "illustrative": false,
   "notes": "The hang is the measured width of the opening mark in Lora Italic."
  },
@@ -317,7 +326,7 @@
   "chapter": "06",
   "rule": "06.8",
   "width_px": 902,
-  "alt": "The same paragraph at 22 px in a column 65ch wide, as our fifth edition set its intros, so the lines run long.",
+  "alt": "Failure case: do not publish. The same paragraph at 22 px in a column 65ch wide, as our fifth edition set its intros, so the lines run long.",
   "illustrative": false,
   "notes": "Width 65ch at 22 px measured at 902 px; shown at true size, so it scrolls inside its frame on narrow screens."
  },
@@ -348,6 +357,15 @@
   "notes": "The fixed-artboard column of Rule 06.2 (D2-254), read from tokens.json and checked against the decision's list.",
   "readable": true
  },
+ "s-06-opener": {
+  "chapter": "06",
+  "rule": null,
+  "width_px": null,
+  "alt": "The three faces, each in its job and named with its weights. Inter Tight 800 sets the heading Who decides what happens next? for titles, headings and big figures. Inter, at 400, 600 and 700, sets the sentence A regulator or a board approves your rate. for body text, the interface, labels, captions, tables and chart text. Lora Italic, at 400 and 500, sets our editorial commitment, “Clarity is our duty. Action is our promise.”, and only the words we quote.",
+  "illustrative": false,
+  "notes": "Chapter 06’s opener (Gate 2 fix pass, call 3, CD-S1): a light version of Rule 06.1’s plate, as live text. The weights are the one set Rule 06.1 gives (CD-M1).",
+  "readable": true
+ },
  "s-07-1-correct": {
   "chapter": "07",
   "rule": "07.1",
@@ -360,24 +378,24 @@
   "chapter": "07",
   "rule": "07.1",
   "width_px": 420,
-  "alt": "The same Illustrative story card with gaps of 22, 13 and 37 px, each marked, none of them a step on the scale.",
+  "alt": "Failure case: do not publish. The same Illustrative story card with gaps of 22, 13 and 37 px, each marked, none of them a step on the scale.",
   "illustrative": true,
   "notes": "Off-scale gaps written in px on purpose."
  },
  "s-07-2-correct": {
   "chapter": "07",
   "rule": "07.2",
-  "width_px": 360,
+  "width_px": 408,
   "alt": "The five column grids drawn at one quarter of true size, each with its columns, gutters and margins: Wide 1440 px, 12 columns of 87.3 px; Desktop 1024 px, 12 columns of 56.7 px; Tablet 768 px, 8 columns of 67.0 px; Phone 390 px, 4 columns of 75.5 px; Small phone 360 px, 4 columns of 70.0 px.",
   "illustrative": false,
-  "notes": "Drawn at one quarter of each width, so the 1440 px grid takes 360 px; the labels under each drawing are at true size. Column widths computed from the grid tokens.",
+  "notes": "Drawn at one quarter of each width, so the 1440 px grid takes 360 px, inside the 24 px inset every plate keeps (Gate 2 fix pass, CD-S6); the labels under each drawing are at true size. Column widths computed from the grid tokens.",
   "scale": 0.25
  },
  "s-07-2-failure": {
   "chapter": "07",
   "rule": "07.2",
   "width_px": 360,
-  "alt": "A page at 1440 px drawn at one quarter size, with three sections on three, five and two columns whose edges never line up.",
+  "alt": "Failure case: do not publish. A page at 1440 px drawn at one quarter size, with three sections on three, five and two columns whose edges never line up.",
   "illustrative": false,
   "notes": "A diagram at one quarter size.",
   "scale": 0.25
@@ -395,7 +413,7 @@
   "chapter": "07",
   "rule": "07.3",
   "width_px": 360,
-  "alt": "The 1440 px grid at one quarter size with a paragraph drawn across all 12 columns, measured at 160 characters a line.",
+  "alt": "Failure case: do not publish. The 1440 px grid at one quarter size with a paragraph drawn across all 12 columns, measured at 160 characters a line.",
   "illustrative": false,
   "notes": "A diagram at one quarter size, measured with chapter 02’s prose at 17 px across 1,312 px.",
   "scale": 0.25
@@ -412,7 +430,7 @@
   "chapter": "07",
   "rule": "07.4",
   "width_px": null,
-  "alt": "A short Illustrative section with the heading How to sign up, its gaps drawn as bands: 24 px above the heading, 24 px below it and 16 px between paragraphs.",
+  "alt": "Failure case: do not publish. A short Illustrative section with the heading How to sign up, its gaps drawn as bands: 24 px above the heading, 24 px below it and 16 px between paragraphs.",
   "illustrative": true,
   "notes": "Gap bands are part of the specimen."
  },
@@ -429,7 +447,7 @@
   "chapter": "07",
   "rule": "07.5",
   "width_px": 533,
-  "alt": "The opening paragraph of chapter 02 at 34 px squeezed into five columns, 533 px wide, as a page with breakpoints in px would set it for a reader at 200 percent text: about 29 characters a line.",
+  "alt": "Failure case: do not publish. The opening paragraph of chapter 02 at 34 px squeezed into five columns, 533 px wide, as a page with breakpoints in px would set it for a reader at 200 percent text: about 29 characters a line.",
   "illustrative": false,
   "notes": "The span a wide layout gives body text, at doubled size. Exempt from the scale check: 34 px is the body size doubled, off the scale on purpose in a labeled failure.",
   "check_exempt": [
@@ -440,7 +458,7 @@
   "chapter": "07",
   "rule": "07.6",
   "width_px": 320,
-  "alt": "A frame 320 px wide holding five contrast pairs as stacked cards: Charcoal on Newsprint, 13.29:1, Default body text; Stone on Newsprint, 4.29:1, Marks and large text only; Newsprint on Charcoal, 13.29:1, Reversed body text; White on Prussian, 13.28:1, Body text in Prussian panels; Pillar Red on Newsprint, 2.96:1, Signature marks; a working mark takes a keyline.",
+  "alt": "A frame 320 px wide holding five contrast pairs as stacked cards: Charcoal on Newsprint, 13.29 to 1, Default body text; Stone on Newsprint, 4.29 to 1, Marks and large text only; Newsprint on Charcoal, 13.29 to 1, Reversed body text; White on Prussian, 13.28 to 1, Body text in Prussian panels; Pillar Red on Newsprint, 2.96 to 1, Signature marks; a working mark takes a keyline.",
   "illustrative": false,
   "notes": "True size at the reflow width."
  },
@@ -448,9 +466,17 @@
   "chapter": "07",
   "rule": "07.6",
   "width_px": 320,
-  "alt": "The same five pairs kept as a three-column table inside a 320 px frame, so the right part of the table, with each pair’s use, is cut off at the frame’s edge.",
+  "alt": "Failure case: do not publish. The same five pairs kept as a three-column table inside a 320 px frame, so the right part of the table, with each pair’s use, is cut off at the frame’s edge.",
   "illustrative": false,
   "notes": "The table is 30 rem wide inside a 320 px frame that hides its overflow, as V5’s contrast table was cut."
+ },
+ "s-07-opener": {
+  "chapter": "07",
+  "rule": null,
+  "width_px": null,
+  "alt": "The five column grids side by side at one eighth of true size, so their widths compare: Wide, 1440 px, 12 columns; Desktop, 1024 px, 12 columns; Tablet, 768 px, 8 columns; Phone, 390 px, 4 columns; Small phone, 360 px, 4 columns. Rule 07.2 draws each one with its gutters and margins.",
+  "illustrative": false,
+  "notes": "Chapter 07’s opener (Gate 2 fix pass, call 3, CD-S1): Rule 07.2’s grid drawing at one eighth size, every frame one height, column widths from the grid tokens."
  },
  "s-07-spans": {
   "chapter": "07",

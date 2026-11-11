@@ -38,8 +38,8 @@ Oath & Action Edition 06, Phase 2, November 11, 2026. Task 3 of `20261111_Gate-2
 
 | ID | Item | Source | License or terms | May ship |
 |---|---|---|---|---|
-| T-INTER | Inter, variable WOFF2, latin and latin-ext subsets, weights 400 to 700, unmodified | Google Fonts (fonts.gstatic.com, v20), fetched November 11, 2026; license text from github.com/google/fonts, ofl/inter/OFL.txt | SIL Open Font License 1.1; Copyright 2020 The Inter Project Authors (https://github.com/rsms/inter); no reserved font name | Yes, embedded in the guide and in the asset package's fonts folder, with OFL.txt beside the files |
-| T-INTERTIGHT | Inter Tight, variable WOFF2, latin and latin-ext subsets, weights 600 to 800, unmodified | Google Fonts (fonts.gstatic.com, v9), fetched November 11, 2026; license text from ofl/intertight/OFL.txt | SIL Open Font License 1.1; Copyright 2022 The Inter Project Authors (https://github.com/rsms/inter-tight); no reserved font name | Yes, as Inter |
+| T-INTER | Inter, variable WOFF2, latin and latin-ext subsets, declared for 400, 600 and 700, unmodified | Google Fonts (fonts.gstatic.com, v20), fetched November 11, 2026; license text from github.com/google/fonts, ofl/inter/OFL.txt | SIL Open Font License 1.1; Copyright 2020 The Inter Project Authors (https://github.com/rsms/inter); no reserved font name | Yes, embedded in the guide and in the asset package's fonts folder, with OFL.txt beside the files |
+| T-INTERTIGHT | Inter Tight, WOFF2 of weight 800 alone (the fix pass's one set; it replaced the variable file first fetched), latin and latin-ext subsets, unmodified | Google Fonts (fonts.gstatic.com, v9), fetched November 11, 2026; license text from ofl/intertight/OFL.txt | SIL Open Font License 1.1; Copyright 2022 The Inter Project Authors (https://github.com/rsms/inter-tight); no reserved font name | Yes, as Inter |
 | T-LORA | Lora Italic, variable WOFF2, latin and latin-ext subsets, weights 400 and 500, unmodified | Google Fonts (fonts.gstatic.com, v37), fetched November 11, 2026; license text from ofl/lora/OFL.txt | SIL Open Font License 1.1; Copyright 2011 The Lora Project Authors (https://github.com/cyrealtype/Lora-Cyrillic), with Reserved Font Name "Lora" | Yes, unmodified only under the name Lora; a changed version may not use the name |
 
 ## The page
@@ -96,12 +96,26 @@ D2-xxx | The editor's edition and colophon words live in work/build/guide/front/
 D2-xxx | The guide check's code harness takes the page's own @font-face block | The pasted copy draws with the same files and asks no server, so the pixel match stays fair
 D2-xxx | The four-width guide check runs with --no-captures | The accessibility lead's evidence holds the board's screenshots; the captures folder would add about 19 MB to the repository
 D2-xxx | Token parity evidence goes to work/boards/phase-2/gate-2/evidence/20261111_Token-Parity-Results.json, written by token_parity_evidence.py | The board builder reads it there, with the page's own copies of both token files checked against them
+D2-xxx | Files drop studio sources and the inventories beside the assets with a build note, and warn only on an entry the build cannot place | The brief asks both that makers leave their files data alone and that strict catches stray entries; a known studio path is dropped, an unknown one fails
+D2-xxx | A folder of assets prints as its own name and its count of files | It ships as a set; its name and count say what a reader will find
+D2-xxx | The guide embeds the single-weight Inter Tight 800 files Google serves for Rule 06.1's link, not the variable file | Chapter 26 now says the guide carries the files a product loads; letters keep their places, edge pixels differ by up to 57 of 255; 73,976 bytes fewer
+D2-xxx | Inter is declared over 400 to 700 in one rule per file | One rule per file keeps each file once; the set's three weights draw as before
+D2-xxx | The newcomer's pillar row ends its Charcoal panel, after the lede | It leads into step 1, the pillars; a row above the route's name would read as a kicker, which Rule 09.4 keeps the row out of
+D2-xxx | The routes' line separates its links with dots hidden from screen readers, each link 24 px tall | Rule 18.5's link in a line of text; the list carries the count to a screen reader
+D2-xxx | The appendix's location line reads "After chapter 26" | "Appendix" now stands in the title's number place
+D2-xxx | Chapter 26's failure bar goes on 26.1, 26.5 and 26.6, and not on 26.2, 26.3, 26.7 and 26.8 | The first three draw a control, a page and a card; the other four draw a method
+D2-xxx | Token release 6.0.0-gate2.9, descriptions only, with a "repeats" record on the error bar that the rule test reads | Rule 26.8 raises the number after the hyphen for any change before 6.0.0; the test must know why the bar takes no keyline
+D2-xxx | The token table's status line keeps two lines of room under 48em | A longer message no longer moves the focused Copy button (AX-4)
+D2-xxx | The guide check's new tests are failureLead and filesShip, run at the first width | One reading of the page answers both
+D2-xxx | The demo chapter's failure captions lead "Fails Rule 01.1." and "Fails Rule 01.2." | The clean demo must pass the guide check's new caption test
 
 
+- **Guide check, four widths (the pre-fix baseline):** `guide_check.js` on the preview of 17:12 (SHA-256 36ee7624…4d48b05), `--no-captures`, 17:15 to about 17:55: **PASS, 0 failures** at 1440, 1024, 390 and 360 px; 185 rules, 480 specimen stages, 1,996 same-page links; axe-core 0 violations at every width; 60 focus stops with rings at 1440 and 390; fitSwitch 77 of 77 at 1x, 2x and 3x; keyPath 140 walks of 37 paths (714 steps) at 1440 and 390; motion 7 of 7; redTouchesPrussian 480 stages, Send pressed in 3 of 3 forms; tokenTable 504 rows; lightOnDark, codeMatch and the rest clean. New at Gate 2: **fontsLocal** 6 of 6 @font-face rules from data URLs and 4 of 4 faces loaded with the network shut, 0 requests, at 1440 and 390; no outside request at any width; **startPage and startFocus** at all four widths: 23 links (20 steps and the routes' line), every stop in reading order with its ring (20 of 20 at 1440, 23 of 23 where the routes' line shows), all 20 steps opened and all 20 ways back returned to their step. Results: `work/boards/phase-2/gate-2/20261111_Gate-2-Preview-Guide-Check-Results.json`.
+- **Guide check self-test:** the first run stopped on a fault in my own plant (a step given an empty id made the audit build a bad selector). The audit now finds steps by position and flags a step with no id; the self-test reruns with the fix pass's changes.
 
 ## Calls for the main session
 
-1. **Chapter 26 says the guide loads Google Fonts.** Rule 26.5's For builders line reads "The fonts link this guide uses: <the Google Fonts URL>." In the preview it is no longer true: the guide carries its fonts. The brief keeps chapters unchanged in the preview, so it stands for now. Proposed for the fix pass (owner: engineer; the words are in `stage_c_ch26_build.py`, line 762, then `26-tokens.json`), with the editor's sign-off: "The fonts link for a product page: <URL>." Rule 26.5's own words (a product links the fonts) stay true.
+1. **Chapter 26 says the guide loads Google Fonts.** (Done in the fix pass, CD-M1; kept here as the record.) Rule 26.5's For builders line reads "The fonts link this guide uses: <the Google Fonts URL>." In the preview it is no longer true: the guide carries its fonts. The brief keeps chapters unchanged in the preview, so it stands for now. Proposed for the fix pass (owner: engineer; the words are in `stage_c_ch26_build.py`, line 762, then `26-tokens.json`), with the editor's sign-off: "The fonts link for a product page: <URL>." Rule 26.5's own words (a product links the fonts) stay true.
 2. **Rights ledger.** Enter T-INTER, T-INTERTIGHT and T-LORA from the table above.
 3. **"Gate 2" on the page.** The editor's "Preview for approval" stands; the guide check's codes test would fail "Gate" in reader text. To name the gate, change `cover_folio`, `edition` and `description` in `work/build/guide/front/edition.json` and allow it in the codes test.
 4. **Republish as version 8** from `work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html` (DR-225), after the guide check below.
@@ -140,3 +154,71 @@ Started November 11, 2026, under `20261111_Gate-2-Fix-Brief.md`. Build only to `
 - The six openers in the page today weigh 2,331 to 8,531 bytes (s-09 8,531; s-10 4,333; s-17 5,768; s-18 5,194; s-19 2,396; s-26 2,331).
 - The build's self-test: the opener scenario now places chapter 03's opener and catches a 17 KB one in chapter 04; 27 of 27 scenarios, 295 of 295 expectations.
 - A scratch build with no other change: 0 warnings, 9,441,768 bytes, the preview's own size.
+
+### DT-M1 (call 1): Files print only what ships
+
+- `guide_build.py` (`ship_files`): an asset under `work/build/assets/` prints by its file name alone, a folder by its own name and its count of files; `tokens.css` and `tokens.json` print as links to Rule 26.8, "downloaded under Rule 26.8". Studio sources (boards, handoffs, extract, research, ledger, build scripts and tests, the token source) and the inventories, manifests and QA records beside the assets drop out, each with a build note; a list left empty goes, and the chapter's Specifications closer goes with it when nothing else is in it. D2-252's note stays only under a list that holds an asset with no download yet. A `files` entry the build cannot place, or an asset path that does not exist, is a strict warning. Makers' data is unchanged.
+- On the scratch page: 43 lists, 149 items, no path; 21 entries left out with notes.
+- Guide check: new test `filesShip` (no Files item names a studio path or a script), with a plant.
+
+### CD-M1 (call 6): one font weight set
+
+- `fonts_fetch.py` now asks Google for Rule 06.1's set, the link a product loads: `Inter:wght@400;600;700`, `Inter+Tight:wght@800`, `Lora:ital,wght@1,400;1,500`. **Google serves the same Inter and Lora files, byte for byte, but a different Inter Tight file for 800 alone**: a single-weight file, 22,696 and 38,000 bytes, in place of the variable file (44,872 and 89,800). The brief's "the bytes do not change" holds for two of the three families. The guide now embeds the files the product link serves, so chapter 26's words ("This guide carries the same files") are exact; the six files weigh 255,920 bytes, 73,976 fewer.
+- Drawn against the variable file on the same page, Inter Tight at 800 from its own file sets every letter in the same place and size; edge pixels differ by up to 57 of 255 (antialiasing), in 7 of 19 elements compared. Pictures: the scratch folder's `tag-compare.png`.
+- The shell's declarations: Inter 400 to 700 (one rule per file over the set's span), Inter Tight 800, Lora Italic 400 to 500. Each file goes in once.
+- Chapter 26 (`stage_c_ch26_build.py`): `FONTS` is the one-set link, so both of Rule 26.5's plates carry it; the For builders line reads "A product loads the three faces with this link (Rule 06.10): <link>. This guide carries the same files inside the page, unchanged, so it loads no type from elsewhere; its colophon holds their licenses."; the Fonts row names the set and says the guide carries the files. The colophon's Type row already said so (the editor's words). Rules 06.1 and 06.10 are the systems designer's.
+
+### CD-A1 to A5 (call 7): the front pages
+
+- **A1, steps.** The line that says where a step leads is the link's underlined words, in the UI style; the step's sentence is plain ink; the whole row stays the link and its target, 44 px at least. Underlined lines on the page: 20, from 64.
+- **A1, route heads** sit on the Charcoal panel, Charcoal's inks, equal in height at 1440 px through the subgrid; on phones the panel runs to the page's edges as a part opener's does; from 48em to 90em the panel stays in view beside its steps.
+- **A1, pillar row.** The newcomer's panel ends on the 24 px pillar row, drawn as chapter 09's `s-09-1-correct` draws it on Charcoal: sprite `<use>` of the 24 px fit at 1x and the master from 2x, the same side bearings, words in body text 8 px from the ink, arrows hidden from screen readers, one color. In the 1440 px column it breaks after Track, two to a line, as Rule 09.1 sets for a narrow column. For the identity designer's check.
+- **A1, sign-off.** The colophon closes with Rule 08.2's footer: the 24 px lockmark from `20261109_Lockmark-24px-Master-Outline.svg`, 12 px, then "A country that answers to its people." in body small, Newsprint on Charcoal, the lever in signature red (marked `data-red="signature"`), under a hairline at the colophon's left edge; in forced colors the mark takes one system color. For the identity designer's check.
+- **A2.** The routes' line is a line of underlined links in body text, separated by dots hidden from screen readers, each 24 px tall at least.
+- **A3.** License paragraphs fill their measure (the colophon's balanced wrapping read as the file's line ends); the stack's own bottom rule is gone.
+- **A4.** The date joins month, day and year with no-break spaces, on the cover and in the Edition row.
+- **A5.** The Built row reads "November 11, 2026 at 17:45 UTC".
+
+### CD-S4 (shell part): the proofs in the opener form
+
+- The appendix head is a chapter head: "After chapter 26" as its location line, then "Appendix" in the number's place and "Identity proofs" at the section size. The rail and the phone menu list its five proofs under "Identity proofs", each a link to its group.
+
+### Chapter 26: CD-S2, CD-S3, CD-S11
+
+- **CD-S3.** Three titles past fifteen words now read: 26.1 "Read every value through a token named for its job." (its first sentence now says the name gives the job and the surface); 26.3 "Choose a token in five steps, starting from its surface." (its first sentence lists the five steps); 26.4 "Work through the five steps on four common parts." No other words quoted the old titles. Rule numbers unchanged. For the editor's read.
+- **CD-S2.** Every failure caption already led "Fails Rule 26.N." (two lead "Fails Rules 26.4 and 05.3."). The bar now goes on 26.1 (a control), 26.5 (a page) and 26.6 (a card), as on 26.4's four; its words take `--oa-color-text-primary-on-charcoal`. Left without the bar, since each draws a method, not a piece: 26.2 (a token's record against the five conditions), 26.3 (the five steps with one skipped), 26.7 (a typed value beside its token's swatch), 26.8 (a release record and its effect).
+- **CD-S11.** "; design judgment" in lower case in four bases.
+
+### The shell: DT-S1, AX-3, AX-5
+
+- **DT-S1.** Quiet buttons (`.btn--quiet`), the menu button and the token table's 504 Copy buttons draw a 1 px border that thickens to 2 px on hover, padding giving back the pixel, as chapter 18's Copy button does; no inset shadow remains on a control. The current part in the masthead is bold with its 2 px underline (Rule 17.10); the rail's and the menu's current links are bold on the selected band with the 4 px bar; "In this chapter" marks its current rule with the band, the bar and bold words (Rule 18.7). Scroll frames take the focus ring's color and width inside, with the 2 px gap, offset minus 4 px (Rule 18.11).
+- **AX-3.** `main` takes the masthead's scroll margin, so "Skip to main content" lands with the cover's folio in view.
+- **AX-5.** `scroll-padding-bottom: 8px` on the root keeps a ring brought in from below whole.
+
+### Tokens 6.0.0-gate2.9 (call 11): DT-S5, DT-S6, AX-1, AX-2
+
+- Descriptions only; no token renamed, no value changed (tokens.css differs from 6.0.0-gate2.8 in its two header lines). The change note: "Descriptions only; no token is renamed and no value changes. The error bar no longer records a Charcoal keyline: it repeats the error mark and the word "Error:", which carry the error, so it takes none, as the guide draws it. The selected band is the ground of the current or selected row in a list, paired with the 4 px bar and bold words, and says which marks may sit inside it in the dark theme. The 24 px icon size names the 37 topic and atlas symbols on Rule 10.4's list. The ask fill says it is Newsprint on Prussian."
+- **AX-1.** `oa.color.state.error.bar` (and its alias `error.mark`) drop `keyline` and `keylineContrast`; the description says the bar repeats the mark and "Error:", so it takes no keyline (Rule 05.5). The token rule test now knows a graphic that `repeats` a state carried by mark and words: 3 to 1 and the red keyline do not bind it, and its description (or, for an alias, its replacement's) must say so.
+- **DT-S5, AX-2.** `oa.color.state.selected.band`: "Ground of the current or selected row in a list. Pair it with the 4 px bar and bold words (Rule 17.10). The band holds its words, the bar and a check. On Charcoal it is Prussian, so a success mark inside it takes Newsprint, and an error or an ask sits outside it, since red never sits on Prussian (Rule 05.3)."
+- **DT-S6.** `oa.size.icon.medium` names "the 37 topic and atlas symbols on Rule 10.4's list"; `oa.color.action.ask.fill` adds "On Prussian it is Newsprint, since red never sits on Prussian (Rule 05.3)."
+
+### The token table: DT-S11, AX-4
+
+- **DT-S11.** Every ratio prints with two decimals and "to 1": "3.10 to 1 on Charcoal", "needs 3.00 to 1". Chapters 05 and 07's plates are the systems designer's.
+- **AX-4.** Under 48em the status line keeps room for two lines, so "Copied --oa-color-text-secondary-on-newsprint." no longer pushes the focused Copy button down.
+
+### Checks run in the fix pass
+
+- `guide_build.py --strict --out <scratch>/guide.html`: 0 warnings; 9,361,185 bytes with other owners' work so far (the preview was 9,441,768); fonts 255,920 bytes in six files.
+- `guide_build.py --self-test`: 27 of 27 scenarios, 295 of 295 expectations.
+- Token tests: all six steps pass at 6.0.0-gate2.9 (parity 0 failures; rules 0 failures; 44 of 44 plants; Style Dictionary 0 disagreements; rendered 0 failures). `stage_c_ch26_build.py --check` 33 of 33 current; `token_table_build.py --check` current.
+- `fonts_fetch.py --check` and `--page` on the scratch page: 9 of 9 files; 6 data URLs matched by SHA-256.
+- fontsLocal and the start audits on the scratch page at 1440 and 390 px: 6 of 6 rules from data URLs, 4 of 4 faces loaded with the network shut; 20 of 20 and 23 of 23 stops in order with rings; 20 steps opened and returned at each width.
+- On the scratch page, the two new tests: 188 failure plates, chapter 26's all leading "Fails Rule"; 47 in chapters 03 to 09 and 12 do not yet (their owners' items); no Files item names a studio path.
+
+### For the main session after the fix pass
+
+- **The rebuild.** When every owner is done: `python3 -I work/build/scripts/phase-2/guide_build.py --strict` writes the preview (the default output). Then rerun `python3 -I work/build/tests/tokens/token_parity_evidence.py` so the board's parity file names 6.0.0-gate2.9 and the new page; and `node tests/guide/font_fidelity_check.js` from `work/build` only against a page with the same chapters, since its version 7 comparison now differs by chapter edits as well as by the new Inter Tight file. The evidence files written before the fix pass describe the preview of 17:12.
+- **The full guide check** will fail `failureLead` until the owners' captions in chapters 03 to 09 and 12 lead "Fails Rule NN.N." (47 plates on my last scratch build).
+- **For the identity designer's check (call 7):** the newcomer's pillar row (at 1440 px it breaks after Track, two to a line; in the 1024 px panel, about 170 px wide, it falls one pillar to a line with each arrow at its line's end; chapter 09 draws no narrow form of the 24 px row, so I left the wrap as the row's own flex wrap) and the colophon's sign-off, in the shell (`guide-shell.css`, classes `prow` and `colophon-sign`) and `guide_build.py` (`pillar_row_24`, `sign_off`). Pictures: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/762f3743-f9b3-59db-919e-2c641afbd759/scratchpad/gate-2-fix/engineer/shots/`.
+- **For the editor's read:** chapter 26's three titles and two first sentences, its For builders line and Fonts row; no new words on the front pages.

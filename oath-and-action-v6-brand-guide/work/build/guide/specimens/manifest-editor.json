@@ -71,7 +71,7 @@
   "chapter": "01",
   "rule": "01.2",
   "width_px": null,
-  "alt": "Failure case: do not publish. The same chart with the Democrats' bar in Prussian blue and the Republicans' bar in Pillar Red, unlabeled, with a color key above.",
+  "alt": "Failure case: do not publish. The same chart with the Democrats' bar in Prussian and the Republicans' bar in Pillar Red, unlabeled, with a color key above.",
   "illustrative": false,
   "notes": "",
   "check_exempt": [
@@ -91,7 +91,7 @@
   "chapter": "01",
   "rule": "01.3",
   "width_px": null,
-  "alt": "Failure case: do not publish. The same key running from Pillar Red through Newsprint to Prussian blue, with no arrows.",
+  "alt": "Failure case: do not publish. The same key running from Pillar Red through Newsprint to Prussian, with no arrows.",
   "illustrative": false,
   "notes": "",
   "check_exempt": [
@@ -112,7 +112,7 @@
   "chapter": "01",
   "rule": "01.4",
   "width_px": 360,
-  "alt": "The same panel with the wordmark's ampersand in Pillar Red on Prussian.",
+  "alt": "Failure case: do not publish. The same panel with the wordmark's ampersand in Pillar Red on Prussian.",
   "illustrative": true,
   "notes": "",
   "surface": "prussian",
@@ -133,7 +133,7 @@
   "chapter": "01",
   "rule": "01.5",
   "width_px": null,
-  "alt": "Failure case: do not publish. The same tile map colored by the 2024 presidential winner, 31 tiles in Pillar Red and 20 in Prussian blue. Source: Federal Election Commission, Official 2024 Presidential General Election Results, compiled from state election offices, November 2024, 50 states and DC. Retrieved November 6, 2026.",
+  "alt": "Failure case: do not publish. The same tile map colored by the 2024 presidential winner, 31 tiles in Pillar Red and 20 in Prussian. Source: Federal Election Commission, Official 2024 Presidential General Election Results, compiled from state election offices, November 2024, 50 states and DC. Retrieved November 6, 2026.",
   "illustrative": false,
   "notes": "",
   "check_exempt": [
@@ -281,7 +281,7 @@
   "chapter": "01",
   "rule": "01.13",
   "width_px": null,
-  "alt": "An illustrative line: Politicians raised your electric bill again.",
+  "alt": "Failure case: do not publish. An illustrative line: Politicians raised your electric bill again.",
   "illustrative": true,
   "notes": ""
  },
@@ -297,7 +297,7 @@
   "chapter": "01",
   "rule": "01.14",
   "width_px": null,
-  "alt": "A headline question quoted from our brand guide's fifth edition, chapter 13: Who wrote the rule you are angry about?",
+  "alt": "Failure case: do not publish. A headline question quoted from our brand guide's fifth edition, chapter 13: Who wrote the rule you are angry about?",
   "illustrative": false,
   "notes": ""
  },
@@ -313,7 +313,7 @@
   "chapter": "01",
   "rule": "01.15",
   "width_px": null,
-  "alt": "Our fifth edition's series name, Dispatch from the Front, in the kicker over an illustrative headline: The battle over overtime heads to the senate floor.",
+  "alt": "Failure case: do not publish. Our fifth edition's series name, Dispatch from the Front, in the kicker over an illustrative headline: The battle over overtime heads to the senate floor.",
   "illustrative": false,
   "notes": ""
  },
@@ -329,7 +329,7 @@
   "chapter": "01",
   "rule": "01.16",
   "width_px": null,
-  "alt": "The first reading set in full under the label What the research shows, and the second cut to three words in small gray type: Some critics disagree.",
+  "alt": "Failure case: do not publish. The first reading set in full under the label What the research shows, and the second cut to three words in small gray type: Some critics disagree.",
   "illustrative": false,
   "notes": ""
  },
@@ -345,7 +345,7 @@
   "chapter": "01",
   "rule": "01.17",
   "width_px": null,
-  "alt": "An illustrative line: The filibuster lets a minority of senators hold the country hostage.",
+  "alt": "Failure case: do not publish. An illustrative line: The filibuster lets a minority of senators hold the country hostage.",
   "illustrative": true,
   "notes": ""
  },
@@ -413,7 +413,7 @@
   "chapter": "01",
   "rule": "01.21",
   "width_px": null,
-  "alt": "Four kickers that break the rule. Explain, a pillar name alone. Must read and Breaking above an illustrative position headline, with no label. Field Notes, then Guide, then Street repairs: the series first, the label second and three parts. The same Analysis kicker with the Explain pillar icon before its label, in place of the atlas symbol for workers’ share of income.",
+  "alt": "Failure case: do not publish. Four kickers that break the rule. Explain, a pillar name alone. Must read and Breaking above an illustrative position headline, with no label. Field Notes, then Guide, then Street repairs: the series first, the label second and three parts. The same Analysis kicker with the Explain pillar icon before its label, in place of the atlas symbol for workers’ share of income.",
   "illustrative": false,
   "notes": ""
  },
@@ -462,7 +462,7 @@
   "chapter": "01",
   "rule": "01.24",
   "width_px": null,
-  "alt": "Three names that break the rule. Rent & Reform Tracker, labeled Illustrative, with an ampersand. The Senator Scorecard, labeled Illustrative, which grades officials. Dispatch from the Front, our fifth edition's series name, a war metaphor.",
+  "alt": "Failure case: do not publish. Three names that break the rule. Rent & Reform Tracker, labeled Illustrative, with an ampersand. The Senator Scorecard, labeled Illustrative, which grades officials. Dispatch from the Front, our fifth edition's series name, a war metaphor.",
   "illustrative": false,
   "notes": "",
   "readable": true
@@ -486,6 +486,15 @@
   "notes": "Locked lines from Master Brief section 3. Voice line B (G1-01). Supporting and founding line roles (G1-01, S5). The six retired lines are DR-77's four and DR-122's two, shown only as a labeled record. DR-122's two survive in the V5 text census only as their first 50 characters, so the record quotes each to the end of its last whole sentence, with an ellipsis, and says it is kept in part. CP-S9: colophon explained at first use. The pillars row names the pillar row of DR-111 in place of the grid's corners, which DR-110 retires.",
   "readable": true,
   "label": "The brand lines"
+ },
+ "s-02-opener": {
+  "chapter": "02",
+  "rule": null,
+  "width_px": null,
+  "alt": "Our four locked lines and the order of the pillars, word for word. Tagline: A country that answers to its people. Mission: Help people understand and improve the rules that shape their lives. Reader promise: We explain how a decision is made and give you a practical way to take part. Editorial commitment: Clarity is our duty. Action is our promise. Pillars, in order: Explain, Track, Connect, Act.",
+  "illustrative": false,
+  "notes": "Gate 2 fix pass, CD-S1: chapter 02's opener, the brand lines as live text. The locked lines from Master Brief section 3, set in Lora Italic at the quote style with the hung opening mark of Rule 06.7; the pillars in the intro style at 600 with arrows hidden from screen readers, as the cover sets them.",
+  "readable": true
  },
  "s-02-about": {
   "chapter": "02",
@@ -940,7 +949,7 @@
   "chapter": "02",
   "rule": "02.26",
   "width_px": null,
-  "alt": "An illustrative sentence: Stakeholders must leverage this unprecedented moment to empower communities and fix a broken system.",
+  "alt": "Failure case: do not publish. An illustrative sentence: Stakeholders must leverage this unprecedented moment to empower communities and fix a broken system.",
   "illustrative": true,
   "notes": ""
  },

@@ -17,6 +17,7 @@ Promotion, November 10, 2026: L6 draws its wordmark and tagline centered on the 
 master that carries the rebuilt 48 px lockmark, and the minimum form draws the rebuilt 24 px master (DR-181)."""
 import json
 import re
+import stage_a_identity_lib as LIB
 from stage_a_identity_lib import (E, ID_DIR, WM, WMC, L2, L3, L8, LOCK, AMP, BADGE, HINGE, TL1, TL2A, TL2B, fragment, mark, s1, s1_width,
                                   wordmark, lockmark, amp, illus, head_label, tag, svg_file, mark_style, ink, ink2, hair, pal,
                                   tv, sig, ty, curl)
@@ -188,7 +189,7 @@ def s_03_1_correct():
         lines.append(f'<text x="{bx0 - 12:.1f}" y="{y + 4.5:.1f}" text-anchor="end" font-size="13" fill="{a}">{name}</text>')
     xb = ox - 16
     lines.append(f'<line x1="{xb:.1f}" x2="{xb:.1f}" y1="{oy + 4 * k:.1f}" y2="{oy + 104 * k:.1f}" stroke="{a}" stroke-width="1.5"/>')
-    lines.append(f'<text x="{xb - 6:.1f}" y="{oy + 54 * k + 5:.1f}" text-anchor="end" font-size="15" font-style="italic" font-weight="700" fill="{a}">x</text>')
+    lines.append(f'<text x="{xb - 6:.1f}" y="{oy + 54 * k + 5:.1f}" text-anchor="end" font-size="15" font-weight="400" fill="{a}">x</text>')
     lines.append(f'<line x1="{ox + W / 2:.1f}" x2="{ox + W / 2:.1f}" y1="{by0:.1f}" y2="{oy + ink_top:.1f}" stroke="{a}" stroke-width="1"/>')
     lines.append(f'<text x="{ox + W / 2 + 6:.1f}" y="{by0 + pad / 2 + 5:.1f}" font-size="13" fill="{a}">1.0x clear space</text>')
     for u in (360.07, 369.4, 462.69, 469.68):
@@ -278,8 +279,18 @@ LOCK_CSS = (".oai-lockgrid{display:grid;grid-template-columns:minmax(0,1fr) minm
             ".oai-lk-job{font-size:15px;color:var(--oa-color-text-secondary-on-newsprint)}")
 
 
+# Gate 2's fix pass (CD-S1): the plate carries each master once with an id, and chapter 03's opener draws the same
+# masters by <use> (stage_a_identity_lib.SHARE and REF), so the page holds each drawing once.
 @spec
 def s_03_lockups():
+    LIB.SHARE[0], LIB.SHARE[1] = "s-03-lockups", set()
+    try:
+        return _lockups()
+    finally:
+        LIB.SHARE[0] = None
+
+
+def _lockups():
     parts = [
         _lock_item("L1", "Wordmark", "Most uses: page heads, documents, slides and signs.", wordmark(32, label="Oath & Action, L1 wordmark")),
         _lock_item("L8", "Monogram", "Squares where the name must show, such as a tile in a partner's directory. Never an avatar or a favicon.", mark(L8["today"], w=120, label="Oath & Action, L8 monogram")),
@@ -317,6 +328,45 @@ def s_03_l6():
                      "baseline has its middle on the strip's middle, as the identity designer's stage B proposal drew it. The strip, "
                      "the lockmark and every size stay as they were: the lockmark keeps L6's proportion, 93.5 px at 884 px, from the "
                      "display master. No web address until it is settled (DR-55).")
+
+
+# ------------------------------------------------------------------------------------------- the opener
+# Gate 2's fix pass (CD-S1, the creative director's list: "03 the eight lockups"). The lockups at the sizes Rule 03.2's
+# plate sets them, built by the same functions and drawn by <use> of the masters that plate carries, so the opener adds
+# about 6 KB and no drawing. Each fits a phone's column but L5, whose 388 px minimum is wider than it, so L5 shows from
+# 48em. L6, at 884 px, keeps its own plate. Two to a row from 48em, one under 48em.
+OPENER_CSS = (".oai-op3{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 32px;align-items:end}"
+              ".oai-op3-c{display:flex;flex-direction:column;gap:10px;align-items:flex-start}"
+              ".oai-op3-c--wide{grid-column:1/-1}"
+              "@media (max-width:47.99em){.oai-op3{grid-template-columns:minmax(0,1fr);gap:24px}.oai-op3-c--wide{display:none}}")
+
+
+@spec
+def s_03_opener():
+    LIB.REF[0] = "s-03-lockups"
+    try:
+        cells = [("L1", "Wordmark", wordmark(32, decorative=True)),
+                 ("L8", "Monogram", mark(L8["today"], w=120, decorative=True)),
+                 ("S1", "Stacked", s1(40, decorative=True)),
+                 ("L4", "Monogram and tagline", l4(304)),
+                 ("L3", "Horizontal with the lockmark", l3_small(24)),
+                 ("L7", "Section masthead", l7(l7_width(17, "TRACK"), "TRACK")),
+                 ("L5", "Wordmark and tagline", l5(400))]
+    finally:
+        LIB.REF[0] = None
+    body = ('<div class="oai-pad oai-s-newsprint"><div class="oai-op3">'
+            + "".join(f'<div class="oai-op3-c{" oai-op3-c--wide" if code == "L5" else ""}">{m}<p class="oai-tag">{code} {E(name)}</p></div>'
+                      for code, name, m in cells)
+            + '</div></div>')
+    alt = ("The lockups at true size on Newsprint, each with its name, two to a row: L1, the wordmark, beside L8, the O & A "
+           "monogram; S1, OATH & over ACTION on two flush-left lines, beside L4, the monogram, a hairline and the tagline; L3, "
+           "the wordmark with the lockmark at its right, beside L7, the wordmark, a hairline and the word TRACK. On screens "
+           "48em wide and up, L5 follows across both columns: the wordmark over the tagline.")
+    return rec("s-03-opener", None, None, alt, body, css=OPENER_CSS,
+               notes="Gate 2's fix pass, CD-S1: chapter 03's opener. Each mark is an <svg> holding one <use> of the master "
+                     "s-03-lockups carries with an id (stage_a_identity_lib.SHARE and REF), at the size that plate sets, from "
+                     "the same lockup functions, so the opener draws no master of its own. L5 shows from 48em, since its 388 px "
+                     "minimum is wider than a phone's column; L6 keeps its own plate, s-03-l6.")
 
 
 # ------------------------------------------------------------------------------------------- 03.3

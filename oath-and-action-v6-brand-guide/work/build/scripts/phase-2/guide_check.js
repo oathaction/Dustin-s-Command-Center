@@ -112,6 +112,9 @@
 //                      focus to that step (D2-1698)
 //   startFocus         from the page's heading, Tab visits every control of the page once, in reading order (the routes'
 //                      line where it shows, then each route's steps in order), each with a 2 px ring, in view
+// Added in Gate 2's fix pass (November 11, 2026):
+//   failureLead        every failure plate's caption leads with "Fails Rule NN.N." (or "Fails Rules ...") in bold (CD-S2)
+//   filesShip          no Files list names a studio path or a script: only file names that ship (DT-M1)
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -2007,6 +2010,22 @@ async function checkPage(browser, file, widths, opts = {}) {
       }).filter((x) => x.why.length));
       for (const b of a.builderBlocks) failsSwitch.push({ key: 'builderBlock', msg: `${width}: ${b.closer}: ${b.why.join('; ')} (call 6 of round 2, PP-M1, PP-M2)` });
     }
+    // Gate 2 fix pass (CD-S2, DT-M1): every failure plate's caption leads "Fails Rule NN.N." in bold, and no Files list
+    // names a studio path
+    if (width === widths[0]) {
+      a.fixPass = await page.evaluate(() => {
+        const caps = [...document.querySelectorAll('figure.plate--failure')].map((f) => {
+          const c = f.querySelector(':scope > .plate-cap'); const sid = (f.querySelector('[data-specimen]') || {}).getAttribute ? f.querySelector('[data-specimen]').getAttribute('data-specimen') : f.id;
+          const lead = c ? c.querySelector(':scope > strong:first-child, :scope > b:first-child') : null;
+          const ok = !!(c && lead && /^Fails Rules? \d{2}\.\d{1,2}\b/.test(lead.textContent.trim()) && c.textContent.trim().startsWith(lead.textContent.trim()));
+          return { sid, ok, text: c ? c.textContent.trim().slice(0, 60) : '(no caption)' };
+        });
+        const files = [...document.querySelectorAll('.file-list li')].map((li) => li.textContent.replace(/\s+/g, ' ').trim()).filter((t) => /(?:^|[\s(])(?:work|brief|source|deliverables)\/|\.(?:py|mjs|js|md)\b/.test(t));
+        return { failurePlates: caps.length, badCaps: caps.filter((x) => !x.ok), fileItems: document.querySelectorAll('.file-list li').length, studioFiles: files };
+      });
+      for (const c of a.fixPass.badCaps) failsSwitch.push({ key: 'failureLead', msg: `${width}: the failure plate ${c.sid}'s caption does not lead with "Fails Rule NN.N." in bold: "${c.text}" (CD-S2)` });
+      for (const f of a.fixPass.studioFiles) failsSwitch.push({ key: 'filesShip', msg: `${width}: a Files list names a studio path: "${f.slice(0, 90)}" (DT-M1)` });
+    }
     // round 1: chapter 26's table against tokens.json, once
     if (width === widths[0]) {
       a.tokenTable = await tokenTable(page);
@@ -2219,7 +2238,9 @@ async function startAudit(browser, file, width, opts = {}) {
       }
       if (a.closest('[data-later]')) out.why.push(`the later step "${a.closest('[data-later]').textContent.trim().slice(0, 40)}" holds a link`);
       const r = a.getBoundingClientRect(), cs = getComputedStyle(a);
-      if (cs.display !== 'none' && r.width > 0 && (r.height < 44 - 0.5 || r.width < 24)) out.why.push(`the link "${a.textContent.trim().slice(0, 40)}" is ${Math.round(r.width)} by ${Math.round(r.height)} px; a target stands 44 px tall`);
+      // a step is a row 44 px tall at least; a link in the routes' line of text holds Rule 18.5's 24 px (fix pass, CD-A2)
+      const minH = a.classList.contains('step-go') ? 44 : 24;
+      if (cs.display !== 'none' && r.width > 0 && (r.height < minH - 0.5 || r.width < 24)) out.why.push(`the link "${a.textContent.trim().slice(0, 40)}" is ${Math.round(r.width)} by ${Math.round(r.height)} px; it stands ${minH} px tall at least`);
     }
     for (const li of st.querySelectorAll('[data-later]')) if (li.querySelector('a, button, [tabindex]:not([tabindex="-1"])')) out.why.push('a later step holds a control');
     return out;
@@ -2624,6 +2645,11 @@ const PLANTS = [
   { key: 'startPage', fault: 'a step whose way back cannot find it: its id taken off (D2-1698)', js: () => { document.querySelectorAll('#start .route-step')[1].removeAttribute('id'); } },
   { key: 'startFocus', fault: 'a step link pulled out of reading order with tabindex="1"', js: () => { document.querySelectorAll('#start a.step-go')[2].setAttribute('tabindex', '1'); } },
   { key: 'startFocus', fault: 'a step link with its focus ring taken away', js: () => { const st = document.createElement('style'); st.textContent = '#start a.step-go:focus-visible { outline: none !important }'; document.head.append(st); } },
+  // Gate 2 fix pass (November 11, 2026)
+  { key: 'failureLead', fault: 'a failure caption that leads with its description, not "Fails Rule NN.N." (CD-S2)', js: () => {
+    const c = document.querySelector('figure.plate--failure > .plate-cap'); c.innerHTML = 'The same notice with its words in Stone. ' + c.textContent; } },
+  { key: 'filesShip', fault: 'a Files list that names a studio handoff (DT-M1)', js: () => {
+    document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p class="label">Files</p><ul class="file-list"><li><code>work/handoffs/phase-2/20261106_Voice-Writing-Rules.md</code></li></ul>'); } },
 ];
 
 async function selfTest() {

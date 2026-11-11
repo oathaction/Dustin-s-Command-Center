@@ -1962,8 +1962,9 @@ def proofs_section(chap_dir, specs, ctx):
     ctx["appendix_title"] = title
     last = ctx["order"][-1]
     out = [f'<section class="appendix" id="proofs" data-track="appendix" data-part="appendix" data-label="Appendix: {plain(title)}">',
-           f'<div class="ch-head"><p class="loc-line">Appendix <span aria-hidden="true">·</span> After chapter {last}</p>',
-           f'<h2 id="proofs-h" class="ch-title ch-title--appendix">{plain(title)}</h2><p class="return" hidden></p>',
+           f'<div class="ch-head"><p class="loc-line">After chapter {last}</p>',   # CD-S4: "Appendix" now stands in the title's number place
+           # CD-S4 (Gate 2 fix pass): the chapter opener form, "Appendix" in the number's place, the title at the section size
+           f'<h2 id="proofs-h" class="ch-title"><span class="n">Appendix</span> <span class="t">{plain(title)}</span></h2><p class="return" hidden></p>',
            f'<p class="instr">{inline(conf.get("instruction") or APPENDIX_LINE, ctx)}</p>',
            paras(conf.get("intro"), ctx, "intro"), "</div><div class=\"ch-body\">"]
     groups = conf.get("groups")
@@ -2065,6 +2066,34 @@ def no_links(s):
 
 DEST = "<!--oa-dest {}-->"
 
+# Gate 2 fix pass (call 7, CD-A1): the 24 px pillar row of Rule 09.1, as s-09-1-correct draws it on Charcoal: each icon
+# beside its word, in order, one color, the 24 px fit at 1x and the master from 2x (Rule 09.3), the side bearings that
+# set each word 8 px from its icon's ink, and the arrows hidden from screen readers
+PILLAR_ROW = (("CL-019", "Explain", "0 -3px 0 -2px"), ("CL-020", "Track", "0 -1px 0 -2px"), ("CL-021", "Connect", "0 -2px 0 -2px"),
+              ("CL-022", "Act", "0 -3px 0 -1px"))
+
+
+def pillar_row_24(surface="charcoal"):
+    items = "".join(
+        f'<li class="prow-pi"><svg viewBox="0 0 24 24" width="24" height="24" class="prow-ic" aria-hidden="true" focusable="false" data-icon="{cid}" '
+        f'data-icon-family="pillar" style="color:var(--oa-component-icon-ink-on-{surface});margin:{m}"><use class="oa-at-1x" href="#oa-sym-{cid.lower()}-24px"/>'
+        f'<use class="oa-at-2x" href="#oa-sym-{cid.lower()}"/></svg><span class="prow-w">{w}</span></li>' for cid, w, m in PILLAR_ROW)
+    return f'<ol class="prow" aria-label="The four pillars, in order">{items}</ol>'
+
+
+# Gate 2 fix pass (call 7, CD-A1): the colophon closes with the footer sign-off of Rule 08.2, the lockmark at 24 px from its
+# 24 px master, 12 px of space and the tagline, on one line at the left edge, in Newsprint on Charcoal, the lever in
+# signature red
+LOCKMARK_24 = ASSETS / "identity/lockmark/20261109_Lockmark-24px-Master-Outline.svg"
+
+
+def sign_off():
+    mark = svg_inline(LOCKMARK_24, cls="sign-mark", width=24, height=24,
+                      style="color:var(--oa-color-text-primary-on-charcoal);--amp:var(--oa-color-identity-signature-on-charcoal);"
+                            "--lever:var(--oa-color-identity-signature-on-charcoal);--link:var(--oa-color-palette-newsprint);--line:var(--oa-color-palette-newsprint)")
+    return (f'<p class="colophon-sign"><span class="sign-red" data-red="signature">{mark}</span>'
+            f'<span class="sign-t">{e(LOCKED["tagline"])}</span></p>')
+
 
 def start_section(d, ctx):
     """The "Where to start" front page, between the contents and the first part (D2-1698): the title and instruction
@@ -2076,13 +2105,17 @@ def start_section(d, ctx):
     out = [f'<section class="start" id="start" data-track="front" data-label="{plain(d["title"])}"><div class="ch-head">',
            f'<h2 id="start-h" class="front-title">{no_links(inline(d["title"]))}</h2><p class="return" hidden></p>',
            f'<p class="instr">{no_links(inline(d["instr"]))}</p>',
+           # CD-A2: the routes' line is a line of underlined links, as Rule 18.5 sets for a link
            '<ul class="route-index">' + "".join(f'<li><a href="#start-{r["id"]}">{no_links(inline(r["label"]))}</a></li>' for r in routes) + "</ul>",
            '</div><div class="routes">']
     for r in routes:
         rid, label = r["id"], plain(r["label"])
-        out.append(f'<div class="route" id="start-{rid}" data-route="{rid}"><div class="route-head">'
+        # CD-A1: each route's head on the part opener's Charcoal panel; the newcomer's ends on the 24 px pillar row, since
+        # its first step is the pillars (Rule 09.4 allows the row)
+        prow = pillar_row_24() if rid == "newcomer" else ""
+        out.append(f'<div class="route" id="start-{rid}" data-route="{rid}"><div class="route-head oa-surface-charcoal">'
                    f'<h3 class="route-h" id="start-{rid}-h">{no_links(inline(r["label"]))}</h3>'
-                   f'<p class="return" hidden></p><p class="route-lede">{no_links(inline(r["lede"]))}</p></div><ol class="steps">')
+                   f'<p class="return" hidden></p><p class="route-lede">{no_links(inline(r["lede"]))}</p>{prow}</div><ol class="steps">')
         for j, st in enumerate(r["steps"], 1):
             sid = f"start-{rid}-{j}"
             text = no_links(inline(st["text"]))
@@ -2243,7 +2276,16 @@ def license_block(fonts, ed):
 # ---------------------------------------------------------------------------------------------------------------
 # Navigation
 # ---------------------------------------------------------------------------------------------------------------
-def nav_list(prefix, present, has_proofs, menu=False, appendix_title=None, start_title=None):
+def proof_group_ids(chap_dir):
+    """[(id, label)] of the appendix's proof groups, as proofs_section names them."""
+    try:
+        conf = json.loads((Path(chap_dir) / "proofs.json").read_text())
+    except Exception:
+        return []
+    return [("proofs-" + re.sub(r"[^a-z0-9]+", "-", html.unescape(g["label"]).lower()).strip("-"), g["label"]) for g in conf.get("groups") or [] if g.get("label")]
+
+
+def nav_list(prefix, present, has_proofs, menu=False, appendix_title=None, start_title=None, proof_groups=None):
     out = ["<ul>"]
     if menu:
         out.append('<li><a href="#top" data-loc="top">Cover</a></li>')
@@ -2259,8 +2301,11 @@ def nav_list(prefix, present, has_proofs, menu=False, appendix_title=None, start
             out.append(f'<li><a href="#{cid}" data-loc="{cid}"><span class="n">{num}</span> <span class="t">{e(cname)}</span></a></li>')
         out.append("</ul></li>")
     if has_proofs:
+        # CD-S4: the appendix lists its proofs, as a part lists its chapters
+        groups = [g for g in (proof_groups or []) if g[1]]
+        sub = "".join(f'<li><a href="#{gid}" data-loc="{gid}"><span class="t">{inline(label)}</span></a></li>' for gid, label in groups)
         out.append(f'<li><a class="{prefix}-partlink" href="#proofs" data-loc="proofs">Appendix</a><ul>'
-                   f'<li><a href="#proofs" data-loc="proofs-item"><span class="t">{e(appendix_title or APPENDIX_TITLE)}</span></a></li></ul></li>')
+                   f'<li><a href="#proofs" data-loc="proofs-item"><span class="t">{e(appendix_title or APPENDIX_TITLE)}</span></a></li>{sub}</ul></li>')
     out.append(f'<li><a class="{prefix}-partlink" href="#colophon" data-loc="colophon">Colophon</a></li>')
     out.append("</ul>")
     return "".join(out)
@@ -2411,7 +2456,7 @@ WEIGHT_BUDGET = {"01": 2.7, "02": 0.85, "03": 0.65, "04": 0.45, "05": 0.45, "06"
 # so its budget rises from 0.6 to 1.0 MB.
 WEIGHT_DEFAULT = 0.45          # chapters 13 to 16, 20 to 25, 27 and 28
 WEIGHT_FIXED = {"head and shell": 0.2, "sprites": 0.35, "appendix": 0.2, "front matter and part openers": 0.1,
-                "fonts": 0.5}   # Gate 2: six WOFF2 files of 329,896 bytes, 439,868 as base64 (D2-1697)
+                "fonts": 0.5}   # Gate 2: six WOFF2 files, 255,920 bytes after the fix pass (CD-M1), about 342 KB as base64 (D2-1697)
 
 
 class Sprites:
@@ -3017,7 +3062,8 @@ def build(args):
     wm16 = svg_inline(WORDMARK_16, label="Oath & Action", cls="wm wm-16")
     # the cover's h1 names the guide in full, so the display wordmark above it is hidden from assistive technology
     wm_display = svg_inline(WORDMARK_DISPLAY, cls="cover-wm")
-    built = datetime.datetime.now().strftime("%B %-d, %Y at %H:%M")
+    # CD-A5 (Gate 2 fix pass): the build time in UTC, as chapter 19's results give theirs
+    built = datetime.datetime.now(datetime.timezone.utc).strftime("%B %-d, %Y at %H:%M UTC")
     n_real = len(chapters)
     n_rules = sum(len(d.get("rules") or []) for d in chapters.values())
     n_specs = len(specs.used)
@@ -3034,7 +3080,8 @@ def build(args):
     desc_words = f"{scope_long}, in draft."
     # Gate 2 (D2-1702): the edition line, the cover's folio and the title in the editor's words, with the build's date
     if ed:
-        day = datetime.datetime.now().strftime("%B %-d, %Y")
+        # CD-A4: month, day and year joined by no-break spaces, so the date never breaks across a line
+        day = datetime.datetime.now(datetime.timezone.utc).strftime("%B %-d, %Y").replace(" ", "\u00a0")
         fill = lambda t: html.unescape(t).replace("{date}", day).replace("{scope}", scope).replace("{scope_lower}", scope[0].lower() + scope[1:])
         edition_line = fill(ed["edition"]) + appendix_tail
         folio_right = fill(ed["cover_folio"])
@@ -3096,7 +3143,7 @@ def build(args):
   <p class="where" id="where" aria-hidden="true">Cover</p>
 </header>
 <div class="frame">
-  <nav class="rail" aria-label="Chapters">{nav_list("rail", present, has_proofs, appendix_title=appendix_title, start_title=start_title)}<p class="rail-more" aria-hidden="true">More below</p></nav>
+  <nav class="rail" aria-label="Chapters">{nav_list("rail", present, has_proofs, appendix_title=appendix_title, start_title=start_title, proof_groups=proof_group_ids(chap_dir))}<p class="rail-more" aria-hidden="true">More below</p></nav>
   <main id="main" tabindex="-1" data-view-root="overview">
     <section class="cover" id="top" data-track="front" data-label="Cover">
       <p class="cover-folio"><span>{e(folio)}</span> <span>{e(folio_right)}</span></p>
@@ -3125,6 +3172,7 @@ def build(args):
       <div><dt>Built</dt><dd>{e(built)}, from the guide&#8217;s source files: {e(count_line)}</dd></div>
     </dl>
     <p class="colophon-back"><a href="#contents">Back to contents</a></p>
+    {sign_off()}
   </div>
 </footer>
 <dialog class="menu" id="menu" aria-labelledby="menu-h">
@@ -3132,7 +3180,7 @@ def build(args):
     <div class="menu-head"><h2 id="menu-h" class="menu-title">Contents</h2><button type="button" class="menu-close" id="menuclose">Close the menu</button></div>
     <p class="menu-where">You are in <strong id="menu-where-text">Cover</strong>.</p>
     <div class="menu-scroll">
-      <nav aria-label="Guide contents">{nav_list("menu", present, has_proofs, menu=True, appendix_title=appendix_title, start_title=start_title)}</nav>
+      <nav aria-label="Guide contents">{nav_list("menu", present, has_proofs, menu=True, appendix_title=appendix_title, start_title=start_title, proof_groups=proof_group_ids(chap_dir))}</nav>
     </div>
   </div>
 </dialog>

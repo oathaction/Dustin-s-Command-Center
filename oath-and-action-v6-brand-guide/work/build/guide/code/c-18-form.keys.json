@@ -14,7 +14,14 @@
     },
     {
      "type": "name@",
-     "focus": "input[autocomplete=\"email\"]"
+     "focus": "input[autocomplete=\"email\"]",
+     "states": [
+      {
+       "el": "input[autocomplete=\"email\"]",
+       "attr": "aria-invalid",
+       "is": "false"
+      }
+     ]
     },
     {
      "key": "Tab",
@@ -75,7 +82,7 @@
       {
        "el": "input[autocomplete=\"email\"]",
        "attr": "aria-invalid",
-       "is": null
+       "is": "false"
       },
       {
        "el": ".oa-form-send",

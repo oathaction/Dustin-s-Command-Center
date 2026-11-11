@@ -117,10 +117,10 @@ def card(ctx, gaps, labels):
             f'from heading to text. The card’s padding is {la} px on every side.</p>')
 
 
-def grid_svg(ctx, name, scale=0.25, highlight=None, sections=None, text_band=None):
+def grid_svg(ctx, name, scale=0.25, highlight=None, sections=None, text_band=None, H=None):
     g = grid(ctx, name)
     W = g['width'] * scale
-    H = 120 if not sections else 180
+    H = H or (120 if not sections else 180)
     v = ctx.v
     col = v('oa.color.tint.stoneN70')
     edge = v('oa.color.border.strong.onNewsprint')
@@ -164,20 +164,42 @@ def s_07_2(ctx):
         items.append(f'<li>{svg}<p class="nm">{BNAME[name]}, {w:g} px</p><p class="sp">{g["cols"]} columns of '
                      f'{g["col"]:.1f} px · {g["gutter"]:g} px gutters · {g["margin"]:g} px margins</p></li>')
         ctx.fig(f'column width {name}', f'{g["col"]:.2f}', '(width − 2 × margin − (columns − 1) × gutter) ÷ columns, from tokens.json')
-    css = (f'ul{{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:24px}}'
+    css = (f'ul{{list-style:none;margin:0;padding:{v("oa.space.300")};display:flex;flex-direction:column;gap:24px}}'
            f'.nm{{margin:8px 0 0;{ctx.ty("ui")}}}.sp{{margin:2px 0 0;{ctx.ty("caption")};color:{sec}}}')
     ctx.spec('s-07-2-correct', f'<style>{css}</style><ul>{"".join(items)}</ul>', '07', '07.2',
              'The five column grids drawn at one quarter of true size, each with its columns, gutters and margins: ' +
              '; '.join(f'{BNAME[n]} {w} px, {grid(ctx, n)["cols"]} columns of {grid(ctx, n)["col"]:.1f} px' for n, w in BPS) + '.',
-             width=360, scale=0.25,
-             notes='Drawn at one quarter of each width, so the 1440 px grid takes 360 px; the labels under each drawing are '
-                   'at true size. Column widths computed from the grid tokens.')
+             width=360 + 2 * int(ctx.T.px('oa.space.300')), scale=0.25,
+             notes='Drawn at one quarter of each width, so the 1440 px grid takes 360 px, inside the 24 px inset every '
+                   'plate keeps (Gate 2 fix pass, CD-S6); the labels under each drawing are at true size. Column widths '
+                   'computed from the grid tokens.')
     svg, g = grid_svg(ctx, 'wide', sections=[3, 5, 2])
     cssf = (f'.nm{{margin:8px 0 0;{ctx.ty("ui")}}}.sp{{margin:2px 0 0;{ctx.ty("caption")};color:{sec}}}')
     ctx.spec('s-07-2-failure', f'<style>{cssf}</style>{svg}<p class="nm">Wide, 1440 px, at one quarter size</p>'
                                f'<p class="sp">Three sections on three, five and two columns</p>', '07', '07.2',
              'A page at 1440 px drawn at one quarter size, with three sections on three, five and two columns whose edges '
              'never line up.', width=360, scale=0.25, notes='A diagram at one quarter size.')
+
+
+def s_07_opener(ctx):
+    """Chapter 07's opener (Gate 2 fix pass, call 3, CD-S1): Rule 07.2's five grids drawn lighter, at one eighth size and
+    side by side, so their widths compare at a glance. Each frame keeps its true proportion of width, and all share one
+    height. A picture that flows with the column: one row from about 45rem, wrapping below."""
+    sec = ctx.v('oa.color.text.secondary.onNewsprint')
+    items = []
+    for name, w in BPS:
+        svg, g = grid_svg(ctx, name, scale=0.125, H=88)
+        items.append(f'<li>{svg}<p class="nm">{BNAME[name]}</p><p class="sp">{w:g} px · {g["cols"]} columns</p></li>')
+    css = (f'.gr{{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:flex-start;gap:20px 24px}}'
+           f'.gr li{{min-width:6rem}}.nm{{margin:8px 0 0;{ctx.ty("ui")}}}.sp{{margin:2px 0 0;{ctx.ty("caption")};color:{sec}}}'
+           f'.sc{{margin:16px 0 0;{ctx.ty("label")};color:{sec}}}')
+    html = f'<style>{css}</style><ul class="gr">{"".join(items)}</ul><p class="sc">Drawn at one eighth size</p>'
+    ctx.spec('s-07-opener', html, '07', None,
+             'The five column grids side by side at one eighth of true size, so their widths compare: ' +
+             '; '.join(f'{BNAME[n]}, {w} px, {grid(ctx, n)["cols"]} columns' for n, w in BPS) +
+             '. Rule 07.2 draws each one with its gutters and margins.',
+             notes='Chapter 07’s opener (Gate 2 fix pass, call 3, CD-S1): Rule 07.2’s grid drawing at one eighth size, '
+                   'every frame one height, column widths from the grid tokens.')
 
 
 def s_07_3(ctx):
@@ -325,7 +347,7 @@ def stack_table(ctx, cut=False):
     rows = []
     for fg, bg, use in pairs:
         r = ctx.ratio(f'oa.color.palette.{fg}', f'oa.color.palette.{bg}')
-        rows.append((f'{name[fg]} on {name[bg]}', f'{r}:1', use))
+        rows.append((f'{name[fg]} on {name[bg]}', f'{r} to 1', use))
     sec = v('oa.color.text.secondary.onNewsprint')
     if not cut:
         lis = ''.join(f'<li><p class="pr">{a}</p><p class="rt">{b}</p><p class="us">{c}</p></li>' for a, b, c in rows)
@@ -357,6 +379,7 @@ def s_07_6(ctx):
 # ------------------------------------------------------------------------------------------------ chapter
 def build(ctx):
     probes(ctx)
+    s_07_opener(ctx)
     s_07_1(ctx)
     s_07_2(ctx)
     picks, full = s_07_3(ctx)
@@ -370,6 +393,7 @@ def build(ctx):
     ch = {
         'number': '07', 'anchor': 'layout', 'title': 'Layout and spacing', 'part': 'Foundations',
         'instruction': 'Build each page on the column grid and spacing scale, readable at every width.',
+        'opener': 's-07-opener',
         'intro': [
             'Every page sits on a column grid and spaces its parts in steps of 8 px. The grid changes at set window widths, '
             'called breakpoints, from 12 columns on a desktop to four on a phone, and each paragraph spans the columns '
@@ -392,7 +416,7 @@ def build(ctx):
                             'caption': 'The scale at true size, and a card spaced on it: 24 px of padding, 8 px from kicker '
                                        'to heading and 16 px from heading to text.'},
                 'failure': {'specimen': 's-07-1-failure',
-                            'caption': '<strong>Fails the scale.</strong> The same card with gaps of 22, 13 and 37 px. Each is '
+                            'caption': '<strong>Fails Rule 07.1.</strong> The same card with gaps of 22, 13 and 37 px. Each is '
                                        'near a step and none is one, so the card sits out of line with the page around it.'},
                 'specs': [{'label': f'{C.css_name("oa.space." + k)}', 'value': f'{ctx.T.px("oa.space." + k):g} px, {ctx.T.dim("oa.space." + k)[0]:g} rem', 'token': f'oa.space.{k}'} for k in SPACE],
                 'related': ['06', '12', '18'],
@@ -415,7 +439,7 @@ def build(ctx):
                             'caption': 'The five grids drawn at one quarter of true size, each column’s width worked out from '
                                        'the tokens. The labels under each grid are at true size.'},
                 'failure': {'specimen': 's-07-2-failure',
-                            'caption': '<strong>Fails the grid.</strong> A page at 1440 px, drawn at one quarter size, whose '
+                            'caption': '<strong>Fails Rule 07.2.</strong> A page at 1440 px, drawn at one quarter size, whose '
                                        'three sections sit on three, five and two columns. Their edges never line up, so each '
                                        'section reads as a separate page.'},
                 'specs': [{'label': f'{BNAME[n]}, {w} px', 'value': f'{grid(ctx, n)["cols"]} columns of {grid(ctx, n)["col"]:.1f} px, '
@@ -444,7 +468,7 @@ def build(ctx):
                             'caption': f'The 1440 px grid at one quarter size. Body text takes the first '
                                        f'{C.num(sp["wide"])} of 12 columns, and the table below gives the span at every width.'},
                 'failure': {'specimen': 's-07-3-failure',
-                            'caption': f'<strong>Fails the measure.</strong> Drawn at one quarter size, a paragraph spanning all '
+                            'caption': f'<strong>Fails Rule 07.3.</strong> Drawn at one quarter size, a paragraph spanning all '
                                        f'12 columns at 1440 px. It measured {full["mean"]:.0f} characters a line.'},
                 'specs': [{'label': f'{BNAME[n]}, {w} px', 'value': f'{picks[n][0]} of {picks[n][2]["cols"]} columns, '
                            f'{span_w(picks[n][2], picks[n][0]):.0f} px, {picks[n][1]["mean"]:.0f} characters a line',
@@ -468,7 +492,7 @@ def build(ctx):
                             'caption': 'A section at true size, its gaps drawn as bands: 48 px above the heading, 16 px below '
                                        'it and 16 px between paragraphs.'},
                 'failure': {'specimen': 's-07-4-failure',
-                            'caption': '<strong>Fails proximity.</strong> The same section with 24 px above and below the '
+                            'caption': '<strong>Fails Rule 07.4.</strong> The same section with 24 px above and below the '
                                        'heading, so it floats between the two blocks.'},
                 'specs': [
                     {'label': 'Between sections or rules', 'value': '80 px', 'token': 'oa.space.1000'},
@@ -499,7 +523,7 @@ def build(ctx):
                             'caption': 'The layout a reader gets by window width and text size, worked out from the em '
                                        'breakpoints.'},
                 'failure': {'specimen': 's-07-5-failure',
-                            'caption': f'<strong>Fails the measure at 200 percent.</strong> With breakpoints in px, a reader at 200 '
+                            'caption': f'<strong>Fails Rule 07.5.</strong> With breakpoints in px, a reader at 200 '
                                        f'percent text keeps the wide layout, and body text at 34 px in a five-column span runs '
                                        f'about {r200s["mean"]:.0f} characters a line.'},
                 'specs': [
@@ -530,7 +554,7 @@ def build(ctx):
                                        'and use stays in view. A table that must keep its columns scrolls inside a named frame '
                                        'instead, as the wide plates in this guide do on a phone.'},
                 'failure': {'specimen': 's-07-6-failure',
-                            'caption': '<strong>Fails 1.4.10.</strong> The same pairs kept as a table in a 320 px frame. The '
+                            'caption': '<strong>Fails Rule 07.6.</strong> The same pairs kept as a table in a 320 px frame. The '
                                        'last column falls past the edge, and a reader on a small phone never sees what each '
                                        'pair may carry.'},
                 'specs': [

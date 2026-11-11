@@ -1,7 +1,7 @@
 {
  "about": "Every figure chapter 11 prints, with how it was measured. Contrast is WCAG 2.x relative luminance on the token values in tokens.json.",
  "built": "2026-11-07",
- "token_set_version": "6.0.0-gate2.8",
+ "token_set_version": "6.0.0-gate2.9",
  "figures": {
   "contrast Charcoal on the Error Band": {
    "value": "11.89",

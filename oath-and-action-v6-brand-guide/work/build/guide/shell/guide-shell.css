@@ -232,33 +232,47 @@ a.toc-part-k:hover { text-decoration: underline }
    the three routes as links, which goes once the three stand side by side. A step is one link: its words, underlined
    (Rule 18.5), then the place it opens in caption type. Its number hangs in the contents' fixed 36 px box (CA-N8), on
    the first line's baseline. A step that comes later is quiet text with no link; its words say it comes later. */
-.route-index { list-style: none; margin: var(--oa-space-400) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--oa-space-100) var(--oa-space-150) }
-.route-index a { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); padding: 0 var(--oa-space-150);
-  border: var(--oa-border-width-hairline) solid var(--rule-strong); font: var(--oa-type-ui); text-decoration: none }
-.route-index a:hover { text-decoration: underline }
+/* CD-A2 (Gate 2 fix pass): the routes' line is a line of underlined links, as Rule 18.5 sets for a link, each 24 px tall at
+   least (Rule 18.5's inline target), separated by a dot hidden from screen readers */
+.route-index { list-style: none; margin: var(--oa-space-300) 0 0; padding: 0; font: var(--oa-type-body) }
+.route-index li { display: inline }
+.route-index li + li::before { content: "·" / ""; margin: 0 .55em; color: var(--ink-2) }
+.route-index a { display: inline-flex; align-items: center; min-height: var(--oa-size-target-minimum) }
 .routes { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--oa-space-1000) var(--g); margin-top: var(--oa-space-800) }
-.route { min-width: 0; padding-top: var(--oa-space-300); border-top: var(--oa-border-width-rule) solid var(--rule-strong) }
-.route-head { min-width: 0 }
+.route { min-width: 0 }
+/* CD-A1 (Gate 2 fix pass): each route's head sits on the part opener's Charcoal panel, the dark beat a part opens with, its
+   name and lede in Charcoal's inks; on phones the panel runs to the page's edges, as a part opener's does */
+.route-head { min-width: 0; padding: var(--oa-space-400) var(--m) var(--oa-space-500); margin-inline: calc(-1 * var(--m)) }
+@media (min-width: 48em) { .route-head { margin-inline: 0; padding: var(--oa-space-400) var(--oa-space-300) var(--oa-space-500) } }
 .route-h { margin: 0; font: var(--oa-type-h3); letter-spacing: var(--oa-type-h3-letter-spacing); text-wrap: balance; overflow-wrap: break-word }
-.route-lede { margin: var(--oa-space-200) 0 0; color: var(--ink-2); max-width: var(--oa-layout-measure-body-max); text-wrap: pretty }
-.steps { list-style: none; margin: var(--oa-space-500) 0 0; padding: 0; min-width: 0; border-bottom: var(--oa-border-width-hairline) solid var(--rule-hair) }
+.route-lede { margin: var(--oa-space-200) 0 0; color: var(--oa-color-text-secondary); max-width: var(--oa-layout-measure-body-max); text-wrap: pretty }
+/* the 24 px pillar row of Rule 09.1, as chapter 09 draws it on Charcoal: words in body text, 8 px from each icon's ink, the
+   arrows in the secondary ink and hidden from screen readers */
+.prow { list-style: none; margin: var(--oa-space-400) 0 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; row-gap: var(--oa-space-150) }
+.prow-pi { display: flex; align-items: center; gap: var(--oa-space-100) }
+.prow-ic { display: block; flex: none; overflow: visible }
+.prow-w { font: var(--oa-type-body) }
+.prow-pi:not(:last-child)::after { content: "\2192" / ""; margin: 0 14px 0 2px; font: var(--oa-type-body); color: var(--oa-color-text-secondary) }
+.steps { list-style: none; margin: 0; padding: 0; min-width: 0; border-bottom: var(--oa-border-width-hairline) solid var(--rule-hair) }
 .route-step { display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); column-gap: .75rem; align-items: baseline;
   border-top: var(--oa-border-width-hairline) solid var(--rule-hair) }
-.step-n { padding-top: var(--oa-space-150); font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); color: var(--ink-2);
+.steps > .route-step:first-child { border-top: 0 }
+.step-n { padding-top: var(--oa-space-200); font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); color: var(--ink-2);
   font-variant-numeric: tabular-nums }
-.step-go { display: block; min-width: 0; min-height: var(--oa-size-target-touch); padding: var(--oa-space-150) 0 var(--oa-space-200); color: var(--ink); text-decoration: none }
+/* CD-A1: the step's sentence in plain ink, and the line that names where it leads as the link's underlined words; the
+   whole row is the link's target */
+.step-go { display: block; min-width: 0; min-height: var(--oa-size-target-touch); padding: var(--oa-space-200) 0; color: var(--ink); text-decoration: none }
 .step-t { display: block; margin: 0; text-wrap: pretty; overflow-wrap: break-word }
-.step-go .step-t { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
-.step-go:hover .step-t { text-decoration-thickness: var(--oa-border-width-underline-hover) }
-.step-to { display: block; margin-top: var(--oa-space-050); font: var(--oa-type-caption); color: var(--ink-2) }
-.route-step--later .step-t { padding: var(--oa-space-150) 0 var(--oa-space-200); color: var(--ink-2) }
+.step-to { display: inline-block; margin-top: var(--oa-space-100); font: var(--oa-type-ui); text-decoration: underline;
+  text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
+.step-go:hover .step-to { text-decoration-thickness: var(--oa-border-width-underline-hover) }
+.step-to [aria-hidden] { display: inline-block; margin: 0 .4em; text-decoration: none }   /* the dot stays out of the underline */
+.route-step--later .step-t { padding: var(--oa-space-200) 0; color: var(--ink-2) }
 @media (min-width: 48em) and (max-width: 89.99em) {
   .route { display: grid; grid-template-columns: repeat(var(--mc), minmax(0, 1fr)); column-gap: var(--g); align-items: start }
-  /* the route's name stays in view beside its steps while they scroll past */
+  /* the route's panel stays in view beside its steps while they scroll past */
   .route-head { grid-column: 1 / span 3; position: sticky; top: calc(var(--head-h) + var(--oa-space-300)) }
-  .steps { grid-column: 4 / -1; margin-top: 0 }
-  .steps > .route-step:first-child { border-top: 0 }
-  .steps > .route-step:first-child > .step-n, .steps > .route-step:first-child > .step-go, .steps > .route-step:first-child > .step-t { padding-top: 0 }
+  .steps { grid-column: 4 / -1; margin-top: 0; border-top: var(--oa-border-width-rule) solid var(--rule-strong) }
 }
 @media (min-width: 90em) {
   .route-index { display: none }
@@ -639,7 +653,7 @@ a.toc-part-k:hover { text-decoration: underline }
 /* Gate 2 (D2-1697): the three font licenses in full, each in a disclosure built on details and summary as Rule 18.8
    builds one: a row at least 44 px tall that names what opens, its words before a chevron that points down while
    closed and turns up while open, in the standard motion token, which tokens.css sets to 0 ms under reduced motion */
-.lic-stack { margin-top: var(--oa-space-300); max-width: var(--oa-layout-measure-body-max); border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
+.lic-stack { margin-top: var(--oa-space-300); max-width: var(--oa-layout-measure-body-max) }   /* CD-A3: the row's own rule closes it */
 .lic-summary { display: flex; align-items: center; justify-content: space-between; gap: var(--oa-space-100); min-height: var(--oa-size-target-touch);
   padding: var(--oa-space-100) 0; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline); font: var(--oa-type-ui);
   cursor: pointer; list-style: none; overflow-wrap: anywhere }
@@ -650,11 +664,17 @@ a.toc-part-k:hover { text-decoration: underline }
   transition: transform var(--oa-motion-duration-standard) var(--oa-motion-easing-standard) }
 .lic[open] > .lic-summary .lic-chevron { transform: rotate(180deg) }
 .lic-body { padding: var(--oa-space-100) 0 var(--oa-space-300) }
-.lic-body p { margin: 0 0 var(--oa-space-150); font: var(--oa-type-body-small); overflow-wrap: anywhere }
+/* CD-A3: every paragraph fills its measure; "pretty" balancing read as the file's hard line ends */
+.lic-body p { margin: 0 0 var(--oa-space-150); font: var(--oa-type-body-small); overflow-wrap: anywhere; text-wrap: wrap }
 .lic-body .lic-title { font-weight: var(--oa-font-weight-semibold) }
 .lic-body b { display: block; font-weight: var(--oa-font-weight-semibold) }   /* a section's heading keeps its own line, as in OFL.txt */
 .lic-rule { height: 0; margin: var(--oa-space-200) 0; border: 0; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
 .colophon-back { margin: var(--oa-space-400) 0 0 }
+/* CD-A1: the footer sign-off of Rule 08.2 closes the book: the lockmark at 24 px, 12 px of space and the tagline, one line */
+.colophon-sign { display: flex; align-items: center; gap: var(--oa-space-150); margin: var(--oa-space-800) 0 0; padding-top: var(--oa-space-300);
+  border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline); font: var(--oa-type-body-small); color: var(--oa-color-text-primary-on-charcoal) }
+.sign-red { display: inline-flex; flex: none; line-height: 0 }
+.sign-mark { display: block; flex: none }
 .colophon-back a { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); font: var(--oa-type-ui) }
 
 /* ---------------------------------------------------------------- Phone menu: a modal dialog with one navigation block */
@@ -684,7 +704,10 @@ a.toc-part-k:hover { text-decoration: underline }
   .rail-more { background: Canvas; color: CanvasText }
   .rail a[aria-current], .menu a[aria-current] { border-left-color: Highlight; text-decoration: underline }
   .hinge-line { border-top-color: CanvasText }
-  .lic-summary, .lic-stack, .lic-rule { border-color: CanvasText }
+  .lic-summary, .lic-stack, .lic-rule, .colophon-sign { border-color: CanvasText }
+  /* the sign-off's lockmark takes one system color, as the masthead wordmark does (CA-S16) */
+  .colophon-sign { color: CanvasText }
+  .sign-mark { color: CanvasText !important; --amp: currentColor !important; --lever: currentColor !important; --link: currentColor !important; --line: currentColor !important }
   /* the frame as an outline inside its box, so it takes no width: a border made 360 px stages 2 px too wide at
      390 px and showed their scroll hints (round 2, November 10, 2026) */
   .plate-scroll:not(:focus-visible) { outline: 1px solid CanvasText; outline-offset: -1px }

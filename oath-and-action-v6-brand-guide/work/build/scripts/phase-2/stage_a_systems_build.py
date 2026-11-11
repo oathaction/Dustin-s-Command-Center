@@ -44,7 +44,9 @@ ROOT = C.ROOT
 OUT_CH = ROOT / 'work/build/guide/chapters'
 OUT_SP = ROOT / 'work/build/guide/specimens'
 MEAS_OUT = ROOT / 'work/handoffs/phase-2/20261106_Stage-A-Systems-Measurements.json'
-FONTS = ('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@800'
+# Gate 2 fix pass, CD-M1: the one weight set Rule 06.1 gives (Inter 400, 600 and 700; Inter Tight 800; Lora Italic 400
+# and 500), the same link Rule 06.10 hands a product
+FONTS = ('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Inter+Tight:wght@800'
          '&family=Lora:ital,wght@1,400;1,500&display=swap')
 
 # Display styles grow with the window; every other style holds one size (tokens.json oa.type).
@@ -190,6 +192,13 @@ class Ctx:
         mode = sizing or ('sheet' if width is None else 'ceil' if width >= 1200 else 'floor')
         if 'var(--sx-fs-' in html and mode != 'floor':
             html = f'<style>{self.fs_vars(mode)}</style>' + html
+        # Gate 2 fix pass, CD-S2: every failure plate carries the do-not-publish bar, in Newsprint on Charcoal, so a
+        # cropped picture of it still says not to publish it; a plate that draws its own keeps it
+        if sid.endswith('-failure') and 'Failure case: do not publish' not in html:
+            fcss, band = self.fail_band()
+            html = f'<style>{fcss}</style>{band}{html}'
+            if not alt.startswith('Failure case: do not publish.'):
+                alt = 'Failure case: do not publish. ' + alt
         C.check_copy(alt, f'{sid} alt')
         if width is None:
             # A fluid specimen fills the stage, and on phones the shell's mat has no side padding, so the specimen
@@ -330,6 +339,10 @@ def main():
                     used_specs.add(r[k]['specimen'])
         for x in ch.get('extras', []):
             used_specs.add(x['specimen'])
+        if ch.get('opener'):
+            # Gate 2 fix pass, call 3 (CD-S1): the chapter's opening figure
+            op = ch['opener']
+            used_specs.add(op if isinstance(op, str) else op['specimen'])
         path = OUT_CH / f'{ch["number"]}-{ch["anchor"]}.json'
         path.write_text(json.dumps(ch, indent=2, ensure_ascii=False) + '\n')
     missing = used_specs - set(ctx.specs)

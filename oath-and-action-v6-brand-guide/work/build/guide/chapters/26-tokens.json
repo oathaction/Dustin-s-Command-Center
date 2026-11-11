@@ -32,9 +32,9 @@
  "rules": [
   {
    "id": "26.1",
-   "title": "Read every value through a token, named for its job and the surface it sits on.",
+   "title": "Read every value through a token named for its job.",
    "rule": [
-    "A token is a named design value. tokens.css and tokens.json hold the same 504 tokens in 13 categories: color, font, type, space, size, layout, radius, border, opacity, motion, z-index, chart and component. A name runs from its category to its surface: <code>oa.color.text.secondary.onNewsprint</code> in tokens.json is <code>--oa-color-text-secondary-on-newsprint</code> in CSS. Each part of the name is a word you can look up, so a name tells you its job.",
+    "A token is a named design value, and its name says its job and the surface it sits on. tokens.css and tokens.json hold the same 504 tokens in 13 categories: color, font, type, space, size, layout, radius, border, opacity, motion, z-index, chart and component. A name runs from its category to its surface: <code>oa.color.text.secondary.onNewsprint</code> in tokens.json is <code>--oa-color-text-secondary-on-newsprint</code> in CSS. Each part of the name is a word you can look up, so a name tells you its job.",
     "Tokens come in three tiers. A primitive holds a value, such as Deep Stone. A semantic token gives a primitive one job on one surface, such as disabled text on Newsprint. A component token gives one part of one component its value, such as the label of an unavailable button, and points to a semantic token. Build with semantic and component tokens. A primitive is there for them to point to."
    ],
    "tokens": [
@@ -46,7 +46,7 @@
     "text": [
      "A name that says the job lets a page change its surface or its theme with no new value: a surface class or the dark theme points each short name at the token for that ground. A primitive cannot follow, because it names a color and nothing else."
     ],
-    "basis": "Design Tokens Format Module 2025.10; Design judgment"
+    "basis": "Design Tokens Format Module 2025.10; design judgment"
    },
    "correct": {
     "specimen": "s-26-1-correct",
@@ -138,9 +138,9 @@
   },
   {
    "id": "26.3",
-   "title": "Choose a token in five steps: surface, role, emphasis, state, then any component token, which wins.",
+   "title": "Choose a token in five steps, starting from its surface.",
    "rule": [
-    "Start from the surface the element sits on: Newsprint, White, Charcoal or Prussian. Then its job, which a token’s name calls its role: text, graphic, border, focus, data, action, state or field. Then its emphasis: primary or secondary text, an essential or subtle graphic, a strong or hairline border, the data a chart is about or its context. Then its state, if it has one, such as selected, disabled, warning or error. Last, look for a component token for the part you are drawing, such as a button’s disabled label. When one exists, use it, since it already holds the component’s own choice.",
+    "The five steps are surface, role, emphasis, state, then any component token, which wins. Start from the surface the element sits on: Newsprint, White, Charcoal or Prussian. Then its job, which a token’s name calls its role: text, graphic, border, focus, data, action, state or field. Then its emphasis: primary or secondary text, an essential or subtle graphic, a strong or hairline border, the data a chart is about or its context. Then its state, if it has one, such as selected, disabled, warning or error. Last, look for a component token for the part you are drawing, such as a button’s disabled label. When one exists, use it, since it already holds the component’s own choice.",
     "A message with no state of its own, such as a correction notice, takes primary text for its words and the essential graphic for its 4 px bar: <code>--oa-color-text-primary</code>, and <code>--oa-color-graphic-essential</code> at <code>--oa-border-width-bar</code>. Leave the strong border to the edges of fields and controls, since a change to those edges would move the notice too.",
     "In CSS the first step is the theme or a class. With tokens.css linked, the theme points every short name at the tokens for the page’s ground, Newsprint in the light theme and Charcoal in the dark one. A block that must keep one ground in both themes takes a surface class: <code>.oa-surface-prussian</code> points every short name inside it at Prussian’s tokens. Either way your code names the role alone, <code>--oa-color-text-secondary</code>, and draws right on whatever ground the block sits on."
    ],
@@ -154,7 +154,7 @@
     "text": [
      "Each step narrows the choice by a fact about the page, so two builders reach the same token. Every color token was measured on its own surface, and starting from the surface keeps you on the one it was measured for."
     ],
-    "basis": "WCAG 2.2 SC 1.4.3 and 1.4.11; Design judgment"
+    "basis": "WCAG 2.2 SC 1.4.3 and 1.4.11; design judgment"
    },
    "correct": {
     "specimen": "s-26-3-correct",
@@ -202,7 +202,7 @@
   },
   {
    "id": "26.4",
-   "title": "Work through the five steps on four common parts, and copy the code they lead to.",
+   "title": "Work through the five steps on four common parts.",
    "rule": [
     "The four examples below take parts every product needs through the five steps of Rule 26.3, and set each at actual size beside its failure, with code to copy. Each code set reads only tokens.css, by short name, with a surface class where the example names a surface. Its live demos show it in the light theme and the dark theme, so you can see each token follow the ground."
    ],
@@ -218,7 +218,7 @@
     "text": [
      "A worked example shows the choice at each step and the ratio it buys, so you can check a new part the same way before you ship it."
     ],
-    "basis": "WCAG 2.2 SC 1.4.1, 1.4.3 and 1.4.11; Design judgment"
+    "basis": "WCAG 2.2 SC 1.4.1, 1.4.3 and 1.4.11; design judgment"
    },
    "examples": [
     {
@@ -355,7 +355,7 @@
     },
     {
      "label": "Fonts",
-     "value": "Inter, Inter Tight and Lora from Google Fonts, under the SIL Open Font License 1.1 (chapter 06)"
+     "value": "Inter 400, 600 and 700, Inter Tight 800 and Lora Italic 400 and 500, from Google Fonts under the SIL Open Font License 1.1 (Rule 06.10). This guide carries the same files inside the page."
     },
     {
      "label": "Themed product",
@@ -372,7 +372,7 @@
     "18"
    ],
    "builders": [
-    "The fonts link this guide uses: <code>https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=Lora:ital,wght@1,400;1,500&amp;display=swap</code>."
+    "A product loads the three faces with this link (Rule 06.10): <code>https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Inter+Tight:wght@800&amp;family=Lora:ital,wght@1,400;1,500&amp;display=swap</code>. This guide carries the same files inside the page, unchanged, so it loads no type from elsewhere; its colophon holds their licenses."
    ]
   },
   {
@@ -394,7 +394,7 @@
     "text": [
      "One set of short names serves both grounds, so a component written once draws correctly in both themes, as each code plate in chapter 18 shows live. A token named for one surface cannot follow."
     ],
-    "basis": "Media Queries Level 5, prefers-color-scheme; Design judgment"
+    "basis": "Media Queries Level 5, prefers-color-scheme; design judgment"
    },
    "correct": {
     "specimen": "s-26-6-correct",
@@ -450,7 +450,7 @@
    },
    "correct": {
     "specimen": "s-26-token-table",
-    "caption": "Every token in tokens.json, version 6.0.0-gate2.8. Search, then copy a name."
+    "caption": "Every token in tokens.json, version 6.0.0-gate2.9. Search, then copy a name."
    },
    "failure": {
     "specimen": "s-26-7-failure",
@@ -484,7 +484,7 @@
    "rule": [
     "tokens.css and tokens.json carry one version number, in three parts. A renamed or removed token, or a changed palette color, raises the first part, and may break a page. A new token, or a changed value that still passes its contrast, raises the second. A change to descriptions alone raises the third.",
     "A replaced token keeps its old CSS name as an alias for one more release of the second part, marked as deprecated, so a page that reads it keeps working while you move it. Every version comes with a change note: its date, the tokens it touches, what changed and why.",
-    "The files in this draft carry <code>6.0.0-gate2.8</code>. The part after the hyphen marks a draft before 6.0.0, the first release. Since 6.0.0-gate2.8, <code>--oa-color-state-error-mark</code> is the deprecated old name of <code>--oa-color-state-error-bar</code>, and it leaves with 6.1.0."
+    "The files in this draft carry <code>6.0.0-gate2.9</code>. The part after the hyphen marks a draft before 6.0.0, the first release. Since 6.0.0-gate2.8, <code>--oa-color-state-error-mark</code> is the deprecated old name of <code>--oa-color-state-error-bar</code>, and it leaves with 6.1.0."
    ],
    "downloads": [
     "tokens.css",
@@ -499,7 +499,7 @@
    },
    "correct": {
     "specimen": "s-26-8-correct",
-    "caption": "The change note for 6.0.0-gate2.8, as tokens.json records it."
+    "caption": "The change note for 6.0.0-gate2.9, as tokens.json records it."
    },
    "failure": {
     "specimen": "s-26-8-failure",

@@ -8,6 +8,7 @@
   "Our tagline is “A country that answers to its people.” People can hold an office to account once they know which office decided. So we name who acts, in words you would use at a kitchen table, as in “A regulator or a board approves your rate.”",
   "Our reader promise is “We explain how a decision is made and give you a practical way to take part.” A reader can take part only in a decision they can follow, which is why clarity comes first in our editorial commitment, “Clarity is our duty. Action is our promise.”"
  ],
+ "opener": "s-02-opener",
  "groups": [
   {
    "before_rule": "02.1",
@@ -58,7 +59,7 @@
    "title": "W01 Write it the way you would say it.",
    "rule": [
     "Write the way you would explain something to a neighbor, in everyday words and full sentences. Read the draft aloud and rewrite any line you would not say.",
-    "<em>Terms.</em> Plain prose: everyday words in complete sentences, with nothing a listener would need to see on the page to follow."
+    "<strong>Terms.</strong> Plain prose: everyday words in complete sentences, with nothing a listener would need to see on the page to follow."
    ],
    "why": {
     "text": [
@@ -72,7 +73,7 @@
    },
    "failure": {
     "specimen": "s-02-1-fault",
-    "caption": "“The point of responsibility” names no office a listener could call, and nobody says it out loud."
+    "caption": "<strong>Fails Rule 02.1.</strong> “The point of responsibility” names no office a listener could call, and nobody says it out loud."
    },
    "specs": [
     {
@@ -94,7 +95,7 @@
    "title": "W02 Name who acts.",
    "rule": [
     "Put the person or office that acts in front of the verb. When you find a passive verb, ask who does the action and name them.",
-    "<em>Terms.</em> Active voice: a sentence that names the actor first, as in “The council passed the budget.” Passive voice puts the thing acted on first and often hides the actor, as in “The budget was passed.”"
+    "<strong>Terms.</strong> Active voice: a sentence that names the actor first, as in “The council passed the budget.” Passive voice puts the thing acted on first and often hides the actor, as in “The budget was passed.”"
    ],
    "why": {
     "text": [
@@ -108,7 +109,7 @@
    },
    "failure": {
     "specimen": "s-02-2-fault",
-    "caption": "The passive verb pushes the actor to the end of the sentence, and in many drafts it drops the actor altogether."
+    "caption": "<strong>Fails Rule 02.2.</strong> The passive verb pushes the actor to the end of the sentence, and in many drafts it drops the actor altogether."
    },
    "specs": [
     {
@@ -144,7 +145,7 @@
    },
    "failure": {
     "specimen": "s-02-3-fault",
-    "caption": "Three sentences of eight, eight and 11 words fall on one beat, and the abbreviation FTC assumes the reader already knows the agency."
+    "caption": "<strong>Fails Rule 02.3.</strong> Three sentences of eight, eight and 11 words fall on one beat, and the abbreviation FTC assumes the reader already knows the agency."
    },
    "specs": [
     {
@@ -176,7 +177,7 @@
    },
    "failure": {
     "specimen": "s-02-4-fault",
-    "caption": "Two commands sit side by side with no word to join them, so a listener cannot tell that one depends on the other, and “the lever” goes undefined."
+    "caption": "<strong>Fails Rule 02.4.</strong> Two commands sit side by side with no word to join them, so a listener cannot tell that one depends on the other, and “the lever” goes undefined."
    },
    "specs": [
     {
@@ -208,7 +209,7 @@
    },
    "failure": {
     "specimen": "s-02-5-fault",
-    "caption": "“Here is how to weigh in” promises the steps and gives none, so a reader who stops at the headline leaves without the deadline."
+    "caption": "<strong>Fails Rule 02.5.</strong> “Here is how to weigh in” promises the steps and gives none, so a reader who stops at the headline leaves without the deadline."
    },
    "specs": [
     {
@@ -244,7 +245,7 @@
    },
    "failure": {
     "specimen": "s-02-6-fault",
-    "caption": "“This is where” and the colon hold the answer back for effect, so a listener waits through the setup to hear who owns what."
+    "caption": "<strong>Fails Rule 02.6.</strong> “This is where” and the colon hold the answer back for effect, so a listener waits through the setup to hear who owns what."
    },
    "specs": [
     {
@@ -280,7 +281,7 @@
    },
    "failure": {
     "specimen": "s-02-7-fault",
-    "caption": "The first and last sentences say one idea twice, and the last lands as a moral the facts did not need."
+    "caption": "<strong>Fails Rule 02.7.</strong> The first and last sentences say one idea twice, and the last lands as a moral the facts did not need."
    },
    "specs": [
     {
@@ -315,7 +316,7 @@
    },
    "failure": {
     "specimen": "s-02-8-fault",
-    "caption": "“Put the promise to work” sounds like an advertisement and leaves the reader with no step and no date."
+    "caption": "<strong>Fails Rule 02.8.</strong> “Put the promise to work” sounds like an advertisement and leaves the reader with no step and no date."
    },
    "specs": [
     {
@@ -351,7 +352,7 @@
    },
    "failure": {
     "specimen": "s-02-9-fault",
-    "caption": "The “not” half is there for rhythm, and a photographer still has to work out what to shoot."
+    "caption": "<strong>Fails Rule 02.9.</strong> The “not” half is there for rhythm, and a photographer still has to work out what to shoot."
    },
    "specs": [
     {
@@ -386,7 +387,7 @@
    },
    "failure": {
     "specimen": "s-02-10-fault",
-    "caption": "The second sentence echoes “counts” for rhythm and never says where spoken testimony happens."
+    "caption": "<strong>Fails Rule 02.10.</strong> The second sentence echoes “counts” for rhythm and never says where spoken testimony happens."
    },
    "specs": [
     {
@@ -421,7 +422,7 @@
    },
    "failure": {
     "specimen": "s-02-11-fault",
-    "caption": "Four “no” phrases in a row give no verb and no reason, so the reader learns what is banned and never why."
+    "caption": "<strong>Fails Rule 02.11.</strong> Four “no” phrases in a row give no verb and no reason, so the reader learns what is banned and never why."
    },
    "specs": [
     {
@@ -456,7 +457,7 @@
    },
    "failure": {
     "specimen": "s-02-12-fault",
-    "caption": "“The rule, the gap, the ask” chants three nouns and gives a first-time speaker no instruction to follow."
+    "caption": "<strong>Fails Rule 02.12.</strong> “The rule, the gap, the ask” chants three nouns and gives a first-time speaker no instruction to follow."
    },
    "specs": [
     {
@@ -491,7 +492,7 @@
    },
    "failure": {
     "specimen": "s-02-13-fault",
-    "caption": "Four sentences open with “We” on one frame, and the run sounds like a pledge read aloud."
+    "caption": "<strong>Fails Rule 02.13.</strong> Four sentences open with “We” on one frame, and the run sounds like a pledge read aloud."
    },
    "specs": [
     {
@@ -526,7 +527,7 @@
    },
    "failure": {
     "specimen": "s-02-14-fault",
-    "caption": "“Report cover kicker” stacks three nouns, so a listener holds all three before learning that the phrase means a kicker."
+    "caption": "<strong>Fails Rule 02.14.</strong> “Report cover kicker” stacks three nouns, so a listener holds all three before learning that the phrase means a kicker."
    },
    "specs": [
     {
@@ -561,7 +562,7 @@
    },
    "failure": {
     "specimen": "s-02-15-fault",
-    "caption": "“Allocation” and “establishes no claim” turn two actions into nouns, so the sentence names no one who sets money aside."
+    "caption": "<strong>Fails Rule 02.15.</strong> “Allocation” and “establishes no claim” turn two actions into nouns, so the sentence names no one who sets money aside."
    },
    "specs": [
     {
@@ -596,7 +597,7 @@
    },
    "failure": {
     "specimen": "s-02-16-fault",
-    "caption": "“Could perhaps help” and “somewhat in some places” stack four softeners, so a reader cannot tell how strong the evidence is."
+    "caption": "<strong>Fails Rule 02.16.</strong> “Could perhaps help” and “somewhat in some places” stack four softeners, so a reader cannot tell how strong the evidence is."
    },
    "specs": [
     {
@@ -632,7 +633,7 @@
    },
    "failure": {
     "specimen": "s-02-17-fault",
-    "caption": "“Really” asks the reader to feel urgency and gives no reason for it."
+    "caption": "<strong>Fails Rule 02.17.</strong> “Really” asks the reader to feel urgency and gives no reason for it."
    },
    "specs": [
     {
@@ -667,7 +668,7 @@
    },
    "failure": {
     "specimen": "s-02-18-fault",
-    "caption": "“Leverage”, “funds” and “expand broadband access” are memo words, and none of them says who gains."
+    "caption": "<strong>Fails Rule 02.18.</strong> “Leverage”, “funds” and “expand broadband access” are memo words, and none of them says who gains."
    },
    "specs": [
     {
@@ -702,7 +703,7 @@
    },
    "failure": {
     "specimen": "s-02-19-fault",
-    "caption": "The slogan and its exclamation point cheer the reader on and name no one to tell and no time to tell them."
+    "caption": "<strong>Fails Rule 02.19.</strong> The slogan and its exclamation point cheer the reader on and name no one to tell and no time to tell them."
    },
    "specs": [
     {
@@ -737,7 +738,7 @@
    },
    "failure": {
     "specimen": "s-02-20-fault",
-    "caption": "“Eligible voters” names a wider group than the survey counted, and the ranking ignores the survey’s margin of error."
+    "caption": "<strong>Fails Rule 02.20.</strong> “Eligible voters” names a wider group than the survey counted, and the ranking ignores the survey’s margin of error."
    },
    "specs": [
     {
@@ -773,7 +774,7 @@
    },
    "failure": {
     "specimen": "s-02-21-fault",
-    "caption": "The em dash breaks the sentence without saying how the vote relates to the deadline, and a screen reader may skip it."
+    "caption": "<strong>Fails Rule 02.21.</strong> The em dash breaks the sentence without saying how the vote relates to the deadline, and a screen reader may skip it."
    },
    "specs": [
     {
@@ -808,7 +809,7 @@
    },
    "failure": {
     "specimen": "s-02-22-failure",
-    "caption": "One short paragraph breaks eight house rules. Each tag names the rule, and the list says how to fix it."
+    "caption": "<strong>Fails Rule 02.22.</strong> One short paragraph breaks eight house rules. Each tag names the rule, and the list says how to fix it."
    },
    "specs": [
     {
@@ -857,7 +858,7 @@
    },
    "failure": {
     "specimen": "s-02-23-failure",
-    "caption": "In the tagline’s slot, the founding line competes with “A country that answers to its people.” and casts a newcomer as a spectator."
+    "caption": "<strong>Fails Rule 02.23.</strong> In the tagline’s slot, the founding line competes with “A country that answers to its people.” and casts a newcomer as a spectator."
    },
    "related": [
     "01",
@@ -887,7 +888,7 @@
    },
    "failure": {
     "specimen": "s-02-24-failure",
-    "caption": "Four asks and four red buttons leave out the date and the place, and give a reader no reason to start with any one of them."
+    "caption": "<strong>Fails Rule 02.24.</strong> Four asks and four red buttons leave out the date and the place, and give a reader no reason to start with any one of them."
    },
    "related": [
     "01",
@@ -914,7 +915,7 @@
    },
    "failure": {
     "specimen": "s-02-25-failure",
-    "caption": "Every line states a mood, which leaves the reader without a rule to check or an office to call."
+    "caption": "<strong>Fails Rule 02.25.</strong> Every line states a mood, which leaves the reader without a rule to check or an office to call."
    },
    "related": [
     "13",
@@ -940,7 +941,7 @@
    },
    "failure": {
     "specimen": "s-02-26-failure",
-    "caption": "Five words from the list fill one sentence, and it leaves the reader without a rule, an office or a step."
+    "caption": "<strong>Fails Rule 02.26.</strong> Five words from the list fill one sentence, and it leaves the reader without a rule, an office or a step."
    },
    "related": [
     "08",
@@ -969,7 +970,7 @@
    },
    "failure": {
     "specimen": "s-02-27-failure",
-    "caption": "“The hearing & the vote.” puts an event first, and “The problem & the solution.” names no rule at all."
+    "caption": "<strong>Fails Rule 02.27.</strong> “The hearing & the vote.” puts an event first, and “The problem & the solution.” names no rule at all."
    },
    "files": [
     "work/build/assets/identity/ampersand/20261028_Amp-B-16px-Master.svg",

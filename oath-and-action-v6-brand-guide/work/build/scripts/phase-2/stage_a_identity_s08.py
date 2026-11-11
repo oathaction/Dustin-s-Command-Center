@@ -122,15 +122,15 @@ def _masthead():
             f'<div style="display:flex;gap:24px">{nav}</div></div>')
 
 
-def _page_header():
-    return (f'<div class="oai-s-white" style="width:600px;display:flex;align-items:center;gap:12px;padding:16px 24px;border:1px solid {hair("white")}">'
+def _page_header(width=600):
+    return (f'<div class="oai-s-white" style="width:{width}px;display:flex;align-items:center;gap:12px;padding:16px 24px;border:1px solid {hair("white")}">'
             f'{lockmark(24, surface="white", label="Lockmark, 24 px, in a page header")}'
             f'<span class="oai-label" style="color:{ink("white")}">03 · Who writes the budget</span>'
             f'<span style="margin-left:auto;{ty("caption")};color:{ink2("white")}" class="oai-num">7</span></div>')
 
 
-def _footer():
-    return (f'<div class="oai-s-charcoal" style="width:600px;display:flex;align-items:center;gap:12px;padding:16px 24px">'
+def _footer(width="600px"):
+    return (f'<div class="oai-s-charcoal" style="width:{width};display:flex;align-items:center;gap:12px;padding:16px 24px">'
             f'{lockmark(24, surface="charcoal", label="Lockmark, 24 px, in a footer on Charcoal")}'
             f'<span style="{ty("body-small")};color:{ink("charcoal")}">{E(TAGLINE)}</span></div>')
 
@@ -147,11 +147,11 @@ def _chart_foot():
             f'{lockmark(16, label="Lockmark, 16 px, in a chart footer")}</div>')
 
 
-def _signoff():
+def _signoff(W=408, H=264):
     """The bottom-right corner of a 1080 px social card at true size: its right and bottom edges, the lockmark at 96 px,
     the 48 px master at exactly twice its size (DR-211), 72 px in from each, and two dimension lines that measure the
-    margin."""
-    W, H, M, L = 408, 264, 72, SIGN_OFF["social"]     # widened from 360 by 216 for the 96 px mark (promotion C)
+    margin. The opener crops the corner closer, at 272 by 224 px."""
+    M, L = 72, SIGN_OFF["social"]     # widened from 360 by 216 for the 96 px mark (promotion C)
     st = pal("stone")
     cx, cy = W - M - L / 2, H - M - L / 2          # the lockmark's center
     dims = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" aria-hidden="true" class="oai-svg" '
@@ -208,6 +208,42 @@ def s_08_2_failure():
            "16 pixel lockmark used as a bullet. Illustrative.")
     return rec("s-08-2-failure", "08.2", PHONE, alt, body, illustrative=True,
                notes="The flyer could pass for our work, so it carries the Charcoal failure band (D2-308; CD-N5, CA-S6).")
+
+
+# ------------------------------------------------------------------------------------------- the opener
+# Gate 2's fix pass (CD-S1, the creative director's list: "08 the lockmark in its four places"). Rule 08.2's four places,
+# each cropped to the part that holds the lockmark, at true size and as that plate draws them: the masthead's left end
+# with L3, a page header and a footer at 330 px and the content's width, and the corner of a social card. Each crop fits
+# a phone's column, so the four stand two to a row from 48em and one under another on a phone.
+OPENER_CSS = (".oai-op8-pad{padding:24px}@media (max-width:47.99em){.oai-op8-pad{padding:16px 8px}}"
+              ".oai-op8{display:flex;flex-wrap:wrap;gap:24px 32px;align-items:flex-start}"
+              ".oai-op8>div{max-width:100%}"
+              ".oai-op8 .oai-pl8-h{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;margin:0 0 8px}"
+              ".oai-op8 .oai-pl8-n{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}")
+
+
+@spec
+def s_08_opener():
+    mast = (f'<div class="oai-s-newsprint" style="width:330px;height:80px;display:flex;align-items:center;padding:0 0 0 32px;'
+            f'border:1px solid {hair("newsprint")};border-right:0">'
+            f'{l3_small(24, label="Oath & Action, L3: the wordmark with the lockmark at 48 px")}</div>')
+    body = ('<div class="oai-op8-pad"><div class="oai-op8">'
+            + _place("Masthead", "L3, the lockmark at 48 px", mast)
+            + _place("Page header", "24 px", _page_header(330), "The section title is invented.")
+            + _place("Footer", "24 px beside the tagline", _footer("max-content"))
+            + _place("Sign-off", "96 px on a social card", _signoff(272, 224))
+            + '</div></div>')
+    alt = ("The lockmark in its four places at true size, each a crop. Masthead: the left end of a Newsprint bar with L3, the "
+           "wordmark and the lockmark at 48 pixels. Page header: a white header with the lockmark at 24 pixels beside the "
+           "section label 03 Who writes the budget and the page number 7; the section title is Illustrative. Footer: a "
+           "Charcoal footer with the lockmark at 24 pixels beside the tagline, A country that answers to its people. "
+           "Sign-off: the bottom-right corner of a 1080 pixel social card with the lockmark at 96 pixels, 72 pixels from "
+           "its right and bottom edges.")
+    return rec("s-08-opener", None, None, alt, body, css=OPENER_CSS,
+               notes="Gate 2's fix pass, CD-S1: chapter 08's opener, a light version of Rule 08.2's plate (s-08-2-correct) "
+                     "from the same place functions and masters: L3's masthead master, the 24 px master in the page header and "
+                     "footer, and the 48 px master at exactly 96 px in the sign-off (DR-211). Each crop is 330 px wide or less, "
+                     "so the opener fits a phone at true size.")
 
 
 # ------------------------------------------------------------------------------------------- 08.3

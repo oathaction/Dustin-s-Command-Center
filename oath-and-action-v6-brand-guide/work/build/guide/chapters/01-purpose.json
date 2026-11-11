@@ -69,7 +69,7 @@
    },
    "failure": {
     "specimen": "s-01-1-failure",
-    "caption": "Red on the no votes casts those three senators as the problem. A reader who agrees with them sees an attack, and the count stops reading as a record."
+    "caption": "<strong>Fails Rule 01.1.</strong> Red on the no votes casts those three senators as the problem. A reader who agrees with them sees an attack, and the count stops reading as a record."
    },
    "specs": [
     {
@@ -110,7 +110,7 @@
    },
    "failure": {
     "specimen": "s-01-2-failure",
-    "caption": "Red and blue turn a finding of agreement into a contest, and the color key makes a reader match swatches to find each party, which fails in grayscale."
+    "caption": "<strong>Fails Rule 01.2.</strong> Red and blue turn a finding of agreement into a contest, and the color key makes a reader match swatches to find each party, which fails in grayscale."
    },
    "specs": [
     {
@@ -162,7 +162,7 @@
    },
    "failure": {
     "specimen": "s-01-3-failure",
-    "caption": "A red-to-blue scale reads as one party’s gain against the other’s, whatever it measures, and with no arrows its direction disappears in grayscale."
+    "caption": "<strong>Fails Rule 01.3.</strong> A red-to-blue scale reads as one party’s gain against the other’s, whatever it measures, and with no arrows its direction disappears in grayscale."
    },
    "specs": [
     {
@@ -203,7 +203,7 @@
    },
    "failure": {
     "specimen": "s-01-4-failure",
-    "caption": "The red ampersand sinks into the Prussian ground at 3.19 to 1, and at small sizes a reader loses the mark’s center."
+    "caption": "<strong>Fails Rule 01.4.</strong> The red ampersand sinks into the Prussian ground at 3.19 to 1, and at small sizes a reader loses the mark’s center."
    },
    "specs": [
     {
@@ -248,7 +248,7 @@
    },
    "failure": {
     "specimen": "s-01-5-failure",
-    "caption": "Colored by winner, the map splits the country into two camps and says nothing about the rule a story covers."
+    "caption": "<strong>Fails Rule 01.5.</strong> Colored by winner, the map splits the country into two camps and says nothing about the rule a story covers."
    },
    "specs": [
     {
@@ -288,7 +288,7 @@
    },
    "failure": {
     "specimen": "s-01-6-failure",
-    "caption": "The dome behind the headline decorates a story about one vote and borrows the look of campaign mail, and the card names no office."
+    "caption": "<strong>Fails Rule 01.6.</strong> The dome behind the headline decorates a story about one vote and borrows the look of campaign mail, and the card names no office."
    },
    "specs": [
     {
@@ -315,7 +315,7 @@
   },
   {
    "id": "01.7",
-   "title": "Keep party symbols, candidate photos, campaign gear and protest slogans out of brand graphics.",
+   "title": "Keep symbols that take a side out of brand graphics.",
    "rule": [
     "Keep party symbols, candidate photographs, campaign merchandise and legible protest slogans out of brand graphics, since each takes a side the piece never argued. A party’s logo may appear as evidence, inside a sourced document the piece reproduces."
    ],
@@ -331,13 +331,23 @@
    },
    "failure": {
     "specimen": "s-01-7-failure",
-    "caption": "The button and the placard take sides on a measure the card set out to explain, so a reader on either side stops at the picture."
+    "caption": "<strong>Fails Rule 01.7.</strong> The button and the placard take sides on a measure the card set out to explain, so a reader on either side stops at the picture."
    },
    "related": [
     "16",
     "23"
    ],
-   "builders": "When a story needs a party’s logo or a campaign’s material, place the whole document as a sourced image with its credit, never the symbol by itself."
+   "builders": "When a story needs a party’s logo or a campaign’s material, place the whole document as a sourced image with its credit, never the symbol by itself.",
+   "specs": [
+    {
+     "label": "Kept out",
+     "value": "Party symbols, candidate photographs, campaign merchandise and legible protest slogans"
+    },
+    {
+     "label": "As evidence",
+     "value": "A party’s logo only inside a sourced document the piece reproduces, with its credit"
+    }
+   ]
   },
   {
    "id": "01.8",
@@ -357,7 +367,7 @@
    },
    "failure": {
     "specimen": "s-01-8-failure",
-    "caption": "The caption names no person, act, place or date, so a reader cannot check the picture and learns nothing from it."
+    "caption": "<strong>Fails Rule 01.8.</strong> The caption names no person, act, place or date, so a reader cannot check the picture and learns nothing from it."
    },
    "specs": [
     {
@@ -383,9 +393,9 @@
   },
   {
    "id": "01.9",
-   "title": "Draw no more than one example in four from one atlas domain, or one in five from one state.",
+   "title": "Limit how many examples come from one domain or one state.",
    "rule": [
-    "Count examples within one unit: a chapter of this guide, a report, or a month of newsletter issues. Draw no more than one in four from any one of our systems atlas’s ten domains, and no more than one in five from any one state."
+    "Draw no more than one example in four from any one of our systems atlas’s ten domains, and no more than one in five from any one state. Count them within one unit: a chapter of this guide, a report, or a month of newsletter issues."
    ],
    "why": {
     "text": [
@@ -399,12 +409,30 @@
    },
    "failure": {
     "specimen": "s-01-9-failure",
-    "caption": "Three election examples from one state would tell readers elsewhere that the chapter was written for someone else."
+    "caption": "<strong>Fails Rule 01.9.</strong> Three election examples from one state would tell readers elsewhere that the chapter was written for someone else."
    },
    "related": [
     "13"
    ],
-   "builders": "Count from the rotation log before a chapter, report or month of issues runs, using the atlas’s ten domains by their full names."
+   "builders": "Count from the rotation log before a chapter, report or month of issues runs, using the atlas’s ten domains by their full names.",
+   "specs": [
+    {
+     "label": "One domain",
+     "value": "One example in four at most, counted by the atlas’s ten domains"
+    },
+    {
+     "label": "One state",
+     "value": "One example in five at most"
+    },
+    {
+     "label": "Unit",
+     "value": "A chapter of this guide, a report or a month of newsletter issues"
+    },
+    {
+     "label": "Count from",
+     "value": "The rotation log, Rule 01.12"
+    }
+   ]
   },
   {
    "id": "01.10",
@@ -424,17 +452,31 @@
    },
    "failure": {
     "specimen": "s-01-10-failure",
-    "caption": "Four federal examples in a row leave out the councils, boards and districts where a reader can most easily be heard."
+    "caption": "<strong>Fails Rule 01.10.</strong> Four federal examples in a row leave out the councils, boards and districts where a reader can most easily be heard."
    },
    "related": [
     "13",
     "21"
    ],
-   "builders": "Tag each row of the rotation log with its level and region, and look for an empty one before the piece runs."
+   "builders": "Tag each row of the rotation log with its level and region, and look for an empty one before the piece runs.",
+   "specs": [
+    {
+     "label": "Levels",
+     "value": "Federal; state; county or city; school district"
+    },
+    {
+     "label": "Regions",
+     "value": "Northeast, Midwest, South and West"
+    },
+    {
+     "label": "Before it runs",
+     "value": "An example at each level and from each region, counted in the log"
+    }
+   ]
   },
   {
    "id": "01.11",
-   "title": "Show a case from each party that uses a mechanism, and report the counts as the record gives them.",
+   "title": "Show each party’s cases and counts as the record gives them.",
    "rule": [
     "When majorities of both parties use the same mechanism, show a documented case from each, described in the same form and at the same length. The test case is Loop R4a, the map-drawing loop, which our systems atlas titles “Majorities draw maps that help them keep control.”",
     "When the record shows one party using a mechanism more, report it that way, with the counts, as Rule 01.13 asks, and add no case to even the count."
@@ -451,13 +493,31 @@
    },
    "failure": {
     "specimen": "s-01-11-failure",
-    "caption": "A piece that shows Texas alone drops California’s case and the count, and hides from the reader that both parties’ majorities redrew maps and how often each did."
+    "caption": "<strong>Fails Rule 01.11.</strong> A piece that shows Texas alone drops California’s case and the count, and hides from the reader that both parties’ majorities redrew maps and how often each did."
    },
    "related": [
     "15",
     "13"
    ],
-   "builders": "Before a piece runs a mechanism, count the atlas’s case records for that loop by the party of the majority, and print the counts with their source when one party leads. Pick one case from each party that uses the mechanism, and write the cases in the same form."
+   "builders": "Before a piece runs a mechanism, count the atlas’s case records for that loop by the party of the majority, and print the counts with their source when one party leads. Pick one case from each party that uses the mechanism, and write the cases in the same form.",
+   "specs": [
+    {
+     "label": "Cases",
+     "value": "One documented case from each party whose majorities use the mechanism"
+    },
+    {
+     "label": "Form",
+     "value": "The same form and the same length, counted in words"
+    },
+    {
+     "label": "Counts",
+     "value": "The atlas’s case records for the loop, by the party of the majority, with their source line"
+    },
+    {
+     "label": "When one party leads",
+     "value": "The counts as the record gives them, with no case added to even them"
+    }
+   ]
   },
   {
    "id": "01.12",
@@ -477,17 +537,31 @@
    },
    "failure": {
     "specimen": "s-01-12-failure",
-    "caption": "A row with blank fields cannot be counted, so whoever checks the log cannot see a run of one topic or one side’s reforms."
+    "caption": "<strong>Fails Rule 01.12.</strong> A row with blank fields cannot be counted, so whoever checks the log cannot see a run of one topic or one side’s reforms."
    },
    "related": [
     "13",
     "28"
    ],
-   "builders": "Keep one log row per example in the piece’s notes and count domains, states and regions from it before it runs."
+   "builders": "Keep one log row per example in the piece’s notes and count domains, states and regions from it before it runs.",
+   "specs": [
+    {
+     "label": "Fields",
+     "value": "Example, atlas domain, state, region, level of government, and the coalition behind any reform shown"
+    },
+    {
+     "label": "Invented examples",
+     "value": "The Illustrative label beside the example, and “invented” in its state and region fields"
+    },
+    {
+     "label": "Review",
+     "value": "Our editors read the log before each chapter, report or series runs"
+    }
+   ]
   },
   {
    "id": "01.13",
-   "title": "Name the office that decides, and name a party only when party is part of the finding.",
+   "title": "Name the office that decides.",
    "rule": [
     "Say which office or body makes the decision. Name a party only when party is part of the finding, such as a party-line vote or a record that shows one party doing more of something, and give the count and its source."
    ],
@@ -503,13 +577,27 @@
    },
    "failure": {
     "specimen": "s-01-13-failure",
-    "caption": "“Politicians” names no office, so the reader has no one to call, and “again” supplies a grievance the record does not show."
+    "caption": "<strong>Fails Rule 01.13.</strong> “Politicians” names no office, so the reader has no one to call, and “again” supplies a grievance the record does not show."
    },
    "related": [
     "02",
     "13"
    ],
-   "builders": "Search a draft for “politicians”, “Washington”, “lawmakers” and party names, and replace each with the office that holds the decision."
+   "builders": "Search a draft for “politicians”, “Washington”, “lawmakers” and party names, and replace each with the office that holds the decision.",
+   "specs": [
+    {
+     "label": "Name",
+     "value": "The office or body that makes the decision"
+    },
+    {
+     "label": "A party",
+     "value": "Only for a party-line vote or a record that shows one party doing more, with the count and its source"
+    },
+    {
+     "label": "Replace",
+     "value": "“Politicians”, “Washington” and “lawmakers” with the office that holds the decision"
+    }
+   ]
   },
   {
    "id": "01.14",
@@ -529,13 +617,27 @@
    },
    "failure": {
     "specimen": "s-01-14-failure",
-    "caption": "The question assumes the reader is angry and that someone wronged them, so a reader who likes the rule has no reason to read on."
+    "caption": "<strong>Fails Rule 01.14.</strong> The question assumes the reader is angry and that someone wronged them, so a reader who likes the rule has no reason to read on."
    },
    "related": [
     "02",
     "23"
    ],
-   "builders": "Search a draft for the words this rule lists, and read each question as someone who likes the current rule would."
+   "builders": "Search a draft for the words this rule lists, and read each question as someone who likes the current rule would.",
+   "specs": [
+    {
+     "label": "Leave out",
+     "value": "“Rigged”, “broken”, “crisis” and “the rule you are angry about”"
+    },
+    {
+     "label": "Applies to",
+     "value": "Headlines, questions and calls to act"
+    },
+    {
+     "label": "Test",
+     "value": "A supporter of the current rule could ask the same question"
+    }
+   ]
   },
   {
    "id": "01.15",
@@ -555,12 +657,26 @@
    },
    "failure": {
     "specimen": "s-01-15-failure",
-    "caption": "“From the Front”, our fifth edition’s series name, and “battle” cast the vote as a war with an enemy, and the headline never says when the vote happens."
+    "caption": "<strong>Fails Rule 01.15.</strong> “From the Front”, our fifth edition’s series name, and “battle” cast the vote as a war with an enemy, and the headline never says when the vote happens."
    },
    "related": [
     "02"
    ],
-   "builders": "Search a draft for fight, battle, front, war and game plan, and name the step in the process in its place."
+   "builders": "Search a draft for fight, battle, front, war and game plan, and name the step in the process in its place.",
+   "specs": [
+    {
+     "label": "Verbs to use",
+     "value": "Propose, debate, vote and pass"
+    },
+    {
+     "label": "Leave out",
+     "value": "Fight, battle, front, war and game plan"
+    },
+    {
+     "label": "Series names",
+     "value": "As Rule 02.26 spells them, such as Dispatch"
+    }
+   ]
   },
   {
    "id": "01.16",
@@ -580,13 +696,31 @@
    },
    "failure": {
     "specimen": "s-01-16-failure",
-    "caption": "One reading becomes “the research” and the other three small words, so the layout settles a question the evidence leaves open."
+    "caption": "<strong>Fails Rule 01.16.</strong> One reading becomes “the research” and the other three small words, so the layout settles a question the evidence leaves open."
    },
    "related": [
     "13",
     "14"
    ],
-   "builders": "Look up the claim’s grade in our systems atlas first, and use this block only when the grade is contested. Set both readings in one two-column block with matching labels, describe both holders in the same words, and count the words of each before you publish."
+   "builders": "Look up the claim’s grade in our systems atlas first, and use this block only when the grade is contested. Set both readings in one two-column block with matching labels, describe both holders in the same words, and count the words of each before you publish.",
+   "specs": [
+    {
+     "label": "When",
+     "value": "Only for a claim graded contested"
+    },
+    {
+     "label": "Length",
+     "value": "The same number of words in each reading"
+    },
+    {
+     "label": "Form",
+     "value": "The same verbs, type and labels, and each holder named by role and affiliation"
+    },
+    {
+     "label": "Layout",
+     "value": "Two columns side by side, stacking on a phone"
+    }
+   ]
   },
   {
    "id": "01.17",
@@ -606,17 +740,31 @@
    },
    "failure": {
     "specimen": "s-01-17-failure",
-    "caption": "“Hold the country hostage” is an opponent’s charge, so a senator who values the rule would reject the sentence before reaching the facts."
+    "caption": "<strong>Fails Rule 01.17.</strong> “Hold the country hostage” is an opponent’s charge, so a senator who values the rule would reject the sentence before reaching the facts."
    },
    "related": [
     "13",
     "02"
    ],
-   "builders": "Before the piece runs, read the description in the place of someone who supports the rule, and mark every word they would change."
+   "builders": "Before the piece runs, read the description in the place of someone who supports the rule, and mark every word they would change.",
+   "specs": [
+    {
+     "label": "Test",
+     "value": "A supporter of the rule would accept every word of the description"
+    },
+    {
+     "label": "Definitions",
+     "value": "The atlas glossary’s wording, where it has an entry"
+    },
+    {
+     "label": "Arguments",
+     "value": "Only in a piece labeled “Our position”, Rule 01.23"
+    }
+   ]
   },
   {
    "id": "01.18",
-   "title": "Set both halves of a hinge headline in one color and weight, and give the red to the ampersand.",
+   "title": "Set both halves of a hinge headline in one color and weight.",
    "rule": [
     "Set both noun phrases of a hinge headline in the same ink, face and weight. The ampersand takes the view’s working red, unless an error or a step on the same view already holds it; then the ampersand takes the headline’s ink, as Rule 04.3 sets out."
    ],
@@ -636,7 +784,7 @@
    },
    "failure": {
     "specimen": "s-01-18-failure",
-    "caption": "The red second half reads as the alarm and the first half as its cause, and the ampersand no longer stands out as the join."
+    "caption": "<strong>Fails Rule 01.18.</strong> The red second half reads as the alarm and the first half as its cause, and the ampersand no longer stands out as the join."
    },
    "files": [
     "work/build/assets/identity/ampersand/20261028_Amp-B-16px-Master.svg",
@@ -646,11 +794,27 @@
     "04",
     "02"
    ],
-   "builders": "Set the headline in Inter Tight ExtraBold and place ampersand B at the cap height in place of the font’s ampersand, from the master Rule 04.3 names for the size."
+   "builders": "Set the headline in Inter Tight ExtraBold and place ampersand B at the cap height in place of the font’s ampersand, from the master Rule 04.3 names for the size.",
+   "specs": [
+    {
+     "label": "Both halves",
+     "value": "One ink and one size, in Inter Tight 800",
+     "token": "oa.font.family.display"
+    },
+    {
+     "label": "Ampersand",
+     "value": "B from its master for the size, in the view’s working red",
+     "token": "oa.color.palette.pillarRed"
+    },
+    {
+     "label": "When the red is spent",
+     "value": "The ampersand takes the headline’s ink, as Rule 04.3 sets"
+    }
+   ]
   },
   {
    "id": "01.19",
-   "title": "Join people through a rule or place they share, and rotate their order.",
+   "title": "Join people through a rule or place they share.",
    "rule": [
     "When a hinge headline joins two people or groups, join them through a rule or a place they share. Swap their order from one piece to the next, so neither always comes first."
    ],
@@ -666,17 +830,27 @@
    },
    "failure": {
     "specimen": "s-01-19-failure",
-    "caption": "“Us” and “them” name two sides with nothing shared between them, so the ampersand marks a divide."
+    "caption": "<strong>Fails Rule 01.19.</strong> “Us” and “them” name two sides with nothing shared between them, so the ampersand marks a divide."
    },
    "related": [
     "04",
     "02"
    ],
-   "builders": "Log the order of each pair of people, and swap it the next time a piece joins the same two groups."
+   "builders": "Log the order of each pair of people, and swap it the next time a piece joins the same two groups.",
+   "specs": [
+    {
+     "label": "Join",
+     "value": "A rule or a place both groups share, named in the headline"
+    },
+    {
+     "label": "Order",
+     "value": "Swapped from one piece to the next, and logged"
+    }
+   ]
   },
   {
    "id": "01.20",
-   "title": "Name parties, the left or the right in a hinge headline only to report sourced agreement.",
+   "title": "Name the sides in a hinge headline only to report agreement.",
    "rule": [
     "Use “left”, “right” or a party’s name in a hinge headline only to report a point where the sides agree, such as a bill with sponsors from both parties. Join the two through what they agree on, as Rule 01.19 asks of every pair of people, and source the agreement in the deck."
    ],
@@ -692,13 +866,27 @@
    },
    "failure": {
     "specimen": "s-01-20-failure",
-    "caption": "The red ampersand sits between two sides with no shared fact, so it marks the divide and reports nothing."
+    "caption": "<strong>Fails Rule 01.20.</strong> The red ampersand sits between two sides with no shared fact, so it marks the divide and reports nothing."
    },
    "related": [
     "04",
     "02"
    ],
-   "builders": "When a headline names the sides, link the deck’s source line to the vote, the sponsor list or the survey that shows the agreement."
+   "builders": "When a headline names the sides, link the deck’s source line to the vote, the sponsor list or the survey that shows the agreement.",
+   "specs": [
+    {
+     "label": "Names",
+     "value": "Left, right or a party’s name, only at a point where the sides agree"
+    },
+    {
+     "label": "Join",
+     "value": "What they agree on, as Rule 01.19 asks"
+    },
+    {
+     "label": "Source",
+     "value": "The vote, the sponsor list or the survey that shows the agreement, cited in the deck"
+    }
+   ]
   },
   {
    "id": "01.21",
@@ -723,7 +911,7 @@
    },
    "failure": {
     "specimen": "s-01-21-failure",
-    "caption": "“Explain” is a pillar and says nothing about the claim, and “Must read” and “Breaking” push the reader while hiding that the piece argues. The third kicker reaches its label only after the series. In the last, the Explain icon codes a pillar that the label Analysis never names."
+    "caption": "<strong>Fails Rule 01.21.</strong> “Explain” is a pillar and says nothing about the claim, and “Must read” and “Breaking” push the reader while hiding that the piece argues. The third kicker reaches its label only after the series. In the last, the Explain icon codes a pillar that the label Analysis never names."
    },
    "specs": [
     {
@@ -781,7 +969,7 @@
   },
   {
    "id": "01.22",
-   "title": "In a process piece, name the step and leave the side to the reader.",
+   "title": "Leave the side to the reader in a process piece.",
    "rule": [
     "An Act piece labeled “Act · How to take part” gives one step with its date and place, sets out what supporters and opponents have said at the same length, and takes no side. Its ask is the view’s one working red."
    ],
@@ -802,7 +990,7 @@
    },
    "failure": {
     "specimen": "s-01-22-failure",
-    "caption": "The piece keeps the process label and then argues one side, so a reader who opposes the change meets a position they were told was not there."
+    "caption": "<strong>Fails Rule 01.22.</strong> The piece keeps the process label and then argues one side, so a reader who opposes the change meets a position they were told was not there."
    },
    "specs": [
     {
@@ -853,7 +1041,7 @@
    },
    "failure": {
     "specimen": "s-01-23-failure",
-    "caption": "With the label at the bottom and no case against, a reader learns the piece was an argument only after the ask, which reads as a trick."
+    "caption": "<strong>Fails Rule 01.23.</strong> With the label at the bottom and no case against, a reader learns the piece was an argument only after the ask, which reads as a trick."
    },
    "specs": [
     {
@@ -897,7 +1085,7 @@
   },
   {
    "id": "01.24",
-   "title": "Name each product for what it does, and keep the ampersand for Oath & Action.",
+   "title": "Name each product for what it does.",
    "rule": [
     "Give each product a plain name that says what it does, signed by Oath & Action. The atlas is the only product named as a question, and no product name holds an ampersand. When we type a partner’s name in our own copy, its ampersand becomes “and”, and the partner’s logo stays as the partner draws it."
    ],
@@ -913,13 +1101,31 @@
    },
    "failure": {
     "specimen": "s-01-24-failure",
-    "caption": "A second ampersand competes with ours, a scorecard grades the officials we ask readers to contact, and “the Front” turns a series into a war."
+    "caption": "<strong>Fails Rule 01.24.</strong> A second ampersand competes with ours, a scorecard grades the officials we ask readers to contact, and “the Front” turns a series into a war."
    },
    "related": [
     "03",
     "22"
    ],
-   "builders": "Name a new product as its subject plus its kind, such as “Child Care Rules Tracker”, and check the name against this rule and Rule 01.15 before it ships. A piece made with a partner goes to Dustin Cathcart, our founder and editor, or an editor he names, before it prints or posts, and the host’s name leads. Chapter 03 sets the partnership lockup."
+   "builders": "Name a new product as its subject plus its kind, such as “Child Care Rules Tracker”, and check the name against this rule and Rule 01.15 before it ships. A piece made with a partner goes to Dustin Cathcart, our founder and editor, or an editor he names, before it prints or posts, and the host’s name leads. Chapter 03 sets the partnership lockup.",
+   "specs": [
+    {
+     "label": "Name",
+     "value": "Its subject and its kind, such as Child Care Rules Tracker, signed by Oath & Action"
+    },
+    {
+     "label": "Ampersand",
+     "value": "Only in Oath & Action; a partner’s ampersand becomes “and” in our copy"
+    },
+    {
+     "label": "Named as a question",
+     "value": "The atlas alone, Who Do They Answer To?"
+    },
+    {
+     "label": "Check",
+     "value": "Against Rule 01.15’s war and sports words"
+    }
+   ]
   }
  ],
  "extras": [

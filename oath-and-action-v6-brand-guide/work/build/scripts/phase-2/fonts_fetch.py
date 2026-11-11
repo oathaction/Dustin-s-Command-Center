@@ -6,8 +6,8 @@ Usage, from the project folder:
   python3 -I work/build/scripts/phase-2/fonts_fetch.py --page P   the page P embeds every manifest file once, each data URL
                                                                   decoding to the manifest's bytes, and asks no server for a font
 
-What it fetches. The page loaded exactly these families and weights from Google Fonts until Gate 2:
-  Inter Tight 600, 700 and 800; Inter 400, 500, 600 and 700; Lora Italic 400 and 500.
+What it fetches. Rule 06.1's one set (Gate 2 fix pass, CD-M1), the link a product loads (Rule 06.10):
+  Inter 400, 600 and 700; Inter Tight 800; Lora Italic 400 and 500.
 Google serves each family as one variable WOFF2 file per script subset, the same file for every weight of a style. The
 script asks for the page's own stylesheet with a current Chrome user agent (the version of the Chromium the guide's
 checks run in), keeps the latin and latin-ext subsets (KEEP below, and the engineer's Gate 2 notes for why) and saves each
@@ -32,7 +32,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[4]
 FONTS = ROOT / "work/build/assets/fonts"
 MANIFEST = FONTS / "20261111_Font-Manifest.json"
-CSS_URL = ("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700"
+# Gate 2 fix pass (CD-M1): Rule 06.1's one weight set, the link a product loads (Rule 06.10). Google serves the same
+# variable files for Inter and Lora as for the wider link the page loaded before; for Inter Tight at 800 alone it serves a
+# file of that one weight, which replaces the variable file fetched first.
+CSS_URL = ("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Inter+Tight:wght@800"
            "&family=Lora:ital,wght@1,400;1,500&display=swap")
 # Chromium 153 is the browser guide_check.js runs in (Playwright's local build); a desktop Chrome of the same version
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36"

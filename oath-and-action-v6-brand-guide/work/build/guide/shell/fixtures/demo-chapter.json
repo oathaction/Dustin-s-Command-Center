@@ -26,7 +26,7 @@
       },
       "failure": {
         "specimen": "s-demo-1-failure",
-        "caption": "<strong>Fails.</strong> The same notice with its body in secondary gray at 12 px, under the 13 px floor."
+        "caption": "<strong>Fails Rule 01.1.</strong> The same notice with its body in secondary gray at 12 px, under the 13 px floor."
       },
       "specs": [
         {
@@ -71,7 +71,7 @@
       },
       "failure": {
         "specimen": "s-demo-2-failure",
-        "caption": "<strong>Fails 1.4.11.</strong> The edge is too faint to find."
+        "caption": "<strong>Fails Rule 01.2.</strong> The edge is too faint to find, under the 3 to 1 of WCAG 1.4.11."
       },
       "corrective": {
         "specimen": "s-demo-2-corrective",

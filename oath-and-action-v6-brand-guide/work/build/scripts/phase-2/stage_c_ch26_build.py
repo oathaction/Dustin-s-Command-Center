@@ -33,7 +33,9 @@ SPEC = ROOT / "work/build/guide/specimens"
 MANIFEST = SPEC / "manifest-tokens.json"
 CODE = ROOT / "work/build/guide/code"
 WARNING_SVG = ROOT / "work/build/assets/utility/svg-24/20261110_Utility-Warning-24px.svg"
-FONTS = ("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700"
+# Gate 2 fix pass (CD-M1): Rule 06.1's set is the one set a product loads: Inter 400, 600 and 700; Inter Tight 800; Lora
+# Italic 400 and 500. Google serves the same variable files for it (fonts_fetch.py), and the guide carries them itself.
+FONTS = ("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Inter+Tight:wght@800"
          "&family=Lora:ital,wght@1,400;1,500&display=swap")
 e = html.escape
 
@@ -165,7 +167,7 @@ BASE = (".sx-k{margin:0;font:var(--oa-type-label);letter-spacing:var(--oa-type-l
         ".sx-code{display:block;margin:0;padding:12px 16px;background:var(--oa-color-surface-white);color:var(--oa-color-text-primary-on-white);"
         "font-family:ui-monospace,\"SFMono-Regular\",Menlo,Consolas,monospace;font-size:.875rem;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}"
         ".sx-meas{margin:0;padding:12px 16px 16px;font:var(--oa-type-caption);color:var(--oa-color-text-secondary-on-newsprint)}.sx-il{margin:0 0 8px}"
-        ".dnp{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 10px;background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);"
+        ".dnp{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 10px;background:var(--oa-color-action-primary-fill);color:var(--oa-color-text-primary-on-charcoal);"
         "font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}")
 BAND = '<p class="dnp"><span aria-hidden="true">×</span>Failure case: do not publish</p>'
 # Round 2 (call 9, D2-1551; CD-S7, BE-S8, CA-S7): an invented piece carries the shell's Illustrative chip at its head,
@@ -267,7 +269,7 @@ def specimens():
         ".sx-pane--n{background:var(--oa-color-surface-newsprint);border:1px solid var(--oa-color-border-hairline-on-newsprint)}.sx-pane--c{background:var(--oa-color-surface-charcoal)}"
         ".sx-lab{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px dashed currentColor;font:var(--oa-type-ui);color:var(--oa-color-derived-deep-stone)}"
         ".sx-pane--c .sx-c{color:var(--oa-color-text-secondary-on-charcoal)}",
-        f'{code(".download-button[aria-disabled=true] {" + chr(10) + "  color: var(--oa-color-derived-deep-stone);" + chr(10) + "}")}'
+        f'{BAND}{code(".download-button[aria-disabled=true] {" + chr(10) + "  color: var(--oa-color-derived-deep-stone);" + chr(10) + "}")}'
         f'<div class="sx-two"><div class="sx-pane sx-pane--n"><span class="sx-lab">Download the photo</span><p class="sx-c">On Newsprint: {F["ds_n"]} to 1</p></div>'
         f'<div class="sx-pane sx-pane--c"><span class="sx-lab">Download the photo</span><p class="sx-c">In the dark theme: {F["ds_c"]} to 1</p></div></div>'),
         f"A line of CSS that colors an unavailable button's label with the primitive Deep Stone, then the same button twice: on Newsprint its label measures "
@@ -417,7 +419,7 @@ def specimens():
         "Google Fonts, tokens.css, and the body rule margin 0 with the body type. Under them, a browser window drawn as a frame, and the page inside it: a "
         "sentence in Inter at 17 px that starts at the window's edge, with no margin.")
     add("s-26-5-failure", "26.5", spec(page_css + ".sx-in{margin:0;padding:8px}.sx-in p{margin:0;font:400 16px/normal Georgia,\"Times New Roman\",serif}",
-        f'<p class="sx-k">In the head</p>{code(head.split(chr(10) + "<style>")[0])}<div class="sx-pg"><p class="sx-bar2">Browser window. The frame is its edge.</p>'
+        f'{BAND}<p class="sx-k">In the head</p>{code(head.split(chr(10) + "<style>")[0])}<div class="sx-pg"><p class="sx-bar2">Browser window. The frame is its edge.</p>'
         f'<div class="sx-in"><p>{para}</p></div></div>'),
         "The same head with the body rule left out, and the page it draws in a browser window drawn as a frame: the sentence in the browser's own serif at "
         "16 px, 8 px in from the window's edge, so no component sits where its code says.",
@@ -441,7 +443,7 @@ def specimens():
         f"{F['ds_n']} to 1 on Newsprint and {F['dim_c']} on Charcoal.", illustrative=True, notes="Illustrative hearing.")
     add("s-26-6-failure", "26.6", spec(th_css + ".sx-pin{padding:16px;background:var(--oa-color-surface);color:var(--oa-color-text-primary-on-newsprint);display:grid;gap:8px}"
                                        ".sx-pin .sx-c{color:var(--oa-color-text-secondary-on-newsprint)}",
-        f'{code(".card { color: var(--oa-color-text-primary-on-newsprint) }")}<div class="sx-two"><div class="sx-pin" data-oa-theme="dark">'
+        f'{BAND}{code(".card { color: var(--oa-color-text-primary-on-newsprint) }")}<div class="sx-two"><div class="sx-pin" data-oa-theme="dark">'
         f'<p class="sx-s"><strong>Water rate hearing</strong></p><p class="sx-c">Board of Public Utilities, March 12</p></div></div>'
         f'<p class="sx-meas">In the dark theme the card takes Charcoal, and its words stay Charcoal: {F["char_c"]} to 1.</p>'),
         f"A card whose words name the Newsprint text token, drawn in the dark theme: its ground follows the theme to Charcoal while its words stay Charcoal, so the "
@@ -637,8 +639,8 @@ def code_sets():
 def chapter():
     cats = words_list([CAT_WORDS.get(c, c) for c in CATEGORIES])
     rules = [
-        {"id": "26.1", "title": "Read every value through a token, named for its job and the surface it sits on.",
-         "rule": [f"A token is a named design value. tokens.css and tokens.json hold the same {N_TOKENS} tokens in {len(CATEGORIES)} categories: {cats}. "
+        {"id": "26.1", "title": "Read every value through a token named for its job.",
+         "rule": [f"A token is a named design value, and its name says its job and the surface it sits on. tokens.css and tokens.json hold the same {N_TOKENS} tokens in {len(CATEGORIES)} categories: {cats}. "
                   "A name runs from its category to its surface: <code>oa.color.text.secondary.onNewsprint</code> in tokens.json is "
                   "<code>--oa-color-text-secondary-on-newsprint</code> in CSS. Each part of the name is a word you can look up, so a name tells you its job.",
                   "Tokens come in three tiers. A primitive holds a value, such as Deep Stone. A semantic token gives a primitive one job on one surface, such as "
@@ -647,7 +649,7 @@ def chapter():
          "tokens": ["oa.color.derived.deepStone", "oa.color.state.disabled.text.onNewsprint", "oa.component.button.disabled.label.onNewsprint"],
          "why": {"text": ["A name that says the job lets a page change its surface or its theme with no new value: a surface class or the dark theme points each "
                           "short name at the token for that ground. A primitive cannot follow, because it names a color and nothing else."],
-                 "basis": "Design Tokens Format Module 2025.10; Design judgment"},
+                 "basis": "Design Tokens Format Module 2025.10; design judgment"},
          "correct": {"specimen": "s-26-1-correct", "caption": f"One value in its three tiers. The button's label reads the component token, which points to disabled text on Newsprint, which points to Deep Stone."},
          "failure": {"specimen": "s-26-1-failure", "caption": f"<strong>Fails Rule 26.1.</strong> The label reads the primitive itself. On Newsprint it passes; in the dark theme it stays Deep Stone on Charcoal and measures {F['ds_c']} to 1."},
          "specs": [{"label": "Categories", "value": cats[0].upper() + cats[1:]},
@@ -676,8 +678,8 @@ def chapter():
                    {"label": "Release", "value": "A new token raises the version's second number (Rule 26.8)"}],
          "related": ["05", "19"],
          "builders": ["Ask the editor for a token before you add a value of your own. Send the need and its evidence with the request, and the five conditions decide."]},
-        {"id": "26.3", "title": "Choose a token in five steps: surface, role, emphasis, state, then any component token, which wins.",
-         "rule": ["Start from the surface the element sits on: Newsprint, White, Charcoal or Prussian. Then its job, which a token’s name calls its role: text, "
+        {"id": "26.3", "title": "Choose a token in five steps, starting from its surface.",
+         "rule": ["The five steps are surface, role, emphasis, state, then any component token, which wins. Start from the surface the element sits on: Newsprint, White, Charcoal or Prussian. Then its job, which a token’s name calls its role: text, "
                   "graphic, border, focus, data, action, state or field. Then its emphasis: primary or secondary text, an essential or "
                   "subtle graphic, a strong or hairline border, the data a chart is about or its context. Then its state, if it has one, such as selected, disabled, "
                   "warning or error. Last, look for a component token for the part you are drawing, such as a button's disabled label. When one exists, use it, since "
@@ -692,7 +694,7 @@ def chapter():
          "tokens": ["oa.color.text.secondary.onCharcoal", "oa.color.text.secondary.onNewsprint", "oa.color.graphic.essential.onNewsprint", "oa.border.width.bar"],
          "why": {"text": ["Each step narrows the choice by a fact about the page, so two builders reach the same token. Every color token was "
                           "measured on its own surface, and starting from the surface keeps you on the one it was measured for."],
-                 "basis": "WCAG 2.2 SC 1.4.3 and 1.4.11; Design judgment"},
+                 "basis": "WCAG 2.2 SC 1.4.3 and 1.4.11; design judgment"},
          "correct": {"specimen": "s-26-3-correct", "caption": f"A caption on a Charcoal panel: surface Charcoal, role text, emphasis secondary, no state, no component token. The token is Dim Newsprint, {F['dim_c']} to 1."},
          "failure": {"specimen": "s-26-3-failure", "caption": f"<strong>Fails Rule 26.3.</strong> The first step was skipped, and a caption on Prussian took Newsprint's secondary text token: {F['ds_pr']} to 1."},
          "specs": [{"label": "1 Surface", "value": "Newsprint, White, Charcoal or Prussian; in CSS, <code>.oa-surface-newsprint</code> and the rest, or the theme (Rule 26.6)"},
@@ -704,7 +706,7 @@ def chapter():
          "related": ["05", "17", "18"],
          "builders": ["Write the role's short name in your CSS. Add a surface class in your HTML only where a block must keep one ground in both themes, such as a "
                       "Prussian panel. A component then needs no change to move from one surface or theme to another."]},
-        {"id": "26.4", "title": "Work through the five steps on four common parts, and copy the code they lead to.",
+        {"id": "26.4", "title": "Work through the five steps on four common parts.",
          "rule": ["The four examples below take parts every product needs through the five steps of Rule 26.3, and set each at actual size beside its failure, "
                   "with code to copy. Each code set "
                   "reads only tokens.css, by short name, with a surface class where the example names a surface. Its live demos show it in the light theme and the "
@@ -712,7 +714,7 @@ def chapter():
          "tokens": ["oa.color.text.secondary.onNewsprint", "oa.component.button.disabled.label.onWhite", "oa.color.data.emphasis.onNewsprint",
                     "oa.color.data.context.onNewsprint", "oa.color.state.warning.mark.onPrussian", "oa.color.state.warning.text.onPrussian"],
          "why": {"text": ["A worked example shows the choice at each step and the ratio it buys, so you can check a new part the same way before you ship it."],
-                 "basis": "WCAG 2.2 SC 1.4.1, 1.4.3 and 1.4.11; Design judgment"},
+                 "basis": "WCAG 2.2 SC 1.4.1, 1.4.3 and 1.4.11; design judgment"},
          "examples": [
              {"title": "A caption under a chart, on Newsprint",
               "correct": {"specimen": "s-26-4-1-correct", "caption": f"Surface Newsprint, role text, emphasis secondary: Deep Stone, {F['ds_n']} to 1."},
@@ -755,11 +757,12 @@ def chapter():
          "failure": {"specimen": "s-26-5-failure", "caption": "<strong>Fails Rule 26.5.</strong> With the body rule left out, the text falls back to the browser's serif at 16 px inside an 8 px margin."},
          "specs": [{"label": "Order in the head", "value": "For a product with the theme switch, the head script first (Rule 26.6); then the color scheme meta tag, the fonts, tokens.css and your own styles"},
                    {"label": "Body rule", "value": "<code>body { margin: 0; font: var(--oa-type-body) }</code>", "token": "oa.type.body"},
-                   {"label": "Fonts", "value": "Inter, Inter Tight and Lora from Google Fonts, under the SIL Open Font License 1.1 (chapter 06)"},
+                   {"label": "Fonts", "value": "Inter 400, 600 and 700, Inter Tight 800 and Lora Italic 400 and 500, from Google Fonts under the SIL Open Font License 1.1 (Rule 06.10). This guide carries the same files inside the page."},
                    {"label": "Themed product", "value": "<code>&lt;meta name=\"color-scheme\" content=\"light dark\"&gt;</code>; a page that stays light writes <code>only light</code>"},
                    {"label": "24 px symbols", "value": "<code>.oa-at-2x { display: none }</code> and <code>@media (min-resolution: 2dppx) { .oa-at-1x { display: none } .oa-at-2x { display: inline } }</code>, in your own stylesheet"}],
          "related": ["06", "07", "18"],
-         "builders": [f"The fonts link this guide uses: <code>{e(FONTS)}</code>."]},
+         "builders": [f"A product loads the three faces with this link (Rule 06.10): <code>{e(FONTS)}</code>. This guide carries the same files inside the page, "
+                      "unchanged, so it loads no type from elsewhere; its colophon holds their licenses."]},
         {"id": "26.6", "title": "Let a product follow the reader's light or dark setting through one attribute.",
          "rule": ["tokens.css carries a light theme on Newsprint and a dark theme on Charcoal. With no attribute on the page's root, a page follows the device. "
                   "<code>data-oa-theme=\"light\"</code> or <code>\"dark\"</code> on the root wins over the device, and <code>\"device\"</code> hands the choice back. On any "
@@ -774,7 +777,7 @@ def chapter():
          "tokens": ["oa.color.surface.newsprint", "oa.color.surface.charcoal", "oa.color.field.ground.onNewsprint", "oa.color.field.ground.onCharcoal"],
          "why": {"text": ["One set of short names serves both grounds, so a component written once draws correctly in both themes, as each code plate in chapter 18 "
                           "shows live. A token named for one surface cannot follow."],
-                 "basis": "Media Queries Level 5, prefers-color-scheme; Design judgment"},
+                 "basis": "Media Queries Level 5, prefers-color-scheme; design judgment"},
          "correct": {"specimen": "s-26-6-correct", "caption": f"One card, two themes, the same short names. Secondary text measures {F['ds_n']} to 1 on Newsprint and {F['dim_c']} on Charcoal."},
          "failure": {"specimen": "s-26-6-failure", "caption": f"<strong>Fails Rule 26.6.</strong> The words name Newsprint's text token, so in the dark theme they stay Charcoal on Charcoal: {F['char_c']} to 1."},
          "specs": [{"label": "Attribute", "value": "<code>data-oa-theme</code>: <code>light</code>, <code>dark</code> or <code>device</code>; none follows the device"},

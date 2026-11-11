@@ -125,7 +125,7 @@ BASE = f"""
 .ed th,.ed td{{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--oa-color-border-hairline)}}
 .ed thead th{{{fx('label')};text-transform:uppercase;color:var(--oa-color-text-secondary);border-bottom:2px solid var(--oa-color-border-strong)}}
 .ed .lk{{font-family:var(--oa-font-family-quote);font-style:italic}}
-.ed .dnp{{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 10px;background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);{fx('label')};text-transform:uppercase}}
+.ed .dnp{{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 10px;background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);{fx('label')};text-transform:uppercase}}
 @media (max-width:47.99em){{.ed table.stack,.ed table.stack tbody,.ed table.stack tr,.ed table.stack th,.ed table.stack td{{display:block;width:100%;min-width:0}}
 .ed table.stack thead{{display:none}}.ed table.stack tr{{border-bottom:1px solid var(--oa-color-border-strong);padding:10px 0}}
 .ed table.stack th,.ed table.stack td{{border:0;padding:3px 0}}.ed table.stack td[data-k]::before{{content:attr(data-k) ": ";font-weight:700}}}}
@@ -282,8 +282,16 @@ PROW = f"""
 
 
 def dnp():
-    """The band inside a partisan failure stage, so a cropped capture still says what it is (BE-S4)."""
+    """The band inside a failure stage that draws a piece a reader could lift, so a cropped capture still says what it
+    is (BE-S4). Gate 2 fix pass, CD-S2: Charcoal with its words in the text ink Charcoal takes, Newsprint, as stage C
+    draws it."""
     return '<p class="dnp"><span aria-hidden="true">×</span>Failure case: do not publish</p>'
+
+
+def fails_lead(rule_id, caption):
+    """Gate 2 fix pass, CD-S2: every failure caption leads with the rule it fails, in bold, as chapters 10 to 26 do."""
+    lead = f"<strong>Fails Rule {rule_id}.</strong> "
+    return caption if caption.startswith(lead) else lead + caption
 
 
 def marks(s):

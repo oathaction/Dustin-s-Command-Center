@@ -4,6 +4,7 @@
   "title": "Layout and spacing",
   "part": "Foundations",
   "instruction": "Build each page on the column grid and spacing scale, readable at every width.",
+  "opener": "s-07-opener",
   "intro": [
     "Every page sits on a column grid and spaces its parts in steps of 8 px. The grid changes at set window widths, called breakpoints, from 12 columns on a desktop to four on a phone, and each paragraph spans the columns that keep its lines at the measure chapter 06 sets.",
     "A page also has to read at 320 px wide, and with its text at twice the size, with nothing cut off and no scrolling sideways."
@@ -40,7 +41,7 @@
       },
       "failure": {
         "specimen": "s-07-1-failure",
-        "caption": "<strong>Fails the scale.</strong> The same card with gaps of 22, 13 and 37 px. Each is near a step and none is one, so the card sits out of line with the page around it."
+        "caption": "<strong>Fails Rule 07.1.</strong> The same card with gaps of 22, 13 and 37 px. Each is near a step and none is one, so the card sits out of line with the page around it."
       },
       "specs": [
         {
@@ -139,7 +140,7 @@
       },
       "failure": {
         "specimen": "s-07-2-failure",
-        "caption": "<strong>Fails the grid.</strong> A page at 1440 px, drawn at one quarter size, whose three sections sit on three, five and two columns. Their edges never line up, so each section reads as a separate page."
+        "caption": "<strong>Fails Rule 07.2.</strong> A page at 1440 px, drawn at one quarter size, whose three sections sit on three, five and two columns. Their edges never line up, so each section reads as a separate page."
       },
       "specs": [
         {
@@ -203,7 +204,7 @@
       },
       "failure": {
         "specimen": "s-07-3-failure",
-        "caption": "<strong>Fails the measure.</strong> Drawn at one quarter size, a paragraph spanning all 12 columns at 1440 px. It measured 160 characters a line."
+        "caption": "<strong>Fails Rule 07.3.</strong> Drawn at one quarter size, a paragraph spanning all 12 columns at 1440 px. It measured 160 characters a line."
       },
       "specs": [
         {
@@ -271,7 +272,7 @@
       },
       "failure": {
         "specimen": "s-07-4-failure",
-        "caption": "<strong>Fails proximity.</strong> The same section with 24 px above and below the heading, so it floats between the two blocks."
+        "caption": "<strong>Fails Rule 07.4.</strong> The same section with 24 px above and below the heading, so it floats between the two blocks."
       },
       "specs": [
         {
@@ -331,7 +332,7 @@
       },
       "failure": {
         "specimen": "s-07-5-failure",
-        "caption": "<strong>Fails the measure at 200 percent.</strong> With breakpoints in px, a reader at 200 percent text keeps the wide layout, and body text at 34 px in a five-column span runs about 29 characters a line."
+        "caption": "<strong>Fails Rule 07.5.</strong> With breakpoints in px, a reader at 200 percent text keeps the wide layout, and body text at 34 px in a five-column span runs about 29 characters a line."
       },
       "specs": [
         {
@@ -386,7 +387,7 @@
       },
       "failure": {
         "specimen": "s-07-6-failure",
-        "caption": "<strong>Fails 1.4.10.</strong> The same pairs kept as a table in a 320 px frame. The last column falls past the edge, and a reader on a small phone never sees what each pair may carry."
+        "caption": "<strong>Fails Rule 07.6.</strong> The same pairs kept as a table in a 320 px frame. The last column falls past the edge, and a reader on a small phone never sees what each pair may carry."
       },
       "specs": [
         {

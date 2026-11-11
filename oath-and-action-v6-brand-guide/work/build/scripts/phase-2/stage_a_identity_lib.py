@@ -156,6 +156,24 @@ def _vb(path):
     return [float(v) for v in re.search(r'viewBox="([^"]+)"', m.group(1)).group(1).replace(",", " ").split()]
 
 
+# Gate 2's fix pass (CD-S1): an opener draws the masters a later plate in the same chapter already carries, by <use>,
+# so the page holds each drawing once and the opener stays light. SHARE names the plate that carries them: while it is
+# set, svg_file places each master inline once, with the id share_id() gives it, and the guide build prefixes that id
+# with the plate's own (guide_build.prefix_ids). REF names the same plate while an opener is drawn: svg_file then draws
+# an <svg> of the same size holding one <use> of that master, so the opener's layout code is the plate's own.
+SHARE = [None, set()]         # [the plate that carries the masters, the masters it has placed]
+REF = [None]                  # the plate an opener draws its masters from
+
+
+def share_id(path):
+    return "m-" + re.sub(r"[^a-z0-9]+", "-", Path(path).stem.lower()).strip("-")
+
+
+def ref_href(source, path):
+    """The href an opener's <use> carries for a master the source plate places, as the guide build prefixes it."""
+    return f"#{source}--{share_id(path)}"
+
+
 def svg_file(path, *, w=None, h=None, label=None, style="", cls="", red=None, decorative=False, extra="", by_ref=None):
     """Place one SVG file at a set size. Exactly one of w or h may be given; the other follows the viewBox.
 
@@ -163,6 +181,25 @@ def svg_file(path, *, w=None, h=None, label=None, style="", cls="", red=None, de
     build (guide_build.py) inlines as SVG, so the fragment holds the path and never a copy of the drawing. Files with
     ids that may repeat inside one specimen (the re-exported taglines) are inlined here with their ids prefixed."""
     path = Path(path)
+    if REF[0]:
+        vb = _vb(path)
+        if w is None and h is None:
+            h = vb[3]
+        if w is None:
+            w = h * vb[2] / vb[3]
+        if h is None:
+            h = w * vb[3] / vb[2]
+        a11y = 'aria-hidden="true"' if decorative or not label else f'role="img" aria-label="{E(label)}"'
+        st = f' style="{style}"' if style else ""
+        out = (f'<svg width="{w:.2f}" height="{h:.2f}" class="oai-svg {cls}"{st} {a11y} focusable="false">'
+               f'<use href="{ref_href(REF[0], path)}" width="{w:.2f}" height="{h:.2f}"/></svg>')
+        if red:
+            return f'<span class="oai-red" data-red="{red[0]}"' + (f' data-red-job="{E(red[1])}"' if len(red) > 1 else "") + f">{out}</span>"
+        return out
+    if SHARE[0] and path not in SHARE[1]:
+        SHARE[1].add(path)
+        by_ref = False
+        extra = f'{extra} id="{share_id(path)}"'
     if by_ref is None:
         by_ref = not INLINE_ALL[0] and "reexport" not in path.parts
     if by_ref:
@@ -191,9 +228,10 @@ def svg_file(path, *, w=None, h=None, label=None, style="", cls="", red=None, de
         w = h * vb[2] / vb[3]
     if h is None:
         h = w * vb[3] / vb[2]
-    _uid[0] += 1
-    pre = f"oai{_uid[0]}"
     ids = set(re.findall(r'\bid="([^"]+)"', s))
+    if ids or not SHARE[0]:            # a shared master with no ids of its own leaves the counter where it was
+        _uid[0] += 1
+    pre = f"oai{_uid[0]}"
     for i in sorted(ids, key=len, reverse=True):
         s = s.replace(f'id="{i}"', f'id="{pre}-{i}"').replace(f"url(#{i})", f"url(#{pre}-{i})").replace(f'href="#{i}"', f'href="#{pre}-{i}"')
     body = s[m.end():]
@@ -517,10 +555,31 @@ def head_label(scope=""):
     return f'<p class="oai-head">{illus()}{tail}</p>'
 
 
-def dnp():
+def dnp(gap=False):
     """The Charcoal band inside a failure stage that could pass for our work, so a cropped capture still says what it
-    is. Same form as the editor's and the systems designer's bands (D2-282, D2-308)."""
-    return '<p class="oai-dnp"><span aria-hidden="true">×</span>Failure case: do not publish</p>'
+    is. Same form as the editor's and the systems designer's bands (D2-282, D2-308). Gate 2's fix pass (CD-S2): its words
+    take the text token on Charcoal, Newsprint, as stage C's bands do. gap leaves 12 px under it."""
+    g = " oai-dnp--gap" if gap else ""
+    return f'<p class="oai-dnp{g}"><span aria-hidden="true">×</span>Failure case: do not publish</p>'
+
+
+# Gate 2's fix pass (CD-S2): every failure plate that draws a piece a reader could lift carries the band. Every failure
+# plate this maker draws is such a piece (a mark, a card, a page, a tile, a flyer), and so is the extra s-03-misuse, so
+# fragment() adds the band to any that lacks it: inside a padded stage at its top, or above the piece otherwise.
+BAR_EXTRA = ("s-03-misuse",)
+
+
+def needs_bar(spec_id):
+    return spec_id.endswith("-failure") or spec_id in BAR_EXTRA
+
+
+def with_bar(spec_id, body):
+    if not needs_bar(spec_id) or "oai-dnp" in body:
+        return body
+    if body.startswith('<div class="oai-pad'):
+        i = body.index(">") + 1
+        return body[:i] + dnp(gap=True) + body[i:]
+    return f'<div>{dnp(gap=True)}{body}</div>'
 
 
 # ------------------------------------------------------------------------- numbered steps, as chapter 11 draws them
@@ -542,7 +601,7 @@ def _step_node(cx, cy, d, st, num, surface):
                 f'<text x="{cx:g}" y="{ty_:.2f}" font-weight="700" fill="{bg}" {txt}>{num}</text>')
     if st == "now":
         return (f'<circle cx="{cx:g}" cy="{cy:g}" r="{R - 1.5:g}" fill="{bg}" stroke="{ink_}" stroke-width="3"/>'
-                f'<text x="{cx:g}" y="{ty_:.2f}" font-weight="800" fill="{ink_}" {txt}>{num}</text>')
+                f'<text x="{cx:g}" y="{ty_:.2f}" font-weight="700" fill="{ink_}" {txt}>{num}</text>')
     if st == "notyet":
         return (f'<circle cx="{cx:g}" cy="{cy:g}" r="{R - 0.75:g}" fill="{bg}" stroke="{sub}" stroke-width="1.5"/>'
                 f'<text x="{cx:g}" y="{ty_:.2f}" font-weight="600" fill="{t2}" {txt}>{num}</text>')
@@ -630,7 +689,8 @@ CSS = """
 @media (max-width:35.49em){.oai table.stack,.oai table.stack tbody,.oai table.stack tr,.oai table.stack th,.oai table.stack td{display:block;width:100%}.oai table.stack thead,.oai table.stack caption+thead{display:none}.oai table.stack tr{border-bottom:1px solid var(--oa-color-border-strong-on-newsprint);padding:10px 0}.oai table.stack caption{display:block;width:100%}.oai table.stack th,.oai table.stack td{border:0;padding:2px 0}.oai table.stack td[data-k]::before{content:attr(data-k) ": ";font-weight:700}}
 .oai th{font-weight:700}
 .oai-fail-x{display:none}
-.oai .oai-dnp{display:flex;align-items:center;gap:8px;margin:0;padding:6px 10px;background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}
+.oai .oai-dnp{display:flex;align-items:center;gap:8px;margin:0;padding:6px 10px;background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}
+.oai .oai-dnp--gap{margin-bottom:12px}
 """
 
 
@@ -672,5 +732,6 @@ def fragment(spec_id, body, *, cls="", extra_css="", role_img=None, attrs=""):
     specimen from the manifest's alt (role="img"), so the fragment carries no name of its own."""
     if body.startswith('<div class="oai-panel oai-s-newsprint"'):
         body = '<div class="oai-pad oai-s-newsprint"' + body[len('<div class="oai-panel oai-s-newsprint"'):]
+    body = with_bar(spec_id, body)
     return curl_html(f'<style>{CSS}{extra_css}</style>\n'
                      f'<div class="oai {cls}" data-oai="{spec_id}"{attrs}>{body}</div>\n')

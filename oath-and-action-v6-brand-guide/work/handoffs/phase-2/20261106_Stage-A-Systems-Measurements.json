@@ -2,7 +2,7 @@
  "about": "Every figure printed in chapters 05, 06 and 07 of stage board A, with the method that produced it. Contrast, OKLab and color-vision figures are computed from tokens.json; rendered figures come from Chromium through stage_a_systems_capture.js with the fonts the guide page loads.",
  "built": "2026-11-06",
  "tokens_json": "work/build/tokens/tokens.json",
- "token_set_version": "6.0.0-gate2.8",
+ "token_set_version": "6.0.0-gate2.9",
  "figures": {
   "Arial over Inter Tight width, percent": {
    "value": "1.3",
@@ -35,6 +35,10 @@
   "Rule 05.3 matches tokens.json redRule.text": {
    "value": "yes",
    "method": "string comparison, straight apostrophes read as curly"
+  },
+  "Rule 05.3 sentences placed": {
+   "value": "body 5, 6, 10; the other seven in specifications",
+   "method": "each sentence of the approved wording found once in the rule body or a specification value"
   },
   "body span desktop": {
    "value": "7 of 12 columns, 540.7 px, 64.0 characters a line",
@@ -943,15 +947,15 @@
    "method": "canvas at twice size, Inter Tight 800 at 110 px, tracking -0.045 em, with kerning; a pair touches when no white device pixel separates the two glyphs"
   },
   "pairs titles 0, touching": {
-   "value": "4 of 738: rd rd yt rg",
+   "value": "4 of 708: rd rd yt rg",
    "method": "canvas at twice size, Inter Tight 800 at 32 px, tracking 0 em, with kerning; a pair touches when no white device pixel separates the two glyphs"
   },
   "pairs titles draft, touching": {
-   "value": "107 of 738: st ry xt ly pa rs pa ss iv ki re ed ry st rd pe ee ca ry iv re ed rc iv ed ee ff ty rt rt pa tt ee ty pe fa ry ro ty pe ca xt re ee be ra ki ly ro fi re iv eg iv Ba ee tw rd re st pe xt ed bo od dy xt ra rs ty pe st st re ee fa fa st pa ry yt st ca pa dt pa bo od dy xt ro ss re xt ro od oc bo re kp po rg xt ry pa re st",
+   "value": "103 of 708: st ry xt ly pa rs pa ss iv ki re ed ry st rd pe ee ca ry iv ed ee ff ty rt rt pa tt ee ty pe fa ry ro ty pe ca xt re ee be ra ki ly ro fi re iv eg iv Ba ee tw rd re st pe xt ed bo od dy xt ra rs ty pe st st re ee fa fa st pa ry yt st ca pa dt pa bo od dy xt ro ss re xt ro od oc bo re kp po rg xt ry pa re st",
    "method": "canvas at twice size, Inter Tight 800 at 32 px, tracking -0.03 em, with kerning; a pair touches when no white device pixel separates the two glyphs"
   },
   "pairs titles token, touching": {
-   "value": "32 of 738: ry xt re ry rd ry re rc ff ry ro xt re ro re rd re xt xt re ry yt xt ro re xt ro re rg xt ry re",
+   "value": "30 of 708: ry xt re ry rd ry ff ry ro xt re ro re rd re xt xt re ry yt xt ro re xt ro re rg xt ry re",
    "method": "canvas at twice size, Inter Tight 800 at 32 px, tracking -0.01 em, with kerning; a pair touches when no white device pixel separates the two glyphs"
   },
   "space h3 0 px": {
@@ -5437,7 +5441,7 @@
    "titles": null
   },
   "pairs titles 0": {
-   "pairs": 738,
+   "pairs": 708,
    "touching": 4,
    "which": [
     "rd",
@@ -5453,8 +5457,8 @@
    "titles": 23
   },
   "pairs titles draft": {
-   "pairs": 738,
-   "touching": 107,
+   "pairs": 708,
+   "touching": 103,
    "which": [
     "st",
     "ry",
@@ -5475,10 +5479,6 @@
     "ee",
     "ca",
     "ry",
-    "iv",
-    "re",
-    "ed",
-    "rc",
     "iv",
     "ed",
     "ee",
@@ -5572,8 +5572,8 @@
    "titles": 23
   },
   "pairs titles token": {
-   "pairs": 738,
-   "touching": 32,
+   "pairs": 708,
+   "touching": 30,
    "which": [
     "ry",
     "xt",
@@ -5581,8 +5581,6 @@
     "ry",
     "rd",
     "ry",
-    "re",
-    "rc",
     "ff",
     "ry",
     "ro",
@@ -5622,9 +5620,9 @@
    ],
    "pixels": 281160,
    "shares": {
-    "newsprint": 75.61,
+    "newsprint": 75.57,
     "charcoal": 17.89,
-    "pillarRed": 3.08,
+    "pillarRed": 3.12,
     "prussian": 0.29,
     "stone": 2.91,
     "verdigris": 0.0,
@@ -5638,10 +5636,10 @@
    ],
    "pixels": 263880,
    "shares": {
-    "newsprint": 9.9,
+    "newsprint": 9.94,
     "charcoal": 61.98,
     "pillarRed": 0.04,
-    "prussian": 24.46,
+    "prussian": 24.42,
     "stone": 3.06,
     "verdigris": 0.0,
     "white": 0.54
@@ -5690,10 +5688,11 @@
   "browser": "chromium 153.0.8010.12",
   "viewport": "1440x900",
   "deviceScaleFactor": 1,
-  "fonts": "Google Fonts css2: Inter 400 500 600 700, Inter Tight 800, Lora italic 400 500",
-  "date": "2026-11-11T06:35:41.759Z"
+  "fonts": "Google Fonts css2: Inter 400 600 700, Inter Tight 800, Lora italic 400 500",
+  "date": "2026-11-11T17:50:13.777Z"
  },
  "tokens_cited": [
+  "oa.border.width.rule",
   "oa.chart.color.baseline.onNewsprint",
   "oa.chart.color.context.onNewsprint",
   "oa.chart.color.diverging.fill.step1.onNewsprint",

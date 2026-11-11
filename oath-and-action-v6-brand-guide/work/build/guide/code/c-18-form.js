@@ -3,6 +3,9 @@
 // (Rule 11.16). A field in error is checked again as the reader types, so the red returns to the ask once all are
 // fixed. A good send turns the ask's word to "Sending" (its data-oa-sending) and says so in the status line, keeps the
 // ask unavailable while it runs, then gives the ask its word back and says what happened.
+// Each field holds aria-invalid="false" until a send finds it wrong, and goes back to "false" once fixed. A browser
+// checks an email field's address as it is typed, and without the attribute a screen reader could say "invalid"
+// before the reader has sent anything.
 (function () {
   var CHECKS = {
     email: function (v) { return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v); },
@@ -26,7 +29,7 @@
         error.setAttribute('data-red', 'working');
         error.setAttribute('data-red-job', 'error');
       } else {
-        input.removeAttribute('aria-invalid');
+        input.setAttribute('aria-invalid', 'false');
         error.hidden = true;
         error.removeAttribute('data-red');
         error.removeAttribute('data-red-job');
@@ -57,6 +60,7 @@
       if (template) status.appendChild(form.querySelector(template).content.cloneNode(true));
     }
     fields.forEach(function (input) {
+      if (!input.hasAttribute('aria-invalid')) input.setAttribute('aria-invalid', 'false');
       input.addEventListener('input', function () {
         if (input.getAttribute('aria-invalid') === 'true') { check(input); red(); }
       });

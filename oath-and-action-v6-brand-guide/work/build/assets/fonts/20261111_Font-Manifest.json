@@ -1,6 +1,6 @@
 {
  "about": "The guide's three typefaces as Google Fonts serves them, unmodified, with their OFL 1.1 texts (Gate 2, D2-1697). Written by work/build/scripts/phase-2/fonts_fetch.py; guide_build.py embeds every file listed here as an @font-face data URL.",
- "stylesheet": "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Lora:ital,wght@1,400;1,500&display=swap",
+ "stylesheet": "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Inter+Tight:wght@800&family=Lora:ital,wght@1,400;1,500&display=swap",
  "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
  "fetched": "2026-11-11",
  "subsets_kept": [
@@ -75,7 +75,6 @@
    "style": "normal",
    "weights": [
     400,
-    500,
     600,
     700
    ],
@@ -93,7 +92,6 @@
    "style": "normal",
    "weights": [
     400,
-    500,
     600,
     700
    ],
@@ -110,16 +108,14 @@
    "family": "Inter Tight",
    "style": "normal",
    "weights": [
-    600,
-    700,
     800
    ],
    "subset": "latin",
    "unicode_range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
    "display": "swap",
-   "url": "https://fonts.gstatic.com/s/intertight/v9/NGSwv5HMAFg6IuGlBNMjxLsH8ag.woff2",
-   "bytes": 44872,
-   "sha256": "77fefe8ca19b9f69b5284832c519e0493127c1f091f0a8936884be7721c4e618",
+   "url": "https://fonts.gstatic.com/s/intertight/v9/NGSnv5HMAFg6IuGlBNMjxJEL2VmU3NS7Z2mjjwiaWy5S.woff2",
+   "bytes": 22696,
+   "sha256": "b4b4a0877ce8d65c2c194dec15236e4861d3b3c111b3aa3d54fc4efbe6171027",
    "fetched": "2026-11-11"
   },
   {
@@ -127,16 +123,14 @@
    "family": "Inter Tight",
    "style": "normal",
    "weights": [
-    600,
-    700,
     800
    ],
    "subset": "latin-ext",
    "unicode_range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF",
    "display": "swap",
-   "url": "https://fonts.gstatic.com/s/intertight/v9/NGSwv5HMAFg6IuGlBNMjxLsJ8ah8QA.woff2",
-   "bytes": 89800,
-   "sha256": "fd9beddaaec644945809da574cf1caf342073c7e4b46a2ea5bd136c8cf1a9eca",
+   "url": "https://fonts.gstatic.com/s/intertight/v9/NGSnv5HMAFg6IuGlBNMjxJEL2VmU3NS7Z2mjjwiaVS5SkK8.woff2",
+   "bytes": 38000,
+   "sha256": "27877a44778f7b27708859516c9d9868325a2b185ae3e5bd0f3401861eb5e270",
    "fetched": "2026-11-11"
   },
   {

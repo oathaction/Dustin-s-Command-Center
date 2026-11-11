@@ -156,7 +156,7 @@ ROW_CSS = (
     f".oai .p9-24 .p9-w{{{ty('body')}}}"
     f".oai .p9-16 .p9-w{{{ty('body-small')}}}"
     ".oai .p9-cur .p9-w{text-decoration:underline solid 2px;text-underline-offset:5px;text-decoration-skip-ink:none}"
-    ".oai .p9-24 .p9-cur .p9-w,.oai .p9-16 .p9-cur .p9-w{font-weight:700}"
+    ".oai .p9-cur .p9-w{font-weight:700}"         # the current word is bold at every size (Gate 2's fix pass, DT-S4)
     # a stacked column keeps each icon's whole box, so the four words share one left edge, and each downward arrow
     # stands in the icon column, centered under its icon in the gap before the next row (CD-S1, CA-S6)
     + STACK_CSS(".oai .p9-stack") +
@@ -459,8 +459,9 @@ def chapter():
                        "margins, whole pixels at 16 and 24 px. In the stacked column, place each arrow absolutely, centered under "
                        "its icon's box in the gap before the next row."),
             R("09.2", "Underline the current pillar's word, and add its red only from 48 px.",
-              "On a page or a section that serves one pillar, underline that pillar's word in the row, at every size, and set the "
-              "word bold under 48 px. From 48 px the current icon also keeps its red, as a second sign, and that red is "
+              "On a page or a section that serves one pillar, underline that pillar's word in the row and set it bold, at every "
+              "size. The 48 px row sets all four words bold, so there the underline marks the current one. From 48 px the "
+              "current icon also keeps its red, as a second sign, and that red is "
               "signature red, which never counts against a view's working red (Rule 05.3). Under 48 px every icon stays one "
               "color, the current one included. On Prussian no icon "
               "takes red, so the underline marks the current pillar alone.",
@@ -474,7 +475,7 @@ def chapter():
               "page in gray print, sees no current pillar.",
               tokens=["oa.component.icon.accent.onNewsprint", "oa.component.icon.accent.onCharcoal"],
               specs=[SP_("Underline", "2 px, solid, 5 px under the baseline, at every size"),
-                     SP_("Bold", "The current word, under 48 px"),
+                     SP_("Bold", "The current word, at every size; in the 48 px row all four words are bold"),
                      SP_("Red", "From 48 px, the current icon's accent, as signature red; never on Prussian",
                          "oa.component.icon.accent.onNewsprint"),
                      SP_("Screen readers", "The current item carries aria-current, so the reader hears which pillar the page serves")],

@@ -82,7 +82,10 @@ def divider(surface="newsprint", red=False):
 
 def ask(label, surface="newsprint", red=True):
     if red:
-        kl = f"box-shadow:0 0 0 1px {strong(surface)};" if surface in ("newsprint", "white") else ""
+        # Gate 2's fix pass (CD-S7): the Charcoal keyline on red is a 1 px border, as chapter 18's ask button draws it,
+        # so forced colors keeps it; the shadow it replaces drew the same pixel outside the fill
+        kl = {"newsprint": f"border:1px solid {tv('component-button-ask-keyline-on-newsprint')};",
+              "white": f"border:1px solid {strong('white')};"}.get(surface, "")
         return (f'<span class="oai-red" data-red="working" data-red-job="the step a reader can take now" style="display:inline-block;line-height:1.2">'
                 f'<span style="display:inline-block;padding:12px 20px;background:{tv("color-action-ask-fill-on-" + surface)};color:{tv("color-action-ask-label-on-" + surface)};'
                 f'{ty("ask")};{kl}">{E(label)}</span></span>')
@@ -92,6 +95,36 @@ def ask(label, surface="newsprint", red=True):
 
 def kicker(text, surface="newsprint"):
     return f'<p style="{ty("label")};color:{ink2(surface)}">{E(text)}</p>'
+
+
+# ------------------------------------------------------------------------------------------- the opener
+# Gate 2's fix pass (CD-S1, the creative director's list: "04 B at display size beside one hinge headline"). B from its
+# display master at 160 px, as Rule 04.1's plate draws it, beside chapter 02's hinge headline as Rule 04.3's plate sets
+# it: the title style at 56 px from 48em, and H3 at 26 px under 48em, where a phone's column holds each phrase whole on
+# its line (Rule 04.3). Each sits in its own frame, so each is one composition with one ampersand moment (Rule 04.2).
+OPENER_CSS = (".oai-op4{display:flex;flex-wrap:wrap;gap:16px;align-items:stretch}"
+              ".oai-op4>.oai-panel{display:flex;flex-direction:column;justify-content:flex-end;gap:12px}"
+              ".oai-op4 .oai-op4-n{display:none}"
+              "@media (max-width:47.99em){.oai-op4 .oai-op4-w{display:none}.oai-op4 .oai-op4-n{display:block}}")
+
+
+@spec
+def s_04_opener():
+    b = mark(AMP["display"], h=160, decorative=True)
+    wide = (f'<div class="oai-op4-w">{headline("The zoning code", "the rent.", "title")}'
+            f'<p class="oai-tag" style="margin-top:12px">A hinge headline, title style, 56 px</p></div>')
+    narrow = (f'<div class="oai-op4-n">{headline("The zoning code", "the rent.", "h3")}'
+              f'<p class="oai-tag" style="margin-top:12px">A hinge headline, H3, 26 px</p></div>')
+    body = ('<div class="oai-pad"><div class="oai-op4">'
+            f'<div class="oai-panel oai-s-newsprint">{b}<p class="oai-tag">Ampersand B, display master, 160 px</p></div>'
+            f'<div class="oai-panel oai-s-newsprint">{wide}{narrow}</div></div></div>')
+    alt = ("Two frames at true size on Newsprint. In the first, ampersand B in red from its display master, 160 pixels tall. "
+           "In the second, the hinge headline The zoning code & the rent., its red B leading the second line, in the title "
+           "style at 56 pixels, or in H3 at 26 pixels on a phone.")
+    return rec("s-04-opener", None, None, alt, body, css=OPENER_CSS,
+               notes="Gate 2's fix pass, CD-S1: chapter 04's opener. B is Rule 04.1's display master at 160 px; the headline is "
+                     "Rule 04.3's first, from chapter 02's list, B from the master whose range holds its cap height (the 24 px "
+                     "master at 56 px type, the 16 px master at 26 px). Two frames keep one ampersand moment each (Rule 04.2).")
 
 
 # ------------------------------------------------------------------------------------------- 04.1
@@ -265,14 +298,17 @@ def s_04_5_correct():
     disp = mark(HINGE["display"], w=600, label="The hinge diagram, display master: OATH and ACTION on a line with four nodes, ampersand B in a ring, two solid clockwise arcs, UNDERSTAND and IMPACT beneath")
     comp = mark(HINGE["compact"], w=280, label="The hinge diagram, compact master")
     compc = mark(HINGE["compact"], w=280, surface="charcoal", label="The hinge diagram, compact master on Charcoal")
+    # Gate 2's fix pass (CD-S5): the two compact masters stand side by side under the display master, and the frame fits
+    # the three: two 330 px panels and a 16 px gap make 676 px, and the display master sits centered in a panel as wide
+    pad = (2 * (280 + 48 + 2) + 16 - 2 - 600) / 2
     body = ('<div class="oai-stack" style="gap:16px">'
-            f'<div class="oai-panel oai-s-newsprint">{disp}<p class="oai-tag" style="margin-top:12px">Display master, 600 px</p></div>'
-            f'<div class="oai-row top"><div class="oai-panel oai-s-newsprint">{comp}<p class="oai-tag" style="margin-top:12px">Compact master, 280 px</p></div>'
-            f'<div class="oai-panel oai-s-charcoal">{compc}<p class="oai-tag" style="margin-top:12px">Compact master on Charcoal</p></div></div></div>')
+            f'<div class="oai-panel oai-s-newsprint" style="padding:24px {pad:g}px">{disp}<p class="oai-tag" style="margin-top:12px">Display master, 600 px</p></div>'
+            f'<div style="display:flex;gap:16px"><div class="oai-panel oai-s-newsprint" style="flex:1">{comp}<p class="oai-tag" style="margin-top:12px">Compact master, 280 px</p></div>'
+            f'<div class="oai-panel oai-s-charcoal" style="flex:1">{compc}<p class="oai-tag" style="margin-top:12px">Compact master on Charcoal</p></div></div></div>')
     alt = ("The hinge diagram at true size: the display master 600 pixels wide on Newsprint, with OATH and ACTION on a line "
            "through four nodes, a red ampersand B in a ring between them, two solid arcs running clockwise and the words "
-           "UNDERSTAND and IMPACT beneath; and the compact master at 280 pixels on Newsprint and on Charcoal.")
-    return rec("s-04-5-correct", "04.5", 650, alt, body)
+           "UNDERSTAND and IMPACT beneath; and under it, side by side, the compact master at 280 pixels on Newsprint and on Charcoal.")
+    return rec("s-04-5-correct", "04.5", 676, alt, body)
 
 
 @spec

@@ -4,6 +4,7 @@
   "title": "Type",
   "part": "Foundations",
   "instruction": "Set every word at a readable size with the three faces and the type scale.",
+  "opener": "s-06-opener",
   "intro": [
     "Three typefaces carry every word we publish: Inter Tight for headlines and big figures, Inter for reading and the interface, and Lora Italic for the words we quote. Each has a single job, so a reader can tell a headline from a quotation before reading either.",
     "We set sizes in rem, a unit tied to the reader’s own text setting, which is 16 px unless they change it. A reader who enlarges text gets larger type everywhere, and no text on screen sets below 13 px."
@@ -37,7 +38,7 @@
       },
       "failure": {
         "specimen": "s-06-1-failure",
-        "caption": "<strong>Fails the faces’ jobs.</strong> Set in Lora Italic, the heading reads as a quotation, and the reader looks for the person who said it."
+        "caption": "<strong>Fails Rule 06.1.</strong> Set in Lora Italic, the heading reads as a quotation, and the reader looks for the person who said it."
       },
       "specs": [
         {
@@ -66,7 +67,7 @@
         "22"
       ],
       "builders": [
-        "Load all three with one link: <code>https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Inter+Tight:wght@800&amp;family=Lora:ital,wght@1,400;1,500&amp;display=swap</code>. Then set faces only through <code>--oa-font-family-display</code>, <code>--oa-font-family-reading</code> and <code>--oa-font-family-quote</code>."
+        "Load these weights and no others, with the one link in Rule 06.10. Then set faces only through <code>--oa-font-family-display</code>, <code>--oa-font-family-reading</code> and <code>--oa-font-family-quote</code>."
       ]
     },
     {
@@ -104,7 +105,7 @@
       },
       "failure": {
         "specimen": "s-06-2-failure",
-        "caption": "<strong>Fails 1.4.4.</strong> Two columns as a reader sees them with text set to 200 percent. The column set in rem has grown to 34 px; the column set in px is still 17 px."
+        "caption": "<strong>Fails Rule 06.2.</strong> Two columns as a reader sees them with text set to 200 percent. The column set in rem has grown to 34 px; the column set in px is still 17 px."
       },
       "specs": [
         {
@@ -170,7 +171,7 @@
       },
       "failure": {
         "specimen": "s-06-3-failure",
-        "caption": "<strong>Fails the 13 px floor.</strong> A graphic at true size of two labels from our fifth edition: the chapter kicker at 11 px with 13 percent tracking, and the footer line at 10 px."
+        "caption": "<strong>Fails Rule 06.3.</strong> A graphic at true size of two labels from our fifth edition: the chapter kicker at 11 px with 13 percent tracking, and the footer line at 10 px."
       },
       "specs": [
         {
@@ -224,7 +225,7 @@
       "why": {
         "text": [
           "At display sizes the font’s own spacing leaves gaps a reader sees, and a little negative tracking closes them. Pulled too far, the letters touch. Our fifth edition used −4.5 percent at every heading size from 24 to 110 px, and at the cover’s 110 px that makes 7 of our tagline’s 24 letter pairs touch. At the title’s −3 percent, two do.",
-          "Across the 23 rule titles in chapters 05 to 07, set at the H3 size of 32 px, 107 of 738 letter pairs touch at −3 percent, the value an early draft of this guide used, and 32 at −1 percent."
+          "Across the 23 rule titles in chapters 05 to 07, set at the H3 size of 32 px, 103 of 708 letter pairs touch at −3 percent, the value an early draft of this guide used, and 30 at −1 percent."
         ],
         "basis": "Our measurements, November 2026; design judgment"
       },
@@ -234,7 +235,7 @@
       },
       "failure": {
         "specimen": "s-06-4-failure",
-        "caption": "<strong>Fails the tracking scale.</strong> The same heading at −3 percent, the H3 value in an early draft of this guide. Four of its 28 letter pairs touch, and its word spaces shrink to 5.0 px."
+        "caption": "<strong>Fails Rule 06.4.</strong> The same heading at −3 percent, the H3 value in an early draft of this guide. Four of its 28 letter pairs touch, and its word spaces shrink to 5.0 px."
       },
       "specs": [
         {
@@ -283,7 +284,7 @@
         },
         {
           "label": "Letter pairs that touch, rule titles at 32 px",
-          "value": "32 of 738 at −1 percent; 107 at −3 percent; 4 at the font’s own spacing"
+          "value": "30 of 708 at −1 percent; 103 at −3 percent; 4 at the font’s own spacing"
         }
       ],
       "related": [
@@ -317,7 +318,7 @@
       },
       "failure": {
         "specimen": "s-06-5-failure",
-        "caption": "<strong>Fails the figure rule.</strong> The same table with proportional figures, columns aligned left and a hyphen for each minus. The digits no longer stack, and the two minus signs read like dashes."
+        "caption": "<strong>Fails Rule 06.5.</strong> The same table with proportional figures, columns aligned left and a hyphen for each minus. The digits no longer stack, and the two minus signs read like dashes."
       },
       "specs": [
         {
@@ -369,7 +370,7 @@
       },
       "failure": {
         "specimen": "s-06-6-failure",
-        "caption": "<strong>Fails the widow rule.</strong> The same heading wrapped by width alone, which leaves one word on its last line."
+        "caption": "<strong>Fails Rule 06.6.</strong> The same heading wrapped by width alone, which leaves one word on its last line."
       },
       "specs": [
         {
@@ -412,7 +413,7 @@
       },
       "failure": {
         "specimen": "s-06-7-failure",
-        "caption": "<strong>Fails the hanging rule.</strong> With the mark inside the edge, the first line starts a mark’s width to the right of the second."
+        "caption": "<strong>Fails Rule 06.7.</strong> With the mark inside the edge, the first line starts a mark’s width to the right of the second."
       },
       "specs": [
         {
@@ -458,7 +459,7 @@
       },
       "failure": {
         "specimen": "s-06-8-failure",
-        "caption": "<strong>Fails the measure.</strong> The same paragraph as our fifth edition set its intros, at 22 px and 65ch. Its full lines run 78 to 83 characters, and the eye has far to travel back to the start of each."
+        "caption": "<strong>Fails Rule 06.8.</strong> The same paragraph as our fifth edition set its intros, at 22 px and 65ch. Its full lines run 78 to 83 characters, and the eye has far to travel back to the start of each."
       },
       "specs": [
         {
@@ -512,7 +513,7 @@
       },
       "failure": {
         "specimen": "s-06-9-failure",
-        "caption": "<strong>Fails the email rule.</strong> The headline set in Inter Tight, which a mail app that cannot load the web font shows in its own default serif."
+        "caption": "<strong>Fails Rule 06.9.</strong> The headline set in Inter Tight, which a mail app that cannot load the web font shows in its own default serif."
       },
       "specs": [
         {
@@ -566,9 +567,13 @@
       },
       "failure": {
         "specimen": "s-06-10-failure",
-        "caption": "<strong>Fails the face rule.</strong> The same heading in Arial, the fallback that shows when Inter Tight fails to load. It sets 504 px wide, close to the original, and its letters lose the cut of the wordmark’s face."
+        "caption": "<strong>Fails Rule 06.10.</strong> The same heading in Arial, the fallback that shows when Inter Tight fails to load. It sets 504 px wide, close to the original, and its letters lose the cut of the wordmark’s face."
       },
       "specs": [
+        {
+          "label": "Weights",
+          "value": "Inter 400, 600 and 700; Inter Tight 800; Lora Italic 400 and 500, the set Rule 06.1 gives"
+        },
         {
           "label": "Display stack",
           "value": "<code>\"Inter Tight\", Arial, sans-serif</code>",
@@ -590,7 +595,7 @@
         "27"
       ],
       "builders": [
-        "Use <code>font-display: swap</code>, as the Google Fonts link sets it, so text shows at once in the fallback and changes face when the file arrives. Ship the font license with any package that carries the files."
+        "A product loads the three faces with this link: <code>https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Inter+Tight:wght@800&amp;family=Lora:ital,wght@1,400;1,500&amp;display=swap</code>. Its <code>display=swap</code> shows text at once in the fallback and changes face when the file arrives. Ship the font license with any package that carries the files."
       ]
     }
   ],

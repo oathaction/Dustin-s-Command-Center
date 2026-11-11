@@ -10,7 +10,7 @@ drop in without rewording: UNEVEN, the 2020 court example after Rule 01.11, and 
 """
 from guide_editor_common import (AMP16, AMP24, ARTICLE, BASE, CHART_DATA, HL, HR7008, HR7008_BOTH, HR7008_FIRST, HR7008_TRACKER,
                                  LOCKED, PIECE, PROW, TILE_GRID, WORDMARK24, WORDMARK24_PRUSSIAN, amp_h, cl_icon, dnp,
-                                 e, flow, fx, hinge, ill, kicker, load, pillar_row, q)
+                                 e, fails_lead, flow, fx, hinge, ill, kicker, load, pillar_row, q)
 
 # ---------------------------------------------------------------------------------------------------------------
 # Inputs from the research lead, for round two of the apply pass. Each stays None until the main session routes the
@@ -554,6 +554,55 @@ SPELL = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "sev
 # ---------------------------------------------------------------------------------------------------------------
 FC = "Failure case: do not publish. "
 
+# Gate 2 fix pass, CD-S9: a short Specifications block for each of the 14 rules that had none, with what a producer
+# checks: the label, the count, the place and the token where one exists. Every value restates the rule's own words.
+SPECS01 = {
+    "01.7": [{"label": "Kept out", "value": "Party symbols, candidate photographs, campaign merchandise and legible protest slogans"},
+             {"label": "As evidence", "value": "A party’s logo only inside a sourced document the piece reproduces, with its credit"}],
+    "01.9": [{"label": "One domain", "value": "One example in four at most, counted by the atlas’s ten domains"},
+             {"label": "One state", "value": "One example in five at most"},
+             {"label": "Unit", "value": "A chapter of this guide, a report or a month of newsletter issues"},
+             {"label": "Count from", "value": "The rotation log, Rule 01.12"}],
+    "01.10": [{"label": "Levels", "value": "Federal; state; county or city; school district"},
+              {"label": "Regions", "value": "Northeast, Midwest, South and West"},
+              {"label": "Before it runs", "value": "An example at each level and from each region, counted in the log"}],
+    "01.11": [{"label": "Cases", "value": "One documented case from each party whose majorities use the mechanism"},
+              {"label": "Form", "value": "The same form and the same length, counted in words"},
+              {"label": "Counts", "value": "The atlas’s case records for the loop, by the party of the majority, with their source line"},
+              {"label": "When one party leads", "value": "The counts as the record gives them, with no case added to even them"}],
+    "01.12": [{"label": "Fields", "value": "Example, atlas domain, state, region, level of government, and the coalition behind any reform shown"},
+              {"label": "Invented examples", "value": "The Illustrative label beside the example, and “invented” in its state and region fields"},
+              {"label": "Review", "value": "Our editors read the log before each chapter, report or series runs"}],
+    "01.13": [{"label": "Name", "value": "The office or body that makes the decision"},
+              {"label": "A party", "value": "Only for a party-line vote or a record that shows one party doing more, with the count and its source"},
+              {"label": "Replace", "value": "“Politicians”, “Washington” and “lawmakers” with the office that holds the decision"}],
+    "01.14": [{"label": "Leave out", "value": "“Rigged”, “broken”, “crisis” and “the rule you are angry about”"},
+              {"label": "Applies to", "value": "Headlines, questions and calls to act"},
+              {"label": "Test", "value": "A supporter of the current rule could ask the same question"}],
+    "01.15": [{"label": "Verbs to use", "value": "Propose, debate, vote and pass"},
+              {"label": "Leave out", "value": "Fight, battle, front, war and game plan"},
+              {"label": "Series names", "value": "As Rule 02.26 spells them, such as Dispatch"}],
+    "01.16": [{"label": "When", "value": "Only for a claim graded contested"},
+              {"label": "Length", "value": "The same number of words in each reading"},
+              {"label": "Form", "value": "The same verbs, type and labels, and each holder named by role and affiliation"},
+              {"label": "Layout", "value": "Two columns side by side, stacking on a phone"}],
+    "01.17": [{"label": "Test", "value": "A supporter of the rule would accept every word of the description"},
+              {"label": "Definitions", "value": "The atlas glossary’s wording, where it has an entry"},
+              {"label": "Arguments", "value": "Only in a piece labeled “Our position”, Rule 01.23"}],
+    "01.18": [{"label": "Both halves", "value": "One ink and one size, in Inter Tight 800", "token": "oa.font.family.display"},
+              {"label": "Ampersand", "value": "B from its master for the size, in the view’s working red", "token": "oa.color.palette.pillarRed"},
+              {"label": "When the red is spent", "value": "The ampersand takes the headline’s ink, as Rule 04.3 sets"}],
+    "01.19": [{"label": "Join", "value": "A rule or a place both groups share, named in the headline"},
+              {"label": "Order", "value": "Swapped from one piece to the next, and logged"}],
+    "01.20": [{"label": "Names", "value": "Left, right or a party’s name, only at a point where the sides agree"},
+              {"label": "Join", "value": "What they agree on, as Rule 01.19 asks"},
+              {"label": "Source", "value": "The vote, the sponsor list or the survey that shows the agreement, cited in the deck"}],
+    "01.24": [{"label": "Name", "value": "Its subject and its kind, such as Child Care Rules Tracker, signed by Oath & Action"},
+              {"label": "Ampersand", "value": "Only in Oath & Action; a partner’s ampersand becomes “and” in our copy"},
+              {"label": "Named as a question", "value": "The atlas alone, Who Do They Answer To?"},
+              {"label": "Check", "value": "Against Rule 01.15’s war and sports words"}],
+}
+
 
 def build(book):
     """Write chapter 01's specimens into the book and return the chapter dictionary."""
@@ -750,7 +799,7 @@ def build(book):
         "failure": {"specimen": A("s-01-2-failure", bars([("Democrats", sv["support-democrats"], "blue", 100), ("Republicans", sv["support-republicans"], "red", 100)], t2, m2, SRC_STOCK_SURVEY, names=False,
                                                          key=[("blue", "Democrats"), ("red", "Republicans")], fail=True),
                                   css=(BASE, CHART), rule="01.2", exempt=["red", "contrast"],
-                                  alt="Failure case: do not publish. The same chart with the Democrats' bar in Prussian blue and the Republicans' bar in Pillar Red, unlabeled, with a color key above."),
+                                  alt="Failure case: do not publish. The same chart with the Democrats' bar in Prussian and the Republicans' bar in Pillar Red, unlabeled, with a color key above."),
                     "caption": "Red and blue turn a finding of agreement into a contest, and the color key makes a reader match swatches to find each party, which fails in grayscale."},
         "specs": [{"label": "Party marks", "value": "Charcoal, one ink for every party", "token": "oa.chart.color.party.mark.onNewsprint"},
                   {"label": "Two sides at a glance", "value": "One solid and one in outline, in the same ink"},
@@ -775,7 +824,7 @@ def build(book):
                                   alt="A five-step key for change in two directions, from Prussian through Newsprint to Verdigris. Each step has a boxed arrow and a word: down 2 points or more, down less than 2, no change, up less than 2, up 2 points or more."),
                     "caption": "Each step carries a boxed arrow and a word, so the key reads the same in grayscale."},
         "failure": {"specimen": A("s-01-3-failure", f'<div class="ed">{dnp()}{dtitle}<ul class="dk">{dk_bad}</ul></div>', css=(BASE, CHART, DIV), rule="01.3", exempt=["red", "contrast"],
-                                  alt="Failure case: do not publish. The same key running from Pillar Red through Newsprint to Prussian blue, with no arrows."),
+                                  alt="Failure case: do not publish. The same key running from Pillar Red through Newsprint to Prussian, with no arrows."),
                     "caption": "A red-to-blue scale reads as one party’s gain against the other’s, whatever it measures, and with no arrows its direction disappears in grayscale."},
         "specs": [{"label": "Steps", "value": "Five, step 1 the strongest fall, step 3 the page color", "token": "oa.chart.color.diverging.fill.step3.onNewsprint"},
                   {"label": "Direction", "value": "A boxed arrow in each step’s label ink, and a word"}],
@@ -804,9 +853,9 @@ def build(book):
                                   css=(BASE, PRCSS), rule="01.4", surface="prussian", illustrative=True, width=360,
                                   alt="A Prussian panel with the wordmark in White, ampersand included, at its 24 px master, and an illustrative bar in Newsprint: committees that posted every roll call last session, 6 of 20."),
                     "caption": "The wordmark and its ampersand turn White, and the bar turns Newsprint. The panel carries no red."},
-        "failure": {"specimen": A("s-01-4-failure", f'<div class="ed prus">{kicker("Report", "State legislatures", illus=True)}<img data-inline src="{WORDMARK24}" alt="Oath & Action" class="wmk redamp" height="24" data-red="failure">{pr_bar}</div>',
+        "failure": {"specimen": A("s-01-4-failure", f'<div class="ed prus">{dnp()}{kicker("Report", "State legislatures", illus=True)}<img data-inline src="{WORDMARK24}" alt="Oath & Action" class="wmk redamp" height="24" data-red="failure">{pr_bar}</div>',
                                   css=(BASE, PRCSS), rule="01.4", surface="prussian", illustrative=True, width=360, exempt=["contrast", "red"],
-                                  alt="The same panel with the wordmark's ampersand in Pillar Red on Prussian."),
+                                  alt=f"{FC}The same panel with the wordmark's ampersand in Pillar Red on Prussian."),
                     "caption": "The red ampersand sinks into the Prussian ground at 3.19 to 1, and at small sizes a reader loses the mark’s center."},
         "specs": [{"label": "Identity marks", "value": "White, one color", "token": "oa.color.identity.signature.onPrussian"},
                   {"label": "Data marks", "value": "Newsprint", "token": "oa.color.data.emphasis.onPrussian"}],
@@ -842,7 +891,7 @@ def build(book):
         "failure": {"specimen": A("s-01-5-failure", f'<div class="ed">{dnp()}<p class="ct">The 2024 presidential vote, by state</p><p class="cm">Winner of each state</p>'
                                                     f'{svg_win}{key_win}<p class="src">{e(SRC_FEC)}</p></div>',
                                   css=(BASE, CHART, MAP), rule="01.5", exempt=["red", "contrast"],
-                                  alt=f"Failure case: do not publish. The same tile map colored by the 2024 presidential winner, {cw['rep']} tiles in Pillar Red and {cw['dem']} in Prussian blue. {SRC_FEC}"),
+                                  alt=f"Failure case: do not publish. The same tile map colored by the 2024 presidential winner, {cw['rep']} tiles in Pillar Red and {cw['dem']} in Prussian. {SRC_FEC}"),
                     "caption": "Colored by winner, the map splits the country into two camps and says nothing about the rule a story covers."},
         "specs": [{"label": "Tile grid", "value": "12 columns by 8 rows, one square per state and DC"},
                   {"label": "Fills", "value": "Charcoal, a Charcoal hatch and open, keyed in words", "token": "oa.color.data.emphasis.onNewsprint"}],
@@ -904,7 +953,7 @@ def build(book):
             f".ed .plac{{display:inline-block;padding:18px 16px;border:4px solid var(--oa-color-border-strong);background:var(--oa-color-surface-white);{fx('h4')}}}"
             f".ed .docref{{border:1px solid var(--oa-color-border-strong);background:var(--oa-color-surface-white);padding:12px 14px;margin-top:12px}}")
     rules.append({
-        "id": "01.7", "title": "Keep party symbols, candidate photos, campaign gear and protest slogans out of brand graphics.",
+        "id": "01.7", "title": "Keep symbols that take a side out of brand graphics.",
         "rule": ["Keep party symbols, candidate photographs, campaign merchandise and legible protest slogans out of brand graphics, since each "
                  "takes a side the piece never argued. A party’s logo may appear as evidence, inside a sourced document the piece reproduces."],
         "why": {"text": ["A reader takes any symbol on our page as ours. A campaign button or a slogan placard reads as an endorsement, even when the story beside it is neutral."],
@@ -974,12 +1023,12 @@ def build(book):
     tal_ok = (f'<div class="ed tal"><p class="ct">This chapter’s {n} examples by atlas domain</p><p class="cm">One in four of {n} is {limit:g}, so no domain may supply {SPELL[math.floor(limit) + 1]}. '
               f'{st_line}.</p><table><thead><tr><th scope="col">Domain</th><th scope="col">Examples</th></tr></thead><tbody>{trs}</tbody></table></div>')
     bad = [("Elections and representation", 3), ("Money, lobbying and influence", 1), ("Taxes, wealth and economic security", 1)]
-    tal_bad = (f'<div class="ed tal"><p class="ct">A draft chapter’s five examples by domain and state</p><p class="cm">Three of five come from one domain, and three of five from Massachusetts.</p><table class="stack"><thead><tr><th scope="col">Domain</th><th scope="col">Examples</th><th scope="col">From Massachusetts</th></tr></thead><tbody>'
+    tal_bad = (f'<div class="ed tal"><p class="ct">A draft chapter’s five examples by domain and state {ill()}</p><p class="cm">Three of five come from one domain, and three of five from Massachusetts.</p><table class="stack"><thead><tr><th scope="col">Domain</th><th scope="col">Examples</th><th scope="col">From Massachusetts</th></tr></thead><tbody>'
                + "".join(f'<tr><th scope="row">{e(a)}</th><td class="c" data-k="Examples">{b} of 5</td><td class="c" data-k="From Massachusetts">{["3", "0", "0"][i]}</td></tr>' for i, (a, b) in enumerate(bad)) + "</tbody></table></div>")
     rules.append({
-        "id": "01.9", "title": "Draw no more than one example in four from one atlas domain, or one in five from one state.",
-        "rule": ["Count examples within one unit: a chapter of this guide, a report, or a month of newsletter issues. Draw no more than one "
-                 "in four from any one of our systems atlas’s ten domains, and no more than one in five from any one state."],
+        "id": "01.9", "title": "Limit how many examples come from one domain or one state.",
+        "rule": ["Draw no more than one example in four from any one of our systems atlas’s ten domains, and no more than one in five "
+                 "from any one state. Count them within one unit: a chapter of this guide, a report, or a month of newsletter issues."],
         "why": {"text": ["A run of examples from one subject or one state tells readers whose problems we care about. Rotation keeps a reader in "
                          "Texas and a reader in Maine in view of the same chapter."],
                 "basis": "Design judgment"},
@@ -1039,7 +1088,7 @@ def build(book):
         raise SystemExit(f"Rule 01.11: the two cases differ in length ({words(tx)} and {words(ca)} words)")
     lead11 = '<p class="ct">Loop R4a, the map-drawing loop: majorities draw maps that help them keep control.</p>'
     rules.append({
-        "id": "01.11", "title": "Show a case from each party that uses a mechanism, and report the counts as the record gives them.",
+        "id": "01.11", "title": "Show each party’s cases and counts as the record gives them.",
         "rule": ["When majorities of both parties use the same mechanism, show a documented case from each, described in the same form and "
                  "at the same length. The test case is Loop R4a, the map-drawing loop, which our systems atlas titles “Majorities draw "
                  "maps that help them keep control.”",
@@ -1090,7 +1139,7 @@ def build(book):
                         f'<td data-k="Level">{e(l)}</td><td data-k="Coalition">{e(c)}</td></tr>' for a, d, s, rg, l, c, il, _ in log_rows)
               + "</tbody></table></div>")
     log_bad = (f'<div class="ed tal"><p class="ct">Rotation log, a draft row</p>' + LOGH
-               + '<tr><th scope="row">Town library hours</th><td data-k="Domain">(blank)</td><td data-k="State">Massachusetts</td><td data-k="Region">(blank)</td><td data-k="Level">(blank)</td><td data-k="Coalition">(blank)</td></tr></tbody></table></div>')
+               + '<tr><th scope="row">Town library hours ' + ill() + '</th><td data-k="Domain">(blank)</td><td data-k="State">Massachusetts</td><td data-k="Region">(blank)</td><td data-k="Level">(blank)</td><td data-k="Coalition">(blank)</td></tr></tbody></table></div>')
     rules.append({
         "id": "01.12", "title": "Log each example’s domain, state, region, level and backing coalition.",
         "rule": ["Log every example with its atlas domain, its state and region, its level of government and, for any reform shown, the coalition "
@@ -1111,19 +1160,19 @@ def build(book):
     LINES = (f".ed .lnbox{{max-width:640px;border-top:2px solid var(--oa-color-border-strong);padding-top:12px}}"
              f".ed .ln{{{fx('intro')};margin:0}}.ed .ln.h{{{fx('h3')}}}"
              f".ed .ln+.src{{margin-top:10px}}")
-    line = lambda t, src="", illus=False, head=False, kick="": (f'<div class="ed"><div class="lnbox">{kick}<p class="ln{" h" if head else ""}">{e(t)}{" " + ill() if illus else ""}</p>'
+    line = lambda t, src="", illus=False, head=False, kick="", fail=False: (f'<div class="ed">{dnp() if fail else ""}<div class="lnbox">{kick}<p class="ln{" h" if head else ""}">{e(t)}{" " + ill() if illus else ""}</p>'
                                                                 + (f'<p class="src">{e(src)}</p>' if src else "") + "</div></div>")
     t13 = "For an investor-owned utility, the state public utility commission sets your rate in a rate case, its formal review of the utility’s request."
     rules.append({
-        "id": "01.13", "title": "Name the office that decides, and name a party only when party is part of the finding.",
+        "id": "01.13", "title": "Name the office that decides.",
         "rule": ["Say which office or body makes the decision. Name a party only when party is part of the finding, such as a party-line "
                  "vote or a record that shows one party doing more of something, and give the count and its source."],
         "why": {"text": ["A reader can call an office or testify before it, and at the next election they can vote out its members or the official who appointed them. A party’s name in place of an office gives them a team to blame and nobody to call."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-13-correct", line(t13, SRC_ELECTRIC), css=(BASE, LINES), rule="01.13", alt=f"{t13} {SRC_ELECTRIC}"),
                     "caption": "The sentence names the commission and the hearing where it decides, so a reader knows where to look."},
-        "failure": {"specimen": A("s-01-13-failure", line("Politicians raised your electric bill again.", illus=True), css=(BASE, LINES), rule="01.13", illustrative=True,
-                                  alt="An illustrative line: Politicians raised your electric bill again."),
+        "failure": {"specimen": A("s-01-13-failure", line("Politicians raised your electric bill again.", illus=True, fail=True), css=(BASE, LINES), rule="01.13", illustrative=True,
+                                  alt=f"{FC}An illustrative line: Politicians raised your electric bill again."),
                     "caption": "“Politicians” names no office, so the reader has no one to call, and “again” supplies a grievance the record does not show."},
         "related": ["02", "13"],
         "builders": "Search a draft for “politicians”, “Washington”, “lawmakers” and party names, and replace each with the office that holds the decision.",
@@ -1138,8 +1187,8 @@ def build(book):
         "correct": {"specimen": A("s-01-14-correct", line("Who sets your property tax rate, and when could it change?", head=True), css=(BASE, LINES), rule="01.14",
                                   alt="A headline question: Who sets your property tax rate, and when could it change?"),
                     "caption": "A homeowner who likes today’s rate and one who wants it lower would both click this question."},
-        "failure": {"specimen": A("s-01-14-failure", line("Who wrote the rule you are angry about?", "Our brand guide, fifth edition, chapter 13 In use", head=True), css=(BASE, LINES), rule="01.14",
-                                  alt="A headline question quoted from our brand guide's fifth edition, chapter 13: Who wrote the rule you are angry about?"),
+        "failure": {"specimen": A("s-01-14-failure", line("Who wrote the rule you are angry about?", "Our brand guide, fifth edition, chapter 13 In use", head=True, fail=True), css=(BASE, LINES), rule="01.14",
+                                  alt=f"{FC}A headline question quoted from our brand guide's fifth edition, chapter 13: Who wrote the rule you are angry about?"),
                     "caption": "The question assumes the reader is angry and that someone wronged them, so a reader who likes the rule has no reason to read on."},
         "related": ["02", "23"],
         "builders": "Search a draft for the words this rule lists, and read each question as someone who likes the current rule would.",
@@ -1155,9 +1204,9 @@ def build(book):
                                   css=(BASE, LINES), rule="01.15",
                                   alt="A kicker, Report, Dispatch, over an illustrative headline: The state senate votes on the overtime rule Thursday."),
                     "caption": "The series name is Dispatch, and the headline names the vote and its day. Only the headline is invented, so the label sits beside it."},
-        "failure": {"specimen": A("s-01-15-failure", line("The battle over overtime heads to the senate floor.", illus=True, head=True, kick=kicker("Report", "Dispatch from the Front")),
+        "failure": {"specimen": A("s-01-15-failure", line("The battle over overtime heads to the senate floor.", illus=True, head=True, kick=kicker("Report", "Dispatch from the Front"), fail=True),
                                   css=(BASE, LINES), rule="01.15",
-                                  alt="Our fifth edition's series name, Dispatch from the Front, in the kicker over an illustrative headline: The battle over overtime heads to the senate floor."),
+                                  alt=f"{FC}Our fifth edition's series name, Dispatch from the Front, in the kicker over an illustrative headline: The battle over overtime heads to the senate floor."),
                     "caption": "“From the Front”, our fifth edition’s series name, and “battle” cast the vote as a war with an enemy, and the headline never says when the vote happens."},
         "related": ["02"],
         "builders": "Search a draft for fight, battle, front, war and game plan, and name the step in the process in its place.",
@@ -1184,9 +1233,9 @@ def build(book):
                                   alt=f"Does pay rise with productivity? Two readings at the same length, {words(ra)} words each, in the same type. One: {ra} The other: {rb} {SRC_PAY}",
                                   notes="BE-M2, CP-S6: both holders by role and affiliation in one form, as the research lead's report sets them (task 5). The first reading follows the paper's abstract, which covers median and average pay."),
                     "caption": f"Each reading runs {words(ra)} words, uses the verb “find” and names who holds it by role and affiliation."},
-        "failure": {"specimen": A("s-01-16-failure", f'<div class="ed">{lead16}<div class="rd"><div><p class="lab">What the research shows</p><p>{e(ra)}</p></div><div class="small"><p>Some critics disagree.</p></div></div></div>',
+        "failure": {"specimen": A("s-01-16-failure", f'<div class="ed">{dnp()}{lead16}<div class="rd"><div><p class="lab">What the research shows</p><p>{e(ra)}</p></div><div class="small"><p>Some critics disagree.</p></div></div></div>',
                                   css=(BASE, CHART, RCSS), rule="01.16",
-                                  alt="The first reading set in full under the label What the research shows, and the second cut to three words in small gray type: Some critics disagree."),
+                                  alt=f"{FC}The first reading set in full under the label What the research shows, and the second cut to three words in small gray type: Some critics disagree."),
                     "caption": "One reading becomes “the research” and the other three small words, so the layout settles a question the evidence leaves open."},
         "related": ["13", "14"],
         "builders": ("Look up the claim’s grade in our systems atlas first, and use this block only when the grade is contested. Set both "
@@ -1204,8 +1253,8 @@ def build(book):
         "correct": {"specimen": A("s-01-17-correct", line(t17, SRC_CLOTURE), css=(BASE, LINES), rule="01.17",
                                   alt=f"{t17} {SRC_CLOTURE}"),
                     "caption": "A senator who values the 60-vote rule and one who wants it gone would both sign off on this sentence about the same rule."},
-        "failure": {"specimen": A("s-01-17-failure", line("The filibuster lets a minority of senators hold the country hostage.", illus=True), css=(BASE, LINES), rule="01.17", illustrative=True,
-                                  alt="An illustrative line: The filibuster lets a minority of senators hold the country hostage."),
+        "failure": {"specimen": A("s-01-17-failure", line("The filibuster lets a minority of senators hold the country hostage.", illus=True, fail=True), css=(BASE, LINES), rule="01.17", illustrative=True,
+                                  alt=f"{FC}An illustrative line: The filibuster lets a minority of senators hold the country hostage."),
                     "caption": "“Hold the country hostage” is an opponent’s charge, so a senator who values the rule would reject the sentence before reaching the facts."},
         "related": ["13", "02"],
         "builders": "Before the piece runs, read the description in the place of someone who supports the rule, and mark every word they would change.",
@@ -1215,7 +1264,7 @@ def build(book):
     hh = lambda a, b, fail=False: (f'<div class="ed">{dnp() if fail else ""}<p class="hh">{e(a)} {amp_h()} '
                                    + (f'<span style="color:var(--oa-color-palette-pillar-red)" data-red="failure">{e(b)}</span>' if fail else e(b)) + "</p></div>")
     rules.append({
-        "id": "01.18", "title": "Set both halves of a hinge headline in one color and weight, and give the red to the ampersand.",
+        "id": "01.18", "title": "Set both halves of a hinge headline in one color and weight.",
         "rule": ["Set both noun phrases of a hinge headline in the same ink, face and weight. The ampersand takes the view’s working red, unless "
                  "an error or a step on the same view already holds it; then the ampersand takes the headline’s ink, as Rule 04.3 sets out."],
         "tokens": ["oa.font.family.display", "oa.color.palette.pillarRed"],
@@ -1234,7 +1283,7 @@ def build(book):
 
     PP = ".ed.pp{display:grid;gap:28px}.ed.pp .lab{margin:0 0 6px}"
     rules.append({
-        "id": "01.19", "title": "Join people through a rule or place they share, and rotate their order.",
+        "id": "01.19", "title": "Join people through a rule or place they share.",
         "rule": ["When a hinge headline joins two people or groups, join them through a rule or a place they share. Swap their order from one "
                  "piece to the next, so neither always comes first."],
         "why": {"text": ["The ampersand stands for common ground, and people stand on it through something they share. A fixed order would rank one group above the other."],
@@ -1254,7 +1303,7 @@ def build(book):
     dek20 = (f"In a May 2023 survey, {sv['support-democrats']} percent of Democrats and {sv['support-republicans']} percent of Republicans "
              f"favored a ban on stock trading by members of Congress.")
     rules.append({
-        "id": "01.20", "title": "Name parties, the left or the right in a hinge headline only to report sourced agreement.",
+        "id": "01.20", "title": "Name the sides in a hinge headline only to report agreement.",
         "rule": ["Use “left”, “right” or a party’s name in a hinge headline only to report a point where the sides agree, such as a bill with "
                  "sponsors from both parties. Join the two through what they agree on, as Rule 01.19 asks of every pair of people, and "
                  "source the agreement in the deck."],
@@ -1283,7 +1332,7 @@ def build(book):
           ("Our position", "Committee votes", "State senate committees should post every vote within two days.", True, None)]
     kl_ok = '<div class="ed"><div class="kl">' + "".join(
         f'<div>{kicker(a, b, illus=il, icon=ic)}<p class="kt">{e(h)}</p></div>' for a, b, h, il, ic in kl) + "</div></div>"
-    kl_bad = ('<div class="ed"><div class="kl">'
+    kl_bad = ('<div class="ed">' + dnp() + '<div class="kl">'
               f'<div><p class="kick"><span class="lb">Explain</span></p><p class="kt">Why is my electric bill going up?</p><p class="kw">A pillar name alone</p></div>'
               f'<div><p class="kick"><span class="lb">Must read</span><span class="dot" aria-hidden="true">·</span><span class="sx">Breaking</span></p><p class="kt">State senate committees should post every vote within two days. {ill()}</p><p class="kw">Push words, and no label to say the piece argues a position</p></div>'
               f'<div><p class="kick"><span class="lb">Field Notes</span><span class="dot" aria-hidden="true">·</span><span class="sx">Guide</span><span class="dot" aria-hidden="true">·</span><span class="sx">Street repairs</span></p><p class="kt">Who answers for the repair on your street? {ill()}</p><p class="kw">The series first, the label second, and three parts</p></div>'
@@ -1314,7 +1363,7 @@ def build(book):
                                 "first three headlines are real, so the Illustrative label ends the kicker of each invented one. “Act · How to take part” is one label, so its "
                                 "dot and both its words belong to the label.")},
         "failure": {"specimen": A("s-01-21-failure", kl_bad, css=(BASE, KCSS2), rule="01.21",
-                                  alt="Four kickers that break the rule. Explain, a pillar name alone. Must read and Breaking above an illustrative position headline, with no label. "
+                                  alt=f"{FC}Four kickers that break the rule. Explain, a pillar name alone. Must read and Breaking above an illustrative position headline, with no label. "
                                       "Field Notes, then Guide, then Street repairs: the series first, the label second and three parts. The same Analysis kicker "
                                       "with the Explain pillar icon before its label, in place of the atlas symbol for workers’ share of income."),
                     "caption": ("“Explain” is a pillar and says nothing about the claim, and “Must read” and “Breaking” push the reader while hiding "
@@ -1338,7 +1387,7 @@ def build(book):
     })
 
     rules.append({
-        "id": "01.22", "title": "In a process piece, name the step and leave the side to the reader.",
+        "id": "01.22", "title": "Leave the side to the reader in a process piece.",
         "rule": ["An Act piece labeled “Act · How to take part” gives one step with its date and place, sets out what supporters and opponents "
                  "have said at the same length, and takes no side. Its ask is the view’s one working red."],
         "tokens": ["oa.color.action.ask.fill.onNewsprint", "oa.color.action.ask.label.onNewsprint", "oa.component.button.ask.keyline.onNewsprint"],
@@ -1395,9 +1444,9 @@ def build(book):
              ("Oath & Action Report 3: How state committees record their votes, March 2027", "A report, numbered and dated", True)]
     pn_bad = [("Rent & Reform Tracker", "An ampersand in a product name", True), ("The Senator Scorecard", "A product that grades officials", True),
               ("Dispatch from the Front", "Our fifth edition’s series name, a war metaphor", False)]
-    pnl = lambda items: '<div class="ed"><ul class="pnl">' + "".join(f'<li>{e(a)}{" " + ill() if il else ""}<span class="pd">{e(b)}</span></li>' for a, b, il in items) + "</ul></div>"
+    pnl = lambda items, fail=False: '<div class="ed">' + (dnp() if fail else "") + '<ul class="pnl">' + "".join(f'<li>{e(a)}{" " + ill() if il else ""}<span class="pd">{e(b)}</span></li>' for a, b, il in items) + "</ul></div>"
     rules.append({
-        "id": "01.24", "title": "Name each product for what it does, and keep the ampersand for Oath & Action.",
+        "id": "01.24", "title": "Name each product for what it does.",
         "rule": ["Give each product a plain name that says what it does, signed by Oath & Action. The atlas is the only product named as a "
                  "question, and no product name holds an ampersand. When we type a partner’s name in our own copy, its ampersand becomes "
                  "“and”, and the partner’s logo stays as the partner draws it."],
@@ -1406,8 +1455,8 @@ def build(book):
         "correct": {"specimen": A("s-01-24-correct", pnl(pn_ok), css=(BASE, PN), rule="01.24", readable=True,
                                   alt=f"Five product names, each with what it is: Oath & Action, the weekly briefing, the newsletter. Who Do They Answer To? The Oath & Action Systems Atlas, the one product named as a question. {HR7008_TRACKER}, named for the bill it follows. Reform 101 / Cloture, an explainer. Oath & Action Report 3: How state committees record their votes, March 2027, numbered and dated, labeled Illustrative."),
                     "caption": "Each name says what the product does, and the only ampersand belongs to Oath & Action."},
-        "failure": {"specimen": A("s-01-24-failure", pnl(pn_bad), css=(BASE, PN), rule="01.24", readable=True,
-                                  alt="Three names that break the rule. Rent & Reform Tracker, labeled Illustrative, with an ampersand. The Senator Scorecard, labeled Illustrative, which grades officials. Dispatch from the Front, our fifth edition's series name, a war metaphor."),
+        "failure": {"specimen": A("s-01-24-failure", pnl(pn_bad, fail=True), css=(BASE, PN), rule="01.24", readable=True,
+                                  alt=f"{FC}Three names that break the rule. Rent & Reform Tracker, labeled Illustrative, with an ampersand. The Senator Scorecard, labeled Illustrative, which grades officials. Dispatch from the Front, our fifth edition's series name, a war metaphor."),
                     "caption": "A second ampersand competes with ours, a scorecard grades the officials we ask readers to contact, and “the Front” turns a series into a war."},
         "related": ["03", "22"],
         "builders": ("Name a new product as its subject plus its kind, such as “Child Care Rules Tracker”, and check the name against this rule "
@@ -1454,6 +1503,12 @@ def build(book):
 
     sources = [SRC_STOCK_SURVEY, SRC_STOCK_VOTES, SRC_INITIATIVE, SRC_FEC, SRC_R4A, SRC_R4A_COUNT, SRC_R4A_MO, SRC_MINWAGE, SRC_PAY, SRC_CLOTURE, SRC_ELECTRIC,
                "Our brand guide, fifth edition, chapter 13 In use: “Who wrote the rule you are angry about?”"]
+
+    # Gate 2 fix pass: Specifications where a rule had none (CD-S9), and every failure caption led by the rule it fails (CD-S2)
+    for r in rules:
+        if not r.get("specs") and r["id"] in SPECS01:
+            r["specs"] = SPECS01[r["id"]]
+        r["failure"]["caption"] = fails_lead(r["id"], r["failure"]["caption"])
 
     data = {
         "number": "01", "anchor": "purpose", "title": "Purpose", "part": "Foundations",
