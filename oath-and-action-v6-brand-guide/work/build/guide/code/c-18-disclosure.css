@@ -1,0 +1,30 @@
+/* Disclosure: a row that shows and hides what follows it. The chevron points down while closed and up while open; the
+   turn takes the standard motion token, which tokens.css sets to 0 ms when a reader asks for less motion. */
+.oa-disclosure-set { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
+.oa-disclosure-k { margin: var(--oa-space-300) 0 var(--oa-space-100); font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
+.oa-disclosure-k:first-child { margin-top: 0 }
+.oa-disclosure-stack { border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
+.oa-disclosure { margin: 0; padding: 0 }
+/* The row: the whole width is the target, at least 44 px tall, its words before the chevron */
+.oa-disclosure-summary { display: flex; align-items: center; justify-content: space-between; gap: var(--oa-space-100); box-sizing: border-box;
+  width: 100%; min-height: var(--oa-size-target-touch); margin: 0; padding: var(--oa-space-100) 0;
+  border: 0; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline); background: transparent;
+  color: var(--oa-color-text-primary); font: var(--oa-type-ui); text-align: start; overflow-wrap: anywhere; cursor: pointer; list-style: none }
+.oa-disclosure-summary::-webkit-details-marker { display: none }
+.oa-disclosure-label { min-width: 0 }
+.oa-disclosure-summary:hover .oa-disclosure-label { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
+.oa-disclosure-summary:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
+.oa-disclosure-chevron { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium);
+  transition: transform var(--oa-motion-duration-standard) var(--oa-motion-easing-standard) }
+.oa-disclosure[open] > .oa-disclosure-summary .oa-disclosure-chevron,
+.oa-disclosure-button[aria-expanded="true"] .oa-disclosure-chevron { transform: rotate(180deg) }
+.oa-disclosure-body { padding: 0 0 var(--oa-space-200) }
+.oa-disclosure-body[hidden] { display: none }
+.oa-disclosure-body p { margin: 0; max-width: var(--oa-layout-measure-body-max); font: var(--oa-type-body-small) }
+.oa-disclosure-illus { margin-right: var(--oa-space-050); padding: 0 var(--oa-space-050); border: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+  font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); color: var(--oa-color-text-secondary) }
+
+@media (forced-colors: active) {
+  .oa-disclosure-summary, .oa-disclosure-stack { border-color: CanvasText }
+}
