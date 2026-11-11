@@ -1,0 +1,132 @@
+{
+  "title": "Where to start",
+  "instr": "Pick the route that matches why you’re here.",
+  "routes": [
+    {
+      "id": "newcomer",
+      "label": "New to Oath & Action",
+      "lede": "Start here to learn what Oath & Action is and how to read what we publish.",
+      "steps": [
+        {
+          "text": "Find out what Oath & Action does and what our four pillars, Explain, Track, Connect and Act, each stand for.",
+          "href": "#purpose",
+          "later": false
+        },
+        {
+          "text": "Check the label above a headline to see what kind of piece you are reading.",
+          "href": "#rule-01-21",
+          "later": false
+        },
+        {
+          "text": "When we take a side on a measure, the piece opens with the label “Our position” and gives the strongest case against it.",
+          "href": "#rule-01-23",
+          "later": false
+        },
+        {
+          "text": "The evidence grade beside a claim, from documented to hypothesis, tells you how sure that claim is.",
+          "href": "#s-02-22-correct--h08",
+          "later": false
+        },
+        {
+          "text": "Read the word Illustrative as our sign that the item beside it is invented.",
+          "href": "#s-02-22-correct--h03",
+          "later": false
+        },
+        {
+          "text": "See how a tracker follows a bill through six numbered steps, from filing to the governor’s or president’s desk.",
+          "href": "#rule-11-1",
+          "later": false
+        },
+        {
+          "text": "Every piece ends on one step you can take, with its date and the way to take it.",
+          "href": "#rule-02-24",
+          "later": false
+        }
+      ]
+    },
+    {
+      "id": "designer",
+      "label": "Designing a piece",
+      "lede": "Use this route when you design anything we publish, on screen or in print.",
+      "steps": [
+        {
+          "text": "Choose the lockup, our name and marks set in one fixed arrangement, by the width you have and the surface it sits on.",
+          "href": "#rule-03-2",
+          "later": false
+        },
+        {
+          "text": "Start on Newsprint, our warm off-white page, and set text only on color pairs with enough contrast.",
+          "href": "#color",
+          "later": false
+        },
+        {
+          "text": "Spend red on one job in each view, such as the step a reader can take now.",
+          "href": "#rule-05-3",
+          "later": false
+        },
+        {
+          "text": "Take every type size from the type scale, and set nothing on screen under 13 px.",
+          "href": "#rule-06-2",
+          "later": false
+        },
+        {
+          "text": "Space the page with the 8 px spacing scale, on the column grid for its width.",
+          "href": "#layout",
+          "later": false
+        },
+        {
+          "text": "See the identity at true size on four of our pieces, from the site’s masthead to a letterhead.",
+          "href": "#proofs",
+          "later": false
+        },
+        {
+          "text": "Chapters 20 to 25, which come later, will show each kind of piece in full, from a web page to a printed report.",
+          "href": null,
+          "later": true
+        }
+      ]
+    },
+    {
+      "id": "builder",
+      "label": "Building with code",
+      "lede": "When you build in code, take every color, size, space and speed from our tokens, the named values in two files.",
+      "steps": [
+        {
+          "text": "Download tokens.css and tokens.json, which hold the same tokens under one version number.",
+          "href": "#rule-26-8",
+          "later": false
+        },
+        {
+          "text": "Link tokens.css before your own styles, then give the body its margin and type.",
+          "href": "#rule-26-5",
+          "later": false
+        },
+        {
+          "text": "Choose each token in five steps, starting from the surface it sits on.",
+          "href": "#rule-26-3",
+          "later": false
+        },
+        {
+          "text": "Let the page follow the reader’s light or dark setting through one attribute on its root.",
+          "href": "#rule-26-6",
+          "later": false
+        },
+        {
+          "text": "Copy each control’s code from chapter 18, where every control works by keyboard and screen reader.",
+          "href": "#components",
+          "later": false
+        },
+        {
+          "text": "Give each of the ten states, from hover to error, words or a shape as well as a color.",
+          "href": "#rule-17-8",
+          "later": false
+        },
+        {
+          "text": "Before you call a page finished, run the checks in chapter 19 against WCAG 2.2 at level AA, the accessibility standard we build to.",
+          "href": "#rule-19-7",
+          "later": false
+        }
+      ]
+    }
+  ]
+}
