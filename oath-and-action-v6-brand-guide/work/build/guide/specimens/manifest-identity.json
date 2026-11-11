@@ -30,7 +30,7 @@
  "s-03-2-failure": {
   "chapter": "03",
   "rule": "03.2",
-  "width_px": 200,
+  "width_px": 336,
   "alt": "Failure case: do not publish. The same 120 pixel tile with the full OATH & ACTION wordmark squeezed to 100 pixels wide; its capitals are 10 pixels tall and blur.",
   "illustrative": false,
   "notes": "Display master scaled to 100 px wide (10.2 px capitals), as a producer would drag it."
@@ -142,14 +142,10 @@
  "s-03-7-failure": {
   "chapter": "03",
   "rule": "03.7",
-  "width_px": 300,
+  "width_px": 336,
   "alt": "Failure case: do not publish. The compact signature from our brand guide’s fourth edition, O & A typed in Inter Tight with word spaces and the font’s sans-serif ampersand in red, at the same cap height as L8 at 120 pixels.",
   "illustrative": false,
-  "notes": "V4.2's typed signature at L8's cap height (40 px capitals, so 55 px type): a labeled failure, so check_exempt scale and contrast.",
-  "check_exempt": [
-   "contrast",
-   "scale"
-  ]
+  "notes": "V4.2's typed signature at L8's cap height (40 px capitals, so 55 px type): a labeled failure, so check_exempt scale and contrast."
  },
  "s-03-8-correct": {
   "chapter": "03",

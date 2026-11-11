@@ -549,7 +549,8 @@ def s_04_8_correct():
 
 @spec
 def s_04_8_failure():
-    body = _cover(False)
+    # Gate 2's fix pass (CD-S2): the label sits at the head of the piece, under the band, so the caption leads with its rule
+    body = f'<div>{head_label()}{_cover(False)}</div>'
     alt = "Failure case: the same cover with the large ampersand moved up behind the title, so the title's letters cross its strokes. Illustrative."
     return rec("s-04-8-failure", "04.8", 528, alt, body, illustrative=True, check_exempt=["scale"],
                notes="A print piece set in points (D2-205), so check_exempt scale.")

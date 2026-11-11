@@ -331,9 +331,10 @@ def s_proofs_stacked():
 PROOFS = {
     "title": "Identity proofs",
     "instruction": "Check the identity at true size on four pieces we publish, and see the stacked lockup that replaced L2.",
+    # Gate 2's fix pass (CD-S4, the data part): the proofs take the chapter opener form, so the intro is one short
+    # paragraph and the first proof reaches the first screen; the record of S1 moves to its own proof's words
     "intro": [
-        "These proofs set the wordmark, ampersand B and the lockmark at true size on four pieces we publish: the site's masthead, a social avatar, a link-preview card and a letterhead. Each follows the rules in chapters 03, 04 and 08.",
-        "The last proof is a record. On November 7, 2026, Dustin Cathcart, our founder and editor, approved S1, the stacked lockup that sets OATH & over ACTION, in place of L2. The two stand side by side at the same cap height at three sizes, so anyone can check the change at true size.",
+        "These proofs set the wordmark, ampersand B and the lockmark at true size on four pieces we publish: the site's masthead, a social avatar, a link-preview card and a letterhead. Each follows the rules in chapters 03, 04 and 08, and the fifth proof is the record of the stacked lockup that replaced L2.",
     ],
     "groups": [
         {"label": "Masthead on the site", "text": ["L3 in the 1440 px site bar and L1 in the 390 px phone bar, on one left edge (Rule 03.6)."],
@@ -344,7 +345,7 @@ PROOFS = {
          "items": [{"specimen": "s-proofs-social", "label": "Link-preview card", "caption": "Until chapter 23 sets social cards, build one from these specifications."}]},
         {"label": "Letterhead", "text": ["US Letter, 8.5 by 11 inches, at true size on screen, 96 px to the inch. Check the print proof's scale with a ruler before you judge it on paper."],
          "items": [{"specimen": "s-proofs-letterhead", "label": "US Letter", "caption": "The address, recipient and letter are invented, and the letter is signed with Dustin's name and title."}]},
-        {"label": "L2 beside S1", "text": ["The record of the change to the stacked lockup: L2 at left and S1 at right in each pair, at the same cap height."],
+        {"label": "L2 beside S1", "text": ["On November 7, 2026, Dustin Cathcart, our founder and editor, approved S1, the stacked lockup that sets OATH & over ACTION, in place of L2. Each pair sets L2 at left and S1 at right at the same cap height, at three sizes, so anyone can check the change at true size."],
          "items": [{"specimen": "s-proofs-stacked", "label": "Three sizes", "caption": "S1 reads in the name's order with B at the size of the capitals, and it runs about a fifth narrower than L2 at every size."}]},
     ],
 }

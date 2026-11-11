@@ -2592,7 +2592,9 @@ const PLANTS = [
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg viewBox="0 0 128 128" style="width:24px;height:24px" aria-hidden="true" focusable="false" data-icon="CL-048" data-icon-family="topic"><use href="#oa-sym-cl-048"/></svg> Public records</p>'); } },
   { key: 'fitSwitch', fault: 'the switch as specimens write it, the fit at 1x and the master at 2x (allowed: must not be flagged)', expect: false, hiDpi: [[1440, 2]], js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="CL-048" data-icon-family="topic"><use class="oa-at-1x" href="#oa-sym-cl-048-24px"/><use class="oa-at-2x" href="#oa-sym-cl-048"/></svg> Public records</p>'); },
-    verify: (r) => r.runs[0].fitSwitch.fitShown === 1 && r.hiDpi[0].masterShown === 1 },
+    // Gate 2 fix pass: the demo's front page draws the 24 px pillar row too, four more switches, so every switch on the page,
+    // the plant's included, must show its fit at 1x and its master at 2x
+    verify: (r) => r.runs[0].fitSwitch.pairs >= 1 && r.runs[0].fitSwitch.fitShown === r.runs[0].fitSwitch.pairs && r.hiDpi[0].masterShown === r.hiDpi[0].pairs },
   { key: 'fitSwitch', fault: 'a specimen style that shows both drawings of the switch on 1x screens', js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<style>.sb-both use { display: inline !important }</style><p class="sb-both"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="CL-048" data-icon-family="topic"><use class="oa-at-1x" href="#oa-sym-cl-048-24px"/><use class="oa-at-2x" href="#oa-sym-cl-048"/></svg> Public records</p>'); } },
   { key: 'fitSwitch', fault: 'a specimen style that keeps the fit on 2x screens, which only the high-density run sees', hiDpi: [[1440, 2]], js: () => {

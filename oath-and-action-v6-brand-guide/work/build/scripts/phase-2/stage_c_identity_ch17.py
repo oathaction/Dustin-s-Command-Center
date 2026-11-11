@@ -300,7 +300,10 @@ PLAYER_CSS = (
     '[data-part^="hlinks"],[data-still-part^="hlinks"]{transform-origin:0 50%}'
     '[data-part^="vlinks"],[data-still-part^="vlinks"]{transform-origin:50% 0}'
     ".oai-mv-out{min-height:3em;" + tyv("body-small") + "}"
-    ".oai-mv-cl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,9.5rem),1fr));gap:8px;max-width:22rem}"
+    # Gate 2's fix pass (DT-S8): Reset names its object, so each button takes its words' width on one line, Play keeps
+    # its 9.5rem, and the row wraps on a phone
+    ".oai-mv-cl{display:flex;flex-wrap:wrap;gap:8px}.oai-mv-cl .oai-mv-b{white-space:nowrap}"
+    ".oai-mv-cl .oai-mv-b[data-oa-play]{min-width:9.5rem}"
     ".oai-mv-b{display:inline-flex;align-items:center;gap:8px;min-height:var(--oa-size-target-touch);margin:0;"
     "padding:0 14px 0 10px;border:var(--oa-border-width-hairline) solid var(--oa-color-border-strong);border-radius:0;"
     "background:var(--oa-color-surface);color:var(--oa-color-text-primary);" + tyv("ui") + ";text-align:left;cursor:pointer}"

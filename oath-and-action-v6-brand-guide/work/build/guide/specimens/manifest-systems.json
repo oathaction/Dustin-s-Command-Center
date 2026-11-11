@@ -394,7 +394,7 @@
  "s-07-2-failure": {
   "chapter": "07",
   "rule": "07.2",
-  "width_px": 360,
+  "width_px": 408,
   "alt": "Failure case: do not publish. A page at 1440 px drawn at one quarter size, with three sections on three, five and two columns whose edges never line up.",
   "illustrative": false,
   "notes": "A diagram at one quarter size.",
@@ -403,7 +403,7 @@
  "s-07-3-correct": {
   "chapter": "07",
   "rule": "07.3",
-  "width_px": 360,
+  "width_px": 408,
   "alt": "The 1440 px grid drawn at one quarter size, with body text spanning the first 5 of 12 columns, 533 px at true size.",
   "illustrative": false,
   "notes": "A diagram at one quarter size; the span is the one whose measured mean sits nearest 68 within 60 to 75.",
@@ -412,7 +412,7 @@
  "s-07-3-failure": {
   "chapter": "07",
   "rule": "07.3",
-  "width_px": 360,
+  "width_px": 408,
   "alt": "Failure case: do not publish. The 1440 px grid at one quarter size with a paragraph drawn across all 12 columns, measured at 160 characters a line.",
   "illustrative": false,
   "notes": "A diagram at one quarter size, measured with chapter 02’s prose at 17 px across 1,312 px.",

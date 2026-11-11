@@ -425,7 +425,9 @@ PLAYER_CSS = (
     '.ti{' + ty('h4') + ';text-wrap:balance}'
     '.stg{padding:16px 0 4px}'
     '.out{min-height:3em;' + ty('bodySmall') + '}'
-    '.cl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,8.5rem),1fr));gap:8px;max-width:22rem}'
+    # DT-S8: Reset names its object, so a button never narrows below its words on one line; the two share the row
+    # equally where they fit, and Reset moves under Play where they do not
+    '.cl{display:flex;flex-wrap:wrap;gap:8px;max-width:22rem}.cl .b{flex:1 1 0;min-width:max-content}'
     '.b{display:inline-flex;align-items:center;gap:8px;min-height:var(--oa-size-target-touch);margin:0;'
     'padding:0 14px 0 10px;border:var(--oa-border-width-hairline) solid var(--oa-color-border-strong);border-radius:0;'
     'background:var(--oa-color-surface);color:var(--oa-color-text-primary);' + ty('ui') + ';text-align:left;cursor:pointer}'

@@ -247,7 +247,8 @@ def s_03_2_failure():
             + _tile(wm, 120, "Same tile, full wordmark at 100 px wide")
             + '</div></div>')
     alt = "Failure case: the same 120 pixel tile with the full OATH & ACTION wordmark squeezed to 100 pixels wide; its capitals are 10 pixels tall and blur."
-    return rec("s-03-2-failure", "03.2", 200, alt, body, notes="Display master scaled to 100 px wide (10.2 px capitals), as a producer would drag it.")
+    # 336 px (Gate 2's fix pass): the do-not-publish band holds its words on one line above the 120 px tile
+    return rec("s-03-2-failure", "03.2", 336, alt, body, notes="Display master scaled to 100 px wide (10.2 px capitals), as a producer would drag it.")
 
 
 MIN = {  # each lockup's minimum, from the identity masters' table at today's width
@@ -576,7 +577,7 @@ def s_03_7_failure():
     body = f'<div class="oai-panel oai-s-newsprint"><span class="oai-red" data-red="signature" data-failure="true">{svg}</span></div>'
     alt = ("Failure case: the compact signature from our brand guide's fourth edition, O & A typed in Inter Tight with word "
            "spaces and the font's sans-serif ampersand in red, at the same cap height as L8 at 120 pixels.")
-    return rec("s-03-7-failure", "03.7", 300, alt, body, check_exempt=["contrast", "scale"],
+    return rec("s-03-7-failure", "03.7", 336, alt, body,     # 336 px: the band's words on one line (Gate 2's fix pass) check_exempt=["contrast", "scale"],
                notes="V4.2's typed signature at L8's cap height (40 px capitals, so 55 px type): a labeled failure, so check_exempt scale and contrast.")
 
 
