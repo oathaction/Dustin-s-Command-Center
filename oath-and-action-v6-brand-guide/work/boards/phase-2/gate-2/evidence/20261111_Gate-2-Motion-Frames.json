@@ -1,0 +1,638 @@
+{
+ "reduced": [
+  {
+   "player": "17-1",
+   "figure": "fig-s-17-1-correct",
+   "rest": {
+    "frame": "start",
+    "status": "Step 3 of 6: Committee vote. Steps 1 and 2 done, step 3 now, steps 4 to 6 not yet.",
+    "button": "Play",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": null
+   },
+   "restShot": "20261111_Motion-Ch17-17-1-Reduced-Rest.png",
+   "afterPlay": {
+    "frame": "end",
+    "status": "Step 4 of 6: First chamber. Steps 1 to 3 done, step 4 now, steps 5 and 6 not yet.",
+    "button": "Play again",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": null
+   },
+   "finalShot": "20261111_Motion-Ch17-17-1-Reduced-Final.png",
+   "after1500": {
+    "frame": "end",
+    "status": "Step 4 of 6: First chamber. Steps 1 to 3 done, step 4 now, steps 5 and 6 not yet.",
+    "button": "Play again",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": null
+   },
+   "sameAt0And1500ms": true
+  },
+  {
+   "player": "17-4",
+   "figure": "fig-s-17-4-correct",
+   "rest": {
+    "frame": "start",
+    "status": "First frame: wealth concentration, where Loop R1 starts.",
+    "button": "Play",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": "Your device asks for reduced motion, so every player here shows its last frame at once."
+   },
+   "restShot": "20261111_Motion-Ch17-17-4-Reduced-Rest.png",
+   "afterPlay": {
+    "frame": "end",
+    "status": "Last frame: wealth concentration raises money in politics.",
+    "button": "Play again",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": "Your device asks for reduced motion, so every player here shows its last frame at once."
+   },
+   "finalShot": "20261111_Motion-Ch17-17-4-Reduced-Final.png",
+   "after1500": {
+    "frame": "end",
+    "status": "Last frame: wealth concentration raises money in politics.",
+    "button": "Play again",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": "Your device asks for reduced motion, so every player here shows its last frame at once."
+   },
+   "sameAt0And1500ms": true
+  },
+  {
+   "player": "17-5-a",
+   "figure": "fig-s-17-5-correct",
+   "rest": {
+    "frame": "start",
+    "status": "First frame: the ring at the first place.",
+    "button": "Play",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": null
+   },
+   "restShot": "20261111_Motion-Ch17-17-5-a-Reduced-Rest.png",
+   "afterPlay": {
+    "frame": "end",
+    "status": "Last frame: the ring at the second place.",
+    "button": "Play again",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": null
+   },
+   "finalShot": "20261111_Motion-Ch17-17-5-a-Reduced-Final.png",
+   "after1500": {
+    "frame": "end",
+    "status": "Last frame: the ring at the second place.",
+    "button": "Play again",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": null
+   },
+   "sameAt0And1500ms": true
+  },
+  {
+   "player": "17-5-b",
+   "figure": "fig-s-17-5-correct",
+   "rest": {
+    "frame": "start",
+    "status": "First frame: two nodes, not yet joined.",
+    "button": "Play",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": null
+   },
+   "restShot": "20261111_Motion-Ch17-17-5-b-Reduced-Rest.png",
+   "afterPlay": {
+    "frame": "end",
+    "status": "Last frame: a line joins the first node to the second.",
+    "button": "Play again",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": null
+   },
+   "finalShot": "20261111_Motion-Ch17-17-5-b-Reduced-Final.png",
+   "after1500": {
+    "frame": "end",
+    "status": "Last frame: a line joins the first node to the second.",
+    "button": "Play again",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": null
+   },
+   "sameAt0And1500ms": true
+  },
+  {
+   "player": "17-5-c",
+   "figure": "fig-s-17-5-correct",
+   "rest": {
+    "frame": "start",
+    "status": "First frame: an empty node.",
+    "button": "Play",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": null
+   },
+   "restShot": "20261111_Motion-Ch17-17-5-c-Reduced-Rest.png",
+   "afterPlay": {
+    "frame": "end",
+    "status": "Last frame: the node is filled.",
+    "button": "Play again",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": null
+   },
+   "finalShot": "20261111_Motion-Ch17-17-5-c-Reduced-Final.png",
+   "after1500": {
+    "frame": "end",
+    "status": "Last frame: the node is filled.",
+    "button": "Play again",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": null
+   },
+   "sameAt0And1500ms": true
+  },
+  {
+   "player": "Hinge",
+   "figure": "fig-s-17-hinge-correct",
+   "rest": {
+    "frame": "end",
+    "status": "At rest: the wordmark, OATH & ACTION, as its master draws it.",
+    "button": "Play",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": null
+   },
+   "restShot": "20261111_Motion-Ch17-Hinge-Reduced-Rest.png",
+   "afterPlay": {
+    "frame": "end",
+    "status": "Last frame: the wordmark, OATH & ACTION, as its master draws it.",
+    "button": "Play again",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": null
+   },
+   "finalShot": "20261111_Motion-Ch17-Hinge-Reduced-Final.png",
+   "after1500": {
+    "frame": "end",
+    "status": "Last frame: the wordmark, OATH & ACTION, as its master draws it.",
+    "button": "Play again",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": null
+   },
+   "sameAt0And1500ms": true
+  },
+  {
+   "player": "Lever",
+   "figure": "fig-s-17-lever-correct",
+   "rest": {
+    "frame": "end",
+    "status": "At rest: the lockmark as its master draws it, nine nodes joined by their links, with the red lever at bottom right.",
+    "button": "Play",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": null
+   },
+   "restShot": "20261111_Motion-Ch17-Lever-Reduced-Rest.png",
+   "afterPlay": {
+    "frame": "end",
+    "status": "Last frame: the lockmark as its master draws it, nine nodes joined by their links, with the red lever at bottom right.",
+    "button": "Play again",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": null
+   },
+   "finalShot": "20261111_Motion-Ch17-Lever-Reduced-Final.png",
+   "after1500": {
+    "frame": "end",
+    "status": "Last frame: the lockmark as its master draws it, nine nodes joined by their links, with the red lever at bottom right.",
+    "button": "Play again",
+    "running": 0,
+    "durationToken": "0ms",
+    "device": null
+   },
+   "sameAt0And1500ms": true
+  }
+ ],
+ "normal": [
+  {
+   "player": "17-1",
+   "figure": "fig-s-17-1-correct",
+   "rest": {
+    "frame": "start",
+    "status": "Step 3 of 6: Committee vote. Steps 1 and 2 done, step 3 now, steps 4 to 6 not yet.",
+    "button": "Play",
+    "running": 0,
+    "durationToken": "200ms",
+    "device": null
+   },
+   "restShot": "20261111_Motion-Ch17-17-1-Normal-Rest.png",
+   "timing": {
+    "animations": 3,
+    "endMs": 560
+   },
+   "frame1": {
+    "atMs": 0,
+    "shot": "20261111_Motion-Ch17-17-1-Normal-Frame-1.png",
+    "state": {
+     "frame": "run",
+     "status": "Playing.",
+     "button": "Pause",
+     "running": 3,
+     "durationToken": "200ms",
+     "device": null
+    }
+   },
+   "frame2": {
+    "atMs": 280,
+    "shot": "20261111_Motion-Ch17-17-1-Normal-Frame-2.png",
+    "state": {
+     "frame": "run",
+     "status": "Playing.",
+     "button": "Pause",
+     "running": 3,
+     "durationToken": "200ms",
+     "device": null
+    }
+   },
+   "frame3": {
+    "atMs": 560,
+    "shot": "20261111_Motion-Ch17-17-1-Normal-Frame-3.png",
+    "state": {
+     "frame": "end",
+     "status": "Step 4 of 6: First chamber. Steps 1 to 3 done, step 4 now, steps 5 and 6 not yet.",
+     "button": "Play again",
+     "running": 0,
+     "durationToken": "200ms",
+     "device": null
+    }
+   }
+  },
+  {
+   "player": "17-4",
+   "figure": "fig-s-17-4-correct",
+   "rest": {
+    "frame": "start",
+    "status": "First frame: wealth concentration, where Loop R1 starts.",
+    "button": "Play",
+    "running": 0,
+    "durationToken": "200ms",
+    "device": "Your device sets no motion preference, so Play runs each motion."
+   },
+   "restShot": "20261111_Motion-Ch17-17-4-Normal-Rest.png",
+   "timing": {
+    "animations": 3,
+    "endMs": 440
+   },
+   "frame1": {
+    "atMs": 0,
+    "shot": "20261111_Motion-Ch17-17-4-Normal-Frame-1.png",
+    "state": {
+     "frame": "run",
+     "status": "Playing.",
+     "button": "Pause",
+     "running": 3,
+     "durationToken": "200ms",
+     "device": "Your device sets no motion preference, so Play runs each motion."
+    }
+   },
+   "frame2": {
+    "atMs": 220,
+    "shot": "20261111_Motion-Ch17-17-4-Normal-Frame-2.png",
+    "state": {
+     "frame": "run",
+     "status": "Playing.",
+     "button": "Pause",
+     "running": 3,
+     "durationToken": "200ms",
+     "device": "Your device sets no motion preference, so Play runs each motion."
+    }
+   },
+   "frame3": {
+    "atMs": 440,
+    "shot": "20261111_Motion-Ch17-17-4-Normal-Frame-3.png",
+    "state": {
+     "frame": "end",
+     "status": "Last frame: wealth concentration raises money in politics.",
+     "button": "Play again",
+     "running": 0,
+     "durationToken": "200ms",
+     "device": "Your device sets no motion preference, so Play runs each motion."
+    }
+   }
+  },
+  {
+   "player": "17-5-a",
+   "figure": "fig-s-17-5-correct",
+   "rest": {
+    "frame": "start",
+    "status": "First frame: the ring at the first place.",
+    "button": "Play",
+    "running": 0,
+    "durationToken": "200ms",
+    "device": null
+   },
+   "restShot": "20261111_Motion-Ch17-17-5-a-Normal-Rest.png",
+   "timing": {
+    "animations": 1,
+    "endMs": 320
+   },
+   "frame1": {
+    "atMs": 0,
+    "shot": "20261111_Motion-Ch17-17-5-a-Normal-Frame-1.png",
+    "state": {
+     "frame": "run",
+     "status": "Playing.",
+     "button": "Pause",
+     "running": 1,
+     "durationToken": "200ms",
+     "device": null
+    }
+   },
+   "frame2": {
+    "atMs": 160,
+    "shot": "20261111_Motion-Ch17-17-5-a-Normal-Frame-2.png",
+    "state": {
+     "frame": "run",
+     "status": "Playing.",
+     "button": "Pause",
+     "running": 1,
+     "durationToken": "200ms",
+     "device": null
+    }
+   },
+   "frame3": {
+    "atMs": 320,
+    "shot": "20261111_Motion-Ch17-17-5-a-Normal-Frame-3.png",
+    "state": {
+     "frame": "end",
+     "status": "Last frame: the ring at the second place.",
+     "button": "Play again",
+     "running": 0,
+     "durationToken": "200ms",
+     "device": null
+    }
+   }
+  },
+  {
+   "player": "17-5-b",
+   "figure": "fig-s-17-5-correct",
+   "rest": {
+    "frame": "start",
+    "status": "First frame: two nodes, not yet joined.",
+    "button": "Play",
+    "running": 0,
+    "durationToken": "200ms",
+    "device": null
+   },
+   "restShot": "20261111_Motion-Ch17-17-5-b-Normal-Rest.png",
+   "timing": {
+    "animations": 1,
+    "endMs": 200
+   },
+   "frame1": {
+    "atMs": 0,
+    "shot": "20261111_Motion-Ch17-17-5-b-Normal-Frame-1.png",
+    "state": {
+     "frame": "run",
+     "status": "Playing.",
+     "button": "Pause",
+     "running": 1,
+     "durationToken": "200ms",
+     "device": null
+    }
+   },
+   "frame2": {
+    "atMs": 100,
+    "shot": "20261111_Motion-Ch17-17-5-b-Normal-Frame-2.png",
+    "state": {
+     "frame": "run",
+     "status": "Playing.",
+     "button": "Pause",
+     "running": 1,
+     "durationToken": "200ms",
+     "device": null
+    }
+   },
+   "frame3": {
+    "atMs": 200,
+    "shot": "20261111_Motion-Ch17-17-5-b-Normal-Frame-3.png",
+    "state": {
+     "frame": "end",
+     "status": "Last frame: a line joins the first node to the second.",
+     "button": "Play again",
+     "running": 0,
+     "durationToken": "200ms",
+     "device": null
+    }
+   }
+  },
+  {
+   "player": "17-5-c",
+   "figure": "fig-s-17-5-correct",
+   "rest": {
+    "frame": "start",
+    "status": "First frame: an empty node.",
+    "button": "Play",
+    "running": 0,
+    "durationToken": "200ms",
+    "device": null
+   },
+   "restShot": "20261111_Motion-Ch17-17-5-c-Normal-Rest.png",
+   "timing": {
+    "animations": 1,
+    "endMs": 200
+   },
+   "frame1": {
+    "atMs": 0,
+    "shot": "20261111_Motion-Ch17-17-5-c-Normal-Frame-1.png",
+    "state": {
+     "frame": "run",
+     "status": "Playing.",
+     "button": "Pause",
+     "running": 1,
+     "durationToken": "200ms",
+     "device": null
+    }
+   },
+   "frame2": {
+    "atMs": 100,
+    "shot": "20261111_Motion-Ch17-17-5-c-Normal-Frame-2.png",
+    "state": {
+     "frame": "run",
+     "status": "Playing.",
+     "button": "Pause",
+     "running": 1,
+     "durationToken": "200ms",
+     "device": null
+    }
+   },
+   "frame3": {
+    "atMs": 200,
+    "shot": "20261111_Motion-Ch17-17-5-c-Normal-Frame-3.png",
+    "state": {
+     "frame": "end",
+     "status": "Last frame: the node is filled.",
+     "button": "Play again",
+     "running": 0,
+     "durationToken": "200ms",
+     "device": null
+    }
+   }
+  },
+  {
+   "player": "Hinge",
+   "figure": "fig-s-17-hinge-correct",
+   "rest": {
+    "frame": "end",
+    "status": "At rest: the wordmark, OATH & ACTION, as its master draws it.",
+    "button": "Play",
+    "running": 0,
+    "durationToken": "200ms",
+    "device": null
+   },
+   "restShot": "20261111_Motion-Ch17-Hinge-Normal-Rest.png",
+   "timing": {
+    "animations": 12,
+    "endMs": 679.9999999999999
+   },
+   "frame1": {
+    "atMs": 0,
+    "shot": "20261111_Motion-Ch17-Hinge-Normal-Frame-1.png",
+    "state": {
+     "frame": "run",
+     "status": "Playing.",
+     "button": "Pause",
+     "running": 12,
+     "durationToken": "200ms",
+     "device": null
+    }
+   },
+   "frame2": {
+    "atMs": 340,
+    "shot": "20261111_Motion-Ch17-Hinge-Normal-Frame-2.png",
+    "state": {
+     "frame": "run",
+     "status": "Playing.",
+     "button": "Pause",
+     "running": 12,
+     "durationToken": "200ms",
+     "device": null
+    }
+   },
+   "frame3": {
+    "atMs": 679.9999999999999,
+    "shot": "20261111_Motion-Ch17-Hinge-Normal-Frame-3.png",
+    "state": {
+     "frame": "end",
+     "status": "Last frame: the wordmark, OATH & ACTION, as its master draws it.",
+     "button": "Play again",
+     "running": 0,
+     "durationToken": "200ms",
+     "device": null
+    }
+   }
+  },
+  {
+   "player": "Lever",
+   "figure": "fig-s-17-lever-correct",
+   "rest": {
+    "frame": "end",
+    "status": "At rest: the lockmark as its master draws it, nine nodes joined by their links, with the red lever at bottom right.",
+    "button": "Play",
+    "running": 0,
+    "durationToken": "200ms",
+    "device": null
+   },
+   "restShot": "20261111_Motion-Ch17-Lever-Normal-Rest.png",
+   "timing": {
+    "animations": 60,
+    "endMs": 560
+   },
+   "frame1": {
+    "atMs": 0,
+    "shot": "20261111_Motion-Ch17-Lever-Normal-Frame-1.png",
+    "state": {
+     "frame": "run",
+     "status": "Playing.",
+     "button": "Pause",
+     "running": 60,
+     "durationToken": "200ms",
+     "device": null
+    }
+   },
+   "frame2": {
+    "atMs": 280,
+    "shot": "20261111_Motion-Ch17-Lever-Normal-Frame-2.png",
+    "state": {
+     "frame": "run",
+     "status": "Playing.",
+     "button": "Pause",
+     "running": 60,
+     "durationToken": "200ms",
+     "device": null
+    }
+   },
+   "frame3": {
+    "atMs": 560,
+    "shot": "20261111_Motion-Ch17-Lever-Normal-Frame-3.png",
+    "state": {
+     "frame": "end",
+     "status": "Last frame: the lockmark as its master draws it, nine nodes joined by their links, with the red lever at bottom right.",
+     "button": "Play again",
+     "running": 0,
+     "durationToken": "200ms",
+     "device": null
+    }
+   }
+  }
+ ],
+ "themeSwitch": [
+  {
+   "mode": "reduce",
+   "before": {
+    "bg": "rgb(220, 217, 210)",
+    "theme": null,
+    "transition": "0s"
+   },
+   "restShot": "20261111_Motion-Ch18-Theme-Switch-Reduced-Rest.png",
+   "atOnce": {
+    "bg": "rgb(18, 18, 18)",
+    "theme": "dark",
+    "focused": "dark",
+    "animations": 0
+   },
+   "atOnceShot": "20261111_Motion-Ch18-Theme-Switch-Reduced-At-Once.png",
+   "after1000": {
+    "bg": "rgb(18, 18, 18)",
+    "theme": "dark"
+   },
+   "sameAt0And1000ms": true
+  },
+  {
+   "mode": "no-preference",
+   "before": {
+    "bg": "rgb(220, 217, 210)",
+    "theme": null,
+    "transition": "0s"
+   },
+   "restShot": "20261111_Motion-Ch18-Theme-Switch-Normal-Rest.png",
+   "atOnce": {
+    "bg": "rgb(18, 18, 18)",
+    "theme": "dark",
+    "focused": "dark",
+    "animations": 0
+   },
+   "atOnceShot": "20261111_Motion-Ch18-Theme-Switch-Normal-At-Once.png",
+   "after1000": {
+    "bg": "rgb(18, 18, 18)",
+    "theme": "dark"
+   },
+   "sameAt0And1000ms": true
+  }
+ ]
+}

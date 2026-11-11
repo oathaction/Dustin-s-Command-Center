@@ -5,7 +5,7 @@
 // Usage:
 //   node work/build/scripts/phase-2/guide_check.js <page.html> [--quick] [--no-captures]
 //   node work/build/scripts/phase-2/guide_check.js --self-test [--results out.json]   plants each fault in a demo build and proves
-//                                                                the test catches it (results default to the stage A board folder)
+//                                                                the test catches it (results default to the Gate 2 board folder)
 //
 // Widths: 1440, 1024, 390 and 360 px (--quick: 1440 and 390). At every width it checks:
 //   structure  exactly one h1; no skipped heading level; no heading inside a specimen; every h3 in a chapter is a rule
@@ -2180,7 +2180,8 @@ async function fontsLocal(browser, file, width, opts = {}) {
 // startPage and startFocus  The "Where to start" page (D2-1698), in a fresh page per width. Structure: its place between
 //             the contents and the first part; a link to it from the cover, the contents, the rail and the phone menu;
 //             three routes (newcomer, designer, builder) of four to seven steps; each step link lands on an id inside
-//             a rule, a chapter or the appendix, and is 44 px tall at least; a later step holds no link. Focus: from
+//             a rule, a chapter, a part, the appendix or the colophon, and is 44 px tall at least; a later step holds
+//             no link. Focus: from
 //             the page's own heading, as a reader arriving from the contents has it, Tab visits each visible control
 //             in the page once and in document order, each with a 2 px outline, in view below the masthead. Links:
 //             each step, focused and opened with Enter, moves focus to what it opens (its heading, or the target
@@ -2212,8 +2213,8 @@ async function startAudit(browser, file, width, opts = {}) {
       const href = a.getAttribute('href'); const t = href.startsWith('#') ? document.getElementById(decodeURIComponent(href.slice(1))) : null;
       if (!t) { out.why.push(`the link "${a.textContent.trim().slice(0, 40)}" goes to ${href}, which matches no id`); continue; }
       if (a.classList.contains('step-go')) {
-        const home = t.closest('.rule, section.chapter, section.appendix');
-        if (!home) out.why.push(`the step "${a.textContent.trim().slice(0, 40)}" opens ${href}, which sits in no rule, chapter or appendix`);
+        const home = t.closest('.rule, section.chapter, section.appendix, section.part, section.contents, footer.colophon');
+        if (!home) out.why.push(`the step "${a.textContent.trim().slice(0, 40)}" opens ${href}, which sits in no rule, chapter, part, appendix or the colophon`);
         out.targets[href] = home ? (home.id || home.className) : null;
       }
       if (a.closest('[data-later]')) out.why.push(`the later step "${a.closest('[data-later]').textContent.trim().slice(0, 40)}" holds a link`);
@@ -2611,6 +2612,16 @@ const PLANTS = [
   { key: 'tokenTable', fault: 'a token table with a name the page does not define and a swatch whose printed hex is not what it draws', js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div data-specimen="s-26-token-table"><div class="tt" data-token-count="3" data-token-version="0"><table><tbody>' + '<tr><th><code class="tt-c">--oa-color-palette-charcoal</code></th><td><span class="tt-sw" style="background:var(--oa-color-palette-charcoal)"></span><span class="tt-v">&#35;121212</span></td></tr>' + '<tr><th><code class="tt-c">--oa-no-such-token</code></th><td><span class="tt-sw" style="background:var(--oa-no-such-token)"></span><span class="tt-v">&#35;121212</span></td></tr>' + '<tr><th><code class="tt-c">--oa-color-palette-white</code></th><td><span class="tt-sw" style="background:var(--oa-color-palette-white)"></span><span class="tt-v">&#35;121212</span></td></tr>' + '</tbody></table></div></div>'); },
     verify: (r) => r.runs[0].tokenTable && r.runs[0].tokenTable.undefCount === 1 && r.runs[0].tokenTable.offCount === 2 },   // the undefined name's swatch draws nothing, so it is off too
+  // Gate 2 (November 11, 2026): the fonts inside the page and the "Where to start" page
+  { key: 'fontsLocal', fault: 'a stylesheet link to Google Fonts added to a page that carries its fonts (D2-1697)', js: () => {
+    const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap'; document.head.append(l); } },
+  { key: 'fontsLocal', fault: 'an @font-face whose src is a font file on a server (D2-1697)', js: () => {
+    const st = document.createElement('style'); st.textContent = "@font-face { font-family: 'Inter'; font-weight: 900; src: url(https://fonts.gstatic.com/s/inter/v20/plant.woff2) format('woff2') }"; document.head.append(st); } },
+  { key: 'startPage', fault: 'a step whose link goes to an id the page does not hold (D2-1698)', js: () => { document.querySelector('#start a.step-go').setAttribute('href', '#no-such-place'); } },
+  { key: 'startPage', fault: 'the later step drawn as a link (D2-1698)', js: () => { const t = document.querySelector('#start [data-later] .step-t'); t.innerHTML = '<a href="#color">' + t.textContent + '</a>'; } },
+  { key: 'startPage', fault: 'a step whose way back cannot find it: its id moved off the step (D2-1698)', js: () => { const li = document.querySelectorAll('#start .route-step')[1]; li.id = ''; } },
+  { key: 'startFocus', fault: 'a step link pulled out of reading order with tabindex="1"', js: () => { document.querySelectorAll('#start a.step-go')[2].setAttribute('tabindex', '1'); } },
+  { key: 'startFocus', fault: 'a step link with its focus ring taken away', js: () => { const st = document.createElement('style'); st.textContent = '#start a.step-go:focus-visible { outline: none !important }'; document.head.append(st); } },
 ];
 
 async function selfTest() {
@@ -2626,7 +2637,7 @@ async function selfTest() {
   result.clean = { pass: clean.pass, failures: clean.failures.map((f) => f.msg), exemptions: clean.runs[0].specimens.exemptions, skippedTexts: clean.runs[0].text.skipped };
   for (const p of PLANTS) {
     const r = await checkPage(browser, page, p.widths || [1440], { mutate: p.js, skipAxe: true, skipFocus: !p.focus, plant: true, hiDpi: p.hiDpi || [],
-      keys: p.key === 'keyPath', motion: p.key === 'motionPlay', redPrussian: p.key === 'redTouchesPrussian' });
+      keys: p.key === 'keyPath', motion: p.key === 'motionPlay', redPrussian: p.key === 'redTouchesPrussian', fontsLocal: p.key === 'fontsLocal', start: /^start/.test(p.key) });
     const caught = r.failures.filter((f) => f.key === p.key);
     const others = r.failures.filter((f) => f.key !== p.key).map((f) => f.key);
     // a plant with expect: false proves an allowance: the test must stay quiet. verify, where given, reads the run
@@ -2639,7 +2650,8 @@ async function selfTest() {
   await browser.close();
   result.pass = result.clean.pass && result.plants.every((p) => p.ok);
   const ri = process.argv.indexOf('--results');
-  const outPath = ri > 0 && process.argv[ri + 1] ? path.resolve(process.argv[ri + 1]) : path.join(ROOT, 'work/boards/phase-2/stage-a/20261106_Guide-Check-Plant-Results.json');
+  // Gate 2: the stage A folder keeps version 7's record; the self-test's results now sit beside the preview
+  const outPath = ri > 0 && process.argv[ri + 1] ? path.resolve(process.argv[ri + 1]) : path.join(ROOT, 'work/boards/phase-2/gate-2/20261111_Guide-Check-Plant-Results.json');
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, JSON.stringify(result, null, 1));
   const faults = result.plants.filter((p) => p.expect === 'caught'), allow = result.plants.filter((p) => p.expect !== 'caught');
@@ -2673,6 +2685,8 @@ async function selfTest() {
     + (report.keys.missing.length ? `; no keys file: ${report.keys.missing.join(', ')}` : ''));
   if (report.motion) console.log(`  motion: ${report.motion.players} moving specimen(s), ${report.motion.reduced.filter((x) => x.finalAtOnce).length} showing the final frame at once under reduced motion; ${report.motion.failurePlates} on failure plates left alone`);
   if (report.redPrussian) console.log(`  redTouchesPrussian: ${report.redPrussian.stages} stages at 1440 px, ${report.redPrussian.captured} captured, ${report.redPrussian.exempt} exempt; Send pressed in ${report.redPrussian.sends} of ${report.redPrussian.forms} form(s)`);
+  if (report.fontsLocal) console.log(`  fontsLocal: ${report.fontsLocal.map((f) => `${f.width} px ${f.dataRules} of ${f.rules} @font-face rules from data URLs, ${f.loads.filter((l) => l.faces && l.loaded === l.faces).length} of ${f.loads.length} faces loaded with the network shut, ${f.blocked} request(s) blocked`).join('; ')}`);
+  if (report.start && report.start.length) console.log(`  start: ${report.start.map((x) => `${x.width} px ${x.links} links, ${x.focusStops} of ${x.controls} stops in order, ${x.opened} of ${x.steps} steps opened and ${x.returned} returned`).join('; ')}`);
   const tt = report.runs[0].tokenTable;
   if (tt) console.log(`  tokenTable: ${tt.rows} rows, ${tt.swatches} swatches, version ${tt.version}; tokens.json ${tt.file ? tt.file.count + ', ' + tt.file.version : 'unread'}`);
   for (const f of report.failures) console.log('  - ' + f.msg);

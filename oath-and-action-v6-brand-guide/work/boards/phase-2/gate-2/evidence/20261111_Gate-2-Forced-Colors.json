@@ -1,0 +1,83 @@
+[
+ {
+  "scheme": "light",
+  "sel": "#fig-s-05-4-correct",
+  "file": "20261111_Forced-Colors-Ch05-Rule-05-4-States-1440.png",
+  "forcedColorsMatches": true,
+  "size": {
+   "w": 867,
+   "h": 1190
+  }
+ },
+ {
+  "scheme": "light",
+  "sel": "#fig-s-11-15-correct",
+  "file": "20261111_Forced-Colors-Ch11-Rule-11-15-Error-Success-Warning-1440.png",
+  "forcedColorsMatches": true,
+  "size": {
+   "w": 867,
+   "h": 689
+  }
+ },
+ {
+  "scheme": "light",
+  "sel": "#fig-s-11-2-correct",
+  "file": "20261111_Forced-Colors-Ch11-Rule-11-2-Step-States-1440.png",
+  "forcedColorsMatches": true,
+  "size": {
+   "w": 867,
+   "h": 747
+  }
+ },
+ {
+  "scheme": "light",
+  "sel": "#fig-s-17-8-correct",
+  "file": "20261111_Forced-Colors-Ch17-Rule-17-8-Ten-States-1440.png",
+  "forcedColorsMatches": true,
+  "size": {
+   "w": 867,
+   "h": 2404
+  }
+ },
+ {
+  "scheme": "light",
+  "sel": "#code-c-18-button",
+  "file": "20261111_Forced-Colors-Ch18-Rule-18-1-Buttons-Live-1440.png",
+  "forcedColorsMatches": true,
+  "size": {
+   "w": 867,
+   "h": 3022
+  }
+ },
+ {
+  "scheme": "light",
+  "sel": "c-18-form--light after Send with two errors",
+  "file": "20261111_Forced-Colors-Ch18-Rule-18-17-Form-Error-Focus-1440.png",
+  "forcedColorsMatches": true,
+  "state": {
+   "focused": "c-18-form--light--oa-form-email",
+   "invalid": "true",
+   "outline": "solid rgba(5, 0, 73, 0.8)"
+  }
+ },
+ {
+  "scheme": "light",
+  "sel": "c-18-button--light, first button focused by Tab",
+  "file": "20261111_Forced-Colors-Ch18-Rule-18-1-Button-Focus-1440.png",
+  "forcedColorsMatches": true,
+  "state": {
+   "focused": "Save to your list",
+   "outline": "solid 2px rgba(5, 0, 73, 0.8)"
+  }
+ },
+ {
+  "scheme": "dark",
+  "sel": "#fig-s-17-8-correct",
+  "file": "20261111_Forced-Colors-Ch17-Rule-17-8-Ten-States-Dark-Scheme-1440.png",
+  "forcedColorsMatches": true,
+  "size": {
+   "w": 867,
+   "h": 2404
+  }
+ }
+]

@@ -1,0 +1,3756 @@
+{
+ "file": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/762f3743-f9b3-59db-919e-2c641afbd759/scratchpad/gate-2/review/guide.html",
+ "plan": "frozen",
+ "widths": {
+  "390": [
+   {
+    "stop": 1,
+    "segment": "Top and skip links",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Skip to main content",
+    "description": null,
+    "states": {},
+    "element": "a.skip",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(220, 217, 210) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 1,
+    "target": {
+     "w": 180,
+     "h": 45
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 20,
+     "y": 8,
+     "w": 180,
+     "h": 45
+    },
+    "statusText": null,
+    "hash": "",
+    "note": "First Tab on a fresh page",
+    "screenshot": "20261111_Keyboard-390-01.png"
+   },
+   {
+    "stop": 2,
+    "segment": "Top and skip links",
+    "keys": "Enter",
+    "role": "main",
+    "name": "",
+    "description": null,
+    "states": {},
+    "element": "main#main",
+    "visibility": "partly under the masthead",
+    "focusVisible": true,
+    "outline": "none 3px rgb(18, 18, 18) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": null,
+    "target": {
+     "w": 350,
+     "h": 1075606
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 20,
+     "y": 0,
+     "w": 350,
+     "h": 1075606
+    },
+    "statusText": null,
+    "hash": "#main",
+    "note": "Skip to main content followed",
+    "screenshot": "20261111_Keyboard-390-02.png"
+   },
+   {
+    "stop": 3,
+    "segment": "Top and skip links",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Open the contents",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 134,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 20,
+     "y": 758,
+     "w": 134,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#main",
+    "note": "First stop inside main",
+    "screenshot": "20261111_Keyboard-390-03.png"
+   },
+   {
+    "stop": 4,
+    "segment": "Top and skip links",
+    "keys": "Shift+Tab ×4",
+    "role": "link",
+    "name": "Skip to main content",
+    "description": null,
+    "states": {},
+    "element": "a.skip",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(220, 217, 210) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 1,
+    "target": {
+     "w": 180,
+     "h": 45
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 20,
+     "y": 8,
+     "w": 180,
+     "h": 45
+    },
+    "statusText": null,
+    "hash": "#main",
+    "note": "Back to the first skip link by Shift+Tab",
+    "screenshot": "20261111_Keyboard-390-04.png"
+   },
+   {
+    "stop": 5,
+    "segment": "Contents",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Skip to contents",
+    "description": null,
+    "states": {},
+    "element": "a.skip",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(220, 217, 210) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 1,
+    "target": {
+     "w": 149,
+     "h": 45
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 20,
+     "y": 8,
+     "w": 149,
+     "h": 45
+    },
+    "statusText": null,
+    "hash": "#main",
+    "note": "The second skip link",
+    "screenshot": "20261111_Keyboard-390-05.png"
+   },
+   {
+    "stop": 6,
+    "segment": "Contents",
+    "keys": "Enter",
+    "role": "heading",
+    "name": "Contents",
+    "description": null,
+    "states": {},
+    "element": "h2#contents-h.front-title",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "none 3px rgb(18, 18, 18) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": null,
+    "target": {
+     "w": 350,
+     "h": 45
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 20,
+     "y": 190,
+     "w": 350,
+     "h": 45
+    },
+    "statusText": null,
+    "hash": "#contents",
+    "note": "Skip to contents followed",
+    "screenshot": "20261111_Keyboard-390-06.png"
+   },
+   {
+    "stop": 7,
+    "segment": "Contents",
+    "keys": "Tab",
+    "role": "link",
+    "name": "FOUNDATIONS",
+    "description": null,
+    "states": {},
+    "element": "a.toc-part-k",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 104,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 20,
+     "y": 393,
+     "w": 104,
+     "h": 24
+    },
+    "statusText": null,
+    "hash": "#contents",
+    "note": null,
+    "screenshot": "20261111_Keyboard-390-07.png"
+   },
+   {
+    "stop": 8,
+    "segment": "Contents",
+    "keys": "Tab",
+    "role": "link",
+    "name": "01 Purpose",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 126,
+     "h": 23
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 20,
+     "y": 446,
+     "w": 126,
+     "h": 23
+    },
+    "statusText": null,
+    "hash": "#contents",
+    "note": null,
+    "screenshot": "20261111_Keyboard-390-08.png"
+   },
+   {
+    "stop": 9,
+    "segment": "Contents",
+    "keys": "Tab",
+    "role": "link",
+    "name": "02 Voice",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 101,
+     "h": 23
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 20,
+     "y": 575,
+     "w": 101,
+     "h": 23
+    },
+    "statusText": null,
+    "hash": "#contents",
+    "note": null,
+    "screenshot": "20261111_Keyboard-390-09.png"
+   },
+   {
+    "stop": 10,
+    "segment": "Contents",
+    "keys": "Tab",
+    "role": "link",
+    "name": "03 Identity",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 119,
+     "h": 23
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 20,
+     "y": 703,
+     "w": 119,
+     "h": 23
+    },
+    "statusText": null,
+    "hash": "#contents",
+    "note": null,
+    "screenshot": "20261111_Keyboard-390-10.png"
+   },
+   {
+    "stop": 11,
+    "segment": "Contents",
+    "keys": "Tab",
+    "role": "link",
+    "name": "04 The Ampersand and the hinge",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 328,
+     "h": 23
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 20,
+     "y": 807,
+     "w": 328,
+     "h": 23
+    },
+    "statusText": null,
+    "hash": "#contents",
+    "note": null,
+    "screenshot": "20261111_Keyboard-390-11.png"
+   },
+   {
+    "stop": 12,
+    "segment": "Contents",
+    "keys": "Tab",
+    "role": "link",
+    "name": "05 Color",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 99,
+     "h": 23
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 20,
+     "y": 466,
+     "w": 99,
+     "h": 23
+    },
+    "statusText": null,
+    "hash": "#contents",
+    "note": null,
+    "screenshot": "20261111_Keyboard-390-12.png"
+   },
+   {
+    "stop": 13,
+    "segment": "Contents",
+    "keys": "Enter",
+    "role": "heading",
+    "name": "05 Color",
+    "description": null,
+    "states": {},
+    "element": "h2#color-h.ch-title",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "none 3px rgb(18, 18, 18) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": null,
+    "target": {
+     "w": 350,
+     "h": 91
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 20,
+     "y": 211,
+     "w": 350,
+     "h": 91
+    },
+    "statusText": null,
+    "hash": "#color",
+    "note": "Chapter 05 opened from the contents",
+    "screenshot": "20261111_Keyboard-390-13.png"
+   },
+   {
+    "stop": 14,
+    "segment": "Rule 05.3",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Rule 05.5",
+    "description": null,
+    "states": {},
+    "element": "a.xref",
+    "visibility": "partly covered",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 75,
+     "h": 20
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 209,
+     "y": 468,
+     "w": 75,
+     "h": 20
+    },
+    "statusText": null,
+    "hash": "#rule-05-3",
+    "note": "After following a link to #rule-05-3",
+    "screenshot": "20261111_Keyboard-390-14.png"
+   },
+   {
+    "stop": 15,
+    "segment": "Rule 05.3",
+    "keys": "Enter",
+    "role": "heading",
+    "name": "RULE 05.5 Keep marks that carry meaning at 3 to 1, and give red on Newsprint a Charcoal keyline.",
+    "description": null,
+    "states": {},
+    "element": "h3.rule-h",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "none 3px rgb(18, 18, 18) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": null,
+    "target": {
+     "w": 350,
+     "h": 148
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 20,
+     "y": 146,
+     "w": 350,
+     "h": 148
+    },
+    "statusText": null,
+    "hash": "#rule-05-5",
+    "note": "Its cross-reference followed",
+    "screenshot": "20261111_Keyboard-390-15.png"
+   },
+   {
+    "stop": 16,
+    "segment": "Rule 05.3",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Return to Rule 05.3 Give each view one working red, 05 Color",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 350,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 20,
+     "y": 308,
+     "w": 350,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#rule-05-5",
+    "note": null,
+    "screenshot": "20261111_Keyboard-390-16.png"
+   },
+   {
+    "stop": 17,
+    "segment": "Rule 05.3",
+    "keys": "Enter",
+    "role": "heading",
+    "name": "RULE 05.3 Give each view one working red.",
+    "description": null,
+    "states": {},
+    "element": "h3.rule-h",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "none 3px rgb(18, 18, 18) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": null,
+    "target": {
+     "w": 350,
+     "h": 92
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 20,
+     "y": 146,
+     "w": 350,
+     "h": 92
+    },
+    "statusText": null,
+    "hash": "#rule-05-3",
+    "note": "The way back followed",
+    "screenshot": "20261111_Keyboard-390-17.png"
+   },
+   {
+    "stop": 18,
+    "segment": "Rule 05.3",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Rule 05.5",
+    "description": null,
+    "states": {},
+    "element": "a.xref",
+    "visibility": "partly covered",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 75,
+     "h": 20
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 209,
+     "y": 468,
+     "w": 75,
+     "h": 20
+    },
+    "statusText": null,
+    "hash": "#rule-05-3",
+    "note": "Next stop after returning",
+    "screenshot": "20261111_Keyboard-390-18.png"
+   },
+   {
+    "stop": 19,
+    "segment": "Chapter 18 live form",
+    "keys": "Tab",
+    "role": "textbox",
+    "name": "Email",
+    "description": null,
+    "states": {
+     "invalid": "false",
+     "required": false
+    },
+    "element": "input#c-18-form--light--oa-form-email.oa-form-input",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 326,
+     "h": 48
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 395,
+     "w": 326,
+     "h": 48
+    },
+    "statusText": "",
+    "hash": "#code-c-18-form",
+    "note": null,
+    "screenshot": "20261111_Keyboard-390-19.png"
+   },
+   {
+    "stop": 20,
+    "segment": "Chapter 18 live form",
+    "keys": "type \"reader.example.org\"",
+    "role": "textbox",
+    "name": "Email",
+    "description": null,
+    "states": {
+     "invalid": "true",
+     "required": false
+    },
+    "element": "input#c-18-form--light--oa-form-email.oa-form-input",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 326,
+     "h": 48
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 395,
+     "w": 326,
+     "h": 48
+    },
+    "statusText": "",
+    "hash": "#code-c-18-form",
+    "note": "An email with no @",
+    "screenshot": "20261111_Keyboard-390-20.png"
+   },
+   {
+    "stop": 21,
+    "segment": "Chapter 18 live form",
+    "keys": "Tab",
+    "role": "textbox",
+    "name": "ZIP code",
+    "description": "Five digits",
+    "states": {
+     "invalid": "false",
+     "required": false
+    },
+    "element": "input#c-18-form--light--oa-form-zip.oa-form-input",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 326,
+     "h": 48
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 505,
+     "w": 326,
+     "h": 48
+    },
+    "statusText": "",
+    "hash": "#code-c-18-form",
+    "note": null,
+    "screenshot": "20261111_Keyboard-390-21.png"
+   },
+   {
+    "stop": 22,
+    "segment": "Chapter 18 live form",
+    "keys": "type \"6850\", Tab",
+    "role": "button",
+    "name": "Remind me",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.oa-form-send",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 153,
+     "h": 48
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 569,
+     "w": 153,
+     "h": 48
+    },
+    "statusText": "",
+    "hash": "#code-c-18-form",
+    "note": "Four digits, then on to Remind me",
+    "screenshot": "20261111_Keyboard-390-22.png"
+   },
+   {
+    "stop": 23,
+    "segment": "Chapter 18 live form",
+    "keys": "Enter",
+    "role": "textbox",
+    "name": "Email",
+    "description": "Error: Enter an email address with an @, such as name@example.com.",
+    "states": {
+     "invalid": "true",
+     "required": false
+    },
+    "element": "input#c-18-form--light--oa-form-email.oa-form-input",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 326,
+     "h": 48
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 395,
+     "w": 326,
+     "h": 48
+    },
+    "statusText": "",
+    "hash": "#code-c-18-form",
+    "note": "Send with two errors",
+    "screenshot": "20261111_Keyboard-390-23.png"
+   },
+   {
+    "stop": 24,
+    "segment": "Chapter 18 live form",
+    "keys": "fix both fields, Tab",
+    "role": "button",
+    "name": "Remind me",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.oa-form-send",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 153,
+     "h": 48
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 569,
+     "w": 153,
+     "h": 48
+    },
+    "statusText": "",
+    "hash": "#code-c-18-form",
+    "note": "Both fields fixed",
+    "screenshot": "20261111_Keyboard-390-24.png"
+   },
+   {
+    "stop": 25,
+    "segment": "Chapter 18 live form",
+    "keys": "Enter",
+    "role": "button",
+    "name": "Remind me",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.oa-form-send",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 153,
+     "h": 48
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 569,
+     "w": 153,
+     "h": 48
+    },
+    "statusText": "You’re signed up. We’ll email you on March 1, two days before the hearing.",
+    "hash": "#code-c-18-form",
+    "note": "Sent",
+    "screenshot": "20261111_Keyboard-390-25.png"
+   },
+   {
+    "stop": 26,
+    "segment": "Chapter 18 live form",
+    "keys": "(wait 2.5 s)",
+    "role": "button",
+    "name": "Remind me",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.oa-form-send",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 153,
+     "h": 48
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 569,
+     "w": 153,
+     "h": 48
+    },
+    "statusText": "You’re signed up. We’ll email you on March 1, two days before the hearing.",
+    "hash": "#code-c-18-form",
+    "note": "After the sending state",
+    "screenshot": "20261111_Keyboard-390-26.png"
+   },
+   {
+    "stop": 27,
+    "segment": "Chapter 17 player",
+    "keys": "Tab",
+    "role": "button",
+    "name": "Play",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.oai-mv-b",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 159,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 578,
+     "w": 159,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#fig-s-17-hinge-correct",
+    "note": null,
+    "screenshot": "20261111_Keyboard-390-27.png"
+   },
+   {
+    "stop": 28,
+    "segment": "Chapter 17 player",
+    "keys": "Tab",
+    "role": "button",
+    "name": "Reset",
+    "description": "The mark is at rest on its master. Reset works once you press Play.",
+    "states": {
+     "disabled": true,
+     "invalid": "false"
+    },
+    "element": "button.oai-mv-b",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 159,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 199,
+     "y": 578,
+     "w": 159,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#fig-s-17-hinge-correct",
+    "note": "Reset waits at rest",
+    "screenshot": "20261111_Keyboard-390-28.png"
+   },
+   {
+    "stop": 29,
+    "segment": "Chapter 17 player",
+    "keys": "Tab",
+    "role": "checkbox",
+    "name": "Slow motion, one tenth speed",
+    "description": null,
+    "states": {
+     "invalid": "false",
+     "checked": "false"
+    },
+    "element": "input",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 24,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 644,
+     "w": 24,
+     "h": 24
+    },
+    "statusText": "At rest: the wordmark, OATH & ACTION, as its master draws it.",
+    "hash": "#fig-s-17-hinge-correct",
+    "note": null,
+    "screenshot": "20261111_Keyboard-390-29.png"
+   },
+   {
+    "stop": 30,
+    "segment": "Chapter 17 player",
+    "keys": "Space",
+    "role": "checkbox",
+    "name": "Slow motion, one tenth speed",
+    "description": null,
+    "states": {
+     "invalid": "false",
+     "checked": "true"
+    },
+    "element": "input",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 24,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 644,
+     "w": 24,
+     "h": 24
+    },
+    "statusText": "At rest: the wordmark, OATH & ACTION, as its master draws it.",
+    "hash": "#fig-s-17-hinge-correct",
+    "note": "Slow motion on",
+    "screenshot": "20261111_Keyboard-390-30.png"
+   },
+   {
+    "stop": 31,
+    "segment": "Chapter 17 player",
+    "keys": "Shift+Tab ×2",
+    "role": "button",
+    "name": "Play",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.oai-mv-b",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 159,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 578,
+     "w": 159,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#fig-s-17-hinge-correct",
+    "note": "Back to Play",
+    "screenshot": "20261111_Keyboard-390-31.png"
+   },
+   {
+    "stop": 32,
+    "segment": "Chapter 17 player",
+    "keys": "Enter",
+    "role": "button",
+    "name": "Pause",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.oai-mv-b",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 159,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 575,
+     "w": 159,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#fig-s-17-hinge-correct",
+    "note": "Playing at one tenth speed",
+    "screenshot": "20261111_Keyboard-390-32.png"
+   },
+   {
+    "stop": 33,
+    "segment": "Chapter 17 player",
+    "keys": "Space",
+    "role": "button",
+    "name": "Play",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.oai-mv-b",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 159,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 575,
+     "w": 159,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#fig-s-17-hinge-correct",
+    "note": "Paused",
+    "screenshot": "20261111_Keyboard-390-33.png"
+   },
+   {
+    "stop": 34,
+    "segment": "Chapter 17 player",
+    "keys": "Tab",
+    "role": "button",
+    "name": "Reset",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.oai-mv-b",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 159,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 199,
+     "y": 575,
+     "w": 159,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#fig-s-17-hinge-correct",
+    "note": null,
+    "screenshot": "20261111_Keyboard-390-34.png"
+   },
+   {
+    "stop": 35,
+    "segment": "Chapter 17 player",
+    "keys": "Enter",
+    "role": "button",
+    "name": "Reset",
+    "description": "The mark is at rest on its master. Reset works once you press Play.",
+    "states": {
+     "disabled": true,
+     "invalid": "false"
+    },
+    "element": "button.oai-mv-b",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 159,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 199,
+     "y": 578,
+     "w": 159,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#fig-s-17-hinge-correct",
+    "note": "Reset pressed",
+    "screenshot": "20261111_Keyboard-390-35.png"
+   },
+   {
+    "stop": 36,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "searchbox",
+    "name": "Search the tokens",
+    "description": "All 504 tokens, in 17 groups. Open a group, or search.",
+    "states": {
+     "invalid": "false"
+    },
+    "element": "input#s-26-token-table--tt-q.tt-q",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 242,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 216,
+     "w": 242,
+     "h": 44
+    },
+    "statusText": "All 504 tokens, in 17 groups. Open a group, or search.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": "20261111_Keyboard-390-36.png"
+   },
+   {
+    "stop": 37,
+    "segment": "Chapter 26 token table",
+    "keys": "type \"text-secondary\"",
+    "role": "searchbox",
+    "name": "Search the tokens",
+    "description": "Showing 4 of 504 tokens, in 1 group.",
+    "states": {
+     "invalid": "false"
+    },
+    "element": "input#s-26-token-table--tt-q.tt-q",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 242,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 216,
+     "w": 242,
+     "h": 44
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": "Search typed",
+    "screenshot": "20261111_Keyboard-390-37.png"
+   },
+   {
+    "stop": 38,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Color: the palette",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 122,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 424,
+     "w": 122,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 39,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Color: derived",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 100,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 204,
+     "y": 424,
+     "w": 100,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 40,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Color: tints",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 77,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 452,
+     "w": 77,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 41,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Color: roles by surface",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 161,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 480,
+     "w": 161,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 42,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Type: faces and weights",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 173,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 508,
+     "w": 173,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 43,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Type: styles",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 86,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 536,
+     "w": 86,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 44,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Space",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 45,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 177,
+     "y": 536,
+     "w": 45,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 45,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Size",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 30,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 281,
+     "y": 536,
+     "w": 30,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 46,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Layout",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 48,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 564,
+     "w": 48,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 47,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Radius",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 48,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 139,
+     "y": 564,
+     "w": 48,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 48,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Border",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 48,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 236,
+     "y": 564,
+     "w": 48,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 49,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Opacity",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 55,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 592,
+     "w": 55,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 50,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Motion",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 49,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 137,
+     "y": 592,
+     "w": 49,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 51,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Stacking order",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 104,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 620,
+     "w": 104,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 52,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Chart: color",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 83,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 185,
+     "y": 620,
+     "w": 83,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 53,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Chart: sizes",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 84,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 648,
+     "w": 84,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 54,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Components",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 90,
+     "h": 24
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 175,
+     "y": 648,
+     "w": 90,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 55,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "DisclosureTriangle",
+    "name": "Color: roles by surface (145)",
+    "description": null,
+    "states": {
+     "expanded": true
+    },
+    "element": "summary",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 326,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 699,
+     "w": 326,
+     "h": 44
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 56,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "button",
+    "name": "Copy --oa-color-text-secondary-on-newsprint",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.tt-copy",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": "rgb(18, 18, 18) 0px 0px 0px 1px inset",
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 69,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 800,
+     "w": 69,
+     "h": 44
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": "First Copy button",
+    "screenshot": "20261111_Keyboard-390-56.png"
+   },
+   {
+    "stop": 57,
+    "segment": "Chapter 26 token table",
+    "keys": "Enter",
+    "role": "button",
+    "name": "Copy --oa-color-text-secondary-on-newsprint",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.tt-copy",
+    "visibility": "clear, larger than the screen",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": "rgb(18, 18, 18) 0px 0px 0px 1px inset",
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 69,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 32,
+     "y": 821,
+     "w": 69,
+     "h": 44
+    },
+    "statusText": "Copied --oa-color-text-secondary-on-newsprint.",
+    "hash": "#fig-s-26-token-table",
+    "note": "Copy pressed",
+    "screenshot": "20261111_Keyboard-390-57.png",
+    "clipboard": "--oa-color-text-secondary-on-newsprint",
+    "buttonText": "Copy",
+    "tableStatus": "Copied --oa-color-text-secondary-on-newsprint."
+   },
+   {
+    "stop": 58,
+    "segment": "Phone menu",
+    "keys": "Shift+Tab to the top, then Tab",
+    "role": "link",
+    "name": "Skip to contents",
+    "description": null,
+    "states": {},
+    "element": "a.skip",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(220, 217, 210) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 1,
+    "target": {
+     "w": 149,
+     "h": 45
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 20,
+     "y": 8,
+     "w": 149,
+     "h": 45
+    },
+    "statusText": null,
+    "hash": "#top",
+    "note": null,
+    "screenshot": "20261111_Keyboard-390-58.png"
+   },
+   {
+    "stop": 59,
+    "segment": "Phone menu",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Oath & Action",
+    "description": null,
+    "states": {},
+    "element": "a.home",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 221,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 20,
+     "y": 6,
+     "w": 221,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#top",
+    "note": null,
+    "screenshot": "20261111_Keyboard-390-59.png"
+   },
+   {
+    "stop": 60,
+    "segment": "Phone menu",
+    "keys": "Tab",
+    "role": "button",
+    "name": "Menu",
+    "description": null,
+    "states": {
+     "invalid": "false",
+     "expanded": false
+    },
+    "element": "button#menubtn.menubtn",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 93,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 277,
+     "y": 6,
+     "w": 93,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#top",
+    "note": null,
+    "screenshot": "20261111_Keyboard-390-60.png"
+   },
+   {
+    "stop": 61,
+    "segment": "Phone menu",
+    "keys": "Enter",
+    "role": "link",
+    "name": "Cover",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 349,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 21,
+     "y": 114,
+     "w": 349,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#top",
+    "note": "Menu opened",
+    "screenshot": "20261111_Keyboard-390-61.png"
+   },
+   {
+    "stop": 62,
+    "segment": "Phone menu",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Contents",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 349,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 21,
+     "y": 158,
+     "w": 349,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#top",
+    "note": null,
+    "screenshot": "20261111_Keyboard-390-62.png"
+   },
+   {
+    "stop": 63,
+    "segment": "Phone menu",
+    "keys": "Tab",
+    "role": "link",
+    "name": "FOUNDATIONS",
+    "description": null,
+    "states": {},
+    "element": "a.menu-partlink",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 349,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 21,
+     "y": 226,
+     "w": 349,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#top",
+    "note": null,
+    "screenshot": "20261111_Keyboard-390-63.png"
+   },
+   {
+    "stop": 64,
+    "segment": "Phone menu",
+    "keys": "Escape",
+    "role": "button",
+    "name": "Menu",
+    "description": null,
+    "states": {
+     "invalid": "false",
+     "expanded": false
+    },
+    "element": "button#menubtn.menubtn",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 93,
+     "h": 44
+    },
+    "mastheadBottom": 89,
+    "rect": {
+     "x": 277,
+     "y": 6,
+     "w": 93,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#top",
+    "note": "Menu closed with Escape",
+    "screenshot": "20261111_Keyboard-390-64.png"
+   }
+  ],
+  "1440": [
+   {
+    "stop": 1,
+    "segment": "Top and skip links",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Skip to main content",
+    "description": null,
+    "states": {},
+    "element": "a.skip",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(220, 217, 210) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 1,
+    "target": {
+     "w": 180,
+     "h": 45
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 64,
+     "y": 8,
+     "w": 180,
+     "h": 45
+    },
+    "statusText": null,
+    "hash": "",
+    "note": "First Tab on a fresh page",
+    "screenshot": "20261111_Keyboard-1440-01.png"
+   },
+   {
+    "stop": 2,
+    "segment": "Top and skip links",
+    "keys": "Enter",
+    "role": "main",
+    "name": "",
+    "description": null,
+    "states": {},
+    "element": "main#main",
+    "visibility": "partly under the masthead",
+    "focusVisible": true,
+    "outline": "none 3px rgb(18, 18, 18) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": null,
+    "target": {
+     "w": 1089,
+     "h": 832351
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 287,
+     "y": 0,
+     "w": 1089,
+     "h": 832351
+    },
+    "statusText": null,
+    "hash": "#main",
+    "note": "Skip to main content followed",
+    "screenshot": "20261111_Keyboard-1440-02.png"
+   },
+   {
+    "stop": 3,
+    "segment": "Top and skip links",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Open the contents",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear, larger than the screen",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 134,
+     "h": 44
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 287,
+     "y": 856,
+     "w": 134,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#main",
+    "note": "First stop inside main",
+    "screenshot": "20261111_Keyboard-1440-03.png"
+   },
+   {
+    "stop": 4,
+    "segment": "Top and skip links",
+    "keys": "Shift+Tab ×33",
+    "role": "link",
+    "name": "Skip to main content",
+    "description": null,
+    "states": {},
+    "element": "a.skip",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(220, 217, 210) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 1,
+    "target": {
+     "w": 180,
+     "h": 45
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 64,
+     "y": 8,
+     "w": 180,
+     "h": 45
+    },
+    "statusText": null,
+    "hash": "#main",
+    "note": "Back to the first skip link by Shift+Tab",
+    "screenshot": "20261111_Keyboard-1440-04.png"
+   },
+   {
+    "stop": 5,
+    "segment": "Contents",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Skip to contents",
+    "description": null,
+    "states": {},
+    "element": "a.skip",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(220, 217, 210) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 1,
+    "target": {
+     "w": 149,
+     "h": 45
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 64,
+     "y": 8,
+     "w": 149,
+     "h": 45
+    },
+    "statusText": null,
+    "hash": "#main",
+    "note": "The second skip link",
+    "screenshot": "20261111_Keyboard-1440-05.png"
+   },
+   {
+    "stop": 6,
+    "segment": "Contents",
+    "keys": "Enter",
+    "role": "heading",
+    "name": "Contents",
+    "description": null,
+    "states": {},
+    "element": "h2#contents-h.front-title",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "none 3px rgb(18, 18, 18) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": null,
+    "target": {
+     "w": 1089,
+     "h": 82
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 287,
+     "y": 166,
+     "w": 1089,
+     "h": 82
+    },
+    "statusText": null,
+    "hash": "#contents",
+    "note": "Skip to contents followed",
+    "screenshot": "20261111_Keyboard-1440-06.png"
+   },
+   {
+    "stop": 7,
+    "segment": "Contents",
+    "keys": "Tab",
+    "role": "link",
+    "name": "FOUNDATIONS",
+    "description": null,
+    "states": {},
+    "element": "a.toc-part-k",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 104,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 287,
+     "y": 383,
+     "w": 104,
+     "h": 24
+    },
+    "statusText": null,
+    "hash": "#contents",
+    "note": null,
+    "screenshot": "20261111_Keyboard-1440-07.png"
+   },
+   {
+    "stop": 8,
+    "segment": "Contents",
+    "keys": "Tab",
+    "role": "link",
+    "name": "01 Purpose",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 142,
+     "h": 28
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 287,
+     "y": 435,
+     "w": 142,
+     "h": 28
+    },
+    "statusText": null,
+    "hash": "#contents",
+    "note": null,
+    "screenshot": "20261111_Keyboard-1440-08.png"
+   },
+   {
+    "stop": 9,
+    "segment": "Contents",
+    "keys": "Tab",
+    "role": "link",
+    "name": "02 Voice",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 111,
+     "h": 28
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 287,
+     "y": 542,
+     "w": 111,
+     "h": 28
+    },
+    "statusText": null,
+    "hash": "#contents",
+    "note": null,
+    "screenshot": "20261111_Keyboard-1440-09.png"
+   },
+   {
+    "stop": 10,
+    "segment": "Contents",
+    "keys": "Tab",
+    "role": "link",
+    "name": "03 Identity",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 134,
+     "h": 28
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 287,
+     "y": 649,
+     "w": 134,
+     "h": 28
+    },
+    "statusText": null,
+    "hash": "#contents",
+    "note": null,
+    "screenshot": "20261111_Keyboard-1440-10.png"
+   },
+   {
+    "stop": 11,
+    "segment": "Contents",
+    "keys": "Tab",
+    "role": "link",
+    "name": "04 The Ampersand and the hinge",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 384,
+     "h": 28
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 287,
+     "y": 756,
+     "w": 384,
+     "h": 28
+    },
+    "statusText": null,
+    "hash": "#contents",
+    "note": null,
+    "screenshot": "20261111_Keyboard-1440-11.png"
+   },
+   {
+    "stop": 12,
+    "segment": "Contents",
+    "keys": "Tab",
+    "role": "link",
+    "name": "05 Color",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 109,
+     "h": 28
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 287,
+     "y": 863,
+     "w": 109,
+     "h": 28
+    },
+    "statusText": null,
+    "hash": "#contents",
+    "note": null,
+    "screenshot": "20261111_Keyboard-1440-12.png"
+   },
+   {
+    "stop": 13,
+    "segment": "Contents",
+    "keys": "Enter",
+    "role": "heading",
+    "name": "05 Color",
+    "description": null,
+    "states": {},
+    "element": "h2#color-h.ch-title",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "none 3px rgb(18, 18, 18) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": null,
+    "target": {
+     "w": 867,
+     "h": 82
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 287,
+     "y": 187,
+     "w": 867,
+     "h": 82
+    },
+    "statusText": null,
+    "hash": "#color",
+    "note": "Chapter 05 opened from the contents",
+    "screenshot": "20261111_Keyboard-1440-13.png"
+   },
+   {
+    "stop": 14,
+    "segment": "Rule 05.3",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Rule 05.5",
+    "description": null,
+    "states": {},
+    "element": "a.xref",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 75,
+     "h": 20
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 633,
+     "y": 484,
+     "w": 75,
+     "h": 20
+    },
+    "statusText": null,
+    "hash": "#rule-05-3",
+    "note": "After following a link to #rule-05-3",
+    "screenshot": "20261111_Keyboard-1440-14.png"
+   },
+   {
+    "stop": 15,
+    "segment": "Rule 05.3",
+    "keys": "Enter",
+    "role": "heading",
+    "name": "RULE 05.5 Keep marks that carry meaning at 3 to 1, and give red on Newsprint a Charcoal keyline.",
+    "description": null,
+    "states": {},
+    "element": "h3.rule-h",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "none 3px rgb(18, 18, 18) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": null,
+    "target": {
+     "w": 867,
+     "h": 104
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 287,
+     "y": 122,
+     "w": 867,
+     "h": 104
+    },
+    "statusText": null,
+    "hash": "#rule-05-5",
+    "note": "Its cross-reference followed",
+    "screenshot": "20261111_Keyboard-1440-15.png"
+   },
+   {
+    "stop": 16,
+    "segment": "Rule 05.3",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Return to Rule 05.3 Give each view one working red, 05 Color",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 469,
+     "h": 44
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 398,
+     "y": 238,
+     "w": 469,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#rule-05-5",
+    "note": null,
+    "screenshot": "20261111_Keyboard-1440-16.png"
+   },
+   {
+    "stop": 17,
+    "segment": "Rule 05.3",
+    "keys": "Enter",
+    "role": "heading",
+    "name": "RULE 05.3 Give each view one working red.",
+    "description": null,
+    "states": {},
+    "element": "h3.rule-h",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "none 3px rgb(18, 18, 18) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": null,
+    "target": {
+     "w": 867,
+     "h": 35
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 287,
+     "y": 122,
+     "w": 867,
+     "h": 35
+    },
+    "statusText": null,
+    "hash": "#rule-05-3",
+    "note": "The way back followed",
+    "screenshot": "20261111_Keyboard-1440-17.png"
+   },
+   {
+    "stop": 18,
+    "segment": "Rule 05.3",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Rule 05.5",
+    "description": null,
+    "states": {},
+    "element": "a.xref",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 75,
+     "h": 20
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 633,
+     "y": 484,
+     "w": 75,
+     "h": 20
+    },
+    "statusText": null,
+    "hash": "#rule-05-3",
+    "note": "Next stop after returning",
+    "screenshot": "20261111_Keyboard-1440-18.png"
+   },
+   {
+    "stop": 19,
+    "segment": "Chapter 18 live form",
+    "keys": "Tab",
+    "role": "textbox",
+    "name": "Email",
+    "description": null,
+    "states": {
+     "invalid": "false",
+     "required": false
+    },
+    "element": "input#c-18-form--light--oa-form-email.oa-form-input",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 341,
+     "h": 48
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 343,
+     "y": 396,
+     "w": 341,
+     "h": 48
+    },
+    "statusText": "",
+    "hash": "#code-c-18-form",
+    "note": null,
+    "screenshot": "20261111_Keyboard-1440-19.png"
+   },
+   {
+    "stop": 20,
+    "segment": "Chapter 18 live form",
+    "keys": "type \"reader.example.org\"",
+    "role": "textbox",
+    "name": "Email",
+    "description": null,
+    "states": {
+     "invalid": "true",
+     "required": false
+    },
+    "element": "input#c-18-form--light--oa-form-email.oa-form-input",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 341,
+     "h": 48
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 343,
+     "y": 396,
+     "w": 341,
+     "h": 48
+    },
+    "statusText": "",
+    "hash": "#code-c-18-form",
+    "note": "An email with no @",
+    "screenshot": "20261111_Keyboard-1440-20.png"
+   },
+   {
+    "stop": 21,
+    "segment": "Chapter 18 live form",
+    "keys": "Tab",
+    "role": "textbox",
+    "name": "ZIP code",
+    "description": "Five digits",
+    "states": {
+     "invalid": "false",
+     "required": false
+    },
+    "element": "input#c-18-form--light--oa-form-zip.oa-form-input",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 341,
+     "h": 48
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 343,
+     "y": 506,
+     "w": 341,
+     "h": 48
+    },
+    "statusText": "",
+    "hash": "#code-c-18-form",
+    "note": null,
+    "screenshot": "20261111_Keyboard-1440-21.png"
+   },
+   {
+    "stop": 22,
+    "segment": "Chapter 18 live form",
+    "keys": "type \"6850\", Tab",
+    "role": "button",
+    "name": "Remind me",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.oa-form-send",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 153,
+     "h": 48
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 343,
+     "y": 570,
+     "w": 153,
+     "h": 48
+    },
+    "statusText": "",
+    "hash": "#code-c-18-form",
+    "note": "Four digits, then on to Remind me",
+    "screenshot": "20261111_Keyboard-1440-22.png"
+   },
+   {
+    "stop": 23,
+    "segment": "Chapter 18 live form",
+    "keys": "Enter",
+    "role": "textbox",
+    "name": "Email",
+    "description": "Error: Enter an email address with an @, such as name@example.com.",
+    "states": {
+     "invalid": "true",
+     "required": false
+    },
+    "element": "input#c-18-form--light--oa-form-email.oa-form-input",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 341,
+     "h": 48
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 343,
+     "y": 396,
+     "w": 341,
+     "h": 48
+    },
+    "statusText": "",
+    "hash": "#code-c-18-form",
+    "note": "Send with two errors",
+    "screenshot": "20261111_Keyboard-1440-23.png"
+   },
+   {
+    "stop": 24,
+    "segment": "Chapter 18 live form",
+    "keys": "fix both fields, Tab",
+    "role": "button",
+    "name": "Remind me",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.oa-form-send",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 153,
+     "h": 48
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 343,
+     "y": 570,
+     "w": 153,
+     "h": 48
+    },
+    "statusText": "",
+    "hash": "#code-c-18-form",
+    "note": "Both fields fixed",
+    "screenshot": "20261111_Keyboard-1440-24.png"
+   },
+   {
+    "stop": 25,
+    "segment": "Chapter 18 live form",
+    "keys": "Enter",
+    "role": "button",
+    "name": "Remind me",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.oa-form-send",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 153,
+     "h": 48
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 343,
+     "y": 570,
+     "w": 153,
+     "h": 48
+    },
+    "statusText": "You’re signed up. We’ll email you on March 1, two days before the hearing.",
+    "hash": "#code-c-18-form",
+    "note": "Sent",
+    "screenshot": "20261111_Keyboard-1440-25.png"
+   },
+   {
+    "stop": 26,
+    "segment": "Chapter 18 live form",
+    "keys": "(wait 2.5 s)",
+    "role": "button",
+    "name": "Remind me",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.oa-form-send",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 153,
+     "h": 48
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 343,
+     "y": 570,
+     "w": 153,
+     "h": 48
+    },
+    "statusText": "You’re signed up. We’ll email you on March 1, two days before the hearing.",
+    "hash": "#code-c-18-form",
+    "note": "After the sending state",
+    "screenshot": "20261111_Keyboard-1440-26.png"
+   },
+   {
+    "stop": 27,
+    "segment": "Chapter 17 player",
+    "keys": "Tab",
+    "role": "button",
+    "name": "Play",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.oai-mv-b",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 172,
+     "h": 44
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 359,
+     "y": 826,
+     "w": 172,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#fig-s-17-hinge-correct",
+    "note": null,
+    "screenshot": "20261111_Keyboard-1440-27.png"
+   },
+   {
+    "stop": 28,
+    "segment": "Chapter 17 player",
+    "keys": "Tab",
+    "role": "button",
+    "name": "Reset",
+    "description": "The mark is at rest on its master. Reset works once you press Play.",
+    "states": {
+     "disabled": true,
+     "invalid": "false"
+    },
+    "element": "button.oai-mv-b",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 172,
+     "h": 44
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 539,
+     "y": 826,
+     "w": 172,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#fig-s-17-hinge-correct",
+    "note": "Reset waits at rest",
+    "screenshot": "20261111_Keyboard-1440-28.png"
+   },
+   {
+    "stop": 29,
+    "segment": "Chapter 17 player",
+    "keys": "Tab",
+    "role": "checkbox",
+    "name": "Slow motion, one tenth speed",
+    "description": null,
+    "states": {
+     "invalid": "false",
+     "checked": "false"
+    },
+    "element": "input",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 24,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 359,
+     "y": 876,
+     "w": 24,
+     "h": 24
+    },
+    "statusText": "At rest: the wordmark, OATH & ACTION, as its master draws it.",
+    "hash": "#fig-s-17-hinge-correct",
+    "note": null,
+    "screenshot": "20261111_Keyboard-1440-29.png"
+   },
+   {
+    "stop": 30,
+    "segment": "Chapter 17 player",
+    "keys": "Space",
+    "role": "checkbox",
+    "name": "Slow motion, one tenth speed",
+    "description": null,
+    "states": {
+     "invalid": "false",
+     "checked": "true"
+    },
+    "element": "input",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 24,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 359,
+     "y": 876,
+     "w": 24,
+     "h": 24
+    },
+    "statusText": "At rest: the wordmark, OATH & ACTION, as its master draws it.",
+    "hash": "#fig-s-17-hinge-correct",
+    "note": "Slow motion on",
+    "screenshot": "20261111_Keyboard-1440-30.png"
+   },
+   {
+    "stop": 31,
+    "segment": "Chapter 17 player",
+    "keys": "Shift+Tab ×2",
+    "role": "button",
+    "name": "Play",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.oai-mv-b",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 172,
+     "h": 44
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 359,
+     "y": 810,
+     "w": 172,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#fig-s-17-hinge-correct",
+    "note": "Back to Play",
+    "screenshot": "20261111_Keyboard-1440-31.png"
+   },
+   {
+    "stop": 32,
+    "segment": "Chapter 17 player",
+    "keys": "Enter",
+    "role": "button",
+    "name": "Pause",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.oai-mv-b",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 172,
+     "h": 44
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 359,
+     "y": 810,
+     "w": 172,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#fig-s-17-hinge-correct",
+    "note": "Playing at one tenth speed",
+    "screenshot": "20261111_Keyboard-1440-32.png"
+   },
+   {
+    "stop": 33,
+    "segment": "Chapter 17 player",
+    "keys": "Space",
+    "role": "button",
+    "name": "Play",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.oai-mv-b",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 172,
+     "h": 44
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 359,
+     "y": 810,
+     "w": 172,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#fig-s-17-hinge-correct",
+    "note": "Paused",
+    "screenshot": "20261111_Keyboard-1440-33.png"
+   },
+   {
+    "stop": 34,
+    "segment": "Chapter 17 player",
+    "keys": "Tab",
+    "role": "button",
+    "name": "Reset",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.oai-mv-b",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 172,
+     "h": 44
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 539,
+     "y": 810,
+     "w": 172,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#fig-s-17-hinge-correct",
+    "note": null,
+    "screenshot": "20261111_Keyboard-1440-34.png"
+   },
+   {
+    "stop": 35,
+    "segment": "Chapter 17 player",
+    "keys": "Enter",
+    "role": "button",
+    "name": "Reset",
+    "description": "The mark is at rest on its master. Reset works once you press Play.",
+    "states": {
+     "disabled": true,
+     "invalid": "false"
+    },
+    "element": "button.oai-mv-b",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 172,
+     "h": 44
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 539,
+     "y": 810,
+     "w": 172,
+     "h": 44
+    },
+    "statusText": null,
+    "hash": "#fig-s-17-hinge-correct",
+    "note": "Reset pressed",
+    "screenshot": "20261111_Keyboard-1440-35.png"
+   },
+   {
+    "stop": 36,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "searchbox",
+    "name": "Search the tokens",
+    "description": "All 504 tokens, in 17 groups. Open a group, or search.",
+    "states": {
+     "invalid": "false"
+    },
+    "element": "input#s-26-token-table--tt-q.tt-q",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 242,
+     "h": 44
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 137,
+     "y": 232,
+     "w": 242,
+     "h": 44
+    },
+    "statusText": "All 504 tokens, in 17 groups. Open a group, or search.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": "20261111_Keyboard-1440-36.png"
+   },
+   {
+    "stop": 37,
+    "segment": "Chapter 26 token table",
+    "keys": "type \"text-secondary\"",
+    "role": "searchbox",
+    "name": "Search the tokens",
+    "description": "Showing 4 of 504 tokens, in 1 group.",
+    "states": {
+     "invalid": "false"
+    },
+    "element": "input#s-26-token-table--tt-q.tt-q",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 242,
+     "h": 44
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 137,
+     "y": 232,
+     "w": 242,
+     "h": 44
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": "Search typed",
+    "screenshot": "20261111_Keyboard-1440-37.png"
+   },
+   {
+    "stop": 38,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Color: the palette",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 122,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 137,
+     "y": 348,
+     "w": 122,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 39,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Color: derived",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 100,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 308,
+     "y": 348,
+     "w": 100,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 40,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Color: tints",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 77,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 458,
+     "y": 348,
+     "w": 77,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 41,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Color: roles by surface",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 161,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 595,
+     "y": 348,
+     "w": 161,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 42,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Type: faces and weights",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 173,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 825,
+     "y": 348,
+     "w": 173,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 43,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Type: styles",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 86,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 137,
+     "y": 376,
+     "w": 86,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 44,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Space",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 45,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 282,
+     "y": 376,
+     "w": 45,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 45,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Size",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 30,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 386,
+     "y": 376,
+     "w": 30,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 46,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Layout",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 48,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 465,
+     "y": 376,
+     "w": 48,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 47,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Radius",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 48,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 572,
+     "y": 376,
+     "w": 48,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 48,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Border",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 48,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 670,
+     "y": 376,
+     "w": 48,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 49,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Opacity",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 55,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 767,
+     "y": 376,
+     "w": 55,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 50,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Motion",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 49,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 872,
+     "y": 376,
+     "w": 49,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 51,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Stacking order",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 104,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 137,
+     "y": 404,
+     "w": 104,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 52,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Chart: color",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 83,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 290,
+     "y": 404,
+     "w": 83,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 53,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Chart: sizes",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 84,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 433,
+     "y": 404,
+     "w": 84,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 54,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "link",
+    "name": "Components",
+    "description": null,
+    "states": {},
+    "element": "a",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 90,
+     "h": 24
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 576,
+     "y": 404,
+     "w": 90,
+     "h": 24
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 55,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "DisclosureTriangle",
+    "name": "Color: roles by surface (145)",
+    "description": null,
+    "states": {
+     "expanded": true
+    },
+    "element": "summary",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": null,
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 945,
+     "h": 44
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 137,
+     "y": 455,
+     "w": 945,
+     "h": 44
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": null,
+    "screenshot": null
+   },
+   {
+    "stop": 56,
+    "segment": "Chapter 26 token table",
+    "keys": "Tab",
+    "role": "button",
+    "name": "Copy --oa-color-text-secondary-on-newsprint",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.tt-copy",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": "rgb(18, 18, 18) 0px 0px 0px 1px inset",
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 69,
+     "h": 44
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 137,
+     "y": 651,
+     "w": 69,
+     "h": 44
+    },
+    "statusText": "Showing 4 of 504 tokens, in 1 group.",
+    "hash": "#fig-s-26-token-table",
+    "note": "First Copy button",
+    "screenshot": "20261111_Keyboard-1440-56.png"
+   },
+   {
+    "stop": 57,
+    "segment": "Chapter 26 token table",
+    "keys": "Enter",
+    "role": "button",
+    "name": "Copy --oa-color-text-secondary-on-newsprint",
+    "description": null,
+    "states": {
+     "invalid": "false"
+    },
+    "element": "button.tt-copy",
+    "visibility": "clear",
+    "focusVisible": true,
+    "outline": "solid 2px rgb(74, 124, 116) offset 2px",
+    "boxShadow": "rgb(18, 18, 18) 0px 0px 0px 1px inset",
+    "ringOnGroundRatio": 3.37,
+    "target": {
+     "w": 69,
+     "h": 44
+    },
+    "mastheadBottom": 65,
+    "rect": {
+     "x": 137,
+     "y": 651,
+     "w": 69,
+     "h": 44
+    },
+    "statusText": "Copied --oa-color-text-secondary-on-newsprint.",
+    "hash": "#fig-s-26-token-table",
+    "note": "Copy pressed",
+    "screenshot": "20261111_Keyboard-1440-57.png",
+    "clipboard": "--oa-color-text-secondary-on-newsprint",
+    "buttonText": "Copy",
+    "tableStatus": "Copied --oa-color-text-secondary-on-newsprint."
+   }
+  ]
+ }
+}
