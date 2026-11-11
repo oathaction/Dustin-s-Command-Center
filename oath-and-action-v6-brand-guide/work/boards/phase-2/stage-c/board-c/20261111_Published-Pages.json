@@ -1,0 +1,7 @@
+{
+ "about": "Board C's two private pages, published November 11, 2026 (DR-220). Each is private to Dustin until he shares it.",
+ "pages": [
+  {"page": "Chapters page, chapters 01 to 12, 17, 18, 19 and 26 and the identity proofs", "url": "https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF", "version": "1794389406-98f0", "label": "Version 7, board C", "source": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html", "capabilities": {"downloads": true}, "contract": "0.2.96", "log": "D2-1692"},
+  {"page": "Board C", "url": "https://claude.ai/artifact/4TU4XUmGSH6xMmsNio48yZ", "version": "1794389436-6cd3", "source": "publish copy of work/boards/phase-2/stage-c/board-c/20261111_Board-C.html", "log": "D2-1693"}
+ ]
+}

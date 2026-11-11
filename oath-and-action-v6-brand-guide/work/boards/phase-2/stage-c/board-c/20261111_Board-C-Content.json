@@ -1,5 +1,5 @@
 {
- "built": "2026-11-11T08:59:57.249859+00:00",
+ "built": "2026-11-11T09:30:16.246053+00:00",
  "board": "work/boards/phase-2/stage-c/board-c/20261111_Board-C.html",
  "title": "Board C Decision",
  "chapters_page": {
@@ -279,7 +279,7 @@
   "gaps_after": "nine",
   "unused_after": "five",
   "built_date": "November 11, 2026",
-  "built_time": "8:59 a.m.",
+  "built_time": "9:30 a.m.",
   "answered_on": "November 11, 2026",
   "score_dates": "November 11, 2026"
  },
@@ -613,7 +613,7 @@
   "rule-26-7",
   "tokens"
  ],
- "guide_checked": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/49b1040f-34e8-55e0-97c3-93e08c6dbc2c/scratchpad/final/guide.html",
+ "guide_checked": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
  "sources": {
   "scores": "work/handoffs/phase-2/20261111_Stage-C-Round-2-CD-Scores.json",
   "rescores": "work/handoffs/phase-2/20261111_Stage-C-Round-2-CD-Rescores.json",
@@ -632,5 +632,5 @@
  },
  "notes": [],
  "warnings": [],
- "visible_text_sha1": "8a8fb90d9be5f97b909f4a110e1178c4009fa72b"
+ "visible_text_sha1": "0dd3c3fe77d42205f5914115cf08068f95d05c4a"
 }
