@@ -55,9 +55,9 @@
  "s-03-opener": {
   "chapter": "03",
   "rule": null,
-  "alt": "The lockups at true size on Newsprint, each with its name, two to a row: L1, the wordmark, beside L8, the O & A monogram; S1, OATH & over ACTION on two flush-left lines, beside L4, the monogram, a hairline and the tagline; L3, the wordmark with the lockmark at its right, beside L7, the wordmark, a hairline and the word TRACK. On screens 48em wide and up, L5 follows across both columns: the wordmark over the tagline.",
+  "alt": "The lockups at true size on Newsprint, each with its name, two to a row: L1, the wordmark, beside L8, the O & A monogram; S1, OATH & over ACTION on two flush-left lines, beside L4, the monogram, a hairline and the tagline; L3, the wordmark with the lockmark at its right, beside L7, the wordmark, a hairline and the word TRACK. Where the column is wide enough, L5 follows: the wordmark over the tagline.",
   "illustrative": false,
-  "notes": "Gate 2's fix pass, CD-S1: chapter 03's opener. Each mark is an <svg> holding one <use> of the master s-03-lockups carries with an id (stage_a_identity_lib.SHARE and REF), at the size that plate sets, from the same lockup functions, so the opener draws no master of its own. L5 shows from 48em, since its 388 px minimum is wider than a phone's column; L6 keeps its own plate, s-03-l6."
+  "notes": "Gate 2's fix pass, CD-S1: chapter 03's opener. Each mark is an <svg> holding one <use> of the master s-03-lockups carries with an id (stage_a_identity_lib.SHARE and REF), at the size that plate sets, from the same lockup functions, so the opener draws no master of its own. L5, 400 px wide here, shows where the column holds it; L6 keeps its own plate, s-03-l6. Boxes take whole-pixel sizes, so L3's masthead master lands on whole pixels where the stage does."
  },
  "s-03-3-correct": {
   "chapter": "03",
