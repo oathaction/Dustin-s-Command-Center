@@ -1001,14 +1001,15 @@ def build(ctx):
     if src_rule and src_rule.replace("'", '’') != RULE_053:
         raise ValueError('Rule 05.3 differs from the wording in tokens.json')
     ctx.fig('Rule 05.3 matches tokens.json redRule.text', 'yes' if src_rule else 'not found in tokens.json', 'string comparison, straight apostrophes read as curly')
-    # Gate 2 fix pass, CD-S10: the approved wording (D2-01, DR-66) stays word for word, sentence by sentence. The three
-    # sentences that state the rule stay its body, in their order: one working red in each view with its order of
-    # precedence, one job over several marks, and red never on Prussian. The signature exceptions and the special
-    # cases move to Specifications, one sentence a row, so the rule reaches its plate in about 70 words.
+    # Gate 2 fix pass, CD-S10: the approved wording (D2-01, DR-66) stays word for word, sentence by sentence. The four
+    # sentences that state the rule stay its body, in their order: the marks' signature red that does not count, one
+    # working red in each view with its order of precedence (its "then" follows from the first), one job over several
+    # marks, and red never on Prussian. The other cases move to Specifications, one sentence a row, so the rule reaches
+    # its plate in about 100 words, where it took 230.
     R053 = re.split(r'(?<=\.)\s+(?=[A-Z])', RULE_053)
     if len(R053) != 10:
         raise ValueError(f'Rule 05.3 splits into {len(R053)} sentences; the body and specification rows expect 10')
-    R053_BODY = (4, 5, 9)
+    R053_BODY = (0, 4, 5, 9)
 
     ch = {
         'number': '05', 'anchor': 'color', 'title': 'Color', 'part': 'Foundations',
@@ -1020,10 +1021,9 @@ def build(ctx):
             'each view, meaning each screen, card, slide or printed page. The other four do narrower work: Prussian, our '
             'dark blue, holds panels of dates and figures, Stone draws hairlines, Verdigris, a muted green, shows success '
             'and focus, and White serves specimens and email.',
-            'Every pair in this chapter carries a contrast ratio, a measure of how far apart two colors sit in lightness. '
-            'It runs from 1 to 1 for the same color up to 21 to 1 for black on white, by the formula in the Web Content '
-            'Accessibility Guidelines (WCAG). We measured each ratio on the token values, the exact colors our code names. '
-            'Pick the surface first, and the tables tell you which text and marks can sit on it.'],
+            'Every pair in this chapter carries a contrast ratio, a measure of how far apart two colors sit in lightness, '
+            'from 1 to 1 for a color against itself up to 21 to 1 for black on white. We measured each one on the exact '
+            'colors our code names, by the formula in the Web Content Accessibility Guidelines (WCAG).'],
         'rules': [
             {
                 'id': '05.1', 'title': 'Cover most of every view in Newsprint.',
@@ -1128,7 +1128,6 @@ def build(ctx):
                     {'label': 'Working red, first claim', 'value': 'An error the reader must fix, shown by the 4 px red bar beside it', 'token': 'oa.color.state.error.bar.onNewsprint'},
                     {'label': 'Working red, second claim', 'value': 'The step a reader can take now', 'token': 'oa.color.action.ask.fill.onNewsprint'},
                     {'label': 'Working red, third claim', 'value': 'The one point the headline names', 'token': 'oa.color.data.emphasisRed.onNewsprint'},
-                    {'label': 'Signature red, which does not count', 'value': R053[0], 'token': 'oa.color.identity.signature.onNewsprint'},
                     {'label': 'Signature red on Newsprint, White and Charcoal', 'value': f'Pillar Red; {red_n}, {red_w} and {red_c} to 1', 'token': 'oa.color.identity.signature.onNewsprint'},
                     {'label': 'Signature marks on Prussian', 'value': f'White, {w_p} to 1', 'token': 'oa.color.identity.signature.onPrussian'},
                     {'label': 'An icon that stands alone', 'value': R053[2]},
@@ -1352,7 +1351,7 @@ def build(ctx):
     placed = re.split(r'(?<=\.)\s+(?=[A-Z])', r053['rule'][0]) + [x['value'] for x in r053['specs'] if x['value'] in R053]
     if sorted(placed) != sorted(R053):
         raise ValueError('Rule 05.3 no longer holds each sentence of the approved wording exactly once')
-    ctx.fig('Rule 05.3 sentences placed', f'body {", ".join(str(i + 1) for i in R053_BODY)}; the other seven in specifications',
+    ctx.fig('Rule 05.3 sentences placed', f'body {", ".join(str(i + 1) for i in R053_BODY)}; the other six in specifications',
             'each sentence of the approved wording found once in the rule body or a specification value')
     # drop helper keys the contract does not hold
     for r in ch['rules']:

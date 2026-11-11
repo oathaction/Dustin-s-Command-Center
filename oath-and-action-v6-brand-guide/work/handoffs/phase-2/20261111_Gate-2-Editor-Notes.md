@@ -121,4 +121,94 @@ D2-xxx | The instruction line uses the typographic apostrophe, “you’re” | 
 
 Editor, November 11, 2026, under `20261111_Gate-2-Fix-Brief.md`. Items: CD-S1 for chapter 02, CD-S2 and CD-S3 in chapters 01 and 02, CD-S8 in chapter 02, CD-S9, DT-S12. Every change goes through `guide_editor_ch01.py`, `guide_editor_ch02.py`, `guide_editor_common.py` and the checks in `guide_editor_build.py`. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/762f3743-f9b3-59db-919e-2c641afbd759/scratchpad/gate-2-fix/editor/`.
 
-Status: in progress. The sections below fill in as each item lands.
+Status: done. The generator chain ran in the brief's order, `guide_build.py --strict` gives 0 warnings on a scratch build, and the editor build's own checks now hold every item below.
+
+### CD-S1: chapter 02's opener
+
+- **What.** A new specimen, `s-02-opener`, placed with `"opener": "s-02-opener"`. It sets the four locked lines and the order of the pillars as live text a reader can select (`readable`), under one caption line: “Our four locked lines and the order of the pillars, word for word.” The lines take Lora Italic 400 at the quote style with the opening mark hung 0.388 em (Rule 06.7); the pillars take the intro style at 600, each arrow kept with the pillar after it and hidden from screen readers, as the cover sets them. Each label sits above its line at every width, so the tagline holds one line at 1440 px.
+- **No new drawing.** The words are the brand lines table's. The full table, with each line's role, places and the retired record, stays in the body as the reference Rule 02.23 points to.
+- **Weight.** 4,001 bytes as placed, frame included. It carries only the five base styles it uses in place of the shared block, which had put it at 8,794.
+- **First screen.** At 1440 by 900 px the opener starts at 665 px, so its caption and the tagline reach the first screen. At 390 px it starts at 853 px, under the two intro paragraphs.
+
+### CD-S2: the caption lead and the bar, chapters 01 and 02
+
+- **Lead.** Every failure caption in both chapters, 51 in all, now opens with “Fails Rule NN.N.” in bold, through one helper, `fails_lead`, in `guide_editor_common.py`. On the scratch build all 141 captions in the guide that carry the lead start with it.
+- **Two invented tables.** Rules 01.9 and 01.12's failure plates carried no label of their own, so the shell printed its Illustrative chip ahead of the lead. Each now carries the label inside the plate, as its correct plate does: at the head of 01.9's invented tally, and beside 01.12's invented log row. The shell then leaves the caption alone.
+- **The bar's colors.** The editor's bar is now Charcoal with its words in `--oa-color-text-primary-on-charcoal`, Newsprint, as stage C draws it. That covers all 27 bars in chapters 01 and 02. The editor's bar style lives only in `guide_editor_common.py`, and no other chapter uses it.
+- **New bars.** Nine plates that draw a piece a reader could lift: 01.4 (the Prussian panel), 01.13, 01.14 and 01.17 (lines of copy), 01.15 (a kicker over a headline), 01.16 (the two readings), 01.21 (four kickers over headlines), 01.24 (product names) and 02.26 (a sentence of copy). Each alt now opens “Failure case: do not publish.” Rule 01.21's failure plate passes through the identity designer's `stage_b_identity_ch01.py`, which touches only its drawings and keeps the bar.
+- **Plates left without the bar, as plates that draw a method:**
+  - 01.9 and 01.10: a draft chapter's tally of examples by domain, state and level. It is a planning count, and no piece prints it.
+  - 01.12: a row of the rotation log, an internal record our editors keep.
+  - 02.1 to 02.21, the 21 writing rules' fault cards: each takes one sentence apart under the label “The fault”, with the faulty words struck and the rest dimmed, so no crop of it reads as a finished piece.
+
+### CD-S3: rule titles
+
+Chapter 02's titles were already one clause of twelve words or fewer, so none changed. In chapter 01, nine titles changed, and every clause a title dropped already stands in its rule's opening sentences:
+
+| Rule | Was | Now | Where the dropped part lives |
+|---|---|---|---|
+| 01.7 | Keep party symbols, candidate photos, campaign gear and protest slogans out of brand graphics. (14 words) | Keep symbols that take a side out of brand graphics. | The rule's first sentence lists all four |
+| 01.9 | Draw no more than one example in four from one atlas domain, or one in five from one state. (19) | Limit how many examples come from one domain or one state. | The rule now opens on both limits; its unit sentence moved second |
+| 01.11 | Show a case from each party that uses a mechanism, and report the counts as the record gives them. (19) | Show each party’s cases and counts as the record gives them. | The title keeps the counts, the reason D2-368 gave for adding them |
+| 01.13 | Name the office that decides, and name a party only when party is part of the finding. (17) | Name the office that decides. | The rule's second sentence, unchanged |
+| 01.18 | Set both halves of a hinge headline in one color and weight, and give the red to the ampersand. (19) | Set both halves of a hinge headline in one color and weight. | The rule's second sentence |
+| 01.19 | Join people through a rule or place they share, and rotate their order. (13) | Join people through a rule or place they share. | The rule's second sentence |
+| 01.20 | Name parties, the left or the right in a hinge headline only to report sourced agreement. (16) | Name the sides in a hinge headline only to report agreement. | The rule names left, right and parties and asks for the source in the deck |
+| 01.22 | In a process piece, name the step and leave the side to the reader. (14) | Leave the side to the reader in a process piece. | The rule's first sentence gives the one step |
+| 01.24 | Name each product for what it does, and keep the ampersand for Oath & Action. (15) | Name each product for what it does. | The rule's second sentence keeps ampersands out of product names |
+
+Kept as they are: 01.2 and 01.6, one clause at 13 words, and 01.23, one verb at 15 words. No other file quotes a changed title; I checked the chapters, the specimens, the scripts and the ledger by script. The editor build now fails a title over fifteen words.
+
+### CD-S8: “Terms.” in chapter 02
+
+Rules 02.1 and 02.2 set “Terms.” in `<strong>` in place of `<em>`, so it draws as roman Inter 700, a weight the page loads, in place of a slanted Inter it never loads. The page computes it as Inter 700, normal style, at 1440 and 390 px. The creative director asked for 600. A rule's text carries only the shell's inline tags, and `<strong>` gives 700, which is in chapter 06's set. If 600 matters, the engineer can give `.rule-text strong` the semibold weight in the shell; that file is the engineer's.
+
+### CD-S9: Specifications for chapter 01
+
+The 14 rules that had none now carry a short block, two to four rows each: 01.7, 01.9 to 01.20 and 01.24. Each row restates the rule's own words as a producer checks them: the label, the count, the place and, for 01.18, the two tokens the rule already names. The editor build now fails a chapter 01 rule with no block.
+
+### DT-S12: “Prussian blue”
+
+The three alts on `s-01-2-failure`, `s-01-3-failure` and `s-01-5-failure` now say “Prussian”. The editor build now fails “Prussian blue” anywhere in chapters 01 and 02.
+
+### For the main session and other owners
+
+- **The identity designer's chapter 01 opener.** `guide_editor_build.py` deletes any `s-01-*` or `s-02-*` specimen file it did not write and rewrites `manifest-editor.json`. A chapter 01 opener written by `stage_b_identity_ch01.py` survives only if that script writes the file and its manifest row on every run, after mine, and keeps the row out of `manifest-editor.json`.
+- **`stage_c_identity_ch17.py` fails under `python3 -I`** at `import stage_a_identity_lib`, since `-I` leaves the script's folder off the import path. The rest of the chain ran. Owner: identity designer.
+- **Two handoff files the chain rewrote.** `20261110_Stage-B-Round-2-Ch11-Figures.json` and `20261111_Stage-C-Round-1-Ch17-Figures.json` changed one line each, the token version from 6.0.0-gate2.8 to 6.0.0-gate2.9, from the engineer's release.
+
+### Routine calls (fix pass)
+
+D2-xxx | Chapter 02's opener sets the four locked lines and the pillar order as live text, and the full brand lines table stays in the body | A light version of an existing plate, as call 3 prefers, and Rule 02.23 still points at the table with its roles and the retired record
+D2-xxx | The opener carries only the base styles it uses | It drops from 8,794 to 4,001 bytes as placed (D2-1214)
+D2-xxx | Rules 01.9, 01.10 and 01.12's failure plates and the 21 writing-rule fault cards go without the bar | Each draws a method, a tally, a log row or a sentence taken apart under “The fault”, and no crop of it reads as a piece (call 4)
+D2-xxx | Rules 01.9 and 01.12's failure plates carry their Illustrative label inside the plate | The shell then keeps its chip out of the caption, so “Fails Rule NN.N.” leads it, and each label sits beside its invented item as the correct plates do (DR-97)
+D2-xxx | Rule 01.11's title keeps the counts: “Show each party’s cases and counts as the record gives them.” | D2-368 added them so the title teaches the uneven case too (DR-93)
+D2-xxx | Rule 01.9's rule now opens on its two limits, and its unit sentence follows | Call 5 moves a title's dropped clause into the rule's first sentence
+D2-xxx | Chapter 02's titles and chapter 01's 01.2, 01.6 and 01.23 stay as they are | Each is one clause and fifteen words or fewer, under call 5's limit
+D2-xxx | “Terms.” takes `<strong>`, Inter 700 | The rule text's inline tags offer no 600, and 700 is in chapter 06's set; the shell can lower it if 600 is wanted
+D2-xxx | The editor build fails a failure caption without the lead, a title past fifteen words, a chapter 01 rule without Specifications, “Prussian blue”, a chapter 02 opener without the four locked lines, and an italic “Terms.” | So a later edit to either generator cannot bring one back
+
+### Tested (fix pass)
+
+- The editor build's checks, old and new, pass: locked lines exact with no near miss, no em dash, no studio codes, every specimen placed once, opener included.
+- A field-by-field diff of `01-purpose.json` and `02-voice.json` against the last commit shows only the changes listed above.
+- The generator chain in the brief's order: every step ran except `stage_c_identity_ch17.py`, which stops at an import (above).
+- `guide_build.py --strict` on a scratch build: 0 warnings, 9,361,185 bytes with other owners' work in progress.
+- On that build: 141 failure captions with the lead and none without it at the front; chapter 01 has 21 barred failure plates and chapter 02 six; the opener weighs 4,001 bytes as placed.
+- Playwright at 1440 and 390 px, 1x and 2x: chapter 02's first screen, the opener, the failure plates of 01.4, 01.13, 01.16, 01.21, 01.24, 02.26 and 02.1, and Rules 01.9, 01.18 and 02.1 with their Specifications. I looked at the captures. No plate frame overflows, the page made no outside requests, and “Terms.” computes as Inter 700, normal style.
+- A script scan of every changed string for em and en dashes, fillers, corporate verbs, hedges, studio codes and “Prussian blue”. The only hits are the bar's own “do not publish” and the failing sentence of 02.26, which quotes “leverage” on purpose.
+
+### Not tested (fix pass)
+
+- The full guide check at four widths, which the main session runs on the rebuilt preview.
+- The opener in the dark theme; chapter 02's plates draw on Newsprint only.
+- A screen reader reading the opener's group and its description.
+- The read of every changed string across all owners, which waits until every owner is done.
+
+### Change log (fix pass)
+
+- Modified `work/build/scripts/phase-2/guide_editor_common.py`, `guide_editor_ch01.py`, `guide_editor_ch02.py` and `guide_editor_build.py`.
+- Regenerated `work/build/guide/chapters/01-purpose.json`, `02-voice.json`, `work/build/guide/specimens/manifest-editor.json` and the chapter 01 and 02 specimens; created `work/build/guide/specimens/s-02-opener.html`.
+- Modified this file.
+- Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/762f3743-f9b3-59db-919e-2c641afbd759/scratchpad/gate-2-fix/editor/` holds the scratch build, `look.js` and its captures.
