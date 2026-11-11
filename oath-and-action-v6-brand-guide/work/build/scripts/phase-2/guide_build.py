@@ -3951,8 +3951,9 @@ def self_test():
             ("three routes in the schema's order", lambda pg: order(sec(pg), 'id="start-newcomer"', 'id="start-designer"', 'id="start-builder"')),
             ("every step a link but the later one", lambda pg: sec(pg).count('class="xref step-go"') == 11 and sec(pg).count("data-later") == 1),
             ("the later step holds no link", lambda pg: "<a" not in re.search(r'<li class="route-step route-step--later".*?</li>', sec(pg), re.S).group(0)),
-            ("each step says where it leads", lambda pg: '<span class="u">Rule 01.1</span> <span aria-hidden="true">·</span>' in sec(pg)
-             and '<span class="u">Chapter 05</span>' in sec(pg) and '<span class="u">Part</span> <span aria-hidden="true">·</span> <span class="u">Foundations</span>' in sec(pg)
+            # R1: a step's head holds its words with a no-break space ("Rule 01.1", "Chapter 05"), so neither part breaks
+            ("each step says where it leads", lambda pg: '<span class="u">Rule\u00a001.1</span> <span aria-hidden="true">·</span>' in sec(pg)
+             and '<span class="u">Chapter\u00a005</span>' in sec(pg) and '<span class="u">Part</span> <span aria-hidden="true">·</span> <span class="u">Foundations</span>' in sec(pg)
              and '<span class="u">Colophon</span>' in sec(pg) and "oa-dest" not in pg),
             ("a target's last two words are held together (R1)", lambda pg: '<span class="u">Layout and\u00a0spacing</span>' in sec(pg)),
             ("each step carries its way back", lambda pg: 'id="start-newcomer-2" data-return-label="step 2 of New to the demonstration"' in sec(pg)),
