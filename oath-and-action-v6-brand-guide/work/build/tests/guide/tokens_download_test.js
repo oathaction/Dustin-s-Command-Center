@@ -8,6 +8,8 @@
 // a chapter's button and the colophon's link as a reader would, and reads what happened: the host's save calls, the
 // browser's downloads and the words on every button. A zip handed to the host is opened here and its one file compared
 // with work/build/tokens/tokens.css byte for byte. Exit code 1 when any case fails.
+// Stage C, round 1 (DR-214): where the page carries tokens.json (Rule 26.8), the same cases for it: its own link and a
+// chapter button for it, the plain .json byte for byte with no host, and its own zip, holding tokens.json alone, with one.
 const fs = require('fs');
 const path = require('path');
 const zlib = require('zlib');
@@ -15,6 +17,9 @@ const { chromium } = require('playwright');
 
 const ROOT = path.resolve(__dirname, '../../../..');
 const TOKENS = fs.readFileSync(path.join(ROOT, 'work/build/tokens/tokens.css'));
+const TOKENS_JSON = fs.readFileSync(path.join(ROOT, 'work/build/tokens/tokens.json'));
+const JSON_NAME = '20261106_Oath-And-Action-Tokens.json';
+const JSON_ZIP_NAME = '20261106_Oath-And-Action-Tokens-Json.zip';
 const CSS_NAME = '20261106_Oath-And-Action-Tokens.css';
 const ZIP_NAME = '20261106_Oath-And-Action-Tokens.zip';
 // F-10 (stage C): each download's words name the file, its type and its size, in kilobytes of 1,000 bytes, rounded.
@@ -76,11 +81,11 @@ async function run(browser, file, mode, opts = {}) {
   await page.addInitScript(stub, mode);
   await page.goto('file://' + file, { waitUntil: 'load' });
   await page.waitForTimeout(opts.wait || 300);
-  const words = () => page.evaluate(() => [...document.querySelectorAll('a[data-oa-download="tokens-download"], #tokens-download')].map((a) => a.textContent));
+  const words = () => page.evaluate((json) => [...document.querySelectorAll(json ? 'a[data-oa-download="tokens-json-download"], #tokens-json-download' : 'a[data-oa-download="tokens-download"], #tokens-download')].map((a) => a.textContent), !!opts.json);
   const before = await words();
   const clicks = opts.clicks || ['chapter'];
   for (const which of clicks) {
-    const sel = which === 'chapter' ? 'a[data-oa-download]' : '#tokens-download';
+    const sel = which === 'chapter' ? 'a[data-oa-download="tokens-download"]' : which === 'json' ? '#tokens-json-download' : which === 'json-chapter' ? 'a[data-oa-download="tokens-json-download"]' : '#tokens-download';
     const loc = page.locator(sel).first();
     await loc.scrollIntoViewIfNeeded();
     await loc.click();
@@ -138,6 +143,27 @@ const all = (xs, w) => xs.length > 0 && xs.every((x) => x === w);
   check('the host never answers: the plain link works meanwhile', r, { 'the plain words': all(r.after, CSS_WORDS), 'no host save': r.saves.length === 0, 'tokens.css downloads': r.downloads.length === 1 && cssOk(r.downloads[0]) });
   r = await run(browser, file, 'saved', { width: 390 });
   check('host saves at 390 px', r, { 'the zip words': all(r.after, ZIP_WORDS), 'one zip save': r.saves.length === 1 && zipOk(r.saves[0]), 'no browser download': r.downloads.length === 0 });
+  // tokens.json, where the page carries it (Rule 26.8)
+  const page = fs.readFileSync(file, 'utf8');
+  const jm = page.match(/id="tokens-json-download"[^>]*data-oa-file-words="([^"]+)"[^>]*data-oa-zip-words="([^"]+)"/) || page.match(/id="tokens-json-download"[^>]*data-oa-zip="[^"]*"[^>]*data-oa-file-words="([^"]+)" data-oa-zip-words="([^"]+)"/);
+  if (jm) {
+    const JW = `Download tokens.json, JSON, ${kb(TOKENS_JSON.length)}`;
+    const zj = page.match(/id="tokens-json-download"[^>]*data-oa-zip="([A-Za-z0-9+\/=]+)"/);
+    const JZW = `Download tokens.json in a zip file, ZIP, ${kb(Buffer.from(zj ? zj[1] : '', 'base64').length)}`;
+    const jsonOk = (d) => d && d.name === JSON_NAME && d.bytes && Buffer.compare(d.bytes, TOKENS_JSON) === 0;
+    const jzipOk = (sv) => { if (!sv || sv.filename !== JSON_ZIP_NAME || !sv.bytes) return false; try { const z = unzipOne(Buffer.from(sv.bytes, 'base64')); return z.name === 'tokens.json' && z.entries === 1 && Buffer.compare(z.bytes, TOKENS_JSON) === 0; } catch (e) { return false; } };
+    const hasChapterButton = /data-oa-download="tokens-json-download"/.test(page);
+    r = await run(browser, file, 'none', { json: true, clicks: hasChapterButton ? ['json', 'json-chapter'] : ['json'] });
+    check('tokens.json, no host: the plain link downloads the file byte for byte, with its type and size in the words', r, {
+      'the words name the file, its type and its size': all(r.after, JW) && jm[1] === JW, 'one download per click': r.downloads.length === (hasChapterButton ? 2 : 1), 'each is tokens.json, byte for byte': r.downloads.every(jsonOk), 'no host save': r.saves.length === 0 });
+    r = await run(browser, file, 'saved', { json: true, clicks: ['json'] });
+    check('tokens.json, host saves: the link hands the host its own zip, holding tokens.json alone', r, {
+      'the zip words': all(r.after, JZW) && jm[2] === JZW, 'one save': r.saves.length === 1, 'the zip holds tokens.json, byte for byte': r.saves.every(jzipOk), 'no browser download': r.downloads.length === 0 });
+    r = await run(browser, file, 'unavailable', { json: true, clicks: ['json'] });
+    check('tokens.json, host save fails: the plain link takes over', r, { 'the plain words again': all(r.after, JW), 'tokens.json downloads, byte for byte': r.downloads.length === 1 && jsonOk(r.downloads[0]) });
+  } else {
+    console.log('  tokens.json: not on this page, so its cases do not run');
+  }
   await browser.close();
 
   const pass = cases.every((c) => c.pass);
