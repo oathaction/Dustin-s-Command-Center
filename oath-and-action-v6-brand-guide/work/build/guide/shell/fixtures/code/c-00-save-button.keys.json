@@ -1,0 +1,18 @@
+{
+ "format": "oa-keys/1",
+ "set": "c-00-save-button",
+ "rule": "00.1",
+ "component": "Save button, the shell's demo set",
+ "about": "The demo set's keyboard path, for guide_check.js's self-test (stage C, round 1): Tab reaches the button, Enter and Space each toggle it and the status line says what changed, and the next Tab leaves the stage.",
+ "paths": [
+  {
+   "name": "Save and remove by keyboard",
+   "steps": [
+    {"key": "Tab", "focus": ".oa-save-btn", "states": [{"el": ".oa-save-btn", "attr": "aria-pressed", "is": "false"}], "status": null},
+    {"key": "Enter", "focus": ".oa-save-btn", "states": [{"el": ".oa-save-btn", "attr": "aria-pressed", "is": "true"}], "status": "Saved. Find it under Saved guides."},
+    {"key": "Space", "focus": ".oa-save-btn", "states": [{"el": ".oa-save-btn", "attr": "aria-pressed", "is": "false"}], "status": "Removed from Saved guides."},
+    {"key": "Tab", "focus": "outside"}
+   ]
+  }
+ ]
+}
