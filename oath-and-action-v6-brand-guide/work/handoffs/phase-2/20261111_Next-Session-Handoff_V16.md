@@ -42,6 +42,9 @@ Write `work/ledger/20261111_Gate-2-Report.md` under `CLAUDE.md`'s gate rule 2 an
 10. **Change log** of both chats.
 Then show Dustin the two pages, ask him for "As proposed" or his changes and his answers to the four questions, and stop.
 
+### A2. Keys for Phase 3 (D2-1879)
+Dustin has both keys. The api.data.gov key goes in through `request_credential` at the start of the Phase 3 chat, once for `api.open.fec.gov` and once for `api.congress.gov`, header `X-Api-Key` (api.data.gov reads its key from that header); never ask for it in chat. The Census Bureau reads its key from the URL (`&key=`), which the credential form cannot add, so Dustin saved it as the environment variable `CENSUS_API_KEY`, which a new session picks up. Test each with one request before use. Census sends keyless requests to its "missing key" page; FEC's demo key was rate-limited on November 11; Congress.gov answered the demo key.
+
 ### B. After Gate 2
 Phase 3 under `brief/phase-prompts/20261020_V6-Phase-3-Data-Visualization-And-Systems.md`, with Dustin's Gate 2 answers pasted in, as the proposal sets out: round 0 the chart kit and chapter 13 (board 1), form rounds 1 to 3 (board 2), rounds 4 and 5 with chapter 15 (board 3), then Gate 3. Then Phases 4 and 5 as V15 section 2C lists them.
 
@@ -62,20 +65,24 @@ Phase 3 under `brief/phase-prompts/20261020_V6-Phase-3-Data-Visualization-And-Sy
 ```
 I'm continuing the Oath & Action Edition 06 brand guide rebuild. All work is on the branch claude/friendly-brahmagupta-tonmfa in the oathaction/Dustin-s-Command-Center repo, in the folder oath-and-action-v6-brand-guide/. Fetch that branch and work from it. Keep committing and pushing to it unless I say otherwise.
 
+Gate 2 is approved as proposed. Record my approval in the decision log, with my answers to the Phase 3 proposal's four questions (DR-229 to DR-232) as my Gate 2 decisions, then start Phase 3.
+
 Before you do anything else, read these in order:
-1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from DR-225 to DR-232, and D2-1696 to D2-1876), the change ledger (to C-091) and the open questions.
-2. oath-and-action-v6-brand-guide/work/handoffs/phase-2/20261111_Next-Session-Handoff_V16.md, then section 3 of V5 to V15's handoffs as V16 lists them, the Gate 1 report's section 9 (work/ledger/20261021_Gate-1-Report.md), Master Brief sections 5, 6 and 24, the Phase 3 prompt in brief/phase-prompts/, and the Phase 3 proposal draft (work/handoffs/phase-2/20261111_Phase-3-Proposal-Draft.md).
+1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from DR-225 to DR-232, and D2-1696 to D2-1879), the change ledger (to C-091), the open questions, and the Gate 2 report (work/ledger/20261111_Gate-2-Report.md).
+2. oath-and-action-v6-brand-guide/work/handoffs/phase-2/20261111_Next-Session-Handoff_V16.md, then section 3 of V5 to V15's handoffs as V16 lists them, Master Brief sections 8 and 13 to 15 in full, the Phase 3 prompt in brief/phase-prompts/20261020_V6-Phase-3-Data-Visualization-And-Systems.md, and the Phase 3 proposal draft (work/handoffs/phase-2/20261111_Phase-3-Proposal-Draft.md).
+
+Data keys. My api.data.gov key is ready in my password manager: at the start, open the secure credential form for api.open.fec.gov and for api.congress.gov (the same key both times, sent in the X-Api-Key header), and I will paste it there. My Census key is saved in this environment's variables as CENSUS_API_KEY; test it with one request before you use it. Never ask me to paste a key into the chat.
 
 Nonpartisan means one standard of evidence for everyone, with findings reported as the record shows them, even when they fall more on one side (DR-93). Never manufacture balance.
 
 Settled and not to be changed: the Civic Line icons, which are final and approved (DR-144), with the redraws and new drawings I approved on the drawings boards (DR-156 to DR-182, DR-207 to DR-211, DR-216, DR-217); Reforms R-01 and R-02 stay in the guide like every other reform, with no avoidance of my own work (DR-223); the atlas visual system (System 1, DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and Phase 3 build order (DR-62, DR-63); the chart rules of DR-64; chapter 02's writing rules (DR-73 to DR-83); and every answer I have given from DR-95 on, including DR-225 to DR-232.
 
-The Gate 2 preview (the chapters page, version 8) and the Gate 2 board are published, and every chapter scores 4 or more. I have answered the Phase 3 proposal's four questions as recommended (DR-229 to DR-232). Write the Gate 2 report with the Phase 3 proposal and those answers, as the sixteenth handoff orders, then stop at the gate for my approval.
+Phase 3 runs as the proposal sets it: round 0 (the chart kit, the palette proofs and chapter 13) ending at board 1, form rounds 1 to 3 ending at board 2, rounds 4 and 5 with chapter 15 ending at board 3, then Gate 3. Chapter 14 may not pass 1.75 MB, and the guide stays one file.
 
 The bar for everything: a finished product that looks like it was made by the best branding and design firm in the world. Use specialized agents, red team reviews and the creative director's scoring, as the handoffs describe.
 
 How to work with me:
-- Ask me the questions a good analyst would ask, post a short plan, and wait for my go before building anything new.
+- Ask me the questions a good analyst would ask, post a short plan for round 0, and wait for my go before building anything new.
 - Make routine calls yourself and log them.
 - Show me boards to review at each stage.
 - End every reply with a change log: files created, files modified, and where they live.
