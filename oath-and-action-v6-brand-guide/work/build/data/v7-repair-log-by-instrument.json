@@ -1,0 +1,67 @@
+{
+ "rows": [
+  {
+   "instrument_group": "Ballot initiative",
+   "total": 17,
+   "toward_voters": 7,
+   "away_from_voters": 0,
+   "voters_kept_existing_rules": 8,
+   "mixed": 0,
+   "pending": 2
+  },
+  {
+   "instrument_group": "Court ruling",
+   "total": 14,
+   "toward_voters": 5,
+   "away_from_voters": 8,
+   "voters_kept_existing_rules": 0,
+   "mixed": 1,
+   "pending": 0
+  },
+  {
+   "instrument_group": "State statute",
+   "total": 11,
+   "toward_voters": 2,
+   "away_from_voters": 9,
+   "voters_kept_existing_rules": 0,
+   "mixed": 0,
+   "pending": 0
+  },
+  {
+   "instrument_group": "Referendum",
+   "total": 10,
+   "toward_voters": 3,
+   "away_from_voters": 3,
+   "voters_kept_existing_rules": 2,
+   "mixed": 1,
+   "pending": 1
+  },
+  {
+   "instrument_group": "Federal statute",
+   "total": 7,
+   "toward_voters": 4,
+   "away_from_voters": 2,
+   "voters_kept_existing_rules": 0,
+   "mixed": 1,
+   "pending": 0
+  },
+  {
+   "instrument_group": "Executive or agency action",
+   "total": 3,
+   "toward_voters": 1,
+   "away_from_voters": 2,
+   "voters_kept_existing_rules": 0,
+   "mixed": 0,
+   "pending": 0
+  },
+  {
+   "instrument_group": "Local law or funding vote",
+   "total": 2,
+   "toward_voters": 2,
+   "away_from_voters": 0,
+   "voters_kept_existing_rules": 0,
+   "mixed": 0,
+   "pending": 0
+  }
+ ]
+}

@@ -1,0 +1,39 @@
+{
+ "kind": "public",
+ "publisher": "U.S. Department of the Treasury, Bureau of the Fiscal Service",
+ "date_retrieved": "2026-11-11",
+ "geography": "United States (federal government)",
+ "file": "treasury-mts-outlays-by-function.csv",
+ "title_or_table": "Monthly Treasury Statement, Table 9, Summary of Receipts by Source, and Outlays by Function of the U.S. Government (September issues, fiscal year to date)",
+ "table_id": "MTS Table 9, outlays lines 140 to 340",
+ "url": [
+  "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/mts/mts_table_9?filter=record_date:in:(2015-09-30,...,2026-09-30)"
+ ],
+ "observation_period": "Fiscal years 2015 to 2026",
+ "universe_or_base": "Net federal outlays by budget function, as Treasury reports them",
+ "unit": "billions of dollars, nominal, rounded by the studio",
+ "vintage": "September Monthly Treasury Statements as served on November 11, 2026",
+ "qualification": "Net outlays: two lines can be negative (Commerce and Housing Credit in some years, and Undistributed Offsetting Receipts every year), so a treemap draws only the positive functions and states what it leaves out; functions group spending by purpose, not by agency",
+ "columns": {
+  "fiscal_year": {
+   "type": "year",
+   "description": "federal fiscal year"
+  },
+  "function": {
+   "type": "category",
+   "description": "budget function as Treasury names it; Total is all net outlays"
+  },
+  "outlays_billions": {
+   "type": "number",
+   "description": "net outlays in the fiscal year",
+   "unit": "billions of dollars"
+  }
+ },
+ "printed_source_line": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, outlays by function, fiscal 2026, United States. Retrieved November 11, 2026. Net outlays in nominal dollars; offsetting receipts are shown as negative.",
+ "source_line_variants": {
+  "all_years": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, outlays by function, fiscal 2015 to 2026, United States. Retrieved November 11, 2026. Net outlays in nominal dollars; offsetting receipts are shown as negative."
+ },
+ "ledger_row": "P7-024",
+ "domain": "D08",
+ "states": []
+}

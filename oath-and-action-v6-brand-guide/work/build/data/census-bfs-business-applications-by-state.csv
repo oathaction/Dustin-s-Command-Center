@@ -1,0 +1,1093 @@
+code,name,year,business_applications
+US,United States,2005,2485100
+US,United States,2006,2615834
+US,United States,2007,2633956
+US,United States,2008,2559006
+US,United States,2009,2406259
+US,United States,2010,2473934
+US,United States,2011,2550495
+US,United States,2012,2550198
+US,United States,2013,2591539
+US,United States,2014,2691040
+US,United States,2015,2795897
+US,United States,2016,2948338
+US,United States,2017,3182674
+US,United States,2018,3486829
+US,United States,2019,3498990
+US,United States,2020,4356498
+US,United States,2021,5390816
+US,United States,2022,5062563
+US,United States,2023,5469302
+US,United States,2024,5224176
+US,United States,2025,5671836
+AK,Alaska,2005,4722
+AK,Alaska,2006,5208
+AK,Alaska,2007,5132
+AK,Alaska,2008,4974
+AK,Alaska,2009,4389
+AK,Alaska,2010,4652
+AK,Alaska,2011,5071
+AK,Alaska,2012,5199
+AK,Alaska,2013,5380
+AK,Alaska,2014,5441
+AK,Alaska,2015,5885
+AK,Alaska,2016,6357
+AK,Alaska,2017,7259
+AK,Alaska,2018,9257
+AK,Alaska,2019,8087
+AK,Alaska,2020,8056
+AK,Alaska,2021,8081
+AK,Alaska,2022,8475
+AK,Alaska,2023,8908
+AK,Alaska,2024,9130
+AK,Alaska,2025,10531
+AL,Alabama,2005,31050
+AL,Alabama,2006,33760
+AL,Alabama,2007,33656
+AL,Alabama,2008,32179
+AL,Alabama,2009,29176
+AL,Alabama,2010,29856
+AL,Alabama,2011,28979
+AL,Alabama,2012,29675
+AL,Alabama,2013,29305
+AL,Alabama,2014,29569
+AL,Alabama,2015,31499
+AL,Alabama,2016,34257
+AL,Alabama,2017,36818
+AL,Alabama,2018,42015
+AL,Alabama,2019,41505
+AL,Alabama,2020,58588
+AL,Alabama,2021,75518
+AL,Alabama,2022,70979
+AL,Alabama,2023,71561
+AL,Alabama,2024,65324
+AL,Alabama,2025,70466
+AR,Arkansas,2005,19082
+AR,Arkansas,2006,20116
+AR,Arkansas,2007,19619
+AR,Arkansas,2008,18679
+AR,Arkansas,2009,17933
+AR,Arkansas,2010,17825
+AR,Arkansas,2011,17927
+AR,Arkansas,2012,17804
+AR,Arkansas,2013,17549
+AR,Arkansas,2014,18462
+AR,Arkansas,2015,19028
+AR,Arkansas,2016,20458
+AR,Arkansas,2017,23148
+AR,Arkansas,2018,25724
+AR,Arkansas,2019,25505
+AR,Arkansas,2020,32361
+AR,Arkansas,2021,41697
+AR,Arkansas,2022,37751
+AR,Arkansas,2023,38933
+AR,Arkansas,2024,36365
+AR,Arkansas,2025,39512
+AZ,Arizona,2005,56415
+AZ,Arizona,2006,62665
+AZ,Arizona,2007,64601
+AZ,Arizona,2008,62910
+AZ,Arizona,2009,58234
+AZ,Arizona,2010,57869
+AZ,Arizona,2011,57785
+AZ,Arizona,2012,55255
+AZ,Arizona,2013,55475
+AZ,Arizona,2014,56364
+AZ,Arizona,2015,57164
+AZ,Arizona,2016,61445
+AZ,Arizona,2017,67955
+AZ,Arizona,2018,73638
+AZ,Arizona,2019,76637
+AZ,Arizona,2020,90080
+AZ,Arizona,2021,113443
+AZ,Arizona,2022,115323
+AZ,Arizona,2023,125417
+AZ,Arizona,2024,121271
+AZ,Arizona,2025,135679
+CA,California,2005,271270
+CA,California,2006,285035
+CA,California,2007,286431
+CA,California,2008,271414
+CA,California,2009,249078
+CA,California,2010,256283
+CA,California,2011,269901
+CA,California,2012,268003
+CA,California,2013,277936
+CA,California,2014,293390
+CA,California,2015,303599
+CA,California,2016,312652
+CA,California,2017,326891
+CA,California,2018,365298
+CA,California,2019,365071
+CA,California,2020,438752
+CA,California,2021,519695
+CA,California,2022,487086
+CA,California,2023,558612
+CA,California,2024,517133
+CA,California,2025,553931
+CO,Colorado,2005,55851
+CO,Colorado,2006,59015
+CO,Colorado,2007,60825
+CO,Colorado,2008,59960
+CO,Colorado,2009,58458
+CO,Colorado,2010,61135
+CO,Colorado,2011,59209
+CO,Colorado,2012,60418
+CO,Colorado,2013,63518
+CO,Colorado,2014,69379
+CO,Colorado,2015,71560
+CO,Colorado,2016,74795
+CO,Colorado,2017,80298
+CO,Colorado,2018,87907
+CO,Colorado,2019,86458
+CO,Colorado,2020,93531
+CO,Colorado,2021,111177
+CO,Colorado,2022,116151
+CO,Colorado,2023,139743
+CO,Colorado,2024,130718
+CO,Colorado,2025,143807
+CT,Connecticut,2005,28309
+CT,Connecticut,2006,30224
+CT,Connecticut,2007,29754
+CT,Connecticut,2008,28357
+CT,Connecticut,2009,25818
+CT,Connecticut,2010,26196
+CT,Connecticut,2011,25970
+CT,Connecticut,2012,26827
+CT,Connecticut,2013,26101
+CT,Connecticut,2014,26546
+CT,Connecticut,2015,26183
+CT,Connecticut,2016,27582
+CT,Connecticut,2017,30149
+CT,Connecticut,2018,33942
+CT,Connecticut,2019,32909
+CT,Connecticut,2020,37234
+CT,Connecticut,2021,47192
+CT,Connecticut,2022,44639
+CT,Connecticut,2023,47977
+CT,Connecticut,2024,46736
+CT,Connecticut,2025,49834
+DC,District of Columbia,2005,7249
+DC,District of Columbia,2006,7808
+DC,District of Columbia,2007,7814
+DC,District of Columbia,2008,8057
+DC,District of Columbia,2009,7649
+DC,District of Columbia,2010,7905
+DC,District of Columbia,2011,8464
+DC,District of Columbia,2012,8411
+DC,District of Columbia,2013,8514
+DC,District of Columbia,2014,9362
+DC,District of Columbia,2015,9974
+DC,District of Columbia,2016,9798
+DC,District of Columbia,2017,10662
+DC,District of Columbia,2018,11888
+DC,District of Columbia,2019,12276
+DC,District of Columbia,2020,14656
+DC,District of Columbia,2021,16839
+DC,District of Columbia,2022,14351
+DC,District of Columbia,2023,14852
+DC,District of Columbia,2024,14205
+DC,District of Columbia,2025,14945
+DE,Delaware,2005,11326
+DE,Delaware,2006,11670
+DE,Delaware,2007,13195
+DE,Delaware,2008,13459
+DE,Delaware,2009,12720
+DE,Delaware,2010,13019
+DE,Delaware,2011,14596
+DE,Delaware,2012,15419
+DE,Delaware,2013,15580
+DE,Delaware,2014,16822
+DE,Delaware,2015,16977
+DE,Delaware,2016,19473
+DE,Delaware,2017,23110
+DE,Delaware,2018,26282
+DE,Delaware,2019,25885
+DE,Delaware,2020,30992
+DE,Delaware,2021,44752
+DE,Delaware,2022,45661
+DE,Delaware,2023,56671
+DE,Delaware,2024,59463
+DE,Delaware,2025,60132
+FL,Florida,2005,281453
+FL,Florida,2006,289574
+FL,Florida,2007,279224
+FL,Florida,2008,257867
+FL,Florida,2009,243746
+FL,Florida,2010,252054
+FL,Florida,2011,267170
+FL,Florida,2012,268928
+FL,Florida,2013,280365
+FL,Florida,2014,299316
+FL,Florida,2015,318847
+FL,Florida,2016,339615
+FL,Florida,2017,360744
+FL,Florida,2018,394423
+FL,Florida,2019,392025
+FL,Florida,2020,497850
+FL,Florida,2021,635157
+FL,Florida,2022,609880
+FL,Florida,2023,667112
+FL,Florida,2024,634356
+FL,Florida,2025,647734
+GA,Georgia,2005,97117
+GA,Georgia,2006,109192
+GA,Georgia,2007,114983
+GA,Georgia,2008,112415
+GA,Georgia,2009,107217
+GA,Georgia,2010,107956
+GA,Georgia,2011,110488
+GA,Georgia,2012,110774
+GA,Georgia,2013,106865
+GA,Georgia,2014,115606
+GA,Georgia,2015,121040
+GA,Georgia,2016,132604
+GA,Georgia,2017,144807
+GA,Georgia,2018,160388
+GA,Georgia,2019,172141
+GA,Georgia,2020,270757
+GA,Georgia,2021,328009
+GA,Georgia,2022,273223
+GA,Georgia,2023,277915
+GA,Georgia,2024,243084
+GA,Georgia,2025,254582
+HI,Hawaii,2005,9592
+HI,Hawaii,2006,10514
+HI,Hawaii,2007,10798
+HI,Hawaii,2008,11009
+HI,Hawaii,2009,9699
+HI,Hawaii,2010,10005
+HI,Hawaii,2011,10656
+HI,Hawaii,2012,10915
+HI,Hawaii,2013,10892
+HI,Hawaii,2014,11227
+HI,Hawaii,2015,11739
+HI,Hawaii,2016,11925
+HI,Hawaii,2017,12698
+HI,Hawaii,2018,15439
+HI,Hawaii,2019,14509
+HI,Hawaii,2020,15743
+HI,Hawaii,2021,19160
+HI,Hawaii,2022,18510
+HI,Hawaii,2023,19100
+HI,Hawaii,2024,18014
+HI,Hawaii,2025,19558
+IA,Iowa,2005,17878
+IA,Iowa,2006,18566
+IA,Iowa,2007,18287
+IA,Iowa,2008,17940
+IA,Iowa,2009,17047
+IA,Iowa,2010,17805
+IA,Iowa,2011,18333
+IA,Iowa,2012,18253
+IA,Iowa,2013,17954
+IA,Iowa,2014,17962
+IA,Iowa,2015,18695
+IA,Iowa,2016,19887
+IA,Iowa,2017,22584
+IA,Iowa,2018,24446
+IA,Iowa,2019,22023
+IA,Iowa,2020,24070
+IA,Iowa,2021,29903
+IA,Iowa,2022,29989
+IA,Iowa,2023,33326
+IA,Iowa,2024,32113
+IA,Iowa,2025,35038
+ID,Idaho,2005,14997
+ID,Idaho,2006,17108
+ID,Idaho,2007,16695
+ID,Idaho,2008,14814
+ID,Idaho,2009,12779
+ID,Idaho,2010,12820
+ID,Idaho,2011,13190
+ID,Idaho,2012,13218
+ID,Idaho,2013,13256
+ID,Idaho,2014,13879
+ID,Idaho,2015,14776
+ID,Idaho,2016,17314
+ID,Idaho,2017,17893
+ID,Idaho,2018,22633
+ID,Idaho,2019,21612
+ID,Idaho,2020,22268
+ID,Idaho,2021,28732
+ID,Idaho,2022,29817
+ID,Idaho,2023,31238
+ID,Idaho,2024,31144
+ID,Idaho,2025,33267
+IL,Illinois,2005,95349
+IL,Illinois,2006,97935
+IL,Illinois,2007,99565
+IL,Illinois,2008,106593
+IL,Illinois,2009,95856
+IL,Illinois,2010,98334
+IL,Illinois,2011,99166
+IL,Illinois,2012,95539
+IL,Illinois,2013,95255
+IL,Illinois,2014,98180
+IL,Illinois,2015,98680
+IL,Illinois,2016,99992
+IL,Illinois,2017,104303
+IL,Illinois,2018,116433
+IL,Illinois,2019,117302
+IL,Illinois,2020,170403
+IL,Illinois,2021,199421
+IL,Illinois,2022,169790
+IL,Illinois,2023,173433
+IL,Illinois,2024,171362
+IL,Illinois,2025,189879
+IN,Indiana,2005,37898
+IN,Indiana,2006,39237
+IN,Indiana,2007,40078
+IN,Indiana,2008,43289
+IN,Indiana,2009,48894
+IN,Indiana,2010,44977
+IN,Indiana,2011,44731
+IN,Indiana,2012,43869
+IN,Indiana,2013,42626
+IN,Indiana,2014,42371
+IN,Indiana,2015,43471
+IN,Indiana,2016,44732
+IN,Indiana,2017,48112
+IN,Indiana,2018,52253
+IN,Indiana,2019,53790
+IN,Indiana,2020,69058
+IN,Indiana,2021,87076
+IN,Indiana,2022,83235
+IN,Indiana,2023,93441
+IN,Indiana,2024,90375
+IN,Indiana,2025,89768
+KS,Kansas,2005,18879
+KS,Kansas,2006,19381
+KS,Kansas,2007,18885
+KS,Kansas,2008,18482
+KS,Kansas,2009,18372
+KS,Kansas,2010,18800
+KS,Kansas,2011,19560
+KS,Kansas,2012,19468
+KS,Kansas,2013,19343
+KS,Kansas,2014,19068
+KS,Kansas,2015,20235
+KS,Kansas,2016,21168
+KS,Kansas,2017,21899
+KS,Kansas,2018,24429
+KS,Kansas,2019,22526
+KS,Kansas,2020,24560
+KS,Kansas,2021,30449
+KS,Kansas,2022,30954
+KS,Kansas,2023,32996
+KS,Kansas,2024,31982
+KS,Kansas,2025,37534
+KY,Kentucky,2005,25369
+KY,Kentucky,2006,25778
+KY,Kentucky,2007,24972
+KY,Kentucky,2008,25070
+KY,Kentucky,2009,23371
+KY,Kentucky,2010,24626
+KY,Kentucky,2011,24770
+KY,Kentucky,2012,24894
+KY,Kentucky,2013,24925
+KY,Kentucky,2014,25215
+KY,Kentucky,2015,25054
+KY,Kentucky,2016,27032
+KY,Kentucky,2017,30465
+KY,Kentucky,2018,33838
+KY,Kentucky,2019,32908
+KY,Kentucky,2020,37348
+KY,Kentucky,2021,47220
+KY,Kentucky,2022,46713
+KY,Kentucky,2023,54756
+KY,Kentucky,2024,54138
+KY,Kentucky,2025,64042
+LA,Louisiana,2005,35961
+LA,Louisiana,2006,41003
+LA,Louisiana,2007,39520
+LA,Louisiana,2008,39083
+LA,Louisiana,2009,36409
+LA,Louisiana,2010,39342
+LA,Louisiana,2011,40152
+LA,Louisiana,2012,38932
+LA,Louisiana,2013,39053
+LA,Louisiana,2014,39555
+LA,Louisiana,2015,44283
+LA,Louisiana,2016,49095
+LA,Louisiana,2017,52606
+LA,Louisiana,2018,54129
+LA,Louisiana,2019,54093
+LA,Louisiana,2020,84040
+LA,Louisiana,2021,100477
+LA,Louisiana,2022,80582
+LA,Louisiana,2023,80404
+LA,Louisiana,2024,68514
+LA,Louisiana,2025,75620
+MA,Massachusetts,2005,46558
+MA,Massachusetts,2006,47283
+MA,Massachusetts,2007,46484
+MA,Massachusetts,2008,43796
+MA,Massachusetts,2009,43131
+MA,Massachusetts,2010,46987
+MA,Massachusetts,2011,46692
+MA,Massachusetts,2012,46770
+MA,Massachusetts,2013,47671
+MA,Massachusetts,2014,49360
+MA,Massachusetts,2015,49862
+MA,Massachusetts,2016,51403
+MA,Massachusetts,2017,54907
+MA,Massachusetts,2018,59200
+MA,Massachusetts,2019,57264
+MA,Massachusetts,2020,61859
+MA,Massachusetts,2021,75666
+MA,Massachusetts,2022,71172
+MA,Massachusetts,2023,76070
+MA,Massachusetts,2024,75426
+MA,Massachusetts,2025,79139
+MD,Maryland,2005,54189
+MD,Maryland,2006,57912
+MD,Maryland,2007,58224
+MD,Maryland,2008,55453
+MD,Maryland,2009,48824
+MD,Maryland,2010,50943
+MD,Maryland,2011,51681
+MD,Maryland,2012,53018
+MD,Maryland,2013,56493
+MD,Maryland,2014,57748
+MD,Maryland,2015,58736
+MD,Maryland,2016,61725
+MD,Maryland,2017,68313
+MD,Maryland,2018,75138
+MD,Maryland,2019,75451
+MD,Maryland,2020,97306
+MD,Maryland,2021,115156
+MD,Maryland,2022,99261
+MD,Maryland,2023,101827
+MD,Maryland,2024,95446
+MD,Maryland,2025,101253
+ME,Maine,2005,9135
+ME,Maine,2006,9184
+ME,Maine,2007,8633
+ME,Maine,2008,7851
+ME,Maine,2009,7034
+ME,Maine,2010,7459
+ME,Maine,2011,7318
+ME,Maine,2012,7328
+ME,Maine,2013,7266
+ME,Maine,2014,7449
+ME,Maine,2015,7742
+ME,Maine,2016,8028
+ME,Maine,2017,8834
+ME,Maine,2018,10895
+ME,Maine,2019,9987
+ME,Maine,2020,10600
+ME,Maine,2021,13532
+ME,Maine,2022,12993
+ME,Maine,2023,14084
+ME,Maine,2024,14118
+ME,Maine,2025,14186
+MI,Michigan,2005,75924
+MI,Michigan,2006,78073
+MI,Michigan,2007,79166
+MI,Michigan,2008,77806
+MI,Michigan,2009,73133
+MI,Michigan,2010,75645
+MI,Michigan,2011,75243
+MI,Michigan,2012,74071
+MI,Michigan,2013,72458
+MI,Michigan,2014,73843
+MI,Michigan,2015,74614
+MI,Michigan,2016,79130
+MI,Michigan,2017,84271
+MI,Michigan,2018,94292
+MI,Michigan,2019,94532
+MI,Michigan,2020,130376
+MI,Michigan,2021,151091
+MI,Michigan,2022,137084
+MI,Michigan,2023,147867
+MI,Michigan,2024,134838
+MI,Michigan,2025,152060
+MN,Minnesota,2005,39636
+MN,Minnesota,2006,39882
+MN,Minnesota,2007,40303
+MN,Minnesota,2008,39444
+MN,Minnesota,2009,44192
+MN,Minnesota,2010,39610
+MN,Minnesota,2011,38669
+MN,Minnesota,2012,39499
+MN,Minnesota,2013,38921
+MN,Minnesota,2014,39355
+MN,Minnesota,2015,39546
+MN,Minnesota,2016,40110
+MN,Minnesota,2017,43522
+MN,Minnesota,2018,47431
+MN,Minnesota,2019,46020
+MN,Minnesota,2020,53205
+MN,Minnesota,2021,64971
+MN,Minnesota,2022,61160
+MN,Minnesota,2023,68701
+MN,Minnesota,2024,67673
+MN,Minnesota,2025,73825
+MO,Missouri,2005,44669
+MO,Missouri,2006,47095
+MO,Missouri,2007,45511
+MO,Missouri,2008,43877
+MO,Missouri,2009,41168
+MO,Missouri,2010,43015
+MO,Missouri,2011,43548
+MO,Missouri,2012,44489
+MO,Missouri,2013,43846
+MO,Missouri,2014,44126
+MO,Missouri,2015,47164
+MO,Missouri,2016,51414
+MO,Missouri,2017,54909
+MO,Missouri,2018,58725
+MO,Missouri,2019,58748
+MO,Missouri,2020,70045
+MO,Missouri,2021,84547
+MO,Missouri,2022,81046
+MO,Missouri,2023,89446
+MO,Missouri,2024,85028
+MO,Missouri,2025,101393
+MS,Mississippi,2005,19479
+MS,Mississippi,2006,22289
+MS,Mississippi,2007,22193
+MS,Mississippi,2008,20704
+MS,Mississippi,2009,19538
+MS,Mississippi,2010,19687
+MS,Mississippi,2011,20365
+MS,Mississippi,2012,19896
+MS,Mississippi,2013,20403
+MS,Mississippi,2014,21461
+MS,Mississippi,2015,22773
+MS,Mississippi,2016,24585
+MS,Mississippi,2017,28205
+MS,Mississippi,2018,30358
+MS,Mississippi,2019,31375
+MS,Mississippi,2020,50723
+MS,Mississippi,2021,66384
+MS,Mississippi,2022,55828
+MS,Mississippi,2023,52936
+MS,Mississippi,2024,46805
+MS,Mississippi,2025,52467
+MT,Montana,2005,11165
+MT,Montana,2006,11469
+MT,Montana,2007,10846
+MT,Montana,2008,10558
+MT,Montana,2009,8756
+MT,Montana,2010,9437
+MT,Montana,2011,9659
+MT,Montana,2012,9683
+MT,Montana,2013,9638
+MT,Montana,2014,10169
+MT,Montana,2015,10582
+MT,Montana,2016,11113
+MT,Montana,2017,12150
+MT,Montana,2018,15450
+MT,Montana,2019,14152
+MT,Montana,2020,14979
+MT,Montana,2021,19126
+MT,Montana,2022,20694
+MT,Montana,2023,23650
+MT,Montana,2024,26939
+MT,Montana,2025,29887
+NC,North Carolina,2005,71574
+NC,North Carolina,2006,76637
+NC,North Carolina,2007,78949
+NC,North Carolina,2008,73703
+NC,North Carolina,2009,67747
+NC,North Carolina,2010,68086
+NC,North Carolina,2011,70175
+NC,North Carolina,2012,70108
+NC,North Carolina,2013,70874
+NC,North Carolina,2014,72995
+NC,North Carolina,2015,78733
+NC,North Carolina,2016,82513
+NC,North Carolina,2017,91376
+NC,North Carolina,2018,98474
+NC,North Carolina,2019,103625
+NC,North Carolina,2020,134080
+NC,North Carolina,2021,172289
+NC,North Carolina,2022,164236
+NC,North Carolina,2023,170268
+NC,North Carolina,2024,163580
+NC,North Carolina,2025,182653
+ND,North Dakota,2005,4188
+ND,North Dakota,2006,4460
+ND,North Dakota,2007,4347
+ND,North Dakota,2008,4639
+ND,North Dakota,2009,4198
+ND,North Dakota,2010,4834
+ND,North Dakota,2011,6125
+ND,North Dakota,2012,6571
+ND,North Dakota,2013,6427
+ND,North Dakota,2014,6754
+ND,North Dakota,2015,6128
+ND,North Dakota,2016,5750
+ND,North Dakota,2017,7368
+ND,North Dakota,2018,8622
+ND,North Dakota,2019,6877
+ND,North Dakota,2020,6648
+ND,North Dakota,2021,8106
+ND,North Dakota,2022,8023
+ND,North Dakota,2023,9005
+ND,North Dakota,2024,8455
+ND,North Dakota,2025,8912
+NE,Nebraska,2005,10713
+NE,Nebraska,2006,11142
+NE,Nebraska,2007,10943
+NE,Nebraska,2008,10946
+NE,Nebraska,2009,10384
+NE,Nebraska,2010,10845
+NE,Nebraska,2011,11650
+NE,Nebraska,2012,12080
+NE,Nebraska,2013,12060
+NE,Nebraska,2014,12483
+NE,Nebraska,2015,12732
+NE,Nebraska,2016,12843
+NE,Nebraska,2017,14575
+NE,Nebraska,2018,16453
+NE,Nebraska,2019,14958
+NE,Nebraska,2020,16125
+NE,Nebraska,2021,19438
+NE,Nebraska,2022,20552
+NE,Nebraska,2023,21538
+NE,Nebraska,2024,20862
+NE,Nebraska,2025,22876
+NH,New Hampshire,2005,10640
+NH,New Hampshire,2006,10521
+NH,New Hampshire,2007,10283
+NH,New Hampshire,2008,9759
+NH,New Hampshire,2009,8817
+NH,New Hampshire,2010,8300
+NH,New Hampshire,2011,8644
+NH,New Hampshire,2012,8726
+NH,New Hampshire,2013,8413
+NH,New Hampshire,2014,8443
+NH,New Hampshire,2015,8629
+NH,New Hampshire,2016,9137
+NH,New Hampshire,2017,11207
+NH,New Hampshire,2018,12877
+NH,New Hampshire,2019,11142
+NH,New Hampshire,2020,11405
+NH,New Hampshire,2021,13780
+NH,New Hampshire,2022,13949
+NH,New Hampshire,2023,16026
+NH,New Hampshire,2024,15977
+NH,New Hampshire,2025,17046
+NJ,New Jersey,2005,87059
+NJ,New Jersey,2006,90077
+NJ,New Jersey,2007,92530
+NJ,New Jersey,2008,89338
+NJ,New Jersey,2009,83204
+NJ,New Jersey,2010,86287
+NJ,New Jersey,2011,89472
+NJ,New Jersey,2012,88685
+NJ,New Jersey,2013,91153
+NJ,New Jersey,2014,89703
+NJ,New Jersey,2015,92179
+NJ,New Jersey,2016,94989
+NJ,New Jersey,2017,101604
+NJ,New Jersey,2018,109411
+NJ,New Jersey,2019,112347
+NJ,New Jersey,2020,134340
+NJ,New Jersey,2021,162813
+NJ,New Jersey,2022,154025
+NJ,New Jersey,2023,160160
+NJ,New Jersey,2024,153020
+NJ,New Jersey,2025,161138
+NM,New Mexico,2005,11487
+NM,New Mexico,2006,13218
+NM,New Mexico,2007,14087
+NM,New Mexico,2008,13781
+NM,New Mexico,2009,11797
+NM,New Mexico,2010,12079
+NM,New Mexico,2011,12472
+NM,New Mexico,2012,12328
+NM,New Mexico,2013,11966
+NM,New Mexico,2014,13226
+NM,New Mexico,2015,12761
+NM,New Mexico,2016,13000
+NM,New Mexico,2017,16157
+NM,New Mexico,2018,17962
+NM,New Mexico,2019,17463
+NM,New Mexico,2020,18288
+NM,New Mexico,2021,24500
+NM,New Mexico,2022,27147
+NM,New Mexico,2023,34253
+NM,New Mexico,2024,34673
+NM,New Mexico,2025,40758
+NV,Nevada,2005,43707
+NV,Nevada,2006,44272
+NV,Nevada,2007,42902
+NV,Nevada,2008,43655
+NV,Nevada,2009,37355
+NV,Nevada,2010,36093
+NV,Nevada,2011,38981
+NV,Nevada,2012,38375
+NV,Nevada,2013,39481
+NV,Nevada,2014,41642
+NV,Nevada,2015,40059
+NV,Nevada,2016,40121
+NV,Nevada,2017,43663
+NV,Nevada,2018,45895
+NV,Nevada,2019,42409
+NV,Nevada,2020,51978
+NV,Nevada,2021,67968
+NV,Nevada,2022,62080
+NV,Nevada,2023,65800
+NV,Nevada,2024,62655
+NV,Nevada,2025,64781
+NY,New York,2005,172737
+NY,New York,2006,178152
+NY,New York,2007,181850
+NY,New York,2008,175911
+NY,New York,2009,169362
+NY,New York,2010,184145
+NY,New York,2011,189018
+NY,New York,2012,187023
+NY,New York,2013,193027
+NY,New York,2014,194907
+NY,New York,2015,198972
+NY,New York,2016,202362
+NY,New York,2017,214736
+NY,New York,2018,226809
+NY,New York,2019,228644
+NY,New York,2020,253570
+NY,New York,2021,309378
+NY,New York,2022,297201
+NY,New York,2023,312277
+NY,New York,2024,291884
+NY,New York,2025,301047
+OH,Ohio,2005,65991
+OH,Ohio,2006,66646
+OH,Ohio,2007,67775
+OH,Ohio,2008,68250
+OH,Ohio,2009,67498
+OH,Ohio,2010,69526
+OH,Ohio,2011,72385
+OH,Ohio,2012,71862
+OH,Ohio,2013,70465
+OH,Ohio,2014,71075
+OH,Ohio,2015,73187
+OH,Ohio,2016,76638
+OH,Ohio,2017,85341
+OH,Ohio,2018,91040
+OH,Ohio,2019,95003
+OH,Ohio,2020,127226
+OH,Ohio,2021,155445
+OH,Ohio,2022,139977
+OH,Ohio,2023,148237
+OH,Ohio,2024,145662
+OH,Ohio,2025,168207
+OK,Oklahoma,2005,26759
+OK,Oklahoma,2006,27788
+OK,Oklahoma,2007,27913
+OK,Oklahoma,2008,29177
+OK,Oklahoma,2009,26504
+OK,Oklahoma,2010,27420
+OK,Oklahoma,2011,27781
+OK,Oklahoma,2012,28158
+OK,Oklahoma,2013,28646
+OK,Oklahoma,2014,29401
+OK,Oklahoma,2015,29698
+OK,Oklahoma,2016,32669
+OK,Oklahoma,2017,35630
+OK,Oklahoma,2018,39927
+OK,Oklahoma,2019,41032
+OK,Oklahoma,2020,45777
+OK,Oklahoma,2021,57932
+OK,Oklahoma,2022,55327
+OK,Oklahoma,2023,57904
+OK,Oklahoma,2024,53645
+OK,Oklahoma,2025,56855
+OR,Oregon,2005,29430
+OR,Oregon,2006,32496
+OR,Oregon,2007,33022
+OR,Oregon,2008,31888
+OR,Oregon,2009,28789
+OR,Oregon,2010,29052
+OR,Oregon,2011,28982
+OR,Oregon,2012,28463
+OR,Oregon,2013,29255
+OR,Oregon,2014,30297
+OR,Oregon,2015,34196
+OR,Oregon,2016,35974
+OR,Oregon,2017,38222
+OR,Oregon,2018,41389
+OR,Oregon,2019,39242
+OR,Oregon,2020,40470
+OR,Oregon,2021,49857
+OR,Oregon,2022,49479
+OR,Oregon,2023,55978
+OR,Oregon,2024,59813
+OR,Oregon,2025,62652
+PA,Pennsylvania,2005,75090
+PA,Pennsylvania,2006,77188
+PA,Pennsylvania,2007,77385
+PA,Pennsylvania,2008,74242
+PA,Pennsylvania,2009,69860
+PA,Pennsylvania,2010,71585
+PA,Pennsylvania,2011,74141
+PA,Pennsylvania,2012,74421
+PA,Pennsylvania,2013,75573
+PA,Pennsylvania,2014,76645
+PA,Pennsylvania,2015,79942
+PA,Pennsylvania,2016,83619
+PA,Pennsylvania,2017,91617
+PA,Pennsylvania,2018,98544
+PA,Pennsylvania,2019,102750
+PA,Pennsylvania,2020,127311
+PA,Pennsylvania,2021,158516
+PA,Pennsylvania,2022,138870
+PA,Pennsylvania,2023,154330
+PA,Pennsylvania,2024,147457
+PA,Pennsylvania,2025,161275
+RI,Rhode Island,2005,7223
+RI,Rhode Island,2006,7274
+RI,Rhode Island,2007,7124
+RI,Rhode Island,2008,6616
+RI,Rhode Island,2009,6133
+RI,Rhode Island,2010,6345
+RI,Rhode Island,2011,6353
+RI,Rhode Island,2012,6283
+RI,Rhode Island,2013,6142
+RI,Rhode Island,2014,6598
+RI,Rhode Island,2015,6613
+RI,Rhode Island,2016,6743
+RI,Rhode Island,2017,8226
+RI,Rhode Island,2018,10236
+RI,Rhode Island,2019,8492
+RI,Rhode Island,2020,8990
+RI,Rhode Island,2021,11448
+RI,Rhode Island,2022,10919
+RI,Rhode Island,2023,11629
+RI,Rhode Island,2024,11226
+RI,Rhode Island,2025,11800
+SC,South Carolina,2005,33172
+SC,South Carolina,2006,36005
+SC,South Carolina,2007,37485
+SC,South Carolina,2008,36283
+SC,South Carolina,2009,32460
+SC,South Carolina,2010,31584
+SC,South Carolina,2011,31638
+SC,South Carolina,2012,32097
+SC,South Carolina,2013,33118
+SC,South Carolina,2014,34940
+SC,South Carolina,2015,37445
+SC,South Carolina,2016,41323
+SC,South Carolina,2017,45338
+SC,South Carolina,2018,49291
+SC,South Carolina,2019,51499
+SC,South Carolina,2020,71050
+SC,South Carolina,2021,96369
+SC,South Carolina,2022,90774
+SC,South Carolina,2023,91814
+SC,South Carolina,2024,86364
+SC,South Carolina,2025,94104
+SD,South Dakota,2005,5507
+SD,South Dakota,2006,5789
+SD,South Dakota,2007,5551
+SD,South Dakota,2008,5593
+SD,South Dakota,2009,5342
+SD,South Dakota,2010,5550
+SD,South Dakota,2011,5955
+SD,South Dakota,2012,5970
+SD,South Dakota,2013,6173
+SD,South Dakota,2014,6445
+SD,South Dakota,2015,6475
+SD,South Dakota,2016,6332
+SD,South Dakota,2017,8420
+SD,South Dakota,2018,9735
+SD,South Dakota,2019,7803
+SD,South Dakota,2020,7790
+SD,South Dakota,2021,10209
+SD,South Dakota,2022,10493
+SD,South Dakota,2023,11354
+SD,South Dakota,2024,11494
+SD,South Dakota,2025,12092
+TN,Tennessee,2005,36902
+TN,Tennessee,2006,40419
+TN,Tennessee,2007,41685
+TN,Tennessee,2008,39063
+TN,Tennessee,2009,36224
+TN,Tennessee,2010,36728
+TN,Tennessee,2011,42861
+TN,Tennessee,2012,40002
+TN,Tennessee,2013,40240
+TN,Tennessee,2014,42152
+TN,Tennessee,2015,44290
+TN,Tennessee,2016,46441
+TN,Tennessee,2017,51198
+TN,Tennessee,2018,56940
+TN,Tennessee,2019,58718
+TN,Tennessee,2020,75276
+TN,Tennessee,2021,94261
+TN,Tennessee,2022,91521
+TN,Tennessee,2023,96139
+TN,Tennessee,2024,90327
+TN,Tennessee,2025,103220
+TX,Texas,2005,173862
+TX,Texas,2006,185710
+TX,Texas,2007,190348
+TX,Texas,2008,190985
+TX,Texas,2009,184258
+TX,Texas,2010,196052
+TX,Texas,2011,205026
+TX,Texas,2012,206936
+TX,Texas,2013,212031
+TX,Texas,2014,224627
+TX,Texas,2015,237317
+TX,Texas,2016,258534
+TX,Texas,2017,275736
+TX,Texas,2018,298818
+TX,Texas,2019,305154
+TX,Texas,2020,386690
+TX,Texas,2021,495216
+TX,Texas,2022,466811
+TX,Texas,2023,500790
+TX,Texas,2024,490959
+TX,Texas,2025,544146
+UT,Utah,2005,28864
+UT,Utah,2006,34061
+UT,Utah,2007,35843
+UT,Utah,2008,34592
+UT,Utah,2009,32351
+UT,Utah,2010,31097
+UT,Utah,2011,31121
+UT,Utah,2012,34240
+UT,Utah,2013,36995
+UT,Utah,2014,38972
+UT,Utah,2015,40979
+UT,Utah,2016,43330
+UT,Utah,2017,47154
+UT,Utah,2018,49709
+UT,Utah,2019,49669
+UT,Utah,2020,51285
+UT,Utah,2021,63272
+UT,Utah,2022,65304
+UT,Utah,2023,71450
+UT,Utah,2024,68471
+UT,Utah,2025,72787
+VA,Virginia,2005,63698
+VA,Virginia,2006,67455
+VA,Virginia,2007,67657
+VA,Virginia,2008,65921
+VA,Virginia,2009,62682
+VA,Virginia,2010,61098
+VA,Virginia,2011,64230
+VA,Virginia,2012,67231
+VA,Virginia,2013,68436
+VA,Virginia,2014,70549
+VA,Virginia,2015,72369
+VA,Virginia,2016,75200
+VA,Virginia,2017,81143
+VA,Virginia,2018,86550
+VA,Virginia,2019,88000
+VA,Virginia,2020,107106
+VA,Virginia,2021,131082
+VA,Virginia,2022,123702
+VA,Virginia,2023,131413
+VA,Virginia,2024,126386
+VA,Virginia,2025,138762
+VT,Vermont,2005,4511
+VT,Vermont,2006,4542
+VT,Vermont,2007,4545
+VT,Vermont,2008,4292
+VT,Vermont,2009,3819
+VT,Vermont,2010,4087
+VT,Vermont,2011,3887
+VT,Vermont,2012,4081
+VT,Vermont,2013,3885
+VT,Vermont,2014,4156
+VT,Vermont,2015,4503
+VT,Vermont,2016,4580
+VT,Vermont,2017,5325
+VT,Vermont,2018,6608
+VT,Vermont,2019,5570
+VT,Vermont,2020,5636
+VT,Vermont,2021,7166
+VT,Vermont,2022,7298
+VT,Vermont,2023,7481
+VT,Vermont,2024,7295
+VT,Vermont,2025,7575
+WA,Washington,2005,49399
+WA,Washington,2006,51809
+WA,Washington,2007,53249
+WA,Washington,2008,50053
+WA,Washington,2009,45043
+WA,Washington,2010,46600
+WA,Washington,2011,48310
+WA,Washington,2012,47592
+WA,Washington,2013,48499
+WA,Washington,2014,50338
+WA,Washington,2015,53504
+WA,Washington,2016,57887
+WA,Washington,2017,62118
+WA,Washington,2018,69027
+WA,Washington,2019,70395
+WA,Washington,2020,76374
+WA,Washington,2021,92591
+WA,Washington,2022,88939
+WA,Washington,2023,97510
+WA,Washington,2024,110542
+WA,Washington,2025,142196
+WI,Wisconsin,2005,37551
+WI,Wisconsin,2006,37730
+WI,Wisconsin,2007,37332
+WI,Wisconsin,2008,37266
+WI,Wisconsin,2009,34898
+WI,Wisconsin,2010,36525
+WI,Wisconsin,2011,36014
+WI,Wisconsin,2012,35982
+WI,Wisconsin,2013,35468
+WI,Wisconsin,2014,36014
+WI,Wisconsin,2015,37170
+WI,Wisconsin,2016,37528
+WI,Wisconsin,2017,41128
+WI,Wisconsin,2018,45420
+WI,Wisconsin,2019,43789
+WI,Wisconsin,2020,52846
+WI,Wisconsin,2021,65238
+WI,Wisconsin,2022,64426
+WI,Wisconsin,2023,65293
+WI,Wisconsin,2024,62118
+WI,Wisconsin,2025,71475
+WV,West Virginia,2005,9083
+WV,West Virginia,2006,9383
+WV,West Virginia,2007,9308
+WV,West Virginia,2008,9081
+WV,West Virginia,2009,7981
+WV,West Virginia,2010,8229
+WV,West Virginia,2011,8142
+WV,West Virginia,2012,8515
+WV,West Virginia,2013,8222
+WV,West Virginia,2014,8578
+WV,West Virginia,2015,8576
+WV,West Virginia,2016,9287
+WV,West Virginia,2017,10210
+WV,West Virginia,2018,11220
+WV,West Virginia,2019,9955
+WV,West Virginia,2020,10914
+WV,West Virginia,2021,13280
+WV,West Virginia,2022,13808
+WV,West Virginia,2023,15255
+WV,West Virginia,2024,15167
+WV,West Virginia,2025,16387
+WY,Wyoming,2005,5431
+WY,Wyoming,2006,6084
+WY,Wyoming,2007,6449
+WY,Wyoming,2008,7932
+WY,Wyoming,2009,6932
+WY,Wyoming,2010,7545
+WY,Wyoming,2011,7839
+WY,Wyoming,2012,7914
+WY,Wyoming,2013,8402
+WY,Wyoming,2014,8875
+WY,Wyoming,2015,9732
+WY,Wyoming,2016,13849
+WY,Wyoming,2017,17670
+WY,Wyoming,2018,20021
+WY,Wyoming,2019,19663
+WY,Wyoming,2020,25883
+WY,Wyoming,2021,36191
+WY,Wyoming,2022,45355
+WY,Wyoming,2023,62422
+WY,Wyoming,2024,64444
+WY,Wyoming,2025,79023

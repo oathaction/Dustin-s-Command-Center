@@ -1,0 +1,130 @@
+{
+  "kit": 1,
+  "id": "S10",
+  "form": "percent-bar",
+  "family": "composition",
+  "tier": "core",
+  "dataset": "v7-claims-by-grade",
+  "sort": [
+    {
+      "field": "documented_share",
+      "order": "desc"
+    },
+    {
+      "field": "total",
+      "order": "desc"
+    }
+  ],
+  "reader_question": "How much of each everyday answer rests on documented fact?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the atlas’s own register of graded claims",
+  "v7": {
+    "grade": "documented",
+    "ids": [],
+    "snapshot": "2026-10-15"
+  },
+  "title": "About three in four claims behind the atlas’s 16 everyday answers are documented on the public record.",
+  "reading_guide": "Each bar splits one answer’s claims by grade, documented first, in the ink of the text, then in steps toward the page color. In this chart the shade is the grade code, so the boldest mark shows documented claims.",
+  "measure_line": "Claims in the register of the atlas, Oath & Action’s own research, by evidence grade, as a share of each answer’s claims, 433 claims, checked through October 15, 2026, United States",
+  "notes": [
+    "Clean drinking water: 23 of 24 claims documented, the highest share. Algorithms in daily life: 13 of 22, the lowest. Pay and working conditions: 6 of 39 claims contested, the most of any answer.",
+    "Grades: documented means on the public record; well supported means strong research evidence; plausible means some evidence; contested means evidence disputed.",
+    "A claim’s grade covers that claim and says nothing about the rest of its answer."
+  ],
+  "source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, claims register, 433 claims across 16 everyday questions, claims checked through October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.",
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Bars split by evidence grade for each of the atlas’s 16 everyday answers, sorted by the share of claims documented on the public record. Across all 433 claims, 74 percent are documented, from 96 percent for clean drinking water to 59 percent for algorithms in daily life.",
+  "table": {
+    "caption": "Claims by evidence grade for each everyday answer",
+    "columns": [
+      {
+        "field": "title",
+        "label": "Answer",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "question",
+        "label": "Reader question",
+        "format": "text"
+      },
+      {
+        "field": "total",
+        "label": "Claims",
+        "format": "integer"
+      },
+      {
+        "field": "documented",
+        "label": "Documented",
+        "format": "integer"
+      },
+      {
+        "field": "well_supported",
+        "label": "Well supported",
+        "format": "integer"
+      },
+      {
+        "field": "plausible",
+        "label": "Plausible",
+        "format": "integer"
+      },
+      {
+        "field": "contested",
+        "label": "Contested",
+        "format": "integer"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Key: documented, on the public record, in the ink of the text; well supported, strong research evidence; plausible, some evidence; contested, evidence disputed, hatched.",
+    "A line marks all 433 claims at 74 percent documented. Each row prints its documented share and its number of claims."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "all",
+  "states": [],
+  "encode": {
+    "category": "title",
+    "parts": [
+      "documented",
+      "well_supported",
+      "plausible",
+      "contested"
+    ],
+    "total": "total"
+  },
+  "labels": {
+    "parts": [
+      {
+        "field": "documented",
+        "label": "Documented: on the public record",
+        "fill": "subject"
+      },
+      {
+        "field": "well_supported",
+        "label": "Well supported: strong research evidence",
+        "fill": "mag-3"
+      },
+      {
+        "field": "plausible",
+        "label": "Plausible: some evidence",
+        "fill": "light-fill"
+      },
+      {
+        "field": "contested",
+        "label": "Contested: evidence disputed",
+        "pattern": "hatch"
+      }
+    ],
+    "share": "{p}% of {total}",
+    "mark_at": 74.1,
+    "mark_label": "All 433 claims: 74% documented"
+  },
+  "notes_internal": [
+    "Sorted by documented share as Phase 2 was; the sort needs a documented_share column in v7-claims-by-grade (request to the engineer).",
+    "Grades never take Pillar Red; contested carries a hatch so the key survives grayscale.",
+    "74 percent is 321 of 433 claims, counted by script from v7-claims-by-grade.json."
+  ]
+}

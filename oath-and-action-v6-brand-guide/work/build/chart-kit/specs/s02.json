@@ -1,0 +1,187 @@
+{
+  "kit": 1,
+  "id": "S02",
+  "form": "line-event-notes",
+  "family": "change-over-time",
+  "tier": "core",
+  "dataset": "census-spm-child-poverty",
+  "where": {
+    "age_group": "under_18",
+    "vintage": "p60-290"
+  },
+  "sort": [
+    {
+      "field": "year",
+      "order": "asc"
+    },
+    {
+      "field": "measure",
+      "order": "asc"
+    },
+    {
+      "field": "comparable_with",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "What happened to child poverty when the expanded child tax credit was paid, and after it lapsed?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: an official statistic from a Census Bureau survey",
+  "v7": {
+    "grade": "documented",
+    "ids": [
+      "RL35"
+    ],
+    "snapshot": "2026-10-15"
+  },
+  "title": "Child poverty fell to 5.1 percent in 2021, the lowest since the series began in 2009, and more than doubled the next year.",
+  "measure_line": "Children under 18 below the Supplemental Poverty Measure, which counts tax credits and other aid, percent, United States, 2009 to 2025; the official measure, which counts pretax cash income only, in gray. The scale starts at zero.",
+  "notes": [
+    "Census changed its survey or method in 2013, 2017 and 2019. The line breaks there, and each of those years shows two estimates, one for each method.",
+    "The 2025 law’s credit amount comes from the atlas’s repair log, entry RL35, snapshot of October 15, 2026."
+  ],
+  "source_line": "Source: U.S. Census Bureau, Poverty in the United States: 2025 (P60-290), Table 8, Supplemental Poverty Measure, children under 18, 2009 to 2025, United States. Retrieved November 6, 2026. Figures for 2019 to 2024 include the Bureau’s August 2026 revision and differ by up to 0.4 points from those first published.",
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Line chart of child poverty under the Supplemental Poverty Measure, 2009 to 2025, with the official measure in gray. It fell from 17.0 percent in 2009 to 5.1 percent in 2021, the year the expanded child tax credit was paid, rose to 12.0 percent in 2022 and stood at 13.4 percent in 2025, where both measures meet.",
+  "table": {
+    "caption": "Children in poverty, percent",
+    "columns": [
+      {
+        "field": "year",
+        "label": "Year",
+        "format": "year",
+        "row_header": true
+      },
+      {
+        "field": "measure",
+        "label": "Measure",
+        "format": "text",
+        "words": {
+          "spm": "Supplemental",
+          "official": "Official"
+        }
+      },
+      {
+        "field": "series_variant",
+        "label": "Estimate",
+        "format": "text",
+        "words": {
+          "standard": "One estimate",
+          "redesigned_income_questions": "Redesigned income questions",
+          "traditional_income_questions": "Traditional income questions",
+          "legacy_processing": "Earlier processing system",
+          "updated_processing": "Updated processing system",
+          "corrected_2026_method": "Method used from 2019 on",
+          "original_2011_method": "Original 2011 method"
+        }
+      },
+      {
+        "field": "percent",
+        "label": "Percent",
+        "format": "number:1"
+      },
+      {
+        "field": "moe_pct",
+        "label": "Margin of error, points (90%)",
+        "format": "number:1"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Lines: the heavy line is the Supplemental Poverty Measure; the thin gray line is the official measure. The scale runs from 0 to 25 percent.",
+    "2021: the expanded child tax credit was in force, and it lapsed after that year.",
+    "2025: both measures stood at 13.4 percent. In July 2025, Public Law 119-21 set the child tax credit at up to $2,200 per child."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D08",
+  "states": [],
+  "encode": {
+    "x": "year",
+    "y": "percent",
+    "series": "measure",
+    "break": "comparable_with"
+  },
+  "labels": {
+    "subject": "spm",
+    "series": {
+      "spm": "Supplemental measure",
+      "official": "Official measure"
+    },
+    "break_end": "earlier",
+    "break_start": "later",
+    "y_max": 25,
+    "series_place": {
+      "official": {
+        "x": 2010,
+        "dy": -12
+      },
+      "spm": {
+        "x": 2009,
+        "dy": 30
+      }
+    }
+  },
+  "annotations": [
+    {
+      "at": {
+        "x": 2021,
+        "series": "spm"
+      },
+      "text": "",
+      "value": true,
+      "place": "below",
+      "dot": true
+    },
+    {
+      "at": {
+        "x": 2022,
+        "series": "spm"
+      },
+      "text": "",
+      "value": true,
+      "place": "right"
+    },
+    {
+      "at": {
+        "x": 2021,
+        "series": "spm"
+      },
+      "text": "2021: the expanded child tax credit was in force, and it lapsed after that year. The timing alone does not show how much of the drop came from the credit.",
+      "place": "left",
+      "dx": -60,
+      "dy": -18,
+      "max": 290,
+      "phone": {
+        "max": 165,
+        "dy": 18,
+        "dx": -22
+      }
+    },
+    {
+      "at": {
+        "x": 2025,
+        "series": "spm"
+      },
+      "text": "Both measures: 13.4% in 2025. In July 2025, Public Law 119-21 set the child tax credit at up to $2,200 per child.",
+      "place": "above",
+      "anchor": "end",
+      "dy": -118,
+      "max": 380,
+      "phone": {
+        "max": 215,
+        "dy": -36
+      }
+    }
+  ],
+  "notes_internal": [
+    "The chart draws vintage p60-290 only (the sidecar's which_vintage_to_chart); both measures, 39 rows.",
+    "H12: Phase 2's 'P.L. 119-21' is written out as 'Public Law 119-21'. Its $2,200 figure is V7 repair-log entry RL35, now named in a note so the figure carries its source (H04).",
+    "Grade line opens with H08's grade word, Documented (Rules 13.2 and 13.3)."
+  ],
+  "formats": {
+    "y": "percent:1",
+    "y_tick": "integer"
+  }
+}

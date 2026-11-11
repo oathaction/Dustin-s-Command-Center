@@ -1,0 +1,7 @@
+{
+ "about": "The few words the chart kit's figure prints that are the same on every chart. A spec's \"words\" object may override any of them. The editor owns their wording; the engineer keeps the keys.",
+ "source_label": "Source:",
+ "table_summary": "Show the table and notes",
+ "notes_in_chart": "Notes in the chart",
+ "table_region": "{caption}, table"
+}

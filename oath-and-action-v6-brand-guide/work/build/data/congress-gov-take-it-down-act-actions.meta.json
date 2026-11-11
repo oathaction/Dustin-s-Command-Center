@@ -1,0 +1,37 @@
+{
+ "file": "congress-gov-take-it-down-act-actions.csv",
+ "kind": "public",
+ "publisher": "Library of Congress, Congress.gov",
+ "title_or_table": "S. 146, TAKE IT DOWN Act, 119th Congress, actions (Library of Congress summary actions)",
+ "table_id": "api.congress.gov v3 /bill/119/s/146/actions",
+ "url": [
+  "https://api.congress.gov/v3/bill/119/s/146/actions?limit=100&format=json",
+  "https://api.congress.gov/v3/bill/119/s/146?format=json"
+ ],
+ "observation_period": "January 16, 2025 to May 19, 2025",
+ "geography": "United States Congress",
+ "universe_or_base": "The actions the Library of Congress records as the bill's major steps",
+ "unit": "dated actions",
+ "date_retrieved": "2026-11-11",
+ "vintage": "Congress.gov data as served on November 11, 2026",
+ "qualification": "The bill passed the Senate by unanimous consent with no recorded vote, and the House 409 to 2 under a suspension of the rules, which needs two-thirds; it became Public Law 119-12 on May 19, 2025",
+ "columns": {
+  "date": {
+   "type": "date",
+   "description": "action date"
+  },
+  "action_code": {
+   "type": "code",
+   "description": "Library of Congress action code"
+  },
+  "action": {
+   "type": "text",
+   "description": "action text"
+  }
+ },
+ "printed_source_line": "Source: Library of Congress, Congress.gov, S. 146, TAKE IT DOWN Act, actions, January 16 to May 19, 2025, United States Congress. Retrieved November 11, 2026. Passed the Senate by unanimous consent with no recorded vote; became Public Law 119-12.",
+ "ledger_row": "P7-034",
+ "domain": "D01",
+ "domain_note": "The law requires online platforms to remove nonconsensual intimate images, including computer-made fakes, within 48 hours of a valid request; V7 places platforms and fake media under news, records and public information (issue I010)",
+ "states": []
+}

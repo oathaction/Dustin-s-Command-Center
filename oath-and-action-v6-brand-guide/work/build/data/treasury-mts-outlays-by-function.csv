@@ -1,0 +1,241 @@
+fiscal_year,function,outlays_billions
+2015,National Defense,591.4
+2015,International Affairs,48.6
+2015,"General Science, Space, and Technology",29.5
+2015,Energy,6.9
+2015,Natural Resources and Environment,34
+2015,Agriculture,20.2
+2015,Commerce and Housing Credit,-38.3
+2015,Transportation,90
+2015,Community and Regional Development,21.6
+2015,"Education, Training, Employment, and Social Services",120.4
+2015,Health,482.2
+2015,Medicare,546.2
+2015,Income Security,509.4
+2015,Social Security,887.8
+2015,Veterans Benefits and Services,159.7
+2015,Administration of Justice,53.6
+2015,General Government,16.9
+2015,Net Interest,223.3
+2015,Undistributed Offsetting Receipts,-115.8
+2015,Total,3687.6
+2016,National Defense,595.3
+2016,International Affairs,45.3
+2016,"General Science, Space, and Technology",30.2
+2016,Energy,3.7
+2016,Natural Resources and Environment,37.8
+2016,Agriculture,20.2
+2016,Commerce and Housing Credit,-32.8
+2016,Transportation,92.9
+2016,Community and Regional Development,21.1
+2016,"Education, Training, Employment, and Social Services",108.1
+2016,Health,511.3
+2016,Medicare,594.5
+2016,Income Security,514.6
+2016,Social Security,916.1
+2016,Veterans Benefits and Services,174.5
+2016,Administration of Justice,57.1
+2016,General Government,18.6
+2016,Net Interest,240.7
+2016,Undistributed Offsetting Receipts,-95.3
+2016,Total,3854.1
+2017,National Defense,600.3
+2017,International Affairs,46.3
+2017,"General Science, Space, and Technology",30.5
+2017,Energy,4
+2017,Natural Resources and Environment,36.1
+2017,Agriculture,20.8
+2017,Commerce and Housing Credit,-27.3
+2017,Transportation,93.9
+2017,Community and Regional Development,26.4
+2017,"Education, Training, Employment, and Social Services",142.2
+2017,Health,533.1
+2017,Medicare,597.3
+2017,Income Security,504
+2017,Social Security,944.9
+2017,Veterans Benefits and Services,176.5
+2017,Administration of Justice,58.9
+2017,General Government,19.8
+2017,Net Interest,262.8
+2017,Undistributed Offsetting Receipts,-89.8
+2017,Total,3980.6
+2018,National Defense,664.7
+2018,International Affairs,49
+2018,"General Science, Space, and Technology",31.6
+2018,Energy,2.2
+2018,Natural Resources and Environment,37.3
+2018,Agriculture,23.7
+2018,Commerce and Housing Credit,-9.9
+2018,Transportation,93.2
+2018,Community and Regional Development,44.3
+2018,"Education, Training, Employment, and Social Services",93.9
+2018,Health,518.5
+2018,Medicare,588.7
+2018,Income Security,495.8
+2018,Social Security,987.8
+2018,Veterans Benefits and Services,178.9
+2018,Administration of Justice,61.5
+2018,General Government,19.8
+2018,Net Interest,324.7
+2018,Undistributed Offsetting Receipts,-97.9
+2018,Total,4107.7
+2019,National Defense,687.6
+2019,International Affairs,52.7
+2019,"General Science, Space, and Technology",32.5
+2019,Energy,5.1
+2019,Natural Resources and Environment,35.9
+2019,Agriculture,40.2
+2019,Commerce and Housing Credit,-26.1
+2019,Transportation,96.2
+2019,Community and Regional Development,29.1
+2019,"Education, Training, Employment, and Social Services",135
+2019,Health,584.8
+2019,Medicare,651
+2019,Income Security,515.4
+2019,Social Security,1044.4
+2019,Veterans Benefits and Services,200
+2019,Administration of Justice,66
+2019,General Government,19.4
+2019,Net Interest,375.6
+2019,Undistributed Offsetting Receipts,-98.2
+2019,Total,4446.6
+2020,National Defense,726.2
+2020,International Affairs,67.7
+2020,"General Science, Space, and Technology",34.1
+2020,Energy,7.2
+2020,Natural Resources and Environment,40.7
+2020,Agriculture,49.2
+2020,Commerce and Housing Credit,571.7
+2020,Transportation,146.2
+2020,Community and Regional Development,83.6
+2020,"Education, Training, Employment, and Social Services",236.7
+2020,Health,748.3
+2020,Medicare,776.2
+2020,Income Security,1262.6
+2020,Social Security,1095.8
+2020,Veterans Benefits and Services,218.7
+2020,Administration of Justice,72.1
+2020,General Government,176.8
+2020,Net Interest,344.7
+2020,Undistributed Offsetting Receipts,-106.4
+2020,Total,6551.9
+2021,National Defense,754.8
+2021,International Affairs,46.9
+2021,"General Science, Space, and Technology",35.6
+2021,Energy,6.1
+2021,Natural Resources and Environment,42.1
+2021,Agriculture,49.5
+2021,Commerce and Housing Credit,304.1
+2021,Transportation,154.8
+2021,Community and Regional Development,46.5
+2021,"Education, Training, Employment, and Social Services",296.6
+2021,Health,796.8
+2021,Medicare,696.5
+2021,Income Security,1648.8
+2021,Social Security,1134.6
+2021,Veterans Benefits and Services,234.3
+2021,Administration of Justice,72.2
+2021,General Government,269.6
+2021,Net Interest,352.3
+2021,Undistributed Offsetting Receipts,-123.9
+2021,Total,6818.2
+2022,National Defense,766.7
+2022,International Affairs,71.7
+2022,"General Science, Space, and Technology",37.5
+2022,Energy,-9.1
+2022,Natural Resources and Environment,39.6
+2022,Agriculture,34.9
+2022,Commerce and Housing Credit,-19.5
+2022,Transportation,131.6
+2022,Community and Regional Development,72.1
+2022,"Education, Training, Employment, and Social Services",676.6
+2022,Health,914.5
+2022,Medicare,755.1
+2022,Income Security,865.4
+2022,Social Security,1218.7
+2022,Veterans Benefits and Services,274.4
+2022,Administration of Justice,72.1
+2022,General Government,128.7
+2022,Net Interest,475.1
+2022,Undistributed Offsetting Receipts,-234.5
+2022,Total,6271.5
+2023,National Defense,820.7
+2023,International Affairs,69.3
+2023,"General Science, Space, and Technology",41.4
+2023,Energy,-0.3
+2023,Natural Resources and Environment,45.9
+2023,Agriculture,35.6
+2023,Commerce and Housing Credit,100
+2023,Transportation,127.2
+2023,Community and Regional Development,88.9
+2023,"Education, Training, Employment, and Social Services",-3.1
+2023,Health,889.3
+2023,Medicare,847.5
+2023,Income Security,774.2
+2023,Social Security,1354.3
+2023,Veterans Benefits and Services,301.6
+2023,Administration of Justice,81.2
+2023,General Government,33.6
+2023,Net Interest,659.2
+2023,Undistributed Offsetting Receipts,-131.9
+2023,Total,6134.4
+2024,National Defense,874
+2024,International Affairs,72
+2024,"General Science, Space, and Technology",41.6
+2024,Energy,13.8
+2024,Natural Resources and Environment,56.9
+2024,Agriculture,34.7
+2024,Commerce and Housing Credit,35.6
+2024,Transportation,137.1
+2024,Community and Regional Development,87.8
+2024,"Education, Training, Employment, and Social Services",305
+2024,Health,911.7
+2024,Medicare,874.1
+2024,Income Security,671.1
+2024,Social Security,1460.9
+2024,Veterans Benefits and Services,325.4
+2024,Administration of Justice,85
+2024,General Government,29.9
+2024,Net Interest,881.7
+2024,Undistributed Offsetting Receipts,-146.7
+2024,Total,6751.6
+2025,National Defense,916.6
+2025,International Affairs,45.2
+2025,"General Science, Space, and Technology",42.1
+2025,Energy,20.9
+2025,Natural Resources and Environment,88.3
+2025,Agriculture,49.3
+2025,Commerce and Housing Credit,-28.6
+2025,Transportation,145.8
+2025,Community and Regional Development,84.5
+2025,"Education, Training, Employment, and Social Services",69.2
+2025,Health,978.9
+2025,Medicare,996.7
+2025,Income Security,701.6
+2025,Social Security,1580.7
+2025,Veterans Benefits and Services,377.2
+2025,Administration of Justice,85.2
+2025,General Government,36.3
+2025,Net Interest,970.4
+2025,Undistributed Offsetting Receipts,-150.2
+2025,Total,7010
+2026,National Defense,965.2
+2026,International Affairs,48
+2026,"General Science, Space, and Technology",39.9
+2026,Energy,21
+2026,Natural Resources and Environment,57.1
+2026,Agriculture,52.6
+2026,Commerce and Housing Credit,-15.5
+2026,Transportation,142.9
+2026,Community and Regional Development,62.4
+2026,"Education, Training, Employment, and Social Services",107.6
+2026,Health,1025.6
+2026,Medicare,1072.6
+2026,Income Security,694.2
+2026,Social Security,1667.1
+2026,Veterans Benefits and Services,416.2
+2026,Administration of Justice,109.9
+2026,General Government,32.3
+2026,Net Interest,1051.8
+2026,Undistributed Offsetting Receipts,-155
+2026,Total,7395.8

@@ -1,0 +1,81 @@
+{
+ "file": "fec-presidential-shift-by-state.csv",
+ "kind": "derived",
+ "publisher": "Federal Election Commission (FEC), compiled from official results reported by state election offices",
+ "title_or_table": "2020: Federal Elections 2020: Election Results for the U.S. President, the U.S. Senate and the U.S. House of Representatives (October 2022), Table 2, 2020 Presidential Electoral and Popular Vote. 2024: Official 2024 Presidential General Election Results, compiled from state election offices (dated January 16, 2025)",
+ "table_id": "federalelections2020.xlsx sheet '3. Table 2 Electoral & Pop Vote'; 2024presgeresults.xlsx sheet 'OFFICIAL 2024 PRES GE RESULTS'",
+ "url": [
+  "https://www.fec.gov/documents/4228/federalelections2020.xlsx",
+  "https://www.fec.gov/introduction-campaign-finance/election-and-voting-information/federal-elections-2020/",
+  "https://www.fec.gov/documents/5645/2024presgeresults.xlsx",
+  "https://www.fec.gov/documents/5644/2024presgeresults.pdf",
+  "https://www.fec.gov/introduction-campaign-finance/election-results-and-voting-information/"
+ ],
+ "observation_period": "November 2020 and November 2024 presidential general elections",
+ "geography": "50 states and DC, with the United States in one row set apart",
+ "universe_or_base": "All presidential votes cast in each state",
+ "unit": "Margins and shift in percentage points; shares in percent; votes as counted",
+ "date_retrieved": "2026-11-06",
+ "vintage": "2020 from the FEC's Federal Elections 2020 publication (October 2022). 2024 from the FEC's compiled official results file dated January 16, 2025. The FEC's election results page, read November 6, 2026, lists Federal Elections publications through 2022; Federal Elections 2024 is not posted yet",
+ "qualification": "Votes for each nominee include every ballot line the nominee held in the state, so New York counts fused party lines; margins are shares of all presidential votes, not of the two-party vote",
+ "columns": {
+  "code": {
+   "type": "code",
+   "description": "USPS state code; US for the nation"
+  },
+  "name": {
+   "type": "text",
+   "description": "state name"
+  },
+  "scope": {
+   "type": "category",
+   "description": "state, or nation for the United States row (DR-64: the national figure on every chart of state results, set apart and labeled)"
+  },
+  "margin_2020": {
+   "type": "number",
+   "description": "Republican share minus Democratic share in 2020; positive is a Republican lead",
+   "unit": "percentage points"
+  },
+  "margin_2024": {
+   "type": "number",
+   "description": "Republican share minus Democratic share in 2024; positive is a Republican lead",
+   "unit": "percentage points"
+  },
+  "shift_pts": {
+   "type": "number",
+   "description": "margin_2024 minus margin_2020; positive moved toward the Republican nominee",
+   "unit": "percentage points"
+  },
+  "dem_pct_2024": {
+   "type": "number",
+   "description": "Democratic share of all presidential votes in 2024",
+   "unit": "percent"
+  },
+  "rep_pct_2024": {
+   "type": "number",
+   "description": "Republican share of all presidential votes in 2024",
+   "unit": "percent"
+  },
+  "total_votes_2024": {
+   "type": "integer",
+   "description": "all presidential votes cast in 2024"
+  }
+ },
+ "printed_source_line": "Source: Federal Election Commission, Federal Elections 2020 (Table 2) and Official 2024 Presidential General Election Results, compiled from state election offices, November 2020 and November 2024, 50 states and DC. Retrieved November 6, 2026. Margins are Republican minus Democratic share of all presidential votes; New York counts fused party lines.",
+ "ledger_row": "none yet",
+ "domain": "D02",
+ "states": [],
+ "specimens": [
+  "S11",
+  "S12",
+  "S15"
+ ],
+ "derived_from": [
+  "fec-presidential-results-by-state.csv"
+ ],
+ "derivation": "One row per state from the two years' rows; shift_pts is the difference of the two margins as rounded in the FEC file. The United States row sums the state rows' vote counts, which match the FEC national totals, and is context for a chart, set apart and labeled (D2-126, DR-64). In nine states shift_pts differs by 0.01 from the difference of unrounded shares; no figure printed to one decimal changes (D2-126).",
+ "notes": [
+  "Party marks take neutral inks with the party name printed; arrows, position and words carry direction (DR-48, DR-58).",
+  "A map has no tile for US; it draws the national figure beside the map."
+ ]
+}

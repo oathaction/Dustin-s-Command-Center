@@ -1,0 +1,78 @@
+{
+ "file": "v7-claims-by-grade.json",
+ "kind": "v7",
+ "publisher": "Oath & Action, Who Do They Answer To? Systems Atlas V7",
+ "title_or_table": "claims register, 433 claims across 16 everyday questions, by evidence grade",
+ "table_id": "claims, counted by pathway and confidence",
+ "url": "work/extract/atlas-v7-data.json",
+ "observation_period": "Claims checked through October 15, 2026",
+ "geography": "United States",
+ "universe_or_base": "The 433 claims behind the atlas’s 16 everyday answers",
+ "unit": "Claims",
+ "date_retrieved": "2026-10-15",
+ "vintage": "Atlas V7 snapshot of October 15, 2026",
+ "qualification": "Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.",
+ "columns": {
+  "id": {
+   "type": "id",
+   "description": "V7 pathway ID, PW01 to PW16"
+  },
+  "title": {
+   "type": "text",
+   "description": "pathway title"
+  },
+  "question": {
+   "type": "text",
+   "description": "its everyday question"
+  },
+  "hub": {
+   "type": "id",
+   "description": "V7 hub ID"
+  },
+  "hub_title": {
+   "type": "category",
+   "description": "hub title"
+  },
+  "documented": {
+   "type": "integer",
+   "description": "claims graded documented"
+  },
+  "well_supported": {
+   "type": "integer",
+   "description": "claims graded well-supported"
+  },
+  "plausible": {
+   "type": "integer",
+   "description": "claims graded plausible"
+  },
+  "contested": {
+   "type": "integer",
+   "description": "claims graded contested"
+  },
+  "total": {
+   "type": "integer",
+   "description": "all claims on the pathway"
+  },
+  "documented_share": {
+   "type": "number",
+   "description": "documented claims as a share of all claims on the pathway, one decimal; the studio’s arithmetic on V7’s counts (request E4)",
+   "unit": "percent"
+  }
+ },
+ "printed_source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, claims register, 433 claims across 16 everyday questions, claims checked through October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.",
+ "ledger_row": "not needed: Atlas V7, read by script",
+ "domain": "all",
+ "states": [],
+ "snapshot": "2026-10-15",
+ "specimens": [
+  "S10"
+ ],
+ "extract_script": "work/build/scripts/phase-3/data_round0_build.py",
+ "grade_meaning": {
+  "documented": "on the public record",
+  "well-supported": "strong research evidence",
+  "plausible": "some evidence",
+  "contested": "evidence disputed"
+ },
+ "domain_note": "The 16 everyday questions span the atlas’s five hubs and every domain"
+}

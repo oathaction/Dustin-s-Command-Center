@@ -1,0 +1,57 @@
+{
+ "file": "senate-cloture-motions-by-congress.csv",
+ "kind": "public",
+ "publisher": "United States Senate",
+ "title_or_table": "Senate Action on Cloture Motions",
+ "table_id": "senate.gov cloture counts table",
+ "url": [
+  "https://www.senate.gov/legislative/cloture/clotureCounts.htm"
+ ],
+ "observation_period": "65th Congress (1917 to 1918) to the 119th Congress (2025 to 2026) to date",
+ "geography": "United States Senate",
+ "universe_or_base": "Cloture motions filed, votes on cloture and cloture invoked, on legislation and nominations together",
+ "unit": "motions and votes, counts",
+ "date_retrieved": "2026-11-11",
+ "vintage": "Page as read on November 11, 2026",
+ "qualification": "Counts mix bills and nominations, and the vote needed changed over time (two-thirds of those voting until 1975, then three-fifths of senators for most matters; a simple majority for nominations since 2013 and 2017). The 119th Congress is still in session",
+ "columns": {
+  "congress": {
+   "type": "integer",
+   "description": "Congress number"
+  },
+  "first_year": {
+   "type": "year",
+   "description": "first year"
+  },
+  "last_year": {
+   "type": "year",
+   "description": "last year"
+  },
+  "motions_filed": {
+   "type": "integer",
+   "description": "cloture motions filed",
+   "unit": "motions"
+  },
+  "votes_on_cloture": {
+   "type": "integer",
+   "description": "votes on cloture",
+   "unit": "votes"
+  },
+  "cloture_invoked": {
+   "type": "integer",
+   "description": "times cloture was invoked",
+   "unit": "votes"
+  },
+  "complete": {
+   "type": "boolean",
+   "description": "false while the Congress is in session"
+  }
+ },
+ "printed_source_line": "Source: United States Senate, Senate Action on Cloture Motions, 65th Congress (1917) to the 119th Congress to date, United States Senate. Retrieved November 11, 2026. Counts include bills and nominations; the votes needed changed in 1975, 2013 and 2017.",
+ "ledger_row": "P7-016",
+ "domain": "D04",
+ "states": [],
+ "unconfirmed": [
+  "The threshold history in the qualification comes from the Senate's rules history in general knowledge and was not read on senate.gov today; check it on the Senate's cloture page before a chart prints it"
+ ]
+}

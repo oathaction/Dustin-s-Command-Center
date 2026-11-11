@@ -53,6 +53,9 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[4]
+# Phase 3 (round 0, November 11, 2026): the chart kit's hook, the weight gates and the projection live in their own module
+sys.path.insert(0, str(ROOT / "work/build/scripts/phase-3"))
+import guide_charts  # noqa: E402
 GUIDE = ROOT / "work/build/guide"
 SHELL = GUIDE / "shell"
 TOKENS_CSS = ROOT / "work/build/tokens/tokens.css"
@@ -2461,7 +2464,9 @@ WEIGHT_BUDGET = {"01": 2.7, "02": 0.85, "03": 0.65, "04": 0.45, "05": 0.45, "06"
 # so its budget rises from 0.6 to 1.0 MB.
 WEIGHT_DEFAULT = 0.45          # chapters 13 to 16, 20 to 25, 27 and 28
 WEIGHT_FIXED = {"head and shell": 0.2, "sprites": 0.35, "appendix": 0.2, "front matter and part openers": 0.1,
-                "fonts": 0.5}   # Gate 2: six WOFF2 files, 255,920 bytes after the fix pass (CD-M1), about 342 KB as base64 (D2-1697)
+                "fonts": 0.5, "chart kit": 0.22}
+# Phase 3 (the proposal's section 3, DR-227): chapters 13, 14 and 15 take their ceilings from guide_charts.CEILING, where
+# chapter 14 with the chart kit is a hard stop; the chart kit weighs as its own part, allocated 0.22 MB inside chapter 14.   # Gate 2: six WOFF2 files, 255,920 bytes after the fix pass (CD-M1), about 342 KB as base64 (D2-1697)
 
 
 class Sprites:
@@ -2915,6 +2920,11 @@ def weigh(page, sprite_bytes):
     if fm:
         parts["fonts"] = size(fm.group(0))
         parts["head and shell"] -= parts["fonts"]
+    # Phase 3: the chart kit's style (in the head) and script (before the closing script) weigh as their own part
+    kb = guide_charts.kit_bytes(page)
+    if kb:
+        parts["chart kit"] = kb
+        parts["head and shell"] -= sum(size(m.group(0)) for m in guide_charts.KIT_RE.finditer(page[:page.find("<body")]))
     marks = [(m.start(), m.group(1), m.group(2)) for m in re.finditer(r'<section class="(chapter|part|contents|appendix|cover|start)[^"]*" id="([^"]+)"', page)]
     end = page.find("</main>")
     anchors = {a: n for n, a, *_ in CHAPTERS}
@@ -2929,6 +2939,8 @@ def weigh(page, sprite_bytes):
             parts["front matter and part openers"] = parts.get("front matter and part openers", 0) + b
     total = size(page)
     for n, b in sorted(chapters.items()):
+        if n in guide_charts.CEILING:
+            continue   # Phase 3's chapters: guide_charts.gates() checks them, chapter 14 as a hard stop
         budget = WEIGHT_BUDGET.get(n, WEIGHT_DEFAULT) * MB
         if b > budget:
             R.warn(f"chapter {n}", f"weighs {b / MB:.2f} MB, over its budget of {budget / MB:.2f} MB; draw symbols from the sprite, show "
@@ -2939,7 +2951,7 @@ def weigh(page, sprite_bytes):
     if total > WEIGHT_PAGE:
         R.warn("page weight", f"the page weighs {total / MB:.2f} MB, over its budget of {WEIGHT_PAGE / MB:.1f} MB (the limit is {WEIGHT_LIMIT / MB:.0f} MB)")
     return {"bytes": total, "budget_page": WEIGHT_PAGE, "limit": WEIGHT_LIMIT, "parts": parts,
-            "chapters": {n: {"bytes": b, "budget": WEIGHT_BUDGET.get(n, WEIGHT_DEFAULT) * MB} for n, b in sorted(chapters.items())}}
+            "chapters": {n: {"bytes": b, "budget": guide_charts.CEILING.get(n, WEIGHT_BUDGET.get(n, WEIGHT_DEFAULT) * MB)} for n, b in sorted(chapters.items())}}
 
 
 def build(args):
@@ -2955,6 +2967,14 @@ def build(args):
         code_dirs.append(SHELL / "fixtures/code")
     codes = CodeSets(code_dirs, tokens.css_names, (SHELL / "guide-shell.css").read_text())
     chapters = load_chapters(chap_dir)
+    # Phase 3 (round 0): --pilot DIR adds DIR/chapters/*.json and DIR/specimens/* to the page, for the drawing-method pilot
+    pilot = Path(args.pilot).resolve() if getattr(args, "pilot", None) else None
+    if pilot:
+        chapters.update(load_chapters(pilot / "chapters"))
+        ps = Specimens(pilot / "specimens")
+        specs.manifest.update(ps.manifest)
+        specs.origin.update(ps.origin)
+        specs.files.update(ps.files)
     # Gate 2: the fonts inside the page, the edition's words and the "Where to start" page. The front page comes from
     # --front, else from the editor's file on a run over the guide's own chapters, else (a --demo build) the shell's demo
     fonts = Fonts(enabled=not args.chapters or args.demo)
@@ -3197,6 +3217,9 @@ def build(args):
 """
     if start:
         page = resolve_start(page, start, ctx)   # stops the build on an href that matches no id (Gate 2 brief)
+    # Phase 3: every chart placeholder becomes the kit's figure, by the chosen drawing method (contract C7)
+    chart_dirs = [spec_dir] + ([pilot / "specimens"] if pilot else [])
+    page, charts = guide_charts.expand(page, getattr(args, "chart_method", None) or guide_charts.DEFAULT_METHOD, chart_dirs, R.warn)
     sprites.check_res(page)
     page, sprite_bytes, sprite_counts = sprites.inject(page)
     page, n_whole = keep_ids_whole(page)   # D2-975
@@ -3207,8 +3230,15 @@ def build(args):
     weights = weigh(page, sprite_bytes)
     weights["sprites"] = sprite_counts
     weights["fonts_files"] = fonts.bytes
+    stop, projection = guide_charts.gates(weights, charts, fonts.bytes if fonts.ok else 0, present, R.warn)
+    weights["projection"] = projection
+    weights["charts"] = charts
+    weights["chart_method"] = (getattr(args, "chart_method", None) or guide_charts.DEFAULT_METHOD) if charts else None
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(page)
+    if stop:
+        R.warn("page weight", stop)
+    else:
+        out_path.write_text(page)
     report = {
         "page": str(out_path.relative_to(ROOT)) if ROOT in out_path.parents else str(out_path),
         "built": datetime.datetime.now().isoformat(timespec="seconds"),
@@ -3232,6 +3262,9 @@ def build(args):
         for nt in R.notes:
             print(f"  note: {nt}")
         print(f"  report: {rep_path.relative_to(ROOT) if ROOT in rep_path.parents else rep_path}")
+    if stop:
+        print(f"STOPPED: {stop}; the page was not written", file=sys.stderr)
+        return 3
     return 1 if (args.strict and R.warnings) else 0
 
 
@@ -3937,6 +3970,10 @@ def self_test():
                 ("three license disclosures, each with its copyright line", lambda pg: pg.count('<details class="lic"') == 3
                  and all(html.escape(f["copyright"]) in pg for f in man["families"].values())),
             ])
+    # Phase 3 (round 0): the weight gates and the chart hook, each planted fault caught
+    print("Phase 3: the weight gates and the chart hook (guide_charts.self_test)")
+    if guide_charts.self_test():
+        ok_all = False
     n = sum(len(r["checks"]) for r in results)
     print(f"{'PASS' if ok_all else 'FAIL'} guide_build.py self-test: {sum(r['pass'] for r in results)} of {len(results)} scenarios, "
           f"{sum(c['pass'] for r in results for c in r['checks'])} of {n} expectations")
@@ -3957,6 +3994,8 @@ def main():
     ap.add_argument("--sprite-root", help="folder that holds the sprite families' folders (default work/build/assets)")
     ap.add_argument("--sprite-sheet", metavar="JSON", help="write every symbol of every family, with its file, for sprite_check.js, and stop")
     ap.add_argument("--self-test", action="store_true", help="prove the build's checks on fixtures in a temporary folder")
+    ap.add_argument("--pilot", help="Phase 3: a folder whose chapters/ and specimens/ join the page (the drawing-method pilot)")
+    ap.add_argument("--chart-method", choices=guide_charts.METHODS, help=f"Phase 3: how charts are drawn (default {guide_charts.DEFAULT_METHOD})")
     args = ap.parse_args()
     if args.sprite_root:
         global SPRITE_ROOT

@@ -1,0 +1,116 @@
+{
+  "kit": 1,
+  "id": "S04",
+  "form": "dumbbell",
+  "family": "comparison",
+  "tier": "core",
+  "dataset": "census-cps-reported-voting",
+  "where": {
+    "base": "citizen_voting_age_population",
+    "age_group": [
+      "18_to_24",
+      "25_to_44",
+      "45_to_64",
+      "65_and_over"
+    ],
+    "year": [
+      2020,
+      2024
+    ]
+  },
+  "sort": [
+    {
+      "field": "age_group",
+      "order": "asc"
+    },
+    {
+      "field": "year",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "Which age groups vote, and did that change between two elections?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: an official statistic; the rates are what survey respondents reported",
+  "title": "The gap in reported voting between citizens 18 to 24 and those 65 and over grew from 23 points in 2020 to 27 in 2024.",
+  "measure_line": "Citizens who reported voting in November, percent, by age group, 2020 and 2024 presidential elections, United States; the scale runs from 40 to 80 percent",
+  "notes": [
+    "The gap between citizens 18 to 24 and those 65 and over: 23.1 points in 2020, 27.0 in 2024.",
+    "These rates are what people told a Census survey, which runs higher than counted ballots. Table A-1 publishes no margins of error, so a change of a point or two may sit within survey error.",
+    "Changes of two points or less read as little change."
+  ],
+  "source_line": "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting by age, November 1964 to 2024, United States. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over (from 1978; by age from 2002); earlier years use all people 18 and over.",
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Dumbbell chart of the share of citizens who reported voting, by age group, in 2020 and 2024. Reported voting fell 3.7 points among citizens 18 to 24, to 47.7 percent, and stayed near 75 percent among those 65 and over, so the gap between the youngest and oldest grew from 23 points to 27.",
+  "table": {
+    "caption": "Reported voting, citizens, percent",
+    "pivot": {
+      "row": "age_group",
+      "column": "year",
+      "value": "voted_pct",
+      "format": "number:1",
+      "labels": {
+        "2020": "2020",
+        "2024": "2024"
+      }
+    },
+    "columns": [
+      {
+        "field": "age_group",
+        "label": "Age group",
+        "format": "text",
+        "row_header": true,
+        "words": {
+          "18_to_24": "18 to 24",
+          "25_to_44": "25 to 44",
+          "45_to_64": "45 to 64",
+          "65_and_over": "65 and over"
+        }
+      }
+    ]
+  },
+  "chart_notes": [
+    "Each row runs from its 2020 rate, an open dot, to its 2024 rate, a solid dot. Labels at the right give the change: down 3.7 points for citizens 18 to 24; down 2.4 points for 25 to 44; little change for 45 to 64 (−1.0) and 65 and over (+0.2)."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D10",
+  "states": [],
+  "encode": {
+    "category": "age_group",
+    "value": "voted_pct",
+    "series": "year"
+  },
+  "labels": {
+    "from": "2020",
+    "to": "2024",
+    "from_label": "2020",
+    "to_label": "2024",
+    "categories": {
+      "18_to_24": "18 to 24",
+      "25_to_44": "25 to 44",
+      "45_to_64": "45 to 64",
+      "65_and_over": "65 and over"
+    },
+    "row_words": {
+      "18_to_24": "Down 3.7 points",
+      "25_to_44": "Down 2.4 points",
+      "45_to_64": "Little change (−1.0)",
+      "65_and_over": "Little change (+0.2)"
+    },
+    "domain": [
+      40,
+      80
+    ]
+  },
+  "notes_internal": [
+    "DR-64 asks a chart to single out survey estimates only past the margin of error. Table A-1 publishes none; the title keeps Phase 2's approved wording and the note says so. Request to the research lead: the CPS source-and-accuracy parameters for these four age groups, so the title can say whether the four-point growth passes the margin.",
+    "Grade line opens with H08's grade word, Documented."
+  ],
+  "formats": {
+    "value": "number:1",
+    "tick": "integer",
+    "tick_last": "percent:0"
+  }
+}

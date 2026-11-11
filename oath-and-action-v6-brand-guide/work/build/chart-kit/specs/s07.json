@@ -1,0 +1,121 @@
+{
+  "kit": 1,
+  "id": "S07",
+  "form": "tile-map-categorical",
+  "family": "maps",
+  "tier": "core",
+  "dataset": "ballotpedia-rcv-prohibitions-by-state",
+  "sort": [
+    {
+      "field": "name",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "Where can a city adopt ranked-choice voting, and where has the state ruled it out?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: state laws compiled by Ballotpedia, a secondary source, and checked against the atlas",
+  "v7": {
+    "grade": "documented",
+    "ids": [
+      "RL47"
+    ],
+    "snapshot": "2026-10-15"
+  },
+  "title": "Nineteen states ban ranked-choice voting as of November 2026, 17 of them in all elections.",
+  "measure_line": "State laws that prohibit ranked-choice voting, by scope, 50 states and the District of Columbia, as of November 2026. Each square is one state.",
+  "notes": [
+    "Ranked-choice voting: voters rank candidates in order; if no one wins a majority of first choices, the last-place candidate drops out and those ballots count for their next choice, round by round.",
+    "Thirty-one states and DC have no state ban. A state with no ban may still keep its cities from adopting it, because many cities need the state’s permission. The map shows bans only.",
+    "Twelve of the 19 bans became law in 2024 or 2025. Each square is one state, whatever its size.",
+    "Ohio: Bars ranked-choice voting except where Article X or XVIII of the Ohio Constitution permits it; home-rule cities may still adopt it, but lose state local government fund distributions while it is in effect.",
+    "Tennessee: Bars county election commissions from using it for a statewide or local government office; federal offices are not named. Signed by the governor February 28, 2022; Public Chapter 621 assigned March 7, 2022, the date Ballotpedia gives as signing.",
+    "Ballotpedia reads 17 of the bans as covering all elections; Mississippi’s quoted text does not name congressional races. Ballotpedia is a secondary source. The atlas cites the National Conference of State Legislatures and lists the same 19 states in repair-log entry RL47."
+  ],
+  "source_line": "Source: Ballotpedia, Ranked-choice voting (RCV), state laws prohibiting RCV, as of November 2026, 50 states and DC. Retrieved November 6, 2026. Ohio’s and Tennessee’s bans cover some elections; the other 17 cover all.",
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A tile map with one square per state. Nineteen states ban ranked-choice voting as of November 2026: 17 in all elections, from Florida in 2022 to Indiana in 2026, and Ohio and Tennessee in some elections. The other 31 states and DC have no state ban.",
+  "table": {
+    "caption": "Ranked-choice voting bans by state",
+    "columns": [
+      {
+        "field": "name",
+        "label": "State",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "prohibits_rcv",
+        "label": "Status",
+        "format": "text",
+        "words": {
+          "1": "Bans it",
+          "0": "No state ban"
+        }
+      },
+      {
+        "field": "scope",
+        "label": "Scope",
+        "format": "text",
+        "words": {
+          "all": "All elections",
+          "some": "Some elections"
+        }
+      },
+      {
+        "field": "enacted_year",
+        "label": "Year",
+        "format": "year"
+      },
+      {
+        "field": "measure",
+        "label": "Measure",
+        "format": "text"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Key: bans it in all elections, with the year it became law; bans it in some elections, Ohio and Tennessee; no state ban, 31 states and DC."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D02",
+  "states": [],
+  "encode": {
+    "code": "code",
+    "category": "scope",
+    "sub": "enacted_year"
+  },
+  "labels": {
+    "categories": [
+      {
+        "value": "all",
+        "label": "Bans it in all elections, with the year it became law",
+        "style": "solid"
+      },
+      {
+        "value": "some",
+        "label": "Bans it in some elections: Ohio and Tennessee",
+        "style": "open"
+      },
+      {
+        "value": null,
+        "label": "No state ban: 31 states and DC",
+        "style": "light"
+      }
+    ],
+    "key_at": [
+      1,
+      0
+    ]
+  },
+  "notes_internal": [
+    "No disclosure (DR-100, D2-1756); Phase 2 printed it under this chart.",
+    "The grade line opens with H08's grade word, Documented; the bans are statutes and one constitutional amendment on the public record, compiled by a labeled secondary source (D2-99).",
+    "The last note now names repair-log entry RL47, the atlas row the list was checked against, so the check is visible to a reader."
+  ],
+  "formats": {
+    "sub": "year"
+  }
+}

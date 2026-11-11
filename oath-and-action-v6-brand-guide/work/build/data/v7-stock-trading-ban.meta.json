@@ -1,0 +1,68 @@
+{
+ "file": "v7-stock-trading-ban.json",
+ "kind": "v7",
+ "publisher": "Oath & Action, Who Do They Answer To? Systems Atlas V7",
+ "title_or_table": "headline figure 7, a shared view on a stock trading ban by members of Congress, and the votes it records",
+ "table_id": "numbers[figure 87% and 88%]; sources N40, K1908, W035, N12",
+ "url": "work/extract/atlas-v7-data.json",
+ "observation_period": "Survey fielded May 19 to 30, 2023; House vote July 22, 2026; Senate vote September 30, 2026",
+ "geography": "United States",
+ "universe_or_base": "Registered voters in the survey; members voting in each chamber",
+ "unit": "Percent of registered voters; votes",
+ "date_retrieved": "2026-10-15",
+ "vintage": "Atlas V7 snapshot of October 15, 2026",
+ "qualification": "The survey predates both votes by three years. The vote totals carry no party split until both chambers’ records can be read (D2-104).",
+ "columns": {
+  "key": {
+   "type": "id",
+   "description": "row key, the studio’s"
+  },
+  "group": {
+   "type": "text",
+   "description": "who the figure describes"
+  },
+  "value": {
+   "type": "number",
+   "description": "the figure: percent for the survey rows, votes for the chamber rows"
+  },
+  "measure": {
+   "type": "text",
+   "description": "what the value counts"
+  },
+  "body": {
+   "type": "category",
+   "description": "survey, House or Senate"
+  },
+  "source_id": {
+   "type": "id",
+   "description": "the V7 source the row rests on"
+  }
+ },
+ "printed_source_line": "Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States; U.S. House of Representatives, Roll Call 280, July 22, 2026; U.S. Senate, Vote 253, September 30, 2026; as recorded in Oath & Action, Who Do They Answer To? Systems Atlas V7, snapshot of October 15, 2026. The survey predates both votes by three years.",
+ "ledger_row": "not needed: Atlas V7, read by script",
+ "domain": "D03",
+ "states": [],
+ "snapshot": "2026-10-15",
+ "specimens": [
+  "S01"
+ ],
+ "extract_script": "work/build/scripts/phase-3/data_round0_build.py",
+ "domain_note": "Members’ stock trading is a conflict of interest, the Conflicts subsystem of V7 domain D03",
+ "v7_figure": {
+  "figure": "87% and 88%",
+  "caption": "of Republicans and of Democrats back a ban on stock trading by members of Congress",
+  "qualification": "From a University of Maryland Program for Public Consultation survey of 2,625 registered voters (May 2023). The House passed a ban 232 to 198 on July 22, 2026. On September 30, 2026 the Senate fell short of the 60 votes needed to take it up, 53 to 47.",
+  "sources": [
+   "N40",
+   "K1908",
+   "W035",
+   "N12"
+  ],
+  "kind": "shared view",
+  "verified_status": "checked October 15, 2026"
+ },
+ "notes": [
+  "The 86 percent overall figure is in the survey source note (N40), not in the headline figure caption.",
+  "DR-98: a chart names \"H.R. 7008, the Stop Insider Trading Act\" with both provisions at first mention; the spec carries those words."
+ ]
+}

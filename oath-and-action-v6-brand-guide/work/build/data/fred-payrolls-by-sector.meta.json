@@ -1,0 +1,43 @@
+{
+ "file": "fred-payrolls-by-sector.csv",
+ "kind": "public",
+ "publisher": "U.S. Bureau of Labor Statistics, Current Employment Statistics, as copied by the Federal Reserve Bank of St. Louis (FRED)",
+ "title_or_table": "All employees, thousands, seasonally adjusted, total nonfarm and 17 sectors",
+ "table_id": "PAYEMS, USPRIV, USMINE, USCONS, MANEMP, USWTRADE, USTRADE, CES4300000001, CES4422000001, USINFO, USFIRE, USPBS, CES6561000001, CES6562000001, USLAH, USSERV, USGOVT, CES9091000001",
+ "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=<series_id>",
+ "observation_period": "January 2021 to September 2026, monthly",
+ "geography": "United States",
+ "universe_or_base": "Nonfarm payroll jobs",
+ "unit": "thousands of jobs",
+ "date_retrieved": "2026-11-06",
+ "vintage": "as posted on FRED on November 6, 2026; the latest two months are preliminary and BLS revises them",
+ "qualification": "Seasonally adjusted. The latest two months are preliminary. FRED copies the Bureau of Labor Statistics series; bls.gov refuses automated requests, so the studio read FRED (DR-60).",
+ "columns": {
+  "series_id": {
+   "type": "id",
+   "description": "FRED series ID"
+  },
+  "sector": {
+   "type": "category",
+   "description": "industry sector as BLS names it"
+  },
+  "date": {
+   "type": "date",
+   "description": "first day of the month"
+  },
+  "employees_thousands": {
+   "type": "number",
+   "description": "all employees, thousands, seasonally adjusted",
+   "unit": "thousands of jobs"
+  }
+ },
+ "printed_source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all employees by sector, seasonally adjusted, January 2021 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. The latest two months are preliminary.",
+ "ledger_row": "none yet",
+ "domain": "D07",
+ "states": [],
+ "specimens": [],
+ "copied_from": "work/boards/phase-2/data-viz/shared/public/fred-payrolls-by-sector.csv",
+ "copied_sha256_prefix": "395e0b0c4e8bf274",
+ "months_missing": [],
+ "fetched_by": "main session, after FRED closed the research lead's connections (D2-120)"
+}

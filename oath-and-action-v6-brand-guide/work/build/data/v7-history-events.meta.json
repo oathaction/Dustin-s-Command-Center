@@ -1,0 +1,90 @@
+{
+ "file": "v7-history-events.json",
+ "kind": "v7",
+ "publisher": "Oath & Action, Who Do They Answer To? Systems Atlas V7",
+ "title_or_table": "history, 24 events on four threads",
+ "table_id": "history.events",
+ "url": "work/extract/atlas-v7-data.json",
+ "observation_period": "February 3, 1870 to June 29, 2026",
+ "geography": "United States",
+ "universe_or_base": "Changes in the rules that decided who counts, who governs, who owns and who checks",
+ "unit": "One row per event",
+ "date_retrieved": "2026-10-15",
+ "vintage": "Atlas V7 snapshot of October 15, 2026",
+ "qualification": "Each event rests on a statute, ruling, constitutional text or official record, cited in its own row; the size of any effect comes from the source named beside it.",
+ "columns": {
+  "key": {
+   "type": "id",
+   "description": "the studio’s key, E01 to E24 in date order; V7 events carry no IDs"
+  },
+  "date": {
+   "type": "date",
+   "description": "date of the event"
+  },
+  "year": {
+   "type": "year",
+   "description": "its year"
+  },
+  "thread": {
+   "type": "category",
+   "description": "V7 thread ID"
+  },
+  "thread_label": {
+   "type": "category",
+   "description": "V7 thread label"
+  },
+  "title": {
+   "type": "text",
+   "description": "V7’s title"
+  },
+  "mechanism": {
+   "type": "text",
+   "description": "V7’s mechanism"
+  },
+  "loop": {
+   "type": "text",
+   "description": "the loop V7 ties it to"
+  },
+  "source_text": {
+   "type": "text",
+   "description": "V7’s source"
+  },
+  "grade": {
+   "type": "category",
+   "description": "V7’s quality word"
+  }
+ },
+ "printed_source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, history, 24 events, February 3, 1870 to June 29, 2026, United States. Snapshot of October 15, 2026. Each event rests on a statute, ruling, constitutional text or official record, cited in its own row; the size of any effect comes from the source named beside it.",
+ "ledger_row": "not needed: Atlas V7, read by script",
+ "domain": "all",
+ "states": [],
+ "snapshot": "2026-10-15",
+ "specimens": [
+  "S09"
+ ],
+ "extract_script": "work/build/scripts/phase-3/data_round0_build.py",
+ "threads": [
+  {
+   "id": "who_counts",
+   "label": "Who counts",
+   "question": "Who gets to vote, and whose vote counts fully?"
+  },
+  {
+   "id": "who_governs",
+   "label": "Who governs",
+   "question": "How do votes become seats, nominees and majorities?"
+  },
+  {
+   "id": "who_owns",
+   "label": "Who owns",
+   "question": "How do rules decide who keeps the gains and who carries the risk?"
+  },
+  {
+   "id": "who_checks",
+   "label": "Who checks",
+   "question": "Who can see an abuse of power, and who can stop it?"
+  }
+ ],
+ "events_note": "Every event here is graded documented: each rests on a statute, a court ruling, a constitutional text or another official record, cited in its source field. The grade covers the event itself; the size of any effect described in the mechanism comes from the scholarly or official source named beside it.",
+ "domain_note": "The four threads run across domains D02, D05, D06 and D08 alike"
+}

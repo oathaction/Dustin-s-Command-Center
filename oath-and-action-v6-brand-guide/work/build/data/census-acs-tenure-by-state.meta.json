@@ -1,0 +1,67 @@
+{
+ "file": "census-acs-tenure-by-state.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "American Community Survey 1-year estimates, Table B25003, Tenure",
+ "table_id": "ACS 2025 1-year, B25003",
+ "url": [
+  "https://api.census.gov/data/2025/acs/acs1?get=NAME,group(B25003)&for=state:*",
+  "https://api.census.gov/data/2025/acs/acs1?get=NAME,group(B25003)&for=us:1"
+ ],
+ "observation_period": "Calendar year 2025",
+ "geography": "50 states and DC, with a United States row (code US)",
+ "universe_or_base": "Occupied housing units (households), by whether the household owns or rents its home",
+ "unit": "households in housing units, with 90 percent margins of error; owner_pct and renter_pct are computed by the studio from the counts, rounded to one decimal",
+ "date_retrieved": "2026-11-11",
+ "vintage": "ACS 2025 1-year release",
+ "qualification": "Survey estimates; shares near 50 percent should be compared using the margins of error before a chart calls a state mostly renters or mostly owners",
+ "columns": {
+  "code": {
+   "type": "code",
+   "description": "USPS state code, US for the nation"
+  },
+  "name": {
+   "type": "text",
+   "description": "state name"
+  },
+  "households": {
+   "type": "integer",
+   "description": "occupied housing units",
+   "unit": "households"
+  },
+  "owner_households": {
+   "type": "integer",
+   "description": "owner-occupied units",
+   "unit": "households"
+  },
+  "owner_moe": {
+   "type": "integer",
+   "description": "90 percent margin of error",
+   "unit": "households"
+  },
+  "renter_households": {
+   "type": "integer",
+   "description": "renter-occupied units",
+   "unit": "households"
+  },
+  "renter_moe": {
+   "type": "integer",
+   "description": "90 percent margin of error",
+   "unit": "households"
+  },
+  "owner_pct": {
+   "type": "number",
+   "description": "owners as a percent of households, computed",
+   "unit": "percent"
+  },
+  "renter_pct": {
+   "type": "number",
+   "description": "renters as a percent of households, computed",
+   "unit": "percent"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B25003, tenure, 2025, 50 states and DC. Retrieved November 11, 2026. Survey estimates; shares computed by Oath & Action from the table's counts.",
+ "ledger_row": "P7-020",
+ "domain": "D09",
+ "states": []
+}

@@ -1,0 +1,60 @@
+{
+ "file": "census-acs-labor-force-by-age-sex.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "American Community Survey 1-year estimates, Table B23001, Sex by Age by Employment Status for the Population 16 Years and Over",
+ "table_id": "ACS 2025 1-year, B23001",
+ "url": [
+  "https://api.census.gov/data/2025/acs/acs1?get=NAME,group(B23001)&for=us:1",
+  "https://api.census.gov/data/2025/acs/acs1/groups/B23001.json"
+ ],
+ "observation_period": "Calendar year 2025",
+ "geography": "United States",
+ "universe_or_base": "Population 16 years and over, by sex and the table's 13 age groups; in_labor_force counts the employed, the unemployed and the armed forces",
+ "unit": "population and in_labor_force in people, with 90 percent margins of error; participation_pct is in_labor_force as a percent of population, computed by the studio from the two counts and rounded to one decimal",
+ "date_retrieved": "2026-11-11",
+ "vintage": "ACS 2025 1-year release",
+ "qualification": "Survey estimates; participation_pct is the studio's division of two published counts, so it carries no published margin of error. The ACS counts a person in the labor force if they worked or looked for work in the reference week",
+ "columns": {
+  "sex": {
+   "type": "category",
+   "description": "male or female, as the table labels them"
+  },
+  "age_group": {
+   "type": "category",
+   "description": "age group as published"
+  },
+  "population": {
+   "type": "integer",
+   "description": "people 16 and over in the group",
+   "unit": "people"
+  },
+  "population_moe": {
+   "type": "integer",
+   "description": "90 percent margin of error",
+   "unit": "people"
+  },
+  "in_labor_force": {
+   "type": "integer",
+   "description": "people in the labor force",
+   "unit": "people"
+  },
+  "in_labor_force_moe": {
+   "type": "integer",
+   "description": "90 percent margin of error",
+   "unit": "people"
+  },
+  "participation_pct": {
+   "type": "number",
+   "description": "labor force participation rate, computed",
+   "unit": "percent"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B23001, employment status by sex and age, 2025, United States. Retrieved November 11, 2026. Survey estimates; rates computed by Oath & Action from the table's counts.",
+ "ledger_row": "P7-005",
+ "domain": "D07",
+ "states": [],
+ "raw_files_sha256_prefix": {
+  "b23001_us_2025.json": "fbc4f31d5b31ec75"
+ }
+}

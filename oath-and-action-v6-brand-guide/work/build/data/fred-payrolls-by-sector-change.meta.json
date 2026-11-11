@@ -1,0 +1,59 @@
+{
+ "file": "fred-payrolls-by-sector-change.csv",
+ "kind": "derived",
+ "publisher": "U.S. Bureau of Labor Statistics, via FRED, Federal Reserve Bank of St. Louis",
+ "title_or_table": "All employees, thousands, seasonally adjusted, total nonfarm and 17 sectors",
+ "table_id": "PAYEMS, USPRIV, USMINE, USCONS, MANEMP, USWTRADE, USTRADE, CES4300000001, CES4422000001, USINFO, USFIRE, USPBS, CES6561000001, CES6562000001, USLAH, USSERV, USGOVT, CES9091000001",
+ "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=<series_id>",
+ "geography": "United States",
+ "universe_or_base": "Nonfarm payroll jobs",
+ "date_retrieved": "2026-11-06",
+ "vintage": "as posted on FRED on November 6, 2026; the latest two months are preliminary and BLS revises them",
+ "qualification": "Seasonally adjusted. The Bureau of Labor Statistics revises each month’s first estimate in the next two monthly reports, so August and September 2026 are preliminary, and a yearly benchmark revision can move earlier months. FRED copies the Bureau of Labor Statistics series; bls.gov refuses automated requests, so the studio read FRED (DR-60).",
+ "ledger_row": "none yet",
+ "domain": "D07",
+ "states": [],
+ "derived_from": [
+  "fred-payrolls-by-sector.csv"
+ ],
+ "observation_period": "Monthly, January 2022 to September 2026",
+ "unit": "Thousands of jobs; percent change since January 2022",
+ "columns": {
+  "series_id": {
+   "type": "id",
+   "description": "FRED series ID"
+  },
+  "sector": {
+   "type": "category",
+   "description": "industry sector as BLS names it"
+  },
+  "month": {
+   "type": "month",
+   "description": "month of the estimate"
+  },
+  "employees_thousands": {
+   "type": "number",
+   "description": "all employees, seasonally adjusted",
+   "unit": "thousands of jobs"
+  },
+  "pct_change_since_2022_01": {
+   "type": "number",
+   "description": "percent change from the sector’s January 2022 level",
+   "unit": "percent"
+  },
+  "change_since_2022_01_thousands": {
+   "type": "number",
+   "description": "change from the sector’s January 2022 level",
+   "unit": "thousands of jobs"
+  },
+  "status": {
+   "type": "category",
+   "description": "preliminary for August and September 2026, else final"
+  }
+ },
+ "printed_source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all employees by industry, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.",
+ "specimens": [
+  "S13"
+ ],
+ "derivation": "Rows from January 2022 on; pct_change_since_2022_01 and change_since_2022_01_thousands compare each month with the same series in January 2022 (D2-126: both jobs charts draw January 2022 to September 2026, one window)."
+}

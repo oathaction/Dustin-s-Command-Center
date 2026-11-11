@@ -1,0 +1,115 @@
+{
+  "kit": 1,
+  "id": "S12",
+  "form": "tile-map-shift-arrows",
+  "family": "maps",
+  "tier": "core",
+  "dataset": "fec-presidential-shift-by-state",
+  "sort": [
+    {
+      "field": "name",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "Where did the shift happen?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: official results the states reported, compiled by the Federal Election Commission",
+  "title": "New York, New Jersey, Florida and California moved furthest toward the Republican nominee, each by 9 points or more.",
+  "measure_line": "Shift in the presidential margin, the Republican nominee’s share of all presidential votes minus the Democratic nominee’s, from 2020 to 2024, in percentage points, 50 states and DC, with the United States beside the map. Each square is one state, whatever its size.",
+  "notes": [
+    "Each arrow’s length shows the shift, at one scale across the map. On phones each square’s shade shows the size of the shift in four steps.",
+    "Largest shifts: New York 10.5, New Jersey 10.0, Florida 9.7 and California 9.0 points. Smallest: Washington 1.0, Utah 1.1, Oklahoma 1.2 and Nebraska 1.4.",
+    "The United States moved 5.9 points, from a Democratic lead of 4.5 points in 2020 to a Republican lead of 1.5 in 2024.",
+    "New York’s figures count every ballot line each nominee held, including the Working Families and Conservative lines."
+  ],
+  "source_line": "Source: Federal Election Commission, Federal Elections 2020 (Table 2) and Official 2024 Presidential General Election Results, compiled from state election offices, November 2020 and November 2024, 50 states and DC. Retrieved November 6, 2026. Margins are Republican minus Democratic share of all presidential votes; New York counts fused party lines.",
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A tile map with one square per state, each holding an arrow as long as the state’s shift toward the Republican nominee from 2020 to 2024. Every arrow points the same way. The largest shifts were New York 10.5, New Jersey 10.0, Florida 9.7 and California 9.0 points; the smallest were Washington 1.0, Utah 1.1, Oklahoma 1.2 and Nebraska 1.4. The United States moved 5.9 points.",
+  "table": {
+    "caption": "Shift toward the Republican nominee by state, 2020 to 2024",
+    "columns": [
+      {
+        "field": "name",
+        "label": "Place",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "shift_pts",
+        "label": "Shift toward the Republican nominee, points",
+        "format": "number:1"
+      },
+      {
+        "field": "margin_2020",
+        "label": "2020 margin",
+        "format": "lead:1",
+        "lead": {
+          "positive": "Republican",
+          "negative": "Democratic",
+          "zero": "Even"
+        }
+      },
+      {
+        "field": "margin_2024",
+        "label": "2024 margin",
+        "format": "lead:1",
+        "lead": {
+          "positive": "Republican",
+          "negative": "Democratic",
+          "zero": "Even"
+        }
+      }
+    ]
+  },
+  "chart_notes": [
+    "Size of shift: sample arrows for 1, 5 and 10 points. A frame marks a state whose leader changed, from the Democratic to the Republican nominee. All 51 arrows point right, toward the Republican nominee; a longer arrow means a larger shift.",
+    "On phones each square takes one of four gray steps by the size of its shift: under 3 points, 3 to 5.9, 6 to 8.9, and 9 or more."
+  ],
+  "phone": "differs",
+  "phone_note": "On phones each square takes a gray step by the size of its shift in place of an arrow, which would be too short to read (DR-64).",
+  "artboard": "wide",
+  "domain": "D02",
+  "states": [
+    "NY",
+    "NJ",
+    "FL",
+    "CA"
+  ],
+  "encode": {
+    "code": "code",
+    "shift": "shift_pts",
+    "from": "margin_2020",
+    "to": "margin_2024"
+  },
+  "labels": {
+    "frame": "sign",
+    "key_title": "Size of shift, in points",
+    "key_steps": [
+      1,
+      5,
+      10
+    ],
+    "frame_label": "Frame: the leader changed, from the Democratic to the Republican nominee",
+    "steps": [
+      3,
+      6,
+      9
+    ],
+    "steps_labels": [
+      "Under 3 points",
+      "3 to 5.9",
+      "6 to 8.9",
+      "9 or more"
+    ]
+  },
+  "notes_internal": [
+    "DR-64: flat shift arrows with the figure printed in each tile and gray steps on phones; the national figure set apart and labeled. Phase 2's S12 drew no national figure; this rebuild adds it beside the map and in a note.",
+    "Party marks in neutral inks, direction in words and arrows (DR-48, DR-58); no red and blue.",
+    "states: the four the title names. Checked by script: CA 9.03, FL 9.74, NJ 10.03, NY 10.54; WA 0.98, UT 1.10, OK 1.17, NE 1.40."
+  ],
+  "formats": {
+    "shift": "number:1"
+  }
+}

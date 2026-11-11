@@ -1,0 +1,46 @@
+{
+ "file": "census-cbp-newspaper-publishers.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "County Business Patterns, United States, NAICS 511110 (newspaper publishers)",
+ "table_id": "CBP, NAICS 511110, 1998 to 2023",
+ "url": [
+  "https://api.census.gov/data/{year}/cbp?get=ESTAB,EMP&for=us:*&NAICS{vintage}=511110",
+  "https://api.census.gov/data/2023/cbp?get=ESTAB,EMP,NAICS2017&for=us:*&NAICS2017=511110"
+ ],
+ "observation_period": "Annual, 1998 to 2023; employees counted in the pay period including March 12",
+ "geography": "United States",
+ "universe_or_base": "Establishments with paid employees classed in NAICS 511110",
+ "unit": "establishments and employees, counts",
+ "date_retrieved": "2026-11-11",
+ "vintage": "CBP annual releases 1998 to 2023 (2023 released in 2025), read through the data API",
+ "qualification": "County Business Patterns counts paid employees in mid-March at establishments classed as newspaper publishers (print and online); freelancers, the self-employed and newsrooms classed in other industries are not counted. NAICS revisions in 2002, 2007, 2012 and 2017 kept this code and its title; the API serves 2023 under the 2017 code list",
+ "columns": {
+  "year": {
+   "type": "year",
+   "description": "reference year"
+  },
+  "establishments": {
+   "type": "integer",
+   "description": "establishments",
+   "unit": "establishments"
+  },
+  "employees": {
+   "type": "integer",
+   "description": "paid employees in mid-March",
+   "unit": "people"
+  },
+  "naics_code": {
+   "type": "code",
+   "description": "industry code as served"
+  },
+  "naics_vintage": {
+   "type": "text",
+   "description": "NAICS edition the year uses in the API"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, County Business Patterns, newspaper publishers (NAICS 511110), 1998 to 2023, United States. Retrieved November 11, 2026. Establishments with paid employees only; employees counted in mid-March.",
+ "ledger_row": "P7-011",
+ "domain": "D01",
+ "states": []
+}

@@ -1,0 +1,57 @@
+{
+ "file": "fhfa-house-price-index-by-state.csv",
+ "kind": "public",
+ "publisher": "Federal Housing Finance Agency",
+ "title_or_table": "FHFA House Price Index, purchase-only indexes, states, quarterly (hpi_po_state)",
+ "table_id": "HPI purchase-only, state, quarterly",
+ "url": [
+  "https://www.fhfa.gov/hpi/download/quarterly_datasets/hpi_po_state.csv",
+  "https://www.fhfa.gov/data/hpi/datasets"
+ ],
+ "observation_period": "First quarter 1991 to quarter 2 of 2026",
+ "geography": "50 states and DC",
+ "universe_or_base": "Repeat sales of the same single-family homes with mortgages bought or guaranteed by Fannie Mae or Freddie Mac",
+ "unit": "index, first quarter 1991 = 100; index_sa is seasonally adjusted, index_nsa is not",
+ "date_retrieved": "2026-11-11",
+ "vintage": "File as posted on November 11, 2026, through 2026 quarter 2; FHFA revises earlier quarters each release",
+ "qualification": "Covers homes with conforming mortgages only, so it leaves out cash sales and the most expensive homes; an index shows change since 1991 in each state, not price levels, so states cannot be compared by height. FHFA flags states with fewer than 15,000 transactions over the latest ten years (small_sample)",
+ "columns": {
+  "code": {
+   "type": "code",
+   "description": "USPS state code"
+  },
+  "name": {
+   "type": "text",
+   "description": "state name"
+  },
+  "year": {
+   "type": "year",
+   "description": "year"
+  },
+  "quarter": {
+   "type": "integer",
+   "description": "quarter of the year"
+  },
+  "index_sa": {
+   "type": "number",
+   "description": "seasonally adjusted index, 1991 Q1 = 100",
+   "unit": "index"
+  },
+  "index_nsa": {
+   "type": "number",
+   "description": "index, not seasonally adjusted",
+   "unit": "index"
+  },
+  "small_sample": {
+   "type": "boolean",
+   "description": "FHFA note: fewer than 15,000 transactions in ten years"
+  }
+ },
+ "printed_source_line": "Source: Federal Housing Finance Agency, House Price Index, purchase-only, seasonally adjusted, first quarter 1991 to second quarter 2026, 50 states and DC. Retrieved November 11, 2026. Repeat sales of homes with Fannie Mae or Freddie Mac mortgages; an index of change since 1991, not a price.",
+ "ledger_row": "P7-009",
+ "domain": "D09",
+ "states": [],
+ "notes": [
+  "States flagged for small samples: AK, DC, DE, HI, VT, WV, WY"
+ ]
+}

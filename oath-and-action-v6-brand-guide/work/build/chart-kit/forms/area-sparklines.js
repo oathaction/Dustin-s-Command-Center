@@ -1,0 +1,99 @@
+/* Small-multiple area sparklines (coverage plan 3.3, core; S13) and the sparkline table (3.15, core; S13's totals rows).
+ * area-sparklines: one panel per series on one shared vertical scale, the area from zero, a gray line of the context series
+ * in every panel, an end label with the change. sparkline-table: one row per series with its sparkline and the last row's
+ * figures in columns.
+ * encode: x (month), y (number), series (category), and for the table, columns (list of columns printed from the last row).
+ * labels: panels ([{value, label}] in order), context (the series drawn gray in every panel), context_label, end (words with
+ * {name} placeholders from the last row), domain ([lo, hi]), columns_titles (for the table). formats: by column name. */
+(function (K) {
+  'use strict';
+  function series(c) {
+    var rows = c.rows, ex = c.field('x'), es = c.field('series'), by = {};
+    rows.forEach(function (r) { (by[String(r[es])] = by[String(r[es])] || []).push(r); });
+    Object.keys(by).forEach(function (k) { by[k].sort(function (a, b) { return K.time(a[ex]) - K.time(b[ex]); }); });
+    return by;
+  }
+  function spark(c, list, ctx, xs, ys, o) {
+    var ex = c.field('x'), ey = c.field('y');
+    var pts = list.map(function (r) { return [xs(K.time(r[ex])), ys(r[ey])]; });
+    if (ctx) c.path(ctx.map(function (r, i) { return (i ? 'L' : 'M') + K.round(xs(K.time(r[ex]))) + ',' + K.round(ys(r[ey])); }).join(''), { stroke: 'context', width: c.t('spark-context'), mark: false });
+    if (o.area) c.path('M' + K.round(pts[0][0]) + ',' + K.round(ys(0)) + pts.map(function (p) { return 'L' + K.round(p[0]) + ',' + K.round(p[1]); }).join('') + 'L' + K.round(pts[pts.length - 1][0]) + ',' + K.round(ys(0)) + 'Z', { fill: 'light-fill', mark: false });
+    c.path(pts.map(function (p, i) { return (i ? 'L' : 'M') + K.round(p[0]) + ',' + K.round(p[1]); }).join(''), { stroke: 'subject', width: c.t('spark-line'), data: { series: o.key } }, [Math.min(pts[0][0], pts[pts.length - 1][0]), Math.min.apply(null, pts.map(function (p) { return p[1]; })), Math.abs(pts[pts.length - 1][0] - pts[0][0]), 1]);
+    list.forEach(function (r) { c.circle(xs(K.time(r[ex])), ys(r[ey]), 0.01, { fill: 'subject', data: { key: o.key + '|' + r[ex], field: ey, value: r[ey] } }); });
+    var last = pts[pts.length - 1];
+    c.circle(last[0], last[1], c.t('spark-end-radius'), { fill: 'subject', mark: false });
+  }
+  K.register_chart({
+    form: 'area-sparklines', name: 'Small Multiple Area Sparklines', family: 'change-over-time',
+    encode: { x: 'month', y: 'number', series: 'category' },
+    labels: ['panels', 'context', 'context_label', 'end', 'domain'],
+    phone: 'same',
+    draw: function (c) {
+      var by = series(c), L = c.labels, W = c.width, ey = c.field('y'), f = c.spec.formats || {};
+      var panels = L.panels || [];
+      var vals = [];
+      panels.forEach(function (p) { (by[String(p.value)] || []).forEach(function (r) { vals.push(r[ey]); }); });
+      var dom = L.domain || K.nice(Math.min(0, Math.min.apply(null, vals)), Math.max.apply(null, vals), 3);
+      var cols = c.phone ? 2 : 4, gx = c.t(c.phone ? 'spark-phone-gap-x' : 'spark-gap-x');
+      var ticks = K.ticks(dom[0], dom[1], 0, dom.step || K.nice(dom[0], dom[1], 3).step);
+      var gut = K.parts.value_gutter(c, ticks, f.tick || 'signed');
+      var pw = Math.floor((W - gut - gx * (cols - 1)) / cols), ph = 64, tl = 1;
+      panels.forEach(function (p) { tl = Math.max(tl, K.wrap(p.label, c.size('tick'), pw, 600).length); });
+      var head = tl * Math.round(c.size('tick') * 1.25) + (L.end ? 26 : 10);
+      var y0 = 0, xs0 = null;
+      if (L.context_label) { c.line(0, 8, 22, 8, { stroke: 'context', width: c.t('spark-context'), mark: false }); c.text(28, 13, L.context_label, { role: 'tick' }); y0 = 30; }
+      var ctx = L.context ? by[String(L.context)] : null;
+      panels.forEach(function (p, i) {
+        var list = by[String(p.value)] || [];
+        if (!list.length) { c.warn('no rows for panel ' + p.value); return; }
+        var col = i % cols, row = Math.floor(i / cols), px = gut + col * (pw + gx), py = y0 + row * (ph + head + 30);
+        var xs = K.scale.linear([K.time(list[0][c.field('x')]), K.time(list[list.length - 1][c.field('x')])], [px, px + pw]);
+        var ys = K.scale.linear(dom, [py + head + ph, py + head]);
+        xs0 = xs;
+        c.text(px, py + c.size('tick'), p.label, { role: 'tick', weight: 600, max: pw });
+        if (L.end) c.text(px + pw, py + head - 10, K.parts.fill(c, L.end, list[list.length - 1]), { role: 'tick', weight: 700, anchor: 'end' });
+        ticks.forEach(function (t) {
+          c.line(px, ys(t), px + pw, ys(t), { stroke: t === 0 ? 'baseline' : 'gridline', width: c.t(t === 0 ? 'line-baseline' : 'line-hairline'), mark: false });
+          if (col === 0) c.text(gut - 6, ys(t) + 4, K.fmt(t, f.tick || 'signed'), { role: 'tick', anchor: 'end' });
+        });
+        spark(c, list, ctx && p.value !== L.context ? ctx : null, xs, ys, { key: p.value, area: true });
+        c.text(px, py + head + ph + 18, K.fmt(list[0][c.field('x')], 'year'), { role: 'tick' });
+        c.text(px + pw, py + head + ph + 18, K.fmt(list[list.length - 1][c.field('x')], 'year'), { role: 'tick', anchor: 'end' });
+      });
+      void xs0;
+      c.height(y0 + Math.ceil(panels.length / cols) * (ph + head + 30));
+    }
+  });
+  K.register_chart({
+    form: 'sparkline-table', name: 'Sparkline Table', family: 'tables-and-plain-words',
+    encode: { x: 'month', y: 'number', series: 'category', columns: 'list' },
+    labels: ['panels', 'domain', 'columns_titles'],
+    phone: 'same',
+    draw: function (c) {
+      var by = series(c), L = c.labels, W = c.width, ey = c.field('y'), cols = c.field('columns'), f = c.spec.formats || {};
+      var panels = L.panels || [], vals = [];
+      panels.forEach(function (p) { (by[String(p.value)] || []).forEach(function (r) { vals.push(r[ey]); }); });
+      var dom = L.domain || K.nice(Math.min(0, Math.min.apply(null, vals)), Math.max.apply(null, vals), 2);
+      var nw = 0;
+      panels.forEach(function (p) { nw = Math.max(nw, c.measure(p.label, 'label', 600) + (p.indent || 0)); });
+      var cw = cols.map(function (k) { var w = c.measure((L.columns_titles || {})[k] || '', 'tick', 600); panels.forEach(function (p) { var l = by[String(p.value)] || []; if (l.length) w = Math.max(w, c.measure(K.fmt(l[l.length - 1][k], f[k] || 'number'), 'label', 700)); }); return Math.ceil(w + 14); });
+      var cwSum = cw.reduce(function (a, b) { return a + b; }, 0);
+      var sx0 = c.phone ? 0 : Math.ceil(nw + 16), sw = Math.max(60, W - sx0 - cwSum - 10), rh = 34, y = 18;
+      if (c.phone) sw = Math.max(60, W - cwSum - 10);
+      cols.forEach(function (k, i) { var x = W - cw.slice(i + 1).reduce(function (a, b) { return a + b; }, 0); c.text(x, 12, (L.columns_titles || {})[k] || '', { role: 'tick', weight: 600, anchor: 'end' }); });
+      panels.forEach(function (p, i) {
+        var list = by[String(p.value)] || [];
+        if (!list.length) return;
+        var ry = y + 14 + i * (rh + (c.phone ? 22 : 0));
+        var ly = c.phone ? ry : ry + rh / 2 + 5;
+        c.text((p.indent || 0), ly, p.label, { role: 'label', weight: 600 });
+        var top = c.phone ? ry + 8 : ry + 4;
+        var xs = K.scale.linear([K.time(list[0][c.field('x')]), K.time(list[list.length - 1][c.field('x')])], [sx0, sx0 + sw]);
+        var ys = K.scale.linear(dom, [top + rh - 8, top]);
+        spark(c, list, null, xs, ys, { key: p.value, area: false });
+        cols.forEach(function (k, j) { var x = W - cw.slice(j + 1).reduce(function (a, b) { return a + b; }, 0); c.text(x, (c.phone ? top + rh / 2 : ly), K.fmt(list[list.length - 1][k], f[k] || 'number'), { role: 'label', weight: j ? 400 : 700, anchor: 'end', fill: j ? 'secondary' : 'label' }); });
+      });
+      c.height(y + 14 + panels.length * (rh + (c.phone ? 22 : 0)) + 6);
+    }
+  });
+})(globalThis.OAChart);

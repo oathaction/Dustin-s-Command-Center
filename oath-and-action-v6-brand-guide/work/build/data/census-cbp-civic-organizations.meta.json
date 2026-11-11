@@ -1,0 +1,46 @@
+{
+ "file": "census-cbp-civic-organizations.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "County Business Patterns, United States, NAICS 813410 (civic and social organizations)",
+ "table_id": "CBP, NAICS 813410, 1998 to 2023",
+ "url": [
+  "https://api.census.gov/data/{year}/cbp?get=ESTAB,EMP&for=us:*&NAICS{vintage}=813410",
+  "https://api.census.gov/data/2023/cbp?get=ESTAB,EMP,NAICS2017&for=us:*&NAICS2017=813410"
+ ],
+ "observation_period": "Annual, 1998 to 2023; employees counted in the pay period including March 12",
+ "geography": "United States",
+ "universe_or_base": "Establishments with paid employees classed in NAICS 813410",
+ "unit": "establishments and employees, counts",
+ "date_retrieved": "2026-11-11",
+ "vintage": "CBP annual releases 1998 to 2023 (2023 released in 2025), read through the data API",
+ "qualification": "County Business Patterns counts establishments with paid employees; groups run by volunteers alone are not counted, so the series tracks paid civic organizations, not membership or volunteering. NAICS revisions in 2002, 2007, 2012 and 2017 kept this code and its title; the API serves 2023 under the 2017 code list",
+ "columns": {
+  "year": {
+   "type": "year",
+   "description": "reference year"
+  },
+  "establishments": {
+   "type": "integer",
+   "description": "establishments",
+   "unit": "establishments"
+  },
+  "employees": {
+   "type": "integer",
+   "description": "paid employees in mid-March",
+   "unit": "people"
+  },
+  "naics_code": {
+   "type": "code",
+   "description": "industry code as served"
+  },
+  "naics_vintage": {
+   "type": "text",
+   "description": "NAICS edition the year uses in the API"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, County Business Patterns, civic and social organizations (NAICS 813410), 1998 to 2023, United States. Retrieved November 11, 2026. Establishments with paid employees only; employees counted in mid-March.",
+ "ledger_row": "P7-010",
+ "domain": "D10",
+ "states": []
+}

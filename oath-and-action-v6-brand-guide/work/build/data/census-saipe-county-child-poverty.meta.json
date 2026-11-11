@@ -1,0 +1,55 @@
+{
+ "file": "census-saipe-county-child-poverty.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "Small Area Income and Poverty Estimates (SAIPE), counties, people under 18 in poverty",
+ "table_id": "SAIPE timeseries, SAEPOVRT0_17_PT, time=2019 and time=2024",
+ "url": [
+  "https://api.census.gov/data/timeseries/poverty/saipe?get=NAME,GEOID,STABREV,SAEPOVRT0_17_PT,SAEPOVRT0_17_MOE,SAEPOV0_17_PT&for=county:*&time=2019",
+  "https://api.census.gov/data/timeseries/poverty/saipe?get=NAME,GEOID,STABREV,SAEPOVRT0_17_PT,SAEPOVRT0_17_MOE,SAEPOV0_17_PT&for=county:*&time=2024"
+ ],
+ "observation_period": "Calendar years 2019 and 2024",
+ "geography": "Counties and county equivalents in the 50 states and DC",
+ "universe_or_base": "Related children and other people under 18, under the official poverty measure",
+ "unit": "child_poverty_pct in percent, with its 90 percent margin of error in percentage points; children_in_poverty in people",
+ "date_retrieved": "2026-11-11",
+ "vintage": "SAIPE 2024 release; 2019 as currently served by the data API",
+ "qualification": "Model-based estimates under the official poverty measure, which counts pretax cash income and leaves out tax credits such as the child tax credit; the national rate was 16.8 percent in 2019 and 15.5 percent in 2024. County lists differ slightly between years where Connecticut moved from counties to planning regions",
+ "columns": {
+  "year": {
+   "type": "year",
+   "description": "estimate year"
+  },
+  "geoid": {
+   "type": "code",
+   "description": "five-digit county FIPS code"
+  },
+  "county": {
+   "type": "text",
+   "description": "county name"
+  },
+  "code": {
+   "type": "code",
+   "description": "USPS state code"
+  },
+  "child_poverty_pct": {
+   "type": "number",
+   "description": "percent of people under 18 in poverty",
+   "unit": "percent"
+  },
+  "child_poverty_moe": {
+   "type": "number",
+   "description": "90 percent margin of error",
+   "unit": "percentage points"
+  },
+  "children_in_poverty": {
+   "type": "integer",
+   "description": "people under 18 in poverty",
+   "unit": "people"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, Small Area Income and Poverty Estimates, people under 18 in poverty, 2019 and 2024, counties in the 50 states and DC. Retrieved November 11, 2026. Model-based estimates under the official poverty measure, which leaves out tax credits.",
+ "ledger_row": "P7-028",
+ "domain": "D08",
+ "states": []
+}

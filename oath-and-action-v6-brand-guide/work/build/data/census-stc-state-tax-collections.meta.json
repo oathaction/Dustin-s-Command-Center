@@ -1,0 +1,52 @@
+{
+ "file": "census-stc-state-tax-collections.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "Annual Survey of State Government Tax Collections, fiscal year 2025, flat file (all tax items); population from Vintage 2025 state population estimates (NST-EST2025-ALLDATA)",
+ "table_id": "STC FY2025 flat file, items T01 to T99 summed (equals API aggregate STC001); NST-EST2025-ALLDATA, POPESTIMATE2024",
+ "url": [
+  "https://www2.census.gov/programs-surveys/stc/datasets/2025/FY2025-Flat-File.txt",
+  "https://api.census.gov/data/timeseries/govsstatetax?get=STATE,GOVTYPE,AGG_DESC,ITEM_CODE,AMOUNT&for=state:*&time=2025",
+  "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/state/totals/NST-EST2025-ALLDATA.csv"
+ ],
+ "observation_period": "State fiscal year 2025 (for 46 states, July 2024 to June 2025); population on July 1, 2024",
+ "geography": "50 states, with a United States row (code US); DC is not a state government in this survey",
+ "universe_or_base": "Taxes collected by state governments (not local governments): sales, income, property, license and other taxes",
+ "unit": "total_taxes_thousands in thousands of dollars; taxes_per_resident in dollars, computed by the studio as total taxes over the July 1, 2024 population",
+ "date_retrieved": "2026-11-11",
+ "vintage": "STC fiscal 2025 release; Vintage 2025 population estimates",
+ "qualification": "State government collections only; states split taxing differently between state and local governments, and some collect taxes paid largely by nonresidents (severance taxes, tourism), so per-resident figures compare state tax systems, not the tax each resident pays",
+ "columns": {
+  "code": {
+   "type": "code",
+   "description": "USPS state code, US for the nation"
+  },
+  "name": {
+   "type": "text",
+   "description": "state name"
+  },
+  "total_taxes_thousands": {
+   "type": "integer",
+   "description": "total state tax collections",
+   "unit": "thousands of dollars"
+  },
+  "population_july_2024": {
+   "type": "integer",
+   "description": "resident population, July 1, 2024",
+   "unit": "people"
+  },
+  "taxes_per_resident": {
+   "type": "integer",
+   "description": "total taxes per resident, computed",
+   "unit": "dollars"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, Annual Survey of State Government Tax Collections, fiscal 2025, and Vintage 2025 population estimates, 50 states. Retrieved November 11, 2026. State government taxes only; some are paid largely by nonresidents; per-resident figures computed by Oath & Action.",
+ "ledger_row": "P7-026",
+ "domain": "D08",
+ "states": [],
+ "notes": [
+  "The flat file marks items a state does not levy with X; they count as zero in the total",
+  "Each state's summed total matches the data API's aggregate STC001 for 2025"
+ ]
+}

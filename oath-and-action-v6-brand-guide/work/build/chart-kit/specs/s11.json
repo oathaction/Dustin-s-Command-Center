@@ -1,0 +1,119 @@
+{
+  "kit": 1,
+  "id": "S11",
+  "form": "shift-arrows",
+  "family": "shift-and-swing",
+  "tier": "core",
+  "dataset": "fec-presidential-shift-by-state",
+  "sort": [
+    {
+      "field": "margin_2024",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "Which states moved toward which party between 2020 and 2024, and how far?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: official results the states reported, compiled by the Federal Election Commission",
+  "title": "The margin in every state and DC moved toward the Republican nominee from 2020 to 2024, by 1.0 point in Washington to 10.5 points in New York.",
+  "measure_line": "Presidential margin by state in 2020 and 2024: the Republican nominee’s share of all presidential votes minus the Democratic nominee’s, in percentage points, 50 states and DC, with the United States above them",
+  "notes": [
+    "Margin: the Republican nominee’s share of all presidential votes minus the Democratic nominee’s. Right of Even, the Republican nominee led; left of it, the Democratic nominee led.",
+    "The national margin moved 5.9 points, more than in 39 of the 51 states, because the states with the most voters moved most: California, Texas, Florida and New York each moved 8 points or more.",
+    "New York’s figures count every ballot line each nominee held, including the Working Families and Conservative lines.",
+    "Maine and Nebraska split their electoral votes by district; these margins are statewide.",
+    "The 2024 figures come from the Federal Election Commission’s compilation of state results, dated January 16, 2025; its Federal Elections 2024 report may revise them."
+  ],
+  "source_line": "Source: Federal Election Commission, Federal Elections 2020 (Table 2) and Official 2024 Presidential General Election Results, compiled from state election offices, November 2020 and November 2024, 50 states and DC. Retrieved November 6, 2026. Margins are Republican minus Democratic share of all presidential votes; New York counts fused party lines.",
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Arrows for each state and DC from the 2020 presidential margin to the 2024 margin, with the United States above them. Every arrow points toward the Republican nominee, from 1.0 point in Washington to 10.5 points in New York, and six states changed leader from the Democratic to the Republican nominee: Wisconsin, Michigan, Pennsylvania, Georgia, Nevada and Arizona.",
+  "table": {
+    "caption": "Presidential margin, the United States and each state, 2020 and 2024, with the shift",
+    "columns": [
+      {
+        "field": "name",
+        "label": "Place",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "margin_2020",
+        "label": "2020 margin",
+        "format": "lead:1",
+        "lead": {
+          "positive": "Republican",
+          "negative": "Democratic",
+          "zero": "Even"
+        }
+      },
+      {
+        "field": "margin_2024",
+        "label": "2024 margin",
+        "format": "lead:1",
+        "lead": {
+          "positive": "Republican",
+          "negative": "Democratic",
+          "zero": "Even"
+        }
+      },
+      {
+        "field": "shift_pts",
+        "label": "Shift toward the Republican nominee, points",
+        "format": "number:1"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Axis: right of Even, the Republican nominee led; left of it, the Democratic nominee led. The scale skips from 80 to 40 points on the Democratic side so DC fits. Every arrow keeps one scale.",
+    "The United States sits above the states: Democratic +4.5 in 2020 to Republican +1.5 in 2024, a shift of 5.9.",
+    "How to read an arrow: each arrow runs from a state’s 2020 margin, at the dot, to its 2024 margin, at the tip. The figure beside it is the shift in percentage points.",
+    "Six states changed leader from the Democratic to the Republican nominee: Wisconsin, Michigan, Pennsylvania, Georgia, Nevada and Arizona. Each carries a tag."
+  ],
+  "phone": "differs",
+  "phone_note": "On phones the chart ranks the states by shift, each arrow from one start at zero, with the 2024 leader and margin in words on each row.",
+  "artboard": "wide",
+  "domain": "D02",
+  "states": [
+    "WA",
+    "NY"
+  ],
+  "encode": {
+    "key": "code",
+    "label": "name",
+    "from": "margin_2020",
+    "to": "margin_2024",
+    "shift": "shift_pts",
+    "scope": "scope"
+  },
+  "labels": {
+    "left": "Democratic nominee led",
+    "right": "Republican nominee led",
+    "center": "Even",
+    "apart_value": "nation",
+    "tag": "Leader changed",
+    "domain": [
+      -90,
+      50
+    ],
+    "skip": [
+      -80,
+      -40
+    ],
+    "phone_value": "2024: {lead} {to}",
+    "lead": {
+      "neg": "Democratic",
+      "pos": "Republican"
+    }
+  },
+  "notes_internal": [
+    "Party marks take neutral inks with the party named; arrows, position and words carry direction (DR-48, DR-58). No red and blue (DR-64).",
+    "The United States row (scope nation) is drawn above the states, set apart and labeled (DR-64).",
+    "states: the two the title names. Checked by script: Washington 0.98, New York 10.54; 39 of 51 states moved less than the nation's 5.93.",
+    "The second note drops Phase 2's 'more than the margin in', which read as the margin itself; the figure compared is the shift."
+  ],
+  "formats": {
+    "value": "signed:1",
+    "shift": "number:1"
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "kit": 1,
+  "id": "S13",
+  "form": "area-sparklines",
+  "family": "change-over-time",
+  "tier": "core",
+  "dataset": "fred-payrolls-by-sector-change",
+  "reader_question": "Which sectors added jobs since January 2022, and which lost them?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: an official statistic from a Bureau of Labor Statistics survey of employers, as copied by FRED",
+  "title": "Health care and social assistance added 3.8 million jobs from January 2022 to September 2026, the most of any industry; information and the federal government lost jobs.",
+  "measure_line": "Payroll jobs by industry, seasonally adjusted, change since January 2022 in percent, United States, January 2022 to September 2026, the span both jobs charts share. Every panel shares one vertical scale; labels give the change in jobs and in percent.",
+  "notes": [
+    "The first fourteen panels are the private industries, largest percent gain first, and add up to private industries, +7.8 million jobs or +6.1 percent. The last two are government, all levels, and federal government, which is part of it.",
+    "Government, all levels, gained 1.3 million jobs and federal jobs fell by 197,000, so state and local payrolls, which this dataset does not carry on their own, grew by about 1.5 million.",
+    "Federal government jobs peaked at 3,013,000 in October 2024 and stood at 2,682,000 in September 2026.",
+    "August and September 2026 are preliminary: the Bureau of Labor Statistics revises each month’s first estimate in the next two monthly reports, and a yearly benchmark revision can move earlier months.",
+    "Both jobs charts run from January 2022 to September 2026, so they hold three full years before the January 2025 inauguration and every month since."
+  ],
+  "source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all employees by industry, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.",
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Sixteen small area charts of payroll jobs from January 2022 to September 2026, on one scale of percent change, each with all nonfarm jobs, up 6.0 percent, as a gray line. Health care and social assistance gained the most, 3.8 million jobs or 18.8 percent; information lost 245,000 jobs, 8.2 percent, and the federal government lost 197,000, 6.8 percent.",
+  "table": {
+    "caption": "Change in payroll jobs since January 2022, percent, by month and series",
+    "pivot": {
+      "row": "month",
+      "column": "series_id",
+      "value": "pct_change_since_2022_01",
+      "format": "signed:2",
+      "labels": {
+        "PAYEMS": "All nonfarm jobs",
+        "USPRIV": "Private industries",
+        "USGOVT": "Government, all levels",
+        "CES9091000001": "Federal government",
+        "CES6562000001": "Health care and social assistance",
+        "CES4422000001": "Utilities",
+        "USLAH": "Leisure and hospitality",
+        "USCONS": "Construction",
+        "CES6561000001": "Private educational services",
+        "USSERV": "Other services",
+        "USMINE": "Mining and logging",
+        "USWTRADE": "Wholesale trade",
+        "CES4300000001": "Transportation and warehousing",
+        "USFIRE": "Financial activities",
+        "USPBS": "Professional and business services",
+        "MANEMP": "Manufacturing",
+        "USTRADE": "Retail trade",
+        "USINFO": "Information"
+      }
+    },
+    "columns": [
+      {
+        "field": "month",
+        "label": "Month",
+        "format": "month",
+        "row_header": true
+      }
+    ]
+  },
+  "chart_notes": [
+    "Gray line in every panel: all nonfarm jobs, +9.0 million or +6.0 percent. Each panel ends with the change in jobs and in percent since January 2022, and its scale runs from −15 to +20 percent, January 2022 to September 2026.",
+    "Panels: the fourteen private industries, largest percent gain first, then government, all levels, and federal government."
+  ],
+  "phone": "same",
+  "artboard": "wide",
+  "domain": "D07",
+  "states": [],
+  "encode": {
+    "x": "month",
+    "y": "pct_change_since_2022_01",
+    "series": "series_id"
+  },
+  "formats": {
+    "change_since_2022_01_thousands": "signed-thousands",
+    "pct_change_since_2022_01": "signed:1",
+    "tick": "signed"
+  },
+  "labels": {
+    "panels": [
+      {
+        "value": "CES6562000001",
+        "label": "Health care and social assistance"
+      },
+      {
+        "value": "CES4422000001",
+        "label": "Utilities"
+      },
+      {
+        "value": "USLAH",
+        "label": "Leisure and hospitality"
+      },
+      {
+        "value": "USCONS",
+        "label": "Construction"
+      },
+      {
+        "value": "CES6561000001",
+        "label": "Private educational services"
+      },
+      {
+        "value": "USSERV",
+        "label": "Other services"
+      },
+      {
+        "value": "USMINE",
+        "label": "Mining and logging"
+      },
+      {
+        "value": "USWTRADE",
+        "label": "Wholesale trade"
+      },
+      {
+        "value": "CES4300000001",
+        "label": "Transportation and warehousing"
+      },
+      {
+        "value": "USFIRE",
+        "label": "Financial activities"
+      },
+      {
+        "value": "USPBS",
+        "label": "Professional and business services"
+      },
+      {
+        "value": "MANEMP",
+        "label": "Manufacturing"
+      },
+      {
+        "value": "USTRADE",
+        "label": "Retail trade"
+      },
+      {
+        "value": "USINFO",
+        "label": "Information"
+      },
+      {
+        "value": "USGOVT",
+        "label": "Government, all levels"
+      },
+      {
+        "value": "CES9091000001",
+        "label": "Federal government, part of government"
+      }
+    ],
+    "context": "PAYEMS",
+    "context_label": "Gray line in every panel: all nonfarm jobs, +6.0%",
+    "end": "{change_since_2022_01_thousands}, {pct_change_since_2022_01}%",
+    "domain": [
+      -15,
+      20
+    ]
+  },
+  "notes_internal": [
+    "Phase 2 drew S13 as two forms in one figure: a sparkline table for the four totals and fourteen area panels for the private industries. The kit draws one form per spec. This rebuild draws the fourteen industries and the two government series as sixteen area panels on one scale, so both series the title says lost jobs are drawn; request E22 asks for Phase 2's composite with the totals table on top. A one-form sparkline table of all 18 series was tried and dropped: at 26 px a row the lines lie flat.",
+    "Checked by script: health care and social assistance +3,798.4 thousand, +18.84 percent; information −245.0, −8.21; federal −197.0, −6.84; government +1,278.0; private +7,760.0; the 14 industries sum to +7,760.6 thousand.",
+    "H09: the last note gives the reason both jobs charts share one window, in chapter 02's words."
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "kit": 1,
+  "id": "S01",
+  "form": "big-number",
+  "family": "gauges-and-indicators",
+  "tier": "core",
+  "dataset": "v7-stock-trading-ban",
+  "reader_question": "Do Republicans and Democrats agree on anything about Congress?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: a published survey and two recorded votes",
+  "v7": {
+    "grade": "documented",
+    "ids": [],
+    "snapshot": "2026-10-15"
+  },
+  "title": "Nearly nine in ten Republican and Democratic voters favored a ban on stock trading by members of Congress.",
+  "reading_guide": "The survey asked about a ban in general, three years before Congress voted on H.R. 7008, the Stop Insider Trading Act. As the House passed it, the bill would bar members of Congress, their spouses and dependent children from buying individual stocks, and it would require photo ID to vote in federal elections.",
+  "measure_line": "Registered voters who favor a ban, percent, by party, survey of May 2023, United States; the votes on H.R. 7008 in the House (July 22, 2026) and the Senate (September 30, 2026)",
+  "notes": [
+    "Survey of 2,625 registered voters, May 19 to 30, 2023, three years before either vote.",
+    "The two parties sit one point apart; the bars run from 0 to 100 percent.",
+    "Taking up the bill needed 60 votes, three-fifths of the Senate, to end debate (cloture).",
+    "The bill’s two provisions come from its text as the House passed it, sections 2 and 3: Library of Congress, bill status for H.R. 7008, 119th Congress, updated October 1, 2026, via govinfo.gov. Retrieved November 7, 2026."
+  ],
+  "source_line": "Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States; U.S. House of Representatives, Roll Call 280, July 22, 2026; U.S. Senate, Vote 253, September 30, 2026; as recorded in Oath & Action, Who Do They Answer To? Systems Atlas V7, snapshot of October 15, 2026. The survey predates both votes by three years.",
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A large figure: 86 percent of registered voters favored a ban on stock trading by members of Congress in a May 2023 survey, 88 percent of Democrats and 87 percent of Republicans. In 2026 the House passed H.R. 7008, 232 to 198, and a Senate vote to take it up got 53 votes, seven short of the 60 it needed.",
+  "table": {
+    "caption": "Support for a ban and the votes that followed",
+    "columns": [
+      {
+        "field": "group",
+        "label": "Group",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "measure",
+        "label": "Measure",
+        "format": "text"
+      },
+      {
+        "field": "value",
+        "label": "Value",
+        "format": "integer"
+      }
+    ]
+  },
+  "chart_notes": [
+    "What Congress did next: the House passed H.R. 7008, 232 to 198; the Senate vote to take it up fell short, 53 to 47, seven votes short of the 60 needed."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D03",
+  "states": [],
+  "encode": {
+    "key": "key",
+    "value": "value"
+  },
+  "labels": {
+    "big_key": "support-all",
+    "big_caption": "of registered voters favored a ban on stock trading by members of Congress",
+    "bars_title": "BY PARTY",
+    "bars": [
+      {
+        "key": "support-democrats",
+        "label": "Democrats",
+        "party": "Democratic"
+      },
+      {
+        "key": "support-republicans",
+        "label": "Republicans",
+        "party": "Republican"
+      }
+    ],
+    "bars_max": 100,
+    "votes_title": "WHAT CONGRESS DID NEXT",
+    "votes": [
+      {
+        "label": "The House passed H.R. 7008",
+        "date": "July 22, 2026",
+        "tally": "232 to 198",
+        "yes": "house-yes",
+        "no": "house-no",
+        "yes_words": "{v} for",
+        "no_words": "{v} against"
+      },
+      {
+        "label": "The Senate vote to take it up fell short",
+        "date": "September 30, 2026",
+        "tally": "53 to 47",
+        "yes": "senate-yes",
+        "no": "senate-no",
+        "needed": "senate-needed",
+        "yes_words": "{v} for",
+        "no_words": "{v} against",
+        "short": "7 votes short of the 60 needed"
+      }
+    ]
+  },
+  "notes_internal": [
+    "DR-98: the reading guide is the first mention of H.R. 7008 and names the bill and both provisions as the House passed it (D2-406); the drawing's House label drops Phase 2's 'a ban', since the bill holds more than the ban.",
+    "D2-104: vote totals only, no party split of either chamber. DR-126's Senate split from the Congressional Record lives in Rule 02.25, not here.",
+    "No disclosure (DR-100). The survey stays a separate finding about a ban in general (DR-98)."
+  ],
+  "formats": {
+    "big": "percent:0",
+    "bars": "percent:0"
+  }
+}

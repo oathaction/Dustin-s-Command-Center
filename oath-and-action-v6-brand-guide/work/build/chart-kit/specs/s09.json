@@ -1,0 +1,126 @@
+{
+  "kit": 1,
+  "id": "S09",
+  "form": "timeline",
+  "family": "change-over-time",
+  "tier": "core",
+  "dataset": "v7-history-events",
+  "sort": [
+    {
+      "field": "date",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "Which rule changes since 1870 decided who counts, who governs, who owns and who checks?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: every event rests on an official record",
+  "v7": {
+    "grade": "documented",
+    "ids": [],
+    "snapshot": "2026-10-15"
+  },
+  "title": "The atlas traces 24 rule changes since 1870 on four threads: who counts, who governs, who owns and who checks.",
+  "measure_line": "Changes in the rules on four threads, dated by the atlas, Oath & Action’s own research, United States, February 1870 to June 2026. Every event is documented; the atlas chose which to date.",
+  "notes": [
+    "Shaded: the two stretches where the atlas’s picks cluster, seven changes from 1964 to 1978 and eight from 2010 to 2026. The atlas chose which changes to date, so the bands describe its picks.",
+    "Every event here is graded documented: each rests on a statute, a court ruling, a constitutional text or another official record, cited in its source field. The grade covers the event itself; the size of any effect described in the mechanism comes from the scholarly or official source named beside it.",
+    "Event names are the atlas’s, shortened at any parenthesis; the table gives each in full."
+  ],
+  "source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, history, 24 events, February 3, 1870 to June 29, 2026, United States. Snapshot of October 15, 2026. Each event rests on a statute, ruling, constitutional text or official record, cited in its own row; the size of any effect comes from the source named beside it.",
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A timeline of 24 changes in the rules from 1870 to 2026 on four lanes: who counts, who governs, who owns and who checks. The atlas’s picks bunch in two stretches, seven from 1964 to 1978 and eight from 2010 to 2026, from the Fifteenth Amendment in 1870 to Louisiana v. Callais and Trump v. Slaughter in 2026.",
+  "table": {
+    "caption": "Twenty-four rule changes since 1870",
+    "columns": [
+      {
+        "field": "date",
+        "label": "Date",
+        "format": "date",
+        "row_header": true
+      },
+      {
+        "field": "thread_label",
+        "label": "Thread",
+        "format": "text"
+      },
+      {
+        "field": "title",
+        "label": "Change",
+        "format": "text"
+      },
+      {
+        "field": "mechanism",
+        "label": "What it did",
+        "format": "text"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Threads: Who counts: Who gets to vote, and whose vote counts fully? Who governs: How do votes become seats, nominees and majorities? Who owns: How do rules decide who keeps the gains and who carries the risk? Who checks: Who can see an abuse of power, and who can stop it?",
+    "Shaded bands: 1964 to 1978, seven of the 24 picks; 2010 to 2026, eight of the 24 picks."
+  ],
+  "phone": "differs",
+  "phone_note": "On phones the four lanes become one dated list, each event with its thread named beside it.",
+  "artboard": "wide",
+  "domain": "all",
+  "states": [],
+  "encode": {
+    "date": "date",
+    "lane": "thread",
+    "label": "title",
+    "key": "key"
+  },
+  "labels": {
+    "lanes": [
+      {
+        "value": "who_counts",
+        "label": "Who counts",
+        "question": "Who gets to vote, and whose vote counts fully?"
+      },
+      {
+        "value": "who_governs",
+        "label": "Who governs",
+        "question": "How do votes become seats, nominees and majorities?"
+      },
+      {
+        "value": "who_owns",
+        "label": "Who owns",
+        "question": "How do rules decide who keeps the gains and who carries the risk?"
+      },
+      {
+        "value": "who_checks",
+        "label": "Who checks",
+        "question": "Who can see an abuse of power, and who can stop it?"
+      }
+    ],
+    "bands": [
+      {
+        "from": 1964,
+        "to": 1978,
+        "label": "1964 to 1978",
+        "note": "seven of the 24 picks"
+      },
+      {
+        "from": 2010,
+        "to": 2026,
+        "label": "2010 to 2026",
+        "note": "eight of the 24 picks"
+      }
+    ],
+    "axis_years": [
+      1875,
+      1900,
+      1925,
+      1950,
+      1975,
+      2000,
+      2025
+    ]
+  },
+  "notes_internal": [
+    "The table drops Phase 2's E01 to E24 column: those keys are the studio's, and E01 reads like V7's Variable E1 (Master Brief tension 7, H11). The date is the row header.",
+    "Thread questions are V7's own (history.threads[].question)."
+  ]
+}

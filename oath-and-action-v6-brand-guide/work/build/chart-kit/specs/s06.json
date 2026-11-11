@@ -1,0 +1,211 @@
+{
+  "kit": 1,
+  "id": "S06",
+  "form": "scenario-directions",
+  "family": "uncertainty-and-estimates",
+  "tier": "core",
+  "dataset": "v7-scenarios-2030",
+  "reader_question": "If a reform path were followed, which way would each outcome move?",
+  "evidence": "estimate",
+  "evidence_label": "Estimate",
+  "grade_line": "Conditional directions: no forecast and no odds",
+  "v7": {
+    "grade": "conditional directions, no forecast",
+    "ids": [
+      "C2",
+      "C4",
+      "D5",
+      "EC3",
+      "R15",
+      "R-07",
+      "R-13",
+      "R-15",
+      "R-16",
+      "R-17",
+      "R-19",
+      "R-20",
+      "R-21",
+      "R-22",
+      "R-27",
+      "R-38",
+      "R-39",
+      "R-44",
+      "R-47",
+      "R-50"
+    ],
+    "snapshot": "2026-10-15"
+  },
+  "title": "If their assumptions hold, five of the seven scenarios beyond the baseline would lift at least one outcome family by 2036.",
+  "reading_guide": "Up means better for each family; for income and wealth equality, it means more equal. Each arrow and tint is Oath & Action’s reading of the atlas’s words, which print in every cell.",
+  "measure_line": "The direction each outcome family would take by 2036 under eight scenarios, in the words of the atlas, Oath & Action’s own research, United States, from a 2026 baseline",
+  "notes": [
+    "Each direction holds only if its scenario’s assumptions hold, and the atlas attaches no odds to it. Each family is read on its own, and the atlas never adds the four together. In the baseline, each family stays flat or falls. The atlas wrote the eight scenarios and their assumptions, which the table under the chart lists.",
+    "How Oath & Action reads the atlas’s words: words that start ‘up’ read up, except ‘up modestly’; ‘slightly up’, ‘up modestly’ and ‘small and slow’ read slightly up; ‘flat’, ‘near trend’ and ‘flat through 2036’ read flat; ‘down or flat’ and ‘flat, or down if ...’ read flat or down; ‘down’ reads down; ‘mixed’ and ‘prices down ...; employment effects mixed’ read mixed; ‘same as scenario ii’ points to scenario ii."
+  ],
+  "source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, reform outcomes, eight scenarios, conditional directions to 2036 from a 2026 baseline, United States. Snapshot of October 15, 2026. Each scenario gives a direction only if its assumptions hold. It is no forecast, gives no odds, and the four families are never added together.",
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A table of eight scenarios for 2036 against four outcome families: quality of democracy, government efficacy, economic performance, and income and wealth equality. Each cell gives the atlas’s direction words with Oath & Action’s arrow. Five of the seven scenarios beyond the baseline would lift at least one family if their assumptions hold, and in the baseline each family stays flat or falls.",
+  "table": {
+    "caption": "Direction each outcome family would take by 2036 under eight scenarios, with the atlas’s assumptions and reasons",
+    "columns": [
+      {
+        "field": "id",
+        "label": "Scenario",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "name",
+        "label": "Name",
+        "format": "text"
+      },
+      {
+        "field": "assumptions",
+        "label": "Assumptions",
+        "format": "text"
+      },
+      {
+        "field": "dq",
+        "label": "Quality of democracy",
+        "format": "text"
+      },
+      {
+        "field": "dq_why",
+        "label": "Why, quality of democracy",
+        "format": "text"
+      },
+      {
+        "field": "ge",
+        "label": "Government efficacy",
+        "format": "text"
+      },
+      {
+        "field": "ge_why",
+        "label": "Why, government efficacy",
+        "format": "text"
+      },
+      {
+        "field": "ep",
+        "label": "Economic performance",
+        "format": "text"
+      },
+      {
+        "field": "ep_why",
+        "label": "Why, economic performance",
+        "format": "text"
+      },
+      {
+        "field": "eq",
+        "label": "Income and wealth equality",
+        "format": "text"
+      },
+      {
+        "field": "eq_why",
+        "label": "Why, income and wealth equality",
+        "format": "text"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Key: Oath & Action’s reading of the atlas’s words, by arrow and tint: up; slightly up; flat; flat or down; down; mixed; same as scenario ii."
+  ],
+  "phone": "differs",
+  "phone_note": "On phones each scenario becomes a card that lists its four families in turn, each with its arrow and the atlas’s words.",
+  "artboard": "wide",
+  "domain": "all",
+  "states": [],
+  "encode": {
+    "row": "id",
+    "name": "name",
+    "columns": [
+      "dq",
+      "ge",
+      "ep",
+      "eq"
+    ],
+    "classes": [
+      "dq_class",
+      "ge_class",
+      "ep_class",
+      "eq_class"
+    ]
+  },
+  "labels": {
+    "column_titles": [
+      "Quality of democracy",
+      "Government efficacy",
+      "Economic performance",
+      "Income and wealth equality"
+    ],
+    "class_style": {
+      "up": {
+        "tint": "div-4",
+        "glyph": "up"
+      },
+      "slightly up": {
+        "tint": "seq-1",
+        "glyph": "up-small"
+      },
+      "flat": {
+        "tint": "none",
+        "glyph": "flat"
+      },
+      "flat or down": {
+        "tint": "div-3",
+        "glyph": "flat-down"
+      },
+      "down": {
+        "tint": "div-2",
+        "glyph": "down"
+      },
+      "mixed": {
+        "tint": "none",
+        "glyph": "mixed"
+      },
+      "same as ii": {
+        "tint": "none",
+        "glyph": "same"
+      }
+    },
+    "key_title": "Oath & Action’s reading, by arrow and tint",
+    "key": [
+      {
+        "class": "up",
+        "label": "Up"
+      },
+      {
+        "class": "slightly up",
+        "label": "Slightly up"
+      },
+      {
+        "class": "flat",
+        "label": "Flat"
+      },
+      {
+        "class": "flat or down",
+        "label": "Flat or down"
+      },
+      {
+        "class": "down",
+        "label": "Down"
+      },
+      {
+        "class": "mixed",
+        "label": "Mixed"
+      },
+      {
+        "class": "same as ii",
+        "label": "Same as scenario ii"
+      }
+    ],
+    "id_column": true
+  },
+  "notes_internal": [
+    "No disclosure (DR-100, D2-1756); Phase 2 printed it under this chart.",
+    "Phase 2's note 'The atlas wrote the eight scenarios ... the assumptions sit in the table' repeated the line above it; the two are now one note. 'Up means better' moves to the reading guide so it prints once.",
+    "The four families are never tallied: the title counts scenarios that lift at least one family, as Phase 2's approved title did; no row or column total prints.",
+    "Diverging pair B (DR-54): up toward Verdigris (div-4, and the lighter sequential step for slightly up), down toward Prussian (div-2), flat or down on the light midpoint (div-3); the glyph carries the class in grayscale. Phase 2's Explainer drew the down side in Stone, before DR-54 picked pair B.",
+    "Phase 2 printed a short studio gloss under each scenario name; the form takes a sub line from the data only (request E18), so the glosses wait in this spec's history: i 'Current law runs as written.'; ii 'Some states and cities change their rules; federal rules stay as they are.'; iii 'Congress passes rules for elections and government together.'; iv-a 'Fusion voting lets more than one party nominate the same candidate.'; iv-b 'Rebuilds career staff, tax enforcement and watchdogs; inspectors general are the watchdogs inside agencies.'; iv-c 'Merger, market and labor-law enforcement come first.'; iv-d 'Changes made by amending the Constitution.'; iv-e 'Forbearance: officials hold back from using every power they have, with no new rules.'"
+  ]
+}

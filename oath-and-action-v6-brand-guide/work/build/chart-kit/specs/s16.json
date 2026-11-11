@@ -1,0 +1,112 @@
+{
+  "kit": 1,
+  "id": "S16",
+  "form": "bubble-map",
+  "family": "maps",
+  "tier": "core",
+  "dataset": "census-cps-2024-turnout-by-state",
+  "where": {
+    "year": 2024
+  },
+  "sort": [
+    {
+      "field": "name",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "Where did citizens 18 and over turn out, and where are most of them?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: an official statistic; the rates are what survey respondents reported",
+  "title": "Texas, Florida and New York, three of the four states with the most citizens 18 and over, reported turnout below the national 65.3 percent by more than the survey’s margin of error.",
+  "measure_line": "Citizens 18 and over who said they voted in November 2024, percent, by state; circles sized by the number of citizens 18 and over; 50 states and DC",
+  "notes": [
+    "These rates are what people told a Census survey, which runs higher than counted ballots. The states’ 90 percent margins of error run from 1.6 to 5.6 points, so a gap of a few points between two states may not be real.",
+    "Texas, Florida and New York each sit below the national rate by more than their 90 percent margins of error; California’s 64.7 percent is within its margin of the nation’s 65.3.",
+    "Most citizens 18 and over: California 25.3 million, 64.7%; Texas 19.8 million, 57.9%; Florida 16.1 million, 60.3%; New York 13.7 million, 59.2%. Range: Arkansas 52.8% (±2.7) to DC 79.5% (±3.3).",
+    "Each circle’s area follows the number of citizens 18 and over. Circles sit at each state’s center and move apart only where they would overlap, most in the Northeast. The table names every state.",
+    "Map: U.S. Census Bureau cartographic boundary files (2017), via us-atlas 3.0.1 by Mike Bostock (ISC license)."
+  ],
+  "source_line": "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a, reported voting for states, November 2024 (and November 2020), 50 states and DC. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over; state margins of error reach 5.6 points.",
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A map of the United States with a circle on each state sized by its citizens 18 and over and shaded by the share who said they voted in November 2024. California, Texas, Florida and New York have the most citizens 18 and over; Texas at 57.9 percent, New York at 59.2 and Florida at 60.3 sit below the national 65.3 percent by more than their margins of error, while California’s 64.7 does not. Rates run from 52.8 percent in Arkansas to 79.5 percent in DC.",
+  "table": {
+    "caption": "Citizens 18 and over and the share who said they voted, by state, 2024",
+    "columns": [
+      {
+        "field": "name",
+        "label": "State",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "citizen_vap_thousands",
+        "label": "Citizens 18 and over",
+        "format": "thousands"
+      },
+      {
+        "field": "voted_pct",
+        "label": "Said they voted, percent",
+        "format": "number:1"
+      },
+      {
+        "field": "moe_pct",
+        "label": "Margin of error, points (90%)",
+        "format": "number:1"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Shade: the share of citizens 18 and over who said they voted, in five steps: under 60, 60 to 64.9, 65 to 69.9, 70 to 74.9, and 75 percent or more. The nation, 65.3 percent, is marked on the step key. Ringed: of the four largest states, the three below the nation by more than the survey’s margin of error.",
+    "Circle size: citizens 18 and over; the key shows 1, 5 and 20 million. State codes sit inside the circles where they fit and beside their own circle where there is room."
+  ],
+  "phone": "same",
+  "artboard": "wide",
+  "domain": "D10",
+  "states": [
+    "TX",
+    "FL",
+    "NY"
+  ],
+  "encode": {
+    "code": "code",
+    "size": "citizen_vap_thousands",
+    "shade": "voted_pct"
+  },
+  "labels": {
+    "bins": [
+      60,
+      65,
+      70,
+      75
+    ],
+    "ring": [
+      "TX",
+      "FL",
+      "NY"
+    ],
+    "ring_label": "Ringed: of the four largest states, the three below the nation by more than the survey’s margin of error",
+    "shade_title": "Share of citizens 18 and over who said they voted, percent",
+    "size_title": "Citizens 18 and over",
+    "size_steps": [
+      1000,
+      5000,
+      20000
+    ],
+    "nation": 65.3,
+    "nation_label": "Nation 65.3%"
+  },
+  "notes_internal": [
+    "The national 65.3 percent (margin 0.5) is in the sidecar's notes and in census-cps-reported-voting.csv (2024, all ages, citizens); it matches Table A-1.",
+    "Circle area, never radius, follows citizens 18 and over (D2-124).",
+    "The source line names 2020 because the sidecar's printed line does; S16 draws 2024 only. Request R2 asks the research lead for a 2024-only variant, as Phase 2 printed it.",
+    "Checked by script: TX 57.9 (±2.3), FL 60.3 (±1.9), NY 59.2 (±2.6), each more than its margin below 65.3; CA 64.7 (±1.6) within it."
+  ],
+  "formats": {
+    "shade": "number:1",
+    "size": "thousands",
+    "size_step": "thousands",
+    "bins": "integer"
+  }
+}

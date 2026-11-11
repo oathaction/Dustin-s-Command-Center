@@ -1,0 +1,50 @@
+{
+ "file": "census-acs-income-shares-by-quintile.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "American Community Survey 1-year estimates, Table B19082, Shares of Aggregate Household Income by Quintile",
+ "table_id": "ACS 2025 1-year, B19082",
+ "url": [
+  "https://api.census.gov/data/2025/acs/acs1?get=NAME,group(B19082)&for=us:1",
+  "https://api.census.gov/data/2025/acs/acs1/groups/B19082.json"
+ ],
+ "observation_period": "Calendar year 2025 (income in the past 12 months, collected through 2025)",
+ "geography": "United States",
+ "universe_or_base": "Households, ranked by household income and split into fifths; the top 5 percent row is a part of the highest fifth",
+ "unit": "share_of_income_pct is each group's percent of all household income; share_of_households_pct is the group's percent of households (20 for each fifth, 5 for the top 5 percent); moe_pct is the 90 percent margin of error in percentage points",
+ "date_retrieved": "2026-11-11",
+ "vintage": "ACS 2025 1-year release (data API vintage 2025)",
+ "qualification": "Survey estimates of money income before taxes, not counting noncash benefits; the fifths add to 100 percent, and the top 5 percent sits inside the highest fifth",
+ "columns": {
+  "group": {
+   "type": "code",
+   "description": "household income group"
+  },
+  "label": {
+   "type": "text",
+   "description": "group name"
+  },
+  "share_of_households_pct": {
+   "type": "number",
+   "description": "share of households in the group",
+   "unit": "percent"
+  },
+  "share_of_income_pct": {
+   "type": "number",
+   "description": "share of aggregate household income",
+   "unit": "percent"
+  },
+  "moe_pct": {
+   "type": "number",
+   "description": "90 percent margin of error",
+   "unit": "percentage points"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B19082, shares of aggregate household income by quintile, 2025, United States. Retrieved November 11, 2026. Survey estimates of pretax money income; margins of error are 0.08 points or less.",
+ "ledger_row": "P7-002",
+ "domain": "D08",
+ "states": [],
+ "raw_files_sha256_prefix": {
+  "b19082_us_2025.json": "daf2ffa3b59716d0"
+ }
+}

@@ -1,0 +1,137 @@
+{
+  "kit": 1,
+  "id": "S03",
+  "form": "ranked-bar",
+  "family": "comparison",
+  "tier": "core",
+  "dataset": "v7-repair-log-by-instrument",
+  "sort": [
+    {
+      "field": "total",
+      "order": "desc"
+    }
+  ],
+  "reader_question": "Who changed the rules: voters, courts or legislatures?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the atlas’s dated log, coded by the atlas",
+  "v7": {
+    "grade": "documented",
+    "ids": [],
+    "snapshot": "2026-10-15"
+  },
+  "title": "The atlas codes nine of the 11 state statutes in its log as moving the rules away from voters.",
+  "measure_line": "Entries in the repair log of the atlas, Oath & Action’s own research, by how the rule changed and by the atlas’s direction code, August 1965 to the November 3, 2026 ballot",
+  "notes": [
+    "Citizen ballot initiatives: 17 entries. Seven passed, and all seven moved the rules toward voters; eight failed and left the rules in force; two are pending. Referendums are ballot measures too, and three of 10 moved the rules away from voters.",
+    "State statutes: five of the nine are mid-decade congressional maps and three limit ranked-choice voting, entries the atlas says readers may weigh differently. Without those three, six of eight statutes moved the rules away from voters, still the largest share. Without the roll-up entry for 19 states, eight of 10 did.",
+    "Oath & Action grouped an agency rule, an executive action and an executive order as one instrument, and a city law with a council funding vote as another.",
+    "The atlas chose which 64 changes to record, and it records more of recent years: 33 of the 64 entries fall in 2025 and 2026.",
+    "How the atlas codes direction: Each row is coded by one of five labels. ‘Toward voters’ means the change widens who can register, vote or have a ballot counted, makes each vote weigh more equally, opens the contest that decides the seat, makes political money more limited or more visible, strengthens an independent check on officials, or adds to household security through automatic benefits. ‘Away from voters’ means the change does the reverse. ‘Voters kept existing rules’ means a ballot measure failed and the rules in force stayed, coded the same whichever way the measure would have moved power. ‘Pending’ means voters or courts have not yet decided. ‘Mixed’ means the change moved in both directions at once or left the rules in practice unchanged; the row’s own note says which. Three rules apply across parties. A partisan redraw of district maps in the middle of a decade is coded away from voters whichever party draws it and whether or not voters approved it; a court order that blocks one is coded toward voters, and one that lets it take effect is coded away. A change that widens who takes part in the deciding round (open or all-party primaries) or lets voters rank candidates is coded toward voters, and a law or amendment that bans those options is coded away; readers may weigh these entries differently, and the atlas’s profiles of those two reforms rate confidence in their effect on moderation as low.",
+    "A map redrawn in the middle of a decade counts as away from voters whichever party draws it: Texas’s HB 4 (August 2025) and California’s Proposition 50 (November 2025) both count as away.",
+    "One entry, dated March 2026, stands for all 19 state bans on ranked-choice voting; Missouri’s and Indiana’s bans also have entries of their own.",
+    "A row’s direction describes only the rule’s effect on who officials answer to."
+  ],
+  "source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, repair log of 64 dated rule changes, August 6, 1965 to the November 3, 2026 ballot, United States: federal, state and local. Snapshot of October 15, 2026. Directions are the atlas’s own codes, set out in its coding note; each row cites its own source. One entry, New York City’s 1988 small-donor matching law, rests on a source the atlas did not check.",
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Ranked bars of the 64 entries in the atlas’s repair log by how each rule changed, split by the atlas’s direction code. Ballot initiatives lead with 17 entries, none away from voters; court rulings follow with 14; and nine of the 11 state statutes moved the rules away from voters.",
+  "table": {
+    "caption": "Repair-log entries by instrument and direction",
+    "columns": [
+      {
+        "field": "instrument_group",
+        "label": "Instrument",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "total",
+        "label": "All",
+        "format": "integer"
+      },
+      {
+        "field": "away_from_voters",
+        "label": "Away from voters",
+        "format": "integer"
+      },
+      {
+        "field": "toward_voters",
+        "label": "Toward voters",
+        "format": "integer"
+      },
+      {
+        "field": "voters_kept_existing_rules",
+        "label": "Voters kept existing rules",
+        "format": "integer"
+      },
+      {
+        "field": "mixed",
+        "label": "Mixed",
+        "format": "integer"
+      },
+      {
+        "field": "pending",
+        "label": "Pending",
+        "format": "integer"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Key: away from voters, solid; toward voters, open; voters kept existing rules, gray; mixed, hatched; pending, dashed outline.",
+    "Labels at the bars: Ballot initiative, 17, none away from voters; State statute, 11, nine away from voters."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D02",
+  "states": [],
+  "encode": {
+    "category": "instrument_group",
+    "value": "total",
+    "parts": [
+      "away_from_voters",
+      "toward_voters",
+      "voters_kept_existing_rules",
+      "mixed",
+      "pending"
+    ]
+  },
+  "labels": {
+    "parts": [
+      {
+        "field": "away_from_voters",
+        "label": "Away from voters",
+        "style": "solid"
+      },
+      {
+        "field": "toward_voters",
+        "label": "Toward voters",
+        "style": "open"
+      },
+      {
+        "field": "voters_kept_existing_rules",
+        "label": "Voters kept existing rules",
+        "style": "gray"
+      },
+      {
+        "field": "mixed",
+        "label": "Mixed",
+        "style": "hatch"
+      },
+      {
+        "field": "pending",
+        "label": "Pending",
+        "style": "dashed"
+      }
+    ],
+    "total_suffix": {
+      "Ballot initiative": ", none away from voters",
+      "State statute": ", nine away from voters"
+    }
+  },
+  "notes_internal": [
+    "No disclosure (DR-100, D2-1756); Phase 2 printed it under this chart.",
+    "W09: Phase 2's 'not every rule change in the country' and 'carries no judgment' are recast without the corrective turn; the facts are unchanged.",
+    "Counts checked by script against v7-repair-log.json: maps are RL38, RL40, RL53, RL54 and RL56; the three ranked-choice limits are RL08, RL46 and RL47."
+  ]
+}

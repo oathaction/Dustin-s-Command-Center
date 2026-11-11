@@ -1,0 +1,232 @@
+{
+ "s-13-opener": {
+  "chapter": "13",
+  "rule": null,
+  "width_px": null,
+  "alt": "One record from our systems atlas with the evidence it carries. Connection L02, “Political spending can tilt policy toward donors”, runs from Variable B1, Money spent to influence politics, to Variable E1, Policy advantages for wealthy and organized interests, in Loop R1. A dashed line with two delay ticks draws it. Its grade reads Plausible, some evidence; its sign is plus, the two move the same way; its delay is M, 2 to 10 years. The source line names the atlas and the snapshot of October 15, 2026. A list beside it names six parts and their rules: the verb can, Rule 13.2; the grade word and gloss, Rule 13.3; the dashed line, Rule 13.4; grade and delay apart, Rule 13.5; the typed chip, Rule 13.9; the snapshot date, Rule 13.10.",
+  "illustrative": false,
+  "notes": "Chapter 13's opener (D2-1708, D2-1732): a light drawing the chapter's rules use, with only the styles it needs.",
+  "readable": true
+ },
+ "s-13-1-correct": {
+  "chapter": "13",
+  "rule": "13.1",
+  "width_px": null,
+  "alt": "Four chart heads, one of each kind of evidence, each with a dark label, a grade line, a title, a measure line and a source. Finding: Child poverty stood at 13.4 percent in 2025 under the Supplemental Poverty Measure. Association: Job postings offered 17 percent lower wages where a few employers did more of the hiring, with a note that the pattern does not show cause. Estimate: Vehicle safety technologies saved an estimated 613,501 lives from 1960 through 2012, with a note on the agency’s method. Illustration: A ranked bar puts the town with the most library hours first, labeled Illustrative data.",
+  "illustrative": true,
+  "notes": "Evidence label and grade line as the approved chart system draws them (DR-52): a chip in the chart chip tokens and the grade in words. Child poverty from the engineer's census-spm-child-poverty sidecar; CL1507 and DL06 read from the atlas.",
+  "readable": true
+ },
+ "s-13-1-failure": {
+  "chapter": "13",
+  "rule": "13.1",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A chart head labeled Finding over the same study of job postings, titled Concentrated hiring cuts wages by 17 percent. No note says the study measured a pattern, and the grade line says only A published study.",
+  "illustrative": false,
+  "notes": "Labeled failure: a causal verb and the Finding label over an association."
+ },
+ "s-13-2-correct": {
+  "chapter": "13",
+  "rule": "13.2",
+  "width_px": null,
+  "alt": "A table of five connections from our systems atlas, one at each grade, with the title its grade allows and the atlas record beside it. Documented: Social Security moved 28.8 million people out of poverty in 2025, the Census Bureau reported. Well supported: Local reporting raises incumbents’ risk of losing office. Plausible: Better public services can build earned trust in government, beside the atlas name Better public services build earned trust. Contested: two readings of 15 words each, one finding effects near zero and one finding small drops. Hypothesis: Untested: more expert congressional staff may reduce insider influence.",
+  "illustrative": false,
+  "notes": "Every grade and every reading from the atlas's connection records. The two contested readings run 15 words each (Rule 01.16). LE14's figure is the Census count the atlas records; it is the official statistic H08 calls record language.",
+  "readable": true
+ },
+ "s-13-2-failure": {
+  "chapter": "13",
+  "rule": "13.2",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A chart head whose grade line reads Plausible, some evidence, titled Better public services build earned trust, with the direct verb build and no can or may.",
+  "illustrative": false,
+  "notes": "Labeled failure: the atlas's name for L20 used as a title, which states a plausible link as a finding."
+ },
+ "s-13-3-correct": {
+  "chapter": "13",
+  "rule": "13.3",
+  "width_px": null,
+  "alt": "The mapping table. Each row gives a display word, its gloss for a key, the grade values our systems atlas stores with their counts, and how a connection draws it. Documented, on the public record: a solid line with the record square. Well supported, strong research evidence, which the atlas spells two ways: a solid line. Plausible, some evidence: a dashed line. Contested, evidence disputed, which covers plausible_contested, contested and the contested flag: dash and dot. Hypothesis, not yet tested: dots. Mixed, on one issue record, and Retired, a record status kept out of keys, draw no line.",
+  "illustrative": false,
+  "notes": "Every count read from the atlas by script. Key glosses as Rule 12.6's key prints them (the chart system's GRADE_TABLE); the line names as Rule 10.10 draws them; plausible_contested as Contested, as the atlas concepts mapped it. Tension 8 asked for this table.",
+  "readable": true
+ },
+ "s-13-3-failure": {
+  "chapter": "13",
+  "rule": "13.3",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A chart key that lists well_supported and well-supported as two entries, plausible_contested as the atlas stores it, a made-up grade called Strong, and hypothesis in lower case, each beside a line sample.",
+  "illustrative": false,
+  "notes": "Labeled failure: the atlas's stored values printed raw, one grade spelled two ways, a homemade grade word."
+ },
+ "s-13-4-correct": {
+  "chapter": "13",
+  "rule": "13.4",
+  "width_px": null,
+  "alt": "Four loops from our systems atlas, each step drawn as a short arrow in the line of its grade, with its typed chip, name and grade word. Loop R10: two documented steps, each with the record square, one well supported, all solid, and one plausible step, dashed, the loop’s weakest. Loop R16: a well-supported solid step and an untested step in dots. Loop R3: a plausible dashed step and a contested step in dash and dot. Loop B2: one hollow line, since the atlas gives the loop no numbered connection.",
+  "illustrative": false,
+  "notes": "Lines at 2 px with Rule 10.10's patterns, fitted to each line's length as the atlas build's fitted() does; the record square and the hollow line as Gate 1's M1 approved them (Systems Marks board, October 21, 2026).",
+  "readable": true
+ },
+ "s-13-4-failure": {
+  "chapter": "13",
+  "rule": "13.4",
+  "width_px": null,
+  "alt": "Failure case: do not publish. Loop R10’s four steps, each drawn as a solid arrow with its chip and name, with no grade word and no record square, so the plausible step looks as firm as the documented ones.",
+  "illustrative": false,
+  "notes": "Labeled failure: one solid line for every grade, no grade words."
+ },
+ "s-13-5-correct": {
+  "chapter": "13",
+  "rule": "13.5",
+  "width_px": null,
+  "alt": "Reform R-30, More homes allowed by right near jobs, with four properties in four places. Grade: a dashed line and the word Plausible, for the evidence that it works. Effect size: one row for each outcome family, with pips beside a zero line and the atlas’s code and words: Quality of democracy +S, small positive, delayed; Government efficacy 0, no expected effect, drawn as a bar on the zero line; Economic performance +M, moderate positive; Income and wealth equality +M, moderate positive, renter-owner. Uncertainty, in the atlas’s words: high where binding; medium for US statutes. Delay: Connection L39, Owners’ equity drives opposition to new housing, with three ticks for over 10 years.",
+  "illustrative": false,
+  "notes": "Pips and the zero bar as Gate 1's M4 effect mark draws them; qualifiers kept as the atlas writes them; no total.",
+  "readable": true
+ },
+ "s-13-5-failure": {
+  "chapter": "13",
+  "rule": "13.5",
+  "width_px": null,
+  "alt": "Failure case: do not publish. Reform R-30 with an impact score of +5, the four outcome families added together, and a thick bar for the strength of its evidence. No delay appears.",
+  "illustrative": false,
+  "notes": "Labeled failure: a total across outcome families, a bar's thickness for a grade, delay left out."
+ },
+ "s-13-6-correct": {
+  "chapter": "13",
+  "rule": "13.6",
+  "width_px": null,
+  "alt": "A jobs chart’s head and foot: the title Payrolls shrank in seven of the 57 months charted, its measure line, and the source line, Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised. A table then takes the line apart: publisher, title or table, observation period, geography, the copy we read, date retrieved and qualification. Under it, a source line for a value from our systems atlas follows the same order.",
+  "illustrative": false,
+  "notes": "The source line is the engineer's sidecar printed_source_line for fred-payrolls-monthly-change, read by script, never retyped; the count of falling months is read from the same file.",
+  "readable": true
+ },
+ "s-13-6-failure": {
+  "chapter": "13",
+  "rule": "13.6",
+  "width_px": null,
+  "alt": "Failure case: do not publish. The same jobs chart’s head with a short measure line and the source line Source: FRED data.",
+  "illustrative": false,
+  "notes": "Labeled failure: a copy named in place of the publisher; no table, period, geography, date or qualification."
+ },
+ "s-13-7-correct": {
+  "chapter": "13",
+  "rule": "13.7",
+  "width_px": null,
+  "alt": "Two chart heads shown together: Child poverty stood at 13.4 percent in 2025, and Poverty among all people stood at 13.1 percent in 2025, both measured 2009 to 2025. One note gives the shared window and its reason, and the source line names the current release and its August 2026 revision. A table sets the two releases side by side for children: 2020, 9.7 first published and 9.6 now; 2021, 5.2 and 5.1; 2024, 13.4 and 13.5.",
+  "illustrative": false,
+  "notes": "Rows and source lines from the engineer's census-spm-child-poverty file and sidecar, including its source_line_first_published variant; the release dates from the sidecar's vintage field.",
+  "readable": true
+ },
+ "s-13-7-failure": {
+  "chapter": "13",
+  "rule": "13.7",
+  "width_px": null,
+  "alt": "Failure case: do not publish. Two chart heads side by side. The first is titled Child poverty fell from 9.7 percent in 2020 to 5.2 percent in 2021, then rose to 13.5 percent in 2024, with no period or release named. The second runs 2017 to 2025.",
+  "illustrative": false,
+  "notes": "Labeled failure: 2020 and 2021 as first published beside 2024 as revised, with no release named, and two windows in one set."
+ },
+ "s-13-8-correct": {
+  "chapter": "13",
+  "rule": "13.8",
+  "width_px": null,
+  "alt": "A story card. Its headline, Medicare caps what Part D enrollees pay for each covered insulin at $35 a month, and the line under it report a real rule, with its source line. An invented reader, Ruth Okafor, 71, of Alder County, says she checks each fall that her insulin is still on her plan’s list, with the Illustrative label beside her name.",
+  "illustrative": true,
+  "notes": "The rule and its dates from the atlas's headline figures (checked October 15, 2026); the reader, her words and Alder County are invented. Lora Italic for her words (DR-47).",
+  "readable": true
+ },
+ "s-13-8-failure": {
+  "chapter": "13",
+  "rule": "13.8",
+  "width_px": null,
+  "alt": "Failure case: do not publish. The same story card with the invented reader and her words unlabeled, and a note at the foot that says some people and quotes in our pieces are illustrative.",
+  "illustrative": false,
+  "notes": "Labeled failure: one general note at the foot in place of a label beside the invented reader. The caption names her as invented, so the plate itself carries no label (the failure it shows)."
+ },
+ "s-13-9-correct": {
+  "chapter": "13",
+  "rule": "13.9",
+  "width_px": null,
+  "alt": "Three sentences, each atlas ID in its typed chip with the record’s name after it. Variable B4, hostility toward the other political party, raises Variable B6, exposure to hostile political content, through Connection L46. Loop B4, electoral consequences can improve public performance, runs through Variable C3, risk of losing office. Loop R1, wealth and political influence reinforce each other, and Reform R-01, all-party primaries with ranked general elections, are separate records.",
+  "illustrative": false,
+  "notes": "Chips as Rule 18.24 builds them (c-18-id-chip); every ID and name read from the atlas; B2 to B5 are the IDs variables and loops share.",
+  "readable": true
+ },
+ "s-13-9-failure": {
+  "chapter": "13",
+  "rule": "13.9",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A sentence of bare codes: When B4 rises, B6 rises with it. B4 runs through C3, and R1 explains why R-01 matters.",
+  "illustrative": false,
+  "notes": "Labeled failure: bare atlas IDs, two of them the same code for different kinds of record."
+ },
+ "s-13-10-correct": {
+  "chapter": "13",
+  "rule": "13.10",
+  "width_px": null,
+  "alt": "Reform R-19, Rules for drug-pricing middlemen (PBMs), with its status dated as of October 15, 2026: partly in place. A table lists three routes to change. Route FS, Federal statute, rated high, checked October 15, 2026. Route ENF, Enforcement and litigation, rated medium, not checked. Route SS, State statute, rated high, not checked.",
+  "illustrative": false,
+  "notes": "Routes, ratings and check dates read from the atlas; 13 of its 126 route entries carry a date.",
+  "readable": true
+ },
+ "s-13-10-failure": {
+  "chapter": "13",
+  "rule": "13.10",
+  "width_px": null,
+  "alt": "Failure case: do not publish. Reform R-19 under the heading Where it stands now, with its three routes rated and no date on the status or on any route.",
+  "illustrative": false,
+  "notes": "Labeled failure: an undated status and routes that read as checked."
+ },
+ "s-13-11-correct": {
+  "chapter": "13",
+  "rule": "13.11",
+  "width_px": null,
+  "alt": "Loop R1, wealth and political influence reinforce each other, in two parts. Events: the atlas’s seven repair log rows on the loop, each a filled shape for its instrument with its date, place and what it did, grouped by the atlas’s direction words. Toward voters: New York City’s Local Law 8 in 1988, marked source not checked; New York City’s Charter Question 1 in 2018; Seattle’s Proposition 1 in 2025; Alaska’s Ballot Measure 1 in 2026. Away from voters: the court rulings in Citizens United in 2010, McCutcheon in 2014 and NRSC in 2026. None has an arrow. Causal findings: the loop’s three connections, drawn as arrows in the line of their grades with delay ticks: L01 well supported, L02 plausible, L03 well supported.",
+  "illustrative": false,
+  "notes": "Event shapes as Gate 1's M4 approved them (Systems Marks board, mark 5): ballot measure a square, statute or local law a wide bar, court ruling a tall bar, executive or agency action a framed square. Each row's words are a short form of the atlas's own; dates, places, instruments and directions read from the log.",
+  "readable": true
+ },
+ "s-13-11-failure": {
+  "chapter": "13",
+  "rule": "13.11",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A box for the Citizens United ruling of January 21, 2010 joined by a solid arrow with a plus sign to a box for money spent to influence politics, graded Documented with the record square.",
+  "illustrative": false,
+  "notes": "Labeled failure: a dated event drawn with the causal grammar of a connection."
+ },
+ "s-13-12-correct": {
+  "chapter": "13",
+  "rule": "13.12",
+  "width_px": null,
+  "alt": "A quotation set beside Variable D6, state and local testing of reforms, in our systems atlas. In Lora Italic: “It is one of the happy incidents of the federal system that a single courageous state may, if its citizens choose, serve as a laboratory; and try novel social and economic experiments without risk to the rest of the country.” Under it: Louis D. Brandeis, associate justice of the Supreme Court, dissenting in New State Ice Co. v. Liebmann, an Oklahoma case the Court decided on March 21, 1932. The source line names the case and the Legal Information Institute, retrieved November 11, 2026.",
+  "illustrative": false,
+  "notes": "The words copied from the opinion at https://www.law.cornell.edu/supremecourt/text/285/262, read November 11, 2026, where the decision date (March 21, 1932) and Justice Brandeis's dissent also appear. The Legal Information Institute prints “state” in lower case, and the quote keeps it. The opinion holds neither “laboratories” nor “democracy”, which the failure plate's paraphrase uses.",
+  "readable": true
+ },
+ "s-13-12-failure": {
+  "chapter": "13",
+  "rule": "13.12",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A pull quote in Lora Italic, “States are the laboratories of democracy.”, credited to Louis Brandeis with no role, date, place or source.",
+  "illustrative": false,
+  "notes": "Labeled failure: a later paraphrase in quotation marks; the opinion's text holds neither word it turns on."
+ },
+ "s-13-13-correct": {
+  "chapter": "13",
+  "rule": "13.13",
+  "width_px": null,
+  "alt": "An invented article and its corrections page entry, each labeled Illustrative. Above the headline, Alder County’s libraries add Sunday hours from January, a note with a dark bar reads: Corrected November 4, 2026. An earlier version of this article and its chart gave the Main Library’s weekly hours as 58. The county’s adopted schedule gives 52. We replaced the chart and fixed the second paragraph. The fixed chart follows, ranking weekly hours: Main Library 52, Riverside 44, Elm Street 36. The corrections page lists the same note under its date, with the headline and the date the article first ran.",
+  "illustrative": true,
+  "notes": "Invented throughout, one label at the head of each piece (DR-97). The note's tokens follow Rule 26.3's example for a correction notice: primary text and a 4 px bar in the essential graphic color. The chart is a static drawing in the chart tokens until the kit's guide hook lands; its kit spec is s-13-13-correct.chart.json.",
+  "readable": true
+ },
+ "s-13-13-failure": {
+  "chapter": "13",
+  "rule": "13.13",
+  "width_px": null,
+  "alt": "Failure case: do not publish. The same invented article, labeled Illustrative, with the chart already showing 52 hours and one word at its foot, Updated, with no date and no account of what was wrong.",
+  "illustrative": true,
+  "notes": "Labeled failure: a silent fix with an undated Updated line at the foot."
+ }
+}

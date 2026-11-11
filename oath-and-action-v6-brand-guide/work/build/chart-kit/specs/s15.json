@@ -1,0 +1,127 @@
+{
+  "kit": 1,
+  "id": "S15",
+  "form": "results-table",
+  "family": "tables-and-plain-words",
+  "tier": "core",
+  "dataset": "fec-presidential-shift-by-state",
+  "sort": [
+    {
+      "field": "scope",
+      "order": "asc"
+    },
+    {
+      "field": "margin_2024",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "How did each state vote in 2024, and how did that compare with 2020?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: official results the states reported, compiled by the Federal Election Commission",
+  "title": "The Republican nominee led in 31 states in 2024, six more than in 2020; in four of the six states that changed leader, the lead was under 2.5 points.",
+  "reading_guide": "Each margin sits on the side of the nominee who led, with the party named: left of the center line, the Democratic nominee; right of it, the Republican nominee. Bars grow from the center line, and every arrow points toward the Republican nominee.",
+  "measure_line": "Presidential margin by state in 2024 and 2020: the leading nominee’s share of all presidential votes minus the other’s, in percentage points, with the shift between the two elections; 50 states and DC, with the United States above them",
+  "notes": [
+    "Margin: the Republican nominee’s share of all presidential votes minus the Democratic nominee’s, printed as the leader’s lead. A state whose leader changed carries a tag.",
+    "The Democratic nominee led in 19 states and DC in 2024. The four close changes of leader: Wisconsin Republican +0.9, Michigan Republican +1.4, Pennsylvania Republican +1.7, Georgia Republican +2.2.",
+    "New York’s figures count every ballot line each nominee held, including the Working Families and Conservative lines.",
+    "Maine and Nebraska split their electoral votes by district; these margins are statewide."
+  ],
+  "source_line": "Source: Federal Election Commission, Federal Elections 2020 (Table 2) and Official 2024 Presidential General Election Results, compiled from state election offices, November 2020 and November 2024, 50 states and DC. Retrieved November 6, 2026. Margins are Republican minus Democratic share of all presidential votes; New York counts fused party lines.",
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A results table of every state and DC, with the United States above them, giving the 2024 and 2020 presidential margins with the leader named and the shift toward the Republican nominee. The Republican nominee led in 31 states in 2024, six more than in 2020: Wisconsin, Michigan, Pennsylvania and Georgia by under 2.5 points, Nevada by 3.1 and Arizona by 5.5.",
+  "table": {
+    "caption": "Presidential margin and vote shares, the United States and each state, 2024 and 2020",
+    "columns": [
+      {
+        "field": "name",
+        "label": "Place",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "margin_2024",
+        "label": "2024 margin",
+        "format": "lead:1",
+        "lead": {
+          "positive": "Republican",
+          "negative": "Democratic",
+          "zero": "Even"
+        }
+      },
+      {
+        "field": "margin_2020",
+        "label": "2020 margin",
+        "format": "lead:1",
+        "lead": {
+          "positive": "Republican",
+          "negative": "Democratic",
+          "zero": "Even"
+        }
+      },
+      {
+        "field": "shift_pts",
+        "label": "Shift toward the Republican nominee, points",
+        "format": "number:1"
+      },
+      {
+        "field": "dem_pct_2024",
+        "label": "Democratic nominee, percent, 2024",
+        "format": "number:2"
+      },
+      {
+        "field": "rep_pct_2024",
+        "label": "Republican nominee, percent, 2024",
+        "format": "number:2"
+      },
+      {
+        "field": "total_votes_2024",
+        "label": "Total votes, 2024",
+        "format": "integer"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Each margin sits on the side of the nominee who led, with the party named. Bars grow from the center line; arrows give the shift toward the Republican nominee. The table opens in order of the 2024 margin, with a row at the even line, and sorts by any column on the atlas site. Where a full row does not fit, each row becomes a card that names the leader and margin in each year and gives the shift in words."
+  ],
+  "phone": "differs",
+  "phone_note": "Where a full row does not fit, each row becomes a card that names the leader and margin in each year and gives the shift toward the Republican nominee in words, beside its arrow.",
+  "artboard": "wide",
+  "domain": "D02",
+  "states": [],
+  "encode": {
+    "key": "code",
+    "label": "name",
+    "from": "margin_2020",
+    "to": "margin_2024",
+    "shift": "shift_pts",
+    "scope": "scope"
+  },
+  "labels": {
+    "titles": {
+      "label": "State",
+      "to": "2024 margin",
+      "from": "2020 margin",
+      "shift": "Shift toward the Republican nominee"
+    },
+    "lead": {
+      "neg": "Democratic",
+      "pos": "Republican"
+    },
+    "tag": "Leader changed",
+    "apart_value": "nation",
+    "even_line": "Even line. In every row above, the Democratic nominee led in 2024; in every row below, the Republican nominee led."
+  },
+  "notes_internal": [
+    "DR-64: the United States row (scope nation) is drawn above the states, set apart and labeled; Phase 2's S15 had none.",
+    "Party names in words and neutral inks (H10, DR-48, DR-58).",
+    "The table equivalent joins Phase 2's two tables, the margins and the vote shares, so one table holds every row the chart draws.",
+    "Checked by script: Republican lead in 31 states in 2024 and 25 in 2020; changed leader WI 0.86, MI 1.41, PA 1.70, GA 2.19, NV 3.10, AZ 5.53."
+  ],
+  "formats": {
+    "margin": "number:1",
+    "shift": "number:1"
+  }
+}

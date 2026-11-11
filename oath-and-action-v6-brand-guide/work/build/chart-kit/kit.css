@@ -1,0 +1,111 @@
+/* Oath & Action chart kit, the figure's style. Every value is a var(--oa-...) token from tokens.css; a figure takes its
+ * ground from the surface class around it (.oa-surface-newsprint or .oa-surface-charcoal), which points the short names.
+ * Modeled on the approved Explainer (DR-52 to DR-61) and the stretch page (DR-64). */
+.oac-fig { margin: 0; max-width: var(--oa-chart-artboard-reading); container-type: inline-size; color: var(--oa-color-text-primary); font-family: var(--oa-font-family-reading); }
+.oac-fig[data-oa-artboard="wide"] { max-width: var(--oa-chart-artboard-wide); }
+.oac-fig[data-oa-artboard="mid"] { max-width: var(--oa-chart-artboard-mid); }
+.oac-ev { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 0 0 12px; }
+.oac-ev-k { margin: 0; padding: 2px 6px; background: var(--oa-color-text-primary); color: var(--oa-color-surface); font: var(--oa-font-weight-bold) var(--oa-chart-type-eyebrow)/18px var(--oa-font-family-reading); letter-spacing: 0.04em; text-transform: uppercase; }
+.oac-ev-g { margin: 0; font: var(--oa-font-weight-regular) 14px/20px var(--oa-font-family-reading); color: var(--oa-color-text-secondary); }
+.oac-title { margin: 0; font: var(--oa-font-weight-extrabold) var(--oa-chart-type-title-size)/var(--oa-chart-type-title-leading) var(--oa-font-family-display); letter-spacing: -0.02em; text-wrap: balance; max-width: 30em; }
+.oac-guide { margin: 10px 0 0; font: var(--oa-font-weight-regular) 15px/22px var(--oa-font-family-reading); max-width: 42em; text-wrap: pretty; }
+.oac-measure { margin: 10px 0 0; font: var(--oa-font-weight-regular) var(--oa-chart-type-measure-size)/var(--oa-chart-type-measure-leading) var(--oa-font-family-reading); color: var(--oa-color-text-secondary); max-width: 42em; text-wrap: pretty; }
+.oac-art { position: relative; margin: 28px 0 0; }
+.oac-art > svg.oac-svg { display: block; max-width: 100%; height: auto; overflow: visible; }
+.oac-illus { margin: 0 0 8px; font: var(--oa-font-weight-semibold) 14px/20px var(--oa-font-family-reading); }
+.oac-alt, .oac-vh { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.oac-notes { margin: 22px 0 0; padding: 14px 0 0 18px; border-top: 1px solid var(--oa-color-border-hairline); max-width: 38em; font: var(--oa-font-weight-regular) 15px/23px var(--oa-font-family-reading); }
+.oac-notes li + li { margin-top: 8px; }
+.oac-src { display: flex; justify-content: space-between; align-items: flex-start; gap: 4px 24px; flex-wrap: wrap; margin-top: 20px; padding-top: 10px; border-top: 1px solid var(--oa-color-border-hairline); }
+.oac-source, .oac-credit { margin: 0; font: var(--oa-font-weight-regular) 13px/18px var(--oa-font-family-reading); color: var(--oa-color-text-secondary); max-width: 42em; }
+.oac-src-k { font-weight: var(--oa-font-weight-semibold); color: var(--oa-color-text-primary); }
+.oac-eq { margin-top: 14px; }
+.oac-eq > summary { cursor: pointer; font: var(--oa-font-weight-semibold) 15px/22px var(--oa-font-family-reading); list-style: none; padding: 4px 0; }
+.oac-eq > summary::-webkit-details-marker { display: none; }
+.oac-eq > summary::before { content: "+"; display: inline-block; width: 1.1em; }
+.oac-eq[open] > summary::before { content: "\2212"; }
+.oac-eq > summary:focus-visible, .oac-tw:focus-visible { outline: 2px solid var(--oa-color-focus-ring); outline-offset: 2px; }
+.oac-eq-h { margin: 8px 0 4px; font: var(--oa-font-weight-semibold) 15px/22px var(--oa-font-family-reading); }
+.oac-eq-n { margin: 0 0 12px; padding-left: 18px; font: var(--oa-font-weight-regular) 14px/20px var(--oa-font-family-reading); }
+.oac-tw { overflow-x: auto; max-width: 100%; }
+.oac-table { border-collapse: collapse; width: 100%; font: var(--oa-font-weight-regular) 14px/20px var(--oa-font-family-reading); }
+.oac-table caption { text-align: left; font-weight: var(--oa-font-weight-semibold); padding: 4px 0 6px; }
+.oac-table th, .oac-table td { padding: 6px 14px 6px 0; border-top: 1px solid var(--oa-color-border-hairline); text-align: left; vertical-align: top; }
+.oac-table thead th { font-weight: var(--oa-font-weight-semibold); }
+.oac-table tbody th { font-weight: var(--oa-font-weight-semibold); }
+.oac-table .oac-num { text-align: right; font-variant-numeric: tabular-nums; }
+.oac-fig .oa-id { white-space: nowrap; }
+.oac-phone-notes { display: none; }
+@container (max-width: 479px) {
+  .oac-phone-notes { display: block; }
+  .oac-title { font-size: var(--oa-chart-type-title-phone-size); line-height: var(--oa-chart-type-title-phone-leading); }
+  .oac-measure { font-size: 15px; line-height: 22px; }
+  .oac-src { flex-direction: column; }
+}
+
+/* The drawing: text */
+.oac-svg { overflow: visible; }
+.oac-t { font-family: var(--oa-font-family-reading); }
+.oac-t-big { font-family: var(--oa-font-family-display); letter-spacing: -0.02em; }
+.oac-w4 { font-weight: var(--oa-font-weight-regular); }
+.oac-w6 { font-weight: var(--oa-font-weight-semibold); }
+.oac-w7 { font-weight: var(--oa-font-weight-bold); }
+.oac-w8 { font-weight: var(--oa-font-weight-extrabold); }
+.oac-tnum { font-variant-numeric: tabular-nums; }
+.oac-halo { paint-order: stroke; stroke: var(--oa-color-surface); stroke-width: var(--oa-chart-halo); stroke-linejoin: round; }
+
+/* The drawing: color roles, fill (oac-f-) and stroke (oac-s-), each from an oa.chart token */
+.oac-f-subject { fill: var(--oa-chart-color-subject); } .oac-s-subject { stroke: var(--oa-chart-color-subject); fill: none; }
+.oac-f-context { fill: var(--oa-chart-color-context); } .oac-s-context { stroke: var(--oa-chart-color-context); fill: none; }
+.oac-f-secondary { fill: var(--oa-chart-color-secondary); } .oac-s-secondary { stroke: var(--oa-chart-color-secondary); fill: none; }
+.oac-f-label { fill: var(--oa-chart-color-label); } .oac-s-label { stroke: var(--oa-chart-color-label); fill: none; }
+.oac-f-label-on-subject { fill: var(--oa-chart-color-label-on-subject); }
+.oac-f-baseline { fill: var(--oa-chart-color-baseline); } .oac-s-baseline { stroke: var(--oa-chart-color-baseline); fill: none; }
+.oac-f-gridline { fill: var(--oa-chart-color-gridline); } .oac-s-gridline { stroke: var(--oa-chart-color-gridline); fill: none; }
+.oac-f-leader { fill: var(--oa-chart-color-leader); } .oac-s-leader { stroke: var(--oa-chart-color-leader); fill: none; }
+.oac-f-point { fill: var(--oa-chart-color-point); } .oac-s-point-keyline { stroke: var(--oa-chart-color-point-keyline, var(--oa-chart-color-subject)); fill: none; }
+.oac-f-band { fill: var(--oa-chart-color-band); }
+.oac-f-track { fill: var(--oa-chart-color-track); } .oac-s-track { stroke: var(--oa-chart-color-track); fill: none; }
+.oac-f-light-fill { fill: var(--oa-chart-color-light-fill); }
+.oac-f-land { fill: var(--oa-chart-color-land); } .oac-s-land { stroke: var(--oa-chart-color-land); fill: none; }
+.oac-f-party { fill: var(--oa-chart-color-party-mark); } .oac-s-party { stroke: var(--oa-chart-color-party-mark); fill: none; }
+.oac-f-chip-fill { fill: var(--oa-chart-color-chip-fill); } .oac-f-chip-label { fill: var(--oa-chart-color-chip-label); }
+.oac-f-surface { fill: var(--oa-color-surface); } .oac-s-surface { stroke: var(--oa-color-surface); fill: none; }
+.oac-s-sequential-outline { stroke: var(--oa-chart-color-sequential-outline); fill: none; }
+.oac-f-seq-1 { fill: var(--oa-chart-color-sequential-fill-step1); } .oac-f-seq-2 { fill: var(--oa-chart-color-sequential-fill-step2); }
+.oac-f-seq-3 { fill: var(--oa-chart-color-sequential-fill-step3); } .oac-f-seq-4 { fill: var(--oa-chart-color-sequential-fill-step4); }
+.oac-f-seq-5 { fill: var(--oa-chart-color-sequential-fill-step5); }
+.oac-f-div-1 { fill: var(--oa-chart-color-diverging-fill-step1); } .oac-f-div-2 { fill: var(--oa-chart-color-diverging-fill-step2); }
+.oac-f-div-3 { fill: var(--oa-chart-color-diverging-fill-step3); } .oac-f-div-4 { fill: var(--oa-chart-color-diverging-fill-step4); }
+.oac-f-div-5 { fill: var(--oa-chart-color-diverging-fill-step5); }
+.oac-f-mag-1 { fill: var(--oa-chart-color-magnitude-fill-step1); } .oac-f-mag-2 { fill: var(--oa-chart-color-magnitude-fill-step2); }
+.oac-f-mag-3 { fill: var(--oa-chart-color-magnitude-fill-step3); } .oac-f-mag-4 { fill: var(--oa-chart-color-magnitude-fill-step4); }
+/* The categorical set (DR-234): Charcoal, Prussian, Verdigris, Stone. Until the palette tokens land, each falls back to an existing chart token. */
+.oac-f-cat-1 { fill: var(--oa-chart-color-categorical-1, var(--oa-chart-color-subject)); } .oac-s-cat-1 { stroke: var(--oa-chart-color-categorical-1, var(--oa-chart-color-subject)); fill: none; }
+.oac-f-cat-2 { fill: var(--oa-chart-color-categorical-2, var(--oa-chart-color-sequential-fill-step5)); } .oac-s-cat-2 { stroke: var(--oa-chart-color-categorical-2, var(--oa-chart-color-sequential-fill-step5)); fill: none; }
+.oac-f-cat-3 { fill: var(--oa-chart-color-categorical-3, var(--oa-chart-color-sequential-fill-step3)); } .oac-s-cat-3 { stroke: var(--oa-chart-color-categorical-3, var(--oa-chart-color-sequential-fill-step3)); fill: none; }
+.oac-f-cat-4 { fill: var(--oa-chart-color-categorical-4, var(--oa-chart-color-context)); } .oac-s-cat-4 { stroke: var(--oa-chart-color-categorical-4, var(--oa-chart-color-context)); fill: none; }
+.oac-f-none { fill: none; }
+.oac-svg line, .oac-svg path, .oac-svg polyline { vector-effect: non-scaling-stroke; }
+
+/* Forced colors: keep the drawing readable in the system's own colors */
+@media (forced-colors: active) {
+  .oac-svg [class*="oac-f-"]:not(.oac-t) { fill: CanvasText; }
+  .oac-svg .oac-f-surface, .oac-svg .oac-f-band, .oac-svg .oac-f-track, .oac-svg .oac-f-land, .oac-svg .oac-f-light-fill { fill: Canvas; }
+  .oac-svg [class*="oac-s-"] { stroke: CanvasText; }
+  .oac-svg .oac-s-surface { stroke: Canvas; }
+  .oac-svg .oac-t { fill: CanvasText; }
+  .oac-halo { stroke: Canvas; }
+  .oac-ev-k { forced-color-adjust: none; background: CanvasText; color: Canvas; }
+}
+@media print {
+  .oac-eq { break-inside: avoid; }
+  .oac-fig { break-inside: avoid-page; }
+}
+
+/* Lean inline SVG (the pilot's first method): the desktop and phone drawings sit side by side in the page, one shown */
+.oac-art[data-oa-lean] > svg.oac-phone { display: none; }
+@container (max-width: 479px) {
+  .oac-art[data-oa-lean] > svg.oac-desk { display: none; }
+  .oac-art[data-oa-lean] > svg.oac-phone { display: block; }
+}

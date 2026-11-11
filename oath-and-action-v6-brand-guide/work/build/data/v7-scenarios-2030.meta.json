@@ -1,0 +1,99 @@
+{
+ "file": "v7-scenarios-2030.json",
+ "kind": "v7",
+ "publisher": "Oath & Action, Who Do They Answer To? Systems Atlas V7",
+ "title_or_table": "reform outcomes, eight scenarios and the direction each would move four outcome families",
+ "table_id": "scenarios.items",
+ "url": "work/extract/atlas-v7-data.json",
+ "observation_period": "Conditional directions to 2036 from a 2026 baseline",
+ "geography": "United States",
+ "universe_or_base": "Eight scenarios",
+ "unit": "Direction words, no numbers",
+ "date_retrieved": "2026-10-15",
+ "vintage": "Atlas V7 snapshot of October 15, 2026",
+ "qualification": "Each scenario gives a direction only if its assumptions hold. It is no forecast, gives no odds, and the four families are never added together.",
+ "columns": {
+  "id": {
+   "type": "id",
+   "description": "V7 scenario ID, i to viii"
+  },
+  "name": {
+   "type": "text",
+   "description": "scenario name, V7’s words"
+  },
+  "assumptions": {
+   "type": "text",
+   "description": "V7’s assumptions, joined with \"; \""
+  },
+  "dq": {
+   "type": "text",
+   "description": "V7’s direction words for Quality of democracy"
+  },
+  "dq_class": {
+   "type": "category",
+   "description": "the studio’s coarse reading of those words, for a glyph or tint only: up, slightly up, flat, flat or down, down, mixed, same as ii"
+  },
+  "dq_why": {
+   "type": "text",
+   "description": "V7’s reason for the Quality of democracy direction"
+  },
+  "ge": {
+   "type": "text",
+   "description": "V7’s direction words for Government efficacy"
+  },
+  "ge_class": {
+   "type": "category",
+   "description": "the studio’s coarse reading of those words, for a glyph or tint only: up, slightly up, flat, flat or down, down, mixed, same as ii"
+  },
+  "ge_why": {
+   "type": "text",
+   "description": "V7’s reason for the Government efficacy direction"
+  },
+  "ep": {
+   "type": "text",
+   "description": "V7’s direction words for Economic performance"
+  },
+  "ep_class": {
+   "type": "category",
+   "description": "the studio’s coarse reading of those words, for a glyph or tint only: up, slightly up, flat, flat or down, down, mixed, same as ii"
+  },
+  "ep_why": {
+   "type": "text",
+   "description": "V7’s reason for the Economic performance direction"
+  },
+  "eq": {
+   "type": "text",
+   "description": "V7’s direction words for Income and wealth equality"
+  },
+  "eq_class": {
+   "type": "category",
+   "description": "the studio’s coarse reading of those words, for a glyph or tint only: up, slightly up, flat, flat or down, down, mixed, same as ii"
+  },
+  "eq_why": {
+   "type": "text",
+   "description": "V7’s reason for the Income and wealth equality direction"
+  }
+ },
+ "printed_source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, reform outcomes, eight scenarios, conditional directions to 2036 from a 2026 baseline, United States. Snapshot of October 15, 2026. Each scenario gives a direction only if its assumptions hold. It is no forecast, gives no odds, and the four families are never added together.",
+ "ledger_row": "not needed: Atlas V7, read by script",
+ "domain": "all",
+ "states": [],
+ "snapshot": "2026-10-15",
+ "specimens": [
+  "S06"
+ ],
+ "extract_script": "work/build/scripts/phase-3/data_round0_build.py",
+ "intro": "Each scenario states a set of assumptions and gives the direction each outcome family would take if those assumptions hold. These are conditional directions. They make no forecast of what will happen and give no odds that any assumption comes true. The four outcome families are read separately and never added together. A scenario shows a number only when it names the method and the inputs behind it.",
+ "domain_note": "The scenarios cover four outcome families across every domain of the atlas",
+ "class_method": "The studio’s coarse reading of V7’s direction words, for a glyph or tint only. The words are V7’s and always print beside any glyph. Words that start ‘up’ read up, except ‘up modestly’; ‘slightly up’, ‘up modestly’ and ‘small and slow’ read slightly up; ‘flat’, ‘near trend’ and ‘flat through 2036’ read flat; ‘down or flat’ and ‘flat, or down if ...’ read flat or down; ‘down’ reads down; ‘mixed’ and ‘prices down ...; employment effects mixed’ read mixed; ‘same as scenario ii’ points to scenario ii.",
+ "class_rules": [
+  "A glyph or tint is a reading aid only; the four families are never added or tallied, so no badge, count or title may say \"all four up\".",
+  "\"same as ii\" points to scenario ii and must print as words; it is no direction of its own."
+ ],
+ "families": {
+  "DQ": "Quality of democracy",
+  "GE": "Government efficacy",
+  "EP": "Economic performance",
+  "EQ": "Income and wealth equality"
+ }
+}

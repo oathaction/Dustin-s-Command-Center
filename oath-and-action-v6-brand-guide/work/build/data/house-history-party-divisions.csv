@@ -1,0 +1,39 @@
+congress,first_year,last_year,seats,seats_footnote,democrats,republicans,other,other_detail,majority_party,majority_advantage_seats
+82,1951,1953,435,,235,199,1,Independent (1),Democrats,36
+83,1953,1955,435,,213,221,1,Independent (1),Republicans,8
+84,1955,1957,435,,232,203,0,,Democrats,29
+85,1957,1959,435,,232,203,0,,Democrats,29
+86,1959,1961,436,3,282,153,1,Independent Democrat (1),Democrats,129
+87,1961,1963,437,,264,173,0,,Democrats,91
+88,1963,1965,435,,258,176,1,Independent Democrat (1),Democrats,82
+89,1965,1967,435,,295,140,0,,Democrats,155
+90,1967,1969,435,,248,187,0,,Democrats,61
+91,1969,1971,435,,243,192,0,,Democrats,51
+92,1971,1973,435,,255,180,0,,Democrats,75
+93,1973,1975,435,,243,192,0,,Democrats,51
+94,1975,1977,435,,291,144,0,,Democrats,147
+95,1977,1979,435,,292,143,0,,Democrats,149
+96,1979,1981,435,,278,157,0,,Democrats,121
+97,1981,1983,435,,243,192,0,,Democrats,51
+98,1983,1985,435,,269,166,0,,Democrats,103
+99,1985,1987,435,4,253,181,0,,Democrats,72
+100,1987,1989,435,,258,177,0,,Democrats,81
+101,1989,1991,435,,260,175,0,,Democrats,85
+102,1991,1993,435,,267,167,1,Independent (1),Democrats,100
+103,1993,1995,435,,258,176,1,Independent (1),Democrats,82
+104,1995,1997,435,,204,230,1,Independent (1),Republicans,26
+105,1997,1999,435,,207,226,2,Independent (2),Republicans,19
+106,1999,2001,435,,211,223,1,Independent (1),Republicans,12
+107,2001,2003,435,,212,221,2,Independent (2),Republicans,9
+108,2003,2005,435,,205,229,1,Independent (1),Republicans,24
+109,2005,2007,435,,202,232,1,Independent (1),Republicans,30
+110,2007,2009,435,,233,202,0,,Democrats,31
+111,2009,2011,435,,257,178,0,,Democrats,79
+112,2011,2013,435,,193,242,0,,Republicans,49
+113,2013,2015,435,,201,234,0,,Republicans,33
+114,2015,2017,435,,188,247,0,,Republicans,59
+115,2017,2019,435,,194,241,0,,Republicans,47
+116,2019,2021,435,5,235,199,0,,Democrats,36
+117,2021,2023,435,6,222,212,0,,Democrats,10
+118,2023,2025,435,,213,222,0,,Republicans,9
+119,2025,2027,435,,215,220,0,,Republicans,5

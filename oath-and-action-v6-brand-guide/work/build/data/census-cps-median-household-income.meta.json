@@ -1,0 +1,83 @@
+{
+ "file": "census-cps-median-household-income.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "Income in the United States: 2025 (P60-289), Table 2, Households by Total Money Income, Race, and Hispanic Origin of Householder: 1967 to 2025 (All races rows; median income and its margin of error)",
+ "table_id": "P60-289 Table 2",
+ "url": [
+  "https://www2.census.gov/programs-surveys/demo/tables/p60/289/table2.xlsx",
+  "https://www2.census.gov/library/publications/2026/demo/p60-289.pdf"
+ ],
+ "observation_period": "Calendar years 1967 to 2025 (income year; households counted the following March)",
+ "geography": "United States",
+ "universe_or_base": "Households, all races",
+ "unit": "median household income in 2025 dollars (C-CPI-U from 2000, R-CPI-U-RS before); median_moe is the 90 percent margin of error; low_90 and high_90 are the estimate minus and plus it",
+ "date_retrieved": "2026-11-11",
+ "vintage": "P60-289 release, September 2026",
+ "qualification": "Survey estimates from the Current Population Survey Annual Social and Economic Supplement; money income before taxes. Some years appear twice where the survey changed (2013, 2017), and footnotes mark breaks in method, population controls and processing, so a confidence band must break where the footnotes say",
+ "columns": {
+  "year": {
+   "type": "year",
+   "description": "income year"
+  },
+  "footnotes": {
+   "type": "text",
+   "description": "the table's footnote numbers for the row, space separated"
+  },
+  "households_thousands": {
+   "type": "integer",
+   "description": "households",
+   "unit": "thousands"
+  },
+  "median_income": {
+   "type": "integer",
+   "description": "median household income",
+   "unit": "2025 dollars"
+  },
+  "median_moe": {
+   "type": "integer",
+   "description": "90 percent margin of error",
+   "unit": "2025 dollars"
+  },
+  "low_90": {
+   "type": "integer",
+   "description": "lower bound of the 90 percent interval",
+   "unit": "2025 dollars"
+  },
+  "high_90": {
+   "type": "integer",
+   "description": "upper bound of the 90 percent interval",
+   "unit": "2025 dollars"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, Income in the United States: 2025, Table 2, median household income, 1967 to 2025, United States. Retrieved November 11, 2026. Survey estimates in 2025 dollars with 90 percent margins of error; methods changed in several years, marked in the table.",
+ "ledger_row": "P7-032",
+ "domain": "D08",
+ "states": [],
+ "notes": [
+  "Footnote 3: Implementation of Vintage 2025 population controls.",
+  "Footnote 4: Implementation of 2020 Census-based population controls.",
+  "Footnote 5: Estimates reflect the implementation of an updated processing system and should be used to make comparisons to 2018 and subsequent years.",
+  "Footnote 6: The 2014 CPS ASEC included redesigned questions for income and health insurance coverage. All of the approximately 98,000 addresses were eligible to receive the redesigned set of health insurance coverage questions. The redesigned income questions were implemented to a subsample of these 98,000 addresses using a probability split panel design. Approximately 68,000 addresses were eligible to receive a set of income questions similar to those used in the 2013 CPS ASEC and the remaining 30,000 addresses were eligible to receive the redesigned income questions. The source of these 2013 estimates is the portion of the CPS ASEC sample that received the redesigned income questions, approximately 30,000 addresses.",
+  "Footnote 7: The source of these 2013 estimates is the portion of the CPS ASEC sample that received the income questions consistent with the 2013 CPS ASEC, approximately 68,000 addresses.",
+  "Footnote 8: Implementation of 2010 Census-based population controls. Beginning with 2010, standard errors in this table were calculated using replicate weights. Before 2010, standard errors were calculated using the generalized variance function.",
+  "Footnote 9: Beginning with 2009 income data, the Census Bureau expanded the upper income intervals used to calculate medians to $250,000 or more. Medians falling in the upper open-ended interval are plugged with \"$250,000.\" Before 2009, the upper open-ended interval was $100,000 and a plug of \"$100,000\" was used.",
+  "Footnote 10: Data have been revised to reflect a correction to the weights in the 2005 CPS ASEC.",
+  "Footnote 11: Implementation of a 28,000-household sample expansion.",
+  "Footnote 12: Implementation of 2000 Census-based population controls.",
+  "Footnote 13: Full implementation of 1990 Census-based sample design and metropolitan definitions, 7,000-household sample reduction, and revised editing of responses on race.",
+  "Footnote 14: Introduction of 1990 Census-based sample design.",
+  "Footnote 15: Data collection method changed from paper and pencil to computer-assisted interviewing. In addition, the 1994 CPS ASEC was revised to allow for the coding of different income amounts on selected questionnaire items. Limits either increased or decreased in the following categories: earnings limits increased to $999,999; Social Security limits increased to $49,999; Supplemental Security Income and public assistance limits increased to $24,999; veterans' benefits limits increased to $99,999; child support and alimony limits decreased to $49,999.",
+  "Footnote 16: Implementation of 1990 Census-based population controls.",
+  "Footnote 17: Implementation of a new CPS ASEC processing system.",
+  "Footnote 18: Recording of amounts for earnings from longest job increased to $299,999. Full implementation of 1980 Census-based sample design.",
+  "Footnote 19: Implementation of Hispanic population weighting controls and introduction of 1980 Census-based sample design.",
+  "Footnote 20: Implementation of 1980 Census-based population controls. Questionnaire expanded to show 27 possible values from 51 possible sources of income.",
+  "Footnote 21: First year medians were derived using both Pareto and linear interpolation. Before this year, all medians were derived using linear interpolation.",
+  "Footnote 22: Some of these estimates were derived using Pareto interpolation and may differ from published data, which were derived using linear interpolation.",
+  "Footnote 23: Implementation of a new CPS ASEC processing system. Questionnaire expanded to ask 11 income questions.",
+  "Footnote 24: Full implementation of 1970 Census-based sample design.",
+  "Footnote 25: Introduction of 1970 Census-based sample design and population controls.",
+  "Footnote 26: Implementation of a new CPS ASEC processing system."
+ ]
+}

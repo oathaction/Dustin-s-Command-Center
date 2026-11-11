@@ -1,0 +1,31 @@
+step,kind,label,amount_billions
+1,receipt,Individual Income Taxes,2845.5
+2,receipt,Corporation Income Taxes,381.4
+3,receipt,Employment and General Retirement,1754.3
+4,receipt,Unemployment Insurance,49.1
+5,receipt,Other Retirement,8.4
+6,receipt,Excise Taxes,106
+7,receipt,Estate and Gift Taxes,38.7
+8,receipt,Customs Duties,173.2
+9,receipt,Miscellaneous Receipts,46.7
+10,subtotal,Total receipts,5403.3
+11,outlay,National Defense,-965.2
+12,outlay,International Affairs,-48
+13,outlay,"General Science, Space, and Technology",-39.9
+14,outlay,Energy,-21
+15,outlay,Natural Resources and Environment,-57.1
+16,outlay,Agriculture,-52.6
+17,outlay,Commerce and Housing Credit,15.5
+18,outlay,Transportation,-142.9
+19,outlay,Community and Regional Development,-62.4
+20,outlay,"Education, Training, Employment, and Social Services",-107.6
+21,outlay,Health,-1025.6
+22,outlay,Medicare,-1072.6
+23,outlay,Income Security,-694.2
+24,outlay,Social Security,-1667.1
+25,outlay,Veterans Benefits and Services,-416.2
+26,outlay,Administration of Justice,-109.9
+27,outlay,General Government,-32.3
+28,outlay,Net Interest,-1051.8
+29,outlay,Undistributed Offsetting Receipts,155
+30,total,Deficit,-1992.5

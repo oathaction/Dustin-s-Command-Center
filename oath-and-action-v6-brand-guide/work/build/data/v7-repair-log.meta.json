@@ -1,0 +1,85 @@
+{
+ "file": "v7-repair-log.json",
+ "kind": "v7",
+ "publisher": "Oath & Action, Who Do They Answer To? Systems Atlas V7",
+ "title_or_table": "repair log of 64 dated rule changes",
+ "table_id": "repairLog.rows",
+ "url": "work/extract/atlas-v7-data.json",
+ "observation_period": "August 6, 1965 to the November 3, 2026 ballot",
+ "geography": "United States: federal, state and local",
+ "universe_or_base": "Dated changes to the rules that decide who officials answer to",
+ "unit": "One row per rule change",
+ "date_retrieved": "2026-10-15",
+ "vintage": "Atlas V7 snapshot of October 15, 2026",
+ "qualification": "Directions are the atlas’s own codes, set out in its coding note; each row cites its own source.",
+ "columns": {
+  "id": {
+   "type": "id",
+   "description": "V7 repair log ID, RL01 to RL64"
+  },
+  "date": {
+   "type": "date",
+   "description": "date of the change"
+  },
+  "year": {
+   "type": "year",
+   "description": "year of the change"
+  },
+  "jurisdiction": {
+   "type": "text",
+   "description": "where the rule applies"
+  },
+  "direction": {
+   "type": "category",
+   "description": "V7’s code: toward voters, away from voters, voters kept existing rules, mixed, pending"
+  },
+  "instrument": {
+   "type": "category",
+   "description": "how the change was made, V7’s word"
+  },
+  "instrument_group": {
+   "type": "category",
+   "description": "the studio’s grouping of instruments with one row each (D2-102)"
+  },
+  "rule": {
+   "type": "text",
+   "description": "what changed, V7’s words"
+  },
+  "margin": {
+   "type": "text",
+   "description": "the vote or ruling, V7’s words"
+  },
+  "reversed_by": {
+   "type": "text",
+   "description": "a later change that reversed it, if any"
+  },
+  "loop": {
+   "type": "text",
+   "description": "the loop V7 ties it to"
+  },
+  "source_title": {
+   "type": "text",
+   "description": "the row’s own source"
+  },
+  "source_url": {
+   "type": "text",
+   "description": "its address"
+  },
+  "verified": {
+   "type": "text",
+   "description": "V7’s verification note"
+  }
+ },
+ "printed_source_line": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, repair log of 64 dated rule changes, August 6, 1965 to the November 3, 2026 ballot, United States: federal, state and local. Snapshot of October 15, 2026. Directions are the atlas’s own codes, set out in its coding note; each row cites its own source. One entry, New York City’s 1988 small-donor matching law, rests on a source the atlas did not check.",
+ "ledger_row": "not needed: Atlas V7, read by script",
+ "domain": "D02",
+ "states": [],
+ "snapshot": "2026-10-15",
+ "specimens": [
+  "S08"
+ ],
+ "extract_script": "work/build/scripts/phase-3/data_round0_build.py",
+ "intro": "The repair log records 64 dated changes to the rules that decide who officials answer to: statutes, court rulings, ballot measures, executive actions and local laws from 1965 to the November 3, 2026 ballot. Each row gives the jurisdiction, what the rule did, the vote or margin, the instrument used, the feedback loop it acts on and anything that later reversed or limited it. Changes run in both directions and come from both parties. One row rests on a source that was not checked, and the row is labelled.",
+ "coding_note": "Each row is coded by one of five labels. 'Toward voters' means the change widens who can register, vote or have a ballot counted, makes each vote weigh more equally, opens the contest that decides the seat, makes political money more limited or more visible, strengthens an independent check on officials, or adds to household security through automatic benefits. 'Away from voters' means the change does the reverse. 'Voters kept existing rules' means a ballot measure failed and the rules in force stayed, coded the same whichever way the measure would have moved power. 'Pending' means voters or courts have not yet decided. 'Mixed' means the change moved in both directions at once or left the rules in practice unchanged; the row's own note says which. Three rules apply across parties. A partisan redraw of district maps in the middle of a decade is coded away from voters whichever party draws it and whether or not voters approved it; a court order that blocks one is coded toward voters, and one that lets it take effect is coded away. A change that widens who takes part in the deciding round (open or all-party primaries) or lets voters rank candidates is coded toward voters, and a law or amendment that bans those options is coded away; readers may weigh these entries differently, and the reform profiles R-01 and R-02 rate confidence in their effect on moderation as low. A row's direction describes the rule's effect on who officials answer to and carries no judgment of the people or parties involved.",
+ "domain_note": "53 of the 64 rows change election, ballot, district or campaign rules, V7 domain D02"
+}

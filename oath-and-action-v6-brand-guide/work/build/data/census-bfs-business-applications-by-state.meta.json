@@ -1,0 +1,43 @@
+{
+ "file": "census-bfs-business-applications-by-state.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "Business Formation Statistics, monthly business applications (series BA_BA), not seasonally adjusted, summed to calendar years",
+ "table_id": "BFS monthly file, sa=U, naics_sector=TOTAL, series=BA_BA",
+ "url": [
+  "https://www.census.gov/econ/bfs/csv/bfs_monthly.csv"
+ ],
+ "observation_period": "Calendar years 2005 to 2025 (complete years only)",
+ "geography": "50 states and DC, with a United States row (code US)",
+ "universe_or_base": "Applications for an Employer Identification Number filed with the IRS that indicate a new business, as the Census Bureau classifies them",
+ "unit": "applications, summed by the studio from the published monthly counts",
+ "date_retrieved": "2026-11-11",
+ "vintage": "BFS monthly file as posted on November 11, 2026",
+ "qualification": "An application is a filing for a tax ID, not a business that opens or hires; many applications never become employers. Totals are the studio's sums of the unadjusted monthly figures",
+ "columns": {
+  "code": {
+   "type": "code",
+   "description": "USPS state code, US for the nation"
+  },
+  "name": {
+   "type": "text",
+   "description": "state name"
+  },
+  "year": {
+   "type": "year",
+   "description": "calendar year"
+  },
+  "business_applications": {
+   "type": "integer",
+   "description": "business applications in the year, summed",
+   "unit": "applications"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, Business Formation Statistics, business applications, 2019 and 2025, 50 states and DC. Retrieved November 11, 2026. Applications for a tax ID that signal a new business; many never hire; annual totals summed by Oath & Action.",
+ "source_line_variants": {
+  "all_years": "Source: U.S. Census Bureau, Business Formation Statistics, business applications, 2005 to 2025, 50 states and DC. Retrieved November 11, 2026. Applications for a tax ID that signal a new business; many never hire; annual totals summed by Oath & Action."
+ },
+ "ledger_row": "P7-006",
+ "domain": "D06",
+ "states": []
+}

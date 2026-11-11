@@ -1,0 +1,64 @@
+{
+  "kit": 1,
+  "id": "S05",
+  "form": "multi-line-highlight",
+  "family": "change-over-time",
+  "tier": "core",
+  "dataset": "census-hvs-homeownership-by-race-annual",
+  "sort": [{ "field": "year", "order": "asc" }, { "field": "series_variant", "order": "asc" }, { "field": "group", "order": "asc" }],
+  "reader_question": "How far apart are homeownership rates by race, and has the gap closed?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: an official statistic from a Census Bureau survey",
+  "title": "Non-Hispanic White and Black homeownership rates were nearly 30 points apart in 2025, a wider gap than in 2003.",
+  "reading_guide": "Each panel draws one group as a heavy line over the other three as thin gray lines, on one scale, so the gaps read across panels.",
+  "measure_line": "Households that own their home, percent, by race and ethnicity of householder, annual averages, United States, 1994 to 2025. Every panel runs from 40 to 80 percent.",
+  "notes": [
+    "The gap between non-Hispanic White and Black households: 27.3 points in 2003 and 29.6 in 2025. To Hispanic households: 28.7 points in 2003 and 25.8 in 2025.",
+    "The lines break where the Census changed its method: in 2002 it reweighted its estimates to the 2000 Census, so that year shows two values, and in 2003 it changed its race categories, so the Black and non-Hispanic White lines start again.",
+    "The Census Bureau asks readers to use caution comparing 2020 with other years, after interviews moved to the phone.",
+    "Margins of error for the 2025 rates run from 0.2 to 0.5 points (90 percent). The 2003 margins are not in the table read for this chart, so the change in the gap is not tested against them."
+  ],
+  "source_line": "Source: U.S. Census Bureau, Current Population Survey/Housing Vacancy Survey, Annual Statistics 2025, Table 22, homeownership rate by race and ethnicity of householder, 1994 to 2025, United States. Retrieved November 6, 2026. Race categories changed in 2003; pandemic changes to data collection affect 2020; the 2025 average leaves out October, when no data were collected.",
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Four small line charts of the homeownership rate from 1994 to 2025, one each for all households, non-Hispanic White, Hispanic and Black householders, on one scale from 40 to 80 percent. In 2025 the rates were 65.2, 74.3, 48.5 and 44.7 percent; the gap between non-Hispanic White and Black households grew from 27.3 points in 2003 to 29.6 in 2025.",
+  "table": {
+    "caption": "Homeownership rate by race and ethnicity of householder, percent",
+    "columns": [
+      { "field": "year", "label": "Year", "format": "year", "row_header": true },
+      { "field": "group", "label": "Householder", "format": "text", "words": { "all_households": "All households", "non_hispanic_white": "Non-Hispanic White", "hispanic": "Hispanic (any race)", "black": "Black" } },
+      { "field": "rate_pct", "label": "Percent", "format": "number:1" },
+      { "field": "moe_pct", "label": "Margin of error, points (90%)", "format": "number:1" },
+      { "field": "series_variant", "label": "Estimate", "format": "text", "words": { "standard": "One estimate", "original": "2002, first published weights", "revised_2000_census": "2002, reweighted to the 2000 Census" } },
+      { "field": "race_definition", "label": "Race categories", "format": "text", "words": { "not_applicable": "", "pre_2003_race_categories": "Before 2003", "race_alone": "Race alone, from 2003" } }
+    ]
+  },
+  "chart_notes": [
+    "Gray lines: the other three groups. Each panel heads with the group and its 2025 rate.",
+    "Gaps to non-Hispanic White households: Hispanic, 28.7 points in 2003 and 25.8 in 2025; Black, 27.3 points in 2003 and 29.6 in 2025."
+  ],
+  "phone": "same",
+  "artboard": "wide",
+  "domain": "D09",
+  "states": [],
+  "encode": { "x": "year", "y": "rate_pct", "series": "group", "break": "race_definition" },
+  "formats": { "tick": "integer", "tick_last": "percent:0", "y": "percent:1", "x": "year" },
+  "labels": {
+    "panels": [
+      { "value": "all_households", "label": "All households" },
+      { "value": "non_hispanic_white", "label": "Non-Hispanic White" },
+      { "value": "hispanic", "label": "Hispanic (any race)" },
+      { "value": "black", "label": "Black" }
+    ],
+    "panel_value": "{x}: {y}",
+    "domain": [40, 80],
+    "columns": 4
+  },
+  "notes_internal": [
+    "Breaks: the form starts a segment where two rows share a year (2002's two weightings) and where race_definition changes (2003, Black and non-Hispanic White), the two breaks Phase 2 drew. The sort puts 2002's original row before its revised one.",
+    "Phase 2 drew brackets for the 2003 and 2025 gaps in the Hispanic and Black panels; the form has no bracket yet (request E13), so the first note and the chart notes carry the four gaps in words.",
+    "DR-64: the title compares two survey gaps; the 2003 margins are not in the table (request R4). The last note says so.",
+    "Checked by script: 2003 NHW 75.4, Black 48.1, Hispanic 46.7; 2025 NHW 74.3, Black 44.7, Hispanic 48.5, all households 65.2."
+  ]
+}

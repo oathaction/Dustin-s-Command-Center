@@ -1,0 +1,7 @@
+chamber,roll_call,date,question,result,votes_needed,party,yea,nay,present,not_voting
+House,280,2026-07-22,On passage,Passed,simple majority,Republican,218,0,0,0
+House,280,2026-07-22,On passage,Passed,simple majority,Democratic,13,198,0,1
+House,280,2026-07-22,On passage,Passed,simple majority,Independent,1,0,0,0
+Senate,253,2026-09-30,On cloture on the motion to proceed,Rejected,three-fifths (60),Republican,53,0,0,0
+Senate,253,2026-09-30,On cloture on the motion to proceed,Rejected,three-fifths (60),Democratic,0,45,0,0
+Senate,253,2026-09-30,On cloture on the motion to proceed,Rejected,three-fifths (60),Independent,0,2,0,0

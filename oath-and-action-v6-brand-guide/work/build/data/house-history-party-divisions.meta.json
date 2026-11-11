@@ -1,0 +1,75 @@
+{
+ "file": "house-history-party-divisions.csv",
+ "kind": "public",
+ "publisher": "U.S. House of Representatives, Office of the Historian and Office of the Clerk (History, Art & Archives)",
+ "title_or_table": "Party Divisions of the House of Representatives, 1789 to Present (82nd Congress on)",
+ "table_id": "history.house.gov party divisions table",
+ "url": [
+  "https://history.house.gov/Institution/Party-Divisions/Party-Divisions/"
+ ],
+ "observation_period": "82nd Congress (1951 to 1953) to 119th Congress (2025 to 2027), at the start of each Congress",
+ "geography": "United States House of Representatives",
+ "universe_or_base": "Voting House seats, by the party of the members elected; delegates and the resident commissioner are not counted",
+ "unit": "seats; majority_advantage_seats is the majority's seats minus the other major party's, computed by the studio",
+ "date_retrieved": "2026-11-11",
+ "vintage": "Page as read on November 11, 2026",
+ "qualification": "The page gives \"the House party divisions as of the initial election results for a particular Congress\", so deaths, resignations, special elections and party switches after that are not counted. Footnote 5 (116th) and footnote 6 (117th) mark a seat with no certificate on opening day; footnote 3 (86th) a 436th seat for Alaska",
+ "columns": {
+  "congress": {
+   "type": "integer",
+   "description": "Congress number"
+  },
+  "first_year": {
+   "type": "year",
+   "description": "first year"
+  },
+  "last_year": {
+   "type": "year",
+   "description": "last year"
+  },
+  "seats": {
+   "type": "integer",
+   "description": "House seats",
+   "unit": "seats"
+  },
+  "seats_footnote": {
+   "type": "text",
+   "description": "the page's footnote number on the seat count"
+  },
+  "democrats": {
+   "type": "integer",
+   "description": "Democratic members",
+   "unit": "seats"
+  },
+  "republicans": {
+   "type": "integer",
+   "description": "Republican members",
+   "unit": "seats"
+  },
+  "other": {
+   "type": "integer",
+   "description": "members of other parties",
+   "unit": "seats"
+  },
+  "other_detail": {
+   "type": "text",
+   "description": "the page's words for other parties"
+  },
+  "majority_party": {
+   "type": "category",
+   "description": "party with more seats"
+  },
+  "majority_advantage_seats": {
+   "type": "integer",
+   "description": "majority seats minus the other major party's, computed",
+   "unit": "seats"
+  }
+ },
+ "printed_source_line": "Source: U.S. House of Representatives, Office of the Historian and Office of the Clerk, Party Divisions of the House of Representatives, 82nd to 119th Congress (1951 to 2027), United States. Retrieved November 11, 2026. Seats as first elected for each Congress; later vacancies and special elections are not counted.",
+ "ledger_row": "P7-008",
+ "domain": "D02",
+ "states": [],
+ "notes": [
+  "Current House as the Clerk of the House's home page showed it on November 11, 2026: Republicans 218, Democrats 214, Independents 1, Vacancies 2 (https://clerk.house.gov/). A parliament chart of the House today uses these figures with their date; the table above is the opening count of each Congress"
+ ]
+}

@@ -1,0 +1,63 @@
+{
+ "file": "census-acs-earnings-ratio-by-state.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "American Community Survey 1-year estimates, Table B20017, Median Earnings in the Past 12 Months by Sex by Work Experience for the Population 16 Years and Over with Earnings",
+ "table_id": "ACS 2025 1-year, B20017_003 (men, full-time, year-round) and B20017_006 (women, full-time, year-round)",
+ "url": [
+  "https://api.census.gov/data/2025/acs/acs1?get=NAME,B20017_003E,B20017_003M,B20017_006E,B20017_006M&for=state:*",
+  "https://api.census.gov/data/2025/acs/acs1/groups/B20017.json",
+  "https://api.census.gov/data/2025/acs/acs1/subject?get=NAME,S2002_C02_001E,S2002_C02_001M,S2002_C03_001E,S2002_C03_001M,S2002_C04_001E,S2002_C04_001M&for=us:1"
+ ],
+ "observation_period": "Calendar year 2025",
+ "geography": "50 states and DC, with a United States row (code US)",
+ "universe_or_base": "People 16 and over with earnings who worked full-time, year-round in the past 12 months",
+ "unit": "median earnings in 2025 dollars a year with 90 percent margins of error; women_pct_of_men is women's median over men's, computed by the studio, and its margin uses the Census Bureau's approximation for a ratio of two estimates",
+ "date_retrieved": "2026-11-11",
+ "vintage": "ACS 2025 1-year release",
+ "qualification": "Survey estimates; the ratio compares the medians of all full-time, year-round workers and does not compare women and men in the same job. For the United States the Census Bureau's own Table S2002 gives 82 percent (margin 0.3); the data API returned no state values from S2002 on November 11, 2026, so state ratios are computed here. A chart ranks or singles out a state only where the gap passes the margin of error (DR-64)",
+ "columns": {
+  "code": {
+   "type": "code",
+   "description": "USPS state code, US for the nation"
+  },
+  "name": {
+   "type": "text",
+   "description": "state name"
+  },
+  "men_median_earnings": {
+   "type": "integer",
+   "description": "men's median earnings, full-time, year-round",
+   "unit": "dollars"
+  },
+  "men_moe": {
+   "type": "integer",
+   "description": "90 percent margin of error",
+   "unit": "dollars"
+  },
+  "women_median_earnings": {
+   "type": "integer",
+   "description": "women's median earnings, full-time, year-round",
+   "unit": "dollars"
+  },
+  "women_moe": {
+   "type": "integer",
+   "description": "90 percent margin of error",
+   "unit": "dollars"
+  },
+  "women_pct_of_men": {
+   "type": "number",
+   "description": "women's median as a percent of men's, computed",
+   "unit": "percent"
+  },
+  "women_pct_of_men_moe": {
+   "type": "number",
+   "description": "approximate 90 percent margin of error, computed",
+   "unit": "percentage points"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B20017, median earnings of full-time, year-round workers by sex, 2025, 50 states and DC. Retrieved November 11, 2026. Survey estimates; ratios and their margins computed by Oath & Action; medians for all such workers, not for the same jobs.",
+ "ledger_row": "P7-031",
+ "domain": "D07",
+ "states": []
+}

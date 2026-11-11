@@ -1,0 +1,68 @@
+{
+ "rows": [
+  {
+   "key": "support-all",
+   "group": "All registered voters",
+   "value": 86,
+   "measure": "percent who favor a ban",
+   "body": "survey",
+   "source_id": "N40"
+  },
+  {
+   "key": "support-republicans",
+   "group": "Republicans",
+   "value": 87,
+   "measure": "percent who favor a ban",
+   "body": "survey",
+   "source_id": "N40"
+  },
+  {
+   "key": "support-democrats",
+   "group": "Democrats",
+   "value": 88,
+   "measure": "percent who favor a ban",
+   "body": "survey",
+   "source_id": "N40"
+  },
+  {
+   "key": "house-yes",
+   "group": "House, passage of H.R. 7008, July 22, 2026",
+   "value": 232,
+   "measure": "votes for",
+   "body": "House",
+   "source_id": "K1908"
+  },
+  {
+   "key": "house-no",
+   "group": "House, passage of H.R. 7008, July 22, 2026",
+   "value": 198,
+   "measure": "votes against",
+   "body": "House",
+   "source_id": "K1908"
+  },
+  {
+   "key": "senate-yes",
+   "group": "Senate, cloture on the motion to proceed, September 30, 2026",
+   "value": 53,
+   "measure": "votes for",
+   "body": "Senate",
+   "source_id": "W035"
+  },
+  {
+   "key": "senate-no",
+   "group": "Senate, cloture on the motion to proceed, September 30, 2026",
+   "value": 47,
+   "measure": "votes against",
+   "body": "Senate",
+   "source_id": "W035"
+  },
+  {
+   "key": "senate-needed",
+   "group": "Senate, cloture on the motion to proceed, September 30, 2026",
+   "value": 60,
+   "measure": "votes needed (three-fifths)",
+   "body": "Senate",
+   "source_id": "W035"
+  }
+ ]
+}

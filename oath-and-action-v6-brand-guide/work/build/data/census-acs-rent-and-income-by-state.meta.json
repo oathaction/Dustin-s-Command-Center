@@ -1,0 +1,66 @@
+{
+ "file": "census-acs-rent-and-income-by-state.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "American Community Survey 1-year estimates, Table B25064, Median Gross Rent (Dollars); Table B19013, Median Household Income in the Past 12 Months; Table B25003, Tenure",
+ "table_id": "ACS 2025 1-year, B25064, B19013, B25003",
+ "url": [
+  "https://api.census.gov/data/2025/acs/acs1?get=NAME,B25064_001E,B25064_001M,B19013_001E,B19013_001M,B25003_001E,B25003_003E,B25003_003M&for=state:*"
+ ],
+ "observation_period": "Calendar year 2025",
+ "geography": "50 states and DC, with a United States row (code US)",
+ "universe_or_base": "Median gross rent: renter-occupied units paying cash rent. Median household income: all households. Renter households: renter-occupied units",
+ "unit": "dollars a month (rent), dollars a year (income, in 2025 dollars), households; annual_rent_as_pct_of_median_income is 12 times median rent over median income, computed by the studio",
+ "date_retrieved": "2026-11-11",
+ "vintage": "ACS 2025 1-year release",
+ "qualification": "The two medians describe different households (renters paying cash rent, and all households), so their ratio is a rough gauge of rent against a typical income in the state; a chart of the two carries the Association label",
+ "columns": {
+  "code": {
+   "type": "code",
+   "description": "USPS state code, US for the nation"
+  },
+  "name": {
+   "type": "text",
+   "description": "state name"
+  },
+  "median_gross_rent": {
+   "type": "integer",
+   "description": "median gross rent",
+   "unit": "dollars a month"
+  },
+  "median_gross_rent_moe": {
+   "type": "integer",
+   "description": "90 percent margin of error",
+   "unit": "dollars"
+  },
+  "median_household_income": {
+   "type": "integer",
+   "description": "median household income",
+   "unit": "dollars a year"
+  },
+  "median_household_income_moe": {
+   "type": "integer",
+   "description": "90 percent margin of error",
+   "unit": "dollars"
+  },
+  "renter_households": {
+   "type": "integer",
+   "description": "renter-occupied units",
+   "unit": "households"
+  },
+  "renter_households_moe": {
+   "type": "integer",
+   "description": "90 percent margin of error",
+   "unit": "households"
+  },
+  "annual_rent_as_pct_of_median_income": {
+   "type": "number",
+   "description": "12 times median rent over median household income, computed",
+   "unit": "percent"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Tables B25064, B19013 and B25003, median gross rent, median household income and renter households, 2025, 50 states and DC. Retrieved November 11, 2026. Survey estimates; the rent median covers renters paying cash rent and the income median covers all households.",
+ "ledger_row": "P7-030",
+ "domain": "D09",
+ "states": []
+}

@@ -1,0 +1,57 @@
+{
+ "file": "census-nrc-completions-by-structure.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau and U.S. Department of Housing and Urban Development",
+ "title_or_table": "New Residential Construction, New Privately-Owned Housing Units Completed, annual data, by units in structure (comps_cust.xlsx, sheet Annual)",
+ "table_id": "NRC completions, annual, United States",
+ "url": [
+  "https://www.census.gov/construction/nrc/xls/comps_cust.xlsx",
+  "https://www.census.gov/construction/nrc/data/series.html"
+ ],
+ "observation_period": "Calendar years 1968 to 2025",
+ "geography": "United States",
+ "universe_or_base": "New privately owned housing units completed, by the number of units in the building",
+ "unit": "thousands of housing units",
+ "date_retrieved": "2026-11-11",
+ "vintage": "File as posted on November 11, 2026",
+ "qualification": "Survey-based estimates of completions; detail may not add to total because of rounding, and the latest year is revised with later releases. The stacked parts are buildings of one unit, two to four units, and five or more units",
+ "columns": {
+  "year": {
+   "type": "year",
+   "description": "year"
+  },
+  "total_thousands": {
+   "type": "number",
+   "description": "all units completed",
+   "unit": "thousands of units"
+  },
+  "one_unit_thousands": {
+   "type": "number",
+   "description": "units in one-unit buildings",
+   "unit": "thousands of units"
+  },
+  "two_to_four_units_thousands": {
+   "type": "number",
+   "description": "units in buildings of 2 to 4 units",
+   "unit": "thousands of units"
+  },
+  "five_or_more_units_thousands": {
+   "type": "number",
+   "description": "units in buildings of 5 or more units",
+   "unit": "thousands of units"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau and U.S. Department of Housing and Urban Development, New Residential Construction, new privately owned housing units completed by units in structure, 1968 to 2025, United States. Retrieved November 11, 2026. Survey estimates in thousands of units; parts may not add to totals because of rounding.",
+ "ledger_row": "P7-022",
+ "domain": "D09",
+ "states": [],
+ "notes": [
+  "New Privately-Owned Housing Units Completed",
+  "(Thousands of units.  Detail may not add to total because of rounding.)",
+  "Source:  U.S. Census Bureau and U.S. Department of Housing and Urban Development, Survey of Construction",
+  "Additional information on the survey methodology may be found at <www.census.gov/construction/soc/methodology.html>."
+ ],
+ "raw_files_sha256_prefix": {
+  "comps_cust.xlsx": "81370bd2c6bc139b"
+ }
+}

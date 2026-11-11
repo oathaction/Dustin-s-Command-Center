@@ -1,0 +1,41 @@
+{
+ "kind": "public",
+ "publisher": "U.S. Department of the Treasury, Bureau of the Fiscal Service",
+ "date_retrieved": "2026-11-11",
+ "geography": "United States (federal government)",
+ "file": "treasury-mts-fy2026-budget-results.csv",
+ "title_or_table": "Monthly Treasury Statement for September 2026, Table 9 (receipts by source, outlays by function) and Table 1 (summary of receipts, outlays and the deficit)",
+ "table_id": "MTS Table 9 and Table 1, record date September 30, 2026",
+ "url": [
+  "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/mts/mts_table_9?filter=record_date:in:(2015-09-30,...,2026-09-30)",
+  "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/mts/mts_table_1?filter=record_date:eq:2026-09-30"
+ ],
+ "observation_period": "Fiscal year 2026 (October 1, 2025 to September 30, 2026)",
+ "universe_or_base": "Federal receipts by source and net outlays by budget function",
+ "unit": "billions of dollars, nominal; receipts positive, outlays negative, the deficit as receipts minus outlays (negative)",
+ "vintage": "Monthly Treasury Statement for September 2026 as served on November 11, 2026",
+ "qualification": "Table 1 gives fiscal 2026 receipts of $5403.3 billion, outlays of $7395.8 billion and a deficit of $1992.5 billion, matching these rows. Net outlays include two negative lines (offsetting receipts); figures may be revised in the year-end report",
+ "columns": {
+  "step": {
+   "type": "integer",
+   "description": "order of the step"
+  },
+  "kind": {
+   "type": "category",
+   "description": "receipt, subtotal, outlay or total"
+  },
+  "label": {
+   "type": "text",
+   "description": "line as Treasury names it"
+  },
+  "amount_billions": {
+   "type": "number",
+   "description": "signed amount",
+   "unit": "billions of dollars"
+  }
+ },
+ "printed_source_line": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, September 2026, Tables 1 and 9, fiscal 2026, United States. Retrieved November 11, 2026. Nominal dollars; net outlays, with offsetting receipts as negatives.",
+ "ledger_row": "P7-021",
+ "domain": "D08",
+ "states": []
+}

@@ -1,0 +1,658 @@
+"""Move the data of S01 to S16 into work/build/data/ under the round 0 contract (engineer notes, C1).
+
+Usage:
+    python3 -I work/build/scripts/phase-3/data_round0_build.py [--check]
+
+Reads Phase 2's frozen board files, which stay where they are as records:
+  work/boards/phase-2/data-viz/shared/public/<name>.csv and <name>.meta.json   (the research lead's November 6 files)
+  work/extract/atlas-v7-data.json                                               (Atlas V7, snapshot of October 15, 2026)
+and writes, in work/build/data/:
+  the public tables S02, S04, S05, S07, S11 to S16 draw, copied byte for byte, each with a sidecar in the contract's form;
+  three derived tables (the FEC margin shift by state, payrolls by sector with change since January 2022, and the
+  monthly change in total payrolls with its three-month average), each naming its source file and method;
+  six Atlas V7 tables (v7-*.json) for S01, S03, S06, S08, S09 and S10.
+The retired disclosure (DR-100, D2-1756) is dropped: no sidecar carries it or a required_text that holds it.
+--check reads the folder back and fails on any contract fault; it writes nothing.
+"""
+import collections
+import csv
+import hashlib
+import io
+import json
+import pathlib
+import re
+import sys
+
+ROOT = pathlib.Path(__file__).resolve().parents[4]
+PUB = ROOT / 'work/boards/phase-2/data-viz/shared/public'
+V7P = ROOT / 'work/extract/atlas-v7-data.json'
+OUT = ROOT / 'work/build/data'
+SNAP = '2026-10-15'
+SNAP_WORDS = 'October 15, 2026'
+ATLAS_PUB = 'Oath & Action, Who Do They Answer To? Systems Atlas V7'
+ATLAS_LINE = 'Source: Oath & Action, Who Do They Answer To? Systems Atlas V7'
+DISCLOSURE_RE = re.compile(r'Yes on 3|Veterans for All Voters|Ranked Choice Melrose|Disclosure:', re.I)
+TYPES = {'number', 'integer', 'text', 'category', 'date', 'month', 'year', 'code', 'id', 'boolean'}
+REQUIRED = ('file', 'kind', 'publisher', 'title_or_table', 'table_id', 'url', 'observation_period', 'geography',
+            'universe_or_base', 'unit', 'date_retrieved', 'vintage', 'qualification', 'columns', 'printed_source_line',
+            'ledger_row', 'domain', 'states')
+KINDS = {'public', 'secondary', 'v7', 'derived', 'illustrative'}
+DOMAINS = {f'D{i:02d}' for i in range(1, 11)} | {'all'}
+# Fields a Phase 2 sidecar carries that do not travel: the old source line names (replaced by printed_source_line)
+DROP = {'source_line', 'required_text'}
+
+
+def smart(s):
+    """Typographic apostrophes, as the printed pages set them."""
+    return re.sub(r"(\w)'(\w)", '’'.join([r'\1', r'\2']), s).replace("s' ", 's’ ') if isinstance(s, str) else s
+
+
+def sha(p):
+    return hashlib.sha256(p.read_bytes()).hexdigest()[:16]
+
+
+def col(t, desc, unit=None):
+    d = {'type': t, 'description': desc}
+    if unit:
+        d['unit'] = unit
+    return d
+
+
+def write_meta(name, meta):
+    meta = {k: v for k, v in meta.items() if k not in DROP}
+    (OUT / f'{name}.meta.json').write_text(json.dumps(meta, indent=1, ensure_ascii=False) + '\n')
+
+
+def read_csv(p):
+    with p.open(newline='') as fh:
+        return list(csv.DictReader(fh))
+
+
+def write_csv(name, columns, rows):
+    buf = io.StringIO()
+    w = csv.writer(buf, lineterminator='\n')
+    w.writerow(columns)
+    for r in rows:
+        w.writerow(['' if r.get(c) is None else r[c] for c in columns])
+    (OUT / f'{name}.csv').write_text(buf.getvalue())
+
+
+def write_v7(name, columns, rows):
+    clean = [{c: r.get(c) for c in columns} for r in rows]
+    (OUT / f'{name}.json').write_text(json.dumps({'rows': clean}, indent=1, ensure_ascii=False) + '\n')
+
+
+def num(v):
+    try:
+        return float(str(v).replace(',', ''))
+    except (TypeError, ValueError):
+        return None
+
+
+def fmt(v, nd=1):
+    return None if v is None else round(v, nd)
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# Public tables, copied byte for byte. Column types and the round 0 fields are added; Phase 2's other fields travel.
+# ---------------------------------------------------------------------------------------------------------------
+PUBLIC = {
+    'census-spm-child-poverty': {
+        'specimens': ['S02'], 'kind': 'public', 'domain': 'D08', 'states': [],
+        'types': {'year': 'year', 'measure': 'category', 'age_group': 'category', 'vintage': 'category', 'series_variant': 'category',
+                  'comparable_with': 'category', 'percent': 'number', 'moe_pct': 'number', 'below_poverty_thousands': 'number',
+                  'moe_thousands': 'number', 'population_thousands': 'number', 'source_table': 'text', 'note': 'text'},
+        'units': {'percent': 'percent', 'moe_pct': 'percentage points', 'below_poverty_thousands': 'thousands of people',
+                  'moe_thousands': 'thousands of people', 'population_thousands': 'thousands of people'},
+        'variants': ('source_line_official_measure', 'source_line_first_published'),
+        'extra_variants': {'source_line_both_measures': ('Source: U.S. Census Bureau, Poverty in the United States: 2025 (P60-290), Table 8, Supplemental Poverty Measure, '
+                                                         'and Table 3, official poverty measure, children under 18, 2009 to 2025, United States. Retrieved November 6, 2026. '
+                                                         'Figures for 2019 to 2024 include the Bureau\u2019s August 2026 revision and differ by up to 0.4 points from those first published.')},
+    },
+    'census-cps-reported-voting': {
+        'specimens': ['S04'], 'kind': 'public', 'domain': 'D10', 'states': [],
+        'domain_note': 'Reported turnout measures who takes part, the Participation subsystem of V7 domain D10; election rules and results stay under D02',
+        'types': {'year': 'year', 'election_type': 'category', 'age_group': 'category', 'base': 'category', 'voted_pct': 'number',
+                  'total_voting_age_population_thousands': 'number', 'note': 'text'},
+        'units': {'voted_pct': 'percent', 'total_voting_age_population_thousands': 'thousands of people'},
+        'variants': ('source_line_citizen_only',),
+    },
+    'census-hvs-homeownership-by-race-annual': {
+        'specimens': ['S05'], 'kind': 'public', 'domain': 'D09', 'states': [],
+        'types': {'year': 'year', 'group': 'category', 'rate_pct': 'number', 'moe_pct': 'number', 'race_definition': 'category',
+                  'series_variant': 'category', 'source_table': 'text', 'note': 'text'},
+        'units': {'rate_pct': 'percent', 'moe_pct': 'percentage points'},
+    },
+    'ballotpedia-rcv-prohibitions-by-state': {
+        'specimens': ['S07'], 'kind': 'secondary', 'domain': 'D02', 'states': [],
+        'types': {'code': 'code', 'name': 'text', 'fips': 'code', 'prohibits_rcv': 'integer', 'scope': 'category', 'instrument': 'category',
+                  'enacted_date': 'date', 'enacted_year': 'year', 'measure': 'text', 'scope_note': 'text', 'checked_against': 'text'},
+        'descs': {'code': 'USPS state code', 'name': 'state name', 'fips': 'FIPS state code', 'prohibits_rcv': '1 when the state bans ranked-choice voting, else 0',
+                  'scope': 'all (every election) or some (some elections); empty when there is no ban', 'instrument': 'how the ban was made',
+                  'enacted_date': 'date the ban took effect or was signed, as Ballotpedia prints it', 'enacted_year': 'year of enactment',
+                  'measure': 'bill or measure, as Ballotpedia prints it', 'scope_note': 'what the ban covers',
+                  'checked_against': 'the page and revision read'},
+    },
+    'census-cps-2024-turnout-by-state': {
+        'specimens': ['S16'], 'kind': 'public', 'domain': 'D10', 'states': [],
+        'domain_note': 'Reported turnout measures who takes part, the Participation subsystem of V7 domain D10',
+        'types': {'code': 'code', 'name': 'text', 'year': 'year', 'citizen_vap_thousands': 'number', 'voted_pct': 'number', 'moe_pct': 'number'},
+        'descs': {'code': 'USPS state code', 'name': 'state name', 'year': 'election year', 'citizen_vap_thousands': 'citizens 18 and over, thousands',
+                  'voted_pct': 'percent of citizens 18 and over who reported voting', 'moe_pct': '90 percent margin of error, percentage points'},
+        'units': {'citizen_vap_thousands': 'thousands of people', 'voted_pct': 'percent', 'moe_pct': 'percentage points'},
+        'variants': ('source_line_2024_only',),
+    },
+    'fec-presidential-results-by-state': {
+        'specimens': [], 'kind': 'public', 'domain': 'D02', 'states': [],
+        'types': {'code': 'code', 'name': 'text', 'year': 'year', 'total_votes': 'integer', 'dem_votes': 'integer', 'rep_votes': 'integer',
+                  'dem_pct': 'number', 'rep_pct': 'number', 'margin_pts': 'number'},
+        'descs': {'code': 'USPS state code', 'name': 'state name', 'year': 'election year', 'total_votes': 'all presidential votes cast',
+                  'dem_votes': 'votes for the Democratic nominee', 'rep_votes': 'votes for the Republican nominee',
+                  'dem_pct': 'Democratic share of all presidential votes, percent', 'rep_pct': 'Republican share of all presidential votes, percent',
+                  'margin_pts': 'Republican share minus Democratic share, percentage points; positive is a Republican lead'},
+        'units': {'dem_pct': 'percent', 'rep_pct': 'percent', 'margin_pts': 'percentage points'},
+    },
+    'fred-payrolls-by-sector': {
+        'specimens': [], 'kind': 'public', 'domain': 'D07', 'states': [],
+        'types': {'series_id': 'id', 'sector': 'category', 'date': 'date', 'employees_thousands': 'number'},
+        'descs': {'series_id': 'FRED series ID', 'sector': 'industry sector as BLS names it', 'date': 'first day of the month',
+                  'employees_thousands': 'all employees, thousands, seasonally adjusted'},
+        'units': {'employees_thousands': 'thousands of jobs'},
+    },
+}
+
+
+def public_meta(name, spec):
+    p = PUB / f'{name}.meta.json'
+    m = json.loads(p.read_text())
+    rows = read_csv(PUB / f'{name}.csv')
+    cols = list(rows[0].keys())
+    old = m.get('columns') if isinstance(m.get('columns'), dict) else {}
+    out_cols = {}
+    for c in cols:
+        t = spec['types'].get(c)
+        if t not in TYPES:
+            raise SystemExit(f'{name}: column {c} has no type')
+        desc = old.get(c) or spec.get('descs', {}).get(c) or c.replace('_', ' ')
+        out_cols[c] = col(t, desc, spec.get('units', {}).get(c))
+    meta = {'file': f'{name}.csv', 'kind': spec['kind']}
+    for k in ('publisher', 'title_or_table', 'table_id', 'url', 'observation_period', 'geography', 'universe_or_base', 'unit',
+              'date_retrieved', 'vintage', 'qualification'):
+        meta[k] = m.get(k)
+    meta['columns'] = out_cols
+    meta['printed_source_line'] = smart(m['source_line'])
+    variants = {v: smart(m[v]) for v in spec.get('variants', ()) if m.get(v)}
+    variants.update(spec.get('extra_variants', {}))
+    if variants:
+        meta['source_line_variants'] = variants
+    meta['ledger_row'] = 'none yet'
+    meta['domain'] = spec['domain']
+    if spec.get('domain_note'):
+        meta['domain_note'] = spec['domain_note']
+    meta['states'] = spec['states']
+    meta['specimens'] = spec['specimens']
+    meta['copied_from'] = f'work/boards/phase-2/data-viz/shared/public/{name}.csv'
+    meta['copied_sha256_prefix'] = sha(PUB / f'{name}.csv')
+    # Phase 2's other fields travel as they are
+    for k, v in m.items():
+        if k not in meta and k not in DROP and k != 'columns' and not k.startswith('source_line'):
+            meta[k] = v
+    return meta
+
+
+def copy_public():
+    for name, spec in PUBLIC.items():
+        (OUT / f'{name}.csv').write_bytes((PUB / f'{name}.csv').read_bytes())
+        write_meta(name, public_meta(name, spec))
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# Derived tables: each its own file, naming the file it comes from and its method
+# ---------------------------------------------------------------------------------------------------------------
+def derive_fec_shift():
+    rows = read_csv(PUB / 'fec-presidential-results-by-state.csv')
+    m = json.loads((PUB / 'fec-presidential-results-by-state.meta.json').read_text())
+    by = {}
+    for r in rows:
+        by.setdefault(r['code'], {'code': r['code'], 'name': r['name']})[int(float(r['year']))] = r
+    out = []
+    nat = {}
+    for r in rows:
+        t = nat.setdefault(int(float(r['year'])), [0, 0, 0])
+        t[0] += num(r['total_votes']); t[1] += num(r['dem_votes']); t[2] += num(r['rep_votes'])
+    sh = {y: (round(100 * d / tv, 2), round(100 * rp / tv, 2), round(100 * (rp - d) / tv, 2)) for y, (tv, d, rp) in nat.items()}
+    out.append({'code': 'US', 'name': 'United States', 'scope': 'nation', 'margin_2020': sh[2020][2], 'margin_2024': sh[2024][2],
+                'shift_pts': round(sh[2024][2] - sh[2020][2], 2), 'dem_pct_2024': sh[2024][0], 'rep_pct_2024': sh[2024][1],
+                'total_votes_2024': int(nat[2024][0])})
+    for code, s in sorted(by.items()):
+        m20, m24 = num(s[2020]['margin_pts']), num(s[2024]['margin_pts'])
+        out.append({'code': code, 'name': s['name'], 'scope': 'state', 'margin_2020': m20, 'margin_2024': m24,
+                    'shift_pts': round(m24 - m20, 2), 'dem_pct_2024': num(s[2024]['dem_pct']), 'rep_pct_2024': num(s[2024]['rep_pct']),
+                    'total_votes_2024': int(num(s[2024]['total_votes']))})
+    cols = ['code', 'name', 'scope', 'margin_2020', 'margin_2024', 'shift_pts', 'dem_pct_2024', 'rep_pct_2024', 'total_votes_2024']
+    write_csv('fec-presidential-shift-by-state', cols, out)
+    meta = {
+        'file': 'fec-presidential-shift-by-state.csv', 'kind': 'derived',
+        'publisher': m['publisher'], 'title_or_table': m['title_or_table'], 'table_id': m['table_id'], 'url': m['url'],
+        'observation_period': 'November 2020 and November 2024 presidential general elections', 'geography': '50 states and DC, with the United States in one row set apart',
+        'universe_or_base': 'All presidential votes cast in each state', 'unit': 'Margins and shift in percentage points; shares in percent; votes as counted',
+        'date_retrieved': m['date_retrieved'], 'vintage': m['vintage'], 'qualification': m['qualification'],
+        'columns': {
+            'code': col('code', 'USPS state code; US for the nation'), 'name': col('text', 'state name'),
+            'scope': col('category', 'state, or nation for the United States row (DR-64: the national figure on every chart of state results, set apart and labeled)'),
+            'margin_2020': col('number', 'Republican share minus Democratic share in 2020; positive is a Republican lead', 'percentage points'),
+            'margin_2024': col('number', 'Republican share minus Democratic share in 2024; positive is a Republican lead', 'percentage points'),
+            'shift_pts': col('number', 'margin_2024 minus margin_2020; positive moved toward the Republican nominee', 'percentage points'),
+            'dem_pct_2024': col('number', 'Democratic share of all presidential votes in 2024', 'percent'),
+            'rep_pct_2024': col('number', 'Republican share of all presidential votes in 2024', 'percent'),
+            'total_votes_2024': col('integer', 'all presidential votes cast in 2024'),
+        },
+        'printed_source_line': smart(m['source_line']), 'ledger_row': 'none yet', 'domain': 'D02', 'states': [],
+        'specimens': ['S11', 'S12', 'S15'],
+        'derived_from': ['fec-presidential-results-by-state.csv'],
+        'derivation': ('One row per state from the two years\' rows; shift_pts is the difference of the two margins as rounded in the FEC file. '
+                       'The United States row sums the state rows\' vote counts, which match the FEC national totals, and is context for a chart, '
+                       'set apart and labeled (D2-126, DR-64). In nine states shift_pts differs by 0.01 from the difference of unrounded shares; '
+                       'no figure printed to one decimal changes (D2-126).'),
+        'notes': ['Party marks take neutral inks with the party name printed; arrows, position and words carry direction (DR-48, DR-58).',
+                  'A map has no tile for US; it draws the national figure beside the map.'],
+    }
+    write_meta('fec-presidential-shift-by-state', meta)
+
+
+FRED_LINE = ('Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, {what}, seasonally adjusted, January 2022 to September 2026, '
+             'United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.')
+FRED_REV = ('Seasonally adjusted. The Bureau of Labor Statistics revises each month’s first estimate in the next two monthly reports, '
+            'so August and September 2026 are preliminary, and a yearly benchmark revision can move earlier months. FRED copies the Bureau of Labor '
+            'Statistics series; bls.gov refuses automated requests, so the studio read FRED (DR-60).')
+
+
+def derive_fred():
+    rows = read_csv(PUB / 'fred-payrolls-by-sector.csv')
+    m = json.loads((PUB / 'fred-payrolls-by-sector.meta.json').read_text())
+    series = collections.OrderedDict()
+    for r in rows:
+        series.setdefault(r['series_id'], []).append(r)
+    prelim = {'2026-08', '2026-09'}
+    sect, change = [], []
+    for sid, rs in series.items():
+        rs.sort(key=lambda r: r['date'])
+        base = next((num(r['employees_thousands']) for r in rs if r['date'].startswith('2022-01')), None)
+        for r in rs:
+            mo = r['date'][:7]
+            if mo < '2022-01':
+                continue
+            v = num(r['employees_thousands'])
+            sect.append({'series_id': sid, 'sector': r['sector'], 'month': mo, 'employees_thousands': v,
+                         'pct_change_since_2022_01': fmt((v / base - 1) * 100, 2) if base and v is not None else None,
+                         'change_since_2022_01_thousands': fmt(v - base, 1) if base and v is not None else None,
+                         'status': 'preliminary' if mo in prelim else 'final'})
+        if sid == 'PAYEMS':
+            vals = [(r['date'][:7], num(r['employees_thousands'])) for r in rs]
+            diffs = [(vals[i][0], round(vals[i][1] - vals[i - 1][1], 1)) for i in range(1, len(vals))
+                     if vals[i][1] is not None and vals[i - 1][1] is not None]
+            for i, (dt, d) in enumerate(diffs):
+                w = [x for _, x in diffs[max(0, i - 2):i + 1]]
+                if dt < '2022-01':
+                    continue
+                change.append({'month': dt, 'change_thousands': d, 'avg3_thousands': round(sum(w) / len(w), 1) if len(w) == 3 else None,
+                               'status': 'preliminary' if dt in prelim else 'final'})
+    write_csv('fred-payrolls-by-sector-change', ['series_id', 'sector', 'month', 'employees_thousands', 'pct_change_since_2022_01',
+                                                 'change_since_2022_01_thousands', 'status'], sect)
+    write_csv('fred-payrolls-monthly-change', ['month', 'change_thousands', 'avg3_thousands', 'status'], change)
+    common = {'publisher': 'U.S. Bureau of Labor Statistics, via FRED, Federal Reserve Bank of St. Louis', 'title_or_table': m['title_or_table'],
+              'table_id': m['table_id'], 'url': m['url'], 'geography': 'United States', 'universe_or_base': m['universe_or_base'],
+              'date_retrieved': m['date_retrieved'], 'vintage': m['vintage'], 'qualification': FRED_REV, 'ledger_row': 'none yet',
+              'domain': 'D07', 'states': [], 'derived_from': ['fred-payrolls-by-sector.csv']}
+    write_meta('fred-payrolls-by-sector-change', dict(
+        file='fred-payrolls-by-sector-change.csv', kind='derived', **common,
+        observation_period='Monthly, January 2022 to September 2026', unit='Thousands of jobs; percent change since January 2022',
+        columns={'series_id': col('id', 'FRED series ID'), 'sector': col('category', 'industry sector as BLS names it'),
+                 'month': col('month', 'month of the estimate'), 'employees_thousands': col('number', 'all employees, seasonally adjusted', 'thousands of jobs'),
+                 'pct_change_since_2022_01': col('number', 'percent change from the sector’s January 2022 level', 'percent'),
+                 'change_since_2022_01_thousands': col('number', 'change from the sector’s January 2022 level', 'thousands of jobs'),
+                 'status': col('category', 'preliminary for August and September 2026, else final')},
+        printed_source_line=FRED_LINE.format(what='all employees by industry'), specimens=['S13'],
+        derivation='Rows from January 2022 on; pct_change_since_2022_01 and change_since_2022_01_thousands compare each month with the same series in January 2022 (D2-126: both jobs charts draw January 2022 to September 2026, one window).',
+    ))
+    write_meta('fred-payrolls-monthly-change', dict(
+        file='fred-payrolls-monthly-change.csv', kind='derived', **common,
+        observation_period='Monthly, January 2022 to September 2026', unit='Thousands of jobs',
+        columns={'month': col('month', 'month of the change'),
+                 'change_thousands': col('number', 'total nonfarm payrolls minus the month before', 'thousands of jobs'),
+                 'avg3_thousands': col('number', 'mean of this month’s change and the two before it', 'thousands of jobs'),
+                 'status': col('category', 'preliminary for August and September 2026, else final')},
+        printed_source_line=FRED_LINE.format(what='all nonfarm employees, monthly change'), specimens=['S14'],
+        derivation='From series PAYEMS: each month’s level minus the month before; avg3_thousands is the three-month moving average ending in that month, computed from December 2021 on so January 2022 has one. Rows from January 2022 on.',
+    ))
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# Atlas V7 tables
+# ---------------------------------------------------------------------------------------------------------------
+def v7_meta(name, table, table_id, period, geography, universe, unit, qual, columns, line, domain, specimens, states=(), **extra):
+    meta = {'file': f'{name}.json', 'kind': extra.pop('kind', 'v7'), 'publisher': ATLAS_PUB, 'title_or_table': table, 'table_id': table_id,
+            'url': 'work/extract/atlas-v7-data.json', 'observation_period': period, 'geography': geography, 'universe_or_base': universe,
+            'unit': unit, 'date_retrieved': SNAP, 'vintage': f'Atlas V7 snapshot of {SNAP_WORDS}', 'qualification': qual, 'columns': columns,
+            'printed_source_line': line, 'ledger_row': 'not needed: Atlas V7, read by script', 'domain': domain, 'states': list(states),
+            'snapshot': SNAP, 'specimens': specimens, 'extract_script': 'work/build/scripts/phase-3/data_round0_build.py'}
+    meta.update(extra)
+    write_meta(name, meta)
+
+
+GROUP = {
+    'ballot initiative': 'Ballot initiative', 'court ruling': 'Court ruling', 'state statute': 'State statute',
+    'referendum': 'Referendum', 'federal statute': 'Federal statute',
+    'agency rule': 'Executive or agency action', 'executive action': 'Executive or agency action', 'executive order': 'Executive or agency action',
+    'municipal ordinance (local law)': 'Local law or funding vote', 'council funding vote': 'Local law or funding vote',
+}
+DIRS = ['toward voters', 'away from voters', 'voters kept existing rules', 'mixed', 'pending']
+FAM = {'DQ': 'Quality of democracy', 'GE': 'Government efficacy', 'EP': 'Economic performance', 'EQ': 'Income and wealth equality'}
+
+
+def dclass(w):
+    """Phase 2's coarse reading of V7's direction words (dataviz_shared_data.py, D2-102), for a glyph or tint only."""
+    w = w.lower()
+    if w.startswith('same as scenario'):
+        return 'same as ii'
+    if w.startswith('down or flat') or w.startswith('flat, or down'):
+        return 'flat or down'
+    if w.startswith('down'):
+        return 'down'
+    if w.startswith('mixed') or 'mixed' in w and w.startswith('prices'):
+        return 'mixed'
+    if w.startswith('slightly up') or w.startswith('small') or w.startswith('up modestly'):
+        return 'slightly up'
+    if w.startswith('up'):
+        return 'up'
+    if w.startswith('flat') or w.startswith('near trend'):
+        return 'flat'
+    raise SystemExit(f'unclassed scenario word: {w}')
+
+
+def v7_tables():
+    V7 = json.loads(V7P.read_text())
+    if V7['meta']['snapshot'] != SNAP:
+        raise SystemExit(f'Atlas V7 snapshot is {V7["meta"]["snapshot"]}, expected {SNAP}')
+
+    # S01: the shared view on a stock trading ban, headline figure 7, and the votes its qualification names
+    n7 = next(n for n in V7['numbers'] if n['figure'].startswith('87%'))
+    q = n7['qualification']
+    for frag in ('232 to 198', 'July 22, 2026', '53 to 47', 'September 30, 2026', '60 votes'):
+        if frag not in q:
+            raise SystemExit(f'S01: V7 figure 7 no longer says {frag!r}')
+    n40 = V7['sources'].get('N40', {})
+    rows = [
+        {'key': 'support-all', 'group': 'All registered voters', 'value': 86, 'measure': 'percent who favor a ban', 'body': 'survey', 'source_id': 'N40'},
+        {'key': 'support-republicans', 'group': 'Republicans', 'value': 87, 'measure': 'percent who favor a ban', 'body': 'survey', 'source_id': 'N40'},
+        {'key': 'support-democrats', 'group': 'Democrats', 'value': 88, 'measure': 'percent who favor a ban', 'body': 'survey', 'source_id': 'N40'},
+        {'key': 'house-yes', 'group': 'House, passage of H.R. 7008, July 22, 2026', 'value': 232, 'measure': 'votes for', 'body': 'House', 'source_id': 'K1908'},
+        {'key': 'house-no', 'group': 'House, passage of H.R. 7008, July 22, 2026', 'value': 198, 'measure': 'votes against', 'body': 'House', 'source_id': 'K1908'},
+        {'key': 'senate-yes', 'group': 'Senate, cloture on the motion to proceed, September 30, 2026', 'value': 53, 'measure': 'votes for', 'body': 'Senate', 'source_id': 'W035'},
+        {'key': 'senate-no', 'group': 'Senate, cloture on the motion to proceed, September 30, 2026', 'value': 47, 'measure': 'votes against', 'body': 'Senate', 'source_id': 'W035'},
+        {'key': 'senate-needed', 'group': 'Senate, cloture on the motion to proceed, September 30, 2026', 'value': 60, 'measure': 'votes needed (three-fifths)', 'body': 'Senate', 'source_id': 'W035'},
+    ]
+    if '86' not in json.dumps(n40):
+        print('note: S01 overall 86 percent not found in V7 source N40; kept from Phase 2 (D2-104)', file=sys.stderr)
+    cols = ['key', 'group', 'value', 'measure', 'body', 'source_id']
+    write_v7('v7-stock-trading-ban', cols, rows)
+    v7_meta('v7-stock-trading-ban', 'headline figure 7, a shared view on a stock trading ban by members of Congress, and the votes it records',
+            'numbers[figure 87% and 88%]; sources N40, K1908, W035, N12',
+            'Survey fielded May 19 to 30, 2023; House vote July 22, 2026; Senate vote September 30, 2026', 'United States',
+            'Registered voters in the survey; members voting in each chamber', 'Percent of registered voters; votes',
+            'The survey predates both votes by three years. The vote totals carry no party split until both chambers’ records can be read (D2-104).',
+            {'key': col('id', 'row key, the studio’s'), 'group': col('text', 'who the figure describes'),
+             'value': col('number', 'the figure: percent for the survey rows, votes for the chamber rows'),
+             'measure': col('text', 'what the value counts'), 'body': col('category', 'survey, House or Senate'),
+             'source_id': col('id', 'the V7 source the row rests on')},
+            ('Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, '
+             'United States; U.S. House of Representatives, Roll Call 280, July 22, 2026; U.S. Senate, Vote 253, September 30, 2026; '
+             'as recorded in Oath & Action, Who Do They Answer To? Systems Atlas V7, snapshot of October 15, 2026. The survey predates both votes by three years.'),
+            'D03', ['S01'], domain_note='Members’ stock trading is a conflict of interest, the Conflicts subsystem of V7 domain D03',
+            v7_figure=n7, notes=['The 86 percent overall figure is in the survey source note (N40), not in the headline figure caption.',
+                                 'DR-98: a chart names "H.R. 7008, the Stop Insider Trading Act" with both provisions at first mention; the spec carries those words.'])
+
+    # S08: the repair log, one row per dated rule change; S03: the same grouped by instrument
+    RL = V7['repairLog']
+    rl = []
+    for r in RL['rows']:
+        rl.append({'id': r['id'], 'date': r['date'], 'year': int(r['date'][:4]), 'jurisdiction': r['jurisdiction'], 'direction': r['direction'],
+                   'instrument': r['instrument'], 'instrument_group': GROUP[r['instrument']], 'rule': r['rule'], 'margin': r['margin'],
+                   'reversed_by': r.get('reversed_by'), 'loop': r.get('loop'), 'source_title': r['source_title'], 'source_url': r['source_url'],
+                   'verified': r['verified']})
+    rl.sort(key=lambda x: (x['date'], x['id']))
+    rl_line = (f'{ATLAS_LINE}, repair log of 64 dated rule changes, August 6, 1965 to the November 3, 2026 ballot, United States: federal, state and local. '
+               f'Snapshot of {SNAP_WORDS}. Directions are the atlas’s own codes, set out in its coding note; each row cites its own source. '
+               'One entry, New York City’s 1988 small-donor matching law, rests on a source the atlas did not check.')
+    rl_cols = ['id', 'date', 'year', 'jurisdiction', 'direction', 'instrument', 'instrument_group', 'rule', 'margin', 'reversed_by', 'loop',
+               'source_title', 'source_url', 'verified']
+    write_v7('v7-repair-log', rl_cols, rl)
+    v7_meta('v7-repair-log', 'repair log of 64 dated rule changes', 'repairLog.rows', 'August 6, 1965 to the November 3, 2026 ballot',
+            'United States: federal, state and local', 'Dated changes to the rules that decide who officials answer to', 'One row per rule change',
+            'Directions are the atlas’s own codes, set out in its coding note; each row cites its own source.',
+            {'id': col('id', 'V7 repair log ID, RL01 to RL64'), 'date': col('date', 'date of the change'), 'year': col('year', 'year of the change'),
+             'jurisdiction': col('text', 'where the rule applies'), 'direction': col('category', 'V7’s code: ' + ', '.join(DIRS)),
+             'instrument': col('category', 'how the change was made, V7’s word'),
+             'instrument_group': col('category', 'the studio’s grouping of instruments with one row each (D2-102)'),
+             'rule': col('text', 'what changed, V7’s words'), 'margin': col('text', 'the vote or ruling, V7’s words'),
+             'reversed_by': col('text', 'a later change that reversed it, if any'), 'loop': col('text', 'the loop V7 ties it to'),
+             'source_title': col('text', 'the row’s own source'), 'source_url': col('text', 'its address'),
+             'verified': col('text', 'V7’s verification note')},
+            rl_line, 'D02', ['S08'], intro=RL['intro'], coding_note=RL['coding_note'],
+            domain_note='53 of the 64 rows change election, ballot, district or campaign rules, V7 domain D02')
+    by = collections.OrderedDict()
+    for r in rl:
+        g = by.setdefault(r['instrument_group'], {'instrument_group': r['instrument_group'], 'total': 0, **{d: 0 for d in DIRS}})
+        g['total'] += 1
+        g[r['direction']] += 1
+    inst = sorted(by.values(), key=lambda x: (-x['total'], x['instrument_group']))
+    inst = [{'instrument_group': g['instrument_group'], 'total': g['total'], 'toward_voters': g['toward voters'], 'away_from_voters': g['away from voters'],
+             'voters_kept_existing_rules': g['voters kept existing rules'], 'mixed': g['mixed'], 'pending': g['pending']} for g in inst]
+    write_v7('v7-repair-log-by-instrument', ['instrument_group', 'total', 'toward_voters', 'away_from_voters', 'voters_kept_existing_rules', 'mixed', 'pending'], inst)
+    v7_meta('v7-repair-log-by-instrument', 'repair log of 64 dated rule changes, counted by how each was made', 'repairLog.rows, grouped',
+            'August 6, 1965 to the November 3, 2026 ballot', 'United States: federal, state and local', 'Dated changes to the rules that decide who officials answer to',
+            'Rule changes', 'Directions are the atlas’s own codes, set out in its coding note; each row cites its own source.',
+            {'instrument_group': col('category', 'how the change was made; five instruments with one row each are grouped (D2-102)'),
+             'total': col('integer', 'rule changes made this way'), 'toward_voters': col('integer', 'coded toward voters'),
+             'away_from_voters': col('integer', 'coded away from voters'), 'voters_kept_existing_rules': col('integer', 'coded voters kept existing rules'),
+             'mixed': col('integer', 'coded mixed'), 'pending': col('integer', 'coded pending')},
+            rl_line, 'D02', ['S03'], kind='derived', derived_from=['v7-repair-log.json'],
+            derivation=('Counts of v7-repair-log rows by instrument_group and direction. Agency rule, executive action and executive order group as '
+                        '"Executive or agency action"; municipal ordinance and council funding vote as "Local law or funding vote". The grouping is the studio’s; the instruments are V7’s.'),
+            domain_note='53 of the 64 rows change election, ballot, district or campaign rules, V7 domain D02')
+
+    # S06: eight scenarios and four outcome families, V7's words with the studio's coarse class beside each
+    srows = []
+    for s in V7['scenarios']['items']:
+        row = {'id': s['id'], 'name': s['name'], 'assumptions': '; '.join(s['assumptions'])}
+        for f in FAM:
+            row[f.lower()] = s[f]['dir']
+            row[f.lower() + '_class'] = dclass(s[f]['dir'])
+            row[f.lower() + '_why'] = s[f]['why']
+        srows.append(row)
+    scols = ['id', 'name', 'assumptions'] + [x for f in FAM for x in (f.lower(), f.lower() + '_class', f.lower() + '_why')]
+    write_v7('v7-scenarios-2030', scols, srows)
+    cdesc = {}
+    for f, label in FAM.items():
+        cdesc[f.lower()] = col('text', f'V7’s direction words for {label}')
+        cdesc[f.lower() + '_class'] = col('category', f'the studio’s coarse reading of those words, for a glyph or tint only: up, slightly up, flat, flat or down, down, mixed, same as ii')
+        cdesc[f.lower() + '_why'] = col('text', f'V7’s reason for the {label} direction')
+    v7_meta('v7-scenarios-2030', 'reform outcomes, eight scenarios and the direction each would move four outcome families', 'scenarios.items',
+            'Conditional directions to 2036 from a 2026 baseline', 'United States', 'Eight scenarios', 'Direction words, no numbers',
+            'Each scenario gives a direction only if its assumptions hold. It is no forecast, gives no odds, and the four families are never added together.',
+            {'id': col('id', 'V7 scenario ID, i to viii'), 'name': col('text', 'scenario name, V7’s words'),
+             'assumptions': col('text', 'V7’s assumptions, joined with "; "'), **cdesc},
+            (f'{ATLAS_LINE}, reform outcomes, eight scenarios, conditional directions to 2036 from a 2026 baseline, United States. Snapshot of {SNAP_WORDS}. '
+             'Each scenario gives a direction only if its assumptions hold. It is no forecast, gives no odds, and the four families are never added together.'),
+            'all', ['S06'], intro=V7['scenarios']['intro'],
+            domain_note='The scenarios cover four outcome families across every domain of the atlas',
+            class_method=("The studio’s coarse reading of V7’s direction words, for a glyph or tint only. The words are V7’s and always print beside any glyph. "
+                          "Words that start ‘up’ read up, except ‘up modestly’; ‘slightly up’, ‘up modestly’ and ‘small and slow’ read slightly up; "
+                          "‘flat’, ‘near trend’ and ‘flat through 2036’ read flat; ‘down or flat’ and ‘flat, or down if ...’ read flat or down; "
+                          "‘down’ reads down; ‘mixed’ and ‘prices down ...; employment effects mixed’ read mixed; ‘same as scenario ii’ points to scenario ii."),
+            class_rules=['A glyph or tint is a reading aid only; the four families are never added or tallied, so no badge, count or title may say "all four up".',
+                         '"same as ii" points to scenario ii and must print as words; it is no direction of its own.'],
+            families=FAM)
+
+    # S09: history events on four threads
+    TH = {t['id']: t for t in V7['history']['threads']}
+    ev = sorted(V7['history']['events'], key=lambda e: e['date'])
+    erows = [{'key': f'E{i + 1:02d}', 'date': e['date'], 'year': int(e['date'][:4]), 'thread': e['thread'], 'thread_label': TH[e['thread']]['label'],
+              'title': e['title'], 'mechanism': e['mechanism'], 'loop': e.get('loop'), 'source_text': e['source_text'], 'grade': e['quality']}
+             for i, e in enumerate(ev)]
+    write_v7('v7-history-events', ['key', 'date', 'year', 'thread', 'thread_label', 'title', 'mechanism', 'loop', 'source_text', 'grade'], erows)
+    v7_meta('v7-history-events', 'history, 24 events on four threads', 'history.events', 'February 3, 1870 to June 29, 2026', 'United States',
+            'Changes in the rules that decided who counts, who governs, who owns and who checks', 'One row per event',
+            'Each event rests on a statute, ruling, constitutional text or official record, cited in its own row; the size of any effect comes from the source named beside it.',
+            {'key': col('id', 'the studio’s key, E01 to E24 in date order; V7 events carry no IDs'), 'date': col('date', 'date of the event'),
+             'year': col('year', 'its year'), 'thread': col('category', 'V7 thread ID'), 'thread_label': col('category', 'V7 thread label'),
+             'title': col('text', 'V7’s title'), 'mechanism': col('text', 'V7’s mechanism'), 'loop': col('text', 'the loop V7 ties it to'),
+             'source_text': col('text', 'V7’s source'), 'grade': col('category', 'V7’s quality word')},
+            (f'{ATLAS_LINE}, history, 24 events, February 3, 1870 to June 29, 2026, United States. Snapshot of {SNAP_WORDS}. '
+             'Each event rests on a statute, ruling, constitutional text or official record, cited in its own row; the size of any effect comes from the source named beside it.'),
+            'all', ['S09'], threads=[{'id': t['id'], 'label': t['label'], 'question': t['question']} for t in V7['history']['threads']],
+            events_note=V7['history']['events_note'],
+            domain_note='The four threads run across domains D02, D05, D06 and D08 alike')
+
+    # S10: claims by grade for each of the 16 everyday questions
+    GR = ['documented', 'well-supported', 'plausible', 'contested']
+    HUB = {h['id']: (h.get('title') or h.get('name')) for h in V7['hubs']}
+    cnt = collections.defaultdict(collections.Counter)
+    for c in V7['claims'].values():
+        cnt[c['pathway']][c['confidence']] += 1
+    crow = []
+    for p in V7['pathways']:
+        k = cnt[p['id']]
+        crow.append({'id': p['id'], 'title': p['title'], 'question': p['question'], 'hub': p['hub'], 'hub_title': HUB[p['hub']],
+                     'documented': k['documented'], 'well_supported': k['well-supported'], 'plausible': k['plausible'], 'contested': k['contested'],
+                     'total': sum(k.values()), 'documented_share': round(100 * k['documented'] / sum(k.values()), 1) if sum(k.values()) else None})
+    if sum(r['total'] for r in crow) != len(V7['claims']):
+        raise SystemExit('S10: claims by pathway do not add to the register')
+    write_v7('v7-claims-by-grade', ['id', 'title', 'question', 'hub', 'hub_title', 'documented', 'well_supported', 'plausible', 'contested', 'total', 'documented_share'], crow)
+    v7_meta('v7-claims-by-grade', 'claims register, 433 claims across 16 everyday questions, by evidence grade', 'claims, counted by pathway and confidence',
+            'Claims checked through October 15, 2026', 'United States', 'The 433 claims behind the atlas’s 16 everyday answers', 'Claims',
+            'Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.',
+            {'id': col('id', 'V7 pathway ID, PW01 to PW16'), 'title': col('text', 'pathway title'), 'question': col('text', 'its everyday question'),
+             'hub': col('id', 'V7 hub ID'), 'hub_title': col('category', 'hub title'), 'documented': col('integer', 'claims graded documented'),
+             'well_supported': col('integer', 'claims graded well-supported'), 'plausible': col('integer', 'claims graded plausible'),
+             'contested': col('integer', 'claims graded contested'), 'total': col('integer', 'all claims on the pathway'),
+             'documented_share': col('number', 'documented claims as a share of all claims on the pathway, one decimal; the studio\u2019s arithmetic on V7\u2019s counts (request E4)', 'percent')},
+            (f'{ATLAS_LINE}, claims register, 433 claims across 16 everyday questions, claims checked through October 15, 2026, United States. '
+             f'Snapshot of {SNAP_WORDS}. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.'),
+            'all', ['S10'], grade_meaning={'documented': 'on the public record', 'well-supported': 'strong research evidence', 'plausible': 'some evidence', 'contested': 'evidence disputed'},
+            domain_note='The 16 everyday questions span the atlas’s five hubs and every domain')
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# The check: every file in the folder against the contract
+# ---------------------------------------------------------------------------------------------------------------
+def load_rows(p):
+    if p.suffix == '.csv':
+        return read_csv(p), None
+    d = json.loads(p.read_text())
+    return d.get('rows'), d
+
+
+def check_folder(out=OUT):
+    faults = []
+    metas = sorted(out.glob('*.meta.json'))
+    datas = sorted(p for p in out.iterdir() if p.suffix in ('.csv', '.json') and not p.name.endswith('.meta.json'))
+    for p in out.iterdir():
+        if p.is_dir():
+            faults.append(f'{p.name}: the folder is flat; no subfolders')
+        elif not (p.suffix in ('.csv', '.json')):
+            faults.append(f'{p.name}: only .csv, .json and .meta.json files belong here')
+    named = set()
+    for mp in metas:
+        name = mp.name[:-len('.meta.json')]
+        if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', name):
+            faults.append(f'{mp.name}: name is not lowercase kebab-case')
+        try:
+            m = json.loads(mp.read_text())
+        except Exception as ex:
+            faults.append(f'{mp.name}: does not parse ({ex})')
+            continue
+        for k in REQUIRED:
+            if k not in m or m[k] in (None, ''):
+                faults.append(f'{mp.name}: missing {k}')
+        if DISCLOSURE_RE.search(json.dumps(m, ensure_ascii=False)) or 'required_text' in m:
+            faults.append(f'{mp.name}: carries the retired disclosure or a required_text (DR-100, D2-1756)')
+        if m.get('kind') not in KINDS:
+            faults.append(f'{mp.name}: kind {m.get("kind")!r} is not one of {sorted(KINDS)}')
+        if m.get('domain') not in DOMAINS:
+            faults.append(f'{mp.name}: domain {m.get("domain")!r} is not D01 to D10 or all')
+        if not isinstance(m.get('states'), list) or any(not re.fullmatch(r'[A-Z]{2}', s) for s in m.get('states') or []):
+            faults.append(f'{mp.name}: states must be a list of USPS codes')
+        line = m.get('printed_source_line') or ''
+        if not line.startswith('Source: '):
+            faults.append(f'{mp.name}: printed_source_line must start "Source: "')
+        if '—' in json.dumps(m, ensure_ascii=False) or '‑' in json.dumps(m, ensure_ascii=False):
+            faults.append(f'{mp.name}: an em dash or U+2011 in the sidecar')
+        if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', str(m.get('date_retrieved', ''))):
+            faults.append(f'{mp.name}: date_retrieved is not YYYY-MM-DD')
+        if m.get('kind') == 'derived' and not (m.get('derived_from') and m.get('derivation')):
+            faults.append(f'{mp.name}: a derived table names derived_from and derivation')
+        if m.get('kind') == 'v7' and m.get('snapshot') != SNAP:
+            faults.append(f'{mp.name}: a V7 table names the snapshot {SNAP}')
+        dp = out / m.get('file', '')
+        if not dp.is_file():
+            faults.append(f'{mp.name}: its data file {m.get("file")} is missing')
+            continue
+        if (dp.suffix == '.json') != name.startswith('v7-'):
+            faults.append(f'{mp.name}: V7 tables are v7-*.json and only they are JSON')
+        named.add(dp.name)
+        rows, _ = load_rows(dp)
+        cols = m.get('columns') or {}
+        if not rows:
+            faults.append(f'{dp.name}: no rows')
+            continue
+        keys = list(rows[0].keys())
+        if keys != list(cols.keys()):
+            faults.append(f'{dp.name}: columns {keys} differ from the sidecar’s {list(cols.keys())}')
+        for c, spec in cols.items():
+            if not isinstance(spec, dict) or spec.get('type') not in TYPES or not spec.get('description'):
+                faults.append(f'{mp.name}: column {c} needs a type from {sorted(TYPES)} and a description')
+                continue
+            t = spec['type']
+            for i, r in enumerate(rows):
+                v = r.get(c)
+                if v in ('', None):
+                    continue
+                v = str(v)
+                bad = ((t in ('number',) and num(v) is None) or (t == 'integer' and not re.fullmatch(r'-?\d+', v)) or
+                       (t == 'date' and not re.fullmatch(r'\d{4}-\d{2}-\d{2}', v)) or (t == 'month' and not re.fullmatch(r'\d{4}-\d{2}', v)) or
+                       (t == 'year' and not re.fullmatch(r'\d{4}', v)) or (t == 'boolean' and v.lower() not in ('true', 'false', '0', '1')))
+                if bad:
+                    faults.append(f'{dp.name}: row {i + 1} column {c} = {v!r} is not a {t}')
+                    break
+                if v.strip().upper() in ('NA', 'N/A', '-'):
+                    faults.append(f'{dp.name}: row {i + 1} column {c} uses {v!r} for missing; leave it empty')
+                    break
+        if dp.suffix == '.json':
+            for r in rows:
+                if any(isinstance(v, (dict, list)) for v in r.values()):
+                    faults.append(f'{dp.name}: a V7 row holds a list or object; join lists with "; "')
+                    break
+    for dp in datas:
+        if dp.name not in named:
+            faults.append(f'{dp.name}: has no sidecar')
+    return faults
+
+
+def main():
+    if '--check' not in sys.argv:
+        OUT.mkdir(parents=True, exist_ok=True)
+        copy_public()
+        derive_fec_shift()
+        derive_fred()
+        v7_tables()
+    faults = check_folder()
+    n = len(list(OUT.glob('*.meta.json')))
+    for f in faults:
+        print('FAULT', f)
+    print(f'{OUT.relative_to(ROOT)}: {n} tables, {len(faults)} faults')
+    return 1 if faults else 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())

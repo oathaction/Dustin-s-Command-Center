@@ -1,0 +1,32 @@
+{
+ "file": "clerk-house-current-party-breakdown.csv",
+ "kind": "public",
+ "publisher": "Office of the Clerk, U.S. House of Representatives",
+ "title_or_table": "Clerk of the House home page, party breakdown",
+ "table_id": "clerk.house.gov home page, Member Information panel",
+ "url": [
+  "https://clerk.house.gov/"
+ ],
+ "observation_period": "As of November 11, 2026",
+ "geography": "United States House of Representatives",
+ "universe_or_base": "The 435 voting House seats",
+ "unit": "seats",
+ "date_retrieved": "2026-11-11",
+ "vintage": "Page as read on November 11, 2026, 22:40 UTC",
+ "qualification": "A count that changes with each vacancy, special election or party switch; members elected on November 3, 2026 take their seats on January 3, 2027",
+ "columns": {
+  "party": {
+   "type": "category",
+   "description": "party, or vacancies, as the Clerk lists them"
+  },
+  "seats": {
+   "type": "integer",
+   "description": "seats",
+   "unit": "seats"
+  }
+ },
+ "printed_source_line": "Source: Office of the Clerk, U.S. House of Representatives, party breakdown, as of November 11, 2026, United States House. Retrieved November 11, 2026. Two seats vacant; the count changes with each vacancy and special election.",
+ "ledger_row": "P7-008",
+ "domain": "D02",
+ "states": []
+}

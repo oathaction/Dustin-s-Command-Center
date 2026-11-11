@@ -1,0 +1,74 @@
+{
+ "file": "congress-hr7008-roll-calls.csv",
+ "kind": "public",
+ "publisher": "Office of the Clerk, U.S. House of Representatives; United States Senate",
+ "title_or_table": "House roll call 280 (July 22, 2026), On Passage, H.R. 7008, Stop Insider Trading Act; Senate roll call vote 253, 119th Congress, 2nd session (September 30, 2026), On Cloture on the Motion to Proceed, H.R. 7008",
+ "table_id": "clerk.house.gov evs 2026 roll 280; senate.gov LIS vote_119_2_00253",
+ "url": [
+  "https://clerk.house.gov/evs/2026/roll280.xml",
+  "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00253.xml",
+  "https://api.congress.gov/v3/bill/119/hr/7008/actions?format=json"
+ ],
+ "observation_period": "July 22, 2026 (House) and September 30, 2026 (Senate)",
+ "geography": "United States House and Senate",
+ "universe_or_base": "Members voting on each roll call, by party as each chamber records it",
+ "unit": "members (votes)",
+ "date_retrieved": "2026-11-11",
+ "vintage": "Roll call records as posted on November 11, 2026",
+ "qualification": "The House passed the bill 232 to 198; the Senate vote (53 to 47) was on whether to end debate on taking the bill up and needed 60 votes, so it was not a vote on the bill itself. H.R. 7008 has two parts: a limit on members' stock purchases and a photo ID requirement to vote in federal elections (DR-98)",
+ "columns": {
+  "chamber": {
+   "type": "category",
+   "description": "House or Senate"
+  },
+  "roll_call": {
+   "type": "integer",
+   "description": "roll call number"
+  },
+  "date": {
+   "type": "date",
+   "description": "vote date"
+  },
+  "question": {
+   "type": "text",
+   "description": "question voted on"
+  },
+  "result": {
+   "type": "category",
+   "description": "result as recorded"
+  },
+  "votes_needed": {
+   "type": "text",
+   "description": "votes needed"
+  },
+  "party": {
+   "type": "category",
+   "description": "party as the chamber records it"
+  },
+  "yea": {
+   "type": "integer",
+   "description": "yes votes",
+   "unit": "votes"
+  },
+  "nay": {
+   "type": "integer",
+   "description": "no votes",
+   "unit": "votes"
+  },
+  "present": {
+   "type": "integer",
+   "description": "answered present",
+   "unit": "votes"
+  },
+  "not_voting": {
+   "type": "integer",
+   "description": "not voting",
+   "unit": "members"
+  }
+ },
+ "printed_source_line": "Source: Office of the Clerk, U.S. House of Representatives, roll call 280, July 22, 2026; U.S. Senate, roll call vote 253, September 30, 2026; H.R. 7008, United States Congress. Retrieved November 11, 2026. The Senate vote was on ending debate and needed 60 votes.",
+ "ledger_row": "P7-019",
+ "domain": "D03",
+ "domain_note": "The bill's first part limits members' stock trading, a matter V7 places under money, lobbying and influence (issue I043); a progress bar on the Senate's cloture vote counts under Congress, agencies and public services in its spec, since its question is the 60-vote rule",
+ "states": []
+}

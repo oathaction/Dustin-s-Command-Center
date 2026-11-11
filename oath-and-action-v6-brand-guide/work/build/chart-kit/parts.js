@@ -1,0 +1,113 @@
+/* Oath & Action chart kit: drawing parts the forms share (a key, a value axis, a time axis, notes with leaders).
+ * Load after kit.js. Every part draws through the form's context, so the layout guard and the checks see it. */
+(function (root) {
+  'use strict';
+  var K = root.OAChart;
+  var P = K.parts = {};
+
+  // A key in one row that wraps: [{label, fill, stroke, pattern, shape: 'square'|'line'|'dot', direct}]. Returns its height.
+  P.key = function (c, entries, x, y, maxw) {
+    var size = c.size('label'), sw = Math.round(size * 0.9), gap = 24, lh = Math.round(size * 1.5);
+    var cx = x, cy = y, first = true;
+    entries.forEach(function (e) {
+      var w = sw + 8 + c.measure(e.label, 'label');
+      if (!first && cx + w > x + maxw) { cx = x; cy += lh; }
+      var top = cy - sw + 2;
+      if (e.shape === 'line') c.line(cx, top + sw / 2, cx + sw, top + sw / 2, { stroke: e.stroke || e.fill, width: e.width || c.t('line-subject'), dash: e.dash, mark: false });
+      else if (e.shape === 'dot') c.circle(cx + sw / 2, top + sw / 2, sw / 2.4, { fill: e.fill, mark: false });
+      else {
+        if (e.pattern) { c.pattern(e.pattern, e.stroke || 'subject'); c.rect(cx, top, sw, sw, { pattern: e.pattern, mark: false }); c.rect(cx + 0.5, top + 0.5, sw - 1, sw - 1, { stroke: e.stroke || 'subject', mark: false }); }
+        else if (!e.fill && e.stroke) { c.rect(cx + 0.5, top + 0.5, sw - 1, sw - 1, { fill: e.open ? 'surface' : 'none', mark: false }); c.rect(cx + 0.5, top + 0.5, sw - 1, sw - 1, { stroke: e.stroke, dash: e.dash, mark: false }); }
+        else c.rect(cx, top, sw, sw, { fill: e.fill, mark: false });
+      }
+      c.text(cx + sw + 8, cy, e.label, { role: 'label' });
+      cx += w + gap;
+      first = false;
+    });
+    c.key(entries.map(function (e) { return { fill: e.fill || e.stroke, pattern: !!e.pattern, direct: !!e.direct }; }));
+    return cy - y + lh;
+  };
+
+  // Horizontal gridlines with value labels in a left gutter. Returns the gutter width.
+  P.tick_fmt = function (c, ticks, i, fmt) {
+    var f = c.spec.formats || {};
+    return i === ticks.length - 1 && f.y_tick_top ? f.y_tick_top : fmt;
+  };
+  P.value_gutter = function (c, ticks, fmt) {
+    var w = 0;
+    ticks.forEach(function (v, i) { w = Math.max(w, c.measure(K.fmt(v, P.tick_fmt(c, ticks, i, fmt)), 'tick', 400, true)); });
+    return Math.ceil(w + 8);
+  };
+  P.value_grid = function (c, ys, ticks, fmt, x0, x1, gutter_x) {
+    ticks.forEach(function (v, i) {
+      var y = ys(v);
+      if (v !== 0) c.line(x0, y, x1, y, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
+      c.text(gutter_x, y + c.size('tick') * 0.35, K.fmt(v, P.tick_fmt(c, ticks, i, fmt)), { role: 'tick', anchor: 'end', tnum: true });
+    });
+  };
+  P.zero_line = function (c, y, x0, x1) {
+    c.line(x0, y, x1, y, { stroke: 'baseline', width: c.t('line-baseline'), mark: false });
+  };
+
+  // Year labels along a time axis: one at each January the domain holds, thinned to fit
+  P.year_axis = function (c, xs, lo, hi, y, x_end) {
+    var years = [], step = 1, size = c.size('tick');
+    for (var yr = Math.ceil(lo - 1e-9); yr <= hi + 1e-9; yr++) years.push(yr);
+    var wmax = c.measure('0000', 'tick') + 14;
+    while (years.length > 1 && (xs(years[0] + step) - xs(years[0])) < wmax) step++;
+    years.forEach(function (yr, i) {
+      if ((yr - years[0]) % step) return;
+      var x = xs(yr);
+      if (x + c.measure(String(yr), 'tick') > (x_end || c.width)) return;
+      c.line(x, y - size - 6, x, y - size - 2, { stroke: 'baseline', width: c.t('line-hairline'), mark: false });
+      c.text(x, y, String(yr), { role: 'tick' });
+    });
+  };
+
+  // A note set inside the plot with a leader to the point it explains. place: above, below, left, right.
+  P.note = function (c, px, py, words, o) {
+    o = o || {};
+    var size = c.size('label'), place = o.place || 'above', clear = c.t('note-leader-min'), wgt = o.weight || 600;
+    var lines = o.max ? c.wrap(words, 'label', o.max, wgt) : [words];
+    var w = 0;
+    lines.forEach(function (l) { w = Math.max(w, c.measure(l, 'label', wgt)); });
+    var lh = Math.round(size * 1.25), h = lh * (lines.length - 1) + size;
+    var anchor = o.anchor || 'middle';
+    var tx = px, ty;
+    if (place === 'above') ty = py - clear - (lines.length - 1) * lh - size * 0.25;
+    else if (place === 'below') ty = py + clear + size;
+    else { ty = py + size * 0.35 - (lines.length - 1) * lh / 2; tx = place === 'left' ? px - clear : px + clear; anchor = place === 'left' ? 'end' : 'start'; }
+    if (o.dx) tx += o.dx;
+    if (o.dy) ty += o.dy;
+    var x0 = anchor === 'middle' ? tx - w / 2 : anchor === 'end' ? tx - w : tx;
+    // keep the note inside the artboard
+    if (x0 < 0) { tx += -x0; x0 = 0; }
+    if (x0 + w > c.width) { tx -= x0 + w - c.width; x0 = c.width - w; }
+    var box = c.text(tx, ty, lines.join(' '), { role: 'label', weight: wgt, anchor: anchor, max: o.max ? o.max + 1 : undefined, halo: true });
+    // the leader from the note's near edge to the point
+    var lx = Math.max(box.x, Math.min(px, box.x + box.w)), ly;
+    if (place === 'above') ly = box.y + box.h + 3;
+    else if (place === 'below') ly = box.y - 3;
+    else { lx = place === 'left' ? box.x + box.w + 3 : box.x - 3; ly = py; }
+    var dist = Math.sqrt((lx - px) * (lx - px) + (ly - py) * (ly - py));
+    if (dist > 4 && o.leader !== false) c.line(lx, ly, px, py, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+    return box;
+  };
+
+  // The value scale: the spec's own (scale.y = [lo, hi]) or a nice one from the data; ticks at one step inside it
+  P.value_scale = function (c, lo, hi, count) {
+    var sc = (c.spec.scale || {}).y;
+    if (sc) { var st = K.nice(sc[0], sc[1], count).step; return { lo: sc[0], hi: sc[1], ticks: K.ticks(sc[0], sc[1], 0, st) }; }
+    var nk = K.nice(lo, hi, count);
+    return { lo: nk[0], hi: nk[1], ticks: K.ticks(nk[0], nk[1], 0, nk.step) };
+  };
+  // Fill {placeholders} in a label from a row: {x}, {y} and any encode name, formatted by spec.formats
+  P.fill = function (c, tmpl, row) {
+    var f = c.spec.formats || {};
+    return String(tmpl).replace(/\{([a-z0-9_]+)\}/g, function (_, k) {
+      var col = c.encode[k] || k;
+      var v = row[col];
+      return K.fmt(v, f[k] || f[col] || 'text');
+    });
+  };
+})(typeof globalThis !== 'undefined' ? globalThis : this);

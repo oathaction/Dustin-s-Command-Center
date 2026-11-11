@@ -1,0 +1,46 @@
+{
+ "file": "congress-gov-laws-by-congress.csv",
+ "kind": "public",
+ "publisher": "Library of Congress, Congress.gov",
+ "title_or_table": "Congress.gov API, law endpoint, count of measures that became public law and private law, by Congress",
+ "table_id": "api.congress.gov v3 /law/{congress}/pub and /law/{congress}/priv, pagination count",
+ "url": [
+  "https://api.congress.gov/v3/law/{congress}/pub?limit=1&format=json",
+  "https://api.congress.gov/v3/law/{congress}/priv?limit=1&format=json"
+ ],
+ "observation_period": "93rd Congress (1973 to 1974) to 118th Congress (2023 to 2024), complete; 119th Congress (2025 to 2026) to November 11, 2026",
+ "geography": "United States",
+ "universe_or_base": "Bills and joint resolutions that became law, counted by Congress.gov's law endpoint; public laws apply generally, private laws to named people or entities",
+ "unit": "laws (measures with a law number)",
+ "date_retrieved": "2026-11-11",
+ "vintage": "Congress.gov data as served on November 11, 2026",
+ "qualification": "A count of laws says nothing about their length or reach: one appropriations law can run to over a thousand pages, and many laws name a post office. The 119th Congress is still in session, so its count is partial; Congress.gov counts can differ by a few from the Office of the Federal Register's list",
+ "columns": {
+  "congress": {
+   "type": "integer",
+   "description": "Congress number"
+  },
+  "years": {
+   "type": "text",
+   "description": "the two calendar years the Congress spans"
+  },
+  "public_laws": {
+   "type": "integer",
+   "description": "measures that became public law",
+   "unit": "laws"
+  },
+  "private_laws": {
+   "type": "integer",
+   "description": "measures that became private law",
+   "unit": "laws"
+  },
+  "complete": {
+   "type": "boolean",
+   "description": "false while the Congress is still in session"
+  }
+ },
+ "printed_source_line": "Source: Library of Congress, Congress.gov, laws by Congress, 93rd to 118th Congress (1973 to 2024), United States. Retrieved November 11, 2026. A count of laws, short or long; the 119th Congress is still in session.",
+ "ledger_row": "P7-001",
+ "domain": "D04",
+ "states": []
+}

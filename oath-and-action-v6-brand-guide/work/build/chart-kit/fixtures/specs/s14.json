@@ -1,0 +1,101 @@
+{
+ "kit": 1,
+ "id": "S14",
+ "form": "columns-moving-average",
+ "family": "change-over-time",
+ "tier": "core",
+ "dataset": "fred-payrolls-monthly-change",
+ "reader_question": "How many jobs did the economy add each month?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Official statistic: a Bureau of Labor Statistics survey of employers, as copied by FRED",
+ "title": "The three-month average of monthly job change stood at 51,000 in September 2026, a preliminary figure, and payrolls shrank in seven of the 57 months charted.",
+ "measure_line": "Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, January 2022 to September 2026, the span both jobs charts share, with the three-month average.",
+ "notes": [
+  "The three-month average for a month is the mean of that month’s change and the two before it.",
+  "August and September 2026 are preliminary: the Bureau of Labor Statistics revises each month’s first estimate in the next two monthly reports, and a yearly benchmark revision can move earlier months. The average is dashed where it includes a preliminary month.",
+  "Payrolls shrank in seven months: January, June, August, October and December 2025, and February and July 2026."
+ ],
+ "source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.",
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "Columns show the monthly change in payroll jobs from January 2022 to September 2026, mostly gains that shrink from about 800,000 in early 2022 to under 200,000 by 2025, with seven months of losses in 2025 and 2026. A line shows the three-month average falling to 51,000 in September 2026, a preliminary figure.",
+ "table": {
+  "caption": "Monthly change in payroll jobs and its three-month average",
+  "columns": [
+   {
+    "field": "month",
+    "label": "Month",
+    "format": "month",
+    "row_header": true
+   },
+   {
+    "field": "change_thousands",
+    "label": "Change in jobs",
+    "format": "signed-thousands"
+   },
+   {
+    "field": "avg3_thousands",
+    "label": "Three-month average",
+    "format": "signed-thousands"
+   },
+   {
+    "field": "status",
+    "label": "Status",
+    "words": {
+     "preliminary": "Preliminary",
+     "final": ""
+    }
+   }
+  ]
+ },
+ "chart_notes": [
+  "Key: a Stone column is the jobs added or lost in the month; hatched columns are preliminary, August and September 2026.",
+  "Three-month average: the dark line, dashed where it includes a preliminary month."
+ ],
+ "phone": "same",
+ "domain": "D07",
+ "states": [],
+ "encode": {
+  "x": "month",
+  "y": "change_thousands",
+  "average": "avg3_thousands",
+  "status": "status"
+ },
+ "formats": {
+  "x": "month",
+  "y": "signed-thousands",
+  "y_tick": "signed-thousands"
+ },
+ "labels": {
+  "key_columns": "Jobs added or lost in the month",
+  "key_preliminary": "Preliminary: August and September 2026",
+  "preliminary_value": "preliminary",
+  "latest": [
+   "{y} jobs",
+   "in {x}, preliminary"
+  ]
+ },
+ "annotations": [
+  {
+   "at": {
+    "x": "2023-06"
+   },
+   "text": "Three-month average",
+   "target": "average",
+   "place": "above",
+   "dy": -40
+  },
+  {
+   "at": {
+    "x": "2025-10"
+   },
+   "text": "Seven months with a loss",
+   "target": "low",
+   "place": "left",
+   "dx": -6,
+   "dy": 14
+  }
+ ],
+ "notes_internal": "Engineer's fixture to prove the kit; the Explainer maker writes the deliverable spec in specs/s14.json."
+}
