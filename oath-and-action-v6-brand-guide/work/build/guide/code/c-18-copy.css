@@ -23,7 +23,7 @@
 .oa-copy-mark[hidden] { display: none }
 .oa-copy-mark--ok { color: var(--oa-color-state-success-mark) }
 .oa-copy-status[data-oa-state="error"] { padding: var(--oa-space-100) var(--oa-space-150); background: var(--oa-color-state-error-band, transparent);
-  color: var(--oa-color-state-error-text); border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-mark) }
+  color: var(--oa-color-state-error-text); border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar) }
 .oa-copy-words b { font-weight: var(--oa-font-weight-bold) }
 .oa-copy-fallback { display: block; box-sizing: border-box; width: 100%; max-width: 30rem; min-height: var(--oa-size-target-touch); margin-top: var(--oa-space-100);
   padding: var(--oa-space-100); border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); background: var(--oa-color-field-ground);

@@ -446,7 +446,7 @@ PLAYER_CSS = (
     '.gd{' + ty('bodySmall') + ';max-width:36rem;margin-top:4px}'
     '.cn{position:relative}.cn > .nb{position:absolute;top:-12px;left:-12px;'
     'box-shadow:0 0 0 2px var(--oa-color-surface)}'
-    '.row2.an{gap:20px 28px}'
+    '.an.row2{gap:20px 28px}'
     # frames: the data-when layers show by the player's data-frame (start, run or end)
     '[data-oa-motion]:not([data-frame="end"]) [data-when="end"]{display:none}'
     '[data-oa-motion][data-frame="end"] [data-when="start"]{display:none}'

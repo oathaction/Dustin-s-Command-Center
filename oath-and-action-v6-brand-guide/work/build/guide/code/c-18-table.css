@@ -45,7 +45,7 @@
 /* Error: the mark in ink, "Error:" and the fix, on the Error Band where the surface has one, with the 4 px red bar */
 .oa-table-error { display: flex; align-items: flex-start; gap: var(--oa-space-100); padding: var(--oa-space-100) var(--oa-space-150);
   background: var(--oa-color-state-error-band, transparent); color: var(--oa-color-state-error-text);
-  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-mark) }
+  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar) }
 .oa-table-mark { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
 .oa-table-error b { font-weight: var(--oa-font-weight-bold) }
 .oa-table-error > span { min-width: 0; overflow-wrap: anywhere }

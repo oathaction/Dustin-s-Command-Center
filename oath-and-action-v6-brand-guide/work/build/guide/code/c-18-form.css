@@ -17,11 +17,11 @@
 .oa-form-input:hover { border-width: var(--oa-border-width-rule); padding-inline: calc(var(--oa-space-150) - 1px) }
 .oa-form-input:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
 /* A field with an error: the red bar at its left edge, drawn as a border so it holds in forced colors */
-.oa-form-input[aria-invalid="true"], .oa-form-input[aria-invalid="true"]:hover { border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-mark);
+.oa-form-input[aria-invalid="true"], .oa-form-input[aria-invalid="true"]:hover { border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar);
   padding-left: calc(var(--oa-space-150) - var(--oa-border-width-bar) + var(--oa-border-width-hairline)) }
 .oa-form-error { display: flex; align-items: flex-start; gap: var(--oa-space-100); margin: var(--oa-space-100) 0 0; padding: var(--oa-space-100) var(--oa-space-150);
   background: var(--oa-color-state-error-band, transparent); color: var(--oa-color-state-error-text);
-  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-mark); font: var(--oa-type-body-small) }
+  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar); font: var(--oa-type-body-small) }
 .oa-form-error[hidden] { display: none }
 .oa-form-mark { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
 .oa-form-error b, .oa-form-status b { font-weight: var(--oa-font-weight-bold) }

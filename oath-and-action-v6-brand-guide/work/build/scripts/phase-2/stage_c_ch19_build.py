@@ -264,6 +264,20 @@ MAP = {
     '4.1.3': ('met', ['18.18', '18.12', '18.15', '18.16', '18.20', '11.15'], ''),
 }
 STATUS_WORD = {'met': 'Met', 'part': 'Met in part', 'gap': 'Gap', 'none': 'Not used today'}
+# The chapters that owe each gap, and what no product does today, for Rule 19.1's specifications
+GAP_OWNERS = {'1.2.1': ['16', '23'], '1.2.2': ['16', '23'], '1.2.3': ['16', '23'], '1.2.5': ['16', '23'], '2.4.2': ['20'],
+              '3.1.1': ['20'], '3.1.2': ['02', '20'], '3.2.6': ['20'], '3.3.4': ['18']}
+NONE_WHAT = {'1.2.4': 'live captions', '1.4.2': 'sound that plays itself', '2.2.1': 'time limits',
+             '3.3.7': 'forms of more than one step', '3.3.8': 'sign-in'}
+
+
+def sort_key(n):
+    return tuple(int(x) for x in n.split('.'))
+
+
+def and_list(xs):
+    xs = list(xs)
+    return xs[0] if len(xs) == 1 else ', '.join(xs[:-1]) + ' and ' + xs[-1]
 
 
 def present_rules():
@@ -687,6 +701,9 @@ def build():
             raise SystemExit(f'unknown status {st}')
     if set(MAP) != {c['n'] for c in crit}:
         raise SystemExit(f'the map and the criteria differ: {sorted(set(MAP) ^ {c["n"] for c in crit})}')
+    if {k for k, v in MAP.items() if v[0] == 'gap'} != set(GAP_OWNERS) or {k for k, v in MAP.items() if v[0] == 'none'} != set(NONE_WHAT):
+        raise SystemExit('every gap needs its owing chapters and every criterion not used today its words')
+    owers = sorted({c for v in GAP_OWNERS.values() for c in v})
     cid, counts = s_criteria(crit, held, own)
     s_matrix()
     res = load_results()
@@ -718,9 +735,8 @@ def build():
                                                    f'{sum(c["level"] == "AA" for c in crit)} at AA, {newn} new in 2.2'},
                     {'label': 'Removed', 'value': '4.1.1 Parsing, which WCAG 2.2 keeps as a number with no level'},
                     {'label': 'Met today', 'value': f'{counts["met"]} by a rule, {counts["part"]} in part'},
-                    {'label': 'Gaps', 'value': f'{counts["gap"]}, owed by chapters 02, 16, 20 and 23'},
-                    {'label': 'Not used today', 'value': f'{counts["none"]}: live captions, sound that plays itself, legal or '
-                                                         'money forms, multi-step forms and sign-in'}],
+                    {'label': 'Gaps', 'value': f'{counts["gap"]}, owed by chapters {and_list(owers)}'},
+                    {'label': 'Not used today', 'value': f'{counts["none"]}: ' + and_list([NONE_WHAT[k] for k in sorted(NONE_WHAT, key=sort_key)])}],
              related=['18', '20'], builders=['Use W3C’s quick reference, w3.org/WAI/WCAG22/quickref, to filter the criteria '
                                              'by level and topic, and open a criterion’s Understanding page for its examples.']),
         dict(id='19.2', title='Write alt text for what an image does on the page, and hide decoration from screen readers.',

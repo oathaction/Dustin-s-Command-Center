@@ -9,7 +9,7 @@
 .oa-msg-words { min-width: 0; overflow-wrap: anywhere }
 .oa-msg-words b { font-weight: var(--oa-font-weight-bold) }
 .oa-msg--error { background: var(--oa-color-state-error-band, transparent); color: var(--oa-color-state-error-text);
-  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-mark) }
+  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar) }
 .oa-msg--warning { color: var(--oa-color-state-warning-text); border-left: var(--oa-border-width-bar) solid var(--oa-color-state-warning-mark) }
 .oa-msg--warning .oa-msg-mark { color: var(--oa-color-state-warning-mark) }
 .oa-msg--success { padding-left: 0; color: var(--oa-color-state-success-text) }

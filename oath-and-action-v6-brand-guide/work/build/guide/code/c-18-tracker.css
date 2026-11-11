@@ -65,7 +65,7 @@
 .oa-tracker-alert:empty, .oa-tracker-take[hidden], .oa-tracker-check[hidden] { display: none }
 .oa-tracker-alert { display: flex; align-items: flex-start; gap: var(--oa-space-100); margin: var(--oa-space-150) 0 0; padding: var(--oa-space-100) var(--oa-space-150);
   background: var(--oa-color-state-error-band, transparent); color: var(--oa-color-state-error-text);
-  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-mark); font: var(--oa-type-body-small) }
+  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar); font: var(--oa-type-body-small) }
 .oa-tracker-next { box-sizing: border-box; max-width: 100%; min-height: var(--oa-size-target-touch); margin: var(--oa-space-200) 0 0;
   padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px); border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
   border-radius: var(--oa-radius-none); background: transparent; color: var(--oa-color-text-primary); font: var(--oa-type-ui); text-align: start; overflow-wrap: anywhere; cursor: pointer }
