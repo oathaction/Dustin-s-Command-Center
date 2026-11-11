@@ -170,3 +170,67 @@ Modified (all mine):
 - `work/build/tests/guide/tokens_download_test.js`: the live demo's cases
 
 No other owner's file, nothing in `source/`, `work/ledger/` or `deliverables/`, no asset and no board. I committed and pushed nothing.
+
+## Second pass
+
+DR-191's short second pass, November 11, 2026, under the main session's message: the ten rows of section 1 of `20261111_Stage-C-Round-2-Editor-Notes.md`, applied word for word through my generators, and the creative director's R1 from its rescore (`20261111_CD-Review-Of-Stage-C-Chapters.md`). tokens.json changed, so the token tests ran again.
+
+### What changed
+
+- **E1, Rule 26.7.** The first sentence now reads "The table lists every token in tokens.json, 504 in all, in 17 groups, each closed until you open it. The groups follow Rule 26.1’s 13 categories, with color split into four groups and chart into two, font listed as “Type: faces and weights” and z-index as “Stacking order”." The generator counts every figure from tokens.json and the table's own grouping, and stops if font or z-index ever takes another group name.
+- **E2, `oa.size.target.touch`:** "Height of tabs, buttons and links in a list. A link in running text takes its line's height (Rule 18.5)."
+- **E3, tokens.json's own description:** "Oath & Action design tokens, Edition 06, version 6.0.0-gate2.8, a pre-release. Every value may still change until version 6.0.0 ships, once our founder and editor approves these files. Generated from our token source; do not edit by hand." `statusNote` carries the second sentence, so tokens.css's header now says the same. The source and generator paths stay in `$extensions`, where builders' tools read them.
+- **E4, the diverging scale:** the group's description opens "The diverging scale, Prussian through the page color to Verdigris." and its five steps read "The diverging scale, step N of 5: ...".
+- **E5, the 6.0.0-gate2.7 note's reason:** "One dark mode for every screen product, drawn on Charcoal in the style of the interactive version of our systems atlas, that follows the device and a reader's switch".
+- **E6, the 6.0.0-gate2.8 note's reason**, printed by `s-26-8-correct` and its alt: "... so the bar's token needed a name of its own. Chapter 26's table prints every description for readers, so each one now reads in plain words."
+- **E7, Rule 26.3:** "Then its job, which a token’s name calls its role: text, graphic, border, focus, data, action, state or field."
+- **E8, Rule 26.3:** "With tokens.css linked, the theme points every short name at the tokens for the page’s ground, Newsprint in the light theme and Charcoal in the dark one."
+- **E9, typographic apostrophes.** The generator turns every straight apostrophe in the chapter file's prose, and in the manifest's alt text, into ’, and leaves code spans alone. The chapter file now holds no straight apostrophe outside code. tokens.json, a data file, keeps plain ones, as the row says.
+- **E10, `oa.color.graphic.essential` on four surfaces:** "Marks a reader needs: icons, and a diagram's strokes and lit nodes."
+- **E4's rule, carried to four tints.** Four tint descriptions also named "pair B", and the table prints them too: Midpoint, Light Prussian step, Light Verdigris step and Strong Verdigris end now name "the diverging scale". The table's guard now stops on "pair" and a capital letter, and on "dark atlas".
+- **R1, the token table's head.** From 80em, when the table breaks out over the rail, its label row and rule go out with it, so the stage no longer hangs past its own head. A fixed plate's head stays on the text column, as CA-S13 set. The rail also hides while that head covers it. Measured: at 1440 px the head and the stage both start at 65 px and end at 1,153; at 1280 px both span 40 to 1,240; at 1024 px nothing breaks out.
+- **The release diff, by script:** 14 token descriptions and two group descriptions changed (the file's own and the diverging scale's); no value changed and no token was added or removed. The version stays 6.0.0-gate2.8.
+
+### Routine calls
+
+- D2-xxx | E1's figures are computed: 504 and 17 from tokens.json, 13 from Rule 26.1's categories, four and two from the table's own groups, written as words under ten (H06); the generator stops if font or z-index changes its group name | No figure typed by hand can drift from the file (D2-1495)
+- D2-xxx | E3's description is built from `statusNote` and the title, and the source and generator paths stay in `$extensions` | One sentence feeds tokens.json and tokens.css's header, and tools still find the paths
+- D2-xxx | Four tint descriptions lose "pair B" as well as the five steps E4 names | The table prints them to readers, and E4's reason holds for each
+- D2-xxx | The table's guard also stops on "pair" with a capital letter, and on "dark atlas" | E4 and E5 name both as studio names; a new one stops the build
+- D2-xxx | E9's apostrophes are made by the generator for every prose string of the chapter file and every alt in the manifest, never inside a code span | The row asks for every changed prose string; one rule for all keeps a new string from slipping
+- D2-xxx | The descriptions change inside 6.0.0-gate2.8 with no new version | The release has not shipped to board C, its note already says every description reads in plain words, and Rule 26.8 counts descriptions alone as a change to the third part once 6.0.0 ships
+- D2-xxx | A flowing plate that breaks out takes its label row and rule with it; a fixed one keeps its head on the column | R1; CA-S13 set the fixed plates' head on the text column, and the creative director asks this for the token table
+- D2-xxx | The rail hides while a broken-out head covers it, as it does for the frame | No rail link sits out of sight under the head
+
+### Tested
+
+- **Token tests** after the change: all six steps pass; 504 tokens, parity 624 root properties, rules 0 failures, 44 of 44 plants, Style Dictionary agrees, Chromium resolves every value and reports both plants. `tokens_build.mjs --check` current.
+- **Release diff by script** (above): 14 token descriptions, two group descriptions, no value.
+- **Chapter file by script:** no straight apostrophe outside code, 45 typographic ones; no manifest alt with a straight one; E1, E7 and E8 read as written.
+- **The generator chain** from the project folder, each with `python3 -I work/build/scripts/phase-2/`: `apply_systems_ch11.py`, `stage_b_ch10_build.py --no-draw`, `stage_b_ch12_systems_build.py`, `promotion_identity.py specimens`, `guide_editor_build.py` and `stage_b_identity_ch01.py` each exited 0, then `stage_c_ch26_build.py` wrote nothing new. `git status` was the same before and after the chain: only my files.
+- **`--check` modes:** chapters 17, 18 and 19 and the anatomy plates current; chapter 26 33 of 33 files current; the token table current.
+- **`guide_build.py --strict`** into my scratch (`second/guide.html`): exit 0, 0 warnings, 16 chapter files, 185 rules, 424 specimens, 8,962,411 bytes.
+- **`guide_check.js --quick`** on that build: PASS, 0 failures. 1,969 same-page links; fitSwitch 77 of 77 at 1x, 2x and 3x; keyPath 140 walks, 714 steps; motion 7 of 7; redTouchesPrussian 480 stages, no hit, Send pressed in 3 of 3 forms; tokenTable 504 rows, version 6.0.0-gate2.8; codeMatch 56 stages at each width, no failure, 2,152 elements' styles compared at each.
+- **`tokens_download_test.js`** on that build: 18 of 18 cases.
+- **R1:** the head's and the stage's left and right edges measured at 1440, 1280 and 1024 px (above), and the 1440 px head looked at in a capture.
+
+### Not tested
+
+- The guide check's self-test: `guide_check.js` did not change in this pass.
+- The guide check at 1024 and 360 px; my run was `--quick`.
+- The new words read aloud, or read again by the editor.
+- R1's head in print, and on screens between 80em and 1280 px other than 1280 itself.
+
+### Change log
+
+Modified (all mine; nothing created):
+- `work/build/tokens/src/oa-tokens.src.mjs`: E2 to E6, E10 and the four tints
+- `work/build/scripts/phase-2/tokens_build.mjs`: E3's description
+- `work/build/tokens/tokens.json`, `work/build/tokens/tokens.css` (generated); `work/build/tests/tokens/20261106_Token-Test-Results.json` (written by the run)
+- `work/build/scripts/phase-2/stage_c_ch26_build.py`: E1, E7, E8, E9
+- `work/build/scripts/phase-2/token_table_build.py`: the guard
+- `work/build/guide/chapters/26-tokens.json`, `work/build/guide/specimens/manifest-tokens.json`, `s-26-8-correct.html`, `s-26-token-table.html` (generated)
+- `work/build/guide/shell/guide-shell.css`, `guide-shell.js`: R1, and the rail under a broken-out head
+- `work/handoffs/phase-2/20261111_Stage-C-Round-2-Engineer-Fix-Notes.md` (this section)
+
+No other owner's file, nothing in `source/`, `work/ledger/` or `deliverables/`. I committed and pushed nothing.
