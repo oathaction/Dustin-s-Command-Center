@@ -1,11 +1,12 @@
 {
   "title": "Civic Line inventory in use",
   "date": "20261110",
-  "count": 124,
+  "updated": "20261111",
+  "count": 125,
   "counts_by_sheet": {
     "01": 26,
     "02": 24,
-    "03": 24,
+    "03": 25,
     "04": 25,
     "05": 25
   },
@@ -15,20 +16,21 @@
     "DR-159": 1,
     "DR-160": 1,
     "DR-157": 1,
+    "DR-207": 1,
     "DR-158": 1
   },
   "decisions": {
     "set_in_use": "D2-716",
-    "finals": "DR-156 to DR-160",
-    "new_ids": "D2-714",
+    "finals": "DR-156 to DR-160, DR-207",
+    "new_ids": "D2-714 (CL-073, CL-074), D2-1262 (CL-075)",
     "light_editions": "DR-09",
     "tiles": "DR-10",
     "framing": "DR-08",
     "record": "D2-464, D2-718"
   },
   "paths_relative_to": "work/build/assets/civic-line-v6/",
-  "layout": "The four SVG editions of all 124 drawings sit in this folder. PNG previews and tiles sit here for the eight finals only; the 116 unchanged rows point at their October PNGs and tiles in ../civic-line/ (D2-716). A row's PNG is <png_256_dir>/<edition>/<png name>, its tiles <tiles_dir>/<shape>-<tile>/svg|png-256|png-512/<tile name>.",
-  "order": "The October order, with each final in its original's place, and CL-073 and CL-074 after CL-024 at the end of sheet 01 (D2-714).",
+  "layout": "The four SVG editions of all 125 drawings sit in this folder. PNG previews and tiles sit here for the nine finals only; the 116 unchanged rows point at their October PNGs and tiles in ../civic-line/ (D2-716). A row's PNG is <png_256_dir>/<edition>/<png name>, its tiles <tiles_dir>/<shape>-<tile>/svg|png-256|png-512/<tile name>. The 24 px fits of the 37 sit in fit-24/ with their own manifest (D2-1265).",
+  "order": "The October order, with each final in its original's place, CL-073 and CL-074 after CL-024 at the end of sheet 01 (D2-714), and CL-075 after CL-072 at the end of sheet 03 (D2-1262).",
   "october_inventory": "../civic-line/20261029_Civic-Line-Inventory.json",
   "order_matches_catalog": false,
   "pixel_rules": {
@@ -67,7 +69,7 @@
       "CL-021",
       "CL-022"
     ],
-    "finals": "The eight finals take the same factors, transform, stroke cap and minimum-size rule. Their optical scale and offset follow S-1 and S-2 on the build's vector hull (cl_tiles.hull_size), with 74.66 units, that hull's median over the 122 October masters; this form gives the review's table for 116 of the 118 masters outside the pillar group under S-1 (CL-072 and R-44 come out one step lower) and for 122 of 122 under S-2. Their bare floor (32 or 48 px) comes from reading each at 32 px."
+    "finals": "The eight finals take the same factors, transform, stroke cap and minimum-size rule. Their optical scale and offset follow S-1 and S-2 on the build's vector hull (cl_tiles.hull_size), with 74.66 units, that hull's median over the 122 October masters; this form gives the review's table for 116 of the 118 masters outside the pillar group under S-1 (CL-072 and R-44 come out one step lower) and for 122 of 122 under S-2. Their bare floor (32 or 48 px) comes from reading each at 32 px. CL-075 Housing (DR-207) takes the same rules: optical scale 0.94 and offset 0.0 by the same form, and its tiles on the 48 px bare floor (D2-1236)."
   },
   "csv_none": "In the CSV, 'none' marks a sheet field that a redrawn or new drawing does not have; the JSON holds null.",
   "icons": [
@@ -14595,6 +14597,176 @@
         "black": "59b8ed6a020624eeab49b7873db69f189702fa2f99262b02587d5db5e4dcf28e",
         "red-newsprint": "c682f473c481d1c55c3771b9ceb758ea6a0e68c0bc41e576f2acd623612bb11c",
         "newsprint": "d0d540eea6a5c346e4c4f71e3b31bdc54287f0db5068c2ece5aab0eb3157c915"
+      }
+    },
+    {
+      "id": "CL-075",
+      "label": "Housing",
+      "slug": "Housing",
+      "sheet": "03",
+      "row": 5,
+      "column": 1,
+      "sheet_black": null,
+      "sheet_red": null,
+      "crop": null,
+      "crop_margins": null,
+      "pictogram_box_sheet": null,
+      "ink_box_crop": null,
+      "components": null,
+      "registration": null,
+      "red_crop": null,
+      "sheet_iou": null,
+      "mask_params": null,
+      "construction": "an apartment block of three floors at left, two windows a floor and a door, beside a smaller pitched-roof house with its door, both on one ground line that runs past them. Windows are small rounded squares. No chimney, fence, tree, flag or sign.",
+      "red_text": "one window of the block, top right: one household's home among many. The block, its other windows, the house, the doors and the ground line stay black.",
+      "exports": {
+        "svg_red_black": "20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Red-Black.svg",
+        "png_red_black": "20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Red-Black.png",
+        "svg_black": "20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Black.svg",
+        "png_black": "20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Black.png",
+        "svg_red_newsprint": "20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Red-Newsprint.svg",
+        "png_red_newsprint": "20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Red-Newsprint.png",
+        "svg_newsprint": "20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Newsprint.svg",
+        "png_newsprint": "20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Newsprint.png",
+        "paths": [
+          "red-black/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Red-Black.svg",
+          "png-256/red-black/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Red-Black.png",
+          "png-512/red-black/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Red-Black.png",
+          "black/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Black.svg",
+          "png-256/black/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Black.png",
+          "png-512/black/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Black.png",
+          "red-newsprint/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Red-Newsprint.svg",
+          "png-256/red-newsprint/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Red-Newsprint.png",
+          "png-512/red-newsprint/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Red-Newsprint.png",
+          "newsprint/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Newsprint.svg",
+          "png-256/newsprint/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Newsprint.png",
+          "png-512/newsprint/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Newsprint.png"
+        ]
+      },
+      "reference_crops": null,
+      "status": "reviewed",
+      "flags": [],
+      "crop_notes": [],
+      "caption_check": null,
+      "stroke_median_px": 5.75,
+      "stroke_median_1x_px": 6.0,
+      "extent_px": 187.5,
+      "extent_units": 114.233,
+      "transform": {
+        "s": 0.609244,
+        "s_shared": 0.487395,
+        "cap": 1.25,
+        "framing": "DR-08 capped fit",
+        "cx": 99.0,
+        "cy": 110.0,
+        "formula": "X = 0.609244 * (x - 99) + 64; Y = 0.609244 * (y - 110) + 64",
+        "matrix": [
+          0.609244,
+          0,
+          0,
+          0.609244,
+          3.684869,
+          -3.016813
+        ]
+      },
+      "stroke_units": 3.3508,
+      "tiles": [
+        "tiles/square-charcoal/svg/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Square-Charcoal-Two-Color.svg",
+        "tiles/square-charcoal/svg/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Square-Charcoal-One-Color.svg",
+        "tiles/square-newsprint/svg/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Square-Newsprint-Two-Color.svg",
+        "tiles/square-newsprint/svg/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Square-Newsprint-One-Color.svg",
+        "tiles/rounded-charcoal/svg/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Rounded-Charcoal-Two-Color.svg",
+        "tiles/rounded-charcoal/svg/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Rounded-Charcoal-One-Color.svg",
+        "tiles/rounded-newsprint/svg/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Rounded-Newsprint-Two-Color.svg",
+        "tiles/rounded-newsprint/svg/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Rounded-Newsprint-One-Color.svg",
+        "tiles/circle-charcoal/svg/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Circle-Charcoal-Two-Color.svg",
+        "tiles/circle-charcoal/svg/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Circle-Charcoal-One-Color.svg",
+        "tiles/circle-newsprint/svg/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Circle-Newsprint-Two-Color.svg",
+        "tiles/circle-newsprint/svg/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Circle-Newsprint-One-Color.svg"
+      ],
+      "tile_optical_scale": 0.94,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.1498,
+      "tile_scale": {
+        "square": 0.6392,
+        "rounded": 0.6204,
+        "circle": 0.5828
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      },
+      "tile_pngs": [
+        "tiles/square-charcoal/png-256/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Square-Charcoal-Two-Color.png",
+        "tiles/square-charcoal/png-512/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Square-Charcoal-Two-Color.png",
+        "tiles/square-charcoal/png-256/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Square-Charcoal-One-Color.png",
+        "tiles/square-charcoal/png-512/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Square-Charcoal-One-Color.png",
+        "tiles/square-newsprint/png-256/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Square-Newsprint-Two-Color.png",
+        "tiles/square-newsprint/png-512/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Square-Newsprint-Two-Color.png",
+        "tiles/square-newsprint/png-256/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Square-Newsprint-One-Color.png",
+        "tiles/square-newsprint/png-512/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Square-Newsprint-One-Color.png",
+        "tiles/rounded-charcoal/png-256/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Rounded-Charcoal-Two-Color.png",
+        "tiles/rounded-charcoal/png-512/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Rounded-Charcoal-Two-Color.png",
+        "tiles/rounded-charcoal/png-256/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Rounded-Charcoal-One-Color.png",
+        "tiles/rounded-charcoal/png-512/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Rounded-Charcoal-One-Color.png",
+        "tiles/rounded-newsprint/png-256/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Rounded-Newsprint-Two-Color.png",
+        "tiles/rounded-newsprint/png-512/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Rounded-Newsprint-Two-Color.png",
+        "tiles/rounded-newsprint/png-256/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Rounded-Newsprint-One-Color.png",
+        "tiles/rounded-newsprint/png-512/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Rounded-Newsprint-One-Color.png",
+        "tiles/circle-charcoal/png-256/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Circle-Charcoal-Two-Color.png",
+        "tiles/circle-charcoal/png-512/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Circle-Charcoal-Two-Color.png",
+        "tiles/circle-charcoal/png-256/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Circle-Charcoal-One-Color.png",
+        "tiles/circle-charcoal/png-512/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Circle-Charcoal-One-Color.png",
+        "tiles/circle-newsprint/png-256/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Circle-Newsprint-Two-Color.png",
+        "tiles/circle-newsprint/png-512/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Circle-Newsprint-Two-Color.png",
+        "tiles/circle-newsprint/png-256/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Circle-Newsprint-One-Color.png",
+        "tiles/circle-newsprint/png-512/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Tile-Circle-Newsprint-One-Color.png"
+      ],
+      "source": "DR-207",
+      "source_file": "../civic-line-new-topics/svg/20261110_Housing-Option-A-Red-Black.svg",
+      "png_256_dir": "png-256",
+      "png_512_dir": "png-512",
+      "tiles_dir": "tiles",
+      "sha256": {
+        "red-black": "cade6dfd68ec7234da96c7fe28cfe6c2fd6e5caebc1ddc8cd9f5667c1355049a",
+        "black": "a9cf2083b59555553500c6c701b2fc01cc713441171c36b928b51d362effaa9d",
+        "red-newsprint": "7e8e25e33a1cd8beddf6d66fae9b01d39dc0c21f2c8ce3113ab5704b9a8f439c",
+        "newsprint": "ff96c79bcc6cf6d04228113b303f0053d38d77f82a8b1d5b46a90beae21e3e12"
+      },
+      "final": {
+        "approved": "DR-207, option A, approved by name on drawings board C, November 10, 2026",
+        "option_stem": "20261110_Housing-Option-A",
+        "option_folder": "../civic-line-new-topics",
+        "source_drawing": "../civic-line-new-topics/src/20261110_Housing-Option-A.svg",
+        "replaces": null,
+        "measured_on": "No supplied sheet exists for this drawing, so the sheet fields (sheet_black, sheet_red, crop, registration, sheet_iou, mask_params, reference_crops, components, caption_check) are null. The stroke medians are the October estimators (stroke_width.py) run on the drawing's own source, built with the stage B family code and rendered black at 1x on Newsprint; the transform is that code's bake (DR-08), which re-bakes to the option file byte for byte.",
+        "reads_at_px": {
+          "32": null,
+          "24": false,
+          "reader": "The tiles keep the 48 px bare floor (D2-1236), since no 32 px reading is approved for Housing. The icon designer, an agent, read option A at 24 px on 1x screens as two buildings whose windows close up (round 0 notes), and Housing stays off the list of drawings set at 24 px (D2-1238)."
+        },
+        "tile_rule": {
+          "hull_size_units": 92.04,
+          "hull_centroid_offset_x_units": -5.19,
+          "s1_unrounded": 0.9007,
+          "s2_tile_units": 1.0
+        },
+        "tile_margins_units": {
+          "square": 27.491,
+          "rounded": 28.395,
+          "circle": 22.259
+        },
+        "new_id": "D2-1262: the next topic number after CL-074",
+        "sizes": "48 px and up (DR-207, D2-1238)"
       }
     },
     {

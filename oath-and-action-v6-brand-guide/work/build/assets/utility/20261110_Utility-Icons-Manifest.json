@@ -2,6 +2,7 @@
  "title": "Oath & Action utility icons: the finals in use",
  "edition": "Edition 06",
  "date": "2026-11-10",
+ "updated": "2026-11-11",
  "made_by": "The icon designer, utility hand, promoting the options Dustin approved on the stage B drawings board (DR-161 to DR-178) under 20261110_Promotion-Brief.md. Each drawing is its approved option file's, byte for byte; the options stay in work/build/assets/utility-icons/ as the record (D2-718).",
  "family": {
   "dr": "DR-161",
@@ -32,6 +33,13 @@
   }
  ],
  "previews": "png/: each SVG drawn by Chromium at its own size, Charcoal (#121212) on a clear ground, at device scale 1 (1x) and 2 (-2x), as the options' previews were (D2-658)",
+ "updates": [
+  {
+   "date": "2026-11-11",
+   "dr": "DR-208",
+   "what": "The 16 px Pause and Filter are drawings board C's approved redraws (the Pause redraw and Filter option A). The stage B 16 px files and their previews moved to _archive/ (D2-1264), so svg-16/ and png/ hold one file per icon and size. Every 24 px file and every other 16 px file stays as approved."
+  }
+ ],
  "icons": [
   {
    "id": "U-close",
@@ -477,15 +485,33 @@
      "drawing_sha256": "b53f7cee8fcee0b6d34aff7b12c72b9ee346bc466d39b6cb27df0a6f06f8116c"
     },
     "16": {
-     "svg": "work/build/assets/utility/svg-16/20261110_Utility-Filter-16px.svg",
-     "png_1x": "work/build/assets/utility/png/20261110_Utility-Filter-16px.png",
-     "png_2x": "work/build/assets/utility/png/20261110_Utility-Filter-16px-2x.png",
+     "svg": "work/build/assets/utility/svg-16/20261111_Utility-Filter-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261111_Utility-Filter-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261111_Utility-Filter-16px-2x.png",
      "line_px": 1.5,
      "sprite_symbol_id": "oa-sym-u-filter-16px",
-     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Filter-Option-A-16px.svg",
-     "source_sha256": "c3aa8ac0e696c8f52d352e3cc7c2858ed538b1cc04bfc9ef5cdb7a9e35958efb",
-     "sha256": "193627516829b1a6f8b8569fa0448ec38fc84109c56d0af7c09aea76a4f6fe58",
-     "drawing_sha256": "40ef64f6d51b500824cbeaeb1da389039aab444e1a19000f5af3f6f3ceefdbbc"
+     "source": "work/build/assets/utility-16-redraw/svg/20261110_Utility-Filter-16px-Redraw-A.svg",
+     "source_sha256": "7581c73bdb863d3e993e82677aa9b3f7d518b4958ca9ab2c39f7ea443640ecb5",
+     "sha256": "e1682890df75a3bbc36eb6e0af3b12edd289b216558b6c5edd603658e25841a3",
+     "drawing_sha256": "cfeb8d490256bbe37b6e933c38f6edef699317d30da8e9b1d647363f0f5c34ee",
+     "approved": {
+      "what": "Filter option A",
+      "dr": "DR-208",
+      "redraw_dr": "DR-197",
+      "board": "Drawings board C, approved by name",
+      "date": "2026-11-10",
+      "in_use": "2026-11-11",
+      "drawing": "A funnel with a slanted spout, the spout 5 px wide with both outer edges on whole pixels, so its inside keeps one whole open pixel on 1x screens"
+     },
+     "replaces": {
+      "dr": "DR-169",
+      "svg": "work/build/assets/utility/_archive/svg-16/20261110_Utility-Filter-16px.svg",
+      "png_1x": "work/build/assets/utility/_archive/png/20261110_Utility-Filter-16px.png",
+      "png_2x": "work/build/assets/utility/_archive/png/20261110_Utility-Filter-16px-2x.png",
+      "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Filter-Option-A-16px.svg",
+      "sha256": "193627516829b1a6f8b8569fa0448ec38fc84109c56d0af7c09aea76a4f6fe58",
+      "drawing_sha256": "40ef64f6d51b500824cbeaeb1da389039aab444e1a19000f5af3f6f3ceefdbbc"
+     }
     }
    }
   },
@@ -624,15 +650,33 @@
      "drawing_sha256": "1da3608af053cf1aaf9caf1f9f9abf663ecd917a9f422b2b96be6aa49e2c9168"
     },
     "16": {
-     "svg": "work/build/assets/utility/svg-16/20261110_Utility-Pause-16px.svg",
-     "png_1x": "work/build/assets/utility/png/20261110_Utility-Pause-16px.png",
-     "png_2x": "work/build/assets/utility/png/20261110_Utility-Pause-16px-2x.png",
+     "svg": "work/build/assets/utility/svg-16/20261111_Utility-Pause-16px.svg",
+     "png_1x": "work/build/assets/utility/png/20261111_Utility-Pause-16px.png",
+     "png_2x": "work/build/assets/utility/png/20261111_Utility-Pause-16px-2x.png",
      "line_px": 1.5,
      "sprite_symbol_id": "oa-sym-u-pause-16px",
-     "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Pause-Option-A-16px.svg",
-     "source_sha256": "cba96d8e49132589f02d41d26f7823ebaae0b9e52bddc6000acd8a53d772a082",
-     "sha256": "fd03dbac341a354d4cca321610f46d2e682798a7909e77c40ed0bc6bac315982",
-     "drawing_sha256": "eac1bbdda84fda0281ecc5bcdd7cb1ebe6944dc958b4b3c37c457ca26f1356c2"
+     "source": "work/build/assets/utility-16-redraw/svg/20261110_Utility-Pause-16px-Redraw.svg",
+     "source_sha256": "afeed9829681d8371de1114d9d86dedc7bf100179d4075d8130ed2cd4e00876b",
+     "sha256": "d913d5d172a08c0362fa93ddf047f29a7de3717ba33267fdca72f3bc4bafcdb9",
+     "drawing_sha256": "b282653150068da1c7b7a0c58dccaaae331c667c3c4b8ff907ce0ab9b01b278f",
+     "approved": {
+      "what": "the 16 px Pause redraw",
+      "dr": "DR-208",
+      "redraw_dr": "DR-197",
+      "board": "Drawings board C, approved by name",
+      "date": "2026-11-10",
+      "in_use": "2026-11-11",
+      "drawing": "Two upright bars, each 5 px wide, so its inside keeps one whole open pixel on 1x screens"
+     },
+     "replaces": {
+      "dr": "DR-171",
+      "svg": "work/build/assets/utility/_archive/svg-16/20261110_Utility-Pause-16px.svg",
+      "png_1x": "work/build/assets/utility/_archive/png/20261110_Utility-Pause-16px.png",
+      "png_2x": "work/build/assets/utility/_archive/png/20261110_Utility-Pause-16px-2x.png",
+      "source": "work/build/assets/utility-icons/svg-16/20261109_Utility-Pause-Option-A-16px.svg",
+      "sha256": "fd03dbac341a354d4cca321610f46d2e682798a7909e77c40ed0bc6bac315982",
+      "drawing_sha256": "eac1bbdda84fda0281ecc5bcdd7cb1ebe6944dc958b4b3c37c457ca26f1356c2"
+     }
     }
    },
    "one_button_with": "U-play"

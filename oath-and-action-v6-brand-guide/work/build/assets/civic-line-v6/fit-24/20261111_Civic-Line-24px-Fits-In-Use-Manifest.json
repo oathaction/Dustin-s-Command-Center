@@ -1,0 +1,772 @@
+{
+ "title": "Civic Line 24 px pixel fits in use: the 37 topic and atlas drawings",
+ "date": "20261111",
+ "made_by": "icon designer (oa-design-director), work/build/scripts/phase-2/stage_c_icons_promote.py, under 20261111_Promotion-Stage-C-Brief.md",
+ "status": "In use. Dustin approved all 37 by name on drawings board C (DR-209). Each file is its approved fit with only its root id, description and file name changed; the approved fits stay in civic-line-24-fit/ as the record.",
+ "decisions": [
+  "DR-209",
+  "DR-198",
+  "DR-205",
+  "DR-179",
+  "D2-1132",
+  "D2-1265",
+  "D2-1263",
+  "DR-136",
+  "D2-587",
+  "D2-971",
+  "D2-1237"
+ ],
+ "rules": {
+  "screens": "The pillar icons' switch (DR-179, DR-209): on 1x screens a topic or atlas symbol set at 24 px draws its fit (oa-sym-<id>-24px); from 2x it draws its Civic Line master (oa-sym-<id>), listed under master_from_2x.",
+  "list": "Only the 37 here and the four pillar icons may be set at 24 px (the list of 41, DR-136, D2-587).",
+  "edition": "One color, the black edition only (D2-1132). On Charcoal the sprite sets the ink to Newsprint, as it does for the masters.",
+  "sizes": "Use each fit at 24 px only.",
+  "root_attributes": "data-id is the Civic Line ID and data-size is 24.",
+  "neighbors": "CL-023, CL-028, R-08, R-27 and R-45 never share a view at small sizes (D2-971); nor do R-06, R-41 and R-44 (D2-1237)."
+ },
+ "paths_relative_to": "work/build/assets/civic-line-v6/fit-24/",
+ "order": "20261110_Stage-B-Ch10-Construction.md, section 10, as the approved fits' manifest",
+ "count": 37,
+ "fits": [
+  {
+   "id": "CL-001",
+   "word": "Voting",
+   "family": "topic",
+   "atlas_id": null,
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-001-Voting-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-001-Voting-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-001-Voting-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-001-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-001-Voting-Black.svg",
+    "sprite_symbol": "oa-sym-cl-001"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-001-Voting-Black.svg",
+   "source_sha256": "0a7c21659976382ae9aa16f1d036acca92f2d608066a5be80517318b1af70894",
+   "sha256": "9b95a9281e30c47fa754d6ed3ec013d2714b0da58a3ae18baee1a5d65ebcc080",
+   "drawing_sha256": "1eea3e2b7566318277a496a00009f2b709ad6ae3dd4a97ae469e3c194a10ccc5",
+   "kept": "Box, slanted lid, slot, and the slanted ballot rising from the slot with the open gap at the right lid."
+  },
+  {
+   "id": "CL-004",
+   "word": "Petition",
+   "family": "topic",
+   "atlas_id": null,
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-004-Petition-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-004-Petition-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-004-Petition-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-004-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-004-Petition-Black.svg",
+    "sprite_symbol": "oa-sym-cl-004"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-004-Petition-Black.svg",
+   "source_sha256": "50b287dd595d2c496f53f8819887dde8f736e2b99643143c137c2c27c78c35a8",
+   "sha256": "8deb2a55f9b736001bba1341fffa69ea5e8909b2d276e6222b3d8593796008da",
+   "drawing_sha256": "b469d574f30dd87953da6f41ebc6ee0c0d49c8ca3a104954d6ac31bf0b12eeae",
+   "kept": "Page with four rules and a part-open right edge, the pen with its cap band, nib band and point."
+  },
+  {
+   "id": "CL-006",
+   "word": "Civic Ties",
+   "family": "atlas",
+   "atlas_id": "B3",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-006-Civic-Ties-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-006-Civic-Ties-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-006-Civic-Ties-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-006-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-006-Civic-Ties-Black.svg",
+    "sprite_symbol": "oa-sym-cl-006"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-006-Civic-Ties-Black.svg",
+   "source_sha256": "041f3a35aa00c49b2146117aba1060c624e6884bd0c0b3702b6b2a6205d76d61",
+   "sha256": "0800ca384e62e84c81166d725bf88436db1d1ce19ad95980e7d7ca867b07a2a2",
+   "drawing_sha256": "7fc6c3ee398a4d03e6aae6bd870f7091169a0df59c3d5c931bedf3d7de125ec1",
+   "kept": "Three people, each a hollow head over open shoulders with a gap between, and the three linking arcs."
+  },
+  {
+   "id": "CL-010",
+   "word": "Decisive Primaries",
+   "family": "atlas",
+   "atlas_id": "C2",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-010-Decisive-Primaries-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-010-Decisive-Primaries-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-010-Decisive-Primaries-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-010-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-010-Decisive-Primaries-Black.svg",
+    "sprite_symbol": "oa-sym-cl-010"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-010-Decisive-Primaries-Black.svg",
+   "source_sha256": "c11975c871d72c11d03c1ce883d316d7a2c91392949b4b3fabd47f7d14b2b681",
+   "sha256": "63eae5f55a955b555e2611206c04b7b5605cdfdc56e7d143f7501e5f338b987b",
+   "drawing_sha256": "f2b4f94adc99c4a30e6e9460d90901ddc3d60c98cf323581513472170d0c73fa",
+   "kept": "Three small rings, the two branches that merge and the middle one that stops short, the arrow and ring."
+  },
+  {
+   "id": "CL-013",
+   "word": "Incumbent Defeat",
+   "family": "atlas",
+   "atlas_id": "C5",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-013-Incumbent-Defeat-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-013-Incumbent-Defeat-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-013-Incumbent-Defeat-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-013-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-013-Incumbent-Defeat-Black.svg",
+    "sprite_symbol": "oa-sym-cl-013"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-013-Incumbent-Defeat-Black.svg",
+   "source_sha256": "c7636df99f557550c6afcc945cd56cec1cb7fbde5864dc444e137353db285479",
+   "sha256": "f81de80c4b570d75bbe2adcd9292c4bb5f35a813302b1fdd93933834f9c31d02",
+   "drawing_sha256": "4f8a4cb541bd7422fe5090257605adf124256dce09cf9dd0246642f013761d19",
+   "kept": "Chair back, arms, stem and three-footed base, and the arrow leaving it; the arrow's barbs take two steps."
+  },
+  {
+   "id": "CL-023",
+   "word": "Evidence",
+   "family": "topic",
+   "atlas_id": null,
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-023-Evidence-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-023-Evidence-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-023-Evidence-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-023-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-023-Evidence-Black.svg",
+    "sprite_symbol": "oa-sym-cl-023"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-023-Evidence-Black.svg",
+   "source_sha256": "60772bfe4303fb7a7973a0a0da943675ed6afb7d1490a6ca21416f31b21a5168",
+   "sha256": "eda621ec07551e7615d520a356159fcc92c94e5d990e8fa4091824acd6bbd1b5",
+   "drawing_sha256": "37882d6f507f8f46d5f11a1d61d79436fca8ba59d25ae68c9fa214d399bc5481",
+   "kept": "Page with five rules, lens with the check inside, capsule handle."
+  },
+  {
+   "id": "CL-024",
+   "word": "Feedback Loop",
+   "family": "topic",
+   "atlas_id": null,
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-024-Feedback-Loop-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-024-Feedback-Loop-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-024-Feedback-Loop-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-024-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-024-Feedback-Loop-Black.svg",
+    "sprite_symbol": "oa-sym-cl-024"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-024-Feedback-Loop-Black.svg",
+   "source_sha256": "ade2da0ebecaf53e3309c6b2c825e24edb61099952d3fd01177501cfcfdaa8dc",
+   "sha256": "06beb8a589c8c41ef12d2d766c51e499226257db58e239e01f7537b35b361326",
+   "drawing_sha256": "7de35092ac51f52ac857ecf47397ed0e1de8bdc87f672cb6c025f82597c8783b",
+   "kept": "Two squares and two arcs with their corner arrowheads, turned half a turn about the center."
+  },
+  {
+   "id": "CL-028",
+   "word": "Watchdogs",
+   "family": "atlas",
+   "atlas_id": "D4",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-028-Watchdogs-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-028-Watchdogs-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-028-Watchdogs-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-028-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-028-Watchdogs-Black.svg",
+    "sprite_symbol": "oa-sym-cl-028"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-028-Watchdogs-Black.svg",
+   "source_sha256": "1fc42b82458d287a2d6c8dee95171d874a808a5360f2e39978ba8f3593378680",
+   "sha256": "a7009aca4f7358079d6ba4c072713156e6b3754d7bebeaf442d814cff4abf2f2",
+   "drawing_sha256": "5a4060fa1b4fc6850407efefbd80f3109a1758623993df02a95a9ee4f3665125",
+   "kept": "Narrower page with four rules, empty lens, neck and capsule handle."
+  },
+  {
+   "id": "CL-031",
+   "word": "Local Government",
+   "family": "topic",
+   "atlas_id": null,
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-031-Local-Government-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-031-Local-Government-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-031-Local-Government-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-031-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-031-Local-Government-Black.svg",
+    "sprite_symbol": "oa-sym-cl-031"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-031-Local-Government-Black.svg",
+   "source_sha256": "a61d1edd2b4b9cff1f4dd7e97cb8533c6d609cfaddc4cd56a2806d19a2ba58fa",
+   "sha256": "696c331fd312011eb84544a4380424d70c144ceb8721d0d9fb9355cb465064ad",
+   "drawing_sha256": "f9a7149474af8cbe1635016536b0a39e090db70efb656cdeebbf87431cf177f3",
+   "kept": "Pediment with its open peak, central block, two wings, paired windows and the arched door, symmetric."
+  },
+  {
+   "id": "CL-032",
+   "word": "Local Reporting",
+   "family": "atlas",
+   "atlas_id": "B2",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-032-Local-Reporting-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-032-Local-Reporting-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-032-Local-Reporting-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-032-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-032-Local-Reporting-Black.svg",
+    "sprite_symbol": "oa-sym-cl-032"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-032-Local-Reporting-Black.svg",
+   "source_sha256": "1f5957bf85847b934ce6c30e05c44034368f859a7e471586fbeabcb55b16b947",
+   "sha256": "c83687eeb899f3776b218d389307130ff2259bae231b041a71f3c6ef4b64e6ff",
+   "drawing_sha256": "c9788aea895dc81bfa37584696cf2c908cce6c9afbe953d6b14a6182145f878d",
+   "kept": "Front page, the fold with its inner line, five rules and the photo block."
+  },
+  {
+   "id": "CL-039",
+   "word": "Feed Ranking",
+   "family": "atlas",
+   "atlas_id": "TC1",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-039-Feed-Ranking-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-039-Feed-Ranking-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-039-Feed-Ranking-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-039-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-039-Feed-Ranking-Black.svg",
+    "sprite_symbol": "oa-sym-cl-039"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-039-Feed-Ranking-Black.svg",
+   "source_sha256": "b3a775c1c0cd5a69ad64f10cb208f13caaa6edad1a0eb822a8ffb51d231c72a3",
+   "sha256": "e36953da84bee763cb0b69b4607ff3dccc69779002f897dd4c2a3dc04df0f2c0",
+   "drawing_sha256": "b76fd2162114904312fd91ea7b742f1622cfa244a01b554dc3c5c1926218e264",
+   "kept": "Three cards each with a square and two rules, the top card open below as drawn, and the slider's knob."
+  },
+  {
+   "id": "CL-040",
+   "word": "Platform Power",
+   "family": "atlas",
+   "atlas_id": "TC2",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-040-Platform-Power-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-040-Platform-Power-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-040-Platform-Power-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-040-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-040-Platform-Power-Black.svg",
+    "sprite_symbol": "oa-sym-cl-040"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-040-Platform-Power-Black.svg",
+   "source_sha256": "569b94f18c10cc90a189860354b501e9ab0197b1252abdc1a6b47015ab9100a2",
+   "sha256": "2849d45294463137fa74dbfc336a602a462e9774e0a233a1550c829af92725f8",
+   "drawing_sha256": "11bb66452a862f25be11fb8b037343c54f47769366f8cf35cf5310d9cbad8855",
+   "kept": "Hub ring with its dot, three branches and three people; the center stem sits half a pixel left of the axis."
+  },
+  {
+   "id": "CL-047",
+   "word": "Data Rights",
+   "family": "topic",
+   "atlas_id": null,
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-047-Data-Rights-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-047-Data-Rights-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-047-Data-Rights-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-047-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-047-Data-Rights-Black.svg",
+    "sprite_symbol": "oa-sym-cl-047"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-047-Data-Rights-Black.svg",
+   "source_sha256": "29eb413f3ad145bbddb4fd293513a5340d5986730f505efa52f693298026af17",
+   "sha256": "4a0e8d54727753de55309e539d2a959834452a61363799bf4c2b0153b38f5745",
+   "drawing_sha256": "fea73df5036415d108e7dce828e1460d215dd04176bdc3da58a4708f72493f06",
+   "kept": "Page with four rules and the open right edge, the key with ring, shaft and two teeth."
+  },
+  {
+   "id": "CL-048",
+   "word": "Public Records",
+   "family": "topic",
+   "atlas_id": null,
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-048-Public-Records-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-048-Public-Records-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-048-Public-Records-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-048-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-048-Public-Records-Black.svg",
+    "sprite_symbol": "oa-sym-cl-048"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-048-Public-Records-Black.svg",
+   "source_sha256": "7fd6abb86f4cd3d4850a503748b077cd256e4dabfb3370363cfc204b4fac794b",
+   "sha256": "894584cd98407aa0dd2d16955785d909c0035914f7432d1c36d8e53dc3ce10c2",
+   "drawing_sha256": "da424b8ccba2654991d9aff6bdcd69a933b9078277b804228bdc8a7626979214",
+   "kept": "Folder with both tabs, the page standing in it with three rules, and the back panel's sliver at right."
+  },
+  {
+   "id": "CL-050",
+   "word": "Worker Bargaining",
+   "family": "atlas",
+   "atlas_id": "A2",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-050-Worker-Bargaining-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-050-Worker-Bargaining-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-050-Worker-Bargaining-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-050-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-050-Worker-Bargaining-Black.svg",
+    "sprite_symbol": "oa-sym-cl-050"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-050-Worker-Bargaining-Black.svg",
+   "source_sha256": "de7a63d6cc069c6937a4566d976ea0ae9cad29c68f741d58447f9083531fd5f3",
+   "sha256": "bb514c6107631315df5b38f0656048e2f9563492591595425bbfa6061c949073",
+   "drawing_sha256": "f56fac5cd3f948b993e3b6cca6cf8442298eb61cc560af99d8beacc305f10c27",
+   "kept": "Two people facing, each a hollow head over open shoulders, their arms on the table, the double arrow between them and the table's four legs."
+  },
+  {
+   "id": "CL-051",
+   "word": "Market Power",
+   "family": "atlas",
+   "atlas_id": "A3",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-051-Market-Power-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-051-Market-Power-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-051-Market-Power-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-051-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-051-Market-Power-Black.svg",
+    "sprite_symbol": "oa-sym-cl-051"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-051-Market-Power-Black.svg",
+   "source_sha256": "c84c39da3caa015e8ff074f6af027d4e15e9e773a7d941958b7116401218df2f",
+   "sha256": "2ea568cbc125e48bd4534c199fe1a7ba4cc9ac6583448f9387a2006e8b912110",
+   "drawing_sha256": "9a0760d68a4fecf541e91de04a5bd514f1f085e4dd486cee0bd8bff81fd93edf",
+   "kept": "Tall building with rooftop block, six windows and door; the two shorter buildings and their window marks."
+  },
+  {
+   "id": "CL-054",
+   "word": "Home Equity",
+   "family": "atlas",
+   "atlas_id": "A6",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-054-Home-Equity-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-054-Home-Equity-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-054-Home-Equity-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-054-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-054-Home-Equity-Black.svg",
+    "sprite_symbol": "oa-sym-cl-054"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-054-Home-Equity-Black.svg",
+   "source_sha256": "c083abd212967b9b266d0d36d8289a1ab31ee723fc5be5c8a495f0a1a2b49fd7",
+   "sha256": "da0c5cc8f1c2f738b426af4970aa2481d89a5d9af1d3f18ccdd1bae9de96a1e1",
+   "drawing_sha256": "190484913b1ed3978e3ea66427b8a1376020d9d3fbe37e2543d74a10531d3dc4",
+   "kept": "House with roof, chimney and door, the chart panel with three bars and the jagged arrow with a solid head."
+  },
+  {
+   "id": "CL-057",
+   "word": "Labor Share",
+   "family": "atlas",
+   "atlas_id": "EC3",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-057-Labor-Share-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-057-Labor-Share-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-057-Labor-Share-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-057-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-057-Labor-Share-Black.svg",
+    "sprite_symbol": "oa-sym-cl-057"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-057-Labor-Share-Black.svg",
+   "source_sha256": "9f589be105816e3c5dbba7dfe717a1f01f9d334edb9261855f5e2709ad775e45",
+   "sha256": "fd213ebb0a9199a04cc96e09c567b310546972a51cdacd4621737db758abcfde",
+   "drawing_sha256": "8ec583e252d680323b1cb78c08515f7f43a3041f76c3fe0176cc7d6b7cdc7ade",
+   "kept": "Three-quarter ring, both radii, and the pulled-out quarter with the person cut from it."
+  },
+  {
+   "id": "CL-060",
+   "word": "Taxes & Benefits",
+   "family": "atlas",
+   "atlas_id": "EC6",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-060-Taxes-And-Benefits-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-060-Taxes-And-Benefits-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-060-Taxes-And-Benefits-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-060-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-060-Taxes-And-Benefits-Black.svg",
+    "sprite_symbol": "oa-sym-cl-060"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-060-Taxes-And-Benefits-Black.svg",
+   "source_sha256": "b5a97495b3bd58b6dd485de72081fd499d199fe7d54d53522c53b4dd7c02e56a",
+   "sha256": "9405b3686e6e5c945b4d9378b8ce3a579af765ce5d46e2901cac56dcce97996e",
+   "drawing_sha256": "bf81824dee2ed9d402a65b6ab7cd16711b4744f95024e3d0281c6c3ea2551418",
+   "kept": "Page with five rules, the arrow out and the arrow in passing through the open right edge."
+  },
+  {
+   "id": "CL-061",
+   "word": "Household Income",
+   "family": "atlas",
+   "atlas_id": "EC7",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-061-Household-Income-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-061-Household-Income-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-061-Household-Income-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-061-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-061-Household-Income-Black.svg",
+    "sprite_symbol": "oa-sym-cl-061"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-061-Household-Income-Black.svg",
+   "source_sha256": "3c8cebcc59b883a0f608af90c5d7bd06db8a345fbebcdf8773e2f932ba5c2fbc",
+   "sha256": "63a3bf70c9aab2cc2f272065bda36a17cb9000ec507aac293f7648574dab059e",
+   "drawing_sha256": "895c13f63777c51be9664f4893605e94c6898e673cb36e67469cff45a6b2ea74",
+   "kept": "Person, the arrow, and the envelope with its flap; the arrow enters the envelope's open left side."
+  },
+  {
+   "id": "CL-067",
+   "word": "Healthcare",
+   "family": "topic",
+   "atlas_id": null,
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-067-Healthcare-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-067-Healthcare-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-067-Healthcare-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-067-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-067-Healthcare-Black.svg",
+    "sprite_symbol": "oa-sym-cl-067"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-067-Healthcare-Black.svg",
+   "source_sha256": "f0ba2a144b5cd3f1e0ae0dfaeb5838bb77694d0e0999f544fbf0864c7df8f2cb",
+   "sha256": "c78305149d6b6f0ee1a3ddfb3dff27432f742662beebcc225c4a2f9b7fc58efd",
+   "drawing_sha256": "c612bd59ac5a102383280ff67c88df1cd94bbb5df722bd74ad96d97c3e9d5eeb",
+   "kept": "The cross and the pulse, with one clear column between the spike's up and down strokes."
+  },
+  {
+   "id": "CL-068",
+   "word": "Education",
+   "family": "topic",
+   "atlas_id": null,
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-068-Education-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-068-Education-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-068-Education-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-068-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-068-Education-Black.svg",
+    "sprite_symbol": "oa-sym-cl-068"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-068-Education-Black.svg",
+   "source_sha256": "ee4a16fd82d32a306d07e9c293225ff2dc13519ec8748e25512f1a34c1d4bb41",
+   "sha256": "3361692f2e8d0c0aaf07fac34ae51865b2dae468124e5d2ecb510766a4ccb273",
+   "drawing_sha256": "d0469a2da1f32a8f99ca96431232ceb21559e445dfffa8260e12541ab42779cd",
+   "kept": "Book with doubled lower edges, pages that stop short of the gutter, the fork and gutter line, the bulb with its base and five rays; drawn on column 11 so the gutter and top ray stay one pixel wide."
+  },
+  {
+   "id": "CL-070",
+   "word": "Environment",
+   "family": "topic",
+   "atlas_id": null,
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-070-Environment-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-070-Environment-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-070-Environment-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-070-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-070-Environment-Black.svg",
+    "sprite_symbol": "oa-sym-cl-070"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-070-Environment-Black.svg",
+   "source_sha256": "68f6c74a36720e060306121625e6c8035b95f0926b672ab1da3cb9ae4e341bac",
+   "sha256": "5984733792c13eda8f030943e987cd92d7e2bfbe820b8569690ec8c0bbdfbcfa",
+   "drawing_sha256": "4950a826b3800d95d6bcb0a78b69f3fca6167ee228b6de864d9e172b09882bd1",
+   "kept": "Leaf with stem, midrib and sharp tip; the drop with its round foot."
+  },
+  {
+   "id": "CL-071",
+   "word": "Policy",
+   "family": "topic",
+   "atlas_id": null,
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-071-Policy-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-071-Policy-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-071-Policy-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-071-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-071-Policy-Black.svg",
+    "sprite_symbol": "oa-sym-cl-071"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-071-Policy-Black.svg",
+   "source_sha256": "47e8fcc5ffa9ad1d909d0d28f5ef897ece77eee61ad83e3e36062a7b1ef77c32",
+   "sha256": "94a746601bd60fa49fe99156a6e13a5fbf9db2f0a969812fcd630699abae8997",
+   "drawing_sha256": "46f46e120920f1111239581667624607c220d2e4d6b8766a64348b4982b56b09",
+   "kept": "Page with four rules and a part-open right edge, the slider knob and the rail that runs past the page."
+  },
+  {
+   "id": "CL-072",
+   "word": "Reform",
+   "family": "topic",
+   "atlas_id": null,
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-CL-072-Reform-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-CL-072-Reform-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-CL-072-Reform-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-cl-072-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-CL-072-Reform-Black.svg",
+    "sprite_symbol": "oa-sym-cl-072"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-CL-072-Reform-Black.svg",
+   "source_sha256": "26eccc96e844a89a0eac55b51413c9217a98d9dc08e05370c4c3f006ae5921fd",
+   "sha256": "305c88e05cdb7f7b8f456eca295c7d50fab826d90acc58f78feb2481b21457eb",
+   "drawing_sha256": "93881a3a74f79094b3111a4aa8bd9ea1737ac2fa2852ce89e0364e8e920116b8",
+   "kept": "The two lower routes, the ring at the end of one, and the arrow rising from the fork."
+  },
+  {
+   "id": "R-05",
+   "word": "Automatic Registration",
+   "family": "atlas",
+   "atlas_id": "R-05",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-R-05-Automatic-Registration-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-R-05-Automatic-Registration-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-R-05-Automatic-Registration-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-r-05-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-R-05-Automatic-Registration-Black.svg",
+    "sprite_symbol": "oa-sym-r-05"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-05-Automatic-Registration-Black.svg",
+   "source_sha256": "eb470f50de1945b89d4dcdbf02eee67f44b847688add317a7585d83134b1fdd8",
+   "sha256": "6fe2f2f7a8d4d006d1a40861d47290982c4ca2cf3ec6a179ad7d09d90b1322ed",
+   "drawing_sha256": "7d7ddb42fb846148179c5d3608ad32788affcfa909645228b6e729b8bd6cb177",
+   "kept": "Card with person and four rules, the badge ring with its check, and the short dash below the card."
+  },
+  {
+   "id": "R-06",
+   "word": "On-Cycle Elections",
+   "family": "atlas",
+   "atlas_id": "R-06",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-R-06-On-Cycle-Elections-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-R-06-On-Cycle-Elections-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-R-06-On-Cycle-Elections-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-r-06-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-R-06-On-Cycle-Elections-Black.svg",
+    "sprite_symbol": "oa-sym-r-06"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-06-On-Cycle-Elections-Black.svg",
+   "source_sha256": "9f502aa5629554088afa50e400ecde1704c2f07b9eb0b9228a41adb7c3d6dfa7",
+   "sha256": "6a76401074c35e610f74f924cd0efb3bee95d0d8eff7aaa8ed70afeca8b8de6d",
+   "drawing_sha256": "ab33bf6904214cf11b602256c3932ecc4614667083a87d5390153087ba0ddfd6",
+   "kept": "Two calendars with rings, header and three columns of date dots; the arrow between them is a chevron."
+  },
+  {
+   "id": "R-08",
+   "word": "Donor Disclosure",
+   "family": "atlas",
+   "atlas_id": "R-08",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-R-08-Donor-Disclosure-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-R-08-Donor-Disclosure-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-R-08-Donor-Disclosure-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-r-08-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-R-08-Donor-Disclosure-Black.svg",
+    "sprite_symbol": "oa-sym-r-08"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-08-Donor-Disclosure-Black.svg",
+   "source_sha256": "1c07182f544eb63191b4a380de9f578d7effb26d0c43184136bbb441d478123e",
+   "sha256": "f334e1bd036b59681dcb47c5478239a5b8b1d3c34b0a999b32e2e236b9b42f2f",
+   "drawing_sha256": "eadfd95b28d405e754dd17e5c7258c1a7624efea1cb79bec801972bc8a35e2a5",
+   "kept": "Page with its dollar and four rules, empty lens, neck and capsule handle."
+  },
+  {
+   "id": "R-09",
+   "word": "Stock-Trading Ban",
+   "family": "atlas",
+   "atlas_id": "R-09",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-R-09-Stock-Trading-Ban-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-R-09-Stock-Trading-Ban-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-R-09-Stock-Trading-Ban-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-r-09-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-R-09-Stock-Trading-Ban-Black.svg",
+    "sprite_symbol": "oa-sym-r-09"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-09-Stock-Trading-Ban-Black.svg",
+   "source_sha256": "79145e2ed6349dcbca553d22a85cfb14c15710b3e5f6a698a19858c35c30d48b",
+   "sha256": "786407f2ca98bea25d5d65c6676ac3515e14a78fcc0197ffce51241e01543881",
+   "drawing_sha256": "c916a3e88b1f1743c41faeeab90dbf16ad8ee3553d3b6626698d51bcbd55d96c",
+   "kept": "The notched frame, the inner frame, the chart line on both sides of the slash, and the slash as a solid two-pixel band with a clear pixel round it."
+  },
+  {
+   "id": "R-14",
+   "word": "Automatic Funding",
+   "family": "atlas",
+   "atlas_id": "R-14",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-R-14-Automatic-Funding-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-R-14-Automatic-Funding-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-R-14-Automatic-Funding-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-r-14-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-R-14-Automatic-Funding-Black.svg",
+    "sprite_symbol": "oa-sym-r-14"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-14-Automatic-Funding-Black.svg",
+   "source_sha256": "54b9825854a404db0e7e8233974ab0ef0ceb36174ea573043c9f78d4254f38a9",
+   "sha256": "1e469b6d6a3bdec325428147f4893f368258f74d408f695389d4f178cd4a376c",
+   "drawing_sha256": "867e07fb7ab3d1d296ec471470fbd664970f80897198be03da1c5a9cf27e27ae",
+   "kept": "Bill with its dollar and two rules, and the arrow along its foot leaving through the open right edge."
+  },
+  {
+   "id": "R-15",
+   "word": "Watchdog Remedies",
+   "family": "atlas",
+   "atlas_id": "R-15",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-R-15-Watchdog-Remedies-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-R-15-Watchdog-Remedies-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-R-15-Watchdog-Remedies-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-r-15-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-R-15-Watchdog-Remedies-Black.svg",
+    "sprite_symbol": "oa-sym-r-15"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-15-Watchdog-Remedies-Black.svg",
+   "source_sha256": "0411854b06f9e6ec27dde3f769b619616da365bf029c9aada3be59820314af04",
+   "sha256": "f5971671439b766f74e65d4a9942a1312dbb745c695f0175afbca90e4f186002",
+   "drawing_sha256": "563b82eb993fe4e53399417148e87188a3b8d1ff8738bc8d4b9ac985fbfb3705",
+   "kept": "Lens with the check, the short handle to the lower left, and the page behind with three rules."
+  },
+  {
+   "id": "R-17",
+   "word": "Civil Service",
+   "family": "atlas",
+   "atlas_id": "R-17",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-R-17-Civil-Service-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-R-17-Civil-Service-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-R-17-Civil-Service-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-r-17-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-R-17-Civil-Service-Black.svg",
+    "sprite_symbol": "oa-sym-r-17"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-17-Civil-Service-Black.svg",
+   "source_sha256": "0e46ed6312a65e82040b39230d5805e7a71c16b8c052ffc8da0c5e8f5cee3f50",
+   "sha256": "3e4c5517c9e18c93b91b8f1b0e3ca85556a1975548b14431386aaa635353444b",
+   "drawing_sha256": "951e48034c5c7f0a0f116111e74bdc572c5e76206018d85d48e0c565f90d8c8c",
+   "kept": "Badge with its clip, person and three rules, and the brace at right."
+  },
+  {
+   "id": "R-19",
+   "word": "Drug-Pricing Rules",
+   "family": "atlas",
+   "atlas_id": "R-19",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-R-19-Drug-Pricing-Rules-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-R-19-Drug-Pricing-Rules-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-R-19-Drug-Pricing-Rules-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-r-19-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-R-19-Drug-Pricing-Rules-Black.svg",
+    "sprite_symbol": "oa-sym-r-19"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-19-Drug-Pricing-Rules-Black.svg",
+   "source_sha256": "2f89c5dc1ff9c56c73100d2b7ebcd9dd8e79b9158ab62a2250da22ff91432e2e",
+   "sha256": "61e285b62aa11a10a3c6044d9b55e1bc68e1ae8bfbe68cb825ae82afa1ed6e1d",
+   "drawing_sha256": "745be1af43df55b57fc7b3b40348b05ab8b535729e6e418e5bcabf585223af88",
+   "kept": "Pill with its divider, the string, and the tag with its dollar; the tag's string hole is left out."
+  },
+  {
+   "id": "R-23",
+   "word": "Indexed Minimum Wage",
+   "family": "atlas",
+   "atlas_id": "R-23",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-R-23-Indexed-Minimum-Wage-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-R-23-Indexed-Minimum-Wage-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-R-23-Indexed-Minimum-Wage-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-r-23-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-R-23-Indexed-Minimum-Wage-Black.svg",
+    "sprite_symbol": "oa-sym-r-23"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-23-Indexed-Minimum-Wage-Black.svg",
+   "source_sha256": "2da76c9fadfe9019f70a1e149211626b5db8ea79e3c7c627c64d160640da7b31",
+   "sha256": "4a339adcd18170ee36b388da31518b844ee7b243f2be5f548a606a121d1b182f",
+   "drawing_sha256": "70792e31ea089645f96db30f584daa01314ce62c6b61cb6e242864d0016dfde8",
+   "kept": "Open frame with its dollar and four rules, the four rising bars, and the curved arrow with a solid head."
+  },
+  {
+   "id": "R-27",
+   "word": "Tax Enforcement",
+   "family": "atlas",
+   "atlas_id": "R-27",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-R-27-Tax-Enforcement-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-R-27-Tax-Enforcement-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-R-27-Tax-Enforcement-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-r-27-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-R-27-Tax-Enforcement-Black.svg",
+    "sprite_symbol": "oa-sym-r-27"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-27-Tax-Enforcement-Black.svg",
+   "source_sha256": "302d79516988f3b726e3e77428fb32bd814a12a47e60aafc062a7a1457f5bc8e",
+   "sha256": "05859061428b7b1bece184d36513167b687a34df79e401297c31f764adb892e9",
+   "drawing_sha256": "88936c0b480f3e81ea01fa76236b43c7888a45966d511cff18335a6484d58071",
+   "kept": "Page with four rules, the lens with the gauge arch inside, capsule handle."
+  },
+  {
+   "id": "R-37",
+   "word": "Feed Choice",
+   "family": "atlas",
+   "atlas_id": "R-37",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-R-37-Feed-Choice-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-R-37-Feed-Choice-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-R-37-Feed-Choice-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-r-37-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-R-37-Feed-Choice-Black.svg",
+    "sprite_symbol": "oa-sym-r-37"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-37-Feed-Choice-Black.svg",
+   "source_sha256": "ede564e617337a732bfab479b9f9915a179867b216072565b4a74dd4cd9178a4",
+   "sha256": "c8b27d92dd72a1cdda060b81608c832d0c041da5a15cc8144da1b448a152b2e1",
+   "drawing_sha256": "5fbb918355476318d4c5f200a731fc5fceeb94ed007817d0405978caafd0c4d1",
+   "kept": "Window with its three dots, header, two rules and the slider knob; the key with round bow and two teeth."
+  },
+  {
+   "id": "R-45",
+   "word": "Paper Ballots & Audits",
+   "family": "atlas",
+   "atlas_id": "R-45",
+   "approved": "DR-209",
+   "svg": "20261111_Civic-Line-R-45-Paper-Ballots-And-Audits-24px-Fit-Black.svg",
+   "png_1x": "png/20261111_Civic-Line-R-45-Paper-Ballots-And-Audits-24px-Fit-Black.png",
+   "png_2x": "png/20261111_Civic-Line-R-45-Paper-Ballots-And-Audits-24px-Fit-Black-2x.png",
+   "sprite_symbol": "oa-sym-r-45-24px",
+   "master_from_2x": {
+    "svg": "../black/20261029_Oath-And-Action-Civic-Line-R-45-Paper-Ballots-And-Audits-Black.svg",
+    "sprite_symbol": "oa-sym-r-45"
+   },
+   "source_file": "../../civic-line-24-fit/svg/20261110_Civic-Line-24px-Fit-R-45-Paper-Ballots-And-Audits-Black.svg",
+   "source_sha256": "42a72eea68d6b85fe33298134cf560fc8989aafd58b3cd6d5fffd2402e2eda8b",
+   "sha256": "e7481e3e8fd2665a7406404290e599abe63674df46ec82c81e0e02ee0aecb29b",
+   "drawing_sha256": "45d73fcbaddbd10d19a3501b938851cf50334922a957c7169825baecafc9aab0",
+   "kept": "Three offset sheets, the front sheet's four rules, the lens with its check and the capsule handle."
+  }
+ ]
+}

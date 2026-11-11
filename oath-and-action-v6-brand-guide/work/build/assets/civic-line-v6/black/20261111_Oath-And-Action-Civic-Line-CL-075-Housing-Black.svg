@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-075-black" data-id="CL-075" width="128" height="128" viewBox="0 0 128 128">
+  <title>Housing</title>
+  <desc>Oath &amp; Action Civic Line CL-075 Housing. An apartment block of three floors beside a pitched-roof house on one ground line, red on one window of the block: homes of more than one kind, renters' and owners' alike. The final drawing, approved by name on drawings board C as option A (DR-207) and put into use on November 11, 2026. A new topic drawing, numbered CL-075 (D2-1262) and filed with sheet 03, Economy &amp; Public Issues. It is set at 48 px and up and stays off the list of drawings set at 24 px (D2-1238). Drawn in Civic Line's hand: one line weight, round caps and joins, the capped fit of DR-08. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts, red in the two-color editions. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-cl-075-black-base" data-part="base">
+    <polyline points="13.4328,106.6471 13.4328,21.3529 63.3908,21.3529 63.3908,106.6471" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="21.3529" y="29.8823" width="8.5294" height="9.7479" rx="1.5231" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="21.3529" y="50.5966" width="8.5294" height="9.7479" rx="1.5231" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="45.7227" y="50.5966" width="8.5294" height="9.7479" rx="1.5231" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="21.3529" y="71.3109" width="8.5294" height="9.7479" rx="1.5231" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="45.7227" y="71.3109" width="8.5294" height="9.7479" rx="1.5231" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="32.9286,106.6471 32.9286,93.2437 42.6765,93.2437 42.6765,106.6471" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="69.4832,106.6471 69.4832,65.2185 92.6345,45.7227 115.7857,65.2185 115.7857,106.6471" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="87.7605,106.6471 87.7605,88.3698 97.5084,88.3698 97.5084,106.6471" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="8.5588" y1="106.6471" x2="119.4412" y2="106.6471" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="oa-civic-line-cl-075-black-accent" data-part="accent">
+    <rect x="45.7227" y="29.8823" width="8.5294" height="9.7479" rx="1.5231" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
