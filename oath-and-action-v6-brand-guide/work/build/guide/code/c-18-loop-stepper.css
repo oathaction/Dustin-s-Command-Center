@@ -63,9 +63,12 @@
 .oa-stepper-step[data-oa-ahead] {
   color: var(--oa-color-state-muted-text);
 }
+/* The four buttons sit two by two; each column is at least half the row, so no button ever stands alone on a row, and
+   they stack one a row once a column would fall under 11rem */
 .oa-stepper-controls {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  grid-template-columns:
+    repeat(auto-fit, minmax(min(100%, max(11rem, calc((100% - var(--oa-space-100)) / 2))), 1fr));
   gap: var(--oa-space-100);
 }
 .oa-stepper-controls button {
