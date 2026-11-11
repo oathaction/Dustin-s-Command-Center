@@ -6,7 +6,7 @@ Written November 11, 2026, after drawings board C's promotion and stage C's roun
 
 | Page | Address | Status |
 |---|---|---|
-| Chapters page (01 to 12, 17, 18, 19, 26, identity proofs) | https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF | PREVIEW_STATUS |
+| Chapters page (01 to 12, 17, 18, 19, 26, identity proofs) | https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF | Version 6 (1794372751-f710), published privately at this handoff as the preview of DR-215, no decisions asked (D2-1528). Board C republishes it as version 7 |
 | Drawings board C | https://claude.ai/artifact/LtEuA2zNh1WUidhd4cAVsH | Answered (DR-207 to DR-211) and promoted (C-066 to C-071) |
 
 **Dustin's answers this chat** (to the plan's three questions, "go with all your recs or defaults"):
@@ -24,7 +24,9 @@ Written November 11, 2026, after drawings board C's promotion and stage C's roun
 - The engineer's round 1 checks: `keyPath`, the motion check, the token table's parity, with the guide check's page loading fixed for a page past 9 MB.
 - The editor read every changed word in 01 to 12 and all four new chapters; every row went to its owner.
 
-FINAL_CHECKS
+**Final checks on commit 10ba650b (D2-1527).** The generator chain changed no file. `guide_build.py --strict`: 0 warnings, 16 chapters, 185 rules, 420 specimens, 9,544,650 bytes. The token tests pass. `guide_check.js` at 1440, 1024, 390 and 360 px: 1,917 same-page links; `fitSwitch` 77 of 77 at 1x, 2x and 3x; `keyPath` 140 walks of 37 paths; `motion` 7 of 7 with the final frame at once under reduced motion; `tokenTable` 500 rows at 6.0.0-gate2.7; one failure, `codeMatch` at 360 px on c-18-tracker in the light theme, one flat-area pixel 1 of 255 apart. The engineer was resumed to find the cause and rerun; its result is in `20261111_Stage-C-Round-1-Engineer-Notes.md` (CODEMATCH_RESULT).
+
+**For round 2's reviewers, noted by the main session:** chapter 26's token table stacks every row at desktop widths (D2-1529); `codeMatch` allows edge differences up to 49 of 255 (D2-1526); the dark-card feed test's 2 by 2 block (D2-1331); the token description release and the error bar rename (D2-1524, D2-1525).
 
 **For board C** (round 2's decisions board):
 - Rule 12.4: retire the hinge arcs and rewrite the rule (the creative director's recommendation, `20261111_CD-Review-Of-Rule-12-4.md`; the identity designer's comparison in `stage-c-identity/20261111_Rule-12-4-Comparison*`), or keep them with five fixes. Named, since it overrides Gate 1's Y6 (D2-1277).
@@ -85,4 +87,16 @@ How to work with me:
 
 ## 5. Change log of this chat
 
-CHANGE_LOG
+Created, all under `work/` unless named:
+- **Briefs:** `handoffs/phase-2/20261111_Promotion-Stage-C-Brief.md`, `20261111_Stage-C-Round-1-Brief.md`.
+- **Notes and reviews:** `20261111_Promotion-C-Icons-Notes.md`, `-Identity-Notes.md` with `20261111_Promotion-C-Identity-Figures.json`, `-Engineer-Notes.md`, `-Systems-Notes.md` with `20261111_Promotion-C-Ch10-Labels-Addendum.json`; `20261111_CD-Review-Of-Rule-12-4.md`; `20261111_Stage-C-Round-1-Ch17-Notes.md`, `-Ch18-Notes.md`, `-Ch19-Notes.md` with `-Ch19-Results.json`, `-Components-Engineer-Notes.md`, `-Anatomy-Notes.md`, `-Identity-Notes.md`, `-Engineer-Notes.md`, `-Editor-Notes.md`; this handoff; `stage-c-identity/20261111_Rule-12-4-Comparison*`.
+- **Assets in use:** CL-075 Housing in `build/assets/civic-line-v6/`; `civic-line-v6/fit-24/` (the 37 fits and their manifest); `utility/svg-16/20261111_Utility-Pause-16px.svg` and `-Filter-16px.svg`; `utility/_archive/` (the replaced files, moved).
+- **Scripts:** `build/scripts/phase-2/stage_c_icons_promote.py`, `stage_c_ch17_build.py`, `stage_c_ch18_build.py`, `stage_c_ch18_anatomy_build.py`, `stage_c_ch19_build.py`, `stage_c_ch26_build.py`, `stage_c_identity_ch17.py`, `log_routine_calls.py`.
+- **Chapters, specimens and code:** `build/guide/chapters/17-motion-and-states.json`, `18-components.json`, `19-accessibility.json`, `26-tokens.json`; specimens `s-17-*`, `s-18-*`, `s-19-*`, `s-26-*`, `s-10-opener`; manifests `manifest-motion.json`, `-components.json`, `-anatomy.json`, `-accessibility.json`, `-tokens.json`; `build/guide/code/c-18-*` (65 files plus 24 keys files) and `c-26-*`.
+
+Modified:
+- `ledger/20261020_Decision-Log.md` (DR-213 to DR-215, D2-1260 to D2-1529), `ledger/20261020_Change-Ledger.md` (C-066 to C-077).
+- The Civic Line inventory (125 rows), the utility manifest, the identity minimum sizes record.
+- Chapters 01, 03, 05, 08, 09, 10 and 11 through their generators (`stage_a_systems_build.py`, `stage_b_ch10_build.py`, `apply_systems_ch11.py`, `apply_systems_ch11_ui.py`, `stage_a_identity_chapters.py`, `stage_a_identity_proofs.py`, `stage_a_identity_lib.py`, `stage_b_identity_ch01.py`, `stage_b_identity_ch09.py`, `stage_b_identity_ch12.py`), with the chapter 10 labels file.
+- `guide_build.py`, `guide_check.js`, `sprite_check.js`, `icon_likeness_check.js`, the shell, `token_table_build.py` and the token tests' results.
+- The chapters page and its build and check reports in `boards/phase-2/stage-a/`.
