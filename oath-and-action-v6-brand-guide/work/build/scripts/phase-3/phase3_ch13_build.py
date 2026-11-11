@@ -289,10 +289,11 @@ CSS = {
     "ln": (".ln{display:block;flex:none;overflow:visible}.ln path{fill:none}.ln .ak-case{stroke:none}.ln .ak-mark{stroke:var(--oa-color-graphic-essential)}"
            ".ln .hd,.ln .tg polygon{fill:var(--oa-color-graphic-essential)}.ln .tg .sg{fill:var(--oa-color-surface)}"
            ".ln .tk{stroke:var(--oa-color-graphic-essential);stroke-width:2px}.ln .rail{stroke:var(--oa-color-graphic-essential)}"
-           ".ln .hi{display:none}.ln.tgt .lo{display:none}.ln.tgt .hi{display:inline}"
-           ".ln.tgt .ak-mark{stroke:var(--oa-color-data-emphasis-red);stroke-width:4px;stroke-dasharray:var(--d6,none)}"
-           ".ln.tgt .ak-case{stroke:var(--oa-color-graphic-essential);stroke-width:6px;stroke-dasharray:var(--d6,none)}"
-           ".ln.tgt .hd{fill:var(--oa-color-data-emphasis-red)}"),
+           ),
+    "tgt": (".ln .hi{display:none}.ln.tgt .lo{display:none}.ln.tgt .hi{display:inline}"
+            ".ln.tgt .ak-mark{stroke:var(--oa-color-data-emphasis-red);stroke-width:4px;stroke-dasharray:var(--d6,none)}"
+            ".ln.tgt .ak-case{stroke:var(--oa-color-graphic-essential);stroke-width:6px;stroke-dasharray:var(--d6,none)}"
+            ".ln.tgt .hd{fill:var(--oa-color-data-emphasis-red)}"),
     "rs": ".rs{display:inline-block;fill:var(--oa-color-graphic-essential);vertical-align:.08em;margin-right:5px}",
     "gw": ".gw b{font-weight:var(--oa-font-weight-bold)}.gw .w{white-space:nowrap}",
     "ev-m": (".ev-m{display:block;flex:none;fill:var(--oa-color-graphic-essential)}"
@@ -1229,8 +1230,6 @@ def rule_13_7(book):
     fb = chart_head("Finding", GL_CENSUS,
                     f"Child poverty fell from {pair[0][1]} percent in 2020 to {pair[1][1]} percent in 2021, then rose to {pair[2][2]} percent in 2024",
                     "Children in poverty, percent")
-    fb += cp_spec("s-13-7-fail-children", "under_18", "Child poverty, as the failure's first chart draws it",
-                  "Line chart of child poverty under the Supplemental Poverty Measure, 2009 to 2025.")
     fc = chart_head("Finding", GL_CENSUS, all_title, "All people in poverty, percent, 2017 to 2025")
     fc += cp_spec("s-13-7-fail-all", "all_ages", "Poverty among all people, as the failure's second chart draws it",
                   "Line chart of poverty among all people under the Supplemental Poverty Measure, 2017 to 2025.",
@@ -1238,8 +1237,8 @@ def rule_13_7(book):
     fail = dnp() + f'<div class="fx two"><div>{fb}</div><div>{fc}</div></div>'
     book.add("s-13-7-failure", fail, rule="13.7",
              alt=(FC + f"Two charts side by side. The first is titled Child poverty fell from {pair[0][1]} percent in 2020 to "
-                  f"{pair[1][1]} percent in 2021, then rose to {pair[2][2]} percent in 2024, with no period or release named, "
-                  "over a line from 2009. The second starts in 2017."),
+                  f"{pair[1][1]} percent in 2021, then rose to {pair[2][2]} percent in 2024, with no period or release named. "
+                  "The second, beside it, draws a line that starts in 2017."),
              notes="Labeled failure: 2020 and 2021 from the earlier release beside 2024 from the current one, with no release "
                    "named, and two windows in one set.")
     return {

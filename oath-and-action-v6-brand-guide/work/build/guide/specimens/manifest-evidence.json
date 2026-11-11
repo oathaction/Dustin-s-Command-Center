@@ -123,7 +123,7 @@
   "chapter": "13",
   "rule": "13.7",
   "width_px": null,
-  "alt": "Failure case: do not publish. Two charts side by side. The first is titled Child poverty fell from 9.7 percent in 2020 to 5.2 percent in 2021, then rose to 13.5 percent in 2024, with no period or release named, over a line from 2009. The second starts in 2017.",
+  "alt": "Failure case: do not publish. Two charts side by side. The first is titled Child poverty fell from 9.7 percent in 2020 to 5.2 percent in 2021, then rose to 13.5 percent in 2024, with no period or release named. The second, beside it, draws a line that starts in 2017.",
   "illustrative": false,
   "notes": "Labeled failure: 2020 and 2021 from the earlier release beside 2024 from the current one, with no release named, and two windows in one set."
  },
