@@ -266,6 +266,7 @@ def image(spec, name):
 SEEN_OUT_REC = {}
 ALL_IMAGES = []
 FONT_CSS = None
+QUOTED = []     # teammates' own words, quoted as written: the word and path checks read the board's words only
 
 
 def font_css():
@@ -333,7 +334,8 @@ def compose_markup(c, name):
         if zoom:
             parts.append(f'<img src="data:image/png;base64,{b64}" width="{2 * w}" height="{2 * h}" style="position:absolute;left:{x + w + zgap}px;top:{y + ch - 2 * h}px;image-rendering:pixelated">')
         if labels[i]:
-            parts.append(f'<div class="lb" style="left:{x}px;top:{y + ch + 4}px;width:{cw}px;height:{lh - 4}px">{esc(labels[i])}</div>')
+            lab = re.sub(r'((?:Reform )?(?:CL|R)-\d+)', r'<span style="white-space:nowrap">\1</span>', esc(labels[i]))
+            parts.append(f'<div class="lb" style="left:{x}px;top:{y + ch + 4}px;width:{cw}px;height:{lh - 4}px">{lab}</div>')
     return ''.join(parts), W, H, srcs
 
 
@@ -838,7 +840,7 @@ def approves_panel(C):
         paras = ''.join(f'<p>{md_inline(x)}</p>' for x in p3.get('paragraphs', []))
         dec = p3.get('decide') or []
         decide = (f'<h4 class="dec-h">{esc(p3.get("decide_h", "You decide"))}</h4><ol class="decide">' + ''.join(
-            f'<li><b>{esc(d["q"])}</b> {md_inline(d.get("rec", ""))}</li>' for d in dec) + '</ol>') if dec else ''
+            f'<li><p class="q3">{md_inline(d["q"])}</p><p class="rec"><span class="sev">Recommended</span> {md_inline(d.get("rec", ""))}</p></li>' for d in dec) + '</ol>') if dec else ''
         open_html = f'<div class="open">{paras}{decide}{refline(p3["refs"], "phase 3") if p3.get("refs") else ""}</div>'
         status = 'ready'
     else:
@@ -1125,7 +1127,10 @@ def slot_scores(C):
     S = C['slots']['scores']
     parts, status = [], 'ready'
     cdp = ROOT / S['cd']
-    if cdp.exists():
+    rsp = ROOT / S['rescore']
+    if cdp.exists() and rsp.exists():
+        parts.append(cd_table(json.loads(rsp.read_text()), first=json.loads(cdp.read_text())))
+    elif cdp.exists():
         parts.append(cd_table(json.loads(cdp.read_text())))
     else:
         parts.append(f'<h3 class="sub">The creative director’s scores</h3>{pending(C, P["who_cd"], P["cd_file_label"])}')
@@ -1151,19 +1156,36 @@ def slot_scores(C):
         parts.append(f'<h3 class="sub">The drift review</h3>{pending(C, P["who_drift"], P["drift_file_label"])}')
         status = ('waiting', P['who_cd']) if status != 'ready' else ('partial', P['who_drift'])
         return panel('scores', P, ''.join(parts), status)
+    fx = C['panels']['scores'].get('fix')
+    if fx and (ROOT / fx['file']).exists():
+        parts.append(f'<h3 class="sub">{esc(fx["h"])}</h3><p>{esc(fx["lede"])}</p><ol class="findings">' + ''.join(f'<li>{esc(x)}</li>' for x in fx['calls']) + '</ol>')
+        check_refs(fx['refs'], 'fix pass')
+        MOVED.update(re.findall(CODE, fx['refs']))
     if status != 'ready':
         status = ('partial', P['who_cd'])
     return panel('scores', P, ''.join(parts), status)
 
 
-def cd_table(d):
+def cd_table(d, first=None):
     crit = d.get('criteria') or [{'key': k, 'name': k} for k in ('craft', 'clarity', 'brand_fidelity', 'usefulness', 'evidence_honesty', 'accessibility')]
     items = d.get('items', [])
     head = '<th scope="col">Item</th>' + ''.join(f'<th scope="col">{esc(c["name"])}</th>' for c in crit) + '<th scope="col">Ready</th>'
     rows = []
+    f_items = {i['key']: i for i in (first or {}).get('items', [])}
     for it in items:
         sc = it.get('scores', {})
-        cells = ''.join(f'<td class="num sc{" lo" if isinstance(sc.get(c["key"]), (int, float)) and sc.get(c["key"]) < 4 else ""}">{esc(sc.get(c["key"], ""))}</td>' for c in crit)
+        f = f_items.get(it.get('key'), {}).get('scores', {})
+
+        def cellv(c):
+            v, w = sc.get(c['key'], ''), f.get(c['key'])
+            lo = isinstance(v, (int, float)) and v < 4
+            if first is None:
+                return f'<td class="num sc{" lo" if lo else ""}">{esc(v)}</td>'
+            wlo = isinstance(w, (int, float)) and w < 4
+            moved = w is not None and w != v
+            fw = f'<span class="r2{" lo" if wlo else ""}">{esc(w) if w is not None else "new"}</span>'
+            return f'<td class="num sc{" mv" if moved else ""}">{fw}<span class="r3{" lo" if lo else ""}">{esc(v)}</span></td>'
+        cells = ''.join(cellv(c) for c in crit)
         rows.append(f'<tr><th scope="row">{esc(it.get("name", it.get("key")))}</th>{cells}<td>{"Yes" if it.get("ready") else "<b>Not yet</b>"}</td></tr>')
     FIG['cd_scores'] = {'items': len(items), 'ready': sum(1 for i in items if i.get('ready'))}
     tot = d.get('totals', {})
@@ -1179,8 +1201,57 @@ def cd_table(d):
             if isinstance(v, (int, float)) and v < 4:
                 under.append(f'<li><b>{esc(i["name"])}, {esc(c["name"].lower())}, {v}.</b> {md_inline(i.get("reasons", {}).get(c["key"], ""))}</li>')
     summ += f'<ul class="findings">{"".join(under)}</ul>' if under else ''
-    return (f'<h3 class="sub">The creative director’s scores</h3>{summ}<p>Scores run from 1 to 5, and an item is ready at 4 or more on every criterion. A box marks a score under 4.</p>'
+    legend = ('Scores run from 1 to 5, and an item is ready at 4 or more on every criterion. In each cell the first score sits in small type and the rescore after the fix pass in bold; a box marks a score under 4, and a gray ground a score that moved.'
+              if first else 'Scores run from 1 to 5, and an item is ready at 4 or more on every criterion. A box marks a score under 4.')
+    if first:
+        fi = first.get('items', [])
+        fready = sum(1 for i in fi if i.get('ready'))
+        summ = (f'<p class="intro">The creative director first found {fready} of {len(fi)} items ready. After the fix pass the rescore finds {nw(len(items) - len(nr))} of {len(items)} ready'
+                + (f', with {join_words([i["name"] for i in nr])} still short' if nr else '') + '.' + (f' {nw(tot.get("should_fix", 0)).capitalize()} Should fix remain, none blocking.' if tot.get('should_fix') else '') + '</p>')
+        under = []
+        for i in items:
+            for c in crit:
+                v = i.get('scores', {}).get(c['key'])
+                if isinstance(v, (int, float)) and v < 4:
+                    under.append(f'<li><b>{esc(i["name"])}, {esc(c["name"].lower())}, {v}.</b> {md_inline(i.get("reasons", {}).get(c["key"], ""))}</li>')
+        summ += f'<ul class="findings">{"".join(under)}</ul>' if under else ''
+    return (f'<h3 class="sub">The creative director’s scores</h3>{summ}<p>{legend}</p>'
             f'<div class="tw" role="region" tabindex="0" aria-label="Scores; scrolls sideways"><table class="scores"><thead><tr>{head}</tr></thead><tbody>{"".join(rows)}</tbody></table></div>')
+
+
+def tested_lists(text, fallback=None):
+    """Every Tested and Not tested list in a notes file: headings at any level ("Tested (fix pass)" too), a section
+    holding both under bold subheads, and bold-led paragraphs such as "**Tested.** ...". Returns (tested, not tested)."""
+    ti, ni = [], []
+    lines = text.splitlines()
+    for i, l in enumerate(lines):
+        m = re.match(r'^(#+)\s*(.+?)\s*$', l)
+        if not m:
+            continue
+        name = m.group(2).strip().lower()
+        lvl = len(m.group(1))
+        body = []
+        for l2 in lines[i + 1:]:
+            m2 = re.match(r'^(#+)\s', l2)
+            if m2 and len(m2.group(1)) <= lvl:
+                break
+            body.append(l2)
+        body = '\n'.join(body)
+        if re.match(r'^tested and not tested\b', name):
+            parts = re.split(r'^(?:#+\s*|\*\*)not tested\b.*$', body, flags=re.I | re.M, maxsplit=1)
+            ti += md_items(re.sub(r'^\*\*tested\b.*$', '', parts[0], flags=re.I | re.M))
+            ni += md_items(parts[1]) if len(parts) > 1 else []
+        elif re.match(r'^not tested\b', name):
+            ni += md_items(body)
+        elif re.match(r'^tested\b', name):
+            ti += md_items(body)
+    for m in re.finditer(r'^\*\*(Not tested|Tested)\.\*\*\s*(.+)$', text, flags=re.M):
+        (ni if m.group(1) == 'Not tested' else ti).append(m.group(2).strip())
+    if not ti and fallback:
+        sec = md_section(text, [fallback])
+        ti = [x for x in md_items(sec or '') if not x.startswith('D2-xxx')]
+    dd = lambda xs: [x for k, x in enumerate(xs) if x and x not in xs[:k] and not x.startswith('(pending')]
+    return dd(ti), dd(ni)
 
 
 def slot_tested(C):
@@ -1188,25 +1259,16 @@ def slot_tested(C):
     cols, waiting = [], []
     for s in C['slots']['tested']:
         p = ROOT / s['file']
-        who = 'the board builder' if s['who'] == 'board' else owner(C, s['who'])
+        who = s.get('label') or ('the board builder' if s['who'] == 'board' else owner(C, s['who']))
         if not p.exists():
             waiting.append(who)
             continue
-        t = p.read_text()
-        head = '\n'.join(t.splitlines()[:12]).lower()
-        tested = md_section(t, [r'tested', r'what i tested', r'checked'])
-        nott = md_section(t, [r'not tested', r'what i could not test', r'not checked'])
-        both = md_section(t, [r'tested and not tested', r'tested and not tested\b.*'])
-        if both is not None and (tested is None or nott is None):
-            parts = re.split(r'^(?:#+\s*|\*\*)not tested\b.*$', both, flags=re.I | re.M, maxsplit=1)
-            tested, nott = parts[0], (parts[1] if len(parts) > 1 else '')
-        ti, ni = md_items(tested or ''), md_items(nott or '')
-        unfinished = ('in progress' in head or (s['who'] == 'a11y' and not all(a11y_status(C).values() or [False]))
-                      or not ti or (nott or '').strip().lower().startswith('(pending'))
-        if unfinished:
+        ti, ni = tested_lists(p.read_text(), s.get('fallback'))
+        if not ti:
             waiting.append(who)
             continue
         FIG.setdefault('tested_sources', []).append(rel(p))
+        QUOTED.append(''.join(f'<li>{md_inline(x)}</li>' for x in ti + ni))
         cols.append(f'<div class="tcol"><h4>{esc(who[:1].upper() + who[1:])}</h4>'
                     f'<p class="label">Not tested</p><ul>{"".join(f"<li>{md_inline(x)}</li>" for x in ni) or "<li>Nothing listed.</li>"}</ul>'
                     f'<details class="more"><summary>What {esc(who)} tested, {len(ti)} items</summary><ul>{"".join(f"<li>{md_inline(x)}</li>" for x in ti)}</ul></details></div>')
@@ -1231,18 +1293,21 @@ def weight_panel(C):
     frozen = fz.stat().st_size if fz.exists() else W['frozen_bytes_logged']
     FIG['weight'] = {'frozen_bytes': frozen, 'frozen_source': str(fz) if fz.exists() else 'handoff V15', 'budget': W['budget_bytes'],
                      'limit': W['limit_bytes'], 'projected': W['projected_bytes']}
-    pv = ROOT / W['preview']
-    bars = [('The chapters page today, 16 chapters', frozen, 'now')]
+    pv = PREVIEW.get('path') or (ROOT / W['preview'])
+    bars = [('Version 7, the chapters page Dustin read', frozen, 'now')]
     status = 'ready'
-    if pv.exists():
-        built_pv = datetime.datetime.fromtimestamp(pv.stat().st_mtime, datetime.timezone.utc)
-        bars.append((f'The Gate 2 preview, with its fonts, as built {built_pv.strftime("%B")} {built_pv.day}', pv.stat().st_size, 'now'))
-        FIG['weight']['preview_bytes'] = pv.stat().st_size
+    if PREVIEW.get('exists'):
+        bars.append(('The Gate 2 preview, with its fonts' + ('' if PREVIEW.get('final') else ', as it stood at this build'), PREVIEW['bytes'], 'now'))
+        FIG['weight']['preview_bytes'] = PREVIEW['bytes']
+        if not PREVIEW.get('final'):
+            status = ('partial', 'engineer')
     else:
         status = ('partial', 'engineer')
     bars += [('The finished guide, as the engineer projects it', W['projected_bytes'], 'proj'),
              ('The page budget', W['budget_bytes'], 'budget'), ('The host’s limit for one page', W['limit_bytes'], 'limit')]
     mb = lambda b: f'{b / 1e6:.2f}'
+    if PREVIEW.get('exists'):
+        FILL.update({'preview_mb': mb(PREVIEW['bytes']), 'preview_pct': f'{100 * PREVIEW["bytes"] / W["budget_bytes"]:.1f}'})
     FILL.update({'frozen_mb': mb(frozen), 'projected_mb': f'{W["projected_bytes"] / 1e6:.1f}', 'budget_mb': f'{W["budget_bytes"] / 1e6:.1f}'})
     mx = W['limit_bytes']
     rows = ''.join(f'<tr><th scope="row">{esc(n)}</th><td class="barcell"><span class="bar {k}" data-mark="bar" data-value="{b}" data-key="{esc(n)}" style="width:{100 * b / mx:.3f}%"></span></td><td class="num">{mb(b)} MB</td></tr>'
@@ -1250,8 +1315,9 @@ def weight_panel(C):
     body = (f'<p class="intro">{esc(fill(P["lede"]))}</p><figure class="wfig" data-spec="page-weight">'
             f'<div class="tw" role="region" tabindex="0" aria-label="Page weight; scrolls sideways"><table class="wt"><caption>Page weight in megabytes, each bar drawn from zero against the host’s 16 MB limit</caption>'
             f'<thead><tr><th scope="col">Page</th><th scope="col"><span class="vh">Bar</span></th><th scope="col">Size</th></tr></thead><tbody>{rows}</tbody></table></div>'
-            f'<figcaption class="caption">Sources: the frozen chapters page in the studio’s workspace, read by its size on disk; the engineer’s projection of November 10; the build’s budget and the host’s limit.'
-            f'{"" if pv.exists() else " The preview’s bar joins when the engineer builds it."}</figcaption></figure>')
+            f'<figcaption class="caption">Sources: version 7, read by its size on disk; the preview, read on disk'
+            f'{" and matched byte for byte to the engineer’s final build" if PREVIEW.get("final") else ""}; the engineer’s projection of November 10; the build’s budget and the host’s limit.'
+            f'{"" if PREVIEW.get("exists") else " The preview’s bar joins when the engineer builds it."}</figcaption></figure>')
     return panel('weight', P, body, status)
 
 
@@ -1411,6 +1477,9 @@ details.more>summary{cursor:pointer;font:var(--oa-type-ui);font-weight:600;min-h
 .ans.three{display:grid;grid-template-columns:minmax(0,1fr);gap:0 var(--oa-space-500)}
 @media (min-width:64em){.ans.three{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .decide{margin:0;padding-left:1.4em}
+.decide li{margin-bottom:var(--oa-space-200)}
+.decide .q3{font-weight:600;margin-bottom:var(--oa-space-050)}
+.decide .rec{font:var(--oa-type-body-small)}
 .dec-h{font:var(--oa-type-ui);font-weight:700;margin:var(--oa-space-300) 0 var(--oa-space-100)}
 .pending{border:var(--oa-border-width-hairline) solid var(--strong);border-left:var(--oa-border-width-bar) solid var(--oa-color-palette-charcoal);padding:var(--oa-space-200) var(--oa-space-300);margin:var(--oa-space-200) 0;max-width:var(--oa-layout-measure-intro-max)}
 .pending p{margin:0}
@@ -1427,6 +1496,11 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 td.miss{font-weight:700}
 .fl{display:block;font:var(--oa-type-caption);color:var(--wink-2);font-weight:400}
 td.sc.lo{box-shadow:inset 0 0 0 var(--oa-border-width-rule) var(--wstrong);font-weight:700}
+td.sc .r2{display:inline-block;min-width:1.4em;font:var(--oa-type-caption);color:var(--wink-2);margin-right:.35em;padding:0 .2em}
+td.sc .r3{display:inline-block;min-width:1.6em;font-weight:700;padding:0 .2em}
+td.sc .lo{box-shadow:inset 0 0 0 var(--oa-border-width-hairline) var(--wstrong)}
+td.sc .r3.lo{box-shadow:inset 0 0 0 var(--oa-border-width-rule) var(--wstrong)}
+td.sc.mv .r3{background:var(--oa-color-tint-stone-n88)}
 .facts{display:grid;grid-template-columns:minmax(0,1fr);gap:0 var(--oa-space-500);margin:var(--oa-space-200) 0;border-top:var(--oa-border-width-hairline) solid var(--hair)}
 @media (min-width:48em){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .facts div{padding:var(--oa-space-150) 0;border-bottom:var(--oa-border-width-hairline) solid var(--hair)}
@@ -1517,12 +1591,16 @@ def visible_text(page):
 
 def checks(page):
     text = visible_text(page)
+    own_page = page
+    for q in QUOTED:
+        for li in re.findall(r'<li>.*?</li>', q):
+            own_page = own_page.replace(li, '')
     i = text.find('—')
     need(i < 0, 'an em dash on the board: ' + text[max(0, i - 60):i + 20])
     if '–' in text:
         i = text.find('–')
         warn('an en dash on the board: ' + text[max(0, i - 40):i + 20])
-    own = visible_text(re.sub(r'<(?:div class="tcols"|pre class="raw")>.*?</(?:div|pre)>(?=<div class="pending"|</section>)', ' ', page, flags=re.S))
+    own = visible_text(own_page)
     flagged = sorted({w for w in FLAGGED if re.search(rf'\b{w}\b', own, flags=re.I)})
     if flagged:
         warn('flagged words in the board’s own words: ' + ', '.join(flagged))
@@ -1534,7 +1612,7 @@ def checks(page):
     if stray:
         warn('studio codes on the board’s face: ' + ', '.join(sorted(stray)))
     for pat in (r'/home/', r'file:', r'scratchpad', r'@anthropic'):
-        if re.search(pat, re.sub(r'<pre class="raw".*?</pre>', '', page, flags=re.S)):
+        if re.search(pat, re.sub(r'<pre class="raw".*?</pre>', '', own_page, flags=re.S)):
             warn(f'a private path on the board ({pat})')
     hosts = set(re.findall(r'(?:src|href)="https?://([^/"]+)', page))
     extra = hosts - {'fonts.googleapis.com', 'fonts.gstatic.com'}
@@ -1568,6 +1646,7 @@ def main():
     FILL['built_date'] = built.strftime('%B ') + str(built.day) + built.strftime(', %Y')
     FIG.update({'built': built.isoformat(), 'tokens_version': ver, 'contrast_figures': {k: FILL[k] for k in ('red_on_prussian', 'white_on_prussian')}})
 
+    PREVIEW.update(preview_record(C))
     pf = run_pixel_fit(C)
     FIG['pixel_fit'] = pf
     sp = run_sprite()

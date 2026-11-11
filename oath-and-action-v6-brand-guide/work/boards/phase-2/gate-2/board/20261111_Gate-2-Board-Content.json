@@ -127,12 +127,31 @@
   "scores": {
    "n": 8,
    "nav": "Scores",
-   "title": "The creative director’s scores and the drift review",
+   "title": "The creative director’s scores, the rescore and the drift review",
    "who_cd": "cd",
    "who_drift": "drift",
    "cd_file_label": "the creative director’s scores",
    "drift_file_label": "the drift team’s report",
-   "refs": "DR-221 · DR-226"
+   "refs": "DR-221 · DR-226",
+   "fix": {
+    "file": "work/handoffs/phase-2/20261111_Gate-2-Fix-Brief.md",
+    "h": "The fix pass between the two scores",
+    "lede": "After the three reviews, six owners fixed what they found in one pass, under the main session’s calls, and the creative director then rescored every item. The calls, in short:",
+    "calls": [
+     "Each rule’s Files list prints only files that ship.",
+     "Every chapter opens on a plate of its subject, drawn from a drawing it already holds.",
+     "Every failure caption leads with “Fails Rule NN.N.”, and the failure bar marks every plate a reader could lift.",
+     "Rule titles run to one clause.",
+     "One set of font weights everywhere: Inter 400, 600 and 700, Inter Tight 800, and Lora Italic 400 and 500.",
+     "The front pages take the creative director’s five changes.",
+     "Contrast ratios print one way, with two decimals and “to 1”.",
+     "The error bar’s token stops claiming a keyline the drawing does not draw.",
+     "Each player’s Reset names its object.",
+     "Description changes go out as one token pre-release, with no token renamed and no value changed.",
+     "Chapter 19’s results rerun last, from the final guide check on the fixed preview."
+    ],
+    "refs": "D2-1705 to D2-1707 · DR-199 · the Gate 2 fix brief"
+   }
   },
   "tested": {
    "n": 9,
@@ -153,7 +172,7 @@
    "n": 10,
    "nav": "Page weight",
    "title": "Page weight, a risk for Phases 3 to 5",
-   "lede": "The guide stays one file, and the host takes pages up to 16 MB. Today’s chapters weigh {frozen_mb} MB, and the engineer projects the finished guide at {projected_mb} MB against a {budget_mb} MB budget. Chapter 14’s 127 chart forms are the largest unknown in that projection.",
+   "lede": "The guide stays one file, and the host takes pages up to 16 MB. The Gate 2 preview, its fonts included, weighs {preview_mb} MB, {preview_pct} percent of the {budget_mb} MB budget. The engineer projects the finished guide at {projected_mb} MB, and chapter 14’s 127 chart forms are the largest unknown in that projection.",
    "refs": "D2-1214 · DR-227 · DR-225"
   }
  },
@@ -1049,7 +1068,8 @@
      ]
     }
    ],
-   "refs": "Y1 · G1-01 · DR-04 · DR-179 · DR-138"
+   "refs": "Y1 · G1-01 · DR-04 · DR-179 · DR-138",
+   "strip_one": true
   },
   {
    "id": "civic-line",
@@ -1368,9 +1388,9 @@
  "craft": {
   "sheets_h": "The sheets, at 16, 24 and 48 px",
   "sheet_16_h": "16 px: the utility icons and the pillar fits",
-  "sheet_16_cap": "Each icon at actual size on its left, and the same pixels at twice the size on its right.",
+  "sheet_16_cap": "Each icon at actual size, with the same pixels at twice the size beside it.",
   "sheet_24_h": "24 px: the {n_24} drawings that read at this size",
-  "sheet_24_cap": "Each fit at actual size, as a 1x screen draws it, and the same pixels at twice the size.",
+  "sheet_24_cap": "Each drawing at actual size, as a 1x screen draws it, with the same pixels at twice the size beside it.",
   "sheet_48_h": "48 px: all {n_civic} Civic Line drawings in use",
   "sheet_48_cap": "48 px is the floor for topic and atlas drawings. Each sits at actual size.",
   "pixel_h": "The pixel-fit check, run on today’s files",
@@ -1513,35 +1533,64 @@
   },
   "scores": {
    "cd": "work/handoffs/phase-2/20261111_Gate-2-CD-Scores.json",
-   "drift": "work/handoffs/phase-2/20261111_Gate-2-Red-Team-Drift.md"
+   "drift": "work/handoffs/phase-2/20261111_Gate-2-Red-Team-Drift.md",
+   "rescore": "work/handoffs/phase-2/20261111_Gate-2-CD-Rescores.json"
   },
   "tested": [
    {
     "who": "a11y",
+    "label": "the accessibility lead, task 5",
     "file": "work/handoffs/phase-2/20261111_Gate-2-Accessibility-Evidence.md"
    },
    {
+    "who": "a11y",
+    "label": "the accessibility lead, fix pass",
+    "file": "work/handoffs/phase-2/20261111_Gate-2-Fix-Accessibility-Notes.md"
+   },
+   {
     "who": "engineer",
-    "file": "work/handoffs/phase-2/20261111_Gate-2-Engineer-Notes.md"
+    "label": "the engineer",
+    "file": "work/handoffs/phase-2/20261111_Gate-2-Engineer-Notes.md",
+    "fallback": "final build"
    },
    {
-    "who": "drift",
-    "file": "work/handoffs/phase-2/20261111_Gate-2-Red-Team-Drift.md"
+    "who": "components",
+    "label": "the component engineer, fix pass",
+    "file": "work/handoffs/phase-2/20261111_Gate-2-Fix-Components-Notes.md"
    },
    {
-    "who": "cd",
-    "file": "work/handoffs/phase-2/20261111_CD-Gate-2-Whole-Guide-Read.md"
+    "who": "systems",
+    "label": "the systems designer, fix pass",
+    "file": "work/handoffs/phase-2/20261111_Gate-2-Fix-Systems-Notes.md"
+   },
+   {
+    "who": "identity",
+    "label": "the identity designer, fix pass",
+    "file": "work/handoffs/phase-2/20261111_Gate-2-Fix-Identity-Notes.md"
    },
    {
     "who": "editor",
+    "label": "the editor",
     "file": "work/handoffs/phase-2/20261111_Gate-2-Editor-Notes.md"
    },
    {
+    "who": "cd",
+    "label": "the creative director",
+    "file": "work/handoffs/phase-2/20261111_CD-Gate-2-Whole-Guide-Read.md"
+   },
+   {
+    "who": "drift",
+    "label": "the drift review team",
+    "file": "work/handoffs/phase-2/20261111_Gate-2-Red-Team-Drift.md"
+   },
+   {
     "who": "dataviz",
+    "label": "the data visualization lead",
     "file": "work/handoffs/phase-2/20261111_Phase-3-Proposal-Draft.md"
    },
    {
     "who": "board",
+    "label": "the board builder",
     "file": "work/handoffs/phase-2/20261111_Gate-2-Board-Builder-Notes.md"
    }
   ],
