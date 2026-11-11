@@ -3088,3 +3088,56 @@ The main session asked three questions with its plan for round 2, board C and th
 |---|---|---|
 | D2-1666 | An identity player's Reset at rest reads "The mark is at rest on its master. Reset works once you press Play." | The editor's I1 and S2 rows: Rule 17.11 asks a reason line to name the next step, and call 5's words stay first |
 | D2-1667 | DR-191's short second pass sends the editor's 49 rows to their five owners, with the creative director's R1 (the token table's label row, engineer) and R2 (Rule 19.5's chart, accessibility lead), each owner resumed with its context; chapter 19's results are rerun after it, from the final guide check | Every item scores 4 or more after the fix pass (the rescore); the remaining work is words and two small craft items, each in one owner's files |
+
+### Engineer, the second pass (`20261111_Stage-C-Round-2-Engineer-Fix-Notes.md`, section Second pass)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1668 | E1's figures are computed: 504 and 17 from tokens.json, 13 from Rule 26.1's categories, four and two from the table's own groups, written as words under ten (H06); the generator stops if font or z-index changes its group name | No figure typed by hand can drift from the file (D2-1495) |
+| D2-1669 | E3's description is built from `statusNote` and the title, and the source and generator paths stay in `$extensions` | One sentence feeds tokens.json and tokens.css's header, and tools still find the paths |
+| D2-1670 | Four tint descriptions lose "pair B" as well as the five steps E4 names | The table prints them to readers, and E4's reason holds for each |
+| D2-1671 | The table's guard also stops on "pair" with a capital letter, and on "dark atlas" | E4 and E5 name both as studio names; a new one stops the build |
+| D2-1672 | E9's apostrophes are made by the generator for every prose string of the chapter file and every alt in the manifest, never inside a code span | The row asks for every changed prose string; one rule for all keeps a new string from slipping |
+| D2-1673 | The descriptions change inside 6.0.0-gate2.8 with no new version | The release has not shipped to board C, its note already says every description reads in plain words, and Rule 26.8 counts descriptions alone as a change to the third part once 6.0.0 ships |
+| D2-1674 | A flowing plate that breaks out takes its label row and rule with it; a fixed one keeps its head on the column | R1; CA-S13 set the fixed plates' head on the text column, and the creative director asks this for the token table |
+| D2-1675 | The rail hides while a broken-out head covers it, as it does for the frame | No rail link sits out of sight under the head |
+
+### Component engineer, the second pass (`20261111_Stage-C-Round-2-Components-Fix-Notes.md`, section Second pass)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1676 | H.99001's status in chapter 18's table is "In committee" | The editor's C1; one invented bill keeps one story (D2-1364) |
+| D2-1677 | The editor's comment is set with its line break moved to stay within 100 characters | Call 16 keeps code panel lines short; the words are as written |
+| D2-1678 | The diagram's line captions and its lines in words may break inside a word | A long word set the drawing's narrowest width past a 360 px column with text at 200 percent; a word breaks only when it cannot fit |
+
+### Accessibility lead, the second pass (`20261111_Stage-C-Round-2-Accessibility-Fix-Notes.md`, section Second pass)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1679 | Every row A1 to A22 is applied as the editor wrote it | DR-191; the editor checked each against the sets |
+| D2-1680 | Rule 18.15's row now says the edge alone shows the field on Charcoal, and the generator stops if tokens.json gives the Charcoal field a ground other than Charcoal | A10's words are true only while call 1 holds |
+| D2-1681 | Rule 18.7's code alt names a breadcrumb and a list of places | It still named the round 1 sample, which BE-M4 replaced |
+| D2-1682 | Rule 19.5's chart puts each line's name and last count at its end, and only the first and last years under it | R2 asks for a name at each line's end and its years; two year labels fit a 200 px drawing at caption size, and the title gives the span |
+
+### Systems designer, the second pass (`20261111_Stage-C-Round-2-Systems-Fix-Notes.md`, section Second pass)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1683 | Rule 17.3 keeps its own words about Reset at rest, and Rule 17.6 quotes the players' full line | D2-1666 sets the line for the identity players; Rule 17.3 covers every player, and "says why" already holds for both kinds |
+| D2-1684 | The anatomy plates were rerun with the editor's key word, and drew the set changes made since the last run | One generator writes the 24 plates; `s-18-14-anatomy` took the download's new size, 95 KB, from its set |
+
+### Identity designer, the second pass (`20261111_Stage-C-Round-2-Identity-Fix-Notes.md`, section Second pass)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1685 | The Reset line is the two sentences of I1 in both players. Under reduced motion, Slow motion's own reason follows them on the same line | D2-1666 confirms I1. The line joins every reason that applies, as chapter 17's players do |
+| D2-1686 | My source keeps straight apostrophes in I3, I5 and I7's words, and the build prints them curled, as the editor wrote them | The fragment's quote curling and the chapter's smartening do this for every string in these files; the printed words match the rows exactly |
+| D2-1687 | The fix pass's intro sentence joins `OLD_INTRO_ADDS`, so I9's sentences replace it where it stands | The intro is shared with the systems designer, and this keeps their sentence where it is |
+| D2-1688 | I left chapter 17's generator to its owner | It is the systems designer's, and running it places I4 with no change of mine |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1689 | The engineer's second-pass description edits (14 tokens and two groups, no value changed) stay in 6.0.0-gate2.8 with no new version | The release has not been published on any page yet; board C's republish is its first, so one release carries every description change |
+| D2-1690 | DR-191's second pass is closed. Checked by the main session: the final generator chain changed one file, chapter 17, taking the lever's caption from the identity designer's generator as expected; every round 1 generator's `--check` reports its files current; `guide_build.py --strict` 0 warnings, 185 rules, 424 specimens, 8,962,864 bytes; the token tests pass | Every owner reported done; the chain is the proof that nothing crossed |
