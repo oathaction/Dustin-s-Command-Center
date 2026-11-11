@@ -196,3 +196,63 @@ Modified, written by those scripts through the identity build:
 Modified, notes: `work/handoffs/phase-2/20261111_Stage-C-Round-2-Identity-Fix-Notes.md` (this section)
 
 Outside the repository, in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/49b1040f-34e8-55e0-97c3-93e08c6dbc2c/scratchpad/round-2-fix/identity/`: the scratch build and its report, chain and build logs, copies of my three scripts as they stood before, `players.js`, `plates.js` and `slow.js` with their captures and `players.json`, and the guide check's results.
+
+## Second pass
+
+DR-191's short second pass, November 11, 2026. I applied the nine rows in section 5 of `20261111_Stage-C-Round-2-Editor-Notes.md`, word for word, through my generators. I1 follows D2-1666, the main session's confirmation. I committed nothing.
+
+### What changed
+
+- **I1** (`stage_c_identity_ch17.py`): both players' Reset line now reads "The mark is at rest on its master. Reset works once you press Play." The change covers the line printed on load and the words the player's script writes. The module docstring quotes the new line.
+- **I2** (`stage_a_identity_chapters.py`): Rule 08.2's builders line now ends "We run the test on the card in the identity proofs with a script of our own, and the asset package will carry a copy of that script that takes any card. Until then, ask the editor to run it on yours." The studio file name is gone.
+- **I3 and I5** (`stage_a_identity_s08.py`): Rule 08.1's labels read "Display master, 120 px; every size from 49 px except a social card’s sign-off" and "48 px master, 96 px; only for a social card’s sign-off". The alt text uses the same words.
+- **I4** (`stage_c_identity_ch17.py`): the lever's caption reads "Live, at rest on the lockmark’s masters, the 48 px master at 48 px and the display master at 120 px. Press Play, and the field empties, then the links draw from the top left, the eight nodes land together and the lever lands last, coming to rest on the master again at 560 ms."
+- **I6 and I7** (`stage_a_identity_chapters.py`): Rule 03.2's L4 to L7 line reads "on the layouts from our brand guide’s fifth edition". The L6 line is now two sentences, as the editor wrote them.
+- **I8** (`stage_b_identity_ch12.py`): Rule 12.4's builders line opens "Leave an open area plain by default."
+- **I9** (`stage_b_identity_ch12.py`): chapter 12's intro opens "Rules 12.1 to 12.3 cover the devices that divide and sign a page: hairlines, watermarks and the monogram as a small signature. Rule 12.4 says when an open area stays plain and what may sign it." The systems designer's sentence after it is unchanged.
+
+**For the main session:** chapter 17's file still prints the lever's old caption. I4 lives in my manifest, and chapter 17 copies it when its owner's generator, `stage_c_ch17_build.py`, runs. The hinge's caption did not change and already matches. The guide check's four results on my players, from the fix pass, still wait on the engineer's change.
+
+### Routine calls
+
+- D2-xxx | The Reset line is the two sentences of I1 in both players. Under reduced motion, Slow motion's own reason follows them on the same line | D2-1666 confirms I1. The line joins every reason that applies, as chapter 17's players do
+- D2-xxx | My source keeps straight apostrophes in I3, I5 and I7's words, and the build prints them curled, as the editor wrote them | The fragment's quote curling and the chapter's smartening do this for every string in these files; the printed words match the rows exactly
+- D2-xxx | The fix pass's intro sentence joins `OLD_INTRO_ADDS`, so I9's sentences replace it where it stands | The intro is shared with the systems designer, and this keeps their sentence where it is
+- D2-xxx | I left chapter 17's generator to its owner | It is the systems designer's, and running it places I4 with no change of mine
+
+### Tested
+
+- The generator chain from the project folder, each script with `python3 -I`: every script exited 0.
+- I compared my outputs with HEAD by script. Only the rows' strings changed:
+  - Rule 03.2's builders text, Rule 08.2's builders text, and chapter 12's intro and Rule 12.4's builders text.
+  - In the manifest: `s-08-1-correct`'s alt and `s-17-lever-correct`'s caption.
+  - `s-08-1-correct.html`'s two labels, and the Reset line in `s-17-hinge-correct.html` and `s-17-lever-correct.html`.
+  - Files that changed in the same window are other owners' second-pass work: chapter 18's anatomy, chapter 17's file, tokens and the token table.
+- I read each of the nine strings back from the outputs by script. Each matches its row in the editor's "Mine" column.
+- `guide_build.py --strict --out` into my scratch folder: 16 chapter files, 185 rules, 424 specimens. The build stopped on 1 warning, the engineer's in-progress token check on "pair B" in `oa.color.tint.stoneN90`'s description. None names my files.
+- My player check (`players.js`) at 1440 and 390 px, at 1x and 2x, with and without reduced motion: 16 runs, all passing. In each, the Reset line starts with I1's two sentences, and with reduced motion off it is exactly those two. Under reduced motion it adds Slow motion's reason. The other criteria are the fix pass's. Rest and end captures match pixel for pixel, except the hinge at 1x under reduced motion: 4 pixels of at most 5 levels at 1440 px and 2 at 390 px, the same raster difference as before.
+- I looked at Rule 08.1's plate at 1440 px 2x (both long labels on two balanced lines), the players' controls at rest at 1440 px 1x, and Rule 03.2's builders block at 1440 px 1x.
+
+### Not tested
+
+- I did not run `guide_check.js` again. Its four motion results on my players stand until the engineer's change.
+- Chapter 17's printed lever caption waits for its owner's generator, so my scratch page still shows the fix pass's caption under the lever.
+- Rule 08.1's plate at 390 px: I captured it but did not look at it, since only the label words changed.
+- I did not use Firefox, Safari, a real phone or a screen reader.
+
+### Change log
+
+Modified, scripts:
+- `work/build/scripts/phase-2/stage_c_identity_ch17.py` (I1, I4, docstring)
+- `work/build/scripts/phase-2/stage_a_identity_s08.py` (I3, I5)
+- `work/build/scripts/phase-2/stage_a_identity_chapters.py` (I2, I6, I7)
+- `work/build/scripts/phase-2/stage_b_identity_ch12.py` (I8, I9)
+
+Modified, written by those scripts:
+- `work/build/guide/chapters/03-identity.json`, `08-lockmark.json`, `12-graphic-devices.json`
+- `work/build/guide/specimens/manifest-identity.json`
+- `work/build/guide/specimens/s-08-1-correct.html`, `s-17-hinge-correct.html`, `s-17-lever-correct.html`
+
+Modified, notes: this file, this section.
+
+Outside the repository: `second/` in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/49b1040f-34e8-55e0-97c3-93e08c6dbc2c/scratchpad/round-2-fix/identity/`, holding the scratch build, logs, captures, `players.json` and copies of the four scripts as they stood before.
