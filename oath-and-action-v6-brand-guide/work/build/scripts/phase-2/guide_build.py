@@ -1649,10 +1649,9 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
                 R.warn(where, f"the opener {sid} is {w:g} px wide; an opener fits the column at true size, {OPENER_MAX_PX} px at most on a 360 px screen, or flows with it")
             opener_html = plate("opener", sid, cap, specs, cctx, where, frame_ctx=f"opening figure of chapter {num}")
             # call 3 (CD-S1): an opener reuses a drawing the chapter has, light, under 16 KB as placed
-            frag = specs.fragment(sid, where) if sid in specs.files else None
-            if frag is not None and len(frag.encode()) > OPENER_MAX_BYTES:
-                R.warn(where, f"the opener {sid} weighs {len(frag.encode()):,} bytes as placed; an opener stays under {OPENER_MAX_BYTES:,} "
-                              f"(16 KB): draw sprite symbols by <use>, and show a light version of a heavy plate")
+            if len(opener_html.encode()) > OPENER_MAX_BYTES:
+                R.warn(where, f"the opener {sid} weighs {len(opener_html.encode()):,} bytes as placed, with its frame; an opener stays under "
+                              f"{OPENER_MAX_BYTES:,} (16 KB): draw sprite symbols by <use>, and show a light version of a heavy plate")
             if not str(specs.meta(sid).get("alt") or "").strip():
                 R.warn(where, f"the opener {sid} has no alt in its manifest; say what a reader learns from it")
     seen = set()
