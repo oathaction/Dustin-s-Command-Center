@@ -1,6 +1,6 @@
 # Handoff for the next session: Oath & Action Edition 06 (thirteenth handoff, November 10)
 
-Written November 10, 2026, after stage C's round 0 and drawings board C. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `20261110_Next-Session-Handoff_V12.md`. V5's sections 3 to 5, V8's section 3, V9's section 3, V10's section 3, V11's section 3 and V12's section 3 still hold, with the additions below. Decision log entries for this chat run from DR-203 to DR-211 and from D2-1115 to D2-1259. The change ledger ends at C-065.
+Written November 10, 2026, after stage C's round 0 and drawings board C. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `20261110_Next-Session-Handoff_V12.md`. V5's sections 3 to 5, V8's section 3, V9's section 3, V10's section 3, V11's section 3 and V12's section 3 still hold, with the additions below. Decision log entries for this chat run from DR-203 to DR-212 and from D2-1115 to D2-1259. The change ledger ends at C-065.
 
 ## 1. Where things stand
 
@@ -18,7 +18,7 @@ Written November 10, 2026, after stage C's round 0 and drawings board C. A new s
 - DR-206: both unsent reader check pages deleted.
 - DR-207 to DR-211, drawings board C, all as recommended and approved by name: Housing option A at 48 px and up; the 16 px Pause redraw and Filter option A; all 37 of the 24 px fits with the switch; the print L3 at 2.18 cap heights for print and every width but the masthead; the social card's sign-off at 96 px.
 
-**Carried items, closed:** Virginia's 2025 House of Delegates, Tangipa v. Newsom's order and Ohio's minutes all hold as printed (D2-1120 to D2-1128). The drawings board's 28 dead overrides are gone (D2-1116). **Still carried:** Missouri's certified count, read at the Gate 2 preview (D2-1118).
+**Carried items, closed:** Virginia's 2025 House of Delegates, Tangipa v. Newsom's order and Ohio's minutes all hold as printed (D2-1120 to D2-1128). The drawings board's 28 dead overrides are gone (D2-1116). Q-14 is answered: page 14 of `pics_i_like.pdf` is Dustin's own study, made with ChatGPT (DR-212). **Still carried:** Missouri's certified count, read at the Gate 2 preview (D2-1118). Open questions left: Q-04 (photography, before chapter 16), Q-11 and Q-12.
 
 **Round 0, done:**
 - Research lead: `20261110_Stage-C-Research-Notes.md` (WCAG 2.2's 55 A and AA criteria in W3C's words, APG patterns, browser support from MDN's data 8.1.8, theme storage).
@@ -98,6 +98,6 @@ Created, all under `work/`:
 - **Board:** `boards/phase-2/stage-c/drawings/` (the board, its content, figures, `renders/`, the creative director's scores and `20261110_Published-Pages.json`).
 
 Modified:
-- `ledger/20261020_Decision-Log.md` (DR-203 to DR-211, D2-1115 to D2-1259), `ledger/20261020_Change-Ledger.md` (C-065).
+- `ledger/20261020_Decision-Log.md` (DR-203 to DR-212, D2-1115 to D2-1259), the open questions (Q-14), and the rights and research ledgers (page 14), `ledger/20261020_Change-Ledger.md` (C-065).
 - The tokens (6.0.0-gate2.7) and their tests; the shell; `guide_build.py` and `guide_check.js`; chapters 08 and 09 with the identity generators and manifest; the chapters page build and its reports.
 - The stage B drawings board's content file (28 dead overrides removed) and both published pages files (the deletions).
