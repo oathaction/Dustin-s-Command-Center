@@ -233,9 +233,9 @@
     },
     {
       "id": "12.5",
-      "title": "Mark where a reform acts with the atlas’s red target, and with nothing else in red.",
+      "title": "Mark where a reform acts with the atlas’s red target.",
       "rule": [
-        "Where a figure shows a reform at work, the marks it acts on turn Pillar Red at a heavier weight: each connection it changes, with its arrowhead, and the outline of each variable it targets. A connection is the atlas’s arrow from one variable to another (Rule 10.10). On Newsprint a red connection carries a 1 px Charcoal edge. A note beside the figure names the reform and says that it acts where the marks turn red.",
+        "Where a figure shows a reform at work, only the marks it acts on turn Pillar Red, at a heavier weight: each connection it changes, with its arrowhead, and the outline of each variable it targets. A connection is the atlas’s arrow from one variable to another (Rule 10.10). On Newsprint a red connection carries a 1 px Charcoal edge. A note beside the figure names the reform and says that it acts where the marks turn red.",
         "The marker is the view’s one working red. When an error or a step the reader can take now shares the view, the marker yields as Rule 11.16 sets out: its marks stay heavier, in ink, and the note still names the reform."
       ],
       "tokens": [
@@ -292,7 +292,7 @@
     },
     {
       "id": "12.6",
-      "title": "Label marks where they sit, and set a key above the chart only for what labels cannot carry.",
+      "title": "Label each mark where it sits.",
       "rule": [
         "Name each line, bar or point beside it where the label fits. When a chart codes something a label cannot carry on every mark, such as the evidence grade of each segment, set a key above the plot. List its items in the order the marks run, draw each swatch in the chart’s own mark, give each its word and meaning, and name the unit in the measure line, the line under a chart’s title that says what is counted and in what unit."
       ],

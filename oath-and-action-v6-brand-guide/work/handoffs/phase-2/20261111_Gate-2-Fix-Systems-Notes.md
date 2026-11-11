@@ -6,7 +6,7 @@ Status: in progress.
 
 ## What changed, item by item
 
-(Filled in as each item lands.)
+Progress, 18:20 UTC: generator edits made for CD-M1, CD-S1 (05, 06, 07, 11), CD-S2, CD-S3, CD-S6, CD-S7, CD-S8, CD-S10, DT-S3, DT-S5, DT-S8, DT-S9, DT-S11, AX-1, AX-2, the 11.15 form's aria-invalid and DT-S2's words in Rule 17.9; the chain, the anatomy plates and the checks follow. Chapter 12's opener went to the identity designer (main session, as asked).
 
 ## Routine calls
 

@@ -225,11 +225,15 @@
 .oa-tracker-link:hover {
   text-decoration-thickness: var(--oa-border-width-underline-hover);
 }
+/* The check date is a warning (Rule 11.10), drawn as Rule 18.18 draws every warning: the mark,
+   "Warning:" and a 4 px bar in the text's ink, as a left border so it holds in forced colors */
 .oa-tracker-check {
   display: flex;
   align-items: flex-start;
   gap: var(--oa-space-100);
   margin: var(--oa-space-100) 0 0;
+  padding: var(--oa-space-100) var(--oa-space-150);
+  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-warning-mark);
   font: var(--oa-type-body-small);
   color: var(--oa-color-state-warning-text);
 }
@@ -354,7 +358,7 @@
   .oa-tracker-next {
     border-color: ButtonText;
   }
-  .oa-tracker-alert, .oa-tracker-empty, .oa-tracker-still {
+  .oa-tracker-alert, .oa-tracker-check, .oa-tracker-empty, .oa-tracker-still {
     border-color: CanvasText;
   }
 }

@@ -217,7 +217,7 @@
     },
     {
       "id": "10.4",
-      "title": "Set topic and atlas symbols at 48 px or larger, and at 24 px only from the list of 41.",
+      "title": "Set topic and atlas symbols at 48 px or larger.",
       "rule": [
         "A topic or atlas symbol starts at 48 px, where every line is at least one pixel wide. Forty-one drawings still read at 24 px, and only those may be set there, in one color. Four of the 41 are the pillar icons, which take chapter 09’s own drawings at that size, so 37 topic and atlas symbols remain for 24 px. Never set a topic or atlas symbol at 16 px.",
         "Each of the 41 has a pixel fit, a copy redrawn pixel by pixel on the 24 px grid with a line one pixel wide. At 24 px, draw the fit on screens under 2x, which give each CSS pixel fewer than two device pixels, and the master on 2x screens and denser, with both in one svg that the guide’s stylesheet switches. An exported image or a printed page has no stylesheet to switch them, so pick the file yourself: the fit in an image exported at 1x, and the master in an image exported at 2x or more and in print.",

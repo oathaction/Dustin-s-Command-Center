@@ -841,7 +841,7 @@
   "width_px": 360,
   "alt": "A live sign-up form at 360 px, Illustrative: “Get a reminder before the March 3 hearing”, with an Email field, a ZIP code field with the hint “Five digits” and the red button Remind me, the view’s one working red. Sent with a field wrong, each wrong field takes a red bar at its left edge and a message under it on the pale Error Band, with a red bar, the error mark in ink and the words “Error:” and the fix, such as “Enter a ZIP code with five digits.” The error then holds the red, so Remind me turns Charcoal until the fields are right, and focus moves to the first wrong field. Sent right, the success mark and “You’re signed up. We’ll email you on March 1, two days before the hearing.” appear in a status line.",
   "illustrative": true,
-  "notes": "Live (D2-516). Fields carry aria-invalid and aria-describedby to their message (SC 3.3.1, 3.3.3); the ask yields to Charcoal primary while an error shows (Rule 05.3); success goes to a status line (A-9). The error mark draws in ink and the error’s red is the 4 px bar (see notes, D2-xxx).",
+  "notes": "Live (D2-516). Fields carry aria-invalid=\"false\" until a Send finds them wrong, then \"true\" and aria-describedby to their message, and \"false\" again once fixed, as chapter 18’s form does, so a browser’s own check of an email address says nothing while the reader types (SC 3.3.1, 3.3.3); the ask yields to Charcoal primary while an error shows (Rule 05.3); success goes to a status line (A-9). The error mark draws in ink and the error’s red is the 4 px bar (see notes, D2-xxx).",
   "interactive": true,
   "fit_switch": false
  },

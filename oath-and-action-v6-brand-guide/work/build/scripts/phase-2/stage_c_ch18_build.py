@@ -1106,7 +1106,10 @@ rule(n=17, set='c-18-form', name='Form',
      related=['11', '22', '05'],
      builders=['Call <code>preventDefault()</code> on the form’s submit, check every field, then set '
                '<code>aria-invalid</code> and the messages before moving focus, so the field is described when focus '
-               'lands.'],
+               'lands.',
+               'Give each field <code>aria-invalid="false"</code> from the start, and set it back to '
+               '<code>"false"</code> once the reader fixes it. A field without the attribute takes the browser’s own '
+               'check, which calls an email address wrong while the reader is still typing it.'],
      failure=dict(
          caption='<strong>Fails Rule 18.17.</strong> The errors sit in a box at the top that names no field, the fields '
                  'have placeholders in place of labels, and focus stays on Send.',
@@ -1893,7 +1896,8 @@ KEYS = {
              status='12 of 12 reforms', status_el='.oa-filters-status')])],
     17: [path('Send with mistakes: each wrong field says so, and focus moves to the first', [
         step('Tab', 'input[autocomplete="email"]'),
-        step(type='name@', focus='input[autocomplete="email"]'),
+        step(type='name@', focus='input[autocomplete="email"]',
+             states=[st('input[autocomplete="email"]', attr='aria-invalid', **{'is': 'false'})]),
         step('Tab', 'input[autocomplete="postal-code"]'),
         step(type='021', focus='input[autocomplete="postal-code"]'),
         step('Tab', '.oa-form-send'),
@@ -1905,7 +1909,7 @@ KEYS = {
             step(type='reader@example.org', focus='input[autocomplete="email"]'),
             step('Tab', 'input[autocomplete="postal-code"]'),
             step(type='12345', focus='input[autocomplete="postal-code"]'),
-            step('Enter', None, [st('input[autocomplete="email"]', attr='aria-invalid', **{'is': None}),
+            step('Enter', None, [st('input[autocomplete="email"]', attr='aria-invalid', **{'is': 'false'}),
                                  st('.oa-form-send', text='Sending')],
                  status_has='Sending', status_el='.oa-form-status'),
             step(None, None, [st('.oa-form-send', text='Remind me')], status_has='signed up', status_el='.oa-form-status',

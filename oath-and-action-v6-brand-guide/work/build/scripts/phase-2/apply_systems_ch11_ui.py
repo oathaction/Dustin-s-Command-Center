@@ -683,7 +683,7 @@ def s_form(ctx, m):
         h = f'<p class="h" id="{hid}">{hint}</p>' if hint else ''
         desc = f' aria-describedby="{hid}"' if hint else ''
         return (f'<div class="f" data-field="{key}"><label class="l" for="fm-{key}">{label}</label>{h}'
-                f'<input class="in" id="fm-{key}" {attrs}{desc} data-in="{key}">'
+                f'<input class="in" id="fm-{key}" {attrs}{desc} aria-invalid="false" data-in="{key}">'
                 f'<div class="er" id="fm-{key}-er" hidden data-err="{key}">{u("error")}<span><b>Error:</b> <span data-msg></span></span></div></div>')
     html = (f'<style>{css}</style><div class="ui" data-ui="form"><p><span class="illus">Illustrative</span></p>'
             f'<p class="t">Get a reminder before the March 3 hearing</p>'
@@ -703,7 +703,7 @@ function mark(k,bad){var i=F.querySelector('[data-in="'+k+'"]'),e=F.querySelecto
 d=(i.getAttribute('aria-describedby')||'').split(' ').filter(function(x){return x&&x!==e.id;}),f=i.closest('[data-field]');
 if(bad){i.setAttribute('aria-invalid','true');d.push(e.id);e.querySelector('[data-msg]').textContent=M[k];e.hidden=false;
 f.setAttribute('data-red','working');f.setAttribute('data-red-job','error');}
-else{i.removeAttribute('aria-invalid');e.hidden=true;f.removeAttribute('data-red');f.removeAttribute('data-red-job');}
+else{i.setAttribute('aria-invalid','false');e.hidden=true;f.removeAttribute('data-red');f.removeAttribute('data-red-job');}
 if(d.length){i.setAttribute('aria-describedby',d.join(' '));}else{i.removeAttribute('aria-describedby');}return bad?i:null;}
 F.querySelector('[data-form]').addEventListener('submit',function(ev){ev.preventDefault();var first=null;
 ['email','zip'].forEach(function(k){var i=F.querySelector('[data-in="'+k+'"]'),b=mark(k,!V[k](i.value.trim()));first=first||b;});
@@ -718,7 +718,9 @@ K.textContent='';K.appendChild(F.querySelector('template[data-tpl]').content.fir
            'and focus moves to the first wrong field. Sent right, the success mark and “You’re signed up. We’ll email you '
            'on March 1, two days before the hearing.” appear in a status line.')
     return m.spec(ctx, 's-11-15-correct', html, '11.15', alt, width=360, interactive=True, illustrative=True,
-                  notes='Live (D2-516). Fields carry aria-invalid and aria-describedby to their message (SC 3.3.1, 3.3.3); '
+                  notes='Live (D2-516). Fields carry aria-invalid="false" until a Send finds them wrong, then "true" '
+                        'and aria-describedby to their message, and "false" again once fixed, as chapter 18’s form does, '
+                        'so a browser’s own check of an email address says nothing while the reader types (SC 3.3.1, 3.3.3); '
                         'the ask yields to Charcoal primary while an error shows (Rule 05.3); success goes to a status line '
                         '(A-9). The error mark draws in ink and the error’s red is the 4 px bar (see notes, D2-xxx).')
 

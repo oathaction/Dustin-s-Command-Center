@@ -1426,7 +1426,8 @@
         "05"
       ],
       "builders": [
-        "Call <code>preventDefault()</code> on the form’s submit, check every field, then set <code>aria-invalid</code> and the messages before moving focus, so the field is described when focus lands."
+        "Call <code>preventDefault()</code> on the form’s submit, check every field, then set <code>aria-invalid</code> and the messages before moving focus, so the field is described when focus lands.",
+        "Give each field <code>aria-invalid=\"false\"</code> from the start, and set it back to <code>\"false\"</code> once the reader fixes it. A field without the attribute takes the browser’s own check, which calls an email address wrong while the reader is still typing it."
       ]
     },
     {
