@@ -1467,7 +1467,36 @@
    }
   ]
  },
- "phase3": null,
+ "phase3": {
+  "paragraphs": [
+   "Gate 2 approves Phase 3. Phase 3 builds chapter 13 Evidence and sourcing, chapter 14 Data visualization and chapter 15 Systems graphics, with the chart kit behind them, and ends at Gate 3.",
+   "Chapter 14 holds the 127 forms you approved on November 6, built in the order you set: the chart kit first, then five rounds of forms. The 16 charts built in Phase 2 are rebuilt from their data by one command, so the floor of twenty specimens is passed early in round 1. Chapter 15 draws Atlas V7's six worked examples, Reform R-01 among them, a workflow for each of the atlas's 11 routes to change, and the final reconciliation table.",
+   "Every number outside the atlas comes from a public source with its publisher, table, period and the date it was read. From this container census.gov, fec.gov, api.congress.gov and data.gov answered; bls.gov, cbo.gov and ncsl.org turn automated visitors away. Anything the studio cannot source carries the Illustrative label beside it.",
+   "The guide stays one file. Chapter 13 may use at most 0.25 MB, chapter 14 at most 1.75 MB, which stops the build, and chapter 15 at most 0.60 MB. That leaves about 2.5 MB for Phase 4 inside the 15.5 MB page budget.",
+   "You see three boards before Gate 3: after the chart kit and chapter 13; after form rounds 1 to 3; and after rounds 4 and 5 with chapter 15. Each carries the creative director's scores and the red teams' reads.",
+   "To approve, reply “As proposed” or name your changes, and answer the four questions below."
+  ],
+  "decide_h": "Four questions for Phase 3",
+  "decide": [
+   {
+    "q": "About 38 of chapter 14's 97 core and extended forms name election or voting data, while Rule 01.9 allows no more than one example in four from one atlas domain in a chapter. Both were approved.",
+    "rec": "Keep every form and tier, and let the studio pick specimen data from other domains (taxes and budgets, work and pay, housing, Congress and agencies) until the count holds. Election data stays on the forms built for elections, such as shift arrows, results tables and election maps. Board 2 shows the count."
+   },
+   {
+    "q": "The Census Bureau's data service asks for a free key, the FEC's shared demonstration key allows 40 calls an hour, and three sites refuse automated readers. May the studio ask you for free keys?",
+    "rec": "Sign up for a free api.data.gov key, which serves the FEC and Congress, and a free Census Bureau key, and enter them only in the environment's credential form when Phase 3 starts. Also agree to download up to five files the studio lists at round 1, such as the Congressional Budget Office's projections. Without them, the studio uses bulk files and labels any chart it cannot source as Illustrative."
+   },
+   {
+    "q": "You held trackers for ballot measures and court cases for a later stage. Chapter 15's workflows set their steps in Phase 3. Add them now?",
+    "rec": "Yes: add both to chapter 11 in Phase 3 as six-step trackers under the rules you set for bill trackers, drawn by the systems designer and shown on board 3, so Phase 4's applications find them ready."
+   },
+   {
+    "q": "What gives first if chapter 14 cannot fit under 1.75 MB?",
+    "rec": "Only if the round 0 pilot runs over with the lightest drawing method: first draw the reference and avoid sketches as one image sheet, then drop the separate phone drawing from extended forms whose form does not change. If both fall short, you are asked on board 1 to move bytes from Phase 4's share."
+   }
+  ],
+  "refs": "DR-62, DR-63, DR-46, DR-97, DR-140, DR-151, DR-222, DR-227, DR-228, D2-1700, D2-1701; Rule 01.9"
+ },
  "slots": {
   "contrast": {
    "paths": [

@@ -2261,10 +2261,12 @@ async function startAudit(browser, file, width, opts = {}) {
     if (!x.inView) problems.push({ key: 'startFocus', why: `the stop "${x.label}" takes focus out of view or under the masthead` });
   }
   // Each step opens what it names, and its way back returns to it
-  const steps = await page.evaluate(() => [...document.querySelectorAll('#start .route-step:not([data-later])')].filter((li) => li.querySelector('a.step-go')).map((li) => ({ id: li.id, href: li.querySelector('a.step-go').getAttribute('href') })));
+  const steps = await page.evaluate(() => [...document.querySelectorAll('#start .route-step:not([data-later])')].filter((li) => li.querySelector('a.step-go')).map((li, i) => {
+    li.setAttribute('data-oa-step', String(i)); return { i, id: li.id, href: li.querySelector('a.step-go').getAttribute('href') }; }));
   let opened = 0, returned = 0;
   for (const stp of steps) {
-    await page.evaluate((id) => { document.querySelector(`#${id} a.step-go`).focus(); }, stp.id);
+    if (!stp.id) { problems.push({ key: 'startPage', why: `step link ${stp.i + 1} of the page (${stp.href}) sits in a step with no id, so no way back can return to it` }); continue; }
+    await page.evaluate((i) => { document.querySelector(`[data-oa-step="${i}"] a.step-go`).focus(); }, stp.i);
     await page.keyboard.press('Enter');
     await page.waitForTimeout(120);
     const land = await page.evaluate((href) => {
@@ -2619,7 +2621,7 @@ const PLANTS = [
     const st = document.createElement('style'); st.textContent = "@font-face { font-family: 'Inter'; font-weight: 900; src: url(https://fonts.gstatic.com/s/inter/v20/plant.woff2) format('woff2') }"; document.head.append(st); } },
   { key: 'startPage', fault: 'a step whose link goes to an id the page does not hold (D2-1698)', js: () => { document.querySelector('#start a.step-go').setAttribute('href', '#no-such-place'); } },
   { key: 'startPage', fault: 'the later step drawn as a link (D2-1698)', js: () => { const t = document.querySelector('#start [data-later] .step-t'); t.innerHTML = '<a href="#color">' + t.textContent + '</a>'; } },
-  { key: 'startPage', fault: 'a step whose way back cannot find it: its id moved off the step (D2-1698)', js: () => { const li = document.querySelectorAll('#start .route-step')[1]; li.id = ''; } },
+  { key: 'startPage', fault: 'a step whose way back cannot find it: its id taken off (D2-1698)', js: () => { document.querySelectorAll('#start .route-step')[1].removeAttribute('id'); } },
   { key: 'startFocus', fault: 'a step link pulled out of reading order with tabindex="1"', js: () => { document.querySelectorAll('#start a.step-go')[2].setAttribute('tabindex', '1'); } },
   { key: 'startFocus', fault: 'a step link with its focus ring taken away', js: () => { const st = document.createElement('style'); st.textContent = '#start a.step-go:focus-visible { outline: none !important }'; document.head.append(st); } },
 ];

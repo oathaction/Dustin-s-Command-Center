@@ -766,9 +766,12 @@ PLATE_LABEL = {"correct": ("Correct application", "✓"), "failure": ("Failure c
                "corrective": ("Corrective example", "→"), "extra": (None, None), "proof": (None, None), "opener": (None, None)}
 # D2-965, D2-1134 (stage C): a chapter from 09 on may open with one figure under its intro, named by "opener". It fits
 # the column at true size: a flowing specimen fits at every width, and a fixed one may be at most 328 px wide, the
-# column of a 360 px screen. Chapters 01 to 08 open with words alone.
-OPENER_FROM = "09"
+# column of a 360 px screen. Gate 2's fix pass (call 3, CD-S1): every chapter may open with one, 01 to 08 included, and
+# an opener's fragment, as the page places it, stays under 16 KB (OPENER_MAX_BYTES); a drawing the sprite holds is
+# drawn by <use href="#oa-sym-...">, so the page carries it once.
+OPENER_FROM = "01"
 OPENER_MAX_PX = 328
+OPENER_MAX_BYTES = 16 * 1024
 # Round 1: "literal" lets a labeled failure plate draw a color no token holds, such as a rejected or a typed value
 EXEMPT_KINDS = ("contrast", "size", "red", "locked", "scale", "literal")
 SCALE_WORDS = {0.5: "Half size", 0.25: "One quarter size", 0.2: "One fifth size", 0.125: "One eighth size", 0.1: "One tenth size",
@@ -1645,6 +1648,13 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
             if isinstance(w, (int, float)) and w > OPENER_MAX_PX:
                 R.warn(where, f"the opener {sid} is {w:g} px wide; an opener fits the column at true size, {OPENER_MAX_PX} px at most on a 360 px screen, or flows with it")
             opener_html = plate("opener", sid, cap, specs, cctx, where, frame_ctx=f"opening figure of chapter {num}")
+            # call 3 (CD-S1): an opener reuses a drawing the chapter has, light, under 16 KB as placed
+            frag = specs.fragment(sid, where) if sid in specs.files else None
+            if frag is not None and len(frag.encode()) > OPENER_MAX_BYTES:
+                R.warn(where, f"the opener {sid} weighs {len(frag.encode()):,} bytes as placed; an opener stays under {OPENER_MAX_BYTES:,} "
+                              f"(16 KB): draw sprite symbols by <use>, and show a light version of a heavy plate")
+            if not str(specs.meta(sid).get("alt") or "").strip():
+                R.warn(where, f"the opener {sid} has no alt in its manifest; say what a reader learns from it")
     seen = set()
     extras = (data or {}).get("extras") or []
     extras_by = {}
@@ -3409,13 +3419,15 @@ def self_test():
     ]
     # stage C, round 0 (November 10, 2026): the opener figure (D2-965, D2-1134) and code to copy (DR-203)
     op_specs = {"s-09-op.html": "<p>An opening figure that flows with the column.</p>", "s-10-wide.html": "<p>A wide opener.</p>",
-                "s-03-op.html": "<p>An opener in chapter 03.</p>"}
+                "s-03-op.html": "<p>An opener in chapter 03.</p>", "s-04-heavy.html": "<p>" + "A heavy opener. " * 1100 + "</p>"}
     op_manifest = {"s-09-op": {"chapter": "09", "alt": "An opening figure that flows, a fixture.", "notes": "fixture"},
                    "s-10-wide": {"chapter": "10", "width_px": 600, "alt": "A 600 px opening figure, a fixture at true size.", "notes": "fixture"},
-                   "s-03-op": {"chapter": "03", "alt": "An opening figure for chapter 03, a fixture.", "notes": "fixture"}}
+                   "s-03-op": {"chapter": "03", "alt": "An opening figure for chapter 03, a fixture.", "notes": "fixture"},
+                   "s-04-heavy": {"chapter": "04", "alt": "An opening figure over 16 KB, a fixture.", "notes": "fixture"}}
     op09 = chapter("09", "pillar-icons", "Pillar icons", [rule("09.1")], opener="s-09-op", intro=["The intro of chapter 09."])
     op10 = chapter("10", "symbols", "Topic and atlas symbols", [rule("10.1")], opener={"specimen": "s-10-wide", "caption": "A fixture."})
     op03 = chapter("03", "identity", "Identity", [rule("03.1")], opener="s-03-op")
+    op04 = chapter("04", "ampersand", "The Ampersand and the hinge", [rule("04.1")], opener="s-04-heavy")
 
     def ch09(pg):
         m = re.search(r'<section class="chapter[^"]*" id="pillar-icons".*?</section>', pg, re.S)
@@ -3436,16 +3448,17 @@ def self_test():
                                                   rule("01.2", {"code": {"set": "c-01-bad", "name": "Bad button"}}),
                                                   rule("01.3", {"code": "c-01-missing"}), rule("01.4", {"code": {"set": "c-01-good", "name": "Show button"}})])
     scenarios += [
-        ("opener (D2-1134): chapter 09's figure under its intro and before its rules; 03's is refused; a 600 px opener is too wide",
-         {"03-identity.json": op03, "09-pillar-icons.json": op09, "10-symbols.json": op10}, {"specimens": op_specs, "manifest": op_manifest},
-         {"warn": ["\"opener\" names s-03-op, but chapters 01 to 08 open with words alone", "the opener s-10-wide is 600 px wide"],
-          "absent": ["s-09-op is listed but no chapter places it", "[chapter 09] the opener"],
+        ("opener (D2-1134, call 3): chapter 09's figure under its intro and before its rules; 03's is placed too; a 600 px opener is too wide",
+         {"03-identity.json": op03, "04-ampersand.json": op04, "09-pillar-icons.json": op09, "10-symbols.json": op10}, {"specimens": op_specs, "manifest": op_manifest},
+         {"warn": ["the opener s-10-wide is 600 px wide", "the opener s-04-heavy weighs"],
+          "absent": ["s-09-op is listed but no chapter places it", "[chapter 09] the opener", "the opener s-03-op weighs"],
           "tests": [("chapter 09 holds its opener in the chapter head, after the intro and before the first rule",
                      lambda pg: 0 < ch09(pg).find('class="intro"') < ch09(pg).find('id="fig-s-09-op"') < ch09(pg).find('<div class="rule"')
                      and ch09(pg).find('id="fig-s-09-op"') < ch09(pg).find('<div class="ch-body">')),
                     ("the opener carries no label and the plate--opener class",
                      lambda pg: re.search(r'<figure class="plate plate--opener" id="fig-s-09-op"><div class="plate-head"><p class="plate-hint" hidden>', pg) is not None),
-                    ("chapter 03 shows no opener", lambda pg: 'id="fig-s-03-op"' not in pg)]}),
+                    ("chapter 03 shows its opener, in its head, before its first rule (call 3)",
+                     lambda pg: 'id="fig-s-03-op"' in pg and pg.find('id="fig-s-03-op"') < pg.find('id="rule-03-1"'))]}),
         ("code to copy (DR-203): a set live in both themes with its panels; a faulty set warned on each fault; a missing set pending",
          {"01-purpose.json": code01}, {"code": code_files},
          {"warn": ["code set c-01-bad: the HTML carries a style attribute", "c-01-bad: the HTML carries an event handler attribute",
