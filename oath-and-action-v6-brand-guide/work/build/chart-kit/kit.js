@@ -466,6 +466,16 @@
     for (var g in (spec.encode || {})) if (!(g in def.encode)) c.warn('encode.' + g + ' is not a name form ' + spec.form + ' reads');
     for (var l in (spec.labels || {})) if (def.labels.indexOf(l) < 0) c.warn('labels.' + l + ' is not a name form ' + spec.form + ' reads');
     def.draw(c);
+    // a text whose line box rises above the top edge moves the whole drawing down by that much, so nothing is cut
+    var lift = 0;
+    c.texts.forEach(function (b) { lift = Math.max(lift, -(b.top !== undefined ? b.top : b.y)); });
+    if (lift > 0.25) {
+      var dy = Math.ceil(lift);
+      c._els = ['<g transform="translate(0,' + dy + ')">' + c._els.join('') + '</g>'];
+      c.texts.forEach(function (b) { b.y += dy; if (b.top !== undefined) { b.top += dy; b.bottom += dy; } });
+      c.marks.forEach(function (m) { m.y += dy; if (m.zero !== undefined && m.axis !== 'x') m.zero += dy; });
+      c._h += dy;
+    }
     // the drawing is as tall as its tallest part: the form's height, every text and every mark
     var h = c._h;
     c.texts.forEach(function (b) { h = Math.max(h, Math.ceil((b.bottom !== undefined ? b.bottom : b.y + b.h) + 2)); });
