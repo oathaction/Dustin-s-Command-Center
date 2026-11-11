@@ -466,15 +466,18 @@ def _rules():
 # 12.1, so the page carries it once. The systems designer's build keeps the "opener" key it finds.
 EXTRAS = []
 CH_OPENER = {"specimen": "s-12-index", "caption": "The devices this guide sets, the job of each and the rule that sets it."}
-INTRO_ADD = ("Rules 12.1 to 12.3 cover the devices that divide and sign a page: hairlines, watermarks and the monogram "
-             "as a small signature. Rule 12.4 says when an open area stays plain and what may sign it.")
+# Gate 2's fix pass (CD-S1): the device index now opens the chapter and names each device with its rule, so the intro
+# says only what Rules 12.1 to 12.4 cover, and the index reaches the first screen.
+INTRO_ADD = "Rules 12.1 to 12.4 cover the devices that divide and sign a page, and when an open area stays plain."
 # earlier wordings of INTRO_ADD, replaced in place when the shared file still holds one (round 3, ED 4e, CA-S11; DR-216)
 OLD_INTRO_ADDS = ("Rules 12.1 to 12.4 cover the devices that divide and sign a page: hairlines, watermarks, the compact "
                   "signature and two patterns drawn from the hinge.",
                   "Rules 12.1 to 12.4 cover the devices that divide and sign a page: hairlines, watermarks, the monogram as "
                   "a small signature and a pattern drawn from the hinge.",
                   "Rules 12.1 to 12.4 cover the devices that divide and sign a page: hairlines, watermarks, the monogram as "
-                  "a small signature and the rule for open areas.")
+                  "a small signature and the rule for open areas.",
+                  "Rules 12.1 to 12.3 cover the devices that divide and sign a page: hairlines, watermarks and the monogram "
+                  "as a small signature. Rule 12.4 says when an open area stays plain and what may sign it.")
 RELATED_ADD = [{"chapter": "04", "reason": "The hinge divider, the hinge diagram and the large crop of B."},
                {"chapter": "03", "reason": "L8, the monogram, and the colors of every mark."}]
 
