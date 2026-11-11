@@ -12,7 +12,7 @@ A script read `tokens.json` and `tokens.css` (token release 6.0.0-gate2.8, byte 
 
 ## Totals
 
-- **341 token and surface pairs** from 306 color tokens and the two watermark opacities: 245 pass, 6 pass only with the keyline the guide requires, 90 have no threshold for their role, and **0 fail**.
+- **341 token and surface pairs** from 306 color tokens and the two watermark opacities: 245 pass, 6 sit under 3 to 1 and are allowed by a condition the guide states, 90 have no threshold for their role, and **0 fail**.
 - **509 short names** checked in the seven theme and surface-class blocks of `tokens.css`. Each resolves to the same value as its token in `tokens.json`, and each passes on its block’s surface or ground. Roles with no token on a surface resolve to `initial`, as the token rules say.
 - **269 ratios stored in `tokens.json`** recomputed: 0 differ.
 - **Chapter 26’s published ratios:** 323 in the token table of Rule 26.7 and 19 in the chapter’s words and specimens recomputed: 342 of 342 match to the hundredth.
@@ -28,7 +28,8 @@ Each of these measures under 4.5 to 1 (text) or 3 to 1 (marks) and is allowed by
 
 | Ratio | Color on ground | Role | The guide’s condition | Tokens |
 |---|---|---|---|---|
-| 2.96 | Pillar Red on Newsprint | Graphic, icon or border | Below 3 to 1 on its own; the guide requires a 1 px Charcoal keyline (13.29 to 1), which carries the boundary | action.ask.fill.onNewsprint, state.error.bar.onNewsprint, state.error.mark.onNewsprint, data.emphasisRed.onNewsprint, chart.point.onNewsprint, component.button.ask.fill.onNewsprint |
+| 2.96 | Pillar Red on Newsprint | Graphic, icon or border | Below 3 to 1 on its own; the guide requires a 1 px Charcoal keyline (13.29 to 1), which carries the boundary | action.ask.fill.onNewsprint, data.emphasisRed.onNewsprint, chart.point.onNewsprint, component.button.ask.fill.onNewsprint |
+| 2.96 | Pillar Red on Newsprint | Graphic, icon or border | Below 3 to 1 against Newsprint, and 2.64 to 1 against the Error Band it edges. The approved error drawing (DR-199, D2-859) draws this bar with no keyline: the circle mark and the word "Error:" in the text's ink carry the state, and the bar repeats it. The token still lists a Charcoal keyline, which the rendered plates (Rules 17.8, 18.17 and chapter 18's messages) do not draw | state.error.bar.onNewsprint, state.error.mark.onNewsprint |
 | 1.13 | #CECDC7 on Newsprint | Data fill, values printed | A data fill under 3 to 1; the guide requires the value printed on or beside it | chart.diverging.fill.step3.onNewsprint, tint.stoneN90 |
 | 1.16 | #CCCAC5 on Newsprint | Decoration | Decoration under 3 to 1; the guide gives it no meaning | chart.track.onNewsprint, tint.stoneN88 |
 | 1.16 | #202122 on Charcoal | Decoration | Decoration under 3 to 1; the guide gives it no meaning | chart.land.onCharcoal, tint.stoneC80 |
@@ -56,7 +57,7 @@ Each of these measures under 4.5 to 1 (text) or 3 to 1 (marks) and is allowed by
 
 ## The grid: every role on every surface
 
-One row per token family; one column per surface. A blank cell means the family has no token on that surface (charts sit on Newsprint and Charcoal only, and red never sits on Prussian). "(keyline)" passes only with its 1 px Charcoal keyline; "(exempt)" has no threshold for its role.
+One row per token family; one column per surface. A blank cell means the family has no token on that surface (charts sit on Newsprint and Charcoal only, and red never sits on Prussian). "(permitted)" is under its threshold on its own and allowed by the condition listed above (a keyline for the ask, the chart point and red data emphasis; the mark and the word "Error:" for the error bar); "(exempt)" has no threshold for its role.
 
 | Token family | Role | Needs | Newsprint | White | Charcoal | Prussian |
 |---|---|---|---|---|---|---|
@@ -72,7 +73,7 @@ One row per token family; one column per surface. A blank cell means the family 
 | `text.secondary on field.ground` | Text | 4.5 to 1 | 7.74 | 5.49 | 7.26 | 7.26 |
 | `identity.signature` | Logotype (signature red) | none | 2.96 (exempt) | 4.17 (exempt) | 4.49 (exempt) | 13.28 (exempt) |
 | `identity.hingeDivider` | Graphic, icon or border | 3 to 1 | 13.29 | 18.73 | 13.29 | 13.28 |
-| `action.ask.fill` | Graphic, icon or border | 3 to 1 | 2.96 (keyline) | 4.17 | 4.49 | 9.42 |
+| `action.ask.fill` | Graphic, icon or border | 3 to 1 | 2.96 (permitted) | 4.17 | 4.49 | 9.42 |
 | `action.ask.label` | Large text | 3 to 1 | 4.17 | 4.17 | 4.17 | 13.29 |
 | `action.primary.fill` | Graphic, icon or border | 3 to 1 | 13.29 | 18.73 | 13.29 | 9.42 |
 | `action.primary.fillHover` | Graphic, icon or border | 3 to 1 | 9.42 | 13.28 | 18.73 | 13.28 |
@@ -93,8 +94,8 @@ One row per token family; one column per surface. A blank cell means the family 
 | `state.error.band` | Ground (band or field) | none | 1.12 (exempt) | 1.58 (exempt) |  |  |
 | `text.primary on state.error.band` | Text | 4.5 to 1 | 11.89 | 11.89 |  |  |
 | `text.secondary on state.error.band` | Text | 4.5 to 1 | 4.91 | 4.91 |  |  |
-| `state.error.bar` | Graphic, icon or border | 3 to 1 | 2.96 (keyline) | 4.17 | 4.49 | 9.42 |
-| `state.error.mark` | Graphic, icon or border | 3 to 1 | 2.96 (keyline) | 4.17 | 4.49 | 9.42 |
+| `state.error.bar` | Graphic, icon or border | 3 to 1 | 2.96 (permitted) | 4.17 | 4.49 | 9.42 |
+| `state.error.mark` | Graphic, icon or border | 3 to 1 | 2.96 (permitted) | 4.17 | 4.49 | 9.42 |
 | `state.error.text` | Text | 4.5 to 1 | 13.29 | 18.73 | 13.29 | 13.28 |
 | `state.empty.text` | Text | 4.5 to 1 | 5.49 | 7.74 | 7.26 | 5.14 |
 | `state.empty.edge` | Graphic, icon or border | 3 to 1 | 4.29 | 6.05 | 7.26 | 5.14 |
@@ -102,14 +103,14 @@ One row per token family; one column per surface. A blank cell means the family 
 | `state.success.text` | Text | 4.5 to 1 | 13.29 | 18.73 | 13.29 | 13.28 |
 | `data.emphasis` | Graphic, icon or border | 3 to 1 | 13.29 | 18.73 | 13.29 | 9.42 |
 | `data.context` | Graphic, icon or border | 3 to 1 | 4.29 | 6.05 | 5.41 | 5.14 |
-| `data.emphasisRed` | Graphic, icon or border | 3 to 1 | 2.96 (keyline) | 4.17 | 4.49 |  |
+| `data.emphasisRed` | Graphic, icon or border | 3 to 1 | 2.96 (permitted) | 4.17 | 4.49 |  |
 | `chart.subject` | Graphic, icon or border | 3 to 1 | 13.29 |  | 13.29 |  |
 | `chart.context` | Graphic, icon or border | 3 to 1 | 4.29 |  | 5.41 |  |
 | `chart.label` | Text | 4.5 to 1 | 13.29 |  | 13.29 |  |
 | `chart.secondary` | Text | 4.5 to 1 | 5.49 |  | 7.26 |  |
 | `chart.baseline` | Graphic, icon or border | 3 to 1 | 13.29 |  | 13.29 |  |
 | `chart.leader` | Graphic, icon or border | 3 to 1 | 4.29 |  | 5.41 |  |
-| `chart.point` | Graphic, icon or border | 3 to 1 | 2.96 (keyline) |  | 4.49 |  |
+| `chart.point` | Graphic, icon or border | 3 to 1 | 2.96 (permitted) |  | 4.49 |  |
 | `chart.pointKeyline` | Graphic, icon or border | 3 to 1 | 13.29 |  |  |  |
 | `chart.party.mark` | Graphic, icon or border | 3 to 1 | 13.29 |  | 13.29 |  |
 | `chart.labelOnSubject` | Text | 4.5 to 1 | 18.73 |  | 13.29 |  |
@@ -150,7 +151,7 @@ One row per token family; one column per surface. A blank cell means the family 
 | `chart.magnitude.label.step2` | Text | 4.5 to 1 | 7.33 |  | 7.37 |  |
 | `chart.magnitude.label.step3` | Text | 4.5 to 1 | 4.92 |  | 7.33 |  |
 | `chart.magnitude.label.step4` | Text | 4.5 to 1 | 9.38 |  | 10.98 |  |
-| `component.button.ask.fill` | Graphic, icon or border | 3 to 1 | 2.96 (keyline) | 4.17 | 4.49 | 9.42 |
+| `component.button.ask.fill` | Graphic, icon or border | 3 to 1 | 2.96 (permitted) | 4.17 | 4.49 | 9.42 |
 | `component.button.ask.label` | Large text | 3 to 1 | 4.17 | 4.17 | 4.17 | 13.29 |
 | `component.button.ask.keyline` | Graphic, icon or border | 3 to 1 | 13.29 |  |  |  |
 | `component.button.primary.fill` | Graphic, icon or border | 3 to 1 | 13.29 | 18.73 | 13.29 | 9.42 |

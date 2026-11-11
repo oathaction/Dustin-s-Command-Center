@@ -1,0 +1,949 @@
+{
+ "checked": "2026-11-11T17:17:10.329Z",
+ "root": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/build/assets",
+ "tolerance": 8,
+ "missingFolders": {},
+ "buildWarnings": [],
+ "scales": {
+  "1x": {
+   "families": {
+    "civic-line black": {
+     "pairs": 250,
+     "largest": 0,
+     "pixelsOff": 0
+    },
+    "civic-line red-black": {
+     "pairs": 250,
+     "largest": 0,
+     "pixelsOff": 0
+    },
+    "pillar black": {
+     "pairs": 8,
+     "largest": 0,
+     "pixelsOff": 0
+    },
+    "pillar red-black": {
+     "pairs": 8,
+     "largest": 0,
+     "pixelsOff": 0
+    },
+    "fit-24 black": {
+     "pairs": 37,
+     "largest": 0,
+     "pixelsOff": 0
+    },
+    "utility black": {
+     "pairs": 36,
+     "largest": 0,
+     "pixelsOff": 0
+    }
+   },
+   "pattern": [
+    {
+     "icon": "CL-019 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-020 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-021 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 166,
+     "ok": true
+    },
+    {
+     "icon": "CL-022 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-001 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-004 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-006 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-010 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-013 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-023 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-024 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-028 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-031 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 162,
+     "ok": true
+    },
+    {
+     "icon": "CL-032 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-039 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-040 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-047 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-048 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-050 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-051 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-054 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-057 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-060 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-061 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-067 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-068 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-070 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-071 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-072 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-05 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-06 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-08 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-09 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-14 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-15 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-17 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-19 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-23 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-27 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-37 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-45 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    }
+   ]
+  },
+  "1.5x": {
+   "families": {},
+   "pattern": [
+    {
+     "icon": "CL-019 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-020 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-021 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-022 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-001 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-004 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-006 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-010 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-013 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-023 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-024 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-028 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-031 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-032 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-039 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-040 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-047 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-048 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-050 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-051 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-054 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-057 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-060 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-061 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-067 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-068 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-070 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-071 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "CL-072 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-05 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-06 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-08 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-09 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-14 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-15 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-17 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-19 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-23 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-27 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-37 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    },
+    {
+     "icon": "R-45 at 24 px",
+     "draws": "fit",
+     "againstFit": 0,
+     "againstMaster": 202,
+     "ok": true
+    }
+   ]
+  },
+  "2x": {
+   "families": {
+    "civic-line black": {
+     "pairs": 250,
+     "largest": 0,
+     "pixelsOff": 0
+    },
+    "civic-line red-black": {
+     "pairs": 250,
+     "largest": 0,
+     "pixelsOff": 0
+    },
+    "pillar black": {
+     "pairs": 8,
+     "largest": 0,
+     "pixelsOff": 0
+    },
+    "pillar red-black": {
+     "pairs": 8,
+     "largest": 0,
+     "pixelsOff": 0
+    },
+    "fit-24 black": {
+     "pairs": 37,
+     "largest": 0,
+     "pixelsOff": 0
+    },
+    "utility black": {
+     "pairs": 36,
+     "largest": 0,
+     "pixelsOff": 0
+    }
+   },
+   "pattern": [
+    {
+     "icon": "CL-019 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-020 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-021 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-022 at 24 px",
+     "draws": "master",
+     "againstFit": 203,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-001 at 24 px",
+     "draws": "master",
+     "againstFit": 203,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-004 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-006 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-010 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-013 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-023 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-024 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-028 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-031 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-032 at 24 px",
+     "draws": "master",
+     "againstFit": 203,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-039 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-040 at 24 px",
+     "draws": "master",
+     "againstFit": 203,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-047 at 24 px",
+     "draws": "master",
+     "againstFit": 203,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-048 at 24 px",
+     "draws": "master",
+     "againstFit": 203,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-050 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-051 at 24 px",
+     "draws": "master",
+     "againstFit": 203,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-054 at 24 px",
+     "draws": "master",
+     "againstFit": 203,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-057 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-060 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-061 at 24 px",
+     "draws": "master",
+     "againstFit": 203,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-067 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-068 at 24 px",
+     "draws": "master",
+     "againstFit": 203,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-070 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-071 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "CL-072 at 24 px",
+     "draws": "master",
+     "againstFit": 203,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "R-05 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "R-06 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "R-08 at 24 px",
+     "draws": "master",
+     "againstFit": 203,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "R-09 at 24 px",
+     "draws": "master",
+     "againstFit": 203,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "R-14 at 24 px",
+     "draws": "master",
+     "againstFit": 203,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "R-15 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "R-17 at 24 px",
+     "draws": "master",
+     "againstFit": 203,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "R-19 at 24 px",
+     "draws": "master",
+     "againstFit": 203,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "R-23 at 24 px",
+     "draws": "master",
+     "againstFit": 203,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "R-27 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "R-37 at 24 px",
+     "draws": "master",
+     "againstFit": 202,
+     "againstMaster": 0,
+     "ok": true
+    },
+    {
+     "icon": "R-45 at 24 px",
+     "draws": "master",
+     "againstFit": 203,
+     "againstMaster": 0,
+     "ok": true
+    }
+   ]
+  }
+ },
+ "failures": [],
+ "pass": true
+}

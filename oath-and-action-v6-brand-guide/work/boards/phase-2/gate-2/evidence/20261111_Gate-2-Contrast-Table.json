@@ -211,8 +211,8 @@
    "ratio": 2.96,
    "ratioExact": 2.9571,
    "result": "permitted",
-   "permittedBecause": "Below 3 to 1 on its own; the guide requires a 1 px Charcoal keyline (13.29 to 1), which carries the boundary",
-   "note": "Drawn with a 1 px Charcoal keyline, 13.29 to 1 against the surface"
+   "permittedBecause": "Below 3 to 1 against Newsprint, and 2.64 to 1 against the Error Band it edges. The approved error drawing (DR-199, D2-859) draws this bar with no keyline: the circle mark and the word \"Error:\" in the text's ink carry the state, and the bar repeats it. The token still lists a Charcoal keyline, which the rendered plates (Rules 17.8, 18.17 and chapter 18's messages) do not draw",
+   "note": "Drawn with a 1 px Charcoal keyline, 13.29 to 1 against the surface; Rendered check: no keyline drawn on the page"
   },
   {
    "token": "oa.color.state.error.mark.onNewsprint",
@@ -232,8 +232,8 @@
    "ratio": 2.96,
    "ratioExact": 2.9571,
    "result": "permitted",
-   "permittedBecause": "Below 3 to 1 on its own; the guide requires a 1 px Charcoal keyline (13.29 to 1), which carries the boundary",
-   "note": "Deprecated alias of oa.color.state.error.bar.onNewsprint, kept through 6.0 and removed in 6.1.0; Drawn with a 1 px Charcoal keyline, 13.29 to 1 against the surface"
+   "permittedBecause": "Below 3 to 1 against Newsprint, and 2.64 to 1 against the Error Band it edges. The approved error drawing (DR-199, D2-859) draws this bar with no keyline: the circle mark and the word \"Error:\" in the text's ink carry the state, and the bar repeats it. The token still lists a Charcoal keyline, which the rendered plates (Rules 17.8, 18.17 and chapter 18's messages) do not draw",
+   "note": "Deprecated alias of oa.color.state.error.bar.onNewsprint, kept through 6.0 and removed in 6.1.0; Drawn with a 1 px Charcoal keyline, 13.29 to 1 against the surface; Rendered check: no keyline drawn on the page"
   },
   {
    "token": "oa.color.data.emphasisRed.onNewsprint",
@@ -3722,8 +3722,8 @@
    "ratio": 2.96,
    "ratioExact": 2.9571,
    "result": "permitted",
-   "permittedBecause": "Below 3 to 1 on its own; the guide requires a 1 px Charcoal keyline (13.29 to 1), which carries the boundary",
-   "note": "Drawn with a 1 px Charcoal keyline, 13.29 to 1 against the surface"
+   "permittedBecause": "Below 3 to 1 against Newsprint, and 2.64 to 1 against the Error Band it edges. The approved error drawing (DR-199, D2-859) draws this bar with no keyline: the circle mark and the word \"Error:\" in the text's ink carry the state, and the bar repeats it. The token still lists a Charcoal keyline, which the rendered plates (Rules 17.8, 18.17 and chapter 18's messages) do not draw",
+   "note": "Drawn with a 1 px Charcoal keyline, 13.29 to 1 against the surface; Rendered check: no keyline drawn on the page"
   },
   {
    "token": "oa.color.state.error.bar.onNewsprint (keyline)",
@@ -3822,8 +3822,8 @@
    "ratio": 2.96,
    "ratioExact": 2.9571,
    "result": "permitted",
-   "permittedBecause": "Below 3 to 1 on its own; the guide requires a 1 px Charcoal keyline (13.29 to 1), which carries the boundary",
-   "note": "Deprecated alias of oa.color.state.error.bar.onNewsprint, kept through 6.0 and removed in 6.1.0; Drawn with a 1 px Charcoal keyline, 13.29 to 1 against the surface"
+   "permittedBecause": "Below 3 to 1 against Newsprint, and 2.64 to 1 against the Error Band it edges. The approved error drawing (DR-199, D2-859) draws this bar with no keyline: the circle mark and the word \"Error:\" in the text's ink carry the state, and the bar repeats it. The token still lists a Charcoal keyline, which the rendered plates (Rules 17.8, 18.17 and chapter 18's messages) do not draw",
+   "note": "Deprecated alias of oa.color.state.error.bar.onNewsprint, kept through 6.0 and removed in 6.1.0; Drawn with a 1 px Charcoal keyline, 13.29 to 1 against the surface; Rendered check: no keyline drawn on the page"
   },
   {
    "token": "oa.color.state.error.mark.onNewsprint (keyline)",

@@ -35,20 +35,44 @@
    "lede": "Gate 1 named four choices for this gate. You answered three of them during Phase 2, so the plan for Phase 3 is the one still open.",
    "answered_h": "Answered during Phase 2",
    "answered": [
-    {"h": "The wordmark’s width", "body": "On November 7 you kept today’s width. The condensed drawing stays in the files as a record and leaves the proofs.", "refs": "I5 · DR-115"},
-    {"h": "Ampersand B as refined", "body": "You approved it by name in the same answer. The next panel sets it beside the fifth edition’s ampersand at four sizes.", "refs": "I4 · DR-115"},
-    {"h": "The twenty topic symbols", "body": "On November 8 Civic Line’s topic drawings became the topic set, and on November 9 you confirmed every Civic Line drawing as final. Testify, Contact an official and Housing joined the set after that.", "refs": "Y5 · DR-137 · DR-144 · DR-159 · DR-160 · DR-207"}
+    {
+     "h": "The wordmark’s width",
+     "body": "On November 7 you kept today’s width. The condensed drawing stays in the files as a record and leaves the proofs.",
+     "refs": "I5 · DR-115"
+    },
+    {
+     "h": "Ampersand B as refined",
+     "body": "You approved it by name in the same answer. The next panel sets it beside the fifth edition’s ampersand at four sizes.",
+     "refs": "I4 · DR-115"
+    },
+    {
+     "h": "The twenty topic symbols",
+     "body": "On November 8 Civic Line’s topic drawings became the topic set, and on November 9 you confirmed every Civic Line drawing as final. Testify, Contact an official and Housing joined the set after that.",
+     "refs": "Y5 · DR-137 · DR-144 · DR-159 · DR-160 · DR-207"
+    }
    ],
    "open_h": "Open at this gate",
    "phase3_h": "The plan for Phase 3",
    "phase3_pending_who": "main",
-   "phase3_pending_file": "the panel’s words from the Phase 3 proposal",
+   "phase3_pending_file": "the main session’s summary of the Phase 3 proposal",
    "settled_h": "Already settled for Phase 3",
    "settled_lede": "Gate 1 put three questions on Phase 3’s list. You answered each during Phase 2, so the proposal builds on your answers.",
    "settled": [
-    {"h": "The diverging pair", "body": "A chart that splits from a midpoint runs from Prussian through the page color to Verdigris, with a boxed arrow for the direction.", "refs": "DR-54"},
-    {"h": "Where chart data comes from", "body": "Charts draw on our systems atlas and on primary public sources, each with a full source line. Any other data carries an Illustrative data label beside the chart.", "refs": "DR-46"},
-    {"h": "Invented bills", "body": "Example bills in trackers stay invented, each labeled Illustrative beside it.", "refs": "DR-151"}
+    {
+     "h": "The diverging pair",
+     "body": "A chart that splits from a midpoint runs from Prussian through the page color to Verdigris, with a boxed arrow for the direction.",
+     "refs": "DR-54"
+    },
+    {
+     "h": "Where chart data comes from",
+     "body": "Charts draw on our systems atlas and on primary public sources, each with a full source line. Any other data carries an Illustrative data label beside the chart.",
+     "refs": "DR-46"
+    },
+    {
+     "h": "Invented bills",
+     "body": "Example bills in trackers stay invented, each labeled Illustrative beside it.",
+     "refs": "DR-151"
+    }
    ],
    "refs": "D2-1699 · D2-1701 · Gate 1 report, section 9"
   },
@@ -129,243 +153,1214 @@
    "n": 10,
    "nav": "Page weight",
    "title": "Page weight, a risk for Phases 3 to 5",
-   "lede": "The guide stays one file, and the host takes pages up to 16 MB. Today’s chapters weigh {frozen_mb} MB, and the engineer projects the finished guide at {projected_mb} MB against a {budget_mb} MB budget, so chapter 14’s 127 chart forms carry most of the risk.",
+   "lede": "The guide stays one file, and the host takes pages up to 16 MB. Today’s chapters weigh {frozen_mb} MB, and the engineer projects the finished guide at {projected_mb} MB against a {budget_mb} MB budget. Chapter 14’s 127 chart forms are the largest unknown in that projection.",
    "refs": "D2-1214 · DR-227 · DR-225"
   }
  },
  "groups": [
-  {"id": "wordmark", "h": "The wordmark and the ampersand"},
-  {"id": "lockmark", "h": "The lockmark and the lockups"},
-  {"id": "hinge", "h": "The hinge diagram and the badge"},
-  {"id": "color", "h": "Red’s job, and marks on Prussian"},
-  {"id": "pillars", "h": "The pillar marks"},
-  {"id": "symbols", "h": "Symbols and icons"},
-  {"id": "patterns", "h": "Patterns"}
+  {
+   "id": "wordmark",
+   "h": "The wordmark and the ampersand"
+  },
+  {
+   "id": "lockmark",
+   "h": "The lockmark and the lockups"
+  },
+  {
+   "id": "hinge",
+   "h": "The hinge diagram and the badge"
+  },
+  {
+   "id": "color",
+   "h": "Red’s job, and marks on Prussian"
+  },
+  {
+   "id": "pillars",
+   "h": "The pillar marks"
+  },
+  {
+   "id": "symbols",
+   "h": "Symbols and icons"
+  },
+  {
+   "id": "patterns",
+   "h": "Patterns"
+  }
  ],
  "items": [
   {
-   "id": "wordmark", "group": "wordmark", "tag": "Refinement",
+   "id": "wordmark",
+   "group": "wordmark",
+   "tag": "Refinement",
    "title": "Wordmark masters for small sizes",
    "what": "The fifth edition scaled one drawing down, so its letters blurred at 16 and 24 px. Edition 06 draws a master for each size, with stems and bars on whole pixels and the ampersand at full height.",
-   "cols": ["Fifth edition", "Edition 06"],
+   "cols": [
+    "Fifth edition",
+    "Edition 06"
+   ],
    "rows": [
-    {"label": "16 px", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/i3/i3-wordmark/orig__newsprint__color__16.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i3/i3-wordmark/prop__newsprint__color__16.png"}}]},
-    {"label": "24 px", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/i3/i3-wordmark/orig__newsprint__color__24.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i3/i3-wordmark/prop__newsprint__color__24.png"}}]},
-    {"label": "Display, 120 px tall", "cells": [{"img": {"copy": "work/boards/phase-2/identity/i3/i3-wordmark/orig__newsprint__color__display.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i3/i3-wordmark/prop__newsprint__color__display.png"}}]}
+    {
+     "label": "16 px",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i3/i3-wordmark/orig__newsprint__color__16.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i3/i3-wordmark/prop__newsprint__color__16.png"
+       }
+      }
+     ]
+    },
+    {
+     "label": "24 px",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i3/i3-wordmark/orig__newsprint__color__24.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i3/i3-wordmark/prop__newsprint__color__24.png"
+       }
+      }
+     ]
+    },
+    {
+     "label": "Display, 120 px tall",
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i3/i3-wordmark/orig__newsprint__color__display.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i3/i3-wordmark/prop__newsprint__color__display.png"
+       }
+      }
+     ]
+    }
    ],
    "refs": "I3 · G1-02 · D2-04 to D2-10"
   },
   {
-   "id": "ampersand", "group": "wordmark", "tag": "Refinement",
+   "id": "ampersand",
+   "group": "wordmark",
+   "tag": "Refinement",
    "title": "Ampersand B, a drawing of our own",
    "what": "The fifth edition set its ampersand from Lora Bold, a free font anyone can type. Ampersand B is one pen path that crosses itself, with a beak serif and a tail whose foot rests on the baseline, and it has its own masters at 16 and 24 px.",
-   "cols": ["Fifth edition", "Edition 06"],
+   "cols": [
+    "Fifth edition",
+    "Edition 06"
+   ],
    "rows": [
-    {"label": "16 px", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/i4/i4-amp/orig__newsprint__color__16.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i4/i4-amp/prop__newsprint__color__16.png"}}]},
-    {"label": "24 px", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/i4/i4-amp/orig__newsprint__color__24.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i4/i4-amp/prop__newsprint__color__24.png"}}]},
-    {"label": "48 px", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/i4/i4-amp/orig__newsprint__color__48.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i4/i4-amp/prop__newsprint__color__48.png"}}]},
-    {"label": "Display, 280 px tall", "cells": [{"img": {"copy": "work/boards/phase-2/identity/i4/i4-amp/orig__newsprint__color__display.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i4/i4-amp/prop__newsprint__color__display.png"}}, {"label": "Both, drawn over each other", "img": {"copy": "work/boards/phase-2/identity/i4/i4-amp/overlay__display.png"}}]}
+    {
+     "label": "16 px",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i4/i4-amp/orig__newsprint__color__16.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i4/i4-amp/prop__newsprint__color__16.png"
+       }
+      }
+     ]
+    },
+    {
+     "label": "24 px",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i4/i4-amp/orig__newsprint__color__24.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i4/i4-amp/prop__newsprint__color__24.png"
+       }
+      }
+     ]
+    },
+    {
+     "label": "48 px",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i4/i4-amp/orig__newsprint__color__48.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i4/i4-amp/prop__newsprint__color__48.png"
+       }
+      }
+     ]
+    },
+    {
+     "label": "Display, 280 px tall",
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i4/i4-amp/orig__newsprint__color__display.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i4/i4-amp/prop__newsprint__color__display.png"
+       }
+      },
+      {
+       "label": "Both, drawn over each other",
+       "img": {
+        "copy": "work/boards/phase-2/identity/i4/i4-amp/overlay__display.png"
+       }
+      }
+     ]
+    }
    ],
    "refs": "I4 · G1-01 · DR-115 · D2-03 to D2-13"
   },
   {
-   "id": "hinge-gaps", "group": "wordmark", "tag": "Defect fix",
+   "id": "hinge-gaps",
+   "group": "wordmark",
+   "tag": "Defect fix",
    "title": "Equal white on both sides of the ampersand",
    "what": "Spaced by the nearest ink, the fifth edition left 1.24 times as much white to the right of the ampersand as to its left. Edition 06 moves the ampersand 1.42 font units toward ACTION, so both gaps hold the same white, and the wordmark keeps its width.",
-   "cols": ["Fifth edition", "Edition 06"],
+   "cols": [
+    "Fifth edition",
+    "Edition 06"
+   ],
    "rows": [
-    {"label": "24 px", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/i2/i2-hinge/orig__newsprint__color__24.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i2/i2-hinge/prop__newsprint__color__24.png"}}]},
-    {"label": "Display, 120 px tall", "cells": [{"img": {"copy": "work/boards/phase-2/identity/i2/i2-hinge/orig__newsprint__color__display.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i2/i2-hinge/prop__newsprint__color__display.png"}}, {"label": "Both, drawn over each other", "img": {"copy": "work/boards/phase-2/identity/i2/i2-hinge/overlay__display.png"}}]}
+    {
+     "label": "24 px",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i2/i2-hinge/orig__newsprint__color__24.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i2/i2-hinge/prop__newsprint__color__24.png"
+       }
+      }
+     ]
+    },
+    {
+     "label": "Display, 120 px tall",
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i2/i2-hinge/orig__newsprint__color__display.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i2/i2-hinge/prop__newsprint__color__display.png"
+       }
+      },
+      {
+       "label": "Both, drawn over each other",
+       "img": {
+        "copy": "work/boards/phase-2/identity/i2/i2-hinge/overlay__display.png"
+       }
+      }
+     ]
+    }
    ],
    "refs": "I2 · G1-02 · D1-13"
   },
   {
-   "id": "reexport", "group": "wordmark", "tag": "Defect fix",
+   "id": "reexport",
+   "group": "wordmark",
+   "tag": "Defect fix",
    "title": "Six symbols that cut off their own edges",
    "what": "Six of the fifth edition’s symbols lost ink at the edges of their boxes: the ampersand, the stacked lockup, the one-line tagline, both lines of the two-line tagline and the web address. Edition 06 exports each in a box that holds all its ink, with the outlines unchanged.",
-   "cols": ["Fifth edition", "Edition 06"],
+   "cols": [
+    "Fifth edition",
+    "Edition 06"
+   ],
    "rows": [
-    {"label": "The ampersand, display size", "cells": [{"img": {"copy": "work/boards/phase-2/identity/i1/i1-amp/orig__newsprint__color__display.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i1/i1-amp/prop__newsprint__color__display.png"}}]},
-    {"label": "The stacked lockup, display size", "note": "A new stacked lockup has replaced this one since November 7.", "cells": [{"img": {"copy": "work/boards/phase-2/identity/i1/i1-stacked/orig__newsprint__color__display.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i1/i1-stacked/prop__newsprint__color__display.png"}}]},
-    {"label": "The one-line tagline, display size", "more": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/i1/i1-tl-1/orig__newsprint__mono__display.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i1/i1-tl-1/prop__newsprint__mono__display.png"}}]},
-    {"label": "The two-line tagline, first line", "more": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/i1/i1-tl-2a/orig__newsprint__mono__display.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i1/i1-tl-2a/prop__newsprint__mono__display.png"}}]},
-    {"label": "The two-line tagline, second line", "more": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/i1/i1-tl-2b/orig__newsprint__mono__display.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i1/i1-tl-2b/prop__newsprint__mono__display.png"}}]},
-    {"label": "The web address, display size", "more": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/i1/i1-url-1/orig__newsprint__mono__display.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i1/i1-url-1/prop__newsprint__mono__display.png"}}]}
+    {
+     "label": "The ampersand, display size",
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i1/i1-amp/orig__newsprint__color__display.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i1/i1-amp/prop__newsprint__color__display.png"
+       }
+      }
+     ]
+    },
+    {
+     "label": "The stacked lockup, display size",
+     "note": "A new stacked lockup has replaced this one since November 7.",
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i1/i1-stacked/orig__newsprint__color__display.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i1/i1-stacked/prop__newsprint__color__display.png"
+       }
+      }
+     ]
+    },
+    {
+     "label": "The one-line tagline, display size",
+     "more": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i1/i1-tl-1/orig__newsprint__mono__display.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i1/i1-tl-1/prop__newsprint__mono__display.png"
+       }
+      }
+     ]
+    },
+    {
+     "label": "The two-line tagline, first line",
+     "more": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i1/i1-tl-2a/orig__newsprint__mono__display.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i1/i1-tl-2a/prop__newsprint__mono__display.png"
+       }
+      }
+     ]
+    },
+    {
+     "label": "The two-line tagline, second line",
+     "more": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i1/i1-tl-2b/orig__newsprint__mono__display.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i1/i1-tl-2b/prop__newsprint__mono__display.png"
+       }
+      }
+     ]
+    },
+    {
+     "label": "The web address, display size",
+     "more": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i1/i1-url-1/orig__newsprint__mono__display.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i1/i1-url-1/prop__newsprint__mono__display.png"
+       }
+      }
+     ]
+    }
    ],
    "more_label": "The other four symbols",
    "refs": "I1 · G1-02 · DR-113"
   },
   {
-   "id": "lockmark", "group": "lockmark", "tag": "Refinement",
+   "id": "lockmark",
+   "group": "lockmark",
+   "tag": "Refinement",
    "title": "Lockmark masters for small sizes",
    "what": "At 24 px the fifth edition’s lockmark drew only 5 percent of its ink solid, so its nodes went soft. Edition 06 draws masters at 16, 24 and 48 px with each node on whole pixels and a larger lever. The 24 and 48 px files were rebuilt on November 10, so each node and the lever is one outline.",
-   "cols": ["Fifth edition", "Edition 06"],
+   "cols": [
+    "Fifth edition",
+    "Edition 06"
+   ],
    "rows": [
-    {"label": "16 px", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/i7/i7-lockmark/orig__newsprint__color__16.png"}}, {"img": {"svg": "work/build/assets/identity/lockmark/20261028_Lockmark-16px-Master.svg", "h": 16}}]},
-    {"label": "24 px", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/i7/i7-lockmark/orig__newsprint__color__24.png"}}, {"img": {"svg": "work/build/assets/identity/lockmark/20261109_Lockmark-24px-Master-Outline.svg", "h": 24}}]},
-    {"label": "48 px", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/i7/i7-lockmark/orig__newsprint__color__48.png"}}, {"img": {"svg": "work/build/assets/identity/lockmark/20261109_Lockmark-48px-Master-Outline.svg", "h": 48}}]},
-    {"label": "Display, 200 px", "cells": [{"img": {"copy": "work/boards/phase-2/identity/i7/i7-lockmark/orig__newsprint__color__display.png"}}, {"img": {"svg": "work/build/assets/identity/lockmark/20261107_Lockmark-Display-Master.svg", "h": 200}}]}
+    {
+     "label": "16 px",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i7/i7-lockmark/orig__newsprint__color__16.png"
+       }
+      },
+      {
+       "img": {
+        "svg": "work/build/assets/identity/lockmark/20261028_Lockmark-16px-Master.svg",
+        "h": 16
+       }
+      }
+     ]
+    },
+    {
+     "label": "24 px",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i7/i7-lockmark/orig__newsprint__color__24.png"
+       }
+      },
+      {
+       "img": {
+        "svg": "work/build/assets/identity/lockmark/20261109_Lockmark-24px-Master-Outline.svg",
+        "h": 24
+       }
+      }
+     ]
+    },
+    {
+     "label": "48 px",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i7/i7-lockmark/orig__newsprint__color__48.png"
+       }
+      },
+      {
+       "img": {
+        "svg": "work/build/assets/identity/lockmark/20261109_Lockmark-48px-Master-Outline.svg",
+        "h": 48
+       }
+      }
+     ]
+    },
+    {
+     "label": "Display, 200 px",
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i7/i7-lockmark/orig__newsprint__color__display.png"
+       }
+      },
+      {
+       "img": {
+        "svg": "work/build/assets/identity/lockmark/20261107_Lockmark-Display-Master.svg",
+        "h": 200
+       }
+      }
+     ]
+    }
    ],
    "refs": "I7 · G1-02 · DR-131 · DR-181 · D2-24 · D2-465"
   },
   {
-   "id": "minimums", "group": "lockmark", "tag": "Defect fix",
+   "id": "minimums",
+   "group": "lockmark",
+   "tag": "Defect fix",
    "title": "One minimum size for every mark",
    "what": "The fifth edition’s minimum sizes disagreed with each other. Edition 06 sets one rule: no mark draws its capitals under 14 px on screen, no tagline inside a lockup sets under 13 px, and each lockup names the mark that takes its place below its minimum.",
-   "cols": ["Fifth edition, at its minimum", "Edition 06, at its minimum"],
-   "rows": [
-    {"label": "The wordmark", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/i8/L1__orig__newsprint__color.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i8/L1__prop__newsprint__color.png"}}]},
-    {"label": "The horizontal lockup", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/i8/L3__orig__newsprint__color.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i8/L3__prop__newsprint__color.png"}}]},
-    {"label": "The monogram", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/i8/L8__orig__newsprint__color.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i8/L8__prop__newsprint__color.png"}}]}
+   "cols": [
+    "Fifth edition, at its minimum",
+    "Edition 06, at its minimum"
    ],
-   "refs": "I8 · G1-02 · D2-27 · DR-217"
+   "rows": [
+    {
+     "label": "The wordmark",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i8/L1__orig__newsprint__color.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i8/L1__prop__newsprint__color.png"
+       }
+      }
+     ]
+    },
+    {
+     "label": "The horizontal lockup",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i8/L3__orig__newsprint__color.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i8/L3__prop__newsprint__color.png"
+       }
+      }
+     ]
+    },
+    {
+     "label": "The monogram",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i8/L8__orig__newsprint__color.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i8/L8__prop__newsprint__color.png"
+       }
+      }
+     ]
+    }
+   ],
+   "refs": "I8 · G1-02 · D2-27 · DR-217",
+   "grid": true
   },
   {
-   "id": "print-l3", "group": "lockmark", "tag": "Refinement",
+   "id": "print-l3",
+   "group": "lockmark",
+   "tag": "Refinement",
    "title": "The horizontal lockup for print",
    "what": "Since November 8 the masthead has set the lockmark at 2.18 times the height of the capitals, while print kept the October drawing at 2.4. The print master now takes the masthead’s proportion, so the lockup prints as it shows on screen. Both are drawn here with 40 px capitals.",
-   "cols": ["October master, in print until November 11", "Print master, in use"],
+   "cols": [
+    "October master, in print until November 11",
+    "Print master, in use"
+   ],
    "rows": [
-    {"label": "Capitals 40 px", "cells": [{"img": {"svg": "work/build/assets/identity/lockups/20261028_L3-Horizontal-Master.svg", "h": 96}}, {"img": {"svg": "work/build/assets/identity/lockups/20261110_L3-Horizontal-Print-Master.svg", "h": 87.27}}]}
+    {
+     "label": "Capitals 40 px",
+     "cells": [
+      {
+       "img": {
+        "svg": "work/build/assets/identity/lockups/20261028_L3-Horizontal-Master.svg",
+        "h": 96
+       }
+      },
+      {
+       "img": {
+        "svg": "work/build/assets/identity/lockups/20261110_L3-Horizontal-Print-Master.svg",
+        "h": 87.27
+       }
+      }
+     ]
+    }
    ],
    "refs": "DR-210 · DR-131 · DR-217 · D2-482"
   },
   {
-   "id": "social", "group": "lockmark", "tag": "Refinement",
+   "id": "social",
+   "group": "lockmark",
+   "tag": "Refinement",
    "title": "The sign-off on social cards",
    "what": "A social card now signs off with the 48 px lockmark master drawn at exactly twice its size, 96 px, so the mark holds up in a feed. Covers, posters and the masthead keep 48 px. Each card here is 1200 by 630 px, its true size.",
-   "cols": ["48 px sign-off", "96 px sign-off, in use"],
+   "cols": [
+    "48 px sign-off",
+    "96 px sign-off, in use"
+   ],
    "stack": true,
    "rows": [
-    {"label": "On Newsprint", "cells": [{"img": {"copy": "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Social-Card-Newsprint-48px-Actual-Size-1x.png"}}, {"img": {"copy": "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Social-Card-Newsprint-96px-Actual-Size-1x.png"}}]},
-    {"label": "On Charcoal", "more": true, "cells": [{"empty": "No 48 px card was drawn on Charcoal."}, {"img": {"copy": "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Social-Card-Charcoal-96px-Actual-Size-1x.png"}}]}
+    {
+     "label": "On Newsprint",
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Social-Card-Newsprint-48px-Actual-Size-1x.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Social-Card-Newsprint-96px-Actual-Size-1x.png"
+       }
+      }
+     ]
+    },
+    {
+     "label": "On Charcoal",
+     "more": true,
+     "cells": [
+      {
+       "empty": "No 48 px card was drawn on Charcoal."
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Social-Card-Charcoal-96px-Actual-Size-1x.png"
+       }
+      }
+     ]
+    }
    ],
    "more_label": "The card on Charcoal",
    "refs": "DR-211 · D2-715"
   },
   {
-   "id": "hinge-diagram", "group": "hinge", "tag": "Refinement",
+   "id": "hinge-diagram",
+   "group": "hinge",
+   "tag": "Refinement",
    "title": "The hinge diagram, drawn again",
    "what": "The fifth edition drew the hinge’s arc as a dotted line, the line our systems atlas uses for a hypothesis. The new diagram sets the ampersand in a ring between OATH and ACTION, with two solid hairline arcs that run clockwise.",
-   "cols": ["Fifth edition", "Edition 06"],
+   "cols": [
+    "Fifth edition",
+    "Edition 06"
+   ],
    "rows": [
-    {"label": "48 px tall", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/i6/i6-hinge/orig__newsprint__color__48.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i6/i6-hinge/prop__newsprint__color__48.png"}}]},
-    {"label": "Display, 200 px tall", "cells": [{"img": {"copy": "work/boards/phase-2/identity/i6/i6-hinge/orig__newsprint__color__display.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i6/i6-hinge/prop__newsprint__color__display.png"}}]}
+    {
+     "label": "48 px tall",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i6/i6-hinge/orig__newsprint__color__48.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i6/i6-hinge/prop__newsprint__color__48.png"
+       }
+      }
+     ]
+    },
+    {
+     "label": "Display, 200 px tall",
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i6/i6-hinge/orig__newsprint__color__display.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i6/i6-hinge/prop__newsprint__color__display.png"
+       }
+      }
+     ]
+    }
    ],
    "refs": "I6 · G1-01 · D1-21"
   },
   {
-   "id": "badge", "group": "hinge", "tag": "New mark",
+   "id": "badge",
+   "group": "hinge",
+   "tag": "New mark",
    "title": "The hinge-circle badge",
    "what": "A new mark with no words: ampersand B inside the hinge diagram’s ring. It signs an end mark, a report’s back cover and events, and never serves as an avatar or a favicon. The fifth edition had no badge, so the left column shows the Phase 1 drawing it grew from.",
-   "cols": ["Phase 1 drawing", "Edition 06"],
+   "cols": [
+    "Phase 1 drawing",
+    "Edition 06"
+   ],
    "rows": [
-    {"label": "16 px", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/s9/s9-badge/orig__newsprint__color__16.png"}}, {"img": {"copy": "work/boards/phase-2/identity/s9/s9-badge/prop__newsprint__color__16.png"}}]},
-    {"label": "24 px", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/s9/s9-badge/orig__newsprint__color__24.png"}}, {"img": {"copy": "work/boards/phase-2/identity/s9/s9-badge/prop__newsprint__color__24.png"}}]},
-    {"label": "Display, 200 px", "cells": [{"img": {"copy": "work/boards/phase-2/identity/s9/s9-badge/orig__newsprint__color__display.png"}}, {"img": {"copy": "work/boards/phase-2/identity/s9/s9-badge/prop__newsprint__color__display.png"}}]}
+    {
+     "label": "16 px",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/s9/s9-badge/orig__newsprint__color__16.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/s9/s9-badge/prop__newsprint__color__16.png"
+       }
+      }
+     ]
+    },
+    {
+     "label": "24 px",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/s9/s9-badge/orig__newsprint__color__24.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/s9/s9-badge/prop__newsprint__color__24.png"
+       }
+      }
+     ]
+    },
+    {
+     "label": "Display, 200 px",
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/s9/s9-badge/orig__newsprint__color__display.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/s9/s9-badge/prop__newsprint__color__display.png"
+       }
+      }
+     ]
+    }
    ],
    "refs": "S9 · G1-02 · D2-25"
   },
   {
-   "id": "prussian", "group": "color", "tag": "Refinement",
+   "id": "prussian",
+   "group": "color",
+   "tag": "Refinement",
    "title": "One job for red, and White on Prussian",
    "what": "Rule 05.3 gives red one working job in each view and keeps it off Prussian. On Prussian the fifth edition’s red ampersand measures {red_on_prussian} to 1, so identity marks there now take White, at {white_on_prussian} to 1.",
-   "cols": ["Fifth edition", "Edition 06"],
+   "cols": [
+    "Fifth edition",
+    "Edition 06"
+   ],
    "rows": [
-    {"label": "16 px", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/identity/i9/v5today__16.png"}}, {"img": {"copy": "work/boards/phase-2/identity/i9/wordmark16.png"}}]},
-    {"label": "96 px tall", "cells": [{"img": {"copy": "work/boards/phase-2/identity/i9/v5today__96.png"}}, {"img": {"svg": "work/build/assets/identity/prussian/20261028_Wordmark-Display-Master-Prussian-White.svg", "h": 96, "bg": "prussian"}}]}
+    {
+     "label": "16 px",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i9/v5today__16.png"
+       }
+      },
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i9/wordmark16.png"
+       }
+      }
+     ]
+    },
+    {
+     "label": "96 px tall",
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/identity/i9/v5today__96.png"
+       }
+      },
+      {
+       "img": {
+        "svg": "work/build/assets/identity/prussian/20261028_Wordmark-Display-Master-Prussian-White.svg",
+        "h": 96,
+        "bg": "prussian"
+       }
+      }
+     ]
+    }
    ],
    "refs": "I9 · I10 · G1-01 · D2-01 · D1-26"
   },
   {
-   "id": "pillars", "group": "pillars", "tag": "Replaced",
+   "id": "pillars",
+   "group": "pillars",
+   "tag": "Replaced",
    "title": "The four pillar marks",
    "what": "Gate 1 approved Direction A, a geometric solid, for Explain, Track, Connect and Act. On October 29 you replaced it with Civic Line’s four drawings, which the guide uses today, with pixel fits at 16 and 24 px for 1x screens.",
-   "cols": ["Fifth edition", "Gate 1, Direction A", "In use"],
-   "names": ["Explain", "Track", "Connect", "Act"],
+   "cols": [
+    "Fifth edition",
+    "Gate 1, Direction A",
+    "In use"
+   ],
+   "names": [
+    "Explain",
+    "Track",
+    "Connect",
+    "Act"
+   ],
    "rows": [
-    {"label": "48 px", "cells": [
-     {"imgs": [{"sprite": "pm-explain", "h": 48}, {"sprite": "pm-track", "h": 48}, {"sprite": "pm-connect", "h": 48}, {"sprite": "pm-act", "h": 48}]},
-     {"empty": "Drawn only at 16 and 24 px before it was replaced."},
-     {"imgs": [{"svg": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-019-Explain-Black.svg", "h": 48}, {"svg": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-020-Track-Black.svg", "h": 48}, {"svg": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-021-Connect-Black.svg", "h": 48}, {"svg": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-022-Act-Black.svg", "h": 48}]}
-    ]},
-    {"label": "24 px", "zoom": true, "cells": [
-     {"imgs": [{"copy": "work/boards/phase-1/symbols/px/n-v5-explain-24.png"}, {"copy": "work/boards/phase-1/symbols/px/n-v5-track-24.png"}, {"copy": "work/boards/phase-1/symbols/px/n-v5-connect-24.png"}, {"copy": "work/boards/phase-1/symbols/px/n-v5-act-24.png"}]},
-     {"imgs": [{"copy": "work/boards/phase-1/symbols/px/n-A-filled-explain-24.png"}, {"copy": "work/boards/phase-1/symbols/px/n-A-filled-track-24.png"}, {"copy": "work/boards/phase-1/symbols/px/n-A-filled-connect-24.png"}, {"copy": "work/boards/phase-1/symbols/px/n-A-filled-act-24.png"}]},
-     {"imgs": [{"copy": "work/build/assets/pillar-icons/png/20261110_Pillar-Icon-CL-019-Explain-24px-Black.png"}, {"copy": "work/build/assets/pillar-icons/png/20261110_Pillar-Icon-CL-020-Track-24px-Black.png"}, {"copy": "work/build/assets/pillar-icons/png/20261110_Pillar-Icon-CL-021-Connect-24px-Black.png"}, {"copy": "work/build/assets/pillar-icons/png/20261110_Pillar-Icon-CL-022-Act-24px-Black.png"}]}
-    ]},
-    {"label": "16 px", "zoom": true, "cells": [
-     {"imgs": [{"copy": "work/boards/phase-1/symbols/px/n-v5-explain-16.png"}, {"copy": "work/boards/phase-1/symbols/px/n-v5-track-16.png"}, {"copy": "work/boards/phase-1/symbols/px/n-v5-connect-16.png"}, {"copy": "work/boards/phase-1/symbols/px/n-v5-act-16.png"}]},
-     {"imgs": [{"copy": "work/boards/phase-1/symbols/px/n-A-filled-explain-16.png"}, {"copy": "work/boards/phase-1/symbols/px/n-A-filled-track-16.png"}, {"copy": "work/boards/phase-1/symbols/px/n-A-filled-connect-16.png"}, {"copy": "work/boards/phase-1/symbols/px/n-A-filled-act-16.png"}]},
-     {"imgs": [{"copy": "work/build/assets/pillar-icons/png/20261110_Pillar-Icon-CL-019-Explain-16px-Black.png"}, {"copy": "work/build/assets/pillar-icons/png/20261110_Pillar-Icon-CL-020-Track-16px-Black.png"}, {"copy": "work/build/assets/pillar-icons/png/20261110_Pillar-Icon-CL-021-Connect-16px-Black.png"}, {"copy": "work/build/assets/pillar-icons/png/20261110_Pillar-Icon-CL-022-Act-16px-Black.png"}]}
-    ]}
+    {
+     "label": "48 px",
+     "cells": [
+      {
+       "imgs": [
+        {
+         "sprite": "pm-explain",
+         "h": 48
+        },
+        {
+         "sprite": "pm-track",
+         "h": 48
+        },
+        {
+         "sprite": "pm-connect",
+         "h": 48
+        },
+        {
+         "sprite": "pm-act",
+         "h": 48
+        }
+       ]
+      },
+      {
+       "empty": "Drawn only at 16 and 24 px before it was replaced."
+      },
+      {
+       "imgs": [
+        {
+         "svg": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-019-Explain-Black.svg",
+         "h": 48
+        },
+        {
+         "svg": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-020-Track-Black.svg",
+         "h": 48
+        },
+        {
+         "svg": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-021-Connect-Black.svg",
+         "h": 48
+        },
+        {
+         "svg": "work/build/assets/civic-line-v6/black/20261029_Oath-And-Action-Civic-Line-CL-022-Act-Black.svg",
+         "h": 48
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "24 px",
+     "zoom": true,
+     "cells": [
+      {
+       "imgs": [
+        {
+         "copy": "work/boards/phase-1/symbols/px/n-v5-explain-24.png"
+        },
+        {
+         "copy": "work/boards/phase-1/symbols/px/n-v5-track-24.png"
+        },
+        {
+         "copy": "work/boards/phase-1/symbols/px/n-v5-connect-24.png"
+        },
+        {
+         "copy": "work/boards/phase-1/symbols/px/n-v5-act-24.png"
+        }
+       ]
+      },
+      {
+       "imgs": [
+        {
+         "copy": "work/boards/phase-1/symbols/px/n-A-filled-explain-24.png"
+        },
+        {
+         "copy": "work/boards/phase-1/symbols/px/n-A-filled-track-24.png"
+        },
+        {
+         "copy": "work/boards/phase-1/symbols/px/n-A-filled-connect-24.png"
+        },
+        {
+         "copy": "work/boards/phase-1/symbols/px/n-A-filled-act-24.png"
+        }
+       ]
+      },
+      {
+       "imgs": [
+        {
+         "svg": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-019-Explain-24px-Black.svg",
+         "h": 24
+        },
+        {
+         "svg": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-020-Track-24px-Black.svg",
+         "h": 24
+        },
+        {
+         "svg": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-021-Connect-24px-Black.svg",
+         "h": 24
+        },
+        {
+         "svg": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-022-Act-24px-Black.svg",
+         "h": 24
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "16 px",
+     "zoom": true,
+     "cells": [
+      {
+       "imgs": [
+        {
+         "copy": "work/boards/phase-1/symbols/px/n-v5-explain-16.png"
+        },
+        {
+         "copy": "work/boards/phase-1/symbols/px/n-v5-track-16.png"
+        },
+        {
+         "copy": "work/boards/phase-1/symbols/px/n-v5-connect-16.png"
+        },
+        {
+         "copy": "work/boards/phase-1/symbols/px/n-v5-act-16.png"
+        }
+       ]
+      },
+      {
+       "imgs": [
+        {
+         "copy": "work/boards/phase-1/symbols/px/n-A-filled-explain-16.png"
+        },
+        {
+         "copy": "work/boards/phase-1/symbols/px/n-A-filled-track-16.png"
+        },
+        {
+         "copy": "work/boards/phase-1/symbols/px/n-A-filled-connect-16.png"
+        },
+        {
+         "copy": "work/boards/phase-1/symbols/px/n-A-filled-act-16.png"
+        }
+       ]
+      },
+      {
+       "imgs": [
+        {
+         "svg": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-019-Explain-16px-Black.svg",
+         "h": 16
+        },
+        {
+         "svg": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-020-Track-16px-Black.svg",
+         "h": 16
+        },
+        {
+         "svg": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-021-Connect-16px-Black.svg",
+         "h": 16
+        },
+        {
+         "svg": "work/build/assets/pillar-icons/svg/20261110_Pillar-Icon-CL-022-Act-16px-Black.svg",
+         "h": 16
+        }
+       ]
+      }
+     ]
+    }
    ],
    "refs": "Y1 · G1-01 · DR-04 · DR-179 · DR-138"
   },
   {
-   "id": "civic-line", "group": "symbols", "tag": "Replaced",
+   "id": "civic-line",
+   "group": "symbols",
+   "tag": "Replaced",
    "title": "Civic Line in place of the fifth edition’s topic symbols",
    "what": "The fifth edition drew twenty topic symbols as filled shapes. Civic Line, the line drawings you made and approved as final, now draws topics and the atlas in one hand: {n_civic} drawings, used at 48 px and up, and at 24 px for the {n_24} that read there. Five subjects share a name in both sets, and they stand side by side here.",
-   "cols": ["Fifth edition", "Civic Line"],
+   "cols": [
+    "Fifth edition",
+    "Civic Line"
+   ],
    "pairs": [
-    {"name": "Local government", "v5": "ic-local-government-48", "cl": "CL-031"},
-    {"name": "Public records", "v5": "ic-public-records-48", "cl": "CL-048"},
-    {"name": "Health care", "v5": "ic-health-care-48", "cl": "CL-067"},
-    {"name": "Contact an official", "v5": "ic-contact-an-official-48", "cl": "CL-074"},
-    {"name": "Testify", "v5": "ic-testify-48", "cl": "CL-073"}
+    {
+     "name": "Local government",
+     "v5": "ic-local-government-48",
+     "cl": "CL-031"
+    },
+    {
+     "name": "Public records",
+     "v5": "ic-public-records-48",
+     "cl": "CL-048"
+    },
+    {
+     "name": "Health care",
+     "v5": "ic-health-care-48",
+     "cl": "CL-067"
+    },
+    {
+     "name": "Contact an official",
+     "v5": "ic-contact-an-official-48",
+     "cl": "CL-074"
+    },
+    {
+     "name": "Testify",
+     "v5": "ic-testify-48",
+     "cl": "CL-073"
+    }
    ],
    "v5_set_h": "All twenty of the fifth edition’s topic symbols, at 48 px",
    "v5_set": [
-    ["ic-ballot-48", "Ballot"], ["ic-ranked-ballot-48", "Ranked ballot"], ["ic-open-primary-48", "Open primary"], ["ic-district-map-48", "District map"], ["ic-state-house-48", "State house"],
-    ["ic-bill-48", "Bill"], ["ic-committee-hearing-48", "Committee hearing"], ["ic-roll-call-vote-48", "Roll call vote"], ["ic-court-48", "Court"], ["ic-campaign-money-48", "Campaign money"],
-    ["ic-local-government-48", "Local government"], ["ic-public-records-48", "Public records"], ["ic-housing-48", "Housing"], ["ic-work-and-wages-48", "Work and wages"], ["ic-taxes-and-budget-48", "Taxes and budget"],
-    ["ic-health-care-48", "Health care"], ["ic-cost-of-living-48", "Cost of living"], ["ic-contact-an-official-48", "Contact an official"], ["ic-testify-48", "Testify"], ["ic-organize-48", "Organize"]
+    [
+     "ic-ballot-48",
+     "Ballot"
+    ],
+    [
+     "ic-ranked-ballot-48",
+     "Ranked ballot"
+    ],
+    [
+     "ic-open-primary-48",
+     "Open primary"
+    ],
+    [
+     "ic-district-map-48",
+     "District map"
+    ],
+    [
+     "ic-state-house-48",
+     "State house"
+    ],
+    [
+     "ic-bill-48",
+     "Bill"
+    ],
+    [
+     "ic-committee-hearing-48",
+     "Committee hearing"
+    ],
+    [
+     "ic-roll-call-vote-48",
+     "Roll call vote"
+    ],
+    [
+     "ic-court-48",
+     "Court"
+    ],
+    [
+     "ic-campaign-money-48",
+     "Campaign money"
+    ],
+    [
+     "ic-local-government-48",
+     "Local government"
+    ],
+    [
+     "ic-public-records-48",
+     "Public records"
+    ],
+    [
+     "ic-housing-48",
+     "Housing"
+    ],
+    [
+     "ic-work-and-wages-48",
+     "Work and wages"
+    ],
+    [
+     "ic-taxes-and-budget-48",
+     "Taxes and budget"
+    ],
+    [
+     "ic-health-care-48",
+     "Health care"
+    ],
+    [
+     "ic-cost-of-living-48",
+     "Cost of living"
+    ],
+    [
+     "ic-contact-an-official-48",
+     "Contact an official"
+    ],
+    [
+     "ic-testify-48",
+     "Testify"
+    ],
+    [
+     "ic-organize-48",
+     "Organize"
+    ]
    ],
    "set_link": "Every Civic Line drawing in use sits on the 48 px sheet in the craft panel.",
    "refs": "Y5 · DR-137 · DR-144 · DR-136 · DR-159 · DR-160"
   },
   {
-   "id": "housing", "group": "symbols", "tag": "New drawing",
+   "id": "housing",
+   "group": "symbols",
+   "tag": "New drawing",
    "title": "Housing",
    "what": "Housing is a new Civic Line drawing: an apartment block beside a pitched-roof house on one ground line, with red on one window of the block. It serves at 48 px and up and stays off the 24 px list for now.",
-   "cols": ["Fifth edition", "Edition 06"],
+   "cols": [
+    "Fifth edition",
+    "Edition 06"
+   ],
    "rows": [
-    {"label": "48 px", "zoom": true, "cells": [{"img": {"sprite": "ic-housing-48", "h": 48}}, {"img": {"svg": "work/build/assets/civic-line-v6/black/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Black.svg", "h": 48}}]},
-    {"label": "128 px, the master’s own size", "cells": [{"empty": "The fifth edition drew Housing at 48 px and smaller."}, {"img": {"svg": "work/build/assets/civic-line-v6/red-black/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Red-Black.svg", "h": 128}}]}
+    {
+     "label": "48 px",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "sprite": "ic-housing-48",
+        "h": 48
+       }
+      },
+      {
+       "img": {
+        "svg": "work/build/assets/civic-line-v6/black/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Black.svg",
+        "h": 48
+       }
+      }
+     ]
+    },
+    {
+     "label": "128 px, the master’s own size",
+     "cells": [
+      {
+       "empty": "The fifth edition drew Housing at 48 px and smaller."
+      },
+      {
+       "img": {
+        "svg": "work/build/assets/civic-line-v6/red-black/20261111_Oath-And-Action-Civic-Line-CL-075-Housing-Red-Black.svg",
+        "h": 128
+       }
+      }
+     ]
+    }
    ],
    "refs": "DR-207 · D2-1238 · D2-1262"
   },
   {
-   "id": "fits", "group": "symbols", "tag": "Refinement",
+   "id": "fits",
+   "group": "symbols",
+   "tag": "Refinement",
    "title": "Pixel fits for drawings at 24 px",
    "what": "At 24 px a drawing made on a 128-unit grid lands between pixels and blurs. Each of the {n_fits} Civic Line drawings on the 24 px list now has a fit drawn on the 24 px grid, which 1x screens draw, while 2x screens draw the master. Six are shown here, and the craft panel holds all {n_24}, the four pillar fits among them.",
-   "cols": ["The master, drawn at 24 px", "The fit, in use on 1x screens"],
-   "examples": ["CL-001", "CL-031", "CL-048", "CL-067", "R-05", "R-45"],
+   "cols": [
+    "The master, drawn at 24 px",
+    "The fit, in use on 1x screens"
+   ],
+   "examples": [
+    "CL-001",
+    "CL-031",
+    "CL-048",
+    "CL-067",
+    "R-05",
+    "R-45"
+   ],
    "refs": "DR-209 · DR-205 · DR-136 · D2-1265"
   },
   {
-   "id": "utility", "group": "symbols", "tag": "Refinement",
+   "id": "utility",
+   "group": "symbols",
+   "tag": "Refinement",
    "title": "Pause and Filter at 16 px",
    "what": "Two utility icons were redrawn at 16 px: Pause with 5 px bars, and Filter with a 5 px spout whose outer edges sit on whole pixels. Every other 16 px file and every 24 px file stays as you approved it on November 10.",
-   "cols": ["As first approved", "In use"],
-   "rows": [
-    {"label": "Pause, on Newsprint", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Pause-Approved-Newsprint-1x.png"}}, {"img": {"svg": "work/build/assets/utility/svg-16/20261111_Utility-Pause-16px.svg", "h": 16}}]},
-    {"label": "Pause, on Charcoal", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Pause-Approved-Charcoal-1x.png"}}, {"img": {"svg": "work/build/assets/utility/svg-16/20261111_Utility-Pause-16px.svg", "h": 16, "bg": "charcoal", "ink": "newsprint"}}]},
-    {"label": "Filter, on Newsprint", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Filter-Approved-Newsprint-1x.png"}}, {"img": {"svg": "work/build/assets/utility/svg-16/20261111_Utility-Filter-16px.svg", "h": 16}}]},
-    {"label": "Filter, on Charcoal", "zoom": true, "cells": [{"img": {"copy": "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Filter-Approved-Charcoal-1x.png"}}, {"img": {"svg": "work/build/assets/utility/svg-16/20261111_Utility-Filter-16px.svg", "h": 16, "bg": "charcoal", "ink": "newsprint"}}]}
+   "cols": [
+    "As first approved",
+    "In use"
    ],
-   "refs": "DR-208 · DR-197 · DR-161"
+   "rows": [
+    {
+     "label": "Pause, on Newsprint",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Pause-Approved-Newsprint-1x.png"
+       }
+      },
+      {
+       "img": {
+        "svg": "work/build/assets/utility/svg-16/20261111_Utility-Pause-16px.svg",
+        "h": 16
+       }
+      }
+     ]
+    },
+    {
+     "label": "Pause, on Charcoal",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Pause-Approved-Charcoal-1x.png"
+       }
+      },
+      {
+       "img": {
+        "svg": "work/build/assets/utility/svg-16/20261111_Utility-Pause-16px.svg",
+        "h": 16,
+        "bg": "charcoal",
+        "ink": "newsprint"
+       }
+      }
+     ]
+    },
+    {
+     "label": "Filter, on Newsprint",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Filter-Approved-Newsprint-1x.png"
+       }
+      },
+      {
+       "img": {
+        "svg": "work/build/assets/utility/svg-16/20261111_Utility-Filter-16px.svg",
+        "h": 16
+       }
+      }
+     ]
+    },
+    {
+     "label": "Filter, on Charcoal",
+     "zoom": true,
+     "cells": [
+      {
+       "img": {
+        "copy": "work/boards/phase-2/stage-c/drawings/renders/20261110_Board-C-Utility-Filter-Approved-Charcoal-1x.png"
+       }
+      },
+      {
+       "img": {
+        "svg": "work/build/assets/utility/svg-16/20261111_Utility-Filter-16px.svg",
+        "h": 16,
+        "bg": "charcoal",
+        "ink": "newsprint"
+       }
+      }
+     ]
+    }
+   ],
+   "refs": "DR-208 · DR-197 · DR-161",
+   "grid": true
   },
   {
-   "id": "rule-12-4", "group": "patterns", "tag": "Retired",
+   "id": "rule-12-4",
+   "group": "patterns",
+   "tag": "Retired",
    "title": "Rule 12.4 retires the hinge arcs",
    "what": "The guide allowed one pattern, arcs drawn from the hinge, in the open corner of a cover. On November 11 you retired it: an open area now stays plain, or carries the large crop of ampersand B or a watermark. Both covers are invented, and each is labeled Illustrative.",
-   "cols": ["The rule until November 11", "The rule now"],
+   "cols": [
+    "The rule until November 11",
+    "The rule now"
+   ],
    "rows": [
-    {"label": "A report cover, 360 px wide", "cells": [
-     {"img": {"element": {"file": "work/handoffs/phase-2/stage-c-identity/20261111_Rule-12-4-Comparison.html", "selector": ".oai", "index": 0}}},
-     {"img": {"element": {"file": "work/handoffs/phase-2/stage-c-identity/20261111_Rule-12-4-Comparison.html", "selector": ".oai", "index": 2}}}
-    ]}
+    {
+     "label": "A report cover, 360 px wide",
+     "cells": [
+      {
+       "img": {
+        "element": {
+         "file": "work/handoffs/phase-2/stage-c-identity/20261111_Rule-12-4-Comparison.html",
+         "selector": ".oai",
+         "index": 0
+        }
+       }
+      },
+      {
+       "img": {
+        "element": {
+         "file": "work/handoffs/phase-2/stage-c-identity/20261111_Rule-12-4-Comparison.html",
+         "selector": ".oai",
+         "index": 2
+        }
+       }
+      }
+     ]
+    }
    ],
    "refs": "DR-216 · D2-1277 · Y6"
   }
@@ -380,21 +1375,65 @@
   "sheet_48_cap": "48 px is the floor for topic and atlas drawings. Each sits at actual size.",
   "pixel_h": "The pixel-fit check, run on today’s files",
   "pixel_lede": "A drawing passes at a size when it passes on a 1x and a 2x screen: its thinnest stroke covers at least one device pixel, every straight stroke lands within a tenth of a pixel of the grid, separate parts keep at least a pixel apart, and no counter fills in.",
-  "pixel_cols": ["Drawings", "Size", "Files", "Pass", "Thinnest stroke at 1x"],
+  "pixel_cols": [
+   "Drawings",
+   "Size",
+   "Files",
+   "Pass",
+   "Thinnest stroke at 1x"
+  ],
   "housing_note": "Housing, like every Civic Line master, is drawn on a 128-unit grid, so at 48 px its straight strokes fall between pixels. The check marks that as a miss on straight strokes, as it did on November 10, and its strokes, gaps and counters pass. The 48 px floor allows for it.",
   "sprite_h": "The sprite check",
   "sprite_lede": "The guide draws its icons from one sprite. The check draws each symbol through the sprite beside its own file and compares every pixel.",
-  "sprite_cols": ["Family", "Pairs at 1x", "Pairs at 2x", "Largest difference"],
+  "sprite_cols": [
+   "Family",
+   "Pairs at 1x",
+   "Pairs at 2x",
+   "Largest difference"
+  ],
   "sprite_switch": "{ok} of {n} drawings on the 24 px list draw their fit on 1x and 1.5x screens and their master on 2x screens, as the switch you approved asks.",
   "qa_h": "Civic Line quality checks",
   "qa_lede": "The October trace and its November successor, the set in use.",
   "families": [
-   {"key": "fits-24", "label": "Civic Line pixel fits", "size": 24, "files": "civic-line-v6/fit-24/*Fit-Black.svg"},
-   {"key": "pillar-24", "label": "Pillar fits", "size": 24, "files": "pillar-icons/svg/*24px-Black.svg"},
-   {"key": "pillar-16", "label": "Pillar fits", "size": 16, "files": "pillar-icons/svg/*16px-Black.svg"},
-   {"key": "utility-24", "label": "Utility icons", "size": 24, "files": "utility/svg-24/*.svg", "weight": 2},
-   {"key": "utility-16", "label": "Utility icons", "size": 16, "files": "utility/svg-16/*.svg", "weight": 1.5},
-   {"key": "housing-48", "label": "Housing", "size": 48, "files": "civic-line-v6/black/*CL-075-Housing-Black.svg", "weight": null}
+   {
+    "key": "fits-24",
+    "label": "Civic Line pixel fits",
+    "size": 24,
+    "files": "civic-line-v6/fit-24/*Fit-Black.svg"
+   },
+   {
+    "key": "pillar-24",
+    "label": "Pillar fits",
+    "size": 24,
+    "files": "pillar-icons/svg/*24px-Black.svg"
+   },
+   {
+    "key": "pillar-16",
+    "label": "Pillar fits",
+    "size": 16,
+    "files": "pillar-icons/svg/*16px-Black.svg"
+   },
+   {
+    "key": "utility-24",
+    "label": "Utility icons",
+    "size": 24,
+    "files": "utility/svg-24/*.svg",
+    "weight": 2
+   },
+   {
+    "key": "utility-16",
+    "label": "Utility icons",
+    "size": 16,
+    "files": "utility/svg-16/*.svg",
+    "weight": 1.5
+   },
+   {
+    "key": "housing-48",
+    "label": "Housing",
+    "size": 48,
+    "files": "civic-line-v6/black/*CL-075-Housing-Black.svg",
+    "weight": null
+   }
   ]
  },
  "similarity": {
@@ -404,31 +1443,92 @@
   "amp_not": "Commercial faces are not installed here, so the check could not include them.",
   "icons_h": "Icon look-alikes",
   "icons_lede": "The script blurs each drawing’s ink at 24 px, compares shapes and ranks every score against the {pairs} pairs among the Civic Line masters. A score in the top 1 percent is flagged, and one in the top 5 percent is watched.",
-  "icons_cols": ["Drawings checked", "Against", "Flagged", "Watched", "Closest score"],
+  "icons_cols": [
+   "Drawings checked",
+   "Against",
+   "Flagged",
+   "Watched",
+   "Closest score"
+  ],
   "flagged_h": "The flagged pairs, side by side at 24 px",
   "flagged_lede": "You approved all 37 fits with these pairs in view. Each pair stands here so you can judge it again.",
   "runs": [
-   {"label": "The 37 pixel fits", "file": "work/build/assets/civic-line-24-fit/qa/20261110_Fits-Likeness.json"},
-   {"label": "The 18 utility icons, both sizes", "file": "work/build/assets/utility-icons/qa/20261109_Utility-Likeness.json"},
-   {"label": "Housing and its two other options", "file": "work/build/assets/civic-line-new-topics/qa/20261110_Housing-Likeness.json"}
+   {
+    "label": "The 37 pixel fits",
+    "file": "work/build/assets/civic-line-24-fit/qa/20261110_Fits-Likeness.json"
+   },
+   {
+    "label": "The 18 utility icons, both sizes",
+    "file": "work/build/assets/utility-icons/qa/20261109_Utility-Likeness.json"
+   },
+   {
+    "label": "Housing and its two other options",
+    "file": "work/build/assets/civic-line-new-topics/qa/20261110_Housing-Likeness.json"
+   }
   ]
  },
  "phase3": null,
  "slots": {
-  "contrast": {"paths": ["work/boards/phase-2/gate-2/evidence/20261111_Gate-2-Contrast-Table.json"], "notes": "work/handoffs/phase-2/20261111_Gate-2-Accessibility-Evidence.md"},
-  "screens": {"dir": "work/boards/phase-2/gate-2/evidence", "notes": "work/handoffs/phase-2/20261111_Gate-2-Accessibility-Evidence.md"},
-  "tokens": {"notes": "work/handoffs/phase-2/20261111_Gate-2-Engineer-Notes.md"},
-  "scores": {"cd": "work/handoffs/phase-2/20261111_Gate-2-CD-Scores.json", "drift": "work/handoffs/phase-2/20261111_Gate-2-Red-Team-Drift.md"},
+  "contrast": {
+   "paths": [
+    "work/boards/phase-2/gate-2/evidence/20261111_Gate-2-Contrast-Table.json"
+   ],
+   "notes": "work/handoffs/phase-2/20261111_Gate-2-Accessibility-Evidence.md"
+  },
+  "screens": {
+   "dir": "work/boards/phase-2/gate-2/evidence",
+   "notes": "work/handoffs/phase-2/20261111_Gate-2-Accessibility-Evidence.md"
+  },
+  "tokens": {
+   "notes": "work/handoffs/phase-2/20261111_Gate-2-Engineer-Notes.md"
+  },
+  "scores": {
+   "cd": "work/handoffs/phase-2/20261111_Gate-2-CD-Scores.json",
+   "drift": "work/handoffs/phase-2/20261111_Gate-2-Red-Team-Drift.md"
+  },
   "tested": [
-   {"who": "a11y", "file": "work/handoffs/phase-2/20261111_Gate-2-Accessibility-Evidence.md"},
-   {"who": "engineer", "file": "work/handoffs/phase-2/20261111_Gate-2-Engineer-Notes.md"},
-   {"who": "drift", "file": "work/handoffs/phase-2/20261111_Gate-2-Red-Team-Drift.md"},
-   {"who": "cd", "file": "work/handoffs/phase-2/20261111_CD-Gate-2-Whole-Guide-Read.md"},
-   {"who": "editor", "file": "work/handoffs/phase-2/20261111_Gate-2-Editor-Notes.md"},
-   {"who": "dataviz", "file": "work/handoffs/phase-2/20261111_Phase-3-Proposal-Draft.md"},
-   {"who": "board", "file": "work/handoffs/phase-2/20261111_Gate-2-Board-Builder-Notes.md"}
+   {
+    "who": "a11y",
+    "file": "work/handoffs/phase-2/20261111_Gate-2-Accessibility-Evidence.md"
+   },
+   {
+    "who": "engineer",
+    "file": "work/handoffs/phase-2/20261111_Gate-2-Engineer-Notes.md"
+   },
+   {
+    "who": "drift",
+    "file": "work/handoffs/phase-2/20261111_Gate-2-Red-Team-Drift.md"
+   },
+   {
+    "who": "cd",
+    "file": "work/handoffs/phase-2/20261111_CD-Gate-2-Whole-Guide-Read.md"
+   },
+   {
+    "who": "editor",
+    "file": "work/handoffs/phase-2/20261111_Gate-2-Editor-Notes.md"
+   },
+   {
+    "who": "dataviz",
+    "file": "work/handoffs/phase-2/20261111_Phase-3-Proposal-Draft.md"
+   },
+   {
+    "who": "board",
+    "file": "work/handoffs/phase-2/20261111_Gate-2-Board-Builder-Notes.md"
+   }
   ],
-  "weight": {"frozen": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/762f3743-f9b3-59db-919e-2c641afbd759/scratchpad/gate-2/review/guide.html", "frozen_bytes_logged": 8965291, "preview": "work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html", "budget_bytes": 15500000, "limit_bytes": 16000000, "projected_bytes": 14600000}
+  "weight": {
+   "frozen": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/762f3743-f9b3-59db-919e-2c641afbd759/scratchpad/gate-2/review/guide.html",
+   "frozen_bytes_logged": 8965291,
+   "preview": "work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html",
+   "budget_bytes": 15500000,
+   "limit_bytes": 16000000,
+   "projected_bytes": 14600000
+  }
  },
- "foot": "Built {built_date} by the studio’s board builder from the files each panel names. Studio codes in the small reference lines lead to the decision log."
+ "foot": "Built {built_date} by the studio’s board builder from the files each panel names. Studio codes in the small reference lines lead to the decision log.",
+ "status_short": {
+  "ready": "Ready",
+  "waiting": "Waiting",
+  "partial": "Part ready"
+ }
 }

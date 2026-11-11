@@ -256,6 +256,7 @@ ALL_IMAGES = []
 
 
 RENDER = True
+REUSE = False
 
 
 def run_jobs(jobs):
@@ -303,7 +304,7 @@ def frame(rec, alt, zoom=False, cls=''):
         zregion = zw > REGION_W
         za = f' role="region" tabindex="0" aria-label="{esc(alt)} at twice the size; scrolls sideways"' if zregion else ''
         out.append(f'<div class="frame zoom{" wide" if zregion else ""}"{za}><img src="{rec["src"]}" width="{zw}" height="{zh}" alt="" class="px" loading="lazy" decoding="async"></div>')
-    return ''.join(out)
+    return f'<div class="frames">{"".join(out)}</div>' if len(out) > 1 else out[0]
 
 
 def cell_html(cell, col, item, row, zoom, k):
@@ -342,6 +343,8 @@ def rows_html(item):
         h = (f'<div class="row{" stack" if item.get("stack") else ""}"><p class="row-label">{esc(row["label"])}'
              f'{"<span class=zl>The second view in each pair doubles every pixel.</span>" if zoom and not out and not more else ""}</p>{nt}<div class="cells">{cells}</div></div>')
         (more if row.get('more') else out).append(h)
+    if item.get('grid'):
+        out = [f'<div class="rowgrid">{"".join(out)}</div>']
     if more:
         out.append(f'<details class="more"><summary>{esc(item.get("more_label", "More"))}</summary>{"".join(more)}</details>')
     return ''.join(out)
@@ -374,8 +377,8 @@ def fits_item(item):
         master = (ASSETS / 'civic-line-v6/fit-24' / f['master_from_2x']['svg']).resolve()
         rows.append({'label': f'{fid} {f["word"]}', 'zoom': True, 'cells': [
             {'img': {'svg': rel(master), 'h': 24}},
-            {'img': {'copy': rel(ASSETS / 'civic-line-v6/fit-24' / f['png_1x'])}}]})
-    it = dict(item, rows=rows)
+            {'img': {'svg': rel(ASSETS / 'civic-line-v6/fit-24' / f['svg']), 'h': 24}}]})
+    it = dict(item, rows=rows, grid=True)
     return card(item, rows_html(it))
 
 
@@ -387,7 +390,7 @@ def civic_item(item):
         rows.append({'label': p['name'], 'zoom': True, 'cells': [
             {'img': {'sprite': p['v5'], 'h': 48}},
             {'img': {'svg': rel(civic_black(cl)), 'h': 48}}]})
-    body = rows_html(dict(item, rows=rows))
+    body = rows_html(dict(item, rows=rows, grid=True))
     tiles = []
     for sid, name in item['v5_set']:
         r = image({'sprite': sid, 'h': 48}, slug('V5-Topic', name, '48'))
@@ -432,11 +435,15 @@ def run_pixel_fit(C):
         files = sorted(glob.glob(str(ASSETS / fam['files'])))
         need(files, f'no files for {fam["key"]}')
         jp = d / f'pixel-fit-{fam["key"]}.json'
-        cmd = ['node', str(SCRIPTS / 'icon_pixel_fit_check.js'), '--size', str(fam['size'])]
-        if fam.get('weight'):
+        if REUSE and jp.exists():
+            cmd = None
+        else:
+            cmd = ['node', str(SCRIPTS / 'icon_pixel_fit_check.js'), '--size', str(fam['size'])]
+        if cmd and fam.get('weight'):
             cmd += ['--weight', str(fam['weight'])]
-        cmd += ['--json', str(jp)] + files
-        subprocess.run(cmd, cwd=ROOT / 'work/build', capture_output=True, text=True, env=dict(os.environ, TMPDIR=str(SCRATCH)))
+        if cmd:
+            cmd += ['--json', str(jp)] + files
+            subprocess.run(cmd, cwd=ROOT / 'work/build', capture_output=True, text=True, env=dict(os.environ, TMPDIR=str(SCRATCH)))
         need(jp.exists(), f'the pixel-fit check wrote nothing for {fam["key"]}')
         res = json.loads(jp.read_text())['results']
         thin = [r['scales']['1x']['stroke_px']['thinnest'] for r in res if r['scales']['1x']['stroke_px'].get('thinnest') is not None]
@@ -451,6 +458,8 @@ def run_sprite():
     d = SCRATCH / 'checks'
     d.mkdir(parents=True, exist_ok=True)
     jp = d / 'sprite-check.json'
+    if REUSE and jp.exists():
+        return json.loads(jp.read_text())
     r = subprocess.run(['node', str(SCRIPTS / 'sprite_check.js'), '--json', str(jp)], cwd=ROOT / 'work/build',
                        capture_output=True, text=True, env=dict(os.environ, TMPDIR=str(SCRATCH)))
     need(jp.exists(), 'sprite_check.js wrote nothing: ' + r.stdout[-300:] + r.stderr[-300:])
@@ -537,14 +546,14 @@ def craft_sheets(C):
         r = image({'svg': rel(f[-1]), 'h': 16}, slug('Sheet-16', name))
         t16.append((name, r))
     for p in [i for i in pillar_fits() if i['size_px'] == 16]:
-        r = image({'copy': rel(ASSETS / 'pillar-icons' / p['png_1x'])}, slug('Sheet-16-Pillar', p['word']))
+        r = image({'svg': rel(ASSETS / 'pillar-icons' / p['svg']), 'h': 16}, slug('Sheet-16-Pillar', p['word']))
         t16.append((p['word'], r))
     s16 = sheet('sheet-16', K['sheet_16_h'], K['sheet_16_cap'], t16, zoom=True)
     # 24 px: the 37 fits and the four pillar fits, as 1x screens draw them
-    t24 = [(p['word'], image({'copy': rel(ASSETS / 'pillar-icons' / p['png_1x'])}, slug('Sheet-24-Pillar', p['word'])))
+    t24 = [(p['word'], image({'svg': rel(ASSETS / 'pillar-icons' / p['svg']), 'h': 24}, slug('Sheet-24-Pillar', p['word'])))
            for p in pillar_fits() if p['size_px'] == 24]
     for f in fits_manifest():
-        t24.append((f'{f["id"]} {f["word"]}', image({'copy': rel(ASSETS / 'civic-line-v6/fit-24' / f['png_1x'])}, slug('Sheet-24', f['id']))))
+        t24.append((f'{f["id"]} {f["word"]}', image({'svg': rel(ASSETS / 'civic-line-v6/fit-24' / f['svg']), 'h': 24}, slug('Sheet-24', f['id']))))
     FILL['n_24'] = len(t24)
     FILL['n_fits'] = len(fits_manifest())
     s24 = sheet('sheet-24', fill(K['sheet_24_h']), K['sheet_24_cap'], t24, zoom=True)
@@ -631,7 +640,7 @@ def similarity_panel(C):
         for run, d, f in flagged:
             a_id = re.search(r'Fit-((?:CL|R)-\d+)', f['a']).group(1)
             b_id = re.match(r'((?:CL|R)-\d+)', f['b']).group(1)
-            ra = image({'copy': rel(ASSETS / 'civic-line-v6/fit-24' / fits[a_id]['png_1x'])}, slug('Sheet-24', a_id))
+            ra = image({'svg': rel(ASSETS / 'civic-line-v6/fit-24' / fits[a_id]['svg']), 'h': 24}, slug('Sheet-24', a_id))
             rb = image({'svg': rel(civic_black(inv[b_id])), 'h': 24}, slug('Likeness', b_id, '24'))
             pr.append(f'<li class="pair"><figure class="shot">{frame(ra, f"{a_id} {fits[a_id]["word"]}, the fit", zoom=True)}<figcaption><b>{esc(a_id)} {esc(fits[a_id]["word"])}</b> <span>the fit</span></figcaption></figure>'
                       f'<figure class="shot">{frame(rb, f"{f["b"]}, the master at 24 px", zoom=True)}<figcaption><b>{esc(f["b"])}</b> <span>the master</span></figcaption></figure>'
@@ -687,8 +696,20 @@ def md_items(block):
     return items
 
 
+CODE = r'(?:DR|D2|D1|G1|DC|Q)-\d+'
+MOVED = set()
+
+
+def strip_codes(s):
+    """Others' words keep their sentences; a parenthesis that holds only studio codes moves to the reference line."""
+    def one(m):
+        MOVED.update(re.findall(CODE, m.group(0)))
+        return ''
+    return re.sub(r'\s*\((?:' + CODE + r'(?:,\s*|\s+and\s+|;\s*)?)+\)', one, str(s))
+
+
 def md_inline(s):
-    s = esc(s)
+    s = esc(strip_codes(s))
     s = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', s)
     s = re.sub(r'`([^`]+)`', r'<code>\1</code>', s)
     return s
@@ -781,17 +802,17 @@ def contrast_from(d, C):
     groups = {}
     for p in d['permittedBelowThreshold']:
         groups.setdefault(p.get('permittedBecause') or p.get('criterion') or '', []).append(p)
-    gl = ''.join(f'<tr><th scope="row">{esc(reason)}</th><td class="num">{len(ps)}</td><td>{esc(", ".join(sorted({p["css"].replace("--oa-color-", "") for p in ps}))[:400])}</td></tr>'
+    gl = ''.join(f'<tr><th scope="row">{esc(strip_codes(reason))}</th><td class="num">{len(ps)}</td><td>{esc(", ".join(sorted({p["css"].replace("--oa-color-", "") for p in ps}))[:400])}</td></tr>'
                  for reason, ps in sorted(groups.items(), key=lambda kv: -len(kv[1])))
     under = d['marksInsideGrounds'].get('underThreshold') or [r for r in d['marksInsideGrounds']['rows'] if r.get('result') not in ('pass',)]
-    ul = ''.join(f'<tr><th scope="row">{esc(r.get("token", "").replace("oa.color.", ""))}</th><td>{esc(r.get("ground", "").replace("oa.color.", ""))}</td><td class="num">{r.get("ratio")}</td><td class="num">{r.get("threshold")}</td><td>{esc(r.get("note", ""))}</td></tr>' for r in under)
+    ul = ''.join(f'<tr><th scope="row">{esc(r.get("token", "").replace("oa.color.", ""))}</th><td>{esc(r.get("ground", "").replace("oa.color.", ""))}</td><td class="num">{r.get("ratio")}</td><td class="num">{r.get("threshold")}</td><td>{esc(strip_codes(r.get("note", "")))}</td></tr>' for r in under)
     ch26 = T.get('chapter26TableRatioResults', {}).get('match', 0)
     body = (f'<p class="intro">The accessibility lead measured {T["pairs"]} pairs, every color token on every surface it may sit on, in the light and the dark theme. '
             f'{by.get("pass", 0)} pass, {by.get("exempt", 0)} are exempt under WCAG’s own terms or carry no meaning, {by.get("permitted", 0)} sit under their threshold where a stated rule of the guide covers them, and {T["failures"]} fail.</p>'
             f'{matrix}<h3 class="sub">Failing pairs</h3>{fail_html}'
             f'<h3 class="sub">Pairs under a threshold, and why the guide permits them</h3><p>{T["permittedBelowThreshold"]} pairs sit under the threshold a text or graphic role would need. Each falls into one of these cases.</p>'
             f'<div class="tw" role="region" tabindex="0" aria-label="Pairs under a threshold; scrolls sideways"><table><thead><tr><th scope="col">Why the guide permits it</th><th scope="col">Pairs</th><th scope="col">Tokens</th></tr></thead><tbody>{gl}</tbody></table></div>'
-            f'<details class="more"><summary>{len(under)} marks under 3 to 1 on a field or band inside a surface</summary><p class="caption">{esc(d["marksInsideGrounds"]["note"])}</p>'
+            f'<details class="more"><summary>{len(under)} marks under 3 to 1 on a field or band inside a surface</summary><p class="caption">{esc(strip_codes(d["marksInsideGrounds"]["note"]))}</p>'
             f'<div class="tw" role="region" tabindex="0" aria-label="Marks inside grounds; scrolls sideways"><table><thead><tr><th scope="col">Token</th><th scope="col">Ground</th><th scope="col">Ratio</th><th scope="col">Needs</th><th scope="col">Note</th></tr></thead><tbody>{ul}</tbody></table></div></details>'
             f'<dl class="facts"><div><dt>Chapter 26’s published ratios</dt><dd>{ch26} of {T.get("chapter26TableRatiosChecked", 0)} in the token table and {T.get("chapter26ProseMatches", 0)} of {T.get("chapter26ProseRatiosChecked", 0)} in its words match the recomputed ratio.</dd></div>'
             f'<div><dt>The two token files</dt><dd>{T.get("cssValuesDifferingFromJson", 0)} values differ between tokens.css and tokens.json, and {T.get("storedRatiosDiffering", 0)} of {T.get("storedRatiosChecked", 0)} stored ratios differ from the measured one.</dd></div></dl>')
@@ -982,12 +1003,18 @@ STATUS = {}
 def panel(key, P, body, status):
     STATUS[key] = status
     n = P['n']
+    refs = P['refs']
+    if MOVED:
+        refs += ' · from teammates’ files: ' + ' · '.join(sorted(MOVED, key=lambda c: (c.split('-')[0], int(c.split('-')[1]))))
+        MOVED.clear()
     return (f'<section class="sec" id="p-{key}" aria-labelledby="h-{key}"><div class="sec-top"><p class="label">Panel {n}</p>{status_chip(status)}</div>'
-            f'<h2 class="sec-h" id="h-{key}">{esc(P["title"])}</h2>{body}{refline(P["refs"], "panel " + key)}</section>')
+            f'<h2 class="sec-h" id="h-{key}">{esc(P["title"])}</h2>{body}{refline(refs, "panel " + key)}</section>')
 
 
-def status_chip(st):
-    return f'<span class="st {st if isinstance(st, str) else st[0]}">{esc(status_words(st))}</span>'
+def status_chip(st, short=False):
+    kind = st if isinstance(st, str) else st[0]
+    words = CONTENT_DATA['status_short'][kind] if short else status_words(st)
+    return f'<span class="st {kind}">{esc(words)}</span>'
 
 
 def status_words(st):
@@ -1004,7 +1031,7 @@ CONTENT_DATA = {}
 def cover(C, built):
     K = C['cover']
     order = ['approves', 'refinements', 'craft', 'similarity', 'contrast', 'tokens', 'screens', 'scores', 'tested', 'weight']
-    toc = ''.join(f'<li><a href="#p-{k}"><span class="n">{C["panels"][k]["n"]:02d}</span><span class="t">{esc(C["panels"][k]["nav"])}</span></a>{status_chip(STATUS[k])}</li>' for k in order)
+    toc = ''.join(f'<li><a href="#p-{k}"><span class="n">{C["panels"][k]["n"]:02d}</span><span class="t">{esc(C["panels"][k]["nav"])}</span></a>{status_chip(STATUS[k], short=True)}</li>' for k in order)
     ready = sum(1 for k in order if STATUS[k] == 'ready')
     deck = ''.join(f'<p>{esc(x)}</p>' for x in K['deck'])
     return (f'<header class="cover"><div class="mast"><b>OATH &amp; ACTION</b><span class="label">{esc(K["kicker"])}</span></div>'
@@ -1053,7 +1080,7 @@ h1{font:var(--oa-type-title);letter-spacing:var(--oa-type-title-letter-spacing);
 .toc a{display:inline-flex;align-items:baseline;gap:var(--oa-space-150);min-height:2.75rem;align-items:center;text-decoration:none;font:var(--oa-type-ui);font-weight:600}
 .toc a:hover .t{text-decoration:underline}
 .toc .n{font-variant-numeric:tabular-nums;color:var(--ink-2);font-weight:400;min-width:1.6em}
-.st{font:var(--oa-type-caption);font-weight:600;white-space:nowrap;padding:0 .5em;border:var(--oa-border-width-hairline) solid var(--strong);line-height:1.6}
+.st{font:var(--oa-type-caption);font-weight:600;padding:0 .5em;max-width:100%;border:var(--oa-border-width-hairline) solid var(--strong);line-height:1.6}
 .st.ready{background:var(--oa-color-palette-charcoal);color:var(--oa-color-palette-newsprint);border-color:var(--oa-color-palette-charcoal)}
 .st.waiting,.st.partial{background:transparent;color:var(--ink)}
 .card .st.waiting,.card .st.partial{color:var(--wink)}
@@ -1084,7 +1111,10 @@ h1{font:var(--oa-type-title);letter-spacing:var(--oa-type-title-letter-spacing);
 .cells{display:flex;flex-wrap:wrap;gap:var(--oa-space-300) var(--oa-space-500);align-items:flex-start}
 .row.stack .cells{flex-direction:column;flex-wrap:nowrap}
 .shot{margin:0;min-width:0;max-width:100%;display:flex;flex-direction:column;gap:var(--oa-space-100)}
-.shot figcaption{font:var(--oa-type-caption);color:var(--wink-2);border-top:var(--oa-border-width-bar) solid var(--oa-color-tint-stone-n70);padding-top:var(--oa-space-050);max-width:24rem}
+.shot figcaption{font:var(--oa-type-caption);color:var(--wink-2);border-top:var(--oa-border-width-bar) solid var(--oa-color-tint-stone-n70);padding-top:var(--oa-space-050)}
+.frames{display:flex;flex-wrap:wrap;gap:var(--oa-space-150) var(--oa-space-300);align-items:flex-end;max-width:100%}
+.rowgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,17rem),1fr));gap:0 var(--oa-space-400)}
+.rowgrid .cells{gap:var(--oa-space-200) var(--oa-space-300)}
 .shot.after figcaption{border-top-color:var(--oa-color-palette-charcoal)}
 .shot figcaption b{color:var(--wink);font-weight:600}
 .shot figcaption span{white-space:nowrap}
@@ -1250,16 +1280,18 @@ def checks(page):
 
 
 def main():
-    global LOG, CONTENT_DATA, RENDER
+    global LOG, CONTENT_DATA, RENDER, REUSE
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     ap.add_argument('--strict', action='store_true')
     ap.add_argument('--check', action='store_true')
     ap.add_argument('--no-render', action='store_true')
+    ap.add_argument('--reuse-checks', action='store_true', help='reuse this session\'s pixel-fit and sprite check outputs')
     ap.add_argument('--out', type=pathlib.Path, default=OUT)
     a = ap.parse_args()
     C = json.loads(CONTENT.read_text())
     CONTENT_DATA = C
     RENDER = not a.no_render
+    REUSE = a.reuse_checks
     need('—' not in CONTENT.read_text(), 'the content file holds an em dash (W21)')
     LOG = read_log()
     pal, ver = tokens()

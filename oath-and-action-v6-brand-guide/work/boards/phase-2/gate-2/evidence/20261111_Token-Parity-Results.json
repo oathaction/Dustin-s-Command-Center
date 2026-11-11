@@ -1,0 +1,151 @@
+{
+ "about": "Token parity for the Gate 2 board: the token files against each other, and the guide page against the token files. Written by work/build/tests/tokens/token_parity_evidence.py.",
+ "page": "work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html",
+ "page_sha256": "36ee7624f3b63f9a8613b92eeddfb0584cb7d72ff48c133d78e5afb6c4d48b05",
+ "token_files": {
+  "tokens.css": {
+   "bytes": 94694,
+   "sha256": "8bb46d1d444b8a60ac14164b395ca401e199b9ed735423090451ebb2f1544728"
+  },
+  "tokens.json": {
+   "bytes": 284027,
+   "sha256": "66d8f0f0075bba50202bd0584768e27d55076095b0d9c80c5f5b6a7cc3a238b5"
+  },
+  "version": "6.0.0-gate2.8"
+ },
+ "parity": {
+  "command": "python3 -I work/build/tests/tokens/test_token_parity.py",
+  "exit": 0,
+  "pass": true,
+  "output": [
+   "parity: 504 tokens, 624 :root properties, 92 short names per surface class and theme, 0 failures"
+  ]
+ },
+ "suite": {
+  "file": "work/build/tests/tokens/20261106_Token-Test-Results.json",
+  "run": "2026-11-11",
+  "status": "pre-release",
+  "passed": true,
+  "version": "6.0.0-gate2.8",
+  "steps": [
+   {
+    "step": "build check",
+    "result": "pass",
+    "detail": "tokens_build --check: tokens.json and tokens.css match the source (504 tokens)."
+   },
+   {
+    "step": "parity",
+    "result": "pass",
+    "detail": "504 tokens, 624 :root properties, 92 short names in each of 4 surface classes and the light and dark themes, 0 failures"
+   },
+   {
+    "step": "rules",
+    "result": "pass",
+    "detail": "504 tokens, 30 derived colors and tints, 205 semantic color cells measured, light theme 70 roles on newsprint, dark theme 62 roles on charcoal, 0 failures"
+   },
+   {
+    "step": "self-test",
+    "result": "pass",
+    "detail": "clean files pass; plants caught 44 of 44"
+   },
+   {
+    "step": "cross-check",
+    "result": "pass",
+    "detail": "sd-crosscheck: Style Dictionary 5.8.0 read 504 tokens (306 color, 5 fontFamily, 5 fontWeight, 15 typography, 142 dimension, 22 number, 6 duration, 3 cubicBezier); 504 agree with tokens.css; 120 typography part properties are tokens.css's own; 0 disagreements; planted Stone change reported"
+   },
+   {
+    "step": "rendered",
+    "result": "pass",
+    "detail": "render: Chromium 153.0.8010.12 resolved 473 token values, 30 color-mix() derivations (largest channel difference 0), 368 surface short names nested in another surface, 14 type styles at 390 and 1440 px, 6 durations under reduced motion and 14 theme cases (device light and dark, the root's attribute, nested themes and surfaces); 0 failures; planted red leak onto Prussian reported; planted dark block that overrides data-oa-theme=\"light\" reported"
+   }
+  ],
+  "counts": {
+   "color.palette": {
+    "primitive": 7
+   },
+   "color.derived": {
+    "primitive": 3
+   },
+   "color.tint": {
+    "primitive": 27
+   },
+   "color (roles)": {
+    "semantic": 145
+   },
+   "font": {
+    "untiered": 10
+   },
+   "type": {
+    "semantic": 14
+   },
+   "space": {
+    "untiered": 12
+   },
+   "size": {
+    "untiered": 5
+   },
+   "layout": {
+    "untiered": 23
+   },
+   "radius": {
+    "untiered": 2
+   },
+   "border": {
+    "untiered": 7
+   },
+   "opacity": {
+    "untiered": 2
+   },
+   "motion": {
+    "untiered": 9
+   },
+   "zIndex": {
+    "untiered": 5
+   },
+   "chart.color": {
+    "component": 17,
+    "semantic": 64
+   },
+   "chart (sizes)": {
+    "untiered": 97
+   },
+   "component": {
+    "component": 44,
+    "untiered": 11
+   }
+  }
+ },
+ "page_checks": [
+  {
+   "check": "the page inlines tokens.css byte for byte, under the build's one-line note of where it came from",
+   "pass": true,
+   "detail": "inlined 94,694 bytes and tokens.css 94,694 bytes, both SHA-256 4ae8989f97a16674 with the final newline trimmed"
+  },
+  {
+   "check": "the tokens.css download is tokens.css",
+   "pass": true,
+   "detail": "20261106_Oath-And-Action-Tokens.css: 94,694 bytes, SHA-256 8bb46d1d444b8a60"
+  },
+  {
+   "check": "the tokens.css zip holds tokens.css alone",
+   "pass": true,
+   "detail": "20261106_Oath-And-Action-Tokens.zip: ['tokens.css'], 94,694 bytes"
+  },
+  {
+   "check": "the tokens.json download is tokens.json",
+   "pass": true,
+   "detail": "20261106_Oath-And-Action-Tokens.json: 284,027 bytes, SHA-256 66d8f0f0075bba50"
+  },
+  {
+   "check": "the tokens.json zip holds tokens.json alone",
+   "pass": true,
+   "detail": "20261106_Oath-And-Action-Tokens-Json.zip: ['tokens.json'], 284,027 bytes"
+  },
+  {
+   "check": "the page prints the token files' version",
+   "pass": true,
+   "detail": "6.0.0-gate2.8"
+  }
+ ],
+ "pass": true
+}
