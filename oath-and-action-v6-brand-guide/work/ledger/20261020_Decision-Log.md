@@ -3490,3 +3490,20 @@ Dustin's words, in the new chat that opened Phase 3: "Gate 2 is approved as prop
 | D3-02 | The api.data.gov key went in through the environment's secure credential form for api.open.fec.gov and api.congress.gov, header X-Api-Key, and each answered one test request with 200 (FEC: a 2024 House race; Congress.gov: H.R. 7008, the Stop Insider Trading Act). The Census key, read from `CENSUS_API_KEY`, answered one American Community Survey request with 200. No key value is written to any file, log, brief or commit, and scripts that need a key variable for FEC or Congress set it to the placeholder `proxy-injected` | DR-230; Dustin asked for each key to be tested before use |
 | D3-03 | The fresh container was set up by V11's three steps, and `guide_build.py --strict` passes as committed: 0 warnings, 185 rules, 433 specimens, 9,447,454 bytes, the size of version 8 | V16 section 3; Phase 3 starts from a build that matches the record |
 | D3-04 | The Gate 2 report keeps its text, with "Status: waiting for Dustin's approval" in its header; this log holds the approval | Dustin named the decision log for the approval and nothing else; a report is the record of what he was asked |
+
+## Answers on the round 0 questions, November 11, 2026
+
+The main session asked four questions with its round 0 plan. Dustin: "Yeah, I agree with all of your recommendations. Please". The studio reads each question as answered as recommended.
+
+| # | Decision | Source |
+|---|---|---|
+| DR-233 | Chapter 13 takes a rule for corrections: a dated note at the top of the piece that says what was wrong and what changed; the fixed chart replaces the old one; a corrections page keeps every note. It joins the proposal's twelve rules | Dustin, November 11, as recommended (round 0 question 1) |
+| DR-234 | The categorical set stays with the four brand inks, Charcoal, Prussian, Verdigris and Stone, and adds no hue. Past four groups, a chart splits into small multiples or shows one group in ink and the rest in gray, with every group labeled on the chart | Dustin, November 11, as recommended (round 0 question 2) |
+| DR-235 | The chart kit's renderer is built in round 0 so a later page can use it with no install: drop in a CSV, pick a chart form, download the SVG, PNG and CSV. The page itself goes to Gate 3 as a proposed item for Phase 5's asset package | Dustin, November 11, as recommended (round 0 question 3) |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-05 | Dustin sent no notes on version 8 or the Gate 2 board; any he sends later join the next round | Question 4 carried no recommendation, and his reply named none |
+| D3-06 | "Please" at the end of his reply is read as his go for round 0, as D2-1877 read the same cut-off word as "Please proceed" | The plan asked for his answers and his go in one reply; round 0 sits inside the approved proposal, and every step is committed and can be undone |
