@@ -49,7 +49,7 @@
     loc.forEach(function (id) { $$('[data-loc="' + id + '"]').forEach(function (a) { a.setAttribute('aria-current', 'location'); }); });
     var part = sec.getAttribute('data-part') || (sec.id === 'contents' ? 'contents' : null);
     if (part) $$('[data-part-link="' + part + '"]').forEach(function (a) { a.setAttribute('aria-current', 'location'); });
-    keepInView($('.rail [data-loc="' + sec.id + '"]'), rail, 72);   // clear of the rail's "More below" cue (CA-S8)
+    keepInView($('.rail [data-loc="' + sec.id + '"]'), rail, 88);   // clear of the rail's "More below" cue (CA-S8)
     railMore();
   }
 

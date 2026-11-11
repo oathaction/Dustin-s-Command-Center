@@ -173,7 +173,7 @@ def spec(css_text, body):
 
 
 def code(text):
-    return f'<code class="sx-code">{hx(e(text))}</code>'
+    return f'<code class="sx-code">{hx(e(text, quote=False))}</code>'
 
 
 def hx(text):
@@ -219,12 +219,12 @@ def specimens():
     # flows with the column at true size. Short names only, so it follows the page; under 6 KB.
     o_steps = [("Surface", "Charcoal"), ("Role", "Text"), ("Emphasis", "Secondary"), ("State", "None"), ("Component", "None")]
     S["s-26-opener"] = ("<style>.c26o{color:var(--oa-color-text-primary);font:var(--oa-type-body)}.c26o p{margin:0}"
-                        ".c26o-t{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin:0 0 8px}"
+                        ".c26o .c26o-t{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin:0 0 8px}"
                         ".c26o-s{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(7.5rem,1fr));gap:8px}"
                         ".c26o-s li{border:1px solid var(--oa-color-border-strong);padding:8px 12px;display:grid;gap:2px;align-content:start}"
                         ".c26o-n{font:var(--oa-type-data-label);color:var(--oa-color-text-secondary)}.c26o-k{font:var(--oa-type-ui);font-weight:var(--oa-font-weight-bold)}"
                         ".c26o-v{font:var(--oa-type-caption)}"
-                        ".c26o-r{margin:8px 0 0;padding:8px 12px;border-left:var(--oa-border-width-bar) solid var(--oa-color-graphic-essential);font:var(--oa-type-ui)}"
+                        ".c26o .c26o-r{margin:12px 0 0;padding:8px 12px;border-left:var(--oa-border-width-bar) solid var(--oa-color-graphic-essential);font:var(--oa-type-ui)}"
                         ".c26o-r code{white-space:nowrap}</style>\n"
                         '<div class="c26o"><p class="c26o-t">Five steps to a token, for a caption on a Charcoal panel</p><ol class="c26o-s">'
                         + "".join(f'<li><span class="c26o-n">{i}</span><span class="c26o-k">{k}</span><span class="c26o-v">{v}</span></li>' for i, (k, v) in enumerate(o_steps, 1))

@@ -1519,10 +1519,11 @@ class TokenCSS:
             if re.fullmatch(r"--oa-type-[a-z-]+", n) and n in self.decl and "var(" in self.decl[n]:
                 deps.update(f"{n}-{part}" for part in TYPE_PARTS if f"{n}-{part}" in self.decl)
         order = self.closure(deps)
-        lines = [f"/* As tokens.css holds them: the custom properties chapter {num} names, and every property they read.",
-                 "   This block holds no themes and no surface classes, so it cannot stand in for tokens.css. Link",
-                 "   tokens.css, the one source, before your own styles. With it linked, the theme sets the page's ground",
-                 "   and the body takes no surface class. */",
+        lines = [f"/* As tokens.css holds them: the custom properties chapter {num} names,",
+                 "   and every property they read. This block holds no themes and no",
+                 "   surface classes, so it cannot stand in for tokens.css. Link tokens.css,",
+                 "   the one source, before your own styles. With it linked, the theme sets",
+                 "   the page's ground and the body takes no surface class. */",
                  ":root {"]
         lines += [f"  {n}: {self.decl[n]};" for n in order] + ["}"]
         keep = set(order)
@@ -3210,6 +3211,26 @@ def self_test():
                       "failure": {"specimen": "s-26-e", "caption": "A fixture."}}),
         rule("26.4", {"correct": {"specimen": "s-26-owed", "caption": "A fixture."}, "failure": {"specimen": "s-26-gone", "caption": "A fixture."}})])
 
+    # round 2 (November 11, 2026): the live stages keep their markup (CA-S6), a live link to tokens.css serves the page's
+    # copy (CA-M1), a flowing plate may break out (call 13), the paired stages (call 17) and the For builders block (call 6)
+    r2_code = {"c-26-caption.html": '<p class="oa-r2-p">Symbol CL-001 and reform R-04, words a builder copies.</p>\n'
+                                    '<p class="oa-r2-p"><a class="oa-r2-a" href="tokens.css" download="x.css">Download tokens.css</a></p>\n',
+               "c-26-caption.css": ".oa-r2-p { color: var(--oa-color-text-primary) }\n.oa-r2-a { color: var(--oa-color-text-primary) }\n"}
+    r2_specs = {"s-26-wide.html": "<p>A flowing plate that breaks out, CL-001.</p>", "s-26-fixed.html": "<p>A fixed plate.</p>"}
+    r2_man = {"s-26-wide": {"chapter": "26", "rule": "26.1", "alt": "A flowing plate, a fixture.", "breakout": True, "interactive": True, "fit_switch": False, "notes": "fixture"},
+              "s-26-fixed": {"chapter": "26", "rule": "26.1", "alt": "A fixed plate, a fixture.", "width_px": 360, "breakout": True, "notes": "fixture"}}
+    r2 = chapter("26", "tokens", "Tokens and how to choose them", [
+        rule("26.1", {"correct": {"specimen": "s-26-wide", "caption": "A fixture."}, "failure": {"specimen": "s-26-fixed", "caption": "A fixture."},
+                      "code": {"set": "c-26-caption", "name": "Round 2 fixture"}, "tokens": ["oa.color.text.primary.onNewsprint", "--oa-color-surface"]})])
+
+    def r2_stage(pg, theme):
+        m = re.search(r'data-specimen="c-26-caption--' + theme + r'".*?<div class="code-root">(.*?)</div></div></div>', pg, re.S)
+        return m.group(1) if m else ""
+
+    def r2_block(pg):
+        m = re.search(r'<pre class="code" id="[^"]*-css" data-plate-scroll data-frame-name="CSS for chapter \d+"><code>(.*?)</code></pre>', pg, re.S)
+        return html.unescape(m.group(1)) if m else ""
+
     def json_link(pg):
         m = re.search(r'<a class="btn" id="tokens-json-download" data-oa-file href="data:application/json;charset=utf-8;base64,([^"]+)"[^>]*data-oa-zip="([^"]+)"', pg)
         return m
@@ -3294,6 +3315,18 @@ def self_test():
                     ("each example's line, then its correct plate, failure plate and code, in order",
                      lambda pg: 0 < pg.find('id="rule-26-1-ex-1"') < pg.find('id="fig-s-26-a"') < pg.find('id="fig-s-26-b"') < pg.find('id="code-c-26-x"')
                      < pg.find('id="rule-26-1-ex-2"') < pg.find('id="fig-s-26-c"') < pg.find('id="fig-s-26-d"'))]}),
+        ("round 2: live stages keep their markup, a live tokens.css link serves the page's copy, a flowing plate breaks out, paired stages, the For builders block",
+         {"26-tokens.json": r2}, {"specimens": r2_specs, "manifest": r2_man, "code": r2_code},
+         {"html": ['data-breakout>', '<div class="code-demo code-demo--pair">', '<a data-oa-file="tokens-download" class="oa-r2-a" href="tokens.css"',
+                   'It holds no themes and no surface classes, so it cannot stand in for tokens.css.', 'the body takes no surface class'],
+          "tests": [("no span.nw inside either live stage, and the ID text stays as the builder wrote it",
+                     lambda pg: all(st and 'class="nw"' not in st and "CL-001" in st for st in (r2_stage(pg, "light"), r2_stage(pg, "dark")))),
+                    ("the panel keeps the builder's link, with no data-oa-file", lambda pg: "href=&quot;tokens.css&quot;" in pg and "data-oa-file=&quot;" not in pg),
+                    ("a fixed-width plate never takes data-breakout", lambda pg: pg.count(" data-breakout>") == 1),
+                    ("the For builders block holds no surface class, no theme and no claim that it works alone",
+                     lambda pg: r2_block(pg) and ".oa-surface-" not in r2_block(pg) and "data-oa-theme" not in r2_block(pg) and "works on its own" not in pg),
+                    ("a short name's light and dark targets join the block", lambda pg: "--oa-color-surface-newsprint:" in r2_block(pg) and "--oa-color-surface-charcoal:" in r2_block(pg)),
+                    ("a short name's chip prints each theme's value", lambda pg: 'class="tok-val">Light theme #' in pg and 'class="tok-val">Dark theme #' in pg)]}),
         ("promotion C: four families; the 37 fits as oa-sym-<id>-24px; CL-075 at 48 px; DR-208's 16 px files, never _archive/",
          {"10-symbols.json": c4, "11-icons.json": c11}, {"specimens": c_four, "manifest": {**c4m, **c11m}},
          {"absent": ["reference(s) to no symbol", "draws the 24 px fit", "draws its master on 1x", "[sprite ", "switches to", "is marked oa-at-",

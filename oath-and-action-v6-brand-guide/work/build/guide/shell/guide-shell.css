@@ -123,7 +123,8 @@ code, pre, kbd { font-family: var(--mono); font-size: .875rem; overflow-wrap: an
 .rail.is-covered { visibility: hidden }
 /* CA-S8 (round 2): while the rail can scroll further down, its foot fades and says "More below"; the cue sits in the
    flow, so showing it never changes how far the rail scrolls, and it lets every press through to the links under it */
-.rail-more { position: sticky; bottom: 0; margin: calc(-1 * var(--oa-space-600)) 0 0; padding: var(--oa-space-500) var(--oa-space-150) var(--oa-space-100);
+.rail { padding-bottom: 0 }
+.rail-more { position: sticky; bottom: 0; margin: var(--oa-space-200) 0 0; padding: var(--oa-space-500) var(--oa-space-150) var(--oa-space-200);
   background: linear-gradient(to bottom, transparent, var(--oa-color-surface-newsprint) 60%); font: var(--oa-type-caption); color: var(--ink-2);
   pointer-events: none; opacity: 0; transition: opacity var(--oa-motion-duration-fast) var(--oa-motion-easing-standard) }
 .rail.can-scroll .rail-more { opacity: 1 }

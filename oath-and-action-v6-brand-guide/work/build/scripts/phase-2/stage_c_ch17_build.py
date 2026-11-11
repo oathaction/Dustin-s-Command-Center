@@ -1638,8 +1638,9 @@ def build_chapter():
         'related': ['11', '18', '19'],
         'builders': [
             'Mark the player’s root <code>data-oa-motion</code>, its one Play and Pause button <code>data-oa-play '
-            'data-oa-pause</code> and Reset <code>data-oa-reset</code>; the guide’s own check looks for them. Start a '
-            'motion from a click handler and nowhere else.',
+            'data-oa-pause</code> and Reset <code>data-oa-reset</code>; the guide’s own check looks for them. A player '
+            'that rests on its master also takes <code>data-oa-rest="master"</code> and loads with '
+            '<code>data-frame="end"</code>. Start a motion from a click handler and nowhere else.',
             'Leave the last frame on screen when the motion ends. On load, draw a state or mechanism player at its '
             'first frame, and a player of the wordmark or the lockmark at its master.'],
     })

@@ -106,7 +106,7 @@ export const meta = {
   // tokens.css's header carries its change. The studio's decision codes sit in `record` alone (DR-218, BE-S7).
   changeNotes: [
     { version: '6.0.0-gate2.8', date: '2026-11-11',
-      tokens: 'oa.color.state.error.bar, renamed from oa.color.state.error.mark; oa.color.field.ground.onCharcoal; oa.color.state.loading.mark and every description that carried a record code or an old name',
+      tokens: 'oa.color.state.error.bar, renamed from oa.color.state.error.mark; oa.color.field.ground.onCharcoal; the description of oa.color.state.loading.mark, and every description that carried a record code or an old name',
       change: 'The token for the 4 px bar beside an error now takes the bar\'s name: oa.color.state.error.bar, --oa-color-state-error-bar in CSS. The old names stay as deprecated aliases through every 6.0 release and leave with 6.1.0. The field ground on Charcoal is now Charcoal, so a field in the dark theme shows by its strong Newsprint edge and an error\'s red bar sits on Charcoal at 4.49 to 1; no value is new. The loading mark\'s description now names the still lines of Rule 17.7, and every description is in plain words. Before 6.0.0, every change raises the number after the hyphen.',
       reason: 'Red never sits on Prussian (Rule 05.3), and the dark field ground put an error\'s red bar on Prussian. The guide calls the error glyph the error mark, so the bar\'s token needed a name of its own, and the table prints every description to readers.',
       record: 'DR-218, D2-1544 (D2-1469 withdrawn)', gate: 'Gate 2' },

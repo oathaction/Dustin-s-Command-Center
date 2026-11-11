@@ -2962,3 +2962,23 @@ The main session asked three questions with its plan for round 2, board C and th
 | # | Decision | Reason |
 |---|---|---|
 | D2-1576 | The guide check's motion test reads `data-oa-rest="master"`: such a player shows its end frame on load and after reduced-motion Play, runs on Play otherwise, and has Reset unavailable at rest; other players keep the start-frame contract | Call 5 (D2-1548) moved the identity players' rest to the master; a test that reads the attribute keeps checking them, where an exemption would check nothing |
+
+### Systems designer, the fix pass (`20261111_Stage-C-Round-2-Systems-Fix-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1577 | A player's anatomy numbers its parts top to bottom, and a part inside a row of controls takes its disc off its own top left corner | CD-S1; D2-1418's "on a control, on a corner" |
+| D2-1578 | Loop R1's node names center under their nodes from 25.5 rem of room and stagger below it; the drawing never scales for them | CD-S3; the drawing's marks stay at true size (D2-1384) |
+| D2-1579 | Rule 17.4's failure prints the share of the line drawn at 200 ms, solved from the CSS keyword ease-out, and stores it in the figures file | CD-S2; a figure typed by hand could drift from the curve it names |
+| D2-1580 | Token names in Rule 17.2 stay on one line wherever they fit, at 13 px, and wrap only where they cannot | CD-S5; a hyphen break reads as two names, and a forced line would scroll the page at 320 px |
+| D2-1581 | Chapter 17's opener draws the ten states on the page's own ground in short names, five a row from 40 rem | Call 8; a picture under 6 KB that follows the page's theme |
+| D2-1582 | Chapter 11's stepper takes call 4's Loop R1 heading and grade line | The same unqualified heading sat in a third home of the same component; DR-93 and Master Brief section 15, as D2-1547 reasons |
+| D2-1583 | Chapter 11's reader draws Fit width and Full size as a native radio group with Rule 17.10's look | D2-1151, D2-1296 and D2-1390 left it for this pass; Rule 18.21's reader already draws it so (D2-1459) |
+| D2-1584 | Rule 11.2's failure caption names our rule | PP-S13's reason for Rules 17.8 and 05.4 holds for it too; the stage A captions of chapters 05 to 07 that name a WCAG criterion stay as stage A set them |
+| D2-1585 | Rule 10.9 names who runs the likeness test, in the words the guide uses for approvals | PP-S12; the script is not in the package a builder receives |
+| D2-1586 | Rule 05.1's share bar orders its segments Newsprint, Charcoal, Prussian, Stone, Pillar Red, Verdigris, White, and the generator stops if red and Prussian would meet | D2-1544's check; an order keeps every share's width true, where a gap would add a color the page does not hold |
+| D2-1587 | Loop R1's drawing flows with its column up to 26 rem, its nodes at 28 and 78.5 percent, its names centered under them in two columns | CA-S5 and CD-S3: one baseline at every width, with every mark at true size |
+| D2-1588 | Every anatomy callout sits outside its part, within 8 px, or on a 1 px leader in running text; the plates are checked by script at five widths for words or marks covered, distance, overlap, visibility and reading order | CD-S6, CA-S4; D2-1418's rule, made testable |
+| D2-1589 | A plate gives its labels 28 px of room under them, and stacks a short row where its callouts would otherwise meet a neighbor (18.2, 18.3 under 36 rem, 18.16) | A callout above a control must not sit on the label over it |
+| D2-1590 | An invented anatomy plate takes the shell's Illustrative chip at its head and drops its code set's own label | Call 9, CD-S7, CA-S7; one label style across the guide |
+| D2-1591 | Chapter 18's opener is a primary button, a chip that is on and a choice of two, drawn by the anatomy generator from their code sets | Call 8; the opener reads the same code as the plates, so a set's change redraws it |
