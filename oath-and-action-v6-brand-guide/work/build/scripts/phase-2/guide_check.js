@@ -1203,7 +1203,8 @@ async function sbTyped(page) {
 // phases tried on the tall stages, the measured one matched best every time). What may still differ, measured on the 56
 // live stages of the newest build at 1440 and 390 px:
 //   antialiasing on curved and diagonal edges, up to 49 of 255: a pixel may differ by EDGE_TOL or less where the guide's
-//     own capture has an edge there (its 3 by 3 neighbourhood spans EDGE_SPAN or more in luminance);
+//     own capture has an edge there (in its 3 by 3 neighbourhood some channel spans EDGE_SPAN or more: a red edge against
+//     a dark keyline can span 160 in red and under 48 in luminance);
 //   the capture's outer ring of pixels, which a stage ending between two pixels blends with whatever lies outside it;
 //   a straight edge rounded one device pixel the other way deep in a 9 MB page, where Chromium's positions lose sub-pixel
 //     precision: up to EDGE_ROWS whole rows or columns whose pixels match the other capture one pixel up, down or across.
@@ -1268,7 +1269,6 @@ async function codeMatch(page) {
         const c = document.createElement('canvas'); c.width = W; c.height = H; const g = c.getContext('2d', { willReadFrequently: true });
         g.drawImage(x, 0, 0); const dx = g.getImageData(0, 0, W, H).data;
         g.clearRect(0, 0, W, H); g.drawImage(y, 0, 0); const dy = g.getImageData(0, 0, W, H).data;
-        const L = (i) => 0.2126 * dx[i] + 0.7152 * dx[i + 1] + 0.0722 * dx[i + 2];
         const near = (i, j) => Math.max(Math.abs(dx[i] - dy[j]), Math.abs(dx[i + 1] - dy[j + 1]), Math.abs(dx[i + 2] - dy[j + 2])) <= tol;
         let n = 0, max = 0, flat = 0, big = 0, ring = 0, firstOff = null;
         const rows = new Set(), cols = new Set();
@@ -1282,13 +1282,17 @@ async function codeMatch(page) {
             if (near(i, i - W * 4) || near(i, i + W * 4)) { rows.add(py); continue; }
             if (near(i, i - 4) || near(i, i + 4)) { cols.add(px); continue; }
           }
-          let lo = 255, hi = 0;
+          // an edge is where any channel changes across the 3 by 3 neighbourhood: Pillar Red against its Charcoal keyline
+          // spans 160 in red and only 43 in luminance (the tracker's take-part disc at 360 px, round 1 final check)
+          const lo = [255, 255, 255], hi = [0, 0, 0];
           for (let oy = -1; oy <= 1; oy++) for (let ox = -1; ox <= 1; ox++) {
             const qx = px + ox, qy = py + oy; if (qx < 0 || qy < 0 || qx >= W || qy >= H) continue;
-            const l = L((qy * W + qx) * 4); if (l < lo) lo = l; if (l > hi) hi = l;
+            const k = (qy * W + qx) * 4;
+            for (let c = 0; c < 3; c++) { if (dx[k + c] < lo[c]) lo[c] = dx[k + c]; if (dx[k + c] > hi[c]) hi[c] = dx[k + c]; }
           }
+          const edge = Math.max(hi[0] - lo[0], hi[1] - lo[1], hi[2] - lo[2]);
           if (m > tol) { big++; if (!firstOff) firstOff = { x: px, y: py, by: m }; }
-          else if (hi - lo < span) { flat++; if (!firstOff) firstOff = { x: px, y: py, by: m, flat: true }; }
+          else if (edge < span) { flat++; if (!firstOff) firstOff = { x: px, y: py, by: m, flat: true }; }
         }
         return { pixels: n, max, total: W * H, flat, big, ring, shiftedRows: rows.size, shiftedCols: cols.size, firstOff };
       }, [a.toString('base64'), b.toString('base64'), EDGE_TOL, EDGE_SPAN]);
