@@ -9,9 +9,9 @@ Oath & Action Edition 06, Phase 2, November 11, 2026. Written by the accessibili
 
 ## Status
 
-- [ ] Contrast table for every color token on every surface
-- [ ] Chapter 26's published ratios recomputed
-- [ ] Opening screens at 1440 and 390 px
+- [x] Contrast table for every color token on every surface: 341 pairs, 0 failures (`evidence/20261111_Gate-2-Contrast-Table.json`, `evidence/20261111_Gate-2-Contrast-Summary.md`)
+- [x] Chapter 26's published ratios recomputed: 342 of 342 match
+- [x] Opening screens at 1440 and 390 px: 34 PNG files, `evidence/20261111_Open-*.png`
 - [ ] Keyboard walk on the frozen page
 - [ ] Reduced-motion and normal frames of chapter 17's players
 - [ ] Forced-colors views of chapters 05, 11, 17 and 18
