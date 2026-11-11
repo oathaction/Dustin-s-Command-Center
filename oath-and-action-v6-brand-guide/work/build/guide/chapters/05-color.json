@@ -7,7 +7,7 @@
   "opener": "s-05-opener",
   "intro": [
     "Oath & Action works in seven colors, and each one has a job. Newsprint, a warm off-white, is the page most of our work sits on, and Charcoal carries the words. Pillar Red marks the one thing a reader should see first in each view, meaning each screen, card, slide or printed page. The other four do narrower work: Prussian, our dark blue, holds panels of dates and figures, Stone draws hairlines, Verdigris, a muted green, shows success and focus, and White serves specimens and email.",
-    "Every pair in this chapter carries a contrast ratio, a measure of how far apart two colors sit in lightness. It runs from 1 to 1 for the same color up to 21 to 1 for black on white, by the formula in the Web Content Accessibility Guidelines (WCAG). We measured each ratio on the token values, the exact colors our code names. Pick the surface first, and the tables tell you which text and marks can sit on it."
+    "Every pair in this chapter carries a contrast ratio, a measure of how far apart two colors sit in lightness, from 1 to 1 for a color against itself up to 21 to 1 for black on white. We measured each one on the exact colors our code names, by the formula in the Web Content Accessibility Guidelines (WCAG)."
   ],
   "rules": [
     {
@@ -194,7 +194,7 @@
       "id": "05.3",
       "title": "Give each view one working red.",
       "rule": [
-        "Each view (one screen, card, slide or printed page) then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point the headline names, which in a systems figure is where a reform acts. One job may take several marks, such as each target of one reform. Red never sits on Prussian."
+        "The wordmark’s ampersand and the lockmark’s lever are signature red and do not count, and neither do the ampersands inside the hinge diagram and the hinge-circle badge, which are identity marks. Each view (one screen, card, slide or printed page) then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point the headline names, which in a systems figure is where a reform acts. One job may take several marks, such as each target of one reform. Red never sits on Prussian."
       ],
       "tokens": [
         "oa.color.identity.signature.onNewsprint",
@@ -238,11 +238,6 @@
           "label": "Working red, third claim",
           "value": "The one point the headline names",
           "token": "oa.color.data.emphasisRed.onNewsprint"
-        },
-        {
-          "label": "Signature red, which does not count",
-          "value": "The wordmark’s ampersand and the lockmark’s lever are signature red and do not count, and neither do the ampersands inside the hinge diagram and the hinge-circle badge, which are identity marks.",
-          "token": "oa.color.identity.signature.onNewsprint"
         },
         {
           "label": "Signature red on Newsprint, White and Charcoal",

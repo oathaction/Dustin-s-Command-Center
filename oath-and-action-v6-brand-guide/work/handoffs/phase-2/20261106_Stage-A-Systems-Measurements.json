@@ -37,7 +37,7 @@
    "method": "string comparison, straight apostrophes read as curly"
   },
   "Rule 05.3 sentences placed": {
-   "value": "body 5, 6, 10; the other seven in specifications",
+   "value": "body 1, 5, 6, 10; the other six in specifications",
    "method": "each sentence of the approved wording found once in the rule body or a specification value"
   },
   "body span desktop": {
@@ -5689,7 +5689,7 @@
   "viewport": "1440x900",
   "deviceScaleFactor": 1,
   "fonts": "Google Fonts css2: Inter 400 600 700, Inter Tight 800, Lora italic 400 500",
-  "date": "2026-11-11T17:50:13.777Z"
+  "date": "2026-11-11T17:58:25.138Z"
  },
  "tokens_cited": [
   "oa.border.width.rule",

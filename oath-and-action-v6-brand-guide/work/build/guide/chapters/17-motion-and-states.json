@@ -173,10 +173,10 @@
     },
     {
       "id": "17.3",
-      "title": "Play a motion only when a reader asks, with Play, Pause, Reset and a still view.",
+      "title": "Play a motion only when a reader asks.",
       "rule": [
-        "A motion starts when a reader presses Play, and never as the page opens, as it scrolls into view or on a timer. It runs once and stops on its last frame. One button carries Play and Pause and changes its icon and its word together, then reads Play again at the end.",
-        "A player of a state or a mechanism rests on its first frame, where the change starts. For the wordmark or the lockmark, the player rests on the master itself, so a reader who never presses Play still sees the whole mark; Play then steps to the first frame and runs to the master. Reset returns either kind to where it rests, and at rest Reset is unavailable and says why.",
+        "Every player has Play, Pause, Reset and a still view, and a motion starts only when a reader presses Play, never as the page opens, as it scrolls into view or on a timer. It runs once and stops on its last frame. One button carries Play and Pause and changes its icon and its word together, then reads Play again at the end.",
+        "A player of a state or a mechanism rests on its first frame, where the change starts. For the wordmark or the lockmark, the player rests on the master itself, so a reader who never presses Play still sees the whole mark; Play then steps to the first frame and runs to the master. Reset, named for what it returns, such as Reset the bill (Rule 11.14), takes either kind back to where it rests, and at rest it is unavailable and says why.",
         "Beside every player sits its still view: the first and last frames at true size, each with its time and the words for what it shows, then each step of the motion in order. A status line says the same words when the frame changes, so every fact the motion shows reaches a reader who prints the page or listens with a screen reader, and one who never presses Play."
       ],
       "tokens": [
@@ -208,7 +208,7 @@
         },
         {
           "label": "Reset",
-          "value": "Returns the player to where it rests; unavailable at rest, with its reason"
+          "value": "Named for its object, such as Reset the bill; returns the player to where it rests; unavailable at rest, with its reason"
         },
         {
           "label": "Slow motion",
@@ -368,9 +368,9 @@
     },
     {
       "id": "17.6",
-      "title": "Move the hinge and the lever only as their own motions, ending exactly on their masters.",
+      "title": "Move the hinge and the lever only as their own motions.",
       "rule": [
-        "The hinge and the lever are the two motions that belong to the identity, and each one plays only on request (Rule 17.3). The hinge plays over 680 ms: OATH and ACTION settle into place, then the ampersand lands between them. The lever plays over 560 ms in the lockmark: its links draw, its nodes land together and the lever lands last, at bottom right.",
+        "The hinge and the lever are the two motions that belong to the identity, and each one plays only on request (Rule 17.3) and ends exactly on its master. The hinge plays over 680 ms: OATH and ACTION settle into place, then the ampersand lands between them. The lever plays over 560 ms in the lockmark: its links draw, its nodes land together and the lever lands last, at bottom right.",
         "Each player rests on the master itself (Rule 17.3). Play steps to the first frame and runs to the master, and Reset returns to the master; at rest Reset is unavailable, with the line “The mark is at rest on its master. Reset works once you press Play.”",
         "Each is built from slide, draw and land (Rule 17.5), and each ends on a last frame that matches the approved master for its size, pixel for pixel. The ampersand and the lever keep signature red in every frame, and signature red never counts as a view’s working red (Rule 05.3)."
       ],
@@ -489,9 +489,9 @@
     },
     {
       "id": "17.8",
-      "title": "Give each of the ten states words or a shape as well as a color, on Newsprint and on Charcoal.",
+      "title": "Give all ten states words or a shape as well as a color.",
       "rule": [
-        "Ten states cover every control and region: muted, disabled, hover, focus, loading, selected, warning, error, empty and success. Each changes its words or its shape along with its color, so a reader who sees no color, prints in gray or reads in a dark theme gets the same state. This plate is the reference for all ten.",
+        "Ten states cover every control and region, on Newsprint and on Charcoal: muted, disabled, hover, focus, loading, selected, warning, error, empty and success. Each changes its words or its shape along with its color, so a reader who sees no color, prints in gray or reads in a dark theme gets the same state. This plate is the reference for all ten.",
         "On Charcoal an error takes no band: the 4 px Pillar Red bar measures 4.49 to 1 there, and the mark and the word “Error:” in Newsprint carry it. Every other state keeps the same shapes and words on both surfaces."
       ],
       "tokens": [
@@ -548,7 +548,7 @@
         },
         {
           "label": "Selected",
-          "value": "Check, bold words, 2 px edge; in a list, the band and its 4 px bar (Rule 17.10)",
+          "value": "Check, bold words, 2 px edge; in a list, the selected band, its 4 px bar and bold words (Rule 17.10)",
           "token": "oa.color.state.selected.bar.onNewsprint"
         },
         {
@@ -585,10 +585,10 @@
     },
     {
       "id": "17.9",
-      "title": "Show hover with an underline or a thicker edge, and focus with a 2 px ring and its gap.",
+      "title": "Show hover and focus with an underline, an edge or a ring.",
       "rule": [
         "Hover underlines a label, grows a link’s underline from 1 to 2 px, or thickens a quiet control’s 1 px edge to 2 px. A quiet control is a button drawn as its word in ink inside that edge, on the page’s own ground. A filled button also steps its fill one shade. Hover never draws an inset shadow, which forced colors removes, and never moves layout.",
-        "Focus draws a 2 px ring 2 px outside the control, at once: Verdigris on Newsprint and White, Newsprint on Charcoal and Prussian. On Charcoal the ring around a Newsprint button measures 1.00 to 1 against its fill, so the 2 px gap of Charcoal between them shows the ring."
+        "Focus draws a 2 px ring 2 px outside the control, at once: Verdigris on Newsprint and White, Newsprint on Charcoal and Prussian. On Charcoal the ring around a Newsprint button measures 1.00 to 1 against its fill, so the 2 px gap of Charcoal between them shows the ring. A control whose neighbor stands too close for an outside ring, such as a tab beside the next tab or a row in a list, draws the ring inside its edge with the same 2 px gap, as Rule 18.11 sets."
       ],
       "tokens": [
         "oa.border.width.focusRing",
@@ -639,7 +639,7 @@
         },
         {
           "label": "Focus gap",
-          "value": "2 px; never 0",
+          "value": "2 px; never 0. Inside the edge where a neighbor stands too close, offset −4 px (Rule 18.11)",
           "token": "oa.border.focusOffset"
         },
         {
@@ -659,10 +659,11 @@
     },
     {
       "id": "17.10",
-      "title": "Draw pressed, checked and current choices one way: a check, bold words and a 2 px edge.",
+      "title": "Draw pressed, checked and current choices one way.",
       "rule": [
         "A toggle that is pressed, a choice that is checked and the current choice in a set all draw one look: the selected check before the word, the word in bold and a 2 px edge in the strong border color where the others keep 1 px. The look is the same on Newsprint and Charcoal and stays under forced colors, since the check, the weight and the edge are shapes.",
-        "Links and lists of places keep their own marks for the current place. A link to the page a reader is on takes bold words, with a 2 px underline in a masthead and none at the end of a breadcrumb, and a rail or a list takes the selected band, its 4 px bar and bold words."
+        "Links and lists of places keep their own marks for the current place. A link to the page a reader is on takes bold words, with a 2 px underline in a masthead and none at the end of a breadcrumb, and a rail or a list takes the selected band, its 4 px bar and bold words.",
+        "Inside the band go only its words, its bar and a check where the row is a choice. On Charcoal the band is Prussian, so a success mark inside it takes Newsprint, as it does on any Prussian ground, and an error or an ask sits outside the band, since red never sits on Prussian (Rule 05.3)."
       ],
       "tokens": [
         "oa.border.width.rule",
