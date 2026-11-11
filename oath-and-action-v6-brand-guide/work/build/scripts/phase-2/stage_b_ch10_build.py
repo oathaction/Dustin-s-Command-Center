@@ -491,8 +491,8 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
 
     # ---------------------------------------------------------------- the opener (D2-1135, CD-S16)
     # A strip of the library under the chapter's intro, so the first screen shows drawings (the engineer's "opener"
-    # contract, D2-1134): it flows with the column, six drawings in one row from 44.5 rem, three a row from 22 rem and two
-    # on a phone or at large text sizes, so no row is left with one drawing. Each column is at least 7 rem, the width of
+    # contract, D2-1134): it flows with the column, six drawings in one row from 44.5 rem, three a row from 22 rem, two
+    # on a phone and one at large text sizes, so no row is left with one drawing and no word breaks inside itself. Each column is at least 7 rem, the width of
     # the longest typed chip, which stays on one line (Rule 10.6). Each drawing is at 64 px in one color beside its word,
     # an atlas element with its chip; one color because a row with no current item goes one color (Rule 10.7). Four
     # topics and two atlas elements; R-01 and R-02 stay out (D2-958).
@@ -503,12 +503,13 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
         chip_ = f'<span class="chip">{esc(r["v7_chip"])}</span>' if atl else ''
         cells.append(f'<li>{sym(i, 64, fam=family(r, atl))}<span class="w">{esc(word(r, atl))}</span>{chip_}</li>')
     css = (k.vars() + chip_css + '.op{container-type:inline-size}'
-           '.st{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 8px}'
+           '.st{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:1.25rem 0.5rem}'
+           '@container (min-width:15rem){.st{grid-template-columns:repeat(2,minmax(0,1fr))}}'
            '@container (min-width:22rem){.st{grid-template-columns:repeat(3,minmax(0,1fr))}}'
            '@container (min-width:44.5rem){.st{grid-template-columns:repeat(6,minmax(0,1fr))}}'
            '.st li{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;min-width:0}'
            '.sym{display:block;margin:0 0 6px}'
-           f'.w{{{cap_css};font-weight:600;text-wrap:balance;overflow-wrap:anywhere}}.st .chip{{margin-top:2px}}')
+           f'.w{{{cap_css};font-weight:600;text-wrap:balance}}.st .chip{{margin-top:2px}}')
     ctx.spec('s-10-opener', f'<style>{css}</style><div class="op"><ul class="st">{"".join(cells)}</ul></div>', CH, None,
              'A strip from the symbol library: six Civic Line drawings at 64 px in one color, each above its word. '
              + '; '.join(f'{word(rows[i], a)}' + (f', {rows[i]["v7_chip"]}' if a else '') for i, a in strip) + '.',
@@ -709,7 +710,7 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
             f'<p class="sec">Not on the list: {esc(rows["CL-025"]["label"])}</p><ul class="lad">{ladder("CL-025", (128, 96, 64, 48), True)}</ul>'
             f'<p class="sec">In a kicker: 24 px, one color, 8 px before its word</p>{kick}')
     css = (k.vars() + pad(600) + sec_css +
-           '.lad{list-style:none;margin:0 0 32px;padding:0;display:flex;align-items:flex-end;gap:24px}'
+           '.lad{list-style:none;margin:0 0 32px;padding:0;display:flex;align-items:flex-start;gap:24px}'
            '.lad li{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:4.25rem}'
            '.hold{display:flex;align-items:flex-end;height:128px;margin-bottom:8px}.sym{display:block}'
            '.no{display:block;width:24px;height:24px;outline:1px dashed var(--strong)}'
@@ -938,7 +939,9 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
                 figs_g.append(f'{word(rows[grp[a]])} and {word(rows[grp[b]])}, {fmt_like(v)}')
         cells = ''.join(f'<div class="c">{sym(i, 64, fam=family(rows[i]))}<span class="w">{esc(word(rows[i]))}</span>'
                         f'<span class="id">{esc(i)}</span></div>' for i in grp)
-        groups.append(f'<li><div class="cs">{cells}</div><div class="tx"><p class="lk">{esc(look)}</p>'
+        # a group of four sets its words under its drawings, as the two size groups do, so the words keep a full measure
+        wide = ' class="g24"' if len(grp) > 3 else ''
+        groups.append(f'<li{wide}><div class="cs">{cells}</div><div class="tx"><p class="lk">{esc(look)}</p>'
                       f'<p class="fg">Outline likeness at 24 px: {esc("; ".join(figs_g))}</p></div></li>')
     # D2-971: the five that draw as one shape at 24 px, shown at that size, one color, each with its word and ID
     g24, _ = LOOKALIKE_24
@@ -965,9 +968,12 @@ def specimens(ctx, icons, rows, reads24, v7, sheets, like, figs):
     groups.append(f'<li class="g24"><p class="gk">At 48 px and under, never two in one view</p><div class="cs">{cells}</div>'
                   f'<div class="tx"><p class="lk">{esc(look24(rows, LOOKALIKE_48))}</p><p class="fg">Outline likeness at '
                   f'24 px: {fmt_like(min(v48.values()))} to {fmt_like(max(v48.values()))} across the three pairs of '
-                  f'masters; {esc(word(rows["R-06"]))}’s pixel fit {fmt_like(fl["r06_fit"]["R-41"])} against '
-                  f'{esc(word(rows["R-41"]))} and {fmt_like(fl["r06_fit"]["R-44"])} against {esc(word(rows["R-44"]))}.'
-                  f'</p></div></li>')
+                  + (f'masters, and {fmt_like(fl["r06_fit"]["R-41"])} for the pixel fit of R-06 against the masters of '
+                     'R-41 and R-44 alike'
+                     if fmt_like(fl["r06_fit"]["R-41"]) == fmt_like(fl["r06_fit"]["R-44"]) else
+                     f'masters, and for the pixel fit of R-06, {fmt_like(fl["r06_fit"]["R-41"])} against the master of '
+                     f'R-41 and {fmt_like(fl["r06_fit"]["R-44"])} against R-44')
+                  + '.</p></div></li>')
     css = (k.vars() + '.l{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}'
            '.l li{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;padding:16px 0;border-bottom:1px solid var(--hair)}'
            '@media (min-width:48em){.l li{grid-template-columns:auto minmax(0,1fr);gap:24px;align-items:center}}'

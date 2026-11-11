@@ -214,8 +214,8 @@ def update_minimums():
                                    "prussian/" + Path(L3["print"]).stem + "-Prussian-White.svg"]
             r["record_files"] = [L3["masthead_rect"], L3["today"]]
             pm = json.loads(FIGURES_STAGE_C.read_text())["proposals"]["print_l3"]["proposal_at_1.55_in"]   # stage C, round 0
-            r["print"] = (f"1.55 in wide (condensed 1.30 in), from the print master, which sets capitals {pm['capitals_mm']} mm "
-                          f"tall and the lockmark {pm['lockmark_in']} in there (Rule 03.2)")
+            r["print"] = (f"1.55 in wide (condensed 1.30 in), from the print master, with capitals {pm['capitals_mm']} mm tall "
+                          f"and the lockmark {pm['lockmark_in']} in at that width (Rule 03.2)")
             r["print_note"] = ("The masthead master serves the 282 px masthead on screen. Since November 11, 2026 print and every "
                                f"other width take the print master, {L3['print']}: the October master with its lockmark at 48/22 "
                                "cap heights, 2.18, the masthead's proportion, centered on the capitals as before; the wordmark, "

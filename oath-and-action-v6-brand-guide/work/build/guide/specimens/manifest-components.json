@@ -1,0 +1,224 @@
+{
+ "s-18-01-failure": {
+  "chapter": "18",
+  "rule": "18.1",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative sign-up row at 360 px: a field labeled Email, empty, and beside it a Send button grayed out, its word and edge in pale gray at 1.83 to 1 on Newsprint. Nothing says why it is gray. A note under it reads “Tab skips Send, and no words say what it waits for.”",
+  "illustrative": true,
+  "notes": "Labeled failure: a pale word at 1.83 to 1 on purpose, the fault this rule fixes.",
+  "fit_switch": false,
+  "check_exempt": [
+   "contrast"
+  ]
+ },
+ "s-18-02-failure": {
+  "chapter": "18",
+  "rule": "18.2",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. Three Illustrative filter chips at 360 px: Hearing this week, Comment open and Became law. Hearing this week is on, shown only by a Prussian fill with White words; it has no check, no bold words and no heavier edge. A second row, labeled “The same chips in a contrast theme”, shows all three as identical outlined boxes.",
+  "illustrative": true,
+  "notes": "Picture of a fault: on shown by a fill alone, which forced colors removes (D2-1152).",
+  "fit_switch": false
+ },
+ "s-18-03-failure": {
+  "chapter": "18",
+  "rule": "18.3",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative report toolbar at 360 px with two joined segments, Fit width and Full size, and no words above them to say what they choose. Full size is chosen, shown only by a Prussian fill. A note under them reads “No group name, and the choice is a fill alone.”",
+  "illustrative": true,
+  "notes": "Picture of a fault: an unnamed group whose state is a fill alone.",
+  "fit_switch": false
+ },
+ "s-18-04-failure": {
+  "chapter": "18",
+  "rule": "18.4",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative masthead at 360 px with one round button in its corner that shows a crescent moon and no word. A note under it reads “Two states, no way back to the device, and no word for the theme that is on.”",
+  "illustrative": true,
+  "notes": "Picture of a fault: a two-state icon toggle with no words (the main session’s three-choice call).",
+  "fit_switch": false
+ },
+ "s-18-05-failure": {
+  "chapter": "18",
+  "rule": "18.5",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative paragraph at 360 px about a county budget hearing. Two of its phrases are links, drawn only in Prussian with no underline, 1.41 to 1 against the Charcoal text around them. The second link reads “click here”.",
+  "illustrative": true,
+  "notes": "Picture of a fault: links told apart by color alone, and link words that name no place.",
+  "fit_switch": false
+ },
+ "s-18-06-failure": {
+  "chapter": "18",
+  "rule": "18.6",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative phone masthead at 360 px with the title “Who Do They Answer To?” and, at the right, three bars in a 32 px square with no word. Under it, an open list of four parts drops over the page, and a link of the page shows through below the list. A note reads “No word on Menu, and Tab moves past the list into the page.”",
+  "illustrative": true,
+  "notes": "Picture of a fault: an icon-only Menu under 44 px, and a menu that does not hold focus (F-12).",
+  "fit_switch": false
+ },
+ "s-18-07-failure": {
+  "chapter": "18",
+  "rule": "18.7",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. A list of five chapters at 360 px, 03 Identity to 07 Layout and spacing. The current chapter, 05 Color, differs only by its Prussian words; it has no band, no bar and no bold. A note reads “The place is a color alone.”",
+  "illustrative": false,
+  "notes": "Picture of a fault: the current item marked by color alone.",
+  "fit_switch": false
+ },
+ "s-18-08-failure": {
+  "chapter": "18",
+  "rule": "18.8",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. Two Illustrative rows at 360 px, “Sources” closed and “The lines in words” open with two lines of text under it. Both rows end in the same plus sign. A note reads “The sign does not change, and the rows take no focus.”",
+  "illustrative": true,
+  "notes": "Picture of a fault: a disclosure with no state shape and no button.",
+  "fit_switch": false
+ },
+ "s-18-09-failure": {
+  "chapter": "18",
+  "rule": "18.9",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. Three Illustrative tabs at 360 px, Drawing, In words and Table, over a panel. Drawing is selected, shown only by a Prussian fill; there is no bar and no bold. A note reads “Three Tab stops, no arrow keys, and the selection is a fill alone.”",
+  "illustrative": true,
+  "notes": "Picture of a fault: tabs with no roles and a fill-only selection.",
+  "fit_switch": false
+ },
+ "s-18-10-failure": {
+  "chapter": "18",
+  "rule": "18.10",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative table at 360 px of three bills with the columns Bill, Title and Last action. The Last action heading shows a small arrow after its word, but the headings are plain text with no button. A note reads “Only a pointer can sort, and the new order is never said.”",
+  "illustrative": true,
+  "notes": "Picture of a fault: sorting with no button and no status line.",
+  "fit_switch": false
+ },
+ "s-18-11-failure": {
+  "chapter": "18",
+  "rule": "18.11",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative table at 360 px of state hearings with four columns, cut off at the frame’s right edge partway through the third column. The fourth column never shows. A note reads “Hidden past the edge, with no way to scroll by key.”",
+  "illustrative": true,
+  "notes": "Picture of a fault: overflow hidden with no scroll and no hint.",
+  "fit_switch": false
+ },
+ "s-18-12-failure": {
+  "chapter": "18",
+  "rule": "18.12",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative code panel at 360 px holding four lines of CSS, with a lone icon in its corner that has turned from two sheets into a check after a press. No label names the panel, and no line says what happened.",
+  "illustrative": true,
+  "notes": "Picture of a fault: a Copy icon that changes meaning, with no status line (Rule 11.12).",
+  "fit_switch": false
+ },
+ "s-18-13-failure": {
+  "chapter": "18",
+  "rule": "18.13",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. A list of three Illustrative color values at 360 px, Charcoal, Newsprint and Prussian, each with its hex value and a 16 px copy icon after it with no word and no frame. A note reads “Three targets 16 px square, each heard only as Copy.”",
+  "illustrative": true,
+  "notes": "Picture of a fault: icon-only copy controls under the 24 px minimum target (SC 2.5.8).",
+  "fit_switch": false
+ },
+ "s-18-14-failure": {
+  "chapter": "18",
+  "rule": "18.14",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative list at 360 px of three files, the brand guide, the tokens and the logo files, each followed by a link that says only “Download”. A note reads “Out of their rows, the three links sound the same.”",
+  "illustrative": true,
+  "notes": "Picture of a fault: download links named with one word (SC 2.4.4).",
+  "fit_switch": false
+ },
+ "s-18-15-failure": {
+  "chapter": "18",
+  "rule": "18.15",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative search field at 360 px with no label above it and the placeholder “Search symbols…” in pale gray, 2.58 to 1 on White. Under it, a count in small type reads “5 results”. A note reads “No label once you type, and the count is never announced.”",
+  "illustrative": true,
+  "notes": "Labeled failure: a placeholder at 2.58 to 1 on purpose.",
+  "fit_switch": false,
+  "check_exempt": [
+   "contrast"
+  ]
+ },
+ "s-18-16-failure": {
+  "chapter": "18",
+  "rule": "18.16",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative filter bar at 360 px. A pointer rests on the word Filters, and a list of four kinds of record drops under it; two are on. The word Filters shows no count. A note reads “Open only on hover, and closed it hides that two filters are on.”",
+  "illustrative": true,
+  "notes": "Picture of a fault: content that shows only on hover (SC 1.4.13) and a name with no count.",
+  "fit_switch": false
+ },
+ "s-18-17-failure": {
+  "chapter": "18",
+  "rule": "18.17",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative sign-up form at 360 px. At its top, a box in ink reads “Please fix the errors below.” and names no field. Two fields under it carry only the placeholders “Email” and “ZIP code”, and neither field is marked. A Send button closes the form. A note reads “Focus stays on Send, and nothing joins an error to its field.”",
+  "illustrative": true,
+  "notes": "Picture of a fault: errors that point at no field (SC 3.3.1) and placeholder labels (SC 3.3.2).",
+  "fit_switch": false
+ },
+ "s-18-18-failure": {
+  "chapter": "18",
+  "rule": "18.18",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. Three Illustrative messages at 360 px, each a tinted box of words: a pink box that says the ZIP code needs five digits, a white box that says the record was last checked in March, and a gray box that says the reader is signed up. None has a mark, a first word such as “Error:” or a bar.",
+  "illustrative": true,
+  "notes": "Picture of a fault: message kinds in color alone (SC 1.4.1).",
+  "fit_switch": false
+ },
+ "s-18-19-failure": {
+  "chapter": "18",
+  "rule": "18.19",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. Two Illustrative panels at 360 px. The first holds only a circle drawn as an open ring, meant to spin, with no words. The second, after loading, is an empty box with nothing in it. A note reads “No words while it loads, and none when the list is empty.”",
+  "illustrative": true,
+  "notes": "Picture of a fault, drawn still: a wordless spinner and a blank empty state (D2-200).",
+  "fit_switch": false
+ },
+ "s-18-20-failure": {
+  "chapter": "18",
+  "rule": "18.20",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative tracker card at 360 px for a bill on public meeting notices, with a dark box over its top corner that reads “Updated!”. A note reads “Gone after three seconds, and it names no bill and no step.”",
+  "illustrative": true,
+  "notes": "Picture of a fault: a timed toast with no content (SC 2.2.1, 4.1.3) and performed enthusiasm.",
+  "fit_switch": false
+ },
+ "s-18-21-failure": {
+  "chapter": "18",
+  "rule": "18.21",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative report reader at 360 px on page 4 of 4. Only Previous page shows under the page; where Next page stood there is empty space. A note reads “Next page is gone, and focus went with it.”",
+  "illustrative": true,
+  "notes": "Picture of a fault: a control that vanishes at an end and takes focus with it (SC 2.4.3).",
+  "fit_switch": false
+ },
+ "s-18-22-failure": {
+  "chapter": "18",
+  "rule": "18.22",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative loop panel at 360 px showing “Step 2 of 3” and a sentence, with no buttons at all. A note reads “Starts by itself on load and repeats with no way to stop it.”",
+  "illustrative": true,
+  "notes": "Picture of a fault: motion that starts by itself with no pause (SC 2.2.2).",
+  "fit_switch": false
+ },
+ "s-18-23-failure": {
+  "chapter": "18",
+  "rule": "18.23",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative drawing at 360 px of four linked circles. A pointer rests on one circle, and a small dark box beside it reads “C1 Safe seats”. Nothing under the drawing gives its words or a table. A note reads “Only a pointer reaches the items, and their words show only on hover.”",
+  "illustrative": true,
+  "notes": "Picture of a fault: hover-only content (SC 1.4.13) and no keyboard path (SC 2.1.1).",
+  "fit_switch": false
+ },
+ "s-18-24-failure": {
+  "chapter": "18",
+  "rule": "18.24",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. Two Illustrative chips at 360 px in a line of text, “R10” in a Prussian fill and “R-01” in a Verdigris fill, with no type word. A note reads “A bare code, with its type in color alone.”",
+  "illustrative": true,
+  "notes": "Picture of a fault: bare codes (house rule H11) typed by color.",
+  "fit_switch": false
+ }
+}

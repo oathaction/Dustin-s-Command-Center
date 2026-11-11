@@ -2470,3 +2470,27 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 | # | Decision | Reason |
 |---|---|---|
 | D2-1277 | Rule 12.4 goes to board C as a named question: retire the hinge arcs and rewrite the rule as the creative director drafts it (recommended), or keep them with its five fixes. The identity designer builds the rewrite beside the current rule once its promotion pass and Rule 17.6 are done | Retiring overrides Gate 1's approval of patterns (Y6), so it is Dustin's call; D2-1114 |
+
+### Systems designer, promotion and chapters 05, 10 and 11 (`20261111_Promotion-C-Systems-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1278 | `stage_b_ch10_build.py` expects 125 drawings, and every count the chapter prints (125, 121, CL-075, 93 and 32, 94 and 31) reads the inventory in use | DR-207 puts CL-075 in the set in use, and the main session's message asked for it; counts typed by hand would drift at the next drawing |
+| D2-1279 | CL-075's label and meaning sit in an addendum in the editor's own form, read only where the editor's table lacks a row | The table is the editor's file; the build needs words for 125 drawings now, and the editor's words win the moment its table holds the row |
+| D2-1280 | The likeness figures are measured again on the 125 drawings in use (7,750 pairs; flag 0.9091, watch 0.8672), and the chapter prints them | The set changed; every printed figure rounds as before (0.91, 0.84, 0.79, 0.75, 0.69) |
+| D2-1281 | `--no-draw` stops when the stored sheets or likeness run no longer match the inventory, and asks for one full run | A stale sheet would show 124 drawings beside words for 125 |
+| D2-1282 | The 37 at 24 px take the switch through `sym()`, which applies it to any of the 41 at 24 px and refuses an accent under 48 px | One helper for every plate, so no 24 px drawing of the 41 can miss the switch (DR-209, D2-1265) |
+| D2-1283 | `oa-at-1x` and `oa-at-2x` join the classes the specimen build never prefixes | The build prefixes every specimen class with `sx-`, which would have hidden the switch from the shell's stylesheet |
+| D2-1284 | Rule 10.4's switch words follow Rule 09.3's, including the exported image and print | One switch, one wording, in both chapters (DR-179, DR-209) |
+| D2-1285 | The 24 px rung of Rule 10.4's ladder reads "pixel fit, line 1 px" | At 1x the rung draws the fit, whose line is one whole pixel; the master's 0.63 px would be wrong there |
+| D2-1286 | Housing joins Rule 10.9's house group, which becomes four drawings | The subject a builder reaches for first; its likeness to the three is low (0.25 to 0.57), so the group stays a group of subjects, as the rule already says |
+| D2-1287 | R-06, R-41 and R-44 never share a view at 48 px or smaller | D2-1237 says "at small sizes"; R-41 and R-44 start at 48 px, so 48 px is where the three can meet, and their masters score 0.89 to 0.96 (R-06 and R-44 the closest pair in the set) |
+| D2-1288 | Rule 10.6's example of a subject with no drawing becomes Bill; Housing is named as a topic from 48 px that takes its word alone under 48 px | DR-207 gave Housing a drawing; DR-137 still leaves Bill without one |
+| D2-1289 | Rule 10.6's failure row shows four homes with no words (CL-075, CL-053, CL-054, CL-063) | With Housing in the set, four houses make the rule's point more sharply than three houses and a letter |
+| D2-1290 | The opener is six drawings, four topics and two atlas elements with chips, in one row from 44.5 rem, three from 22 rem, two on a phone and one at large text | Eight drawings left chips wider than their columns at 1440 px; 7 rem columns hold the longest chip on one line, and the steps leave no row with one drawing |
+| D2-1291 | The opener draws one color | A row with no current item goes one color (Rule 10.7) |
+| D2-1292 | In chapter 11's live specimens, the reader's page view and the stepper's step box take `--oa-color-field-ground` | They are panels one step from the ground, White on Newsprint and Prussian on Charcoal, the pairing the field ground uses; no role names a raised panel yet (question 3) |
+| D2-1293 | `s-05-3-corrective`'s two error bars become borders too | D2-1158 covers every state bar, and the plate is chapter 05's |
+| D2-1294 | The ten states' Selected row takes the utility selected check, and its bar becomes a border | D2-1158 names selected bars; the approved drawing replaces a hand-drawn check |
+| D2-1295 | The library's status line bolds the count and sets the advice in regular weight | A whole bold sentence read as a heading; the screen reader hears the same words |
+| D2-1296 | The reader's Fit width and Full size stay a pair of pressed buttons in this pass | D2-1151 and D2-1152 move them to a radio group with one pressed look at their owner's next pass; this pass carries the five routed faults, and neither fails WCAG today (inventory, F-6) |

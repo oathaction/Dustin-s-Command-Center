@@ -1,0 +1,72 @@
+{
+ "format": "oa-keys/1",
+ "set": "c-18-choice",
+ "rule": "18.3",
+ "component": "Choice",
+ "about": "The keyboard path of this code set, walked in each live stage by the guide check. Each path starts from the component as the page first draws it, with focus on a stand-in control just before the stage. A step presses \"key\" (a KeyboardEvent key; \"Space\" is the space bar) or types \"type\"; then \"focus\" is a selector inside the stage that the focused element must match, or \"outside\"; \"states\" must hold (\"\" is the stage, \":root\" the page root); \"status\" is the exact words of the stage's role=\"status\" line, and \"status_has\" words it must contain. Written by the accessibility lead for chapter 18, Rule 18.3.",
+ "paths": [
+  {
+   "name": "Enter at the checked choice; the arrow keys check each choice and pass the one that waits",
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": ".oa-choice-input[value=\"summary\"]",
+     "states": [
+      {
+       "el": ".oa-choice-input[value=\"summary\"]",
+       "prop": "checked",
+       "is": true
+      }
+     ]
+    },
+    {
+     "key": "ArrowRight",
+     "focus": ".oa-choice-input[value=\"text\"]",
+     "states": [
+      {
+       "el": ".oa-choice-input[value=\"text\"]",
+       "prop": "checked",
+       "is": true
+      },
+      {
+       "el": ".oa-choice-input[value=\"summary\"]",
+       "prop": "checked",
+       "is": false
+      }
+     ]
+    },
+    {
+     "key": "ArrowRight",
+     "focus": ".oa-choice-input[value=\"summary\"]",
+     "states": [
+      {
+       "el": ".oa-choice-input[value=\"summary\"]",
+       "prop": "checked",
+       "is": true
+      },
+      {
+       "el": ".oa-choice-input[value=\"changes\"]",
+       "prop": "checked",
+       "is": false
+      }
+     ]
+    },
+    {
+     "key": "ArrowLeft",
+     "focus": ".oa-choice-input[value=\"text\"]",
+     "states": [
+      {
+       "el": ".oa-choice-input[value=\"text\"]",
+       "prop": "checked",
+       "is": true
+      }
+     ]
+    },
+    {
+     "key": "Tab",
+     "focus": "outside"
+    }
+   ]
+  }
+ ]
+}

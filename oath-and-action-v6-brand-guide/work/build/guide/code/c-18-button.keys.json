@@ -1,0 +1,79 @@
+{
+ "format": "oa-keys/1",
+ "set": "c-18-button",
+ "rule": "18.1",
+ "component": "Buttons",
+ "about": "The keyboard path of this code set, walked in each live stage by the guide check. Each path starts from the component as the page first draws it, with focus on a stand-in control just before the stage. A step presses \"key\" (a KeyboardEvent key; \"Space\" is the space bar) or types \"type\"; then \"focus\" is a selector inside the stage that the focused element must match, or \"outside\"; \"states\" must hold (\"\" is the stage, \":root\" the page root); \"status\" is the exact words of the stage's role=\"status\" line, and \"status_has\" words it must contain. Written by the accessibility lead for chapter 18, Rule 18.1.",
+ "paths": [
+  {
+   "name": "Tab through every button; the unavailable ones keep focus, and a press does nothing",
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": ".oa-button--primary:not([aria-disabled]):not(.oa-button--icon-end)"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-button--ask:not([data-oa-yield])"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-button--quiet:not(.oa-button--icon-start)"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-button--icon-start"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-button--icon-end"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-button[aria-describedby$=\"oa-button-why\"]",
+     "states": [
+      {
+       "el": ".oa-button[aria-describedby$=\"oa-button-why\"]",
+       "attr": "aria-disabled",
+       "is": "true"
+      }
+     ]
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-button[aria-describedby$=\"oa-button-why\"]",
+     "states": [
+      {
+       "el": ".oa-button[aria-describedby$=\"oa-button-why\"]",
+       "attr": "aria-disabled",
+       "is": "true"
+      }
+     ]
+    },
+    {
+     "key": "Space",
+     "focus": ".oa-button[aria-describedby$=\"oa-button-why\"]"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-button[aria-describedby$=\"oa-button-sending\"]",
+     "states": [
+      {
+       "el": ".oa-button[aria-describedby$=\"oa-button-sending\"]",
+       "attr": "aria-disabled",
+       "is": "true"
+      }
+     ]
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-button--ask[data-oa-yield]"
+    },
+    {
+     "key": "Tab",
+     "focus": "outside"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,108 @@
+{
+ "format": "oa-keys/1",
+ "set": "c-18-tabs",
+ "rule": "18.9",
+ "component": "Tabs",
+ "about": "The keyboard path of this code set, walked in each live stage by the guide check. Each path starts from the component as the page first draws it, with focus on a stand-in control just before the stage. A step presses \"key\" (a KeyboardEvent key; \"Space\" is the space bar) or types \"type\"; then \"focus\" is a selector inside the stage that the focused element must match, or \"outside\"; \"states\" must hold (\"\" is the stage, \":root\" the page root); \"status\" is the exact words of the stage's role=\"status\" line, and \"status_has\" words it must contain. Written by the accessibility lead for chapter 18, Rule 18.9.",
+ "paths": [
+  {
+   "name": "Enter at the selected tab; the arrow keys, Home and End move and select; the tab that waits takes focus only",
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": ".oa-tabs-tab:nth-child(1)",
+     "states": [
+      {
+       "el": ".oa-tabs-tab:nth-child(1)",
+       "attr": "aria-selected",
+       "is": "true"
+      }
+     ]
+    },
+    {
+     "key": "ArrowRight",
+     "focus": ".oa-tabs-tab:nth-child(2)",
+     "states": [
+      {
+       "el": ".oa-tabs-tab:nth-child(2)",
+       "attr": "aria-selected",
+       "is": "true"
+      },
+      {
+       "el": ".oa-tabs-tab:nth-child(1)",
+       "attr": "aria-selected",
+       "is": "false"
+      },
+      {
+       "el": "[id$=\"oa-tabs-p2\"]",
+       "visible": true
+      },
+      {
+       "el": "[id$=\"oa-tabs-p1\"]",
+       "visible": false
+      }
+     ]
+    },
+    {
+     "key": "End",
+     "focus": ".oa-tabs-tab:nth-child(4)",
+     "states": [
+      {
+       "el": ".oa-tabs-tab:nth-child(4)",
+       "attr": "aria-disabled",
+       "is": "true"
+      },
+      {
+       "el": ".oa-tabs-tab:nth-child(2)",
+       "attr": "aria-selected",
+       "is": "true"
+      }
+     ]
+    },
+    {
+     "key": "ArrowRight",
+     "focus": ".oa-tabs-tab:nth-child(1)",
+     "states": [
+      {
+       "el": ".oa-tabs-tab:nth-child(1)",
+       "attr": "aria-selected",
+       "is": "true"
+      }
+     ]
+    },
+    {
+     "key": "ArrowLeft",
+     "focus": ".oa-tabs-tab:nth-child(4)",
+     "states": [
+      {
+       "el": ".oa-tabs-tab:nth-child(1)",
+       "attr": "aria-selected",
+       "is": "true"
+      }
+     ]
+    },
+    {
+     "key": "Home",
+     "focus": ".oa-tabs-tab:nth-child(1)",
+     "states": [
+      {
+       "el": ".oa-tabs-tab:nth-child(1)",
+       "attr": "aria-selected",
+       "is": "true"
+      }
+     ]
+    },
+    {
+     "key": "Tab",
+     "focus": "[role=\"tabpanel\"]:not([hidden])",
+     "states": [
+      {
+       "el": "[id$=\"oa-tabs-p1\"]",
+       "visible": true
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

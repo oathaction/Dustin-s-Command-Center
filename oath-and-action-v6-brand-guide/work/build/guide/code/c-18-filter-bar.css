@@ -1,0 +1,39 @@
+/* Filter bar: Filters opens a sheet of chips that combine; its name counts the chips that are on, and Clear filters
+   shows only while one is on. The result count, with its advice when nothing matches, goes to one status line. */
+.oa-filters { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
+.oa-filters-bar { display: flex; flex-wrap: wrap; gap: var(--oa-space-100) }
+.oa-filters-toggle, .oa-filters-clear, .oa-filters-chip { display: inline-flex; align-items: center; gap: var(--oa-space-100); box-sizing: border-box;
+  max-width: 100%; min-height: var(--oa-size-target-touch); margin: 0; padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); border-radius: var(--oa-radius-none); background: transparent;
+  color: var(--oa-color-text-primary); font: var(--oa-type-ui); text-align: start; overflow-wrap: anywhere; cursor: pointer }
+.oa-filters-toggle { padding-inline: calc(var(--oa-space-150) + 1px) }
+.oa-filters-clear[hidden] { display: none }
+.oa-filters-toggle:hover .oa-filters-count, .oa-filters-clear:hover, .oa-filters-chip:hover .oa-filters-word {
+  text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
+.oa-filters-toggle:focus-visible, .oa-filters-clear:focus-visible, .oa-filters-chip:focus-visible {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
+.oa-filters-icon, .oa-filters-chevron, .oa-filters-check { display: block; flex: none; width: var(--oa-size-icon-medium); height: var(--oa-size-icon-medium) }
+.oa-filters-count, .oa-filters-word { min-width: 0 }
+.oa-filters-chevron { transition: transform var(--oa-motion-duration-standard) var(--oa-motion-easing-standard) }
+.oa-filters-toggle[aria-expanded="true"] .oa-filters-chevron { transform: rotate(180deg) }
+.oa-filters-sheet { margin-top: var(--oa-space-150); padding-top: var(--oa-space-150); border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
+.oa-filters-sheet[hidden] { display: none }
+.oa-filters-k { margin: var(--oa-space-200) 0 var(--oa-space-100); font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform); color: var(--oa-color-text-secondary) }
+.oa-filters-sheet > .oa-filters-k:first-child { margin-top: 0 }
+.oa-filters-illus { margin-left: var(--oa-space-100); padding: 0 var(--oa-space-050); border: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline); text-transform: none }
+.oa-filters-chips { display: flex; flex-wrap: wrap; gap: var(--oa-space-100) }
+/* A chip that is on: the check before its word, the word in bold, a 2 px edge */
+.oa-filters-check { display: none }
+.oa-filters-chip[aria-pressed="true"] { padding: calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px) var(--oa-space-150);
+  border-width: var(--oa-border-width-rule); font-weight: var(--oa-font-weight-bold) }
+.oa-filters-chip[aria-pressed="true"] .oa-filters-check { display: block }
+.oa-filters-status { margin: var(--oa-space-200) 0 0; font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }
+.oa-filters-results { margin: var(--oa-space-100) 0 0; padding: 0; list-style: none; font: var(--oa-type-body-small) }
+.oa-filters-result { padding: var(--oa-space-050) 0; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
+.oa-filters-result[hidden] { display: none }
+.oa-filters-result-id { display: inline-block; min-width: 3.5em; font-weight: var(--oa-font-weight-bold); font-variant-numeric: tabular-nums }
+
+@media (forced-colors: active) {
+  .oa-filters-toggle, .oa-filters-clear, .oa-filters-chip { border-color: ButtonText }
+}

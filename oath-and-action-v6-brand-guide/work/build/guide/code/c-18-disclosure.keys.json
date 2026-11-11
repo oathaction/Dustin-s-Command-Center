@@ -1,0 +1,114 @@
+{
+ "format": "oa-keys/1",
+ "set": "c-18-disclosure",
+ "rule": "18.8",
+ "component": "Disclosure",
+ "about": "The keyboard path of this code set, walked in each live stage by the guide check. Each path starts from the component as the page first draws it, with focus on a stand-in control just before the stage. A step presses \"key\" (a KeyboardEvent key; \"Space\" is the space bar) or types \"type\"; then \"focus\" is a selector inside the stage that the focused element must match, or \"outside\"; \"states\" must hold (\"\" is the stage, \":root\" the page root); \"status\" is the exact words of the stage's role=\"status\" line, and \"status_has\" words it must contain. Written by the accessibility lead for chapter 18, Rule 18.8.",
+ "paths": [
+  {
+   "name": "Close and open the details, then the button disclosure; each says its state",
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": ".oa-disclosure:nth-of-type(1) > summary",
+     "states": [
+      {
+       "el": ".oa-disclosure:nth-of-type(1)",
+       "prop": "open",
+       "is": true
+      }
+     ]
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-disclosure:nth-of-type(1) > summary",
+     "states": [
+      {
+       "el": ".oa-disclosure:nth-of-type(1)",
+       "prop": "open",
+       "is": false
+      }
+     ]
+    },
+    {
+     "key": "Space",
+     "focus": ".oa-disclosure:nth-of-type(1) > summary",
+     "states": [
+      {
+       "el": ".oa-disclosure:nth-of-type(1)",
+       "prop": "open",
+       "is": true
+      }
+     ]
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-disclosure:nth-of-type(2) > summary",
+     "states": [
+      {
+       "el": ".oa-disclosure:nth-of-type(2)",
+       "prop": "open",
+       "is": false
+      }
+     ]
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-disclosure:nth-of-type(2) > summary",
+     "states": [
+      {
+       "el": ".oa-disclosure:nth-of-type(2)",
+       "prop": "open",
+       "is": true
+      }
+     ]
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-disclosure-button",
+     "states": [
+      {
+       "el": ".oa-disclosure-button",
+       "attr": "aria-expanded",
+       "is": "false"
+      },
+      {
+       "el": "[id$=\"oa-disclosure-lines\"]",
+       "visible": false
+      }
+     ]
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-disclosure-button",
+     "states": [
+      {
+       "el": ".oa-disclosure-button",
+       "attr": "aria-expanded",
+       "is": "true"
+      },
+      {
+       "el": "[id$=\"oa-disclosure-lines\"]",
+       "visible": true
+      }
+     ]
+    },
+    {
+     "key": "Space",
+     "focus": ".oa-disclosure-button",
+     "states": [
+      {
+       "el": ".oa-disclosure-button",
+       "attr": "aria-expanded",
+       "is": "false"
+      }
+     ]
+    },
+    {
+     "key": "Tab",
+     "focus": "outside"
+    }
+   ]
+  }
+ ]
+}

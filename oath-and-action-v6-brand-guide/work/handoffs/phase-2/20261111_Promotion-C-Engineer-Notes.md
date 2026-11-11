@@ -14,7 +14,7 @@ This file was written early and grows as the work lands. I built and tested the 
 | 4 | The utility family reads `svg-16/` and never `utility/_archive/` | done; reads DR-208's Pause and Filter |
 | 5 | Self-test, `sprite_check.js`, `guide_check.js` | done (figures below) |
 | 6 | `icon_likeness_check.js --self-test` counts the set in use | done (main session's message) |
-| 7 | Strict build, sprite check, token tests and guide check on the makers' files | waiting for the systems designer's `s-10-*` and `s-11-14-failure` |
+| 7 | Strict build, sprite check, token tests and guide check on the makers' files | done on the tree at c4ad5c7f: all pass (below) |
 
 At the start of my pass the strict build of the tree as committed (f6004c6a) gave exit 0, no warnings, 6,812,168 bytes, 12 chapter files, 132 rules, 306 specimens; the build self-test gave 15 of 15 scenarios and 159 of 159 expectations.
 
@@ -46,7 +46,9 @@ The build reads the size from the `<svg>`'s `width` attribute, which every speci
 
 **`icon_likeness_check.js` (main session's message).** Its self-test asked for exactly 124 drawings in the set in use. It now asks that the inventory's rows, its distinct IDs and the black files in `civic-line-v6/black/` agree, and that each pair is measured once, so the count follows the set in use: 125 drawings, 7,750 pairs. CL-075 moves the set in use's lines a little: the 99th percentile (flag) from 0.9092 to 0.9091, the 95th (watch) from 0.8678 to 0.8672, the median from 0.7143 to 0.7113. The closest pair stays at 0.9644.
 
-The shell needed no change: its `oa-at-1x` and `oa-at-2x` rules already switch any `<use>` at `min-resolution: 2dppx`.
+The shell's `oa-at-1x` and `oa-at-2x` rules already switch any `<use>` at `min-resolution: 2dppx`, so only their comment changed, to name the 41 and DR-209.
+
+**What a reader sees.** On a 1x screen each 24 px drawing of the 41 is its fit, crisp on whole pixels and grown toward 22 px across; from 2x it is its master, smooth and a little smaller in its box, as the fits manifest says. I looked at `s-10-list-41` at 390 px at 1x and 2x, enlarged: the first six rows draw the fits at 1x and the masters at 2x, each in its row beside its word.
 
 ## The families in use
 
@@ -84,6 +86,7 @@ Read on the real folders, the four families give 206 symbols and no warning or n
 - D2-xxx | `fitSwitch` runs at 1x at every width and in two runs of its own, 1440 px at 2x and 390 px at 3x | The switch sits at `min-resolution: 2dppx`; a laptop at 2x and a phone at 3x are the screens most readers use above it
 - D2-xxx | `sprite_check.js` compares the fits in black only and draws the switch for all 41; a build warning while it reads the families fails it | The fits have no red-black edition; a fit missing from its folder must not pass
 - D2-xxx | `icon_likeness_check.js --self-test` asks that the inventory's rows, its IDs and the black files agree, in place of a fixed 124 | The count follows the set in use, 125 with CL-075 (main session's call)
+- D2-xxx | The shell's comment on the switch names the 41 and DR-209; its rules stay as they were | One rule already switches any `<use>`
 - D2-xxx | The self-test's fixture families add the masters of all 41 from the October set, CL-075 from Housing option A with its new `data-id`, the 37 fits from the approved option files under their in-use names, DR-208's redraws, and the replaced files in `_archive/` folders, all in a temporary folder | The self-test must run before, during and after the makers' work; the approved files stay as the record
 
 ## Questions for Dustin
@@ -92,16 +95,40 @@ None. Every call above sits inside DR-136, DR-179, DR-207, DR-208, DR-209 and th
 
 ## For the main session and other owners
 
-- **Systems designer.** The strict build on the tree as it stands warns 46 times, each a 24 px master of the 41 without the switch: `s-10-list-41` (37), `s-10-9-correct` (5), `s-10-4-correct` (2), `s-10-1-failure` (1) and `s-11-14-failure` (1). Each warning gives the two `<use>` to write. `s-10-1-failure` is a failure plate: if it shows the master at 24 px on purpose, `data-oa-res="fixed"` on its `<svg>` keeps it and silences the warning; if it shows something else, it takes the switch like the rest.
-- **Identity designer.** `s-01-21-correct` now passes the switch check.
+- **Systems designer and identity designer.** When my check first ran on the tree, it found 47 drawings of the 41 at 24 px without the switch: `s-10-list-41` (37), `s-10-9-correct` (5), `s-10-4-correct` (2), `s-10-1-failure`, `s-11-14-failure` and `s-01-21-correct`. By c4ad5c7f each had moved to the switch, and the build warns on none. The page holds 77 switches, none marked `data-oa-res="fixed"`.
+- **Chapters 17 and 18 (round 1).** The newest tree's strict build warns 35 times, every one in chapter 18: anatomy plates `s-18-NN-anatomy` not written yet, and code sets `c-18-masthead` and `c-18-location` with no files. Ten more code sets in `work/build/guide/code/` give a note each until a rule shows them. None of this is the promotion's.
+- **Sprite weight.** All 206 symbols together weigh 374,957 bytes in a sprite (Civic Line 327,524, fits 30,164, utility 10,932, pillar 6,337), past the 0.35 MB the page budget gives sprites, but a page carries only what it references. Today's page carries 150 symbols in 210,685 bytes, up from 175,026 before the fits.
 
 ## Tested
 
-(being filled in)
+All builds, captures and outputs went to `/tmp/claude-0/-home-user-Dustin-s-Command-Center/42858b21-febe-5543-930e-ed82e286a69e/scratchpad/promotion-c/engineer/`.
+
+- **Strict build** of the tree at c4ad5c7f, with the icon designer's folders and the systems and identity designers' specimens on the switch: `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/strict/guide.html`, exit 0, no warnings, 6,868,870 bytes, 12 chapter files, 132 rules, 307 specimens. Four sprites on the page: Civic Line 69 symbols, fits 37, pillar 8, utility 36. Ten notes, each a chapter 18 code set no rule shows yet.
+- **Chapters 01 to 12 with the shell's final comment**, built strict from a scratch copy of the chapter folder without 17 and 18: 6,869,033 bytes, 132 rules, 307 specimens; its only warnings are the 48 specimens chapters 17 and 18 list in their manifests, which no chapter places when those two are left out.
+- **Build self-test**: 19 of 19 scenarios and 220 of 220 expectations (15 and 159 at the start). Four new scenarios, on fixture families in a temporary folder:
+  - Four families: one sprite per family, four in all, after `<body>`; each referenced symbol once; a fit draws in `currentColor` with no ink, accent, id or comment of its file; CL-075's accent draws through `--oa-icon-accent`; the 16 px Pause and Filter are DR-208's redraws; nothing from `utility/_archive/` or `pillar-icons/_archive/` reaches the sprite.
+  - The fits folder's faults: a fit off the list (CL-075), a pillar fit in `fit-24/`, a 16 px file, a second file, a fit whose master is missing (R-45) and a missing fit (CL-072) each give their warning; a red-black file is ignored; the page still builds with the fits that exist.
+  - The switch for all 41: the right pattern for CL-048, R-06, CL-001 and a pillar icon gives no warning, nor does `data-oa-res="fixed"`, nor a master at 48 px; a master alone at 24 px (topic and pillar), a fit alone, a fit paired with another drawing's master, the classes on CL-025, CL-029, CL-075 and a utility icon, an accent on a fit and on a master under 48 px, a fit drawn at 48 px and a master on 2x screens only each give their warning.
+  - No list of 41: a warning, and the drawings whose fits are read still switch.
+- **Mutation test of the build's new checks**, run on in-memory copies of `guide_build.py` (nothing written to the tree): reading `_archive/` folders, skipping the 24 px master check, not reading `fit-24/`, no membership check, letting any master take `oa-at-2x`, no completeness check, and the accent check on fits only. The self-test fails on each of the seven.
+- **`guide_check.js` on the strict page at 1440, 1024, 390 and 360 px**: PASS, 0 failures, 1,102 same-page links. `fitSwitch` finds 77 switches at each width, the fit shown in all 77 at 1x; in the high-density runs, 1440 px at 2x and 390 px at 3x, the master shown in all 77. axe-core 4.10.2 finds no violation at any width; 60 focus stops show a ring at 1440 and 390 px; `lightOnDark` reads 37,201 elements and none changes; `forcedGlyphs` reads 399 glyph parts at 1440 and 1024 px and 400 at 390 and 360 px, 281 and 282 of them through `<use>`, none erased; the phone menu opens, holds focus, closes by Escape and by Close and returns focus at 390 and 360 px. It took 4 minutes 50 seconds.
+- **`guide_check.js --self-test`**: PASS. The clean demo passes (with the two high-density runs), 97 of 97 planted faults are caught and 28 of 28 allowances stay quiet (round 0: 91 and 25). New plants: a master of the 41 at 24 px sized by CSS, which the build cannot see; a specimen style that shows both drawings at 1x; a specimen style that keeps the fit at 2x, which only the high-density run catches (its 1x run stays quiet); the switch on CL-075; a fit alone at 24 px; CL-075 at 24 px (B-3). New allowances: the pattern, with the fit shown at 1x and the master at 2x; a master at 24 px marked `data-oa-res="fixed"`; CL-075 at 48 px.
+- **`sprite_check.js` on the real folders**, run twice (before and after the shell's comment changed): PASS. 206 symbols. Through `<use>` beside its file, every pair matches with a largest channel difference of 0 at 1x and 2x: Civic Line 250 black and 250 red-black pairs (48 and 128 px), pillar 8 and 8, fits 37, utility 36. The switch draws the fit alone for 41 of 41 at 1x and 1.5x (0 against the fit, 162 to 202 against the master) and the master alone for 41 of 41 at 2x (0 against the master, 202 to 203 against the fit).
+- **Two plants in the sprite check**, from a scratch copy of the script: with the shell's switch left out of the page, 0 of 41 patterns draw right; with the fits' symbols shifted one unit, the fits differ from their files by 202. Both fail, as they should.
+- **`icon_likeness_check.js --self-test`**: all right on the October set (7,381 pairs, Board 6's figures within 0.0000) and on the set in use (125 drawings in the inventory, 125 black files, 7,750 pairs; p50 0.7113, p95 0.8672, p99 0.9091, closest 0.9644).
+- **Token tests** (`python3 -I work/build/tests/tokens/run_token_tests.py`): all six steps pass. 500 tokens; parity 620 `:root` properties and 0 failures; rules 0 failures; self-test 41 of 41 plants; Style Dictionary 5.8.0 agrees on 500; Chromium resolves 469 values with 0 failures.
+- **Looked at**: `s-10-list-41`'s first six rows at 390 px at 1x and 2x, enlarged four times at one CSS scale; in each the 1x run shows the `oa-at-1x` `<use>` and hides the other, and the 2x run the reverse.
 
 ## Not tested
 
-(being filled in)
+- The byte checks, pixel-fit checks and likeness check on the fits, CL-075 and the two utility files belong to the makers, and I did not run them. The sprite check proves each symbol draws as its file in use.
+- A 1.25x or 1.75x screen; the sprite check draws the switch at 1x, 1.5x and 2x, and the guide check at 1x, 2x and 3x.
+- `min-resolution` in a browser that lacks it, where both classes fall back to the fit.
+- Forced colors on Windows itself, Firefox, Safari, real phones and real high-density screens; every density and forced colors run here is Chromium's emulation.
+- Print. In print the media query normally matches, so the page would print the masters; I did not print it.
+- A glyph a specimen sizes by CSS to 24 px inside a larger drawing, as one `<use>` with its own width among other shapes: `fitSwitch` measures each `<svg>`, so such a `<use>` passes unseen. None is on the page today.
+- The full guide check on the newest tree with chapters 17 and 18 in it, which are still being written.
+- The default build into the stage A board folder, which I did not run.
 
 ## Change log
 
@@ -111,7 +138,11 @@ Created:
 Modified:
 - `work/build/scripts/phase-2/guide_build.py`: the fourth family, no `_` folders, the list of 41 from the construction file, the fits' checks, the 1x and 2x check for all 41, four self-test scenarios and the fixtures they read
 - `work/build/scripts/phase-2/guide_check.js`: the list of 41 from the construction file, `fitSwitch` at 1x and in two high-density runs, nine plants
-- `work/build/scripts/phase-2/sprite_check.js`: the fourth family and the switch for all 41; build warnings count as failures
+- `work/build/scripts/phase-2/sprite_check.js`: the fourth family and the switch for all 41; build warnings count as failures; a shorter pattern summary
 - `work/build/scripts/phase-2/icon_likeness_check.js`: the self-test's count follows the set in use
+- `work/build/guide/shell/guide-shell.css`: the switch's comment only
+- `work/build/tests/tokens/20261106_Token-Test-Results.json`: rewritten by the token test run
 
-Unchanged: the shell, every chapter file, specimen, manifest and asset folder, every board. Nothing in `source/`, `work/ledger/` or `deliverables/`. Nothing committed or pushed.
+Unchanged: `guide-shell.js`, every chapter file, specimen, manifest and asset folder, every board. Nothing in `source/`, `work/ledger/` or `deliverables/`. I committed and pushed nothing; the main session's snapshots 95cf5f64 and c4ad5c7f already hold my changes to `guide_build.py`, `guide_check.js` and `sprite_check.js`.
+
+Scratch outputs, all under `/tmp/claude-0/-home-user-Dustin-s-Command-Center/42858b21-febe-5543-930e-ed82e286a69e/scratchpad/promotion-c/engineer/`: the built pages and their reports (`baseline/`, `strict/`, `scope/`, `final/`), the guide check's results and the self-test's, the sprite check's JSON, the sprite sheet, the mutation and plant scripts, and the captures in `look/`.

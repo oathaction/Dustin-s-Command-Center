@@ -1,0 +1,267 @@
+{
+ "about": "Every figure chapter 17 prints, with the method that produced it. Contrast is WCAG 2.x relative luminance on the token hex values in tokens.json; motion values are read from tokens.json.",
+ "built": "2026-11-11",
+ "token_set_version": "6.0.0-gate2.7",
+ "figures": {
+  "Charcoal at 40 percent opacity over Newsprint": {
+   "value": "2.48",
+   "fg": "#8B8985",
+   "bg": "#DCD9D2",
+   "exact": 2.4771,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "Charcoal at 40 percent opacity over White": {
+   "value": "2.61",
+   "fg": "#A0A0A0",
+   "bg": "#FFFFFF",
+   "exact": 2.615,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "Pillar Red words on Newsprint": {
+   "value": "2.96",
+   "fg": "#E63946",
+   "bg": "#DCD9D2",
+   "exact": 2.9571,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "Verdigris words on Newsprint": {
+   "value": "3.37",
+   "fg": "#4A7C74",
+   "bg": "#DCD9D2",
+   "exact": 3.3659,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.border.strong.onCharcoal on oa.color.surface.charcoal": {
+   "value": "13.29",
+   "fg": "#DCD9D2",
+   "bg": "#121212",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.border.strong.onNewsprint on oa.color.surface.newsprint": {
+   "value": "13.29",
+   "fg": "#121212",
+   "bg": "#DCD9D2",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.focus.ring.onCharcoal on oa.color.surface.charcoal": {
+   "value": "13.29",
+   "fg": "#DCD9D2",
+   "bg": "#121212",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.focus.ring.onNewsprint on oa.color.surface.newsprint": {
+   "value": "3.37",
+   "fg": "#4A7C74",
+   "bg": "#DCD9D2",
+   "exact": 3.3659,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.focus.ring.onPrussian on oa.color.surface.prussian": {
+   "value": "9.42",
+   "fg": "#DCD9D2",
+   "bg": "#1F2D5A",
+   "exact": 9.4222,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.focus.ring.onWhite on oa.color.surface.white": {
+   "value": "4.74",
+   "fg": "#4A7C74",
+   "bg": "#FFFFFF",
+   "exact": 4.7442,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.disabled.text.onCharcoal on oa.color.surface.charcoal": {
+   "value": "7.26",
+   "fg": "#A3A19C",
+   "bg": "#121212",
+   "exact": 7.2573,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.disabled.text.onNewsprint on oa.color.surface.newsprint": {
+   "value": "5.49",
+   "fg": "#4E535B",
+   "bg": "#DCD9D2",
+   "exact": 5.4931,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.empty.edge.onCharcoal on oa.color.surface.charcoal": {
+   "value": "7.26",
+   "fg": "#A3A19C",
+   "bg": "#121212",
+   "exact": 7.2573,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.empty.edge.onNewsprint on oa.color.surface.newsprint": {
+   "value": "4.29",
+   "fg": "#5D636D",
+   "bg": "#DCD9D2",
+   "exact": 4.2924,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.error.mark.onCharcoal on oa.color.surface.charcoal": {
+   "value": "4.49",
+   "fg": "#E63946",
+   "bg": "#121212",
+   "exact": 4.4946,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.error.mark.onNewsprint on oa.color.state.error.band.onNewsprint": {
+   "value": "2.64",
+   "fg": "#E63946",
+   "bg": "#E1C9C1",
+   "exact": 2.645,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.error.mark.onNewsprint on oa.color.surface.newsprint": {
+   "value": "2.96",
+   "fg": "#E63946",
+   "bg": "#DCD9D2",
+   "exact": 2.9571,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.error.text.onNewsprint on oa.color.state.error.band.onNewsprint": {
+   "value": "11.89",
+   "fg": "#121212",
+   "bg": "#E1C9C1",
+   "exact": 11.888,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.loading.mark.onCharcoal on oa.color.surface.charcoal": {
+   "value": "7.26",
+   "fg": "#A3A19C",
+   "bg": "#121212",
+   "exact": 7.2573,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.loading.mark.onNewsprint on oa.color.surface.newsprint": {
+   "value": "4.29",
+   "fg": "#5D636D",
+   "bg": "#DCD9D2",
+   "exact": 4.2924,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.loading.text.onNewsprint on oa.color.surface.newsprint": {
+   "value": "5.49",
+   "fg": "#4E535B",
+   "bg": "#DCD9D2",
+   "exact": 5.4931,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.muted.mark.onCharcoal on oa.color.surface.charcoal": {
+   "value": "7.26",
+   "fg": "#A3A19C",
+   "bg": "#121212",
+   "exact": 7.2573,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.muted.mark.onNewsprint on oa.color.surface.newsprint": {
+   "value": "4.29",
+   "fg": "#5D636D",
+   "bg": "#DCD9D2",
+   "exact": 4.2924,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.selected.band.onCharcoal on oa.color.surface.charcoal": {
+   "value": "1.41",
+   "fg": "#1F2D5A",
+   "bg": "#121212",
+   "exact": 1.4106,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.selected.band.onNewsprint on oa.color.surface.newsprint": {
+   "value": "1.41",
+   "fg": "#FFFFFF",
+   "bg": "#DCD9D2",
+   "exact": 1.4095,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.success.mark.onCharcoal on oa.color.surface.charcoal": {
+   "value": "3.95",
+   "fg": "#4A7C74",
+   "bg": "#121212",
+   "exact": 3.9487,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.success.mark.onNewsprint on oa.color.surface.newsprint": {
+   "value": "3.37",
+   "fg": "#4A7C74",
+   "bg": "#DCD9D2",
+   "exact": 3.3659,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.warning.mark.onCharcoal on oa.color.surface.charcoal": {
+   "value": "13.29",
+   "fg": "#DCD9D2",
+   "bg": "#121212",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.state.warning.mark.onNewsprint on oa.color.surface.newsprint": {
+   "value": "13.29",
+   "fg": "#121212",
+   "bg": "#DCD9D2",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "focus ring on Charcoal against the Newsprint primary fill": {
+   "value": "1.00",
+   "fg": "#DCD9D2",
+   "bg": "#DCD9D2",
+   "exact": 1.0,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "land from": {
+   "value": "112 percent",
+   "method": "our fifth edition’s lever landed at 1.4 times a node and settled at 1.25 (Phase 0 text census, V5 chapter 12); 1.4 / 1.25 = 1.12"
+  },
+  "motion durations": {
+   "value": {
+    "fast": 120,
+    "standard": 200,
+    "slow": 320,
+    "stagger": 40,
+    "hinge": 680,
+    "lever": 560
+   },
+   "method": "tokens.json oa.motion.duration, read by this generator"
+  },
+  "motion easings": {
+   "value": {
+    "standard": "cubic-bezier(0.2, 0, 0, 1)",
+    "enter": "cubic-bezier(0, 0, 0.2, 1)",
+    "exit": "cubic-bezier(0.4, 0, 1, 1)"
+   },
+   "method": "tokens.json oa.motion.easing"
+  },
+  "overshoot of cubic-bezier(0.34, 1.56, 0.64, 1)": {
+   "value": "10 percent past its place",
+   "method": "sampled at 2,001 points of the curve’s progress"
+  },
+  "primary fill against its hover fill on Charcoal": {
+   "value": "1.41",
+   "fg": "#DCD9D2",
+   "bg": "#FFFFFF",
+   "exact": 1.4095,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "primary fill against its hover fill on Newsprint": {
+   "value": "1.41",
+   "fg": "#121212",
+   "bg": "#1F2D5A",
+   "exact": 1.4106,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  }
+ },
+ "tokens_cited": [
+  "oa.color.surface.charcoal",
+  "oa.color.text.primary.onCharcoal",
+  "oa.type.bodySmall",
+  "oa.type.caption",
+  "oa.type.h4",
+  "oa.type.label",
+  "oa.type.ui"
+ ]
+}

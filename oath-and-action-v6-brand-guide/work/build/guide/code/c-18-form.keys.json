@@ -1,0 +1,82 @@
+{
+ "format": "oa-keys/1",
+ "set": "c-18-form",
+ "rule": "18.17",
+ "component": "Form",
+ "about": "The keyboard path of this code set, walked in each live stage by the guide check. Each path starts from the component as the page first draws it, with focus on a stand-in control just before the stage. A step presses \"key\" (a KeyboardEvent key; \"Space\" is the space bar) or types \"type\"; then \"focus\" is a selector inside the stage that the focused element must match, or \"outside\"; \"states\" must hold (\"\" is the stage, \":root\" the page root); \"status\" is the exact words of the stage's role=\"status\" line, and \"status_has\" words it must contain. Written by the accessibility lead for chapter 18, Rule 18.17.",
+ "paths": [
+  {
+   "name": "Send with mistakes: focus moves to the first field to fix",
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": "input[autocomplete=\"email\"]"
+    },
+    {
+     "type": "name@",
+     "focus": "input[autocomplete=\"email\"]"
+    },
+    {
+     "key": "Tab",
+     "focus": "input[autocomplete=\"postal-code\"]"
+    },
+    {
+     "type": "021",
+     "focus": "input[autocomplete=\"postal-code\"]"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-form-send"
+    },
+    {
+     "key": "Enter",
+     "focus": "input[autocomplete=\"email\"]",
+     "states": [
+      {
+       "el": "input[autocomplete=\"email\"]",
+       "attr": "aria-invalid",
+       "is": "true"
+      },
+      {
+       "el": "input[autocomplete=\"postal-code\"]",
+       "attr": "aria-invalid",
+       "is": "true"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Send right: the status line says so",
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": "input[autocomplete=\"email\"]"
+    },
+    {
+     "type": "reader@example.org",
+     "focus": "input[autocomplete=\"email\"]"
+    },
+    {
+     "key": "Tab",
+     "focus": "input[autocomplete=\"postal-code\"]"
+    },
+    {
+     "type": "12345",
+     "focus": "input[autocomplete=\"postal-code\"]"
+    },
+    {
+     "key": "Enter",
+     "states": [
+      {
+       "el": "input[autocomplete=\"email\"]",
+       "attr": "aria-invalid",
+       "is": null
+      }
+     ],
+     "status_filled": true
+    }
+   ]
+  }
+ ]
+}

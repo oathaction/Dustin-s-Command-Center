@@ -1,0 +1,39 @@
+{
+ "format": "oa-keys/1",
+ "set": "c-18-scroll-region",
+ "rule": "18.11",
+ "component": "Scroll region",
+ "about": "The keyboard path of this code set, walked in each live stage by the guide check. Each path starts from the component as the page first draws it, with focus on a stand-in control just before the stage. A step presses \"key\" (a KeyboardEvent key; \"Space\" is the space bar) or types \"type\"; then \"focus\" is a selector inside the stage that the focused element must match, or \"outside\"; \"states\" must hold (\"\" is the stage, \":root\" the page root); \"status\" is the exact words of the stage's role=\"status\" line, and \"status_has\" words it must contain. Written by the accessibility lead for chapter 18, Rule 18.11.",
+ "paths": [
+  {
+   "name": "Reach the frame while it overflows, scroll it with the arrow keys, then leave",
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": ".oa-scroll-frame[tabindex=\"0\"][role=\"group\"]",
+     "states": [
+      {
+       "el": ".oa-scroll-hint",
+       "visible": true
+      }
+     ]
+    },
+    {
+     "key": "ArrowRight",
+     "focus": ".oa-scroll-frame",
+     "states": [
+      {
+       "el": ".oa-scroll-frame",
+       "prop": "scrollLeft",
+       "above": 0
+      }
+     ]
+    },
+    {
+     "key": "Tab",
+     "focus": "outside"
+    }
+   ]
+  }
+ ]
+}

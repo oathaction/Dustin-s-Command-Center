@@ -1,0 +1,2034 @@
+{
+  "number": "18",
+  "anchor": "components",
+  "title": "Components and interaction",
+  "part": "Behavior",
+  "instruction": "Build controls that work by keyboard and screen reader and announce every change.",
+  "intro": [
+    "A component is a part of a page that a reader works, such as a button, a menu or a search field. Each rule here gives one component as code to copy, drawn live in the light theme on Newsprint and in the dark theme on Charcoal, and a table of its states, its keys, its name, its target size and what a screen reader hears when it changes.",
+    "The code reads only tokens.css, the file that holds every color, size and type style as a named value, so one copy follows either theme. What a screen reader hears is what the code hands it, the name, the role, the state and any status line, and each screen reader words these its own way. How each state looks and moves comes from chapter 17."
+  ],
+  "groups": [
+    {
+      "before_rule": "18.1",
+      "number": 1,
+      "title": "Actions and choices",
+      "line": "Buttons act on the page. Toggles, choices and the theme switch hold a state the reader sets, which a screen reader can name."
+    },
+    {
+      "before_rule": "18.5",
+      "number": 2,
+      "title": "Moving around",
+      "line": "Links take a reader somewhere, and the masthead and the location lists show where the reader is now."
+    },
+    {
+      "before_rule": "18.8",
+      "number": 3,
+      "title": "Showing and hiding",
+      "line": "A disclosure opens a part of the page in place, and tabs switch between views of one thing."
+    },
+    {
+      "before_rule": "18.10",
+      "number": 4,
+      "title": "Tables, code and files",
+      "line": "Tables sort where they stand and wide content scrolls inside its own frame. The copy and download controls say in words what they did."
+    },
+    {
+      "before_rule": "18.15",
+      "number": 5,
+      "title": "Finding and filling in",
+      "line": "Search, filters and forms tell the reader what they found or what to fix, in a status line or beside the field."
+    },
+    {
+      "before_rule": "18.18",
+      "number": 6,
+      "title": "Messages and waiting",
+      "line": "Each message carries its mark and its first word, and a part that waits for data says what is coming or what is missing."
+    },
+    {
+      "before_rule": "18.20",
+      "number": 7,
+      "title": "Records, readers and drawings",
+      "line": "The controls our civic records and atlas drawings need: the live tracker, the report reader, the loop stepper, the controls on a drawing and the typed ID chip."
+    }
+  ],
+  "rules": [
+    {
+      "id": "18.1",
+      "title": "Use a button to act on the page, and keep an unavailable one in reach with its reason.",
+      "rule": [
+        "A button acts on the page: it sends a form, copies a value or starts a loop. A control that takes the reader to another page or place is a link (Rule 18.5). A view has one primary button at most, Charcoal on Newsprint and Newsprint on Charcoal. The ask, the Pillar Red button for the one way to take part, appears only where Rule 05.3 gives the view its working red, and every other button is quiet: its word in ink inside a 1 px edge. A utility icon sits beside the word (Rule 11.11).",
+        "When an action cannot run yet, its button stays in place and keeps its focus. It carries aria-disabled, draws a dashed edge and points to a line beside it that says why and what makes it work, such as “Fill in your email to send.” While a send runs, its word reads “Sending” and a second press does nothing. While an error on the page holds the red, the ask steps down to the primary look (Rule 11.16)."
+      ],
+      "tokens": [
+        "--oa-color-action-primary-fill",
+        "--oa-color-action-primary-fill-hover",
+        "--oa-color-action-primary-label",
+        "--oa-color-action-ask-fill",
+        "--oa-color-action-ask-label",
+        "--oa-component-button-ask-keyline",
+        "--oa-color-state-disabled-text",
+        "--oa-color-state-disabled-edge",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "A native button gives every reader the Tab key, Enter, Space and the role “button” with no script. The disabled attribute would take the button out of the Tab order and hide its reason with it, where aria-disabled keeps both in reach. An underline on hover and a dashed edge when unavailable carry each state in a shape as well as a color."
+        ],
+        "basis": "WCAG 2.2 SC 1.4.1, 2.1.1, 2.5.8 and 4.1.2; APG Button pattern"
+      },
+      "correct": {
+        "specimen": "s-18-01-anatomy",
+        "caption": "The parts of a button: its word, the 24 px utility icon beside it, its fill or 1 px edge, the 44 px height, the focus ring at its gap, and the reason line an unavailable button points to."
+      },
+      "failure": {
+        "specimen": "s-18-01-failure",
+        "caption": "<strong>Fails Rule 18.1.</strong> Send is grayed out with the disabled attribute and no words, so the Tab key skips it and nobody learns that the email is missing. Its word measures 1.83 to 1 on Newsprint."
+      },
+      "code": {
+        "set": "c-18-button",
+        "name": "Buttons",
+        "caption": "The primary button, the ask, a quiet button with its icon and an unavailable button with its reason, live. Tab to the unavailable one and press it: it keeps focus, and its line says why it waits."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "APG Button, on the native <code><button type=\"button\"></code>."
+        },
+        {
+          "label": "States",
+          "value": "Default. Hover: the primary fill turns Prussian on Newsprint and White on Charcoal, and the word underlines; a quiet button’s edge thickens from 1 to 2 px. Focus: the 2 px focus ring at a 2 px gap, in Verdigris on Newsprint (3.37 to 1) and Newsprint on Charcoal (13.29 to 1) (Rule 17.9). Unavailable: a dashed edge, the word in the disabled color (5.49 to 1 on Newsprint, 7.26 on Charcoal) and the reason line, with focus kept. Sending: the word reads “Sending”. Stepping down: the ask takes the primary look while an error holds the red."
+        },
+        {
+          "label": "Keyboard",
+          "value": "Tab reaches it; Enter or Space presses it. An unavailable button takes focus, and a press does nothing."
+        },
+        {
+          "label": "Accessible name",
+          "value": "Its visible word, which starts the name (WCAG 2.2 SC 2.5.3); the icon carries aria-hidden. An unavailable button takes its reason as its description through aria-describedby."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "Its word and its role, button. Unavailable: the disabled state that aria-disabled gives, and the reason. Sending: the new word, “Sending”, while focus is on it."
+        },
+        {
+          "label": "Target",
+          "value": "At least 44 px tall and 44 px wide (Rule 11.7); a row of two buttons stacks to one column when a word would not fit.",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Forced colors",
+          "value": "Fills drop out, so each button draws a 1 px edge in ButtonText around its word in ButtonText. The unavailable button keeps its dashed edge, in GrayText. The ring takes the system’s color."
+        },
+        {
+          "label": "Light and dark",
+          "value": "On Charcoal the primary button turns Newsprint with a Charcoal word, its hover fill turns White, and the ask drops its Charcoal keyline; its White word measures 4.17 to 1 on Pillar Red in both themes, at 19 px bold."
+        },
+        {
+          "label": "Browser support",
+          "value": "<code>:focus-visible</code>: Chrome 86, Edge 86, Firefox 85, Safari 15.4, Safari on iOS 15.4. <code>forced-colors</code>: Chrome 89, Edge 79, Firefox 89, Safari 16, Safari on iOS 16."
+        }
+      ],
+      "related": [
+        "17",
+        "11",
+        "05"
+      ],
+      "builders": [
+        "An unavailable button: <code><button type=\"button\" aria-disabled=\"true\" aria-describedby=\"send-why\"></code>, with the script stopping its press. A row of two buttons: <code>grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr))</code>, and no <code>white-space: nowrap</code> on any word."
+      ]
+    },
+    {
+      "id": "18.2",
+      "title": "Turn a setting on or off with a toggle button, and mark it on with a check, bold words and a 2 px edge.",
+      "rule": [
+        "A toggle button turns one thing on or off and keeps its word in both states, such as “Show sources”. A filter chip is a toggle that narrows a list, and chips combine, so a reader can turn on several at once. Each carries aria-pressed, true while it is on.",
+        "On looks the same in every product (Rule 17.10): a check before the word, the word in bold and a 2 px edge. Off keeps a 1 px edge and no check. The word stays the same when the state changes, because the check and the pressed state already say it, and a word that flipped would leave a screen reader saying two things at once."
+      ],
+      "tokens": [
+        "--oa-color-border-strong",
+        "--oa-color-text-primary",
+        "oa.border.width.rule",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "A reader learns one look for on and meets it on every chip and toggle. The check and the edge are shapes, so they hold in gray print and in a contrast theme, where a fill drops out, and aria-pressed lets a screen reader say on or off."
+        ],
+        "basis": "WCAG 2.2 SC 1.4.1, 1.4.11 and 4.1.2; APG Button pattern, the toggle button"
+      },
+      "correct": {
+        "specimen": "s-18-02-anatomy",
+        "caption": "The parts of a chip, off and on: its word, the 1 px edge, then the check before the word, the bold word and the 2 px edge, at 44 px tall."
+      },
+      "failure": {
+        "specimen": "s-18-02-failure",
+        "caption": "<strong>Fails Rule 18.2.</strong> The chip that is on differs from the others only by its Prussian fill. In a contrast theme the fill drops out, and all three chips look the same."
+      },
+      "code": {
+        "set": "c-18-toggle",
+        "name": "Toggle buttons and chips",
+        "caption": "A toggle button and three filter chips, live. Press Space on a chip to turn it on and off; focus stays where it is."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "APG Button, as a toggle button with aria-pressed. A long list of filters inside a form may use checkboxes instead (APG Checkbox)."
+        },
+        {
+          "label": "States",
+          "value": "Off: a 1 px edge and the word. On: a check before the word, the word in bold and a 2 px edge (Rule 17.10). Hover: the word underlines. Focus: the ring. Unavailable: as Rule 18.1, a dashed edge and a reason."
+        },
+        {
+          "label": "Keyboard",
+          "value": "Tab reaches each toggle; Space or Enter turns it on or off; focus stays on it."
+        },
+        {
+          "label": "Accessible name",
+          "value": "Its word, the same in both states; the check carries aria-hidden."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "Its word, its role and “pressed” or “not pressed”; after a press, the new state. A chip that narrows a list also changes the list’s status line (Rule 18.16)."
+        },
+        {
+          "label": "Target",
+          "value": "44 px tall and at least 44 px wide.",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Forced colors",
+          "value": "The check, the bold word and the 2 px edge hold, in ButtonText. No fill carries the state, since a fill drops out."
+        },
+        {
+          "label": "Light and dark",
+          "value": "Charcoal edge, word and check on Newsprint; Newsprint on Charcoal."
+        },
+        {
+          "label": "Browser support",
+          "value": "The script sets aria-pressed with <code>setAttribute</code>, which every browser reads, so it needs nothing newer than <code>:focus-visible</code>: Chrome 86, Edge 86, Firefox 85, Safari 15.4, Safari on iOS 15.4. ARIA states and roles are read by screen readers, and MDN’s data does not track which screen reader reads which; chapter 19 lists them as not tested here."
+        }
+      ],
+      "related": [
+        "17",
+        "11"
+      ],
+      "builders": [
+        "<code><button type=\"button\" class=\"oa-chip\" aria-pressed=\"false\"></code>, with the check as an inline SVG inside it. Draw the on look from <code>[aria-pressed=\"true\"]</code>, so the state and the look cannot come apart."
+      ]
+    },
+    {
+      "id": "18.3",
+      "title": "Offer one of a few choices as radio buttons in a named group.",
+      "rule": [
+        "When a reader picks one of two to five choices and only one can hold, such as the size of a page, use native radio buttons in a fieldset whose legend names the choice. Draw them as a row of segments or as a list, and make the whole segment the label, so a press anywhere on it chooses.",
+        "The checked choice takes the one look for a current choice (Rule 17.10): a check before the word, the word in bold and a 2 px edge. A choice applies at once, with no Apply button, and focus stays on it. A choice that cannot be made yet stays out of the group, and a hint under the legend says why."
+      ],
+      "tokens": [
+        "--oa-color-border-strong",
+        "--oa-color-text-primary",
+        "oa.border.width.rule",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "Radio buttons tell a screen reader that only one choice holds and how many there are, and the arrow keys move between them with no script. A pair of pressed buttons says neither. A disabled radio is skipped by the arrow keys and hides its reason, so a choice that waits leaves the group and the hint explains it."
+        ],
+        "basis": "WCAG 2.2 SC 1.3.1, 3.2.2 and 4.1.2; APG Radio Group pattern"
+      },
+      "correct": {
+        "specimen": "s-18-03-anatomy",
+        "caption": "The parts of a choice: the legend, each segment with its word and its edge, the checked segment’s check, bold word and 2 px edge, the focus ring around the whole segment, and the hint under the legend."
+      },
+      "failure": {
+        "specimen": "s-18-03-failure",
+        "caption": "<strong>Fails Rule 18.3.</strong> Nothing names the choice, and the chosen size differs only by its fill. A screen reader hears “Full size” with no group, and a contrast theme loses the fill."
+      },
+      "code": {
+        "set": "c-18-choice",
+        "name": "Choice",
+        "caption": "A choice of page size, live. Tab into it, then use the arrow keys: each one checks the next choice."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "APG Radio Group, on native <code><input type=\"radio\"></code> in a <code><fieldset></code> with a <code><legend></code>."
+        },
+        {
+          "label": "States",
+          "value": "Unchecked: a 1 px edge. Checked: a check before the word, the word in bold and a 2 px edge (Rule 17.10). Hover: the word underlines. Focus: the ring around the whole segment."
+        },
+        {
+          "label": "Keyboard",
+          "value": "Tab enters the group at the checked choice. The arrow keys move and check, wrapping at the ends. Space checks the focused choice when none is checked. Tab leaves the group."
+        },
+        {
+          "label": "Accessible name",
+          "value": "The legend names the group; each label names its choice."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "The group’s name on entry, then the choice’s word, “radio button”, “checked” and its place, such as 2 of 3; after an arrow key, the next choice the same way."
+        },
+        {
+          "label": "Target",
+          "value": "Each segment 44 px tall, all of it the label.",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Forced colors",
+          "value": "The check, the bold word and the edges hold in ButtonText; a native radio, where it shows, takes the system’s colors."
+        },
+        {
+          "label": "Light and dark",
+          "value": "As Rule 18.2: Charcoal on Newsprint, Newsprint on Charcoal."
+        },
+        {
+          "label": "Browser support",
+          "value": "Radio buttons, fieldsets and legends: every browser MDN lists, from its oldest versions. Draw the checked look with <code>input:checked + span</code>, which they all read. <code>:has()</code>: Chrome 105, Edge 105, Firefox 121, Safari 15.4, Safari on iOS 15.4. <code>:focus-visible</code>: Chrome 86, Edge 86, Firefox 85, Safari 15.4, Safari on iOS 15.4."
+        }
+      ],
+      "related": [
+        "17",
+        "11"
+      ],
+      "builders": [
+        "Hide the native radio with a visually hidden style that keeps it focusable, never with <code>display: none</code>, and draw the ring on its segment from <code>input:focus-visible + span</code>."
+      ]
+    },
+    {
+      "id": "18.4",
+      "title": "Let the reader choose Light, Dark or Match my device, and remember the choice.",
+      "rule": [
+        "Every screen product follows the reader’s device at first and offers a theme switch in the same place on every page, in the masthead or at the top of the phone menu. The switch is a choice (Rule 18.3) of three radio buttons under the legend “Theme”: Light, Dark and Match my device, with Match my device checked until the reader picks another. Each choice is a word, since a sun or a moon does not say which theme is on.",
+        "A choice changes the colors at once, with no motion, and focus stays on it. Light and Dark set data-oa-theme on the page’s root and store the choice under the key oa-theme; Match my device removes the key, and the page follows the device again. The script reads and writes the key inside try and catch, so a browser that refuses storage still switches for the visit. A short script in the head applies a stored choice before the first paint (Rule 26.6)."
+      ],
+      "tokens": [
+        "--oa-color-surface",
+        "--oa-color-text-primary",
+        "--oa-color-border-strong",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "Following the device first gives most readers the right theme with no step at all. Three choices keep a way back to the device, which a two-state switch loses once it is pressed. Radio buttons say which theme is on and how many there are, and storage that fails costs the reader only the memory of the choice."
+        ],
+        "basis": "WCAG 2.2 SC 3.2.3 and 4.1.2; APG Radio Group pattern; design judgment"
+      },
+      "correct": {
+        "specimen": "s-18-04-anatomy",
+        "caption": "The parts of the theme switch: the legend “Theme”, the three segments Light, Dark and Match my device, the checked segment’s check, bold word and 2 px edge, and its place in the masthead."
+      },
+      "failure": {
+        "specimen": "s-18-04-failure",
+        "caption": "<strong>Fails Rule 18.4.</strong> A moon with no word flips between two themes. Once it is pressed, the page never follows the device again, and the drawing does not say which theme is on."
+      },
+      "code": {
+        "set": "c-18-theme-switch",
+        "name": "Theme switch",
+        "caption": "The theme switch, live. In this guide it changes only its own stage and stores nothing, so the guide stays on Newsprint; in a product it changes the whole page and remembers the choice."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "APG Radio Group, as Rule 18.3."
+        },
+        {
+          "label": "States",
+          "value": "Checked and unchecked, as Rule 18.3, with Match my device checked first. No unavailable state: every choice always works."
+        },
+        {
+          "label": "Keyboard",
+          "value": "As Rule 18.3: Tab enters at the checked choice, the arrow keys move and choose, and Tab leaves."
+        },
+        {
+          "label": "Accessible name",
+          "value": "The legend, “Theme”; each choice its word."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "The group “Theme”, then the choice, “radio button”, “checked” and its place, such as Dark, 2 of 3. The new colors are not announced, since the checked choice says it."
+        },
+        {
+          "label": "Target",
+          "value": "Each segment 44 px tall.",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Forced colors",
+          "value": "The system’s colors replace both themes, so a choice changes nothing a reader sees there. The switch still works and still shows which choice holds."
+        },
+        {
+          "label": "Light and dark",
+          "value": "Light is Newsprint and Dark is Charcoal. The switch sets data-oa-theme to light, dark or device, and the theme reaches every role a component reads (Rule 26.6)."
+        },
+        {
+          "label": "Stored choice",
+          "value": "The key oa-theme holds light or dark; Match my device removes it. A private window keeps it until the window closes, and Safari with tracking prevention on deletes it once the site goes seven days of browsing without a press or a tap."
+        },
+        {
+          "label": "Browser support",
+          "value": "<code>prefers-color-scheme</code>: Chrome 76, Edge 79, Firefox 67, Safari 12.1, Safari on iOS 13. <code>&lt;meta name=\"color-scheme\"&gt;</code>: Chrome 81, Edge 81, Firefox 96, Safari 12.1, Safari on iOS 12.2. <code>localStorage</code>: Chrome 4, Edge 12, Firefox 3.5, Safari 4, Safari on iOS 3.2. the <code>change</code> event of <code>matchMedia()</code>: Chrome 39, Edge 79, Firefox 55, Safari 14, Safari on iOS 14."
+        }
+      ],
+      "related": [
+        "26",
+        "20",
+        "21"
+      ],
+      "builders": [
+        "Put <code><meta name=\"color-scheme\" content=\"light dark\"></code> in the head of a themed product, with the head script of Rule 26.6 before the stylesheet. The switch’s own script stores only light or dark, and removes the key for Match my device."
+      ]
+    },
+    {
+      "id": "18.5",
+      "title": "Underline every link in text, and say in its name when it leaves our site.",
+      "rule": [
+        "A link takes the reader to another page or place, and its words name the place, such as “the committee’s hearing schedule”. A link in running text keeps a 1 px underline that thickens to 2 px on hover, so its color is never the only sign. A link to another site opens in the same tab; its 16 px mark follows its last word, and the words “(another site)” end its name for screen readers (Rule 11.13).",
+        "A skip link is the first stop on every page and shows when it takes focus. A link to the page or place the reader is on carries aria-current and the current look of Rule 18.7. A link to something not built yet stays plain text in the secondary color, with the words “Coming later.”"
+      ],
+      "tokens": [
+        "--oa-color-text-primary",
+        "--oa-color-text-secondary",
+        "oa.border.width.underline",
+        "oa.border.width.underlineHover",
+        "oa.size.icon.small"
+      ],
+      "why": {
+        "text": [
+          "An underline marks a link in gray print, in a contrast theme and for a reader who cannot tell Prussian from Charcoal, which measure 1.41 to 1 against each other. Words that name the place let a reader choose from a list of links read out of their sentences, and a skip link lets a keyboard reader pass the masthead in one press."
+        ],
+        "basis": "WCAG 2.2 SC 1.4.1, 2.4.1, 2.4.4 and 3.2.5; APG Link pattern"
+      },
+      "correct": {
+        "specimen": "s-18-05-anatomy",
+        "caption": "The parts of a link: its words, the 1 px underline and its 2 px hover, the 16 px mark after the last word of a link to another site, the hidden words “(another site)”, and the skip link shown at the top of a page."
+      },
+      "failure": {
+        "specimen": "s-18-05-failure",
+        "caption": "<strong>Fails Rule 18.5.</strong> The links show only as Prussian words beside Charcoal ones, 1.41 to 1 apart, and one of them says “click here”, which names no place."
+      },
+      "code": {
+        "set": "c-18-link",
+        "name": "Links",
+        "caption": "A paragraph with a link, a link to another site and a short list of links, live. The mark stays with the last word at every width."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "APG Link, on <code><a href></code>."
+        },
+        {
+          "label": "States",
+          "value": "Default: a 1 px underline. Hover: a 2 px underline. Focus: the ring. Current: aria-current and the look of Rule 18.7. Not built yet: plain text in the secondary color with “Coming later.”"
+        },
+        {
+          "label": "Keyboard",
+          "value": "Tab reaches it; Enter follows it. The skip link is the page’s first Tab stop."
+        },
+        {
+          "label": "Accessible name",
+          "value": "Its words. A link to another site adds the hidden words “(another site)”, or “(opens in a new tab)” where it must open one."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "Its words and its role, link, with “visited” once followed and “current page” where aria-current says so."
+        },
+        {
+          "label": "Target",
+          "value": "In running text, the line itself, which WCAG 2.2 SC 2.5.8 excepts; in a list, 44 px tall (Rule 11.13).",
+          "token": "oa.size.target.minimum"
+        },
+        {
+          "label": "Forced colors",
+          "value": "Links take LinkText and keep their underline; the mark draws in currentColor."
+        },
+        {
+          "label": "Light and dark",
+          "value": "A link takes the text’s ink, Charcoal on Newsprint and Newsprint on Charcoal."
+        },
+        {
+          "label": "Browser support",
+          "value": "<code>text-underline-offset</code>: Chrome 87, Edge 87, Firefox 70, Safari 12.1, Safari on iOS 12.2. <code>text-decoration-thickness</code>: Chrome 89, Edge 89, Firefox 70, Safari 12.1, Safari on iOS 12.2. An older browser draws its own underline, which still marks the link."
+        }
+      ],
+      "related": [
+        "11",
+        "02"
+      ],
+      "builders": [
+        "Wrap only the last word and the mark in a span with <code>white-space: nowrap</code>, so the mark never breaks from its word and the rest of the link still wraps. Put “(another site)” in a visually hidden span inside the link, and leave out <code>target=\"_blank\"</code>."
+      ]
+    },
+    {
+      "id": "18.6",
+      "title": "Give every page one masthead, with its parts in a named navigation and a phone menu that holds focus.",
+      "rule": [
+        "The masthead holds the product’s name, which links home, and its parts in a navigation landmark named for what it holds, such as “Parts”. The link to the part the reader is in carries <code>aria-current=\"page\"</code> and a 2 px underline. When the parts no longer fit on one line, they move behind a Menu button, its three bars beside the word Menu, which opens them in a native modal dialog.",
+        "The open menu covers the page and holds focus. Focus moves to the current part’s link, Tab stays inside, and Escape or “Close the menu” shuts it and returns focus to Menu. The rows inside open and close as disclosures (Rule 18.8). A masthead that sticks to the top of the page sets scroll-padding-top to its own height, so no focused element hides under it."
+      ],
+      "tokens": [
+        "--oa-color-surface",
+        "--oa-color-text-primary",
+        "--oa-color-border-hairline",
+        "oa.border.width.rule",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "One masthead in one place on every page lets a reader find the parts without searching, and a named navigation lets a screen reader jump straight to it. The native dialog makes the page behind it inert, so neither the Tab key nor a screen reader’s reading keys reach a link the menu covers."
+        ],
+        "basis": "WCAG 2.2 SC 2.1.2, 2.4.1, 2.4.3, 2.4.11 and 3.2.3; APG Dialog (Modal) pattern and Disclosure Navigation Menu example"
+      },
+      "correct": {
+        "specimen": "s-18-06-anatomy",
+        "caption": "The parts of a masthead: the product’s name as the home link, the navigation and its label, the current part’s 2 px underline, the Menu button with its bars and word, and the open menu with its title, Close the menu and its rows."
+      },
+      "failure": {
+        "specimen": "s-18-06-failure",
+        "caption": "<strong>Fails Rule 18.6.</strong> Menu is three bars with no word in a 32 px square, and its list drops over the page without holding focus, so the Tab key walks on into the links it covers."
+      },
+      "code": {
+        "set": "c-18-masthead",
+        "name": "Masthead and phone menu",
+        "caption": "A masthead and its phone menu, live. Open Menu, press Tab to stay inside, and press Escape to return to Menu.",
+        "alt": "A masthead and its phone menu, drawn live from the HTML, CSS and script below. In this guide the live copy draws the header and the navigation as named groups, so the guide’s own landmarks stay the only ones on the page; the code below keeps the real header and nav elements."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "Landmarks, banner and navigation; APG Dialog (Modal) for the phone menu; Disclosure for its rows. A dropdown that leaves the page in view follows APG’s Disclosure Navigation Menu example, and no part of the masthead takes the menu role."
+        },
+        {
+          "label": "States",
+          "value": "Current part: a 2 px underline and aria-current. Hover: a 2 px underline. Menu closed or open, with aria-expanded. Rows closed or open, the chevron down or up. Focus: the ring."
+        },
+        {
+          "label": "Keyboard",
+          "value": "Tab through the home link and the parts. On a phone, Enter or Space on Menu opens the menu with focus on the current part’s link; Tab and Shift+Tab stay inside; Escape or Close the menu shuts it, and focus returns to Menu."
+        },
+        {
+          "label": "Accessible name",
+          "value": "The navigation’s label, such as “Parts”; “Menu”, with <code>aria-haspopup=\"dialog\"</code>; the dialog named by its title; “Close the menu”."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "The navigation and its name on entry; “current page” on the current part; on Menu, “collapsed” or “expanded”, and once it opens, the dialog’s name."
+        },
+        {
+          "label": "Target",
+          "value": "Each link and Menu at least 44 px tall; Close the menu 44 by 44 px.",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Forced colors",
+          "value": "The bars, the chevrons and the underline draw in ButtonText or LinkText, and the current part keeps its underline. The dialog draws a 1 px edge in CanvasText."
+        },
+        {
+          "label": "Light and dark",
+          "value": "The masthead and the dialog paint their ground with --oa-color-surface, so both follow the theme."
+        },
+        {
+          "label": "Browser support",
+          "value": "<code>&lt;dialog&gt;</code> and <code>showModal()</code>: Chrome 37, Edge 79, Firefox 98, Safari 15.4, Safari on iOS 15.4. <code>::backdrop</code>: Chrome 37, Edge 79, Firefox 47, Safari 15.4, Safari on iOS 15.4. <code>scroll-padding-top</code>: Chrome 69, Edge 79, Firefox 68, Safari 14.1, Safari on iOS 14.5. <code>position: sticky</code>: Chrome 56, Edge 16, Firefox 32, Safari 13, Safari on iOS 13."
+        }
+      ],
+      "related": [
+        "20",
+        "21",
+        "07"
+      ],
+      "builders": [
+        "Open the menu with <code>dialog.showModal()</code>, which makes the rest of the page inert and gives Escape. A <code>div</code> with <code>role=\"dialog\"</code> does neither once it is copied into a page."
+      ]
+    },
+    {
+      "id": "18.7",
+      "title": "Show where the reader is with aria-current and a mark that holds without color.",
+      "rule": [
+        "A list of places in a product, such as a chapter rail, an “In this chapter” list or a breadcrumb, marks the reader’s place in two ways at once. The link carries aria-current: “page” for the page itself, “location” for a part of a long page and “step” for a step in a process. A list beside the text marks it with the selected band, a 4 px bar at its left edge and semibold words; a short list in a line, such as a breadcrumb, marks it with a 2 px underline.",
+        "A list that follows the reader down a long page moves its mark as each part comes into view, and leaves focus and its own scroll where they are. A breadcrumb sits in a navigation landmark named “Breadcrumb”, with its places in an ordered list and the current page last."
+      ],
+      "tokens": [
+        "--oa-color-state-selected-band",
+        "--oa-color-state-selected-bar",
+        "oa.border.width.bar",
+        "oa.border.width.rule"
+      ],
+      "why": {
+        "text": [
+          "aria-current lets a screen reader say where the reader is, and the bar and the underline say it to everyone else in shapes that hold in gray print and in a contrast theme. A mark that follows the scroll helps only while it leaves focus alone."
+        ],
+        "basis": "WCAG 2.2 SC 1.4.1 and 4.1.2; APG Breadcrumb pattern"
+      },
+      "correct": {
+        "specimen": "s-18-07-anatomy",
+        "caption": "The parts of a location list: the list’s label, each link, the current link’s band, 4 px bar and semibold words, and a breadcrumb’s current page with its 2 px underline."
+      },
+      "failure": {
+        "specimen": "s-18-07-failure",
+        "caption": "<strong>Fails Rule 18.7.</strong> Only the color of “05 Color” marks where the reader is, and no aria-current tells a screen reader."
+      },
+      "code": {
+        "set": "c-18-location",
+        "name": "Location list",
+        "caption": "A list of a page’s parts and a breadcrumb, live, each marking where the reader is.",
+        "alt": "A list of a page’s parts and a breadcrumb, drawn live from the code below. In this guide the live copy draws the breadcrumb’s navigation as a named group, so the guide’s own landmarks stay the only ones on the page; the code below keeps the real nav element."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "APG Link; APG Breadcrumb for a trail of places; a navigation landmark for each list that leads around the product."
+        },
+        {
+          "label": "States",
+          "value": "Current: the band, the 4 px bar and semibold words, or a 2 px underline, with aria-current. Hover: an underline. Focus: the ring."
+        },
+        {
+          "label": "Keyboard",
+          "value": "Tab through the links; Enter follows one."
+        },
+        {
+          "label": "Accessible name",
+          "value": "The list’s label, such as “In this chapter” or “Breadcrumb”; each link its words."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "“current page”, “current location” or “current step” on the current link. Nothing when the mark moves with the scroll, since moving it changes no focus."
+        },
+        {
+          "label": "Target",
+          "value": "Rows 44 px tall in a list a thumb uses; at least 24 px with spacing in a list of words.",
+          "token": "oa.size.target.minimum"
+        },
+        {
+          "label": "Forced colors",
+          "value": "The band drops out. The 4 px bar, drawn as a border, and the underline hold in the system’s colors."
+        },
+        {
+          "label": "Light and dark",
+          "value": "On Newsprint the band is White and the bar Charcoal; on Charcoal the band is Prussian and the bar Newsprint."
+        },
+        {
+          "label": "Browser support",
+          "value": "<code>position: sticky</code>: Chrome 56, Edge 16, Firefox 32, Safari 13, Safari on iOS 13. <code>IntersectionObserver</code>: Chrome 51, Edge 15, Firefox 55, Safari 12.1, Safari on iOS 12.2. The second tells a script which part is in view."
+        }
+      ],
+      "related": [
+        "17",
+        "20",
+        "21"
+      ],
+      "builders": [
+        "Draw the bar as <code>border-left</code> in <code>--oa-color-state-selected-bar</code> and the band as a background, so the bar survives a contrast theme. Move <code>aria-current</code> with the mark."
+      ]
+    },
+    {
+      "id": "18.8",
+      "title": "Open a part of the page in place with a disclosure whose words name it and whose chevron turns.",
+      "rule": [
+        "A disclosure shows or hides one part of the page in place, such as a drawing’s lines in words or the sources of a claim. Build it on native details and summary, or on a button with aria-expanded and aria-controls where the part must sit apart from its control. Its words name what opens, such as “The lines in words”, and its chevron points down while it is closed and up while it is open.",
+        "The chevron turns within 200 ms where motion is allowed, and at once under reduced motion (Rule 17.4). Opening one disclosure leaves the others as they are, and a printed page opens them all. A stack of disclosures under headings is an accordion, with each summary inside its heading."
+      ],
+      "tokens": [
+        "oa.motion.duration.standard",
+        "oa.size.icon.medium",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "The native element gives Enter, Space, the expanded state and the open part with no script. A chevron that turns tells a sighted reader what the expanded state tells a screen reader, and words that name the part let a reader decide before opening it."
+        ],
+        "basis": "WCAG 2.2 SC 1.3.1, 2.1.1 and 4.1.2; APG Disclosure (Show/Hide) and Accordion patterns"
+      },
+      "correct": {
+        "specimen": "s-18-08-anatomy",
+        "caption": "The parts of a disclosure: the summary’s words, the chevron down and up, the 44 px row, the focus ring and the part that opens."
+      },
+      "failure": {
+        "specimen": "s-18-08-failure",
+        "caption": "<strong>Fails Rule 18.8.</strong> The plus stays a plus once the row is open, and the row is a plain box that the Tab key passes by."
+      },
+      "code": {
+        "set": "c-18-disclosure",
+        "name": "Disclosure",
+        "caption": "Two disclosures, live. Press Enter or Space on a summary to open it; the chevron turns at once under reduced motion."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "APG Disclosure (Show/Hide); Accordion for a stack under headings."
+        },
+        {
+          "label": "States",
+          "value": "Closed: the chevron down. Open: the chevron up. Hover: the words underline. Focus: the ring."
+        },
+        {
+          "label": "Keyboard",
+          "value": "Tab reaches the summary; Enter or Space opens or closes it; once open, the links inside join the Tab order."
+        },
+        {
+          "label": "Accessible name",
+          "value": "The summary’s words."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "The words, the control’s role and “collapsed” or “expanded”; after a press, the new state."
+        },
+        {
+          "label": "Target",
+          "value": "The summary at least 44 px tall across its row.",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Forced colors",
+          "value": "The chevron draws in currentColor."
+        },
+        {
+          "label": "Light and dark",
+          "value": "Words and chevron in the text’s ink on either surface."
+        },
+        {
+          "label": "Motion",
+          "value": "The chevron turns in 200 ms at most, and in 0 ms under reduced motion.",
+          "token": "oa.motion.duration.standard"
+        },
+        {
+          "label": "Browser support",
+          "value": "<code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code>: Chrome 12, Edge 79, Firefox 49, Safari 6, Safari on iOS 6. <code>prefers-reduced-motion</code>: Chrome 74, Edge 79, Firefox 63, Safari 10.1, Safari on iOS 10.3."
+        }
+      ],
+      "related": [
+        "17",
+        "11"
+      ],
+      "builders": [
+        "Hide the browser’s own triangle with <code>list-style: none</code> on the summary and <code>::-webkit-details-marker { display: none }</code>, then turn the chevron from <code>details[open]</code>."
+      ]
+    },
+    {
+      "id": "18.9",
+      "title": "Switch between views of one thing with tabs that move by the arrow keys.",
+      "rule": [
+        "Use tabs only where a reader switches between views of one thing that never need to show at once, such as a drawing, its lines in words and its table. A process with steps takes a stepper (Rule 18.22), and other pages take links. The tabs sit in a tab list named for the thing, each tab names its view, and the selected tab carries aria-selected, a 4 px bar under its word and bold words.",
+        "Tab enters the tab list at the selected tab and leaves it for the panel. The arrow keys move between tabs and show each view as it takes focus, and Home and End reach the first and the last. A panel with nothing focusable inside takes <code>tabindex=\"0\"</code>, so the Tab key can reach its words."
+      ],
+      "tokens": [
+        "--oa-color-state-selected-bar",
+        "oa.border.width.bar",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "One Tab stop for the whole list keeps a keyboard reader from passing every tab to reach the content, and the roles let a screen reader say which tab holds and how many there are. The bar and the bold words carry the selection in gray print and in a contrast theme."
+        ],
+        "basis": "WCAG 2.2 SC 1.3.1, 2.1.1, 2.4.3 and 4.1.2; APG Tabs pattern"
+      },
+      "correct": {
+        "specimen": "s-18-09-anatomy",
+        "caption": "The parts of tabs: the tab list and its label, each tab’s words, the selected tab’s 4 px bar and bold words, the focus ring and the panel."
+      },
+      "failure": {
+        "specimen": "s-18-09-failure",
+        "caption": "<strong>Fails Rule 18.9.</strong> The selected view differs only by its fill, every tab is a Tab stop of its own, and the arrow keys do nothing."
+      },
+      "code": {
+        "set": "c-18-tabs",
+        "name": "Tabs",
+        "caption": "Three tabs, live. Tab to the selected one, then use the arrow keys, Home and End."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "APG Tabs, with each view shown as its tab takes focus, since every panel is already in the page."
+        },
+        {
+          "label": "States",
+          "value": "Selected: the 4 px bar as a bottom border and bold words, with <code>aria-selected=\"true\"</code>. Not selected: regular words and no bar. Hover: the words underline. Focus: the ring."
+        },
+        {
+          "label": "Keyboard",
+          "value": "Tab enters at the selected tab. Left and Right Arrow move and select, wrapping at the ends. Home and End go to the first and the last. Tab moves on to the panel."
+        },
+        {
+          "label": "Accessible name",
+          "value": "The tab list’s label; each tab its words; each panel named by its tab through aria-labelledby."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "The tab list and its name on entry; each tab’s words, “tab”, “selected” and its place, such as 2 of 3."
+        },
+        {
+          "label": "Target",
+          "value": "Each tab 44 px tall.",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Forced colors",
+          "value": "The bar, a border, and the bold words hold in the system’s colors."
+        },
+        {
+          "label": "Light and dark",
+          "value": "The bar in --oa-color-state-selected-bar: Charcoal on Newsprint, Newsprint on Charcoal."
+        },
+        {
+          "label": "Browser support",
+          "value": "Buttons, ARIA roles and a script that moves tabindex itself, with nothing newer than <code>:focus-visible</code>: Chrome 86, Edge 86, Firefox 85, Safari 15.4, Safari on iOS 15.4."
+        }
+      ],
+      "related": [
+        "17",
+        "15",
+        "14"
+      ],
+      "builders": [
+        "Give the selected tab <code>tabindex=\"0\"</code> and every other tab <code>tabindex=\"-1\"</code>, and move both as the arrow keys move focus. Hide the other panels with the <code>hidden</code> attribute."
+      ]
+    },
+    {
+      "id": "18.10",
+      "title": "Build a table from table markup, and sort a column with a button in its heading.",
+      "rule": [
+        "A table has a caption that names it, column headings in th with <code>scope=\"col\"</code>, and row headings where the first column names each row. A column a reader can sort holds a button in its heading, with the heading’s words and the 16 px sort arrow after them. The sorted column’s heading carries aria-sort, and the arrow turns up for ascending and down for descending.",
+        "A press sorts the column, a second press reverses it, and focus stays on the button. A status line under the table says the order in words, such as “Sorted by date, newest first.” The same line says when rows are loading, what is missing when there are none, and the error with its mark when they fail to load (Rules 18.18 and 18.19). On a phone a wide table scrolls inside a scroll region (Rule 18.11)."
+      ],
+      "tokens": [
+        "--oa-color-border-hairline",
+        "--oa-color-text-primary",
+        "oa.size.icon.small",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "Table markup lets a screen reader name the row and the column of every cell as a reader moves through it. A button in the heading gives sorting a key and a name, and aria-sort with the status line says the new order to a reader who cannot see the arrow turn."
+        ],
+        "basis": "WCAG 2.2 SC 1.3.1, 2.1.1, 4.1.2 and 4.1.3; APG Table pattern and its Sortable Table example"
+      },
+      "correct": {
+        "specimen": "s-18-10-anatomy",
+        "caption": "The parts of a sortable table: the caption, the column headings, a sort button with its words and 16 px arrow, the sorted heading, the row rules and the status line under the table."
+      },
+      "failure": {
+        "specimen": "s-18-10-failure",
+        "caption": "<strong>Fails Rule 18.10.</strong> The headings are plain cells that only a pointer can sort, and nothing says the order changed."
+      },
+      "code": {
+        "set": "c-18-table",
+        "name": "Sortable table",
+        "caption": "A short table of bills, live. Sort a column with Enter, then press it again to reverse it; the line under the table says the order."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "APG Table, on a native <code><table></code>; the Sortable Table example for aria-sort."
+        },
+        {
+          "label": "States",
+          "value": "Unsorted, sorted ascending, sorted descending. Hover on a sort button: the words underline. Focus: the ring. Loading, empty and error in the status line under the table."
+        },
+        {
+          "label": "Keyboard",
+          "value": "Tab moves between the sort buttons; Enter or Space sorts. The table has no keys of its own, and a screen reader’s table keys move from cell to cell."
+        },
+        {
+          "label": "Accessible name",
+          "value": "The caption names the table; each sort button takes its heading’s words."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "The column heading and “sorted ascending” or “sorted descending” on the sorted column; after a press, the status line, such as “Sorted by date, newest first.”"
+        },
+        {
+          "label": "Target",
+          "value": "Each sort button fills its heading cell, at least 44 px tall.",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Forced colors",
+          "value": "The arrow draws in currentColor, and the rules between rows hold as borders."
+        },
+        {
+          "label": "Light and dark",
+          "value": "Rules in --oa-color-border-hairline and words in the text’s ink on either surface."
+        },
+        {
+          "label": "Browser support",
+          "value": "Tables, captions and th: every browser MDN lists, from its oldest versions. ARIA states and roles are read by screen readers, and MDN’s data does not track which screen reader reads which; chapter 19 lists them as not tested here."
+        }
+      ],
+      "related": [
+        "06",
+        "14",
+        "26"
+      ],
+      "builders": [
+        "Set <code>aria-sort</code> only on the sorted column’s th and remove it from the others; a column never sorted carries none. Keep figures in tabular numerals (Rule 06.5)."
+      ]
+    },
+    {
+      "id": "18.11",
+      "title": "Let wide content scroll inside a named frame that the Tab key reaches only while it scrolls.",
+      "rule": [
+        "Content wider than its column, such as a wide table or a drawing at true size, scrolls sideways inside its own frame, so the page itself never scrolls sideways (Rule 07.6). While it overflows, the frame takes <code>tabindex=\"0\"</code>, a name that ends “Scroll sideways to see all of it.” and the visible hint “Wider than this column. Scroll the frame sideways to see all of it.” Once it fits, the frame drops all three.",
+        "Its focus ring sits inside the frame, where the frame’s edge cannot clip it. The arrow keys scroll a focused frame, and the page around it stays where it is."
+      ],
+      "tokens": [
+        "--oa-color-border-hairline",
+        "--oa-color-focus-ring",
+        "oa.border.width.focusRing"
+      ],
+      "why": {
+        "text": [
+          "A keyboard reader can scroll only what takes focus, and a frame that takes focus while it has nothing to scroll is a stop that does nothing. The hint tells a sighted reader the frame holds more, and the name tells a screen reader."
+        ],
+        "basis": "WCAG 2.2 SC 1.4.10, 2.1.1 and 4.1.2"
+      },
+      "correct": {
+        "specimen": "s-18-11-anatomy",
+        "caption": "The parts of a scroll region: the frame and its edge, the wide content inside, the hint above it, and the focus ring drawn inside the frame."
+      },
+      "failure": {
+        "specimen": "s-18-11-failure",
+        "caption": "<strong>Fails Rule 18.11.</strong> The table is cut off at the frame’s edge, and no key or hint lets a reader see the columns past it."
+      },
+      "code": {
+        "set": "c-18-scroll-region",
+        "name": "Scroll region",
+        "caption": "A table wider than its frame, live. Tab to the frame and use the arrow keys; widen the window until it fits and the stop and the hint go away."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "None fits; a group with a name, <code>role=\"group\"</code>, that takes focus while it scrolls."
+        },
+        {
+          "label": "States",
+          "value": "Fits: no Tab stop and no hint. Overflows: the Tab stop, the hint and the name. Focus: the ring inside the frame."
+        },
+        {
+          "label": "Keyboard",
+          "value": "Tab reaches it while it overflows; Left and Right Arrow scroll it; Tab leaves it."
+        },
+        {
+          "label": "Accessible name",
+          "value": "What it holds, then “Scroll sideways to see all of it.”"
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "The group and its name when focus enters."
+        },
+        {
+          "label": "Target",
+          "value": "The whole frame."
+        },
+        {
+          "label": "Forced colors",
+          "value": "The frame draws a 1 px edge in CanvasText, and the ring takes the system’s color."
+        },
+        {
+          "label": "Light and dark",
+          "value": "The edge in --oa-color-border-hairline and the ring in --oa-color-focus-ring, on either surface."
+        },
+        {
+          "label": "Browser support",
+          "value": "<code>ResizeObserver</code>: Chrome 64, Edge 79, Firefox 69, Safari 13.1, Safari on iOS 13.4. It tells the script when the frame starts or stops overflowing."
+        }
+      ],
+      "related": [
+        "07",
+        "19"
+      ],
+      "builders": [
+        "Draw the ring inside the frame with <code>outline-offset: -2px</code> plus the ring’s width, and set <code>tabindex</code>, the name and the hint together from one check of <code>scrollWidth > clientWidth</code>."
+      ]
+    },
+    {
+      "id": "18.12",
+      "title": "Show code in labeled panels, each with a Copy button named for what it copies.",
+      "rule": [
+        "Code a reader can copy sits in one panel per file, HTML, CSS or Script, each with its label and a Copy button named for its panel: “Copy the HTML”, “Copy the CSS” and “Copy the script”. One status line under the panels says what was copied, with the success mark, such as “Copied the CSS of the theme switch, 32 lines, to the clipboard.” The code keeps its own line breaks at 14 px, and a panel that overflows scrolls as Rule 18.11 sets.",
+        "When the browser refuses to copy, the line turns into an error with its mark, “Error:”, the Error Band and the 4 px red bar, and says how to copy by hand. The code is then selected in a field under the line, with focus on it (Rule 18.13)."
+      ],
+      "tokens": [
+        "--oa-color-state-success-mark",
+        "--oa-color-state-error-mark",
+        "--oa-color-state-error-band",
+        "oa.border.width.bar",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "A button for each panel says which file a press takes, and a status line says what happened in words, which a screen reader hears while focus stays on the button. A browser can refuse the clipboard, so the refusal leaves the code ready to copy by hand."
+        ],
+        "basis": "WCAG 2.2 SC 2.4.6, 3.3.1 and 4.1.3; APG Button pattern; WAI-ARIA 1.2 status role"
+      },
+      "correct": {
+        "specimen": "s-18-12-anatomy",
+        "caption": "The parts of a code block: each panel’s label, its Copy button, the code at 14 px, the status line with the success mark, and the error line with its mark, band and bar over the selected code."
+      },
+      "failure": {
+        "specimen": "s-18-12-failure",
+        "caption": "<strong>Fails Rule 18.12.</strong> After a press the copy icon turns into a check, and no words say what was copied or whether it worked."
+      },
+      "code": {
+        "set": "c-18-code-block",
+        "name": "Code block",
+        "caption": "A code block with two panels, live. Press a Copy button and read the line under the panels."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "APG Button for each Copy; a status line with <code>role=\"status\"</code>; Rule 18.11 for a panel that scrolls."
+        },
+        {
+          "label": "States",
+          "value": "Nothing copied yet. Copied: the success mark and the words. Refused: the error mark, “Error:”, the band, the bar and the selected code. Hover and focus on each Copy button as Rule 18.1."
+        },
+        {
+          "label": "Keyboard",
+          "value": "Tab reaches each Copy button, and each panel while it scrolls. Enter or Space copies. Focus stays on the button, or moves to the selected code when the browser refuses."
+        },
+        {
+          "label": "Accessible name",
+          "value": "“Copy the HTML”, “Copy the CSS” and “Copy the script”, each described by the component’s name; each panel named by its label."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "After a press, the status line at the next pause: what was copied and how many lines. On a refusal, the error’s words, then the selected field."
+        },
+        {
+          "label": "Target",
+          "value": "Each Copy button 44 px tall.",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Forced colors",
+          "value": "The 4 px bar is a border and holds; the marks draw in currentColor; the code takes CanvasText."
+        },
+        {
+          "label": "Light and dark",
+          "value": "The panel’s ground is --oa-color-surface. On Charcoal the error takes no band, and its bar measures 4.49 to 1."
+        },
+        {
+          "label": "Browser support",
+          "value": "<code>navigator.clipboard.writeText()</code>: Chrome 66, Edge 79, Firefox 63, Safari 13.1, Safari on iOS 13.4. It works only on a secure page, served over https, and inside the reader’s press: Firefox and Safari refuse a call outside one, and Chrome and Edge do from version 107 unless the reader has granted the permission."
+        }
+      ],
+      "related": [
+        "26",
+        "11"
+      ],
+      "builders": [
+        "Call <code>navigator.clipboard.writeText()</code> inside the click handler itself, and catch its refusal. On a refusal, put the code in a <code><textarea readonly></code>, select it and move focus there."
+      ]
+    },
+    {
+      "id": "18.13",
+      "title": "Copy one value with a button that names it, and say the result in words.",
+      "rule": [
+        "A value a builder needs, such as a token’s name or a hex color, sits beside a Copy button. Its visible word is “Copy”, and its name goes on with the value from hidden words, “Copy --oa-color-surface-charcoal”, so every Copy in a table names its own value. The icon’s two sheets stay as drawn after a press (Rule 11.12), and the status line says what happened with the success mark: “Copied --oa-color-surface-charcoal.”",
+        "When the browser refuses, the line gives the error with its mark and “Error:”, selects the value in a field and moves focus there, so the reader can copy it by hand with Control and C, or Command and C."
+      ],
+      "tokens": [
+        "--oa-color-state-success-mark",
+        "--oa-color-state-error-mark",
+        "oa.size.icon.medium",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "A reader who hears “Copy” ten times down a table cannot tell the buttons apart, so each name carries its value. Words in a status line reach a screen reader, where a check that replaces the icon says nothing and looks like a choice someone made."
+        ],
+        "basis": "WCAG 2.2 SC 2.4.6, 2.5.3 and 4.1.3; Rule 11.12"
+      },
+      "correct": {
+        "specimen": "s-18-13-anatomy",
+        "caption": "The parts of a copy control: the value, the Copy button with its two-sheet icon and word, the hidden words that finish its name, and the status line with the success mark."
+      },
+      "failure": {
+        "specimen": "s-18-13-failure",
+        "caption": "<strong>Fails Rule 18.13.</strong> Copy is a 16 px icon with no word, under the 24 px a target needs, and every one in the list has the same name."
+      },
+      "code": {
+        "set": "c-18-copy",
+        "name": "Copy control",
+        "caption": "Two values with their Copy buttons, live. Press one and read the line under them."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "APG Button; a status line with <code>role=\"status\"</code>."
+        },
+        {
+          "label": "States",
+          "value": "Nothing copied yet; copied; refused. Hover and focus as Rule 18.1."
+        },
+        {
+          "label": "Keyboard",
+          "value": "Tab reaches it; Enter or Space copies. Focus stays on it, or moves to the selected value when the browser refuses."
+        },
+        {
+          "label": "Accessible name",
+          "value": "“Copy” and the value, such as “Copy --oa-color-surface-charcoal”, starting with the visible word."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "After a press, the status line: “Copied --oa-color-surface-charcoal.”"
+        },
+        {
+          "label": "Target",
+          "value": "At least 44 by 44 px, even beside a short value.",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Forced colors",
+          "value": "As Rule 18.12: the marks in currentColor and the bar as a border."
+        },
+        {
+          "label": "Light and dark",
+          "value": "As Rule 18.12."
+        },
+        {
+          "label": "Browser support",
+          "value": "<code>navigator.clipboard.writeText()</code>: Chrome 66, Edge 79, Firefox 63, Safari 13.1, Safari on iOS 13.4. The same limits as Rule 18.12: a secure page and the reader’s own press."
+        }
+      ],
+      "related": [
+        "26",
+        "05",
+        "11"
+      ],
+      "builders": [
+        "Put the value in a visually hidden span inside the button, after the word Copy, and write the result to a status line outside the button, so the name stays the same after a press."
+      ]
+    },
+    {
+      "id": "18.14",
+      "title": "Name each download for its file, type and size, and say why one is not ready.",
+      "rule": [
+        "A download is a link with the download attribute when it fetches a file, and a button when a script builds the file. Its words start with “Download” and name the file, its type and its size, in kilobytes of 1,000 bytes: “Download tokens.css, CSS, 93 KB”. The download icon, an arrow into a tray, sits before the word (Rule 11.11).",
+        "A file that is not ready keeps its control in place as a button with aria-disabled, a dashed edge and a line that says why and when it will be ready. A press does nothing, and focus stays."
+      ],
+      "tokens": [
+        "--oa-color-state-disabled-text",
+        "--oa-color-state-disabled-edge",
+        "oa.size.icon.medium",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "The file’s name, type and size let a reader on a slow or metered connection decide before the download starts, and a screen reader reading a list of links hears which file each one fetches. A control that hides until its file is ready leaves a reader wondering whether the file exists."
+        ],
+        "basis": "WCAG 2.2 SC 2.4.4 and 4.1.2; APG Link pattern; design judgment"
+      },
+      "correct": {
+        "specimen": "s-18-14-anatomy",
+        "caption": "The parts of a download: the icon before the word, the words from “Download” to the size, the 44 px height, and a file not ready with its dashed edge and reason."
+      },
+      "failure": {
+        "specimen": "s-18-14-failure",
+        "caption": "<strong>Fails Rule 18.14.</strong> Three links all read “Download”, with no file, type or size, so a screen reader’s list of links hears the same word three times."
+      },
+      "code": {
+        "set": "c-18-download",
+        "name": "Download",
+        "caption": "A download that works and one that is not ready, live. Tab to the second and press it: it keeps focus and says why."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "APG Link, on <code><a href download></code>; APG Button when a script builds the file or it is not ready."
+        },
+        {
+          "label": "States",
+          "value": "Ready. Not ready: aria-disabled, a dashed edge and the reason, with focus kept. Hover and focus as Rule 18.1."
+        },
+        {
+          "label": "Keyboard",
+          "value": "Tab reaches it; Enter starts the download. A file that is not ready keeps focus, and a press does nothing."
+        },
+        {
+          "label": "Accessible name",
+          "value": "Its words, from “Download” to the size."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "The words and the role, link or button; the browser then reports the download in its own way."
+        },
+        {
+          "label": "Target",
+          "value": "44 px tall.",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Forced colors",
+          "value": "The edge in ButtonText; a file not ready keeps its dashed edge in GrayText."
+        },
+        {
+          "label": "Light and dark",
+          "value": "As Rule 18.1, the quiet button."
+        },
+        {
+          "label": "Browser support",
+          "value": "the <code>download</code> attribute: Chrome 14, Edge 18, Firefox 20, Safari 10.1, Safari on iOS 13. Chrome from version 65 and Edge from version 79 ignore it for a file on another site, so serve each file from your own."
+        }
+      ],
+      "related": [
+        "26",
+        "27",
+        "11"
+      ],
+      "builders": [
+        "Measure the size when the page is built, in kilobytes of 1,000 bytes, rounded, and write it into the words."
+      ]
+    },
+    {
+      "id": "18.15",
+      "title": "Search with a labeled field that says the count and the advice in one status line.",
+      "rule": [
+        "A search sits in a search landmark, with a visible label above its field and a field of type search; a placeholder never stands in for the label. Results update as the reader types, and focus stays in the field. The status line under it gives the count and, when nothing matches, the advice in the same line: “0 of 124 symbols. No symbol matches. Clear the search or the filters to see more.”",
+        "Once the field holds text, a Clear the search control appears at its end, a 44 by 44 px cross (Rule 11.11), which empties the field and returns focus to it. Escape does the same. Where results come from a server, the line says “Searching” while they load."
+      ],
+      "tokens": [
+        "--oa-color-field-ground",
+        "--oa-color-border-strong",
+        "oa.size.icon.medium",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "A visible label stays when the reader types, where a placeholder vanishes. A status line lets a screen reader hear the count while focus stays in the field, and advice in the same line tells a reader who found nothing what to do next."
+        ],
+        "basis": "WCAG 2.2 SC 1.3.1, 2.4.6, 3.3.2 and 4.1.3; APG Landmarks pattern"
+      },
+      "correct": {
+        "specimen": "s-18-15-anatomy",
+        "caption": "The parts of a search: the label, the field and its edge on the field ground, the Clear the search cross once text is in, and the status line with the count and the advice."
+      },
+      "failure": {
+        "specimen": "s-18-15-failure",
+        "caption": "<strong>Fails Rule 18.15.</strong> A placeholder is the only label, at 2.58 to 1, and it disappears once the reader types. The count under the field changes without being said."
+      },
+      "code": {
+        "set": "c-18-search",
+        "name": "Search",
+        "caption": "A search over a short list, live. Type a word, then press Escape or Clear the search.",
+        "alt": "A search over a short list, drawn live from the code below. In this guide the live copy draws the search landmark as a named group, so the guide’s own landmarks stay the only ones on the page; the code below keeps the real search element."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "A search landmark, on <code><search></code>; the Combobox pattern only if it ever offers suggestions as the reader types."
+        },
+        {
+          "label": "States",
+          "value": "Empty; holding text, with Clear the search showing; results, with the count; no match, with the count and the advice; searching. Hover. Focus: the ring on the field."
+        },
+        {
+          "label": "Keyboard",
+          "value": "Tab to the field and type. Escape clears it. Tab reaches Clear the search while it shows, and Enter clears the field and returns focus to it."
+        },
+        {
+          "label": "Accessible name",
+          "value": "The field: its visible label, such as “Search the symbols”. The clear control: “Clear the search”."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "The search landmark; the label and the field’s role; once typing pauses, the status line, such as “5 of 124 symbols.”"
+        },
+        {
+          "label": "Target",
+          "value": "The field 44 px tall; Clear the search 44 by 44 px.",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Forced colors",
+          "value": "The field’s edge and Clear’s cross draw in the system’s colors."
+        },
+        {
+          "label": "Light and dark",
+          "value": "The field’s ground is --oa-color-field-ground, White on Newsprint and Prussian on Charcoal, with the strong border as its edge."
+        },
+        {
+          "label": "Browser support",
+          "value": "<code>&lt;search&gt;</code>: Chrome 118, Edge 118, Firefox 118, Safari 17, Safari on iOS 17. <code>&lt;input type=\"search\"&gt;</code>: Chrome 5, Edge 12, Firefox 4, Safari 5, Safari on iOS 4.2. In an older browser the search element is a plain box with no landmark, and the field still works."
+        }
+      ],
+      "related": [
+        "10",
+        "21"
+      ],
+      "builders": [
+        "Write the count and the advice into one status line, in one write, so a screen reader hears them together. Handle Escape in the script, since browsers differ on what Escape does in a search field."
+      ]
+    },
+    {
+      "id": "18.16",
+      "title": "Put the filters behind one Filters button that says how many are on.",
+      "rule": [
+        "A filter bar narrows a list. Its Filters button, with the funnel beside its word, opens and closes the filters as a disclosure (Rule 18.8), and its name counts what is on: “Filters, 2 on”. Inside, each filter is a chip (Rule 18.2), or a checkbox in a longer form. Every change updates the list at once, and the shared status line with it, such as “12 of 48 bills.”",
+        "Clear filters shows only while a filter is on. A press turns every filter off, hides the control and moves focus to Filters, since focus cannot stay on a control that has gone."
+      ],
+      "tokens": [
+        "--oa-color-border-strong",
+        "oa.size.icon.medium",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "A count in the name tells a reader who closed the filters that the list is still narrowed. Moving focus to Filters keeps a keyboard reader in place when Clear filters goes, where focus would otherwise fall to the top of the page."
+        ],
+        "basis": "WCAG 2.2 SC 2.4.3, 4.1.2 and 4.1.3; APG Disclosure and Button patterns"
+      },
+      "correct": {
+        "specimen": "s-18-16-anatomy",
+        "caption": "The parts of a filter bar: the Filters button with its funnel, word, count and chevron, the chips inside, Clear filters, and the shared status line."
+      },
+      "failure": {
+        "specimen": "s-18-16-failure",
+        "caption": "<strong>Fails Rule 18.16.</strong> The filters open only while a pointer rests on Filters, and its name never says how many are on."
+      },
+      "code": {
+        "set": "c-18-filter-bar",
+        "name": "Filter bar",
+        "caption": "A filter bar over a short list, live. Open Filters, turn a chip on, then press Clear filters and see where focus goes."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "APG Disclosure for Filters and Button for each chip; APG Checkbox for filters inside a form."
+        },
+        {
+          "label": "States",
+          "value": "Filters closed or open, the chevron down or up, the count in its name. Chips on or off, as Rule 18.2. Clear filters shown or hidden. No match: the shared status line with its advice. Hover. Focus."
+        },
+        {
+          "label": "Keyboard",
+          "value": "Tab to Filters; Enter or Space opens it. Tab through the chips; Space turns each on or off. Tab to Clear filters; Enter clears and moves focus to Filters."
+        },
+        {
+          "label": "Accessible name",
+          "value": "“Filters” with its count, such as “Filters, 2 on”; each chip its word; “Clear filters”."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "“collapsed” or “expanded” on Filters; “pressed” on a chip; the status line’s new count after each change."
+        },
+        {
+          "label": "Target",
+          "value": "44 px tall for Filters, each chip and Clear filters.",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Forced colors",
+          "value": "As Rule 18.2, with the funnel and the chevron in currentColor."
+        },
+        {
+          "label": "Light and dark",
+          "value": "As Rule 18.2."
+        },
+        {
+          "label": "Browser support",
+          "value": "Buttons and ARIA states, with nothing newer than <code>:focus-visible</code>: Chrome 86, Edge 86, Firefox 85, Safari 15.4, Safari on iOS 15.4."
+        }
+      ],
+      "related": [
+        "10",
+        "21"
+      ],
+      "builders": [
+        "Keep the count in the button’s own words, such as “Filters” and a visible “2 on”, so its name starts with what the reader sees. Move focus before you hide Clear filters."
+      ]
+    },
+    {
+      "id": "18.17",
+      "title": "Label every field, point it to its error, and move focus to the first field to fix.",
+      "rule": [
+        "Each field has a visible label above it and, where it helps, a hint under the label joined by aria-describedby, such as “Five digits”. A placeholder never stands in for either. Personal fields carry autocomplete, such as email and postal-code, so the browser can fill them. A field stays open to typing at all times; a send that cannot run yet keeps focus and says why, as Rule 18.1 sets.",
+        "On a send with mistakes, each wrong field takes aria-invalid, the 4 px Pillar Red bar at its left edge and a message under it joined by aria-describedby: the error mark in ink, “Error:” and how to fix it, on the Error Band on Newsprint and on the ground on Charcoal. Focus moves to the first field to fix, and the ask steps down to the primary look while the error holds the red (Rule 11.16). A send that works writes its result to a status line with the success mark."
+      ],
+      "tokens": [
+        "--oa-color-field-ground",
+        "--oa-color-border-strong",
+        "--oa-color-state-error-mark",
+        "--oa-color-state-error-band",
+        "--oa-color-state-error-text",
+        "--oa-color-state-success-mark",
+        "oa.border.width.bar",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "A label that stays in view helps a reader check what they typed, and autocomplete saves typing for a reader with limited movement. Moving focus to the first field to fix puts the reader where the work is, and the field’s description reads the message there, so nothing needs an alert that interrupts."
+        ],
+        "basis": "WCAG 2.2 SC 1.3.5, 3.3.1, 3.3.2, 3.3.3 and 4.1.3; Rule 11.15"
+      },
+      "correct": {
+        "specimen": "s-18-17-anatomy",
+        "caption": "The parts of a form field: the label, the hint, the field and its edge on the field ground, and in error, the 4 px red bar, the mark, “Error:” and the fix on the band; then the send button and the success line."
+      },
+      "failure": {
+        "specimen": "s-18-17-failure",
+        "caption": "<strong>Fails Rule 18.17.</strong> The errors sit in a box at the top that names no field, the fields have placeholders in place of labels, and focus stays on Send."
+      },
+      "code": {
+        "set": "c-18-form",
+        "name": "Form",
+        "caption": "A two-field sign-up form, live. Send it with a field wrong to see focus move to it, then send it right."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "None fits. Native fields in a form with no name of its own, which adds no landmark."
+        },
+        {
+          "label": "States",
+          "value": "Default: a 1 px strong edge on the field ground. Focus: the ring. Error: the 4 px red bar, aria-invalid and the message with its mark and “Error:”. Sending: the button reads “Sending” and carries aria-disabled. Success: the status line with the success mark."
+        },
+        {
+          "label": "Keyboard",
+          "value": "Tab through the fields and the send button. Enter in a field sends. After a failed send, focus lands on the first field to fix."
+        },
+        {
+          "label": "Accessible name",
+          "value": "Each field its label, with its hint and, after a failed send, its message as its description."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "On landing in the field to fix: its label, its invalid state and the message. After a good send: the status line."
+        },
+        {
+          "label": "Target",
+          "value": "Fields and the send button at least 44 px tall.",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Forced colors",
+          "value": "The red bar is a border and holds in CanvasText. The band drops out, and the mark and “Error:” carry the error."
+        },
+        {
+          "label": "Light and dark",
+          "value": "Fields on --oa-color-field-ground. The red bar measures 2.96 to 1 on Newsprint, so the mark and “Error:” carry the error there, and 4.49 to 1 on Charcoal, where the message takes no band."
+        },
+        {
+          "label": "Browser support",
+          "value": "the <code>autocomplete</code> attribute: Chrome 14, Edge 12, Firefox 4, Safari 6, Safari on iOS 6."
+        }
+      ],
+      "related": [
+        "11",
+        "22",
+        "05"
+      ],
+      "builders": [
+        "Call <code>preventDefault()</code> on the form’s submit, check every field, then set <code>aria-invalid</code> and the messages before moving focus, so the field is described when focus lands."
+      ]
+    },
+    {
+      "id": "18.18",
+      "title": "Give every message its mark, its first word and its bar, and announce only what changes.",
+      "rule": [
+        "An error, a warning and a success each start with their mark and their words (Rule 11.15). An error starts “Error:” and says how to fix it, beside a 4 px Pillar Red bar. A warning starts “Warning:” beside a 4 px bar in ink, and a success says what happened beside the Verdigris mark. Each bar is a left border.",
+        "A message that a script writes into the page goes into a status line, which a screen reader reads at its next pause. Only an error that appears with no field to move focus to uses <code>role=\"alert\"</code>, which interrupts. A message already in the page when it loads is plain text, since neither role announces it then."
+      ],
+      "tokens": [
+        "--oa-color-state-error-mark",
+        "--oa-color-state-error-band",
+        "--oa-color-state-warning-mark",
+        "--oa-color-state-success-mark",
+        "oa.border.width.bar",
+        "oa.size.icon.medium"
+      ],
+      "why": {
+        "text": [
+          "The mark and the first word give each message its kind in a shape and in words, so color never carries it alone. A status line reaches a screen reader without moving focus or cutting off what it is reading, and keeping alerts for errors keeps interruptions rare."
+        ],
+        "basis": "WCAG 2.2 SC 1.4.1, 1.4.11 and 4.1.3; WAI-ARIA 1.2 status and alert roles"
+      },
+      "correct": {
+        "specimen": "s-18-18-anatomy",
+        "caption": "The parts of each message: its 24 px mark, its first word, its words, its 4 px bar, and the Error Band behind an error on Newsprint."
+      },
+      "failure": {
+        "specimen": "s-18-18-failure",
+        "caption": "<strong>Fails Rule 18.18.</strong> Three messages are told apart only by the color of their boxes, with no mark, no first word and no bar."
+      },
+      "code": {
+        "set": "c-18-messages",
+        "name": "Messages",
+        "caption": "An error, a warning and a success, live in both themes."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "None fits; WAI-ARIA 1.2’s status role, and its alert role for an error with no field."
+        },
+        {
+          "label": "States",
+          "value": "Error, warning and success; inside a line of text, the 16 px marks."
+        },
+        {
+          "label": "Keyboard",
+          "value": "None: a message takes no focus."
+        },
+        {
+          "label": "Accessible name",
+          "value": "None; its words are the message."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "A status line: its new words at the next pause. An alert: its words at once. A message in the page when it loads: its words only when the reader reaches them."
+        },
+        {
+          "label": "Target",
+          "value": "No control."
+        },
+        {
+          "label": "Forced colors",
+          "value": "The bars, as borders, hold; the marks draw in currentColor; the Error Band drops out."
+        },
+        {
+          "label": "Light and dark",
+          "value": "On Charcoal an error takes no band; its red bar measures 4.49 to 1, and its mark and words turn Newsprint. The success mark measures 3.37 to 1 on Newsprint and 3.95 on Charcoal."
+        },
+        {
+          "label": "Browser support",
+          "value": "ARIA states and roles are read by screen readers, and MDN’s data does not track which screen reader reads which; chapter 19 lists them as not tested here. Whether a change is heard depends on the browser and the screen reader together."
+        }
+      ],
+      "related": [
+        "11",
+        "05",
+        "17"
+      ],
+      "builders": [
+        "Put the status line in the page, empty, when it loads, and write into it later; a live region added with its words already inside may not be read."
+      ]
+    },
+    {
+      "id": "18.19",
+      "title": "Say in words what is loading, and when nothing is there, say what is missing and what to do.",
+      "rule": [
+        "While a part of the page waits for its data, it shows a still drawing and words that name what is coming, such as “Loading the tracker”, in a status line, with no spinner and no pulse (Rule 17.7). The words sit where the content will, so nothing jumps when the data lands.",
+        "When the data holds nothing, the part says what is missing and what to do next, inside a dashed edge: “No bills match these filters. Clear the filters to see every bill.” The empty words are plain text, and the control they name sits in reach."
+      ],
+      "tokens": [
+        "--oa-color-state-loading-text",
+        "--oa-color-state-loading-mark",
+        "--oa-color-state-empty-text",
+        "--oa-color-state-empty-edge"
+      ],
+      "why": {
+        "text": [
+          "Words tell every reader what is happening, where a spinner shows only that something is, and a pulse moves without end. Saying what to do next turns an empty list into a step."
+        ],
+        "basis": "WCAG 2.2 SC 2.2.2 and 4.1.3; design judgment"
+      },
+      "correct": {
+        "specimen": "s-18-19-anatomy",
+        "caption": "The parts of a loading state, its still drawing and its words, and of an empty state, its dashed edge, what is missing and the control to try next."
+      },
+      "failure": {
+        "specimen": "s-18-19-failure",
+        "caption": "<strong>Fails Rule 18.19.</strong> A spinning circle with no words stands for loading, and when nothing matches, the space is left blank."
+      },
+      "code": {
+        "set": "c-18-loading-empty",
+        "name": "Loading and empty states",
+        "caption": "A loading state and an empty state, live in both themes."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "None fits; the status role for the loading words."
+        },
+        {
+          "label": "States",
+          "value": "Loading: the words and a still drawing. Empty: what is missing and what to do, inside a dashed edge. Loaded: the content in the same place."
+        },
+        {
+          "label": "Keyboard",
+          "value": "None of its own; the control the empty words name takes Tab."
+        },
+        {
+          "label": "Accessible name",
+          "value": "None; the words say it."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "The loading words once, at the next pause, when loading starts; the content when it lands; the empty words when the reader reaches them."
+        },
+        {
+          "label": "Target",
+          "value": "The control in the empty words, 44 px tall.",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Forced colors",
+          "value": "The dashed edge and the drawing hold in CanvasText."
+        },
+        {
+          "label": "Light and dark",
+          "value": "Loading and empty words in the secondary color, 5.49 to 1 on Newsprint and 7.26 on Charcoal."
+        },
+        {
+          "label": "Motion",
+          "value": "None: the drawing is still, and nothing moves while the reader waits."
+        },
+        {
+          "label": "Browser support",
+          "value": "ARIA states and roles are read by screen readers, and MDN’s data does not track which screen reader reads which; chapter 19 lists them as not tested here."
+        }
+      ],
+      "related": [
+        "17",
+        "11"
+      ],
+      "builders": [
+        "Swap the loading words for the content in one write, and keep the box the same height while it waits."
+      ]
+    },
+    {
+      "id": "18.20",
+      "title": "Update a live tracker in place, and say each change once in a status line.",
+      "rule": [
+        "A tracker built from chapter 11’s marks is a list of steps, each with its name and one state word: Done, Now, Not yet, Never happened or Stopped (Rule 11.2). When a bill moves, the tracker redraws only the steps that changed and writes one sentence to its status line that names the bill and its new step.",
+        "The tracker takes no focus and moves nothing on the page when it updates. While its data loads it says so in words (Rule 18.19), and when nothing matches it says what to do. When the data fails it gives the error with its mark and how to try again, and a record that has gone unchecked carries the warning of Rule 11.10."
+      ],
+      "tokens": [
+        "oa.component.mark.ring.now",
+        "oa.component.mark.ring.ahead",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "One polite sentence for each change lets a screen reader user hear what moved without losing their place, and redrawing only the changed steps keeps a sighted reader from losing theirs. The states stay in words, so an update never rests on a mark changing color."
+        ],
+        "basis": "WCAG 2.2 SC 1.4.1 and 4.1.3; WAI-ARIA 1.2 status role; Rule 11.5"
+      },
+      "correct": {
+        "specimen": "s-18-20-anatomy",
+        "caption": "The parts of a live tracker: the bill’s name, the six steps with their marks and state words, the status line under the list, and the check date with its warning mark."
+      },
+      "failure": {
+        "specimen": "s-18-20-failure",
+        "caption": "<strong>Fails Rule 18.20.</strong> An “Updated!” box flashes up for three seconds and does not say which bill moved or where."
+      },
+      "code": {
+        "set": "c-18-tracker",
+        "name": "Tracker",
+        "caption": "A tracker that updates, live. Each change is said once in the line under it."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "None fits; list markup for the steps and the status role for an update."
+        },
+        {
+          "label": "States",
+          "value": "Done, Now, You can take part now, Not yet, Never happened and Stopped (Rule 11.2); loading; empty; error; the warning on a record unchecked too long (Rule 11.10)."
+        },
+        {
+          "label": "Keyboard",
+          "value": "None of its own; a link inside, such as a bill’s page, takes Tab."
+        },
+        {
+          "label": "Accessible name",
+          "value": "The list’s label names the bill; each step its name and state word."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "The steps read in order; on an update, one sentence from the status line, once."
+        },
+        {
+          "label": "Target",
+          "value": "44 px for any control on a tracker (Rule 11.7).",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Forced colors",
+          "value": "Chapter 11’s marks keep their shapes in CanvasText, and the words carry each state."
+        },
+        {
+          "label": "Light and dark",
+          "value": "Chapter 11’s marks on Charcoal, in Newsprint and Dim Newsprint, with the take-part disc keeping its red."
+        },
+        {
+          "label": "Browser support",
+          "value": "ARIA states and roles are read by screen readers, and MDN’s data does not track which screen reader reads which; chapter 19 lists them as not tested here."
+        }
+      ],
+      "related": [
+        "11",
+        "21",
+        "17"
+      ],
+      "builders": [
+        "Write the sentence into a status line that was in the page, empty, from the start, and write only once for each bill that moves."
+      ]
+    },
+    {
+      "id": "18.21",
+      "title": "Page through a report with buttons that keep their place and a status line that names each page.",
+      "rule": [
+        "A report reader shows one page at a time, with Previous page and Next page buttons, each with its arrow beside its word, and the page’s size as a choice of Fit width or Full size (Rule 18.3). The status line names the page, the count and the page’s title, such as “Page 2 of 4:” and the title.",
+        "On the first page Previous page stays in place with aria-disabled and the line “This is the first page.”, and on the last Next page does the same; neither button moves focus. At Full size the page scrolls as Rule 18.11 sets. A page that is loading says so in the status line, and one that fails gives the error and how to try again. A reader that fills the screen opens in a native modal dialog."
+      ],
+      "tokens": [
+        "--oa-color-state-disabled-edge",
+        "--oa-color-field-ground",
+        "oa.size.icon.medium",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "Buttons that keep their place let a keyboard reader press Next page again and again without hunting for it, and a status line says where the reader is while focus stays put. A radio choice for the size says that only one size holds."
+        ],
+        "basis": "WCAG 2.2 SC 2.4.3, 4.1.2 and 4.1.3; APG Button and Radio Group patterns; the APG Carousel pattern’s rule that its buttons do not move focus"
+      },
+      "correct": {
+        "specimen": "s-18-21-anatomy",
+        "caption": "The parts of a report reader: the page view, Previous page and Next page with their arrows, the unavailable button’s dashed edge and reason, the size choice, and the status line."
+      },
+      "failure": {
+        "specimen": "s-18-21-failure",
+        "caption": "<strong>Fails Rule 18.21.</strong> On the last page Next page disappears, and focus falls back to the top of the page."
+      },
+      "code": {
+        "set": "c-18-report-reader",
+        "name": "Report reader",
+        "caption": "A four-page report, live. Press Next page until the last page: the button keeps focus and says why it waits."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "APG Button for each page button, in a named group with no toolbar role; APG Radio Group for the size; APG Dialog (Modal) for a reader that fills the screen."
+        },
+        {
+          "label": "States",
+          "value": "First page, a middle page and the last page, each unavailable button with its reason; Fit width or Full size checked; loading; error. Hover. Focus."
+        },
+        {
+          "label": "Keyboard",
+          "value": "Tab: the page while it scrolls, Previous page, Next page, then the size choice. Enter or Space turns the page. The arrow keys change the size."
+        },
+        {
+          "label": "Accessible name",
+          "value": "“Previous page” and “Next page”; the size choice’s legend, such as “Page size”; the page by the report’s title."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "After a press, the status line: the page, the count and the title. At either end, the disabled state and the reason."
+        },
+        {
+          "label": "Target",
+          "value": "44 px tall.",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Forced colors",
+          "value": "An unavailable button keeps its dashed edge, and the arrows draw in currentColor."
+        },
+        {
+          "label": "Light and dark",
+          "value": "The page sits on --oa-color-field-ground, White on Newsprint and Prussian on Charcoal."
+        },
+        {
+          "label": "Browser support",
+          "value": "<code>&lt;dialog&gt;</code> and <code>showModal()</code>: Chrome 37, Edge 79, Firefox 98, Safari 15.4, Safari on iOS 15.4. The dialog is needed only for a reader that fills the screen."
+        }
+      ],
+      "related": [
+        "24",
+        "11"
+      ],
+      "builders": [
+        "Turn the page by swapping its content inside the same page view, and write the status line after the swap, so the line never names a page the reader cannot see yet."
+      ]
+    },
+    {
+      "id": "18.22",
+      "title": "Step through a loop with Play, Reset the loop, Previous step and Next step, and say each step once.",
+      "rule": [
+        "A loop stepper walks a reader through a loop of connections one step at a time. Its buttons run in one order in every product, Play, Reset the loop, Previous step and Next step, each with its utility icon beside its word (Rule 11.14). One polite live region says each step as it arrives, “Step 2 of 3:” and the step’s sentence, and the step list marks the current step with <code>aria-current=\"step\"</code> and a 4 px bar.",
+        "Nothing plays until the reader presses Play. Play becomes Pause while it plays and Play again at the end, its icon and its word changing together, and it holds each step about 250 ms a word and never under 6 seconds, with reduced motion too (Rule 17.3). Next step, Previous step and Reset the loop stop the playback, and no button moves focus. At the start, Previous step and Reset the loop stay in place with aria-disabled and their reason; at the end, Next step does."
+      ],
+      "tokens": [
+        "--oa-color-state-selected-bar",
+        "oa.border.width.bar",
+        "oa.size.icon.medium",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "Play on request keeps the page still for a reader who did not ask it to move, and a pace set by the words gives a slow reader time to finish each step. Buttons that keep focus let a reader press Next step again and again, and one live region says each step without repeating the rest."
+        ],
+        "basis": "WCAG 2.2 SC 2.2.1, 2.2.2, 4.1.2 and 4.1.3; APG Carousel pattern, its buttons without its slide roles"
+      },
+      "correct": {
+        "specimen": "s-18-22-anatomy",
+        "caption": "The parts of a loop stepper: Play with its icon and word, Reset the loop, Previous step, Next step, an unavailable button’s reason, the live line, and the step list with its current step’s 4 px bar."
+      },
+      "failure": {
+        "specimen": "s-18-22-failure",
+        "caption": "<strong>Fails Rule 18.22.</strong> The loop starts on its own when the page loads, repeats without end and offers no button to pause it."
+      },
+      "code": {
+        "set": "c-18-loop-stepper",
+        "name": "Loop stepper",
+        "caption": "A three-step loop, live. Press Next step and listen for the line; press Play and it holds each step long enough to read."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "None fits. The Carousel pattern is nearest, and the stepper takes its buttons and its rule that no button moves focus, without its slide roles."
+        },
+        {
+          "label": "States",
+          "value": "Ready; step 1, 2 or 3; playing, with Pause; paused; ended, with Play again; unavailable buttons with their reasons; the current step’s bar."
+        },
+        {
+          "label": "Keyboard",
+          "value": "Tab through the four buttons; Enter or Space presses one; focus stays on the button pressed."
+        },
+        {
+          "label": "Accessible name",
+          "value": "“Play”, “Pause” or “Play again”; “Reset the loop”; “Previous step”; “Next step”. Play changes its word, so it carries no pressed state."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "Each step once, at the next pause: “Step 1 of 3:” and its sentence. The button’s new word when Play becomes Pause, while focus is on it."
+        },
+        {
+          "label": "Target",
+          "value": "44 px tall.",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Forced colors",
+          "value": "Icons in currentColor; unavailable buttons keep their dashed edge; the step bar is a border and holds."
+        },
+        {
+          "label": "Light and dark",
+          "value": "The bar in --oa-color-state-selected-bar on either surface."
+        },
+        {
+          "label": "Motion",
+          "value": "Nothing plays on load. Under reduced motion the steps keep their pace, and any drawn runner jumps from step to step."
+        },
+        {
+          "label": "Browser support",
+          "value": "<code>prefers-reduced-motion</code>: Chrome 74, Edge 79, Firefox 63, Safari 10.1, Safari on iOS 10.3."
+        }
+      ],
+      "related": [
+        "17",
+        "15",
+        "11"
+      ],
+      "builders": [
+        "Time each step from its own words, at 250 ms a word with a 6 second floor, and clear the timer on every press of Next step, Previous step or Reset the loop."
+      ]
+    },
+    {
+      "id": "18.23",
+      "title": "Reach a drawing’s items from one Tab stop with the arrow keys, and give every drawing its words.",
+      "rule": [
+        "The items in an atlas drawing, such as its areas, variables and loops, are toggle buttons in one group. The Tab key reaches the drawing once, at the selected item or the first, and the arrow keys move between items in reading order, with Home and End for the first and the last. Enter or Space selects an item, which lights its related items and opens its record in a panel, or a sheet on a phone; Escape closes it and returns focus to the item.",
+        "A readout line under the drawing repeats the name of the item in focus, so a reader who zooms in sees it without hovering. Each drawing also offers its lines in words and its data as a table, each behind a disclosure (Rule 18.8), and Full size opens it in a native modal dialog. Zoom stays in words, as Zoom in, Zoom out, Fit and Reset."
+      ],
+      "tokens": [
+        "--oa-color-state-muted-mark",
+        "--oa-color-graphic-essential",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "One Tab stop for each drawing keeps a keyboard reader from passing every item to leave it, and the arrow keys still reach each one. The words and the table give a reader who cannot see the drawing the same connections, and the readout takes the place of help that would show only on hover."
+        ],
+        "basis": "WCAG 2.2 SC 1.1.1, 1.4.13, 2.1.1, 2.5.1 and 4.1.2; APG Button, Disclosure and Dialog (Modal) patterns"
+      },
+      "correct": {
+        "specimen": "s-18-23-anatomy",
+        "caption": "The parts of the diagram controls: the drawing’s items, the item in focus with its heavier mark and underlined label, the selected item, the muted items, the readout line, the panel with its title, and the disclosures for the words and the table."
+      },
+      "failure": {
+        "specimen": "s-18-23-failure",
+        "caption": "<strong>Fails Rule 18.23.</strong> The drawing answers only to a pointer: the Tab key passes over it, and each item’s words show only in a box on hover."
+      },
+      "code": {
+        "set": "c-18-diagram-controls",
+        "name": "Diagram controls",
+        "caption": "A small drawing of four items, live. Tab to it once, move with the arrow keys, select with Enter and close with Escape."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "APG Button, as toggle buttons, for the items; Disclosure for More and Less, the lines in words and the table; Dialog (Modal) for Full size."
+        },
+        {
+          "label": "States",
+          "value": "Hover and focus: a heavier mark and an underlined label, the rest muted. Selected: aria-pressed and the selected look. Muted. The current step of a loop."
+        },
+        {
+          "label": "Keyboard",
+          "value": "Tab reaches the drawing once. The arrow keys move between items, Home and End to the ends. Enter or Space selects. Escape closes the panel and returns focus to the item."
+        },
+        {
+          "label": "Accessible name",
+          "value": "Each item a full sentence: its typed ID (Rule 18.24), its name and what a higher value means."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "The item’s sentence, its role and “pressed” or “not pressed”; the panel’s title when it opens."
+        },
+        {
+          "label": "Target",
+          "value": "Each item at least 44 px tall on a phone.",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Forced colors",
+          "value": "Marks keep their shapes in CanvasText, and the selected item keeps its bold label."
+        },
+        {
+          "label": "Light and dark",
+          "value": "Muted marks in --oa-color-state-muted-mark on either surface."
+        },
+        {
+          "label": "Browser support",
+          "value": "<code>&lt;dialog&gt;</code> and <code>showModal()</code>: Chrome 37, Edge 79, Firefox 98, Safari 15.4, Safari on iOS 15.4. <code>:focus-visible</code>: Chrome 86, Edge 86, Firefox 85, Safari 15.4, Safari on iOS 15.4."
+        }
+      ],
+      "related": [
+        "15",
+        "21",
+        "14"
+      ],
+      "builders": [
+        "Give one item <code>tabindex=\"0\"</code> and the rest <code>tabindex=\"-1\"</code>, and move both with the arrow keys. The readout is plain text, never a live region, since it changes with every key."
+      ]
+    },
+    {
+      "id": "18.24",
+      "title": "Write a typed ID with its type in words, and make it a link only when it opens the record.",
+      "rule": [
+        "A typed ID names a record in the atlas by its type and its code together, such as “Loop R10” or “Reform R-01”, so a reader never meets a bare code (chapter 02’s house rule H11). The chip sets both in the label style on a hairline edge, in the text’s ink, and color never codes its type.",
+        "A chip that opens its record is a link, with the record’s name in its words or its description, an underline on hover and a target at least 24 px tall. A chip that only names a record is plain text, with no role and no Tab stop."
+      ],
+      "tokens": [
+        "--oa-color-border-hairline",
+        "--oa-color-text-primary",
+        "oa.size.target.minimum"
+      ],
+      "why": {
+        "text": [
+          "The type in words tells every reader what the code refers to, where a color would leave a screen reader, or a reader who cannot see the color, with a bare code. A chip that takes focus only when it goes somewhere keeps the Tab order to things that act."
+        ],
+        "basis": "WCAG 2.2 SC 1.3.1, 1.4.1 and 2.4.4; chapter 02, house rule H11"
+      },
+      "correct": {
+        "specimen": "s-18-24-anatomy",
+        "caption": "The parts of a typed ID chip: its type word, its code, the hairline edge, and as a link, its underline on hover and its 24 px target."
+      },
+      "failure": {
+        "specimen": "s-18-24-failure",
+        "caption": "<strong>Fails Rule 18.24.</strong> The chips show bare codes, and only their fills say which is a loop and which is a reform."
+      },
+      "code": {
+        "set": "c-18-id-chip",
+        "name": "Typed ID chip",
+        "caption": "Two chips, live: one that names a loop and one that links to a reform’s record."
+      },
+      "specs": [
+        {
+          "label": "Pattern",
+          "value": "None fits a label; APG Link when the chip opens its record."
+        },
+        {
+          "label": "States",
+          "value": "Plain. As a link: hover, an underline; focus, the ring."
+        },
+        {
+          "label": "Keyboard",
+          "value": "A linked chip takes Tab, and Enter follows it; a plain chip takes no focus."
+        },
+        {
+          "label": "Accessible name",
+          "value": "Its words, such as “Loop R10”; a link adds the record’s name, such as “Loop R10, the safe-seat loop”."
+        },
+        {
+          "label": "A screen reader hears",
+          "value": "As text, its words; as a link, its words and its role."
+        },
+        {
+          "label": "Target",
+          "value": "As a link, at least 24 px tall.",
+          "token": "oa.size.target.minimum"
+        },
+        {
+          "label": "Forced colors",
+          "value": "The edge and the words in CanvasText, or LinkText when it links."
+        },
+        {
+          "label": "Light and dark",
+          "value": "The edge in --oa-color-border-hairline and the words in the text’s ink."
+        },
+        {
+          "label": "Browser support",
+          "value": "Plain links and text, which every browser MDN lists reads."
+        }
+      ],
+      "related": [
+        "02",
+        "21",
+        "10"
+      ],
+      "builders": [
+        "Keep the type word and the code in one element, with a no-break space between them, so a line never splits “Loop” from “R10”."
+      ]
+    }
+  ],
+  "extras": [],
+  "related_chapters": [
+    {
+      "chapter": "17",
+      "reason": "How each state looks and moves, and the one look for pressed, checked and current."
+    },
+    {
+      "chapter": "26",
+      "reason": "Choosing a token, starting a page from tokens.css and the dark theme."
+    },
+    {
+      "chapter": "19",
+      "reason": "Checking a finished page against WCAG 2.2 AA."
+    },
+    {
+      "chapter": "11",
+      "reason": "The utility icons, the marks for error, success and warning, and the tracker’s marks."
+    },
+    {
+      "chapter": "05",
+      "reason": "Contrast on each surface and the one working red."
+    },
+    {
+      "chapter": "07",
+      "reason": "Reading at 320 px with nothing lost."
+    },
+    {
+      "chapter": "20",
+      "reason": "Web pages built from these components."
+    },
+    {
+      "chapter": "21",
+      "reason": "The atlas, which uses the diagram controls and the typed ID chip."
+    }
+  ],
+  "sources": [
+    "Source: W3C, “Web Content Accessibility Guidelines (WCAG) 2.2”, W3C Recommendation, December 12, 2024, retrieved November 10, 2026. The success criteria each rule’s basis names.",
+    "Source: W3C Web Accessibility Initiative, “ARIA Authoring Practices Guide”, the pattern pages each rule names and the Disclosure Navigation Menu example, no page dates, retrieved November 10, 2026. The Practices show one tested way to build each control; WCAG sets what must hold.",
+    "Source: W3C, “Accessible Rich Internet Applications (WAI-ARIA) 1.2”, W3C Recommendation, June 6, 2023, the status and alert roles and the aria-live property, retrieved November 10, 2026. Behind Rules 18.18 and 18.20.",
+    "Source: MDN Web Docs, browser compatibility data, version 8.1.8, built November 2, 2026, read November 11, 2026. Each figure is the first version of a browser with full support, with no flag, prefix or partial mark. Every “Browser support” line in this chapter comes from it.",
+    "Sources: WHATWG, “HTML Living Standard”, the sections on web storage and on scripts that block rendering, and MDN Web Docs, “Window: localStorage property” and “Storage quotas and eviction criteria”, retrieved November 10, 2026. Behind Rule 18.4’s stored choice, its private windows and Safari’s seven days."
+  ]
+}

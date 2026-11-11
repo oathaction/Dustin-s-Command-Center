@@ -1,0 +1,73 @@
+{
+ "format": "oa-keys/1",
+ "set": "c-18-table",
+ "rule": "18.10",
+ "component": "Sortable table",
+ "about": "The keyboard path of this code set, walked in each live stage by the guide check. Each path starts from the component as the page first draws it, with focus on a stand-in control just before the stage. A step presses \"key\" (a KeyboardEvent key; \"Space\" is the space bar) or types \"type\"; then \"focus\" is a selector inside the stage that the focused element must match, or \"outside\"; \"states\" must hold (\"\" is the stage, \":root\" the page root); \"status\" is the exact words of the stage's role=\"status\" line, and \"status_has\" words it must contain. Written by the accessibility lead for chapter 18, Rule 18.10.",
+ "paths": [
+  {
+   "name": "Reverse the sorted column, sort another; the line says each order",
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": ".oa-table-th:nth-child(1) .oa-table-sort",
+     "states": [
+      {
+       "el": ".oa-table-th:nth-child(1)",
+       "attr": "aria-sort",
+       "is": "ascending"
+      }
+     ]
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-table-th:nth-child(1) .oa-table-sort",
+     "states": [
+      {
+       "el": ".oa-table-th:nth-child(1)",
+       "attr": "aria-sort",
+       "is": "descending"
+      }
+     ],
+     "status": "Sorted by bill, highest number first.",
+     "status_el": ".oa-table-status"
+    },
+    {
+     "key": "Space",
+     "focus": ".oa-table-th:nth-child(1) .oa-table-sort",
+     "states": [
+      {
+       "el": ".oa-table-th:nth-child(1)",
+       "attr": "aria-sort",
+       "is": "ascending"
+      }
+     ],
+     "status": "Sorted by bill, lowest number first.",
+     "status_el": ".oa-table-status"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-table-th:nth-child(2) .oa-table-sort"
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-table-th:nth-child(2) .oa-table-sort",
+     "states": [
+      {
+       "el": ".oa-table-th:nth-child(2)",
+       "attr": "aria-sort",
+       "is": "ascending"
+      },
+      {
+       "el": ".oa-table-th:nth-child(1)",
+       "attr": "aria-sort",
+       "is": null
+      }
+     ],
+     "status": "Sorted by title, A to Z.",
+     "status_el": ".oa-table-status"
+    }
+   ]
+  }
+ ]
+}

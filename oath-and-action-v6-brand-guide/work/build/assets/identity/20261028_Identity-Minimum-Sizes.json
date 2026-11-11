@@ -37,7 +37,7 @@
    "lockup": "L3 horizontal with lockmark",
    "v5": "192 px wide",
    "screen": "196 px wide (condensed 164 px): wordmark 16 px master, lockmark 34 px from its 24 px master. In the masthead, 282 px wide from its masthead master: the wordmark's 24 px master, 13 px of space and the lockmark at 48 px from its 48 px master",
-   "print": "1.55 in wide (condensed 1.30 in), from the print master, which sets capitals 3.13 mm tall and the lockmark 0.269 in there (Rule 03.2)",
+   "print": "1.55 in wide (condensed 1.30 in), from the print master, with capitals 3.13 mm tall and the lockmark 0.269 in at that width (Rule 03.2)",
    "below": "Use L1",
    "condensed": "kept for the record, not in use (D2-328)",
    "files": [

@@ -140,7 +140,7 @@ def _signoff():
     """The bottom-right corner of a 1080 px social card at true size: its right and bottom edges, the lockmark at 96 px,
     the 48 px master at exactly twice its size (DR-211), 72 px in from each, and two dimension lines that measure the
     margin."""
-    W, H, M, L = 360, 216, 72, SIGN_OFF["social"]
+    W, H, M, L = 408, 264, 72, SIGN_OFF["social"]     # widened from 360 by 216 for the 96 px mark (promotion C)
     st = pal("stone")
     cx, cy = W - M - L / 2, H - M - L / 2          # the lockmark's center
     dims = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" aria-hidden="true" class="oai-svg" '
@@ -176,8 +176,9 @@ def s_08_2_correct():
                      "lockmark at 48 px from its 48 px master, in a 768 px bar (Rule 03.6's breakpoint). Page header and footer: the "
                      "24 px master on whole pixels. Chart footer: the 16 px master beside chapter 02's jobs chart source line, word "
                      "for word. Sign-off: since November 11, 2026 the 48 px master at exactly twice its size, 96 px, as a social "
-                     "card signs off (DR-211), 72 px from the card's right and bottom edges (D2-295's card margin); from November 8 "
-                     "to 10 it stood at 48 px. The places and their labels stand 16 px in from the frame (CD-N9), so the plate is 802 px wide. Type "
+                     "card signs off (DR-211), 72 px from the card's right and bottom edges (D2-295's card margin), in a corner widened "
+                     "from 360 by 216 px to 408 by 264 px so the card shows around the larger mark; from November 8 to 10 it stood at "
+                     "48 px. The places and their labels stand 16 px in from the frame (CD-N9), so the plate is 802 px wide. Type "
                      "takes sizes common to both columns of the scale (13 to 17 px). Since November 10, 2026 the 48 and 24 px masters "
                      "are the rebuilt files, each node and the lever one outline, and L3's masthead master is "
                      "lockups/20261110_L3-Horizontal-Master.svg, which carries the rebuilt 48 px master; each draws the same pixels "

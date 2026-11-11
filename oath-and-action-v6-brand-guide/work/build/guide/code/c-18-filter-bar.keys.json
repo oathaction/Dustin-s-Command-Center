@@ -1,0 +1,85 @@
+{
+ "format": "oa-keys/1",
+ "set": "c-18-filter-bar",
+ "rule": "18.16",
+ "component": "Filter bar",
+ "about": "The keyboard path of this code set, walked in each live stage by the guide check. Each path starts from the component as the page first draws it, with focus on a stand-in control just before the stage. A step presses \"key\" (a KeyboardEvent key; \"Space\" is the space bar) or types \"type\"; then \"focus\" is a selector inside the stage that the focused element must match, or \"outside\"; \"states\" must hold (\"\" is the stage, \":root\" the page root); \"status\" is the exact words of the stage's role=\"status\" line, and \"status_has\" words it must contain. Written by the accessibility lead for chapter 18, Rule 18.16.",
+ "paths": [
+  {
+   "name": "Open Filters, turn a chip on, then Clear filters sends focus to Filters",
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": ".oa-filters-toggle",
+     "states": [
+      {
+       "el": ".oa-filters-toggle",
+       "attr": "aria-expanded",
+       "is": "false"
+      }
+     ]
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-filters-toggle",
+     "states": [
+      {
+       "el": ".oa-filters-toggle",
+       "attr": "aria-expanded",
+       "is": "true"
+      }
+     ]
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-filters-chip:nth-child(1)"
+    },
+    {
+     "key": "Space",
+     "focus": ".oa-filters-chip:nth-child(1)",
+     "states": [
+      {
+       "el": ".oa-filters-chip:nth-child(1)",
+       "attr": "aria-pressed",
+       "is": "true"
+      },
+      {
+       "el": ".oa-filters-toggle",
+       "text_has": "1 on"
+      }
+     ],
+     "status_has": " of "
+    },
+    {
+     "key": "Shift+Tab",
+     "focus": ".oa-filters-toggle"
+    },
+    {
+     "key": "Shift+Tab",
+     "focus": ".oa-filters-clear",
+     "states": [
+      {
+       "el": ".oa-filters-clear",
+       "visible": true
+      }
+     ]
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-filters-toggle",
+     "states": [
+      {
+       "el": ".oa-filters-clear",
+       "visible": false
+      },
+      {
+       "el": ".oa-filters-chip:nth-child(1)",
+       "attr": "aria-pressed",
+       "is": "false"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

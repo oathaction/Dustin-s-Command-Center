@@ -277,7 +277,7 @@ def s_library(ctx, m):
         f'.gl{{margin:0 0 6px;{T("label")};color:var(--sec)}}'
         f'.cs{{list-style:none;margin:0 0 12px;padding:0;display:flex;flex-wrap:wrap;gap:8px}}'
         f'.ui .ch{{padding:0 14px}}.ui .ch[aria-pressed="true"]{{font-weight:700;border-width:2px;padding:0 13px 0 9px}}'
-        f'.rs{{margin-top:16px;{T("ui")};font-weight:700}}'
+        f'.rs{{margin-top:16px;{T("ui")}}}.rs b{{font-weight:700}}'
         f'.hs{{list-style:none;margin:6px 0 0;padding:0;{T("bodySmall")}}}.hs li{{padding:4px 0;border-top:1px solid var(--hair)}}'
         f'.hs b{{display:inline-block;min-width:4.25em;font-variant-numeric:tabular-nums}}'
         f'.mr{{margin-top:6px;{T("bodySmall")};color:var(--sec)}}.mr:empty{{display:none}}')
@@ -298,7 +298,7 @@ def s_library(ctx, m):
             f'<div class="sh" id="lb-sh" data-sheet><p class="gl" id="lb-k">Kind</p><ul class="cs" aria-labelledby="lb-k">'
             f'{chip("t", "Topic")}{chip("a", "Atlas", True)}{chip("p", "Pillar")}</ul>'
             f'<p class="gl" id="lb-s">Size</p><ul class="cs" aria-labelledby="lb-s">{chip("24", "Reads at 24 px")}</ul></div>'
-            f'<p class="rs" role="status" data-out="res">{n_atlas} of {n_all} symbols</p><ul class="hs" data-out="hits"></ul>'
+            f'<p class="rs" role="status" data-out="res"><b>{n_atlas} of {n_all} symbols</b></p><ul class="hs" data-out="hits"></ul>'
             f'<p class="mr" data-out="more"></p>'
             + tpl(u('selected-check')) + f'<script type="application/json" data-rows>{data}</script>'
             + script('''
@@ -319,7 +319,8 @@ function run(){var q=Q.value.trim().toLowerCase(),k=B.filter(function(b){return 
 r=D.filter(function(d){return(!k.length||k.some(function(x){return d[2].indexOf(x)>=0;}))&&(!s||d[3])&&
 (!q||d[0].toLowerCase().indexOf(q)>=0||d[1].toLowerCase().indexOf(q)>=0);}),n=B.filter(on).length;
 K.textContent='Filters, '+n+' on';Z.hidden=!n;C.hidden=!Q.value;
-O.textContent=r.length+' of '+D.length+' symbols'+(r.length?'':'. No symbol matches. Clear the search or the filters to see more.');
+O.textContent='';var c=document.createElement('b');c.textContent=r.length+' of '+D.length+' symbols';O.appendChild(c);
+if(!r.length){O.appendChild(document.createTextNode('. No symbol matches. Clear the search or the filters to see more.'));}
 U.textContent='';r.slice(0,3).forEach(function(d){var li=document.createElement('li'),b=document.createElement('b');
 put(b,d[0]);li.appendChild(b);var t=document.createElement('span');put(t,' '+d[1]);li.appendChild(t);U.appendChild(li);});
 var k=r.length-3;Y.textContent=k>0?'The first three are listed here, and '+(k<10?N9[k]:k)+' more '+(k===1?'matches':'match')+'.':'';}

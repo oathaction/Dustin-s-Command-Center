@@ -4,6 +4,8 @@ Oath & Action Edition 06, Phase 2, stage B round 2, November 10, 2026. Written b
 
 Every figure here comes from the files or the records named beside it. Where the page and this file ever differ after the editor's copy edit, the page's words govern and I update this file.
 
+**Updated at promotion C, November 11, 2026** (the systems designer, under `20261111_Promotion-Stage-C-Brief.md`): CL-075 Housing joined the set in use at 48 px and up (DR-207), so the set holds 125 drawings; all 41 on the list take the pillar icons' switch at 24 px, the fit on 1x screens and the master from 2x (DR-209); CL-075 joins section 12's house group, and R-06, R-41 and R-44 join the groups that never share a view at small sizes (D2-1237). The sections below carry those changes; `20261111_Promotion-C-Systems-Notes.md` has the rest.
+
 ## 0. The rules chapter 10 will print
 
 | Rule | Title (draft; the editor may tighten the words) | Sections here |
@@ -36,7 +38,7 @@ A topic or atlas drawing never stands for an interface action (D2-515). Chapter 
 
 **Atlas symbols are the 51 variables and the 50 reforms.** Each of the atlas's 51 variables has exactly one Civic Line drawing (research notes, section 2), the map is `VARIABLE_ICON` in `work/build/scripts/phase-2/atlas_concepts_common.py`, and drivers X1 to X5 are among the 51 (CL-034 to CL-038). The 50 reform drawings carry the atlas's own reform IDs, R-01 to R-50. Domains, hubs, layers and routes have no drawing: they stay words and typed chips, and nobody draws one for them.
 
-**The set in use** is `work/build/assets/civic-line-v6/`: 124 drawings in four editions (D2-716).
+**The set in use** is `work/build/assets/civic-line-v6/`: 125 drawings in four editions (D2-716; CL-075 Housing joined at promotion C, DR-207, D2-1262).
 - CL-001 to CL-074: 74 drawings. CL-073 Testify and CL-074 Contact an Official are new (D2-714, DR-159, DR-160). CL-019 to CL-022 are the pillar icons, and chapter 09 governs them.
 - R-01 to R-50: 50 reform drawings.
 - The six redraws keep their IDs (CL-014, CL-025, CL-059, R-13, R-42, R-48; DR-156 to DR-158). They are the drawings in use. The October originals stay in `work/build/assets/civic-line/` as the record and never appear on a reader page as a choice.
@@ -89,7 +91,7 @@ Under one device pixel a line never reaches full ink (engineer's pixel-fit check
 ## 6. The capped fit
 
 - **Framing option 3 (DR-08).** In each standalone file, a drawing grows toward 116 of the 128 units, by at most 1.25 times the shared scale. A compact drawing stops at the cap with room around it; a wide one fills to 116 units across. The line then varies by at most 25 percent across the set (2.68 to 3.35 units, section 3).
-- **In the set in use,** 92 drawings stop at the cap, with a 3.3508-unit line, and 32 fill to 116 units with a lighter line. Both counts include the eight new finals: CL-025, CL-059, R-13, R-42 and CL-073 sit at the cap; CL-014 (3.09 units), R-48 (2.70) and CL-074 (2.90) fill to 116.
+- **In the set in use,** 93 drawings stop at the cap, with a 3.3508-unit line, and 32 fill to 116 units with a lighter line (CL-075 Housing sits at the cap; promotion C). Both counts include the eight new finals: CL-025, CL-059, R-13, R-42 and CL-073 sit at the cap; CL-014 (3.09 units), R-48 (2.70) and CL-074 (2.90) fill to 116.
 - Each drawing's ink box is centered on (64, 64).
 - **What a builder never does:** trim the box to the ink, scale the drawing inside the box, or stretch it. Each one changes the line weight, so a row of drawings stops matching. Set every symbol in a row at one box size.
 
@@ -126,7 +128,7 @@ Files: `work/build/assets/civic-line-v6/{red-black,black,red-newsprint,newsprint
 | One-color | 48 px | 52 px | 52 px |
 | One-color, for the drawings that need 48 px on their own | 72 px | 76 px | 80 px |
 
-  The inventory in use records each drawing's minimums: 94 drawings take the one-color row and 30 the row below it (`tile_min_px` in `20261110_Civic-Line-V6-Inventory.json`, read by script). The October set had 28 in the last row; the redraws and CL-074 change the count.
+  The inventory in use records each drawing's minimums: 94 drawings take the one-color row and 31 the row below it, CL-075 Housing among the 31 (D2-1236) (`tile_min_px` in `20261110_Civic-Line-V6-Inventory.json`, read by script). The October set had 28 in the last row; the redraws and CL-074 change the count.
 - **Never:** a Newsprint tile on a White page, where its edge measures 1.41 to 1 against White; a Pillar Red tile, which breaks Rule 05.3; red on a tile set on Prussian.
 - Files: `work/build/assets/civic-line-v6/tiles/` for the eight new and redrawn drawings, and `work/build/assets/civic-line/tiles/` for the other 116, as the inventory in use points (D2-716). App platforms take the square tile and apply their own mask.
 
@@ -134,7 +136,7 @@ Files: `work/build/assets/civic-line-v6/{red-black,black,red-newsprint,newsprint
 
 | Family | 16 px | 24 px | 48 px and up |
 |---|---|---|---|
-| Topic and atlas symbols | Never | Only the 41 in section 10 (37 topic and atlas drawings plus the four pillar icons), one color | Any of the 124, at whole pixel sizes |
+| Topic and atlas symbols | Never | Only the 41 in section 10 (37 topic and atlas drawings plus the four pillar icons), one color: the 24 px pixel fit on 1x screens and the master from 2x (DR-209) | Any of the 125, at whole pixel sizes |
 | Pillar icons (chapter 09) | The 16 px pixel fit, one color | The 24 px pixel fit B on 1x screens and the master on 2x screens, one color (DR-179) | The master; red is a second sign from 48 px |
 | Utility icons (chapter 11) | The 16 px master, inline in text or a table heading | The 24 px master beside a control's word | Not used |
 | Status marks (chapter 11) | Not used | Circles at 24, 26, 28 and 30 px (Rule 11.7) | Not used |
@@ -154,6 +156,8 @@ CL-001, CL-004, CL-006, CL-010, CL-013, CL-019, CL-020, CL-021, CL-022, CL-023, 
 That is 29 CL drawings and 12 reform drawings.
 
 **The four pillar icons** (CL-019 Explain, CL-020 Track, CL-021 Connect, CL-022 Act) are among the 41. At 24 px they draw from chapter 09's pixel fits on 1x screens and from their masters on 2x screens (DR-179), and they never stand in for a topic.
+
+**The switch for all 41 (DR-209, promotion C).** The 37 topic and atlas drawings now have 24 px pixel fits in use, `work/build/assets/civic-line-v6/fit-24/`, sprite symbols `oa-sym-<id>-24px` (D2-1265). A 24 px drawing of any of the 41 is one svg on the fit's 24 px box with two uses, `<use class="oa-at-1x" href="#oa-sym-<id>-24px"/><use class="oa-at-2x" href="#oa-sym-<id>"/>`, which the shell switches by screen.
 
 **The 37 topic and atlas drawings** that may be set at 24 px, with the Civic Line word and, where the drawing is an atlas symbol, the atlas ID:
 
@@ -217,7 +221,11 @@ The words on a reader page come from the editor's label table (DR-185, `20261110
 
 ## 12. Neighbors chapter 10 sets side by side
 
-CL-073 Testify and CL-005 Public Meeting; CL-074 Contact an Official and CL-061 Household Income; CL-025 Congress and CL-014 Entrenched Power; CL-053 Housing Scarcity, CL-054 Home Equity and CL-063 Essential Costs; CL-027 Court Alignment and CL-031 Local Government; CL-048 Public Records and CL-023 Evidence.
+CL-073 Testify and CL-005 Public Meeting; CL-074 Contact an Official and CL-061 Household Income; CL-025 Congress and CL-014 Entrenched Power; CL-075 Housing, CL-053 Housing Scarcity, CL-054 Home Equity and CL-063 Essential Costs (Housing joined at promotion C); CL-027 Court Alignment and CL-031 Local Government; CL-048 Public Records and CL-023 Evidence.
+
+Two groups never share a view at small sizes: CL-023, CL-028, R-08, R-27 and R-45 at 24 px (D2-971), and R-06, R-41 and R-44 at 48 px or smaller (D2-1237; R-06 is the only one of the three on the list of 41, and 48 px is the smallest size all three take).
+
+**Figures after promotion C** (`20261110_Stage-B-Ch10-Figures.json`, measured again on the 125 drawings in use: 7,750 pairs, flag 0.9091, watch 0.8672): CL-075 against CL-053 0.25, CL-054 0.50 and CL-063 0.57; R-06 and R-41 0.94, R-06 and R-44 0.96 (the closest pair in the set), R-41 and R-44 0.89. R-06's fit scores 0.92 against the masters of R-41 and R-44 (the icon designer's `civic-line-24-fit/qa/20261110_Fits-Likeness.json`). The five's fits score 0.70 to 0.90 among themselves (`20261110_Five-Look-Alikes-Fits-Likeness.json`). The figures in the paragraph below are the stage B run on 124.
 
 Each pair carries the engineer's likeness figure, computed with `icon_likeness_check.js`'s own functions on the 124 drawings in use (7,626 pairs; flag 0.9092 at the 99th percentile, watch 0.8678 at the 95th; `20261110_Stage-B-Ch10-Figures.json`). The figures: CL-005 and CL-073 −0.09; CL-061 and CL-074 0.79; CL-014 and CL-025 0.75; CL-053 and CL-054 0.70; CL-053 and CL-063 0.60; CL-054 and CL-063 0.71; CL-027 and CL-031 0.84; CL-023 and CL-048 0.69. None reaches the flag. These are neighbors by subject more than by outline: Testify and Public meeting have nearly unrelated outlines, and Court alignment and Local government come closest. Rule 10.9 says so and calls the groups neighbors.
 

@@ -1,0 +1,20 @@
+/* Scroll region: a frame for content wider than its column. It scrolls sideways inside itself, so the page never does,
+   and it becomes a named Tab stop, with its hint shown, only while it overflows. Reads only tokens.css. */
+.oa-scroll { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
+.oa-scroll-k { margin: 0 0 var(--oa-space-100); font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }
+.oa-scroll-hint { margin: 0 0 var(--oa-space-100); font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
+.oa-scroll-hint[hidden] { display: none }
+.oa-scroll-frame { overflow-x: auto; border: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
+.oa-scroll-frame:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
+/* The wide content: here a row of six steps, 45rem across */
+.oa-scroll-wide { display: grid; grid-template-columns: repeat(6, 7.5rem); width: 45rem; margin: 0; padding: var(--oa-space-200) 0; list-style: none }
+.oa-scroll-step { display: flex; flex-direction: column; align-items: flex-start; gap: var(--oa-space-100); padding: 0 var(--oa-space-150);
+  border-left: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline); font: var(--oa-type-ui) }
+.oa-scroll-step:first-child { border-left: 0 }
+.oa-scroll-n { display: flex; align-items: center; justify-content: center; box-sizing: border-box; width: var(--oa-space-400); height: var(--oa-space-400);
+  border: var(--oa-border-width-rule) solid var(--oa-color-graphic-essential); border-radius: var(--oa-radius-full);
+  font: var(--oa-type-data-label); font-weight: var(--oa-font-weight-bold) }
+
+@media (forced-colors: active) {
+  .oa-scroll-frame { border-color: CanvasText }
+}

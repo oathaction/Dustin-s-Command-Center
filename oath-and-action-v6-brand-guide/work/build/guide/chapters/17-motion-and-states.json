@@ -1,0 +1,871 @@
+{
+  "number": "17",
+  "anchor": "motion-and-states",
+  "title": "Motion and states",
+  "part": "Behavior",
+  "instruction": "Keep motion under the reader’s control, and give every state visible text.",
+  "intro": [
+    "Motion here means a mark that moves on screen to show a change, such as a bill reaching its next step or a link forming between a cause and its effect. A state is how a control or a region looks while something about it holds, from a focus ring to an error. This chapter sets how each one moves and how it looks, and chapter 18 says where each component uses them.",
+    "A reader starts every motion, and a reader whose device asks for less motion sees the last frame at once. Every state shows words or a shape as well as a color, on Newsprint and on Charcoal, so it reads in gray print, in a dark theme and to a reader who sees no color."
+  ],
+  "groups": [
+    {
+      "before_rule": "17.1",
+      "number": 1,
+      "title": "Motion under the reader’s control",
+      "line": "A motion explains a change, keeps to nine timing tokens and starts only when a reader asks."
+    },
+    {
+      "before_rule": "17.5",
+      "number": 2,
+      "title": "Three behaviors, and the identity’s own",
+      "line": "Slide, draw and land build every motion, and the hinge and the lever keep motions of their own."
+    },
+    {
+      "before_rule": "17.7",
+      "number": 3,
+      "title": "States",
+      "line": "Each state shows words or a shape as well as a color, on Newsprint and on Charcoal."
+    }
+  ],
+  "rules": [
+    {
+      "id": "17.1",
+      "title": "Move something only to explain a state or a mechanism.",
+      "rule": [
+        "Motion has two jobs. It shows a state changing, as when a bill finishes one step and moves to the next, and it shows a mechanism at work, as when a link draws from a cause to its effect. A mark that would move for any other reason, to decorate a page or to catch the eye, stays still.",
+        "A reader’s own actions answer at once or within the fast 120 ms: hover, a toggle, a theme change. The focus ring shows at once, with no motion at all."
+      ],
+      "tokens": [
+        "oa.motion.duration.fast",
+        "oa.motion.duration.standard",
+        "oa.motion.duration.slow"
+      ],
+      "why": {
+        "text": [
+          "A moving mark draws the eye before the words around it, so a motion with no change behind it takes a reader away from the sentence they came to read. Motion also costs some readers more than attention: the W3C’s Media Queries Level 5 describes the motion a reduced motion setting removes as motion that can “trigger discomfort for those with vestibular motion sensitivity, or distraction for those with attention deficits.” A vestibular disorder affects the inner ear’s sense of balance."
+        ],
+        "basis": "Design judgment, with the W3C’s Media Queries Level 5"
+      },
+      "correct": {
+        "specimen": "s-17-1-correct",
+        "caption": "Live. Press Play and bill S.99002 moves from step 3, Committee vote, to step 4, First chamber. Step 3 lands as done, then the ring that marks where the bill is now slides to step 4 and draws the line behind it. Every part of the motion shows something that changed."
+      },
+      "failure": {
+        "specimen": "s-17-1-failure",
+        "caption": "<strong>Fails Rule 17.1.</strong> A count rises from 0 to 1,284 as the page opens. Nothing changed for the reader: the number was known before the page drew, and the motion makes them wait for it."
+      },
+      "specs": [
+        {
+          "label": "A state changes",
+          "value": "A step finishes; a bill moves on; a mark arrives at its new state"
+        },
+        {
+          "label": "A mechanism works",
+          "value": "A link draws from cause to effect; the current step of a loop moves on"
+        },
+        {
+          "label": "A reader’s own action",
+          "value": "Hover and toggles at once or in 120 ms; the focus ring at once",
+          "token": "oa.motion.duration.fast"
+        },
+        {
+          "label": "Leave out",
+          "value": "Autoplaying video, looping animation, parallax, motion tied to scrolling, bounce or elastic easing, animated gradients, confetti, counters that tick up and hover that moves layout"
+        }
+      ],
+      "related": [
+        "11",
+        "15",
+        "18"
+      ],
+      "builders": [
+        "Before you add a motion, write the sentence it shows, such as “Step 3 is done and the bill is now at step 4.” If no change gives you that sentence, leave the mark still.",
+        "Keep native scrolling. Tie no motion to the scroll position, and take nothing over from the wheel or the keys that scroll the page."
+      ]
+    },
+    {
+      "id": "17.2",
+      "title": "Time every motion with the nine motion tokens.",
+      "rule": [
+        "Every duration and easing in a motion comes from a token: three durations for most moves, a 40 ms stagger between siblings, two durations kept for the hinge and the lever, and three easings. A motion reads them from tokens.css by name, so a reduced motion setting reaches it (Rule 17.4).",
+        "Fast, 120 ms, serves hover and toggles. Standard, 200 ms, serves reveals, panels, a mark that lands and a line that draws on its own. Slow, 320 ms, serves a move across a page or a component. A mark that arrives takes the enter easing, a mark that leaves takes the exit easing at the fast duration, and a mark that moves from one place to another takes the standard easing."
+      ],
+      "tokens": [
+        "oa.motion.duration.fast",
+        "oa.motion.duration.standard",
+        "oa.motion.duration.slow",
+        "oa.motion.duration.stagger",
+        "oa.motion.duration.hinge",
+        "oa.motion.duration.lever",
+        "oa.motion.easing.standard",
+        "oa.motion.easing.enter",
+        "oa.motion.easing.exit"
+      ],
+      "why": {
+        "text": [
+          "These are our fifth edition’s values, kept as they were. Nothing in the set runs longer than 680 ms, so a motion is over before a reader’s eye moves on. The three easings slow down into place, or speed away from it, and none passes its place and comes back, so a mark rests exactly where the still view draws it."
+        ],
+        "basis": "Design judgment, kept from our fifth edition"
+      },
+      "correct": {
+        "specimen": "s-17-2-correct",
+        "caption": "The nine tokens. The six durations share one scale, the hinge’s 680 ms across the full width, and each easing is drawn as its curve."
+      },
+      "failure": {
+        "specimen": "s-17-2-failure",
+        "caption": "<strong>Fails Rule 17.2.</strong> A transition written with its own numbers. A reduced motion setting never reaches 250 ms, and the curve goes 10 percent past its place before it comes back."
+      },
+      "specs": [
+        {
+          "label": "Fast",
+          "value": "120 ms; hover and toggles",
+          "token": "oa.motion.duration.fast"
+        },
+        {
+          "label": "Standard",
+          "value": "200 ms; reveals, panels, a land, a draw on its own",
+          "token": "oa.motion.duration.standard"
+        },
+        {
+          "label": "Slow",
+          "value": "320 ms; a move across a page or a component",
+          "token": "oa.motion.duration.slow"
+        },
+        {
+          "label": "Stagger",
+          "value": "40 ms between siblings",
+          "token": "oa.motion.duration.stagger"
+        },
+        {
+          "label": "Hinge",
+          "value": "680 ms, on request only (Rule 17.6)",
+          "token": "oa.motion.duration.hinge"
+        },
+        {
+          "label": "Lever",
+          "value": "560 ms, on request only (Rule 17.6)",
+          "token": "oa.motion.duration.lever"
+        },
+        {
+          "label": "Standard easing",
+          "value": "cubic-bezier(0.2, 0, 0, 1); a move from place to place",
+          "token": "oa.motion.easing.standard"
+        },
+        {
+          "label": "Enter easing",
+          "value": "cubic-bezier(0, 0, 0.2, 1); a mark that arrives",
+          "token": "oa.motion.easing.enter"
+        },
+        {
+          "label": "Exit easing",
+          "value": "cubic-bezier(0.4, 0, 1, 1); a mark that leaves, at the fast duration",
+          "token": "oa.motion.easing.exit"
+        }
+      ],
+      "related": [
+        "26"
+      ],
+      "builders": [
+        "Write <code>transition: transform var(--oa-motion-duration-standard) var(--oa-motion-easing-enter)</code>, never the number. A script reads the same names with <code>getComputedStyle(el).getPropertyValue('--oa-motion-duration-slow')</code>, which gives <code>320ms</code>, or <code>0ms</code> under reduced motion."
+      ]
+    },
+    {
+      "id": "17.3",
+      "title": "Play a motion only when a reader asks, with Play, Pause, Reset and a still view.",
+      "rule": [
+        "A motion starts when a reader presses Play, and never as the page opens, as it scrolls into view or on a timer. It runs once and stops on its last frame, and nothing loops. One button carries Play and Pause and changes its icon and its word together, then reads Play again at the end. Reset returns to the first frame; at the first frame it is unavailable and says why.",
+        "Beside every player sits its still view: the first and last frames at true size, each with its time and the words for what it shows, then each step of the motion in order. A status line says the same words when the frame changes, so a reader who never presses Play, prints the page or listens with a screen reader gets every fact the motion shows."
+      ],
+      "tokens": [
+        "oa.size.target.touch",
+        "oa.size.icon.medium"
+      ],
+      "why": {
+        "text": [
+          "WCAG 2.2 success criterion 2.2.2 Pause, Stop, Hide asks for a way to pause anything that starts on its own and moves for more than five seconds. Our motions last under a second and never start on their own, so none needs it, and every player gets the controls anyway, so a reader always decides when a mark moves. Slow motion stretches a motion to a few seconds, which gives Pause time to work and lets a reader see the easing."
+        ],
+        "basis": "WCAG 2.2 SC 2.2.2; design judgment"
+      },
+      "correct": {
+        "specimen": "s-17-3-correct",
+        "caption": "The parts of a player, numbered, drawn from the live player in Rule 17.4. Each part has its words, and the controls stand 44 px tall."
+      },
+      "failure": {
+        "specimen": "s-17-3-failure",
+        "caption": "<strong>Fails Rule 17.3.</strong> The bill moves as the page opens and again every 3 seconds, so it seems to go back and forth between two steps. Its one button has an icon and no word, and there is no Pause, Reset or still view."
+      },
+      "specs": [
+        {
+          "label": "Play and Pause",
+          "value": "One button; its icon and word change together: Play, Pause, Play again"
+        },
+        {
+          "label": "Reset",
+          "value": "Returns to the first frame; unavailable there, with its reason"
+        },
+        {
+          "label": "Slow motion",
+          "value": "A check box that plays at one tenth speed; unavailable under reduced motion, with its reason"
+        },
+        {
+          "label": "Still view",
+          "value": "First and last frames at true size, each with its time and words, then the steps in order"
+        },
+        {
+          "label": "Status line",
+          "value": "Polite; says Playing, Paused, and the words of the frame the motion stops on"
+        },
+        {
+          "label": "Controls",
+          "value": "44 px tall, with 24 px icons beside their words",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Runs",
+          "value": "Once for each press; never on load, on scroll or on a timer; never loops"
+        }
+      ],
+      "related": [
+        "11",
+        "18",
+        "19"
+      ],
+      "builders": [
+        "Mark the player’s root <code>data-oa-motion</code>, its one Play and Pause button <code>data-oa-play data-oa-pause</code> and Reset <code>data-oa-reset</code>; the guide’s own check looks for them. Start a motion from a click handler and nowhere else.",
+        "Leave the last frame on screen when the motion ends. At rest the player draws the still view’s last frame."
+      ]
+    },
+    {
+      "id": "17.4",
+      "title": "Under reduced motion, show the last frame at once.",
+      "rule": [
+        "When a reader’s device asks for reduced motion, every motion duration token resolves to 0 ms, and pressing Play draws the last frame at once. The player keeps its buttons and its words, so the reader still chooses when the change shows and reads in the status line what changed.",
+        "tokens.css does this itself, with the media query <code>prefers-reduced-motion</code>, which every current browser supports. A motion that reads its timing from the tokens follows the setting with no code of its own."
+      ],
+      "tokens": [
+        "oa.motion.duration.standard",
+        "oa.motion.duration.slow"
+      ],
+      "why": {
+        "text": [
+          "The W3C’s Media Queries Level 5 says the reduce value “Indicates that user has notified the system that they prefer an interface that removes or replaces the types of motion-based animation that either trigger discomfort for those with vestibular motion sensitivity, or distraction for those with attention deficits.” Drawing the last frame keeps every fact the motion shows and removes the movement alone."
+        ],
+        "basis": "Media Queries Level 5, W3C Working Draft, 19 February 2026"
+      },
+      "correct": {
+        "specimen": "s-17-4-correct",
+        "caption": "Live. The first link of loop R1 from our systems atlas draws from wealth concentration to money in politics, and the arrowhead and the second node land. Turn on Preview reduced motion, or set your device to reduce motion, and Play draws the last frame at once. The line under the check boxes says what your device asks for now."
+      },
+      "failure": {
+        "specimen": "s-17-4-failure",
+        "caption": "<strong>Fails Rule 17.4.</strong> A script times its own 400 ms. The setting reaches tokens.css, the script never reads it, and a reader who asked for reduced motion still watches the link draw."
+      },
+      "specs": [
+        {
+          "label": "Durations",
+          "value": "All six resolve to 0 ms: fast, standard, slow, stagger, hinge and lever",
+          "token": "oa.motion.duration.standard"
+        },
+        {
+          "label": "Easings",
+          "value": "Unchanged; at 0 ms they have no effect"
+        },
+        {
+          "label": "Media query",
+          "value": "<code>@media (prefers-reduced-motion: reduce)</code>, already in tokens.css"
+        },
+        {
+          "label": "Controls",
+          "value": "Kept: Play draws the last frame and Reset the first; Slow motion is unavailable, with its reason"
+        },
+        {
+          "label": "Browsers",
+          "value": "First full support: Chrome 74, Edge 79, Firefox 63, Safari 10.1, Safari on iOS 10.3, by MDN’s compatibility data, checked November 10, 2026"
+        }
+      ],
+      "related": [
+        "19",
+        "26"
+      ],
+      "builders": [
+        "In a script, read the duration at the moment of the press: <code>parseFloat(getComputedStyle(el).getPropertyValue('--oa-motion-duration-slow'))</code> gives 320, or 0 under reduced motion. When every duration is 0, set the last frame and start no animation.",
+        "To check a page, turn on reduced motion in your device settings, or in Chrome’s developer tools under Rendering, “Emulate CSS media feature prefers-reduced-motion”, and press every Play."
+      ]
+    },
+    {
+      "id": "17.5",
+      "title": "Build every motion from three behaviors: slide, draw and land.",
+      "rule": [
+        "A slide moves a mark from one place to another along a straight line, over the slow duration with the standard easing. A draw extends a line along its own path from its start, over the standard duration with the enter easing, and a line drawn behind a sliding mark takes the slide’s duration and easing so the two keep pace. A land brings a mark to rest: it appears at 112 percent of its size and settles to its true size over the standard duration with the enter easing.",
+        "A motion may join two or three of them in order, one stagger apart, as a bill does when its step lands and its ring slides on (Rule 17.1). Nothing in a behavior fades, since no state uses opacity, and nothing passes its place and comes back."
+      ],
+      "tokens": [
+        "oa.motion.duration.slow",
+        "oa.motion.duration.standard",
+        "oa.motion.easing.standard",
+        "oa.motion.easing.enter",
+        "oa.motion.duration.stagger"
+      ],
+      "why": {
+        "text": [
+          "Our fifth edition named these three behaviors and timed them, and this edition keeps both. It sets the size a land starts from at 112 percent, the step our fifth edition’s lever took when it landed at 1.4 times a node and settled at 1.25, so every land in our products keeps that one proportion. A reader who has seen a ring slide to a bill’s next step reads the same slide in a loop on the atlas."
+        ],
+        "basis": "Design judgment, kept and refined from our fifth edition"
+      },
+      "correct": {
+        "specimen": "s-17-5-correct",
+        "caption": "Live. Each behavior on its own: a ring slides from one place to the next, a line draws from its first node to its second, and a disc lands on its node. Slow motion plays each at one tenth speed."
+      },
+      "failure": {
+        "specimen": "s-17-5-failure",
+        "caption": "<strong>Fails Rule 17.5.</strong> A disc lands with a bounce. It shrinks, swells past its node and shrinks again, so it sits at four sizes before it rests, and the extra movement says nothing about the state."
+      },
+      "specs": [
+        {
+          "label": "Slide",
+          "value": "320 ms, standard easing; a straight line between two places",
+          "token": "oa.motion.duration.slow"
+        },
+        {
+          "label": "Draw",
+          "value": "200 ms, enter easing; behind a slide, the slide’s duration and easing",
+          "token": "oa.motion.easing.enter"
+        },
+        {
+          "label": "Land",
+          "value": "200 ms, enter easing; from 112 percent to true size",
+          "token": "oa.motion.duration.standard"
+        },
+        {
+          "label": "Together",
+          "value": "In order, 40 ms apart",
+          "token": "oa.motion.duration.stagger"
+        },
+        {
+          "label": "Leaving",
+          "value": "A mark that leaves: the exit easing at 120 ms",
+          "token": "oa.motion.easing.exit"
+        },
+        {
+          "label": "What moves",
+          "value": "A mark’s place, the length of a drawn line and a mark’s size; never opacity, never layout"
+        }
+      ],
+      "related": [
+        "11",
+        "15"
+      ],
+      "builders": [
+        "Animate <code>transform</code> and <code>stroke-dashoffset</code> only, so the text around a mark never moves. Give a drawn line <code>pathLength=\"1\"</code> and <code>stroke-dasharray=\"1 1\"</code>, then move <code>stroke-dashoffset</code> from 1 to 0 to draw it whole at any length."
+      ]
+    },
+    {
+      "id": "17.6",
+      "title": "Move the hinge and the lever only as their own motions, ending exactly on their masters.",
+      "rule": [
+        "The hinge and the lever are the two motions that belong to the identity, and each one plays only on request (Rule 17.3). The hinge plays over 680 ms: OATH and ACTION settle into place, then the ampersand lands between them. The lever plays over 560 ms in the lockmark: its links draw, its nodes land together and the lever lands last, at bottom right.",
+        "Each is built from slide, draw and land (Rule 17.5), and each ends on a last frame that matches the approved master for its size, pixel for pixel. The ampersand and the lever keep signature red in every frame, which never counts as a view’s working red (Rule 05.3)."
+      ],
+      "tokens": [
+        "oa.motion.duration.hinge",
+        "oa.motion.duration.lever"
+      ],
+      "why": {
+        "text": [
+          "The hinge and the lever carry our name and our idea of a place where one change moves the rest, so a reader who sees them move should see them arrive as the same drawings they meet everywhere else. A last frame a pixel off its master would show a second version of the mark."
+        ],
+        "basis": "Design judgment; Rules 04.1 and 08.1"
+      },
+      "correct": {
+        "specimen": "s-17-6-pending",
+        "caption": "Coming later: the hinge, live. Until it is drawn, Rule 04.5 shows the hinge diagram at rest."
+      },
+      "failure": {
+        "specimen": "s-17-6-pending-failure",
+        "caption": "Coming later: a failure case for the hinge and the lever, a last frame that misses its master."
+      },
+      "specs": [
+        {
+          "label": "Hinge",
+          "value": "680 ms in all, on request",
+          "token": "oa.motion.duration.hinge"
+        },
+        {
+          "label": "Lever",
+          "value": "560 ms in all, on request",
+          "token": "oa.motion.duration.lever"
+        },
+        {
+          "label": "Built from",
+          "value": "Slide, draw and land, with the enter easing for each arrival"
+        },
+        {
+          "label": "Last frame",
+          "value": "The approved master for the size shown, pixel for pixel"
+        },
+        {
+          "label": "Reduced motion",
+          "value": "The master at once (Rule 17.4)"
+        }
+      ],
+      "related": [
+        "04",
+        "08"
+      ],
+      "builders": [
+        "Animate the master itself, never a redrawn copy, and compare the last frame with the master at its size before it ships."
+      ]
+    },
+    {
+      "id": "17.7",
+      "title": "Show loading with words and a still drawing, never a pulse.",
+      "rule": [
+        "While a region waits for its data, it shows words that name what is loading, such as “Loading the tracker for S.99002.”, and a still drawing of the lines the data will sit on, with no marks on them yet. The words sit in a status line, so a screen reader hears them once. Nothing moves while the region waits.",
+        "The data replaces the drawing and the words together. When the data fails to arrive, the region shows the error state with what failed and the fix (Rule 11.15)."
+      ],
+      "tokens": [
+        "oa.color.state.loading.text.onNewsprint",
+        "oa.color.state.loading.mark.onNewsprint"
+      ],
+      "why": {
+        "text": [
+          "A pulse repeats for as long as the wait lasts, which puts it under WCAG 2.2 success criterion 2.2.2 Pause, Stop, Hide once the wait passes five seconds, and our fifth edition’s pulsing lever fell to 1.27 to 1 against Newsprint at its faintest, under the 3 to 1 a needed graphic takes. Words say what is happening, and a screen reader can say them too. The drawing leaves out marks, because a step or a node on it would read as a state the data has not reached."
+        ],
+        "basis": "WCAG 2.2 SC 2.2.2 and 1.4.11; design judgment"
+      },
+      "correct": {
+        "specimen": "s-17-7-correct",
+        "caption": "A tracker that is loading, on Newsprint and on Charcoal. The line where the six steps will sit measures 4.29 to 1 on Newsprint and 7.26 on Charcoal, and the words name the bill."
+      },
+      "failure": {
+        "specimen": "s-17-7-failure",
+        "caption": "<strong>Fails Rule 17.7.</strong> Our fifth edition’s loading pulse, in still frames. It fades between 20 and 50 percent for as long as the wait lasts, and nothing says what is loading."
+      },
+      "specs": [
+        {
+          "label": "Words",
+          "value": "What is loading, by name, in a status line",
+          "token": "oa.color.state.loading.text.onNewsprint"
+        },
+        {
+          "label": "Drawing",
+          "value": "The lines the data will sit on, with no marks; 4.29 to 1 on Newsprint",
+          "token": "oa.color.state.loading.mark.onNewsprint"
+        },
+        {
+          "label": "On Charcoal",
+          "value": "Dim Newsprint words and drawing, 7.26 to 1",
+          "token": "oa.color.state.loading.mark.onCharcoal"
+        },
+        {
+          "label": "Motion",
+          "value": "None, with or without reduced motion"
+        },
+        {
+          "label": "When it fails",
+          "value": "The error state, with what failed and the fix (Rule 11.15)"
+        }
+      ],
+      "related": [
+        "11",
+        "18"
+      ],
+      "builders": [
+        "Put an empty element with <code>role=\"status\"</code> on the page before the data is asked for, then write the words into it, so a screen reader hears them."
+      ]
+    },
+    {
+      "id": "17.8",
+      "title": "Give each of the ten states words or a shape as well as a color, on Newsprint and on Charcoal.",
+      "rule": [
+        "Ten states cover every control and region: muted, disabled, hover, focus, loading, selected, warning, error, empty and success. Each changes its words or its shape along with its color, so a reader who sees no color, prints in gray or reads in a dark theme gets the same state. This plate is the reference for all ten.",
+        "On Charcoal an error takes no band: the 4 px Pillar Red bar measures 4.49 to 1 there, and the mark and the word “Error:” in Newsprint carry it. Every other state keeps the same shapes and words on both surfaces."
+      ],
+      "tokens": [
+        "oa.color.state.muted.text.onNewsprint",
+        "oa.color.state.disabled.edge.onNewsprint",
+        "oa.color.state.loading.mark.onNewsprint",
+        "oa.color.state.selected.bar.onNewsprint",
+        "oa.color.state.warning.mark.onNewsprint",
+        "oa.color.state.error.mark.onNewsprint",
+        "oa.color.state.error.band.onNewsprint",
+        "oa.color.state.empty.edge.onNewsprint",
+        "oa.color.state.success.mark.onNewsprint",
+        "oa.border.width.bar"
+      ],
+      "why": {
+        "text": [
+          "WCAG 2.2 success criterion 1.4.1 Use of Color asks that color never be the only way a state shows, and 1.4.11 Non-text Contrast asks 3 to 1 for the edges, marks and rings that show one. Each sample here reads only the role names a theme points at Newsprint or Charcoal, so one set of code draws both columns, and a product that follows a reader’s theme changes its colors and keeps its words and shapes."
+        ],
+        "basis": "WCAG 2.2 SC 1.4.1 and 1.4.11"
+      },
+      "correct": {
+        "specimen": "s-17-8-correct",
+        "caption": "The ten states, each on Newsprint and on Charcoal, with its cue in words. Each cell sets its own theme, and every color in it comes from a role token that follows the theme."
+      },
+      "failure": {
+        "specimen": "s-17-8-failure",
+        "caption": "<strong>Fails 1.4.1.</strong> Four states by color alone. The red words measure 2.96 to 1 and the Verdigris words 3.37, and a reader who sees neither color gets no state at all; the faded button falls to 2.48 and gives no reason."
+      },
+      "specs": [
+        {
+          "label": "Muted",
+          "value": "Secondary words in regular weight; outline marks, 4.29 to 1 on Newsprint",
+          "token": "oa.color.state.muted.mark.onNewsprint"
+        },
+        {
+          "label": "Disabled",
+          "value": "Dashed edge, words at 5.49 to 1 on Newsprint and 7.26 on Charcoal, a reason line (Rule 17.11)",
+          "token": "oa.color.state.disabled.text.onNewsprint"
+        },
+        {
+          "label": "Hover",
+          "value": "Underline or a 2 px edge; a filled button steps one shade (Rule 17.9)",
+          "token": "oa.color.action.primary.fillHover.onNewsprint"
+        },
+        {
+          "label": "Focus",
+          "value": "2 px ring, 2 px gap; 3.37 to 1 on Newsprint, 13.29 on Charcoal (Rule 17.9)",
+          "token": "oa.color.focus.ring.onNewsprint"
+        },
+        {
+          "label": "Loading",
+          "value": "Words and a still drawing (Rule 17.7)",
+          "token": "oa.color.state.loading.text.onNewsprint"
+        },
+        {
+          "label": "Selected",
+          "value": "Check, bold words, 2 px edge; in a list, the band and its 4 px bar (Rule 17.10)",
+          "token": "oa.color.state.selected.bar.onNewsprint"
+        },
+        {
+          "label": "Warning",
+          "value": "Warning mark, “Warning:”, 4 px bar in the text’s ink, 13.29 to 1",
+          "token": "oa.color.state.warning.mark.onNewsprint"
+        },
+        {
+          "label": "Error",
+          "value": "Error mark in ink, “Error:”, the fix, 4 px Pillar Red bar; Error Band on Newsprint (text 11.89 to 1), none on Charcoal (bar 4.49 to 1)",
+          "token": "oa.color.state.error.band.onNewsprint"
+        },
+        {
+          "label": "Empty",
+          "value": "Dashed region; what is missing and what to do next (Rule 17.12)",
+          "token": "oa.color.state.empty.edge.onNewsprint"
+        },
+        {
+          "label": "Success",
+          "value": "Success mark in Verdigris, 3.37 to 1 on Newsprint and 3.95 on Charcoal, and words",
+          "token": "oa.color.state.success.mark.onNewsprint"
+        }
+      ],
+      "related": [
+        "05",
+        "11",
+        "18",
+        "26"
+      ],
+      "builders": [
+        "Write a state’s colors with the short role names, such as <code>var(--oa-color-state-error-mark)</code> and <code>var(--oa-color-surface)</code>, never a name that ends in a surface. The theme and the surface classes point each short name at the right value, so the same code draws both columns of this plate.",
+        "Draw every state bar as a border, <code>border-left: 4px solid</code>. Forced colors, a setting such as the contrast themes in Windows that repaints a page in a few system colors, removes an inset shadow and keeps a border."
+      ]
+    },
+    {
+      "id": "17.9",
+      "title": "Show hover with an underline or a thicker edge, and focus with a 2 px ring and its gap.",
+      "rule": [
+        "Hover underlines a label, grows a link’s underline from 1 to 2 px, or thickens a quiet control’s edge from 1 to 2 px, and a filled button also steps its fill one shade. Hover never draws an inset shadow, which forced colors removes, and never moves layout.",
+        "Focus draws a 2 px ring 2 px outside the control, at once: Verdigris on Newsprint and White, Newsprint on Charcoal and Prussian. On Charcoal the ring around a Newsprint button measures 1.00 to 1 against its fill, so the 2 px gap of Charcoal between them is what shows the ring. Keep the gap there, always."
+      ],
+      "tokens": [
+        "oa.border.width.focusRing",
+        "oa.border.focusOffset",
+        "oa.color.focus.ring.onNewsprint",
+        "oa.color.focus.ring.onCharcoal",
+        "oa.border.width.underlineHover"
+      ],
+      "why": {
+        "text": [
+          "WCAG 2.2 success criterion 2.4.7 Focus Visible asks that keyboard focus always show, and 2.4.11 Focus Not Obscured (Minimum) asks that content we place never hide it. A ring outside the control, in a color measured on the surface, shows on every control, filled or not. An underline and an edge are lines in the text’s own ink, so they stay when forced colors repaints the page."
+        ],
+        "basis": "WCAG 2.2 SC 2.4.7 and 2.4.11"
+      },
+      "correct": {
+        "specimen": "s-17-9-correct",
+        "caption": "A primary button, a quiet button and a link at rest, on hover and with focus, on Newsprint and on Charcoal. On Charcoal the ring around the Newsprint button is the same color as the button, and the gap shows it."
+      },
+      "failure": {
+        "specimen": "s-17-9-failure",
+        "caption": "<strong>Fails Rule 17.9.</strong> A ring with no gap merges with a Newsprint button on Charcoal, so focus only makes the button 2 px larger. Hover drawn as an inset shadow disappears under forced colors."
+      },
+      "specs": [
+        {
+          "label": "Hover, words and links",
+          "value": "Underline; a link’s grows from 1 to 2 px",
+          "token": "oa.border.width.underlineHover"
+        },
+        {
+          "label": "Hover, filled button",
+          "value": "Fill steps one shade, 1.41 to 1 on Newsprint and 1.41 on Charcoal; label underlines",
+          "token": "oa.color.action.primary.fillHover.onNewsprint"
+        },
+        {
+          "label": "Hover, quiet control",
+          "value": "Edge from 1 to 2 px, with no shift in size",
+          "token": "oa.border.width.rule"
+        },
+        {
+          "label": "Hover timing",
+          "value": "At once, or the fast 120 ms",
+          "token": "oa.motion.duration.fast"
+        },
+        {
+          "label": "Focus ring",
+          "value": "2 px outline, at once",
+          "token": "oa.border.width.focusRing"
+        },
+        {
+          "label": "Focus gap",
+          "value": "2 px; never 0",
+          "token": "oa.border.focusOffset"
+        },
+        {
+          "label": "Ring color",
+          "value": "Verdigris on Newsprint 3.37 to 1 and White 4.74; Newsprint on Charcoal 13.29 and Prussian 9.42",
+          "token": "oa.color.focus.ring.onNewsprint"
+        }
+      ],
+      "related": [
+        "18",
+        "19"
+      ],
+      "builders": [
+        "Draw the ring with <code>:focus-visible</code> and <code>outline</code>: <code>outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset)</code>. An outline stays under forced colors; a box shadow does not.",
+        "When hover thickens an edge, take the extra pixel from the padding, so the control keeps its size and nothing beside it moves."
+      ]
+    },
+    {
+      "id": "17.10",
+      "title": "Draw pressed, checked and current choices one way: a check, bold words and a 2 px edge.",
+      "rule": [
+        "A toggle that is pressed, a choice that is checked and the current choice in a set all draw one look: the selected check before the word, the word in bold, and a 2 px edge in the strong border color where the others keep 1 px. The look is the same on Newsprint and Charcoal and stays under forced colors, since the check, the weight and the edge are shapes.",
+        "Links and lists of places keep their own marks for the current place. A link to the page a reader is on takes a 2 px underline, and a rail or a list takes the selected band with its 4 px bar."
+      ],
+      "tokens": [
+        "oa.border.width.rule",
+        "oa.color.border.strong.onNewsprint",
+        "oa.color.state.selected.band.onNewsprint",
+        "oa.color.state.selected.bar.onNewsprint"
+      ],
+      "why": {
+        "text": [
+          "Our pages drew one idea three ways: one switch filled and underlined its choice, one pair turned bold and thickened its edge, and the filter chips added a check. A reader who learns one look reads every control the same way. The check, the weight and the edge carry it without color: the selected band sits only 1.41 to 1 from Newsprint, so the bar beside it does that work in a list."
+        ],
+        "basis": "Design judgment; WCAG 2.2 SC 1.4.1"
+      },
+      "correct": {
+        "specimen": "s-17-10-correct",
+        "caption": "A pressed toggle, a checked choice, the current page in a list and the current page as a link, on Newsprint and on Charcoal."
+      },
+      "failure": {
+        "specimen": "s-17-10-failure",
+        "caption": "<strong>Fails Rule 17.10.</strong> Three controls in one view mark their choice three ways: a fill with an underline, bold words with an underline and a thick edge, and a check with bold words."
+      },
+      "specs": [
+        {
+          "label": "Check",
+          "value": "The selected check, 24 px, before the word, in the word’s ink",
+          "token": "oa.size.icon.medium"
+        },
+        {
+          "label": "Word",
+          "value": "Bold, 700; 600 when off"
+        },
+        {
+          "label": "Edge",
+          "value": "2 px in the strong border color, 13.29 to 1 on Newsprint; 1 px when off",
+          "token": "oa.border.width.rule"
+        },
+        {
+          "label": "Fill",
+          "value": "The surface’s own ground, on and off"
+        },
+        {
+          "label": "Markup",
+          "value": "<code>aria-pressed=\"true\"</code> on a toggle; a native radio or check box, <code>:checked</code>"
+        },
+        {
+          "label": "Current place",
+          "value": "A link: 2 px underline; a rail or list: the selected band and its 4 px bar",
+          "token": "oa.color.state.selected.bar.onNewsprint"
+        }
+      ],
+      "related": [
+        "11",
+        "18"
+      ],
+      "builders": [
+        "Tie the look to the state the control already holds, <code>[aria-pressed=\"true\"]</code> or <code>:checked</code>, so the drawing always agrees with what a screen reader hears."
+      ]
+    },
+    {
+      "id": "17.11",
+      "title": "Keep an unavailable action in reach and say what makes it available.",
+      "rule": [
+        "An action that cannot run yet stays in its place with a dashed edge, readable words and a reason line beside it that names the step that makes it available, such as “Choose a size to download.” It keeps focus, so a keyboard reader reaches it, and its accessible description carries the reason. Its words take the disabled text token, 5.49 to 1 on Newsprint and 7.26 on Charcoal, and nothing fades.",
+        "Form fields stay editable. A send that cannot run yet keeps focus and says why beside it."
+      ],
+      "tokens": [
+        "oa.color.state.disabled.text.onNewsprint",
+        "oa.color.state.disabled.edge.onNewsprint",
+        "oa.color.state.disabled.text.onCharcoal"
+      ],
+      "why": {
+        "text": [
+          "A control faded with opacity falls below the contrast its words need: Charcoal at 40 percent measures 2.48 to 1 on Newsprint and 2.61 on White. A button with the disabled attribute also leaves the keyboard’s path, so the reader who most needs the reason never meets it. WCAG 2.2 success criterion 1.4.3 sets no contrast for an inactive control’s text, and we hold it to the same 4.5 to 1 as any other words."
+        ],
+        "basis": "WCAG 2.2 SC 1.4.3; design judgment"
+      },
+      "correct": {
+        "specimen": "s-17-11-correct",
+        "caption": "A download button before and after a reader chooses a size, on Newsprint and on Charcoal. Before, its reason sits under it, and the button keeps its place in the Tab order."
+      },
+      "failure": {
+        "specimen": "s-17-11-failure",
+        "caption": "<strong>Fails Rule 17.11.</strong> The button is faded to 40 percent, 2.48 to 1, and nothing says why it will not run."
+      },
+      "specs": [
+        {
+          "label": "Edge",
+          "value": "Dashed, 1 px",
+          "token": "oa.color.state.disabled.edge.onNewsprint"
+        },
+        {
+          "label": "Words",
+          "value": "5.49 to 1 on Newsprint; 7.26 on Charcoal",
+          "token": "oa.color.state.disabled.text.onNewsprint"
+        },
+        {
+          "label": "Reason line",
+          "value": "Beside the control in secondary words, and in its accessible description",
+          "token": "oa.color.text.secondary.onNewsprint"
+        },
+        {
+          "label": "Markup",
+          "value": "<code>aria-disabled=\"true\"</code> with <code>aria-describedby</code> to the reason; never the <code>disabled</code> attribute"
+        },
+        {
+          "label": "Form fields",
+          "value": "Always editable"
+        },
+        {
+          "label": "Opacity",
+          "value": "None"
+        }
+      ],
+      "related": [
+        "18",
+        "26"
+      ],
+      "builders": [
+        "Stop the action in the click handler while <code>aria-disabled=\"true\"</code> holds, and leave the button in the Tab order. Write the reason as the step the reader takes next."
+      ]
+    },
+    {
+      "id": "17.12",
+      "title": "Say what is missing and what to do next when a region is empty.",
+      "rule": [
+        "A list, table, search or tracker with nothing to show draws a dashed region in place of its rows, and its words say what is missing and the step that would fill it. A search writes both into its status line with the count, so a screen reader hears them together: “0 of 124 symbols. No symbol matches. Clear the search or the filters to see more.”",
+        "An empty region names no fault, since nothing failed. When the data fails to arrive, the region shows the error state instead (Rule 11.15)."
+      ],
+      "tokens": [
+        "oa.color.state.empty.text.onNewsprint",
+        "oa.color.state.empty.edge.onNewsprint"
+      ],
+      "why": {
+        "text": [
+          "WCAG 2.2 success criterion 4.1.3 Status Messages asks that a result such as a count reach a screen reader without moving focus, and a count of 0 alone leaves a reader with no way on. The dashed edge keeps the region at its size, so the page holds still when results return."
+        ],
+        "basis": "WCAG 2.2 SC 4.1.3; design judgment"
+      },
+      "correct": {
+        "specimen": "s-17-12-correct",
+        "caption": "A symbol search with no match, on Newsprint and on Charcoal. The dashed edge measures 4.29 to 1 on Newsprint and 7.26 on Charcoal, and the words in it are the status line."
+      },
+      "failure": {
+        "specimen": "s-17-12-failure",
+        "caption": "<strong>Fails Rule 17.12.</strong> “No results.” says nothing about what to try, and the blank space under it looks like a page still loading."
+      },
+      "specs": [
+        {
+          "label": "Region",
+          "value": "Dashed, 1 px; 4.29 to 1 on Newsprint",
+          "token": "oa.color.state.empty.edge.onNewsprint"
+        },
+        {
+          "label": "Words",
+          "value": "What is missing, then the step that fills it",
+          "token": "oa.color.state.empty.text.onNewsprint"
+        },
+        {
+          "label": "Status line",
+          "value": "The count and the advice in one polite line"
+        },
+        {
+          "label": "On Charcoal",
+          "value": "Dim Newsprint edge and words, 7.26 to 1",
+          "token": "oa.color.state.empty.text.onCharcoal"
+        },
+        {
+          "label": "Size",
+          "value": "The region keeps the height its rows would take"
+        }
+      ],
+      "related": [
+        "11",
+        "18"
+      ],
+      "builders": [
+        "Write the count and the advice into the same status line in one update, so a screen reader reads them as one message."
+      ]
+    }
+  ],
+  "extras": [],
+  "related_chapters": [
+    {
+      "chapter": "05",
+      "reason": "State colors, kept apart from identity and chart colors."
+    },
+    {
+      "chapter": "11",
+      "reason": "The error, success and warning marks, and the tracker these motions move."
+    },
+    {
+      "chapter": "04",
+      "reason": "The hinge, whose motion Rule 17.6 frames."
+    },
+    {
+      "chapter": "08",
+      "reason": "The lockmark and its lever."
+    },
+    {
+      "chapter": "18",
+      "reason": "Where each component uses these states, with code to copy."
+    },
+    {
+      "chapter": "19",
+      "reason": "Checking motion and states against WCAG 2.2 AA."
+    },
+    {
+      "chapter": "26",
+      "reason": "The motion and state tokens, and how to choose one."
+    }
+  ],
+  "sources": [
+    "Source: W3C, “Web Content Accessibility Guidelines (WCAG) 2.2”, W3C Recommendation, December 12, 2024, success criteria 1.4.1, 1.4.3, 1.4.11, 2.2.2, 2.4.7, 2.4.11 and 4.1.3, retrieved November 10, 2026. The criteria behind Rules 17.3 and 17.7 to 17.12.",
+    "Source: W3C, “Media Queries Level 5”, W3C Working Draft, February 19, 2026, the prefers-reduced-motion feature, retrieved November 10, 2026. Its words for the reduce value, behind Rules 17.1 and 17.4.",
+    "Source: MDN Web Docs, browser compatibility data, @mdn/browser-compat-data version 8.1.8, built November 2, 2026, retrieved November 10, 2026. The first version of each browser with full support for prefers-reduced-motion, behind Rule 17.4.",
+    "Source: our systems atlas, Who Do They Answer To?, loop R1, “Wealth and political influence reinforce each other”, its first link and its sentence. The player in Rule 17.4."
+  ]
+}

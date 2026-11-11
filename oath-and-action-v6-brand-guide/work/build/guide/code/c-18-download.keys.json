@@ -1,0 +1,37 @@
+{
+ "format": "oa-keys/1",
+ "set": "c-18-download",
+ "rule": "18.14",
+ "component": "Download",
+ "about": "The keyboard path of this code set, walked in each live stage by the guide check. Each path starts from the component as the page first draws it, with focus on a stand-in control just before the stage. A step presses \"key\" (a KeyboardEvent key; \"Space\" is the space bar) or types \"type\"; then \"focus\" is a selector inside the stage that the focused element must match, or \"outside\"; \"states\" must hold (\"\" is the stage, \":root\" the page root); \"status\" is the exact words of the stage's role=\"status\" line, and \"status_has\" words it must contain. Written by the accessibility lead for chapter 18, Rule 18.14.",
+ "paths": [
+  {
+   "name": "Tab past the ready download to the one not ready; it keeps focus and says why",
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": "a.oa-download[download]"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-download[aria-disabled=\"true\"]",
+     "states": [
+      {
+       "el": ".oa-download[aria-disabled=\"true\"]",
+       "attr": "aria-describedby",
+       "present": true
+      }
+     ]
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-download[aria-disabled=\"true\"]"
+    },
+    {
+     "key": "Tab",
+     "focus": "outside"
+    }
+   ]
+  }
+ ]
+}

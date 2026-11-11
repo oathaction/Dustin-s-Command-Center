@@ -1,0 +1,87 @@
+{
+ "format": "oa-keys/1",
+ "set": "c-18-masthead",
+ "rule": "18.6",
+ "component": "Masthead and phone menu",
+ "about": "The keyboard path of this code set, walked in each live stage by the guide check. Each path starts from the component as the page first draws it, with focus on a stand-in control just before the stage. A step presses \"key\" (a KeyboardEvent key; \"Space\" is the space bar) or types \"type\"; then \"focus\" is a selector inside the stage that the focused element must match, or \"outside\"; \"states\" must hold (\"\" is the stage, \":root\" the page root); \"status\" is the exact words of the stage's role=\"status\" line, and \"status_has\" words it must contain. Written by the accessibility lead for chapter 18, Rule 18.6.",
+ "paths": [
+  {
+   "name": "Open the phone menu, stay inside it, close it with Escape and with Close the menu",
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": ".oa-masthead-home"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-masthead-menu",
+     "states": [
+      {
+       "el": ".oa-masthead-menu",
+       "attr": "aria-expanded",
+       "is": "false"
+      }
+     ]
+    },
+    {
+     "key": "Enter",
+     "focus": "dialog [aria-current=\"page\"]",
+     "states": [
+      {
+       "el": ".oa-masthead-menu",
+       "attr": "aria-expanded",
+       "is": "true"
+      },
+      {
+       "el": "dialog",
+       "prop": "open",
+       "is": true
+      }
+     ]
+    },
+    {
+     "key": "Escape",
+     "focus": ".oa-masthead-menu",
+     "states": [
+      {
+       "el": ".oa-masthead-menu",
+       "attr": "aria-expanded",
+       "is": "false"
+      },
+      {
+       "el": "dialog",
+       "prop": "open",
+       "is": false
+      }
+     ]
+    },
+    {
+     "key": "Space",
+     "focus": "dialog [aria-current=\"page\"]",
+     "states": [
+      {
+       "el": "dialog",
+       "prop": "open",
+       "is": true
+      }
+     ]
+    },
+    {
+     "key": "Shift+Tab",
+     "focus": "dialog .oa-masthead-close"
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-masthead-menu",
+     "states": [
+      {
+       "el": "dialog",
+       "prop": "open",
+       "is": false
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

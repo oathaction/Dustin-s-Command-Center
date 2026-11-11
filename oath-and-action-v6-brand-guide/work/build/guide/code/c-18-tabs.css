@@ -1,0 +1,30 @@
+/* Tabs: one tab stop for the row, the arrow keys move between tabs and show each panel at once. The selected tab is
+   bold with a 4 px bar under it. Reads only tokens.css. */
+.oa-tabs { font: var(--oa-type-body); color: var(--oa-color-text-primary) }
+.oa-tabs-k { margin: 0 0 var(--oa-space-100); font: var(--oa-type-ui) }
+.oa-tabs-title { font-weight: var(--oa-font-weight-bold) }
+.oa-tabs-illus { margin-left: var(--oa-space-050); padding: 0 var(--oa-space-050); border: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+  font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); color: var(--oa-color-text-secondary) }
+.oa-tabs-list { display: flex; flex-wrap: wrap; column-gap: var(--oa-space-050); border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-strong) }
+.oa-tabs-tab { box-sizing: border-box; max-width: 100%; min-height: var(--oa-size-target-touch); margin: 0 0 -1px;
+  padding: var(--oa-space-100) var(--oa-space-200) calc(var(--oa-space-100) + var(--oa-border-width-bar) - 1px);
+  border: 0; border-bottom: var(--oa-border-width-hairline) solid transparent; border-radius: var(--oa-radius-none);
+  background: transparent; color: var(--oa-color-text-primary); font: var(--oa-type-ui); text-align: start; overflow-wrap: anywhere; cursor: pointer }
+.oa-tabs-tab:not([aria-disabled="true"]):hover { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
+.oa-tabs-tab:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: calc(-1 * var(--oa-border-width-focus-ring)) }
+.oa-tabs-tab[aria-selected="true"] { padding-bottom: var(--oa-space-100); border-bottom: var(--oa-border-width-bar) solid var(--oa-color-state-selected-bar);
+  font-weight: var(--oa-font-weight-bold) }
+/* An unavailable tab keeps focus and says why; its word is dashed underneath */
+.oa-tabs-tab[aria-disabled="true"] { color: var(--oa-color-state-disabled-text); text-decoration: underline dashed var(--oa-color-state-disabled-edge);
+  text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .3em; cursor: not-allowed }
+.oa-tabs-why { margin: var(--oa-space-100) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
+.oa-tabs-panel { padding: var(--oa-space-200) 0 0 }
+.oa-tabs-panel[hidden] { display: none }
+.oa-tabs-panel p { margin: 0; max-width: var(--oa-layout-measure-body-max) }
+.oa-tabs-panel:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
+
+@media (forced-colors: active) {
+  .oa-tabs-list { border-color: CanvasText }
+  .oa-tabs-tab[aria-selected="true"] { border-color: Highlight }
+  .oa-tabs-tab[aria-disabled="true"] { color: GrayText; text-decoration-color: GrayText }
+}

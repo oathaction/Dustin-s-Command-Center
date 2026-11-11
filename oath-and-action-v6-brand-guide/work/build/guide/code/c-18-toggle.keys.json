@@ -1,0 +1,137 @@
+{
+ "format": "oa-keys/1",
+ "set": "c-18-toggle",
+ "rule": "18.2",
+ "component": "Toggle buttons and chips",
+ "about": "The keyboard path of this code set, walked in each live stage by the guide check. Each path starts from the component as the page first draws it, with focus on a stand-in control just before the stage. A step presses \"key\" (a KeyboardEvent key; \"Space\" is the space bar) or types \"type\"; then \"focus\" is a selector inside the stage that the focused element must match, or \"outside\"; \"states\" must hold (\"\" is the stage, \":root\" the page root); \"status\" is the exact words of the stage's role=\"status\" line, and \"status_has\" words it must contain. Written by the accessibility lead for chapter 18, Rule 18.2.",
+ "paths": [
+  {
+   "name": "Turn the toggle and the chips on and off; each line says what changed, and focus stays",
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": ".oa-toggle:not(.oa-toggle--chip)",
+     "states": [
+      {
+       "el": ".oa-toggle:not(.oa-toggle--chip)",
+       "attr": "aria-pressed",
+       "is": "false"
+      }
+     ]
+    },
+    {
+     "key": "Space",
+     "focus": ".oa-toggle:not(.oa-toggle--chip)",
+     "states": [
+      {
+       "el": ".oa-toggle:not(.oa-toggle--chip)",
+       "attr": "aria-pressed",
+       "is": "true"
+      }
+     ],
+     "status": "You follow this bill. We email you when it moves.",
+     "status_el": ".oa-toggle:not(.oa-toggle--chip) + .oa-toggle-status"
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-toggle:not(.oa-toggle--chip)",
+     "states": [
+      {
+       "el": ".oa-toggle:not(.oa-toggle--chip)",
+       "attr": "aria-pressed",
+       "is": "false"
+      }
+     ],
+     "status": "You no longer follow this bill.",
+     "status_el": ".oa-toggle:not(.oa-toggle--chip) + .oa-toggle-status"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-toggle-chips > .oa-toggle:nth-child(1)",
+     "states": [
+      {
+       "el": ".oa-toggle-chips > .oa-toggle:nth-child(1)",
+       "attr": "aria-pressed",
+       "is": "true"
+      }
+     ]
+    },
+    {
+     "key": "Space",
+     "focus": ".oa-toggle-chips > .oa-toggle:nth-child(1)",
+     "states": [
+      {
+       "el": ".oa-toggle-chips > .oa-toggle:nth-child(1)",
+       "attr": "aria-pressed",
+       "is": "false"
+      }
+     ],
+     "status": "No topic is on, so every bill shows.",
+     "status_el": ".oa-toggle-why + .oa-toggle-status"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-toggle-chips > .oa-toggle:nth-child(2)"
+    },
+    {
+     "key": "Space",
+     "focus": ".oa-toggle-chips > .oa-toggle:nth-child(2)",
+     "states": [
+      {
+       "el": ".oa-toggle-chips > .oa-toggle:nth-child(2)",
+       "attr": "aria-pressed",
+       "is": "true"
+      }
+     ],
+     "status": "Showing bills on Health care.",
+     "status_el": ".oa-toggle-why + .oa-toggle-status"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-toggle-chips > .oa-toggle:nth-child(3)"
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-toggle-chips > .oa-toggle:nth-child(3)",
+     "states": [
+      {
+       "el": ".oa-toggle-chips > .oa-toggle:nth-child(3)",
+       "attr": "aria-pressed",
+       "is": "true"
+      }
+     ],
+     "status": "Showing bills on Health care and Elections.",
+     "status_el": ".oa-toggle-why + .oa-toggle-status"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-toggle-chips > .oa-toggle:nth-child(4)",
+     "states": [
+      {
+       "el": ".oa-toggle-chips > .oa-toggle:nth-child(4)",
+       "attr": "aria-disabled",
+       "is": "true"
+      }
+     ]
+    },
+    {
+     "key": "Space",
+     "focus": ".oa-toggle-chips > .oa-toggle:nth-child(4)",
+     "states": [
+      {
+       "el": ".oa-toggle-chips > .oa-toggle:nth-child(4)",
+       "attr": "aria-pressed",
+       "is": "false"
+      }
+     ],
+     "status": "Showing bills on Health care and Elections.",
+     "status_el": ".oa-toggle-why + .oa-toggle-status"
+    },
+    {
+     "key": "Tab",
+     "focus": "outside"
+    }
+   ]
+  }
+ ]
+}
