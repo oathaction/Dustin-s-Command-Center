@@ -2801,3 +2801,9 @@ The main session asked three questions with its plan. Dustin: "go with all your 
 | D2-1486 | The download links point at `tokens.css` beside the page, with the guide's own dated file name in `download` | A builder hosts the file beside the page; the guide's live stage shows the link as a builder ships it |
 | D2-1487 | The tracker's live card follows H.99004 | One invented bill means one thing across the guide; chapter 17 moves S.99002 past its committee vote |
 | D2-1488 | The inside focus ring of D2-1475 applies to all three frames that scroll sideways (18.11, 18.12, 18.21) | One look for one behavior, and a frame at the column's edge never cuts its ring |
+
+### Systems designer, anatomy plates rerun on the final code
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1489 | Rule 18.11's key reads where the ring sits from the code's own `outline-offset`: inside the frame's edge for a negative offset, around the frame otherwise | The plate's words follow the code if the ring moves again |
