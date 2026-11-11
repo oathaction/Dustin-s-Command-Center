@@ -118,7 +118,8 @@ def main():
         ch14 = w["chapters"].get("14", {}).get("bytes", 0)
         kit = w["parts"].get("chart kit", 0)
         charts = w.get("charts") or {}
-        per = {k: v["bytes"] for k, v in sorted(charts.items())}
+        # chapter 14's plates only: chapter 13's own charts (the editor's plates) weigh in chapter 13
+        per = {k: v["bytes"] for k, v in sorted(charts.items()) if k.startswith("s-14-")}
         n = len(per)
         avg = sum(per.values()) / n if n else 0
         frame = (ch14 - sum(per.values())) / max(1, n)       # the plate frame, caption and chapter text per specimen

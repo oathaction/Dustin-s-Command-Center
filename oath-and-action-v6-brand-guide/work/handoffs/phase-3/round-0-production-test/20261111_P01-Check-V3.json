@@ -1,0 +1,42 @@
+{
+ "id": "P01",
+ "form": "ranked-bar",
+ "spec": "work/handoffs/phase-3/round-0-production-test/p01-v3.json",
+ "rows": 17,
+ "drawings": [
+  {
+   "ground": "newsprint",
+   "page": 1440,
+   "width": 720,
+   "height": 704,
+   "svg_bytes": 6683
+  },
+  {
+   "ground": "newsprint",
+   "page": 390,
+   "width": 358,
+   "height": 978,
+   "svg_bytes": 6643
+  },
+  {
+   "ground": "charcoal",
+   "page": 1440,
+   "width": 720,
+   "height": 704,
+   "svg_bytes": 6683
+  },
+  {
+   "ground": "charcoal",
+   "page": 390,
+   "width": 358,
+   "height": 978,
+   "svg_bytes": 6643
+  }
+ ],
+ "faults": [
+  "source: the source line differs from treasury-mts-outlays-by-function.csv's printed_source_line (or its variants)",
+  "layout guard: text outside the artboard: \"Education, Training, Employment, and Soc\" at 0,523.9 (364.8 wide; artboard 358 by 978) (newsprint 390)",
+  "layout guard: text outside the artboard: \"Education, Training, Employment, and Soc\" at 0,523.9 (364.8 wide; artboard 358 by 978) (charcoal 390)",
+  "layout guard: text outside the artboard: \"Education, Training, Employment, and Soc\" at 0,523.9 (364.8 wide; artboard 328 by 978) (newsprint 328 px column)"
+ ]
+}

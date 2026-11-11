@@ -20,9 +20,9 @@ Neither item is ready yet. Both are close, and every fix below is a few lines in
 |---|---|---|---|---|---|---|---|---|---|
 | Chapter 13, Evidence and sourcing | 4 | 4 | 4 | 3* | 3* | 4 | 4 | 7 | no |
 | Palette proofs and proposed tokens | 4 | 4 | 5 | 4 | 3* | 4 | 2 | 3 | no |
-| Chart kit with S01 to S16 | Part 2 | | | | | | | | |
+| Chart kit with S01 to S16 (Part 2) | 3* | 4 | 4 | 4 | 4 | 4 | 3 | 6 | no |
 
-An asterisk marks a score under 4. M2 belongs to both items.
+An asterisk marks a score under 4. M2 belongs to both items. Part 1's scores read the 22:30 build; Part 2 below reads the kit pages built at 23:15.
 
 ## Reasons
 

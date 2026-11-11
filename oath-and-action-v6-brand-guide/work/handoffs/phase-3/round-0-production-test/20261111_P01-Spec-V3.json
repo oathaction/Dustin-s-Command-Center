@@ -37,16 +37,16 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the Treasury’s monthly statement of federal accounts",
-  "title": "Social Security was the largest budget function in fiscal 2026, at ,667.1 billion.",
+  "title": "Social Security was the largest budget function in fiscal 2026, at $1,667.1 billion.",
   "measure_line": "Net federal outlays by budget function, billions of dollars, fiscal 2026 (October 2025 to September 2026), United States; the 17 functions with positive outlays.",
   "notes": [
-    "The 17 functions shown sum to ,566.3 billion. Total net outlays were ,395.8 billion, because two accounting lines are negative and are left out: Undistributed Offsetting Receipts, −55.0 billion, and Commerce and Housing Credit, −5.5 billion.",
+    "The 17 functions shown sum to $7,566.3 billion. Total net outlays were $7,395.8 billion, because two accounting lines are negative and are left out: Undistributed Offsetting Receipts, −$155.0 billion, and Commerce and Housing Credit, −$15.5 billion.",
     "Functions group spending by purpose, not by agency."
   ],
   "source_line": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, outlays by function, fiscal 2026, United States. Retrieved November 11, 2026. Bars show the 17 functions with positive net outlays; two negative lines are left out.",
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "Ranked bars of net federal outlays in fiscal 2026 for the 17 budget functions with positive outlays. Social Security leads at ,667.1 billion, followed by Medicare, net interest, health and national defense, each near  trillion.",
+  "alt": "Ranked bars of net federal outlays in fiscal 2026 for the 17 budget functions with positive outlays. Social Security leads at $1,667.1 billion, followed by Medicare, net interest, health and national defense, each near $1 trillion.",
   "table": {
     "caption": "Net federal outlays by budget function, fiscal 2026",
     "columns": [

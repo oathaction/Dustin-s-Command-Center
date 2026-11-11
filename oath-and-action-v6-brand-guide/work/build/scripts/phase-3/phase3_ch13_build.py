@@ -305,7 +305,8 @@ CSS = {
            f".tb caption{{{CAP};color:var(--oa-color-text-secondary);text-align:left;margin:0 0 8px}}"
            f".tb .num{{font-variant-numeric:tabular-nums}}.tb tbody th{{font-weight:var(--oa-font-weight-regular)}}"
            f".tb .ttl{{font-family:var(--oa-font-family-display);font-weight:var(--oa-font-weight-extrabold)}}.tb .ttl p+p{{margin-top:6px}}"
-           f".tb .cl{{display:inline-flex;flex-direction:column;align-items:flex-start;gap:4px}}"),
+           f".tb .cl{{display:inline-flex;flex-direction:column;align-items:flex-start;gap:4px}}"
+           f"@media (max-width:47.99em){{.tb .cl{{display:flex;margin-top:4px}}}}"),
     "stack": (".stack td[data-k]::before{content:none}@media (max-width:47.99em){.stack,.stack tbody,.stack tr,.stack th,.stack td{display:block;width:100%}"
               ".stack caption{display:block;width:auto}.stack thead{display:none}.stack tr{border-bottom:1px solid var(--oa-color-border-strong);padding:8px 0}"
               ".stack th,.stack td{border:0;padding:3px 0}.stack td[data-k]::before{content:attr(data-k) \": \";font-weight:var(--oa-font-weight-bold)}}"),
@@ -347,7 +348,7 @@ CSS = {
     "ky": ".ky{display:inline-flex;align-items:center;gap:6px}",
     "mk": (f".mk{{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 4px;"
            f"border-radius:10px;background:var(--oa-chart-color-chip-fill);color:var(--oa-chart-color-chip-label);{LBL};"
-           f"letter-spacing:0;vertical-align:.15em;margin:0 2px}}"),
+           f"letter-spacing:0;vertical-align:.15em;margin:0 1px 0 3px}}"),
     "nw2": ".nw2{white-space:nowrap}",
     "kl": ".kl{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:6px;font:var(--oa-type-body-small)}",
     "thick": ".ln .thick{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:12}",
@@ -525,7 +526,7 @@ def rule_13_1(book):
                           notes=["Method: the National Highway Traffic Safety Administration removes each technology from its crash "
                                  "records, using that technology’s measured effect, and counts the deaths that would have followed. "
                                  "The agency’s figure is 613,501, and it calls the result “a hypothetical estimate.” Its crash "
-                                 "records begin in 1975, so earlier years are extrapolated."],
+                                 "records begin in 1975, so the agency extrapolates the earlier years."],
                           source=("Source: National Highway Traffic Safety Administration, Lives Saved by Vehicle Safety Technologies "
                                   "and Associated Federal Motor Vehicle Safety Standards, 1960 to 2012 (DOT HS 812 069), United States, "
                                   f"as recorded in our systems atlas’s delivery log, delivery case DL06, snapshot of {SNAP}. The "

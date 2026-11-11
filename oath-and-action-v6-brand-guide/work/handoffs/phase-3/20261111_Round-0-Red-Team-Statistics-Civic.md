@@ -149,3 +149,109 @@ Owner: Research lead and the makers.
 - The palette proofs' contrast and simulation numbers, which belong to the access lens, and the turnout tile values against Census Table 4a.
 - Rounds 3 and 4's planned data, the five-download list beyond reading it, and the ballot measure outcomes in the research notes.
 - Any adult reader with chapter 13. My civic read is one reviewer's, untested with real people.
+
+## Part 2
+
+Part 2 covers S01 to S16 as final for review: the specs in `work/build/chart-kit/specs/`, their data and sidecars, the board captures, and the fresh kit pages with their exports and check files in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/round-0-review/kit-pages/`. I read the engineer's notes and the Explainer maker's notes with the fix pass. Items the main session named as already in flight are left out: the weight pass, the categorical order swap, the line code token values (D3-84), the sidecar requests ENG-1 to ENG-7 and S14's payroll count (D3-87).
+
+Three Part 1 faults are already fixed in the specs:
+- M1: every finding's grade line now opens with Documented, and Rule 13.1 says why.
+- M3: S02's source line now carries the corrected revision wording.
+- M6: S01 now names both provisions of H.R. 7008, prints each vote's question, and says the survey asked about a ban alone, three years earlier.
+
+### Score
+
+**4 of 5.** I rebuilt fourteen of the sixteen specimens from publisher files fetched today or from Atlas V7, and the other two from the frozen payroll levels; every underlying value matches. DR-64's national rows and margin-of-error tests hold where they apply, bars start at zero, and circles scale by area. Two mechanical faults remain before the set is honest to its evidence: four printed figures are off by a tenth through double rounding, and two charts show decided ballot measures as pending without the note Rule 13.10 asks for.
+
+### Must fix
+
+**P2-M1. Double rounding prints four figures that disagree with the publisher.**
+- Where: S15's drawing and table; S13's panel label for professional and business services.
+- What is wrong: the derived files store values already rounded to two decimals (`fec-presidential-shift-by-state`'s margins, `fred-payrolls-by-sector-change`'s `pct_change_since_2022_01`), and the kit rounds them again to one. I recomputed every margin from the FEC's own files and every sector change from the payroll levels. Four cells come out wrong:
+
+| Specimen | Cell | Printed | True value | Correct print |
+|---|---|---|---|---|
+| S15 | North Dakota, 2024 margin | "Republican +36.5" | 36.446 | +36.4 |
+| S15 | North Carolina, 2020 margin | "Republican +1.4" | 1.348 | +1.3 |
+| S15 | Mississippi, 2020 margin | "Republican +16.6" | 16.545 | +16.5 |
+| S13 | Professional and business services | "+1.4%" | 299 ÷ 22,183 = 1.348 percent | +1.3% |
+
+- Fix: store unrounded values, or at least four decimals, in every derived file, and round once at print. Add a kit check that recomputes each printed one-decimal figure from the source counts or levels.
+- Owner: Engineer.
+
+**P2-M2. S03 and S08 show three decided ballot measures as pending, against Rule 13.10.**
+- Where: S03's "Pending" segments and S08's "Pending on November 3, 2026" squares (RL62 Alaska, RL63 Missouri, RL64 Massachusetts).
+- What is wrong: both charts run "to the November 3, 2026 ballot", and voters decided all three that day. Rule 13.10, now on the same board, says: "When something the record names has happened since its date, such as an election, the page keeps the dated words and adds what happened, with its own source and date." The research ledger (P7-036) already holds two outcomes: Massachusetts Question 3 failed (unofficial, a labeled secondary source) and Alaska's Ballot Measure 2 trailed in the November 10 unofficial count. Missouri's RL63 was not researched.
+- Fix: keep V7's coding and add a dated note to each chart, such as "Voters decided all three on November 3, 2026. As of November 11, Massachusetts Question 3 had failed and Alaska's Ballot Measure 2 trailed in unofficial counts; none is certified," with its sources. The research lead checks Missouri's result.
+- Owner: Explainer maker (words); Research lead (facts, RL63).
+
+### Should fix
+
+**P2-S1. S01 still invites a reader to link the votes to the survey, and its bars do not say which side voted yes.** The drawing heads the votes "WHAT CONGRESS DID NEXT" (`labels.votes_title`), and the chart notes repeat "What Congress did next". The phrase tells the reader the votes answered the 2023 survey, which the reading guide right above it says they did not. Each vote bar also lost "for" and "against" (E27, still open). The House bar reads "Republican 218" in ink and "Democratic 198" in gray, so a newcomer can take the ink for a party instead of a yes vote. Fix: head the block "The votes on H.R. 7008, 2026", and print "for" and "against" on each side. Owner: Explainer maker; Engineer for E27.
+
+**P2-S2. S01 and S13 print no margin of error, which revised Rule 13.1 now asks for.** The rule asks a survey tabulation to carry "the publisher’s margin of error where one exists". The Program for Public Consultation survey's margin (R5) is still unfound. The Bureau of Labor Statistics publishes sampling errors for its industry estimates, and S13 prints none. Its industry changes look far larger than any plausible error, so the fix is a sentence, not a new title. S14 is with Dustin (D3-87) and is left out here. Owner: Research lead (sidecars); Explainer maker (notes).
+
+**P2-S3. S04 sorts its changes by a two-point rule instead of their margins.**
+- The note says "Changes of two points or less read as little change", and the labels follow it ("Little change (−1.0)" for 45 to 64).
+- The rule is not the margin of error, which DR-64 and Rule 13.1 now name. By the Bureau's variance formula, with total population standing in for citizens in the two middle groups, the 45 to 64 change of 1.0 point sits at about its own margin of 1.0. The other three changes are clearly settled one way or the other.
+- Fix: label each change by its own margin, as the research lead computed the gap's.
+- S04's source line also prints the table's span, "November 1964 to 2024", with a note on pre-2002 years. The chart draws 2020 and 2024 only, which Rule 13.6 calls the observation period.
+
+Owner: Explainer maker; Research lead for the margins.
+
+**P2-S4. S07's title states a secondary source's reading as fact while its own note doubts it.** The title says "17 of them in all elections". The last note says "Mississippi’s quoted text does not name congressional races." Fix: "17 of them in all elections, by Ballotpedia’s reading", or drop the count from the title. Owner: Explainer maker.
+
+**P2-S5. S09's note describes labels the drawing does not print.** The note says "Event names are the atlas’s, shortened at any parenthesis", yet the drawing prints names whole, parentheses included. "1964 Reynolds v. Sims (with Baker v. Carr, 1962, and Wesberry v. Sanders, 1964)" is one example. One label also reads "2025 2025 budget reconciliation law". The routine call that "a note may not describe a mark the reader cannot find" applies. Fix: drop the clause until E16 lands, and drop the doubled year. Owner: Explainer maker; Engineer for E16.
+
+**P2-S6. S02's 2025 note leaves out the qualification that matters for poverty.** It says Public Law 119-21 "set the child tax credit at up to $2,200 per child". V7's entry RL35, the note's own source, adds that at most $1,700 is refundable and that the refundable part needs at least $2,500 in earnings, "so the full refundability of 2021 was not restored". Beside the 2021 note, a reader compares a $2,200 credit with 2021's $3,000 to $3,600 one and cannot see why the line did not move the same way. Fix: add the refundable cap in a clause. Owner: Explainer maker.
+
+**P2-S7. S06's horizon, 2036, has no V7 field behind it in the extract.** The title, measure line and source line say "by 2036" and "from a 2026 baseline". In `work/extract/atlas-v7-data.json`, 2036 appears only in scenario iv-d's own words ("flat through 2036"), and scenario ii is named "State and local track by 2030". The dataset file itself is named `v7-scenarios-2030`. Fix: the research lead cites the V7 field or page that sets the horizon for all eight scenarios; if none does, the words drop the year. Owner: Research lead; Explainer maker.
+
+**P2-S8. Rounded parts that do not add up.** S11's chart notes and S12's note say the United States moved "from a Democratic lead of 4.5 points in 2020 to a Republican lead of 1.5 in 2024", a shift of 5.9. A reader who adds gets 6.0, because each figure is rounded on its own (−4.46, 1.47, 5.93). Fix: add "each figure rounded on its own" once. Owner: Explainer maker.
+
+**P2-S9. S14's first two averages draw on months the chart does not show.** The three-month averages for January and February 2022 use November and December 2021, which fall outside the stated window and the table equivalent; the file confirms it. Fix: one clause in the first note. This is separate from the payroll count held by D3-87. Owner: Explainer maker.
+
+**P2-S10. Terms a newcomer meets undefined.** "Repair log" (S03, S08) never says what the log is; Rule 13.11's gloss would serve. S03's "Referendums are ballot measures too" does not say how a referendum differs from a citizen initiative. "Seasonally adjusted" (S13, S14) has no gloss. Owner: Explainer maker.
+
+### Questions for Dustin
+
+None new. S14's payroll count is already before him (D3-87). My Part 1 question on chapter 02's matching examples rides on the same answer.
+
+### Tested
+
+- Read: the engineer's summary, checks, contracts C2 and C3 and routine calls; the Explainer maker's notes and fix pass; every word and setting in the 16 specs.
+- Rebuilt from publisher files fetched today, each SHA-256 prefix equal to its sidecar's:
+  - S02: all 39 rows (20 SPM rows with break-year twins, 19 official rows), from Census P60-290 Tables 8 and 3.
+  - S04: all eight rates, from Table A-1.
+  - S05: the 2003 and 2025 rates and the four gaps, from Housing Vacancy Survey Table 22.
+  - S11, S12 and S15: all 51 states' 2020 and 2024 margins and shifts, the United States row (−4.46 to 1.47, shift 5.93), 39 of 51 states below it, the four largest and smallest shifts, 31 and 25 Republican-led states, and the six changes of leader with the four under 2.5 points. These come from the FEC's 2020 and 2024 files and match the frozen file except the three double-rounded prints above. I also tested S11's "because" note: the vote-weighted mean of state shifts is 5.57 against a median of 3.9, so the weighting explains most of the national 5.93.
+  - S16: all 52 rows and the four large-state margin tests, from Table 4a 2024.
+- From Atlas V7 by script:
+  - S01: 86, 87 and 88 percent and the vote totals.
+  - S02: RL35.
+  - S03: every instrument-by-direction count and both "without" counts.
+  - S06: all 32 cell words and the five-of-seven count.
+  - S07: the 19 states and years against RL47.
+  - S08: 24 toward and 24 away, 33 entries in 2025 and 2026, 11 moves away in 2026, and the three pending rows.
+  - S09: seven and eight events in the two bands.
+  - S10: all 16 shares and the three notes.
+- From the frozen payroll levels: S13's 18 series changes, state and local jobs by subtraction (+1,475,000), and the federal peak; S14's 57 changes and averages, with September 2026 at 50.67 thousand.
+- Drawn geometry, read from the exported SVGs:
+  - S14's columns share one zero line and one linear scale.
+  - S16's circle areas run 0.01056 to 0.01063 per thousand citizens, and its key sizes run 1 to 5 to 20.
+  - S15's margin bars are proportional, checked by eye at 1440.
+- Source lines: 14 specs equal a sidecar line or variant; S04 and S05 name both datasets, as contract C2 allows.
+- DR-64 on all 16 specimens; Rule 01.9's domains and named states from the spec fields against the data plan's count.
+- Captures looked at: S01 to S15 at 1440 px on Newsprint, with S15 in two parts, and S11's phone list at 390 px.
+- The kit's check files: 16 of 16 report 0 faults.
+- A double-rounding scan of every FEC margin and shift and every sector change.
+
+### Not tested
+
+- S13 and S14 against FRED: the connection failed again today, so only their internal consistency with the frozen levels is checked.
+- The Bureau of Labor Statistics' sampling errors for industries, and the survey margin for S01.
+- Missouri's RL63 outcome.
+- Phone captures other than S11, all Charcoal and grayscale captures, and S16's capture.
+- The PNG and CSV exports, apart from reading three SVG exports and S15's page text.
+- The V7 snapshot's own pages beyond the extracted JSON, for S06's horizon.
+- Any reader with the specimens.
