@@ -177,6 +177,8 @@ def line_svg(grade=None, w=STEP_W, delay=None, sign=None, hollow=False, target=F
         # the case under a line shows only on a red target; the rest are defaults the stylesheet sets once
         marks = re.sub(r'<path class="ak-case"[^>]*/>', "", marks)
         marks = marks.replace(' fill="none"', "").replace(' stroke-linecap="butt"', "")
+    # the guide's page shell hides its own .rail (the chapter list) on phones, so the hollow line's rails take another class
+    marks = marks.replace('class="rail"', 'class="rl"')
     red = ' data-red="working" data-red-job="where a reform acts"' if target else ""
     return (f'<svg class="ln{" tgt" if target else ""}" viewBox="0 0 {w} {h}" width="{w}" height="{h}" aria-hidden="true" '
             f'focusable="false"{red}>{marks}</svg>')
@@ -280,7 +282,7 @@ CSS = {
            "var(--oa-font-family-display);letter-spacing:-0.01em;margin:0 0 6px;max-width:34em;text-wrap:balance}"
            "@media (min-width:48em){.ct{font-size:var(--oa-chart-type-title-size);line-height:var(--oa-chart-type-title-leading)}}"),
     "ms": (".ms{font:400 var(--oa-chart-type-measure-size)/var(--oa-chart-type-measure-leading) var(--oa-font-family-reading);"
-           "color:var(--oa-color-text-secondary);max-width:40em}"),
+           "color:var(--oa-color-text-secondary);max-width:40em}.sub+.ms{margin-top:8px}"),
     "nt": f".nt{{{CAP};margin-top:10px;max-width:40em}}",
     "src": f".src{{{CAP};color:var(--oa-color-text-secondary);margin-top:12px;max-width:44em}}",
     "chip": (".chip{display:inline-flex;align-items:center;gap:.3em;padding:1px 8px;border:1px solid var(--oa-color-border-strong);"
@@ -288,7 +290,7 @@ CSS = {
     "k": f".k{{{LBL};color:var(--oa-color-text-secondary);margin:0 0 6px}}",
     "ln": (".ln{display:block;flex:none;overflow:visible}.ln path{fill:none}.ln .ak-case{stroke:none}.ln .ak-mark{stroke:var(--oa-color-graphic-essential)}"
            ".ln .hd,.ln .tg polygon{fill:var(--oa-color-graphic-essential)}.ln .tg .sg{fill:var(--oa-color-surface)}"
-           ".ln .tk{stroke:var(--oa-color-graphic-essential);stroke-width:2px}.ln .rail{stroke:var(--oa-color-graphic-essential)}"
+           ".ln .tk{stroke:var(--oa-color-graphic-essential);stroke-width:2px}.ln .rl{stroke:var(--oa-color-graphic-essential)}"
            ),
     "tgt": (".ln .hi{display:none}.ln.tgt .lo{display:none}.ln.tgt .hi{display:inline}"
             ".ln.tgt .ak-mark{stroke:var(--oa-color-data-emphasis-red);stroke-width:4px;stroke-dasharray:var(--d6,none)}"
@@ -310,7 +312,7 @@ CSS = {
     "stack": (".stack td[data-k]::before{content:none}@media (max-width:47.99em){.stack,.stack tbody,.stack tr,.stack th,.stack td{display:block;width:100%}"
               ".stack caption{display:block;width:auto}.stack thead{display:none}.stack tr{border-bottom:1px solid var(--oa-color-border-strong);padding:8px 0}"
               ".stack th,.stack td{border:0;padding:3px 0}.stack td[data-k]::before{content:attr(data-k) \": \";font-weight:var(--oa-font-weight-bold)}}"),
-    "p0": ".p.p0{padding:0}",
+    "p0": ".p.p0{padding:16px}",  # a true-size stage keeps the phone gutter inside its 360 px
     "card": (".card{max-width:360px;border-top:4px solid var(--oa-color-border-strong);padding:14px 0 0}"
              ".card .hl{font:var(--oa-type-h4-font-weight) 1.25rem/var(--oa-type-h4-line-height) var(--oa-type-h4-font-family);"
              "letter-spacing:var(--oa-type-h4-letter-spacing);margin:0 0 10px;text-wrap:balance}"
@@ -1070,7 +1072,7 @@ def rule_13_6(book):
         ("Geography", "United States"),
         ("The copy we read", "via FRED, Federal Reserve Bank of St. Louis"),
         ("Date retrieved", "Retrieved November 6, 2026."),
-        ("Qualification", "August and September 2026 are preliminary and will be revised."),
+        ("Qualification", "August and September 2026 are preliminary, and the Bureau will revise them."),
     ]
     pos = -1
     for _, words in parts:
@@ -1214,7 +1216,7 @@ def rule_13_7(book):
                   f'<td class="num" data-k="Current release: P60-290, September 15, 2026">{c}</td></tr>' for y, p, c in pair)
     body = (f'<div class="fx two"><div>{a}</div><div>{b}</div></div>'
             '<p class="nt">Both charts run 2009 to 2025, every year in the Census Bureau’s table of this measure, on one scale. '
-            'The figures show how much poverty changed; they do not show which policy changed it.</p>'
+            'The figures show how much poverty changed. Tying a change to a policy takes a study of its own.</p>'
             f'<p class="src">{e(both_line)}</p>'
             '<table class="tb stack blk"><caption>Children in poverty, percent, in the two releases</caption><thead><tr>'
             '<th scope="col">Year</th><th scope="col">Before the revision: P60-287, September 9, 2025</th>'

@@ -3285,6 +3285,14 @@ def build(args):
 # Self-test (apply pass, November 7, 2026): fixture chapters in a temporary folder, one scenario per check, each with
 # the warnings it must raise and the ones it must not. The fixtures are throwaway; nothing in the repository changes.
 # ---------------------------------------------------------------------------------------------------------------
+def css_written(frag):
+    """A fragment of CSS as the weight pass leaves it on the page; text that is no CSS comes back as it was."""
+    try:
+        return weight_pass.css_min(frag)
+    except ValueError:
+        return frag
+
+
 def self_test():
     import shutil
     import tempfile
@@ -3896,7 +3904,8 @@ def self_test():
             for frag in expect.get("absent", []):
                 checks.append((f"no warning: {frag}", not any(frag in w for w in warns)))
             for frag in expect.get("html", []):
-                checks.append((f"page holds: {frag}", frag in page))
+                # CSS as written, or as the weight pass writes it (comments and ignorable white space gone)
+                checks.append((f"page holds: {frag}", frag in page or css_written(frag) in page))
             for desc, fn in expect.get("tests", []):
                 checks.append((desc, bool(fn(page))))
             if expect.get("order"):
@@ -3978,7 +3987,7 @@ def self_test():
         if FONT_MANIFEST.exists():
             man = json.loads(FONT_MANIFEST.read_text())
             ok_all &= g2("Gate 2: the fonts embedded from the manifest, each file once, no font link, the three licenses in full", demo, tests=[
-                ("one @font-face per manifest file, each a data URL", lambda pg: len(re.findall(r"@font-face \{[^}]*url\(data:font/woff2;base64,", pg)) == len(man["files"])),
+                ("one @font-face per manifest file, each a data URL", lambda pg: len(re.findall(r"@font-face ?\{[^}]*url\(data:font/woff2;base64,", pg)) == len(man["files"])),
                 ("no link to Google Fonts", lambda pg: "fonts.googleapis.com/css2" not in pg.split("</head>")[0]),
                 ("the build report counts the fonts as their own part", lambda pg: json.loads((base / f"{len(results)}-page-Build-Report.json").read_text())["weight"]["parts"].get("fonts", 0) > 0),
                 ("three license disclosures, each with its copyright line", lambda pg: pg.count('<details class="lic"') == 3

@@ -1,10 +1,14 @@
 {
- "title": "Creative director’s scores for Phase 3, round 0: Part 1, chapter 13 and the palette proofs",
+ "title": "Creative director’s scores for Phase 3, round 0: chapter 13, the palette proofs (Part 1) and the chart kit with S01 to S16 (Part 2)",
  "date": "2026-11-11",
  "author": "Creative director (oa-creative-director), subagent of the main session",
  "basis": "20261111_Phase-3-Round-0-Review-Brief.md, creative director’s lens; Master Brief section 6 rubric; the review build in the scratchpad’s phase-3/round-0-review/20261111_Round-0-Review-Guide-A.html (9,762,798 bytes, built 2026-11-11T22:30:55), anchor #evidence, looked at by the creative director at 1440 and 390 px, 1x and 2x, with the words read from work/build/guide/chapters/13-evidence.json; the palette sheet work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs.html at 1440 and 390 px, 1x and 2x; 20261111_Palette-Proposal.json; tokens release 6.0.0-gate3.1",
+ "basis_part_2": "The 16 kit pages built at 23:15 in the scratchpad’s phase-3/round-0-review/kit-pages/ (1440 and 390 px, Newsprint and Charcoal, 2x PNG exports, sNN-check.json), the specs in work/build/chart-kit/specs/, Phase 2’s approved Explainer and stretch pages captured whole per specimen, the engineer’s notes (“The drawing method (pilot)”, “The weight gates”) and the engineer’s load-table pilot page",
  "review": "work/handoffs/phase-3/20261111_CD-Review-Of-Round-0.md",
- "part": 1,
+ "part": [
+  1,
+  2
+ ],
  "threshold": "4 on every criterion; an item is ready when every score is 4 or more and it has no Must fix",
  "criteria": [
   {
@@ -108,27 +112,77 @@
    "should_fix_count": 3,
    "ready": false,
    "to_ready": "Land M5 and the token side of M2; evidence honesty then reaches 4. The two new colors are ready for Dustin’s approval as proposed."
-  }
- ],
- "pending": [
+  },
   {
    "key": "kit",
-   "name": "The chart kit with S01 to S16, the drawing method and chapter 14’s projected weight",
-   "status": "Part 2, when the main session sends the final kit and a new build"
+   "name": "The chart kit with its 16 specimens, S01 to S16",
+   "anchor": "work/build/chart-kit/; work/boards/phase-3/round-0/specimens/; kit pages built at 23:15",
+   "stage": "Phase 3, round 0, Part 2",
+   "scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "S03’s key now sits on one line, S11 gains “How to read an arrow” and S12 sets the nation beside its key, but S16’s circles shrink to a ninth of their area, S09’s leader lines run through its own labels, and S13’s gray fill covers the reference line, so three approved drawings fall below their Phase 2 captures.",
+    "clarity": "Every specimen carries its evidence chip, a grade line in H08’s words, a measure line and a reading guide, though S01’s vote bars no longer say which side voted for, S06 drops the glosses that explained fusion voting and forbearance, and S09’s note describes names the drawing does not show.",
+    "brand_fidelity": "Four inks, pair B with boxed arrows on both grounds, no red on any of the 16, parties named in words in one neutral ink, and with the wordmark covered the chip, the Inter Tight titles and the Charcoal and Newsprint pair still read as Oath & Action.",
+    "usefulness": "A builder gets one command, a contract for every file, 19 forms with their label keys listed in each module’s header, SVG, PNG and CSV exports and a 25-fault self-test; the creative director did not build a new chart from it, which the production test does.",
+    "evidence_honesty": "Source lines match sidecars, grade lines follow D3-83, and S04 and S05 now print the margins of error that make their titles hold, though S09’s note and S13’s key each describe a mark the drawing does not show.",
+    "accessibility": "Each chart’s table is live text and the only copy of its rows, readable with scripts off, and the grayscale proofs keep every key apart, though S16’s two to four pixel circles carry a shade no reader can judge (the table still holds every state)."
+   },
+   "specimens_under_the_bar": [
+    "S09",
+    "S13",
+    "S16"
+   ],
+   "specimens_at_or_above_phase_2": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S07",
+    "S10",
+    "S12",
+    "S14",
+    "S15"
+   ],
+   "must_fix": [
+    "KM1",
+    "KM2",
+    "KM3"
+   ],
+   "should_fix": [
+    "KS1",
+    "KS2",
+    "KS3",
+    "KS4",
+    "KS5",
+    "KS6"
+   ],
+   "must_fix_count": 3,
+   "should_fix_count": 6,
+   "ready": false,
+   "to_ready": "Land KM1 to KM3; craft then reaches 4. None needs a new form."
   }
  ],
  "totals": {
-  "must_fix": 5,
-  "should_fix": 10,
+  "must_fix": 8,
+  "should_fix": 16,
   "under_4": [
    "ch13.usefulness",
    "ch13.evidence_honesty",
-   "palettes.evidence_honesty"
+   "palettes.evidence_honesty",
+   "kit.craft"
   ],
   "ready": [],
   "not_ready": [
    "ch13",
-   "palettes"
+   "palettes",
+   "kit"
   ]
  },
  "must_fix": {
@@ -177,6 +231,33 @@
    "items": [
     "palettes"
    ]
+  },
+  "KM1": {
+   "items": [
+    "kit"
+   ],
+   "where": "S16; work/build/chart-kit/forms/bubble-map.js",
+   "what": "California, the largest circle, draws at a radius of 17.5 px where --oa-chart-bubble-radius-max-wide sets 50 px: the form takes the size scale’s top from every row, and since the fix pass the table holds a United States row, so the nation sets the scale. Small states draw as dots about 4 px across with no readable shade; at 390 px the Northeast is a cluster of leader lines. Phase 2’s approved map drew California near 100 px across.",
+   "fix": "Take the scale’s top from the rows the map draws (those with a center), or let a spec name rows the drawing skips; rebuild S16 and compare with Phase 2’s capture at both widths.",
+   "owner": "Engineer"
+  },
+  "KM2": {
+   "items": [
+    "kit"
+   ],
+   "where": "S09; work/build/chart-kit/specs/s09.json; the layout guard",
+   "what": "The note says “Event names are the atlas’s, shortened at any parenthesis; the table gives each in full.” The spec sets no labels.cut_at, so every parenthesis prints in full, leader lines from other events run through the words “adopts its 1890”, “Act of 1929”, “lower-court” and “SpeechNow.org”, “2025 2025 budget reconciliation law” prints its year twice, and the years lose Phase 2’s bold.",
+   "fix": "Set labels.cut_at to “ (” in s09.json; set the year in bold and drop it from a name that begins with it; have the layout guard fail a leader line that crosses a text box.",
+   "owner": "Explainer maker (spec), Engineer (guard)"
+  },
+  "KM3": {
+   "items": [
+    "kit"
+   ],
+   "where": "S13, the 14 private-industry panels",
+   "what": "The key says “Gray line in every panel: all nonfarm jobs, +6.0%”, but the opaque mid-gray fill draws above that line, so wherever an industry runs above all nonfarm jobs (Health care, Utilities, Leisure and hospitality, Construction, Private educational services, Other services, Mining and logging) the line is gone. Phase 2 drew it over a light fill.",
+   "fix": "Draw the reference line above the fill and under the series line, or use Phase 2’s light fill; check at 2x that it shows in all 14 panels on both grounds.",
+   "owner": "Engineer"
   }
  },
  "should_fix": {
@@ -269,7 +350,80 @@
    "items": [
     "palettes"
    ]
+  },
+  "KS1": {
+   "items": [
+    "kit"
+   ],
+   "where": "S01, the House and Senate bars",
+   "what": "Segments read “Republican 218” in ink and “Democratic 198” in gray with no word saying ink means voted for (Phase 2 printed “232 for” and “198 against”), so the view pairs one party with ink and the other with gray on both bars.",
+   "fix": "Write the vote into each label, as in “Republican 218 for” and “Democratic 198 against” (party_words).",
+   "owner": "Explainer maker"
+  },
+  "KS2": {
+   "items": [
+    "kit"
+   ],
+   "where": "S06, scenario names",
+   "what": "Phase 2’s gray glosses under each scenario (fusion voting, forbearance and the rest) are gone; labels.sub (E18) is done and the spec sets none, so two terms go unexplained (H02).",
+   "fix": "Restore the glosses through labels.sub.",
+   "owner": "Explainer maker"
+  },
+  "KS3": {
+   "items": [
+    "kit"
+   ],
+   "where": "S08, entry RL47",
+   "what": "The ring sits on the top row of 2026’s stack, overlapping its neighbors, while “19 states” hangs from a tick under the bottom row.",
+   "fix": "Draw the ring on the square the label points to, with the leader running from the ring.",
+   "owner": "Engineer"
+  },
+  "KS4": {
+   "items": [
+    "kit"
+   ],
+   "where": "S02, the 2022 label",
+   "what": "At 2x a short leader stub sits on the baseline before “12.0%”, so the label reads “−12.0%”.",
+   "fix": "Offset the label from the point with no stub, or angle the leader.",
+   "owner": "Engineer"
+  },
+  "KS5": {
+   "items": [
+    "kit"
+   ],
+   "where": "S11, the scale",
+   "what": "The scale stops at 40, so Wyoming’s arrow runs past the last tick and the West Virginia and Wyoming labels flip left of their arrows while every other Republican-side label sits right.",
+   "fix": "Extend the scale to 50 with its outer ticks, as Phase 2 did.",
+   "owner": "Engineer"
+  },
+  "KS6": {
+   "items": [
+    "kit"
+   ],
+   "where": "The load-table method, every chart",
+   "what": "With scripts off a figure closes up (S01 from 1,188 to 703 px) with no sign a drawing belongs there, and notes such as S14’s describe marks the reader cannot see; at load, 16 charts add about 0.15 s of script, about 1 s at 97 charts drawn at once.",
+   "fix": "Show the figure’s alt text in the drawing’s place when scripts are off, in the caption style; draw each chart as it nears the screen, and every chart before print.",
+   "owner": "Engineer"
   }
+ },
+ "drawing_method": {
+  "method": "load-table (D3-90)",
+  "verdict": "Supported. It costs a reader little and keeps one renderer for the guide, the exports and DR-235’s later page.",
+  "costs_measured": [
+   "Scripts off: the figure closes up with no notice that a drawing is missing, and some notes describe marks not on screen (KS6).",
+   "At load: 16 charts add about 0.15 s of script in this container (Chromium script time 0.12 to 0.14 s for the review build against 0.27 to 0.31 s for the pilot); layout shift 0.007. About 1 s at 97 charts drawn at once (projection) (KS6)."
+  ],
+  "not_rerun": "Print, forced colors, reduced motion, resize and export parity, which the engineer reports as passing"
+ },
+ "weight_recommendation": {
+  "projection": "Chapter 14 at 2.76 MB against its 1.75 MB stop; the page at 16.06 MB, past the 16 MB limit; DR-232’s two steps save about 0.05 MB and nothing",
+  "order": [
+   "The studio’s pass with no visible change (D3-91): minifier, shared form modules, an audit of the built chapters’ bytes (chapter 01 at 2.42 MB and chapter 18 at 1.16 MB first), each proved pixel-identical.",
+   "DR-232’s image sheet for the 22 sketches and 8 avoid entries.",
+   "Do not carry the table equivalents compressed: the table is the only copy of a chart’s rows for a reader with scripts off, a screen reader before the script runs and a search inside the page (contract C5); compression is acceptable only for data the table does not already carry.",
+   "Measure one more option: for the few long tables (S13 at 30 KB, S05 at 28 KB), a summary table live in the page and the full rows in the CSV download the kit already makes; this changes contracts C2 and C5 and needs the accessibility lead’s sign-off first.",
+   "Then ask Dustin for what remains as a move of bytes from Phase 4’s 2.54 MB share, with Phase 4’s new average per chapter printed beside the ask; board 1 shows each step’s measured saving."
+  ]
  },
  "distinctiveness_test": [
   {
@@ -287,12 +441,26 @@
   {
    "view": "Palette sheet, categorical and red on red, wordmark covered",
    "verdict": "Reads as Oath & Action: four inks with the hatch and markers, boxed arrows, and one working red that yields to the error."
+  },
+  {
+   "view": "S06 on Charcoal, wordmark covered",
+   "verdict": "Reads as Oath & Action: the evidence chip, pair B’s tints with boxed arrows, and the atlas’s words in every cell."
+  },
+  {
+   "view": "S10 on Newsprint",
+   "verdict": "Reads as Oath & Action: H08’s grade words in the key, documented in the ink of the text, the hatch for contested."
+  },
+  {
+   "view": "S16 on Newsprint, as built",
+   "verdict": "Weaker: with circles at a third of their size the map reads as a generic dot map (KM1)."
   }
  ],
  "risks_for_dustin": [
   "The record square before Documented (Gate 1, M1, 7 px) and the ballot measure event (Gate 1, M4, 8 px) are both filled squares and will meet in chapter 15. Recommended: keep both and write a placement rule into Rules 13.4 and 13.11; a redraw of either would come to Dustin.",
   "Rule 13.11’s plate lists three Supreme Court campaign finance rulings under the atlas’s heading “Away from voters”. The words are V7’s, quoted with its note that the direction carries no judgment; a reader on the right may still read the heading as a verdict.",
-  "Chapter 13’s plates are words, tables and line samples with one small chart; S3 adds the two charts its captions promise."
+  "Chapter 13’s plates are words, tables and line samples with one small chart; S3 adds the two charts its captions promise.",
+  "S01’s vote bars set Republicans in ink and Democrats in gray on both chambers until KS1 lands; the words “for” and “against” settle it.",
+  "If the weight pass leaves chapter 14 near 2.6 MB, Phase 4’s seven chapters fall to about 0.24 MB each; the ask should say so."
  ],
  "questions_for_dustin": []
 }

@@ -2,7 +2,7 @@
 
 Oath & Action Edition 06, Phase 3, round 0, November 11, 2026. Written by the creative director (`oa-creative-director`), a subagent of the main session, for `work/handoffs/phase-3/20261111_Phase-3-Round-0-Review-Brief.md`. The scores, reasons and fixes are also in `20261111_Round-0-CD-Scores.json`, made from the same notes.
 
-This review runs in two parts. **Part 1** (this pass) scores chapter 13 and the palette proofs. **Part 2** follows when the main session sends the final kit, S01 to S16 and a new build; it scores the kit with its 16 specimens and judges the drawing method and chapter 14's projected weight.
+This review runs in two parts. **Part 1** scores chapter 13 and the palette proofs. **Part 2**, at the end, scores the chart kit with its 16 specimens and judges the drawing method and chapter 14's projected weight.
 
 What I looked at in Part 1: chapter 13 in `20261111_Round-0-Review-Guide-A.html` (9,762,798 bytes, built 22:30:55) at anchor `#evidence`, at 1440 and 390 px, 1x and 2x, with its words read from `work/build/guide/chapters/13-evidence.json`; the palette sheet `work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs.html` at 1440 and 390 px, 1x and 2x; `20261111_Palette-Proposal.json`; the tokens in release 6.0.0-gate3.1; the editor's and data lead's notes. The guide stays on Newsprint under a dark color scheme (DR-204), so chapter 13 has one ground.
 
@@ -121,3 +121,102 @@ An asterisk marks a score under 4. M2 belongs to both items. Part 1's scores rea
 - Print or ink proofs.
 - The kit, S01 to S16, the drawing method and chapter 14's weight, which are Part 2.
 - Any reader with the chapter or the sheet.
+
+# Part 2: the chart kit with S01 to S16
+
+What I looked at: the 16 kit pages built at 23:15 in the scratchpad's `phase-3/round-0-review/kit-pages/` (each at 1440 and 390 px on Newsprint and Charcoal, with the 2x PNG exports and each `sNN-check.json`); the specs in `work/build/chart-kit/specs/`; Phase 2's approved Explainer and stretch pages, each specimen captured whole from the page at 1440 px and the stretch page's phone drawings at 358 px; the engineer's notes, "The drawing method (pilot)" and "The weight gates"; the engineer's `load-table` pilot page in a real guide build.
+
+## Decision or verdict
+
+The kit is the right machine. One command builds 16 charts from spec and data, every word lives in the spec, the renderer runs in a plain page, and all 16 check files report 0 faults. Nine specimens match or beat the drawings Dustin approved in Phase 2: S02, S03, S04, S07, S10, S12, S14 and S15, and S01, which now carries the House and Senate splits. Three fall under the bar, and each has a small cause: **S16** draws every circle at about a third of its radius, **S09** strikes its labels through with leader lines under a note that says the names are shortened, and **S13** hides the reference line its key promises in eight of 14 panels. The item is not ready until those three land. None needs a new form.
+
+The drawing method costs a reader little, and I support it. The weight cannot be settled by DR-232's two steps, and I recommend Dustin approve a measured move of bytes only after the no-visible-change pass, with the table equivalents kept as live text.
+
+## Scores
+
+| Item | Craft | Clarity | Brand fidelity | Usefulness | Evidence honesty | Accessibility | Must | Should | Ready |
+|---|---|---|---|---|---|---|---|---|---|
+| Chart kit with S01 to S16 | 3* | 4 | 4 | 4 | 4 | 4 | 3 | 6 | no |
+
+Specimens under the bar: S09, S13 and S16 (craft).
+
+## Reasons
+
+- Craft 3. S03's key now sits on one line, S11 gains "How to read an arrow" and S12 sets the nation beside its key, but S16's circles shrink to a ninth of their area, S09's leader lines run through its own labels, and S13's gray fill covers the reference line, so three approved drawings fall below their Phase 2 captures.
+- Clarity 4. Every specimen carries its evidence chip, a grade line in H08's words, a measure line and a reading guide, though S01's vote bars no longer say which side voted for, S06 drops the glosses that explained fusion voting and forbearance, and S09's note describes names the drawing does not show.
+- Brand fidelity 4. Four inks, pair B with boxed arrows on both grounds, no red on any of the 16, parties named in words in one neutral ink, and with the wordmark covered the chip, the Inter Tight titles and the Charcoal and Newsprint pair still read as Oath & Action.
+- Usefulness 4. A builder gets one command, a contract for every file, 19 forms with their label keys listed in each module's header, SVG, PNG and CSV exports and a 25-fault self-test; I did not build a new chart from it, which the production test does.
+- Evidence honesty 4. Source lines match sidecars, grade lines follow D3-83, and S04 and S05 now print the margins of error that make their titles hold, though S09's note and S13's key each describe a mark the drawing does not show.
+- Accessibility 4. Each chart's table is live text and the only copy of its rows, readable with scripts off, and the grayscale proofs keep every key apart, though S16's two to four pixel circles carry a shade no reader can judge (the table still holds every state).
+
+## Required changes
+
+### Must fix
+
+**KM1. S16's circles are a third of their radius.** Owner: Engineer.
+- The largest circle, California, draws at a radius of 17.5 px where `--oa-chart-bubble-radius-max-wide` sets 50 px. The form takes the size scale's top from every row (`maxv` in `forms/bubble-map.js`), and since the fix pass the table holds a United States row, so the nation sets the scale. Wyoming, Vermont and the Dakotas draw as dots 4 px across, with no readable shade, and at 390 px the Northeast is a cluster of leader lines. Phase 2's approved map drew California near 100 px across.
+- Fix: take the scale's top from the rows the map draws (those with a center), or let a spec name rows the drawing skips. The size key follows by itself. Rebuild S16 and compare with Phase 2's capture at both widths.
+
+**KM2. S09's labels are struck through, under a note that misdescribes them.** Owners: Explainer maker (spec), Engineer (guard).
+- The note says "Event names are the atlas's, shortened at any parenthesis; the table gives each in full." The spec sets no `labels.cut_at`, so the drawing prints every parenthesis in full ("1978 Proposition 13 (labor-law reform filibustered June 22, 1978; First National Bank of Boston v. Bellotti, April 26, 1978)") and leader lines from other events run through the words "adopts its 1890", "Act of 1929", "lower-court" and "SpeechNow.org". "2025 2025 budget reconciliation law" prints its year twice, and the years lose Phase 2's bold.
+- Fix: set `labels.cut_at` to " (" in `specs/s09.json`; set the year in bold and drop it from the name where the name begins with it; have the layout guard fail a leader line that crosses a text box, as it fails text on text.
+
+**KM3. S13's fill hides its reference line.** Owner: Engineer.
+- The panels' key says "Gray line in every panel: all nonfarm jobs, +6.0%". The area fill is opaque mid-gray and draws above that line, so wherever an industry runs above all nonfarm jobs (Health care, Utilities, Leisure and hospitality, Construction, Private educational services, Other services, Mining and logging) the line is gone, and the comparison the key invites cannot be made where it matters most. Phase 2 drew the line over a light fill.
+- Fix: draw the reference line above the fill and under the series line, or use the light fill Phase 2 used; check at 2x that the line shows in all 14 panels on both grounds.
+
+### Should fix
+
+- **KS1. S01's vote bars (Explainer maker).** The segments read "Republican 218" in ink and "Democratic 198" in gray, with no word saying ink means voted for. Phase 2 printed "232 for" and "198 against". With the party names alone, the view pairs one party with ink and the other with gray on both bars. Write the vote into each label, as in "Republican 218 for" and "Democratic 198 against" (`party_words`), so the ink reads as the vote.
+- **KS2. S06's glosses (Explainer maker).** Phase 2 gave each scenario a gray line under its name ("Fusion voting lets more than one party nominate the same candidate"; "Forbearance: officials hold back from using every power they have, with no new rules."). The kit's `labels.sub` (E18) is done and the spec sets none, so two terms go unexplained (H02). Restore the glosses.
+- **KS3. S08's ring (Engineer).** The ring around entry RL47 sits on the top row of 2026's stack, overlapping its neighbors, while "19 states" hangs from a tick under the bottom row. Draw the ring on the square the label points to, with the leader running from the ring, as Phase 2 did.
+- **KS4. S02's label (Engineer).** At 2x a short leader stub sits on the baseline before "12.0%", so the label reads "−12.0%". Offset the label from the point with no stub, or angle the leader.
+- **KS5. S11's scale (Engineer).** The scale stops at 40, so Wyoming's arrow runs past the last tick and West Virginia's and Wyoming's labels flip to the left of their arrows while every other Republican-side label sits right. Extend the scale to 50 as Phase 2 did, with its outer ticks.
+- **KS6. What a reader sees with scripts off, and at load (Engineer).** See the drawing method below.
+
+## The drawing method
+
+`load-table` draws each chart when the page loads from its own table, which stays live text. I measured what it costs a reader on the engineer's pilot page and found two things, both small and both fixable without changing the method.
+- **With scripts off** the figure closes up from 1,188 to 703 px (S01) and shows title, measure line, notes, source line and the table, with no sign that a drawing belongs there. S14's notes then describe "dashed" months and a loss label the reader cannot see. The alt text already sits in each figure as hidden text: show it in the drawing's place when scripts are off, in the caption style, so the reader knows what the drawing would show and that the table holds its figures.
+- **At load**, the 16 charts add about 0.15 s of script in this container (Chromium's script time 0.12 to 0.14 s for the review build against 0.27 to 0.31 s for the pilot), with no layout shift that matters (0.007). At 97 charts drawn at once that becomes about 1 s of blocked page on a fast machine and more on a phone. Draw each chart as it nears the screen, and every chart before print.
+
+Everything else the engineer reports for the method (print, forced colors, reduced motion, resize and export parity) I did not rerun. The method loses nothing else a reader would see, and it is the only measured method that keeps one renderer for the guide, the exports and the later drop-in page (DR-235).
+
+## The weight and what to ask Dustin
+
+Chapter 14 projects to 2.76 MB against its 1.75 MB stop, and the page to 16.06 MB, past the 16 MB limit. DR-232's two steps save about 0.05 MB and nothing. The engineer's weight pass is running, so I recommend an order rather than a number:
+
+1. **The studio's own pass first, with no visible change** (D3-91): the minifier (about 0.14 MB on the renderer, measured in scratch), shared modules for related forms, and an audit of the built chapters' bytes, each proved pixel-identical. Chapter 01 at 2.42 MB and chapter 18 at 1.16 MB are where an audit looks first.
+2. **DR-232's image sheet** for the 22 sketches and 8 avoid entries.
+3. **Do not carry the table equivalents compressed.** The table is the only copy of a chart's rows a reader with scripts off, a screen reader before the script runs, or a search inside the page can reach (contract C5). Compressed, it appears only after the script, so a reader with scripts off would lose the drawing and the table together. I would accept compression only for data the table does not already carry.
+4. **Measure one more option**: for the few long tables (S13's 1,026 cells and S05's 132 rows are the heaviest specimens, at 30 and 28 KB), keep a summary table live in the page (the rows the title and labels cite) and leave the full rows to the CSV download the kit already makes. This changes contracts C2 and C5, so it needs the accessibility lead's sign-off before it goes to Dustin.
+5. **Then ask Dustin for what remains**, as a move of bytes from Phase 4's 2.54 MB share into chapter 14, with Phase 4's new average per chapter printed beside the ask, since application chapters carry heavy mockups. Board 1 should show each step's measured saving, so he approves the smallest move.
+
+## Risks for Dustin to weigh (Part 2)
+
+- **The party pairing on S01.** Until KS1 lands, the vote bars set Republicans in ink and Democrats in gray on both chambers. The inks are neutral and the record is the record (DR-93), but a reader on either side could read the pairing as a house color. The words "for" and "against" settle it.
+- **Phase 4's room.** If the weight pass and the sketch sheet leave chapter 14 near 2.6 MB, Phase 4's seven chapters fall to about 0.24 MB each. That is the trade the ask should state plainly.
+
+## Distinctiveness test (Part 2)
+
+| View | Verdict |
+|---|---|
+| S06 on Charcoal, wordmark covered | Reads as Oath & Action: the evidence chip, pair B's Prussian and Verdigris tints with boxed arrows, and the atlas's words in every cell. |
+| S10 on Newsprint | Reads as Oath & Action: grade words from H08 in the key, documented in the ink of the text, the hatch for contested. |
+| S16 on Newsprint, as built | Weaker: with circles at a third of their size the map reads as a generic dot map; Phase 2's drawing carried the system. |
+
+## Tested (Part 2)
+
+- All 16 kit pages at 1440 px on Newsprint, read whole, each beside Phase 2's approved drawing captured from the Explainer and stretch pages; S06 and S10 on Charcoal; S01, S09 and S16 at 390 px beside Phase 2's phone drawing of S16; 2x crops of S02, S08 and S13 from the PNG exports.
+- The 16 check files: 0 faults each, rows as listed.
+- S16's circle radii in all four SVG exports by script (largest 17.46 px at 1440 and 9.65 px at 390) against the bubble tokens in `tokens.css`, and the form's scale code.
+- S09's and S06's specs for `cut_at` and `sub`; S01's spec for its vote words; S13's percent column positions in its SVG.
+- On the engineer's `load-table` pilot page: figure heights with scripts on and off, S14 viewed with scripts off, layout shift, long tasks and Chromium's script and task time against the review build, two runs each.
+
+## Not tested (Part 2)
+
+- S01 to S16 at 390 px apart from S01, S09 and S16, and on Charcoal apart from S06 and S10; the grayscale proofs, which I did not open one by one.
+- The print, forced colors, reduced motion, resize and export parity checks on the method, which the engineer reports and I did not rerun; axe and the guide check on the pilot page.
+- A new chart built from the kit, the plain browser page of DR-235, and the CSV and SVG exports opened.
+- Load time on a phone or slow device; the 97-chart load figure is a projection from 16.
+- The engineer's weight pass and the compressed-table option, which are still running.
