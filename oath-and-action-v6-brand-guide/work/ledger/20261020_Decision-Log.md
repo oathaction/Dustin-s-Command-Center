@@ -3610,3 +3610,15 @@ The main session asked four questions with its round 0 plan. Dustin: "Yeah, I ag
 | D3-80 | Every plate flows with the column and carries only the styles its markup uses | Fluid type tokens stay legal at every width, and the chapter stays at 0.20 MB |
 | D3-81 | Text taken from atlas records prints with curly apostrophes | Rule 06's typography; the words stay the atlas's |
 | D3-82 | The chapter's example log (Rule 01.12) holds 24 examples: 20 counted by domain (D08 4, D04 3, D01, D03, D07, D09 and D10 2 each, D02, D05 and D06 1 each), 2 atlas-wide, 2 invented; New York, Washington, Alaska and Oklahoma once each | Under one in four by domain and one in five by state (Rule 01.9, DR-229); the generator fails the build otherwise |
+
+### Main session, the part 1 fix brief (`work/handoffs/phase-3/20261111_Round-0-Fix-Brief-Part-1.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-83 | A figure from outside the atlas takes its grade word from H08's table: an official statistic or public record prints "Documented" with its source after the colon; a count or survey tabulation is a finding with the publisher's margin of error where one exists; a figure that rests on a model's assumptions is an estimate with its range or method. "Official statistic" leaves every plate and spec | The statistics reviewer's M1, the creative director's M1 and the brand reviewer's second fault name the same gap: Rule 13.3's own failure plate fails a word outside its table |
+| D3-84 | The line code's measurements come from one source, the atlas build's `wire_marks` constants, which Rule 10.10's builders line names; the tokens and Rule 13.4 both follow them | Rule 13.4 and the proposed tokens gave two lengths, two rail widths and two glosses (CD M2) |
+| D3-85 | Rule 13.11's plate keeps its seven repair log rows, with the atlas's coding note at the top and each heading attributed to the atlas | Read from the right, the headings looked like the guide's own verdict (brand M1); the rows are the record |
+| D3-86 | Teaching examples follow DR-93 and DR-124 as chart sets do: none is added, softened or swapped to even the score, and a plate redrawn for another reason takes the example that teaches its rule best, read from both sides | The brand reviewer's question is answered by Dustin's standing decisions, so it is not asked again |
+| D3-87 | The "seven of the 57 months" sentence approved on Board 5 goes to Dustin with the statistics reviewer's recommendation; until he answers, chapter 02 and S14 keep it, and chapter 13's plates take a level title | Five of the seven drops sit inside the survey's sampling error; the sentence is his approved wording (DR-73) |
+| D3-88 | Data plan rows 63 and 64 re-pick to the Census Bureau's gross rent as a percentage of renter household income, with margins | Rent over all households' income ran 7 to 13 points under the Bureau's measure and reordered states |
+| D3-89 | Data plan row 40 states where a reader sees it that the 2023 survey predates both H.R. 7008 votes | The statistics reviewer's finding; the sidecar already holds the qualification |
