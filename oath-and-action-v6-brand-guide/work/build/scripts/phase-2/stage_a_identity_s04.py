@@ -115,9 +115,9 @@ def s_04_opener():
             f'<p class="oai-tag" style="margin-top:12px">A hinge headline, title style, 56 px</p></div>')
     narrow = (f'<div class="oai-op4-n">{headline("The zoning code", "the rent.", "h3")}'
               f'<p class="oai-tag" style="margin-top:12px">A hinge headline, H3, 26 px</p></div>')
-    body = ('<div class="oai-pad"><div class="oai-op4">'
+    body = ('<div class="oai-op4">'
             f'<div class="oai-panel oai-s-newsprint">{b}<p class="oai-tag">B, display master, 160 px</p></div>'
-            f'<div class="oai-panel oai-s-newsprint">{wide}{narrow}</div></div></div>')
+            f'<div class="oai-panel oai-s-newsprint">{wide}{narrow}</div></div>')
     alt = ("Two frames at true size on Newsprint. In the first, ampersand B in red from its display master, 160 pixels tall. "
            "In the second, the hinge headline The zoning code & the rent., its red B leading the second line, in the title "
            "style at 56 pixels, or in H3 at 26 pixels on a phone.")

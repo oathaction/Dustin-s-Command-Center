@@ -215,8 +215,7 @@ def s_08_2_failure():
 # each cropped to the part that holds the lockmark, at true size and as that plate draws them: the masthead's left end
 # with L3, a page header and a footer at 330 px and the content's width, and the corner of a social card. Each crop fits
 # a phone's column, so the four stand two to a row from 48em and one under another on a phone.
-OPENER_CSS = (".oai-op8-pad{padding:24px}@media (max-width:47.99em){.oai-op8-pad{padding:0}}"
-              ".oai-op8{display:flex;flex-wrap:wrap;gap:24px 32px;align-items:flex-start}"
+OPENER_CSS = (".oai-op8{display:flex;flex-wrap:wrap;gap:24px 32px;align-items:flex-start}"
               ".oai-op8>div{max-width:100%}.oai-op8 .oai-op8-crop{max-width:100%;overflow:hidden}"
               ".oai-op8 .oai-pl8-h{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;margin:0 0 8px}"
               ".oai-op8 .oai-pl8-n{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}")
@@ -228,15 +227,16 @@ def s_08_opener():
             f'border:1px solid {hair("newsprint")};border-right:0">'
             f'{l3_small(24, label="Oath & Action, L3: the wordmark with the lockmark at 48 px")}</div>')
     def place(name, where, inner, invented=False):
-        # a phone's column is 326 px inside the frame: a crop wider than that loses only its right edge
+        # the plate's stage insets the opener 24 px (16 px on a phone, where 326 px remain): a crop wider than the
+        # column loses only its right edge
         return (f'<div><p class="oai-pl8-h"><span class="oai-pl8-n">{E(name)}</span><span class="oai-tag">{E(where)}</span>'
                 f'{illus() if invented else ""}</p><div class="oai-op8-crop">{inner}</div></div>')
-    body = ('<div class="oai-op8-pad"><div class="oai-op8">'
+    body = ('<div class="oai-op8">'
             + place("Masthead", "L3, the lockmark at 48 px", mast)
             + place("Page header", "24 px", _page_header(330), invented=True)
             + place("Footer", "24 px beside the tagline", _footer("max-content"))
             + place("Sign-off", "96 px on a social card", _signoff(272, 224))
-            + '</div></div>')
+            + '</div>')
     alt = ("The lockmark in its four places at true size, each a crop. Masthead: the left end of a Newsprint bar with L3, the "
            "wordmark and the lockmark at 48 pixels. Page header: a white header with the lockmark at 24 pixels beside the "
            "section label 03 Who writes the budget and the page number 7, Illustrative. Footer: a "

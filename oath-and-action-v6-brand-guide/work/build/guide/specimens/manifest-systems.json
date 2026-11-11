@@ -98,7 +98,7 @@
   "chapter": "05",
   "rule": "05.6",
   "width_px": null,
-  "alt": "A table of six tints, each with its swatch, name, token, recipe, hex value, one job and measured ratio. Deep Stone, Stone 18% toward Charcoal, #4E535B: Secondary and disabled text on Newsprint and White; text on Newsprint 5.49 to 1; text on White 7.74 to 1. Dim Newsprint, Newsprint 25% toward Charcoal, #A3A19C: Secondary and disabled text on Charcoal and Prussian; text on Charcoal 7.26 to 1; text on Prussian 5.14 to 1. Error Band, Pillar Red 88% toward Newsprint, #E1C9C1: The ground of an error message on Newsprint and White; Charcoal text on it 11.89 to 1; Deep Stone text on it 4.91 to 1. Gridline, Stone 70% toward Newsprint, #B4B4B3: Chart gridlines on Newsprint; decoration only; on Newsprint 1.47 to 1. Light Prussian, Prussian 62% toward Newsprint, #8E94A4: The light Prussian step of the diverging scale; Charcoal label on it 6.18 to 1. Light Verdigris, Verdigris 55% toward Newsprint, #9AAEA6: The light Verdigris step of the diverging scale; Charcoal label on it 8.01 to 1.",
+  "alt": "A table of six tints, each with its swatch, name, token, recipe, hex value, one job and measured ratio. Deep Stone, Stone 18% toward Charcoal, #4E535B: Secondary and disabled text on Newsprint and White; text on Newsprint 5.49 to 1; text on White 7.74 to 1. Dim Newsprint, Newsprint 25% toward Charcoal, #A3A19C: Secondary and disabled text on Charcoal and Prussian; text on Charcoal 7.26 to 1; text on Prussian 5.14 to 1. Error Band, Pillar Red 88% toward Newsprint, #E1C9C1: The ground of an error message on Newsprint and White; Charcoal text on it 11.89 to 1; Deep Stone text on it 4.91 to 1. Gridline, Stone 70% toward Newsprint, #B4B4B3: Chart gridlines on Newsprint; decoration only; on Newsprint 1.47 to 1. Light Prussian, Prussian 62% toward Newsprint, #8E94A4: The light Prussian step of the diverging scale; Charcoal label on it 6.18 to 1. Light Verdigris, Verdigris 55% toward Newsprint, #9AAEA6: The light Verdigris step of the diverging scale; Charcoal label on it 8.01 to 1.",
   "illustrative": false,
   "notes": "A readable table (D2-255). Recipes read from each token's derivation in tokens.json; ratios computed here.",
   "readable": true
@@ -137,7 +137,7 @@
   "chapter": "05",
   "rule": null,
   "width_px": null,
-  "alt": "The ask button, Sign up to speak, on the four surfaces. Newsprint: Fill on Newsprint 2.96 to 1; Charcoal keyline 13.29 to 1; Label on fill 4.17 to 1, 19 px bold. White: Fill on White 4.17 to 1; Label on fill 4.17 to 1, 19 px bold. Charcoal: Fill on Charcoal 4.49 to 1; Label on fill 4.17 to 1, 19 px bold. Prussian: Fill on Prussian 9.42 to 1; Label on fill 13.29 to 1, 19 px bold; Red never sits on Prussian.",
+  "alt": "The ask button, Sign up to speak, on the four surfaces. Newsprint: Fill on Newsprint 2.96 to 1; Charcoal keyline 13.29 to 1; Label on fill 4.17 to 1, 19 px bold. White: Fill on White 4.17 to 1; Label on fill 4.17 to 1, 19 px bold. Charcoal: Fill on Charcoal 4.49 to 1; Label on fill 4.17 to 1, 19 px bold. Prussian: Fill on Prussian 9.42 to 1; Label on fill 13.29 to 1, 19 px bold; Red never sits on Prussian.",
   "illustrative": false,
   "notes": "Ratios computed from tokens.json."
  },
@@ -458,7 +458,7 @@
   "chapter": "07",
   "rule": "07.6",
   "width_px": 320,
-  "alt": "A frame 320 px wide holding five contrast pairs as stacked cards: Charcoal on Newsprint, 13.29 to 1, Default body text; Stone on Newsprint, 4.29 to 1, Marks and large text only; Newsprint on Charcoal, 13.29 to 1, Reversed body text; White on Prussian, 13.28 to 1, Body text in Prussian panels; Pillar Red on Newsprint, 2.96 to 1, Signature marks; a working mark takes a keyline.",
+  "alt": "A frame 320 px wide holding five contrast pairs as stacked cards: Charcoal on Newsprint, 13.29 to 1, Default body text; Stone on Newsprint, 4.29 to 1, Marks and large text only; Newsprint on Charcoal, 13.29 to 1, Reversed body text; White on Prussian, 13.28 to 1, Body text in Prussian panels; Pillar Red on Newsprint, 2.96 to 1, Signature marks; a working mark takes a keyline.",
   "illustrative": false,
   "notes": "True size at the reflow width."
  },

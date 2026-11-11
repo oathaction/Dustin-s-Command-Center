@@ -549,3 +549,13 @@ Dustin answered Q-16 on November 9 (DR-144): "I used ChatGPT and I just went thr
 ## November 10, 2026: page 14's origin (Q-14)
 
 Dustin answered Q-14 on November 10 (DR-212): "i made that (page 14) with chatgpt describing what i wanted. no outside sources were used". Page 14 of `pics_i_like.pdf`, the data visualization concept sheet, is Oath & Action's own design study, made with ChatGPT the way the Civic Line sheets were (DR-144). The plan was not stated for this sheet. It stays a reference: no reference image ships (Phase 2 prompt), and its ideas may be used as the studio's own. This closes the last untraced page in `pics_i_like.pdf`.
+
+## Added November 11, 2026: font files embedded in the Gate 2 preview
+
+The preview embeds the three families as the WOFF2 files Google Fonts serves, unmodified, with each family's OFL.txt beside them in `work/build/assets/fonts/` and a manifest of URL, bytes, SHA-256 and date (D2-1697, D2-1710, D2-1721). These rows add the files to the font entries T-INTER, T-INTERTIGHT and T-LORA above.
+
+| ID | Item | Source | License or terms | May ship |
+|---|---|---|---|---|
+| T-INTER | Inter, variable WOFF2, latin and latin-ext subsets, declared for 400, 600 and 700, unmodified | Google Fonts (fonts.gstatic.com, v20), fetched November 11, 2026; license text from github.com/google/fonts, ofl/inter/OFL.txt | SIL Open Font License 1.1; Copyright 2020 The Inter Project Authors (https://github.com/rsms/inter); no reserved font name | Yes, embedded in the guide and in the asset package's fonts folder, with OFL.txt beside the files |
+| T-INTERTIGHT | Inter Tight, WOFF2 of weight 800 alone (the fix pass's one set; it replaced the variable file first fetched), latin and latin-ext subsets, unmodified | Google Fonts (fonts.gstatic.com, v9), fetched November 11, 2026; license text from ofl/intertight/OFL.txt | SIL Open Font License 1.1; Copyright 2022 The Inter Project Authors (https://github.com/rsms/inter-tight); no reserved font name | Yes, as Inter |
+| T-LORA | Lora Italic, variable WOFF2, latin and latin-ext subsets, weights 400 and 500, unmodified | Google Fonts (fonts.gstatic.com, v37), fetched November 11, 2026; license text from ofl/lora/OFL.txt | SIL Open Font License 1.1; Copyright 2011 The Lora Project Authors (https://github.com/cyrealtype/Lora-Cyrillic), with Reserved Font Name "Lora" | Yes, unmodified only under the name Lora; a changed version may not use the name |

@@ -286,7 +286,8 @@ def s_05_opener(ctx):
     rows = []
     for k in BAR_ORDER:
         share = SHARE[k]
-        share_t = f'{share[0]} to {share[1]} percent' if share else 'As needed'
+        # the share as Rule 05.1's share bar keys it, with %, so it holds one line under a swatch seven across
+        share_t = f'{share[0]} to {share[1]}%' if share else 'As needed'
         cls = 'sw edge' if k in ('white', 'newsprint') else 'sw'
         red = ' data-red="swatch"' if k == 'pillarRed' else ''
         rows.append(f'<li><span class="{cls}"{red} aria-hidden="true" style="background:{ctx.v(P(k))}"></span>'
@@ -328,7 +329,7 @@ def surface_tile(ctx, s, failing=False):
             f'<p class="bt">The council sets the hours each spring, when it passes the budget. Residents can speak at the '
             f'hearing before the vote.</p>'
             f'<p class="cp">New hours start July 1, with the budget year.</p>'
-            f'<p class="rt">Primary text {rp} to 1 · secondary text {rs} to 1</p></div>'), rp, rs
+            f'<p class="rt">Primary text {rp} to 1 · secondary text {rs} to 1</p></div>'), rp, rs
 
 
 TILE_CSS = """
@@ -367,7 +368,7 @@ def s_05_2(ctx):
     t = t.replace(f'--sec:{ctx.v("oa.color.text.secondary.onNewsprint")}', f'--sec:{ctx.v(P("stone"))}', 1)
     t = t.replace('<p class="cp">New hours start July 1, with the budget year.</p>',
                   '<p class="cp">New hours start July 1, with the budget year.</p><p class="lk"><span data-red="working" data-red-job="link">Read the hearing notice</span></p>')
-    t = re.sub(r'<p class="rt">.*?</p>', f'<p class="rt">Caption {stone} to 1 · link {red} to 1</p>', t)
+    t = re.sub(r'<p class="rt">.*?</p>', f'<p class="rt">Caption {stone} to 1 · link {red} to 1</p>', t)
     html = (f'<style>{css}.lk{{margin:12px 0 0;{ctx.ty("caption")}}}.lk span{{color:{ctx.v(P("pillarRed"))};'
             f'text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em}}</style>{t}')
     alt = (f'The Newsprint tile, labeled Illustrative, with its kicker, caption and ratio line in Stone, measured at '
@@ -436,7 +437,7 @@ def roles_matrix(ctx):
             if need:
                 verdict = ' · passes' if C.contrast(hexv, ctx.hx(surf)) >= need else ' · fails'
             cells.append(f'<td style="background:{bg};color:{ink}" data-s="{SNAME[s]}">{sample}'
-                         f'<span class="nm">{cname}</span><span class="rr">{r} to 1{verdict}</span>'
+                         f'<span class="nm">{cname}</span><span class="rr">{r} to 1{verdict}</span>'
                          + (f'<span class="nt" style="color:{sec}">{note}</span>' if note else '') + '</td>')
         thr = {'text': 'Needs 4.5 to 1', 'graphic': 'Needs 3 to 1', 'decorative': 'No minimum',
                'mark': 'Governed by Rule 05.3'}[kind]
@@ -501,12 +502,12 @@ def s_05_ask(ctx):
         surf = f'oa.color.surface.{s}'
         rf = ctx.ratio(fill, surf)
         rl = ctx.ratio(lab, fill)
-        lines = [f'Fill on {SNAME[s]} {rf} to 1', f'Label on fill {rl} to 1, 19 px bold']
+        lines = [f'Fill on {SNAME[s]} {rf} to 1', f'Label on fill {rl} to 1, 19 px bold']
         edge = ctx.v(fill)
         if s == 'newsprint':
             kl = 'oa.component.button.ask.keyline.onNewsprint'
             rk = ctx.ratio(kl, surf)
-            lines.insert(1, f'Charcoal keyline {rk} to 1')
+            lines.insert(1, f'Charcoal keyline {rk} to 1')
             edge = ctx.v(kl)
         if s == 'prussian':
             lines.append('Red never sits on Prussian')
@@ -744,7 +745,7 @@ def s_05_pairs(ctx):
                 smp = f'<span class="ch"{sw} aria-hidden="true" style="background:{v(P(fg))}{edge}"></span>'
             if fg == 'pillarRed' and s == 'prussian':
                 smp = '<span class="ch none" aria-hidden="true"></span>'
-            cells.append(f'<td style="background:{bg};color:{ink}" data-s="{SNAME[s]}">{smp}<span class="rr">{r} to 1</span>'
+            cells.append(f'<td style="background:{bg};color:{ink}" data-s="{SNAME[s]}">{smp}<span class="rr">{r} to 1</span>'
                          f'<span class="vd">{vd}</span></td>')
         sw = ' data-red="swatch"' if fg == 'pillarRed' else ''
         rows.append(f'<tr><th scope="row"><span class="sw"{sw} aria-hidden="true" style="background:{v(P(fg))}"></span>{PNAME[fg]}</th>{"".join(cells)}</tr>')
@@ -797,7 +798,7 @@ def s_05_6(ctx):
         hexv = ctx.hx(path)
         ext = ctx.T.ext(path)
         der = ext.get('derivation') or {}
-        meas = '; '.join(f'{lab} {ctx.ratio(a, b)} to 1' for a, b, lab in pairs)
+        meas = '; '.join(f'{lab} {ctx.ratio(a, b)} to 1' for a, b, lab in pairs)
         rows.append(f'<tr><td><span class="sw" aria-hidden="true" style="background:{v(path)}"></span></td><th scope="row">{name}'
                     f'<code>{C.css_name(path)}</code></th><td>{recipe} in OKLab<span class="hx">&#35;{hexv[1:]}</span></td>'
                     f'<td>{job}</td><td class="n">{meas}</td></tr>')
@@ -854,7 +855,7 @@ def s_05_7(ctx):
         ctx.fig(f'OKLab lightness diverging step {i}', f'{L:.3f}', 'OKLab L of the token hex')
         steps.append((fill, lab, r, words[i - 1], arrows[i - 1], L))
     cells = ''.join(f'<li style="background:{v(f)};color:{v(l)}"><span class="ar" aria-hidden="true">{a}</span><span class="wd">{w}</span>'
-                    f'<span class="rt">{r} to 1</span></li>' for f, l, r, w, a, L in steps)
+                    f'<span class="rt">{r} to 1</span></li>' for f, l, r, w, a, L in steps)
     gcells = ''.join(f'<li style="background:{v(f)};color:{v(l)}"><span class="ar" aria-hidden="true">{a}</span><span class="wd">{w}</span></li>'
                      for f, l, r, w, a, L in steps)
     seq, seq_r = [], []
@@ -863,7 +864,7 @@ def s_05_7(ctx):
         lab = f'oa.chart.color.sequential.label.step{i}.{N}'
         r = ctx.ratio(lab, fill)
         seq_r.append(r)
-        seq.append(f'<li style="background:{v(fill)};color:{v(lab)}"><span class="wd">Step {i}</span><span class="rt">{r} to 1</span></li>')
+        seq.append(f'<li style="background:{v(fill)};color:{v(lab)}"><span class="wd">Step {i}</span><span class="rt">{r} to 1</span></li>')
     roles = [('Subject', 'oa.chart.color.subject.onNewsprint', 'The series the title names'),
              ('Context', 'oa.chart.color.context.onNewsprint', 'Every other series'),
              ('Gridline', 'oa.chart.color.gridline.onNewsprint', 'Decoration only'),
@@ -874,7 +875,7 @@ def s_05_7(ctx):
         role_r.append((n, r))
         edge = f';box-sizing:border-box;border:var(--oa-border-width-hairline) solid {v("oa.chart.color.pointKeyline.onNewsprint")}' if 'point' in path else ''
         sw = ' data-red="swatch"' if 'point' in path else ''
-        rl.append(f'<li><span class="ln"{sw} style="background:{v(path)}{edge}"></span><span><b>{n}</b> {job}<span class="rt2">{r} to 1 on Newsprint</span></span></li>')
+        rl.append(f'<li><span class="ln"{sw} style="background:{v(path)}{edge}"></span><span><b>{n}</b> {job}<span class="rt2">{r} to 1 on Newsprint</span></span></li>')
     # color-vision separation of the diverging scale's neighbors
     hexes = [ctx.hx(f) for f, *_ in steps]
     worst = {}

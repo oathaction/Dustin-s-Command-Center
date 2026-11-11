@@ -3160,9 +3160,9 @@ def build(args):
     {proofs_html}
   </main>
 </div>
-<footer class="colophon oa-surface-charcoal" id="colophon">
+<footer class="colophon oa-surface-charcoal" id="colophon" data-track="back" data-label="Colophon">
   <div class="colophon-inner">
-    <p class="colophon-k">Colophon</p>
+    <p class="colophon-k">Colophon</p><p class="return" hidden></p>
     <dl class="colophon-list">
       <div><dt>Edition</dt><dd>Oath &amp; Action Brand Guide, Edition 06. {e(edition_line)}</dd></div>
       <div><dt>Contact</dt><dd>The editor. Ask the editor for any file this guide lists. Every co-branded piece goes to Dustin Cathcart, or an editor he names, before it prints or posts. An address follows once our web address is settled.</dd></div>

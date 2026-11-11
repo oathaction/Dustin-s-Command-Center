@@ -354,10 +354,11 @@ def s_03_opener():
                  ("L5", "Wordmark and tagline", l5(400))]
     finally:
         LIB.REF[0] = None
-    body = ('<div class="oai-pad oai-s-newsprint"><div class="oai-op3">'
+    # the plate's stage gives the opener its 24 px inset (16 px on a phone), so the grid takes the whole width
+    body = ('<div class="oai-op3">'
             + "".join(f'<div class="oai-op3-c{" oai-op3-c--wide" if code == "L5" else ""}">{m}<p class="oai-tag">{code} {E(name)}</p></div>'
                       for code, name, m in cells)
-            + '</div></div>')
+            + '</div>')
     alt = ("The lockups at true size on Newsprint, each with its name, two to a row: L1, the wordmark, beside L8, the O & A "
            "monogram; S1, OATH & over ACTION on two flush-left lines, beside L4, the monogram, a hairline and the tagline; L3, "
            "the wordmark with the lockmark at its right, beside L7, the wordmark, a hairline and the word TRACK. On screens "

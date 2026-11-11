@@ -2016,8 +2016,11 @@ async function checkPage(browser, file, widths, opts = {}) {
       a.fixPass = await page.evaluate(() => {
         const caps = [...document.querySelectorAll('figure.plate--failure')].map((f) => {
           const c = f.querySelector(':scope > .plate-cap'); const sid = (f.querySelector('[data-specimen]') || {}).getAttribute ? f.querySelector('[data-specimen]').getAttribute('data-specimen') : f.id;
-          const lead = c ? c.querySelector(':scope > strong:first-child, :scope > b:first-child') : null;
-          const ok = !!(c && lead && /^Fails Rules? \d{2}\.\d{1,2}\b/.test(lead.textContent.trim()) && c.textContent.trim().startsWith(lead.textContent.trim()));
+          // the shell's Illustrative label may stand first (C-S8); the caption's own words lead with the bold "Fails Rule"
+          const kids = c ? [...c.children].filter((k) => !k.classList.contains('illus')) : [];
+          const lead = kids[0] && /^(STRONG|B)$/.test(kids[0].tagName) ? kids[0] : null;
+          const words = c ? [...c.childNodes].filter((n) => !(n.nodeType === 1 && n.classList.contains('illus'))).map((n) => n.textContent).join('').trim() : '';
+          const ok = !!(c && lead && /^Fails Rules? \d{2}\.\d{1,2}\b/.test(lead.textContent.trim()) && words.startsWith(lead.textContent.trim()));
           return { sid, ok, text: c ? c.textContent.trim().slice(0, 60) : '(no caption)' };
         });
         const files = [...document.querySelectorAll('.file-list li')].map((li) => li.textContent.replace(/\s+/g, ' ').trim()).filter((t) => /(?:^|[\s(])(?:work|brief|source|deliverables)\/|\.(?:py|mjs|js|md)\b/.test(t));

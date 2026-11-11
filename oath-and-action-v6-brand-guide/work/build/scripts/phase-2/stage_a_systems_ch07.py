@@ -347,7 +347,7 @@ def stack_table(ctx, cut=False):
     rows = []
     for fg, bg, use in pairs:
         r = ctx.ratio(f'oa.color.palette.{fg}', f'oa.color.palette.{bg}')
-        rows.append((f'{name[fg]} on {name[bg]}', f'{r} to 1', use))
+        rows.append((f'{name[fg]} on {name[bg]}', f'{r} to 1', use))
     sec = v('oa.color.text.secondary.onNewsprint')
     if not cut:
         lis = ''.join(f'<li><p class="pr">{a}</p><p class="rt">{b}</p><p class="us">{c}</p></li>' for a, b, c in rows)
