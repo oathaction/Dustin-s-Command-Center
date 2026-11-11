@@ -40,7 +40,7 @@
   "notes": [
     "The gap between citizens 18 to 24 and those 65 and over: 23.1 points in 2020 (margin of error 1.4) and 27.0 in 2024 (margin 1.5). It grew 3.9 points, more than the change’s margin of error of about 2.0.",
     "These rates are what people told a Census survey, which runs higher than counted ballots. Margins are at 90 percent; Table A-1 prints none, so Oath & Action computed them from the Bureau’s published variance parameters.",
-    "Changes of two points or less read as little change."
+    "Each label tests a group’s change against its own 90 percent margin of error: 18 to 24 fell 3.7 points (margin 1.7) and 25 to 44 fell 2.4 (margin 1.0), both past their margins; 45 to 64 fell 1.0 against a margin of about 1.0, too close to call because the published rates are rounded to a tenth; 65 and over rose 0.2 (margin 1.1), within its margin."
   ],
   "source_line": "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting by age, and Table 1 with the Source and Accuracy statements, November 2020 and 2024, United States. Retrieved November 6 and 11, 2026. Self-reported voting among citizens 18 and over; margins computed by Oath & Action from the Bureau’s variance parameters.",
   "credit": "Chart: Oath & Action",
@@ -74,7 +74,7 @@
     ]
   },
   "chart_notes": [
-    "Each row runs from its 2020 rate, an open dot, to its 2024 rate, a solid dot. Labels at the right give the change: down 3.7 points for citizens 18 to 24; down 2.4 points for 25 to 44; little change for 45 to 64 (−1.0) and 65 and over (+0.2)."
+    "Each row runs from its 2020 rate, an open dot, to its 2024 rate, a solid dot. Labels at the right test each change against its own margin of error: down 3.7 points for citizens 18 to 24 and down 2.4 for 25 to 44, both past their margins; too close to call for 45 to 64 (−1.0); within the margin for 65 and over (+0.2)."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -99,8 +99,8 @@
     "row_words": {
       "18_to_24": "Down 3.7 points",
       "25_to_44": "Down 2.4 points",
-      "45_to_64": "Little change (−1.0)",
-      "65_and_over": "Little change (+0.2)"
+      "45_to_64": "Too close to call (−1.0)",
+      "65_and_over": "Within the margin (+0.2)"
     },
     "domain": [
       40,
@@ -111,7 +111,8 @@
     "Grade line opens with H08's grade word, Documented.",
     "D3-83: the grade line prints 'Documented' with its source after the colon; 'Official statistic' leaves every spec.",
     "R4 and DR-64: the research lead's census-cps-voting-age-gap-moe gives the margins; the gap's growth passes its margin, and the first note says so. The source line names both tables; the second dataset feeds no mark.",
-    "Statistics P2-S3: the source line prints the observation period the chart draws, November 2020 and 2024 (Rule 13.6). The change labels keep the two-point rule until the research lead adds each group's change margin (R7); the 45 to 64 change sits about at its own margin."
+    "Statistics P2-S3: the source line prints the observation period the chart draws, November 2020 and 2024 (Rule 13.6). The change labels keep the two-point rule until the research lead adds each group's change margin (R7); the 45 to 64 change sits about at its own margin.",
+    "R7, statistics P2-S3: the change labels follow each group's own margin from census-cps-voting-age-gap-moe (change_2020_to_2024 rows), in place of the two-point rule."
   ],
   "formats": {
     "value": "number:1",

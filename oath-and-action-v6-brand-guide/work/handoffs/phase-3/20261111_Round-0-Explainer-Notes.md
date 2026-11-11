@@ -181,9 +181,6 @@ November 11, from `work/handoffs/phase-3/20261111_Round-0-Fix-Brief-Part-2.md`: 
 | Access S4 (words) | `empty` words per column, ready for the kit: "Not published" (S02, S05 margins), "No ban" and "None" (S07), "The atlas gives no separate reason." (S06). S14's Status prints "Final" through `words` today; S05's race column names its not-applicable rows | S02, S05, S06, S07, S14 |
 
 Not fixed by me, and why:
-- Statistics P2-S3's labels by margin (S04): the margins of each age group's change are not in the data; the research lead's table holds the gap's. R7 below. The two-point labels stay until then.
-- Statistics P2-S2 (S01's and S13's margins): R5 and R8 below; no number to print yet.
-- Statistics P2-S7 (S06's 2036 horizon): the research lead has not yet cited the V7 field; the words keep 2036 until it does or says none exists.
 - Brand KS7 (S10's row pitch): the form takes no pitch from a spec; E31.
 - Every kit item the brief gives the engineer (D3-93 to D3-97, D3-100 to D3-102, K1, K2, KS1 to KS6, KS8, KS9, KS11, KS12, KM1, KM3, S1 to S3, S5 to S9).
 
@@ -200,3 +197,16 @@ D3-xxx | The November 3 outcomes sit in each chart's first note, with the Alaska
 D3-xxx | S07's title keeps its count of 17 and credits it to Ballotpedia's reading | The reviewer offered both; the count is the chart's finding, and the credit says whose reading it is
 
 Tested in fix pass 2: `oa-chart.mjs build --all`, 16 of 16 passing; S06 and S09 viewed at 1440 after the change; the outcome percentages recomputed from the research lead's counts (61.04, 61.84 and 47.43 percent to one decimal, and the complements). Not tested: the other 14 specimens viewed after this pass; S09 at 390; any `empty` word, which the kit does not print yet.
+
+Later in fix pass 2, from the research lead's answers:
+
+| Code | Fix | Spec |
+|---|---|---|
+| Statistics P2-S3, R7 | Each change label follows its own 90 percent margin: "Down 3.7 points" and "Down 2.4 points" (past their margins of 1.7 and 1.0), "Too close to call (−1.0)" for 45 to 64 (margin about 1.0), "Within the margin (+0.2)" for 65 and over (margin 1.1); the two-point rule leaves the notes | S04 |
+| Statistics P2-S2, R8 | A note: the Bureau publishes no sampling error for a change over this many months, and gives errors of 0.1 to 0.9 percent for these industries' levels and none for government, with its source until ENG-9 adds it to the sidecar | S13 |
+| Statistics P2-S2, R5 | The first note gives the survey's margin as its publisher states it: plus or minus 1.9 percent for the whole sample, no confidence level stated, none by party | S01 |
+| Statistics P2-S7 | A note cites the year: 2036 is the horizon the atlas sets for its outcome families' benchmarks, each from a 2026 baseline; the scenarios name no year of their own. The title keeps its year, as the sidecar's source line does | S06 |
+
+D3-xxx | S06 keeps "by 2036" and cites V7's outcomes note for it | The research lead offered citing or dropping; the sidecar's source line says "to 2036", and a cited year keeps the title and the source line in step
+
+Rebuilt S01, S04, S06 and S13: each passes. Board folder refreshed. R7 and R8 are closed; the open requests are E27, E29, E30 and E31.

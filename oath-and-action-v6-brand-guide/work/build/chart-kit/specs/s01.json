@@ -21,7 +21,7 @@
   "reading_guide": "The May 2023 survey asked about a stock-trading ban alone, three years before either vote on H.R. 7008, the Stop Insider Trading Act. As the House passed it, the bill would bar members of Congress, their spouses and dependent children from buying individual stocks, and it would require photo ID to vote in federal elections.",
   "measure_line": "Registered voters who favor a ban, percent, by party, survey of May 2023, United States; the votes on H.R. 7008, which pairs a limit on members’ stock purchases with a photo ID requirement to vote in federal elections, in the House (July 22, 2026) and the Senate (September 30, 2026), by party, each bar running from the votes for to the votes against",
   "notes": [
-    "Survey of 2,625 registered voters, May 19 to 30, 2023, three years before either vote.",
+    "Survey of 2,625 registered voters, May 19 to 30, 2023, three years before either vote. The Program for Public Consultation gives a margin of error of plus or minus 1.9 percent for the whole sample, with no confidence level stated and none by party.",
     "The two parties sit one point apart; the bars run from 0 to 100 percent.",
     "House roll call 280, on passing the bill: Republicans voted 218 to 0 and Democrats 13 to 198, with one Democrat not voting; the one independent voted yes. Senate vote 253, on ending debate on taking up the bill: Republicans voted 53 to 0, Democrats 0 to 45 and independents 0 to 2.",
     "Taking up the bill needed 60 votes, three-fifths of the Senate, to end debate (cloture)."
@@ -135,7 +135,8 @@
     "D3-83: a survey finding carries the publisher's margin where one exists; the Program for Public Consultation's margin is not in the data (request R5 to the research lead).",
     "No disclosure (DR-100).",
     "D3-99: the votes' heading names the bill and the year with no word that ties the votes to the survey; the House label names both provisions where the votes are drawn (DR-98's words); the alt text names both. 'For' and 'against' in every segment wait on E27: each vote carries party_words_yes and party_words_no, ready, and the measure line says until then which end of each bar holds the votes for.",
-    "E30 pending: when the big-number form steps a vote's bar below a wrapped label at desktop, set the House label to 'The House passed H.R. 7008, which pairs a limit on members’ stock purchases with a photo ID requirement to vote in federal elections', so both provisions sit in the vote block itself (D3-99). Until then the measure line, directly above the drawing, names both."
+    "E30 pending: when the big-number form steps a vote's bar below a wrapped label at desktop, set the House label to 'The House passed H.R. 7008, which pairs a limit on members’ stock purchases with a photo ID requirement to vote in federal elections', so both provisions sit in the vote block itself (D3-99). Until then the measure line, directly above the drawing, names both.",
+    "R5, statistics P2-S2: the survey's margin as its publisher states it, from the research lead (ENG-9 adds it to the sidecar)."
   ],
   "formats": {
     "big": "percent:0",
