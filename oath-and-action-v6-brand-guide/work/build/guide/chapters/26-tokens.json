@@ -26,7 +26,7 @@
    "before_rule": "26.5",
    "number": 3,
    "title": "Using the files",
-   "line": "Start a page from tokens.css, follow the reader's light or dark setting, look up any token and download the files."
+   "line": "Start a page from tokens.css, follow the reader’s light or dark setting, look up any token and download the files."
   }
  ],
  "rules": [
@@ -50,7 +50,7 @@
    },
    "correct": {
     "specimen": "s-26-1-correct",
-    "caption": "One value in its three tiers. The button's label reads the component token, which points to disabled text on Newsprint, which points to Deep Stone."
+    "caption": "One value in its three tiers. The button’s label reads the component token, which points to disabled text on Newsprint, which points to Deep Stone."
    },
    "failure": {
     "specimen": "s-26-1-failure",
@@ -98,7 +98,7 @@
    ],
    "why": {
     "text": [
-     "Each token is a value someone must test, describe and keep. The five conditions keep the set small and every token's reason on record, so the next person who asks why a gray exists can read the answer in the file."
+     "Each token is a value someone must test, describe and keep. The five conditions keep the set small and every token’s reason on record, so the next person who asks why a gray exists can read the answer in the file."
     ],
     "basis": "Design judgment"
    },
@@ -121,11 +121,11 @@
     },
     {
      "label": "Record",
-     "value": "<code>$description</code>, tier and status in the token's own entry; the need's ID and evidence in the file's register"
+     "value": "<code>$description</code>, tier and status in the token’s own entry; the need’s ID and evidence in the file’s register"
     },
     {
      "label": "Release",
-     "value": "A new token raises the version's second number (Rule 26.8)"
+     "value": "A new token raises the version’s second number (Rule 26.8)"
     }
    ],
    "related": [
@@ -140,9 +140,9 @@
    "id": "26.3",
    "title": "Choose a token in five steps: surface, role, emphasis, state, then any component token, which wins.",
    "rule": [
-    "Start from the surface the element sits on: Newsprint, White, Charcoal or Prussian. Then its role, which here means the token's job and not the role a screen reader names: text, graphic, border, focus, data, action, state or field. Then its emphasis: primary or secondary text, an essential or subtle graphic, a strong or hairline border, the data a chart is about or its context. Then its state, if it has one, such as selected, disabled, warning or error. Last, look for a component token for the part you are drawing, such as a button's disabled label. When one exists, use it, since it already holds the component's own choice.",
+    "Start from the surface the element sits on: Newsprint, White, Charcoal or Prussian. Then its job, which a token’s name calls its role: text, graphic, border, focus, data, action, state or field. Then its emphasis: primary or secondary text, an essential or subtle graphic, a strong or hairline border, the data a chart is about or its context. Then its state, if it has one, such as selected, disabled, warning or error. Last, look for a component token for the part you are drawing, such as a button’s disabled label. When one exists, use it, since it already holds the component’s own choice.",
     "A message with no state of its own, such as a correction notice, takes primary text for its words and the essential graphic for its 4 px bar: <code>--oa-color-text-primary</code>, and <code>--oa-color-graphic-essential</code> at <code>--oa-border-width-bar</code>. Leave the strong border to the edges of fields and controls, since a change to those edges would move the notice too.",
-    "In CSS the first step is the theme or a class. With tokens.css linked, the theme points every short name at the page's ground, Newsprint in the light theme and Charcoal in the dark one. A block that must keep one ground in both themes takes a surface class: <code>.oa-surface-prussian</code> points every short name inside it at Prussian's tokens. Either way your code names the role alone, <code>--oa-color-text-secondary</code>, and draws right on whatever ground the block sits on."
+    "In CSS the first step is the theme or a class. With tokens.css linked, the theme points every short name at the tokens for the page’s ground, Newsprint in the light theme and Charcoal in the dark one. A block that must keep one ground in both themes takes a surface class: <code>.oa-surface-prussian</code> points every short name inside it at Prussian’s tokens. Either way your code names the role alone, <code>--oa-color-text-secondary</code>, and draws right on whatever ground the block sits on."
    ],
    "tokens": [
     "oa.color.text.secondary.onCharcoal",
@@ -162,7 +162,7 @@
    },
    "failure": {
     "specimen": "s-26-3-failure",
-    "caption": "<strong>Fails Rule 26.3.</strong> The first step was skipped, and a caption on Prussian took Newsprint's secondary text token: 1.72 to 1."
+    "caption": "<strong>Fails Rule 26.3.</strong> The first step was skipped, and a caption on Prussian took Newsprint’s secondary text token: 1.72 to 1."
    },
    "specs": [
     {
@@ -171,7 +171,7 @@
     },
     {
      "label": "2 Role",
-     "value": "The token's job: text, graphic, border, focus, data, action, state, field"
+     "value": "The token’s job: text, graphic, border, focus, data, action, state, field"
     },
     {
      "label": "3 Emphasis",
@@ -197,7 +197,7 @@
     "18"
    ],
    "builders": [
-    "Write the role's short name in your CSS. Add a surface class in your HTML only where a block must keep one ground in both themes, such as a Prussian panel. A component then needs no change to move from one surface or theme to another."
+    "Write the role’s short name in your CSS. Add a surface class in your HTML only where a block must keep one ground in both themes, such as a Prussian panel. A component then needs no change to move from one surface or theme to another."
    ]
   },
   {
@@ -229,7 +229,7 @@
      },
      "failure": {
       "specimen": "s-26-4-1-failure",
-      "caption": "<strong>Fails Rule 26.4.</strong> Stone looks close, and it is a graphic's color: 4.29 to 1, under the 4.5 to 1 small text needs."
+      "caption": "<strong>Fails Rule 26.4.</strong> Stone looks close, and it is a graphic’s color: 4.29 to 1, under the 4.5 to 1 small text needs."
      },
      "code": {
       "set": "c-26-caption",
@@ -241,7 +241,7 @@
      "title": "A download button that waits for a choice, on White",
      "correct": {
       "specimen": "s-26-4-2-correct",
-      "caption": "Surface White, role action, state disabled, then the button's own tokens, which win: a dashed edge and a label at 7.74 to 1, with the reason under it."
+      "caption": "Surface White, role action, state disabled, then the button’s own tokens, which win: a dashed edge and a label at 7.74 to 1, with the reason under it."
      },
      "failure": {
       "specimen": "s-26-4-2-failure",
@@ -261,7 +261,7 @@
      },
      "failure": {
       "specimen": "s-26-4-3-failure",
-      "caption": "<strong>Fails Rules 26.4 and 05.3.</strong> The highlight takes Pillar Red with no keyline, 2.96 to 1, while an error already holds the view's red."
+      "caption": "<strong>Fails Rules 26.4 and 05.3.</strong> The highlight takes Pillar Red with no keyline, 2.96 to 1, while an error already holds the view’s red."
      },
      "code": {
       "set": "c-26-chart",
@@ -282,7 +282,7 @@
      "code": {
       "set": "c-26-warning",
       "name": "Warning in a tracker",
-      "caption": "The block carries <code>.oa-surface-prussian</code>, so the warning reads Prussian's tokens in both themes."
+      "caption": "The block carries <code>.oa-surface-prussian</code>, so the warning reads Prussian’s tokens in both themes."
      }
     }
    ],
@@ -315,15 +315,15 @@
     "18"
    ],
    "builders": [
-    "Each code set's CSS opens with the five steps it took and the ratios they give, so you can follow the same path for a part of your own."
+    "Each code set’s CSS opens with the five steps it took and the ratios they give, so you can follow the same path for a part of your own."
    ]
   },
   {
    "id": "26.5",
-   "title": "Start every page from tokens.css: link it, then set the body's margin and type.",
+   "title": "Start every page from tokens.css: link it, then set the body’s margin and type.",
    "rule": [
-    "Link the brand's fonts and tokens.css before your own styles, then give the body one rule: <code>body { margin: 0; font: var(--oa-type-body) }</code>. It sets Inter at 17 px with a line height of 1.6 wherever text asks for no other style, and removes the browser's 8 px margin, so a component sits where its code puts it. Leave the body with no surface class, so the theme sets its ground (Rule 26.6).",
-    "A product that follows the reader's light or dark setting also declares <code>&lt;meta name=\"color-scheme\" content=\"light dark\"&gt;</code> in its head, so the browser draws its own scroll bars and form controls to match. If it offers the theme switch of Rule 18.4, the head script comes first, before the stylesheets, so a stored choice applies before the page first draws (Rule 26.6).",
+    "Link the brand’s fonts and tokens.css before your own styles, then give the body one rule: <code>body { margin: 0; font: var(--oa-type-body) }</code>. It sets Inter at 17 px with a line height of 1.6 wherever text asks for no other style, and removes the browser’s 8 px margin, so a component sits where its code puts it. Leave the body with no surface class, so the theme sets its ground (Rule 26.6).",
+    "A product that follows the reader’s light or dark setting also declares <code>&lt;meta name=\"color-scheme\" content=\"light dark\"&gt;</code> in its head, so the browser draws its own scroll bars and form controls to match. If it offers the theme switch of Rule 18.4, the head script comes first, before the stylesheets, so a stored choice applies before the page first draws (Rule 26.6).",
     "tokens.css holds tokens and themes and nothing else. A page that draws one of the 41 symbols at 24 px (Rules 09.3 and 10.4) also needs the two lines that show the pixel fit on a screen under 2x and the master from 2x: <code>.oa-at-2x { display: none }</code> and <code>@media (min-resolution: 2dppx) { .oa-at-1x { display: none } .oa-at-2x { display: inline } }</code>."
    ],
    "tokens": [
@@ -331,17 +331,17 @@
    ],
    "why": {
     "text": [
-     "Every code set in chapters 18 and 26 assumes exactly this page. The guide checks each one by pasting its code into a page that holds the fonts, tokens.css and this body rule and nothing else, then compares what it draws, and the styles each part computes, with the live demo. Rule 19.8's results list any difference."
+     "Every code set in chapters 18 and 26 assumes exactly this page. The guide checks each one by pasting its code into a page that holds the fonts, tokens.css and this body rule and nothing else, then compares what it draws, and the styles each part computes, with the live demo. Rule 19.8’s results list any difference."
     ],
     "basis": "Design judgment"
    },
    "correct": {
     "specimen": "s-26-5-correct",
-    "caption": "The head of a page started from tokens.css, and the body text it draws against the window's edge, with no margin."
+    "caption": "The head of a page started from tokens.css, and the body text it draws against the window’s edge, with no margin."
    },
    "failure": {
     "specimen": "s-26-5-failure",
-    "caption": "<strong>Fails Rule 26.5.</strong> With the body rule left out, the text falls back to the browser's serif at 16 px inside an 8 px margin."
+    "caption": "<strong>Fails Rule 26.5.</strong> With the body rule left out, the text falls back to the browser’s serif at 16 px inside an 8 px margin."
    },
    "specs": [
     {
@@ -377,12 +377,12 @@
   },
   {
    "id": "26.6",
-   "title": "Let a product follow the reader's light or dark setting through one attribute.",
+   "title": "Let a product follow the reader’s light or dark setting through one attribute.",
    "rule": [
-    "tokens.css carries a light theme on Newsprint and a dark theme on Charcoal. With no attribute on the page's root, a page follows the device. <code>data-oa-theme=\"light\"</code> or <code>\"dark\"</code> on the root wins over the device, and <code>\"device\"</code> hands the choice back. On any other element the attribute sets that element and everything inside it.",
-    "A reader's switch (Rule 18.4) stores Light or Dark under the key <code>oa-theme</code>, and Match my device removes it. A short script in the head applies a stored choice before the page first draws, so it never flashes the wrong ground. Paint a menu's or dialog's own ground with <code>--oa-color-surface</code>, and an entry box's with <code>--oa-color-field-ground</code>, so both follow the theme.",
+    "tokens.css carries a light theme on Newsprint and a dark theme on Charcoal. With no attribute on the page’s root, a page follows the device. <code>data-oa-theme=\"light\"</code> or <code>\"dark\"</code> on the root wins over the device, and <code>\"device\"</code> hands the choice back. On any other element the attribute sets that element and everything inside it.",
+    "A reader’s switch (Rule 18.4) stores Light or Dark under the key <code>oa-theme</code>, and Match my device removes it. A short script in the head applies a stored choice before the page first draws, so it never flashes the wrong ground. Paint a menu’s or dialog’s own ground with <code>--oa-color-surface</code>, and an entry box’s with <code>--oa-color-field-ground</code>, so both follow the theme.",
     "A surface class keeps its own ground in both themes. In a product that follows the theme, put no surface class on the body, or on any block that should follow it. Use one only where a block must keep one ground, as the White and Prussian examples of Rule 26.4 do.",
-    "A few roles have no Charcoal token yet and stay unset in the dark theme: the diverging chart scale, the Error Band, and two keylines red needs only on Newsprint, the ask button's and a chart point's. An error on Charcoal keeps its bar, mark and words with no band."
+    "A few roles have no Charcoal token yet and stay unset in the dark theme: the diverging chart scale, the Error Band, and two keylines red needs only on Newsprint, the ask button’s and a chart point’s. An error on Charcoal keeps its bar, mark and words with no band."
    ],
    "tokens": [
     "oa.color.surface.newsprint",
@@ -402,7 +402,7 @@
    },
    "failure": {
     "specimen": "s-26-6-failure",
-    "caption": "<strong>Fails Rule 26.6.</strong> The words name Newsprint's text token, so in the dark theme they stay Charcoal on Charcoal: 1.00 to 1."
+    "caption": "<strong>Fails Rule 26.6.</strong> The words name Newsprint’s text token, so in the dark theme they stay Charcoal on Charcoal: 1.00 to 1."
    },
    "specs": [
     {
@@ -423,7 +423,7 @@
     },
     {
      "label": "Unset in the dark theme",
-     "value": "The diverging chart scale, the Error Band, the ask button's keyline and a chart point's keyline"
+     "value": "The diverging chart scale, the Error Band, the ask button’s keyline and a chart point’s keyline"
     }
    ],
    "related": [
@@ -439,7 +439,7 @@
    "id": "26.7",
    "title": "Look up any token in the table, and copy its name from there.",
    "rule": [
-    "The table lists every token in tokens.json, 504 in all, in 17 groups by category, each closed until you open it. A row gives the token's name in the JSON and in CSS, its value, its job, its tier and, for a color, the contrast it measures on each surface it serves. Search by any of those words, and every group that holds a match opens. Copy puts the CSS name on your clipboard."
+    "The table lists every token in tokens.json, 504 in all, in 17 groups, each closed until you open it. The groups follow Rule 26.1’s 13 categories, with color split into four groups and chart into two, font listed as “Type: faces and weights” and z-index as “Stacking order”. A row gives the token’s name in the JSON and in CSS, its value, its job, its tier and, for a color, the contrast it measures on each surface it serves. Search by any of those words, and every group that holds a match opens. Copy puts the CSS name on your clipboard."
    ],
    "tokens": [],
    "why": {
@@ -454,7 +454,7 @@
    },
    "failure": {
     "specimen": "s-26-7-failure",
-    "caption": "<strong>Fails Rule 26.7.</strong> A gray typed from an old file, #4E535C, where Deep Stone's name belongs. It matches today and falls behind with the next release."
+    "caption": "<strong>Fails Rule 26.7.</strong> A gray typed from an old file, #4E535C, where Deep Stone’s name belongs. It matches today and falls behind with the next release."
    },
    "specs": [
     {
@@ -475,7 +475,7 @@
     "06"
    ],
    "builders": [
-    "The Use column prints each token's description from tokens.json word for word, and a deprecated token says which name replaced it."
+    "The Use column prints each token’s description from tokens.json word for word, and a deprecated token says which name replaced it."
    ]
   },
   {
@@ -503,7 +503,7 @@
    },
    "failure": {
     "specimen": "s-26-8-failure",
-    "caption": "<strong>Fails Rule 26.8.</strong> A token renamed in a release of the second part, with no alias and no note. A page's caption loses its gray, and nothing warns."
+    "caption": "<strong>Fails Rule 26.8.</strong> A token renamed in a release of the second part, with no alias and no note. A page’s caption loses its gray, and nothing warns."
    },
    "specs": [
     {
@@ -532,7 +532,7 @@
     "28"
    ],
    "builders": [
-    "Read the change note before you update a product's copy of tokens.css. The newest note also sits at the top of the file."
+    "Read the change note before you update a product’s copy of tokens.css. The newest note also sits at the top of the file."
    ]
   }
  ],
@@ -556,7 +556,7 @@
   },
   {
    "chapter": "18",
-   "reason": "Every component's code, built on these tokens, in both themes."
+   "reason": "Every component’s code, built on these tokens, in both themes."
   },
   {
    "chapter": "19",

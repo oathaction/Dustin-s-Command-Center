@@ -19,7 +19,7 @@
   "chapter": "26",
   "rule": "26.1",
   "width_px": null,
-  "alt": "A line of CSS that colors an unavailable button's label with the primitive Deep Stone, then the same button twice: on Newsprint its label measures 5.49 to 1; in the dark theme, on Charcoal, the primitive stays Deep Stone and the label all but disappears, at 2.42 to 1.",
+  "alt": "A line of CSS that colors an unavailable button’s label with the primitive Deep Stone, then the same button twice: on Newsprint its label measures 5.49 to 1; in the dark theme, on Charcoal, the primitive stays Deep Stone and the label all but disappears, at 2.42 to 1.",
   "illustrative": false,
   "notes": "A labeled failure: the label on Charcoal fails on purpose.",
   "check_exempt": [
@@ -147,7 +147,7 @@
   "chapter": "26",
   "rule": "26.5",
   "width_px": null,
-  "alt": "The lines a page's head needs: for a product with the theme switch, the head script first; then the color scheme meta tag, the brand's fonts from Google Fonts, tokens.css, and the body rule margin 0 with the body type. Under them, a browser window drawn as a frame, and the page inside it: a sentence in Inter at 17 px that starts at the window's edge, with no margin.",
+  "alt": "The lines a page’s head needs: for a product with the theme switch, the head script first; then the color scheme meta tag, the brand’s fonts from Google Fonts, tokens.css, and the body rule margin 0 with the body type. Under them, a browser window drawn as a frame, and the page inside it: a sentence in Inter at 17 px that starts at the window’s edge, with no margin.",
   "illustrative": false,
   "notes": ""
  },
@@ -155,7 +155,7 @@
   "chapter": "26",
   "rule": "26.5",
   "width_px": null,
-  "alt": "The same head with the body rule left out, and the page it draws in a browser window drawn as a frame: the sentence in the browser's own serif at 16 px, 8 px in from the window's edge, so no component sits where its code says.",
+  "alt": "The same head with the body rule left out, and the page it draws in a browser window drawn as a frame: the sentence in the browser’s own serif at 16 px, 8 px in from the window’s edge, so no component sits where its code says.",
   "illustrative": false,
   "notes": "A labeled failure: the browser's default type, off the scale on purpose.",
   "check_exempt": [
@@ -185,7 +185,7 @@
   "chapter": "26",
   "rule": "26.7",
   "width_px": null,
-  "alt": "A line of CSS that types the gray #4E535C from an old file where Deep Stone's name belongs, and the two swatches side by side: #4E535C and Deep Stone, #4E535B, one digit apart. A release that changes Deep Stone never reaches the typed value.",
+  "alt": "A line of CSS that types the gray #4E535C from an old file where Deep Stone’s name belongs, and the two swatches side by side: #4E535C and Deep Stone, #4E535B, one digit apart. A release that changes Deep Stone never reaches the typed value.",
   "illustrative": false,
   "notes": ""
  },
@@ -193,7 +193,7 @@
   "chapter": "26",
   "rule": "26.8",
   "width_px": null,
-  "alt": "The change note of version 6.0.0-gate2.8, as tokens.json records it. Date: November 11, 2026. Tokens: oa.color.state.error.bar, renamed from oa.color.state.error.mark; oa.color.field.ground.onCharcoal; the description of oa.color.state.loading.mark, and every description that carried a record code or an old name. Change: The token for the 4 px bar beside an error now takes the bar's name: oa.color.state.error.bar, --oa-color-state-error-bar in CSS. The old names stay as deprecated aliases through every 6.0 release and leave with 6.1.0. The field ground on Charcoal is now Charcoal, so a field in the dark theme shows by its strong Newsprint edge and an error's red bar sits on Charcoal at 4.49 to 1; no value is new. The loading mark's description now names the still lines of Rule 17.7, and every description is in plain words. Before 6.0.0, every change raises the number after the hyphen. Why: Red never sits on Prussian (Rule 05.3), and the dark field ground put an error's red bar on Prussian. The guide calls the error glyph the error mark, so the bar's token needed a name of its own, and the table prints every description to readers.",
+  "alt": "The change note of version 6.0.0-gate2.8, as tokens.json records it. Date: November 11, 2026. Tokens: oa.color.state.error.bar, renamed from oa.color.state.error.mark; oa.color.field.ground.onCharcoal; the description of oa.color.state.loading.mark, and every description that carried a record code or an old name. Change: The token for the 4 px bar beside an error now takes the bar’s name: oa.color.state.error.bar, --oa-color-state-error-bar in CSS. The old names stay as deprecated aliases through every 6.0 release and leave with 6.1.0. The field ground on Charcoal is now Charcoal, so a field in the dark theme shows by its strong Newsprint edge and an error’s red bar sits on Charcoal at 4.49 to 1; no value is new. The loading mark’s description now names the still lines of Rule 17.7, and every description is in plain words. Before 6.0.0, every change raises the number after the hyphen. Why: Red never sits on Prussian (Rule 05.3), and the dark field ground put an error’s red bar on Prussian. The guide calls the error glyph the error mark, so the bar’s token needed a name of its own. Chapter 26’s table prints every description for readers, so each one now reads in plain words.",
   "illustrative": false,
   "notes": "The newest change note in tokens.json, read at build."
  },
@@ -201,7 +201,7 @@
   "chapter": "26",
   "rule": "26.8",
   "width_px": null,
-  "alt": "Two versions of a made-up release: in 6.0.0 the secondary text token, and in 6.1.0 the same token renamed with no alias and no change note. Beside them the same sentence and source caption twice: with 6.0.0 the caption is gray, with 6.1.0 it falls back to the body's ink, since the name it reads no longer exists.",
+  "alt": "Two versions of a made-up release: in 6.0.0 the secondary text token, and in 6.1.0 the same token renamed with no alias and no change note. Beside them the same sentence and source caption twice: with 6.0.0 the caption is gray, with 6.1.0 it falls back to the body’s ink, since the name it reads no longer exists.",
   "illustrative": true,
   "notes": "Illustrative release and caption."
  },
@@ -211,6 +211,6 @@
   "interactive": true,
   "fit_switch": false,
   "breakout": true,
-  "alt": "Every token in tokens.json, in groups by category, each closed until opened, under a search field and a list of the groups. Each row gives a token's name, CSS name, value, use, tier and contrast."
+  "alt": "Every token in tokens.json, in groups by category, each closed until opened, under a search field and a list of the groups. Each row gives a token’s name, CSS name, value, use, tier and contrast."
  }
 }

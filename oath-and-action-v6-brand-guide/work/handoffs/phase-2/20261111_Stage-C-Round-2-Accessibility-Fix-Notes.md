@@ -110,3 +110,38 @@ Paths relative to `oath-and-action-v6-brand-guide/`. Nothing in `source/`, `work
 - `work/build/scripts/phase-2/stage_c_ch18_build.py`; its outputs `work/build/guide/chapters/18-components.json`, `work/build/guide/specimens/manifest-components.json`, `s-18-08-failure.html`, `s-18-09-failure.html`, `s-18-10-failure.html`, `s-18-20-failure.html`, `s-18-22-failure.html`, `s-18-23-failure.html`, `s-18-24-failure.html`, and `work/build/guide/code/c-18-button.keys.json`, `c-18-location.keys.json`, `c-18-form.keys.json`
 
 **Scratch, outside the repository** (`/tmp/claude-0/-home-user-Dustin-s-Command-Center/49b1040f-34e8-55e0-97c3-93e08c6dbc2c/scratchpad/round-2-fix/accessibility/`): `wcag/` (the Recommendation and the 4.1.1 Understanding page as fetched), `guides/` (the five device guides), `axecli/` (the CLI package read for its options), `scripts/wcag_parse.py`, `cmp_research.py`, `ch19_selftest.py`, `keys_walk.js`, `shots.js`; builds `b1/` to `b3/`; captures in `shots/` and `shots3/`.
+
+## Second pass
+
+DR-191's short second pass, under the main session's message: every row of section 3 of `20261111_Stage-C-Round-2-Editor-Notes.md` (A1 to A22), applied word for word through my two generators, and the creative director's R2 from its rescore.
+
+### What changed
+
+- **Chapter 18 (`stage_c_ch18_build.py`).** A1, Rule 18.21's Light and dark row names the reader's hairline edge; A2, `s-18-10-failure` gives S.99002's last action as March 3, its hearing in `c-18-tabs` (rows stay newest first: April 2, March 3, January 16); A3, A7 and A9, Rule 18.1's rule words; A4, its code caption; A8, its second builders line; A10, Rule 18.15's Light and dark row; A11, the intro's second paragraph in six sentences; A12, Rule 18.7's code caption. Rule 18.7's code alt still began "A list of a page’s parts and a breadcrumb", the round 1 sample, so it now begins "A breadcrumb and a list of places", as the caption does.
+- **Chapter 19 (`stage_c_ch19_build.py`).** A5, A13, A14 and A16, the builders lines of Rules 19.9, 19.3, 19.5 and 19.7; A6, the intro's line on levels A and AA; A15, Rule 19.5's Gestures and motion row; A17, 3.3.4's line; A18, the 4.1.1 line; A19 and A20, the matrix (A20's words reach the alt through the method); A21, the opener's last tile and alt; A22, both 19.2 alts.
+- **R2, `s-19-5-correct` and `s-19-5-failure`.** The chart now has a title, "Written comments and speakers at the county’s budget hearing, 2019 to 2026", each of its two lines named with its last count at its end ("Comments, 150", "Speakers, 40"), the years 2019 and 2026 under it and a source line. The counts are invented, under the plate's Illustrative chip, and the words are HTML at caption size beside a 200 px drawing, at the plate's true size of 360 px. Both alts describe it.
+
+### Routine calls
+
+- D2-xxx | Every row A1 to A22 is applied as the editor wrote it | DR-191; the editor checked each against the sets
+- D2-xxx | Rule 18.15's row now says the edge alone shows the field on Charcoal, and the generator stops if tokens.json gives the Charcoal field a ground other than Charcoal | A10's words are true only while call 1 holds
+- D2-xxx | Rule 18.7's code alt names a breadcrumb and a list of places | It still named the round 1 sample, which BE-M4 replaced
+- D2-xxx | Rule 19.5's chart puts each line's name and last count at its end, and only the first and last years under it | R2 asks for a name at each line's end and its years; two year labels fit a 200 px drawing at caption size, and the title gives the span
+
+### Tested
+
+- A script read the "Mine" words of all 22 rows in the generated chapter files, manifests and plates: all 22 present, and a search for each row's old words found none.
+- `stage_c_ch18_build.py --check` and `stage_c_ch19_build.py --check`: current.
+- The generator chain, from the project folder in the brief's order, then my generators, twice: the second run changed no file and no commit came between, so my outputs agree with the chain. The other `--check` modes: chapter 17 and the anatomy plates current; `stage_c_ch26_build.py` and `token_table_build.py` report files that are not current, in the engineer's chapter 26 and token files, which were being changed at the same time (`tokens.json` and `tokens.css` modified in the working tree).
+- A strict build of all 16 chapters into my scratch folder: 0 warnings, 8,962,411 bytes; chapter 18 at 1,158,075 bytes, chapter 19 at 170,466.
+- `s-19-5-correct`, `s-19-5-failure` and `s-19-opener` looked at in that build at 1440 and 390 px, 1x and 2x: every word whole, the line names clear of the lines, the plate at 360 px.
+
+### Not tested
+
+- The keys files were not walked again: no row and no set change touched a path.
+- The guide check on this build, and chapter 19's results: the main session's final check comes first.
+- Screen readers, phones, Safari, Firefox and Windows contrast themes, as before.
+
+### Change log
+
+Modified: `work/build/scripts/phase-2/stage_c_ch18_build.py` and its outputs `work/build/guide/chapters/18-components.json` and `work/build/guide/specimens/s-18-10-failure.html`; `work/build/scripts/phase-2/stage_c_ch19_build.py` and its outputs `work/build/guide/chapters/19-accessibility.json`, `work/build/guide/specimens/manifest-accessibility.json`, `s-19-criteria.html`, `s-19-matrix.html`, `s-19-opener.html`, `s-19-5-correct.html`, `s-19-5-failure.html` (A22 changes only the 19.2 alts, which live in the manifest); this file. Created: none. Scratch: build `b6/` and captures `shots6/`. Nothing committed.
