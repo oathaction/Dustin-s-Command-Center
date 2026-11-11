@@ -3185,3 +3185,22 @@ The main session asked five questions with its plan for the Gate 2 preview, the 
 | D2-1702 | The creative director and the drift team start now on a frozen copy of the committed chapters page; the preview's new parts (the "Where to start" page, the font license and the colophon) go to the creative director as an addendum when the preview lands | The preview changes no chapter, so the chapters read the same; starting early saves the build's wait (V11's note on overlapping rounds) |
 | D2-1703 | Notes Dustin sends on the chapters page before the fix pass join it; notes after it go to Phase 3's first board | D2-1695 |
 | D2-1704 | Dustin has no notes on version 7 of the chapters page: "I like everything as is, so just keep moving forward." The fix pass takes only what the Gate 2 reviews find; D2-1695 and D2-1703 close | His words, November 11 |
+
+## Gate 2's reviews and the fix pass, November 11, 2026
+
+### Main session (`20261111_Gate-2-Fix-Brief.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-1705 | The reviews: the creative director 16 of 18 items ready (chapter 26 Usefulness 3; the preview's front pages Craft 3 and Brand fidelity 3; 2 Must fix, 15 Should fix); the drift team 4 of 5 (1 Must fix, 13 Should fix); the accessibility evidence 341 token and surface pairs with 0 failures and five findings, none a WCAG failure. One fix pass takes every item, by six owners | DR-191; the Must fix items block the gate and the Should fix items are craft and wording |
+| D2-1706 | DT-M1 is fixed once in the build: a rule's "Files" list prints only shipped files (assets and tokens) by file name, drops every studio source, and the strict build warns on any other entry | One renderer fixes 49 rules in ten chapters the same way, and the data keeps its record |
+| D2-1707 | CD-S1 (one opener form) and CD-S2 (one failure caption lead and bar) land in this pass for every chapter at once | The creative director's risk note: partial landing leaves the book in three states |
+| D2-1708 | The opener slot opens to every chapter; each opener reuses a drawing the chapter has, under 16 KB, preferring a reference to the page's sprite over a copy; the engineer reports page weight before and after | Page weight is a Phase 3 to 5 risk (D2-1214, DR-227) |
+| D2-1709 | Rule titles take one clause of about twelve words; the second clause moves into the rule's first sentence; numbers never change | CD-S3: chapter 18's titles average 16.6 words and the rail reads as paragraphs |
+| D2-1710 | Rule 06.1's weight set is the one set, in Rules 06.1, 06.10 and 26.5, the code in 26.5's plates and the shell; the embedded files stay unmodified | CD-M1; chapter 06 owns the faces |
+| D2-1711 | Contrast ratios print with two decimals and "to 1" everywhere, the token table included | DT-S11; one form for one fact |
+| D2-1712 | The error bar's tokens drop the keyline metadata, their description says the mark and the word carry the error, and Rule 05.5 names the error bar as that case; DR-199's drawing stands | AX-1; the metadata described a keyline the approved drawing never had |
+| D2-1713 | Every player's Reset names its object (Rule 11.14 stands) | DT-S8; seven bare "Reset" buttons on one page |
+| D2-1714 | The token description changes go out as one pre-release under Rule 26.8, named by the engineer, with no rename and no value change | DT-S5, DT-S6, AX-1, AX-2 |
+| D2-1715 | Chapter 19's results are rerun last from the final guide check on the fixed preview | The creative director's risk note: the plate describes the build of commit 04a3f3b8 |
+| D2-1716 | The engineer, the accessibility lead and the editor resume with their Gate 2 context; the component engineer, the systems designer and the identity designer start fresh from the fix brief | Resumed agents keep their reading (V12); the three makers' earlier agents ran in other chats |
