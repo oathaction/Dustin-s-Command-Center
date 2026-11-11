@@ -113,8 +113,8 @@ None.
 
 ## Tested
 
-- The fix brief's generator chain from the project folder, each script with `python3 -I`, twice: every script exited 0 both times (logs `chain.log` and `chain2.log` in my scratch folder).
-- `guide_build.py --strict --out` into my scratch folder: 0 warnings; 16 chapter files, 185 rules, 433 specimens, 9,442,026 bytes (`final/guide.html`). An earlier build warned on chapter 08's opener at 16,668 bytes, which led to the trimmed CSS.
+- The fix brief's generator chain from the project folder, each script with `python3 -I`, three times: every script exited 0 each time (logs `chain.log`, `chain2.log` and `chain3.log` in my scratch folder).
+- `guide_build.py --strict --out` into my scratch folder: 0 warnings; 16 chapter files, 185 rules, 433 specimens, 9,443,638 bytes (`final2/guide.html`). An earlier build warned on chapter 08's opener at 16,668 bytes, which led to the trimmed CSS.
 - Opener weights as placed, read from the built page by script (table above). Every opener in the page: 2,331 to 14,920 bytes.
 - A check script on the final page in Chromium (`cap/verify.js`), at 1440 and 390 px:
   - All 27 `<use>` elements inside openers resolve to an element on the page.
@@ -137,10 +137,15 @@ None.
 - Call 7 on my scratch build (`cap/call7.js`), at 1440 and 390 px, 1x and 2x: computed sizes, gap, colors, text, which drawing shows at each density and positions, with captures of the start page, the pillar row and the sign-off, and an 8x zoom of each at 1440 px 1x.
 - Dashes: no em or en dash in any of my eleven changed scripts or in this file.
 - `stage_c_ch17_build.py` in the chain places `s-17-hinge-correct`, `s-17-hinge-failure` and `s-17-lever-correct`.
+- `guide_check.js --quick --no-captures` on `final/guide.html`, using the working tree's checker, at 1440 and 390 px: 185 rules, 489 specimens, 2,024 same-page links, 4 failures.
+  - All four were on `s-03-7-failure`, its 55 px type and its red ampersand at 2.96 to 1. My width edit had swallowed the plate's `check_exempt` behind a comment.
+  - The exemption is back. In `final2/guide.html`, rebuilt through the whole chain, the plate's stage carries `data-check-exempt="contrast scale"` as before, and the strict build passes with 0 warnings at 9,443,638 bytes.
+  - The rest passed: fitSwitch 81 of 81 at each setting; motion 7 players, all at their final frame at once under reduced motion; the start page's links and focus order at both widths; fonts local; token table 504 of 504; red beside Prussian.
+- A manifest diff against the start of the pass: no key changed but the alts, notes and the three widths I set, and three openers were added.
 
 ## Not tested
 
-- The full guide check at four widths. I started `guide_check.js --quick --no-captures` on my final scratch page, and its results are in the line below once it finishes.
+- The full guide check at four widths, and a second run of the quick check after I put back `s-03-7-failure`'s exemption.
 - Call 7 on the engineer's own build, which the main session has not sent yet.
 - Firefox, Safari, a real phone, 1.25x and 1.5x screens, forced colors, print and a screen reader.
 - The players in motion after the control change. Only their resting controls were captured; the scripts and their markup hooks did not change.

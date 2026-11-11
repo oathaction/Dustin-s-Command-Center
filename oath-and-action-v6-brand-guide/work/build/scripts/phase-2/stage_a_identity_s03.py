@@ -589,7 +589,8 @@ def s_03_7_failure():
     body = f'<div class="oai-panel oai-s-newsprint"><span class="oai-red" data-red="signature" data-failure="true">{svg}</span></div>'
     alt = ("Failure case: the compact signature from our brand guide's fourth edition, O & A typed in Inter Tight with word "
            "spaces and the font's sans-serif ampersand in red, at the same cap height as L8 at 120 pixels.")
-    return rec("s-03-7-failure", "03.7", 336, alt, body,     # 336 px: the band's words on one line (Gate 2's fix pass) check_exempt=["contrast", "scale"],
+    # 336 px (Gate 2's fix pass): the do-not-publish band holds its words on one line
+    return rec("s-03-7-failure", "03.7", 336, alt, body, check_exempt=["contrast", "scale"],
                notes="V4.2's typed signature at L8's cap height (40 px capitals, so 55 px type): a labeled failure, so check_exempt scale and contrast.")
 
 

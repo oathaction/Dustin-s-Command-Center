@@ -145,7 +145,11 @@
   "width_px": 336,
   "alt": "Failure case: do not publish. The compact signature from our brand guide’s fourth edition, O & A typed in Inter Tight with word spaces and the font’s sans-serif ampersand in red, at the same cap height as L8 at 120 pixels.",
   "illustrative": false,
-  "notes": "V4.2's typed signature at L8's cap height (40 px capitals, so 55 px type): a labeled failure, so check_exempt scale and contrast."
+  "notes": "V4.2's typed signature at L8's cap height (40 px capitals, so 55 px type): a labeled failure, so check_exempt scale and contrast.",
+  "check_exempt": [
+   "contrast",
+   "scale"
+  ]
  },
  "s-03-8-correct": {
   "chapter": "03",
