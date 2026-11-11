@@ -423,7 +423,7 @@
    "plant": "A stylesheet edited by hand, so it no longer matches the source",
    "test": "build",
    "caught": true,
-   "failure": "tokens_build --check: tokens.css in ../../../../tmp/claude-0/-home-user-Dustin-s-Command-Center/49b1040f-34e8-55e0-97c3-93e08c6dbc2c/scratchpad/final/oa-token-plants-rd257j6g differ from what the source builds. Run the b",
+   "failure": "tokens_build --check: tokens.css in ../../../../tmp/claude-0/-home-user-Dustin-s-Command-Center/762f3743-f9b3-59db-919e-2c641afbd759/scratchpad/gate-2/engineer/oa-token-plants-cbtxs7ej differ from what the source builds.",
    "alsoCaughtBy": [
     "parity"
    ]
