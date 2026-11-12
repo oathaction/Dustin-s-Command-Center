@@ -444,3 +444,15 @@ Read and kept: 15.12's caption, specs "Order" and "Connections", the "Each step"
 - Chapter 15's words: a table in this file, applied by the systems designer in its own generator.
 - Modified: this file. Created: none in the repository. Scratch only: `words/words.py`, `words/ch15dump.py`, the change lists, `cap.js`, `cap2.js` and the builds.
 
+## After the second pass
+
+The data lead's RF-25 (its notes, "After the second pass") sets what a builder draws when published margins are narrower than a range bar's dot. Entry 14.74 is maker B's file; I wrote its word field as D3-669 allows, by `words/words.py apply`. The research lead's missing-margin order was already in 14.74 from the second pass.
+
+| File | Field | Before | After | Why |
+|---|---|---|---|---|
+| 14.74 | rule.0 | one within it takes an open dot (Rule 14.9). List rows by their figures | one within it takes an open dot (Rule 14.9). Where a narrow plot leaves the middle row’s interval too short to show past its dot, draw smaller dots, and where even those hide it, drop the lines, print each figure’s margin beside it and say so in a note; the dot stays, filled or open, since it carries the test. List rows by their figures | RF-25, in the data lead's words; its "never a tick in place of the dot" given as the reason the dot stays (W09) |
+
+- D3-xxx | Entry 14.74 says what a builder draws when margins are narrower than the dot: smaller dots, then each margin printed beside its figure with a note, the filled or open dot kept | RF-25 (the access reviewer's N2); the dot carries Rule 14.9's test
+
+Tested: `words.py apply`, one change, one line in `git diff`; `phase3_ch14_build.py` 0 faults; `guide_build.py --strict` exit 0, 0 warnings, the new sentence found once in the page; the lint finds no new hit. Not tested: maker B's two narrow states in `range-bar` and the engineer's check, which are theirs.
+
