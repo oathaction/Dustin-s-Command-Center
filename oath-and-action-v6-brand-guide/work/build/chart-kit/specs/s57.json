@@ -107,6 +107,6 @@
   "phone_note": "On a phone each state’s name and figure share one line, and its interval runs the full width on the line beneath, on one scale.",
   "desk_phone": {
     "rows": 13,
-    "part": "the first 12 places shown; a phone draws all 50 states and the District of Columbia"
+    "part": "the nation and the first 12 places; a phone draws all 50 states and the District of Columbia"
   }
 }

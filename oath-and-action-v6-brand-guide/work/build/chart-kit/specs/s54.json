@@ -20,8 +20,8 @@
   "reading_guide": "States to the right have renters with higher incomes, and states higher up have higher rents. States above the cloud pay more rent for their income.",
   "notes": [
     "This shows the two move together; it does not show one causes the other.",
-    "Rent as a percent of income is the Census Bureau’s own measure: the median, across renter households paying cash rent, of each one’s rent over its income. Florida’s 35.5 percent (margin 0.5) passes the next figures, California’s 32.9 (0.3) and Hawaii’s 32.8 (1.2), by more than their margins.",
-    "North Dakota has the smallest figure, 23.8 percent (margin 1.2); Wyoming’s 25.5 (2.0) sits within its margin."
+    "Rent as a percent of income is the Census Bureau’s own measure: the median, across renter households paying cash rent, of each one’s rent over its income. Florida’s 35.5 percent passes the next figures, California’s 32.9 and Hawaii’s 32.8, by more than each gap’s margin of error at 90 percent confidence; the three figures’ margins are 0.5, 0.3 and 1.2 points.",
+    "North Dakota’s 23.8 percent (margin 1.2) is the smallest estimate, and Wyoming’s 25.5 (margin 2.0) sits within the gap’s margin of it, so the survey cannot order the two."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,

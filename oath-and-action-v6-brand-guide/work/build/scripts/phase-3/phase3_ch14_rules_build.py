@@ -1032,11 +1032,10 @@ def rule_14_8(B):
 # ===============================================================================================================
 # 14.9 Uncertainty, and ranks only past the margin of error
 # ===============================================================================================================
-# ED-E4 (D3-657): Rule 14.9's correct plate moves to maker B's range-bar once the form keeps the plate's narrow phone fit
-# (D3-641). At the 224 px plate column of a 320 px screen, and at 390 px too, the form's name and value columns leave the
-# plot 35 to 80 px, too narrow to read an interval. Request ED-E16 asks the form to set each row's interval under its name
-# and value when the plot runs narrow; then set this True, and the plate and its words switch in one run.
-RANGE_BAR_PHONE = False
+# ED-E4 (D3-657): Rule 14.9's correct plate is drawn by maker B's range-bar. Its narrow phone fit (D3-641) holds since
+# ED-E16: where the plot would fall under 160 px, as at the 294 px and 224 px plate columns of 390 px and 320 px screens,
+# the form sets each row's interval on its own line under the name and value. False draws the static figure as before.
+RANGE_BAR_PHONE = True
 
 
 def turnout10():
@@ -1227,7 +1226,7 @@ def rule_14_11(B):
     gap13, gap17 = segs[1][0][1] - segs[0][-1][1], segs[1][-1][1] - segs[2][0][1]
     need(gap13 == 2200 and gap17 == 300, f"the two breaks' gaps moved: {gap13}, {gap17}")
     guide = (f"The line breaks in 2013, where new income questions put the year’s two estimates ${comma(gap13)} apart. A new processing "
-             f"system in 2017 put them ${comma(gap17)} apart, too close to show as a break; the table prints both.")
+             f"system in 2017 put them ${comma(gap17)} apart, close enough that the two dots overlap; the table prints both.")
     # the Census Bureau's footnotes say what changed in each marked year; the table prints them in words
     changes = {"7": "Earlier income questions", "6": "New income questions", "5": "New processing system", "9": "Wider top income range",
                "3": "New population weights", "4": "New population weights", "8": "New population weights"}
@@ -1238,7 +1237,7 @@ def rule_14_11(B):
            notes=[f"The 2025 figure carries a margin of error of ±${comma(moe)} at 90 percent confidence."], source_line=src(ds),
            alt=f"A line of median household income from 2005 to 2025, ending at ${comma(last[1])}, broken in 2013, where new survey "
                f"questions put the year’s two estimates ${comma(gap13)} apart. In 2017 a new processing system put them ${comma(gap17)} "
-               f"apart, too close to show as a break.",
+               f"apart, close enough that the two dots overlap.",
            table={"caption": "Median household income, 2025 dollars",
                   "columns": [{"field": "year", "label": "Year", "format": "year", "row_header": True},
                               {"field": "footnotes", "label": "Change in the survey", "format": "text", "words": changes},
