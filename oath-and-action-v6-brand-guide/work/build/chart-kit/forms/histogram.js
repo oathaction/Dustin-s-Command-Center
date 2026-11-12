@@ -49,11 +49,11 @@
         if (fits) c.text((a + b) / 2, ys(r[en]) - 5, vw(r), { role: 'tick', weight: ink.named && ink.is_named(r) || ink.is_point(r) ? 700 : 400, anchor: 'middle', tnum: true, fill: 'label' });
       });
       P.zero_line(c, ys, x0, x1);
-      // the marker: a line in the text's ink across the columns, its words above the plot
+      // the marker: a line dashed in the text's ink across the columns, its words above the plot (the data lead's ruling (b))
       if (mk) {
-        var mx = xs(mk.value), mw = c.measure(mk.words || '', 'label', 600);
-        c.line(mx, mky + 6, mx, bot, { stroke: 'label', width: c.t('line-baseline'), dash: '4 3', mark: false });
-        if (mk.words) c.text(Math.min(Math.max(mx, x0 + mw / 2), x1 - mw / 2), mky, mk.words, { role: 'label', weight: 600, anchor: 'middle' });
+        var mx = xs(mk.value), mw = c.measure(mk.words || '', 'label');
+        c.line(mx, mky + 6, mx, bot, { stroke: 'label', width: c.t('line-baseline'), dash: '5 3', mark: false });
+        if (mk.words) c.text(Math.min(Math.max(mx, x0 + mw / 2), x1 - mw / 2), mky, mk.words, { role: 'label', anchor: 'middle' });
       }
       // the bins' edges along the bottom, thinned so the labels sit apart; an open last bin takes its own words
       var ay = bot + tick + 8, edges = rows.map(function (r) { return r[es]; });

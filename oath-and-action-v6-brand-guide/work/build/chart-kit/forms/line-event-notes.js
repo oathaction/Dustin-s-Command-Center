@@ -4,7 +4,11 @@
  * labels.break_end ends a segment, labels.break_start starts one; either may be one value or a list of values, and at one x
  * a row that ends a segment sorts first and a row that starts one sorts last, ED-E8). labels: subject (the series value drawn in Charcoal),
  * series ({value: name}), series_place ({value: {x, dy}}), break_end, break_start, y_max (number). formats: y, y_tick.
- * annotations: [{at: {x, series}, text, place, dx, dy, max, dot, value}] — "value": true prints the point's value. */
+ * annotations: [{at: {x, series}, text, place, dx, dy, max, dot, value}] — "value": true prints the point's value.
+ * Round 2 (ED-E14): labels.point names the series the title names in the working red, its line and vertex dots one job
+ * (the view's one red) on the 1 px keyline on Newsprint; labels.named names series set in the subject ink. With either
+ * set, every other series takes the light fill on Newsprint and the context ink on Charcoal (palette rule R3,
+ * K.parts.named_fill); with neither, labels.subject draws as before. */
 (function (K) {
   'use strict';
   K.register_chart({
@@ -12,12 +16,18 @@
     name: 'Line With Event Notes',
     family: 'change-over-time',
     encode: { x: 'time', y: 'number', series: 'category?', break: 'category?' },
-    labels: ['subject', 'series', 'series_place', 'break_end', 'break_start', 'y_max', 'series_key'],
+    labels: ['subject', 'series', 'series_place', 'break_end', 'break_start', 'y_max', 'series_key', 'point', 'named'],
     phone: 'same',
     draw: function (c) {
       var P = K.parts, rows = c.rows, ex = c.field('x'), ey = c.field('y'), es = c.field('series', false), eb = c.field('break', false);
       var f = c.spec.formats || {}, W = c.width;
       var names = c.labels.series || {}, subj = c.labels.subject;
+      // ED-E14: the role of each series, by labels.point and labels.named through the shared light fill; with neither,
+      // the subject in ink and the rest in the context ink, as before
+      var nf = (c.labels.point !== undefined && c.labels.point !== null) || (c.labels.named !== undefined && c.labels.named !== null)
+        ? P.named_fill(c, c.labels.named, 'k', null, c.labels.point) : null;
+      var role = function (k) { return nf ? nf({ k: k }) : (!es || k === String(subj) ? 'subject' : 'context'); };
+      var heavy = function (k) { var r = role(k); return r === 'point' || r === 'subject'; };
       var groups = {}, order = [];
       rows.forEach(function (r) { var k = es ? String(r[es]) : '_'; if (!groups[k]) { groups[k] = []; order.push(k); } groups[k].push(r); });
       var ts = rows.map(function (r) { return K.time(r[ex]); });
@@ -30,10 +40,10 @@
         top0 = c.size('label') + 2;
         // the subject's line first in the key, as the title is about it
         var kord = order.filter(function (k) { return names[k]; });
-        kord.sort(function (a, b) { return (b === String(subj)) - (a === String(subj)); });
+        kord.sort(function (a, b) { return heavy(b) - heavy(a); });
         top0 += P.key(c, kord.map(function (k) {
-          var sj = k === String(subj);
-          return { label: names[k], shape: 'line', stroke: sj ? 'subject' : 'context', width: c.t(sj ? 'line-subject' : 'line-context'), direct: true };
+          var sj = heavy(k);
+          return { label: names[k], shape: 'line', stroke: role(k), width: c.t(sj ? 'line-subject' : 'line-context'), direct: true };
         }), 0, top0, W) + 8;
       }
       var top = top0 + c.size('tick') + 6, plotH = c.phone ? 260 * 1 : 300;
@@ -63,17 +73,22 @@
           segs[segs.length - 1].push(r);
           if (ends(r)) segs.push([]);
         });
-        var is_subj = !es || k === String(subj);
+        var is_subj = heavy(k), rk = role(k), red = rk === 'point', kl = red && c.ground !== 'charcoal' ? c.t('keyline') : 0;
+        // the red series' lines and dots are one job, the view's one working red (Rule 05.3, ED-E14)
+        var grp = red ? c.group({ job: 'point' }) : null;
         segs.filter(function (s) { return s.length; }).forEach(function (s) {
           var d = s.map(function (r, i) { return (i ? 'L' : 'M') + K.round(xs(K.time(r[ex]))) + ',' + K.round(ys(r[ey])); }).join('');
           if (s.length > 1) {
-            if (is_subj) c.path(d, { stroke: 'surface', width: c.t('line-subject') + 2 * c.t('keyline'), mark: false });
-            c.path(d, { stroke: is_subj ? 'subject' : 'context', width: c.t(is_subj ? 'line-subject' : 'line-context'), data: { series: k } }, [x0, top, x1 - x0, plotH]);
+            if (is_subj) c.path(d, { stroke: 'surface', width: c.t('line-subject') + 2 * c.t('keyline') + 2 * kl, mark: false });
+            if (kl) c.path(d, { stroke: 'point-keyline', width: c.t('line-subject') + 2 * kl, mark: false });
+            c.path(d, { stroke: rk, width: c.t(is_subj ? 'line-subject' : 'line-context'), data: { series: k } }, [x0, top, x1 - x0, plotH]);
           }
           s.forEach(function (r) {
-            c.circle(xs(K.time(r[ex])), ys(r[ey]), c.t(is_subj ? 'dot-vertex-radius' : 'dot-small-vertex-radius'), { fill: is_subj ? 'subject' : 'context', data: { key: (es ? r[es] + '|' : '') + r[ex] + (eb ? '|' + r[eb] : ''), field: ey, value: r[ey] } });
+            c.circle(xs(K.time(r[ex])), ys(r[ey]), c.t(is_subj ? 'dot-vertex-radius' : 'dot-small-vertex-radius'), Object.assign({ fill: rk, data: { key: (es ? r[es] + '|' : '') + r[ex] + (eb ? '|' + r[eb] : ''), field: ey, value: r[ey] } },
+              kl ? { stroke: 'point-keyline', width: kl } : {}));
           });
         });
+        if (grp) grp.end();
         // the series name on the line
         if (es && names[k] && !keyed) {
           var pl = (c.labels.series_place || {})[k] || {};

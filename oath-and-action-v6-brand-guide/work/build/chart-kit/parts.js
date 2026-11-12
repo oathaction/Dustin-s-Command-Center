@@ -175,19 +175,23 @@
   // function row -> color role, with .named (true when the spec names any) and .is_named(row).
   // point (ED-E1, round 1): the one mark a title names in working red takes the point role, with the 1 px keyline on
   // Newsprint where Pillar Red measures 2.96 to 1 (fn.keyline(row) gives the stroke options to merge into the mark's).
+  // round 2 (ED-E15, ruling (c)): point may be a list, the marks a title names together in one role (an age band), which
+  // share the red as one job: merge fn.job(row) into each mark's options ({job: 'point'} on a point, {} otherwise), so the
+  // red count reads them as one working red.
   P.named_fill = function (c, named, field, base, point) {
-    var pt = point === undefined || point === null ? null : String(point);
+    var pts = point === undefined || point === null ? null : [].concat(point).map(String);
     // ED-E12 (second pass): a point with nothing else named names the point alone, so one key gives the red point and the
     // light fill on every other mark (palette rule R3); a spec that sets both keys draws as before
-    var list = named === undefined || named === null ? (pt !== null ? [pt] : null) : [].concat(named).map(String);
+    var list = named === undefined || named === null ? pts : [].concat(named).map(String);
     var other = c.ground === 'charcoal' ? 'context' : 'light-fill';
     var is_named = function (r) { return !list || list.indexOf(String(r[field])) >= 0; };
-    var is_point = function (r) { return pt !== null && String(r[field]) === pt; };
+    var is_point = function (r) { return pts !== null && pts.indexOf(String(r[field])) >= 0; };
     var fn = function (r) { return is_point(r) ? 'point' : is_named(r) ? (base || 'subject') : other; };
     fn.named = !!list;
     fn.is_named = is_named;
     fn.is_point = is_point;
     fn.keyline = function (r) { return is_point(r) && c.ground !== 'charcoal' ? { stroke: 'point-keyline', width: c.t('keyline') } : {}; };
+    fn.job = function (r) { return is_point(r) ? { job: 'point' } : {}; };
     return fn;
   };
 

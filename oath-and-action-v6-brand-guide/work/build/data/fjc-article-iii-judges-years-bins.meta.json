@@ -1,0 +1,51 @@
+{
+ "file": "fjc-article-iii-judges-years-bins.csv",
+ "kind": "derived",
+ "publisher": "Federal Judicial Center",
+ "title_or_table": "Biographical Directory of Article III Federal Judges, 1789 to present, export file federal-judicial-service.csv (active judges only)",
+ "table_id": "FJC judges export, federal-judicial-service.csv",
+ "url": [
+  "https://www.fjc.gov/sites/default/files/history/federal-judicial-service.csv",
+  "https://www.fjc.gov/history/judges/biographical-directory-article-iii-federal-judges-export"
+ ],
+ "observation_period": "Judges in active service on the export's latest record (latest commission date 2026-10-22); years counted to November 11, 2026",
+ "geography": "United States federal courts",
+ "universe_or_base": "850 service records of Article III judges with no senior-status or termination date: Supreme Court, courts of appeals, district courts, and the Court of International Trade (the file's \"Other\")",
+ "unit": "judges in active service in each two-year bin of years as a federal judge; bin_start and bin_end in years",
+ "date_retrieved": "2026-11-11",
+ "vintage": "FJC export as posted on November 11, 2026; the file states no as-of date",
+ "qualification": "A judge who takes senior status still hears cases but leaves this count; vacancies are not in the file. Years in seat start at the commission for the current court, so a judge promoted from a district court counts from the promotion; years as a federal judge start at the first Article III commission",
+ "columns": {
+  "bin_start": {
+   "type": "number",
+   "description": "lower edge of the bin, in the bin",
+   "unit": "years"
+  },
+  "bin_end": {
+   "type": "number",
+   "description": "upper edge of the bin, not in the bin",
+   "unit": "years"
+  },
+  "label": {
+   "type": "text",
+   "description": "the bin in words"
+  },
+  "judges": {
+   "type": "integer",
+   "description": "judges whose years as a federal judge fall in the bin",
+   "unit": "judges"
+  }
+ },
+ "printed_source_line": "Source: Federal Judicial Center, Biographical Directory of Article III Federal Judges, judges in active service, as of November 11, 2026, United States. Retrieved November 11, 2026. Judges on senior status are not counted; years as a federal judge computed from first commission dates and grouped in two-year bins by Oath & Action.",
+ "ledger_row": "P7-025",
+ "domain": "D05",
+ "states": [],
+ "derived_from": [
+  "fjc-article-iii-judges.csv"
+ ],
+ "derivation": "Each judge in active service counted once in the two-year bin, closed on the left, that holds the years since the first Article III commission, from 0 to 44 years (the data lead's ruling (g), round 2)",
+ "notes": [
+  "850 judges in all; median 8.02 years as a federal judge (Python statistics.median of the unrounded years)",
+  "Bin edges checked against inauguration dates: January 20 of 2001, 2009, 2017, 2021 and 2025 sit 25.81, 17.81, 9.81, 5.81 and 1.81 years before November 11, 2026, so no edge falls on one (H09)"
+ ]
+}

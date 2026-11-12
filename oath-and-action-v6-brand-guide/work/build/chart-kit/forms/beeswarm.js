@@ -1,8 +1,10 @@
 /* Beeswarm or strip plot (coverage plan 3.5, core; S50). Every item as one dot on one value scale, the dots packed up and
  * down from a center line so none hides another; the packing is computed from the data alone, in value order, so it is
- * the same in Node and every browser. One row may be drawn as a reference line across the swarm (labels.reference), named
- * above it. Named items take the subject ink (or the red point) against the light fill and carry their name and value
- * over or under the swarm on a leader. The value axis runs along the bottom.
+ * the same in Node and every browser. One row may be drawn as a reference line across the swarm (labels.reference),
+ * dashed in the text's ink and named above it in regular weight (the data lead's ruling (b)). Named items take the
+ * subject ink (or the red point) against the light fill and carry their name and value over or under the swarm on a
+ * leader; where a side's names cannot sit apart on one line, each takes two, its value under it. The value axis runs
+ * along the bottom.
  * encode: key (code), label (text), value (number).
  * labels: reference (key of the row drawn as a line), reference_label (words over it, with {value}), named (keys in the
  * subject ink, each named), point (the one key in the red point, named), names ({key: printed name}), place ({key: "above"
@@ -81,8 +83,8 @@
       // the reference line through the swarm, with its words over everything
       if (refrow) {
         var rx = xs(refrow[ev]);
-        if (L.reference_label) { var rw = P.fill(c, L.reference_label, refrow), rww = c.measure(rw, 'tick', 600); c.text(Math.min(Math.max(rx, rww / 2), W - rww / 2), tick, rw, { role: 'tick', weight: 600, anchor: 'middle', fill: 'label' }); }
-        c.line(rx, y, rx, bottom + (lab.below.length ? lead : 0), { stroke: 'label', width: c.t('line-baseline'), dash: '4 3', data: { key: refrow[ek], field: ev, value: refrow[ev] } });
+        if (L.reference_label) { var rw = P.fill(c, L.reference_label, refrow), rww = c.measure(rw, 'tick'); c.text(Math.min(Math.max(rx, rww / 2), W - rww / 2), tick, rw, { role: 'tick', anchor: 'middle', fill: 'label' }); }
+        c.line(rx, y, rx, bottom + (lab.below.length ? lead : 0), { stroke: 'label', width: c.t('line-baseline'), dash: '5 3', data: { key: refrow[ek], field: ev, value: refrow[ev] } });
       }
       // leaders first, so the dots sit over them
       var ly = { above: y + size, below: bottom + lead + size * 0.75 };

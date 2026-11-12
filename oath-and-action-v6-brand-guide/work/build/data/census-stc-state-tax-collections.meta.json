@@ -10,7 +10,7 @@
   "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/state/totals/NST-EST2025-ALLDATA.csv"
  ],
  "observation_period": "State fiscal year 2025 (for 46 states, July 2024 to June 2025); population on July 1, 2024",
- "geography": "50 states, with a United States row (code US); DC is not a state government in this survey",
+ "geography": "50 states, with the Bureau's U.S. total (code US), which sums the 50 states; the flat file also prints a District of Columbia column, kept as its own row outside the U.S. total",
  "universe_or_base": "Taxes collected by state governments (not local governments): sales, income, property, license and other taxes",
  "unit": "total_taxes_thousands in thousands of dollars; taxes_per_resident in dollars, computed by the studio as total taxes over the July 1, 2024 population",
  "date_retrieved": "2026-11-11",
@@ -19,7 +19,7 @@
  "columns": {
   "code": {
    "type": "code",
-   "description": "USPS state code, US for the nation"
+   "description": "USPS state code; US for the Bureau's U.S. total of the 50 states, which leaves DC out"
   },
   "name": {
    "type": "text",
@@ -32,7 +32,7 @@
   },
   "population_july_2024": {
    "type": "integer",
-   "description": "resident population, July 1, 2024",
+   "description": "resident population, July 1, 2024; for the U.S. row, the 50 states' residents, to match the 50 states' taxes",
    "unit": "people"
   },
   "taxes_per_resident": {
@@ -47,6 +47,8 @@
  "states": [],
  "notes": [
   "The flat file marks items a state does not levy with X; they count as zero in the total",
-  "Each state's summed total matches the data API's aggregate STC001 for 2025"
+  "Each state's summed total matches the data API's aggregate STC001 for 2025",
+  "The Bureau's FY2025 flat file prints a column for the District of Columbia (DC), with a value in 22 of its 25 tax items, $11,261,267 thousand in all; its U.S. column equals the sum of the 50 state columns exactly, so DC sits outside the U.S. total. The DC row is the flat file's DC column as published, with DC's own population; a chart of the states leaves it out",
+  "Changed November 12, 2026 (data lead's R1, round 2): the U.S. row's population is now the 50 states' 339,312,487 residents, since its taxes are the 50 states'; before, it divided them by the nation's 340,003,797, which counts DC's residents too. Taxes per resident moved from $4,517.1370 to $4,526.3401, and the row is named All 50 states. The sidecar's earlier geography line, that DC is not a state government in this survey, is replaced, since the flat file prints DC; the Bureau's documentation pages read today say nothing about DC"
  ]
 }

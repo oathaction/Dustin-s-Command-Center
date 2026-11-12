@@ -1,0 +1,74 @@
+{
+  "kit": 1,
+  "id": "S48",
+  "form": "parliament",
+  "family": "composition",
+  "tier": "extended",
+  "dataset": [
+    "clerk-house-current-party-breakdown",
+    "house-history-party-divisions"
+  ],
+  "reader_question": "How are the House’s seats divided by party today?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the House Clerk’s count of its members",
+  "title": "Republicans held 218 of the House’s 435 seats on November 11, 2026, and Democrats 214, with one independent and two seats vacant.",
+  "measure_line": "Voting seats in the U.S. House of Representatives by the party of the member who holds each, as the Clerk of the House counted them on November 11, 2026",
+  "notes": [
+    "At the opening of the 119th Congress in January 2025, Republicans held 220 seats and Democrats 215; deaths, resignations and special elections since then changed the count.",
+    "A majority of the full House is 218 seats. Members elected on November 3, 2026 take their seats on January 3, 2027."
+  ],
+  "source_line": "Source: Office of the Clerk, U.S. House of Representatives, party breakdown, as of November 11, 2026; U.S. House of Representatives, Office of the Historian and Office of the Clerk (History, Art & Archives), Party Divisions of the House of Representatives, 119th Congress (2025 to 2027). Retrieved November 11, 2026. The count changes with each vacancy and special election.",
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A half circle of 435 dots, one for each House seat: 214 Democrats from the left, then one independent and two empty seats, then 218 Republicans to the right. A tick marks the 218th seat from the right, a majority of the full House.",
+  "table": {
+    "caption": "House seats by party, as of November 11, 2026",
+    "columns": [
+      {
+        "field": "party",
+        "label": "Party, as the Clerk lists it",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "seats",
+        "label": "Seats",
+        "format": "integer"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Every seat is drawn in one ink, so no color stands for a party; each block is named with its count. The two empty seats are open rings."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D02",
+  "states": [],
+  "encode": {
+    "group": "party",
+    "seats": "seats"
+  },
+  "labels": {
+    "order": [
+      "Democrats",
+      "Independents",
+      "Vacancies",
+      "Republicans"
+    ],
+    "words": {
+      "Democrats": "Democrats, {n}",
+      "Independents": "{n} independent",
+      "Vacancies": "{n} vacant",
+      "Republicans": "Republicans, {n}"
+    },
+    "open": "Vacancies",
+    "majority": {
+      "seats": 218,
+      "label": "218, a majority of the full House"
+    }
+  },
+  "notes_internal": [
+    "Draft."
+  ]
+}

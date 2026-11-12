@@ -1,16 +1,19 @@
 /* Box plot (coverage plan 3.5, extended; S51). The spread of one measure in each of a few groups, drawn from a summary
- * (R2-2): one row a group, the group's name and count of units flush left over its row, a box from the first to the third
- * quartile, a line across it at the median, whiskers to the ends the summary gives (Tukey's fences, or percentiles, as the
- * spec's measure line says), and each unit past them as a small open dot, read from a second dataset of outliers. The
- * median prints beside its line. One value axis runs along the bottom, with light gridlines through every row.
+ * (R2-2): one row a group, the group's name and count of units flush left beside its row (over it on a phone), a box from
+ * the first to the third quartile with its median as a 2 px line, whiskers to the ends the summary gives (Tukey's fences,
+ * as the measure line says), and each unit past them as a small open dot, read from a second dataset of outliers. The
+ * median prints over its line. Every box takes the light fill with its median in the subject ink and its whiskers and
+ * outliers in the context ink; a group the title names takes the subject ink for its box, whiskers and outliers, with
+ * its median in the ink set on the subject (the data lead's ruling (e)). One value axis runs along the bottom, with light
+ * gridlines through every row.
  * encode: category (text, the group), low (number, the lower whisker's end), q1, median, q3 (numbers), high (number, the
  * upper whisker's end), count (number, units in the group), key (code, optional).
- * labels: names ({key: printed name}), count ("{count} counties": words under each name), median ("{median}": words beside
- * the median line), named (keys of groups in the subject ink, the rest in the light fill), point (the one group in the red
- * point), outliers ({dataset, category, value}: the second dataset's name and its columns for each unit past a whisker),
- * axis (words under the value axis).
- * formats: value (the median's words and the ticks unless tick is set), tick. scale: x ([lo, hi]).
- * On a phone the same arrangement draws narrower, the name over its box. Maker B, round 2. */
+ * labels: names ({key: printed name}), count ("{count} counties": words under each name), median ("{median}": words over
+ * the median line), named (keys of groups in the subject ink, the rest in the light fill), point (the one group in the
+ * red point), outliers ({dataset, category, value}: the second dataset's name and its columns for each unit past a
+ * whisker), axis (words under the value axis).
+ * formats: value (the median's words), tick. scale: x ([lo, hi]). On a phone the same arrangement draws narrower, the
+ * name over its box. Maker B, round 2. */
 (function (K) {
   'use strict';
   K.register_chart({
@@ -58,23 +61,24 @@
           c.text(0, cy + (L.count ? -2 : size * 0.35), name(r), { role: 'label', weight: b ? 700 : 600 });
           if (L.count) c.text(0, cy + tick + 2, cnt(r), { role: 'tick' });
         }
-        // whiskers in the context ink, from the box to each end, with a short cap
-        var wst = role === 'subject' || role === 'point' ? 'context' : role, cap = bh * 0.3;
+        // the named group's box in the subject ink, its median, whiskers and outliers in ink with it; every other box in the
+        // light fill with its median as a 2 px line in the subject ink and its whiskers and outliers in the context ink
+        // (the data lead's ruling (e))
+        var lit = role === 'subject' || role === 'point', wst = lit ? 'subject' : 'context', cap = bh * 0.3;
         [[elo, e1], [e3, ehi]].forEach(function (pr, j) {
           var a = xs(r[pr[0]]), z = xs(r[pr[1]]);
           c.line(a, cy, z, cy, { stroke: wst, width: c.t('line-context'), mark: false });
           var ex = j ? z : a;
           c.line(ex, cy - cap, ex, cy + cap, { stroke: wst, width: c.t('line-context'), data: { key: k, field: j ? ehi : elo, value: r[j ? ehi : elo] } });
         });
-        // the box from the first to the third quartile, and the median across it in the ground's color
         var bx = xs(r[e1]), bw = xs(r[e3]) - bx;
         c.rect(bx, y0, bw, bh, Object.assign({ fill: role, data: { key: k, field: e1, value: r[e1] } }, ink.keyline(r)));
         c.datum(xs(r[e3]), cy, { data: { key: k, field: e3, value: r[e3] } });
-        var mx = xs(r[em]);
-        c.line(mx, y0, mx, y0 + bh, { stroke: 'surface', width: c.t('line-subject'), data: { key: k, field: em, value: r[em] } });
+        var mx = xs(r[em]), mlw = c.t('line-context');
+        c.rect(K.snap(mx, 2) - mlw / 2, y0, mlw, bh, { fill: lit ? 'label-on-subject' : 'subject', data: { key: k, field: em, value: r[em] } });
         if (L.median) {
-          var words = String(L.median).replace('{median}', K.fmt(r[em], fv)), mw = c.measure(words, 'tick', 600);
-          c.text(Math.min(Math.max(mx, mw / 2), W - mw / 2), y0 - 8, words, { role: 'tick', weight: 600, anchor: 'middle', fill: 'label' });
+          var words = String(L.median).replace('{median}', K.fmt(r[em], fv)), mw = c.measure(words, 'tick', b ? 700 : 600);
+          c.text(Math.min(Math.max(mx, x0 + mw / 2), W - mw / 2), y0 - 7, words, { role: 'tick', weight: b ? 700 : 600, anchor: 'middle', fill: 'label' });
         }
         // the units past the whiskers, small open dots on the row's line
         if (oc) outs.filter(function (u) { return String(u[oc.category]) === String(r[ec]) || String(u[oc.category]) === String(k); }).forEach(function (u) {

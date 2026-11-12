@@ -1,0 +1,55 @@
+{
+ "file": "census-saipe-county-child-poverty-bins.csv",
+ "kind": "derived",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "Small Area Income and Poverty Estimates (SAIPE), counties, people under 18 in poverty",
+ "table_id": "SAIPE timeseries, SAEPOVRT0_17_PT, time=2019 and time=2024",
+ "url": [
+  "https://api.census.gov/data/timeseries/poverty/saipe?get=NAME,GEOID,STABREV,SAEPOVRT0_17_PT,SAEPOVRT0_17_MOE,SAEPOV0_17_PT&for=county:*&time=2019",
+  "https://api.census.gov/data/timeseries/poverty/saipe?get=NAME,GEOID,STABREV,SAEPOVRT0_17_PT,SAEPOVRT0_17_MOE,SAEPOV0_17_PT&for=county:*&time=2024"
+ ],
+ "observation_period": "Calendar years 2019 and 2024",
+ "geography": "Counties and county equivalents in the 50 states and DC",
+ "universe_or_base": "Related children and other people under 18, under the official poverty measure",
+ "unit": "counties in each two-point bin of the share of people under 18 in poverty; bin_start and bin_end in percent",
+ "date_retrieved": "2026-11-11",
+ "vintage": "SAIPE 2024 release; 2019 as currently served by the data API",
+ "qualification": "Each county counts once, whatever its population, so the distributions describe counties, not children, and the note under the chart says so. Model-based estimates under the official poverty measure, which counts pretax cash income and leaves out tax credits such as the child tax credit; the national rate was 16.8 percent in 2019 and 15.5 percent in 2024. County lists differ slightly between years where Connecticut moved from counties to planning regions",
+ "columns": {
+  "year": {
+   "type": "year",
+   "description": "calendar year of the estimate"
+  },
+  "bin_start": {
+   "type": "number",
+   "description": "lower edge of the bin, in the bin",
+   "unit": "percent"
+  },
+  "bin_end": {
+   "type": "number",
+   "description": "upper edge of the bin, not in the bin",
+   "unit": "percent"
+  },
+  "label": {
+   "type": "text",
+   "description": "the bin in words"
+  },
+  "counties": {
+   "type": "integer",
+   "description": "counties whose estimate falls in the bin, each counted once",
+   "unit": "counties"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, Small Area Income and Poverty Estimates, people under 18 in poverty, 2019 and 2024, counties in the 50 states and DC. Retrieved November 11, 2026. Model-based estimates under the official poverty measure, which leaves out tax credits; counties grouped in two-point bins by Oath & Action.",
+ "ledger_row": "P7-028",
+ "domain": "D08",
+ "states": [],
+ "derived_from": [
+  "census-saipe-county-child-poverty.csv"
+ ],
+ "derivation": "For each year, every county with an estimate counted once in the two-point bin, closed on the left, that holds its share of people under 18 in poverty, from 0 to 74 percent, the same edges for both years (the data lead's ruling (g))",
+ "notes": [
+  "2019: 3141 counties, median 18.70 percent; no estimate: Kalawao County, HI",
+  "2024: 3143 counties, median 17.10 percent; no estimate: Kalawao County, HI"
+ ]
+}

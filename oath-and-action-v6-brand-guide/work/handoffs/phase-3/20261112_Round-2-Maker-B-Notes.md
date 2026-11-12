@@ -14,6 +14,9 @@ In progress. Order: `range-bar` first (R2-4), then the other ten forms, R2-2's d
 
 ## Requests to the research lead
 
+- **RB-R1, the data check on my derived files (R2-2), ready 19:10.** `work/build/scripts/phase-3/maker_b_round2_derive.py` (`python3 -I`, `--check` writes nothing) wrote four tables with sidecars under C1, `kind: "derived"`, each with `derived_from`, `derivation`, a printed line naming the publisher's file and the frozen file's ledger row: `fjc-article-iii-judges-years-bins` (22 rows, P7-025), `census-sahie-county-uninsured-box-by-region` (4 rows, P7-027), `census-sahie-county-uninsured-outliers` (62 rows, P7-027) and `census-saipe-county-child-poverty-bins` (74 rows, P7-028). Bins and box as the data lead's ruling (g); the script's figures match the ruling's (850 judges, median 8.02; 62 outliers, 5, 33, 23 and 1 by region; 3,141 and 3,143 counties, medians 18.7 and 17.1). `data_round0_build.py --check` reads 100 tables with 0 faults. Please add ledger rows if the derived files need their own.
+- **RB-R2 (the data lead's R1, for information):** S50 waits for your fix to `census-stc-state-tax-collections` (the DC row and the U.S. row's population). I will draw the 50 states with a 50-state reference row, whatever code you give it; tell me the code in your notes.
+
 ## Requests to the data lead
 
 ## Requests to the editor

@@ -387,6 +387,13 @@ From the round 1 review (`work/handoffs/phase-3/20261112_Round-1-Fix-Brief.md`, 
 |---|---|---|---|---|---|---|---|---|---|---|
 | P7-225 | nps-national-park-recreation-visits-2025 | National Park Service | IRMA Visitor Use Statistics, recreation visits by park and month (irmaservices.nps.gov v3 stats visitation), summed to 2025 | Calendar year 2025 | The 15 most visited of the 63 national parks | Primary | Rule 14.6’s correct plate (ED-R3, D3-624) | A count of visits, not of separate people; national parks only. Great Smoky Mountains 11,527,939, Zion 4,984,525. The units sum to the system’s monthly totals | https://irmaservices.nps.gov/v3/rest/stats/visitation?startMonth=1&startYear=2025&endMonth=12&endYear=2025 | 2026-11-12 |
 
+### Round 2 fixes, November 12, 2026
+
+From the data lead’s round 2 requests R1 and R2 (`work/handoffs/phase-3/20261112_Round-2-Data-Lead-Notes.md`). Scripts and downloads sit in the research lead’s scratch folder (`.../phase-3/round-2/research/scripts/` and `dl/`); each script checks the frozen file against the publisher’s file before it writes, and a rerun writes nothing.
+
+- **P7-026, state tax collections (R1).** The Bureau’s FY2025 flat file (`FY2025-Flat-File.txt`, read again today, SHA-256 prefix fff59c4d24c317db) prints a District of Columbia column, with a value in 22 of its 25 tax items, $11,261,267 thousand in all, and its U.S. column equals the sum of the 50 state columns exactly. Every frozen state row and the DC row reproduce from that file and the Vintage 2025 population file. The DC row stays as published, outside the U.S. total. The U.S. row divided the 50 states’ taxes by the nation’s 340,003,797 residents, DC’s included; it now divides them by the 50 states’ 339,312,487, giving $4,526.3401 per resident in place of $4,517.137, and is named "All 50 states". The sidecar’s geography line, that DC is not a state government in this survey, is replaced, since the file prints DC; the table above keeps its round 0 words, and the sidecar governs.
+- **P7-035, the debt limit (R2).** Both laws read on govinfo.gov today. Public Law 119-21 (H.R. 1, approved July 4, 2025), section 72001 (139 Stat. 332), raises the limit under 31 U.S.C. 3101(b) "by $5,000,000,000,000". Public Law 118-5, the Fiscal Responsibility Act of 2023 (approved June 3, 2023), section 401(a), suspends the limit through January 1, 2025, and section 401(b) raises it on January 2, 2025 by the obligations issued in that time. The frozen table agrees: no limit through December 2024, $36,103,995.66 million from January 2025, and $41,103,995.66 million from July 2025, exactly $5 trillion more. The sidecar’s qualification now cites both laws, and a note quotes them with their pages.
+
 ### Phase 5 refresh list
 
 Kept from November 12, 2026 (D3-476). Each round’s data stays frozen and is refreshed once, at Phase 5; this list names what is already known to have changed, or what to check, so the refresh starts here.
@@ -428,6 +435,7 @@ Kept from November 12, 2026 (D3-476). Each round’s data stays frozen and is re
 24. P7-224: whether a committee that registered but filed no report of receipts and spending appears in the totals.
 25. Row 87: Ohio SB 63’s text (the Ohio Legislature site failed TLS verification in round 0 and was not retried), so Ohio’s opening for home-rule cities rests on Ballotpedia’s summary; and whether a Tennessee city may run its own election outside the county election commission. Tennessee’s Public Chapter 621 was read; the code sections that give municipal elections to county commissions were not (Justia refused this container).
 26. P7-007: OPM’s December 2024 file (version 4) was not read; January 31, 2025, the file’s day, falls eleven days after the inauguration.
+27. P7-026: why the Bureau’s flat file prints a DC column outside its U.S. total; the survey’s methodology and user notes pages, read November 12, 2026, say nothing about DC.
 
 ---
 
@@ -461,3 +469,4 @@ Modified November 12, 2026 (Phase 3, round 1 fix pass 2, research lead): Part 7�
 Modified November 12, 2026 (Phase 3, round 1 fix pass 3, research lead): Part 7’s "Fix pass 3" note.
 Modified November 12, 2026 (Phase 3, round 1, download item 2, research lead): Part 7’s "Download item 2" section with row P7-223 (two files), P7-220’s placeholder pointed to it, and claims 16 to 19 of Part 7’s unverified list.
 Modified November 12, 2026 (Phase 3, round 1 review fix pass, research lead): Part 7’s "Review fix pass" section with row P7-224, the new "Phase 5 refresh list", and claims 20 to 26 of Part 7’s unverified list.
+Modified November 12, 2026 (Phase 3, round 2, research lead): Part 7’s "Round 2 fixes" section (P7-026 and P7-035, the data lead’s R1 and R2) and claim 27 of Part 7’s unverified list.

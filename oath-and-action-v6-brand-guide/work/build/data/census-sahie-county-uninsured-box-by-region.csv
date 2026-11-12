@@ -1,0 +1,5 @@
+region,counties,minimum,whisker_low,q1,median,q3,whisker_high,maximum,outliers
+Northeast,218,2.7,2.7,5.9,7.2,8.875,13.1,16.9,5
+Midwest,1055,4.1,4.1,7.4,8.8,10.8,15.9,30,33
+South,1422,4.5,4.5,11,13.9,17.875,28,42.5,23
+West,448,3.5,3.5,9.4,12.35,15.225,23.7,26,1

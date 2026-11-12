@@ -1282,15 +1282,17 @@ def rule_14_12(B):
            table={"caption": "Federal receipts by fiscal year, billions of dollars",
                   "columns": [{"field": "fiscal_year", "label": "Fiscal year", "format": "year", "row_header": True},
                               {"field": "receipts_dollars", "label": "Billions of dollars", "format": "billions-value:0"}]},
-           encode={"x": "fiscal_year", "y": "receipts_dollars"}, labels={"named": 2026}, formats={"value": "billions-value:0"},
+           encode={"x": "fiscal_year", "y": "receipts_dollars"}, labels={"point": 2026}, formats={"value": "billions-value:0"},
            phone="differs", phone_note="On a phone the twelve columns turn into bars, so every value keeps its label.", phone_view=True,
-           domain="D08", states=[], notes_internal="Rule 14.12's correct plate: the kit's column form and its phone drawing, one spec.")
+           domain="D08", states=[], notes_internal="Rule 14.12's correct plate: the kit's column form and its phone drawing, one spec. "
+                                                   "The 2026 column the title names takes the red point (D3-665): a year's total "
+                                                   "receipts carries no tie on Rule 14.6's list.")
     B.add("s-14-12-correct", chart("s-14-12-cols"),
           alt=f"The same twelve years drawn twice, as columns at full width and as bars on a phone. {title}.")
     last3 = data[-3:]
     B.add("s-14-12-failure", dnp() + f'<div class="fr ph"><p class="fh">On a phone, 358 px</p>'
           + tl("Federal receipts rose in each of the last two years")
-          + f'<div class="art">{hbars([(str(y), v) for y, v in last3], vmax * 1.02, comma, subject=("2026",)).replace('class="hb ', 'class="hb yr ')}</div></div>',
+          + f'<div class="art">{hbars([(str(y), v) for y, v in last3], vmax * 1.02, comma, point=("2026",)).replace('class="hb ', 'class="hb yr ')}</div></div>',
           alt=FC + "A phone version of the receipts chart that keeps the last three of twelve years and takes a new title, “Federal receipts rose "
                    "in each of the last two years”.")
     return entry(

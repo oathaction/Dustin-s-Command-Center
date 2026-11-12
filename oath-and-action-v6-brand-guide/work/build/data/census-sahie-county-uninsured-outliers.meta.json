@@ -1,0 +1,51 @@
+{
+ "file": "census-sahie-county-uninsured-outliers.csv",
+ "kind": "derived",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "Small Area Health Insurance Estimates (SAHIE), counties, people under 65, all incomes, both sexes, all races",
+ "table_id": "SAHIE timeseries, AGECAT=1, IPRCAT=0, SEXCAT=0, RACECAT=0, time=2024",
+ "url": [
+  "https://api.census.gov/data/timeseries/healthins/sahie?get=NAME,GEOID,STABREV,PCTUI_PT,PCTUI_MOE,NUI_PT,NIPR_PT&for=county:*&time=2024&AGECAT=1&IPRCAT=0&SEXCAT=0&RACECAT=0"
+ ],
+ "observation_period": "Calendar year 2024",
+ "geography": "The counties past their region's whiskers, in the 50 states and DC",
+ "universe_or_base": "People under 65",
+ "unit": "percent of people under 65 without health insurance",
+ "date_retrieved": "2026-11-11",
+ "vintage": "SAHIE 2024 release (the latest year in the data API on November 11, 2026)",
+ "qualification": "Model-based estimates that combine survey and administrative data; small counties carry wide margins of error, so a box plot shows spread and no single county is ranked. Each county counts once, whatever its population, so the box describes counties, not people, and the note under the chart says so",
+ "columns": {
+  "region": {
+   "type": "category",
+   "description": "Census region"
+  },
+  "geoid": {
+   "type": "id",
+   "description": "county FIPS code"
+  },
+  "county": {
+   "type": "text",
+   "description": "county name with its state, as the Bureau prints it"
+  },
+  "code": {
+   "type": "code",
+   "description": "USPS state code"
+  },
+  "uninsured_pct": {
+   "type": "number",
+   "description": "percent of people under 65 without health insurance",
+   "unit": "percent"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, Small Area Health Insurance Estimates, people under 65 without health insurance, 2024, counties in the 50 states and DC. Retrieved November 11, 2026. Model-based estimates; small counties carry wide margins of error; each region's quartiles, whiskers and outliers computed by Oath & Action.",
+ "ledger_row": "P7-027",
+ "domain": "D09",
+ "states": [],
+ "derived_from": [
+  "census-sahie-county-uninsured.csv"
+ ],
+ "derivation": "The counties whose rate falls past their region's fences, 1.5 times the middle half beyond the first or third quartile, by the same quartiles as census-sahie-county-uninsured-box-by-region",
+ "notes": [
+  "Every outlier lies above its region's box"
+ ]
+}

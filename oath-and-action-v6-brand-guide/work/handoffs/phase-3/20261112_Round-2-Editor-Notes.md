@@ -5,9 +5,10 @@ Oath & Action Edition 06, Phase 3, round 2. Editor (`oa-editor`), November 12, 2
 ## Summary
 
 - **DR-242 (D3-656), done.** Chapter 13's five chart titles end with a period: `s-13-7-all`, `s-13-7-children`, `s-13-7-fail-all`, `s-13-13-correct`, `s-13-13-fail-chart`. The change is in `work/build/scripts/phase-3/phase3_ch13_build.py`, which now fails a rerun that drops any of the five periods. `git diff` after the rerun shows the five `title` lines and the generator, nothing else.
-- RS-S4: waiting on the data lead's ruling (f).
-- Rulings (b) and (c): waiting on the data lead.
-- ED-E13: waiting on the engineer's `plate_css` hook.
+- **RS-S4 (ruling (f), the data lead's E2): words ready, drawing blocked on the kit.** Rule 14.3's correct plate is the kit's `line-event-notes`, which registers no `labels.point`, and the kit's red count fails a line drawn in red with red vertex dots (one mark each). Request ED-E14 to the engineer below. Once it lands, the spec takes `labels.point: "18_to_24"` in place of `labels.subject`, and the caption ends "and the youngest group, which the title names, takes the view’s red." The failure plate stays (ruling (f)).
+- **Rulings (b) and (c) (the data lead's E1), done in Rule 14.6 only.** A group the title names together shares the red; two marks in two roles both take Charcoal; red never codes a sign, such as a deficit or a loss; spec rows for two roles and for a total or national line ("Dashed in the text’s ink, with its own label"); the ink row now reads "An error, a step, a sign or a party tie". No other rule of 14.1 to 14.14 states these cases.
+- **D3-665 (the main session's ruling on the data lead's E3), done.** Rule 14.12's named 2026 receipts column takes the red point through `labels.point`, and its failure plate's 2026 bar takes the same red, since a failure takes its partner's inks. No reader text gave D3-589's reason; `notes_internal` now gives the new one.
+- **ED-E13 (D3-655), done.** The engineer's hook landed (its notes, R2-C5). The base block and every style rule two or more of my 29 plates use now print once, in `14-chapter.json`'s `plate_css` (4,364 bytes); each plate keeps only the rules it alone uses. Rules 14.1 to 14.14 with the opener and the shared block: 205,755 bytes before, 179,521 after, by the build report (plate_css counted, 4,440 bytes as printed), so 32,767 bytes under 212,288.
 - **Group lines 5 to 10, checked against the plan's round 2 rows and the data plan's reader questions.** Group 10's line promised that big numbers set a measure against a target or a range, which S01 (a figure with its context) does not, and it left out the step tracker and status chips; it is rewritten. Group 5 says "Stacked bars" for the stacked share bar, stacked column and 100 percent bar, one term with the entries. The opener drew a gauge for group 10, the form 14.91 tells builders to avoid; it now draws a bullet graph. Group 8 waits on the data lead's ruling (d) for the fan chart (below). Groups 6, 7 and 9 stand. Group lines 5 to 10 print only once their round's entries are built, so the guide shows only the opener's change today.
 - Words for maker A, maker B and the systems designer: started below.
 
@@ -23,6 +24,14 @@ Oath & Action Edition 06, Phase 3, round 2. Editor (`oa-editor`), November 12, 2
 - D3-xxx | Group 10's line reads "Big numbers give a figure with the context to judge it, and progress bars and bullet graphs set one measure against its target or limit. Step trackers and status chips show how far a bill or a dispute has come." | The old line said big numbers show a measure against a target or a range, which S01 does not, and it named neither the step tracker (S62) nor the status chips (S63)
 - D3-xxx | Group 5's line says "Stacked bars" in place of "Split bars" | No entry is called a split bar; the stacked share bar, stacked column and stacked area keep one term (H02)
 - D3-xxx | The opener's mark for gauges and indicators draws a bullet graph (a range, its measure and a target tick) in place of a gauge | 14.91 lists the gauge as a form to avoid, so the opener showed a demonstration its own family rules out
+- D3-xxx | Rule 14.6 lets marks the title names together, such as the bars of one age band, share the red | Ruling (c)'s one-role case; S53 draws red on an age band, and the rule said "the one point, bar or line"
+- D3-xxx | Rule 14.6 states the two-role case in its own sentence after the two ink cases, with its reason, and adds a spec row for it | Ruling (c); a third "when" clause would make a run of three on one frame (W12, W13)
+- D3-xxx | Rule 14.6's "Red never" line ends "a step on a scale or a sign, such as a deficit or a loss", and the ink row reads "An error, a step, a sign or a party tie" | Ruling (c) and principle 4, for S44's deficit
+- D3-xxx | Rule 14.6 carries the spec row "A total or national line: Dashed in the text’s ink, with its own label", token `oa.chart.color.label.onNewsprint`, and no other rule restates it | Ruling (b)
+- D3-xxx | Rule 14.6's builders line says labels.named takes over "where the subject ink takes its place, with a list for two marks" | It covered the party tie only; the sign and two-role cases use the same key
+- D3-xxx | Rule 14.12's correct plate names the 2026 column with `labels.point`, and its failure plate's 2026 bar takes the same red | D3-665; a failure plate takes its partner's inks so it shows only its own fault
+- D3-xxx | ED-E13: the plates' base block and every style rule two or more plates use move to `14-chapter.json`'s `plate_css`; a rule one plate alone uses stays in that plate | D3-655; the shared rules print once, and a plate keeps its own rules beside it
+- D3-xxx | The rules generator counts `plate_css` in its weight and runs its color and token checks over it, and leaves it out of the reader-text checks | The block serves these plates (the engineer counts it in the build report too); CSS is no reader text
 - D3-xxx | Groups 6, 7 and 9 keep their lines | Each names forms its plan rows build (histogram, strip plot, box plot; scatter and its relatives; icon arrays, proportional symbols, Venn and Euler)
 
 ## Words for maker A
@@ -45,6 +54,11 @@ Read at 18:55: `s57.json` only, whose title, measure line and alt still read DRA
 Nothing to read yet under this run's scope; the words pass on chapter 15's new plates (15.11, 15.12, 15.15 to 15.18) comes when they land.
 
 ## Requests
+
+### To the engineer
+
+- **ED-E14, `line-event-notes` takes `labels.point` (RS-S4, ruling (f)).** Rule 14.3's correct plate (`work/build/guide/specimens/s-14-3-lines.chart.json`) needs the series the title names, citizens 18 to 24, in Pillar Red on the 1 px Charcoal keyline on Newsprint, with the other three series in the light fill (the context ink on Charcoal), each still named beside its line. Today the form registers `subject` only, and the kit's red count fails a view with more than one red mark, so a red line with red vertex dots fails. As `slope` does for its red line, please draw the point series and its vertex dots as one shape (or count them as one mark), through `K.parts.named_fill` so `labels.point` alone gives the rest the light fill (ED-E12). Tell me under "Contracts" when it lands; I then switch the spec from `labels.subject` to `labels.point` and change the caption.
+- **ED-E15, the red count and a group the title names (ruling (c)).** Rule 14.6 now lets marks the title names together, such as S53's age band, share the red. The kit's check fails any view with more than one red mark, and Rule 14.6's builders line says "The kit counts working reds and fails a view with two". Once the check counts one named group as one job, tell me and I will word the builders line to match ("fails a view whose red falls on two jobs"). Until then the line describes the kit as it stands.
 
 ### To the research lead
 

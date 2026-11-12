@@ -1,7 +1,7 @@
 /* Line histogram (coverage plan 3.5, extended; S52). Two or three distributions of one measure on the same bins, drawn
  * as stepped outlines over one baseline so each shape shows through the other (R2-2's summary: one row a bin and series).
  * The series the title follows is drawn in the subject ink at the subject line's weight, the others thinner in the context
- * ink, dashed; each is named where its outline peaks. A value axis at the left; the bins' edges along the bottom, thinned.
+ * ink (the data lead's ruling (e)); each is named where its outline peaks. A value axis at the left; the bins' edges along the bottom, thinned.
  * encode: start (number, the bin's lower edge), end (number, its upper edge), value (number: a count or share), series
  * (category), label (text, optional: the bin's words for an open last bin).
  * labels: lit (the series in ink), series ({value: printed name}), open_end (true: the last bin is open, labeled by its
@@ -44,7 +44,7 @@
       };
       var others = order.filter(function (k) { return k !== lit; });
       others.forEach(function (k) {
-        c.path(step(k), { stroke: 'context', width: c.t('line-context'), dash: '5 3', data: { series: k } }, [x0, top, x1 - x0, plotH]);
+        c.path(step(k), { stroke: 'context', width: c.t('line-context'), data: { series: k } }, [x0, top, x1 - x0, plotH]);
       });
       if (by[lit]) {
         c.path(step(lit), { stroke: 'surface', width: c.t('line-subject') + 2 * c.t('keyline'), mark: false });

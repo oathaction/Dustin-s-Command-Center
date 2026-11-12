@@ -399,7 +399,10 @@ function check_drawing(spec, d, tok, where) {
     if (c === RED || c === PRUSSIAN) f.push(`chart: a party mark in ${c === RED ? 'Pillar Red' : 'Prussian'} (DR-48)${at}`);
   }
   const reds = d.marks.filter(m => color(m) === RED);
-  if (reds.length > 1) f.push(`chart: ${reds.length} working reds in one view (Rule 05.3)${at}`);
+  // ED-E15 (round 2): red marks of one job (a group the title names together, ruling (c); a red line with its vertex dots)
+  // count as one working red; a red mark with no job is a job of its own
+  const jobs = new Set(reds.map((m, i) => m.job !== undefined && m.job !== null ? 'job:' + m.job : 'mark:' + i));
+  if (jobs.size > 1) f.push(`chart: ${jobs.size} working reds in one view (Rule 05.3)${at}`);
   for (const r of reds) {
     for (const m of d.marks) {
       if (m === r || color(m) !== PRUSSIAN) continue;

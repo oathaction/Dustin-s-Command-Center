@@ -331,6 +331,7 @@
     this._tf = 0;
     this._h = 0;
     this._arr = null;
+    this._job = null;
   }
   K.Ctx = Ctx;
   var SHAPE_LIFT = 12;
@@ -366,6 +367,8 @@
   function data_of(o, base) {
     var d = o.data || {};
     for (var k in d) if (d[k] !== undefined && d[k] !== null) base['data-' + k] = d[k];
+    // ED-E15 (round 2): marks the title names together (ruling (c)) carry one job, so the red count reads them as one
+    if (o.job !== undefined && o.job !== null) base['data-oa-job'] = o.job;
     return base;
   }
   Ctx.prototype.size = function (role) {
@@ -382,19 +385,21 @@
   };
   Ctx.prototype._push = function (s) { (this._grp || this._els).push(s); };
   Ctx.prototype.group = function (o) {
-    var self = this, prev = this._grp, buf = [], tf = !!(o && o.transform);
+    var self = this, prev = this._grp, buf = [], tf = !!(o && o.transform), pjob = this._job;
     this._grp = buf;
     if (tf) this._tf++;
+    if (o && o.job !== undefined && o.job !== null) this._job = o.job;
     return {
       end: function () {
         self._grp = prev;
+        self._job = pjob;
         if (tf) self._tf--;
         var a = data_of(o || {}, { 'class': cls_of(o || {}), transform: o && o.transform });
         self._push('<g' + attrs(a) + '>' + buf.join('') + '</g>');
       }
     };
   };
-  Ctx.prototype.mark = function (m) { this.marks.push(m); return m; };
+  Ctx.prototype.mark = function (m) { if (m.job === undefined || m.job === null) m.job = this._job; this.marks.push(m); return m; };
   Ctx.prototype.rect = function (x, y, w, h, o) {
     o = o || {};
     if (w < 0) { x += w; w = -w; }
@@ -403,7 +408,7 @@
     if (o.pattern) a.fill = 'url(#' + this.uid + '-' + o.pattern + ')';
     this._push('<rect' + attrs(a) + '/>');
     this._ink('rect', x, y, w, h, o);
-    if (o.mark !== false) this.mark({ kind: o.kind || 'rect', x: x, y: y, w: w, h: h, fill: o.fill, stroke: o.stroke, data: o.data || {}, zero: o.zero, axis: o.axis });
+    if (o.mark !== false) this.mark({ kind: o.kind || 'rect', x: x, y: y, w: w, h: h, fill: o.fill, stroke: o.stroke, data: o.data || {}, zero: o.zero, axis: o.axis, job: o.job });
   };
   // BC S16 (round 1 fix pass): a straight line of a whole-pixel width lands on the pixel grid, so it draws crisp at 1x: an
   // even width (2 px) on a whole pixel, an odd width (1 or 3 px) on a half pixel. Other widths (1.5 px) are left as drawn.
@@ -423,7 +428,7 @@
     this._ink('line', Math.min(x1, x2), Math.min(y1, y2), Math.abs(x2 - x1), Math.abs(y2 - y1), o);
     // a leader is kept for the guard, which fails one that runs through a label (D3-93)
     if (o.stroke === 'leader' && !this._grp_t) this.leaders.push({ x1: x1, y1: y1, x2: x2, y2: y2 });
-    if (o.mark !== false) this.mark({ kind: o.kind || 'line', x: Math.min(x1, x2), y: Math.min(y1, y2), w: Math.abs(x2 - x1), h: Math.abs(y2 - y1), stroke: o.stroke, data: o.data || {} });
+    if (o.mark !== false) this.mark({ kind: o.kind || 'line', x: Math.min(x1, x2), y: Math.min(y1, y2), w: Math.abs(x2 - x1), h: Math.abs(y2 - y1), stroke: o.stroke, data: o.data || {}, job: o.job });
   };
   Ctx.prototype.path = function (d, o, box) {
     o = o || {};
@@ -432,7 +437,7 @@
     this._push('<path' + attrs(a) + '/>');
     var pb = path_box(String(d)) || box;
     if (pb) this._ink('path', pb[0], pb[1], pb[2], pb[3], o);
-    if (box && o.mark !== false) this.mark({ kind: o.kind || 'path', x: box[0], y: box[1], w: box[2], h: box[3], fill: o.fill, stroke: o.stroke, data: o.data || {} });
+    if (box && o.mark !== false) this.mark({ kind: o.kind || 'path', x: box[0], y: box[1], w: box[2], h: box[3], fill: o.fill, stroke: o.stroke, data: o.data || {}, job: o.job });
   };
   Ctx.prototype.datum = function (x, y, o) {
     // a record for the checks at a point the drawing already inks (a line's vertex): no element, no bytes
@@ -443,7 +448,7 @@
     var a = data_of(o, { cx: r1(cx), cy: r1(cy), r: r2(r), 'class': cls_of(o), 'stroke-width': o.width });
     this._push('<circle' + attrs(a) + '/>');
     this._ink('circle', cx - r, cy - r, 2 * r, 2 * r, o);
-    if (o.mark !== false) this.mark({ kind: o.kind || 'circle', x: cx - r, y: cy - r, w: 2 * r, h: 2 * r, r: r, fill: o.fill, stroke: o.stroke, data: o.data || {}, area_of: o.area_of, row: o.row });
+    if (o.mark !== false) this.mark({ kind: o.kind || 'circle', x: cx - r, y: cy - r, w: 2 * r, h: 2 * r, r: r, fill: o.fill, stroke: o.stroke, data: o.data || {}, area_of: o.area_of, row: o.row, job: o.job });
   };
   Ctx.prototype.polygon = function (pts, o) {
     o = o || {};
@@ -451,7 +456,7 @@
     var a = data_of(o, { points: pts.map(function (p) { return r1(p[0]) + ',' + r1(p[1]); }).join(' '), 'class': cls_of(o) });
     this._push('<polygon' + attrs(a) + '/>');
     this._ink('polygon', Math.min.apply(null, xs), Math.min.apply(null, ys), Math.max.apply(null, xs) - Math.min.apply(null, xs), Math.max.apply(null, ys) - Math.min.apply(null, ys), o);
-    if (o.mark !== false) this.mark({ kind: o.kind || 'polygon', x: Math.min.apply(null, xs), y: Math.min.apply(null, ys), w: Math.max.apply(null, xs) - Math.min.apply(null, xs), h: Math.max.apply(null, ys) - Math.min.apply(null, ys), fill: o.fill, data: o.data || {} });
+    if (o.mark !== false) this.mark({ kind: o.kind || 'polygon', x: Math.min.apply(null, xs), y: Math.min.apply(null, ys), w: Math.max.apply(null, xs) - Math.min.apply(null, xs), h: Math.max.apply(null, ys) - Math.min.apply(null, ys), fill: o.fill, data: o.data || {}, job: o.job });
   };
   Ctx.prototype.text = function (x, y, words, o) {
     // y is the baseline. o: role (tick, label, note, big, eyebrow), weight, anchor, fill, halo, tnum, max (wrap width)

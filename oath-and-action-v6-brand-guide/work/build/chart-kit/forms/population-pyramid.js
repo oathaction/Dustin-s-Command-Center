@@ -1,15 +1,16 @@
 /* Population pyramid (coverage plan 3.5, extended; S53). A population by single year of age and by sex: one thin bar a
  * year of age for each side, the youngest at the bottom, one side growing left from the center and the other right on one
- * scale, ages labeled down the center. A band of ages the title names (labels.band) takes the subject ink, or the red
- * point, with its words beside it; every other age takes the light fill. Each side is named over its half; the scale runs
- * along the bottom of each half, mirrored.
+ * scale, ages labeled down the center, both sides in one ink with sex carried by position and named over each half (the
+ * data lead's ruling (e)). A band of ages the title names takes the red point on both sides as one job (labels.point, a
+ * range of ages), or the subject ink (labels.named), with its words at the left edge; every other age takes the light
+ * fill. Ages a story needs, such as 65, may be marked as hairlines in the secondary ink, named at the right edge. The
+ * scale runs along the bottom of each half, mirrored.
  * encode: age (number), sex (category), value (number).
  * labels: left (the sex value drawn on the left), right (the one drawn on the right), sides ({value: printed name}),
- * band ({from, to, words, point}: the ages in ink, their words beside the band; point true draws them in the red point),
- * age_step (ages labeled every this many years; default 10), top (words for the top age, such as "100+"), axis (words
- * under the scale).
- * formats: value (the band's words and the scale), tick. On a phone the same arrangement draws narrower.
- * Maker B, round 2. */
+ * point or named ({from, to}: the band of ages), band_words (the band's words), marks ([{age, words}]: hairlines at the
+ * age's lower edge), age_step (ages labeled every this many years; default 10), top (words for the top age, such as
+ * "100+"), axis (words under the scale).
+ * formats: tick. On a phone the same arrangement draws narrower. Maker B, round 2. */
 (function (K) {
   'use strict';
   K.register_chart({
@@ -17,7 +18,7 @@
     name: 'Population Pyramid',
     family: 'distribution-and-density',
     encode: { age: 'number', sex: 'category', value: 'number' },
-    labels: ['left', 'right', 'sides', 'band', 'age_step', 'top', 'axis'],
+    labels: ['left', 'right', 'sides', 'point', 'named', 'band_words', 'marks', 'age_step', 'top', 'axis'],
     phone: 'same',
     draw: function (c) {
       var P = K.parts, L = c.labels, f = c.spec.formats || {}, W = c.width, ph = c.phone;
@@ -28,8 +29,11 @@
       if (!rowsL.length || !rowsR.length) c.warn('labels.left and labels.right must each name a sex value in the rows');
       var ages = c.rows.map(function (r) { return r[ea]; }), amin = Math.min.apply(null, ages), amax = Math.max.apply(null, ages);
       var vmax = Math.max.apply(null, rowsL.concat(rowsR).map(function (r) { return r[ev]; }));
-      var band = L.band || null, inband = function (r) { return band && r[ea] >= band.from && r[ea] <= band.to; };
-      var bandRole = band && band.point ? 'point' : 'subject', other = c.ground === 'charcoal' ? 'context' : 'light-fill';
+      // the band of ages the title names: labels.point gives it the red point on both sides as one job (ruling (a)),
+      // labels.named the subject ink; every other age takes the light fill
+      var band = L.point || L.named || null, inband = function (r) { return band && r[ea] >= band.from && r[ea] <= band.to; };
+      var bandRole = L.point ? 'point' : 'subject', other = c.ground === 'charcoal' ? 'context' : 'light-fill';
+      if (band) band = { from: band.from, to: band.to, words: L.band_words };
       // the center column for the ages, and the two halves
       var aw = Math.ceil(Math.max(c.measure(String(amax), 'tick'), L.top ? c.measure(L.top, 'tick') : 0)) + (ph ? 12 : 20);
       var cx = W / 2, half = cx - aw / 2;
@@ -60,6 +64,13 @@
       rowsR.forEach(function (r) { draw(r, 1); });
       c.line(cx - aw / 2, top, cx - aw / 2, bot, { stroke: 'baseline', width: c.t('line-hairline'), mark: false });
       c.line(cx + aw / 2, top, cx + aw / 2, bot, { stroke: 'baseline', width: c.t('line-hairline'), mark: false });
+      // age marks: a hairline in the secondary ink across the right half at the age's lower edge, named at the right end
+      var mtexts = [];
+      (L.marks || []).forEach(function (m) {
+        var my = ay(m.age) + bh;
+        c.line(cx + aw / 2, my, W, my, { stroke: 'secondary', width: c.t('line-hairline'), mark: false });
+        mtexts.push({ y: my, words: m.words });
+      });
       // the ages down the center
       var step = L.age_step || 10;
       for (var a = amin; a <= amax; a += step) {
@@ -75,6 +86,7 @@
         var lines = c.wrap(band.words, 'label', Math.max(40, ex - 10), 700);
         lines.forEach(function (ln, i) { c.text(0, by - (lines.length - 1) * lh2 / 2 + size * 0.35 + i * lh2, ln, { role: 'label', weight: 700 }); });
       }
+      mtexts.forEach(function (m) { c.text(W, m.y - 4, m.words, { role: 'tick', anchor: 'end', fill: 'secondary', halo: true }); });
       // the scale along the bottom of each half, mirrored
       var sy = bot + tick + 8;
       ticks.forEach(function (t) {

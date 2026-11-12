@@ -10,6 +10,8 @@ Oath & Action Edition 06, Phase 3, round 2, November 12, 2026. Written by the en
 - **RS-S1, done in the shell.** At 1024 px (frame 702 px) and 768 px (704 px), and at 800 px (736 px), chapter 15's 15 wide plates now draw their 680 px stage; the mat narrows to 10, 11 and 27 px a side. The systems designer sets nothing.
 - **RS-S2's generator side, done.** A sketch entry's caption is its `sketch_alt`'s first sentence (14.24 and 14.45 from theirs; 14.43 and 14.44 from their `<desc>`).
 - **RS-S3, done in the kit; one line waits on maker A** (`heat-table` says when it draws chips at a desk width).
+- **Weight report** (strict build, 19:12, before any round 2 entry landed): see "Weight" below. Chapter 14 with the kit 1,150,769 bytes of its 2,803,941 stop; share per plate 14,226 bytes for each of the 61 still to come; rules 14.1 to 14.14 with the opener and the shared plate style 179,521 of 212,288; chapter 15 184,665 of 600,000; page 10,033,981, projected 15,042,488 (457,512 under 15.5 MB).
+- **Requests answered:** none had arrived from the makers by 19:12; I read both "Requests to the engineer" sections at each pause (four times).
 - `phase3_ch14_build.py` now builds rounds 1 and 2 by default. An entry whose file, spec or sketch has not landed stays out of the chapter among the planned numbers and is listed as a fault, so the script exits 1 until round 2 is whole; that is expected while the makers work.
 
 ## Contracts
@@ -88,10 +90,59 @@ From 48em, the shell narrows the mat of a frame whose plate has `wide_px` from 4
 - D3-xxx | The wide stage's mat narrows to no less than 8 px, with 2 px of the content box to spare over 680 | A stage's 1 px keyline needs room inside a scrolling frame, and layout rounding must not drop the box under the switch (RS-S1)
 - D3-xxx | A form reports its arrangement (`c.arrange('phone')`); the kit says phone under 480 px, and the guide hides the desk's phone drawing beside a figure already drawn in its phone form | A width test cannot know a form's arrangement; the form knows it (RS-S3)
 
+## Weight
+
+Strict build of 19:12 (`guide_build.py --strict`, exit 0, 0 warnings), with the editor's `plate_css` in and no round 2 entry yet:
+
+| Measure | Bytes | Against |
+|---|---|---|
+| Page | 10,033,981 | 16 MB file limit |
+| Projected page | 15,042,488 | 15.5 MB: 457,512 of room |
+| Chapter 14 with the kit | 1,150,769 | 2,803,941 stop (DR-238) |
+| Chapter 14 as built (no kit) | 764,741 | |
+| Renderer now, 60 forms registered (the makers' new forms in it) | 340,796 | grown to 97 forms: 493,066 |
+| Share per plate still to come | 14,226 for each of 61 | R2-6's 14,337 at D3-647's build; 868 KB of room |
+| Rules 14.1 to 14.14 | 169,153 | |
+| Opener | 5,928 | |
+| Shared plate style (ED-E13) | 4,440 | counted with the rules |
+| Rules, opener and shared style | 179,521 | 212,288 (32,767 unspent) |
+| Chapter 15 | 184,665 | 0.60 MB ceiling |
+
+Against the baseline strict build of 18:50 (committed state plus the morning's work: page 9,997,136; rules with the opener 205,007; share 14,294), the share fell 68 bytes: the renderer counts the makers' 14 new forms at today's average, and the sketch entries to come are reserved at the built ones' 3,812 bytes of words and frame (3,673 before the longer captions). The editor's move of the plates' shared style returned about 25 KB to the rules' allowance.
+
 ## Requests
+
+- **Maker A (RS-S3), one line in `forms/heat-table.js`:** after `var chips = !left && !above;` add `if (chips) c.arrange('phone');`. The guide then hides S37's "On a phone, 358 px" drawing where the figure already draws chips (1024 px), and keeps it at 1440 px. Tested on the strict page by wrapping the form's draw the same way: at 1024 px S37's figure falls from 5,643 to 4,586 px tall; 1440 and 390 px unchanged. `heat-table` is your round 1 form and in no one's list this round; if the main session prefers, I make the line.
+- **Editor (ED-E13):** the hook is ready (it has been in `phase3_ch14_build.py` since round 1's fix pass) and your `plate_css` already prints once at chapter 14's head; the build now counts it with rules 14.1 to 14.14 and the opener (4,440 bytes in the 19:12 build). Mark ED-E13 done in your notes when your plates are clean of the copied style.
+- **Editor (RS-S2, words):** 14.24's caption is now its `sketch_alt`'s first sentence, which says what the radar pair shows but not why grouped bars read truer (that is in its second sentence); R2-3 asks the first sentence to carry both. `14-024.json` has no owner this round: the main session routes the words (the CD suggested "The same values with the spokes in two orders draw two different shapes; grouped bars show them as lengths from one zero."). 14.45's first sentence carries both already. 14.43 and 14.44 carry no `sketch_alt`; their captions come from their drawings' `<desc>`.
+- **Makers A and B:** the round 2 parts are ready (R2-C2), with `fit_label`, `place_labels`, `total_line` and `total_ring` beyond the brief's three. A form that drew a stack, band or whisker of its own before they landed moves onto them. `phase3_ch14_build.py` now builds round 2: it lists every entry not yet landed as a fault and leaves it out of the chapter until its entry file and spec or sketch exist.
+- **Maker B:** S57 fails only the new level check: its measure line reads "DRAFT"; name "90 percent margin of error" there (R2-4). S59's year labels overlap at the 256 px guide column (2026 to 2029).
+- **Main session:** `phase3_ch14_build.py` exits 1 until all 41 round 2 entries land (41 faults at 19:12, each a missing entry file); the strict build passes meanwhile, with the missing entries among the planned numbers.
 
 ## Tested
 
+- `node work/build/chart-kit/oa-chart.mjs self-test`: every planted fault caught, with the round 2 cases: `interval_of` (a margin, two ends, `differs`), `whisker` (one 2 px context line, its ends recorded), `band` (a run a path, a gap and a `break` split it, a lone point drawn as a whisker), `stack` (zero, a pyramid's negative side, shares, a midline, an empty cell), `wide`, `total_line` and `total_ring`, `fit_label` (fits on one or two lines, draws nothing where it cannot), `place_labels` (eight points, six placed with no guard fault and none on another dot, Hawaii's label kept inside the edge, fewer placed without leaders); the interval checks (a clean spec passes; margin and two ends together, an interval that misses its estimate, no level in the measure line and a table without the margin each caught); the derived checks (a line naming its source's publisher passes; one without it and a sidecar without `derivation` each caught); `arrangement` (desk at 720 px, phone at 358 px, phone where a form says so).
+- Exports unchanged by my kit edits: `kit_snapshot.mjs` on the committed specs and data, the committed kit against a copy with only my shared files changed: 704 drawings and figures from 64 specs, 0 differ. `build --all --no-png` on the same pair: every CSV and check file equal.
+- `build --all --no-png` on the live specs at 19:10: 54 check files counted, 52 pass; S57 (its measure line "DRAFT", the level check) and S59 (year labels overlapping at 256 px) fail, both maker B's work in progress.
+- `phase3_ch14_build.py` (rounds 1 and 2): 55 rules, 41 entries, 36 chart plates; 41 faults, each a round 2 entry file not yet written; the four sketch captions now their first sentences (`git diff` shows those four lines and the log's round list). ED-E13 by a scratch copy of the entries with a `plate_css`: the chapter file carries it.
+- `first_sentence` on six cases: two sentences, "U.S.", one sentence, a decimal, a closing quotation mark, "e.g.".
+- `guide_charts.py --self-test`: every case, with ED-E13's (the shared style counts with the rules).
+- `guide_build.py --self-test`: 32 of 32 scenarios, 326 of 326 expectations, with RS-S1's rule.
+- RS-S1 in Chromium on strict builds (`wide_measure.js`, scratch): before, 0 of 15 wide plates at 680 px at 1024, 800 and 768 px; after, 15 of 15 at 1024 (mat 10 px, content 682), 800 (27), 768 (11), 760, 720; 1440, 1280 and 900 px unchanged (mat 48); 700, 600 and 390 px keep the 328 px stage; no frame scrolls at any of the 11 widths. Looked at: the opener at 1024 px and Rule 15.5's plate at 768 px.
+- RS-S3 in Chromium on the strict page (`phone_form_test.js`, scratch): as committed, S37's phone drawing shows at 1440 and 1024 px; with `heat-table` wrapped to say `arrange('phone')` where it draws chips, it hides at 1024 px only.
+- RS-S2 in Chromium: 14.24's and 14.43's plates at 1440 and 390 px print their first sentence under the plate, looked at.
+- The strict build (`guide_build.py --strict`): exit 0, 0 warnings, 10,033,981 bytes (19:12).
+
 ## Not tested
 
+- `heat-table` with the `arrange` line itself (maker A's file); the test wrapped the form's draw in the page instead.
+- The parts inside the makers' forms: only the self-test's drawings use them so far.
+- RS-S1 under 48em between 698 and 711 px (the narrow stage stays there), at 200 percent text zoom, in forced colors and in print.
+- The four-width guide check (`guide_check.js`), axe and the quick guide check: the main session's run. `guide_check.js --self-test` not run, since I did not change it.
+- PNG exports (`build --all` with PNGs): not run this pass; the snapshot compares drawings as strings.
+
 ## Files
+
+Modified: `work/build/chart-kit/parts.js` (`interval_of`, `whisker`, `band`, `stack`, `wide`, `total_line`, `total_ring`, `fit_label`, `place_labels`), `kit.js` (`c.arrange`, a drawing's `arrangement`, the figure's `data-oa-phone-form`), `kit.css` (the phone view hides beside a phone form), `checks.js` (the interval form's checks, the derived table's checks), `oa-chart.mjs` (self-test cases); `work/build/scripts/phase-3/phase3_ch14_build.py` (rounds 1 and 2 by default, entries not yet landed left among the planned numbers, sketch captions from `sketch_alt`), `guide_charts.py` (the shared plate style counts with the rules; a self-test case); `work/build/scripts/phase-2/guide_build.py` (RS-S1's self-test expectation); `work/build/guide/shell/guide-shell.css` (RS-S1); by the generator, `work/build/guide/chapters/14-data-visualization.json` (four sketch captions) and `work/build/guide/entries/14-example-log.json` (rounds 1 and 2).
+Created: this file.
+Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/65b3d20e-985e-5fe9-b272-d7d01bd821cd/scratchpad/phase-3/round-2/engineer/` (strict builds `base/`, `b2/`, `b3/` with reports and captures; `head/` and `cur/` kit copies, `snap-*.json`, `out-*`; `kit-all1/`; `tools/wide_measure.js`, `phone_form_test.js`, `shots.js`).

@@ -1,14 +1,15 @@
 /* Range bar or error bar (coverage plan 3.7, core; S57; Rule 14.9's plate, ED-E4). An estimate with its interval for each
  * row: the name flush left, a thin line across the interval, a dot at the estimate, the estimate printed in a column at the
  * right edge. The interval's level is named in the measure line ("90 percent margin of error"), never in the drawing.
- * One row may be drawn as a reference across the rows (labels.reference): a line at its estimate, with a light band
- * across its own interval where the spec asks, named once above the rows. A row whose interval and the reference's
+ * One row may be drawn as a reference across the rows (labels.reference): a line dashed in the text's ink at its estimate
+ * (the data lead's ruling (b)), with a light band across its own interval where the spec asks, named once above the rows
+ * in regular weight. A row whose interval and the reference's
  * leave their gap inside the gap's own margin (the square root of the sum of the two squared margins, Rule 14.9) takes an
  * open dot when labels.test is "reference"; or a status column with labels.open names the open rows.
  * encode: category (text), value (number), low and high (numbers), or margin (number: low and high are value less and
  * plus it), key (code, optional: the row's key for labels; category otherwise), status (category, optional).
  * labels: reference (key of the row drawn across the rows), reference_label (words over its line, with {value}),
- * reference_dash (true: the line dashed), reference_band (true: a light band across the reference's own interval),
+ * reference_band (true: a light band across the reference's own interval),
  * test ("reference": open dots computed from the margins), open (a status value drawn open), key_filled, key_open and
  * key_interval (a key above the rows, each entry left out when its words are), named (keys whose name and value print
  * bold, in the subject ink against the light fill), point (the one key in the red point), names ({key: printed name}),
@@ -23,7 +24,7 @@
     name: 'Range Bar',
     family: 'uncertainty-and-estimates',
     encode: { category: 'text', value: 'number', low: 'number?', high: 'number?', margin: 'number?', key: 'code?', status: 'category?' },
-    labels: ['reference', 'reference_label', 'reference_dash', 'reference_band', 'test', 'open', 'key_filled', 'key_open', 'key_interval', 'named', 'point', 'names', 'short', 'value'],
+    labels: ['reference', 'reference_label', 'reference_band', 'test', 'open', 'key_filled', 'key_open', 'key_interval', 'named', 'point', 'names', 'short', 'value'],
     interval: true,
     phone: 'same',
     draw: function (c) {
@@ -88,9 +89,9 @@
       var ticks = K.ticks(dom[0], dom[1], ph ? 3 : 6), tf = f.tick || 'integer';
       // the reference's words above the rows, kept inside the drawing
       if (refrow && L.reference_label) {
-        var words = P.fill(c, L.reference_label, refrow), ww2 = c.measure(words, 'tick', 600);
+        var words = P.fill(c, L.reference_label, refrow), ww2 = c.measure(words, 'tick');
         y += tick;
-        c.text(Math.min(Math.max(xs(refrow[ev]), ww2 / 2), W - ww2 / 2), y, words, { role: 'tick', weight: 600, anchor: 'middle', fill: 'label' });
+        c.text(Math.min(Math.max(xs(refrow[ev]), ww2 / 2), W - ww2 / 2), y, words, { role: 'tick', anchor: 'middle', fill: 'label' });
         y += 8;
       }
       var top_axis = rows.length > 20;
@@ -105,7 +106,7 @@
       if (refrow) {
         var bl = xs(lo(refrow)), bh = xs(hi(refrow));
         if (L.reference_band && bh - bl >= 1.5) c.rect(bl, top, bh - bl, bottom - top, { fill: 'band', mark: false });
-        c.line(xs(refrow[ev]), top - 4, xs(refrow[ev]), bottom, { stroke: 'label', width: c.t('line-baseline'), dash: L.reference_dash ? '4 3' : undefined, data: { key: refrow[ek], field: ev, value: refrow[ev] } });
+        c.line(xs(refrow[ev]), top - 4, xs(refrow[ev]), bottom, { stroke: 'label', width: c.t('line-baseline'), dash: '5 3', data: { key: refrow[ek], field: ev, value: refrow[ev] } });
       }
       rows.forEach(function (r, i) {
         var cy = top + i * pitch + pitch / 2, ty = cy + size * 0.35, b = bold(r), role = ink(r), k = r[ek];

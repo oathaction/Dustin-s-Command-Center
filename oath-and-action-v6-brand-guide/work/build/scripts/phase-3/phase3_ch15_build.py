@@ -1681,6 +1681,268 @@ def C13_sentences(t):
 
 
 # ===============================================================================================================
+# Group 2. Reforms on the drawing (round 2, DR-244)
+# ===============================================================================================================
+BANDS = V7["leverage"]["bands"]
+BAND_ORDER = ["parameter", "feedback", "information", "rules", "power to change the rules", "goals"]
+need(list(BANDS) == BAND_ORDER, "the atlas's leverage bands changed")
+need("Donella Meadows' ordering of leverage points" in V7["leverage"]["intro"], "the atlas's leverage ranking no longer names its source")
+
+
+def reform(rid, targets, loops, band, problem=None, remedy=None):
+    """A reform's record, held to the values a plate prints."""
+    need(rid in REFORM, f"reform {rid} is not in the atlas")
+    r = REFORM[rid]
+    need(r["targets"] == targets and r["loops"] == loops and r["band"] == band and not r.get("rejected"),
+         f"reform {rid}'s targets, loops or band changed")
+    if problem:
+        need(r["problem_evidence"]["grade"] == problem and r["remedy_evidence"]["grade"] == remedy,
+             f"reform {rid}'s problem or remedy grade changed")
+    return r
+
+
+def target_items(r, drawn):
+    """Each target in its typed chip, in the atlas's order: a connection with its name and grade word, a variable with
+    its title. drawn is the set the drawing holds; the build stops if any target is missing from it."""
+    need(set(r["targets"]) <= drawn, f"reform {r['id']}'s drawing misses a target")
+    out = []
+    for t in r["targets"]:
+        if t in LINK:
+            out.append(f'{chip("Connection", t)} “{e(link(t)["name"])}”.&#160;{grade_word(link(t)["evidence"], gloss=False)}')
+        else:
+            out.append(f'{chip("Variable", t, ",")} {e(lc(node(t)["title"]))}')
+    return out
+
+
+def acts_note(rid, r):
+    n_l = sum(1 for t in r["targets"] if t in LINK)
+    n_v = len(r["targets"]) - n_l
+    parts = [f"{words_n(n_l)} connection{'s' if n_l != 1 else ''}" if n_l else "",
+             f"{words_n(n_v)} variable{'s' if n_v != 1 else ''}" if n_v else ""]
+    return (f'<p class="nt">{chip("Reform", rid)} acts where the marks turn red: on '
+            f'{" and ".join(p for p in parts if p)}.</p>')
+
+
+def band_p(r):
+    b = r["band"]
+    return f'<p class="nt"><b>{e(b.capitalize())}</b>: “{e(BANDS[b])}”</p>'
+
+
+def loops_p(r, shown):
+    """The loops a reform sits on, in typed chips, and the one the drawing shows."""
+    need(shown in r["loops"], f"reform {r['id']} does not sit on Loop {shown}")
+    cs = [chip("Loop", k) for k in r["loops"]]
+    lst = cs[0] if len(cs) == 1 else ", ".join(cs[:-1]) + " and " + cs[-1]
+    return f'<p class="nt">{lst}. The drawing shows {chip("Loop", shown, ",")} which holds every target.</p>'
+
+
+def rule_15_11(book):
+    r = reform("R-03", ["L42", "C1", "D7"], ["R4a", "R10", "R12"], "rules", "documented", "plausible")
+    lp = LOOP["R4a"]
+    codes = [c for c, _ in lp["chain"]]
+    need(codes == ["C4", "C1", "D7"] and lp["links"] == ["L42", "L55", "L56"] and lp["type"] == "R"
+         and minus_count(lp["links"]) == 0, "Loop R4a changed")
+    need([link(x)["evidence"] for x in lp["links"]] == ["documented", "plausible", "documented"], "Loop R4a's grades changed")
+    clus = {c: node(c)["cluster"] for c in codes}
+    need(clus == {"C4": "C", "C1": "C", "D7": "D"}, "Loop R4a's clusters changed")
+    cname = next(x["title"] for x in V7["layers"]["core"]["regions"] if x["id"] == "C")
+    need(cname == "Electoral competition", "the core's cluster C changed its name")
+    bands = Counter(x["band"] for x in REFORM.values())
+    need(bands == Counter({"rules": 26, "parameter": 11, "feedback": 5, "information": 4, "power to change the rules": 3, "goals": 1}),
+         f"the reforms' bands changed: {dict(bands)}")
+    tg = set(r["targets"])
+    b, h = three_loop(codes, lp["links"], inside=("R4a", "reinforcing"), targets=tg)
+    svg = svg_wrap(b, h)
+    items = kw(target_items(r, set(codes) | set(lp["links"]))
+               + [f'{chip("Variable", "C4")} shares {chip("Variable", "C1", "’s")} cluster, {e(cname.lower())}, and stays in ink.'])
+    words = (hed("Reform", "R-03", r["title"]) + acts_note("R-03", r)
+             + f'<p class="k">Its targets, from the atlas</p>{items}'
+             + f'<p class="k">Its band</p>{band_p(r)}'
+             + f'<p class="k">Its loops</p>{loops_p(r, "R4a")}'
+             + src("reform R-03, loop R4a, connections L42, L55 and L56, and the leverage bands"))
+    body = (label_for(lp["links"], "the grade of the loop’s least certain step")
+            + beside(hed("Loop", "R4a", lp["title"]) + fig(svg), words))
+    book.add("s-15-11-correct", body, rule="15.11", readable=True, wide=True,
+             alt=(f"Reform R-03 from our systems atlas, “{r['title']}”, on Loop R4a, “{lp['title']}”. Three pills: "
+                  "Incumbent control of election rules at the top, Safe seats below right, Entrenched majority control below "
+                  "left. Step 1, from the top to Safe seats, is drawn heavy in red, and the outlines of Safe seats and "
+                  "Entrenched majority control are red; step 2, dashed, and step 3 stay in ink, as does Incumbent control of "
+                  "election rules. Beside it: the reform acts where the marks turn red, on one connection and two variables: "
+                  f"Connection L42, {link('L42')['name']}, documented; Variable C1, {lc(node('C1')['title'])}; Variable D7, "
+                  f"{lc(node('D7')['title'])}. Variable C4 shares Variable C1’s cluster, electoral competition, and stays in "
+                  f"ink. Its band, rules: {BANDS['rules']} Its loops: Loop R4a, Loop R10 and Loop R12; the drawing shows Loop "
+                  "R4a, which holds every target."),
+             notes="Targets read from the reform's record and drawn in Rule 12.5's red by wire_marks at the 6 px sizes; the band "
+                   "quoted from the atlas's leverage bands.")
+    book.log("15.11 correct", "Reform R-03 on Loop R4a, district maps", "D02")
+    fb, fh = three_loop(codes, lp["links"], inside=("R4a", "reinforcing"), targets={"C4", "C1", "L42"})
+    fail = (dnp() + hed("Reform", "R-03", r["title"]) + fig(svg_wrap(fb, fh))
+            + f'<p class="nt">Reform R-03 acts on {e(cname.lower())}.</p>')
+    book.add("s-15-11-failure", fail, rule="15.11",
+             alt=(FC + "Loop R4a with every mark of the electoral competition cluster in red: Incumbent control of election "
+                  "rules, Safe seats and the step between them. Entrenched majority control stays in ink. A note reads: Reform "
+                  "R-03 acts on electoral competition."),
+             notes="Labeled failure: the red set by the cluster, so a variable the reform does not target turns red and one "
+                   "it does target stays in ink.")
+    return {
+        "id": "15.11",
+        "title": "Place a reform on the exact connections and variables it targets, with its band.",
+        "rule": [
+            f"Each of our systems atlas’s {len(REFORM)} reforms lists its targets, the exact connections and variables it acts "
+            "on, and the loops it sits on. Draw the reform on a drawing that holds its targets, and turn only those marks red, "
+            "as Rule 12.5 sets: each target connection with its arrowhead, and the outline of each target variable. Beside "
+            "the drawing, name the reform, say that it acts where the marks turn red, and list each target in its typed chip.",
+            "Mark the targets one by one, even where they fill a cluster, and never turn a frame, a cluster or a whole loop "
+            "red in their place. Print the reform’s band beside it in the atlas’s words. The band names the kind of change, "
+            "on Donella Meadows’ ordering of leverage points, from changing a number to changing what a system aims for. Of the "
+            f"{len(REFORM)} reforms, {bands['rules']} change rules, {bands['parameter']} change a parameter, "
+            f"{words_n(bands['feedback'])} feedback, {words_n(bands['information'])} information, "
+            f"{words_n(bands['power to change the rules'])} the power to change the rules and {words_n(bands['goals'])} goals.",
+        ],
+        "tokens": ["oa.color.data.emphasisRed.onNewsprint", TOKEN_LINE],
+        "why": {"text": ["A reform moves a few marks, and the rest of the mechanism has to follow on its own. Red on the exact "
+                         "targets shows a reader what the reform changes and what it leaves to the loop, before any claim about "
+                         "results. Red on a whole cluster claims changes the atlas never lists."],
+                "basis": "Our systems atlas’s reform profiles and leverage bands; Rule 12.5"},
+        "correct": {"specimen": "s-15-11-correct",
+                    "caption": "Reform R-03 on Loop R4a, with red on its one connection and two variables and nothing else, "
+                               "its targets listed in typed chips and its band in the atlas’s words."},
+        "failure": {"specimen": "s-15-11-failure",
+                    "caption": "<strong>Fails Rule 15.11.</strong> The red follows the electoral competition cluster, so "
+                               "Variable C4 reads as a target and Variable D7, which the atlas lists, stays in ink."},
+        "specs": [
+            {"label": "Targets", "value": "Only the connections and variables the reform’s record lists, in Rule 12.5’s red: a "
+                                          "connection at 4 px on its ink edge, with its arrowhead; a variable’s outline at 3 px",
+             "token": "oa.color.data.emphasisRed.onNewsprint"},
+            {"label": "Never red", "value": "A frame, a cluster or a whole loop in place of the targets"},
+            {"label": "Note", "value": "The reform’s chip and the words “acts where the marks turn red”, with the count of each kind"},
+            {"label": "Band", "value": "The atlas’s word and its definition, quoted: parameter, feedback, information, rules, "
+                                       "power to change the rules or goals"},
+            {"label": "Loops", "value": "Each loop the reform sits on, in its typed chip; the drawing shows one that holds every target"},
+        ],
+        "related": ["12", "13"],
+        "builders": ["Read the targets, loops and band from the reform’s own record, set the red only on marks whose IDs the "
+                     "record lists, and stop the build if a red mark carries any other ID."],
+    }
+
+
+def chain_down(codes, lids, pw=196, x=56, layers=None, targets=(), run=CARD_RUN):
+    """An open chain drawn downward, one pill under the next, each connection's words to the right of its line (Rule
+    15.8's one direction). layers is (index of the first pill below a boundary, name above, name below). Returns (svg, h)."""
+    pills, out, y = [], [], 2
+    for i, c in enumerate(codes):
+        if i:
+            y += run + (24 if layers and layers[0] == i else 0)
+        p = Pill(short(c), 2 + pw / 2, 0, pw, red=c in targets)
+        p.cy = y + p.h / 2
+        y = p.bot
+        pills.append(p)
+    for i, lid in enumerate(lids):
+        a, b = pills[i], pills[i + 1]
+        need(a.left + a.h / 2 <= x <= a.right - a.h / 2, "a chain's line misses its pill's flat edge")
+        pts = [(x, a.bot + 2), (x, b.top - 2)]
+        l = link(lid)
+        tg = lid in targets
+        m, _ = conn(pts, l["evidence"], l["polarity"], l["delay"], target=tg)
+        out.append(wr(m, tg) + verb_at(pts, l["polarity"], step_words(0, lid), "right", big=tg))
+        if layers and layers[0] == i + 1:
+            out.append(boundary(b.top - 26, [x], layers[1], None) + text(W, b.top - 6, layers[2], "fl", "end"))
+    out.append("".join(p.svg() for p in pills))
+    return svg_wrap("".join(out), pills[-1].bot + 4), pills
+
+
+def grade_block(grade, what, quote_html):
+    """One of a reform's two grades, as its own label with Rule 13.3's word and gloss, and the atlas's words under it."""
+    return (f'<div class="gp">{diagram_label(grade, f"{GRADE[grade][1]}, {what}")}'
+            f'<p class="nt">{quote_html}</p></div>')
+
+
+def rule_15_12(book):
+    r = reform("R-32", ["B2", "L26", "LT03"], ["R16", "B1a"], "information", "well-supported", "hypothesis")
+    lt03, l26 = link("LT03"), link("L26")
+    need((lt03["from"], lt03["to"], lt03["polarity"], lt03["type"], lt03["evidence"]) == ("TC2", "B2", "-", "money", "well-supported")
+         and (l26["from"], l26["to"], l26["polarity"], l26["type"], l26["evidence"]) == ("B2", "C3", "+", "information", "well-supported"),
+         "connection LT03 or L26 changed")
+    need(node("TC2")["layer"] == "technology" and node("B2")["layer"] == node("C3")["layer"] == "core", "the chain's layers changed")
+    pg, rg = GLOSS["Problem evidence"], GLOSS["Remedy evidence"]
+    need(pg.startswith("Evidence that the condition or mechanism a reform addresses exists.")
+         and rg.startswith("Evidence that an intervention changes the condition it targets"), "the atlas's glossary on problem and remedy evidence changed")
+    pt = C13_sentences(r["problem_evidence"]["text"])
+    need(pt[0] == ("Northwestern University's Medill Local News Initiative counted 213 U.S. counties with no local news source in "
+                   "2025, with about 50 million people having limited or no access to local news."), "Reform R-32's problem evidence changed")
+    rt_ = r["remedy_evidence"]["text"]
+    need(rt_ == ("Funding models exist. Main limitation: no evaluation has yet shown that these funds improve coverage or "
+                 "accountability, so their effect remains a hypothesis."), "Reform R-32's remedy evidence changed")
+    disp = lambda g: GRADE[g][0]
+    two = sum(1 for x in REFORM.values() if disp(x["problem_evidence"]["grade"]) != disp(x["remedy_evidence"]["grade"]))
+    rank = ["Documented", "Well supported", "Plausible", "Contested", "Hypothesis"]     # Rule 13.3's order
+    lower = sum(1 for x in REFORM.values()
+                if rank.index(disp(x["remedy_evidence"]["grade"])) > rank.index(disp(x["problem_evidence"]["grade"])))
+    need((two, lower) == (49, 48), f"the count of reforms with two different grades changed: {two}, {lower} with the remedy lower")
+    tg = set(r["targets"])
+    svg, _ = chain_down(["TC2", "B2", "C3"], ["LT03", "L26"], layers=(1, "Technology layer", "Core layer"), targets=tg)
+    blocks = (grade_block(r["problem_evidence"]["grade"], "evidence of the problem",
+                          f"The atlas: “{e(pt[0])}”")
+              + grade_block(r["remedy_evidence"]["grade"], "evidence for the remedy", f"The atlas: “{e(rt_)}”"))
+    words = (hed("Reform", "R-32", r["title"]) + acts_note("R-32", r)
+             + f'<p class="k">Two grades, apart</p>{blocks}'
+             + src("reform R-32, its problem and remedy evidence, and connections LT03 and L26"))
+    body = (label_for(["LT03", "L26"], "the grade of both connections drawn")
+            + beside(fig(svg) + f'<p class="nt">{gl("LT03")}</p><p class="nt">{gl("L26")}</p>', words))
+    book.add("s-15-12-correct", body, rule="15.12", readable=True, wide=True,
+             alt=(f"Reform R-32 from our systems atlas, “{r['title']}”, on a chain of three pills drawn downward: Concentration "
+                  "of platforms and digital advertising, in the technology layer, then across a rule into the core layer, Local "
+                  "news supply and Electoral pressure. Both connections and the outline of Local news supply are red: money, "
+                  "lowers, then information, raises. A label over the drawing reads Well supported, the grade of both "
+                  "connections. Beside it, two more labels: Well supported, strong research evidence, for the evidence of the "
+                  f"problem, with the atlas’s words: {pt[0]} Hypothesis, not yet tested, for the evidence for the remedy, with "
+                  f"the atlas’s words: {rt_}"),
+             notes="Both grades and their words read from the reform's problem_evidence and remedy_evidence; the connections' "
+                   "grades from their own records.")
+    book.log("15.12 correct", "Reform R-32, local news", "D01")
+    fsvg, _ = chain_down(["TC2", "B2", "C3"], ["LT03", "L26"], layers=(1, "Technology layer", "Core layer"), targets=tg)
+    fail = (dnp() + diagram_label("well-supported", "strong research evidence") + hed("Reform", "R-32", r["title"]) + fig(fsvg))
+    book.add("s-15-12-failure", fail, rule="15.12",
+             alt=(FC + "Reform R-32 on the same chain under one label for the whole reform: Well supported, strong research "
+                  "evidence. No grade is given for the remedy."),
+             notes="Labeled failure: one grade over the reform, borrowed from the problem and the connections.")
+    return {
+        "id": "15.12",
+        "title": "Grade the evidence for the problem and for the remedy apart.",
+        "rule": [
+            "Our systems atlas grades each reform twice. Evidence of the problem is, in its glossary’s words, “"
+            + pg.split(". ")[0][0].lower() + pg.split(". ")[0][1:] + "”. Evidence for the remedy is “"
+            + rg.split(", with")[0][0].lower() + rg.split(", with")[0][1:] + "”. Print each as its own label with Rule "
+            "13.3’s word and gloss, and quote the atlas’s words under it.",
+            "A drawing of the reform carries a third grade, the line code on each connection (Rule 13.4), which says how sure "
+            f"the atlas is of the mechanism. Keep all three apart. Of the atlas’s {len(REFORM)} reforms, {two} carry two "
+            f"different grades, and in {lower} of them the remedy’s grade is the lower.",
+        ],
+        "tokens": ["oa.chart.grade.documented", "oa.chart.grade.hypothesis"],
+        "why": {"text": ["A problem on the record says nothing yet about whether a fix works. A reader shown one grade carries the "
+                         "stronger to both, and a well-documented harm then reads as proof of a remedy no one has tested."],
+                "basis": "Our systems atlas’s glossary and reform profiles; Rule 13.3"},
+        "correct": {"specimen": "s-15-12-correct",
+                    "caption": "Reform R-32 with its two grades apart: the evidence of the problem well supported, and the "
+                               "evidence for the remedy a hypothesis, each in the atlas’s words, beside the grade of the "
+                               "connections drawn."},
+        "failure": {"specimen": "s-15-12-failure",
+                    "caption": "<strong>Fails Rule 15.12.</strong> One label, Well supported, covers the reform, so the loss of "
+                               "local news reads as proof that funding would restore it. The atlas grades that remedy a hypothesis."},
+        "specs": [
+            {"label": "Problem", "value": "Its own label: Rule 13.3’s word and gloss, then “evidence of the problem”, and the atlas’s words quoted"},
+            {"label": "Remedy", "value": "Its own label the same way, “evidence for the remedy”"},
+            {"label": "Connections", "value": "Their own line code (Rule 13.4), and the drawing’s label from the least certain (Rule 13.1)"},
+            {"label": "Never", "value": "One grade for the whole reform"},
+            {"label": "Counts", "value": f"{two} of {len(REFORM)} reforms carry two different grades, as of the snapshot"},
+        ],
+        "related": ["13"],
+        "builders": ["Read the two grades from <code>problem_evidence</code> and <code>remedy_evidence</code>, print each through "
+                     "Rule 13.3’s table, and never fall back from one to the other."],
+    }
+
+
+# ===============================================================================================================
 # Group 2. Worked examples from the atlas
 # ===============================================================================================================
 def rule_15_13(book):

@@ -1,9 +1,9 @@
 /* Stacked area (coverage plan 3.4, extended; S46). Up to four parts of a whole over time, stacked as bands from the zero
  * line in a fixed order, the first at the bottom; drawn as shares of each period's total ('expand') or as amounts
  * ('zero'). The bands take the categorical inks in DR-236's order (Charcoal, Verdigris, Prussian, then Stone, always
- * hatched). Each band is named inside itself where it is tall enough, and its last share prints at the right edge.
+ * hatched). Each band is named inside itself at its right end, and its last share prints past the right edge.
  * encode: x (year), parts (list of number columns, the first at the bottom).
- * labels: parts ([{field, label, at}]: at is the x value over which the band's name sits), offset ('expand' or 'zero'),
+ * labels: parts ([{field, label, at}]: at, optional, is an x value over which the band's name is centered), offset ('expand' or 'zero'),
  * end_words ('{v}' words printed at each band's right end), x_ticks (x values to label). formats: y_tick, end. */
 (function (K) {
   'use strict';
@@ -42,18 +42,20 @@
       });
       P.value_grid(c, ys, vs.ticks, fmt, x0 - 4, x0, gut);
       P.zero_line(c, ys, x0, x1);
-      // the band names, inside each band over its x; group 4's beside its hatch on a halo of the ground
+      // the band names inside each band at its right end, flush right (or centered over labels.parts[].at); group 4's on a
+      // halo of the ground over its hatch
       parts.forEach(function (p, j) {
-        var dfn = defs[p] || {}, lab = dfn.label || p, at = dfn.at !== undefined ? st.filter(function (s) { return String(s.row[ex]) === String(dfn.at); })[0] : st[Math.floor(st.length / 2)];
+        var dfn = defs[p] || {}, lab = dfn.label || p, at = dfn.at !== undefined ? st.filter(function (s) { return String(s.row[ex]) === String(dfn.at); })[0] : last;
         if (!at) { c.warn('labels.parts.at matches no row for ' + p); return; }
-        var g = at.segs[j], hgt = ys(g.start) - ys(g.end), lines = c.wrap(lab, 'label', Math.max(60, (x1 - x0) * 0.42), 600);
-        var tall = lines.length * lh + 4, hatch = CAT[Math.min(j, 3)] === 'cat-4';
+        var g = at.segs[j], hgt = ys(g.start) - ys(g.end), mw = Math.max(60, (x1 - x0) * 0.42), lines = c.wrap(lab, 'label', mw, 600);
+        var hatch = CAT[Math.min(j, 3)] === 'cat-4', end = dfn.at === undefined, ax = end ? x1 - 8 : X(at);
         var cy = (ys(g.start) + ys(g.end)) / 2 - (lines.length - 1) * lh / 2 + size * 0.35;
-        if (hgt < tall) c.warn('the band ' + p + ' is too thin at ' + dfn.at + ' for its name');
+        if (hgt < lines.length * lh + 4) c.warn('the band ' + p + ' is too thin for its name');
         // a patch of the band's own fill under its name, so the forced-colors check reads the ink it sits on (a path is
         // not a mark the check reads)
-        if (!hatch) { var nw = 0; lines.forEach(function (l) { nw = Math.max(nw, c.measure(l, 'label', 600)); }); c.rect(X(at) - nw / 2, cy - size, nw, lines.length * lh, { fill: CAT[j], kind: 'label-ground' }); }
-        c.text(X(at), cy, lab, { role: 'label', weight: 600, anchor: 'middle', max: Math.max(60, (x1 - x0) * 0.42) + 1, leading: lh,
+        var nw = 0; lines.forEach(function (l) { nw = Math.max(nw, c.measure(l, 'label', 600)); });
+        if (!hatch) c.rect(end ? ax - nw : ax - nw / 2, cy - size, nw, lines.length * lh, { fill: CAT[j], kind: 'label-ground' });
+        c.text(ax, cy, lab, { role: 'label', weight: 600, anchor: end ? 'end' : 'middle', max: mw + 1, leading: lh,
           fill: hatch ? 'beside-cat-4' : 'on-' + CAT[j], halo: hatch });
       });
       // each band's last share at the right edge, at its middle, moved apart where two would touch

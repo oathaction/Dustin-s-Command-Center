@@ -1,0 +1,23 @@
+bin_start,bin_end,label,judges
+0,2,0 to under 2 years,80
+2,4,2 to under 4 years,125
+4,6,4 to under 6 years,85
+6,8,6 to under 8 years,132
+8,10,8 to under 10 years,75
+10,12,10 to under 12 years,44
+12,14,12 to under 14 years,92
+14,16,14 to under 16 years,61
+16,18,16 to under 18 years,20
+18,20,18 to under 20 years,31
+20,22,20 to under 22 years,21
+22,24,22 to under 24 years,23
+24,26,24 to under 26 years,15
+26,28,26 to under 28 years,6
+28,30,28 to under 30 years,11
+30,32,30 to under 32 years,4
+32,34,32 to under 34 years,6
+34,36,34 to under 36 years,2
+36,38,36 to under 38 years,5
+38,40,38 to under 40 years,3
+40,42,40 to under 42 years,6
+42,44,42 to under 44 years,3

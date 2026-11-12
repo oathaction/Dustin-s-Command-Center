@@ -13,7 +13,7 @@
  "universe_or_base": "Federal debt counted against the limit set in law (31 U.S.C. 3101), held by the public and by government accounts",
  "unit": "millions of dollars, nominal, exactly as published; a chart rounds once, at print",
  "vintage": "Monthly Statements of the Public Debt as served on November 11, 2026",
- "qualification": "An empty limit cell is a month when the table shows the limit as zero, which the studio reads as a suspension of the limit (it was suspended until January 1, 2025, by the Fiscal Responsibility Act of 2023, a reading not checked on govinfo.gov today); the limit of $41,104 billion is the one in force at the latest month, after Public Law 119-21 (July 4, 2025) raised it by $5 trillion. The studio did not read the statute today, so a chart that cites the law checks it on govinfo.gov first",
+ "qualification": "An empty limit cell is a month when the table shows no limit: Public Law 118-5, the Fiscal Responsibility Act of 2023, section 401(a), suspended the limit from June 3, 2023 through January 1, 2025, and section 401(b) raised it on January 2, 2025 by the obligations issued while it was suspended. Public Law 119-21 (July 4, 2025), section 72001, raised it by $5 trillion, to the $41,104 billion in force at the latest month. Both laws read on govinfo.gov on November 12, 2026",
  "columns": {
   "date": {
    "type": "date",
@@ -38,5 +38,8 @@
  "printed_source_line": "Source: U.S. Department of the Treasury, Monthly Statement of the Public Debt, Table II, statutory debt limit, October 31, 2026, United States. Retrieved November 11, 2026. Debt subject to the limit, held by the public and by government accounts.",
  "ledger_row": "P7-035",
  "domain": "D08",
- "states": []
+ "states": [],
+ "notes": [
+  "Read on govinfo.gov, November 12, 2026 (data lead's R2, round 2): Public Law 119-21, 119th Congress, H.R. 1, approved July 4, 2025, section 72001, “Modification of limitation on the public debt” (139 Stat. 332): “The limitation under section 3101(b) of title 31, United States Code, as most recently increased by section 401(b) of Public Law 118-5 (31 U.S.C. 3101 note), is increased by $5,000,000,000,000.” Public Law 118-5, the Fiscal Responsibility Act of 2023, approved June 3, 2023, section 401(a): section 3101(b) “shall not apply for the period beginning on the date of the enactment of this Act and ending on January 1, 2025”; section 401(b) raises the limit “effective on January 2, 2025” by the obligations issued in that period. The table’s limit steps from $36,103,995.66 million in June 2025 to $41,103,995.66 million in July 2025, exactly $5 trillion, and holds through October 2026. Pages: https://www.govinfo.gov/content/pkg/PLAW-119publ21/html/PLAW-119publ21.htm and https://www.govinfo.gov/content/pkg/PLAW-118publ5/html/PLAW-118publ5.htm"
+ ]
 }

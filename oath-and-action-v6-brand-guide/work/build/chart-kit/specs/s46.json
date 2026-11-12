@@ -65,23 +65,19 @@
     "parts": [
       {
         "field": "private_health_insurance_pct",
-        "label": "Private insurance",
-        "at": 1995
+        "label": "Private insurance"
       },
       {
         "field": "medicare_pct",
-        "label": "Medicare",
-        "at": 2005
+        "label": "Medicare"
       },
       {
         "field": "medicaid_pct",
-        "label": "Medicaid",
-        "at": 2005
+        "label": "Medicaid"
       },
       {
         "field": "all_other_sources_pct",
-        "label": "All other sources",
-        "at": 1972
+        "label": "All other sources"
       }
     ],
     "offset": "expand"

@@ -1,0 +1,80 @@
+{
+ "kit": 1,
+ "id": "S56",
+ "form": "connected-scatter",
+ "family": "correlation",
+ "tier": "extended",
+ "dataset": "fred-unemployment-and-job-openings",
+ "where": {
+  "month": {
+   "from": "2000-12",
+   "to": "2026-09"
+  }
+ },
+ "reader_question": "How have unemployment and job openings moved together?",
+ "evidence": "association",
+ "evidence_label": "Association",
+ "grade_line": "Documented: two Bureau of Labor Statistics surveys, as copied by FRED, the Federal Reserve Bank of St. Louis’s data site",
+ "title": "DRAFT",
+ "measure_line": "DRAFT",
+ "notes": [
+  "This shows the two move together; it does not show one causes the other."
+ ],
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "DRAFT",
+ "table": {
+  "caption": "Unemployment rate and job openings, monthly",
+  "columns": [
+   {
+    "field": "month",
+    "label": "Month",
+    "format": "month",
+    "row_header": true
+   },
+   {
+    "field": "unemployment_rate",
+    "label": "Unemployment rate, percent",
+    "format": "number:1",
+    "empty": "None published"
+   },
+   {
+    "field": "job_openings_thousands",
+    "label": "Job openings",
+    "format": "thousands"
+   }
+  ]
+ },
+ "phone": "same",
+ "artboard": "reading",
+ "domain": "D07",
+ "states": [],
+ "encode": {
+  "time": "month",
+  "x": "unemployment_rate",
+  "y": "job_openings_thousands"
+ },
+ "labels": {
+  "named": {
+   "2000-12": "December 2000",
+   "2010-01": "January 2010",
+   "2020-04": "April 2020",
+   "2022-03": "March 2022",
+   "2026-09": "September 2026"
+  },
+  "place": {
+   "2000-12": "above",
+   "2010-01": "above",
+   "2020-04": "left",
+   "2022-03": "right",
+   "2026-09": "below"
+  },
+  "gap": "No rate for October 2025",
+  "x_axis": "Unemployment rate, percent",
+  "y_axis": "Job openings"
+ },
+ "formats": {
+  "x": "integer",
+  "y": "compact-thousands"
+ }
+}

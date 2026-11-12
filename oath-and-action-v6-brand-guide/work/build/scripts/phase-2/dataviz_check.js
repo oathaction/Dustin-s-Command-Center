@@ -293,17 +293,18 @@ async function kitAudit(page) {
         const a = boxes[i], b = boxes[j];
         if (a.l + 1 < b.r && b.l + 1 < a.r && a.t + 1 < b.b && b.t + 1 < a.b) f.push(`texts overlap: "${a.s}" and "${b.s}"`);
       }
-      let reds = 0;
-      svg.querySelectorAll('rect, circle, path, polygon, line').forEach((m) => {
+      // ED-E15 (round 2): red marks inside one data-oa-job (a group the title names together) count as one working red
+      const redJobs = new Set();
+      svg.querySelectorAll('rect, circle, path, polygon, line').forEach((m, i) => {
         const cs = getComputedStyle(m), fill = rgb(cs.fill), stroke = rgb(cs.stroke);
         const r = m.getBoundingClientRect();
         if (r.width && (r.left < sb.left - 1.5 || r.right > sb.right + 1.5 || r.top < sb.top - 1.5 || r.bottom > sb.bottom + 1.5)) f.push(`a ${m.tagName} cut by the drawing's edge`);
-        if (same(fill, RED) || same(stroke, RED)) reds++;
+        if (same(fill, RED) || same(stroke, RED)) { const j = m.closest('[data-oa-job]'); redJobs.add(j ? 'job:' + j.getAttribute('data-oa-job') : 'mark:' + i); }
         if (m.closest('[data-party]') || m.hasAttribute('data-party')) {
           if (same(fill, RED) || same(fill, PRUSSIAN) || same(stroke, RED) || same(stroke, PRUSSIAN)) f.push('a party mark in Pillar Red or Prussian (DR-48)');
         }
       });
-      if (reds > 1) f.push(`${reds} working-red marks in one drawing (Rule 05.3)`);
+      if (redJobs.size > 1) f.push(`${redJobs.size} working-red marks in one drawing (Rule 05.3)`);
       out.push({ id, f, texts: boxes.length });
     });
     return out;
@@ -399,6 +400,9 @@ async function kitSelfTest() {
     ['a mark cut by the edge', fig('cut', '<rect x="280" y="10" width="40" height="20" fill="#121212"/>'), 'cut'],
     ['a party mark in red', fig('party', '<rect data-party="Republican" x="10" y="10" width="40" height="20" fill="#E63946"/>'), 'party'],
     ['two working reds', fig('reds', '<circle cx="20" cy="20" r="5" fill="#E63946"/><circle cx="60" cy="20" r="5" fill="#E63946"/>'), 'working-red'],
+    // ED-E15 (round 2): a red line and its dots, or a band the title names together, as one job; two jobs still fail
+    ['a red line and its dots as one job', fig('job1', '<g data-oa-job="point"><path d="M20 20L60 30" stroke="#E63946" fill="none"/><circle cx="20" cy="20" r="3" fill="#E63946"/><circle cx="60" cy="30" r="3" fill="#E63946"/></g>'), null],
+    ['red marks of two jobs', fig('job2', '<circle data-oa-job="point" cx="20" cy="20" r="5" fill="#E63946"/><circle data-oa-job="other" cx="60" cy="20" r="5" fill="#E63946"/>'), 'working-red'],
     ['an em dash', fig('dash', T(10, 30), ' One \u2014 two.'), 'em dash'],
     ['the retired disclosure', fig('disc', T(10, 30), ' The editor works with the Yes on 3 campaign.'), 'disclosure'],
     ['a drawing named by an element not on the page', fig('noname', T(10, 30), '', 'aria-labelledby="not-here"'), 'not on the page'],
