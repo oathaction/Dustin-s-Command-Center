@@ -1759,7 +1759,7 @@ def rule_15_11(book):
              + f'<p class="k">Its targets, from the atlas</p>{items}'
              + f'<p class="k">Its band</p>{band_p(r)}'
              + f'<p class="k">Its loops</p>{loops_p(r, "R4a")}'
-             + src("reform R-03, loop R4a, connections L42, L55 and L56, and the leverage bands"))
+             + src("reform R-03, loop R4a, connections L42, L55 and L56, and the bands of change"))
     body = (label_for(lp["links"], "the grade of the loop’s least certain step")
             + beside(hed("Loop", "R4a", lp["title"]) + fig(svg), words))
     book.add("s-15-11-correct", body, rule="15.11", readable=True, wide=True,
@@ -1773,7 +1773,7 @@ def rule_15_11(book):
                   f"ink. Its band, rules: {BANDS['rules']} Its loops: Loop R4a, Loop R10 and Loop R12; the drawing shows Loop "
                   "R4a, which holds every target."),
              notes="Targets read from the reform's record and drawn in Rule 12.5's red by wire_marks at the 6 px sizes; the band "
-                   "quoted from the atlas's leverage bands.")
+                   "quoted from the atlas's bands of change.")
     book.log("15.11 correct", "Reform R-03 on Loop R4a, district maps", "D02")
     fb, fh = three_loop(codes, lp["links"], inside=("R4a", "reinforcing"), targets={"C4", "C1", "L42"})
     fail = (dnp() + hed("Reform", "R-03", r["title"]) + fig(svg_wrap(fb, fh))
@@ -1794,7 +1794,8 @@ def rule_15_11(book):
             "the drawing, name the reform, say that it acts where the marks turn red, and list each target in its typed chip.",
             "Mark the targets one by one, even where they fill a cluster, and never turn a frame, a cluster or a whole loop "
             "red in their place. Print the reform’s band beside it in the atlas’s words. The band names the kind of change, "
-            "on Donella Meadows’ ordering of leverage points, from changing a number to changing what a system aims for. Of the "
+            "on Donella Meadows’ ordering of places to intervene in a system, from changing a number to changing what the "
+            "system aims for. Of the "
             f"{len(REFORM)} reforms, {bands['rules']} change rules, {bands['parameter']} change a parameter, "
             f"{words_n(bands['feedback'])} feedback, {words_n(bands['information'])} information, "
             f"{words_n(bands['power to change the rules'])} the power to change the rules and {words_n(bands['goals'])} goals.",
@@ -1803,7 +1804,7 @@ def rule_15_11(book):
         "why": {"text": ["A reform moves a few marks, and the rest of the mechanism has to follow on its own. Red on the exact "
                          "targets shows a reader what the reform changes and what it leaves to the loop, before any claim about "
                          "results. Red on a whole cluster claims changes the atlas never lists."],
-                "basis": "Our systems atlas’s reform profiles and leverage bands; Rule 12.5"},
+                "basis": "Our systems atlas’s reform profiles and its bands of change; Rule 12.5"},
         "correct": {"specimen": "s-15-11-correct",
                     "caption": "Reform R-03 on Loop R4a, with red on its one connection and two variables and nothing else, "
                                "its targets listed in typed chips and its band in the atlas’s words."},

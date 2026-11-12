@@ -10,7 +10,7 @@
  },
  "intro": [
   "A systems graphic draws a mechanism: what moves what, which way, and how sure our systems atlas, Who Do They Answer To?, is of each step. It uses the atlas’s own parts. Variables are the quantities or conditions that can rise or fall, connections are the arrows between them, and loops are chains of connections that come back to where they started.",
-  "Chapter 13 sets how a connection carries its grade, its delay and its source. The rules here show how to read and combine those marks, then work through mechanisms from the atlas as it records them."
+  "Chapter 13 sets how a connection carries its grade, its delay and its source. The rules here show how to read and combine those marks and how to place a reform on them, then work through mechanisms from the atlas as it records them."
  ],
  "groups": [
   {
@@ -20,8 +20,14 @@
    "line": "Each mark in a systems drawing answers one question about the mechanism, and a reader can name every answer without color."
   },
   {
-   "before_rule": "15.13",
+   "before_rule": "15.11",
    "number": 2,
+   "title": "Reforms on the drawing",
+   "line": "A reform turns red only where the atlas says it acts, and its two grades stay apart."
+  },
+  {
+   "before_rule": "15.13",
+   "number": 3,
    "title": "Worked examples from the atlas",
    "line": "Each example draws one mechanism from our systems atlas as the atlas records it, and shows what a reader can take from it."
   }
@@ -550,6 +556,116 @@
    ]
   },
   {
+   "id": "15.11",
+   "title": "Place a reform on the exact connections and variables it targets, with its band.",
+   "rule": [
+    "Each of our systems atlas’s 50 reforms lists its targets, the exact connections and variables it acts on, and the loops it sits on. Draw the reform on a drawing that holds its targets, and turn only those marks red, as Rule 12.5 sets: each target connection with its arrowhead, and the outline of each target variable. Beside the drawing, name the reform, say that it acts where the marks turn red, and list each target in its typed chip.",
+    "Mark the targets one by one, even where they fill a cluster, and never turn a frame, a cluster or a whole loop red in their place. Print the reform’s band beside it in the atlas’s words. The band names the kind of change, on Donella Meadows’ ordering of places to intervene in a system, from changing a number to changing what the system aims for. Of the 50 reforms, 26 change rules, 11 change a parameter, five feedback, four information, three the power to change the rules and one goals."
+   ],
+   "tokens": [
+    "oa.color.data.emphasisRed.onNewsprint",
+    "oa.color.graphic.essential.onNewsprint"
+   ],
+   "why": {
+    "text": [
+     "A reform moves a few marks, and the rest of the mechanism has to follow on its own. Red on the exact targets shows a reader what the reform changes and what it leaves to the loop, before any claim about results. Red on a whole cluster claims changes the atlas never lists."
+    ],
+    "basis": "Our systems atlas’s reform profiles and its bands of change; Rule 12.5"
+   },
+   "correct": {
+    "specimen": "s-15-11-correct",
+    "caption": "Reform R-03 on Loop R4a, with red on its one connection and two variables and nothing else, its targets listed in typed chips and its band in the atlas’s words."
+   },
+   "failure": {
+    "specimen": "s-15-11-failure",
+    "caption": "<strong>Fails Rule 15.11.</strong> The red follows the electoral competition cluster, so Variable C4 reads as a target and Variable D7, which the atlas lists, stays in ink."
+   },
+   "specs": [
+    {
+     "label": "Targets",
+     "value": "Only the connections and variables the reform’s record lists, in Rule 12.5’s red: a connection at 4 px on its ink edge, with its arrowhead; a variable’s outline at 3 px",
+     "token": "oa.color.data.emphasisRed.onNewsprint"
+    },
+    {
+     "label": "Never red",
+     "value": "A frame, a cluster or a whole loop in place of the targets"
+    },
+    {
+     "label": "Note",
+     "value": "The reform’s chip and the words “acts where the marks turn red”, with the count of each kind"
+    },
+    {
+     "label": "Band",
+     "value": "The atlas’s word and its definition, quoted: parameter, feedback, information, rules, power to change the rules or goals"
+    },
+    {
+     "label": "Loops",
+     "value": "Each loop the reform sits on, in its typed chip; the drawing shows one that holds every target"
+    }
+   ],
+   "related": [
+    "12",
+    "13"
+   ],
+   "builders": [
+    "Read the targets, loops and band from the reform’s own record, set the red only on marks whose IDs the record lists, and stop the build if a red mark carries any other ID."
+   ]
+  },
+  {
+   "id": "15.12",
+   "title": "Grade the evidence for the problem and for the remedy apart.",
+   "rule": [
+    "Our systems atlas grades each reform twice. Evidence of the problem is, in its glossary’s words, “evidence that the condition or mechanism a reform addresses exists”. Evidence for the remedy is “evidence that an intervention changes the condition it targets”. Print each as its own label with Rule 13.3’s word and gloss, and quote the atlas’s words under it.",
+    "A drawing of the reform carries a third grade, the line code on each connection (Rule 13.4), which says how sure the atlas is of the mechanism. Keep all three apart. Of the atlas’s 50 reforms, 49 carry two different grades, and in 48 of them the remedy’s grade is the lower."
+   ],
+   "tokens": [
+    "oa.chart.grade.documented",
+    "oa.chart.grade.hypothesis"
+   ],
+   "why": {
+    "text": [
+     "A problem on the record says nothing yet about whether a fix works. A reader shown one grade carries the stronger to both, and a well-documented harm then reads as proof of a remedy no one has tested."
+    ],
+    "basis": "Our systems atlas’s glossary and reform profiles; Rule 13.3"
+   },
+   "correct": {
+    "specimen": "s-15-12-correct",
+    "caption": "Reform R-32 with its two grades apart: the evidence of the problem well supported, and the evidence for the remedy a hypothesis, each in the atlas’s words, beside the grade of the connections drawn."
+   },
+   "failure": {
+    "specimen": "s-15-12-failure",
+    "caption": "<strong>Fails Rule 15.12.</strong> One label, Well supported, covers the reform, so the loss of local news reads as proof that funding would restore it. The atlas grades that remedy a hypothesis."
+   },
+   "specs": [
+    {
+     "label": "Problem",
+     "value": "Its own label: Rule 13.3’s word and gloss, then “evidence of the problem”, and the atlas’s words quoted"
+    },
+    {
+     "label": "Remedy",
+     "value": "Its own label the same way, “evidence for the remedy”"
+    },
+    {
+     "label": "Connections",
+     "value": "Their own line code (Rule 13.4), and the drawing’s label from the least certain (Rule 13.1)"
+    },
+    {
+     "label": "Never",
+     "value": "One grade for the whole reform"
+    },
+    {
+     "label": "Counts",
+     "value": "49 of 50 reforms carry two different grades, as of the snapshot"
+    }
+   ],
+   "related": [
+    "13"
+   ],
+   "builders": [
+    "Read the two grades from <code>problem_evidence</code> and <code>remedy_evidence</code>, print each through Rule 13.3’s table, and never fall back from one to the other."
+   ]
+  },
+  {
    "id": "15.13",
    "title": "Let the least certain step set how far a reader trusts a loop.",
    "rule": [
@@ -646,9 +762,217 @@
    "builders": [
     "Quote the revision from the loop’s own fields, and stop the build when those fields change, so the quotation never drifts from the atlas."
    ]
+  },
+  {
+   "id": "15.15",
+   "title": "Follow a variable two loops share through each loop in turn.",
+   "rule": [
+    "Loop B4, “Electoral consequences can improve public performance”, and Loop R10, “Safe seats shift accountability to small primary electorates”, both pass through Variable C3, risk of losing office. Draw the two loops side by side, give the shared variable the same short name in both, and fill its pill in ink in each drawing, the one place a pill takes a fill. Under each loop, print the connection that brings a change into the shared variable and the one that carries it on, with the atlas’s sentence on each sign.",
+    "Then say where the loops meet, in the atlas’s words. Loop R10 lowers the risk of losing office as primaries decide more seats, and Loop B4 turns that same risk into defeats that improve public services. The atlas says Loop B4 “works only where seats are competitive”."
+   ],
+   "tokens": [
+    "oa.color.graphic.essential.onNewsprint"
+   ],
+   "why": {
+    "text": [
+     "Two loops drawn apart look like two separate stories. A variable they share is where one can weaken or strengthen the other, and a reader can find it only if it carries one name and one mark in both."
+    ],
+    "basis": "Our systems atlas, Loops B4 and R10 and the glossary entry “Electoral pressure”"
+   },
+   "correct": {
+    "specimen": "s-15-15-correct",
+    "caption": "Loop B4 beside Loop R10, with Variable C3 filled in ink in both, the connections in and out of it in each loop, and the atlas’s words on where the two meet."
+   },
+   "failure": {
+    "specimen": "s-15-15-failure",
+    "caption": "<strong>Fails Rule 15.15.</strong> The shared variable takes a different name in each loop and no mark, so the loops read as unrelated. Both pass through Variable C3, the risk of losing office."
+   },
+   "specs": [
+    {
+     "label": "Order",
+     "value": "The two loops side by side from 680 px, one under the other below it"
+    },
+    {
+     "label": "Shared variable",
+     "value": "One short name in both drawings, its pill filled in ink with its name in the surface color",
+     "token": "oa.color.graphic.essential.onNewsprint"
+    },
+    {
+     "label": "In and out",
+     "value": "Under each loop, the connection into the shared variable and the one out of it, with their chips, grade words and the atlas’s sentences on their signs"
+    },
+    {
+     "label": "Where they meet",
+     "value": "The atlas’s words, quoted, with the shared variable’s chip"
+    }
+   ],
+   "related": [
+    "13"
+   ],
+   "builders": [
+    "Find the shared variable as the overlap of the two loops’ chains, by script, and stop the build if the loops share none or more than the one the page follows."
+   ]
+  },
+  {
+   "id": "15.16",
+   "title": "Show a reform’s four effects side by side, with each route’s check date.",
+   "rule": [
+    "Reform R-01, “All-party primaries with ranked general elections”, targets two connections and one variable on Loop R10, and sits on Loops R10, B4 and R11. Draw it where it acts (Rule 15.11), then print its effects one outcome family to a row, each with the atlas’s code, its words and the pips of Rule 13.5, and no row that adds them. Its routes follow, each with who acts there, its feasibility and its own check date, or “Not checked” where the atlas gives none (Rule 13.10).",
+    "As of October 15, 2026, the atlas codes its effect on the quality of democracy moderate positive, on government efficacy small positive, and on the other two families no expected effect. It checked the state ballot and local routes on that date, and the state statute and federal statute routes carry no date."
+   ],
+   "tokens": [
+    "oa.color.data.emphasisRed.onNewsprint",
+    "oa.color.graphic.essential.onNewsprint"
+   ],
+   "why": {
+    "text": [
+     "A single score would hide what the atlas keeps apart: the families use different units, and a reform can help one while it costs another. A route rated without a date reads as current, and a reader deciding where to act needs to know which ratings the atlas checked."
+    ],
+    "basis": "Our systems atlas, Reform R-01’s profile and its note on effect codes; Rules 13.5 and 13.10"
+   },
+   "correct": {
+    "specimen": "s-15-16-correct",
+    "caption": "Reform R-01 at its targets on Loop R10, with its four effects one family to a row and its four routes each dated or marked not checked, as of October 15, 2026."
+   },
+   "failure": {
+    "specimen": "s-15-16-failure",
+    "caption": "<strong>Fails Rule 15.16.</strong> The card adds two gains into one large positive score and dates all four routes October 15, 2026. The atlas adds no families, and it checked only the ballot and local routes."
+   },
+   "specs": [
+    {
+     "label": "Where it acts",
+     "value": "Its targets in Rule 12.5’s red, as Rule 15.11 sets"
+    },
+    {
+     "label": "Effects",
+     "value": "One row per outcome family, in the atlas’s order, with the pips, the code and its words; the atlas’s note that codes are never added, quoted"
+    },
+    {
+     "label": "Routes",
+     "value": "Chip and name, who acts, feasibility, and “Checked” with the route’s own date, or “Not checked”"
+    },
+    {
+     "label": "Date",
+     "value": "“As of October 15, 2026” over the effects, the snapshot date"
+    },
+    {
+     "label": "Never",
+     "value": "A total, an overall score, or a route dated from the reform’s status"
+    }
+   ],
+   "related": [
+    "12",
+    "13"
+   ],
+   "builders": [
+    "Print each family from the reform’s <code>effects</code> record and each route from its <code>routes</code> list, and stop the build if any row sums or a route without a <code>checked</code> date prints one."
+   ]
+  },
+  {
+   "id": "15.17",
+   "title": "Draw who holds power over each level in one authority diagram.",
+   "rule": [
+    "Our systems atlas records seven authority connections. Each runs from a body in the core layer, such as Congress or the state and local governments that test reforms, to a variable in the economy or technology layer that the body has the legal power to set. Draw all seven in one diagram: the layers stacked with a rule between each and its name, one pill for each body and each variable, and every line in the authority mark of Rule 15.5.",
+    "Route the lines so that none crosses another, and list each connection beside the diagram with its name. Then a reader sees what no single line shows: two bodies hold power over three of the four variables, and Congress and the executive each reach both layers."
+   ],
+   "tokens": [
+    "oa.color.graphic.essential.onNewsprint",
+    "oa.color.border.strong"
+   ],
+   "why": {
+    "text": [
+     "Power in the atlas is shared. Congress appropriates public investment and the executive administers it; antitrust enforcers and state governments both set rules for pricing software. One diagram keeps every body apart and shows where their powers meet."
+    ],
+    "basis": "Our systems atlas’s authority connections and model conventions"
+   },
+   "correct": {
+    "specimen": "s-15-17-correct",
+    "caption": "The atlas’s seven authority connections in one diagram, from four bodies in the core layer to four variables in the economy and technology layers, with each connection named beside it."
+   },
+   "failure": {
+    "specimen": "s-15-17-failure",
+    "caption": "<strong>Fails Rule 15.17.</strong> One pill for the government stands in for four bodies, so the drawing cannot say who decides what. The atlas records Congress, the executive, enforcers and states and cities apart."
+   },
+   "specs": [
+    {
+     "label": "Layers",
+     "value": "Stacked, with one 1 px rule between each two and both names beside it (Rule 15.9)"
+    },
+    {
+     "label": "Bodies",
+     "value": "One pill each, in the core layer"
+    },
+    {
+     "label": "Lines",
+     "value": "The authority mark of Rule 15.5: solid, an open diamond, “decides”, no sign"
+    },
+    {
+     "label": "Crossings",
+     "value": "None; the build stops if a line meets a pill off its flat edge or two lines touch"
+    },
+    {
+     "label": "Beside it",
+     "value": "Each connection’s chip, name and grade word, grouped by the layer it reaches"
+    }
+   ],
+   "related": [
+    "13"
+   ],
+   "builders": [
+    "Read every authority connection from the atlas, check that each runs from the core layer and sits in no loop, and stop the build if the count or any end changes."
+   ]
+  },
+  {
+   "id": "15.18",
+   "title": "Print a conceptual loop’s missing chain beside its grade.",
+   "rule": [
+    "Loop B2, “Automatic benefits cushion economic shocks”, is one of our systems atlas’s three conceptual loops. The atlas grades its mechanism well supported, and none of its steps is a numbered connection. Draw it as Rule 15.7 sets, with hollow lines between thin pills, and print in the label, right after the grade, that the loop has no numbered chain and that the atlas calls this its weakest point.",
+    "Quote the atlas’s words on the missing chain beside the drawing, tie each station to a numbered variable where the atlas does, and name the atlas’s other conceptual loops, Loop B3 and Loop R9, with their grades."
+   ],
+   "tokens": [
+    "oa.chart.grade.conceptual.rail"
+   ],
+   "why": {
+    "text": [
+     "A grade printed alone reads as the grade of each step. For a conceptual loop it belongs to the mechanism as a whole, and no step carries a citation of its own, so a reader cannot check the loop one step at a time."
+    ],
+    "basis": "Our systems atlas, Loop B2’s record and evidence summary"
+   },
+   "correct": {
+    "specimen": "s-15-18-correct",
+    "caption": "Loop B2 with its missing chain in the label beside its grade, the atlas’s words on it, and the atlas’s other two conceptual loops named with their grades."
+   },
+   "failure": {
+    "specimen": "s-15-18-failure",
+    "caption": "<strong>Fails Rule 15.18.</strong> The label gives the grade alone, so Well supported reads as a checked chain of steps. The atlas grades the mechanism and calls the missing chain its weakest point."
+   },
+   "specs": [
+    {
+     "label": "Label",
+     "value": "The grade word, then “no numbered chain”, in one line"
+    },
+    {
+     "label": "Drawing",
+     "value": "Hollow lines with their signs, 1 px pills, no step numbers (Rule 15.7)"
+    },
+    {
+     "label": "Beside it",
+     "value": "The atlas’s words on the missing chain, quoted; a station tied to a numbered variable in its chip"
+    },
+    {
+     "label": "The others",
+     "value": "Each conceptual loop named in its chip with its grade; three as of the snapshot"
+    }
+   ],
+   "related": [
+    "13"
+   ],
+   "builders": [
+    "Read the closure and the evidence summary from the loop’s record, and stop the build if a conceptual loop gains numbered connections or the summary changes."
+   ]
   }
  ],
- "plate_css": ":scope{color:var(--oa-color-text-primary)}.p{box-sizing:border-box;padding:16px;font:var(--oa-type-body);max-width:100%}.p *{box-sizing:border-box}:where(.p) :where(p){margin:0}.dnp{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 10px;background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform)}.evr{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 10px}.ev{display:inline-flex;align-items:center;min-height:24px;padding:3px 8px;background:var(--oa-chart-color-chip-fill);color:var(--oa-chart-color-chip-label);font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform)}.gr{font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}.chip{display:inline-flex;align-items:center;gap:.3em;padding:1px 8px;border:1px solid var(--oa-color-border-strong);font:var(--oa-type-data-label);white-space:nowrap;vertical-align:baseline}.chip .id{font-variant-numeric:tabular-nums}.k{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);color:var(--oa-color-text-secondary);margin:0 0 6px}.rs{display:inline-block;fill:var(--oa-color-graphic-essential);vertical-align:.08em;margin-right:5px}.gw b{font-weight:var(--oa-font-weight-bold)}.gw .w{white-space:nowrap}.nw2{white-space:nowrap}.src{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin-top:12px;max-width:44em}.nt{font:var(--oa-type-caption);margin-top:10px;max-width:40em}.nt+.nt{margin-top:4px}.hed{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;margin:0 0 4px;font:var(--oa-type-body-small)}.sub{font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}.mk{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 4px;border-radius:10px;background:var(--oa-chart-color-chip-fill);color:var(--oa-chart-color-chip-label);font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);letter-spacing:0;vertical-align:.15em;margin:0 1px 0 3px}.sv{display:block;overflow:visible}.sv text{font-family:var(--oa-font-family-reading);font-size:var(--oa-chart-type-label);fill:var(--oa-color-text-primary)}.sv .t{font-weight:var(--oa-font-weight-semibold)}.sv .v{font-weight:var(--oa-font-weight-regular)}.sv .pl{fill:var(--oa-color-surface);stroke:var(--oa-color-graphic-essential);stroke-width:2px}.sv .pl.th{stroke-width:1px}.sv .ak-mark{fill:none;stroke:var(--oa-color-graphic-essential)}.sv .hd,.sv .tg polygon{fill:var(--oa-color-graphic-essential)}.sv .tg .sg{fill:var(--oa-color-surface)}.sv .tk{stroke:var(--oa-color-graphic-essential);stroke-width:2px}.sv .rl{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:1px}.sv .id{font-weight:var(--oa-font-weight-bold)}.sv .kd{font-weight:var(--oa-font-weight-regular)}.sv .sn{font-weight:var(--oa-font-weight-bold)}.sv .dm{fill:var(--oa-color-surface);stroke:var(--oa-color-graphic-essential);stroke-width:2px}.sv .fr{fill:none;stroke:var(--oa-color-border-strong);stroke-width:1px}.sv .fl{fill:var(--oa-color-text-secondary)}.sv .nm circle{fill:var(--oa-chart-color-chip-fill)}.sv .nm text{fill:var(--oa-chart-color-chip-label);font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums}.dg{margin:4px 0 0}.dg+.ra{margin-top:10px}.ra{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);max-width:30em}.kw{list-style:none;margin:0;padding:0;font:var(--oa-type-body-small)}.kw li{padding:8px 0;border-top:1px solid var(--oa-color-border-hairline)}.kw li:first-child{border-top:0;padding-top:0}.kw b{font-weight:var(--oa-font-weight-semibold)}.q{font:italic 400 var(--oa-type-body-small-font-size)/1.6 var(--oa-font-family-quote);margin:0}.vc+.vc{margin-top:18px;padding-top:14px;border-top:1px solid var(--oa-color-border-hairline)}.vc .sv{margin:2px 0 8px}.sv .pk{stroke:var(--oa-color-palette-prussian)}.sv .gk{stroke:var(--oa-color-palette-verdigris)}.sv .sk{stroke:var(--oa-color-palette-stone)}.sv .pkf{fill:var(--oa-color-palette-prussian)}.sv .gkf{fill:var(--oa-color-palette-verdigris)}.sv .skf{fill:var(--oa-color-palette-stone)}.kb{margin-top:16px}.hg li{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:6px;align-items:baseline}.hg .mk{margin:0}.sw{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:6px}.sw.gkf{background:var(--oa-color-palette-verdigris)}.sw.pkf{background:var(--oa-color-palette-prussian)}.sw.skf{background:var(--oa-color-palette-stone)}.fx{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}.fx.pr{gap:24px}.fx.tri{gap:0}.fx>div{min-width:0}.fx>div>:first-child{margin-top:0}.fx>div>*+.k{margin-top:16px}@container oa-frame (min-width:680px){.p.wd{padding:24px}.wd .fx{grid-template-columns:296px minmax(0,1fr);column-gap:32px}.wd .fx.pr{grid-template-columns:296px 296px;column-gap:40px}.wd .fx.tri{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:16px}.wd .tri>.vc{margin:0;padding:0;border:0}}@container oa-frame (max-width:327.98px){.p :is(p,ul,ol,.evr):not(.dnp){max-width:calc(100cqi - 32px)}}",
+ "plate_css": ":scope{color:var(--oa-color-text-primary)}.p{box-sizing:border-box;padding:16px;font:var(--oa-type-body);max-width:100%}.p *{box-sizing:border-box}:where(.p) :where(p){margin:0}.dnp{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 10px;background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform)}.evr{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 10px}.ev{display:inline-flex;align-items:center;min-height:24px;padding:3px 8px;background:var(--oa-chart-color-chip-fill);color:var(--oa-chart-color-chip-label);font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform)}.gr{font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}.chip{display:inline-flex;align-items:center;gap:.3em;padding:1px 8px;border:1px solid var(--oa-color-border-strong);font:var(--oa-type-data-label);white-space:nowrap;vertical-align:baseline}.chip .id{font-variant-numeric:tabular-nums}.k{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);color:var(--oa-color-text-secondary);margin:0 0 6px}.rs{display:inline-block;fill:var(--oa-color-graphic-essential);vertical-align:.08em;margin-right:5px}.gw b{font-weight:var(--oa-font-weight-bold)}.gw .w{white-space:nowrap}.nw2{white-space:nowrap}.src{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin-top:12px;max-width:44em}.nt{font:var(--oa-type-caption);margin-top:10px;max-width:40em}.nt+.nt{margin-top:4px}.hed{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;margin:0 0 4px;font:var(--oa-type-body-small)}.sub{font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}.mk{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 4px;border-radius:10px;background:var(--oa-chart-color-chip-fill);color:var(--oa-chart-color-chip-label);font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);letter-spacing:0;vertical-align:.15em;margin:0 1px 0 3px}.sv{display:block;overflow:visible}.sv text{font-family:var(--oa-font-family-reading);font-size:var(--oa-chart-type-label);fill:var(--oa-color-text-primary)}.sv .t{font-weight:var(--oa-font-weight-semibold)}.sv .v{font-weight:var(--oa-font-weight-regular)}.sv .pl{fill:var(--oa-color-surface);stroke:var(--oa-color-graphic-essential);stroke-width:2px}.sv .pl.th{stroke-width:1px}.sv .ak-mark{fill:none;stroke:var(--oa-color-graphic-essential)}.sv .hd,.sv .tg polygon{fill:var(--oa-color-graphic-essential)}.sv .tg .sg{fill:var(--oa-color-surface)}.sv .tk{stroke:var(--oa-color-graphic-essential);stroke-width:2px}.sv .rl{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:1px}.sv .id{font-weight:var(--oa-font-weight-bold)}.sv .kd{font-weight:var(--oa-font-weight-regular)}.sv .sn{font-weight:var(--oa-font-weight-bold)}.sv .dm{fill:var(--oa-color-surface);stroke:var(--oa-color-graphic-essential);stroke-width:2px}.sv .fr{fill:none;stroke:var(--oa-color-border-strong);stroke-width:1px}.sv .fl{fill:var(--oa-color-text-secondary)}.sv .nm circle{fill:var(--oa-chart-color-chip-fill)}.sv .nm text{fill:var(--oa-chart-color-chip-label);font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums}.dg{margin:4px 0 0}.dg+.ra{margin-top:10px}.ra{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);max-width:30em}.kw{list-style:none;margin:0;padding:0;font:var(--oa-type-body-small)}.kw li{padding:8px 0;border-top:1px solid var(--oa-color-border-hairline)}.kw li:first-child{border-top:0;padding-top:0}.kw b{font-weight:var(--oa-font-weight-semibold)}.q{font:italic 400 var(--oa-type-body-small-font-size)/1.6 var(--oa-font-family-quote);margin:0}.vc+.vc{margin-top:18px;padding-top:14px;border-top:1px solid var(--oa-color-border-hairline)}.vc .sv{margin:2px 0 8px}.sv .pk{stroke:var(--oa-color-palette-prussian)}.sv .gk{stroke:var(--oa-color-palette-verdigris)}.sv .sk{stroke:var(--oa-color-palette-stone)}.sv .pkf{fill:var(--oa-color-palette-prussian)}.sv .gkf{fill:var(--oa-color-palette-verdigris)}.sv .skf{fill:var(--oa-color-palette-stone)}.kb{margin-top:16px}.hg li{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:6px;align-items:baseline}.hg .mk{margin:0}.sw{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:6px}.sw.gkf{background:var(--oa-color-palette-verdigris)}.sw.pkf{background:var(--oa-color-palette-prussian)}.sw.skf{background:var(--oa-color-palette-stone)}.sv .hi{display:none}.sv .rt .lo{display:none}.sv .rt .hi{display:inline}.sv .rt .ak-mark{stroke:var(--oa-color-data-emphasis-red);stroke-width:4px}.sv .rt .ak-case{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:6px}.sv .rt .hd{fill:var(--oa-color-data-emphasis-red)}.sv .pl.rp{stroke:var(--oa-color-data-emphasis-red);stroke-width:3px}.sv .pl.sh{fill:var(--oa-color-graphic-essential)}.sv .ts{fill:var(--oa-color-surface)}.pp{display:block;flex:none;fill:var(--oa-color-graphic-essential)}.pp .z{stroke:var(--oa-color-graphic-essential);stroke-width:1}.ef{list-style:none;margin:0;padding:0;font:var(--oa-type-body-small)}.ef>li{padding:8px 0;border-top:1px solid var(--oa-color-border-hairline)}.ef>li:last-child{border-bottom:1px solid var(--oa-color-border-hairline)}.ef .fv{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin-top:4px}.ef .fv b{font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums}.ef .rd{display:flex;flex-wrap:wrap;gap:2px 16px;margin-top:2px}.gp+.gp{margin-top:16px;padding-top:14px;border-top:1px solid var(--oa-color-border-hairline)}.gp .evr{margin-bottom:6px}.two{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin-top:20px}.fx{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}.fx.pr{gap:24px}.fx.tri{gap:0}.fx>div{min-width:0}.fx>div>:first-child{margin-top:0}.fx>div>*+.k{margin-top:16px}@container oa-frame (min-width:680px){.p.wd{padding:24px}.wd .fx{grid-template-columns:296px minmax(0,1fr);column-gap:32px}.wd .fx.pr{grid-template-columns:296px 296px;column-gap:40px}.wd .fx.tri{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:16px}.wd .tri>.vc{margin:0;padding:0;border:0}.wd .two{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:40px}}@container oa-frame (max-width:327.98px){.p :is(p,ul,ol,.evr):not(.dnp){max-width:calc(100cqi - 32px)}}",
  "extras": [],
  "related_chapters": [
   {

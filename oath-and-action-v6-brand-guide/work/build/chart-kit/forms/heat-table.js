@@ -84,6 +84,7 @@
       var left = !c.phone && (W - Math.floor(W * 0.28)) / n >= wmax + 10 && fits((W - Math.floor(W * 0.28)) / n);
       var above = !c.phone && !left && W / n >= wword + 8 && fits(W / n);
       var chips = !left && !above;
+      if (chips) c.arrange('phone');
       var nw = left ? Math.floor(W * 0.28) : 0, cw = (W - nw) / n;
       var lastg = null;
       if (chips) {

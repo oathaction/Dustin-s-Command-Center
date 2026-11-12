@@ -233,6 +233,50 @@
   "illustrative": false,
   "notes": "Labeled failure: a line drawn for a rejected connection, in the plausible pattern."
  },
+ "s-15-11-correct": {
+  "chapter": "15",
+  "rule": "15.11",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Reform R-03 from our systems atlas, “Proportional elections in multi-seat House districts”, on Loop R4a, “Majorities draw maps that help them keep control”. Three pills: Incumbent control of election rules at the top, Safe seats below right, Entrenched majority control below left. Step 1, from the top to Safe seats, is drawn heavy in red, and the outlines of Safe seats and Entrenched majority control are red; step 2, dashed, and step 3 stay in ink, as does Incumbent control of election rules. Beside it: the reform acts where the marks turn red, on one connection and two variables: Connection L42, Incumbent-drawn maps create safe seats, documented; Variable C1, seats with little electoral competition; Variable D7, entrenched control of rule-setting institutions. Variable C4 shares Variable C1’s cluster, electoral competition, and stays in ink. Its band, rules: Changes incentives, penalties and constraints: who may run, how votes count, what firms may do (level 5). Its loops: Loop R4a, Loop R10 and Loop R12; the drawing shows Loop R4a, which holds every target.",
+  "illustrative": false,
+  "notes": "Targets read from the reform's record and drawn in Rule 12.5's red by wire_marks at the 6 px sizes; the band quoted from the atlas's bands of change.",
+  "wide_px": 680,
+  "readable": true
+ },
+ "s-15-11-failure": {
+  "chapter": "15",
+  "rule": "15.11",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Failure case: do not publish. Loop R4a with every mark of the electoral competition cluster in red: Incumbent control of election rules, Safe seats and the step between them. Entrenched majority control stays in ink. A note reads: Reform R-03 acts on electoral competition.",
+  "illustrative": false,
+  "notes": "Labeled failure: the red set by the cluster, so a variable the reform does not target turns red and one it does target stays in ink."
+ },
+ "s-15-12-correct": {
+  "chapter": "15",
+  "rule": "15.12",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Reform R-32 from our systems atlas, “Public and philanthropic funding for local news”, on a chain of three pills drawn downward: Concentration of platforms and digital advertising, in the technology layer, then across a rule into the core layer, Local news supply and Electoral pressure. Both connections and the outline of Local news supply are red: money, lowers, then information, raises. A label over the drawing reads Well supported, the grade of both connections. Beside it, two more labels: Well supported, strong research evidence, for the evidence of the problem, with the atlas’s words: Northwestern University’s Medill Local News Initiative counted 213 U.S. counties with no local news source in 2025, with about 50 million people having limited or no access to local news. Hypothesis, not yet tested, for the evidence for the remedy, with the atlas’s words: Funding models exist. Main limitation: no evaluation has yet shown that these funds improve coverage or accountability, so their effect remains a hypothesis.",
+  "illustrative": false,
+  "notes": "Both grades and their words read from the reform's problem_evidence and remedy_evidence; the connections' grades from their own records.",
+  "wide_px": 680,
+  "readable": true
+ },
+ "s-15-12-failure": {
+  "chapter": "15",
+  "rule": "15.12",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Failure case: do not publish. Reform R-32 on the same chain under one label for the whole reform: Well supported, strong research evidence. No grade is given for the remedy.",
+  "illustrative": false,
+  "notes": "Labeled failure: one grade over the reform, borrowed from the problem and the connections."
+ },
  "s-15-13-correct": {
   "chapter": "15",
   "rule": "15.13",
@@ -276,5 +320,94 @@
   "alt": "Failure case: do not publish. Loop R8 drawn through three pills, Housing scarcity, Owner home equity and Wealth concentration, with plus signs on every step and no date.",
   "illustrative": false,
   "notes": "Labeled failure: the loop routed through A1 with plus signs, against the atlas's revision and connection T12's minus."
+ },
+ "s-15-15-correct": {
+  "chapter": "15",
+  "rule": "15.15",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Loop B4, “Electoral consequences can improve public performance”, beside Loop R10, “Safe seats shift accountability to small primary electorates”, from our systems atlas. Both pass through Electoral pressure, the pill filled in ink in each drawing. Loop B4 draws three pills, Public service quality, Electoral pressure and Sanction applied, its steps marked minus, plus and plus, balancing. Loop R10 draws four on a square, Safe seats, Primary decisiveness, Electoral pressure and Incumbent control of election rules, its steps marked plus, minus, minus and plus, reinforcing. Under each, the connection into Electoral pressure and the one out of it, with the atlas’s sentences. In Loop B4: When public services get worse, the risk of losing office tends to rise; better service lowers it. When the risk of losing office rises, more incumbents tend to be defeated or pushed to retire. In Loop R10: When more seats are decided in primaries, the risk of losing office in November tends to fall. When the risk of losing office falls, officeholders’ control over election rules tends to grow. A note says Variable C3, risk of losing office, is the shared variable, which the atlas defines: The credible chance that an official will lose office. It can change behavior before any election removes anyone. Loop B4 works only where seats are competitive, and its strength depends on Variable C1 and Variable C2, which Loop R10’s first step joins.",
+  "illustrative": false,
+  "notes": "Both loops read by script; the shared variable found as the intersection of their chains; the in and out connections of Variable C3 checked against each loop.",
+  "wide_px": 680,
+  "readable": true
+ },
+ "s-15-15-failure": {
+  "chapter": "15",
+  "rule": "15.15",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Failure case: do not publish. The same two loops side by side, with the shared variable named Electoral pressure in Loop B4 and Risk of losing office in Loop R10, in plain pills, with no chip and no word that the two are one variable.",
+  "illustrative": false,
+  "notes": "Labeled failure: the shared variable under two names and no mark, so the loops read as unrelated.",
+  "wide_px": 680
+ },
+ "s-15-16-correct": {
+  "chapter": "15",
+  "rule": "15.16",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Reform R-01 from our systems atlas, “All-party primaries with ranked general elections”, on Loop R10, “Safe seats shift accountability to small primary electorates”, drawn on a square: Safe seats, Primary decisiveness, Electoral pressure and Incumbent control of election rules. Step 1, from Safe seats to Primary decisiveness, and step 2, from Primary decisiveness to Electoral pressure, are drawn heavy in red, and the outline of Primary decisiveness is red; the other two steps and pills stay in ink. Beside it: Connection L08, Safe seats make the primary decisive, documented; Connection L25, Decisive primaries reduce general-election pressure, well supported; Variable C2, how often the primary decides the winner. Its loops: Loop R10, Loop B4 and Loop R11. Evidence of the problem, plausible; for the remedy, contested. Effects by outcome family, as of October 15, 2026, one row each: Quality of democracy, +M, moderate positive; Government efficacy, +S, small positive; Economic performance, 0, no expected effect; Income and wealth equality, 0, no expected effect. The codes are conditional on the reform working as described, and codes for different families are never added together. Routes: Route BI, State ballot, Voters in initiative states, medium feasibility, checked October 15, 2026; Route SS, State statute, Legislatures, low feasibility, not checked; Route LOC, Local, Home-rule cities, for municipal offices, medium feasibility, checked October 15, 2026; Route FS, Federal statute, Congress under the Elections Clause, very low feasibility, not checked.",
+  "illustrative": false,
+  "notes": "Targets, effects, confidence and routes read from the reform's record; each route's own check date or Not checked; no row adds the families. No disclosure prints (DR-100).",
+  "wide_px": 680,
+  "readable": true
+ },
+ "s-15-16-failure": {
+  "chapter": "15",
+  "rule": "15.16",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Failure case: do not publish. Reform R-01 with one overall effect for all four families, three pips and +L, large positive, and its four routes each marked checked October 15, 2026.",
+  "illustrative": false,
+  "notes": "Labeled failure: the families added into one score, and every route given the reform's snapshot date."
+ },
+ "s-15-17-correct": {
+  "chapter": "15",
+  "rule": "15.17",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "The seven authority connections in our systems atlas, in one drawing of three layers. At the top, the economy layer: Public investment in research and infrastructure, and Costs of tariffs and trade rules. In the core layer, four deciding bodies: Congressional capacity and Executive unilateralism, then Oversight and enforcement and State and local experimentation. At the bottom, the technology layer: Government’s ability to build and run digital services, and Use of pricing algorithms. Seven solid lines, each ending in an open diamond with the word decides and no sign, run from the bodies to what they decide, and none crosses another. Beside it, each connection with its name, all documented: Connection LE02, Congress decides public investment levels; Connection LE03, The executive administers appropriated public investment; Connection LE19, The executive sets tariff rates; Connection LT13, Antitrust enforcers decide what pricing software may do; Connection LT14, States and cities set rules for pricing software; Connection LT16, The executive opens and closes federal digital teams; Connection LT17, Congress decides funding for government digital capacity. Two bodies decide each of three variables, and one decides tariff costs. Of each line the atlas says: This line shows who has the power to decide. It does not say which way they will decide.",
+  "illustrative": false,
+  "notes": "All seven authority connections read by script, with their ends, layers and grades; drawn by wire_marks with its authority switch, routed so no two lines cross.",
+  "wide_px": 680,
+  "readable": true
+ },
+ "s-15-17-failure": {
+  "chapter": "15",
+  "rule": "15.17",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Failure case: do not publish. One pill named The government, in place of the four bodies, with lines that end in open diamonds to the four variables the atlas’s authority connections reach, in the economy and technology layers.",
+  "illustrative": false,
+  "notes": "Labeled failure: the four deciding bodies folded into one, so the drawing cannot show who decides what."
+ },
+ "s-15-18-correct": {
+  "chapter": "15",
+  "rule": "15.18",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Loop B2 from our systems atlas, “Automatic benefits cushion economic shocks”, under a label reading Well supported, the atlas’s grade for the mechanism; no numbered chain, which the atlas calls the weakest point. Two thin pills, Household hardship and Automatic support (UI, credits), joined by hollow lines: plus, raises, over the top, and minus, lowers, under the bottom, with no step numbers. The loop reads: more household hardship, more automatic support, and back to less household hardship. Beside it, the atlas’s words: The model grades the mechanism well supported. Neither step is a numbered connection with its own citation, so the evidence cannot be inspected step by step, and that missing chain is the weakest point. Household hardship is the reverse of households’ financial security, Variable A4, read the other way. Then the atlas’s other conceptual loops: Loop B3, New competitors can limit market power, well supported where entry is possible, with no numbered chain; Loop R9, Taking part in a successful repair may support the next one, hypothesis: The complete loop is a design hypothesis.",
+  "illustrative": false,
+  "notes": "Stations, signs, grade and the missing chain read from the loop's record; hollow lines and thin pills as Rules 13.4 and 15.7 set.",
+  "wide_px": 680,
+  "readable": true
+ },
+ "s-15-18-failure": {
+  "chapter": "15",
+  "rule": "15.18",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Failure case: do not publish. Loop B2 drawn as before, hollow and thin, under a label that reads only Well supported, strong research evidence, with no word that the loop has no numbered chain.",
+  "illustrative": false,
+  "notes": "Labeled failure: the grade printed alone, so it reads as the grade of steps that were never numbered."
  }
 }
