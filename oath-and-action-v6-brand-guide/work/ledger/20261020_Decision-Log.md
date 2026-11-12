@@ -4318,3 +4318,9 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-472 | Colorado's 2010 rate of $7.24 is classed below $7.25 and named in the sidecar | The page prints 7.24; the maker can say why one state sits a cent below |
 | D3-473 | The classes file's printed line says covered employers pay the federal rate where a state is below $7.25 or has none, with V7 claim CL1516 in the sidecar | A map with "below" states should not suggest workers there earn $5.15; the Department's own state page, as V7 records it, says so |
 | D3-474 | The frozen files take a new ledger row, P7-223, and P7-220 points to it | P7-220 was a placeholder; a new row keeps the ledger's dated history, as P7-221 and P7-222 did |
+
+### Main session, round 1 review (continued)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-475 | The quick guide check passed on the fresh strict build: 2 widths (1440 and 390 px), 265 rules, 610 specimens, 2,725 same-page links, 0 failures. With the strict build (D3-460), the committed state matches D3-458's close | Dustin asked for the committed state confirmed by a strict build and the quick guide check before the review |
