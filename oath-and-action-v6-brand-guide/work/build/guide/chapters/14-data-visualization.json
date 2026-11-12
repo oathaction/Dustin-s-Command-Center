@@ -991,13 +991,13 @@
      "rule": "14.25"
     },
     {
-     "when": "Two to four measures per category are compared as lengths from zero",
+     "when": "The reader compares two to four measures per category as lengths from zero",
      "rule": "14.22"
     }
    ],
    "correct": {
     "specimen": "s-14-s04",
-    "caption": "Which age groups vote, and did that change between two elections?"
+    "caption": "Which age groups report voting, and did that change between two elections?"
    }
   },
   {
@@ -1091,7 +1091,7 @@
    ],
    "why": {
     "text": [
-     "Bars that touch are compared first, so grouping decides which comparison the reader makes. Grouping by category puts the two series of each category side by side, which suits a gap within each group, and the eye can still run down one series’ bars to compare across groups."
+     "A reader compares bars that touch first, so grouping decides which comparison the reader makes. Grouping by category puts the two series of each category side by side, which suits a gap within each group, and the eye can still run down one series’ bars to compare across groups."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
@@ -1162,7 +1162,7 @@
    ],
    "correct": {
     "specimen": "s-14-s23",
-    "caption": "How sure is each of the five topic hubs’ evidence?"
+    "caption": "How sure is the evidence behind each of the five topic hubs?"
    }
   },
   {
@@ -1195,7 +1195,7 @@
      "rule": "14.23"
     },
     {
-     "when": "Two to four groups are compared within each measure",
+     "when": "The reader compares two to four groups within each measure",
      "rule": "14.22"
     }
    ],
@@ -1210,11 +1210,11 @@
    "id": "14.25",
    "title": "Draw each item’s move between two dates as an arrow from start to end.",
    "rule": [
-    "Use shift arrows when the reader needs where each item started, where it ended and which way it moved: one row per item, an arrow from the earlier value to the later one on one scale with a labeled center, and the national row set apart above the states (Rule 14.7 for party data). On a phone, where the arrows crowd, the chart ranks the items by the size of the shift and draws each as a stem from zero, with the later value in words on its row."
+    "Use shift arrows when the reader needs where each item started, where it ended and which way it moved. Give each item one row, with an arrow from the earlier value to the later one on one scale with a labeled center, and set the national row apart above the states (Rule 14.7 for party data). On a phone, where the arrows crowd, the chart ranks the items by the size of the shift and draws each as a stem from zero, with the later value in words on its row."
    ],
    "why": {
     "text": [
-     "An arrow carries three facts at once: the start, the end and the direction, so a reader sees both that every state moved one way and how far apart they still stand. Party names in words and position carry the sides, never color (Rule 14.7)."
+     "An arrow carries three facts at once: the start, the end and the direction, so a reader sees both that every state moved one way and how far apart they still stand. Party names in words and position carry the sides (Rule 14.7)."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
@@ -1250,11 +1250,11 @@
    "id": "14.26",
    "title": "Rank one change per item as a stem from zero, with a key for its length.",
    "rule": [
-    "Use a change lollipop when each item has one change between two dates: draw a stem from zero to the change with a dot at its end, rank the items from the largest change, print each change beside its dot, and set the national figure apart at the top. A key above the stems shows the length of one round change. Position and the printed sign carry the direction."
+    "Use a change lollipop when each item has one change between two dates. Draw a stem from zero to the change with a dot at its end, rank the items from the largest change, print each change beside its dot, and set the national figure apart at the top. A key above the stems shows the length of one round change. Position and the printed sign carry the direction."
    ],
    "why": {
     "text": [
-     "Ranking by the size of the change answers the reader’s question in the order they ask it. A stem from zero gives each change a length the eye can compare, as a bar does (Rule 14.4), and the key ties that length to a number. The dot marks where each change stops with less ink than a full bar, so fifty rows stay light."
+     "Ranking by the size of the change answers the reader’s question in the order they ask it. A stem from zero gives each change a length the eye can compare, as a bar does (Rule 14.4), and the key ties that length to a number. The dot marks where each change stops with less ink than a full bar, so 50 rows stay light."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
@@ -1317,7 +1317,7 @@
      "rule": "14.26"
     },
     {
-     "when": "The gain or loss is measured election by election and the reader follows it over time",
+     "when": "The reader follows a gain or loss election by election",
      "rule": "14.28"
     },
     {
@@ -1334,7 +1334,7 @@
    "id": "14.28",
    "title": "Show who held the advantage in each term as arrows from one center line.",
    "rule": [
-    "Use a diverging bar with arrows to follow an advantage that can change sides, such as a House majority, one election or term at a time: one row per term in time order, an arrow from a center line toward the side that held the advantage, as long as the advantage, and the figure at its tip. Draw every arrow in one neutral ink, name each side over its half, and print the party’s name on the first row and wherever the advantage changed sides (Rule 14.7)."
+    "Use a diverging bar with arrows to follow an advantage that can change sides, such as a House majority, one election or term at a time. Give each term one row in time order, with an arrow from a center line toward the side that held the advantage, as long as the advantage, and the figure at its tip. Draw every arrow in one neutral ink, name each side over its half, and print the party’s name on the first row and wherever the advantage changed sides (Rule 14.7)."
    ],
    "why": {
     "text": [
@@ -1366,14 +1366,14 @@
    ],
    "correct": {
     "specimen": "s-14-s26",
-    "caption": "How large was the House majority’s seat advantage in each Congress?"
+    "caption": "How large was the House majority’s lead in seats in each Congress?"
    }
   },
   {
    "id": "14.29",
    "title": "Mark the moments that explain a line on the line itself.",
    "rule": [
-    "Use a line with event notes for one series and the events a reader needs to read it: the subject series as a heavy line from a scale that starts at zero, any comparison series thin and gray, each series named on its line, and short notes inside the plot with leaders to the points they explain. Break the line where the publisher changed its method, and never draw across the break (Rule 14.11)."
+    "Use a line with event notes for one series and the events a reader needs to read it. Draw the subject series as a heavy line on a scale that starts at zero unless the change is the point (Rule 14.4), any comparison series thin and gray, each series named on its line, and short notes inside the plot with leaders to the points they explain. Break the line where the publisher changed its method, and never draw across the break (Rule 14.11)."
    ],
    "why": {
     "text": [
@@ -1387,6 +1387,7 @@
    ],
    "builders": "Form line-event-notes: node work/build/chart-kit/oa-chart.mjs build s02; annotations place each note, and encode.break marks a method change.",
    "related_rules": [
+    "14.4",
     "14.11",
     "13.2"
    ],
@@ -1415,7 +1416,7 @@
    "id": "14.30",
    "title": "Give each group its own panel, lit against the others in gray.",
    "rule": [
-    "Use a multi-line with one highlighted when several groups share a measure and the reader compares each with the rest: one small panel per group on one shared scale, the group’s own line heavy in ink over the others in thin gray, its name and latest value over the panel. Past four groups the panels carry the comparison (Rule 14.8)."
+    "Use a multi-line with one highlighted when several groups share a measure and the reader compares each with the rest. Give each group one small panel on one shared scale, with the group’s own line heavy in ink over the others in thin gray, and its name and latest value over the panel. Past four groups the panels carry the comparison (Rule 14.8)."
    ],
    "why": {
     "text": [
@@ -1458,7 +1459,7 @@
    ],
    "why": {
     "text": [
-     "Fifty colored lines tangle into noise, and fifty gray ones read as one shape: the range every place moved within. One line in ink against that shape shows where the subject sits without a key, and the table gives every other series a reader may want to find (Rule 14.8)."
+     "Colored lines for 50 states tangle into noise, and the same lines in gray read as one shape: the range every place moved within. One line in ink against that shape shows where the subject sits without a key, and the table gives every other series a reader may want to find (Rule 14.8)."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
@@ -1472,7 +1473,7 @@
    "use_when": "The reader asks how one place or group moved against all the others, and the whole field matters as context.",
    "use_instead": [
     {
-     "when": "Four series or fewer, each to be followed",
+     "when": "Four series or fewer, each one the reader follows",
      "rule": "14.30"
     },
     {
@@ -1493,11 +1494,11 @@
    "id": "14.32",
    "title": "Draw noisy monthly counts as columns, with an average line through them.",
    "rule": [
-    "Use columns with a moving average for a monthly count that swings from month to month: each month a column from zero, the average a heavy line over them, preliminary months hatched and the average dashed where it includes one, and the latest month labeled with its status. Where the publisher gives a margin of error, say in a note which months pass it."
+    "Use columns with a moving average for a monthly count that swings from month to month. Draw each month as a column from zero and the average as a heavy line over them, hatch the preliminary months and dash the average where it includes one, and label the latest month with its status. Where the publisher gives a margin of error, say in a note which months pass it."
    ],
    "why": {
     "text": [
-     "Each column shows one month as the survey counted it, and the average shows where the months are heading, so a single bad month reads as a dip, not a turn. A survey’s monthly figure carries error, and the note that says which drops pass the margin keeps a small swing from reading as news (Rule 14.9)."
+     "Each column shows one month as the survey counted it, and the average shows where the months are heading, so a single bad month reads as a dip in a trend that holds. A survey’s monthly figure carries error, and the note that says which drops pass the margin keeps a small swing from reading as news (Rule 14.9)."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
@@ -1509,7 +1510,7 @@
     "14.11"
    ],
    "entry": true,
-   "use_when": "The reader asks how many were added or lost each month, and the trend matters more than any one month.",
+   "use_when": "The reader asks how many jobs the economy added or lost each month, and the trend matters more than any one month.",
    "use_instead": [
     {
      "when": "A rate or a level that moves smoothly",
@@ -1569,7 +1570,7 @@
    "id": "14.34",
    "title": "Show one trend across many parts as small area panels on one scale.",
    "rule": [
-    "Use small-multiple area sparklines when the same measure runs across many parts of a whole: one small panel per part on one shared vertical scale, the area from zero under the part’s line, the whole’s line in gray in every panel, and the change printed over each panel. Order the panels by the change the title names, and set the totals above them."
+    "Use small-multiple area sparklines when the same measure runs across many parts of a whole. Give each part one small panel on one shared vertical scale, with the area from zero under the part’s line, the whole’s line in gray in every panel, and the change printed over the panel. Order the panels by the change the title names, and set the totals above them."
    ],
    "why": {
     "text": [
@@ -1587,7 +1588,7 @@
    "use_when": "The reader asks which parts of a total grew and which shrank over the same span.",
    "use_instead": [
     {
-     "when": "The parts should be looked up row by row with their figures",
+     "when": "The reader looks the parts up row by row, with their figures",
      "rule": "14.128"
     },
     {
@@ -1651,7 +1652,7 @@
    "id": "14.36",
    "title": "Draw an amount a law fixes between dates as a step line.",
    "rule": [
-    "Use a step line for an amount a law or rule holds until the next change, such as a tax credit per child: keep the line flat through each period, move it straight up or down in the period the change takes effect, and print each level’s amount on it. Name the law that made each change beside its step or in the notes."
+    "Use a step line for an amount a law or rule holds until the next change, such as a tax credit per child. Keep the line flat through each period, move it straight up or down in the period the change takes effect, and print each level’s amount on it. Name the law that made each change beside its step or in the notes."
    ],
    "why": {
     "text": [
@@ -1666,7 +1667,7 @@
    "use_when": "The reader asks what a rule set at each date, and the value stays fixed between one change and the next.",
    "use_instead": [
     {
-     "when": "The values are measured and move between dates, such as a rate from a survey",
+     "when": "Survey figures that move between dates, such as a rate",
      "rule": "14.29"
     },
     {
@@ -1761,11 +1762,11 @@
    "id": "14.39",
    "title": "Show when each part of a law starts as a bar from its date.",
    "rule": [
-    "Use an implementation timeline when a law or rule starts in parts: one row per part in date order, with its date, section and a plain line on what starts, over a lane where a bar begins on the start date and runs on. Hatch the first year of a part that reaches each plan or program as its own year begins, mark a deadline with a dot, and mark the day the law was approved on every lane."
+    "Use an implementation timeline when a law or rule starts in parts: one row per part in date order, with its date, section and a plain line on what starts, over a lane where a bar begins on the start date and runs on. Hatch the first year of a part that reaches each plan or program as its own year begins, mark a deadline with a dot, and mark the day the President signed the law on every lane."
    ],
    "why": {
     "text": [
-     "A law is approved on one day and starts on many, and a reader who hears it passed may expect the change at once. One lane per part, each starting on its own date, shows the wait for each part, and the hatched year keeps a plan-year date from reading as one day for everyone."
+     "A President signs a law on one day, and its parts start on many, and a reader who hears it passed may expect the change at once. One lane per part, each starting on its own date, shows the wait for each part, and the hatched year keeps a plan-year date from reading as one day for everyone."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
@@ -1790,18 +1791,18 @@
    ],
    "correct": {
     "specimen": "s-14-s32",
-    "caption": "When does each part of the 2026 law on drug middlemen take effect?"
+    "caption": "When does each part of the 2026 law on pharmacy benefit managers take effect?"
    }
   },
   {
    "id": "14.40",
    "title": "Index many series to one start when the reader compares growth.",
    "rule": [
-    "Use an indexed line when series of very different sizes should be compared by how fast they grew: divide each by its own value at one base date and multiply by 100, so every line starts at 100. Draw the base line heavier and name the base, give one series the ink and the rest gray when there are more than four (Rule 14.8), and name every line at its end with its latest index."
+    "Use an indexed line when the reader compares series of far different sizes by how fast they grew: divide each by its own value at one base date and multiply by 100, so every line starts at 100. Draw the base line heavier and name the base, give one series the ink and the rest gray when there are more than four (Rule 14.8), and name every line at its end with its latest index."
    ],
    "why": {
     "text": [
-     "On a scale of dollars, a $35 billion source that quintuples lies flat beside a $3 trillion one. An index puts every series at 100 on the same date, so a line’s height shows growth alone. Growth is not size, so the notes give each highlighted series’ amount and share, and the reader does not take a fast-growing small source for a large one."
+     "On a scale of dollars, a $35 billion source that quintuples lies flat beside a $3 trillion one. An index puts every series at 100 on the same date, so a line’s height shows growth alone. A fast-growing source can stay small, so the notes give each highlighted series’ amount and share, and the reader does not take a fast-growing small source for a large one."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
@@ -1858,7 +1859,7 @@
      "rule": "14.16"
     },
     {
-     "when": "The events matter for what they were, not for a count",
+     "when": "The events matter for what they were, and no count goes with them",
      "rule": "14.38"
     },
     {
@@ -1875,7 +1876,7 @@
    "id": "14.42",
    "title": "Show what a household keeps as its earnings rise, cliffs and all.",
    "rule": [
-    "Use a benefit-cliff line to show what one household has after taxes and benefits at each level of earnings: the household’s resources as a heavy line, its earnings alone as a dashed diagonal, and a light band from any drop to the earnings where the household is back where it was. Name the drop in words with its size, and state the household and the rules the chart assumes. Built on invented rules, the chart carries “Illustrative data” beside its top edge (Rule 13.8)."
+    "Use a benefit-cliff line to show what one household has after taxes and benefits at each level of earnings. Draw the household’s resources as a heavy line, its earnings alone as a dashed diagonal, and a light band from any drop to the earnings where the household is back where it was. Name the drop in words with its size, and state the household and the rules the chart assumes. Built on invented rules, the chart carries “Illustrative data” beside its top edge (Rule 13.8)."
    ],
    "why": {
     "text": [
@@ -1912,7 +1913,7 @@
    "id": "14.43",
    "title": "Use a run chart to watch a process against its own median.",
    "rule": [
-    "Use a run chart, a reference form, for a measure an office tracks week by week, such as days to answer a request: the values as dots joined by a line, a dashed line at their median, and a shaded run where six or more points in a row sit on one side of it. Oath & Action draws one when a story follows how a public service performs over time."
+    "Use a run chart, a reference form, for a measure an office tracks week by week, such as days to answer a request. Draw the values as dots joined by a line, a dashed line at their median, and a shaded run where six or more points in a row sit on one side of it. Oath & Action draws one when a story follows how a public service performs over time."
    ],
    "why": {
     "text": [
@@ -1922,12 +1923,12 @@
    },
    "tokens": [],
    "related": [],
-   "builders": "No kit form: a run chart is drawn from line-event-notes or line-data-gap with the median added as a note, until a story needs its own form.",
+   "builders": "No kit form: draw a run chart from line-event-notes or line-data-gap with the median added as a note, until a story needs its own form.",
    "entry": true,
    "use_when": "The reader asks whether a process has changed or is only wobbling, and the measure has no outside target to compare with.",
    "use_instead": [
     {
-     "when": "The measure is an official statistic and its moments need explaining",
+     "when": "The measure is a public agency’s count or survey and its moments need explaining",
      "rule": "14.29"
     },
     {
@@ -1992,7 +1993,7 @@
    ],
    "why": {
     "text": [
-     "A streamgraph stacks its layers around a wavy center line, so no layer sits on a flat baseline and none can be measured against a scale. When one layer swells, every layer above and below it bends, and a reader takes that bend for a change in layers that never moved."
+     "A streamgraph stacks its layers around a wavy center line, so no layer sits on a flat baseline and a reader can measure none of them against a scale. When one layer swells, every layer above and below it bends, and a reader takes that bend for a change in layers that never moved."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
@@ -2011,7 +2012,7 @@
      "rule": "14.51"
     },
     {
-     "when": "One part should be read against the rest",
+     "when": "The reader reads one part against the rest",
      "rule": "14.30"
     }
    ],
@@ -2113,7 +2114,7 @@
    "id": "14.127",
    "title": "Lay options against criteria in a matrix of the source’s own words.",
    "rule": [
-    "Put each option in a row and each criterion in a column, and print the source’s own words in every cell, so a reader compares options one criterion at a time. Leave out totals, counts and badges, since cells written in words cannot be added. On a phone each row becomes a card that lists its columns (Rule 14.12).",
+    "Put each option in a row and each criterion in a column, and print the source’s own words in every cell, so a reader compares options one criterion at a time. Leave out totals, counts and badges, since no one can add cells written in words. On a phone each row becomes a card that lists its columns (Rule 14.12).",
     "The specimen also marks each cell with Oath & Action’s reading as a glyph and a tint, labeled as ours, the scenario view of Rule 14.76; a plain matrix prints the words alone."
    ],
    "why": {
@@ -2147,7 +2148,7 @@
    ],
    "correct": {
     "specimen": "s-14-s06",
-    "caption": "If a reform path were followed, which way would each outcome move?"
+    "caption": "If the country took each path, which way would each outcome move?"
    }
   },
   {
@@ -2268,7 +2269,7 @@
      "rule": "14.131"
     },
     {
-     "when": "The piece is a post, an email or a social card, where nothing can be clicked",
+     "when": "The piece is a post, an email or a social card, where a reader cannot click anything",
      "rule": "14.133"
     }
    ],
@@ -2311,7 +2312,7 @@
      "rule": "14.133"
     },
     {
-     "when": "Options are weighed against the same criteria in words",
+     "when": "The reader weighs options against the same criteria in words",
      "rule": "14.127"
     }
    ],
@@ -2324,7 +2325,7 @@
    "id": "14.132",
    "title": "List tracked bills with their six steps, status and date.",
    "rule": [
-    "Draw each bill as chapter 11 draws a list of bills (Rule 11.5): its number and name lead the row, its six numbered steps run across, and its status follows in words with the date of the latest action. A bill that became law fills all six steps and says so with its date and law number (Rule 11.3). Give the date the whole list was checked in the title or measure line, since a tracker shows one day."
+    "Draw each bill as chapter 11 draws a list of bills (Rule 11.5): its number and name lead the row, its six numbered steps run across, and its status follows in words with the date of the latest action. A bill that became law fills all six steps and says so with its date and law number (Rule 11.3). Give the date Oath & Action checked the whole list in the title or measure line, since a tracker shows one day."
    ],
    "why": {
     "text": [
@@ -2361,7 +2362,7 @@
    ],
    "correct": {
     "specimen": "s-14-s40",
-    "caption": "Where do this Congress’s housing bills stand?"
+    "caption": "Where do the housing bills of this Congress stand?"
    }
   },
   {
@@ -2412,11 +2413,11 @@
    "id": "14.134",
    "title": "Write one sourced sentence when it answers faster than a chart.",
    "rule": [
-    "When one or two figures answer the reader’s question, state them in one sentence with the figures, the period, who was counted and the grade’s verb, and print the full source line under it (Rule 13.6). The sentence keeps its evidence label, and its figures stay in a table under it for anyone who wants them in rows (Rule 14.13)."
+    "When one or two figures answer the reader’s question, state them in one sentence with the figures, the period, whom the survey counted and the grade’s verb, and print the full source line under it (Rule 13.6). The sentence keeps its evidence label, and its figures stay in a table under it for anyone who wants them in rows (Rule 14.13)."
    ],
    "why": {
     "text": [
-     "Two numbers of almost the same size make a chart of two equal shapes, which says less than the numbers do. A sentence names who was counted and when in the same breath as the figures, so a reader can quote it whole with its source."
+     "Two numbers of almost the same size make a chart of two equal shapes, which says less than the numbers do. A sentence names whom the survey counted and when in the same breath as the figures, so a reader can quote it whole with its source."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
@@ -2448,7 +2449,7 @@
    ],
    "correct": {
     "specimen": "s-14-s42",
-    "caption": "Same question, answered in one sourced sentence"
+    "caption": "Do Republicans and Democrats agree on a ban on stock trading by members of Congress? One sourced sentence answers."
    }
   }
  ],

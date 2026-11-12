@@ -208,7 +208,7 @@
    "source": "s04.json"
   },
   {
-   "example": "In 2025, 37.0 percent of householders under 35 owned their homes, up 2.0 points from 2015 and past the survey’s margin of error, still the lowest rate of the five age groups.",
+   "example": "Householders under 35 owned their homes at 37.0 percent in 2025, up 2.0 points from 2015 and still the lowest of five age groups.",
    "domain": "D09",
    "states": [],
    "rule": "14.20",
@@ -222,14 +222,14 @@
    "source": "s21.json"
   },
   {
-   "example": "In 2025, women were in the labor force at lower rates than men in every age group from 22 on, with the widest gap, 9.7 points, at ages 60 and 61.",
+   "example": "Women’s labor force participation trailed men’s in every age group from 22 on in 2025, by as much as 9.7 points at ages 60 and 61.",
    "domain": "D07",
    "states": [],
    "rule": "14.22",
    "source": "s22.json"
   },
   {
-   "example": "Public services where you live has the largest share of documented claims of the atlas’s five hubs, 84.5 percent, and voice, power and information the smallest, 67.2.",
+   "example": "Of the atlas’s five topic hubs, “Public services where you live” has the largest share of documented claims, 84.5 percent, and “Voice, power and information” the smallest, 67.2.",
    "domain": "all",
    "states": [],
    "rule": "14.23",
@@ -255,14 +255,14 @@
    "source": "s24.json"
   },
   {
-   "example": "Federal agencies in the personnel files had 130,369 fewer civilian employees in August 2026 than in January 2022, and 33 of the 37 with 1,000 or more shrank.",
+   "example": "Federal agencies had 130,369 fewer civilian employees in August 2026 than in January 2022, and 33 of the 37 largest in January 2022 shrank.",
    "domain": "D04",
    "states": [],
    "rule": "14.27",
    "source": "s25.json"
   },
   {
-   "example": "The House majority opened the 119th Congress in 2025 with 5 more seats than the minority, its smallest lead at the start of any Congress since 1951.",
+   "example": "The House majority opened the 119th Congress in 2025 with five more seats than the minority, its smallest lead at the start of any Congress since 1951.",
    "domain": "D02",
    "states": [],
    "rule": "14.28",
@@ -283,7 +283,7 @@
    "source": "s05.json"
   },
   {
-   "example": "Home prices rose in every state and DC from 1991 to 2026 by the Federal Housing Finance Agency’s index, and most in Montana, to more than seven times their early-1991 level.",
+   "example": "Home prices rose in every state and DC from 1991 to 2026, most in Montana, where they grew more than sevenfold.",
    "domain": "D09",
    "states": [
     "MT",
@@ -321,7 +321,7 @@
    "source": "s29.json"
   },
   {
-   "example": "Congress has changed the child tax credit’s top amount per child three times since 2017: to $2,000 in 2018, to $3,000 or $3,600 for 2021 alone, and to $2,200 from 2025.",
+   "example": "Congress has changed the child tax credit’s top amount three times since 2017, most recently to $2,200 per child from 2025.",
    "domain": "D08",
    "states": [],
    "rule": "14.36",
@@ -349,14 +349,14 @@
    "source": "s32.json"
   },
   {
-   "example": "Customs duties grew fastest of the federal government’s sources of revenue from fiscal 2016 to 2026, to almost five times their 2016 level, while all receipts grew 65 percent.",
+   "example": "Customs duties grew fastest of the federal government’s revenue sources from fiscal 2016 to 2026, to almost five times their 2016 level.",
    "domain": "D08",
    "states": [],
    "rule": "14.40",
    "source": "s33.json"
   },
   {
-   "example": "The Senate held 298 votes on ending debate in 2019 and 2020 and 294 so far in 2025 and 2026, after no more than seven in any Congress before 1971.",
+   "example": "The Senate held 298 votes to end debate in 2019 and 2020, after no more than seven in any Congress before 1971.",
    "domain": "D04",
    "states": [],
    "rule": "14.41",
@@ -377,7 +377,7 @@
    "source": "s15.json"
   },
   {
-   "example": "FF PAC reported $503.3 million in independent spending for the 2024 federal elections, the most of any PAC or party committee.",
+   "example": "FF PAC, a hybrid PAC, reported $503.3 million in independent spending for the 2024 federal elections, the most of any PAC or party committee.",
    "domain": "D03",
    "states": [],
    "rule": "14.126",
@@ -391,7 +391,7 @@
    "source": "s06.json"
   },
   {
-   "example": "The atlas rates 36 of its 38 routes through an act of Congress low or very low in feasibility for 2026 to 2030, and 24 of its 29 routes through a state law medium or high.",
+   "example": "Of 38 routes through an act of Congress, the atlas rates 36 low or very low in feasibility for 2026 to 2030.",
    "domain": "all",
    "states": [],
    "rule": "14.129",
@@ -405,7 +405,7 @@
    "source": "s38.json"
   },
   {
-   "example": "Ten of the atlas’s 11 claims about drug middlemen and prices are documented on the public record; the eleventh, on generic competition, is well supported.",
+   "example": "The atlas grades 10 of its 11 claims about drug middlemen and prices documented, and the eleventh, on generic competition, well supported.",
    "domain": "D06",
    "states": [],
    "rule": "14.131",
