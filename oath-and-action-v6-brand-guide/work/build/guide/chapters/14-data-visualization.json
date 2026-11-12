@@ -2904,7 +2904,7 @@
    "title": "Plot two measures as a scatter, and name only the points the story needs.",
    "rule": [
     "Draw one dot a place at its two values, with gridlines both ways and each axis named. Name the place the title names in the view’s red point, or in the subject ink where Rule 14.6 sets ink in its place, as for a state; label a few others in regular weight in the light fill where the data single them out past the margin of error (Rule 14.9); and draw the nation as an open ring in the text’s ink. Draw no fitted line: the reader judges the pattern.",
-    "Every correlation chart takes the Association label and the note “This shows the two move together; it does not show one causes the other.” (Rule 13.1)."
+    "A correlation chart takes the Association label where its title says the two measures move together, and the Finding label where the title states documented figures; either way it carries a note that the pattern does not show one causes the other (Rule 13.1)."
    ],
    "why": {
     "text": [
@@ -2946,7 +2946,7 @@
    "id": "14.68",
    "title": "Size each point by a third measure only when its size answers the question.",
    "rule": [
-    "Draw the scatter plot with each circle’s area set by a third measure (Rule 14.4), the largest drawn first and each with a 1 px outline so overlaps read. Give a key of two circle sizes over the plot, name the circles the title names in the view’s red point while that red stays within 5 percent of the drawing at every width (Rule 05.1), or in the subject ink where Rule 14.6 sets ink in its place, as for the four states here, each with the figure its size stands for, and keep the Association label and its note."
+    "Draw the scatter plot with each circle’s area set by a third measure (Rule 14.4), the largest drawn first and each with a 1 px outline so overlaps read. Give a key of two circle sizes over the plot, name the circles the title names in the view’s red point while that red stays within 5 percent of the drawing at every width (Rule 05.1), or in the subject ink where Rule 14.6 sets ink in its place, as for the four states here, each with the figure its size stands for, and take the label Rule 14.67 sets by what the title says, with its note."
    ],
    "why": {
     "text": [
