@@ -93,7 +93,10 @@
       c.path(d, { stroke: 'subject', width: c.t('line-subject') }, [x0, top, x1 - x0, plotH]);
       main.forEach(function (r, i) {
         c.circle(px(i), ys(r[ey]), c.t('dot-vertex-radius') + 1, Object.assign({ fill: 'subject', data: { key: key(r), field: ey, value: r[ey] } }));
-        vlab.push({ x: px(i), y: ys(r[eih] !== undefined && eih ? Math.max(r[ey], r[eih]) : r[ey]) - 8, words: K.fmt(r[ey], fy), weight: 600, halo: true, must: i === 0 || i === main.length - 1 });
+        // a value whose words the outer band's edge would cross sits just over that edge (the data lead's MB-F3)
+        var vy = ys(r[eih] !== undefined && eih ? Math.max(r[ey], r[eih]) : r[ey]) - 8, oy = ys(r[eoh]);
+        if (oy > vy - tick - 2 && oy < vy + 4) vy = oy - 5;
+        vlab.push({ x: px(i), y: vy, words: K.fmt(r[ey], fy), weight: 600, halo: true, must: i === 0 || i === main.length - 1 });
         vdots.push({ x: px(i), y: ys(r[ey]), r: c.t('dot-vertex-radius') + 2 });
       });
       var setl = [], lbox = function (v) { var w = c.measure(v.words, 'tick', v.weight); return { x: v.x - w / 2 - 3, y: v.y - tick, w: w + 6, h: tick + 2 }; };

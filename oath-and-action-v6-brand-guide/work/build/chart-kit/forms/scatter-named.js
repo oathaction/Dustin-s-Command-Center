@@ -100,6 +100,8 @@
       // the nation as an open ring in the text's ink (the data lead's ruling (b))
       if (refrow) {
         var rx = xs(refrow[ex]), ry = ys(refrow[ey]);
+        // a 1 px halo of the ground outside the ring, so it holds its shape on a dark circle under it (the data lead's MB-F1)
+        c.circle(rx, ry, rdot + 1 + c.t('line-context') / 2 + 1, { fill: 'surface', mark: false });
         P.total_ring(c, rx, ry, rdot + 1, { data: { key: refrow[ek], field: ey, value: refrow[ey], x: refrow[ex] } });
         pts.push({ r: refrow, x: rx, y: ry, rad: rdot + 2, ref: true });
       }
