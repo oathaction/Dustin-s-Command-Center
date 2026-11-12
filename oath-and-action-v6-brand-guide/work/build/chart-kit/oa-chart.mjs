@@ -900,6 +900,18 @@ async function self_test() {
     reg('t-ivw', c => { [0, 1, 2].forEach(i => { K.parts.whisker(c, 100, 100 + (c.width < 400 ? 12 : 60), 20 + 30 * i, { key: 'k' + i, low: 1, high: 2 }); c.circle(100 + (c.width < 400 ? 6 : 30), 20 + 30 * i, 6.5, { fill: 'subject', data: { key: 'k' + i, field: 'v', value: 1.5 } }); }); c.height(100); }, { interval: true });
     say(faults('t-ivw', 358).some(f => /middle row's interval spans 12\.0 px, under the 23\.0 px/.test(f)), 'an interval form whose plot hides its intervals behind their dots (call 9, D3-899)');
     pass(!faults('t-ivw', 720).some(f => /^interval:/.test(f)), 'the same form with room for its intervals passes');
+    // RF-25: 7 px dots where a 13 px dot hides the interval; then the margins in words, with every margin and the note
+    reg('t-iv7', c => { [0, 1, 2].forEach(i => { K.parts.whisker(c, 100, 118, 20 + 30 * i, { key: 'k' + i, low: 1, high: 2 }); c.circle(109, 20 + 30 * i, 3.5, { fill: 'subject', data: { key: 'k' + i, field: 'v', value: 1.5 } }); }); c.height(100); }, { interval: true });
+    pass(!faults('t-iv7', 358).some(f => /^interval:/.test(f)), 'an 18 px interval past a 7 px dot passes (it needs 17 px; RF-25)');
+    const words = (all, note) => c => { c.margins_in_words(); [0, 1, 2].forEach(i => { c.circle(100, 20 + 30 * i, 3.5, { fill: 'subject', data: { key: 'k' + i, field: 'v', value: 1.5 } }); if (all || i) c.text(110, 25 + 30 * i, '±0.' + (i + 3), { role: 'label', margin_of: 'k' + i }); }); if (note) c.text(0, 120, 'At this width each margin of error is narrower than its dot.', { role: 'note', margin_note: true, max: 300 }); c.height(140); };
+    reg('t-ivw-ok', words(true, true), { interval: true });
+    reg('t-ivw-short', words(false, true), { interval: true });
+    reg('t-ivw-nonote', words(true, false), { interval: true });
+    reg('t-iv-none', c => { [0, 1].forEach(i => c.circle(100, 20 + 30 * i, 6.5, { fill: 'subject', data: { key: 'k' + i, field: 'v', value: 1.5 } })); c.height(80); }, { interval: true });
+    pass(!faults('t-ivw-ok', 358).some(f => /^interval:/.test(f)), 'margins in words pass with every margin printed and the note drawn (RF-25)');
+    say(faults('t-ivw-short', 358).some(f => /1 row\(s\) print no margin \(k0\)/.test(f)), 'margins in words with one margin missing (RF-25)');
+    say(faults('t-ivw-nonote', 358).some(f => /the note saying so is not in the drawing/.test(f)), 'margins in words with no note in the drawing (RF-25)');
+    say(faults('t-iv-none', 358).some(f => /no row's interval is drawn at this width/.test(f)), 'an interval form that draws no interval and prints no margin (RF-25)');
     // AX S2, BC S1: a data line drawn after a word, a dot half under a word, a quiet line cleared by a knockout, a strike
     reg('t-cross', c => { c.text(100, 50, 'Crossed words', { role: 'label' }); c.line(80, 45, 300, 45, { stroke: 'subject', width: 2, mark: false }); c.height(100); });
     reg('t-under', c => { c.circle(100, 50, 8, { fill: 'subject', data: { key: 'A' } }); c.text(104, 54, 'Covered words', { role: 'label' }); c.height(100); });

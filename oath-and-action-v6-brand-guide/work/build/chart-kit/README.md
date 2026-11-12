@@ -114,6 +114,11 @@ derives both ends). The kit then checks four things and fails the spec on each:
 - at every width, the middle row's interval shows past its mark: 5 px past a dot on each side, 2 px past a line, so
   the intervals never vanish on a narrow plot. A form that would fail stacks its rows (`range-bar` does under 160 px).
 
+When `range-bar` fails the interval check with its rows stacked, it draws 7 px dots at that width, and where those still
+hide the middle interval it prints each margin beside its value with a note; the check passes that state only with every
+margin printed. (A form draws that state by calling `c.margins_in_words()`, setting each margin with `c.text(..., {margin_of:
+key})` and the note with `c.text(..., {margin_note: true})`; it never draws a tick in place of the dot.)
+
 Where the sidecar names a margin for the value (`margin_columns`), the spec prints that one; a margin must be in its
 value's unit (percentage points for a percent), and a column the sidecar lists in `check_only_columns` prints nowhere.
 Where the publisher prints no margin for the figure you draw, ask the research lead before you compute one.

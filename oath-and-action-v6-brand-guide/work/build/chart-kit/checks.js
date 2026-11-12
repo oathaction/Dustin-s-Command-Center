@@ -421,6 +421,14 @@ function interval_faults(spec, d, def, at) {
     by.set(String(k), e);
   }
   const line = Math.max(0, ...(d.bands || []).map(b => b.line || 0)) || 2;
+  // RF-25, state 2: no interval lines, every row's margin printed beside its value and a note in the drawing
+  if (d.margins_in_words) {
+    const keys = [...new Set(d.marks.filter(m => m.data && m.data.key !== undefined && m.data.key !== null && (m.data.field === vf || m.data.field === enc.y)).map(m => String(m.data.key)))];
+    const printed = new Set((d.texts || []).filter(t => t.margin_of !== undefined).map(t => t.margin_of));
+    const missing = keys.filter(k => !printed.has(k)), note = (d.texts || []).some(t => t.margin_note);
+    if (!keys.length || missing.length || !note) return [`interval: the margins print in words at this width, but ${!keys.length ? 'no estimate is recorded' : missing.length ? `${missing.length} row(s) print no margin (${missing.slice(0, 4).join(', ')})` : ''}${(!keys.length || missing.length) && !note ? ' and ' : ''}${!note ? 'the note saying so is not in the drawing' : ''} (RF-25)${at}`];
+    return [];
+  }
   const runs = [], needs = [];
   for (const e of by.values()) {
     if (!e.lo || !e.hi) continue;
@@ -431,9 +439,11 @@ function interval_faults(spec, d, def, at) {
     // 5 px past a dot on each side, 2 px past a line (a dot hides the ends of a short line; a band shows past a thin one)
     needs.push(e.est ? e.est + 10 : line + 4);
   }
-  if (!runs.length) return [];
+  // RF-25: an interval form with rows to draw that records no interval ends and does not print its margins in words
+  // hides its intervals; a fan's later periods may carry no band, so only interval: true is held to it
+  if (!runs.length) return def.interval === true && by.size ? [`interval: no row's interval is drawn at this width; draw the intervals, or print every margin in words with c.margins_in_words() (RF-25)${at}`] : [];
   const mr = median(runs), mn = median(needs);
-  if (mr + 1e-6 < mn) return [`interval: at this width the middle row's interval spans ${mr.toFixed(1)} px, under the ${mn.toFixed(1)} px its estimate's mark needs (5 px past a dot, 2 px past a line, on each side), so the intervals cannot be seen; give the plot more width, or stack the rows (D3-899)${at}`];
+  if (mr + 1e-6 < mn) return [`interval: at this width the middle row's interval spans ${mr.toFixed(1)} px, under the ${mn.toFixed(1)} px its estimate's mark needs (5 px past a dot, 2 px past a line, on each side), so the intervals cannot be seen; give the plot more width, stack the rows, draw 7 px dots, or print every margin in words (D3-899, RF-25)${at}`];
   return [];
 }
 // AX S2 and BC S1 (round 2 fix pass): no line, path or outline runs through a word. The kit gives a word on the ground the

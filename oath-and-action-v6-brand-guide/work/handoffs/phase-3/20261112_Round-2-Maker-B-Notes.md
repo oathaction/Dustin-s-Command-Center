@@ -262,3 +262,12 @@ Tested: `oa-chart.mjs build s55 s54` at 1440, 390, 360, 328 and 288 px page widt
 
 Not tested: the guide build after this change; S55 in forced colors and grayscale.
 
+**RF-25, `range-bar`'s two narrow states** (the data lead's ruling after the second pass; the access reviewer's N2), on the engineer's names:
+- D3-xxx | Where the middle row's interval would not run 5 px past a 13 px dot on each side at a width, every row takes a 7 px dot, the open dot on a 1.5 px edge | RF-25 step 1: one dot size for every row at a width, and the dot keeps Rule 14.9's filled or open test
+- D3-xxx | Where it would not run 5 px past a 7 px dot either, the form draws no interval lines, prints each margin beside its value ("84.0% ±0.8", the reference's in its own words), calls `c.margins_in_words()`, marks each margin with `margin_of` and the note with `margin_note`, and drops the key's interval entry | RF-25 step 2; the engineer's check passes that state only with every margin and the note in the drawing
+- D3-xxx | The note reads "At this width each margin of error is narrower than its dot, so each figure prints its margin beside it; the table gives every margin." (`labels.margin_note` rewords it) | RF-25's words
+
+Tested: `oa-chart.mjs build` with the sweep on, at 1440, 390, 328 and 288 px page widths on both grounds: S57 PASS, Rule 14.9's plate `s-14-9-range.chart.json` PASS, the production test's `20261112_P02-Spec-V6.json` PASS (it failed until the reference row's words carried its margin). Looked at: P02 at 358 px Charcoal (the margins in words), 296 px Newsprint (the margins in words) and 358 px Newsprint (7 px dots with their lines). S57 and the plate draw as before at every width the kit checks (their middle intervals clear a 13 px dot).
+
+Not tested: the guide build with the changed form; P02 at 1440 px looked at.
+

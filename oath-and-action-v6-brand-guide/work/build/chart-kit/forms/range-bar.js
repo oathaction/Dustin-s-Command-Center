@@ -19,7 +19,12 @@
  * The value scale is ticked along the bottom, and along the top as well past 20 rows. Where the name and value columns would
  * leave the plot narrower than labels.stack_below, the rows stack (ED-E16): each row's name and value on one line, its
  * interval across the full width on the line beneath, the gridlines and the reference only through the interval lines, and
- * the scale ticked at the top and the bottom; the drawing then reports the phone arrangement (c.arrange). Maker B, round 2. */
+ * the scale ticked at the top and the bottom; the drawing then reports the phone arrangement (c.arrange). Where the middle
+ * row's interval would still hide behind a 13 px dot, every row takes a 7 px dot; where it would hide behind that too, the
+ * interval lines go and each margin prints beside its value with a note under the drawing (labels.margin_note to reword
+ * it); the form then calls c.margins_in_words() and marks each margin (margin_of) and the note (margin_note) for the kit's
+ * interval check (the data lead's RF-25; the engineer's names).
+ * Maker B, round 2. */
 (function (K) {
   'use strict';
   K.register_chart({
@@ -27,7 +32,7 @@
     name: 'Range Bar',
     family: 'uncertainty-and-estimates',
     encode: { category: 'text', value: 'number', low: 'number?', high: 'number?', margin: 'number?', key: 'code?', status: 'category?' },
-    labels: ['reference', 'reference_label', 'reference_band', 'test', 'open', 'key_filled', 'key_open', 'key_interval', 'named', 'point', 'names', 'short', 'value', 'stack_below'],
+    labels: ['reference', 'reference_label', 'reference_band', 'test', 'open', 'key_filled', 'key_open', 'key_interval', 'named', 'point', 'names', 'short', 'value', 'stack_below', 'margin_note'],
     interval: true,
     phone: 'same',
     draw: function (c) {
@@ -58,11 +63,42 @@
       var short = L.short || {};
       var name = function (r) { var k = String(r[ek]); return ph && short[k] !== undefined ? short[k] : names[k] !== undefined ? names[k] : String(r[ec]); };
       var size = c.size('label'), tick = c.size('tick'), pitch = Math.round(size * (ph ? 1.6 : 1.5)), rd = c.t('dot-subject-radius'), y = 0;
+      // the name column and the value column; where they would leave the plot under labels.stack_below px (160 by
+      // default), the rows stack: each row's name and value on one line and its interval across the full width on the line
+      // beneath, on one shared scale (ED-E16), and the drawing reports its phone arrangement (R2-C4)
+      var lw = 0, vw = 0;
+      // names and values in one weight, 400, and 700 for a row the title names (K.parts.row_name, BC S8, call 11)
+      rows.forEach(function (r) { var b = P.row_weight(bold(r)); lw = Math.max(lw, c.measure(name(r), 'label', b)); vw = Math.max(vw, c.measure(fill(r), 'label', b, true)); });
+      var x0 = Math.ceil(lw + (ph ? 10 : 20)), x1 = W - Math.ceil(vw + (ph ? 10 : 20));
+      var stack = x1 - x0 < (L.stack_below || 160);
+      if (stack) { x0 = 0; x1 = W; c.arrange('phone'); }
+      var all = c.rows.map(lo).concat(c.rows.map(hi));
+      var sx = (c.spec.scale || {}).x, nt = stack ? 4 : ph ? (W < 300 ? 3 : 4) : 6, dom = sx || K.nice(Math.min.apply(null, all), Math.max.apply(null, all), nt);
+      var pad = rd + 2, xs = K.scale.linear([dom[0], dom[1]], [x0 + pad, x1 - pad]);
+      // RF-25 (the data lead, after the second pass; the access reviewer's N2): where the middle row's interval would not run
+      // 5 px past a 13 px dot on each side at this width, every row takes a 7 px dot; where it would not run 5 px past even
+      // that, the form draws no interval lines and prints each margin beside its value, with a note under the drawing. Never
+      // a tick in place of the dot, which carries Rule 14.9's test, and never a wider interval or scale.
+      var med_run = function () { var v = rows.map(function (r) { return xs(hi(r)) - xs(lo(r)); }).sort(function (a, b) { return a - b; }); var n = v.length; return n ? (n % 2 ? v[(n - 1) / 2] : (v[n / 2 - 1] + v[n / 2]) / 2) : Infinity; };
+      var state = 'lines';
+      if (med_run() + 1e-6 < 2 * rd + 10) {
+        rd = 3.5; pad = rd + 2; xs = K.scale.linear([dom[0], dom[1]], [x0 + pad, x1 - pad]); state = 'small';
+        if (med_run() + 1e-6 < 2 * rd + 10) state = 'margins';
+      }
+      var mtxt = function (r) { return '\u00b1' + K.fmt(half(r), f.margin || fv); };
+      if (state === 'margins' && !stack) {
+        // the value column widens for the margins, so the plot narrows to fit them
+        vw = 0;
+        rows.forEach(function (r) { var b = P.row_weight(bold(r)); vw = Math.max(vw, c.measure(fill(r), 'label', b, true) + 5 + c.measure(mtxt(r), 'label', 400, true)); });
+        x1 = W - Math.ceil(vw + (ph ? 10 : 20));
+        xs = K.scale.linear([dom[0], dom[1]], [x0 + pad, x1 - pad]);
+      }
+      if (state === 'margins') c.margins_in_words();   // the kit's interval check then asks for every margin and the note (RF-25)
       // the key above the rows: a filled dot, an open dot and an interval, each with its words
       var kents = [];
       if (L.key_filled) kents.push({ kind: 'filled', words: L.key_filled });
       if (L.key_open) kents.push({ kind: 'open', words: L.key_open });
-      if (L.key_interval) kents.push({ kind: 'interval', words: L.key_interval });
+      if (L.key_interval && state !== 'margins') kents.push({ kind: 'interval', words: L.key_interval });
       if (kents.length) {
         var kx = 0, ky = size, sw = 22, kgap = ph ? 12 : 24;
         kents.forEach(function (e) {
@@ -82,25 +118,15 @@
         c.key([{ fill: 'subject', direct: true }, { fill: 'surface', pattern: true }]);
         y = ky + Math.round(size * 0.9);
       }
-      // the name column and the value column; where they would leave the plot under labels.stack_below px (160 by
-      // default), the rows stack: each row's name and value on one line and its interval across the full width on the line
-      // beneath, on one shared scale (ED-E16), and the drawing reports its phone arrangement (R2-C4)
-      var lw = 0, vw = 0;
-      // names and values in one weight, 400, and 700 for a row the title names (K.parts.row_name, BC S8, call 11)
-      rows.forEach(function (r) { var b = P.row_weight(bold(r)); lw = Math.max(lw, c.measure(name(r), 'label', b)); vw = Math.max(vw, c.measure(fill(r), 'label', b, true)); });
-      var x0 = Math.ceil(lw + (ph ? 10 : 20)), x1 = W - Math.ceil(vw + (ph ? 10 : 20));
-      var stack = x1 - x0 < (L.stack_below || 160);
-      if (stack) { x0 = 0; x1 = W; c.arrange('phone'); }
-      var all = c.rows.map(lo).concat(c.rows.map(hi));
-      var sx = (c.spec.scale || {}).x, nt = stack ? 4 : ph ? (W < 300 ? 3 : 4) : 6, dom = sx || K.nice(Math.min.apply(null, all), Math.max.apply(null, all), nt);
-      var pad = rd + 2, xs = K.scale.linear([dom[0], dom[1]], [x0 + pad, x1 - pad]);
+
       var ticks = K.ticks(dom[0], dom[1], 0, K.nice(dom[0], dom[1], nt).step), tf = f.tick || 'integer';
       var tick_at = function (t) { var w = c.measure(K.fmt(t, tf), 'tick'), x = xs(t); return { x: Math.min(Math.max(x, w / 2), W - w / 2) }; };
       // the reference's words above the rows, kept inside the drawing
       if (refrow && L.reference_label) {
-        var words = P.fill(c, L.reference_label, refrow), ww2 = c.measure(words, 'tick');
+        // with the margins in words, the reference's words carry its margin too (RF-25)
+        var words = P.fill(c, L.reference_label, refrow) + (state === 'margins' ? ' ' + mtxt(refrow) : ''), ww2 = c.measure(words, 'tick');
         y += tick;
-        c.text(Math.min(Math.max(xs(refrow[ev]), ww2 / 2), W - ww2 / 2), y, words, { role: 'tick', anchor: 'middle', fill: 'label' });
+        c.text(Math.min(Math.max(xs(refrow[ev]), ww2 / 2), W - ww2 / 2), y, words, { role: 'tick', anchor: 'middle', fill: 'label', margin_of: state === 'margins' ? refrow[ek] : undefined });
         y += 8;
       }
       var top_axis = rows.length > 20 || stack;
@@ -132,12 +158,17 @@
         P.row_name(c, 0, ty, name(r), { named: b });
         var a = xs(lo(r)), z = xs(hi(r)), x = xs(r[ev]);
         var wst = role === 'subject' || role === 'point' ? 'context' : role;
-        P.whisker(c, a, z, cy, { dir: 'h', stroke: wst, key: k, low: lo(r), high: hi(r) });
+        if (state !== 'margins') P.whisker(c, a, z, cy, { dir: 'h', stroke: wst, key: k, low: lo(r), high: hi(r) });
         if (is_open(r)) {
           c.circle(x, cy, rd, { fill: 'surface', data: { key: k, field: ev, value: r[ev] } });
-          c.circle(x, cy, rd, { stroke: role, width: c.t('line-context'), mark: false });
+          c.circle(x, cy, rd, { stroke: role, width: state === 'lines' ? c.t('line-context') : 1.5, mark: false });
         } else c.circle(x, cy, rd, Object.assign({ fill: role, data: { key: k, field: ev, value: r[ev] } }, ink.keyline(r)));
-        P.row_value(c, W, ty, fill(r), { named: b });
+        if (state === 'margins') {
+          // each margin printed beside its value, as its own words so the check can count them (RF-25)
+          var mw = mtxt(r), mwid = c.measure(mw, 'label', 400, true);
+          P.row_value(c, W - mwid - 5, ty, fill(r), { named: b });
+          c.text(W, ty, mw, { role: 'label', weight: 400, anchor: 'end', tnum: true, margin_of: k });
+        } else P.row_value(c, W, ty, fill(r), { named: b });
       });
       // the scale along the bottom
       var ay = bottom + tick + 8;
@@ -145,7 +176,12 @@
         c.line(xs(t), bottom, xs(t), bottom + 4, { stroke: 'baseline', width: c.t('line-hairline'), mark: false });
         c.text(tick_at(t).x, ay, K.fmt(t, tf), { role: 'tick', anchor: 'middle' });
       });
-      c.height(ay + 4);
+      var hend = ay + 4;
+      if (state === 'margins') {
+        var nb = c.text(0, hend + c.size('note') + 8, L.margin_note || 'At this width each margin of error is narrower than its dot, so each figure prints its margin beside it; the table gives every margin.', { role: 'note', max: W, fill: 'secondary', margin_note: true });
+        hend = nb.bottom;
+      }
+      c.height(hend + 2);
     }
   });
 })(globalThis.OAChart);

@@ -621,7 +621,8 @@
     var asc = size * vm.ascent / 1000, desc = size * vm.descent / 1000, half = (asc + desc - size) / 2;
     var box = { x: x0, y: y - asc + half, w: w, h: asc + desc - 2 * half + lh * (lines.length - 1), size: size, words: String(words), role: role,
       overlap_ok: !!o.overlap_ok, id: o.guard_id, top: y - asc, bottom: y + desc + lh * (lines.length - 1), halo: !!o.halo, fill: o.fill,
-      on_gray: on_gray, on_context: on_gray && under === 'context', seq: this._seq++, hm: hm };
+      on_gray: on_gray, on_context: on_gray && under === 'context', seq: this._seq++, hm: hm,
+      margin_of: o.margin_of === undefined || o.margin_of === null ? undefined : String(o.margin_of), margin_note: !!o.margin_note };
     this.texts.push(box);
     return box;
   };
@@ -656,6 +657,11 @@
   // says so, c.arrange('phone'); under 480 px the kit says it. The guide hides the desk's phone drawing beside a figure that
   // already draws the phone form.
   Ctx.prototype.arrange = function (name) { this._arr = String(name); };
+  // RF-25 (after the second pass): an interval form whose middle interval hides even behind 7 px dots at this width
+  // draws no interval lines, prints each row's margin beside its value (c.text(..., {margin_of: key})) and a note in the
+  // drawing (c.text(..., {margin_note: true})), and says so here; the check passes that state only with every margin
+  // printed and the note drawn
+  Ctx.prototype.margins_in_words = function () { this._ivw = true; };
   Ctx.prototype.warn = function (w) { this.warnings.push(w); };
   Ctx.prototype.label = function (name, fallback) {
     var v = this.labels[name];
@@ -767,7 +773,7 @@
       ' role="img" data-oa-form="' + esc(spec.form) + '" data-oa-width="' + width + '"' + (opts.label_id ? ' aria-labelledby="' + esc(opts.label_id) + '"' : '') + '>' +
       title + desc + fc.style + defs + c._els.join('') + '</svg>';
     return { svg: svg, width: width, height: h, texts: c.texts, marks: c.marks, leaders: c.leaders, ink: c.ink, keys: c.keys || [], warnings: c.warnings, guard: guard, phone: c.phone,
-      bands: c.bands || [], interval: def.interval || false,
+      bands: c.bands || [], interval: def.interval || false, margins_in_words: !!c._ivw,
       arrangement: c._arr || (c.phone ? 'phone' : 'desk'),
       fc: K.FC, fc_on_dark: K.FC_ON_DARK };
   };
