@@ -110,7 +110,8 @@
       var size = c.size('label'), A = 0.864, B = 0.136;
       var places = [[1, 0], [-1, 0], [0, -1], [0, 1], [0.75, -0.75], [0.75, 0.75], [-0.75, -0.75], [-0.75, 0.75]];
       var hit = function (b, boxes) { return boxes.some(function (t) { return b.x < t.x + t.w + 2 && t.x < b.x + b.w + 2 && b.y < t.y + t.h + 2 && t.y < b.y + b.h + 2; }); };
-      // a name beside its dot, or further out on a hairline leader that keeps clear of the path and the other dots
+      // a name beside its dot (up to 8 px further, with no leader), or further out on a hairline leader that keeps clear of
+      // the path and the other dots
       var place = function (it, blocks, reaches) {
         var w = c.measure(it.words, 'label', it.weight);
         for (var ri = 0; ri < reaches.length; ri++) {
@@ -124,9 +125,9 @@
             var lx = Math.max(box.x, Math.min(it.x, box.x + box.w)), ly = Math.max(box.y, Math.min(it.y, box.y + box.h));
             var vx = lx - it.x, vy = ly - it.y, len = Math.sqrt(vx * vx + vy * vy) || 1;
             var l0 = [it.x + vx / len * (it.r + 1), it.y + vy / len * (it.r + 1)], l1 = [lx - vx / len * 2, ly - vy / len * 2];
-            if (reaches[ri] > 0 && !leader_clear(it, l0, l1)) continue;
+            if (reaches[ri] > 8 && !leader_clear(it, l0, l1)) continue;
             c.text(x, yb, String(it.words), { role: 'label', weight: it.weight, anchor: anchor, halo: true });
-            if (reaches[ri] > 0) c.line(l0[0], l0[1], l1[0], l1[1], { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+            if (reaches[ri] > 8) c.line(l0[0], l0[1], l1[0], l1[1], { stroke: 'leader', width: c.t('line-hairline'), mark: false });
             return true;
           }
         }
@@ -137,7 +138,7 @@
         var mine = function (b) { return !(Math.abs(b.x + b.w / 2 - it.x) < 0.5 && Math.abs(b.y + b.h / 2 - it.y) < 0.5); };
         // the latest period sits beside its dot, over the path on a halo if it must; the gap takes a clear place or
         // none, since the chart note names it; the others reach out on leaders that cross no path
-        if (it.last) { if (!place(it, dotbox.filter(mine), [0])) unplaced.push(it); return; }
+        if (it.last) { if (!place(it, dotbox.filter(mine), [0, 4, 8])) unplaced.push(it); return; }
         if (it.gap) { place(it, avoid, [0, 12, 26]); return; }
         if (!place(it, avoid.filter(mine), [0, 12, 26, 44, 66, 92, 124, 160])) unplaced.push(it);
       });

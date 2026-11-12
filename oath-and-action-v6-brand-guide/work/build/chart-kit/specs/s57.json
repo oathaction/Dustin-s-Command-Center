@@ -7,6 +7,12 @@
   "dataset": "census-acs-earnings-ratio-by-state",
   "sort": [
     {
+      "field": "code",
+      "values": [
+        "US"
+      ]
+    },
+    {
       "field": "women_pct_of_men",
       "order": "desc"
     }
@@ -77,7 +83,7 @@
       "DC": "D.C."
     },
     "value": "{value}%",
-    "stack_below": 200
+    "stack_below": 240
   },
   "formats": {
     "value": "number:1",
@@ -95,11 +101,12 @@
     "R2-C1: the measure line names the 90 percent margin of error; the table prints the margin column; the past-the-margin test is the kit’s interval_of().differs.",
     "Figures checked by maker_b_round2_derive.py --figures (check S57): the nation 82.04 (82.0); 26 of 51 past the margin by the Census Bureau’s test, 14 above (13 states and DC) and 12 below; 25 within. Note 2 does not claim that no neighbor pair differs: California over Connecticut passes the test, so the note says only that order inside the margins is not certain.",
     "Read from the left and the right: the title gives the national figure and the count past the margin; it names no state and no policy. The editor’s first look (title shape, grade line wording, note 1’s positive words) is applied, with “26 states” corrected to 25 states and DC.",
-    "ED-E16 (second run): range-bar stacks its rows where the name and value columns would leave the plot under labels.stack_below px; S57 sets 200, so it stacks at the 358 px phone and every narrower column (its side-by-side plot measured about 193 px at 358 and 90 px at 256), and phone is differs with a phone_note; desk_phone shows the first 12 rows at a desk, since the stacked phone drawing of 51 rows runs about 2,000 px."
+    "ED-E16 (second run): range-bar stacks its rows where the name and value columns would leave the plot under labels.stack_below px; S57 sets 240, so it stacks at the 358 px phone and every narrower column (its side-by-side plot measured about 193 px at 358 and 90 px at 256), and phone is differs with a phone_note; desk_phone shows the nation and the first 12 places at a desk, since the stacked phone drawing of 51 rows runs about 2,000 px.",
+    "The nation’s row sorts first (sort by values), so the desk’s phone drawing of the first 12 rows still holds the reference line and the margin test, and the table sets the nation apart as its first row (ruling (b))."
   ],
   "phone_note": "On a phone each state’s name and figure share one line, and its interval runs the full width on the line beneath, on one scale.",
   "desk_phone": {
-    "rows": 12,
-    "part": "the first 12 states shown; a phone draws all 50 and the District of Columbia"
+    "rows": 13,
+    "part": "the first 12 places shown; a phone draws all 50 states and the District of Columbia"
   }
 }

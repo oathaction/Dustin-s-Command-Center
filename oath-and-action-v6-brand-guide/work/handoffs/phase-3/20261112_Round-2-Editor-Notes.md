@@ -14,6 +14,8 @@ Oath & Action Edition 06, Phase 3, round 2. Editor (`oa-editor`), November 12, 2
 
 - **Run 2. ED-E4 (D3-657): built, and held back for the phone.** Rule 14.9's correct plate on maker B's `range-bar` passes the kit (0 faults) and reads well at 1440 and 1024 px, with every word kept except the level, which the kit's interval check moves from the reading guide to the measure line. In the strict build at 390 px its plot is about 80 px wide and at 320 px about 35 px, because the state names and the values keep their full columns, so the intervals cannot be read; the static figure's phone drawing set each interval on its own row under the name. D3-641 asks the plate to keep that fit, so the generator keeps the static figure behind one flag, `RANGE_BAR_PHONE = False`, with the range-bar spec and its words ready. Request ED-E16 asks for the stacked phone arrangement; once it lands, setting the flag switches the plate and its words in one run.
 - **Run 2. The words pass on both makers, done.** Maker B: 34 changes in S49 to S59 and entries 14-059 to 14-078, S53's source line set to the research lead's `with_program_ages` variant. Maker A: 18 changes in S43 to S64 and entries 14-048, 14-051 and 14-085. Every touched spec passes the kit; both makers' figure checks pass. The tables are under "Words for maker A" and "Words for maker B".
+- **Run 3. Chapter 15's words pass, written for the systems designer.** Eleven changes to 15.11, 15.12, 15.15, 15.17, 15.18 and the round 1 basis lines of 15.13 and 15.14, in a table under "Words for the systems designer", for it to apply in its generator. Two title recommendations go to the main session (15.16 and 15.17). ED-E4 still waits on ED-E16.
+- **Run 3. Maker A's second-run words read; three fixes applied (D3-669)**: S45's note, S63's note naming the third interim order its title counts, and entry 14.53's order sentence.
 
 ## Routine calls
 
@@ -47,6 +49,8 @@ Oath & Action Edition 06, Phase 3, round 2. Editor (`oa-editor`), November 12, 2
 - D3-xxx | S60's note 3 says Alaska's Ballot Measure 2 was "on the ballot on November 3, 2026" | S08's note gives its count as unofficial and open on November 10; "decided" contradicted it
 - D3-xxx | S64's chart note and alt name the bands first and second, never darker and lighter | The magnitude steps reverse in lightness on Charcoal, as maker B found for S59
 - D3-xxx | Entries 14.48, 14.59 and 14.74 cite Rule 14.6 for the sign case and the dashed total line in place of restating its reason | Rulings (b) and (c): Rule 14.6 holds both cases
+- D3-xxx | S63's first note names the third interim order the title counts, I068's of September 26, 2025, from V7's record | H08: the chips show two interim orders and the title three
+- D3-xxx | Chapter 15's words pass goes to the systems designer as a table, and its two title points to the main session | D3-615: the generator holds the words; the plan fixes the titles
 - D3-xxx | Groups 6, 7 and 9 keep their lines | Each names forms its plan rows build (histogram, strip plot, box plot; scatter and its relatives; icon arrays, proportional symbols, Venn and Euler)
 
 ## Words for maker A
@@ -77,6 +81,18 @@ Second run, after maker A finished (19:50). I read every word field of S43 to S4
 Read and kept: every title but S44's and S61's commas; S43's notes and alt; S45 and S47 whole; S48's title, notes and alt; S60's title, measure line, alt and kinds; S61's measure line and notes, both provisions of H.R. 7008 at first mention; S62's title, measure line, notes, step names and the committee vote's note; S63's title, notes and chip words; S64's title, measure line and note (Public Law 119-21 named as "the July 2025 tax law", H12); S18's changed words; every entry not in the table; all six sketch captions, whose first sentences say what each drawing shows and, for the avoid pairs 14.57, 14.91 and 14.92, why the better choice reads truer.
 
 S62's hearing step: the research lead's R-A1 confirmed "None in the bill’s record" (Congress.gov's actions and committees record and the Senate Commerce Committee's hearings list, read November 12, 2026), so the note stands; only its passive clause changed.
+
+### Maker A's second run (run 3, D3-669)
+
+I read maker A's second-run words in S44, S45, S47, S63 (X18's chip words and the title), S64 and entries 14.46 to 14.48, 14.52, 14.53, 14.55, 14.87 and 14.90, against my run 2 state, and applied three fixes. S45 and S63 pass `oa-chart.mjs build`; maker A's `tools/figs.py` passes 91 of 91.
+
+| File | Field | Before | After | Why |
+|---|---|---|---|---|
+| S45 | notes.1 | The Bureau’s series starts in 1968; | The Census Bureau’s series starts in 1968; | H02: the notes' first mention names the Bureau in full |
+| S63 | notes.0 | An interim order holds while its case continues. | An interim order holds while its case continues. The third interim order the title counts came in Issue I068, the dispute over withheld appropriations, on September 26, 2025, in Department of State v. AIDS Vaccine Advocacy Coalition; that issue’s chip gives its latest event, a watchdog finding. | H08: the new title counts three interim orders and the chips show two; the note names the third from V7's record for I068, as the data lead's MA-5 reads it |
+| 14-053 | rule.0 | Lay Democrats from the left, as the chart for Rule 14.28 orders the parties, with independents and vacancies between them and Republicans from the right, so every chamber we draw reads the same way. | Lay Democrats from the left, as the chart for Rule 14.28 orders the parties, Republicans from the right, and independents and vacancies between them, so every chamber we draw reads the same way. | "between them and Republicans" read as between the Democrats and the Republicans' block |
+
+Read and kept: S45's chart note on totals and its note on 1974; S63's title and X18's chip words, which the data lead ruled on under H09; S64's chart note on the scale; the "subject ink" wording in 14.46 to 14.48, 14.52, 14.55, 14.87 and 14.90, now one term with Rule 14.6's. S44 and S47 changed no word.
 
 ## Words for maker B
 
@@ -137,7 +153,27 @@ Read and kept: S49's title, measure line, guide and alt; S50's title, measure li
 
 ## Words for the systems designer
 
-Nothing to read yet under this run's scope; the words pass on chapter 15's new plates (15.11, 15.12, 15.15 to 15.18) comes when they land.
+Run 3. I read the six new rules, 15.11, 15.12 and 15.15 to 15.18, in `15-systems-graphics.json` (title, rule, why, basis, specs, builders, captions), every word on their 12 plates and their alts (a script dumps each plate's visible text, its SVG words and its manifest alt), and group 2's line. Every atlas quotation stays as the atlas writes it. The systems designer applies these in `phase3_ch15_build.py` (D3-615). IDs' names below come from `work/extract/atlas-v7-data.json`.
+
+| Where | Before | After | Why |
+|---|---|---|---|
+| 15.11 rule, second paragraph (generator line 1800) | Print the reform’s band beside it in the atlas’s words. The band names the kind of change, on Donella Meadows’ ordering of places to intervene in a system, | Print the reform’s band, the kind of change it makes, beside it in the atlas’s words. The bands follow Donella Meadows’ ordering of places to intervene in a system, | H02: the band was defined a sentence after its first use in the rule |
+| 15.12 correct plate, the two connection lines under the drawing (`gl("LT03")`, `gl("L26")`, line 1898) | Connection LT03 · Well supported; Connection L26 · Well supported | Connection LT03 “Platforms drew ad revenue from local news”. Well supported; Connection L26 “Local reporting raises pressure on incumbents”. Well supported | H11: a chip with no name; 15.11's and 15.16's target lists print each connection's name the same way |
+| 15.15 rule, second paragraph (line 2205) | In Loop R10 the risk of losing office falls as primaries decide more seats; in Loop B4 the same risk turns into defeats that improve public services. | As primaries decide more seats in Loop R10, the risk of losing office falls, and in Loop B4 that same risk turns poor service into defeats that improve it. | W13: two clauses on one frame |
+| 15.17 rule, first paragraph (line 2532) | Every line in it decides, so print the word once, in a key beside the diagram. | Every line in it means the same verb, decides, so print the word once, in a key beside the diagram. | A line decides nothing; the body where it starts does |
+| 15.17 rule, second paragraph (line 2535) | two bodies hold power over three of the four variables | three of the four variables each answer to two bodies | The old words read as the same two bodies over three variables; the plate says two bodies decide each |
+| 15.17 why (line 2540) | antitrust enforcers and state governments both set rules for pricing software. | antitrust enforcers set rules for pricing software, and so do states and cities. | One term with Connection LT14's name, "States and cities set rules for pricing software" |
+| 15.17 spec "Decides" (line 2554) | Once, in the key, since every line in the diagram decides; | Once, in the key, since every line in the diagram means the same; | As the rule above |
+| 15.17 correct plate note (line 2497) | Two bodies decide each of Variable EC2, Variable TC5 and Variable TC7; one decides Variable EC10. | Two bodies decide each of Variable EC2, public investment in research and infrastructure, Variable TC5, the government’s ability to build and run digital services, and Variable TC7, use of pricing algorithms; one decides Variable EC10, costs of tariffs and trade rules. | H11: the drawing's pills carry names and no IDs, so a bare chip leaves the reader to guess which pill it means |
+| 15.18 correct plate and alt (lines 2604, 2616) | Household hardship is “the reverse of households’ financial security”, Variable A4, read the other way. | Household hardship is “the reverse of households’ financial security”, Variable A4. | The quotation already says reverse; "read the other way" says it twice |
+| 15.13 basis (round 1) | Our systems atlas, Loop R1’s record and evidence summary | Our systems atlas, the record and evidence summary of Loop R1 | Your own reason for your basis lines: a possessive after an ID wraps alone at 390 px |
+| 15.14 basis (round 1) | Our systems atlas, Loop R8’s record and connection T12 | Our systems atlas, the record of Loop R8 and Connection T12 | The same, and the chip's type word capitalized as elsewhere |
+
+For the main session, two titles (the plan fixes them, so these are recommendations only):
+- **15.17:** "Draw who holds power over each level in one authority diagram." Its rule, specs, plates and alts say "layer" throughout. I recommend "each layer", so the chapter uses one term (H02).
+- **15.16:** "Show a reform’s four effects side by side, with each route’s check date." The plate sets the four effects one family to a row, one under another. I recommend "apart" in place of "side by side", the word Rule 15.12 and the plate's own heading use ("Its two grades, apart").
+
+Read and kept: every other title, rule sentence, why, basis, spec and builders line of the six rules; all 12 captions, each failure caption led by its rule and saying what the atlas holds; the plates' headings, notes and labels; every alt, which says what each plate shows, in the plates' own order; group 2's line. 15.15's quotation "works only where seats are competitive." keeps its period inside, as the atlas's sentence ends there.
 
 ## Requests
 
@@ -178,9 +214,11 @@ Nothing to read yet under this run's scope; the words pass on chapter 15's new p
 - Run 2: `oa-chart.mjs build` on the range-bar spec `s-14-9-range` (0 faults, 1440 and 390 px, both grounds and the guide widths), and its Newsprint captures at 1440 and 390 px looked at; the plate in a strict build by Playwright at 1440, 1024, 390 and 320 px (no HTML text under 13 px, nothing past the stage's edge) and looked at, at 390 and 320 px beside the static figure's 320 px drawing. The generator with the flag off gives Rule 14.9's plate and entry byte for byte as in run 1.
 - Run 2 words: `oa-chart.mjs build --no-png` on every spec I touched, S43, S44, S46, S48, S49 to S54, S56 to S64: all PASS, 0 faults (S51 and S53 twice, after a second change). `maker_b_round2_derive.py --figures` 0 faults (it failed once on my first S51 note, which dropped the county it checks; restored) and `--check` 0 faults; maker A's `tools/figs.py` 85 of 85. A lint of both makers' word fields after the changes: no listed word, em dash, U+2011 or straight apostrophe; the three corrective-negation and filler hits it found are fixed (S53's title, 14.62, 14.76), and the one left is a source line's "not adjusted for inflation".
 - Run 2 build: `phase3_ch14_build.py` 0 faults (96 rules); `guide_build.py --strict` exit 0, 0 warnings, page 10,584,078 bytes, and again after the last three fixes, exit 0, 0 warnings, 10,584,064 bytes; rules 14.1 to 14.14 with the opener and the shared block 179,615 bytes. Four of the new phrases found in the page by script (S62's step note rides in the kit's data and is read by the kit build only).
+- Run 3: `oa-chart.mjs build --no-png` on S45 and S63 after my fixes: 2 of 2 PASS, 0 faults; maker A's `tools/figs.py` 91 of 91; `phase3_ch14_build.py` 0 faults; `guide_build.py --strict` exit 0, 0 warnings, page 10,589,578 bytes, rules 14.1 to 14.14 with the opener and the shared block still 179,615 bytes; both new phrases found once in the page. S63's case name and date checked against V7's record for I068 by script. Chapter 15's words read from the chapter file, the plates' text and SVG words and the manifest's alts, by a dump script and by hand; the atlas names in my table read from `atlas-v7-data.json`.
 
 ## Not tested
 
+- Run 3: chapter 15's plates by eye; I read their words only. My table's changes are not applied, so not built.
 - Run 2: the makers' changed plates by eye in the guide (the kit builds passed; their captures were not looked at), and the quick guide check.
 - Chapter 13's plates, the opener and my changed chapter 14 plates at 1024, 768 and 360 px, and in the page on Charcoal, in grayscale and in forced colors (the kit's own captures on Charcoal and in grayscale passed its checks; I looked at the Newsprint ones only).
 - A pixel comparison of every plate before and after ED-E13: my first two screenshot scripts ran too slowly on the 10 MB page under load and I stopped them; the computed-style comparison above stands in for it.
@@ -192,4 +230,5 @@ Nothing to read yet under this run's scope; the words pass on chapter 15's new p
 
 - Modified: `work/build/scripts/phase-3/phase3_ch14_rules_build.py`, which rewrote `work/build/guide/entries/14-001.json` to `14-014.json` (14-003, 14-006 and 14-012 changed in words), `work/build/guide/entries/14-chapter.json` (group lines 5, 8 and 10, `plate_css`), all 29 plates `work/build/guide/specimens/s-14-<n>-correct.html`, `s-14-<n>-failure.html` and `s-14-opener.html` (style moved out; 14.12's failure bar), and `s-14-3-lines.chart.json` and `s-14-12-cols.chart.json`; `work/build/scripts/phase-3/phase3_ch13_build.py`; `work/build/guide/specimens/s-13-7-all.chart.json`, `s-13-7-children.chart.json`, `s-13-7-fail-all.chart.json`, `s-13-13-correct.chart.json`, `s-13-13-fail-chart.chart.json`.
 - Run 2 modified, words only: `work/build/chart-kit/specs/` s43, s44, s46, s48, s49, s50, s51, s52, s53, s54, s56, s57, s58, s59, s60, s61, s62, s63, s64 (`.json`); `work/build/guide/entries/` 14-048, 14-051, 14-059, 14-060, 14-061, 14-062, 14-066, 14-068, 14-070, 14-072, 14-074, 14-076, 14-077, 14-078, 14-085 (`.json`). Mine: `work/build/scripts/phase-3/phase3_ch14_rules_build.py` (the range-bar path behind its flag). Scratch only: `words/apply.py` and the change lists.
+- Run 3 modified, words only: `work/build/chart-kit/specs/s45.json`, `s63.json`; `work/build/guide/entries/14-053.json`.
 - Created: this file.

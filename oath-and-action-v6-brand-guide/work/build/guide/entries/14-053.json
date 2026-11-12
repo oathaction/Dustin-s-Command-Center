@@ -2,7 +2,7 @@
   "id": "14.53",
   "title": "Use a parliament chart for the seats in a chamber.",
   "rule": [
-    "Draw every seat as one dot on a half circle of rows, every party in the one party-mark ink, with each party’s block named with its count and set apart from the next by a narrow gap (Rule 14.7). Lay Democrats from the left, as the chart for Rule 14.28 orders the parties, with independents and vacancies between them and Republicans from the right, so every chamber we draw reads the same way. Draw an empty seat as an open ring, and mark the seat that makes a majority with a tick. Print the date of the count, since seats change with every vacancy."
+    "Draw every seat as one dot on a half circle of rows, every party in the one party-mark ink, with each party’s block named with its count and set apart from the next by a narrow gap (Rule 14.7). Lay Democrats from the left, as the chart for Rule 14.28 orders the parties, Republicans from the right, and independents and vacancies between them, so every chamber we draw reads the same way. Draw an empty seat as an open ring, and mark the seat that makes a majority with a tick. Print the date of the count, since seats change with every vacancy."
   ],
   "use_when": "The reader asks how a chamber divides today, and the size of each block against a majority is the point.",
   "use_instead": [
