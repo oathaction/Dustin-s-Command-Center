@@ -134,6 +134,14 @@ def gl(lid):
     return f'<span class="nw2">{chip("Connection", lid)}&#160;{grade_word(link(lid)["evidence"], gloss=False)}</span>'
 
 
+def step_lines(lids, skip=(), head="Each step", extra=None):
+    """A loop's steps, numbered in the atlas's order, each connection's chip with its grade word (Rule 13.4, the data
+    lead's SD-7): every connection a drawing shows prints its grade somewhere on the plate."""
+    rows = [f'<p class="nt"><b>{i}</b>&#160;{gl(x)}{(extra or {}).get(x, "")}</p>'
+            for i, x in enumerate(lids, 1) if x not in skip]
+    return f'<p class="k">{e(head)}</p>' + "".join(rows) if rows else ""
+
+
 def label_for(ids, what="the grade of the least certain connection shown"):
     """The evidence label over a plate that draws atlas connections: the grade of its least certain one (Rule 13.1)."""
     g = least_certain(ids)
@@ -1241,7 +1249,7 @@ def rule_15_5(book):
         "specs": [
             {"label": "End", "value": "An open diamond, 14 by 11 px, in place of the arrowhead (Rule 10.10)"},
             {"label": "Line", "value": "Solid; every authority connection is documented"},
-            {"label": "Word", "value": "Decides, where a causal line prints its verb"},
+            {"label": "Word", "value": "Decides, where a causal line prints its verb, or once in a key where every line in the drawing is an authority connection (Rule 15.17)"},
             {"label": "Sign", "value": "None"},
             {"label": "Loops", "value": "None; the build stops if any loop lists an authority connection"},
         ],
@@ -1762,8 +1770,8 @@ def rule_15_11(book):
              + f'<p class="k">Its targets, from the atlas</p>{items}'
              + f'<p class="k">Its band</p>{band_p(r)}'
              + src("reform R-03, loop R4a, connections L42, L55 and L56, and the bands of change"))
-    under = (f'<p class="nt">{chip("Variable", "C4")} sits in the same cluster as {chip("Variable", "C1", ",")} '
-             f'{e(cname.lower())}, and stays in ink.</p><p class="k">Its loops</p>{loops_p(r, "R4a")}')
+    under = (step_lines(lp["links"]) + f'<p class="nt">{chip("Variable", "C4")} sits in the same cluster as '
+             f'{chip("Variable", "C1", ",")} {e(cname.lower())}, and stays in ink.</p><p class="k">Its loops</p>{loops_p(r, "R4a")}')
     body = (hed("Reform", "R-03", r["title"]) + label_for(lp["links"], "the grade of the loop’s least certain step")
             + beside(hed("Loop", "R4a", lp["title"]) + fig(svg) + under, words))
     book.add("s-15-11-correct", body, rule="15.11", readable=True, wide=True,
@@ -1775,7 +1783,9 @@ def rule_15_11(book):
                   f"Connection L42, {link('L42')['name']}, documented; Variable C1, {lc(node('C1')['title'])}; Variable D7, "
                   f"{lc(node('D7')['title'])}. Its band, rules: {BANDS['rules']} Under the drawing: Variable C4 sits in the "
                   "same cluster as Variable C1, electoral competition, and stays in ink; its loops are Loop R4a, Loop R10 and "
-                  "Loop R12, and the drawing shows Loop R4a, which holds every target."),
+                  "Loop R12, and the drawing shows Loop R4a, which holds every target. Each step with its grade: "
+                  + "; ".join(f"step {i}, Connection {x}, {GRADE[link(x)['evidence']][0].lower()}" for i, x in enumerate(lp["links"], 1))
+                  + "."),
              notes="Targets read from the reform's record and drawn in Rule 12.5's red by wire_marks at the 6 px sizes; the band "
                    "quoted from the atlas's bands of change.")
     book.log("15.11 correct", "Reform R-03 on Loop R4a, district maps", "D02")
@@ -2134,6 +2144,8 @@ def rule_15_15(book):
     val = b4["valence"]
     need("Its strength depends on C1: Seats with little electoral competition, C2: How often the primary decides the winner," in val,
          "Loop B4's valence changed")
+    weak54 = "since its main study covers Brazilian mayors"
+    need(b4["evidence_summary"].endswith(f"For U.S. services the weakest is L54, {weak54}."), "Loop B4's weakest step changed")
     deps = re.findall(r"\b([A-E]\d): ", val.split("Its strength depends on ")[1].split(". ")[0])
     need(deps == ["C1", "C2", "B2", "B4"], f"Loop B4's strength no longer depends on four variables: {deps}")
     need((link("L08")["from"], link("L08")["to"]) == ("C1", "C2") and r10["links"][0] == "L08", "Loop R10's first step changed")
@@ -2155,7 +2167,13 @@ def rule_15_15(book):
         steps = (f'<p class="k">Variable C3 in this loop</p>'
                  + kw([f'<b>Into it</b>&#160;{gl(a)}. “{e(link(a)["sign_meaning"])}”',
                        f'<b>Out of it</b>&#160;{gl(b_)}. “{e(link(b_)["sign_meaning"])}”']))
-        cols.append(f'<div>{label_for(lp["links"], "the grade of the loop’s least certain step")}{hed("Loop", lid, lp["title"])}'
+        steps += step_lines(lp["links"], skip=(a, b_), head="The loop’s other steps",
+                            extra={"L54": f' The atlas calls it the weakest for U.S. services, “{e(weak54)}”.'})
+        grades = {link(x)["evidence"] for x in lp["links"]}
+        lab = (diagram_label(grades.pop(), f"{GRADE[link(lp['links'][0])['evidence']][1]}, the grade of all "
+                                           f"{words_n(len(lp['links']))} steps")
+               if len(grades) == 1 else label_for(lp["links"], "the grade of the loop’s least certain step"))
+        cols.append(f'<div>{lab}{hed("Loop", lid, lp["title"])}'
                     f'{fig(svg_wrap(b, h), read_aloud(codes, lp["links"]))}{steps}</div>')
     meet = (f'<p class="k">Where the two loops meet</p>'
             f'<p class="nt">{chip("Variable", "C3", ",")} {e(lc(c3["title"]))}, is the pill filled in ink in both drawings. '
@@ -2175,7 +2193,9 @@ def rule_15_15(book):
                   f"{link('L24')['sign_meaning']} In Loop R10: {link('L25')['sign_meaning']} {link('L53')['sign_meaning']} "
                   f"A note says Variable C3, risk of losing office, is the shared variable, which the atlas defines: {ep} Loop "
                   "B4 works only where seats are competitive, and two of the four variables the atlas says its strength depends "
-                  "on, Variable C1 and Variable C2, are the two ends of Loop R10’s first step."),
+                  "on, Variable C1 and Variable C2, are the two ends of Loop R10’s first step. Loop B4’s label reads Well "
+                  "supported, the grade of all three steps, and under each loop its other steps print with their grades; the "
+                  "atlas calls Connection L54 the weakest for U.S. services, since its main study covers Brazilian mayors."),
              notes="Both loops read by script; the shared variable found as the intersection of their chains; the in and out "
                    "connections of Variable C3 checked against each loop.")
     book.log("15.15 correct", "Loop B4, public services", "D04")
@@ -2290,7 +2310,8 @@ def rule_15_16(book):
           f'<div><p class="k">Routes, with the date each was checked</p>{route_rows(r)}'
           f'<p class="nt">Feasibility is the atlas’s judgment for 2026 to 2030.</p></div>')
     body = (hed("Reform", "R-01", r["title"]) + label_for(lp["links"], "the grade of the loop’s least certain step")
-            + beside(hed("Loop", "R10", lp["title"]) + fig(svg) + f'<p class="k">Its loops</p>{loops_p(r, "R10")}', words)
+            + beside(hed("Loop", "R10", lp["title"]) + fig(svg) + step_lines(lp["links"])
+                     + f'<p class="k">Its loops</p>{loops_p(r, "R10")}', words)
             + f'<div class="two">{fx}</div>'
             + src("reform R-01, its targets, effects and routes, and loop R10 with its connections"))
     fam_alt = "; ".join(f"{FAMILY[k]}, {r['effects'][k]}, {EFFECT_WORDS[r['effects'][k]]}" for k in ("DQ", "GE", "EP", "EQ"))
@@ -2305,7 +2326,9 @@ def rule_15_16(book):
                   f"supported; Variable C2, {lc(node('C2')['title'])}. Its loops: Loop R10, Loop B4 and Loop R11. Evidence of "
                   f"the problem, plausible, some evidence; for the remedy, contested, evidence disputed, each as its own label. "
                   f"Effects by outcome family, as of {SNAP}, one row each: "
-                  f"{fam_alt}. {q_note} Routes: {rt_alt}."),
+                  f"{fam_alt}. {q_note} Routes: {rt_alt}. Under the drawing, each step of the loop with its grade: "
+                  + "; ".join(f"step {i}, Connection {x}, {GRADE[link(x)['evidence']][0].lower()}" for i, x in enumerate(lp["links"], 1))
+                  + "."),
              notes="Targets, effects, confidence and routes read from the reform's record; each route's own check date or Not "
                    "checked; no row adds the families. No disclosure prints (DR-100).")
     book.log("15.16 correct", "Reform R-01, primaries", "D02")

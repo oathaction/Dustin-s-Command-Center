@@ -1,14 +1,15 @@
 /* Connected scatter (coverage plan 3.6, extended; S56). Two measures moving together over time: one dot a period at its
  * two values, joined in time order by a thin path in the subject ink, so the path's shape is the answer (the data lead's
  * rulings (a) and (e)). A period with either value missing breaks the path, which never bridges it, and the gap is named
- * by labels.gap at the middle of the break where a clear place exists (the chart note names it in any case). Periods the
+ * at the middle of the break by a small open ring, which a one-line key over the plot names with labels.gap's words
+ * (MB-19: marked and named at every width). Periods the
  * spec names carry their words beside their dot, or further out on a hairline leader that crosses no stretch of the path
  * and passes no other dot (the data lead's MB-12); the latest period always sits beside its dot, on a halo over the path
  * if it must; a name with no place is listed under the chart. The first and last periods take a larger dot, so the path's direction reads without arrows.
  * Gridlines both ways, the y values in a left gutter and the x values along the bottom.
  * encode: time (month or year: each period's first month for a quarter), x (number), y (number).
- * labels: named ({time: words}: periods named on the drawing; the latest claims room first, then the gap, then the rest
- * in the spec's order), gap (words naming a missing period, placed at the break), x_axis, y_axis (axis words).
+ * labels: named ({time: words}: periods named on the drawing; the latest claims room first, then the rest in the spec's
+ * order), gap (words naming a missing period, in the key over the plot), x_axis, y_axis (axis words).
  * formats: x, y (ticks). scale: x and y ([lo, hi]), x_step, y_step and x_step_phone (the ticks' steps). On a phone the
  * same arrangement draws narrower.
  * Maker B, round 2. */
@@ -34,7 +35,17 @@
       // the spec may set each axis's step (scale.x_step, scale.y_step), so whole-number ticks never fall on a half
       var tx = K.ticks(dx[0], dx[1], 0, (!ph && sc.x_step) || (ph && sc.x_step_phone) || K.nice(dx[0], dx[1], nx).step), ty = K.ticks(dy[0], dy[1], 0, sc.y_step || K.nice(dy[0], dy[1], ny).step);
       var y0 = 0;
-      if (L.y_axis) { c.text(0, tick, L.y_axis, { role: 'tick', weight: 600, max: W }); y0 = tick + 10; }
+      // the gap's key over the plot: an open ring and labels.gap's words, so the break is marked and named at every width
+      // (the data lead's MB-19), since in a dense path no place beside the break stays clear at every width
+      var gapped = !!L.gap && rows.some(function (r, i) { return !ok(r) && i > 0 && i < rows.length - 1 && ok(rows[i - 1]) && ok(rows[i + 1]); });
+      if (gapped) {
+        var gsz = c.size('label'), gb = c.text(20, gsz, L.gap, { role: 'label', max: W - 20 });
+        c.circle(7, gsz * 0.62, 3.5, { fill: 'surface', mark: false });
+        c.circle(7, gsz * 0.62, 3.5, { stroke: 'subject', width: c.t('line-context') - 0.5, mark: false });
+        c.key([{ fill: 'surface', pattern: true }]);
+        y0 = gb.bottom + 12;
+      }
+      if (L.y_axis) { c.text(0, y0 + tick, L.y_axis, { role: 'tick', weight: 600, max: W }); y0 += tick + 10; }
       var gut = P.value_gutter(c, ty, fy), x0 = gut + 8, x1 = W - 6;
       var top = y0 + tick * 0.5, plotH = ph ? Math.round((x1 - x0) * 1.0) : 440, bot = top + plotH, pad = 6;
       var xs = K.scale.linear([dx[0], dx[1]], [x0 + pad, x1 - pad]), ys = K.scale.linear([dy[0], dy[1]], [bot - pad, top + pad]);
@@ -63,7 +74,7 @@
         c.circle(p[0], p[1], big ? c.t('dot-vertex-radius') + 1 : rs, { fill: 'subject', data: { key: r[et], field: ey, value: r[ey], x: r[ex] } });
         c.datum(p[0], p[1], { data: { key: r[et], field: ex, value: r[ex] } });
       });
-      // the named periods and the gap's words, through the kit's shared placing (R2-C2), clear of every dot; a name with no
+      // the named periods, placed clear of every dot (below), and the gap's ring at the middle of its break; a name with no
       // clear place is listed under the chart, and the table gives every period
       var items = [];
       Object.keys(named).forEach(function (k) {
@@ -78,7 +89,7 @@
           var a = rows[i - 1], b = rows[i + 1];
           if (!ok(a) || !ok(b)) return;
           var pa = pt(a), pb = pt(b);
-          items.push({ x: (pa[0] + pb[0]) / 2, y: (pa[1] + pb[1]) / 2, r: 2, words: L.gap, weight: 400, gap: true });
+          items.push({ x: (pa[0] + pb[0]) / 2, y: (pa[1] + pb[1]) / 2, r: 3.5, words: L.gap, weight: 400, gap: true });
         });
       }
       // the latest period and the gap claim room first, then the named periods in the spec's order
@@ -99,6 +110,13 @@
         var d = function (a, b, q) { return (b[0] - a[0]) * (q[1] - a[1]) - (b[1] - a[1]) * (q[0] - a[0]); };
         return d(p1, p2, p3) * d(p1, p2, p4) < 0 && d(p3, p4, p1) * d(p3, p4, p2) < 0;
       };
+      var leader_clear_dots = function (it, l0, l1) {
+        return have.every(function (r) {
+          var q = pt(r); if (Math.abs(q[0] - it.x) < 0.5 && Math.abs(q[1] - it.y) < 0.5) return true;
+          var vx = l1[0] - l0[0], vy = l1[1] - l0[1], t = Math.max(0, Math.min(1, ((q[0] - l0[0]) * vx + (q[1] - l0[1]) * vy) / (vx * vx + vy * vy || 1)));
+          return Math.pow(l0[0] + t * vx - q[0], 2) + Math.pow(l0[1] + t * vy - q[1], 2) > Math.pow(rs + 2, 2);
+        });
+      };
       var leader_clear = function (it, l0, l1) {
         if (segs.some(function (sg) { return cross(l0, l1, sg[0], sg[1]); })) return false;
         return have.every(function (r) {
@@ -112,21 +130,27 @@
       var hit = function (b, boxes) { return boxes.some(function (t) { return b.x < t.x + t.w + 2 && t.x < b.x + b.w + 2 && b.y < t.y + t.h + 2 && t.y < b.y + b.h + 2; }); };
       // a name beside its dot (up to 8 px further, with no leader), or further out on a hairline leader that keeps clear of
       // the path and the other dots
-      var place = function (it, blocks, reaches) {
-        var w = c.measure(it.words, 'label', it.weight);
+      var place = function (it, blocks, reaches, o) {
+        o = o || {};
+        // words may wrap to o.max px; a leader may cross the path where o.loose is set, never another dot
+        var lines = o.max ? c.wrap(it.words, 'label', o.max, it.weight) : [String(it.words)], lh = Math.round(size * 1.2);
+        var w = 0; lines.forEach(function (ln) { w = Math.max(w, c.measure(ln, 'label', it.weight)); });
+        var h = size + (lines.length - 1) * lh;
         for (var ri = 0; ri < reaches.length; ri++) {
           var dd = it.r + 4 + reaches[ri];
           for (var k = 0; k < places.length; k++) {
             var ax = places[k][0], ay2 = places[k][1], anchor = ax > 0 ? 'start' : ax < 0 ? 'end' : 'middle';
-            var x = it.x + ax * dd, yb = ay2 < 0 ? it.y + ay2 * dd - B * size : ay2 > 0 ? it.y + ay2 * dd + A * size : it.y + 0.35 * size;
-            var bx = anchor === 'middle' ? x - w / 2 : anchor === 'end' ? x - w : x, box = { x: bx, y: yb - A * size, w: w, h: size };
+            var x = it.x + ax * dd, top0 = ay2 < 0 ? it.y + ay2 * dd - h : ay2 > 0 ? it.y + ay2 * dd : it.y - h / 2;
+            var bx = anchor === 'middle' ? x - w / 2 : anchor === 'end' ? x - w : x, box = { x: bx, y: top0, w: w, h: h };
             if (box.x < 0 || box.x + box.w > W || box.y < top || box.y + box.h > bot) continue;
             if (hit(box, c.texts) || hit(box, blocks)) continue;
             var lx = Math.max(box.x, Math.min(it.x, box.x + box.w)), ly = Math.max(box.y, Math.min(it.y, box.y + box.h));
             var vx = lx - it.x, vy = ly - it.y, len = Math.sqrt(vx * vx + vy * vy) || 1;
             var l0 = [it.x + vx / len * (it.r + 1), it.y + vy / len * (it.r + 1)], l1 = [lx - vx / len * 2, ly - vy / len * 2];
-            if (reaches[ri] > 8 && !leader_clear(it, l0, l1)) continue;
-            c.text(x, yb, String(it.words), { role: 'label', weight: it.weight, anchor: anchor, halo: true });
+            if (reaches[ri] > 8 && !(o.loose ? leader_clear_dots(it, l0, l1) : leader_clear(it, l0, l1))) continue;
+            if (reaches[ri] > 8 && c.texts.some(function (t) { return K.seg_hits_box(l0[0], l0[1], l1[0], l1[1], t.x - 1, t.y - 1, t.x + t.w + 1, t.y + t.h + 1); })) continue;
+            var xt = anchor === 'middle' ? bx + w / 2 : anchor === 'end' ? bx + w : bx;
+            c.text(xt, top0 + A * size, lines.join(' '), { role: 'label', weight: it.weight, anchor: anchor, halo: true, max: o.max ? o.max + 1 : undefined, leading: lh });
             if (reaches[ri] > 8) c.line(l0[0], l0[1], l1[0], l1[1], { stroke: 'leader', width: c.t('line-hairline'), mark: false });
             return true;
           }
@@ -136,10 +160,15 @@
       var unplaced = [];
       items.forEach(function (it) {
         var mine = function (b) { return !(Math.abs(b.x + b.w / 2 - it.x) < 0.5 && Math.abs(b.y + b.h / 2 - it.y) < 0.5); };
-        // the latest period sits beside its dot, over the path on a halo if it must; the gap takes a clear place or
-        // none, since the chart note names it; the others reach out on leaders that cross no path
+        // the latest period sits beside its dot, over the path on a halo if it must; the others reach out on leaders that
+        // cross no path
         if (it.last) { if (!place(it, dotbox.filter(mine), [0, 4, 8])) unplaced.push(it); return; }
-        if (it.gap) { place(it, avoid, [0, 12, 26]); return; }
+        // the gap: a small open ring at the middle of the break, which the key over the plot names (MB-19)
+        if (it.gap) {
+          c.circle(it.x, it.y, 3.5, { fill: 'surface', mark: false });
+          c.circle(it.x, it.y, 3.5, { stroke: 'subject', width: c.t('line-context') - 0.5, mark: false });
+          return;
+        }
         if (!place(it, avoid.filter(mine), [0, 12, 26, 44, 66, 92, 124, 160])) unplaced.push(it);
       });
       var pl = { unplaced: unplaced };

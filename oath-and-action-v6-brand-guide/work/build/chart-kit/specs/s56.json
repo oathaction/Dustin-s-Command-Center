@@ -43,7 +43,7 @@
     ]
   },
   "chart_notes": [
-    "The path names five quarters: the first and last, the highest unemployment and the most openings, and the end of 2009. The path breaks where the last quarter of 2025 has no unemployment average."
+    "The path names five quarters: the first and last, the highest unemployment and the most openings, and the end of 2009. An open ring marks where the path breaks, at the last quarter of 2025, which has no unemployment average; a key over the plot names it."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -62,7 +62,7 @@
       "2009-10": "October to December 2009",
       "2001-01": "January to March 2001"
     },
-    "gap": "No rate for October 2025",
+    "gap": "No unemployment rate for October 2025, so the path breaks at the ring",
     "x_axis": "Unemployment rate, percent",
     "y_axis": "Job openings, millions"
   },
@@ -88,6 +88,7 @@
     "Weight call: the monthly path of 310 months measured 27,934 bytes by the kit’s load-table fragment, over the 24,576-byte far-over limit (its table holds every month); quarterly averages keep the path’s shape at about a third of the rows. The data lead’s ruling (e) asked for each month as a dot; request RB-D1 asks the data lead to sign off the quarters.",
     "Ruling (a): no single named mark; the path in the subject ink. Ruling (d): Association, since the title says the two moved together, with the coverage plan’s line. The October 2025 gap: the quarter takes no unemployment average, the path breaks, and the break is named (the brief).",
     "Figures checked by maker_b_round2_derive.py --figures (check S56): openings peak 11.7363 million in 2022 Q1 (11.7) with the rate at 3.8667 (3.9); the rate’s peak 13.0 in 2020 Q2; the latest quarter 4.1333 and 7.3493 (4.1 and 7.3); 2025 Q4 empty.",
-    "H09: the window runs from the series’ first full quarter to the latest, with the reason printed; no period is split at an inauguration. Read from the left and the right: the title states an association and names no administration."
+    "H09: the window runs from the series’ first full quarter to the latest, with the reason printed; no period is split at an inauguration. Read from the left and the right: the title states an association and names no administration.",
+    "Data lead MB-19: the break is marked at every width by an open ring at the middle of the break and named by a one-line key over the plot (labels.gap); no place beside the break stayed clear of the path at every width, and a key is Rule 14.3’s case where labels cannot fit."
   ]
 }

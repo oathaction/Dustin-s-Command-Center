@@ -8,7 +8,7 @@ Rules 15.11 and 15.12 (group 2, reforms on the drawing) and worked examples 15.1
 
 Every atlas value is read by script from `work/extract/atlas-v7-data.json` (snapshot of October 15, 2026) and held by a `need()` check. Every value the brief names matched the model, so nothing differs: Loop B4 (D5, C3, C5; L23 minus, L24, L54) and Loop R10 (C1 to C4; L08, L25, L53, L42) share Variable C3 alone; Reform R-01 targets L25, L08 and C2, sits on Loops R10, B4 and R11, codes DQ +M, GE +S, EP 0, EQ 0, and has routes BI (medium, checked 2026-10-15), SS (low, no date), LOC (medium, checked 2026-10-15) and FS (very low, no date); the seven authority connections are LE02, LE03, LE19, LT13, LT14, LT16 and LT17; Loops B2, B3 and R9 are the three conceptual loops.
 
-**Chapter 15 weighs 298,728 bytes in the final strict build, 50 percent of its 0.60 MB ceiling** (round 1 closed at 184,665). The page is 10,589,819 bytes, projected 15,042,488, with 0 warnings.
+**Chapter 15 weighs 302,270 bytes in the final strict build (after the data lead's SD-6 to SD-8; 298,728 before), 50 percent of its 0.60 MB ceiling** (round 1 closed at 184,665). The page is 10,589,819 bytes, projected 15,042,488, with 0 warnings.
 
 **The editor's words pass is applied** (`20261112_Round-2-Editor-Notes.md`, "Words for the systems designer", run 3): all eleven changes, nine on the six new rules and the two round 1 "Basis" lines of 15.13 and 15.14, and the two titles the main session ruled (D3-670): 15.16 "Show a reform’s four effects apart, with each route’s check date." and 15.17 "Draw who holds power over each layer in one authority diagram." Neither old title printed anywhere else (the `PLANNED` list no longer held them; no opener, index or alt cites them). The data lead's requests had not landed when I finished. The V7 check finds 0 failures in chapter 15's 102 chips. RS-S1 landed on the engineer's side with nothing for me to set (R2-C6); at 1024 and 768 px the 15 round 1 wide plates and my 6 new correct plates and 15.15's failure take the 680 px stage, checked by capture.
 
@@ -49,6 +49,16 @@ Rule 01.9 over the chapter's 27 examples: D01 4, D02 5, D03 3, D04 2, D05 3, D06
 - D3-xxx | Rule 15.18's source line reads "loop B2, loop B3 and loop R9", and the generator now stops on an R9 or R13 that "Loop" does not directly precede | The guide check's codes test reads a bare R9 or R13 as a decision code; "loops B2, B3 and R9" would have failed it (tested by planting it back)
 - D3-xxx | My two "Basis" lines name the record after the ID ("the profile of Reform R-01", "the record and evidence summary of Loop B2") | The shell holds an ID whole, and a possessive after it ("R-01’s") wrapped alone to the next line at 390 px
 
+## Data lead's sign-off, applied (second run)
+
+The data lead signed off the six rules with three requests (`20261112_Round-2-Data-Lead-Notes.md`, "Requests to the systems designer"), all applied in the generator:
+
+- **SD-6.** 15.15's Loop B4 label reads "Well supported, strong research evidence, the grade of all three steps" (a loop whose steps share one grade names none as least certain), and Connection L54's line adds the atlas's words: the weakest for U.S. services, "since its main study covers Brazilian mayors" (held by `need()`).
+- **SD-7.** Every drawn connection prints its grade word: "Each step" under the drawing in 15.11 (L42, L55, L56) and 15.16 (L08, L25, L53, L42), and "The loop's other steps" under each loop in 15.15 (L54; L08 and L42), numbered in the atlas's order, read from the model; the alts say so.
+- **SD-8.** Rule 15.5's "Word" spec reads "Decides, where a causal line prints its verb, or once in a key where every line in the drawing is an authority connection (Rule 15.17)".
+
+Tested: the generator's checks pass; strict build exit 0, 0 warnings, chapter 15 at 302,270 bytes against 600,000, the page at 10,586,929, projected 15,042,488; the V7 check, 0 failures in chapter 15's 112 chips; 15.11, 15.15, 15.16 and 15.5 captured at 1440 and 390 px (type 13 px or more, nothing outside its stage, no overlap) and 15.11, 15.15 and 15.16 read by eye at both widths. Not tested: Charcoal and the other widths for these three after the change; the guide check after the change.
+
 ## Requests
 
 ### To the data visualization lead
@@ -77,7 +87,7 @@ None blocking. For the makers, from my quick guide check: s-14-55-sketch sets ty
 - The guide check's full four-width run (zoom, text spacing, forced colors), and the quick run on the build after the editor's words (which changed words only, checked by the generator, the strict build and the V7 check).
 - A 320 px window; print; forced colors; color-vision simulations.
 - A screen reader on the new alts, keys and lists.
-- The data lead's sign-off of the new plates (requested above); its requests to me had not landed in its notes when I finished, so none is applied.
+- The guide check after the data lead's SD-6 to SD-8 (words and step lists only).
 
 ## Files
 
