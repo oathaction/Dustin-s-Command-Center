@@ -4921,3 +4921,13 @@ The main session asked whether chapter 13's seven script-drawn chart heads take 
 | # | Decision | Source |
 |---|---|---|
 | DR-247 | Chapter 13's seven script-drawn chart heads (Rule 13.1's four correct heads, Rule 13.6's jobs head on both plates, the left head on Rule 13.7's failure plate) take a closing period as a typographic correction, with no change to wording, so every chart title in the guide ends one way; the failure heads of Rules 13.1 to 13.3 keep their faults on purpose; chapter 13 stays otherwise as approved (DR-237, DR-242) | Dustin, November 12, as recommended (D3-667) |
+
+### Main session, round 2 review start (`work/handoffs/phase-3/20261112_Phase-3-Round-2-Review-Brief.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-883 | The new chat's local branch was reset to the remote tip `bb9d809f`; the fresh container took V11's three steps; the api.data.gov key answered one request each at api.open.fec.gov (a 2024 House race) and api.congress.gov (H.R. 7008), and `CENSUS_API_KEY` answered one American Community Survey request, all with 200, and no key value is written anywhere. The strict build passed as committed: 0 warnings, 312 rules, 606 specimens, 10,587,775 bytes, the size D3-882 recorded | Dustin asked for the committed state confirmed and each key tested before use |
+| D3-884 | The four reviewers start on that strict build while the quick and four-width guide checks run on copies of it in the background | The checks only read the page; V16 and V19 started readers on a frozen page while other work ran and saved about an hour |
+| D3-885 | The production test's designer builds an interval chart from `census-acs-broadband-by-state` for "How sure can a reader be of each state's share of households with fixed broadband, and which states differ from the nation's?" | R2-C1's interval contract is round 2's newest, and a test that reaches it from the entries alone shows whether a designer finds it without help |
+| D3-886 | The creative director scores five items: maker A's 11 specimens with S18 and the built entries, maker B's 11 with S33 and 14.76, the 15 sketches, rules 14.1 to 14.14 as round 2 changed them with chapter 13's five titles, and chapter 15's six new rules with the wide stage | One item per owner's body of work, as round 1 scored, so each fix lands with one owner |
+| D3-887 | The brief names seven places for every reviewer: narrow plots, the derived summaries, the party test over 22 titles, S63's X18 window, the four Estimate labels, chapter 15 against V7 and the sketches at true size | V20 section 2B; round 2's build found the range bar losing its intervals at 80 px while every check passed |
