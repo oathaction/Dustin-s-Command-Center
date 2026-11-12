@@ -86,6 +86,8 @@ Open: the engineer's R-B2, R-B3 and R-B7. Done: R-B6 (engineer); R-B1, R-B4, R-B
 
 - My 21 entries (14.25 to 14.45) captured in the strict scratch guide at 1440 and 390 px (Playwright, element captures) and looked at: words, use-instead links, builders lines and specimens read well at both widths; the one fault found is the avoid sketch's plate head (R-B12). The captures predate S34's phone change.
 
+- `python3 -I work/build/scripts/phase-3/maker_b_figure_checks.py`: S13's typed peak, 3,013,000, read against the payroll data, 0 faults; a copy of the check with the label changed to 3,012,000 failed as it should.
+
 ## Not tested
 
 - Chapter 14's generator and the guide build with these entries and sketches: `phase3_ch14_build.py` and the build's sketch check are not written yet (engineer notes, "Not yet started").
@@ -105,6 +107,8 @@ Created:
 - `work/build/guide/specimens/s-14-43-sketch.html`, `s-14-44-sketch.html`, `s-14-45-sketch.html`
 - `work/build/data/illustrative-benefit-cliff.csv` and `illustrative-benefit-cliff.meta.json`
 - `work/handoffs/phase-3/20261112_Round-1-Maker-B-Notes.md` (this file)
+
+Created later: `work/build/scripts/phase-3/maker_b_figure_checks.py` (named for maker B).
 
 Modified:
 - `work/build/chart-kit/specs/s14.json` (the `with_margin` source line and the margin figure in note 4)

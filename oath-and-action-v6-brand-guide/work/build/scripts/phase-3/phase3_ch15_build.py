@@ -530,50 +530,57 @@ def numeral(n, x, y):
 
 
 def opener(book):
-    lp = LOOP["R13"]
-    need(lp["links"] == ["L11", "L12"] and lp["type"] == "R" and minus_count(lp["links"]) == 2, "Loop R13 changed")
-    le = link("LE02")
-    need((le["type"], le["from"], le["to"], le["polarity"], le["evidence"], le["loops"]) == ("authority", "D1", "EC2", None, "documented", []),
-         "connection LE02 changed")
-    need(node("EC2")["layer"] == "economy" and node("D1")["layer"] == "core", "the layers of D1 or EC2 changed")
-    body, h, (a, b) = two_loop(["D1", "D2"], ["L11", "L12"], inside=("R13", "reinforcing"), a_in=22, top=4)
-    # the economy layer under the core: a 1 px rule with each layer's name, broken where the authority line crosses it
+    """Loop R18 with authority connection LT16, which leaves the loop's first variable for the technology layer. (Loop R13
+    drew this opener first; the guide check bars the code R13 in a text node of its own, which a typed chip holds.)"""
+    lid = "R18"
+    lp = LOOP[lid]
+    need(lp["links"] == ["L14", "L15"] and lp["type"] == "R" and minus_count(lp["links"]) == 2, "Loop R18 changed")
+    need([link(x)["evidence"] for x in lp["links"]] == ["documented", "plausible"], "Loop R18's grades changed")
+    codes = [c for c, _ in lp["chain"]]
+    need(codes == ["D2", "D4"], "Loop R18's variables changed")
+    le = link("LT16")
+    need((le["type"], le["from"], le["to"], le["polarity"], le["evidence"], le["loops"]) == ("authority", "D2", "TC5", None, "documented", []),
+         "connection LT16 changed")
+    need(node("TC5")["layer"] == "technology" and node("D2")["layer"] == "core", "the layers of D2 or TC5 changed")
+    body, h, (a, b) = two_loop(codes, lp["links"], inside=(lid, "reinforcing"), a_in=22, top=4)
+    # the technology layer under the core: a 1 px rule with each layer's name, broken where the authority line crosses it
     xa = a.left + 38
     run2 = a.bot + RISE
     fy = run2 + 52
-    ec = Pill(short("EC2"), 0, 0, 196)
-    ec.cx, ec.cy = 2 + 98, fy + 22 + ec.h / 2
-    pts = [(xa, a.bot + 2), (xa, ec.top - 2)]
+    tc = Pill(short("TC5"), 0, 0, 196)
+    tc.cx, tc.cy = 2 + tc.pw / 2, fy + 22 + tc.h / 2
+    pts = [(xa, a.bot + 2), (xa, tc.top - 2)]
     m, _ = conn(pts, "documented", None, le["delay"], authority=True)
     fr = (f'<path class="fr" d="M0 {F(fy)}H{F(xa - 7)}M{F(xa + 7)} {F(fy)}H{W}"/>'
-          + text(W, fy - 8, "Core layer", "fl", "end") + text(W, fy + 20, "Economy layer", "fl", "end"))
+          + text(W, fy - 8, "Core layer", "fl", "end") + text(W, fy + 20, "Technology layer", "fl", "end"))
     lab = text(xa + 10, run2 + 24, "decides", "v", "start")
     nums = (numeral(1, a.left + 6, a.top - 1) + numeral(2, W / 2 + 46, 15) + numeral(3, W / 2, a.cy)
             + numeral(4, xa - 20, a.bot + 30) + numeral(5, W / 2 - 4, fy) + numeral(6, W / 2 + 64, run2 + 20))
-    total = ec.bot + 4
-    svg = svg_wrap(body + f'<g class="wr">{m}</g>' + lab + fr + ec.svg() + nums, total)
+    need(W - tw("Technology layer") - 6 > W / 2 + 4 + 11, "the layer's name would touch numeral 5")
+    total = tc.bot + 4
+    svg = svg_wrap(body + f'<g class="wr">{m}</g>' + lab + fr + tc.svg() + nums, total)
     parts = [("A variable, by its short name", "15.2"), ("A sign tag and the word for which way", "15.3"),
              ("The loop’s number and kind", "15.6"), ("Authority, with no sign", "15.5"),
              ("A boundary between layers", "15.9"), ("A dashed line for a plausible step", "13.4")]
     lst = "".join(f"<li>{C13.mk(n)} {e(w)}, Rule {r}</li>" for n, (w, r) in enumerate(parts, 1))
-    steps = "".join(f'<p class="nt">{gl(x)}</p>' for x in ("L11", "L12", "LE02"))
+    steps = "".join(f'<p class="nt">{gl(x)}</p>' for x in (*lp["links"], "LT16"))
     body = (label_for(lp["links"], "the grade of the loop’s least certain step")
-            + f'<div class="fx two"><div>{hed("Loop", "R13", lp["title"])}{fig(svg)}{steps}</div>'
+            + f'<div class="fx two"><div>{hed("Loop", lid, lp["title"])}{fig(svg)}{steps}</div>'
             f'<div><p class="k">What each numbered part says</p><ol class="kw">{lst}</ol></div></div>'
-            + src("loop R13 and connections L11, L12 and LE02"))
+            + src("loop R18 and connections L14, L15 and LT16"))
     book.add("s-15-opener", body, rule=None, readable=True,
-             alt=(f"Loop R13 from our systems atlas, “{lp['title']}”, drawn as two pills, Congressional capacity and Executive "
-                  "unilateralism, with an arrow over the top marked minus, lowers, and one under the bottom marked minus, lowers, "
-                  "drawn dashed. The loop’s number and the word Reinforcing sit inside it. A line with an open diamond and the word "
-                  "decides runs from Congressional capacity down across a rule into the economy layer, to Public investment in "
-                  "research and infrastructure. Six numerals tie the parts to a list: a variable, Rule 15.2; a sign tag and its "
+             alt=(f"Loop R18 from our systems atlas, “{lp['title']}”, drawn as two pills, Executive unilateralism and Oversight "
+                  "and enforcement, with an arrow over the top marked minus, lowers, and one under the bottom marked minus, lowers, "
+                  "drawn dashed. The loop’s name and the word reinforcing sit inside it. A line with an open diamond and the word "
+                  "decides runs from Executive unilateralism down across a rule into the technology layer, to Government’s ability "
+                  "to build and run digital services. Six numerals tie the parts to a list: a variable, Rule 15.2; a sign tag and its "
                   "word, Rule 15.3; the loop’s number and kind, Rule 15.6; authority with no sign, Rule 15.5; a boundary between "
                   "layers, Rule 15.9; a dashed line for a plausible step, Rule 13.4."),
-             notes="Chapter 15's opener: one loop, one authority line and the core and economy layers, from the atlas's records "
+             notes="Chapter 15's opener: one loop, one authority line and the core and technology layers, from the atlas's records "
                    "read by script; lines by the atlas build's wire_marks with the 28 px lead-in.")
-    book.log("opener", "Loop R13, Congress and the president", "D04")
+    book.log("opener", "Loop R18 and connection LT16, the presidency and digital teams", "D05")
     return {"specimen": "s-15-opener",
-            "caption": "Loop R13 from our systems atlas, with the authority line that leaves it and the layer it reaches. "
+            "caption": "Loop R18 from our systems atlas, with the authority line that leaves it and the layer it reaches. "
                        "Each numeral marks one part of the grammar, and the list names the rule that sets it."}
 
 

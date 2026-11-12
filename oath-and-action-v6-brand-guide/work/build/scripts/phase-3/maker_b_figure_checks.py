@@ -31,5 +31,5 @@ if not got or got.group(0) != want:
 
 for f in faults:
     print("FAIL", f)
-print(f"maker_b_figure_checks: {1 - len(faults) and 1} check, {len(faults)} fault(s)" if False else f"maker_b_figure_checks: 1 check, {len(faults)} fault(s)")
+print(f"maker_b_figure_checks: 1 check, {len(faults)} fault(s)")
 sys.exit(1 if faults else 0)
