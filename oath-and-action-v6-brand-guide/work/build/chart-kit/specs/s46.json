@@ -10,7 +10,7 @@
   "evidence_label": "Finding",
   "grade_line": "Documented: the federal government’s National Health Expenditure Accounts",
   "title": "Private insurance, Medicare and Medicaid together paid 70 percent of the nation’s health care bill in 2024, up from 21 percent in 1960.",
-  "measure_line": "National health spending by who paid, as a share of each year’s total, United States, 1960 to 2024",
+  "measure_line": "National health spending by who paid, as a share of each year’s total, United States, 1960 to 2024, the whole series",
   "notes": [
     "Medicare and Medicaid began paying in 1966.",
     "“All other sources of funds” counts out-of-pocket spending, the Children’s Health Insurance Program, the Departments of Defense and Veterans Affairs, other third-party payers and programs, and public health activity and investment."
@@ -89,9 +89,11 @@
   "notes_internal": [
     "Maker A, round 2. Data plan row 47, rule 14.51. Domain D09. Derived file from the research lead (four groups).",
     "Data lead rulings (d) and (e): a Finding with Documented; private insurance, Medicare, Medicaid in cat-1 to cat-3 and all other sources hatched Stone; names inside the bands at the right end; no single named mark (a stack).",
-    "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): the three named payers 70.0 percent in 2024 and 20.8 in 1960; Medicare and Medicaid empty before 1966; 2024 shares 31, 21, 18 and 30; all other sources 79 in 1960."
+    "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): the three named payers 70.0 percent in 2024 and 20.8 in 1960; Medicare and Medicaid empty before 1966; 2024 shares 31, 21, 18 and 30; all other sources 79 in 1960.",
+    "Round 2 review fix pass, ST S6: the source line is the sidecar's release_named variant, which names the release with data through 2024 and says each release can revise earlier years; the measure line says 1960 to 2024 is the whole series."
   ],
   "chart_notes": [
     "Bands stack from the bottom: private insurance, Medicare, Medicaid, then all other sources, hatched. Each band is named at its right end with its 2024 share."
-  ]
+  ],
+  "source_line": "Source: Centers for Medicare & Medicaid Services, National Health Expenditure Accounts, release with data through 2024, spending by source of funds, 1960 to 2024, United States. Retrieved November 11, 2026. Shares of each year’s total; all other sources of funds, out of pocket the largest, folded into one group by Oath & Action. Each release can revise every earlier year."
 }

@@ -403,6 +403,14 @@ def figures():
         v = [num(r['child_poverty_pct']) for r in raw if r['year'] == y and num(r['child_poverty_pct']) is not None]
         same('S52', '%.1f' % statistics.median(v), m, 'median ' + y)
     want('S52', t, 'fell from 18.7 percent in 2019 to 17.1 percent in 2024', 'title')
+    for y in ('2019', '2024'):
+        v = [num(r['child_poverty_pct']) for r in raw if r['year'] == y and num(r['child_poverty_pct']) is not None]
+        same('S52', sp['labels']['medians'][y], round(statistics.median(v), 1), 'median tick ' + y)
+    b52a = read('census-saipe-county-child-poverty-bins')
+    far = {y: [(b['bin_start'], b['bin_end']) for b in b52a if b['year'] == y and int(b['bin_start']) >= 56 and int(b['counties'])] for y in ('2019', '2024')}
+    same('S52', far, {'2019': [('62', '64')], '2024': [('72', '74')]}, 'the counties past 56 percent')
+    same('S52', [int(b['counties']) for b in b52a if (b['year'], b['bin_start']) in (('2019', '62'), ('2024', '72'))], [1, 1], 'one county each')
+    want('S52', t, 'at 62 to 64 percent in 2019 and 72 to 74 percent in 2024', 'chart note tail')
     b52 = read('census-saipe-county-child-poverty-bins')
     for y, n in (('2019', 3141), ('2024', 3143)):
         same('S52', sum(int(b['counties']) for b in b52 if b['year'] == y), n, 'counties ' + y)

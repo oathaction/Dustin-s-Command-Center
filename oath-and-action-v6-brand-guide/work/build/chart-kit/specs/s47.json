@@ -29,7 +29,8 @@
   "measure_line": "Net federal outlays by budget function, billions of dollars, nominal, fiscal year 2026 (October 1, 2025 to September 30, 2026), United States; each tile’s share is of the functions with positive outlays, $7,566.3 billion",
   "notes": [
     "Eleven functions under 6 percent each fold into one tile, $1,089.8 billion in all; the table lists each.",
-    "Shares are of the 17 functions with positive outlays, $7,566.3 billion; net outlays came to $7,395.8 billion after two negative lines."
+    "Shares are of the 17 functions with positive outlays, $7,566.3 billion; net outlays came to $7,395.8 billion after two negative lines.",
+    "Fiscal 2026 figures come from the September 2026 statement and may change in the Treasury’s year-end report."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -54,7 +55,7 @@
   "artboard": "reading",
   "domain": "D08",
   "states": [],
-  "source_line": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, outlays by function, fiscal 2026, United States. Retrieved November 11, 2026. Tiles show the functions with positive net outlays, $7,566.3 billion against total net outlays of $7,395.8 billion; offsetting receipts and Commerce and Housing Credit, both negative, are left out.",
+  "source_line": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, September 2026, Table 9, outlays by function, fiscal 2026, United States. Retrieved November 11, 2026. Tiles show the functions with positive net outlays, $7,566.3 billion against total net outlays of $7,395.8 billion; offsetting receipts and Commerce and Housing Credit, both negative, are left out.",
   "encode": {
     "category": "function",
     "value": "outlays_dollars"
@@ -78,7 +79,8 @@
     "Maker A, round 2. Data plan row 48, rule 14.52. Domain D08. Source line: the sidecar's treemap_fy2026 variant.",
     "Data lead rulings (a) and (e): Social Security takes the red point with its keyline (labels.point), every other tile the light fill; words on red in Charcoal (the text ink on Newsprint, the ground's dark on Charcoal).",
     "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): 17 positive functions summing to 7,566.3 billion; Social Security the largest, 1,667.1, 22 percent of them; 11 functions under 6 percent folding to 1,089.8 billion.",
-    "fold_below 6 so every tile holds its words from 256 px up; at 5 percent Veterans' benefits and services (5.5) could not at 296 and 256 px."
+    "fold_below 6 so every tile holds its words from 256 px up; at 5 percent Veterans' benefits and services (5.5) could not at 296 and 256 px.",
+    "Round 2 review fix pass, ST S6: the source line is the sidecar's treemap_fy2026_september_statement variant, naming the September 2026 statement, and the last note is S44's on the year-end report."
   ],
   "chart_notes": [
     "Every tile is light gray except Social Security, which the title names, in red. The last tile holds the 11 functions under 6 percent."

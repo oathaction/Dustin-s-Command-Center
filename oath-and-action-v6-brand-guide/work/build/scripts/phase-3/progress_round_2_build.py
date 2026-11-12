@@ -563,7 +563,8 @@ def carried(G, P, ch14, shots):
     ws = list(res)
     wide_w = wides[0][3] if wides else 0
     out.append((S['wide_h'], fill(S['wide'], {'k': 'all ' + nw(len(wides)) if ok else ' and '.join(f'{v[0]} of {v[1]}' for v in res.values()),
-                                              'w1': ws[0] if ws else '', 'w2': ws[-1] if ws else '', 'px': wide_w}) if wides else S['not_found'], ok))
+                                              'w1': ws[0] if ws else '', 'w2': ws[-1] if ws else '', 'px': wide_w})
+                               if wides and all(v[1] for v in res.values()) else S['not_found'], ok))
     for lab, words, done in out:
         if not done:
             warn(f'round 1’s carried item “{lab}” is not shown done in its files')

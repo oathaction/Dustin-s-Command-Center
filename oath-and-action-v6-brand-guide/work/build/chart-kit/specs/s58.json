@@ -14,7 +14,7 @@
   "reading_guide": "The line breaks in 2013, where new income questions put the year’s two estimates $2,200 apart. A new processing system in 2017 put them $300 apart, close enough that the two dots overlap; the table prints both.",
   "notes": [
     "The 2025 figure carries a margin of error of plus or minus $1,040 at 90 percent confidence; its lead over 2019’s $85,320, the next highest year, and its rise over 2024’s $85,210 both pass the margin of the gap.",
-    "The figures count income before taxes, from the Current Population Survey’s Annual Social and Economic Supplement. The Bureau adjusts each year to 2025 dollars with the chained consumer price index for all urban consumers from 2000 on, and with the retroactive series of the consumer price index for all urban consumers for the years before 2000."
+    "The figures count income before taxes, from the Current Population Survey’s Annual Social and Economic Supplement. The Bureau adjusts each year to 2025 dollars with two price indexes for urban consumers: the chained consumer price index from 2000 on, and the retroactive series of the consumer price index before 2000."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,

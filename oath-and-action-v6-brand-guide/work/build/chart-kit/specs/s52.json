@@ -41,7 +41,7 @@
     ]
   },
   "chart_notes": [
-    "The dark outline is 2024 and the gray outline 2019, each named at its peak. Each step is two percentage points wide."
+    "The dark outline is 2024 and the gray outline 2019, each named at its peak with its median. A short tick under the baseline marks each median in its outline’s ink. Each step is two percentage points wide. The outlines reach past 56 percent for one county in each year, at 62 to 64 percent in 2019 and 72 to 74 percent in 2024."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -61,17 +61,24 @@
       "2024": "2024"
     },
     "x_axis": "Share of people under 18 in poverty, percent",
-    "y_axis": "Counties"
+    "y_axis": "Counties",
+    "medians": {
+      "2019": 18.7,
+      "2024": 17.1
+    },
+    "median_words": "median {median}%"
   },
   "formats": {
     "value": "integer",
     "edge": "integer",
-    "tick": "integer"
+    "tick": "integer",
+    "median": "number:1"
   },
   "notes_internal": [
     "Maker B, round 2. Data plan row 57, rule 14.61. R2-2: drawn from the derived summary census-saipe-county-child-poverty-bins (maker_b_round2_derive.py, from P7-028), two-point bins 0 to 74 for both years by the data lead’s ruling (g).",
     "Ruling (a): no single named mark; 2024 in the subject ink at the subject weight and 2019 in the context ink at the field weight, each named at its peak (ruling (e)). Ruling (d): Estimate, grade line and Method note. Request B5: the window’s reason in the measure line and Kalawao County in the note.",
     "Figures checked by maker_b_round2_derive.py --figures (check S52): medians 18.7 (2019) and 17.1 (2024); 3,141 and 3,143 counties; modal bins 18 to 20 (322) and 14 to 16 (347); Connecticut 8 counties in 2019 and 9 planning regions in 2024; Valdez-Cordova split into Chugach and Copper River; Kalawao County missing in both years.",
-    "H09: 2019 and 2024 are calendar years, five apart; neither period is split at an inauguration. Read from the left and the right: the title reports the Bureau’s estimate of the median county and credits no policy."
+    "H09: 2019 and 2024 are calendar years, five apart; neither period is split at an inauguration. Read from the left and the right: the title reports the Bureau’s estimate of the median county and credits no policy.",
+    "Review fix pass (CD B-S2, BC S17): each outline’s median prints under its name at the peak and as a 2 px tick under the baseline in its ink (labels.medians, labels.median_words), checked by maker_b_round2_derive.py --figures against the county file. The axis keeps 0 to 74: one county in each year sits past 56 percent (62 to 64 in 2019, 72 to 74 in 2024), so ending the range at 56 would drop or fold a county the table counts; the chart note names both."
   ]
 }

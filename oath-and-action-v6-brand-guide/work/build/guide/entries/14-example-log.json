@@ -463,7 +463,7 @@
    "source": "s52.json"
   },
   {
-   "example": "The Census Bureau estimated 41.2 million people aged 55 to 64 on July 1, 2025, the ten years of age before 65.",
+   "example": "The Census Bureau estimated 41.2 million people aged 55 to 64 on July 1, 2025, the ten years before most people qualify for Medicare at 65.",
    "domain": "D08",
    "states": [],
    "rule": "14.62",

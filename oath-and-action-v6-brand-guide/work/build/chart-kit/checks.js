@@ -392,79 +392,45 @@ function interval_faults(spec, d, def, at) {
   if (mr + 1e-6 < mn) return [`interval: at this width the middle row's interval spans ${mr.toFixed(1)} px, under the ${mn.toFixed(1)} px its estimate's mark needs (twice the mark, and 2 px past it each side), so the intervals cannot be seen; give the plot more width, or stack the rows (D3-899)${at}`];
   return [];
 }
-// AX S2 and BC S1 (round 2 fix pass): no line, path or outline crosses a word unless the word carries the ground's halo
-// and was drawn after it, so the halo knocks the line out under its letters; and no dot or bar sits half under a word.
-// A word is read by its box less 1.5 px a side, as the guard reads a leader through a label. Leaders are the guard's own;
-// a stroke drawn through words on purpose (a step struck out) says so with strike: true; a filled shape drawn after a line
-// that covers the word (a dot over its connector, a knockout) hides the line there.
+// AX S2 and BC S1 (round 2 fix pass): no line, path or outline runs through a word. The kit gives a word on the ground the
+// ground's halo where a quiet line drawn before it crosses it (a gridline, an axis, a total line: K.QUIET_STROKES); what
+// is left fails here: a data line or outline drawn before a word with no halo, any stroke drawn after a word, and a dot
+// or bar half under a word. A word is read by its box less 1.5 px a side, as the guard reads a leader through a label.
+// Leaders are the guard's own; a stroke drawn through words on purpose (a step struck out) says strike: true; a filled
+// shape drawn after a line that covers the word (a dot over its connector, a knockout) hides the line there.
 const CROSS_SKIP = ['surface', 'none', 'leader'];
 const FILL_SKIP = ['surface', 'none', 'band', 'track', 'land', 'mag-1', 'mag-2', 'light-fill', 'seq-1', 'div-3'];
-function seg_box(ax, ay, bx, by, x0, y0, x1, y1) {
-  let t0 = 0, t1 = 1;
-  const dx = bx - ax, dy = by - ay, p = [-dx, dx, -dy, dy], q = [ax - x0, x1 - ax, ay - y0, y1 - ay];
-  for (let i = 0; i < 4; i++) {
-    if (p[i] === 0) { if (q[i] < 0) return false; continue; }
-    const r = q[i] / p[i];
-    if (p[i] < 0) { if (r > t1) return false; if (r > t0) t0 = r; } else { if (r < t0) return false; if (r < t1) t1 = r; }
-  }
-  return t0 <= t1;
-}
-function outline_segs(b) {
-  if (b.seg) return [b.seg];
-  if (b.subs) {
-    const out = [];
-    b.subs.forEach(pts => { for (let i = 0; i + 1 < pts.length; i++) out.push([pts[i][0], pts[i][1], pts[i + 1][0], pts[i + 1][1]]); if (b.kind === 'polygon' || (pts.length > 2 && b.closed)) out.push([pts[pts.length - 1][0], pts[pts.length - 1][1], pts[0][0], pts[0][1]]); });
-    return out;
-  }
-  if (b.kind === 'rect') return [[b.x, b.y, b.x + b.w, b.y], [b.x + b.w, b.y, b.x + b.w, b.y + b.h], [b.x + b.w, b.y + b.h, b.x, b.y + b.h], [b.x, b.y + b.h, b.x, b.y]];
-  return null;
-}
-// a filled shape that covers the whole of a box (a dot or a tile drawn over a line, under its words)
-function covers(s, x0, y0, x1, y1) {
-  if (s.ring) { const [cx, cy, r] = s.ring; return [[x0, y0], [x1, y0], [x0, y1], [x1, y1]].every(p => Math.hypot(p[0] - cx, p[1] - cy) <= r); }
-  if (s.poly) return [[x0, y0], [x1, y0], [x0, y1], [x1, y1]].every(p => in_subs(s.poly, p[0], p[1]));
-  return s.x <= x0 && s.y <= y0 && s.x + s.w >= x1 && s.y + s.h >= y1;
-}
-function in_subs(subs, px, py) {
-  let inside = false;
-  for (const pts of subs || []) for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) {
-    const a = pts[i], b = pts[j];
-    if ((a[1] > py) !== (b[1] > py) && px < (b[0] - a[0]) * (py - a[1]) / (b[1] - a[1]) + a[0]) inside = !inside;
-  }
-  return inside;
-}
 function crossing_faults(d, at) {
-  const f = [], seen = new Set();
-  const solids = (d.ink || []).filter(s => s.fill && s.fill !== 'none' && s.a > 0);
+  const K = globalThis.OAChart, f = [], seen = new Set();
+  if (!K || !K.stroke_crosses) return f;
+  const ink = d.ink || [];
   for (const t of d.texts || []) {
+    if (t.w <= 3 || t.h <= 3) continue;
     const x0 = t.x + 1.5, x1 = t.x + t.w - 1.5, y0 = t.y + 1.5, y1 = t.y + t.h - 1.5;
-    if (x1 <= x0 || y1 <= y0) continue;
     const cx = t.x + t.w / 2, cy = t.y + t.h / 2;
-    for (const b of d.ink || []) {
+    // a stroke across the word: drawn after it (over its letters, halo or not), or before it on a word with no halo
+    for (const b of K.crossed_by(ink, t, b => CROSS_SKIP.indexOf(b.stroke) < 0 && (b.seq > t.seq || !t.halo))) {
+      const k = 's|' + t.words + '|' + b.stroke + '|' + (b.seq > t.seq);
+      if (seen.has(k)) continue;
+      seen.add(k);
+      f.push(`layout: a ${b.dash ? 'dashed ' : ''}${b.kind} in ${b.stroke} runs through "${String(t.words).slice(0, 30)}"${b.seq > t.seq ? ', drawn after the words' : ''}; draw the words after it with K.parts.clear_label, move them clear, or mark a stroke drawn through words on purpose strike: true (AX S2, BC S1)${at}`);
+    }
+    // a dot or bar half under the word: its fill reaches into the word's box but does not hold the word's middle
+    for (const b of ink) {
+      if (!(b.fill && FILL_SKIP.indexOf(b.fill) < 0 && b.a > 0 && !b.plate && b.seq < t.seq)) continue;
       if (b.x > x1 || b.x + b.w < x0 || b.y > y1 || b.y + b.h < y0) continue;
-      // a stroke across the word, unless the word's halo knocks it out or a shape drawn after it covers the word
-      if (b.stroke && !b.strike && CROSS_SKIP.indexOf(b.stroke) < 0 && !(t.halo && b.seq < t.seq) && !solids.some(s => s.seq > b.seq && s.seq < t.seq && covers(s, x0, y0, x1, y1))) {
-        let hit = false;
-        if (b.ring) {
-          const [ccx, ccy, r] = b.ring, nx = Math.max(x0, Math.min(ccx, x1)), ny = Math.max(y0, Math.min(ccy, y1));
-          const near = Math.hypot(nx - ccx, ny - ccy), far = Math.max(Math.hypot(x0 - ccx, y0 - ccy), Math.hypot(x1 - ccx, y0 - ccy), Math.hypot(x0 - ccx, y1 - ccy), Math.hypot(x1 - ccx, y1 - ccy));
-          hit = near < r && r < far;
-        } else {
-          const segs = outline_segs(b);
-          hit = segs ? segs.some(s => seg_box(s[0], s[1], s[2], s[3], x0, y0, x1, y1)) : false;
-        }
-        if (hit) { const k = 's|' + t.words + '|' + b.stroke; if (!seen.has(k)) { seen.add(k); f.push(`layout: a ${b.dash ? 'dashed ' : ''}${b.kind} in ${b.stroke} crosses "${String(t.words).slice(0, 30)}"${t.halo && b.seq > t.seq ? ', drawn over its halo' : ''}; set the words on the ground's halo after the line (K.parts.clear_label), or move them clear (AX S2, BC S1)${at}`); } }
-      }
-      // a dot or bar half under the word: its fill reaches into the word's box but does not hold the word's middle
-      if (b.fill && FILL_SKIP.indexOf(b.fill) < 0 && b.a > 0 && !b.plate && b.seq < t.seq) {
-        const inside = b.ring ? Math.hypot(cx - b.ring[0], cy - b.ring[1]) < b.ring[2] : b.poly ? null : (cx > b.x && cx < b.x + b.w && cy > b.y && cy < b.y + b.h);
-        if (inside === false) {
-          let hit;
-          if (b.ring) { const [ccx, ccy, r] = b.ring, nx = Math.max(x0, Math.min(ccx, x1)), ny = Math.max(y0, Math.min(ccy, y1)); hit = Math.hypot(nx - ccx, ny - ccy) < r - 0.5; }
-          else hit = b.x < x1 - 0.5 && b.x + b.w > x0 + 0.5 && b.y < y1 - 0.5 && b.y + b.h > y0 + 0.5;
-          if (hit) { const k = 'f|' + t.words + '|' + b.fill; if (!seen.has(k)) { seen.add(k); f.push(`layout: a ${b.kind} in ${b.fill} sits half under "${String(t.words).slice(0, 30)}"; set the words clear of the mark or wholly on it (AX S2)${at}`); } }
-        }
-      }
+      const inside = b.ring ? Math.hypot(cx - b.ring[0], cy - b.ring[1]) < b.ring[2] : b.poly ? null : (cx > b.x && cx < b.x + b.w && cy > b.y && cy < b.y + b.h);
+      if (inside !== false) continue;
+      let hit;
+      if (b.ring) { const [rx, ry, r] = b.ring, nx = Math.max(x0, Math.min(rx, x1)), ny = Math.max(y0, Math.min(ry, y1)); hit = Math.hypot(nx - rx, ny - ry) < r - 0.5; }
+      else hit = b.x < x1 - 0.5 && b.x + b.w > x0 + 0.5 && b.y < y1 - 0.5 && b.y + b.h > y0 + 0.5;
+      // a shape drawn after it that covers the word (a knockout) hides it
+      if (hit && ink.some(s => s.fill && s.fill !== 'none' && s.a > 0 && s.seq > b.seq && s.seq < t.seq && K.covers(s, t))) hit = false;
+      if (!hit) continue;
+      const k = 'f|' + t.words + '|' + b.fill;
+      if (seen.has(k)) continue;
+      seen.add(k);
+      f.push(`layout: a ${b.kind} in ${b.fill} sits half under "${String(t.words).slice(0, 30)}"; set the words clear of the mark, wholly on it, or on a knockout (K.parts.clear_label) (AX S2)${at}`);
     }
   }
   return f;

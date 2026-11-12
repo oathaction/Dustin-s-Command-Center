@@ -61,7 +61,7 @@
   "artboard": "reading",
   "domain": "D09",
   "states": [],
-  "source_line_template": "span",
+  "source_line_template": "span_september_2026_release",
   "encode": {
     "x": "year",
     "parts": [
@@ -102,6 +102,7 @@
     "Data lead ruling (e): one unit (cat-1), two to four (cat-2), five or more (cat-3) from the baseline, a 1 px gap of the ground between parts, each named at the last column; a stack has no single named mark (principle 3).",
     "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): five or more units' share largest in 2024 of 2000 to 2025, 36.4 percent; 2024's 1,626.9 thousand total and parts 1,018.6, 16.6 and 591.7; 26 columns.",
     "encode.total prints the published total, since the parts' sum differs by rounding (2006: 1,979.5 against 1,979.4). Source line from the sidecar's span template, 2000 to 2025.",
-    "Second run, data lead MA-1 and MA-2: the printed totals take the axis's unit, thousands of homes (1,979.4, 584.9 and 1,626.9); a note gives the longer record, the share higher in 1969, 1970, 1973 and 1974, last in 1974 at 40.1 percent, by script; the 2000 window stays (S20's case)."
+    "Second run, data lead MA-1 and MA-2: the printed totals take the axis's unit, thousands of homes (1,979.4, 584.9 and 1,626.9); a note gives the longer record, the share higher in 1969, 1970, 1973 and 1974, last in 1974 at 40.1 percent, by script; the 2000 window stays (S20's case).",
+    "Round 2 review fix pass, ST S6: the source line names the release, through the sidecar's span_september_2026_release template (the research lead's variant)."
   ]
 }

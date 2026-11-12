@@ -5,7 +5,7 @@
  "part": "Evidence and media",
  "instruction": "Start from the reader’s question to choose a chart, then title it with the evidence it shows.",
  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026",
- "plate_css": ":scope{color:var(--oa-color-text-primary)}.p{box-sizing:border-box;padding:16px;font:var(--oa-type-body);max-width:100%}.p *{box-sizing:border-box}:where(.p) :where(p){margin:0}@media (min-width:48em){.p{padding:24px}}.dnp{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 10px;background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform)}.ct{font:var(--oa-font-weight-extrabold) var(--oa-chart-type-title-phone-size)/var(--oa-chart-type-title-phone-leading) var(--oa-font-family-display);letter-spacing:-0.01em;margin:0 0 6px;max-width:34em;text-wrap:balance}@media (min-width:48em){.ct{font-size:var(--oa-chart-type-title-size);line-height:var(--oa-chart-type-title-leading)}}.art{margin-top:20px}.hb{list-style:none;margin:0;padding:0;display:grid;gap:6px;font:var(--oa-type-body-small)}.hb li{display:grid;grid-template-columns:minmax(0,9.5rem) minmax(0,1fr) 4.8rem;align-items:center;gap:10px}.hb i{display:block;height:var(--oa-chart-bar-phone-height);background:var(--oa-chart-color-context);border-left:var(--oa-chart-line-baseline) solid var(--oa-chart-color-baseline)}.hb.lt i{background:var(--oa-chart-color-light-fill)}.hb .s i{background:var(--oa-chart-color-subject)}.hb .pt i{background:var(--oa-chart-color-point);box-shadow:inset 0 0 0 1px var(--oa-chart-color-point-keyline)}.hb b{font-weight:inherit;text-align:right;font-variant-numeric:tabular-nums}.hb .s,.hb .pt{font-weight:var(--oa-font-weight-bold)}@media (max-width:30em){.hb li{grid-template-columns:minmax(0,1fr) auto;row-gap:2px}.hb li>span{grid-column:1/-1}}.ky{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px;font:var(--oa-type-caption)}.ky span{display:inline-flex;align-items:center;gap:6px}.cq{container-type:inline-size}.fl{display:grid;grid-template-columns:var(--yw) minmax(0,1fr);max-width:var(--oa-chart-artboard-reading);padding-right:12px}.fy,.fp{position:relative}.fp{height:var(--oa-chart-columns-phone-height)}.fx .w{display:none}@container (min-width:480px){.fp{height:var(--oa-chart-columns-height)}.fx .w{display:block}.fx .n{display:none}}.fp>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.fp>svg *{vector-effect:non-scaling-stroke}.fx{grid-column:2;position:relative;height:26px}.tk{position:absolute;font:var(--oa-font-weight-regular) var(--oa-chart-type-tick)/1 var(--oa-font-family-reading);color:var(--oa-color-text-secondary);white-space:nowrap}.fy .tk{right:8px;transform:translateY(-50%)}.fx .tk{top:8px;transform:translateX(-50%)}.fx .s{transform:none}.fx .e,.fp .e{transform:translateX(-100%)}.lb{position:absolute;font:var(--oa-font-weight-semibold) var(--oa-chart-type-label)/1.2 var(--oa-font-family-reading);color:var(--oa-chart-color-label);white-space:nowrap}.fl+.ky{margin:16px 0 0}.ax{stroke:var(--oa-chart-color-baseline);stroke-width:var(--oa-chart-line-baseline)}.gl{stroke:var(--oa-chart-color-gridline);stroke-width:1}.ln{fill:none;stroke:var(--oa-chart-color-subject);stroke-width:var(--oa-chart-line-subject);stroke-linejoin:round}.pt{fill:var(--oa-chart-color-point);stroke:var(--oa-chart-color-point-keyline);stroke-width:1}.g1{stroke:var(--oa-chart-color-categorical-fill-group1)}.g2{stroke:var(--oa-chart-color-categorical-fill-group2)}.g3{stroke:var(--oa-chart-color-categorical-fill-group3)}.g4{stroke:var(--oa-chart-color-categorical-fill-group4)}.g5{stroke:var(--oa-chart-color-sequential-fill-step3)}.kl{stroke-width:3}.hb.yr li{grid-template-columns:3.2rem minmax(0,1fr) 4.8rem}.hb.yr li>span{grid-column:auto}.files{list-style:none;margin:0;padding:0;font:var(--oa-type-body-small)}.files li{display:grid;grid-template-columns:minmax(0,1fr);gap:2px;padding:10px 0;border-bottom:1px solid var(--oa-color-border-hairline)}@media (min-width:48em){.files li{grid-template-columns:minmax(0,1fr) 6.8rem minmax(0,16rem);gap:16px;align-items:baseline}}.files .fn{font-weight:var(--oa-font-weight-semibold);overflow-wrap:anywhere}.files .ty{font-weight:var(--oa-font-weight-semibold)}.files .what{font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}.k{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);color:var(--oa-color-text-secondary)}",
+ "plate_css": ":scope{color:var(--oa-color-text-primary)}.p{box-sizing:border-box;padding:16px;font:var(--oa-type-body);max-width:100%}.p *{box-sizing:border-box}:where(.p) :where(p){margin:0}@media (min-width:48em){.p{padding:24px}}.dnp{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 10px;background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform)}.ct{font:var(--oa-font-weight-extrabold) var(--oa-chart-type-title-phone-size)/var(--oa-chart-type-title-phone-leading) var(--oa-font-family-display);letter-spacing:-0.01em;margin:0 0 6px;max-width:34em;text-wrap:balance}@media (min-width:48em){.ct{font-size:var(--oa-chart-type-title-size);line-height:var(--oa-chart-type-title-leading)}}.art{margin-top:20px}.hb{list-style:none;margin:0;padding:0;display:grid;gap:6px;font:var(--oa-type-body-small)}.hb li{display:grid;grid-template-columns:minmax(0,9.5rem) minmax(0,1fr) 4.8rem;align-items:center;gap:10px}.hb i{display:block;height:var(--oa-chart-bar-phone-height);background:var(--oa-chart-color-context);border-left:var(--oa-chart-line-baseline) solid var(--oa-chart-color-baseline)}.hb.lt i{background:var(--oa-chart-color-light-fill)}.hb .s i{background:var(--oa-chart-color-subject)}.hb .pt i{background:var(--oa-chart-color-point);box-shadow:inset 0 0 0 1px var(--oa-chart-color-point-keyline)}.hb b{font-weight:inherit;text-align:right;font-variant-numeric:tabular-nums}.hb .s,.hb .pt{font-weight:var(--oa-font-weight-bold)}@media (max-width:30em){.hb li{grid-template-columns:minmax(0,1fr) auto;row-gap:2px}.hb li>span{grid-column:1/-1}}.ky{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px;font:var(--oa-type-caption)}.ky span{display:inline-flex;align-items:center;gap:6px}.cq{container-type:inline-size}.fl{display:grid;grid-template-columns:var(--yw) minmax(0,1fr);max-width:var(--oa-chart-artboard-reading);padding-right:12px}.fy,.fp{position:relative}.fp{height:var(--oa-chart-columns-phone-height)}.fx .w{display:none}@container (min-width:480px){.fp{height:var(--oa-chart-columns-height)}.fx .w{display:block}.fx .n{display:none}}.fp>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.fp>svg *{vector-effect:non-scaling-stroke}.fx{grid-column:2;position:relative;height:26px}.tk{position:absolute;font:var(--oa-font-weight-regular) var(--oa-chart-type-tick)/1 var(--oa-font-family-reading);color:var(--oa-color-text-secondary);white-space:nowrap}.fy .tk{right:8px;transform:translateY(-50%)}.fx .tk{top:8px;transform:translateX(-50%)}.fx .s{transform:none}.fx .e,.fp .e{transform:translateX(-100%)}.lb{position:absolute;font:var(--oa-font-weight-semibold) var(--oa-chart-type-label)/1.2 var(--oa-font-family-reading);color:var(--oa-chart-color-label);white-space:nowrap}.fl+.ky{margin:16px 0 0}.ax{stroke:var(--oa-chart-color-baseline);stroke-width:var(--oa-chart-line-baseline)}.gl{stroke:var(--oa-chart-color-gridline);stroke-width:1}.ln{fill:none;stroke:var(--oa-chart-color-subject);stroke-width:var(--oa-chart-line-subject);stroke-linejoin:round}.fs{fill:var(--oa-chart-color-subject)}.pt{fill:var(--oa-chart-color-point);stroke:var(--oa-chart-color-point-keyline);stroke-width:1}.g1{stroke:var(--oa-chart-color-categorical-fill-group1)}.g2{stroke:var(--oa-chart-color-categorical-fill-group2)}.g3{stroke:var(--oa-chart-color-categorical-fill-group3)}.g4{stroke:var(--oa-chart-color-categorical-fill-group4)}.g5{stroke:var(--oa-chart-color-sequential-fill-step3)}.kl{stroke-width:3}.hb.yr li{grid-template-columns:3.2rem minmax(0,1fr) 4.8rem}.hb.yr li>span{grid-column:auto}.files{list-style:none;margin:0;padding:0;font:var(--oa-type-body-small)}.files li{display:grid;grid-template-columns:minmax(0,1fr);gap:2px;padding:10px 0;border-bottom:1px solid var(--oa-color-border-hairline)}@media (min-width:48em){.files li{grid-template-columns:minmax(0,1fr) 6.8rem minmax(0,16rem);gap:16px;align-items:baseline}}.files .fn{font-weight:var(--oa-font-weight-semibold);overflow-wrap:anywhere}.files .ty{font-weight:var(--oa-font-weight-semibold)}.files .what{font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}.k{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);color:var(--oa-color-text-secondary)}",
  "opener": {
   "specimen": "s-14-opener",
   "caption": "Each group of this chapter opens with the question a reader brings, and its forms answer it."
@@ -69,7 +69,7 @@
    "before_rule": "14.74",
    "title": "Uncertainty and estimates: how sure is it?",
    "rules": "14.74 to 14.78",
-   "line": "A range, a band or a fan shows how sure a figure is, as its publisher states it, whether a survey’s margin of error around a finding or a range around an estimate, set by a model or by the errors of past forecasts (Rule 13.1)."
+   "line": "A range, a band or a fan shows how sure a figure is, as its publisher states it, and an estimate’s note gives the method behind its range (Rule 13.1)."
   },
   {
    "number": 10,
@@ -350,7 +350,9 @@
    "title": "Spend the view’s one red on the point the title names.",
    "rule": [
     "Rule 05.3 gives each view one working red and says which job claims it first. In a chart, the red goes to the one point, bar or line the title names, inside the 1 px Charcoal keyline of Rule 05.5, and that mark carries its own label. Marks the title names together, such as the bars of one age band, share the red. Every other mark takes the light fill on Newsprint and the context ink on Charcoal (Rule 05.7).",
-    "The named mark gives up the red and takes Charcoal at the subject weight, with its label, in two cases: when an error or a step the reader can take already holds the view’s red, and when a reader would tie the mark to a party. A state, a Congress or chamber whose majority readers know, an election result, money spent to elect a candidate and a policy readers link to one party all carry that tie, and red on them reads as a party’s color (Rules 01.1, 01.2 and 14.7). A title that names two marks in two roles, such as the most and the least, sets both in Charcoal the same way, since two reds would split the reader’s first look. Red never codes a series, a group, a step on a scale or a sign, such as a deficit or a loss."
+    "A line or a single bar is one mark, and a run of columns is a set of marks, so a title can name one column of a run and give it the red, as on Rule 14.12’s plate. A chart that draws only one line, bar or path has no other mark to set it apart from, so the mark takes Charcoal at the subject weight and the value the title names carries a label. When the title names a second mark only to measure the first against, as “more than twice Zion’s” does on this rule’s plate, that mark is a comparison. It keeps the light fill with its label, and the red stays on the finding.",
+    "The named mark gives up the red and takes Charcoal at the subject weight, with its label, in two cases: when an error or a step the reader can take already holds the view’s red, and when a reader would tie the mark to a party. A state, a Congress or chamber whose majority readers know, an election result, money spent to elect a candidate and a policy readers link to one party all carry that tie, and red on them reads as a party’s color (Rules 01.1, 01.2 and 14.7).",
+    "A title that states two findings, each on its own, such as the most and the least, sets both marks in Charcoal the same way, since two reds would split the reader’s first look. Rule 05.1 keeps the red within 5 percent of the drawing at every width, so a named mark that would pass that share, such as a part of a treemap, pie or donut, or a tall column in a short run, takes Charcoal at the subject weight as well. Red never codes a series, a group, a step on a scale or a sign, such as a deficit or a loss."
    ],
    "why": {
     "text": [
@@ -365,7 +367,7 @@
     "01",
     "05"
    ],
-   "builders": "Name the one point in the spec’s labels.point, which draws it in red with its keyline and every other mark in the light fill; where the subject ink takes its place, labels.named does it instead, with a list for two marks. The kit counts working reds and fails a view whose red falls on two jobs.",
+   "builders": "Name the one point in the spec’s labels.point, which draws it in red with its keyline and every other mark in the light fill; where the subject ink takes its place, labels.named does it instead, with a list for two marks. The kit counts working reds and fails a view whose red falls on two jobs or covers more than 5 percent of the drawing at any width it checks.",
    "specs": [
     {
      "label": "The point",
@@ -377,13 +379,28 @@
      "value": "Beside the mark, in the text ink"
     },
     {
+     "label": "A chart of one mark",
+     "value": "One line, bar or path in Charcoal at the subject weight, the title’s value labeled",
+     "token": "oa.chart.color.subject.onNewsprint"
+    },
+    {
+     "label": "A comparison",
+     "value": "The light fill, with its label",
+     "token": "oa.chart.color.lightFill.onNewsprint"
+    },
+    {
      "label": "An error, a step, a sign or a party tie",
      "value": "Charcoal at the subject weight, with the label",
      "token": "oa.chart.color.subject.onNewsprint"
     },
     {
-     "label": "Two marks in two roles",
+     "label": "Two findings",
      "value": "Both in Charcoal at the subject weight, each with its label"
+    },
+    {
+     "label": "Past 5 percent of the drawing",
+     "value": "Charcoal at the subject weight, with the label (Rule 05.1)",
+     "token": "oa.chart.color.subject.onNewsprint"
     },
     {
      "label": "A total or national line",
@@ -396,16 +413,18 @@
     }
    ],
    "related_rules": [
+    "05.1",
     "05.3",
     "05.5",
     "05.7",
     "01.1",
     "01.2",
-    "14.7"
+    "14.7",
+    "14.12"
    ],
    "correct": {
     "specimen": "s-14-6-correct",
-    "caption": "The title names Great Smoky Mountains, and its bar alone takes the view’s red, inside its keyline, with every other park in gray."
+    "caption": "The title names Great Smoky Mountains, and its bar alone takes the view’s red, inside its keyline. Zion, which the title names only to compare, stays gray with its value like every other park."
    },
    "failure": {
     "specimen": "s-14-6-failure",
@@ -538,8 +557,12 @@
      "token": "oa.chart.color.context.onNewsprint"
     },
     {
-     "label": "A gap’s margin",
-     "value": "For two independent survey figures, the square root of the sum of their squared margins"
+     "label": "A gap’s margin, two separate places",
+     "value": "The square root of the sum of their squared margins"
+    },
+    {
+     "label": "A gap’s margin, a place inside an area",
+     "value": "The square root of the sum of the two squared margins less twice the place’s squared margin times its share of the people the area counts; where the data hold no share, the first test, and the note says it treats the two as independent"
     },
     {
      "label": "Within the margin",
@@ -2608,7 +2631,7 @@
    "id": "14.60",
    "title": "Use a box plot to compare the spread of a few groups.",
    "rule": [
-    "Draw one row a group, its name and count of units flush left: a box from the first to the third quartile, a 2 px line at the median, whiskers to the last unit within one and a half times the box’s length, and each unit beyond them as a small open circle. Print each median, give the group the title names the view’s red point, or the subject ink where Rule 14.6 sets ink in its place, as for a region of states, and say in the measure line what the box and whiskers span.",
+    "Draw one row a group, its name and count of units flush left: a box from the first to the third quartile, the values a quarter and three quarters of the way up the ranked units, so the box holds the middle half; a 2 px line at the median, the middle unit; whiskers to the last unit within one and a half times the box’s length, and each unit beyond them as a small open circle. Print each median, give the group the title names the view’s red point while that red stays within 5 percent of the drawing (Rule 05.1), or the subject ink where Rule 14.6 sets ink in its place, as for a region of states, and say in the measure line what the box and whiskers span.",
     "The chart draws from a table of each group’s quartiles, median and whiskers and a table of the units past the whiskers, so a chart of thousands of units stays light."
    ],
    "why": {
@@ -2690,7 +2713,7 @@
    "id": "14.62",
    "title": "Show a population’s age and sex in a pyramid, one bar a year of age.",
    "rule": [
-    "Draw one thin bar a year of age on each side, men to the left and women to the right on one scale, the youngest at the bottom and ages labeled down the center. Both sides take one ink, and position and the names over each half carry sex. A band of ages the title names takes the view’s red as one job (Rule 14.6) with its words in the empty corner; every other age takes the light fill."
+    "Draw one thin bar a year of age on each side, men to the left and women to the right on one scale, the youngest at the bottom and ages labeled down the center. Both sides take one ink, and position and the names over each half carry sex. A band of ages the title names takes the view’s red as one job (Rule 14.6) while that red stays within 5 percent of the drawing at every width (Rule 05.1), and the subject ink where it would pass it, as ages 55 to 64 do here. Every other age takes the light fill. Set the band’s words in the empty corner, naming its ages and never its color."
    ],
    "why": {
     "text": [
@@ -2699,7 +2722,7 @@
    },
    "tokens": [],
    "related": [],
-   "builders": "Form population-pyramid: node work/build/chart-kit/oa-chart.mjs build s53; labels.left and labels.right name the two sides, labels.point a range of ages in red, labels.band_words its words.",
+   "builders": "Form population-pyramid: node work/build/chart-kit/oa-chart.mjs build s53; labels.left and labels.right name the two sides, labels.point (red) or labels.named (the subject ink) a range of ages, labels.band_words its words.",
    "related_rules": [
     "14.4",
     "14.6",
@@ -2983,8 +3006,8 @@
    "use_when": "The reader asks how two measures moved together over years, such as job openings and unemployment through a recession and a recovery.",
    "use_instead": [
     {
-     "when": "Each measure’s own trend matters more than their relationship",
-     "rule": "14.30"
+     "when": "Each measure’s own trend matters more than their relationship, drawn as two aligned panels, each on its own scale",
+     "rule": "14.73"
     },
     {
      "when": "Two measures across places at one time",
@@ -3121,7 +3144,7 @@
    },
    "tokens": [],
    "related": [],
-   "builders": "No kit form, by design; draw the two measures with area-sparklines (s13) as aligned panels, or with indexed-line (s33) on one index.",
+   "builders": "No kit form, by design; for aligned panels draw each measure as its own line-data-gap chart (s31) over the same years, one above the other, each on its own scale from a stated base, or index both with indexed-line (s33).",
    "sketch_alt": "The same two invented series drawn twice: on two value scales the lines cross in the middle, and in two aligned panels, each on its own scale from zero, neither line crosses anything, so no false meeting point appears.",
    "related_rules": [
     "14.4"
@@ -3129,10 +3152,6 @@
    "entry": true,
    "use_when": "Never: a reader who asks how two measures moved over the same years gets a truer answer from two aligned panels.",
    "use_instead": [
-    {
-     "when": "Each measure on its own scale, read side by side",
-     "rule": "14.34"
-    },
     {
      "when": "Growth compared from one start date",
      "rule": "14.40"
@@ -3195,7 +3214,7 @@
    "id": "14.75",
    "title": "Draw a band around a line to show each year’s margin of error.",
    "rule": [
-    "Draw the series as a 2 px line in the subject ink over a band in Stone magnitude step 1 from each year’s low to its high, at the publisher’s stated confidence, named in the measure line. Where the publisher changed its method, break the line and the band and draw both estimates for that year (Rule 14.11). Label the latest figure with its margin at the line’s end."
+    "Draw the series as a 2 px line in the subject ink over a band from each year’s low to its high at the publisher’s stated confidence, which the measure line names. Fill the band in Stone magnitude step 1 and draw its two edges as 1 px lines in the context ink, since the fill alone is too pale to see. Where the publisher changed its method, break the line and the band and draw both estimates for that year (Rule 14.11). Label the latest figure with its margin at the line’s end."
    ],
    "why": {
     "text": [
@@ -3350,7 +3369,7 @@
    "id": "14.85",
    "title": "Set one figure large when a reader should remember it, with the context to judge it.",
    "rule": [
-    "Print the one figure the reader should carry away in the display face, with the words that say what it counts directly under it, and set beside it the context that makes it mean something: the groups it splits into, a recorded vote on the same subject, or the figure it compares with. Name every group in words, in neutral inks where parties are concerned (Rule 14.7)."
+    "Print the one figure the reader should carry away in the display face, with the words that say what it counts directly under it, and set beside it the context that makes it mean something: the groups it splits into, a related recorded vote, with everything the bill held, or the figure it compares with. Name every group in words, in neutral inks where parties are concerned (Rule 14.7)."
    ],
    "why": {
     "text": [

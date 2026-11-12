@@ -102,7 +102,13 @@
    },
    "text": "New questions",
    "place": "above",
-   "dx": -24
+   "dx": -24,
+   "phone": {
+    "place": "above",
+    "dx": -24,
+    "dy": -36,
+    "max": 70
+   }
   }
  ],
  "domain": "D08",
