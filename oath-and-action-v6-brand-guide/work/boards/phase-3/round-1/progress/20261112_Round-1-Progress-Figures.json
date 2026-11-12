@@ -1039,5 +1039,30 @@
  ],
  "notes": [],
  "warnings": [],
- "seconds": 439
+ "seconds": 439,
+ "check": {
+  "page": {
+   "failures": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "allowed": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "results": "work/boards/phase-3/round-1/progress/20261112_Round-1-Progress-Check-Results.json"
+  },
+  "wrapped": {
+   "failures": [],
+   "pass": true,
+   "results": "[scratch]/publish-view/20261112_Round-1-Progress-Check-Results.json"
+  },
+  "widths": [
+   1440,
+   390,
+   360
+  ]
+ }
 }
