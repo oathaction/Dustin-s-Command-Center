@@ -128,14 +128,6 @@
      "label": "Evidence label",
      "value": "On the chip fill, in the label style",
      "token": "oa.chart.color.chip.fill.onNewsprint"
-    },
-    {
-     "label": "Title",
-     "value": "One full sentence in Inter Tight at the chart title size"
-    },
-    {
-     "label": "Measure line",
-     "value": "What is counted, the unit, the period and the place"
     }
    ],
    "related_rules": [
@@ -736,8 +728,7 @@
    "id": "14.14",
    "title": "Export every chart from the kit, so its files match the page.",
    "rule": [
-    "Make every file of a chart with the chart kit’s one command, from the same spec and data file the page draws. The kit writes three files for each ground and width: an SVG with the chart’s title and description inside it, a PNG at twice size, and a CSV of exactly the rows the chart draws. Each name carries the date, what the chart is, its ground and its width, as Rule 18.14 asks of a download.",
-    "To change a chart, change its spec or its data and run the command again; every file and the page then change together."
+    "Make every file of a chart with the chart kit’s one command, from the same spec and data file the page draws. The kit writes three files for each ground and width: an SVG with the chart’s title and description inside it, a PNG at twice size, and a CSV of exactly the rows the chart draws. Each name carries the date, what the chart is, its ground and its width, as Rule 18.14 asks of a download."
    ],
    "why": {
     "text": [

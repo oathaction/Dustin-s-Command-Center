@@ -435,10 +435,11 @@ def read_aloud(codes, lids, closes=True):
 # Styles. Each plate carries only the rules its own markup uses (chapter 13's way, D2-1732). Every size comes from a
 # type token or a chart type token, every color from a theme token.
 # ---------------------------------------------------------------------------------------------------------------
-CSS = {k: C13.CSS[k] for k in ("dnp", "evr", "ev", "gr", "chip", "k", "rs", "gw", "nw2", "fx", "src", "nt", "hed", "sub", "mk")}
+CSS = {k: C13.CSS[k] for k in ("dnp", "evr", "ev", "gr", "chip", "k", "rs", "gw", "nw2", "fx", "src", "nt", "hed", "sub", "mk", "p0")}
+STAGE = W + 2 * 16          # 328 px: the opener's limit on a 360 px screen, and every plate's true width
 INK = "var(--oa-color-graphic-essential)"
 CSS.update({
-    "sv": (".sv{display:block;max-width:100%;height:auto;overflow:visible}"
+    "sv": (".sv{display:block;overflow:visible}"
            ".sv text{font-family:var(--oa-font-family-reading);font-size:var(--oa-chart-type-label);fill:var(--oa-color-text-primary)}"
            f".sv .t{{font-weight:var(--oa-font-weight-semibold)}}.sv .v{{font-weight:var(--oa-font-weight-regular)}}"
            f".sv .pl{{fill:var(--oa-color-surface);stroke:{INK};stroke-width:2px}}.sv .pl.th{{stroke-width:1px}}"
@@ -490,12 +491,15 @@ class Book:
         self.files, self.manifest, self.examples = {}, {}, []
 
     def add(self, sid, body, *, rule, alt, illustrative=False, readable=False, notes=""):
+        """A plate on a stage of STAGE px, held at true size at every width as chapter 11's phone plates are (fix pass 2):
+        the 296 px drawing and the 16 px gutter each side, so no drawing scales and every word keeps its token size."""
         need(sid not in self.files, f"duplicate specimen {sid}")
         body = re.sub(r">\s+<", "><", body.strip())
         self.files[sid] = (f"<!-- {sid}: Oath & Action guide, Edition 06, chapter 15. Systems designer, {WRITTEN}. Written by "
-                           f"work/build/scripts/phase-3/phase3_ch15_build.py. -->\n" + styled(body) + f'\n<div class="p">{body}</div>\n')
-        m = {"chapter": "15", "rule": rule, "width_px": None, "alt": " ".join(alt.replace("'", "’").split()),
-             "illustrative": bool(illustrative), "notes": notes}
+                           f"work/build/scripts/phase-3/phase3_ch15_build.py. -->\n" + styled(body + ' class="p0"')
+                           + f'\n<div class="p p0">{body}</div>\n')
+        m = {"chapter": "15", "rule": rule, "width_px": STAGE, "fit_switch": False,
+             "alt": " ".join(alt.replace("'", "’").split()), "illustrative": bool(illustrative), "notes": notes}
         if readable:
             m["readable"] = True
         self.manifest[sid] = m
@@ -564,7 +568,7 @@ def opener(book):
     lst = "".join(f"<li>{C13.mk(n)} {e(w)}, Rule {r}</li>" for n, (w, r) in enumerate(parts, 1))
     steps = "".join(f'<p class="nt">{gl(x)}</p>' for x in (*lp["links"], "LE02"))
     body = (label_for(lp["links"], "the grade of the loop’s least certain step")
-            + f'<div class="fx two"><div>{hed("Loop", lid, lp["title"])}{fig(svg)}{steps}</div>'
+            + f'<div class="fx"><div>{hed("Loop", lid, lp["title"])}{fig(svg)}{steps}</div>'
             f'<div><p class="k">What each numbered part says</p><ol class="kw">{lst}</ol></div></div>'
             + src("loop R13 and connections L11, L12 and LE02"))
     book.add("s-15-opener", body, rule=None, readable=True,
@@ -711,7 +715,7 @@ def rule_15_1(book):
                 "Both variables take the same pill, sized only by its label.",
                 "Nothing in the drawing measures, so it carries no key for size."])
     body = (diagram_label(g, f"{GRADE[g][1]}, the grade of the loop’s least certain step")
-            + f'<div class="fx two"><div>{hed("Loop", "B1a", lp["title"])}{fig(svg, read_aloud(["E1", "D4"], lp["links"]))}</div>'
+            + f'<div class="fx"><div>{hed("Loop", "B1a", lp["title"])}{fig(svg, read_aloud(["E1", "D4"], lp["links"]))}</div>'
             f'<div><p class="k">What the drawing holds</p>{words}</div></div>' + src("loop B1a and connections L17 and L16"))
     book.add("s-15-1-correct", body, rule="15.1", readable=True,
              alt=(f"Loop B1a from our systems atlas, “{lp['title']}”, drawn as two pills of one size, Policy tilt to insiders "
@@ -779,7 +783,7 @@ def rule_15_2(book):
         n = node(c)
         cards.append(f'<div class="vc">{svg}<p class="hed">{chip("Variable", c)}<span>{e(n["title"])}</span></p>'
                      f'<p class="sub">{e(kind_word(c))}</p><p class="nt">{e(n["increase_means"])}</p></div>')
-    body = (f'<div class="fx two"><div>{"".join(cards[:2])}</div><div>{cards[2]}</div></div>'
+    body = (f'<div class="fx"><div>{"".join(cards[:2])}</div><div>{cards[2]}</div></div>'
             + src("variables B3, B1 and C3"))
     book.add("s-15-2-correct", body, rule="15.2", readable=True,
              alt=("Three variables from our systems atlas, each drawn as a pill with its short name, then its typed chip and "
@@ -852,7 +856,7 @@ def rule_15_3(book):
         cols.append(f'<div>{fig(svg_wrap(b, h))}<p class="hed">{gl(lid)}</p><p class="nt">{e(l["sign_meaning"])}</p></div>')
     key = kw([f"<b>+ raises</b>: the two move the same way.", f"<b>{MINUS} lowers</b>: they move in opposite directions.",
               "“A positive sign does not mean a benefit.”"])
-    body = (label_for(["L46", "L16"]) + f'<div class="fx two">{"".join(cols)}</div><div class="blk"><p class="k">Key</p>{key}</div>'
+    body = (label_for(["L46", "L16"]) + f'<div class="fx">{"".join(cols)}</div><div class="blk"><p class="k">Key</p>{key}</div>'
             + src("connections L46 and L16, and the glossary entry for a positive sign"))
     body = body.replace('class="blk"', 'class="kb"')
     book.add("s-15-3-correct", body, rule="15.3", readable=True,
@@ -870,7 +874,7 @@ def rule_15_3(book):
         b, h, _ = card(l["from"], l["to"], lid)
         fcols.append(f"<div>{fig(svg_wrap(b, h))}</div>")
     fkey = kw(["<b>+</b> Positive effect", f"<b>{MINUS}</b> Negative effect"])
-    fail = dnp() + f'<div class="fx two">{"".join(fcols)}</div><div class="kb"><p class="k">Key</p>{fkey}</div>'
+    fail = dnp() + f'<div class="fx">{"".join(fcols)}</div><div class="kb"><p class="k">Key</p>{fkey}</div>'
     book.add("s-15-3-failure", fail, rule="15.3",
              alt=(FC + "The same two connections over a key that reads plus, positive effect, and minus, negative effect."),
              notes="Labeled failure: the key reads a sign as good or bad news.")
@@ -919,7 +923,7 @@ def rule_15_4(book):
         l = link(lid)
         b, h, _ = card(l["from"], l["to"], lid)
         cols.append(f'<div class="vc">{fig(svg_wrap(b, h))}<p class="nt">{say_link(lid)}</p></div>')
-    body = (label_for([x for x, _ in picks]) + f'<div class="fx two"><div>{cols[0]}{cols[1]}</div><div>{cols[2]}</div></div>'
+    body = (label_for([x for x, _ in picks]) + f'<div class="fx"><div>{cols[0]}{cols[1]}</div><div>{cols[2]}</div></div>'
             + src("connections L28, L26 and T12"))
     book.add("s-15-4-correct", body, rule="15.4", readable=True,
              alt=("Three connections from our systems atlas, each with its type in words before its verb. "
@@ -937,7 +941,7 @@ def rule_15_4(book):
         b = b.replace('<g class="wr">', f'<g class="wr {cls}">', 1).replace('class="ak-mark"', f'class="ak-mark {cls}"')
         fcols.append(f'<div class="vc">{fig(svg_wrap(b, h))}</div>')
     legend = kw([f'<span class="sw gkf"></span> Money', f'<span class="sw pkf"></span> Information', f'<span class="sw skf"></span> Ownership'])
-    fail = dnp() + f'<div class="fx two"><div>{fcols[0]}{fcols[1]}</div><div>{fcols[2]}<p class="k">Key</p>{legend}</div></div>'
+    fail = dnp() + f'<div class="fx"><div>{fcols[0]}{fcols[1]}</div><div>{fcols[2]}<p class="k">Key</p>{legend}</div></div>'
     book.add("s-15-4-failure", fail, rule="15.4",
              alt=(FC + "The same three connections with no type words, their lines in three colors, green for money, blue for "
                   "information and gray for ownership, keyed by colored squares."),
@@ -1008,7 +1012,7 @@ def rule_15_5(book):
     out.append(a.svg() + b.svg() + t.svg())
     svg = svg_wrap("".join(out), t.bot + 4)
     words = kw([say_link("LT13"), say_link("LT14"), f"“{e(l13['sign_meaning'])}”"])
-    body = (label_for(["LT13", "LT14"]) + f'<div class="fx two"><div>{fig(svg)}</div><div><p class="k">Two bodies, one decision</p>{words}</div></div>'
+    body = (label_for(["LT13", "LT14"]) + f'<div class="fx"><div>{fig(svg)}</div><div><p class="k">Two bodies, one decision</p>{words}</div></div>'
             + src("connections LT13 and LT14"))
     book.add("s-15-5-correct", body, rule="15.5", readable=True,
              alt=(f"Two authority connections from our systems atlas. Lines from Oversight and enforcement and from State and local "
@@ -1075,7 +1079,7 @@ def rule_15_6(book):
         cols.append(f'<div>{label_for(lp["links"], "the grade of the loop’s least certain step")}{hed("Loop", lid, lp["title"])}'
                     f'{fig(svg_wrap(b, h), read_aloud(codes, lp["links"]))}{steps}'
                     f'<p class="nt"><b>{words_n(n).capitalize()} minus sign{"s" if n != 1 else ""}</b>: {kind}.</p></div>')
-    body = f'<div class="fx two">{"".join(cols)}</div>' + src("loops R18 and B5 and their connections")
+    body = f'<div class="fx">{"".join(cols)}</div>' + src("loops R18 and B5 and their connections")
     book.add("s-15-6-correct", body, rule="15.6", readable=True,
              alt=("Two loops from our systems atlas, each with its steps numbered 1 and 2, its number and kind inside it, a sentence "
                   "that reads it aloud and its count of minus signs. "
@@ -1148,7 +1152,7 @@ def rule_15_7(book):
     col2 = (diagram_label("well-supported", "the atlas’s grade for the mechanism, where entry is possible")
             + hed("Loop", "B3", b3["title"]) + fig(svg_wrap(b2, h2)) + '<p class="nt"><b>No numbered chain</b>. Its three '
             'stations sit outside the atlas’s numbered variables.</p>')
-    body = f'<div class="fx two"><div>{col1}</div><div>{col2}</div></div>' + src("loops R16 and B3")
+    body = f'<div class="fx"><div>{col1}</div><div>{col2}</div></div>' + src("loops R16 and B3")
     book.add("s-15-7-correct", body, rule="15.7", readable=True,
              alt=(f"Two loops from our systems atlas with their closure in words beside their grade. Loop R16, “{r16['title']}”, "
                   "labeled Hypothesis: a solid step from Local news supply to Electoral pressure, and a dotted step back that "
@@ -1248,7 +1252,7 @@ def rule_15_8(book):
                 f"{gl('L37')}: the core map’s one arrow for the same path carries a minus.",
                 f"The atlas: “{e(q)}”"])
     body = (label_for(["LE12", "LE14", "L37"])
-            + f'<div class="fx two"><div>{fig(svg, ra)}</div><div><p class="k">Carry the sign along</p>{words}</div></div>'
+            + f'<div class="fx"><div>{fig(svg, ra)}</div><div><p class="k">Carry the sign along</p>{words}</div></div>'
             + src("connections LE12, LE14 and L37, and the atlas’s model conventions"))
     book.add("s-15-8-correct", body, rule="15.8", readable=True,
              alt=(f"An open chain from our systems atlas, drawn downward: Policy tilt to insiders, a minus tag and the words money, "
@@ -1345,7 +1349,7 @@ def rule_15_9(book):
                 "2026 to 2036.", f"{chip('Variable', 'B6')} sits in the core layer’s cluster B.",
                 f"{chip('Variable', 'TC1')} sits in the technology layer.",
                 f"Each frame breaks where a connection crosses it: {gl('LX4')}, {gl('LT01')}."])
-    body = (label_for(["LX4", "LT01"]) + f'<div class="fx two"><div>{fig(svg)}</div><div><p class="k">Inside and outside</p>{words}</div></div>'
+    body = (label_for(["LX4", "LT01"]) + f'<div class="fx"><div>{fig(svg)}</div><div><p class="k">Inside and outside</p>{words}</div></div>'
             + src("variables X4, B6 and TC1, connections LX4 and LT01, the layers and the model’s boundary"))
     book.add("s-15-9-correct", body, rule="15.9", readable=True,
              alt=("A drawing from our systems atlas in three bands. At the top, outside every frame, Foreign interference, marked "
@@ -1425,7 +1429,7 @@ def rule_15_10(book):
              f'<p class="q">“{e(quote)}”</p><p class="nt">{tail}</p>'
              f'<p class="nt">The atlas keeps {words_n(len(rej))} connections it reviewed and left off its map, each with its reason.</p>')
     body = (label_for(["LT01"], "the grade of the connection drawn")
-            + f'<div class="fx two"><div>{hed("Connection", "LT01", link("LT01")["name"])}{fig(svg_wrap(b, h))}'
+            + f'<div class="fx"><div>{hed("Connection", "LT01", link("LT01")["name"])}{fig(svg_wrap(b, h))}'
             f'<p class="nt">{gl("LT01")}</p></div><div>{panel}</div></div>'
             + src("connection LT01, rejected connection LTR1 and connection L47"))
     book.add("s-15-10-correct", body, rule="15.10", readable=True,
@@ -1505,7 +1509,7 @@ def rule_15_13(book):
     steps = kw([f"<b>{i}</b>&#160;{say_link(x)}" + (" The atlas names it the weakest step." if x == "L02" else "")
                 for i, x in enumerate(lp["links"], 1)])
     body = (diagram_label("plausible", "some evidence, the grade of the loop’s least certain step, Connection L02")
-            + f'<div class="fx two"><div>{hed("Loop", "R1", lp["title"])}{fig(svg, read_aloud(codes, lp["links"]))}</div>'
+            + f'<div class="fx"><div>{hed("Loop", "R1", lp["title"])}{fig(svg, read_aloud(codes, lp["links"]))}</div>'
             f'<div><p class="k">Each step, and the weakest</p>{steps}<p class="nt">{said}</p></div></div>'
             + src("loop R1 and connections L01, L02 and L03"))
     book.add("s-15-13-correct", body, rule="15.13", readable=True,
@@ -1582,7 +1586,7 @@ def rule_15_14(book):
     panel = (f'<p class="k">The atlas’s revision, as of {SNAP}</p><p class="nt">{rev_html}</p>'
              f'<p class="nt">{why_html}</p>')
     body = (diagram_label("well-supported", "strong research evidence, the grade of both steps")
-            + f'<div class="fx two"><div>{hed("Loop", "R8", lp["title"])}{fig(svg_wrap(b, h), read_aloud(codes, lp["links"]))}</div>'
+            + f'<div class="fx"><div>{hed("Loop", "R8", lp["title"])}{fig(svg_wrap(b, h), read_aloud(codes, lp["links"]))}</div>'
             f'<div>{panel}</div></div>' + src("loop R8, its evidence note and qualification, and connection T12"))
     book.add("s-15-14-correct", body, rule="15.14", readable=True,
              alt=(f"Loop R8 from our systems atlas, “{lp['title']}”, under a label reading Well supported. Two pills, Housing "
@@ -1753,6 +1757,9 @@ def check(data, book):
             fails.append(f"{sid}: a heading element")
         if re.search(r'class="sv"[^>]*viewBox="0 0 (\d+)', frag) and any(int(w_) > W for w_ in re.findall(r'class="sv" viewBox="0 0 (\d+)', frag)):
             fails.append(f"{sid}: a drawing wider than the {W} px artboard")
+    for sid, m_ in book.manifest.items():
+        if m_["width_px"] != STAGE:
+            fails.append(f"{sid}: a stage of {m_['width_px']} px, where every plate is {STAGE} px")
     op = book.files[data["opener"]["specimen"]]
     if len(op.encode()) > 12 * 1024:
         fails.append(f"the opener's fragment weighs {len(op.encode()):,} bytes; it must stay well under 16 KB as placed")

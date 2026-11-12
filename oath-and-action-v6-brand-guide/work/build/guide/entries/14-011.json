@@ -41,9 +41,10 @@
  "correct": {
   "specimen": "s-14-11-correct",
   "caption": "The line breaks where the survey changed, and each of those years prints both its estimates, so a change of method never reads as a change in income.",
-  "alt": "A line of median household income from 2005 to 2025 in 2025 dollars, broken at 2013 and 2017 where the survey changed, with both estimates printed in each of those years; it ends at $87,460 in 2025.",
+  "alt": "A line of median household income from 2005 to 2025, broken where the survey changed in 2013 and 2017, ending at $87,460.",
   "illustrative": false,
-  "notes": "Drawn here from the Census Bureau's table, segments split by its footnotes 6 and 7 (2013) and 5 (2017)."
+  "notes": "Drawn here from the Census Bureau's table, segments split by its footnotes 6 and 7 (2013) and 5 (2017).",
+  "readable": true
  },
  "failure": {
   "specimen": "s-14-11-failure",

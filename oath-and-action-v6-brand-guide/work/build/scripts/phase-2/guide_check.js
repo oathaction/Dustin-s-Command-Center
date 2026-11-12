@@ -398,7 +398,11 @@ function audit(page) {
       const held = new Map();
       document.querySelectorAll('section.chapter[data-chapter]').forEach((sec) => {
         const ids = [...sec.querySelectorAll('.rule[id^="rule-"]')].map((r) => r.id);
-        if (ids.length) held.set(sec.getAttribute('data-chapter'), new Set(ids));
+        // round 1: a chapter built over several rounds names the numbers its plan file fixes for later rounds
+        // (data-oa-planned, from the plan file through phase3_ch14_build.py); a citation of one is planned, printed
+        // unlinked until its round builds it, and a number outside the plan still fails
+        const planned = (sec.getAttribute('data-oa-planned') || '').split(/\s+/).filter(Boolean).map((x) => 'rule-' + x.replace('.', '-'));
+        if (ids.length) held.set(sec.getAttribute('data-chapter'), new Set(ids.concat(planned)));
       });
       const XREF = /\bRules?(?:\s|\u00a0)+\d{2}\.\d{1,3}\b(?:\s*(?:,|and|or|to|through)\s*\d{2}\.\d{1,3}\b)*/g;
       const refs = []; const seen = new Set();
@@ -2405,6 +2409,8 @@ const PLANTS = [
   { key: 'partOrder', fault: 'a part opener that does not link to its chapter', js: () => { document.querySelector('section.part .part-list a').remove(); } },
   { key: 'ruleRefs', fault: 'a citation of Rule 01.9, which chapter 01 does not hold', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p>See Rule 01.9 for the sizes.</p>'); } },
   { key: 'ruleRefs', fault: 'a range, "Rules 01.1 to 01.4", past chapter 01\'s last rule', js: () => { document.querySelector('.plate-cap').append(' Rules 01.1 to 01.4 set the frame.'); } },
+  { key: 'ruleRefs', fault: 'a citation of Rule 01.9 where chapter 01 lists 01.9 as planned for a later round (allowed: must not be flagged)', expect: false, js: () => { const sec = document.querySelector('.rule .why').closest('section.chapter'); sec.setAttribute('data-oa-planned', '01.9'); document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p>See Rule 01.9 for the sizes.</p>'); } },
+  { key: 'ruleRefs', fault: 'a citation of Rule 01.8 where chapter 01 lists only 01.9 as planned', js: () => { const sec = document.querySelector('.rule .why').closest('section.chapter'); sec.setAttribute('data-oa-planned', '01.9'); document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p>See Rule 01.8 for the sizes.</p>'); } },
   { key: 'ruleRefs', fault: 'a citation in an alt text', js: () => { document.querySelector('[data-specimen][role="img"]').setAttribute('aria-label', 'A notice card drawn as Rule 01.7 sets it, at true size.'); } },
   // apply fix pass, November 7, 2026. The demo's 640 px sheet holds 13 to 17 px text.
   { key: 'fitFloor', fault: 'a 2,000 px plate whose switch is forced to show, so Fit to window sets its text near 6 px', js: () => {

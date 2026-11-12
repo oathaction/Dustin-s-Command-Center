@@ -82,9 +82,10 @@
  "s-14-6-correct": {
   "chapter": "14",
   "rule": "14.6",
-  "alt": "Bars of active judges on the 13 federal courts of appeals, the Ninth Circuit’s 29 in red with a dark edge and the rest in gray, from 17 on the Fifth Circuit down to 6 on the First Circuit.",
+  "alt": "Bars of active judges on the 13 federal courts of appeals, the Ninth Circuit’s 29 in red and the rest in gray, from 17 on the Fifth Circuit down to 6 on the First Circuit.",
   "illustrative": false,
-  "notes": "Drawn here from the directory's rows, counted by script, until the kit takes a red point by name (request ED-E1)."
+  "notes": "Drawn here from the directory's rows, counted by script, until the kit takes a red point by name (request ED-E1).",
+  "readable": true
  },
  "s-14-6-failure": {
   "chapter": "14",
@@ -124,9 +125,10 @@
  "s-14-9-correct": {
   "chapter": "14",
   "rule": "14.9",
-  "alt": "Dots with margin of error lines for ten states’ reported turnout in 2024, against a dashed line at the nation’s 65.3 percent. Filled dots, past the margin: Michigan, Pennsylvania, Florida, New York, Texas. Open dots, within it: Ohio, Illinois, California, North Carolina, Georgia.",
+  "alt": "Dots with margin of error lines for ten states’ reported turnout in 2024 against the nation’s 65.3 percent: five past the margin, five within it.",
   "illustrative": false,
-  "notes": "Drawn here from the turnout file with each gap's margin computed by script, until the kit's interval form lands (round 2)."
+  "notes": "Drawn here from the turnout file with each gap's margin computed by script, until the kit's interval form lands (round 2).",
+  "readable": true
  },
  "s-14-9-failure": {
   "chapter": "14",
@@ -152,9 +154,10 @@
  "s-14-11-correct": {
   "chapter": "14",
   "rule": "14.11",
-  "alt": "A line of median household income from 2005 to 2025 in 2025 dollars, broken at 2013 and 2017 where the survey changed, with both estimates printed in each of those years; it ends at $87,460 in 2025.",
+  "alt": "A line of median household income from 2005 to 2025, broken where the survey changed in 2013 and 2017, ending at $87,460.",
   "illustrative": false,
-  "notes": "Drawn here from the Census Bureau's table, segments split by its footnotes 6 and 7 (2013) and 5 (2017)."
+  "notes": "Drawn here from the Census Bureau's table, segments split by its footnotes 6 and 7 (2013) and 5 (2017).",
+  "readable": true
  },
  "s-14-11-failure": {
   "chapter": "14",
@@ -166,9 +169,10 @@
  "s-14-12-correct": {
   "chapter": "14",
   "rule": "14.12",
-  "alt": "The same twelve years of federal receipts drawn twice, as columns at full width and as bars on a phone, each value printed. Both rise from 3,249 billion dollars in 2015 to 5,403 billion in 2026, with a fall in 2023.",
+  "alt": "Twelve years of federal receipts as columns at full width and as bars on a phone. Both rise from 3,249 billion dollars in 2015 to 5,403 billion in 2026, with a fall in 2023.",
   "illustrative": false,
-  "notes": "The two drawings, stacked, drawn here from the Treasury file, so the plate shows both widths at once; on a phone the full-width drawing keeps its size in a named frame that scrolls sideways, and the words stay in the column."
+  "notes": "The two drawings, stacked, drawn here from the Treasury file, so the plate shows both widths at once; on a phone the full-width drawing keeps its size in a named frame that scrolls sideways, and the words stay in the column.",
+  "readable": true
  },
  "s-14-12-failure": {
   "chapter": "14",

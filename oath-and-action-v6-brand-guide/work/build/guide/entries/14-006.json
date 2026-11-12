@@ -49,9 +49,10 @@
  "correct": {
   "specimen": "s-14-6-correct",
   "caption": "The title names the Ninth Circuit, and its bar alone takes the view’s red, inside its keyline, with every other court in gray.",
-  "alt": "Bars of active judges on the 13 federal courts of appeals, the Ninth Circuit’s 29 in red with a dark edge and the rest in gray, from 17 on the Fifth Circuit down to 6 on the First Circuit.",
+  "alt": "Bars of active judges on the 13 federal courts of appeals, the Ninth Circuit’s 29 in red and the rest in gray, from 17 on the Fifth Circuit down to 6 on the First Circuit.",
   "illustrative": false,
-  "notes": "Drawn here from the directory's rows, counted by script, until the kit takes a red point by name (request ED-E1)."
+  "notes": "Drawn here from the directory's rows, counted by script, until the kit takes a red point by name (request ED-E1).",
+  "readable": true
  },
  "failure": {
   "specimen": "s-14-6-failure",

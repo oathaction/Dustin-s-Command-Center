@@ -1638,6 +1638,14 @@ class TokenCSS:
         return "\n".join(lines), len(order)
 
 
+def planned_attr(data):
+    """Phase 3, round 1: a chapter built over several rounds names the rule numbers its plan file fixes for later rounds
+    (chapter 14's planned_rules, written by phase3_ch14_build.py from the plan file), so guide_check.js reads a citation of
+    one as planned, printed unlinked until its round builds it, and still fails a citation of a number outside the plan."""
+    pr = [str(x) for x in ((data or {}).get("planned_rules") or []) if RULE_ID.match(str(x))]
+    return f' data-oa-planned="{e(" ".join(pr))}"' if pr else ""
+
+
 def chapter_groups(data, rules, num, where):
     """Validate the chapter's "groups" (shell notes, section 0). Returns the groups in rule order, keyed by the rule
     each opens, and each rule's group."""
@@ -1708,7 +1716,7 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
     rules = [r for r in ((data or {}).get("rules") or []) if isinstance(r, dict)]
     groups, member = chapter_groups(data, rules, num, where) if not placeholder else ([], {})
     out = [f'<section class="chapter{" chapter--placeholder" if placeholder else ""}{" chapter--grouped" if groups else ""}" id="{cid}" data-track="chapter" '
-           f'data-part="{part}" data-label="{num} {plain(cname)}" data-chapter="{num}">{alias}']
+           f'data-part="{part}" data-label="{num} {plain(cname)}" data-chapter="{num}"{planned_attr(data)}>{alias}']
     if placeholder:
         out.append(head + "</div>")
         out.append(f'<div class="pending-note"><p class="label">In progress</p><p>The {OWNER.get(num, "maker")} is writing this chapter. '

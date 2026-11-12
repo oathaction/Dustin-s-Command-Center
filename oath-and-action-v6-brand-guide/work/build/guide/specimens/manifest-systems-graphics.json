@@ -2,7 +2,8 @@
  "s-15-opener": {
   "chapter": "15",
   "rule": null,
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Loop R13 from our systems atlas, “Congressional weakness creates room for presidential action”, drawn as two pills, Congressional capacity and Executive unilateralism, with an arrow over the top marked minus, lowers, and one under the bottom marked minus, lowers, drawn dashed. The loop’s name and the word reinforcing sit inside it. A line with an open diamond and the word decides runs from Congressional capacity down across a rule into the economy layer, to Public investment in research and infrastructure. Six numerals tie the parts to a list: a variable, Rule 15.2; a sign tag and its word, Rule 15.3; the loop’s number and kind, Rule 15.6; authority with no sign, Rule 15.5; a boundary between layers, Rule 15.9; a dashed line for a plausible step, Rule 13.4.",
   "illustrative": false,
   "notes": "Chapter 15's opener: one loop, one authority line and the core and economy layers, from the atlas's records read by script; lines by the atlas build's wire_marks with the 28 px lead-in.",
@@ -11,7 +12,8 @@
  "s-15-1-correct": {
   "chapter": "15",
   "rule": "15.1",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Loop B1a from our systems atlas, “Independent oversight can limit policy favoritism”, drawn as two pills of one size, Policy tilt to insiders and Oversight and enforcement. Step 1, dashed, runs over the top with a plus tag and the word raises; step 2, solid, runs under the bottom with a minus tag and the word lowers. Both lines are 2 px. Beside it, three notes say every connection draws at 2 px, both variables take the same pill, and nothing in the drawing measures.",
   "illustrative": false,
   "notes": "Lines by the atlas build's wire_marks at 2 px with the 28 px lead-in; pills sized only by their labels.",
@@ -20,7 +22,8 @@
  "s-15-1-failure": {
   "chapter": "15",
   "rule": "15.1",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Failure case: do not publish. Loop B1a with its second step drawn 6 px thick, three times the first, and the pill for Policy tilt to insiders drawn larger than the other, with no key to say what the width or the size measures.",
   "illustrative": false,
   "notes": "Labeled failure: width and size used as if they measured strength, with no measure behind them and no key."
@@ -28,7 +31,8 @@
  "s-15-2-correct": {
   "chapter": "15",
   "rule": "15.2",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Three variables from our systems atlas, each drawn as a pill with its short name, then its typed chip and title, its kind and the atlas’s sentence on a higher value. Variable B3, Civic ties across social and political groups, short name Cross-cutting civic ties: Stock (an amount built up over time). A higher value means more people have regular ties to people of another party or income group. Variable B1, Money spent to influence politics, short name Money in politics: Flow (an amount per period). A higher value means more money flowing into campaigns, outside groups and lobbying. Variable C3, Risk of losing office, short name Electoral pressure: Condition, which the atlas calls auxiliary. A higher value means incumbents face a more credible chance of defeat.",
   "illustrative": false,
   "notes": "Short names by DR-185's rule, read from the loops that hold each variable; kinds and sentences from each variable's own record.",
@@ -37,7 +41,8 @@
  "s-15-2-failure": {
   "chapter": "15",
   "rule": "15.2",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Failure case: do not publish. A connection from Incumbent control of election rules, with a minus tag and the word lowers, into a pill labeled Turnout, with no chip, no kind and no sentence on what a higher value means.",
   "illustrative": false,
   "notes": "Labeled failure: B5's pill cut to one word, so its minus sign reads as fewer voters."
@@ -45,7 +50,8 @@
  "s-15-3-correct": {
   "chapter": "15",
   "rule": "15.3",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Two connections from our systems atlas. Connection L46 runs from Hostility toward the other party to Exposure to hostile political content, with a plus tag and the words information, raises; its sentence reads: When hostility toward the other party rises, exposure to hostile content tends to rise. Connection L16 runs from Oversight and enforcement to Policy tilt to insiders, with a minus tag and the word lowers; its sentence reads: When oversight grows stronger, policy advantages for wealthy and organized interests tend to shrink. A key says plus raises, the two move the same way; minus lowers, they move in opposite directions; and quotes the atlas: a positive sign does not mean a benefit.",
   "illustrative": false,
   "notes": "Sentences on each sign from the connections' own records; the key's last line from the atlas glossary.",
@@ -54,7 +60,8 @@
  "s-15-3-failure": {
   "chapter": "15",
   "rule": "15.3",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Failure case: do not publish. The same two connections over a key that reads plus, positive effect, and minus, negative effect.",
   "illustrative": false,
   "notes": "Labeled failure: the key reads a sign as good or bad news."
@@ -62,7 +69,8 @@
  "s-15-4-correct": {
   "chapter": "15",
   "rule": "15.4",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Three connections from our systems atlas, each with its type in words before its verb. Connection L28 runs from Market concentration to Local news supply: money, lowers, solid for well supported. Connection L26 runs from Local news supply to Electoral pressure: information, raises, solid for well supported. Connection T12 runs from Owner home equity to Wealth concentration: ownership, lowers, solid for well supported.",
   "illustrative": false,
   "notes": "Types from each connection's record, printed before the verb; lines in their grade's pattern only.",
@@ -71,7 +79,8 @@
  "s-15-4-failure": {
   "chapter": "15",
   "rule": "15.4",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Failure case: do not publish. The same three connections with no type words, their lines in three colors, green for money, blue for information and gray for ownership, keyed by colored squares.",
   "illustrative": false,
   "notes": "Labeled failure: color alone for a connection's type, which gray print and low color vision lose."
@@ -79,7 +88,8 @@
  "s-15-5-correct": {
   "chapter": "15",
   "rule": "15.5",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Two authority connections from our systems atlas. Lines from Oversight and enforcement and from State and local experimentation run down across the boundary between the core and technology layers into Use of pricing algorithms. Each is solid, ends in an open diamond, carries the word decides and no sign. Beside them: Connection LT13, Antitrust enforcers decide what pricing software may do, documented; Connection LT14, States and cities set rules for pricing software, documented; and the atlas’s words, This line shows who has the power to decide. It does not say which way they will decide.",
   "illustrative": false,
   "notes": "Both lines by wire_marks with authority=True: the open diamond, no tag, delay ticks; the boundary per Rule 15.9.",
@@ -88,7 +98,8 @@
  "s-15-5-failure": {
   "chapter": "15",
   "rule": "15.5",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Failure case: do not publish. The line from Oversight and enforcement to Use of pricing algorithms drawn as a causal arrow, with an arrowhead, a minus tag and the word lowers.",
   "illustrative": false,
   "notes": "Labeled failure: an authority connection given a sign and an arrowhead, as if the atlas knew which way the enforcers will decide."
@@ -96,7 +107,8 @@
  "s-15-6-correct": {
   "chapter": "15",
   "rule": "15.6",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Two loops from our systems atlas, each with its steps numbered 1 and 2, its number and kind inside it, a sentence that reads it aloud and its count of minus signs. Loop R18, Weakening watchdogs lowers the cost of further unilateral action: More executive unilateralism, less oversight and enforcement, and back to more executive unilateralism. Two minus signs, reinforcing. Loop B5, State and local experiments can correct policy favoritism: More policy tilt to insiders, more state and local experimentation, and back to less policy tilt to insiders. One minus sign, balancing.",
   "illustrative": false,
   "notes": "Kinds checked against the count of minus signs on every numbered loop; read-aloud lines carry the signs around.",
@@ -105,7 +117,8 @@
  "s-15-6-failure": {
   "chapter": "15",
   "rule": "15.6",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Failure case: do not publish. Loop R18 drawn with no step numbers, no chip and no kind, and the words A vicious cycle inside it.",
   "illustrative": false,
   "notes": "Labeled failure: a judgment for a kind, and no numbers to read the loop in order."
@@ -113,7 +126,8 @@
  "s-15-7-correct": {
   "chapter": "15",
   "rule": "15.7",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Two loops from our systems atlas with their closure in words beside their grade. Loop R16, “Local news loss and weak electoral pressure may reinforce each other”, labeled Hypothesis: a solid step from Local news supply to Electoral pressure, and a dotted step back that closes it; the words read Closes through a hypothesis. Loop B3, “New competitors can limit market power”, labeled Well supported: three thin pills, Excess profits, Entry and Competitive pressure, joined by hollow lines with their signs; the words read No numbered chain, its three stations sit outside the atlas’s numbered variables.",
   "illustrative": false,
   "notes": "R16's dotted closing step by wire_marks with the lead-in; B3's hollow lines and thin pills as Rule 13.4 sets.",
@@ -122,7 +136,8 @@
  "s-15-7-failure": {
   "chapter": "15",
   "rule": "15.7",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Failure case: do not publish. Loop B3 drawn with three full pills, solid lines and numbered steps under a Well supported label, with no word on how it closes.",
   "illustrative": false,
   "notes": "Labeled failure: a conceptual loop drawn as a closed chain of numbered connections."
@@ -130,7 +145,8 @@
  "s-15-8-correct": {
   "chapter": "15",
   "rule": "15.8",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "An open chain from our systems atlas, drawn downward: Policy tilt to insiders, a minus tag and the words money, lowers, into Net support from taxes and public benefits, framed as the economy layer, then a plus tag and the words money, raises, into Household security. On the right, connection L37 runs from Policy tilt to insiders straight to Household security with a minus tag and the words money, lowers. The chain reads: More policy tilt to insiders, less net support from taxes and public benefits, less household security. Beside it, notes say the chain carries one minus sign, so the end moves opposite to the start, and the core map’s arrow agrees.",
   "illustrative": false,
   "notes": "Signs carried along the chain by script and checked against connection L37 (the atlas's convention).",
@@ -139,7 +155,8 @@
  "s-15-8-failure": {
   "chapter": "15",
   "rule": "15.8",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Failure case: do not publish. The same chain with a summary arrow on the right from Policy tilt to insiders to Household security drawn with a plus tag and the word raises, the sign of the chain’s last step.",
   "illustrative": false,
   "notes": "Labeled failure: the chain's answer read from its last step."
@@ -147,7 +164,8 @@
  "s-15-9-correct": {
   "chapter": "15",
   "rule": "15.9",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "A drawing from our systems atlas in three bands. At the top, outside every frame, Foreign interference, marked outside driver. A line marked information, raises crosses into a frame named Core layer, Political inputs, holding Hostile-content exposure. Below it a frame named Technology layer holds How platforms rank feeds and seek attention, and a line marked information, raises runs up from it across both frames into Hostile-content exposure. Each frame breaks where a line crosses it.",
   "illustrative": false,
   "notes": "Frames 1 px in the strong border color, broken 7 px each side of a crossing; layers and clusters from the atlas's layers record.",
@@ -156,7 +174,8 @@
  "s-15-9-failure": {
   "chapter": "15",
   "rule": "15.9",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Failure case: do not publish. The same three variables and two connections inside one frame named The model, with Foreign interference drawn as one more variable and no layers.",
   "illustrative": false,
   "notes": "Labeled failure: an outside driver inside the model's frame, and the layers left out."
@@ -164,7 +183,8 @@
  "s-15-10-correct": {
   "chapter": "15",
   "rule": "15.10",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Connection LT01 from our systems atlas, “Engagement-ranked feeds raise hostile-content exposure”, drawn from How platforms rank feeds and seek attention, in the technology layer, down to Hostile-content exposure, in the core layer, with the words information, raises. Beside it, under the heading Reviewed and not drawn, the claim from feed ranking to hostility toward the other party, with the atlas’s reason: feed ranking changes what people see; then, quoted, In the largest experiments, changing the feed did not measurably change hostility toward the other party: Facebook and Instagram feed changes in 2020, platform deactivation in 2020 and feed changes on X in 2023. Smaller effects appear in a 2024 reranking test (about 2 points on a 0 to 100 scale) and a 2018 deactivation study (0.16 standard deviations). The atlas adds that any effect “runs through exposure to hostile content”, from Variable B6 to Variable B4 along connection L47, graded Contested, “and is small.”",
   "illustrative": false,
   "notes": "The rejected connection in words only, from the atlas's rejectedLinks record; no line drawn for it.",
@@ -173,7 +193,8 @@
  "s-15-10-failure": {
   "chapter": "15",
   "rule": "15.10",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Failure case: do not publish. A dashed line marked information, raises, from How platforms rank feeds and seek attention down to Affective polarization, a connection the atlas reviewed and left off its map.",
   "illustrative": false,
   "notes": "Labeled failure: a line drawn for a rejected connection, in the plausible pattern."
@@ -181,7 +202,8 @@
  "s-15-13-correct": {
   "chapter": "15",
   "rule": "15.13",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Loop R1 from our systems atlas, “Wealth and political influence reinforce each other”, under a label reading Plausible, the grade of its least certain step. Three pills: Wealth concentration at the top, Money in politics below right, Policy tilt to insiders below left. Step 1, solid, money, raises; step 2, dashed, money, raises, marked weakest step; step 3, solid, money, raises. The loop reads: More wealth concentration, more money in politics, more policy tilt to insiders, and back to more wealth concentration. Beside it, each step with its grade. In the atlas’s evidence summary, the middle step, connection L02, “is plausible and the weakest.”",
   "illustrative": false,
   "notes": "Grades, signs, types and delays from each connection's record; the weakest step from the loop's evidence summary.",
@@ -190,7 +212,8 @@
  "s-15-13-failure": {
   "chapter": "15",
   "rule": "15.13",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Failure case: do not publish. Loop R1 drawn with all three steps solid under a label reading Well supported, with no weakest step marked.",
   "illustrative": false,
   "notes": "Labeled failure: the loop given its strongest step's grade, and the plausible step drawn solid."
@@ -198,7 +221,8 @@
  "s-15-14-correct": {
   "chapter": "15",
   "rule": "15.14",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Loop R8 from our systems atlas, “Housing scarcity strengthens owners’ incentive to restrict building”, under a label reading Well supported. Two pills, Housing scarcity and Owner home equity, with step 1 over the top, plus, raises, and step 2 under the bottom, plus, raises, both solid with three delay ticks. The loop reads: More housing scarcity, more owner home equity, and back to more housing scarcity. Beside it, the atlas’s revision as of October 15, 2026. Its evidence note reads “well-supported for both links”, and says the loop “no longer depends on” Variable A1, concentration of household wealth. Its reason, from the atlas’s qualification: rising home equity “tends to lower the top 1% share of wealth”, as connection T12, “Rising home equity lowers the top wealth share”, records, “so this loop does not explain that share.”",
   "illustrative": false,
   "notes": "The revision and its reason quoted from the loop's evidence and qualification fields, with the snapshot date.",
@@ -207,7 +231,8 @@
  "s-15-14-failure": {
   "chapter": "15",
   "rule": "15.14",
-  "width_px": null,
+  "width_px": 328,
+  "fit_switch": false,
   "alt": "Failure case: do not publish. Loop R8 drawn through three pills, Housing scarcity, Owner home equity and Wealth concentration, with plus signs on every step and no date.",
   "illustrative": false,
   "notes": "Labeled failure: the loop routed through A1 with plus signs, against the atlas's revision and connection T12's minus."

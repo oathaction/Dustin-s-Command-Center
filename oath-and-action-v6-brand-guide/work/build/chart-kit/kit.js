@@ -1138,10 +1138,22 @@
     }
     draw();
     if (root.ResizeObserver) new root.ResizeObserver(function () { draw(); }).observe(art);
-    var tw = fig.querySelector('.oac-tw[role="group"]'), eq = fig.querySelector('details.oac-eq');
-    var stop = function () { if (!tw) return; if (tw.scrollWidth > tw.clientWidth + 1) tw.setAttribute('tabindex', '0'); else tw.removeAttribute('tabindex'); };
-    if (tw && eq) { eq.addEventListener('toggle', stop); if (root.addEventListener) root.addEventListener('resize', stop); }
+    K.frame(fig);
     return { redraw: function () { last = -1; draw(); }, result: function () { return result; } };
+  };
+  // The table's scroll frame (contract C5; axe scrollable-region-focusable): a frame whose table runs wider than it takes a
+  // tab stop, and gives it up when the table fits. Wired for every figure at load, drawn or not, and checked whenever the
+  // table opens or the frame changes size, so an open table (a lookup's, or one a reader or a check opens before the
+  // drawing comes) never scrolls without one. The frame carries its name (aria-label) from the build.
+  K.frame = function (fig) {
+    var tw = fig.querySelector('.oac-tw[role="group"]'), eq = fig.querySelector('details.oac-eq');
+    if (!tw || tw._oac_frame) return;
+    tw._oac_frame = true;
+    var stop = function () { if (tw.scrollWidth > tw.clientWidth + 1) tw.setAttribute('tabindex', '0'); else tw.removeAttribute('tabindex'); };
+    if (eq) eq.addEventListener('toggle', stop);
+    if (root.ResizeObserver) new root.ResizeObserver(stop).observe(tw);
+    else if (root.addEventListener) root.addEventListener('resize', stop);
+    stop();
   };
   K.mount_all = function (scope, o) {
     // every figure with a JSON island: a script element of type application/json marked data-oa-chart-data. At load each
@@ -1175,6 +1187,7 @@
       if (!f.querySelector('script[data-oa-chart-data]')) continue;
       f.setAttribute('data-oa-js', '');
       var eq = f.querySelector('details.oac-eq[open]');
+      K.frame(f);
       if (f.hasAttribute('data-oa-lookup')) K.lookup(f);
       else if (eq && !f.getAttribute('data-oa-drawn')) eq.removeAttribute('open');
       lazy.push(f);

@@ -4239,3 +4239,10 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | # | Decision | Reason |
 |---|---|---|
 | D3-447 | The four-width guide check on the final strict build (10,012,720 bytes) failed on six faults; each goes to its owner before the review rather than into it: type under 13 px (systems designer at 1024 px; editor at 390 and 360 px), later-round rule citations (engineer: how they print until built), the studio word in S32 (maker B), the region in 14.12's stage and four nested controls (editor, with the engineer naming any from the kit), and the kit's table frame without a tab stop (engineer) | Each is a rule the guide already holds (Rule 06's 13 px floor, the shell's stage rules, chapter 19's keyboard criteria, reader words without studio terms); fixing known faults first lets the reviewers find what scripts cannot |
+
+### Editor, round 1 fix pass 2
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-448 | The script's drawings are 256 px wide at every width | The guide's narrowest column is about 264 px at 360; a drawing that fits it never scales, and a true-size stage would cost each plate the shell's scroll note, about 150 bytes the limit lacks |
+| D3-449 | Plates with a table are readable plates | D3-126: a stage that holds a chart and its table is a group, so the toggle is never nested in an image |

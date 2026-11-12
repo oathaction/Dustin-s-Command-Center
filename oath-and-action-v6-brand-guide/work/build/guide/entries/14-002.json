@@ -35,14 +35,6 @@
    "label": "Evidence label",
    "value": "On the chip fill, in the label style",
    "token": "oa.chart.color.chip.fill.onNewsprint"
-  },
-  {
-   "label": "Title",
-   "value": "One full sentence in Inter Tight at the chart title size"
-  },
-  {
-   "label": "Measure line",
-   "value": "What is counted, the unit, the period and the place"
   }
  ],
  "correct": {

@@ -179,6 +179,34 @@ Oath & Action Edition 06, Phase 3, round 1. Editor (`oa-editor`), November 12, 2
 
 - The margin wording for S14 went to the engineer with D3-219 (done there as `with_margin`).
 
+## Fix pass 2
+
+November 12, 2026, from the main session's four-width guide check on the final build.
+
+| Fault | Plates | What changed |
+|---|---|---|
+| Type under 13 px at 390 and 360 px (11.94 and 10.72 px) | 14.3, 14.4, 14.7, 14.8, 14.10, 14.13 failure plates; 14.11 both | Every drawing the script makes is now 256 px wide, the narrowest column the guide sets, so it never scales below its true size; keys run two to a row. |
+| A `div[role=region]` inside a stage | 14.12 correct | The full-width drawing scrolls in the shell's own frame, `data-plate-scroll` with `data-frame-name="The drawing at full width"` (D3-126). |
+| axe nested-interactive, four | 14.6, 14.9, 14.11 and 14.12 correct | These four plates carry a table's toggle, so they are now readable plates: the shell gives their stage the group role, never the image role over a control. |
+
+Weight: the readable plates carry their alt as a hidden paragraph, so I shortened those four alts (the plates print what they listed), dropped two spec rows from Rule 14.2 that its rule text states, and dropped Rule 14.14's second paragraph, which its builders line repeats. Rules 14.1 to 14.14 take 195,970 bytes and the opener 3,825: 199,795, 205 under 0.20 MB.
+
+### Routine calls
+
+- D3-xxx | The script's drawings are 256 px wide at every width | The guide's narrowest column is about 264 px at 360; a drawing that fits it never scales, and a true-size stage would cost each plate the shell's scroll note, about 150 bytes the limit lacks
+- D3-xxx | Plates with a table are readable plates | D3-126: a stage that holds a chart and its table is a group, so the toggle is never nested in an image
+
+### Tested
+
+- `phase3_ch14_rules_build.py`, `phase3_ch14_build.py` (0 faults) and `guide_build.py --strict` (exit 0, 0 warnings).
+- `check2.js` (scratch, `phase-3/round-1/editor/fix/`) on all 29 plates in the strict page at 1440, 390 and 360 px: no text under 13 px as drawn (SVG text measured at its scale), no landmark or region role inside a stage, and axe-core 4.10.2's nested-interactive, scrollable-region-focusable, aria-allowed-role and region rules with no violation. 14.6 and 14.12's stages read role="group".
+- I looked at 14.3's, 14.8's and 14.10's failure plates and 14.11's and 14.12's correct plates at 360 px.
+
+### Not tested
+
+- `guide_check.js` itself at four widths; my script runs four of axe's rules on these plates, not the whole page, and not the type-scale check's list of allowed sizes.
+- Charcoal for the redrawn plates.
+
 ## Fix pass
 
 November 12, 2026, from the data lead's third batch (`work/handoffs/phase-3/20261112_Round-1-Data-Lead-Notes.md`, "## Third batch"). Every change is in `phase3_ch14_rules_build.py`.

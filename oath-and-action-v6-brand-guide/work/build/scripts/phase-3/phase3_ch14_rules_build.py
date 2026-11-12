@@ -498,8 +498,7 @@ def rule_14_2(B):
          "figure in seconds, and a chart that lacks a part shows the gap."],
         [("Order", "Evidence label and grade line, title, measure line, reading guide, chart, notes, source line, table"),
          ("Evidence label", "On the chip fill, in the label style", "oa.chart.color.chip.fill.onNewsprint"),
-         ("Title", "One full sentence in Inter Tight at the chart title size"),
-         ("Measure line", "What is counted, the unit, the period and the place")],
+         ],
         ["13.1", "13.2", "13.6", "13.7", "14.13"],
         "Fill every word field of the spec, as the kit’s README sets out under “The keys a spec takes”; the kit prints the parts in this "
         "order and leaves out an empty one.",
@@ -556,12 +555,12 @@ def rule_14_3(B):
            domain="D10", states=[], notes_internal="Rule 14.3's correct plate. Checked by script: 18 to 24 more than 10 points below every other "
                                                    "group in each year (gaps 11.2 to 16.1).")
     # the failure: the same four lines in the four group inks, with a key under the chart and no names on the lines
-    W, H, L, R, T, Bt = 320, 236, 36, 306, 14, 170
+    W, H, L, R, T, Bt = 256, 236, 36, 246, 14, 170
     xs = scale(2004, 2024, L, R)
     ys = scale(40, 80, Bt, T)
     lines = "".join(f'<path class="ln g{i + 1} kl" d="{path([(xs(y), ys(v[a][y])) for y in years])}"/>' for i, (a, _) in enumerate(AGES))
-    key = "".join(f'<line class="g{i + 1} kl" x1="{L + (i % 2) * 150}" x2="{L + (i % 2) * 150 + 22}" y1="{204 + (i // 2) * 22}" '
-                  f'y2="{204 + (i // 2) * 22}"/><text x="{L + (i % 2) * 150 + 30}" y="{209 + (i // 2) * 22}">{e(n)}</text>'
+    key = "".join(f'<line class="g{i + 1} kl" x1="{L + (i % 2) * 110}" x2="{L + (i % 2) * 110 + 22}" y1="{204 + (i // 2) * 22}" '
+                  f'y2="{204 + (i // 2) * 22}"/><text x="{L + (i % 2) * 110 + 30}" y="{209 + (i // 2) * 22}">{e(n)}</text>'
                   for i, (_, n) in enumerate(AGES))
     inner = (axis_y(ys, [40, 60, 80], L, R, lambda t: f"{t}%") + axis_x(xs, [2004, 2014, 2024], Bt + 18, str) + lines + key)
     B.add("s-14-3-correct", chart("s-14-3-lines"),
@@ -625,7 +624,7 @@ def rule_14_4(B):
     cut = 55
     need(lo > cut + 2, "the cut axis no longer sits under every value")
     ratio = (hi - cut) / (lo - cut)
-    W, H, L, R, T, Bt = 320, 210, 38, 314, 18, 178
+    W, H, L, R, T, Bt = 256, 210, 38, 250, 18, 178
     n = len(years)
     step = (R - L) / n
     ys = scale(cut, 70, Bt, T)
@@ -738,9 +737,9 @@ def rule_14_6(B):
     tab = table("Judges in active service, by court of appeals", ["Court", "Judges"], [(n, v) for n, v in data])
     B.add("s-14-6-correct", head("Finding", g, title, measure=measure)
           + f'<div class="art">{hbars(data, 30, str, point=("Ninth Circuit",))}</div>' + foot([note], src(ds)) + tab,
-          alt=f"Bars of active judges on the 13 federal courts of appeals, the Ninth Circuit’s 29 in red with a dark edge and the rest "
+          alt=f"Bars of active judges on the 13 federal courts of appeals, the Ninth Circuit’s 29 in red and the rest "
               f"in gray, from {data[1][1]} on the {data[1][0]} down to {data[-1][1]} on the {data[-1][0]}.",
-          notes="Drawn here from the directory's rows, counted by script, until the kit takes a red point by name (request ED-E1).")
+          readable=True, notes="Drawn here from the directory's rows, counted by script, until the kit takes a red point by name (request ED-E1).")
     reds = ("Ninth Circuit", "Fifth Circuit", "Sixth Circuit")
     B.add("s-14-6-failure", dnp() + tl(title)
           + f'<div class="art">{hbars(data, 30, str, point=reds, red=reds)}</div>',
@@ -789,8 +788,8 @@ def rule_14_7(B):
            encode={"category": "party", "value": "seats"}, domain="D02", states=[],
            notes_internal="Rule 14.7's correct plate: every party in the subject ink, named on its bar (Rule 01.2).")
     # the failure: red and blue, the names moved to a key
-    W, H = 320, 150
-    xs = scale(0, 230, 40, 300)
+    W, H = 256, 150
+    xs = scale(0, 230, 40, 220)
     inner = (f'<rect class="rd" data-red="failure" x="40" y="14" width="{xs(218) - 40:.1f}" height="26"/>'
              f'<rect class="bl" x="40" y="50" width="{xs(214) - 40:.1f}" height="26"/>'
              f'<text x="34" y="32" text-anchor="end">R</text><text x="34" y="68" text-anchor="end">D</text>'
@@ -870,12 +869,12 @@ def rule_14_8(B):
            labels={"panels": [{"value": a, "label": OWN_NAMES[a]} for a in OWN_AGES], "columns": 5},
            domain="D09", states=[], notes_internal="Rule 14.8's correct plate. Checked by script: under 35 lowest by more than 15 points every year.")
     # the failure: five lines in five inks with a key, one ink borrowed from the sequential scale
-    W, H, L, R, T, Bt = 320, 250, 36, 306, 14, 170
+    W, H, L, R, T, Bt = 256, 272, 36, 246, 14, 170
     xs = scale(y0, y1, L, R)
     ys = scale(20, 90, Bt, T)
     lines = "".join(f'<path class="ln g{i + 1}" d="{path([(xs(y), ys(o[a][y])) for y in years])}"/>' for i, a in enumerate(OWN_AGES))
-    key = "".join(f'<line class="g{i + 1} kl" x1="{L + (i % 3) * 96}" x2="{L + (i % 3) * 96 + 18}" y1="{204 + (i // 3) * 22}" '
-                  f'y2="{204 + (i // 3) * 22}"/><text x="{L + (i % 3) * 96 + 24}" y="{209 + (i // 3) * 22}">{e(OWN_NAMES[a])}</text>'
+    key = "".join(f'<line class="g{i + 1} kl" x1="{L + (i % 2) * 110}" x2="{L + (i % 2) * 110 + 18}" y1="{204 + (i // 2) * 22}" '
+                  f'y2="{204 + (i // 2) * 22}"/><text x="{L + (i % 2) * 110 + 24}" y="{209 + (i // 2) * 22}">{e(OWN_NAMES[a])}</text>'
                   for i, a in enumerate(OWN_AGES))
     inner = axis_y(ys, [20, 50, 80], L, R, lambda t: f"{t}%") + axis_x(xs, [y0, y1], Bt + 18, str) + lines + key
     B.add("s-14-8-correct", chart("s-14-8-panels"), alt=f"Five small panels, one age group in ink in each over the rest in gray. {title}.")
@@ -950,10 +949,9 @@ def rule_14_9(B):
                   + (" past" if s["past"] else " within")) for s in by])
     B.add("s-14-9-correct", head("Finding", g, title, measure=measure) + f'<div class="art">{keyw}<ul class="di" style="--n:{pos(n):.1f}%">{"".join(li)}</ul></div>'
           + foot(notes, variant(ds, "source_line_2024_only")) + tab,
-          alt=f"Dots with margin of error lines for ten states’ reported turnout in 2024, against a dashed line at the nation’s 65.3 percent. "
-              f"Filled dots, past the margin: {', '.join(s['name'] for s in by if s['past'])}. Open dots, within it: "
-              f"{', '.join(s['name'] for s in by if not s['past'])}.",
-          notes="Drawn here from the turnout file with each gap's margin computed by script, until the kit's interval form lands (round 2).")
+          alt="Dots with margin of error lines for ten states’ reported turnout in 2024 against the nation’s 65.3 percent: five past the "
+              "margin, five within it.",
+          readable=True, notes="Drawn here from the turnout file with each gap's margin computed by script, until the kit's interval form lands (round 2).")
     rk = "".join(f'<li><span class="r">{i + 1}</span><span>{e(s["name"])}</span><span class="v">{fmt1(s["v"])}%</span></li>'
                  for i, s in enumerate(by))
     B.add("s-14-9-failure", dnp() + tl("Michigan led the ten largest states in reported turnout in 2024, and Texas came last") + f'<div class="art"><ol class="rk">{rk}</ol></div>',
@@ -1012,7 +1010,7 @@ def rule_14_10(B):
            encode={"x": "year", "y": "establishments"}, domain="D01", states=[],
            notes_internal="Rule 14.10's correct plate: the window's reason in the measure line, one unbroken line.")
     # the failure: bands at each inauguration, named for each president
-    W, H, L, R, T, Bt = 320, 210, 50, 306, 30, 178
+    W, H, L, R, T, Bt = 256, 210, 50, 246, 30, 178
     xs = scale(1998, 2023, L, R)
     ys = scale(0, 10000, Bt, T)
     bands = "".join(f'<rect class="bd" x="{xs(a):.1f}" y="{T - 18}" width="{xs(b) - xs(a):.1f}" height="{Bt - T + 18}"/>'
@@ -1071,7 +1069,7 @@ def rule_14_11(B):
     g = "Documented: a Census Bureau survey"
     measure = ("Median household income in 2025 dollars, each year from 2005 to 2025, the two decades around the survey’s changes in "
                "2013 and 2017, United States")
-    W, H, L, R, T, Bt = 320, 220, 58, 306, 16, 184
+    W, H, L, R, T, Bt = 256, 220, 58, 246, 16, 184
     xs = scale(2005, 2025, L, R)
     ys = scale(60000, 90000, Bt, T)
     lines = "".join(f'<path class="ln" d="{path([(xs(y), ys(v)) for y, v in s])}"/>' for s in segs)
@@ -1090,9 +1088,9 @@ def rule_14_11(B):
                 [(f"{y}{method.get((y, k), '')}", f"${comma(v)}") for k, s in enumerate(segs) for y, v in s])
     B.add("s-14-11-correct", head("Finding", g, title, measure=measure) + f'<div class="art">{svg(W, H, inner)}</div>'
           + foot(notes, src(ds)) + tab,
-          alt=f"A line of median household income from 2005 to 2025 in 2025 dollars, broken at 2013 and 2017 where the survey changed, with "
-              f"both estimates printed in each of those years; it ends at ${comma(last[1])} in 2025.",
-          notes="Drawn here from the Census Bureau's table, segments split by its footnotes 6 and 7 (2013) and 5 (2017).")
+          alt=f"A line of median household income from 2005 to 2025, broken where the survey changed in 2013 and 2017, ending at "
+              f"${comma(last[1])}.",
+          readable=True, notes="Drawn here from the Census Bureau's table, segments split by its footnotes 6 and 7 (2013) and 5 (2017).")
     allpts = sorted(((int(r["year"]), int(r["median_income"]), seg_key(r)) for r in rs), key=lambda t: (t[0], t[2]))
     bad = f'<path class="ln" d="{path([(xs(y), ys(v)) for y, v, _ in allpts])}"/>'
     inner2 = axis_y(ys, [60000, 75000, 90000], L, R, lambda t: f"${t // 1000},000") + axis_x(xs, [2005, 2015, 2025], Bt + 18, str) + bad
@@ -1140,16 +1138,15 @@ def rule_14_12(B):
     vmax = max(d.values())
     cols = "".join(f'<div class="c{" s" if y == 2026 else ""}"><b>{comma(v)}</b><i style="height:{80 * v / vmax:.1f}%"></i></div>' for y, v in data)
     names = "".join(f"<span>{y}</span>" for y, _ in data)
-    desk = (f'<div class="sc" role="region" tabindex="0" aria-label="The drawing at full width">'
+    desk = (f'<div class="sc" data-plate-scroll data-frame-name="The drawing at full width">'
             f'<div class="fr"><p class="fh">At full width</p><div class="cl">{cols}</div><div class="cn">{names}</div></div></div>')
     phone = (f'<div class="fr ph"><p class="fh">On a phone, 358 px</p>'
              + hbars([(str(y), v) for y, v in data], vmax * 1.02, comma, subject=("2026",)).replace('class="hb ', 'class="hb yr ') + "</div>")
     tab = table("Federal receipts by fiscal year, billions of dollars", ["Fiscal year", "Billions of dollars"], [(y, comma(v)) for y, v in data])
     B.add("s-14-12-correct", head("Finding", g, title, measure=measure) + f'<div class="art st2">{desk}{phone}</div>' + foot([], src(ds)) + tab,
-          alt=f"The same twelve years of federal receipts drawn twice, as columns at full width and as bars on a phone, each value "
-              f"printed. Both rise from {comma(d[2015])} billion dollars in 2015 to {comma(d[2026])} billion in 2026, "
+          alt=f"Twelve years of federal receipts as columns at full width and as bars on a phone. Both rise from {comma(d[2015])} billion dollars in 2015 to {comma(d[2026])} billion in 2026, "
               f"with a fall in 2023.",
-          notes="The two drawings, stacked, drawn here from the Treasury file, so the plate shows both widths at once; on a phone the "
+          readable=True, notes="The two drawings, stacked, drawn here from the Treasury file, so the plate shows both widths at once; on a phone the "
                 "full-width drawing keeps its size in a named frame that scrolls sideways, and the words stay in the column.")
     last3 = data[-3:]
     B.add("s-14-12-failure", dnp() + f'<div class="fr ph"><p class="fh">On a phone, 358 px</p>'
@@ -1203,7 +1200,7 @@ def rule_14_13(B):
                               {"field": "employees", "label": "Employees", "format": "integer"}]},
            encode={"x": "year", "y": "employees"}, labels={"named": [2008, 2013]}, domain="D01", states=[],
            notes_internal="Rule 14.13's correct plate: a still chart with every value printed and its table as live text.")
-    W, H, L, R, T, Bt = 320, 190, 10, 310, 12, 160
+    W, H, L, R, T, Bt = 256, 190, 10, 246, 12, 160
     step = (R - L) / len(NEWS_YEARS)
     ys = scale(0, 420000, Bt, T)
     bars = "".join(f'<rect class="{"fs" if y in (2008, 2013) else "fc"}" x="{L + i * step + 6:.1f}" y="{ys(r[y]):.1f}" width="{step - 12:.1f}" '
@@ -1266,8 +1263,7 @@ def rule_14_14(B):
         "14.14", "Export every chart from the kit, so its files match the page.",
         ["Make every file of a chart with the chart kit’s one command, from the same spec and data file the page draws. The kit writes three "
          "files for each ground and width: an SVG with the chart’s title and description inside it, a PNG at twice size, and a CSV of exactly "
-         "the rows the chart draws. Each name carries the date, what the chart is, its ground and its width, as Rule 18.14 asks of a download.",
-         "To change a chart, change its spec or its data and run the command again; every file and the page then change together."],
+         "the rows the chart draws. Each name carries the date, what the chart is, its ground and its width, as Rule 18.14 asks of a download."],
         ["A file made by hand drifts from the page the first time someone fixes one and forgets the other. One command from one spec keeps "
          "the drawing, the still image and the numbers in step, and the kit checks the CSV against the table each time it runs."],
         [("Command", "node work/build/chart-kit/oa-chart.mjs build <spec>"),

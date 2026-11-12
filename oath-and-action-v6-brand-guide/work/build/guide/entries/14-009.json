@@ -45,9 +45,10 @@
  "correct": {
   "specimen": "s-14-9-correct",
   "caption": "Each state’s line shows its margin of error. Five states sit past the margin from the nation and take a filled dot; the five within it take an open one, and the chart ranks none of them.",
-  "alt": "Dots with margin of error lines for ten states’ reported turnout in 2024, against a dashed line at the nation’s 65.3 percent. Filled dots, past the margin: Michigan, Pennsylvania, Florida, New York, Texas. Open dots, within it: Ohio, Illinois, California, North Carolina, Georgia.",
+  "alt": "Dots with margin of error lines for ten states’ reported turnout in 2024 against the nation’s 65.3 percent: five past the margin, five within it.",
   "illustrative": false,
-  "notes": "Drawn here from the turnout file with each gap's margin computed by script, until the kit's interval form lands (round 2)."
+  "notes": "Drawn here from the turnout file with each gap's margin computed by script, until the kit's interval form lands (round 2).",
+  "readable": true
  },
  "failure": {
   "specimen": "s-14-9-failure",
