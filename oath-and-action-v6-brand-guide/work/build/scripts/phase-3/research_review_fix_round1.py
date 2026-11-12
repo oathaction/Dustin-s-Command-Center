@@ -171,12 +171,15 @@ def item_s34(dl):
     meta['date_retrieved'] = '2026-11-12'
     meta['vintage'] = ('Page as read on November 12, 2026, every row; first read November 11, 2026, when the 119th Congress row was '
                        'frozen as 294 motions, 294 votes and 247 invoked')
-    meta['qualification'] = ('Counts mix bills and nominations, and the vote needed changed over time (two-thirds of those voting until 1975, '
-                             'then three-fifths of senators for most matters; a simple majority for nominations since 2013 and 2017). '
-                             'The 119th Congress is still in session; its row counts votes through November 10, 2026')
+    # second pass (statistics N3): the votes needed as note 1 and Riddick's Senate Procedure give them
+    meta['qualification'] = ('Counts mix bills and nominations, and the vote needed changed over time: two-thirds of senators voting from 1917, '
+                             'two-thirds of the senators duly chosen and sworn from 1949, two-thirds of those present and voting again from 1959, '
+                             'three-fifths of the senators duly chosen and sworn for most matters from 1975, and a simple majority for '
+                             'nominations after the precedents of 2013 and 2017. The 119th Congress is still in session; its row counts votes '
+                             'through November 10, 2026')
     meta['printed_source_line'] = ('Source: United States Senate, Senate Action on Cloture Motions, 65th Congress (1917) to the 119th Congress '
                                    'through November 10, 2026, United States Senate. Retrieved November 12, 2026. Counts include bills and '
-                                   'nominations; the votes needed changed in 1975, 2013 and 2017.')
+                                   'nominations; the votes needed changed in 1949, 1959, 1975, 2013 and 2017.')
     meta['url'] = ['https://www.senate.gov/legislative/cloture/clotureCounts.htm',
                    'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_1.xml',
                    'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.xml']
@@ -193,6 +196,14 @@ def item_s34(dl):
              '(vote 522 of the first session); the Senate then voted 47 to 52 not to sustain the chair (vote 524) and invoked cloture on the '
              'same group 52 to 47 with a majority requirement of one-half (vote 525). Read from each vote’s record on senate.gov, '
              'November 12, 2026. A chart that names the changes in the votes needed may add this one.')
+    set_note(meta, 'The vote needed, 1917 to 1975',
+             'The vote needed, 1917 to 1975, from Riddick’s Senate Procedure (S. Doc. 101-28, 1992), chapter "Cloture Procedure", '
+             'https://www.govinfo.gov/content/pkg/GPO-RIDDICK-1992/pdf/GPO-RIDDICK-1992-20.pdf (SHA-256 prefix 950f4ccc948db7dd), read '
+             'November 12, 2026: the 1917 rule "provided for cloture on a vote of \"two-thirds of those voting.\" The number of Senators '
+             'required to invoke cloture was changed in 1949, to \"two-thirds of the Senators duly chosen and sworn.\" In 1959, this number '
+             'was changed back to the original number of \"two-thirds of the Senators present and voting.\"" and "the number of votes needed '
+             'to invoke cloture was again changed in 1975, to a Constitutional three-fifths of the Senators duly chosen and sworn" (the PDF’s '
+             'text runs "ofthe" together; spaced here).')
     save(CLOTURE, meta, nl)
 
 

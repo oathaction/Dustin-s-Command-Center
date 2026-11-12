@@ -237,3 +237,141 @@ Created:
 Modified: none.
 
 Scratch only: the reduced page, the audit scripts, the results JSON, the kit builds of S17P, S03P, S38 and P01, the PDFs and the captures, in the scratch folder named at the top.
+
+## Second pass
+
+November 12, 2026, under DR-191, after the fix pass.
+
+**What I reviewed.**
+- The fix brief, `work/handoffs/phase-3/20261112_Round-1-Fix-Brief.md`.
+- The decision log from D3-476 to D3-584.
+- The "Review fix pass" sections of the engineer's, makers' and systems designer's notes.
+- The fresh strict build, `/tmp/claude-0/-home-user-Dustin-s-Command-Center/256961f5-3911-5bd9-908d-f34ce0435ace/scratchpad/phase-3/round-1-second/build/guide.html` (9,986,588 bytes), which I left unchanged.
+
+**Where I tested.**
+- The full build, for scripts off and widths.
+- A copy holding chapters 13, 14 and 15, made with scripts off as before, for forced colors, print, keyboard and axe-core (`second/guide-ch13-15.html` in my scratch folder, 2,632,909 bytes).
+- My own kit builds of all 42 specs, plus pages for 11 of them, in the scratch folder.
+
+### New score
+
+**4 of 5.** All but one of my eleven items are closed. M1 is closed in both contrast themes. Four new faults hold the score at 4:
+- three in the build: S10's source line, S34 at the 390 px column, and Rule 14.9's static plate at 320 px;
+- one that has landed in the kit's files since the build: S37's low-step words in forced colors.
+
+### Status of each item
+
+**M1, closed.** In forced colors every kit drawing now sits on Canvas (D3-535). Results:
+- Chapters 13 to 15, in light and dark themes: 70 drawings at 1440 px and 59 at 390 px, sketches and phone views included, every one on its own Canvas ground (white, or black in the dark theme).
+- Every subject and point mark clears 21 to 1 against it. No data mark falls under 3 to 1.
+- No word sits on a solid paint under 4.5 to 1: 2,993 drawing texts at 1440 px and 2,196 at 390 px.
+- In captures in the dark theme, S17's 118th Congress is a white column among outlined ones, and S21's named row ends in the Highlight dot.
+- The only words not on a solid paint are on hatched steps: S37's "Medium" and "Very low" (73 at 1440 px), and S16's 34 state codes on its kit page. They read through their halo. S37's are legible in my captures; I did not look at S16's.
+
+**S1, closed.**
+- The kit now fails the production test's V1, V3 and V5 on their source line ("the source line names 2026, but the chart draws 2016 to 2026 ... such as one of the sidecar's source_line_templates").
+- V6's true line ("fiscal 2016 and 2026") passes the source check.
+- The outlays sidecar carries `span` and `two_years` templates.
+
+**S2, closed.**
+- V1 to V6 now fail the dots check, on 6 to 10 rows per drawing.
+- V3's end values fit at every width, with no layout fault.
+- The dumbbell's header gives the domain's unit.
+- Entry 14.19 sends rows of very different size to Rule 14.26 (D3-579).
+
+**S3, closed.**
+- All 36 entry stages in chapter 14 carry no description of their own.
+- 35 are named "..., specimen", and S38's alone "..., interactive specimen".
+
+**S4, open.**
+- Chromium's PDF of chapters 13 to 15 (295 Letter pages) still prints five titles alone, each page 88 percent blank, with the chart on the next page: S19 (page 109), S15 (198), S36 (209), S37 (223) and S39 (233).
+- `beforeprint` marks these drawings `data-oa-tall`, and `kit.css` sets `break-inside: auto` on the drawing box. But the `<svg>` inside is one unbreakable box, and Chromium moves it whole to the next page.
+- Nothing is lost: the text layer holds all 126 source lines and the 40 "do not publish" bars.
+- Fix: break the tall drawing itself, for example by drawing it as two SVGs at a row boundary for print, or keep the title block with it by moving the title into the same unbreakable wrapper only when the drawing fits a page. Owner: engineer.
+
+**S5, closed.**
+- At 320 px each chapter 15 frame still scrolls 8 px sideways (a 328 px stage in a 320 px frame), with its hint and tab stop.
+- No word of prose sits past the frame's visible edge on any of the 25 plates. I measured every text node's glyph boxes.
+- At 360 px nothing scrolls.
+
+**S6, closed.**
+- S37's chart note now says "A blank cell is a route the atlas does not name for that reform."
+- S25's two cells print "Not defined: none in January 2022", and its table has no blank cell.
+
+**S7, closed.**
+- S38's pressed chip is named "Well supported", with no check mark.
+- Escape in the sheet closes it (`hidden`, `aria-expanded` false) and returns focus to Filters.
+- The live list now takes the still drawing's place: the still hides, and all 17 rows and "17 of 17 issue records" show.
+
+**S8, closed.**
+- The README lists 45 forms and S01 to S42.
+- The README explains dollars across years and two values far apart in size.
+- Chapter 14 now says "A chart of dollars across years says in its measure line 'not adjusted for inflation', or names the dollars' year and the price index that adjusted them".
+
+**S9, closed.** Each term the simulated reader stopped at is now explained where the reader meets it:
+- "householder" and margin of error (S20);
+- FRED in the grade line (S31);
+- routes, Article V and an estimate given in words (S37);
+- variables (Rule 15.3);
+- "money, raises" and the ticks, in the "Reading a step" key (Rule 15.13's plate).
+
+**S10, closed.** In forced colors, beside a red point, the context marks of the Charcoal drawing now take Canvas with a CanvasText outline (D3-536). On S21's and S23's kit pages, the point stands at 19.04 to 1 from them in the light theme and 13.76 to 1 in the dark.
+
+### Maker A's flag: words on solid GrayText fills
+
+In the build, I found no word printed on a solid GrayText fill in any form. I checked every kit drawing in chapters 13 to 15 at 1440 and 390 px in both themes. I also checked the kit pages of S01, S06, S07, S08, S10, S12, S15, S16 and S37 on both grounds in both themes. Those pages cover the five specs outside the guide and the forms that set words on tiles, cells and steps. S37 is the one form that sets words on the GrayText step, and in the build its plate holds them at full contrast.
+
+### New faults from the fix pass
+
+**N1. S10 fails the kit's own check.**
+- **Where.** `specs/s10.json`.
+- **What is wrong.** D3-560 rewrote the claims line in `v7-claims-by-grade.meta.json` ("432 of the 433 claims checked on October 15, 2026"). S10 still sets the old line by hand ("claims checked through October 15, 2026"). It now fails: "the source line differs from v7-claims-by-grade.json's printed_source_line and its variants". `oa-chart.mjs build --all` reports it, and so does the main session's own kit build (`round-1-second/kit-out/s10/s10-check.json`). S10 is not in the guide yet.
+- **Fix.** Drop S10's `source_line` so it prints the sidecar's line.
+- **Owner.** Maker A, who held S10's words in round 1.
+
+**N2. S34's phone row runs past its drawing in the 390 px guide column.**
+- **Where.** `specs/s34.json`, `forms/bubble-timeline.js`.
+- **What is wrong.** At a 390 px window the guide gives the chart 326 px. The kit's own draw there reports "text outside the artboard: '295 through November 10, 2026' at 102 (226.3 wide; artboard 326)", 2 px past the edge. The figure carries `data-oa-warnings="1"`. The words came with D3-511. The kit's check draws 358, 296 and 256 px, never 326, so it passed.
+- **Fix.** Wrap or shorten the row at that width. Add 326 px, and any other width the shell gives a chart (294, 264 and 224 px at 390, 360 and 320), to the kit's checked widths.
+- **Owner.** Maker B (S34), engineer (widths).
+
+**N3. Rule 14.9's new static plate shrinks its words and blocks its table at 320 px.**
+- **Where.** `s-14-9-correct`, the figure `s-14-9-dots` made by `oa-chart.mjs figure` (D3-558).
+- **What is wrong.** At 320 px, the plate's 256 px phone drawing scales to 224 px, so its words fall to 11.38 px. They hold 13 px at 360 px and wider. Its table frame also scrolls with no tab stop (WCAG 2.1.1; axe's scrollable-region-focusable): the kit wires a frame's tab stop only for figures that carry a data island, and a static figure carries none.
+- **Fix.** Wire `K.frame` for static figures too. Give the plate a drawing at 224 px, or let the stage scroll rather than scale.
+- **Owner.** Engineer, with the editor for the plate.
+
+**N4. In the kit's files since the build, S37's low-step words turn invisible in forced colors.**
+- **Where.** `kit.js` line 474 (`oac-fc-on-gray`, the response to maker A's flag) and `kit.css` line 139, both dated after the build. They meet S37's Canvas plate from D3-568.
+- **What is wrong.** `Ctx.text` finds the GrayText cell under each "Low", ignoring the plate, which is `oac-f-none`, and sets the word in Canvas. The word then sits on the plate's Canvas. On kit pages built from the current files, 90 words at 1440 px and 90 at 390 px sit at 1 to 1 against their plate in both themes, readable only through the 3 px halo. At 390 px these include the chips ("Federal statute: Low"). This is the fault D3-568 fixed, back again. The build I reviewed predates the change and is fine.
+- **Fix.** Keep one of the two: either `fill_under` reads an `oac-fc-plate` as Canvas, or S37 drops its plates now that words on GrayText take Canvas. The Canvas word on GrayText measures 14 to 1 in the light emulation.
+- **Owner.** Engineer, with maker A.
+
+### Tested in the second pass
+
+- **Forced colors, light and dark,** on the chapters 13 to 15 copy at 1440 and 390 px: the geometry probe on every drawing text and data mark, and captures of S17, S21 and S37.
+- **Kit pages, forced colors:** S01, S06, S07, S08, S10, S12, S15, S16, S21, S23 and S37 on both grounds, in both themes. S37 was built a second time to read its words' classes. In my first batch, S16 and S37 failed page-to-Node parity; built alone, both passed, and I treat that as a flake under load.
+- **The kit's check** on production specs V1, V3, V5 and V6, and `oa-chart.mjs build` of all 42 specs (41 pass; S10 fails, N1).
+- **Scripts off,** on the full build: all 49 kit figures. Rows equal my independent count from the raw data for all 36 specs counted. Every header has `scope`. Blank cells remain only in S37 (explained) and in the editor's Rule 14.11 plate (16 empty "Change in the survey" cells for years with no change).
+- **Widths 1440, 1024, 390, 360 and 320 px, and 720 px at device scale 2,** on the full build: every figure drew except the static one, which is drawn in the page. There were no page errors and no page-level scroll. The only guard flag was S34 at 390 px (N2). Visible drawing text was 13 px or more everywhere except Rule 14.9's plate at 320 px (N3). Every scrolling kit table frame has its tab stop, except that plate's (N3).
+- **Accessibility tree:** Chromium's tree for all 36 entry stages.
+- **S38:** by keyboard, its tree snapshot and Escape.
+- **Chapter 15 at 320 and 360 px:** stage and frame widths, and text-node glyph boxes against the frame's visible edge.
+- **axe-core** on chapters 13 to 15 at 1440 and 390 px, with every table and S38's sheet open: 0 violations. Also checked: no broken ID references, no transitions or animations with reduced motion.
+- **Print:** the copy's chapters 13 to 15 to a Letter PDF (295 pages). `beforeprint` opened all 54 tables and drew 53 figures; the 54th is the static figure, already in the page. I counted pages by blank area and read the text layer.
+
+### Not tested in the second pass
+
+- The four-width guide check and axe on the whole page. The main session is running both.
+- Paper, real screen readers, real devices and Windows' own contrast themes.
+- The chapters outside 13 to 15 in forced colors.
+- A capture of S16's hatched words.
+- The editor's second pass on the changed words, which is the editor's.
+
+### Change log, second pass
+
+Modified: this report (this section).
+
+Created: none in the repository.
+
+Scratch only: the chapters 13 to 15 copy, the probes, the kit builds and pages, the PDF and the captures, under `/tmp/claude-0/-home-user-Dustin-s-Command-Center/256961f5-3911-5bd9-908d-f34ce0435ace/scratchpad/phase-3/round-1-review/access-production/second/`.
