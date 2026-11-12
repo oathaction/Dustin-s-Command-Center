@@ -651,6 +651,11 @@ def build_proposal():
          'proposed': 'Spacing of the hatch, the pattern a key names: contested evidence in a grade chart, or the Stone group of the categorical set.'},
         {'path': 'oa.chart.hatch.weight', 'field': '$description', 'now': node('oa.chart.hatch.weight')['$description'],
          'proposed': 'Stroke of the hatch, in the ink of the mark it fills.'},
+        {'path': 'oa.chart.color.lightFill', 'field': '$description', 'now': node('oa.chart.color.lightFill.onNewsprint')['$description'],
+         'proposed': ('Light fill: a category under the subject, with its value printed. On Newsprint it also fills every other '
+                      'bar wherever a chart names one bar, in red or in ink, so the named bar holds in gray print (R3); on '
+                      'Charcoal those bars keep the context ink, since Stone prints as gray as Pillar Red.'),
+         'decided': 'Creative director\'s rescore, R3, November 12, 2026'},
         {'path': 'oa.chart.color.point', 'field': '$description', 'now': node('oa.chart.color.point.onNewsprint')['$description'],
          'proposed': (node('oa.chart.color.point.onNewsprint')['$description'] + ' When an error or an ask holds the view\'s red, '
                       'the point yields to the subject ink and keeps its label and its place (Rule 11.16).')},
@@ -785,6 +790,7 @@ def build_proposal():
             'Magnitude: gray Stone steps with no direction; the figure prints in every tile.',
             f'Grade line code: the line\'s width sets its pattern; no coded line drops under 2 px; a run under {MIN_RUN} widths, key samples included, prints its grade in words.',
             'Red: one working red per view (Rule 05.3). A chart\'s red point yields to the subject ink when an error or an ask is in the view, and keeps its label and place.',
+            'Named bar (R3): wherever a chart names one bar, in red or in ink, the other bars take the light fill on Newsprint with every value printed, so the named bar holds in gray print; on Charcoal they keep the context ink, since the light fill there prints as gray as Pillar Red.',
         ],
     }
 
@@ -1545,8 +1551,17 @@ def v7_compare():
 
 
 # ------------------------------------------------------------------------------------------------ red: point and red on red
-def ranked_bars_phone(ground, mode, ctx='ctx', W=PHONE_W):
+def other_bars(ground):
+    """R3 (creative director, November 12): wherever one bar is named, in red or in ink, the other bars take the light
+    fill on Newsprint, which prints each value beside its bar and keeps the named bar apart in gray. On Charcoal the light
+    fill is Stone, which prints as gray as Pillar Red (0.386 against 0.371 in Chromium's filter), so the other bars keep
+    the context ink there (0.540)."""
+    return 'lfill' if ground == 'newsprint' else 'ctx'
+
+
+def ranked_bars_phone(ground, mode, ctx=None, W=PHONE_W):
     """The phone form of the ranked bars (DR-64): each name above its bar, so no name runs off a 390 px screen."""
+    ctx = ctx or other_bars(ground)
     order = sorted(SECTORS, key=lambda s: -CHANGE4[s])
     X = scale(-15, 20, 0, W - 56)
     body, y = [], 0
@@ -1569,9 +1584,10 @@ def ranked_bars_phone(ground, mode, ctx='ctx', W=PHONE_W):
                                         f'September 2026, each name above its bar; {LEAD} named in the title.')
 
 
-def ranked_bars(ground, mode, ctx='ctx'):
+def ranked_bars(ground, mode, ctx=None):
     """Ranked bars of the change since January 2022; mode 'red' gives the named bar the working red, 'ink' yields it to
-    the subject ink. ctx='lfill' draws the other bars in the light fill (brand P5's variant)."""
+    the subject ink. The other bars follow other_bars() unless ctx names a role (R3)."""
+    ctx = ctx or other_bars(ground)
     order = sorted(SECTORS, key=lambda s: -CHANGE4[s])
     name_w, bar_w, pitch, bh = 232, 196, 22, 14
     lo, hi = -15, 20
@@ -1608,7 +1624,7 @@ def error_mark(color):
             f'<rect x="8.1" y="4.2" width="1.8" height="6.4" style="fill:{color}"/><rect x="8.1" y="12" width="1.8" height="1.8" style="fill:{color}"/></svg>')
 
 
-def view_card(label, ground, chart_mode, form, ask_mode, caption, fail=False, ctx='ctx'):
+def view_card(label, ground, chart_mode, form, ask_mode, caption, fail=False, ctx=None):
     chart = (f'<p class="fh"><span class="ek">Finding</span><span class="gl">{e(JOBS_GRADE)}</span></p>'
              f'<p class="ft" style="font-size:22px;line-height:26px">{e(LEAD_TITLE)}</p>'
              f'<p class="fm" style="font-size:14px;line-height:21px">Change in jobs, percent, January 2022 to September 2026, '
@@ -1636,7 +1652,8 @@ def red_views():
     cards = [
         view_card('1. The chart in a view of its own', 'newsprint', 'red', None, None,
                   'Correct. With no error and no step to take in the view, the bar the title names takes the working red, '
-                  'with its 1 px Charcoal keyline, since Pillar Red measures 2.96 to 1 on Newsprint.'),
+                  'with its 1 px Charcoal keyline, since Pillar Red measures 2.96 to 1 on Newsprint. The other bars take '
+                  'the light fill, each with its value, so the red bar prints darker than they do in gray.'),
         view_card('2. Fails Rule 05.3', 'newsprint', 'red', 'error', 'red',
                   '<b>Fails Rule 05.3.</b> The same chart meets a form with an error, and three reds compete: the error, '
                   'the ask and the chart\'s point. A reader cannot tell which one to act on first.', fail=True),
@@ -1650,16 +1667,16 @@ def red_views():
                   'Correct, in the dark theme. Pillar Red measures 4.49 to 1 on Charcoal, so the error bar needs no edge; '
                   'the point yields to Newsprint, the subject ink on Charcoal.'),
         view_card('6. The point in red, on Charcoal', 'charcoal', 'red', None, None,
-                  'Correct. In a view of its own on Charcoal, the named bar takes the working red with no keyline.'),
-        view_card('7. A variant to weigh: the other bars in the light fill', 'newsprint', 'red', None, None,
-                  f'Correct, and a choice for the creative director. With the other bars in the light fill, which prints '
-                  f'each value beside its bar, the red bar prints darker than its neighbors in gray: Chromium\'s filter gives '
-                  f'{luma(P["pillarRed"]):.3f} against {luma(hx("oa.chart.color.lightFill.onNewsprint")):.3f}, where view 1 '
-                  f'gives {luma(P["pillarRed"]):.3f} against {luma(P["stone"]):.3f}. The grayscale capture shows both.',
-                  ctx='lfill'),
-        view_card('8. The same variant, resolved', 'newsprint', 'ink', 'error', 'ink',
-                  'Correct. When an error holds the red, the named bar yields to the subject ink, which stands out against '
-                  'the light fill in color and in gray.', ctx='lfill'),
+                  f'Correct. In a view of its own on Charcoal, the named bar takes the working red with no keyline. The '
+                  f'other bars keep the context ink here: the light fill on Charcoal is Stone, which prints as gray as '
+                  f'Pillar Red ({luma(P["stone"]):.3f} against {luma(P["pillarRed"]):.3f}), where the context ink prints at '
+                  f'{luma(hx("oa.chart.color.context.onCharcoal")):.3f}.'),
+        view_card('7. Fails in gray print: the other bars in Stone', 'newsprint', 'red', None, None,
+                  f'<b>Fails in gray print.</b> The first proof drew the other bars in Stone, the context ink. In gray the '
+                  f'red bar and the Stone bars print almost alike ({luma(P["pillarRed"]):.3f} against '
+                  f'{luma(P["stone"]):.3f} in Chromium\'s filter), so only the keyline and the bold label mark the point. '
+                  f'The light fill of view 1 prints at {luma(hx("oa.chart.color.lightFill.onNewsprint")):.3f}. The '
+                  'creative director adopted it (R3).', fail=True, ctx='ctx'),
     ]
     return f'<div class="views">{"".join(cards)}</div>{src}'
 
@@ -1751,6 +1768,12 @@ def checks(M):
             worst = min(v['delta_e_ok'] for k, v in m['closest'].items() if k != 'normal')
             if pid != 'categorical':
                 add(f'{pid} on {g}: neighbors stay 0.05 or more apart (OKLab) under every simulation', worst >= 0.05, f'closest {worst:.3f}')
+    for g in ('newsprint', 'charcoal'):
+        other = hx(f'oa.chart.color.{"lightFill" if other_bars(g) == "lfill" else "context"}.{SURF[g]}')
+        for named, h in (('red point', P['pillarRed']), ('subject ink', hx(f'oa.chart.color.subject.{SURF[g]}'))):
+            d = abs(luma(h) - luma(other))
+            add(f'named bar on {g}: the {named} stands 0.10 or more apart in gray from the other bars (R3)', d >= 0.10,
+                f'{luma(h):.3f} against {luma(other):.3f} in Chromium\'s grayscale filter')
     dc = M['diverging']['charcoal']['rows']
     add('diverging on Charcoal: ends and near steps match in lightness within 0.01',
         abs(dc[0]['oklab_L'] - dc[4]['oklab_L']) <= 0.01 and abs(dc[1]['oklab_L'] - dc[3]['oklab_L']) <= 0.01,
@@ -2037,9 +2060,10 @@ def build_page(M, CK):
         'when a chart\'s red meets a red the view already holds.',
         '<p>The answer needs no new token. The chart\'s point yields to the subject ink and keeps its bold label and its '
         'place, as the take-part mark and the intervention marker yield in Rule 11.16. The title still names it, so the '
-        'reader loses nothing.</p><p>In the grayscale capture the red bar and the Stone bars print almost the same gray '
-        f'(Chromium\'s filter gives {luma(P["pillarRed"]):.3f} and {luma(P["stone"]):.3f}), so the keyline, the bold label and '
-        'the title carry the point in black-and-white print.</p>',
+        'reader loses nothing.</p><p>Wherever one bar is named, in red or in ink, the other bars take the light fill on '
+        'Newsprint, with each value printed, so the named bar holds in gray print (the creative director\'s R3). On '
+        'Charcoal they keep the context ink, since the light fill there prints as gray as Pillar Red. View 7 shows the '
+        'first proof\'s Stone bars, which failed in gray.</p>',
         red_chips() + red_views())
 
     s_pr = section(

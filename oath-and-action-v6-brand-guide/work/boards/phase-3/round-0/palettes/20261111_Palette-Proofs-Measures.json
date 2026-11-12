@@ -225,6 +225,26 @@
    "detail": "closest 0.126"
   },
   {
+   "check": "named bar on newsprint: the red point stands 0.10 or more apart in gray from the other bars (R3)",
+   "passes": true,
+   "detail": "0.371 against 0.635 in Chromium's grayscale filter"
+  },
+  {
+   "check": "named bar on newsprint: the subject ink stands 0.10 or more apart in gray from the other bars (R3)",
+   "passes": true,
+   "detail": "0.071 against 0.635 in Chromium's grayscale filter"
+  },
+  {
+   "check": "named bar on charcoal: the red point stands 0.10 or more apart in gray from the other bars (R3)",
+   "passes": true,
+   "detail": "0.371 against 0.540 in Chromium's grayscale filter"
+  },
+  {
+   "check": "named bar on charcoal: the subject ink stands 0.10 or more apart in gray from the other bars (R3)",
+   "passes": true,
+   "detail": "0.851 against 0.540 in Chromium's grayscale filter"
+  },
+  {
    "check": "diverging on Charcoal: ends and near steps match in lightness within 0.01",
    "passes": true,
    "detail": "ends 0.633 and 0.634; near steps 0.478 and 0.476"

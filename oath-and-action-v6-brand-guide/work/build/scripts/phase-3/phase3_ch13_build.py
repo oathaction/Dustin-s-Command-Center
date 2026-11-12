@@ -456,7 +456,8 @@ def opener(book):
          "Connection L02 changed in the atlas")
     name = l02["name"]
     need(" can " in f" {name} ", "L02's name no longer carries “can”")
-    head, tail = name.split(" can ", 1)
+    need(" can " in name, "Connection L02's name no longer carries the verb can")
+    first, last = name.rsplit(" ", 1)   # the numeral sits after the closing quotation mark, held to the last word (CD R1)
     parts = [("“Can”, the verb a plausible grade allows", "13.2"),
              ("The grade word and its plain gloss, in the label", "13.3"),
              ("The dashed line of a plausible connection", "13.4"),
@@ -467,7 +468,7 @@ def opener(book):
             f'<div class="evr"><span class="ev">{e(GRADE["plausible"][0])}</span>{mk(2)}<span class="gr">some evidence, the '
             f'atlas’s grade for this connection</span></div>'
             f'<p class="hed">{chip("Connection", "L02")}{mk(5)}<span class="sub">in {chip("Loop", "R1")}</span></p>'
-            f'<p class="ct">“{e(head)} can{mk(1)} {e(tail)}”</p>'
+            f'<p class="ct">“{e(first)} <span class="nw2">{e(last)}”{mk(1)}</span></p>'
             f'<p class="ms">From {chip("Variable", "B1", ",")} {e(lc(node_title("B1")))}, to {chip("Variable", "E1", ",")} '
             f'{e(lc(node_title("E1")))}</p>'
             f'<div class="rw blk">{line_svg("plausible", 168, delay="M", sign="+")}{mk(3)}</div>'
@@ -662,8 +663,7 @@ def rule_13_2(book):
     read_b = "A 2024 test on X and a break from Facebook found small drops in polarization."
     need(len(read_a.split()) == len(read_b.split()), "the two contested readings differ in length (Rule 01.16)")
     ladder = [
-        ("documented", "The Department of Transportation had spent 46.6 percent of the infrastructure law’s transportation "
-                       "funds by July 31, 2026", "LE02", le02),
+        ("documented", "Congress set the infrastructure law’s transportation funds and the terms for spending them", "LE02", le02),
         ("well-supported", "Local reporting raises incumbents’ risk of losing office", "L26", l26),
         ("plausible", "Better public services can build earned trust in government", "L20", l20),
         ("plausible_contested", None, "L47", l47),
@@ -678,12 +678,13 @@ def rule_13_2(book):
             'grade allows</caption><thead><tr><th scope="col">Grade</th><th scope="col">Our title</th>'
             f'<th scope="col">The atlas record</th></tr></thead><tbody>{"".join(trs)}</tbody></table>'
             f'<p class="src">Source: {e(ATLAS)}, connections LE02, L26, L20, L47 and L18, snapshot of {SNAP}, United States. '
-            'Connection LE02’s record cites the Department of Transportation’s count as of July 31, 2026, when the department had '
-            'committed 75.7 percent of the funds to projects; money spent can trail money committed for years.</p>')
+            'Connection LE02’s record cites the Department of Transportation’s count as of July 31, 2026: the department had '
+            'committed 75.7 percent of those funds to projects and spent 46.6 percent, since money spent can trail money '
+            'committed for years.</p>')
     book.add("s-13-2-correct", body, rule="13.2", readable=True,
              alt=("A table of five connections from our systems atlas, one at each grade, with the title its grade allows and the "
-                  "atlas record beside it, each name in quotation marks. Documented: The Department of Transportation had spent "
-                  "46.6 percent of the infrastructure law’s transportation funds by July 31, 2026. Well supported: Local "
+                  "atlas record beside it, each name in quotation marks. Documented: Congress set the infrastructure law’s "
+                  "transportation funds and the terms for spending them, with the spending figure in the source line. Well supported: Local "
                   "reporting raises incumbents’ risk of losing office. Plausible: Better public services can build earned trust "
                   "in government, beside the atlas name Better public services build earned trust. Contested: two readings of "
                   "15 words each, one finding effects near zero and one finding small drops. Hypothesis: Untested: more expert "
@@ -727,7 +728,7 @@ def rule_13_2(book):
                     "caption": "<strong>Fails Rule 13.2.</strong> The label says plausible, and the title states the link with the "
                                "direct verb “build”, which only well-supported evidence allows."},
         "specs": [
-            {"label": "Documented", "value": "Record words: passed, ruled, stood at, reported, had spent"},
+            {"label": "Documented", "value": "Record words: passed, ruled, set, stood at, reported"},
             {"label": "Well supported", "value": "A direct verb: raises, lowers"},
             {"label": "Plausible", "value": "“Can” or “may”, once, with no other softener"},
             {"label": "Contested", "value": "Both readings at the same length (Rule 01.16)"},

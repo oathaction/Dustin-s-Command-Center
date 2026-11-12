@@ -231,3 +231,15 @@ DR-191's second pass: the editor's "Fix pass read" in `work/handoffs/phase-3/202
 ### Second pass not tested
 
 - A screen reader on the curly apostrophes in names; axe and the DOM only.
+
+## R3, the creative director's rescore
+
+The creative director's rescore (`work/handoffs/phase-3/20261111_CD-Review-Of-Round-0.md`, "Rescore") marks the palette proofs ready and adopts the variant I put to it: **R3, the light fill for the other bars wherever one bar is named, in red or in ink.** It is applied at the source, `build_palette_proofs.py`.
+
+- **Scope, measured.** On Newsprint the other bars take the light fill (`oa.chart.color.lightFill`, stoneN55). In Chromium's grayscale filter it prints at 0.635, against 0.371 for Pillar Red and 0.071 for Charcoal. On Charcoal the light fill is Stone, which prints at 0.386, as gray as Pillar Red, so there the other bars keep the context ink (stoneN35, 0.540). A new function, `other_bars()`, picks the fill by ground.
+- **The proposal.** A new rule in `rules_with_the_palettes`, "Named bar (R3)", and a description change for `oa.chart.color.lightFill` with the decision recorded. No value, name or new token. The engineer has it by message.
+- **The sheet.** Views 1 to 6 and the phone form of the one-in-ink chart draw the other bars by `other_bars()`. View 7 keeps the first proof's Stone bars as a labeled failure in gray print, with both gray levels printed. The section's side note states the rule. Four new checks hold it on both grounds, in red and in ink: the named bar stands at least 0.10 apart in gray from the other bars.
+
+R3 routine call: D3-xxx | Where a chart names one bar, the other bars take the light fill on Newsprint and keep the context ink on Charcoal | The creative director's R3; on Charcoal the light fill is Stone, which prints as gray as Pillar Red (0.386 against 0.371), so the context ink holds the point there (0.540)
+
+R3 tested: 50 of 50 checks; 43 captures again with 0 px of page overflow at 390 px; 459 samples matching tokens and simulations within 0.001; axe-core at 1440 and 390 px, tables closed and open, 0 violations; the red-on-red grayscale capture read by me, where the red bar now prints darker than its neighbors on Newsprint. R3 not tested: print, and the kit's own bar charts, which the engineer draws.

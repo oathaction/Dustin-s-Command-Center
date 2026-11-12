@@ -107,10 +107,10 @@ export const meta = {
   // tokens.css's header carries its change. The studio's decision codes sit in `record` alone (DR-218, BE-S7).
   changeNotes: [
     { version: '6.0.0-gate3.1', date: '2026-11-11',
-      tokens: 'oa.color.tint.prussianN56 and prussianN29 (new); oa.chart.color.diverging on Charcoal; oa.chart.color.categorical; oa.chart.color.ghost; oa.chart.grade; the descriptions listed under description_changes',
+      tokens: 'oa.color.tint.prussianN56 and prussianN29 (new); oa.chart.color.diverging on Charcoal; oa.chart.color.categorical; oa.chart.color.ghost; oa.chart.grade; the descriptions listed under description_changes, the light fill\'s among them',
       change: 'Two new colors, both Prussian mixed toward Newsprint, so the diverging scale works on Charcoal. New roles with no new value: the four-ink categorical set in the order Charcoal, Verdigris, Prussian and Stone with its label inks (group 4\'s label sits beside its hatch, so its token is labelBeside), the ghost lines of small multiples, and the evidence line code as stroke styles with the atlas build\'s own numbers: 1 px rails at every line width, a dotted line that stops 1.5 line widths short of its arrowhead, a solid lead-in of 28 px under delay ticks, and a shortest textured run of 20 line widths. Every new token is marked proposed, until our founder and editor approves it.',
       reason: 'Dark mode needs the diverging scale on Charcoal; the categorical set stays with the four brand inks and adds no hue; the evidence line code moves out of three build scripts into the tokens, so every chapter draws one set of patterns (Rule 10.10).',
-      record: 'DR-204, DR-234, D2-95, Gate 1 M1, Rule 10.10, D3-84; the palette notes\' D3 calls and fix pass', gate: 'Board 1, then Gate 3' },
+      record: 'DR-204, DR-234, D2-95, Gate 1 M1, Rule 10.10, D3-84, the creative director\'s R3; the palette notes\' D3 calls and fix pass', gate: 'Board 1, then Gate 3' },
     { version: '6.0.0-gate2.9', date: '2026-11-11',
       tokens: 'oa.color.state.error.bar and its deprecated alias oa.color.state.error.mark; oa.color.state.selected.band; oa.size.icon.medium; oa.color.action.ask.fill; and every description that wrote a contrast ratio with a colon',
       change: 'Descriptions only; no token is renamed and no value changes. The error bar no longer records a Charcoal keyline: it repeats the error mark and the word "Error:", which carry the error, so it takes none, as the guide draws it. The selected band is the ground of the current or selected row in a list, paired with the 4 px bar and bold words, and says which marks may sit inside it in the dark theme. The 24 px icon size names the 37 topic and atlas symbols on Rule 10.4\'s list. The ask fill says it is Newsprint on Prussian. Every contrast ratio in a description reads as the guide writes it, "2.96 to 1".',
@@ -599,7 +599,7 @@ const chartColor = {
     label: semantic('text', 'Text in the evidence-label chip.', NC(P('newsprint'), P('charcoal')),
       { newsprint: { ground: '{oa.chart.color.chip.fill.onNewsprint}' }, charcoal: { ground: '{oa.chart.color.chip.fill.onCharcoal}' } }),
   },
-  lightFill: semantic('dataFill', 'Light fill: a category under the subject, with its value printed.', NC(T('stoneN55'), P('stone')),
+  lightFill: semantic('dataFill', 'Light fill: a category under the subject, with its value printed. On Newsprint it also fills every other bar wherever a chart names one bar, in red or in ink, so the named bar holds in gray print; on Charcoal those bars keep the context ink, since Stone prints as gray as Pillar Red.', NC(T('stoneN55'), P('stone')),
     { newsprint: { valuesPrinted: true }, charcoal: { valuesPrinted: true } }),
   track: semantic('decorative', 'Track: the whole a share sits in.', NC(T('stoneN88'), T('stoneC55'))),
   gridline: semantic('decorative', 'Gridline, 1 px. It may pass behind a label, which carries a ground-colored halo.', NC(T('stoneN70'), T('stoneC45'))),

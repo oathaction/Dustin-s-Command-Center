@@ -1035,6 +1035,13 @@
    "proposed": "Stroke of the hatch, in the ink of the mark it fills."
   },
   {
+   "path": "oa.chart.color.lightFill",
+   "field": "$description",
+   "now": "Light fill: a category under the subject, with its value printed.",
+   "proposed": "Light fill: a category under the subject, with its value printed. On Newsprint it also fills every other bar wherever a chart names one bar, in red or in ink, so the named bar holds in gray print (R3); on Charcoal those bars keep the context ink, since Stone prints as gray as Pillar Red.",
+   "decided": "Creative director's rescore, R3, November 12, 2026"
+  },
+  {
    "path": "oa.chart.color.point",
    "field": "$description",
    "now": "The one point a title names, in working red at the third rank. Only when no error or ask holds the view's red. When an error or an ask holds the view's red, the point yields to the subject ink and keeps its label and its place (Rule 11.16).",
@@ -1154,6 +1161,7 @@
   "Past four groups: small multiples with the other groups as ghosts, or one group in ink and every other in the context gray, every group labeled (DR-234).",
   "Magnitude: gray Stone steps with no direction; the figure prints in every tile.",
   "Grade line code: the line's width sets its pattern; no coded line drops under 2 px; a run under 20 widths, key samples included, prints its grade in words.",
-  "Red: one working red per view (Rule 05.3). A chart's red point yields to the subject ink when an error or an ask is in the view, and keeps its label and place."
+  "Red: one working red per view (Rule 05.3). A chart's red point yields to the subject ink when an error or an ask is in the view, and keeps its label and place.",
+  "Named bar (R3): wherever a chart names one bar, in red or in ink, the other bars take the light fill on Newsprint with every value printed, so the named bar holds in gray print; on Charcoal they keep the context ink, since the light fill there prints as gray as Pillar Red."
  ]
 }
