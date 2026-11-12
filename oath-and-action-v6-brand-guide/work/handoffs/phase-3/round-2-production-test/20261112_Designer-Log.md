@@ -97,3 +97,37 @@ Added after the research lead's change under D3-905. I checked it by script agai
   - `source_line_columns`, the columns each source line covers.
 - A fixed broadband chart prints the `fixed_with_s2801_margin` line.
 - With the published margins (the nation at 76.6, margin 0.1), 20 states and the District of Columbia sit above the nation, 22 states below and 8 within. Version 3's title above ("40 states and the District of Columbia") used the approximated margin of step 5. A chart built today should draw S2801's margin and count 42 states and DC.
+
+## Second pass: the same task on the fixed build
+
+November 12, 2026, under DR-191. **Simulated panel, untested with real people.** The designer used entry 14.74 and the kit's README alone, with the frozen `census-acs-broadband-by-state` as the research lead left it. They worked on the committed kit with no scratch data.
+
+**Result.** The designer was led to the right margin and the right source line without help. They could not reach a passing chart. With the Census Bureau's published margins, most states' intervals are narrower than the 13 px dot at phone widths. The kit's new check fails the chart there, and neither the entry nor the README says what to do instead.
+
+**Steps.**
+1. **The form.** Entry 14.74 again. Its rule now says to print the publisher's margin from the same release, compute one only where it gives none, and leave intervals out where neither exists. Its builders line says `encode.margin` takes the column the sidecar's `margin_columns` names.
+2. **The README.**
+   - Its starter table lists `range-bar` beside `specs/s57.json`.
+   - It says "65 files" and "S01 to S64".
+   - It has a section on estimates and their intervals: the level in the measure line, the margin column in the table, `margin_columns`, units, `check_only_columns`, and an interval that must show past its mark at every width.
+3. **The data.**
+   - The sidecar's `margin_columns` names `broadband_fixed_pct_moe_s2801` for `broadband_fixed_pct`, in percentage points.
+   - `check_only_columns` lists the formula and approximation margins.
+   - With S2801's margins (the nation at 76.6, margin 0.1), my script counts 20 states and the District of Columbia above the nation, 22 states below and 8 within.
+4. **Version 4 (`20261112_P02-Spec-V4.json`).** S57 copied; margin from `margin_columns`; title "in 42 states and the District of Columbia"; `source_line` left out as the README's step 5 says. Check (`20261112_P02-Check-V4.txt`): 12 faults.
+   - The first names the fix: "the source line printed (the sidecar's printed_source_line) covers households, broadband_any, ... and the chart prints broadband_fixed_pct, broadband_fixed_pct_moe_s2801; print its source_line_variants "fixed_with_s2801_margin"".
+   - The other 11 say "the middle row's interval spans 19.0 px, under the 23.0 px its estimate's mark needs ... give the plot more width, or stack the rows". These come at 1440 and 390 px, every guide column, and 452 of the swept widths.
+5. **Version 5 (`20261112_P02-Spec-V5.json`).** V4 with the `fixed_with_s2801_margin` line. The source fault is gone; the 11 interval faults stay.
+6. **Version 6 (`20261112_P02-Spec-V6.json`)**, both ways the fault names.
+   - The designer cannot give the plot more width in the guide's column, so they narrowed the scale from 60–90 to 64–86, the data's reach with its margins.
+   - They also set `labels.stack_below` to 2000, so the rows stack at every width and each interval runs the full width.
+   - Check (`20261112_P02-Check-V6.txt`): it passes at 1440 px and at every width from 439 to 720 px. It fails at 390 px on both grounds, at the 358, 326, 296 and 256 px columns, and at 176 swept widths from 257 to 438 px. At 358 px the middle row's interval spans 18.6 px against the 23 px it needs.
+   - The drawing (`20261112_P02-Capture-V6-Newsprint-1440.png`, `20261112_P02-Capture-V6-Newsprint-390.png`) shows the cause. On a phone, Massachusetts, Maryland and New Jersey are dots with no line past them. Their margins run 0.4 to 0.5 points, and the middle state, Minnesota, has 0.5.
+   - 43 filled dots and 8 open, which matches the count in step 3.
+7. **No way out in the documents.**
+   - The fault's two fixes are spent.
+   - `range-bar` takes no smaller dot. Its labels are `reference`, `reference_label`, `reference_band`, `test`, `open`, `key_filled`, `key_open`, `key_interval`, `named`, `point`, `names`, `short`, `value` and `stack_below`.
+   - Neither entry 14.74 nor the README says what a chart does when the publisher's margins are narrower than the dot on a phone. The choices would be a dot plot with the margins in the table, a smaller mark, or a note.
+   - In production the designer stops here and asks the engineer or the data lead.
+
+**Did chapter 14 and the README lead to a passing chart without help?** They led to the form, the margin, the unit and the source line. They did not lead to a passing chart, because the new interval check has no documented way out for tight margins on a phone. The check is right that those intervals cannot be seen there.

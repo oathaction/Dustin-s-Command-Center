@@ -1,0 +1,377 @@
+{
+ "title": "Creative director’s rescores for Phase 3, round 2: maker A’s and maker B’s specimens with their entries, the 15 sketches, rules 14.1 to 14.14 with the opener, and chapter 15’s six new rules, after the review fix pass",
+ "date": "2026-11-12",
+ "author": "Creative director (oa-creative-director), subagent of the main session",
+ "basis": "The fixed strict build in the scratchpad’s phase-3/round-2-final/build/guide.html (10,635,461 bytes, 0 warnings) and its guide-Build-Report.json, copied to the creative director’s rescore scratch; 31 chapter 14 plates captured at 1440 and 390 px on Newsprint; 14 plates at 1440 px and 6 at 390 px on Charcoal (dark theme on, each stage’s surface class set to Charcoal); 6 plates at 1024 px; 9 plates at 2x; Rule 14.6 and chapter 15’s 15.3, 15.5, 15.12, 15.15 and 15.17 whole at 1440 px, 15.12 and 15.17 at 390 px; S45, S47, S53 and S58 built alone with the kit (each PASS, 0 faults) and S47’s and S53’s exports measured for Pillar Red",
+ "first_scores_file": "work/handoffs/phase-3/20261112_Round-2-CD-Scores.json",
+ "review": "work/handoffs/phase-3/20261112_CD-Review-Of-Round-2.md, section “Rescore”",
+ "threshold": "4 on every criterion; an item is ready when every score is 4 or more and it has no Must fix",
+ "criteria": [
+  {
+   "key": "craft",
+   "name": "Craft"
+  },
+  {
+   "key": "clarity",
+   "name": "Clarity"
+  },
+  {
+   "key": "brand_fidelity",
+   "name": "Brand fidelity"
+  },
+  {
+   "key": "usefulness",
+   "name": "Usefulness"
+  },
+  {
+   "key": "evidence_honesty",
+   "name": "Evidence honesty"
+  },
+  {
+   "key": "accessibility",
+   "name": "Accessibility"
+  }
+ ],
+ "items": [
+  {
+   "key": "maker_a",
+   "name": "Maker A: S43 to S48 and S60 to S64 with their entries, the entries for S10 (14.46), S08 (14.49) and S01 (14.85), and S18 as changed",
+   "anchor": "#group-14-5, #group-14-10; work/build/chart-kit/specs/s43.json to s48.json, s60.json to s64.json, s18.json; work/build/guide/entries/14-046.json to 14-053.json, 14-085.json to 14-090.json",
+   "stage": "Phase 3, round 2, after the review fix pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 3,
+    "brand_fidelity": 3,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "Unchanged at 4: S48 now sets the independent and the two vacancies apart under the aisle, each with its own leader, S60 sets each figure beside a caption of three or four lines, and S10's overall line is dashed at 1.5 px.",
+    "clarity": "Raised from 3: S45's title now gives the count its stack shows, \"Builders finished 591,700 homes in buildings of five or more units in 2024, more than in any other year from 2000 to 2025\", with the share and the 1974 record in notes, and S63's title and chips both count two interim orders.",
+    "brand_fidelity": "Raised from 3: S47's Social Security tile takes the subject ink and every other tile the track ink with a context edge, so the kit export holds no Pillar Red (0.00 percent at 1440 and 390 px on both grounds, measured), and S61 draws its 47 no votes as their own outlined segment in the same neutral ink.",
+    "usefulness": "Unchanged at 4: entries 14.47, 14.52, 14.54 to 14.56 and 14.87 now carry Rule 05.1's 5 percent, so a builder knows when a named area takes ink.",
+    "evidence_honesty": "Unchanged at 4: S43 now prints the Bureau's published DP04 margin (DC 1.5 points), S63's titles print as the atlas stores them with an Atlas grade column, and entry 14.87 says it draws S01's vote a second way.",
+    "accessibility": "Unchanged at 4: S47's words now sit on their tiles with no plate, Newsprint on the dark tile at 13.29 to 1 by the data lead's measure, and by maker A's notes S62's table gains a Step column and S44's totals a forced-colors role of their own; I did not test forced colors."
+   },
+   "changed": [
+    "clarity",
+    "brand_fidelity"
+   ],
+   "first_must_fix": [
+    "A-M1",
+    "A-M2"
+   ],
+   "first_should_fix": [
+    "A-S1",
+    "A-S2",
+    "A-S3",
+    "A-S4",
+    "A-S5"
+   ],
+   "first_items_landed": [
+    "A-M1",
+    "A-M2",
+    "A-S1",
+    "A-S2",
+    "A-S3",
+    "A-S4",
+    "A-S5"
+   ],
+   "first_items_open": [],
+   "must_fix": [],
+   "should_fix": [
+    "RS-1"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 1,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready; RS-1 is a caption fix for the second pass."
+  },
+  {
+   "key": "maker_b",
+   "name": "Maker B: S49 to S59 with their entries, the entry for S06 (14.76), and S33 as changed",
+   "anchor": "#group-14-6, #group-14-7, #group-14-8; work/build/chart-kit/specs/s49.json to s59.json, s33.json; work/build/guide/entries/14-058.json to 14-078.json",
+   "stage": "Phase 3, round 2, after the review fix pass",
+   "first_scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "Raised from 3: S58's band now carries 1 px edges in the context ink, which read at 1x at 1440 and 390 px on Newsprint and Charcoal and at 2x before the eye reaches \"±$1,040\", and S59's two bands and their key take the same edge.",
+    "clarity": "Unchanged at 4: S52 names and ticks each median (\"2024, median 17.1%\"), and S55's title, question and labels now turn on the four states with the most renter households, so size answers the question.",
+    "brand_fidelity": "Unchanged at 4: S53's age band takes the subject ink with words that name the ages, never a color, and the kit export holds no Pillar Red at either width.",
+    "usefulness": "Unchanged at 4: entries 14.60, 14.62 and 14.68 carry Rule 05.1's 5 percent, and 14.75 names the band's step and its edges.",
+    "evidence_honesty": "Unchanged at 4: S59 now draws where the rate stood, 2021 to 2024, with 2025's missing quarter named as a dashed column, and S54 and S55 drop North Dakota, which sat within Wyoming's margin.",
+    "accessibility": "Unchanged at 4: the band's edges pass 3 to 1 on both grounds where no Stone step can (4.29 and 5.41 to 1 by the data lead's measure), and by maker B's notes S51's table now gives its lowest and highest county and S53's top row reads \"100 and over\"."
+   },
+   "changed": [
+    "craft"
+   ],
+   "first_must_fix": [
+    "B-M1"
+   ],
+   "first_should_fix": [
+    "B-S1",
+    "B-S2",
+    "B-S3",
+    "B-S4"
+   ],
+   "first_items_landed": [
+    "B-M1",
+    "B-S1",
+    "B-S2",
+    "B-S3",
+    "B-S4"
+   ],
+   "first_items_open": [],
+   "must_fix": [],
+   "should_fix": [
+    "RS-1"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 1,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready; RS-1 is a caption fix for the second pass."
+  },
+  {
+   "key": "sketches",
+   "name": "The 15 sketches with their entries: reference 14.54 to 14.56, 14.63 to 14.66, 14.70 to 14.72, 14.78; avoid 14.57, 14.73, 14.91, 14.92",
+   "anchor": "work/build/guide/specimens/s-14-54-sketch.html to s-14-57-sketch.html, s-14-63-sketch.html to s-14-66-sketch.html, s-14-70-sketch.html to s-14-73-sketch.html, s-14-78-sketch.html, s-14-91-sketch.html, s-14-92-sketch.html",
+   "stage": "Phase 3, round 2, after the review fix pass",
+   "first_scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "Raised from 3: maker A's six sketches now draw at 320 px with \"Illustrative data\" set at a 10 px inset, and each avoid pair breaks its two bars evenly onto two matching lines over 288 px halves, so all fifteen read as one set beside maker B's nine.",
+    "clarity": "Unchanged at 4: each caption is the entry's first sketch_alt sentence and each avoid pair shows the fault beside the cure.",
+    "brand_fidelity": "Unchanged at 4: kit classes and inks throughout; the donut and the pie draw the larger part in ink.",
+    "usefulness": "Unchanged at 4: each avoid entry names the form to build instead, and 14.73's aligned panels now take the dual-axis chart's height.",
+    "evidence_honesty": "Unchanged at 4: \"Illustrative data\" inside every drawing and the Illustrative chip beside every caption.",
+    "accessibility": "Unchanged at 4: each first desc equals the visible caption, and 14.65's, 14.72's and 14.78's right-hand words sit 10 px inside the frame."
+   },
+   "changed": [
+    "craft"
+   ],
+   "first_must_fix": [],
+   "first_should_fix": [
+    "SK-S1"
+   ],
+   "first_items_landed": [
+    "SK-S1"
+   ],
+   "first_items_open": [],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch14_rules",
+   "name": "Rules 14.1 to 14.14 with the opener as round 2 changed them (14.3, 14.6, 14.9, 14.11, 14.12, the shared plate style, group lines 5 to 10, the opener's mark), with chapter 13's five chart titles",
+   "anchor": "#data-visualization, #group-14-1; work/build/guide/entries/14-001.json to 14-014.json, 14-chapter.json; s-13-7-all, s-13-7-children, s-13-7-fail-all, s-13-13-correct, s-13-13-fail-chart",
+   "stage": "Phase 3, round 2, after the review fix pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "Unchanged at 4: Rule 14.9 still stacks each interval under its name at 390 px and sits side by side at 1440 and 1024 px, and Rule 14.13's named column now takes the subject ink cleanly on both plates.",
+    "clarity": "Unchanged at 4, and stronger: Rule 14.6 now runs in four short paragraphs, the one mark, the comparison mark (\"as 'more than twice Zion's' does on this rule's plate\"), the two ink cases, and two findings with Rule 05.1's share, and group 8's line falls from 44 words to 30.",
+    "brand_fidelity": "Unchanged at 4: red falls only on 14.3's age group, 14.6's park and 14.12's 2026 column, each under 1.2 percent of its plate by pixel count.",
+    "usefulness": "Unchanged at 4: Rule 14.6's spec rows now name \"A comparison\", \"Two findings\" and \"Past 5 percent of the drawing\".",
+    "evidence_honesty": "Unchanged at 4: Rule 14.9's builders line now asks for the publisher's own margin first.",
+    "accessibility": "Unchanged at 4: rules, opener and shared style weigh 172,255 of 212,288 bytes, and the plates keep their phone fits."
+   },
+   "changed": [],
+   "first_must_fix": [],
+   "first_should_fix": [
+    "R-S1",
+    "R-S2"
+   ],
+   "first_items_landed": [
+    "R-S1",
+    "R-S2"
+   ],
+   "first_items_open": [],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch15",
+   "name": "Chapter 15: Rules 15.11, 15.12 and 15.15 to 15.18 (12 plates), and the wide stage at 1024 and 768 px (RS-S1)",
+   "anchor": "#systems-graphics; work/build/guide/chapters/15-systems-graphics.json, specimens s-15-11-* to s-15-18-*",
+   "stage": "Phase 3, round 2, after the review fix pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "Unchanged at 4: 15.17's ladder holds with the four longer node titles in 156 px pills, and at 390 px 15.12 now sets \"Two grades, apart\" before \"Each step\".",
+    "clarity": "Unchanged at 4: 15.12 now leads with the problem's and the remedy's grades as its only labels, with a short key for reading a step, and 15.17 names the four bodies beside their variables.",
+    "brand_fidelity": "Unchanged at 4: red only on R-32's targets, typed chips with no punctuation touching them.",
+    "usefulness": "Unchanged at 4: 15.12's \"Reading a step\" key ties ticks, layers and step words to Rules 13.5, 15.3, 15.4 and 15.9.",
+    "evidence_honesty": "Unchanged at 4: 15.15's L54 line now ends its grade word with a period, and 15.17 prints V7's node titles where it draws a variable outside a loop; V7 values were not rechecked by me.",
+    "accessibility": "Unchanged at 4: the page order now gives the two grades first to a screen reader as well as on a phone."
+   },
+   "changed": [],
+   "first_must_fix": [],
+   "first_should_fix": [
+    "CH15-S1"
+   ],
+   "first_items_landed": [
+    "CH15-S1"
+   ],
+   "first_items_open": [],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready."
+  }
+ ],
+ "totals": {
+  "must_fix": 0,
+  "should_fix": 1,
+  "under_4": [],
+  "ready": [
+   "maker_a",
+   "maker_b",
+   "sketches",
+   "ch14_rules",
+   "ch15"
+  ],
+  "not_ready": [],
+  "first_must_fix_landed": 3,
+  "first_should_fix_landed": 13,
+  "lowest_score_by_item": {
+   "maker_a": 4,
+   "maker_b": 4,
+   "sketches": 4,
+   "ch14_rules": 4,
+   "ch15": 4
+  }
+ },
+ "must_fix": {},
+ "should_fix": {
+  "RS-1": {
+   "items": [
+    "maker_a",
+    "maker_b"
+   ],
+   "where": "The plate captions under S55 (entry 14.68) and S63 (entry 14.89)",
+   "what_and_fix": "The fix pass changed both specs' reader_question, but the caption under each plate still prints the plan's first question, because phase3_ch14_build.py takes the plan row's reader_question when the entry has no caption. S55 prints \"Do rents run higher where renters earn more, with each state sized by its renter households?\" over a chart now about the four largest renter states; S63 prints \"Where do the fights over removals, spending and watchdogs stand?\", where the data lead's RF-15 asked for \"disputes\". Update the two plan rows to the specs' questions, or have the generator take the spec's reader_question first.",
+   "owner": "Main session (the plan's two rows) or engineer (phase3_ch14_build.py)"
+  }
+ },
+ "judgments": {
+  "red_share": "A-M2 and B-S4 landed under D3-890 and the data lead’s RF-1: S47 and S53 now export with no Pillar Red, and the kit fails any export past 5 percent. The drawings read better for it: S47 is a light field with one dark tile, and S53’s dark band reads at once in grayscale.",
+  "s58_band": "B-M1 landed: the band reads by its edges at 1x on both grounds, and the fill stays inside the approved Stone steps (DR-236).",
+  "avoid_bars": "The avoid pairs now break \"Form to avoid / Do not publish\" and \"Use instead / Bars\" onto two even lines over equal halves. That is a deliberate label, not a wrap, and it holds at 1440 and 390 px.",
+  "charcoal_sketches": "On a stage set to Charcoal the avoid bar loses its fill and the \"Use instead\" box its outline. The guide sets every plate stage on Newsprint in both themes, so no reader meets this; noted only for any later export of a sketch on Charcoal."
+ },
+ "weight_recommendation": {
+  "page": 10635461,
+  "projection": 15044385,
+  "budget": 15500000,
+  "chapter_14_now": 1186026,
+  "stop": 2803941,
+  "share_per_plate": 14600,
+  "plates_to_come": 36,
+  "rules_and_opener": {
+   "bytes": 172255,
+   "allowance": 212288
+  },
+  "chapter_15_now": 307066,
+  "chapter_15_ceiling": 600000,
+  "verdict": "Holds. The fix pass spent about 16.8 KB of chapter 14 and lowered the share from 15,872 to 14,600 bytes for each of the 36 plates to come. Round 2’s specimen entries sat at a median of about 11.6 KB in the first build, so rounds 3 and 4 keep room if each plate draws only the rows it shows; map geometry stays held apart."
+ },
+ "distinctiveness_test": [
+  {
+   "view": "S47 at 1440 and 390 px, wordmark covered",
+   "verdict": "Reads as Oath & Action: one dark tile in a light field, words on the tiles, the chip and the sentence title."
+  },
+  {
+   "view": "Any round 2 entry with its specimen in view",
+   "verdict": "Reads as Oath & Action through the chip, the sentence title, gray with one subject in ink and the dashed total line, though no round 2 specimen now carries the red point."
+  },
+  {
+   "view": "Chapter 15, 15.12 and 15.17 at 1440 px",
+   "verdict": "Reads as Oath & Action: typed chips, delay ticks, sign tags, red only on a reform’s targets."
+  }
+ ],
+ "risks_for_dustin": [
+  "The red point is now rare in chapter 14’s specimens. After D3-890 none of round 2’s 28 specs draws it, and among the 64 kit specs only S20, S21 and S23 do, all from round 1; readers meet it mostly on Rules 14.3, 14.6 and 14.12. I recommend rounds 3 and 4 choose at least two reader questions on public data where one point, bar or line carries no party tie, so the house’s one red is taught by example as well as by rule.",
+  "S01 and S61 still draw the same Senate vote on H.R. 7008. The data lead kept S61’s data (RF-13, no frozen file answers entry 14.87 as well), and the entry now says it draws S01’s vote a second way. Board 2 shows both."
+ ],
+ "questions_for_dustin": []
+}

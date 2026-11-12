@@ -138,3 +138,78 @@ An asterisk marks a score under 4. Specimens and sketches under the bar: S45 (cl
 - Forced colors, print, 200 percent text, 320 px reflow, keyboard and screen reader.
 - 358, 296 and 256 px drawings alone, 768 px, and 360 px.
 - Any figure against its data beyond S45's counts; the derived summaries; chapter 15 against V7 by script; round 4's data plan.
+
+## Rescore
+
+November 12, 2026, after the review fix pass (`20261112_Round-2-Fix-Brief.md`, calls D3-888 to D3-914, the data lead's rulings RF-1 to RF-24). Scores, reasons and the open item are also in `20261112_Round-2-CD-Rescores.json`.
+
+What I looked at: a copy of the fixed strict build (`phase-3/round-2-final/build/guide.html`, 10,635,461 bytes, 0 warnings) in my rescore scratch folder. I captured 31 chapter 14 plates at 1440 and 390 px on Newsprint, 14 at 1440 px and 6 at 390 px on Charcoal, 6 at 1024 px and 9 at 2x, with Rule 14.6 and chapter 15's 15.3, 15.5, 15.12, 15.15 and 15.17 whole at 1440 px and 15.12 and 15.17 at 390 px. I built S45, S47, S53 and S58 alone with the kit (each PASS, 0 faults) and measured Pillar Red in S47's and S53's exports.
+
+### Verdict
+
+All five items are ready: every score is 4 and no Must fix remains. All 3 Must fix and all 13 Should fix from the first pass landed. One small Should fix is new (RS-1).
+
+| Item | Craft | Clarity | Brand fidelity | Usefulness | Evidence honesty | Accessibility | Ready |
+|---|---|---|---|---|---|---|---|
+| 1. Maker A | 4 | 4 (was 3) | 4 (was 3) | 4 | 4 | 4 | yes |
+| 2. Maker B | 4 (was 3) | 4 | 4 | 4 | 4 | 4 | yes |
+| 3. The 15 sketches | 4 (was 3) | 4 | 4 | 4 | 4 | 4 | yes |
+| 4. Rules 14.1 to 14.14 with the opener | 4 | 4 | 4 | 4 | 4 | 4 | yes |
+| 5. Chapter 15's six rules and the wide stage | 4 | 4 | 4 | 4 | 4 | 4 | yes |
+
+### Reasons for each changed score
+
+- **Maker A, clarity, 3 to 4.** S45's title now gives the count its stack shows: "Builders finished 591,700 homes in buildings of five or more units in 2024, more than in any other year from 2000 to 2025." The 36 percent share and the 1974 record moved to its notes. S63's title and its chips now both count two interim orders, and note 1 names the third order and says why it sits under a later chip (A-M1, A-S1).
+- **Maker A, brand fidelity, 3 to 4.** S47's Social Security tile takes the subject ink, and every other tile takes the track ink with an edge in the context ink. The kit export holds 0.00 percent Pillar Red at 1440 and 390 px on both grounds, and the drawing now reads as a light field with one dark tile. S61 draws its 47 no votes as their own outlined segment in the same neutral ink (A-M2, D3-890, D3-891).
+- **Maker B, craft, 3 to 4.** S58's band now has 1 px edges in the context ink. The band reads at 1x at 1440 and 390 px on both grounds, and at 2x before the eye reaches "±$1,040". S59's two bands and its key take the same edge (B-M1, RF-2).
+- **Sketches, craft, 3 to 4.** Maker A's six sketches now draw at 320 px with "Illustrative data" inset 10 px from the frame. Each avoid pair breaks its two bars evenly onto two matching lines over 288 px halves, so all fifteen sketches read as one set (SK-S1).
+
+The fix pass also changed four rules and four chapter 15 plates that were already ready. None of these changes lowers a score:
+- **Rule 14.6** now runs in four short paragraphs, and its comparison case points to its own plate ("more than twice Zion's").
+- **Rule 14.9's** plate still stacks each interval at 390 px.
+- **Rule 14.12** keeps one red, under 1.2 percent of its plate.
+- **Rule 14.13's** named column takes the ink cleanly.
+- **15.12** now leads with the problem's and the remedy's grades, with a short key, and puts them first at 390 px.
+- **15.17** prints V7's node titles in pills that hold their ladder.
+- **15.3 and 15.5** set their node titles at even heights.
+- **15.15's** L54 line now ends its grade word with a period.
+
+### Should fix
+
+- **RS-1. Two plate captions print the old question.** Owner: the main session (the plan's two rows), or the engineer (`phase3_ch14_build.py`).
+  - The fix pass changed the `reader_question` in S55's and S63's specs. The caption under each plate still prints the plan row's first question, because the generator takes the plan's question when the entry has no caption.
+  - S55 prints "Do rents run higher where renters earn more, with each state sized by its renter households?" over a chart now about the four largest renter states.
+  - S63 prints "Where do the fights over removals, spending and watchdogs stand?", where RF-15 asked for "disputes".
+  - Fix: update the two plan rows to the specs' questions, or have the generator take the spec's question first.
+
+### Risks for Dustin to weigh
+
+1. **The red point is now rare in chapter 14's specimens.** Rule 05.1 now keeps a named mark that would pass 5 percent of the drawing out of red (D3-890). Under that call, none of round 2's 28 specs draws the red point, and among the 64 kit specs only round 1's S20, S21 and S23 do. Readers meet the house's one red mostly on Rules 14.3, 14.6 and 14.12. I recommend that rounds 3 and 4 choose at least two reader questions on public data where one point, bar or line carries no party tie.
+2. **S01 and S61 still draw the same Senate vote.** The data lead kept S61's data (RF-13), and entry 14.87 now says it draws S01's vote a second way. Board 2 shows both.
+
+### Weight
+
+- **Chapter 14:** 1,186,026 bytes in the fixed build. The fix pass spent about 16.8 KB, and the share fell from 15,872 to 14,600 bytes for each of the 36 plates to come.
+- **The rest of the page:** rules, opener and shared style weigh 172,255 of 212,288 bytes, and chapter 15 weighs 307,066 of 600,000. The page projects to 15,044,385 of 15,500,000 bytes.
+- **Verdict:** room still holds for rounds 3 and 4 if each plate draws only the rows it shows.
+
+### Tested in the rescore
+
+- Captures in Chromium from the fixed build:
+  - 31 chapter 14 plates at 1440 and 390 px on Newsprint.
+  - 14 plates at 1440 px and 6 at 390 px on Charcoal.
+  - 6 plates at 1024 px and 9 at 2x.
+  - Rule 14.6 and chapter 15's 15.3, 15.5, 15.12, 15.15 and 15.17 whole at 1440 px, and 15.12 and 15.17 at 390 px.
+- `oa-chart.mjs build` for S45, S47, S53 and S58: each PASS, 0 faults.
+- Pixel measures:
+  - Pillar Red in S47's and S53's exports: 0.00 percent at both widths on both grounds.
+  - Red in Rules 14.6 and 14.12's plates.
+  - Red across the 31 captured chapter 14 plates: none in any round 2 entry.
+- Plate captions compared with each spec's `reader_question` by script for entries 14.46 to 14.92, which found RS-1.
+- Weight figures from the fixed build's report.
+
+### Not tested in the rescore
+
+- 768 px and 360 px; forced colors, print, 200 percent text, 320 px reflow, keyboard and screen reader.
+- Any figure against its data, the derived files, and chapter 15 against V7 by script.
+- The plates I did not recapture: entries 14.49, 14.58, 14.59, 14.63 to 14.66, 14.69 to 14.71, 14.76, 14.78 and 14.85.

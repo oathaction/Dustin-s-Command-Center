@@ -1072,7 +1072,7 @@
    "status": "new",
    "form_id": "bubble-scatter",
    "data_status": "Primary; Association label",
-   "reader_question": "Do rents run higher where renters earn more, with each state sized by its renter households?",
+   "reader_question": "Where do the states with the most renter households sit on rent and renters’ income?",
    "dataset": "census-acs-rent-and-income-by-state",
    "entry_file": "work/build/guide/entries/14-068.json"
   },
@@ -1358,7 +1358,7 @@
    "status": "new",
    "form_id": "status-chips",
    "data_status": "V7",
-   "reader_question": "Where do the fights over removals, spending and watchdogs stand?",
+   "reader_question": "Where do six disputes over checks on power stand?",
    "dataset": "v7-issue-status-checks-on-power",
    "entry_file": "work/build/guide/entries/14-089.json"
   },

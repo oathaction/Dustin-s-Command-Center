@@ -5156,3 +5156,11 @@ The main session asked whether chapter 13's seven script-drawn chart heads take 
 | D3-1070 | A grade word with words after it ends with a period, and the generator stops on one that runs on | CD CH15-S1 |
 | D3-1071 | The editor's second-pass words for chapter 15 are applied in the generator | D3-900 and D3-615: the editor owns the words, the systems designer the file |
 | D3-1072 | Rule 15.12's plate sets its parts in the order head, drawing with its note, the two grades, the steps, the key, the source; at 680 px a grid places the steps under the drawing and the grades in the right column across both rows, and the alt follows the page order | SD-9 under RF-21; the wide composition is unchanged at 1440, 1024 and 768 px, and the generator stops if the steps or any label come before the two grades (tested by planting the old order) |
+
+### Main session, round 2 second pass and rescore
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1073 | The plan file's reader questions for 14.68 (S55) and 14.89 (S63) take their specs' questions as the fix pass rewrote them, and chapter 14 is regenerated (CD RS-1) | The generator prints the plan row's question as the caption when an entry has none; the main session owns the plan's rows (D3-650) |
+| D3-1074 | The rescore finds all five items ready: maker A's 11 specimens, maker B's 11, the 15 sketches, rules 14.1 to 14.14 with the opener, and chapter 15's six new rules each score 4 or more on every criterion; the second passes score statistics 4 of 5 (every item closed) and brand and craft 4 of 5 (up from 3; every Must fix closed) | The creative director's `20261112_Round-2-CD-Rescores.json` and the two reports' "Second pass" sections |
+| D3-1075 | Five small items the second passes found go out in one short round after the access second pass: S60's note on H.R. 7008 in the conditional ("would limit ... and require", editor's words, maker A applies), S45's "2020" and "2025" touching at 296 px (maker A), S55's United States ring reading as a hole in Texas's mark and New York's name without its figure on phones (maker B) | Each is a Should fix the fixes made; one round keeps the makers' files settled for the progress page |
